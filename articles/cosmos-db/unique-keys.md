@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure Cosmos DB 中的唯一索引鍵
-description: 瞭解如何在 Azure Cosmos 資料庫中使用唯一索引鍵
+描述：了解如何在 Azure Cosmos 資料庫中使用唯一索引鍵
 author: rockboyfor
 ms.author: v-yeche
 ms.service: cosmos-db
@@ -19,11 +19,11 @@ ms.locfileid: "62115718"
 
 唯一索引鍵為 Azure Cosmos 容器加入一層資料完整性。 您會在建立 Cosmos 容器時建立唯一索引鍵原則。 利用唯一索引鍵，您就能確保邏輯分割區內一或多個值是唯一的。 您也可以確保每[分割區索引鍵](partition-data.md)的唯一性。 
 
-使用唯一鍵策略創建容器後，該策略會根據唯一鍵約束的指定，阻止在邏輯分區中執行會導致重複的創建新項或更新現有項的操作。 與唯一索引鍵結合的分割區索引鍵可保證項目在容器範圍內的唯一性。
+使用唯一索引鍵策略建立容器後，該策略會根據索引鍵限制的指定，阻止在邏輯分區中執行會導致重複項目的建立新項目或更新現有項目的作業。 與唯一索引鍵結合的分割區索引鍵可保證項目在容器範圍內的唯一性。
 
 例如，假設 Azure Cosmos 容器的唯一索引鍵限制式為電子郵件地址且分割區索引鍵為 `CompanyID`。 當您使用唯一索引鍵設定使用者的電子郵件位址時，每個項目在指定的 `CompanyID` 內就具有唯一的電子郵件地址。 您無法使用重複的電子郵件地址和相同的分割區索引鍵值來建立兩個項目。 
 
-若要使用相同的電子郵件地址建立項目，但名字、姓氏和電子郵件地址不同，請將其他路徑新增至唯一索引鍵原則。 還可以使用名字、姓氏和電子郵件的組合創建唯一鍵，而不是僅根據電子郵件地址創建唯一鍵。 這個金鑰也稱為複合式唯一索引鍵。 在此情況下，在指定的 `CompanyID` 內允許這三個值的每個唯一組合。 
+若要使用相同的電子郵件地址建立項目，但名字、姓氏和電子郵件地址不同，請將其他路徑新增至唯一索引鍵原則。 您可以使用名字、姓氏和電子郵件的組合建立唯一索引鍵，而不用僅根據電子郵件地址建立唯一索引鍵。 這個索引鍵也稱為複合式唯一索引鍵。 在此情況下，在指定的 `CompanyID` 內允許這三個值的每種唯一組合。 
 
 例如，容器可以包含具有下列值的項目，其中每個項目都會遵守唯一索引鍵限制式。
 
@@ -36,7 +36,7 @@ ms.locfileid: "62115718"
 |  Fabrkam  |            |  Duperre  | gaby@fabraikam.com |
 |  Fabrkam  |            |           | gaby@fabraikam.com |
 
-如果您嘗試使用上表中列出的組合插入另一個項目，則會收到錯誤。 此錯誤表示不符合唯一索引鍵限制式。 你會收到作為返回消息的 `Resource with specified ID or name already exists` 或 `Resource with specified ID, name, or unique index already exists`。 
+如果您嘗試使用上表中列出的組合插入另一個項目，則會收到錯誤。 此錯誤表示不符合唯一索引鍵限制式。 您會收到 `Resource with specified ID or name already exists` 或 `Resource with specified ID, name, or unique index already exists` 的傳回訊息。
 
 ## <a name="define-a-unique-key"></a>定義唯一索引鍵
 
@@ -48,14 +48,14 @@ ms.locfileid: "62115718"
 
 * 唯一索引鍵原則最多可包含 16 個路徑值。 例如，值可以是 `/firstName`、`/lastName` 和 `/address/zipCode`。 每個唯一索引鍵原則最多可以有 10 個唯一索引鍵條件約束或組合。 每個唯一索引限制式的組合路徑不得超過 60 個位元組。 在前一個範例中，名字、姓氏和電子郵件地址合起來是一個限制式。 此限制式會使用 16 個可能路徑中的 3 個。
 
-* 如果容器具有唯一鍵策略，則創建、更新和刪除項時產生的[請求單位 (RU)](request-units.md) 費用要略高一些。
+* 如果容器具有唯一索引鍵原則，則建立、更新和刪除項目時產生的[要求單位 (RU)](request-units.md) 費用要略高一些。
 
 * 不支援疏鬆的唯一索引鍵。 如果遺漏了部分唯一路徑值，則會將它們視為 Null 值，並將其納入唯一性限制式。 因此，只有具 Null 值的單一項目能夠滿足此限制式。
 
-* 唯一索引鍵名稱會區分大小寫。 例如，假設某個容器的唯一鍵約束設置為 `/address/zipcode`。 如果數據包含名為 `ZipCode` 的字段，則 Azure Cosmos DB 會插入“null”作為唯一鍵，因為 `zipcode` 與 `ZipCode` 不同。 由於這個區分大小寫的緣故，因此，無法插入包含 ZipCode 的所有其他記錄，因為重複的 "null" 違反唯一索引鍵限制式。
+*  唯一索引鍵名稱會區分大小寫。 例如，假設某個容器的唯一索引鍵條件約束設為 `/address/zipcode`。 如果資料包含名為 `ZipCode` 的欄位名稱，則 Azure Cosmos DB 會插入“null” 作為唯一索引鍵鍵，因為 `zipcode` 與 `ZipCode` 不同。由於區分大小寫的緣故，無法插入包含 ZipCode 的所有其他記錄，因為重複的 "null" 違反唯一索引鍵條件約束。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 深入瞭解[邏輯分割區](partition-data.md)。
+* 深入了解[邏輯分割區](partition-data.md)。
 
 <!-- Update_Description: update meta propreties, wording update -->
