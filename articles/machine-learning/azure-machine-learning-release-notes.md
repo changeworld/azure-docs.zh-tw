@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: reference
 ms.author: jmartens
 author: j-martens
-ms.date: 11/04/2019
+ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0e613dd1c47a9942d95bd668f1e9f85e42649b5c
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 07ef3858cc6a514ed60a9d25046dc4ff9566fa31
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122367"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546345"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning 版本資訊
 
@@ -23,12 +23,49 @@ ms.locfileid: "76122367"
 
 若要了解已知的 Bug 和因應措施，請參閱[已知問題的清單](resource-known-issues.md)。
 
+## <a name="2020-01-21"></a>2020-01-21
+
+### <a name="azure-machine-learning-sdk-for-python-v1085"></a>適用于 Python 的 Azure Machine Learning SDK 1.0.85
+
++ **新功能**
+  + **azureml-core**
+    + 取得指定工作區和訂用帳戶中 AmlCompute 資源的目前核心使用量和配額限制
+  
+  + **azureml-contrib-管線-步驟**
+    + 讓使用者將表格式資料集當做上一個步驟的中繼結果傳遞至 parallelrunstep
+
++ **Bug 修正和改善**
+  + **azureml-automl-執行時間**
+    + 已移除對已部署預測服務要求中 y_query 資料行的需求。 
+    + 已從 Dominick 的橙色 Juice 筆記本服務要求區段移除 ' y_query '。
+    + 已修正 bug，以防止在已部署的模型上進行預測，並在具有日期時間資料行的資料集上操作。
+    + 已針對二元和多元分類，新增 Matthews 相互關聯係數做為分類度量。
+  + **azureml-contrib-解讀**
+    + 已移除從 azureml explainers 的文字-contrib-解讀為文字說明已移至即將發行的解讀文字存放庫。
+  + **azureml-core**
+    + 資料集：檔案資料集的使用方式不再取決於要安裝在 python env 中的 numpy 和 pandas。
+    + 已變更 wait_for_deployment LocalWebservice （），以檢查本機 Docker 容器的狀態，然後再嘗試 ping 其健康情況端點，大幅減少報告失敗部署所需的時間量。
+    + 已修正在使用 LocalWebservice （）函式從現有的部署建立服務物件時，LocalWebservice 中使用的內部屬性初始化（）。
+    + 已編輯錯誤訊息以供澄清。
+    + 將名為 get_access_token （）的新方法新增至 AksWebservice，它會傳回 AksServiceAccessToken 物件，其中包含存取權杖、在時間戳記之後重新整理、時間戳記和權杖類型到期。 
+    + 已取代 AksWebservice 中的現有 get_token （）方法，因為新方法會傳回這個方法傳回的所有資訊。
+    + 已修改 az ml service 取得存取權杖命令的輸出。 已將 token 重新命名為 accessToken，並 refreshBy 為 refreshAfter。 已新增 expiryOn 和 tokenType 屬性。
+    + 已修正 get_active_runs
+  + **azureml-explain-model**
+    + 已將 shap 更新至0.33.0，並將-社區轉譯為0.4。 *
+  + **azureml-解讀**
+    + 已將 shap 更新至0.33.0，並將-社區轉譯為0.4。 *
+  + **azureml-定型-automl-執行時間**
+    + 已針對二元和多元分類，新增 Matthews 相互關聯係數做為分類度量。
+    + 取代程式碼中的前置處理旗標，並取代為特徵化-特徵化預設為開啟
+
 ## <a name="2020-01-06"></a>2020-01-06
 
 ### <a name="azure-machine-learning-sdk-for-python-v1083"></a>適用于 Python 的 Azure Machine Learning SDK 1.0.83
 
 + **新功能**
   + 資料集：加入兩個選項 `on_error` 和 `out_of_range_datetime`，以便在資料具有錯誤值而不是以 `None`填滿時，讓 `to_pandas_dataframe` 失敗。
+  + 工作區：新增具有敏感性資料之工作區的 `hbi_workspace` 旗標，以啟用進一步的加密，並停用工作區上的 advanced diagnostics。 我們也新增了在建立工作區時指定 `cmk_keyvault` 和 `resource_cmk_uri` 參數，以將您自己的金鑰帶入相關聯 Cosmos DB 實例的支援，這會在布建您的工作區時，于訂用帳戶中建立 Cosmos DB 實例。 [如需詳細資訊，請參閱這裡。](https://docs.microsoft.com/azure/machine-learning/concept-enterprise-security#azure-cosmos-db)
 
 + **Bug 修正和改善**
   + **azureml-automl-執行時間**
@@ -49,7 +86,6 @@ ms.locfileid: "76122367"
   + **azureml-定型-automl-用戶端**
     + 已更正 automl 執行的主控台輸出對齊
     + 已修正遠端 amlcompute 上可能會安裝不正確版本 pandas 的錯誤。
-
 
 ## <a name="2019-12-23"></a>2019-12-23
 
