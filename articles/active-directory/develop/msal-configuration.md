@@ -13,13 +13,12 @@ ms.date: 09/12/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2d366a48adf536276697959be3418f36e10d8ae
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bb44e078a3958a788d23356c970b62fd97cbf420
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424394"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76696311"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Android Microsoft 驗證程式庫設定檔
 
@@ -158,7 +157,7 @@ Android Microsoft 驗證程式庫（MSAL）隨附預設的設定[JSON](https://g
 
 指定在您的應用程式中一次可以使用多少個帳戶。 可能的值包括：
 
-- `MULTIPLE` (預設值)
+- `MULTIPLE` （預設值）
 - `SINGLE`
 
 使用不符合這項設定的帳戶模式來建立 `PublicClientApplication`，將會產生例外狀況。

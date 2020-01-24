@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/21/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1a52977a46c1222a1626fa5a4dcb4de7dd84f8dd
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: c04726bf3b4166255ada7c9f1252be0471dcc761
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638199"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291476"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>SAP NetWeaver 的高可用性架構和案例
 
@@ -294,7 +294,7 @@ Azure 正在不同的 [Azure 區域](https://azure.microsoft.com/global-infrastr
 使用可用性區域時有一些考量事項。 考量清單如下：
 
 - 您無法在可用性區域內部署 Azure 可用性設定組。 您必須選擇可用性區域或可用性設定組作為 VM 的部署框架。
-- 您無法使用[基本 Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus)，來建立以 Windows 容錯移轉叢集服務或 Linux Pacemaker 為基礎的容錯移轉叢集解決方案。 您必須改為使用 [Azure Standard Load Balancer SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)
+- 您無法使用[基本 Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)，來建立以 Windows 容錯移轉叢集服務或 Linux Pacemaker 為基礎的容錯移轉叢集解決方案。 您必須改為使用 [Azure Standard Load Balancer SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)
 - Azure 可用性區域並未保證同一區域內的不同可用性區域之間會相隔一定距離
 - 在不同 Azure 區域內的不同 Azure 可用性區域之間，網路延遲可能會隨著所在的 Azure 區域而有所不同。 有時候，因為某個可用性區域到作用中 DBMS VM 的網路延遲對商務程序的影響來說並不大，因此身為客戶的您可以合情合理地執行部署在不同區域的 SAP 應用程式層。 然而，也會有客戶的情況是某個可用性區域中的作用中 DBMS VM 與另一個可用性區域中 VM 內的 SAP 應用程式執行個體之間的延遲太久，而不適合 SAP 商務程序的運轉。 因此，如果延遲太久，部署架構就必須與應用程式的主動/主動架構不同，或與主動/被動架構不同。
 - 必須使用 [Azure 受控磁碟](https://azure.microsoft.com/services/managed-disks/)才能部署至 Azure 可用性區域 

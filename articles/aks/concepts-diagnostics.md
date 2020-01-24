@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: yunjchoi
-ms.openlocfilehash: 69ae6766414dbe533500860b01852ee8d25c3a1e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2148c6c8c9d78355847b3240b54349f1e7789921
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513909"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291374"
 ---
 # <a name="azure-kubernetes-service-aks-diagnostics-overview"></a>Azure Kubernetes Service （AKS）診斷總覽
 
@@ -24,7 +24,7 @@ ms.locfileid: "73513909"
 
 - 在[Azure 入口網站](https://portal.azure.com)中，流覽至您的 Kubernetes 叢集。
 - 按一下左側導覽中的 [**診斷並解決問題**]，這會開啟 [AKS 診斷]。
-- 使用 [首頁] 磚中的關鍵字，或在搜尋列中輸入最能描述您問題的關鍵字（例如叢集_節點問題_），選擇最能描述叢集問題的類別。
+- 使用 [首頁] 磚中的關鍵字，或在搜尋列中輸入最能描述您問題的關鍵字（例如叢集_節點問題_），以選擇最能描述叢集問題的類別。
 
 ![首頁](./media/concepts-diagnostics/aks-diagnostics-homepage.png)
 
