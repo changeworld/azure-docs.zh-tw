@@ -11,13 +11,12 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00f8a0e8d655f9412eceb7b0901ced829e490f78
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 4dd38eee8ebc12ed01874611ec5e532a4d78ede2
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616102"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704794"
 ---
 # <a name="manually-add-an-account-to-the-app"></a>手動新增帳戶至應用程式
 
@@ -94,7 +93,7 @@ ms.locfileid: "69616102"
 
 5. 在您電腦的 [新增備份驗證方法] 頁面上，為您的 Amazon 帳戶輸入備份驗證方法所提供的六位數驗證碼，然後選取 [驗證代碼並繼續]。
 
-6. 在 快要完成了 頁面上，決定是否要讓您的電腦成為信任的裝置，然後選取 我知道了。
+6. 在 [即將完成] 頁面上，決定是否要讓您的電腦成為受信任的裝置，然後選取 [**獲得]。開啟雙步驟驗證**。
 
     [進階安全性設定] 頁面隨即出現，顯示更新的雙因素驗證詳細資料。
 
@@ -105,6 +104,6 @@ ms.locfileid: "69616102"
 
 - 將您的帳戶新增至應用程式之後，即可在您的裝置上使用 Microsoft Authenticator 應用程式登入。 如需詳細資訊，請參閱[使用應用程式登入](user-help-auth-app-sign-in.md)。
 
-- 如果您在取得個人 Microsoft 帳戶的驗證碼時遇到問題, 請參閱[Microsoft 帳戶安全性資訊 & 驗證碼](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes)一文中的**疑難排解驗證程式代碼問題**一節。
+- 如果您在取得個人 Microsoft 帳戶的驗證碼時遇到問題，請參閱[Microsoft 帳戶安全性資訊 & 驗證碼](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes)一文中的**疑難排解驗證程式代碼問題**一節。
 
 - 對於執行 iOS 的裝置，您也可以將您的帳戶認證和相關應用程式設定 (例如您的帳戶順序) 備份到雲端。 如需更多資訊，請參閱[使用 Microsoft Authenticator 應用程式備份和復原](user-help-auth-app-backup-recovery.md)。

@@ -17,13 +17,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: jesakowi, justhu
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a467593d16c54e73d58f9cb2b67a4fa31eb0179e
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: c13f4cabfbd996c1d811a8a3e35e69893c51154f
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73042319"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76700918"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Azure Active Directory v1.0 端點中的權限和同意
 
@@ -61,7 +60,7 @@ Azure AD 中的權限有許多屬性，可協助使用者、系統管理員或�
 > (Get-AzureADServicePrincipal -filter "DisplayName eq 'Microsoft Graph'").AppRoles
 > ```
 
-| 屬性名稱 | 描述 | 範例 |
+| 屬性名稱 | 說明 | 範例 |
 | --- | --- | --- |
 | `ID` | 是可唯一識別此權限的 GUID 值。 | 570282fd-fa5c-430d-a7fd-fc8dc98a9dca |
 | `IsEnabled` | 指出此權限是否可供使用。 | true |

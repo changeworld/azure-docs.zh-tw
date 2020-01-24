@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: f211d1c1a8a315ed9d999d146ce4eaf28af43206
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 009d9e864773fb3a2578504b043fb30302cedb22
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/23/2020
-ms.locfileid: "76545036"
+ms.locfileid: "76704539"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>針對 Azure 檔案同步進行移難排解
 使用 Azure 檔案同步，將組織的檔案共用集中在 Azure 檔案服務中，同時保有內部部署檔案伺服器的彈性、效能及相容性。 Azure 檔案同步會將 Windows Server 轉換成 Azure 檔案共用的快速快取。 您可以使用 Windows Server 上可用的任何通訊協定來從本機存取資料，包括 SMB、NFS 和 FTPS。 您可以視需要存取多個散佈於世界各地的快取。
@@ -298,6 +298,15 @@ PerItemErrorCount: 1006.
 如果您在伺服器上的 PerItemErrorCount 或入口網站中的 [未同步處理的檔案數] 計數，代表任何給定的同步會話都大於0，表示某些專案無法同步。檔案和資料夾的特性可能會讓它們無法同步。 特性可能是持續性的，且您必須執行明確的動作才能繼續同步，例如，從檔案或資料夾名稱中移除不支援的字元。 特性也有可能是暫時性的，這表示檔案或資料夾將會自動繼續同步；例如，具有開啟控制代碼的檔案，將會檔案關閉時自動繼續同步。 當 Azure 檔案同步引擎偵測到此類問題時，將會產生錯誤記錄，而此記錄可經由剖析列出目前未正確同步的項目。
 
 若要查看這些錯誤，請執行 **FileSyncErrorsReport.ps1** PowerShell 指令碼 (位於 Azure 檔案同步代理程式的代理程式安裝目錄中)，以識別因開啟的控制代碼、不支援的字元或其他問題而無法同步的檔案。 ItemPath 欄位會指出檔案與根同步目錄的相對位置。 請參閱下方的常見同步錯誤清單，以取得補救步驟。
+
+> [!Note]  
+> 如果 Filesyncerrorsreport.ps1 腳本傳回「找不到任何檔案錯誤」，或未列出同步處理群組的每個專案錯誤，則原因可能是：
+>
+>- 原因1：最後完成的同步會話沒有每個專案的錯誤。 應該很快就會更新入口網站，顯示0個檔案未同步。 
+>   - 檢查 [遙測] 事件記錄檔中的[事件識別碼 9102](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) ，確認 PerItemErrorCount 為0。 
+>
+>- 原因2：伺服器上的 ItemResults 事件記錄檔因每個專案太多錯誤而包裝，且事件記錄檔不再包含這個同步處理群組的錯誤。
+>   - 若要避免這個問題，請增加 ItemResults 事件記錄檔的大小。 您可以在事件檢視器的 [應用程式和服務 Logs\Microsoft\FileSync\Agent] 下找到 ItemResults 事件記錄檔。 
 
 #### <a name="troubleshooting-per-filedirectory-sync-errors"></a>個別檔案/目錄同步錯誤的疑難排解
 **ItemResults 記錄 - 個別項目同步錯誤**  

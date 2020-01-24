@@ -14,13 +14,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 111f8d45fced1ed0e9293c874d7a56c64e9fb0e4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f72b2b85fcaae4e0a21e4bbe2f3af79359ca2fa6
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965410"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701904"
 ---
 # <a name="single-page-application-code-configuration"></a>單一頁面應用程式：程式碼設定
 
@@ -30,7 +29,7 @@ ms.locfileid: "74965410"
 
 Microsoft 身分識別平臺提供下列 Microsoft 驗證程式庫（MSAL）程式庫，可透過使用業界建議的安全性作法來支援隱含流程：  
 
-| MSAL 程式庫 | 描述 |
+| MSAL 程式庫 | 說明 |
 |--------------|--------------|
 | ![MSAL.js](media/sample-v2-code/logo_js.png) <br/> [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)  | 一般的 JavaScript 程式庫，可用於透過 JavaScript 或 SPA 架構（例如，角度、Vue 及回應 .js）建立的任何用戶端 web 應用程式。 |
 | ![MSAL 角度](media/sample-v2-code/logo_angular.png) <br/> [MSAL 角度](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | 核心 MSAL 程式庫的包裝函式，可簡化透過角度架構建立的單一頁面應用程式中使用。 此程式庫目前為預覽狀態，並具有某些角度版本與瀏覽器的[已知問題](https://github.com/AzureAD/microsoft-authentication-library-for-js/issues?q=is%3Aopen+is%3Aissue+label%3Aangular)。 |
@@ -39,7 +38,7 @@ Microsoft 身分識別平臺提供下列 Microsoft 驗證程式庫（MSAL）程�
 
 在 MSAL 程式庫中，應用程式註冊資訊會在程式庫初始化期間以設定的形式傳遞。
 
-### <a name="javascript"></a>Javascript
+### <a name="javascript"></a>JavaScript
 
 ```javascript
 // Configuration object constructed.

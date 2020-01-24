@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: 2ab07e55606533390f6f3d2da3caf3ceee981e14
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 6324fd0e2957aea46fb5876aa8c91f0906205ccc
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75840712"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76694613"
 ---
 ## <a name="trigger"></a>觸發程序
 
@@ -28,26 +28,15 @@ ms.locfileid: "75840712"
 
 * **不需要新的**函式實例： `Function_0` 能夠在函數調整邏輯生效之前處理所有1000事件。 在此情況下，所有1000訊息都會由 `Function_0`處理。
 
-* **加入額外的函式實例**：如果函式調整邏輯判斷 `Function_0` 的訊息數目超過它可以處理的數量，則會建立新的函式應用程式實例（`Function_1`）。 這個新函數也有相關聯的[EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor)實例。 當基礎事件中樞偵測到新的主控制項實例正在嘗試讀取訊息時，它會將資料分割的負載平衡到其主機實例上。 例如，分割區 0-4 可能會指派給 `Function_0`，分割區 5-9 則指派給 `Function_1`。
+* **加入額外的函式實例**：如果函式調整邏輯判斷 `Function_0` 的訊息數目超過它可以處理的數量，則會建立新的函式應用程式實例（`Function_1`）。 這個新函數也有相關聯的[EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor)實例。 當基礎事件中樞偵測到新的主控制項實例正在嘗試讀取訊息時，它會在主控制項實例之間進行分割區的負載平衡。 例如，分割區 0-4 可能會指派給 `Function_0`，分割區 5-9 則指派給 `Function_1`。
 
 * **新增多個**函式實例：如果函式調整邏輯判斷 `Function_0` 和 `Function_1` 的訊息數目超過其處理能力，則會建立新的 `Functions_N` 函數應用程式實例。  應用程式會建立到 `N` 大於事件中樞分割區數目的點。 在本例中，事件中樞同樣會將分割區負載平衡，在此案例中，會跨執行個體 `Function_0`...`Functions_9` 來進行。
 
-當函式調整時，`N` 實例是大於事件中樞分割區數目的數位。 這是為了確保[EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor)實例可用來在資料分割上取得鎖定，因為它們可供其他實例使用。 您只需針對函式實例執行時所使用的資源付費。 換句話說，您不需支付此過度布建費用。
+進行調整時，`N` 實例是大於事件中樞分割區數目的數位。 此模式是用來確保[EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor)實例可用來取得資料分割的鎖定，因為它們可以從其他實例使用。 您只需針對函式實例執行時所使用的資源付費。 換句話說，您不需支付此過度布建費用。
 
 當所有函式執行完成時 (不論有無錯誤)，系統就會在相關聯的儲存體帳戶中新增檢查點。 當檢查指標成功時，永遠不會再次抓取所有1000訊息。
 
-## <a name="trigger---example"></a>觸發程序 - 範例
-
-請參閱特定語言的範例：
-
-* [C#](#trigger---c-example)
-* [C# 指令碼 (.csx)](#trigger---c-script-example)
-* [F#](#trigger---f-example)
-* [Java](#trigger---java-example)
-* [JavaScript](#trigger---javascript-example)
-* [Python](#trigger---python-example)
-
-### <a name="trigger---c-example"></a>觸發程序 - C# 範例
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 下列範例顯示的 [C# 函式](../articles/azure-functions/functions-dotnet-class-library.md)，可記錄事件中樞觸發程序的訊息本文。
 
@@ -99,7 +88,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 }
 ```
 
-### <a name="trigger---c-script-example"></a>觸發程序 - C# 指令碼範例
+# <a name="c-scripttabcsharp-script"></a>[C#文字](#tab/csharp-script)
 
 下列範例示範 function.json 檔案中的事件中樞觸發程序繫結，以及使用此繫結的 [C# 指令碼函式](../articles/azure-functions/functions-reference-csharp.md)。 此函式會記錄事件中樞觸發程序的訊息本文。
 
@@ -117,7 +106,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 }
 ```
 
-#### <a name="version-1x"></a>1\.x 版
+### <a name="version-1x"></a>1\.x 版
 
 ```json
 {
@@ -180,44 +169,7 @@ public static void Run(string[] eventHubMessages, TraceWriter log)
 }
 ```
 
-### <a name="trigger---f-example"></a>觸發程序 - F# 範例
-
-下列範例示範 function.json 檔案中的事件中樞觸發程序繫結，以及使用此繫結的 [F# 函式](../articles/azure-functions/functions-reference-fsharp.md)。 此函式會記錄事件中樞觸發程序的訊息本文。
-
-下列範例顯示 *function.json* 檔案中的事件中樞繫結資料。 
-
-#### <a name="version-2x-and-higher"></a>2\.x 版和更新版本
-
-```json
-{
-  "type": "eventHubTrigger",
-  "name": "myEventHubMessage",
-  "direction": "in",
-  "eventHubName": "MyEventHub",
-  "connection": "myEventHubReadConnectionAppSetting"
-}
-```
-
-#### <a name="version-1x"></a>1\.x 版
-
-```json
-{
-  "type": "eventHubTrigger",
-  "name": "myEventHubMessage",
-  "direction": "in",
-  "path": "MyEventHub",
-  "connection": "myEventHubReadConnectionAppSetting"
-}
-```
-
-以下是 F# 程式碼：
-
-```fsharp
-let Run(myEventHubMessage: string, log: TraceWriter) =
-    log.Log(sprintf "F# eventhub trigger function processed work item: %s" myEventHubMessage)
-```
-
-### <a name="trigger---javascript-example"></a>觸發程序 - JavaScript 範例
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 下列範例示範 function.json 檔案中的事件中樞觸發程序繫結，以及使用此繫結的 [JavaScript 函式](../articles/azure-functions/functions-reference-node.md)。 此函式會讀取[事件中繼資料](#trigger---event-metadata)和記錄訊息。
 
@@ -235,7 +187,7 @@ let Run(myEventHubMessage: string, log: TraceWriter) =
 }
 ```
 
-#### <a name="version-1x"></a>1\.x 版
+### <a name="version-1x"></a>1\.x 版
 
 ```json
 {
@@ -275,7 +227,7 @@ module.exports = function (context, myEventHubMessage) {
 }
 ```
 
-#### <a name="version-1x"></a>1\.x 版
+### <a name="version-1x"></a>1\.x 版
 
 ```json
 {
@@ -305,7 +257,7 @@ module.exports = function (context, eventHubMessages) {
 };
 ```
 
-### <a name="trigger---python-example"></a>觸發程序 - Python 範例
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 下列範例示範 function.json 檔案中的事件中樞觸發程序繫結，以及使用此繫結的 [Python 函式](../articles/azure-functions/functions-reference-python.md)。 此函式會讀取[事件中繼資料](#trigger---event-metadata)和記錄訊息。
 
@@ -335,7 +287,7 @@ def main(event: func.EventHubEvent):
     logging.info('  Offset =', event.offset)
 ```
 
-### <a name="trigger---java-example"></a>觸發程序 - Java 範例
+# <a name="javatabjava"></a>[Java](#tab/java)
 
 下列範例顯示函式*json*檔案中的事件中樞觸發程式系結，以及使用此系結的[JAVA](../articles/azure-functions/functions-reference-java.md)函式。 此函式會記錄事件中樞觸發程序的訊息本文。
 
@@ -361,9 +313,13 @@ public void eventHubProcessor(
  }
 ```
 
- 在 [Java 函式執行階段程式庫](/java/api/overview/azure/functions/runtime)中，對其值來自事件中樞的參數使用 `EventHubTrigger` 註釋。 具有這些附註的參數會使得函式在事件抵達時執行。  此注釋可以搭配原生 JAVA 類型、Pojo 或可為 null 的值使用（選擇性）\<T >。
+ 在 [Java 函式執行階段程式庫](/java/api/overview/azure/functions/runtime)中，對其值來自事件中樞的參數使用 `EventHubTrigger` 註釋。 具有這些附註的參數會使得函式在事件抵達時執行。  此註釋可以搭配原生 Java 類型、POJO 或使用 `Optional<T>` 的可為 Null 值使用。
 
-## <a name="trigger---attributes"></a>觸發程序 - 屬性
+ ---
+
+## <a name="trigger---attributes-and-annotations"></a>觸發程式-屬性和注釋
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 在 [C# 類別庫](../articles/azure-functions/functions-dotnet-class-library.md)中，使用 [EventHubTriggerAttribute](https://github.com/Azure/azure-functions-eventhubs-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.EventHubs/EventHubTriggerAttribute.cs) 屬性。
 
@@ -377,7 +333,25 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 }
 ```
 
-如需完整範例，請參閱[觸發程序 - C# 範例](#trigger---c-example)。
+如需完整範例，請參閱[觸發程序 - C# 範例](#trigger)。
+
+# <a name="c-scripttabcsharp-script"></a>[C#文字](#tab/csharp-script)
+
+C#腳本不支援屬性。
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+JavaScript 不支援屬性。
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Python 不支援屬性。
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+從 JAVA 函式執行時間連結[庫](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)，在其值會來自事件中樞的參數上使用[EventHubTrigger](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhubtrigger)注釋。 具有這些附註的參數會使得函式在事件抵達時執行。 此註釋可以搭配原生 Java 類型、POJO 或使用 `Optional<T>` 的可為 Null 值使用。
+
+---
 
 ## <a name="trigger---configuration"></a>觸發程式 - 設定
 
@@ -398,7 +372,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 
 ## <a name="trigger---event-metadata"></a>觸發程序 - 事件中繼資料
 
-事件中樞觸發程序提供數個[中繼資料屬性](../articles/azure-functions/./functions-bindings-expressions-patterns.md)。 這些屬性可作為其他繫結中繫結運算式的一部分或程式碼中的參數使用。 這些是 [EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata) 類別的屬性。
+事件中樞觸發程序提供數個[中繼資料屬性](../articles/azure-functions/./functions-bindings-expressions-patterns.md)。 中繼資料屬性可作為其他系結中系結運算式的一部分，或當做程式碼中的參數使用。 屬性來自于[EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata)類別。
 
 |屬性|類型|說明|
 |--------|----|-----------|
@@ -410,7 +384,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 |`SequenceNumber`|`Int64`|事件的邏輯序號。|
 |`SystemProperties`|`IDictionary<String,Object>`|系統屬性，包括事件資料。|
 
-請參閱稍早在本文中使用這些屬性的[程式碼範例](#trigger---example)。
+請參閱稍早在本文中使用這些屬性的[程式碼範例](#trigger)。
 
 ## <a name="trigger---hostjson-properties"></a>觸發程序 - host.json 屬性
 
@@ -422,20 +396,9 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 
 使用事件中樞輸出繫結將事件寫入事件串流。 您必須具備事件中樞的傳送權限，才能將事件寫入其中。
 
-在您嘗試執行輸出系結之前，請確定所需的套件參考已就緒。
+請先確定必要的套件參考已就緒，再嘗試執行輸出系結。
 
-## <a name="output---example"></a>輸出 - 範例
-
-請參閱特定語言的範例：
-
-* [C#](#output---c-example)
-* [C# 指令碼 (.csx)](#output---c-script-example)
-* [F#](#output---f-example)
-* [Java](#output---java-example)
-* [JavaScript](#output---javascript-example)
-* [Python](#output---python-example)
-
-### <a name="output---c-example"></a>輸出 - C# 範例
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 下列範例顯示將訊息寫入事件中樞，並使用方法傳回值作為輸出的 [C# 函式](../articles/azure-functions/functions-dotnet-class-library.md)：
 
@@ -469,7 +432,7 @@ public static async Task Run(
 }
 ```
 
-### <a name="output---c-script-example"></a>輸出 - C# 指令碼範例
+# <a name="c-scripttabcsharp-script"></a>[C#文字](#tab/csharp-script)
 
 下列範例示範 function.json 檔案中的事件中樞觸發程序繫結，以及使用此繫結的 [C# 指令碼函式](../articles/azure-functions/functions-reference-csharp.md)。 此函式會將訊息寫入事件中樞。
 
@@ -521,41 +484,7 @@ public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessa
 }
 ```
 
-### <a name="output---f-example"></a>輸出 - F# 範例
-
-下列範例示範 function.json 檔案中的事件中樞觸發程序繫結，以及使用此繫結的 [F# 函式](../articles/azure-functions/functions-reference-fsharp.md)。 此函式會將訊息寫入事件中樞。
-
-下列範例顯示 *function.json* 檔案中的事件中樞繫結資料。 第一個範例是針對函式2.x 和更新版本，第二個是 for 函數1.x。 
-
-```json
-{
-    "type": "eventHub",
-    "name": "outputEventHubMessage",
-    "eventHubName": "myeventhub",
-    "connection": "MyEventHubSendAppSetting",
-    "direction": "out"
-}
-```
-```json
-{
-    "type": "eventHub",
-    "name": "outputEventHubMessage",
-    "path": "myeventhub",
-    "connection": "MyEventHubSendAppSetting",
-    "direction": "out"
-}
-```
-
-以下是 F# 程式碼：
-
-```fsharp
-let Run(myTimer: TimerInfo, outputEventHubMessage: byref<string>, log: ILogger) =
-    let msg = sprintf "TimerTriggerFSharp1 executed at: %s" DateTime.Now.ToString()
-    log.LogInformation(msg);
-    outputEventHubMessage <- msg;
-```
-
-### <a name="output---javascript-example"></a>輸出 - JavaScript 範例
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 下列範例示範 function.json 檔案中的事件中樞觸發程序繫結，以及使用此繫結的 [JavaScript 函式](../articles/azure-functions/functions-reference-node.md)。 此函式會將訊息寫入事件中樞。
 
@@ -607,7 +536,7 @@ module.exports = function(context) {
 };
 ```
 
-### <a name="output---python-example"></a>輸出 - Python 範例
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 下列範例示範 function.json 檔案中的事件中樞觸發程序繫結，以及使用此繫結的 [Python 函式](../articles/azure-functions/functions-reference-python.md)。 此函式會將訊息寫入事件中樞。
 
@@ -637,7 +566,7 @@ def main(timer: func.TimerRequest) -> str:
     return 'Message created at: {}'.format(timestamp)
 ```
 
-### <a name="output---java-example"></a>輸出 - Java 範例
+# <a name="javatabjava"></a>[Java](#tab/java)
 
 下列範例顯示的 JAVA 函式會將包含目前時間的訊息寫入至事件中樞。
 
@@ -652,7 +581,11 @@ public String sendTime(
 
 在 [Java 函式執行階段程式庫](/java/api/overview/azure/functions/runtime)中，對其值要發佈至事件中樞的參數使用 `@EventHubOutput` 註釋。  參數的類型應為 `OutputBinding<T>`，其中 T 是 POJO 或任何原生 Java 類型。
 
-## <a name="output---attributes"></a>輸出 - 屬性
+---
+
+## <a name="output---attributes-and-annotations"></a>輸出-屬性和注釋
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 對於 [C# 類別庫](../articles/azure-functions/functions-dotnet-class-library.md)，請使用 [EventHubAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs) 屬性。
 
@@ -667,7 +600,25 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 }
 ```
 
-如需完整範例，請參閱[輸出 - C# 範例](#output---c-example)。
+如需完整範例，請參閱[輸出 - C# 範例](#output)。
+
+# <a name="c-scripttabcsharp-script"></a>[C#文字](#tab/csharp-script)
+
+C#腳本不支援屬性。
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+JavaScript 不支援屬性。
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Python 不支援屬性。
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+在 JAVA 函式執行時間連結[庫](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)中，對其值會發佈至事件中樞的參數使用[EventHubOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhuboutput)注釋。 參數的類型應該是 `OutputBinding<T>`，其中 `T` 是 POJO 或任何原生 JAVA 類型。
+
+---
 
 ## <a name="output---configuration"></a>輸出 - 設定
 
@@ -686,9 +637,35 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 
 ## <a name="output---usage"></a>輸出 - 使用方式
 
-在 C# 和 C# 指令碼中，使用方法參數 (例如 `out string paramName`) 來傳送訊息。 在 C# 指令碼中，`paramName` 是 *function.json* 之 `name` 屬性中指定的值。 若要寫入多則訊息，您可以使用 `ICollector<string>` 或 `IAsyncCollector<string>` 取代 `out string`。
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-在 JavaScript 中，使用 `context.bindings.<name>` 存取輸出事件。 `<name>` 是 function.json 之 `name` 屬性中指定的值。
+使用方法參數（例如 `out string paramName`）來傳送訊息。 在 C# 指令碼中，`paramName` 是 *function.json* 之 `name` 屬性中指定的值。 若要寫入多則訊息，您可以使用 `ICollector<string>` 或 `IAsyncCollector<string>` 取代 `out string`。
+
+# <a name="c-scripttabcsharp-script"></a>[C#文字](#tab/csharp-script)
+
+使用方法參數（例如 `out string paramName`）來傳送訊息。 在 C# 指令碼中，`paramName` 是 *function.json* 之 `name` 屬性中指定的值。 若要寫入多則訊息，您可以使用 `ICollector<string>` 或 `IAsyncCollector<string>` 取代 `out string`。
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+使用 `context.bindings.<name>` 存取輸出事件，其中 `<name>` 是在*function*的 `name` 屬性中指定的值。
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+有兩個選項可從函式輸出事件中樞訊息：
+
+- 傳回**值**：將*函數. json*中的 `name` 屬性設定為 `$return`。 使用此設定時，函式的傳回值會保存為事件中樞訊息。
+
+- **命令式**：將值傳遞給宣告為[Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python)類型之參數的[set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none)方法。 傳遞至 `set` 的值會保存為事件中樞訊息。
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+有兩個選項可從函式使用[EventHubOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhuboutput)批註輸出事件中樞訊息：
+
+- 傳回**值**：藉由將注釋套用至函式本身，函式的傳回值會保存為事件中樞訊息。
+
+- **命令式**：若要明確設定訊息值，請將注釋套用至類型[`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding)的特定參數，其中 `T` 是 POJO 或任何原生 JAVA 類型。 使用此設定時，將值傳遞至 `setValue` 方法會將值保存為事件中樞訊息。
+
+---
 
 ## <a name="exceptions-and-return-codes"></a>例外狀況和傳回碼
 
@@ -722,6 +699,6 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 
 |屬性  |預設 | 說明 |
 |---------|---------|---------|
-|maxBatchSize|64|每個接收迴圈接收到的事件計數上限。|
-|prefetchCount|n/a|基礎 EventProcessorHost 將使用的預設 PrefetchCount。|
-|batchCheckpointFrequency|1|要在建立 EventHub 資料指標檢查點之前處理的事件批次數目。|
+|`maxBatchSize`|64|每個接收迴圈接收到的事件計數上限。|
+|`prefetchCount`|n/a|基礎 `EventProcessorHost`所使用的預設預先提取計數。|
+|`batchCheckpointFrequency`|1|要在建立 EventHub 資料指標檢查點之前處理的事件批次數目。|

@@ -8,37 +8,37 @@ ms.topic: include
 ms.date: 10/15/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 88e11adadcc06875964146ad2046828267258038
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: e971af5d415ea788f97ab11b58541e629c7eb0ed
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389326"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76694295"
 ---
 ## <a name="lifecycle"></a>生命週期
 
-在 [**生命週期**] 索引標籤上，您可以指定使用者對存取套件的指派何時到期。 您也可以指定使用者是否可以擴充其指派。
+On the **Lifecycle** tab, you specify when a user's assignment to the access package expires. You can also specify whether users can extend their assignments.
 
-1. 在 [**到期**] 區段中，將 [**存取套件指派**]**設定為 [到期日]** 、[**天數**] 或 [**永不**]。
+1. In the **Expiration** section, set **Access package assignments expires** to **On date**, **Number of days**, or **Never**.
 
-    針對 [**日期**]，選取未來的到期日。
+    For **On date**, select an expiration date in the future.
 
-    在 [**天數**] 中，指定介於0到3660天的數位。
+    For **Number of days**, specify a number between 0 and 3660 days.
 
-    根據您的選擇，使用者對存取套件的指派會在特定日期到期、核准後的特定天數，或永不過期。
+    Based on your selection, a user's assignment to the access package expires on a certain date, a certain number of days after they are approved, or never.
 
-1. 按一下 [**顯示高階到期設定**] 以顯示其他設定。
+1. Click **Show advanced expiration settings** to show additional settings.
 
-    ![存取套件-生命週期到期設定](./media/active-directory-entitlement-management-lifecycle-policy/expiration.png)
+    ![Access package - Lifecycle Expiration settings](./media/active-directory-entitlement-management-lifecycle-policy/expiration.png)
 
-1. 若要允許使用者擴充其指派，請將 [**允許使用者擴充存取**] 設定為 **[是]** 。
+1. To allow user to extend their assignments, set **Allow users to extend access** to **Yes**.
 
-    如果原則中允許延伸模組，則使用者會收到一封電子郵件14天，另外也會在1天后將其存取套件指派設定為到期，提示他們擴充指派。
+    If extensions are allowed in the policy, the user will receive an email 14 days and also 1 day before their access package assignment is set to expire prompting them to extend the assignment. If the user submits a request to extend access, the extension date must be at or before assignments expire as defined in the policy that was used to grant the user access to the access package. For example, if the policy indicates that assignments are set to expire on June 30, the maximum extension a user can request is June 30.
 
-    如果使用者的存取權已延長，他們將無法在指定的延伸日期（建立原則之使用者的時區日期）之後要求存取套件。
+    If a user's access is extended, they will not be able to request the access package after the specified extension date (date set in the time zone of the user who created the policy).
 
-1. 若要要求核准以授與延伸模組，請將 [**需要核准以授與延伸**模組為 **]** 。
+1. To require approval to grant an extension, set **Require approval to grant extension** to **Yes**.
 
-    將會使用 [**要求**] 索引標籤上所指定的相同核准設定。
+    The same approval settings that were specified on the **Requests** tab will be used.
 
-1. 按 **[下一步] 或 [** **更新**]。
+1. Click **Next** or **Update**.

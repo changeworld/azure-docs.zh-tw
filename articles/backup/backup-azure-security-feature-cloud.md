@@ -3,22 +3,34 @@ title: 協助保護雲端工作負載的安全性功能
 description: 瞭解如何使用 Azure 備份中的安全性功能，讓備份更加安全。
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: e4519a342e1be3244b5d4598880e9ad490f50030
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 20cf322dec0827c00b15a62bf4f7695fc4ed0992
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028201"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705491"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>協助保護使用 Azure 備份之雲端工作負載的安全性功能
 
-諸如惡意程式碼、勒索軟體及入侵等安全性問題，現在愈來愈受到重視。 這些安全性問題就成本面與資料面來說，代價都十分高昂。 為了防範這類攻擊，Azure 備份現在提供安全性功能來協助保護備份資料，即使在刪除後也是如此。 其中一項功能就是虛刪除。 使用虛刪除時，即使惡意執行者刪除 VM 的備份（或不小心刪除備份資料），備份資料仍會保留14個額外的天數，讓該備份專案不會遺失資料。 在「虛刪除」狀態中，備份資料的額外14天保留期不會對客戶產生任何費用。 Azure 也會使用[儲存體服務加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)來加密待用的所有備份資料，以進一步保護您的資料。
+諸如惡意程式碼、勒索軟體及入侵等安全性問題，現在愈來愈受到重視。 這些安全性問題就成本面與資料面來說，代價都十分高昂。 為了防範這類攻擊，Azure 備份現在提供安全性功能來協助保護備份資料，即使在刪除後也是如此。
+
+其中一項功能就是虛刪除。 使用虛刪除時，即使惡意執行者刪除 VM 的備份（或不小心刪除備份資料），備份資料仍會保留14個額外的天數，讓該備份專案不會遺失資料。 在「虛刪除」狀態中，備份資料的額外14天保留期不會對客戶產生任何費用。 Azure 也會使用[儲存體服務加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)來加密待用的所有備份資料，以進一步保護您的資料。
+
+Azure 虛擬機器的虛刪除保護已正式推出。
+
+>[!NOTE]
+>Azure VM 中的 SQL server 虛刪除和 Azure VM 工作負載中的 SAP Hana 虛刪除現已提供預覽。<br>
+>若要註冊預覽版，請在 AskAzureBackupTeam@microsoft.com 寫信給我們
+
+## <a name="soft-delete"></a>虛刪除
+
+### <a name="soft-delete-for-vms"></a>Vm 的虛刪除
+
+Vm 的虛刪除可保護 Vm 的備份不會遭到意外刪除。 即使在刪除備份之後，它們仍會以虛刪除狀態保留14個額外的天數。
 
 > [!NOTE]
 > 虛刪除只會保護已刪除的備份資料。 如果 VM 在沒有備份的情況下刪除，虛刪除功能將不會保留資料。 所有資源都應該使用 Azure 備份來保護，以確保完整的復原能力。
 >
-
-## <a name="soft-delete"></a>虛刪除
 
 ### <a name="supported-regions"></a>支援區域
 

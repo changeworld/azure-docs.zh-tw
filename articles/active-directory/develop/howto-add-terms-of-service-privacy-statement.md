@@ -12,13 +12,12 @@ ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ca59120bcfadc6c75e3687be84a0e70f97fc3c2
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f28c33f20556825d84edda34752ac64714327526
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842795"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76697331"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>如何：設定應用程式的服務條款和隱私權聲明
 
@@ -40,9 +39,9 @@ ms.locfileid: "74842795"
 
 在新增應用程式的服務條款和隱私權聲明文件連結前，請確定 URL 符合下列指導方針。
 
-| 指導方針     | 描述                           |
+| 指導方針     | 說明                           |
 |---------------|---------------------------------------|
-| 格式        | 有效的 URL                             |
+| [格式]        | 有效的 URL                             |
 | 有效的結構描述 | HTTP 和 HTTPS<br/>建議使用 HTTPS |
 | 最大長度    | 2048 個字元                       |
 

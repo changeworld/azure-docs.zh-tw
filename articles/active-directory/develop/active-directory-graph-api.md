@@ -13,13 +13,12 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.reviewer: dkershaw, sureshja
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c74c02d8a82c27c71ce01cd122082010487b453e
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: ef042b9eb625a0d0de5d5dcb883b823c3a499aa9
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74845037"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76698912"
 ---
 # <a name="azure-active-directory-graph-api"></a>Azure Active Directory 圖形 API
 
@@ -28,7 +27,7 @@ ms.locfileid: "74845037"
 
 本文適用於 Azure AD Graph API。 如需與 Microsoft Graph API 相關的類似資訊，請參閱[使用 Microsoft Graph API](https://docs.microsoft.com/graph/use-the-api)。
 
-Azure Active Directory 圖形 API 支援以程式設計方式透過 REST API 端點存取 Azure AD。 應用程式可以使用 Azure AD Graph API 來執行有關目錄資料和物件的建立、讀取、更新及刪除 (CRUD) 作業。 例如，Azure AD 圖形 API 支援對使用者物件執行下列常見的作業：
+Azure Active Directory 圖形 API 支援以程式設計方式透過 REST API 端點存取 Azure AD。 應用程式可以使用 Azure AD 圖形 API 來執行有關目錄資料和物件的建立、讀取、更新及刪除 (CRUD) 作業。 例如，Azure AD 圖形 API 支援對使用者物件執行下列常見的作業：
 
 * 在目錄中建立新的使用者
 * 取得使用者的詳細屬性，例如其群組

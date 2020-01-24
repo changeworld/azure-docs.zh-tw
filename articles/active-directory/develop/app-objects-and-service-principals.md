@@ -14,13 +14,12 @@ ms.date: 04/13/2019
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cf436881a74cffd0053718413ce83a148fa019d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 19085346fb5797245c9f71911f8178df0a1b742a
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918197"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76698419"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Azure Active Directory 中的應用程式和服務主體物件
 
@@ -84,7 +83,7 @@ Azure AD 應用程式是由其唯一一個應用程式物件所定義，該物�
 
 在此範例案例中：
 
-| 步驟 | 描述 |
+| 步驟 | 說明 |
 |------|-------------|
 | 1    | 在應用程式的主要租用戶中建立應用程式和服務主體物件的程序。 |
 | 2    | 當 Contoso 和 Fabrikam 的系統管理員完成同意，系統就會在其公司的 Azure AD 租用戶中建立服務主體物件，並指派系統管理員所授與的權限。 也請注意，HR 應用程式可能會設定/設計為允許由使用者同意以進行個人使用。 |

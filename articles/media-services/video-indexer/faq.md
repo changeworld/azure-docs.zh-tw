@@ -10,14 +10,14 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: fc5457fd44bd27731cad6269ee95aed838a3d755
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: d08c0b8817c0008a0ecfbab1a9d38243ec0bea79
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892782"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705678"
 ---
-# <a name="frequently-asked-questions"></a>常見問題集
+# <a name="video-indexer-frequently-asked-questions"></a>影片索引子的常見問題
 
 本文將回答有關影片索引器的常見問題集。
 
@@ -169,4 +169,4 @@ Azure 媒體服務的 SLA 涵蓋影片索引器，並可以在 [SLA](https://azu
 
 ## <a name="next-steps"></a>後續步驟
 
-[Overview](video-indexer-overview.md)
+[概觀](video-indexer-overview.md)

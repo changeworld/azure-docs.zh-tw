@@ -8,12 +8,12 @@ ms.workload: core
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: spelluru
-ms.openlocfilehash: 11548ba180a2dd6541240431d670812448c502b8
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: d7ab79d49aade7dd6e98cf33ce538174d176c784
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981576"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705338"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-using-python"></a>使用 Python 將事件傳送至事件中樞或從中接收事件
 
@@ -42,7 +42,7 @@ Azure 事件中樞是巨量資料串流平台和事件擷取服務，每秒可�
     安裝此套件，以使用 Azure Blob 儲存體作為檢查點存放區來接收事件。
 
     ```cmd
-    pip install azure-eventhub-checkpointstoreblobaio
+    pip install azure-eventhub-checkpointstoreblob-aio
     ```
 
 ## <a name="send-events"></a>傳送事件

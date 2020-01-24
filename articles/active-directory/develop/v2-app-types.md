@@ -17,13 +17,12 @@ ms.date: 04/06/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21f1da8738946078cb625c76e11ce1bfd62d97ac
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 8bfe668dc2eb4e0e00de34231f4c232f5240a82d
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927166"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76700748"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Microsoft 身分識別平臺的應用程式類型
 
@@ -59,7 +58,7 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 
 若要查看此案例的實際運作情況，請在[Microsoft 身分識別平臺開始](v2-overview.md#getting-started)使用一節中，試用其中一個單頁應用程式程式碼範例。
 
-## <a name="web-apps"></a>Web 應用程式
+## <a name="web-apps"></a>Web apps
 
 針對使用者透過瀏覽器存取的 Web 應用程式 (.NET、PHP、Java、Ruby、Python、Node)，您可以使用 [OpenID Connect](active-directory-v2-protocols.md) 來執行使用者登入。 在 OpenID Connect 中，Web 應用程式會收到識別碼權杖。 識別碼權杖是一個安全性權杖，可驗證使用者的身分識別並以宣告形式提供使用者的相關資訊：
 

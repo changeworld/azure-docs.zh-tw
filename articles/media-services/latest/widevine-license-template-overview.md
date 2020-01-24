@@ -1,5 +1,5 @@
 ---
-title: Azure 媒體服務與 Widevine 授權範本的概觀 | Microsoft Docs
+title: 含 Widevine 授權範本的 Azure 媒體服務 v3 總覽
 description: 本主題提供了用來設定 Widevine 授權之 Widevine 授權範本的概觀。
 author: juliako
 manager: femila
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: dcfe9c1c3e12aa726f57db29db59732cceb87a69
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 94ce5e45a9a43e81020096ddc0a67429b286d9b1
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74967451"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705627"
 ---
-# <a name="widevine-license-template-overview"></a>Widevine 授權範本概觀 
+# <a name="media-services-v3-with-widevine-license-template-overview"></a>含 Widevine 授權範本的媒體服務 v3 總覽
 
 Azure 媒體服務可讓您使用 **Google Widevine** 來加密您的內容。 媒體服務也提供傳遞 Widevine 授權的服務。 您可以使用 Azure 媒體服務 API 來設定 Widevine 授權。 當播放程式嘗試播放以 Widevine 保護的內容時，會將要求傳送到授權傳遞服務來取得授權。 如果授權服務核准要求，服務就會發出授權。 授權會傳送至用戶端，並用來解密及播放指定內容。
 
@@ -60,12 +60,12 @@ Widevine 授權要求會格式化為 JSON 訊息。
 
 ## <a name="json-message"></a>JSON 訊息
 
-| Name | Value | 描述 |
+| 名稱 | 值 | 說明 |
 | --- | --- | --- |
 | payload |Base64 編碼字串 |用戶端傳送的授權要求。 |
 | content_id |Base64 編碼字串 |用來針對每個 content_key_specs.track_type 衍生金鑰識別碼與內容金鑰的識別碼。 |
 | provider |string |用來查閱內容金鑰和原則。 若將 Microsoft 金鑰傳遞用於 Widevine 授權傳遞，系統會忽略此參數。 |
-| policy_name |string |先前已登錄原則的名稱。 選用。 |
+| policy_name |string |先前已登錄原則的名稱。 選擇性。 |
 | allowed_track_types |列舉 |SD_ONLY 或 SD_HD。 控制在授權中包含的內容金鑰。 |
 | content_key_specs |JSON 結構的陣列，請參閱＜內容金鑰規格＞一節。  |更細部控制要傳回的內容金鑰。 如需詳細資訊，請參閱＜內容金鑰規格＞一節。 只可以指定 allowed_track_types 和 content_key_specs 值的其中一個。 |
 | use_policy_overrides_exclusively |布林值，true 或 false |使用 policy_overrides 所指定的原則屬性，並略過先前儲存的所有原則。 |
@@ -78,16 +78,16 @@ Widevine 授權要求會格式化為 JSON 訊息。
 
 必須對所有追蹤指定每個 content_key_specs 值，不論 use_policy_overrides_exclusively 選項為何。 
 
-| Name | Value | 描述 |
+| 名稱 | 值 | 說明 |
 | --- | --- | --- |
 | content_key_specs track_type |string |追蹤類型名稱。 如果授權要求中指定 content_key_specs，則請務必明確指定所有追蹤類型。 未這樣做會導致無法播放過去 10 秒。 |
 | content_key_specs  <br/> security_level |uint32 |定義用戶端對於播放的穩健性需求。 <br/> 以軟體為基礎白箱加密是必要的。 <br/> 軟體加密和模糊化的解碼器是必要的。 <br/> 金鑰資料和加密作業必須在支援硬體的受信任執行環境中執行。 <br/> 內容的加密和解密必須在支援硬體的受信任執行環境中執行。  <br/> 加密、解密和媒體 (壓縮和未壓縮) 的所有處理必須在支援硬體的受信任執行環境中處理。 |
 | content_key_specs <br/> required_output_protection.hdc |字串，以下項目的其中一個：HDCP_NONE、HDCP_V1、HDCP_V2 |指出是否需要 HDCP。 |
-| content_key_specs <br/>key |Base64<br/>編碼的字串 |要用於此播放軌的內容金鑰。若已指定，則需要 track_type 或 key_id。 內容提供者可使用此選項插入此追蹤的內容金鑰，而不是讓 Widevine 授權伺服器產生或查閱金鑰。 |
+| content_key_specs <br/>索引鍵 |Base64<br/>編碼的字串 |要用於此播放軌的內容金鑰。若已指定，則需要 track_type 或 key_id。 內容提供者可使用此選項插入此追蹤的內容金鑰，而不是讓 Widevine 授權伺服器產生或查閱金鑰。 |
 | content_key_specs.key_id |Base64 編碼的二進位字串，16 位元組 |金鑰的唯一識別碼。 |
 
 ## <a name="policy-overrides"></a>原則覆寫
-| Name | Value | 描述 |
+| 名稱 | 值 | 說明 |
 | --- | --- | --- |
 | policy_overrides&#46;can_play |布林值，true 或 false |表示允許播放內容。 預設值為 false。 |
 | policy_overrides&#46;can_persist |布林值，true 或 false |表示可以將授權保存到非揮發性儲存體，供離線使用。 預設值為 false。 |
@@ -102,7 +102,7 @@ Widevine 授權要求會格式化為 JSON 訊息。
 | policy_overrides&#46;renew_with_usage |布林值，true 或 false |表示開始使用時會傳送授權以進行更新。 只有在 can_renew 為 true 時才會使用這個欄位。 |
 
 ## <a name="session-initialization"></a>工作階段初始化
-| Name | Value | 描述 |
+| 名稱 | 值 | 說明 |
 | --- | --- | --- |
 | provider_session_token |Base64 編碼字串 |此工作階段權杖會傳回到授權，並且會在後續的更新作業中存在。 工作階段權杖不會在工作階段之外保存。 |
 | provider_client_token |Base64 編碼字串 |要在授權回應中傳回的用戶端權杖。 如果授權要求包含用戶端權杖，則會忽略此值。 用戶端權杖會在授權工作階段之外保存。 |
@@ -205,7 +205,7 @@ private static ContentKeyPolicyWidevineConfiguration ConfigureWidevineLicenseTem
 
 ## <a name="additional-notes"></a>其他注意事項
 
-* Widevine 是 Google Inc. 所提供的服務，並受到 Google，Inc. 的服務條款和隱私權原則所約束。
+* Widevine 是 Google Inc. 所提供的服務，並受到 Google Inc. 的服務條款和隱私權原則所約束。
 
 ## <a name="next-steps"></a>後續步驟
 

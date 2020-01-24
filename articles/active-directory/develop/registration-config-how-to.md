@@ -15,13 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6547266b92cbeee2754871d4cdca7a2de261fc8
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 5dbe9d6eed6c546af0ed2cb35a0a62e9943503a9
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325356"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76702788"
 ---
 # <a name="how-to-configure-endpoints"></a>如何設定端點
 
@@ -29,11 +28,11 @@ ms.locfileid: "68325356"
 
 -   瀏覽至 [Azure 入口網站](https://portal.azure.com)。
 
--   從左方的瀏覽窗格，按一下 [Azure Active Directory]  。
+-   從左方的瀏覽窗格，按一下 [Azure Active Directory]。
 
--   按一下 [應用程式註冊]  ，然後選擇 [端點]  。
+-   按一下 [應用程式註冊]，然後選擇 [端點]。
 
--   這樣會開啟 [端點]  頁面，其中列出您租用戶的所有驗證端點。
+-   這樣會開啟 [端點] 頁面，其中列出您租用戶的所有驗證端點。
 
 -   使用您所使用之驗證通訊協定特定的端點搭配應用程式識別碼，來製作您應用程式的特定驗證要求。
 

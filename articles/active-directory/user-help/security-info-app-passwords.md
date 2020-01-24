@@ -11,13 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 02/13/2018
 ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee9f6bc1986cb31b1e21a0678e59bf8269988426
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: d4076e379755518421ef79eca542ebdc99294a11
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231800"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704879"
 ---
 # <a name="create-app-passwords-from-the-security-info-preview-page"></a>從 [安全性資訊（預覽）] 頁面建立應用程式密碼
 
@@ -52,7 +51,7 @@ ms.locfileid: "74231800"
 
 2. 以左側瀏覽窗格或是 [安全性資訊] 區塊中的連結選取 [安全性資訊]，然後在 [安全性資訊] 頁面選取 [新增方法]。
 
-    ![醒目提示新增方法選項的安全性資訊頁面](media/security-info/securityinfo-myprofile-addmethod-page.png)
+    ![醒目提示 [新增方法] 選項的 [安全性資訊] 頁面](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
 3. 在 [新增方法] 頁面上，從下拉式清單中選取 [應用程式密碼]，然後選取 [新增]。
 
@@ -83,6 +82,6 @@ ms.locfileid: "74231800"
 
 2. 在確認方塊中選取 [是]，即會刪除 [應用程式密碼]。 刪除應用程式密碼之後，該應用程式密碼就會從您的安全性資訊中移除，並且從 [安全性資訊] 頁面上消失。
 
-## <a name="for-more-information"></a>如需 Blob 的詳細資訊，
+## <a name="for-more-information"></a>取得詳細資訊
 
 - 如需進一步瞭解 [安全性資訊] 頁面以及其設定方式，請參閱[安全性資訊概觀](user-help-security-info-overview.md)

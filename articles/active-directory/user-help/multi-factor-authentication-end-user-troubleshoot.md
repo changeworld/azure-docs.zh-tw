@@ -12,13 +12,12 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.reviewer: kexia
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d998fafbf6b3ba0547991de6c3a8e71b66d91f7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 498c150706cd62168b7c45b1bcf36ad6c3a8b63b
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231884"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705202"
 ---
 # <a name="common-problems-and-solutions-with-two-factor-verification-and-your-work-or-school-account"></a>使用雙因素驗證的常見問題和解決方案，以及您的公司或學校帳戶
 
@@ -84,9 +83,9 @@ ms.locfileid: "74231884"
 
 2. 在 [**其他安全性驗證**] 頁面中更新您的帳戶和裝置資訊，並刪除舊的裝置並新增新的裝置。 如需詳細資訊，請參閱[管理您的雙因素驗證方法設定](multi-factor-authentication-end-user-manage-settings.md)一文。
 
-3. 選用。 遵循[下載並安裝 Microsoft Authenticator 應用程式](user-help-auth-app-download-install.md)文章中的步驟，在您的行動裝置上下載、安裝和設定 Microsoft Authenticator 應用程式。
+3. 選擇性。 遵循[下載並安裝 Microsoft Authenticator 應用程式](user-help-auth-app-download-install.md)文章中的步驟，在您的行動裝置上下載、安裝和設定 Microsoft Authenticator 應用程式。
 
-4. 選用。 遵循[管理您的雙因素驗證方法設定](multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device)一文中的在**信任的裝置上開啟雙因素驗證提示**一節中的步驟，為信任的裝置開啟雙因素驗證。
+4. 選擇性。 遵循[管理您的雙因素驗證方法設定](multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device)一文中的在**信任的裝置上開啟雙因素驗證提示**一節中的步驟，為信任的裝置開啟雙因素驗證。
 
 ## <a name="im-having-problems-signing-in-on-my-mobile-device-while-traveling"></a>我在旅行時登入行動裝置時遇到問題
 

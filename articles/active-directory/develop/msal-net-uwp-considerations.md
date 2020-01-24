@@ -13,13 +13,12 @@ ms.date: 07/16/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d14546a63db952119303428140c65ee402010816
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 549e36099e06d665ecab879ceb3c38987d000852
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921782"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76695087"
 ---
 # <a name="universal-windows-platform-specific-considerations-with-msalnet"></a>MSAL.NET 的通用 Windows 平臺特定考慮
 在 UWP 上，使用 MSAL.NET 時，您必須考慮幾個事項。
@@ -64,7 +63,7 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execu
 ## <a name="next-steps"></a>後續步驟
 下列範例中會提供更多詳細資料：
 
-範例 | 平台 | 描述 
+範例 | 平台 | 說明 
 |------ | -------- | -----------|
 |[active directory-dotnet-原生-uwp-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) | UWP | 使用 msal.net 的通用 Windows 平臺用戶端應用程式，存取使用 Azure AD v2.0 端點進行驗證之使用者的 Microsoft Graph。 <br>![拓撲](media/msal-net-uwp-considerations/topology-native-uwp.png)|
 |[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/Azure-Samples/active-directory-xamarin-native-v2) | Xamarin iOS、Android、UWP | 簡單的 Xamarin Forms 應用程式展示如何使用 MSAL 來驗證 MSA 和透過 AAD v2.0 端點的 Azure AD，並使用產生的權杖來存取 Microsoft Graph。 <br>![拓撲](media/msal-net-uwp-considerations/topology-xamarin-native.png)|

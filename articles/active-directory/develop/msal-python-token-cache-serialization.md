@@ -13,13 +13,12 @@ ms.date: 11/13/2019
 ms.author: rayluo
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b5dc00f1aeb6b4fba987295ff5fc7dfd389b790
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2593cc856afb98cf5186c4e33032c5e9151614f0
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424090"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704386"
 ---
 # <a name="custom-token-cache-serialization-in-msal-for-python"></a>適用于 Python 的 MSAL 中的自訂權杖快取序列化
 

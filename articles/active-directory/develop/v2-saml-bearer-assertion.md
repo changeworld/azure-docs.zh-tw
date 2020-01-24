@@ -17,13 +17,12 @@ ms.date: 08/05/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7f5b983a00dfc0af2e7a40571ce58fafca5914e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 16f30473ded5f1de5dc94c1cff9da96165b1a01c
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964513"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76700204"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Microsoft 身分識別平臺和 OAuth 2.0 SAML 持有人宣告流程
 OAuth 2.0 SAML 持有人宣告流程可讓您在用戶端需要使用現有的信任關係時，使用 SAML 判斷提示來要求 OAuth 存取權杖。 套用至 SAML 判斷提示的簽章會提供授權應用程式的驗證。 SAML 判斷提示是由身分識別提供者所發行並由服務提供者所使用的 XML 安全性權杖。 服務提供者依賴其內容來識別判斷提示的主旨，以進行安全性相關的目的。

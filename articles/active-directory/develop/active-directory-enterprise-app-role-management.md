@@ -13,13 +13,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 702c64fbc4eda2af7132a2117c1b09ca0bf41cff
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: a70abd1cddb866037926bbbc881682d50599366b
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918588"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76699252"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>操作說明：針對企業應用程式，設定 SAML 權杖中發出的角色宣告
 
@@ -60,7 +59,7 @@ ms.locfileid: "74918588"
 
     a. 使用您租用戶的全域管理員或共同管理員認證來登入 [Graph 總管] 網站。
 
-    b.這是另一個 C# 主控台應用程式。 您必須有足夠的權限才能建立角色。 選取 [修改權限] 來取得權限。
+    b. 您必須有足夠的權限才能建立角色。 選取 [修改權限] 來取得權限。
 
       ![[修改權限] 按鈕](./media/active-directory-enterprise-app-role-management/graph-explorer-new9.png)
 
@@ -163,7 +162,7 @@ ms.locfileid: "74918588"
 
       ![[新增屬性] 按鈕](./media/active-directory-enterprise-app-role-management/editattribute.png)
 
-    b.這是另一個 C# 主控台應用程式。 在 [**管理使用者宣告**] 對話方塊中，按一下 [新增宣告] 來新增 [SAML 權杖]**屬性。**
+    b. 在 [**管理使用者宣告**] 對話方塊中，按一下 [新增宣告] 來新增 [SAML 權杖]**屬性。**
 
       ![[新增屬性] 按鈕](./media/active-directory-enterprise-app-role-management/tutorial_attribute_04.png)
 
@@ -211,7 +210,7 @@ ms.locfileid: "74918588"
 
     a. 將方法從 **GET** 變更為 **PATCH**。
 
-    b.這是另一個 C# 主控台應用程式。 複製現有角色，然後貼到 [要求本文] 底下。
+    b. 複製現有角色，然後貼到 [要求本文] 底下。
 
     c. 視需要藉由更新角色描述、角色值或角色顯示名稱，來更新角色的值。
 
@@ -249,7 +248,7 @@ ms.locfileid: "74918588"
 
     a. 將方法從 **GET** 變更為 **PATCH**。
 
-    b.這是另一個 C# 主控台應用程式。 從應用程式複製現有的角色，然後貼到 [要求本文] 底下。
+    b. 從應用程式複製現有的角色，然後貼到 [要求本文] 底下。
 
     c. 針對您要刪除的角色，將 **IsEnabled** 值設定為 **false**。
 

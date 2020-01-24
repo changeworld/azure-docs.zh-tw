@@ -12,13 +12,12 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, fasttrack-edit
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61bcdac38b9b8765c7c3d575bb632c9291e46b90
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d6df9a35191cf9fe9c2803116d5905a74f21e964
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74845853"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76699473"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft 身分識別平臺存取權杖
 
@@ -71,7 +70,7 @@ JWT 分成三個部分：
 
 ### <a name="header-claims"></a>標頭宣告
 
-|宣告 | 格式 | 描述 |
+|宣告 | [格式] | 說明 |
 |--------|--------|-------------|
 | `typ` | 字串 - 一律為 "JWT" | 表示權杖是 JWT。|
 | `nonce` | String | 唯一識別碼，用來防範權杖重新執行攻擊。 您的資源可以記錄此值，以防止重新執行。 |
@@ -81,7 +80,7 @@ JWT 分成三個部分：
 
 ### <a name="payload-claims"></a>承載宣告
 
-| 宣告 | 格式 | 描述 |
+| 宣告 | [格式] | 說明 |
 |-----|--------|-------------|
 | `aud` | 字串，應用程式識別碼 URI | 識別權杖的預定接收者。 在 [識別碼權杖] 中，物件是您的應用程式識別碼，指派給您在 Azure 入口網站中的應用程式。 您的應用程式應驗證此值，並拒絕值不相符的權杖。 |
 | `iss` | 字串，STS URI | 識別建構並傳回權杖的 Security Token Service (STS)，以及在其中驗證使用者的 Azure AD 租用戶。 如果發出的權杖是 v2.0 權杖 (請參閱`ver`宣告)，URI 的結尾會是 `/v2.0`。 指出使用者是來自 Microsoft 帳戶之取用者使用者的 GUID 是 `9188040d-6c67-4c5b-b112-36a304b66dad`。 您的應用程式應該使用宣告的 GUID 部分來限制可登入應用程式的租用戶集合 (如果有的話)。 |
@@ -139,13 +138,13 @@ JWT 分成三個部分：
 
 下列宣告將會包含在 v1.0 權杖中（如果適用的話），但預設不會包含在 v2.0 權杖中。 如果您使用 v2.0，並且需要這些宣告的其中一個，請使用[選擇性宣告](active-directory-optional-claims.md)來要求它們。
 
-| 宣告 | 格式 | 描述 |
+| 宣告 | [格式] | 說明 |
 |-----|--------|-------------|
 | `ipaddr`| String | 從中進行使用者驗證的 IP 位址。 |
 | `onprem_sid`| 字串，採 [SID 格式](https://docs.microsoft.com/windows/desktop/SecAuthZ/sid-components) | 如果使用者具有內部部署驗證，此宣告會提供其 SID。 您可以使用 `onprem_sid` 取得繼承應用程式中的授權。|
 | `pwd_exp`| 整數，UNIX 時間戳記 | 表示使用者密碼到期的時間。 |
 | `pwd_url`| String | 可傳送給使用者以重設其密碼的 URL。 |
-| `in_corp`| 布林值 | 指出用戶端是否是從公司網路登入的。 如果不是，則不包含宣告。 |
+| `in_corp`| boolean | 指出用戶端是否是從公司網路登入的。 如果不是，則不包含宣告。 |
 | `nickname`| String | 使用者的額外名稱 (有別於名字或姓氏)。|
 | `family_name` | String | 提供使用者的姓氏 (如使用者物件中所定義)。 |
 | `given_name` | String | 提供使用者的名字 (如使用者物件上所設定)。 |
@@ -155,7 +154,7 @@ JWT 分成三個部分：
 
 Microsoft 身分識別可透過不同的方式進行驗證，這可能與您的應用程式相關。 `amr` 宣告為陣列，其中可包含多個項目，例如 `["mfa", "rsa", "pwd"]`，適用於同時使用密碼和驗證器應用程式的驗證。
 
-| Value | 描述 |
+| 值 | 說明 |
 |-----|-------------|
 | `pwd` | 密碼驗證，可以是使用者的 Microsoft 密碼或應用程式的用戶端祕密。 |
 | `rsa` | 驗證會以 RSA 金鑰證明為基礎，例如使用 [Microsoft Authenticator 應用程式](https://aka.ms/AA2kvvu)。 這包括驗證是否由具有服務擁有之 X509 憑證的自我簽署 JWT 完成。 |

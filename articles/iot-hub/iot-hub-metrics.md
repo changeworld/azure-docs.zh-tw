@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: jlian
-ms.openlocfilehash: 20a1ec4b8eb88f5914ce6b27acc8a472e58f5d29
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ec8a00460b4a750339f929eb6879ac6eb63cac8e
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457086"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705729"
 ---
 # <a name="understand-iot-hub-metrics"></a>了解 IoT 中樞計量
 
@@ -115,7 +115,7 @@ IoT 中樞提供數個度量，以讓您概略了解中樞的健全狀況和所�
 
 現在您已了解 IoT 中樞度量的概觀，請循著下列連結來深入了解如何管理「Azure IoT 中樞」：
 
-* [作業監視](iot-hub-operations-monitoring.md)
+* [設定診斷記錄](iot-hub-monitor-resource-health.md)
 
 若要進一步探索 IoT 中樞的功能，請參閱︰
 

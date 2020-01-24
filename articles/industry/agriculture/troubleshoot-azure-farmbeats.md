@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: f017b19ef8bd8e4c44d9e2885da6fbaf172808a1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fb4b06eca0d6df6848e2e215d8890569701f7596
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75485971"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705610"
 ---
 # <a name="troubleshoot"></a>疑難排解
 
@@ -44,6 +44,38 @@ ms.locfileid: "75485971"
    - 如果有*傳入訊息*，請聯絡 farmbeatssupport@microsoft.com。 附加您的 Datahub 和加速器記錄檔，以及已捕獲的遙測。
 
 若要瞭解如何下載記錄，請移至「[手動收集記錄](#collect-logs-manually)」一節。  
+
+### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>從感應器內嵌歷程/串流資料之後，無法查看遙測資料
+
+**徵兆**：已部署裝置或感應器，而且您已在 FarmBeats 上建立裝置/感應器，並將遙測內嵌至 EventHub，但無法取得或查看 FarmBeats 上的遙測資料。
+
+矯正**措施：**
+
+1. 請確認您已正確完成合作夥伴註冊-您可以前往 datahub swagger，流覽至/Partner API，進行取得，並檢查合作夥伴是否已註冊。 如果沒有，請遵循[這裡的步驟](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats)來新增合作夥伴。
+2. 請確定您已使用正確的遙測訊息格式：
+
+```json
+{
+"deviceid": "<id of the Device created>",
+"timestamp": "<timestamp in ISO 8601 format>",
+"version" : "1",
+"sensors": [
+    {
+      "id": "<id of the sensor created>",
+      "sensordata": [
+        {
+          "timestamp": "< timestamp in ISO 8601 format >",
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
+        },
+        {
+          "timestamp": "<timestamp in ISO 8601 format>",
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
+        }
+      ]
+    }
+ ]
+}
+```
 
 ### <a name="dont-have-the-azure-event-hubs-connection-string"></a>沒有 Azure 事件中樞連接字串
 

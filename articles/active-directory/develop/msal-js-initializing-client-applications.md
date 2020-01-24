@@ -13,13 +13,12 @@ ms.date: 04/12/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c5022533cf0db57779bc36bd74cfb38932f10d6
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: e350f4fc3d40b45a1308e1edd9331dc7f71399c5
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777831"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76696124"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>使用 MSAL 初始化用戶端應用程式
 本文說明如何將 Microsoft Authentication Library for JavaScript （MSAL）與使用者代理程式應用程式的實例進行初始化。 使用者代理程式應用程式是一種公用用戶端應用程式，其中用戶端程式代碼會在使用者代理程式（例如網頁瀏覽器）中執行。 這些用戶端不會儲存秘密，因為瀏覽器內容可公開存取。 若要深入瞭解用戶端應用程式類型和應用程式設定選項，請參閱[總覽](msal-client-applications.md)。

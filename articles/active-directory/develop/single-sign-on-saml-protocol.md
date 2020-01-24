@@ -17,13 +17,12 @@ ms.date: 07/19/2017
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf512f802e0e4944e6ce949830719b87301adfc4
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: cecb78a82eb2925813bdc7f6df2503fae94b6437
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834800"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701394"
 ---
 # <a name="single-sign-on-saml-protocol"></a>單一登入 SAML 通訊協定
 
@@ -47,14 +46,14 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 </samlp:AuthnRequest>
 ```
 
-| 參數 |  | 描述 |
+| 參數 |  | 說明 |
 | --- | --- | --- |
-| id | 必要項 | Azure AD 使用這個屬性來填入所傳回回應的 `InResponseTo` 屬性。 識別碼的開頭不能是數字，因此常見的策略是在 GUID 的字串表示法前面加上 "id" 等字串。 例如， `id6c1c178c166d486687be4aaf5e482730` 便是有效的識別碼。 |
-| Version | 必要項 | 此參數應該設定為 **2.0**。 |
+| ID | 必要項 | Azure AD 使用這個屬性來填入所傳回回應的 `InResponseTo` 屬性。 識別碼的開頭不能是數字，因此常見的策略是在 GUID 的字串表示法前面加上 "id" 等字串。 例如， `id6c1c178c166d486687be4aaf5e482730` 便是有效的識別碼。 |
+| 版本 | 必要項 | 此參數應該設定為 **2.0**。 |
 | IssueInstant | 必要項 | 這是具有 UTC 值和 [來回行程格式 ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx)的日期時間字串。 Azure AD 必須要有這種類型的日期時間值，但不會評估或使用此值。 |
-| AssertionConsumerServiceUrl | 選擇性 | 如果提供，此參數必須符合 Azure AD 中雲端服務的 `RedirectUri`。 |
-| ForceAuthn | 選擇性 | 這是布林值。 如果為 true，表示即使使用者在 Azure AD 中具有有效的工作階段，也會強制使用者重新驗證。 |
-| IsPassive | 選擇性 | 這是布林值，指定 Azure AD 是否以無訊息模式驗證使用者，不需要使用者互動，如果有工作階段 cookie 的話則使用此 cookie。 如果是這種情況，Azure AD 會嘗試使用工作階段 cookie 驗證使用者。 |
+| AssertionConsumerServiceUrl | 選用 | 如果提供，此參數必須符合 Azure AD 中雲端服務的 `RedirectUri`。 |
+| ForceAuthn | 選用 | 這是布林值。 如果為 true，表示即使使用者在 Azure AD 中具有有效的工作階段，也會強制使用者重新驗證。 |
+| IsPassive | 選用 | 這是布林值，指定 Azure AD 是否以無訊息模式驗證使用者，不需要使用者互動，如果有工作階段 cookie 的話則使用此 cookie。 如果是這種情況，Azure AD 會嘗試使用工作階段 cookie 驗證使用者。 |
 
 其他所有 `AuthnRequest` 屬性 (例如 Consent、Destination、AssertionConsumerServiceIndex、AttributeConsumerServiceIndex 和 ProviderName) 會 **遭到忽略**。
 
@@ -82,15 +81,15 @@ Azure AD 也會忽略 `AuthnRequest` 中的 `Conditions` 元素。
 
 如果提供 `NameIDPolicy`，您可以包含其選擇性的 `Format` 屬性。 `Format` 屬性只能有下列其中一個值；其他任何值都會產生錯誤。
 
-* `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`:Azure Active Directory 發出 NameID 宣告來做為成對識別碼。
-* `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`:Azure Active Directory 發出電子郵件地址格式的 NameID 宣告。
-* `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`:這個值允許 Azure Active Directory 選取宣告格式。 Azure Active Directory 發出 NameID 來做為成對識別碼。
-* `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`:Azure Active Directory 發出 NameID 宣告做為隨機產生的值，此值對目前的 SSO 作業來說是唯一值。 這表示此值只是暫時性的，而且不能用來識別驗證的使用者。
+* `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`：Azure Active Directory 發出 NameID 宣告來做為成對識別碼。
+* `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`：Azure Active Directory 發出電子郵件地址格式的 NameID 宣告。
+* `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`︰這個值允許 Azure Active Directory 選取宣告格式。 Azure Active Directory 發出 NameID 來做為成對識別碼。
+* `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`：Azure Active Directory 發出 NameID 宣告做為隨機產生的值，此值對目前的 SSO 作業來說是唯一值。 這表示此值只是暫時性的，而且不能用來識別驗證的使用者。
 
 Azure AD 會忽略 `AllowCreate` 屬性。
 
 ### <a name="requestauthncontext"></a>RequestAuthnContext
-`RequestedAuthnContext` 元素會指定所需的驗證方法。 在傳送至 Azure AD 的 `AuthnRequest` 元素中，它是選擇性的。 Azure AD 支援`AuthnContextClassRef` `urn:oasis:names:tc:SAML:2.0:ac:classes:Password`之類的值。
+`RequestedAuthnContext` 元素會指定所需的驗證方法。 在傳送至 Azure AD 的 `AuthnRequest` 元素中，它是選擇性的。 Azure AD 支援 `AuthnContextClassRef` 的值，例如 `urn:oasis:names:tc:SAML:2.0:ac:classes:Password`。
 
 ### <a name="scoping"></a>範圍
 包含識別提供者清單的 `Scoping` 元素在傳送至 Azure AD 的 `AuthnRequest` 元素中是選擇性的。
@@ -100,7 +99,7 @@ Azure AD 會忽略 `AllowCreate` 屬性。
 ### <a name="signature"></a>簽章
 請勿在 `AuthnRequest` 元素中包含 `Signature` 元素，因為 Azure AD 不支援簽署的驗證要求。
 
-### <a name="subject"></a>Subject
+### <a name="subject"></a>主旨
 Azure AD 會忽略 `AuthnRequest` 元素中的 `Subject` 元素。
 
 ## <a name="response"></a>回應
@@ -153,12 +152,12 @@ Azure AD 會忽略 `AuthnRequest` 元素中的 `Subject` 元素。
 
 `Response` 元素包含授權要求的結果。 Azure AD 會設定 `Response` 元素中的 `ID`、`Version` 和 `IssueInstant` 值。 它也會設定下列屬性︰
 
-* `Destination`:當登入順利完成時，這會設定為服務提供者 (雲端服務) 的 `RedirectUri`。
-* `InResponseTo`:這會設定為起始回應的 `AuthnRequest` 元素的 `ID` 屬性。
+* `Destination`︰當登入順利完成時，這會設定為服務提供者 (雲端服務) 的 `RedirectUri`。
+* `InResponseTo`︰這會設定為起始回應的 `AuthnRequest` 元素的 `ID` 屬性。
 
 ### <a name="issuer"></a>簽發者
 
-Azure AD 將`Issuer`元素設定為`https://login.microsoftonline.com/<TenantIDGUID>/` , \<其中 TenantIDGUID > 是 Azure AD 租使用者的租使用者識別碼。
+Azure AD 將 `Issuer` 元素設定為 `https://login.microsoftonline.com/<TenantIDGUID>/` 其中 \<TenantIDGUID > 是 Azure AD 租使用者的租使用者識別碼。
 
 例如，具有 Issuer 元素的回應看起來會像下列範例︰
 
@@ -193,7 +192,7 @@ Timestamp: 2013-03-18 08:49:24Z</samlp:StatusMessage>
 
 #### <a name="issuer"></a>簽發者
 
-這會設定為`https://sts.windows.net/<TenantIDGUID>/`, \<其中 TenantIDGUID > 是 Azure AD 租使用者的租使用者識別碼。
+這會設定為 `https://sts.windows.net/<TenantIDGUID>/`，其中 \<TenantIDGUID > 是 Azure AD 租使用者的租使用者識別碼。
 
 ```
 <Issuer>https://login.microsoftonline.com/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
@@ -211,7 +210,7 @@ Azure AD 會簽署判斷提示以回應成功的登入。 `Signature` 元素包�
     </ds:Signature>
 ```
 
-#### <a name="subject"></a>Subject
+#### <a name="subject"></a>主旨
 
 這會指定判斷提示中陳述式主旨的主體。 它包含 `NameID` 元素，其代表已驗證的使用者。 `NameID` 值為目標識別碼，其只會導向身為權杖對象的服務提供者。 它是持續性的 - 可撤銷，但絕對不會重新指派。 它也是不透明的，因為它不會揭露使用者的相關資訊，也不能當做屬性查詢的識別碼。
 
@@ -243,7 +242,7 @@ Azure AD 會簽署判斷提示以回應成功的登入。 `Signature` 元素包�
 * `NotBefore` 屬性值等於或稍微晚於 (不到一秒) `Assertion` 元素的 `IssueInstant` 屬性值。 Azure AD 不會考慮本身與雲端服務 (服務提供者) 之間的任何時間差，而且不會對此時間加上任何緩衝。
 * `NotOnOrAfter` 屬性值比 `NotBefore` 屬性值晚 70 分鐘。
 
-#### <a name="audience"></a>對象
+#### <a name="audience"></a>觀眾
 
 這包含可識別適用對象的 URI。 Azure AD 會將這個元素的值設定為起始登入的 `AuthnRequest` 的 `Issuer` 元素值。 若要評估 `Audience` 值，請使用應用程式註冊期間指定的 `App ID URI` 值。
 

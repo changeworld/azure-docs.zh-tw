@@ -11,18 +11,17 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c4328ea6145d32616f1784d94976dab29216fbc
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 83717f9a78d80923f020ab699be9ddabbbcc12ef
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852013"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76700000"
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>我的 MVC 專案 (Visual Studio Azure Active Directory 已連線服務) 發生什麼事？
 
 > [!div class="op_single_selector"]
-> - [開始使用](vs-active-directory-dotnet-getting-started.md)
+> - [快速入門](vs-active-directory-dotnet-getting-started.md)
 > - [發生什麼情形](vs-active-directory-dotnet-what-happened.md)
 
 本文說明在[使用 Visual Studio 新增 Azure Active Directory 連線服務](vs-active-directory-add-connected-service.md)時，對 ASP.NET MVC 專案會進行哪些明確的變更。
@@ -33,7 +32,7 @@ ms.locfileid: "68852013"
 
 會影響專案檔 *.NET 參考和 `packages.config` (NuGet 參考)。
 
-| Type | 參考資料 |
+| 類型 | 參考 |
 | --- | --- |
 | .NET; NuGet | Microsoft.IdentityModel.Protocol.Extensions |
 | .NET; NuGet | Microsoft.Owin |
@@ -48,7 +47,7 @@ ms.locfileid: "68852013"
 
 您選取了 [讀取目錄資料] 選項時的其他參考：
 
-| Type | 參考資料 |
+| 類型 | 參考 |
 | --- | --- |
 | .NET; NuGet | EntityFramework |
 | .NET        | EntityFramework.SqlServer (僅限 Visual Studio 2015) |
@@ -62,7 +61,7 @@ ms.locfileid: "68852013"
 
 下列參考已移除 (僅限 ASP.NET 4 專案，如同在 Visual Studio 2015 中)：
 
-| Type | 參考資料 |
+| 類型 | 參考 |
 | --- | --- |
 | .NET; NuGet | Microsoft.AspNet.Identity.Core |
 | .NET; NuGet | Microsoft.AspNet.Identity.EntityFramework |

@@ -13,13 +13,12 @@ ms.date: 05/23/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f1c6d89af1d88be9a241c94462b17edf0c93de2
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: e85a768d8e4f11ca3637bc8f0b394cfb1ea9744a
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74843184"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76697467"
 ---
 # <a name="support-and-help-options-for-developers"></a>開發人員的支援和協助選項
 
@@ -32,7 +31,7 @@ ms.locfileid: "74843184"
 > * 如果您發現我們的驗證程式庫有問題，請提出 GitHub 問題
 > * 最後，如果您需要與人對談，您可以開啟支援要求
 
-## <a name="search"></a>Search
+## <a name="search"></a>搜尋
 
 如果您有開發相關問題，您可以在文件、[GitHub 範例](https://github.com/azure-samples)，或 [Stack Overflow](https://www.stackoverflow.com) 問題的解答中，找到您需要的答案。
 
@@ -48,7 +47,7 @@ ms.locfileid: "74843184"
 
 ## <a name="use-the-development-support-tools"></a>使用開發支援工具
 
-| 工具  | 描述  |
+| 工具  | 說明  |
 |---------|---------|
 | [jwt.ms](https://jwt.ms) | 貼上識別碼或存取權杖以將宣告名稱和值解碼。 |
 | [Microsoft Graph 總管](https://developer.microsoft.com/graph/graph-explorer)| 此工具可讓您針對 Microsoft Graph API 提出要求並查看回應。 |
@@ -59,7 +58,7 @@ Stack Overflow 是適用於開發相關問題的慣用管道。 開發人員社�
 
 若無法透過搜尋找到問題的解答，請將新問題提交至 Stack Overflow。 在提出問題時使用下列其中一個標記，以協助社群更快速地識別和回答您的問題：
 
-|元件/區域  | Tags |
+|元件/區域  | 標籤 |
 |---------|---------|
 | ADAL 程式庫 | [[adal]](https://stackoverflow.com/questions/tagged/adal) |
 | MSAL 程式庫     | [[msal]](https://stackoverflow.com/questions/tagged/msal) |

@@ -13,13 +13,12 @@ ms.date: 01/04/2019
 ms.author: lizross
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 879fa55df422e6039c6830e25e43637fc31b8037
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 2e3bd9ffa968038ae3f03eaf8de9c5271d6248f4
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74028476"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704607"
 ---
 # <a name="register-your-personal-device-on-your-organizations-network"></a>在組織的網路上註冊您的個人裝置
 在組織的網路上註冊您的個人裝置 (通常是手機或平板電腦)。 註冊您的裝置之後，它將能夠存取組織的受限資源。
@@ -50,7 +49,7 @@ ms.locfileid: "74028476"
 
     ![醒目提示連線選項的存取公司或學校資源畫面](./media/user-help-register-device-on-network/register-device-access-work-school-connect.png)
 
-3. 在 [新增公司或學校帳戶] 畫面中，輸入您公司或學校帳戶的電子郵件地址，然後選取 [下一步]。 例如， alain@contoso.com。
+3. 在 [新增公司或學校帳戶] 畫面中，輸入您公司或學校帳戶的電子郵件地址，然後選取 [下一步]。 例如： alain@contoso.com 。
 
 4. 登入您的公司或學校帳戶，然後選取 [登入]。
 

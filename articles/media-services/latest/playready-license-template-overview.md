@@ -1,5 +1,5 @@
 ---
-title: Azure 媒體服務與 PlayReady 授權範本
+title: 使用 Microsoft PlayReady 授權範本 Azure 媒體服務 v3
 description: 本主題提供了用來設定 PlayReady 授權之 PlayReady 授權範本的概觀。
 author: juliako
 manager: femila
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: 0ce0d40bfd9d41838573f6355ceffc17761111c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6b12dcee2303632c4ec2ccc3602348a4e17fcd05
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61472646"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705882"
 ---
-# <a name="media-services-playready-license-template-overview"></a>媒體服務 PlayReady 授權範本概觀 
+# <a name="media-services-v3-with-playready-license-template"></a>使用 PlayReady 授權範本媒體服務 v3 
 
 Azure 媒體服務可讓您使用 **Microsoft PlayReady** 來加密您的內容。 媒體服務也提供傳遞 PlayReady 授權的服務。 您可以使用媒體服務 API 來設定 PlayReady 授權。 當播放程式嘗試播放以 PlayReady 保護的內容時，會將要求傳送到授權傳遞服務來取得授權。 如果授權服務核准要求，就會發出授權以傳送給用戶端，並將它用來解密和播放所指定內容。
 

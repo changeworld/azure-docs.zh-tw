@@ -13,13 +13,12 @@ ms.date: 04/25/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ad2f271ae0eea2e393aad4eb972eff211655b02
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 75ea183a9968c65957bcf2a4d39966d2553db84f
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917092"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76696584"
 ---
 # <a name="public-client-and-confidential-client-applications"></a>公用用戶端和機密用戶端應用程式
 Microsoft 驗證程式庫（MSAL）定義兩種類型的用戶端：公用用戶端和機密用戶端。 這兩種用戶端類型的區別在於能夠安全地向授權伺服器進行驗證，並維護其用戶端認證的機密性。 相較之下，Azure AD 驗證程式庫（ADAL）會使用所謂的*驗證*內容（這是與 Azure AD 的連線）。

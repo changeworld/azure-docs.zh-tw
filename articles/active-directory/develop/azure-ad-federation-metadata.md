@@ -13,13 +13,12 @@ ms.date: 01/07/2017
 ms.author: ryanwi
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0da348d87d1dedbdc1f97d3a4d0a1a001871a1d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 74ce45067dbe2d89d7bb7e267bffa6bbb02defa3
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74843779"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76697875"
 ---
 # <a name="federation-metadata"></a>同盟中繼資料
 Azure Active Directory (Azure AD) 會針對服務發佈同盟中繼資料文件，而該服務已設定為接受由 Azure AD 簽發的安全性權杖。 [Web 服務同盟語言 (WS-Federation) 1.2 版](https://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html) (該說明為[適用於 OASIS 安全性聲明標記語言 (SAML) 的中繼資料 2.0 版 的延伸資訊](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf)) 中說明了同盟中繼資料文件格式。

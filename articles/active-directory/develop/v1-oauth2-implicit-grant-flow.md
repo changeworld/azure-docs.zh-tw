@@ -17,13 +17,12 @@ ms.date: 08/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb751d4cad036135865af9f97e159da104749388
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 2591485c6e528eb9f422ce966ec7738af49dbddc
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532400"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701037"
 ---
 # <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>了解 Azure Active Directory (AD) 中的 OAuth2 隱含授與流程
 
@@ -35,7 +34,7 @@ OAuth2 隱含授與是 OAuth2 規格中安全性疑慮最多的授與方式，�
 
 典型的 [OAuth2 授權碼授與](https://tools.ietf.org/html/rfc6749#section-1.3.1) \(英文\) 是使用兩個不同端點的授權授與。 授權端點會用於使用者互動階段，進而產生授權碼。 接著，用戶端會使用權杖端點來交換存取權杖的代碼，而且經常也會交換重新整理權杖。 Web 應用程式必須向權杖端點提交自己的應用程式認證，授權伺服器才能驗證用戶端。
 
-[OAuth2 隱含授與](https://tools.ietf.org/html/rfc6749#section-1.3.2)是其他授權授與的一種變體。 它可讓用戶端直接從授權端點取得存取權杖 (使用 [OpenId Connect](https://openid.net/specs/openid-connect-core-1_0.html) 時，還可取得 id_token)，既不需要連絡權杖端點，也不需要驗證用戶端應。 這個變體是針對在網頁瀏覽器中執行的 JavaScript 型應用程式所設計︰在原始的 OAuth2 規格中，權杖會在 URI 片段中傳回。 這可讓權杖位元可供用戶端中的 JavaScript 程式碼使用，卻又保證權杖位元不會包含在朝向伺服器的重新導向中。 在 OAuth2 隱含授與中, 授權端點會使用先前提供的重新導向 URI, 將存取權杖直接發行至用戶端。 它也有不需要跨原始來源呼叫的優點，如果需要 JavaScript 應用程式才能連絡權杖端點，就需要這些呼叫。
+[OAuth2 隱含授與](https://tools.ietf.org/html/rfc6749#section-1.3.2)是其他授權授與的一種變體。 它可讓用戶端直接從授權端點取得存取權杖 (使用 [OpenId Connect](https://openid.net/specs/openid-connect-core-1_0.html) 時，還可取得 id_token)，既不需要連絡權杖端點，也不需要驗證用戶端應。 這個變體是針對在網頁瀏覽器中執行的 JavaScript 型應用程式所設計︰在原始的 OAuth2 規格中，權杖會在 URI 片段中傳回。 這可讓權杖位元可供用戶端中的 JavaScript 程式碼使用，卻又保證權杖位元不會包含在朝向伺服器的重新導向中。 在 OAuth2 隱含授與中，授權端點會使用先前提供的重新導向 URI，將存取權杖直接發行至用戶端。 它也有不需要跨原始來源呼叫的優點，如果需要 JavaScript 應用程式才能連絡權杖端點，就需要這些呼叫。
 
 OAuth2 隱含授與的重要特性就是，這類流程絕對不會將重新整理權杖傳回到用戶端的事實。 下一節說明為何這是不必要的，而且事實上會成為安全性問題。
 
@@ -54,7 +53,7 @@ OAuth2 規格聲明設計出隱含授與是為了實現使用者代理程式應�
 * 工作階段或本機儲存體等 HTML5 功能可授與權杖快取和存留期管理的完全控制權，但是應用程式則無法處理 Cookie 管理
 * 存取權杖不容易遭受跨網站偽造要求 (CSRF) 攻擊
 
-隱含授與流程不會簽發重新整理權杖，其原因大多是安全性考量。 重新整理權杖的範圍不像存取權杖那麼窄，前者會授與更多權力，因此萬一洩露出去，將會造成更大的損害。在隱含流程中，權杖會在 URL 中傳遞，因此遭到攔截的風險高於授權碼授與。
+隱含授與流程不會簽發重新整理權杖，其原因大多是安全性考量。 重新整理權杖的範圍不會縮小為存取權杖，因此，授與更多的能力，因此 inflicting 會因為洩漏而有更大的損害。在隱含流程中，權杖會在 URL 中傳遞，因此攔截的風險會高於授權碼授與。
 
 不過，JavaScript 應用程式可以選擇使用另一種機制來更新存取權杖，而不會重複提示使用者提供認證。 應用程式可以使用隱藏的 iframe 來針對 Azure AD 的授權端點執行新的權杖要求︰只要瀏覽器仍有針對 Azure AD 網域作用的工作階段 (read: 有工作階段 Cookie)，驗證要求就可以順利執行而不需要使用者互動。
 
@@ -62,7 +61,7 @@ OAuth2 規格聲明設計出隱含授與是為了實現使用者代理程式應�
 
 ## <a name="is-the-implicit-grant-suitable-for-my-app"></a>我的應用程式適用隱含授與嗎？
 
-隱含授與提供的風險比其他授與更多, 而且您需要注意的區域已妥善記載 (例如,[誤用存取權杖以在隱含流程中模擬資源擁有][OAuth2-Spec-Implicit-Misuse]者, 以及[OAuth 2.0 威脅模型和安全性考慮][OAuth2-Threat-Model-And-Security-Implications])。 不過，風險概況之所以較高，主要是因為它要啟用執行作用中程式碼的應用程式，並由遠端資源提供給瀏覽器。 如果您正在規劃 SPA 架構，沒有後端元件或想要透過 JavaScript 叫用 Web API，則建議使用隱含流程來取得權杖。
+隱含授與會呈現比其他授與更多的風險，而且您需要注意的區域已妥善記載（例如，[誤用存取權杖來模擬隱含流程中的資源擁有][OAuth2-Spec-Implicit-Misuse]者，以及[OAuth 2.0 威脅模型和安全性考慮][OAuth2-Threat-Model-And-Security-Implications]）。 不過，風險概況之所以較高，主要是因為它要啟用執行作用中程式碼的應用程式，並由遠端資源提供給瀏覽器。 如果您正在規劃 SPA 架構，沒有後端元件或想要透過 JavaScript 叫用 Web API，則建議使用隱含流程來取得權杖。
 
 如果應用程式是原生用戶端，則不適用隱含流程。 原生用戶端環境中沒有Azure AD 工作階段 Cookie，將會讓應用程式沒有辦法維持長時間執行的工作階段。 這表示應用程式在取得新資源的存取權杖時會重複提示使用者。
 
@@ -70,8 +69,8 @@ OAuth2 規格聲明設計出隱含授與是為了實現使用者代理程式應�
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需開發人員資源的完整清單, 包括 Azure AD 的通訊協定和 OAuth2 授權授與流程支援的參考資訊, 請參閱[Azure AD 開發人員指南][AAD-Developers-Guide]
-* 請參閱[如何整合應用程式與 Azure AD][ACOM-How-To-Integrate] , 以取得應用程式整合流程的其他深度。
+* 如需開發人員資源的完整清單，包括 Azure AD 的通訊協定和 OAuth2 授權授與流程支援的參考資訊，請參閱[Azure AD 開發人員指南][AAD-Developers-Guide]
+* 請參閱[如何整合應用程式與 Azure AD][ACOM-How-To-Integrate] ，以取得應用程式整合流程的其他深度。
 
 <!--Image references-->
 

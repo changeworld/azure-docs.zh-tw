@@ -10,13 +10,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfc13c1057f74fb1eb5a41210ffaf166e69bb06e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7e289b83daa9c30703d94a7f4c0ff459f96256c0
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920322"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76702516"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>重新導向 URI/回覆 URL 限制
 
@@ -26,7 +25,7 @@ ms.locfileid: "74920322"
 
 下表顯示當您註冊應用程式時，可以新增的重新導向 Uri 數目上限。
 
-| 已登入的帳戶 | 重新導向 Uri 的數目上限 | 描述 |
+| 已登入的帳戶 | 重新導向 Uri 的數目上限 | 說明 |
 |--------------------------|---------------------------------|-------------|
 | 任何組織的 Azure Active Directory （Azure AD）租使用者中的 Microsoft 公司或學校帳戶 | 256 | 應用程式資訊清單中的 `signInAudience` 欄位設定為*AzureADMyOrg*或*AzureADMultipleOrgs* |
 | 個人 Microsoft 帳戶和公司和學校帳戶 | 100 | 應用程式資訊清單中的 `signInAudience` 欄位已設定為*AzureADandPersonalMicrosoftAccount* |

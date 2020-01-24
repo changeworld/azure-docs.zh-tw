@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: dcbc20f768ae80404979d47f23e7e08098757b41
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 51c191a7815bb64243e2324e150c00c2dcb7ec4c
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613324"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705321"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>使用 Azure 入口網站來建立具有 HTTP 到 HTTPS 重新導向功能的應用程式閘道
 
@@ -83,7 +83,7 @@ Export-PfxCertificate `
    - myVNet - 作為虛擬網路的名稱。
    - 10.0.0.0/16 - 作為虛擬網路位址空間。
    - myAGSubnet - 作為子網路名稱。
-   - *10.0.1.0/24* - 作為子網路位址空間。
+   - 10.0.0.0/24 - 作為子網路位址空間。
 
      ![建立虛擬網路](./media/create-url-route-portal/application-gateway-vnet.png)
 

@@ -17,13 +17,12 @@ ms.date: 12/3/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b820be5631d207a32cbf14aa1eec9f3f6de2af52
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: b9d6ab0fc2f2bf500f17161de7e090a6f60c0feb
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766050"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76700731"
 ---
 # <a name="admin-consent-on-the-microsoft-identity-platform"></a>Microsoft 身分識別平臺上的系統管理員同意
 
@@ -51,7 +50,7 @@ ms.locfileid: "74766050"
 ```
 
 
-| 參數     | 條件     | 描述                                                                               |
+| 參數     | 條件     | 說明                                                                               |
 |--------------:|--------------:|:-----------------------------------------------------------------------------------------:|
 | `tenant` | 必要項 | 您想要要求權限的目錄租用戶。 可以提供 GUID 或易記的名稱格式，或是一般會參考使用 `organizations` (如範例所示)。 請勿使用「通用」，因為個人帳戶無法提供系統管理員同意，除非在租使用者的內容中。 若要確保與管理租使用者的個人帳戶具有最佳相容性，請盡可能使用租使用者識別碼。 |
 | `client_id` | 必要項 | **應用程式（用戶端）識別碼**， [Azure 入口網站](https://go.microsoft.com/fwlink/?linkid=2083908)指派給您應用程式的應用程式註冊體驗。 |
@@ -70,7 +69,7 @@ ms.locfileid: "74766050"
 http://localhost/myapp/permissions?admin_consent=True&tenant=fa00d692-e9c7-4460-a743-29f2956fd429&state=12345&scope=https%3a%2f%2fgraph.microsoft.com%2fCalendars.Read+https%3a%2f%2fgraph.microsoft.com%2fMail.Send
 ```
 
-| 參數         | 描述                                                                                       |
+| 參數         | 說明                                                                                       |
 |------------------:|:-------------------------------------------------------------------------------------------------:|
 | `tenant`| 將應用程式所要求的權限授與應用程式的目錄租用戶 (採用 GUID 格式)。|
 | `state`           | 一個包含在要求中而將一併在權杖回應中傳回的值。 它可以是您想要的任何內容的字串。 此狀態用於在驗證要求出現之前，於應用程式中編碼使用者的狀態資訊，例如之前所在的網頁或檢視。|
@@ -83,7 +82,7 @@ http://localhost/myapp/permissions?admin_consent=True&tenant=fa00d692-e9c7-4460-
 
 將加入至成功回應中所見的參數，錯誤參數如下所示。
 
-| 參數          | 描述                                                                                      |
+| 參數          | 說明                                                                                      |
 |-------------------:|:-------------------------------------------------------------------------------------------------:|
 | `error`            | 用以分類發生的錯誤類型與回應錯誤的錯誤碼字串。|
 | `error_description`| 可協助開發人員識別錯誤根本原因的特定錯誤訊息。|

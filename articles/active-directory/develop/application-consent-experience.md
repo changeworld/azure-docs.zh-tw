@@ -14,13 +14,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: ryanwi
 ms.reviewer: zachowd
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f16278304b4d536b1ef2cf46291b481bf319b6c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 82d64895f4bf2ef6eb1fdb248f470f981d1cb426
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918146"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76698164"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>了解 Azure AD 應用程式同意體驗
 
@@ -46,7 +45,7 @@ ms.locfileid: "74918146"
 | # | 元件 | 目的 |
 | ----- | ----- | ----- |
 | 1 | 使用者識別碼 | 此識別碼代表所要求的用戶端應用程式使用者存取受保護的資源。 |
-| 2 | 課程名稱 | 標題變更取決於使用者是否要進行使用者或管理員同意流程。 在使用者同意流程中，標題為「所要求權限」，而在管理員同意流程中，標題則會有額外一行「為組織接受」。 |
+| 2 | Title | 標題變更取決於使用者是否要進行使用者或管理員同意流程。 在使用者同意流程中，標題為「所要求權限」，而在管理員同意流程中，標題則會有額外一行「為組織接受」。 |
 | 3 | 應用程式標誌 | 此映像應為使用者提供視覺提示，說明此應用程式是否為使用者要存取的應用程式。 此映像由應用程式開發人員提供，且此映像的擁有權不得驗證。 |
 | 4 | 應用程式名稱 | 此值應可告知使用者要求存取其資料的應用程式為何。 請注意，此名稱由應用程式開發人員提供，且此應用程式名稱的擁有權不得驗證。 |
 | 5 | 發行者網域 | 此值應為使用者提供網域，以評估可信度。 此網域由應用程式開發人員提供，且此發行者網域的擁有權不得驗證。 |

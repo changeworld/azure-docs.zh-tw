@@ -1,5 +1,5 @@
 ---
-title: 新的 Azure 入口網站應用程式註冊體驗
+title: 新版 Azure 入口網站應用程式註冊體驗
 titleSuffix: Microsoft identity platform
 description: Azure 入口網站中的新應用程式註冊體驗簡介
 services: active-directory
@@ -13,13 +13,12 @@ ms.date: 11/8/2019
 ms.author: aragra
 ms.reviewer: lenalepa, alamaral
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f7ed8902da40dc7b5783ebb116a6c993bbbba5b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 835924c92d0c5768c1125b3b1d26ee72cf2cec70
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424645"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76698266"
 ---
 # <a name="the-new-azure-portal-app-registration-experience"></a>新的 Azure 入口網站應用程式註冊體驗
 

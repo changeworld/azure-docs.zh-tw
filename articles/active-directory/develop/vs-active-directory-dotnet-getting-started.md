@@ -11,18 +11,17 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a603f37850cba13328889fcd120851f3c97c8c3
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 23e087205d316c4383b460afa5e6d7f86b6bd8af
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74966532"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76700017"
 ---
 # <a name="getting-started-with-azure-active-directory-aspnet-mvc-projects"></a>開始使用 Azure Active Directory (ASP.NET MVC 專案)
 
 > [!div class="op_single_selector"]
-> - [開始使用](vs-active-directory-dotnet-getting-started.md)
+> - [快速入門](vs-active-directory-dotnet-getting-started.md)
 > - [發生什麼情形](vs-active-directory-dotnet-what-happened.md)
 
 本文提供您在透過 Visual Studio 的 [專案] > [連線服務] 命令將 Active Directory 新增至 ASP.NET MVC 專案之後所需的其他指引。 如果您尚未將服務新增至專案，您可以隨時執行此動作。

@@ -14,13 +14,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d130bfb055b41ea3d2726c83c06430a0ea58fe98
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 37d6cd03c07c10bfac5b25e3850c7d3af97bcec7
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424561"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76697484"
 ---
 # <a name="branding-guidelines-for-applications"></a>應用程式的商標指導方針
 
@@ -57,7 +56,7 @@ Microsoft 不會在 Azure 或 Active Directory 品牌名稱上公開使用者，
 
 您的應用程式可能將註冊和登入劃分成不同的路徑，下列各節提供這兩個案例的視覺化導引。
 
-**如果您的應用程式支援使用者註冊 (例如免費試用版或免費增值模式)** ：您可以顯示 [登入]  按鈕，讓使用者利用其工作帳戶或個人帳戶來存取您的應用程式。 他們第一次存取您的應用程式時，Azure AD 會顯示同意提示。
+**如果您的應用程式支援使用者註冊 (例如免費試用版或免費增值模式)** ：您可以顯示 [登入] 按鈕，讓使用者利用其工作帳戶或個人帳戶來存取您的應用程式。 他們第一次存取您的應用程式時，Azure AD 會顯示同意提示。
 
 **如果您的應用程式需要唯有系統管理員才能同意的權限，或應用程式需要組織授權**：請將系統管理員擷取與使用者登入分開。 **[取得此應用程式] 按鈕**會將系統管理員重新導向到登入，然後要求他們代表組織中的使用者來表示同意，這樣做的附加優點是可隱藏使用者同意您應用程式的提示。
 
@@ -71,7 +70,7 @@ Microsoft 不會在 Azure 或 Active Directory 品牌名稱上公開使用者，
 
 不過，我們建議您撰寫說明文字，而不要依賴按鈕。 例如：
 
-> *如果您已經使用 Office 365 或 Microsoft 的其他商務服務，您可以為 <your_app_name> 授與對您組織資料的存取權。* 這可讓使用者利用其現有的工作帳戶存取 <your_app_name>。
+> *如果您已經使用 Microsoft 的 Office 365 或其他商務服務，您可以授與 < your_app_name > 存取貴組織的資料。這可讓您的使用者使用其現有的工作帳戶來存取 < your_app_name >。*
 
 若要下載官方 Microsoft 標誌並在您的應用程式中使用，請以滑鼠右鍵按一下您要使用的標誌，然後將其儲存到您的電腦。
 

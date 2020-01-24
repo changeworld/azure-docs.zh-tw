@@ -3,12 +3,12 @@ title: 備份復原服務保存庫中的 Azure VM
 description: 說明如何使用 Azure 備份在復原服務保存庫中備份 Azure Vm
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: e5ff3a00d8cb3bf0c5fa3cb4929b7c22d92c7834
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: aeadd7bc798f690c67eef38c6dc645204ff39115
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513808"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705542"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>備份復原服務保存庫中的 Azure VM
 
@@ -189,16 +189,11 @@ Completed | 失敗 | 已完成，但出現警告
 **Linux** | 從散發套件存放庫使用 RPM 或 DEB 套件進行安裝。 這是安裝和升級 Azure Linux 代理程式的慣用方法。 所有[認可的散發套件提供者](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)都會將 Azure Linux 代理程式套件整合於本身的映像和儲存機制中。 代理程式可從 [GitHub](https://github.com/Azure/WALinuxAgent) 取得，但不建議從該處安裝。<br/><br/> 如果您要更新代理程式，請確定沒有任何備份作業正在執行，並更新二進位檔。
 
 >[!NOTE]
-> Azure 備份現在支援使用 Azure 虛擬機器備份解決方案進行選擇性磁片備份和還原。
+> **Azure 備份現在支援使用 Azure 虛擬機器備份解決方案進行選擇性磁片備份和還原。**
 >
 >目前，Azure 備份支援使用虛擬機器備份解決方案，同時備份 VM 中的所有磁片（作業系統和資料）。 使用 [排除磁片] 功能時，您可以選擇從 VM 中的多個資料磁片備份一或數個。 這為您的備份和還原需求提供有效率且符合成本效益的解決方案。 每個復原點都包含備份作業中包含的磁片資料，這可讓您在還原作業期間，擁有從指定復原點還原的磁片子集。 這適用于從快照集和保存庫還原兩者。
 >
-> 此解決方案在下列案例中特別有用：
->  
->1. 您的重要資料只能備份在一個磁片中，而您不想要備份連接至 VM 的其餘磁片。 這可將備份儲存體成本降到最低。  
->2. 您有部分 VM 資料的其他備份解決方案。 例如，您使用不同的工作負載備份解決方案來備份資料庫或資料，而且您想要使用 Azure VM 層級備份來存放磁片和資料的其餘部分，以利用可用的最佳功能來建立有效率且健全的系統。
->
->若要註冊預覽版，請在 AskAzureBackupTeam@microsoft.com 寫信給我們
+>**若要註冊預覽版，請在 AskAzureBackupTeam@microsoft.com 寫信給我們**
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -13,13 +13,12 @@ ms.date: 11/11/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a71093ee05e032a5df89bb0560b6daa82e2fbf2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: cba213824cba86b4ea54e852b7e2f1ede83abfea
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916140"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76695801"
 ---
 # <a name="logging-in-msal-applications"></a>MSAL 應用程式中的記錄
 
@@ -211,7 +210,7 @@ MSALGlobalConfig.loggerConfig.piiEnabled = NO;
 
 若要在使用 iOS 和 macOS 的 MSAL 記錄時設定記錄層級，請使用下列其中一個值：
 
-|層級  |描述 |
+|層級  |說明 |
 |---------|---------|
 | `MSALLogLevelNothing`| 停用所有記錄 |
 | `MSALLogLevelError` | 預設層級，只有在發生錯誤時才會列印資訊 |
@@ -288,7 +287,7 @@ MSALGlobalConfig.loggerConfig.piiEnabled = false
 
 若要在使用 iOS 和 macOS 的 MSAL 記錄時設定記錄層級，請使用下列其中一個值：
 
-|層級  |描述 |
+|層級  |說明 |
 |---------|---------|
 | `MSALLogLevelNothing`| 停用所有記錄 |
 | `MSALLogLevelError` | 預設層級，只有在發生錯誤時才會列印資訊 |

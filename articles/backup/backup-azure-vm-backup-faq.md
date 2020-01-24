@@ -4,12 +4,12 @@ description: 在本文中，您會找到有關使用 Azure 備份服務來備份
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: d70f4832daba59739d6798517902e921927194d6
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 5d2f702b49e1e7aeb2ab33008556e91264b39427
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293975"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705406"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>常見問題-備份 Azure Vm
 
@@ -98,11 +98,6 @@ Azure 虛擬機器備份原則支援最短的保留範圍，最多7天到9999天
 Azure 備份現在支援使用 Azure 虛擬機器備份解決方案進行選擇性磁片備份和還原。
 
 目前，Azure 備份支援使用虛擬機器備份解決方案，同時備份 VM 中的所有磁片（作業系統和資料）。 使用 [排除磁片] 功能時，您可以選擇從 VM 中的多個資料磁片備份一或數個。 這為您的備份和還原需求提供有效率且符合成本效益的解決方案。 每個復原點都包含備份作業中包含的磁片資料，這可讓您在還原作業期間，擁有從指定復原點還原的磁片子集。 這適用于從快照集和保存庫還原兩者。
-
-此解決方案在下列案例中特別有用：
-  
-1. 您的重要資料只能備份在一個磁片中，而您不想要備份連接至 VM 的其餘磁片。 這可將備份儲存體成本降到最低。  
-2. 您有部分 VM 資料的其他備份解決方案。 例如，您使用不同的工作負載備份解決方案來備份資料庫或資料，而且您想要使用 Azure VM 層級備份來存放磁片和資料的其餘部分，以利用可用的最佳功能來建立有效率且健全的系統。
 
 若要註冊預覽版，請在 AskAzureBackupTeam@microsoft.com 寫信給我們
 

@@ -15,19 +15,18 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: brandwe, jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4d247c569cdc0beff499cee191b95711a603e42
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b2dfcd1711be107fd161d38e5c9df660d35d8332
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917551"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76696923"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>操作說明：使用 ADAL 在 Android 上啟用跨應用程式的 SSO
 
 [!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
-單一登入 (SSO) 可讓使用者只輸入認證一次，就讓這些認證跨應用程式及跨其他應用程式可能會使用的平台 (例如 Microsoft 帳戶或來自 Microsoft 365 的公司帳戶) 自動運作，無論發行者是誰。
+單一登入 (SSO) 可讓使用者只輸入認證一次，並讓這些認證跨應用程式及跨其他應用程式可能會使用的平台自動處理 (例如 Microsoft 帳戶或來自 Microsoft 365 的公司帳戶)，無論發行者為何。
 
 Microsoft 的身分識別平台搭配 SDK，能讓您在整個裝置中，更輕鬆地在您自己的應用程式套件內，或使用訊息代理程式功能和 Authenticator 應用程式來啟用單一登入。
 
@@ -35,7 +34,7 @@ Microsoft 的身分識別平台搭配 SDK，能讓您在整個裝置中，更輕
 
 ## <a name="prerequisites"></a>必要條件
 
-此操作說明假設您知道如何：
+此操作說明會假設您知道如何：
 
 - 使用 Azure Active Directory (Azure AD) 的傳統入口網站佈建應用程式。 如需詳細資訊，請參閱[註冊應用程式](quickstart-register-app.md)
 - 整合應用程式與 [Azure AD Android SDK](https://github.com/AzureAD/azure-activedirectory-library-for-android)。

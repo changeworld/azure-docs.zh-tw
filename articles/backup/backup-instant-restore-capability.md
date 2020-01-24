@@ -4,12 +4,12 @@ description: Azure 立即還原功能和 VM 備份堆疊、Azure Resource Manage
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 21e5ae82fc8274874e97d5e91a140b811b36c05e
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 7cf437c6b20ea6b688e8e93e401cf71ef0260888
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293822"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705423"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>透過 Azure 備份的立即還原功能取得改良的備份和還原效能
 
@@ -112,14 +112,13 @@ Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 
 如果復原點具有快照集而且是最新的可用 RP，則會保留到有下一個成功備份的時候。 這是根據設計的「垃圾收集」（GC）原則，目前至少會要求一個最新的 RP 一律存在，以免所有備份因 VM 中的問題而失敗。 在正常情況下，RP 會在到期後的最多 24 小時內清除。
 
+### <a name="i-dont-need-instant-restore-functionality-can-it-be-disabled"></a>我不需要立即還原功能。 可以停用嗎？
+
+每個人都會啟用「立即還原」功能，且無法停用。 您可以將快照集保留期縮減為至少一天。
+
 >[!NOTE]
-> Azure 備份現在支援使用 Azure 虛擬機器備份解決方案進行選擇性磁片備份和還原。
+> **Azure 備份現在支援使用 Azure 虛擬機器備份解決方案進行選擇性磁片備份和還原。**
 >
 >目前，Azure 備份支援使用虛擬機器備份解決方案，同時備份 VM 中的所有磁片（作業系統和資料）。 使用 [排除磁片] 功能時，您可以選擇從 VM 中的多個資料磁片備份一或數個。 這為您的備份和還原需求提供有效率且符合成本效益的解決方案。 每個復原點都包含備份作業中包含的磁片資料，這可讓您在還原作業期間，擁有從指定復原點還原的磁片子集。 這適用于從快照集和保存庫還原兩者。
 >
-> 此解決方案在下列案例中特別有用：
->  
->1. 您的重要資料只能備份在一個磁片中，而您不想要備份連接至 VM 的其餘磁片。 這可將備份儲存體成本降到最低。  
->2. 您有部分 VM 資料的其他備份解決方案。 例如，您使用不同的工作負載備份解決方案來備份資料庫或資料，而且您想要使用 Azure VM 層級備份來存放磁片和資料的其餘部分，以利用可用的最佳功能來建立有效率且健全的系統。
->
->若要註冊預覽版，請在 AskAzureBackupTeam@microsoft.com 寫信給我們
+>**若要註冊預覽版，請在 AskAzureBackupTeam@microsoft.com 寫信給我們**

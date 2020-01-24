@@ -12,13 +12,12 @@ ms.date: 3/21/2019
 ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa251ee361af12ecf3fef3c7cd437fa06c1cea52
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: de7fa1952b2e23276a9f088f5840e54675b44d01
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73803927"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704947"
 ---
 # <a name="update-your-groups-info-on-the-my-apps-portal"></a>在我的應用程式入口網站上更新您的群組資訊
 
@@ -41,7 +40,7 @@ ms.locfileid: "73803927"
 
 1. 登入您的公司或學校帳戶。
 
-2. 開啟您的網頁瀏覽器並移至 https://myapps.microsoft.com，或使用您組織所提供的連結。 例如，您可能會被導向至您組織的自訂頁面，例如 https://myapps.microsoft.com/contoso.com。
+2. 開啟您的網頁瀏覽器並移至 https://myapps.microsoft.com ，或使用您組織所提供的連結。 例如，您可能會被導向至您組織的自訂頁面，例如 https://myapps.microsoft.com/contoso.com 。
 
     [**應用程式**] 頁面隨即出現，其中顯示貴組織所擁有且可供您使用的所有雲端應用程式。
 
@@ -91,7 +90,7 @@ ms.locfileid: "73803927"
 
     - **群組原則。** 選擇 [允許每個人加入群組] 或 [僅允許群組的擁有者新增成員]。
 
-3. 選取 [ **建立**]。
+3. 選取 [建立]。
 
     新群組會以您的擁有者身分建立，並出現在 [**我擁有的群組**] 清單中。 因為您是擁有者，所以此群組也會出現在 [**我所在的群組**] 清單中。
 

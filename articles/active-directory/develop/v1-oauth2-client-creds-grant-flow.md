@@ -17,13 +17,12 @@ ms.date: 02/08/2017
 ms.author: ryanwi
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ac618b28fae7410a773012e390dcd6b3a63b966
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 85ed6fc1535daf64394380ded44f74d5f9f939b6
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834777"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701105"
 ---
 # <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>使用用戶端認證 (共用密碼或憑證) 的服務對服務呼叫
 
@@ -57,12 +56,12 @@ https://login.microsoftonline.com/<tenant id>/oauth2/token
 ### <a name="first-case-access-token-request-with-a-shared-secret"></a>第一種情況︰使用共用密碼的存取權杖要求
 使用共用密碼時，服務對服務存取權杖要求包含下列參數：
 
-| 參數 |  | 描述 |
+| 參數 |  | 說明 |
 | --- | --- | --- |
-| grant_type |必要 |指定要求的授與類型。 在用戶端認證授與流程中，值必須是 **client_credentials**。 |
-| client_id |必要 |指定呼叫端 Web 服務的 Azure AD 用戶端識別碼。 若要尋找呼叫應用程式的用戶端識別碼，請在 [Azure 入口網站](https://portal.azure.com)中按一下 [Azure Active Directory]，並按一下 [應用程式註冊]，再按一下應用程式。 client_id 是*應用程式 ID* |
-| client_secret |必要 |輸入在 Azure AD 中針對呼叫端 Web 服務或精靈應用程式所註冊的金鑰。 若要建立金鑰，請在 Azure 入口網站中按一下 [Azure Active Directory]，並按一下 [應用程式註冊]，按一下應用程式，接著依序按一下 [設定] 和 [金鑰]，並新增金鑰。  在提供此祕密時對其進行 URL 編碼。 |
-| resource |必要 |輸入接收端 Web 服務的應用程式識別碼 URI。 若要尋找應用程式識別碼 URI，請在 Azure 入口網站中，按一下 [Azure Active Directory]，並按一下 [應用程式註冊]，再按一下服務應用程式，接著按一下 [設定] 和 [屬性]。 |
+| grant_type |required |指定要求的授與類型。 在用戶端認證授與流程中，值必須是 **client_credentials**。 |
+| client_id |required |指定呼叫端 Web 服務的 Azure AD 用戶端識別碼。 若要尋找呼叫應用程式的用戶端識別碼，請在 [Azure 入口網站](https://portal.azure.com)中按一下 [Azure Active Directory]，並按一下 [應用程式註冊]，再按一下應用程式。 client_id 是*應用程式 ID* |
+| client_secret |required |輸入在 Azure AD 中針對呼叫端 Web 服務或精靈應用程式所註冊的金鑰。 若要建立金鑰，請在 Azure 入口網站中按一下 [Azure Active Directory]，並按一下 [應用程式註冊]，按一下應用程式，接著依序按一下 [設定] 和 [金鑰]，並新增金鑰。  在提供此祕密時對其進行 URL 編碼。 |
+| resource |required |輸入接收端 Web 服務的應用程式識別碼 URI。 若要尋找應用程式識別碼 URI，請在 Azure 入口網站中，按一下 [Azure Active Directory]，並按一下 [應用程式註冊]，再按一下服務應用程式，接著按一下 [設定] 和 [屬性]。 |
 
 #### <a name="example"></a>範例
 下列 HTTP POST 會要求提供 https://service.contoso.com/ Web 服務的[存取權杖](access-tokens.md)。 `client_id` 會識別要求存取權杖的 Web 服務。
@@ -78,13 +77,13 @@ grant_type=client_credentials&client_id=625bc9f6-3bf6-4b6d-94ba-e97cf07a22de&cli
 ### <a name="second-case-access-token-request-with-a-certificate"></a>第二種情況︰使用憑證的存取權杖要求
 使用憑證的服務對服務存取權杖要求包含下列參數：
 
-| 參數 |  | 描述 |
+| 參數 |  | 說明 |
 | --- | --- | --- |
-| grant_type |必要 |指定要求的回應類型。 在用戶端認證授與流程中，值必須是 **client_credentials**。 |
-| client_id |必要 |指定呼叫端 Web 服務的 Azure AD 用戶端識別碼。 若要尋找呼叫應用程式的用戶端識別碼，請在 [Azure 入口網站](https://portal.azure.com)中按一下 [Azure Active Directory]，並按一下 [應用程式註冊]，再按一下應用程式。 client_id 是*應用程式 ID* |
-| client_assertion_type |必要 |值必須是 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
-| client_assertion |必要 | 您必須建立判斷提示 (JSON Web 權杖)，並使用註冊的憑證來簽署，以作為應用程式的認證。 請參閱[憑證認證](active-directory-certificate-credentials.md)，以了解如何註冊您的憑證與判斷提示的格式。|
-| resource | 必要 |輸入接收端 Web 服務的應用程式識別碼 URI。 若要尋找應用程式識別碼 URI，請在 Azure 入口網站中，按一下 [Azure Active Directory]，並按一下 [應用程式註冊]，再按一下服務應用程式，接著按一下 [設定] 和 [屬性]。 |
+| grant_type |required |指定要求的回應類型。 在用戶端認證授與流程中，值必須是 **client_credentials**。 |
+| client_id |required |指定呼叫端 Web 服務的 Azure AD 用戶端識別碼。 若要尋找呼叫應用程式的用戶端識別碼，請在 [Azure 入口網站](https://portal.azure.com)中按一下 [Azure Active Directory]，並按一下 [應用程式註冊]，再按一下應用程式。 client_id 是*應用程式 ID* |
+| client_assertion_type |required |值必須是 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
+| client_assertion |required | 您必須建立判斷提示 (JSON Web 權杖)，並使用註冊的憑證來簽署，以作為應用程式的認證。 請參閱[憑證認證](active-directory-certificate-credentials.md)，以了解如何註冊您的憑證與判斷提示的格式。|
+| resource | required |輸入接收端 Web 服務的應用程式識別碼 URI。 若要尋找應用程式識別碼 URI，請在 Azure 入口網站中，按一下 [Azure Active Directory]，並按一下 [應用程式註冊]，再按一下服務應用程式，接著按一下 [設定] 和 [屬性]。 |
 
 請注意，在透過共用密碼要求的情況中，參數幾乎相同，不同之處在於使用下列兩個參數來取代 client_secret 參數：client_assertion_type 和 client_assertion。
 
@@ -103,10 +102,10 @@ resource=https%3A%2F%contoso.onmicrosoft.com%2Ffc7664b4-cdd6-43e1-9365-c2e1c4e1b
 
 成功的回應中包含 JSON OAuth 2.0 回應與下列參數：
 
-| 參數 | 描述 |
+| 參數 | 說明 |
 | --- | --- |
 | access_token |所要求的存取權杖。 呼叫端 Web 服務可以使用此權杖來向接收端 Web 服務進行驗證。 |
-| token_type |表示權杖類型值。 Azure AD 唯一支援的類型是 [持有人]。 如需有關持有人權杖的詳細資訊，請參閱 [OAuth 2.0 授權架構︰持有人權杖使用方式 (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt) \(英文\)。 |
+| token_type |表示權杖類型值。 Azure AD 唯一支援的類型是 [持有人]。 如需持有人權杖的詳細資訊，請參閱 [OAuth 2.0 授權架構︰持有人權杖用法 (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)。 |
 | expires_in |存取權杖的有效期 (以秒為單位)。 |
 | expires_on |存取權杖的到期時間。 日期會表示為從 1970-01-01T0:0:0Z UTC 至到期時間的秒數。 這個值用來判斷快取權杖的存留期。 |
 | not_before |存取權杖自此時間開始可使用。 日期會表示為從 1970-01-01T0:0:0Z UTC 至權杖的有效時間。|
@@ -125,6 +124,6 @@ resource=https%3A%2F%contoso.onmicrosoft.com%2Ffc7664b4-cdd6-43e1-9365-c2e1c4e1b
 }
 ```
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 * [Azure AD 中的 OAuth 2.0](v1-protocols-oauth-code.md)
 * [使用共用密碼的服務對服務呼叫的 C# 中的範例](https://github.com/Azure-Samples/active-directory-dotnet-daemon)和[使用憑證的服務對服務呼叫的 C# 中範例](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)

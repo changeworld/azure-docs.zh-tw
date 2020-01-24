@@ -13,13 +13,12 @@ ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: lizross
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78acb1f27b27c53aaaac508e0aa99a5b9c14ff2d
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 74d443cc87a71950a31732db48e94ea3b5ced7ba
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914925"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705304"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>管理適用於雙步驟驗證的應用程式密碼
 
@@ -43,11 +42,11 @@ ms.locfileid: "70914925"
 
 您可以根據您使用雙因素驗證的方式來建立和刪除應用程式密碼：
 
-- **您的組織使用雙因素驗證和 [其他安全性驗證] 頁面。** 如果您使用公司或學校帳戶（例如）， alain@contoso.com並在您的組織中搭配雙因素驗證，您可以從 [[其他安全性驗證] 頁面](https://account.activedirectory.windowsazure.com/Proofup.aspx)管理您的應用程式密碼。 如需詳細指示，請參閱本文中[的使用其他安全性驗證頁面來建立和刪除應用程式密碼](#create-and-delete-app-passwords-from-the-additional-security-verification-page)。
+- **您的組織使用雙因素驗證和 [其他安全性驗證] 頁面。** 如果您在組織中使用公司或學校帳戶（例如，alain@contoso.com）搭配雙因素驗證，您可以從 [[其他安全性驗證] 頁面](https://account.activedirectory.windowsazure.com/Proofup.aspx)管理您的應用程式密碼。 如需詳細指示，請參閱本文中[的使用其他安全性驗證頁面來建立和刪除應用程式密碼](#create-and-delete-app-passwords-from-the-additional-security-verification-page)。
 
-- **您的組織使用雙因素驗證和 Office 365 入口網站。** 如果您在組織中使用工作或學校帳戶（例如alain@contoso.com）、雙因素驗證和 Office 365 應用程式，您可以從[Office 365 入口網站頁面](https://www.office.com)管理您的應用程式密碼。 如需詳細指示，請參閱本文中[的使用 Office 365 入口網站建立和刪除應用程式密碼](#create-and-delete-app-passwords-using-the-office-365-portal)。
+- **您的組織使用雙因素驗證和 Office 365 入口網站。** 如果您在組織中使用公司或學校帳戶（例如 alain@contoso.com）、雙因素驗證和 Office 365 應用程式，您可以從[Office 365 入口網站頁面](https://www.office.com)管理您的應用程式密碼。 如需詳細指示，請參閱本文中[的使用 Office 365 入口網站建立和刪除應用程式密碼](#create-and-delete-app-passwords-using-the-office-365-portal)。
 
-- **您正在使用雙因素驗證搭配個人 Microsoft 帳戶。** 如果您使用具有雙因素驗證的個人 Microsoft 帳戶（ alain@outlook.com例如），您可以從 [安全性] [[基本] 頁面](https://account.microsoft.com/security/)管理您的應用程式密碼。 如需詳細指示，請參閱搭配[不支援雙步驟驗證的應用程式使用應用程式密碼](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-and-two-step-verification)。
+- **您正在使用雙因素驗證搭配個人 Microsoft 帳戶。** 如果您使用具有雙因素驗證的個人 Microsoft 帳戶（例如，alain@outlook.com），您可以從 [安全性] [[基本] 頁面](https://account.microsoft.com/security/)管理您的應用程式密碼。 如需詳細指示，請參閱搭配[不支援雙步驟驗證的應用程式使用應用程式密碼](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-and-two-step-verification)。
 
 ## <a name="create-and-delete-app-passwords-from-the-additional-security-verification-page"></a>從 [其他安全性驗證] 頁面建立和刪除應用程式密碼
 

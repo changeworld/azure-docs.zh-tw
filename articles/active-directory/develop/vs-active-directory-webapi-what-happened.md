@@ -11,18 +11,17 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a0cf375902281817ecc002f8fb76be32eed149d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 9858fdb7da80fe03498392ea93bf3c83b8a7e4dd
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74966311"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76699864"
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>我的 WebAPI 專案 (Visual Studio Azure Active Directory 連線服務) 發生什麼狀況
 
 > [!div class="op_single_selector"]
-> - [開始使用](vs-active-directory-webapi-getting-started.md)
+> - [快速入門](vs-active-directory-webapi-getting-started.md)
 > - [發生什麼情形](vs-active-directory-webapi-what-happened.md)
 
 本文說明在[使用 Visual Studio 新增 Azure Active Directory 連線服務](vs-active-directory-add-connected-service.md)時，對 ASP.NET WebAPI、ASP.NET 單頁應用程式和 ASP.NET Azure API 專案會進行哪些明確的變更。 本文也適用於 Visual Studio 2015 中的 ASP.NET Azure 行動服務專案。
@@ -33,7 +32,7 @@ ms.locfileid: "74966311"
 
 會影響專案檔 *.NET 參考和 `packages.config` (NuGet 參考)。
 
-| Type | 參考 |
+| 類型 | 參考 |
 | --- | --- |
 | .NET; NuGet | Microsoft.Owin |
 | .NET; NuGet | Microsoft.Owin.Host.SystemWeb |
@@ -46,7 +45,7 @@ ms.locfileid: "74966311"
 
 您選取了 [讀取目錄資料] 選項時的其他參考：
 
-| Type | 參考 |
+| 類型 | 參考 |
 | --- | --- |
 | .NET; NuGet | EntityFramework |
 | .NET        | EntityFramework.SqlServer (僅限 Visual Studio 2015) |
@@ -60,7 +59,7 @@ ms.locfileid: "74966311"
 
 下列參考已移除 (僅限 ASP.NET 4 專案，如同在 Visual Studio 2015 中)：
 
-| Type | 參考 |
+| 類型 | 參考 |
 | --- | --- |
 | .NET; NuGet | Microsoft.AspNet.Identity.Core |
 | .NET; NuGet | Microsoft.AspNet.Identity.EntityFramework |

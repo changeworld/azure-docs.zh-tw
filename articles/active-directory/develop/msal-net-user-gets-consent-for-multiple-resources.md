@@ -13,13 +13,12 @@ ms.date: 04/30/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89afdbed6870b4ce739ed51131def686c41a3015
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3bd23a1f14d5e3cbf9fc41ade47571c6689f3468
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921764"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76695019"
 ---
 # <a name="user-gets-consent-for-several-resources-using-msalnet"></a>使用者使用 MSAL.NET 取得數個資源的同意
 Microsoft 身分識別平臺端點不允許您一次取得數個資源的權杖。 使用適用于 .NET 的 Microsoft 驗證程式庫（MSAL.NET）時，取得權杖方法中的範圍參數應僅包含單一資源的範圍。 不過，您可以使用 `.WithExtraScopeToConsent` 產生器方法來指定其他範圍，預先同意數個資源。

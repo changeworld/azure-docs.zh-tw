@@ -15,15 +15,14 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19b010091ebd909745b272fca704bb87adf7924b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7915c0dae652e113410002128e4ea19ddba68a07
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65962617"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76696906"
 ---
-# <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>HOW TO：使用 ADAL 在 iOS 上啟用跨應用程式的 SSO
+# <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>操作說明：使用 ADAL 在 iOS 上啟用跨應用程式的 SSO
 
 [!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
@@ -40,7 +39,7 @@ Microsoft 的身分識別平台搭配 SDK，能讓您在整個裝置中，更輕
 * Azure Active Directory B2B
 * Azure Active Directory 條件式存取
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 此操作說明會假設您知道如何：
 
@@ -165,7 +164,7 @@ Microsoft 為每個行動平台提供應用程式，允許跨不同廠商的應�
 
 若要跨您擁有的應用程式啟用 SSO，您需要執行下列動作︰
 
-1. 請確定您的應用程式使用的相同用戶端識別碼或應用程式識別碼。
+1. 請確定您所有的應用程式都使用相同的用戶端識別碼或應用程式識別碼。
 2. 請確定您所有的應用程式共用來自 Apple 的相同簽署憑證，以便您可以共用金鑰鏈。
 3. 要求每個應用程式的相同金鑰鏈權利。
 4. 告知 SDK 您想要我們使用的共用金鑰鏈。
@@ -231,7 +230,7 @@ App3 重新導向 URI： `x-msauth-mytestiosapp://com.myapp.mytestapp3`
 </plist>
 ```
 
-一旦您在每個應用程式中啟用金鑰鍊權利，而且您已準備好使用 SSO，請告訴 SDK 的身分識別您的 keychain 使用下列設定您`ADAuthenticationSettings`使用下列設定：
+一旦您已在每個應用程式中啟用 keychain 權利，而且您已準備好使用 SSO，請使用 `ADAuthenticationSettings` 中的下列設定，透過下列設定來告訴身分識別 SDK 有關 keychain 的資訊：
 
 ```
 defaultKeychainSharingGroup=@"com.myapp.mycache";
@@ -240,7 +239,7 @@ defaultKeychainSharingGroup=@"com.myapp.mycache";
 > [!WARNING]
 > 當您跨應用程式共用金鑰鍊時，任何應用程式都可以刪除使用者，更糟的是可以跨應用程式刪除所有權杖。 如果您的應用程式依賴這些權杖來執行背景工作，這樣會造成可怕的災難。 共用金鑰鏈表示您在整個身分識別 SDK 必須非常小心進行任何移除作業。
 
-就這麼容易！ SDK 現在會跨所有應用程式共用認證。 使用者清單也會跨應用程式執行個體共用。
+就這麼簡單！ SDK 現在會跨所有應用程式共用認證。 使用者清單也會跨應用程式執行個體共用。
 
 ### <a name="turning-on-sso-for-broker-assisted-sso"></a>開啟訊息代理程式協助 SSO 的 SSO
 
@@ -253,7 +252,7 @@ defaultKeychainSharingGroup=@"com.myapp.mycache";
 3. 註冊 URL 配置。
 4. 將權限新增至您的 info.plist 檔案。
 
-#### <a name="step-1-enable-broker-mode-in-your-application"></a>步驟 1：在應用程式中啟用訊息代理程式模式
+#### <a name="step-1-enable-broker-mode-in-your-application"></a>步驟 1︰在應用程式中啟用訊息代理程式模式
 
 當您建立「內容」或驗證物件的初始設定時，已開啟應用程式使用訊息代理程式的功能。 您可以設定程式碼中的認證類型就可以辦到︰
 
@@ -263,7 +262,7 @@ defaultKeychainSharingGroup=@"com.myapp.mycache";
 ```
 `AD_CREDENTIALS_AUTO` 設定可讓 SDK 嘗試呼叫訊息代理程式，`AD_CREDENTIALS_EMBEDDED` 會防止 SDK 呼叫訊息代理程式。
 
-#### <a name="step-2-registering-a-url-scheme"></a>步驟 2：註冊 URL 配置
+#### <a name="step-2-registering-a-url-scheme"></a>步驟 2︰註冊 URL 配置
 
 身分識別平台會使用 URL 叫用訊息代理程式，然後將控制項傳回至您的應用程式。 若要完成該往返行程，您需要為應用程式註冊的 URL 配置，身分識別平台將會了解該配置。 此配置可以是您先前可能已向應用程式註冊之任何其他應用程式配置以外的配置。
 
@@ -288,7 +287,7 @@ defaultKeychainSharingGroup=@"com.myapp.mycache";
 </array>
 ```
 
-#### <a name="step-3-establish-a-new-redirect-uri-with-your-url-scheme"></a>步驟 3：利用 URL 配置建立新的重新導向 URI
+#### <a name="step-3-establish-a-new-redirect-uri-with-your-url-scheme"></a>步驟 3︰利用 URL 配置建立新的重新導向 URI
 
 為了確保我們永遠傳回認證權杖給正確的應用程式，我們必須確定 iOS 作業系統可以確認我們回呼應用程式的方式。 iOS 作業系統會向 Microsoft 訊息代理程式應用程式回報呼叫它之應用程式的組合識別碼。 這樣就不會讓惡意應用程式假冒。 因此，我們利用這個方法搭配訊息代理程式應用程式的 URI，以確保將權杖傳回給正確的應用程式。 我們需要您在應用程式中建立此唯一重新導向 URI，並在我們的開發人員入口網站中設定為重新導向 URI。
 
@@ -296,17 +295,17 @@ defaultKeychainSharingGroup=@"com.myapp.mycache";
 
 `<app-scheme>://<your.bundle.id>`
 
-例如︰x-msauth-mytestiosapp://com.myapp.mytestapp 
+例如︰x-msauth-mytestiosapp://com.myapp.mytestapp
 
 此重新導向 URI 必須使用 [Azure 入口網站](https://portal.azure.com/)在應用程式註冊中指定。 如需 Azure AD 應用程式註冊的詳細資訊，請參閱 [與 Azure Active Directory 整合](active-directory-how-to-integrate.md)。
 
-##### <a name="step-3a-add-a-redirect-uri-in-your-app-and-dev-portal-to-support-certificate-based-authentication"></a>步驟 3a：在應用程式與開發人員入口網站中新增重新導向 URI 以支援以憑證為基礎的驗證
+##### <a name="step-3a-add-a-redirect-uri-in-your-app-and-dev-portal-to-support-certificate-based-authentication"></a>步驟 3a︰在應用程式與開發人員入口網站中新增重新導向 URI 以支援以憑證為基礎的驗證
 
 若要支援以憑證為基礎的驗證，必須在您的應用程式與 [Azure 入口網站](https://portal.azure.com/)中註冊第二個 "msauth"，才能在應用程式中新增該支援。
 
 `msauth://code/<broker-redirect-uri-in-url-encoded-form>`
 
-例如︰msauth://code/x-msauth-mytestiosapp%3A%2F%2Fcom.myapp.mytestapp 
+例如︰msauth://code/x-msauth-mytestiosapp%3A%2F%2Fcom.myapp.mytestapp
 
 #### <a name="step-4-add-a-configuration-parameter-to-your-app"></a>步驟 4：將設定參數新增至您的應用程式
 

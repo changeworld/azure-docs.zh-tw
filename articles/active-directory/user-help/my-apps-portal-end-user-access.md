@@ -12,13 +12,12 @@ ms.date: 3/21/2019
 ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b74fa1caad629e6f7f745f84787b6f415876bbae
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c15580481c153a58122db593f678998be485b57d
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233185"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704998"
 ---
 # <a name="locate-and-use-your-organizations-cloud-based-apps-on-the-my-apps-portal"></a>在我的應用程式入口網站上找出並使用您組織的雲端式應用程式
 
@@ -72,7 +71,7 @@ ms.locfileid: "74233185"
 
 1. 選取 [新增**我的應用程式安全登入延伸**模組] 圖示 ![延伸模組圖示，](media/my-apps-portal/my-apps-portal-extension-icon.png) 在**網址**列的右邊，然後選取 [登**入以開始**使用]。
 
-2. 以滑鼠右鍵按一下 [**設定** 圖示 ![設定 圖示](media/my-apps-portal/my-apps-portal-extension-settings-icon.png)]，然後選取 [**設定**。
+2. 以滑鼠右鍵按一下 **設定** 圖示 ![設定 圖示](media/my-apps-portal/my-apps-portal-extension-settings-icon.png)]，然後選取 [**設定**。
 
 3. 在 [**設定**] 方塊中，選取您想要在入口網站上看到的最近使用的應用程式數目，以及是否允許重新導向組織的內部 url，讓您可以從遠端使用它們。
 
@@ -88,7 +87,7 @@ ms.locfileid: "74233185"
 
 1. 登入您的公司或學校帳戶。
 
-2. 開啟您的網頁瀏覽器並移至 https://myapps.microsoft.com，或使用您組織所提供的連結。 例如，您可能會被導向至您組織的自訂頁面，例如 https://myapps.microsoft.com/contoso.com。
+2. 開啟您的網頁瀏覽器並移至 https://myapps.microsoft.com ，或使用您組織所提供的連結。 例如，您可能會被導向至您組織的自訂頁面，例如 https://myapps.microsoft.com/contoso.com 。
 
     [**應用程式**] 頁面隨即出現，其中顯示貴組織所擁有且可供您使用的所有雲端應用程式。
 
@@ -102,7 +101,7 @@ ms.locfileid: "74233185"
 
 1. 在您的行動裝置上，從[Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8)和[Google Play 商店](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser)下載並安裝 Intune Managed Browser 應用程式。
 
-2. 開啟 Intune Managed Browser 應用程式、移至 https://myapps.microsoft.com，或使用貴組織所提供的連結。 例如，您可能會被導向至您組織的自訂頁面，例如 https://myapps.microsoft.com/contoso.com。
+2. 開啟 Intune Managed Browser 應用程式、移至 https://myapps.microsoft.com ，或使用貴組織所提供的連結。 例如，您可能會被導向至您組織的自訂頁面，例如 https://myapps.microsoft.com/contoso.com 。
 
     [**應用程式**] 頁面隨即出現，其中顯示貴組織所擁有且可供您使用的所有雲端應用程式。
 
@@ -116,7 +115,7 @@ ms.locfileid: "74233185"
 
 1. 在您的行動裝置上，啟動 web 瀏覽器應用程式，例如 Safari。
 
-2. 請移至 https://myapps.microsoft.com，或使用您組織所提供的連結。 例如，您可能會被導向至您組織的自訂頁面，例如 https://myapps.microsoft.com/contoso.com。
+2. 請移至 https://myapps.microsoft.com ，或使用您組織所提供的連結。 例如，您可能會被導向至您組織的自訂頁面，例如 https://myapps.microsoft.com/contoso.com 。
 
     [**應用程式**] 頁面隨即出現，其中顯示貴組織所擁有且可供您使用的所有雲端應用程式。
 
@@ -130,7 +129,7 @@ ms.locfileid: "74233185"
 
 1. 在您的行動裝置上，啟動 web 瀏覽器應用程式，例如 Google Chrome。
 
-2. 請移至 https://myapps.microsoft.com，或使用您組織所提供的連結。 例如，您可能會被導向至您組織的自訂頁面，例如 https://myapps.microsoft.com/contoso.com。
+2. 請移至 https://myapps.microsoft.com ，或使用您組織所提供的連結。 例如，您可能會被導向至您組織的自訂頁面，例如 https://myapps.microsoft.com/contoso.com 。
 
     [**應用程式**] 頁面隨即出現，其中顯示貴組織所擁有且可供您使用的所有雲端應用程式。
 

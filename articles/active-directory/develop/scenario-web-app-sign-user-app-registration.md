@@ -14,13 +14,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b08dd5602196bae0e250953c83320e69ddc6da83
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f2513b1fee022199f040ba0dcf83110c0b3b1365
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964815"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701564"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>登入使用者的 Web 應用程式：應用程式註冊
 
@@ -53,11 +52,11 @@ ms.locfileid: "74964815"
 
 1. 當 [註冊應用程式] 頁面出現時，輸入您應用程式的註冊資訊：
    1. 為您的應用程式選擇支援的帳戶類型。 （請參閱[支援的帳戶類型](./v2-supported-account-types.md)。）
-   1. 在 [**名稱**] 區段中，輸入將對應用程式使用者顯示且有意義的應用程式名稱。 例如，輸入**AspNetCore-WebApp**。
+   1. 在 [名稱] 區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱。 例如，輸入**AspNetCore-WebApp**。
    1. 針對 [重新**導向 URI**]，新增應用程式類型和 URI 目的地，以在成功驗證後接受傳回的權杖回應。 例如，輸入 **https://localhost:44321** 。 接著，選取 [註冊]。
 1. 選取 [驗證] 功能表，然後新增下列資訊：
    1. 針對 [**回復 URL**]，新增**Web**類型的 **https://localhost:44321/signin-oidc** 。
-   1. 在 [ **Advanced settings** ] 區段中，將 [**登出 URL** ] 設定為 **https://localhost:44321/signout-oidc** 。
+   1. 在 [進階設定] 區段中，將 [登出 URL] 設定為 **https://localhost:44321/signout-oidc** 。
    1. 在 [隱含授與] 底下，選取 [識別碼權杖]。
    1. 選取 [儲存]。
 
@@ -65,7 +64,7 @@ ms.locfileid: "74964815"
 
 1. 當 [註冊應用程式] 頁面出現時，輸入您應用程式的註冊資訊：
    1. 為您的應用程式選擇支援的帳戶類型。 （請參閱[支援的帳戶類型](./v2-supported-account-types.md)。）
-   1. 在 [**名稱**] 區段中，輸入將對應用程式使用者顯示且有意義的應用程式名稱。 例如，輸入**MailApp-openidconnect-v2**。
+   1. 在 [名稱] 區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱。 例如，輸入**MailApp-openidconnect-v2**。
    1. 在 [重新**導向 URI （選擇性）** ] 區段中，選取下拉式方塊中的 [ **Web** ]，然後輸入下列重新導向 URI： **https://localhost:44326/** 。
 1. 選取 [註冊] 以建立應用程式。
 1. 選取 [**驗證**] 功能表。
@@ -99,7 +98,7 @@ ms.locfileid: "74964815"
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
 1. 當 [註冊應用程式] 頁面出現時，輸入您應用程式的註冊資訊：
-   1. 在 [**名稱**] 區段中，輸入將對應用程式使用者顯示且有意義的應用程式名稱。 例如，輸入**python-webapp**。
+   1. 在 [名稱] 區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱。 例如，輸入**python-webapp**。
    1. 將**支援的帳戶類型**變更為**任何組織目錄中的帳戶和個人 Microsoft 帳戶（例如 Skype、Xbox、Outlook.com）** 。
    1. 在 [重新**導向 URI （選擇性）** ] 區段中，選取下拉式方塊中的 [ **Web** ]，然後輸入下列重新導向 URI： **http://localhost:5000/getAToken** 。
 1. 選取 [註冊] 以建立應用程式。

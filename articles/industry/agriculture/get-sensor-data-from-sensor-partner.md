@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 745e3f0b6c7bd4e6d984ce2df29b9965d4b8ca21
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 9bf5608a44aa19650a507ada3a0a437d34c13277
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513725"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705661"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>從感應器合作夥伴取得感應器資料
 
@@ -37,9 +37,7 @@ Azure FarmBeats 可協助您將 IoT 裝置和感應器的串流資料帶入 Data
  - 用戶端密碼
  - EventHub 連接字串
 
-先前的資訊是由您的系統整合者提供給您。 針對您在啟用裝置整合時可能會遇到的任何問題，請洽詢您的系統整合者。
-
-或者，您也可以從 Azure Cloud Shell 執行此腳本來產生認證。 請遵循下列步驟。
+您可以遵循下列步驟來產生上述資訊：（請注意，您必須在 Azure 上執行這些步驟，才能存取部署 FarmBeats 的 Azure 訂用帳戶）
 
 1. 下載[zip](https://aka.ms/farmbeatspartnerscriptv2)檔案，並將它解壓縮到您的本機磁片磁碟機。 Zip 檔案中將會有一個檔案。
 2. 登入 https://portal.azure.com/ 並移至 Azure Active Directory > 應用程式註冊

@@ -15,13 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbc9f20903d65fbde161d26ed3e194e63d341ccb
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: bb77f376e22428e9259ff3efc84cf6f1cb3491fe
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68320946"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76702636"
 ---
 # <a name="how-to-configure-single-sign-on-for-an-application"></a>如何設定應用程式的單一登入
 

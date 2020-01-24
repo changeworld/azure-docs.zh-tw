@@ -11,13 +11,12 @@ ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 827213c8d243e9d66c58195e1d9400bed9c3e337
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 8d4c3d76a1ff7c3fcedbb4d2c22a699f4a2e77d0
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74266993"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704777"
 ---
 # <a name="backup-and-recover-account-credentials-using-the-microsoft-authenticator-app"></a>使用 Microsoft Authenticator 應用程式來備份和復原帳號憑證
 

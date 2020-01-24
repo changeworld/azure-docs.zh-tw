@@ -7,13 +7,13 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: c39f41af8ed2f1e25064324c0e1da4a6603face8
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.date: 01/22/2020
+ms.openlocfilehash: 4cac2fcd16f779a6b31e36ca175801eedaa31d5d
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045525"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705814"
 ---
 # <a name="create-a-new-saas-offer"></a>建立新的 SaaS 供應專案
 
@@ -111,7 +111,7 @@ SaaS 提供了以一般費用、每位使用者或使用計量付費服務的消
 - **您要如何讓潛在客戶與此清單供應專案互動？**
 
 ##### <a name="get-it-now-free"></a>立即取得（免費）
-提供可存取您應用程式的有效 URL （從*HTTP*或*HTTPs*開始），免費向客戶列出您的供應專案。  例如： `https://contoso.com/saas-app`
+提供有效的 URL （從*HTTP*或*HTTPs*開始），即可免費向客戶列出您的供應專案，其可以[使用 Azure Active Directory （Azure AD）](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials)，透過單鍵驗證取得試用版。  例如： `https://contoso.com/saas-app`
 
 ##### <a name="free-trial-listing"></a>免費試用（清單）
 藉由提供有效的 URL （從*HTTP*或*HTTPs*開始），向客戶列出您的供應專案，其可透過[使用 Azure Active Directory （Azure AD）](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials)以單鍵驗證的方式來取得試用版。  例如： `https://contoso.com/trial/saas-app` 。 供應專案列出免費試用版是由您的服務所建立、管理及設定，而且沒有由 Microsoft 管理的訂用帳戶。

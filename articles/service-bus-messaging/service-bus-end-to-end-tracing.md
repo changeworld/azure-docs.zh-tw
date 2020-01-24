@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 6e5895392db1d75a985674bf2f878a84bc8dd926
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fa71ca7ea976ab4d724a061d0d0809cdb5767f4f
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60310997"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705746"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>透過服務匯流排傳訊進行分散式追蹤與相互關聯
 
@@ -28,12 +28,12 @@ ms.locfileid: "60310997"
 當產生者透過佇列傳送訊息時，它通常會發生於其他邏輯作業的範圍中，並由其他用戶端或服務起始。 當取用者接收到訊息時，也會繼續相同的作業。 產生者與取用者 (以及其他處理該作業的服務) 應該都會發出遙測事件，以追蹤作業流程和結果。 若要將此類事件相互關聯並以端對端的方式追蹤作業，每個回報遙測的服務都必須為每個事件提供追蹤內容的戳記。
 
 Microsoft Azure 服務匯流排傳訊已定義產生者與取用者應用來傳遞此類追蹤內容的裝載屬性。
-該通訊協定是以 [HTTP 關聯性通訊協定](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md) \(英文\) 為基礎。
+該通訊協定是以 [HTTP 關聯性通訊協定](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md) \(英文\) 為基礎。
 
-| 屬性名稱        | 描述                                                 |
+| 屬性名稱        | 說明                                                 |
 |----------------------|-------------------------------------------------------------|
-|  Diagnostic-Id       | 產生者針對佇列之外部呼叫的唯一識別碼。 請參閱 [HTTP 通訊協定中的 Request-Id](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) \(英文\) 以了解邏輯依據、考量及格式 |
-|  Correlation-Context | 作業內容，系統會將它傳播至涉及作業處理的所有服務。 如需詳細資訊，請參閱 [HTTP 通訊協定中的 Correlation-Context](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) \(英文\) |
+|  Diagnostic-Id       | 產生者針對佇列之外部呼叫的唯一識別碼。 請參閱 [HTTP 通訊協定中的 Request-Id](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) \(英文\) 以了解邏輯依據、考量及格式 |
+|  Correlation-Context | 作業內容，系統會將它傳播至涉及作業處理的所有服務。 如需詳細資訊，請參閱 [HTTP 通訊協定中的 Correlation-Context](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) \(英文\) |
 
 ## <a name="service-bus-net-client-auto-tracing"></a>服務匯流排 .NET 用戶端自動追蹤
 
@@ -139,7 +139,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 
 在此範例中，接聽程式會記錄每個服務匯流排作業的持續期間、結果、唯一識別碼，以及開始時間。
 
-#### <a name="events"></a>Events
+#### <a name="events"></a>活動
 
 針對每個作業，系統會傳送兩個事件：'Start' 和 'Stop'。 您應該只會對 'Stop' 事件感到興趣。 它們會提供作業的結果，並以 Activity 屬性的形式提供開始時間和持續期間。
 

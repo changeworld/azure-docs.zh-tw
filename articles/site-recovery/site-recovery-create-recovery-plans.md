@@ -1,22 +1,18 @@
 ---
 title: 在 Azure Site Recovery 中建立/自訂復原方案
 description: 了解如何使用 Azure Site Recovery 服務建立及自訂用於災害復原的復原方案。
-author: rayne-wiselman
-manager: carmonm
-ms.service: site-recovery
-ms.topic: article
-ms.date: 11/14/2019
-ms.author: raynew
-ms.openlocfilehash: 9bb5a1a3aa0c2a4681ddecb5e20df41d481755ec
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.topic: how-to
+ms.date: 01/23/2020
+ms.openlocfilehash: 6540317324a9f0d9bccc046ecf95824d4128bd09
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084512"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705831"
 ---
 # <a name="create-and-customize-recovery-plans"></a>建立並自訂復原方案
 
-本文說明如何在 [Azure Site Recovery](site-recovery-overview.md) 中建立和自訂復原方案。 開始之前，請[深入了解](recovery-plan-overview.md)復原方案。
+本文說明如何在[Azure Site Recovery](site-recovery-overview.md)中建立和自訂容錯移轉的復原計畫。 開始之前，請[深入了解](recovery-plan-overview.md)復原方案。
 
 ## <a name="create-a-recovery-plan"></a>建立復原計畫
 
@@ -24,22 +20,25 @@ ms.locfileid: "74084512"
 2. 在 [建立復原方案] 中，指定方案的名稱。
 3. 根據方案中的機器選擇來源和目標，並針對部署模型選取 [資源管理員]。 來源位置必須有已啟用容錯移轉和復原功能的機器。 
 
-   **容錯移轉** | **來源** | **目標** 
+    **容錯移轉** | **Source** | **Target** 
    --- | --- | ---
-   Azure 至 Azure | Azure 區域 |Azure 區域
-   VMware 至 Azure | 組態伺服器 | Azure
-   實體機器至 Azure | 組態伺服器 | Azure   
-   由 VMM 管理的 Hyper-V 至 Azure  | VMM 顯示名稱 | Azure
-   不具 VMM 的 Hyper-V 至 Azure | Hyper-V 網站名稱 | Azure
-   VMM 至 VMM |VMM 易記名稱 | VMM 顯示名稱 
+   Azure 至 Azure | 選取 Azure 區域 | 選取 Azure 區域
+   VMware 至 Azure | 選取設定伺服器 | 選取 Azure
+   實體機器至 Azure | 選取設定伺服器 | 選取 Azure   
+   Hyper-V 至 Azure | 選取 Hyper-v 網站名稱 | 選取 Azure
+   Hyper-v （受 VMM 管理）至 Azure  | 選取 VMM 伺服器 | 選取 Azure
+  
+    請注意：
+    -  您只能使用從來源位置容錯移轉至 Azure 的復原方案。 您無法使用復原方案來從 Azure 容錯回復。
+    - 來源位置必須有已啟用容錯移轉和復原功能的機器。 
+    - 復原方案可以包含具有相同來源和目標的機器。 
+    - 您可以在相同的方案中包含受 VMM 管理的 VMware Vm 和 Hyper-v Vm。
+    - VMware Vm 和實體伺服器可以位於相同的方案中。
 
-   > [!NOTE]
-   > 復原方案可以包含具有相同來源和目標的機器。 VMM 管理的 VMware 和 Hyper-V VM 不得位於相同的方案中。 VMware VM 和實體伺服器可位於相同的方案中，其中來源是組態伺服器。
-
-2. 在 [選取項目虛擬機器] 中，選取您要新增至方案的機器 (或複寫群組)。 然後按一下 [確定]。
+4. 在 [選取項目虛擬機器] 中，選取您要新增至方案的機器 (或複寫群組)。 然後按一下 [確定]。
     - 機器會新增至方案中的預設群組 (群組 1)。 容錯移轉之後，此群組中的所有機器會在相同的時間啟動。
     - 您只能選取您所指定之來源和目標位置中的機器。 
-1. 按一下 [確定] 以建立方案。
+5. 按一下 [確定] 以建立方案。
 
 ## <a name="add-a-group-to-a-plan"></a>將群組新增至方案
 
@@ -54,10 +53,10 @@ ms.locfileid: "74084512"
 
 您可以透過新增指令碼或手動動作來自訂復原方案。 請注意：
 
-- 如果您要複寫至 Azure，可以將 Azure 自動化 Runbook 整合至您的復原方案。 [詳細資訊](site-recovery-runbook-automation.md)。
+- 如果您要複寫至 Azure，可以將 Azure 自動化 Runbook 整合至您的復原方案。 [深入了解](site-recovery-runbook-automation.md)。
 - 如果您要複製 System Center VMM 所管理的 Hyper-V VM，可以在內部部署 VMM 伺服器上建立指令碼，並將它包含在復原方案中。
 - 新增指令碼後，群組中會加入新的動作集。 例如，系統會為群組 1 建立一組前置步驟，並且命名為「群組 1：前置步驟」。 所有前置步驟都會列在此動作集內。 只有在部署 VMM 伺服器後，您才能在主要網站上新增指令碼。
-- 如果您新增手動動作，在執行復原方案時，它會在您插入手動動作之處停止。 對話方塊會提示您指定手動動作已完成。
+- 如果您新增手動動作，當復原方案執行時，它會在您插入手動動作的點停止。 對話方塊會提示您指定手動動作已完成。
 - 若要在 VMM 伺服器上建立指令碼，請依照[本文](hyper-v-vmm-recovery-script.md)中的指示。
 - 在容錯移轉至次要站台期間，以及從次要站台容錯回復到主要站台期間，可以套用指令碼。 支援取決於您的複寫案例：
     
@@ -66,7 +65,7 @@ ms.locfileid: "74084512"
     Azure 至 Azure  | Runbook | Runbook
     VMware 至 Azure | Runbook | NA 
     具有 VMM 的 Hyper-V 至 Azure | Runbook | 指令碼
-    從 Hyper-V 站台到 Azure | Runbook | NA
+    Azure 的 Hyper-V 站台 | Runbook | NA
     VMM 至次要 VMM | 指令碼 | 指令碼
 
 1. 在 [復原方案] 中，按一下應新增動作的步驟，並指定應該發生動作的時間：
@@ -90,6 +89,6 @@ ms.locfileid: "74084512"
 
 ## <a name="next-steps"></a>後續步驟
 
-深入了解[執行容錯移轉](site-recovery-failover.md)。  
+深入了解[如何執行容錯移轉](site-recovery-failover.md)。  
 
     

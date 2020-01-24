@@ -1,5 +1,5 @@
 ---
-title: Azure 媒體服務常見問題集 | Microsoft Docs
+title: Azure 媒體服務常見問題
 description: 本文提供有關 Azure 媒體服務常見問題的解答。
 services: media-services
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 3aeff680392fbe966682b57ca1318fac9f0d1d93
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: bdb5a43ad6669bfcd6e93ef4e3bf1646314e4606
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895988"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705865"
 ---
-# <a name="frequently-asked-questions"></a>常見問題集
+# <a name="media-services-v2-frequently-asked-questions"></a>媒體服務 v2 常見問題
 
 本文解說「Azure 媒體服務」(AMS) 使用者社群所提出的常見問題集。
 
