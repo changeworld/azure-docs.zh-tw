@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: e05557b0391a1d698dad000aa9df54424588afe0
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: ede43e3ed939083e7b5ff94899d12f6f4795a880
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892255"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941490"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>從 Azure AD 取得權杖，以從用戶端應用程式授權要求
 
@@ -124,7 +124,7 @@ ms.locfileid: "74892255"
 
 #### <a name="add-references-and-using-statements"></a>新增參考並使用陳述式  
 
-從 Visual Studio 安裝 Azure 儲存體用戶端程式庫。 在 [工具] 功能表中，依序選取 [Nuget 套件管理員] 及 [套件管理員主控台]。 在主控台視窗中輸入下列命令，從適用于 .NET 的 Azure 儲存體用戶端程式庫安裝必要的套件：
+從 Visual Studio 安裝 Azure 儲存體用戶端程式庫。 在 [工具] 功能表中，依序選取 [NuGet 套件管理員] 及 [套件管理員主控台]。 在主控台視窗中輸入下列命令，從適用于 .NET 的 Azure 儲存體用戶端程式庫安裝必要的套件：
 
 ```console
 Install-Package Microsoft.Azure.Storage.Blob
@@ -202,7 +202,7 @@ public async Task<IActionResult> Blob()
 }
 ```
 
-同意是使用者授權應用程式代表使用者存取受保護的資源所用的程序。 Microsoft 身分識別平臺2.0 支援累加式同意，這表示安全性主體一開始可以要求一組最小許可權，並視需要新增許可權一段時間。 當您的程式碼要求存取權杖時，請在 `scope` 參數中指定您的應用程式在任何指定時間所需的許可權範圍。 如需有關增量同意的詳細資訊，請參閱 為何要更新 Microsoft 身分識別平臺（v2.0）中的「增量和動態同意」一節。
+同意是使用者授權應用程式代表使用者存取受保護的資源所用的程序。 Microsoft 身分識別平臺2.0 支援累加式同意，這表示安全性主體一開始可以要求一組最小許可權，並視需要新增許可權一段時間。 當您的程式碼要求存取權杖時，請在 `scope` 參數中指定您的應用程式在任何指定時間所需的許可權範圍。 如需有關增量同意的詳細資訊，請參閱 [為何要更新 Microsoft 身分識別平臺（v2.0）](../../active-directory/develop/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent)中的「**增量和動態同意**」一節。
 
 下列方法會針對要求增量同意來建立驗證屬性：
 

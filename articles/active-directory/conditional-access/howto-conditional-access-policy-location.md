@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf34abaf072b7b80f5831f15d86b12ad2780a920
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 204026825a5132464e1adda611227db2ac7cf91f
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424863"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543982"
 ---
 # <a name="conditional-access-block-access-by-location"></a>條件式存取：依位置封鎖存取
 
@@ -25,12 +25,12 @@ ms.locfileid: "75424863"
 ## <a name="define-locations"></a>定義位置
 
 1. 以全域管理員、安全性系統管理員或條件式存取系統管理員的身分登入**Azure 入口網站**。
-1. 流覽至**Azure Active Directory** > **安全性** > **條件式存取**。
+1. 流覽至**Azure Active Directory** > **安全性** > [**條件式存取**] > **名為 [位置**]。
 1. 選擇 [**新增位置**]。
 1. 為您的位置命名。
 1. 如果您知道組成該位置或**國家/地區**的特定外部可存取 IPv4 位址範圍，請選擇 [ **IP 範圍**]。
    1. 提供**IP 範圍**，或選取您要指定之位置的**國家/地區**。
-      * 如果您選擇 [國家/地區]，您可以選擇包含未知區域。
+      * 如果您選擇 [國家/地區]，可以選擇是否要包含未知的區域。
 1. 選擇 [儲存]
 
 如需有關條件式存取中位置條件的詳細資訊，請參閱 [條件式存取中的位置條件 Azure Active Directory](location-condition.md)
