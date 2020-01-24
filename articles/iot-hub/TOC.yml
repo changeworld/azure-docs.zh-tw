@@ -84,9 +84,9 @@
 - name: 概念
   items:
     - name: TLS 支援
-      href: iot-hub-tls.md
+      href: iot-hub-tls-support.md
     - name: TLS 1.0 和 1.1 淘汰
-      href: tls-1.2-everywhere.md
+      href: iot-hub-tls-deprecating-1-0-and-1-1.md
     - name: 訊息擴充 概觀
       href: iot-hub-message-enrichments-overview.md
     - name: 裝置管理概觀
@@ -466,7 +466,7 @@
       href: 'https://github.com/Azure/iothub-diagnostics'
     - name: MSDN 論壇
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=azureiothub'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/iot-hub/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'

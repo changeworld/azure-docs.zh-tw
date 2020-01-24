@@ -90,7 +90,7 @@
     - name: 封裝和交付
       items:
         - name: 動態封裝
-          displayName: 'origin, packager, HLS, DASH, CMAF, Smooth, manifest'
+          displayName: 'origin, packager, HLS, DASH, CMAF, Smooth, manifest, deliver, format, URL, streaming'
           href: dynamic-packaging-overview.md
         - name: 動態資訊清單
           href: filters-dynamic-manifest-overview.md

@@ -5,12 +5,12 @@ metadata:
   title: Team Data Science Process 文件
   description: 了解如何使用 Team Data Science Process 這種敏捷式反覆資料科學方法，有效產出預測分析解決方案和智慧型應用程式。 TDSP 有助於改善團隊共同作業和學習。 其中包含 Microsoft 及業界其他公司的最佳做法和結構，有助於順利實作資料科學計劃。 目標是協助公司完全了解其分析程式的優點。
   services: machine-learning
-  author: cjgronlund
+  author: marktab
   ms.service: machine-learning
   ms.subservice: team-data-science-process
   ms.topic: landing-page
-  ms.date: 01/18/2018
-  ms.author: cgronlun
+  ms.date: 01/10/2020
+  ms.author: marktab
 abstract:
   description: Team Data Science Process 是一種敏捷式反覆資料科學方法，可有效產出預測分析解決方案和智慧型應用程式。 TDSP 有助於改善團隊共同作業和學習。 其中包含 Microsoft 及業界其他公司的最佳做法和結構，有助於順利實作資料科學計劃。 目標是協助公司完全了解其分析程式的優點。
 sections:
