@@ -11,15 +11,15 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: b36a64bb82449ace7acc1de0b3c2bc7c5efebe70
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c5f85f102d72ac2e4a0315109748d48573f49407
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685550"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721178"
 ---
 # <a name="powershell-cmdlets-and-rest-apis-for-sql-data-warehouse"></a>適用於 SQL 資料倉儲的 PowerShell Cmdlet 和 REST API
-您可使用 Azure PowerShell Cmdlet 或 REST API 管理許多 SQL 資料倉儲系統管理工作。  下列為一些在 SQL 資料倉儲中使用 PowerShell 命令來自動化一般工作的範例。  如需一些良好的 REST 範例，請參閱 [使用 REST 管理延展性][Manage scalability with REST]一文。
+您可使用 Azure PowerShell Cmdlet 或 REST API 管理許多 SQL 資料倉儲系統管理工作。  下列為一些在 SQL 資料倉儲中使用 PowerShell 命令來自動化一般工作的範例。  如需一些良好的 REST 範例，請參閱 [使用 REST 管理延展性](sql-data-warehouse-manage-compute-rest-api.md)一文。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -39,7 +39,7 @@ ms.locfileid: "73685550"
 ```Powershell
 Suspend-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
 ```
-一種變化，此範例會使用管線將抓取的物件傳送至[set-azsqldatabase 搭配][Suspend-AzSqlDatabase]。  結果就是暫停資料庫。 最終的命令會顯示結果。
+一種變化，此範例會使用管線將抓取的物件傳送至[set-azsqldatabase 搭配](https://docs.microsoft.com/powershell/module/az.sql/suspend-azsqldatabase)。  結果就是暫停資料庫。 最終的命令會顯示結果。
 
 ```Powershell
 $database = Get-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
@@ -54,7 +54,7 @@ $resultDatabase
 Resume-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" -DatabaseName "Database02"
 ```
 
-一種變化，此範例會從 "ResourceGroup1" 資源群組包含的 "Server01" 伺服器中，擷取 "Database02" 資料庫。 它會以管線將抓取的物件傳送至[set-azsqldatabase 搭配][Resume-AzSqlDatabase]。
+一種變化，此範例會從 "ResourceGroup1" 資源群組包含的 "Server01" 伺服器中，擷取 "Database02" 資料庫。 它會以管線將抓取的物件傳送至[set-azsqldatabase 搭配](https://docs.microsoft.com/powershell/module/az.sql/resume-azsqldatabase)。
 
 ```Powershell
 $database = Get-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
@@ -69,47 +69,21 @@ $resultDatabase = $database | Resume-AzSqlDatabase
 ## <a name="other-supported-powershell-cmdlets"></a>其他支援的 PowerShell Cmdlet
 這些 PowerShell Cmdlet 皆由 Azure SQL 資料倉儲所支援。
 
-* [Get-AzSqlDatabase][Get-AzSqlDatabase]
-* [Get-AzSqlDeletedDatabaseBackup][Get-AzSqlDeletedDatabaseBackup]
-* [AzSqlDatabaseRestorePoint][Get-AzSqlDatabaseRestorePoint]
-* [New-AzSqlDatabase][New-AzSqlDatabase]
-* [Remove-AzSqlDatabase][Remove-AzSqlDatabase]
-* [Restore-AzSqlDatabase][Restore-AzSqlDatabase]
-* [繼續-Set-azsqldatabase 搭配][Resume-AzSqlDatabase]
-* [Select-AzSubscription][Select-AzSubscription]
-* [Set-AzSqlDatabase][Set-AzSqlDatabase]
-* [暫止-Set-azsqldatabase 搭配][Suspend-AzSqlDatabase]
+* [Get-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabase)
+* [Get-AzSqlDeletedDatabaseBackup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup)
+* [AzSqlDatabaseRestorePoint](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserestorepoint)
+* [New-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase)
+* [Remove-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabase)
+* [Restore-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)
+* [繼續-Set-azsqldatabase 搭配](https://docs.microsoft.com/powershell/module/az.sql/resume-azsqldatabase)
+* [Select-AzSubscription](https://msdn.microsoft.com/library/dn722499.aspx)
+* [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase)
+* [暫止-Set-azsqldatabase 搭配](https://docs.microsoft.com/powershell/module/az.sql/suspend-azsqldatabase)
 
 ## <a name="next-steps"></a>後續步驟
 如需更多 PowerShell 範例，請參閱：
 
-* [使用 PowerShell 建立 SQL 資料倉儲][Create a SQL Data Warehouse using PowerShell]
-* [資料庫還原][Database restore]
+* [使用 PowerShell 建立 SQL 資料倉儲](create-data-warehouse-powershell.md)
+* [資料庫還原](sql-data-warehouse-restore-database-powershell.md)
 
-如需可透過 PowerShell 自動化的其他工作，請參閱[Azure SQL Database Cmdlet][Azure SQL Database Cmdlets]。 請注意，Azure SQL 資料倉儲並沒有支援所有的 Azure SQL Database Cmdlet。  如需可以使用 REST 來自動化的工作清單，請參閱[Azure SQL Database 的作業][Operations for Azure SQL Database]。
-
-<!--Image references-->
-
-<!--Article references-->
-[How to install and configure Azure PowerShell]: /powershell/azureps-cmdlets-docs
-[Create a SQL Data Warehouse using PowerShell]: ./create-data-warehouse-powershell.md
-[Database restore]: ./sql-data-warehouse-restore-database-powershell.md
-[Manage scalability with REST]: ./sql-data-warehouse-manage-compute-rest-api.md
-
-<!--MSDN references-->
-[Azure SQL Database Cmdlets]: https://docs.microsoft.com/powershell/module/az.sql
-[Operations for Azure SQL Database]: https://msdn.microsoft.com/library/azure/dn505719.aspx
-[Get-AzSqlDatabase]: https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabase
-[Get-AzSqlDeletedDatabaseBackup]: https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup
-[Get-AzSqlDatabaseRestorePoint]: https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserestorepoint
-[New-AzSqlDatabase]: https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase
-[Remove-AzSqlDatabase]: https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabase
-[Restore-AzSqlDatabase]: https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase
-[Resume-AzSqlDatabase]: https://docs.microsoft.com/powershell/module/az.sql/resume-azsqldatabase
-<!-- It appears that Select-AzSubscription isn't documented, so this points to Select-AzureSubscription -->
-[Select-AzSubscription]: https://msdn.microsoft.com/library/dn722499.aspx
-[Set-AzSqlDatabase]: https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase
-[Suspend-AzSqlDatabase]: https://docs.microsoft.com/powershell/module/az.sql/suspend-azsqldatabase
-
-<!--Other Web references-->
-[Microsoft Web Platform Installer]: https://aka.ms/webpi-azps
+如需可使用 PowerShell 自動化的其他工作，請參閱[Azure SQL Database Cmdlet](https://docs.microsoft.com/powershell/module/az.sql)。 並非所有 Azure SQL Database Cmdlet 都支援 Azure SQL 資料倉儲。  如需可以使用 REST 來自動化的工作清單，請參閱[Azure SQL Database 的作業](https://msdn.microsoft.com/library/azure/dn505719.aspx)。

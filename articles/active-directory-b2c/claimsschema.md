@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1a26d6228fd2d0383f22d4f286cc84e263facfe6
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 1e72e100bcb3d06403af1514dea13de59c623310
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999093"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76713065"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -42,15 +42,15 @@ ms.locfileid: "70999093"
 
 **ClaimType** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 描述 |
+| 屬性 | 必要項 | 說明 |
 | --------- | -------- | ----------- |
 | Id | 是 | 要用於宣告類型的識別碼。 其他元素可以在原則中使用這個識別碼。 |
 
 **ClaimType** 元素包含下列元素：
 
-| 元素 | 發生次數 | 描述 |
+| 元素 | 發生次數 | 說明 |
 | ------- | ----------- | ----------- |
-| 顯示名稱 | 0:1 | 要在各種畫面上顯示給使用者的標題。 此值可進行[當地語系化](localization.md)。 |
+| DisplayName | 0:1 | 要在各種畫面上顯示給使用者的標題。 此值可進行[當地語系化](localization.md)。 |
 | DataType | 0:1 | 宣告的類型。 您可以使用下列資料類型：boolean、date、dateTime、int、long、string、stringCollection、alternativeSecurityIdCollection。 |
 | DefaultPartnerClaimTypes | 0:1 | 要用於指定通訊協定的夥伴預設宣告類型。 此值可以使用 **InputClaim** 或 **OutputClaim** 元素中指定的 **PartnerClaimType** 來覆寫。 使用此元素來指定通訊協定的預設名稱。  |
 | Mask | 0:1 | 遮罩字元的選擇性字串，可在顯示宣告時套用。 例如，可將電話號碼 324-232-4343 的遮罩設定為 XXX-XXX-4343。 |
@@ -63,15 +63,15 @@ PredicateValidationReference| 0:1 | 對 **PredicateValidationsInput** 元素的�
 
 **DefaultPartnerClaimTypes** 可能包含下列元素：
 
-| 元素 | 發生次數 | 描述 |
+| 元素 | 發生次數 | 說明 |
 | ------- | ----------- | ----------- |
-| Protocol | 0:n | 含有其預設夥伴宣告類型名稱的通訊協定清單。 |
+| 通訊協定 | 0:n | 含有其預設夥伴宣告類型名稱的通訊協定清單。 |
 
 **Protocol** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 描述 |
+| 屬性 | 必要項 | 說明 |
 | --------- | -------- | ----------- |
-| Name | 是 | Azure AD B2C 所支援的有效通訊協定名稱。 可能的值包括：OAuth1、OAuth2、SAML2、OpenIdConnect。 |
+| 名稱 | 是 | Azure AD B2C 所支援的有效通訊協定名稱。 可能的值為： OAuth1、OAuth2、SAML2、OpenIdConnect。 |
 | PartnerClaimType | 是 | 要使用的宣告類型名稱。 |
 
 在下列範例中，當識別體驗架構與 SAML2 識別提供者或信賴憑證者應用程式進行互動時，會將 **surname** 宣告對應至 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`，與 OpenIdConnect 和 OAuth2 互動時，則會將宣告對應至 `family_name`。
@@ -100,14 +100,14 @@ PredicateValidationReference| 0:1 | 對 **PredicateValidationsInput** 元素的�
 }
 ```
 
-### <a name="mask"></a>遮罩
+### <a name="mask"></a>Mask
 
 **Mask** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 描述 |
+| 屬性 | 必要項 | 說明 |
 | --------- | -------- | ----------- |
 | `Type` | 是 | 宣告遮罩的類型。 可能的值：`Simple` 或 `Regex`。 `Simple` 值表示會將簡單的文字遮罩套用到字串宣告的前置部分。 `Regex` 值表示會將規則運算式套用到整個字串宣告。  如果指定 `Regex` 值，也必須透過要使用的規則運算式來定義選擇性屬性。 |
-| `Regex` | 否 | 如果 **`Type`** 設定為`Regex`, 請指定要使用的正則運算式。
+| `Regex` | 否 | 如果 **`Type`** 設定為 `Regex`，請指定要使用的正則運算式。
 
 下列範例會使用 `Simple` 遮罩來設定 **PhoneNumber** 宣告：
 
@@ -122,7 +122,7 @@ PredicateValidationReference| 0:1 | 對 **PredicateValidationsInput** 元素的�
 
 識別體驗架構會呈現電話號碼，同時隱藏前六個數字：
 
-![在瀏覽器中顯示的電話號碼宣告, 其中前六個數字由 Xs 遮罩](./media/claimsschema/mask.png)
+![在瀏覽器中顯示的電話號碼宣告，其中前六個數字由 Xs 遮罩](./media/claimsschema/mask.png)
 
 下列範例會使用 `Regex` 遮罩來設定 **AlternateEmail** 宣告：
 
@@ -137,29 +137,29 @@ PredicateValidationReference| 0:1 | 對 **PredicateValidationsInput** 元素的�
 
 識別體驗架構只會呈現電子郵件地址和電子郵件網域名稱的第一個字母：
 
-![瀏覽器中顯示的電子郵件宣告, 其中包含以星號遮罩的字元](./media/claimsschema/mask-regex.png)
+![瀏覽器中顯示的電子郵件宣告，其中包含以星號遮罩的字元](./media/claimsschema/mask-regex.png)
 
 
 ### <a name="restriction"></a>限制
 
 **Restriction** 元素可以包含下列屬性：
 
-| 屬性 | 必要項 | 描述 |
+| 屬性 | 必要項 | 說明 |
 | --------- | -------- | ----------- |
 | MergeBehavior | 否 | 此方法可用來合併列舉值與具備相同識別碼之父代原則中的 ClaimType。 當您覆寫基本原則中指定的宣告時，請使用這個屬性。 可能的值：`Append`、`Prepend` 或 `ReplaceAll`。 `Append` 值是資料集合，應該附加至父代原則中指定的集合結尾。 `Prepend` 值是資料集合，應該新增到父代原則中指定的集合之前。 `ReplaceAll` 值是父代原則中應忽略的指定資料集合。 |
 
 **Restriction** 元素包含下列元素：
 
-| 元素 | 發生次數 | 描述 |
+| 元素 | 發生次數 | 說明 |
 | ------- | ----------- | ----------- |
-| 列舉 | 1:n | 使用者介面中使用者可用來針對宣告進行選取的可用選項，例如下拉式清單中的值。 |
+| 列舉型別 | 1:n | 使用者介面中使用者可用來針對宣告進行選取的可用選項，例如下拉式清單中的值。 |
 | 模式 | 1:1 | 要使用的規則運算式。 |
 
-### <a name="enumeration"></a>列舉
+### <a name="enumeration"></a>列舉型別
 
 **Enumeration** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 描述 |
+| 屬性 | 必要項 | 說明 |
 | --------- | -------- | ----------- |
 | 文字 | 是 | 針對此選項，要在使用者介面中顯示給使用者的顯示字串。 |
 |值 | 是 | 與選取此選項相關聯的宣告值。 |
@@ -188,7 +188,7 @@ PredicateValidationReference| 0:1 | 對 **PredicateValidationsInput** 元素的�
 
 **Pattern** 元素可以包含下列屬性：
 
-| 屬性 | 必要項 | 描述 |
+| 屬性 | 必要項 | 說明 |
 | --------- | -------- | ----------- |
 | RegularExpression | 是 | 此類型的宣告必須符合才能生效的規則運算式。 |
 | HelpText | 否 | 適用於此宣告的模式或規則運算式。 |
@@ -368,7 +368,7 @@ Azure AD B2C 支援各種不同的使用者輸入類型 (例如文字方塊、�
   <UserHelpText>A claim responsible for holding response messages to send to the relying party</UserHelpText>
   <UserInputType>Paragraph</UserInputType>
   <Restriction>
-    <Enumeration Text="B2C_V1_90001" Value="You cant sign in because you are a minor" />
+    <Enumeration Text="B2C_V1_90001" Value="You cannot sign in because you are a minor" />
     <Enumeration Text="B2C_V1_90002" Value="This action can only be performed by gold members" />
     <Enumeration Text="B2C_V1_90003" Value="You have not been enabled for this operation" />
   </Restriction>

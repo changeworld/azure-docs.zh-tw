@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f018edfa7cbb244c57f12c3b83dba086e1590f2
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: a82efda4cf53931dbf81b993b12a2927f02dfa0b
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75778340"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711692"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>含範圍篩選器的屬性型應用程式佈建
 本文的目標在於說明如何使用範圍篩選條件來定義以屬性為基礎的規則，以決定將哪些使用者佈建到應用程式。
@@ -52,7 +52,7 @@ Azure AD 佈建服務所處理的每個使用者或群組，一律會根據每�
 
 例如，假設有下列範圍篩選條件：
 
-![範圍篩選器](./media/define-conditional-rules-for-provisioning-user-accounts/scoping-filter.PNG) 
+![範圍篩選器](media/define-conditional-rules-for-provisioning-user-accounts/scoping-filter.PNG) 
 
 根據此範圍篩選條件，使用者必須滿足下列條件才能佈建：
 
@@ -117,7 +117,7 @@ Azure AD 佈建服務所處理的每個使用者或群組，一律會根據每�
 |----|----|----|----|
 |userPrincipalName|REGEX MATCH|.\*@domain.com |具有 userPrincipal 網域 @domain.com 的所有使用者將會在布建範圍內|
 |userPrincipalName|不符合 REGEX|.\*@domain.com|具有 userPrincipal 網域 @domain.com 的所有使用者，將不會超出布建的範圍|
-|department|EQUALS|業務|銷售部門的所有使用者都在布建範圍內|
+|department|EQUALS|銷售|銷售部門的所有使用者都在布建範圍內|
 |workerID|REGEX MATCH|(1[0-9][0-9][0-9][0-9][0-9][0-9])| WorkerIDs 介於1000000和2000000之間的所有員工都在布建範圍內。|
 
 ## <a name="related-articles"></a>相關文章

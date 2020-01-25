@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: ff0eb102d37f285279c041ff91b7a89e157259eb
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: efef578f5c62bef4ae33b98b568fd6d5c1389c4a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672250"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715118"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Azure App Service 中的驗證和授權
 
@@ -24,9 +24,9 @@ Azure App Service 提供內建的驗證和授權支援，因此您在 Web 應用
 若要有安全的驗證和授權，必須對安全性有深入了解，包括同盟、加密、[JSON Web 權杖 (JWT)](https://wikipedia.org/wiki/JSON_Web_Token) 管理、[授與類型](https://oauth.net/2/grant-types/)等等。 App Service 會提供這些公用程式，以便您可以將更多的時間和精力花在為客戶提供商務價值上。
 
 > [!IMPORTANT]
-> 您不需要使用驗證/AuthO 的 App Service。 許多 Web 架構都會搭載安全性功能，您可以視需要加以使用。 如果您需要的彈性高於 App Service 所提供的彈性，也可以撰寫您自己的公用程式。  
+> 您不需要使用驗證/AuthO 的 App Service。 您可以在您選擇的 web 架構中使用配套的安全性功能，也可以撰寫自己的公用程式。 不過，請記住， [Chrome 80 正在對 cookie 的 SameSite 進行重大變更](https://www.chromestatus.com/feature/5088147346030592)（在2020年3月的發行日期），而自訂遠端驗證或依賴跨網站 cookie 張貼的其他案例，可能會在用戶端 Chrome 瀏覽器更新時中斷。 因應措施很複雜，因為它需要針對不同的瀏覽器支援不同的 SameSite 行為。 
 >
-> 不過，如果您使用任何非 App Service 的遠端驗證選項，請記住[Chrome 80 會對其 SameSite 的 cookie 進行重大變更](https://www.chromestatus.com/feature/5088147346030592)（發行日期約于2020年3月），而您的應用程式驗證機制可能會在用戶端瀏覽器更新時中斷。 ASP.NET Core 檔提供如何在您的應用程式中解決此情況的資訊，網址為[HTTP：瀏覽器 SameSite 變更會影響驗證](/dotnet/core/compatibility/3.0-3.1#http-browser-samesite-changes-impact-authentication)。 其中包含有關如何針對主要瀏覽器測試這種重大變更的實用指引，不論您是否使用 ASP.NET Core。
+> App Service 所裝載的 ASP.NET Core 2.1 和以上版本已針對這項重大變更進行修補，並適當地處理 Chrome 80 和較舊的瀏覽器。 此外，ASP.NET Framework 4.7.2 的相同修補程式會部署在2020年1月的 App Service 實例上。 如需詳細資訊，包括如何知道您的應用程式是否已收到修補程式，請參閱[Azure App Service SameSite cookie update](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/)。
 >
 
 如需原生行動應用程式的專屬資訊，請參閱 [Azure App Service 的行動應用程式使用者驗證和授權](../app-service-mobile/app-service-mobile-auth.md)。

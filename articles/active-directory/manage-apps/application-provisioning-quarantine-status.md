@@ -16,12 +16,12 @@ ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3ad689fb57c51d0deb698a723b93e6175bdbb5c
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 933217b2ad86535d45f6674165ee162f263a8cd7
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73882884"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712169"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>隔離狀態中的應用程式布建
 
@@ -63,7 +63,7 @@ Azure AD 布建服務會監視您設定的健康情況，並將狀況不良的�
 
 - 請檢查應用程式的布建設定，以確定您已[輸入有效的系統管理員認證](configure-automatic-user-provisioning-portal.md#configuring-automatic-user-account-provisioning)。 Azure AD 必須能夠與目標應用程式建立信任關係。 請確定您已輸入有效的認證，且您的帳戶具有必要的許可權。
 
-- 請參閱布建[記錄](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)以進一步調查造成隔離的錯誤，並解決錯誤。 前往 [**活動**] 區段中的 [ **Azure Active Directory** &gt;**企業應用程式**&gt; 布建**記錄（預覽）** ]，以存取 Azure 入口網站中的布建記錄。
+- 請參閱布建[記錄](../reports-monitoring/concept-provisioning-logs.md)以進一步調查造成隔離的錯誤，並解決錯誤。 前往 [**活動**] 區段中的 [ **Azure Active Directory** &gt;**企業應用程式**&gt; 布建**記錄（預覽）** ]，以存取 Azure 入口網站中的布建記錄。
 
 解決問題之後，請重新開機布建作業。 應用程式布建設定的某些變更（例如屬性對應或範圍篩選器）將會自動重新開機布建。 應用程式 [布建 **] 頁面上**的進度列會指出布建上次啟動的時間。 如果您需要手動重新開機布建工作，請使用下列其中一種方法：  
 

@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/26/2019
+ms.date: 01/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 40bda408731e90ab4c0c987b981a1c7f16b0de5d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 2493e893f9afda0642bd838c94538dd0b984bce5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979347"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720651"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure 傳統訂用帳戶管理員
 
@@ -99,29 +99,11 @@ Microsoft 建議您使用角色型存取控制 (RBAC) 管理 Azure 資源存取�
 
 只有帳戶管理員可以變更訂用帳戶的服務管理員。 根據預設，註冊 Azure 訂用帳戶時系統會將服務管理員與帳戶管理員設為同一人。 具有帳戶管理員角色的使用者無法存取 Azure 入口網站。 具有服務管理員角色的使用者可完整存取 Azure 入口網站。 如果帳戶管理員和服務管理員是相同的使用者，並且您將服務管理員變更為不同的使用者，則帳戶管理員將失去 Azure 入口網站的存取權限。 不過，帳戶管理員可隨時使用帳戶中心，將自己變更回服務管理員。
 
-有兩種方式可以變更服務管理員。 您可以在 **Azure 入口網站**或是**帳戶中心**中進行變更。
-
-### <a name="azure-portal"></a>Azure Portal
-
-1. 檢查變更服務系統管理員的限制，以確保您的案例受到支援。
-
-1. 以帳戶管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
-
-1. 開啟[訂用帳戶](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)，並選取訂用帳戶。
-
-1. 按一下 **[屬性]** 。
-
-    ![顯示帳戶系統管理員的螢幕擷取畫面](./media/classic-administrators/account-admin.png)
-
-1. 在頂端，按一下 [服務管理] 以開啟 [服務管理員] 窗格。
-
-    如果 [服務管理] 按鈕已停用，表示您沒有權限。 只有帳戶管理員的使用者可以變更訂用帳戶的服務管理員。
-
-1. 選取新的服務管理員，然後按一下 [儲存]。
+請遵循下列步驟來變更**帳戶中心**內的服務系統管理員。
 
 ### <a name="account-center"></a>帳戶中心
 
-1. 檢查變更服務系統管理員的限制，以確保您的案例受到支援。
+1. 檢查[變更服務管理員的限制，以](#limitations-for-changing-the-service-administrator)確保您的案例受到支援。
 
 1. 以帳戶管理員身分登入[帳戶中心](https://account.windowsazure.com/subscriptions)。
 

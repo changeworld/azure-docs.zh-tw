@@ -1,22 +1,22 @@
 ---
-title: 在不同的 Azure 儲存體位置進行資料取樣 - Team Data Science Process
+title: 不同 Azure 儲存體位置中的範例資料-小組資料科學流程
 description: 在 Azure Blob 容器、SQL Server 和 Hive 資料表上進行資料取樣，使其成為更小但具代表性且更容易管理的大小。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fc91aec80f74488125649cfe807757ba5ae49c9b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 22e91d50227fcb44c7b90478d76379c14161ae05
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60253106"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718598"
 ---
 # <a name="heading"></a>在 Azure Blob 容器、SQL Server 和 Hive 資料表中進行資料取樣
 
@@ -30,5 +30,5 @@ ms.locfileid: "60253106"
 
 **為何要對資料進行取樣？**
 
-如果您規劃分析的資料集很龐大，通常最好是對資料進行向下取樣，將資料縮減為更小但具代表性且更容易管理的大小。 這有助於資料了解、探索和功能工程。 它在 Cortana 分析程序中扮演的角色是能夠快速建立資料處理函式與機器學習服務模型的原型。
+如果您規劃分析的資料集很龐大，通常最好是對資料進行向下取樣，將資料縮減為更小但具代表性且更容易管理的大小。 縮減可能有助於資料的瞭解、探索和特徵工程設計。 Cortana 分析程式中的這個取樣角色，是為了能夠快速建立資料處理函式和機器學習模型的原型。
 

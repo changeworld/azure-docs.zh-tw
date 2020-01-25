@@ -3,25 +3,25 @@ title: 識別適用於 Azure Machine Learning 的案例 - Team Data Science Proc
 description: 選取適合使用 Team Data Science Process 進行進階預測性分析的案例。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3e7d747901fb73afa78b6162316709d7d2e78927
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 48b51c40e5de8f10d9d1d16b02e2c70b045816b3
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981124"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76710486"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>在 Azure 機器學習中的進階分析案例
 本文概述可以運用 [Team Data Science Process (TDSP)](overview.md)來處理的各種範例資料來源和目標案例。 TDSP 提供系統化的方法，可讓小組共同建置智慧型應用程式。 此處呈現的案例將根據資料特性、來源位置和在 Azure 中的目標儲存機制，來說明資料處理工作流程中可用的選項。
 
-最後一節提供 **決策樹** ，讓您在選取適合您資料和目標的範例案例時可以使用。
+最後一節會顯示用於選取適用于您的資料和目標之範例案例的**決策樹**。
 
 下列各節均提供一個範例案例。 在每個案例中，都會列出可能的資料科學或進階分析流程，以及支援的 Azure 資源。
 
@@ -35,7 +35,7 @@ ms.locfileid: "75981124"
 > 
 > 
 
-## <a name="smalllocal"></a>案例 \#1：本機檔案中的中小型表格式資料集
+## <a name="smalllocal"></a>案例 \#1：本機檔案中的小型至中型表格式資料集
 ![中小型本機檔案][1]
 
 #### <a name="additional-azure-resources-none"></a>其他 Azure 資源：無
@@ -49,8 +49,8 @@ ms.locfileid: "75981124"
 #### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>其他 Azure 資源：Azure 虛擬機器 (IPython Notebook 伺服器)
 1. 建立執行 IPython Notebook 的 Azure 虛擬機器。
 1. 將資料上傳至 Azure 儲存體容器。
-1. 前置處理和清除 IPython Notebook 中的資料 (從 Azure 儲存體容器存取資料)。
-1. 將資料轉換為已清理的表格式格式。
+1. 在 IPython 筆記本中預先處理和清除資料，從 Azure 儲存體容器存取資料。
+1. 將資料轉換為已清理的表格式表單。
 1. 將轉換的資料儲存在 Azure Blob 中。
 1. 登入 [Azure 機器學習 Studio](https://studio.azureml.net/)。
 1. 使用匯[入資料][import-data]模組從 Azure blob 讀取資料。
@@ -63,7 +63,7 @@ ms.locfileid: "75981124"
 1. 建立執行 IPython Notebook 的 Azure 虛擬機器。
 1. 將資料上傳至 Azure 儲存體容器。
 1. 前置處理和清除 IPython Notebook 中的資料 (從 Azure Blob 存取資料)。
-1. 若有需要，請將資料轉換為已清理的表格式格式。
+1. 如有需要，將資料轉換為已清除的表格式表單。
 1. 視需要瀏覽資料並建立功能。
 1. 擷取中小型資料範例。
 1. 將取樣資料儲存在 Azure Blob 中。
@@ -77,8 +77,8 @@ ms.locfileid: "75981124"
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>其他 Azure 資源：Azure 虛擬機器 (SQL Server / IPython Notebook 伺服器)
 1. 建立執行 SQL Server + IPython Notebook 的 Azure 虛擬機器。
 1. 將資料上傳至 Azure 儲存體容器。
-1. 使用 IPython Notebook 前置處理和清除 Azure 儲存體容器中的資料。
-1. 若有需要，請將資料轉換為已清理的表格式格式。
+1. 使用 IPython 筆記本，在 Azure 儲存體容器中預先處理和清除資料。
+1. 如有需要，將資料轉換為已清除的表格式表單。
 1. 將資料儲存至 VM-local 檔案 (IPython Notebook 會在 VM 上執行，本機磁碟是指 VM 磁碟機)。
 1. 將資料載入執行於 Azure VM 的 SQL Server 資料庫。
    
@@ -95,13 +95,13 @@ ms.locfileid: "75981124"
    * 使用 ODBC 連線字串，存取 VM 上的 SQL Server。
    * 建立資料庫和目標資料表。
    * 使用其中一種大量匯入方法，從 VM 本機檔案載入資料。
-1. 視需要瀏覽資料並建立功能。 請注意，功能在資料庫資料表中無需具體化。 僅注意建立這些功能的必要查詢。
+1. 視需要瀏覽資料並建立功能。 這些功能不需要在資料庫資料表中具體化。 僅注意建立這些功能的必要查詢。
 1. 若有需要，請決定資料範例大小。
 1. 登入 [Azure 機器學習 Studio](https://studio.azureml.net/)。
-1. 使用匯[入資料][import-data]模組直接從 SQL Server 讀取資料。 如有需要，請在匯[入資料][import-data]查詢中，貼上必要的查詢來抽取欄位、建立功能，以及範例資料。
+1. 使用匯[入資料][import-data]模組直接從 SQL Server 讀取資料。 如有需要，請在匯[入資料][import-data]查詢中，貼上抽取欄位、建立功能及範例資料的必要查詢。
 1. 建置從內嵌的資料集開始的 Azure 機器學習實驗流程。
 
-## <a name="largelocaltodb"></a>案例 \#5：本機資料中的大型資料集，目標 Azure VM 中的 SQL Server
+## <a name="largelocaltodb"></a>案例 \#5：本機檔案中的大型資料集、Azure VM 中的目標 SQL Server
 ![大型本機檔案至 Azure 中的 SQL DB][5]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>其他 Azure 資源：Azure 虛擬機器 (SQL Server / IPython Notebook 伺服器)
@@ -109,37 +109,33 @@ ms.locfileid: "75981124"
 1. 將資料上傳至 Azure 儲存體容器。
 1. (選擇性) 前置處理和清除資料。
    
-   a.  前置處理和清除 IPython Notebook 中的資料，從 Azure 存取資料
+    a.  前置處理和清除 IPython Notebook 中的資料 (從 Azure Blob 存取資料)。
    
-       blobs.
+    b.  如有需要，將資料轉換為已清除的表格式表單。
    
-   b.  若有需要，請將資料轉換為已清理的表格式格式。
-   
-   c.  將資料儲存至 VM-local 檔案 (IPython Notebook 會在 VM 上執行，本機磁碟是指 VM 磁碟機)。
+    c.  將資料儲存至 VM-local 檔案 (IPython Notebook 會在 VM 上執行，本機磁碟是指 VM 磁碟機)。
 1. 將資料載入執行於 Azure VM 的 SQL Server 資料庫。
    
-   a.  登入 SQL Server VM。
+    a.  登入 SQL Server VM。
    
-   b.  如果資料尚未儲存，請從 Azure 下載資料檔案
+    b.  如果尚未儲存資料，請將資料檔案從 Azure 儲存體容器下載到本機 VM 資料夾。
    
-       storage container to local-VM folder.
+    c.  執行 SQL Server Management Studio。
    
-   c.  執行 SQL Server Management Studio。
+    d.  建立資料庫和目標資料表。
    
-   d.  建立資料庫和目標資料表。
+    e.  使用其中一個大量匯入方法來載入資料。
    
-   e.  使用其中一個大量匯入方法來載入資料。
-   
-   f.  如果需要資料表聯結，請建立索引以加速聯結。
+    f.  如果需要資料表聯結，請建立索引以加速聯結。
    
    > [!NOTE]
    > 如需加快大型資料的載入速度，建議您建立分割資料表並大量平行匯入資料。 如需詳細資訊，請參閱 [平行資料匯入至 SQL 分割資料表](parallel-load-sql-partitioned-tables.md)。
    > 
    > 
-1. 視需要瀏覽資料並建立功能。 請注意，功能在資料庫資料表中無需具體化。 僅注意建立這些功能的必要查詢。
+1. 視需要瀏覽資料並建立功能。 這些功能不需要在資料庫資料表中具體化。 僅注意建立這些功能的必要查詢。
 1. 若有需要，請決定資料範例大小。
 1. 登入 [Azure 機器學習 Studio](https://studio.azureml.net/)。
-1. 使用匯[入資料][import-data]模組直接從 SQL Server 讀取資料。 如有需要，請在匯[入資料][import-data]查詢中，貼上必要的查詢來抽取欄位、建立功能，以及範例資料。
+1. 使用匯[入資料][import-data]模組直接從 SQL Server 讀取資料。 如有需要，請在匯[入資料][import-data]查詢中，貼上抽取欄位、建立功能及範例資料的必要查詢。
 1. 從上傳的資料集開始的簡單 Azure Machine Learning 實驗流程
 
 ## <a name="largedbtodb"></a>案例 \#6：內部部署 SQL Server 資料庫中的大型資料集，以 Azure 虛擬機器中的 SQL Server 為目標
@@ -158,7 +154,7 @@ ms.locfileid: "75981124"
    
    a.  登入 SQL Server VM。
    
-   b.  將資料檔案從 Azure 儲存體容器下載到 local-VM 資料夾。
+   b.  將資料檔案從 Azure 儲存體容器下載到本機 VM 資料夾。
    
    c.  執行 SQL Server Management Studio。
    
@@ -172,17 +168,17 @@ ms.locfileid: "75981124"
    > 如需加快大型資料的載入速度，請建立分割資料表並大量平行匯入資料。 如需詳細資訊，請參閱 [平行資料匯入至 SQL 分割資料表](parallel-load-sql-partitioned-tables.md)。
    > 
    > 
-1. 視需要瀏覽資料並建立功能。 請注意，功能在資料庫資料表中無需具體化。 僅注意建立這些功能的必要查詢。
+1. 視需要瀏覽資料並建立功能。 這些功能不需要在資料庫資料表中具體化。 僅注意建立這些功能的必要查詢。
 1. 若有需要，請決定資料範例大小。
 1. 登入 [Azure 機器學習 Studio](https://studio.azureml.net/)。
-1. 使用匯[入資料][import-data]模組直接從 SQL Server 讀取資料。 如有需要，請在匯[入資料][import-data]查詢中，貼上必要的查詢來抽取欄位、建立功能，以及範例資料。
+1. 使用匯[入資料][import-data]模組直接從 SQL Server 讀取資料。 如有需要，請在匯[入資料][import-data]查詢中，貼上抽取欄位、建立功能及範例資料的必要查詢。
 1. 從上傳的資料集開始的簡單 Azure Machine Learning 實驗流程。
 
 ### <a name="alternate-method-to-copy-a-full-database-from-an-on-premises--sql-server-to-azure-sql-database"></a>將整個資料庫從內部部署 SQL Server 複製到 Azure SQL Database 的替代方法
 ![卸離本機 DB 和連結至 Azure 中的 SQL DB][7]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>其他 Azure 資源：Azure 虛擬機器 (SQL Server / IPython Notebook 伺服器)
-若要在您的 SQL Server VM 中複寫整個 SQL Server 資料庫，您應將資料庫從一個位置/伺服器複製到另一個位置/伺服器 (假設資料庫可以暫時設定離線)。 您可以在 SQL Server Management Studio Object Explorer 中，或使用對等的 Transact-SQL 命令來執行此作業。
+若要在您的 SQL Server VM 中複寫整個 SQL Server 資料庫，您應將資料庫從一個位置/伺服器複製到另一個位置/伺服器 (假設資料庫可以暫時設定離線)。 您可以使用 SQL Server Management Studio 物件總管，或使用對等的 Transact-sql 命令。
 
 1. 在來源位置卸離資料庫。 如需詳細資訊，請參閱[卸離資料庫](https://technet.microsoft.com/library/ms191491\(v=sql.110\).aspx)。
 1. 在 Windows 檔案總管或 Windows 命令提示字元視窗中，將已卸離的資料庫檔案和記錄檔複製到位於 Azure 中 SQL Server VM 上的目標位置。
@@ -202,7 +198,7 @@ ms.locfileid: "75981124"
    
        blobs.
    
-   b.  若有需要，請將資料轉換為已清理的表格式格式。
+   b.  如有需要，將資料轉換為已清除的表格式表單。
    
    c.  將資料儲存至 VM-local 檔案 (IPython Notebook 會在 VM 上執行，本機磁碟是指 VM 磁碟機)。
 1. 將資料上傳至步驟 2 中已選取 Hadoop 叢集的預設容器。
@@ -220,7 +216,7 @@ ms.locfileid: "75981124"
    > 如果資料太大，使用者可以建立包含分割區的 Hive 資料表 接著，使用者可以在前端節點上的 Hadoop 命令列中使用 `for` 迴圈，以將資料載入使用資料分割的 Hive 分割資料表。
    > 
    > 
-1. 在 Hadoop 命令列中，視需要瀏覽資料並建立功能。 請注意，功能在資料庫資料表中無需具體化。 僅注意建立這些功能的必要查詢。
+1. 在 Hadoop 命令列中，視需要瀏覽資料並建立功能。 這些功能不需要在資料庫資料表中具體化。 僅注意建立這些功能的必要查詢。
    
    a.  登入 Hadoop 叢集的前端節點
    
@@ -231,12 +227,12 @@ ms.locfileid: "75981124"
    d.  在 Hadoop 叢集前端節點的 Hadoop 命令列中執行 Hive 查詢，以瀏覽資料並視需要建立功能。
 1. 若有需要，取樣資料以符合 Azure Machine Learning Studio 需求。
 1. 登入 [Azure 機器學習 Studio](https://studio.azureml.net/)。
-1. 使用匯[入資料][import-data]模組直接從 `Hive Queries` 讀取資料。 如有需要，請在匯[入資料][import-data]查詢中，貼上必要的查詢來抽取欄位、建立功能，以及範例資料。
+1. 使用匯[入資料][import-data]模組直接從 `Hive Queries` 讀取資料。 如有需要，請在匯[入資料][import-data]查詢中，貼上抽取欄位、建立功能及範例資料的必要查詢。
 1. 從上傳的資料集開始的簡單 Azure Machine Learning 實驗流程。
 
 ## <a name="decisiontree"></a>用於案例選擇的決策樹
 ---
-下圖摘要說明上述案例，以及讓您連結到每個分項案例的「進階分析程序和技術」選擇。 請注意，資料處理、資料探索、功能工程和取樣可能會出現在一或多個方法/環境中 (在來源、中繼和/或目標環境中)，且可以視需要反覆處理。 圖表的目的只是說明一些可能的流程，並不提供詳盡的列舉。
+下圖摘要說明上述案例，以及讓您連結到每個分項案例的「進階分析程序和技術」選擇。 資料處理、探索、功能工程和取樣可能會在一或多個方法/環境中發生，在來源、中繼和（或）目標環境中，而且可以視需要反復進行。 圖表的目的只是說明一些可能的流程，並不提供詳盡的列舉。
 
 ![範例 DS 程序逐步解說案例][8]
 

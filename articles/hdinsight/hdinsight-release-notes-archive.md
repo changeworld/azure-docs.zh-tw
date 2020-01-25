@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/08/2019
-ms.openlocfilehash: ad9437b135e48dcfaff9efa5f6daf345d78e79ef
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 094d9fe7425a6192ce2af94c3ea18cac20ff9ded
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895326"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720328"
 ---
 # <a name="archived-release-notes"></a>封存的版本資訊
 
@@ -52,10 +52,10 @@ HDInsight 現在可讓您使用自己的 SQL DB 進行 Apache Ambari。 您可�
 
 從下一版開始，您將能夠加入宣告並設定新的 HDInsight 叢集，只接受 TLS 1.2 連線。 
 
-從6/30/2020 開始，Azure HDInsight 將會強制執行所有 HTTPS 連線的 TLS 1.2 或更新版本。 我們建議您確定您的所有用戶端都已準備好處理 TLS 1.2 或更新版本。
+從6/30/2020 開始，Azure HDInsight 將會強制執行所有 HTTPS 連線的 TLS 1.2 或更新版本。 建議您確保所有用戶端都已準備好使用 TLS 1.2 或更新版本。
 
 #### <a name="moving-to-azure-virtual-machine-scale-sets"></a>移至 Azure 虛擬機器擴展集
-HDInsight 現在會使用 Azure 虛擬機器來布建叢集。 從2006年 2 2020 開始（將于稍後傳達確切的日期），HDInsight 會改為使用 Azure 虛擬機器擴展集。 深入瞭解[Azure 虛擬機器擴展集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)。
+HDInsight 現在會使用 Azure 虛擬機器來布建叢集。 從2020年2月開始（將于稍後傳達確切的日期），HDInsight 將改用 Azure 虛擬機器擴展集。 深入瞭解[Azure 虛擬機器擴展集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)。
 
 #### <a name="esp-spark-cluster-node-size-change"></a>ESP Spark 叢集節點大小變更 
 在即將推出的版本中：

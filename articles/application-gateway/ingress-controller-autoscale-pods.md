@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 0e1ba6d86778b40f96940c417050e242fde33845
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: b98ab8d3c4d03115ea689b4dfd3d8dee753f019d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797578"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715073"
 ---
 # <a name="autoscale-your-aks-pods-using-application-gateway-metrics-beta"></a>使用應用程式閘道計量（搶鮮版（Beta））自動調整您的 AKS pod
 
@@ -94,7 +94,7 @@ kubectl get --raw "/apis/external.metrics.k8s.io/v1beta1/namespaces/default/appg
 
 一旦可以透過計量伺服器公開 `appgw-request-count-metric` 之後，我們就可以開始使用[`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler)來相應增加目標部署。
 
-在下列範例中，我們會將目標設為範例部署 `aspnet`。 我們會在每個 Pod `appgw-request-count-metric` > 200 最多可達 `10` Pod 時相應增加 Pod。
+在下列範例中，我們會將目標設為範例部署 `aspnet`。 當每個 Pod `appgw-request-count-metric` > 200 時，我們會相應增加 Pod，最多可達 `10` Pod 的最大值。
 
 取代您的目標部署名稱，並套用下列自動調整設定：
 ```yaml

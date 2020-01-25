@@ -1,6 +1,6 @@
 ---
 title: 在 Azure DevTest Labs 中自動新增實驗室使用者 |Microsoft Docs
-description: 瞭解如何在 Azure DevTest Labs 中，自動將實驗室使用者新增至實驗室。
+description: 本文說明如何使用 Azure Resource Manager 範本、PowerShell 和 CLI，在 Azure DevTest Labs 中自動將使用者新增至實驗室。
 services: devtest-lab,lab-services
 documentationcenter: na
 author: spelluru
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/02/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: deec67a2c64a57bbb380b3fd87bf820499e6efed
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 70a6359923734c83590d4677bb2c93966c925d14
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980057"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718134"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中自動將實驗室使用者新增至實驗室
 Azure DevTest Labs 可讓您使用 Azure 入口網站快速建立自助開發/測試環境。 不過，如果您有數個小組和數個 DevTest Labs 實例，自動化建立程式就可以節省時間。 [Azure Resource Manager 範本](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates)可讓您以自動化的方式建立實驗室、實驗室 vm、自訂映射、公式及新增使用者。 本文特別著重于將使用者新增至 DevTest Labs 實例。

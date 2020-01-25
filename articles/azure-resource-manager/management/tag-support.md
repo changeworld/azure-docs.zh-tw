@@ -2,13 +2,13 @@
 title: 資源的標記支援
 description: 顯示哪些 Azure 資源類型支援標記。 提供所有 Azure 服務的詳細資料。
 ms.topic: conceptual
-ms.date: 11/22/2019
-ms.openlocfilehash: 4eb163376f1a0b8d8194defed4445578975976f2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 01/23/2020
+ms.openlocfilehash: e17e6a996f54d6211f87ec20765d3fde782b7d6d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982211"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715614"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure 資源的標記支援
 本文將說明資源類型是否支援[標記](tag-resources.md)。 標記為 [**支援標記**] 的資料行指出資源類型是否有標記的屬性。 [**成本報表] 中**標示為 [標記] 的資料行指出該資源類型是否會將標記傳遞至成本報表。 您可以在 [[成本管理成本分析](../../cost-management-billing/costs/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options)] 和 [ [Azure 帳單發票] 和 [每日使用量] 資料](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)中依標記來查看成本。
@@ -127,6 +127,7 @@ ms.locfileid: "75982211"
 > - [Microsoft.Portal](#microsoftportal)
 > - [Microsoft.PowerBI](#microsoftpowerbi)
 > - [Microsoft.PowerBIDedicated](#microsoftpowerbidedicated)
+> - [ProjectBabylon](#microsoftprojectbabylon)
 > - [Microsoft.RecoveryServices](#microsoftrecoveryservices)
 > - [Microsoft.Relay](#microsoftrelay)
 > - [Microsoft RemoteApp](#microsoftremoteapp)
@@ -160,6 +161,7 @@ ms.locfileid: "75982211"
 > - [Microsoft 訂用帳戶](#microsoftsubscription)
 > - [Microsoft.TimeSeriesInsights](#microsofttimeseriesinsights)
 > - [Microsoft.VMwareCloudSimple](#microsoftvmwarecloudsimple)
+> - [VnfManager](#microsoftvnfmanager)
 > - [Microsoft.Web](#microsoftweb)
 > - [WindowsDefenderATP](#microsoftwindowsdefenderatp)
 > - [Microsoft.WindowsIoT](#microsoftwindowsiot)
@@ -217,7 +219,7 @@ ms.locfileid: "75982211"
 > | alertsMetaData | 否 | 否 |
 > | alertsSummary | 否 | 否 |
 > | alertsSummaryList | 否 | 否 |
-> | 意見回應 | 否 | 否 |
+> | 反 | 否 | 否 |
 > | smartDetectorAlertRules | 是 | 是 |
 > | smartDetectorRuntimeEnvironments | 否 | 否 |
 > | smartGroups | 否 | 否 |
@@ -277,6 +279,7 @@ ms.locfileid: "75982211"
 > | policySetDefinitions | 否 | 否 |
 > | providerOperations | 否 | 否 |
 > | roleAssignments | 否 | 否 |
+> | roleAssignmentsUsageMetrics | 否 | 否 |
 > | roleDefinitions | 否 | 否 |
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
@@ -361,6 +364,7 @@ ms.locfileid: "75982211"
 > | billingAccounts / billingProfiles / billingSubscriptions | 否 | 否 |
 > | billingAccounts / billingProfiles / createBillingRoleAssignment | 否 | 否 |
 > | billingAccounts/billingProfiles/客戶 | 否 | 否 |
+> | billingAccounts/billingProfiles/指示 | 否 | 否 |
 > | billingAccounts/billingProfiles/發票 | 否 | 否 |
 > | billingAccounts/billingProfiles/發票/pricesheet | 否 | 否 |
 > | billingAccounts / billingProfiles / invoiceSections | 否 | 否 |
@@ -488,6 +492,7 @@ ms.locfileid: "75982211"
 > | 資源類型 | 支援標記 | 成本報告中的標記 |
 > | ------------- | ----------- | ----------- |
 > | appliedReservations | 否 | 否 |
+> | autoQuotaIncrease | 否 | 否 |
 > | calculateExchange | 否 | 否 |
 > | calculatePrice | 否 | 否 |
 > | calculatePurchasePrice | 否 | 否 |
@@ -504,6 +509,7 @@ ms.locfileid: "75982211"
 > | reservationOrders/split | 否 | 否 |
 > | reservationOrders/swap | 否 | 否 |
 > | reservations | 否 | 否 |
+> | resourceProviders | 否 | 否 |
 > | resources | 否 | 否 |
 > | validateReservationOrder | 否 | 否 |
 
@@ -757,7 +763,7 @@ ms.locfileid: "75982211"
 > | ExternalSubscriptions/維度 | 否 | 否 |
 > | ExternalSubscriptions/預測 | 否 | 否 |
 > | ExternalSubscriptions/查詢 | 否 | 否 |
-> | 預測 | 否 | 否 |
+> | 預見性 | 否 | 否 |
 > | 查詢 | 否 | 否 |
 > | 註冊 | 否 | 否 |
 > | Reportconfigs | 否 | 否 |
@@ -801,6 +807,8 @@ ms.locfileid: "75982211"
 > | 資源類型 | 支援標記 | 成本報告中的標記 |
 > | ------------- | ----------- | ----------- |
 > | workspaces | 是 | 否 |
+> | 工作區/dbWorkspaces | 否 | 否 |
+> | 工作區/storageEncryption | 否 | 否 |
 > | 工作區/virtualNetworkPeerings | 否 | 否 |
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
@@ -878,6 +886,7 @@ ms.locfileid: "75982211"
 > | ------------- | ----------- | ----------- |
 > | 伺服器 | 是 | 是 |
 > | 伺服器/顧問 | 否 | 否 |
+> | 伺服器/金鑰 | 否 | 否 |
 > | 伺服器/privateEndpointConnectionProxies | 否 | 否 |
 > | 伺服器/privateEndpointConnections | 否 | 否 |
 > | 伺服器/privateLinkResources | 否 | 否 |
@@ -894,6 +903,7 @@ ms.locfileid: "75982211"
 > | ------------- | ----------- | ----------- |
 > | 伺服器 | 是 | 是 |
 > | 伺服器/顧問 | 否 | 否 |
+> | 伺服器/金鑰 | 否 | 否 |
 > | 伺服器/privateEndpointConnectionProxies | 否 | 否 |
 > | 伺服器/privateEndpointConnections | 否 | 否 |
 > | 伺服器/privateLinkResources | 否 | 否 |
@@ -956,8 +966,10 @@ ms.locfileid: "75982211"
 > | ------------- | ----------- | ----------- |
 > | ElasticPools | 是 | 是 |
 > | ElasticPools / IotHubTenants | 是 | 是 |
+> | ElasticPools/IotHubTenants/securitySettings | 否 | 否 |
 > | IotHubs | 是 | 是 |
 > | IotHubs/eventGridFilters | 否 | 否 |
+> | IotHubs/securitySettings | 否 | 否 |
 > | ProvisioningServices | 是 | 是 |
 > | usages | 否 | 否 |
 
@@ -966,7 +978,7 @@ ms.locfileid: "75982211"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 支援標記 | 成本報告中的標記 |
 > | ------------- | ----------- | ----------- |
-> | 管線中 | 是 | 是 |
+> | 段 | 是 | 是 |
 
 ## <a name="microsoftdevspaces"></a>Microsoft.DevSpaces
 
@@ -1031,6 +1043,12 @@ ms.locfileid: "75982211"
 > | 網域/主題 | 否 | 否 |
 > | eventSubscriptions | 否 | 否 |
 > | extensionTopics | 否 | 否 |
+> | partnerNamespaces | 是 | 是 |
+> | partnerNamespaces/eventChannels | 否 | 否 |
+> | partnerRegistrations | 是 | 是 |
+> | partnerTopics | 是 | 是 |
+> | systemTopics | 是 | 是 |
+> | systemTopics/eventSubscriptions | 否 | 否 |
 > | topics | 是 | 是 |
 > | topicTypes | 否 | 否 |
 
@@ -1086,6 +1104,8 @@ ms.locfileid: "75982211"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 支援標記 | 成本報告中的標記 |
 > | ------------- | ----------- | ----------- |
+> | autoManagedAccounts | 是 | 是 |
+> | autoManagedVmConfigurationProfiles | 是 | 是 |
 > | configurationProfileAssignments | 否 | 否 |
 > | guestConfigurationAssignments | 否 | 否 |
 > | software | 否 | 否 |
@@ -1197,6 +1217,8 @@ ms.locfileid: "75982211"
 > | 叢集/資料庫 | 否 | 否 |
 > | 叢集/資料庫/dataconnections | 否 | 否 |
 > | 叢集/資料庫/eventhubconnections | 否 | 否 |
+> | 叢集/資料庫/principalassignments | 否 | 否 |
+> | 叢集/principalassignments | 否 | 否 |
 > | 叢集/sharedidentities | 否 | 否 |
 
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
@@ -1287,6 +1309,7 @@ ms.locfileid: "75982211"
 > | offerTypes/發行者/供應專案/方案/專案 | 否 | 否 |
 > | offerTypes/發行者/優惠/方案/importImage | 否 | 否 |
 > | privategalleryitems | 否 | 否 |
+> | privateStoreClient | 否 | 否 |
 > | products | 否 | 否 |
 > | 發行者 | 否 | 否 |
 > | 發行者/優惠 | 否 | 否 |
@@ -1345,6 +1368,7 @@ ms.locfileid: "75982211"
 > | ------------- | ----------- | ----------- |
 > | assessmentProjects | 是 | 是 |
 > | migrateprojects | 是 | 是 |
+> | moveCollections | 是 | 是 |
 > | projects | 是 | 是 |
 
 ## <a name="microsoftmixedreality"></a>MixedReality
@@ -1494,8 +1518,12 @@ ms.locfileid: "75982211"
 > | linkTargets | 否 | 否 |
 > | storageInsightConfigs | 否 | 否 |
 > | workspaces | 是 | 是 |
+> | 工作區/dataExports | 否 | 否 |
 > | 工作區/資料來源 | 否 | 否 |
 > | 工作區/Linkedservices.json 和 datasets.json | 否 | 否 |
+> | 工作區/privateEndpointConnectionProxies | 否 | 否 |
+> | 工作區/privateEndpointConnections | 否 | 否 |
+> | 工作區/privateLinkResources | 否 | 否 |
 > | 工作區/查詢 | 否 | 否 |
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
@@ -1553,6 +1581,13 @@ ms.locfileid: "75982211"
 > | ------------- | ----------- | ----------- |
 > | capacities | 是 | 是 |
 
+## <a name="microsoftprojectbabylon"></a>ProjectBabylon
+
+> [!div class="mx-tableFixed"]
+> | 資源類型 | 支援標記 | 成本報告中的標記 |
+> | ------------- | ----------- | ----------- |
+> | accounts | 是 | 是 |
+
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 
 > [!div class="mx-tableFixed"]
@@ -1579,7 +1614,7 @@ ms.locfileid: "75982211"
 > | 資源類型 | 支援標記 | 成本報告中的標記 |
 > | ------------- | ----------- | ----------- |
 > | accounts | 否 | 否 |
-> | 集合 | 是 | 是 |
+> | 收藏 | 是 | 是 |
 > | 集合/應用程式 | 否 | 否 |
 > | 集合/securityprincipalsgetresponse | 否 | 否 |
 > | templateImages | 否 | 否 |
@@ -1604,6 +1639,7 @@ ms.locfileid: "75982211"
 > | availabilityStatuses | 否 | 否 |
 > | childAvailabilityStatuses | 否 | 否 |
 > | childResources | 否 | 否 |
+> | emergingissues | 否 | 否 |
 > | 活動 | 否 | 否 |
 > | impactedResources | 否 | 否 |
 > | 中繼資料 | 否 | 否 |
@@ -1659,7 +1695,7 @@ ms.locfileid: "75982211"
 > | allowedConnections | 否 | 否 |
 > | applicationWhitelistings | 否 | 否 |
 > | assessmentMetadata | 否 | 否 |
-> | 評量 | 否 | 否 |
+> | 評估 | 否 | 否 |
 > | autoDismissAlertsRules | 否 | 否 |
 > | 自動化 | 是 | 是 |
 > | AutoProvisioningSettings | 否 | 否 |
@@ -1705,10 +1741,10 @@ ms.locfileid: "75982211"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 支援標記 | 成本報告中的標記 |
 > | ------------- | ----------- | ----------- |
-> | aggregations | 否 | 否 |
+> | 聚合 | 否 | 否 |
 > | alertRules | 否 | 否 |
 > | alertRuleTemplates | 否 | 否 |
-> | 書籤 | 否 | 否 |
+> | 標籤 | 否 | 否 |
 > | 案例 | 否 | 否 |
 > | dataConnectors | 否 | 否 |
 > | 實體 | 否 | 否 |
@@ -1811,7 +1847,7 @@ ms.locfileid: "75982211"
 > | 資源類型 | 支援標記 | 成本報告中的標記 |
 > | ------------- | ----------- | ----------- |
 > | managedInstances | 是 | 是 |
-> | managedInstances/資料庫 | 否 | 否 |
+> | managedInstances/資料庫 | 是（請參閱[下面的附注](#sqlnote)） | 是 |
 > | managedInstances/資料庫/backupShortTermRetentionPolicies | 否 | 否 |
 > | managedInstances/資料庫/架構/資料表/資料行/sensitivityLabels | 否 | 否 |
 > | managedInstances/資料庫/vulnerabilityAssessments | 否 | 否 |
@@ -1960,6 +1996,16 @@ ms.locfileid: "75982211"
 > | dedicatedCloudServices | 是 | 是 |
 > | virtualMachines | 是 | 是 |
 
+## <a name="microsoftvnfmanager"></a>VnfManager
+
+> [!div class="mx-tableFixed"]
+> | 資源類型 | 支援標記 | 成本報告中的標記 |
+> | ------------- | ----------- | ----------- |
+> | devices | 是 | 是 |
+> | 銷售 | 否 | 否 |
+> | 廠商/sku | 否 | 否 |
+> | vnfs | 是 | 是 |
+
 ## <a name="microsoftweb"></a>Microsoft.Web
 
 > [!div class="mx-tableFixed"]
@@ -1981,8 +2027,8 @@ ms.locfileid: "75982211"
 > | connections | 是 | 是 |
 > | customApis | 是 | 是 |
 > | deletedSites | 否 | 否 |
-> | functions | 否 | 否 |
 > | hostingEnvironments | 是 | 是 |
+> | hostingEnvironments/eventGridFilters | 否 | 否 |
 > | hostingEnvironments/multiRolePools | 否 | 否 |
 > | hostingEnvironments/workerPools | 否 | 否 |
 > | publishingUsers | 否 | 否 |
@@ -2002,6 +2048,7 @@ ms.locfileid: "75982211"
 > | sites/位置/hostNameBindings | 否 | 否 |
 > | sites/位置/Networkconfig.netcfg | 否 | 否 |
 > | sourceControls | 否 | 否 |
+> | staticSites | 是 | 是 |
 > | validate | 否 | 否 |
 > | verifyHostingEnvironmentVnet | 否 | 否 |
 

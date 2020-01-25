@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cbe5066974734093e440e64eb0b47542e569765
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: d21ebabb34b828624c196922f88380f02234dc05
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940914"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711872"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>在 Azure Active Directory 中自訂 SaaS 應用程式的使用者布建屬性對應
 
@@ -39,17 +39,17 @@ Azure AD 使用者物件和每個 SaaS 應用程式的使用者物件之間，�
 1. 選取 [布建 **] 以管理**所選應用程式的使用者帳戶布建設定。
 1. 展開 **[** 對應] 以查看和編輯在 Azure AD 與目標應用程式之間流動的使用者屬性。 如果目標應用程式支援它，則此區段可讓您選擇性地設定群組和使用者帳戶的布建。
 
-   ![使用對應來查看和編輯使用者屬性](./media/customize-application-attributes/21.png)
+   ![使用對應來查看和編輯使用者屬性](media/customize-application-attributes/21.png)
 
 1. 選取 [對應] 設定，以開啟相關的 [**屬性對應**] 畫面。 SaaS 應用程式需要一些屬性對應，才能正常運作。 若為必要的屬性，[刪除] 功能就無法使用。
 
-   ![使用屬性對應來設定應用程式的屬性對應](./media/customize-application-attributes/22.png)
+   ![使用屬性對應來設定應用程式的屬性對應](media/customize-application-attributes/22.png)
 
    在此螢幕擷取畫面中，您可以看到 Salesforce 中受管理物件的**Username**屬性已填入已連結 Azure Active Directory 物件的**userPrincipalName**值。
 
 1. 選取現有的**屬性對應**，以開啟 [**編輯屬性**] 畫面。 在這裡，您可以編輯在 Azure AD 和目標應用程式之間流動的使用者屬性。
 
-   ![使用編輯屬性編輯使用者屬性](./media/customize-application-attributes/23.png)
+   ![使用編輯屬性編輯使用者屬性](media/customize-application-attributes/23.png)
 
 ### <a name="understanding-attribute-mapping-types"></a>了解屬性對應類型
 
@@ -71,7 +71,7 @@ Azure AD 使用者物件和每個 SaaS 應用程式的使用者物件之間，�
 
 - **來源屬性** - 來源系統的使用者屬性 (例如：Azure Active Directory)。
 - **目標屬性** – 目標系統中的使用者屬性 (例如：ServiceNow)。
-- **如果為 null （選擇性）** ，則為預設值-如果 source 屬性為 null，將會傳遞至目標系統的值。 只有在建立使用者時，才會布建此值。 更新現有的使用者時，將不會布建「預設值為 null」。 例如，如果您想要在目標系統中布建具有特定職稱的所有現有使用者（在來源系統中為 null 時），您可以使用下列[運算式](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)： Switch （IsPresent （[jobTitle]）、"DefaultValue"、"True"、[jobTitle]）。 請務必使用您想要在來源系統中布建的內容來取代「預設值」。 
+- **如果為 null （選擇性）** ，則為預設值-如果 source 屬性為 null，將會傳遞至目標系統的值。 只有在建立使用者時，才會布建此值。 更新現有的使用者時，將不會布建「預設值為 null」。 例如，如果您想要在目標系統中布建具有特定職稱的所有現有使用者（在來源系統中為 null 時），您可以使用下列[運算式](functions-for-customizing-application-data.md)： Switch （IsPresent （[jobTitle]）、"DefaultValue"、"True"、[jobTitle]）。 請務必使用您想要在來源系統中布建的內容來取代「預設值」。 
 - **使用此屬性**比對物件–是否應該使用此對應來唯一識別來源與目標系統之間的使用者。 通常會在 Azure AD 中的 userPrincipalName 或 mail 屬性上設定，這通常會對應至目標應用程式中的使用者名稱欄位。
 - **比對優先順序** – 您可以設定多個比對屬性。 當有多個時，就會依照此欄位所定義的順序來評估它們。 只要找到相符項目，便不會評估進一步比對屬性。
 - **套用此對應**
@@ -92,7 +92,7 @@ Azure AD 布建服務可以部署在「greenfield」案例中（使用者不會�
 
 選取的應用程式數目（例如 ServiceNow、Box 和 G Suite）支援布建群組物件和使用者物件的能力。 群組物件可以包含群組屬性，例如顯示名稱和電子郵件別名，以及群組成員。
 
-![範例顯示具有已布建群組和使用者物件的 ServiceNow](./media/customize-application-attributes/24.png)
+![範例顯示具有已布建群組和使用者物件的 ServiceNow](media/customize-application-attributes/24.png)
 
 您可以選擇性地啟用或停用群組布建，方法是選取 [對應] 底下的 [群組對應 **]，並**在 [**屬性對應**] 畫面中將 [**已啟用**] 設定為所要
 
@@ -193,13 +193,13 @@ SCIM RFC 會定義核心使用者和群組架構，同時允許架構的延伸�
 ## <a name="provisioning-a-role-to-a-scim-app"></a>將角色布建至 SCIM 應用程式
 使用下列步驟，將使用者的角色布建到您的應用程式。 請注意，下列描述是自訂 SCIM 應用程式特有的。 針對資源庫應用程式（例如 Salesforce 和 ServiceNow），請使用預先定義的角色對應。 下列專案符號說明如何將 AppRoleAssignments 屬性轉換為您的應用程式所預期的格式。
 
-- 若要將 Azure AD 中的 appRoleAssignment 對應至應用程式中的角色，您需要使用[運算式](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)來轉換屬性。 AppRoleAssignment 屬性**不應該直接對應**至 role 屬性，而不需要使用運算式來剖析角色的詳細資料。 
+- 若要將 Azure AD 中的 appRoleAssignment 對應至應用程式中的角色，您需要使用[運算式](functions-for-customizing-application-data.md)來轉換屬性。 AppRoleAssignment 屬性**不應該直接對應**至 role 屬性，而不需要使用運算式來剖析角色的詳細資料。 
 
 - **SingleAppRoleAssignment** 
   - **使用時機：** 使用 SingleAppRoleAssignment 運算式為使用者布建單一角色，並指定主要角色。 
   - **如何設定：** 使用上述步驟導覽至 [屬性對應] 頁面，並使用 SingleAppRoleAssignment 運算式對應至 [角色] 屬性。 有三個角色屬性可供選擇：（角色 [主要 eq "True"]。顯示，角色 [主要 eq "True]. 類型，以及角色 [主要 eq" True "]。值）。 您可以選擇在對應中包含任何或所有角色屬性。 如果您想要包含一個以上的，只要加入一個新的對應，並將它納入做為目標屬性即可。  
   
-  ![新增 SingleAppRoleAssignment](./media/customize-application-attributes/edit-attribute-singleapproleassignment.png)
+  ![新增 SingleAppRoleAssignment](media/customize-application-attributes/edit-attribute-singleapproleassignment.png)
   - **應考慮的事項**
     - 請確定未指派多個角色給使用者。 我們無法保證將會布建哪個角色。
     
@@ -231,11 +231,11 @@ SCIM RFC 會定義核心使用者和群組架構，同時允許架構的延伸�
   - **使用時機：** 使用 AppRoleAssignmentsComplex 運算式為使用者布建多個角色。 
   - **如何設定：** 如上面所述編輯支援屬性的清單，以包含角色的新屬性： 
   
-    ![新增角色](./media/customize-application-attributes/add-roles.png)<br>
+    ![新增角色](media/customize-application-attributes/add-roles.png)<br>
 
     然後使用 AppRoleAssignmentsComplex 運算式來對應至自訂角色屬性，如下圖所示：
 
-    ![新增 AppRoleAssignmentsComplex](./media/customize-application-attributes/edit-attribute-approleassignmentscomplex.png)<br>
+    ![新增 AppRoleAssignmentsComplex](media/customize-application-attributes/edit-attribute-approleassignmentscomplex.png)<br>
   - **應考慮的事項**
     - 所有角色都會布建為 primary = false。
     - POST 包含角色類型。 PATCH 要求不包含類型。 我們正致力於在 POST 和 PATCH 要求中傳送類型。

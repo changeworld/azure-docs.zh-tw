@@ -8,18 +8,18 @@ ms.date: 09/26/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: b6a437af33e3e85b8dc07de223b6e1fd7ce6cb03
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 79d578c910c7d08355901308e00db5912d1f3baf
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176245"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721484"
 ---
 # <a name="export-your-data-to-azure-blob-storage"></a>將資料匯出至 Azure Blob 儲存體
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-*本主題適用於系統管理員。*
+*此主題適用於系統管理員。*
 
 本文說明如何使用 Azure 中的連續資料匯出功能 IoT Central，定期將資料匯出至您的**Azure Blob 儲存體帳戶**或**Azure Data Lake Storage Gen2 儲存體帳戶**。 您可以將**度量**、**裝置**和**裝置範本**匯出至 JSON 或 Apache Avro 格式的檔案。 所匯出的資料可用來進行冷路徑分析 (例如，在 Azure Machine Learning 中為模型定型) 或在 Microsoft Power BI 中進行長期趨勢分析。
 
@@ -101,7 +101,7 @@ ms.locfileid: "73176245"
 
 ## <a name="data-format"></a>資料格式 
 
-### <a name="measurements"></a>量測
+### <a name="measurements"></a>度量
 
 匯出的度量資料包含 IoT Central 在該時間期間從所有裝置收到的所有新訊息。 匯出之檔案所使用的格式與 [IoT 中樞訊息路由](https://docs.microsoft.com/azure/iot-hub/iot-hub-csharp-csharp-process-d2c)匯出至 Blob 儲存體的訊息檔案格式相同。
 
@@ -620,7 +620,7 @@ const avro = require('avsc');
 async function parse(filePath) {
     const records = await load(filePath);
     for (const record of records) {
-        // Fetch the template ID and version from the id and verison properties.
+        // Fetch the template ID and version from the id and version properties.
         const templateId = record.id;
         const templateVersion = record.version;
 

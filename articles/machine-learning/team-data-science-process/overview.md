@@ -8,15 +8,15 @@ editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 1/04/2020
+ms.date: 1/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 124fe4f69396286dbe383f8823a36b4ba52d346c
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: e9d98f03b2c97245517e3fbb6d7dc7624cfb724d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665078"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721382"
 ---
 # <a name="what-is-the-team-data-science-process"></a>什麼是 Team Data Science Process？
 
@@ -36,11 +36,11 @@ TDSP 包含下列主要元件：
 
 ## <a name="data-science-lifecycle"></a>資料科學生命週期
 
-Team Data Science Process (TDSP) 會提供建構資料科學專案開發的生命週期。 生命週期會概述專案在執行時通常會遵循之從開始到完成的步驟。
+Team Data Science Process (TDSP) 會提供建構資料科學專案開發的生命週期。 生命週期會概述成功專案遵循的完整步驟。
 
-如果您正在使用另一個資料科學生命週期 (例如 [CRISP-DM](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining)、[KDD](https://wikipedia.org/wiki/Data_mining#Process) 或您組織本身的自訂程序)，您仍可在這些開發生命週期的內容中使用工作型 TDSP。 大致而言，這些不同的方法有許多共通點。 
+如果您使用其他資料科學生命週期（例如，[明銳 DM](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining)、 [KDD](https://wikipedia.org/wiki/Data_mining#Process)或貴組織自己的自訂程式），您仍可在這些開發生命週期的內容中使用以工作為基礎的 TDSP。 大致而言，這些不同的方法有許多共通點。 
 
-此生命週期是針對在智慧型應用程式中隨附的資料科學專案所設計。 這些應用程式會部署機器學習服務或人工智慧模型來做預測性分析。 探勘資料科學專案或臨機操作分析專案也可以從使用此程序而獲益。 但是，在這種情況下，可能不需要所述的某些步驟。    
+此生命週期是針對在智慧型應用程式中隨附的資料科學專案所設計。 這些應用程式會部署機器學習服務或人工智慧模型來做預測性分析。 探索式資料科學專案或拼湊分析專案也可以因使用此程式而受益。 但是，在這種情況下，可能不需要所述的某些步驟。    
 
 生命週期可描繪出專案一般執行時 (通常會反覆進行) 的主要階段：
 
@@ -69,7 +69,7 @@ Team Data Science Process (TDSP) 會提供建構資料科學專案開發的生�
 
 使所有專案共用目錄結構，並使用專案文件的範本讓小組成員能輕易找到其專案的資訊。 Git、TFS 或 Subversion 之類的版本控制系統 (VCS) 儲存所有的程式碼和文件，有助於小組共同作業。 在 Jira、Rally 與 Azure DevOps 之類的敏捷式專案追蹤系統中的追蹤工作和功能，能夠更密切追蹤個別功能的程式碼。 這類追蹤也可讓小組獲得進一步的成本估計。 TDSP 建議在 VCS 上對於每個專案建立個別的儲存機制，以利版本控制、資訊安全和共同作業。 所有專案的標準化結構有助於累積整個組織的機構知識。
 
-我們提供資料夾結構提供範本和標準位置的必要文件。 此資料夾結構包括內含資料探索和功能擷取程式碼的檔案，以及記錄模型反覆項目的檔案。 這些範本讓小組成員更容易了解其他人完成的工作，並且更容易將新成員加入至小組中。 Markdown 格式的文件範本很容易檢視和更新。 範本可用來對於每個專案提供重要問題的檢查清單，確保問題獲得妥善定義，而且交付項目符合預期的品質。 例如：
+我們提供資料夾結構提供範本和標準位置的必要文件。 此資料夾結構包括內含資料探索和功能擷取程式碼的檔案，以及記錄模型反覆項目的檔案。 這些範本讓小組成員更容易了解其他人完成的工作，並且更容易將新成員加入至小組中。 Markdown 格式的文件範本很容易檢視和更新。 使用範本為每個專案提供重要問題的檢查清單，以確保問題已妥善定義，而且交付專案符合預期的品質。 例如：
 
 - 記錄商務問題和專案範圍的專案許可
 - 記錄原始資料結構和統計資料的資料報告
@@ -90,7 +90,7 @@ TDSP 提供管理共用分析和儲存體基礎結構的建議，例如：
 - 巨量資料 (Hadoop 或 Spark) 叢集 
 - 機器學習服務 
 
-分析和儲存體基礎結構可以在雲端，也可以是內部部署。 這裡儲存著原始資料集和處理後的資料集。 這個基礎架構能夠進行可重現的分析。 它也可避免重複，重複可能會導致不一致和不必要的基礎結構成本。 提供的工具可用來佈建和追蹤共用的資源，並允許每個小組成員安全地連線到這些資源。 讓專案成員建立一致的計算環境也是個不錯的做法。 不同的小組成員可以複寫和驗證實驗。
+儲存原始和已處理資料集的分析和儲存體基礎結構，可能位於雲端或內部部署中。 這個基礎架構能夠進行可重現的分析。 它也可避免重複，重複可能會導致不一致和不必要的基礎結構成本。 提供的工具可用來佈建和追蹤共用的資源，並允許每個小組成員安全地連線到這些資源。 讓專案成員建立一致的計算環境也是個不錯的做法。 不同的小組成員可以複寫和驗證實驗。
 
 以下是小組處理多個專案並共用各種雲端分析基礎結構元件的範例。
 

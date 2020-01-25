@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 03/13/2019
 ms.author: sngun
-ms.openlocfilehash: 3e36aa268286b9127f36859a1fa4402644994a32
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3a7eaabedd6736c107625204f982a530f2bab73d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444833"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718168"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK for SQL API：版本資訊與資源
 > [!div class="op_single_selector"]
@@ -42,6 +42,9 @@ SQL API Java SDK 支援同步作業。 如需非同步支援，請使用 [SQL AP
 |**最低支援執行階段**|[Java 開發套件 (JDK) 7+](https://aka.ms/azure-jdks)|
 
 ## <a name="release-notes"></a>版本資訊
+
+### <a name="a-name246246"></a><a name="2.4.6"/>2.4。6
+* 已在 databaseAccount 上更新正確的用戶端複本原則標記，並從快取進行 databaseAccount 設定讀取。
 
 ### <a name="a-name245245"></a><a name="2.4.5"/>2.4。5
 * 若使用者提供 pkRangeId，則避免在不正確資料分割索引鍵範圍錯誤時重試。

@@ -1,19 +1,19 @@
 ---
 title: 監視 Azure 事件格線訊息傳遞
-description: 說明如何監視 Azure 事件格線訊息的傳遞。
+description: 本文說明如何使用 Azure 入口網站來查看 Azure 事件方格訊息的傳遞狀態。
 services: event-grid
 author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/22/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: b1035046cc3c3b6cd7bde895e2e779d1c966abe0
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 16587feaca65aa21836d9be1c44e00faa0f4f8d8
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74170019"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722130"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>監視事件格線訊息傳遞 
 

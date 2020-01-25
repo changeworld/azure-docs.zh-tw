@@ -1,6 +1,6 @@
 ---
 title: 檢視 Azure DevTest Labs 中的每月估計實驗室成本趨勢
-description: 了解 Azure DevTest Labs 每月估計成本趨勢圖表。
+description: 本文提供有關如何在 Azure DevTest Labs 中追蹤實驗室成本（每月估計成本趨勢圖表）的資訊。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 15ddaa6c73cedb32d920ef943627831c1e9b378b
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 2e4fe55fac5edf73e16df05bd38cc2712a94377d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169617"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721722"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中追蹤與實驗室相關聯的成本
 本文提供如何追蹤實驗室成本的相關資訊。 它會示範如何針對實驗室的目前日曆月份，查看估計的成本 trent。 本文也會說明如何在實驗室中查看每個資源的每月成本。

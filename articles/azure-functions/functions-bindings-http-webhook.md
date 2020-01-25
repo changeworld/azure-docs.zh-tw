@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: e97a6e1adff02001e36a43d9fb4a917b7e133257
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 11f5c07305fa9192097dbcb1386c13707c0d46f7
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922444"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711131"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Azure Functions HTTP 觸發程序和繫結
 
@@ -825,7 +825,7 @@ Functions 可讓您使用金鑰來提高開發期間存取 HTTP 函式端點的�
 您可以允許匿名要求，這不需要金鑰。 您也可以要求使用主要金鑰。 您可以使用繫結 JSON 中的 `authLevel` 屬性來變更預設授權層級。 如需詳細資訊，請參閱[觸發程序 - 組態](#trigger---configuration)。
 
 > [!NOTE]
-> 在本機執行函式時，不論指定的授權層級設定為何，都會停用授權。 發佈至 Azure 之後，就會強制執行您觸發程序中的 `authLevel` 設定。 [在容器中的本機執行](functions-create-function-linux-custom-image.md#run-the-image-locally)時，仍然需要金鑰。
+> 在本機執行函式時，不論指定的授權層級設定為何，都會停用授權。 發佈至 Azure 之後，就會強制執行您觸發程序中的 `authLevel` 設定。 [在容器中的本機執行](functions-create-function-linux-custom-image.md#build-the-container-image-and-test-locally)時，仍然需要金鑰。
 
 
 ### <a name="secure-an-http-endpoint-in-production"></a>在生產環境中保護 HTTP 端點

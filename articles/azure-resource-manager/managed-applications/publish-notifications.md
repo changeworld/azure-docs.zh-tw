@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: ilahat
 author: ilahat
 ms.date: 11/01/2019
-ms.openlocfilehash: b33366b65fed0042eb3024c2264bce1c4a1c4c1d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: ff058d7b51bd2e5efd80db69e5928d58fc5a7725
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75651627"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715680"
 ---
 # <a name="azure-managed-applications-with-notifications"></a>Azure 受控應用程式與通知
 
@@ -189,7 +189,7 @@ billingDetails | *僅針對 Azure Marketplace 受控應用程式指定。* 受�
 
 ## <a name="endpoint-authentication"></a>端點驗證
 若要保護 webhook 端點，並確保通知的真實性：
-1. 在 webhook URI 之上提供查詢參數，如下所示： https://your-endpoint.com?sig=Guid 。 在每個通知中，檢查查詢參數 `sig` 是否有預期的值 `Guid`。
+1. 在 webhook URI 之上提供查詢參數，如下所示： HTTPs\://your-endpoint.com？ sig = Guid。 在每個通知中，檢查查詢參數 `sig` 是否有預期的值 `Guid`。
 2. 使用 applicationId 在受控應用程式實例上發出 GET。 驗證 provisioningState 符合通知的 provisioningState，以確保一致性。
 
 ## <a name="notification-retries"></a>通知重試

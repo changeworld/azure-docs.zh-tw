@@ -1,19 +1,19 @@
 ---
 title: 張貼事件以自訂 Azure Event Grid 主題
-description: 描述如何針對 Azure Event Grid 將事件張貼到自訂主題
+description: 本文說明如何將事件張貼到自訂主題。 它會顯示貼文與事件資料的格式。
 services: event-grid
 author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/17/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 14ae5f2a0b6a950889d8587cd4d03ff4fc9a171b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0afad249f71a36bf7552da499e985b68d48ee7a9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304203"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721548"
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>針對 Azure Event Grid 張貼到自訂主題
 
@@ -39,7 +39,7 @@ az eventgrid topic show --name <topic-name> -g <topic-resource-group> --query "e
 (Get-AzEventGridTopic -ResourceGroupName <topic-resource-group> -Name <topic-name>).Endpoint
 ```
 
-## <a name="header"></a>標頭
+## <a name="header"></a>頁首
 
 在要求中，包含名為 `aeg-sas-key` 的標頭值，其中包含用於驗證的金鑰。
 
@@ -76,10 +76,10 @@ az eventgrid topic key list --name <topic-name> -g <topic-resource-group> --quer
 ]
 ```
 
-如需這些屬性的說明，請參閱 [Azure Event Grid 事件結構描述](event-schema.md)。 張貼事件到事件方格主題時，陣列總大小最大為 1 MB。 陣列中的每個事件會限制為 64 KB （正式運作） 或 1 MB （預覽）。
+如需這些屬性的說明，請參閱 [Azure Event Grid 事件結構描述](event-schema.md)。 張貼事件到事件方格主題時，陣列總大小最大為 1 MB。 陣列中的每個事件限制為 64 KB （一般可用性）或 1 MB （預覽）。
 
 > [!NOTE]
-> 事件的大小最多 64 KB 涵蓋由公開上市 (GA) 服務等級協定 (SLA)。 之事件的大小最多支援 1 MB 目前為預覽狀態。 事件超過 64 KB 收取 64 KB 的增量方式。 
+> [公開上市（GA）服務等級協定（SLA）] 涵蓋大小上限為 64 KB 的事件。 大小上限為 1 MB 的事件支援目前為預覽狀態。 超過 64 KB 的事件會以 64-KB 的增量計費。 
 
 例如，有效的事件資料結構描述為：
 
@@ -97,16 +97,16 @@ az eventgrid topic key list --name <topic-name> -g <topic-resource-group> --quer
 }]
 ```
 
-## <a name="response"></a>Response
+## <a name="response"></a>回應
 
 在張貼到主題端點之後，您會收到回應。 回應是標準的 HTTP 回應碼。 一些常見回應有：
 
-|結果  |Response  |
+|結果  |回應  |
 |---------|---------|
-|成功  | 200 確定  |
+|Success  | 200 確定  |
 |事件資料的格式不正確 | 400 不正確的要求 |
 |存取金鑰無效 | 401 未經授權 |
-|端點不正確 | 404 找不到 |
+|端點不正確 | 404 - 找不到 |
 |陣列或事件超過大小限制 | 413 承載太大 |
 
 對於錯誤，訊息內文的格式如下：

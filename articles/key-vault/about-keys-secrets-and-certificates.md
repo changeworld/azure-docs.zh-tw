@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 6a107936d290609fec73d46a93a277c3bdcce354
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: affa182145645b9a91801a9c6b38e682e6bd77ec
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75832926"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720056"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>關於金鑰、祕密與憑證
 
@@ -76,7 +76,7 @@ JavaScript 物件標記法 (JSON) 和 JavaScript 物件簽章與加密 (JOSE) �
 |`keyvault-name`|Microsoft Azure Key Vault 服務中的金鑰保存庫名稱。<br /><br /> Key Vault 名稱由使用者選取，且具有全域唯一性。<br /><br /> Key Vault 名稱必須是 3-24 個字元的字串，且只能包含 0-9、a-z、A-Z 和 -。|  
 |`object-type`|物件的類型，即「金鑰」或「秘密」。|  
 |`object-name`|`object-name` 是由使用者提供的名稱，而且在 Key Vault 中必須是唯一的。 其名稱必須是 1-127 個字元的字串，且只能包含 0-9、a-z、A-Z 和 -。|  
-|`object-version`|`object-version` 是系統產生的32字元字串識別碼，可選擇性地使用 * o 來定址物件的唯一版本。|  
+|`object-version`|`object-version` 是由系統產生的、包含 32 個字元的字串識別碼，可選擇性地用來當作物件的唯一版本。|  
 
 ## <a name="key-vault-keys"></a>Key Vault 金鑰
 

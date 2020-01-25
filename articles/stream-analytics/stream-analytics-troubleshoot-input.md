@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 20a161ffc82cb8f74cfcac838856434f83c4e258
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dac3037f82c38980c9ac16685aa7fddac68a2e7b
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75354290"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720294"
 ---
 # <a name="troubleshoot-input-connections"></a>針對輸入連線進行疑難排解
 
@@ -24,11 +24,13 @@ ms.locfileid: "75354290"
 
 2.  檢查您的輸入資料。
 
-    若要驗證輸入資料是否正流入事件中樞，請使用[服務匯流排總管](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a)與 Azure 事件中樞連線 (若有使用事件中樞輸入)。
+    1. 若要驗證輸入資料是否正流入事件中樞，請使用[服務匯流排總管](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a)與 Azure 事件中樞連線 (若有使用事件中樞輸入)。
         
-    針對各個輸入使用 [**範例資料**](stream-analytics-sample-data-input.md) 按鈕，並下載輸入範例資料。
+    1. 針對每個輸入使用 [[**範例資料**](stream-analytics-sample-data-input.md)] 按鈕。 下載輸入範例資料。
         
-    檢查範例資料以了解資料形式︰結構描述和[資料類型](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)。
+    1. 檢查範例資料以瞭解資料的形式，也就是架構和[資料類型](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)。
+
+3.  請確定您已在輸入預覽中選取時間範圍。 選擇 [**選取時間範圍**]，然後在測試查詢之前輸入取樣持續時間。
 
 ## <a name="malformed-input-events-causes-deserialization-errors"></a>格式不正確的輸入事件導致還原序列化錯誤 
 當串流分析作業的輸入資料流包含格式不正確的訊息時，就會導致還原序列化問題。 例如，格式錯誤的訊息可能是在 JSON 物件中遺漏括號或遺漏大括號所導致，或是時間欄位中不正確的時間戳記格式所導致。 

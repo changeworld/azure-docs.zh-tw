@@ -15,16 +15,16 @@ ms.date: 11/25/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d515731b8da186ef7e44a397d5abf87dfa65e83a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: eefdb42cebad2b7f532392254b652742527ed862
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433776"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711483"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-applications-with-azure-active-directory"></a>使用 Azure Active Directory 自動化應用程式的使用者布建和解除布建
 
-在 Azure Active Directory （Azure AD）中，**應用程式**布建一詞指的是在使用者需要存取的雲端（[SaaS](https://azure.microsoft.com/overview/what-is-saas/)）應用程式中自動建立使用者身分識別和角色。 除了建立使用者身分識別以外，自動布建還包括維護和移除使用者身分識別，做為狀態或角色變更。 常見的案例包括將 Azure AD 的使用者布建到[Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial)、 [Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial)、 [ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial)等應用程式中。
+在 Azure Active Directory （Azure AD）中，**應用程式**布建一詞指的是在使用者需要存取的雲端（[SaaS](https://azure.microsoft.com/overview/what-is-saas/)）應用程式中自動建立使用者身分識別和角色。 除了建立使用者身分識別以外，自動布建還包括維護和移除使用者身分識別，做為狀態或角色變更。 常見的案例包括將 Azure AD 的使用者布建到[Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md)、 [Salesforce](../saas-apps/salesforce-provisioning-tutorial.md)、 [ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md)等應用程式中。
 
 ![布建總覽圖表](media/user-provisioning/provisioning-overview.png)
 
@@ -63,7 +63,7 @@ Azure AD 為許多熱門的 SaaS 應用程式和人力資源系統提供預先�
 
    ![Salesforce 標誌](media/user-provisioning/gallery-app-logos.png)
 
-   如果您想要要求新的應用程式進行布建，您可以[要求您的應用程式與我們的應用程式庫整合](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing)。 針對使用者布建要求，我們要求應用程式必須具有符合 SCIM 規範的端點。 請要求應用程式廠商遵循 SCIM 標準，讓我們可以快速將應用程式上線至我們的平臺。
+   如果您想要要求新的應用程式進行布建，您可以[要求您的應用程式與我們的應用程式庫整合](../develop/howto-app-gallery-listing.md)。 針對使用者布建要求，我們要求應用程式必須具有符合 SCIM 規範的端點。 請要求應用程式廠商遵循 SCIM 標準，讓我們可以快速將應用程式上線至我們的平臺。
 
 * **支援 SCIM 2.0 的應用程式**。 如需如何以一般方式連接可執行 SCIM 2.0 型使用者管理 Api 之應用程式的相關資訊，請參閱[建立 SCIM 端點和設定使用者](use-scim-to-provision-users-and-groups.md)布建。
 
@@ -81,7 +81,7 @@ Azure AD 資源庫中的應用程式支援兩種布建模式之一：
 
 * **手動**布建表示尚未為應用程式提供自動 Azure AD 布建連接器。 您必須手動建立使用者帳戶，例如，將使用者直接新增至應用程式的系統管理入口網站，或上傳包含使用者帳戶詳細資料的試算表。 請參閱應用程式所提供的檔，或洽詢應用程式開發人員以判斷有哪些機制可供使用。
 
-* 「自動」表示已經為此應用程式開發 Azure AD 佈建連接器。 您應遵循設定應用程式布建的特定設定教學課程。 您可以在[如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)中找到應用程式教學課程。
+* 「自動」表示已經為此應用程式開發 Azure AD 佈建連接器。 您應遵循設定應用程式布建的特定設定教學課程。 您可以在[如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](../saas-apps/tutorial-list.md)中找到應用程式教學課程。
 
 在 Azure AD**資源**庫中，支援自動布建的應用程式是由布建圖示指定。 切換至新的資源庫預覽體驗，以查看這些圖示（在 [新增**應用程式] 頁面**頂端的橫幅中，選取 [**按一下這裡以試用全新和改良的應用程式資源庫**] 的連結）。
 
@@ -91,7 +91,7 @@ Azure AD 資源庫中的應用程式支援兩種布建模式之一：
 
 ## <a name="how-do-i-set-up-automatic-provisioning-to-an-application"></a>如何對應用程式設定自動佈建？
 
-針對資源庫中列出的預先整合應用程式，您可以使用逐步指引來設定自動布建。 請參閱[整合式資源庫應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/saas-apps/)。 下列影片示範如何設定 SalesForce 的自動使用者布建。
+針對資源庫中列出的預先整合應用程式，您可以使用逐步指引來設定自動布建。 請參閱[整合式資源庫應用程式的教學課程清單](../saas-apps/tutorial-list.md)。 下列影片示範如何設定 SalesForce 的自動使用者布建。
 
 > [!VIDEO https://www.youtube.com/embed/pKzyts6kfrw]
 

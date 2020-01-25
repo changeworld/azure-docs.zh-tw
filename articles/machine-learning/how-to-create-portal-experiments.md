@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: 00a316f69cfa77d705a789d40868105e9a098def
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 808d7ac7ded9b250e0835da51b6b547c05c622a9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894028"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720396"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>使用 Azure Machine Learning studio 建立、探索及部署自動化的機器學習實驗
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -143,7 +143,7 @@ ms.locfileid: "75894028"
 最大值| 資料行的最大值。 
 計數| 資料行中遺漏和不遺失的專案總數。
 未遺漏計數| 資料行中未遺漏的專案數。 空字串和錯誤會被視為值，因此它們不會參與「未遺漏計數」。
-Quantiles| 每個分量的近似值可讓您瞭解資料的分佈。
+分量| 每個分量的近似值可讓您瞭解資料的分佈。
 平均值| 資料行的算術平均值或平均值。
 標準差| 此資料行資料的散佈或變化量的測量單位。
 Variance| 量值分佈在此資料行中的值是來自其平均值。 
@@ -153,9 +153,15 @@ Variance| 量值分佈在此資料行中的值是來自其平均值。
 
 <a name="preprocess"></a>
 
-## <a name="advanced-preprocessing-options"></a>Advanced 前置處理選項
+## <a name="advanced-featurization-options"></a>Advanced 特徵化選項
 
-在設定您的實驗時，您可以 `Preprocess`啟用 [advanced] 設定。 這麼做表示在前置處理中，會自動執行下列資料護欄和特徵化步驟。
+在設定您的實驗時，您可以 `feauturization`啟用 [advanced] 設定。 
+
+|特徵化設定 | 說明 |
+| ------------- | ------------- |
+|"feauturization" = ' FeaturizationConfig '| 表示應該使用自訂的特徵化步驟。 [瞭解如何自訂特徵化](how-to-configure-auto-train.md#customize-feature-engineering)。|
+|"feauturization" = ' off '| 表示不應自動執行特徵化步驟。|
+|"feauturization" = ' auto '| 指出在前置處理中，會自動執行下列資料護欄和特徵化步驟。|
 
 |前置處理&nbsp;步驟| 說明 |
 | ------------- | ------------- |
@@ -177,11 +183,11 @@ Variance| 量值分佈在此資料行中的值是來自其平均值。
 
 Guardrail|狀態|&nbsp;觸發程式的條件&nbsp;
 ---|---|---
-遺漏&nbsp;值&nbsp;插補 |**成功** <br> <br> **固定**|    任何輸入&nbsp;資料行中沒有遺漏值 <br> <br> 有些資料行有遺漏值
+遺漏&nbsp;值&nbsp;插補 |**已** <br> <br> **固定匯率**|    任何輸入&nbsp;資料行中沒有遺漏值 <br> <br> 有些資料行有遺漏值
 交叉驗證|**即可**|如果未提供明確的驗證集
-高&nbsp;基數&nbsp;功能&nbsp;偵測|  **成功** <br> <br>**即可**|   未偵測到高基數功能 <br><br> 偵測到高基數輸入資料行
-類別餘額偵測 |**成功** <br><br><br>**警示** |類別會在定型資料中進行平衡;如果資料集內的每個類別都有良好的標記法，則會將資料集視為對稱，如樣本的數目和比率所測量 <br> <br> 定型資料中的類別是不平衡
-時間序列資料一致性|**成功** <br><br><br><br> **固定** |<br> 已分析選取的 {地平線、延遲、滾動視窗} 值，且未偵測到任何可能的記憶體不足問題。 <br> <br>已分析選取的 {水準、延遲、滾動視窗} 值，而且可能會導致您的實驗用盡記憶體。 已關閉 lag 或滾動視窗。
+高&nbsp;基數&nbsp;功能&nbsp;偵測|  **已** <br> <br>**即可**|   未偵測到高基數功能 <br><br> 偵測到高基數輸入資料行
+類別餘額偵測 |**已** <br><br><br>**警示** |類別會在定型資料中進行平衡;如果資料集內的每個類別都有良好的標記法，則會將資料集視為對稱，如樣本的數目和比率所測量 <br> <br> 定型資料中的類別是不平衡
+時間序列資料一致性|**已** <br><br><br><br> **固定匯率** |<br> 已分析選取的 {地平線、延遲、滾動視窗} 值，且未偵測到任何可能的記憶體不足問題。 <br> <br>已分析選取的 {水準、延遲、滾動視窗} 值，而且可能會導致您的實驗用盡記憶體。 已關閉 lag 或滾動視窗。
 
 ## <a name="run-experiment-and-view-results"></a>執行實驗並查看結果
 
@@ -228,7 +234,7 @@ Guardrail|狀態|&nbsp;觸發程式的條件&nbsp;
     使用自訂部署資產| 如果您想要上傳自己的評分腳本和環境檔案，請啟用此功能。 [深入瞭解評分腳本](how-to-deploy-and-where.md#script)。
 
     >[!Important]
-    > 檔案名的長度必須是32個字元，而且必須以英數位元開頭和結尾。 可能包含虛線、底線、點和之間的英數位元。 不允許空格。
+    > 檔案名的長度必須是32個字元，而且必須以英數位元開頭和結尾。 可能包含虛線、底線、點和之間的英數位元。 不允許使用空格。
 
     [ *Advanced* ] 功能表提供預設的部署功能，例如[資料收集](how-to-enable-app-insights.md)和資源使用量設定。 如果您想要覆寫這些預設值，請在此功能表中執行此動作。
 

@@ -1,7 +1,7 @@
 ---
 title: 使用 R 和 SQL 資料類型和物件
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: 了解如何使用資料類型及資料物件，在 R 中使用 Azure SQL Database 使用 Machine Learning 服務 （預覽），包括您可能會遇到的常見問題。
+description: 瞭解如何使用 Machine Learning 服務（預覽）中的 Azure SQL Database 來使用 R 中的資料類型和資料物件，包括您可能會遇到的常見問題。
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -13,27 +13,27 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: 01d3af14963e92393d34a952bddc8097b7b08f18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7dfd12729c5697d1935d098cbd4ed863a4551acd
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65232621"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719869"
 ---
-# <a name="work-with-r-and-sql-data-in-azure-sql-database-machine-learning-services-preview"></a>使用 Azure SQL Database Machine Learning 服務 （預覽） 中的 R 和 SQL 資料
+# <a name="work-with-r-and-sql-data-in-azure-sql-database-machine-learning-services-preview"></a>在 Azure SQL Database Machine Learning 服務（預覽）中使用 R 和 SQL 資料
 
-這篇文章將討論一些在 R 與 SQL Database 之間移動資料時，可能會遇到的常見問題[（使用 R) Azure SQL Database 中的 Machine Learning 服務](sql-database-machine-learning-services-overview.md)。 使用您自己的指令碼中的資料時，您可以透過這個練習中此體驗會提供必要的背景。
+本文討論當您在 Azure SQL Database 中的[Machine Learning 服務（使用 r）](sql-database-machine-learning-services-overview.md)中，于 r 和 SQL Database 之間移動資料時，可能會遇到的一些常見問題。 透過此練習所獲得的體驗，可提供您在使用自己指令碼資料時的基本背景。
 
 您可能會遇到的常見問題包括：
 
 - 資料類型有時不相符
 - 可能會發生隱含轉換
-- Cast 和 convert 作業有時會需要
+- 有時需要轉型和轉換作業
 - R 和 SQL 會使用不同的資料物件
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - 如果您沒有 Azure 訂用帳戶，請先[建立帳戶](https://azure.microsoft.com/free/)再開始。
 
@@ -43,11 +43,11 @@ ms.locfileid: "65232621"
 
 ## <a name="working-with-a-data-frame"></a>使用資料框架
 
-當您的指令碼從 R 傳回結果，sql 時，它必須傳回資料當做**data.frame**。 任何其他類型的清單、 因數、 向量或二進位資料-不論您的指令碼-產生的物件必須轉換成資料框架，如果您想要輸出做為預存程序結果的一部分。 幸運的是，有多個 R 函數，來支援變更為資料框架的其他物件。 您甚至可以將二進位模型序列化，並傳回在資料框架中，您將在本文稍後執行。
+當您的腳本從 R 傳回結果到 SQL 時，它必須傳回資料做為**資料框架**。 您在指令碼中產生的任何其他類型物件 (不論是清單、因數、向量或二進位資料)，如果您想要輸出它以做為預存程序結果的一部分，就必須將它轉換為資料框架。 幸好有多個 R 函數可用來支援將其他物件變更為資料框架。 您甚至可以序列化二進位模型，並將它傳回資料框架中，這將在本文稍後進行。
 
-首先，讓我們來試驗-向量、 矩陣和清單-一些基本 R 物件，並查看轉換成資料框架如何變更傳遞至 SQL 輸出。
+首先，讓我們來實驗一些基本的 R 物件-向量、矩陣和清單，並瞭解轉換至資料框架如何變更傳遞至 SQL 的輸出。
 
-比較在 r 中的這些兩個 「 Hello World 」 指令碼指令碼看起來幾乎完全相同，但第一個會傳回單一資料行的三個值，而第二個則傳回單一的三個資料行值，每個。
+在 R 中比較這兩個 "Hello World" 指令碼。這兩個指令碼看起來幾乎完全相同，但第一個會傳回三個值的單一資料行，而第二個會傳回三個資料行，每個均含單一值。
 
 **範例 1**
 
@@ -69,11 +69,11 @@ EXECUTE sp_execute_external_script @language = N'R'
 
 為何結果如此不同？
 
-答案通常可以找到使用 R`str()`命令。 新增函式`str(object_name)`隨處在您的 R 指令碼，將資料傳回結構描述指定的 R 物件做為參考用訊息。 您可以檢視中的訊息**訊息**在 SSMS 中的索引標籤。
+您通常可以使用 R `str()` 命令來找到答案。 在 R 指令碼中的任一處加入函數 `str(object_name)`，以傳回指定 R 物件的資料結構描述做為資訊訊息。 您可以在 SSMS 的 [**訊息**] 索引標籤中查看訊息。
 
-若要了解為什麼範例 1 和範例 2 中有這類不同的結果，將行`str(OutputDataSet)`結尾的`@script`變數定義在每個陳述式，就像這樣：
+若要找出範例1和範例2有這類不同結果的原因，請在每個語句的 `@script` 變數定義結尾插入 `str(OutputDataSet)` 行，如下所示：
 
-**範例 1 使用 str 函式新增**
+**已加入 str 函數的範例 1**
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -85,7 +85,7 @@ str(OutputDataSet);
     , @input_data_1 = N'  ';
 ```
 
-**範例 2 使用 str 函式新增**
+**已加入 str 函數的範例 2**
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -96,9 +96,9 @@ str(OutputDataSet);
     , @input_data_1 = N'  ';
 ```
 
-現在，檢視中的文字**訊息**以查看輸出不同的原因。
+現在，檢視 [訊息] 中的文字，以查看為何會有不同的輸出。
 
-**結果-範例 1**
+**結果 - 範例 1**
 
 ```text
 STDOUT message(s) from external script:
@@ -106,7 +106,7 @@ STDOUT message(s) from external script:
 $ mytextvariable: Factor w/ 3 levels " ","hello","world": 2 1 3
 ```
 
-**結果-範例 2**
+**結果 - 範例 2**
 
 ```text
 STDOUT message(s) from external script:
@@ -116,18 +116,18 @@ $ X...      : Factor w/ 1 level " ": 1
 $ c..world..: Factor w/ 1 level "world": 1
 ```
 
-如您所見，稍微變化一下 R 語法中的會有很大的影響結果的結構描述。 詳細資料中的所有詳細資料，說明 R 資料類型的差異*資料結構*一節[Hadley Wickham 所著的 《 進階 R"](http://adv-r.had.co.nz)。
+如您所見，稍微變化一下 R 語法，就會對結果的結構描述產生極大的影響。 如需所有詳細資訊，R 資料類型的差異會在[Hadley wickham 針對的 "Advanced R"](http://adv-r.had.co.nz)中的*資料結構*一節中詳細說明。
 
-現在，只是注意，您需要將強制轉型成資料框架的 R 物件時，檢查預期的結果。
+現在只需注意，您需要在將 R 物件強制轉型為資料框架時檢查預期的結果。
 
 > [!TIP]
-> 您也可以使用 R 識別函數，例如`is.matrix`， `is.vector`，以傳回內部資料結構的相關資訊。
+> 您也可以使用 R 識別函式（例如 `is.matrix`、`is.vector`）來傳回內部資料結構的相關資訊。
 
 ## <a name="implicit-conversion-of-data-objects"></a>資料物件的隱含轉換
 
-每個 R 資料物件具有它自己的規則結合其他資料物件，如果兩個資料物件具有相同數目的維度，或如果任何資料物件包含異質性的資料類型的值處理方式。
+如果兩個數據物件具有相同的維度數目，或任何資料物件包含異質資料類型，則每個 R 資料物件都有自己的規則，以便在結合其他資料物件時處理值。
 
-例如，假設您想要執行使用 r 的矩陣相乘您想要具有三個值的單一資料行矩陣乘以的陣列，具有四個值，並因此預期 4x3 矩陣。
+例如，假設您想要使用 R 來執行矩陣乘法。您想要將具有三個值的單一資料行矩陣乘以具有四個值的陣列，並預期4x3 矩陣的結果為。
 
 首先，建立測試資料的小型資料表。
 
@@ -145,7 +145,7 @@ VALUES (100);
 GO
 ```
 
-現在，請執行下列指令碼。
+現在，請執行下列腳本。
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -163,17 +163,17 @@ WITH RESULT SETS((
             ));
 ```
 
-實際上，三個值的資料行被轉換成單一資料行矩陣。 因為矩陣只是特殊案例的 R，陣列中陣列`y`會隱含地強制轉型的單一資料行矩陣，以使兩個引數相符。
+其中，具有三個值的資料行會轉換成單一資料行矩陣。 因為矩陣只是 R 中的特殊陣列案例，所以，陣列 `y` 會隱含地強制轉型為單一資料行的矩陣，以使這兩個引數相符。
 
 **結果**
 
-|Col1|Col2|Col3|第 4 欄|
+|Col1|Col2|Col3|Col4|
 |---|---|---|---|
 |12|13|14|15|
 |120|130|140|150|
 |1200|1300|1400|1500|
 
-不過，請注意當您變更陣列的大小，會發生什麼事`y`。
+不過，請注意您變更陣列 `y` 大小時會發生的情況。
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -194,13 +194,13 @@ R 現在會傳回單一值做為結果。
 |---|
 |1542|
 
-原因為何？ 在此情況下，因為兩個引數可以處理為相同長度的向量，R 會傳回內積作為矩陣。  這是預期的行為，根據線性代數的規則。 不過，它可能會造成問題如果下游應用程式預期輸出結構描述不會再變更 ！
+為什麼呢？ 在此案例中，因為這兩個引數可以當做長度相同的向量來處理，所以 R 會傳回內積做為矩陣。  這是根據線性代數的規則所預期的行為。 不過，如果您的下游應用程式預期輸出架構永遠不會變更，則可能會造成問題！
 
 ## <a name="merge-or-multiply-columns-of-different-length"></a>合併或相乘不同長度的資料行
 
-R 提供絕佳的彈性，使用不同的大小的向量，以及將這些類似資料行的結構結合成資料框架。 向量的清單看起來會像資料表，但它們不遵循用以管理資料庫資料表的所有規則。
+R 提供絕佳彈性來使用不同大小的向量，以及將這些類似資料行的結構結合至資料框架中。 向量的清單看起來像是一個資料表，但它們不遵循用以管理資料庫資料表的所有規則。
 
-例如，下列指令碼的定義長度為 6 的數值陣列位置，並將它儲存在 R 變數`df1`。 此數值陣列接著會與 RTestData 資料表 （上述所建立） 的整數結合其中包含三 （3） 值，以建立新的資料框架， `df2`。
+例如，下列指令碼定義長度為 6 的數值陣列，並將它儲存在 R 變數 `df1` 中。 然後，數值陣列會與 RTestData 資料表（如上所建立）的整數結合，其中包含三（3）個值，以建立新的資料框架，`df2`。
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -216,7 +216,7 @@ WITH RESULT SETS((
             ));
 ```
 
-若要填寫資料框架，R 會重複項目擷取自 RTestData 許多次，視需要來比對陣列中的項目數`df1`。
+為了填滿資料框架，R 會根據比對陣列 `df1` 中元素數目所需的次數，多次重複使用擷取自 RTestData 的元素。
 
 **結果**
     
@@ -229,18 +229,18 @@ WITH RESULT SETS((
 |10|5|
 |100|6|
 
-請記住，資料框架只看起來像資料表，但其實是一個清單的向量。
+請記住，資料框架只看起來像是資料表，但實際上是一份向量清單。
 
-## <a name="cast-or-convert-sql-data"></a>Cast 或 convert 的 SQL 資料
+## <a name="cast-or-convert-sql-data"></a>轉換或轉換 SQL 資料
 
-R 和 SQL 使用相同的資料類型，因此當您在 SQL 中取得資料，並再將它傳遞至 R 執行階段執行查詢，某些類型的隱含轉換，通常會發生。 當資料從 R 傳回 SQL，另一組轉換將會發生。
+R 和 SQL 不會使用相同的資料類型，因此當您在 SQL 中執行查詢以取得資料，然後將其傳遞至 R 執行時間時，通常會發生某種類型的隱含轉換。 當您將資料從 R 傳回到 SQL 時，會發生另一組轉換。
 
-- SQL 會將資料從查詢發送至 R 處理序，並將它轉換成內部表示法更高的效率。
-- R 執行階段會將資料載入 data.frame 變數，並執行它自己的資料上的作業。
-- Database engine 會將資料傳回給使用受保護的內部連接的 SQL，並顯示根據 SQL 資料類型資料。
-- 您來取得資料連接到 SQL 使用的用戶端或網路程式庫可以發出 SQL 查詢和處理表格式資料集。 此用戶端應用程式可能會影響以其他方式的資料。
+- SQL 會將查詢中的資料推送至 R 進程，並將它轉換成內部表示，以提高效率。
+- R 執行階段會將資料載入 data.frame 變數，並對資料執行自己的作業。
+- 資料庫引擎會使用安全的內部連接將資料傳回 SQL，並根據 SQL 資料類型來呈現資料。
+- 您可以使用可發出 SQL 查詢及處理表格式資料集的用戶端或網路程式庫來連接到 SQL，藉以取得資料。 此用戶端應用程式可能會以其他方式影響資料。
 
-若要查看其運作方式，請在上執行這類查詢[AdventureWorksDW](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks)資料倉儲。 此檢視會傳回用來建立預測的銷售資料。
+若要查看其運作方式，請在 [AdventureWorksDW](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks) 資料倉儲上執行這類查詢。 此檢視會傳回用來建立預測的銷售資料。
 
 ```sql
 USE AdventureWorksDW
@@ -255,9 +255,9 @@ ORDER BY ReportingDate ASC
 ```
 
 > [!NOTE]
-> 您可以使用任何版本的 AdventureWorks，或建立不同的查詢，使用您自己的資料庫。 重點是，嘗試處理一些包含文字、 日期時間和數字值的資料。
+> 您可以使用任何版本的 AdventureWorks，或使用您自己的資料庫建立不同查詢。 重點是嘗試處理一些包含文字、日期時間和數值的資料。
 
-現在，請嘗試使用此查詢做為預存程序的輸入。
+現在，請嘗試使用此查詢做為預存程式的輸入。
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -275,9 +275,9 @@ OutputDataSet <- InputDataSet;
 WITH RESULT SETS undefined;
 ```
 
-如果您收到錯誤，您可能需要進行一些編輯查詢文字。 比方說，WHERE 子句中的字串述詞必須以兩組單引號括住。
+如果您收到錯誤，您可能需要對查詢文字進行一些編輯。 例如，WHERE 子句中的字串述詞必須以兩組單引號括住。
 
-取得查詢能夠正常運作之後，請檢閱的結果`str`函式，以查看 R 如何處理輸入的資料。
+讓查詢能夠正常運作之後，檢閱 `str` 函數的結果，以查看 R 如何處理輸入資料。
 
 **結果**
 
@@ -288,16 +288,16 @@ STDOUT message(s) from external script: $ ProductSeries: Factor w/ 1 levels "M20
 STDOUT message(s) from external script: $ Amount       : num  3400 16925 20350 16950 16950
 ```
 
-- 已使用 R 資料類型處理日期時間資料行**POSIXct**。
-- 「 ProductSeries"已被識別為文字資料行**因素**，這表示類別變數。 預設會作為因素處理字串值。 如果您將字串傳遞至 R 時，它會轉換成整數，供內部使用，並接著對應回輸出上的字串。
+- 已使用 R 資料類型 **POSIXct** 來處理 datetime 資料行。
+- 已將文字資料行 "ProductSeries" 識別為一個**因數**，這表示類別變數。 預設會處理字串值以做為因數。 如果您將字串傳遞至 R，則會將它轉換為整數，以供內部使用，接著對應回輸出上的字串。
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
-即使這些簡短的範例中，您可以看到不必做為輸入傳遞 SQL 查詢時，請檢查資料轉換的效果。 由於 R 不支援某些 SQL 資料類型的請考慮這些方式來避免發生錯誤：
+您可以從這些簡短的範例中了解到，將 SQL 查詢做為輸入進行傳遞時，需檢查資料轉換的效果。 由於 R 不支援某些 SQL 資料類型，因此請考慮使用下列方式來避免發生錯誤：
 
-- 事先測試您的資料，並確認資料行或您可能有問題時傳遞至 R 程式碼的結構描述中的值。
-- 個別指定輸入的資料來源中的資料行，而不是使用`SELECT *`，而且知道如何處理每個資料行。
-- 準備您的輸入的資料，以避免意外情況時，請執行明確的轉型為必要。
-- 避免傳遞的資料行 （例如 GUID 或 rowguids 的資料） 會導致錯誤，而且不適合用於模型化。
+- 事先測試您的資料，並確認結構描述中可能會在傳遞至 R 程式碼發生問題的資料行或值。
+- 個別指定輸入資料來源中的資料行，而不是使用 `SELECT *`，並了解將如何處理每個資料行。
+- 在準備輸入資料時視需要執行明確的轉型，以避免出現意外狀況。
+- 避免傳遞會造成錯誤且不適用模型化的資料行 (例如 GUID 或 rowguids)。
 
-如需有關支援與不支援的 R 資料類型的詳細資訊，請參閱 < [R 程式庫和資料類型](/sql/advanced-analytics/r/r-libraries-and-data-types)。
+如需支援和不支援的 R 資料類型的詳細資訊，請參閱[R 程式庫和資料類型](/sql/advanced-analytics/r/r-libraries-and-data-types)。

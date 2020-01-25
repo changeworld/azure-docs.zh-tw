@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: ea247af871b06bd21c2733272b3d938c536d16ec
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 6b154cdbf6490abd935156e6d081d2260cfbc578
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546447"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719359"
 ---
 # <a name="train-clustering-model"></a>定型叢集模型
 
@@ -25,7 +25,7 @@ ms.locfileid: "76546447"
 此模組會採用您已經使用[K 意指](k-means-clustering.md)叢集模組設定的未定型叢集模型，並使用加上標籤或未標記的資料集來訓練模型。 此模組會建立可用於預測的定型模型，以及定型資料中每個案例的一組叢集指派。
 
 > [!NOTE]
-> 叢集模型無法使用[訓練模型](train-model.md)模組進行定型，這是用來定型機器學習模型的一般模組。 這是因為[定型模型](train-model.md)僅適用于受監督的學習演算法。 K-意指和其他群集演算法允許不受監督學習，這表示演算法可以從未標記的資料中學習。  
+> 叢集模型無法使用[訓練模型](train-model.md)模組來定型，這是用來定型機器學習模型的一般模組。 這是因為[定型模型](train-model.md)僅適用于受監督的學習演算法。 K-意指和其他群集演算法允許不受監督學習，這表示演算法可以從未標記的資料中學習。  
   
 ## <a name="how-to-use-train-clustering-model"></a>如何使用定型群集模型  
 

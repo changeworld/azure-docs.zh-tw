@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5a40b699c01f50ceb1bedbc36e7f1467772336f
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: c0664cbc8097f18ec9722e789ad40d5925781637
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997066"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711645"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>略過刪除超出範圍的使用者帳戶
 
@@ -37,14 +37,14 @@ ms.locfileid: "74997066"
 1. 啟動[Azure 入口網站](https://portal.azure.com)，然後流覽至布建應用程式的 [屬性] 區段。 例如，如果您想要將 Workday 匯出*至 AD 使用者布建應用程式*對應，請流覽至該應用程式的 [屬性] 區段。 
 1. 在佈建應用程式的 [屬性] 區段中，複製與 [物件識別碼] 欄位相關的 GUID 值。 此值也稱為您應用程式的 **ServicePrincipalId**，並且會在「Graph 總管」作業中用到。
 
-   ![Workday 應用程式服務主體識別碼](./media/export-import-provisioning-mappings/wd_export_01.png)
+   ![Workday 應用程式服務主體識別碼](media/skip-out-of-scope-deletions/wd_export_01.png)
 
 ## <a name="step-2-sign-into-microsoft-graph-explorer"></a>步驟2：登入 Microsoft Graph Explorer
 
 1. 啟動 [Microsoft Graph 總管](https://developer.microsoft.com/graph/graph-explorer)
 1. 按一下 [使用 Microsoft 登入] 按鈕，然後使用「Azure AD 全域管理員」或「應用程式管理員」認證來登入。
 
-    ![Graph 登入](./media/export-import-provisioning-mappings/wd_export_02.png)
+    ![Graph 登入](media/skip-out-of-scope-deletions/wd_export_02.png)
 
 1. 成功登入時，您會在左側窗格中看到使用者帳戶詳細資料。
 
@@ -56,11 +56,11 @@ ms.locfileid: "74997066"
    GET https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/secrets
 ```
 
-   ![取得作業查詢](./media/skip-out-of-scope-deletions/skip-03.png)
+   ![取得作業查詢](media/skip-out-of-scope-deletions/skip-03.png)
 
 將回應複製到文字檔中。 它看起來會像下面所示的 JSON 文字，並以黃色醒目提示您的部署特定的值。 將以綠色反白顯示的線條新增至結尾，並更新以藍色反白顯示的 Workday 連接密碼。 
 
-   ![取得作業回應](./media/skip-out-of-scope-deletions/skip-04.png)
+   ![取得作業回應](media/skip-out-of-scope-deletions/skip-04.png)
 
 以下是要新增至對應的 JSON 區塊。 
 
@@ -82,22 +82,22 @@ ms.locfileid: "74997066"
 ```
 將步驟3中的更新文字複製到 [要求本文]，並在 [要求標頭] 中將標頭 "Content-type" 設定為 "application/json"。 
 
-   ![PUT 要求](./media/skip-out-of-scope-deletions/skip-05.png)
+   ![PUT 要求](media/skip-out-of-scope-deletions/skip-05.png)
 
 按一下 [執行查詢]。 
 
 您應該會得到輸出為「成功–狀態碼204」。 
 
-   ![PUT 回應](./media/skip-out-of-scope-deletions/skip-06.png)
+   ![PUT 回應](media/skip-out-of-scope-deletions/skip-06.png)
 
 ## <a name="step-5-verify-that-out-of-scope-users-dont-get-disabled"></a>步驟5：確認超出範圍的使用者不會遭到停用
 
 您可以藉由更新範圍規則來略過特定的使用者，測試此旗標會產生預期的行為。 在下列範例中，我們會加入新的範圍規則，以排除識別碼為21173（先前在範圍中）的員工： 
 
-   ![範圍範例](./media/skip-out-of-scope-deletions/skip-07.png)
+   ![範圍範例](media/skip-out-of-scope-deletions/skip-07.png)
 
 在下一個布建週期中，Azure AD 布建服務會識別使用者21173已超出範圍，如果已啟用 SkipOutOfScopeDeletions 屬性，則該使用者的同步處理規則會顯示如下所示的訊息： 
 
-   ![範圍範例](./media/skip-out-of-scope-deletions/skip-08.png)
+   ![範圍範例](media/skip-out-of-scope-deletions/skip-08.png)
 
 

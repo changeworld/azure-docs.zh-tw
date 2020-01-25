@@ -6,16 +6,16 @@ ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
-ms.date: 12/20/2019
-ms.openlocfilehash: 55efdfe2bb1b37e566654b8041f2cf5ed411cc3f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 01/21/2020
+ms.openlocfilehash: dff4901f1488406ed1259d1411a6b05b949382cb
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977577"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715853"
 ---
-# <a name="collect-azure-activity-log-with-legacy-settings"></a>使用舊版設定收集 Azure 活動記錄
-[Azure 活動記錄](platform-logs-overview.md)是一個[平臺記錄](platform-logs-overview.md)，可讓您深入瞭解 Azure 中發生的訂用帳戶層級事件。 到目前為止，您已建立記錄設定檔，以將活動記錄專案傳送至[事件中樞或儲存體帳戶](activity-log-export.md)，並使用連接器將其收集到[log Analytics 工作區](activity-log-collect.md)。 本文說明方法之間的差異、如何使用現有的舊版設定，以及如何清除舊版設定以準備診斷設定。
+# <a name="update-to-azure-activity-log-collection-and-export"></a>更新至 Azure 活動記錄收集和匯出
+[Azure 活動記錄](platform-logs-overview.md)是一個[平臺記錄](platform-logs-overview.md)，可讓您深入瞭解 Azure 中發生的訂用帳戶層級事件。 將活動記錄專案傳送到[事件中樞或儲存體帳戶](activity-log-export.md)或[log Analytics 工作區](activity-log-collect.md)的方法，已變更為使用[診斷設定](diagnostic-settings.md)。 本文說明方法之間的差異，以及如何在準備變更為診斷設定時清除舊版設定。
 
 
 ## <a name="differences-between-methods"></a>方法之間的差異
@@ -39,14 +39,16 @@ ms.locfileid: "75977577"
 ### <a name="differences-in-data"></a>資料的差異
 診斷設定會收集與先前用來收集活動記錄的方法相同的資料，但目前的差異如下：
 
-下列屬性已移除：
+已移除下列資料行。 這些資料行的取代格式不同，因此您可能需要修改使用它們的記錄查詢。 您可能還是會看到 [已移除] 架構中的資料行，但不會填入資料。
 
-- ActivityStatus
-- ActivitySubstatus
-- OperationName
-- ResourceProvider
+| 已移除資料行 | 取代資料行 |
+|:---|:---|
+| ActivityStatus    | ActivityStatusValue    |
+| ActivitySubstatus | ActivitySubstatusValue |
+| OperationName     | OperationNameValue     |
+| ResourceProvider  | ResourceProviderValue  |
 
-已加入下列屬性：
+已加入下列資料行：
 
 - Authorization_d
 - Claims_d

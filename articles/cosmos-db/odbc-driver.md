@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: sngun
-ms.openlocfilehash: e8a982a100655934d4ae3ecd64564cf2da82dbbc
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 8be17f0b624c5c34709fb420adb434b77dbc0d91
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035567"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721076"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>使用 BI 分析工具搭配 ODBC 驅動程式連線到 Azure Cosmos DB
 
@@ -33,7 +33,7 @@ Azure Cosmos DB 是無結構描述的資料庫，可以快速開發應用程式�
 
 1. 下載適用於您的環境的驅動程式：
 
-    | 安裝程式 | 受支援的作業系統| 
+    | 安裝程式 | 支援的作業系統| 
     |---|---| 
     |適用於 64 位元 Windows 的 [Microsoft Azure Cosmos DB ODBC 64-bit.msi](https://aka.ms/cosmos-odbc-64x64)| 64 位元版本的 Windows 8.1 或更新版本、Windows 8、Windows 7、Windows Server 2012 R2、Windows Server 2012 和 Windows Server 2008 R2。| 
     |適用於 32 位元和 64 位元 Windows 的 [Microsoft Azure Cosmos DB ODBC 32x64-bit.msi](https://aka.ms/cosmos-odbc-32x64)| 64 位元版本的 Windows 8.1 或更新版本、Windows 8、Windows 7、Windows XP、Windows Vista、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 和 Windows Server 2003。| 
@@ -90,7 +90,7 @@ Azure Cosmos DB 是無結構描述的資料庫，可以快速開發應用程式�
 
 ## <a id="#container-mapping"></a>步驟3：使用容器對應方法建立架構定義
 
-您可以使用兩種類型的取樣方法：**容器對應**或**資料表分隔符號**。 取樣會話可以同時利用這兩種取樣方法，但每個容器只能使用特定的取樣方法。 下列步驟會使用容器對應方法，為一或多個容器中的資料建立架構。 這個取樣方法會抓取容器頁面中的資料，以判斷資料的結構。 它會將容器轉型為 ODBC 端上的資料表。 當容器中的資料為同質時，此取樣方法會有效率且快速。 如果容器包含異質資料類型，建議您使用[資料表分隔符號對應方法](#table-mapping)，因為它會提供更健全的取樣方法，以判斷容器中的資料結構。 
+您可以使用兩種類型的取樣方法：**容器對應**或**資料表分隔符號**。 取樣會話可以同時利用這兩種取樣方法，但每個容器只能使用特定的取樣方法。 下列步驟會使用容器對應方法，為一或多個容器中的資料建立架構。 這個取樣方法會抓取容器頁面中的資料，以判斷資料的結構。 它會將容器轉型為 ODBC 端上的資料表。 當容器中的資料為同質時，此取樣方法會有效率且快速。 如果容器包含異類類型的資料，建議您使用[資料表分隔符號對應方法](#table-mapping)，因為它會提供更健全的取樣方法，以判斷容器中的資料結構。 
 
 1. 完成連線[到您的 Azure Cosmos 資料庫](#connect)中的步驟1-4 之後，請按一下 [ **Azure Cosmos DB ODBC 驅動程式 DSN 設定**] 視窗中的 [**架構編輯器**]。
 
@@ -105,7 +105,7 @@ Azure Cosmos DB 是無結構描述的資料庫，可以快速開發應用程式�
     - 如果您想要將該資料行從查詢結果中排除，您可以將 [隱藏資料行] 設為 **true**。 雖然 [隱藏資料行] 標註為 true 的資料行仍屬於結構描述的一部份，它並不會針對選取和投影傳回。 例如，您可以隱藏開頭為 "_" 的所有 Azure Cosmos DB 系統必要屬性。
     - [識別碼] 資料行是唯一無法隱藏的欄位，因為它會在標準化結構描述中作為主索引鍵使用。 
 
-1. 當您完成定義結構描述時，按一下 [檔案]  |  [儲存]，瀏覽到要儲存結構描述的目錄，然後按一下 [儲存]。
+1. 當您完成定義結構描述時，按一下 [檔案] |  [儲存]，瀏覽到要儲存結構描述的目錄，然後按一下 [儲存]。
 
 1. 若要使用此架構搭配 DSN，請開啟 [ **AZURE COSMOS DB Odbc 驅動程式 DSN 設定] 視窗**（透過 [Odbc 資料來源管理員]），按一下 [ **Advanced Options**]，然後在 [**架構**檔案] 方塊中，流覽至已儲存的架構。 將結構描述檔案儲存至現有的 DSN，會修改 DSN 連線，將範圍設定為由結構描述定義的資料和結構。
 
@@ -124,7 +124,7 @@ Azure Cosmos DB 是無結構描述的資料庫，可以快速開發應用程式�
 
     a. 在 [屬性] 方塊中，輸入分隔符號屬性的名稱。 這是您在文件中希望設定取樣範圍的屬性 (例如「City」)，然後按一下 Enter 鍵。 
 
-    b.這是另一個 C# 主控台應用程式。 如果您只想將取樣範圍設定為您上方輸入的特定屬性值，請在選取方塊中選取該屬性，在 [值] 方塊中輸入值 (例如「Seattle」)，然後按一下 Enter 鍵。 您可以繼續加入多個屬性的值。 只要確定您輸入值時，已選取正確的屬性。
+    b. 如果您只想將取樣範圍設定為您上方輸入的特定屬性值，請在選取方塊中選取該屬性，在 [值] 方塊中輸入值 (例如「Seattle」)，然後按一下 Enter 鍵。 您可以繼續加入多個屬性的值。 只要確定您輸入值時，已選取正確的屬性。
 
     例如，如果您包含「City」的**屬性**值，而您想要限制資料表只包含含有「New York」和「Dubai」之城市值的資料列，可在 [屬性] 方塊中輸入「City」，而在 [值] 方塊中輸入「New York」和「Dubai」。
 
@@ -135,7 +135,7 @@ Azure Cosmos DB 是無結構描述的資料庫，可以快速開發應用程式�
     - 如果您想要將該資料行從查詢結果中排除，您可以將 [隱藏資料行] 設為 **true**。 雖然 [隱藏資料行] 標註為 true 的資料行仍屬於結構描述的一部份，它並不會針對選取和投影傳回。 例如，您可以隱藏開頭為 `_` 的所有 Azure Cosmos DB 系統必要屬性。
     - [識別碼] 資料行是唯一無法隱藏的欄位，因為它會在標準化結構描述中作為主索引鍵使用。 
 
-1. 當您完成定義結構描述時，按一下 [檔案]  |  [儲存]，瀏覽到要儲存結構描述的目錄，然後按一下 [儲存]。
+1. 當您完成定義結構描述時，按一下 [檔案] |  [儲存]，瀏覽到要儲存結構描述的目錄，然後按一下 [儲存]。
 
 1. 返回 [Azure Cosmos DB ODBC 驅動程式 DSN 設定] 視窗，按一下 [進階選項]。 然後，在 [結構描述檔案] 方塊中，瀏覽至已儲存的結構描述檔案並按一下 [確定]。 再按一下 [確定] 以儲存 DSN。 這會將您建立的結構描述儲存到 DSN。 
 
@@ -219,7 +219,7 @@ Invalid use of schema or catalog for OLE DB provider "MSDASQL" for linked server
 
     ![在 Power BI Desktop 中取得資料](./media/odbc-driver/odbc-driver-power-bi-get-data.png)
 
-1. 在 [取得資料] 視窗中，按一下 [其他]  |  [ODBC]  |  [連線]。
+1. 在 [取得資料] 視窗中，按一下 [其他] |  [ODBC] |  [連線]。
 
     ![在 Power BI Get Data 中選擇 ODBC 資料來源](./media/odbc-driver/odbc-driver-power-bi-get-data-2.png)
 
@@ -241,7 +241,7 @@ Invalid use of schema or catalog for OLE DB provider "MSDASQL" for linked server
 
 ## <a name="troubleshooting"></a>疑難排解
 
-如果您收到下列錯誤，請確定您在 **[步驟 2](#connect)** 於 Azure 入口網站複製的「主機」與「存取金鑰」值正確，然後再試一次。 使用 Azure 入口網站中「主機」與「存取金鑰」值右側的 [複製] 按鈕來複製正確的值。
+如果您收到下列錯誤，請確定您在[步驟 2](#connect) 於 Azure 入口網站複製的「主機」與「存取金鑰」值正確，然後再試一次。 使用 Azure 入口網站中「主機」與「存取金鑰」值右側的 [複製] 按鈕來複製正確的值。
 
     [HY000]: [Microsoft][Azure Cosmos DB] (401) HTTP 401 Authentication Error: {"code":"Unauthorized","message":"The input authorization token can't serve the request. Please check that the expected payload is built as per the protocol, and check the key being used. Server used the following payload to sign: 'get\ndbs\n\nfri, 20 jan 2017 03:43:55 gmt\n\n'\r\nActivityId: 9acb3c0d-cb31-4b78-ac0a-413c8d33e373"}`
 

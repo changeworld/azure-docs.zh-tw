@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1f60ce3a23882a48e6008b76c0eedcab99e013b2
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: a0aa20a8d1ddecfe401a4e099a4f298971779501
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883459"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720107"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>使用金鑰輪替和稽核設定 Azure Key Vault
 
@@ -36,7 +36,7 @@ ms.locfileid: "70883459"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="set-up-key-vault"></a>設定金鑰保存庫
+## <a name="set-up-key-vault"></a>設定 Key Vault
 
 若要讓應用程式能夠從金鑰保存庫擷取密碼，您必須先建立此密碼，並上傳至保存庫。
 
@@ -144,7 +144,7 @@ public async static Task<string> GetToken(string authority, string resource, str
 }
 ```
 
-新增必要的程式碼，以呼叫金鑰保存庫並擷取密碼值。 首先，您必須加入下列`using`語句：
+新增必要的程式碼，以呼叫金鑰保存庫並擷取密碼值。 首先，您必須加入下列 `using` 語句：
 
 ```csharp
 using Microsoft.Azure.KeyVault;
@@ -163,7 +163,7 @@ var sec = kv.GetSecretAsync(<SecretID>).Result.Value;
 ## <a name="key-rotation-using-azure-automation"></a>使用 Azure 自動化的金鑰輪替
 
 > [!IMPORTANT]
-> Azure 自動化 runbook 仍需要使用`AzureRM`模組。
+> Azure 自動化 runbook 仍需要使用 `AzureRM` 模組。
 
 您現在已準備好為您儲存為 Key Vault 秘密的值設定旋轉策略。 秘密可以透過數種方式旋轉：
 
@@ -265,14 +265,14 @@ Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Ena
 
 1. 建立服務匯流排命名空間（如果您已經有想要使用的命名空間，請跳至步驟2）。
 2. 流覽至 Azure 入口網站中的服務匯流排實例，然後選取您想要在其中建立佇列的命名空間。
-3. 選取 建立資源、 > 企業整合、服務匯流排 > ，然後輸入必要的詳細資料。
+3. 選取 [**建立資源**] > [**企業整合**] [ > **服務匯流排**]，然後輸入必要的詳細資料。
 4. 選取命名空間，然後選取 [**連接資訊**]，以尋找服務匯流排連接資訊。 下一節將需要此資訊。
 
 接下來，[建立 Azure 函式](../azure-functions/functions-create-first-azure-function.md)以輪詢儲存體帳戶中的金鑰保存庫記錄，並挑選新的事件。 此函式會依排程觸發。
 
 若要建立 Azure 函數應用程式，請選取 **建立資源**，在 marketplace 中搜尋**函數應用程式**，然後選取 **建立**。 在建立期間，您可以使用現有的主控方案，或建立新的方案。 您也可以選擇動態裝載。 如需 Azure Functions 之裝載選項的詳細資訊，請參閱[如何調整 Azure Functions](../azure-functions/functions-scale.md)。
 
-建立 Azure 函數應用程式之後，請移至它，然後選取 [**計時器**案例] 和 [ **C\#**  ] 做為語言。 然後選取 [**建立此函數**]。
+建立 Azure 函數應用程式之後，請移至它，然後選取該語言的**計時器**案例和**C\#** 。 然後選取 [**建立此函數**]。
 
 ![Azure Functions 啟動刀鋒視窗](./media/keyvault-keyrotation/Azure_Functions_Start.png)
 
@@ -314,7 +314,7 @@ public static void Run(TimerInfo myTimer, TextReader inputBlob, TextWriter outpu
         else
         {
             dtPrev = DateTime.UtcNow;
-            log.Verbose($"Sync point file didnt have a date. Setting to now.");
+            log.Verbose($"Sync point file didn't have a date. Setting to now.");
         }
     }
 
@@ -417,9 +417,9 @@ static string GetContainerSasUri(CloudBlockBlob blob)
 
 選取 [**儲存**] 之後，Azure Functions 將會下載所需的二進位檔。
 
-切換至 [整合] 索引標籤，然後為計時器參數提供有意義的名稱以在函式內使用。 在上述程式碼中，函式預期計時器會呼叫*名稱為 mytimer*。 為計時器指定[CRON 運算式](../app-service/webjobs-create.md#CreateScheduledCRON)，如下所示： `0 * * * * *`。 這個運算式會使函式每分鐘執行一次。
+切換至 [整合] 索引標籤，然後為計時器參數提供有意義的名稱以在函式內使用。 在上述程式碼中，函式預期計時器會呼叫*名稱為 mytimer*。 指定計時器的[CRON 運算式](../app-service/webjobs-create.md#CreateScheduledCRON)，如下所示： `0 * * * * *`。 這個運算式會使函式每分鐘執行一次。
 
-在相同的 [**整合**] 索引標籤上，新增類型為 [ **Azure Blob 儲存體**] 的輸入。 此輸入會指向包含函式所查看之最後一個事件時間戳記的 sync .txt 檔案。 在函式中，會使用參數名稱來存取此輸入。 在上述程式碼中，Azure Blob 儲存體輸入預期參數名稱必須是*inputBlob*。 選取將在其中尋找同步 .txt 檔案的儲存體帳戶（可能是相同或不同的儲存體帳戶）。 在 [路徑] 欄位中，以格式`{container-name}/path/to/sync.txt`提供檔案的路徑。
+在相同的 [**整合**] 索引標籤上，新增類型為 [ **Azure Blob 儲存體**] 的輸入。 此輸入會指向包含函式所查看之最後一個事件時間戳記的 sync .txt 檔案。 在函式中，會使用參數名稱來存取此輸入。 在上述程式碼中，Azure Blob 儲存體輸入預期參數名稱必須是*inputBlob*。 選取將在其中尋找同步 .txt 檔案的儲存體帳戶（可能是相同或不同的儲存體帳戶）。 在 [路徑] 欄位中，以 `{container-name}/path/to/sync.txt`格式提供檔案的路徑。
 
 新增「 **Azure Blob 儲存體**」類型的輸出。 此輸出會指向您在輸入中定義的 sync .txt 檔案。 函式會使用這個輸出來寫入最後一個事件的時間戳記。 前面的程式碼預期此參數名稱為 outputBlob。
 
@@ -429,7 +429,7 @@ static string GetContainerSasUri(CloudBlockBlob blob)
 
 接下來，您必須建立 Azure 邏輯應用程式，以挑選函式推送至服務匯流排佇列的事件、剖析內容，以及根據符合的條件傳送電子郵件。
 
-選取 [**建立資源** > ] [**整合** > ] [**邏輯應用程式**] 以[建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+選取 [**建立資源**] > [**整合** > **邏輯應用程式**] 來[建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 建立邏輯應用程式之後，請移至它，然後選取 [**編輯**]。 在邏輯應用程式編輯器中，選取 [**服務匯流排佇列**]，然後輸入您的服務匯流排認證，以將其連接到佇列。
 

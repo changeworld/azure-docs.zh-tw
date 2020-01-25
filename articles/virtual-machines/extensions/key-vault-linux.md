@@ -8,16 +8,16 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d6b8cdf43fea63fa4709dd5fc5319bb92ddefc63
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: a31894719863b16cc92f7e5bf4d7c85944c8850e
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806968"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721297"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>適用于 Linux 的 Key Vault 虛擬機器擴充功能
 
-Key Vault 的 VM 擴充功能可自動重新整理儲存在 Azure 金鑰保存庫中的憑證。 具體而言，延伸模組會監視儲存在金鑰保存庫中的已觀察憑證清單。  在偵測到變更時，擴充功能會抓取並安裝對應的憑證。 Key Vault 的 VM 擴充功能已由 Microsoft 發佈並支援，目前在 Linux Vm 上。 本檔詳述適用于 Linux 的 Key Vault VM 擴充功能所支援的平臺、設定和部署選項。 
+Key Vault 的 VM 擴充功能可自動重新整理儲存在 Azure 金鑰保存庫中的憑證。 具體而言，延伸模組會監視儲存在金鑰保存庫中的已觀察憑證清單。  在偵測到變更時，延伸模組會抓取並安裝對應的憑證。 Key Vault 的 VM 擴充功能已由 Microsoft 發佈並支援，目前在 Linux Vm 上。 本檔詳述適用于 Linux 的 Key Vault VM 擴充功能所支援的平臺、設定和部署選項。 
 
 ### <a name="operating-system"></a>作業系統
 
@@ -67,17 +67,17 @@ Key Vault 的 VM 擴充功能支援下列 Linux 散發套件：
 
 ### <a name="property-values"></a>屬性值
 
-| Name | 值 / 範例 | 資料類型 |
+| 名稱 | 值 / 範例 | 資料類型 |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | publisher | Microsoft.Azure.KeyVault | string |
-| 類型 | KeyVaultForLinux | string |
+| type | KeyVaultForLinux | string |
 | typeHandlerVersion | 1.0 | int |
 | pollingIntervalInS | 3600 | string |
 | certificateStoreName | MY | string |
-| linkOnRenewal | false | 布林值 |
+| linkOnRenewal | false | boolean |
 | certificateStoreLocation  | LocalMachine | string |
-| requiredInitialSync | true | 布林值 |
+| requiredInitialSync | true | boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | 字串陣列
 
 

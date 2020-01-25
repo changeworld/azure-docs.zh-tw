@@ -8,12 +8,12 @@ ms.topic: conceptual
 description: 使用 Azure 開發人員空間中的私用 Helm 存放庫。
 keywords: Docker，Kubernetes，Azure，AKS，Azure Container Service，容器，Helm
 manager: gwallace
-ms.openlocfilehash: dddec69dc019f286c714a09e6f1a7e47240d5572
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: b1579adc00540a429170027b66c5d3e508bcb5d4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867275"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718731"
 ---
 # <a name="use-a-private-helm-repository-in-azure-dev-spaces"></a>在 Azure Dev Spaces 中使用私用 Helm 存放庫
 
@@ -37,7 +37,7 @@ azds prep --public
 ```
 
 > [!TIP]
-> `prep` 命令會嘗試為您的專案產生[Dockerfile 和 Helm 圖表](../how-dev-spaces-works.md#prepare-your-code)。 Azure Dev Spaces 會使用這些檔案來建立和執行您的程式碼，但如果您想要變更專案的建立和執行方式，可以修改這些檔案。
+> `prep` 命令會嘗試為您的專案產生 [Dockerfile 和 Helm 圖表](../how-dev-spaces-works.md#prepare-your-code)。 Azure Dev Spaces 會使用這些檔案來建置和執行您的程式碼，但如果您想要變更專案的建置和執行方式，可以修改這些檔案。
 
 在應用程式的圖表目錄中，使用您的圖表建立[yaml][helm-requirements]檔案。 例如，如果您的應用程式命名為*app1*，您會建立*圖表/app1/需求。 yaml*。
 
@@ -81,7 +81,7 @@ Service 'app1' port 80 (http) is available at http://localhost:54256
 
 [helm]: https://docs.helm.sh
 [helm-chart]: https://helm.sh/docs/topics/charts/
-[helm-dependency-update]: https://v2.helm.sh/docs/helm/#helm-dependency-update
-[helm-repo-add]: https://v2.helm.sh/docs/helm/#helm-repo-add
-[helm-repo-update]: https://v2.helm.sh/docs/helm/#helm-repo-update
+[helm-dependency-update]: https://helm.sh/docs/topics/charts/#managing-dependencies-with-the-dependencies-field
+[helm-repo-add]: https://helm.sh/docs/intro/using_helm/#helm-repo-working-with-repositories
+[helm-repo-update]: https://helm.sh/docs/intro/using_helm/#helm-repo-working-with-repositories
 [helm-requirements]: https://helm.sh/docs/topics/charts/#chart-dependencies

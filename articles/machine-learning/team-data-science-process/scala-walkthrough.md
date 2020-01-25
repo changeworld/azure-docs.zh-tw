@@ -3,26 +3,26 @@ title: 在 Azure 上使用 Scala 和 Spark 的資料科學- Team Data Science Pr
 description: 如何使用 Scala 搭配 Spark 可調整 MLlib 和 Azure HDInsight Spark 叢集上的 SparkML 封裝，處理受監督的機器學習工作。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b22d461d327e595908ea8cc18dd0d507fdc83ecd
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: b36a3faab49ee8d51c25aa18879e6f5d1db8c2fb
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907702"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716772"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>在 Azure 上使用 Scala 與 Spark 的資料科學
 本文章說明如何使用 Scala 搭配 Spark 可調整 MLlib 和 Azure HDInsight Spark 叢集上的 SparkML 封裝，處理受監督的機器學習工作。 它會引導您進行構成 [資料科學程序](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)的各項工作︰資料擷取和探索、視覺化、特徵設計、模型化和模型取用。 本文中的模型除了兩個常見受監督的機器學習工作之外，還包括羅吉斯和線性迴歸、隨機樹系和梯度推進樹 (GBT)︰
 
-* 迴歸問題：計程車車程的小費金額 ($) 預測
-* 二元分類：計程車車程的小費或無小費 (1/0) 預測
+* 迴歸問題︰計程車車程的小費金額 ($) 預測
+* 二進位分類︰計程車車程的小費或不給小費 (1/0) 預測
 
 模型化程序需要訓練和評估測試資料集和相關精確度計量。 在本文中，您會了解如何在 Azure Blob 儲存體中儲存這些模型，以及如何評分及評估模型的預測效能。 本文也涵蓋如何使用交叉驗證和超參數掃掠來最佳化模型等更進階的主題。 所使用的資料是 GitHub 上 2013 年紐約市計程車車程和費用資料集的抽樣樣本。
 
@@ -41,7 +41,7 @@ ms.locfileid: "69907702"
 
 ## <a name="prerequisites"></a>必要條件
 * 您必須擁有 Azure 訂用帳戶。 如果還沒有， [請取得 Azure 免費試用](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
-* 您需要 Azure HDInsight 3.4 Spark 1.6 叢集來完成下列程序。 若要建立叢集，請參閱[開始使用：Azure HDInsight 上的 Apache Spark](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md) 的指示。 在 [選取叢集類型] 功能表上設定叢集類型和版本。
+* 您需要 Azure HDInsight 3.4 Spark 1.6 叢集來完成下列程序。 若要建立叢集，請參閱 [開始使用：在 Azure HDInsight 上建立 Apache Spark](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)中的指示。 在 [選取叢集類型] 功能表上設定叢集類型和版本。
 
 ![HDInsight 叢集類型組態](./media/scala-walkthrough/spark-cluster-on-portal.png)
 
@@ -66,7 +66,7 @@ ms.locfileid: "69907702"
 
 [Exploration-Modeling-and-Scoring-using-Scala.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration-Modeling-and-Scoring-using-Scala.ipynb)
 
-## <a name="setup-preset-spark-and-hive-contexts-spark-magics-and-spark-libraries"></a>安裝程式：預設的 Spark 和 Hive 內容、Spark Magic 和 Spark 程式庫
+## <a name="setup-preset-spark-and-hive-contexts-spark-magics-and-spark-libraries"></a>安裝程式︰預設的 Spark 和 Hive 內容、Spark Magic 和 Spark 程式庫
 ### <a name="preset-spark-and-hive-contexts"></a>預設的 Spark 和 Hive 內容
     # SET THE START TIME
     import java.util.Calendar
@@ -254,13 +254,13 @@ Spark 可以讀取和寫入 Azure Blob 儲存體。 您可以使用 Spark 來處
 |        10.5 |2.0 |1.0 |1.0 |
 
 ## <a name="data-exploration-and-visualization"></a>資料探索和虛擬化
-將資料帶入 Spark 之後，資料科學程序的下一個步驟是透過探索和視覺化以更深入瞭解資料。 本節中，您可以使用 SQL 查詢檢查計程車資料。 然後將結果匯入資料框架，以使用 Jupyter 的自動視覺化特徵繪製目標變數和潛在特徵以便進行視覺檢查。
+將資料帶入 Spark 之後，資料科學程序的下一個步驟是透過探索和視覺化以更深入瞭解資料。 本節中，您可以使用 SQL 查詢檢查計程車資料。 然後，將結果匯入資料框架，以使用自動視覺化 Jupyter 功能繪製目標變數和潛在功能以進行視覺檢查。
 
 ### <a name="use-local-and-sql-magic-to-plot-data"></a>使用本機和 SQL magic 來繪製資料
 根據預設，在背景工作節點上保存的工作階段內容中，可取得您從 Jupyter Notebook 執行之任何程式碼片段的輸出。 如果您想要將車程儲存至每個計算的背景工作節點，而且如果在 Jupyter 伺服器節點 (此為前端節點) 的本機上可取得計算所需的所有資料，您可以使用 `%%local` Magic 在 Jupyter 伺服器上執行程式碼片段。
 
-* **SQL magic** (`%%sql`)。 HDInsight Spark 核心支援針對 SQLContext 進行簡單的內嵌 HiveQL 查詢。 (`-o VARIABLE_NAME`) 引數會將 SQL 查詢的輸出，保存為 Jupyter 伺服器上的 Pandas 資料框架。 這代表會在本機模式中使用此引數。
-* `%%local` **magic**。 `%%local` magic 在 Jupyter 伺服器本機 (HDInsight 叢集的前端節點) 上執行程式碼。 一般而言，您會使用 `%%local` magic 來搭配含有 `-o` 參數的 `%%sql` magic。 `-o` 參數會保存本機 SQL 查詢的輸出，然後 `%%local` magic 會針對已保存在本機上的 SQL 查詢輸出，觸發下一組要在本機上執行的程式碼片段。
+* **SQL magic** (`%%sql`)。 HDInsight Spark 核心支援針對 SQLContext 進行簡單的內嵌 HiveQL 查詢。 (`-o VARIABLE_NAME`) 引數會將 SQL 查詢的輸出，保存為 Jupyter 伺服器上的 Pandas 資料框架。 這項設定表示輸出將會以原生模式提供。
+* `%%local`**魔術**。 `%%local` magic 在 Jupyter 伺服器本機 (HDInsight 叢集的前端節點) 上執行程式碼。 一般而言，您會使用 `%%local` magic 來搭配含有 `-o` 參數的 `%%sql` magic。 `-o` 參數會保存本機 SQL 查詢的輸出，然後 `%%local` magic 會針對已保存在本機上的 SQL 查詢輸出，觸發下一組要在本機上執行的程式碼片段。
 
 ### <a name="query-the-data-by-using-sql"></a>使用 SQL 查詢資料
 此查詢會依照費用金額、乘客計數和小費金額擷取計程車車程。
@@ -289,9 +289,9 @@ Spark 可以讀取和寫入 Azure Blob 儲存體。 您可以使用 Spark 來處
 
  在您執行程式碼之後，Spark 核心會將 SQL (HiveQL) 查詢的輸出自動視覺化。 您可以選擇數種類型的視覺效果︰
 
-* 資料表
+* 表格
 * 圓形圖
-* 折線圖
+* 線條
 * 區域
 * 長條圖
 
@@ -532,7 +532,7 @@ MLlib 的模型化和預測函式需要先執行功能來分類要索引或編�
 
 
 
-## <a name="binary-classification-model-predict-whether-a-tip-should-be-paid"></a>二元分類模型：預測是否應支付小費
+## <a name="binary-classification-model-predict-whether-a-tip-should-be-paid"></a>二進位分類模型：預測是否應支付小費
 在本節中，您會建立三種類型的二進位分類模型來預測是否應支付小費：
 
 * 使用 Spark ML `LogisticRegression()` 函式的**羅吉斯迴歸模型**
@@ -723,7 +723,7 @@ MLlib 的模型化和預測函式需要先執行功能來分類要索引或編�
 
 **輸出：**
 
-ROC 曲線下的區域：0.9846895479241554
+ROC 曲線夏的領域 = 0.9846895479241554
 
 ## <a name="regression-model-predict-tip-amount"></a>迴歸模型：預測小費金額
 在本節中，您會建立兩種類型的迴歸模型來預測小費金額︰
@@ -848,12 +848,12 @@ ROC 曲線下的區域：0.9846895479241554
 
 **輸出：**
 
-![小費金額：實際與預測](./media/scala-walkthrough/plot-actual-vs-predicted-tip-amount.png)
+![小費金額︰實際與預測](./media/scala-walkthrough/plot-actual-vs-predicted-tip-amount.png)
 
 ### <a name="create-a-gbt-regression-model"></a>建立 GBT 迴歸模型
 使用 SparkML `GBTRegressor()` 函式建立 GBT 迴歸模型，然後對測試資料評估模型。
 
-[梯度推進樹](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBT) 集合了所有決策樹。 GBT 反覆地訓練決策樹以盡可能降低遺失函式。 您可以使用 GBT 進行迴歸和分類。 GBT 可以處理分類特徵、不需要調整特徵，而且可以擷取非線性和特徵互動。 您也可以在多類別分類設定中使用 GBT。
+漸層[提升樹狀](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts)結構（gbt）是整體的決策樹。 GBT 會反復定型決策樹，將損失函數降至最低。 您可以使用 GBT 進行回歸和分類。 GBT 可以處理分類特徵、不需要調整特徵，而且可以擷取非線性和特徵互動。 您也可以在多類別分類設定中使用 GBT。
 
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()

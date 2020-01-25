@@ -2,20 +2,20 @@
 title: 在生產環境中部署模型 - Team Data Science Process
 description: 如何將模型部署到生產環境，好讓這些模型能夠在進行業務決策時扮演主動角色。
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: ed48ab9f85d28bec926120fea87a5ccf8bb6f9af
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: e3e2ef3340ca836f56176c21cf3d221f0bf172b9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75526765"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722232"
 ---
 # <a name="deploy-models-to-production-to-play-an-active-role-in-making-business-decisions"></a>將模型部署到生產環境以便在進行業務決策時扮演主動角色
 
@@ -39,7 +39,7 @@ ms.locfileid: "75526765"
 
 ## <a name="ab-testing"></a>A/B 測試
 
-多個模型在生產環境中時，執行 [A/B 測試](https://en.wikipedia.org/wiki/A/B_testing)來比較模型的效能會很有用。 
+當生產環境中有多個模型時，可以使用[A/B 測試](https://en.wikipedia.org/wiki/A/B_testing)來比較模型效能。 
  
 ## <a name="next-steps"></a>後續步驟
 

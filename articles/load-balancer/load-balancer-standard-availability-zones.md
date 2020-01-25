@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 9e585f7d13e1686f125055056fd1e2d88e2bf8ff
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 0d61ad33b97b97c3a45334704544d72809e56848
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903341"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715265"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>標準 Load Balancer 和可用性區域
 
@@ -143,7 +143,7 @@ Load Balancer 資源可以包含同時具有區域性和區域冗余前端的規
                 ],
 ```
 
-前面的摘錄並不是完整的範本，而是為了示範如何表達可用性區域屬性。  您必須將這些語句併入您的範本中。
+前面的摘錄不是完整的範本，而是為了示範如何表達可用性區域屬性。  您必須將這些語句併入您的範本中。
 
 ### <a name="cross-zone-load-balancing"></a>跨區域負載平衡
 

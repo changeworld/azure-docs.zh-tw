@@ -2,13 +2,13 @@
 title: 完整模式刪除
 description: 顯示資源類型如何處理 Azure Resource Manager 範本中的完整模式刪除。
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.openlocfilehash: 37d055503b8c9524392bedaa265025554dc4f8ee
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/23/2020
+ms.openlocfilehash: b24bf2d8076dbaa1975f5444d597647156a31f4f
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75479614"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715586"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>完整模式部署的 Azure 資源刪除
 
@@ -132,6 +132,7 @@ ms.locfileid: "75479614"
 > - [Microsoft.Portal](#microsoftportal)
 > - [Microsoft.PowerBI](#microsoftpowerbi)
 > - [Microsoft.PowerBIDedicated](#microsoftpowerbidedicated)
+> - [ProjectBabylon](#microsoftprojectbabylon)
 > - [Microsoft.RecoveryServices](#microsoftrecoveryservices)
 > - [Microsoft.Relay](#microsoftrelay)
 > - [Microsoft RemoteApp](#microsoftremoteapp)
@@ -165,6 +166,7 @@ ms.locfileid: "75479614"
 > - [Microsoft 訂用帳戶](#microsoftsubscription)
 > - [Microsoft.TimeSeriesInsights](#microsofttimeseriesinsights)
 > - [Microsoft.VMwareCloudSimple](#microsoftvmwarecloudsimple)
+> - [VnfManager](#microsoftvnfmanager)
 > - [Microsoft.Web](#microsoftweb)
 > - [WindowsDefenderATP](#microsoftwindowsdefenderatp)
 > - [Microsoft.WindowsIoT](#microsoftwindowsiot)
@@ -222,7 +224,7 @@ ms.locfileid: "75479614"
 > | alertsMetaData | 否 |
 > | alertsSummary | 否 |
 > | alertsSummaryList | 否 |
-> | 意見回應 | 否 |
+> | 反 | 否 |
 > | smartDetectorAlertRules | 是 |
 > | smartDetectorRuntimeEnvironments | 否 |
 > | smartGroups | 否 |
@@ -282,6 +284,7 @@ ms.locfileid: "75479614"
 > | policySetDefinitions | 否 |
 > | providerOperations | 否 |
 > | roleAssignments | 否 |
+> | roleAssignmentsUsageMetrics | 否 |
 > | roleDefinitions | 否 |
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
@@ -366,6 +369,7 @@ ms.locfileid: "75479614"
 > | billingAccounts / billingProfiles / billingSubscriptions | 否 |
 > | billingAccounts / billingProfiles / createBillingRoleAssignment | 否 |
 > | billingAccounts/billingProfiles/客戶 | 否 |
+> | billingAccounts/billingProfiles/指示 | 否 |
 > | billingAccounts/billingProfiles/發票 | 否 |
 > | billingAccounts/billingProfiles/發票/pricesheet | 否 |
 > | billingAccounts / billingProfiles / invoiceSections | 否 |
@@ -493,6 +497,7 @@ ms.locfileid: "75479614"
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
 > | appliedReservations | 否 |
+> | autoQuotaIncrease | 否 |
 > | calculateExchange | 否 |
 > | calculatePrice | 否 |
 > | calculatePurchasePrice | 否 |
@@ -509,6 +514,7 @@ ms.locfileid: "75479614"
 > | reservationOrders/split | 否 |
 > | reservationOrders/swap | 否 |
 > | reservations | 否 |
+> | resourceProviders | 否 |
 > | resources | 否 |
 > | validateReservationOrder | 否 |
 
@@ -762,7 +768,7 @@ ms.locfileid: "75479614"
 > | ExternalSubscriptions/維度 | 否 |
 > | ExternalSubscriptions/預測 | 否 |
 > | ExternalSubscriptions/查詢 | 否 |
-> | 預測 | 否 |
+> | 預見性 | 否 |
 > | 查詢 | 否 |
 > | 註冊 | 否 |
 > | Reportconfigs | 否 |
@@ -806,6 +812,8 @@ ms.locfileid: "75479614"
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
 > | workspaces | 是 |
+> | 工作區/dbWorkspaces | 否 |
+> | 工作區/storageEncryption | 否 |
 > | 工作區/virtualNetworkPeerings | 否 |
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
@@ -883,6 +891,7 @@ ms.locfileid: "75479614"
 > | ------------- | ----------- |
 > | 伺服器 | 是 |
 > | 伺服器/顧問 | 否 |
+> | 伺服器/金鑰 | 否 |
 > | 伺服器/privateEndpointConnectionProxies | 否 |
 > | 伺服器/privateEndpointConnections | 否 |
 > | 伺服器/privateLinkResources | 否 |
@@ -899,6 +908,7 @@ ms.locfileid: "75479614"
 > | ------------- | ----------- |
 > | 伺服器 | 是 |
 > | 伺服器/顧問 | 否 |
+> | 伺服器/金鑰 | 否 |
 > | 伺服器/privateEndpointConnectionProxies | 否 |
 > | 伺服器/privateEndpointConnections | 否 |
 > | 伺服器/privateLinkResources | 否 |
@@ -961,8 +971,10 @@ ms.locfileid: "75479614"
 > | ------------- | ----------- |
 > | ElasticPools | 是 |
 > | ElasticPools / IotHubTenants | 是 |
+> | ElasticPools/IotHubTenants/securitySettings | 否 |
 > | IotHubs | 是 |
 > | IotHubs/eventGridFilters | 否 |
+> | IotHubs/securitySettings | 否 |
 > | ProvisioningServices | 是 |
 > | usages | 否 |
 
@@ -971,7 +983,7 @@ ms.locfileid: "75479614"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | 管線中 | 是 |
+> | 段 | 是 |
 
 ## <a name="microsoftdevspaces"></a>Microsoft.DevSpaces
 
@@ -1036,6 +1048,12 @@ ms.locfileid: "75479614"
 > | 網域/主題 | 否 |
 > | eventSubscriptions | 否 |
 > | extensionTopics | 否 |
+> | partnerNamespaces | 是 |
+> | partnerNamespaces/eventChannels | 否 |
+> | partnerRegistrations | 是 |
+> | partnerTopics | 是 |
+> | systemTopics | 是 |
+> | systemTopics/eventSubscriptions | 否 |
 > | topics | 是 |
 > | topicTypes | 否 |
 
@@ -1091,6 +1109,8 @@ ms.locfileid: "75479614"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
+> | autoManagedAccounts | 是 |
+> | autoManagedVmConfigurationProfiles | 是 |
 > | configurationProfileAssignments | 否 |
 > | guestConfigurationAssignments | 否 |
 > | software | 否 |
@@ -1202,6 +1222,8 @@ ms.locfileid: "75479614"
 > | 叢集/資料庫 | 否 |
 > | 叢集/資料庫/dataconnections | 否 |
 > | 叢集/資料庫/eventhubconnections | 否 |
+> | 叢集/資料庫/principalassignments | 否 |
+> | 叢集/principalassignments | 否 |
 > | 叢集/sharedidentities | 否 |
 
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
@@ -1292,6 +1314,7 @@ ms.locfileid: "75479614"
 > | offerTypes/發行者/供應專案/方案/專案 | 否 |
 > | offerTypes/發行者/優惠/方案/importImage | 否 |
 > | privategalleryitems | 否 |
+> | privateStoreClient | 否 |
 > | products | 否 |
 > | 發行者 | 否 |
 > | 發行者/優惠 | 否 |
@@ -1350,6 +1373,7 @@ ms.locfileid: "75479614"
 > | ------------- | ----------- |
 > | assessmentProjects | 是 |
 > | migrateprojects | 是 |
+> | moveCollections | 是 |
 > | projects | 是 |
 
 ## <a name="microsoftmixedreality"></a>MixedReality
@@ -1492,8 +1516,12 @@ ms.locfileid: "75479614"
 > | linkTargets | 否 |
 > | storageInsightConfigs | 否 |
 > | workspaces | 是 |
+> | 工作區/dataExports | 否 |
 > | 工作區/資料來源 | 否 |
 > | 工作區/Linkedservices.json 和 datasets.json | 否 |
+> | 工作區/privateEndpointConnectionProxies | 否 |
+> | 工作區/privateEndpointConnections | 否 |
+> | 工作區/privateLinkResources | 否 |
 > | 工作區/查詢 | 否 |
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
@@ -1551,6 +1579,13 @@ ms.locfileid: "75479614"
 > | ------------- | ----------- |
 > | capacities | 是 |
 
+## <a name="microsoftprojectbabylon"></a>ProjectBabylon
+
+> [!div class="mx-tableFixed"]
+> | 資源類型 | 完整模式刪除 |
+> | ------------- | ----------- |
+> | accounts | 是 |
+
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 
 > [!div class="mx-tableFixed"]
@@ -1577,7 +1612,7 @@ ms.locfileid: "75479614"
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
 > | accounts | 否 |
-> | 集合 | 是 |
+> | 收藏 | 是 |
 > | 集合/應用程式 | 否 |
 > | 集合/securityprincipalsgetresponse | 否 |
 > | templateImages | 否 |
@@ -1602,6 +1637,7 @@ ms.locfileid: "75479614"
 > | availabilityStatuses | 否 |
 > | childAvailabilityStatuses | 否 |
 > | childResources | 否 |
+> | emergingissues | 否 |
 > | 活動 | 否 |
 > | impactedResources | 否 |
 > | 中繼資料 | 否 |
@@ -1620,12 +1656,7 @@ ms.locfileid: "75479614"
 > | notifyResourceJobs | 否 |
 > | 提供者 | 否 |
 > | resourceGroups | 否 |
-> | resources | 否 |
 > | subscriptions | 否 |
-> | 訂閱/提供者 | 否 |
-> | 訂用帳戶/資源 | 否 |
-> | 訂閱/tagnames | 否 |
-> | 訂閱/tagNames/tagValues | 否 |
 > | tenants | 否 |
 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
@@ -1662,7 +1693,7 @@ ms.locfileid: "75479614"
 > | allowedConnections | 否 |
 > | applicationWhitelistings | 否 |
 > | assessmentMetadata | 否 |
-> | 評量 | 否 |
+> | 評估 | 否 |
 > | autoDismissAlertsRules | 否 |
 > | 自動化 | 是 |
 > | AutoProvisioningSettings | 否 |
@@ -1708,10 +1739,10 @@ ms.locfileid: "75479614"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | aggregations | 否 |
+> | 聚合 | 否 |
 > | alertRules | 否 |
 > | alertRuleTemplates | 否 |
-> | 書籤 | 否 |
+> | 標籤 | 否 |
 > | 案例 | 否 |
 > | dataConnectors | 否 |
 > | 實體 | 否 |
@@ -1954,6 +1985,16 @@ ms.locfileid: "75479614"
 > | dedicatedCloudServices | 是 |
 > | virtualMachines | 是 |
 
+## <a name="microsoftvnfmanager"></a>VnfManager
+
+> [!div class="mx-tableFixed"]
+> | 資源類型 | 完整模式刪除 |
+> | ------------- | ----------- |
+> | devices | 是 |
+> | 銷售 | 否 |
+> | 廠商/sku | 否 |
+> | vnfs | 是 |
+
 ## <a name="microsoftweb"></a>Microsoft.Web
 
 > [!div class="mx-tableFixed"]
@@ -1975,8 +2016,8 @@ ms.locfileid: "75479614"
 > | connections | 是 |
 > | customApis | 是 |
 > | deletedSites | 否 |
-> | functions | 否 |
 > | hostingEnvironments | 是 |
+> | hostingEnvironments/eventGridFilters | 否 |
 > | hostingEnvironments/multiRolePools | 否 |
 > | hostingEnvironments/workerPools | 否 |
 > | publishingUsers | 否 |
@@ -1996,6 +2037,7 @@ ms.locfileid: "75479614"
 > | sites/位置/hostNameBindings | 否 |
 > | sites/位置/Networkconfig.netcfg | 否 |
 > | sourceControls | 否 |
+> | staticSites | 是 |
 > | validate | 否 |
 > | verifyHostingEnvironmentVnet | 否 |
 

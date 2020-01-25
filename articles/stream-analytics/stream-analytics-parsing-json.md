@@ -6,12 +6,12 @@ author: mamccrea
 ms.author: mamccrea
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 1741510c7398ce74da81f006cb4109d9a33f8f9f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cbfa6f8b85814f0f77234e014ade0ff757a4c4b8
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431598"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720073"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>在 Azure 串流分析中剖析 JSON 和 Avro 資料
 
@@ -78,7 +78,7 @@ FROM input
 
 
 ### <a name="access-nested-fields-when-property-name-is-a-variable"></a>當屬性名稱為變數時存取嵌套欄位
-如果屬性名稱是變數，請使用[GetRecordPropertyValue](https://docs.microsoft.com/stream-analytics-query/getmetadatapropertyvalue)函數。 
+如果屬性名稱是變數，請使用[GetRecordPropertyValue](https://docs.microsoft.com/stream-analytics-query/getrecordpropertyvalue-azure-stream-analytics)函數。 
 
 例如，假設有一個範例資料流程需要與包含每個裝置感應器閾值的參考資料聯結。 以下顯示這類參考資料的程式碼片段。
 

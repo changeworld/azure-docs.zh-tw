@@ -15,12 +15,12 @@ ms.date: 11/25/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8dc442720a6c2876990e5012732b363b43ec0cc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4e776ce8a455f2a5b453e23ebb996de9ddb5175a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430187"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711972"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>在 Azure 入口網站中管理企業應用程式的使用者帳戶佈建
 
@@ -38,7 +38,7 @@ ms.locfileid: "75430187"
 1. 選取任何應用程式以載入其 [資源] 窗格，您可以在其中查看報表及管理應用程式設定。
 1. 選取 [布建 **] 以管理**所選應用程式的使用者帳戶布建設定。
 
-   ![用來管理使用者帳戶布建設定的布建畫面](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning.png)
+   ![用來管理使用者帳戶布建設定的布建畫面](media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning.png)
 
 ## <a name="provisioning-modes"></a>佈建模式
 
@@ -68,7 +68,7 @@ ms.locfileid: "75430187"
 
 Azure AD 使用者物件和每個 SaaS 應用程式的使用者物件之間，有一組預先設定的對應。 有些 app 則管理其他類型的物件，例如群組或連絡人。 在資料表中選取對應，以開啟右側的對應編輯器，您可以在其中進行查看和自訂。
 
-![顯示 [屬性對應] 畫面](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning-mapping.png)
+![顯示 [屬性對應] 畫面](media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning-mapping.png)
 
 支援的自訂項目包含：
 
@@ -88,4 +88,4 @@ Azure AD 使用者物件和每個 SaaS 應用程式的使用者物件之間，�
 
 將布建**狀態**變更為 [**關閉**]，以暫停布建服務。 在此狀態下，Azure 不會建立、更新或移除應用程式中的任何使用者或群組物件。 將狀態變更回 [**開啟**]，服務就會從中斷處繼續進行。
 
-**清除目前狀態並重新啟動同步**處理會觸發初始迴圈。 服務接著會再次評估來源系統中的所有使用者，並判斷它們是否在布建範圍內。 當您的應用程式目前在隔離中，或您需要變更屬性對應時，這會很有用。 請注意，由於需要評估的物件數目，初始週期需要比一般累加週期更長的時間才能完成。 您可以在[這裡](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)深入瞭解初始和增量迴圈的效能。 
+**清除目前狀態並重新啟動同步**處理會觸發初始迴圈。 服務接著會再次評估來源系統中的所有使用者，並判斷它們是否在布建範圍內。 當您的應用程式目前在隔離中，或您需要變更屬性對應時，這會很有用。 請注意，由於需要評估的物件數目，初始週期需要比一般累加週期更長的時間才能完成。 您可以在[這裡](application-provisioning-when-will-provisioning-finish-specific-user.md)深入瞭解初始和增量迴圈的效能。 

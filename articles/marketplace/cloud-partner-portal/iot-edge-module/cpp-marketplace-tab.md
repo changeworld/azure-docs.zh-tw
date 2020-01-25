@@ -8,21 +8,21 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
-ms.openlocfilehash: 57bae42eb44c174657e59fa8b017da2931ae681b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 8021b6fe40e006a95b3eeff1031606c38cc47b87
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73814591"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721620"
 ---
 # <a name="iot-edge-module-marketplace-tab"></a>IoT Edge 模組 Marketplace 索引標籤
 
-**新增供應項目**頁面的 **Marketplace** 索引標籤可讓您為潛在客戶提供行銷、銷售和法律資訊與合約，並管理 Marketplace 產生的潛在客戶。 這個長表單分成四個區段：**概觀**、**行銷成品**、**潛在客戶管理**和**法律聲明**。
+在 [新增供應項目] 頁面的 [Marketplace] 索引標籤上，可提供行銷、銷售和法律方面的資訊與合約給您的潛在客戶，並管理 Marketplace 產生的潛在客戶。 這個長表單分成四個區段：**概觀**、**行銷成品**、**潛在客戶管理**和**法律聲明**。
 
 
 ## <a name="overview"></a>概觀
 
-在本區段中，您可以輸入有關 Marketplace Offer 的一般資訊。  欄位名稱上附加的星號 (*) 表示此為必填欄位。
+在本區段中，可以輸入 Azure Marketplace Offer 的一般資訊。  欄位名稱上附加的星號 (*) 表示此為必填欄位。
 
 ![IoT Edge 模組 [新增供應項目] 表單上的 [Marketplace] 索引標籤概觀區段](./media/iot-edge-module-marketplace-tab-overview.png)
 
@@ -30,14 +30,14 @@ ms.locfileid: "73814591"
 
 |  **欄位**                |     **說明**                                                          |
 |  ---------                |     ---------------                                                          |
-| **標題\***                 | 供應項目的標題。 此標題會在 Marketplace 中醒目顯示。  長度上限是 50 個字元。 <!--ADD PICTURE IN ACTION-->|
+| **標題\***                 | 供應項目的標題。 此標題會在 Marketplace 中醒目顯示。  長度上限為 50 個字元。 <!--ADD PICTURE IN ACTION-->|
 | **摘要\***               | 供應項目的簡短摘要。 長度上限是 100 個字元。 <!--ADD PICTURE IN ACTION-->|
-| **長摘要\***          | 供應項目的完整摘要 (雖然可能與**摘要**相同)。  長度上限是 256 個字元。 <!--ADD PICTURE IN ACTION-->|
+| **長摘要\***          | 供應項目的完整摘要 (雖然可能與**摘要**相同)。  長度上限為 256 個字元。 <!--ADD PICTURE IN ACTION-->|
 | **說明\***           | 供應項目的說明。  長度上限是 3000 個字元，支援簡單的 HTML 格式。<br/> 尾端必須提供*最低硬體需求*段落。 例如： <br/> <p><u>最低硬體需求：</u>Linux x64 和 arm32 OS，1 GB 的 RAM，500 Mb 的儲存空間</p>
 | **行銷識別碼\***  | 與本供應項目相關聯的唯一不重複網址，通常會包含您的組織與解決方案名稱，長度上限是 50 個字元。  例如： <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
 | **預覽訂用帳戶識別碼** | 可新增 1 到 100 個預覽使用者的訂閱帳戶識別碼。 這些列入允許清單的訂閱帳戶，待供應項目一發佈，即能在供應項目上線前先行存取。 |
-| **實用連結**          | 選擇多個適合與供應項目建立關聯的企業和技術類別。  上限為 10 個。 請務必從 [Azure IoT 裝置目錄](https://catalog.azureiotsolutions.com/)新增至少一個說明文件的連結和一個相容 IoT Edge 裝置的連結。 |
-| **建議的類別\*** | 可挑選最多五個類別， 它們將顯示在您的產品詳細資料頁面上。 在瀏覽頁面中，所有 IoT Edge 模組都會顯示在*物聯網\> IoT Edge 模組*類別下。|
+| **實用連結**          | 可選擇多個適合與供應項目建立關聯的企業和技術類別，  上限為 10 個。 請務必從 [Azure IoT 裝置目錄](https://catalog.azureiotsolutions.com/)新增至少一個說明文件的連結和一個相容 IoT Edge 裝置的連結。 |
+| **建議的類別\*** | 可挑選最多五個類別， 會顯示在您的產品詳細資料頁面上。 在瀏覽頁面中，所有 IoT Edge 模組都會顯示在*物聯網\> IoT Edge 模組*類別下。|
 |  |  |
 
 
@@ -91,10 +91,10 @@ ms.locfileid: "73814591"
 | **大型\***                 | 115x115 像素的 PNG 格式                                                  |
 | **寬\***                  | 255x115 像素的 PNG 格式                                                   |
 | **主圖**                  | 815x290 像素的 PNG 格式。  (選擇性) 主圖圖示一旦上傳，即無法刪除。 |
-| *螢幕擷取畫面*  | 螢幕擷取畫面會顯示在您的產品詳細資料頁面上， 它們適合用來以視覺化方式傳達 IoT Edge 模組的功能以及其運作方式。 例如，您可以顯示架構圖表，或針對執行個體使用案例圖。 (選擇性) 每個 SKU 的螢幕擷取畫面上限為五個。 |
+| *螢幕擷取畫面*  | 螢幕擷取畫面會顯示在您的產品詳細資料頁面上， 相當適合用來以視覺方式傳達 IoT Edge 模組的功能及其運作方式。 例如可以顯示架構圖表，或是執行個體的使用案例圖例。 (選擇性) 每個 SKU 的螢幕擷取畫面上限為五個。 |
 | **名稱**                  | 名稱或標題。 長度上限是 100 個字元。                             |
 | **映像**                 | 螢幕擷取映像，533x324 像素的 PNG 格式                               |
-| *影片*  | 影片會顯示在您的產品詳細資料頁面上。 它們適合用來以視覺化方式傳達 IoT Edge 模組的功能以及其運作方式。 |
+| *影片*  | 影片會顯示在您的產品詳細資料頁面上。 相當適合用來以視覺方式傳達 IoT Edge 模組的功能及其運作方式。 |
 | **名稱**                  | 名稱或標題。 長度上限是 100 個字元。                             |
 | **連結**                  | 裝載於 YouTube 或 Vimeo 的影片 URL                                        |
 | **縮圖**             | 533x324 像素的 PNG 格式                                                     |
@@ -129,7 +129,7 @@ Cloud Partner 入口網站中所上傳的所有標誌都應該遵循指導方針
 *  設計標誌時，請避免以文字為主體。 供應項目刊出之後，會透過程式設計方式，將發行者名稱、方案標題、供應項目完整摘要以及 [建立] 按鈕內嵌在標誌內。 
 * 請在主圖標誌的右側加入一個未使用的矩形空間。 此空白區域需為 415x100 像素，並從左側位移 370 像素。  
 
-<!-- P2: woudl be nice to also have an picture int he context of iot edge of the hero image
+<!-- P2: would be nice to also have an picture int he context of iot edge of the hero image
 As an example, the following hero icon is for the Azure Container Service.
 
 ![Example hero icon for Azure Container Service](./media/publishvm_010.png)
@@ -159,13 +159,13 @@ As an example, the following hero icon is for the Azure Container Service.
 4. amp.com the tile -->
 
 
-## <a name="legal"></a>法律
+## <a name="legal"></a>法律聲明
 
 可在此區段提供每個供應項目兩份必要的法律文件：隱私權原則和使用條款。
 
 |  **欄位**                    |     **說明**                                                          |
 |  ---------                    |     ---------------                                                          |
-| **隱私權原則 URL\***      | 張貼之隱私權原則的 URL                                            |
+| **隱私權原則 URL\***      | 張貼隱私權原則的 URL                                            |
 | **使用標準 Constract\***  | 是否要使用標準 Microsoft 合約範本。  如需詳細資訊，請參閱[標準合約](https://docs.microsoft.com/azure/marketplace/standard-contract)。   |
 | **使用規定\***            | *使用規定*為內嵌的簡單 HTML，或連結至您已張貼的使用條款頁面     |
 |  |  |

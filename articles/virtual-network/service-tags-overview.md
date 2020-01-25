@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: ed9b893b11f96a813cee4c751743ceb182a9a0bf
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: dc64570ccf69c321f33b9689362def8c9caf975e
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543030"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715406"
 ---
 # <a name="virtual-network-service-tags"></a>虛擬網路服務標籤 
 <a name="network-service-tags"></a>
@@ -50,7 +50,7 @@ ms.locfileid: "76543030"
 | **AzureActiveDirectoryDomainServices** | 專用於 Azure Active Directory Domain Services 之部署的管理流量。 | 兩者 | 否 | 是 |
 | **AzureAdvancedThreatProtection** | Azure 進階威脅防護。 | 輸出 | 否 | 否 |
 | **AzureBackup** |Azure 備份。<br/><br/>*注意：* 此標記相依于**儲存體**和**AzureActiveDirectory**標記。 | 輸出 | 否 | 是 |
-| **AzureBotService** | 建立數位代理程式 | 輸出 | 否 | 否 |
+| **AzureBotService** | Azure Bot 服務。 | 輸出 | 否 | 否 |
 | **AzureCloud** | 所有[資料中心公用 IP 位址](https://www.microsoft.com/download/details.aspx?id=56519)。 | 輸出 | 是 | 是 |
 | **AzureCognitiveSearch** | Azure 認知搜尋（如果使用索引子搭配技能集）。 | 兩者 | 否 | 否 |
 | **AzureConnectors** | 適用于探查/後端連線的 Azure Logic Apps 連接器。 | 輸入 | 是 | 是 |
@@ -64,7 +64,7 @@ ms.locfileid: "76543030"
 | **AzureInformationProtection** | Azure 資訊保護。<br/><br/>*注意：* 此標記相依于**AzureActiveDirectory**和**AzureFrontDoor**標記。 也請將下列 Ip 加入白名單（即將移除此相依性）： 13.107.6.181 & 13.107.9.181。 | 輸出 | 否 | 否 |
 | **AzureIoTHub** | Azure IoT 中樞。 | 輸出 | 否 | 否 |
 | **AzureKeyVault** | Azure Key Vault。<br/><br/>*注意：* 此標記與**AzureActiveDirectory**標記具有相依性。 | 輸出 | 是 | 是 |
-| **AzureLoadBalancer** | Azure 基礎結構負載平衡器。 此標籤會轉譯為 Azure 健康狀態探查所源自主機（168.63.129.16）的[虛擬 IP 位址](security-overview.md#azure-platform-considerations)。 如果您不是使用 Azure Load Balancer，您可以覆寫此規則。 | 兩者 | 否 | 否 |
+| **AzureLoadBalancer** | Azure 基礎結構負載平衡器。 此標籤會轉譯為 Azure 健康狀態探查所源自主機（168.63.129.16）的[虛擬 IP 位址](security-overview.md#azure-platform-considerations)。 這不會包含 Azure Load Balancer 資源的流量。 如果您不是使用 Azure Load Balancer，您可以覆寫此規則。 | 兩者 | 否 | 否 |
 | **AzureMachineLearning** | Azure Machine Learning | 兩者 | 否 | 是 |
 | **AzureMonitor** | Log Analytics、Application Insights、AzMon 和自訂計量（Gb 端點）。<br/><br/>*注意：* 針對 Log Analytics，此標記與**儲存體**標記相依。 | 輸出 | 否 | 是 |
 | **AzurePlatformDNS** | 基本基礎結構（預設） DNS 服務。<br/><br>您可以使用此標記來停用預設 DNS。 當您使用此標記時，請務必小心。 我們建議您閱讀[Azure 平臺考慮](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)。 我們也建議您先執行測試，再使用此標記。 | 輸出 | 否 | 否 |
@@ -83,7 +83,7 @@ ms.locfileid: "76543030"
 | **HDInsight** | Azure HDInsight。 | 輸入 | 是 | 否 |
 | **網際網路** | 位於虛擬網路外部且可由公用網際網路連線的 IP 位址空間。<br/><br/>位址範圍包含[Azure 擁有的公用 IP 位址空間](https://www.microsoft.com/download/details.aspx?id=41653)。 | 兩者 | 否 | 否 |
 | **MicrosoftCloudAppSecurity** | Microsoft Cloud App Security。 | 輸出 | 否 | 否 |
-| **MicrosoftContainerRegistry** | Azure Container Registry。 | 輸出 | 是 | 是 |
+| **MicrosoftContainerRegistry** | 適用于 Microsoft 容器映射的 container registry。 <br/><br/>*注意：* 也請將下列 IP 列入白名單（即將移除此相依性）：204.79.197.219。 | 輸出 | 是 | 是 |
 | **ServiceBus** | Azure 服務匯流排使用 Premium 服務層級的流量。 | 輸出 | 是 | 是 |
 | **ServiceFabric** | Azure Service Fabric。 | 輸出 | 否 | 否 |
 | **Sql** | Azure SQL Database、適用於 MySQL 的 Azure 資料庫、適用於 PostgreSQL 的 Azure 資料庫和 Azure SQL 資料倉儲。<br/><br/>*注意：* 此標記代表服務，而不是服務的特定實例。 例如，標籤代表 SQL Database 或伺服器服務，但不代表特定的 Azure SQL Database。 | 輸出 | 是 | 是 |
@@ -117,7 +117,7 @@ ms.locfileid: "76543030"
 - [Azure CLI](https://docs.microsoft.com/cli/azure/network?view=azure-cli-latest#az-network-list-service-tags)
 
 > [!NOTE]
-> 當它處於公開預覽狀態時，探索 API 可能會傳回的資訊不如 JSON 下載所傳回的資訊。 (請參閱下節)。
+> 當它處於公開預覽狀態時，探索 API 可能會傳回的資訊不如 JSON 下載所傳回的資訊。 （請參閱下一節）。
 
 
 ### <a name="discover-service-tags-by-using-downloadable-json-files"></a>使用可下載的 JSON 檔案探索服務標記 

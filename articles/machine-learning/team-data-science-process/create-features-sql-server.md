@@ -3,20 +3,20 @@ title: 使用 SQL 和 Python 在 SQL Server 中建立特徵 - Team Data Science 
 description: 使用 SQL 和 Python，為儲存於 Azure 上 SQL Server VM 中的資料產生特徵 - Team Data Science Process 的一部分。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/21/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 5aa9a4f0ab536c197f08cb64a5cee8280c23039f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 58fa98005d7d89e84404d99cf4f55e456fd91f21
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982064"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721739"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>使用 SQL 和 Python 對 SQL Server 中的資料建立功能
 本文件說明如何針對儲存在 Azure 上的 SQL Server VM 中資料產生特徵，以協助演算法更有效率地從資料學習。 若要完成這項工作，您可以使用 SQL 或程式設計語言 (例如 Python)。 以下示範這兩種方法。
@@ -37,9 +37,9 @@ ms.locfileid: "75982064"
 ## <a name="sql-featuregen"></a>使用 SQL 的功能產生
 在本節中，我們將說明使用 SQL 產生功能的方式：  
 
-1. [以計數為基礎的功能產生](#sql-countfeature)
-2. [分類收納功能產生](#sql-binningfeature)
-3. [從單一資料行衍生功能](#sql-featurerollout)
+* [以計數為基礎的功能產生](#sql-countfeature)
+* [分類收納功能產生](#sql-binningfeature)
+* [從單一資料行衍生功能](#sql-featurerollout)
 
 > [!NOTE]
 > 一旦產生額外功能之後，就可以將它們當成資料行新增至現有的資料表，或是建立具有其他功能和主索引鍵的新資料表 (可與原始資料表聯結)。
@@ -47,7 +47,7 @@ ms.locfileid: "75982064"
 > 
 
 ### <a name="sql-countfeature"></a>以計數作為基礎的功能產生
-本文件示範兩種產生計數功能的方法。 第一種方法會使用條件式加總，而第二種方法會使用 'where' 子句。 這些接著可與原始資料表聯結 (使用主索引鍵資料行)，以具備計數功能及原始資料。
+本文件示範兩種產生計數功能的方法。 第一種方法會使用條件式加總，而第二種方法會使用 'where' 子句。 這些新功能接著可以與原始資料表聯結（使用主鍵資料行），以便將計數功能與原始資料加在一起。
 
     select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3>
 
@@ -55,7 +55,7 @@ ms.locfileid: "75982064"
     where <column_name3> = '<some_value>' group by <column_name1>,<column_name2>
 
 ### <a name="sql-binningfeature"></a>分類收納功能產生
-下列範例將示範如何藉由分類收納 (使用 5 個分類收納組) 可改用來做為功能的數值資料行，來產生分類收納功能：
+下列範例將示範如何藉由分類收納 (使用五個分類收納組) 可改用來做為功能的數值資料行，來產生分類收納功能：
 
     `SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <tablename>`
 
@@ -74,9 +74,9 @@ ms.locfileid: "75982064"
 * 第三個小數位數最多可達 110 m：它可以識別大型農場或學術機構校區。
 * 第四個小數位數最多可達 11 m：它可以識別某一塊土地。 它相當於未修正的 GPS 單位且無干擾的一般精確度。
 * 第五個小數位數最多可達 1.1 m：它會分辨彼此的樹狀結構。 您只能使用微分校正來達到此層級利用商業 GPS 單位所達到的精確度。
-* 第六個小數位數最多可達 0.11 m：您可以使用此項目來詳細配置結構，其適用於設計環境和建置道路。 比起足以追蹤冰河和河流的移動，這應該是更好的方式。 您可以採用含有 GPS 的精心度量 (例如，微分校正的 GPS) 來達成此項目。
+* 第六個小數位數最多可達 0.11 m：您可以使用此層級來詳細配置結構，以設計環境、建立道路。 比起足以追蹤冰河和河流的移動，這應該是更好的方式。 藉由使用 GPS 的耗費量值（例如微分更正的 GPS），即可達到此目標。
 
-您可以使用將位置資訊功能化，以分隔出區域、位置及縣 (市) 資訊。 請注意，一次也可以呼叫 REST 端點，例如，可在 `https://msdn.microsoft.com/library/ff701710.aspx` 上取得的 Bing Maps API，以取得區域或學區資訊。
+您可以使用將位置資訊功能化，以分隔出區域、位置及縣 (市) 資訊。 一次也可以呼叫 REST 端點，例如 Bing Maps API （請參閱 `https://msdn.microsoft.com/library/ff701710.aspx` 以取得區域/區域資訊）。
 
     select
         <location_columnname>

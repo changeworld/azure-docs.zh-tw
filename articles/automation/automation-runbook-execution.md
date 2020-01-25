@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4f9fd3a94cf2b6d6ca077b7363e01085e134babd
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: c97e10d2785b7dc1a438c95dca9be94fcef82f94
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658112"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714836"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure 自動化中的 Runbook 執行
 
@@ -71,7 +71,7 @@ else
     }
 ```
 
-### <a name="time-dependant-scripts"></a>與時間相依的指令碼
+### <a name="time-dependent-scripts"></a>時間相依腳本
 
 編寫 Runbook 時應該仔細考量。 如先前所述，您需要將 Runbook 編寫為健全的，而且可以處理可能造成 Runbook 重新啟動或失敗的暫時性錯誤。 如果 runbook 失敗，則會重試。 如果 runbook 通常會在時間條件約束中執行，則檢查執行時間的邏輯應該在 runbook 中執行，以確保啟動、關機或相應放大等作業只會在特定時間執行。
 
@@ -173,7 +173,7 @@ catch
 }
 ```
 
-#### <a name="throw"></a>擲回
+#### <a name="throw"></a>放棄
 
 [Throw](/powershell/module/microsoft.powershell.core/about/about_throw)可以用來產生終止錯誤。 在 runbook 中定義您自己的邏輯時，這會很有用。 如果符合應停止腳本的特定準則，您可以使用 `throw` 來停止腳本。 下列範例會顯示使用 `throw`所需的電腦函數參數。
 

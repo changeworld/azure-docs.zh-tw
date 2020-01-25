@@ -1,26 +1,26 @@
 ---
 title: 將資料移至 Azure SQL Database - Team Data Science Process
-description: 將一般檔案 (CSV 或 TSV 格式) 的資料或儲存在內部部署 SQL Server 中的資料移至 Azure SQL 資料庫。
+description: 將資料從一般檔案（CSV 或 TSV 格式）或儲存在內部部署 SQL Server 中的資料移至 Azure SQL Database。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 05/04/2018
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6b0f8294899c1ff00c27c2fa82b1228f0e9067af
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f9a1424f2afe6c5153e208601b21dff9651880a8
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982408"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722453"
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>移動資料至 Azure 機器學習的 Azure SQL Database
 
-本文概述從一般檔案 (CSV 或 TSV 格式) 或儲存在內部部署 SQL Server 中的資料，將資料移動至 Azure SQL 資料庫的選項。 將資料移到雲端的這些工作是 Team Data Science Process 的一部分。
+本文概述從一般檔案（CSV 或 TSV 格式）或儲存在內部部署 SQL Server 中的資料，將資料移至 Azure SQL Database 的選項。 將資料移到雲端的這些工作是 Team Data Science Process 的一部分。
 
 如需概述用來將資料移至機器學習服務的內部部署 SQL Server 之選項的主題，請參閱[移動資料至 Azure 虛擬機器上的 SQL Server](move-sql-server-virtual-machine.md)。
 
@@ -43,32 +43,32 @@ ms.locfileid: "75982408"
 
 您可以將上述程序調整為自己的資料集，或者遵循上述步驟使用 NYC 計程車資料集。 若要將 NYC 計程車資料集上傳至您的內部部署 SQL Server 資料庫，請遵循[大量匯入資料至 SQL Server 資料庫](sql-walkthrough.md#dbload)中概述的程序進行。 這些指示適用於 Azure 虛擬機器上的 SQL Server，但將資料上傳至內部部署 SQL Server 的程序是相同的。
 
-## <a name="file-to-azure-sql-database"></a> 從一般檔案來源移動資料至 Azure SQL 資料庫
-一般檔案 (CSV 或 TSV 格式) 中的資料可以透過大量插入 SQL 查詢移動至 Azure SQL 資料庫。
+## <a name="file-to-azure-sql-database"></a>將資料從一般檔案來源移動到 Azure SQL Database
+一般檔案中的資料（CSV 或 TSV 格式）可以使用大量插入 SQL 查詢移到 Azure SQL Database。
 
 ### <a name="bulk-insert-sql-query"></a> 大量插入 SQL 查詢
-程序中使用大量插入 SQL 查詢的步驟，與從一般檔案來源移動資料至 Azure VM 上的 SQL Server 各節涵蓋之步驟類似。 如需詳細資料，請參閱 [大量插入 SQL 查詢](move-sql-server-virtual-machine.md#insert-tables-bulkquery)。
+使用 Bulk Insert SQL 查詢之程式的步驟，類似于將資料從一般檔案來源移至 Azure VM 上 SQL Server 的指示。 如需詳細資料，請參閱 [大量插入 SQL 查詢](move-sql-server-virtual-machine.md#insert-tables-bulkquery)。
 
-## <a name="sql-on-prem-to-sazure-sql-database"></a> 從內部部署 SQL Server 將資料移至 Azure SQL 資料庫
-如果來源資料儲存在內部部署的 SQL Server，則移動資料至 Azure SQL 資料庫就擁有各種可能性：
+## <a name="sql-on-prem-to-sazure-sql-database"></a>將資料從內部部署 SQL Server 移至 Azure SQL Database
+如果來源資料儲存在內部部署 SQL Server 中，將資料移至 Azure SQL Database 有多種可能的情況：
 
 1. [匯出至一般檔案](#export-flat-file)
 2. [SQL Database 移轉精靈](#insert-tables-bcp)
 3. [資料庫備份和還原](#db-migration)
 4. [Azure Data Factory](#adf)
 
-前三個步驟與涵蓋這些相同程序的 [移動資料至 Azure 虛擬機器上的 SQL Server](move-sql-server-virtual-machine.md) 中各節所說明的程序非常類似。 下列指示會提供該主題的適當章節連結。
+前三個步驟與涵蓋這些相同程式的[Azure 虛擬機器上的將資料移至 SQL Server](move-sql-server-virtual-machine.md)中的章節類似。 下列指示會提供該主題的適當章節連結。
 
 ### <a name="export-flat-file"></a>匯出至一般檔案
-此匯出為一般檔案的步驟與 [匯出為一般檔案](move-sql-server-virtual-machine.md#export-flat-file)中所說明的步驟類似。
+匯出至一般檔案的步驟與[匯出至](move-sql-server-virtual-machine.md#export-flat-file)一般檔案中所涵蓋的指示類似。
 
 ### <a name="insert-tables-bcp"></a>SQL Database 移轉精靈
-使用 [SQL Database 移轉精靈] 的步驟與 [ [SQL Database 移轉精靈](move-sql-server-virtual-machine.md#sql-migration)] 所說明的步驟類似。
+使用 SQL Database 遷移 Wizard 的步驟，與[SQL Database 遷移 wizard](move-sql-server-virtual-machine.md#sql-migration)中涵蓋的指示類似。
 
 ### <a name="db-migration"></a>資料庫備份和還原
-使用資料庫備份和還原的步驟與 [資料庫備份和還原](move-sql-server-virtual-machine.md#sql-backup)所說明的步驟類似。
+使用資料庫備份和還原的步驟與[資料庫備份和還原](move-sql-server-virtual-machine.md#sql-backup)中所列的指示類似。
 
 ### <a name="adf"></a>Azure Data Factory
-[使用 Azure Data Factory 將資料從內部部署 SQL Server 移至 SQL Azure](move-sql-azure-adf.md) 主題會提供使用 Azure Data Factory (ADF) 將資料移至 Azure SQL 資料庫的程序。 本主題說明如何使用 ADF，透過 Azure Blob 儲存體將資料從內部部署的 SQL Server 資料庫移動至 Azure SQL 資料庫。
+瞭解如何在本主題中使用 Azure Data Factory （ADF）將資料移至 Azure SQL Database，[使用 Azure Data Factory 將資料從內部部署 sql Server 移至 SQL Azure](move-sql-azure-adf.md)。 本主題說明如何使用 ADF，透過 Azure Blob 儲存體將資料從內部部署 SQL Server 資料庫移至 Azure SQL Database。
 
-若同時存取內部部署和雲端資源的混合式案例需要持續移轉資料，或是資料有交易、需要修改，或者在移轉時新增了商務邏輯，請考慮使用 ADF。 ADF 允許使用定期管理資料移動的簡易 JSON 指令碼，來進行排程和監視的工作。 ADF 也有其他功能，例如支援複雜作業。
+當需要使用混合式內部部署和雲端來源來持續遷移資料時，請考慮使用 ADF。  ADF 也有助於資料需要轉換的時間，或在遷移期間需要新的商務邏輯。 ADF 允許使用定期管理資料移動的簡易 JSON 指令碼，來進行排程和監視的工作。 ADF 也有其他功能，例如支援複雜作業。

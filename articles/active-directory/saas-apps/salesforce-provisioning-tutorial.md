@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32f3c439460ddc61dbf08fc4e8d7b7a000aa20f9
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 0ed3307f2802e5372cf007f1df8eee2f26e6a39f
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849168"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714386"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>教學課程︰設定 Salesforce 來進行自動佈建使用者
 
@@ -78,13 +78,13 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
     a. 在 [管理員使用者名稱] 文字方塊中，輸入已獲指派 Salesforce.com 中 [系統管理員] 設定檔的 Salesforce 帳戶名稱。
 
-    b.這是另一個 C# 主控台應用程式。 在 [管理員密碼] 文字方塊中，輸入這個帳戶的密碼。
+    b. 在 [管理員密碼] 文字方塊中，輸入這個帳戶的密碼。
 
 6. 若要取得您的 Salesforce 安全性權杖，請開啟新索引標籤並登入相同的 Salesforce 系統管理員帳戶。 在頁面右上角，按一下您的名稱，然後按一下 [設定]。
 
     ![啟用自動使用者布建](./media/salesforce-provisioning-tutorial/sf-my-settings.png "啟用自動使用者佈建")
 
-7. 在左方導覽窗格上，按一下 [我的個人資訊] 展開相關的區段，然後按一下 [重設我的安全性權杖]。
+7. 在左方導覽窗格上，按一下 [我的個人資訊] 以展開相關的區段，然後按一下 [重設我的安全性權杖]。
   
     ![啟用自動使用者布建](./media/salesforce-provisioning-tutorial/sf-personal-reset.png "啟用自動使用者佈建")
 
@@ -94,7 +94,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 9. 檢查與此系統管理員帳戶相關聯的電子郵件收件匣。 尋找來自 Salesforce.com，包含新安全性權杖的電子郵件。
 
-10. 複製權杖，移至您的 Azure AD 視窗，然後將它貼到 [祕密權杖] 欄位。
+10. 複製該權杖，移至您的 Azure AD 視窗，然後將它貼到 [祕密權杖] 欄位。
 
 11. 如果 Salesforce 執行個體是位於 Salesforce 政府雲端上，則應輸入**租用戶 URL**。 否則為選擇性。 使用 "https://\<your-instance\>.my.salesforce.com" 格式輸入租用戶 URL，將 \<your-instance\> 取代為您的 Salesforce 執行個體名稱。
 
@@ -127,7 +127,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 * Azure AD 布建服務支援提供使用者的語言、地區設定和時區。 這些屬性是在預設的屬性對應中，但沒有預設的 source 屬性。 請確定您選取 [預設來源] 屬性，而且 [來源] 屬性採用 SalesForce 所預期的格式。 例如，localeSidKey for 英文（美國）是 en_US。 請參閱[此處](https://help.salesforce.com/articleView?id=setting_your_language.htm&type=5)提供的指引，以判斷適當的 localeSidKey 格式。 您可以在[這裡](https://help.salesforce.com/articleView?id=faq_getstart_what_languages_does.htm&type=5)找到 languageLocaleKey 格式。 除了確保格式正確，您可能需要確定已為您的使用者啟用語言，如[這裡](https://help.salesforce.com/articleView?id=setting_your_language.htm&type=5)所述。 
 * **SalesforceLicenseLimitExceeded：** 無法在目標應用程式中建立使用者，因為此使用者沒有可用的授權。 針對目標應用程式購買額外的授權，或檢查您的使用者指派和屬性對應設定，以確保使用正確的屬性來指派正確的使用者。
 * **SalesforceDuplicateUserName：** 無法布建使用者，因為它具有在另一個 Salesforce.com 租使用者中重複的 Salesforce.com ' Username '。  在 Salesforce.com 中，' Username ' 屬性的值在所有 Salesforce.com 租使用者中必須是唯一的。  根據預設，使用者在 Azure Active Directory 中的 userPrincipalName 會變成其在 Salesforce.com 中的「使用者名稱」。   您有兩個選項。  其中一個選項是在另一個 Salesforce.com 租使用者中，尋找並重新命名具有重複的「使用者名稱」的使用者（如果您也要管理該其他租使用者）。  另一個選項是移除 Azure Active Directory 使用者對您的目錄整合所在的 Salesforce.com 租使用者的存取權。 我們會在下一次嘗試同步處理時重試此操作。 
-* **SalesforceRequiredFieldMissing：** Salesforce 要求使用者必須要有某些屬性，才能 succesfuly 建立或更新使用者。 此使用者缺少其中一個必要的屬性。 確定在您想要布建至 Salesforce 的所有使用者上，都已填入電子郵件和別名等屬性。 您可以使用以[屬性為基礎的範圍篩選器](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)，來界定不具有這些屬性的使用者範圍。 
+* **SalesforceRequiredFieldMissing：** Salesforce 要求使用者必須要有某些屬性，才能成功建立或更新使用者。 此使用者缺少其中一個必要的屬性。 確定在您想要布建至 Salesforce 的所有使用者上，都已填入電子郵件和別名等屬性。 您可以使用以[屬性為基礎的範圍篩選器](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)，來界定不具有這些屬性的使用者範圍。 
 * 布建至 Salesforce 的預設屬性對應包含 SingleAppRoleAssignments 運算式，可將 Azure AD 中的 appRoleAssignments 對應至 Salesforce 中的 ProfileName。 請確定使用者在 Azure AD 中沒有多個應用程式角色指派，因為屬性對應僅支援布建一個角色。 
 * Salesforce 需要先手動核准電子郵件更新，然後再進行變更。 因此，您可能會在布建記錄中看到多個專案來更新使用者的電子郵件（直到電子郵件變更核准為止）。
 

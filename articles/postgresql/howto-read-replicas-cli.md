@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/12/2019
-ms.openlocfilehash: fb0803987428ced688e83a37fae36c61b63a28a8
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 01/23/2020
+ms.openlocfilehash: bb2c83757bd86d02a93c52bacdd03ce89186614e
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770113"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719767"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>從 Azure CLI 建立及管理讀取複本，REST API
 
@@ -37,6 +37,11 @@ ms.locfileid: "74770113"
    az postgres server configuration set --resource-group myresourcegroup --server-name mydemoserver --name azure.replication_support --value REPLICA
    ```
 
+> [!NOTE]
+> 如果您在嘗試設定 replication_support azure 時收到「指定 Azure CLI 的值無效」錯誤，可能是您的伺服器預設已有複本集。 Bug 導致無法在複本為內部預設值的較新伺服器上正確反映此設定。
+> 您可以略過準備主要步驟，並移至建立複本。
+> 如果您想要確認您的伺服器是在此類別中，請造訪 Azure 入口網站中的伺服器複寫頁面。 [停用複寫] 將會呈現灰色，而且工具列中的 [新增複本] 將會變成作用中。
+
 2. 重新開機伺服器以套用變更。
 
    ```azurecli-interactive
@@ -47,10 +52,10 @@ ms.locfileid: "74770113"
 
 [Az postgres server replica create](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-create)命令需要下列參數：
 
-| 設定 | 範例值 | 描述  |
+| 設定 | 範例值 | 說明  |
 | --- | --- | --- |
 | resource-group | myresourcegroup |  將在其中建立複本伺服器的資源群組。  |
-| 名稱 | mydemoserver-複本 | 所建立的新複本伺服器名稱。 |
+| NAME | mydemoserver-複本 | 所建立的新複本伺服器名稱。 |
 | source-server | mydemoserver | 要從中複寫之現有主伺服器的名稱或資源識別碼。 |
 
 在下列 CLI 範例中，會在與主伺服器相同的區域中建立複本。

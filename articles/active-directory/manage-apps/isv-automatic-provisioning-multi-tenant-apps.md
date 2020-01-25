@@ -15,12 +15,12 @@ ms.date: 07/23/2019
 ms.author: baselden
 ms.reviewer: zhchia
 ms.collection: active-directory
-ms.openlocfilehash: 74b991fce132c991ebd5fbd3789328e2a500da86
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e7f60335b3e75d93f408dec3386ca0bdcd6a0388
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232321"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711464"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>為您的多租使用者應用程式啟用自動使用者布建
 
@@ -56,7 +56,7 @@ ms.locfileid: "74232321"
 
 Azure AD 提供數個整合路徑來為您的應用程式啟用自動使用者布建。
 
-* Azure AD 布建[服務](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)會管理布建和解除布建使用者，從 Azure AD 應用程式（輸出布建），以及從您的應用程式到 Azure AD （輸入布建）。 此服務會連接到系統，以供您的應用程式所提供的跨網域身分識別管理（SCIM）使用者管理 API 端點使用。
+* Azure AD 布建[服務](user-provisioning.md)會管理布建和解除布建使用者，從 Azure AD 應用程式（輸出布建），以及從您的應用程式到 Azure AD （輸入布建）。 此服務會連接到系統，以供您的應用程式所提供的跨網域身分識別管理（SCIM）使用者管理 API 端點使用。
 
 * 使用[Microsoft Graph](https://docs.microsoft.com/graph/)時，您的應用程式會藉由查詢 Microsoft Graph API，來管理使用者和群組的輸入和輸出布建，使其無法從 Azure AD 到您的應用程式。
 
@@ -87,9 +87,9 @@ Azure AD 布建服務會使用[SCIM](https://aka.ms/SCIMOverview)，這是許多
 
 * [深入瞭解 SCIM standard](https://aka.ms/SCIMOverview)
 
-* [使用系統進行跨網域身分識別管理（SCIM）自動將使用者和群組從 Azure Active Directory 布建至應用程式](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
+* [使用系統進行跨網域身分識別管理（SCIM）自動將使用者和群組從 Azure Active Directory 布建至應用程式](use-scim-to-provision-users-and-groups.md)
 
-* [瞭解 Azure AD SCIM 的執行](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
+* [瞭解 Azure AD SCIM 的執行](use-scim-to-provision-users-and-groups.md)
 
 ## <a name="microsoft-graph-for-provisioning"></a>布建的 Microsoft Graph
 
@@ -115,7 +115,7 @@ SAML JIT 會使用 SAML 權杖中的宣告資訊，在應用程式中建立和�
 
 ## <a name="next-steps"></a>後續步驟
 
-* [為您的應用程式啟用單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/isv-sso-content)
+* [為您的應用程式啟用單一登入](isv-sso-content.md)
 
 * 向 Microsoft[提交您的應用程式清單](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx)和合作夥伴，以在 microsoft 網站上建立檔。
 

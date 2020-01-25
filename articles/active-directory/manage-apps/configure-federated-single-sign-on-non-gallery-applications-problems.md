@@ -15,17 +15,16 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ROBOTS: NOINDEX
-ms.openlocfilehash: 99c5e4d99f45e2a642a46f7dc070fb7512ff4d73
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: e7894bfada4d363e89f526280e2925b4f4c6180a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422548"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711885"
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-a-non-gallery-application"></a>為不在資源庫內的應用程式設定同盟單一登入時遇到的問題
 
-如果您在設定應用程式時遇到問題。 確認您已依照[設定對不在 Azure Active Directory 應用程式庫中的應用程式的單一登入](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-federated-sso-non-gallery)一文中的所有步驟執行。
+如果您在設定應用程式時遇到問題。 確認您已依照[設定對不在 Azure Active Directory 應用程式庫中的應用程式的單一登入](configure-federated-single-sign-on-non-gallery-applications.md)一文中的所有步驟執行。
 
 ## <a name="cant-add-another-instance-of-the-application"></a>無法新增應用程式的另一個執行個體
 
@@ -41,7 +40,7 @@ ms.locfileid: "68422548"
 
 在使用者驗證之後，您無法選取 Azure AD 要在回應中傳送至應用程式的 EntityID (使用者識別碼) 格式。
 
-Azure AD 會根據應用程式在 SAML AuthRequest 中選取的值或要求的格式，來選取 NameID 屬性 (使用者識別碼) 的格式。 如需詳細資訊，請參閱[單一登入 SAML 通訊協定](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest)文章中的＜NameIDPolicy＞一節。
+Azure AD 會根據應用程式在 SAML AuthRequest 中選取的值或要求的格式，來選取 NameID 屬性 (使用者識別碼) 的格式。 如需詳細資訊，請參閱[單一登入 SAML 通訊協定](../develop/single-sign-on-saml-protocol.md#authnrequest)文章中的＜NameIDPolicy＞一節。
 
 ## <a name="where-do-i-get-the-application-metadata-or-certificate-from-azure-ad"></a>我可以在何處取得 Azure AD 的應用程式中繼資料或憑證
 
@@ -69,7 +68,7 @@ Azure AD 不提供取得中繼資料的 URL。 中繼資料只能擷取為 XML �
 
 ## <a name="dont-know-how-to-customize-saml-claims-sent-to-an-application"></a>不知道如何自訂傳送至應用程式的 SAML 宣告
 
-若要了解如何自訂傳送至應用程式的 SAML 屬性宣告，請參閱 [Azure Active Directory 中的宣告對應](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)以取得詳細資訊。
+若要了解如何自訂傳送至應用程式的 SAML 屬性宣告，請參閱 [Azure Active Directory 中的宣告對應](../develop/active-directory-claims-mapping.md)以取得詳細資訊。
 
 ## <a name="next-steps"></a>後續步驟
 [使用 Azure Active Directory 管理應用程式](what-is-application-management.md)

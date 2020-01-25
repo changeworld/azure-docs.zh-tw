@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 9bf5608a44aa19650a507ada3a0a437d34c13277
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d56504c96c5e039f2563a1bfee577fe9b15e8563
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705661"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715573"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>從感應器合作夥伴取得感應器資料
 
@@ -72,13 +72,16 @@ Azure FarmBeats 可協助您將 IoT 裝置和感應器的串流資料帶入 Data
 
 ### <a name="integrate-device-data-by-using-the-generated-credentials"></a>使用產生的認證來整合裝置資料
 
-前往裝置合作夥伴入口網站，使用您在上一節中產生的一組認證來連結 FarmBeats：
-
+現在您已有從上一節產生的下列資訊。
  - API 端點
  - EventHub 連接字串
  - 用戶端識別碼
  - 用戶端密碼
  - 租用戶識別碼
+ 
+您必須將其提供給您的裝置合作夥伴，以連結 FarmBeats。 前往裝置合作夥伴入口網站進行相同動作。 例如，如果您使用來自 Davis 儀器的裝置，請移至下列頁面：
+
+[Davis 儀器](https://weatherlink.github.io/azure-farmbeats/setup)
 
  裝置提供者會確認整合成功。 確認之後，您可以在 Azure FarmBeats 上查看所有裝置和感應器。
 

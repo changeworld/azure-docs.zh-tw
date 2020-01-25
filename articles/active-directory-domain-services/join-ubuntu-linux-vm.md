@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/15/2019
+ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: 9fb41b08cb29a68b39fb416b4b7b7bcce9e821dd
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 1cf1a97ed6350174511d61d924f893bb209736c2
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754355"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712588"
 ---
 # <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>將 Ubuntu Linux 虛擬機器加入 Azure AD Domain Services 受控網域
 
@@ -61,15 +61,15 @@ ms.locfileid: "72754355"
 sudo vi /etc/hosts
 ```
 
-在*hosts*檔案中，更新*localhost*位址。 在下列範例中：
+在*hosts*檔案中，更新*localhost*位址。 在下例中︰
 
-* *contoso.com*是 Azure AD DS 受控網域的 DNS 功能變數名稱。
+* *aadds.contoso.com*是 Azure AD DS 受控網域的 DNS 功能變數名稱。
 * *ubuntu*是您要加入受控網域之 ubuntu VM 的主機名稱。
 
 使用您自己的值來更新這些名稱：
 
 ```console
-127.0.0.1 ubuntu.contoso.com ubuntu
+127.0.0.1 ubuntu.aadds.contoso.com ubuntu
 ```
 
 完成時，請使用編輯器的 [`:wq`] 命令儲存並結束*hosts*檔案。
@@ -78,7 +78,7 @@ sudo vi /etc/hosts
 
 VM 需要一些額外的套件，才能將 VM 加入 Azure AD DS 受控網域。 若要安裝及設定這些封裝，請使用 `apt-get` 更新並安裝網域聯結工具。
 
-在 Kerberos 安裝期間， *krb5 使用者*套件會以全部大寫的方式來提示領域名稱。 例如，如果您 Azure AD DS 受控網域的名稱是*contoso.com*，請輸入*CONTOSO.COM*作為領域。 安裝會在 */etc/krb5.conf*設定檔中寫入 `[realm]` 和 `[domain_realm]` 區段。 請確定您將領域全部指定為大寫：
+在 Kerberos 安裝期間， *krb5 使用者*套件會以全部大寫的方式來提示領域名稱。 例如，如果您 Azure AD DS 受控網域的名稱是*aadds.contoso.com*，請輸入*aadds。CONTOSO.COM*做為領域。 安裝會在 */etc/krb5.conf*設定檔中寫入 `[realm]` 和 `[domain_realm]` 區段。 請確定您將領域全部指定為大寫：
 
 ```console
 sudo apt-get update
@@ -95,10 +95,10 @@ sudo apt-get install krb5-user samba sssd sssd-tools libnss-sss libpam-sss ntp n
     sudo vi /etc/ntp.conf
     ```
 
-1. 在*ntp*檔案中，建立一行來新增您的 Azure AD DS 受控網域的 DNS 名稱。 在下列範例中，會新增*contoso.com*的專案。 使用您自己的 DNS 名稱：
+1. 在*ntp*檔案中，建立一行來新增您的 Azure AD DS 受控網域的 DNS 名稱。 在下列範例中，會新增*aadds.contoso.com*的專案。 使用您自己的 DNS 名稱：
 
     ```console
-    server contoso.com
+    server aadds.contoso.com
     ```
 
     完成時，請使用編輯器的 `:wq` 命令來儲存並結束*ntp*檔案。
@@ -113,7 +113,7 @@ sudo apt-get install krb5-user samba sssd sssd-tools libnss-sss libpam-sss ntp n
 
     ```console
     sudo systemctl stop ntp
-    sudo ntpdate contoso.com
+    sudo ntpdate aadds.contoso.com
     sudo systemctl start ntp
     ```
 
@@ -121,30 +121,30 @@ sudo apt-get install krb5-user samba sssd sssd-tools libnss-sss libpam-sss ntp n
 
 現在已將必要的套件安裝在 VM 上，並已設定 NTP，請將 VM 加入 Azure AD DS 受控網域。
 
-1. 使用 `realm discover` 命令探索 Azure AD DS 受控網域。 下列範例會探索領域*CONTOSO.COM*。 以全部大寫指定您自己的 Azure AD DS 受控功能變數名稱：
+1. 使用 `realm discover` 命令探索 Azure AD DS 受控網域。 下列範例會探索領域*AADDS。CONTOSO.COM*。 以全部大寫指定您自己的 Azure AD DS 受控功能變數名稱：
 
     ```console
-    sudo realm discover CONTOSO.COM
+    sudo realm discover AADDS.CONTOSO.COM
     ```
 
    如果 `realm discover` 命令找不到您 Azure AD DS 受控網域，請參閱下列疑難排解步驟：
 
-    * 請確定可從 VM 連線到該網域。 嘗試 `ping contoso.com` 以查看是否傳回正面回復。
+    * 請確定可從 VM 連線到該網域。 嘗試 `ping aadds.contoso.com` 以查看是否傳回正面回復。
     * 檢查 VM 是否已部署至相同或對等互連的虛擬網路，其中可使用 Azure AD DS 受控網域。
     * 確認虛擬網路的 DNS 伺服器設定已更新，以指向 Azure AD DS 受控網域的網域控制站。
 
 1. 現在使用 `kinit` 命令來初始化 Kerberos。 指定屬於*AAD DC 系統管理員*群組的使用者。 如有需要，請[將使用者帳戶新增至 Azure AD 中的群組](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md)。
 
-    同樣地，必須以全部大寫輸入 Azure AD DS 受管理的功能變數名稱。 在下列範例中，會使用名為 `contosoadmin@contoso.com` 的帳戶來初始化 Kerberos。 輸入屬於*AAD DC 系統管理員*群組成員的您自己的使用者帳戶：
+    同樣地，必須以全部大寫輸入 Azure AD DS 受管理的功能變數名稱。 在下列範例中，會使用名為 `contosoadmin@aadds.contoso.com` 的帳戶來初始化 Kerberos。 輸入屬於*AAD DC 系統管理員*群組成員的您自己的使用者帳戶：
 
     ```console
-    kinit contosoadmin@CONTOSO.COM
+    kinit contosoadmin@AADDS.CONTOSO.COM
     ```
 
-1. 最後，使用 `realm join` 命令將電腦加入 Azure AD DS 受控網域。 使用與您在上一個 `kinit` 命令中指定的*AAD DC 系統管理員*群組成員相同的使用者帳戶，例如 `contosoadmin@CONTOSO.COM`：
+1. 最後，使用 `realm join` 命令將電腦加入 Azure AD DS 受控網域。 使用與您在上一個 `kinit` 命令中指定的*AAD DC 系統管理員*群組成員相同的使用者帳戶，例如 `contosoadmin@AADDS.CONTOSO.COM`：
 
     ```console
-    sudo realm join --verbose CONTOSO.COM -U 'contosoadmin@CONTOSO.COM' --install=/
+    sudo realm join --verbose AADDS.CONTOSO.COM -U 'contosoadmin@AADDS.CONTOSO.COM' --install=/
     ```
 
 將 VM 加入 Azure AD DS 受控網域需要幾分鐘的時間。 下列範例輸出顯示 VM 已成功加入 Azure AD DS 受控網域：
@@ -165,7 +165,7 @@ Successfully enrolled machine in realm
     sudo vi /etc/sssd/sssd.conf
     ```
 
-1. 將*use_fully_qualified_names*的程式碼標記為批註，如下所示：
+1. 批註掉*use_fully_qualified_names*的程式程式碼，如下所示：
 
     ```console
     # use_fully_qualified_names = True
@@ -199,7 +199,7 @@ Successfully enrolled machine in realm
     PasswordAuthentication yes
     ```
 
-    完成時，請使用編輯器的 `:wq` 命令來儲存並結束*sshd_conf*檔案。
+    完成時，請使用編輯器的 [`:wq`] 命令儲存並結束*sshd_conf*檔案。
 
 1. 若要套用變更並讓使用者使用密碼登入，請重新開機 SSH 服務：
 
@@ -217,7 +217,7 @@ Successfully enrolled machine in realm
     sudo vi /etc/pam.d/common-session
     ```
 
-1. 將下面這一行加入此檔案中的 `session optional pam_sss.so` 行底下：
+1. 將下面這一行加入此檔案中的 `session optional pam_sss.so`行底下：
 
     ```console
     session required pam_mkhomedir.so skel=/etc/skel/ umask=0077
@@ -248,10 +248,10 @@ Successfully enrolled machine in realm
 
 若要確認 VM 已成功加入 Azure AD DS 受控網域，請使用網域使用者帳戶啟動新的 SSH 連線。 確認已建立主目錄，並已套用網域的群組成員資格。
 
-1. 從您的主控台建立新的 SSH 連線。 使用屬於受控 `ssh -l` 網域的網域帳戶（例如 `contosoadmin@contoso.com`），然後輸入您 VM 的位址，例如*ubuntu.contoso.com*。 如果您使用 Azure Cloud Shell，請使用 VM 的公用 IP 位址，而不是內部 DNS 名稱。
+1. 從您的主控台建立新的 SSH 連線。 使用屬於受控 `ssh -l` 網域的網域帳戶（例如 `contosoadmin@aadds.contoso.com`），然後輸入您 VM 的位址，例如*ubuntu.aadds.contoso.com*。 如果您使用 Azure Cloud Shell，請使用 VM 的公用 IP 位址，而不是內部 DNS 名稱。
 
     ```console
-    ssh -l contosoadmin@CONTOSO.com ubuntu.contoso.com
+    ssh -l contosoadmin@AADDS.CONTOSO.com ubuntu.aadds.contoso.com
     ```
 
 1. 當您成功連線到 VM 時，請確認已正確初始化主目錄：

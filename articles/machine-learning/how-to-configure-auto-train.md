@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: b3192e4bf25763e870cc618e5e45f16384607b7f
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: c1ebedcf93d66c01c80f7f40171a7aa27441488d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277995"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722147"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>在 Python 中設定自動化 ML 實驗
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -187,11 +187,11 @@ automl_config = AutoMLConfig(task = "classification")
 
 瞭解[自動化機器學習結果](how-to-understand-automated-ml.md)中這些計量的特定定義。
 
-### <a name="data-preprocessing--featurization"></a>& 特徵化的資料前置處理
+### <a name="data-featurization"></a>資料特徵化
 
-在每個自動化的機器學習實驗中，您的資料都會[自動調整並正規化](concept-automated-ml.md#preprocess)，以協助*特定*的演算法，而這些演算法會受到不同規模的功能所影響。  不過，您也可以啟用其他前置處理/特徵化，例如遺漏值插補、編碼和轉換。 [深入瞭解包含的特徵化](how-to-create-portal-experiments.md#preprocess)。
+在每個自動化的機器學習實驗中，您的資料都會[自動調整並正規化](concept-automated-ml.md#preprocess)，以協助*特定*的演算法，而這些演算法會受到不同規模的功能所影響。  不過，您也可以啟用其他特徵化，例如遺漏值插補、編碼和轉換。 [深入瞭解包含的特徵化](how-to-create-portal-experiments.md#preprocess)。
 
-若要啟用此特徵化，請指定[`AutoMLConfig` 類別](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)的 `"preprocess": True`。
+若要啟用此特徵化，請指定[`AutoMLConfig` 類別](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)的 `"featurization": 'auto'`。
 
 > [!NOTE]
 > 自動化機器學習前置處理步驟 (功能正規化、處理遺漏的資料、將文字轉換成數值等等) 會成為基礎模型的一部分。 使用模型進行預測時，定型期間所套用的相同前置處理步驟會自動套用至您的輸入資料。
@@ -240,7 +240,7 @@ automl_config = AutoMLConfig(task = 'forecasting',
 
 有多個預設引數可當做 `AutoMLConfig` 物件中的 `kwargs` 提供，以改變預設堆疊集團行為。
 
-* `stack_meta_learner_type`：中繼學習模組是在個別的異類模型的輸出上定型的模型。 預設的中繼學習工具是分類工作（如果啟用交叉驗證，則為 `LogisticRegressionCV`）和回歸/預測工作的 `ElasticNet` （如果已啟用交叉驗證，則為 `ElasticNetCV`）的 `LogisticRegression`。 這個參數可以是下列其中一個字串： `LogisticRegression`、`LogisticRegressionCV`、`LightGBMClassifier`、`ElasticNet`、`ElasticNetCV`、`LightGBMRegressor`或 `LinearRegression`。
+* `stack_meta_learner_type`：中繼學習模組是在個別的異類模型輸出上定型的模型。 預設的中繼學習工具是分類工作（如果啟用交叉驗證，則為 `LogisticRegressionCV`）和回歸/預測工作的 `ElasticNet` （如果已啟用交叉驗證，則為 `ElasticNetCV`）的 `LogisticRegression`。 這個參數可以是下列其中一個字串： `LogisticRegression`、`LogisticRegressionCV`、`LightGBMClassifier`、`ElasticNet`、`ElasticNetCV`、`LightGBMRegressor`或 `LinearRegression`。
 * `stack_meta_learner_train_percentage`：指定要保留給定型學習模組的定型集比例（選擇定型和驗證類型時）。 預設值為 `0.2`。
 * `stack_meta_learner_kwargs`：要傳遞至中繼學習模組之初始化運算式的選擇性參數。 這些參數和參數型別會從對應的模型的「參數」鏡像參數和參數型別，並將它們轉送到模型的「函式」。
 
@@ -324,7 +324,7 @@ run = experiment.submit(automl_config, show_output=True)
 ## <a name="understand-automated-ml-models"></a>瞭解自動化 ML 模型
 
 任何使用自動化 ML 所產生的模型都包含下列步驟：
-+ 自動化功能工程（如果前置處理 = True）
++ 自動化功能工程（如果 `"featurization": 'auto'`）
 + 具有超參數值的縮放/正規化和演算法
 
 我們會將其透明化，以從自動化 ML 的 fitted_model 輸出取得此資訊。
@@ -337,7 +337,7 @@ best_run, fitted_model = automl_run.get_output()
 
 ### <a name="automated-feature-engineering"></a>自動化功能工程
 
-查看 feauturization = auto 時所發生的前置處理和[自動化功能工程](concept-automated-ml.md#preprocess)清單。
+查看 `"featurization": 'auto'`時所發生的前置處理和[自動化功能工程](concept-automated-ml.md#preprocess)清單。
 
 請思考此範例：
 + 有四種輸入功能： A （數值）、B （數值）、C （數值）、D （DateTime）
@@ -403,7 +403,7 @@ best_run, fitted_model = automl_run.get_output()
    |----|--------|
    |RawFeatureName|提供的輸入功能/資料行名稱。|
    |TypeDetected|偵測到輸入功能的資料類型。|
-   |卸除|指出輸入功能是否已卸載或使用。|
+   |刪除|指出輸入功能是否已卸載或使用。|
    |EngineeringFeatureCount|透過自動化功能工程轉換所產生的功能數目。|
    |轉換|套用至輸入功能以產生工程功能的轉換清單。|
    

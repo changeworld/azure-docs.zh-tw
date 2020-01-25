@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 28aa9f921de64fcc838935cf65b64a63280ddf16
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: d626d98613bd5d988b599d0980c885d7f73bb958
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75774623"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720243"
 ---
 # <a name="peering-service-partner-walkthrough"></a>對等服務夥伴逐步解說
 
@@ -25,7 +25,7 @@ ms.locfileid: "75774623"
 1. 遵循指示，[使用入口網站建立或修改直接對等互連](howto-direct-portal.md)。 請確定它符合高可用性需求。
 1. 然後，依照下列步驟，[使用入口網站在直接對等互連上啟用對等互連服務](howto-peering-service-portal.md)。
 
-## <a name="use-legacy-direct-peering-conection-for-peering-service"></a>對等互連服務使用舊版直接對等互連連線
+## <a name="use-legacy-direct-peering-connection-for-peering-service"></a>對等互連服務使用舊版直接對等互連連線
 如果您有想要用來支援對等互連服務的舊版直接對等互連，
 1. 成為對等服務夥伴（如果尚未這麼做）。
 1. 遵循指示，[使用入口網站將舊版直接對等互連轉換至 Azure 資源](howto-legacy-direct-portal.md)。 如有需要，請訂購額外的線路以符合高可用性需求。

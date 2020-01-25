@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 2591f1846574994b878814f3b08df1de2a6e9fc1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c102941920d2b8746a49be47ef4c5613fa0bc281
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75973370"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719070"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>建立具有異地區域冗余儲存體（切換）（預覽）的高可用性 Azure 儲存體應用程式
 
@@ -32,6 +32,7 @@ Microsoft 建議針對需要一致性、持久性、高可用性、絕佳效能�
 - 東南亞
 - 北歐
 - 西歐
+- 日本東部
 - 英國南部
 - 美國東部
 - 美國東部 2
@@ -129,6 +130,7 @@ Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-a
 請記住下列即時移轉限制：
 
 - 雖然 Microsoft 會迅速處理您的即時移轉要求，但不保證移轉何時會完成。 如果您需要依特定日期遷移至切換或 RA 切換的資料，Microsoft 建議您改為執行手動遷移。 一般而言，您帳戶中的資料越多，移轉該資料所需的時間就越長。
+- 只有使用 GRS 或 RA GRS 複寫的儲存體帳戶才支援即時移轉。 如果您的帳戶使用 LRS，您必須先將帳戶的複寫類型變更為 GRS 或 RA-GRS，才能繼續進行。 這個媒介步驟會新增 GRS/RA-GRS 所提供的次要端點。
 - 您的帳戶必須包含資料。
 - 您只能在相同的區域內移轉資料。
 - 只有標準儲存體帳戶類型支援即時移轉。 進階儲存體帳戶必須以手動方式移轉。
@@ -160,4 +162,4 @@ Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-a
 - [Azure 儲存體複寫](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 - [本地備援儲存體 (LRS)：適用於 Azure 儲存體的低成本資料備援](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)
 - [區域備援儲存體 (ZRS)：高可用性 Azure 儲存體應用程式](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) 
-- [標準儲存體帳戶的擴充性和效能目標](scalability-targets-standard-account.md)
+- [標準儲存體帳戶的延展性和效能目標](scalability-targets-standard-account.md)

@@ -3,26 +3,26 @@ title: Team Data Science Process 生命週期
 description: Team Data Science Process (TDSP) 會提供建議的生命週期供您建構資料科學專案。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 00efe89314d4a1a5c3302e820b8609adf194aa59
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: a043a1655950f3ed7688e59352f8a912146e12c9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053250"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720447"
 ---
 # <a name="the-team-data-science-process-lifecycle"></a>Team Data Science Process 生命週期
 
-Team Data Science Process (TDSP) 會提供建議的生命週期供您建構資料科學專案。 生命週期會概述專案在執行時通常會遵循之從開始到完成的步驟。 如果您使用另一個資料科學生命週期，例如資料採礦的跨業界標準流程 (Cross Industry Standard Process for Data Mining) [(CRISP-DM)](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining)、資料庫中的知識探索 (Knowledge Discovery in Databases) [(KDD)](https://wikipedia.org/wiki/Data_mining#Process)，或您組織自己的自訂程序，您仍然可以使用以工作為基礎的 TDSP。 
+Team Data Science Process (TDSP) 會提供建議的生命週期供您建構資料科學專案。 生命週期會概述成功專案遵循的完整步驟。 如果您使用另一個資料科學生命週期，例如資料採礦的跨業界標準流程 (Cross Industry Standard Process for Data Mining) [(CRISP-DM)](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining)、資料庫中的知識探索 (Knowledge Discovery in Databases) [(KDD)](https://wikipedia.org/wiki/Data_mining#Process)，或您組織自己的自訂程序，您仍然可以使用以工作為基礎的 TDSP。 
 
-此生命週期是針對要在智慧型應用程式中隨附的資料科學專案所設計。 這些應用程式會部署機器學習服務或人工智慧模型來做預測性分析。 探勘資料科學專案和臨機操作分析專案也可以從使用此程序而獲益。 但是對於這些專案，可能不需要此處所描述的一些步驟。 
+此生命週期是針對要在智慧型應用程式中隨附的資料科學專案所設計。 這些應用程式會部署機器學習服務或人工智慧模型來做預測性分析。 探索性資料科學專案和拼湊分析專案也可以因使用此程式而受益。 但是對於這些專案，可能不需要此處所描述的一些步驟。 
 
 ## <a name="five-lifecycle-stages"></a>五個生命週期階段
 

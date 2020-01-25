@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 12/10/2019
+ms.date: 1/24/2020
 ms.author: mlearned
-ms.openlocfilehash: 2344e2189d6b0f02e7fed1aab25d32551c1fedcf
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: a477c2011ff3c6cf1987ed80ef5c19c26abc40f0
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154336"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76713336"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>建立私人 Azure Kubernetes Service 叢集（預覽）
 
@@ -128,14 +128,16 @@ API 伺服器端點沒有公用 IP 位址。 因此，您必須在虛擬網路�
 
 ## <a name="dependencies"></a>相依性  
 * 僅標準 Azure Load Balancer 支援私用連結服務。 不支援基本 Azure Load Balancer。  
+* 若要使用自訂 DNS 伺服器，請使用 DNS 部署 AD 伺服器以轉寄至此 IP 168.63.129.16
 
 ## <a name="limitations"></a>限制 
+* 目前不支援可用性區域
 * [Azure 私人連結服務限制][private-link-service]適用于私人叢集、azure 私人端點和虛擬網路服務端點，但目前在相同的虛擬網路中並不支援。
-* 不支援私人叢集中的虛擬節點來微調私人 Azure 虛擬網路中的私人 Azure 容器實例（ACI）。
-* 不支援使用私人叢集的現成 Azure DevOps 整合。
+* 不支援私人叢集中的虛擬節點來微調私人 Azure 虛擬網路中的私人 Azure 容器實例（ACI）
+* 不支援使用私人叢集的現成 Azure DevOps 整合
 * 對於需要啟用 Azure Container Registry 以使用私用 AKS 的客戶，必須使用代理程式叢集虛擬網路來對等互連 Container Registry 虛擬網路。
-* 目前不支援 Azure Dev Spaces。
-* 不支援將現有的 AKS 叢集轉換成私人叢集。  
+* 目前不支援 Azure Dev Spaces
+* 不支援將現有的 AKS 叢集轉換成私人叢集
 * 刪除或修改客戶子網中的私用端點，會導致叢集停止運作。 
 * 目前不支援容器即時資料的 Azure 監視器。
 * 目前不支援*攜帶您自己的 DNS* 。

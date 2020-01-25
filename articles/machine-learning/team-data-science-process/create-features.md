@@ -3,20 +3,20 @@ title: 資料科學中的特徵工程設計 - Team Data Science Process
 description: 說明機器學習服務的資料增強程序中特性工程設計的目的，並提供其角色的範例。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/21/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e633c5742b8a7882149a347ced46e55440cb6913
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 02f109f250fa9bcd4c77cecd0b1b3e4514ecd8bc
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492435"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721127"
 ---
 # <a name="feature-engineering-in-data-science"></a>資料科學特徵工程設計
 本文說明特徵工程設計的目的，並透過提供的範例，顯示它在機器學習服務的資料增強程序中扮演的角色。 用來說明此程序的範例是取自 Azure Machine Learning Studio。 
@@ -48,7 +48,7 @@ ms.locfileid: "73492435"
 * 使用 [特性雜湊](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/)
 
 ## <a name="example-1-add-temporal-features-for-a-regression-model"></a>範例 1：新增迴歸模型的暫時特徵
-讓我們使用 Azure Machine Learning Studio （傳統）中的「自行車的需求預測」實驗，示範如何為回歸工作的功能進行工程設計。 這項實驗的目標在於預測單車需求，也就是再特定月份/日期/小時內單車租用的數量。 資料集「單車租用 UCI 資料集」作為原始輸入資料使用。 此資料集是以在美國華盛頓特區維護單車出租網路的 Capital Bikeshare 公司所提供的實際資料為基礎。 此資料集代表 2011 年和 2012 年中特定一個小時內的單車租用數量，總共包含 17379 個資料列和 17 個資料行。 原始特性集包含天氣條件 (溫度/溼度/風速) 和當天的類型 (假日/工作日)。 要預測的欄位為 "cnt" 計數，代表特定小時內單車租用的計數，其範圍介於 1 到 977 之間。
+讓我們使用 Azure Machine Learning Studio （傳統）中的「自行車的需求預測」實驗，示範如何為回歸工作的功能進行工程設計。 這項實驗的目標在於預測單車需求，也就是再特定月份/日期/小時內單車租用的數量。 資料集「單車租用 UCI 資料集」作為原始輸入資料使用。 此資料集是以在美國華盛頓特區維護單車出租網路的 Capital Bikeshare 公司所提供的實際資料為基礎。 此資料集代表 2011 年和 2012 年中特定一個小時內的單車租用數量，總共包含 17379 個資料列和 17 個資料行。 原始特性集包含天氣條件 (溫度/溼度/風速) 和當天的類型 (假日/工作日)。 要預測的欄位是「cnt」計數，代表特定小時內的自行車租用，其範圍從1到977。
 
 為了達到在定型資料中建構有效特性的目的，會使用相同的演算法建立四個各有不同定型資料集的迴歸模型， 這四個資料集代表相同的原始輸入資料，但設定的特性數量增加。 這些特性可分為四類：
 
@@ -57,7 +57,7 @@ ms.locfileid: "73492435"
 3. C = 過去的 12 天以來，每天在同一個時間租出的單車數量
 4. D = 過去的 12 週以來，在同一天同一個時間租出的單車數量
 
-除了已存在於原先未經處理資料中的特徵集 A 以外，其他三個特徵集都是透過特徵工程設計程序來建立。 特性集 B 會擷取最近的單車需求。 特性集 C 會擷取某一個小時的單車需求。 特性集 D 會擷取一週當中某一天某一個小時的單車需求。 四個定型資料集分別包含特性集 A、A+B、A+B+C 和 A+B+C+D。
+除了已存在於原先未經處理資料中的特徵集 A 以外，其他三個特徵集都是透過特徵工程設計程序來建立。 功能集 B 會捕捉最近的自行車需求。 特性集 C 會擷取某一個小時的單車需求。 特性集 D 會擷取一週當中某一天某一個小時的單車需求。 四個定型資料集分別包含特性集 A、A+B、A+B+C 和 A+B+C+D。
 
 在 Azure 機器學習實驗中，這四個定型資料集是透過預先處理的輸入資料集中的分支形成。 除了最左邊的分支以外，每個分支都包含[執行 R 指令碼](https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/)模組，衍生特徵 (特徵集 B、C 和 D) 是在模組中分別建構並附加至匯入的資料集。 下圖示範左邊第二個分支中用來建立特性集 B 的 R 指令碼。
 
@@ -67,14 +67,14 @@ ms.locfileid: "73492435"
 
 ![結果比較](./media/create-features/result1.png)
 
-特性 A+B+C 所呈現的結果最理想。 請注意，當定型資料中包含其他特性集時，錯誤率會降低。 這證實了我們的推測：特徵集 B、C 會針對迴歸工作提供其他相關資訊。 但新增 D 特性似乎不會讓錯誤率降低。
+特性 A+B+C 所呈現的結果最理想。 當定型資料中包含其他功能集時，錯誤率會降低。 這證實了我們的推測：特徵集 B、C 會針對迴歸工作提供其他相關資訊。 但新增 D 特性似乎不會讓錯誤率降低。
 
 ## <a name="example2"></a> 範例 2：在文字採礦中建立特性
 特性工程設計廣泛運用於文字採礦的相關工作，例如文件分類和情感分析。 例如，當您想要將文件分為數個類別時，通常會假設包含在一個文件類別中的文字/片語比較不可能出現在其他文件類別中。 換言之，文字/片語分配的次數能夠描述不同文件類別的特徵。 在文字採礦應用程式中，因為個別的文字內容通常可作為輸入資料，所以建立文字/片語次數相關特性時需要特性工程設計程序。
 
 為了達成此工作，會套用名為特性雜湊的技術，有效地將任意文字特性變成索引。 此方法不會將每個文字特性 (文字/片語) 關聯至特定索引，而是將雜湊函數套用至特性並直接使用其雜湊值作為索引。
 
-Azure 機器學習中有一個 [特性雜湊](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/) 模組，方便建立這些文字/片語特性。 下圖顯示使用此模組的範例。 輸入資料集包含兩個資料行：1 至 5 的書籍評比，以及實際評論內容。 此 [特性雜湊](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/) 模組的目標在於擷取一些新特性，以顯示特定書籍評論中對應文字/片語的發生次數。 若要使用此模組，請完成下列步驟：
+在 Azure Machine Learning 中，有一個[特徵雜湊](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/)模組可方便地建立單字/片語功能。 下圖顯示使用此模組的範例。 輸入資料集包含兩個資料行：1 至 5 的書籍評比，以及實際評論內容。 此 [特性雜湊](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/) 模組的目標在於擷取一些新特性，以顯示特定書籍評論中對應文字/片語的發生次數。 若要使用此模組，請完成下列步驟：
 
 * 第一步，選取包含輸入文字的資料行 (此例中的 "Col2")。
 * 第二步，將 "Hashing bitsize" 設定為 8，表示將建立 2^8=256 個特性。 所有文字中的文字/片語會雜湊至 256 個索引。 "Hashing bitsize" 參數的範圍是 1 至 31。 如果將此值設定為較大的數字，文字/片語比較不可能雜湊至相同的索引。

@@ -16,18 +16,18 @@ ms.date: 09/03/2019
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55b9b8dae6ff47099935f42f75286b1b4ddd3708
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 4da7c874cc5f883d63f8613242c7a7e8b1e83cbd
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275751"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712268"
 ---
 # <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>設定 Azure AD 資源庫應用程式的使用者佈建時遇到的問題
 
-設定應用程式的[自動使用者佈建](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning) (如果支援)，需要遵循特定指示來準備應用程式以進行自動佈建。 接著，可以使用 Azure 入口網站來設定佈建服務，將使用者帳戶同步處理至應用程式。
+設定應用程式的[自動使用者佈建](user-provisioning.md) (如果支援)，需要遵循特定指示來準備應用程式以進行自動佈建。 接著，可以使用 Azure 入口網站來設定佈建服務，將使用者帳戶同步處理至應用程式。
 
-您一開始總是應先尋找為應用程式設定佈建專用的設定教學課程。 然後，遵循這些步驟來設定應用程式和 Azure AD 以建立佈建連接。 您可以在[如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)中找到應用程式教學課程清單。
+您一開始總是應先尋找為應用程式設定佈建專用的設定教學課程。 然後，遵循這些步驟來設定應用程式和 Azure AD 以建立佈建連接。 您可以在[如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](../saas-apps/tutorial-list.md)中找到應用程式教學課程清單。
 
 ## <a name="how-to-see-if-provisioning-is-working"></a>如何查看佈建是否正常運作 
 
@@ -47,7 +47,7 @@ ms.locfileid: "74275751"
 
 ## <a name="provisioning-service-does-not-appear-to-start"></a>佈建服務似乎未啟動
 
-如果您在 Azure 入口網站的 [Azure Active Directory] **[企業應用程式]** [**應用程式名稱**] **[佈建]&gt;&gt; 區段中，將 [佈建狀態]\[\] 設為 [啟用]&gt;** 。 不過，在後續重新載入之後，該頁面上並未顯示任何其他狀態詳細資料。 可能是服務正在執行，但尚未完成初始迴圈。 檢查上面所述的布建**記錄**，以判斷服務正在執行哪些作業，以及是否有任何錯誤。
+如果您在 [Azure Active Directory &gt; 企業應用程式] 中將 [布建**狀態**] 設定為 [**開啟**] **&gt; \[[應用程式名稱**]\] &gt;的 [布建] 區段。 不過，在後續重新載入之後，該頁面上並未顯示任何其他狀態詳細資料。 可能是服務正在執行，但尚未完成初始迴圈。 檢查上面所述的布建**記錄**，以判斷服務正在執行哪些作業，以及是否有任何錯誤。
 
 >[!NOTE]
 >視 Azure AD 目錄大小和布建範圍中的使用者數目而定，初始週期可能需要20分鐘到數小時的時間。 在初始週期之後的後續同步處理會更快，因為布建服務會在初始週期後儲存代表兩個系統狀態的浮水印，以改善後續同步處理的效能。
@@ -62,11 +62,11 @@ ms.locfileid: "74275751"
 
 當使用者在布建記錄檔中顯示為「已略過」時，請務必閱讀記錄訊息中的延伸詳細資料，以判斷原因。 下面是常見原因和解決方式：
 
-- **已設定範圍設定篩選** **，這會根據屬性值篩選出使用者**。 如需有關範圍設定篩選的詳細資訊，請參閱 <https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters>。
+- 已**設定範圍篩選器** **，其會根據屬性值篩選出使用者**。 如需詳細資訊，請參閱[使用範圍篩選器進行以屬性為基礎的應用程式布建](define-conditional-rules-for-provisioning-user-accounts.md)。
 
-- **使用者「不具有效權限」。** 如果您看到此特定錯誤訊息，這是因為儲存在 Azure AD 中的使用者指派記錄發生問題。 若要修正此問題，請從應用程式解除指派使用者 (或群組)，然後重新指派一次。 如需有關指派的詳細資訊，請參閱 <https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal>。
+- **使用者「不具有效權限」。** 如果您看到此特定錯誤訊息，這是因為儲存在 Azure AD 中的使用者指派記錄發生問題。 若要修正此問題，請從應用程式解除指派使用者 (或群組)，然後重新指派一次。 如需詳細資訊，請參閱[將使用者或群組指派給企業應用程式](assign-user-or-group-access-portal.md)。
 
-- **必要屬性已遺失或未針對使用者填入。** 設定佈建時必須考量的重點是，檢視和設定屬性 (Attribute) 對應，以及定義哪些使用者 (或群組) 屬性 (Property) 會從 Azure AD 流向應用程式的工作流程。 這包括設定「比對屬性」，此屬性可用於唯一識別並比對兩個系統之間的使用者/群組。 如需有關這個重要程序的詳細資訊，請參閱 <https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings>。
+- **必要屬性已遺失或未針對使用者填入。** 設定佈建時必須考量的重點是，檢視和設定屬性 (Attribute) 對應，以及定義哪些使用者 (或群組) 屬性 (Property) 會從 Azure AD 流向應用程式的工作流程。 這包括設定「比對屬性」，此屬性可用於唯一識別並比對兩個系統之間的使用者/群組。 如需這個重要程式的詳細資訊，請參閱[自訂使用者布建屬性](customize-application-attributes.md)對應。
 
   * **群組的屬性對應：** 除了成員，還有群組名稱和群組詳細資訊的佈建 (如果某些應用程式有支援)。 您可以啟用或停用 [布**建] 索引**標籤中所顯示之群組物件的**對應**，來啟用或停用這項功能。如果已啟用布建群組，請務必檢查屬性對應，以確保有適當的欄位用於「相符識別碼」。 這可以是顯示名稱或電子郵件別名，因為如果 Azure AD 中某個群組的比對屬性空白或未填入，則不會佈建群組和其成員。
 

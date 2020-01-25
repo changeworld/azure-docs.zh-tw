@@ -5,12 +5,12 @@ ms.date: 01/16/2020
 ms.topic: conceptual
 description: 瞭解如何在具有 Windows 容器的現有叢集上執行 Azure Dev Spaces
 keywords: Azure Dev Spaces，Dev Spaces，Docker，Kubernetes，Azure，AKS，Azure Kubernetes Service，容器，Windows 容器
-ms.openlocfilehash: 886f71dcaaca6a636b385ef6b101f0a893ff7035
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 882cdaa8a7b01578b2f04cf939aa14fe4aee7e2e
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156993"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720362"
 ---
 # <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>使用 Azure Dev Spaces 與 Windows 容器互動
 
@@ -61,7 +61,7 @@ git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/existingWindowsBackend/mywebapi-windows
 ```
 
-範例應用程式會使用[Helm][helm-installed]在您的叢集上執行 Windows 服務。 流覽至 `charts` 目錄，並使用 Helm 執行 Windows 服務：
+範例應用程式會使用[Helm 3][helm-installed]來執行叢集上的 Windows 服務。 流覽至 `charts` 目錄，並使用 Helm 執行 Windows 服務：
 
 ```console
 cd charts/
@@ -141,7 +141,7 @@ azds up
 `azds prep --public` 命令會為您的應用程式產生 Helm 圖表和 Dockerfile。
 
 > [!TIP]
-> Azure Dev Spaces 會使用專案的[Dockerfile 和 Helm 圖表](../how-dev-spaces-works.md#prepare-your-code)來建立和執行您的程式碼，但如果您想要變更專案的建立和執行方式，可以修改這些檔案。
+> Azure Dev Spaces 會使用專案的 [Dockerfile 和 Helm 圖表](../how-dev-spaces-works.md#prepare-your-code)來建置和執行您的程式碼，但如果您想要變更專案的建置和執行方式，可以修改這些檔案。
 
 `azds up` 命令會在命名空間中執行您的服務。
 

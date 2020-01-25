@@ -3,28 +3,28 @@ title: 使用進階分析處理 Azure Blob 資料 - Team Data Science Process
 description: 使用進階分析來探索資料，並從 Azure Blob 儲存體中所儲存的資料產生特徵。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d056226ce8ade93e63d7bca49b975a6983dc126a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4c47dfb8b221b6cb4b6237669ecd17c1637107a2
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492428"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721093"
 ---
 # <a name="heading"></a>處理使用進階分析的 Azure Blob 資料
 本文件涵蓋探索資料以及從 Azure Blob 儲存體中儲存的資料產生功能的說明。 
 
 ## <a name="load-the-data-into-a-pandas-data-frame"></a>將資料載入至 Pandas 資料框架
-若要探索和操作資料集，必須從 Blob 來源將資料集下載至本機檔案，然後將其載入 Pandas 資料框架中。 以下是此程序的遵循步驟：
+若要探索和運算元據集，必須從 blob 來源將它下載到本機檔案，然後再將該檔案載入 Pandas 資料框架中。 以下是此程序的遵循步驟：
 
-1. 使用 Blob 服務，透過下列 Python 程式碼範例，從 Azure Blob 下載資料。 使用您的特定值來取代下列程式碼中的變數： 
+1. 使用 Blob 服務，透過下列範例 Python 程式碼，從 Azure blob 下載資料。 使用您的特定值來取代下列程式碼中的變數： 
    
         from azure.storage.blob import BlobService
         import tables
@@ -97,7 +97,7 @@ ms.locfileid: "73492428"
 ## <a name="blob-featuregen"></a>功能產生
 我們可以使用 Python 來產生功能，如下所示：
 
-### <a name="blob-countfeature"></a>以指標值為基礎的功能產生
+### <a name="blob-countfeature"></a>以指標值為基礎的特徵產生
 類別功能可使用如下的方式來建立：
 
 1. 檢查類別資料行的分佈：
@@ -131,7 +131,7 @@ ms.locfileid: "73492428"
         dataframe_blobdata_with_bin_bool = dataframe_blobdata.join(dataframe_blobdata_bin_bool)    
 
 ## <a name="sql-featuregen"></a>將資料寫回 Azure Blob 並在 AzureMachine Learning 中取用
-在您探索資料並建立必要的功能之後，您可以將資料（取樣或特徵化）上傳至 Azure blob，並使用下列步驟在 Azure Machine Learning 中取用它：請注意，您可以在 Azure 機器中建立其他功能Learning Studio （傳統）。 
+在您探索資料並建立必要的功能之後，您可以將資料（取樣或特徵化）上傳至 Azure blob，並使用下列步驟在 Azure Machine Learning 中取用它：您可以在 Azure Machine Learning 中建立其他功能。Studio （傳統）。 
 
 1. 將資料框架寫入本機檔案中
    

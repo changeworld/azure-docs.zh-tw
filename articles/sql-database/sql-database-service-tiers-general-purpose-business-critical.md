@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 10/01/2019
-ms.openlocfilehash: 5e3cc12351313b8fb1dedf795031202070ac7cf7
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.date: 01/23/2020
+ms.openlocfilehash: fab24d55509ab315775437ca343e35fc90174f63
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558995"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715099"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Azure SQL Database 服務層級
 
@@ -32,7 +32,7 @@ Azure SQL Database 是以針對雲端環境調整的 SQL Server 資料庫引擎�
 
 下表描述最新一代（第5代）服務層級之間的主要差異。 請注意，單一資料庫和受控執行個體中的服務層特性可能會有所不同。
 
-| | 資源類型 | 一般用途 |  Hyperscale | 商務關鍵性 |
+| | 資源類型 | 一般用途 |  Hyperscale | 業務關鍵 |
 |:---:|:---:|:---:|:---:|:---:|
 | **適用對象** | |  提供以預算為導向且平衡的計算與儲存體選項。 | 大部分的商業工作負載。 自動調整儲存體大小，最高可達 100 TB，流暢的垂直和水準計算調整，快速的資料庫還原。 | 具有高交易率和低 IO 延遲的 OLTP 應用程式。 為失敗提供最高的復原能力，並使用多個同步更新的複本快速容錯移轉。|
 |  **適用于資源類型：** ||單一資料庫/彈性集區/受控執行個體 | 單一資料庫 | 單一資料庫/彈性集區/受控執行個體 |
@@ -51,7 +51,7 @@ Azure SQL Database 是以針對雲端環境調整的 SQL Server 資料庫引擎�
 |**可用性**|所有| 99.99% |  [具有一個次要複本的99.95%，還有更多複本的99.99%](sql-database-service-tier-hyperscale-faq.md#what-slas-are-provided-for-a-hyperscale-database) | 99.99% <br/> [具有區域冗余單一資料庫的99.995%](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
 |**備份**|所有|RA-GRS、7-35 天 (預設為 7 天)| GRS、7天、固定時間點恢復（PITR） | RA-GRS、7-35 天 (預設為 7 天) |
 |**記憶體內部 OLTP** | | N/A | N/A | 可用 |
-|**唯讀複本**| | 0  | 0 - 4 | 1（內建，價格已包含在內） |
+|**唯讀複本**| | 0內建 <br> 0-4 使用[異地](sql-database-active-geo-replication.md)複寫 | 0-4 內建 | 1個內建，包含在價格中 <br> 0-4 使用[異地](sql-database-active-geo-replication.md)複寫 |
 |**定價/計費** | 單一資料庫 | [vCore、保留的儲存體和備份儲存體](https://azure.microsoft.com/pricing/details/sql-database/single/)會收費。 <br/>IOPS 不會收費。 | [每個複本的 vCore 和使用的儲存體](https://azure.microsoft.com/pricing/details/sql-database/single/)都會收費。 <br/>IOPS 尚未收費。 | [vCore、保留的儲存體和備份儲存體](https://azure.microsoft.com/pricing/details/sql-database/single/)會收費。 <br/>IOPS 不會收費。 |
 || 受控執行個體 | [vCore 和保留的儲存體](https://azure.microsoft.com/pricing/details/sql-database/managed/)會收費。 <br/>IOPS 不會收費。<br/>備份儲存體尚未收費。 | N/A | [vCore 和保留的儲存體](https://azure.microsoft.com/pricing/details/sql-database/managed/)會收費。 <br/>IOPS 不會收費。<br/>備份儲存體尚未收費。 | 
 |**折扣模型**| | [保留的實例](sql-database-reserved-capacity.md)<br/>[Azure Hybrid Benefit](sql-database-azure-hybrid-benefit.md) （不適用於開發/測試訂閱）<br/>[企業](https://azure.microsoft.com/offers/ms-azr-0148p/)與[隨用隨付](https://azure.microsoft.com/offers/ms-azr-0023p/)開發/測試訂閱| [Azure Hybrid Benefit](sql-database-azure-hybrid-benefit.md) （不適用於開發/測試訂閱）<br/>[企業](https://azure.microsoft.com/offers/ms-azr-0148p/)與[隨用隨付](https://azure.microsoft.com/offers/ms-azr-0023p/)開發/測試訂閱| [保留的實例](sql-database-reserved-capacity.md)<br/>[Azure Hybrid Benefit](sql-database-azure-hybrid-benefit.md) （不適用於開發/測試訂閱）<br/>[企業](https://azure.microsoft.com/offers/ms-azr-0148p/)與[隨用隨付](https://azure.microsoft.com/offers/ms-azr-0023p/)開發/測試訂閱|

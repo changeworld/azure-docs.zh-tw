@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 60cd9a1454704fae17ccdcf39b9de2745ae4fd2c
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 8c1d126f01580574a83850e63945aa7e513eaeda
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121007"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76713142"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>如何使用 API 管理中的用戶端憑證驗證保護 API
 
@@ -34,7 +34,7 @@ API 管理提供以用戶端憑證保護對 API 之存取 (例如，用戶端對
 > [!IMPORTANT]
 > 若要接收並確認取用層中的用戶端憑證，您必須在 [自訂網域] 分頁上開啟 [要求用戶端憑證] 設定，如下所示。
 
-![要求主體憑證](./media/api-management-howto-mutual-certificates-for-clients/request-client-certificate.png)
+![要求用戶端憑證](./media/api-management-howto-mutual-certificates-for-clients/request-client-certificate.png)
 
 ## <a name="checking-the-issuer-and-subject"></a>檢查簽發者和主旨
 

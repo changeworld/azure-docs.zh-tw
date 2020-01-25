@@ -3,24 +3,24 @@ title: 使用 Azure Data Factory 將 SQL Server 資料移轉到 SQL Azure - Team
 description: 請設定 ADF 管線來編寫兩個資料移轉活動，這兩個活動會每天在內部部署及雲端中的資料庫之間一同移動資料。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b64aa6c0e6e0e3bf449d44996df3223b12a69923
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8f696f1c6c414cd9db082e79e0f34c56156e1ee0
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982420"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722487"
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>使用 Azure Data Factory 從內部部署 SQL Server 將資料移至 SQL Azure
 
-本文說明如何透過 Azure Blob 儲存體使用 Azure Data Factory （ADF），將資料從內部部署 SQL Server 資料庫移至 SQL Azure 資料庫：此方法是支援的舊版方法，其具有複寫的暫存複本的優點，但[我們建議您查看我們的 microsoft.datamigration 頁面，以取得最新的選項](https://datamigration.microsoft.com/scenario/sql-to-azuresqldb?step=1)。
+本文說明如何透過 Azure Blob 儲存體使用 Azure Data Factory （ADF），將資料從內部部署 SQL Server 資料庫移至 SQL Azure 資料庫：此方法是支援的舊版方法，其具有複寫的暫存複本的優點，但[我們建議您查看我們的資料移轉頁面，以取得最新的選項](https://datamigration.microsoft.com/scenario/sql-to-azuresqldb?step=1)。
 
 針對將資料移至 Azure SQL Database 的各種選項，如需摘要說明的資料表，請參閱[將資料移至 Azure Machine Learning 的 Azure SQL Database](move-sql-azure.md)。
 
@@ -32,12 +32,12 @@ Azure Data Factory 是完全受控的雲端架構資料整合服務，用來協�
 請考慮使用 ADF：
 
 * 若同時存取內部部署和雲端資源的混合式案例需要持續移轉資料
-* 當資料進行交易、需要加以修改，或是在移轉期間新增了商務邏輯時。
+* 當資料需要轉換或在遷移時新增商務邏輯。
 
 ADF 允許使用定期管理資料移動的簡易 JSON 指令碼，來進行排程和監視的工作。 ADF 也有其他功能，例如支援複雜作業。 如需 ADF 的詳細資訊，請參閱 [Azure Data Factory (ADF)](https://azure.microsoft.com/services/data-factory/)上的文件。
 
 ## <a name="scenario"></a>案例
-我們設定了 ADF 管線來組成兩個資料移轉活動。 它們每天都會一起在內部部署 SQL 資料庫和雲端 Azure SQL Database 之間移動資料。 這兩個活動為：
+我們設定了 ADF 管線來組成兩個資料移轉活動。 它們會一起在內部部署 SQL Database 和雲端中的 Azure SQL Database 之間，每天移動資料。 這兩個活動為：
 
 * 將資料從內部部署 SQL Server 資料庫複製到 Azure Blob 儲存體帳戶
 * 將資料從 Azure Blob 儲存體帳戶複製至 Azure SQL Database
@@ -69,7 +69,7 @@ ADF 允許使用定期管理資料移動的簡易 JSON 指令碼，來進行排�
 用於建立新 Azure Data Factory 的指示及 [Azure 入口網站](https://portal.azure.com/)中的資源群組，已在[建立 Azure Data Factory](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-data-factory) 提供。 將新的 ADF 執行個體命名為 *adfdsp*，並將建立的資源群組命名為 *adfdsprg*。
 
 ## <a name="install-and-configure-azure-data-factory-integration-runtime"></a>安裝和設定 Azure Data Factory Integration Runtime
-Integration Runtime 為 Azure Data Factory 使用的客戶受控資料整合基礎結構，可提供跨不同網路環境的資料整合功能。 此執行階段先前稱為「資料管理閘道」。
+Integration Runtime 是客戶管理的資料整合基礎結構，Azure Data Factory 用來提供跨不同網路環境的資料整合功能。 此執行階段先前稱為「資料管理閘道」。
 
 若要設定，請[遵循建立管線的指示](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal#create-a-pipeline)
 
@@ -78,7 +78,7 @@ Integration Runtime 為 Azure Data Factory 使用的客戶受控資料整合基�
 
 1. 內部部署 SQL Server
 2. Azure Blob 儲存體
-3. Azure SQL 資料庫
+3. Azure SQL Database
 
 用於建立連結服務的逐步程序，已在[建立連結服務](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline)中提供。
 
@@ -136,7 +136,7 @@ Integration Runtime 為 Azure Data Factory 使用的客戶受控資料整合基�
 }
 ```
 
-這裡未包含資料行名稱。 您可以子選取資料行名稱，方法是將其包含在此 (如需詳細資料，請參閱 [ADF 文件](../../data-factory/copy-activity-overview.md) 主題)。
+這裡未包含資料行名稱。 您可以在資料行名稱上加入子選擇，方法是將其納入此處（如需詳細資訊，請參閱[ADF 檔](../../data-factory/copy-activity-overview.md)主題。
 
 將資料表的 JSON 定義複製到名為 *onpremtabledef.json* 的檔案，並將其儲存至已知位置 (此處假設為 *C:\temp\onpremtabledef.json*)。 使用下列 Azure PowerShell Cmdlet，在 ADF 中建立資料表：
 
@@ -302,4 +302,4 @@ SQL Azure 輸出的資料表定義如下 (此結構描述會對應來自 Blob �
 
 當管線執行時，您應該可以看到資料在選取用於 Blob 的容器中顯示 (每天一個檔案)。
 
-請注意，我們尚未運用 ADF 提供的功能，以遞增方式輸送資料。 如需如何執行此功能和 ADF 提供之其他功能的詳細資訊，請參閱 [ADF 文件](https://azure.microsoft.com/services/data-factory/)。
+我們尚未利用 ADF 提供的功能，以累加方式對資料進行管道傳送。 如需如何執行此功能和 ADF 提供之其他功能的詳細資訊，請參閱 [ADF 文件](https://azure.microsoft.com/services/data-factory/)。

@@ -9,16 +9,16 @@ ms.devlang: ''
 ms.topic: conceptual
 f1_keywords:
 - mi.azure.sqlaudit.general.f1
-author: barmichal
-ms.author: mibar
+author: DavidTrigano
+ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/08/2019
-ms.openlocfilehash: 41d632b145a7187dd0aeaab740cd8546a3955e7f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 9b96969027431f289e366b150fbfc6a62ee6a908
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819000"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719903"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>開始使用 Azure SQL Database 受控執行個體稽核
 
@@ -171,7 +171,7 @@ ms.locfileid: "73819000"
 
 5. 選取 [audit 事件-事件中樞]、[Azure 監視器記錄] 或 [兩者] 的目的地。 為每個目標設定必要的參數 (例如 Log Analytics 工作區)。
 
-6. 按一下 [儲存]。
+6. 按一下 [檔案]。
 
     ![設定診斷設定](./media/sql-managed-instance-auditing/9_mi_configure_diagnostics.png)
 
@@ -235,7 +235,7 @@ Azure SQL Database 中的資料庫和 SQL Server 中的資料庫兩者之間的�
 - 提供新的語法 `TO EXTERNAL MONITOR`，以啟用甚至中樞和 Azure 監視器記錄目標。
 - `TO FILE` 語法**不受支援**，因為 SQL Database 無法存取 Windows 檔案共用。
 - **不支援**關機選項。
-- `queue_delay`不支援**使用 0 的** 。
+- **不支援**使用 0 的 `queue_delay`。
 
 ## <a name="next-steps"></a>後續步驟
 

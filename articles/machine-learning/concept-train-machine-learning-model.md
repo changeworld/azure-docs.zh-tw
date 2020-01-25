@@ -1,7 +1,7 @@
 ---
 title: 模型定型方法
 titleSuffix: Azure Machine Learning
-description: 瞭解您可以用來將模型定型 Azure Machine Learning 的不同方法。 估算器提供簡單的方式來使用熱門的架構，例如 Scikit-learn、學習、TensorFlow、Keras、PyTorch 和 Chainer。 Machine Learning 管線可讓您輕鬆排程自動執行、使用異類計算環境，以及重複使用工作流程的各部分。 和執行設定可讓您更精確地控制定型進程執行所在的計算目標。
+description: 瞭解您可以用來將模型定型 Azure Machine Learning 的不同方法。 估算器提供簡單的方式來使用熱門的架構，例如 Scikit-learn、學習、TensorFlow、Keras、PyTorch 和 Chainer。 Machine Learning 管線可讓您輕鬆地排程自動執行、使用異類計算環境，以及重複使用工作流程的各部分。 和執行設定可讓您更精確地控制定型進程執行所在的計算目標。
 services: machine-learning
 ms.service: machine-learning
 author: Blackmist
@@ -9,12 +9,12 @@ ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: 4902c679fa9b8b0140f7da8f32b3382983a635ed
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: f46dd2b30ca84a7e6a1b0fc34ef0fa5bafffaef5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311320"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721110"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 將模型定型
 
@@ -29,7 +29,7 @@ Azure Machine Learning 提供數種方式來定型您的模型，從程式碼優
     | [估算器](#estimators) | 估計工具類別**可讓您輕鬆地根據熱門的機器學習架構來定型模型**。 Scikit-learn 的估計工具類別包括 **：學習**、 **PyTorch**、 **TensorFlow**和**Chainer**。 另外還有一個泛型估計工具，可以搭配尚未擁有專用估計工具類別的架構來使用。 使用估算器時，您不需要擔心定義執行設定。 |
     | [機器學習管線](#machine-learning-pipeline) | 管線並不是不同的定型方法，而是**使用模組化、可重複使用的步驟來定義工作流程的一種方式**，其中包括訓練做為工作流程的一部分。 機器學習管線支援使用自動化機器學習、估算器和執行設定來定型模型。 由於管線並不是特別著重于定型，因此使用管線的原因會比其他定型方法更為不同。 一般而言，您可能會在下列情況使用管線：<br>* 您想要**排程**自動執行的程式，例如長時間執行的定型作業或資料準備。<br>* 使用跨異類計算資源和儲存位置協調的**多個步驟**。<br>* 在特定案例中使用管線作為**可重複**使用的範本，例如重新定型或批次評分。<br>* **追蹤和版本資料來源、輸入**和工作流程的輸出。<br>* 您的工作流程是**由不同的小組所實行，這些團隊會獨立處理特定步驟**。 然後，可以在管線中將步驟聯結在一起，以執行工作流程。 |
 
-+ **設計**工具： Azure Machine Learning 設計工具可讓您輕鬆進入機器學習服務，以建立概念證明，或針對幾乎沒有程式碼撰寫經驗的使用者。 它可讓您使用拖放 web 型 UI 來定型模型。 您可以使用 Python 程式碼作為設計的一部分，或在不撰寫任何程式碼的情況下訓練模型。
++ **設計**工具： Azure Machine Learning 設計工具（預覽）可讓您輕鬆進入機器學習服務，以建立概念證明，或針對幾乎沒有程式碼撰寫經驗的使用者。 它可讓您使用拖放 web 型 UI 來定型模型。 您可以使用 Python 程式碼作為設計的一部分，或在不撰寫任何程式碼的情況下訓練模型。
 
 + **CLI**： MACHINE learning CLI 會使用 Azure Machine Learning 提供一般工作的命令，而且通常用於**腳本和自動化**工作。 例如，當您建立定型腳本或管線之後，您可以使用 CLI 來根據排程啟動定型執行，或更新用於定型的資料檔案。 針對定型模型，它會提供可提交定型作業的命令。 它可以使用執行設定或管線提交作業。
 
@@ -59,7 +59,7 @@ Azure Machine Learning 提供數種方式來定型您的模型，從程式碼優
 定義 [反復專案]、[超參數設定]、[特徵化] 及其他設定。 在定型期間，Azure Machine Learning 會平行嘗試不同的演算法和參數。 定型會在達到您定義的結束準則之後停止。 使用估算器時，您不需要擔心定義執行設定。
 
 > [!TIP]
-> 在除了至 Python SDK 時，您也可以透過[Azure Machine Learning studio](https://ml.azure.com)使用自動化 ML。
+> 除了 Python SDK，您也可以透過[Azure Machine Learning studio](https://ml.azure.com)使用自動化 ML。
 
 * [什麼是自動化機器學習服務？](concept-automated-ml.md)
 * [教學課程：使用自動化機器學習建立您的第一個分類模型](tutorial-first-experiment-automated-ml.md)

@@ -12,12 +12,12 @@ ms.date: 10/16/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: feefe7cf6d559360defd7c7f830a9e3f2e583cd6
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: e79b2342f481786caf46aeb9454e2961637da335
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74948227"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712944"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>存取 Azure AD B2C 稽核記錄
 
@@ -32,14 +32,14 @@ Audit log 事件只會保留**七天**。 如果您需要更長的保留期，�
 
 稽核記錄中的 **B2C** 類別包含以下類型的活動：
 
-|活動類型 |描述  |
+|活動類型 |說明  |
 |---------|---------|
-|Authorization |有關授權使用者存取 B2C 資源的活動（例如，存取 B2C 原則清單的系統管理員）。         |
+|授權 |有關授權使用者存取 B2C 資源的活動（例如，存取 B2C 原則清單的系統管理員）。         |
 |目錄 |當系統管理員使用 Azure 入口網站登入時，所抓取之目錄屬性的相關活動。 |
-|Application | 在 B2C 應用程式上建立、讀取、更新和刪除（CRUD）作業。 |
+|應用程式 | 在 B2C 應用程式上建立、讀取、更新和刪除（CRUD）作業。 |
 |索引鍵 |在 B2C 金鑰容器中儲存之金鑰的 CRUD 作業。 |
 |資源 |B2C 資源的 CRUD 作業。 例如，原則和識別提供者。
-|Authentication |驗證使用者認證和權杖發行。|
+|驗證 |驗證使用者認證和權杖發行。|
 
 如需使用者物件 CRUD 活動，請參閱**核心目錄**類別。
 
@@ -51,9 +51,9 @@ Audit log 事件只會保留**七天**。 如果您需要更長的保留期，�
 
 [活動詳細資料] 面板包含下列相關資訊：
 
-|區段|欄位|描述|
+|區段|欄位|說明|
 |-------|-----|-----------|
-| 活動 | Name | 發生了哪個活動。 例如，對*應用程式發出 id_token*，這會結束實際的使用者登入。 |
+| 活動 | 名稱 | 發生了哪個活動。 例如，對*應用程式發出 id_token*，這會結束實際的使用者登入。 |
 | 啟動者 (執行者) | ObjectId | 使用者所登入之 B2C 應用程式的**物件識別碼**。 此識別碼不會顯示在 Azure 入口網站中，但可透過 Microsoft Graph API 存取。 |
 | 啟動者 (執行者) | Spn | 使用者所登入之 B2C 應用程式的**應用程式識別碼**。 |
 | 目標 | ObjectId | 登入之使用者的**物件識別碼**。 |
@@ -165,7 +165,7 @@ Write-Output "Searching for events starting $7daysago"
 $body       = @{grant_type="client_credentials";resource=$resource;client_id=$ClientID;client_secret=$ClientSecret}
 $oauth      = Invoke-RestMethod -Method Post -Uri $loginURL/$tenantdomain/oauth2/token?api-version=1.0 -Body $body
 
-# Parse audit report items, save output to file(s): auditX.json, where X = 0 thru n for number of nextLink pages
+# Parse audit report items, save output to file(s): auditX.json, where X = 0 through n for number of nextLink pages
 if ($oauth.access_token -ne $null) {
     $i=0
     $headerParams = @{'Authorization'="$($oauth.token_type) $($oauth.access_token)"}

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: d9daefaec33c435ae9f8eceec370c83de4535f8b
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: b05b83086cc9d8449d9517897f347b6e2685aa95
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830372"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720345"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight：常見問題
 
@@ -233,7 +233,7 @@ Clamscan 是在 HDInsight 叢集上執行的防毒軟體，可供 Azure 安全�
 ### <a name="why-is-llap-available-on-spark-esp-clusters"></a>為什麼 Spark ESP 叢集上有 LLAP 可供使用？
 在 ESP Spark 叢集上，LLAP 會基於安全性理由（也就是 Apache Ranger）而啟用，而不是效能。 您應該使用較大的節點 Vm 來配合 LLAP 的資源使用量（例如最低 D13V2）。 
 
-### <a name="how-can-i-add-addional-aad-groups-after-creating-an-esp-cluster"></a>如何在建立 ESP 叢集之後新增其他 AAD 群組？
+### <a name="how-can-i-add-additional-aad-groups-after-creating-an-esp-cluster"></a>如何在建立 ESP 叢集之後新增其他 AAD 群組？
 有兩種方式可達成此目的： 1-您可以重新建立叢集，並在叢集建立時新增額外的群組。 如果您在 AAD-DS 中使用範圍同步處理，請確定群組 B 已包含在已設定範圍的同步處理中。
 2-將群組新增為先前用來建立 ESP 叢集之群組的嵌套子群組。 例如，如果您已建立具有群組 `A`的 ESP 叢集，稍後可以將群組 `B` 新增為 `A` 的嵌套子群組，並在大約一小時後自動同步處理並在叢集中使用。 
 

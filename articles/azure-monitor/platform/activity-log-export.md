@@ -5,20 +5,21 @@ author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 01/23/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 0e5780561df121d3d5af3a9b754d774cc7d6cf76
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: e46574ae7f8faa67c2cc0c1afef1917270f69175
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969666"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715894"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>將 Azure 活動記錄匯出至儲存體或 Azure 事件中樞
 
-> [!WARNING]
-> 您現在可以使用與收集資源記錄的方式類似的診斷設定，將活動記錄收集到 Log Analytics 工作區。 請參閱[在 Azure 監視器中收集和分析 Log Analytics 工作區中的 Azure 活動記錄](diagnostic-settings-legacy.md)。
+> [!IMPORTANT]
+> 將 Azure 活動記錄檔傳送至 Azure 儲存體和 Azure 事件中樞的方法已變更為 [[診斷設定](diagnostic-settings.md)]。 本文說明即將淘汰的舊版方法。 如需比較，請參閱更新至[Azure 活動記錄收集和匯出](diagnostic-settings-legacy.md)。
+
 
 [Azure 活動記錄](platform-logs-overview.md)可讓您深入瞭解 azure 訂用帳戶中所發生的訂用帳戶層級事件。 除了在 Azure 入口網站中查看活動記錄，或將它複製到 Log Analytics 工作區，您可以使用 Azure 監視器收集的其他資料進行分析，您可以建立記錄設定檔，將活動記錄封存至 Azure 儲存體帳戶，或將其串流至 事件中樞。
 
@@ -72,9 +73,14 @@ ms.locfileid: "75969666"
 
 在 Azure 入口網站中，使用 [**匯出至事件中樞**] 選項來建立或編輯記錄設定檔。
 
-1. 從 Azure 入口網站的 [**監視**] 功能表中，選取 [**匯出至事件中樞**]。
+1. 從 Azure 入口網站的 [ **Azure 監視器**] 功能表中，選取 [**活動記錄**]。
+3. 按一下 [診斷設定]。
 
-    ![入口網站中的匯出按鈕](media/activity-log-export/portal-export.png)
+   ![診斷設定](media/diagnostic-settings-subscription/diagnostic-settings.png)
+
+4. 按一下 [紫色] 橫幅以取得舊版體驗。
+
+    ![舊版體驗](media/diagnostic-settings-subscription/legacy-experience.png)
 
 3. 在出現的分頁中，指定下列各項：
    * 具有要匯出之事件的區域。 您應該選取 [所有區域] 以確保您不會遺漏關鍵事件，因為活動記錄是全域（非區域）記錄檔，因此大部分的事件都沒有與其相關聯的區域。

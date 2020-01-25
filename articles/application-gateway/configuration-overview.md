@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: ce6f07a20044efed43cf24b3f0652691dff8b8aa
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 146dbdbf2f4e107e81515ce83188fa48c52aef36
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658333"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714866"
 ---
 # <a name="application-gateway-configuration-overview"></a>應用程式閘道設定總覽
 
@@ -53,7 +53,7 @@ Azure 也會在每個子網中保留5個 IP 位址供內部使用：前4個和�
 - 無法封鎖輸出網際網路連線。 NSG 中的預設輸出規則允許網際網路連線能力。 建議您：
 
   - 請勿移除預設輸出規則。
-  - 請勿建立拒絕輸出網際網路連線的其他輸出規則。
+  - 請勿建立會拒絕任何輸出連線能力的其他輸出規則。
 
 - 必須允許來自**AzureLoadBalancer**標記的流量。
 

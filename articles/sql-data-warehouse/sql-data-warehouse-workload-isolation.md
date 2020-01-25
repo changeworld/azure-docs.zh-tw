@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 01/13/2020
+ms.date: 01/23/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 85987ca1ff7d2dd204d0a501367efffc8277f138
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 86390132be0440b197b680803e5b6032670a7d1c
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75939921"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721025"
 ---
 # <a name="sql-data-warehouse-workload-group-isolation-preview"></a>SQL 資料倉儲工作負載群組隔離（預覽）
 
@@ -32,7 +32,7 @@ ms.locfileid: "75939921"
 
 工作負載隔離意指工作負載群組會以獨佔方式保留資源。  工作負載隔離的達成方式是在[建立工作負載群組](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)語法中，將 MIN_PERCENTAGE_RESOURCE 參數設定為大於零。  針對需要遵守嚴格 Sla 的連續執行工作負載，隔離可確保資源永遠可供工作負載群組使用。 
 
-設定工作負載隔離會隱含地定義一個保證的並行層級。 當 MIN_PERCENTAGE_RESOURCE 設為30%，且 REQUEST_MIN_RESOURCE_GRANT_PERCENT 設定為2% 時，就會保證工作負載群組具有15個並行層級。  請考慮下列用來判斷保證並行的方法：
+設定工作負載隔離會隱含地定義一個保證的並行層級。 例如，`MIN_PERCENTAGE_RESOURCE` 設為30% 且 `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 設定為2% 的工作負載群組保證15個並行。  保證並行層級，因為資源的15-2% 位置會隨時保留在工作負載群組中（不論如何設定 `REQUEST_*MAX*_RESOURCE_GRANT_PERCENT`）。  如果 `REQUEST_MAX_RESOURCE_GRANT_PERCENT` 大於 `REQUEST_MIN_RESOURCE_GRANT_PERCENT`，且 `CAP_PERCENTAGE_RESOURCE` 大於 `MIN_PERCENTAGE_RESOURCE` 會針對每個要求新增額外的資源。  如果 `REQUEST_MAX_RESOURCE_GRANT_PERCENT` 和 `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 相等，且 `CAP_PERCENTAGE_RESOURCE` 大於 `MIN_PERCENTAGE_RESOURCE`，則可能會有額外的平行存取。  請考慮下列用來判斷保證並行的方法：
 
 [保證並行] = [`MIN_PERCENTAGE_RESOURCE`]/[`REQUEST_MIN_RESOURCE_GRANT_PERCENT`]
 

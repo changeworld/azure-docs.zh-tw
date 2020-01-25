@@ -3,24 +3,24 @@ title: 使用 Azure Pipelines 建立 CI/CD 管線-小組資料科學流程
 description: 使用 Docker 和 Kubernetes 建立人工智慧（AI）應用程式的持續整合與持續傳遞管線。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/06/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=jainr, previous-ms.author=jainr
-ms.openlocfilehash: f07ce8e8834a2804b6a5b7668718c8e6bff00fa6
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 42433ec419ac9e02077cd0359e18b5114206f27d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260674"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721824"
 ---
 # <a name="create-cicd-pipelines-for-ai-apps-using-azure-pipelines-docker-and-kubernetes"></a>使用 Azure Pipelines、Docker 和 Kubernetes 建立適用于 AI 應用程式的 CI/CD 管線
 
-人工智慧（AI）應用程式是以預先定型機器學習（ML）模型內嵌的應用程式程式碼。 AI 應用程式一律會有兩個工作流：資料科學家會建立 ML 模型，而應用程式開發人員會建立應用程式，並將它公開給使用者使用。 本文說明如何針對將 ML 模型內嵌至應用程式原始程式碼的 AI 應用程式，執行持續整合和持續傳遞（CI/CD）管線。 範例程式碼和教學課程會使用簡單的 Python Flask web 應用程式，並從私人 Azure blob 儲存體帳戶提取預先定型模型。 您也可以使用 AWS S3 儲存體帳戶。
+人工智慧（AI）應用程式是以預先定型機器學習（ML）模型內嵌的應用程式程式碼。 AI 應用程式一律會有兩個工作流：資料科學家會建立 ML 模型，而應用程式開發人員會建立應用程式，並將它公開給使用者使用。 本文說明如何針對將 ML 模型內嵌至應用程式原始程式碼的 AI 應用程式，執行持續整合和持續傳遞（CI/CD）管線。 範例程式碼和教學課程會使用 Python Flask web 應用程式，並從私人 Azure blob 儲存體帳戶提取預先定型模型。 您也可以使用 AWS S3 儲存體帳戶。
 
 > [!NOTE]
 > 下列程式是執行 CI/CD 的幾種方式之一。 此工具和必要條件都有替代方案。
@@ -60,9 +60,9 @@ ms.locfileid: "71260674"
 10. 應用程式的使用者要求會經過 DNS 伺服器。
 11. DNS 伺服器會將要求傳遞給負載平衡器，並將回應傳回給使用者。
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 - [Team Data Science Process (TDSP)](/azure/machine-learning/team-data-science-process/)
 - [Azure Machine Learning (AML)](/azure/machine-learning/)
 - [Azure DevOps](https://azure.microsoft.com/services/devops/)
-- [Azure Kubernetes Services (AKS)](/azure/aks/intro-kubernetes)
+- [Azure Kubernetes Service (AKS)](/azure/aks/intro-kubernetes)

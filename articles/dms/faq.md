@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: fc0bac99aa70d7028412c68563a3024720fa49d9
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 9fdbf3888b4302946fe20259a333842caa122836
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75745407"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717784"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>使用 Azure 資料庫移轉服務的常見問題
 
@@ -96,7 +96,7 @@ Azure 資料庫移轉服務必要條件在所有支援的移轉案例中都是�
 1. 建立目標資料庫。
 2. 評估您的源資料庫。
     * 針對同質遷移，使用[DMA](https://www.microsoft.com/download/details.aspx?id=53595)評估現有的資料庫。
-    * 針對異類遷移（來自競爭來源），使用[SSMA](https://aka.ms/get-ssma)評估現有的資料庫。 您也可以使用 SSMA 來轉換資料庫物件，並將架構遷移至目標平臺。
+    * 針對異類遷移（從競爭來源），使用[SSMA](https://aka.ms/get-ssma)評估現有的資料庫。 您也可以使用 SSMA 來轉換資料庫物件，並將架構遷移至目標平臺。
 3. 建立 Azure 資料庫移轉服務的執行個體。
 4. 建立一個可指定源資料庫、目標資料庫和要遷移之資料表的遷移專案。
 5. 啟動完整載入。

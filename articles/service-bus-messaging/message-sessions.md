@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 7264b8e5a536c90d106b3bf4a5e26093744327d6
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 7da3c3de5074df80c676238e4d43dbd677b0a3b4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091819"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720226"
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>訊息工作階段：先進先出 (FIFO) 
 
@@ -82,9 +82,9 @@ Microsoft Azure 服務匯流排工作階段能夠聯合和依序處理未繫結�
 
 ## <a name="impact-of-delivery-count"></a>傳遞計數的影響
 
-會話內容中每個訊息的傳遞計數定義，與會話未提供中的定義稍有不同。 以下是摘要說明傳遞計數何時遞增的資料表。
+會話內容中每個訊息的傳遞計數定義會隨著會話中的定義而略有不同。 以下是摘要說明傳遞計數何時遞增的資料表。
 
-| 狀況 | 訊息的傳遞計數會遞增 |
+| 案例 | 訊息的傳遞計數會遞增 |
 |----------|---------------------------------------------|
 | 已接受會話，但會話鎖定過期（因為超時） | 是 |
 | 已接受會話，會話中的訊息不會完成（即使已鎖定），而且會話已關閉 | 否 |

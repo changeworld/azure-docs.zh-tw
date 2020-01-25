@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 2c3f733ad5af46c16a6880b8988754fd81ddabb0
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 292b53fac6c970fb961e8ad4ce7774c080e52422
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705542"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718866"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>停用 Azure VM 中的客體 OS 防火牆
 
 若您懷疑客體作業系統防火牆有篩選虛擬機器 (VM) 部分或完整流量的情況，則本文提供這種情況的參考資訊。 如果刻意變更防火牆，就可能會發生這種情況，並導致 RDP 連線失敗。
 
-## <a name="solution"></a>方案
+## <a name="solution"></a>解決方案
 
 本文所述程序是作為因應措施使用，讓您專注於修正真正的問題，也就是如何正確設定防火牆規則。 Microsoft 的最佳作法是啟用 Windows 防火牆元件。 設定防火牆規則的方式取決於所需的 VM 存取層級。
 
@@ -54,13 +54,13 @@ ms.locfileid: "74705542"
 >   ```
 >   不過，只要套用此原則，您就會被移出遠端工作階段。 這個問題的永久解決之道是修改套用至此電腦的原則。
 
-#### <a name="mitigation-2-remote-powershell"></a>緩解措施 2：遠端 Powershell
+#### <a name="mitigation-2-remote-powershell"></a>緩解措施 2：遠端 PowerShell
 
 1.  針對您無法使用 RDP 連線來連接的 VM，連線到與此 VM 相同虛擬網路的某部 VM。
 
 2.  開啟 PowerShell 主控台視窗。
 
-3.  執行以下命令：
+3.  執行下列命令：
 
     ```powershell
     Enter-PSSession (New-PSSession -ComputerName "<HOSTNAME>" -Credential (Get-Credential) -SessionOption (New-PSSessionOption -SkipCACheck -SkipCNCheck)) 
@@ -78,7 +78,7 @@ ms.locfileid: "74705542"
 
 2.  開啟 CMD 執行個體，然後透過其 DIP 存取 VM。
 
-3.  執行以下命令：
+3.  執行下列命令：
 
     ```cmd
     psexec \\<DIP> -u <username> cmd
@@ -118,13 +118,13 @@ ms.locfileid: "74705542"
 
 如果任何方法皆無法存取 VM，則自訂指令碼延伸模組會失敗，且您必須直接透過系統磁碟，在 [離線] 模式下工作。 若要這樣做，請遵循下列步驟：
 
-1.  [將系統磁碟連結至復原虛擬機器](troubleshoot-recovery-disks-portal-windows.md)。
+1.  [將系統磁碟連結至復原 VM](troubleshoot-recovery-disks-portal-windows.md)。
 
 2.  啟動復原 VM 的遠端桌面連線。
 
 3.  確定該磁碟在磁碟管理主控台中標示為 [線上]。 記下指派給已連結系統磁碟的磁碟機代號。
 
-4.  進行任何變更之前，請建立 \windows\system32\config 資料夾的複本，以便在需要復原變更時使用。
+4.  進行任何變更之前，請建立 \windows\system32\config 資料夾的複本，以便在需要回復變更時使用。
 
 5.  在要對其進行疑難排解的 VM 上，啟動登錄編輯程式 (regedit.exe)。 
 
@@ -148,7 +148,7 @@ ms.locfileid: "74705542"
     Set-ItemProperty -Path $key -name 'EnableFirewall' -Value 0 -Type Dword -force
     $key = 'BROKENSYSTEM\ControlSet00'+$ControlSet+'\services\SharedAccess\Parameters\FirewallPolicy\StandardProfile'
     Set-ItemProperty -Path $key -name 'EnableFirewall' -Value 0 -Type Dword -force
-    # To ensure the firewall is not set thru AD policy, check if the following registry entries exist and if they do, then check if the following entries exist:
+    # To ensure the firewall is not set through AD policy, check if the following registry entries exist and if they do, then check if the following entries exist:
     $key = 'HKLM:\BROKENSOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile'
     Set-ItemProperty -Path $key -name 'EnableFirewall' -Value 0 -Type Dword -force
     $key = 'HKLM:\BROKENSOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile'
@@ -160,6 +160,6 @@ ms.locfileid: "74705542"
     reg unload HKLM\BROKENSOFTWARE
     ```
 
-10. [中斷連結系統磁碟，並重新建立虛擬機器](troubleshoot-recovery-disks-portal-windows.md)。
+10. [中斷連結系統磁碟並重新建立 VM](troubleshoot-recovery-disks-portal-windows.md)。
 
 11. 檢查問題是否已解決。

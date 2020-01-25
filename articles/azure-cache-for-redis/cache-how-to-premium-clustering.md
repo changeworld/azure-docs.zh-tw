@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 06/13/2018
-ms.openlocfilehash: ddb44a064090a108f77d6a6f9a270fab8c55ec90
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 761c464730096eba36bc7c04227745cf362e5cc6
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433440"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714459"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>如何設定進階 Azure Redis 快取的 Redis 叢集功能
 Azure Cache for Redis 有不同的快取供應項目，可讓您彈性選擇快取大小和功能，包括叢集功能、持續性及虛擬網路支援等「進階」層功能。 本文說明如何在進階「Azure Redis 快取」執行個體中設定叢集功能。
@@ -58,12 +58,7 @@ Azure Cache for Redis 有不同的快取供應項目，可讓您彈性選擇快�
 <a name="cluster-size"></a>
 
 ## <a name="change-the-cluster-size-on-a-running-premium-cache"></a>在執行中的進階快取上變更叢集大小
-若要變更已啟用叢集的執行中進階快取上的叢集大小，請從 [資源] 功能表中按一下 [Redis 叢集大小]。
-
-> [!NOTE]
-> 雖然「Azure Redis 快取」進階層已發行正式運作版，但「Redis 叢集大小」功能目前為預覽狀態。
-> 
-> 
+若要在已啟用叢集的執行中 premium 快取上變更叢集大小，請按一下 [**資源] 功能表**中的 [叢集**大小**]。
 
 ![Redis 叢集大小][redis-cache-redis-cluster-size]
 

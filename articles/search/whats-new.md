@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: e115316daf3673d9ad854e7ccd6d5256d729b5af
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: a9c64f4bafa770de9bbbd97ae9a0295b72d81f54
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921018"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719818"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 認知搜尋的新功能
 
@@ -21,15 +21,13 @@ ms.locfileid: "75921018"
 
 <a name="new-service-name"></a>
 
-## <a name="new-service-name-for-azure-search"></a>Azure 搜尋服務的新服務名稱
+## <a name="new-service-name"></a>新服務名稱
 
-Azure 搜尋服務現在已重新命名為**Azure 認知搜尋**，以反映核心作業中的認知技能和 AI 處理的擴充使用。 雖然認知技能新增了新功能，但使用 AI 是完全選擇性的。 您可以繼續使用不含 AI 的 Azure 認知搜尋，在您于雲端建立和管理的索引中，透過私人、未經處理、以文字為基礎的內容來建立豐富的全文檢索搜尋解決方案。 
-
-API 版本、Nuget 套件、命名空間和端點都不會變更。 您現有的搜尋解決方案不受服務名稱變更的影響。
+Azure 搜尋服務現在已重新命名為「 **Azure 認知搜尋**」，以反映核心作業中已展開（但尚未選用）的認知技能和 AI 處理的使用方式。 API 版本、NuGet 套件、命名空間和端點都不會變更。 新的和現有的搜尋解決方案不受服務名稱變更的影響。
 
 ## <a name="feature-announcements"></a>功能公告
 
-### <a name="january-2020"></a>2020年1月
+### <a name="january-2020"></a>2020 年 1 月
 
 + [客戶管理的加密金鑰](search-security-manage-encryption-keys.md)現在已正式推出。 如果您使用 REST，您可以使用 `api-version=2019-05-06`來存取此功能。 對於 managed 程式碼，即使功能不在預覽中，正確的封裝仍然是[.NET SDK 版本 8.0-preview](search-dotnet-sdk-migration-version-9.md) 。 
 

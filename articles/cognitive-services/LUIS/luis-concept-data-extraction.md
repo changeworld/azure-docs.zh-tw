@@ -1,22 +1,15 @@
 ---
 title: 資料解壓縮-LUIS
-titleSuffix: Azure Cognitive Services
 description: 使用意圖和實體從語句文字中解壓縮資料。 瞭解哪些類型的資料可以從 Language Understanding （LUIS）中解壓縮。
-services: cognitive-services
 author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/27/2019
-ms.author: diberry
-ms.openlocfilehash: ff0a9838d1fcc9db3b6cc25b47c840e01056e6cd
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.date: 01/23/2020
+ms.openlocfilehash: 1c1a744c06e5347625fb96518bd809481ee797e5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703142"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716301"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>使用意圖和實體從語句文字解壓縮資料
 LUIS 可讓您從使用者的自然語言語句取得資訊。 此資訊的擷取方式使得它可供程式、應用程式或 Chatbot 用來執行動作。 在下列各節中，您將透過 JSON 範例，了解從意圖和實體會傳回哪些資料。
@@ -34,9 +27,9 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 
 `https://westus.api.cognitive.microsoft.com/luis/v3.0-preview/apps/<appID>/slots/<slot-type>/predict?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&query=book 2 tickets to paris`
 
-深入瞭解[V3 預測端點](luis-migration-api-v3.md)。
+深入了解 [V3 預測端點](luis-migration-api-v3.md)。
 
-* * * 
+* * *
 
 當您編輯 LUIS 應用程式時，從該 LUIS 應用程式的 [設定] 頁面，以及從您 URL 的一部分 (在 `/apps/` 之後)，都可以取得 `appID`。 `subscription-key` 是用來查詢您應用程式的端點金鑰。 在學習 LUIS 期間，雖然您可以使用免費的撰寫/入門金鑰，但請務必將端點金鑰變更為支援[預期的 LUIS 使用方式](luis-boundaries.md#key-limits)的金鑰。 `timezoneOffset` 單位為分鐘。
 
@@ -76,9 +69,9 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 }
 ```
 
-深入瞭解[V3 預測端點](luis-migration-api-v3.md)。
+深入了解 [V3 預測端點](luis-migration-api-v3.md)。
 
-* * * 
+* * *
 
 |資料物件|資料類型|資料位置|值|
 |--|--|--|--|
@@ -136,9 +129,9 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 }
 ```
 
-深入瞭解[V3 預測端點](luis-migration-api-v3.md)。
+深入了解 [V3 預測端點](luis-migration-api-v3.md)。
 
-* * * 
+* * *
 
 意圖會依最高分到最低分排序。
 
@@ -199,11 +192,11 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 }
 ```
 
-深入瞭解[V3 預測端點](luis-migration-api-v3.md)。
+深入了解 [V3 預測端點](luis-migration-api-v3.md)。
 
-* * * 
+* * *
 
-|Domain|資料物件|資料類型|資料位置|值|
+|網域|資料物件|資料類型|資料位置|值|
 |--|--|--|--|--|
 |公用事業|Intent|String|intents[0].intent|"<b>Utilities</b>.ShowNext"|
 |通訊|Intent|String|intents[1].intent|<b>Communication</b>.StartOver"|
@@ -248,14 +241,13 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
     "number": [3]
 }
 ```
-深入瞭解[V3 預測端點](luis-migration-api-v3.md)。
+深入了解 [V3 預測端點](luis-migration-api-v3.md)。
 
-* * * 
+* * *
 
 ## <a name="tokenized-entity-returned"></a>傳回的 Token 化實體
-有數個[文化特性](luis-language-support.md#tokenization)會傳回 `entity` 值已[Token 化](luis-glossary.md#token)的實體物件。 LUIS 在實體物件中傳回的 startIndex 和 endIndex 不會對應至新的 Token 化值，而是會對應至原始查詢，以便讓您透過程式設計方式擷取原始實體。 
 
-例如，在德文中，`das Bauernbrot` 會經由 Token 化變成 `das bauern brot`。 系統會傳回 Token 化值 `das bauern brot`，而只要透過程式設計方式，即可從原始查詢的 startIndex 和 endIndex 判斷出原始值，將 `das Bauernbrot` 提供給您。
+請參閱 LUIS 中的[權杖支援](luis-language-support.md#tokenization)。
 
 ## <a name="simple-entity-data"></a>簡單實體資料
 
@@ -263,11 +255,11 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 
 ## <a name="composite-entity-data"></a>複合實體資料
 
-[複合實體](reference-entity-composite.md)是由其他實體所組成，例如預建實體、簡單、正則運算式和列出實體。 個別實體會構成一個完整的提體。 
+[複合實體](reference-entity-composite.md)是由其他實體所組成，例如預建實體、簡單、正則運算式和列出實體。 個別實體會構成一個完整的提體。
 
 ## <a name="list-entity-data"></a>清單實體資料
 
-[清單實體](reference-entity-list.md)代表一組固定且封閉的相關單字及其同義字。 LUIS 並不會探索清單實體的額外值。 使用**建議**功能，以根據目前的清單查看適用於新字組的建議。 如果有多個清單實體具有相同的值，則在端點查詢中會傳回每個實體。 
+[清單實體](reference-entity-list.md)代表一組固定且封閉的相關單字及其同義字。 LUIS 並不會探索清單實體的額外值。 使用**建議**功能，以根據目前的清單查看適用於新字組的建議。 如果有多個清單實體具有相同的值，則在端點查詢中會傳回每個實體。
 
 ## <a name="prebuilt-entity-data"></a>預先建置的實體資料
 探索[預先建置](luis-concept-entity-types.md)實體時，會使用開放原始碼 [Recognizers-Text](https://github.com/Microsoft/Recognizers-Text) 專案，根據規則運算式比對進行探索。 預先建置的實體會在實體陣列中傳回，並使用前面加上 `builtin::` 的類別名稱。 以下文字是一個範例語句，其中含有所傳回的預先建置實體：
@@ -357,7 +349,7 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 
 #### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 預測端點回應](#tab/V3)
 
-如果沒有 querystring 參數，`verbose=true`：
+如果沒有 querystring 參數，請 `verbose=true`：
 
 ```json
 "entities": {
@@ -532,9 +524,9 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 }
 ```
 
-深入瞭解[V3 預測端點](luis-migration-api-v3.md)。
+深入了解 [V3 預測端點](luis-migration-api-v3.md)。
 
-* * * 
+* * *
 ## <a name="regular-expression-entity-data"></a>規則運算式實體資料
 
 [正則運算式實體](reference-entity-regular-expression.md)會根據您所提供的正則運算式模式來解壓縮實體。
@@ -544,11 +536,11 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 
 ### <a name="add-prebuilt-personname-and-geographyv2-entities"></a>新增預建的 PersonName 和 GeographyV2 實體
 
-[PersonName](luis-reference-prebuilt-person.md) 和 [GeographyV2](luis-reference-prebuilt-geographyV2.md) 實體可在某些[語言文化特性](luis-reference-prebuilt-entities.md)中使用。 
+[PersonName](luis-reference-prebuilt-person.md) 和 [GeographyV2](luis-reference-prebuilt-geographyV2.md) 實體可在某些[語言文化特性](luis-reference-prebuilt-entities.md)中使用。
 
 ### <a name="names-of-people"></a>人名
 
-人名可依據語言和文化特性而有些微的格式。 請使用預先建立的 **[personName](luis-reference-prebuilt-person.md)** 實體或具有名字和姓氏[角色](luis-concept-roles.md)的 **[簡單實體](luis-concept-entity-types.md#simple-entity)** 。 
+人名可依據語言和文化特性而有些微的格式。 請使用預先建立的 **[personName](luis-reference-prebuilt-person.md)** 實體或具有名字和姓氏[角色](luis-concept-roles.md)的 **[簡單實體](luis-concept-entity-types.md#simple-entity)** 。
 
 如果您使用簡單實體，請務必提供在語句的不同部分中使用名字和姓氏的範例、語句不同的長度，以及跨所有意圖的語句，包括 None 意圖。 請定期[檢閱](luis-how-to-review-endoint-utt.md)端點語句，以標記任何未正確預測的名稱。
 
@@ -566,7 +558,7 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 
 #### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 預測端點回應](#tab/V2)
 
-機構名稱為 `Location`，具有兩個角色，`Origin` 和 `Destination`。
+機構名稱是 `Location`，有兩個角色，`Origin` 和 `Destination`。
 
 ```JSON
 "entities": [
@@ -599,11 +591,11 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 
 #### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 預測端點回應](#tab/V3)
 
-在 V3 中，**角色名稱**是物件的主要名稱。 
+在 V3 中，**角色名稱**是物件的主要名稱。
 
-機構名稱為 `Location`，具有兩個角色，`Origin` 和 `Destination`。
+機構名稱是 `Location`，有兩個角色，`Origin` 和 `Destination`。
 
-如果沒有 querystring 參數，`verbose=true`：
+如果沒有 querystring 參數，請 `verbose=true`：
 
 ```json
 "entities": {
@@ -681,15 +673,15 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 }
 ```
 
-深入瞭解[V3 預測端點](luis-migration-api-v3.md)。
+深入了解 [V3 預測端點](luis-migration-api-v3.md)。
 
 * * *
 
 ## <a name="patternany-entity-data"></a>Pattern.any 實體資料
 
-[Pattern。 any](reference-entity-pattern-any.md)是僅用於模式範本語句的可變長度預留位置，用來標記實體開始和結束的位置。  
+[Pattern。 any](reference-entity-pattern-any.md)是僅用於模式範本語句的可變長度預留位置，用來標記實體開始和結束的位置。
 
-## <a name="sentiment-analysis"></a>情感分析
+## <a name="sentiment-analysis"></a>情緒分析
 如果已設定情感分析，LUIS JSON 回應就會包含情感分析。 若要深入了解情感分析，請參閱[文字分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)文件。
 
 ### <a name="sentiment-data"></a>情感資料
@@ -754,9 +746,9 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 
 #### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 預測端點回應](#tab/V3)
 
-深入瞭解[V3 預測端點](luis-migration-api-v3.md)。
+深入了解 [V3 預測端點](luis-migration-api-v3.md)。
 
-如果沒有 querystring 參數，`verbose=true`：
+如果沒有 querystring 參數，請 `verbose=true`：
 
 ```json
 "entities": {
@@ -817,7 +809,7 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 }
 ```
 
-深入瞭解[V3 預測端點](luis-migration-api-v3.md)。
+深入了解 [V3 預測端點](luis-migration-api-v3.md)。
 
 * * *
 
@@ -1133,7 +1125,7 @@ With `verbose=true` 做為 querystring 參數。
 }
 ```
 
-深入瞭解[V3 預測端點](luis-migration-api-v3.md)。
+深入了解 [V3 預測端點](luis-migration-api-v3.md)。
 
 * * *
 
@@ -1141,7 +1133,7 @@ With `verbose=true` 做為 querystring 參數。
 
 如果單字或片語與多個清單實體相符，端點查詢會傳回每個清單實體。
 
-如果查詢為 `when is the best time to go to red rock?`，且應用程式在多個清單中有 `red` 一字，LUIS 就會辨識所有實體，並在 JSON 端點回應中傳回實體陣列： 
+如果查詢為 `when is the best time to go to red rock?`，且應用程式在多個清單中有 `red` 一字，LUIS 就會辨識所有實體，並在 JSON 端點回應中傳回實體陣列：
 
 #### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 預測端點回應](#tab/V2)
 
@@ -1183,7 +1175,7 @@ With `verbose=true` 做為 querystring 參數。
 
 #### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 預測端點回應](#tab/V3)
 
-在查詢字串中不 `verbose=true`：
+在查詢字串中沒有 `verbose=true`：
 
 ```JSON
 {
@@ -1270,7 +1262,7 @@ With `verbose=true` 做為 querystring 參數。
 }
 ```
 
-深入瞭解[V3 預測端點](luis-migration-api-v3.md)。
+深入了解 [V3 預測端點](luis-migration-api-v3.md)。
 
 * * *
 

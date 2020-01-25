@@ -17,12 +17,12 @@ ms.date: 07/17/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8883e3ade7e5d52f3a62346bf8be51ac36042f82
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 49b49949c1765c3cb1598d728e21479c65037930
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008532"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714487"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 入口網站中的稽核活動報告 
 
@@ -45,7 +45,7 @@ ms.locfileid: "74008532"
 
 ## <a name="audit-logs"></a>稽核記錄
 
-Azure AD 稽核記錄會提供符合規範的系統活動記錄。 若要存取稽核報告，請選取 [Azure Active Directory] 中 [活動] 區段上的 [稽核記錄]。 請注意，稽核記錄可能會延遲最多一小時，所以稽核活動資料可能會在您完成該工作的一個小時後，才會出現在入口網站中。
+Azure AD 稽核記錄會提供符合規範的系統活動記錄。 若要存取稽核報告，請選取 [Azure Active Directory] 中 [活動] 區段上的 [稽核記錄]。 請注意，「審核記錄」的延遲最多可能會有一小時，因此在完成工作之後，可能需要該時間才會在入口網站中顯示「審核活動資料」。
 
 
 
@@ -80,8 +80,8 @@ Azure AD 稽核記錄會提供符合規範的系統活動記錄。 若要存取�
 - 服務
 - 類別
 - 活動
-- Status
-- 目標
+- 狀態
+- 確定目標
 - 啟動者 (執行者)
 - 日期範圍
 
@@ -89,8 +89,8 @@ Azure AD 稽核記錄會提供符合規範的系統活動記錄。 若要存取�
 
 **服務**篩選準則可讓您從下列服務的下拉式清單中選取：
 
-- 全部
-- 存取權檢閱
+- 所有
+- 存取權審核
 - 帳戶佈建 
 - 應用程式 SSO
 - 驗證方法
@@ -98,16 +98,16 @@ Azure AD 稽核記錄會提供符合規範的系統活動記錄。 若要存取�
 - 條件式存取
 - 核心目錄
 - 權利管理
-- 身分識別保護
+- Identity Protection
 - 受邀的使用者
 - PIM
 - 自助式群組管理
 - 自助式密碼管理
-- 使用條款
+- 使用規定
 
 [**類別目錄**] 篩選器可讓您選取下列其中一個篩選準則：
 
-- 全部
+- 所有
 - AdministrativeUnit
 - ApplicationManagement
 - 驗證
@@ -130,8 +130,8 @@ Azure AD 稽核記錄會提供符合規範的系統活動記錄。 若要存取�
 
 **狀態**篩選準則可讓您根據 audit 作業的狀態進行篩選。 狀態可以是下列其中一項：
 
-- 全部
-- 成功
+- 所有
+- Success
 - 失敗
 
 **目標**篩選準則可讓您依名稱或使用者主體名稱（UPN）來搜尋特定的目標。 目標名稱和 UPN 會區分大小寫。 
@@ -139,7 +139,7 @@ Azure AD 稽核記錄會提供符合規範的系統活動記錄。 若要存取�
 [**起始者**] 篩選器可讓您定義動作專案的名稱或通用主要名稱（UPN）。 名稱和 UPN 會區分大小寫。
 
 [**日期範圍**] 篩選準則可讓您定義所傳回資料的時間範圍。  
-可能的值為︰
+可能的值包括：
 
 - 1 個月
 - 7 天

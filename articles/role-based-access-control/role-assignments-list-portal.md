@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/10/2020
+ms.date: 01/23/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 6117f22b24887e913ed2f8d3a43e80335121636d
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 099cf74dd27f39a4289397d5178511125d9ebf6f
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934485"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720694"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>使用 Azure RBAC 和 Azure 入口網站列出角色指派
 
@@ -125,6 +125,16 @@ ms.locfileid: "75934485"
     ![系統指派受控識別的角色指派](./media/role-assignments-list-portal/azure-resources-user-assigned.png)
 
 1. 若要變更訂用帳戶，請按一下 [**訂閱**] 清單。
+
+## <a name="list-number-of-role-assignments"></a>列出角色指派的數目
+
+您在每個訂用帳戶中最多可以有**2000**個角色指派。 為了協助您追蹤這些限制，[**角色指派**] 索引標籤包含的圖表會列出目前的角色指派數目。
+
+![存取控制-角色指派的數目圖表](./media/role-assignments-list-portal/access-control-role-assignments-chart.png)
+
+如果您接近最大數目，而且您嘗試新增更多角色指派，您會在 [**新增角色指派**] 窗格中看到警告。 您可以刪除不再需要的角色指派，或將角色指派給群組而非個別使用者，以減少角色指派的數目。
+
+![存取控制-新增角色指派警告](./media/role-assignments-list-portal/add-role-assignment-warning.png)
 
 ## <a name="next-steps"></a>後續步驟
 

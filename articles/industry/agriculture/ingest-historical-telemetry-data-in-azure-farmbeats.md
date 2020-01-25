@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 11dcf5dc0f05e51f3f427b09745cb581cc0d3780
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 32eb8e71cfb978fac5b4d6d05af4da4fdc9f67b5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513927"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715515"
 ---
 # <a name="ingest-historical-telemetry-data"></a>內嵌歷程記錄遙測資料
 
@@ -72,7 +72,7 @@ ms.locfileid: "76513927"
 
  現在您已有必要的認證，您可以定義裝置和感應器。 若要這麼做，請呼叫 FarmBeats Api 來建立中繼資料。 請注意，您將需要呼叫 Api，做為您在上一節中建立的用戶端應用程式
 
- FarmBeats Datahub 具有下列 Api，可讓您建立及管理裝置或感應器中繼資料。
+ FarmBeats Datahub 具有下列 Api，可讓您建立及管理裝置或感應器中繼資料。 請注意，身為合作夥伴，您只能存取讀取、建立和更新中繼資料;**夥伴不允許刪除。**
 
 - /**devicemodel 傳遞**： devicemodel 傳遞對應至裝置的中繼資料，例如製造商和裝置類型，也就是閘道或節點。
 - /**裝置**：裝置對應至存在於伺服器陣列上的實體裝置。
@@ -115,7 +115,7 @@ ms.locfileid: "76513927"
 |  SensorModelId     |    相關聯感應器型號的識別碼。   |
 | 位置          |  感應器緯度（-90 到 + 90）、經度（-180 到180）和提高許可權（以計量計）。|
 |   埠 > 名稱        |  裝置上感應器連線的埠名稱和類型。 這必須與裝置模型中所定義的名稱相同。 |
-|    裝置識別碼  |    感應器所連接之裝置的識別碼。     |
+|    DeviceID  |    感應器所連接之裝置的識別碼。     |
 | 名稱            |   用來識別資源的名稱。 例如，感應器名稱或產品名稱，以及型號或產品代碼。|
 |    說明      | 提供有意義的描述。 |
 |    屬性        |製造商提供的其他屬性。 |
@@ -381,6 +381,41 @@ write_client.stop()
       ]
     }
   ]
+}
+```
+
+## <a name="troubleshooting"></a>疑難排解
+
+### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>從感應器內嵌歷程/串流資料之後，無法查看遙測資料
+
+**徵兆**：已部署裝置或感應器，而且您已在 FarmBeats 上建立裝置/感應器，並將遙測內嵌至 EventHub，但無法取得或查看 FarmBeats 上的遙測資料。
+
+矯正**措施：**
+
+1. 請確認您已正確完成合作夥伴註冊-您可以前往 datahub swagger，流覽至/Partner API，進行取得，並檢查合作夥伴是否已註冊。 如果沒有，請遵循[這裡的步驟](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats)來新增合作夥伴。
+2. 請確定您已使用合作夥伴用戶端認證建立中繼資料（Devicemodel 傳遞、裝置、SensorModel、感應器）。
+3. 請確定您已使用正確的遙測訊息格式（如下所示）：
+
+```json
+{
+"deviceid": "<id of the Device created>",
+"timestamp": "<timestamp in ISO 8601 format>",
+"version" : "1",
+"sensors": [
+    {
+      "id": "<id of the sensor created>",
+      "sensordata": [
+        {
+          "timestamp": "< timestamp in ISO 8601 format >",
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
+        },
+        {
+          "timestamp": "<timestamp in ISO 8601 format>",
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
+        }
+      ]
+    }
+ ]
 }
 ```
 

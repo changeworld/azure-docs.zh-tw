@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: 856c249b72e9e0ff8667d10821ad14b3432b0775
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 1cc3664ff8472a6b5a73fa89588611f59ac27e6a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509184"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720261"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>關於 Azure 網路監看員的常見問題（FAQ）
 [Azure 網路監看員](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)服務提供一套工具，可用來監視、診斷、查看計量，以及啟用或停用 Azure 虛擬網路中的資源記錄。 本文會回答有關此服務的常見問題。
@@ -71,9 +71,9 @@ ms.locfileid: "76509184"
 ### <a name="what-does-nsg-flow-logs-do"></a>NSG 流量記錄有哪些功能？
 您可以透過[網路安全性群組（nsg）](https://docs.microsoft.com/azure/virtual-network/security-overview)結合和管理 Azure 網路資源。 NSG 流量記錄可讓您透過 Nsg 記錄所有流量的5個元組流量資訊。 未經處理的流量記錄會寫入 Azure 儲存體帳戶，讓您可以視需要進一步進行處理、分析、查詢或匯出。
 
-### <a name="how-do-i-use-nsg-flow-logs-on-a-storage-account-with-a-firewall"></a>如何? 在具有防火牆的儲存體帳戶上使用 NSG 流量記錄嗎？
+### <a name="how-do-i-use-nsg-flow-logs-with-a-storage-account-behind-a-firewall"></a>如何? 將 NSG 流量記錄與防火牆後方的儲存體帳戶搭配使用？
 
-若要使用具有防火牆的儲存體帳戶，您必須為受信任的 Microsoft 服務提供例外狀況，才能存取您的儲存體帳戶：
+若要使用防火牆後方的儲存體帳戶，您必須為受信任的 Microsoft 服務提供例外狀況，才能存取您的儲存體帳戶：
 
 * 在入口網站上的全域搜尋中，或從 [[儲存體帳戶] 頁面](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Storage%2FStorageAccounts)輸入儲存體帳戶的名稱，以流覽至儲存體帳戶。
 * 在 [設定] 區段下，選取 [防火牆和虛擬網路]
@@ -83,9 +83,9 @@ ms.locfileid: "76509184"
 
 您可以在幾分鐘後檢查儲存體記錄，屆時應該就會看到已更新的時間戳記或新建立的 JSON 檔案。
 
-### <a name="how-do-i-use-nsg-flow-logs-with-service-endpoints-for-storage"></a>如何? 使用 NSG 流量記錄搭配服務端點來儲存儲存體嗎？
+### <a name="how-do-i-use-nsg-flow-logs-with-a-storage-account-behind-a-service-endpoint"></a>如何? 在服務端點後方的儲存體帳戶中使用 NSG 流量記錄嗎？
 
-請參閱[啟用服務端點的教學](https://docs.microsoft.com/azure/virtual-network/tutorial-restrict-network-access-to-resources#enable-a-service-endpoint)課程。 
+NSG 流量記錄會與服務端點 compantible，而不需要任何額外的設定。 請參閱在虛擬網路中[啟用服務端點的教學](https://docs.microsoft.com/azure/virtual-network/tutorial-restrict-network-access-to-resources#enable-a-service-endpoint)課程。
 
 
 ### <a name="what-is-the-difference-between-flow-logs-versions-1--2"></a>流量記錄版本 1 & 2 之間的差異為何？

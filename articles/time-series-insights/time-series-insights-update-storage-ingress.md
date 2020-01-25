@@ -1,8 +1,8 @@
 ---
 title: 預覽中的資料儲存體和輸入-Azure 時間序列深入解析 |Microsoft Docs
 description: 深入瞭解 Azure 時間序列深入解析預覽中的資料儲存體和輸入。
-author: deepakpalled
-ms.author: dpalled
+author: lyrana
+ms.author: lyhughes
 manager: cshankar
 ms.workload: big-data
 ms.service: time-series-insights
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1deca696ba576849701eb8719de7fbaa7895a26a
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: f00529d00312fd6acb045de698590047f991bec7
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861399"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714307"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure 時間序列深入解析預覽中的資料儲存體和輸入
 
@@ -29,41 +29,87 @@ ms.locfileid: "75861399"
 
 ### <a name="ingress-policies"></a>輸入原則
 
+#### <a name="event-sources"></a>事件來源
+
 時間序列深入解析 Preview 支援下列事件來源：
 
 - [Azure IoT 中心](../iot-hub/about-iot-hub.md)
 - [Azure 事件中樞](../event-hubs/event-hubs-about.md)
 
-時間序列深入解析 Preview 針對每個實例最多支援兩個事件來源。 Azure 時間序列深入解析支援透過 Azure IoT 中樞或 Azure 事件中樞提交的 JSON。
+時間序列深入解析 Preview 針對每個實例最多支援兩個事件來源。
 
 > [!WARNING] 
 > * 將事件來源附加至預覽環境時，您可能會遇到高初始延遲的情況。 
 > 事件來源延遲取決於目前在 IoT 中樞或事件中樞內的事件數目。
-> * 事件來源資料第一次內嵌之後，將會減少高延遲。 如果您遇到持續高延遲的情況，請透過 Azure 入口網站提交支援票證，以洽詢我們。
+> * 事件來源資料第一次內嵌之後，將會減少高延遲。 如果您遇到持續高延遲的情況，請透過 Azure 入口網站提交支援票證來洽詢我們。
 
-## <a name="ingress-best-practices"></a>輸入最佳作法
+#### <a name="supported-data-format-and-types"></a>支援的資料格式和類型
+
+Azure 時間序列深入解析支援透過 Azure IoT 中樞或 Azure 事件中樞提交的 UTF8 編碼 JSON。 
+
+以下是支援的資料類型清單。
+
+| Data type | 說明 |
+|-----------|------------------|-------------|
+| bool      |   具有下列兩種狀態之一的資料類型： true 或 false。       |
+| dateTime    |   表示時間的瞬間，通常以一天的日期和時程表示。 日期時間應採用 ISO 8601 格式。      |
+| double    |   雙精確度64位 IEEE 754 浮點
+| string    |   文字值，由 Unicode 字元組成。          |
+
+#### <a name="objects-and-arrays"></a>物件和陣列
+
+您可以傳送複雜的類型（例如物件和陣列）做為事件裝載的一部分，但是您的資料會在儲存時經歷簡維處理常式。 如需如何塑造 JSON 事件的詳細資訊，以及複雜型別和嵌套物件簡維的詳細資訊，請參閱[如何為輸入和查詢塑造 json](./time-series-insights-update-how-to-shape-events.md)一頁。
+
+
+### <a name="ingress-best-practices"></a>輸入最佳作法
 
 我們建議您採用下列最佳作法：
 
-* 在相同區域中設定時間序列深入解析和 IoT 中樞或事件中樞。 這會減少因網路而產生的內嵌延遲。
+* 在相同區域中設定時間序列深入解析和您的 IoT 中樞或事件中樞，以減少網路產生的內嵌延遲。
 * 藉由計算預期的內傳速率，並確認其是否落在下列支援的費率中，為您的調整需求進行規劃
 * 閱讀[如何針對輸入和查詢塑造 json](./time-series-insights-update-how-to-shape-events.md)，以瞭解如何優化和塑造您的 json 資料，以及目前的預覽限制。
 
 ### <a name="ingress-scale-and-limitations-in-preview"></a>預覽中的輸入規模和限制
 
-根據預設，預覽環境支援每個環境每**秒最多 1 mb （MB/s）** 的輸入速率。 如有需要，客戶可以將其預覽環境調整為最多**16 MB/秒**的輸送量。
-此外，每個分割區的限制為**0.5 MB/秒**。 
-
-每個分割區的限制對於使用 IoT 中樞的客戶而言會有影響。 具體而言，假設 IoT 中樞裝置和資料分割之間的親和性。 在一部閘道裝置使用自己的裝置識別碼和連接字串將訊息轉送至中樞的情況下，假設訊息會抵達單一分割區，則會有達到 0.5 MB/s 限制的風險，即使事件裝載指定了不同的時間序列識別碼也一樣。 
+#### <a name="per-environment-limitations"></a>每個環境的限制
 
 一般來說，輸入速率會視為您組織中的裝置數目、事件排放頻率，以及每個事件的大小因素：
 
 *  **裝置數**×**事件發射頻率**×**每個事件的大小**。
 
-> [!TIP]
-> 針對使用 IoT 中樞作為事件來源的環境，請使用使用中的中樞連線數目來計算內建速率，而不是使用中的裝置總數或組織中的總裝置數。
+根據預設，時間序列深入解析 preview 可以在**每個 TSI 環境**中，以最多每秒 1 mb 的速率內嵌傳入的資料。 請洽詢我們如果這不符合您的需求，我們可以在 Azure 入口網站中提交支援票證，以支援最多 16 MBps 的環境。
+ 
+範例1： Contoso 運送有100000個裝置，每分鐘發出事件三次。 事件的大小為200個位元組。 它們使用具有4個分割區的事件中樞作為 TSI 事件來源。
+其 TSI 環境的內嵌速率為：100000裝置 * 200 位元組/事件 * （3/60 事件/秒） = 1 MBps。
+每個分割區的內嵌速率為 0.25 MBps。
+Contoso 運送的內送費率會在預覽規模限制範圍內。
+ 
+範例2： Contoso 車隊分析有60000個裝置，每秒發出事件一次。 它們使用 IoT 中樞24分割區計數4作為 TSI 事件來源。 事件的大小為200個位元組。
+環境的內嵌速度會是：20000裝置 * 200 位元組/事件 * 1 事件/秒 = 4 MBps。
+每個分割區的速率會是 1 MBps。
+Contoso 車隊分析必須透過適用于專用環境的 Azure 入口網站將要求提交至 TSI，以達成此規模。
 
-如需輸送量單位、限制和磁碟分割的詳細資訊：
+#### <a name="hub-partitions-and-per-partition-limits"></a>中樞磁碟分割和每個分割區限制
+
+在規劃 TSI 環境時，請務必考慮您將連接到 TSI 的事件來源設定。 Azure IoT 中樞和事件中樞都利用分割區來啟用事件處理的水準調整。  分割區是保留在中樞中的已排序事件順序。 在 IoT 或事件中樞的建立階段期間，會設定分割區計數，而且無法變更。 如需有關判斷分割區計數的詳細資訊，請參閱事件中樞的常見問題：我需要多少個磁碟分割？ 針對使用 IoT 中樞的 TSI 環境，通常大部分的 IoT 中樞只需要4個磁碟分割。 無論您是要為 TSI 環境建立新的中樞，還是使用現有的集線器，都需要計算每個分割區的內嵌速率，以判斷它是否在預覽限制內。 TSI preview 目前有**每個分割**區限制為 0.5 MB/秒。 使用下列範例做為參考，如果您是 IoT 中樞使用者，請注意下列 IoT 中樞特定的考慮。
+
+#### <a name="iot-hub-specific-considerations"></a>IoT 中樞特定的考慮
+
+在中建立裝置時 IoT 中樞它會指派給磁碟分割，而分割區指派則不會變更。 如此一來，IoT 中樞就能夠保證事件的排序。 不過，在某些情況下，這會影響 TSI 作為下游讀取器。 當使用相同的閘道裝置識別碼將來自多個裝置的訊息轉送到中樞時，它們會抵達相同的磁碟分割，因此可能會超過每個分割區的規模限制。 
+
+**影響**：如果單一分割區的快補速率持續超過預覽限制，則在超過 IoT 中樞資料保留期間之前，TSI 讀取器可能不會趕上。 這會導致資料遺失。
+
+我們的建議如下： 
+
+* 在部署您的解決方案之前，計算每個環境和每個分割區的內嵌速率
+* 確定您的 IoT 中樞裝置（也就是磁碟分割）已負載平衡，以達到最大的擴充可能性
+
+> [!WARNING]
+> 針對使用 IoT 中樞作為事件來源的環境，使用使用中的中樞裝置數目來計算內建速率，以確保速率低於預覽中每個分割區的 0.5 MBps 限制。
+
+  ![IoT 中樞分割區圖表](media/concepts-ingress-overview/iot-hub-partiton-diagram.png)
+
+如需輸送量單位和資料分割的詳細資訊，請參閱下列連結：
 
 * [IoT 中樞規模](https://docs.microsoft.com/azure/iot-hub/iot-hub-scaling)
 * [事件中樞規模](https://docs.microsoft.com/azure/event-hubs/event-hubs-scalability#throughput-units)
@@ -88,7 +134,7 @@ ms.locfileid: "75861399"
 時間序列深入解析預覽分割和索引資料，以獲得最佳查詢效能。 資料會在索引後變成可供查詢。 正在內嵌的資料量可能會影響此可用性。
 
 > [!IMPORTANT]
-> 即將推出的正式運作（GA）版本的時間序列深入解析會在從事件來源讀取後的60秒內提供資料。 在預覽期間，您可能會經歷較長的時間，才能使用資料。 如果您遇到超過60秒的嚴重延遲，請透過 Azure 入口網站提交支援票證。
+> 在預覽期間，您可能會遇到最多60秒的時間，資料才會變成可用。 如果您遇到超過60秒的嚴重延遲，請透過 Azure 入口網站提交支援票證。
 
 ## <a name="azure-storage"></a>Azure 儲存體
 
@@ -106,25 +152,25 @@ ms.locfileid: "75861399"
 
 在公開預覽期間，資料會無限期地儲存在您的 Azure 儲存體帳戶中。
 
-### <a name="writing-and-editing-time-series-insights-blobs"></a>寫入和編輯時間序列深入解析 Blob
+#### <a name="writing-and-editing-time-series-insights-blobs"></a>寫入和編輯時間序列深入解析 Blob
 
 若要確保查詢效能和資料可用性，請勿編輯或刪除時間序列深入解析 Preview 所建立的任何 blob。
 
-### <a name="accessing-and-exporting-data-from-time-series-insights-preview"></a>從時間序列深入解析預覽存取和匯出資料
+#### <a name="accessing-and-exporting-data-from-time-series-insights-preview"></a>從時間序列深入解析預覽存取和匯出資料
 
 您可能想要存取在時間序列深入解析預覽瀏覽器中查看的資料，以便與其他服務搭配使用。 例如，您可以使用您的資料在 Power BI 中建立報表，或使用 Azure Machine Learning Studio 將機器學習模型定型。 或者，您可以使用您的資料在 Jupyter 筆記本中轉換、視覺化和模型化。
 
 您可以透過三種一般方式存取資料：
 
 * 透過時間序列深入解析預覽總管。 您可以從 [explorer] 將資料匯出成 CSV 檔案。 如需詳細資訊，請參閱[時間序列深入解析 Preview explorer](./time-series-insights-update-explorer.md)。
-* 從時間序列深入解析預覽 API。 您可以在 `/getRecorded`連接 API 端點。 若要深入瞭解此 API，請參閱[時間序列查詢](./time-series-insights-update-tsq.md)。
+* 使用取得事件查詢從時間序列深入解析預覽 API。 若要深入瞭解此 API，請參閱[時間序列查詢](./time-series-insights-update-tsq.md)。
 * 直接從 Azure 儲存體帳戶。 您需要您用來存取時間序列深入解析預覽資料的任何帳戶的讀取存取權。 如需詳細資訊，請參閱[管理儲存體帳戶資源的存取權](../storage/blobs/storage-manage-access-to-resources.md)。
 
-### <a name="data-deletion"></a>刪除資料
+#### <a name="data-deletion"></a>刪除資料
 
 請勿刪除您的時間序列深入解析預覽檔案。 僅在時間序列深入解析 Preview 內管理相關資料。
 
-## <a name="parquet-file-format-and-folder-structure"></a>Parquet 檔案格式和資料夾結構
+### <a name="parquet-file-format-and-folder-structure"></a>Parquet 檔案格式和資料夾結構
 
 Parquet 是開放原始碼的單欄式檔案格式，專為有效率的儲存和效能所設計。 基於這些理由，時間序列深入解析 Preview 會使用 Parquet。 它會依時間序列識別碼分割資料，以獲得大規模的查詢效能。  
 
@@ -157,6 +203,6 @@ Parquet 是開放原始碼的單欄式檔案格式，專為有效率的儲存和
 
 ## <a name="next-steps"></a>後續步驟
 
-- 閱讀[Azure 時間序列深入解析預覽儲存體和](./time-series-insights-update-storage-ingress.md)輸入。
+- 閱讀[如何塑造 JSON 以進行輸入和查詢](./time-series-insights-update-how-to-shape-events.md)。
 
 - 深入瞭解新的[資料模型](./time-series-insights-update-tsm.md)。

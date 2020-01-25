@@ -15,12 +15,12 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 910317201275ba1598ed3e4d89815542b88fb108
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 5238f8ca9258e4f7907d9d9755b7252e60f40de8
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75719965"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711578"
 ---
 # <a name="how-provisioning-works"></a>佈建運作方式
 
@@ -29,13 +29,13 @@ ms.locfileid: "75719965"
 Azure AD 布建**服務**會將使用者布建至 SaaS 應用程式和其他系統，方法是連接到系統，以進行應用程式廠商所提供的跨網域身分識別管理（SCIM）2.0 使用者管理 API 端點。 此 SCIM 端點可讓 Azure AD 以程式設計方式建立、更新和移除使用者。 對於選取的應用程式，布建服務也可以建立、更新和移除其他身分識別相關物件，例如群組和角色。 用來在 Azure AD 和應用程式之間布建的通道會使用 HTTPS SSL 加密進行加密。
 
 
-![Azure AD 布建服務](./media/user-provisioning/provisioning0.PNG)
+![Azure AD 布建服務](media/how-provisioning-works/provisioning0.PNG)
 *圖1： Azure AD*布建服務
 
-![輸出使用者布建工作流程](./media/user-provisioning/provisioning1.PNG)
+![輸出使用者布建工作流程](media/how-provisioning-works/provisioning1.PNG)
 *圖2：從 Azure AD 到熱門 SaaS 應用程式的「輸出」使用者布建工作流程*
 
-![輸入使用者布建工作流程](./media/user-provisioning/provisioning2.PNG)
+![輸入使用者布建工作流程](media/how-provisioning-works/provisioning2.PNG)
 *圖3：從熱門人力資本管理（HCM）應用程式到 Azure Active Directory 和 Windows Server 的「輸入」使用者布建工作流程 Active Directory*
 
 ## <a name="provisioning-using-scim-20"></a>使用 SCIM 2.0 進行布建
@@ -73,11 +73,11 @@ Azure AD 使用者物件和每個 SaaS 應用程式的使用者物件之間，�
 
   * 動態群組可能會影響從 Azure AD 到 SaaS 應用程式的端對端布建效能。
 
-  * 在 SaaS 應用程式中布建或取消布建動態群組使用者的速度，取決於動態群組可評估成員資格變更的速度。 如需如何檢查動態群組之處理狀態的詳細資訊，請參閱[檢查成員資格規則的處理狀態](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule)。
+  * 在 SaaS 應用程式中布建或取消布建動態群組使用者的速度，取決於動態群組可評估成員資格變更的速度。 如需如何檢查動態群組之處理狀態的詳細資訊，請參閱[檢查成員資格規則的處理狀態](../users-groups-roles/groups-create-rule.md)。
 
   * 當使用者失去動態群組的成員資格時，它會被視為取消布建事件。 建立動態群組的規則時，請考慮這種情況。
 
-* **嵌套的群組。** Azure AD 的使用者布建服務無法讀取或布建嵌套群組中的使用者。 此服務只能讀取和布建已明確指派群組之直屬成員的使用者。 「以群組為基礎的應用程式指派」的限制也會影響單一登入（請參閱[使用群組來管理 SaaS 應用程式的存取權](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-saasapps)）。 相反地，請直接在包含需要布建之使用者的群組[中，以](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)其他方式指派或範圍。
+* **嵌套的群組。** Azure AD 的使用者布建服務無法讀取或布建嵌套群組中的使用者。 此服務只能讀取和布建已明確指派群組之直屬成員的使用者。 「以群組為基礎的應用程式指派」的限制也會影響單一登入（請參閱[使用群組來管理 SaaS 應用程式的存取權](../users-groups-roles/groups-saasapps.md)）。 相反地，請直接在包含需要布建之使用者的群組[中，以](define-conditional-rules-for-provisioning-user-accounts.md)其他方式指派或範圍。
 
 ### <a name="attribute-based-scoping"></a>以屬性為基礎的範圍 
 
@@ -85,7 +85,7 @@ Azure AD 使用者物件和每個 SaaS 應用程式的使用者物件之間，�
 
 ### <a name="b2b-guest-users"></a>B2B （來賓）使用者
 
-您可以使用 Azure AD 的使用者布建服務，在 Azure AD SaaS 應用程式中布建 B2B （或來賓）使用者。 不過，若要讓 B2B 使用者使用 Azure AD 登入 SaaS 應用程式，SaaS 應用程式必須以特定方式設定其 SAML 型單一登入功能。 若想進一步了解如何設定 SaaS 應用程式以支援 B2B 使用者的登入，請參閱[設定適用於 B2B 共同作業的 SaaS 應用程式]( https://docs.microsoft.com/azure/active-directory/b2b/configure-saas-apps)。
+您可以使用 Azure AD 的使用者布建服務，在 Azure AD SaaS 應用程式中布建 B2B （或來賓）使用者。 不過，若要讓 B2B 使用者使用 Azure AD 登入 SaaS 應用程式，SaaS 應用程式必須以特定方式設定其 SAML 型單一登入功能。 若想進一步了解如何設定 SaaS 應用程式以支援 B2B 使用者的登入，請參閱[設定適用於 B2B 共同作業的 SaaS 應用程式](../b2b/configure-saas-apps.md)。
 
 ## <a name="provisioning-cycles-initial-and-incremental"></a>布建週期：初始和增量
 
@@ -160,7 +160,7 @@ Azure AD 使用者物件和每個 SaaS 應用程式的使用者物件之間，�
 
 在隔離時，增量迴圈的頻率會逐漸縮減為每天一次。
 
-當所有違規的錯誤都固定並啟動下一個同步處理週期之後，布建作業就會結束隔離。 如果佈建作業處於隔離狀態超過四週，系統就會將它停用。 在這裡深入瞭解[隔離狀態。](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)
+當所有違規的錯誤都固定並啟動下一個同步處理週期之後，布建作業就會結束隔離。 如果佈建作業處於隔離狀態超過四週，系統就會將它停用。 在這裡深入瞭解[隔離狀態。](application-provisioning-quarantine-status.md)
 
 ### <a name="how-long-provisioning-takes"></a>佈建時間長短
 
@@ -184,7 +184,7 @@ Azure AD 使用者物件和每個 SaaS 應用程式的使用者物件之間，�
 
 如果發生上述四個事件的其中一個，而目標應用程式不支援虛刪除，則布建服務會傳送刪除要求，以從應用程式永久刪除使用者。 
 
-在 Azure AD 中刪除使用者後的30天后，就會從租使用者中永久刪除它們。 此時，布建服務會傳送刪除要求，以永久刪除應用程式中的使用者。 在30天的時間範圍內，您可以隨時[手動刪除使用者]( https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-restore)，這會將刪除要求傳送至應用程式。
+在 Azure AD 中刪除使用者後的30天后，就會從租使用者中永久刪除它們。 此時，布建服務會傳送刪除要求，以永久刪除應用程式中的使用者。 在30天的時間範圍內，您可以隨時[手動刪除使用者](../fundamentals/active-directory-users-restore.md)，這會將刪除要求傳送至應用程式。
 
 如果您在屬性對應中看到屬性 IsSoftDeleted，則會使用它來判斷使用者的狀態，以及是否要傳送具有 active = false 的更新要求，以虛刪除使用者。 
 

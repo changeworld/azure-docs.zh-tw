@@ -8,12 +8,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 12/23/2019
 ms.reviewer: ''
-ms.openlocfilehash: f93ab61fcba53ebf39adf8ad56137f4a1df7d5fd
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 82297850bf6d03215963a1f81dda166550f2b0d5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615035"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715189"
 ---
 # <a name="azure-sql-database-security-best-practices-playbook"></a>Azure SQL Database 安全性最佳做法腳本
 
@@ -339,7 +339,7 @@ SQL 驗證是指使用使用者名稱和密碼連接到 Azure SQL Database 時�
   - [控制和授與資料庫存取權給 SQL Database 和 SQL 資料倉儲](sql-database-manage-logins.md)
   - [應用程式開發人員職責的引擎分離](https://docs.microsoft.com/previous-versions/sql/sql-server-2008/cc974525(v=sql.100)) 
   - [SQL Server 2014 中的職責分離](https://www.microsoft.com/download/details.aspx?id=39269)
-  - [在 SQL Server 中簽署預存程序](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server)
+  - [在 SQL Server 中簽署預存程式](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server)
 
 - 針對 Azure 資源管理：
   - [Azure 的內建角色](../role-based-access-control/built-in-roles.md) 
@@ -462,7 +462,7 @@ SQL 驗證是指使用使用者名稱和密碼連接到 Azure SQL Database 時�
 - 使用非對稱金鑰/憑證（不是密碼）保護對稱金鑰，以避免使用3DES。 
 
 - 使用資料格層級加密透過匯出/匯入（bacpac 檔案）來遷移資料庫時，請務必小心。 
-  - 請參閱本文中的 [使用資料格層級加密的建議 Azure SQL Database](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/) ，瞭解如何避免在遷移資料時遺失金鑰，以及其他最佳作法指引。
+  - 如需如何避免在遷移資料時遺失金鑰的建議事項，請參閱在[Azure SQL Database 中使用資料格層級加密的建議](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/)一文，以及其他最佳作法指引。
 
 使用 Always Encrypted 時，請記住，Always Encrypted 主要是用來保護從 Azure SQL Database 的高許可權使用者（雲端操作員、Dba）使用的敏感性資料，請參閱[保護使用中的機密資料免于受到高許可權授權的使用者](#protect-sensitive-data-in-use-from-high-privileged-unauthorized-users)。 使用 Always Encrypted 保護來自應用程式使用者的資料時，請注意下列挑戰：
 
@@ -783,7 +783,7 @@ SQL 驗證是指使用使用者名稱和密碼連接到 Azure SQL Database 時�
 
 ## <a name="security-aspects-of-business-continuity-and-availability"></a>商務持續性和可用性的安全性層面
 
-大部分的安全性標準都會以營運持續性的角度來處理資料可用性，並藉由執行冗余和損毀修復功能來避免單一失敗點。 針對嚴重損壞狀況，保留資料和記錄檔備份是常見的作法。下節提供內建 Azure 功能的高階總覽，以及可設定以符合特定需求的其他選項： 
+大部分的安全性標準都會以營運持續性的角度來處理資料可用性，並藉由執行冗余和損毀修復功能來避免單一失敗點。 針對嚴重損壞狀況，保留資料和記錄檔備份是常見的作法。 下節提供內建 Azure 功能的高階總覽，以及可設定以符合特定需求的其他選項： 
 
 - Azure 提供內建的高可用性：[高可用性和 Azure SQL Database](sql-database-high-availability.md) 
 

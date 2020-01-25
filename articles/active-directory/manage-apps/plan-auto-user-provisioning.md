@@ -12,12 +12,12 @@ ms.date: 10/17/2019
 ms.author: martinco
 ms.reviewer: arvindha
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1e8128066794932abaca4290a5c896354522544
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 44ed85ac8171484cccf39c0b048a5c7a026a657d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732445"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711586"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>規劃自動使用者佈建部署
 
@@ -25,7 +25,7 @@ ms.locfileid: "75732445"
 
 Azure Active Directory （Azure AD）自動使用者布建會藉由在 SaaS 應用程式中，根據商務規則安全地自動建立、維護和移除使用者身分識別，來簡化此流程。 這項自動化可讓您在擴充其雲端式解決方案的相依性時，有效地在僅限雲端和混合式環境上調整身分識別管理系統。
 
-請參閱[使用 Azure Active Directory 來自動化 SaaS 應用程式的使用者](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)布建和解除布建，以進一步瞭解功能。
+請參閱[使用 Azure Active Directory 來自動化 SaaS 應用程式的使用者](user-provisioning.md)布建和解除布建，以進一步瞭解功能。
 
 ## <a name="learn"></a>學習
 
@@ -59,7 +59,7 @@ Azure AD 使用 [應用程式庫] 功能表中提供的範本，提供任何應�
 
 * 單一登入（SSO）-使用者能夠登入一次，並存取所有啟用 SSO 的應用程式。 在使用者布建的內容中，SSO 是使用者具有單一帳戶來存取所有使用自動使用者布建之系統的結果。
 
-* 來源系統-Azure AD 從中布建之使用者的儲存機制。 Azure AD 是適用于大部分預先整合布建連接器的來源系統。 不過，某些雲端應用程式（例如 SAP、Workday 和 AWS）有一些例外狀況。 例如，請參閱[從 Workday 至 AD 的使用者](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial)布建。
+* 來源系統-Azure AD 從中布建之使用者的儲存機制。 Azure AD 是適用于大部分預先整合布建連接器的來源系統。 不過，某些雲端應用程式（例如 SAP、Workday 和 AWS）有一些例外狀況。 例如，請參閱[從 Workday 至 AD 的使用者](../saas-apps/workday-inbound-tutorial.md)布建。
 
 * 目標系統-Azure AD 布建到的使用者存放庫。 目標系統通常是一個 SaaS 應用程式，例如 ServiceNow、Zscaler 和時差。 目標系統也可以是內部部署系統（例如 AD）。
 
@@ -72,9 +72,9 @@ Azure AD 使用 [應用程式庫] 功能表中提供的範本，提供任何應�
 | 隨選網路研討會| [使用 Azure AD 管理您的企業應用程式](https://info.microsoft.com/CO-AZUREPLAT-WBNR-FY18-03Mar-06-ManageYourEnterpriseApplicationsOption1-MCW0004438_02OnDemandRegistration-ForminBody.html)<br>瞭解 Azure AD 如何協助您達成企業 SaaS 應用程式的 SSO，以及控制存取的最佳做法。 |
 | 影片| [Azure Active Directory 中的使用者布建是什麼？](https://youtu.be/_ZjARPpI6NI) <br> [如何在 Active Directory 中部署使用者布建？](https://youtu.be/pKzyts6kfrw) <br> [整合 Salesforce 與 Azure AD：如何自動化使用者布建](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
 | 線上課程| 線上 SkillUp：[管理](https://skillup.online/courses/course-v1:Microsoft+AZ-100.5+2018_T3/about)身分識別 <br> 瞭解如何整合 Azure AD 與許多 SaaS 應用程式，以及保護使用者存取這些應用程式的安全。 |
-| 書籍| [使用 Web 應用程式 Azure Active Directory 的新式驗證（開發人員參考）第1版](https://www.amazon.com/Authentication-Directory-Applications-Developer-Reference/dp/0735696942/ref=sr_1_fkmr0_1?keywords=Azure+multifactor+authentication&qid=1550168894&s=gateway&sr=8-1-fkmr0)。  <br> 這是建立這些新環境 Active Directory 驗證解決方案的權威深入指南。 |
-| 教學課程| 請參閱[教學課程清單，以瞭解如何整合 SaaS 應用程式與 Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)。 |
-| 常見問題集| 自動化使用者布[建的常見問題](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) |
+| 通訊錄| [使用 Web 應用程式 Azure Active Directory 的新式驗證（開發人員參考）第1版](https://www.amazon.com/Authentication-Directory-Applications-Developer-Reference/dp/0735696942/ref=sr_1_fkmr0_1?keywords=Azure+multifactor+authentication&qid=1550168894&s=gateway&sr=8-1-fkmr0)。  <br> 這是建立這些新環境 Active Directory 驗證解決方案的權威深入指南。 |
+| 教學課程| 請參閱[教學課程清單，以瞭解如何整合 SaaS 應用程式與 Azure AD](../saas-apps/tutorial-list.md)。 |
+| 常見問題集| 自動化使用者布[建的常見問題](user-provisioning.md) |
 
 ### <a name="solution-architectures"></a>解決方案架構
 
@@ -92,9 +92,9 @@ Azure AD 布建服務會藉由連接到每個應用程式廠商所提供的使�
 
 1. **Azure AD Connect 代理程式**會執行從本機 AD 到 Azure AD 的排程同步處理身分識別（使用者和群組）。
 
-1. **Azure AD**布建服務會開始對來源系統和目標系統進行[初始迴圈](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。 
+1. **Azure AD**布建服務會開始對來源系統和目標系統進行[初始迴圈](user-provisioning.md)。 
 
-1. **Azure AD**布建服務會向來源系統查詢自初始週期後變更的任何使用者和群組，並在[增量迴圈](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)中推送變更。
+1. **Azure AD**布建服務會向來源系統查詢自初始週期後變更的任何使用者和群組，並在[增量迴圈](user-provisioning.md)中推送變更。
 
 #### <a name="automatic-user-provisioning-for-cloud-only-enterprises"></a>為僅限雲端的企業自動布建使用者
 
@@ -106,9 +106,9 @@ Azure AD 布建服務會藉由連接到每個應用程式廠商所提供的使�
 
 1. 使用者/群組會建立在 Azure AD 中。
 
-1. **Azure AD**布建服務會開始對來源系統和目標系統進行[初始迴圈](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。 
+1. **Azure AD**布建服務會開始對來源系統和目標系統進行[初始迴圈](user-provisioning.md)。 
 
-1. **Azure AD**布建服務會在來源系統中查詢初始迴圈後所更新的任何使用者和群組，並執行任何[增量迴圈](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。
+1. **Azure AD**布建服務會在來源系統中查詢初始迴圈後所更新的任何使用者和群組，並執行任何[增量迴圈](user-provisioning.md)。
 
 #### <a name="automatic-user-provisioning-for-cloud-hr-applications"></a>雲端 HR 應用程式的自動使用者布建 
 
@@ -138,7 +138,7 @@ Azure AD 布建服務會藉由連接到每個應用程式廠商所提供的使�
 
 ### <a name="plan-a-pilot"></a>規劃試驗
 
-我們建議您在測試環境中使用自動使用者布建的初始設定，然後再將其調整為生產中的所有使用者。 請參閱執行試驗的[最佳做法](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans#best-practices-for-a-pilot)。
+我們建議您在測試環境中使用自動使用者布建的初始設定，然後再將其調整為生產中的所有使用者。 請參閱執行試驗的[最佳做法](../fundamentals/active-directory-deployment-plans.md#best-practices-for-a-pilot)。
 
 #### <a name="best-practices-for-a-pilot"></a>試驗的最佳做法  
 
@@ -146,29 +146,29 @@ Azure AD 布建服務會藉由連接到每個應用程式廠商所提供的使�
 
 在您的第一波，以 IT、可用性及其他可測試並提供意見反應的適當使用者為目標。 請使用此意見反應進一步開發您傳送給使用者的通訊和指示，並深入瞭解您的支援人員可能會看到的問題類型。
 
-藉由增加目標群組的範圍，將首度發行擴大至較大的使用者群組。 這可以透過[動態群組成員資格](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership)來完成，或手動將使用者新增至目標群組。
+藉由增加目標群組的範圍，將首度發行擴大至較大的使用者群組。 這可以透過[動態群組成員資格](../users-groups-roles/groups-dynamic-membership.md)來完成，或手動將使用者新增至目標群組。
 
 ## <a name="plan-application-connections-and-administration"></a>規劃應用程式連接和系統管理
 
-使用 Azure AD 入口網站來查看和管理支援布建的所有應用程式。 請參閱[在入口網站中尋找您的應用程式](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal)。
+使用 Azure AD 入口網站來查看和管理支援布建的所有應用程式。 請參閱[在入口網站中尋找您的應用程式](configure-automatic-user-provisioning-portal.md)。
 
 ### <a name="determine-the-type-of-connector-to-use"></a>決定要使用的連接器類型
 
-啟用及設定自動佈建所需的實際步驟會因應用程式而有所不同。 如果您想要自動布建的應用程式列在[Azure AD SaaS 應用程式庫](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)中，則您應該選取[應用程式特定的整合教學](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)課程，以設定其預先整合的使用者布建連接器。
+啟用及設定自動佈建所需的實際步驟會因應用程式而有所不同。 如果您想要自動布建的應用程式列在[Azure AD SaaS 應用程式庫](../saas-apps/tutorial-list.md)中，則您應該選取[應用程式特定的整合教學](../saas-apps/tutorial-list.md)課程，以設定其預先整合的使用者布建連接器。
 
 如果沒有，請遵循下列步驟：
 
-1. [建立](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing)預先整合的使用者布建連接器的要求。 我們的團隊會與您和應用程式開發人員合作，將您的應用程式上架到我們的平臺（如果支援 SCIM）。
+1. [建立](../develop/howto-app-gallery-listing.md)預先整合的使用者布建連接器的要求。 我們的團隊會與您和應用程式開發人員合作，將您的應用程式上架到我們的平臺（如果支援 SCIM）。
 
-1. 使用[BYOA SCIM](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning)應用程式的一般使用者布建支援。 這是 Azure AD 在沒有預先整合的布建連接器的情況下，將使用者布建到應用程式的必要條件。
+1. 使用[BYOA SCIM](use-scim-to-provision-users-and-groups.md)應用程式的一般使用者布建支援。 這是 Azure AD 在沒有預先整合的布建連接器的情況下，將使用者布建到應用程式的必要條件。
 
-1. 如果應用程式能夠利用 BYOA SCIM 連接器，請參閱[BYOA SCIM 整合教學](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning)課程，以設定應用程式的 BYOA SCIM 連接器。
+1. 如果應用程式能夠利用 BYOA SCIM 連接器，請參閱[BYOA SCIM 整合教學](use-scim-to-provision-users-and-groups.md)課程，以設定應用程式的 BYOA SCIM 連接器。
 
-如需詳細資訊，請參閱[我可以將哪些應用程式和系統與 Azure AD 自動使用者](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)布建搭配使用？
+如需詳細資訊，請參閱[我可以將哪些應用程式和系統與 Azure AD 自動使用者](user-provisioning.md)布建搭配使用？
 
 ### <a name="collect-information-to-authorize-application-access"></a>收集資訊以授權應用程式存取
 
-設定自動使用者布建是每個應用程式的進程。 針對每個應用程式，您必須提供[系統管理員認證](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal)，才能連接到目標系統的使用者管理端點。
+設定自動使用者布建是每個應用程式的進程。 針對每個應用程式，您必須提供[系統管理員認證](configure-automatic-user-provisioning-portal.md)，才能連接到目標系統的使用者管理端點。
 
 下圖顯示一個所需的系統管理員認證版本：
 
@@ -198,17 +198,17 @@ Azure AD 布建服務會藉由連接到每個應用程式廠商所提供的使�
 
 在執行自動使用者布建之前，您必須先決定要提供給應用程式的使用者和群組。
 
-* 使用[範圍篩選器](https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters)來定義以屬性為基礎的規則，以決定要將哪些使用者布建到應用程式。
+* 使用[範圍篩選器](define-conditional-rules-for-provisioning-user-accounts.md)來定義以屬性為基礎的規則，以決定要將哪些使用者布建到應用程式。
 
-* 接下來，視需要使用[使用者和群組指派](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)來進行額外的篩選。
+* 接下來，視需要使用[使用者和群組指派](assign-user-or-group-access-portal.md)來進行額外的篩選。
 
 ### <a name="define-user-and-group-attribute-mapping"></a>定義使用者和群組屬性對應
 
-若要執行自動使用者布建，您必須定義應用程式所需的使用者和群組屬性。 Azure AD 使用者物件和每個 SaaS 應用程式的使用者物件之間，有一組預先設定的屬性和[屬性](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal)對應。 並非所有 SaaS 應用程式都會啟用群組屬性。
+若要執行自動使用者布建，您必須定義應用程式所需的使用者和群組屬性。 Azure AD 使用者物件和每個 SaaS 應用程式的使用者物件之間，有一組預先設定的屬性和[屬性](configure-automatic-user-provisioning-portal.md)對應。 並非所有 SaaS 應用程式都會啟用群組屬性。
 
-Azure AD 支援直接屬性與屬性的對應、提供常數值，或[撰寫屬性對應的運算式](https://docs.microsoft.com/azure/active-directory/active-directory-saas-writing-expressions-for-attribute-mappings)。 這項彈性可讓您更精確地控制將會在目標系統的屬性中填入哪些內容。 您可以使用[MICROSOFT GRAPH API](https://docs.microsoft.com/azure/active-directory/manage-apps/export-import-provisioning-configuration)和 Graph Explorer，將您的使用者布建屬性對應和架構匯出至 JSON 檔案，並將其匯入回 Azure AD。
+Azure AD 支援直接屬性與屬性的對應、提供常數值，或[撰寫屬性對應的運算式](functions-for-customizing-application-data.md)。 這項彈性可讓您更精確地控制將會在目標系統的屬性中填入哪些內容。 您可以使用[MICROSOFT GRAPH API](export-import-provisioning-configuration.md)和 Graph Explorer，將您的使用者布建屬性對應和架構匯出至 JSON 檔案，並將其匯入回 Azure AD。
 
-如需詳細資訊，請參閱[在 Azure Active Directory 中自訂 SaaS 應用程式的使用者布建屬性對應](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)。
+如需詳細資訊，請參閱[在 Azure Active Directory 中自訂 SaaS 應用程式的使用者布建屬性對應](customize-application-attributes.md)。
 
 ### <a name="special-considerations-for-user-provisioning"></a>使用者布建的特殊考慮
 
@@ -216,9 +216,9 @@ Azure AD 支援直接屬性與屬性的對應、提供常數值，或[撰寫屬�
 
 * 請確定用來對應來源和目標應用程式之間使用者/群組物件的屬性是可復原的。 如果屬性變更（例如，使用者移至公司的不同部分），則不應讓使用者/群組不正確地布建。
 
-* 應用程式可能會有特定的限制和（或）需求，讓使用者布建正常運作。 例如，時差會截斷某些屬性的值。 請參閱每個應用程式特定的[自動使用者](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)布建教學課程。
+* 應用程式可能會有特定的限制和（或）需求，讓使用者布建正常運作。 例如，時差會截斷某些屬性的值。 請參閱每個應用程式特定的[自動使用者](../saas-apps/tutorial-list.md)布建教學課程。
 
-* 確認來源與目標系統之間的架構一致性。 常見的問題包括 UPN 或郵件不相符等屬性。 例如，Azure AD 中的 UPN 設定為 *john_smith@contoso.com* ，而在應用程式中，則 *jsmith@contoso.com* 。 如需詳細資訊，請參閱[使用者和群組架構參考](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)。
+* 確認來源與目標系統之間的架構一致性。 常見的問題包括 UPN 或郵件不相符等屬性。 例如，Azure AD 中的 UPN 設定為 *john_smith@contoso.com* ，而在應用程式中，則 *jsmith@contoso.com* 。 如需詳細資訊，請參閱[使用者和群組架構參考](use-scim-to-provision-users-and-groups.md)。
 
 ## <a name="plan-testing-and-security"></a>規劃測試和安全性
 
@@ -233,7 +233,7 @@ Azure AD 支援直接屬性與屬性的對應、提供常數值，或[撰寫屬�
 | 使用者已新增至指派給目標系統的群組 | 使用者物件是在目標系統中布建。 <br>使用者可以登入目標系統，並執行所需的動作。 |
 | 已將使用者從指派給目標系統的群組移除 | 在目標系統中取消布建使用者物件。<br>使用者無法登入目標系統。 |
 | 任何方法都會更新 Azure AD 中的使用者資訊 | 更新後的使用者屬性在目標系統中會反映在增量迴圈之後 |
-| 使用者超出範圍 | 使用者物件已停用或刪除。 <br>注意：會覆寫此行為以進行[Workday](https://docs.microsoft.com/azure/active-directory/manage-apps/skip-out-of-scope-deletions)布建。 |
+| 使用者超出範圍 | 使用者物件已停用或刪除。 <br>注意：會覆寫此行為以進行[Workday](skip-out-of-scope-deletions.md)布建。 |
 
 ### <a name="plan-security"></a>規劃安全性
 
@@ -243,7 +243,7 @@ Azure AD 支援直接屬性與屬性的對應、提供常數值，或[撰寫屬�
 
 如果自動使用者布建的執行無法在生產環境中如預期般運作，下列的復原步驟可協助您還原至先前已知的良好狀態：
 
-1. 請參閱布建[摘要報告](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting)和布建[記錄](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting)，以判斷受影響的使用者和/或群組上發生了哪些不正確的作業。
+1. 請參閱布建[摘要報告](check-status-user-account-provisioning.md)和布建[記錄](check-status-user-account-provisioning.md#provisioning-logs-preview)，以判斷受影響的使用者和/或群組上發生了哪些不正確的作業。
 
 1. 使用布建審核記錄來判斷受影響的使用者和/或群組的上次已知良好狀態。 另請參閱來源系統（Azure AD 或 AD）。
 
@@ -257,13 +257,13 @@ Azure AD 支援直接屬性與屬性的對應、提供常數值，或[撰寫屬�
 
 當 Azure AD 布建服務第一次執行時，針對來源系統和目標系統的初始週期會針對每個目標系統建立所有使用者物件的快照集。
 
-啟用應用程式的自動布建時，初始週期可能需要20分鐘到數小時的時間。 持續時間取決於 Azure AD 目錄大小和布建範圍中的使用者數目。 瞭解[如何改善](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish)布建效能。
+啟用應用程式的自動布建時，初始週期可能需要20分鐘到數小時的時間。 持續時間取決於 Azure AD 目錄大小和布建範圍中的使用者數目。 瞭解[如何改善](application-provisioning-when-will-provisioning-finish.md)布建效能。
 
 布建服務會在初始迴圈後儲存這兩個系統的狀態，以改善後續增量迴圈的效能。
 
 ### <a name="configure-automatic-user-provisioning"></a>設定使用者自動佈建
 
-使用[Azure 入口網站](https://portal.azure.com/)來管理自動使用者帳戶的布建和解除布建，以用於支援它的應用程式。 依照[如何? 設定自動布建至應用程式](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)中的步驟進行：
+使用[Azure 入口網站](https://portal.azure.com/)來管理自動使用者帳戶的布建和解除布建，以用於支援它的應用程式。 依照[如何? 設定自動布建至應用程式](user-provisioning.md)中的步驟進行：
 
 您也可以使用 [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)來設定和管理 Azure AD 使用者佈建服務。
 
@@ -273,7 +273,7 @@ Azure AD 支援直接屬性與屬性的對應、提供常數值，或[撰寫屬�
 
 ### <a name="monitor-user-provisioning-operation-health"></a>監視使用者布建操作健全狀況
 
-在成功[初始迴圈](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)之後，Azure AD 布建服務會無限期地以每個應用程式的特定間隔執行累加式更新，直到發生下列其中一個事件為止：
+在成功[初始迴圈](user-provisioning.md)之後，Azure AD 布建服務會無限期地以每個應用程式的特定間隔執行累加式更新，直到發生下列其中一個事件為止：
 
 * 此服務會以手動方式停止，並使用[Azure 入口網站](https://portal.azure.com/)或使用適當的[Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)命令來觸發新的初始迴圈。
 
@@ -281,15 +281,15 @@ Azure AD 支援直接屬性與屬性的對應、提供常數值，或[撰寫屬�
 
 * 布建程式會因為高錯誤率而進入隔離狀態，並在被自動停用後的四周內持續隔離。
 
-若要檢查這些事件，以及布建服務所執行的所有其他活動，請參閱 Azure AD 布建[記錄](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context)。
+若要檢查這些事件，以及布建服務所執行的所有其他活動，請參閱 Azure AD 布建[記錄](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)。
 
-若要瞭解布建週期所需的時間和監視布建作業的進度，您可以[檢查使用者](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)布建的狀態。
+若要瞭解布建週期所需的時間和監視布建作業的進度，您可以[檢查使用者](application-provisioning-when-will-provisioning-finish-specific-user.md)布建的狀態。
 
 ### <a name="gain-insights-from-reports"></a>從報表取得見解
 
-Azure AD 可以透過 audit 記錄和報告，為您組織的使用者布建使用量和操作健全狀況提供[額外的深入](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)解析。
+Azure AD 可以透過 audit 記錄和報告，為您組織的使用者布建使用量和操作健全狀況提供[額外的深入](application-provisioning-when-will-provisioning-finish-specific-user.md)解析。
 
-系統管理員應該檢查布建摘要報告，以監視布建作業的操作健全狀況。 布建服務所執行的所有活動都會記錄在 Azure AD audit 記錄檔中。 請參閱[教學課程：關於自動使用者帳戶布建的報告](https://docs.microsoft.com/azure/active-directory/manage-apps/check-status-user-account-provisioning)。
+系統管理員應該檢查布建摘要報告，以監視布建作業的操作健全狀況。 布建服務所執行的所有活動都會記錄在 Azure AD audit 記錄檔中。 請參閱[教學課程：關於自動使用者帳戶布建的報告](check-status-user-account-provisioning.md)。
 
 我們建議您以符合組織需求的步調來取得的擁有權，並使用這些報表。 Azure AD 會保留最多30天的審核資料。
 
@@ -297,27 +297,27 @@ Azure AD 可以透過 audit 記錄和報告，為您組織的使用者布建使�
 
 請參閱下列連結，以針對可能在布建期間開啟的任何問題進行疑難排解：
 
-* [設定 Azure AD 資源庫應用程式的使用者布建時發生問題](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem)
+* [設定 Azure AD 資源庫應用程式的使用者布建時發生問題](application-provisioning-config-problem.md)
 
-* [將內部部署 Active Directory 的屬性同步處理至 Azure AD 以布建至應用程式](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning-sync-attributes-for-mapping)
+* [將內部部署 Active Directory 的屬性同步處理至 Azure AD 以布建至應用程式](user-provisioning-sync-attributes-for-mapping.md)
 
-* [Azure AD 資源庫應用程式的使用者布建需要數小時或更長的時間](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish)
+* [Azure AD 資源庫應用程式的使用者布建需要數小時或更長的時間](application-provisioning-when-will-provisioning-finish.md)
 
-* [在設定 Azure Active Directory 資源庫應用程式之使用者佈建的情況下儲存系統管理員認證時發生問題](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem-storage-limit)
+* [在設定 Azure Active Directory 資源庫應用程式之使用者佈建的情況下儲存系統管理員認證時發生問題](application-provisioning-config-problem-storage-limit.md)
 
-* [未將任何使用者布建到 Azure AD 資源庫應用程式](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem-no-users-provisioned)
+* [未將任何使用者布建到 Azure AD 資源庫應用程式](application-provisioning-config-problem-no-users-provisioned.md)
 
-* [將一組錯誤的使用者布建到 Azure AD 資源庫應用程式](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem-wrong-users-provisioned)
+* [將一組錯誤的使用者布建到 Azure AD 資源庫應用程式](application-provisioning-config-problem-wrong-users-provisioned.md)
 
 ### <a name="helpful-documentation"></a>有用的檔
 
-* [撰寫屬性對應的運算式](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)
+* [撰寫屬性對應的運算式](functions-for-customizing-application-data.md)
 
 * [Azure AD 同步處理 API 概觀](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
 
-* [略過刪除超出範圍的使用者帳戶](https://docs.microsoft.com/azure/active-directory/manage-apps/skip-out-of-scope-deletions)
+* [略過刪除超出範圍的使用者帳戶](skip-out-of-scope-deletions.md)
 
-* [Azure AD Connect 布建代理程式：版本發行歷程記錄](https://docs.microsoft.com/azure/active-directory/manage-apps/provisioning-agent-release-version-history)
+* [Azure AD Connect 布建代理程式：版本發行歷程記錄](provisioning-agent-release-version-history.md)
 
 #### <a name="resources"></a>資源
 
@@ -328,8 +328,8 @@ Azure AD 可以透過 audit 記錄和報告，為您組織的使用者布建使�
 * [堆疊溢位 Azure AD 論壇](https://stackoverflow.com/questions/tagged/azure-active-directory)
 
 ## <a name="next-steps"></a>後續步驟
-* [設定自動使用者布建](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal)
+* [設定自動使用者布建](configure-automatic-user-provisioning-portal.md)
 
-* [使用 Microsoft Graph API 匯出或匯入您的布建設定](https://docs.microsoft.com/azure/active-directory/manage-apps/export-import-provisioning-configuration)
+* [使用 Microsoft Graph API 匯出或匯入您的布建設定](export-import-provisioning-configuration.md)
 
-* [在 Azure Active directory 中撰寫屬性對應的運算式](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)
+* [在 Azure Active directory 中撰寫屬性對應的運算式](functions-for-customizing-application-data.md)

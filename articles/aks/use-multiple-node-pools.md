@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/22/2020
 ms.author: mlearned
-ms.openlocfilehash: f9d00cff5d910d6bbbb4c436249283cca87b91e1
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 6ea1bce6c14d7266b5ce49b94e39d661bfc57717
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549099"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76713303"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service （AKS）中建立及管理叢集的多個節點集區
 
@@ -394,10 +394,10 @@ Kubernetes 排程器可以使用污點和容差來限制可以在節點上執行
 
 如需如何使用 advanced Kubernetes 排程功能的詳細資訊，請參閱[AKS 中 advanced 排程器功能的最佳做法][taints-tolerations]
 
-在此範例中，使用[kubectl 污點 node][kubectl-taint]命令，將污點套用至您的 GPU 型節點。 從上一個 `kubectl get nodes` 命令的輸出中，指定 GPU 節點的名稱。 污點會當做索引*鍵：值*和排程選項來套用。 下列範例會使用*sku = gpu*配對，並定義 pod，否則會具有*NoSchedule*功能：
+在此範例中，使用--node-污點命令，將污點套用至 GPU 節點。 從上一個 `kubectl get nodes` 命令的輸出中，指定 GPU 節點的名稱。 污點會當做索引*鍵：值*和排程選項來套用。 下列範例會使用*sku = gpu*配對，並定義 pod，否則會具有*NoSchedule*功能：
 
 ```console
-kubectl taint node aks-gpunodepool-28993262-vmss000000 sku=gpu:NoSchedule
+az aks nodepool --node-taints aks-gpunodepool-28993262-vmss000000 sku=gpu:NoSchedule
 ```
 
 下列基本範例 YAML 資訊清單會使用 toleration，以允許 Kubernetes 排程器在 GPU 型節點上執行 NGINX pod。 如需針對 MNIST 資料集執行 Tensorflow 作業的更適當但需要大量時間的範例，請參閱[在 AKS 上針對計算密集型工作負載使用 gpu][gpu-cluster]。

@@ -2,27 +2,27 @@
 title: Team Data Science Process 角色和工作
 description: 資料科學群組的主要元件、人員角色和相關工作的大綱。
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/12/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: bbc066f4b01a01a589849ad524b58a9b5d9dfae1
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: c1ed731943abf0efdd99ea54d2318fa402835e08
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260643"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720005"
 ---
 # <a name="team-data-science-process-roles-and-tasks"></a>Team Data Science Process 角色和工作
 
 Team 資料科學程式（TDSP）是由 Microsoft 開發的架構，可提供結構化的方法來有效率地建立預測性分析解決方案和智慧型應用程式。 本文概述資料科學小組在此程式上標準化的重要人員角色和相關工作。
 
-這篇簡介文章會連結教學課程，說明如何針對整個資料科學群組、資料科學小組和 TDSP 專案設定 TDSP 環境。 這些教學課程提供詳細的指引，說明如何使用 Azure DevOps Projects、Azure Repos 存放庫，以及 Azure Boards agile 規劃工具來控制存取、裝載和共用程式碼，以及管理小組工作。
+這篇簡介文章會連結到如何設定 TDSP 環境的教學課程。 這些教學課程提供使用 Azure DevOps Projects、Azure Repos 存放庫和 Azure Boards 的詳細指引。  其動機目標是透過模型化和部署，從概念中移出。
 
 教學課程會使用 Azure DevOps，因為這是在 Microsoft 執行 TDSP 的方式。 Azure DevOps 藉由整合以角色為基礎的安全性、工作專案管理和追蹤，以及程式碼裝載、共用和原始檔控制，來促進共同作業。 本教學課程也會使用 Azure[資料科學虛擬機器](https://aka.ms/dsvm)（DSVM）作為分析桌面，其中已預先設定數個熱門的資料科學工具，並與 Microsoft 軟體和 Azure 服務整合。 
 
@@ -46,7 +46,7 @@ Team 資料科學程式（TDSP）是由 Microsoft 開發的架構，可提供結
    
 3. **專案組長**：管理特定資料科學專案上個別資料科學家的每日活動。
    
-4. **專案個別參與者**：資料科學家、商務分析師、資料工程師、架構設計人員，以及執行資料科學專案的其他人。
+4. **Project 個別參與者**：資料科學家、商務分析師、資料工程師、架構設計人員，以及執行資料科學專案的其他人。
 
 > [!NOTE]
 > 根據企業的結構和大小而定，一個人可能扮演一個以上的角色，或一個以上的人可能會填滿一個角色。
@@ -116,7 +116,7 @@ Team 資料科學程式（TDSP）是由 Microsoft 開發的架構，可提供結
 工作流程步驟可分為三個活動：
 
 - 專案組長進行短期衝刺計畫
-- 資料科學家在分支上`git`開發成品以解決工作專案
+- 資料科學家會在 `git` 分支上開發成品，以解決工作專案
 - 專案負責人或其他小組成員執行程式碼審查，並將工作分支合併到主要分支
 
 如需專案執行工作流程的詳細指示，請參閱[資料科學專案的敏捷式開發](agile-development.md)。

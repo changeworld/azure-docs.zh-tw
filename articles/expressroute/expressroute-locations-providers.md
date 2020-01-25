@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: cherylmc
-ms.openlocfilehash: 57a066132cbc8812fac95862bd1b02a3fc59ff2f
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: cbddd912831247e30f2913414c6dfa13131dde99
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293890"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719852"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作夥伴和對等互連位置
 
@@ -142,7 +142,7 @@ ExpressRoute 位置（有時稱為「對等位置」或「符合我的位置」�
 
 ### <a name="national-cloud-environments"></a>國家雲端環境
 
-Azure 國家/地區雲端會彼此隔離，並從全球商業 Azure。 一個 Azure 雲端的 ExpressRoute 無法連線到其他人的 Azure 區域。
+Azure 國家/地區雲端彼此隔離，而不是全球商業 Azure。 一個 Azure 雲端的 ExpressRoute 無法連線到其他人的 Azure 區域。
 
 ### <a name="us-government-cloud"></a>美國政府雲端
 | **位置** | **位址** | **本機 Azure 區域**| **ER Direct** | **服務提供者** |

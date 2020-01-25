@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 7d341c7081fef7aee2c33b9a7080d60417ce410d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 0e6b87ff34d6555fda50518198f9ae3839aa56e6
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895188"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719087"
 ---
 # <a name="build-highly-available-applications-with-zone-redundant-storage-zrs"></a>建立具有區域冗余儲存體（ZRS）的高可用性應用程式
 
@@ -34,6 +34,7 @@ ZRS 目前支援標準的一般用途 v2、FileStorage 和 BlockBlobStorage 儲�
 - 西歐
 - 法國中部
 - 日本東部
+- 南非北部
 - 英國南部
 - 美國中部
 - 美國東部
@@ -88,7 +89,7 @@ Microsoft 會持續在其他 Azure 區域啟用 ZRS。 如需新區域的詳細�
 請記住下列即時移轉限制：
 
 - 雖然 Microsoft 會迅速處理您的即時移轉要求，但不保證移轉何時會完成。 如果您需要在特定日期之前將資料移轉至 ZRS，則 Microsoft 建議您改為執行手動移轉。 一般而言，您帳戶中的資料越多，移轉該資料所需的時間就越長。 
-- 只有針對使用 LRS 或 GRS 複寫的儲存體帳戶，才支援即時移轉。 如果您的帳戶使用 RA-GRS，則必須先將帳戶複寫類型變更為 LRS 或 GRS，再繼續進行操作。 這個中繼步驟會在移轉之前，先將 RA-GRS 所提供的次要唯讀端點移除。
+- 只有使用 LRS 複寫的儲存體帳戶才支援即時移轉。 如果您的帳戶使用 GRS 或 RA-GRS，您必須先將帳戶的複寫類型變更為 LRS，然後再繼續。 這個媒介步驟會移除 GRS/RA-GRS 所提供的次要端點。
 - 您的帳戶必須包含資料。
 - 您只能在相同的區域內移轉資料。 如果您想要將資料移轉至的 ZRS 帳戶位於和來源帳戶不同的區域中，則必須執行手動移轉。
 - 只有標準儲存體帳戶類型支援即時移轉。 進階儲存體帳戶必須以手動方式移轉。
@@ -130,9 +131,9 @@ Microsoft 會持續在其他 Azure 區域啟用 ZRS。 如需新區域的詳細�
 
 ZRS 僅支援一般用途 v2 帳戶，因此在提交即時移轉至 ZRS 的要求之前，請務必將您的帳戶升級至一般用途 v2。 如需詳細資訊，請參閱[Azure 儲存體帳戶總覽](https://docs.microsoft.com/azure/storage/common/storage-account-overview)和[升級至一般用途 v2 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)。
 
-**我可以要求將讀取權限異地多餘儲存體（RA-GRS）帳戶即時移轉到 ZRS 嗎？**
+**我可以要求將異地多餘或讀取權限異地多餘儲存體（GRS/RA-GRS）帳戶即時移轉至 ZRS 嗎？**
 
-在將即時移轉的要求提交至 ZRS 之前，請確定您的應用程式或工作負載不再需要次要唯讀端點的存取權，並將儲存體帳戶的複寫類型變更為異地多餘儲存體（GRS）。 如需詳細資訊，請參閱[變更複寫策略](https://docs.microsoft.com/azure/storage/common/storage-redundancy#changing-replication-strategy)。
+只有使用 LRS 複寫的儲存體帳戶才支援即時移轉。 如果您的帳戶使用 GRS 或 RA-GRS，您必須先將帳戶的複寫類型變更為 LRS，然後再繼續。 這個媒介步驟會移除 GRS/RA-GRS 所提供的次要端點。 此外，在將即時移轉的要求提交至 ZRS 之前，請確定您的應用程式或工作負載不再需要次要唯讀端點的存取權，並將儲存體帳戶的複寫類型變更為本機-多餘儲存體（LRS）。 如需詳細資訊，請參閱[變更複寫策略](https://docs.microsoft.com/azure/storage/common/storage-redundancy#changing-replication-strategy)。
 
 **我可以要求即時移轉我的儲存體帳戶，以 ZRS 到另一個區域嗎？**
 
@@ -146,7 +147,7 @@ ZRS 僅支援一般用途 v2 帳戶，因此在提交即時移轉至 ZRS 的要�
 
 傳統 ZRS 會以非同步方式在一至兩個區域內的資料中心間複寫資料。 除非 Microsoft 起始對次要區域的容錯移轉，否則複寫的資料可能無法供使用。 傳統 ZRS 帳戶無法以 LRS、GRS 或 RA-GRS 作為轉換目標或來源。 傳統 ZRS 帳戶也不支援計量或記錄。
 
-傳統 ZRS 僅適用於一般用途 V1 (GPv1) 儲存體帳戶中的**區塊 Blob**。 如需儲存體帳戶的詳細資訊，請參閱 [Azure 儲存體帳戶概觀](storage-account-overview.md)。
+傳統 ZRS 僅適用於一般用途 V1 (GPv1) 儲存體帳戶中的**區塊 Blob**。 如需有關儲存體帳戶的詳細資訊，請參閱 [Azure 儲存體帳戶概觀](storage-account-overview.md)。
 
 若要以 LRS、傳統 ZRS、GRS 或 RA-GRS 帳戶作為手動移轉 ZRS 帳戶資料時的目標或來源，請使用下列其中一種工具：AzCopy、「Azure 儲存體總管」、Azure PowerShell 或 Azure CLI。 您也可以使用其中一個 Azure 儲存體用戶端程式庫，自行建置移轉解決方案。
 

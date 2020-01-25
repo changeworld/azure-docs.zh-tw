@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/26/2019
+ms.date: 01/23/2020
 ms.author: dapine
-ms.openlocfilehash: e33aa98939eeb5b5394f1f5cc05e28ae8f6ae4f2
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 5c8b3ed329c03bd08b2a0b3e26ada7a4e36ceb49
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515247"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716883"
 ---
 # <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>將文字分析語言偵測容器部署至 Azure Kubernetes Service
 
@@ -36,7 +36,7 @@ ms.locfileid: "72515247"
 
 ## <a name="running-the-sample"></a>執行範例
 
-此程序會載入並執行語言偵測的認知服務容器範例。 此範例有兩個容器，一個用於用戶端應用程式，一個用於認知服務容器。 您需要將這些映像推送到您自己的 Azure Container Registry。 當這些映像出現在您自己的登錄之後，請建立 Azure Kubernetes Service 來存取這些映像並執行容器。 容器執行時，使用 **kubectl** CLI 來監看容器效能。 使用 HTTP 要求存取用戶端應用程式，並查看結果。
+此程序會載入並執行語言偵測的認知服務容器範例。 此範例有兩個容器，一個用於用戶端應用程式，一個用於認知服務容器。 我們會將這兩個映射推送到 Azure Container Registry。 當這些映像出現在您自己的登錄之後，請建立 Azure Kubernetes Service 來存取這些映像並執行容器。 容器執行時，使用 **kubectl** CLI 來監看容器效能。 使用 HTTP 要求存取用戶端應用程式，並查看結果。
 
 ![執行範例容器的概念](../text-analytics/media/how-tos/container-instance-sample/containers.png)
 

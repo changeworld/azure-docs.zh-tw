@@ -1,21 +1,21 @@
 ---
 title: Azure Cosmos DB 服務配額
 description: Azure Cosmos DB 不同資源類型的服務配額和預設限制。
-author: arramac
-ms.author: arramac
+author: jasonwhowell
+ms.author: jasonh
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: d6b66c4a4924f8455b58b930621d6a7b93901a2a
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: b954b56d3c4f9d3ae0ad3142b11a8660e341b74a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887609"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711310"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服務配額
 
-本文概述 Azure Cosmos DB 提供給不同資源的預設配額。
+本文概述提供給 Azure Cosmos DB 中不同資源的預設配額。
 
 ## <a name="storage-and-throughput"></a>儲存體和輸送量
 
@@ -131,7 +131,7 @@ Cosmos DB 使用 HMAC 進行授權。 您可以使用主要金鑰或[資源權�
 | 資源 | 預設限制 |
 | --- | --- |
 | 主要權杖到期時間上限 | 15 分鐘  |
-| 資源權杖到期時間下限 | 10 分鐘  |
+| 資源權杖到期時間下限 | 10分鐘  |
 | 資源權杖到期時間上限 | 預設為24小時。 您可以藉由提出[Azure 支援票證](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)來增加它|
 | 權杖授權的最大時鐘誤差| 15 分鐘 |
 

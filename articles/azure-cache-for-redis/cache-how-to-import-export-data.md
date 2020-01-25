@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
-ms.openlocfilehash: df8b65fcb4dd2b9622716052be2df59cbfa5424a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 29ad5ca6c9058b88a539c7a3bb8ace4d9a65083a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75971799"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714514"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>在 Azure Cache for Redis 中匯入與匯出資料
 「匯入/匯出」是 Azure Cache for Redis 的資料管理作業，可讓您從進階快取將「Azure Cache for Redis 資料庫」(RDB) 快照集匯入和匯出至 Azure 儲存體帳戶中的 Blob，以將資料匯入 Azure Cache for Redis 或從 Azure Cache for Redis 匯出資料。
@@ -24,7 +24,7 @@ ms.locfileid: "75971799"
 本文提供使用 Azure Cache for Redis 匯入和匯出資料的指南，並提供常見問題的解答。
 
 > [!IMPORTANT]
-> 匯入/匯出僅供預覽，只供 [進階層](cache-premium-tier-intro.md) 快取使用。
+> 匯入/匯出僅供 [進階層](cache-premium-tier-intro.md) 快取使用。
 >
 >
 

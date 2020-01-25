@@ -2,13 +2,13 @@
 title: 沒有800計數限制的資源
 description: 列出資源群組中可有超過800個實例的 Azure 資源類型。
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: c4f452a13c2059c02bf675ca4fe80243257183d5
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.date: 01/23/2020
+ms.openlocfilehash: 42e8ddeebcd1dda4fc67e4e7be137c5e01decdf4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659316"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715621"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>每個資源群組的資源不限於800實例
 
@@ -26,6 +26,7 @@ ms.locfileid: "75659316"
 * registrations
 * registrations/customerSubscriptions
 * registrations/products
+* verificationKeys
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 
@@ -82,6 +83,7 @@ ms.locfileid: "75659316"
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
 
+* autoManagedVmConfigurationProfiles
 * configurationProfileAssignments
 * guestConfigurationAssignments
 * software
@@ -178,6 +180,10 @@ ms.locfileid: "75659316"
 * apiManagementAccounts/apis
 * sites
 
+## <a name="microsoftinsights"></a>microsoft.insights
+
+* metricalerts
+
 ## <a name="next-steps"></a>後續步驟
 
-如需配額和限制的完整清單，請參閱[Azure 訂用帳戶和服務限制、配額和條件約束](../../azure-resource-manager/management/azure-subscription-service-limits.md)。
+如需配額和限制的完整清單，請參閱[Azure 訂用帳戶和服務限制、配額和條件約束](azure-subscription-service-limits.md)。

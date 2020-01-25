@@ -3,20 +3,20 @@ title: 透過 Spark 進行進階資料探索和模型化 - Team Data Science Pro
 description: 使用 HDInsight Spark 並透過交叉驗證和超參數最佳化定型模型，執行資料探索和二進位分類和迴歸模型化。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 02/15/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 5f6145e581393d874871d214515a660f987d1d7f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 15d9d186ef36ee9181a6ce0386aa9cc5de7838e3
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60253333"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718645"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>使用 Spark 進階資料探索和模型化
 
@@ -31,32 +31,34 @@ ms.locfileid: "60253333"
 
 **超參數最佳化** 是選擇用於學習演算法的超參數集的問題所在，通常具有最佳化獨立資料集上演算法效能的測量的目標。 **超參數** 是值，必須在模型定型程序之外指定。 這些值的假設可能會影響模型的彈性和精確度。 決策樹有超參數，例如，想要的深度和樹狀目錄中的分葉數目等。 支援向量機器 (SVM) 需要設定分類誤判損失詞彙。 
 
-此處所使用的執行超參數最佳化常見做法是格線搜尋，或 **參數掃掠**。 是透過值執行詳盡搜尋，而該值是學習演算法的超參數空間的指定子集。 交叉驗證可以提供效能度量，挑出格線搜尋演算法所產生的最佳結果。 CV 與超參數掃掠搭配使用，有助於限制問題，例如定型資料模型的過度配適，以便模型會保留容量以套用至從中擷取定型資料的一般集合。
+此處所使用的執行超參數最佳化常見做法是格線搜尋，或 **參數掃掠**。 這項搜尋會經歷超參數空間的子集，以取得學習演算法。 交叉驗證可以提供效能度量，挑出格線搜尋演算法所產生的最佳結果。 CV 與超參數掃掠搭配使用，有助於限制問題，例如定型資料模型的過度配適，以便模型會保留容量以套用至從中擷取定型資料的一般集合。
 
 我們使用的模型包括羅吉斯和線性迴歸、隨機樹系和漸層停駐推進式決策樹︰
 
 * [使用 SGD 的線性迴歸](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) 是一種使用隨機梯度下降 (SGD) 方法的線性迴歸模型，並使用最佳化和功能縮放比例來預測支付的小費金額。 
 * [使用 LBFGS 的羅吉斯迴歸](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS) 或「對數優劣比」迴歸是使用相依變數來執行資料分類時，可使用的迴歸模型。 LBFGS 是牛頓最佳化演算法，可使用有限的電腦記憶體量來逼近 Broyden–Fletcher–Goldfarb–Shanno (BFGS) 演算法，且廣泛用於機器學習中。
 * [隨機樹系](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) 是整體的決策樹。  隨機樹系結合許多決策樹來降低風險過度膨脹。 隨機樹系適用於迴歸和分類，可處理分類功能，也可擴充至多類別分類設定。 隨機樹系不需要調整功能，而且能夠擷取非線性和功能互動。 隨機樹系是其中一個最成功的分類和迴歸的機器學習模型。
-* [漸層停駐推進式決策樹](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBT) 是整體的決策樹。 GBT 反覆地訓練決策樹以盡可能降低遺失函式。 GBT 適用於迴歸和分類，並可處理分類功能、不需要調整功能，而且能夠擷取非線性和功能互動。 它們也可用於多類別分類設定。
+* 漸層[提升樹狀](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts)結構（gbt）是整體的決策樹。 GBT 反復定型決策樹，將損失函式降至最低。 GBT 用於回歸和分類，並可處理分類功能、不需要調整功能，而且能夠捕捉非非線性和功能互動。 它們也可用於多類別分類設定。
 
 使用 CV 和超參數掃掠的模型化範例會針對二進位分類問題顯示。 更簡單的範例 (不含參數掃掠) 會出現在迴歸工作的主要主題中。 但是在附錄中，另外也會提到針對線性迴歸使用彈性 net 的驗證，和針對隨機樹系迴歸使用 CV 和參數掃掠的驗證。 **彈性 net** 是正規化迴歸方法，以符合線性迴歸模型，線性結合 L1 和 L2 度量做為 [lasso](https://en.wikipedia.org/wiki/Lasso%20%28statistics%29) 和 [ridge](https://en.wikipedia.org/wiki/Tikhonov_regularization) 方法的處罰。   
 
+<!-- -->
+
 > [!NOTE]
 > 雖然 Spark MLlib 工具組設計成可處理大型資料集，在這裡為了簡便我們使用極小的範例 (使用 170 個資料列，原始的 NYC 資料集約 0.1%，~30 Mb)。 此處提供的練習有效地在含有 2 個背景工作節點的 HDInsight 叢集上執行 (大約 10 分鐘)。 相同的程式碼中 (稍加修改) 可以用來處理大型資料集，適當修改的程式碼則可快取記憶體的資料以及變更叢集大小。
-> 
-> 
 
-## <a name="setup-spark-clusters-and-notebooks"></a>安裝程式：Spark 叢集和 Notebook
+<!-- -->
+
+## <a name="setup-spark-clusters-and-notebooks"></a>設定：Spark 叢集和 Notebook
 此逐步解說所提供的設定步驟和程式碼適用於使用 HDInsight Spark 1.6。 不過 Jupyter Notebook 可供 HDInsight Spark 1.6 版和 Spark 2.0 叢集兩者使用。 Notebook 的描述及它們的連結已在包含它們的 GitHub 儲存機制的 [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) 中提供。 此外，此處及連結的 Notebook 內的程式碼皆屬泛型程式碼，而且應該能在任何 Spark 叢集上運作。 若您不是使用 HDInsight Spark，叢集設定和管理步驟可能與這裡顯示的稍有不同。 為了方便起見，以下是可讓 Spark 1.6 版和 2.0 版在 Jupyter Notebook 伺服器的 pyspark 核心中執行的 Jupyter Notebook 連結：
 
 ### <a name="spark-16-notebooks"></a>Spark 1.6 Notebook
 
-[pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb)：包含 notebook #1 ，和使用超參數微調與交叉驗證的模型開發主題。
+[pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb)：包含Notebook #1 中的主題，以及使用超參數微調和交叉驗證的模型開發。
 
 ### <a name="spark-20-notebooks"></a>Spark 2.0 Notebook
 
-[Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb)：此檔案提供有關如何執行資料探索、模型化和在 Spark 2.0 叢集中評分的資訊。
+[Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb)：此檔案提供如何在 Spark 2.0 叢集中執行資料瀏覽、模型化和評分的相關資訊。
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -82,7 +84,7 @@ Spark 可以讀取和寫入 Azure 儲存體 Blob (也稱為 WASB)。 如此可�
     import datetime
     datetime.datetime.now()
 
-**輸出**
+**OUTPUT**
 
 datetime.datetime(2016, 4, 18, 17, 36, 27, 832799)
 
@@ -114,7 +116,7 @@ Jupyter Notebook 所提供的 PySpark 核心有預設的內容。 因此您不�
 PySpark 核心提供一些預先定義的「magic」，這是您可以使用 %% 呼叫的特殊命令。 在這些程式碼範例中，就使用了兩個此類型的命令。
 
 * **%%local** 指定後續行所列的程式碼要在本機執行。 程式碼必須是有效的 Python 程式碼。
-* **%%sql-o\<變數名稱 >** 執行 Hive 查詢，針對 sqlcontext 進行。 如果傳遞 -o 參數，則查詢的結果會當做 Pandas 資料框架，保存在 %%local Python 內容中。
+* **%% sql-o \<變數名稱 >** 針對 sqlCoNtext 執行 Hive 查詢。 如果傳遞 -o 參數，則查詢的結果會當做 Pandas 資料框架，保存在 %%local Python 內容中。
 
 如需關於 Jupyter Notebook 核心，以及其所提供的預先定義 "magics" 的詳細資訊，請參閱 [HDInsight 上的 HDInsight Spark Linux 叢集可供 Jupyter Notebook 使用的核心](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md)。
 
@@ -185,7 +187,7 @@ PySpark 核心提供一些預先定義的「magic」，這是您可以使用 %% 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**輸出**
+**OUTPUT**
 
 執行上述儲存格所花費的時間︰276.62 秒
 
@@ -209,10 +211,12 @@ PySpark 核心提供一些預先定義的「magic」，這是您可以使用 %% 
 
 此程式碼從查詢輸出中建立了本機資料框架，以及繪製資料。 `%%local` magic 建立了本機資料框架「`sqlResults`」，可用於搭配 Matplotlib 進行繪製。 
 
+<!-- -->
+
 > [!NOTE]
 > 在本逐步解說中，會多次使用此 PySpark magic。 如果資料總量很大，您應該取樣以建立可容納於本機記憶體的資料框架。
-> 
-> 
+
+<!-- -->
 
     # RUN THE CODE LOCALLY ON THE JUPYTER SERVER
     %%local
@@ -237,11 +241,11 @@ PySpark 核心提供一些預先定義的「magic」，這是您可以使用 %% 
     fig.set_ylabel('Trip counts')
     plt.show()
 
-**輸出**
+**OUTPUT**
 
 ![按乘客計數排列的車程頻率](./media/spark-advanced-data-exploration-modeling/frequency-of-trips-by-passenger-count.png)
 
-在 Notebook 內使用 [類型]  功能表按鈕，您可以選擇幾種不同類型的視覺效果 (資料表、圓形圖、折線圖、區域圖或橫條圖)。 橫條圖繪製結果會在此顯示。
+在 Notebook 內使用 [類型] 功能表按鈕，您可以選擇幾種不同類型的視覺效果 (資料表、圓形圖、折線圖、區域圖或橫條圖)。 橫條圖繪製結果會在此顯示。
 
 ### <a name="plot-a-histogram-of-tip-amounts-and-how-tip-amount-varies-by-passenger-count-and-fare-amounts"></a>繪製小費金額，和小費金額如何隨乘客計數和費用金額變化的長條圖。
 使用 SQL 查詢來取樣資料。
@@ -304,7 +308,7 @@ PySpark 核心提供一些預先定義的「magic」，這是您可以使用 %% 
 * 將小時分割到流量時間分類區以建立新功能
 * 索引和 on-hot 編碼分類功能
 * 建立輸入到 ML 函式的標示點物件
-* 建立資料的隨機子取樣，並將它分割成訓練和測試集
+* 建立資料的隨機取樣，並將它分割成定型集和測試集
 * 調整功能
 * 快取記憶體中的物件
 
@@ -330,7 +334,7 @@ PySpark 核心提供一些預先定義的「magic」，這是您可以使用 %% 
     taxi_df_train_with_newFeatures.cache()
     taxi_df_train_with_newFeatures.count()
 
-**輸出**
+**OUTPUT**
 
 126050
 
@@ -381,12 +385,12 @@ PySpark 核心提供一些預先定義的「magic」，這是您可以使用 %% 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**輸出**
+**OUTPUT**
 
 執行上述儲存格所花費的時間︰3.14 秒
 
 ### <a name="create-labeled-point-objects-for-input-into-ml-functions"></a>建立輸入到 ML 函式的標示點物件
-本節包含的程式碼示範如何將分類的文字資料索引做為標示點資料類型以及如何編碼。 這可準備它用來訓練及測試 MLlib 羅吉斯迴歸和其他分類模型。 標示點物件是彈性分散式資料集 (RDD)，其格式化成適合 MLlib 中大部分的 ML 演算法的輸入資料。 [標示點](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) 是本機向量 (密集或疏鬆)，與標籤/回應相關聯。
+本節包含的程式碼示範如何將分類的文字資料索引做為標示點資料類型以及如何編碼。 這種轉換會準備要用來定型和測試 MLlib 羅吉斯回歸和其他分類模型的文字資料。 標示點物件是彈性分散式資料集 (RDD)，其格式化成適合 MLlib 中大部分的 ML 演算法的輸入資料。 [標示點](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) 是本機向量 (密集或疏鬆)，與標籤/回應相關聯。
 
 以下是要為二進位分類進行索引及編碼文字功能的程式碼。
 
@@ -434,8 +438,8 @@ PySpark 核心提供一些預先定義的「magic」，這是您可以使用 %% 
         return  labPt
 
 
-### <a name="create-a-random-sub-sampling-of-the-data-and-split-it-into-training-and-testing-sets"></a>建立資料的隨機子取樣，並將它分割成訓練和測試集
-此程式碼會建立隨機取樣資料 (這裡使用 25%)。 雖然您不需要這個範例 (因為資料集的大小)，我們將在這裡示範如何取樣， 這樣您就了解如何在需要時使用它來自行解決問題。 當樣本非常大時，這樣可在訓練模型時節省大量時間。 接下來我們將範例分割成訓練部分 (這裡為 75%) 和測試部分 (這裡為 25%)，以便在分類和迴歸模型化中使用。
+### <a name="create-a-random-subsampling-of-the-data-and-split-it-into-training-and-testing-sets"></a>建立資料的隨機取樣，並將它分割成定型集和測試集
+此程式碼會建立隨機取樣資料 (這裡使用 25%)。 雖然您不需要這個範例 (因為資料集的大小)，我們將在這裡示範如何取樣， 這樣您就了解如何在需要時使用它來自行解決問題。 當樣本很大時，取樣可以在定型模型時節省大量時間。 接下來我們將範例分割成訓練部分 (這裡為 75%) 和測試部分 (這裡為 25%)，以便在分類和迴歸模型化中使用。
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -474,9 +478,9 @@ PySpark 核心提供一些預先定義的「magic」，這是您可以使用 %% 
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**輸出**
+**OUTPUT**
 
-執行上述儲存格所花費的時間︰0.31 秒
+執行上述儲存格所花費的時間：0.31 秒
 
 ### <a name="feature-scaling"></a>調整功能
 調整功能，也稱為資料正規化，以確保具廣泛分散值的功能在目標函式中沒有過多權重。 用於調整功能的程式碼會使用 [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) ，將功能調整至單位變異數。 這是由 MLlib 提供，用於使用隨機梯度下降 (SGD) 的線性迴歸。 SGD 為訓練廣泛的其他機器學習模型的常用演算法，例如正則化迴歸或支援向量機器 (SVM)。   
@@ -515,7 +519,7 @@ PySpark 核心提供一些預先定義的「magic」，這是您可以使用 %% 
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**輸出**
+**OUTPUT**
 
 執行上述儲存格所花費的時間︰11.67 秒
 
@@ -546,9 +550,9 @@ PySpark 核心提供一些預先定義的「magic」，這是您可以使用 %% 
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**輸出** 
+**OUTPUT** 
 
-執行上述儲存格所花費的時間︰0.13 秒
+執行上述儲存格所花費的時間：0.13 秒
 
 ## <a name="predict-whether-or-not-a-tip-is-paid-with-binary-classification-models"></a>使用二進位分類模型來預測是否支付小費
 本節說明如何為二進位分類工作使用三個模型，預測是否支付計程車車程的小費。 顯示模型如下︰
@@ -565,20 +569,22 @@ PySpark 核心提供一些預先定義的「magic」，這是您可以使用 %% 
 
 我們會示範如何以兩種方式使用參數掃掠執行交叉驗證 (CV)︰
 
-1. 使用 **泛型** 自訂程式碼，可以套用至 MLlib 中的任何演算法，以及套用至演算法中的任何參數集。 
-2. 使用 **pySpark CrossValidator 管線函式**。 請注意，CrossValidator 對 Spark 1.5.0 有幾項限制︰ 
+1. 使用**泛型**自訂程式碼，可套用至 MLlib 中的任何演算法，以及演算法中的任何參數集。 
+2. 使用 **pySpark CrossValidator 管線函式**。 CrossValidator 有一些 Spark 1.5.0 的限制： 
    
-   * 管線模型無法儲存/保存供未來取用。
+   * 無法儲存或保存管線模型以供未來使用。
    * 無法用於模型中的每個參數。
    * 無法用於每個 MLlib 演算法。
 
 ### <a name="generic-cross-validation-and-hyperparameter-sweeping-used-with-the-logistic-regression-algorithm-for-binary-classification"></a>針對二進位分類搭配使用一般交叉驗證和超參數掃掠與羅吉斯迴歸演算法
 本節的程式碼顯示如何定型、評估及使用 [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) 來儲存羅吉斯迴歸模型，可預測是否針對 NYC 計程車車程和費用資料集的某趟車程支付小費。 模型是使用交叉驗證 (CV) 和超參數掃掠定型，這兩種方法是使用自訂程式碼實作，可以套用至 MLlib 中的任何學習演算法。   
 
+<!-- -->
+
 > [!NOTE]
 > 執行此自訂 CV 程式碼可能需要數分鐘的時間。
-> 
-> 
+
+<!-- -->
 
 **使用 CV 及超參數掃掠來定型羅吉斯迴歸模型**
 
@@ -661,13 +667,13 @@ PySpark 核心提供一些預先定義的「magic」，這是您可以使用 %% 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**輸出**
+**OUTPUT**
 
 係數：[0.0082065285375, -0.0223675576104, -0.0183812028036, -3.48124578069e-05, -0.00247646947233, -0.00165897881503, 0.0675394837328, -0.111823113101, -0.324609912762, -0.204549780032, -1.36499216354, 0.591088507921, -0.664263411392, -1.00439726852, 3.46567827545, -3.51025855172, -0.0471341112232, -0.043521833294, 0.000243375810385, 0.054518719222]
 
 截距：-0.0111216486893
 
-執行上述儲存格所花費的時間：14.43 秒
+執行上述儲存格所花費的時間︰14.43 秒
 
 **使用標準度量評估二進位分類模型**
 
@@ -714,7 +720,7 @@ PySpark 核心提供一些預先定義的「magic」，這是您可以使用 %% 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**輸出**
+**OUTPUT**
 
 PR 下的領域 = 0.985336538462
 
@@ -732,7 +738,7 @@ F1 分數 = 0.984174341679
 
 **繪製 ROC 曲線。**
 
-predictionAndLabelsDF  已在先前的儲存格中已註冊為 tmp_results  資料表。 tmp_results  可用來執行查詢，並將結果輸出至 sqlResults 資料框架供繪製之用。 程式碼如下。
+predictionAndLabelsDF 已在先前的儲存格中已註冊為 tmp_results 資料表。 tmp_results 可用來執行查詢，並將結果輸出至 sqlResults 資料框架供繪製之用。 程式碼如下。
 
     # QUERY RESULTS                              
     %%sql -q -o sqlResults
@@ -767,7 +773,7 @@ predictionAndLabelsDF  已在先前的儲存格中已註冊為 tmp_results  資�
     plt.show()
 
 
-**輸出**
+**OUTPUT**
 
 ![泛型方法的羅吉斯迴歸 ROC 曲線](./media/spark-advanced-data-exploration-modeling/logistic-regression-roc-curve.png)
 
@@ -794,17 +800,19 @@ predictionAndLabelsDF  已在先前的儲存格中已註冊為 tmp_results  資�
     print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
 
-**輸出**
+**OUTPUT**
 
 執行上述儲存格所花費的時間︰34.57 秒
 
 ### <a name="use-mllibs-crossvalidator-pipeline-function-with-logistic-regression-elastic-regression-model"></a>搭配使用 MLlib 的 CrossValidator 管線函式與 LogisticRegression (彈性迴歸) 模型
 本節的程式碼顯示如何定型、評估及使用 [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) 來儲存羅吉斯迴歸模型，可預測是否針對 NYC 計程車車程和費用資料集的某趟車程支付小費。 模型是使用交叉驗證 (CV) 和超參數掃掠定型，這兩種方法是使用 CV 的 MLlib CrossValidator 管線函式和參數掃掠進行實作。   
 
+<!-- -->
+
 > [!NOTE]
 > 執行此 MLlib CV 程式碼可能需要數分鐘的時間。
-> 
-> 
+
+<!-- -->
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -850,13 +858,13 @@ predictionAndLabelsDF  已在先前的儲存格中已註冊為 tmp_results  資�
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
-**輸出**
+**OUTPUT**
 
 執行上述儲存格所花費的時間︰107.98 秒
 
 **繪製 ROC 曲線。**
 
-predictionAndLabelsDF  已在先前的儲存格中已註冊為 tmp_results  資料表。 tmp_results  可用來執行查詢，並將結果輸出至 sqlResults 資料框架供繪製之用。 程式碼如下。
+predictionAndLabelsDF 已在先前的儲存格中已註冊為 tmp_results 資料表。 tmp_results 可用來執行查詢，並將結果輸出至 sqlResults 資料框架供繪製之用。 程式碼如下。
 
     # QUERY RESULTS
     %%sql -q -o sqlResults
@@ -886,7 +894,7 @@ predictionAndLabelsDF  已在先前的儲存格中已註冊為 tmp_results  資�
     plt.show()
 
 
-**輸出**
+**OUTPUT**
 
 ![使用 MLlib 的 CrossValidator 的羅吉斯迴歸 ROC 曲線](./media/spark-advanced-data-exploration-modeling/mllib-crossvalidator-roc-curve.png)
 
@@ -935,7 +943,7 @@ predictionAndLabelsDF  已在先前的儲存格中已註冊為 tmp_results  資�
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**輸出**
+**OUTPUT**
 
 ROC 下的領域 = 0.985336538462
 
@@ -979,7 +987,7 @@ ROC 下的領域 = 0.985336538462
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**輸出**
+**OUTPUT**
 
 ROC 下的領域 = 0.985336538462
 
@@ -998,11 +1006,19 @@ ROC 下的領域 = 0.985336538462
 2. **模型評估**
 3. **儲存模型**   
 
-> Azure 附註：交叉驗證未與本節中的三個迴歸模型搭配使用，因為這是用來顯示羅吉斯迴歸模型詳細資料的方法。 本主題的＜附錄＞示範如何針對線性迴歸使用 CV 與 Elastic Net。
-> 
-> Azure 附註：在我們的經驗中，交集的 LinearRegressionWithSGD 模型可能會發生問題，且必須小心變更/最佳化參數以取得有效的模型。 調整變數對於聚合很有用。 本主題中的＜附錄＞所顯示的 Elastic Net 迴歸也可用來取代 LinearRegressionWithSGD。
-> 
-> 
+<!-- -->
+
+> [!NOTE] 
+> 交叉驗證未與本節中的三個迴歸模型搭配使用，因為這是用來顯示羅吉斯迴歸模型詳細資料的方法。 本主題的＜附錄＞示範如何針對線性迴歸使用 CV 與 Elastic Net。
+
+<!-- -->
+
+<!-- -->
+
+> [!NOTE] 
+> 在我們的經驗中，交集的 LinearRegressionWithSGD 模型可能會發生問題，且必須小心變更/最佳化參數以取得有效的模型。 調整變數對於聚合很有用。 本主題中的＜附錄＞所顯示的 Elastic Net 迴歸也可用來取代 LinearRegressionWithSGD。
+
+<!-- -->
 
 ### <a name="linear-regression-with-sgd"></a>使用 SGD 的線性迴歸
 本節的程式碼示範如何使用縮放功能來訓練線性迴歸 (使用隨機梯度下降 (SGD) 以最佳化)，以及如何評分、評估並將模型儲存在 Azure Blob 儲存體 (WASB)。
@@ -1050,7 +1066,7 @@ ROC 下的領域 = 0.985336538462
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**輸出**
+**OUTPUT**
 
 係數：[0.0141707753435, -0.0252930927087, -0.0231442517137, 0.247070902996, 0.312544147152, 0.360296120645, 0.0122079566092, -0.00456498588241, -0.0898228505177, 0.0714046248793, 0.102171263868, 0.100022455632, -0.00289545676449, -0.00791124681938, 0.54396316518, -0.536293513569, 0.0119076553369, -0.0173039244582, 0.0119632796147, 0.00146764882502]
 
@@ -1065,10 +1081,12 @@ R-sqr = 0.597963951127
 ### <a name="random-forest-regression"></a>隨機樹系迴歸
 本節的程式碼顯示如何訓練評估及儲存隨機樹系模型，可預測 NYC 計程車車程資料的小費金額。   
 
+<!-- -->
+
 > [!NOTE]
 > 在附錄中提供使用自訂程式碼的交叉驗證與參數掃掠。
-> 
-> 
+
+<!-- -->
 
     #PREDICT TIP AMOUNTS USING RANDOM FOREST
 
@@ -1110,7 +1128,7 @@ R-sqr = 0.597963951127
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**輸出**
+**OUTPUT**
 
 RMSE = 0.931981967875
 
@@ -1161,7 +1179,7 @@ R-sqr = 0.733445485802
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**輸出**
+**OUTPUT**
 
 RMSE = 0.928172197114
 
@@ -1171,7 +1189,7 @@ R-sqr = 0.732680354389
 
 **圖**
 
-tmp_results  已在先前的儲存格中註冊為 Hive 資料表。 來自資料表的結果已輸出至 sqlResults  資料框架以供繪製之用。 程式碼如下
+tmp_results 已在先前的儲存格中註冊為 Hive 資料表。 來自資料表的結果已輸出至 sqlResults 資料框架以供繪製之用。 程式碼如下
 
     # PLOT SCATTER-PLOT BETWEEN ACTUAL AND PREDICTED TIP VALUES
 
@@ -1198,7 +1216,7 @@ tmp_results  已在先前的儲存格中註冊為 Hive 資料表。 來自資料
 
 ![Actual-vs-predicted-tip-amounts](./media/spark-advanced-data-exploration-modeling/actual-vs-predicted-tips.png)
 
-## <a name="appendix-additional-regression-tasks-using-cross-validation-with-parameter-sweeps"></a>附錄：使用交叉驗證與參數掃掠的額外迴歸工作
+## <a name="appendix-additional-regression-tasks-using-cross-validation-with-parameter-sweeps"></a>附錄︰使用交叉驗證與參數掃掠的額外迴歸工作
 本附錄包含程式碼，示範如何針對線性迴歸使用彈性 net 以執行 CV，以及如何針對隨機樹系迴歸使用自訂程式碼，以參數掃掠執行 CV。
 
 ### <a name="cross-validation-using-elastic-net-for-linear-regression"></a>針對線性迴歸使用彈性 net 進行交叉驗證
@@ -1258,13 +1276,13 @@ tmp_results  已在先前的儲存格中註冊為 Hive 資料表。 來自資料
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**輸出**
+**OUTPUT**
 
 執行上述儲存格所花費的時間︰161.21 秒
 
 **使用 R-SQR 度量進行評估**
 
-tmp_results  已在先前的儲存格中註冊為 Hive 資料表。 來自資料表的結果已輸出至 sqlResults  資料框架以供繪製之用。 程式碼如下
+tmp_results 已在先前的儲存格中註冊為 Hive 資料表。 來自資料表的結果已輸出至 sqlResults 資料框架以供繪製之用。 程式碼如下
 
     # SELECT RESULTS
     %%sql -q -o sqlResults
@@ -1283,7 +1301,7 @@ tmp_results  已在先前的儲存格中註冊為 Hive 資料表。 來自資料
     print("R-sqr = %s" % r2)
 
 
-**輸出**
+**OUTPUT**
 
 R-sqr = 0.619184907088
 
@@ -1370,7 +1388,7 @@ R-sqr = 0.619184907088
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**輸出**
+**OUTPUT**
 
 RMSE = 0.906972198262
 
@@ -1406,11 +1424,11 @@ R-sqr = 0.740751197012
     oneHotTESTregScaled.unpersist()
 
 
-**輸出**
+**OUTPUT**
 
-PythonRDD[122] at RDD at PythonRDD.scala：43
+PythonRDD[122] at RDD at PythonRDD.scala: 43
 
-**列印出要在耗用量 Notebook 中使用的模型檔案路徑。 **若要耗用與評分獨立資料集，您需要在「耗用量 Notebook」中複製並貼上這些檔案名稱。
+\* * 要在耗用量筆記本中使用之模型檔案的輸出路徑。 **若要耗用與評分獨立資料集，您需要在「耗用量 Notebook」中複製並貼上這些檔案名稱。
 
     # PRINT MODEL FILE LOCATIONS FOR CONSUMPTION
     print "logisticRegFileLoc = modelDir + \"" + logisticregressionfilename + "\"";
@@ -1421,7 +1439,7 @@ PythonRDD[122] at RDD at PythonRDD.scala：43
     print "BoostedTreeRegressionFileLoc = modelDir + \"" + btregressionfilename + "\"";
 
 
-**輸出**
+**OUTPUT**
 
 logisticRegFileLoc = modelDir + "LogisticRegressionWithLBFGS_2016-05-0316_47_30.096528"
 
@@ -1435,8 +1453,8 @@ BoostedTreeClassificationFileLoc = modelDir + "GradientBoostingTreeClassificatio
 
 BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-05-0316_52_18.827237"
 
-## <a name="whats-next"></a>後續步驟
+## <a name="whats-next"></a>接下來呢？
 現在已使用 Spark MlLib 建立迴歸和分類模型，您已瞭解如何評分及評估這些模型。
 
-**模型耗用量：** 若要瞭解如何評分和評估本主題中，所建立的分類和迴歸模型，請參閱[評分及評估 Spark 建置機器學習服務模型](spark-model-consumption.md)。
+**模型耗用量︰** 若要瞭解如何評分及評估本主題中所建立的分類和迴歸模型，請參閱 [評分及評估 Spark 建置機器學習服務模型](spark-model-consumption.md)。
 

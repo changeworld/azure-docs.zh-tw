@@ -4,14 +4,14 @@ description: 瞭解改善 Azure Cosmos 資料庫效能的用戶端設定選項
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 01/15/2020
 ms.author: sngun
-ms.openlocfilehash: 27f39af480db8c0a044489a2efe6d2e4447b6db1
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: eec5ab6cdf4afd63db2e77046bb19436e600ece6
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "71261317"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720991"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB 和 .NET 的效能祕訣
 
@@ -25,7 +25,7 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
 如果您詢問「如何改善我的資料庫效能？ 」，請考慮下列選項：
 
-## <a name="networking"></a>網路功能
+## <a name="networking"></a>網路
 <a id="direct-connection"></a>
 
 1. **原則︰使用直接連接模式**
@@ -40,18 +40,18 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
    * 直接模式
 
-     直接模式支援透過 TCP 和 HTTPS 通訊協定連線，而且如果您使用[Cosmos/.Net V3 SDK](sql-api-sdk-dotnet-standard.md)，則是預設的連線模式。
+     直接模式支援透過 TCP 通訊協定連線，而且如果您使用[Cosmos/.Net V3 SDK](sql-api-sdk-dotnet-standard.md)，則是預設的連線模式。
 
      使用閘道模式時，Cosmos DB 在使用適用于 MongoDB 的 Azure Cosmos DB API 時，會使用埠443和埠10250、10255和10256。 10250 連接埠會對應至預設 MongoDB 執行個體而不使用異地複寫，10255/10256 連接埠則會使用異地複寫功能對應至 MongoDB 執行個體。 在直接模式下使用 TCP 時，除了「閘道」連接埠之外，您還務必要開啟 10000 到 20000 之間的連接埠範圍，因為 Azure Cosmos DB 使用動態 TCP 連接埠。 如果未開啟這些連接埠而您嘗試使用 TCP，您就會收到「503 服務無法使用」錯誤。 下表顯示不同 API 的可用連線模式，以及每個 API 的服務連接埠使用者：
 
      |連線模式  |支援的通訊協定  |支援的 SDK  |API/服務連接埠  |
      |---------|---------|---------|---------|
-     |閘道器  |   HTTPS    |  所有 SDK    |   SQL （443）、Mongo （10250、10255、10256）、Table （443）、Cassandra （10350）、Graph （443）    |
+     |閘道  |   HTTPS    |  所有 SDK    |   SQL （443）、Mongo （10250、10255、10256）、Table （443）、Cassandra （10350）、Graph （443）    |
      |Direct    |     TCP    |  .NET SDK    | 10,000-20,000 範圍內的連接埠 |
 
-     Azure Cosmos DB 提供透過 HTTPS 的簡單且開放 RESTful 程式設計模型。 此外，它可提供有效率的 TCP 通訊協定，此 TCP 通訊協定在通訊模型中也符合 REST 限制，並且可以透過 .NET 用戶端 SDK 取得。 直接 TCP 和 HTTPS 皆使用 SSL 來進行初始驗證和加密流量。 為了達到最佳效能，儘可能使用 TCP 通訊協定。
+     Azure Cosmos DB 提供透過 HTTPS 的簡單且開放 RESTful 程式設計模型。 此外，它可提供有效率的 TCP 通訊協定，此 TCP 通訊協定在通訊模型中也符合 REST 限制，並且可以透過 .NET 用戶端 SDK 取得。 TCP 通訊協定會使用 SSL 來進行初始驗證和加密流量。 為了達到最佳效能，儘可能使用 TCP 通訊協定。
 
-     針對 SDK V3，在建立 CosmosClient 實例時，會在 CosmosClientOptions 中設定連線模式。
+     針對 SDK V3，連線模式會在建立 CosmosClient 實例時設定，做為 CosmosClientOptions 的一部分，請記住，Direct 模式是預設值。
 
      ```csharp
      var serviceEndpoint = new Uri("https://contoso.documents.net");
@@ -59,7 +59,7 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
      CosmosClient client = new CosmosClient(serviceEndpoint, authKey,
      new CosmosClientOptions
      {
-        ConnectionMode = ConnectionMode.Direct
+        ConnectionMode = ConnectionMode.Gateway // ConnectionMode.Direct is the default
      });
      ```
 
@@ -71,7 +71,7 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
      DocumentClient client = new DocumentClient(serviceEndpoint, authKey,
      new ConnectionPolicy
      {
-        ConnectionMode = ConnectionMode.Direct,
+        ConnectionMode = ConnectionMode.Direct, //ConnectionMode.Gateway is the default
         ConnectionProtocol = Protocol.Tcp
      });
      ```

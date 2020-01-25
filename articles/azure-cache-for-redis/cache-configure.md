@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: c4d5716c8a31ceccbe23c1f77ad3b88030ff3065
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f10be8efcd2d8e838b4b5f62310eb405f6ed0158
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972135"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714629"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>如何設定 Azure Redis 快取
 本主題說明您「Azure Redis 快取」執行個體可用的設定。 本主題也涵蓋適用於「Azure Redis 快取」執行個體的預設 Redis 伺服器設定。
@@ -40,8 +40,8 @@ ms.locfileid: "75972135"
     * [進階設定](#advanced-settings)
     * [Azure Redis 快取建議程式](#azure-cache-for-redis-advisor)
     * [調整](#scale)
-    * [Redis 叢集大小](#cluster-size)
-    * [Redis 資料永續性](#redis-data-persistence)
+    * [叢集大小](#cluster-size)
+    * [資料持續性](#redis-data-persistence)
     * [排程更新](#schedule-updates)
     * [異地複寫](#geo-replication)
     * [虛擬網路](#virtual-network)
@@ -92,8 +92,8 @@ ms.locfileid: "75972135"
 * [進階設定](#advanced-settings)
 * [Azure Redis 快取建議程式](#azure-cache-for-redis-advisor)
 * [調整](#scale)
-* [Redis 叢集大小](#cluster-size)
-* [Redis 資料永續性](#redis-data-persistence)
+* [叢集大小](#cluster-size)
+* [資料持續性](#redis-data-persistence)
 * [排程更新](#schedule-updates)
 * [異地複寫](#geo-replication)
 * [虛擬網路](#virtual-network)
@@ -201,14 +201,9 @@ Redis Keyspace 通知是在 [進階設定] 刀鋒視窗上進行設定。 Keyspa
 <a name="cluster-size"></a>
 
 ### <a name="redis-cluster-size"></a>Redis 叢集大小
-按一下 [Redis 叢集大小 (預覽)] ，針對已啟用叢集且目前執行中的進階快取，變更叢集大小。
+按一下 [叢集**大小**]，以變更已啟用叢集的執行中 premium 快取的叢集大小。
 
-> [!NOTE]
-> 請注意，雖然「Azure Redis 快取」進階層已發行正式運作版，但「Redis 叢集大小」功能目前為預覽狀態。
->
->
-
-![Redis 叢集大小](./media/cache-configure/redis-cache-redis-cluster-size.png)
+![叢集大小](./media/cache-configure/redis-cache-redis-cluster-size.png)
 
 若要變更叢集大小，請使用滑桿，或在 [分區計數] 文字方塊中輸入 1 到 10 之間的數字，然後按一下 [確定] 加以儲存。
 
@@ -219,7 +214,7 @@ Redis Keyspace 通知是在 [進階設定] 刀鋒視窗上進行設定。 Keyspa
 
 
 ### <a name="redis-data-persistence"></a>Redis 資料永續性
-按一下 [Redis 資料持續性] 可加以啟用、停用，或設定高階快取的資料持續性。 「Azure Redis 快取」使用 [RDB 持續性](cache-how-to-premium-persistence.md#configure-rdb-persistence)或 [AOF 持續性](cache-how-to-premium-persistence.md#configure-aof-persistence)來提供 Redis 持續性。
+按一下 [**資料持續**性] 以啟用、停用或設定 premium 快取的資料持續性。 「Azure Redis 快取」使用 [RDB 持續性](cache-how-to-premium-persistence.md#configure-rdb-persistence)或 [AOF 持續性](cache-how-to-premium-persistence.md#configure-aof-persistence)來提供 Redis 持續性。
 
 如需詳細資訊，請參閱[如何設定進階 Azure Redis 快取的持續性](cache-how-to-premium-persistence.md)。
 

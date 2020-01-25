@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 12/30/2019
-ms.openlocfilehash: 38966d537398d2770fba185a59b51956cf2223c3
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.date: 01/23/2020
+ms.openlocfilehash: b0ec82807857be60f30aa777ff5871334383acf7
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290337"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715927"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure 監視器常見問題
 
@@ -95,6 +95,18 @@ Azure 監視器收集的所有記錄資料都會儲存在 Log Analytics 工作�
 
 ### <a name="can-you-move-an-existing-log-analytics-workspace-to-another-azure-subscription"></a>您可以將現有的 Log Analytics 工作區移至另一個 Azure 訂用帳戶嗎？
 您可以在資源群組或訂用帳戶之間移動工作區，但不能將它移到不同的區域。 請參閱[將 Log Analytics 工作區移至不同的訂用帳戶或資源群組](platform/move-workspace.md)。
+
+### <a name="why-cant-i-see-query-explorer-and-save-buttons-in-log-analytics"></a>為什麼在 Log Analytics 中看不到 [查詢瀏覽器] 和 [儲存] 按鈕？
+
+當[查詢範圍](log-query/scope.md)設定為特定資源時，無法使用 [**查詢瀏覽器**]、[**儲存**] 和 [**新增警示規則**] 按鈕。 若要建立警示、儲存或載入查詢，Log Analytics 必須限定于工作區。 若要在工作區內容中開啟 Log Analytics，請從 [ **Azure 監視器**] 功能表中選取 [**記錄**]。 已選取上次使用的工作區，但您可以選取任何其他工作區。 請參閱[Azure 監視器 Log Analytics 中的記錄查詢範圍和時間範圍](log-query/scope.md)
+
+### <a name="why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-when-opening-log-analytics-from-a-vm"></a>為什麼我會收到錯誤：「為此訂用帳戶註冊資源提供者 ' Microsoft 深入解析」，以便在從 VM 開啟 Log Analytics 時啟用此查詢？ 
+許多資源提供者會自動註冊，但您可能需要手動註冊某些資源提供者。 註冊範圍一律是訂用帳戶。 如需詳細資訊，請參閱[資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)。
+
+### <a name="why-am-i-am-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>從 VM 開啟 Log Analytics 時，為何無法取得存取錯誤訊息？ 
+若要檢視 VM 記錄，您必須獲得存放 VM 記錄的工作區讀取權限。 在這些情況下，系統管理員必須授與您 Azure 權限。
+
+
 
 
 ## <a name="alerts"></a>警示
@@ -180,6 +192,12 @@ WireData
 ### <a name="what-are-the-firewall-requirements-for-azure-monitor-agents"></a>Azure 監視器代理程式的防火牆需求為何？
 如需防火牆需求的詳細資訊，請參閱[網路防火牆需求](platform/log-analytics-agent.md#network-firewall-requirements)。
 
+
+## <a name="visualizations"></a>視覺效果
+
+### <a name="why-cant-i-cant-see-view-designer"></a>為什麼看不到 View Designer？
+
+View Designer 僅適用于在 Log Analytics 工作區中獲派「參與者」許可權或更高版本的使用者。
 
 
 ## <a name="application-insights"></a>Application Insights

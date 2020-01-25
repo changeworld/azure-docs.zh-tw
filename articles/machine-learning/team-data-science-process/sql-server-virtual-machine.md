@@ -3,23 +3,23 @@ title: 在 SQL Server 虛擬機器中瀏覽資料 - Team Data Science Process
 description: 使用 Azure 上 SQL Server 虛擬機器中的 Python 或 SQL，探索 + 處理資料並產生功能。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 877c639c35378b173b6ec9c8697725e3b3c09290
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: d3eb4d2faf58d1861fda9d04437f9f9530c77672
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053624"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718475"
 ---
 # <a name="heading"></a>在 Azure 上處理 SQL Server 虛擬機器中的資料
-本文件涵蓋如何探索資料及如何針對儲存於 Azure 上之 SQL Server VM 中的資料產生功能。 使用 SQL整理資料或使用 Python 這類程式設計語言，即可完成此動作。
+本文件涵蓋如何探索資料及如何針對儲存於 Azure 上之 SQL Server VM 中的資料產生功能。 此目標可透過使用 SQL 的資料整頓，或使用像是 Python 的程式設計語言來完成。
 
 > [!NOTE]
 > 本文件中的 SQL 陳述式範例假設資料位於 SQL Server 中。 如果不是，請參閱雲端資料科學程序圖，以了解如何將資料移至 SQL Server。
@@ -66,7 +66,7 @@ ms.locfileid: "73053624"
 > 
 
 ### <a name="sql-countfeature"></a>以計數為基礎的功能產生
-下列範例示範兩種產生計數功能的方法。 第一種方法會使用條件式加總，而第二種方法會使用 'where' 子句。 這些接著可與原始資料表聯結 (使用主索引鍵資料行)，以具備計數功能及原始資料。
+下列範例示範兩種產生計數功能的方法。 第一種方法會使用條件式加總，而第二種方法會使用 'where' 子句。 然後，這些結果可能會與原始資料表聯結（使用主鍵資料行），使計數功能與原始資料並存。
 
     select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3> 
 
@@ -82,7 +82,7 @@ ms.locfileid: "73053624"
 ### <a name="sql-featurerollout"></a>從單一資料行衍生功能
 本節示範如何在資料表中衍生單一資料行來產生額外功能。 此範例假設您正嘗試從中產生功能的資料表中具有緯度或經度資料行。
 
-以下是有關經緯度位置資料的簡短入門指南 (源自 stackoverflow [如何測量經度和緯度的準確性？](https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude))。 這有助於您在將功能化位置欄位之前先行了解：
+以下是有關經緯度位置資料的簡短入門指南 (源自 stackoverflow [如何測量經度和緯度的準確性？](https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude))。 在將位置納入為一或多項功能之前，此指導方針非常有用：
 
 * 正負號告訴我們是否位於地球的北方或南方、東方或西方。
 * 非零的數百個位數告訴我們使用的是經度，而不是緯度！
@@ -95,7 +95,7 @@ ms.locfileid: "73053624"
 * 第五個小數位數最多可達 1.1 m：它會分辨彼此的樹狀結構。 您只能使用微分校正來達到此層級利用商業 GPS 單位所達到的精確度。
 * 第六個小數位數最多可達 0.11 m：您可以使用此項目來詳細配置結構，其適用於設計環境和建置道路。 比起足以追蹤冰河和河流的移動，這應該是更好的方式。 您可以採用含有 GPS 的精心度量 (例如，微分校正的 GPS) 來達成此項目。
 
-您可以使用下列方式來將位置資訊功能化，以分隔出區域、位置及縣 (市) 資訊。 請注意，您也可以呼叫 REST 端點，例如，可在 [依點尋找位置](https://msdn.microsoft.com/library/ff701710.aspx) 上取得的 Bing Maps API，以取得區域或地區資訊。
+您可以使用下列方式來將位置資訊功能化，以分隔出區域、位置及縣 (市) 資訊。 您也可以呼叫 REST 端點，例如在 [[依點尋找位置](https://msdn.microsoft.com/library/ff701710.aspx)] 中提供的 BING Maps API，以取得區域/區域資訊。
 
     select 
         <location_columnname>
@@ -121,7 +121,7 @@ ms.locfileid: "73053624"
 ![azureml 讀取器][1] 
 
 ## <a name="python"></a>使用類似 Python 的程式設計語言
-當資料位於 SQL Server 時，使用 Python 來瀏覽資料與產生特徵，類似於使用 Python 來處理 Azure Blob 中的資料，如[在資料科學環境中處理 Azure Blob 資料](data-blob.md)中所述。 資料必須從資料庫載入 Pandas 資料框架，然後就能進一步處理。 我們將在本節中說明連接到資料庫以及將資料載入資料框架的程序。
+當資料位於 SQL Server 時，使用 Python 來瀏覽資料與產生特徵，類似於使用 Python 來處理 Azure Blob 中的資料，如[在資料科學環境中處理 Azure Blob 資料](data-blob.md)中所述。 將資料從資料庫載入 pandas 資料框架，以進行更多的處理。 我們將在本節中說明連接到資料庫以及將資料載入資料框架的程序。
 
 下列連接字串格式可用來使用 pyodbc (使用您的特定值來取代 servername、dbname、username 和 password)，從 Python 連接到 SQL Server 資料庫：
 

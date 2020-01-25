@@ -3,20 +3,20 @@ title: 資料取得與認知的 Team Data Science Process
 description: 資料科學專案資料取得與認知階段的目標、工作和交付項目
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e29f36897dd52fcb09456768a799209a385d74fe
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3c299e9ec42d63812804b5ff7e50324a2de94200
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60303500"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720498"
 ---
 # <a name="data-acquisition-and-understanding-stage-of-the-team-data-science-process"></a>資料取得與認知階段的 Team Data Science Process
 
@@ -52,23 +52,23 @@ ms.locfileid: "60303500"
 
 TDSP 提供自動化公用程式 [IDEAR](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils)，以協助將資料視覺化及準備資料的摘要報告。 我們建議您先從 IDEAR 來瀏覽資料，以協助您在不必編寫程式碼的情況下，以互動方式來初步了解資料。 然後您可以針對資料探索和視覺效果撰寫自訂程式碼。 如需清理資料的指引，請參閱[準備增強機器學習服務的資料的工作](prepare-data.md)。  
 
-當您滿意已清理資料的品質之後，下一步是深入了解資料中固有的模式。 這可協助您為目標選擇和開發適當的預測模型。 尋找資料與目標相關程度的證據。 然後判斷是否有足夠的資料可繼續進行下一個模型建立步驟。 同樣地，此程序通常會反覆進行。 您可能需要尋找具有更精確或更相關資料的新資料來源，以擴大前一個階段中所初步找到的資料集。 
+當您滿意已清理資料的品質之後，下一步是深入了解資料中固有的模式。 這種資料分析可協助您為目標選擇及開發適當的預測模型。 尋找資料與目標相關程度的證據。 然後判斷是否有足夠的資料可繼續進行下一個模型建立步驟。 同樣地，此程序通常會反覆進行。 您可能需要尋找具有更精確或更相關資料的新資料來源，以擴大前一個階段中所初步找到的資料集。 
 
 ### <a name="set-up-a-data-pipeline"></a>設定資料管線
-除了一開始要內嵌和清理資料外，您通常還需要設定用來對新資料評分或定期重新整理資料的程序，以做為持續學習程序的一部分。 您可以透過設定資料管線或工作流程來完成。 [將資料從內部部署 SQL Server 執行個體移到具 Azure Data Factory 的 Azure SQL Database](move-sql-azure-adf.md) 一文提供如何使用 [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) 設定管線的範例。 
+除了一開始要內嵌和清理資料外，您通常還需要設定用來對新資料評分或定期重新整理資料的程序，以做為持續學習程序的一部分。 您可以使用資料管線或工作流程來完成計分。 [將資料從內部部署 SQL Server 執行個體移到具 Azure Data Factory 的 Azure SQL Database](move-sql-azure-adf.md) 一文提供如何使用 [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) 設定管線的範例。 
 
-在此階段中，您要開發資料管線的方案架構。 您要開發與資料科學專案下一個階段平行的管線。 根據您的業務需求和此方案將整合到之現有系統的條件約束，管線可能是下列其中一種： 
+在此階段中，您要開發資料管線的方案架構。 您要開發與資料科學專案下一個階段平行的管線。 根據您的商務需求以及此解決方案整合所在的現有系統限制，管線可以是下列其中一個選項： 
 
    * 批次型
    * 串流或即時 
    * 混合式 
 
-## <a name="artifacts"></a>構件
+## <a name="artifacts"></a>Artifacts
 以下是此階段的交付項目：
 
-   * [資料品質檢查](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/DataSummaryReport.md)：這份報告包含資料摘要、每個屬性與目標之間的關聯性、變數排名等等。 TDSP 中所提供的 [IDEAR](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils) 工具，可在任何表格式資料集 (例如 CSV 檔案或關聯式資料表) 上快速產生這份報告。 
-   * **解決方案架構**：在您建置模型後，方案架構可以是用來對新資料執行評分，或預測資料管線的圖表或描述。 它也包含可根據新資料重新訓練模型的管線。 當您使用 TDSP 目錄結構範本時，請將文件儲存在 [Project](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Project) 目錄中。
-   * **檢查點決策**：您完整的功能設計和模型建置開始之前，您可以重新評估專案，以判斷預期值是否足以繼續追求它。 比方說，您可能已準備好繼續、需要收集更多資料，或是因為不存在可以回答問題的資料而放棄專案。
+   * [資料品質報告](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/DataSummaryReport.md) \(英文\)︰這份報告包含資料摘要、每個屬性與目標之間的關聯性、變數排名等等。 TDSP 中所提供的 [IDEAR](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils) 工具，可在任何表格式資料集 (例如 CSV 檔案或關聯式資料表) 上快速產生這份報告。 
+   * **方案架構**︰在您建置模型後，方案架構可以是用來對新資料執行評分或預測之資料管線的圖表或描述。 它也包含可根據新資料重新訓練模型的管線。 當您使用 TDSP 目錄結構範本時，請將文件儲存在 [Project](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Project) 目錄中。
+   * **檢查點決策**：開始進行完整功能工程和模型建立之前，您可以重新評估專案，以判斷預期值是否足以繼續進行。 比方說，您可能已準備好繼續、需要收集更多資料，或是因為不存在可以回答問題的資料而放棄專案。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -80,6 +80,6 @@ TDSP 提供自動化公用程式 [IDEAR](https://github.com/Azure/Azure-TDSP-Uti
    4. [部署](lifecycle-deployment.md)
    5. [客戶接受度](lifecycle-acceptance.md)
 
-我們也會提供完整的端對端逐步解說，說明特定案例之程序中的所有步驟。 [範例逐步解說](walkthroughs.md)一文提供有連結和縮圖描述的案例清單。 這些逐步解說示範如何將雲端、內部部署工具與服務組合成工作流程或管線，以建立智慧型應用程式。 
+我們會提供完整的逐步解說，以示範特定案例之程式中的所有步驟。 [範例逐步解說](walkthroughs.md)一文提供有連結和縮圖描述的案例清單。 這些逐步解說示範如何將雲端、內部部署工具與服務組合成工作流程或管線，以建立智慧型應用程式。 
 
 如需如何在使用 Azure Machine Learning Studio 的 TDSP 中執行步驟的範例，請參閱[配合使用 Team Data Science Process 與 Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/lifecycle-data)。

@@ -4,15 +4,15 @@ description: 瞭解 ASE 網路流量，以及如何使用 ASE 設定網路安全
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 01/24/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 3b16d7cbba63be9f50b0d186b2162a5755b76802
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fb931c309b5f85902d8abc9cc6da45576bff4041
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75375010"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76713190"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service Environment 的網路考量 #
 
@@ -88,7 +88,7 @@ ASE 會對下列埠上的網際網路可存取位址進行通訊：
 |-----|------|
 | DNS | 53 |
 | NTP | 123 |
-| 8CRL，Windows 更新，Linux 相依性，Azure 服務 | 80/443 |
+| CRL，Windows 更新，Linux 相依性，Azure 服務 | 80/443 |
 | Azure SQL | 1433 | 
 | 監視 | 12000 |
 
@@ -109,7 +109,7 @@ ASE 會對下列埠上的網際網路可存取位址進行通訊：
 除了 ASE 功能性相依性之外，還有幾個額外項目和入口網站體驗有關。 Azure 入口網站的部分功能需要能夠直接存取「SCM 網站」。 Azure App Service 中的每個應用程式都有兩個 URL。 第一個 URL 是用來存取您的應用程式。 第二個 URL 則是用來存取 SCM 網站，也稱為「Kudu 主控台」。 使用 SCM 網站的功能包括：
 
 -   Web Job
--   Functions
+-   函式
 -   記錄串流
 -   Kudu
 -   延伸模組
@@ -152,7 +152,7 @@ NSG 可以透過 Azure 入口網站或 PowerShell 來設定。 這裡的資訊�
 
 NSG 中需要 ASE 才能運作的必要專案是允許流量：
 
-**連入**
+**阻尼**
 * 從埠454455上的 IP 服務標記 AppServiceManagement
 * 從埠16001上的負載平衡器
 * 從 ASE 子網到所有埠上的 ASE 子網

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: a0965dc4011b449e617f6dbaeafb68bfa796b620
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 64e8fab3ac352c906cfb63cd39f89acda4109b18
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953958"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719750"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>設定 Windows 虛擬桌面的圖形處理器（GPU）加速
 
@@ -37,9 +37,9 @@ Windows 虛擬桌面支援下列作業系統中的 GPU 加速轉譯和編碼：
 
 ## <a name="install-supported-graphics-drivers-in-your-virtual-machine"></a>在您的虛擬機器中安裝支援的圖形驅動程式
 
-若要在 Windows 虛擬桌面中利用 Azure N 系列 Vm 的 GPU 功能，您必須安裝 NVIDIA 圖形驅動程式。 請遵循在執行[Windows 的 N 系列 vm 上安裝 NVIDIA gpu 驅動](/azure/virtual-machines/windows/n-series-driver-setup)程式中的指示，手動或使用[NVIDIA GPU 驅動程式擴充](/azure/virtual-machines/extensions/hpccompute-gpu-windows)功能來安裝驅動程式。
+若要在 Windows 虛擬桌面中利用 Azure N 系列 Vm 的 GPU 功能，您必須安裝適當的圖形驅動程式。 遵循[支援的作業系統和驅動程式](/azure/virtual-machines/windows/sizes-gpu#supported-operating-systems-and-drivers)上的指示，以手動方式或使用 Azure VM 擴充功能，從適當的圖形廠商安裝驅動程式。
 
-請注意，只有 Azure 所散發的[NVIDIA GRID 驅動程式](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers)支援 Windows 虛擬桌面。
+Windows 虛擬桌面僅支援由 Azure 散發的驅動程式。 Additionaly，針對具有 NVIDIA Gpu 的 Azure Vm，只有[NVIDIA GRID 驅動程式](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers)支援 Windows 虛擬桌面。
 
 安裝驅動程式之後，需要重新開機 VM。 使用上述指示中的驗證步驟，確認已成功安裝圖形驅動程式。
 
@@ -74,7 +74,7 @@ Windows 虛擬桌面支援下列作業系統中的 GPU 加速轉譯和編碼：
 
 若要驗證應用程式是否使用 GPU 進行轉譯，請嘗試下列任一項：
 
-* 使用在執行應用程式時，[確認驅動程式安裝](/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation)中所述的 `nvidia-smi` 公用程式來檢查 GPU 使用率。
+* 針對具有 NVIDIA GPU 的 Azure Vm，請依照[確認驅動程式安裝](/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation)中所述，使用 `nvidia-smi` 公用程式，以在執行應用程式時檢查 GPU 使用率。
 * 在支援的作業系統版本上，您可以使用工作管理員來檢查 GPU 使用率。 在 [效能] 索引標籤中選取 GPU，以查看應用程式是否正在利用 GPU。
 
 ## <a name="verify-gpu-accelerated-frame-encoding"></a>確認 GPU 加速畫面編碼
@@ -90,5 +90,5 @@ Windows 虛擬桌面支援下列作業系統中的 GPU 加速轉譯和編碼：
 
 這些指示應該讓您能夠在單一工作階段主機 VM 上啟動並執行 GPU 加速。 在較大的主機集區上啟用 GPU 加速的一些額外考慮：
 
-* 請考慮使用[NVIDIA GPU 驅動程式擴充](/azure/virtual-machines/extensions/hpccompute-gpu-windows)功能，簡化多部 vm 的驅動程式安裝和更新。
+* 請考慮使用[VM 擴充](/azure/virtual-machines/extensions/overview)功能來簡化多部 vm 的驅動程式安裝和更新。 針對具有 NVIDIA Gpu 的 Vm 使用[NVIDIA Gpu 驅動程式擴充](/azure/virtual-machines/extensions/hpccompute-gpu-windows)功能，並針對具有 amd Gpu 的 VM 使用 Amd Gpu 驅動程式擴充功能（即將推出）。
 * 請考慮使用 Active Directory 群組原則，以簡化多個 Vm 的群組原則設定。 如需在 Active Directory 網域中部署群組原則的詳細資訊，請參閱[使用群組原則物件](https://go.microsoft.com/fwlink/p/?LinkId=620889)。

@@ -16,16 +16,16 @@ ms.date: 11/15/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ca26c7277f69a817a48884acce116e3a66608ff
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 9a891f87c3d03cf95c8051ee684916bb55441cb0
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275725"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712233"
 ---
 # <a name="configure-provisioning-using-microsoft-graph-apis"></a>使用 Microsoft Graph Api 設定布建
 
-Azure 入口網站是一次為個別應用程式設定布建的便利方式。 但是，如果您要建立應用程式的數個（甚至上百個）實例，使用 Microsoft Graph Api 來自動化建立和設定應用程式會變得更容易。 本文概述如何透過 Api 將布建設定自動化。 這個方法通常用於[Amazon Web Services](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-azure-ad-sso)之類的應用程式。
+Azure 入口網站是一次為個別應用程式設定布建的便利方式。 但是，如果您要建立應用程式的數個（甚至上百個）實例，使用 Microsoft Graph Api 來自動化建立和設定應用程式會變得更容易。 本文概述如何透過 Api 將布建設定自動化。 這個方法通常用於[Amazon Web Services](../saas-apps/amazon-web-service-tutorial.md#configure-azure-ad-sso)之類的應用程式。
 
 **使用 Microsoft Graph Api 將布建設定自動化的步驟總覽**
 
@@ -48,7 +48,7 @@ Azure 入口網站是一次為個別應用程式設定布建的便利方式。 �
 1. 啟動[Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)
 1. 選取 [使用 Microsoft 登入] 按鈕，然後使用 Azure AD 全域管理員或應用程式管理員認證登入。
 
-    ![Graph 登入](./media/export-import-provisioning-mappings/wd_export_02.png)
+    ![Graph 登入](media/application-provisioning-configure-api/wd_export_02.png)
 
 1. 成功登入時，您會在左側窗格中看到使用者帳戶的詳細資料。
 

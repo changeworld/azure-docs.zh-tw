@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
-ms.openlocfilehash: 87f79f0ed21ec1f6a550c47f9f60d18511883300
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 9d71dd854c9a5059c2d0a48f57ad3ba5bb1eddf9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74768209"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721314"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中的記錄
 適用於 PostgreSQL 的 Azure 資料庫可讓您設定和存取 Postgres 的標準記錄。 記錄可用來識別、疑難排解和修復設定錯誤和效能較佳。 您可以設定和存取的記錄資訊包括錯誤、查詢資訊、自動資料清理記錄、連接和檢查點。 （不提供交易記錄檔的存取權）。
@@ -29,7 +29,7 @@ ms.locfileid: "74768209"
 若要瞭解如何在適用於 PostgreSQL 的 Azure 資料庫中設定參數，請參閱[入口網站檔](howto-configure-server-parameters-using-portal.md)或[CLI 檔](howto-configure-server-parameters-using-cli.md)。 
 
 > [!NOTE]
-> 設定大量的記錄檔（例如語句記錄）可能會增加顯著的效能負荷。 
+> 設定大量的記錄檔（例如語句記錄）可能會增加顯著的效能負擔。 
 
 ## <a name="access-log-files"></a>存取 .log 檔案
 適用於 PostgreSQL 的 Azure 資料庫中的預設記錄格式為 .log。 此記錄檔中的範例行會如下所示：
@@ -99,7 +99,7 @@ AzureDiagnostics
 | TenantId | 您的租用戶識別碼 |
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | 以 UTC 記錄記錄時的時間戳記 |
-| Type | 記錄的類型。 一律為 `AzureDiagnostics` |
+| 類型 | 記錄的類型。 一律為 `AzureDiagnostics` |
 | SubscriptionId | 伺服器所屬訂用帳戶的 GUID |
 | ResourceGroup | 伺服器所屬資源群組的名稱 |
 | ResourceProvider | 資源提供者名稱。 一律為 `MICROSOFT.DBFORPOSTGRESQL` |
