@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: ea57f8cdf5e1b2460f396445c67cfcab28f07525
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 08cca67455df4b2d28bba0a7410fccc11446fcdc
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75840698"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748830"
 ---
 本文針對以 Azure IoT 為主的物聯網 (IoT) 基礎結構提供更進一層的詳細資料。 它會連結到設定及部署每個元件的實作層級詳細資料。 另外也會提供各種競爭方法之間的比較和選擇。
 
@@ -77,7 +77,7 @@ IoT 中樞身分識別登錄可用來設定每一裝置的安全性認證和存�
 
 ## <a name="securing-the-connection"></a>保護連線安全
 
-IoT 裝置與 IoT 中樞之間的網際網路連線，是使用傳輸層安全性 (TLS) 標準進行保護。 Azure IoT 支援 [TLS 1.2](https://tools.ietf.org/html/rfc5246)、TLS 1.1 與 TLS 1.0 (依此順序)。 針對 TLS 1.0 的支援僅為提供回溯相容性。 可能的話，請[將您的中樞設定](../articles/iot-hub/iot-hub-tls.md)為使用 TLS 1.2，因為它提供最高的安全性。
+IoT 裝置與 IoT 中樞之間的網際網路連線，是使用傳輸層安全性 (TLS) 標準進行保護。 Azure IoT 支援 [TLS 1.2](https://tools.ietf.org/html/rfc5246)、TLS 1.1 與 TLS 1.0 (依此順序)。 針對 TLS 1.0 的支援僅為提供回溯相容性。 請檢查[IoT 中樞中的 tls 支援](../articles/iot-hub/iot-hub-tls-support.md)，以瞭解如何將中樞設定為使用 tls 1.2，因為它提供最高的安全性。
 
 ## <a name="securing-the-cloud"></a>保護雲端
 

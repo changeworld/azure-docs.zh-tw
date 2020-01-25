@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 06b54c3038e8b4f5879a93b696920534c2199008
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 4860dcac666f790fed199536338e50a967113c20
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74414615"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76749014"
 ---
 本文提供 Azure 虛擬機器（Vm）可用性功能的總覽。
 
@@ -62,7 +62,7 @@ Azure 虛擬機器擴展集可讓您建立和管理一組負載平衡的 Vm。 V
 
 **容錯網域和更新網域**
 
-虛擬機器擴展集會藉由調整容錯網域和更新網域，來簡化高可用性的設計。 您只需要定義擴展集的容錯網域計數。 擴展集可用的容錯網域數目可能會因區域而異。 請參閱[每個區域的容錯網域數目](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability#number-of-fault-domains-per-region)。
+虛擬機器擴展集會藉由調整容錯網域和更新網域，來簡化高可用性的設計。 您只需要定義擴展集的容錯網域計數。 擴展集可用的容錯網域數目可能會因區域而異。 請參閱[管理 Azure 中的虛擬機器可用性](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)。
 
 
 ## <a name="availability-sets"></a>可用性設定組

@@ -1,16 +1,16 @@
 ---
 author: cynthn
 ms.author: cynthn
-ms.date: 11/25/2019
+ms.date: 01/23/2020
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 2a763bbd50f009ae469be889e6ebae0b0d90848b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: ec1b77118f94501363d950d72a65a67ece79ff77
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795704"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748802"
 ---
 標準化的虛擬機器（VM）映射可讓組織遷移至雲端，並確保部署的一致性。 映射通常包含預先定義的安全性和設定，以及必要的軟體。 設定您自己的映射處理管線需要時間、基礎結構和設定，但使用 Azure VM 映射產生器時，只需提供簡單的設定來描述您的映射、將它提交至服務，然後建立映射並加以散發。
  
@@ -45,8 +45,10 @@ Azure 映射產生器服務會在這些區域中提供預覽。 映射可以散�
 AIB 將支援 Azure Marketplace 基本 OS 映射：
 - Ubuntu 18.04
 - Ubuntu 16.04
-- RHEL 7。6
-- CentOS 7。6
+- RHEL 7.6、7。7
+- CentOS 7.6、7。7
+- SLES 12 SP4
+- SLES 15、SLES 15 SP1
 - 適用于虛擬桌面的 Windows 10 RS5 Enterprise/Professional/Enterprise （EVD） 
 - Windows 2016
 - Windows 2019
@@ -92,20 +94,27 @@ az role assignment create \
     --scope /subscriptions/$subscriptionID/resourceGroups/<distributeResoureGroupName>
 ```
 
+您可以使用 PowerShell 指派存取權：
+
+```azurePowerShell-interactive
+New-AzRoleAssignment -ObjectId ef511139-6170-438e-a6e1-763dc31bdf74 -Scope /subscriptions/$subscriptionID/resourceGroups/<distributeResoureGroupName> -RoleDefinitionName Contributor
+```
+
+
 如果找不到服務帳戶，這可能表示您要新增角色指派的訂用帳戶尚未針對資源提供者註冊。
 
 
 ## <a name="costs"></a>費用
-You will incur some compute, networking and storage costs when creating, building and storing images with Azure Image Builder. These costs are similar to the costs incurred in manually creating custom images. For the resources, you will be charged at your Azure rates. 
+建立、建立和儲存映射時，您將會產生一些計算、網路和儲存體成本。 這些成本類似于手動建立自訂映射所產生的成本。 對於資源，您將以 Azure 費率向您收費。 
 
-During the image creation process, files are downloaded and stored in the `IT_<DestinationResourceGroup>_<TemplateName>` resource group, which will incur a small storage costs. If you do not want to keep these, delete the **Image Template** after the image build.
+在映射建立過程中，會下載檔案並將其儲存在 `IT_<DestinationResourceGroup>_<TemplateName>` 資源群組中，這將會產生少量的儲存成本。 如果您不想要保留這些，請在映射組建之後刪除**映射範本**。
  
-Image Builder creates a VM using a D1v2 VM size, and the storage, and networking needed for the VM. These resources will last for the duration of the build process, and will be deleted once Image Builder has finished creating the image. 
+映射產生器會使用 D1v2 VM 大小、儲存體，以及 VM 所需的網路功能，來建立 VM。 這些資源會在建立程式期間持續，而且一旦影像產生器完成影像的建立後，就會刪除。 
  
-Azure Image Builder will distribute the image to your chosen regions, which might incur network egress charges.
+Azure 映射產生器會將映射散發至您選擇的區域，這可能會產生網路輸出費用。
  
 ## <a name="next-steps"></a>後續步驟 
  
-To try out the Azure Image Builder, see the articles for building [Linux](../articles/virtual-machines/linux/image-builder.md) or [Windows](../articles/virtual-machines/windows/image-builder.md) images.
+若要試用 Azure 映射產生器，請參閱建立[Linux](../articles/virtual-machines/linux/image-builder.md)或[Windows](../articles/virtual-machines/windows/image-builder.md)映射的文章。
  
  

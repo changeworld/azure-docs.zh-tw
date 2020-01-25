@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: dd94f29317e703a68ba1b4a78639f635034d4492
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 16a0fa29c067262f1794528b16abfce662d05605
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75751883"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748764"
 ---
 <!-- F-series, Fs-series* -->
 
@@ -48,7 +48,7 @@ ACU：195 - 210
 - Windows Server 2016 或更新版本
 - Ubuntu 16.04 LTS 或更新版本，並搭配 Azure 微調核心（4.15 核心或更新版本）
 - SLES 12 SP2 或更新版本
-- RHEL 或 CentOS 6.7 到6.10，並已安裝 Microsoft 提供的 .LIS 封裝4.3.1 （或更新版本）
+- RHEL 或 CentOS 版本6.7 至6.10，並已安裝 Microsoft 提供的 .LIS 封裝4.3.1 （或更新版本）
 - RHEL 或 CentOS 7.3 版，並已安裝 Microsoft 提供的 .LIS 封裝4.2.1 （或更新版本）
 - RHEL 或 CentOS 7.6 版或更新版本
 - 使用 UEK4 或更新版本的 Oracle Linux

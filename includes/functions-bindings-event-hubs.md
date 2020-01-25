@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: 6324fd0e2957aea46fb5876aa8c91f0906205ccc
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: ec3a7b6420144278df66f693d9fd9933449b3d80
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76694613"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748806"
 ---
 ## <a name="trigger"></a>觸發程序
 
@@ -699,6 +699,6 @@ Python 不支援屬性。
 
 |屬性  |預設 | 說明 |
 |---------|---------|---------|
-|`maxBatchSize`|64|每個接收迴圈接收到的事件計數上限。|
-|`prefetchCount`|n/a|基礎 `EventProcessorHost`所使用的預設預先提取計數。|
+|`maxBatchSize`|10|每個接收迴圈接收到的事件計數上限。|
+|`prefetchCount`|300|基礎 `EventProcessorHost`所使用的預設預先提取計數。|
 |`batchCheckpointFrequency`|1|要在建立 EventHub 資料指標檢查點之前處理的事件批次數目。|
