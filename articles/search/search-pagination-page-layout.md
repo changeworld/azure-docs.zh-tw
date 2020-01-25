@@ -7,20 +7,25 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 31af550d4f499b4b4440a27037dc210bfdf0cb6f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 01/24/2020
+ms.openlocfilehash: c32e58a43b5409fd9f8ede536167d185270c6a22
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793458"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721569"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中使用搜尋結果
 本文會講解如何實作搜尋結果頁面的標準項目，例如次數總計、擷取文件、排序次序和導覽。 將資料或資訊提供給搜尋結果的頁面相關選項，會透過傳送至 Azure 認知搜尋服務的[搜尋檔](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)要求來指定。 
 
 在 REST API 中，要求會包含 GET 命令、路徑和查詢參數，這些會對服務通知要求是什麼，以及如何制訂回應。 在.NET SDK 中，對等 API 是 [DocumentSearchResult 類別](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1)。
 
-有幾個程式碼範例包含 web 前端介面，您可以在這裡找到：[紐約市作業示範應用程式](https://azjobsdemo.azurewebsites.net/)和[CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd)。
+若要為您的用戶端快速產生搜尋頁面，請探索下列選項：
+
++ 使用入口網站中的[應用程式](search-create-app-portal.md)產生器，建立具有搜尋列、多面向導覽和結果區域的 HTML 網頁。
++ 遵循在教學課程[中C#建立您的第一個應用程式](tutorial-csharp-create-first-app.md)，以建立功能用戶端。
+
+有幾個程式碼範例包含 web 前端介面，您可以在這裡找到：[紐約的作業示範應用程式](https://azjobsdemo.azurewebsites.net/)、 [JavaScript 使用即時示範網站的範例程式碼](https://github.com/liamca/azure-search-javascript-samples)，以及[CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd)。
 
 > [!NOTE]
 > 有效的要求包含一些項目，例如服務 URL 及路徑、HTTP 動詞命令、`api-version` 等。 為求簡單明瞭，我們縮減此範例，只突顯與分頁相關的語法。 如需要求語法的詳細資訊，請參閱[Azure 認知搜尋 REST api](https://docs.microsoft.com/rest/api/searchservice)。
@@ -88,13 +93,29 @@ ms.locfileid: "72793458"
 > 雖然預設評分對大多數案例都已足夠，但我們建議改用自訂評分設定檔來建立相關性。 自訂評分設定檔給您提升項目的方式，這會對您的企業更有助益。 如需詳細資訊，請參閱 [新增評分設定檔](index-add-scoring-profiles.md)。
 >
 
+## <a name="hit-highlighting"></a>搜尋結果醒目提示
+
+您可以將格式套用至搜尋結果中的相符詞彙，讓它更容易找到相符的。 [查詢要求](https://docs.microsoft.com/rest/api/searchservice/search-documents)上會提供搜尋反白顯示指示。 
+
+將格式套用至整個詞彙查詢。 對部分詞彙的查詢（例如模糊搜尋或在引擎中導致查詢展開的萬用字元搜尋）無法使用命中結果醒目提示。
+
+```http
+POST /indexes/hotels/docs/search?api-version=2019-05-06 
+    {  
+      "search": "something",  
+      "highlight": "Description"  
+    }
+```
+
+
+
 ## <a name="faceted-navigation"></a>多面向導覽
 
 搜尋導覽常見於結果頁面上，通常位於頁面的一側或頂端。 在 Azure 認知搜尋中，多面向導覽會根據預先定義的篩選準則提供自我導向的搜尋。 如需詳細資訊，請參閱[Azure 認知搜尋中](search-faceted-navigation.md)的多面向導覽。
 
 ## <a name="filters-at-the-page-level"></a>頁面層級的篩選器
 
-如果您的解決方案設計包含特定內容類型的專用搜尋頁面（例如，在頁面頂端列出部門的線上零售應用程式），您可以將[篩選條件運算式](search-filters.md)與**onClick**事件一起插入至以預先篩選的狀態開啟頁面。
+如果您的解決方案設計包含特定類型內容的專用搜尋頁面（例如，在頁面頂端列出部門的線上零售應用程式），您可以在**onClick**事件旁邊插入[篩選條件運算式](search-filters.md)，以在預先篩選的狀態中開啟頁面。
 
 您可以傳送篩選器，但不一定要有搜尋運算式。 例如，下列要求會篩選品牌名稱，只傳回符合該名稱的文件。
 
