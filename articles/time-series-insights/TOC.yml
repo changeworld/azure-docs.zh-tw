@@ -69,7 +69,7 @@
               href: time-series-insights-update-query-data-csharp.md
             - name: Power BI 整合
               href: concepts-power-bi.md
-- name: 使用說明指南
+- name: 操作指南
   items:
     - name: 授與資料存取
       href: time-series-insights-data-access.md
@@ -91,7 +91,7 @@
           href: time-series-insights-send-events.md
         - name: 調整您的環境
           href: time-series-insights-how-to-scale-your-environment.md
-        - name: 適用於查詢的 Shape JSON
+        - name: 用於輸入和查詢的 Shape JSON
           href: how-to-shape-query-json.md
         - name: 移轉節流
           href: time-series-insights-environment-mitigate-latency.md
@@ -105,9 +105,9 @@
           href: time-series-insights-update-how-to-id.md
         - name: 診斷和疑難排解
           href: time-series-insights-update-how-to-troubleshoot.md
-        - name: 資料模型
+        - name: 資料模型化
           href: time-series-insights-update-how-to-tsm.md
-        - name: 適用於查詢的 Shape JSON
+        - name: 用於輸入和查詢的 Shape JSON
           href: time-series-insights-update-how-to-shape-events.md
         - name: 連線至 Power BI
           href: how-to-connect-power-bi.md
@@ -141,7 +141,7 @@
       href: time-series-insights-customer-data-requests.md
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/?category=iot'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/time-series-insights/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'

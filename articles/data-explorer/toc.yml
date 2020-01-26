@@ -27,9 +27,11 @@
       href: visualize-power-bi.md
 - name: 概念
   items:
-    - name: 資料擷取概觀
-      displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
-      href: ingest-data-overview.md
+    - name: 資料擷取
+      items:
+        - name: 資料擷取概觀
+          displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
+          href: ingest-data-overview.md
     - name: 資料視覺效果概觀
       href: viz-overview.md
     - name: 安全性概觀
@@ -84,18 +86,20 @@
           href: ingest-data-one-click.md
         - name: 串流擷取
           href: ingest-data-streaming.md
+        - name: 使用 SDK
+          items:
+            - name: Python
+              href: python-ingest-data.md
+            - name: Node SDK
+              href: node-ingest-data.md
+            - name: .NET Standard SDK
+              href: net-standard-ingest-data.md
         - name: Kafka
           href: ingest-data-kafka.md
-        - name: Python
-          href: python-ingest-data.md
-        - name: Node SDK
-          href: node-ingest-data.md
-        - name: .NET Standard SDK
-          href: net-standard-ingest-data.md
         - name: Logstash
           href: ingest-data-logstash.md
-        - name: 使用 Azure Data Factory 複製資料
-          href: data-factory-load-data.md
+        - name: jason 格式化的資料
+          href: ingest-json-formats.md
     - name: 查詢資料
       items:
         - name: 撰寫查詢
@@ -204,6 +208,8 @@
           items:
             - name: 與 Data Factory 整合
               href: data-factory-integration.md
+            - name: 使用 Azure Data Factory 複製資料
+              href: data-factory-load-data.md
             - name: 使用 Azure Data Factory 範本大量複製資料
               href: data-factory-template.md
             - name: 使用 Azure Data Factory 執行控制項

@@ -501,6 +501,8 @@
               href: ./hadoop/apache-ambari-troubleshoot-fivezerotwo-error.md
             - name: Apache Ambari 顯示當機的主機和服務
               href: ./hadoop/apache-ambari-troubleshoot-down-hosts-services.md
+            - name: Apache Ambari 過時警示
+              href: ./hadoop/apache-ambari-troubleshoot-stale-alerts.md
             - name: 針對速度變慢或失敗的 HDInsight 叢集進行疑難排解
               href: ./hdinsight-troubleshoot-failed-cluster.md
             - name: Apache Hadoop HDFS 疑難排解
@@ -509,6 +511,8 @@
               href: ./hdinsight-troubleshoot-yarn.md
             - name: Data Lake Store 檔案疑難排解
               href: ./hadoop/hdinsight-troubleshoot-data-lake-files.md
+            - name: Apache Ambari 目錄警示
+              href: ./hadoop/apache-ambari-troubleshoot-directory-alerts.md
 - name: Apache Kafka
   items:
     - name: 概觀

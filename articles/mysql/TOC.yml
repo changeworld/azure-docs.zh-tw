@@ -95,6 +95,10 @@
           href: concepts-data-access-security-private-link.md
         - name: 資料加密
           href: concepts-data-encryption-mysql.md
+        - name: 資料加密
+          href: concepts-data-encryption-mysql.md
+        - name: Azure AD 驗證
+          href: concepts-azure-ad-authentication.md
     - name: 業務持續性
       items:
         - name: 業務持續性簡介
@@ -238,6 +242,10 @@
       items:
         - name: Azure 入口網站
           href: howto-data-encryption-portal.md
+    - name: Azure AD 整合
+      items:
+        - name: 設定 Azure AD 整合
+          href: howto-configure-sign-in-azure-ad-authentication.md
     - name: 重新啟動伺服器
       items:
         - name: Azure 入口網站
@@ -260,7 +268,7 @@
       href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbformysql'
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/?category=databases'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/mysql/'
     - name: MSDN 論壇
       href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDatabaseforMySQL'
