@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 01/22/2020
+ms.date: 01/24/2020
 ms.author: jgao
-ms.openlocfilehash: 125fefbb1d83db8b6114b2d09f5bd6da885159ba
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: f18c9c6efb17f84446b9fee3d2df2c0977bed0c4
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547637"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76757298"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>在範本中使用部署腳本（預覽）
 
@@ -35,20 +35,20 @@ ms.locfileid: "76547637"
 - 可以指定腳本輸出，並將它們傳回至部署。
 
 > [!NOTE]
-> 部署腳本目前為預覽狀態。 若要使用它，您必須[註冊預覽版](https://aka.ms/armtemplatepreviews)。
+> 部署指令碼目前為預覽狀態。 若要加以使用，您必須[註冊預覽版](https://aka.ms/armtemplatepreviews)。
 
 > [!IMPORTANT]
-> 系統會在相同的資源群組中建立兩個部署腳本資源（儲存體帳戶和容器實例），以進行腳本的執行和疑難排解。 當部署腳本在終端機狀態中執行時，腳本服務通常會刪除這些資源。 在資源刪除之前，您需支付資源費用。 若要深入瞭解，請參閱[清理部署腳本資源](#clean-up-deployment-script-resources)。
+> 系統會在相同的資源群組中建立兩個部署指令碼資源 (儲存體帳戶和容器執行個體)，用以執行指令碼和疑難排解。 當部署腳本在終端機狀態中執行時，腳本服務通常會刪除這些資源。 在資源刪除之前，您需支付資源費用。 若要深入瞭解，請參閱[清理部署腳本資源](#clean-up-deployment-script-resources)。
 
 ## <a name="prerequisites"></a>必要條件
 
-- **使用者指派的受控識別，在訂用帳戶層級具有參與者的角色**。 此身分識別是用來執行部署腳本。 若要建立一個，請參閱使用 Azure 入口網站或[使用 Azure CLI](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)[建立使用者指派的受控識別](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)，或使用[Azure PowerShell](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)。 當您部署範本時，您需要識別識別碼。 身分識別的格式為：
+- **使用者指派的受控識別，且在訂用帳戶層級上具有參與者角色**。 此身分識別會用來執行部署指令碼。 若要建立一個，請參閱使用 Azure 入口網站或[使用 Azure CLI](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)[建立使用者指派的受控識別](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)，或使用[Azure PowerShell](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)。 您在部署範本時將需要身分識別的識別碼。 此身分識別的格式為：
 
   ```json
   /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<IdentityID>
   ```
 
-  藉由提供資源組名和識別名稱，使用下列 PowerShell 腳本來取得識別碼。
+  使用下列 PowerShell 指令碼，藉由提供資源組名和識別名稱來取得識別碼。
 
   ```azurepowershell-interactive
   $idGroup = Read-Host -Prompt "Enter the resource group name for the managed identity"
@@ -78,7 +78,7 @@ ms.locfileid: "76547637"
   },
   "properties": {
     "forceUpdateTag": 1,
-    "azPowerShellVersion": "2.8",
+    "azPowerShellVersion": "3.0",
     "arguments": "[concat('-name ', parameters('name'))]",
     "scriptContent": "
       param([string] $name)
@@ -103,15 +103,15 @@ ms.locfileid: "76547637"
 
 - 身分**識別**：部署腳本服務會使用使用者指派的受控識別來執行腳本。 目前只支援使用者指派的受控識別。
 - **種類**：指定腳本的類型。 目前僅支援 Azure PowerShell 的腳本。 此值為**azurepowershell 來**。
-- **forceUpdateTag**：在範本部署之間變更此值會強制部署腳本重新執行。 使用需要設定為參數之 defaultValue 的 newGuid （）或 utcNow （）函數。 若要深入瞭解，請參閱多次[執行腳本](#run-script-more-than-once)。
+- **forceUpdateTag**：在範本部署之間變更此值會強制部署腳本重新執行。 使用需要設定為參數之 defaultValue 的 newGuid （）或 utcNow （）函數。 若要深入了解，請參閱[執行指令碼多次](#run-script-more-than-once)。
 - **azPowerShellVersion**：指定要使用的 Azure PowerShell 模組版本。 部署腳本目前支援版本2.7.0、2.8.0 和3.0.0。
-- **引數**：指定參數值。 這些值會以空格分隔。
+- **引數**：指定參數值。 多個值應以空格分隔。
 - **scriptContent**：指定腳本內容。 若要執行外部腳本，請改用 `primaryScriptUri`。 如需範例，請參閱[使用內嵌腳本](#use-inline-scripts)和[使用外部腳本](#use-external-scripts)。
 - **primaryScriptUri**：使用支援的 powershell 副檔名，將可公開存取的 Url 指定給主要 powershell 腳本。
 - **supportingScriptUris**：指定可公開存取的 url 陣列，以支援將在 `ScriptContent` 或 `PrimaryScriptUri`中呼叫的 powershell 檔案。
-- **timeout**：指定以[ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601)指定的允許腳本執行時間上限。 預設值為**P1D**。
-- **cleanupPreference**。 指定當腳本執行處於終止狀態時，清除部署資源的喜好設定。 預設設定**一律**為，這表示刪除資源時（儘管終端機狀態為 [成功]、[失敗]、[已取消]）。 若要深入瞭解，請參閱[清除部署腳本資源](#clean-up-deployment-script-resources)。
-- **retentionInterval**：指定服務在部署腳本執行達到結束狀態之後，保留部署腳本資源的間隔。 當此持續時間到期時，將會刪除部署腳本資源。 持續時間是以[ISO 8601 模式](https://en.wikipedia.org/wiki/ISO_8601)為基礎。 預設值為**P1D**，這表示七天。 當 cleanupPreference 設定為*OnExpiration*時，會使用這個屬性。 目前未啟用*OnExpiration*屬性。 若要深入瞭解，請參閱[清除部署腳本資源](#clean-up-deployment-script-resources)。
+- **timeout**：指定以[ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601)指定的允許腳本執行時間上限。 預設值為 **P1D**。
+- **cleanupPreference**。 指定當腳本執行處於終止狀態時，清除部署資源的喜好設定。 預設設定**一律**為，這表示刪除資源時（儘管終端機狀態為 [成功]、[失敗]、[已取消]）。 若要深入了解，請參閱[清除部署指令碼資源](#clean-up-deployment-script-resources)。
+- **retentionInterval**：指定服務在部署腳本執行達到結束狀態之後，保留部署腳本資源的間隔。 當此持續時間到期時，將會刪除部署腳本資源。 持續時間是以[ISO 8601 模式](https://en.wikipedia.org/wiki/ISO_8601)為基礎。 預設值為**P1D**，這表示七天。 當 cleanupPreference 設定為*OnExpiration*時，會使用這個屬性。 目前未啟用*OnExpiration*屬性。 若要深入了解，請參閱[清除部署指令碼資源](#clean-up-deployment-script-resources)。
 
 ## <a name="use-inline-scripts"></a>使用內嵌腳本
 
@@ -194,7 +194,7 @@ reference('<ResourceName>').output.text
 
 使用者腳本、執行結果和 stdout 檔案會儲存在儲存體帳戶的檔案共用中。 有一個名為**azscripts**的資料夾。 在資料夾中，輸入和輸出檔案有兩個資料夾： **azscriptinput**和**azscriptoutput**。
 
-輸出檔案夾包含**executionresult**和腳本輸出檔案。 您可以在**executionresult**中看到腳本執行錯誤訊息。 只有在腳本執行成功時，才會建立輸出檔案。 輸入資料夾包含系統 PowerShell 腳本檔案和使用者部署腳本檔案。 您可以使用已修改的檔案來取代使用者部署腳本檔案，然後從 Azure 容器實例重新執行部署腳本。
+輸出檔案夾包含 **executionresult.json** 和指令碼輸出檔案。 您可以在**executionresult**中看到腳本執行錯誤訊息。 只有在腳本執行成功時，才會建立輸出檔案。 輸入資料夾包含系統 PowerShell 指令檔和使用者部署指令檔。 您可以使用已修改的檔案來取代使用者部署腳本檔案，然後從 Azure 容器實例重新執行部署腳本。
 
 您可以使用 REST API，在資源群組層級和訂用帳戶層級取得部署腳本資源部署資訊：
 

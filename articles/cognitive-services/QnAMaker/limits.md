@@ -1,22 +1,14 @@
 ---
 title: 限制和界限 - QnA Maker
-titleSuffix: Azure Cognitive Services
 description: QnA Maker 知識庫和服務的某些部分有中繼資料的限制。 請務必將您的知識庫保持在這些限制範圍內，以便進行測試及發佈。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: article
-ms.date: 12/10/2019
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: ddf2cb5730f123038c5dbde7ab07b4022f021ced
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/23/2020
+ms.openlocfilehash: 32e12d9e983795d2fb403a5b6bc304289ece92c2
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75381115"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760227"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker 知識庫的限制和界限
 
@@ -33,6 +25,15 @@ ms.locfileid: "75381115"
  比方說，如果您的層次有 15 個允許的索引，您可以發佈 14 個知識庫 (每個已發佈的知識庫 1 個索引)。 第十五個索引 (`testkb`) 用於撰寫和測試所有知識庫。
 
 ## <a name="extraction-limits"></a>擷取限制
+
+### <a name="file-naming-constraints"></a>檔案命名條件約束
+
+檔案名不能包含下列字元：
+
+|不要使用字元|
+|--|
+|單引號 `'`|
+|雙引號 `"`|
 
 ### <a name="maximum-file-size"></a>檔案大小上限
 

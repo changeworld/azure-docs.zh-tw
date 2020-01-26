@@ -1,6 +1,6 @@
 ---
-title: Azure 服務匯流排訊息傳輸、鎖定和安置 | Microsoft Docs
-description: 服務匯流排訊息傳輸和安置作業概觀
+title: Azure 服務匯流排訊息傳輸、鎖定和結算
+description: 本文提供 Azure 服務匯流排訊息傳輸、鎖定和結算作業的總覽。
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 01/24/2019
 ms.author: aschhab
-ms.openlocfilehash: 9aaada1ede8912b8b70f37c628ec918eca9be9d2
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: a2c353d612280981a83b32463d34efdc70878495
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676271"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759273"
 ---
 # <a name="message-transfers-locks-and-settlement"></a>訊息傳輸、鎖定和安置
 
@@ -96,7 +96,7 @@ for (int i = 0; i < 100; i++)
 
 ## <a name="settling-receive-operations"></a>安置接收作業
 
-對於接收作業，服務匯流排 API 用戶端會啟用兩個不同的 Explicit 模式：*Receive-and-Delete* 和 *Peek-Lock*。
+對於接收作業，服務匯流排 API 用戶端會啟用兩個不同的 Explicit 模式：「接收並刪除」和「查看鎖定」。
 
 ### <a name="receiveanddelete"></a>ReceiveAndDelete
 

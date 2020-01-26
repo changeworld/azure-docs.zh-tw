@@ -4,14 +4,14 @@ description: 列出可跨 Azure 區域移動的 Azure 資源類型
 author: rayne-wiselman
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 11/21/2019
+ms.date: 01/20/2020
 ms.author: raynew
-ms.openlocfilehash: 60b8708458e081d66514e092edc9ef9af7c33494
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9bc7dc66ccf3049ac878f7871c816e5ade1afde5
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75485243"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760703"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>跨區域移動 Azure 資源的支援
 
@@ -186,7 +186,7 @@ ms.locfileid: "75485243"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | 服務 | 否 |
+> | 服務 |  是 | 
 
 ## <a name="microsoftappconfiguration"></a>AppConfiguration
 
@@ -1001,7 +1001,7 @@ ms.locfileid: "75485243"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | vaults | 是（我認為備份保存庫嗎？ | 
+> | vaults | 不會。 [停用保存庫並重新](https://docs.microsoft.com/azure/site-recovery/move-vaults-across-regions)建立 Site Recovery  | 
 
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
@@ -1142,7 +1142,7 @@ ms.locfileid: "75485243"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | storageaccounts | 是的？？ | 
+> | storageaccounts | 是 | 
 
 ## <a name="microsoftstoragecache"></a>StorageCache
 
@@ -1220,7 +1220,7 @@ ms.locfileid: "75485243"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | stores | 否 | 
+> | 商店 | 否 | 
 
 ## <a name="microsoftvirtualmachineimages"></a>Microsoft.VirtualMachineImages
 

@@ -9,12 +9,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/07/2020
 tags: connectors
-ms.openlocfilehash: ebedb68f8826642437f53e5c5fa8cd0843e7c20e
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: dccb715c974037b4e3080f3e51576feae34c03df
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75665820"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76757963"
 ---
 # <a name="manage-ibm-informix-database-resources-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 管理 IBM Informix 資料庫資源
 
@@ -117,7 +117,7 @@ ms.locfileid: "75665820"
 
 1. 若要查看輸入，請在 [**輸入連結**] 底下，選取 [URL] 連結。 若要查看輸出，請在 [**輸出連結**連結] 底下，選取 [URL] 連結。 以下是一些範例輸出：
 
-   * [**取得資料表**] 會顯示資料表清單：
+   * **Get_tables**會顯示資料表清單：
 
      ![來自「取得資料表」動作的輸出](./media/connectors-create-api-informix/InformixconnectorGetTablesLogicAppRunOutputs.png)
 

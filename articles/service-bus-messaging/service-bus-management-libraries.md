@@ -1,6 +1,6 @@
 ---
 title: Azure 服務匯流排管理程式庫| Microsoft Docs
-description: 從 .NET 管理服務匯流排命名空間和傳訊實體。
+description: 本文說明如何使用 Azure 服務匯流排管理程式庫，以動態方式布建服務匯流排的命名空間和實體。
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 06/05/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: faf0a5893b7de276b9a411745500daef4d39da6b
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: d0e90d9278ede97de04ad8efeaa59d94a4567f66
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816071"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756261"
 ---
 # <a name="service-bus-management-libraries"></a>服務匯流排管理程式庫
 
@@ -32,7 +32,7 @@ Azure 服務匯流排管理程式庫可以動態佈建服務匯流排命名空�
 * 建立、更新、刪除主題
 * 建立、更新、刪除訂用帳戶
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要開始使用服務匯流排管理程式庫，您必須使用 Azure Active Directory (Azure AD) 服務來驗證。 Azure AD 會要求您以提供 Azure 資源存取權的服務主體來進行驗證。 如需建立服務主體的詳細資訊，請參閱以下其中一篇文章：  
 
@@ -77,7 +77,7 @@ Azure 服務匯流排管理程式庫可以動態佈建服務匯流排命名空�
    ```
 
 ## <a name="complete-code-to-create-a-queue"></a>完整的程式碼以建立佇列
-以下是建立服務匯流排佇列的完整程式碼: 
+以下是建立服務匯流排佇列的完整程式碼： 
 
 ```csharp
 using System;
@@ -164,7 +164,7 @@ namespace SBusADApp
 ```
 
 > [!IMPORTANT]
-> 如需完整範例, 請參閱[GitHub 上的 .net 管理範例](https://github.com/Azure-Samples/service-bus-dotnet-management/)(英文)。 
+> 如需完整範例，請參閱[GitHub 上的 .net 管理範例](https://github.com/Azure-Samples/service-bus-dotnet-management/)（英文）。 
 
 ## <a name="next-steps"></a>後續步驟
 [Microsoft.Azure.Management.ServiceBus API 參考](/dotnet/api/Microsoft.Azure.Management.ServiceBus)

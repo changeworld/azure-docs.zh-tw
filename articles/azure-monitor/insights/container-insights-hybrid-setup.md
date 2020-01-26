@@ -2,13 +2,13 @@
 title: 使用適用于容器的 Azure 監視器來設定混合式 Kubernetes 叢集 |Microsoft Docs
 description: 本文說明如何設定容器的 Azure 監視器，以監視 Azure Stack 或其他環境上裝載的 Kubernetes 叢集。
 ms.topic: conceptual
-ms.date: 12/04/2019
-ms.openlocfilehash: d6218550f4b5a3a59b4addc69b19ff11e282d45a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 01/24/2020
+ms.openlocfilehash: 7796cc7300f34a7a412495754c083b112ba05041
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977745"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759887"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>使用適用于容器的 Azure 監視器來設定混合式 Kubernetes 叢集
 
@@ -39,7 +39,7 @@ ms.locfileid: "75977745"
     |*.blob.core.windows.net |連接埠 443 |  
     |*. dc.services.visualstudio.com |連接埠 443 |
 
-* 容器化代理程式需要在叢集中的所有節點上開啟 `cAdvisor port: 10255`，才能收集效能計量。
+* 容器化代理程式需要在叢集中的所有節點上開啟 Kubelet 的 `cAdvisor secure port: 10250` 或 `unsecure port :10255`，才能收集效能計量。 我們建議您在 Kubelet 的 cAdvisor 上設定 `secure port: 10250` （如果尚未設定）。
 
 * 容器化代理程式需要在容器上指定下列環境變數，才能與叢集中的 Kubernetes API 服務進行通訊，以收集清查資料 `KUBERNETES_SERVICE_HOST` 和 `KUBERNETES_PORT_443_TCP_PORT`。
 
@@ -290,12 +290,12 @@ ms.locfileid: "75977745"
 * OmsAgent 健全狀況服務正在執行
 * 在容器化代理程式上設定的 Log Analytics 工作區識別碼和金鑰，與深入解析所設定的工作區相符。
 * 驗證所有 Linux 背景工作角色節點都具有 `kubernetes.io/role=agent` 標籤來排程 rs pod。 如果不存在，請將它加入。
-* [驗證] `cAdvisor port: 10255` 會在叢集中的所有節點上開啟。
+* 在叢集中的所有節點上開啟 [驗證 `cAdvisor secure port:10250`] 或 [`unsecure port: 10255`]。
 
 若要使用 Azure PowerShell 執行，請在包含腳本的資料夾中使用下列命令：
 
 ```powershell
-.\TroubleshootError_nonAzureK8s.ps1 - azureLogAnalyticsWorkspaceResourceId </subscriptions/<subscriptionId>/resourceGroups/<resourcegroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName> -kubeConfig <kubeConfigFile>
+.\TroubleshootError_nonAzureK8s.ps1 - azureLogAnalyticsWorkspaceResourceId </subscriptions/<subscriptionId>/resourceGroups/<resourcegroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName> -kubeConfig <kubeConfigFile> -clusterContextInKubeconfig <clusterContext>
 ```
 
 ## <a name="next-steps"></a>後續步驟

@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 1/08/2020
+ms.date: 1/23/2020
 ms.author: raynew
-ms.openlocfilehash: e5fdf0a14586a0a2ea97d222f4be481e8fe31e51
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 852059317c45dec4885b3f56de5617695d82e1e8
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754512"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759801"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure 至 Azure 災害復原架構
 
@@ -146,7 +146,7 @@ Site Recovery 會依照下列方式建立快照集：
 **規則** |  **詳細資料** | **服務標記**
 --- | --- | --- 
 允許 HTTPS 輸出：連接埠 443 | 允許對應至來源區域儲存體帳戶的範圍 | 容量.\<區功能變數名稱稱 >
-允許 HTTPS 輸出：連接埠 443 | 允許對應至 Azure Active Directory (Azure AD) 的範圍。<br/><br/> 如果日後新增 Azure AD 位址，您將必須建立新的網路安全性群組 (NSG) 規則。  | AzureActiveDirectory
+允許 HTTPS 輸出：連接埠 443 | 允許對應至 Azure Active Directory 的範圍（Azure AD）  | AzureActiveDirectory
 允許 HTTPS 輸出：連接埠 443 | 允許對應至目的地區域中事件中樞的範圍。 | EventsHub.\<區功能變數名稱稱 >
 允許 HTTPS 輸出：連接埠 443 | 允許對應至 Azure Site Recovery 的範圍  | AzureSiteRecovery
 
@@ -155,7 +155,7 @@ Site Recovery 會依照下列方式建立快照集：
 **規則** |  **詳細資料** | **服務標記**
 --- | --- | --- 
 允許 HTTPS 輸出：連接埠 443 | 允許與目的地區域中的儲存體帳戶對應的範圍 | 容量.\<區功能變數名稱稱 >
-允許 HTTPS 輸出：連接埠 443 | 允許對應至 Azure AD 的範圍。<br/><br/> 如果日後新增 Azure AD 位址，您將必須建立新的 NSG 規則。  | AzureActiveDirectory
+允許 HTTPS 輸出：連接埠 443 | 允許對應至 Azure AD 的範圍  | AzureActiveDirectory
 允許 HTTPS 輸出：連接埠 443 | 允許對應至來源區域中事件中樞的範圍。 | EventsHub.\<區功能變數名稱稱 >
 允許 HTTPS 輸出：連接埠 443 | 允許對應至 Azure Site Recovery 的範圍  | AzureSiteRecovery
 

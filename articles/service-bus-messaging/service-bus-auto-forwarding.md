@@ -1,6 +1,6 @@
 ---
-title: 自動轉送 Azure 服務匯流排傳訊實體 | Microsoft Docs
-description: 如何將服務匯流排佇列或訂用帳戶鏈結至另一個佇列或主題。
+title: 自動轉送 Azure 服務匯流排訊息實體
+description: 本文說明如何將 Azure 服務匯流排的佇列或訂用帳戶連結至另一個佇列或主題。
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 1d7b76a58a427b687d0dc36d13cfc00f32196853
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 8b8883b579233962de61e7247e6ac1cbcb2a6d80
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390139"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761044"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>使用自動轉寄鏈結服務匯流排實體
 
@@ -27,7 +27,7 @@ ms.locfileid: "70390139"
 
 ## <a name="using-autoforwarding"></a>使用自動轉寄
 
-您可以藉由在來源的[queuedescription.forwardto][QueueDescription]或[QueueDescription][SubscriptionDescription]物件上設定[QueueDescription queuedescription.forwardto][QueueDescription.ForwardTo]或[SubscriptionDescription][SubscriptionDescription.ForwardTo]屬性來啟用自動轉寄，如下所示：下列範例：
+您可以藉由在來源的[queuedescription.forwardto][QueueDescription]或[QueueDescription][SubscriptionDescription]物件上設定[QueueDescription queuedescription.forwardto][QueueDescription.ForwardTo]或[SubscriptionDescription][SubscriptionDescription.ForwardTo]屬性來啟用自動轉寄，如下列範例所示：
 
 ```csharp
 SubscriptionDescription srcSubscription = new SubscriptionDescription (srcTopic, srcSubscriptionName);

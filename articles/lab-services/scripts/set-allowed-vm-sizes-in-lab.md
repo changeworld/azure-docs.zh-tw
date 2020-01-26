@@ -1,6 +1,6 @@
 ---
-title: PowerShell 指令碼：設定 Azure 實驗室服務中允許的 VM 大小 |Microsoft Docs
-description: 這個 PowerShell 指令碼會在 Azure 實驗室服務中設定允許的 VM 大小。
+title: PowerShell 指令碼：在 Azure 實驗室服務中設定允許的 VM 大小 | Microsoft Docs
+description: 本文包含 PowerShell 腳本範例，可在 Azure 實驗室服務中設定允許的虛擬機器（VM）大小。
 services: lab-services
 author: spelluru
 manager: ''
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 0c82e304d3e3d8df1206c7c05883399b74229af7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a1b0e9a4aed475f04ec8dcffa9bc95b7c7c713e1
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160539"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760439"
 ---
 # <a name="use-powershell-to-set-allowed-vm-sizes-in-azure-lab-services"></a>使用 PowerShell 在 Azure 實驗室服務中設定允許的 VM 大小
 
@@ -27,7 +27,7 @@ ms.locfileid: "66160539"
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 * **實驗室**。 指令碼需要您擁有現有的實驗室。 
 
 ## <a name="sample-script"></a>範例指令碼
@@ -38,9 +38,9 @@ ms.locfileid: "66160539"
 
 此指令碼會使用下列命令： 
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
-| Find-AzResource | 根據指定的參數搜尋資源。 |
+| 尋找-Get-azresource | 根據指定的參數搜尋資源。 |
 | [Get-AzResource](/powershell/module/az.resources/get-azresource) | 取得資源。 |
 | [Set-AzResource](/powershell/module/az.resources/set-azresource) | 修改資源。 |
 | [New-AzResource](/powershell/module/az.resources/new-azresource) | 建立資源。 |

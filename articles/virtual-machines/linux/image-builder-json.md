@@ -1,18 +1,18 @@
 ---
 title: 建立 Azure 映射構建者範本（預覽）
 description: 瞭解如何建立範本以與 Azure 映射產生器搭配使用。
-author: cynthn
-ms.author: cynthn
-ms.date: 07/31/2019
+author: danis
+ms.author: danis
+ms.date: 01/23/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 4a411603ca5c3c79da0d596396d8fde80b568af2
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9183805e2817459ac2c408648981b6989edf4e62
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763074"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760006"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>預覽：建立 Azure 映射產生器範本 
 
@@ -28,11 +28,15 @@ Azure 映射產生器會使用 json 檔案，將資訊傳遞至映射產生器�
     "tags": {
         "<name": "<value>",
         "<name>": "<value>"
-             },
+             }
     "identity":{},           
     "dependsOn": [], 
     "properties": { 
         "buildTimeoutInMinutes": <minutes>, 
+        "vmProfile": 
+            {
+            "vmSize": "<vmSize>"
+            },
         "build": {}, 
         "customize": {}, 
         "distribute": {} 
@@ -64,6 +68,24 @@ Azure 映射產生器會使用 json 檔案，將資訊傳遞至映射產生器�
 
 ```json
     "location": "<region>",
+```
+## <a name="vmprofile"></a>vmProfile
+根據預設，映射產生器會使用「Standard_D1_v2」組建 VM，您可以覆寫此範例，例如，如果您想要自訂 GPU VM 的映射，您需要 GPU VM 大小。 這是選擇性的。
+
+```json
+ {
+    "vmSize": "Standard_D1_v2"
+ },
+```
+
+## <a name="osdisksizegb"></a>osDiskSizeGB
+
+根據預設，映射產生器不會變更影像的大小，它會使用來源映射的大小。 您可以調整 OS 磁片（Win 和 Linux）的大小，請注意，請勿小於作業系統所需的最小必要空間。 這是選擇性的，值為0表示保留與來源影像相同的大小。 這是選擇性的。
+
+```json
+ {
+    "osDiskSizeGB": 100
+ },
 ```
 
 ## <a name="tags"></a>標籤
@@ -135,13 +157,7 @@ Azure 映射產生器僅支援使用已發佈 Red Hat Enterprise Linux 7.x 二�
 > 連結的存取權杖會以頻繁的間隔重新整理，因此每次您想要提交範本時，您都必須檢查 RH 連結位址是否已變更。
  
 ### <a name="platformimage-source"></a>PlatformImage 來源 
-Azure 映射產生器支援下列 Azure Marketplace 映射：
-* Ubuntu 18.04
-* Ubuntu 16.04
-* RHEL 7。6
-* CentOS 7。6
-* Windows 2016
-* Windows 2019
+Azure 映射產生器支援 Windows Server 和用戶端，以及 Linux Azure Marketplace 映射，如需完整清單，請參閱[這裡](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#os-support)。 
 
 ```json
         "source": {
@@ -220,7 +236,8 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
             {
                 "type": "Shell",
                 "name": "<name>",
-                "scriptUri": "<path to script>"
+                "scriptUri": "<path to script>",
+                "sha256Checksum": "<sha256 checksum>"
             },
             {
                 "type": "Shell",
@@ -246,7 +263,8 @@ Shell 自訂程式支援執行 shell 腳本，必須可公開存取，才能存�
         { 
             "type": "Shell", 
             "name": "<name>", 
-            "scriptUri": "<link to script>"        
+            "scriptUri": "<link to script>",
+            "sha256Checksum": "<sha256 checksum>"       
         }, 
     ], 
         "customize": [ 
@@ -266,7 +284,12 @@ OS 支援： Linux
 - **名稱**-追蹤自訂的名稱 
 - **scriptUri** -檔案位置的 URI 
 - shell 命令的**內嵌**陣列，以逗號分隔。
- 
+- **sha256Checksum** -檔案的 sha256 總和檢查碼值，您會在本機產生此檔案，而映射產生器將會進行總和檢查碼和驗證。
+    * 若要使用 Mac/Linux 上的終端機來產生 sha256Checksum，請執行： `sha256sum <fileName>`
+
+
+對於以超級使用者權限執行的命令，其前面必須加上 `sudo`。
+
 > [!NOTE]
 > 以 RHEL ISO 來源執行 shell 自訂程式時，您必須確定第一個自訂命令介面會在進行任何自訂之前，先處理 Red Hat 權利伺服器的註冊。 完成自訂之後，腳本應該會向權利伺服器取消註冊。
 
@@ -275,12 +298,15 @@ OS 支援： Linux
 
 ```json 
      "customize": [ 
-         {
-            "type": "WindowsRestart", 
-            "restartCommand": "shutdown /r /f /t 0 /c", 
-            "restartCheckCommand": "echo Azure-Image-Builder-Restarted-the-VM  > buildArtifacts/azureImageBuilderRestart.txt",
-            "restartTimeout": "5m"
-         }],
+
+            {
+                "type": "WindowsRestart",
+                "restartCommand": "shutdown /r /f /t 0 /c", 
+                "restartCheckCommand": "echo Azure-Image-Builder-Restarted-the-VM  > c:\\buildArtifacts\\azureImageBuilderRestart.txt",
+                "restartTimeout": "5m"
+            }
+  
+        ],
 ```
 
 OS 支援： Windows
@@ -300,13 +326,16 @@ Shell 自訂程式支援執行 PowerShell 腳本和內嵌命令，必須可公�
         { 
              "type": "PowerShell",
              "name":   "<name>",  
-             "scriptUri": "<path to script>" 
+             "scriptUri": "<path to script>",
+             "runElevated": "<true false>",
+             "sha256Checksum": "<sha256 checksum>" 
         },  
         { 
              "type": "PowerShell", 
              "name": "<name>", 
              "inline": "<PowerShell syntax to run>", 
-             "valid_exit_codes": "<exit code>" 
+             "valid_exit_codes": "<exit code>",
+             "runElevated": "<true or false>" 
          } 
     ], 
 ```
@@ -319,6 +348,10 @@ OS 支援： Windows 和 Linux
 - **scriptUri** -PowerShell 腳本檔案位置的 URI。 
 - **inline** –要執行的內嵌命令，並以逗號分隔。
 - **valid_exit_codes** –選擇性的有效程式碼，可從腳本/內嵌命令傳回，這可避免腳本/內嵌命令的回報失敗。
+- **runElevated** –選擇性的布林值，支援以較高的許可權執行命令和腳本。
+- **sha256Checksum** -檔案的 sha256 總和檢查碼值，您會在本機產生此檔案，而映射產生器將會進行總和檢查碼和驗證。
+    * 若要產生 sha256Checksum，請在 Windows 上使用 PowerShell[取得雜湊](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-6)
+
 
 ### <a name="file-customizer"></a>檔案自訂者
 
@@ -330,7 +363,8 @@ OS 支援： Windows 和 Linux
             "type": "File", 
              "name": "<name>", 
              "sourceUri": "<source location>",
-             "destination": "<destination>" 
+             "destination": "<destination>",
+             "sha256Checksum": "<sha256 checksum>"
          }
      ]
 ```
@@ -398,8 +432,39 @@ Azure 映射產生器支援三種散發目標：
 
 您可以使用相同的設定將映射散發到這兩個目標型別，請參閱[範例](https://github.com/danielsollondon/azvmimagebuilder/blob/7f3d8c01eb3bf960d8b6df20ecd5c244988d13b6/armTemplates/azplatform_image_deploy_sigmdi.json#L80)。
 
-由於您可以將一個以上的目標散發至，因此，「影像產生器」會針對每個散發目標維護一個狀態，讓您可以藉由查詢 `runOutputName`來存取。  `runOutputName` 是一種物件，您可以針對該散發的相關資訊來查詢發佈內容。 例如，您可以查詢 VHD 的位置或複製映射版本的區域。 這是每個散發目標的屬性。 `runOutputName` 對每個散發目標必須是唯一的。
- 
+由於您可以將一個以上的目標散發至，因此，「影像產生器」會針對每個散發目標維護一個狀態，讓您可以藉由查詢 `runOutputName`來存取。  `runOutputName` 是一種物件，您可以針對該散發的相關資訊來查詢發佈內容。 例如，您可以查詢 VHD 的位置或複製映射版本的區域，或建立的 SIG 映射版本。 這是每個散發目標的屬性。 `runOutputName` 對每個散發目標必須是唯一的。 以下是範例，這是查詢共用映射庫發佈：
+
+```bash
+subscriptionID=<subcriptionID>
+imageResourceGroup=<resourceGroup of image template>
+runOutputName=<runOutputName>
+
+az resource show \
+        --ids "/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/providers/Microsoft.VirtualMachineImages/imageTemplates/ImageTemplateLinuxRHEL77/runOutputs/$runOutputName"  \
+        --api-version=2019-05-01-preview
+```
+
+輸出：
+```json
+{
+  "id": "/subscriptions/xxxxxx/resourcegroups/rheltest/providers/Microsoft.VirtualMachineImages/imageTemplates/ImageTemplateLinuxRHEL77/runOutputs/rhel77",
+  "identity": null,
+  "kind": null,
+  "location": null,
+  "managedBy": null,
+  "name": "rhel77",
+  "plan": null,
+  "properties": {
+    "artifactId": "/subscriptions/xxxxxx/resourceGroups/aibDevOpsImg/providers/Microsoft.Compute/galleries/devOpsSIG/images/rhel/versions/0.24105.52755",
+    "provisioningState": "Succeeded"
+  },
+  "resourceGroup": "rheltest",
+  "sku": null,
+  "tags": null,
+  "type": "Microsoft.VirtualMachineImages/imageTemplates/runOutputs"
+}
+```
+
 ### <a name="distribute-managedimage"></a>散發： managedImage
 
 影像輸出將會是受控映射資源。
@@ -503,13 +568,4 @@ az resource show \
 ## <a name="next-steps"></a>後續步驟
 
 [Azure 映射](https://github.com/danielsollondon/azvmimagebuilder)產生器 GitHub 中有適用于不同案例的範例. json 檔案。
- 
- 
- 
- 
- 
- 
- 
- 
- 
  

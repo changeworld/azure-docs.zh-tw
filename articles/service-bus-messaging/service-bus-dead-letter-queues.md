@@ -1,6 +1,6 @@
 ---
 title: 服務匯流排寄不出的信件佇列 |Microsoft Docs
-description: Azure 服務匯流排寄不出的信件佇列的概觀
+description: 描述 Azure 服務匯流排中的無效信件佇列。 服務匯流排佇列和主題訂閱提供次要子佇列，稱為寄不出的信件佇列。
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/21/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: afa2e6e46579d9ce2906e2686cf40adf4b65ab2b
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: e1c3798c36b497423ea1d0cb5da6fabbd6a935f7
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516586"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761010"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>服務匯流排寄不出的信件佇列的概觀
 
@@ -104,14 +104,14 @@ while(true)
 ```
 
 ## <a name="path-to-the-dead-letter-queue"></a>寄不出的信件佇列的路徑
-您可以使用下列語法來存取寄不出的信件佇列:
+您可以使用下列語法來存取寄不出的信件佇列：
 
 ```
 <queue path>/$deadletterqueue
 <topic path>/Subscriptions/<subscription path>/$deadletterqueue
 ```
 
-如果您使用 .NET SDK, 您可以使用 SubscriptionClient. FormatDeadLetterPath () 方法來取得寄不出的信件佇列的路徑。 這個方法會採用主題名稱/訂用帳戶名稱, 以及具有 **/$DeadLetterQueue**的尾碼。
+如果您使用 .NET SDK，您可以使用 SubscriptionClient. FormatDeadLetterPath （）方法來取得寄不出的信件佇列的路徑。 這個方法會採用主題名稱/訂用帳戶名稱，以及具有 **/$DeadLetterQueue**的尾碼。
 
 
 ## <a name="next-steps"></a>後續步驟

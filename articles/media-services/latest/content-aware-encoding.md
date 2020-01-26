@@ -1,5 +1,5 @@
 ---
-title: 內容感知編碼的實驗性預設值-Azure |Microsoft Docs
+title: 內容感知編碼的預設值-Azure 媒體服務 |
 description: 本文討論 Microsoft Azure 媒體服務 v3 中的內容感知編碼。
 services: media-services
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: c2846759a8daa04fc5c1d3b7f69e2c061bacb272
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 34b4386d536a9845c8a48e7e54612548367b52bc
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933473"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759341"
 ---
-# <a name="experimental-preset-for-content-aware-encoding"></a>內容感知編碼的實驗性預設值
+# <a name="a-preset-for-content-aware-encoding"></a>內容感知編碼的預設值
 
 為了準備以彈性[位元速率串流](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)傳遞內容，必須以多個位元速率（高至低）編碼影片。 為了確保品質的效能降低，因為位元速率降低，因此是影片的解析度。 這會導致所謂的編碼階梯–一份解析度和位元速率表;請參閱媒體服務[內建的編碼](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset)預設值。
 

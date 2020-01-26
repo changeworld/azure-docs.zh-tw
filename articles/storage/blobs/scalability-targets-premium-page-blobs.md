@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 39153b05b16395cf2dfc0511efa601d1cc4da550
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: e134c69f5d602cb4369e9410e3e2b9d3478b11a0
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749699"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756244"
 ---
 # <a name="scalability-and-performance-targets-for-premium-page-blob-storage-accounts"></a>Premium 分頁 blob 儲存體帳戶的擴充性和效能目標
 
@@ -31,7 +31,7 @@ Premium 分頁 blob 儲存體帳戶具有下列擴充性目標：
 
 | 總帳戶容量                            | 本地備援儲存體帳戶總頻寬                     |
 | ------------------------------------------------- | --------------------------------------------------------------------------- |
-| 磁碟容量：35 TB <br>快照容量：10 TB | 每秒最多 50 GB (輸入 <sup>1</sup> + 輸出 <sup>2</sup> |
+| 磁片容量： 4 TB （個別磁片）/35 TB （所有磁片的累計總計） <br>快照容量：10 TB | 每秒最多 50 GB (輸入 <sup>1</sup> + 輸出 <sup>2</sup> |
 
 <sup>1</sup> 傳送至儲存體帳戶的所有資料 (要求)
 
@@ -45,6 +45,6 @@ Premium 分頁 blob 帳戶是針對高階效能所設定的一般用途帳戶。
 
 ## <a name="see-also"></a>請參閱
 
-- [標準儲存體帳戶的擴充性和效能目標](../common/scalability-targets-standard-account.md)
+- [標準儲存體帳戶的延展性和效能目標](../common/scalability-targets-standard-account.md)
 - [Premium 區塊 blob 儲存體帳戶的擴充性目標](../blobs/scalability-targets-premium-block-blobs.md)
 - [Azure 訂用帳戶的限制和配額](../../azure-resource-manager/management/azure-subscription-service-limits.md)

@@ -1,6 +1,6 @@
 ---
 title: Azure 服務匯流排預先擷取訊息 | Microsoft Docs
-description: 藉由預先擷取 Azure 服務匯流排訊息來提升效能。
+description: 藉由預先擷取 Azure 服務匯流排訊息來提升效能。 訊息會在應用程式要求之前，立即提供本機抓取。
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,18 +11,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2018
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: c63e6bf66e4832a1a5b0b5e6fc3dfbbf02d1e490
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80717ab940d27e9bf108b3740309bcd7d71668fd
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62125843"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760652"
 ---
 # <a name="prefetch-azure-service-bus-messages"></a>預先擷取 Azure 服務匯流排訊息
 
-在任何官方的服務匯流排用戶端上啟用「預先擷取」  時，接收者就會以無訊息方式取得更多訊息 (最多可達 [PrefetchCount](/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount#Microsoft_Azure_ServiceBus_QueueClient_PrefetchCount) 限制)，超出應用程式一開始所要求的範圍。
+在任何官方的服務匯流排用戶端上啟用「預先擷取」時，接收者就會以無訊息方式取得更多訊息 (最多可達 [PrefetchCount](/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount#Microsoft_Azure_ServiceBus_QueueClient_PrefetchCount) 限制)，超出應用程式一開始所要求的範圍。
 
 因此，單一起始的 [Receive](/dotnet/api/microsoft.servicebus.messaging.queueclient.receive) 或 [ReceiveAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receiveasync) 呼叫會取得訊息，以便在其成為可用而儘速傳回時立即取用。 接著，用戶端會在背景中取得後續訊息來填滿預先擷取緩衝區。
 

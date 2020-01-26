@@ -1,6 +1,6 @@
 ---
-title: 從 Azure DevTest Labs 中的 Azure DevOps 執行映射 factory |Microsoft Docs
-description: 瞭解如何在 Azure DevTest Labs 中建立自訂映射 factory。
+title: 從中的 Azure DevOps 執行映射 factory Azure DevTest Labs
+description: 本文涵蓋從 Azure DevOps （先前稱為 Visual Studio Team Services）執行映射 factory 所需的所有準備工作。
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 101ed792f091a5074b42e3d06eed27d606d3d2a7
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: bb67f765684c77ed5f8527226bef578e450579e0
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638947"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758677"
 ---
 # <a name="run-an-image-factory-from-azure-devops"></a>從 Azure DevOps 執行映像處理站
 本文涵蓋從 Azure DevOps （先前稱為 Visual Studio Team Services）執行映射 factory 所需的所有準備工作。
@@ -106,7 +106,7 @@ Azure DevOps 可讓您儲存原始程式碼，請在一處執行 Azure PowerShel
 2. 針對 [ **Azure 連線類型**]，選擇 [ **Azure Resource Manager**]。
 3. 選取 [**管理**] 連結以設定服務主體。
 
-如需詳細資訊，請參閱此[部落格文章](https://devblogs.microsoft.com/devops/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/)。 當您選取 [**管理**] 連結時，您會在 DevOps 中放置正確的位置（在 blog 文章中的第二個螢幕擷取畫面）來設定與 Azure 的連線。 設定此設定時，請務必選擇 [ **Azure Resource Manager 服務端點**]。
+如需詳細資訊，請參閱這[篇 blog 文章](https://devblogs.microsoft.com/devops/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/)。 當您選取 [**管理**] 連結時，您會在 DevOps 中放置正確的位置（在 blog 文章中的第二個螢幕擷取畫面）來設定與 Azure 的連線。 設定此設定時，請務必選擇 [ **Azure Resource Manager 服務端點**]。
 
 ## <a name="complete-the-build-task"></a>完成組建工作
 如果您選取 [組建] 工作，您會在右窗格中看到應填入的所有詳細資料。

@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 483f13f89acd1bce0ceb8486ac252e6f844d881f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7af4f68417b25b480ea5422eb13d6b2a5748212c
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431731"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759698"
 ---
 # <a name="cloud-tiering-overview"></a>雲端階層處理概觀
 雲端階層處理是 Azure 檔案同步的一個選用功能，其中經常存取的檔案會快取到伺服器本機上，而其他的檔案會依原則設定分層處理至 Azure 檔案服務。 當檔案被分層之後，Azure 檔案同步檔案系統篩選器 (StorageSync.sys) 會將本機檔案取代為指標或重新分析點。 重新分析點代表的是針對 Azure 檔案服務中檔案的 URL。 階層式檔案在 NTFS 中具有「離線」屬性和 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS 屬性集，因此協力廠商應用程式可以安全地識別階層式檔案。
  
-當使用者開啟階層式檔案時，Azure 檔案同步會順暢地從 Azure 檔案服務重新叫用檔案資料，使用者並不需要知道檔案實際上儲存在 Azure 中。 
+當使用者開啟階層式檔案時，Azure 檔案同步不需要知道檔案是儲存在 Azure 中，就會從 Azure 檔案儲存體順暢地重新叫用檔案資料。 
  
  > [!Important]  
  > Windows 系統磁碟區上的伺服器端點不支援雲端階層處理，且只有大小大於 64 KiB 的檔案可以分層處理到 Azure 檔案服務。
@@ -61,7 +61,7 @@ Azure 檔案同步系統篩選器會在每個伺服器端點上建立您命名�
 
 <a id="how-long-until-my-files-tier"></a>
 ### <a name="ive-added-a-new-server-endpoint-how-long-until-my-files-on-this-server-tier"></a>我已新增伺服器端點。 我在此伺服器上的檔案會於存在多久後，才進行階層處理？
-在 Azure 檔案同步代理程式 4.0 版和更新版本中，一旦檔案上傳到 Azure 檔案共用，就會根據原則，在下一次的階層處理工作階段執行時 (一小時一次) 進行階層處理。 在舊版的代理程式上，最久可能需要 24 小時才會進行階層處理。
+在 Azure 檔案同步代理程式的4.0 版和更新版本中，一旦您的檔案上傳至 Azure 檔案共用，就會在下一次階層處理會話執行時，根據您的原則進行階層處理，這會在一小時後進行分層。 在舊版的代理程式上，最久可能需要 24 小時才會進行階層處理。
 
 <a id="is-my-file-tiered"></a>
 ### <a name="how-can-i-tell-whether-a-file-has-been-tiered"></a>如何判斷檔案是否已分層？
@@ -127,6 +127,13 @@ Windows 檔案總管會顯示兩個屬性來代表檔案的大小：**大小**�
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
 ```
+
+<a id="afs-image-thumbnail"></a>
+### <a name="why-are-my-tiered-files-not-showing-thumbnails-or-previews-in-windows-explorer"></a>為什麼我的分層檔案不會在 Windows Explorer 中顯示縮圖或預覽？
+若為階層式檔案，縮圖和預覽將不會顯示在您的伺服器端點上。 這是預期的行為，因為 Windows 中的縮圖快取功能會刻意略過讀取具有離線屬性的檔案。 啟用雲端階層處理時，透過階層式檔案讀取會導致下載（重新叫用）。
+
+這不是 Azure 檔案同步特有的行為，Windows Explorer 會針對任何已設定離線屬性的檔案顯示「灰階 X」。 透過 SMB 存取檔案時，您會看到 X 圖示。 如需此行為的詳細說明，請參閱[https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105)
+
 
 ## <a name="next-steps"></a>後續步驟
 * [規劃 Azure 檔案同步部署](storage-sync-files-planning.md)

@@ -1,5 +1,5 @@
 ---
-title: 參數化對應資料流程
+title: 將已對應的資料流參數化
 description: 瞭解如何從 data factory 管線參數化對應資料流程
 author: kromerm
 ms.author: makromer
@@ -7,14 +7,14 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: c589cfeab7a812e09ce7f7620e93b72bd362859a
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: c717d9ab44493d15589030073cd2ab260ef52e1c
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746119"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760210"
 ---
-# <a name="parameterizing-mapping-data-flows"></a>參數化對應資料流程
+# <a name="parameterizing-mapping-data-flows"></a>將已對應的資料流參數化
 
 對應中的資料流程 Azure Data Factory 支援使用參數。 您可以在資料流程定義內定義參數，然後在整個運算式中使用。 參數值可透過「執行資料流程」活動來設定呼叫管線。 您有三個選項可設定 [資料流程] 活動運算式中的值：
 
@@ -23,9 +23,6 @@ ms.locfileid: "75746119"
 * 使用任一個運算式語言來設定靜態常值
 
 使用此功能可讓您的資料流程程成為一般用途、彈性且可重複使用。 您可以使用這些參數將資料流程設定和運算式參數化。
-
-> [!NOTE]
-> 若要使用管線控制流程運算式，資料流程參數必須是字串類型。
 
 ## <a name="create-parameters-in-a-mapping-data-flow"></a>在對應資料流程中建立參數
 

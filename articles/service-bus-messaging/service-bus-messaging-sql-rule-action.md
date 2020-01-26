@@ -1,6 +1,6 @@
 ---
-title: Azure 中的 SQLRuleAction 語法參考 | Microsoft Docs
-description: SQLRuleAction 文法的詳細資料。
+title: Azure 服務匯流排中的 SQLRuleAction 語法參考
+description: 本文提供 SQLRuleAction 語法的參考。 這些動作是以以 SQL 語言為基礎的語法所撰寫，會針對代理訊息來執行。
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/05/2018
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 0f9365b72da1cec81eed82756097d32b1d72ca71
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 37615e39577ef60cccc9df91b61a6aa24ca794d0
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60307473"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759623"
 ---
-# <a name="sqlruleaction-syntax"></a>SQLRuleAction 語法
+# <a name="sqlruleaction-syntax-reference-for-azure-service-bus"></a>Azure 服務匯流排的 SQLRuleAction 語法參考
 
 *SqlRuleAction* 是 [SqlRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction) 類別的執行個體，代表對 [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)執行的以 SQL 語言為基礎之語法所撰寫的動作集。   
   
@@ -71,7 +71,7 @@ ms.locfileid: "60307473"
 
 嘗試存取不存在的系統屬性時會發生錯誤，而嘗試存取不存在的使用者屬性時不會發生錯誤。 反之，不存在的使用者屬性會內部評估為未知的值。 未知的值在運算子評估期間會特別處理。  
   
-## <a name="propertyname"></a>property_name  
+## <a name="property_name"></a>property_name  
   
 ```  
 <property_name> ::=  
@@ -123,11 +123,11 @@ ms.locfileid: "60307473"
   
  `<pattern>` 必須是評估為字串的運算式。 它會用來做為 LIKE 運算子的模式。      它可以包含下列萬用字元︰  
   
--   `%`:任何零或多個字元的字串。  
+-   `%`︰任何零或多個字元的字串。  
   
--   `_`:任何單一字元。  
+-   `_`︰任何單一字元。  
   
-## <a name="escapechar"></a>escape_char  
+## <a name="escape_char"></a>escape_char  
   
 ```  
 <escape_char> ::=  
@@ -176,7 +176,7 @@ ms.locfileid: "60307473"
     0.5E-2  
     ```  
   
-## <a name="booleanconstant"></a>boolean_constant  
+## <a name="boolean_constant"></a>boolean_constant  
   
 ```  
 <boolean_constant> :=  
@@ -187,7 +187,7 @@ ms.locfileid: "60307473"
   
 布林值常數由關鍵字 `TRUE` 或 `FALSE` 代表。 值會儲存為 `System.Boolean`。  
   
-## <a name="stringconstant"></a>string_constant  
+## <a name="string_constant"></a>string_constant  
   
 ```  
 <string_constant>  
@@ -197,7 +197,7 @@ ms.locfileid: "60307473"
   
 字串常數會以單引號括住，且包含任何有效的 Unicode 字元。 內嵌在字串常數中的單引號會以兩個單引號表示。  
   
-## <a name="function"></a>函式  
+## <a name="function"></a>函數  
   
 ```  
 <function> :=  

@@ -1,6 +1,6 @@
 ---
 title: 使用 PowerShell 來管理 Azure 服務匯流排資源 | Microsoft Docs
-description: 使用 PowerShell 模組來建立及管理服務匯流排資源
+description: 本文說明如何使用 Azure PowerShell 模組來建立和管理服務匯流排實體（命名空間、佇列、主題、訂用帳戶）。
 services: service-bus-messaging
 documentationcenter: .NET
 author: axisc
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2018
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 0d15aa4d7b8a922f7606b7c4d1b357a80b3cbfab
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e333dfb109840538fd5dec8110e1c32adedce989
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60311041"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759239"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>使用 PowerShell 來管理服務匯流排資源
 
@@ -29,7 +29,7 @@ Microsoft Azure PowerShell 是一種指令碼環境，可讓您用來控制及�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 開始之前，您需要下列必要條件：
 
@@ -43,7 +43,7 @@ Microsoft Azure PowerShell 是一種指令碼環境，可讓您用來控制及�
 
 ## <a name="provision-a-service-bus-namespace"></a>佈建服務匯流排命名空間
 
-當使用服務匯流排命名空間，您可以使用[Get AzServiceBusNamespace](/powershell/module/az.servicebus/get-azservicebusnamespace)，[新增 AzServiceBusNamespace](/powershell/module/az.servicebus/new-azservicebusnamespace)，[移除 AzServiceBusNamespace](/powershell/module/az.servicebus/remove-azservicebusnamespace)，和[設定 AzServiceBusNamespace](/powershell/module/az.servicebus/set-azservicebusnamespace) cmdlet。
+使用服務匯流排命名空間時，您可以使用[AzServiceBusNamespace](/powershell/module/az.servicebus/get-azservicebusnamespace)、 [AzServiceBusNamespace](/powershell/module/az.servicebus/new-azservicebusnamespace)、 [Remove-AzServiceBusNamespace](/powershell/module/az.servicebus/remove-azservicebusnamespace)和[AzServiceBusNamespace](/powershell/module/az.servicebus/set-azservicebusnamespace) Cmdlet。
 
 這個範例會在指令碼中建立幾個區域變數：`$Namespace` 和 `$Location`。
 
@@ -83,7 +83,7 @@ Microsoft Azure PowerShell 是一種指令碼環境，可讓您用來控制及�
 
 ### <a name="create-a-namespace-authorization-rule"></a>建立命名空間授權規則
 
-下列範例示範如何管理使用的命名空間授權規則[新增 AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/new-azservicebusauthorizationrule)， [Get AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/get-azservicebusauthorizationrule)， [設定 AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/set-azservicebusauthorizationrule)，並[移除 AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/remove-azservicebusauthorizationrule) cmdlet。
+下列範例顯示如何使用[AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/new-azservicebusauthorizationrule)、 [AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/get-azservicebusauthorizationrule)、 [AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/set-azservicebusauthorizationrule)和[AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/remove-azservicebusauthorizationrule) Cmdlet 來管理命名空間授權規則。
 
 ```powershell
 # Query to see if rule exists
@@ -147,7 +147,7 @@ else
 
 ### <a name="modify-queue-properties"></a>修改佇列屬性
 
-之後上一節中執行指令碼，您可以使用[組 AzServiceBusQueue](/powershell/module/az.servicebus/set-azservicebusqueue)指令程式可更新的佇列，如下列範例所示的屬性：
+執行上一節中的腳本之後，您可以使用[AzServiceBusQueue](/powershell/module/az.servicebus/set-azservicebusqueue) Cmdlet 來更新佇列的屬性，如下列範例所示：
 
 ```powershell
 $CurrentQ.DeadLetteringOnMessageExpiration = $True

@@ -1,6 +1,6 @@
 ---
 title: Azure 服務匯流排和 .NET 與 AMQP 1.0 | Microsoft Docs
-description: 搭配使用 .NET 的 Azure 服務匯流排與 AMQP
+description: 本文說明如何從使用 AMQP （Advanced 訊息佇列通訊協定）的 .NET 應用程式中使用 Azure 服務匯流排。
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 82301a17bb461b6d8733d5f046fe791ffbcf3ecb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 536c315077cb74a1dfa8db457f0f0b3725edf7a1
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60749252"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759242"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>搭配使用 .NET 的服務匯流排與 AMQP 1.0
 
-服務匯流排套件 2.1 版或更新版本提供 AMQP 1.0 支援。 您可以從 [NuGet][NuGet] 下載「服務匯流排」軟體，以確保您擁有最新版本。
+服務匯流排套件 2.1 版或更新版本提供 AMQP 1.0 支援。 您可以從 [NuGet][NuGet] 下載服務匯流排軟體，以確保您擁有最新版本。
 
 ## <a name="configure-net-applications-to-use-amqp-10"></a>設定 .NET 應用程式以使用 AMQP 1.0
 
@@ -49,15 +49,15 @@ ms.locfileid: "60749252"
 
 `Endpoint=sb://[namespace].servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[SAS key];TransportType=Amqp`
 
-其中 `namespace` 和 `SAS key` 是當您建立服務匯流排命名空間時，取自 [Azure 入口網站][Azure portal]。 如需詳細資訊，請參閱[使用 Azure 入口網站建立服務匯流排命名空間][Create a Service Bus namespace using the Azure portal]。
+當您建立服務匯流排命名空間時，從[Azure 入口網站][Azure portal]取得 `namespace` 和 `SAS key` 的位置。 如需詳細資訊，請參閱[使用 Azure 入口網站建立服務匯流排命名空間][Create a Service Bus namespace using the Azure portal]。
 
 使用 AMQP 時，在連接字串中附加 `;TransportType=Amqp`。 此標記法會指示用戶端程式庫使用 AMQP 1.0 來連線到「服務匯流排」。
 
 ## <a name="message-serialization"></a>訊息序列化
 
-使用預設通訊協定時，.NET 用戶端程式庫的預設序列化行為是使用 [DataContractSerializer][DataContractSerializer] 類型將 [BrokeredMessage][BrokeredMessage] 執行個體序列化，以用於用戶端程式庫與「服務匯流排服務」之間的傳輸。 使用 AMQP 傳輸模式時，用戶端程式庫會使用 AMQP 類型系統，將[代理訊息][BrokeredMessage]序列化為 AMQP 訊息。 此序列化作業讓可能在不同平台上執行的接收應用程式 (例如使用 JMS API 來存取服務匯流排的 Java 應用程式) 能夠接收和解譯此訊息。
+使用預設通訊協定時，.NET 用戶端程式庫的預設序列化行為是使用 [DataContractSerializer][DataContractSerializer] 類型來序列化用戶端程式庫與服務匯流排服務之間傳輸的 [BrokeredMessage][BrokeredMessage] 執行個體。 使用 AMQP 傳輸模式時，用戶端程式庫會使用 AMQP 類型系統，將代理[訊息][BrokeredMessage]序列化為 AMQP 訊息。 此序列化作業讓可能在不同平台上執行的接收應用程式 (例如使用 JMS API 來存取服務匯流排的 Java 應用程式) 能夠接收和解譯此訊息。
 
-當您建構 [BrokeredMessage][BrokeredMessage] 執行個體時，您可以提供 .NET 物件作為建構函式的參數，進而做為訊息的本文。 如果是可以對應至 AMQP 基本類型的物件，本文會序列化為 AMQP 資料類型。 如果物件不能直接對應至 AMQP 基本類型 (也就是，應用程式所定義的自訂類型)，就會使用 [DataContractSerializer][DataContractSerializer] 將物件序列化，然後在 AMQP 資料訊息中傳送序列化的位元組。
+當您建構 [BrokeredMessage][BrokeredMessage] 執行個體時，您可以提供 .NET 物件做為建構函式的參數，進而做為訊息的本文。 如果是可以對應至 AMQP 基本類型的物件，本文會序列化為 AMQP 資料類型。 如果物件不能直接對應至 AMQP 基本類型 (也就是，應用程式所定義的自訂類型)，則會使用 [DataContractSerializer][DataContractSerializer] 序列化物件，並且在 AMQP 資料訊息中傳送序列化的位元組。
 
 若要促進與非 .NET 用戶端的互通性，在訊息本文中僅使用可直接序列化為 AMQP 類型的 .NET 類型。 下表詳細說明這些類型及對應的 AMQP 類型系統。
 
@@ -76,9 +76,9 @@ ms.locfileid: "60749252"
 | double |double |AMQP 值 |
 | decimal |decimal128 |AMQP 值 |
 | char |char |AMQP 值 |
-| Datetime |timestamp |AMQP 值 |
-| Guid |uuid |AMQP 值 |
-| byte[] |binary |AMQP 值 |
+| 日期時間 |timestamp |AMQP 值 |
+| GUID |uuid |AMQP 值 |
+| byte[] |BINARY |AMQP 值 |
 | string |string |AMQP 值 |
 | System.Collections.IList |list |AMQP 值︰集合中包含的項目只能是在此表格中定義的項目。 |
 | System.Array |array |AMQP 值︰集合中包含的項目只能是在此表格中定義的項目。 |
@@ -86,8 +86,8 @@ ms.locfileid: "60749252"
 | Uri |描述的 string (請參閱下表) |AMQP 值 |
 | DateTimeOffset |描述的 long (請參閱下表) |AMQP 值 |
 | TimeSpan |描述的 long (請參閱下表) |AMQP 值 |
-| Stream |binary |AMQP 資料 (可能有多個)。 Data 區段包含從 Stream 物件讀取的原始位元組。 |
-| 其他物件 |binary |AMQP 資料 (可能有多個)。 包含使用 DataContractSerializer 或應用程式所提供序列化程式之物件的序列化二進位資料。 |
+| Stream |BINARY |AMQP 資料 (可能有多個)。 Data 區段包含從 Stream 物件讀取的原始位元組。 |
+| 其他物件 |BINARY |AMQP 資料 (可能有多個)。 包含使用 DataContractSerializer 或應用程式所提供序列化程式之物件的序列化二進位資料。 |
 
 | .NET 類型 | 對應的 AMQP 描述類型 | 注意 |
 | --- | --- | --- |
@@ -107,10 +107,10 @@ ms.locfileid: "60749252"
 
 [.NET API](/dotnet/api/) 會公開數個可控制 AMQP 通訊協定行為的設定：
 
-* **[MessageReceiver.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver.prefetchcount?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount)** ：控制套用至連結的初始信用額度。 預設值為 0。
+* **[MessageReceiver.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver.prefetchcount?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount)** ：控制套用至連結的初始信用額度。 預設值是 0。
 * **[MessagingFactorySettings.AmqpTransportSettings.MaxFrameSize](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.maxframesize?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_MaxFrameSize)** ︰控制在連線開啟時間進行交涉時所提供的 AMQP 框架大小上限。 預設值為 65,536 個位元組。
-* **[MessagingFactorySettings.AmqpTransportSettings.BatchFlushInterval](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.batchflushinterval?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_BatchFlushInterval)** ：如果傳輸可分批進行，則此值會決定用於傳送配置的延遲上限。 預設由傳送者/接收者繼承。 個別的傳送者/接收者可以覆寫預設值 (20 毫秒)。
-* **[MessagingFactorySettings.AmqpTransportSettings.UseSslStreamSecurity](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.usesslstreamsecurity?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_UseSslStreamSecurity)** ：控制是否透過 SSL 連線建立 AMQP 連線。 預設值為 **true**。
+* **[MessagingFactorySettings.AmqpTransportSettings.BatchFlushInterval](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.batchflushinterval?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_BatchFlushInterval)** ︰如果傳輸可分批進行，這個值會決定用於傳送配置的延遲上限。 預設由傳送者/接收者繼承。 個別的傳送者/接收者可以覆寫預設值 (20 毫秒)。
+* **[MessagingFactorySettings.AmqpTransportSettings.UseSslStreamSecurity](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.usesslstreamsecurity?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_UseSslStreamSecurity)** ︰控制是否透過 SSL 連線建立 AMQP 連線。 預設值為 **True**。
 
 ## <a name="next-steps"></a>後續步驟
 

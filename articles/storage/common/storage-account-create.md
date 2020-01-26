@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: c9d3a876b75e7d3ed8ff43217227db1a524206f2
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 2ef90e1cb883a2d22b355ff4105ae0ce3c73ad6d
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76273486"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759839"
 ---
 # <a name="create-an-azure-storage-account"></a>建立 Azure 儲存體帳戶
 
@@ -133,6 +133,9 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup `
   -Kind StorageV2
 ```
 
+> [!IMPORTANT]
+> 如果您打算使用[Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)，請在此參數清單中包含 `-EnableHierarchicalNamespace $True`。 
+
 若要使用不同的複寫選項來建立一般用途 v2 儲存體帳戶，請將下表中所需的值取代為**SkuName**參數。
 
 |複寫選項  |SkuName 參數  |
@@ -172,6 +175,9 @@ az storage account create \
     --sku Standard_RAGRS \
     --kind StorageV2
 ```
+
+> [!IMPORTANT]
+> 如果您打算使用[Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)，請在此參數清單中包含 `--enable-hierarchical-namespace true`。 
 
 若要使用不同的複寫選項來建立一般用途 v2 儲存體帳戶，請以下表中所需的值取代**sku**參數。
 

@@ -8,12 +8,12 @@ ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 93e3a5ed442c975f75045d86d6b890ee4113c465
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 255ccb5c8e9529ab9b36186ec0eeb5b3f55ed64f
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514250"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759222"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge 的常見問題和解決方案
 
@@ -265,7 +265,7 @@ Error parsing user input data: invalid hostname. Hostname cannot be empty or gre
 
 **根本原因**
 
-IoT Edge 執行階段只能支援少於 64 個字元的主機名稱。 實體機器通常不需要很長的主機名稱，但問題在虛擬機器上更常發生。 在 Azure 中代管的 Windows 虛擬機器自動產生的主機名稱通常很長。 
+IoT Edge 執行階段只能支援少於 64 個字元的主機名稱。 實體機器通常不需要很長的主機名稱，但問題在虛擬機器上更常發生。 在 Azure 中代管的 Windows 虛擬機器自動產生的主機名稱通常很長。
 
 **解決方案**
 
@@ -302,7 +302,7 @@ IoT Edge 中樞（屬於 IoT Edge 執行時間的一部分）預設會針對效�
 
 **解決方案**
 
-針對 IoT Edge 中樞，將環境變數**OptimizeForPerformance**設定為**false**。 作法有二：
+針對 IoT Edge 中樞，將環境變數**OptimizeForPerformance**設定為**false**。 有兩種方式可以設定環境變數：
 
 在 Azure 入口網站中：
 
@@ -340,7 +340,7 @@ IoT Edge 中樞（屬於 IoT Edge 執行時間的一部分）預設會針對效�
 
 設定 IoT Edge 精靈的登錄項目。 建立具有下列內容的 **iotedge.reg** 檔案，然後按兩下此檔案或使用 `reg import iotedge.reg` 命令將檔案匯入至 Windows 登錄：
 
-```
+```reg
 Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\EventLog\Application\iotedged]
@@ -351,10 +351,10 @@ Windows Registry Editor Version 5.00
 
 ## <a name="iot-edge-module-fails-to-send-a-message-to-the-edgehub-with-404-error"></a>IoT Edge 模組因發生 404 錯誤而無法將訊息傳送給 edgeHub
 
-自訂 IoT Edge 模組因發生 404 `Module not found` 錯誤而無法將訊息傳送給 edgeHub。 IoT Edge 精靈會將下列訊息輸出至記錄： 
+自訂 IoT Edge 模組因發生 404 `Module not found` 錯誤而無法將訊息傳送給 edgeHub。 IoT Edge 精靈會將下列訊息輸出至記錄：
 
 ```output
-Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/adapters/hsm_client_http_edge.c Func:on_edge_hsm_http_recv Line:364 executing HTTP request fails, status=404, response_buffer={"message":"Module not found"}u, 04 ) 
+Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/adapters/hsm_client_http_edge.c Func:on_edge_hsm_http_recv Line:364 executing HTTP request fails, status=404, response_buffer={"message":"Module not found"}u, 04 )
 ```
 
 **根本原因**
@@ -401,7 +401,7 @@ Azure IoT Edge 允許使用支援的 IoT 中樞通訊協定，從內部部署伺
 
 上述範例會將 DNS 伺服器設定為可公開存取的 DNS 服務。 如果 edge 裝置無法從其環境存取此 IP，請將它取代為可存取的 DNS 伺服器位址。
 
-將 `daemon.json` 放在您平臺的正確位置： 
+將 `daemon.json` 放在您平臺的正確位置：
 
 | 平台 | 位置 |
 | --------- | -------- |
@@ -410,7 +410,7 @@ Azure IoT Edge 允許使用支援的 IoT 中樞通訊協定，從內部部署伺
 
 如果該位置已經包含 `daemon.json` 檔案，請在其中新增**dns**金鑰並儲存檔案。
 
-*重新開機容器引擎，更新才會生效*
+重新開機容器引擎，更新才會生效。
 
 | 平台 | Command |
 | --------- | -------- |
@@ -431,7 +431,7 @@ Azure IoT Edge 允許使用支援的 IoT 中樞通訊協定，從內部部署伺
 }
 ```
 
-也請務必為*edgeAgent*和*edgeHub*模組設定此程式。
+也請務必為*edgeAgent*和*edgeHub*模組設定此設定。
 
 ## <a name="next-steps"></a>後續步驟
 

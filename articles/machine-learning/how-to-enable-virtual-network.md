@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 01/13/2020
-ms.openlocfilehash: 8c3265210f6ba5bb291401ce4691581dac8a0325
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 53644066276aa8e9fb57b4802142bca3fe4b342f
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289607"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760841"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>在 Azure 虛擬網路中保護 Azure ML 實驗和推斷作業
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -179,11 +179,14 @@ Machine Learning Compute 目前使用 Azure Batch 服務將 VM 佈建在指定�
 
 - 使用 NSG 規則拒絕連出網際網路連線。
 
-- 將輸出流量限制為下列專案：
-   - Azure 儲存體，方法是使用儲存體的__服務標記__ __。 Region_Name__ （例如 EastUS）
-   - Azure Container Registry，方法是使用__AzureContainerRegistry. Region_Name__的__服務標記__（例如，AzureContainerRegistry. EastUS）
+- 針對__計算實例__或__計算__叢集，將輸出流量限制為下列專案：
+   - Azure 儲存體，方法是使用__儲存體__的__服務標記__
+   - Azure Container Registry，方法是使用__AzureContainerRegistry__的__服務標記__
    - Azure Machine Learning，方法是使用__AzureMachineLearning__的__服務標記__
-   - 在計算實例 Azure 雲端的情況下，使用__AzureResourceManager__的__服務標記__
+   
+- 針對__計算實例__，請同時新增下列專案：
+   - Azure Resource Manager，方法是使用__AzureResourceManager__的__服務標記__
+   - Azure Active Directory，方法是使用__AzureActiveDirectory__的__服務標記__
 
 下圖顯示 Azure 入口網站中的 NSG 規則設定：
 
@@ -206,12 +209,12 @@ Machine Learning Compute 目前使用 Azure Batch 服務將 VM 佈建在指定�
 > run_config.environment.python.user_managed_dependencies = True
 > ```
 >
-> 估計工具 training__
+> __估計工具訓練__
 > ```python
-> est = Estimator(source_directory='.', 
->                 script_params=script_params, 
->                 compute_target='local', 
->                 entry_script='dummy_train.py', 
+> est = Estimator(source_directory='.',
+>                 script_params=script_params,
+>                 compute_target='local',
+>                 entry_script='dummy_train.py',
 >                 user_managed=True)
 > run = exp.submit(est)
 > ```

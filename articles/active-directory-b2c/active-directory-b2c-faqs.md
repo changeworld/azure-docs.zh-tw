@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 803c82c9926c3b75545b42a9a382fd5c327b7151
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: c14bebca775345ab478228f42d9b8416dd223032
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289079"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756189"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C：常見問題集 (FAQ)
 
@@ -39,7 +39,7 @@ Azure AD B2C 無法用來驗證 Microsoft Office 365 的使用者。 Azure AD �
 
 在 Azure AD B2C 租用戶中，大部分應用程式都希望使用者以任意的電子郵件地址登入 (例如 joe@comcast.net、bob@gmail.com、sarah@contoso.com 或 jim@live.com)。 這種類型的帳戶就是本機帳戶。 我們也支援使用任意的使用者名稱作為本機帳戶 (例如，joe、bob、sarah 或 jim)。 在 Azure 入口網站中設定 Azure AD B2C 的識別提供者時，您可以從這兩個本機帳戶類型中選擇一個。 在 Azure AD B2C 租使用者中，選取 [身分**識別提供者**]，選取 [**本機帳戶**]，然後選取 [使用者**名稱**]。
 
-應用程式的使用者帳戶一律透過註冊使用者流程、註冊或登入使用者流程，或使用 Azure AD 圖形 API 建立。 在 Azure 入口網站中建立的使用者帳戶只能用來管理租用戶。
+應用程式的使用者帳戶可以透過註冊使用者流程、註冊或登入使用者流程、Microsoft Graph API，或在 Azure 入口網站中建立。
 
 ### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>你們現在支援哪些社交身分識別提供者？ 你們打算在未來支援哪些？
 
@@ -150,7 +150,7 @@ Azure AD B2C 不適用於 SharePoint 外部夥伴共用的情節。請改以參�
 1. 在 [**管理**] 底下，選取 [**使用者設定**]。
 1. 如果存在，請在 [ **LinkedIn 帳戶**連線] 下選取 [**否**]，然後選取 [**儲存**]。
 1. 在 [**管理**] 底下，選取 [**屬性**]
-1. 在[Azure 資源的存取管理] 底下，選取 [是]，然後選取 [儲存]。
+1. 在 [ **Azure 資源的存取管理**] 底下，選取 **[是]** ，然後選取 [**儲存**]。
 1. 登出 Azure 入口網站然後再次登入以重新整理您的存取權。
 1. 選取左側功能表上的 [ **Azure Active Directory** ]。
 1. 在 [**總覽**] 頁面上，選取 [**刪除目錄**]。 遵循畫面上的指示來完成程式。
@@ -170,7 +170,7 @@ Azure AD B2C 不適用於 SharePoint 外部夥伴共用的情節。請改以參�
 1. 在 [**管理**] 底下，選取 [**使用者設定**]。
 1. 如果存在，請在 [ **LinkedIn 帳戶**連線] 下選取 [**否**]，然後選取 [**儲存**]。
 1. 在 [**管理**] 底下，選取 [**屬性**]
-1. 在[Azure 資源的存取管理] 底下，選取 [是]，然後選取 [儲存]。
+1. 在 [ **Azure 資源的存取管理**] 底下，選取 **[是]** ，然後選取 [**儲存**]。
 1. 登出 Azure 入口網站然後再次登入以重新整理您的存取權。
 1. 選取左側功能表上的 [ **Azure Active Directory** ]。
 1. 在 [**總覽**] 頁面上，選取 [**刪除目錄**]。 遵循畫面上的指示來完成程式。

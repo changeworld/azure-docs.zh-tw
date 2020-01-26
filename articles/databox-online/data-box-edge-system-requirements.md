@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 90c60d586d505ca0c9bd787c37e137f7a38ee1f7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 458c062eef011363724cb894ce67ba75181ba8ba
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60756540"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76757861"
 ---
-# <a name="azure-data-box-edge-system-requirements"></a>Azure 資料方塊邊緣的系統需求
+# <a name="azure-data-box-edge-system-requirements"></a>Azure Data Box Edge 系統需求
 
 本文將針對 Microsoft Azure Data Box Edge 解決方案以及連線至 Azure Data Box Edge 的用戶端，說明其各自的重要系統需求。 我們建議您先仔細檢閱這些資訊，然後再部署您的 Data Box Edge。 您可以在部署和後續作業期間，視需要回來參考此資訊。
 
@@ -48,7 +48,7 @@ Data Box Edge 的系統需求包括：
 
 ### <a name="port-requirements-for-data-box-edge"></a>Data Box Edge 的連接埠需求
 
-下表列出必須在您的防火牆中開啟的連接埠，以允許 SMB、雲端或管理流量。 在這個資料表中，in  或 inbound  指的是輸入用戶端要求存取裝置的方向。 *Out* 或 *outbound* 指的是 Data Box Edge 裝置在外部傳送資料到部署以外的方向 (例如，輸出到網際網路)。
+下表列出必須在您的防火牆中開啟的連接埠，以允許 SMB、雲端或管理流量。 在這個資料表中，in 或 inbound 指的是輸入用戶端要求存取裝置的方向。 *Out* 或 *outbound* 指的是 Data Box Edge 裝置在外部傳送資料到部署以外的方向 (例如，輸出到網際網路)。
 
 [!INCLUDE [Port configuration for device](../../includes/data-box-edge-gateway-port-config.md)]
 
@@ -58,7 +58,7 @@ Azure IoT Edge 允許使用支援的 IoT Hub 通訊協定，進行從內部部�
 
 針對裝載 Azure IoT Edge 執行階段的伺服器，使用下表來進行連接埠設定：
 
-| 連接埠號碼 | 內或外 | 連接埠範圍 | 必要項 | 指引 |
+| 連接埠號碼 | 內或外 | 連接埠範圍 | 必要項 | 指導方針 |
 |----------|-----------|------------|----------|----------|
 | TCP 443 (HTTPS)| 外       | WAN        | 是      | 開啟來佈建 IoT Edge 的輸出。 使用手動指令碼或 Azure IoT 裝置佈建服務 (DPS) 時，就需要此設定。|
 
@@ -82,55 +82,55 @@ Azure IoT Edge 允許使用支援的 IoT Hub 通訊協定，進行從內部部�
 
 | URL 模式                      | 元件或功能                     |   
 |----------------------------------|---------------------------------------------|
-| https:\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.io | Microsoft 容器登錄 (必要)               |
+| HTTPs：\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.io | Microsoft 容器登錄 (必要)               |
 | https://\*.azurecr.io                     | 個人和協力廠商容器登錄 (選擇性) | 
 | https://\*.azure-devices.net              | IoT 中樞存取權 (必要)                             | 
 
-### <a name="url-patterns-for-gateway-for-azure-government"></a>Azure government 的閘道的 URL 模式
+### <a name="url-patterns-for-gateway-for-azure-government"></a>Azure Government 閘道的 URL 模式
 
 [!INCLUDE [Azure Government URL patterns for firewall](../../includes/data-box-edge-gateway-gov-url-patterns-firewall.md)]
 
-### <a name="url-patterns-for-compute-for-azure-government"></a>用於計算的 Azure Government 的 URL 模式
+### <a name="url-patterns-for-compute-for-azure-government"></a>Azure Government 計算的 URL 模式
 
 | URL 模式                      | 元件或功能                     |  
 |----------------------------------|---------------------------------------------|
-| https:\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.com | Microsoft 容器登錄 (必要)               |
-| https://\*.azure-devices.us              | IoT 中樞存取權 (必要)           |
-| https://\*.azurecr.us                    | 個人和協力廠商容器登錄 (選擇性) | 
+| HTTPs：\//mcr.microsoft.com<br></br>HTTPs://\*. cdn.mscr.com | Microsoft 容器登錄 (必要)               |
+| HTTPs://\*. azure-devices.us              | IoT 中樞存取權 (必要)           |
+| HTTPs://\*. azurecr.us                    | 個人和協力廠商容器登錄 (選擇性) | 
 
 ## <a name="internet-bandwidth"></a>網際網路頻寬
 
 [!INCLUDE [Internet bandwidth](../../includes/data-box-edge-gateway-internet-bandwidth.md)]
 
-## <a name="compute-sizing-considerations"></a>計算調整大小考量
+## <a name="compute-sizing-considerations"></a>計算大小考慮
 
-使用您開發和測試您的解決方案時的體驗，以確保資料方塊的邊緣裝置上沒有足夠的容量，並從您的裝置獲得最佳效能。
+在開發和測試您的解決方案時使用您的體驗，以確保 Data Box Edge 裝置上有足夠的容量，並從您的裝置獲得最佳效能。
 
 您應該考慮的因素包括：
 
-- **容器細節**-思考下列。
+- **容器細節**-請考慮下列各項。
 
-    - 您的工作負載中，有多少容器？ 您可能有幾個需要大量資源的對照的輕量級容器很多。
-    - 配置給這些容器與為何他們耗用的資源的資源有哪些？
+    - 您的工作負載中有多少容器？ 您可以有很多輕量的容器，而不是需要大量資源的容器。
+    - 配置給這些容器的資源為何，以及它們耗用的資源為何？
     - 您的容器共用多少層級？
-    - 有未使用的容器嗎？ 已停止的容器仍會佔用磁碟空間。
-    - 您的容器寫入以何種語言？
-- **處理的資料大小**-資料量將您的容器處理嗎？ 將此資料會消耗磁碟空間，或將會在記憶體中處理資料？
+    - 是否有未使用的容器？ 已停止的容器仍會佔用磁碟空間。
+    - 您的容器會在哪種語言中撰寫？
+- 已**處理的資料大小**-您的容器會處理多少資料？ 這項資料會耗用磁碟空間，還是會在記憶體中處理資料？
 - **預期的效能**-您的解決方案所需的效能特性為何？ 
 
-若要了解及調整您的解決方案的效能，您可以使用：
+若要瞭解並精簡解決方案的效能，您可以使用：
 
-- 在 Azure 入口網站中可用的計算度量。 請移至您的資料方塊邊緣的資源，然後移至**監視 > 計量**。 看看**Edge 計算-記憶體使用量**並**Edge 計算-CPU 百分比**若要了解可用的資源和如何所耗用的資源取得。
-- 這類裝置的 PowerShell 介面透過監視命令：
+- Azure 入口網站中可用的計算計量。 移至您的 Data Box Edge 資源，然後移至 [監視] [ **> 計量**]。 查看 [ **edge 計算-記憶體使用量**] 和 [ **EDGE 計算-CPU 百分比**] 以瞭解可用的資源，以及資源的使用方式。
+- 透過裝置的 PowerShell 介面提供的監視命令，例如：
 
-    - `dkr` 若要取得即時資料流的容器資源使用量統計資料的統計資料。 此命令支援 CPU、 記憶體使用量、 記憶體限制和網路 IO 的計量。
-    - `dkr system df` 若要取得之使用的磁碟空間量的相關的資訊。 
-    - `dkr image [prune]` 若要清除未使用的映像，並釋出空間。
-    - `dkr ps --size` 若要檢視執行中容器的近似大小。 
+    - `dkrdbe stats`，以取得容器資源使用方式統計資料的即時串流。 命令支援 CPU、記憶體使用量、記憶體限制和網路 IO 計量。
+    - `dkrdbe system df`，以取得所用磁碟空間量的相關資訊。 
+    - `dkrdbe image prune` 清除未使用的映射並釋出空間。
+    - `dkrdbe ps --size`，以查看執行中容器的大約大小。 
 
-    如需有關可用命令的詳細資訊，請移至[監視和疑難排解計算模組](data-box-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules)。
+    如需可用命令的詳細資訊，請移至[監視和疑難排解計算模組](data-box-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules)。
 
-最後，請確定您在您的資料集上驗證您的解決方案，並量化資料方塊的邊緣上的效能，在生產環境中部署之前。
+最後，請確定您在資料集上驗證您的解決方案，並在生產環境中部署之前，先量化 Data Box Edge 的效能。
 
 
 ## <a name="next-step"></a>後續步驟

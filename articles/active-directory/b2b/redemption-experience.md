@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 01/23/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e85b0ae298589c0e0e051a24e5db89eae81db62
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: f0a71da025b8b2bb571dc9b00e23bc691ecdd44c
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74272126"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758272"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B 共同作業邀請兌換
 
@@ -38,10 +38,10 @@ ms.locfileid: "74272126"
 除了邀請電子郵件以外，您還可以為來賓提供應用程式或入口網站的直接連結。 您必須先透過[Azure 入口網站](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-add-guest-users-portal)或[PowerShell](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-invite-powershell)，將來賓使用者新增至您的目錄。 接著，您可以使用任何[可自訂的方式，將應用程式部署給使用者](https://docs.microsoft.com/azure/active-directory/manage-apps/end-user-experiences)，包括直接登入連結。 當來賓使用直接連結而不是邀請電子郵件時，他們仍會引導您進行第一次的同意體驗。
 
 > [!IMPORTANT]
-> 直接連結必須是租使用者專用的。 換句話說，它必須包含租使用者識別碼或已驗證的網域，才能在您的租使用者（共用應用程式所在的位置）中驗證來賓。 一般的 URL （例如 https://myapps.microsoft.com）不適用於來賓，因為它會重新導向至其主租使用者進行驗證。 以下是一些直接連結與租使用者內容的範例：
- > - 應用程式存取面板： https://myapps.microsoft.com/?tenantid=&lt; 租使用者識別碼&gt; 
- > - 已驗證網域的應用程式存取面板： https://myapps.microsoft.com/&lt; 已驗證的網域&gt;
- > - Azure 入口網站： https://portal.azure.com/&lt; 租使用者識別碼&gt;
+> 直接連結必須是租使用者專用的。 換句話說，它必須包含租使用者識別碼或已驗證的網域，才能在您的租使用者（共用應用程式所在的位置）中驗證來賓。 一般的 URL （例如 https://myapps.microsoft.com ）不適用於來賓，因為它會重新導向至其主租使用者進行驗證。 以下是一些直接連結與租使用者內容的範例：
+ > - 應用程式存取面板： https://myapps.microsoft.com/?tenantid=&lt ; 租使用者識別碼&gt; 
+ > - 已驗證網域的應用程式存取面板： https://myapps.microsoft.com/&lt ; 已驗證的網域&gt;
+ > - Azure 入口網站： https://portal.azure.com/&lt ; 租使用者識別碼&gt;
  > - 個別應用程式：請參閱如何使用[直接登入連結](../manage-apps/end-user-experiences.md#direct-sign-on-links)
 
 在某些情況下，建議您透過直接連結來使用邀請電子郵件。 如果這些特殊案例對您的組織來說很重要，建議您使用仍然會傳送邀請電子郵件的方法來邀請使用者：

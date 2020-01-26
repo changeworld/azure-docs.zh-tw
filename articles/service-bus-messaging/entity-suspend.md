@@ -1,6 +1,6 @@
 ---
-title: Azure 服務匯流排暫止傳訊實體 | Microsoft 文件
-description: 暫止及重新啟動 Azure 服務匯流排訊息實體。
+title: Azure 服務匯流排-暫止訊息實體
+description: 本文說明如何暫時暫停和重新開機 Azure 服務匯流排訊息實體（佇列、主題和訂用帳戶）。
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: e2ffda3141462d19557af3af26c117ee505c40ab
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7386932f19eee064926184eb17f5e92e30add98e
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66170797"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760380"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>暫止及重新啟動傳訊實體 (停用)
 
@@ -28,7 +28,7 @@ ms.locfileid: "66170797"
 
 暫止或重新啟動可以由使用者或系統執行。 系統只會因為重大的管理原因暫止實體，如達到訂用帳戶消費限制。 使用者無法重新啟動由系統停用的實體，不過當導致暫止的原因排除後實體將能恢復正常狀態。
 
-在入口網站**屬性**各個實體的區段可讓您變更狀態，以下的螢幕擷取畫面顯示佇列的切換開關：
+在入口網站中，個別實體的 [**屬性**] 區段可讓您變更狀態;下列螢幕擷取畫面顯示佇列的切換：
 
 ![][1]
 
@@ -40,8 +40,8 @@ ms.locfileid: "66170797"
 
 可以為佇列設定的狀態為：
 
--   **使用中**：佇列作用中。
--   **已停用**：佇列已暫止。
+-   **Active**：佇列作用中。
+-   **Disabled**：佇列已暫止。
 -   **SendDisabled**：佇列已部分暫止，目前允許接收。
 -   **ReceiveDisabled**：佇列已部分暫止，目前允許傳送。
 

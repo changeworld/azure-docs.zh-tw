@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: eb8540ac1904b46ba428b3b1e703e59c8b18d9e8
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 69d7bc81f5adc4797be86f946fdb656b4b6cc682
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046039"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760879"
 ---
 # <a name="create-an-azure-application-offer"></a>建立 Azure 應用程式供應項目
 
@@ -156,19 +156,9 @@ Azure 應用程式方案有兩種：受控應用程式和解決方案範本。
 
 選取最少1個，最多三個類別，用來將您的供應專案放入適當的 marketplace 搜尋區域。 請務必在供應專案描述中，呼叫您的供應專案如何支援這些類別。 
 
-### <a name="standard-marketplace-terms-and-conditions"></a>標準 Marketplace 條款及條件
+### <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Microsoft 商業 marketplace 的標準合約
 
-為了簡化客戶的採購程式，並降低軟體廠商的法律複雜度，Microsoft 提供了標準合約範本，以協助在 marketplace 中進行交易。
-
-除了製作自訂條款及條件以外，您還可以選擇在標準合約下提供軟體，而客戶只需要審查並接受一次。
-
-您可以在這裡找到標準合約： https://go.microsoft.com/fwlink/?linkid=2041178
-
-若要使用標準合約，請核取 [**使用標準合約？** ] 方塊。
-
-#### <a name="terms-of-use"></a>使用規定
-
-如果您未核取 [**使用標準合約嗎？** ] 方塊，您必須在 [**使用規定**] 欄位中提供您自己的法律使用規定。 輸入最多10000個字元的文字，或者，如果您的使用規定需要較長的描述，請提供可在其中找到額外授權條款的 URL。 客戶必須先接受這些條款，才能試用您的應用程式。
+[!INCLUDE [Commercial marketplace Standard Contract](./includes/marketplace-contract-text.md)]
 
 ## <a name="offer-listing"></a>供應專案清單
 
@@ -232,7 +222,7 @@ Azure 應用程式方案有兩種：受控應用程式和解決方案範本。
 
 在本節中，您可以提供向客戶顯示供應專案時所要使用的標誌和影像。 所有影像都必須是 .png 格式。
 
-#### <a name="store-logos"></a>Microsoft Store標誌。
+#### <a name="store-logos"></a>儲存標誌
 
 提供三種大小的供應專案標誌：**小型（48 x 48）** 、**中型（90 x 90）** 和**大型（216 x 216）** 。
 

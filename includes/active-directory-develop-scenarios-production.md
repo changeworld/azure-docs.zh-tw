@@ -14,14 +14,14 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 08d1f69294c4e330db79a1b5fecdb259dffe33cb
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 730ff3c274fd93e6344cec688ba2db212d285baf
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174159"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758934"
 ---
-善用您的應用程式：
+讓您的應用程式發揮絕佳的好處：
 
 - 啟用[記錄](../articles/active-directory/develop/msal-logging.md)。
 - 啟用遙測。
@@ -29,4 +29,4 @@ ms.locfileid: "67174159"
 
 測試您的整合：
 
-- 使用[Microsoft 身分識別平台整合檢查清單](../articles/active-directory/develop/identity-platform-integration-checklist.md)。
+- 使用[Microsoft 身分識別平臺的整合檢查清單](../articles/active-directory/develop/identity-platform-integration-checklist.md)。

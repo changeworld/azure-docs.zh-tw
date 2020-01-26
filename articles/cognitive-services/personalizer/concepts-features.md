@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 9a7599cd71c087201b54c594954a6fff377b3e45
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5205b12a5f9f6acad8755b69d6da2216ffd4d83e
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490768"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760822"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>特性是動作和內容的相關資訊
 
@@ -61,7 +61,7 @@ ms.locfileid: "73490768"
 * http_user_agent
 * VideoResolution
 * UserDeviceInfo
-* Weather
+* 天氣
 * Product_Recommendation_Ratings
 * current_time
 * NewsArticle_TextAnalytics
@@ -107,6 +107,7 @@ JSON 物件可以包含 nested JSON 物件和簡單屬性/值。 只有在陣列
 * 它不能是 unicode。
 * 您可以針對命名空間名稱，使用程式碼 < 256 的一些可列印符號。 
 * 您不能使用具有代碼 < 32 （不可列印）、32（空格）、58（冒號）、124（管道）和126–140的符號。
+* 不應該以底線 "_" 開頭，否則將會忽略此功能。
 
 ## <a name="how-to-make-feature-sets-more-effective-for-personalizer"></a>如何讓特性集合在個人化工具中發揮更好的效果
 
@@ -176,15 +177,15 @@ JSON 物件可以包含 nested JSON 物件和簡單屬性/值。 只有在陣列
 
 您傳送給排名 API 的動作取決於您要嘗試個人化的項目。
 
-這裡有一些範例：
+以下是一些範例：
 
-|目的|動作|
+|目的|行動|
 |--|--|
 |將要在新聞網站上選出的條目個人化。|每個動作都是潛在的新聞條目。|
 |將廣告放在網站上最佳的位置。|每個動作都會是版面配置或用來建立廣告版面配置 (例如，在頂端、在右邊、小圖、大圖) 的規則。|
 |在購物網站上顯示個人化的推薦項目排名。|每個動作都是特定的產品。|
 |建議使用者介面項目，例如要套用至特定相片的篩選條件。|每個動作可能是不同的篩選條件。|
-|為聊天機器人選擇要用來釐清使用者意圖或提出建議動作的回應。|每個動作都是如何解讀回應的選項。|
+|為聊天 Bot 選擇要用來釐清使用者意圖或提出建議動作的回應。|每個動作都是如何解讀回應的選項。|
 |選擇要在搜尋結果清單頂端顯示的項目|每個動作都是排名最高的幾個搜尋結果其中之一。|
 
 

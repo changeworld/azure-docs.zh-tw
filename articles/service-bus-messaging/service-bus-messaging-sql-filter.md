@@ -1,6 +1,6 @@
 ---
 title: Azure 服務匯流排 SQLFilter 語法參考 | Microsoft Docs
-description: SQLFilter 文法的詳細資料。
+description: 本文提供有關 SQLFilter 文法的詳細資料。 SqlFilter 支援 SQL-92 標準的子集。
 services: service-bus-messaging
 documentationcenter: na
 author: spelluru
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2018
 ms.author: spelluru
-ms.openlocfilehash: e490c7c24ed38e2988c1f097b09b508746f08178
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: d5a8e165fcee23c5feecd5935983dd77d3ec6c30
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60591796"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759658"
 ---
 # <a name="sqlfilter-syntax"></a>SQLFilter 語法
 
@@ -66,7 +66,7 @@ ms.locfileid: "60591796"
 
 嘗試存取不存在的系統屬性時會發生錯誤，而嘗試存取不存在的使用者屬性時不會發生錯誤。 反之，不存在的使用者屬性會內部評估為未知的值。 未知的值在運算子評估期間會特別處理。  
   
-## <a name="propertyname"></a>property_name  
+## <a name="property_name"></a>property_name  
   
 ```  
 <property_name> ::=  
@@ -119,11 +119,11 @@ ms.locfileid: "60591796"
   
 `<pattern>` 必須是評估為字串的運算式。 它會用來做為 LIKE 運算子的模式。      它可以包含下列萬用字元︰  
   
--   `%`:任何零或多個字元的字串。  
+-   `%`︰任何零或多個字元的字串。  
   
--   `_`:任何單一字元。  
+-   `_`︰任何單一字元。  
   
-## <a name="escapechar"></a>escape_char  
+## <a name="escape_char"></a>escape_char  
   
 ```  
 <escape_char> ::=  
@@ -172,7 +172,7 @@ ms.locfileid: "60591796"
     0.5E-2  
     ```  
   
-## <a name="booleanconstant"></a>boolean_constant  
+## <a name="boolean_constant"></a>boolean_constant  
   
 ```  
 <boolean_constant> :=  
@@ -183,7 +183,7 @@ ms.locfileid: "60591796"
 
 布林值常數由關鍵字 **TRUE** 或 **FALSE** 代表。 值會儲存為 `System.Boolean`。  
   
-## <a name="stringconstant"></a>string_constant  
+## <a name="string_constant"></a>string_constant  
   
 ```  
 <string_constant>  
@@ -193,7 +193,7 @@ ms.locfileid: "60591796"
 
 字串常數會以單引號括住，且包含任何有效的 Unicode 字元。 內嵌在字串常數中的單引號會以兩個單引號表示。  
   
-## <a name="function"></a>函式  
+## <a name="function"></a>函數  
   
 ```  
 <function> :=  

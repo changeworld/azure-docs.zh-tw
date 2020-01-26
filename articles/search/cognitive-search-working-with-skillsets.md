@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 340e6d3feaf0265597a70229fd2658f009c01f64
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 0637e160454897af774c3bac48fc02866cb71835
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790893"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760788"
 ---
 # <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Azure 認知搜尋中的技能集概念和組合
 
@@ -37,11 +37,11 @@ ms.locfileid: "74790893"
 ### <a name="enrichment-tree"></a>擴充樹狀結構
 
 為了想像技能集如何逐漸來擴充您的檔，讓我們從檔在任何擴充之前的樣子開始。 檔破解的輸出取決於資料來源和所選取的特定剖析模式。 這也是在將資料新增至搜尋索引時，[欄位](search-indexer-field-mappings.md)對應可從中來源內容的檔狀態。
-![管線圖表中的知識存放區](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "K管線圖表中的 nowledge 存放區 ")
+![管線圖表中的知識存放區](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "管線圖表中的知識存放區")
 
 一旦檔在擴充管線中，就會以內容樹狀結構和相關聯的擴充表示。 此樹狀結構會具現化為檔破解的輸出。 擴充樹狀格式可讓擴充管線將中繼資料附加至基本資料類型，但它不是有效的 JSON 物件，但可以投射成有效的 JSON 格式。 下表顯示進入擴充管線的檔狀態：
 
-|資料 Source\Parsing 模式|預設值|JSON，JSON 行 & CSV|
+|資料 Source\Parsing 模式|預設|JSON，JSON 行 & CSV|
 |---|---|---|
 |Blob 儲存體|/document/content<br>/document/normalized_images/*<br>…|/document/{key1}<br>/document/{key2}<br>…|
 |SQL|/document/{column1}<br>/document/{column2}<br>…|N/A |
@@ -56,7 +56,7 @@ ms.locfileid: "74790893"
 每項技能都需要一個內容。 內容會決定：
 +   根據選取的節點，技能執行的次數。 對於類型為 collection 的內容值，在結尾加入 ```/*``` 將會導致在集合中的每個實例叫用一次技能。 
 +   在擴充樹狀結構中，新增技能輸出的位置。 輸出一律會當做內容節點的子系加入樹狀目錄中。 
-+   輸入的形狀。 針對多層集合，將內容設定為父集合會影響輸入技能的形狀。 例如，如果您的擴充樹狀目錄中有一個國家/地區清單，每個都有一份包含 zipcodes 清單的狀態清單。
++   輸入的形狀。 針對多層集合，將內容設定為父集合會影響技能輸入的形狀。 例如，如果您的擴充樹狀目錄中有一個國家/地區清單，每個都有一份包含 zipcodes 清單的狀態清單。
 
 |Context|輸入|輸入的形狀|技能調用|
 |---|---|---|---|
@@ -65,7 +65,7 @@ ms.locfileid: "74790893"
 
 ### <a name="sourcecontext"></a>SourceCoNtext
 
-`sourceContext` 僅用於技能輸入和[投影](knowledge-store-projection-overview.md)。 它是用來建立多層級的嵌套物件。 您可能需要建立新的專案，將它當做技能或專案的輸入傳遞至知識存放區。 由於擴充節點在擴充樹狀結構中可能不是有效的 JSON 物件，而且在樹狀結構中 refrencing 節點只會在建立時傳回該節點的狀態，因此使用擴充做為技能輸入或投射時，會要求您建立格式正確的 JSON 物件。 此 `sourceContext` 可讓您建立階層式匿名型別物件，如果您只使用內容，就需要多個技能。 下一節會顯示使用 `sourceContext`。 查看產生擴充的技能輸出，判斷它是否為有效的 JSON 物件，而不是基本類型。
+`sourceContext` 僅用於技能輸入和[投影](knowledge-store-projection-overview.md)。 它是用來建立多層級的嵌套物件。 您可能需要建立新的物件，將它當做技能或專案的輸入傳遞至知識存放區。 當擴充節點在擴充樹狀結構中可能不是有效的 JSON 物件，而參考樹狀結構中的節點時，只會傳回該節點在建立時的狀態，而使用擴充做為技能輸入或投射時，會要求您建立格式正確的 JSON 物件。 此 `sourceContext` 可讓您建立階層式匿名型別物件，如果您只使用內容，就需要多個技能。 下一節會顯示使用 `sourceContext`。 查看產生擴充的技能輸出，判斷它是否為有效的 JSON 物件，而不是基本類型。
 
 ### <a name="projections"></a>投影
 
@@ -100,7 +100,7 @@ ms.locfileid: "74790893"
 
 ### <a name="skill-2-language-detection"></a>技術 #2 語言偵測
  雖然語言偵測技能是技能集中所定義的第三個（技能 #3）技能，但它是下一項要執行的技能。 由於它不會因為要求任何輸入而遭到封鎖，因此它會與先前的技能平行執行。 就像之前的分割技能一樣，語言偵測技能也會針對每份檔叫用一次。 擴充樹狀結構現在具有適用于 language 的新節點。
- ![技能 #2 之後的擴充樹狀結構](media/cognitive-search-working-with-skillsets/enrichment-tree-skill2.png "En技能 #2 執行後的 richment 樹狀結構」）
+ ![技能 #2 之後的擴充樹狀結構](media/cognitive-search-working-with-skillsets/enrichment-tree-skill2.png "技能 #2 執行之後的擴充樹狀結構")
  
  ### <a name="skill-3-key-phrases-skill"></a>技能 #3：主要片語技能 
 
@@ -114,7 +114,7 @@ ms.locfileid: "74790893"
 
 ## <a name="save-enrichments-in-a-knowledge-store"></a>儲存知識存放區中的擴充 
 
-技能集也會定義知識存放區，您可以在其中將擴充的檔投射為數據表或物件。 若要將擴充的資料儲存在知識存放區中，您可以定義一組擴充檔的預測。 若要深入瞭解知識存放區，請參閱[知識存放區總覽](knowledge-store-concept-intro.md)
+技能集也會定義知識存放區，您可以在其中將擴充的檔投射為數據表或物件。 若要將擴充的資料儲存在知識存放區中，您可以為擴充的檔定義一組預測。 若要深入瞭解知識存放區，請參閱[知識存放區總覽](knowledge-store-concept-intro.md)
 
 ### <a name="slicing-projections"></a>切割投影
 

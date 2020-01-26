@@ -2,14 +2,14 @@
 title: 關於 Azure Site Recovery 服務的一般問題
 description: 本文討論有關 Azure Site Recovery 的熱門一般問題。
 ms.topic: conceptual
-ms.date: 1/10/2020
+ms.date: 1/24/2020
 ms.author: raynew
-ms.openlocfilehash: 44abe9eafa9aef9e027778470d3f0483f99b0d32
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: a9d0ae4a6e60a72bbb1148aca1a75c44506b2e9e
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863558"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760346"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>關於 Azure Site Recovery 的一般問題
 
@@ -147,7 +147,7 @@ Azure Site Recovery 會透過公用端點，將資料複寫到 Azure 儲存體�
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>為何我無法透過 VPN 進行複寫？
 
-當您複寫至 Azure 時，複寫流量會到達 Azure 儲存體的公用端點。 因此，您只能使用 ExpressRoute （Microsoft 對等互連或現有公用對等互連）透過公用網際網路進行複寫，且 VPN 無法使用。
+當您複寫至 Azure 時，複寫流量會到達 Azure 儲存體的公用端點。 因此，您只能透過公用網際網路或透過 ExpressRoute （Microsoft 對等互連或現有公用對等互連）進行複寫。
 
 ### <a name="can-i-use-riverbed-steelheads-for-replication"></a>我可以使用 Riverbed SteelHeads 進行複寫嗎？
 

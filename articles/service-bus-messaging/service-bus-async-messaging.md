@@ -1,6 +1,6 @@
 ---
 title: 服務匯流排非同步傳訊 |Microsoft Docs
-description: 「Azure 服務匯流排」非同步傳訊說明。
+description: 瞭解 Azure 服務匯流排如何透過具有佇列、主題和訂用帳戶的儲存和轉寄機制來支援 asynchronism。
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 50778ae742c1ec66857a6c2fa6250dc3d67e5601
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 554260f403104d815b9b63c576c7ba0a2f3cf1e1
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60531106"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761027"
 ---
 # <a name="asynchronous-messaging-patterns-and-high-availability"></a>非同步傳訊模式和高可用性
 
@@ -45,7 +45,7 @@ ms.locfileid: "60531106"
 * Azure 資料中心內的服務匯流排失敗。 這就是「災難性失敗」，系統有數分鐘或數小時的時間無法連線。
 
 > [!NOTE]
-> 「儲存體」  一詞可表示 Azure 儲存體和 SQL Azure。
+> 「儲存體」一詞可表示 Azure 儲存體和 SQL Azure。
 > 
 > 
 
@@ -62,10 +62,10 @@ Azure 中的其他元件可能會不時出現服務問題。 例如，當服務�
 ### <a name="service-bus-failure-on-a-single-subsystem"></a>單一子系統上的服務匯流排失敗
 在任何應用程式中，有些情況會導致服務匯流排的內部元件變得不一致。 當服務匯流排偵測到這種情況時，它會從應用程式收集資料以協助診斷發生什麼狀況。 收集資料後，應用程式會在嘗試回到一致狀態時重新啟動。 這個程序非常迅速地發生，而且會導致實體呈現無法使用長達數分鐘，然而一般的停機時間短很多。
 
-在這些情況下，用戶端應用程式會產生 [System.TimeoutException][System.TimeoutException] 或 [MessagingException][MessagingException] 例外狀況。 服務匯流排包含此問題的緩和措施 (採用自動用戶端重試邏輯形式)。 一旦重試期間期滿又未傳遞訊息，您便可以使用[處理中斷與災害][handling outages and disasters]中提到的其他功能來進行探索。
+在這些情況下，用戶端應用程式會產生 [System.TimeoutException][System.TimeoutException] 或 [MessagingException][MessagingException] 例外狀況。 服務匯流排包含此問題的緩和措施 (採用自動用戶端重試邏輯形式)。 一旦重試期間已用盡且未傳遞訊息，您可以使用有關[處理中斷和][handling outages and disasters]嚴重損壞的文章中所述的其他方式來進行探索。
 
 ## <a name="next-steps"></a>後續步驟
-既然您已了解服務匯流排中非同步傳訊的基本概念，請閱讀[處理中斷與災害][handling outages and disasters]以取得更多詳細資料。
+既然您已瞭解服務匯流排中非同步訊息的基本概念，請閱讀更多有關[處理中斷和災難][handling outages and disasters]的詳細資訊。
 
 [ServerBusyException]: /dotnet/api/microsoft.servicebus.messaging.serverbusyexception
 [System.TimeoutException]: https://msdn.microsoft.com/library/system.timeoutexception.aspx

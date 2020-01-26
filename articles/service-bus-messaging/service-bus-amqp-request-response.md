@@ -1,6 +1,6 @@
 ---
 title: Azure 服務匯流排中的 AMQP 1.0 要求/回應作業
-description: Microsoft Azure 服務匯流排要求/回應架構作業的清單。
+description: 本文定義 Microsoft Azure 服務匯流排中以要求/回應為基礎之作業的清單。
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/22/2019
+ms.date: 01/23/2020
 ms.author: aschhab
-ms.openlocfilehash: b549aee197f35df29a982a1a86644c46b9061c63
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 338b411eade35fa357f64131c64b8ef2034c92b0
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72785283"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761078"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>Microsoft Azure 服務匯流排中的 AMQP 1.0：要求/回應架構作業
 
@@ -117,7 +117,7 @@ properties: {
   
 |實體類型|位址|範例|  
 |-----------------|-------------|-------------|  
-|佇列|`<queue_name>`|`“myQueue”`<br /><br /> `“site1/myQueue”`|  
+|queue|`<queue_name>`|`“myQueue”`<br /><br /> `“site1/myQueue”`|  
 |主題|`<topic_name>`|`“myTopic”`<br /><br /> `“site2/page1/myQueue”`|  
 |訂用帳戶|`<topic_name>/Subscriptions/<subscription_name>`|`“myTopic/Subscriptions/MySub”`|  
   
@@ -133,7 +133,7 @@ properties: {
   
 |索引鍵|值類型|必要項|值內容|  
 |---------|----------------|--------------|--------------------|  
-|operation|string|是|`com.microsoft:renew-lock`|  
+|operation (作業)|string|是|`com.microsoft:renew-lock`|  
 |`com.microsoft:server-timeout`|uint|否|作業伺服器逾時以毫秒為單位。|  
   
  要求訊息本文必須由包含對應與下列項目的 amqp-value 區段所組成：  
@@ -171,7 +171,7 @@ properties: {
   
 |索引鍵|值類型|必要項|值內容|  
 |---------|----------------|--------------|--------------------|  
-|operation|string|是|`com.microsoft:peek-message`|  
+|operation (作業)|string|是|`com.microsoft:peek-message`|  
 |`com.microsoft:server-timeout`|uint|否|作業伺服器逾時以毫秒為單位。|  
   
 要求訊息本文必須由包含**對應**與下列項目的 **amqp-value** 區段所組成：  
@@ -194,7 +194,7 @@ properties: {
   
 |索引鍵|值類型|必要項|值內容|  
 |---------|----------------|--------------|--------------------|  
-|上限|對應的清單|是|當中每個對應都代表一則訊息的訊息清單。|  
+|messages|對應的清單|是|當中每個對應都代表一則訊息的訊息清單。|  
   
 代表訊息的對應必須包含下列項目：  
   
@@ -212,14 +212,14 @@ properties: {
   
 |索引鍵|值類型|必要項|值內容|  
 |---------|----------------|--------------|--------------------|  
-|operation|string|是|`com.microsoft:schedule-message`|  
+|operation (作業)|string|是|`com.microsoft:schedule-message`|  
 |`com.microsoft:server-timeout`|uint|否|作業伺服器逾時以毫秒為單位。|  
   
 要求訊息本文必須由包含**對應**與下列項目的 **amqp-value** 區段所組成：  
   
 |索引鍵|值類型|必要項|值內容|  
 |---------|----------------|--------------|--------------------|  
-|上限|對應的清單|是|當中每個對應都代表一則訊息的訊息清單。|  
+|messages|對應的清單|是|當中每個對應都代表一則訊息的訊息清單。|  
   
 代表訊息的對應必須包含下列項目：  
   
@@ -256,7 +256,7 @@ properties: {
   
 |索引鍵|值類型|必要項|值內容|  
 |---------|----------------|--------------|--------------------|  
-|operation|string|是|`com.microsoft:cancel-scheduled-message`|  
+|operation (作業)|string|是|`com.microsoft:cancel-scheduled-message`|  
 |`com.microsoft:server-timeout`|uint|否|作業伺服器逾時以毫秒為單位。|  
   
 要求訊息本文必須由包含**對應**與下列項目的 **amqp-value** 區段所組成：  
@@ -286,7 +286,7 @@ properties: {
   
 |索引鍵|值類型|必要項|值內容|  
 |---------|----------------|--------------|--------------------|  
-|operation|string|是|`com.microsoft:renew-session-lock`|  
+|operation (作業)|string|是|`com.microsoft:renew-session-lock`|  
 |`com.microsoft:server-timeout`|uint|否|作業伺服器逾時以毫秒為單位。|  
   
 要求訊息本文必須由包含**對應**與下列項目的 **amqp-value** 區段所組成：  
@@ -320,7 +320,7 @@ properties: {
   
 |索引鍵|值類型|必要項|值內容|  
 |---------|----------------|--------------|--------------------|  
-|operation|string|是|`com.microsoft:peek-message`|  
+|operation (作業)|string|是|`com.microsoft:peek-message`|  
 |`com.microsoft:server-timeout`|uint|否|作業伺服器逾時以毫秒為單位。|  
   
 要求訊息本文必須由包含**對應**與下列項目的 **amqp-value** 區段所組成：  
@@ -344,7 +344,7 @@ properties: {
   
 |索引鍵|值類型|必要項|值內容|  
 |---------|----------------|--------------|--------------------|  
-|上限|對應的清單|是|當中每個對應都代表一則訊息的訊息清單。|  
+|messages|對應的清單|是|當中每個對應都代表一則訊息的訊息清單。|  
   
  代表訊息的對應必須包含下列項目：  
   
@@ -362,7 +362,7 @@ properties: {
   
 |索引鍵|值類型|必要項|值內容|  
 |---------|----------------|--------------|--------------------|  
-|operation|string|是|`com.microsoft:set-session-state`|  
+|operation (作業)|string|是|`com.microsoft:set-session-state`|  
 |`com.microsoft:server-timeout`|uint|否|作業伺服器逾時以毫秒為單位。|  
   
 要求訊息本文必須由包含**對應**與下列項目的 **amqp-value** 區段所組成：  
@@ -391,7 +391,7 @@ properties: {
   
 |索引鍵|值類型|必要項|值內容|  
 |---------|----------------|--------------|--------------------|  
-|operation|string|是|`com.microsoft:get-session-state`|  
+|operation (作業)|string|是|`com.microsoft:get-session-state`|  
 |`com.microsoft:server-timeout`|uint|否|作業伺服器逾時以毫秒為單位。|  
   
 要求訊息本文必須由包含**對應**與下列項目的 **amqp-value** 區段所組成：  
@@ -425,7 +425,7 @@ properties: {
   
 |索引鍵|值類型|必要項|值內容|  
 |---------|----------------|--------------|--------------------|  
-|operation|string|是|`com.microsoft:get-message-sessions`|  
+|operation (作業)|string|是|`com.microsoft:get-message-sessions`|  
 |`com.microsoft:server-timeout`|uint|否|作業伺服器逾時以毫秒為單位。|  
   
 要求訊息本文必須由包含**對應**與下列項目的 **amqp-value** 區段所組成：  
@@ -462,7 +462,7 @@ properties: {
   
 |索引鍵|值類型|必要項|值內容|  
 |---------|----------------|--------------|--------------------|  
-|operation|string|是|`com.microsoft:add-rule`|  
+|operation (作業)|string|是|`com.microsoft:add-rule`|  
 |`com.microsoft:server-timeout`|uint|否|作業伺服器逾時以毫秒為單位。|  
   
 要求訊息本文必須由包含**對應**與下列項目的 **amqp-value** 區段所組成：  
@@ -492,7 +492,7 @@ sql-filter 對應必須包含下列項目：
 |---------|----------------|--------------|--------------------|  
 |correlation-id|string|否||  
 |message-id|string|否||  
-|更新成|string|否||  
+|to|string|否||  
 |reply-to|string|否||  
 |標籤|string|否||  
 |session-id|string|否||  
@@ -523,7 +523,7 @@ sql-filter 對應必須包含下列項目：
   
 |索引鍵|值類型|必要項|值內容|  
 |---------|----------------|--------------|--------------------|  
-|operation|string|是|`com.microsoft:remove-rule`|  
+|operation (作業)|string|是|`com.microsoft:remove-rule`|  
 |`com.microsoft:server-timeout`|uint|否|作業伺服器逾時以毫秒為單位。|  
   
 要求訊息本文必須由包含**對應**與下列項目的 **amqp-value** 區段所組成：  
@@ -549,7 +549,7 @@ sql-filter 對應必須包含下列項目：
 
 |索引鍵|值類型|必要項|值內容|  
 |---------|----------------|--------------|--------------------|  
-|operation|string|是|`com.microsoft:enumerate-rules`|  
+|operation (作業)|string|是|`com.microsoft:enumerate-rules`|  
 |`com.microsoft:server-timeout`|uint|否|作業伺服器逾時以毫秒為單位。|  
 
 要求訊息本文必須由包含**對應**與下列項目的 **amqp-value** 區段所組成：  
@@ -584,7 +584,7 @@ sql-filter 對應必須包含下列項目：
 
 `filter` 可以是下列類型之一：
 
-| 描述項名稱 | 描述項代碼 | Value |
+| 描述項名稱 | 描述項代碼 | 值 |
 | --- | --- | ---|
 | `com.microsoft:sql-filter:list` | 0x000001370000006 | SQL 篩選 |
 | `com.microsoft:correlation-filter:list` | 0x000001370000009 | 相互關聯篩選 |
@@ -602,7 +602,7 @@ sql-filter 對應必須包含下列項目：
 |索引 (若存在)|值類型|值內容|  
 |---------|----------------|--------------|
 | 0 | string | 相互關連識別碼 |
-| 1 | string | 訊息識別碼 |
+| 1 | string | 訊息 ID |
 | 2 | string | 到 |
 | 3 | string | 回覆地址 |
 | 4 | string | 標籤 |
@@ -613,7 +613,7 @@ sql-filter 對應必須包含下列項目：
 
 `ruleAction` 可以是下列類型之一：
 
-| 描述項名稱 | 描述項代碼 | Value |
+| 描述項名稱 | 描述項代碼 | 值 |
 | --- | --- | ---|
 | `com.microsoft:empty-rule-action:list` | 0x0000013700000005 | 空白規則動作 - 沒有規則動作 |
 | `com.microsoft:sql-rule-action:list` | 0x0000013700000006 | SQL 規則動作 |
@@ -632,7 +632,7 @@ sql-filter 對應必須包含下列項目：
   
 |索引鍵|值類型|必要項|值內容|  
 |---------|----------------|--------------|--------------------|  
-|operation|string|是|`com.microsoft:receive-by-sequence-number`|  
+|operation (作業)|string|是|`com.microsoft:receive-by-sequence-number`|  
 |`com.microsoft:server-timeout`|uint|否|作業伺服器逾時以毫秒為單位。|  
   
 要求訊息本文必須由包含**對應**與下列項目的 **amqp-value** 區段所組成：  
@@ -655,7 +655,7 @@ sql-filter 對應必須包含下列項目：
   
 |索引鍵|值類型|必要項|值內容|  
 |---------|----------------|--------------|--------------------|  
-|上限|對應的清單|是|當中每個對應都代表一則訊息的訊息清單。|  
+|messages|對應的清單|是|當中每個對應都代表一則訊息的訊息清單。|  
   
 代表訊息的對應必須包含下列項目：  
   
@@ -674,7 +674,7 @@ sql-filter 對應必須包含下列項目：
   
 |索引鍵|值類型|必要項|值內容|  
 |---------|----------------|--------------|--------------------|  
-|operation|string|是|`com.microsoft:update-disposition`|  
+|operation (作業)|string|是|`com.microsoft:update-disposition`|  
 |`com.microsoft:server-timeout`|uint|否|作業伺服器逾時以毫秒為單位。|  
   
 要求訊息本文必須由包含**對應**與下列項目的 **amqp-value** 區段所組成：  
