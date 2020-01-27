@@ -309,7 +309,7 @@
                   href: vmware-physical-mobility-service-overview.md
                 - name: 為行動服務的推入安裝做準備
                   href: vmware-azure-install-mobility-service.md
-                - name: 使用 System Center Configuration Manager 部署行動服務
+                - name: 使用 Configuration Manager 部署行動服務
                   href: vmware-azure-mobility-install-configuration-mgr.md
         - name: 執行容錯移轉和容錯回復
           href: physical-to-azure-failover-failback.md
@@ -509,7 +509,7 @@
       href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hypervrecovmgr'
     - name: 學習路徑
       href: 'https://azure.microsoft.com/documentation/learning-paths/site-recovery/'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/site-recovery/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'

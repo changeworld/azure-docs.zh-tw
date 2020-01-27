@@ -43,9 +43,11 @@
       href: tutorial-azure-security.md
     - name: 14a - 使用 Jenkins 建置
       href: tutorial-jenkins-github-docker-cicd.md
-    - name: 14b - 使用 Azure Pipelines 部署 (傳統)
+    - name: 14b - 將 Jenkins 與 Azure DevOps 進行整合
       href: tutorial-build-deploy-jenkins.md
-    - name: 15 - 搭配 Azure Pipelines 的 CI/CD (YAML)
+    - name: 15a - Azure 上適用於 IaaS 和 PaaS 的 DevOps
+      href: tutorial-devops-azure-pipelines-classic.md
+    - name: 15b - 具有 Azure Pipelines 的 CI/CD (YAML)
       href: tutorial-build-deploy-azure-pipelines.md
     - name: 16a - 建立 LAMP 堆疊
       href: tutorial-lamp-stack.md
@@ -687,7 +689,7 @@
     - name: Azure 快速入門範本
       displayName: 'Azure Resource Manager, ARM'
       href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/#Linux'
     - name: 區域可用性
       href: 'https://azure.microsoft.com/regions/services/'

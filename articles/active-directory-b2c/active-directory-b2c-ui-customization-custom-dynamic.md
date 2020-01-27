@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: dbc932bd7a68212ce94f2ad07de6e625d26c0918
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: ae29a068ef29898c3fa27d3620d1e6be0be4bf3b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950233"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931193"
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C：使用自訂原則設定具有動態內容的 UI
 
@@ -40,7 +40,7 @@ ms.locfileid: "74950233"
 
 `ContentDefinitions` 區段包含一系列的 `ContentDefinition` XML 元素。 `ContentDefinition` 元素的識別碼屬性會指定與內容定義相關的頁面類型。 也就是，此元素會定義自訂 HTML5/CSS 範本即將套用的內容。 下表說明 IEF 引擎所能辨識之內容定義識別碼的集合，以及這些識別碼的相關頁面類型。
 
-| 內容定義識別碼 | 預設 HTML5 範本| 描述 |
+| 內容定義識別碼 | 預設 HTML5 範本| 說明 |
 |-----------------------|--------|-------------|
 | api.error | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **錯誤頁面**。 在發生例外狀況或錯誤時，系統會顯示此頁面。 |
 | api.idpselections | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **識別提供者選取頁面**。 此頁面列出使用者可以在登入期間選擇的識別提供者清單。 這些選項通常是企業識別提供者、社交識別提供者 (如 Facebook 和 Google+) 或本機帳戶。 |
@@ -81,7 +81,7 @@ ms.locfileid: "74950233"
 
     ![選取 Web 應用程式範本](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-create-project2.png)
 
-6. 選取 [確定] 以建立專案。
+6. 選取 [確定] 可建立專案。
 
 ## <a name="step-2-create-mvc-view"></a>步驟 2：建立 MVC 檢視
 ### <a name="step-21-download-the-b2c-built-in-html5-template"></a>步驟 2.1：下載 B2C 內建 HTML5 範本
@@ -205,7 +205,7 @@ ms.locfileid: "74950233"
 
 2. 尋找 `<ContentDefinitions>` 元素，然後複製 `<ContentDefinitions>` 節點的完整內容。
 
-3. 開啟擴充檔案 (例如，TrustFrameworkExtensions.xml)，然後搜尋 `<BuildingBlocks>` 元素。 如果此元素不存在，請新增。
+3. 開啟擴充檔案 (例如，TrustFrameworkExtensions.xml)，然後搜尋 `<BuildingBlocks>` 元素。 如果此元素不存在，請加以新增。
 
 4. 貼上您複製作為 `<BuildingBlocks>` 元素之子元素的 `<ContentDefinitions>` 節點的完整內容。
 
@@ -217,17 +217,19 @@ ms.locfileid: "74950233"
     ![已反白顯示 LoadUri 元素的範例 XML 程式碼片段](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-content-definition.png)
 
 ## <a name="step-6-upload-the-policy-to-your-tenant"></a>步驟 6：將原則上傳至您的租用戶
-1. 在 [Azure 入口網站](https://portal.azure.com)中，切換至[您的 Azure AD B2C 租用戶環境](active-directory-b2c-navigate-to-b2c-context.md)，然後選取 [Azure AD B2C]。
+1. 在  [Azure 入口網站](https://portal.azure.com)中，選取入口網站工具列中的 **目錄 + 訂**用帳戶 圖示，然後選取包含您 Azure AD B2C 租使用者的目錄。
 
-2. 選取 [識別體驗架構]。
+1. 在 Azure 入口網站中，搜尋並選取  **Azure AD B2C**。
 
-3. 選取 [所有原則]。
+1. 選取 [識別體驗架構]。
 
-4. 選取 [上傳原則]。
+1. 選取 [所有原則]。
 
-5. 選取 [覆寫已存在的原則] 核取方塊。
+1. 選取 [上傳原則]。
 
-6. 上傳 TrustFrameworkExtensions.xml 檔案，確定它通過驗證。
+1. 選取 [覆寫已存在的原則] 核取方塊。
+
+1. 上傳 TrustFrameworkExtensions.xml 檔案，確定它通過驗證。
 
 ## <a name="step-7-test-the-custom-policy-by-using-run-now"></a>步驟 7：使用 [立即執行] 測試自訂原則
 1. 選取 [Azure AD B2C 設定]，然後選取 [識別體驗架構]。
@@ -324,7 +326,7 @@ ms.locfileid: "74950233"
 
     a. 下載 *selfasserted* 檔案。
 
-    b.這是另一個 C# 主控台應用程式。 複製檔案內容。
+    b. 複製檔案內容。
 
     c. 建立新的檢視 selfasserted。
 
@@ -334,7 +336,7 @@ ms.locfileid: "74950233"
 
     a. 在您的擴充原則中，尋找包含 `Id="api.selfasserted"`、`Id="api.localaccountsignup"` 和 `Id="api.localaccountpasswordreset"` 的 `<ContentDefinition>` 節點。
 
-    b.這是另一個 C# 主控台應用程式。 將 `LoadUri` 屬性設定為您的 selfasserted URI。
+    b. 將 `LoadUri` 屬性設定為您的 selfasserted URI。
 
 3. 返回「步驟 8.2」，並變更您的程式碼以接受查詢字串參數，但這次變更為 selfasserted 函式。
 
@@ -343,9 +345,5 @@ ms.locfileid: "74950233"
 5. 執行原則測試，然後選取 [立即註冊] 來查看結果。
 
 ## <a name="optional-download-the-complete-policy-files-and-code"></a>(選用) 下載完整的原則檔案和程式碼
-* 在完成[開始使用自訂原則](active-directory-b2c-get-started-custom.md)逐步解說之後，建議您使用自己的自訂原則檔案來建置您的案例。 我們已提供[範例原則檔案](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-ui-customization)，供您參考。
+* 在完成[開始使用自訂原則](active-directory-b2c-get-started-custom.md)逐步解說之後，建議您使用自己的自訂原則檔案來建置您的情節。 我們已提供[範例原則檔案](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-ui-customization)，供您參考。
 * 您可以從[供參考的範例 Visual Studio 解決方案](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-ui-customization)中下載完整程式碼。
-
-
-
-
