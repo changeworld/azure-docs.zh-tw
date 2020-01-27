@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/10/2020
+ms.date: 01/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5d4b6ba0c516e7c8c585f9364092403496a53139
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 55872d48dcf2a85812e1627e4e85bcd98b25d576
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894677"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271330"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 來裝載和執行 SAP 工作負載案例
 
@@ -120,6 +120,11 @@ Azure 上的 SAP 工作負載區段中的檔變更會列在本文結尾。
 
 
 ## <a name="change-log"></a>變更記錄檔
+
+- 01/17/2020：在[Azure 鄰近放置群組中變更 SAP 應用程式的最佳網路延遲](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios)，以變更將現有 vm 移至鄰近位置群組的區段
+- 01/17/2020： Azure 可用性區域的[SAP 工作負載](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones)設定變更為指向可自動測量可用性區域之間延遲的程式
+- 01/16/2020：變更[如何在 Azure 上安裝和設定 SAP Hana （大型實例）](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-installation)以調整 OS 版本到 HANA IaaS 硬體目錄
+- 01/16/2020： [SLES 多重 SID 指南上的 Sap NetWeaver 在 Azure vm 上的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)變更使用排入佇列伺服器2架構（ENSA2）新增 sap 系統的指示
 - 01/10/2020： SAP Hana 向外延展的變更，其中包含 SLES 上的[Azure Netapp files](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)和在 azure vm 上具有 Azure [netapp files 的 SAP Hana 向外](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)延展中的待命節點，以新增如何進行永久 `nfs4_disable_idmapping` 變更的指示。
 - 01/10/2020：在[SLES 上使用適用于 sap 應用程式的 Azure Netapp files](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)和 azure 中的 sap NetWeaver 的高可用性變更（使用適用于 sap 應用程式的 azure netapp files）在 RHEL 上的 sap [NetWeaver 虛擬機器高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)，以新增如何掛接 azure netapp files NFSv4 磁片區的指示。
 - 12/23/2019： [SLES 多 SID 指南的 Azure vm 上的 SAP NetWeaver 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)版本

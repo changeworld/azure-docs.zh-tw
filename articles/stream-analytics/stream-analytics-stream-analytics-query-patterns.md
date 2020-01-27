@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/18/2019
-ms.openlocfilehash: 54d1b640a4067cf65fc28501840b4926455ec259
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: aa8bd6e89dd47c4e972a860691d1bc3779ba5bc7
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903448"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982323"
 ---
 # <a name="common-query-patterns-in-azure-stream-analytics"></a>Azure 串流分析中常見的查詢模式
 
@@ -836,7 +836,7 @@ From
 
 使用者定義函式會針對每個取用的事件，計算來自 HexValue 的*Bigint*值。
 
-如需詳細資訊，請[](/stream-analytics/stream-analytics-javascript-user-defined-functions)參閱 JavaScript [C#](/stream-analytics/stream-analytics-edge-csharp-udf)和。
+如需詳細資訊， [請](/azure/stream-analytics/stream-analytics-javascript-user-defined-functions)參閱 JavaScript [C#](/azure/stream-analytics/stream-analytics-edge-csharp-udf)和。
 
 ## <a name="advanced-pattern-matching-with-match_recognize"></a>搭配 MATCH_RECOGNIZE 的先進模式比對
 

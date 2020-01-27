@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1ac0f59ea709e25f3d71a78ece5ebf40690bd3be
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: db9b95f82a18072af538d4aa946431dcef8d9cff
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949621"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154636"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則來自訂應用程式的使用者介面
 
@@ -106,7 +106,7 @@ ms.locfileid: "74949621"
 1. 針對 [允許的標頭]，輸入星號 (*)。
 1. 針對 [公開的標頭]，輸入星號 (*)。
 1. 針對 [最大壽命]，輸入 200。
-1. 按一下 [儲存]。
+1. 按一下 [檔案]。
 
 ## <a name="test-cors"></a>測試 CORS
 
@@ -122,7 +122,7 @@ ms.locfileid: "74949621"
 
 1. 開啟原則的基底檔案。 例如， <em>`SocialAndLocalAccounts/` **`TrustFrameworkBase.xml`** </em> 。 這是自訂原則入門套件中所包含的其中一個原則檔案，您應該已在必要條件中取得這些檔案，以[開始使用自訂原則](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom)。
 1. 搜尋 **ContentDefinitions** 元素的完整內容並且複製。
-1. 開啟擴充檔案。 例如 TrustFrameworkExtensions.xml。 搜尋 **BuildingBlocks** 元素。 如果此元素不存在，請新增。
+1. 開啟擴充檔案。 例如 TrustFrameworkExtensions.xml。 搜尋 **BuildingBlocks** 元素。 如果此元素不存在，請加以新增。
 1. 貼上您複製的 **ContentDefinitions** 元素完整內容，作為 **BuildingBlocks** 元素的子項目。
 1. 在您複製的 XML 中，搜尋包含 `Id="api.signuporsignin"` 的 **ContentDefinition** 元素。
 1. 將 **LoadUri** 的值變更為您上傳至儲存體的 HTML 檔案 URL。 例如： `https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html` 。
@@ -146,19 +146,19 @@ ms.locfileid: "74949621"
 
 1. 儲存擴充檔案。
 
-## <a name="upload-your-updated-custom-policy"></a>上傳更新的自訂原則
+## <a name="upload-and-test-your-updated-custom-policy"></a>上傳並測試您已更新的自訂原則
+
+### <a name="upload-the-custom-policy"></a>上傳自訂原則
 
 1. 選取頂端功能表中的 [目錄 + 訂用帳戶] 篩選，然後選擇包含您租用戶的目錄，以確定您使用的是包含 Azure AD B2C 租用戶的目錄。
-1. 選擇 Azure 入口網站左上角的**所有服務**，然後搜尋並選取 **Azure AD B2C**。
-1. 選取 [識別體驗架構]。
-1. 按一下 [所有原則]。
-1. 按一下 [上傳原則]。
+1. 搜尋並選取 [ **Azure AD B2C**]。
+1. 在 [**原則**] 底下，選取 [ **Identity Experience Framework**]。
+1. 選取 **[上傳自訂原則**]。
 1. 上傳您先前變更的擴充檔案。
 
-## <a name="test-the-custom-policy-by-using-run-now"></a>使用 [立即執行] 測試自訂原則
+### <a name="test-the-custom-policy-by-using-run-now"></a>使用 [立即執行] 測試自訂原則
 
-1. 在 [ **Azure AD B2C** ] 頁面上，移至 [**所有原則**]。
-1. 選取您上傳的自訂原則，按一下 [立即執行] 按鈕。
+1. 選取您上傳的原則，然後選取 [**立即執行**]。
 1. 您應該可以使用電子郵件地址註冊。
 
 ## <a name="reference"></a>參考
@@ -172,7 +172,7 @@ git clone https://github.com/azureadquickstarts/b2c-azureblobstorage-client
 
 Sample_templates/wingtip 資料夾包含下列 HTML 檔案：
 
-| HTML5 範本 | 描述 |
+| HTML5 範本 | 說明 |
 |----------------|-------------|
 | phonefactor.html | 使用此檔案作為多重要素驗證頁面的範本。 |
 | resetpassword.html | 使用此檔案作為忘記密碼頁面的範本。 |
@@ -193,7 +193,7 @@ Sample_templates/wingtip 資料夾包含下列 HTML 檔案：
 
 在「修改註冊或登入自訂原則」一節中，您設定了 `api.idpselections` 的內容定義。 Azure AD B2C 身分識別體驗架構所能辨識的一組完整內容定義識別碼，而其說明位於下表中：
 
-| 內容定義識別碼 | 描述 |
+| 內容定義識別碼 | 說明 |
 |-----------------------|-------------|
 | api.error | **錯誤頁面**。 在發生例外狀況或錯誤時，系統會顯示此頁面。 |
 | api.idpselections | **識別提供者選取頁面**。 此頁面包含使用者可以在登入期間選擇的識別提供者清單。 這些選項是企業識別提供者、社交識別提供者 (如 Facebook 和 Google+) 或本機帳戶。 |

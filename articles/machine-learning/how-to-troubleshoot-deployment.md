@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-author: chris-lauren
+author: clauren42
 ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: bf86826d77c690b60c7b091d6250a85fffd21fc0
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 1645d2848c6d4b852a81042c4db8a0f6e90fd8fd
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896344"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945805"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>針對 Azure Machine Learning Azure Kubernetes Service 和 Azure 容器實例部署進行疑難排解
 
@@ -50,7 +50,7 @@ ms.locfileid: "75896344"
 
 如果您遇到任何問題時，首先要做的事就是將部署工作 (先前所述) 分成個別步驟，以將問題隔離。
 
-假設您透過[Model. deploy （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API 使用新的/建議部署方法做為輸入[](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments)參數，您的程式碼可以分成三個主要步驟：
+假設您透過[Model. deploy （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API [使用新的/建議部署方法做為輸入](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments)參數，您的程式碼可以分成三個主要步驟：
 
 1. 註冊模型。 以下是一些範例程式碼：
 
@@ -351,7 +351,7 @@ Azure Kubernetes Service 部署支援自動調整，這可讓您新增複本以�
 
 
     myenv = Environment.from_conda_specification(name="env", file_path="myenv.yml")
-    myenv.docker.base_image = NONE
+    myenv.docker.base_image = None
     myenv.docker.base_dockerfile = "FROM mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04\nRUN apt-get update && apt-get install vim -y"
     inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
     package = Model.package(ws, [model], inference_config)
