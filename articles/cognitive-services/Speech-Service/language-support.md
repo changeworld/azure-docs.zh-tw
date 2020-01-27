@@ -3,20 +3,20 @@ title: 語言支援-語音服務
 titleSuffix: Azure Cognitive Services
 description: 語音服務支援多種語言的語音轉換文字和文字轉換語音，以及語音翻譯。 本文提供服務功能的完整語言支援清單。
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.author: erhopf
+ms.date: 01/23/2020
+ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: b5f227deb3385d64160f5a469d76b9763057b160
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 34d362a4b28ade5116c68e2243a2341bab9fca9d
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75381047"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760618"
 ---
 # <a name="language-and-region-support-for-the-speech-service"></a>語音服務的語言和區域支援
 
@@ -24,49 +24,58 @@ ms.locfileid: "75381047"
 
 ## <a name="speech-to-text"></a>語音轉文字
 
-Microsoft 語音 SDK 和 REST API 都支援下列語言（地區設定）。 若要改善正確性，請透過上傳音訊 + 人為標記的文字記錄或相關文字：句子，提供部分語言的自訂。  發音自訂目前僅適用于 `en-US` 和 `de-DE`。 [在這裡](how-to-custom-speech.md)深入瞭解自訂。
+Microsoft 語音 SDK 和 REST API 都支援下列語言（地區設定）。 若要改善正確性，請透過上傳音訊 + 人為標記的文字記錄或相關文字：句子，提供部分語言的自訂。 發音自訂目前僅適用于 `en-US` 和 `de-DE`。 [在這裡](how-to-custom-speech.md)深入瞭解自訂。
 
- 地區設定 | 語言 | 支援的 | 可自訂
+<!--
+To get the AM and ML bits:
+https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20models%3A/GetSupportedLocalesForModels
+
+To get pronunciation bits:
+https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronunciation Datasets" -> Click on Import -> Locale: the list of locales there correspond to the supported locales
+-->
+
+ 地區設定 | 語言 | 支援的 | 自訂
 ------|------------|-----------|-------------
-`ar-EG` | 阿拉伯文 (埃及)，現代標準 | 是 | 是
-`ar-SA` | 阿拉伯文 (沙烏地阿拉伯) | 是 | 是
-`ar-AE` | 阿拉伯文（阿拉伯聯合大公國） | 是 | 是
-`ar-KW` | 阿拉伯文 (科威特) | 是 | 是
-`ar-QA` | 阿拉伯文 (卡達) | 是 | 是
-`ca-ES` | 卡達隆尼亞文 | 是 | 否
-`da-DK` | 丹麥文 (丹麥) | 是 | 否
-`de-DE` | 德文 (德國) | 是 | 是
-`en-AU` | 英文 (澳大利亞) | 是 | 是
-`en-CA` | 英文 (加拿大) | 是 | 是
-`en-GB` | 英文 (英國) | 是 | 是
-`en-IN` | 英文 (印度) | 是 | 是
-`en-NZ` | 英文 (紐西蘭) | 是 | 是
-`en-US` | 英文 (美國) | 是 | 是
-`es-ES` | 西班牙文 (西班牙) | 是 | 是
-`es-MX` | 西班牙文 (墨西哥) | 是 | 是
-`fi-FI` | 芬蘭文 (芬蘭) | 是 | 否
-`fr-CA` | 法文 (加拿大) | 是 | 是
-`fr-FR` | 法文 (法國) | 是 | 是
-`gu-IN` | 古吉拉特文（印度） | 是 | 是
-`hi-IN` | 印度文 (印度) | 是 | 是
-`it-IT` | 義大利文 (義大利) | 是 | 是
-`ja-JP` | 日文 (日本) | 是 | 是
-`ko-KR` | 韓文 (韓國) | 是 | 是
-`mr-IN` | 馬拉提文 (印度) | 是 | 是
-`nb-NO` | 挪威文 (巴克摩) (挪威) | 是 | 否
-`nl-NL` | 荷蘭文 (荷蘭) | 是 | 是
-`pl-PL` | 波蘭文 (波蘭) | 是 | 否
-`pt-BR` | 葡萄牙文 (巴西) | 是 | 是
-`pt-PT` | 葡萄牙文 (葡萄牙) | 是 | 是
-`ru-RU` | 俄文 (俄羅斯) | 是 | 是
-`sv-SE` | 瑞典文 (瑞典) | 是 | 否
-`ta-IN` | 坦米爾文 (印度) | 是 | 是
-`te-IN` | 特拉古文 (印度) | 是 | 是
-`zh-CN` | 中文 (普通話，簡體) | 是 | 是
-`zh-HK` | 中文（廣東話，繁體） | 是 | 是
-`zh-TW` | 中文 (繁體，國語) | 是 | 是
+`ar-AE` | 阿拉伯文（阿拉伯聯合大公國） | 是 | 否
+`ar-BH` | 阿拉伯文 (巴林) | 是 | 語言模型
+`ar-EG` | 阿拉伯文 (埃及)，現代標準 | 是 | 語言模型
+`ar-KW` | 阿拉伯文 (科威特) | 是 | 否
+`ar-QA` | 阿拉伯文 (卡達) | 是 | 否
+`ar-SA` | 阿拉伯文 (沙烏地阿拉伯) | 是 | 否
+`ca-ES` | 卡達隆尼亞文 | 是 | 語言模型
+`da-DK` | 丹麥文 (丹麥) | 是 | 語言模型
+`de-DE` | 德文 (德國) | 是 | 原音模型<br>語言模型<br>發音
+`en-AU` | 英文 (澳大利亞) | 是 | 原音模型<br>語言模型
+`en-CA` | 英文 (加拿大) | 是 | 原音模型<br>語言模型
+`en-GB` | 英文 (英國) | 是 | 原音模型<br>語言模型<br>發音
+`en-IN` | 英文 (印度) | 是 | 原音模型<br>語言模型
+`en-NZ` | 英文 (紐西蘭) | 是 | 原音模型<br>語言模型
+`en-US` | 英文 (美國) | 是 | 原音模型<br>語言模型<br>發音
+`es-ES` | 西班牙文 (西班牙) | 是 | 原音模型<br>語言模型
+`es-MX` | 西班牙文 (墨西哥) | 是 | 原音模型<br>語言模型
+`fi-FI` | 芬蘭文 (芬蘭) | 是 | 語言模型
+`fr-CA` | 法文 (加拿大) | 是 | 原音模型<br>語言模型
+`fr-FR` | 法文 (法國) | 是 | 原音模型<br>語言模型<br>發音
+`gu-IN` | 古吉拉特文（印度） | 是 | 語言模型
+`hi-IN` | 印度文 (印度) | 是 | 原音模型<br>語言模型
+`it-IT` | 義大利文 (義大利) | 是 | 原音模型<br>語言模型<br>發音
+`ja-JP` | 日文 (日本) | 是 | 語言模型
+`ko-KR` | 韓文 (韓國) | 是 | 語言模型
+`mr-IN` | 馬拉提文 (印度) | 是 | 語言模型
+`nb-NO` | 挪威文 (巴克摩) (挪威) | 是 | 語言模型
+`nl-NL` | 荷蘭文 (荷蘭) | 是 | 語言模型
+`pl-PL` | 波蘭文 (波蘭) | 是 | 語言模型
+`pt-BR` | 葡萄牙文 (巴西) | 是 | 原音模型<br>語言模型<br>發音
+`pt-PT` | 葡萄牙文 (葡萄牙) | 是 | 語言模型
+`ru-RU` | 俄文 (俄羅斯) | 是 | 原音模型<br>語言模型
+`sv-SE` | 瑞典文 (瑞典) | 是 | 語言模型
+`ta-IN` | 坦米爾文 (印度) | 是 | 語言模型
+`te-IN` | 特拉古文 (印度) | 是 | 否
 `th-TH` | 泰文 (泰國) | 是 | 否
-`tr-TR` | 土耳其 | 是 | 是
+`tr-TR` | 土耳其 | 是 | 否
+`zh-CN` | 中文 (普通話，簡體) | 是 | 原音模型<br>語言模型
+`zh-HK` | 中文（廣東話，繁體） | 是 | 語言模型
+`zh-TW` | 中文 (繁體，國語) | 是 | 語言模型
 
 ## <a name="text-to-speech"></a>文字轉換語音
 
@@ -102,7 +111,7 @@ Microsoft 語音 SDK 和 REST Api 都支援這些語音，其中每個都支援�
 
 地區設定 | 語言 | 性別 | 完整服務名稱對應 | 簡短名稱
 -------|----------|---------|----------|----------
-<sup>&dagger;</sup>`ar-EG` | 阿拉伯文 (埃及) | 女性 | "Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)" | "ar-例如-Hoda"
+<sup>**1**</sup>`ar-EG` | 阿拉伯文 (埃及) | 女性 | "Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)" | "ar-例如-Hoda"
 `ar-SA` | 阿拉伯文 (沙烏地阿拉伯) | 男性 | "Microsoft Server Speech Text to Speech Voice (ar-SA, Naayf)" | "ar-SA-Naayf"
 `bg-BG` | 保加利亞文 | 男性 | "Microsoft Server Speech Text to Speech Voice (bg-BG, Ivan)" | "bg-BG-Ivan"
 `ca-ES` | 加泰蘭文 (西班牙) | 女性 | "Microsoft Server Speech Text to Speech Voice (ca-ES, HerenaRUS)" | 「ca-ES-HerenaRUS」
@@ -169,7 +178,7 @@ Microsoft 語音 SDK 和 REST Api 都支援這些語音，其中每個都支援�
 `sk-SK` | 斯洛伐克文 | 男性 | "Microsoft Server Speech Text to Speech Voice (sk-SK, Filip)" | "sk-SK-Filip"
 `sl-SI` | 斯洛維尼亞文 | 男性 | "Microsoft Server Speech Text to Speech Voice (sl-SI, Lado)" | "sl-SI-Lado"
 `sv-SE` | 瑞典文 | 女性 | "Microsoft Server Speech Text to Speech Voice (sv-SE, HedvigRUS)" | "sv-SE-HedvigRUS"
-`ta-IN` | 坦米爾文 (印度) | 男性 | "Microsoft Server Speech Text to Speech Voice (ta-IN, Valluvar)" | Valluvar 中的 "ta"
+`ta-IN` | 坦米爾文 (印度) | 男性 | "Microsoft Server Speech Text to Speech Voice (ta-IN, Valluvar)" | "ta-IN-Valluvar"
 `te-IN` | 特拉古文 (印度) | 女性 | "Microsoft Server Speech Text to Speech Voice (te-IN, Chitra)" | "Chitra"
 `th-TH` | 泰文 | 男性 | "Microsoft Server Speech Text to Speech Voice (th-TH, Pattara)" | 「第一次 Pattara」
 `tr-TR` | 土耳其文 | 女性 | "Microsoft Server Speech Text to Speech Voice (tr-TR, SedaRUS)" | "tr-TR-SedaRUS"
@@ -184,7 +193,7 @@ Microsoft 語音 SDK 和 REST Api 都支援這些語音，其中每個都支援�
 | | | 女性 | "Microsoft Server Speech Text to Speech Voice (zh-TW, HanHanRUS)" | "zh-幼圓-HanHanRUS"
 | | | 男性 | "Microsoft Server Speech Text to Speech Voice (zh-TW, Zhiwei, Apollo)" | "zh-幼圓-Zhiwei-Apollo"
 
-&dagger; *ar-例如，支援新式標準阿拉伯文（MSA）。*
+**1** *ar-例如，支援新式標準阿拉伯文（MSA）。*
 
 > [!NOTE]
 > 您可以在語音合成要求中使用完整的服務名稱對應或簡短的語音名稱。
