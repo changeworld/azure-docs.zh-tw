@@ -3,30 +3,26 @@ title: Azure Migrate 設備
 description: 提供伺服器評估和遷移中所使用的 Azure Migrate 設備的總覽。
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: c3ac39759cc096bb27535877084e14f4ed50cea9
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: efad1c48dd2c92c0fd5f268013b4a59f34b3a766
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75719574"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028817"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 設備
 
-本文說明 Azure Migrate 設備。 當您使用 Azure Migrate 評估和遷移工具來探索、評估和遷移要 Microsoft Azure 的應用程式、基礎結構和工作負載時，您可以部署設備。 
-
-[Azure Migrate](migrate-services-overview.md) 提供集中式中樞，可追蹤內部部署應用程式和工作負載及私人/公用雲端 VM 的探索、評量和移轉 (以 Azure 為目標)。 該中樞能提供 Azure Migrate 工具以進行評估和移轉，也提供協力廠商獨立軟體廠商 (ISV) 的供應項目。
-
-
+本文說明 Azure Migrate 設備。 當您使用[Azure Migrate： Server 評估](migrate-services-overview.md#azure-migrate-server-assessment-tool)工具來探索及評估應用程式、基礎結構和工作負載，以 Microsoft Azure 進行遷移時，您會部署設備。 當您使用[Azure Migrate： Server 評定](migrate-services-overview.md#azure-migrate-server-migration-tool)搭配[無代理程式遷移](server-migrate-overview.md)，將 VMware vm 遷移至 Azure 時，也會使用設備。
 
 ## <a name="appliance-overview"></a>設備總覽
 
-Azure Migrate 的裝置類型和使用方式如下所示。
+在下列案例中會使用 Azure Migrate 設備。
 
 **案例** | **工具** | **用於** 
---- | --- 
-VMware VM | Azure Migrate：伺服器評定;Azure Migrate：伺服器遷移 | 探索 VMware Vm<br/><br/> 探索應用程式和相依性<br/><br/> 收集機器中繼資料和效能中繼資料以進行評量。<br/><br/> 使用無代理程式遷移來複寫 VMware Vm。
+--- | --- | ---
+VMware VM | Azure Migrate：伺服器評估<br/><br/> Azure Migrate：伺服器遷移 | 探索 VMware Vm<br/><br/> 探索機器應用程式和相依性<br/><br/> 收集機器中繼資料和效能中繼資料以進行評量。<br/><br/> 使用無代理程式遷移來複寫 VMware Vm。
 Hyper-V VM | Azure Migrate：伺服器評估 | 探索 Hyper-v Vm<br/><br/> 收集機器中繼資料和效能中繼資料以進行評量。
-實體機器 |  Azure Migrate：評估工具 |  探索實體伺服器<br/><br/> 收集機器中繼資料和效能中繼資料以進行評量。
+實體機器 |  Azure Migrate：伺服器評估 |  探索實體伺服器<br/><br/> 收集機器中繼資料和效能中繼資料以進行評量。
 
 ## <a name="appliance---vmware"></a>設備-VMware 
 
@@ -36,12 +32,14 @@ Hyper-V VM | Azure Migrate：伺服器評估 | 探索 Hyper-v Vm<br/><br/> 收�
 **下載連結** | https://aka.ms/migrate/appliance/vmware 
 **下載大小** | 11.2 GB
 **授權** | 下載的應用裝置範本隨附 Windows Server 2016 評估授權，其有效期為180天。 如果評估期接近到期日，建議您下載並部署新的應用裝置，或啟用設備 VM 的作業系統授權。
+**部署** | 您會將設備部署為 VMware VM。 您在 vCenter Server 上需要足夠的資源來配置具有 32 GB RAM 的 VM、8個 vcpu、大約 80 GB 的磁片儲存體，以及外部虛擬交換器。<br/><br/> 設備必須直接或透過 proxy 存取網際網路。<br/> 設備 VM 必須部署在執行5.5 版或更新版本的 ESXi 主機上。<br/><br/> 設備可以連接到單一 vCenter Server。
 **硬體** | VCenter 上用來配置具有 32-GB RAM 8 個 vcpu 的 VM 的資源，大約 80 GB 的磁片儲存體，以及外部虛擬交換器。 
 **雜湊值** | MD5： c06ac2a2c0f870d3b274a0b7a73b78b1<br/><br/> SHA256：4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 **vCenter server/主機** | 設備 VM 必須部署在執行5.5 版或更新版本的 ESXi 主機上。<br/><br/> vCenter Server 執行5.5、6.0、6.5 或6.7。
 **Azure Migrate 專案** | 應用裝置可以與單一專案相關聯。 <br/> 任何數目的設備都可以與單一專案相關聯。<br/> 
-**探索 | 設備可以在 vCenter Server 上探索最多10000個 VMware Vm。<br/> 設備可以連接到單一 vCenter Server。
+**探索** | 設備可以在 vCenter Server 上探索最多10000個 VMware Vm。<br/> 設備可以連接到單一 vCenter Server。
 **設備元件** | 管理應用程式：應用裝置中的 Web 應用程式，可在部署期間進行使用者輸入。<br/> 探索代理程式：收集電腦設定資料。<br/> 評量代理程式：收集效能資料。<br/> DRA：協調 VM 複寫，並協調電腦/Azure 之間的通訊。<br/> 閘道：將複寫的資料傳送至 Azure。<br/> 自動更新服務：更新元件（每隔24小時執行一次）。
+**VDDK （無代理程式遷移）** | 如果您是使用 Azure Migrate 伺服器遷移來執行無代理程式遷移，則必須在應用裝置 VM 上安裝 VMware vSphere VDDK。
 
 
 ## <a name="appliance---hyper-v"></a>設備-Hyper-v
@@ -52,12 +50,13 @@ Hyper-V VM | Azure Migrate：伺服器評估 | 探索 Hyper-v Vm<br/><br/> 收�
 **下載連結** | https://aka.ms/migrate/appliance/hyperv 
 **下載大小** | 10 GB
 **授權** | 下載的應用裝置範本隨附 Windows Server 2016 評估授權，其有效期為180天。 如果評估期接近到期日，建議您下載並部署新的應用裝置，或啟用設備 VM 的作業系統授權。
+**設備部署**   |  您會將設備部署為 Hyper-v VM。<br/> Azure Migrate 提供的設備 VM 是 Hyper-v VM 5.0 版。<br/> Hyper-v 主機必須執行 Windows Server 2012 R2 或更新版本。<br/> 主機需要足夠的空間來配置 16 GB RAM、8個 vcpu、大約 80 GB 的儲存空間，以及適用于設備 VM 的外部交換器。<br/> 設備需要靜態或動態 IP 位址，以及網際網路存取。
 **硬體** | Hyper-v 主機上的資源可配置 16 GB RAM、8個 vcpu、大約 80 GB 的儲存空間，以及適用于設備 VM 的外部交換器。
 **雜湊值** | MD5：29a7531f32bcf69f32d964fa5ae950bc<br/><br/> SHA256：37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
 **Hyper-V 主機** | 正在執行 Windows Server 2012 R2 或更新版本。
 **Azure Migrate 專案** | 應用裝置可以與單一專案相關聯。 <br/> 任何數目的設備都可以與單一專案相關聯。<br/> 
-**探索 | 設備可以在 vCenter Server 上探索最多5000個 VMware Vm。<br/> 設備最多可以連線到300的 Hyper-v 主機。
-**設備元件** | 管理應用程式：應用裝置中的 Web 應用程式，可在部署期間進行使用者輸入。<br/> 探索代理程式：收集電腦設定資料。<br/> 評量代理程式：收集效能資料。<br/>  自動更新服務：更新元件（每隔24小時執行一次）
+**探索** | 設備可以在 vCenter Server 上探索最多5000個 VMware Vm。<br/> 設備最多可以連線到300的 Hyper-v 主機。
+**設備元件** | 管理應用程式：應用裝置中的 Web 應用程式，可在部署期間進行使用者輸入。<br/> 探索代理程式：收集電腦設定資料。<br/> 評量代理程式：收集效能資料。<br/>  自動更新服務：更新元件（每隔24小時執行一次）。
 
 
 ## <a name="appliance---physical"></a>設備-實體
@@ -67,13 +66,15 @@ Hyper-V VM | Azure Migrate：伺服器評估 | 探索 Hyper-v Vm<br/><br/> 收�
 **下載格式** | Zip 資料夾（使用 PowerShell 安裝程式腳本）
 **下載連結** | [下載連結](https://go.microsoft.com/fwlink/?linkid=2105112)
 **下載大小** | 59.7 MB
-**硬體** | 執行設備的電腦需要 16 GB 的 RAM，8個 vcpu，大約 80 GB 的儲存空間。
+**硬體** | 專用實體機器或 VM。 執行設備的電腦需要 16 GB RAM、8個 vcpu，大約 80 GB 的儲存空間，以及外部交換器。<br/><br/> 設備需要靜態或動態 IP 位址，以及網際網路存取。
 **雜湊值** | MD5：96fd99581072c400aa605ab036a0a7c0<br/><br/> SHA256： f5454beef510c0aa38ac1c6be6346207c351d5361afa0c9cea4772d566fcdc36
-**軟體** | 設備機器應執行 Windows Server 2016。 伺服器應該是專用的實體伺服器或 VM。
-**Azure Migrate 專案** | 應用裝置可以與單一專案相關聯。 <br/> 任何數目的設備都可以與單一專案相關聯。<br/> 
-**探索 | 設備可以探索最多250部實體伺服器。
+**軟體** | 設備機器應執行 Windows Server 2016。 
+**設備部署**   |  設備安裝程式腳本會從入口網站下載（在壓縮的資料夾中）。 <br/> 您會將資料夾解壓縮，並執行 PowerShell 腳本（AzureMigrateInstaller）。
+**探索** | 設備可以探索最多250部實體伺服器。
 **設備元件** | 管理應用程式：應用裝置中的 Web 應用程式，可在部署期間進行使用者輸入。<br/> 探索代理程式：收集電腦設定資料。<br/> 評量代理程式：收集效能資料。<br/>  自動更新服務：更新元件（每隔24小時執行一次）。
-**存取/埠** | 設定設備之後，TCP 通訊埠3389上的輸入連線允許應用裝置的遠端桌面連線。<br/><br/> 埠44368上的輸入連線，可使用 URL 從遠端存取應用裝置管理應用程式： ' HTTPs：//< 設備-ip 或名稱 >：44368。<br/><br/> 埠443、5671和5672上的輸出連線，以將探索和效能中繼資料傳送至 Azure Migrate。
+**埠存取** | 設定設備之後，TCP 通訊埠3389上的輸入連線允許應用裝置的遠端桌面連線。<br/><br/> 埠44368上的輸入連線，可使用 URL 從遠端存取應用裝置管理應用程式： ' HTTPs：//< 設備-ip 或名稱 >：44368。<br/><br/> 埠443、5671和5672上的輸出連線，以將探索和效能中繼資料傳送至 Azure Migrate。
+
+
 
 ## <a name="url-access"></a>URL 存取
 
@@ -90,11 +91,13 @@ Azure Migrate 設備需要網際網路的連線能力。
 management.azure.com | 建立設備 Active Directory 應用程式，以與 Azure Migrate 服務進行通訊。
 dc.services.visualstudio.com | 上傳用於內部監視的應用程式記錄。
 *.vault.azure.net | 管理 Azure Key Vault 中的秘密。
-aka.ms/* | 允許存取稱為的連結。
+aka.ms/* | 允許存取稱為的連結。 用於 Azure Migrate 設備更新。
 download.microsoft.com/download | 允許從 Microsoft 下載下載。
-*.servicebus.windows.net | 設備與 Azure Migrate 服務之間的通訊。
-*.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | 連接到 Azure Migrate 服務 Url。
-*.blob.core.windows.net | 將資料上傳至儲存體帳戶。
+*.servicebus.windows.net | 用於 VMware 無代理程式遷移。<br/><br/> 設備與 Azure Migrate 服務之間的通訊。
+*.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | 用於 VMware 無代理程式遷移。<br/><br/> 連接到 Azure Migrate 服務 Url。
+*.blob.core.windows.net |  用於 VMware 無代理程式遷移。<br/><br/>將資料上傳至儲存體。
+
+
 
 
 ## <a name="collected-data---vmware"></a>收集的資料-VMware

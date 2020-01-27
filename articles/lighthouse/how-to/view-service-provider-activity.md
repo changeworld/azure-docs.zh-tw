@@ -1,14 +1,14 @@
 ---
 title: 檢視服務提供者活動
 description: 客戶可以查看已記錄的活動，以查看服務提供者透過 Azure 委派的資源管理所執行的動作。
-ms.date: 12/6/2019
+ms.date: 01/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 31a9e7ff80623cc59b0a2db5951dff95d3088b05
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: de149bddb6917a63d91b1890c0430f64465cb40c
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749169"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76046105"
 ---
 # <a name="view-service-provider-activity"></a>檢視服務提供者活動
 
@@ -24,6 +24,9 @@ ms.locfileid: "75749169"
 在 [活動記錄檔] 中，您會看到作業的名稱和其狀態，以及執行的日期和時間。 [**由**下列時間起始的事件] 會顯示哪些使用者執行了作業，不論是在服務提供者的租使用者中，是透過 Azure 委派的資源管理，還是客戶自己的租使用者中的使用者。 請注意，會顯示使用者的名稱，而不是租使用者或已指派給該訂用帳戶的角色。
 
 記錄的活動可在過去90天的 Azure 入口網站中使用。 若要瞭解如何儲存此資料超過90天，請參閱[在 Azure 監視器的 Log Analytics 工作區中收集和分析 Azure 活動記錄](../../azure-monitor/platform/activity-log-collect.md)。
+
+> [!NOTE]
+> 服務提供者的使用者會出現在活動記錄中，但這些使用者及其角色指派不會顯示在**存取控制（IAM）** 中，或透過 api 來抓取角色指派資訊時。
 
 ## <a name="set-alerts-for-critical-operations"></a>設定重大作業的警示
 

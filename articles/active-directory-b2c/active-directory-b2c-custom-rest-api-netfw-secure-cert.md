@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1d396de57a12285fb6cc682510fa6f95585465d0
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 0201c0947c2f6052182721294e8972e29479825d
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949852"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930632"
 ---
 # <a name="secure-your-restful-service-by-using-client-certificates"></a>使用用戶端憑證保護您的 RESTful 服務
 
@@ -100,17 +100,19 @@ ms.locfileid: "74949852"
 
 ## <a name="step-4-upload-the-policy-to-your-tenant"></a>步驟 4：將原則上傳至您的租用戶
 
-1. 在 [Azure 入口網站](https://portal.azure.com)中，切換至[您的 Azure AD B2C 租用戶環境](active-directory-b2c-navigate-to-b2c-context.md)，然後選取 [Azure AD B2C]。
+1. 在  [Azure 入口網站](https://portal.azure.com)中，選取入口網站工具列中的 **目錄 + 訂**用帳戶 圖示，然後選取包含您 Azure AD B2C 租使用者的目錄。
 
-2. 選取 [識別體驗架構]。
+1. 在 Azure 入口網站中，搜尋並選取  **Azure AD B2C**。
 
-3. 選取 [所有原則]。
+1. 選取 [識別體驗架構]。
 
-4. 選取 [上傳原則]。
+1. 選取 [所有原則]。
 
-5. 選取 [覆寫已存在的原則] 核取方塊。
+1. 選取 [上傳原則]。
 
-6. 上傳 *TrustFrameworkExtensions.xml* 檔案，然後確定它通過驗證。
+1. 選取 [覆寫已存在的原則] 核取方塊。
+
+1. 上傳 TrustFrameworkExtensions.xml 檔案，然後確定它通過驗證。
 
 ## <a name="step-5-test-the-custom-policy-by-using-run-now"></a>步驟 5：使用 [立即執行] 測試自訂原則
 1. 開啟 [Azure AD B2C 設定]，然後選取 [識別體驗架構]。
@@ -299,5 +301,5 @@ if (IsValidClientCertificate() == false)
 如果您需要針對這個步驟進行疑難排解，請參閱[使用 Application Insights 收集記錄](active-directory-b2c-troubleshoot-custom.md)。
 
 ## <a name="optional-download-the-complete-policy-files-and-code"></a>(選用) 下載完整的原則檔案和程式碼
-* 在完成[開始使用自訂原則](active-directory-b2c-get-started-custom.md)逐步解說之後，建議您使用自己的自訂原則檔案來建置您的案例。 我們已提供[範例原則檔案](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-cert)，供您參考。
+* 在完成[開始使用自訂原則](active-directory-b2c-get-started-custom.md)逐步解說之後，建議您使用自己的自訂原則檔案來建置您的情節。 我們已提供[範例原則檔案](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-cert)，供您參考。
 * 您可以從[供參考的範例 Visual Studio 解決方案](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/Contoso.AADB2C.API)中下載完整程式碼。

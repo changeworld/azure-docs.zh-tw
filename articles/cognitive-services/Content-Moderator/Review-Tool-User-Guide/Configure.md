@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
-ms.openlocfilehash: 2ba314c814bdc92f62a607e28aefa30372bf297f
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 2d685683bdc359b31a5a6c550c19e8c0d858f12a
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757423"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169597"
 ---
 # <a name="configure-the-review-tool"></a>設定檢閱工具
 
@@ -25,7 +25,7 @@ ms.locfileid: "72757423"
 
 ## <a name="manage-team-and-subteams"></a>管理小組和子團隊
 
-[**小組**] 索引標籤可讓您管理團隊和子小組 &mdash;groups 使用者可以在某些[人為審查](../review-api.md#reviews)開始時收到通知。 您只能有一個小組（當您使用審核工具註冊時建立），但您可以建立多個子小組。 小組系統管理員可以邀請成員、設定其許可權，並將它們指派給不同的子團隊。
+[**小組**] 索引標籤可讓您管理團隊和子小組&mdash;使用者群組，以便在某些[人為審查](../review-api.md#reviews)開始時收到通知。 您只能有一個小組（當您使用審核工具註冊時建立），但您可以建立多個子小組。 小組系統管理員可以邀請成員、設定其許可權，並將它們指派給不同的子團隊。
 
 ![審查工具小組設定](images/settings-2-team.png)
 
@@ -64,9 +64,9 @@ ms.locfileid: "72757423"
 
 ![切換子小組](images/3-review-image-subteam-2.png)
 
-## <a name="tags"></a>Tags
+## <a name="tags"></a>標籤
 
-[**標籤] 索引**標籤可讓您定義自訂審核標記，除了兩個預設的仲裁標記 &mdash;**isadult** （**a**）和**isracy** （**r**）。 當您建立自訂標籤時，該標籤會在評論中與預設標記一起使用。 您可以切換其可見度設定，以變更要在審查中顯示的標記。
+[**標籤] 索引**標籤可讓您定義自訂審核標記，除了兩個預設的仲裁標記&mdash;**isadult** （**a**）和**isracy** （**r**）。 當您建立自訂標籤時，該標籤會在評論中與預設標記一起使用。 您可以切換其可見度設定，以變更要在審查中顯示的標記。
 
 ![標記視圖，包括 [可見] 核取方塊](images/tags-4-disable.png)
 
@@ -90,14 +90,14 @@ ms.locfileid: "72757423"
 
 [**連接器**] 索引標籤可讓您管理連接器，這是服務專屬的外掛程式，可以用不同的方式處理內容[工作流程](../review-api.md#workflows)的一部分。
 
-當您建立工作流程時，預設連接器是「內容仲裁者連接器」，可以將內容標示為**成人**或**猥褻**、尋找不雅內容等等。 不過，您可以使用此處所列的其他連接器，只要您有各自服務的認證（例如，使用臉部 API 連接器，您就必須取得[臉部 api](https://docs.microsoft.com/azure/cognitive-services/face/overview)訂用帳戶金鑰）。
+當您建立工作流程時，預設連接器是「內容仲裁者連接器」，可以將內容標示為**成人**或**猥褻**、尋找不雅內容等等。 不過，您可以使用此處所列的其他連接器，只要您有其個別服務的認證（例如，使用臉部連接器，就必須取得[臉部](https://docs.microsoft.com/azure/cognitive-services/face/overview)訂用帳戶金鑰）。
 
 [審查工具](./human-in-the-loop.md)包含下列連接器：
 
-- Emotion API
-- 臉部 API
+- 表情
+- 臉部
 - PhotoDNA Cloud Service
-- Text Analytics API
+- 文字分析
 
 ### <a name="add-a-connector"></a>新增連接器
 
@@ -121,7 +121,7 @@ ms.locfileid: "72757423"
 
 當您註冊時，[審核工具](https://contentmoderator.cognitive.microsoft.com)會為 Azure 內容仲裁服務產生免費試用金鑰，但您也可以將其設定為使用 azure 帳戶中的現有金鑰。 這建議用於大規模的案例，因為免費試用金鑰具有嚴格的使用限制（[定價和限制](https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator/)）。
 
-如果您已在 Azure 中建立[內容仲裁資源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator)，請在 Azure 入口網站中流覽至它，然後選取 **金鑰**分頁。 複製其中一個金鑰。
+如果您已在 Azure 中建立[內容仲裁資源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator)，請在 Azure 入口網站中流覽至它，然後選取 **金鑰** 分頁。 複製其中一個金鑰。
 
 ![Azure 入口網站中的 Content Moderator 金鑰](images/credentials-azure-portal-keys.PNG)
 

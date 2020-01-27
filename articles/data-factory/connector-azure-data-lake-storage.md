@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/08/2020
-ms.openlocfilehash: b390dda64ab9ece9a426bec94f4d866e8e524bc7
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
-ms.translationtype: HT
+ms.date: 01/16/2020
+ms.openlocfilehash: 7845e381c5a8851683edf6b955d40070bd4e0c30
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830253"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122265"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>使用 Azure Data Factory 複製和轉換 Azure Data Lake Storage Gen2 中的資料
 
@@ -162,7 +162,7 @@ Azure Data Lake Storage Gen2 連接器支援下列驗證類型。 如需詳細�
 
 若要使用受控識別進行 Azure 資源驗證，請遵循下列步驟。
 
-1. 藉由複製與您的處理站一起產生的**服務身分識別應用程式識別碼**值，來抓取[Data Factory 的受控識別資訊](data-factory-service-identity.md#retrieve-managed-identity)。
+1. 藉由複製與您的處理站一起產生的**受控識別物件識別碼**值，來抓取[Data Factory 的受控識別資訊](data-factory-service-identity.md#retrieve-managed-identity)。
 
 2. 授與受控識別適當的許可權。 如需許可權的運作方式範例，請參閱檔案[和目錄的存取控制清單](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories)Data Lake Storage Gen2。
 
@@ -609,4 +609,4 @@ Azure Data Lake Storage Gen2 連接器支援下列驗證類型。 如需詳細�
 
 ## <a name="next-steps"></a>後續步驟
 
-如需 Data Factory 中的複製活動所支援作為來源和接收的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md##supported-data-stores-and-formats)。
+如需 Data Factory 中的複製活動所支援作為來源和接收的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)。

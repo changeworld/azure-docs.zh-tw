@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c58371edffa4400c2c2b3efd37c3ce6d7c3cad95
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: eb47b9df51803c76662b5fb4ca1fe23740e7af9a
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847910"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155047"
 ---
 # <a name="configuring-the-custom-banned-password-list"></a>設定自訂禁用密碼清單
 
@@ -26,7 +26,7 @@ ms.locfileid: "74847910"
 
 要設定自訂禁用密碼清單，需要有 Azure Active Directory Premium P1 或 P2 授權。 如需 Azure Active Directory 授權的詳細資訊，請參閱[Azure Active Directory 定價頁面](https://azure.microsoft.com/pricing/details/active-directory/)。
 
-1. 登入[Azure 入口網站](https://portal.azure.com)，然後流覽至 [ **Azure Active Directory**]、[**驗證方法**] 和 [**密碼保護**]。
+1. 登入[Azure 入口網站](https://portal.azure.com)，然後流覽至**Azure Active Directory** > 的**安全性** > **驗證方法** > **密碼保護**]。
 1. 將 [強制使用自訂清單] 選項設定為 [是]。
 1. 在 [自訂禁用密碼清單] 中新增字串，每行一個字串
    * 自訂禁用密碼清單最多可包含1000個詞彙。
