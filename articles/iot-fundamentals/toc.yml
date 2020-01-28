@@ -6,13 +6,15 @@
       href: iot-introduction.md
     - name: Azure IoT 服務與技術
       href: iot-services-and-technologies.md
+    - name: 支援和協助選項
+      href: iot-support-help.md
 - name: 安全性
   items:
     - name: 建議
       href: security-recommendations.md
     - name: 從頭建立安全性
       href: iot-security-ground-up.md
-    - name: 安全性最佳作法
+    - name: 安全性最佳做法
       href: iot-security-best-practices.md
     - name: 安全性架構
       href: iot-security-architecture.md
