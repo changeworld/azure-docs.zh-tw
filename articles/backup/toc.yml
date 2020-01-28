@@ -178,6 +178,10 @@
           items:
             - name: Backup
               href: backup-azure-afs-automation.md
+            - name: 還原
+              href: restore-afs-powershell.md
+            - name: 管理
+              href: manage-afs-powershell.md
     - name: Azure VM 備份上的 SAP Hana 資料庫
       items:
         - name: 概觀

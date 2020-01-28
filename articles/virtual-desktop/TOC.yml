@@ -128,6 +128,8 @@
       href: remotefx-graphics-performance-counters.md
 - name: 參考
   items:
+    - name: Linux 支援
+      href: linux-overview.md
     - name: PowerShell
       href: /powershell/windows-virtual-desktop/overview
     - name: REST API

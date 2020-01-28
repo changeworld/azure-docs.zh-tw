@@ -113,9 +113,23 @@
     - name: CRS 規則
       href: ./ag/application-gateway-crs-rulegroups-rules.md
     - name: Azure CLI
-      href: /cli/azure/ext/azure-firewall/network/firewall
+      items:
+        - name: Front Door
+          href: 'https://docs.microsoft.com/cli/azure/ext/front-door/network?view=azure-cli-latest'
+        - name: 應用程式閘道
+          href: 'https://docs.microsoft.com/cli/azure/network/application-gateway?view=azure-cli-latest'
     - name: Azure PowerShell
-      href: /powershell/module/az.network/new-azfirewall
+      items:
+        - name: Front Door
+          href: 'https://docs.microsoft.com/powershell/module/az.frontdoor/?view=azps-3.3.0'
+        - name: 應用程式閘道
+          href: 'https://docs.microsoft.com/powershell/module/az.network/?view=azps-3.3.0#application_gateway'
+    - name: REST API
+      items:
+        - name: Front Door
+          href: 'https://docs.microsoft.com/rest/api/frontdoorservice/webapplicationfirewall/policies'
+        - name: 應用程式閘道
+          href: 'https://docs.microsoft.com/rest/api/virtualnetwork/webapplicationfirewallpolicies'
     - name: .NET
       href: /dotnet/api
     - name: Java
@@ -124,10 +138,6 @@
       href: 'https://azure.microsoft.com/develop/nodejs/#azure-sdk'
     - name: Python
       href: 'https://azure.microsoft.com/develop/python/'
-    - name: REST
-      href: /rest/api/firewall
-    - name: Azure Resource Manager
-      href: ../azure-resource-manager/management/overview.md
 - name: 資源
   items:
     - name: 作者範本
@@ -136,7 +146,7 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 社群範本
       href: 'https://azure.microsoft.com/documentation/templates'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/web-application-firewall/'
     - name: 區域可用性
       href: 'https://azure.microsoft.com/regions/services/'
