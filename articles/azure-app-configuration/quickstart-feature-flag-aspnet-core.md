@@ -1,33 +1,25 @@
 ---
-title: 將功能旗標新增至 ASP.NET Core 的快速入門 | Microsoft Docs
-description: 將功能旗標新增至 ASP.NET Core 應用程式，並在 Azure 應用程式組態中進行管理的快速入門
-services: azure-app-configuration
-documentationcenter: ''
-author: yegu-ms
-manager: maiye
-editor: ''
-ms.assetid: ''
+title: 將功能旗標新增至 ASP.NET Core 的快速入門
+description: 將功能旗標新增至 ASP.NET Core 應用程式，並使用 Azure 應用程式組態進行管理
+author: jpconnock
 ms.service: azure-app-configuration
-ms.devlang: csharp
 ms.topic: quickstart
-ms.tgt_pltfrm: ASP.NET Core
-ms.workload: tbd
-ms.date: 04/19/2019
-ms.author: yegu
-ms.openlocfilehash: 1b36bc1b1f28c687450acad4cc61fa5442cff082
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.date: 01/14/2020
+ms.author: jeconnoc
+ms.openlocfilehash: 6858648bc07546f30d4ebb92150c52f8c7729acd
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184992"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260273"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>快速入門：將功能旗標新增至 ASP.NET Core 應用程式
 
-在本快速入門中，您會將 Azure 應用程式組態納入 ASP.NET Core Web 應用程式中，以建立功能管理的端對端實作。 您可以使用應用程式組態服務來集中儲存所有功能旗標及控制其狀態。 
+在本快速入門中，您會使用 Azure 應用程式組態，在 ASP.NET Core Web 應用程式中建立功能管理的端對端實作。 您將使用應用程式組態服務來集中儲存所有功能旗標及控制其狀態。 
 
 .NET Core 功能管理程式庫可透過全方位的功能旗標支援來擴充架構。 這些程式庫會建置在 .NET Core 組態系統之上。 並且可透過 .NET Core 組態提供者完美地與應用程式組態整合。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
 - [.NET Core SDK](https://dotnet.microsoft.com/download)。
@@ -36,15 +28,16 @@ ms.locfileid: "74184992"
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. 選取 [功能管理員]   > [+新增]  以新增下列功能旗標：
+6. 選取 [功能管理員]   > [+新增]  ，以新增名為 `Beta` 的功能旗標。
 
-    | Key | State |
-    |---|---|
-    | Beta | 關閉 |
+    > [!div class="mx-imgBorder"]
+    > ![啟用名為 Beta 的功能旗標](media/add-beta-feature-flag.png)
+
+    目前將 `label` 保留為未定義。
 
 ## <a name="create-an-aspnet-core-web-app"></a>建立 ASP.NET Core Web 應用程式
 
-您會使用 [.NET Core 命令列介面 (CLI)](https://docs.microsoft.com/dotnet/core/tools/) 來建立新的 ASP.NET Core MVC Web 應用程式專案。 使用 .NET Core CLI 而非 Visual Studio 的好處，在於 .NET Core CLI 在 Windows、macOS 和 Linux 平台上都可供使用。
+使用 [.NET Core 命令列介面 (CLI)](https://docs.microsoft.com/dotnet/core/tools/) 建立新的 ASP.NET Core MVC Web 應用程式專案。 使用 .NET Core CLI 而非 Visual Studio 的好處，在於 .NET Core CLI 在 Windows、macOS 和 Linux 平台上都可供使用。
 
 1. 為您的專案建立新資料夾。 本快速入門會將其命名為 TestFeatureFlags  。
 
@@ -58,9 +51,13 @@ ms.locfileid: "74184992"
 
 將[祕密管理員工具](https://docs.microsoft.com/aspnet/core/security/app-secrets) \(機器翻譯\) 新增至您的專案。 祕密管理員工具能儲存專案樹狀結構外開發工作的敏感性資料。 此作法能協助避免於原始程式碼內意外共用應用程式祕密。
 
+> [!IMPORTANT]
+> .NET Core 2.x 與 3.x 之間有顯著的差異。  根據您的環境選取正確的語法。
+
 1. 開啟 .csproj  檔案。
 1. 新增 `UserSecretsId` 元素 (如下列範例所示)，並將其值取代為您自己的值 (此值通常是 GUID)：
 
+    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
 
@@ -76,16 +73,25 @@ ms.locfileid: "74184992"
 
     </Project>
     ```
-
-1. 儲存檔案。
+    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3.x](#tab/core3x)
+    ```xml
+    <Project Sdk="Microsoft.NET.Sdk.Web">
+    
+        <PropertyGroup>
+            <TargetFramework>netcoreapp3.1</TargetFramework>
+            <UserSecretsId>79a3edd0-2092-40a2-a04d-dcb46d5ca9ed</UserSecretsId>
+        </PropertyGroup>
+    </Project>
+    ```
+    ---
 
 ## <a name="connect-to-an-app-configuration-store"></a>連線至應用程式組態存放區
 
 1. 藉由執行下列命令，將參考新增至 `Microsoft.Azure.AppConfiguration.AspNetCore` 和 `Microsoft.FeatureManagement.AspNetCore` NuGet 套件：
 
     ```
-    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009470001-12
-    dotnet add package Microsoft.FeatureManagement.AspNetCore --version 1.0.0-preview-009000001-1251
+    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 3.0.0-preview-011100002-1192
+    dotnet add package Microsoft.FeatureManagement.AspNetCore --version 2.0.0-preview-010610001-1263
     ```
 
 1. 執行下列命令以還原您專案的套件：
@@ -108,19 +114,13 @@ ms.locfileid: "74184992"
 
     您可以使用應用程式組態 API 來存取此秘密。 在所有支援的平台上，應用程式組態 API 的組態名稱中都適用冒號 (:)。 請參閱[取決於環境的組態](https://docs.microsoft.com/aspnet/core/fundamentals/configuration)。
 
-1. 開啟 Program.cs  ，並將參考新增至 .NET Core 應用程式組態提供者：
-
-    ```csharp
-    using Microsoft.Extensions.Configuration.AzureAppConfiguration;
-    ```
-
 1. 藉由呼叫 `config.AddAzureAppConfiguration()` 方法將 `CreateWebHostBuilder` 方法更新為使用應用程式設定。
     
     > [!IMPORTANT]
     > `CreateHostBuilder` 會取代 .NET Core 3.0 中的 `CreateWebHostBuilder`。  根據您的環境選取正確的語法。
 
-    ### <a name="update-createwebhostbuilder-for-net-core-2x"></a>更新 .NET Core 2.x 的 `CreateWebHostBuilder`
-
+    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
+    
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
         WebHost.CreateDefaultBuilder(args)
@@ -135,8 +135,8 @@ ms.locfileid: "74184992"
             .UseStartup<Startup>();
     ```
 
-    ### <a name="update-createhostbuilder-for-net-core-3x"></a>更新 .NET Core 3.x 的 `CreateHostBuilder`
-
+    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3.x](#tab/core3x)
+    
     ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
         Host.CreateDefaultBuilder(args)
@@ -151,7 +151,7 @@ ms.locfileid: "74184992"
         })
         .UseStartup<Startup>());
     ```
-
+    ---
 
 1. 開啟 Startup.cs  ，並將參考新增至 .NET Core 功能管理員：
 
@@ -161,22 +161,75 @@ ms.locfileid: "74184992"
 
 1. 藉由呼叫 `services.AddFeatureManagement()` 方法更新 `ConfigureServices` 方法，以新增功能旗標支援。 (選擇性) 您可以呼叫 `services.AddFeatureFilter<FilterType>()`，以納入要用於功能旗標的任何篩選條件：
 
+    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
     ```csharp
     public void ConfigureServices(IServiceCollection services)
     {
+        services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);        
         services.AddFeatureManagement();
     }
     ```
+    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3.x](#tab/core3x)
+    ```csharp    
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddControllersWithViews();
+        services.AddFeatureManagement();
+    }
+    ```
+    ---
 
 1. 更新 `Configure` 方法，以新增中介軟體，讓功能旗標值依週期性間隔重新整理，同時讓 ASP.NET Core Web 應用程式繼續接收要求。
-
+    
+    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
     ```csharp
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     {
-        app.UseAzureAppConfiguration();
-        app.UseMvc();
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+            }
+            
+            app.UseStaticFiles();
+            app.UseCookiePolicy();
+            app.UseAzureAppConfiguration();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+            });
     }
     ```
+    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3.x](#tab/core3x)
+    ```csharp
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+            }
+            app.UseStaticFiles();
+            app.UseRouting();
+            app.UseAuthorization();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+            });
+            app.UseAzureAppConfiguration();
+    }
+    ```
+    ---
 
 1. 新增 MyFeatureFlags.cs  檔案：
 
@@ -278,19 +331,19 @@ ms.locfileid: "74184992"
     dotnet run
     ```
 
-1. 開啟瀏覽器視窗，並前往 `https://localhost:5001` (這是本機所裝載 Web 應用程式的預設 URL)。
+1. 開啟瀏覽器視窗，並前往 `https://localhost:5000` (這是本機所裝載 Web 應用程式的預設 URL)。
+    如果您在 Azure Cloud Shell 中工作，請選取 [Web 預覽]  按鈕，然後選取 [設定]  。  出現提示時，請選取連接埠 5000。
 
+    ![尋找 Web 預覽按鈕](./media/quickstarts/cloud-shell-web-preview.png)
+
+    您的瀏覽器應該會顯示如下圖所示的頁面。
     ![快速入門應用程式啟動本機](./media/quickstarts/aspnet-core-feature-flag-local-before.png)
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 選取 [所有資源]  ，然後選取您在快速入門中建立的應用程式組態存放區執行個體。
 
-1. 選取 [功能管理員]  ，然後將 Beta  金鑰的狀態變更為 [開啟]  ：
+1. 選取 [功能管理員]  ，然後將 Beta  金鑰的狀態變更為 [開啟]  。
 
-    | Key | State |
-    |---|---|
-    | Beta | 另一 |
-
-1. 切換回命令提示字元，然後按 `Ctrl-C` 以取消執行中 `dotnet` 程序，然後重新執行 `dotnet run`，藉以重新啟動您的應用程式。
+1. 返回命令提示字元，然後按 `Ctrl-C` 取消正在執行的 `dotnet` 程序。  使用 `dotnet run` 重新啟動您的應用程式。
 
 1. 重新整理瀏覽器頁面，以查看新的組態設定。
 

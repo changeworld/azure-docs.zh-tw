@@ -1,7 +1,7 @@
 ---
-title: 教學課程：臉部 API C#
+title: 教學課程：臉部連線服務
 titleSuffix: Azure Cognitive Services
-description: 建立使用認知服務臉部 API 的 Windows 應用程式，以偵測影像中的臉部特徵。
+description: 建立使用認知服務臉部辨識服務的 Windows 應用程式，以偵測影像中的臉部特徵。
 services: cognitive-services
 author: ghogen
 manager: nitinme
@@ -10,27 +10,27 @@ ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: ghogen
-ms.openlocfilehash: 4b204b9895a2afea4c78d1d92f2cca68f77ae708
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e0fe92fc7f19c3c899bcccfa9f9cc18029af049c
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74970290"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170228"
 ---
-# <a name="connecting-to-cognitive-services-face-api-by-using-connected-services-in-visual-studio"></a>使用 Visual Studio 中的連線服務連線至認知服務臉部 API
+# <a name="connect-to-the-face-service-by-using-connected-services-in-visual-studio"></a>使用 Visual Studio 中的連線服務連線至臉部辨識服務
 
-使用認知服務臉部 API，您可以偵測、分析、組織及標記相片中的臉孔。
+使用 Azure 臉部辨識服務時，您可以偵測、分析、組織及標記相片中的臉部。
 
-這篇文章和其附屬文件提供使用適用於認知服務臉部 API 的 Visual Studio 連線服務功能詳細資料。 此功能適用於已安裝認知服務擴充功能的 Visual Studio 2017 15.7 或更新版本。
+本文及其附屬文章會詳細說明如何使用適用於臉部辨識服務的 Visual Studio 連線服務功能。 此功能適用於已安裝認知服務擴充功能的 Visual Studio 2017 15.7 或更新版本。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - Azure 訂用帳戶。 如果您沒有訂用帳戶，您可以註冊 [免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
 - 已安裝 [Web 開發]  工作負載的 Visual Studio 2017 15.7.3 版或更新版本。 [立即下載](https://www.visualstudio.com/downloads/)。
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 
-## <a name="create-a-project-and-add-support-for-cognitive-services-face-api"></a>建立專案並新增認知服務臉部 API 的支援
+## <a name="create-a-project-and-add-support-for-face"></a>建立臉部的專案並新增其支援
 
 1. 建立新的 ASP.NET Core Web 專案。 使用空白專案範本。 
 
@@ -47,16 +47,16 @@ ms.locfileid: "74970290"
 
    ![選取您的訂用帳戶](media/vs-face-connected-service/Cog-Face-Connected-Service-1.PNG)
 
-1. 選取您想要使用的訂用帳戶，然後選擇臉部 API 的名稱，或選擇 [編輯] 連結來修改自動產生的名稱，選擇資源群組及定價層。
+1. 選取您要使用的訂用帳戶，然後選擇臉部辨識服務的名稱，或選擇 [編輯] 連結以修改自動產生的名稱，選擇資源群組及定價層。
 
    ![編輯連線服務詳細資料](media/vs-face-connected-service/Cog-Face-Connected-Service-2.PNG)
 
-   連入此連結，以取得定價層的詳細資料。
+   瀏覽此連結，以取得定價層的詳細資料。
 
 1. 選擇 [新增] 以新增連線服務的支援。
-   Visual Studio 會修改專案，以新增 NuGet 套件、設定檔項目及其他變更，以支援臉部 API 連線。
+   Visual Studio 會修改您的專案以新增 NuGet 套件、組態檔項目及其他變更，以支援臉部辨識服務的連線。
 
-## <a name="use-the-face-api-to-detect-attributes-of-faces-in-an-image"></a>使用臉部 API 來偵測影像中的臉部屬性
+## <a name="use-the-face-service-to-detect-attributes-of-faces-in-an-image"></a>使用臉部辨識服務來偵測影像中的臉部屬性
 
 1. 在 Startup.cs 中，新增下列 using 陳述式。
  
@@ -79,7 +79,7 @@ ms.locfileid: "74970290"
       }
    ```
 
-1. 在專案的 wwwroot 資料夾中，新增影像資料夾，然後將影像檔案新增至 wwwroot 資料夾。 例如，您可以使用這個[臉部 API 頁面](https://azure.microsoft.com/services/cognitive-services/face/)上的其中一個影像。 在其中一個影像上按一下滑鼠右鍵，儲存到本機硬碟，然後在 [方案總管] 中的影像資料夾上按一下滑鼠右鍵，然後選擇 [新增]   > [現有項目]  ，將它新增至您的專案。 您的專案在 [方案總管] 中看起來應該如下所示：
+1. 在專案的 wwwroot 資料夾中，新增影像資料夾，然後將影像檔案新增至 wwwroot 資料夾。 例如，您可以使用 Azure 入口網站的[臉部頁面](https://azure.microsoft.com/services/cognitive-services/face/)上的其中一個影像。 在其中一個影像上按一下滑鼠右鍵，儲存到本機硬碟，然後在 [方案總管] 中的影像資料夾上按一下滑鼠右鍵，然後選擇 [新增]   > [現有項目]  ，將它新增至您的專案。 您的專案在 [方案總管] 中看起來應該如下所示：
  
    ![含有影像檔案的影像資料夾](media/vs-face-connected-service/Cog-Face-Connected-Service-6.PNG)
 
@@ -87,7 +87,7 @@ ms.locfileid: "74970290"
 
    ![有更新時才複製](media/vs-face-connected-service/Cog-Face-Connected-Service-5.PNG)
  
-1. 以下列程式碼取代 Configure 方法，以存取臉部 API 和測試影像。 將 imagePath 字串變更為臉部影像的正確路徑和檔案名稱。
+1. 以下列程式碼取代 Configure 方法，以存取臉部辨識服務並測試影像。 將 imagePath 字串變更為臉部影像的正確路徑和檔案名稱。
 
    ```csharp
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -231,9 +231,9 @@ ms.locfileid: "74970290"
         }
    ```
 
-1. 執行 Web 應用程式，並查看臉部 API 在影像中找到什麼。
+1. 執行 Web 應用程式，並查看臉部辨識服務在影像中找到的項目。
  
-   ![臉部 API 影像與格式化的結果](media/vs-face-connected-service/Cog-Face-Connected-Service-4.PNG)
+   ![臉部辨識服務影像與格式化的結果](media/vs-face-connected-service/Cog-Face-Connected-Service-4.PNG)
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -245,4 +245,4 @@ ms.locfileid: "74970290"
 
 ## <a name="next-steps"></a>後續步驟
 
-藉由閱讀[臉部 API 文件](Overview.md)，深入了解臉部 API。
+藉由閱讀[臉部文件](Overview.md)深入了解臉部辨識服務。

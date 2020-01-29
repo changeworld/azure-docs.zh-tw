@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 166fb9320672e63b8c53717133dc61aa93f57a62
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 305108e576ad4e60089c929c9b780e8cee559540
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74868638"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167618"
 ---
 # <a name="what-is-identity-provisioning"></a>什麼是身分識別保護？
 
@@ -50,9 +50,7 @@ ms.locfileid: "74868638"
 
 ![雲端佈建](media/what-is-provisioning/cloud3.png)
 
-應用程式佈建牽涉到在使用者需要存取的應用程式中佈建使用者和角色。  
-
-最常見的案例是，當 Azure AD 中的使用者佈建到 O365 或 Salesforce 時。
+在 Azure Active Directory (Azure AD) 中， **[應用程式佈建](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)** 一詞是指在使用者需要存取的雲端應用程式中，自動建立使用者身分識別和角色。 除了建立使用者身分識別以外，自動佈建還包括隨著狀態或角色變更，維護和移除使用者身分識別。 常見的案例包括將 Azure AD 使用者佈建到 [Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial)、[Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial)、[ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial)等應用程式。
 
 ## <a name="directory-provisioning"></a>目錄佈建
 

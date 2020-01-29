@@ -9,16 +9,16 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 269f2c9a2cf8578438971e8ad75fec1379a21c19
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e305a5634aa0c065342e1873c413039eb734b972
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448193"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165877"
 ---
 # <a name="quickstart-face-client-library-for-net"></a>快速入門：適用於 .NET 的臉部用戶端程式庫
 
-開始使用適用於 .NET 的臉部用戶端程式庫。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。 臉部 API 服務可讓您存取先進的演算法，以偵測和辨識影像中的人臉。
+開始使用適用於 .NET 的臉部用戶端程式庫。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。 臉部服務可讓您存取先進的演算法，以偵測和辨識影像中的人臉。
 
 使用適用於 .NET 的臉部用戶端程式庫來：
 
@@ -317,5 +317,5 @@ dotnet run
 > [!div class="nextstepaction"]
 > [臉部 API 參考 (.NET)](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet)
 
-* [什麼是臉部 API？](../overview.md)
+* [什麼是臉部辨識服務？](../overview.md)
 * 此範例的原始程式碼可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/Face/Program.cs) 上找到。

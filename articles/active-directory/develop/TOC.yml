@@ -404,6 +404,8 @@
               href: active-directory-optional-claims.md
             - name: 設定權杖存留期
               href: active-directory-configurable-token-lifetimes.md
+            - name: 處理 Chrome 瀏覽器中的 SameSite Cookie 變更
+              href: howto-handle-samesite-cookie-changes-chrome-browser.md
         - name: 應用程式設定
           items:
             - name: 新版 Azure 入口網站應用程式註冊訓練指南

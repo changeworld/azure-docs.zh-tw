@@ -1,7 +1,7 @@
 ---
-title: 什麼是臉部 API？
+title: 什麼是臉部辨識服務？
 titleSuffix: Azure Cognitive Services
-description: Azure 認知服務的臉部 API 提供相關的演算法，用來偵測、辨識和分析影像中的人臉。
+description: Azure 認知服務的臉部辨識服務會提供相關的演算法，用以偵測、辨識和分析影像中的人臉。
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,25 +9,25 @@ ms.subservice: face-api
 ms.topic: overview
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 75f2969562dd2de041ffaa146c394f1a18c7756b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c4e2253229f4461bcb6a2a9fe3e561f3cde29760
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74961534"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170246"
 ---
-# <a name="what-is-the-azure-face-api"></a>什麼是 Azure 臉部 API？
+# <a name="what-is-the-azure-face-service"></a>什麼是 Azure 臉部辨識服務？
 
-Azure 認知服務的臉部 API 提供相關的演算法，用來偵測、辨識和分析影像中的人臉。 處理人臉資訊在許多不同的軟體案例中都是重要的能力。 舉例來說，這些案例包括安全性、自然使用者介面、影像內容分析和管理、行動應用程式及機器人。
+Azure 認知服務的臉部辨識服務會提供相關的演算法，用以偵測、辨識和分析影像中的人臉。 處理人臉資訊在許多不同的軟體案例中都是重要的能力。 舉例來說，這些案例包括安全性、自然使用者介面、影像內容分析和管理、行動應用程式及機器人。
 
-臉部 API 提供了幾項不同的功能。 以下幾節會有各項功能的相關概述。 請繼續閱讀以深入了解各項功能。
+臉部辨識服務提供了幾項不同的功能。 以下幾節會有各項功能的相關概述。 請繼續閱讀以深入了解各項功能。
 
 ## <a name="face-detection"></a>臉部偵測
 
-臉部 API 可偵測影像中的人臉，並傳回其位置的矩形座標。 臉部偵測也可以擷取一連串與臉部相關的屬性。 例如，姿勢、性別、年齡、頭部姿勢、臉部汗毛和眼鏡等。
+臉部辨識服務可偵測影像中的人臉，並傳回其位置的矩形座標。 臉部偵測也可以擷取一連串與臉部相關的屬性。 例如，姿勢、性別、年齡、頭部姿勢、臉部汗毛和眼鏡等。
 
 > [!NOTE]
-> [電腦視覺 API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) 也提供臉部偵測功能。 如果您想要以臉部資料執行進一步的作業，請使用臉部 API，這是本文所討論的服務。
+> [電腦視覺 API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) 也提供臉部偵測功能。 如果您想要以臉部資料執行進一步的作業，請使用臉部辨識服務，這是本文所討論的服務。
 
 ![女性與男性影像，其臉部周圍繪有矩形，並顯示其年齡和性別](./Images/Face.detection.jpg)
 
@@ -73,9 +73,9 @@ Azure 認知服務的臉部 API 提供相關的演算法，用來偵測、辨識
 
 ## <a name="sample-apps"></a>範例應用程式
 
-下列應用程式範例說明幾種使用「臉部 API」的方式：
+下列應用程式範例說明幾種使用臉部辨識服務的方式：
 
-- [Microsoft 臉部 API：Windows 用戶端程式庫和範例](https://github.com/Microsoft/Cognitive-Face-Windows)是一項 WPF 應用程式，可示範數個關於臉部偵測、分析和識別的案例。
+- [臉部 API：Windows 用戶端程式庫和範例](https://github.com/Microsoft/Cognitive-Face-Windows)是一項 WPF 應用程式，可示範數個關於臉部偵測、分析和識別的案例。
 - [FamilyNotes UWP 應用程式](https://github.com/Microsoft/Windows-appsample-familynotes)是一個通用 Windows 平台 (UWP) 應用程式，可在家庭記事分享案例中使用臉部識別以及語音、Cortana、筆跡和相機。
 
 ## <a name="data-privacy-and-security"></a>資料隱私權和安全性

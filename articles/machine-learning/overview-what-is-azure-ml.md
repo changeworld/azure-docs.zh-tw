@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
-ms.openlocfilehash: cd94001cfe795e7aa78a1332325052afce6b8ec6
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 4c6a9a2b5991c9f99bf728ecfed144cc77e4c49a
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75762789"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314329"
 ---
 # <a name="what-is-azure-machine-learning"></a>什麼是 Azure Machine Learning？
 
@@ -46,7 +46,7 @@ Azure Machine Learning 為開發人員和資料科學家提供其機器學習工
 
 + R 指令碼或筆記本，您可以在其中使用<a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">適用於 R 的 SDK</a> 來撰寫您自己的程式碼，或在設計工具中使用 R 模組。
 
-+ [Visual Studio Code 擴充功能](how-to-vscode-tools.md) \(英文\)
++ [Visual Studio Code 擴充功能](tutorial-setup-vscode-extension.md) \(英文\)
 
 + [機器學習 CLI](reference-azure-machine-learning-cli.md)
 
@@ -66,7 +66,7 @@ Azure Machine Learning 為開發人員和資料科學家提供其機器學習工
 
 若要進行無程式碼或低程式碼的訓練和部署，請嘗試：
 
-+ **Azure Machine Learning 設計工具 (預覽)**
++ **Azure Machine Learning 設計工具**
 
   使用設計工具來準備資料、定型、測試、部署、管理和追蹤機器學習模型，而不需撰寫任何程式碼。 不需要設計程式，就能以視覺化方式連線資料集和模組來建構模型。 試用[設計工具教學課程](tutorial-designer-automobile-price-train-score.md)。
 
@@ -85,7 +85,7 @@ Azure Machine Learning 為開發人員和資料科學家提供其機器學習工
 
 接著，您可以使用[適用於 Python 的 Azure Machine Learning SDK](https://aka.ms/aml-sdk)、[Azure Machine Learning Studio](https://ml.azure.com) 或[機器學習 CLI](reference-azure-machine-learning-cli.md) 來管理所部署的模型。
 
-這些模型可被取用並[即時](how-to-consume-web-service.md)或[非同步](how-to-run-batch-predictions.md)地傳回大量資料的相關預測。
+這些模型可被取用並[即時](how-to-consume-web-service.md)或[非同步](how-to-use-parallel-run-step.md)地傳回大量資料的相關預測。
 
 另外，透過進階[機器學習管線](concept-ml-pipelines.md)，您可以在資料準備、模型定型與評估及部署的每個步驟上共同作業。 管線可讓您執行下列作業：
 

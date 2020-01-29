@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/21/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fc55130bd840de3960a44ddc1bd0617af185148
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: edb543a85779fb083b6990a58dc5ec0b8ef3eb9c
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74969610"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291408"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Workplace by Facebook 整合
 
@@ -33,7 +32,7 @@ ms.locfileid: "74969610"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -48,9 +47,10 @@ ms.locfileid: "74969610"
 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
 
 * Workplace by Facebook 支援 **SP** 起始的 SSO
-* Workplace by Facebook 支援 **[自動化的使用者佈建和取消佈建 (建議選項)](workplacebyfacebook-provisioning-tutorial.md)**
 * Workplace by Facebook 支援 **Just-In-Time 佈建**
+* Workplace by Facebook 支援 **[自動使用者佈建](workplacebyfacebook-provisioning-tutorial.md)**
 * Workplace by Facebook 行動應用程式現在可以搭配 Azure AD 設定來啟用 SSO。 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
+* 設定 Workplace by Facebook 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-workplace-by-facebook-from-the-gallery"></a>從資源庫新增 Workplace by Facebook
 
@@ -90,10 +90,12 @@ ms.locfileid: "74969610"
 
     a. 在 [登入 URL]  文字方塊中，使用下列模式輸入 URL：`https://<instancename>.facebook.com`
 
-    b. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：`https://www.facebook.com/company/<instanceID>`。
+    b. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：`https://www.facebook.com/company/<instanceID>`
 
-    > [!NOTE] 
-    > 這些都不是真正的值。 使用實際的「登入 URL」及「識別碼」來更新這些值。 請參閱 [Workplace 公司儀表板] 的 [驗證] 頁面，以查看您 Workplace 社群的正確值。
+    c. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://www.facebook.com/company/<instanceID>`
+
+    > [!NOTE]
+    > 這些都不是真正的值。 使用實際的「單一登入 URL」、「識別碼」及「回覆 URL」來更新這些值。 請參閱 [Workplace 公司儀表板] 的 [驗證] 頁面，以查看您 Workplace 社群的正確值，稍後本教學課程會加以說明。
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (Base64)]  並選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
@@ -172,13 +174,15 @@ ms.locfileid: "74969610"
 
     f. 複製執行個體的 [Recipient URL] \(收件者 URL\)  ，並將其貼到 Azure 入口網站上 [基本 SAML 設定]  區段中的 [登入 URL]  文字方塊內。
 
-    g. 捲動到區段的底部，然後按一下 [測試 SSO]  按鈕。 快顯視窗中的這個結果隨即顯示，並會出現 Azure AD 登入頁面。 如往常輸入您的認證以進行驗證。
+    g. 複製執行個體的 [ACS (判斷提示取用者服務) URL]  ，並將其貼到 Azure 入口網站上的 [基本 SAML 組態]  區段的 [回覆 URL]  文字方塊中。
+
+    h. 捲動到區段的底部，然後按一下 [測試 SSO]  按鈕。 快顯視窗中的這個結果隨即顯示，並會出現 Azure AD 登入頁面。 如往常輸入您的認證以進行驗證。
 
     **疑難排解：** 確保從 Azure AD 傳回的電子郵件地址與您用來登入的 Workplace 帳戶相同。
 
-    h. 一旦測試已順利完成後，捲動到頁面底部，然後按一下 [儲存]  按鈕。
+    i. 一旦測試已順利完成後，捲動到頁面底部，然後按一下 [儲存]  按鈕。
 
-    i. 現在，使用 Workplace 的所有使用者都將會看到進行驗證的 Azure AD 登入頁面。
+    j. 現在，使用 Workplace 的所有使用者都將會看到進行驗證的 Azure AD 登入頁面。
 
 1. **SAML 登出重新導向 (選擇性)**  -
 
@@ -241,3 +245,7 @@ ms.locfileid: "74969610"
 - [設定使用者佈建](workplacebyfacebook-provisioning-tutorial.md)
 
 - [嘗試搭配 Azure AD 使用 Workplace by Facebook](https://aad.portal.azure.com)
+
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [如何使用進階可見性和控制項保護 Workplace by Facebook](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

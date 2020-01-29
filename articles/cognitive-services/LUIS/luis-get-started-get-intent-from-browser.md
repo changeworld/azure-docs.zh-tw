@@ -11,28 +11,28 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 10/17/2019
 ms.author: diberry
-ms.openlocfilehash: a99dbc594b53d00ae02b2581d149fe7b4573ab7d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2ca0f9faf1623df9212072abbc960cba41a6414b
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495227"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165751"
 ---
 # <a name="quickstart-get-intent-with-a-browser"></a>快速入門：使用瀏覽器取得意圖
 
 若要了解 LUIS 預測端點所傳回的內容，請在網頁瀏覽器中檢視預測結果。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要查詢公用應用程式，您需要：
 
-* 您自己的 Language Understanding (LUIS) 金鑰。 若您還沒有訂用帳戶可建立金鑰，您可以註冊[免費帳戶](https://azure.microsoft.com/free/)。 LUIS 撰寫金鑰不會有作用。 
+* 您自己的 Language Understanding (LUIS) 撰寫或預測金鑰，其可從 [LUIS 入口網站 (預覽)](https://preview.luis.ai/) 取得。 若您還沒有訂用帳戶可建立金鑰，您可以註冊[免費帳戶](https://azure.microsoft.com/free/)。 
 * 公用應用程式的識別碼：`df67dcdb-c37d-46af-88e1-8b97951ca1c2`。 
 
 ## <a name="use-the-browser-to-see-predictions"></a>使用瀏覽器查看預測
 
 1. 請開啟網頁瀏覽器。 
-1. 使用下列完整的 URL，將 `YOUR-KEY` 取代為您自己的 LUIS 金鑰。 要求是 GET 要求，包含以您的 LUIS 金鑰作為查詢字串參數的授權。
+1. 使用下列完整的 URL，將 `YOUR-KEY` 取代為您自己的 LUIS 撰寫或預測金鑰。 要求是 GET 要求，包含以您的 LUIS 撰寫或預測金鑰作為查詢字串參數的授權。
 
     #### <a name="v3-prediction-requesttabv3-1-1"></a>[V3 預測要求](#tab/V3-1-1)
     

@@ -1,7 +1,7 @@
 ---
 title: 快速入門：使用 REST API 和 PHP 偵測影像中的人臉
 titleSuffix: Azure Cognitive Services
-description: 在此快速入門中，您可以使用臉部 API 搭配 PHP 偵測影像中的人臉。
+description: 在本快速入門中，您會使用臉部 REST API 搭配 PHP 來偵測影像中的臉部。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: fb9539c8aa0477cbfbf11ce08635e4e9ccebb2ce
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0f76ec4ce1072b247be7f46610d37190cd282a22
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977925"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169748"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>快速入門：使用 REST API 和 PHP 偵測影像中的人臉
 
 在本快速入門中，您將使用 Azure Face REST API 搭配 PHP 來偵測影像中的人臉。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-- 臉部 API 訂用帳戶金鑰。 您可以從[試用認知服務](https://azure.microsoft.com/try/cognitive-services/?api=face-api)取得免費的試用訂用帳戶金鑰。 或是，依照[建立認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的指示訂閱臉部 API 服務並取得金鑰。
+- 臉部訂用帳戶金鑰。 您可以從[試用認知服務](https://azure.microsoft.com/try/cognitive-services/?api=face-api)取得免費的試用訂用帳戶金鑰。 或是，依照[建立認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的指示訂閱臉部辨識服務並取得金鑰。
 - 程式碼編輯器，例如 [Visual Studio Code](https://code.visualstudio.com/download)。
 - PHP [HTTP_Request2](https://pear.php.net/package/HTTP_Request2) 套件。
 - 啟用 PHP 的網頁瀏覽器。 如果您尚未進行此設定，可以在電腦上安裝並設定 [XAMPP](https://www.apachefriends.org/)。
@@ -288,7 +288,7 @@ catch (HttpException $ex)
 
 ## <a name="next-steps"></a>後續步驟
 
-探索臉部 API，此 API 可用來偵測影像中的人臉、使用矩形標定臉部，以及傳回例如年齡和性別等屬性。
+探索臉部 API，此 API 可用來偵測影像中的人臉、使用矩形標定臉部，以及傳回年齡和性別等屬性。
 
 > [!div class="nextstepaction"]
 > [臉部 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) (英文)

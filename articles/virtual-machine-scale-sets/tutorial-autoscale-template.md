@@ -1,27 +1,19 @@
 ---
-title: 教學課程 - 使用 Azure 範本自動調整擴展集 |Microsoft Docs
+title: 教學課程 - 使用 Azure 範本自動調整擴展集
 description: 了解如何使用 Azure Resource Manager 範本隨著 CPU 需求的增加和減少自動調整虛擬機器擴展集
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5e02c88d894c01752965af77861d3e11e1bb101d
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 9d7e0a99a7ba2c00b2ebe5ea8c77d527765ead67
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55749188"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271422"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>教學課程：使用 Azure 範本自動調整虛擬機器擴展集
 當建立擴展集時，您會定義您想要執行的 VM 執行個體數目。 當您的應用程式需求變更時，您可以自動增加或減少 VM 執行個體數目。 自動調整的能力可讓您在整個應用程式的生命週期中，跟上客戶的需求或對應用程式效能變更做出回應。 在本教學課程中，您將了解如何：
@@ -75,7 +67,7 @@ ms.locfileid: "55749188"
 |-------------------|---------------------------------------------------------------------------------------------------------------------|-----------------|
 | *metricName*      | 要監視並套用擴展集動作的效能計量。                                                   | Percentage CPU  |
 | *timeGrain*       | 收集計量進行分析的頻率。                                                                   | 1 分鐘        |
-| *timeAggregation* | 定義應該如何彙總收集的計量以進行分析。                                                | 平均值         |
+| *timeAggregation* | 定義應該如何彙總收集的計量以進行分析。                                                | Average         |
 | *timeWindow*      | 在比較計量與閾值之前監視的時間長短。                                   | 5 分鐘       |
 | *operator*        | 用以比較計量資料與閾值之間差異的運算子。                                                     | 大於    |
 | *threshold*       | 讓自動調整規則觸發動作的值。                                                      | 70%             |
@@ -144,7 +136,7 @@ ms.locfileid: "55749188"
 ## <a name="create-an-autoscaling-scale-set"></a>建立自動調整擴展集
 我們將使用範例範本來建立擴展集，並套用自動調整規則。 您可以[檢閱完整範本](https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/scale_sets/autoscale.json)，或[檢視範本的 *Microsoft.insights/autoscalesettings* 資源提供者區段](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/scale_sets/autoscale.json#L220)。
 
-首先，使用 [az group create](/cli/azure/group) 建立資源群組。 下列範例會在 eastus 位置建立名為 myResourceGroup 的資源群組：
+首先，使用 [az group create](/cli/azure/group) 建立資源群組。 下列範例會在 eastus  位置建立名為 myResourceGroup  的資源群組：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -162,7 +154,7 @@ az group deployment create \
 
 
 ## <a name="generate-cpu-load-on-scale-set"></a>在擴展集上產生 CPU 負載
-若要測試自動調整規則，請擴展集中的 VM 執行個體上產生 CPU 負載。 這種模擬的 CPU 負載會使自動調整規則相應放大，並增加 VM 執行個體數目。 當模擬的 CPU 負載隨後減輕時，自動調整規則即會相應縮小，並減少 VM 執行個體數目。
+若要測試自動調整規則，請在擴展集中的 VM 執行個體上產生 CPU 負載。 這種模擬的 CPU 負載會使自動調整規則相應放大，並增加 VM 執行個體數目。 當模擬的 CPU 負載隨後減輕時，自動調整規則即會相應縮小，並減少 VM 執行個體數目。
 
 首先，請使用 [az vmss list-instance-connection-info](/cli/azure/vmss)，列出連線至擴展集中的 VM 執行個體的位址和連接埠：
 
@@ -187,14 +179,14 @@ az vmss list-instance-connection-info \
 ssh azureuser@13.92.224.66 -p 50001
 ```
 
-登入之後，安裝 **stress** 公用程式。 請啟動 10 個會產生 CPU 負載的 **stress** 背景工作。 這些背景工作會執行 420 秒，這就足以讓自動調整規則實作所需的動作。
+登入之後，安裝 **stress** 公用程式。 請啟動 10  個會產生 CPU 負載的 **stress** 背景工作。 這些背景工作會執行 420  秒，這就足以讓自動調整規則實作所需的動作。
 
 ```azurecli-interactive
 sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-當 **stress** 顯示類似於 stress: info: [2688] dispatching hogs:*10 cpu, 0 io, 0 vm, 0 hdd* 的輸出時，請按 Enter 鍵返回提示。
+當 **stress** 顯示類似於 stress: info: [2688] dispatching hogs:*10 cpu, 0 io, 0 vm, 0 hdd* 的輸出時，請按 Enter  鍵返回提示。
 
 若要確認 **stress** 產生了 CPU 負載，請使用 **top** 公用程式檢查作用中的系統負載：
 
@@ -222,7 +214,7 @@ sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-再次，當 **stress** 顯示類似於 stress: info: [2713] dispatching hogs:*10 cpu, 0 io, 0 vm, 0 hdd* 的輸出時，請按 Enter 鍵返回提示。
+再次，當 **stress** 顯示類似於 stress: info: [2713] dispatching hogs:*10 cpu, 0 io, 0 vm, 0 hdd* 的輸出時，請按 Enter  鍵返回提示。
 
 關閉第二個 VM 執行個體的連線。 **stress** 會繼續對 VM 執行個體執行。
 
@@ -260,7 +252,7 @@ Every 2.0s: az vmss list-instances --resource-group myResourceGroup --name mySca
            6  True                  eastus      myScaleSet_6  Deleting             MYRESOURCEGROUP  9e4133dd-2c57-490e-ae45-90513ce3b336
 ```
 
-使用 `Ctrl-c` 結束 watch。 擴展集會繼續每隔 5 分鐘相應縮小一次，並移除一個 VM 執行個體，直到達到最小執行個體計數 (兩個) 為止。
+使用 `Ctrl-c` 結束 watch  。 擴展集會繼續每隔 5 分鐘相應縮小一次，並移除一個 VM 執行個體，直到達到最小執行個體計數 (兩個) 為止。
 
 
 ## <a name="clean-up-resources"></a>清除資源

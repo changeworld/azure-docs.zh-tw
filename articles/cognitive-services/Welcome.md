@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.topic: overview
 ms.date: 12/19/2019
 ms.author: nitinme
-ms.openlocfilehash: 544ca198b846ca5032bdf400b300ac076d729d88
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 332f33bb4046a9ca9d6abf9bec75f60bb4ca9e32
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834153"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169099"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Azure 認知服務是什麼？
 
@@ -27,7 +27,7 @@ Azure 認知服務是用來協助開發人員建置智慧型應用程式，且�
 |:-----------|:------------------|
 |[電腦視覺](https://docs.microsoft.com/azure/cognitive-services/computer-vision/ "電腦視覺")|電腦視覺服務可供您存取進階演算法，以處理影像及傳回資訊。|
 |[自訂視覺服務](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/home "自訂辨識服務")|自訂視覺服務可讓您建置自訂影像分類器。|
-|[臉部 API](https://docs.microsoft.com/azure/cognitive-services/face/ "人臉識別 API")|人臉識別 API 提供進階的臉部識別演算法，以偵測和辨識臉部特徵。|
+|[臉部](https://docs.microsoft.com/azure/cognitive-services/face/ "臉部")| 臉部辨識服務提供進階的臉部識別演算法，以偵測和辨識臉部屬性。|
 |[表單辨識器](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/ "表單辨識器") \(預覽\)|表單辨識器會從表單文件中識別並擷取索引鍵/值組和資料表資料；然後輸出結構化資料，包括原始檔案中的關聯性。|
 |[筆跡辨識器](https://docs.microsoft.com/azure/cognitive-services/ink-recognizer/ "筆跡辨識器") \(預覽\)|筆跡辨識器可讓您辨識並分析數位筆跡的筆觸資料、圖形和手寫內容，以及輸出包含所有已辨識實體的文件結構。|
 |[影片索引子](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview "影片索引子")|影片索引器可讓您從影片中擷取深入解析。|

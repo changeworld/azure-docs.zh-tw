@@ -4,15 +4,15 @@ description: 了解 Azure Analysis Services，此為完全受控的平台即服�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 10/30/2019
+ms.date: 01/17/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ee107ffdc677a0feffbdaf1441d77a8ed05f2c94
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: f72da87ae53039e825f2102bebb12e59821706f8
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749680"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274798"
 ---
 # <a name="what-is-azure-analysis-services"></a>什麼是 Azure Analysis Services？
 
@@ -34,7 +34,7 @@ Azure Analysis Services 與許多 Azure 服務整合，讓您能建置複雜的�
 
 ## <a name="the-right-tier-when-you-need-it"></a>當您需要時在右層
 
-Azure Analysis Services 會以**開發人員**、**基本**及**標準**層提供。 每一層中的計劃成本會依據處理能力、QPU 及記憶體大小而有所不同。 當您建立伺服器時，可以選取一個層級內的計劃。 您可以在同一層內上下調動計劃，或升級為較高層，但是無法從較高層降級為較低層。
+Azure Analysis Services 會以**開發人員**、**基本**及**標準**層提供。 每一層中的計劃成本會依據處理能力、查詢處理單位 (QPU) 和記憶體大小而有所不同。 當您建立伺服器時，可以選取一個層級內的計劃。 您可以在同一層內上下調動計劃，或升級為較高層，但是無法從較高層降級為較低層。
 
 ### <a name="developer-tier"></a>開發人員層
 
@@ -47,7 +47,7 @@ Azure Analysis Services 會以**開發人員**、**基本**及**標準**層提�
 
 ### <a name="basic-tier"></a>基本層
 
-此層建議用於具備小型表格式模型、使用者並行能力有限，且只需簡單資料重新整理功能的生產解決方案。 此層無法使用  查詢複本相應放大功能。 此層不支援  檢視方塊、多個分割區和 DirectQuery 表格式模型功能。  
+此層建議用於具備小型表格式模型、使用者並行能力有限，且只需簡單資料重新整理功能的生產解決方案。 此層「無法使用」  查詢複本相應放大功能。 此層不支援  檢視方塊、多個分割區和 DirectQuery 表格式模型功能。  
 
 |計畫  |QPU  |記憶體 (GB)  |
 |---------|---------|---------|
@@ -232,7 +232,7 @@ Azure Analysis Services 也支援使用[動態管理檢視 (DMV)](https://docs.m
 
 這裡會有 Azure Analysis Services 專屬文件。 請使用瀏覽器畫面左側的目錄來尋找文章。 
 
-由於 Azure Analysis Services 表格式模型與 SQL Server Analysis Services 中的表格式模型極為類似，因此 [SQL Server Analysis Services 文件](https://docs.microsoft.com/analysis-services/analysis-services-overview)中有收納了共用概念、程序、開發人員和參考文章的廣泛文件庫。 SQL Server Analysis Services 文件中的文章，會透過標題下方的「適用於」橫幅顯示其是否也適用於 Azure Analysis Services。
+由於 Azure Analysis Services 表格式模型與 SQL Server Analysis Services 中的表格式模型極為類似，因此 [SQL Server Analysis Services 文件](https://docs.microsoft.com/analysis-services/analysis-services-overview)中收納了共用資料模型教學課程、概念、程序、開發人員和參考文章的廣泛文件庫。 SQL Server Analysis Services 文件中的文章，會透過標題下方的「適用於」橫幅顯示其是否也適用於 Azure Analysis Services。
 
 ![共用文件](./media/analysis-services-overview/aas-overview-applies-to.png)
 

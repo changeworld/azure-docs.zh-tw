@@ -10,18 +10,18 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: areddish
-ms.openlocfilehash: 648a9d43f911ffb7f4d6bc97fd63c2ea97ec84e9
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 944c3f8fcf440ce71cbb059aff21b7c8b63e74ab
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977432"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166896"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-nodejs-sdk"></a>快速入門：使用自訂視覺 Node.js SDK 建立物件偵測專案
 
 本文說明如何開始搭配使用自訂視覺 SDK 與 Node.js 來建置物件偵測模型。 建立它之後，您就可以新增標記的區域、上傳影像、為專案定型、取得專案的已發佈預測端點 URL，並使用端點以程式設計方式測試影像。 請使用此範例作為範本來建置您自己的 Node.js 應用程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 已安裝 [Node.js 8](https://www.nodejs.org/en/download/) 或更新版本。
 - 已安裝 [npm](https://www.npmjs.com/)。
@@ -47,7 +47,7 @@ npm install @azure/cognitiveservices-customvision-prediction
 
 ### <a name="create-the-custom-vision-service-project"></a>建立自訂視覺服務專案
 
-在指令碼中新增下列程式碼，以建立新的自訂視覺服務專案。 在適當的定義中插入您的訂用帳戶金鑰，並將 sampleDataRoot 路徑值設定為您的映像資料夾路徑。 請確定 endPoint 值符合您在 [Customvision.ai](https://www.customvision.ai/) 建立的訓練和預測端點。 請注意，建立物件偵測和影像分類專案之間的差異，就是在 **create_project** 呼叫中指定的網域。
+在指令碼中新增下列程式碼，以建立新的自訂視覺服務專案。 在適當的定義中插入您的訂用帳戶金鑰，並將 sampleDataRoot 路徑值設定為您的映像資料夾路徑。 請確定 endPoint 值符合您在 [Customvision.ai](https://www.customvision.ai/) 建立的訓練和預測端點。 請注意，建立物件偵測和影像分類專案之間的差異，就是在 **createProject** 呼叫中指定的領域。
 
 ```javascript
 const fs = require('fs');
@@ -86,7 +86,10 @@ const trainer = new TrainingApi.TrainingAPIClient(trainingKey, endPoint);
 
 ### <a name="upload-and-tag-images"></a>上傳和標記影像
 
-為物件偵測專案中的影像加上標記時，您必須使用標準化座標來識別每個加上標記的物件所屬的區域。
+為物件偵測專案中的影像加上標記時，您必須使用標準化座標來識別每個加上標記的物件所屬的區域。 
+
+> [!NOTE]
+> 如果您沒有按住並拖曳公用程式可標示區域的座標，您可以使用 [Customvision.ai](https://www.customvision.ai/) 上的 Web UI。 此範例已提供座標。
 
 若要將影像、標記和區域新增至專案，請在標記建立之後插入下列程式碼。 請注意，本教學課程中的區域是以硬式編碼內嵌於程式碼中。 這些區域會在標準化座標中指定週框方塊，且座標會以下列順序指定：左、上、寬度、高度。 您最多可以在單一批次中上傳 64 個影像。
 
@@ -187,7 +190,7 @@ await Promise.all(fileUploadPromises);
 
 ### <a name="train-the-project-and-publish"></a>訓練專案並發佈
 
-此程式碼會在專案中建立第一個反覆項目，然後將該反覆項目發佈至預測端點。 提供給已發佈反覆項目的名稱可用來傳送預測要求。 反覆項目要等到發佈後才可在預測端點中使用。
+此程式碼會在預測模型中建立第一個反覆項目，然後將該反覆項目發佈至預測端點。 提供給已發佈反覆項目的名稱可用來傳送預測要求。 反覆項目要等到發佈後才可在預測端點中使用。
 
 ```javascript
 console.log("Training...");
@@ -197,6 +200,7 @@ let trainingIteration = await trainer.trainProject(sampleProject.id);
 console.log("Training started...");
 while (trainingIteration.status == "Training") {
     console.log("Training status: " + trainingIteration.status);
+    // wait for one second
     await setTimeoutPromise(1000, null);
     trainingIteration = await trainer.getIteration(sampleProject.id, trainingIteration.id)
 }

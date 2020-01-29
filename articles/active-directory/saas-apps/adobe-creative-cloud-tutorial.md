@@ -16,14 +16,17 @@ ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 815cffab118f6900c1c9d42a7e44821f8af62532
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 25dd638c15fecbef787e4ceabea9ae7cb4359582
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74081978"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120327"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adobe-creative-cloud"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Adobe Creative Cloud 整合
+
+> [!NOTE]
+> 本文說明 Adobe Admin Console 針對 Azure Active Directory (Azure AD) 所做的自訂 SAML 型設定。 如需進行全新的設定，建議您使用 [Azure AD 連接器](https://helpx.adobe.com/enterprise/using/sso-setup-azure.html)。 Azure AD 連接器可以在幾分鐘內完成設定，並縮短網域宣告、單一登入設定和使用者同步處理的程序。
 
 在本教學課程中，您會了解如何整合 Adobe Creative Cloud 與 Azure Active Directory (Azure AD)。 在整合 Adobe Creative Cloud 與 Azure AD 時，您可以︰
 
@@ -33,7 +36,7 @@ ms.locfileid: "74081978"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -109,7 +112,7 @@ ms.locfileid: "74081978"
     > [!NOTE]
     > 使用者需要具備有效的 Office 365 ExO 授權，電子郵件宣告值才會填入 SAML 回應中。
 
-1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (Base64)]  並選取 [下載]  ，以下載憑證並將其儲存在電腦上。
+1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 [同盟資料 XML]  ，然後選取 [下載]  ，以下載 XML 中繼資料檔案並將其儲存在電腦上。
 
     ![憑證下載連結](common/certificatebase64.png)
 
@@ -151,29 +154,24 @@ ms.locfileid: "74081978"
 
 1. 在不同的網頁瀏覽器視窗中，以系統管理員身分登入 [Adobe Admin Console](https://adminconsole.adobe.com)。
 
-2. 移至上方導覽列中的 [設定]  ，然後選擇 [身分識別]  。 網域清單隨即開啟。 按一下您網域的 [設定]  連結。 接著執行 [需要單一登入組態]  區段中的下列步驟。 如需詳細資訊，請參閱[設定網域](https://helpx.adobe.com/enterprise/using/set-up-domain.html)。
+1. 移至上方導覽列中的 [設定]  ，然後選擇 [身分識別]  。 目錄清單隨即開啟。 選取您想要的同盟目錄。
 
-    ![設定](https://helpx.adobe.com/content/dam/help/en/enterprise/using/configure-microsoft-azure-with-adobe-sso/_jcr_content/main-pars/procedure_719391630/proc_par/step_3/step_par/image/edit-sso-configuration.png "設定")
+1. 在 [目錄詳細資料]  頁面上，選取 [設定]  。
 
-    a. 按一下 [瀏覽]  ，將已從 Azure AD 下載的憑證上傳至 **IDP 憑證**。
-
-    b. 在 [IDP 簽發者]  文字方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼]  值。
-
-    c. 在 [IDP 登入 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]  值。
-
-    d. 選取 [HTTP - 重新導向]  作為 **IDP 繫結**。
-
-    e. 選取 [電子郵件地址]  作為**使用者登入設定**。
-
-    f. 按一下 [儲存]  按鈕。
-
-3. 儀表板現在會顯示 XML「下載中繼資料」  檔案。 它包含 Adobe 的 EntityDescriptor URL 和 AssertionConsumerService URL。 請開啟檔案，然後在 Azure AD 應用程式中加以設定。
+1. 複製 [實體識別碼] 和 [ACS URL] ([判斷提示取用者服務 URL] 或 [回覆 URL])。 在 Azure 入口網站的適當欄位中輸入 URL。
 
     ![在應用程式端設定單一登入](./media/adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_003.png)
 
-    a. 在 [設定應用程式設定]  對話方塊上，使用 Adobe 提供給您的 EntityDescriptor 值作為**識別碼**。
+    a. 在 [設定應用程式設定]  對話方塊中，使用 Adobe 提供給您的 [實體識別碼] 值作為 [識別碼]  。
 
-    b. 在 [設定應用程式設定]  對話方塊上，使用 Adobe 提供給您的 AssertionConsumerService 值作為**回覆 URL**。
+    b. 在 [設定應用程式設定]  對話方塊中，使用 Adobe 提供給您的 [ACS URL (判斷提示取用者服務 URL)] 值作為 [回覆 URL]  。
+
+1. 在頁面底部附近，上傳您從 Azure 入口網站下載的**同盟資料 XML** 檔案。 
+
+    ![同盟資料 XML 檔案](https://helpx.adobe.com/content/dam/help/en/enterprise/kb/configure-microsoft-azure-with-adobe-sso/jcr_content/main-pars/procedure/proc_par/step_228106403/step_par/image_copy/saml_signinig_certificate.png "IdP 中繼資料 XML")
+
+1. 選取 [儲存]  。
+
 
 ### <a name="create-adobe-creative-cloud-test-user"></a>建立 Adobe Creative Cloud 測試使用者
 
@@ -206,7 +204,7 @@ ms.locfileid: "74081978"
 
 - [嘗試搭配 Azure AD 使用 Adobe Creative Cloud](https://aad.portal.azure.com/)
 
-- [設定網域 (adobe.com)](https://helpx.adobe.com/enterprise/using/set-up-domain.html)
+- [設定身分識別 (adobe.com)](https://helpx.adobe.com/enterprise/using/set-up-identity.html)
   
 - [設定 Azure 以便搭配 Adobe SSO (adobe.com) 使用](https://helpx.adobe.com/enterprise/kb/configure-microsoft-azure-with-adobe-sso.html)
 

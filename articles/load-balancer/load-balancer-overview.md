@@ -14,19 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2019
 ms.author: allensu
-ms.openlocfilehash: dc986d40d50b93720c87ba36d265ed3044b0abc9
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 9f824c1348420393f8fbf67bf96932e40b67bc32
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045383"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264911"
 ---
 # <a name="what-is-azure-load-balancer"></a>什麼是 Azure Load Balancer？
 
 「負載平衡」  是指將負載 (傳入的網路流量) 平均地分散到一組後端資源或伺服器。 Azure 提供[各種負載平衡選項](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview)，以供您根據自己的需要進行選擇。 本文件會說明 Azure Load Balancer。
 
-Azure Load Balancer 會在開放系統互相連線 (OSI) 模型的第四層運作。 這是用戶端的單一連絡點。 負載平衡器會將抵達負載平衡器前端的新輸入流量分送給後端集區執行個體。 這些流量遵循已設定的負載平衡規則和健康情況探查。 後端集區執行個體可以是 Azure 虛擬機器，也可以是虛擬機器擴展集中的執行個體。
-
+Azure Load Balancer 會在開放系統互相連線 (OSI) 模型的第四層運作。 這是用戶端的單一連絡點。 負載平衡器會將抵達負載平衡器前端的輸入流量分送給後端集區執行個體。 這些流量遵循已設定的負載平衡規則和健康情況探查。 後端集區執行個體可以是 Azure 虛擬機器，也可以是虛擬機器擴展集中的執行個體。
 
 **[公用負載平衡器](./concepts-limitations.md#publicloadbalancer)** 會為虛擬網路內的虛擬機器 (VM) 提供輸出連線。 這些連線會透過將其私人 IP 位址轉譯為公用 IP 位址來完成。 公用負載平衡器可用來對進入 VM 的網際網路流量進行負載平衡。
 
@@ -40,14 +39,10 @@ Azure Load Balancer 會在開放系統互相連線 (OSI) 模型的第四層運�
 
 如需個別負載平衡器元件的詳細資訊，請參閱 [Azure Load Balancer 元件和限制](./concepts-limitations.md)
 
->[!NOTE]
-> Microsoft 建議使用 [Standard Load Balancer](./load-balancer-standard-overview.md)。
-獨立 VM、可用性設定組和虛擬機器擴展集都只能和一個 SKU 連線，永遠不能和兩者同時連線。 與公用 IP 位址搭配使用時，Load Balancer 和公用 IP 位址的 SKU 必須相符。 Load Balancer 和公用 IP 的 SKU 不可變動。
-
 ## <a name="why-use-azure-load-balancer"></a>為什麼使用 Azure Load Balancer？
-您可以使用 Azure Load Balancer 調整您的應用程式，並建立具備高可用性的服務。 負載平衡器支援輸入和輸出案例。 對於所有 TCP 和 UDP 應用程式，負載平衡器可提供低延遲和高輸送量，且最多可相應增加為數百萬個流程。
+您可以使用 Standard Load Balancer 調整您的應用程式，並建立具備高可用性的服務。 負載平衡器支援輸入和輸出案例。 對於所有 TCP 和 UDP 應用程式，負載平衡器可提供低延遲和高輸送量，且最多可相應增加為數百萬個流程。
 
-您可以使用 Azure Load Balancer 完成的主要案例包括：
+您可以使用 Standard Load Balancer 完成的主要案例包括：
 
 - 將 **[內部](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-manage-portal)** 和 **[外部](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-internal-portal)** 流量負載平衡至 Azure 虛擬機器。
 
@@ -61,7 +56,7 @@ Azure Load Balancer 會在開放系統互相連線 (OSI) 模型的第四層運�
 
 - 啟用 **[IPv6](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)** 的 **[負載平衡](https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell)** 支援。
 
-- 透過 **[Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/overview)** 使用 Azure Load Balancer 的 **[計量和診斷](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics)** 。
+- Standard Load Balancer 可透過 [Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/overview)提供多維度計量。  您可針對指定維度篩選、分組及劃分這些計量，  且您可深入檢視服務目前和過去的效能和健康情況。  此外也支援資源健康情況。 如需詳細資訊，請參閱 **[Standard Load Balancer 診斷](load-balancer-standard-diagnostics.md)** 。
 
 - 平衡 **[多個連接埠、多個 IP 位址或這兩者](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview)** 上的服務負載。
 
@@ -69,20 +64,17 @@ Azure Load Balancer 會在開放系統互相連線 (OSI) 模型的第四層運�
 
 - 使用 **[HA 連接埠](https://docs.microsoft.com/azure/load-balancer/load-balancer-ha-ports-overview)** ，同時對所有連接埠上的 TCP 和 UDP 流量進行負載平衡。
 
-## <a name="pricing"></a>定價
+### <a name="securebydefault"></a>預設保護
 
-使用 Standard Load Balancer 需要付費。
+Standard Load Balancer 在本質上建置於零信任網路安全性模型上。 Standard Load Balancer 受到預設的保護，而且是虛擬網路的一部分。 虛擬網路是私人的隔離式網路。  這表示對於輸入流量會關閉 Standard Load Balancer 和標準公用 IP 位址，除非網路安全性群組加以開啟。 NSG 可用來明確准許允許的流量並將其列入白名單。  如果您沒有子網路的 NSG 或虛擬機器資源的 NIC，系統不會允許流量存取此資源。 若要深入了解 NSG 及如何將其套用至您的案例，請參閱[網路安全性群組](../virtual-network/security-overview.md)。
+依預設會對網際網路開放基本負載平衡器。
 
-* 已設定的負載平衡和輸出規則的數目。 輸入 NAT 規則不會計入規則總數中。
-* 已處理的輸入和輸出資料量與規則無關。
+
+## <a name="pricing-and-sla"></a>價格和 SLA
 
 如需 Standard Load Balancer 的定價資訊，請參閱 [Load Balancer 定價](https://azure.microsoft.com/pricing/details/load-balancer/)。
-
 基本 Load Balancer 則是免費提供。
-
-## <a name="sla"></a>SLA
-
-如需 Standard Load Balancer SLA 的相關資訊，請參閱 [Load Balancer 的 SLA](https://aka.ms/lbsla)。
+請參閱[負載平衡器的 SLA](https://aka.ms/lbsla)。 基本負載平衡器沒有 SLA。
 
 ## <a name="next-steps"></a>後續步驟
 

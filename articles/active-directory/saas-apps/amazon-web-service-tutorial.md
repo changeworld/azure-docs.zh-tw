@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/25/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 758b14a53927e00a5546147f8d67e556b45acc3c
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: fcf72566a0aa2547de7b88cb838b2f6ff1828c6f
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689765"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293091"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Amazon Web Services (AWS) 整合
 
@@ -66,6 +65,7 @@ ms.locfileid: "75689765"
 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
 
 * Amazon Web Services (AWS) 支援由 **SP 和 IDP** 起始的 SSO
+* 設定 Amazon Web Services (AWS) 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 > [!NOTE]
 > 此應用程式的識別碼是固定的字串值，因此一個租用戶中只能設定一個執行個體。
@@ -374,6 +374,10 @@ ms.locfileid: "75689765"
 - [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [嘗試搭配 Azure AD 使用 Amazon Web Services (AWS)](https://aad.portal.azure.com/)
+
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/protect-aws)
+
+- [如何使用進階可見性和控制項保護 Amazon Web Services (AWS)](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 [11]: ./media/amazon-web-service-tutorial/ic795031.png
 [12]: ./media/amazon-web-service-tutorial/ic795032.png

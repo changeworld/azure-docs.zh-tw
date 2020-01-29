@@ -16,7 +16,7 @@
       href: ../preview/overview-iot-central-get-connected.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
     - name: 什麼是應用程式範本？
       href: ../core/concepts-app-templates.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-- name: 使用說明指南
+- name: 操作指南
   items:
     - name: 建立健康情況資料分級儀表板
       href: howto-health-data-triage.md
@@ -96,7 +96,7 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
         - name: 時間序列深入解析
           href: /azure/time-series-insights
-    - name: IoT Edge
+    - name: Edge 解決方案
       items:
         - name: Azure IoT Edge
           href: /azure/iot-edge
@@ -104,6 +104,8 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: 資源
   items:
+    - name: 支援和協助選項
+      href: /azure/iot-fundamentals/iot-support-help
     - name: 客戶資料要求
       href: ../core/iot-central-customer-data-requests.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
     - name: 支援的瀏覽器

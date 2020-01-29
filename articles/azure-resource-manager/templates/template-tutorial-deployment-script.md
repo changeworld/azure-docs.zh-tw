@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/09/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e52a859c86ff451293ac6ff795c7fe427a383b9d
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 459d75bec3d4b4d0cf9057e0c6de238e7f165bfb
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75843505"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548980"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>教學課程：使用部署指令碼建立自我簽署憑證 (預覽)
 
@@ -267,7 +267,7 @@ ms.locfileid: "75843505"
     * **scriptContent**：指定指令碼內容。 若要執行外部指令碼，請改用 **primaryScriptURI**。 如需詳細資訊，請參閱[使用外部指令碼](./deployment-script-template.md#use-external-scripts)。
         只有在本機電腦上測試指令碼時，才需要宣告 **$DeploymentScriptOutputs**。 宣告此變數可讓指令碼直接在本機電腦和 deploymentScript 資源中執行，而無須進行變更。 指派給 $DeploymentScriptOutputs 的值可作為部署中的輸出。 如需詳細資訊，請參閱[使用部署指令碼的輸出](./deployment-script-template.md#work-with-outputs-from-deployment-scripts)。
     * **cleanupPreference**：指定何時要刪除部署指令碼資源的喜好設定。  預設值為 [一律]  ，這表示即使處於終止狀態 (成功、失敗、已取消)，仍會刪除部署指令碼資源。 本教學課程中會使用 **OnSuccess**，以讓您有機會檢視指令碼執行結果。
-    * **retentionInterval**：指定服務在指令碼資源到達結束狀態後保留該資源的間隔。 此持續時間到期後，即會刪除資源。 持續時間以 ISO 8601 模式為基礎。 本教學課程使用 P1D，這表示一天。  當 **retentionInterval** 設定為 **OnExpiration** 時，就會使用此屬性。 目前並未啟用此屬性。
+    * **retentionInterval**：指定服務在指令碼資源到達結束狀態後保留該資源的間隔。 此持續時間到期後，即會刪除資源。 持續時間以 ISO 8601 模式為基礎。 本教學課程使用 P1D，這表示一天。  當 **cleanupPreference** 設定為 **OnExpiration** 時，就會使用此屬性。 目前並未啟用此屬性。
 
     部署指令碼會採用三個參數：金鑰保存庫名稱、憑證名稱和主體名稱。  指令碼會建立憑證，然後將憑證新增至金鑰保存庫。
 

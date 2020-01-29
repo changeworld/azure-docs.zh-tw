@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7acd4b8014aad7b70f1a67c91368477599a97901
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: fda662d7de66bfb56feba8f405bd0e52c4cf3e76
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972416"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121330"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-snowflake"></a>教學課程：Azure Active Directory 與 Snowflake 整合
 
@@ -35,7 +35,7 @@ Snowflake 與 Azure AD 整合提供下列優點：
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 Snowflake 整合，您需要下列項目：
 
@@ -116,6 +116,8 @@ Snowflake 與 Azure AD 整合提供下列優點：
     ![Snowflake 網域與 URL 單一登入資訊](common/metadata-upload-additional-signon.png)
 
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<SNOWFLAKE-URL>.snowflakecomputing.com`
+    
+    在 [登出 URL]  文字方塊中，以下列模式輸入 URL：`https://<SNOWFLAKE-URL>.snowflakecomputing.com/fed/logout`
 
     > [!NOTE]
     > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [Snowflake 用戶端支援小組](https://support.snowflake.net/s/)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。

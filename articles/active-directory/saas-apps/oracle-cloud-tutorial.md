@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/26/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 579a553f151cf34215af3188cfddada6da42e691
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 64cae5812a380725d612d27190042797542ee255
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68943638"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289096"
 ---
 # <a name="tutorial-integrate-oracle-cloud-infrastructure-console-with-azure-active-directory"></a>教學課程：整合 Oracle Cloud Infrastructure Console 與 Azure Active Directory
 
@@ -33,7 +32,7 @@ ms.locfileid: "68943638"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -42,7 +41,10 @@ ms.locfileid: "68943638"
 
 ## <a name="scenario-description"></a>案例描述
 
-在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。 Oracle Cloud Infrastructure Console 支援 **SP** 起始的 SSO。
+在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
+
+* Oracle Cloud Infrastructure Console 支援 **SP** 起始的 SSO。
+* 設定 Oracle Cloud Infrastructure Console 後，您可以強制執行工作階段控制項，以即時防護貴組織敏感性資料的外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-oracle-cloud-infrastructure-console-from-the-gallery"></a>從資料庫新增 Oracle Cloud Infrastructure Console
 
@@ -62,10 +64,10 @@ ms.locfileid: "68943638"
 若要設定及測試與 Oracle Cloud Infrastructure Console 搭配運作的 Azure AD SSO，您需要完成下列建置組塊：
 
 1. **[設定 Azure AD SSO](#configure-azure-ad-sso)** ，讓您的使用者能夠使用此功能。
+    1. **[建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)** ，以使用 B. Simon 測試 Azure AD 單一登入。
+    1. **[指派 Azure AD 測試使用者](#assign-the-azure-ad-test-user)** ，讓 B. Simon 能夠使用 Azure AD 單一登入。
 1. **[設定 Oracle Cloud Infrastructure Console](#configure-oracle-cloud-infrastructure-console)** 以在應用程式端設定 SSO 設定。
-1. **[建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)** ，以使用 B. Simon 測試 Azure AD 單一登入。
-1. **[指派 Azure AD 測試使用者](#assign-the-azure-ad-test-user)** ，讓 B. Simon 能夠使用 Azure AD 單一登入。
-1. **[建立 Oracle Cloud Infrastructure Console 測試使用者](#create-oracle-cloud-infrastructure-console-test-user)** ，使 Oracle Cloud Infrastructure Console 中對應的 Britta Simon 連結到該使用者在 Azure AD 中的代表項目。
+    1. **[建立 Oracle Cloud Infrastructure Console 測試使用者](#create-oracle-cloud-infrastructure-console-test-user)** ，使 Oracle Cloud Infrastructure Console 中對應的 Britta Simon 連結到該使用者在 Azure AD 中的代表項目。
 1. **[測試 SSO](#test-sso)** ，以驗證組態是否能運作。
 
 ### <a name="configure-azure-ad-sso"></a>設定 Azure AD SSO
@@ -137,7 +139,39 @@ ms.locfileid: "68943638"
 
    ![複製組態 URL](common/copy-configuration-urls.png)
 
-### <a name="configure-oracle-cloud-infrastructure-console"></a>設定 Oracle Cloud Infrastructure Console
+
+
+### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
+
+在本節中，您會在 Azure 入口網站中建立名稱為 B. Simon 的測試使用者。
+
+1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
+1. 在畫面頂端選取 [新增使用者]  。
+1. 在 [使用者]  屬性中，執行下列步驟：
+   1. 在 [名稱]  欄位中，輸入 `B. Simon`。  
+   1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `B. Simon@contoso.com` 。
+   1. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。
+   1. 按一下頁面底部的 [新增]  。
+
+### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
+
+在本節中，您會將 Oracle Cloud Infrastructure Console 的存取權授與 B. Simon，讓其能夠使用 Azure 單一登入。
+
+1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
+1. 在應用程式清單中，選取 [Oracle Cloud Infrastructure Console]  。
+1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
+
+   ![[使用者和群組] 連結](common/users-groups-blade.png)
+
+1. 選取 [新增使用者]  ，然後在 [新增指派]  對話方塊中選取 [使用者和群組]  。
+
+   ![[新增使用者] 連結](common/add-assign-user.png)
+
+1. 在 [使用者和群組]  對話方塊的 [使用者] 清單中選取 [B. Simon]  ，然後按一下畫面底部的 [選取]  按鈕。
+1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色]  對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取]  按鈕。
+1. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
+
+## <a name="configure-oracle-cloud-infrastructure-console"></a>設定 Oracle Cloud Infrastructure Console
 
 1. 在不同的網頁瀏覽器視窗中，以系統管理員身分登入 Oracle Cloud Infrastructure Console。
 
@@ -170,37 +204,7 @@ ms.locfileid: "68943638"
    1. 您可以依據 Azure 入口網站中的每個設定，或是貴組織的需求，對應多個群組。 按一下 [+ 新增對應]  視需要新增任意數量的群組。
 
    1. 按一下 [提交]  。
-
-### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
-
-在本節中，您會在 Azure 入口網站中建立名稱為 B. Simon 的測試使用者。
-
-1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
-1. 在畫面頂端選取 [新增使用者]  。
-1. 在 [使用者]  屬性中，執行下列步驟：
-   1. 在 [名稱]  欄位中，輸入 `B. Simon`。  
-   1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `B. Simon@contoso.com` 。
-   1. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。
-   1. 按一下頁面底部的 [新增]  。
-
-### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
-
-在本節中，您會將 Oracle Cloud Infrastructure Console 的存取權授與 B. Simon，讓其能夠使用 Azure 單一登入。
-
-1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
-1. 在應用程式清單中，選取 [Oracle Cloud Infrastructure Console]  。
-1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
-
-   ![[使用者和群組] 連結](common/users-groups-blade.png)
-
-1. 選取 [新增使用者]  ，然後在 [新增指派]  對話方塊中選取 [使用者和群組]  。
-
-   ![[新增使用者] 連結](common/add-assign-user.png)
-
-1. 在 [使用者和群組]  對話方塊的 [使用者] 清單中選取 [B. Simon]  ，然後按一下畫面底部的 [選取]  按鈕。
-1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色]  對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取]  按鈕。
-1. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
-
+   
 ### <a name="create-oracle-cloud-infrastructure-console-test-user"></a>建立 Oracle Cloud Infrastructure Console 測試使用者
 
  Oracle Cloud Infrastructure Console 支援預設的 Just-In-Time 佈建。 在這一節沒有您需要進行的動作項目。 嘗試存取期間不會建立新的使用者，也不需要建立使用者。
@@ -218,3 +222,5 @@ ms.locfileid: "68943638"
 - [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [如何使用進階可見性和控制項保護 Oracle Cloud Infrastructure Console](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

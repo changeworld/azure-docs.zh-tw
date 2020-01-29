@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 8aaa19a9d5bd5d7b2764320d5d91c8a6c010b3c8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d469d52a6db6c3640d07b46422ffe669a898dde8
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433311"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262991"
 ---
 # <a name="entity-functions"></a>實體函式
 
@@ -53,7 +53,9 @@ ms.locfileid: "75433311"
 
 **以函式為基礎的語法**，其中實體會表示為函式，而作業會由應用程式明確分派。 此語法很適合於具有簡單狀態、少數作業或一組動態作業 (例如在應用程式架構中) 的實體。 此語法的維護工作可能會很繁瑣，因為它不會在編譯時期攔截類型錯誤。
 
-**以類別為基礎的語法**，其中實體和作業是由類別和方法表示。 此語法會產生更易讀取的程式碼，並允許以型別安全的方式叫用作業。 以類別為基礎的語法是以函式為基礎的語法之上的精簡層，因此這兩個變體可以在相同的應用程式中交替使用。
+**以類別為基礎的語法 (僅限 .NET)** ，其中實體和作業是由類別和方法表示。 此語法會產生更易讀取的程式碼，並允許以型別安全的方式叫用作業。 以類別為基礎的語法是以函式為基礎的語法之上的精簡層，因此這兩個變體可以在相同的應用程式中交替使用。
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ### <a name="example-function-based-syntax---c"></a>範例：以函式為基礎的語法 - C#
 
@@ -107,11 +109,13 @@ public class Counter
 
 如需以類別為基礎的語法及其使用方式的詳細資訊，請參閱[定義實體類別](durable-functions-dotnet-entities.md#defining-entity-classes)。
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ### <a name="example-javascript-entity"></a>範例：JavaScript 實體
 
 從 `durable-functions` npm 套件 **1.3.0** 版開始，JavaScript 提供了耐久性實體。 下列程式碼是實作為以 JavaScript 撰寫的耐久函式的 `Counter` 實體。
 
-**function.json**
+**Counter/function.json**
 ```json
 {
   "bindings": [
@@ -125,7 +129,7 @@ public class Counter
 }
 ```
 
-**index.js**
+**Counter/index.js**
 ```javascript
 const df = require("durable-functions");
 
@@ -146,6 +150,8 @@ module.exports = df.entity(function(context) {
 });
 ```
 
+---
+
 ## <a name="access-entities"></a>存取實體
 
 您可使用單向或雙向通訊來存取實體。 下列術語可區分這兩種形式的通訊： 
@@ -161,12 +167,14 @@ module.exports = df.entity(function(context) {
 
 下列範例說明這些用來存取實體的各種方式。
 
-> [!NOTE]
-> 為了簡單起見，下列範例會顯示用來存取實體的鬆散型別語法。 一般來說，我們建議您[透過介面存取實體](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces)，因為此方式可提供更多類型檢查。
-
 ### <a name="example-client-signals-an-entity"></a>範例：用戶端傳送訊號給實體
 
 若要從一般 Azure 函式 (也稱為用戶端函式) 存取實體，請使用[實體用戶端繫結](durable-functions-bindings.md#entity-client)。 下列範例會說明由佇列觸發的函式，該函式會使用此繫結對實體傳送訊號。
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+> [!NOTE]
+> 為了簡單起見，下列範例會顯示用來存取實體的鬆散型別語法。 一般來說，我們建議您[透過介面存取實體](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces)，因為此方式可提供更多類型檢查。
 
 ```csharp
 [FunctionName("AddFromQueue")]
@@ -181,6 +189,8 @@ public static Task Run(
 }
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
 const df = require("durable-functions");
 
@@ -191,11 +201,15 @@ module.exports = async function (context) {
 };
 ```
 
+---
+
 「訊號」  一詞表示實體 API 的叫用是單向且非同步的。 用戶端函式無法知道實體處理作業的時間。 此外，用戶端函式無法觀察到任何結果值或例外狀況。 
 
 ### <a name="example-client-reads-an-entity-state"></a>範例：用戶端讀取實體狀態
 
 用戶端函式也可以查詢實體的狀態，如下列範例所示：
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("QueryCounter")]
@@ -209,6 +223,8 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
 const df = require("durable-functions");
 
@@ -220,11 +236,15 @@ module.exports = async function (context) {
 };
 ```
 
+---
+
 實體狀態查詢會傳送至持久性追蹤存放區，並傳回實體最近的持久性狀態。 此狀態一律是「已認可」狀態，也就是在執行作業的過程中，永遠不會有暫時的中繼狀態。 不過，相較於實體的記憶體內部狀態，此狀態可能會過時。 只有協調流程可以讀取實體的記憶體內部狀態，下一節會有相關說明。
 
 ### <a name="example-orchestration-signals-and-calls-an-entity"></a>範例：協調流程傳送訊號並呼叫實體
 
 協調器函式可以使用[協調流程觸發程序繫結](durable-functions-bindings.md#orchestration-trigger)上的 API 來存取實體。 下列程式碼範例說明呼叫 `Counter` 實體並對其傳送訊號的協調器函式。
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CounterOrchestration")]
@@ -243,6 +263,8 @@ public static async Task Run(
 }
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
 const df = require("durable-functions");
 
@@ -257,6 +279,8 @@ module.exports = df.orchestrator(function*(context){
 > [!NOTE]
 > JavaScript 目前不支援從協調器對實體發出訊號。 請改用 `callEntity`。
 
+---
+
 只有協調流程能夠呼叫實體並取得回應，而此回應可能是傳回值或例外狀況。 使用[用戶端繫結](durable-functions-bindings.md#entity-client)的用戶端函式只能對實體傳送訊號。
 
 > [!NOTE]
@@ -266,6 +290,8 @@ module.exports = df.orchestrator(function*(context){
 
 實體函式可以在執行作業時傳送訊號給其他實體，甚或傳送給本身。
 例如，我們可以修改上述的 `Counter` 實體範例，以便在計數器達到值 100 時，傳送「達到里程碑」訊號給某個監視器實體。
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
    case "add":
@@ -280,6 +306,8 @@ module.exports = df.orchestrator(function*(context){
         break;
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
     case "add":
         const amount = context.df.getInput();
@@ -291,7 +319,9 @@ module.exports = df.orchestrator(function*(context){
         break;
 ```
 
-## <a name="entity-coordination"></a>實體協調
+---
+
+## <a name="entity-coordination"></a>實體協調 (目前僅限 .NET)
 
 有時候您可能需要協調多個實體的作業。 例如，在銀行應用程式中，您可能有代表個別銀行帳戶的實體。 將資金從某個帳戶轉移到另一個帳戶時，您必須確定來源帳戶有足夠的資金。 您也必須確定會以交易一致的方式完成來源和目的地帳戶的更新。
 

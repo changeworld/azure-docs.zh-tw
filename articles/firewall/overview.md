@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 01/13/2020
+ms.date: 01/15/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: c78ac615d2a93865721152442461d40925dc088d
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 1507eb4eba88fbf1ef50645390eaa9f17804359a
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922592"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293227"
 ---
 # <a name="what-is-azure-firewall"></a>何謂 Azure 防火牆？
 
@@ -90,11 +90,10 @@ FQDN 標籤讓您輕鬆就能允許已知的 Azure 服務網路流量通過您�
 
 所有事件都會與 Azure 監視器整合，讓您可以將記錄封存至儲存體帳戶、將事件串流至事件中樞，或者將它們傳送到 Azure 監視器記錄。
 
-## <a name="pci-soc-and-iso-compliant"></a>符合 PCI、SOC 和 ISO 規範
+## <a name="compliance-certifications"></a>合規性認證
 
-Azure 防火牆符合支付卡產業 (PCI)、服務組織控制 (SOC) 和國際標準化組織 (ISO) 規範。 其目前支援 SOC 1 Type 2、SOC 2 Type 2、SOC 3、PCI DSS 和 ISO 27001、27018、20000-1、22301、9001、27017。
+Azure 防火牆符合支付卡產業 (PCI)、服務組織控制 (SOC) 和國際標準化組織 (ISO) 規範。 如需詳細資訊，請參閱 [Azure 防火牆合規性認證](compliance-certifications.md)。
 
-如需詳細資訊，請參閱 [Microsoft 合規性指南](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide)。
 
 ## <a name="known-issues"></a>已知問題
 
@@ -102,7 +101,7 @@ Azure 防火牆有下列已知問題：
 
 |問題  |描述  |降低  |
 |---------|---------|---------|
-非 TCP/UDP 通訊協定 (例如 ICMP) 的網路篩選規則，不適用於流向網際網路的流量|非 TCP/UDP 通訊協定的網路篩選規則，無法與 SNAT 搭配用於您的公用 IP 位址。 在輪輻子網路與 VNet 之間支援非 TCP/UDP 通訊協定。|Azure 防火牆會使用 Standard Load Balancer，[目前針對 IP 通訊協定不支援 SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview#limitations)。 我們正在探索選項，以在未來的版本中支援這種案例。|
+非 TCP/UDP 通訊協定 (例如 ICMP) 的網路篩選規則，不適用於流向網際網路的流量|非 TCP/UDP 通訊協定的網路篩選規則，無法與 SNAT 搭配用於您的公用 IP 位址。 在輪輻子網路與 VNet 之間支援非 TCP/UDP 通訊協定。|Azure 防火牆會使用 Standard Load Balancer，[目前針對 IP 通訊協定不支援 SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)。 我們正在探索選項，以在未來的版本中支援這種案例。|
 |對於 ICMP 缺少 PowerShell 和 CLI 支援|Azure PowerShell 和 CLI 不支援在網路規則中將 ICMP 作為有效的通訊協定。|您仍可透過入口網站和 REST API 來使用 ICMP 作為通訊協定。 我們正努力盡快在 PowerShell 和 CLI 中新增 ICMP。|
 |FQDN 標籤需要設定「通訊協定:連接埠」|具有 FQDN 標籤的應用程式規則需要「連接埠: 通訊協定」定義。|您可以使用 **https** 作為「連接埠:通訊協定」值。 我們正努力讓此欄位在使用 FQDN 標籤時可作為選擇性欄位。|
 |不支援將防火牆移動到不同的資源群組或訂用帳戶|不支援將防火牆移動到不同的資源群組或訂用帳戶。|在我們的規劃中，未來會支援這項功能。 若要將防火牆移動到不同的資源群組或訂用帳戶，您必須刪除目前的執行個體，並將其重新建立在新的資源群組或訂用帳戶中。|

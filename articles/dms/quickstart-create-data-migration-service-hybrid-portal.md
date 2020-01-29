@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
-ms.date: 12/17/2019
-ms.openlocfilehash: 64d4998e287f9981c666dee54fc3b67886791bbf
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.date: 01/21/2019
+ms.openlocfilehash: 81039aa4aa37f9587db887beadcdb6d263ec6a74
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708286"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274802"
 ---
 # <a name="quickstart-create-a-hybrid-mode-instance-with-azure-portal--azure-database-migration-service"></a>快速入門：使用 Azure 入口網站和 Azure 資料庫移轉服務建立混合模式執行個體
 
@@ -73,7 +73,7 @@ Azure 資料庫移轉服務混合模式會使用裝載於內部部署的移轉�
     - 選擇最接近您的來源或目標伺服器的**位置**。
     - 針對 [服務模式]  選取 [混合式 (預覽)]  。
 
-           ![Create migration service - basics](media/quickstart-create-data-migration-service-hybrid-portal/dms-create-service-basics.png)
+         ![建立移轉服務 - 基本](media/quickstart-create-data-migration-service-hybrid-portal/dms-create-service-basics.png)
 
 4. 選取 [檢閱 + 建立]  。
 
@@ -186,7 +186,7 @@ Azure 資料庫移轉服務混合模式會使用裝載於內部部署的移轉�
 > [!IMPORTANT]
 > 此指令碼假設在混合模式中有現有的 Azure 資料庫移轉服務執行個體，而使用的 Azure 帳戶有權限在租用戶中建立 AdApp 以及在訂用帳戶上修改 RBAC。
 
-只要在指令碼頂端填入參數，然後從系統管理員 PowerShell 執行個體執行指令碼即可。
+在指令碼頂端填入參數，然後從系統管理員 PowerShell 執行個體執行指令碼即可。
 
 ## <a name="next-steps"></a>後續步驟
 

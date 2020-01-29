@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 793bb46e14725b14c766569e8b0fc2aa0246858e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 3889378f34d66f54ea408da4aa43b12f86e7c586
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74979048"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262598"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application-preview-features"></a>教學課程：在 Azure IoT Central 應用程式中建立規則並設定通知 (預覽功能)
 
@@ -25,21 +25,22 @@ ms.locfileid: "74979048"
 
 裝置可以使用遙測資料，從裝置傳送數值資料。 當所選裝置的遙測資料超出指定閾值時，便會觸發規則。
 
-在本教學課程中，您會建立在環境感應器裝置溫度超過 80&deg; F 時傳送電子郵件的規則。
+在本教學課程中，您會建立在環境感應器裝置溫度超過 70&deg; F 時傳送電子郵件的規則。
 
 在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
+>
 > * 建立規則
 > * 新增電子郵件動作
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始之前，請先完成[建立 Azure IoT Central 應用程式](./quick-deploy-iot-central.md) (英文) 和[將模擬裝置新增至 IoT Central 應用程式](./quick-create-pnp-device.md) (英文) 的快速入門，以便建立要使用的**環境感應器**裝置範本。
 
 ## <a name="create-a-rule"></a>建立規則
 
-若要建立遙測規則，裝置範本必須至少定義一個遙測量測。 本教學課程中，使用的是會傳送溫度和濕度遙測資料的環境感應器裝置。 在[將模擬裝置新增至 IoT Central 應用程式](./quick-create-pnp-device.md)快速入門中，會新增此裝置範本，並建立模擬裝置。 此規則會監視裝置所報告的遙測，並在裝置溫度超過 80 度時傳送電子郵件。
+若要建立遙測規則，裝置範本必須至少定義一個遙測量測。 本教學課程中，使用的是會傳送溫度和濕度遙測資料的環境感應器裝置。 在[將模擬裝置新增至 IoT Central 應用程式](./quick-create-pnp-device.md)快速入門中，會新增此裝置範本，並建立模擬裝置。 此規則會監視裝置所報告的遙測，並在裝置溫度超過 70 度時傳送電子郵件。
 
 1. 在左側窗格中，選取 [規則]  。
 
@@ -49,7 +50,7 @@ ms.locfileid: "74979048"
 
 1. 選取 **+** 即可新增規則。
 
-1. 輸入「溫度監視器」  作為用以識別規則的的名稱，並按下 Enter。
+1. 輸入「溫度監視器」  作為用以識別規則的名稱，並按下 Enter。
 
 1. 選取 [環境感應器]  裝置範本。 此規則預設會自動套用到與裝置範本建立關聯的所有裝置。 若要篩選裝置的子集，請選取 [+ 篩選]  並利用裝置屬性來識別裝置。 若要停用規則，請切換規則標頭中的 [啟用/停用]  按鈕：
 
@@ -57,18 +58,18 @@ ms.locfileid: "74979048"
 
 ### <a name="configure-the-rule-conditions"></a>設定規則條件
 
-由條件來定義規則所要監控的準則。 在本教學課程中，要設定溫度超過 80&deg; F 時所會引發的規則。
+由條件來定義規則所要監控的準則。 在本教學課程中，要設定溫度超過 70&deg; F 時所會引發的規則。
 
 1. 在 [遙測]  下拉式清單中選取 [溫度]  。
 
-1. 接下來，在 [運算子]  選擇 [大於]  ，並在 [值]  輸入「80」  。
+1. 接下來，在 [運算子]  選擇 [大於]  ，並在 [值]  輸入「70」  。
 
     ![條件](media/tutorial-create-telemetry-rules/condition-filled-out1.png)
 
 1. 或者也可以設定**時間彙總**。 選取時間彙總時，也必須從 [彙總] 下拉式功能表選取彙總類型，例如平均或總和。
 
-    * 如果沒有彙總，規則就會在每個遙測資料點符合條件時觸發。 例如，如果將規則設定為在溫度超過 80 時觸發，則此規則幾乎會在裝置報告溫度 > 80 時立即觸發。
-    * 使用彙總時，如果時間範圍內遙測資料點的彙總值符合條件，此規則就會觸發。 例如，如果規則是設定為在當溫度高於 80 觸發，而時間彙總設為 10 分鐘、彙總類型設為平均，該規則就會在裝置回報平均溫度 > 80 時觸發 (以 10 分鐘間隔計算)。
+    * 如果沒有彙總，規則就會在每個遙測資料點符合條件時觸發。 例如，如果將規則設定為在溫度超過 70 時觸發，則此規則幾乎會在裝置報告溫度 > 70 時立即觸發。
+    * 使用彙總時，如果時間範圍內遙測資料點的彙總值符合條件，此規則就會觸發。 例如，如果規則是設定為在當溫度高於 70 觸發，而時間彙總設為 10 分鐘、彙總類型設為平均，該規則就會在裝置回報平均溫度 > 70 時觸發 (以 10 分鐘間隔計算)。
 
      ![彙總條件](media/tutorial-create-telemetry-rules/aggregate-condition-filled-out1.png)
 

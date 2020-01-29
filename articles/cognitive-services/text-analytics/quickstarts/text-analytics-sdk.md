@@ -1,5 +1,5 @@
 ---
-title: 快速入門：文字分析用戶端程式庫 | Microsoft Docs
+title: 快速入門：文字分析用戶端程式庫 v3
 titleSuffix: Azure Cognitive Services
 description: 在本快速入門中，您可以使用 Azure 認知服務中的文字分析 API 來偵測語言。
 services: cognitive-services
@@ -8,54 +8,48 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 01/15/2020
 ms.author: aahi
-zone_pivot_groups: programming-languages-set-five
-ms.openlocfilehash: edd4c09bb8cf724e293f1f947eab81f0f9f7a7c8
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+zone_pivot_groups: programming-languages-set-six
+ms.openlocfilehash: 41e6828f03533bfd239f6408a580150e614eb5e7
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75832215"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76281126"
 ---
-# <a name="quickstart-use-the-text-analytics-client-library"></a>快速入門：使用文字分析用戶端程式庫
+# <a name="quickstart-use-the-text-analytics-client-library-v3"></a>快速入門：使用文字分析用戶端程式庫 v3
 
 開始使用文字分析用戶端程式庫。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。
 
-使用文字分析用戶端程式庫執行：
+使用文字分析用戶端程式庫版本 `3.0-preview` 來執行：
 
-* 情感分析
+* 情感分析 (公開預覽)
 * 語言偵測
-* 實體辨識
+* 具名實體辨識 (公開預覽)
 * 關鍵片語擷取
 
 ::: zone pivot="programming-language-csharp"
 
-[!INCLUDE [C# quickstart](../includes/quickstarts/csharp.md)]
+[!INCLUDE [C# quickstart](../includes/quickstarts/v3/csharp.md)]
 
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
 
-[!INCLUDE [Python quickstart](../includes/quickstarts/python-sdk.md)]
+[!INCLUDE [Python quickstart](../includes/quickstarts/v3/python-sdk.md)]
+
+::: zone-end
+
+::: zone pivot="programming-language-java"
+
+[!INCLUDE [Java quickstart](../includes/quickstarts/v3/java-sdk.md)]
 
 ::: zone-end
 
 ::: zone pivot="programming-language-nodejs"
 
-[!INCLUDE [NodeJS quickstart](../includes/quickstarts/nodejs-sdk.md)]
-
-::: zone-end
-
-::: zone pivot="programming-language-go"
-
-[!INCLUDE [Go quickstart](../includes/quickstarts/go-sdk.md)]
-
-::: zone-end
-
-::: zone pivot="programming-language-ruby"
-
-[!INCLUDE [Ruby quickstart](../includes/quickstarts/ruby-sdk.md)]
+[!INCLUDE [NodeJS quickstart](../includes/quickstarts/v3/nodejs-sdk.md)]
 
 ::: zone-end
 
@@ -70,7 +64,6 @@ ms.locfileid: "75832215"
 
 > [!div class="nextstepaction"]
 > [探索解決方案](../text-analytics-user-scenarios.md#analyze-recorded-inbound-customer-calls)
-
 
 * [文字分析概觀](../overview.md)
 * [情感分析](../how-tos/text-analytics-how-to-sentiment-analysis.md)

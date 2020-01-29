@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 媒體服務和 Azure CLI 串流視訊檔案 - CLI | Microsoft Docs
+title: 使用 Azure 媒體服務和 Azure CLI 來串流影片檔案
 description: 按照本教學課程的步驟建立新的 Azure 媒體服務帳戶、對檔案進行編碼，然後將它串流到 Azure 媒體播放器。
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: ''
 ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: 58193a94d09dee5df611acf5d98c8661dd18abbb
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: a51b30ad2af29871ed6998e60bb64adf91dfdbbd
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639973"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514369"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---cli"></a>教學課程：編碼以 URL 為基礎的遠端檔案及串流處理影片 - CLI
 
@@ -309,7 +309,7 @@ az ams streaming-locator get-paths -a amsaccount -g amsResourceGroup -n testStre
 }
 ```
 
-複製 HTTP 即時串流 (HLS) 路徑。 在此案例中，此路徑為 `/e01b2be1-5ea4-42ca-ae5d-7fe704a5962f/ignite.ism/manifest(format=m3u8-aapl)`。
+複製 HTTP 即時串流 (HLS) 路徑。 在此案例中，此名稱為 `/e01b2be1-5ea4-42ca-ae5d-7fe704a5962f/ignite.ism/manifest(format=m3u8-aapl)`。
 
 ## <a name="build-the-url"></a>建置 URL 
 
@@ -334,7 +334,7 @@ az ams streaming-endpoint list -a amsaccount -g amsResourceGroup -n default
 > 如果播放程式裝載在 HTTPS 網站上，請務必以 "https" 作為 URL 的開頭。
 
 1. 開啟網頁瀏覽器並前往 [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)。
-2. 在 [URL]  方塊中，貼上您在上一節建置的 URL。 您可以貼上 HLS、Dash 或 Smooth 格式的 URL。 Azure 媒體播放器將自動使用適當的串流通訊協定，以便在您的裝置上播放。
+2. 在 [URL]  方塊中，貼上您在上一節建置的 URL。 您可以貼上 HLS、 Dash 或 Smooth 格式的 URL。 Azure 媒體播放器將自動使用適當的串流通訊協定，以便在您的裝置上播放。
 3. 選取 [更新播放程式]  。
 
 >[!NOTE]

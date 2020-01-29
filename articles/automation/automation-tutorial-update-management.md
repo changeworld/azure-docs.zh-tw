@@ -4,14 +4,14 @@ description: 本文提供概觀，說明如何使用 Azure 自動化更新管理
 services: automation
 ms.subservice: update-management
 ms.topic: tutorial
-ms.date: 12/03/2019
+ms.date: 01/21/2020
 ms.custom: mvc
-ms.openlocfilehash: 0fd25863d26c38608b6f64f22782422b844fdec8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3922f8a2478f00c632b6daf294f23c7b5ad8c261
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75420651"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310130"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>管理 Azure VM 的更新和修補程式
 
@@ -141,7 +141,7 @@ ms.locfileid: "75420651"
 
 * **要更新的機器**：選取已儲存的搜尋、已匯入的群組，或從下拉式清單中選擇 [機器]，然後選取個別的機器。 如果您選擇 [機器]  ，機器的整備程度會顯示於 [更新代理程式整備程度]  欄中。 若要深入了解在 Azure 監視器記錄中建立電腦群組的不同方法，請參閱 [Azure 監視器記錄中的電腦群組](../azure-monitor/platform/computer-groups.md)
 
-* **更新分類**：選取更新部署在部署中包含的軟體類型。 此教學課程中，將所有類型保留選取。
+* **更新分類**：選取適用於各項產品、且可包含在更新部署中的支援更新分類。 此教學課程中，將所有類型保留選取。
 
   分類類型包括：
 
@@ -156,6 +156,10 @@ ms.locfileid: "75420651"
 
 > [!NOTE]
 > 請務必了解，排除會覆寫包含。 例如，如果您定義 `*` 排除規則，系統便不會安裝任何修補程式或套件，因為已將它們全部排除。 排除的修補程式仍然會顯示為從機器中遺漏。 就 Linux 機器而言，如果已包含某個套件，但排除了它的某個相依套件，就不會安裝該套件。
+
+> [!NOTE]
+> 您無法指定將已被取代的更新納入更新部署中。
+>
 
 * **排程設定**：[排程設定]  窗格將會開啟。 預設開始時間為目前時間之後的 30 分鐘。 您可以將開始時間設為 10 分鐘以後的任何時間。
 

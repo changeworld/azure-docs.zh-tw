@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: 6d926ccaac5ca05fe6f137102cbfdd45b0e182bd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4bb3af4ddad7e40cbf7edd58cf5899ced2757512
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434621"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548793"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-nodejs"></a>快速入門：使用 Node.js 向裝置佈建服務註冊 X.509 裝置
 
@@ -147,7 +147,10 @@ ms.locfileid: "75434621"
 3. 在 Azure 入口網站中，從您的裝置佈建服務中選取 [憑證]  ，選取您為本快速入門上傳的憑證，然後選取 [憑證詳細資料]  視窗頂端的 [刪除]  按鈕。  
  
 ## <a name="next-steps"></a>後續步驟
+
 在本快速入門中，您已使用 Azure IoT 中樞裝置佈建服務，建立了 X.509 中繼或根 CA 憑證的群組註冊。 若要深入了解裝置佈建，請繼續在 Azure 入口網站中進行裝置佈建服務設定的教學課程。 
+
+另請參閱 [Node.js 裝置佈建範例](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/device/samples)。
  
 > [!div class="nextstepaction"]
 > [Azure IoT 中樞裝置佈建服務教學課程](./tutorial-set-up-cloud.md)

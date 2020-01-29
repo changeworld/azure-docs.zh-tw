@@ -1,27 +1,19 @@
 ---
-title: 教學課程 - 使用 Azure PowerShell 自動調整擴展集 |Microsoft Docs
+title: 教學課程 - 使用 Azure PowerShell 自動調整擴展集
 description: 了解如何使用 Azure PowerShell 範本隨著 CPU 需求的增加和減少自動調整虛擬機器擴展集
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2d743b53f5ca74299c865d381f0832729fc956f4
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 50fb0c1c13ceba88b1894fa0f3165dd40b8e23cf
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677600"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278417"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>教學課程：使用 Azure PowerShell 自動調整虛擬機器擴展集
 
@@ -35,7 +27,7 @@ ms.locfileid: "68677600"
 > * 對 VM 執行個體進行壓力測試，並觸發自動調整規則
 > * 在需求降低時重新自動相應縮小
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 目前有已知的問題會影響 Azure PowerShell 模組 6.8.1 版或更新版本，包括 Azure Cloud Shell 中的目前版本。 本教學課程只能使用 Azure PowerShell 模組 6.0.0 到 6.8.0 版來執行。 執行 `Get-Module -ListAvailable AzureRM` 以尋找版本。 如果您在本機執行 PowerShell，則也需要執行 `Connect-AzureRmAccount` 以建立與 Azure 的連線。
 
@@ -76,7 +68,7 @@ New-AzureRmVmss `
 |-------------------------|---------------------------------------------------------------------------------------------------------------------|----------------|
 | *-MetricName*           | 要監視並套用擴展集動作的效能計量。                                                   | Percentage CPU |
 | *-TimeGrain*            | 收集計量進行分析的頻率。                                                                   | 1 分鐘       |
-| *-MetricStatistic*      | 定義應該如何彙總收集的計量以進行分析。                                                | 平均值        |
+| *-MetricStatistic*      | 定義應該如何彙總收集的計量以進行分析。                                                | Average        |
 | *-TimeWindow*           | 在比較計量與閾值之前監視的時間長短。                                   | 5 分鐘      |
 | *-Operator*             | 用以比較計量資料與閾值之間差異的運算子。                                                     | 大於   |
 | *-Threshold*            | 讓自動調整規則觸發動作的值。                                                      | 70%            |
@@ -97,7 +89,7 @@ $myRuleScaleOut = New-AzureRmAutoscaleRule `
   -Operator "GreaterThan" `
   -Threshold 70 `
   -ScaleActionDirection "Increase" `
-  –ScaleActionScaleType "ChangeCount" `
+  -ScaleActionScaleType "ChangeCount" `
   -ScaleActionValue 3 `
   -ScaleActionCooldown 00:05:00
 ```
@@ -119,7 +111,7 @@ $myRuleScaleIn = New-AzureRmAutoscaleRule `
   -TimeWindow 00:05:00 `
   -ScaleActionCooldown 00:05:00 `
   -ScaleActionDirection "Decrease" `
-  –ScaleActionScaleType "ChangeCount" `
+  -ScaleActionScaleType "ChangeCount" `
   -ScaleActionValue 1
 ```
 
@@ -151,7 +143,7 @@ Add-AzureRmAutoscaleSetting `
 
 
 ## <a name="generate-cpu-load-on-scale-set"></a>在擴展集上產生 CPU 負載
-若要測試自動調整規則，請擴展集中的 VM 執行個體上產生 CPU 負載。 這種模擬的 CPU 負載會使自動調整規則相應放大，並增加 VM 執行個體數目。 當模擬的 CPU 負載隨後減輕時，自動調整規則即會相應縮小，並減少 VM 執行個體數目。
+若要測試自動調整規則，請在擴展集中的 VM 執行個體上產生 CPU 負載。 這種模擬的 CPU 負載會使自動調整規則相應放大，並增加 VM 執行個體數目。 當模擬的 CPU 負載隨後減輕時，自動調整規則即會相應縮小，並減少 VM 執行個體數目。
 
 若要列出要連線至擴展集中之 VM 執行個體的 NAT 連接埠，請先透過 [Get-AzureRmLoadBalancer](/powershell/module/AzureRM.Network/Get-AzureRmLoadBalancer) 取得負載平衡器物件。 接著，使用 [Get-AzureRmLoadBalancerInboundNatRuleConfig](/powershell/module/AzureRM.Network/Get-AzureRmLoadBalancerInboundNatRuleConfig) 檢視輸入 NAT 規則：
 
@@ -199,7 +191,7 @@ mstsc /v 52.168.121.216:50001
 - 選取 [確定]  ，以接受 [使用建議的安全性、隱私權與相容性設定]  的提示
 - 在網址列中輸入 *http://download.sysinternals.com/files/CPUSTRES.zip* 。
 - 在啟用 [Internet Explorer 增強式安全性設定] 的情況下，選擇將 *http://download.sysinternals.com* 網域**新增**至信任網站清單。
-- 在出現檔案下載的提示時，選取 [開啟]  ，然後選取並**執行** *CPUSTRES.EXE* 工具。
+- 在出現檔案下載的提示時，選取 [開啟]  ，然後選取並**執行***CPUSTRES.EXE* 工具。
 
 若要產生一些 CPU 負載，請勾選**作用中**執行緒的兩個方塊。 從這兩個執行緒的 [活動]  下拉式功能表中，選取 [最大值]  。 您可以開啟工作管理員，確認 VM 的 CPU 負載是 100%。
 

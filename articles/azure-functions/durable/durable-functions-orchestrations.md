@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 54e1eb0be18de8e5ed420e96629d6f23473272fe
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: caa62483373a240991cfec96437cea7849d9b19c
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74545716"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261546"
 ---
 # <a name="durable-orchestrations"></a>長期協調流程
 
@@ -55,7 +55,9 @@ Durable Functions 會以透明的方式使用事件來源。 實際上，協調�
 
 ## <a name="orchestration-history"></a>協調流程記錄
 
-長期工作架構的事件來源行為會與您撰寫的協調器函式程式碼緊密結合。 假設您有一個活動鏈結協調器函式，如下列 C# 協調器函式所示：
+長期工作架構的事件來源行為會與您撰寫的協調器函式程式碼緊密結合。 假設您有一個活動鏈結協調器函式，如下列協調器函式所示：
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("E1_HelloSequence")]
@@ -73,7 +75,7 @@ public static async Task<List<string>> Run(
 }
 ```
 
-如果您以 JavaScript 撰寫程式碼，您的活動鏈結協調器函式看起來可能像下列範例程式碼：
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -89,9 +91,11 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
 在每個 `await` (C#) 或 `yield` 陳述式中，長期工作架構會將函式的執行狀態檢查點記入某個長期儲存體後端 (通常為 Azure 資料表儲存體)。 此狀態就是「協調流程歷程記錄」  。
 
-### <a name="history-table"></a>歷程記錄資料表
+### <a name="history-table"></a>記錄資料表
 
 一般而言，長期工作架構會在每個檢查點執行下列作業：
 
@@ -106,7 +110,7 @@ module.exports = df.orchestrator(function*(context) {
 
 完成時，稍早顯示的函式歷程記錄在 Azure 資料表儲存體中看起來如下表所示 (針對示範目的縮寫)：
 
-| PartitionKey (InstanceId)                     | EventType             | Timestamp               | 輸入 | 名稱             | 結果                                                    | 狀態 |
+| PartitionKey (InstanceId)                     | EventType             | 時間戳記               | 輸入 | 名稱             | 結果                                                    | 狀態 |
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|
 | eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | null  | E1_HelloSequence |                                                           |                     |
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362Z |       |                  |                                                           |                     |
@@ -139,7 +143,7 @@ module.exports = df.orchestrator(function*(context) {
   * **OrchestratorCompleted**：協調器函式已等候。
   * **ContinueAsNew**：協調器函式已完成，並且以新的狀態自行重新啟動。 `Result` 資料行包含值，可作為重新啟動執行個體的輸入。
   * **ExecutionCompleted**：協調器函式即將完成 (或失敗)。 函式或錯誤詳細資料的輸出會儲存在 `Result` 資料行。
-* **Timestamp**：歷程記錄事件的 UTC 時間戳記。
+* **時間戳記**：歷程記錄事件的 UTC 時間戳記。
 * **Name**：被叫用之函式的名稱。
 * **輸入**：函式的 JSON 格式輸入。
 * **Result**：函式的輸出，也就是它的傳回值。
@@ -182,7 +186,7 @@ module.exports = df.orchestrator(function*(context) {
 
 如需詳細資訊和範例，請參閱[錯誤處理](durable-functions-error-handling.md)一文。
 
-### <a name="critical-sections-durable-functions-2x"></a>重要區段 (Durable Functions 2.x)
+### <a name="critical-sections-durable-functions-2x-currently-net-only"></a>重要區段 (Durable Functions 2.x，目前僅限 .NET)
 
 協調流程執行個體為單一執行緒，因此不需要擔心協調流程內  的競爭情況。 不過，當協調流程與外部系統互動時，可能會發生競爭情況。 若要減輕與外部系統互動時的競爭情況，協調器函式可以在 .NET 中使用 `LockAsync` 方法來定義「重要區段」  。
 
@@ -212,7 +216,9 @@ public static async Task Synchronize(
 
 如[協調器函式程式碼條件約束](durable-functions-code-constraints.md)所述，系統不允許協調器函式進行 I/O。 此限制的一般因應措施是將任何需要在活動函式中進行 I/O 的程式碼包裝起來。 與外部系統互動的協調流程經常使用活動函式來進行 HTTP 呼叫，並將結果傳回協調流程。
 
-為了簡化這種常見模式，協調器函式可以使用 .NET 中的 `CallHttpAsync` 方法，直接叫用 HTTP API。 除了支援基本要求/回應模式之外，`CallHttpAsync` 還支援一般非同步 HTTP 202 輪詢模式的自動處理，也支援使用[受控身分識別](../../active-directory/managed-identities-azure-resources/overview.md)向外部服務進行驗證。
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+為了簡化這種常見模式，協調器函式可以使用 `CallHttpAsync` 方法，直接叫用 HTTP API。
 
 ```csharp
 [FunctionName("CheckSiteAvailable")]
@@ -232,6 +238,8 @@ public static async Task CheckSiteAvailable(
 }
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
 const df = require("durable-functions");
 
@@ -244,6 +252,10 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
+除了支援基本要求/回應模式之外，此方法還支援一般非同步 HTTP 202 輪詢模式的自動處理，也支援使用[受控身分識別](../../active-directory/managed-identities-azure-resources/overview.md)向外部服務進行驗證。
+
 如需詳細資訊和詳細範例，請參閱 [HTTP 功能](durable-functions-http-features.md)一文。
 
 > [!NOTE]
@@ -251,9 +263,11 @@ module.exports = df.orchestrator(function*(context) {
 
 ### <a name="passing-multiple-parameters"></a>傳遞多個參數。
 
-您不可能直接將多個參數傳遞至活動函式。 建議傳入物件陣列，或使用 .NET 中的 [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) 物件。
+您不可能直接將多個參數傳遞至活動函式。 建議傳入物件陣列或複合物件。
 
-下列範例會使用附加 [C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples) 的 [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) 新功能：
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+在 .NET 中，您也可以使用 [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) 物件。 下列範例會使用附加 [C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples) 的 [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) 新功能：
 
 ```csharp
 [FunctionName("GetCourseRecommendations")]
@@ -289,6 +303,36 @@ public static async Task<object> Mapper([ActivityTrigger] IDurableActivityContex
     };
 }
 ```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+#### <a name="orchestrator"></a>協調器
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context) {
+    const location = {
+        city: "Seattle",
+        state: "WA"
+    };
+    const weather = yield context.df.callActivity("GetWeather", location);
+
+    // ...
+};
+```
+
+#### <a name="activity"></a>活動
+
+```javascript
+module.exports = async function (context, location) {
+    const {city, state} = location; // destructure properties into variables
+
+    // ...
+};
+```
+
+---
 
 ## <a name="next-steps"></a>後續步驟
 

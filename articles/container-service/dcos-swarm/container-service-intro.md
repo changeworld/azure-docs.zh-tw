@@ -1,20 +1,18 @@
 ---
 title: (已淘汰) Azure 雲端中的 Docker 容器主控
 description: Azure Container Service 提供簡化建立、設定及管理虛擬機器叢集的方法，這些虛擬機器預先設定為執行容器化應用程式。
-services: container-service
 author: rgardler
-manager: jeconnoc
 ms.service: container-service
 ms.topic: overview
 ms.date: 03/01/2017
 ms.author: rogardle
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 957725d40c66ffe9d8d7ce1362279c2bb4d4fded
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: f13e3b8c861d963c2e9e0b827ba00ee6fa70d31e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65788730"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277810"
 ---
 # <a name="deprecated-introduction-to-docker-container-hosting-solutions-with-azure-container-service"></a>(已淘汰) 使用 Azure Container Service 的 Docker 容器主控解決方案簡介 
 
@@ -29,7 +27,7 @@ Azure Container Service 會使用 Docker 容器格式，確保您的應用程式
 藉由使用 Azure Container Service，您可以充分利用 Azure 的企業級功能，同時仍可保有應用程式可攜性--包括協調流程層的可攜性在內。
 
 ## <a name="using-azure-container-service"></a>使用 Azure 容器服務
-我們對於 Azure Container Service 的目標，是要使用現今頗受客戶歡迎的開放原始碼工具和技術，提供容器主控環境。 為了這個目的，我們會為您所選擇的 Orchestrator (DC/OS、Docker Swarm 或 Kubernetes) 公開標準 API 端點。 您可以使用這些端點來運用能夠與這些端點通訊的任何軟體。 比方說，在 Docker Swarm 端點的案例中，您可能會選擇使用 Docker 命令列介面 (CLI)。 若是 DC/OS，您可能會選擇 DCOS CLI。 若為 Kubernetes，您可以選擇 `kubectl`。
+我們對於 Azure Container Service 的目標，是要使用現今頗受使用者歡迎的開放原始碼工具和技術，提供容器主控環境。 為了這個目的，我們會為您所選擇的 Orchestrator (DC/OS、Docker Swarm 或 Kubernetes) 公開標準 API 端點。 您可以使用這些端點來運用能夠與這些端點通訊的任何軟體。 比方說，在 Docker Swarm 端點的案例中，您可能會選擇使用 Docker 命令列介面 (CLI)。 若是 DC/OS，您可能會選擇 DCOS CLI。 若為 Kubernetes，您可以選擇 `kubectl`。
 
 ## <a name="creating-a-docker-cluster-by-using-azure-container-service"></a>使用 Azure Container Service 建立 Docker 叢集
 若要開始使用 Azure Container Service，您必須透過入口網站 (在 Marketplace 內搜尋 **Azure Container Service**) 部署 Azure Container Service 叢集、使用 Azure Resource Manager 範本 ([Docker Swarm](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm)、[DC/OS](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos) 或 [Kubernetes](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes))，或使用 [Azure CLI](container-service-create-acs-cluster-cli.md)。 提供的快速入門範本可以修改為包含其他或進階 Azure 組態。 如需詳細資訊，請參閱[部署 Azure Container Service 叢集](container-service-deployment.md)。
@@ -58,11 +56,11 @@ DC/OS 和 Apache Mesos 包含令人印象深刻的功能集︰
 
 #### <a name="using-marathon"></a>使用 Marathon
 在 cgroups 中，Marathon 是服務的全叢集初始化和控制系統--或者，若是 Azure Container Service，則為 Docker 格式的容器。 Marathon 提供 Web UI，您可以用它來部署您的應用程式。 您可以前往如下 URL 存取此項目：`http://DNS_PREFIX.REGION.cloudapp.azure.com`
-其中 DNS\_PREFIX 與 REGION 都是在部署期間定義的。 當然，您也可以提供您自己的 DNS 名稱。 如需有關使用 Marathon Web UI 來執行容器的詳細資訊，請參閱 [透過 Marathon Web UI 來管理 DC/OS 容器](container-service-mesos-marathon-ui.md)。
+其中 DNS\_PREFIX 與 REGION 都是在部署期間定義的。 您也可以提供您自己的 DNS 名稱。 如需有關使用 Marathon Web UI 來執行容器的詳細資訊，請參閱 [透過 Marathon Web UI 來管理 DC/OS 容器](container-service-mesos-marathon-ui.md)。
 
 ![Marathon 應用程式清單](media/dcos/marathon-applications-list.png)
 
-您也可以使用 REST API 來與 Marathon 通訊。 有許多可用於每個工具的用戶端程式庫。 這些程式庫涵蓋各種不同語言--當然，您可以使用任何語言的 HTTP 通訊協定。 此外，許多受歡迎的 DevOps 工具都提供 Marathon 的支援。 當您使用 Azure Container Service 叢集時，這為作業小組提供了最大的彈性。 如需有關使用 Marathon REST API 來執行容器的詳細資訊，請參閱 [透過 Marathon REST API 來管理 DC/OS 容器](container-service-mesos-marathon-rest.md)。
+您也可以使用 REST API 來與 Marathon 通訊。 有許多可用於每個工具的用戶端程式庫。 這些程式庫涵蓋各種不同語言--您可以使用任何語言的 HTTP 通訊協定。 此外，許多受歡迎的 DevOps 工具都提供 Marathon 的支援。 當您使用 Azure Container Service 叢集時，這為作業小組提供了最大的彈性。 如需有關使用 Marathon REST API 來執行容器的詳細資訊，請參閱 [透過 Marathon REST API 來管理 DC/OS 容器](container-service-mesos-marathon-rest.md)。
 
 ### <a name="using-docker-swarm"></a>使用 Docker Swarm
 Docker Swarm 為 Docker 提供原生叢集。 由於 Docker Swarm 可作為標準 Docker API 使用，已與 Docker 精靈通訊的任何工具都可以使用 Swarm 無障礙地延伸到 Azure 容器服務上的多部主機。

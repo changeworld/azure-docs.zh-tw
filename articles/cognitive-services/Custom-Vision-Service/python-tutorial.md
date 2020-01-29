@@ -10,18 +10,18 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: areddish
-ms.openlocfilehash: 2ea49eaf6fd48207996a92a997f15e5db3d3b199
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ffb12af93e249b0b9bb510d3507a30e67d6cd19f
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74961075"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169135"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-python-sdk"></a>快速入門：使用自訂視覺 Python SDK 建立影像分類專案
 
 本文說明如何開始搭配使用自訂視覺 SDK 與 Python 來建置影像分類模型。 建立它之後，您就可以新增標記、上傳影像、為專案定型、取得專案的已發佈預測端點 URL，並使用端點以程式設計方式測試影像。 請使用此範例作為範本來建置您自己的 Python 應用程式。 如果您想要進行「不用」  程式碼來建置及使用分類模型的程序，請改為參閱[以瀏覽器為基礎的指引](getting-started-build-a-classifier.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - [Python 2.7+ 或 3.5+](https://www.python.org/downloads/)
 - [pip](https://pip.pypa.io/en/stable/installing/) 工具
@@ -84,10 +84,10 @@ cherry_tag = trainer.create_tag(project.id, "Japanese Cherry")
 若要將範例影像新增到專案，在標記建立之後插入下列程式碼。 此程式碼會上傳每個影像及其對應標記。 您最多可以在單一批次中上傳 64 個影像。
 
 > [!NOTE]
-> 您必須根據認知服務 Python SDK 範例專案稍早的下載位置，來變更影像的路徑。
+> 您必須根據認知服務 Python SDK 範例存放庫先前的下載位置，來變更影像的路徑。
 
 ```Python
-base_image_url = "<path to project>"
+base_image_url = "<path to repo directory>/cognitive-services-python-sdk-samples/samples/vision/"
 
 print("Adding images...")
 
@@ -113,7 +113,7 @@ if not upload_result.is_batch_successful:
 
 ### <a name="train-the-classifier-and-publish"></a>訓練分類器並發佈
 
-此程式碼會在專案中建立第一個反覆項目，然後將該反覆項目發佈至預測端點。 提供給已發佈反覆項目的名稱可用來傳送預測要求。 反覆項目要等到發佈後才可在預測端點中使用。
+此程式碼會在預測模型中建立第一個反覆項目，然後將該反覆項目發佈至預測端點。 提供給已發佈反覆項目的名稱可用來傳送預測要求。 反覆項目要等到發佈後才可在預測端點中使用。
 
 ```Python
 import time
@@ -171,7 +171,7 @@ Done!
         Japanese Cherry: 0.01%
 ```
 
-接著，您可以確認測試影像 (位於 **<base_image_url>/Images/Test/** ) 的標記是否適當。 您也可以返回[自訂視覺網站](https://customvision.ai)，然後查看新建立專案的目前狀態。
+接著，您可以確認測試影像 (位於 **<base_image_url>images/Test/** ) 的標記是否適當。 您也可以返回[自訂視覺網站](https://customvision.ai)，然後查看新建立專案的目前狀態。
 
 [!INCLUDE [clean-ic-project](includes/clean-ic-project.md)]
 

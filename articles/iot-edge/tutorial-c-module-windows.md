@@ -9,12 +9,12 @@ ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: d44e85b069a38f48ad4ad06814db5fbcb58c9dc6
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 10e218098c1831f213db25b87ef2c9ebfdd9e749
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665221"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293873"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>教學課程：開發適用於 Windows 裝置的 C IoT Edge 模組
 
@@ -110,33 +110,37 @@ ms.locfileid: "75665221"
        "address": "<registry name>.azurecr.io"
      }
    }
+   ```
+   
+3. 開啟模組解決方案中的 **.env** 檔案。 (該檔案依預設會隱藏於方案總管中，因此您可能需要選取 [顯示所有檔案]  按鈕加以顯示。).env 檔案應該包含您在 deployment.template.json 檔案中看到的相同使用者名稱和密碼變數。 
 
-3. Open the **.env** file in your module solution. (It's hidden by default in the Solution Explorer, so you might need to select the **Show All Files** button to display it.) The .env file should contain the same username and password variables that you saw in the deployment.template.json file. 
+4. 從您的 Azure Container Registry 新增 [使用者名稱]  和 [密碼]  值。 
 
-4. Add the **Username** and **Password** values from your Azure container registry. 
+5. 將變更儲存至 .env 檔案。
 
-5. Save your changes to the .env file.
+### <a name="update-the-module-with-custom-code"></a>使用自訂程式碼來更新模組
 
-### Update the module with custom code
-
-The default module code receives messages on an input queue and passes them along through an output queue. Let's add some additional code so that the module processes the messages at the edge before forwarding them to IoT Hub. Update the module so that it analyzes the temperature data in each message, and only sends the message to IoT Hub if the temperature exceeds a certain threshold. 
+預設模組程式碼會透過輸入佇列接收訊息，並透過輸出佇列傳遞這些訊息。 讓我們新增一些額外的程式碼，讓模組在邊緣處理訊息，然後再將它們轉送到 IoT 中樞。 更新模組，以分析每則訊息中的溫度資料，而且只有在溫度超過特定閾值時，才會將訊息傳送到 IoT 中樞。 
 
 
-1. The data from the sensor in this scenario comes in JSON format. To filter messages in JSON format, import a JSON library for C. This tutorial uses Parson.
+1. 在此案例中，來自感應器的資料會以 JSON 格式傳入。 若要篩選 JSON 格式的訊息，請匯入適用於 C 的 JSON 程式庫。本教學課程使用 Parson。
 
-   1. Download the [Parson GitHub repository](https://github.com/kgabis/parson). Copy the **parson.c** and **parson.h** files into the **CModule** project.
+   1. 下載 [Parson GitHub 存放庫](https://github.com/kgabis/parson)。 將 **parson.c** 和 **parson.h** 檔案複製到 **CModule** 專案中。
 
-   2. In Visual Studio, open the **CMakeLists.txt** file from the CModule project folder. At the top of the file, import the Parson files as a library called **my_parson**.
+   2. 在 Visual Studio 中，開啟 CModule 專案資料夾中的 **CMakeLists.txt** 檔案。 在檔案頂端匯入 Parson 檔案，作為名為 **my_parson** 的程式庫。
 
       ```
-      add_library(my_parson        parson.c        parson.h    )
+      add_library(my_parson
+          parson.c
+          parson.h
+      )
       ```
 
-   3. Add `my_parson` to the list of libraries in the **target_link_libraries** section of the CMakeLists.txt file.
+   3. 在 CMakeLists.txt 檔案的 **target_link_libraries** 區段中，將 `my_parson` 新增至程式庫清單。
 
-   4. Save the **CMakeLists.txt** file.
+   4. 儲存 **CMakeLists.txt** 檔案。
 
-   5. Open **CModule** > **main.c**. At the bottom of the list of include statements, add a new one to include `parson.h` for JSON support:
+   5. 開啟 **CModule** > **main.c**。 在 Include 陳述式清單底部新增包含 `parson.h` 的新陳述式，以支援 JSON：
 
       ```c
       #include "parson.h"

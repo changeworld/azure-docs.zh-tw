@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: b6b0b7b857e109997afb441aa60972c6da61f54b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9623398e51260d88df3d8fd88e3affaf7f906a64
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446268"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76159685"
 ---
 透過下列其中一個選項開始使用文字分析 API。
 
@@ -20,10 +20,10 @@ ms.locfileid: "75446268"
     * 如果您想要試用文字分析 API，但沒有 Azure 訂用帳戶，這是很好的選擇。
     
 * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="建立文字分析資源"  target="_blank">建立文字分析資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-    * 您可以透過 Azure 入口網站取得該資源，直到將其刪除為止。
+    * 可供使用，直到您刪除資源為止。
     * 使用免費定價層來試用服務，之後可升級至付費層以用於實際執行環境。
      
 * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne"  title="建立多個服務的資源" target="_blank">建立多服務資源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>
-    * 您可以透過 Azure 入口網站取得該資源，直到將其刪除為止。  
-    * 針對您的應用程式，跨多個認知服務使用相同的金鑰和端點。
+    * 可供使用，直到您刪除資源為止。  
+    * 使用相同的金鑰和端點存取多個認知服務。
     

@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/20/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2bf769169b579cb0a06a48b3a5998efb89eb8fb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 843dd403bc5434e2c79ee0bb85eb781b56bf3ec9
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443320"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291442"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Workday 整合
 
@@ -42,7 +41,11 @@ ms.locfileid: "75443320"
 
 ## <a name="scenario-description"></a>案例描述
 
-在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。 Workday 支援 **SP** 起始的 SSO。
+在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
+
+* Workday 支援 **SP** 起始的 SSO。
+
+* 設定 Workday 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-workday-from-the-gallery"></a>從資源庫新增 Workday
 
@@ -244,7 +247,7 @@ ms.locfileid: "75443320"
 
 ### <a name="create-workday-test-user"></a>建立 Workday 測試使用者
 
-在本節中，您要在 Workday 中建立名為 B.Simon 的使用者。 請與 [ 客戶支援小組](https://www.workday.com/en-us/partners-services/services/support.html)合作，在 Workday 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
+在本節中，您要在 Workday 中建立名為 B.Simon 的使用者。 請與 [ 客戶支援小組](https://www.workday.com/partners-services/services/support.html)合作，在 Workday 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
 
 ## <a name="test-sso"></a>測試 SSO
 
@@ -259,3 +262,7 @@ ms.locfileid: "75443320"
 - [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [嘗試搭配 Azure AD 使用 Workday](https://aad.portal.azure.com)
+
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/protect-workday)
+
+- [如何使用進階可見性和控制項保護 Workday](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

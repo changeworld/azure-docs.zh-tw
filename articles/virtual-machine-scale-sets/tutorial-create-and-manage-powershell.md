@@ -1,27 +1,19 @@
 ---
-title: 教學課程 - 建立及管理 Azure 虛擬機器擴展集 | Microsoft Docs
+title: 教學課程 - 建立及管理 Azure 虛擬機器擴展集
 description: 了解如何使用 Azure PowerShell 建立虛擬機器擴展集，以及一些常見的管理工作，例如如何啟動和停止執行個體，或變更擴展集容量。
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/18/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 694fc0ba6d59497cfc53efb6f2607bc6a7d4ad2d
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 14616fcc9fd63731c50c5977c88b5030f60664ff
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66728687"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271400"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>教學課程：使用 Azure PowerShell 建立及管理虛擬機器擴展集
 
@@ -34,7 +26,7 @@ ms.locfileid: "66728687"
 > * 手動調整擴展集
 > * 執行常見的擴展集管理工作
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
@@ -156,7 +148,7 @@ Azure Marketplace 包含許多可用來建立 VM 執行個體的映像。 若要
 Get-AzVMImagePublisher -Location "EastUS"
 ```
 
-若要檢視給定發行者的映像清單，請使用 [Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku)。 您也可以依 `-PublisherName` 或 `–Offer` 來篩選此映像清單。 在下列範例中，會篩選出發行者名稱為 *MicrosoftWindowsServer*、且供應項目符合 *WindowsServer* 的所有映像的清單：
+若要檢視給定發行者的映像清單，請使用 [Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku)。 您也可以依 `-PublisherName` 或 `-Offer` 來篩選此映像清單。 在下列範例中，會篩選出發行者名稱為 *MicrosoftWindowsServer*、且供應項目符合 *WindowsServer* 的所有映像的清單：
 
 ```azurepowershell-interactive
 Get-AzVMImageSku -Location "EastUS" -PublisherName "MicrosoftWindowsServer" -Offer "WindowsServer"
@@ -205,7 +197,7 @@ VM 執行個體大小 (或 *SKU*) 會決定可供 VM 執行個體使用的計算
 ### <a name="vm-instance-sizes"></a>VM 執行個體大小
 下表會將一般 VM 大小分類成各種使用案例。
 
-| 類型                     | 一般大小           |    說明       |
+| 類型                     | 一般大小           |    描述       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [一般用途](../virtual-machines/windows/sizes-general.md)         |Dsv3、Dv3、DSv2、Dv2、DS、D、Av2、A0-7| 平衡的 CPU 對記憶體。 適用於開發/測試及小型到中型應用程式和資料解決方案。  |
 | [計算最佳化](../virtual-machines/windows/sizes-compute.md)   | Fs、F             | CPU 與記憶體的比例高。 適用於中流量應用程式、網路設備，以及批次處理。        |

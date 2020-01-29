@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 07/26/2019
-ms.openlocfilehash: 1c352ad5d18f891cd82d90eef7d0a8c6c3d1cdb9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bcab5f76b95939b0a9a4232eab2bcf8b2a5fd40b
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441684"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76309977"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>使用 Azure Cosmos 模擬器進行本機開發和測試
 
@@ -283,7 +283,6 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 如果您在超過目前分割區計數之後嘗試建立容器，模擬器就會擲回 ServiceUnavailable 例外狀況，並隨附下列訊息。
 
 「很抱歉，這個區域目前出現了大量的需求，此時無法完成您的需求。 我們正持續努力讓越來越多容量上線，並建議您再試一次。
-您可以隨時都能基於任何因素寄送電子郵件到 askcosmosdb@microsoft.com。
 ActivityId：12345678-1234-1234-1234-123456789abc"
 
 若要變更 Azure Cosmos 模擬器中可用的容器數目，請執行下列步驟：
@@ -496,7 +495,7 @@ Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7
 
 - 如果您已安裝新版本的模擬器但發生了錯誤，請務必重設您的資料。 您可以滑鼠右鍵按一下系統匣上的 [Azure Cosmos 模擬器] 圖示，然後按一下 [重設資料...] 來重設資料。 如果該動作無法修正錯誤，您可以解除安裝模擬器以及任何所找到的舊版模擬器、移除 "C:\Program files\Azure Cosmos DB 模擬器" 目錄，然後重新安裝模擬器。 如需相關指示，請參閱[解除安裝本機模擬器](#uninstall)。
 
-- 如果 Azure Cosmos 模擬器當機，請從 '%LOCALAPPDATA%\CrashDumps' 資料夾中收集傾印檔案、壓縮檔案後附加到電子郵件，然後寄到 [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com)。
+- 如果 Azure Cosmos 模擬器當機，請從 '%LOCALAPPDATA%\CrashDumps' 資料夾中收集傾印檔案並加以壓縮，然後從 [Azure 入口網站](https://portal.azure.com)開啟支援票證。
 
 - 如果您在 `Microsoft.Azure.Cosmos.ComputeServiceStartupEntryPoint.exe` 中遇到當機，這可能是效能計數器處於損毀狀態的徵兆。 通常從系統管理員的命令提示字元中執行下列命令，即可修正此問題：
 
@@ -504,7 +503,7 @@ Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7
   lodctr /R
    ```
 
-- 如果您遇到連線問題，請[收集追蹤檔案](#trace-files)，壓縮檔案後，再附加到電子郵件寄至[askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com)。
+- 如果發生連線問題，請[收集追蹤檔案](#trace-files)並加以壓縮，然後在 [Azure 入口網站](https://portal.azure.com)中開啟支援票證。
 
 - 如果您收到**服務無法使用**訊息，模擬器可能無法初始化網路堆疊。 由於 Pulse 安全用戶端或 Juniper 網路用戶端的網路篩選驅動程式可能會造成問題，因此請檢查是否已安裝這些驅動程式。 解除安裝協力廠商網路篩選驅動程式通常便會修正問題。 或者，使用 /DisableRIO 來啟動模擬器，將模擬器網路通訊切換為一般 Winsock。 
 
@@ -519,9 +518,9 @@ Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7
 3. `Microsoft.Azure.Cosmos.Emulator.exe /startwprtraces`
 4. `Microsoft.Azure.Cosmos.Emulator.exe`
 5. 重現問題。 如果資料總管無法運作，您只需要等候數秒鐘的時間，等到瀏覽器開啟即可攔截錯誤。
-5. `Microsoft.Azure.Cosmos.Emulator.exe /stopwprtraces`
-6. 瀏覽至 `%ProgramFiles%\Azure Cosmos DB Emulator` 並尋找 docdbemulator_000001.etl 檔案。
-7. 將 .etl 檔案以及重現步驟傳送至 [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) 進行偵錯。
+6. `Microsoft.Azure.Cosmos.Emulator.exe /stopwprtraces`
+7. 瀏覽至 `%ProgramFiles%\Azure Cosmos DB Emulator` 並尋找 docdbemulator_000001.etl 檔案。
+8. 在 [Azure 入口網站](https://portal.azure.com)中開啟支援票證，並納入 .etl 檔案與重現步驟。
 
 ### <a id="uninstall"></a>將本機模擬器解除安裝
 

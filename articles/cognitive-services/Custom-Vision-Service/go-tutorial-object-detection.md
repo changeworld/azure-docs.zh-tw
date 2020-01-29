@@ -10,18 +10,18 @@ ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
-ms.openlocfilehash: 986dbc48bae6cd133e74648ad6e900ba7e515f91
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c6303b494c7ea3a15a38cd5fb8bf6a77b0320363
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74970494"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170137"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-go-sdk"></a>快速入門：使用自訂視覺 Go SDK 建立物件偵測專案
 
 本文提供資訊和範例程式碼，可協助您開始使用自訂視覺 SDK 與 Go 來建置物件偵測模型。 建立它之後，您就可以新增標記的區域、上傳影像、為專案定型、取得專案的已發佈預測端點 URL，並使用端點以程式設計方式測試影像。 請使用此範例作為範本來建置您自己的 Go 應用程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - [Go 1.8+](https://golang.org/doc/install)
 - [!INCLUDE [create-resources](includes/create-resources.md)]
@@ -111,6 +111,9 @@ scissorsTag, _ := trainer.CreateTag(ctx, *project.ID, "scissors", "Pair of sciss
 
 為物件偵測專案中的影像加上標記時，您必須使用標準化座標來識別每個加上標記的物件所屬的區域。
 
+> [!NOTE]
+> 如果您沒有按住並拖曳公用程式可標示區域的座標，您可以使用 [Customvision.ai](https://www.customvision.ai/) 上的 Web UI。 此範例已提供座標。
+
 若要將影像、標記和區域新增至專案，請在標記建立之後插入下列程式碼。 請注意，在本教學課程中，區域會以硬式編碼方式內嵌。 這些區域會在標準化座標中指定週框方塊，且座標會以下列順序指定：左、上、寬度、高度。
 
 ```Go
@@ -160,7 +163,7 @@ scissorsImageRegions := map[string][4]float64{
     "scissors_20.jpg": [4]float64{ 0.158088237, 0.04047389, 0.6691176, 0.843137264 },
 }
 ```
-然後，使用此關聯對應，上傳每個範例影像及其區域座標 (您最多可以在單一批次中上傳 64 個影像)。 新增下列程式碼。
+然後，使用此關聯對應，上傳每個範例影像及其區域座標 (您最多可以在單一批次中上傳 64 個影像)。 加入下列程式碼。
 
 > [!NOTE]
 > 您必須根據認知服務 Go SDK 範例專案稍早的下載位置，來變更影像的路徑。
@@ -225,7 +228,7 @@ if (!*scissor_batch.IsBatchSuccessful) {
 
 ### <a name="train-the-project-and-publish"></a>訓練專案並發佈
 
-此程式碼會在專案中建立第一個反覆項目，然後將該反覆項目發佈至預測端點。 提供給已發佈反覆項目的名稱可用來傳送預測要求。 反覆項目要等到發佈後才可在預測端點中使用。
+此程式碼會在預測模型中建立第一個反覆項目，然後將該反覆項目發佈至預測端點。 提供給已發佈反覆項目的名稱可用來傳送預測要求。 反覆項目要等到發佈後才可在預測端點中使用。
 
 ```go
 iteration, _ := trainer.TrainProject(ctx, *project.ID)

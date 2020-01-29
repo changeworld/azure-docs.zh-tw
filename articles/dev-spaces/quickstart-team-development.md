@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: 本快速入門說明如何使用 Azure Dev Spaces 對容器和微服務進行 Kubernetes 小組開發
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 86d8d559a2d6408eb6846705887a82b440d50d7b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: b84bb67556eda3a453ede5a6fb745d8ae472fb6c
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770827"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290405"
 ---
 # <a name="quickstart-team-development-on-kubernetes---azure-dev-spaces"></a>快速入門：在 Kubernetes 上進行小組開發 - Azure Dev Spaces
 

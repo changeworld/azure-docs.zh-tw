@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/15/2020
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29cf5eebfb485837ee9656909323688384a4b890
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 9f6ab2d5811060b7dc36323a80fed6961b8cf5a9
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028603"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290677"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Cisco Webex 整合
 
@@ -42,7 +41,11 @@ ms.locfileid: "76028603"
 
 ## <a name="scenario-description"></a>案例描述
 
-在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。 Cisco Webex 支援由 **SP** 起始的 SSO，並且支援**自動**使用者佈建。
+在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
+
+* Cisco Webex 支援由 **SP** 起始的 SSO。
+* Cisco Webex 支援**自動**使用者佈建。
+* 設定 Cisco Webex 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-cisco-webex-from-the-gallery"></a>從資源庫新增 Cisco Webex
 
@@ -91,33 +94,15 @@ ms.locfileid: "76028603"
 
     在 [登入 URL]  文字方塊中，貼上透過 SP 中繼資料檔案上傳而自動填入的 [回覆 URL]  值。
 
-5. Cisco Webex 應用程式需要特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應加入 SAML 權杖屬性設定中。 以下螢幕擷取畫面顯示預設屬性清單。 按一下 [編輯]  圖示以開啟 [使用者屬性] 對話方塊。
+1. Cisco Webex 應用程式需要特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應加入 SAML 權杖屬性設定中。 以下螢幕擷取畫面顯示預設屬性清單。
 
-    ![image](common/edit-attribute.png)
+    ![image](common/default-attributes.png)
 
-6. 除了以上屬性外，Cisco Webex 應用程式還需要在 SAML 回應中傳回更多屬性。 在 [使用者屬性]  對話方塊的 [使用者宣告]  區段中，執行下列步驟以設定 SAML 權杖屬性，如下表所示：
-    
+1. 除了上述屬性外，Cisco Webex 應用程式還需要在 SAML 回應中多傳回幾個屬性，如下所示。 這些屬性也會預先填入，但您可以根據您的需求來檢閱這些屬性。
+  
     | 名稱 |  來源屬性|
     | ---------------|--------- |
     | uid | user.userprincipalname |
-
-    a. 按一下 [新增宣告]  以開啟 [管理使用者宣告]  對話方塊。
-
-    ![image](common/new-save-attribute.png)
-
-    ![image](common/new-attribute-details.png)
-
-    b. 在 [名稱]  文字方塊中，輸入該資料列所顯示的屬性名稱。
-
-    c. 讓 [命名空間]  保持空白。
-
-    d. 選取 [來源] 作為 [屬性]  。
-
-    e. 在 [來源屬性]  清單中，輸入該資料列所顯示的屬性值。
-
-    f. 按一下 [確定]  。
-
-    g. 按一下 [檔案]  。
 
 1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 [同盟中繼資料 XML]  ，然後選取 [下載]  來下載憑證，並將其儲存在電腦上。
 
@@ -221,3 +206,7 @@ ms.locfileid: "76028603"
 - [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [嘗試 Cisco Webex 搭配 Azure AD](https://aad.portal.azure.com)
+
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/protect-webex)
+
+- [如何使用進階可見性和控制項保護 Cisco Webex](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

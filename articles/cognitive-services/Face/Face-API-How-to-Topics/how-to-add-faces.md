@@ -1,7 +1,7 @@
 ---
-title: 範例：將臉部新增至 PersonGroup - 臉部 API
+title: 範例：將臉部新增至 PersonGroup - 臉部
 titleSuffix: Azure Cognitive Services
-description: 本指南示範如何使用 Azure 認知服務臉部 API，將大量的人員和臉部新增至 PersonGroup 物件。
+description: 本指南示範如何使用 Azure 認知服務的臉部辨識服務，將大量的人員和臉部新增至 PersonGroup 物件。
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: 2f8a6272b02aea5948be79ddf72d105c4f72bb33
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 240905d538afc5c0f4b7f0e0bf400fac23c3183f
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73744255"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169835"
 ---
 # <a name="add-faces-to-a-persongroup"></a>將臉部新增至 PersonGroup
 
-本指南示範如何將大量的人員和臉部新增至 PersonGroup 物件。 相同的策略也適用於 LargePersonGroup、FaceList 及 LargeFaceList 物件。 此範例是使用 Azure 認知服務的臉部 API .NET 用戶端程式庫，以 C# 撰寫的。
+本指南示範如何將大量的人員和臉部新增至 PersonGroup 物件。 相同的策略也適用於 LargePersonGroup、FaceList 及 LargeFaceList 物件。 此範例是使用 Azure 認知服務的臉部 .NET 用戶端程式庫以 C# 撰寫的。
 
-## <a name="step-1-initialization"></a>步驟 1：初始化
+## <a name="step-1-initialization"></a>步驟 1:初始化
 
 下列程式碼會宣告數個變數，並實作協助程式函式來排程臉部新增要求：
 
@@ -58,9 +58,9 @@ static async Task WaitCallLimitPerSecondAsync()
 }
 ```
 
-## <a name="step-2-authorize-the-api-call"></a>步驟 2：授權 API 呼叫
+## <a name="step-2-authorize-the-api-call"></a>步驟 2:授權 API 呼叫
 
-當您使用用戶端程式庫時，必須將訂用帳戶金鑰傳至 **FaceClient** 類別的建構函式。 例如︰
+當您使用用戶端程式庫時，必須將訂用帳戶金鑰傳至 **FaceClient** 類別的建構函式。 例如：
 
 ```csharp
 private readonly IFaceClient faceClient = new FaceClient(
@@ -87,7 +87,7 @@ await faceClient.LargePersonGroup.CreateAsync(personGroupId, personGroupName);
 同時建立人員，而且也會套用 `await WaitCallLimitPerSecondAsync()` 以避免超出呼叫限制。
 
 ```csharp
-CreatePersonResult[] persons = new CreatePersonResult[PersonCount];
+Person[] persons = new Person[PersonCount];
 Parallel.For(0, PersonCount, async i =>
 {
     await WaitCallLimitPerSecondAsync();
@@ -120,7 +120,7 @@ Parallel.For(0, PersonCount, async i =>
 });
 ```
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
 在本指南中，您已了解使用大量人員和臉部建立 PersonGroup 的流程。 幾項提醒：
 

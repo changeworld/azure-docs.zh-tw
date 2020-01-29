@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 10/22/2019
 ms.author: spelluru
 ms.custom: seodec18
-ms.openlocfilehash: 77497d709d7106bf7c13d1fafcc4e64ee0ed1d39
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 6122f17637e76f42cc4fbcc87ac9f48da3cdca36
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790305"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122197"
 ---
 # <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>選擇 Azure 訊息服務 - 事件方格、事件中樞和服務匯流排
 
@@ -90,14 +90,14 @@ Azure 事件中樞是巨量資料管線。 它有助於擷取、保留和重送�
 
 ## <a name="use-the-services-together"></a>一起使用服務
 
-在某些情況下，您可以同時使用這些服務以滿足不同角色。 例如，電子商務網站可以使用服務匯流排來處理訂單，使用事件中樞來擷取站台遙測，使用 Event Grid 以回應事件 (例如運送項目)。
+在某些情況下，您可以同時使用這些服務以滿足不同角色。 例如，電子商務網站可以使用服務匯流排來處理訂單，使用事件中樞來擷取站台遙測，使用事件方格來回應事件 (例如運送項目)。
 
 在其他情況，也可將各種服務連結在一起以形成事件和資料管線。 可以使用 Event Grid 來回應其他服務中的事件。 如需使用 Event Grid 與事件中樞將資料移轉至資料倉儲的範例，請參閱[將巨量資料串流至資料倉儲](event-grid-event-hubs-integration.md)。 下圖顯示串流資料的工作流程。
 
 ![串流資料概觀](./media/compare-messaging-services/overview.png)
 
 ## <a name="next-steps"></a>後續步驟
-請參閱下列文章： 
+查看下列文章： 
 - [Azure 中的非同步訊息選項](/azure/architecture/guide/technology-choices/messaging)
 - [事件、資料點和訊息 - 為您的資料選擇正確的 Azure 傳訊服務](https://azure.microsoft.com/blog/events-data-points-and-messages-choosing-the-right-azure-messaging-service-for-your-data/)。
 - [儲存體佇列和服務匯流排佇列 - 異同比較](../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)

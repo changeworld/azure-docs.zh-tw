@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 99559c0c77c3e4b29badec1c0be2d741df1f0621
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 4fe49c25ad71c48103f044915d187099b75b3d04
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798384"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121245"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>教學課程：在 ASP.NET Core 應用程式中使用功能旗標
 
@@ -29,7 +29,7 @@ ms.locfileid: "67798384"
 
 [將功能旗標新增至 ASP.NET Core 應用程式快速入門](./quickstart-feature-flag-aspnet-core.md)會示範數種方法，讓您了解如何在 ASP.NET Core 應用程式中新增功能旗標。 本教學課程會詳細說明這些方法。 如需完整的參考，請參閱 [ASP.NET Core 功能管理文件](https://go.microsoft.com/fwlink/?linkid=2091410)。
 
-在本教學課程中，您將了解如何：
+在本教學課程中，您將學會如何：
 
 > [!div class="checklist"]
 > * 在應用程式的重要部分新增功能旗標來控制功能的可用性。
@@ -172,12 +172,12 @@ public enum MyFeatureFlags
 
 ## <a name="feature-flag-checks"></a>功能旗標檢查
 
-功能管理的基本模式是先檢查功能旗標是否設定為「開啟」  。 如果是，則功能管理員會功能所包含的動作。 例如︰
+功能管理的基本模式是先檢查功能旗標是否設定為「開啟」  。 如果是，則功能管理員會功能所包含的動作。 例如：
 
 ```csharp
 IFeatureManager featureManager;
 ...
-if (featureManager.IsEnabled(nameof(MyFeatureFlags.FeatureA)))
+if (await featureManager.IsEnabledAsync(nameof(MyFeatureFlags.FeatureA)))
 {
     // Run the following code
 }
@@ -254,7 +254,7 @@ public IActionResult Index()
 
 ## <a name="mvc-filters"></a>MVC 篩選條件
 
-您可以將 MVC 篩選條件設定為根據功能旗標的狀態來啟用。 下列程式碼會新增名為 `SomeMvcFilter` 的 MVC 篩選條件。 只有在 `FeatureA` 已啟用時，才會在 MVC 管線內觸發此篩選條件。
+您可以將 MVC 篩選條件設定為根據功能旗標的狀態來啟用。 下列程式碼會新增名為 `SomeMvcFilter` 的 MVC 篩選條件。 只有在 `FeatureA` 已啟用時，才會在 MVC 管線內觸發此篩選條件。 這項功能受限於 `IAsyncActionFilter`。 
 
 ```csharp
 using Microsoft.FeatureManagement.FeatureFilters;
@@ -267,16 +267,6 @@ public void ConfigureServices(IServiceCollection services)
         options.Filters.AddForFeature<SomeMvcFilter>(nameof(MyFeatureFlags.FeatureA));
     });
 }
-```
-
-## <a name="routes"></a>路由
-
-您可以使用功能旗標以動態方式公開路由。 下列程式碼會新增路由，而僅在 `FeatureA` 啟用時才會將 `Beta` 設定為預設控制器：
-
-```csharp
-app.UseMvc(routes => {
-    routes.MapRouteForFeature(nameof(MyFeatureFlags.FeatureA), "betaDefault", "{controller=Beta}/{action=Index}/{id?}");
-});
 ```
 
 ## <a name="middleware"></a>中介軟體

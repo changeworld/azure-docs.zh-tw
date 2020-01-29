@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/02/2020
+ms.date: 01/17/2020
 ms.author: banders
-ms.openlocfilehash: 2beb1d3e4468ff96f629dd6ec7015376a7f3a904
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 75b6dd1b2d76d12087270e155551402d1bcd4965
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75984003"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274033"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>了解您的 Azure Enterprise 合約帳單
 
@@ -127,7 +127,7 @@ ms.locfileid: "75984003"
 
 ![在 [使用量摘要] 上顯示 M + C 選項的螢幕擷取畫面。](./media/review-enterprise-agreement-bill/ea-portal-usage-sumary-cm-option.png)  
 
-**Azure Marketplace** 總計應該符合 Marketplace 發票上的**銷售總額**。 若要取得依使用量計算的費用詳細資訊，請前往 [下載使用量]  。 在 [Marketplace 費用]  下方，選取 [下載]  。 此報表不包含稅金或顯示一次性購買。  
+**Azure Marketplace** 總計應該符合 Marketplace 發票上的**銷售總額**。 若要取得依使用量計算的費用詳細資訊，請前往 [下載使用量]  。 在 [Marketplace 費用]  下方，選取 [下載]  。 Marketplace 價格包含發行者所決定的稅額。 客戶不會收到來自發行者的個別發票，以收集交易的稅額。
 
 ![在 Marketplace 費用下方顯示下載選項的螢幕擷取畫面。](./media/review-enterprise-agreement-bill/ea-portal-download-usage-marketplace.png)
 

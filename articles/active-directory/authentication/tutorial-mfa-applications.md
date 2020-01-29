@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bc721f4521c9ac9b8ed8fed2d6b41f6a1b8bd72
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 68474738aabde1b14752aa33789d7e40c3831908
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74846397"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154834"
 ---
 # <a name="tutorial-complete-an-azure-multi-factor-authentication-pilot-roll-out"></a>教學課程：完成 Azure Multi-Factor Authentication 試驗推出
 
@@ -26,7 +26,7 @@ ms.locfileid: "74846397"
 > * 啟用 Azure Multi-Factor Authentication
 > * 測試 Azure Multi-Factor Authentication
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 可運作且至少已啟用試用版授權的 Azure AD 租用戶。
 * 具有全域系統管理員權限的帳戶。
@@ -36,7 +36,7 @@ ms.locfileid: "74846397"
 ## <a name="enable-azure-multi-factor-authentication"></a>啟用 Azure Multi-Factor Authentication
 
 1. 使用全域系統管理員帳戶登入 [Azure 入口網站](https://portal.azure.com)。
-1. 瀏覽至 [Azure Active Directory]  、[條件式存取] 
+1. 瀏覽至 [Azure Active Directory]   > [安全性]   > [條件式存取] 
 1. 選取 [新增原則] 
 1. 將您的原則命名為 **MFA 試驗**
 1. 在 [使用者和群組]  下方，選取 [選取使用者和群組]  選項按鈕
@@ -70,9 +70,9 @@ ms.locfileid: "74846397"
 如果您決定不再使用您在本教學課程中設定的功能，請進行下列變更。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 瀏覽至 [Azure Active Directory]  、[條件式存取]  。
+1. 瀏覽至 [Azure Active Directory]   > [安全性]   > [條件式存取]  。
 1. 選取您先前建立的條件式存取原則。
-1. 按一下 [刪除]  。
+1. 按一下 **[刪除]** 。
 
 ## <a name="next-steps"></a>後續步驟
 

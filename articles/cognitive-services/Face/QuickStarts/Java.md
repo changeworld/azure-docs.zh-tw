@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 7097f399b2bf5a3b0f9adb990fbd66785adc09aa
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: d6d0a5cdf4b33ba290042627f0ceaf4cf73a375c
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977993"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169316"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>快速入門：使用 REST API 和 Java 偵測影像中的人臉
 
@@ -23,9 +23,9 @@ ms.locfileid: "74977993"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-- 臉部 API 訂用帳戶金鑰。 您可以從[試用認知服務](https://azure.microsoft.com/try/cognitive-services/?api=face-api)取得免費的試用訂用帳戶金鑰。 或是，依照[建立認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的指示訂閱臉部 API 服務並取得金鑰。
+- 臉部訂用帳戶金鑰。 您可以從[試用認知服務](https://azure.microsoft.com/try/cognitive-services/?api=face-api)取得免費的試用訂用帳戶金鑰。 或是，依照[建立認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的指示訂閱臉部辨識服務並取得金鑰。
 - 您選擇的任何 Java IDE。
 
 ## <a name="create-the-java-project"></a>建立 Java 專案
@@ -154,7 +154,7 @@ public class Main {
 
 ## <a name="run-the-app"></a>執行應用程式
 
-編譯程式碼並加以執行。 在主控台視窗中，成功的回應會以可輕鬆閱讀的 JSON 格式顯示臉部資料。 例如︰
+編譯程式碼並加以執行。 在主控台視窗中，成功的回應會以可輕鬆閱讀的 JSON 格式顯示臉部資料。 例如：
 
 ```json
 [{
@@ -248,7 +248,7 @@ public class Main {
 
 ## <a name="next-steps"></a>後續步驟
 
-在此快速入門中，您已建立簡單的 Java 主控台應用程式來搭配使用 REST 呼叫和 Azure 臉部 API，進而偵測影像中的臉部並傳回其屬性。 接下來，您可以了解如何在 Android 應用程式中使用此功能來執行更多動作。
+在本快速入門中，您已建立簡單的 Java 主控台應用程式以對 Azure 臉部 API 使用 REST 呼叫，進而偵測影像中的臉部並傳回其屬性。 接下來，您可以了解如何在 Android 應用程式中使用此功能來執行更多動作。
 
 > [!div class="nextstepaction"]
 > [教學課程：建立 Android 應用程式來偵測並框出臉部](../Tutorials/FaceAPIinJavaForAndroidTutorial.md)

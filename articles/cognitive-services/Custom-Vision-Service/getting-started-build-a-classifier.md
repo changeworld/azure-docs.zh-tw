@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: anroth
-ms.openlocfilehash: e7aa4a557821ee49867a8ea82f92ef04dfbef689
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b664a586398e297a00ea9cd8fe68dc65e6ade5c8
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978674"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170018"
 ---
 # <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>快速入門：如何使用自訂視覺建置分類器
 
@@ -23,7 +23,7 @@ ms.locfileid: "74978674"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 一組用來定型分類的影像。 如需選擇影像的秘訣，請參閱下文。
 
@@ -45,7 +45,7 @@ ms.locfileid: "74978674"
 1. 輸入專案的名稱和描述。 然後選取一個 [資源群組]。 如果您登入的帳戶與 Azure 帳戶相關聯，[資源群組] 下拉式清單會顯示所有的 Azure 資源群組，包括自訂視覺服務資源。 
 
    > [!NOTE]
-   > 如果沒有資源群組可用，請確認您已使用您用來登入 [Azure 入口網站](https://portal.azure.com/)的相同帳戶登入 [customvision.ai](https://customvision.ai)。 此外，請確認您所選取的自訂視覺入口網站「目錄」，與 Azure 入口網站中的目錄相同，也就是您自訂視覺資源的位置。 在這兩個網站中，您可以從畫面右上角的下拉式帳戶功能表中選取您的目錄。 
+   > 如果沒有資源群組可用，請確認您已使用您用來登入 [Azure 入口網站](https://portal.azure.com/)的相同帳戶登入 [customvision.ai](https://customvision.ai)。 此外，請確認您所選取的自訂視覺入口網站「目錄」，與 Azure 入口網站中的目錄相同，也就是您自訂視覺資源的位置。 在這兩個網站中，您可以從畫面右上角的下拉式帳戶功能表選取您的目錄。 
 
 1. 選取 [專案類型]  下的 [分類]  。 然後，在 [分類類型]  下，端視您的使用案例而定，選擇 [多標籤]  或 [多類別]  。 多標籤分類會將任意數目的標記套用至影像 (零或多個)，而多類別分類會將影像排序成單一類別 (您提交的每個影像將排序到最可能的標記)。 如果您想要，可以於稍後變更分類類型。
 
@@ -110,6 +110,8 @@ ms.locfileid: "74978674"
 ## <a name="manage-training-iterations"></a>管理定型反覆項目
 
 每次您定型分類器時，都會使用更新的效能度量建立新_反覆項目_。 您可以在 [效能]  索引標籤的左窗格中檢視所有的反覆項目。您也會找到 [刪除]  按鈕，以用來刪除已經過時的反覆項目。 您刪除反覆項目時，會刪除唯一與它相關聯的任何影像。
+
+若要了解如何以程式設計方式存取已定型的模型，請參閱[使用您的模型搭配預測 API](./use-prediction-api.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

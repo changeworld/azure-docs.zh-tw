@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: anroth
-ms.openlocfilehash: 0d9c175db1370fe07b3278a46d910c59d81df860
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 8aef46f0b9c3dc526f1fbed3d9bc59f97771b509
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74969916"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169997"
 ---
 # <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>快速入門：如何使用自訂視覺建置物件偵測器
 
@@ -23,7 +23,7 @@ ms.locfileid: "74969916"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 一組用來定型偵測器模型的影像。 您可以使用 GitHub 上的[範例影像](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/vision/images)集合。 或者，您可以使用下列秘訣來選擇自己的影像。
 
@@ -45,7 +45,7 @@ ms.locfileid: "74969916"
 1. 輸入專案的名稱和描述。 然後選取一個 [資源群組]。 如果您登入的帳戶與 Azure 帳戶相關聯，[資源群組] 下拉式清單會顯示所有的 Azure 資源群組，包括自訂視覺服務資源。 
 
    > [!NOTE]
-   > 如果沒有資源群組可用，請確認您已使用您用來登入 [Azure 入口網站](https://portal.azure.com/)的相同帳戶來登入 [customvision.ai](https://customvision.ai)。 此外，請確認您所選取的自訂視覺入口網站「目錄」，與 Azure 入口網站中的目錄相同，也就是您自訂視覺資源的位置。 在這兩個網站中，您可以從畫面右上角的下拉式帳戶功能表中選取您的目錄。 
+   > 如果沒有資源群組可用，請確認您已使用您用來登入 [Azure 入口網站](https://portal.azure.com/)的相同帳戶登入 [customvision.ai](https://customvision.ai)。 此外，請確認您所選取的自訂視覺入口網站「目錄」，與 Azure 入口網站中的目錄相同，也就是您自訂視覺資源的位置。 在這兩個網站中，您可以從畫面右上角的下拉式帳戶功能表選取您的目錄。 
 
 1. 選取 [專案類型]  之下的 [物件偵測]  。
 
@@ -107,6 +107,8 @@ ms.locfileid: "74969916"
 ## <a name="manage-training-iterations"></a>管理定型反覆項目
 
 每次您定型偵測器時，都會使用更新的效能度量建立新「反覆項目」  。 您可以在 [效能]  索引標籤的左窗格中檢視所有的反覆項目。在左窗格中，您也可以找到 [刪除]  按鈕，可用來刪除已經過時的反覆項目。 您刪除反覆項目時，會刪除唯一與它相關聯的任何影像。
+
+若要了解如何以程式設計方式存取已定型的模型，請參閱[使用您的模型搭配預測 API](./use-prediction-api.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

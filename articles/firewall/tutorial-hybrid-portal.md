@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 11/02/2019
+ms.date: 01/18/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 4a4fd2f89bc662f394b59aa6295c3a909cb8552b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b0847cda78c2e6d1df87eeaedc35850103840151
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468475"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264724"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站在混合式網路中部署及設定 Azure 防火牆
 
@@ -45,15 +45,17 @@ ms.locfileid: "73468475"
 
 如果您想要改為使用 Azure PowerShell 來完成此程序，請參閱[使用 Azure PowerShell 在混合式網路中部署和設定 Azure 防火牆](tutorial-hybrid-ps.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-要讓此案例正常運作有三項重要需求：
+混合式網路會使用中樞和輪輻架構模型來路由傳送 Azure VNet 與內部部署網路之間的流量。 中樞和輪輻架構具有下列需求：
 
-- 輪輻子網路上使用者定義的路由 (UDR) 會指向 Azure 防火牆 IP 位址，作為預設閘道。 此路由表上的 BGP 路由傳播必須 [已停用]  。
-- 中樞閘道子網路上的 UDR 必須指向防火牆 IP 位址，作為輪輻網路的下一個躍點。
+- 將 VNet-Hub 對等互連至 VNet-Spoke 時設定 **AllowGatewayTransit**。 在中樞與輪輻式 (hub-and-spoke) 網路架構中，閘道傳輸會讓輪輻虛擬網路共用中樞內的 VPN 閘道，而不是將 VPN 閘道部署在每個輪輻虛擬網路中。 
 
-   Azure 防火牆子網路不需要任何 UDR，因為可從 BGP 得知路由。
-- 請務必在將 VNet-Hub 對等互連至 VNet-Spoke 時設定 **AllowGatewayTransit**，以及在將 VNet-Spoke 對等互連至 VNet-Hub 時設定 **UseRemoteGateways**。
+   此外，通往閘道連線虛擬網路或內部部署網路的路由，將會自動傳播到使用閘道傳輸的對等虛擬網路路由表。 如需詳細資訊，請參閱[為虛擬網路對等互連設定 VPN 閘道傳輸](../vpn-gateway/vpn-gateway-peering-gateway-transit.md)。
+
+- 當您將 VNet-Spoke 對等互連至 VNet-Hub 時，請設定 **UseRemoteGateways**。 如果已設定 **UseRemoteGateways**，也已在遠端對等互連上設定 **AllowGatewayTransit**，則輪輻虛擬網路會使用遠端虛擬網路的閘道進行傳輸。
+- 若要透過中樞防火牆路由傳送輪輻子網路流量，您需要一個使用者定義的路由 (UDR)，其指向具有 [停用 BGP 路由傳播]  選項組的防火牆。 [停用 BGP 路由傳播]  選項會防止將路由散發到輪輻子網路。 這可防止已學習的路由與您的 UDR 衝突。
+- 在中樞閘道子網路上設定可指向防火牆 IP 位址的 UDR，作為輪輻網路的下一個躍點。 Azure 防火牆子網路不需要任何 UDR，因為可從 BGP 得知路由。
 
 請參閱本教學課程中的[建立路由](#create-the-routes)一節，了解如何建立這些路由。
 
@@ -154,7 +156,7 @@ ms.locfileid: "73468475"
    |訂用帳戶     |\<您的訂用帳戶\>|
    |資源群組     |**FW-Hybrid-Test** |
    |名稱     |**AzFW01**|
-   |位置     |選取您先前使用的相同位置|
+   |Location     |選取您先前使用的相同位置|
    |選擇虛擬網路     |**使用現有項目**︰<br> **VNet-hub**|
    |公用 IP 位址     |建立新項目： <br>**名稱** - **fw-pip**。 |
 

@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: 本快速入門說明如何使用 Azure Dev Spaces 和 Visual Studio Code 對 Azure Kubernetes Service 上的 .NET Core 應用程式進行偵錯和快速反覆運算
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 0025f395c89a8a9f2eff4204ed0859cda0fa86fc
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: fe2bb61ccfc7285dc5f4a5c21f3c62abfecca343
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867512"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290592"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio-code-and-net-core---azure-dev-spaces"></a>快速入門：在 Kubernetes 上偵錯和逐一查看：Visual Studio Code 和 .NET Core - Azure Dev Spaces
 
@@ -96,7 +96,7 @@ git clone https://github.com/Azure/dev-spaces
 > [!TIP]
 > Azure Dev Spaces 會使用專案的 [Dockerfile 和 Helm 圖表](how-dev-spaces-works.md#prepare-your-code)來建置和執行您的程式碼，但如果您想要變更專案的建置和執行方式，可以修改這些檔案。
 
-## <a name="build-and-run-code-in-kubernetes-from-visual-studio"></a>從 Visual Studio 在 Kubernetes 中建置和執行程式碼
+## <a name="build-and-run-code-in-kubernetes-from-visual-studio-code"></a>從 Visual Studio Code 在 Kubernetes 中建置和執行程式碼
 
 按一下左側的 [偵錯]  圖示，然後按一下頂端的 [.NET Core 啟動 (AZDS)]  。
 

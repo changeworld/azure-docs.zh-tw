@@ -1,7 +1,7 @@
 ---
 title: 快速入門：使用 REST API 和 Go 偵測影像中的人臉
 titleSuffix: Azure Cognitive Services
-description: 在此快速入門中，您可以使用臉部 API 搭配 Go 偵測影像中的人臉。
+description: 在本快速入門中，您將使用臉部辨識服務搭配 Go 來偵測影像中的臉部。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 3ebcd7dfb7b1138f52663d7c919d4ce4d8bd088a
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 246b9c81e3cb726236143b9749486ba362128756
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75890545"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165829"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-go"></a>快速入門：使用 REST API 和 Go 偵測影像中的人臉
 
@@ -23,7 +23,7 @@ ms.locfileid: "75890545"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-- 臉部 API 訂用帳戶金鑰。 您可以從[試用認知服務](https://azure.microsoft.com/try/cognitive-services/?api=face-api)取得免費的試用訂用帳戶金鑰。 或是，依照[建立認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的指示訂閱臉部 API 服務並取得金鑰。
+- 臉部訂用帳戶金鑰。 您可以從[試用認知服務](https://azure.microsoft.com/try/cognitive-services/?api=face-api)取得免費的試用訂用帳戶金鑰。 或是，依照[建立認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的指示訂閱臉部辨識服務並取得金鑰。
 - 程式碼編輯器，例如 [Visual Studio Code](https://code.visualstudio.com/download)
 
 ## <a name="write-the-script"></a>撰寫指令碼
@@ -311,7 +311,7 @@ detect-face
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已撰寫 Go 主控台應用程式來呼叫 Azure 臉部 API，進而偵測影像中的臉部並傳回其屬性。 接下來，請瀏覽臉部 API 參考文件，以取得更多資訊。
+在本快速入門中，您已撰寫 Go 主控台應用程式來呼叫 Azure 臉部辨識服務，進而偵測影像中的臉部並傳回其屬性。 接下來，請瀏覽臉部 API 參考文件，以取得更多資訊。
 
 > [!div class="nextstepaction"]
 > [臉部 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

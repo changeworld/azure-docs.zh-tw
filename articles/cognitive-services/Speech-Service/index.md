@@ -1,15 +1,15 @@
 ---
 layout: HubPage
-ms.date: 11-21-2019
+ms.date: 01-24-2020
 ms.topic: hub-page
 title: 語音服務文件
 description: 開始使用語音服務。 辨識語音、合成語音、取得即時翻譯、轉譯交談，或將語音整合到您的 Bot 體驗中。
-ms.openlocfilehash: 7ae8f33e949519cc32d81b591503a159e045178b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a965090be737a10633ead2ca1ed7033ec061ed7f
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75381268"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771987"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -108,7 +108,7 @@ ms.locfileid: "75381268"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>價格</h3>
+                                                    <h3>定價</h3>
                                                     <p>深入了解與語音轉換文字相關聯的成本。</p>
                                                 </div>
                                             </div>
@@ -227,7 +227,7 @@ ms.locfileid: "75381268"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>價格</h3>
+                                                    <h3>定價</h3>
                                                     <p>深入了解與文字轉換語音相關聯的成本。</p>
                                                 </div>
                                             </div>
@@ -310,6 +310,63 @@ ms.locfileid: "75381268"
                                                 <div class="cardText">
                                                     <h3>Language Understanding (LUIS) 入口網站</h3>
                                                     <p>將自然語言建置到應用程式、機器人和 IoT 裝置中。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#speech-translation">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-generic-programming-languages.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>語言支援</h3>
+                                                    <p>了解意圖辨識支援哪些語言。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-pricing.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>定價</h3>
+                                                    <p>深入了解與意圖辨識相關聯的成本。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-generic-reference.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>閱讀文件</h3>
+                                                    <p>了解如何將意圖辨識新增至您的應用程式、工具和產品。 包括概念、教學課程、API 參考和版本資訊。</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -408,7 +465,7 @@ ms.locfileid: "75381268"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>價格</h3>
+                                                    <h3>定價</h3>
                                                     <p>深入了解與語音翻譯相關聯的成本。</p>
                                                 </div>
                                             </div>
@@ -440,25 +497,6 @@ ms.locfileid: "75381268"
                     <li>
                         <a href="#conversationtranscription">對話轉譯</a>
                         <ul id="conversationtranscription" class="cardsC">
-                            <li>
-                                <a href="https://aka.ms/speech/cts-overview">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech-generic-reference.jpg" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>概觀</h3>
-                                                    <p>深入了解對話轉譯，以及如何將它整合到您的產品中。</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
                             <li>
                                 <a href="https://aka.ms/speech/cts-microphone">
                                     <div class="cardSize">
@@ -498,6 +536,25 @@ ms.locfileid: "75381268"
                                 </a>
                             </li>
                             <li>
+                                <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/call-center-transcription">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-call-center-transcription.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>話務中心轉譯</h3>
+                                                    <p>了解如何轉譯來自各種系統的大量電話語音資料。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="https://aka.ms/speech/cts-languages">
                                     <div class="cardSize">
                                         <div class="cardPadding">
@@ -527,8 +584,27 @@ ms.locfileid: "75381268"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>價格</h3>
+                                                    <h3>定價</h3>
                                                     <p>深入了解與對話轉譯相關聯的成本。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://aka.ms/speech/cts-overview">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-generic-reference.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>閱讀文件</h3>
+                                                    <p>深入了解對話轉譯，以及如何將它整合到您的產品中。</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -540,25 +616,6 @@ ms.locfileid: "75381268"
                     <li>
                         <a href="#voice-assistants">語音助理</a>
                         <ul id="voice-assistants" class="cardsC">
-                            <li>
-                                <a href="https://aka.ms/speech/va-overview">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech-generic-reference.jpg" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>概觀</h3>
-                                                    <p>深入了解建置語音助理所需的功能。</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
                             <li>
                                 <a href="https://aka.ms/speech/va-bot-framework">
                                     <div class="cardSize">
@@ -591,6 +648,106 @@ ms.locfileid: "75381268"
                                                 <div class="cardText">
                                                     <h3>使用自訂命令</h3>
                                                     <p>學習輕鬆建置穩固的命令和控制語音應用程式，讓使用者可以使用自己的聲音來完成工作。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://aka.ms/speech/va-overview">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-generic-reference.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>閱讀文件</h3>
+                                                    <p>深入了解建置語音助理所需的功能。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#deploy-architecture">裝載</a>
+                        <ul id="deploy-architecture" class="cardsC">
+                            <li>
+                                <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-generic-how-to.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>建立 Azure 語音服務資源</h3>
+                                                    <p>了解如何取得 Azure 訂用帳戶金鑰、建立語音資源以及開始使用。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="speech-container-howto.md?tabs=stt">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-containers.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>部署語音服務容器</h3>
+                                                    <p>了解如何在內部部署、透過 Kubernetes 和 Helm，或透過 Azure 容器執行個體使用語音容器。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/sovereign-clouds">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-regions.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Sovereign Clouds</h3>
+                                                    <p>Azure 主權雲端中的語音服務資源可用性。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="regions.md">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-regions.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>支援區域</h3>
+                                                    <p>了解支援語音服務的位置。</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -658,7 +815,45 @@ ms.locfileid: "75381268"
                                         </div>
                                     </div>
                                 </a>
-                            </li>                                                    
+                            </li>
+                            <li>
+                                <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/scenario-availability">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-generic-programming-languages.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>案例和功能可用性</h3>
+                                                    <p>了解各種不同程式設計語言和環境間的多種語音 SDK 功能案例。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/regions">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-regions.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>支援區域</h3>
+                                                    <p>了解語音服務的可用區域和端點。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -756,7 +951,7 @@ ms.locfileid: "75381268"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>價格</h3>
+                                                    <h3>定價</h3>
                                                     <p>深入了解與自訂語音相關聯的成本。
                                                     </p>
                                                 </div>
@@ -849,6 +1044,25 @@ ms.locfileid: "75381268"
                                 </a>
                             </li>
                             <li>
+                                <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-generic-programming-languages.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>語言支援</h3>
+                                                    <p>深入了解自訂語音的程式設計和口說語言支援。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="https://aka.ms/speech/custom-tts-pricing">
                                     <div class="cardSize">
                                         <div class="cardPadding">
@@ -859,7 +1073,7 @@ ms.locfileid: "75381268"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>價格</h3>
+                                                    <h3>定價</h3>
                                                     <p>深入了解與自訂語音相關聯的成本。
                                                     </p>
                                                 </div>
@@ -870,97 +1084,6 @@ ms.locfileid: "75381268"
                             </li>
                         </ul>
                     </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#scenarios">案例</a>
-                <ul id="scenarios">
-                    <li>
-                        <a href="#use-cases">使用案例</a>
-                        <ul id="use-cases" class="cardsC">
-                            <li>
-                                <a href="call-center-transcription.md">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech-call-center-transcription.png" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>話務中心轉譯</h3>
-                                                    <p>語音轉換文字的常見案例是轉譯可能來自各種來源 (例如互動式語音回應 (IVR) 系統) 的大量電話語音資料。 </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="scenario-availability.md">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech-generic-programming-languages.jpg" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>案例和功能可用性</h3>
-                                                    <p>了解各平台和程式設計語言的案例和功能可用性。</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#deploy-architecture">部署</a>
-                        <ul id="deploy-architecture" class="cardsC">
-                            <li>
-                                <a href="speech-container-howto.md?tabs=stt">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech-containers.png" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>將語音服務部署到容器</h3>
-                                                    <p>使用 Docker 將語音服務部署到容器執行個體。</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="regions.md">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech-regions.png" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>支援區域</h3>
-                                                    <p>了解支援語音服務的位置。</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>                                    
-                        </ul>
-                    </li>                    
                 </ul>
             </li>
         </ul>

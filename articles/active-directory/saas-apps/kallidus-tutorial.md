@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 734df138bc58deb0c96916ba5178c84a63f3c53a
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: e3caa48e1461552f2999aa2fd91447a41d146379
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67711156"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120310"
 ---
 # <a name="tutorial-integrate-kallidus-with-azure-active-directory"></a>教學課程：整合 Kallidus 與 Azure Active Directory
 
@@ -33,7 +33,7 @@ ms.locfileid: "67711156"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -91,7 +91,7 @@ ms.locfileid: "67711156"
 
 ### <a name="configure-kallidus"></a>設定 Kallidus
 
-若要在 **Kallidus** 端設定單一登入，您必須將**應用程式同盟中繼資料 URL** 傳送給 [Kallidus 支援小組](https://kallidus.zendesk.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要在 **Kallidus** 端設定單一登入，您必須將 [應用程式同盟中繼資料 URL]  和 [簽署憑證 (公用)]  傳送給 [Kallidus 支援小組](https://kallidus.zendesk.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 

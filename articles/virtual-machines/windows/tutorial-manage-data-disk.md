@@ -16,12 +16,12 @@ ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.subservice: disks
-ms.openlocfilehash: 05ad0b95b106b56d92cdbc5a7acd23cc34de7ae4
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: b288091172c71be82e70d90eb8817b2130f2cbef
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780261"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277316"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>教學課程 - 使用 Azure PowerShell 管理 Azure 磁碟
 
@@ -44,7 +44,7 @@ Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中�
 
 建立 Azure 虛擬機器後，有兩個磁碟會自動連結到虛擬機器。 
 
-**作業系統磁碟** - 作業系統磁碟可裝載 VM 作業系統，其大小可高達 4 TB。  依預設會將磁碟機代號 *C:* 指派給 OS 磁碟。 OS 磁碟的磁碟快取組態已針對 OS 效能進行最佳化。 OS 磁碟**不得**裝載應用程式或資料。 請對應用程式和資料使用資料磁碟，本文稍後會詳細說明。
+**作業系統磁碟** - 作業系統磁碟可裝載 VM 作業系統，其大小可高達 4 TB。 如果您從 [Azure Marketplace](https://azure.microsoft.com/marketplace/) 映像建立新的虛擬機器 (VM)，則通常是 127 GB (但有些映像的 OS 磁碟大小較小)。 依預設會將磁碟機代號 *C:* 指派給 OS 磁碟。 OS 磁碟的磁碟快取組態已針對 OS 效能進行最佳化。 OS 磁碟**不得**裝載應用程式或資料。 請對應用程式和資料使用資料磁碟，本文稍後會詳細說明。
 
 **暫存磁碟** - 暫存磁碟會使用與 VM 位於相同 Azure 主機的固態磁碟機。 暫存磁碟的效能非常好，可用於暫存資料處理等作業。 不過，如果 VM 移至新的主機，則會移除儲存在暫存磁碟上的任何資料。 暫存磁碟的大小取決於 [VM 大小](sizes.md)。 依預設會將磁碟機代號 *D:* 指派給暫存磁碟。
 

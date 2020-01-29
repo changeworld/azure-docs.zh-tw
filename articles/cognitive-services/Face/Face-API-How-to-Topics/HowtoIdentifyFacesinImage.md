@@ -1,5 +1,5 @@
 ---
-title: 範例：識別影像中的臉部 - 臉部 API
+title: 範例：識別影像中的臉部 - 臉部
 titleSuffix: Azure Cognitive Services
 description: 本指南示範如何使用 PersonGroup 物件來識別不明的臉部，這些臉部是事先從已知的人員中建立的。
 services: cognitive-services
@@ -10,18 +10,18 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: ec209eb2c60efcb1363c177aad0fe5a72ad2a239
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0b1cf99fe6e2aa4d7fcb12c3fb96b10b42c7c0b7
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977177"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169905"
 ---
 # <a name="example-identify-faces-in-images"></a>範例：識別影像中的臉部
 
-本指南示範如何使用 PersonGroup 物件來識別不明的臉部，這些臉部是事先從已知的人員中建立的。 這些範例是使用 Azure 認知服務的臉部 API 用戶端程式庫，以 C# 撰寫的。
+本指南示範如何使用 PersonGroup 物件來識別不明的臉部，這些臉部是事先從已知的人員中建立的。 這些範例是使用 Azure 認知服務的臉部用戶端程式庫以 C# 撰寫的。
 
-## <a name="preparation"></a>準備工作
+## <a name="preparation"></a>準備
 
 此範例示範：
 
@@ -33,7 +33,7 @@ ms.locfileid: "74977177"
 - 一些具有人臉的相片。 [下載範例相片](https://github.com/Microsoft/Cognitive-Face-Windows/tree/master/Data)，即 Anna、Bill 和 Clare 的相片。
 - 一系列測試用的相片。 相片或許會包含 Anna、Bill 或 Clare 的臉部。 它們都可用來測試識別。 此外，也可以從上述連結選取一些範例影像。
 
-## <a name="step-1-authorize-the-api-call"></a>步驟 1：授權 API 呼叫
+## <a name="step-1-authorize-the-api-call"></a>步驟 1:授權 API 呼叫
 
 每次呼叫臉部 API 時，都需要訂用帳戶金鑰。 此金鑰可以透過查詢字串參數來傳遞，或在要求標頭中指定。 若要透過查詢字串來傳遞訂用帳戶金鑰，請參閱[臉部 - 偵測](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) \(英文\) 中可作為範例的要求 URL：
 ```
@@ -42,7 +42,7 @@ https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&retu
 ```
 
 或者，在 HTTP 要求標頭中指定訂用帳戶金鑰：**ocp-apim-subscription-key:&lt;訂用帳戶金鑰&gt;** 。
-當您使用用戶端程式庫時，即會透過 FaceClient 類別的建構函式傳入訂用帳戶金鑰。 例如︰
+當您使用用戶端程式庫時，即會透過 FaceClient 類別的建構函式傳入訂用帳戶金鑰。 例如：
  
 ```csharp 
 private readonly IFaceClient faceClient = new FaceClient(
@@ -52,7 +52,7 @@ private readonly IFaceClient faceClient = new FaceClient(
  
 若要取得訂用帳戶金鑰，請從 Azure 入口網站移至 Azure Marketplace。 如需詳細資訊，請參閱[訂用帳戶](https://azure.microsoft.com/try/cognitive-services/)。
 
-## <a name="step-2-create-the-persongroup"></a>步驟 2：建立 PersonGroup
+## <a name="step-2-create-the-persongroup"></a>步驟 2:建立 PersonGroup
 
 在此步驟中，名為 "MyFriends" 的 PersonGroup 會包含 Anna、Bill 和 Clare。 每個人都會註冊數個臉部。 您必須從影像中偵測臉部。 在所有這些步驟之後，您會有 PersonGroup，如下圖所示：
 
@@ -131,7 +131,7 @@ while(true)
 
 ## <a name="step-4-identify-a-face-against-a-defined-persongroup"></a>步驟 4：根據定義的 PersonGroup 來識別臉部
 
-當臉部 API 執行識別時，它會在群組內的所有臉部之間計算測試臉部的相似度。 它會傳回與測試臉部最相似的人員。 此流程會透過[臉部 - 識別](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) API 或用戶端程式庫的 IdentifyAsync 方法來完成。
+臉部辨識服務執行識別時，會在群組內的所有臉部之間計算測試臉部的相似度。 它會傳回與測試臉部最相似的人員。 此流程會透過[臉部 - 識別](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) API 或用戶端程式庫的 IdentifyAsync 方法來完成。
 
 測試臉部必須使用先前的步驟來偵測。 接著，將臉部識別碼傳遞至識別 API 以作為第二個引數。 一次可識別多個臉部識別碼。 結果會包含所有識別出的結果。 根據預設，識別流程只會傳回一位最符合測試臉部的人員。 如果您想要的話，可以指定選擇性參數 maxNumOfCandidatesReturned，讓識別流程能夠傳回更多候選項目。
 
@@ -173,7 +173,7 @@ using (Stream s = File.OpenRead(testImageFile))
 基於先前設計的限制，PersonGroup 最多可保留 10,000 個人。
 如需高達百萬規模之情節的詳細資訊，請參閱[如何使用大規模功能](how-to-use-large-scale.md)。
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
 在本指南中，您已了解建立 PersonGroup 及識別人員的流程。 已說明及示範下列功能：
 

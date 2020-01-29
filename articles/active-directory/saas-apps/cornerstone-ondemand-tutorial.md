@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/13/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 363b5b2dc2891166f779c98c6de1487bc45047a3
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1254c3d241befdd0842dd68c8f34291f148c7ee6
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227624"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291459"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cornerstone-ondemand"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Cornerstone OnDemand 整合
 
@@ -33,7 +32,7 @@ ms.locfileid: "74227624"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -46,6 +45,7 @@ ms.locfileid: "74227624"
 
 * Cornerstone OnDemand 支援 **SP** 起始的 SSO
 * Cornerstone OnDemand 支援[自動](cornerstone-ondemand-provisioning-tutorial.md)使用者佈建
+* 設定 Cornerstone OnDemand 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-cornerstone-ondemand-from-the-gallery"></a>從資源庫新增 Cornerstone OnDemand
 
@@ -158,3 +158,7 @@ ms.locfileid: "74227624"
 - [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [嘗試搭配 Azure AD 使用 Cornerstone OnDemand](https://aad.portal.azure.com)
+
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [如何使用進階可見性和控制項保護 Cornerstone OnDemand](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

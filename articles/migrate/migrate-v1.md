@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 52fe4af87d1f5ed6684896aebf404926691ccb07
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 5d3dc951c8cb2948a4cd0b9d9f5c2a9b213c6e7e
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186529"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514981"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>使用舊版的 Azure Migrate
 
@@ -38,7 +38,7 @@ Azure Migrate 服務有兩個版本：
 尋找舊版的專案，如下所示：
 
 1. 在 Azure 入口網站 > [所有服務]  中，搜尋並選取 [Azure Migrate]  。 
-2. 在 Azure Migrate 儀表板上，有一個通知與一個可存取舊 Azure Migrate 專案的連結。
+2. 在 Azure Migrate 儀表板上，會有可以存取舊 Azure Migrate 專案的通知與連結。
 3. 按一下連結以開啟 v1 專案。
 
 
@@ -72,7 +72,7 @@ Azure Migrate 服務有兩個版本：
 機器必須先通過前一個評量，才可前往下一階段。 例如，如果機器未通過適用性檢查，就會標示為不適合 Azure，而不會再去計算大小與成本。
 
 
-### <a name="review-azure-readiness"></a>檢閱 Azure 整備程度
+### <a name="review-azure-readiness"></a>檢閱 Azure 移轉整備程度
 
 評量中的 Azure 移轉整備程度檢視會顯示每部虛擬機器的整備狀態。
 
@@ -216,7 +216,7 @@ Linux | Azure 認同這些 [Linux 作業系統](../virtual-machines/linux/endors
 4. 複製工作區識別碼與金鑰。 在內部部署機器上安裝 MMA 時，需要用到這些識別碼與金鑰。
 
 > [!NOTE]
-> 若要自動安裝代理程式，您可以使用部署工具 (例如 System Center Configuration Manager) 或合作夥伴工具 [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration)，它提供適用於 Azure Migrate 的代理程式部署解決方案。
+> 若要自動安裝代理程式，您可以使用部署工具 (例如 Configuration Manager) 或合作夥伴工具 [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration)，它提供適用於 Azure Migrate 的代理程式部署解決方案。
 
 
 #### <a name="install-the-mma-agent-on-a-windows-machine"></a>在 Windows 電腦上安裝 MMA 代理程式
@@ -229,7 +229,7 @@ Linux | Azure 認同這些 [Linux 作業系統](../virtual-machines/linux/endors
 4. 在 [代理程式安裝選項]  中，選取 [Azure Log Analytics]   > [下一步]  。
 5. 按一下 [新增]  以新增 Log Analytics 工作區。 貼上您從入口網站複製的工作區識別碼和金鑰。 按 [下一步]  。
 
-您可以從命令列或使用自動化方法 ( 例如 System Center Configuration Manager ) 來安裝代理程式。 [了解更多](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent)有關如何使用這些方法來安裝 MMA 代理程式。
+您可以從命令列或使用自動化方法 ( 例如 Configuration Manager ) 來安裝代理程式。 [了解更多](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent)有關如何使用這些方法來安裝 MMA 代理程式。
 
 #### <a name="install-the-mma-agent-on-a-linux-machine"></a>在 Linux 電腦上安裝 MMA 代理程式
 

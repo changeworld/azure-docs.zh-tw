@@ -9,12 +9,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 12/05/2019
-ms.openlocfilehash: e8625b1d81db5b3ec90a177f426d05bd84bd10dd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 925bc229aecc848032ab8847088b7d6ff377a137
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426965"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278284"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>快速入門：使 Azure Sentinel 上線
 
@@ -77,4 +77,4 @@ Azure Sentinel 藉由連線到服務並將事件和記錄轉送至 Azure Sentine
 在本文件中，您已了解如何將資料來源連線到 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
 - 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats-built-in.md)。
-- 從[常見的錯誤格式設備](connect-common-event-format.md)將資料串流至 Azure Sentinel。
+- 從[常見的事件格式設備](connect-common-event-format.md)將資料串流至 Azure Sentinel。

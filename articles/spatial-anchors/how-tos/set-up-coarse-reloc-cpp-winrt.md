@@ -1,6 +1,6 @@
 ---
 title: C++/WinRT 中的粗略重新定位
-description: 深入說明如何在 C++/WinRT 中使用裝置上感應器建立和尋找錨點。
+description: 深入說明如何在 C++/WinRT 中使用粗略重新定位建立和尋找錨點。
 author: bucurb
 manager: dacoghl
 services: azure-spatial-anchors
@@ -8,14 +8,14 @@ ms.author: bobuc
 ms.date: 09/19/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: dd759ed4cbda936b00ce2ac0946184f9f6581c78
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 6d2bb4c563bd7bae186ce9832ff0472f17a8afd3
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790359"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548283"
 ---
-# <a name="how-to-create-and-locate-anchors-using-on-device-sensors-in-cwinrt"></a>如何在 C++/WinRT 中使用裝置上感應器建立和尋找錨點
+# <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-cwinrt"></a>如何在 C++/WinRT 中使用粗略重新定位建立和尋找錨點
 
 > [!div  class="op_single_selector"]
 > * [Unity](set-up-coarse-reloc-unity.md)
@@ -27,7 +27,7 @@ ms.locfileid: "74790359"
 
 Azure 空間錨點可以將裝置上、定位感應器資料與您建立的錨點建立關聯。 此資料也可以用來快速判斷您的裝置附近是否有任何錨點。 如需詳細資訊，請參閱[粗略重新定位](../concepts/coarse-reloc.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本指南，請確定您具有下列項目︰
 

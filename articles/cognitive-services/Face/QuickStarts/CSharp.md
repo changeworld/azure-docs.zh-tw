@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 9d903a7d2d7e0cfe899da1fbb8869805f1f4f857
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e4174ba19d518b4b1dfef9921fe39b0c76f6d1e3
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74961245"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169287"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>快速入門：使用 Face REST API 和 C# 偵測影像中的臉部
 
@@ -23,9 +23,9 @@ ms.locfileid: "74961245"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-- 臉部 API 訂用帳戶金鑰。 您可以從[試用認知服務](https://azure.microsoft.com/try/cognitive-services/?api=face-api)取得免費的試用訂用帳戶金鑰。 或是，依照[建立認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的指示訂閱臉部 API 服務並取得金鑰。
+- 臉部訂用帳戶金鑰。 您可以從[試用認知服務](https://azure.microsoft.com/try/cognitive-services/?api=face-api)取得免費的試用訂用帳戶金鑰。 或是，依照[建立認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的指示訂閱臉部辨識服務並取得金鑰。
 - 任何 [Visual Studio 2015 或 2017](https://www.visualstudio.com/downloads/) 版本。
 
 ## <a name="create-the-visual-studio-project"></a>建立 Visual Studio 專案
@@ -244,7 +244,7 @@ namespace DetectFace
 
 ## <a name="run-the-app"></a>執行應用程式
 
-成功的回應會以可輕鬆閱讀的 JSON 格式顯示臉部資料。 例如︰
+成功的回應會以可輕鬆閱讀的 JSON 格式顯示臉部資料。 例如：
 
 ```json
 [
@@ -342,7 +342,7 @@ namespace DetectFace
 
 ## <a name="next-steps"></a>後續步驟
 
-在此快速入門中，您已建立簡單的 .NET 主控台應用程式來搭配使用 REST 呼叫和 Azure 臉部 API，進而偵測影像中的臉部並傳回其屬性。 接下來，請瀏覽臉部 API 參考文件，以深入了解支援的案例。
+在本快速入門中，您已建立簡單的 .NET 主控台應用程式來搭配使用 REST 呼叫和 Azure 臉部辨識服務，進而偵測影像中的臉部並傳回其屬性。 接下來，請瀏覽臉部 API 參考文件，以深入了解支援的案例。
 
 > [!div class="nextstepaction"]
 > [臉部 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

@@ -15,13 +15,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 61d7a2a7e4a60794710d602dab6b54e894bfc475
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 712e7bcf513592f97950902faff2f7754093b9fc
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232032"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549286"
 ---
+> [!NOTE]
+> 整合 SmarterU 與 Azure Active Directory 的程序也記載在 [SmarterU 說明系統](https://help.smarteru.com/ID2053086)中，並受到維護。
+
 # <a name="tutorial-azure-active-directory-integration-with-smarteru"></a>教學課程：Azure Active Directory 與 SmarterU 整合
 
 在本教學課程中，您會了解如何整合 SmarterU 與 Azure Active Directory (Azure AD)。
@@ -34,7 +37,7 @@ SmarterU 與 Azure AD 整合提供下列優點：
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 SmarterU 整合，您需要下列項目：
 
@@ -61,7 +64,7 @@ SmarterU 與 Azure AD 整合提供下列優點：
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-3. 若要新增新的應用程式，請按一下對話方塊頂端的 [新增應用程式]  按鈕。
+3. 若要新增應用程式，請按一下對話方塊頂端的 [新增應用程式]  按鈕。
 
     ![新增應用程式按鈕](common/add-new-app.png)
 

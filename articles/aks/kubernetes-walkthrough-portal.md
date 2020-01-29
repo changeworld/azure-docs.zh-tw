@@ -5,15 +5,15 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 5/31/2019
+ms.date: 01/21/2020
 ms.author: mlearned
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 89bb7014ddb04b63a83dc8c5b520bcf500bdc707
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b0269a6c710fe16271e333a1e9414208b278a93d
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472718"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310198"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站部署 Azure Kubernetes Service (AKS) 叢集
 
@@ -33,7 +33,7 @@ Azure Kubernetes Service (AKS) 是受控 Kubernetes 服務，可讓您快速部�
 
 若要建立 AKS 叢集，請完成下列步驟：
 
-1. 從 Azure 入口網站功能表或**首頁**，選取 [建立資源]  。
+1. 從 Azure 入口網站功能表或 **[首頁]** 頁面，選取 [建立資源]  。
 
 2. 選取 [容器]   >  [Kubernetes Service]  。
 
@@ -61,7 +61,7 @@ Azure Kubernetes Service (AKS) 是受控 Kubernetes 服務，可讓您快速部�
 
 ![Azure 入口網站中的 AKS 儀表板範例](media/kubernetes-walkthrough-portal/aks-portal-dashboard.png)
 
-## <a name="connect-to-the-cluster"></a>連接到叢集
+## <a name="connect-to-the-cluster"></a>連線至叢集
 
 若要管理 Kubernetes 叢集，請使用 Kubernetes 命令列用戶端：[kubectl][kubectl]。 `kubectl` 用戶端會預先安裝在 Azure Cloud Shell 中。
 
@@ -75,7 +75,7 @@ Azure Kubernetes Service (AKS) 是受控 Kubernetes 服務，可讓您快速部�
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-若要驗證叢集的連線，請使用 [kubectl get][kubectl-get] 命令來傳回叢集節點的清單。
+若要驗證針對您叢集的連線，請使用 [kubectl get][kubectl-get] 命令來傳回叢集節點的清單。
 
 ```azurecli-interactive
 kubectl get nodes
@@ -95,7 +95,7 @@ Kubernetes 資訊清單檔會定義所需的叢集狀態，例如要執行哪些
 > [!TIP]
 > 在本快速入門中，您會以手動方式建立應用程式資訊清單，並將其部署至 AKS 叢集。 在更貼近現實的案例中，您可以使用 [Azure Dev Spaces][azure-dev-spaces] 快速地逐一查看程式碼，並直接在 AKS 叢集中進行偵錯。 您可以跨作業系統平台和開發環境來使用 Dev Spaces，並與小組中的其他人一起工作。
 
-在 Cloud Shell 中，使用 `nano` 或 `vi` 建立名為 `azure-vote.yaml` 的檔案，然後將下列 YAML 定義複製進來：
+在 Cloud Shell 中，使用 `nano azure-vote.yaml` 或 `vi azure-vote.yaml` 命令建立名為 `azure-vote.yaml` 的檔案。 然後，將下列 YAML 定義複製到其中：
 
 ```yaml
 apiVersion: apps/v1

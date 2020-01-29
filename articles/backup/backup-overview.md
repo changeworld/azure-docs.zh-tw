@@ -4,12 +4,12 @@ description: 提供 Azure 備份服務的概觀，並說明如何將它提供給
 ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
-ms.openlocfilehash: 8a902736a8df703b33afbcb108e9e970e200a4dd
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: cf48090b2c32f0c3a1c8170873cb8d6a771fe21f
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668026"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294298"
 ---
 # <a name="what-is-the-azure-backup-service"></a>什麼是 Azure 備份服務？
 
@@ -21,7 +21,7 @@ Azure 備份服務提供簡單、安全且符合成本效益的解決方案來�
 
 - **內部部署** - 使用 [Microsoft Azure 復原服務 (MARS) 代理程式](backup-support-matrix-mars-agent.md)來備份檔案、資料夾、系統狀態。 或者，使用 DPM 或 Azure 備份伺服器 (MABS) 代理程式來保護內部部署 VM ([Hyper-V](back-up-hyper-v-virtual-machines-mabs.md) 和 [VMWare](backup-azure-backup-server-vmware.md)) 和其他[內部部署工作負載](backup-mabs-protection-matrix.md)
 - **Azure VM** - [備份整個 Windows/Linux VM](backup-azure-vms-introduction.md) (使用備份擴充功能)，或使用 [MARS 代理程式](backup-azure-manage-mars.md)來備份檔案、資料夾和系統狀態。
-- **Azure 檔案儲存體共用** - [將 Azure 檔案共用備份和還原至儲存體帳戶](backup-azure-files.md)
+- **Azure 檔案共用** - [將 Azure 檔案共用備份至儲存體帳戶](backup-afs.md)
 - **Azure VM 中的 SQL Server** -  [備份在 Azure VM 上執行的 SQL Server 資料庫](backup-azure-sql-database.md)
 - **Azure VM 中的 SAP HANA 資料庫** - [備份在 Azure VM 上執行的 SAP HANA 資料庫](backup-azure-sap-hana-database.md)
 
@@ -41,9 +41,9 @@ Azure 備份可提供下列主要優點：
 - **集中監視和管理**：Azure 備份提供復原服務保存庫中的[內建監視和警示功能](backup-azure-monitoring-built-in-monitor.md)。 這些功能不需要任何額外的管理基礎結構即可供使用。 您也可以[使用 Azure 監視器](backup-azure-monitoring-use-azuremonitor.md)來擴大監視和報告的規模。
 - **取得應用程式一致備份**：應用程式一致備份表示復原點具有還原備份複本所需的所有資料。 Azure 備份提供應用程式一致備份，確保資料還原不需要其他修正程式。 還原應用程式一致的資料會減少還原時間，讓您能夠快速回到執行狀態。
 - **保留短期和長期資料**：您可以使用[復原服務保存庫](backup-azure-recovery-services-vault-overview.md)進行短期和長期資料保留。
-- **自動儲存管理** - 混合式環境通常需要異質性儲存體 - 部份在內部部署，部份在雲端。 有了 Azure 備份，使用內部部署儲存體裝置無需成本。 Azure 備份會自動配置和管理備份儲存體，且採用使用時付費制。 因此，您只需針對使用的儲存體支付費用。 [深入了解](https://azure.microsoft.com/pricing/details/backup)定價。
+- **自動儲存管理** - 混合式環境通常需要異質性儲存體 - 部份在內部部署，部份在雲端。 使用 Azure 備份，使用內部部署儲存體裝置無需成本。 Azure 備份會自動配置和管理備份儲存體，且採用使用時付費制。 因此，您只需針對使用的儲存體支付費用。 [深入了解](https://azure.microsoft.com/pricing/details/backup)定價。
 - **多個儲存體選項** - Azure 備份提供兩種類型的複寫，讓您的儲存體/資料保有高可用性。
-  - [本地備援儲存體 (LRS)](../storage/common/storage-redundancy-lrs.md) 會將資料複寫至資料中心的儲存體縮放單位三次 (建立三個資料複本)。 此資料的所有複本都存在於相同的區域內。 LRS 是保護資料免於本機硬體故障的低成本選項。
+  - [本地備援儲存體 (LRS)](../storage/common/storage-redundancy-lrs.md) 會將資料複寫至資料中心的儲存體縮放單位三次 (建立三個資料複本)。 此資料的所有複本都存在於相同的區域內。 LRS 是保護資料免於本機硬體失敗的低成本選項。
   - [異地備援儲存體 (GRS)](../storage/common/storage-redundancy-grs.md) 是預設且建議使用的複寫選項。 GRS 會將資料複寫到次要地區 (與來源資料主要位置距離數百英哩)。 GRS 的價格高於 LRS，但可為您的資料提供更高層級的持久性，即使遭受區域性中斷也不影響。
 
 ## <a name="next-steps"></a>後續步驟

@@ -10,18 +10,18 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: anroth
-ms.openlocfilehash: db98464ecefaaf177161a1e417496ee7c994cff0
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 158e4dcd07f6ba31ad0efdd88f030f8db99fcfdd
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978640"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170038"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-net-sdk"></a>快速入門：使用自訂視覺 .NET SDK 建立影像分類專案
 
 本文提供資訊和範例程式碼，可協助您開始使用自訂視覺 SDK 與 C# 來建置影像分類模型。 建立它之後，您就可以新增標記、上傳影像、為專案定型、取得專案的預設預測端點 URL，並使用端點以程式設計方式測試影像。 請使用此範例作為範本來建置您自己的 .NET 應用程式。 如果您想要進行「不用」  程式碼來建置及使用分類模型的程序，請改為參閱[以瀏覽器為基礎的指引](getting-started-build-a-classifier.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - [Visual Studio 2015 或 2017](https://www.visualstudio.com/downloads/) 的任何版本
 - [!INCLUDE [create-resources](includes/create-resources.md)]
@@ -35,7 +35,7 @@ ms.locfileid: "74978640"
 
 複製或下載[認知服務 .NET 範例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)專案。 在 Visual Studio 中瀏覽至 **CustomVision/ImageClassification** 資料夾並開啟 _ImageClassification.csproj_。
 
-此 Visual Studio 專案會建立名為__我的新專案__的新自訂視覺專案，而此專案可透過[自訂視覺網站](https://customvision.ai/)來存取。 然後上傳影像以便為分類器定型並加以測試。 在此專案中，分類器會用來判斷影像是__鐵杉__還是__日本櫻__。
+此 Visual Studio 專案會建立名為__我的新專案__的新自訂視覺專案，而此專案可透過[自訂視覺網站](https://customvision.ai/)來存取。 然後上傳影像以便為分類器定型並加以測試。 在此專案中，分類器會用來判斷影像是「鐵杉」  還是「日本櫻」  。
 
 [!INCLUDE [get-keys](includes/get-keys.md)]
 
@@ -69,7 +69,7 @@ ms.locfileid: "74978640"
 
 ### <a name="train-the-classifier-and-publish"></a>訓練分類器並發佈
 
-此程式碼會在專案中建立第一個反覆項目，然後將該反覆項目發佈至預測端點。 您可以使用反覆項目的名稱來傳送預測要求。 反覆項目要等到發佈後才可在預測端點中使用。
+此程式碼會在預測模型中建立第一個反覆項目，然後將該反覆項目發佈至預測端點。 您可以使用反覆項目的名稱來傳送預測要求。 反覆項目要等到發佈後才可在預測端點中使用。
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_train)]
 

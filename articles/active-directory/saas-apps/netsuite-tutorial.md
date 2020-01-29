@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/10/2020
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad7065ba6378bcb383e67b4a58d7c195e88679ca
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: a9be353e6a030708ea0b9939689d8669506d3b80
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75890673"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289028"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>教學課程：整合 Azure AD 單一登入 (SSO) 與 NetSuite
 
@@ -48,6 +48,7 @@ NetSuite 支援：
 * IDP 起始的 SSO。
 * JIT (just-in-time) 使用者佈建。
 * [自動的使用者佈建](NetSuite-provisioning-tutorial.md)。
+* 設定 NetSuite 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 > [!NOTE]
 > 由於此應用程式的識別碼是固定的字串值，因此一個租用戶中只能設定一個執行個體。
@@ -265,3 +266,6 @@ NetSuite 支援：
 - [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 - [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 - [嘗試搭配 Azure AD 使用 NetSuite](https://aad.portal.azure.com/)
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [如何使用進階可見性和控制項保護 NetSuite](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

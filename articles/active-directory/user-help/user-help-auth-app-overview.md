@@ -1,5 +1,5 @@
 ---
-title: Microsoft Authenticator 應用程式概觀 - Azure Active Directory | Microsoft Docs
+title: 什麼是 Microsoft Authenticator 應用程式？ - Azure Active Directory | Microsoft Docs
 description: 了解 Microsoft Authenticator 應用程式，包括其本質和運作方式，以及本節的內容中包含哪些資訊。
 services: active-directory
 author: eross-msft
@@ -9,20 +9,17 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: overview
-ms.date: 01/24/2019
+ms.date: 01/15/2020
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3766436851cb2f31fa7bb070402191e03ad9ad1
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 468005094ab8a9c42d7eacdfefa990565a3297f3
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382345"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155803"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>什麼是 Microsoft Authenticator 應用程式？
-
->[!Important]
->本內容適用於使用者。 I如果您是系統管理員，可以在 [Azure Active Directory 文件](https://docs.microsoft.com/azure/active-directory)中找到更多關於如何設定和管理 Azure Active Directory (Azure AD) 環境的資訊。
 
 當您使用雙因素驗證時，Microsoft Authenticator 應用程式可協助您登入帳戶。 雙因素驗證有助於您以更安全的方式存取帳戶，尤其是在檢視機密資訊時。 您有可能忘記密碼，或密碼有可能遭竊或遭到破解，而雙因素驗證可作為額外的安全性步驟，協助您保護帳戶而使他人難以入侵。
 
@@ -37,13 +34,11 @@ ms.locfileid: "68382345"
 > [!Important]
 > Microsoft Authenticator 應用程式適用於任何使用雙因素驗證且支援限時單次密碼 (TOTP) 標準的帳戶。
 >
-> 貴組織可能要求您使用驗證器應用程式來登入和存取貴組織資料與文件。 雖然您的使用者名稱可能會出現在應用程式中，但直到您完成註冊程序，才會實際地設定此帳戶作為驗證方法。 如需詳細資訊，請參閱[新增您的公司或學校帳戶](user-help-auth-app-add-work-school-account.md)。
-> 
-> 如果您有登入帳戶方面的問題，請參閱[當您無法登入 Microsoft 帳戶時](https://support.microsoft.com/help/12429)以取得說明。 如果您在嘗試登入 Microsoft 帳戶時收到[「該 Microsoft 帳戶不存在」](https://support.microsoft.com/help/13811)訊息，請取得相關因應措施的詳細資訊。
+>本文適用於嘗試下載 Microsoft Authenticator 應用程式並將其作為安全性驗證方法的使用者。 如果您是系統管理員，且想要了解如何使用 Authenticator 應用程式為您的員工和其他使用者開啟無密碼登入，請參閱[使用 Microsoft Authenticator 應用程式啟用無密碼登入 (預覽)](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-phone)。
 
-## <a name="terminology"></a>術語
+## <a name="terminology"></a>詞彙
 
-| 詞彙|說明|
+| 詞彙|描述|
 | ----|-----------|
 | 雙因素驗證 | 必須明確使用兩項驗證資訊 (例如密碼和 PIN) 的驗證程序。 Microsoft Authenticator 應用程式支援標準雙因素驗證和無密碼登入。 |
 | 多重要素驗證 (MFA) | 所有雙因素驗證都是多重要素驗證，必須根據組織的需求使用*至少*兩項驗證資訊。 |
@@ -77,7 +72,7 @@ ms.locfileid: "68382345"
 
 ## <a name="in-this-section"></a>本節內容
 
-| 文章 | 說明 |
+| 發行項 | 描述 |
 | ------ | ------------ |
 | [下載並安裝應用程式](user-help-auth-app-download-install.md) | 說明應在何處及如何取得執行 Android 和 iOS 的裝置所適用的 Microsoft Authenticator 應用程式，並加以安裝。 |
 | [新增公司或學校帳戶](user-help-auth-app-add-work-school-account.md) | 說明如何將不同的公司或學校帳戶和個人帳戶新增至 Microsoft Authenticator 應用程式。 |

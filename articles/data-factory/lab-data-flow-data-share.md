@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: f5e36095c506918298404758523642073dfd19c7
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 6c501205812ac72da8cd970b61b71e493888cef1
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75865220"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156721"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>使用 Azure Data Factory 和 Azure Data Share 進行資料整合
 
@@ -99,7 +99,7 @@ ms.locfileid: "75865220"
 
 ![入口網站](media/lab-data-flow-data-share/configure10.png)
 
-## <a name="ingest-data-from-azure-sql-db-into-adls-gen2-using-the-copy-activity"></a>使用複製活動將資料從 Azure SQL DB 內嵌至 ADLS Gen2
+## <a name="ingest-data-using-the-copy-activity"></a>使用複製活動內嵌資料
 
 在本節中，您將建立具有複製活動的管線，以將 Azure SQL DB 中的一個資料表內嵌至 ADLS Gen2 儲存體帳戶。 您將了解如何透過 ADF UX 來新增管線、設定資料集，以及對管線進行偵錯。 本節中使用的設定模式，在從關聯式資料存放區複製到以檔案為基礎的資料存放區時也適用。
 

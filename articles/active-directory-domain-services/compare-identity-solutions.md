@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 10/30/2019
+ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: 04a1f19ddf894467a9129e8a16c951298a6af529
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d2495605cccf658b15e812fd85fd65671e84d15b
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474721"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544271"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>比較自我管理 Active Directory Domain Services、Azure Active Directory 和受控 Azure Active Directory Domain Services
 
@@ -28,7 +28,7 @@ ms.locfileid: "73474721"
 * **Azure Active Directory (Azure AD)** - 以雲端為基礎的身分識別和行動裝置管理，可為 Office 365、Azure 入口網站或 SaaS 應用程式等資源提供使用者帳戶和驗證服務。
     * Azure AD 可以與內部部署 AD DS 環境同步，為雲端中以原生方式運作的使用者提供單一身分識別。
 * **Azure Active Directory Domain Services (Azure AD DS)** - 提供受控網域服務，其中有一小部分能與傳統 AD DS 功能完全相容，例如，網域加入、群組原則、LDAP 和 Kerberos / NTLM 驗證等功能。
-    * Azure AD DS 能與 Azure AD 整合，其本身可與內部部署 AD DS 環境進行同步，以將中央身分識別使用案例延伸到在 Azure 中執行的傳統 Web 應用程式，進而作為隨即轉移策略的一部分。
+    * Azure AD DS 與 Azure AD 整合，其本身可與內部部署 AD DS 環境進行同步處理。 這項功能可將中央身分識別使用案例延伸到在 Azure 中執行的傳統 Web 應用程式，作為隨即轉移策略的一部分。
 
 此概觀文章會比較和對比這些身分識別解決方案搭配使用或個別使用的方式 (視組織的需求而定)。
 
@@ -66,7 +66,7 @@ Azure AD DS 為傳統的自我管理 AD DS 環境提供較小的功能子集，�
 | **自訂 OU 結構**                           | **&#x2713;** | **&#x2713;** |
 | **群組原則**                                  | **&#x2713;** | **&#x2713;** |
 | **結構描述延伸模組**                             | **&#x2715;** | **&#x2713;** |
-| **AD 網域/樹系信任**                     | **&#x2715;** | **&#x2713;** |
+| **AD 網域/樹系信任**                     | **&#x2713;** (僅限單向輸出樹系信任) | **&#x2713;** |
 | **安全 LDAP (LDAPS)**                           | **&#x2713;** | **&#x2713;** |
 | **LDAP 讀取**                                     | **&#x2713;** | **&#x2713;** |
 | **LDAP 寫入**                                    | **&#x2713;** (在受控網域內) | **&#x2713;** |
@@ -102,7 +102,7 @@ Azure AD 聯結裝置提供下列優點：
 |:--------------------------------| --------------------------------------------------- | ------------------------------------------------------------------------- |
 | 控制裝置的機制            | Azure AD                                            | Azure AD DS 受控網域                                                |
 | 在目錄中的表示法 | Azure AD 目錄中的裝置物件            | Azure AD DS 受控網域中的電腦物件                        |
-| Authentication                  | 以 OAuth / OpenID Connect 為基礎的通訊協定              | Kerberos 和 NTLM 通訊協定                                               |
+| 驗證                  | 以 OAuth / OpenID Connect 為基礎的通訊協定              | Kerberos 和 NTLM 通訊協定                                               |
 | 管理性                      | Intune 等行動裝置管理 (MDM) 軟體 | 群組原則                                                              |
 | 網路功能                      | 透過網際網路運作                             | 必須與受控網域部署所在的虛擬網路連線或對等互連 |
 | 適用於...                    | 使用者行動裝置或桌面裝置                  | 部署在 Azure 中的伺服器 VM                                              |

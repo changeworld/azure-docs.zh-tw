@@ -503,16 +503,20 @@
               href: ./hadoop/apache-ambari-troubleshoot-down-hosts-services.md
             - name: Apache Ambari 過時警示
               href: ./hadoop/apache-ambari-troubleshoot-stale-alerts.md
+            - name: Apache Ambari 目錄警示
+              href: ./hadoop/apache-ambari-troubleshoot-directory-alerts.md
             - name: 針對速度變慢或失敗的 HDInsight 叢集進行疑難排解
               href: ./hdinsight-troubleshoot-failed-cluster.md
             - name: Apache Hadoop HDFS 疑難排解
               href: ./hdinsight-troubleshoot-hdfs.md
             - name: Apache Hadoop YARN 疑難排解
               href: ./hdinsight-troubleshoot-yarn.md
+            - name: Yarn 記錄中的無效 BCFile 錯誤
+              href: ./hadoop/troubleshoot-yarn-log-invalid-bcfile.md
             - name: Data Lake Store 檔案疑難排解
               href: ./hadoop/hdinsight-troubleshoot-data-lake-files.md
-            - name: Apache Ambari 目錄警示
-              href: ./hadoop/apache-ambari-troubleshoot-directory-alerts.md
+            - name: 啟動服務時發生連接埠衝突
+              href: ./hadoop/troubleshoot-port-conflict.md
 - name: Apache Kafka
   items:
     - name: 概觀
@@ -870,5 +874,5 @@
           items:
             - name: ESP 驗證問題
               href: ./domain-joined/domain-joined-authentication-issues.md
-            - name: 無法使用 ESP 登入 Zeppelin
-              href: ./domain-joined/domain-joined-zeppelin-signin.md
+            - name: 叢集建立因 DomainNotFound 而失敗
+              href: ./domain-joined/troubleshoot-domainnotfound.md

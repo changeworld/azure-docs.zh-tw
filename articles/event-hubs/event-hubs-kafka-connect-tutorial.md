@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 84220d5dda26c25f40138629e2be1f10d57fe3c4
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: df7198b68a083abf9be4ffe88e7a5dd848b2c535
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555123"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119511"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview"></a>在 Azure 事件中樞上整合 Apache Kafka Connect 支援 (預覽)
 隨著擷取商務需求的情況增加，對於擷取各種外部來源和接收的需求也隨之增加。 [Apache Kafka Connect](https://kafka.apache.org/documentation/#connect) 會提供這類架構，以便在任何外部系統 (例如，MySQL、HDFS 以及透過 Kafka 叢集的檔案系統) 往返連線和匯入/匯出資料。 本教學課程會逐步引導您搭配使用 Kafka Connect 架構與已啟用 Kafka 的事件中樞。
@@ -34,7 +34,7 @@ ms.locfileid: "72555123"
 > * 執行 Kafka Connect
 > * 建立連接器
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 若要完成本逐步解說，請確定您具有下列必要條件：
 
 - Azure 訂用帳戶。 如果您沒有訂用帳戶，請[建立免費帳戶](https://azure.microsoft.com/free/)。
@@ -107,7 +107,9 @@ plugin.path={KAFKA.DIRECTORY}/libs # path to the libs directory within the Kafka
 4. 執行 `./bin/connect-distributed.sh /PATH/TO/connect-distributed.properties`。  當您看到 `'INFO Finished starting connectors and tasks'` 時，Connect 背景工作角色 REST API 便可供互動。 
 
 > [!NOTE]
-> 事件中樞支援讓 Kafka 用戶端自動建立主題。 在 Azure 入口網站中快速檢查命名空間，會顯露出 Connect 背景工作角色的內部主題已自動建立。
+> Kafka Connect 會使用 Kafka AdminClient API，以使用建議的設定 (包括壓縮) 自動建立主題。 在 Azure 入口網站中快速檢查命名空間，會顯露出 Connect 背景工作角色的內部主題已自動建立。
+>
+>Kafka Connect 內部主題**必須使用壓縮**。  若未正確設定 [內部連線] 主題，事件中樞小組將不會負責修正不當的設定。
 
 ### <a name="create-connectors"></a>建立連接器
 本節會逐步引導您啟動 FileStreamSource 和 FileStreamSink 連接器。 
@@ -152,7 +154,7 @@ plugin.path={KAFKA.DIRECTORY}/libs # path to the libs directory within the Kafka
     diff ~/connect-quickstart/input.txt ~/connect-quickstart/output.txt
     ```
 
-### <a name="cleanup"></a>清除
+### <a name="cleanup"></a>清理
 Kafka Connect 會建立事件中樞主題，以儲存即使在 Connect 叢集關閉後仍會保存下來的設定、位移及狀態。 除非需要此持續性，否則建議您刪除這些主題。 您也可以刪除在本逐步解說進行過程中所建立的 `connect-quickstart` 事件中樞。
 
 ## <a name="next-steps"></a>後續步驟

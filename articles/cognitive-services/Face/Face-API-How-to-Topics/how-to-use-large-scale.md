@@ -1,5 +1,5 @@
 ---
-title: 範例：使用大規模功能 - 臉部 API
+title: 範例：使用大規模功能 - 臉部
 titleSuffix: Azure Cognitive Services
 description: 本指南文章說明如何將規模從現有的 PersonGroup 和 FaceList 物件相應增加為 LargePersonGroup 和 LargeFaceList 物件。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 05/01/2019
 ms.author: sbowles
-ms.openlocfilehash: 976baaef11251715218ecea71986f08ec5f72996
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: dc0964e40e9214e414d865c06006f1d36e97eeb2
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73743723"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169774"
 ---
 # <a name="example-use-the-large-scale-feature"></a>範例：使用大型功能
 
@@ -23,14 +23,14 @@ ms.locfileid: "73743723"
 
 LargePersonGroup 和 LargeFaceList 統稱為大規模作業。 LargePersonGroup 最多可包含 100 萬個人，每人最多可有 248 張臉。 LargeFaceList 最多可包含 100 萬張臉。 大規模作業與傳統的 PersonGroup 和 FaceList 類似，但由於採用新架構，因此有一些差異。 
 
-這些範例是使用 Azure 認知服務的臉部 API 用戶端程式庫，以 C# 撰寫的。
+這些範例是使用 Azure 認知服務的臉部用戶端程式庫以 C# 撰寫的。
 
 > [!NOTE]
 > 若要大規模針對 Identification 和 FindSimilar 啟用臉部搜尋效能，請導入定型作業來對 LargeFaceList 和 LargePersonGroup 進行前處理。 根據實際容量而定，定型時間從數秒到大約半小時不等。 如果先前已成功進行定型作業，則在定型期間，可能會執行 Identification 和 FindSimilar。 缺點則是在完成新的大規模定型後移轉之前，新增的人員和臉部不會出現在結果中。
 
-## <a name="step-1-initialize-the-client-object"></a>步驟 1：初始化用戶端物件
+## <a name="step-1-initialize-the-client-object"></a>步驟 1:初始化用戶端物件
 
-當您使用臉部 API 用戶端程式庫時，會透過 FaceClient 類別的建構函式，傳入訂用帳戶金鑰和訂用帳戶端點。 例如︰
+在使用臉部用戶端程式庫時，會透過 FaceClient 類別的建構函式，傳入訂用帳戶金鑰和訂用帳戶端點。 例如：
 
 ```csharp
 string SubscriptionKey = "<Subscription Key>";
@@ -45,7 +45,7 @@ faceClient.Endpoint = SubscriptionEndpoint
 若要取得訂用帳戶金鑰及其對應端點，請從 Azure 入口網站移至 Azure Marketplace。
 如需詳細資訊，請參閱[訂用帳戶](https://azure.microsoft.com/services/cognitive-services/directory/vision/)。
 
-## <a name="step-2-code-migration"></a>步驟 2：程式碼移轉
+## <a name="step-2-code-migration"></a>步驟 2:程式碼移轉
 
 本節著重於如何將 PersonGroup 或 FaceList 實作移轉至 LargePersonGroup 或 LargeFaceList。 雖然 LargePersonGroup 或 LargeFaceList 與 PersonGroup 或 FaceList 在設計及內部實作上不同，但 API 介面類似，均支援回溯相容性。
 
@@ -65,8 +65,8 @@ faceClient.Endpoint = SubscriptionEndpoint
 |:---:|:---:|
 | 建立 | 建立 |
 | 刪除 | 刪除 |
-| 取得 | 取得 |
-| 列出 | 列出 |
+| Get | Get |
+| 清單 | 清單 |
 | 更新 | 更新 |
 | - | 定型 |
 | - | 取得定型訓練 |
@@ -261,7 +261,7 @@ private static void TrainTimerOnElapsed(string largePersonGroupId, int timeInter
 
 如需資料管理和識別相關實作的詳細資訊，請參閱[新增臉部](how-to-add-faces.md)和[識別影像中的臉部](HowtoIdentifyFacesinImage.md)。
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
 在本指南中，您已了解如何將現有的 PersonGroup 或 FaceList 程式碼 (非資料) 移轉至 LargePersonGroup 或 LargeFaceList：
 

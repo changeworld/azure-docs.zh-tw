@@ -378,6 +378,8 @@
   items:
     - name: Azure CLI
       href: /cli/azure/iot
+    - name: Azure PowerShell
+      href: '/powershell/module/az.iothub#iot'
     - name: .NET (服務)
       href: /dotnet/api/microsoft.azure.devices
     - name: .NET (裝置)
@@ -432,7 +434,7 @@
           href: /azure/azure-maps
         - name: 時間序列深入解析
           href: /azure/time-series-insights
-    - name: IoT Edge
+    - name: Edge 解決方案
       items:
         - name: Azure IoT Edge
           href: /azure/iot-edge
@@ -440,6 +442,8 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: 資源
   items:
+    - name: 支援和協助選項
+      href: /azure/iot-fundamentals/iot-support-help
     - name: '適用於 C# 的 Azure IoT 範例 (.NET)'
       href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
     - name: 適用於 Node.js 的 Azure IoT 範例

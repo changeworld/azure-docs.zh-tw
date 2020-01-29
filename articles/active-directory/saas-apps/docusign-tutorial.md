@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/02/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f02492dd7c9563c8c0002a63f0b105bd0be8b14
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 3022303f319ba7955f80ae0b52783fa9b5d411f2
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71345579"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290065"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 DocuSign 整合
 
@@ -33,7 +32,7 @@ ms.locfileid: "71345579"
 
 若要深入了解軟體即服務 (SaaS) 應用程式與 Azure AD 的整合，請參閱 [Azure AD 中的應用程式單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -49,6 +48,7 @@ ms.locfileid: "71345579"
 * DocuSign 支援 *just-in-time* 使用者佈建。
 
 * DocuSign 支援[自動使用者佈建](https://docs.microsoft.com/azure/active-directory/saas-apps/docusign-provisioning-tutorial)。
+* 設定 DocuSign 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-docusign-from-the-gallery"></a>從資源庫新增 DocuSign
 
@@ -72,7 +72,7 @@ ms.locfileid: "71345579"
     1. [建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)，以使用 B.Simon 測試 Azure AD 單一登入。
     1. [指派 Azure AD 測試使用者](#assign-the-azure-ad-test-user)，讓 B.Simon 能夠使用 Azure AD 單一登入。
 1. [設定 DocuSign SSO](#configure-docusign-sso)，以在應用程式端設定單一登入設定。
-1. [建立 DocuSign 測試使用者](#create-docusign-test-user)，以在 DocuSign 中產生 B.Simon 的對應項目，且該項目與 Azure AD 中代表使用者的項目連結。
+    1. [建立 DocuSign 測試使用者](#create-docusign-test-user)，以在 DocuSign 中產生 B.Simon 的對應項目，且該項目與 Azure AD 中代表使用者的項目連結。
 1. [測試 SSO](#test-sso)，以驗證組態是否能運作。
 
 ## <a name="configure-azure-ad-sso"></a>設定 Azure AD SSO
@@ -80,7 +80,7 @@ ms.locfileid: "71345579"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO：
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [DocuSign]  應用程式整合頁面上，尋找 [管理]  區段，然後選取 [單一登入]  。
-1. 在 [選取單一登入方法]  頁面上，選取 [SAML]  。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入]  頁面上，選取 [基本 SAML 組態]  的畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -236,6 +236,10 @@ ms.locfileid: "71345579"
 - [什麼是 Azure AD 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [嘗試搭配 Azure AD 使用 DocuSign](https://aad.portal.azure.com/)
+
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [如何使用進階可見性和控制項保護 DocuSign](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 <!--Image references-->
 

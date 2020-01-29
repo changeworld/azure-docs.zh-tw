@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Migrate 伺服器移轉將內部部署 Hyp
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.custom: MVC
-ms.openlocfilehash: b9c0de866a61ee2646d987c4fb98cb24a218417b
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: a321c3e731a6649f0831f7d515f1c464b311c9ac
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028981"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545903"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>將 Hyper-V VM 遷移至 Azure 
 
@@ -181,7 +181,7 @@ Azure Migrate 伺服器移轉會執行輕量型 Hyper-V VM 設備。
 - **服務匯流排**：Azure Migrate：伺服器移轉會使用服務匯流排將複寫協調訊息傳送至設備。
 - **閘道儲存體帳戶**：Azure Migrate：伺服器移轉會使用閘道儲存體帳戶來儲存所複寫 VM 的相關狀態資訊。
 - **記錄儲存體帳戶**︰Azure Migrate 設備會將 VM 的複寫記錄上傳至記錄儲存體帳戶。 Azure Migrate 會將複寫資訊套用到複本受控磁碟。
-- **金鑰保存庫**：Azure Migrate 設備會使用金鑰保存庫來管理服務匯流排的連接字串，以及複寫中所用儲存體帳戶的存取金鑰。 當您準備好時，您應該設定金鑰保存庫存取儲存體帳戶所需的權限。 已準備好用於 Hyper-V VM 評量和移轉的 [Azure](tutorial-prepare-hyper-v.md#prepare-azure)。 
+- **金鑰保存庫**：Azure Migrate 設備會使用金鑰保存庫來管理服務匯流排的連接字串，以及複寫中所用儲存體帳戶的存取金鑰。 當您針對 Hyper-V VM 評量和移轉[備妥 Azure](tutorial-prepare-hyper-v.md#prepare-azure) 時，您應該設定金鑰保存庫存取儲存體帳戶所需的權限。 
 
 
 ## <a name="track-and-monitor"></a>追蹤和監視

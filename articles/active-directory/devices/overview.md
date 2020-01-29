@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73104cc1bcd9266cbb9e5b1985dac4a4566f0a74
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d593e5f27dbcd676e2b42975251778a6c48a7d79
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423110"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511870"
 ---
 # <a name="what-is-a-device-identity"></a>什麼是裝置身分識別？
 
@@ -54,7 +54,7 @@ ms.locfileid: "75423110"
 
 ## <a name="device-management"></a>裝置管理
 
-Azure AD 中的裝置可使用 Microsoft Intune、System Center Configuration Manager、群組原則 (混合式 Azure AD Join)、行動應用程式管理 (MAM) 工具等行動裝置管理 (MDM) 工具來管理，或以其他第三方工具管理。
+Azure AD 中的裝置可使用 Microsoft Intune、Microsoft Endpoint Configuration Manager、群組原則 (混合式 Azure AD Join)、行動應用程式管理 (MAM) 工具等行動裝置管理 (MDM) 工具來管理，或以其他第三方工具管理。
 
 ## <a name="resource-access"></a>資源存取
 

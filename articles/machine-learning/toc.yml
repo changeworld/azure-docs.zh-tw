@@ -342,6 +342,9 @@
           href: how-to-schedule-pipelines.md
         - name: 管線偵錯與疑難排解
           href: how-to-debug-pipelines.md
+        - name: 對 Application Insights 中的管線進行偵錯
+          displayname: 'pipelines, log, monitor'
+          href: how-to-debug-pipelines-application-insights.md
         - name: 適用於 CI/CD 的 Azure Pipelines
           displayName: 'continuous, integration, delivery'
           href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/service/context/ml-context

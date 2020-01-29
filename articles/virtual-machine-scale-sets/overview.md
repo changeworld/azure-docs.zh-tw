@@ -1,27 +1,19 @@
 ---
-title: Azure 虛擬機器擴展集概觀 | Microsoft Docs
+title: Azure 虛擬機器擴展集概觀
 description: 了解 Azure 虛擬機器擴展集以及如何自動調整應用程式
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: mayanknayar
-manager: drewm
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/26/2019
 ms.author: manayar
-ms.openlocfilehash: 73580814dcfe8f967684aca4ce433a40e7bbedc0
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: e6201f9ac2e9b813de5a4622fc7996eb1202a164
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679395"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273698"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>什麼是虛擬機器擴展集？
 Azure 虛擬機器擴展集可讓您建立和管理一組負載平衡的相同 VM。 VM 執行個體的數目可以自動增加或減少，以因應需求或已定義的排程。 擴展集可為您的應用程式提供高可用性，並且可讓您集中管理、設定和更新大量的 VM。 透過虛擬機器擴展集，您將可針對計算、巨量資料和容器工作負載等領域建立大規模的服務。
@@ -53,7 +45,7 @@ Azure 虛擬機器擴展集可提供對跨 VM 執行的應用程式進行管理�
 ## <a name="differences-between-virtual-machines-and-scale-sets"></a>虛擬機器與擴展集的差異
 擴展集是從虛擬機器建立的。 透過擴展集將可提供管理和自動化層，以執行及調整您的應用程式。 您可以改以手動方式建立和管理個別的 VM，或整合現有的工具以建立類似的自動化層級。 下表列出擴展集相較於手動管理多個 VM 執行個體所具備的優點。
 
-| 案例                           | 手動 VM 群組                                                                    | 虛擬機器擴展集 |
+| 狀況                           | 手動 VM 群組                                                                    | 虛擬機器擴展集 |
 |------------------------------------|----------------------------------------------------------------------------------------|---------------------------|
 | 新增其他 VM 執行個體        | 以手動程序建立、設定及確保合規性                             | 從集中的組態自動建立 |
 | 流量平衡和分配 | 以手動程序建立及設定 Azure 負載平衡器或應用程式閘道      | 自動建立及整合 Azure 負載平衡器或應用程式閘道 |

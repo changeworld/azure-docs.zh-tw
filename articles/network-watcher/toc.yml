@@ -41,7 +41,7 @@
       href: network-watcher-security-group-view-overview.md
     - name: 角色型存取控制權限
       href: required-rbac-permissions.md
-- name: 使用說明指南
+- name: 操作指南
   items:
     - name: 設定網路監看員
       href: network-watcher-create.md
@@ -101,6 +101,8 @@
               href: network-watcher-nsg-flow-logging-cli.md
             - name: REST
               href: network-watcher-nsg-flow-logging-rest.md
+            - name: Azure Resource Manager
+              href: network-watcher-nsg-flow-logging-azure-resource-manager.md
         - name: 刪除 NSG 流量記錄儲存體 Blob
           href: network-watcher-delete-nsg-flow-log-blobs.md
         - name: 分析 NSG 流量記錄
@@ -178,7 +180,7 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: MSDN 論壇
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=WAVirtualMachinesVirtualNetwork'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/network-watcher/'
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=network-watcher'

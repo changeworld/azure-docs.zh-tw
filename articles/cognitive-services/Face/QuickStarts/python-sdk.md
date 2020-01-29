@@ -9,16 +9,16 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: badfec71ad44fd9eebc748f716301ad6731883cf
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 7ac1b85ee44627990931cfc7b3a65f6f7a661b3f
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770351"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165823"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>快速入門：適用於 Python 的臉部用戶端程式庫
 
-開始使用適用於 Python 的臉部用戶端程式庫。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。 臉部 API 服務可讓您存取先進的演算法，以偵測和辨識影像中的人臉。
+開始使用適用於 Python 的臉部用戶端程式庫。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。 臉部服務可讓您存取先進的演算法，以偵測和辨識影像中的人臉。
 
 使用適用於 Python 的臉部用戶端程式庫來：
 
@@ -290,5 +290,5 @@ python quickstart-file.py
 > [!div class="nextstepaction"]
 > [臉部 API 參考 (Python)](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python)
 
-* [什麼是臉部 API？](../overview.md)
+* [什麼是臉部辨識服務？](../overview.md)
 * 此範例的原始程式碼可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/Face/FaceQuickstart.py) 上找到。

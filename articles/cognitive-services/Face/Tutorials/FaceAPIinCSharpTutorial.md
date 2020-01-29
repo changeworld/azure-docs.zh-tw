@@ -1,7 +1,7 @@
 ---
 title: 教學課程：使用 .NET SDK 來偵測和顯示影像中的臉部資料
 titleSuffix: Azure Cognitive Services
-description: 在本教學課程中，您會建立 Windows 應用程式，以使用 臉部 API 來偵測並框出影像中的人臉。
+description: 在本教學課程中，您會建立 Windows 應用程式，以使用臉部辨識服務來偵測並框出影像中的臉部。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,22 +10,22 @@ ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: a444294497b82f316e7407999f5203cd13878928
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ab0ed56b953cf2c0d96fd2d91d9a3b09fddace72
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977959"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165925"
 ---
 # <a name="tutorial-create-a-windows-presentation-framework-wpf-app-to-display-face-data-in-an-image"></a>教學課程：建立 Windows Presentation Framework (WPF) 應用程式來顯示影像中的臉部資料
 
-在本教學課程中，您將了解如何使用 Azure 臉部 API，透過 .NET 用戶端 SDK 來偵測影像中的人臉，然後在 UI 中呈現該資料。 您會建立 WPF 應用程式，以偵測人臉、在每張臉孔的周圍繪出邊框，然後在狀態列中顯示該張臉孔的描述。 
+在本教學課程中，您將了解如何使用 Azure 臉部辨識服務，透過 .NET 用戶端 SDK 來偵測影像中的人臉，然後在 UI 中呈現該資料。 您會建立 WPF 應用程式，以偵測人臉、在每張臉孔的周圍繪出邊框，然後在狀態列中顯示該張臉孔的描述。 
 
 本教學課程說明如何：
 
 > [!div class="checklist"]
 > - 建立 WPF 應用程式
-> - 安裝臉部 API 用戶端程式庫
+> - 安裝臉部用戶端程式庫
 > - 使用用戶端程式庫來偵測影像中的臉部
 > - 在所偵測到的每個臉部周圍繪出邊框
 > - 在狀態列上顯示所醒目提示臉部的描述
@@ -37,9 +37,9 @@ GitHub 上的[認知臉部 CSharp 範例](https://github.com/Azure-Samples/Cogni
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。 
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-- 臉部 API 訂用帳戶金鑰。 您可以從[試用認知服務](https://azure.microsoft.com/try/cognitive-services/?api=face-api)取得免費的試用訂用帳戶金鑰。 或是，依照[建立認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的指示訂閱臉部 API 服務並取得金鑰。 然後，分別為名為 `FACE_SUBSCRIPTION_KEY` 和 `FACE_ENDPOINT` 的金鑰和服務端點字串[建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。
+- 臉部訂用帳戶金鑰。 您可以從[試用認知服務](https://azure.microsoft.com/try/cognitive-services/?api=face-api)取得免費的試用訂用帳戶金鑰。 或是，依照[建立認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的指示訂閱臉部辨識服務並取得金鑰。 然後，分別為名為 `FACE_SUBSCRIPTION_KEY` 和 `FACE_ENDPOINT` 的金鑰和服務端點字串[建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。
 - 任何 [Visual Studio 2015 或 2017](https://www.visualstudio.com/downloads/) 版本。
 
 ## <a name="create-the-visual-studio-project"></a>建立 Visual Studio 專案
@@ -61,7 +61,7 @@ GitHub 上的[認知臉部 CSharp 範例](https://github.com/Azure-Samples/Cogni
 
 [!code-xaml[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml?name=snippet_xaml)]
 
-### <a name="create-the-main-class"></a>建立主要類別
+### <a name="create-the-main-class"></a>建立主類別
 
 開啟 MainWindow.xaml.cs  ，然後新增用戶端程式庫命名空間，以及其他必要的命名空間。 
 

@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 12/17/2019
+ms.date: 01/21/2020
 ms.author: helohr
-ms.openlocfilehash: dd5167af5f45ebae0529e16f224065627085e9b0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 318997e2ebd7a423d7793a75575617d06ab842ac
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75348814"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514267"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>什麼是 Windows 虛擬桌面？ 
 
@@ -86,17 +86,27 @@ Windows 虛擬桌面是可以在雲端執行的桌面與應用程式虛擬化服
 >[!NOTE]
 >如果需要 Azure 訂用帳戶，您可以[註冊一個月的免費試用](https://azure.microsoft.com/free/)。 如果您使用 Azure 免費試用版，您應該使用 Azure AD Domain Services 讓您的 Windows Server Active Directory 與 Azure Active Directory 保持同步。
 
-您為 Windows 虛擬桌面建立的 Azure 虛擬機器必須具有下列 URL 的輸出 TCP 443 存取權：
+您為 Windows 虛擬桌面建立的 Azure 虛擬機器必須具有下列 URL 的存取權：
 
-* *.wvd.microsoft.com
-* *.blob.core.windows.net
-* *.core.windows.net
-* *.servicebus.windows.net
-* prod.warmpath.msftcloudes.com
-* catalogartifact.azureedge.net
+|位址|輸出連接埠|目的|
+|---|---|---|
+|*.wvd.microsoft.com|TCP 通訊埠 443|服務流量|
+|*.blob.core.windows.net|TCP 通訊埠 443|代理程式、SXS 堆疊更新和代理程式流量|
+|*.core.windows.net|TCP 通訊埠 443|代理程式流量|
+|*.servicebus.windows.net|TCP 通訊埠 443|代理程式流量|
+|prod.warmpath.msftcloudes.com|TCP 通訊埠 443|代理程式流量|
+|catalogartifact.azureedge.net|TCP 通訊埠 443|Azure Marketplace|
+|kms.core.windows.net|TCP 連接埠 1688|Windows 10 啟用|
+
+>[!IMPORTANT]
+>對於可靠的 Windows 虛擬桌面部署而言，開啟這些 URL 是不可或缺的。 不支援封鎖這些 URL 的存取，而且會影響服務功能。 這些 URL 僅對應於 Windows 虛擬桌面的網站和資源，並不包含其他服務 (例如 Azure AD) 的 URL。
 
 >[!NOTE]
->對於可靠的 Windows 虛擬桌面部署而言，開啟這些 URL 是不可或缺的。 不支援封鎖這些 URL 的存取，而且會影響服務功能。 這些 URL 僅對應於 Windows 虛擬桌面的網站和資源，並不包含其他服務 (例如 Azure AD) 的 URL。
+>對於涉及服務流量的 URL，必須使用萬用字元 (*)。 如果您不想使用 * 來表示代理程式相關流量，下列方法可讓您不使用萬用字元來尋找 URL：
+>
+>1. 向 Windows 虛擬桌面主機集區註冊您的虛擬機器。
+>2. 開啟 [事件檢視器]  並瀏覽至 [Windows]   > [應用程式記錄檔]  ，然後尋找事件識別碼 3702。
+>3. 將您在事件識別碼 3702 下找到的 URL 列入白名單中。 事件識別碼 3702 下的 URL 會隨區域而不同。 您必須針對要在其中部署虛擬機器的每個區域，重複執行相關 URL 的白名單程序。
 
 Windows 虛擬桌面包含您交付給使用者的 Windows 桌面與應用程式，以及由 Microsoft 在 Azure 上裝載為服務的管理解決方案。 桌面和應用程式都可以部署在任何 Azure 區域的虛擬機器 (VM) 中，而這些 VM 的管理解決方案和資料都會位於美國。 這可能會導致資料轉送到美國。
 

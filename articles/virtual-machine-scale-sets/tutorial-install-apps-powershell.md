@@ -1,27 +1,19 @@
 ---
-title: 教學課程 - 使用 Azure PowerShell 在擴展集中安裝應用程式 | Microsoft Docs
+title: 教學課程 - 使用 Azure PowerShell 在擴展集中安裝應用程式
 description: 了解如何搭配使用 Azure PowerShell 與自訂指令碼擴充功能，將應用程式安裝到虛擬機器擴展集
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/08/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6877ba6240806f3213cadc66fdc74d89b2e9ba31
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 5e1b21b1d00defdb090a35c067fa533a482c828d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877979"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271506"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-azure-powershell"></a>教學課程：使用 Azure PowerShell 在虛擬機器擴展集中安裝應用程式
 
@@ -32,7 +24,7 @@ ms.locfileid: "69877979"
 > * 使用 Azure 自訂指令碼擴充功能
 > * 更新在擴展集上執行的應用程式
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 

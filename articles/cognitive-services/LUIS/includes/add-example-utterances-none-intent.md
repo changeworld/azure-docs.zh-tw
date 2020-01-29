@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 11/20/2019
 ms.author: diberry
-ms.openlocfilehash: e4147fbb27c8538f801f6c49f8b535a283faf50f
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: c81aaa02af0895e6c3a851fe15273d85de9b55bc
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325938"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262738"
 ---
 用戶端應用程式必須知道語句是否對應用程式沒有意義或不適當。 **None** 意圖會在建立過程中新增至每個應用程式，以判斷用戶端應用程式是否不應回答語句。
 
@@ -30,7 +30,6 @@ ms.locfileid: "74325938"
     |`None` 範例語句|
     |--|
     |`Barking dogs are annoying`|
-    |`Order a pizza for me`|
     |`Penguins in the ocean`|
 
-    這些範例不應使用您在主題領域中預期的文字，例如 `pizza`、`cheese`、`crust`、`pickup` `deliver`。
+    這些範例不應使用您在主題領域中預期的文字，例如 `pizza`、`cheese`、`crust`、`pickup`、`deliver`。

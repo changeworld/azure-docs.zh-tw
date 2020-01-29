@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 媒體服務來編碼以 URL 為基礎的遠端檔案及串流處理 - REST | Microsoft Docs
+title: 使用 Azure 媒體服務 v3 進行遠端檔案的編碼和串流
 description: 遵循此教學課程的步驟，透過使用 REST 的 Azure 媒體服務來編碼以 URL 為基礎的檔案及串流處理內容。
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 11/05/2019
 ms.author: juliako
-ms.openlocfilehash: 128513c3af5ce6c0853b63d86959e4c3c35de93c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d4175f2508edab1cf54e415652e9e9cb37b879b1
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685121"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514335"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>教學課程：編碼以 URL 為基礎的遠端檔案及串流處理影片 - REST
 
@@ -40,7 +40,7 @@ Azure 媒體服務可讓您將媒體檔案編碼成可在各種不同的瀏覽�
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - [建立媒體服務帳戶](create-account-cli-how-to.md)。
 
@@ -211,7 +211,7 @@ Azure 媒體服務可讓您將媒體檔案編碼成可在各種不同的瀏覽�
         }
         ```
 
-### <a name="create-a-job"></a>建立工作
+### <a name="create-a-job"></a>建立作業
 
 [作業](https://docs.microsoft.com/rest/api/media/jobs)是要媒體服務將已建立的**轉換**套用至指定輸入視訊或音訊內容的實際要求。 **作業**會指定輸入影片的位置、輸出的位置等資訊。
 
@@ -254,7 +254,7 @@ Azure 媒體服務可讓您將媒體檔案編碼成可在各種不同的瀏覽�
 
 #### <a name="job-error-codes"></a>作業錯誤碼
 
-請參閱[錯誤碼](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)。
+請參閱[錯誤碼](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode) \(英文\)。
 
 ### <a name="create-a-streaming-locator"></a>建立串流定位器
 

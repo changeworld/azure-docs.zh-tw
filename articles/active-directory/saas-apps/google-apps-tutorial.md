@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/23/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66d8e13a4e042146ef2b99728e41e14f1dcb3435
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: a8a1736092578634680da5d56b5ec02f70cdde38
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73885364"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289844"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-g-suite"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 G Suite 整合
 
@@ -33,7 +32,7 @@ ms.locfileid: "73885364"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -53,27 +52,27 @@ ms.locfileid: "73885364"
 
 1. **問：這項整合支援 Google Cloud Platform 單一登入與 Azure AD 的整合嗎？**
 
-    答：是。 Google Cloud Platform 和 Google Apps 共用相同的驗證平台。 因此，為了進行 GCP 整合，您需要設定 Google Apps 單一登入。
+    A：是。 Google Cloud Platform 和 Google Apps 共用相同的驗證平台。 因此，為了進行 GCP 整合，您需要設定 Google Apps 單一登入。
 
 2. **問：Chromebook 及其他 Chrome 裝置是否與 Azure AD 單一登入相容？**
   
-    答：是，使用者能夠使用其 Azure AD 認證來登入其 Chromebook 裝置。 若要了解為何使用者可能收到兩次提供認證的提示，請參閱此 [G Suite 支援文章](https://support.google.com/chrome/a/answer/6060880) 。
+    A：是，使用者能夠使用其 Azure AD 認證來登入其 Chromebook 裝置。 若要了解為何使用者可能收到兩次提供認證的提示，請參閱此 [G Suite 支援文章](https://support.google.com/chrome/a/answer/6060880) 。
 
 3. **問：如果我啟用單一登入，使用者是否將能夠使用其 Azure AD 認證來登入任何 Google 產品 (例如 Google Classroom、GMail、Google 雲端硬碟、YouTube 等)？**
 
-    答：是，視您選擇為組織啟用或停用的 [G Suite](https://support.google.com/a/answer/182442?hl=en&ref_topic=1227583) 而定。
+    A：是，視您選擇為組織啟用或停用的 [G Suite](https://support.google.com/a/answer/182442?hl=en&ref_topic=1227583) 而定。
 
 4. **問：我是否可以只為一部分 G Suite 使用者啟用單一登入？**
 
-    答：否，開啟單一登入會立即要求您的所有 G Suite 使用者使用其 Azure AD 認證進行驗證。 由於 G Suite 不支援使用多個識別提供者，因此 G Suite 環境的識別提供者可以是 Azure AD 或 Google 其中之一，但不可同時是兩者。
+    A：否，開啟單一登入會立即要求您的所有 G Suite 使用者使用其 Azure AD 認證進行驗證。 由於 G Suite 不支援使用多個識別提供者，因此 G Suite 環境的識別提供者可以是 Azure AD 或 Google 其中之一，但不可同時是兩者。
 
 5. **問：如果使用者透過 Windows 登入，他們是否會自動向 G Suite 進行驗證，而不會收到輸入密碼的提示？**
 
-    答：有兩個選項可允許這樣的情況。 第一個是，使用者可以透過 [Azure Active Directory Join](../device-management-introduction.md)登入 Windows 10 裝置。 另一個是，使用者可以登入已加入某個內部部署 Active Directory 網域的 Windows 裝置，其中此內部部署 Active Directory 已透過 [Active Directory 同盟服務 (AD FS)](../hybrid/plan-connect-user-signin.md) 部署而能夠單一登入到 Azure AD。 這兩個選項都需要您執行下列教學課程的步驟，才能在 Azure AD 與 G Suite 之間啟用單一登入。
+    A：有兩個選項可允許這樣的情況。 第一個是，使用者可以透過 [Azure Active Directory Join](../device-management-introduction.md)登入 Windows 10 裝置。 另一個是，使用者可以登入已加入某個內部部署 Active Directory 網域的 Windows 裝置，其中此內部部署 Active Directory 已透過 [Active Directory 同盟服務 (AD FS)](../hybrid/plan-connect-user-signin.md) 部署而能夠單一登入到 Azure AD。 這兩個選項都需要您執行下列教學課程的步驟，才能在 Azure AD 與 G Suite 之間啟用單一登入。
 
 6. **問：當我收到「無效的電子郵件」錯誤訊息時該怎麼辦？**
 
-    答：此設定需要電子郵件屬性，使用者才能夠登入。 目前無法手動設定此屬性。
+    A：此設定需要電子郵件屬性，使用者才能夠登入。 目前無法手動設定此屬性。
 
     系統針對任何具備有效 Exchange 授權的使用者，自動填入電子郵件屬性。 如果使用者並未啟用電子郵件功能，則會收到此錯誤，因為應用程式需要取得此屬性才能授與存取權。
 
@@ -88,6 +87,7 @@ ms.locfileid: "73885364"
 * G Suite 支援 **SP** 起始的 SSO
 
 * G Suite 支援[**自動**使用者佈建](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial) \(部分機器翻譯\)
+* 設定 G Suite 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-g-suite-from-the-gallery"></a>從資源庫新增 G Suite
 
@@ -154,31 +154,8 @@ ms.locfileid: "73885364"
 
 1. G Suite 應用程式需要特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應新增至 SAML 權杖屬性設定。 以下螢幕擷取畫面顯示上述的範例。 [唯一的使用者識別碼]  的預設值是 **user.userprincipalname**，但是 G Suite 會預期這是與使用者電子郵件地址對應的值。 對此您可以使用清單中的 **user.mail** 屬性，或者根據組織組態使用適當的屬性值。
 
-    ![image](common/edit-attribute.png)
+    ![image](common/default-attributes.png)
 
-1. 在 [使用者屬性]  對話方塊的 [使用者宣告]  區段中，使用 [編輯]  圖示來編輯宣告或使用 [新增宣告]  來新增宣告，如上圖所示設定 SAML 權杖屬性，然後執行下列步驟：
-
-    | 名稱 | 來源屬性 |
-    | ---------------| --------------- |
-    | 唯一的使用者識別碼 | User.mail |
-
-    a. 按一下 [新增宣告]  以開啟 [管理使用者宣告]  對話方塊。
-
-    ![映像](common/new-save-attribute.png)
-
-    ![映像](common/new-attribute-details.png)
-
-    b. 在 [名稱]  文字方塊中，輸入該資料列所顯示的屬性名稱。
-
-    c. 讓 [命名空間]  保持空白。
-
-    d. 選取 [來源] 作為 [屬性]  。
-
-    e. 在 [來源屬性]  清單中，輸入該資料列所顯示的屬性值。
-
-    f. 按一下 [確定]  。
-
-    g. 按一下 [檔案]  。
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (Base64)]  並選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
@@ -222,7 +199,7 @@ ms.locfileid: "73885364"
 
 1. 在瀏覽器中開啟新索引標籤，然後使用系統管理員帳戶登入 [G Suite 管理控制台](https://admin.google.com/)。
 
-2. 按一下 [安全性]  。 如果您沒有看到連結，它可能隱藏在畫面底部的 [其他控制項]  功能表之下。
+2. 按一下 **[安全性]** 。 如果您沒有看到連結，它可能隱藏在畫面底部的 [其他控制項]  功能表之下。
 
     ![按一下 [安全性]。][10]
 
@@ -246,7 +223,7 @@ ms.locfileid: "73885364"
 
     f. 根據 Azure AD 中上述 [基本 SAML 設定]  區段中提及的每個注意事項，勾選/取消勾選 [使用網域特定簽發者]  選項。
 
-    g. 按一下 [儲存變更]  。
+    g. 按一下 **[儲存變更]** 。
 
 ### <a name="create-g-suite-test-user"></a>建立 G Suite 測試使用者
 
@@ -275,7 +252,9 @@ G Suite 也支援自動使用者佈建。 若要設定自動使用者佈建，�
 - [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 - [設定使用者佈建](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)
 - [嘗試搭配 Azure AD 使用 G Suite](https://aad.portal.azure.com/)
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/protect-gsuite)
 
+- [如何使用進階可見性和控制項保護 G Suite](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 <!--Image references-->
 
 [10]: ./media/google-apps-tutorial/gapps-security.png

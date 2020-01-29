@@ -105,9 +105,13 @@
           href: /azure/azure-maps
         - name: 時間序列深入解析
           href: /azure/time-series-insights
-    - name: IoT Edge
+    - name: Edge 解決方案
       items:
         - name: Azure IoT Edge
           href: /azure/iot-edge
         - name: IoT 裝置 SDK
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+- name: 資源
+  items:
+    - name: 支援和協助選項
+      href: /azure/iot-fundamentals/iot-support-help

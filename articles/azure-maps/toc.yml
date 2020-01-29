@@ -233,6 +233,8 @@
       href: /azure/templates/microsoft.maps/accounts
 - name: 資源
   items:
+    - name: 支援和協助選項
+      href: /azure/iot-fundamentals/iot-support-help
     - name: Azure 地圖服務使用規定
       href: 'https://azure.microsoft.com/support/legal/'
     - name: Azure 地圖服務定價
@@ -268,7 +270,7 @@
         - name: IoT 解決方案加速器
           href: /azure/iot-suite
         - name: IoT 中心
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+          href: /azure/iot-central/iot-support-help
     - name: 平台服務
       items:
         - name: IoT 中樞
@@ -283,7 +285,7 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
         - name: 時間序列深入解析
           href: /azure/time-series-insights
-    - name: IoT Edge
+    - name: Edge 解決方案
       items:
         - name: IoT Edge
           href: /azure/iot-edge

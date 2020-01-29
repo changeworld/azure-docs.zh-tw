@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/03/2020
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 841c2b7067427b703d2aa7647e0c0c3ef2287c6e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 74b56e30eb8851913f91cbee377204a575311375
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75773582"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293669"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ssogen---azure-ad-sso-gateway-for-oracle-e-business-suite---ebs-peoplesoft-and-jde"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 SSOGEN - Azure AD SSO Gateway for Oracle E-Business Suite - EBS, PeopleSoft, and JDE 整合
 
@@ -43,7 +43,8 @@ ms.locfileid: "75773582"
 
 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
 
-* SSOGEN - Azure AD SSO Gateway for Oracle E-Business Suite - EBS, PeopleSoft, and JDE 支援由 **SP 和 IDP** 起始的 SSO
+* SSOGEN - Azure AD SSO Gateway for Oracle E-Business Suite - EBS, PeopleSoft, and JDE 支援由 **SP 和 IDP** 起始的 SSO。
+* 設定 SSOGEN -適用於 Oracle E-Business Suite 的 Azure AD SSO 閘道 - EBS、PeopleSoft 和 JDE 後，您可以強制執行工作階段控制項，以即時防護貴組織敏感性資料的外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 > [!NOTE]
 > 此應用程式的識別碼是固定的字串值，因此一個租用戶中只能設定一個執行個體。
@@ -161,3 +162,7 @@ Azure AD 會在驗證成功後，將唯一使用者識別碼 (名稱識別碼) �
 - [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [嘗試搭配 Azure AD 使用 SSOGEN - Azure AD SSO Gateway for Oracle E-Business Suite - EBS, PeopleSoft, and JDE](https://aad.portal.azure.com/)
+
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [如何利用進階可見性和控制項防護 SSOGEN - 適用於 Oracle E-Business Suite 的 Azure AD SSO 閘道 - EBS、PeopleSoft 和 JDE](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

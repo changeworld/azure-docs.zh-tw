@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d54580d395b17d80742ed95aefa479f4bc104484
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: e6ea52474f3b352fabf19050f20012438e9d0c19
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960092"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120532"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-confluence-saml-sso-by-microsoft"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Confluence SAML SSO by Microsoft 整合
 
@@ -33,11 +33,11 @@ ms.locfileid: "71960092"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="description"></a>Description:
+## <a name="description"></a>描述：
 
 使用您的 Microsoft Azure Active Directory 帳戶搭配 Atlassian Confluence 伺服器來啟用單一登入。 如此一來，所有組織使用者都能使用 Azure AD 認證來登入 Confluence 應用程式。 此外掛程式使用 SAML 2.0 來進行同盟。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 Confluence SAML SSO by Microsoft 整合，您需要下列項目：
 
@@ -64,24 +64,8 @@ ms.locfileid: "71960092"
 目前支援下列 Confluence 版本：
 
 - Confluence：5.0 到 5.10
-- Confluence：6.0.1
-- Confluence：6.1.1
-- Confluence：6.2.1
-- Confluence：6.3.4
-- Confluence：6.4.0
-- Confluence：6.5.0
-- Confluence：6.6.2
-- Confluence：6.7.0
-- Confluence：6.8.1
-- Confluence：6.9.0
-- Confluence：6.10.0
-- Confluence：6.10.3
-- Confluence：6.11.0
-- Confluence：6.12.0
-- Confluence：6.13.5
-- Confluence：6.15.3
-- Confluence：6.15.4
-- Confluence：6.15.8
+- Confluence：6.0.1 到 6.15.9
+- Confluence：7.0.1 到 7.1.0
 
 > [!NOTE]
 > 請注意，我們的 Confluence 外掛程式也適用於 Ubuntu 16.04 版
@@ -121,7 +105,7 @@ ms.locfileid: "71960092"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Confluence SAML SSO by Microsoft]  應用程式整合分頁上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [選取單一登入方法]  頁面上，選取 [SAML]  。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)

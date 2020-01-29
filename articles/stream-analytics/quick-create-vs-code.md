@@ -4,15 +4,15 @@ description: 本快速入門說明如何開始使用 Visual Studio Code 建立�
 ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.date: 09/16/2019
+ms.date: 01/18/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 236d29d2c50a792bc4dc11916964db47ca092807
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: e3e878b4f548da64ab04eb079d51b0846cf35c57
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659588"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313870"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code-preview"></a>快速入門：在 Visual Studio Code 中建立 Azure 串流分析作業 (預覽)
 
@@ -179,9 +179,11 @@ ms.locfileid: "75659588"
    |IotHubNamespace|MyASAIoTHub|選擇或輸入 IoT 中樞的名稱。 系統會自動偵測建立在相同訂用帳戶中的 IoT 中樞名稱。|
    |SharedAccessPolicyName|iothubowner| |
 
-   您可以利用 CodeLens 功能來輸入字串、從下拉式清單中選取，或直接在檔案中變更文字。 下列螢幕擷取畫面顯示**從您的訂用帳戶選取**作為範例。
+   您可以利用 CodeLens 功能來輸入字串、從下拉式清單中選取，或直接在檔案中變更文字。 下列螢幕擷取畫面顯示**從您的訂用帳戶選取**作為範例。 認證會自動列出並儲存在本機認證管理員中。
 
    ![在 Visual Studio Code 中設定輸入](./media/quick-create-vs-code/configure-input.png)
+
+   ![在 Visual Studio Code 中設定輸入值](./media/quick-create-vs-code/configure-input-value.png)
 
 ## <a name="preview-input"></a>預覽輸入
 

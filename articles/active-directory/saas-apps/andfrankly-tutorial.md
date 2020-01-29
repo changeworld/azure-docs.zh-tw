@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c097c1f08bd72ed5795e4274c41e4eb48dbe34ad
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 736cca668057f38431f91e36ff8fa97840274a38
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73152956"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120591"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-frankly"></a>教學課程：Azure Active Directory 與 &frankly 整合
 
@@ -35,7 +35,7 @@ ms.locfileid: "73152956"
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 &frankly 整合，您需要下列項目：
 
@@ -50,7 +50,7 @@ ms.locfileid: "73152956"
 
 ## <a name="adding-frankly-from-the-gallery"></a>從資源庫新增 &frankly
 
-若要設定將 &amp;frankly 整合到 Azure AD 中，您需要從資源庫將 &amp;frankly 新增到受控 SaaS 應用程式清單。
+若要設定將 &frankly 整合到 Azure AD 中，您需要從資源庫將 &amp;amp;frankly 新增到受控 SaaS 應用程式清單。
 
 **若要從資源庫新增 &frankly，請執行下列步驟：**
 
@@ -123,19 +123,15 @@ ms.locfileid: "73152956"
 
     ![憑證下載連結](common/metadataxml.png)
 
-7. 在 [設定 &frankly]  區段上，依據您的需求複製適當的 URL。
-
-    ![複製組態 URL](common/copy-configuration-urls.png)
-
-    a. 登入 URL
-
-    b. Azure AD 識別碼
-
-    c. 登出 URL
 
 ### <a name="configure-frankly-single-sign-on"></a>設定 &frankly 單一登入
 
-若要在 **&frankly** 端設定單一登入，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML]  和複製的適當 URL 傳送給 [&frankly 支援小組](mailto:help@andfrankly.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要在 &frankly 中啟用單一登入：
+
+1. 登入 &frankly。 移至 [帳戶]   > [使用者管理]  。
+1. 將驗證機制從預設值變更為 [企業登入 (SAML)]  。
+1. 上傳您在上一節的步驟 6 中下載的 [同盟中繼資料 XML]  。
+1. 選取 [儲存]  。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 

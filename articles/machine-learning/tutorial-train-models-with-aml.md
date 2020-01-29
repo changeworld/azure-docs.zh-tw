@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: ab407ffbc0e22a2f65436741ce5c7019ac7fc540
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 95e5754c440cc591444df8960fde34de6fc384f0
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75532461"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261359"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>教學課程：使用 Azure Machine Learning，搭配 MNIST 資料和 scikit-learn 定型映像分類模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -105,7 +105,9 @@ exp = Experiment(workspace=ws, name=experiment_name)
 
 ### <a name="create-or-attach-an-existing-compute-target"></a>建立或連結現有的計算目標
 
-資料科學家可藉由使用 Azure Machine Learning Compute 這項受控服務，在 Azure 虛擬機器的叢集上訓練機器學習模型。 範例包括具有 GPU 支援的 VM。 在本教學課程中，您會建立 Azure Machine Learning Compute 作為訓練環境。 如果您的工作區中還沒有計算叢集，下列程式碼將會為您建立計算叢集。
+資料科學家可藉由使用 Azure Machine Learning Compute 這項受控服務，在 Azure 虛擬機器的叢集上訓練機器學習模型。 範例包括具有 GPU 支援的 VM。 在本教學課程中，您會建立 Azure Machine Learning Compute 作為訓練環境。 您會提交 Python 程式碼，以便稍後於本教學課程中在此 VM 上執行。 
+
+如果您的工作區中還沒有計算叢集，下列程式碼將會為您建立計算叢集。
 
  **建立計算目標需要大約 5 分鐘的時間。** 如果工作區中已有計算資源，則程式碼會加以使用而略過建立程序。
 
@@ -146,7 +148,7 @@ else:
     print(compute_target.get_status().serialize())
 ```
 
-您現在具有必要的套件和計算資源，可以在雲端將模型定型。
+您現在具有必要的套件和計算資源，可以在雲端將模型定型。 
 
 ## <a name="explore-data"></a>探索資料
 
@@ -215,7 +217,7 @@ plt.show()
 
 ## <a name="train-on-a-remote-cluster"></a>在遠端叢集上定型
 
-針對這項工作，將工作提交至您稍早設定的遠端定型叢集。  若要提交工作，您要：
+針對這項工作，提交工作，已在您稍早設定的遠端定型叢集上執行。  若要提交工作，您要：
 * 建立目錄
 * 建立定型指令碼
 * 建立 estimator 物件

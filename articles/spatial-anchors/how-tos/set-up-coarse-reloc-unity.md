@@ -1,6 +1,6 @@
 ---
 title: Unity 中的粗略重新定位
-description: 深入說明如何在 C# 中使用裝置上感應器建立和尋找錨點。
+description: 深入說明如何在 C# 中使用粗略重新定位建立和尋找錨點。
 author: bucurb
 manager: dacoghl
 services: azure-spatial-anchors
@@ -8,14 +8,14 @@ ms.author: bobuc
 ms.date: 09/19/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 8b960ee168a1af66cafc52082138097cda240c9a
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 5c976bd020d37672c44c89113bf7786e1ccf141b
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277159"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548249"
 ---
-# <a name="how-to-create-and-locate-anchors-using-on-device-sensors-in-c"></a>如何在 C# 中使用裝置上感應器建立和尋找錨點
+# <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-c"></a>如何在 C# 中使用粗略重新定位建立和尋找錨點
 
 > [!div  class="op_single_selector"]
 > * [Unity](set-up-coarse-reloc-unity.md)
@@ -27,7 +27,7 @@ ms.locfileid: "74277159"
 
 Azure 空間錨點可以將裝置上、定位感應器資料與您建立的錨點建立關聯。 此資料也可以用來快速判斷您的裝置附近是否有任何錨點。 如需詳細資訊，請參閱[粗略重新定位](../concepts/coarse-reloc.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本指南，請確定您具有下列項目︰
 

@@ -1,27 +1,19 @@
 ---
-title: 教學課程 - 透過 Azure CLI 使用擴展集中的自訂 VM 映像 | Microsoft Docs
+title: 教學課程 - 透過 Azure CLI 使用擴展集中的自訂 VM 映像
 description: 了解如何使用 Azure CLI 來建立可用於部署虛擬機器擴展集的自訂 VM 映像
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6368a36eaa2e6832f22a13f20bc35d66c4425b4b
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 95e22b40b56d3ac3129573958c77b8643c0e72dc
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311572"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276139"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>教學課程：使用 Azure CLI 建立及使用虛擬機器擴展集的自訂映像
 當您建立擴展集時，您會指定部署 VM 執行個體時所要使用的映像。 若要減少部署 VM 執行個體後的工作數量，您可以使用自訂的 VM 映像。 此自訂 VM 映像包括任何必要的應用程式安裝或組態。 在擴展集中建立的任何 VM 執行個體都會使用自訂 VM 映像，並已可以處理您的應用程式流量。 在本教學課程中，您將了解如何：

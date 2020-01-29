@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 01e932caf5edc91d5556b60d33e4d100574f93f5
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: b492d8e3bdcf6d9a41df3eb79ef159985cc715cf
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170044"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76168871"
 ---
 # <a name="sample-explore-an-image-processing-app-with-c"></a>範例：使用 C# 探索影像處理應用程式
 
@@ -28,7 +28,7 @@ ms.locfileid: "71170044"
 > * 執行範例應用程式並與之互動，以執行各種案例
 > * 探索範例應用程式隨附的各種案例
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 探索範例應用程式之前，請確認您已符合下列必要條件：
 
@@ -89,7 +89,7 @@ git clone --recurse-submodules https://github.com/Microsoft/Cognitive-Face-Windo
 
 1. 在瀏覽窗格中的 [選取案例]  底下，選取範例應用程式目前隨附的其中一個案例：  
 
-   | 案例 | 說明 |
+   | 狀況 | 描述 |
    |----------|-------------|
    |分析影像 | 使用[分析影像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)作業來分析本機或遠端影像。 您可以選擇分析視覺功能和語言，並查看影像及結果。  |
    |使用領域模型分析影像 | 使用[列出特定領域模型](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fd) (英文) 作業可列出您可以選取的領域模型，使用[辨識特定領域內容](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) (英文) 作業則能以選取的領域模型來分析本機或遠端影像。 您也可以選擇要分析的語言。 |
@@ -311,4 +311,4 @@ using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [開始使用臉部 API](../../Face/Tutorials/FaceAPIinCSharpTutorial.md)
+> [開始使用臉部辨識服務](../../Face/Tutorials/FaceAPIinCSharpTutorial.md)

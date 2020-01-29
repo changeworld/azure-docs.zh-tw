@@ -1,27 +1,19 @@
 ---
-title: 教學課程 - 建立及管理 Azure 虛擬機器擴展集 | Microsoft Docs
+title: 教學課程 - 建立及管理 Azure 虛擬機器擴展集
 description: 了解如何使用 Azure CLI 建立虛擬機器擴展集，以及一些常見的管理工作，例如如何啟動和停止執行個體，或變更擴展集容量。
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b0d2a72567783ca1c127f76d94ddc9c5e007ea89
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: c2bddb4ef1401dd45b5aa9418f6e1890df0879ae
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751016"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277226"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>教學課程：使用 Azure CLI 建立及管理虛擬機器擴展集
 虛擬機器擴展集可讓您部署和管理一組相同、自動調整的虛擬機器。 在虛擬機器擴展集生命週期期間，您可能需要執行一或多個管理工作。 在本教學課程中，您將了解如何：
@@ -41,7 +33,7 @@ ms.locfileid: "55751016"
 
 
 ## <a name="create-a-resource-group"></a>建立資源群組
-Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 資源群組必須在虛擬機器擴展集之前建立。 使用 [az group create](/cli/azure/group) 命令來建立資源群組。 在此範例中，會在 eastus 區域中建立名為 myResourceGroup 的資源群組。 
+Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 資源群組必須在虛擬機器擴展集之前建立。 使用 [az group create](/cli/azure/group) 命令來建立資源群組。 在此範例中，會在 eastus  區域中建立名為 myResourceGroup  的資源群組。 
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -51,7 +43,7 @@ az group create --name myResourceGroup --location eastus
 
 
 ## <a name="create-a-scale-set"></a>建立擴展集
-您可以使用 [az vmss create](/cli/azure/vmss) 命令建立虛擬機器擴展集。 下列範例會建立名為 myScaleSet 的擴展集，以及產生 SSH 金鑰 (如果不存在)︰
+您可以使用 [az vmss create](/cli/azure/vmss) 命令建立虛擬機器擴展集。 下列範例會建立名為 myScaleSet  的擴展集，以及產生 SSH 金鑰 (如果不存在)︰
 
 ```azurecli-interactive
 az vmss create \
@@ -192,7 +184,7 @@ VM 執行個體大小 (或 *SKU*) 會決定可供 VM 執行個體使用的計算
 ### <a name="vm-instance-sizes"></a>VM 執行個體大小
 下表會將一般 VM 大小分類成各種使用案例。
 
-| 類型                     | 一般大小           |    說明       |
+| 類型                     | 一般大小           |    描述       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [一般用途](../virtual-machines/linux/sizes-general.md)         |Dsv3、Dv3、DSv2、Dv2、DS、D、Av2、A0-7| 平衡的 CPU 對記憶體。 適用於開發/測試及小型到中型應用程式和資料解決方案。  |
 | [計算最佳化](../virtual-machines/linux/sizes-compute.md)   | Fs、F             | CPU 與記憶體的比例高。 適用於中流量應用程式、網路設備，以及批次處理。        |

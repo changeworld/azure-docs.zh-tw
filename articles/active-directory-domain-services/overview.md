@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 10/30/2019
+ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: e5e6a2fe856915a3625f22bffa91403e3c036a22
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: ea0fa0e9d4e475a8496d1ee52b4cdfea11a13d8d
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481350"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544099"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>什麼是 Azure Active Directory Domain Services？
 
@@ -39,10 +39,13 @@ Azure AD DS 會從 Azure AD 複寫身分識別資訊，因此適用於僅限雲�
 IT 系統管理員通常會使用下列其中一個解決方案，將識別服務提供給在 Azure 中執行的應用程式：
 
 * 在於 Azure 中和內部部署 AD DS 環境中執行的工作負載之間設定站對站 VPN 連線。
-* 使用 Azure 虛擬機器 (VM) 建立複本網域控制站，來延伸 AD DS 網域 / 樹系。
+    * 然後內部部署網域控制站會透過 VPN 連線提供驗證。
+* 使用 Azure 虛擬機器 (VM) 建立複本網域控制站，從內部部署環境延伸 AD DS 網域 / 樹系。
+    * 在 Azure VM 上執行的網域控制站會提供驗證，並複寫內部部署 AD DS 環境之間的目錄資訊。
 * 使用在 Azure VM 上執行的網域控制站，在 Azure 中部署獨立 AD DS 環境。
+    * 在 Azure VM 上執行的網域控制站會提供驗證，但不會從內部部署 AD DS 環境複寫任何目錄資訊。
 
-使用這些方法，連線到內部部署目錄的 VPN 連線，會讓應用程式容易受暫時性網路問題或中斷影響。 如果您在 Azure 中使用 VM 部署網域控制站，則 IT 小組 VM 必須管理、保護、修補、監視及備份網域控制站，以及對它們進行疑難排解。
+使用這些方法，連線到內部部署目錄的 VPN 連線，會讓應用程式容易受暫時性網路問題或中斷影響。 如果您在 Azure 中使用 VM 部署網域控制站，則 IT 小組必須管理 VM，然後保護、修補、監視及備份網域控制站，以及對其進行疑難排解。
 
 Azure AD DS 提供的替代方案適用於建立連線回內部部署 AD DS 環境的 VPN 連線，或在 Azure 中執行及管理 VM 以提供識別服務的需求。 因為 Azure AD DS 是受控服務，所以可降低為混合式和僅限雲端環境建立整合式身分識別解決方案的複雜性。
 
@@ -53,25 +56,26 @@ Azure AD DS 提供的替代方案適用於建立連線回內部部署 AD DS 環�
 * **簡化的部署體驗：** 使用 Azure 入口網站中的單一精靈為您的 Azure AD 租用戶啟用 Azure AD DS。
 * **與 Azure AD 整合：** 使用者帳戶、群組成員資格與認證，都自動可從您的 Azure AD 租用戶取得。 新使用者、群組，或 Azure AD 租用戶或內部部署 AD DS 環境中的屬性變更，都會自動同步到 Azure AD DS。
     * 外部目錄中連結至 Azure AD 的帳戶無法在 Azure AD DS 中使用。 這些外部目錄無法使用認證，因此無法同步處理到 Azure AD DS 受控網域。
-* **使用公司認證/密碼：** 在 Azure AD DS 中，Azure AD 租用戶中使用者的密碼都會相同。 使用者可以使用其公司認證來將機器加入網域，以互動方式或透過遠端桌面登入，以及向 Azure AD DS 受控網域驗證。
+* **使用公司認證/密碼：** Azure AD DS 中使用者的密碼與您 Azure AD 租用戶中使用者的密碼相同。 使用者可以使用其公司認證來將機器加入網域，以互動方式或透過遠端桌面登入，以及向 Azure AD DS 受控網域驗證。
 * **NTLM 和 Kerberos 驗證：** 利用對 NTLM 與 Kerberos 驗證的支援，您就能部署依賴 Windows 整合式驗證的應用程式。
 * **高可用性：** Azure AD DS 包含多個網域控制站，為您的受控網域提供高可用性。 此高可用性可保證服務執行時間，且可從失敗復原。
-    * 在支援 [Azure 可用性區域][availability-zones]的區域中，這些網域控制站也會分散到多個區域，以提高復原能力。 
+    * 在支援 [Azure 可用性區域][availability-zones]的區域中，這些網域控制站也會分散到多個區域，以提高復原能力。
 
 Azure AD DS 受控網域的一些關鍵層面如下：
 
 * Azure AD DS 受控網域是獨立網域。 它不是內部部署網域的延伸。
+    * 如有需要，您可以建立從 Azure AD DS 到內部部署 AD DS 環境的單向輸出樹系信任。 如需詳細資訊，請參閱 [Azure AD DS 的資源樹系概念和功能][ forest-trusts]。
 * 您的 IT 小組不需要管理、修補或監視此 Azure AD DS 受控網域的網域控制站。
 
 針對執行 AD DS 內部部署的混合式環境，您不需要管理對 Azure AD DS 受控網域的 AD 複寫。 使用者帳戶、群組成員資格與來自您內部部署目錄的認證會透過 [Azure AD Connect][azure-ad-connect] 同步到 Azure AD。 這些使用者帳戶、群組成員資格與認證，都會自動在 Azure AD DS 受控網域中提供。
 
 ## <a name="how-does-azure-ad-ds-work"></a>Azure AD DS 如何運作？
 
-為了提供識別服務，Azure 會在您選擇的虛擬網路上建立 AD DS 執行個體。 系統透過一組 Windows Server 網域控制站提供復原功能，它在幕後運作，且您不需要管理、保護、保護或更新。
+為了提供識別服務，Azure 會在您選擇的虛擬網路上建立 AD DS 執行個體。 在幕後會建立一對在 Azure VM 上執行的 Windows Server 網域控制站。 您不需要管理、設定或更新這些網域控制站。 Azure 平台會管理網域控制站，作為 Azure AD DS 服務的一部分。
 
 Azure AD DS 受控網域已設定為從 Azure AD 執行單向同步，以提供對一組集中式使用者、群組與認證的存取權。 您可以直接在 Azure AD DS 受控網域中建立資源，但系統不會將它們同步回 Azure AD。 Azure 中連線到此虛擬網路的應用程式、服務與 VM 接著可以使用常見的 AD DS 功能，例如，網域加入、群組原則、LDAP 與 Kerberos / NTLM 驗證。
 
-在具有內部部署 AD DS 環境的混合式環境中，[Azure AD Connect][azure-ad-connect] 會與 Azure AD 同步身分識別資訊。
+在具有內部部署 AD DS 環境的混合式環境中，[Azure AD Connect][azure-ad-connect] 會與 Azure AD 同步身分識別資訊，該資訊會接著同步至 Azure AD DS。
 
 ![使用 AD Connect 讓 Azure AD Domain Services 與 Azure AD 和內部部署 Active Directory Domain Services 進行同步](./media/active-directory-domain-services-design-guide/sync-topology.png)
 
@@ -102,7 +106,7 @@ Azure AD DS 受控網域已設定為從 Azure AD 執行單向同步，以提供�
 
 僅限雲端的 Azure AD 租用戶沒有內部部署身分識別來源。 例如，使用者帳戶與群組成員資格都可直接在 Azure AD 中建立和管理。
 
-現在，讓我們看 Contoso 的範例，此僅限雲端的組織只使用 Azure AD 來進行身分識別驗證。 所有使用者身分識別、其認證與群組成員資格都是在 Azure AD 中建立及管理的。 不需要進行任何額外的 Azure AD Connect 設定，就能從內部部署目錄同步任何身分識別資訊。
+現在，讓我們看 Contoso 的範例，此僅限雲端的組織會使用 Azure AD 來進行身分識別驗證。 所有使用者身分識別、其認證與群組成員資格都是在 Azure AD 中建立及管理的。 不需要進行任何額外的 Azure AD Connect 設定，就能從內部部署目錄同步任何身分識別資訊。
 
 ![不含內部部署同步之僅限雲端組織的 Azure Active Directory Domain Services](./media/overview/cloud-only-tenant.png)
 
@@ -126,3 +130,4 @@ Azure AD DS 受控網域已設定為從 Azure AD 執行單向同步，以提供�
 [azure-ad-connect]: ../active-directory/hybrid/whatis-azure-ad-connect.md
 [password-hash-sync]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md
 [availability-zones]: ../availability-zones/az-overview.md
+[forest-trusts]: concepts-resource-forest.md

@@ -1,34 +1,35 @@
 ---
 title: 概觀 | Microsoft Azure 地圖服務
-description: 在本文中，您將了解 Microsoft Azure 地圖服務中的服務和功能，以及如何在您的應用程式中使用這些項目。
+description: 了解 Microsoft Azure 地圖服務中的服務和功能，以及如何在您的應用程式中加以使用。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/04/2019
+ms.date: 01/15/2020
 ms.topic: overview
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 353850cacb06dcc8a0db1b957114db314d7002a3
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 2909dbebc7531be0e45b321cc31b599b0f63ee4a
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911839"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262566"
 ---
 # <a name="what-is-azure-maps"></a>什麼是 Azure 地圖服務？
 
-Azure 地圖服務是地理空間服務的集合，採用最新的地圖資料為 Web 和行動裝置應用程式提供準確的地理內容。 Azure 地圖服務提供以下功能與服務：
+Azure 地圖服務是地理空間服務的集合，採用最新的地圖資料為 Web 和行動裝置應用程式提供地理內容。 Azure 地圖服務提供以下功能與服務：
 
 * 適用於以多種樣式和衛星影像轉譯地圖的 REST API。
 * 搜尋地址、地點及世界各地的熱門景點。
-* 點對點、多點、多點最佳化路線規劃、等時線、商用車輛、交通影響，以及矩陣路線規劃、查看交通流量和事故。
+* 不同類型的路線規劃：點對點、多點、多點最佳化、等時線、商用車輛、交通影響，以及矩陣路線規劃
+* 交通流量和事件檢視。
 * 用於要求提供大眾運輸方式和替代運輸方式 (例如共享自行車、共享機車與共享汽車)，以及即時規劃路線的行動服務。 
 * 透過地理位置建立使用者所在位置，然後將位置轉換為時區。 
 * 用於建立地理圍欄及儲存地圖資料的服務，位置資訊則由 Azure 代管。 
 * 能夠分析地理空間的高智慧定位能力。 
 
-除了 REST API 之外，也可以透過 Web SDK 或 Android SDK 使用 Azure 地圖服務。 這些工具可協助讓開發人員快速開發和調整解決方案，以將位置資訊整合到 Azure 解決方案中。 
+此外，也可以透過 Web SDK 或 Android SDK 來使用 Azure 地圖服務。 這些工具可協助讓開發人員快速開發和調整解決方案，以將位置資訊整合到 Azure 解決方案中。 
 
 您可以註冊免費的 [Azure 地圖服務帳戶](https://azure.microsoft.com/services/azure-maps/)，開始進行開發！
 
@@ -42,7 +43,7 @@ Azure 地圖服務是地理空間服務的集合，採用最新的地圖資料�
 
 ### <a name="web-sdk"></a>Web SDK
 
-Azure 地圖服務 Web SDK 可讓您以自己的內容和圖像，自訂顯示在 Web 或行動應用程式中的互動式地圖。 此控制項使用 WebGL，因此您能夠以高效能轉譯大型資料集。 您可以使用 JavaScript 或 TypeScript 搭配 SDK 進行開發。
+Azure 地圖服務 Web SDK 可讓您以自己的內容和圖像，自訂 Web 或行動應用程式的互動式地圖。 此控制項使用 WebGL，因此您能夠以高效能轉譯大型資料集。 您可以使用 JavaScript 或 TypeScript 搭配 SDK 進行開發。
 
 ![示意人口變化的地圖範例](media/about-azure-maps/Introduction_WebMapControl.png)
 
@@ -58,13 +59,13 @@ Azure 地圖服務是由下列九個服務組成，可以為 Azure 應用程式�
 
 ### <a name="data-service"></a>資料服務
 
-對地圖而言，資料非常重要。 請使用資料服務上傳及儲存地理空間資料供空間作業或影像構圖使用。  讓客戶資料更貼近 Azure 地圖服務可減少您應用程式的延遲、提高應用程式生產力，以及在您的應用程式中建立全新的案例。 如需這項服務的詳細資訊，請瀏覽[資料服務 API 文件](https://docs.microsoft.com/rest/api/maps/data) \(英文\)。
+對地圖而言，資料是不可或缺的。 請使用資料服務上傳及儲存地理空間資料供空間作業或影像構圖使用。  讓客戶資料更貼近 Azure 地圖服務可減少您應用程式的延遲、提高應用程式生產力，以及在您的應用程式中建立全新的案例。 如需這項服務的詳細資訊，請瀏覽[資料服務 API 文件](https://docs.microsoft.com/rest/api/maps/data) \(英文\)。
 
 ### <a name="mobility-service"></a>行動服務
 
-Azure 地圖服務行動服務可讓您即時規劃行程。 它會傳回最可能的行程選項並提供各種不同的旅遊模式。 對於擁有地鐵 (城市) 區域，這些模式可能包含走路、騎自行車，以及搭乘大眾運輸工具。 開發人員可以要求傳輸路線詳細資料，例如線條幾何、停站名單、已排程和即時抵達，以及服務警示。
+Azure 地圖服務行動服務可讓您即時規劃行程。 它會傳回最理想的路線選項，並提供不同類型的旅遊模式。 對於擁有地鐵 (城市) 區域，這些模式可能包含走路、騎自行車，以及搭乘大眾運輸工具。 您可以要求運輸路線、線條幾何、停站名單、已排程和即時抵達，以及服務警示。
 
-此服務也支援搜尋特定物件類型，例如搜尋所在位置附近的共享自行車、機車或汽車。 使用者也可以詢問最近的租借站目前還有幾輛共享自行車可租借。 他們也能夠搜尋可用的汽車共享車輛，並了解像是之後是否可使用和目前燃料存量等等的詳細資料。
+此服務也支援搜尋特定物件類型，例如搜尋所在位置附近的共享自行車、機車或汽車。 使用者可以要求最接近的站點可用的自行車數目，以及搜尋可用的共乘車輛。 此外，使用者也可搜尋後續可用的車輛和目前燃料存量之類的詳細資料。
 
 若要深入了解服務相關資訊，請參閱[行動 API 文件](https://docs.microsoft.com/rest/api/maps/mobility) \(英文\)。
 
@@ -107,13 +108,13 @@ Azure 地圖服務行動服務可讓您即時規劃行程。 它會傳回最可�
 
 ### <a name="spatial-operations-service"></a>空間作業服務
 
-Azure 地圖服務空間作業服務會取得位置資訊並即時分析，協助通知客戶有關某個時間和空間發生的進行中事件。 藉此達到幾近即時的事件分析和預測性模型化。 
+Azure 地圖服務空間作業服務會取得位置資訊並快速加以分析，以利通知客戶有關某個時間和空間發生的進行中事件。 藉此達到幾近即時的事件分析和預測性模型化。 
 
-服務能夠讓客戶運用內含常見地理空間數學計算 (包括最接近點、大圓距離及環域等服務) 的程式庫，提升他們的智慧定位能力。 若要深入了解服務以及各種功能，請參閱[空間作業 API 文件](https://docs.microsoft.com/rest/api/maps/spatial)。
+服務可讓客戶運用內含常見地理空間數學計算的程式庫，提升他們的智慧定位能力。 一般計算包括最接近點、大圓距離及環域。 若要深入了解服務以及各種功能，請參閱[空間作業 API 文件](https://docs.microsoft.com/rest/api/maps/spatial)。
 
 ### <a name="time-zone-service"></a>時區服務
 
-時區服務可讓您使用經緯度組合或 [IANA 識別碼](https://www.iana.org/)，查詢目前、過去及未來的時區資訊。 時區服務也具備下列能力：
+時區服務可讓您查詢目前、過去及未來的時區資訊。 您可以使用經緯度組合或 [IANA 識別碼](https://www.iana.org/)。 時區服務也具備下列能力：
 
 * 將 Microsoft Windows 時區識別碼轉換為 IANA 時區。
 * 擷取 UTC 時區時差。
@@ -143,7 +144,7 @@ Azure 地圖服務空間作業服務會取得位置資訊並即時分析，協�
 
 ### <a name="traffic-service"></a>交通服務
 
-交通服務是一套 Web 服務，可讓開發人員用於建立需要路況資訊的 Web 和行動裝置應用程式。 服務可提供兩種資料類型：
+交通服務是一套 Web 服務，可讓開發人員用於需要交通資訊的 Web 或行動應用程式。 服務可提供兩種資料類型：
 
 * 交通流量：針對路網中的所有重要道路提供即時觀察速度和行進時間。
 * 交通事故：提供路網中交通阻塞和交通事故的最新檢視。
@@ -154,30 +155,30 @@ Azure 地圖服務空間作業服務會取得位置資訊並即時分析，協�
 
 ### <a name="ip-to-location-service"></a>IP 對位置服務
 
-可使用「IP 對位置」服務預覽從 IP 位址擷取的兩個字母國家代碼。 此服務可協助您透過根據地理位置提供自訂應用程式內容，來量身訂做並加強使用者體驗。
+可使用「IP 對位置」服務預覽從 IP 位址擷取的兩個字母國家代碼。 此服務可協助您藉由根據地理位置提供自訂應用程式內容，來加強使用者體驗。
 
-如需與「IP 到地點」服務的 REST API 有關的資訊，請瀏覽 [Azure 地圖服務地理位置 API 文件](https://docs.microsoft.com/rest/api/maps/geolocation) \(英文\)。
+如需與 REST API 中的「IP 到地點」服務有關的資訊，請閱讀 [Azure 地圖服務地理位置 API 文件](https://docs.microsoft.com/rest/api/maps/geolocation)。
 
 ## <a name="programming-model"></a>程式設計模型
 
 Azure 地圖服務是針對行動性而建置，可以協助您開發跨平台應用程式。 它使用與語言無關的程式設計模型，並且透過 [REST API](https://docs.microsoft.com/rest/api/maps/) 支援 JSON 輸出。
 
-此外，Azure 地圖服務使用簡單的程式設計模型提供方便的 [JavaScript 地圖控制項](https://docs.microsoft.com/javascript/api/azure-maps-control)，以便快速輕鬆開發 Web 和行動裝置應用程式。
+此外，Azure 地圖服務也使用簡單的程式設計模型提供方便的 [JavaScript 地圖控制項](https://docs.microsoft.com/javascript/api/azure-maps-control)。 Web 和行動應用程式都可輕易且快速地進行開發。
 
 ## <a name="usage"></a>使用量
 
 存取 Azure 地圖服務時須前往 [Azure 入口網站](https://portal.azure.com)，並建立 Azure 地圖服務帳戶。
 
-Azure 地圖服務會使用金鑰型驗證結構描述。 您的帳戶隨附已預先為您產生的兩個金鑰。 透過使用任一金鑰並建立對 Azure Maps 服務的要求，以從整合這些位置功能到您的應用程式開始。
+Azure 地圖服務會使用金鑰型驗證結構描述。 您的帳戶隨附已預先為您產生的兩個金鑰。 使用任一金鑰開始在您的應用程式中整合這些位置功能，並提出對 Azure 地圖服務的要求。
 
 ## <a name="supported-regions"></a>支援區域
 
-Azure 地圖服務 API 目前可在下列國家以外的所有國家/地區中使用：
+Azure 地圖服務 API 目前可在下列國家以外的所有國家和區域中使用：
 
 * 中國
 * 南韓
 
-確認您目前 IP 位址的位置不在上述未受支援的國家/地區中。
+請確認您目前 IP 位址的位置處於支援的國家/地區中。
 
 ## <a name="next-steps"></a>後續步驟
 

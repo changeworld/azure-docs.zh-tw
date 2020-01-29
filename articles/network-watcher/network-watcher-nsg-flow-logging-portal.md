@@ -18,12 +18,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: f6740076600854f612cfdd6324d93325f0cd5c05
-ms.sourcegitcommit: 541e6139c535d38b9b4d4c5e3bfa7eef02446fdc
+ms.openlocfilehash: 7f4466b6f6de5028db8b62389c9d5ddbdafc9d62
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75667520"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76280980"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站記錄往返於虛擬機器的網路流量
 
@@ -93,7 +93,7 @@ NSG 流量記錄需要 **Microsoft.Insights** 提供者。 若要註冊提供者
     | Location       | 選取 [美國東部]                                            |
     | 資源群組 | 選取 [使用現有的]  ，然後選取 [myResourceGroup]  |
 
-    建立儲存體帳戶可能需要一分鐘的時間。 建好儲存體帳戶之前，請不要繼續其餘步驟。 如果您使用現有儲存體帳戶，而不是新建一個，請確定在所選儲存體帳戶的 [設定]  下方，[防火牆與虛擬網路]  的 [所有網路]  (預設值) 已選取。 在所有情況下，儲存體帳戶必須與 NSG 位在同一個區域中。     
+    儲存體帳戶必須與 NSG 位在同一個區域中。 建立儲存體帳戶可能需要一分鐘的時間。 建好儲存體帳戶之前，請不要繼續其餘步驟。     
 4. 在入口網站的左上角，選取 [所有服務]  。 在 [篩選]  方塊中，輸入*網路監看員*。 當搜尋結果中出現**網路監看員**時，請加以選取。
 5. 在 [記錄]  下，選取 [NSG 流量記錄]  ，如下列圖所示：
 
@@ -107,8 +107,7 @@ NSG 流量記錄需要 **Microsoft.Insights** 提供者。 若要註冊提供者
 
 9. 選取您在步驟 3 建立的儲存體帳戶。
    > [!NOTE]
-   > 如果是下列情況，NSG 流量記錄不會與儲存體帳戶搭配使用：
-   > * 儲存體帳戶已啟用防火牆。
+   > 如果是下列情況，NSG 流量記錄將不會與儲存體帳戶搭配使用：
    > * 儲存體帳戶已啟用[階層命名空間](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace)。
 1. 在入口網站的左上角，選取 [所有服務]  。 在 [篩選]  方塊中，輸入*網路監看員*。 當搜尋結果中出現**網路監看員**時，請加以選取。
 10. 將 [保留 (天數)]  設定為 5，然後選取 [儲存]  。

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: a9719ec7db4dead94478225cc47130b289a539c0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5e66632fab0306da7766f079733cd1d8cb3edc8d
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442346"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544084"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>快速入門：使用 Azure 應用程式閘道引導網路流量 - Azure 入口網站
 
@@ -66,7 +66,7 @@ ms.locfileid: "75442346"
 
 1. 在 [前端]  索引標籤上，確認 [前端 IP 位址類型]  已被設為 [公用]  。 <br>您可以根據自己的使用案例，設定為公用或私人前端 IP。 在此範例中，您會選擇公用前端 IP。
    > [!NOTE]
-   > 對於應用程式閘道 v2 SKU，您只能選擇 [公用]  前端 IP 組態。 目前僅未針對此 v2 SKU 啟用私人前端 IP 設定 (僅限 ILB 模式)。 您可以同時擁有公用和私人前端 IP 設定。
+   > 應用程式閘道 v2 SKU 必須要有 [公用]  前端 IP 設定。 您仍然可以同時擁有公用和私人前端 IP 設定，但目前對於 v2 SKU 並未啟用僅限私人前端 IP 設定 (僅限 ILB 模式)。 
 
 2. 針對 [公用 IP 位址]  選擇 [新建]  ，然後針對公用 IP 位址名稱輸入 *myAGPublicIPAddress*，然後選取 [確定]  。 
 

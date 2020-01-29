@@ -10,18 +10,18 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: areddish
-ms.openlocfilehash: 54a028afa9da22bddddb855558668cccb027f70b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 68d63fbc71ea2dcd07522c6ba42808f88966cd7b
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74961041"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166600"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-python-sdk"></a>快速入門：使用適用於自訂視覺 Python SDK 建立物件偵測專案
 
 本文說明如何開始搭配使用自訂視覺 SDK 與 Python 來建置物件偵測模型。 建立它之後，您就可以新增標記的區域、上傳影像、為專案定型、取得專案的已發佈預測端點 URL，並使用端點以程式設計方式測試影像。 請使用此範例作為範本來建置您自己的 Python 應用程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - [Python 2.7+ 或 3.5+](https://www.python.org/downloads/)
 - [pip](https://pip.pypa.io/en/stable/installing/) 工具
@@ -88,6 +88,10 @@ scissors_tag = trainer.create_tag(project.id, "scissors")
 
 為物件偵測專案中的影像加上標記時，您必須使用標準化座標來識別每個加上標記的物件所屬的區域。
 
+> [!NOTE]
+> 如果您沒有按住並拖曳公用程式可標示區域的座標，您可以使用 [Customvision.ai](https://www.customvision.ai/) 上的 Web UI。 此範例已提供座標。
+
+
 若要將影像、標記和區域新增至專案，請在標記建立之後插入下列程式碼。 本教學課程中的區域是以硬式編碼內嵌於程式碼中。 這些區域會在標準化座標中指定週框方塊，且座標會以下列順序指定：左、上、寬度、高度。
 
 ```Python
@@ -138,11 +142,14 @@ scissors_image_regions = {
 }
 ```
 
-然後，使用此關聯對應，上傳每個範例影像及其區域座標 (您最多可以在單一批次中上傳 64 個影像)。 新增下列程式碼。
+然後，使用此關聯對應，上傳每個範例影像及其區域座標 (您最多可以在單一批次中上傳 64 個影像)。 加入下列程式碼。
+
+> [!NOTE]
+> 您必須根據認知服務 Python SDK 範例存放庫先前的下載位置，來變更影像的路徑。
 
 ```Python
 # Update this with the path to where you downloaded the images.
-base_image_url = "<path to the images>"
+base_image_url = "<path to repo directory>/cognitive-services-python-sdk-samples/samples/vision/"
 
 # Go through the data table above and create the images
 print ("Adding images...")
@@ -172,7 +179,7 @@ if not upload_result.is_batch_successful:
 
 ### <a name="train-the-project-and-publish"></a>訓練專案並發佈
 
-此程式碼會在專案中建立第一個反覆項目，然後將該反覆項目發佈至預測端點。 提供給已發佈反覆項目的名稱可用來傳送預測要求。 反覆項目要等到發佈後才可在預測端點中使用。
+此程式碼會在預測模型中建立第一個反覆項目，然後將該反覆項目發佈至預測端點。 提供給已發佈反覆項目的名稱可用來傳送預測要求。 反覆項目要等到發佈後才可在預測端點中使用。
 
 ```Python
 import time

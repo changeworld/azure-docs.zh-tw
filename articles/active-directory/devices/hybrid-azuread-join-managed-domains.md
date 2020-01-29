@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 787900918035dc8b14d3a173496ab1a23b0f93bb
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 17bfbc29f38230dc2533c9ccc63cdee4fc776717
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68813083"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512103"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>教學課程：設定適用於受控網域的混合式 Azure Active Directory Join
 
@@ -32,7 +32,7 @@ ms.locfileid: "68813083"
 
 受控環境可使用[無縫單一登入](../hybrid/how-to-connect-sso.md)透過[密碼雜湊同步 (PHS)](../hybrid/whatis-phs.md) 或[傳遞驗證 (PTA)](../hybrid/how-to-connect-pta.md) 進行部署。 在這些案例中，您不需要設定同盟伺服器以進行驗證。
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 設定混合式 Azure AD Join
@@ -40,7 +40,7 @@ ms.locfileid: "68813083"
 > * 確認加入的裝置
 > * 疑難排解
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本教學課程假設您已熟悉以下文章：
 
@@ -51,7 +51,7 @@ ms.locfileid: "68813083"
 > [!NOTE]
 > Azure AD 不支援受控網域中的智慧卡或憑證。
 
-若要設定本文中的的案例，您必須安裝[最新版的 Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) (1.1.819.0 或更新版本)。
+若要設定本文中的案例，您必須安裝[最新版的 Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) (1.1.819.0 或更新版本)。
 
 確認 Azure AD Connect 已將您要加入混合式 Azure AD 之裝置的電腦物件同步處理至 Azure AD。 如果電腦物件屬於特定組織單位 (OU)，則您也必須在 Azure AD Connect 中設定 OU 進行同步處理。 若要深入了解如何使用 Azure AD Connect 同步處理電腦物件，請參閱[使用 Azure AD Connect 設定篩選](../hybrid/how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)。
 
@@ -66,7 +66,7 @@ ms.locfileid: "68813083"
 - `https://device.login.microsoftonline.com`
 - `https://autologon.microsoftazuread-sso.com` (如果您使用或計劃使用無縫 SSO)
 
-如果組織需要透過輸出 Proxy 存取網際網路，Microsoft 建議[實作 Web Proxy 自動探索 (WPAD)](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10))，讓 Windows 10 電腦能向 Azure AD 進行裝置註冊。 如果您在設定和管理 WPAD 方面遇到問題，請參閱[針對自動偵測進行疑難排解](https://docs.microsoft.com/previous-versions/tn-archive/cc302643(v=technet.10))。 
+如果組織需要透過輸出 Proxy 存取網際網路，Microsoft 建議[實作 Web Proxy 自動探索 (WPAD)](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) \(英文\)，讓 Windows 10 電腦能向 Azure AD 進行裝置註冊。 如果您在設定和管理 WPAD 方面遇到問題，請參閱[針對自動偵測進行疑難排解](https://docs.microsoft.com/previous-versions/tn-archive/cc302643(v=technet.10))。 
 
 如果您未使用 WPAD 且必須在電腦上設定 Proxy 設定，您可以從 Windows 10 1709 開始執行操作。 如需詳細資訊，請參閱[使用群組原則物件 (GPO) 設定 WinHTTP 設定](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/)。
 
@@ -86,7 +86,7 @@ ms.locfileid: "68813083"
 
 **若要使用 Azure AD Connect 設定混合式 Azure AD Join：**
 
-1. 啟動 Azure AD Connect，然後按一下 [設定]  。
+1. 啟動 Azure AD Connect，然後選取 [設定]  。
 
    ![歡迎使用](./media/hybrid-azuread-join-managed-domains/11.png)
 
@@ -134,6 +134,9 @@ ms.locfileid: "68813083"
 - 設定無縫 SSO
 - 為舊版 Windows 電腦安裝 Microsoft Workplace Join
 
+> [!NOTE]
+> Windows 7 支援已於 2020 年 1 月 14 日終止。 如需詳細資訊，請參閱 [Windows 7 的支援已終止](https://support.microsoft.com/en-us/help/4057281/windows-7-support-ended-on-january-14-2020)。
+
 ### <a name="configure-the-local-intranet-settings-for-device-registration"></a>設定裝置註冊的近端內部網路設定
 
 若要順利完成舊版 Windows 裝置的混合式 Azure AD Join，並避免在裝置向 Azure AD 進行驗證時出現憑證提示，您可以將原則推送到已加入網域的裝置，以在 Internet Explorer 中將下列 URL 新增至近端內部網路區域︰
@@ -151,7 +154,7 @@ ms.locfileid: "68813083"
 
 若要註冊舊版 Windows 裝置，組織必須安裝[適用於非 Windows 10 電腦的 Microsoft Workplace Join](https://www.microsoft.com/download/details.aspx?id=53554)。 適用於非 Windows 10 電腦的 Microsoft Workplace Join 可在 Microsoft 下載中心取得。
 
-您可以使用軟體發佈系統 (例如  [System Center Configuration Manager](https://www.microsoft.com/cloud-platform/system-center-configuration-manager)) 來部署此套件。 此套件支援使用 `quiet` 參數的標準無訊息安裝選項。 組態管理員的目前分支會提供勝過舊版的好處，例如能夠追蹤已完成的註冊。
+您可以使用軟體發佈系統 (例如  [Microsoft Endpoint Configuration Manager](https://docs.microsoft.com/configmgr/)) 來部署此套件。 此套件支援使用 `quiet` 參數的標準無訊息安裝選項。 組態管理員的目前分支會提供勝過舊版的好處，例如能夠追蹤已完成的註冊。
 
 安裝程式會在系統上建立排定的工作，此工作是在使用者內容中執行。 此工作會在使用者登入 Windows 時觸發。 此工作會在使用 Azure AD 進行驗證之後，利用使用者認證以無訊息方式向 Azure AD 加入裝置。
 
@@ -169,7 +172,7 @@ ms.locfileid: "68813083"
 
 1. 以系統管理員身分開啟 Windows PowerShell。
 1. 輸入 `Connect-MsolService` 以連線至您的 Azure 租用戶。  
-1. 輸入 `get-msoldevice -deviceId <deviceId>` 。
+1. 輸入 `get-msoldevice -deviceId <deviceId>`。
 1. 確認 [已啟用]  設為 [True]  。
 
 ## <a name="troubleshoot-your-implementation"></a>對您的實作進行疑難排解

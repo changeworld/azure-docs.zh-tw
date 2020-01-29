@@ -1,19 +1,17 @@
 ---
-title: 教學課程 - 刪除 Azure Red Hat OpenShift 叢集 | Microsoft Docs
+title: 教學課程 - 刪除 Azure Red Hat OpenShift 叢集
 description: 在本教學課程中，請了解如何使用 Azure CLI 刪除 Azure Red Hat OpenShift 叢集
-services: container-service
 author: jimzim
 ms.author: jzim
-manager: jeconnoc
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 05/06/2019
-ms.openlocfilehash: 0ad70f4c3681705377a350fee8b02a55c526f26c
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: c335236a2b0b05f03bef1ebef37f1129a5d0352b
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67669344"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278763"
 ---
 # <a name="tutorial-delete-an-azure-red-hat-openshift-cluster"></a>教學課程：刪除 Azure Red Hat OpenShift 叢集
 
@@ -30,13 +28,13 @@ ms.locfileid: "67669344"
 > * [調整 Azure Red Hat OpenShift 叢集](tutorial-scale-cluster.md)
 > * 刪除 Azure Red Hat OpenShift 叢集
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始進行本教學課程之前：
 
 * 依照[建立 Azure Red Hat OpenShift 叢集](tutorial-create-cluster.md)教學課程的指示建立叢集。
 
-## <a name="step-1-sign-in-to-azure"></a>步驟 1：登入 Azure
+## <a name="step-1-sign-in-to-azure"></a>步驟 1:登入 Azure
 
 如果您是在本機執行 Azure CLI，請執行 `az login` 以登入 Azure。
 
@@ -46,7 +44,7 @@ az login
 
 如果您可存取多個訂用帳戶，請執行 `az account set -s {subscription ID}` 並以您要使用的訂用帳戶取代 `{subscription ID}`。
 
-## <a name="step-2-delete-the-cluster"></a>步驟 2：刪除叢集
+## <a name="step-2-delete-the-cluster"></a>步驟 2:選取叢集
 
 開啟 Bash 終端機，並將 CLUSTER_NAME 變數設為您的叢集名稱：
 

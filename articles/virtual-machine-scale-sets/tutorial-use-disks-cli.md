@@ -1,27 +1,19 @@
 ---
-title: 教學課程 - 使用 Azure CLI 建立及使用擴展集所適用的磁碟 | Microsoft Docs
+title: 教學課程 - 使用 Azure CLI 建立及使用擴展集所適用的磁碟
 description: 了解如何使用 Azure CLI 來建立及使用虛擬機器擴展集所適用的受控磁碟，包括如何新增、準備、列出及中斷連結磁碟。
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 58090e860b79d59021d467fcf73596271c91c7f6
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 01dbbcddf7df8e261e865fbb61c1fcfd5abbd5fc
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751152"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278239"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>教學課程：使用 Azure CLI 建立及使用虛擬機器擴展集所適用的磁碟
 虛擬機器擴展集會使用磁碟來儲存 VM 執行個體的作業系統、應用程式和資料。 當您建立及管理擴展集時，請務必選擇預期的工作負載所適用的磁碟大小和組態。 本教學課程將說明如何建立及管理 VM 磁碟。 在本教學課程中，您將了解如何：
@@ -43,9 +35,9 @@ ms.locfileid: "55751152"
 ## <a name="default-azure-disks"></a>預設 Azure 磁碟
 建立或調整擴展集後，有兩個磁碟會自動連結到各個 VM 執行個體。
 
-**作業系統磁碟** - 作業系統磁碟可裝載 VM 執行個體的作業系統，其大小可以高達 2 TB。 OS 磁碟預設會標示為 /dev/sda。 OS 磁碟的磁碟快取組態已針對 OS 效能進行最佳化。 因為此組態，OS 磁碟**不得**裝載應用程式或資料。 請對應用程式和資料使用資料磁碟，本文稍後會詳細說明。
+**作業系統磁碟** - 作業系統磁碟可裝載 VM 執行個體的作業系統，其大小可以高達 2 TB。 OS 磁碟預設會標示為 /dev/sda  。 OS 磁碟的磁碟快取組態已針對 OS 效能進行最佳化。 因為此組態，OS 磁碟**不得**裝載應用程式或資料。 請對應用程式和資料使用資料磁碟，本文稍後會詳細說明。
 
-**暫存磁碟** - 暫存磁碟會使用與 VM 執行個體位於相同 Azure 主機的固態磁碟機。 暫存磁碟的效能非常好，可用於暫存資料處理等作業。 不過，如果 VM 執行個體移至新的主機，則會移除儲存在暫存磁碟上的任何資料。 暫存磁碟的大小取決於 VM 執行個體大小。 暫存磁碟會標示為 /dev/sdb，其掛接點為 /mnt。
+**暫存磁碟** - 暫存磁碟會使用與 VM 執行個體位於相同 Azure 主機的固態磁碟機。 暫存磁碟的效能非常好，可用於暫存資料處理等作業。 不過，如果 VM 執行個體移至新的主機，則會移除儲存在暫存磁碟上的任何資料。 暫存磁碟的大小取決於 VM 執行個體大小。 暫存磁碟會標示為 /dev/sdb  ，其掛接點為 /mnt  。
 
 ### <a name="temporary-disk-sizes"></a>暫存磁碟大小
 | 類型 | 一般大小 | 暫存磁碟大小上限 (GiB) |
@@ -95,13 +87,13 @@ Azure 提供兩種類型的磁碟。
 您可以在建立擴展集時建立並連結磁碟，或使用現有的擴展集。
 
 ### <a name="attach-disks-at-scale-set-creation"></a>在建立擴展集時連結磁碟
-首先，使用 [az group create](/cli/azure/group) 命令來建立資源群組。 在此範例中，會在 eastus 區域中建立名為 myResourceGroup 的資源群組。
+首先，使用 [az group create](/cli/azure/group) 命令來建立資源群組。 在此範例中，會在 eastus  區域中建立名為 myResourceGroup  的資源群組。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-使用 [az vmss create](/cli/azure/vmss) 命令建立虛擬機器擴展集。 下列範例會建立名為 myScaleSet 的擴展集，以及產生 SSH 金鑰 (如果不存在)。 系統會使用 `--data-disk-sizes-gb` 參數建立兩個磁碟。 第一個磁碟的大小為 *64* GB，第二個磁碟則為 *128* GB：
+使用 [az vmss create](/cli/azure/vmss) 命令建立虛擬機器擴展集。 下列範例會建立名為 myScaleSet  的擴展集，以及產生 SSH 金鑰 (如果不存在)。 系統會使用 `--data-disk-sizes-gb` 參數建立兩個磁碟。 第一個磁碟的大小為 *64* GB，第二個磁碟則為 *128* GB：
 
 ```azurecli-interactive
 az vmss create \
@@ -164,7 +156,7 @@ ssh azureuser@52.226.67.166 -p 50001
 sudo fdisk -l
 ```
 
-下列範例輸出顯示三個磁碟已連結至 VM 執行個體 - */dev/sdc*、*/dev/sdd* 和 */dev/sde*。 這三個磁碟都有可使用所有可用空間的單一分割區：
+下列範例輸出顯示三個磁碟已連結至 VM 執行個體 - */dev/sdc*、 */dev/sdd* 和 */dev/sde*。 這三個磁碟都有可使用所有可用空間的單一分割區：
 
 ```bash
 Disk /dev/sdc: 64 GiB, 68719476736 bytes, 134217728 sectors

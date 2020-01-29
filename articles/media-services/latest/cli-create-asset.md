@@ -1,5 +1,5 @@
 ---
-title: Azure CLI 指令碼範例 - 建立 Azure 媒體服務資產 | Microsoft Docs
+title: 使用 Azure CLI 將內容上傳至 Azure 媒體服務資產
 description: 本主題中的 Azure CLI 指令碼會示範如何建立內容上傳目標的媒體服務資產。
 services: media-services
 documentationcenter: ''
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: 4b6aebc807426f533bc4c1e2c0405e69c264dc33
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 0c24464050d0beee120dcb234582a464d6245270
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65235960"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310640"
 ---
 # <a name="cli-example-create-an-asset"></a>CLI 範例：建立資產
 
 本文中的 Azure CLI 指令碼會示範如何建立內容上傳目標的媒體服務資產。
 
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>Prerequisites 
 
 [建立媒體服務帳戶](create-account-cli-how-to.md)。
 

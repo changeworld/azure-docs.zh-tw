@@ -1,25 +1,23 @@
 ---
 title: 使用 Open Service Broker for Azure (OSBA) 與 Azure 受控服務整合
 description: 使用 Open Service Broker for Azure (OSBA) 與 Azure 受控服務整合
-services: container-service
 author: zr-msft
-manager: jeconnoc
 ms.service: container-service
 ms.topic: overview
 ms.date: 12/05/2017
 ms.author: zarhoads
-ms.openlocfilehash: 7a887905bcb4b09c1b4ae179116b3f08c75caabd
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 131e767daa920f03db5ec9a3aac711fc850c7132
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758292"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276797"
 ---
 # <a name="integrate-with-azure-managed-services-using-open-service-broker-for-azure-osba"></a>使用 Open Service Broker for Azure (OSBA) 與 Azure 受控服務整合
 
 Open Service Broker for Azure (OSBA) 可以與 [Kubernetes 服務類別目錄][kubernetes-service-catalog]搭配使用，允許開發人員利用 Kubernetes 中的 Azure 受控服務。 本指南著重於部署 Kubernetes 服務類別目錄、Open Service Broker for Azure (OSBA)，以及利用 Kubernetes 使用 Azure 受控服務的應用程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 * Azure 訂用帳戶
 
 * Azure CLI：[在本機進行安裝][azure-cli-install]，或用於 [Azure Cloud Shell][azure-cloud-shell]。
@@ -146,7 +144,7 @@ chmod +x ./svcat
 ./svcat get brokers
 ```
 
-您應該會看到如下所示的輸出：
+您應該會看到類似以下的輸出：
 
 ```
   NAME                               URL                                STATUS
@@ -191,7 +189,7 @@ kubectl get secrets -n wordpress -o yaml
 
 依照本文件，將 Service Catalog 部署至 Azure Kubernetes Service (AKS) 叢集。 您要使用 Open Service Broker for Azure，部署使用 Azure 受控服務的 WordPress 安裝，在此案例中為適用於 MySQL 的 Azure 資料庫。
 
-若要存取其他更新的 OSBA 型 Helm 圖表，請參閱 [Azure/helm-charts][helm-charts] 存放庫。 如果您要建立使用 OSBA 的圖表，請參閱[建立新的圖表][helm-create-new-chart]。
+若要存取其他更新的 OSBA 型 Helm 圖表，請參閱 [Azure/Helm 圖表][helm-charts]存放庫。 如果您想要建立使用 OSBA 的圖表，請參閱[建立新的圖表][helm-create-new-chart]。
 
 <!-- LINKS - external -->
 [helm-charts]: https://github.com/Azure/helm-charts

@@ -8,12 +8,12 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 16920a46e64306daa331957df24babba8ac4b731
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: a9f9c6ebd55752ea5a3400da8d42b6c6487277df
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612865"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514641"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>教學課程：設定 IoT Edge 裝置
 
@@ -262,7 +262,7 @@ IoT Edge 執行階段會使用檔案 /etc/iotedge/config.yaml 來保存其設定
       trusted_ca_certs: "/edgeMlCertificates/azure-iot-test-only.root.ca.cert.pem"
     ```
 
-    請確定 "certificates:" 前面沒有空格，且每一個憑證的前面是兩個空格。
+    請確定 **certificates:** 這一行前面沒有空格，且每個巢狀憑證都會內縮兩個空格。
 
     以滑鼠右鍵按一下 nano，會將剪貼簿的內容貼上您到目前的游標位置。 若要取代字串，請使用鍵盤箭號瀏覽至您想要取代的字串、刪除字串，然後按一下滑鼠右鍵從緩衝區貼上。
 

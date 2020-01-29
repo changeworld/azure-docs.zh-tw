@@ -3,8 +3,7 @@ title: 將功能旗標新增至 Spring Boot 應用程式的快速入門 - Azure 
 description: 將功能旗標新增至 Spring Boot 應用程式，並在 Azure 應用程式組態中進行管理的快速入門
 services: azure-app-configuration
 documentationcenter: ''
-author: mrm9084
-manager: zhenlwa
+author: lisaguthrie
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
@@ -12,14 +11,14 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.tgt_pltfrm: Spring Boot
 ms.workload: tbd
-ms.date: 09/26/2019
-ms.author: mametcal
-ms.openlocfilehash: cae1e7b205869fd41850c1adfaeae97658dd02f0
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.date: 1/9/2019
+ms.author: lcozzens
+ms.openlocfilehash: 3e82354116969b01743700485b5c2dd75b4887e4
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184956"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310045"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>快速入門：將功能旗標新增至 Spring Boot 應用程式
 
@@ -27,7 +26,7 @@ ms.locfileid: "74184956"
 
 Spring Boot 功能管理程式庫可透過全方位的功能旗標支援來擴充架構。 這些程式庫**不會**相依於任何 Azure 程式庫。 它們可透過 Spring Boot 組態提供者完美地與應用程式組態整合。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
 - 受支援的 [Java 開發套件 JDK](https://docs.microsoft.com/java/azure/jdk) 第 8 版。
@@ -54,7 +53,7 @@ Spring Boot 功能管理程式庫可透過全方位的功能旗標支援來擴�
    - 使用 **Java** 產生 **Maven** 專案。
    - 指定 **Spring Boot** 版本，應等於或大於 2.0。
    - 指定應用程式的**群組**和**成品**名稱。
-   - 新增 **Web** 相依性。
+   - 新增 **Spring Web** 相依性。
 
 3. 在指定先前的選項之後，選取 [產生專案]  。 出現提示時，將專案下載至本機電腦上的路徑。
 
@@ -68,12 +67,12 @@ Spring Boot 功能管理程式庫可透過全方位的功能旗標支援來擴�
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.1.0.M4</version>
+        <version>1.1.0</version>
     </dependency>
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-azure-feature-management-web</artifactId>
-        <version>1.1.0.M4</version>
+        <version>1.1.0</version>
     </dependency>
     <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -86,27 +85,46 @@ Spring Boot 功能管理程式庫可透過全方位的功能旗標支援來擴�
 
 ## <a name="connect-to-an-app-configuration-store"></a>連線至應用程式組態存放區
 
-1. 開啟位於應用程式資源目錄下的 `bootstrap.properties`，然後將下列幾行新增至該檔案。 新增應用程式組態資訊。
+1. 在應用程式的 _resources_ 目錄底下，開啟 _bootstrap.properties_。 如果 _bootstrap.properties_ 不存在，請加以建立。 在檔案中新增以下一行。
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].name= ${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
-2. 在您組態存放區的應用程式組態入口網站中，移至 [存取金鑰]。 選取 [唯讀金鑰] 索引標籤。在此索引標籤中，複製其中一個連接字串的值，並將它新增為變數名稱為 `APP_CONFIGURATION_CONNECTION_STRING` 的新環境變數。
+1. 在您組態存放區的應用程式組態入口網站中，移至 [存取金鑰]。 選取 [唯讀金鑰] 索引標籤。在此索引標籤中，複製其中一個連接字串的值，並將它新增為變數名稱為 `APP_CONFIGURATION_CONNECTION_STRING` 的新環境變數。
 
-3. 開啟主要的應用程式 Java 檔案，並新增 `@EnableConfigurationProperties` 來啟用這項功能。
+1. 開啟主要的應用程式 Java 檔案，並新增 `@EnableConfigurationProperties` 來啟用這項功能。
 
     ```java
+    import org.springframework.boot.context.properties.EnableConfigurationProperties;
+
     @SpringBootApplication
     @EnableConfigurationProperties(MessageProperties.class)
-    public class AzureConfigApplication {
+    public class DemoApplication {
         public static void main(String[] args) {
-            SpringApplication.run(AzureConfigApplication.class, args);
+            SpringApplication.run(DemoApplication.class, args);
         }
     }
     ```
 
-4. 在應用程式的 package 目錄中建立名為 HelloController.java  的新 Java 檔案。 加入下列幾行：
+1. 在應用程式的 package 目錄中建立名為 MessageProperties.java  的新 Java 檔案。 加入下列幾行：
+
+    ```java
+    @ConfigurationProperties(prefix = "config")
+    public class MessageProperties {
+        private String message;
+
+        public String getMessage() {
+            return message;
+        }
+
+        public void setMessage(String message) {
+            this.message = message;
+        }
+    }
+    ```
+
+1. 在應用程式的 package 目錄中建立名為 HelloController.java  的新 Java 檔案。 加入下列幾行：
 
     ```java
     @Controller
@@ -127,7 +145,7 @@ Spring Boot 功能管理程式庫可透過全方位的功能旗標支援來擴�
     }
     ```
 
-5. 在應用程式的範本目錄中，建立名為 *welcome.html* 的新 HTML 檔案。 加入下列幾行：
+1. 在應用程式的範本目錄中，建立名為 *welcome.html* 的新 HTML 檔案。 加入下列幾行：
 
     ```html
     <!DOCTYPE html>
@@ -184,7 +202,7 @@ Spring Boot 功能管理程式庫可透過全方位的功能旗標支援來擴�
 
     ```
 
-6. 在 static 下建立名為 CSS 的新資料夾，並在其內部建立名為 *main.css* 的新 CSS 檔案。 加入下列幾行：
+1. 在 static 下建立名為 CSS 的新資料夾，並在其內部建立名為 *main.css* 的新 CSS 檔案。 加入下列幾行：
 
     ```css
     html {

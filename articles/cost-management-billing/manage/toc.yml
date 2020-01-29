@@ -75,6 +75,8 @@
           href: pay-by-invoice.md
         - name: 建立其他訂用帳戶
           href: create-subscription.md
+        - name: 轉移 CSP 訂用帳戶
+          href: transfer-subscriptions-subscribers-csp.md
         - name: 匯出訂用帳戶資訊
           href: export-subscriptions.md
     - name: 管理 Enterprise 合約訂用帳戶

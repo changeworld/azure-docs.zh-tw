@@ -4,14 +4,14 @@ description: Avere vFXT for Azure (HPC 的雲端快取層) 簡介
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: overview
-ms.date: 12/03/2019
+ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 5e2fbf857b198072328e08c81da256e2f60370dc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a9dab2ca844feb1c24dfffc48b4f29cd1a311314
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75414412"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153186"
 ---
 # <a name="what-is-avere-vfxt-for-azure"></a>什麼是 Avere vFXT for Azure？
 
@@ -46,7 +46,7 @@ Avere vFXT 有助於執行各種讀取密集的運算工作：
 
 Avere vFXT 可讓研究人員在 Azure 計算中執行次級分析工作流程，以及隨處存取基因資料。
 
-在醫藥研究的領域中，Avere vFXT 叢集協助研究人員預測藥物與標的的交互作用及分析研究資料，進而加速藥物開發的進程。
+在醫藥研究的領域中，Avere vFXT 叢集協助研究人員預測藥物與標的交互作用及分析研究資料，進而加速藥物開發的進程。
 
 ### <a name="financial-services-analytics"></a>金融服務分析
 

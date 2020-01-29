@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: 本快速入門說明如何使用 Azure Dev Spaces 和 Visual Studio Code 對 Azure Kubernetes Service 上的 Node.js 應用程式進行偵錯和快速反覆運算
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: f96806828b2169e9022b1eaf2ec1819879c729ab
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 557e5a541b175f1641142779de23bb83ab212831
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867711"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290504"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-nodejs---azure-dev-spaces"></a>快速入門：使用 Visual Studio Code 和 Node.js 在 Kubernetes 上偵錯和逐一查看 - Azure Dev Spaces
 

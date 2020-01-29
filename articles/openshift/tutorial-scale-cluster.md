@@ -1,19 +1,17 @@
 ---
-title: 教學課程 - 調整 Azure Red Hat OpenShift 叢集 | Microsoft Docs
+title: 教學課程 - 調整 Azure Red Hat OpenShift 叢集
 description: 了解如何使用 Azure CLI 調整 Microsoft Azure Red Hat OpenShift 叢集
-services: container-service
 author: jimzim
 ms.author: jzim
-manager: jeconnoc
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 05/06/2019
-ms.openlocfilehash: deb136a70c24cb7bd1b6c60505cc6ab0376a7b02
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: bf9172f0c84834c951446520ff0bfcc3ef756c9c
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672427"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278314"
 ---
 # <a name="tutorial-scale-an-azure-red-hat-openshift-cluster"></a>教學課程：調整 Azure Red Hat OpenShift 叢集
 
@@ -30,13 +28,13 @@ ms.locfileid: "67672427"
 > * 調整 Azure Red Hat OpenShift 叢集
 > * [刪除 Azure Red Hat OpenShift 叢集](tutorial-delete-cluster.md)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始進行本教學課程之前：
 
 * 依照[建立 Azure Red Hat OpenShift 叢集](tutorial-create-cluster.md)教學課程的指示建立叢集。
 
-## <a name="step-1-sign-in-to-azure"></a>步驟 1：登入 Azure
+## <a name="step-1-sign-in-to-azure"></a>步驟 1:登入 Azure
 
 如果您是在本機執行 Azure CLI，請執行 `az login` 以登入 Azure。
 
@@ -46,7 +44,7 @@ az login
 
 如果您可存取多個訂用帳戶，請執行 `az account set -s {subscription ID}` 並以您要使用的訂用帳戶取代 `{subscription ID}`。
 
-## <a name="step-2-scale-the-cluster-with-additional-nodes"></a>步驟 2：以額外的節點調整叢集
+## <a name="step-2-scale-the-cluster-with-additional-nodes"></a>步驟 2:以額外的節點調整叢集
 
 從 Bash 終端機，將 CLUSTER_NAME 變數設為您的叢集名稱：
 

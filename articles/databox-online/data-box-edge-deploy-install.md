@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 05/31/2019
+ms.date: 01/17/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Data Box Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 0a9939155d92897019dc1ad5651d249cda11b993
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: fe74db34e62a80935954c6cfc2e591d49a84b0b7
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66476927"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263943"
 ---
 # <a name="tutorial-install-azure-data-box-edge"></a>教學課程：安裝 Azure Data Box Edge
 
@@ -22,14 +22,14 @@ ms.locfileid: "66476927"
 
 安裝大約需要兩小時才能完成。
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 打開裝置包裝
 > * 以機架掛接裝置
 > * 接上裝置纜線
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 安裝實體裝置的必要條件如下：
 
@@ -86,7 +86,7 @@ ms.locfileid: "66476927"
 > Data Box Edge 裝置需要機架掛接才能正常運作。
 
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 - 開始之前，請閱讀「安全、環境和法規資訊手冊」中的安全指示。 此手冊隨附於裝置。
 - 開始在最靠近機架機箱底部的配置空間中安裝滑軌。
@@ -154,21 +154,10 @@ ms.locfileid: "66476927"
 
     ![嚙合及解除閉合閂鎖](./media/data-box-edge-deploy-install/engaging-releasing-slam-latch.png)
 
-### <a name="route-the-cables"></a>配置纜線
-
-> [!NOTE]
->  如果您並未訂購選用的纜線整理支架 (CMA)，請使用滑軌套件中提供的兩個黏扣帶，將纜線配置在系統的背面。
-
-1. 在兩個機架凸緣的內側找到外部 CMA 托架。
-2. 輕輕收整纜線，將纜線從系統連接器拉左右兩側。
-3. 將黏扣帶穿過系統每側外部 CMA 托架的插槽來固定纜線束。
-
-
-    ![配置纜線](./media/data-box-edge-deploy-install/routing-cables.png)
 
 ## <a name="cable-the-device"></a>接上裝置纜線
 
-下列程序說明如何為 Data Box Edge 裝置接上電源線和網路線。
+配置纜線，然後將裝置接上纜線。 下列程序說明如何為 Data Box Edge 裝置接上電源線和網路線。
 
 開始為裝置接上纜線之前，您需要下列項目：
 

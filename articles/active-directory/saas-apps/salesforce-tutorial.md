@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 12/23/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71521348c5510696add4399d3046833d3b42193c
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 8d0793c863f4f682c967c7a5ae61c5a0b78cdb4d
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561879"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292530"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Salesforce 整合
 
@@ -50,6 +50,7 @@ ms.locfileid: "75561879"
 * Salesforce 支援 **Just In Time** 使用者佈建
 
 * Salesforce 行動應用程式現在可以搭配 Azure AD 設定來啟用 SSO。 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
+* 設定 Salesforce 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-salesforce-from-the-gallery"></a>從資源庫新增 Salesforce
 
@@ -241,3 +242,7 @@ ms.locfileid: "75561879"
 - [設定使用者佈建](salesforce-provisioning-tutorial.md)
 
 - [嘗試搭配 Azure AD 使用 Salesforce](https://aad.portal.azure.com)
+
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/protect-salesforce)
+
+- [如何使用進階可見性和控制項保護 Salesforce](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

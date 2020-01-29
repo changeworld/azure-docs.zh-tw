@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e03aa99e53f4aa2c646dc425a18d848539d537b0
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: effd0593384190eb1a1cf261305dd61818c3d0b0
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768158"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120737"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>教學課程：Azure Active Directory 與 HackerOne 整合
 
@@ -107,7 +107,7 @@ HackerOne 與 Azure AD 整合提供下列優點：
 
     ![HackerOne 網域與 URL 單一登入資訊](common/sp-identifier.png)
 
-    a. 在 [登入 URL]  文字方塊中，輸入下列內容：`https://hackerone.com/users/saml/auth`
+    a. 在 [登入 URL]  文字方塊中，輸入下列內容：`https://hackerone.com/users/saml/sign_in?email=<configured domain>`
 
     b. 在 [識別碼 (實體識別碼)]  文字方塊中，輸入下列內容：`hackerone.com`
 
@@ -155,7 +155,13 @@ HackerOne 與 Azure AD 整合提供下列優點：
 
     a. 按一下 [執行測試]  。
 
-    b. 如果 [狀態]  欄位的值等於 [上次測試狀態: 已建立]  ，請連絡您的 [HackerOne 支援小組](mailto:support@hackerone.com)，以要求檢閱您的設定。
+6. 當測試順利完成，且 [狀態]  欄位顯示 [上次測試狀態：成功]  時，請選取 [要求驗證]  按鈕，以提交至 HackerOne 進行核准。
+
+    ![提交至 HackerOne 進行核准](./media/hackerone-tutorial/tutorial-hackerone-006.png)
+
+7. 在 HackerOne 核准設定後，您可以選取 [遷移使用者]  按鈕，以要求所有使用者進行 SSO 驗證。
+
+    ![啟用 SAML](./media/hackerone-tutorial/tutorial-hackerone-007.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 
@@ -174,7 +180,7 @@ HackerOne 與 Azure AD 整合提供下列優點：
     ![[使用者] 對話方塊](common/user-properties.png)
 
     a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
-  
+
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 

@@ -1,7 +1,7 @@
 ---
-title: 範例：即時影片分析 - 臉部 API
+title: 範例：即時影片分析 - 臉部
 titleSuffix: Azure Cognitive Services
-description: 使用臉部 API，在從即時影片串流中擷取的畫面上，執行近乎即時的分析。
+description: 使用臉部辨識服務，對擷取自即時影片串流的畫面執行近乎即時的分析。
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: e2166354fb45d24e117156e917f4da726ee8406f
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: ab3f596000216e8555bb84d0d47aff9a6e969eeb
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114335"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169892"
 ---
 # <a name="example-how-to-analyze-videos-in-real-time"></a>範例：如何即時分析影片
 
@@ -142,7 +142,7 @@ while (true)
 
 此程式庫包含 FrameGrabber 類別，它會實作上述的「產生者-取用者」系統，以處理來自網路攝影機的影片畫面。 使用者可以指定 API 呼叫的確切形式，而該類別則會使用事件，在取得新畫面或有新分析結果可供使用時，通知呼叫程式碼。
 
-為了說明一些可能性，以下列舉兩個使用此程式庫的範例應用程式。 第一個是一個簡易主控台應用程式，以下是重新產生的簡化版。 它會從預設的網路攝影機抓取畫面，然後提交給「臉部 API」來進行臉部偵測。
+為了說明一些可能性，以下列舉兩個使用此程式庫的範例應用程式。 第一個是一個簡易主控台應用程式，以下是重新產生的簡化版。 此應用程式會從預設的網路攝影機抓取畫面，然後提交給臉部辨識服務進行臉部偵測。
 
 ```csharp
 using System;
@@ -159,7 +159,7 @@ namespace VideoFrameConsoleApplication
             // Create grabber, with analysis type Face[]. 
             FrameGrabber<Face[]> grabber = new FrameGrabber<Face[]>();
             
-            // Create Face API Client. Insert your Face API key here.
+            // Create Face Client. Insert your Face API key here.
             private readonly IFaceClient faceClient = new FaceClient(
             new ApiKeyServiceClientCredentials("<subscription key>"),
             new System.Net.Http.DelegatingHandler[] { });
@@ -203,19 +203,18 @@ namespace VideoFrameConsoleApplication
 
 1. 從[訂用帳戶](https://azure.microsoft.com/try/cognitive-services/)取得「視覺 API」的 API 金鑰。 若要進行影片畫面分析，適用的 API 包括：
     - [電腦視覺 API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)
-    - [表情 API](https://docs.microsoft.com/azure/cognitive-services/emotion/home) \(英文\)
     - [臉部 API](https://docs.microsoft.com/azure/cognitive-services/face/overview)
 
 2. 複製 [Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) \(英文\) GitHub 存放庫
 
 3. 在 Visual Studio 2015 中開啟範例，然後建置並執行範例應用程式：
-    - 就 BasicConsoleSample 而言，「臉部 API」金鑰會直接以硬式編碼編寫在  [BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs) 中。
+    - 就 BasicConsoleSample 而言，臉部金鑰會直接以硬式編碼編寫在  [BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs) 中。
     - 就 LiveCameraSample 而言，應該在應用程式的 [設定] 窗格中輸入金鑰。 這些金鑰會以使用者資料的形式跨工作階段保存。
         
 
 當您做好整合準備時，請**從自己的專案參考 VideoFrameAnalyzer 程式庫**。 
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
 在本指南中，您已了解如何使用「臉部」、「電腦視覺」和「表情」API，在即時視訊資料流上執行近乎即時的分析，以及如何使用我們的範例程式碼來開始設計程式。 您可以使用 [Azure 認知服務註冊頁面](https://azure.microsoft.com/try/cognitive-services/)的免費 API 金鑰來開始建置應用程式。 
 
@@ -223,4 +222,4 @@ namespace VideoFrameConsoleApplication
 
 ## <a name="related-topics"></a>相關主題
 - [如何識別影像中的人臉](HowtoIdentifyFacesinImage.md)
-- [如何偵測影像中的臉部](HowtoDetectFacesinImage.md)
+- [如何偵測影像中的人臉](HowtoDetectFacesinImage.md)

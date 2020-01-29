@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/13/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38d40a2f72e73dde0f99ebbc9701e02c8d03738b
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: d49915271580b5665981bf7e212f3d5712c86456
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989495"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292974"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-successfactors"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 SuccessFactors 整合
 
@@ -33,7 +32,7 @@ ms.locfileid: "68989495"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -44,7 +43,8 @@ ms.locfileid: "68989495"
 
 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
 
-* SuccessFactors 支援 **SP** 起始的 SSO
+* SuccessFactors 支援由 **SP** 起始的 SSO。
+* 設定 SuccessFactors 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-successfactors-from-the-gallery"></a>從資源庫新增 SuccessFactors
 
@@ -250,6 +250,10 @@ ms.locfileid: "68989495"
 - [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [嘗試 SuccessFactors 搭配 Azure AD](https://aad.portal.azure.com)
+
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [如何使用進階可見性和控制項保護 SuccessFactors](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 <!--Image references-->
 

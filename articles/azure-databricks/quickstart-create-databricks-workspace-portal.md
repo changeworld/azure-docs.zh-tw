@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.date: 05/08/2019
 ms.custom: mvc
-ms.openlocfilehash: 452efd5c790244ff035f06673342a36522db9580
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: e212c95a827b01485d4bdfdc557e459a92162c88
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889022"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263197"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站在 Azure Databricks 上執行 Spark 作業
 
@@ -54,11 +54,8 @@ ms.locfileid: "75889022"
     |**資源群組**     | 指定您是要建立新的資源群組，還是使用現有資源群組。 資源群組是存放 Azure 方案相關資源的容器。 如需詳細資訊，請參閱 [Azure 資源群組概觀](../azure-resource-manager/management/overview.md)。 |
     |**位置**     | 選取 [美國西部 2]  。 如需其他可用的區域，請參閱[依區域提供的 Azure 服務](https://azure.microsoft.com/regions/services/)。        |
     |定價層      |  選擇 [標準]  、[進階]  或 [試用]  。 如需這些定價層的詳細資訊，請參閱 [Databricks 定價頁面](https://azure.microsoft.com/pricing/details/databricks/)。       |
-    |**虛擬網路**     |  選擇在您自己的虛擬網路 (VNet) 中部署 Azure Databricks 工作區。 如需詳細資訊，請參閱[在 Azure 虛擬網路中部署 Azure Databricks (VNet 插入)](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject)。        |
 
-    選取 [建立]  。
-
-4. 工作區建立需要幾分鐘的時間。 在工作區建立期間，您可以在 [通知]  中檢視部署狀態。
+4. 選取 [檢閱 + 建立]  ，然後選取 [建立]  。 工作區建立需要幾分鐘的時間。 在工作區建立期間，您可以在 [通知]  中檢視部署狀態。
 
     ![Databricks 部署圖格](./media/quickstart-create-databricks-workspace-portal/databricks-deployment-tile.png "Databricks 部署圖格")
 

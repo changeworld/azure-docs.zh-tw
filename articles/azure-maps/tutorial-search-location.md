@@ -1,20 +1,20 @@
 ---
 title: 教學課程：在地圖上搜尋附近位置 | Microsoft Azure 地圖服務
-description: 在本教學課程中，您將了解如何使用 Microsoft Azure 地圖服務，在地圖上搜尋附近的位置 (景點)。
+description: 在本教學課程中，您將了解如何使用 Microsoft Azure 地圖服務在地圖上搜尋景點。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 11/12/2019
+ms.date: 1/15/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 65a091dbe935967d63a11c3c40dd834207f34782
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 974a60bafb3e9be56618824d6205d21c364d6601
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910816"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153015"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>教學課程：使用 Azure 地圖服務來搜尋附近景點
 
@@ -69,7 +69,7 @@ ms.locfileid: "75910816"
 
 ## <a name="create-a-new-map"></a>建立新的地圖
 
-地圖控制項 API 是很方便的用戶端程式庫，可讓您輕鬆地將地圖服務整合到 Web 應用程式中。 它會隱藏裸機 REST 服務呼叫的複雜度，並使用可設定樣式和可自訂的元件提升生產力。 下列步驟顯示如何建立內嵌地圖控制項 API 的靜態 HTML 網頁。
+地圖控制項 API 是一個方便的用戶端程式庫。 此 API 可讓您輕鬆地將地圖服務整合到 Web 應用程式中。 它會隱藏裸機 REST 服務呼叫的複雜度，並使用可自訂的元件提升您的生產力。 下列步驟顯示如何建立內嵌地圖控制項 API 的靜態 HTML 網頁。
 
 1. 在您的本機機器上建立新檔案，並將其命名為 **MapSearch.html**。
 2. 在檔案中新增下列 HTML 元件：
@@ -133,7 +133,7 @@ ms.locfileid: "75910816"
 
    此區段會為 Azure 地圖服務帳戶金鑰初始化地圖控制項 API。 `atlas` 是包含 API 和相關視覺效果元件的命名空間。 `atlas.Map` 可供控制視覺化互動式網路地圖。
 
-4. 將變更儲存至檔案，並在瀏覽器中開啟 HTML 網頁。 這是您可以藉由呼叫 `atlas.Map` 和使用帳戶金鑰來建立的最基本地圖。
+4. 將變更儲存至檔案，並在瀏覽器中開啟 HTML 網頁。 顯示的地圖是您可以藉由呼叫 `atlas.Map` 和使用帳戶金鑰來建立的最基本地圖。
 
    ![檢視地圖](./media/tutorial-search-location/basic-map.png)
 
@@ -163,7 +163,7 @@ ms.locfileid: "75910816"
     });
     ```
 
-   在此程式碼區段中，`ready` 事件會新增至地圖，而此事件將在地圖資源已載入且地圖可供存取時引發。 在地圖 `ready` 事件處理常式中，會建立資料來源以儲存結果資料。 系統會建立符號圖層，並將其附加至資料來源。 此圖層會指定應如何呈現資料來源中的結果資料，在此案例中，會在結果座標中央加上深藍色圓釘圖示，而允許其他圖示重疊。 結果圖層會新增至地圖圖層。
+   在此程式碼區段中，`ready` 事件會新增至地圖，而此事件將在地圖資源已載入且地圖可供存取時引發。 在地圖 `ready` 事件處理常式中，會建立資料來源以儲存結果資料。 系統會建立符號圖層，並將其附加至資料來源。 此圖層會指定結果資料在資料來源中的呈現方式。 在此案例中，呈現結果時會在結果座標中央加上深藍色圓釘圖示，且允許其他圖示重疊。 結果圖層會新增至地圖圖層。
 
 <a id="usesearch"></a>
 
@@ -215,7 +215,7 @@ ms.locfileid: "75910816"
     });
     ```
 
-3. 儲存 **MapSearch.html** 檔案並重新整理瀏覽器。 您現在應該會看到地圖以西雅圖為中心，並以藍色圓形圖釘標示出該區域內的加油站位置。
+3. 儲存 **MapSearch.html** 檔案並重新整理瀏覽器。 您應該會看到地圖以西雅圖為中心，並以藍色圓形圖釘表示該區域內的加油站位置。
 
    ![檢視地圖與搜尋結果](./media/tutorial-search-location/pins-map.png)
 
@@ -229,9 +229,9 @@ ms.locfileid: "75910816"
 
 ## <a name="add-interactive-data"></a>新增互動式資料
 
-我們到目前為止所建立的地圖只會查看搜尋結果的經緯度資料。 但如果您看一下地圖服務的搜尋服務所傳回的原始 JSON，就會看到它包含每個加油站的其他資訊，包括名稱和街道地址。 您可以使用互動式快顯方塊將該資料合併到地圖中。
+我們到目前為止所建立的地圖只會查看搜尋結果的經緯度資料。 但地圖服務的搜尋服務所傳回的原始 JSON 會包含每個加油站的其他資訊。 包括名稱和街道地址在內。 您可以使用互動式快顯方塊將該資料合併到地圖中。
 
-1. 在查詢模糊搜尋服務的程式碼後面，在地圖 `ready` 事件處理常式中新增以下幾行程式碼。 這會建立快顯視窗的執行個體，並將滑鼠停駐事件新增至符號圖層。
+1. 在查詢模糊搜尋服務的程式碼後面，在地圖 `ready` 事件處理常式中新增以下幾行程式碼。 此程式碼會建立快顯視窗的執行個體，並將滑鼠停駐事件新增至符號圖層。
 
     ```JavaScript
    //Create a popup but leave it closed so we can update it and display it later.

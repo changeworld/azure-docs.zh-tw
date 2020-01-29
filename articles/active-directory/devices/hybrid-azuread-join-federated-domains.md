@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1f5c837f1912df407960fca41387eb84986381e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 28d6e5362df9f41822525af0d256cfd99568d6de
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423159"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512125"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>教學課程：設定適用於同盟網域的混合式 Azure Active Directory Join
 
@@ -155,6 +155,9 @@ ms.locfileid: "75423159"
 - 設定裝置註冊的近端內部網路設定
 - 為舊版 Windows 電腦安裝 Microsoft Workplace Join
 
+> [!NOTE]
+> Windows 7 支援已於 2020 年 1 月 14 日終止。 如需詳細資訊，請參閱 [Windows 7 的支援已終止](https://support.microsoft.com/en-us/help/4057281/windows-7-support-ended-on-january-14-2020)。
+
 ### <a name="configure-the-local-intranet-settings-for-device-registration"></a>設定裝置註冊的近端內部網路設定
 
 若要順利完成舊版 Windows 裝置的混合式 Azure AD Join，並避免在裝置向 Azure AD 進行驗證時出現憑證提示，您可以將原則推送到已加入網域的裝置，以在 Internet Explorer 中將下列 URL 新增至近端內部網路區域︰
@@ -169,7 +172,7 @@ ms.locfileid: "75423159"
 
 若要註冊舊版 Windows 裝置，組織必須安裝[適用於非 Windows 10 電腦的 Microsoft Workplace Join](https://www.microsoft.com/download/details.aspx?id=53554)。 適用於非 Windows 10 電腦的 Microsoft Workplace Join 可在 Microsoft 下載中心取得。
 
-您可以使用軟體發佈系統 (例如  [System Center Configuration Manager](https://www.microsoft.com/cloud-platform/system-center-configuration-manager)) 來部署此套件。 此套件支援使用 `quiet` 參數的標準無訊息安裝選項。 組態管理員的目前分支會提供勝過舊版的好處，例如能夠追蹤已完成的註冊。
+您可以使用軟體發佈系統 (例如  [Microsoft Endpoint Configuration Manager](https://docs.microsoft.com/configmgr/)) 來部署此套件。 此套件支援使用 `quiet` 參數的標準無訊息安裝選項。 組態管理員的目前分支會提供勝過舊版的好處，例如能夠追蹤已完成的註冊。
 
 安裝程式會在系統上建立排定的工作，此工作是在使用者內容中執行。 此工作會在使用者登入 Windows 時觸發。 此工作會在使用 Azure AD 進行驗證之後，利用使用者認證以無訊息方式向 Azure AD 加入裝置。
 

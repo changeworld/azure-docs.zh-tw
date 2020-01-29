@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: 5b44bfd94dffa14fcd501f5e0ddea11309adabf6
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 40ec859802da2f00154e750ea717da3da0f46568
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907849"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512839"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>教學課程：在 Front Door 自訂網域上設定 HTTPS
 
@@ -33,7 +33,7 @@ ms.locfileid: "69907849"
 
 - 可使用完整憑證管理：為您處理所有憑證採購及管理。 憑證會在到期之前自動佈建並更新，進而消除因為憑證到期而中斷服務的風險。
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 > [!div class="checklist"]
 > - 在您的自訂網域上啟用 HTTPS 通訊協定。
 > - 使用 AFD 受控憑證 
@@ -44,7 +44,7 @@ ms.locfileid: "69907849"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 您必須先建立 Front Door 和至少一個已上架的自訂網域，才能完成本教學課程中的步驟。 如需詳細資訊，請參閱[教學課程：將自訂網域新增到您的 Front Door](front-door-custom-domain.md)。
 
@@ -72,7 +72,7 @@ ms.locfileid: "69907849"
 
 ### <a name="option-2-use-your-own-certificate"></a>選項 2：使用您自己的憑證
 
-您可以使用自己的憑證啟用 HTTPS 功能。 此程序會透過與 Azure Key Vault 的整合來進行，因為此一整合可讓您安全地儲存憑證。 Azure Front Door Service 使用此安全機制來取得您的憑證，為此您需要執行一些額外步驟。 當您建立 SSL 憑證時，您必須使用允許的憑證授權單位 (CA) 來加以建立。 否則，如果您使用非允許的 CA，系統會拒絕您的要求。 如需允許 CA 的清單，請參閱[可在 Azure Front Door Service 上啟用自訂 HTTPS 的允許憑證授權單位](front-door-troubleshoot-allowed-ca.md)。
+您可以使用自己的憑證啟用 HTTPS 功能。 此程序會透過與 Azure Key Vault 的整合來進行，而讓您可以安全地儲存您的憑證。 Azure Front Door Service 使用此安全機制來取得您的憑證，為此您需要執行一些額外步驟。 當您建立 SSL 憑證時，您必須使用允許的憑證授權單位 (CA) 來加以建立。 否則，如果您使用非允許的 CA，系統會拒絕您的要求。 如需允許 CA 的清單，請參閱[可在 Azure Front Door Service 上啟用自訂 HTTPS 的允許憑證授權單位](front-door-troubleshoot-allowed-ca.md)。
 
 #### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>準備您的 Azure Key Vault 帳戶和憑證
  
@@ -91,7 +91,7 @@ ms.locfileid: "69907849"
 透過 PowerShell，在您的 Azure Active Directory 中將 Azure Front Door Service 的服務主體作為應用程式註冊。
 
 > [!NOTE]
-> 每個租用戶只需要執行**一次**此動作。
+> 此動作需要全域管理員權限，每個租用戶只需要執行**一次**。
 
 1. 如有需要，請在本機電腦的 PowerShell 中安裝 [Azure PowerShell](/powershell/azure/install-az-ps)。
 
@@ -105,7 +105,7 @@ ms.locfileid: "69907849"
 
 1. 在您的金鑰保存庫帳戶中，於 [設定] 之下選取 [存取原則]  ，然後選取 [新增]  以建立新原則。
 
-2. 在 [選取主體]  中，搜尋 **ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037**，然後選擇 [Microsoft.Azure.Frontdoor]  。 按一下 [選取]  。
+2. 在 [選取主體]  中，搜尋 **ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037**，然後選擇 [Microsoft.Azure.Frontdoor]  。 按一下 [選取]。 
 
 3. 在 [祕密權限]  中選取 [取得]  ，以允許 Front Door 擷取憑證。
 
@@ -147,7 +147,7 @@ ms.locfileid: "69907849"
 
 您的 CNAME 記錄應該採用下列格式，其中「名稱」  是您的自訂網域名稱，而「值」  則是您的 Front Door 預設 .azurefd.net 主機名稱：
 
-| Name            | 類型  | 值                 |
+| 名稱            | 類型  | 值                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azurefd.net |
 
@@ -176,7 +176,7 @@ webmaster@&lt;your-domain-name.com&gt;
 hostmaster@&lt;your-domain-name.com&gt;  
 postmaster@&lt;your-domain-name.com&gt;  
 
-您應該會在幾分鐘之內收到邀請您核准要求的電子郵件，如以下範例所示。 如果您使用垃圾郵件篩選器，請將 admin@digicert.com 加入允許清單。 如果您未在 24 小時內收到驗證電子郵件，請連絡 Microsoft 支援服務。
+您應該會在幾分鐘之內收到請求您核准要求的電子郵件，如以下範例所示。 如果您使用垃圾郵件篩選器，請將 admin@digicert.com 加入允許清單。 如果您未在 24 小時內收到驗證電子郵件，請連絡 Microsoft 支援服務。
 
 當您按一下核准連結時，系統會將您導向線上核准表單。 遵循表單上的指示；您有兩個驗證選項：
 
@@ -192,7 +192,7 @@ postmaster@&lt;your-domain-name.com&gt;
 
 ### <a name="operation-progress"></a>作業進度
 
-下表指出啟用 HTTPS 時的作業進度。 啟用 HTTPS 之後，四個作業步驟會出現在 [自訂網域] 對話方塊中。 隨著每個步驟變成作用中狀態，其他子步驟詳細資料會在步驟進行時顯示於下方。 並非所有這些子步驟都會發生。 當步驟成功完成時，旁邊會出現綠色的核取記號。 
+下表列出停用 HTTPS 時的作業進度。 啟用 HTTPS 之後，四個作業步驟會出現在 [自訂網域] 對話方塊中。 隨著每個步驟變成作用中狀態，其他子步驟詳細資料會在步驟進行時顯示於下方。 並非所有這些子步驟都會發生。 各個步驟完成時，旁邊都會出現一個綠色的核取記號。 
 
 | 作業步驟 | 作業子步驟詳細資料 | 
 | --- | --- |
@@ -236,7 +236,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 #### <a name="operation-progress"></a>作業進度
 
-下表指出停用 HTTPS 時的作業進度。 停用 HTTPS 之後，三個作業步驟會出現在 [自訂網域] 對話方塊中。 隨著每個步驟變成作用中狀態，其他詳細資料會顯示在步驟下方。 當步驟成功完成時，旁邊會出現綠色的核取記號。 
+下表指出停用 HTTPS 時的作業進度。 停用 HTTPS 之後，三個作業步驟會出現在 [自訂網域] 對話方塊中。 隨著每個步驟變成作用中狀態，其他詳細資料會顯示在步驟下方。 各個步驟完成時，旁邊都會出現一個綠色的核取記號。 
 
 | 作業進度 | 作業詳細資料 | 
 | --- | --- |

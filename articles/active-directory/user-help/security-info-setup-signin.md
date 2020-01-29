@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 08/05/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 710e43aec82c5d154b2e17a20abb2ce4dd481129
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: f75cea566a09a1f4e147b999ad7d2c2d7ea80f29
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278988"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156109"
 ---
 # <a name="set-up-your-security-info-preview-from-a-sign-in-prompt"></a>經由登入提示設定安全性資訊 (預覽)
 
@@ -26,6 +26,19 @@ ms.locfileid: "74278988"
 只有在您尚未設定組織所要求的安全性資訊時，才會看到此提示。 如果您先前已設定安全性資訊，但想要進行變更，您可以參考以方法歸類的操作說明文章，並依照其中的步驟操作。 如需詳細資訊，請參閱[新增或更新安全性資訊概觀](security-info-add-update-methods-overview.md)。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
+
+## <a name="security-verification-versus-password-reset-authentication"></a>安全性驗證與密碼重設驗證
+
+雙因素安全性驗證和密碼重設都會使用安全性資訊方法。 不過，並非所有方法都同時適用於這兩者。
+
+| 方法 | 用於 |
+| ------ | -------- |
+| 驗證器應用程式 | 雙因素驗證與密碼重設驗證。 |
+| 簡訊 | 雙因素驗證與密碼重設驗證。 |
+| 電話 | 雙因素驗證與密碼重設驗證。 |
+| 安全性金鑰 | 雙因素驗證與密碼重設驗證。 |
+| 電子郵件帳戶 | 僅適用於密碼重設驗證。 您必須選擇另一種方法來進行雙因素驗證。 |
+| 安全性問題 | 僅適用於密碼重設驗證。 您必須選擇另一種方法來進行雙因素驗證。 |
 
 ## <a name="sign-in-to-your-work-or-school-account"></a>登入您的公司或學校帳戶
 
@@ -45,7 +58,7 @@ ms.locfileid: "74278988"
    > [!Note]
    > 如果您想要使用 Microsoft Authenticator 應用程式以外的驗證器應用程式，請選取 [我想要使用其他驗證器應用程式]  連結。
    >
-   > 如果您的組織允許您選擇驗證器應用程式以外的方法，您可以選取 [我想要設定其他方法]  連結。
+   > 如果您的組織允許您選擇驗證器應用程式以外的方法，您可以選取 [我想要設定其他方法連結]  。
 
     ![顯示驗證器應用程式下載頁面的保護帳戶精靈](media/security-info/securityinfo-prompt-get-auth-app.png)
 
@@ -154,4 +167,4 @@ ms.locfileid: "74278988"
 
 - 如果您遺失或忘記密碼，請從[密碼重設入口網站](https://passwordreset.microsoftonline.com/)或遵循[重設公司或學校密碼](active-directory-passwords-update-your-own-password.md)一文中的步驟來重設密碼。
 
-- 在[無法登入 Microsoft 帳戶](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)一文中，取得登入問題的疑難排解秘訣和說明。
+- 在[無法登入 Microsoft 帳戶](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)一文中取得登入問題的疑難排解秘訣和說明。
