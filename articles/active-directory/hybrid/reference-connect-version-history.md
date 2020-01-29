@@ -12,12 +12,12 @@ ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b03833a3e1dd5ee9a3268e19166891243df1b98
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6ba7ba4be103beb494c31a844d1871c22c25b8c6
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422350"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756295"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect︰版本發行歷程記錄
 Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 Azure AD Connect。 並非所有新增項目都適用於所有的對象。
@@ -84,6 +84,8 @@ Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 
 ### <a name="fixed-issues"></a>已修正的問題
 
 在某些情況下，已自動升級至版本1.4.18.0 的伺服器不會在升級完成之後重新啟用自助式密碼重設和密碼回寫。 這個自動升級版本會修正該問題，並重新啟用自助式密碼重設和密碼回寫。
+
+我們已修正未正確處理代理字元的同步錯誤壓縮公用程式中的 bug。
 
 ## <a name="14180"></a>1.4.18.0
 

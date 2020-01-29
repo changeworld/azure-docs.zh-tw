@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 09/26/2019
+ms.date: 01/23/2020
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 7e98fd089ce8ec1285232840a40bb42ac5b81446
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
-ms.translationtype: MT
+ms.openlocfilehash: e56722831ef05364b8ee4d342553158fba19ffaa
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795432"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760720"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>疑難排解 QnA Maker
 
@@ -26,8 +26,8 @@ ms.locfileid: "73795432"
 
 ## <a name="how-to-get-the-qnamaker-service-endpoint"></a>如何取得 QnAMaker 服務端點
 
-當您聯繫 QnAMaker 支援或 UserVoice 時，QnAMaker 服務端點適用于偵錯工具。 端點是下列格式的 URL： https://your-resource-name.azurewebsites.net。
-    
+當您聯繫 QnAMaker 支援或 UserVoice 時，QnAMaker 服務端點適用于偵錯工具。 端點是下列格式的 URL： https://your-resource-name.azurewebsites.net 。
+
 1. 在 [Azure 入口網站](https://portal.azure.com)中移至 QnAMaker 服務 (資源群組)
 
     ![Azure 入口網站中的 QnAMaker Azure 資源群組](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-resourcegroup.png)
@@ -39,21 +39,21 @@ ms.locfileid: "73795432"
 1. [總覽] 區段提供端點 URL
 
     ![QnAMaker 端點](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-gethostname.png)
-    
+
 
 ## <a name="use-the-help-bot-in-the-qna-maker-portal"></a>使用 QnA Maker 入口網站中的說明 bot
 
-QnA Maker 會在 QnA Maker 入口網站中提供**協助**bot，協助您。 您可以在每個網頁上取得說明 bot。 Bot 會使用 QnA Maker 來提供解答，並提供[ C# bot Framework 程式碼專案](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-support)給 bot，讓您可以快速啟動並執行自己的回應 bot。 
+QnA Maker 會在 QnA Maker 入口網站中提供**協助**bot，協助您。 您可以在每個網頁上取得說明 bot。 Bot 會使用 QnA Maker 來提供解答，並提供[ C# bot Framework 程式碼專案](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-support)給 bot，讓您可以快速啟動並執行自己的回應 bot。
 
 ![![QnA Maker 在 QnA Maker 入口網站中提供可協助您的 * * 說明 * * bot。](./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png)](./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png#lightbox)
 
 ## <a name="manage-the-knowledge-base"></a>管理知識庫
 
-### <a name="i-accidentally-deleted-a-part-of-my-qna-maker-what-should-i-do"></a>我不小心刪除了一部分的 QnA Maker，該怎麼辦？ 
+### <a name="i-accidentally-deleted-a-part-of-my-qna-maker-what-should-i-do"></a>我不小心刪除了一部分的 QnA Maker，該怎麼辦？
 
 請勿刪除與 QnA Maker 資源一起建立的任何 Azure 服務，例如搜尋或 Web 應用程式。 這些是 QnA Maker 運作的必要項，如果您刪除一個，QnA Maker 將會停止正常運作。
 
-所有刪除都是永久的，包括問答組、檔案、URL、自訂問答、知識庫或 Azure 資源。 務必先從 [設定] 頁面匯出知識庫，再刪除知識庫的任何部分。 
+所有刪除都是永久的，包括問答組、檔案、URL、自訂問答、知識庫或 Azure 資源。 務必先從 [設定] 頁面匯出知識庫，再刪除知識庫的任何部分。
 
 ### <a name="why-is-my-urlsfiles-not-extracting-question-answer-pairs"></a>為何我的 URL/檔案不會擷取問答組？
 
@@ -71,7 +71,7 @@ QnA Maker 會在 QnA Maker 入口網站中提供**協助**bot，協助您。 您
 
 共用會在 QnA Maker 服務層級上運作，也就是說，將會共用服務中的所有知識庫。 請參閱[這裡](./How-To/collaborate-knowledge-base.md)以了解如何在知識庫上共同作業。
 
-### <a name="can-you-share-a-knowledge-base-with-a-contributor-that-is-not-in-the-same-aad-tenant-to-modify-a-knowledge-base"></a>是否可以與不屬於相同 AAD 租用戶的參與者共用知識庫，以修改該知識庫？ 
+### <a name="can-you-share-a-knowledge-base-with-a-contributor-that-is-not-in-the-same-aad-tenant-to-modify-a-knowledge-base"></a>是否可以與不屬於相同 AAD 租用戶的參與者共用知識庫，以修改該知識庫？
 
 共用是以 Azure 角色型存取控制 (RBAC) 為基礎。 如果您可以與另一個使用者共用 Azure 中的「任何」資源，便代表您也可以共用 QnA Maker。
 
@@ -97,15 +97,19 @@ QnA Maker 會在 QnA Maker 入口網站中提供**協助**bot，協助您。 您
 
 如需詳細資訊，請參閱[資料來源位置](./Concepts/data-sources-supported.md#data-source-locations)。
 
-### <a name="the-updates-that-i-made-to-my-knowledge-base-are-not-reflected-on-publish-why-not"></a>我對知識庫所做的更新並未在發佈時反映。 為什麼？
+### <a name="the-updates-that-i-made-to-my-knowledge-base-are-not-reflected-on-publish-why-not"></a>我對知識庫所做的更新並未在發佈時反映。 為何會這樣呢？
 
 無論是資料表更新、測試或設定，每個編輯作業都必須先儲存才能加以發佈。 每次編輯作業之後，請務必按一下 [**儲存並定型**] 按鈕。
 
 ### <a name="does-the-knowledge-base-support-rich-data-or-multimedia"></a>知識庫是否支援豐富的資料或多媒體？
 
-知識庫支援 Markdown。 然而，URL 的自動擷取限制了從 HTML 轉換至 Markdown 的功能。 您可直接在資料表中修改內容或使用豐富內容上傳知識庫，即可使用完備的 Markdown。
+#### <a name="multimedia-auto-extraction-for-files-and-urls"></a>檔案和 Url 的多媒體自動解壓縮
 
-目前並不支援多媒體 (例如影像和視訊)。
+* URL-有限的 HTML 對 Markdown 轉換功能。
+* 檔案-不支援
+
+#### <a name="answer-text-in-markdown"></a>在 markdown 中回答文字
+一旦 QnA 集位於知識庫中，您就可以編輯答案的 markdown 文字，以包含可從公用 Url 取得之媒體的連結。
 
 ### <a name="does-qna-maker-support-non-english-languages"></a>QnA Maker 是否支援非英文的語言？
 
@@ -115,15 +119,15 @@ QnA Maker 會在 QnA Maker 入口網站中提供**協助**bot，協助您。 您
 
 ## <a name="manage-service"></a>管理服務
 
-### <a name="when-should-i-restart-my-app-service"></a>何時應該重新啟動我的應用程式服務？ 
+### <a name="when-should-i-restart-my-app-service"></a>何時應該重新啟動我的應用程式服務？
 
-在 [使用者設定] **頁面**上的 [端點金鑰][](https://www.qnamaker.ai/UserSettings) 資料表中，當注意圖示出現在知識庫的版本值旁邊時，重新整理您的應用程式服務。
+當 [**使用者設定**][頁面](https://www.qnamaker.ai/UserSettings)上 [**端點索引鍵**] 資料表中的 [知識庫版本] 值旁有警告時，請重新整理您的應用程式服務。
 
 ### <a name="i-deleted-my-existing-search-service-how-can-i-fix-this"></a>我刪除了現有的搜尋服務。 我該怎麼辦？
 
-如果您刪除 Azure 認知搜尋索引，此作業會是最終的，而且無法復原索引。 
+如果您刪除 Azure 認知搜尋索引，此作業會是最終的，而且無法復原索引。
 
-### <a name="i-deleted-my-testkb-index-in-my-search-service-how-can-i-fix-this"></a>我在搜尋服務中刪除了我的 `testkb` 索引。 我該怎麼辦？ 
+### <a name="i-deleted-my-testkb-index-in-my-search-service-how-can-i-fix-this"></a>我在搜尋服務中刪除了我的 `testkb` 索引。 我該怎麼辦？
 
 您的舊資料無法復原。 建立新的 QnA Maker 資源，然後再次建立您的知識庫。
 
@@ -145,18 +149,18 @@ Azure 認知搜尋資源的名稱是 QnA Maker 資源名稱，並在結尾附加
 
 1. 在  [Azure 入口網站](https://portal.azure.com)中，選取您 QnA Maker 的 App service，然後停止服務。
 1. 在仍在 App service 的情況下，依序選取 [**開發工具**]、[ **Advanced tools**] 和 [ **Go**]。 這會開啟新的瀏覽器視窗。
-1. 依序選取 [ **Debug console**] 和 [ **CMD** ] 以開啟命令列工具。 
+1. 依序選取 [ **Debug console**] 和 [ **CMD** ] 以開啟命令列工具。
 1. 流覽至_site/wwwroot/Data/QnAMaker/_ 目錄。
-1. 移除名稱開頭為 `rd` 的所有資料夾。 
+1. 移除名稱開頭為 `rd`的所有資料夾。
 
     **請勿刪除**下列各項：
 
     * KbIdToRankerMappings .txt 檔案
     * EndpointSettings json 檔案
-    * EndpointKeys 資料夾 
+    * EndpointKeys 資料夾
 
 1. 啟動 App service。
-1. 存取您的知識庫，以確認它現在可以運作。 
+1. 存取您的知識庫，以確認它現在可以運作。
 
 
 ## <a name="integrate-with-other-services-including-bots"></a>與其他服務 (包括 Bot) 整合
@@ -175,13 +179,13 @@ Azure 認知搜尋資源的名稱是 QnA Maker 資源名稱，並在結尾附加
 
 * 知識庫識別碼。
 * 在您發佈之後，知識庫的已發佈端點自訂子功能變數名稱稱（稱為 `host`）會在 [**設定**] 頁面上找到。
-* 知識庫的已發佈端點金鑰-發行後，在 [**設定**] 頁面上找到。 
+* 知識庫的已發佈端點金鑰-發行後，在 [**設定**] 頁面上找到。
 
-透過這項資訊，請移至 Azure 入口網站中 bot 的 app service。 在 設定 底下 > 設定 下 **> 應用程式設定**，變更這些值。  
+透過這項資訊，請移至 Azure 入口網站中 bot 的 app service。 在 設定 底下 > 設定 下 **> 應用程式設定**，變更這些值。
 
-在 ABS 服務中，知識庫的端點金鑰會標示為 `QnAAuthkey`。 
+在 ABS 服務中，知識庫的端點金鑰會標示為 `QnAAuthkey`。
 
-### <a name="can-two-or-more-client-applications-share-a-knowledge-base"></a>有兩個或多個用戶端應用程式可以共用知識庫嗎？ 
+### <a name="can-two-or-more-client-applications-share-a-knowledge-base"></a>有兩個或多個用戶端應用程式可以共用知識庫嗎？
 
 是，您可以從任意數目的用戶端查詢知識庫。 如果知識庫的回應似乎緩慢或超時，請考慮升級與知識庫相關聯之 app service 的服務層級。
 
@@ -194,6 +198,6 @@ Azure 認知搜尋資源的名稱是 QnA Maker 資源名稱，並在結尾附加
 
 ## <a name="data-storage"></a>資料儲存體
 
-### <a name="what-data-is-stored-and-where-is-it-stored"></a>會儲存哪些資料以及儲存在哪裡？ 
+### <a name="what-data-is-stored-and-where-is-it-stored"></a>會儲存哪些資料以及儲存在哪裡？
 
-當您建立 QnA Maker 服務時，您選取了 Azure 區域。 您的知識庫和記錄檔會儲存在此區域中。 
+當您建立 QnA Maker 服務時，您選取了 Azure 區域。 您的知識庫和記錄檔會儲存在此區域中。
