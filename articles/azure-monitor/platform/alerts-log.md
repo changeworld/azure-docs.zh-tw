@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: c8d9128e6956c460094be76eccce8d350ed41547
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 525e8d2ffcd673f47cf30699de2572b35fc3b314
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658129"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290270"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>使用 Azure 監視器來建立、檢視及管理記錄警示
 
@@ -73,7 +73,7 @@ ms.locfileid: "75658129"
 
 1. 記錄警示：當視覺效果就緒後，您就可以從所示的條件、彙總和閾值 (最後選取) 選項來選取**警示邏輯**。 最後，使用 [期間] 選項，在邏輯中指定用來評估指定條件的時間。 以及，透過選取 [頻率]，來指定警示執行的頻率。 **記錄警示**可以根據：
     - [記錄數目](../../azure-monitor/platform/alerts-unified-log.md#number-of-results-alert-rules)：如果查詢所傳回的記錄數目大於或小於所提供的值，則會建立警示。
-    - 計量測量[](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules)：如果結果中的每個「彙總值」超過提供的閾值，而且彙總值依據選擇的值來「分組」，則會建立警示。 警示的違規數是所選時段中超過閾值的次數。 您可以跨結果集針對任何違規組合指定 [違規數總計]，或指定 [連續違規] 以要求違規必須發生於連續取樣中。
+    - [計量測量](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules)：如果結果中的每個「彙總值」超過提供的閾值，而且彙總值依據選擇的值來「分組」，則會建立警示。 警示的違規數是所選時段中超過閾值的次數。 您可以跨結果集針對任何違規組合指定 [違規數總計]，或指定 [連續違規] 以要求違規必須發生於連續取樣中。
 
 
 1. 第二個步驟是在 [警示規則名稱] 欄位中定義警示的名稱，以及在 [描述] 中具體描述警示，並從提供的選項中選取 [嚴重性] 的值。 這些詳細資料會在所有由 Azure 監視器完成的警示電子郵件、通知或推送中重複使用。 此外，使用者可以透過適當地切換 [在建立時啟用規則] 選項，選擇在建立警示規則後立即啟用警示。
@@ -332,7 +332,7 @@ $metricTrigger = New-AzScheduledQueryRuleLogMetricTrigger -ThresholdOperator "Gr
 
 $triggerCondition = New-AzScheduledQueryRuleTriggerCondition -ThresholdOperator "LessThan" -Threshold 5 -MetricTrigger $metricTrigger
 
-$aznsActionGroup = New-AzScheduledQueryRuleAznsActionGroup -ActionGroup "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.insights/actiongroups/sampleAG" -EmailSubject "Custom email subject" -CustomWebhookPayload "{ \"alert\":\"#alertrulename\", \"IncludeSearchResults\":true }"
+$aznsActionGroup = New-AzScheduledQueryRuleAznsActionGroup -ActionGroup "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.insights/actiongroups/sampleAG" -EmailSubject "Custom email subject" -CustomWebhookPayload "{ `"alert`":`"#alertrulename`", `"IncludeSearchResults`":true }"
 
 $alertingAction = New-AzScheduledQueryRuleAlertingAction -AznsAction $aznsActionGroup -Severity "3" -Trigger $triggerCondition
 

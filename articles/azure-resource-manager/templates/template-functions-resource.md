@@ -2,13 +2,13 @@
 title: 範本函式-資源
 description: 描述 Azure Resource Manager 範本中用來擷取資源相關值的函式。
 ms.topic: conceptual
-ms.date: 01/06/2020
-ms.openlocfilehash: 2dd55be9f9daa25662903fbb1bd0c2c6666974b3
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
-ms.translationtype: MT
+ms.date: 01/20/2020
+ms.openlocfilehash: 1b860876b0d8967a6a3f90c7bb68f20d6c442109
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708560"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513859"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager 範本的資源函式
 
@@ -32,7 +32,7 @@ ms.locfileid: "75708560"
 extensionResourceId(resourceId, resourceType, resourceName1, [resourceName2], ...)
 ```
 
-傳回[擴充資源](extension-resource-types.md)的資源識別碼，這是套用至另一個資源以加入其功能的資源類型。
+傳回[擴充資源](../management/extension-resource-types.md)的資源識別碼，這是套用至另一個資源以加入其功能的資源類型。
 
 ### <a name="parameters"></a>參數
 
@@ -231,15 +231,15 @@ list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)
 | microsoft.web/locations | listwsdlinterfaces |
 | microsoft.web/apimanagementaccounts/apis/connections | listconnectionkeys |
 | microsoft.web/apimanagementaccounts/apis/connections | listsecrets |
-| microsoft web/sites/備份 | list[](/rest/api/appservice/webapps/listbackups) |
-| Microsoft Web/sites/config | list[](/rest/api/appservice/webapps/listconfigurations) |
-| microsoft.web/sites/functions | [listkeys]()
+| microsoft web/sites/備份 | [list](/rest/api/appservice/webapps/listbackups) |
+| Microsoft Web/sites/config | [list](/rest/api/appservice/webapps/listconfigurations) |
+| microsoft.web/sites/functions | [listkeys](/rest/api/appservice/webapps/listfunctionkeys)
 | microsoft.web/sites/functions | [listsecrets](/rest/api/appservice/webapps/listfunctionsecrets) |
 | microsoft.web/sites/hybridconnectionnamespaces/relays | [listkeys](/rest/api/appservice/appserviceplans/listhybridconnectionkeys) |
 | microsoft.web/sites | [listsyncfunctiontriggerstatus](/rest/api/appservice/webapps/listsyncfunctiontriggers) |
 | microsoft.web/sites/slots/functions | [listsecrets](/rest/api/appservice/webapps/listfunctionsecretsslot) |
-| microsoft web/sites/插槽/備份 | list[](/rest/api/appservice/webapps/listbackupsslot) |
-| Microsoft Web/sites/位置/設定 | list[](/rest/api/appservice/webapps/listconfigurationsslot) |
+| microsoft web/sites/插槽/備份 | [list](/rest/api/appservice/webapps/listbackupsslot) |
+| Microsoft Web/sites/位置/設定 | [list](/rest/api/appservice/webapps/listconfigurationsslot) |
 | microsoft.web/sites/slots/functions | [listsecrets](/rest/api/appservice/webapps/listfunctionsecretsslot) |
 
 為判斷哪一個資源類型具有 list 作業，您可以使用下列選項：
@@ -533,6 +533,16 @@ reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])
 例如：
 
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt` 為正確 `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` 為不正確
+
+### <a name="get-managed-identity"></a>取得受控識別
+
+[適用于 Azure 資源的受控](../../active-directory/managed-identities-azure-resources/overview.md)識別是針對某些資源隱含建立的[擴充資源類型](../management/extension-resource-types.md)。 因為受控識別未明確定義于範本中，所以您必須參考要套用身分識別的資源。 使用 `Full` 來取得所有屬性，包括隱含建立的身分識別。
+
+例如，若要取得適用于虛擬機器擴展集之受控識別的租使用者識別碼，請使用：
+
+```json
+"tenantId": "[reference(concat('Microsoft.Compute/virtualMachineScaleSets/',  variables('vmNodeType0Name')), variables('vmssApiVersion'), 'Full').Identity.tenantId]"
+```
 
 ### <a name="reference-example"></a>參考範例
 

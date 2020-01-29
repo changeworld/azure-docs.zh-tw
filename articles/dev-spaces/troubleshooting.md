@@ -2,15 +2,15 @@
 title: 疑難排解
 services: azure-dev-spaces
 ms.date: 09/25/2019
-ms.topic: conceptual
+ms.topic: troubleshooting
 description: 瞭解如何在啟用和使用 Azure Dev Spaces 時，疑難排解和解決常見的問題
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s '
-ms.openlocfilehash: a52d27733168c55f9e34d15f6675dd7bce0f8aad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3a2eb98af2c73b5a920f3e3bcedb7ab18e9f0430
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438116"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548844"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces 疑難排解
 
@@ -252,7 +252,7 @@ Failed to build container image.
 Service cannot be started.
 ```
 
-之所以發生此錯誤，是因為 AKS 節點執行的是不支援多階段組建的較舊版本 Docker。 若要避免多階段組建，請重寫 Dockerfile。
+之所以發生此錯誤，是因為 Azure Dev Spaces 目前不支援多階段組建。 若要避免多階段組建，請重寫 Dockerfile。
 
 ### <a name="network-traffic-is-not-forwarded-to-your-aks-cluster-when-connecting-your-development-machine"></a>連線到您的開發電腦時，網路流量不會轉送到您的 AKS 叢集
 
@@ -474,4 +474,13 @@ kubectl -n my-namespace delete pod --all
 | cloudflare.docker.com | HTTPS：443 | 提取 linux alpine 和其他 Azure Dev Spaces 映射 |
 | gcr.io | HTTP：443 | 提取 helm/tiller 映射|
 | storage.googleapis.com | HTTP：443 | 提取 helm/tiller 映射|
-| azds-<guid>。<location>。 azds.io | HTTPS：443 | 與您的控制器 Azure Dev Spaces 後端服務進行通訊。 您可以在% USERPROFILE%\.azds\settings.json 的 "dataplaneFqdn" 中找到確切的 FQDN|
+| azds-<guid><location>。 azds.io | HTTPS：443 | 與您的控制器 Azure Dev Spaces 後端服務進行通訊。 您可以在% USERPROFILE%\.azds\settings.json 的 "dataplaneFqdn" 中找到確切的 FQDN|
+
+### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>錯誤「找不到訂用帳戶 \<subscriptionId\>」中的叢集 \<叢集\>
+
+如果您的 kubeconfig 檔案是以不同于嘗試與 Azure Dev Spaces 用戶端工具搭配使用的叢集或訂用帳戶為目標，您可能會看到此錯誤。 Azure Dev Spaces 的用戶端工具會複寫*kubectl*的行為，這會使用[一或多個 kubeconfig](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/)檔案來選取和與叢集通訊。
+
+若要修正此問題：
+
+* 使用 `az aks use-dev-spaces -g <resource group name> -n <cluster name>` 來更新目前的內容。 如果尚未啟用，此命令也會在 AKS 叢集上啟用 Azure Dev Spaces。 或者，您可以使用 `kubectl config use-context <cluster name>` 來更新目前的內容。
+* 使用 `az account show` 顯示您目前目標的 Azure 訂用帳戶，並確認這是正確的。 您可以使用 `az account set`變更目標訂用帳戶。

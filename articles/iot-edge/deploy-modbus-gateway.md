@@ -8,12 +8,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: kgremban
-ms.openlocfilehash: d4d9d2ff899a169ee81544761fe87fed3cca06c4
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 23fbbd87230ea0a0147dc9d90c77729f4d531e98
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75912317"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511139"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>透過 IoT Edge 裝置閘道連線 Modbus TCP 裝置
 
@@ -26,7 +26,9 @@ ms.locfileid: "75912317"
 本文假設您使用 Modbus TCP 通訊協定。 如需有關如何設定此模組以支援 Modbus RTU 的詳細資訊，請參閱 GitHub 上的 [Azure IoT Edge Modbus 模組](https://github.com/Azure/iot-edge-modbus)專案。
 
 ## <a name="prerequisites"></a>必要條件
-* Azure IoT Edge 裝置。 如需如何設定一個的逐步解說，請參閱[在 Windows 或 Linux 上部署 Azure IoT Edge](quickstart.md) 。 [](quickstart-linux.md)
+
+* Azure IoT Edge 裝置。 如需如何設定一個的逐步解說，[請參閱](quickstart-linux.md)
+ [在 Windows 或 Linux 上部署 Azure IoT Edge](quickstart.md) 。
 * IoT Edge 裝置的主索引鍵連接字串。
 * 支援 Modbus TCP 的實體或模擬 Modbus 裝置。 您將需要知道它的 IPv4 位址。
 
