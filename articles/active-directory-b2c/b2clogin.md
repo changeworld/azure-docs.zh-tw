@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: db222515dae51fa5e0334430a3578816b1e8813d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5c9054daea76675ed621caf1630c509b16743f4e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75367649"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836337"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>將 Azure Active Directory B2C 的重新導向 URL 設定為 b2clogin.com
 
@@ -46,7 +46,7 @@ Login.microsoftonline.com 的淘汰會在2020年12月4日 Azure AD B2C 生效，
 
 * 將身分識別提供者應用程式中的 [重新導向 URL] 變更為參考*b2clogin.com*。
 * 更新您的 Azure AD B2C 應用程式，以在其使用者流程和權杖端點參考中使用*b2clogin.com* 。
-* 更新您在 CORS 設定中為[使用者介面自訂](active-directory-b2c-ui-customization-custom-dynamic.md)所定義的任何**允許原始來源**。
+* 更新您在 CORS 設定中為[使用者介面自訂](custom-policy-ui-customization-dynamic.md)所定義的任何**允許原始來源**。
 
 ## <a name="change-identity-provider-redirect-urls"></a>變更識別提供者重新導向 Url
 

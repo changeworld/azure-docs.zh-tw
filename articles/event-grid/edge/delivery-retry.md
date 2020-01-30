@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 324c0e9b8dcaafacaac52b622ce9c533d82c7ff1
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 7df283b12a0d04d2b785c13a2f12b03115581e79
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73100700"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841707"
 ---
 # <a name="delivery-and-retry"></a>傳遞和重試
 
@@ -27,9 +27,9 @@ Event Grid 提供持久的傳遞。 它會嘗試立即為每個相符的訂用�
 
 事件方格在傳遞訊息之後，會等待最多60秒的回應。 如果訂閱者的端點未通知回應，則會將訊息加入其中一個後置佇列中，以供後續重試。
 
-有兩個預先設定的反向佇列，可決定嘗試重試的排程。 它們是：-
+有兩個預先設定的反向佇列，可決定嘗試重試的排程。 其中包括：
 
-| 排程 | 描述 |
+| 排程 | 說明 |
 | ---------| ------------ |
 | 1 分鐘 | 每分鐘會嘗試在這裡結束的訊息。
 | 10 分鐘 | 每隔10分鐘就會嘗試在這裡結束的訊息。
@@ -43,7 +43,7 @@ Event Grid 提供持久的傳遞。 它會嘗試立即為每個相符的訂用�
 
 ## <a name="retry-policy-limits"></a>重試原則限制
 
-有兩個設定可決定重試原則。 它們是：-
+有兩個設定可決定重試原則。 其中包括：
 
 * 嘗試次數上限
 * 事件存留時間（TTL）
@@ -52,12 +52,12 @@ Event Grid 提供持久的傳遞。 它會嘗試立即為每個相符的訂用�
 
 ## <a name="configuring-defaults-for-all-subscribers"></a>設定所有訂閱者的預設值
 
-有兩個屬性：可以設定為事件方格部署一部分的 `brokers:defaultMaxDeliveryAttempts` 和 `broker:defaultEventTimeToLiveInSeconds`，這會控制所有訂閱者的重試原則預設值。
+有兩個屬性：可以設定為事件方格部署一部分的 `brokers__defaultMaxDeliveryAttempts` 和 `broker__defaultEventTimeToLiveInSeconds`，這會控制所有訂閱者的重試原則預設值。
 
-| 屬性名稱 | 描述 |
+| 屬性名稱 | 說明 |
 | ---------------- | ------------ |
-| `broker:defaultMaxDeliveryAttempts` | 傳遞事件的嘗試次數上限。 預設值：30。
-| `broker:defaultEventTimeToLiveInSeconds` | 事件 TTL （以秒為單位），在此時間之後，如果未傳遞，就會捨棄事件。 預設值： **7200**秒
+| `broker__defaultMaxDeliveryAttempts` | 傳遞事件的嘗試次數上限。 預設值：30。
+| `broker__defaultEventTimeToLiveInSeconds` | 事件 TTL （以秒為單位），在此時間之後，如果未傳遞，就會捨棄事件。 預設值： **7200**秒
 
 ## <a name="configuring-defaults-per-subscriber"></a>設定每個訂閱者的預設值
 
@@ -71,8 +71,8 @@ Event Grid 提供持久的傳遞。 它會嘗試立即為每個相符的訂用�
 ```json
 {
   "Env": [
-    "broker:defaultMaxDeliveryAttempts=3",
-    "broker:defaultEventTimeToLiveInSeconds=1800"
+    "broker__defaultMaxDeliveryAttempts=3",
+    "broker__defaultEventTimeToLiveInSeconds=1800"
   ],
   "HostConfig": {
     "PortBindings": {

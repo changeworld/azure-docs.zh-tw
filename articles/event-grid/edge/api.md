@@ -9,12 +9,12 @@ ms.date: 10/03/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: ee2b3a35b6f1817b89541a31d0bde4adf00ade2a
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 19f86b1d8233e05844201e1095c1f79324955cd7
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992531"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841824"
 ---
 # <a name="rest-api"></a>REST API
 本文說明 Azure 事件方格在 IoT Edge 上的 REST Api
@@ -41,7 +41,7 @@ IoT Edge 上的事件方格具有透過 HTTP （埠5888）和 HTTPS （埠4438�
 
 ```Content-Type: application/json; charset=utf-8```
 
-如果是結構化模式的**CloudEventSchemaV1_0** ，content-type 的值可以是下列其中一個值：
+在結構化模式下**CloudEventSchemaV1_0**時，content-type 的值可以是下列其中一個值：
 
 ```Content-Type: application/cloudevents+json```
     
@@ -183,6 +183,7 @@ IoT Edge 上的事件方格具有透過 HTTP （埠5888）和 HTTPS （埠4438�
             "eventExpiryInMinutes": 120,
             "maxDeliveryAttempts": 50
         },
+        "persistencePolicy": "true",
         "destination":
         {
             "endpointType": "WebHook",
@@ -526,7 +527,7 @@ IoT Edge 上的事件方格具有透過 HTTP （埠5888）和 HTTPS （埠4438�
 
 
 **裝載欄位描述**
-- ```Id``` 是強制的。 它可以是由呼叫者填入的任何字串值。 事件方格不會執行任何重複的偵測，或在此欄位上強制執行任何語義。
+- ```Id``` 是必要的。 它可以是由呼叫者填入的任何字串值。 事件方格不會執行任何重複的偵測，或在此欄位上強制執行任何語義。
 - ```Topic``` 是選擇性的，但如果指定的必須符合要求 URL 中的 topic_name
 - ```Subject``` 是必要的，可以是任何字串值
 - ```EventType``` 是必要的，可以是任何字串值
@@ -619,8 +620,8 @@ IoT Edge 上的事件方格具有透過 HTTP （埠5888）和 HTTPS （埠4438�
 `endpointUrl` 屬性的條件約束：
 - 必須為非 null。
 - 它必須是絕對 URL。
-- 如果 EventGridModule 設定中的 outbound__webhook__HTTPsOnly 設定為 true，則其必須為僅限 HTTPS。
-- 如果 outbound__webhook__HTTPsOnly 設為 false，則可以是 HTTP 或 HTTPS。
+- 如果 outbound__webhook__HTTPsOnly 在 EventGridModule 設定中設為 true，則必須僅為 HTTPS。
+- 如果 outbound__webhook__HTTPsOnly 設定為 false，則可以是 HTTP 或 HTTPS。
 
 `eventDeliverySchema` 屬性的條件約束：
 - 它必須符合訂閱主題的輸入架構。
@@ -673,7 +674,7 @@ EndpointUrl
 - 它必須是絕對 URL。
 - 必須在要求 URL 路徑中定義路徑 `/api/events`。
 - 查詢字串中必須有 `api-version=2018-01-01`。
-- 如果 outbound__eventgrid__HTTPsOnly 在 EventGridModule 設定中設定為 true （預設值為 true），則其必須為僅限 HTTPS。
+- 如果 outbound__eventgrid__HTTPsOnly 在 EventGridModule 設定中設定為 true （預設值為 true），則必須為僅限 HTTPS。
 - 如果 outbound__eventgrid__HTTPsOnly 設定為 false，則可以是 HTTP 或 HTTPS。
 - 如果 outbound__eventgrid__allowInvalidHostnames 設定為 false （預設為 false），它必須以下列其中一個端點為目標：
    - `eventgrid.azure.net`
@@ -686,3 +687,93 @@ SasKey:
 TopicName:
 - 如果 EventDeliverySchema 設定為 EventGridSchema，則此欄位的值會放入每個事件的 [主題] 欄位，然後再轉送到雲端中的事件方格。
 - 如果 EventDeliverySchema 設定為 CustomEventSchema，則會忽略這個屬性，而自訂事件裝載就會完全依照收到的方式轉送。
+
+## <a name="set-up-event-hubs-as-a-destination"></a>將事件中樞設定為目的地
+
+若要發佈至事件中樞，請將 `endpointType` 設定為 `eventHub` 並提供：
+
+* connectionString：透過共用存取原則產生的特定事件中樞的連接字串。
+
+    >[!NOTE]
+    > 連接字串必須是實體特定的。 使用命名空間連接字串將無法正常執行。 您可以在 Azure 入口網站中流覽至您想要發佈至的特定事件中樞，然後按一下 [**共用存取原則**] 來產生新實體的特定 connecection 字串，以產生實體特定的連接字串。
+
+    ```json
+        {
+          "properties": {
+            "destination": {
+              "endpointType": "eventHub",
+              "properties": {
+                "connectionString": "<your-event-hub-connection-string>"
+              }
+            }
+          }
+        }
+    ```
+
+## <a name="set-up-service-bus-queues-as-a-destination"></a>將服務匯流排佇列設定為目的地
+
+若要發行至服務匯流排的佇列，請將 `endpointType` 設定為 `serviceBusQueue` 並提供：
+
+* connectionString：透過共用存取原則所設定的目標特定服務匯流排佇列的連接字串。
+
+    >[!NOTE]
+    > 連接字串必須是實體特定的。 使用命名空間連接字串將無法正常執行。 藉由流覽至您想要在 Azure 入口網站中發佈的特定服務匯流排佇列，然後按一下 [**共用存取原則**] 來產生新實體的特定 connecection 字串，以產生實體特定的連接字串。
+
+    ```json
+        {
+          "properties": {
+            "destination": {
+              "endpointType": "serviceBusQueue",
+              "properties": {
+                "connectionString": "<your-service-bus-queue-connection-string>"
+              }
+            }
+          }
+        }
+    ```
+
+## <a name="set-up-service-bus-topics-as-a-destination"></a>將服務匯流排主題設定為目的地
+
+若要發行至服務匯流排主題，請將 `endpointType` 設定為 `serviceBusTopic` 並提供：
+
+* connectionString：您透過共用存取原則所設定的目標特定服務匯流排主題的連接字串。
+
+    >[!NOTE]
+    > 連接字串必須是實體特定的。 使用命名空間連接字串將無法正常執行。 藉由流覽至您想要在 Azure 入口網站中發佈的特定服務匯流排主題，然後按一下 [**共用存取原則**] 來產生新實體的特定 connecection 字串，以產生實體特定的連接字串。
+
+    ```json
+        {
+          "properties": {
+            "destination": {
+              "endpointType": "serviceBusTopic",
+              "properties": {
+                "connectionString": "<your-service-bus-topic-connection-string>"
+              }
+            }
+          }
+        }
+    ```
+
+## <a name="set-up-storage-queues-as-a-destination"></a>將儲存體佇列設定為目的地
+
+若要發佈至儲存體佇列，請將 `endpointType` 設定為 `storageQueue` 並提供：
+
+* queueName：您要發行的儲存體佇列的名稱。
+* connectionString：儲存體佇列所在儲存體帳戶的連接字串。
+
+    >[!NOTE]
+    > Unline 事件中樞、服務匯流排佇列和服務匯流排主題，用於儲存體佇列的連接字串不是實體特定的。 相反地，它必須是儲存體帳戶的連接字串。
+
+    ```json
+        {
+          "properties": {
+            "destination": {
+              "endpointType": "storageQueue",
+              "properties": {
+                "queueName": "<your-storage-queue-name>",
+                "connectionString": "<your-storage-account-connection-string>"
+              }
+            }
+          }
+        }
+    ```

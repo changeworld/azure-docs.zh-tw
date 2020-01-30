@@ -5,21 +5,21 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: conceptual
 ms.date: 05/21/2019
-author: wmengmsft
-ms.author: wmeng
+author: sakash279
+ms.author: akshanka
 ms.custom: seodec18
-ms.openlocfilehash: 74bd22de81e385a4fbd9129a70616e24b594b0b4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 166076d366cbbf7bef24648772beaba9b3a88253
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441326"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771525"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Azure 資料表儲存體資料表設計指南：可擴充且高效能的資料表
 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
 
-若要設計可擴充且高效能的資料表，您必須考慮各種因素，包括成本。 如果您先前已設計關係資料庫的架構，您就會熟悉這些考慮。 但是，雖然 Azure 資料表儲存體與關聯式模型之間有一些相似之處，但也有許多重要的差異。 這些差異通常會導致不同的設計，可能會對熟悉關係資料庫的人呈現直覺或錯誤，但如果您設計的是 NoSQL 索引鍵/值存放區（例如資料表儲存體），這就很有意義。
+若要設計可擴充且高效能的資料表，您必須考慮各種因素，包括成本。 如果您先前已為關聯式資料庫設計架構，那麼您應該很熟悉這些考量。 但是，雖然 Azure 資料表儲存體與關聯式模型之間有一些相似之處，但也有許多重要的差異。 這些差異常會導致不同的設計，看起來可能違反直覺性，或讓熟悉關聯式資料庫的人覺得不對勁，但如果您設計的是 NoSQL 索引鍵/值存放區 (例如資料表儲存體)，這就顯得合理了。
 
 資料表儲存體是設計用來支援雲端規模的應用程式，其中可包含數十億個實體（關係資料庫術語中的「資料列」），或是必須支援高交易量的資料集。 因此，您必須以不同的方式思考如何儲存資料，並瞭解表格儲存體的運作方式。 設計良好的 NoSQL 資料存放區可讓您的解決方案更進一步（且成本較低），而不是使用關係資料庫的解決方案。 本指南針對這些主題為您提供協助。  
 

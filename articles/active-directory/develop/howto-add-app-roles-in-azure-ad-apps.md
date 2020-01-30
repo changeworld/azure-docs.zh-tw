@@ -14,12 +14,12 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: d16ab7acd87fa6cc7907f8fee3400c2e416e6cfe
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 5400ede4f3afd9f94d7380c6dfd55d8aa45d08ca
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697416"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834241"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>如何：在您的應用程式中新增應用程式角色，並且在權杖中接收這些角色
 
@@ -44,7 +44,7 @@ ms.locfileid: "76697416"
 1. 找出 `appRoles` 設定並新增所有的應用程式角色，以編輯應用程式資訊清單。
 
      > [!NOTE]
-     > 此資訊清單中的每個應用程式角色定義都必須有不同的 `id` 屬性的有效 GUID。 
+     > 此資訊清單中的每個應用程式角色定義，在 `id` 屬性的資訊清單內容中都必須有不同的有效 GUID。    
      > 
      > 每個應用程式角色定義的 `value` 屬性，都應該與應用程式中程式碼所使用的字串完全相符。 `value` 屬性不能包含空格。 如果有，當您儲存資訊清單時，將會收到錯誤。
      

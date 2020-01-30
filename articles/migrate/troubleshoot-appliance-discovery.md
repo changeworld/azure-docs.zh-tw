@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: d66e792b901742f903dccf7a0e7999db4d02e26a
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 3f3604205d4aedffdda128ec4a6b895786245e56
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289521"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772024"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>針對 Azure Migrate 設備和探索進行疑難排解
 
@@ -113,7 +113,7 @@ ms.locfileid: "76289521"
     1. 以系統管理員身分開啟 [記事本]。
     2. 開啟 C:\Windows\System32\Drivers\etc\hosts 檔案。
     3. 在資料列中新增 IP 位址和主機名稱。 針對您看到此錯誤的每個主機或叢集重複此動作。
-    4. 儲存並關閉主機檔案。
+    4. 儲存並關閉 hosts 檔案。
     5. 使用設備管理應用程式，檢查設備是否可連線至主機。 30分鐘後，您應該會在 Azure 入口網站中看到這些主機的最新資訊。
 
 ## <a name="discovered-vms-not-in-portal"></a>探索到的 Vm 不在入口網站中
@@ -131,7 +131,7 @@ ms.locfileid: "76289521"
 
 ## <a name="vm-data-not-in-portal"></a>VM 資料不在入口網站中
 
-如果探索到的 Vm 未出現在入口網站中，請等候幾分鐘的時間。 最多需要30分鐘的時間，探索到的資料才會出現在入口網站中。 如果30分鐘後沒有任何資料，請嘗試重新整理，如下所示
+如果探索到的 Vm 不會出現在入口網站中，或 VM 資料已過期，請等候幾分鐘的時間。 最多需要30分鐘的時間，探索到的 VM 設定資料中的變更才會出現在入口網站中。 可能需要幾個小時的時間，應用程式資料的變更才會出現。 如果在這段時間之後沒有任何資料，請嘗試重新整理，如下所示
 
 1. 在 [**伺服器** > **Azure Migrate 伺服器評估**] 中，選取 **[總覽**]。
 2. 在 [**管理**] 下，選取 [**代理程式健全狀況**]。
@@ -166,7 +166,8 @@ Azure Migrate 支援使用 Azure Migrate：伺服器評估來探索應用程式�
 9009：「無法取得已安裝伺服器的應用程式」。 | 如果伺服器上的 Windows 使用者帳戶控制（UAC）設定受到限制，並防止探索已安裝的應用程式，就會發生此問題。 | 搜尋伺服器上的 [使用者帳戶控制] 設定，並將伺服器上的 UAC 設定設為較低兩個層級的其中一個。
 9010：「無法取得已安裝伺服器的應用程式」。 | 可能是內部錯誤。  | Tf 問題不會在24小時內自行解決，請聯絡支援人員。
 8084：「因為 VMware 錯誤而無法探索應用程式： <Exception from VMware>」 | Azure Migrate 設備會使用 VMware Api 來探索應用程式。 如果在嘗試探索應用程式時 vCenter Server 擲回例外狀況，就會發生這個問題。 來自 VMware 的錯誤訊息會顯示在入口網站中顯示的錯誤訊息中。 | 搜尋[VMware 檔](https://pubs.vmware.com/vsphere-51/topic/com.vmware.wssdk.apiref.doc/index-faults.html)中的訊息，並遵循步驟來修正。 如果您無法修正，請聯絡 Microsoft 支援服務。
-
+9012：「無法探索安裝在伺服器上的應用程式」 | 問題可能是內部錯誤所造成。  | 如果問題無法在24小時內自行解決，請聯絡支援人員。
+9013：「無法探索安裝在伺服器上的應用程式」 | 每次登入 VM 時，就會建立新的暫存設定檔。  | 請確定未針對提供的來賓使用者建立暫存設定檔。
 
 
 

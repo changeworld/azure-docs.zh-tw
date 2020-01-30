@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: dc64570ccf69c321f33b9689362def8c9caf975e
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 8d5377f7ec8de14f3d7d55bc109f6be731991051
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715406"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775257"
 ---
 # <a name="virtual-network-service-tags"></a>虛擬網路服務標籤 
 <a name="network-service-tags"></a>
@@ -79,7 +79,7 @@ ms.locfileid: "76715406"
 | **ElasticAFD** | 彈性 Azure Front。 | 兩者 | 否 | 否 |
 | **EventHub** | Azure 事件中樞。 | 輸出 | 是 | 是 |
 | **GatewayManager** | 適用于 Azure VPN 閘道和應用程式閘道專用之部署的管理流量。 | 輸入 | 否 | 否 |
-| **GuestAndHybridManagement** | Azure 自動化和來賓設定。 | 兩者 | 否 | 是 |
+| **GuestAndHybridManagement** | Azure 自動化和來賓設定。 | 輸出 | 否 | 是 |
 | **HDInsight** | Azure HDInsight。 | 輸入 | 是 | 否 |
 | **網際網路** | 位於虛擬網路外部且可由公用網際網路連線的 IP 位址空間。<br/><br/>位址範圍包含[Azure 擁有的公用 IP 位址空間](https://www.microsoft.com/download/details.aspx?id=41653)。 | 兩者 | 否 | 否 |
 | **MicrosoftCloudAppSecurity** | Microsoft Cloud App Security。 | 輸出 | 否 | 否 |

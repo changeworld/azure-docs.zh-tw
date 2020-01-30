@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: 6bba4414390efa6e07be6c253fe55f1638d414dc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7f7e0c3eef96970c1820783225a4ff59be8113b3
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75974098"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769107"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>什麼是 Azure Machine Learning 計算實例？
 
@@ -32,7 +32,7 @@ Azure Machine Learning 計算實例（預覽）是適用于資料科學家的完
 
 ## <a name="why-use-a-compute-instance"></a>為何要使用計算實例？
 
-計算實例是完全受控的雲端式工作站，已針對您的機器學習開發環境優化。 它提供下列好處：
+計算實例是完全受控的雲端式工作站，已針對您的機器學習開發環境優化。 它提供下列優點：
 
 |主要權益||
 |----|----|
@@ -117,7 +117,7 @@ Python 套件全都安裝在**python 3.6-AzureML**環境中。
 
 您可以執行下列動作：
 
-* 建立計算實例。 指定名稱、包含 Gpu 的 Azure VM 類型、啟用/停用 SSH 存取，以及選擇性地設定虛擬網路設定。 您也可以直接從整合式筆記本、Azure 入口網站、Resource Manager 範本或 Azure Machine Learning SDK 建立實例。 適用于計算實例建立的每個區域的專用核心配額會一致，並與 Azure Machine Learning 計算叢集配額共用。
+* 建立計算實例。 指定名稱、包含 Gpu 的 Azure VM 類型（請注意，建立後不能變更 VM 類型）、啟用/停用 SSH 存取，以及選擇性地設定虛擬網路設定。 您也可以直接從整合式筆記本、Azure 入口網站、Resource Manager 範本或 Azure Machine Learning SDK 建立實例。 適用于計算實例建立的每個區域的專用核心配額會一致，並與 Azure Machine Learning 計算叢集配額共用。
 * 重新整理 [計算實例] 索引標籤
 * 啟動、停止和重新開機計算實例
 * 刪除計算實例

@@ -4,9 +4,7 @@ titleSuffix: Azure Network Watcher
 description: 本文說明如何使用 Azure 網路監看員建立警示觸發的封包擷取
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: 75e6e7c4-b3ba-4173-8815-b00d7d824e11
 ms.service: network-watcher
 ms.devlang: na
@@ -14,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 26599776abdf7ecbb6c86c332a40e0c2b7d6e67e
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: ea506e137d71fc3124a4f93f1e97750a08dd4284
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276125"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842932"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>使用封包擷取搭配警示和 Azure Functions 進行主動式網路監視
 
@@ -37,7 +35,7 @@ ms.locfileid: "74276125"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * 最新版的 [Azure PowerShell](/powershell/azure/install-Az-ps)。
 * 網路監看員的現有執行個體。 如果您還沒有，請[建立網路監看員執行個體](network-watcher-create.md)。
@@ -76,24 +74,24 @@ ms.locfileid: "74276125"
 
 2. 在 [函數應用程式] 刀鋒視窗上，輸入下列值，然後選取 [確定] 以建立應用程式︰
 
-    |**設定** | **值** | **詳細資料** |
+    |**設定** | **ReplTest1** | **詳細資料** |
     |---|---|---|
     |**應用程式名稱**|PacketCaptureExample|函數應用程式的名稱。|
     |**訂用帳戶**|[您的訂用帳戶]要建立函數應用程式的訂用帳戶。||
     |**資源群組**|PacketCaptureRG|要包含函數應用程式的資源群組。|
     |**主控方案**|取用方案| 函數應用程式所使用的方案類型。 選項有「取用」或 Azure App Service 方案。 |
-    |<bpt id="p1">**</bpt>Location<ept id="p1">**</ept>|美國中部| 要在其中建立函數應用程式的區域。|
+    |**位置**|美國中部| 要在其中建立函數應用程式的區域。|
     |**儲存體帳戶**|{自動產生}| Azure Functions 針對一般用途的儲存所需的儲存體帳戶。|
 
-3. 在 [PacketCaptureExample 函數應用程式] 刀鋒視窗上，選取 [函式] > [自訂函式] >[ **]+** 。
+3. 在 [PacketCaptureExample 函數應用程式] 刀鋒視窗上，選取 [函式] > [自訂函式] >[+]。
 
 4. 選取 [HttpTrigger-Powershell]，然後輸入其餘資訊。 最後，若要建立函式，請選取 [建立]。
 
-    |**設定** | **值** | **詳細資料** |
+    |**設定** | **ReplTest1** | **詳細資料** |
     |---|---|---|
-    |**案例**|實驗性|案例類型|
+    |**案例**|Experimental|案例類型|
     |**函式命名**|AlertPacketCapturePowerShell|函式的名稱|
-    |**授權層級**|函數|函式的授權層級|
+    |**授權層級**|函式|函式的授權層級|
 
 ![函式範例][functions1]
 
@@ -344,11 +342,11 @@ $Encryptedpassword
 
 前往現有的虛擬機器，然後新增警示規則。 如需設定警示相關的詳細文件，請參閱[在 Azure 服務的 Azure 監視器中建立警示 - Azure 入口網站](../monitoring-and-diagnostics/insights-alerts-portal.md)。 在 [警示規則] 刀鋒視窗中輸入下列值，然後選取 [確定]。
 
-  |**設定** | **值** | **詳細資料** |
+  |**設定** | **ReplTest1** | **詳細資料** |
   |---|---|---|
-  |**Name**|TCP_Segments_Sent_Exceeded|警示規則的名稱。|
-  |**描述**|傳送的 TCP 區段超出閾值|警示規則的描述。|
-  |**計量**|傳送的 TCP 區段| 用以觸發警示的計量。 |
+  |**名稱**|TCP_Segments_Sent_Exceeded|警示規則的名稱。|
+  |**說明**|傳送的 TCP 區段超出閾值|警示規則的描述。|
+  |**度量**|傳送的 TCP 區段| 用以觸發警示的計量。 |
   |**Condition**|大於| 評估計量所用的條件。|
   |**閾值**|100| 觸發警示的計量值。 此值應該設為您環境的有效值。|
   |**期間**|過去五分鐘| 決定尋找計量閾值的期間。|

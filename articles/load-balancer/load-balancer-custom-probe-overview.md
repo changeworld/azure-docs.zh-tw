@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: c093cea9f8719722cc44c9d6424c06039360e90f
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: ffb9480508366b223e49f173df3dc76cb711116d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690396"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769178"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer 健康情況探查
 
@@ -200,7 +200,7 @@ Load Balancer 是一種穿透服務 (不會終止 TCP 連線)，且流程一律�
 
 UDP 資料包會傳遞至狀況良好的後端端點。
 
-UDP 是不需連線的，因此 UDP 沒有流程狀態追蹤。 如果任何後端端點的健康情況探查失敗，現有的 UDP 流量可能會移至後端集區中另一個狀況良好的實例。
+UDP 是不需連線的，因此 UDP 沒有流程狀態追蹤。 如果任何後端端點的健康情況探查失敗，現有的 UDP 流量將會移至後端集區中另一個狀況良好的實例。
 
 如果後端集區中所有執行個體的所有探查都失敗，則 Basic 和 Standard Load Balancer 的現有 UDP 流量將會終止。
 

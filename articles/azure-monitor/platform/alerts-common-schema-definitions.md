@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: anantr
 ms.author: robb
 ms.date: 03/14/2019
-ms.openlocfilehash: d1d822a5e7dadffd6be841e51ac407995adba2ea
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: fb8c2c7e25f94c66c8cc8f7768071d508da8d3b5
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552565"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765666"
 ---
 # <a name="common-alert-schema-definitions"></a>常見的警示結構描述定義
 
@@ -73,7 +73,7 @@ ms.locfileid: "72552565"
 
 ## <a name="essentials"></a>Essentials
 
-| 欄位 | 描述|
+| 欄位 | 說明|
 |:---|:---|
 | alertId | 唯一識別警示實例的 GUID。 |
 | alertRule | 產生警示實例之警示規則的名稱。 |
@@ -85,9 +85,9 @@ ms.locfileid: "72552565"
 | originAlertId | 警示實例的識別碼，由產生它的監視服務所產生。 |
 | firedDateTime | 在國際標準時間（UTC）中引發警示實例的日期和時間。 |
 | resolvedDateTime | 警示實例的監視條件設定為 [以 UTC**解決**] 的日期和時間。 目前僅適用于計量警示。|
-| 說明 | [描述]，如警示規則中所定義。 |
+| description | [描述]，如警示規則中所定義。 |
 |essentialsVersion| [基本] 區段的版本號碼。|
-|alertCoNtextVersion | @No__t_0 區段的版本號碼。 |
+|alertCoNtextVersion | `alertContext` 區段的版本號碼。 |
 
 **範例值**
 ```json
@@ -151,7 +151,7 @@ ms.locfileid: "72552565"
 ### <a name="log-alerts"></a>記錄警示
 
 > [!NOTE]
-> 針對已定義自訂 JSON 承載的記錄警示，啟用通用架構會將裝載架構還原為描述的內容，如下所述。 啟用通用架構的警示，其大小上限為每個警示 256 KB。 如果搜尋結果導致警示大小超過此閾值，則不會內嵌在記錄警示承載中。 您可以藉由檢查旗標 `IncludedSearchResults` 來判斷這一點。 如果未包含搜尋結果，您應該搭配使用搜尋查詢與[Log ANALYTICS API](https://docs.microsoft.com/rest/api/loganalytics/query/get)。 
+> 針對已定義自訂電子郵件主旨和/或 JSON 內容的記錄警示，啟用通用架構會將電子郵件主旨和（或）承載架構還原成如下所述的內容。 啟用通用架構的警示，其大小上限為每個警示 256 KB。 如果搜尋結果導致警示大小超過此閾值，則不會內嵌在記錄警示承載中。 您可以藉由檢查旗標 `IncludedSearchResults`來判斷這一點。 如果未包含搜尋結果，您應該搭配使用搜尋查詢與[Log ANALYTICS API](https://docs.microsoft.com/rest/api/loganalytics/query/get)。 
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 

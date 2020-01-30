@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB 資料表 API .NET Standard SDK 和資源
 description: 全面了解 Azure Cosmos DB 資料表 API 和 .NET Standard SDK，包括發行日期、停用日期及每個版本之間所做的變更。
-author: wmengmsft
-ms.author: wmeng
+author: sakash279
+ms.author: akshanka
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: c1422b6411fc60383cffa6c3082108bb940c4343
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 48fd85e27feb3d0c7f7f722dbbd502be55684385
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996207"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771581"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB 資料表 .NET Standard API：下載和版本資訊
 > [!div class="op_single_selector"]
@@ -42,13 +42,13 @@ ms.locfileid: "70996207"
 ## <a name="release-notes-for-100-series"></a>1\.0.0 系列的版本資訊
 1.0.0 系列會依賴[Microsoft. Azure DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)。
 
-### <a name="a-name105105"></a><a name="1.0.5"/>1.0.5
+### <a name="a-name105105"></a><a name="1.0.5"/>1.0。5
 * 在 TableClientConfiguration 下引進新的設定，以使用 Rest 執行程式來與 Cosmos DB 進行通訊資料表 API
 
 ### <a name="a-name105-preview105-preview"></a><a name="1.0.5-preview"/>1.0.5-預覽
 * 錯誤修正
 
-### <a name="a-name104104"></a><a name="1.0.4"/>1.0.4
+### <a name="a-name104104"></a><a name="1.0.4"/>1.0。4
 * 錯誤修正
 * 提供 RestExecutorConfiguration 的 HttpClientTimeout 選項。
 
@@ -62,7 +62,7 @@ ms.locfileid: "70996207"
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 * 公開上市版本
 
-### <a name="a-name0110-preview0110-preview"></a><a name="0.11.0-preview"/>0.11.0-preview
+### <a name="a-name0110-preview0110-preview"></a><a name="0.11.0-preview"/>0.11.0-預覽
 * 已變更 CloudTableClient 的設定方式。 它現在會在結構中取得 TableClientConfiguration 物件。 TableClientConfiguration 提供不同的屬性來設定用戶端行為，取決於目標端點是 Cosmos DB 資料表 API 還是 Azure 儲存體資料表 API。
 * 已將支援新增至 TableQuery，以便在自訂資料行上以排序次序傳回結果。 只有 Cosmos DB 資料表端點上才支援這項功能。
 * 已新增在各種結果類型上公開 RequestCharges 的支援。 只有 Cosmos DB 資料表端點上才支援這項功能。
@@ -88,21 +88,21 @@ Microsoft 至少會在停用 SDK 的 **12 個月** 之前提供通知，以供�
 這種跨平臺 .NET Standard 程式庫[Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)會取代 .NET Framework 程式庫[CosmosDB. table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)。
 
 ### <a name="200-series"></a>2.0.0 系列
-| Version | 發行日期 | 停用日期 |
+| 版本 | 發行日期 | 停用日期 |
 | --- | --- | --- |
 | [2.0.0-preview](#2.0.0-preview) |Auguest 22，2019 |--- |
 
 ### <a name="100-series"></a>1.0.0 系列
-| Version | 發行日期 | 停用日期 |
+| 版本 | 發行日期 | 停用日期 |
 | --- | --- | --- |
-| [1.0.5](#1.0.5) |2019年9月13日 |--- |
+| [1.0.5](#1.0.5) |2019 年 9 月 13 日 |--- |
 | [1.0.5-預覽](#1.0.5-preview) |Auguest 20，2019 |--- |
 | [1.0.4](#1.0.4) |Auguest 12、2019 |--- |
 | [1.0.4-預覽](#1.0.4-preview) |2019年7月26日 |--- |
 | 1.0.2-預覽 |2019 5 月2日 |--- |
 | [1.0.1](#1.0.1) |2019年4月19日 |--- |
 | [1.0.0](#1.0.0) |2019 年 3 月 13 日 |--- |
-| [0.11.0-preview](#0.11.0-preview) |2019年3月5日 |--- |
+| [0.11.0-預覽](#0.11.0-preview) |2019年3月5日 |--- |
 | [0.10.1 - 預覽](#0.10.1-preview) |2019 年 1 月 22 日 |--- |
 | [0.10.0-預覽](#0.10.0-preview) |2018 年 12 月 18 日 |--- |
 | [0.9.1-預覽](#0.9.1-preview) |2018 年 10 月 18 日 |--- |
@@ -112,5 +112,5 @@ Microsoft 至少會在停用 SDK 的 **12 個月** 之前提供通知，以供�
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 若要深入了解 Azure Cosmos DB 資料表 API，請參閱 [Azure Cosmos DB 資料表 API 的簡介](table-introduction.md)。

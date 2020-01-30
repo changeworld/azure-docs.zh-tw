@@ -3,24 +3,24 @@ title: 縮放層級和磚方格 |Microsoft Azure 對應
 description: 在本文中，您將瞭解 Microsoft Azure 地圖中的縮放層級和圖格格線。
 author: jingjing-z
 ms.author: jinzh
-ms.date: 05/07/2018
+ms.date: 01/22/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 09d6e357b87b59e8010e38693806da5f26f5b679
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 6ee697ac9b7849a0231d9916c6fa8bc73ef7f9b7
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910765"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765848"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>縮放層級和圖格格線
 
-Azure 地圖服務使用麥卡托圓球投影座標系統 (EPSG：3857)。 投射是用來將球形地球轉換成平面地圖的數學模型。 球形 Mercator 投射會在兩極中縮放地圖，以建立正方形地圖。 這會大幅扭曲地圖的尺規和區域，但有兩個大於此扭曲的重要屬性：
+Azure 地圖服務使用麥卡托圓球投影座標系統 (EPSG：3857)。 投射是用來將球形地球轉換成平面地圖的數學模型。 球形 Mercator 投射會在兩極上將地圖伸展，以建立正方形圖。 這項投影會大幅扭曲地圖的尺規和區域，但有兩個重要的屬性會超過此扭曲：
 
-- 這是一個 conformal 投射，這表示它會保留相對較小物件的形狀。 這在顯示空出影像時特別重要，因為我們想要避免扭曲建築物的形狀。 建築物應該會顯示方形，而不是矩形。
-- 這是一種圓柱投射，這表示北部和南部一律是正向上和向下，而 west 和東一律是直接向左和向右。 
+- 這是一個 conformal 投射，這表示它會保留相對較小物件的形狀。 在顯示空出影像時，保留小型物件的圖形特別重要。 例如，我們想要避免將大樓的形狀扭曲。 建築物應該會顯示方形，而不是矩形。
+- 這是一種圓柱投射。 北和南部一律會向上和向下，而 west 和東則一律為 left 和 right。 
 
 為了優化對應抓取和顯示的效能，地圖會分割成正方形磚。 Azure 地圖服務 SDK 的使用磚，其大小為 512 x 512 圖元的道路地圖，而較小的 256 x 256 圖元用於衛星影像。 Azure 地圖服務提供23個縮放層級的點陣和向量圖格，編號為0到22。 在縮放層級 0，整個世界剛好放進單一圖格裡：
 
@@ -36,7 +36,7 @@ Azure 地圖服務使用麥卡托圓球投影座標系統 (EPSG：3857)。 投�
 
 每個額外的縮放層級四除前一個的磚，並建立 2<sup>縮放比例</sup>x 2<sup>縮放</sup>的格線。 縮放層級 22 是 格線 2<sup>22</sup> x 2<sup>22</sup>，或 4,194,304 x 4,194,304 個圖格 (總計 17,592,186,044,416 個圖格)。
 
-Web 和 Android 的 Azure 地圖服務互動式地圖控制項支援縮放層級25縮放層級，編號為0到24。 雖然只有當磚可供使用時，道路資料才會出現在的縮放層級。
+Web 和 Android 的 Azure 地圖服務互動式地圖控制項支援25個縮放層級，編號為0到24。 雖然只有當磚可供使用時，道路資料才會出現在的縮放層級。
 
 下表提供縮放層級的完整值清單，其中的磚大小為512圖元正方形：
 
@@ -70,7 +70,7 @@ Web 和 Android 的 Azure 地圖服務互動式地圖控制項支援縮放層級
 
 ## <a name="pixel-coordinates"></a>圖元座標
 
-選擇要在每個縮放層級使用的投射和縮放比例時，我們可以將地理座標轉換成圖元座標。 特定縮放層級的全球地圖影像的全圖元寬度和高度可以計算為：
+選擇要在每個縮放層級使用的投射和縮放比例時，我們可以將地理座標轉換成圖元座標。 特定縮放層級之全球地圖影像的完整圖元寬度和高度，計算方式如下：
 
 ```javascript
 var mapWidth = tileSize * Math.pow(2, zoom);
@@ -82,7 +82,9 @@ var mapHeight = mapWidth;
 
 <center>
 
-顯示圖元尺寸的 ![地圖](media/zoom-levels-and-tile-grid/map-width-height.png)</center>
+![顯示圖元維度的地圖](media/zoom-levels-and-tile-grid/map-width-height.png)
+
+</center>
 
 指定緯度和經度的角度，以及詳細程度，圖元 XY 座標的計算方式如下：
 
@@ -94,11 +96,11 @@ var pixelX = ((longitude + 180) / 360) * tileSize * Math.pow(2, zoom);
 var pixelY = (0.5 – Math.log((1 + sinLatitude) / (1 – sinLatitude)) / (4 * Math.PI)) * tileSize * Math.pow(2, zoom);
 ```
 
-緯度和經度值會假設在 WGS 84 datum 上。 雖然 Azure 地圖服務使用球形投影，但請務必將所有地理座標轉換成共同的 datum，並選擇 WGS 84 做為該 datum。 會假設經度值的範圍是從-180 到 + 180 度，而緯度值則必須裁剪成從-85.05112878 到85.05112878 的範圍。 這可避免兩極上的 singularity，並使投影的地圖成為正方形。
+緯度和經度值會假設在 WGS 84 datum 上。 雖然 Azure 地圖服務使用球形投影，但請務必將所有地理座標轉換成常用的基準。 WGS 84 是選取的基準。 會假設經度值的範圍是從-180 角度到 + 180 度，而緯度值則必須裁剪成從-85.05112878 到85.05112878 的範圍。 遵循這些值可避免兩極的 singularity，並確保投影圖為方形圖形。
 
 ## <a name="tile-coordinates"></a>磚座標
 
-為了優化對應抓取和顯示的效能，轉譯的地圖會剪下到磚中。 由於每個縮放層級的圖元數目不同，因此磚的數目：
+為了優化對應抓取和顯示的效能，轉譯的地圖會剪下到磚中。 每個縮放層級的圖元數和磚數各有不同：
 
 ```javascript
 var numberOfTilesWide = Math.pow(2, zoom);
@@ -120,9 +122,9 @@ var tileX = Math.floor(pixelX / tileSize);
 var tileY = Math.floor(pixelY / tileSize);
 ```
 
-圖格是由縮放層級來召集，其 x 和 y 座標對應至圖格在該縮放層級格線上的位置。
+圖格是由縮放層級所呼叫。 X 和 y 座標會對應磚在格線上的位置，以顯示該縮放層級。
 
-在決定要使用哪一個縮放層級時，請記住每個位置在其磚上的固定位置。 這表示顯示給定領域範圍所需的圖格數目取決於特定縮放格線中在世界上的位置。 例如，如果兩個點相距 900 公尺，「可能」只需要在縮放層級 17 用三個圖格來顯示這兩點之間的路線。 不過，如果西邊的點是在其圖格中的右邊，而東邊的點是在其圖格中的左邊，則可能需要四個圖格：
+在決定要使用哪一個縮放層級時，請記住每個位置在其磚上的固定位置。 因此，顯示特定地區 expanse 所需的磚數，取決於全球地圖上的縮放方格特定位置。 例如，如果兩個點相距 900 公尺，「可能」只需要在縮放層級 17 用三個圖格來顯示這兩點之間的路線。 不過，如果西邊的點是在其圖格中的右邊，而東邊的點是在其圖格中的左邊，則可能需要四個圖格：
 
 <center>
 

@@ -3,12 +3,12 @@ title: 部署資源的多個實例
 description: 使用「Azure 資源管理員」範本中的複製作業和陣列，並在部署資源時多次逐一執行。
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: 54d406771f64d97a3ba564556be6dc49677a732d
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 0250f5ee64c91d8d75ad246271ab31324a2553f8
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121976"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836924"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Azure Resource Manager 範本中的資源、屬性或變數反復專案
 
@@ -205,6 +205,10 @@ mode 屬性也接受**平行**，這是預設值。
 
 請注意，在屬性反覆運算內使用 `copyIndex` 時，您必須提供反覆運算的名稱。 搭配資源反覆運算使用時，您不必提供名稱。
 
+> [!NOTE]
+> 屬性反復專案也支援 offset 引數。 位移必須位於反復專案的名稱之後，例如 copyIndex （' dataDisks '，1）。
+>
+
 Resource Manager 會在部署期間展開 `copy` 陣列。 陣列名稱會變成屬性名稱。 輸入值會變成物件屬性。 已部署的範本會變成：
 
 ```json
@@ -299,6 +303,10 @@ copy 元素為一個陣列，因此，您可以針對資源指定一個以上的
 ## <a name="variable-iteration"></a>變數反覆項目
 
 若要建立變數的多個執行個體，請在變數區段中使用 `copy` 屬性。 您可以建立一個由 `input` 屬性中的值建構的元素陣列。 您可以在變數中使用 `copy` 屬性，也可以在變數部分的最上層使用。 在變數反覆項目內使用 `copyIndex` 時，您必須提供反覆項目的名稱。
+
+> [!NOTE]
+> 變數反復專案也支援 offset 引數。 位移必須位於反復專案的名稱之後，例如 copyIndex （' diskNames '，1）。
+>
 
 如需建立字串值陣列的簡單範例，請參閱[複製陣列範本](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/copy-array/azuredeploy.json)。
 

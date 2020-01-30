@@ -1,144 +1,78 @@
 ---
-title: 知識庫 - QnA Maker
-titleSuffix: Azure Cognitive Services
-description: QnA Maker 知識庫是由一組問題和答案（QnA）配對以及與每個 QnA 配對相關聯的選用中繼資料所組成。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
+title: 從資料來源匯入-QnA Maker
+description: QnA Maker 知識庫是由一組問答集（QnA）集以及與每個 QnA 配對相關聯的選用中繼資料所組成。
 ms.topic: conceptual
-ms.date: 08/26/2019
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: 355556e98300ecad6aa3141f0f4ab14b834cd91e
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.date: 01/27/2020
+ms.openlocfilehash: d47d994366a8057521c1cc2ab1ab8a7ec3393965
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73794888"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843340"
 ---
-# <a name="what-is-a-qna-maker-knowledge-base"></a>什麼是 QnA Maker 知識庫？
+# <a name="importing-from-data-sources"></a>從資料來源匯入
 
-QnA Maker 知識庫是由一組問題和答案（QnA）配對以及與每個 QnA 配對相關聯的選用中繼資料所組成。
+知識庫是由公用 Url 和檔案引入的問題和答案集所組成。
 
-## <a name="key-knowledge-base-concepts"></a>重要知識庫概念
+## <a name="data-source-locations"></a>資料來源位置
 
-* **問題**：問題包含最能代表使用者查詢的文字。 
-* **答**：答案是當使用者查詢符合相關聯的問題時，所傳回的回應。  
-* **中繼資料**：中繼資料是與 QnA 組相關聯的標記，並以索引鍵/值組表示。 中繼資料標記用來篩選 QnA 配對，並限制執行查詢比對的集合。
+內容會從資料來源帶入知識庫中。 資料來源位置是**公用 url 或**檔案，不需要驗證。
 
-單一 QnA (以數值 QnA 識別碼表示) 具有某個問題的多個變體 (替代問題)，這些變體全都對應至單一回答。 此外，每個這類配對都可以有多個相關聯的元資料欄位：一個索引鍵和一個值。
+使用驗證保護的[SharePoint](../how-to/add-sharepoint-datasources.md)檔案是例外狀況。 SharePoint 資源必須是檔案，而不是網頁。 如果 URL 的結尾是 web 延伸模組，例如。ASPX，它不會從 SharePoint 匯入 QnA Maker。
 
-![QnA Maker 知識庫](../media/qnamaker-concepts-knowledgebase/knowledgebase.png) 
+## <a name="chit-chat-content"></a>閒聊聊天內容
 
-## <a name="knowledge-base-content-format"></a>知識庫內容格式
+閒聊 chat QnA 內容集是以數種語言和交談樣式提供的完整內容資料來源。 這可以是您 Bot 的特質起始點，並將節省您從頭撰寫它們的時間和成本。 瞭解[如何將](../how-to/chit-chat-knowledge-base.md)此內容集新增至您的知識庫。
 
-當您將豐富的內容內嵌到知識庫時，QnA Maker 會嘗試將內容轉換為 Markdown。 閱讀[這篇 blog](https://aka.ms/qnamaker-docs-markdown-support)以瞭解大部分聊天用戶端可理解的 markdown 格式。
+## <a name="structured-data-format-through-import"></a>透過匯入的結構化資料格式
 
-元資料欄位是由以冒號分隔的索引鍵/值組所組成，例如 Product：碎機碼。 索引鍵和值都必須是純文字。 中繼資料索引鍵不能包含任何空格。 中繼資料每個索引鍵僅支援一個值。
+匯入知識庫後，將會取代現有知識庫的內容。 匯入需要包含問題和答案的結構化 `.tsv` 檔案。 此資訊可協助 QnA Maker 將問答集分組，並將其屬性設定為特定的資料來源。
 
-## <a name="how-qna-maker-processes-a-user-query-to-select-the-best-answer"></a>QnA Maker 如何處理使用者查詢以選取最佳答案
+| 問題  | 答案  | 來源| 中繼資料（1個索引鍵：1個值） |
+|-----------|---------|----|---------------------|
+| 問題 1 | 解答 1 | Url1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
+| 問題 2 | 解答 2 | 編輯|    `Key:Value`       |
 
-定型和[發佈](/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base#publish-the-knowledge-base)的 QnA Maker 知識庫會在[GenerateAnswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage)接收使用者查詢，從 bot 或其他用戶端應用程式。 下圖說明接收使用者查詢的過程。
+## <a name="structured-multi-turn-format-through-import"></a>透過匯入的結構化多回合格式
 
-![使用者查詢的排名進程](../media/qnamaker-concepts-knowledgebase/rank-user-query-first-with-azure-search-then-with-qna-maker.png)
+您可以使用 `.tsv` 檔案格式來建立多回合交談。 此格式可讓您藉由分析先前的聊天記錄（與其他進程，而不是使用 QnA Maker）來建立多回合交談，然後透過自動化建立 `.tsv` 檔案。 匯入檔案以取代現有的知識庫。
 
-### <a name="ranker-process"></a>Ranker 流程
+> [!div class="mx-imgBorder"]
+> ![三個多回合問題層級的概念模型](../media/qnamaker-concepts-knowledgebase/nested-multi-turn.png)
 
-下表將說明此程式。
+多重回合 `.tsv`的資料行，則會**提示**您指定多回合。 範例 `.tsv`（如 Excel 所示）顯示要包含的資訊，以定義多回合子系：
 
-|步驟|目的|
-|--|--|
-|1|用戶端應用程式會將使用者查詢傳送至[GENERATEANSWER API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage)。|
-|2|QnA Maker 使用語言偵測、spellers 和斷詞工具來對使用者查詢進行前置處理。|
-|3|採取此前置處理來改變使用者查詢的最佳搜尋結果。|
-|4|此變更的查詢會傳送至 Azure 認知搜尋索引，以接收 `top` 的結果數目。 如果這些結果中沒有正確的答案，請稍微增加 `top` 的值。 一般來說，`top` 的值為10，可在90% 的查詢中運作。|
-|5|QnA Maker 會套用 advanced 特徵化，以判斷所提取的使用者查詢搜尋結果是否正確。 |
-|6|定型的 ranker 模型會使用步驟5中的功能分數來排名 Azure 認知搜尋結果。|
-|7|新的結果會依排名順序傳回用戶端應用程式。|
-|||
-
-使用的功能包括但不限於單字層級的語義、主體中的詞彙層級重要性，以及深度學習的語義模型，以判斷兩個文字字串之間的相似性與相關性。
-
-## <a name="http-request-and-response-with-endpoint"></a>使用端點的 HTTP 要求和回應
-當您發佈知識庫時，服務會建立以 REST 為基礎的 HTTP 端點，可以整合到您的應用程式中，通常是聊天機器人。 
-
-### <a name="the-user-query-request-to-generate-an-answer"></a>產生解答的使用者查詢要求
-
-使用者查詢是終端使用者要求知識庫的問題，例如 `How do I add a collaborator to my app?`。 查詢通常採用自然語言格式，或幾個代表問題的關鍵字，例如 `help with collaborators`。 查詢會從用戶端應用程式中的 HTTP 要求傳送至您的知識庫。
-
-```json
-{
-    "question": "qna maker and luis",
-    "top": 6,
-    "isTest": true,
-    "scoreThreshold": 20,
-    "strictFilters": [
-    {
-        "name": "category",
-        "value": "api"
-    }],
-    "userId": "sd53lsY="
-}
+```JSON
+[
+    {"displayOrder":0,"qnaId":2,"displayText":"Level 2 Question A"},
+    {"displayOrder":0,"qnaId":3,"displayText":"Level 2 - Question B"}
+]
 ```
 
-您可以藉由設定屬性（例如[scoreThreshold](./confidence-score.md#choose-a-score-threshold)、 [top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)和[strictFilters](../how-to/metadata-generateanswer-usage.md#filter-results-with-strictfilters-for-metadata-tags)）來控制回應。
+**DisplayOrder**是數值，**而文字類型則是不應**包含 markdown 的文字。
 
-使用具有[多重回合功能](../how-to/multiturn-conversation.md)的[對話內容](../how-to/metadata-generateanswer-usage.md#use-question-and-answer-results-to-keep-conversation-context)，讓交談能夠縮小問題和答案，以尋找正確和最終的答案。
+> [!div class="mx-imgBorder"]
+> ![如 Excel 所示的多回合問題範例](../media/qnamaker-concepts-knowledgebase/multi-turn-tsv-columns-excel-example.png)
 
-### <a name="the-response-from-a-call-to-generate-an-answer"></a>來自呼叫以產生解答的回應
+## <a name="export-as-example"></a>匯出為範例
 
-HTTP 回應是根據指定使用者查詢的最相符項，從知識庫中抓取的答案。 回應包含答案和預測分數。 如果您要求使用 `top` 屬性的一個以上的頂尖答案，您會得到一個以上的頂尖答案，每個都有一個分數。 
-
-```json
-{
-    "answers": [
-        {
-            "questions": [
-                "What is the closing time?"
-            ],
-            "answer": "10.30 PM",
-            "score": 100,
-            "id": 1,
-            "source": "Editorial",
-            "metadata": [
-                {
-                    "name": "restaurant",
-                    "value": "paradise"
-                },
-                {
-                    "name": "location",
-                    "value": "secunderabad"
-                }
-            ]
-        }
-    ]
-}
-```
-
-### <a name="test-and-production-knowledge-base"></a>測試和生產知識庫
-知識庫是透過 QnA Maker 所建立、維護及使用之問題和答案的存放庫。 每個 QnA Maker 層都可以用於多個知識庫。
-
-知識庫有兩種狀態： [*測試*] 和 [*已發行*]。
-
-*測試知識庫*是針對回應的正確性和完整性進行編輯、儲存和測試的版本。 對測試知識庫所做的變更不會影響應用程式或聊天機器人的終端使用者。 測試知識庫在 HTTP 要求中稱為 `test`。 
-
-*已發佈的知識庫*是在聊天機器人或應用程式中使用的版本。 發佈知識庫的動作會將測試知識庫的內容放在已發行的知識庫版本中。 由於已發佈的知識庫是應用程式透過端點所使用的版本，因此請確定內容正確且經過妥善測試。 已發佈的知識庫在 HTTP 要求中稱為 `prod`。
+如果您不確定如何在 `.tsv` 檔案中代表您的 QnA 集，請在 QnA Maker 入口網站中建立集合、儲存，然後匯出知識庫，以取得如何呈現該集合的範例。
 
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [知識庫的開發生命週期](./development-lifecycle-knowledge-base.md)
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
+
+使用 QnA Maker 的[Markdown 參考](../reference-markdown-format.md)，協助您設定答案的格式。
 
 [QnA Maker 概觀](../Overview/overview.md)
 
-使用下列方式建立和編輯知識庫： 
+使用下列方式建立和編輯知識庫：
 * [REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)
 * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebase?view=azure-dotnet)
 
-使用下列程式產生答案： 
+使用下列程式產生答案：
 * [REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)
 * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtime?view=azure-dotnet)

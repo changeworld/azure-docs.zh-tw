@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 12/09/2019
-ms.openlocfilehash: b4a6ef4a8559276ea1f74e133055a613ddcbcab4
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.date: 01/27/2020
+ms.openlocfilehash: 72fd23e4283925b91d749fef0afac4e87e93405c
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75495151"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841631"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>在 Azure HDInsight 上攜帶您自己的 Apache Kafka 金鑰
 
@@ -39,13 +39,13 @@ BYOK 加密是單一步驟的程序，您可在叢集建立期間免費處理此
 
 若要向 Key Vault 進行驗證，請使用[Azure 入口網站](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)、 [Azure PowerShell](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)、 [Azure Resource Manager](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md)或[Azure CLI](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)建立使用者指派的受控識別。 如需如何在 Azure HDInsight 中使用受控識別的詳細資訊，請參閱[Azure HDInsight 中的受控](../hdinsight-managed-identities.md)識別。 必須有 Azure Active directory 才能使用受控識別和 Kafka 的 BYOK，但不需要企業安全性套件 (ESP)。 將受控識別資源識別碼新增至 Key Vault 存取原則時，請務必儲存起來。
 
-![在 Azure 入口網站中建立使用者指派的受控識別](./media/apache-kafka-byok/user-managed-identity-portal.png)
+![在 Azure 入口網站中建立使用者指派的受控識別](./media/apache-kafka-byok/azure-portal-create-managed-identity.png)
 
 ## <a name="set-up-the-key-vault-and-keys"></a>設定 Key Vault 和金鑰
 
 HDInsight 僅支援 Azure Key Vault。 如果您有自己的金鑰保存庫，則可以將自己的金鑰匯入 Azure Key Vault 中。 請記住，這些金鑰必須具有「虛刪除」。 「虛刪除」功能可透過 REST、.NET/C#、PowerShell 和 Azure CLI 介面取得。
 
-1. 若要建立新的金鑰保存庫，請遵循 [Azure Key Vault](../../key-vault/key-vault-overview.md) 快速入門。 如需如何匯入現有金鑰的詳細資訊，請瀏覽[關於金鑰、祕密和憑證](../../key-vault/about-keys-secrets-and-certificates.md)。
+1. 若要建立新的金鑰保存庫，請遵循 [Azure Key Vault](../../key-vault/quick-create-cli.md) 快速入門。 如需如何匯入現有金鑰的詳細資訊，請瀏覽[關於金鑰、祕密和憑證](../../key-vault/about-keys-secrets-and-certificates.md)。
 
 1. 使用[az keyvault update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) CLI 命令，在金鑰保存庫上啟用「虛刪除」。
 
@@ -79,7 +79,7 @@ HDInsight 僅支援 Azure Key Vault。 如果您有自己的金鑰保存庫，�
 
     b. 在 [選取主體] 底下，選擇您所建立的使用者指派受控識別。
 
-    ![為 Azure Key Vault 存取原則設定 [選取主體]](./media/apache-kafka-byok/add-key-vault-access-policy-select-principal.png)
+    ![為 Azure Key Vault 存取原則設定 [選取主體]](./media/apache-kafka-byok/azure-portal-add-access-policy.png)
 
     c. 將 [金鑰權限] 設定為 [取得]、[將金鑰解除包裝] 及 [包裝金鑰]。
 
@@ -97,9 +97,9 @@ HDInsight 僅支援 Azure Key Vault。 如果您有自己的金鑰保存庫，�
 
 您現在可以開始建立新的 HDInsight 叢集。 BYOK 只能在叢集建立期間套用至新的叢集。 您無法從 BYOK 叢集移除加密，也無法將 BYOK 新增到現有叢集。
 
-![Azure 入口網站中的 Kafka 磁碟加密](./media/apache-kafka-byok/azure-portal-cluster-security-networking-kafka-byok.png)
+![Azure 入口網站中的 Kafka 磁碟加密](./media/apache-kafka-byok/azure-portal-cluster-security-networking-kafka.png)
 
-叢集建立期間，請提供完整的金鑰 URL，包括金鑰版本。 例如： `https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4` 。 您也需要將受控識別指派給叢集，並提供金鑰 URI。
+叢集建立期間，請提供完整的金鑰 URL，包括金鑰版本。 例如： `https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4` 。 您也需要將受控識別指派給叢集，並提供金鑰 URI。 如需完整的叢集建立詳細資料，請參閱[使用 Azure 入口網站建立 Apache Hadoop](./apache-kafka-get-started.md)叢集
 
 ## <a name="rotating-the-encryption-key"></a>輪替加密金鑰
 

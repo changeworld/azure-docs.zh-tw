@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: 322b7656a5e8cb5d0fd0274cc9f09adec2c2c5e1
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
-ms.translationtype: HT
+ms.openlocfilehash: 3b4b9f782d3306777e853a22ed24fac803da4fb9
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514760"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76835251"
 ---
 # <a name="security-alerts---a-reference-guide"></a>安全性警示-參考指南
 
@@ -234,7 +234,7 @@ ms.locfileid: "76514760"
 ||||
 
 
-## <a name="alerts-akscluster"></a>AKS 叢集層級的警示
+## <a name="alerts-akscluster"></a>容器的警示-Azure Kubernetes Service 叢集
 
 [進一步的詳細資料和注意事項](security-center-alerts-compute.md#azure-containers-)
 
@@ -249,7 +249,7 @@ ms.locfileid: "76514760"
 |**預覽-偵測到具有敏感磁片區掛接的容器**|Kubernetes audit 記錄分析偵測到具有敏感磁片區掛接的新容器。 偵測到的磁片區是一種 hostPath 類型，可將敏感的檔案或資料夾從節點掛接到容器。 如果容器遭到入侵，攻擊者可以使用此掛接來取得節點的存取權。|PrivilegeEscalation|
 ||||
 
-## <a name="alerts-containerhost"></a>容器主機層級的警示
+## <a name="alerts-containerhost"></a>容器的警示-主機層級
 
 [進一步的詳細資料和注意事項](security-center-alerts-compute.md#azure-containers-)
 
@@ -304,7 +304,7 @@ ms.locfileid: "76514760"
 ||||
 
 
-## <a name="alerts-azurecosmos"></a>Azure Cosmos DB
+## <a name="alerts-azurecosmos"></a>Azure Cosmos DB 的警示（預覽）
 
 [進一步的詳細資料和注意事項](security-center-alerts-data-services.md#azure-cosmos-db)
 

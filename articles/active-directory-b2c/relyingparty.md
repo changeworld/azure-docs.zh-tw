@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c2b74830463702e7de02d00bcfe88521fce2c803
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: caa7cbed7c56b63bcbf5ad8f287ab6cf32575c15
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932037"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840293"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -125,7 +125,7 @@ ms.locfileid: "75932037"
 | 屬性 | 必要項 | 說明 |
 | --------- | -------- | ----------- |
 | 範圍 | 是 | 單一登入行為的範圍。 可能的值：`Suppressed`、`Tenant`、`Application` 或 `Policy`。 `Suppressed` 值表示會抑制行為。 例如，在單一登入工作階段的情況下，不會為使用者保留任何工作階段，而且一律會提示使用者選取識別提供者。 `TrustFramework` 值表示會針對信任架構中的所有原則套用行為。 例如，如果使用者瀏覽信任架構的兩個原則旅程圖，系統不會提示該使用者選取識別提供者。 `Tenant` 值表示會將行為套用到租用戶中的所有原則。 例如，如果使用者瀏覽租用戶的兩個原則旅程圖，系統不會提示該使用者選取識別提供者。 `Application` 值表示會將行為套用到適用於提出要求之應用程式的所有原則。 例如，如果使用者瀏覽應用程式的兩個原則旅程圖，系統不會提示該使用者選取識別提供者。 `Policy` 值表示只會將行為套用到某個原則。 例如，如果使用者瀏覽信任架構的兩個原則旅程圖，系統會在該使用者於原則之間進行切換時提示其選取識別提供者。 |
-| KeepAliveInDays | 是 | 會控制使用者保持登入的時間長度。 將值設為 0 會關閉 KMSI 功能。 如需詳細資訊，請參閱[讓我保持登入](active-directory-b2c-reference-kmsi-custom.md)。 |
+| KeepAliveInDays | 是 | 會控制使用者保持登入的時間長度。 將值設為 0 會關閉 KMSI 功能。 如需詳細資訊，請參閱[讓我保持登入](custom-policy-keep-me-signed-in.md)。 |
 
 ## <a name="journeyinsights"></a>JourneyInsights
 
@@ -140,7 +140,7 @@ ms.locfileid: "75932037"
 | ServerEnabled | 是 | 可能的值：`true` 或 `false`。 如果是 `true`，則將現有的 UserJourneyRecorder JSON 當作自訂事件傳送至 Application Insights。 |
 | TelemetryVersion | 是 | 值必須是 `1.0.0`。 |
 
-如需詳細資訊，請參閱[收集記錄](active-directory-b2c-troubleshoot-custom.md)
+如需詳細資訊，請參閱[收集記錄](troubleshoot-with-application-insights.md)
 
 ## <a name="contentdefinitionparameters"></a>ContentDefinitionParameters
 
@@ -162,7 +162,7 @@ ms.locfileid: "75932037"
 | --------- | -------- | ----------- |
 | 名稱 | 是 | 金鑰值組的名稱。 |
 
-如需詳細資訊，請參閱[使用自訂原則設定具有動態內容的 UI](active-directory-b2c-ui-customization-custom-dynamic.md)
+如需詳細資訊，請參閱[使用自訂原則設定具有動態內容的 UI](custom-policy-ui-customization-dynamic.md)
 
 ## <a name="technicalprofile"></a>TechnicalProfile
 

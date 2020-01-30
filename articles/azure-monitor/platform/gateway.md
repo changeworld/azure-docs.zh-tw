@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: b68f19faa1542b873e90a4ce6d0426db7f3ff871
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 30854382b5a6dfd0faabfc2f59340dc21518d6f2
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547297"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773282"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>在 Azure 監視器中使用 Log Analytics 閘道將電腦連線，而不需要網際網路存取
 
@@ -188,7 +188,7 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 
 您可以使用 Microsoft[網路負載平衡（nlb）](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing)、 [Azure Load Balancer](../../load-balancer/load-balancer-overview.md)或硬體型負載平衡器，透過網路負載平衡（nlb）設定閘道的高可用性。 負載平衡器可藉由跨其節點將來自 Log Analytics 代理程式或 Operations Manager 管理伺服器的要求連線進行重新導向，來管理流量。 如果閘道伺服器故障，流量就會被重新導向到其他節點。
 
-### <a name="microsoft-network-load-balancing"></a>Microsoft Network Load Balancing
+### <a name="microsoft-network-load-balancing"></a>Microsoft 網路負載平衡
 
 若要了解如何設計和部署 Windows Server 2016 網路負載平衡叢集，請參閱[網路負載平衡](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing)。 下列步驟說明如何設定 Microsoft 網路負載平衡叢集。  
 
@@ -204,13 +204,13 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 
-若要瞭解如何設計和部署 Azure Load Balancer，請參閱[什麼是 Azure Load Balancer？](../../load-balancer/load-balancer-overview.md)。 若要部署基本負載平衡器，請遵循本[快速入門](../../load-balancer/quickstart-create-basic-load-balancer-portal.md)中所述的步驟，但不包括**建立後端伺服器**一節中所述的步驟。   
+若要瞭解如何設計和部署 Azure Load Balancer，請參閱[什麼是 Azure Load Balancer？](../../load-balancer/load-balancer-overview.md)。 若要部署基本負載平衡器，請遵循本[快速入門](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)中所述的步驟，但不包括**建立後端伺服器**一節中所述的步驟。   
 
 > [!NOTE]
 > 使用**基本 SKU**設定 Azure Load Balancer，會要求 Azure 虛擬機器必須屬於可用性設定組。 若要深入瞭解可用性設定組，請參閱[在 Azure 中管理 Windows 虛擬機器的可用性](../../virtual-machines/windows/manage-availability.md)。 若要將現有的虛擬機器新增至可用性設定組，請參閱[設定 Azure Resource Manager 的 VM 可用性設定組](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4)。
 > 
 
-建立負載平衡器之後，必須建立後端集區，以將流量分散到一或多個閘道伺服器。 請依照快速入門文章一節中所述的步驟[來建立負載平衡器的資源](../../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-resources-for-the-load-balancer)。  
+建立負載平衡器之後，必須建立後端集區，以將流量分散到一或多個閘道伺服器。 請依照快速入門文章一節中所述的步驟[來建立負載平衡器的資源](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)。  
 
 >[!NOTE]
 >設定健康情況探查時，應將其設定為使用閘道伺服器的 TCP 埠。 健康狀態探查會根據其對健康狀態檢查的回應，從負載平衡器輪替中動態新增或移除閘道伺服器。 
@@ -255,7 +255,7 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 
    a. 選取 [**開始**]，然後輸入**cmd**。  
 
-   b. 在 **\[命令提示字元\]** 上按一下滑鼠右鍵，然後選取 **\[以系統管理員身分執行\]** 。  
+   b. 以滑鼠右鍵按一下 [**命令提示**字元] 並選取 [以**系統管理員身分執行**]。  
 
 1. 輸入下列命令：
 

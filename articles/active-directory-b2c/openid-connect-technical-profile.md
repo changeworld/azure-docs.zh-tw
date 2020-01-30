@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: fdb925f820cad79fe68e7082f4ed63292a7d9444
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 8bda1d3bcce37cbb7b5306d460bddd4652349fe9
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951083"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840344"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自訂原則中定義 OpenID Connect 技術設定檔
 
@@ -49,7 +49,7 @@ Azure Active Directory B2C （Azure AD B2C）提供[OpenID connect](https://open
 
 **OutputClaims**元素包含 OpenID connect 識別提供者所傳回的宣告清單。 您可能需要將原則中定義的宣告名稱對應至識別提供者中定義的名稱。 只要設定了 `DefaultValue` 屬性，也可以加入識別提供者未傳回的宣告。
 
-**OutputClaimsTransformations** 元素可能包含 **OutputClaimsTransformation** 的集合，以用來修改輸出宣告或產生新的輸出宣告。
+**OutputClaimsTransformations** 元素可能含有 **OutputClaimsTransformation** 的集合，用於修改輸出宣告或產生新的輸出宣告。
 
 下列範例顯示 Microsoft 帳戶識別提供者傳回的宣告：
 
@@ -74,7 +74,7 @@ Azure Active Directory B2C （Azure AD B2C）提供[OpenID connect](https://open
 
 ## <a name="metadata"></a>中繼資料
 
-| 屬性 | 必要項 | 描述 |
+| 屬性 | 必要項 | 說明 |
 | --------- | -------- | ----------- |
 | client_id | 是 | 識別提供者的應用程式識別碼。 |
 | IdTokenAudience | 否 | id_token 的對象。 如果已指定，Azure AD B2C 會檢查權杖是否在識別提供者傳回的宣告中，以及是否等於指定的宣告。 |
@@ -93,7 +93,7 @@ Azure Active Directory B2C （Azure AD B2C）提供[OpenID connect](https://open
 
 **CryptographicKeys** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 描述 |
+| 屬性 | 必要項 | 說明 |
 | --------- | -------- | ----------- |
 | client_secret | 是 | 識別提供者應用程式的用戶端密碼。 只有在 **response_types** 中繼資料設為 `code` 時，才需要密碼編譯金鑰。 在此情況下，Azure AD B2C 會進行另一次呼叫，以交換存取權杖的授權碼。 如果中繼資料設為 `id_token`，則可以省略密碼編譯金鑰。  |
 
@@ -103,6 +103,6 @@ Azure Active Directory B2C （Azure AD B2C）提供[OpenID connect](https://open
 
 範例：
 
-- [使用自訂原則新增 Microsoft 帳戶 (MSA) 作為識別提供者](active-directory-b2c-custom-setup-msa-idp.md)
-- [使用 Azure AD 帳戶來登入](active-directory-b2c-setup-aad-custom.md)
-- [使用自訂原則允許使用者登入多租用戶 Azure AD 識別提供者](active-directory-b2c-setup-commonaad-custom.md)
+- [使用自訂原則新增 Microsoft 帳戶 (MSA) 作為識別提供者](identity-provider-microsoft-account-custom.md)
+- [使用 Azure AD 帳戶來登入](identity-provider-azure-ad-single-tenant-custom.md)
+- [使用自訂原則允許使用者登入多租用戶 Azure AD 識別提供者](identity-provider-azure-ad-multi-tenant-custom.md)

@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 30ac6a94142c9b9d987fb3fd32b3483cc6dc130c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2a5ef1837375cc395a871f9a9860fa8bde572a94
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64867601"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773593"
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>以儲存體加密來加密您的內容 
 
 > [!NOTE]
-> 若要完成此教學課程，您需要 Azure 帳戶。 如需詳細資訊，請參閱 < [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。   > 任何新的特色或功能會被新增至媒體服務 v2。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，請參閱[從 v2 至 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
+> 若要完成此教學課程，您需要 Azure 帳戶。 如需詳細資料，請參閱 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。   > 不會在媒體服務 v2 中新增任何新功能或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 到 v3 的遷移指引](../latest/migrate-from-v2-to-v3.md)
 >   
 
 高度建議使用 AES-256 位元加密對您的內容進行本機加密，然後將其上傳到將靜止加密儲存的 Azure 儲存體。
@@ -46,17 +46,17 @@ ms.locfileid: "64867601"
 
 ### <a name="storage-side-encryption"></a>儲存端加密
 
-|加密選項|描述|媒體服務 v2|媒體服務 v3|
+|加密選項|說明|媒體服務 v2|媒體服務 v3|
 |---|---|---|---|
 |媒體服務的儲存體加密|AES-256 加密，由媒體服務管理金鑰|支援<sup>(1)</sup>|不支援<sup>(2)</sup>|
-|[待用資料的儲存體服務加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Azure 儲存體提供的伺服器端加密，由 Azure 或客戶管理金鑰|支援|支援|
+|[待用資料的儲存體服務加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Azure 儲存體提供的伺服器端加密，由 Azure 或客戶管理金鑰|支援的|支援的|
 |[儲存體用戶端加密](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Azure 儲存體提供的用戶端加密，由客戶管理 Key Vault 中的金鑰|不支援|不支援|
 
 <sup>1</sup> 雖然媒體服務支援處理乾淨/不含任何加密形式的內容，但不建議您這麼做。
 
 <sup>2</sup> 在媒體服務 v3 中，如果您的資產是以媒體服務 v2 建立，則儲存體加密 (AES-256 加密) 只對回溯相容性有所支援。 這表示 v3 可用於現有的儲存體加密資產，但不允許建立新的。
 
-## <a name="connect-to-media-services"></a>連線到媒體服務
+## <a name="connect-to-media-services"></a>連接到媒體服務
 
 如需連線至 AMS API 的詳細資訊，請參閱[使用 Azure AD 驗證存取 Azure 媒體服務 API](media-services-use-aad-auth-to-access-ams-api.md)。 
 
@@ -113,14 +113,14 @@ AMS 儲存體加密會將 **AES-CTR** 模式加密套用至整個檔案。  AES 
 
     對於儲存體加密，要求本文中應該包含下列屬性。
 
-    要求本文屬性    | 描述
+    要求本文屬性    | 說明
     ---|---
-    Id | 使用下列格式產生 ContentKey 識別碼"nb:\<新 GUID > 」。
+    Id | ContentKey 識別碼會使用下列格式產生：「nb：小孩： UUID：\<新的 GUID >」。
     ContentKeyType | 內容金鑰類型是可定義索引鍵的整數。 若為儲存體加密格式，此值為 1。
     EncryptedContentKey | 我們會建立新的內容金鑰值，其為 256 位元 (32 位元組) 的值。 此金鑰是藉由針對 GetProtectionKeyId 與 GetProtectionKey 方法執行 HTTP GET 要求，使用我們從 Microsoft Azure 媒體服務擷取的儲存體加密 X.509 憑證來加密的。 範例請參閱下列 .NET 程式碼︰[這裡](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs)定義的 **EncryptSymmetricKeyData**方法。
     ProtectionKeyId | 這是適用於儲存體加密 X.509 憑證的保護金鑰識別碼，可用來加密我們的內容金鑰。
     ProtectionKeyType | 這是適用於保護金鑰的加密類型，可用來將內容金鑰加密。 針對本文範例，此值為 StorageEncryption(1)。
-    Checksum |MD5 會針對內容金鑰計算出總和檢查碼。 這是使用內容金鑰將內容識別碼加密計算而得。 範例程式碼示範如何計算總和檢查碼。
+    總和檢查碼 |MD5 會針對內容金鑰計算出總和檢查碼。 這是使用內容金鑰將內容識別碼加密計算而得。 範例程式碼示範如何計算總和檢查碼。
 
 
 ### <a name="retrieve-the-protectionkeyid"></a>擷取 ProtectionKeyId
@@ -134,7 +134,7 @@ AMS 儲存體加密會將 **AES-CTR** 模式加密套用至整個檔案。  AES 
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: media.windows.net
 
 回應：
@@ -165,7 +165,7 @@ AMS 儲存體加密會將 **AES-CTR** 模式加密套用至整個檔案。  AES 
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: 78d1247a-58d7-40e5-96cc-70ff0dfa7382
     Host: media.windows.net
 
@@ -205,7 +205,7 @@ AMS 儲存體加密會將 **AES-CTR** 模式加密套用至整個檔案。  AES 
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: media.windows.net
     {
     "Name":"ContentKey",
@@ -254,7 +254,7 @@ AMS 儲存體加密會將 **AES-CTR** 模式加密套用至整個檔案。  AES 
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: media.windows.net
 
     {"Name":"BigBuckBunny" "Options":1}
@@ -301,7 +301,7 @@ AMS 儲存體加密會將 **AES-CTR** 模式加密套用至整個檔案。  AES 
     Accept-Charset: UTF-8
     Content-Type: application/json
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: media.windows.net
 
     {"uri":"https://wamsbayclus001rest-hs.cloudapp.net/api/ContentKeys('nb%3Akid%3AUUID%3A01e6ea36-2285-4562-91f1-82c45736047c')"}
@@ -326,7 +326,7 @@ AMS 儲存體加密會將 **AES-CTR** 模式加密套用至整個檔案。  AES 
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: media.windows.net
     Content-Length: 164
 

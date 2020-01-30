@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 12/19/2019
-ms.openlocfilehash: 3036fb44cdd636c4a7b9e690ee19aa3d5ab2f5ac
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/25/2020
+ms.openlocfilehash: ff128d148abb87959894aee94d257ae71a3ca65e
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444516"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773852"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>對應資料流程效能和微調指南
 
@@ -129,6 +129,12 @@ ms.locfileid: "75444516"
 * 批次大小：計算資料的粗略資料列大小，並確認 rowSize * 批次大小小於2000000。 如果是，請增加批次大小以取得更佳的輸送量
 * 輸送量：在這裡設定較高的輸送量設定，以允許檔更快速地寫入 CosmosDB。 請記住，以高輸送量設定為基礎的較高 RU 成本。
 *   寫入輸送量預算：使用小於每分鐘的 ru 總數的值。 如果您的資料流程具有大量的 Spark 分割區，則設定預算輸送量會允許在這些分割區之間進行更多的平衡。
+
+## <a name="join-performance"></a>聯結效能
+
+管理資料流程中聯結的效能是一項很常見的作業，您會在資料轉換的整個生命週期中執行。 在 ADF 中，資料流程不需要在聯結之前排序資料，因為這些作業是以 Spark 中的雜湊聯結執行。 不過，您可以利用「廣播」聯結優化來改善效能。 這可避免洗牌，方法是將聯結關聯性任一端的內容向下推送至 Spark 節點。 這適用于用於參考查閱的小型資料表。 較大的資料表可能無法放入節點的記憶體中，對廣播優化而言是不錯的候選項目。
+
+另一個聯結優化是以可避免 Spark 傾向于執行交叉聯結的方式來建立聯接。 例如，當您在聯結條件中包含常值時，Spark 可能會發現必須先執行完整的笛卡兒乘積，然後篩選出聯結的值。 但是，如果您確保聯結條件的兩端都有資料行值，您可以避免此 Spark 引發的笛卡兒乘積，並改善您的聯結和資料流程的效能。
 
 ## <a name="next-steps"></a>後續步驟
 

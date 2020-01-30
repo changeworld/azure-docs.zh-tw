@@ -3,22 +3,20 @@ title: Azure 流量分析常見問題集 | Microsoft Docs
 description: 取得一些關於「流量分析」常見問題的解答。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
-ms.author: kumud
-ms.openlocfilehash: 991bb91c5bc1f6d695d5b363cdb08268f1ee83df
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.author: damendo
+ms.openlocfilehash: 5e31ed905f05070c8715a63ef3386b0006df0a75
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73907090"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840616"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>流量分析常見問題集
 
@@ -81,7 +79,7 @@ ms.locfileid: "73907090"
 - 巴西南部
 - 英國西部
 - 英國南部
-- 澳洲東部
+- 澳大利亞東部
 - 澳洲東南部 
 - 東亞
 - 東南亞
@@ -90,7 +88,7 @@ ms.locfileid: "73907090"
 - 印度南部
 - 日本東部
 - 日本西部
-- 美國政府維吉尼亞州
+- US Gov 維吉尼亞州
 - 中國東部 2
 
 Log Analytics 工作區必須存在於下列區域：
@@ -108,14 +106,14 @@ Log Analytics 工作區必須存在於下列區域：
 - 北歐
 - 英國西部
 - 英國南部
-- 澳洲東部
+- 澳大利亞東部
 - 澳洲東南部
 - 東亞
 - 東南亞 
 - 南韓中部
 - 印度中部
 - 日本東部
-- 美國政府維吉尼亞州
+- US Gov 維吉尼亞州
 - 中國東部 2
 
 ## <a name="can-the-nsgs-i-enable-flow-logs-for-be-in-different-regions-than-my-workspace"></a>啟用了流量記錄的 NSG 是否可與我的工作區位於不同的區域中？
@@ -124,11 +122,11 @@ Log Analytics 工作區必須存在於下列區域：
 
 ## <a name="can-multiple-nsgs-be-configured-within-a-single-workspace"></a>可以在單一工作區內設定多個 NSG 嗎？
 
-是。
+可以。
 
 ## <a name="can-i-use-an-existing-workspace"></a>我可以使用現有的工作區嗎？
 
-是。 如果您選取現有的工作區，請確定該工作區已遷移至新的查詢語言。 如果您不想升級工作區，則需要建立新的工作區。 如需新查詢語言的詳細資訊，請參閱[Azure 監視器記錄升級至新的記錄搜尋](../log-analytics/log-analytics-log-search-upgrade.md)。
+可以。 如果您選取現有的工作區，請確定該工作區已遷移至新的查詢語言。 如果您不想升級工作區，則需要建立新的工作區。 如需新查詢語言的詳細資訊，請參閱[Azure 監視器記錄升級至新的記錄搜尋](../log-analytics/log-analytics-log-search-upgrade.md)。
 
 ## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-log-analytics-workspace-be-in-a-different-subscription"></a>是否可以讓我的 Azure 儲存體帳戶位於某個訂用帳戶，而讓我的 Log Analytics 工作區位於不同的訂用帳戶中？
 
@@ -136,7 +134,7 @@ Log Analytics 工作區必須存在於下列區域：
 
 ## <a name="can-i-store-raw-logs-in-a-different-subscription"></a>可以在不同的訂用帳戶中儲存原始記錄嗎？
 
-號 您可以將原始記錄儲存在已針對流量記錄啟用 NSG 的任何儲存體帳戶中。 但是儲存體帳戶和原始記錄必須位於相同的訂用帳戶和區域中。
+不會。 您可以將原始記錄儲存在已針對流量記錄啟用 NSG 的任何儲存體帳戶中。 但是儲存體帳戶和原始記錄必須位於相同的訂用帳戶和區域中。
 
 ## <a name="what-if-i-cant-configure-an-nsg-for-traffic-analytics-due-to-a-not-found-error"></a>因為發生「找不到」錯誤而無法設定 NSG 進行流量分析，該怎麼辦？
 
@@ -266,6 +264,62 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 - 按一下 [新增警示規則] 以建立警示
 - 請參閱[記錄警示檔](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)以建立警示
 
+## <a name="how-do-i-check-which-vms-are-receiving-most-on-premise-traffic"></a>如何? 檢查哪些 Vm 會接收大部分的內部部署流量
+
+            AzureNetworkAnalytics_CL
+            | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+            | where <Scoping condition>
+            | mvexpand vm = pack_array(VM1_s, VM2_s) to typeof(string)
+            | where isnotempty(vm) 
+             | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d 
+            | make-series TotalTraffic = sum(traffic) default = 0 on FlowStartTime_t from datetime(<time>) to datetime(<time>) step 1m by vm
+            | render timechart
+
+  針對 Ip：
+
+            AzureNetworkAnalytics_CL
+            | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+            //| where <Scoping condition>
+            | mvexpand IP = pack_array(SrcIP_s, DestIP_s) to typeof(string)
+            | where isnotempty(IP) 
+            | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d 
+            | make-series TotalTraffic = sum(traffic) default = 0 on FlowStartTime_t from datetime(<time>) to datetime(<time>) step 1m by IP
+            | render timechart
+
+針對時間，請使用格式： yyyy-mm-dd 00:00:00
+
+## <a name="how-do-i-check-standard-deviation-in-traffic-recieved-by-my-vms-from-on-premise-machines"></a>如何? 檢查我的 Vm 從內部部署機器接收的流量標準差
+
+            AzureNetworkAnalytics_CL
+            | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+            //| where <Scoping condition>
+            | mvexpand vm = pack_array(VM1_s, VM2_s) to typeof(string)
+            | where isnotempty(vm) 
+            | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d
+            | summarize deviation = stdev(traffic)  by vm
+
+
+針對 Ip：
+
+            AzureNetworkAnalytics_CL
+            | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+            //| where <Scoping condition>
+            | mvexpand IP = pack_array(SrcIP_s, DestIP_s) to typeof(string)
+            | where isnotempty(IP) 
+            | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d
+            | summarize deviation = stdev(traffic)  by IP
+            
+## <a name="how-do-i-check-which-ports-are-reachable-or-bocked-between-ip-pairs-with-nsg-rules"></a>如何? 檢查 IP 配對與 NSG 規則之間可連線的埠（或 bocked）
+
+            AzureNetworkAnalytics_CL
+            | where SubType_s == "FlowLog" and TimeGenerated between (startTime .. endTime)
+            | extend sourceIPs = iif(isempty(SrcIP_s), split(SrcPublicIPs_s, " ") , pack_array(SrcIP_s)),
+            destIPs = iif(isempty(DestIP_s), split(DestPublicIPs_s," ") , pack_array(DestIP_s))
+            | mvexpand SourceIp = sourceIPs to typeof(string)
+            | mvexpand DestIp = destIPs to typeof(string)
+            | project SourceIp = tostring(split(SourceIp, "|")[0]), DestIp = tostring(split(DestIp, "|")[0]), NSGList_s, NSGRule_s, DestPort_d, L4Protocol_s, FlowStatus_s 
+            | summarize DestPorts= makeset(DestPort_d) by SourceIp, DestIp, NSGList_s, NSGRule_s, L4Protocol_s, FlowStatus_s
+
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-geo-map-view"></a>如何在地理地圖檢視中使用鍵盤來瀏覽？
 
 地理地圖頁面包含兩大區段：
@@ -286,7 +340,7 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 - 若要移至地圖上其他醒目提示節點，請使用 `Tab` 或 `Right arrow` 鍵順向移動。 若要反向移動，請使用 `Shift+Tab` 或 `Left arrow` 鍵。
 - 若要選取地圖中的任何醒目提示節點，請使用 `Enter` 或 `Down arrow` 鍵。
 - 一選取任何這類節點後，焦點就會移至節點的 [資訊工具方塊]。 根據預設，焦點會移至 [資訊工具方塊] 上已關閉的按鈕。 若要進一步地在 [方塊] 檢視內移動，請分別使用 `Right arrow` 和 `Left arrow` 鍵來順向和反向移動。 按 `Enter` 的效果等同於在 [資訊工具方塊] 內選取焦點按鈕的效果。
-- 若您在焦點於 [資訊工具方塊]`Tab`**時按**，焦點就會移至與所選節點位於相同大陸的端點。 使用 `Right arrow` 和 `Left arrow` 鍵可在這些端點之間移動。
+- 若您在焦點於 [資訊工具方塊] 時按 `Tab`，焦點就會移至與所選節點位於相同大陸的端點。 使用 `Right arrow` 和 `Left arrow` 鍵可在這些端點之間移動。
 - 若要移動至其他流量端點或大陸叢集，請使用 `Tab` 進行順向移動，使用 `Shift+Tab` 進行反向移動。
 - 一旦焦點位於 [大陸叢集] 時，請使用 `Enter` 或 `Down` 方向鍵來醒目提示大陸叢集內的端點。 若要在端點和大陸叢集資訊方塊上的關閉按鈕之間移動，請分別使用 `Right arrow` 或 `Left arrow` 鍵來進行順向和反向移動。 在任何端點上，您都可以使用 `Shift+L` 來切換到從選取節點到端點的連接線。 您可以再按一次 `Shift+L`，即可移至所選的端點。
         

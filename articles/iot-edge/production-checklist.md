@@ -8,12 +8,12 @@ ms.date: 08/09/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 58959310a0daec3835585f64c53f2b8853eb553e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: bb31a10623bd5e8ea9a406b37acf84995774045c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548589"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772296"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>準備在生產環境中部署 IoT Edge 解決方案
 
@@ -39,7 +39,7 @@ IoT Edge 裝置可以是任何項目，包括 Raspberry Pi、膝上型電腦或�
 
 若要了解裝置 CA 憑證的角色，請參閱 [Azure IoT Edge 如何使用憑證](iot-edge-certs.md)。
 
-如需如何在 IoT Edge 裝置上安裝憑證，並從 yaml 檔案參考它們的詳細資訊，請參閱[在 IoT Edge 裝置上安裝生產憑證](how-to-create-transparent-gateway.md)。
+如需如何在 IoT Edge 裝置上安裝憑證，並從 yaml 檔案參考它們的詳細資訊，請參閱[在 IoT Edge 裝置上安裝生產憑證](how-to-install-production-certificates.md)。
 
 ### <a name="have-a-device-management-plan"></a>研擬裝置管理計畫
 

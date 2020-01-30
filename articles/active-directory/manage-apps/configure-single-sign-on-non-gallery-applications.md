@@ -12,12 +12,12 @@ ms.date: 07/19/2019
 ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c99c38c9a1972bc434c7fa61d6745dac0d79d7b
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 709f8083e50391718d34587bd0ea1d847cc41923
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76711930"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841960"
 ---
 # <a name="configure-saml-based-single-sign-on-to-non-gallery-applications"></a>為非資源庫應用程式設定 SAML 型單一登入
 
@@ -26,7 +26,7 @@ ms.locfileid: "76711930"
 > [!NOTE]
 > 要新增資源庫應用程式？ 在 [SaaS 應用程式教學課程清單](../saas-apps/tutorial-list.md)中尋找逐步設定指示
 
-若要為非資源庫的應用程式設定 SAML 單一登入，而不需撰寫程式碼，您需要有訂用帳戶或 Azure AD Premium，且應用程式必須支援 SAML 2.0。 如需有關 Azure AD 版本的詳細資訊，請參閱 [Azure AD 定價](https://azure.microsoft.com/pricing/details/active-directory/)。
+若要為不在資源庫中的應用程式設定 SAML 單一登入，而不需撰寫程式碼，您需要有訂用帳戶和 Azure AD Premium 授權，而且應用程式必須支援 SAML 2.0。 如需有關 Azure AD 版本的詳細資訊，請參閱 [Azure AD 定價](https://azure.microsoft.com/pricing/details/active-directory/)。
 
 ## <a name="before-you-begin"></a>開始之前
 

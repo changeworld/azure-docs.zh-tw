@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: thweiss
 ROBOTS: noindex, nofollow
-ms.openlocfilehash: c77e89c509f10155ddc27e92f09465959b629f67
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7a77a54dc59ec427bf6abdf8fc1d410533b5be44
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979207"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771891"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>使用 Azure Key Vault 為您的 Azure Cosmos 帳戶設定客戶管理的金鑰
 
 > [!NOTE]
-> 此時，您必須要求存取權才能使用這項功能。 若要這麼做，請洽詢[cosmosdbpm@microsoft.com](mailto:cosmosdbpm@microsoft.com)。
+> 此時，您必須要求存取權才能使用這項功能。 若要這麼做，請洽詢[azurecosmosdbcmk@service.microsoft.com](mailto:azurecosmosdbcmk@service.microsoft.com)。
 
 儲存在您的 Azure Cosmos 帳戶中的資料會自動且順暢地加密。 Azure Cosmos DB 提供兩個選項來管理用來加密待用資料的金鑰：
 

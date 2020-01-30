@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 1/10/2020
+ms.date: 1/27/2020
 ms.author: raynew
-ms.openlocfilehash: bfa3f592ca799b71bef7c7f9409864026f6c8d6a
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: d4409fe61bfe1f0a9fe74171f5b1ec471b9a6a26
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863888"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774432"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>內部部署 Hyper-V VM 至 Azure 的災害復原支援矩陣
 
@@ -33,7 +33,7 @@ Hyper-V (不含 Virtual Machine Manager) | 您可以針對在不是由 Virtual M
 **Server** | **需求** | **詳細資料**
 --- | --- | ---
 Hyper-V (執行時不含 Virtual Machine Manager) |  Windows Server 2019、Windows Server 2016 （包括 Server core 安裝）、Windows Server 2012 R2 （含最新的更新） | 如果您已使用 Azure Site Recovery 設定 Windows Server 2012 R2 和/或 SCVMM 2012 R2，並且打算升級作業系統，請依照此[文件](upgrade-2012R2-to-2016.md)的說明進行。 
-Hyper-V (執行時含 Virtual Machine Manager) | Virtual Machine Manager 2019、Virtual Machine Manager 2016、Virtual Machine Manager 2012 R2 | 如果使用 Virtual Machine Manager，則應該在 Virtual Machine Manager 2019 中管理 Windows Server 2019 主機。 同樣地，Windows Server 2016 主機也應該在 Virtual Machine Manager 2016 中進行管理。<br/><br/>
+Hyper-V (執行時含 Virtual Machine Manager) | Virtual Machine Manager 2019、Virtual Machine Manager 2016、Virtual Machine Manager 2012 R2 | 如果使用 Virtual Machine Manager，則應該在 Virtual Machine Manager 2019 中管理 Windows Server 2019 主機。 同樣地，Windows Server 2016 主機也應該在 Virtual Machine Manager 2016 中進行管理。<br/><br/> 注意： Windows Server 2019 主機不支援容錯回復至替代位置。
 
 
 ## <a name="replicated-vms"></a>複寫 VM
@@ -111,7 +111,7 @@ SMB 3.0 | 否 | 否
 RDM | NA | NA
 磁碟 > 1 TB | 是，最多 4,095 GB | 是，最多 4,095 GB
 磁碟：4k 邏輯與實體磁區 | 不支援：第 1 代/第 2 代 | 不支援：第 1 代/第 2 代
-磁碟：4K 邏輯與 512 位元組實體磁區 | 是 |  是
+磁片：4K 邏輯與 512-位元組實體磁區 | 是 |  是
 邏輯磁碟區管理 (LVM)。 資料磁碟上才支援 LVM。 Azure 只提供單一 OS 磁碟。 | 是 | 是
 使用等量磁碟的磁碟區 > 1 TB | 是 | 是
 儲存空間 | 否 | 否
@@ -134,7 +134,7 @@ RDM | NA | NA
 進階儲存體 | 是 | 是
 匯入/匯出服務 | 否 | 否
 已啟用防火牆的 Azure 儲存體帳戶 | 可以。 適用于目標儲存體和快取。 | 可以。 適用于目標儲存體和快取。
-修改儲存體帳戶 | 不會。 啟用複寫之後，即無法修改目標 Azure 儲存體帳戶。 若要修改，請停用再重新啟用嚴重損壞修復。 | 否
+修改儲存體帳戶 | 不會。 啟用複寫之後，即無法修改目標 Azure 儲存體帳戶。 修改、停用再重新啟用嚴重損壞修復。 | 否
 
 
 ## <a name="azure-compute-features"></a>Azure 計算功能

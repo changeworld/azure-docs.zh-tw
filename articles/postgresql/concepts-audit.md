@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/14/2019
-ms.openlocfilehash: c0ce1648d7b5f7c25044ed8f66eafcca7b0009f4
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 01/28/2020
+ms.openlocfilehash: 45490e398abd8b5bd3c10adb95b56e1019d2bb94
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747334"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842464"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫中的審核記錄-單一伺服器
 
@@ -23,7 +23,7 @@ ms.locfileid: "75747334"
 
 如果您想要 Azure 資源層級記錄以進行計算和儲存體調整之類的作業，請參閱[Azure 活動記錄](../azure-monitor/platform/platform-logs-overview.md)。
 
-## <a name="usage-considerations"></a>使用考量
+## <a name="usage-considerations"></a>使用考慮
 根據預設，pgAudit 記錄陳述式會與您的一般記錄陳述式一起發出，其方法是使用 Postgres 的標準記錄功能。 在適用於 PostgreSQL 的 Azure 資料庫中，可以透過 Azure 入口網站或 CLI 下載這些 .log 檔案。 檔案集合的最大儲存空間為 1 GB，每個檔案最多可使用七天（預設值為三天）。 這項服務是短期儲存選項。
 
 或者，您可以將所有記錄設定為要發出給 Azure 監視器的診斷記錄服務。 如果您啟用 Azure 監視器診斷記錄，將會根據您的選擇，將記錄自動傳送（JSON 格式）至 Azure 儲存體、事件中樞和/或 Azure 監視器記錄。
@@ -65,10 +65,8 @@ pgAudit 可讓您設定會話或物件的 audit 記錄。 [會話 audit 記錄](
 [安裝 pgAudit](#installing-pgaudit)之後，您可以設定其參數以開始記錄。 [PgAudit 檔](https://github.com/pgaudit/pgaudit/blob/master/README.md#settings)會提供每個參數的定義。 先測試參數，並確認您得到的是預期的行為。
 
 > [!NOTE]
-> 將 `pgaudit.log_client` 設定為 ON 會將記錄重新導向至用戶端進程（例如 psql），而不是寫入至檔案。 此設定通常應保持停用狀態。
-
-> [!NOTE]
-> 只有在 `pgaudit.log_client` 為 on 時，才會啟用 `pgaudit.log_level`。 此外，在 Azure 入口網站中，目前有 `pgaudit.log_level`的錯誤：顯示下拉式方塊，表示可以選取多個層級。 不過，只應選取一個層級。 
+> 將 `pgaudit.log_client` 設定為 ON 會將記錄重新導向至用戶端進程（例如 psql），而不是寫入至檔案。 此設定通常應保持停用狀態。 <br> <br>
+> 只有在 `pgaudit.log_client` 為 on 時，才會啟用 `pgaudit.log_level`。
 
 > [!NOTE]
 > 在適用於 PostgreSQL 的 Azure 資料庫中，無法使用 `-` （減號）符號快捷方式來設定 `pgaudit.log`，如 pgAudit 檔中所述。 所有必要的陳述式類別 (讀取、寫入等) 都應該個別指定。
@@ -87,6 +85,22 @@ t=%m u=%u db=%d pid=[%p]:
 ### <a name="getting-started"></a>開始使用
 若要快速開始，請將 `pgaudit.log` 設定為 [`WRITE`]，然後開啟您的記錄以查看輸出。 
 
+## <a name="viewing-audit-logs"></a>查看審核記錄
+如果您使用 .log 檔案，您的 audit 記錄檔將會包含在與您的于 postgresql 錯誤記錄檔相同的檔案中。 您可以從 Azure[入口網站](howto-configure-server-logs-in-portal.md)或[CLI](howto-configure-server-logs-using-cli.md)下載記錄檔。 
+
+如果您使用 Azure 診斷記錄，您存取記錄的方式取決於您選擇的端點。 如 Azure 儲存體，請參閱[記錄儲存體帳戶](../azure-monitor/platform/resource-logs-collect-storage.md)一文。 如事件中樞，請參閱[串流 Azure 記錄](../azure-monitor/platform/resource-logs-stream-event-hubs.md)一文。
+
+針對 Azure 監視器記錄檔，記錄會傳送至您選取的工作區。 Postgres 記錄會使用**AzureDiagnostics**收集模式，因此可以從 AzureDiagnostics 資料表進行查詢。 資料表中的欄位如下所述。 深入瞭解[Azure 監視器記錄查詢](../azure-monitor/log-query/log-query-overview.md)總覽中的查詢和警示。
+
+您可以使用此查詢來開始。 您可以根據查詢來設定警示。
+
+在過去一天內搜尋特定伺服器的所有 Postgres 記錄
+```
+AzureDiagnostics
+| where LogicalServerName_s == "myservername"
+| where TimeGenerated > ago(1d) 
+| where Message contains "AUDIT:"
+```
 
 ## <a name="next-steps"></a>後續步驟
 - [瞭解如何登入適用於 PostgreSQL 的 Azure 資料庫](concepts-server-logs.md)

@@ -1,14 +1,14 @@
 ---
 title: 從 ACR 工作進行外部驗證
-description: 在 Azure Container Registry （ACR）工作中啟用適用于 Azure 資源的受控識別，以允許工作讀取儲存在 Azure 金鑰保存庫中的 Docker Hub 認證。
+description: 使用 Azure 資源的受控識別，設定 Azure Container Registry 工作（ACR 工作）來讀取儲存在 Azure 金鑰保存庫中的 Docker Hub 認證。
 ms.topic: article
-ms.date: 07/12/2019
-ms.openlocfilehash: a7086050a4aef380f11298c819817692396216b2
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.date: 01/14/2020
+ms.openlocfilehash: 47d3d643ee1287ef4f444095a2c6cfe6dcab294b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456230"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842515"
 ---
 # <a name="external-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>使用 Azure 管理的身分識別在 ACR 工作中進行外部驗證 
 
@@ -16,17 +16,17 @@ ms.locfileid: "74456230"
 
 在本文中，您將瞭解如何在存取儲存在 Azure key vault 中的秘密的工作中啟用受控識別。 
 
-若要建立 Azure 資源，本文會要求您執行 Azure CLI 版2.0.68 或更新版本。 執行 `az --version` 找出版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli]。
+若要建立 Azure 資源，本文會要求您執行 Azure CLI 版2.0.68 或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli]。
 
 ## <a name="scenario-overview"></a>案例概觀
 
-範例工作會讀取儲存在 Azure 金鑰保存庫中的 Docker Hub 認證。 認證適用于 Docker hub 帳戶，其具有對 Docker Hub 中私人存放庫的寫入（push）許可權。 若要讀取認證，您可以使用受控識別來設定工作，並為其指派適當的許可權。 與身分識別相關聯的工作會建立映射，並登入 Docker Hub 以將映射推送至私人存放庫。 
+範例工作會讀取儲存在 Azure 金鑰保存庫中的 Docker Hub 認證。 認證適用于對私人 Docker Hub 存放庫具有寫入（push）許可權的 Docker Hub 帳戶。 若要讀取認證，您可以使用受控識別來設定工作，並為其指派適當的許可權。 與身分識別相關聯的工作會建立映射，並登入 Docker Hub 以將映射推送至私人存放庫。 
 
 這個範例會顯示使用使用者指派或系統指派的受控識別的步驟。 您所選擇的身分識別取決於您組織的需求。
 
 在真實世界的案例中，公司可能會將映射發佈到 Docker Hub 中的私人存放庫，做為組建程式的一部分。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 您需要在其中執行工作的 Azure container registry。 在本文中，此登錄名為*myregistry*。 在稍後的步驟中，將取代為您自己的登錄名稱。
 
@@ -71,7 +71,7 @@ az keyvault secret set \
 此範例工作的步驟定義于[YAML](container-registry-tasks-reference-yaml.md)檔案中。 在本機工作目錄中建立名為 `dockerhubtask.yaml` 的檔案，並貼上下列內容。 請務必以您的金鑰保存庫名稱取代檔案中的金鑰保存庫名稱。
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 # Replace mykeyvault with the name of your key vault
 secrets:
   - id: username
@@ -80,12 +80,12 @@ secrets:
     keyvault: https://mykeyvault.vault.azure.net/secrets/Password
 steps:
 # Log in to Docker Hub
-  - cmd: docker login --username '{{.Secrets.username}}' --password '{{.Secrets.password}}'
+  - cmd: bash echo '{{.Secrets.password}}' | docker login --username '{{.Secrets.username}}' --password-stdin 
 # Build image
-  - build: -t {{.Values.PrivateRepo}}:{{.Run.ID}} https://github.com/Azure-Samples/acr-tasks.git -f hello-world.dockerfile
+  - build: -t {{.Values.PrivateRepo}}:$ID https://github.com/Azure-Samples/acr-tasks.git -f hello-world.dockerfile
 # Push image to private repo in Docker Hub
   - push:
-    - {{.Values.PrivateRepo}}:{{.Run.ID}}
+    - {{.Values.PrivateRepo}}:$ID
 ```
 
 工作步驟會執行下列動作：
@@ -94,6 +94,7 @@ steps:
 * 將秘密傳遞至 `docker login` 命令，以使用 Docker Hub 進行驗證。
 * 使用[Azure 範例/acr-](https://github.com/Azure-Samples/acr-tasks.git)工作存放庫中的範例 Dockerfile 來建立映射。
 * 將映射推送至私人 Docker Hub 存放庫。
+
 
 ## <a name="option-1-create-task-with-user-assigned-identity"></a>選項1：使用使用者指派的身分識別來建立工作
 
@@ -140,7 +141,10 @@ az acr task create \
 執行下列[az keyvault set-policy][az-keyvault-set-policy]命令，在金鑰保存庫上設定存取原則。 下列範例可讓識別從金鑰保存庫讀取秘密。 
 
 ```azurecli
-az keyvault set-policy --name mykeyvault --resource-group myResourceGroup --object-id $principalID --secret-permissions get
+az keyvault set-policy --name mykeyvault \
+  --resource-group myResourceGroup \
+  --object-id $principalID \
+  --secret-permissions get
 ```
 
 ## <a name="manually-run-the-task"></a>手動執行工作
@@ -148,7 +152,7 @@ az keyvault set-policy --name mykeyvault --resource-group myResourceGroup --obje
 若要確認您啟用受控識別的工作成功執行，請使用[az acr task run][az-acr-task-run]命令手動觸發工作。 `--set` 參數是用來將私人存放庫名稱傳遞給工作。 在此範例中，預留位置存放庫名稱是*hubuser/hubrepo*。
 
 ```azurecli
-az acr task run --name dockerhubtask --registry myregistry --set PrivateRepo=hubuser/hubrepo 
+az acr task run --name dockerhubtask --registry myregistry --set PrivateRepo=hubuser/hubrepo
 ```
 
 當工作執行成功時，輸出會向 Docker Hub 顯示成功的驗證，並成功建立映射並推送至私人存放庫：

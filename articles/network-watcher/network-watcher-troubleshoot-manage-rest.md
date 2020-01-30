@@ -4,23 +4,20 @@ titleSuffix: Azure Network Watcher
 description: 此頁面說明如何搭配使用 Azure 網路監看員和 REST，以針對虛擬網路閘道和連線進行疑難排解
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: e4d5f195-b839-4394-94ef-a04192766e55
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
-ms.author: kumud
-ms.openlocfilehash: 9b3898a7c4cd09b59da0fc167b758199119793eb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: ab9f7fd95d7081b66e05dfd3d6a5ef47eb3c4053
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277788"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840667"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher"></a>使用 Azure 網路監看員來針對虛擬網路閘道和連線進行疑難排解
 
@@ -45,7 +42,7 @@ ms.locfileid: "74277788"
 
 如需支援的閘道類型清單，請瀏覽[支援的閘道類型](network-watcher-troubleshoot-overview.md#supported-gateway-types)。
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概觀
 
 網路監看員疑難排解可讓您針對虛擬網路閘道和連線所發生的問題進行疑難排解。 要求進行資源疑難排解時會查詢並檢查記錄。 檢查完成時，就會傳回結果。 疑難排解 API 要求是執行時間很長的要求，可能需要幾分鐘的時間才會傳回結果。 記錄會儲存在儲存體帳戶的容器中。
 

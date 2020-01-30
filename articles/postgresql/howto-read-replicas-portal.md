@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/04/2019
-ms.openlocfilehash: 5e031354d4695a1d7eb6f199e23e74b796273230
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 01/24/2020
+ms.openlocfilehash: dd79618b8d9f016c92166edb9ecdb0bfb113947e
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770215"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768952"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>從 Azure 入口網站建立和管理適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中的讀取複本
 
@@ -27,6 +27,9 @@ ms.locfileid: "74770215"
 1. 在 Azure 入口網站中，選取要作為主要伺服器的現有「適用於 PostgreSQL 的 Azure 資料庫」伺服器。
 
 2. 在 [伺服器] 提要欄位的 [**設定**] 底下 **，選取 [** 複寫]。
+
+> [!NOTE] 
+> 如果您看到 [停用複寫**支援**] 呈現灰色，則預設會在您的伺服器上設定複寫設定。 您可以略過下列步驟，並移至建立讀取複本。 
 
 3. 選取 [**啟用複寫支援**]。 
 

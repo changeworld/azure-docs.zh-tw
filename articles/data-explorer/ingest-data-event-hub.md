@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: a65f0918d04f77bc3076449347bb20046f73e92a
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: e622abd16f900ca811385ddada187f3c96e7d758
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779941"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773928"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>將資料從事件中樞內嵌至 Azure 資料總管
 
@@ -118,6 +118,7 @@ Azure 資料總管是一項快速又可高度調整的資料探索服務，可�
     | 事件中樞 | *test-hub* | 您建立的事件中樞。 |
     | 取用者群組 | *test-group* | 在您所建立事件中樞中定義的取用者群組。 |
     | 事件系統屬性 | 選取相關的屬性 | [事件中樞系統屬性](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations)。 如果每個事件訊息有多個記錄，系統屬性將會新增至第一個。 加入系統屬性時，[建立](/azure/kusto/management/tables#create-table)或[更新](/azure/kusto/management/tables#alter-table-and-alter-merge-table)資料表架構和[對應](/azure/kusto/management/mappings)以包含選取的屬性。 |
+    | 壓縮 | *None* | 事件中樞訊息裝載的壓縮類型。 支援的壓縮類型： *None、GZip*。|
     | | |
 
     **目標資料表：**
@@ -128,15 +129,15 @@ Azure 資料總管是一項快速又可高度調整的資料探索服務，可�
      **設定** | **建議的值** | **欄位描述**
     |---|---|---|
     | 表格 | *TestTable* | 您在 **TestDatabase** 中建立的資料表。 |
-    | 資料格式 | *JSON* | 支援的格式為 Avro、CSV、JSON、多行 JSON、PSV、SOHSV、SCSV、TSV、TSVE 和 TXT。 支援的壓縮選項： GZip |
-    | 資料行對應 | *TestMapping* | 您在**TestDatabase**中建立的[對應](/azure/kusto/management/mappings)，其會將傳入的 JSON 資料對應至**TestTable**的資料行名稱和資料類型。 需要 JSON、MULTILINE JSON 或 AVRO，而其他格式為選用性質。|
+    | 資料格式 | *JSON* | 支援的格式為 Avro、CSV、JSON、多行 JSON、PSV、SOHSV、SCSV、TSV、TSVE、TXT、ORC 和 PARQUET。 |
+    | 資料行對應 | *TestMapping* | 您在**TestDatabase**中建立的[對應](/azure/kusto/management/mappings)，其會將傳入的 JSON 資料對應至**TestTable**的資料行名稱和資料類型。 對於 JSON 或多行 JSON 而言是必要的，而對於其他格式則為選擇性。|
     | | |
 
     > [!NOTE]
     > * 選取 [我的資料包含路由資訊] 來使用動態路由，其中您的資料會包含必要的路由資訊，如[範例應用程式](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)註解中所示。 如果靜態和動態屬性都已設定，則動態屬性會覆寫靜態屬性。 
     > * 只有在建立資料連線之後排入佇列的事件才會內嵌。
-    > * 藉由[在 Azure 入口網站中開啟支援要求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)，啟用靜態路由的 GZip 壓縮。 啟用適用于動態路由的 GZip 壓縮，如[範例應用程式](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)中所示。 
-    > * 壓縮裝載不支援 Avro 格式和事件系統屬性。
+    > * 您也可以透過動態屬性來設定壓縮類型，如[範例應用程式](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)中所示。
+    > * GZip 壓縮裝載不支援 Avro、ORC 和 PARQUET 格式，以及事件系統屬性。
 
 [!INCLUDE [data-explorer-container-system-properties](../../includes/data-explorer-container-system-properties.md)]
 

@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: f920df20a8dc1cace76f641ce1c71f9b91a30bf4
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 70253e66903916bde05f9e6e55e3c0609cb4a146
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867676"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841109"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>教學課程：從 CLI 訓練和部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -246,7 +246,7 @@ az ml dataset register -f dataset.json --skip-validation
 > [!IMPORTANT]
 > 複製 `id` 專案的值，因為在下一節中會用到它。
 
-若要針對描述資料集的 JSON 檔案查看更完整的範本，請使用下列命令：
+若要查看更完整的資料集範本，請使用下列命令：
 ```azurecli-interactive
 az ml dataset register --show-template
 ```
@@ -288,7 +288,7 @@ data:
 
 變更 `id` 專案的值，使其符合您在註冊資料集時所傳回的值。 這個值會在定型期間用來將資料載入計算目標。
 
-此 YAML 會執行下列動作：
+此 YAML 會在定型期間產生下列動作：
 
 * 會在定型環境中裝載資料集（根據資料集的識別碼），並將掛接點的路徑儲存在 `mnist` 環境變數中。
 * 使用 `--data-folder` 引數，將定型環境內的資料（掛接點）位置傳遞至腳本。
@@ -298,7 +298,7 @@ Runconfig 檔案也包含用來設定定型執行所使用之環境的資訊。 
 > [!TIP]
 > 雖然可以手動建立 runconfig 檔，但此範例中的檔案是使用存放庫中包含的 `generate-runconfig.py` 檔所建立。 此檔案會取得已註冊資料集的參考、以程式設計方式建立回合設定，然後將它保存至檔案。
 
-如需有關執行設定檔的詳細資訊，請參閱[設定和使用計算目標進行模型定型](how-to-set-up-training-targets.md#create-run-configuration-and-submit-run-using-azure-machine-learning-cli)，或參考此[JSON](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json)檔案以查看 runconfig 的完整架構。
+如需執行設定檔的詳細資訊，請參閱[設定及使用計算目標進行模型定型](how-to-set-up-training-targets.md#create-run-configuration-and-submit-run-using-azure-machine-learning-cli)。 如需完整的 JSON 參考，請參閱[runconfigschema](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json)。
 
 ## <a name="submit-the-training-run"></a>提交定型回合
 
@@ -379,7 +379,9 @@ az ml model deploy -n myservice -m "mymodel:1" --ic inferenceConfig.yml --dc aci
 
 此命令會使用您先前註冊的模型第1版，部署名為 `myservice`的新服務。
 
-`inferenceConfig.yml` 檔案提供如何執行推斷的相關資訊，例如輸入腳本（`score.py`）和軟體相依性。 如需此檔案結構的詳細資訊，請參閱[推斷設定架構](reference-azure-machine-learning-cli.md#inference-configuration-schema)。 如需有關輸入腳本的詳細資訊，請參閱[使用 Azure Machine Learning 來部署模型](how-to-deploy-and-where.md#prepare-to-deploy)。
+`inferenceConfig.yml` 檔案提供如何使用模型進行推斷的相關資訊。 例如，它會參考專案腳本（`score.py`）和軟體相依性。 
+
+如需此檔案結構的詳細資訊，請參閱[推斷設定架構](reference-azure-machine-learning-cli.md#inference-configuration-schema)。 如需有關輸入腳本的詳細資訊，請參閱[使用 Azure Machine Learning 來部署模型](how-to-deploy-and-where.md#prepare-to-deploy)。
 
 `aciDeploymentConfig.yml` 說明用來裝載服務的部署環境。 部署設定適用于用於部署的計算類型。 在此情況下，會使用 Azure 容器實例。 如需詳細資訊，請參閱[部署設定架構](reference-azure-machine-learning-cli.md#deployment-configuration-schema)。
 

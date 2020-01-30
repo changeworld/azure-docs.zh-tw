@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 8d4713cba94971971558a72c680e3c8f80331662
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: e520c9a1e9d40c318b8e2b69801bf5cc600e16bb
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760329"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772049"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>適用於 MySQL 的 Azure 資料庫中的連線架構
 本文說明適用於 MySQL 的 Azure 資料庫連線架構，以及如何從 Azure 內部和外部的用戶端，將流量導向至您的適用於 MySQL 的 Azure 資料庫實例。
@@ -50,14 +50,14 @@ ms.locfileid: "76760329"
 | 印度南部 | 104.211.224.146  |
 | 印度西部 | 104.211.160.80    |
 | 日本東部 | 13.78.61.196, 191.237.240.43  |
-| 日本西部 | 104.214.148.156, 191.238.68.11    |
+| 日本西部 | 104.214.148.156, 191.238.68.11, 40.74.96.7, 40.74.96.6 |
 | 南韓中部 | 52.231.32.42   |
 | 南韓南部 | 52.231.200.86    |
 | 美國中北部 | 23.96.178.199, 23.98.55.75, 52.162.104.35, 52.162.104.36    |
 | 北歐 | 40.113.93.91, 191.235.193.75    |
 | 南非北部  | 102.133.152.0    |
 | 南非西部 | 102.133.24.0   |
-| 美國中南部 |13.66.62.124, 23.98.162.75   |
+| 美國中南部 |13.66.62.124, 23.98.162.75, 104.214.16.39, 20.45.120.0   |
 | 東南亞 | 104.43.15.0, 23.100.117.95, 40.78.233.2, 23.98.80.12     |
 | 阿拉伯聯合大公國中部 | 20.37.72.64  |
 | 阿拉伯聯合大公國北部 | 65.52.248.0    |

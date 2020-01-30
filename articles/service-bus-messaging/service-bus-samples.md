@@ -1,10 +1,9 @@
 ---
-title: Azure 服務匯流排傳訊範例概觀 | Microsoft Docs
-description: 描述服務匯流排傳訊範例與每個範例的連結
+title: Azure 服務匯流排訊息範例總覽
+description: 服務匯流排訊息範例示範 Azure 服務匯流排訊息中的主要功能。 提供 GitHub 上範例的連結。
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
-manager: timlt
 editor: spelluru
 ms.assetid: 0b420343-2d2a-4c65-98f1-ee0e39ef55c8
 ms.service: service-bus-messaging
@@ -12,21 +11,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/13/2019
+ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: a5ca41f1d9b1fb5b2dd8b9066af85543f1fddd23
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ccaca451ac4fb7b4301aca429a42baea91e5ed10
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65786775"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773452"
 ---
 # <a name="service-bus-messaging-samples"></a>服務匯流排傳訊範例
-服務匯流排傳訊範例在[服務匯流排傳訊](https://azure.microsoft.com/services/service-bus/)中示範主要功能。 目前，您也可以在下列位置找到範例：
+服務匯流排傳訊範例在[服務匯流排傳訊](https://azure.microsoft.com/services/service-bus/)中示範主要功能。 目前，您可以在下列位置找到範例：
 
-| 程式設計語言 | SDK 或範例的位置 |
+| 程式設計語言 | SDK 或範例位置 |
 | -------------------- | ----------------------- |
-| .NET、 Java 和管理 | https://github.com/Azure/azure-service-bus/ |
+| .NET、JAVA 和管理 | https://github.com/Azure/azure-service-bus/ |
 | Node.js | https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples |
 | Python | https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/servicebus/azure-servicebus |
 

@@ -7,16 +7,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 4b61cbc8a3e870e9fd2123fd3dcbd941c5dde80c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 43a842c3b6d6d421eca4196c7f3facc7876318cd
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786940"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767994"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中使用資料庫、容器和專案
 
-建立 [Azure Cosmos DB 帳戶](account-overview.md) 之後，您就可以在 Azure 訂用帳戶底下，透過建立資料庫、容器和項目來管理帳戶中的資料。 本文將說明每個實體。 
+建立 [Azure Cosmos DB 帳戶](account-overview.md) 之後，您就可以在 Azure 訂用帳戶底下，透過建立資料庫、容器和項目來管理帳戶中的資料。 本文會說明每個實體。 
 
 下圖顯示 Azure Cosmos DB 帳戶中不同實體的階層：
 
@@ -41,7 +41,7 @@ ms.locfileid: "74786940"
 | --- | --- | --- | --- | --- | --- | --- |
 |列舉所有資料庫| 是 | 是 | 是 (資料庫會對應至 keyspace) | 是 | NA | NA |
 |讀取資料庫| 是 | 是 | 是 (資料庫會對應至 keyspace) | 是 | NA | NA |
-|Create new database| 是 | 是 | 是 (資料庫會對應至 keyspace) | 是 | NA | NA |
+|建立新的資料庫| 是 | 是 | 是 (資料庫會對應至 keyspace) | 是 | NA | NA |
 |更新資料庫| 是 | 是 | 是 (資料庫會對應至 keyspace) | 是 | NA | NA |
 
 
@@ -60,7 +60,7 @@ Azure Cosmos 容器是布建的輸送量和儲存體的擴充性單位。 容器
 
 不論您是使用專用或共用布建的輸送量模式來建立容器，Azure Cosmos 容器都可以調整彈性。
 
-Azure Cosmos 容器是與結構描述無關的項目容器。 容器中的專案可以有任意架構。 例如，代表人員的專案和代表汽車的專案可以放在*相同的容器*中。 根據預設，您新增至容器的所有專案都會自動編制索引，而不需要明確的索引或架構管理。 您可以藉由在容器上設定[編制索引原則](index-overview.md)來自訂索引行為。 
+Azure Cosmos 容器是與結構描述無關的項目容器。 容器中的專案可以有任意架構。 例如，代表人員的專案和代表汽車的專案可以放在*相同的容器*中。 根據預設，系統會自動為您新增至容器的所有項目編製索引，您不需要進行任何明確的索引或結構描述管理。 您可以藉由在容器上設定[編制索引原則](index-overview.md)來自訂索引行為。 
 
 您可以在 Azure Cosmos 容器中的選取專案上設定[存留時間（TTL）](time-to-live.md) ，或針對整個容器，以適當的方式從系統中清除這些專案。 Azure Cosmos DB 會在專案過期時自動予以刪除。 它也保證在容器上執行的查詢不會傳回固定系結內已過期的專案。 若要深入瞭解，請參閱在[您的容器上設定 TTL](how-to-time-to-live.md)。
 
@@ -110,7 +110,7 @@ Azure Cosmos 容器具有一組系統定義的屬性。 根據您使用的 API �
 
 | Cosmos 實體 | SQL API | Cassandra API | 適用於 MongoDB 的 Azure Cosmos DB API | Gremlin API | 資料表 API |
 | --- | --- | --- | --- | --- | --- |
-|Azure Cosmos 項目 | 文件 | 資料列 | 文件 | 節點或邊緣 | Item |
+|Azure Cosmos 項目 | 文件 | 資料列 | 文件 | 節點或邊緣 | 項目 |
 
 ### <a name="properties-of-an-item"></a>項目的屬性
 
@@ -118,11 +118,11 @@ Azure Cosmos 容器具有一組系統定義的屬性。 根據您使用的 API �
 
 | 系統定義的屬性 | 系統產生或使用者可設定| 目的 | SQL API | Cassandra API | 適用於 MongoDB 的 Azure Cosmos DB API | Gremlin API | 資料表 API |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|\_識別碼 | 系統產生的 | 專案的唯一識別碼 | 是 | 否 | 否 | 否 | 否 |
+|\_rid | 系統產生的 | 專案的唯一識別碼 | 是 | 否 | 否 | 否 | 否 |
 |\_etag | 系統產生的 | 適用於開放式並行存取控制的實體標記 | 是 | 否 | 否 | 否 | 否 |
 |\_ts | 系統產生的 | 上次更新專案的時間戳記 | 是 | 否 | 否 | 否 | 否 |
 |\_本身 | 系統產生的 | 項目的可定址 URI | 是 | 否 | 否 | 否 | 否 |
-|id | 無論是 | 邏輯分割區中使用者定義的唯一名稱。 | 是 | 是 | 是 | 是 | 是 |
+|id | 之前或之後 | 邏輯分割區中使用者定義的唯一名稱。 | 是 | 是 | 是 | 是 | 是 |
 |任意使用者定義的屬性 | 使用者定義 | 以 API 原生標記法表示的使用者定義屬性（包括 JSON、BSON 和 CQL） | 是 | 是 | 是 | 是 | 是 |
 
 > [!NOTE]

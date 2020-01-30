@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 990493b6b2c3757849168d8fb82a4b38f55364e2
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 95601735064451a91530907e5e6b59f579ff0e28
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951059"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840259"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>在 Azure Active Directory B2C 中使用自訂原則來設定資源擁有者密碼認證流程
 
@@ -38,7 +38,7 @@ ms.locfileid: "74951059"
 
 ## <a name="prerequisites"></a>必要條件
 
-完成[在 Azure Active Directory B2C 中開始使用自訂原則](active-directory-b2c-get-started-custom.md)中的步驟。
+完成在 [Azure Active Directory B2C 中開始使用自訂原則](custom-policy-get-started.md)中的步驟。
 
 ## <a name="register-an-application"></a>註冊應用程式
 
@@ -261,11 +261,11 @@ ms.locfileid: "74951059"
 - 將 `your-tenant-name` 取代為您的 Azure AD B2C 租用戶名稱。
 - 以您資源擁有者密碼認證原則的完整名稱取代 `B2C_1A_ROPC_Auth`。
 
-| 索引鍵 | Value |
+| 索引鍵 | 值 |
 | --- | ----- |
 | username | `user-account` |
-| password | `password1` |
-| grant_type | password |
+| 密碼 | `password1` |
+| grant_type | 密碼 |
 | scope | openid `application-id` offline_access |
 | client_id | `application-id` |
 | response_type | token id_token |
@@ -306,12 +306,12 @@ username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scop
 - 將 `your-tenant-name` 取代為您的 Azure AD B2C 租用戶名稱。
 - 以您資源擁有者密碼認證原則的完整名稱取代 `B2C_1A_ROPC_Auth`。
 
-| 索引鍵 | Value |
+| 索引鍵 | 值 |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |
 | client_id | `application-id` |
-| 資源 | `application-id` |
+| resource | `application-id` |
 | refresh_token | `refresh-token` |
 
 - 以來自 *ROPC_Auth_app* 註冊的「應用程式識別碼」取代 `application-id`。
@@ -342,4 +342,4 @@ Azure AD B2C 符合公用用戶端資源擁有者密碼認證的 OAuth 2.0 標�
 ## <a name="next-steps"></a>後續步驟
 
 - 請參閱 [Azure Active Directory B2C 自訂原則入門套件](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/source/aadb2c-ief-ropc)(英文\) 中此案例的完整範例。
-- 在[權杖參考](active-directory-b2c-reference-tokens.md)中深入了解 Azure Active Directory B2C 所使用的權杖。
+- 在[權杖參考](tokens-overview.md)中深入了解 Azure Active Directory B2C 所使用的權杖。

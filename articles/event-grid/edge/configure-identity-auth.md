@@ -9,16 +9,16 @@ ms.date: 10/05/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 336b6157128468169264d6ffa9564da4d9338aae
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 0aedeea2a6ad08e1627c2d1a6ebde6c91a4d02d9
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992440"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841760"
 ---
 # <a name="configure-identity-for-the-event-grid-module"></a>設定事件方格模組的身分識別
 
-本文提供事件方格模組可能身分識別設定的範例。 根據預設，事件方格模組會顯示其身分識別憑證，如 IoT 安全性守護程式所設定。 當事件方格模組在傳遞事件時，會在其撥出電話上呈現身分識別憑證。 事件方格事件的「訂閱者」可以選擇驗證它確實是在接受事件之前傳送事件的事件方格模組。
+本文說明如何設定 Edge 上格線的識別。 根據預設，事件方格模組會顯示其身分識別憑證，如 IoT 安全性守護程式所設定。 邊緣上的事件方格會在傳遞事件時，以其撥出電話呈現其身分識別憑證。 然後，訂閱者可以驗證它是在接受之前傳送事件的事件方格模組。
 
 如需所有可能的設定，請參閱[安全性和驗證](security-authentication.md)指南。
 
@@ -28,8 +28,8 @@ ms.locfileid: "72992440"
 ```json
  {
   "Env": [
-    "outbound:clientAuth:clientCert:enabled=true",
-    "outbound:clientAuth:clientCert:source=IoTEdge"
+    "outbound__clientAuth__clientCert__enabled=true",
+    "outbound__clientAuth__clientCert__source=IoTEdge"
   ]
 }
  ```
@@ -40,7 +40,7 @@ ms.locfileid: "72992440"
 ```json
  {
   "Env": [
-    "outbound:clientAuth:clientCert:enabled=false"
+    "outbound__clientAuth__clientCert__enabled=false"
   ]
 }
  ```

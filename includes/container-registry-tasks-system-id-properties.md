@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 07/12/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 5cca18b881250ce99df35d681bec6091ea4a27b9
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 94adac6ba232f8931d00083432c027ddccb2ce64
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68642094"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842484"
 ---
-在命令輸出中, `identity`區段會顯示在工作中設定類型`SystemAssigned`的身分識別。 `principalId`是身分識別的服務主體識別碼:
+在命令輸出中，[`identity`] 區段會顯示工作中設定 `SystemAssigned` 類型的身分識別。 `principalId` 是身分識別的服務主體識別碼：
 
 ```console
 [...]
@@ -28,10 +28,10 @@ ms.locfileid: "68642094"
   "location": "eastus",
 [...]
 ``` 
-使用[az acr task show][az-acr-task-show]命令將 principalId 儲存在變數中, 以便在稍後的命令中使用:
+使用[az acr task show][az-acr-task-show]命令將 principalId 儲存在變數中，以便在稍後的命令中使用。 在下列命令中，以您的工作名稱取代您的登錄：
 
 ```azurecli
-principalID=$(az acr task show --name dockerhubtask --registry myregistry --query identity.principalId --output tsv)
+principalID=$(az acr task show --name mytask --registry myregistry --query identity.principalId --output tsv)
 ```
 
 <!-- LINKS - Internal -->

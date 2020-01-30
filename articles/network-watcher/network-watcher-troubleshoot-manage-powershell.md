@@ -4,23 +4,20 @@ titleSuffix: Azure Network Watcher
 description: 此頁面說明如何使用 Azure 網路監看員來針對 PowerShell Cmdlet 進行疑難排解
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: f6f0a813-38b6-4a1f-8cfc-1dfdf979f595
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
-ms.author: kumud
-ms.openlocfilehash: 4e65be8254710beffc6cc042316305d8d64c43c3
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: 478b6cffb6fbb2be7a87b9b61d5b7e2ee71a74c2
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277821"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840701"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-powershell"></a>使用 Azure 網路監看員 PowerShell 來針對虛擬網路閘道和連線進行疑難排解
 
@@ -41,7 +38,7 @@ ms.locfileid: "74277821"
 
 如需支援的閘道類型清單，請瀏覽[支援的閘道類型](network-watcher-troubleshoot-overview.md#supported-gateway-types)。
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概觀
 
 資源疑難排解可讓您針對虛擬網路閘道和連線所發生的問題進行疑難排解。 在要求進行資源疑難排解後，便會查詢並檢查記錄。 檢查完成時，就會傳回結果。 資源疑難排解要求是執行時間很長的要求，可能需要幾分鐘的時間才會傳回結果。 疑難排解記錄會儲存在指定儲存體帳戶的容器中。
 
@@ -82,7 +79,7 @@ $sc = New-AzStorageContainer -Name logs
 Start-AzNetworkWatcherResourceTroubleshooting -NetworkWatcher $networkWatcher -TargetResourceId $connection.Id -StorageId $sa.Id -StoragePath "$($sa.PrimaryEndpoints.Blob)$($sc.name)"
 ```
 
-在執行此 Cmdlet 後，網路監看員會檢閱資源以驗證其健全狀況。 它會將結果傳回殼層，並將結果的記錄儲存在指定的儲存體帳戶中。
+在執行此 Cmdlet 後，網路監看員會檢閱資源以驗證其健康狀態。 它會將結果傳回殼層，並將結果的記錄儲存在指定的儲存體帳戶中。
 
 ## <a name="understanding-the-results"></a>了解結果
 

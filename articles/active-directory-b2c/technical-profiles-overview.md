@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: af08a24ff28d59bf743f92aa69ffa823dcdcc544
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 100f059f7c9f18ab6920f50c850b3b8d5a617908
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951032"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840191"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>關於 Azure Active Directory B2C 自訂原則中的技術設定檔
 
@@ -38,7 +38,7 @@ ms.locfileid: "74951032"
 - [RESTful 提供者](restful-technical-profile.md)-呼叫 REST API 服務，例如驗證使用者輸入、擴充使用者資料，或與企業營運應用程式整合。
 - [SAML2](saml-technical-profile.md) - 與任何 SAML 通訊協定識別提供者建立同盟。
 - [自我判斷](self-asserted-technical-profile.md) - 與使用者進行互動。 例如，收集使用者的認證以進行登入、呈現註冊頁面或密碼重設。
-- [工作階段管理](active-directory-b2c-reference-sso-custom.md) - 處理各種不同類型的工作階段。
+- [工作階段管理](custom-policy-reference-sso.md) - 處理各種不同類型的工作階段。
 - **Application Insights**
 
 ## <a name="technical-profile-flow"></a>技術設定檔流程
@@ -57,7 +57,7 @@ ms.locfileid: "74951032"
 4. **ValidationTechnicalProfiles** - 針對[自我判斷技術設定檔](self-asserted-technical-profile.md)，您可以呼叫輸入[驗證技術設定檔](validation-technical-profile.md)。 驗證技術設定檔會驗證使用者所分析的資料，並傳回錯誤訊息或良好，其中會包含或不含輸出宣告。 例如，在 Azure AD B2C 建立新帳戶之前，它會檢查目錄服務中是否已經有該使用者存在。 您可以呼叫 REST API 技術設定檔來新增自己的商務邏輯。<p>驗證技術設定檔的輸出宣告範圍僅限於叫用驗證技術設定檔的技術設定檔，以及在相同技術設定檔下的其他驗證技術設定檔。 如果您想要在下一個協調流程步驟中使用輸出宣告，就必須將輸出宣告新增至叫用驗證技術設定檔的技術設定檔。
 5. **OutputClaims** - 系統會將宣告交還給宣告包。 您可以在下一個協調流程步驟或輸出宣告轉換中使用這些宣告。
 6. **OutputClaimsTransformations** - 系統會從宣告包中挑選每個輸出[宣告轉換](claimstransformations.md)的輸入宣告。 先前步驟的技術設定檔輸出宣告可以作為輸出宣告轉換的輸入宣告。 執行之後，輸出宣告會被放回宣告包中。 輸出宣告轉換的輸出宣告也可以作為後續輸出宣告轉換的輸入宣告。
-7. **單一登入 (SSO) 工作階段管理** - [SSO 工作階段管理](active-directory-b2c-reference-sso-custom.md)可在使用者已通過驗證後，控制與該使用者的互動。 例如，系統管理員可以控制是否顯示選取的身分識別提供者，或是否需要再輸入一次本機帳戶詳細資料。
+7. **單一登入 (SSO) 工作階段管理** - [SSO 工作階段管理](custom-policy-reference-sso.md)可在使用者已通過驗證後，控制與該使用者的互動。 例如，系統管理員可以控制是否顯示選取的身分識別提供者，或是否需要再輸入一次本機帳戶詳細資料。
 
 一個技術設定檔可以繼承自另一個技術設定檔，以變更設定或新增新功能。  **IncludeTechnicalProfile** 元素是對技術設定檔之來源基底技術設定檔的參考。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: a47dc1032115f8bcae0c7bdc37c84ab3b68ec4a8
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 455cb1e0067217be6edcf665e8c07e8fcd684ab5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72432302"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842396"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>針對因檔案系統錯誤而啟動的 Linux VM 問題進行疑難排解
 
@@ -88,7 +88,7 @@ Linux 有數個可用的檔案系統檢查程式。 在 Azure 中，散發套件
 
 2. 選取電源圖示按鈕，然後選取 [重新開機 VM]。 （如果序列主控台未啟用或未成功連線，您就不會看到此按鈕）。
 
-   ![包](./media/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck/restart-vm.png)
+   ![IMAGE](./media/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck/restart-vm.png)
 
 3. 將 VM 開機至緊急模式。
 
@@ -110,20 +110,20 @@ Linux 有數個可用的檔案系統檢查程式。 在 Azure 中，散發套件
 
    ```
    mkdir /temp
-   mount /dev/sda2 /temp
+   mount /dev/sda1 /temp
    ```
 
-8. 如果磁片無法掛接，請執行 xfs_repair 命令並搭配-L 選項（強制記錄檔零位）：
+8. 如果磁片無法掛接，請使用-L 選項執行 xfs_repair 命令（強制記錄檔零位）：
 
    ```
-   xfs_repair /dev/sda2 -L
+   xfs_repair /dev/sda1 -L
    ```
 
 9. 接下來，請嘗試掛接檔案系統。 如果已成功掛接磁片，您將會收到下列輸出：
  
    ```
-   XFS (sda2): Mounting V1 Filesystem
-   XFS (sda2): Ending clean mount
+   XFS (sda1): Mounting V1 Filesystem
+   XFS (sda1): Ending clean mount
    ```
 
 10. 重新開機 VM，然後檢查問題是否已解決。
@@ -158,7 +158,7 @@ Linux 有數個可用的檔案系統檢查程式。 在 Azure 中，散發套件
    mount /dev/sdc1 /temp
    ```
 
-   如果磁片無法掛接，請執行 xfs_repair 命令並搭配-L 選項（強制記錄檔零位）：
+   如果磁片無法掛接，請使用-L 選項執行 xfs_repair 命令（強制記錄檔零位）：
 
    ```
    xfs_repair /dev/sdc1 -L

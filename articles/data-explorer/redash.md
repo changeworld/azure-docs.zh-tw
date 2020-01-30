@@ -7,16 +7,16 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8bb8711bc4a6134ec740a55d9f5d5794b2de77ca
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 0380689ae6ca81e3f31a07f1e205c7773fdea8c6
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73588586"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773948"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-redash"></a>在 Redash 中將 Azure 資料總管的資料視覺化
 
-[Redash](https://www.redash.io/)會連接和查詢您的資料來源、建立儀表板以將資料視覺化，並與對等共用。 在本文中，您將瞭解如何設定 Azure 資料總管做為 Redash 的資料來源，然後將資料視覺化。
+[Redash](https://redash.io/)會連接和查詢您的資料來源、建立儀表板以將資料視覺化，並與對等共用。 在本文中，您將瞭解如何設定 Azure 資料總管做為 Redash 的資料來源，然後將資料視覺化。
 
 ## <a name="prerequisites"></a>必要條件
 

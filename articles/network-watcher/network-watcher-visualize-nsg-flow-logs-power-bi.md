@@ -4,23 +4,20 @@ titleSuffix: Azure Network Watcher
 description: 此頁面說明如何使用 Power BI 將 NSG 流程記錄視覺化。
 services: network-watcher
 documentationcenter: na
-author: mattreatMSFT
-manager: vitinnan
-editor: ''
-ms.assetid: 1e4f95fa-f5f0-4e03-bc25-008fbfc4934c
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: mareat
-ms.openlocfilehash: 05378799dd77a17b69adbcf492af2e1cb1030375
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: 955e13b88037aa42b59707698549b1c980720990
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277721"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840599"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>使用 Power BI 將網路安全性群組流程記錄視覺化
 
@@ -45,7 +42,7 @@ ms.locfileid: "74277721"
 
 提供的範本是可編輯的，您可以修改它來新增資料、視覺效果或編輯查詢，以符合您的需求。
 
-## <a name="setup"></a>設定
+## <a name="setup"></a>安裝程式
 
 開始之前，您必須在帳戶中的一或多個網路安全性群組上，啟用網路安全性群組流程記錄。 如需有關啟用網路安全性流程記錄的指示，請參閱下列文章︰[網路安全性群組的流程記錄簡介](network-watcher-nsg-flow-logging-overview.md)。
 
@@ -112,7 +109,7 @@ ms.locfileid: "74277721"
 
 請儘管自訂此範本以符合您的需求。 Power BI 和網路安全性群組流程記錄互相搭配有許多做法。 
 
-## <a name="notes"></a>注意事項
+## <a name="notes"></a>注意
 
 * 記錄依預設儲存於 `https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/`
 

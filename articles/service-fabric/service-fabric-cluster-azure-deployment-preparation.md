@@ -3,12 +3,12 @@ title: 規劃 Azure Service Fabric 叢集部署
 description: 瞭解如何規劃和準備生產環境 Service Fabric 叢集部署至 Azure。
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 69fb97e4e679b3ce5817a51d619799a3384fd753
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 32d48f9ffa056d252bdf762304340f245d80fd26
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463330"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834445"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>規劃及準備叢集部署
 
@@ -37,9 +37,59 @@ Service Fabric 可讓您在執行 Windows Server 或 Linux 的任何 VM 或電�
 
 主要節點類型的 Vm 數目下限取決於您選擇的[可靠性層級][reliability]。
 
-請參閱[主要節點類型](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance)的最小建議、[非主要節點類型的具狀態工作負載](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads)，以及[非主要節點類型上的無狀態工作負載](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads)。 
+請參閱[主要節點類型](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance)的最小建議、[非主要節點類型的具狀態工作負載](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads)，以及[非主要節點類型上的無狀態工作負載](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads)。
 
 節點數目下限應取決於您想要在此節點類型中執行的應用程式/服務複本數目。  [Service Fabric 應用程式的容量規劃](service-fabric-capacity-planning.md)可協助您估計執行應用程式所需的資源。 您之後可以隨時相應增加或相應減少叢集，以調整應用程式工作負載的變更。 
+
+#### <a name="use-ephemeral-os-disks-for-virtual-machine-scale-sets"></a>使用虛擬機器擴展集的暫時 OS 磁片
+
+*暫時的 OS 磁片*是在本機虛擬機器（VM）上建立的儲存體，並不會儲存至遠端 Azure 儲存體。 針對所有 Service Fabric 節點類型（主要和次要），建議使用它們，因為相較于傳統的持續性 OS 磁片，暫時的 OS 磁片：
+
+* 減少 OS 磁片的讀取/寫入延遲
+* 啟用更快速的重設/重新安裝映射節點管理作業
+* 降低整體成本（磁片是免費的，不會產生額外的儲存體成本）
+
+暫時性 OS 磁片不是特定的 Service Fabric 功能，而是對應至 Service Fabric 節點類型之 Azure*虛擬機器擴展集*的一項功能。 將它們與 Service Fabric 搭配使用時，您的叢集 Azure Resource Manager 範本中需要下列專案：
+
+1. 請確定您的節點類型指定暫時 OS 磁片[支援的 AZURE VM 大小](../virtual-machines/windows/ephemeral-os-disks.md)，而且 VM 大小具有足夠的快取大小來支援其 OS 磁片大小（請參閱下面的*附注*）。例如：
+
+    ```xml
+    "vmNodeType1Size": {
+        "type": "string",
+        "defaultValue": "Standard_DS3_v2"
+    ```
+
+    > [!NOTE]
+    > 請務必選取快取大小等於或大於 VM 本身 OS 磁片大小的 VM 大小，否則您的 Azure 部署可能會導致錯誤（即使最初被接受）。
+
+2. 指定 `2018-06-01` 或更新版本的虛擬機器擴展集版本（`vmssApiVersion`）：
+
+    ```xml
+    "variables": {
+        "vmssApiVersion": "2018-06-01",
+    ```
+
+3. 在部署範本的 [虛擬機器擴展集] 區段中，指定 `diffDiskSettings`的 `Local` 選項：
+
+    ```xml
+    "apiVersion": "[variables('vmssApiVersion')]",
+    "type": "Microsoft.Compute/virtualMachineScaleSets",
+        "virtualMachineProfile": {
+            "storageProfile": {
+                "osDisk": {
+                        "vhdContainers": ["[concat(reference(concat('Microsoft.Storage/storageAccounts/', parameters('vmStorageAccountName')), variables('storageApiVersion')).primaryEndpoints.blob, parameters('vmStorageAccountContainerName'))]"],
+                        "caching": "ReadOnly",
+                        "createOption": "FromImage",
+                        "diffDiskSettings": {
+                            "option": "Local"
+                        },
+                }
+            }
+        }
+    ```
+
+如需詳細資訊和其他設定選項，請參閱[Azure vm 的暫時 OS 磁片](../virtual-machines/windows/ephemeral-os-disks.md) 
+
 
 ### <a name="select-the-durability-and-reliability-levels-for-the-cluster"></a>選取叢集的持久性和可靠性層級
 持久性層級用來向系統指示您的 VM 對於基本 Azure 基礎結構所擁有的權限。 在主要節點類型中，此權限可讓 Service Fabric 暫停會影響系統服務及具狀態服務的仲裁需求的任何 VM 層級基礎結構要求 (例如，VM 重新開機、VM 重新安裝映像，或 VM 移轉)。 在非主要節點類型中，此權限可讓 Service Fabric 暫停會影響具狀態服務之仲裁需求的任何 VM 層級基礎結構要求 (例如，VM 重新開機、VM 重新安裝映像和 VM 移轉)。  如需不同層級和建議的優點和時機，請參閱叢集[的持久性特性][durability]。

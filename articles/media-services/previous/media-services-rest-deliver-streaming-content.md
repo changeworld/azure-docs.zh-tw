@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 974f0af461ecdc7de820191950b010035d02a601
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8e3c2b7f4087f0f47466eff47b22c59dad19892e
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60598295"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774932"
 ---
 # <a name="publish-azure-media-services-content-using-rest"></a>使用 REST 發佈 Azure 媒體服務內容 
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ ms.locfileid: "60598295"
 > 在媒體服務中存取實體時，您必須在 HTTP 要求中設定特定的標頭欄位和值。 如需詳細資訊，請參閱 [媒體服務 REST API 開發設定](media-services-rest-how-to-use.md)。
 > 
 
-## <a name="connect-to-media-services"></a>連線到媒體服務
+## <a name="connect-to-media-services"></a>連接到媒體服務
 
 如需連線至 AMS API 的詳細資訊，請參閱[使用 Azure AD 驗證存取 Azure 媒體服務 API](media-services-use-aad-auth-to-access-ams-api.md)。 
 
@@ -73,7 +73,7 @@ ms.locfileid: "60598295"
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: 6bcfd511-a561-448d-a022-a319a89ecffa
     Host: media.windows.net
     Content-Length: 68
@@ -111,7 +111,7 @@ ms.locfileid: "60598295"
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: ac159492-9a0c-40c3-aacc-551b1b4c5f62
     Host: media.windows.net
     Content-Length: 181
@@ -140,20 +140,20 @@ ms.locfileid: "60598295"
 ### <a name="build-streaming-urls"></a>建置串流 URL
 建立定位器之後，使用傳回的 **Path** 值建置 Smooth、HLS 和 MPEG DASH URL。 
 
-Smooth Streaming：**Path** + 資訊清單檔案名稱 + "/manifest"
+Smooth Streaming： **Path** + 資訊清單檔案名稱 + "/manifest"
 
 例如：
 
     https://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest
 
-HLS：**Path** + 資訊清單檔案名稱 + "/manifest(format=m3u8-aapl)"
+HLS： **Path** + 資訊清單檔案名稱 + "/manifest(format=m3u8-aapl)"
 
 例如：
 
     https://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=m3u8-aapl)
 
 
-DASH：**Path** + 資訊清單檔案名稱 + "/manifest(format=mpd-time-csf)"
+DASH： **Path** + 資訊清單檔案名稱 + "/manifest(format=mpd-time-csf)"
 
 例如：
 
@@ -163,7 +163,7 @@ DASH：**Path** + 資訊清單檔案名稱 + "/manifest(format=mpd-time-csf)"
 ### <a name="build-progressive-download-urls"></a>建置漸進式下載 URL
 建立定位器之後，使用傳回的 **Path** 值建置漸進式下載 URL。   
 
-URL：**Path** + 資產檔案 MP4 名稱
+URL： **Path** + 資產檔案 MP4 名稱
 
 例如：
 
@@ -193,7 +193,7 @@ URL：**Path** + 資產檔案 MP4 名稱
 ## <a name="provide-feedback"></a>提供意見反應
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 [媒體服務作業 REST API 概觀](media-services-rest-how-to-use.md)
 
 [設定資產傳遞原則](media-services-rest-configure-asset-delivery-policy.md)

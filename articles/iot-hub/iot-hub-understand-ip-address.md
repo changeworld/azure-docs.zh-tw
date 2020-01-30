@@ -7,18 +7,18 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: f05be2725ef766bb1e5fd7f2624e754a2e21698a
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: c5040721705b90a981f1f8a45a3a2eb70eefde05
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563168"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772155"
 ---
 # <a name="iot-hub-ip-addresses"></a>IoT 中樞 IP 位址
 
 IoT 中樞公用端點的 IP 位址首碼會定期發佈在_AzureIoTHub_ [服務](../virtual-network/service-tags-overview.md)標籤底下。 您可以使用這些 IP 位址首碼來控制 IoT 中樞與您的裝置或網路資產之間的連線，以執行各種不同的網路隔離目標：
 
-| 目標 | 適用的案例 | 方法 |
+| 目標 | 適用案例 | 方法 |
 |------|-----------|----------|
 | 確保您的裝置和服務只能與 IoT 中樞端點通訊 | [裝置到雲端](./iot-hub-devguide-messaging.md)和[雲端到裝置](./iot-hub-devguide-messages-c2d.md)的訊息、[直接方法](./iot-hub-devguide-direct-methods.md)、[裝置和模組 twins](./iot-hub-devguide-device-twins.md)和[裝置串流](./iot-hub-device-streams-overview.md) | 請使用_AzureIoTHub_和_EventHub_服務標籤來探索 IOT 中樞和事件中樞 ip 位址首碼，並據此設定這些 ip 位址首碼的裝置和服務防火牆設定的允許規則;將流量丟棄至您不想讓裝置或服務與之通訊的其他目的地 IP 位址。 |
 | 確保您的 IoT 中樞裝置端點只會從您的裝置和網路資產接收連線 | [裝置到雲端](./iot-hub-devguide-messaging.md)和[雲端到裝置](./iot-hub-devguide-messages-c2d.md)的訊息、[直接方法](./iot-hub-devguide-direct-methods.md)、[裝置和模組 twins](./iot-hub-devguide-device-twins.md)和[裝置串流](./iot-hub-device-streams-overview.md) | 使用 IoT 中樞[IP 篩選器功能](iot-hub-ip-filtering.md)，以允許來自您的裝置和網路資產 IP 位址的連線（請參閱[限制](#limitations-and-workarounds)一節）。 | 
@@ -30,9 +30,11 @@ IoT 中樞公用端點的 IP 位址首碼會定期發佈在_AzureIoTHub_ [服務
 
 * 在裝置的防火牆設定中新增允許規則時，最好提供[適用的通訊協定所使用的特定埠](./iot-hub-devguide-protocols.md#port-numbers)。
 
-* IoT 中樞的 IP 位址首碼可能會變更。 這些變更會在生效之前透過服務標籤定期發佈。 因此，請務必開發處理常式，以定期取得並使用最新的服務標記。 此程式可透過[服務標記探索 API](../virtual-network/service-tags-overview.md#service-tags-on-premises)來自動化。
+* IoT 中樞的 IP 位址首碼可能會變更。 這些變更會在生效之前透過服務標籤定期發佈。 因此，請務必開發處理常式，以定期取得並使用最新的服務標記。 此程式可透過[服務標記探索 API](../virtual-network/service-tags-overview.md#service-tags-on-premises)來自動化。 請注意，服務標籤探索 API 仍處於預覽階段，而且在某些情況下，可能不會產生標記和 IP 位址的完整清單。 在探索 API 正式推出之前，請考慮使用[可下載 JSON 格式的服務標記](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)。 
 
 * 使用*AzureIoTHub。 [區功能變數名稱稱]* 標記，用以識別特定區域中的 IoT 中樞端點所使用的 IP 首碼。 若要考慮資料中心的嚴重損壞修復，或[區域性容錯移轉](iot-hub-ha-dr.md)，請同時啟用您 IoT 中樞地理配對區域的 IP 首碼連線能力。
+
+* 在 IoT 中樞中設定防火牆規則，可能會封鎖對您的 IoT 中樞執行 Azure CLI 和 PowerShell 命令所需的連線能力。 若要避免這種情況，您可以為用戶端的 IP 位址首碼新增允許規則，以重新啟用 CLI 或 PowerShell 用戶端來與您的 IoT 中樞進行通訊。  
 
 
 ## <a name="limitations-and-workarounds"></a>限制和因應措施

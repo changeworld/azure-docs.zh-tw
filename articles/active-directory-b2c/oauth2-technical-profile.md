@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 33bad4982d54eb18e91be28511fb9137223f4a91
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 53190eda66347c23b981c5d6e0631630e9989deb
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950964"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840361"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自訂原則中定義 OAuth2 技術設定檔
 
@@ -49,7 +49,7 @@ Azure Active Directory B2C （Azure AD B2C）提供 OAuth2 通訊協定識別提
 
 **OutputClaims** 元素包含 OAuth2 識別提供者傳回的宣告清單。 您可能需要將原則中定義的宣告名稱對應至識別提供者中定義的名稱。 只要設定了 `DefaultValue` 屬性，也可以加入識別提供者未傳回的宣告。
 
-**OutputClaimsTransformations** 元素可能包含 **OutputClaimsTransformation** 的集合，以用來修改輸出宣告或產生新的輸出宣告。
+**OutputClaimsTransformations** 元素可能含有 **OutputClaimsTransformation** 的集合，用於修改輸出宣告或產生新的輸出宣告。
 
 下列範例顯示 Facebook 識別提供者傳回的宣告：
 
@@ -77,7 +77,7 @@ Azure Active Directory B2C （Azure AD B2C）提供 OAuth2 通訊協定識別提
 
 ## <a name="metadata"></a>中繼資料
 
-| 屬性 | 必要項 | 描述 |
+| 屬性 | 必要項 | 說明 |
 | --------- | -------- | ----------- |
 | client_id | 是 | 識別提供者的應用程式識別碼。 |
 | IdTokenAudience | 否 | id_token 的對象。 如果已指定，Azure AD B2C 會檢查權杖是否在識別提供者傳回的宣告中，以及是否等於指定的宣告。 |
@@ -101,7 +101,7 @@ Azure Active Directory B2C （Azure AD B2C）提供 OAuth2 通訊協定識別提
 
 **CryptographicKeys** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 描述 |
+| 屬性 | 必要項 | 說明 |
 | --------- | -------- | ----------- |
 | client_secret | 是 | 識別提供者應用程式的用戶端密碼。 只有在 **response_types** 中繼資料設為 `code` 時，才需要密碼編譯金鑰。 在此情況下，Azure AD B2C 會進行另一次呼叫，以交換存取權杖的授權碼。 如果中繼資料設定為 `id_token`，您可以省略密碼編譯金鑰。 |
 
@@ -113,7 +113,7 @@ Azure Active Directory B2C （Azure AD B2C）提供 OAuth2 通訊協定識別提
 
 範例：
 
-- [使用自訂原則新增 Google+ 作為 OAuth2 識別提供者](active-directory-b2c-custom-setup-goog-idp.md)
+- [使用自訂原則新增 Google+ 作為 OAuth2 識別提供者](identity-provider-google-custom.md)
 
 
 

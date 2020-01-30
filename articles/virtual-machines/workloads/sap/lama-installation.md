@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: ffe68352fed0b9c0df0cdfb971c085d1bb7f18c4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 2df0bfe8041216e207193832c8f7ca48967c4e5b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978064"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842430"
 ---
 # <a name="sap-lama-connector-for-azure"></a>適用於 Azure 的 SAP LaMa 連接器
 
@@ -87,7 +87,7 @@ Azure 連接器可以使用服務主體來授權 Microsoft Azure。 請遵循下
 1. 按一下 [新增註冊]
 1. 輸入名稱，然後按一下 [註冊]
 1. 選取新的應用程式，然後按一下 [設定] 索引標籤中的 [憑證 & 秘密]
-1. 建立新的用戶端密碼，輸入新金鑰的描述，選取密碼應 exire 的時間，然後按一下 [儲存]
+1. 建立新的用戶端密碼、輸入新金鑰的描述、選取密碼到期的時間，然後按一下 [儲存]
 1. 記下值。 此值用來作為服務主體的密碼
 1. 記下應用程式識別碼。 此值用來作為服務主體的使用者名稱
 

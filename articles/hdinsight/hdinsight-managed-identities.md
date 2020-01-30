@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/20/2019
-ms.openlocfilehash: e7be8fbf5f6c2c59e93d48729785dd34bae5955e
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 934c99c25ca37526ac31fd9bbaf58623fdbdf166
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327377"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76764390"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Azure HDInsight 中的受控識別
 
 受控識別是在 Azure Active Directory （Azure AD）中註冊的身分識別，其認證是由 Azure 管理。 使用受控識別時，您不需要在 Azure AD 中註冊服務主體，或維護憑證之類的認證。
 
-受控識別可以在 Azure HDInsight 中用來允許您的叢集存取 Azure Data Lake Storage Gen2 中 Azure AD 網域服務、存取 Azure Key Vault 或存取檔案。
+受控識別會在 Azure HDInsight 中用來存取 Azure AD 網域服務，或在需要時存取 Azure Data Lake Storage Gen2 中的檔案。
 
 受控識別有兩種類型：使用者指派和系統指派。 Azure HDInsight 會使用使用者指派的受控識別。 使用者指派的受控識別會建立為獨立的 Azure 資源，您可以將其指派給一或多個 Azure 服務實例。 相反地，系統指派的受控識別會建立在 Azure AD 中，然後直接在特定 Azure 服務實例上啟用。 系統指派的受控識別的生命週期接著會系結至其啟用所在之服務實例的生命週期。
 
@@ -42,7 +42,7 @@ ms.locfileid: "74327377"
 
 受控識別會在多個案例的 Azure HDInsight 中使用。 如需詳細的安裝和設定指示，請參閱相關檔：
 
-* [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md#create-a-user-assigned-managed-identity)
+* [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md#create-a-user-assigned-managed-identity) \(部分機器翻譯\)
 * [企業安全性套件](domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-and-authorize-a-managed-identity)
 * [Kafka 攜帶您自己的金鑰（BYOK）](kafka/apache-kafka-byok.md#get-started-with-byok)
 

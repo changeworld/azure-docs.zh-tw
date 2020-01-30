@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 8860f2bea2877e7775db20be79181352d8cd55c8
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 6737b75a955bb12072722f274ac589cb6d525ffb
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705268"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772545"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>在 Azure Active Directory Domain Services 中設定 Kerberos 限制委派（KCD）
 
-當您執行應用程式時，可能需要這些應用程式才能存取不同使用者內容中的資源。 Active Directory Domain Services （AD DS）支援一種稱為*Kerberos 委派*的機制，可啟用此使用案例。 Kerberos*限制*委派（KCD）接著會建立此機制，以定義可在使用者內容中存取的特定資源。 Azure Active Directory Domain Services （Azure AD DS）受控網域會更安全地鎖定該傳統內部部署 AD DS 環境，因此請使用更安全的以*資源為基礎*的 KCD。
+當您執行應用程式時，可能需要這些應用程式才能存取不同使用者內容中的資源。 Active Directory Domain Services （AD DS）支援一種稱為*Kerberos 委派*的機制，可啟用此使用案例。 Kerberos*限制*委派（KCD）接著會建立此機制，以定義可在使用者內容中存取的特定資源。 Azure Active Directory Domain Services （Azure AD DS）受控網域比傳統的內部部署 AD DS 環境更安全地鎖定，因此，請使用更安全的以*資源為基礎*的 KCD。
 
 本文說明如何在 Azure AD DS 受控網域中設定以資源為基礎的 Kerberos 限制委派。
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 9927de3ab3fb68cea17095d7255fd8a68f66c9a8
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: d256f417fb3bacbf3f363fc2a9f8701a1bb49d71
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901482"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773633"
 ---
 # <a name="create-content-keys-with-rest"></a>使用 REST 建立內容金鑰
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ ms.locfileid: "74901482"
 
 加密的資產必須與 **ContentKey**相關聯。 本文說明如何建立內容金鑰。
 
-以下是產生您將與要加密資產相關聯的內容金鑰的一般步驟。 
+以下是產生要與要加密資產相關聯之內容金鑰的一般步驟。 
 
 1. 隨機產生 16 位元組 AES 金鑰 (適用於一般加密以及信封加密) 或 32 位元組 AES 金鑰 (適用於儲存體加密)。 
    
@@ -90,7 +90,7 @@ ms.locfileid: "74901482"
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: media.windows.net
 
 
@@ -122,7 +122,7 @@ ms.locfileid: "74901482"
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: 78d1247a-58d7-40e5-96cc-70ff0dfa7382
     Host: media.windows.net
 
@@ -189,7 +189,7 @@ ms.locfileid: "74901482"
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: media.windows.net
     {
     "Name":"ContentKey",
@@ -239,7 +239,7 @@ ms.locfileid: "74901482"
     Accept-Charset: UTF-8
     Content-Type: application/json
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: media.windows.net
 
 

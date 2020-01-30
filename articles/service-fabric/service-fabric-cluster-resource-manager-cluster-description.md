@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 56765fa16bc1ea96f1429b72fded38c4385e65ec
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7142e3f9aaa25e7ba327194c04ad6a9b5f4e3ad1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452114"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774483"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>使用叢集描述 Service Fabric 叢集 Resource Manager
 Azure Service Fabric 的叢集 Resource Manager 功能提供數個用來描述叢集的機制：
@@ -472,7 +472,7 @@ Update-ServiceFabricService -Stateful -ServiceName $serviceName -PlacementConstr
 
 第二種是平衡和優化，這對於有效率地執行服務很重要。 符合成本效益或效能敏感性的服務供應專案，不允許某些節點處於經常性存取狀態，而有些則是冷的。 熱節點會導致資源爭用和效能不佳。 冷節點代表浪費的資源和成本增加。 
 
-Service Fabric 將資源表示為*計量*。 度量是您想要向 Service Fabric 描述的任何邏輯或實體資源。 計量的範例包括 "WorkQueueDepth" 或 "MemoryInMb"。 如需 Service Fabric 可在節點上管理之實體資源的相關資訊，請參閱[資源管理](service-fabric-resource-governance.md)。 如需設定自訂計量及其用法的詳細資訊，請參閱[這篇文章](service-fabric-cluster-resource-manager-metrics.md)。
+Service Fabric 將資源表示為*計量*。 度量是您想要向 Service Fabric 描述的任何邏輯或實體資源。 計量的範例包括 "WorkQueueDepth" 或 "MemoryInMb"。 如需 Service Fabric 可在節點上管理之實體資源的相關資訊，請參閱[資源管理](service-fabric-resource-governance.md)。 如需叢集 Resource Manager 所使用之預設計量和如何設定自訂計量的詳細資訊，請參閱[這篇文章](service-fabric-cluster-resource-manager-metrics.md)。
 
 計量不同于放置條件約束和節點屬性。 節點屬性是節點本身的靜態描述項。 計量會描述節點所擁有的資源，以及服務在節點上執行時所使用的資源。 節點屬性可能是**HasSSD** ，而且可能設定為 true 或 false。 該 SSD 上可用的空間量，以及服務所取用的數量，會是「DriveSpaceInMb」之類的計量。 
 

@@ -16,13 +16,13 @@ ms.workload: identity
 ms.date: 10/14/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, sureshja, hirsin
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: b6271805b9d14db9f2fdcd85d089962e9874f6ba
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.custom: aaddev
+ms.openlocfilehash: 216c4a730828bf0959c2b932077dd110f5843739
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701139"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76833272"
 ---
 # <a name="what-is-authentication"></a>什麼是驗證？
 
@@ -63,7 +63,7 @@ ms.locfileid: "76701139"
 
 視用戶端的建立方式而定，它可以使用 Azure AD 所支援的一或多個驗證流程。 這些流程可能會產生各種權杖（id_tokens、重新整理權杖、存取權杖）以及授權碼，而且需要不同的權杖才能使其運作。 此圖表提供總覽：
 
-|流程 | 需要 | id_token | 存取權杖 | 重新整理權杖 | 授權碼 | 
+|流程 | 具備 | id_token | 存取權杖 | 重新整理權杖 | 授權碼 | 
 |-----|----------|----------|--------------|---------------|--------------------|
 |[授權碼流程](v1-protocols-oauth-code.md) | | x | x | x | x|  
 |[隱含流程](v1-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |

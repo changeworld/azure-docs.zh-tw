@@ -8,21 +8,18 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 2375d8ee92d9c04c287b7fca793fcdc236e1e8f4
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: f7f716734875d652de575991a4dc1b7bfe948ae3
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720033"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773524"
 ---
 # <a name="set-up-advanced-threat-protection-for-azure-key-vault-preview"></a>設定 Azure Key Vault 的先進威脅防護（預覽）
 
 Azure Key Vault 的先進威脅防護提供一層額外的安全性情報。 此工具會偵測可能有害的嘗試存取或惡意探索 Key Vault 帳戶。 在 Azure 資訊安全中心中使用原生先進的威脅防護，可以解決威脅，而不是安全性專家，也不需要學習額外的安全性監視系統。
 
 當資訊安全中心偵測到異常活動時，它會顯示警示。 它也會以可疑活動的詳細資料，以及如何調查並補救已識別威脅的建議，以電子郵件寄給訂用帳戶管理員。
-
-> [!NOTE]
-> Azure Key Vault 的先進威脅防護目前僅適用于北美洲區域。
 
 ## <a name="set-up-advanced-threat-protection-from-azure-security-center"></a>從 Azure 資訊安全中心設定先進的威脅防護
 

@@ -5,12 +5,12 @@ author: Rajeswari-Mamilla
 ms.topic: how-to
 ms.date: 12/22/2019
 ms.author: ramamill
-ms.openlocfilehash: 43e6a39a52eb81573b4a4ba8ad63d48d0e51dedd
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 50f8b5b4412e02692bf2b5d57b7f0dee27c2a25a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514798"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842694"
 ---
 # <a name="automate-mobility-service-installation"></a>自動安裝行動服務
 
@@ -19,7 +19,7 @@ ms.locfileid: "76514798"
 當您將內部部署 VMware Vm 和實體伺服器的嚴重損壞修復 Site Recovery 部署到 Azure 時，您會在您要複寫的每部機器上安裝行動服務代理程式。 行動服務會在機器上捕獲資料寫入，然後將它們轉送到 Site Recovery 的進程伺服器進行複寫。 您可以透過幾種方式來部署行動服務：
 
 - **推入安裝**：當您為 Azure 入口網站中的機器啟用複寫時，讓 Site Recovery 安裝行動服務代理程式。
-- **手動安裝**：在每部電腦上手動安裝行動服務。 [深入瞭解](/vmware-physical-mobility-service-overview.md)推送和手動安裝。
+- **手動安裝**：在每部電腦上手動安裝行動服務。 [深入瞭解](vmware-physical-mobility-service-overview.md)推送和手動安裝。
 - **自動化部署**：使用軟體部署工具（例如 Microsoft Endpoint Configuration Manager）或協力廠商工具（例如 Intigua JetPatch）來自動化安裝。
 
 自動安裝和更新提供下列解決方案：

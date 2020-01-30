@@ -1,6 +1,6 @@
 ---
 title: 協助進行身分識別管理的 Azure 安全性功能 | Microsoft Docs
-description: " 本文對協助進行身分識別管理的 Azure 安全性功能提供核心的概觀。 Microsoft 身分識別和存取管理解決方案可協助 IT 保護跨公司資料中心和雲端的應用程式和資源存取, 以啟用其他層級的驗證, 例如多重要素驗證和條件式存取策略. "
+description: " 本文對協助進行身分識別管理的 Azure 安全性功能提供核心的概觀。 Microsoft 身分識別和存取管理解決方案可協助 IT 保護跨公司資料中心和雲端的應用程式和資源存取，以啟用其他層級的驗證，例如多重要素驗證和條件式存取策略. "
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,16 +16,16 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: 021767aa20dc35459c68fead674ff00510af2538
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: cdf07c6a4cb98f17a9bc15934a7be42ba70810f6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129368"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840446"
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure 身分識別管理安全性概觀
 
- 身分識別管理即為驗證與授權[安全性主體](/windows/security/identity-protection/access-control/security-principals)的流程。 其中還包含該主體 (識別身分) 資訊的控管。 安全性主體 (識別身分) 可能包含服務、應用程式、使用者、群組等等。Microsoft 身分識別和存取管理解決方案可協助 IT 人員保護從公司資料中心與雲端存取應用程式和資源的權限。 這類保護會啟用其他層級的驗證, 例如多重要素驗證和條件式存取原則。 透過進階的安全性報告、稽核和警示來監視可疑活動，有助於緩解潛在的安全性問題。 [Azure Active Directory Premium](/azure/active-directory/active-directory-editions) 可以提供數千個雲端軟體即服務 (SaaS) 應用程式的單一登入 (SSO) 及存取您在內部部署執行的 Web 應用程式。
+ 身分識別管理即為驗證與授權[安全性主體](/windows/security/identity-protection/access-control/security-principals)的流程。 其中還包含該主體 (識別身分) 資訊的控管。 安全性主體（身分識別）可能包括服務、應用程式、使用者、群組等。Microsoft 身分識別與存取管理解決方案可協助 IT 保護整個企業資料中心和雲端中的應用程式和資源存取。 這類保護會啟用其他層級的驗證，例如多重要素驗證和條件式存取原則。 透過進階的安全性報告、稽核和警示來監視可疑活動，有助於緩解潛在的安全性問題。 [Azure Active Directory Premium](/azure/active-directory/active-directory-editions) 可以提供數千個雲端軟體即服務 (SaaS) 應用程式的單一登入 (SSO) 及存取您在內部部署執行的 Web 應用程式。
  
 善用 Azure Active Directory (Azure AD) 的安全性優點，您便可以：
 
@@ -40,12 +40,12 @@ ms.locfileid: "70129368"
 
 * 單一登入
 * 反向 proxy
-* 多重要素驗證
+* Multi-Factor Authentication
 * 角色型存取控制 (RBAC)
 * 安全性監視、警示以及機器學習服務型報告
 * 消費者身分識別與存取管理
 * 裝置註冊
-* Privileged Identity Management
+* 特殊權限身分識別管理
 * 身分識別保護
 * 混合式身分識別管理/Azure AD connect
 * Azure AD 存取權檢閱
@@ -77,7 +77,7 @@ Azure AD 應用程式 Proxy 可讓您在私人網路內發佈內部部署應用�
 * [使用應用程式 Proxy 進行單一登入](../../active-directory/manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
 * [使用條件式存取](../../active-directory/manage-apps/application-proxy-integrate-with-sharepoint-server.md)
 
-## <a name="multi-factor-authentication"></a>多重要素驗證
+## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
 Azure Multi-Factor Authentication 是需要使用多種驗證方法，並在使用者登入和交易中新增重要的第二層安全性的驗證方法。 Multi-Factor Authentication 有助於保護對資料與應用程式的存取，同時滿足使用者對簡單登入程序的需求。 它可以透過一些驗證選項：例如電話、文字訊息，或行動應用程式通知或驗證代碼，以及第三方 OAuth 權杖，來提供強大的驗證功能。
 
@@ -102,7 +102,7 @@ RBAC 是建置於 Azure Resource Manager 上的授權系統，可提供更細緻
 
 在 Azure 入口網站中，報告會按照下列類別加以區分：
 
-* **異常報告**：包含發現異常的登入事件。 我們的目標在於使您注意這類活動，並讓您決定事件是否可疑。
+* **異常報告**：包含我們發現異常的登入事件。 我們的目標在於使您注意這類活動，並讓您決定事件是否可疑。
 * **整合式應用程式報告**：可供深入了解雲端應用程式在組織中的使用方式。 Azure AD 提供與數千個雲端應用程式的整合。
 * **錯誤報告**：指出將帳戶佈建至外部應用程式時可能發生的錯誤。
 * **使用者特定報告**：顯示特定使用者的裝置登入活動資料。
@@ -125,14 +125,14 @@ Azure AD B2C 是高可用性的全域身分識別管理服務，可用於處理�
 深入了解：
 
 * [什麼是 Azure Active Directory B2C？](https://azure.microsoft.com/services/active-directory-b2c/)
-* [Azure Active Directory B2C (預覽)：在您的應用程式中註冊及登入消費者](../../active-directory-b2c/active-directory-b2c-overview.md)
-* [Azure Active Directory B2C 預覽版：應用程式類型](../../active-directory-b2c/active-directory-b2c-apps.md)
+* [Azure Active Directory B2C 預覽：在您的應用程式中註冊與登入取用者](../../active-directory-b2c/overview.md)
+* [Azure Active Directory B2C 預覽：應用程式類型](../../active-directory-b2c/application-types.md)
 
 ## <a name="device-registration"></a>裝置註冊
 
-Azure AD 裝置註冊是裝置型[條件式存取](/azure/active-directory/active-directory-conditional-access-device-registration-overview)案例的基礎。 當裝置已註冊時，Azure AD 裝置註冊會在使用者登入時，對裝置提供用來驗證裝置的身分識別。 接著, 您可以使用已驗證的裝置和裝置的屬性, 為裝載于雲端和內部部署的應用程式強制執行條件式存取原則。
+Azure AD 裝置註冊是裝置型[條件式存取](/azure/active-directory/active-directory-conditional-access-device-registration-overview)案例的基礎。 當裝置已註冊時，Azure AD 裝置註冊會在使用者登入時，對裝置提供用來驗證裝置的身分識別。 接著，您可以使用已驗證的裝置和裝置的屬性，為裝載于雲端和內部部署的應用程式強制執行條件式存取原則。
 
-與 Intune 這類的行動裝置管理解決方案結合時，將會以裝置的其他相關資訊更新 Azure AD 中的裝置屬性。 接著, 您可以建立條件式存取規則, 以強制從裝置存取, 以符合您的安全性和合規性標準。
+與 Intune 這類的行動裝置管理解決方案結合時，將會以裝置的其他相關資訊更新 Azure AD 中的裝置屬性。 接著，您可以建立條件式存取規則，以強制從裝置存取，以符合您的安全性和合規性標準。
 
 深入了解：
 
@@ -140,7 +140,7 @@ Azure AD 裝置註冊是裝置型[條件式存取](/azure/active-directory/activ
 * [自動向 Azure AD 註冊加入網域的 Windows 裝置](/azure/active-directory/active-directory-conditional-access-automatic-device-registration)
 * [設定讓已加入網域的 Windows 裝置自動向 Azure AD 註冊](/azure/active-directory/active-directory-conditional-access-automatic-device-registration-setup)
 
-## <a name="privileged-identity-management"></a>Privileged Identity Management
+## <a name="privileged-identity-management"></a>特殊權限身分識別管理
 
 有了 Azure AD Privileged Identity Management ，您便可管理、控制和監視特殊權限身分識別，以及存取 Azure AD 和 Office 365 與 Microsoft Intune 等其他 Microsoft Online 服務的資源。
 
@@ -160,21 +160,21 @@ Azure AD 裝置註冊是裝置型[條件式存取](/azure/active-directory/activ
 
 ## <a name="identity-protection"></a>身分識別保護
 
-Azure AD Identity Protection 是一項安全性服務, 可為風險偵測和潛在弱點 (會影響組織的身分識別) 提供匯總的觀點。 Identity Protection 會利用現有的 Azure AD 異常偵測功能，這些功能可透過 Azure AD 異常活動報告取得。 Identity Protection 也引進了可即時偵測異常的新風險偵測類型。
+Azure AD Identity Protection 是一項安全性服務，可為風險偵測和潛在弱點（會影響組織的身分識別）提供匯總的觀點。 Identity Protection 會利用現有的 Azure AD 異常偵測功能，這些功能可透過 Azure AD 異常活動報告取得。 Identity Protection 也引進了可即時偵測異常的新風險偵測類型。
 
 深入了解：
 
 * [Azure AD Identity Protection](/azure/active-directory/identity-protection/overview)
-* [第 9 頻道：Azure AD 和身分識別示範：身分識別保護預覽版](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
+* [第 9 頻道：Azure AD 和身分識別展示：Identity Protection 預覽](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="hybrid-identity-managementazure-ad-connect"></a>混合式身分識別管理/Azure AD connect
 
 Microsoft 的身分識別解決方案可跨越內部部署和雲端架構功能，建立單一使用者身分識別以用於所有資源的驗證和授權，不論位於何處。 我們稱之為混合式身分識別。 Azure AD Connect 是一種 Microsoft 工具，其設計目的是要符合並完成混合式身分識別的目標。 這可讓您為與 Azure AD 整合之 Office 365、Azure 和 SaaS 應用程式的使用者提供通用身分識別。 它可提供下列功能：
 
-* 同步處理
+* Synchronization
 * AD FS 和同盟整合
 * 通過驗證
-* 健全狀況監視
+* 健康狀況監視
 
 深入了解：
 

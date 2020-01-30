@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 9c654c65577c44b1773ff98cb1206beeb5206ba4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4cf2bc919ecb8b39a23b23df95a6f37396f50603
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60761772"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774874"
 ---
 # <a name="configuring-azure-media-services-telemetry-with-rest"></a>使用 REST 設定 Azure 媒體服務遙測
 
@@ -34,7 +34,7 @@ ms.locfileid: "60761772"
 - 取得通知端點
 - 建立用於監視的通知端點。 
 
-    若要建立通知端點，請將 endpointtype 設為 AzureTable (2)，並將 endPontAddress 設為儲存體資料表 (例如，https:\//telemetryvalidationstore.table.core.windows.net/)。
+    若要建立通知端點，請將 EndPointType 設定為 AzureTable （2），並將將 endpontaddress 設定為儲存體資料表（例如，HTTPs：\//telemetryvalidationstore.table.core.windows.net/）。
   
 - 取得監視組態
 
@@ -49,7 +49,7 @@ ms.locfileid: "60761772"
 ### <a name="request"></a>要求
 
     GET https://wamsbnp1clus001rest-hs.cloudapp.net/api/StorageAccounts HTTP/1.1
-    x-ms-version: 2.13
+    x-ms-version: 2.19
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     Accept: application/json; odata=verbose
@@ -77,14 +77,14 @@ ms.locfileid: "60761772"
 ### <a name="request"></a>要求
 
     GET https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints HTTP/1.1
-    x-ms-version: 2.13
+    x-ms-version: 2.19
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     Accept: application/json; odata=verbose
     Authorization: (redacted)
     Host: wamsbnp1clus001rest-hs.cloudapp.net
     
-### <a name="response"></a>Response
+### <a name="response"></a>回應
     HTTP/1.1 200 OK
     Cache-Control: no-cache
     Content-Length: 20
@@ -110,7 +110,7 @@ ms.locfileid: "60761772"
 ### <a name="request"></a>要求
 
     POST https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints HTTP/1.1
-    x-ms-version: 2.13
+    x-ms-version: 2.19
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     Accept: application/json; odata=verbose
@@ -126,9 +126,9 @@ ms.locfileid: "60761772"
     }
 
 > [!NOTE]
-> 別忘了變更"https:\//telemetryvalidationstore.table.core.windows.net 」 到您的儲存體帳戶的值。
+> 別忘了將 "HTTPs：\//telemetryvalidationstore.table.core.windows.net" 值變更為您的儲存體帳戶。
 
-### <a name="response"></a>Response
+### <a name="response"></a>回應
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -152,14 +152,14 @@ ms.locfileid: "60761772"
 ### <a name="request"></a>要求
 
     GET https://wamsbnp1clus001rest-hs.cloudapp.net/api/MonitoringConfigurations HTTP/1.1
-    x-ms-version: 2.13
+    x-ms-version: 2.19
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     Accept: application/json; odata=verbose
     Authorization: (redacted)
     Host: wamsbnp1clus001rest-hs.cloudapp.net
 
-### <a name="response"></a>Response
+### <a name="response"></a>回應
     
     HTTP/1.1 200 OK
     Cache-Control: no-cache
@@ -182,7 +182,7 @@ ms.locfileid: "60761772"
 ### <a name="request"></a>要求
 
     POST https://wamsbnp1clus001rest-hs.cloudapp.net/api/MonitoringConfigurations HTTP/1.1
-    x-ms-version: 2.13
+    x-ms-version: 2.19
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     Accept: application/json; odata=verbose
@@ -201,7 +201,7 @@ ms.locfileid: "60761772"
        ]
     }
 
-### <a name="response"></a>Response
+### <a name="response"></a>回應
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -225,7 +225,7 @@ ms.locfileid: "60761772"
 ### <a name="request"></a>要求
 
     DELETE https://wamsbnp1clus001rest-hs.cloudapp.net/api/MonitoringConfigurations('nb%3Amcid%3AUUID%3A1a8931ae-799f-45fd-8aeb-9641740295c2')
-    x-ms-version: 2.13
+    x-ms-version: 2.19
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     Accept: application/json; odata=verbose

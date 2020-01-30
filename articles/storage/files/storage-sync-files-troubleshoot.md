@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 009d9e864773fb3a2578504b043fb30302cedb22
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 527d0a602b9da1f2d4f21890e896eba9a951494b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704539"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842711"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>針對 Azure 檔案同步進行移難排解
 使用 Azure 檔案同步，將組織的檔案共用集中在 Azure 檔案服務中，同時保有內部部署檔案伺服器的彈性、效能及相容性。 Azure 檔案同步會將 Windows Server 轉換成 Azure 檔案共用的快速快取。 您可以使用 Windows Server 上可用的任何通訊協定來從本機存取資料，包括 SMB、NFS 和 FTPS。 您可以視需要存取多個散佈於世界各地的快取。
@@ -1084,7 +1084,35 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
        - 在提高權限的命令提示字元，執行 `fltmc`。 確認已列出 StorageSync.sys 和 StorageSyncGuard.sys 檔案系統篩選器驅動程式。
 
 > [!NOTE]
-> 如果檔案無法分層，則會每小時在遙測事件記錄中記錄一次事件識別碼 9003 (對於每個錯誤碼會記錄一個事件)。 如果在診斷問題時需要額外的資訊，則應使用作業和診斷事件記錄。
+> 如果檔案無法分層，則會每小時在遙測事件記錄中記錄一次事件識別碼 9003 (對於每個錯誤碼會記錄一個事件)。 請檢查階層處理[錯誤和修復](#tiering-errors-and-remediation)一節，以查看錯誤碼是否列出補救步驟。
+
+### <a name="tiering-errors-and-remediation"></a>分層錯誤與補救
+
+| HRESULT | HRESULT (十進位) | 錯誤字串 | 問題 | 補救 |
+|---------|-------------------|--------------|-------|-------------|
+| 0x80c86043 | -2134351805 | ECS_E_GHOSTING_FILE_IN_USE | 因為檔案正在使用中，所以無法進行層級。 | 不需要任何動作。 當檔案不再使用時，該檔案會進行分層。 |
+| 0x80c80241 | -2134375871 | ECS_E_GHOSTING_EXCLUDED_BY_SYNC | 檔案無法進行階層處理，因為同步處理已排除此檔案。 | 不需要任何動作。 同步排除清單中的檔案無法分層。 |
+| 0x80c86042 | -2134351806 | ECS_E_GHOSTING_FILE_NOT_FOUND | 檔案無法進行層級，因為在伺服器上找不到該檔案。 | 不需要任何動作。 如果錯誤持續發生，請檢查該檔案是否存在於伺服器上。 |
+| 0x80c83053 | -2134364077 | ECS_E_CREATE_SV_FILE_DELETED | 檔案無法進行層級，因為它已在 Azure 檔案共用中刪除。 | 不需要任何動作。 當下一個下載同步會話執行時，應該在伺服器上刪除該檔案。 |
+| 0x80c8600e | -2134351858 | ECS_E_AZURE_SERVER_BUSY | 因為發生網路問題，所以檔案無法進行層級。 | 不需要任何動作。 如果錯誤持續發生，請檢查 Azure 檔案共用的網路連線。 |
+| 0x80072ee7 | -2147012889 | WININET_E_NAME_NOT_RESOLVED | 因為發生網路問題，所以檔案無法進行層級。 | 不需要任何動作。 如果錯誤持續發生，請檢查 Azure 檔案共用的網路連線。 |
+| 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | 因為拒絕存取錯誤，所以檔案無法進行層級。 如果檔案位於 DFS-R 唯讀複寫資料夾，就會發生此錯誤。 | Azure 檔案同步不支援 DFS-R 唯讀複寫資料夾上的伺服器端點。 如需詳細資訊，請參閱[規劃指南](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#distributed-file-system-dfs)。 |
+| 0x80072efe | -2147012866 | WININET_E_CONNECTION_ABORTED | 因為發生網路問題，所以檔案無法進行層級。 | 不需要任何動作。 如果錯誤持續發生，請檢查 Azure 檔案共用的網路連線。 |
+| 0x80c80261 | -2134375839 | ECS_E_GHOSTING_MIN_FILE_SIZE | 檔案無法進行層級，因為檔案大小小於支援的大小。 | 如果代理程式版本小於9.0，支援的最低檔案大小為64kb。 如果代理程式版本是9.0 且較新，則支援的最低檔案大小是以檔案系統叢集大小（雙檔案系統叢集大小）為基礎。 例如，如果檔案系統叢集大小為 4 kb，則檔案大小下限為 8 kb。 |
+| 0x80c83007 | -2134364153 | ECS_E_STORAGE_ERROR | 因為 Azure 儲存體問題，所以無法將檔案分層。 | 如果錯誤持續發生，請開啟支援要求。 |
+| 0x800703e3 | -2147023901 | ERROR_OPERATION_ABORTED | 檔案無法進行層級，因為它已在同一時間重新叫用。 | 不需要任何動作。 當召回完成且檔案不再使用時，此檔案會進行分層。 |
+| 0x80c80264 | -2134375836 | ECS_E_GHOSTING_FILE_NOT_SYNCED | 檔案無法進行階層處理，因為它尚未同步處理至 Azure 檔案共用。 | 不需要任何動作。 當檔案已同步處理至 Azure 檔案共用之後，就會進行層級。 |
+| 0x80070001 | -2147942401 | ERROR_INVALID_FUNCTION | 因為雲端階層處理篩選器驅動程式（microsoft.storagesync）並未執行，所以檔案無法進行層次處理。 | 若要解決此問題，請開啟提升許可權的命令提示字元，然後執行下列命令： fltmc load microsoft.storagesync <br>如果執行 fltmc 命令時，microsoft.storagesync 篩選器驅動程式無法載入，請將 Azure 檔案同步代理程式卸載，重新開機伺服器，然後重新安裝 Azure 檔案同步代理程式。 |
+| 0x80070070 | -2147024784 | ERROR_DISK_FULL | 因為伺服器端點所在磁片區上的磁碟空間不足，所以無法將檔案分層。 | 若要解決此問題，請在伺服器端點所在的磁片區上釋放至少 100 MB 的磁碟空間。 |
+| 0x80070490 | -2147023728 | ERROR_NOT_FOUND | 檔案無法進行階層處理，因為它尚未同步處理至 Azure 檔案共用。 | 不需要任何動作。 當檔案已同步處理至 Azure 檔案共用之後，就會進行層級。 |
+| 0x80c80262 | -2134375838 | ECS_E_GHOSTING_UNSUPPORTED_RP | 檔案無法進行層級，因為它是不支援的重新分析點。 | 如果檔案是重復資料刪除重新分析點，請遵循[規劃指南](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#data-deduplication)中的步驟來啟用重復資料刪除支援。 不支援重復資料刪除以外的重新分析點的檔案，也不會進行分層。  |
+| 0x80c83052 | -2134364078 | ECS_E_CREATE_SV_STREAM_ID_MISMATCH | 檔案無法進行層級，因為它已修改。 | 不需要任何動作。 一旦修改過的檔案已同步處理至 Azure 檔案共用，檔案就會進行分層。 |
+| 0x80c80269 | -2134375831 | ECS_E_GHOSTING_REPLICA_NOT_FOUND | 檔案無法進行階層處理，因為它尚未同步處理至 Azure 檔案共用。 | 不需要任何動作。 當檔案已同步處理至 Azure 檔案共用之後，就會進行層級。 |
+| 0x80072ee2 | -2147012894 | WININET_E_TIMEOUT | 因為發生網路問題，所以檔案無法進行層級。 | 不需要任何動作。 如果錯誤持續發生，請檢查 Azure 檔案共用的網路連線。 |
+| 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | 檔案無法進行層級，因為它已修改。 | 不需要任何動作。 一旦修改過的檔案已同步處理至 Azure 檔案共用，檔案就會進行分層。 |
+| 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | 因為系統資源不足，所以無法將檔案分層。 | 如果錯誤持續發生，請調查哪一個應用程式或核心模式驅動程式是耗盡系統資源。 |
+
+
 
 ### <a name="how-to-troubleshoot-files-that-fail-to-be-recalled"></a>如何針對無法重新叫用檔案的問題進行疑難排解  
 如果無法重新叫用檔案：
@@ -1109,7 +1137,7 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 | 0x80c86002 | -2134351870 | ECS_E_AZURE_RESOURCE_NOT_FOUND | 檔案無法重新叫用，因為它無法在 Azure 檔案共用中存取。 | 若要解決此問題，請確認檔案存在於 Azure 檔案共用中。 如果檔案存在於 Azure 檔案共用中，請升級至最新的 Azure 檔案同步[代理程式版本](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#supported-versions)。 |
 | 0x80c8305f | -2134364065 | ECS_E_EXTERNAL_STORAGE_ACCOUNT_AUTHORIZATION_FAILED | 因為儲存體帳戶的授權失敗，所以檔案無法重新叫用。 | 若要解決此問題，請確認[Azure 檔案同步具有儲存體帳戶的存取權](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#troubleshoot-rbac)。 |
 | 0x80c86030 | -2134351824 | ECS_E_AZURE_FILE_SHARE_NOT_FOUND | 檔案無法重新叫用，因為無法存取 Azure 檔案共用。 | 確認檔案共用存在且可供存取。 如果檔案共用已刪除並重新建立，請執行同步處理失敗中所述的步驟，[因為已刪除](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134375810)並重新建立 Azure 檔案共用一節，以刪除並重新建立同步群組。 |
-| 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | 檔案因 insuffcient 系統資源而無法重新叫用。 | 如果錯誤持續發生，請調查哪一個應用程式或核心模式驅動程式是耗盡系統資源。 |
+| 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | 檔案因系統資源不足而無法重新叫用。 | 如果錯誤持續發生，請調查哪一個應用程式或核心模式驅動程式是耗盡系統資源。 |
 | 0x8007000e | -2147024882 | ERROR_OUTOFMEMORY | 檔案因 insuffcient 記憶體而無法重新叫用。 | 如果錯誤持續發生，請調查哪一個應用程式或核心模式驅動程式造成記憶體不足的狀況。 |
 | 0x80070070 | -2147024784 | ERROR_DISK_FULL | 因為磁碟空間不足，所以無法重新叫用檔案。 | 若要解決此問題，請將檔案移至不同的磁片區、增加磁片區的大小，或使用 StorageSyncCloudTiering 指令程式來強制執行檔案，以釋放磁片區上的空間。 |
 

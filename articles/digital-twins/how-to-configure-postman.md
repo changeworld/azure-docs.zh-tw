@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/10/2020
-ms.openlocfilehash: 3d0220f23c8098222b93473dc6c7aa7a4f2dd791
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 42b697babe2bc004663c80e6e2f71f90ba1e5e5b
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933450"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765405"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>如何針對 Azure Digital Twins 設定 Postman
 
@@ -79,7 +79,6 @@ ms.locfileid: "75933450"
 
 安裝和設定 Postman 以取得 Azure Active Directory token。 之後，使用取得的權杖來向 Azure Digital Twins 提出已驗證的 HTTP 要求：
 
-1. 前往 [www.getpostman.com](https://www.getpostman.com/) 以下載應用程式。
 1. 確認您的**授權 URL** 正確無誤。 其應採用下列格式：
 
     ```plaintext
@@ -88,9 +87,13 @@ ms.locfileid: "75933450"
 
     | 名稱  | 更換為 | 範例 |
     |---------|---------|---------|
-    | YOUR_AZURE_TENANT | 您的租用戶或組織的名稱 | `microsoft` |
+    | YOUR_AZURE_TENANT | 您的租使用者或組織的名稱。 使用易記名稱，而不是 Azure Active Directory 應用程式註冊的英數位元**租使用者識別碼**。 | `microsoft` |
 
-1. 選取 [授權] 索引標籤、選取 [OAuth 2.0]，然後選取 [取得新的存取權杖]。
+1. 前往 [www.getpostman.com](https://www.getpostman.com/) 以下載應用程式。
+
+1. 開啟 Postman 應用程式，然後按一下 [New] (新增) | [Create new] (新建)，然後選取 [Request] (要求)。 輸入要求名稱。 選取要儲存的集合或資料夾，然後按一下 [儲存]。 
+
+1. 我們想要提出 GET 要求。 選取 [**授權**] 索引標籤，選取 [OAuth 2.0]，然後選取 [**取得新的存取權杖**]。
 
     | 欄位  | 值 |
     |---------|---------|

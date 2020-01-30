@@ -4,22 +4,21 @@ titleSuffix: Azure Network Watcher
 description: 了解如何運用 PowerShell，來使用 Azure 網路監看員的連線疑難排解功能。
 services: network-watcher
 documentationcenter: na
-author: KumudD
+author: damendo
 manager: twooley
-editor: ''
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
-ms.author: kumud
-ms.openlocfilehash: 824799254b2706c64a17921034dbde3e4f60e132
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: abc9389c2c5fd5576795c26a89e3941b6eb5a939
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275985"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842830"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>使用 PowerShell 利用 Azure 網路監看員進行連線疑難排解
 
@@ -63,9 +62,9 @@ $networkWatcher = Get-AzNetworkWatcher | Where-Object -Property Location -EQ -Va
 Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationId $VM2.Id -DestinationPort 80
 ```
 
-### <a name="response"></a>Response
+### <a name="response"></a>回應
 
-下列回應是來自上一個範例。  在此回應中，`ConnectionStatus` 為 [無法連線]。 您可以看到傳送的所有探查都失敗。 因為名為 `NetworkSecurityRule`UserRule_Port80**的使用者設定** 設定成封鎖連接埠 80 的連入流量，所以虛擬設備的連線失敗。 這項資訊可以用來研究連線問題。
+下列回應是來自上一個範例。  在此回應中，`ConnectionStatus` 為 [無法連線]。 您可以看到傳送的所有探查都失敗。 因為名為 **UserRule_Port80** 的使用者設定 `NetworkSecurityRule` 設定成封鎖連接埠 80 的連入流量，所以虛擬設備的連線失敗。 這項資訊可以用來研究連線問題。
 
 ```
 ConnectionStatus : Unreachable
@@ -154,7 +153,7 @@ $networkWatcher = Get-AzNetworkWatcher | Where-Object -Property Location -EQ -Va
 Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationAddress 13.107.21.200 -DestinationPort 80
 ```
 
-### <a name="response"></a>Response
+### <a name="response"></a>回應
 
 在下列範例中，`ConnectionStatus` 會顯示為 [無法連線]。 在 `Hops` 詳細資料中，您可以在 `Issues` 下看到已因 `UserDefinedRoute` 而封鎖流量。 
 
@@ -218,7 +217,7 @@ $networkWatcher = Get-AzNetworkWatcher | Where-Object -Property Location -EQ -Va
 Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationAddress https://bing.com/
 ```
 
-### <a name="response"></a>Response
+### <a name="response"></a>回應
 
 在下列回應中，您可以看到 `ConnectionStatus` 顯示為 [可以連線]。 連線成功時，會提供延遲值。
 
@@ -270,7 +269,7 @@ $networkWatcher = Get-AzNetworkWatcher | Where-Object -Property Location -EQ -Va
 Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationAddress https://contosostorageexample.blob.core.windows.net/ 
 ```
 
-### <a name="response"></a>Response
+### <a name="response"></a>回應
 
 下列 JSON 是執行前一個 Cmdlet 的範例回應。 因為可以連線目的地，所以 `ConnectionStatus` 屬性會顯示為 [可以連線]。  系統會向您提供連線儲存體 Blob 和延遲所需躍點數目的詳細資料。
 

@@ -9,12 +9,12 @@ ms.date: 10/03/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: f39968476f2fecf655e6c69bea2ff19304d2b465
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 908bc941ee7379de067621e10adf5fd6ee6df559
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992518"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841805"
 ---
 # <a name="configure-event-grid-api-protocols"></a>設定事件方格 API 通訊協定
 
@@ -23,7 +23,7 @@ ms.locfileid: "72992518"
 | 通訊協定 | Port | 說明 |
 | ---------------- | ------------ | ------------ |
 | HTTP | 5888 | 預設會關閉。 只有在測試期間才有用。 不適合用于生產工作負載。
-| HTTPS | 4438 | 預設值
+| HTTPS | 4438 | 預設
 
 如需所有可能的設定，請參閱[安全性和驗證](security-authentication.md)指南。
 
@@ -32,8 +32,8 @@ ms.locfileid: "72992518"
 ```json
  {
   "Env": [
-    "inbound:serverAuth:tlsPolicy=strict",
-    "inbound:serverAuth:serverCert:source=IoTEdge"
+    "inbound__serverAuth__tlsPolicy=strict",
+    "inbound__serverAuth__serverCert__source=IoTEdge"
   ]
 }
  ```
@@ -43,8 +43,8 @@ ms.locfileid: "72992518"
 ```json
  {
   "Env": [
-    "inbound:serverAuth:tlsPolicy=strict",
-    "inbound:serverAuth:serverCert:source=IoTEdge"
+    "inbound__serverAuth__tlsPolicy=strict",
+    "inbound__serverAuth__serverCert__source=IoTEdge"
   ],
   "HostConfig": {
     "PortBindings": {
@@ -66,8 +66,8 @@ ms.locfileid: "72992518"
 ```json
  {
   "Env": [
-    "inbound:serverAuth:tlsPolicy=enabled",
-    "inbound:serverAuth:serverCert:source=IoTEdge"
+    "inbound__serverAuth__tlsPolicy=enabled",
+    "inbound__serverAuth__serverCert__source=IoTEdge"
   ]
 }
  ```
@@ -77,8 +77,8 @@ ms.locfileid: "72992518"
 ```json
  {
   "Env": [
-    "inbound:serverAuth:tlsPolicy=enabled",
-    "inbound:serverAuth:serverCert:source=IoTEdge"
+    "inbound__serverAuth__tlsPolicy=enabled",
+    "inbound__serverAuth__serverCert__source=IoTEdge"
   ],
   "HostConfig": {
     "PortBindings": {

@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: cherylmc
-ms.openlocfilehash: 2f847d8db983303d46b465f4f80bff65eeff632f
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 6f95107960cf11ab15cb5a8294a5432498956a7a
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168501"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775308"
 ---
 # <a name="virtual-wan-partners"></a>虛擬 WAN 夥伴
 
@@ -27,7 +27,7 @@ ms.locfileid: "72168501"
 * 測試 Azure 虛擬 WAN 的入口網站體驗。
 * 然後，決定要自動化哪些建立連線的步驟。 至少，我們建議自動化以下項目：
 
-  * 存取控制
+  * Access Control
   * 將分支裝置資訊上傳到 Azure 虛擬 WAN
   * 下載 Azure 設定，並設定從分支裝置到 Azure 虛擬 WAN 的連線
 
@@ -89,7 +89,7 @@ ms.locfileid: "72168501"
     * 連線至中樞之 VNet 的**位址空間**。<br>範例：
 
          ```
-        "ConnectedSubnets":["10.2.0.0/16","10.30.0.0/16"]
+        "ConnectedSubnets":["10.2.0.0/16","10.3.0.0/16"]
          ```
     * 虛擬中樞 Vpngateway 的 **IP 位址**。 由於 Vpngateway 的每個連線都由「主動對主動」設定中的 2 個通道組成，因此您會看到此檔案中列出這兩個 IP 位址。 在此範例中，您會看到每個網站的 "Instance0" 和 "Instance1"。<br>範例：
 
@@ -118,7 +118,7 @@ ms.locfileid: "72168501"
                "Region":"West Europe",
                "ConnectedSubnets":[ 
                   "10.2.0.0/16",
-                  "10.30.0.0/16"
+                  "10.3.0.0/16"
                ]
             },
             "gatewayConfiguration":{ 

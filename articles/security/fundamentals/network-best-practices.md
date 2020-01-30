@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 85e1ebc05ad4ebe1d58716981c0688df0126efb0
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 6d4d8ac1eb001f03e7615eeabdaca6967223f40b
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937233"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771995"
 ---
 # <a name="azure-best-practices-for-network-security"></a>適用于網路安全性的 Azure 最佳作法
 本文討論 Azure 最佳作法的集合，以加強您的網路安全性。 這些最佳作法衍生自我們的 Azure 網路經驗和客戶的經驗。
@@ -49,8 +49,8 @@ Azure 虛擬網路類似于內部部署網路上的 Lan。 Azure 虛擬網路背
 
 以邏輯方式分割子網路的最佳做法包括：
 
-**最佳做法**：請勿指派範圍廣泛的允許規則（例如，允許0.0.0.0 到255.255.255.255）。  
-**詳細資料**：請確定疑難排解程式不鼓勵或禁止設定這些類型的規則。 這些允許規則會導致安全性的錯誤，並經常發現並利用 red 小組來入侵。
+**最佳做法**：不要指派範圍廣泛的允許規則（例如，允許0.0.0.0 到255.255.255.255）。  
+**詳細資料**：請確認疑難排解程式不鼓勵或禁止設定這些類型的規則。 這些允許規則會導致安全性的錯誤，並經常發現並利用 red 小組來入侵。
 
 **最佳做法**：將較大的位址空間分割成子網路。   
 **詳細資料**：您可以使用 [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 型子網路原則來建立子網路。
@@ -64,7 +64,7 @@ Azure 虛擬網路類似于內部部署網路上的 Lan。 Azure 虛擬網路背
 **詳細資料**：大部分的組織會新增比一開始計畫更多的資源，而重新配置的位址則非常耗費人力。 使用小型子網可新增有限的安全性值，並將網路安全性群組對應到每個子網會增加額外負荷。 廣泛定義子網，以確保您有更大的成長彈性。
 
 **最佳做法**：藉由定義[應用程式安全性群組](https://azure.microsoft.com/blog/applicationsecuritygroups/)來簡化網路安全性群組規則管理。  
-**詳細資料**：針對您認為可能會在未來變更或用於多個網路安全性群組的 IP 位址清單，定義一個應用程式安全性群組。 請務必清楚命名應用程式安全性群組，讓其他人可以瞭解其內容和用途。
+**詳細資料**：針對您認為可能會在未來變更或用於多個網路安全性群組的 IP 位址清單定義應用程式安全性群組。 請務必清楚命名應用程式安全性群組，讓其他人可以瞭解其內容和用途。
 
 ## <a name="adopt-a-zero-trust-approach"></a>採用零信任方法
 以周邊為基礎的網路會假設網路內的所有系統都可以受到信任。 但現今的員工會從各種裝置和應用程式上的任何地方存取其組織的資源，讓周邊安全性控制項變得不相關。 僅著重于誰可以存取資源的存取控制原則不夠。 為了讓安全性與生產力之間的平衡，安全性系統管理員也必須考慮資源的存取*方式*。
@@ -74,9 +74,9 @@ Azure 虛擬網路類似于內部部署網路上的 Lan。 Azure 虛擬網路背
 最佳做法如下：
 
 **最佳做法**：根據裝置、身分識別、保證、網路位置等，提供資源的條件式存取。  
-**詳細資料**：[Azure AD 條件式存取](/azure/active-directory/conditional-access/overview)可讓您根據所需的條件來執行自動化存取控制決策，以套用正確的存取控制。 如需詳細資訊，請參閱[使用條件式存取來管理 Azure 管理的存取權](../../role-based-access-control/conditional-access-azure-management.md)。
+**詳細資料**： [Azure AD 條件式存取](/azure/active-directory/conditional-access/overview)可讓您根據所需的條件來執行自動化存取控制決策，以套用正確的存取控制。 如需詳細資訊，請參閱[使用條件式存取來管理 Azure 管理的存取權](../../role-based-access-control/conditional-access-azure-management.md)。
 
-**最佳做法**：只有在工作流程核准後才啟用埠存取。  
+**最佳做法**：只在工作流程核准後才啟用埠存取。  
 **詳細資料**：您可以[在 Azure 資訊安全中心中使用即時 VM 存取](../../security-center/security-center-just-in-time.md)，以鎖定 Azure vm 的輸入流量、降低暴露于攻擊的風險，並在需要時輕鬆地連接到 vm。
 
 **最佳做法**：授與暫時許可權以執行特殊許可權工作，以防止惡意或未經授權的使用者在許可權過期之後取得存取權。 只有當使用者需要時才會獲得存取權。  
@@ -122,7 +122,7 @@ Azure 網路安全性設備可提供比網路層級控制更佳的安全性。 �
 
 根據先前所述的零信任概念，建議您考慮使用周邊網路進行所有的高安全性部署，以增強 Azure 資源的網路安全性和存取控制層級。 您可以使用 Azure 或協力廠商解決方案，在您的資產與網際網路之間提供額外的安全性層級：
 
-- Azure 原生控制項。 應用程式閘道中的[Azure 防火牆](/azure/firewall/overview)和[web 應用程式防火牆](/azure/application-gateway/overview#web-application-firewall)以完全具狀態的防火牆即服務提供基本安全性、內建高可用性、不受限制的雲端擴充性、FQDN 篩選、OWASP 核心規則支援設定和簡單的安裝和設定。
+- Azure 原生控制項。 應用程式閘道中的[Azure 防火牆](/azure/firewall/overview)和[web 應用程式防火牆](/azure/application-gateway/overview#web-application-firewall)提供具有完全具狀態的防火牆即服務的基本安全性、內建高可用性、不受限制的雲端擴充、FQDN 篩選、OWASP 核心規則集的支援，以及簡單的安裝和設定。
 - 協力廠商供應專案。 搜尋[Azure Marketplace](https://azuremarketplace.microsoft.com/)以取得下一代的防火牆（NGFW）和其他協力廠商供應專案，提供熟悉的安全性工具及大幅增強的網路安全性層級。 設定可能比較複雜，但協力廠商供應專案可讓您使用現有的功能和技能集。
 
 ## <a name="avoid-exposure-to-the-internet-with-dedicated-wan-links"></a>使用專用的 WAN 連結避免暴露于網際網路
@@ -131,7 +131,7 @@ Azure 網路安全性設備可提供比網路層級控制更佳的安全性。 �
 在混合式 IT 案例中，通常會有某種類型的跨單位連線能力。 跨單位連線可讓公司將其內部部署網路連線到 Azure 虛擬網路。 可用的跨單位連線解決方案有兩個︰
 
 * [站對站 VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)。 可靠且完備的技術，但連線是透過網際網路來建立。 頻寬限制為最多 1.25 Gbps。 在某些情況下，站對站 VPN 是理想的選項。
-* **Azure ExpressRoute**。 我們建議您針對跨單位連線改用 [ExpressRoute](../../expressroute/expressroute-introduction.md)。 ExpressRoute 可讓您透過連線提供者所提供的私人連線，將內部部署網路延伸至 Microsoft 雲端。 透過 ExpressRoute，您可以建立與 Microsoft 雲端服務（例如 Azure、Office 365 和 Dynamics 365）的連接。 ExpressRoute 是內部部署位置或 Microsoft Exchange 主機服務提供者之間專用的 WAN 連結。 因為這是一個電信連線，所以您的資料不會透過網際網路傳輸，因此不會暴露在網際網路通訊的潛在風險中。
+* **Azure ExpressRoute**。 我們建議您針對跨單位連線使用[ExpressRoute](../../expressroute/expressroute-introduction.md) 。 ExpressRoute 可讓您透過連線提供者所提供的私人連線，將內部部署網路延伸至 Microsoft 雲端。 透過 ExpressRoute，您可以建立與 Microsoft 雲端服務（例如 Azure、Office 365 和 Dynamics 365）的連接。 ExpressRoute 是內部部署位置或 Microsoft Exchange 主機服務提供者之間專用的 WAN 連結。 因為這是一個電信連線，所以您的資料不會透過網際網路傳輸，因此不會暴露在網際網路通訊的潛在風險中。
 
 ExpressRoute 連線的位置可能會影響防火牆容量、擴充性、可靠性和網路流量可見度。 您必須識別在現有（內部部署）網路中終止 ExpressRoute 的位置。 您可以：
 
@@ -160,10 +160,10 @@ ExpressRoute 連線的位置可能會影響防火牆容量、擴充性、可靠�
 - 有接受來自網際網路傳入要求的無狀態應用程式時。
 - 不需要黏性工作階段或 SSL 卸載時。 黏性工作階段是搭配應用程式負載平衡，以達到伺服器親和性的方法。
 
-**負載平衡選項**：使用 Azure 入口網站[建立外部負載平衡器](../../load-balancer/quickstart-create-basic-load-balancer-portal.md)，將傳入要求分散到多個 VM，以提供較高層級的可用性。
+**負載平衡選項**：使用 Azure 入口網站[建立外部負載平衡器](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)，將傳入要求分散到多個 VM，以提供較高層級的可用性。
 
 **案例**：您需要對來自虛擬機器 (不在網際網路上) 的連線進行負載平衡。 在大部分情況下，系統接受要進行負載平衡的連線是由 Azure 虛擬網路上的裝置起始，例如 SQL Server 執行個體或內部網頁伺服器。   
-**負載平衡選項**：使用 Azure 入口網站[建立內部負載平衡器](../../load-balancer/quickstart-create-basic-load-balancer-powershell.md)，將傳入要求分散到多個 VM，以提供較高層級的可用性。
+**負載平衡選項**：使用 Azure 入口網站[建立內部負載平衡器](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)，將傳入要求分散到多個 VM，以提供較高層級的可用性。
 
 **案例**：您需要全域負載平衡，因為：
 
@@ -187,7 +187,7 @@ ExpressRoute 連線的位置可能會影響防火牆容量、擴充性、可靠�
 點對站 VPN 比直接 RDP 或 SSH 連線更安全，因為使用者必須先經過兩次驗證，才會連線到 VM。 首先，使用者必須經過驗證 (並獲得授權) 以建立點對站 VPN 連線。 然後，使用者必須經過驗證 (並獲得授權) 以建立 RDP 或 SSH 工作階段。
 
 **案例**：讓您內部部署網路上的使用者可以連線到您 Azure 虛擬網路上的 VM。   
-**選項**：[站對站 VPN](/azure/vpn-gateway/vpn-gateway-site-to-site-create) 透過網際網路將整個網路連接到另一個網路。 您可以使用站對站 VPN 將內部部署網路連線到 Azure 虛擬網路。 您內部部署網路上的使用者是透過站對站 VPN 連線，使用 RDP 或 SSH 通訊協定來連線。 您不需要允許透過網際網路的直接 RDP 或 SSH 存取。
+**選項**：[站對站 VPN](/azure/vpn-gateway/vpn-gateway-site-to-site-create) 透過網際網路將整個網路連線到另一個網路。 您可以使用站對站 VPN 將內部部署網路連線到 Azure 虛擬網路。 您內部部署網路上的使用者是透過站對站 VPN 連線，使用 RDP 或 SSH 通訊協定來連線。 您不需要允許透過網際網路的直接 RDP 或 SSH 存取。
 
 **案例**：使用專用的 WAN 連結來提供類似站對站 VPN 的功能。   
 **選項**：使用 [ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/)。 它提供類似站對站 VPN 的功能。 主要差別在於：

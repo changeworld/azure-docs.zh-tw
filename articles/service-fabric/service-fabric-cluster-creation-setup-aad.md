@@ -3,12 +3,12 @@ title: 設定用戶端驗用的 Azure Active Directory
 description: 了解如何設定 Azure Active Directory (Azure AD) 以驗證 Service Fabric 叢集的用戶端。
 ms.topic: conceptual
 ms.date: 6/28/2019
-ms.openlocfilehash: bbad991e955a31e3f3c53931889f630e521e1a8c
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 2a6ffdb1c1fdc447545477286a6d131be2449cdb
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614684"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843815"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>設定用戶端驗用的 Azure Active Directory
 
@@ -104,9 +104,19 @@ https://&lt;cluster_domain&gt;:19080/Explorer
 代表 Service Fabric Explorer 的叢集 (Web) 應用程式嘗試對照 Azure AD 來進行驗證，而它在要求中提供重新導向傳回 URL。 但該 URL 並未列在 Azure AD 應用程式 [回覆 URL] 清單中。
 
 #### <a name="solution"></a>解決方案
-在 AAD 頁面中選取 [應用程式註冊]，選取您的叢集應用程式，然後選取 [回覆 URL] 按鈕。 在 [回覆 URL] 頁面上，將 Service Fabric Explorer 的 URL 新增到清單中，或取代清單內的其中一個項目。 完成時，請儲存變更。
+在 [Azure AD] 頁面上，選取 [**應用程式註冊**]，選取您的叢集應用程式，然後選取 [**回復 url**]。 在 **回復 url**  窗格中，將 Service Fabric Explorer URL 加入清單中，或取代清單中的其中一個專案。 儲存變更。
 
-![Web 應用程式回覆 url][web-application-reply-url]
+![Web 應用程式回復 URL][web-application-reply-url]
+
+### <a name="connecting-to-the-cluster-using-azure-ad-authentication-via-powershell-gives-an-error-when-you-sign-in-aadsts50011"></a>使用 Azure AD 驗證透過 PowerShell 連線到叢集時，會在您登入時發生錯誤： "AADSTS50011"
+#### <a name="problem"></a>問題
+當您嘗試使用 Azure AD 透過 PowerShell 連線到 Service Fabric 叢集時，登入頁面會傳回失敗：「AADSTS50011：要求中指定的回復 url 不符合為應用程式設定的回復 url： &lt;guid&gt;」。
+
+#### <a name="reason"></a>原因
+與前述問題類似，PowerShell 會嘗試對 Azure AD 進行驗證，以提供未列在 [Azure AD 應用程式**回復 url** ] 清單中的重新導向 URL。  
+
+#### <a name="solution"></a>解決方案
+使用與上述問題相同的程式，但 URL 必須設定為 `urn:ietf:wg:oauth:2.0:oob`，這是命令列驗證的特殊重新導向。
 
 ### <a name="connect-the-cluster-by-using-azure-ad-authentication-via-powershell"></a>透過 PowerShell 使用 Azure AD 驗證來連接叢集
 若要連接 Service Fabric 叢集，請使用下列 PowerShell 命令範例︰

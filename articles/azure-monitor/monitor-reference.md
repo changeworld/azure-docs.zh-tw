@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: ac9ded703ed18abd9543b6e32e59afe6ccf711a9
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: d605b852d37af3b1e2ef0868084f3c0b99c24784
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263416"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765727"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure 監視器監視的內容為何？
 本文說明 Azure 監視器監視的不同應用程式和服務。 
@@ -27,7 +27,7 @@ ms.locfileid: "76263416"
 | 見解 | 說明 |
 |:---|:---|
 | [Application Insights](app/app-insights-overview.md) | 可擴充的應用程式效能管理（APM）服務，可在任何平臺上監視您的即時 web 應用程式。 |
-| [適用於容器的 Azure 監視器](insights/container-insights-overview.md) | 監視部署至 Azure 容器實例或裝載于 Azure Kubernetes Service （AKS）之受控 Kubernetes 叢集的容器工作負載效能。 |
+| [容器的 Azure 監視器](insights/container-insights-overview.md) | 監視部署至 Azure 容器實例或裝載于 Azure Kubernetes Service （AKS）之受控 Kubernetes 叢集的容器工作負載效能。 |
 | [Cosmos DB 的 Azure 監視器（預覽）](insights/cosmosdb-insights-overview.md) | 以統一的互動式體驗，提供所有 Azure Cosmos DB 資源的整體效能、失敗、容量和操作健全狀況的觀點。 |
 | [網路的 Azure 監視器（預覽）](insights/network-insights-overview.md) | 針對您所有的網路資源，提供健全狀況和計量的全面觀點。 先進的搜尋功能可協助您識別資源相依性，藉由直接搜尋您的網站名稱，來啟用識別裝載網站的資源等案例。 |
 [適用于資源群組的 Azure 監視器（預覽）](insights/resource-group-insights.md) |  針對您的個別資源所遇到的任何問題進行分級和診斷，同時將內容提供給整體資源群組的健全狀況和效能。 |
@@ -42,7 +42,7 @@ ms.locfileid: "76263416"
 |:---|:---|
 | [代理程式健全狀況](insights/solution-agenthealth.md) | 分析 Log Analytics 代理程式的健康情況和設定。 |
 | [警示管理](platform/alert-management-solution.md) | 分析從 System Center Operations Manager、Nagios 或 Zabbix 收集的警示。 |
-| [服務對應](insights/service-map.md) | 自動探索 Windows 和 Linux 系統上的應用程式元件，並對應服務之間的通訊。 中提供了相同的功能   |
+| [服務對應](insights/service-map.md) | 自動探索 Windows 和 Linux 系統上的應用程式元件，並對應服務之間的通訊。 |
 
 
 
@@ -63,14 +63,14 @@ ms.locfileid: "76263416"
 |Advisor | 否 | 否 | 否 |  |
 |AI Builder | 否 | 否 | 否 |  |
 |Analysis Services | 是 | 是 | 否 |  |
-|API for FHIR | 否 | 否 | 否 |  |
+|適用于 FHIR 的 API | 否 | 否 | 否 |  |
 |API 管理 | 是 | 是 | 否 |  |
 |App Service | 是 | 是 | 否 |  |
 |AppConfig | 否 | 否 | 否 |  |
 |應用程式閘道 | 是 | 是 | 否 |  |
 |證明服務 | 否 | 否 | 否 |  |
 |Automation | 是 | 是 | 否 |  |
-|Azure Service Manager (RDFE) | 否 | 否 | 否 |  |
+|Azure Service Manager （RDFE） | 否 | 否 | 否 |  |
 |備份 | 否 | 是 | 否 |  |
 |Bastion | 否 | 否 | 否 |  |
 |Batch | 是 | 是 | 否 |  |
@@ -91,10 +91,10 @@ ms.locfileid: "76263416"
 |資料總管 | 是 | 是 | 否 |  |
 |Data Factory | 是 | 是 | 否 |  |
 |Data Factory v2 | 否 | 是 | 否 |  |
-|Data Share | 否 | 否 | 否 |  |
-|適用於 MariaDB 的資料庫 | 是 | 是 | 否 |  |
-|適用於 MySQL 的資料庫 | 是 | 是 | 否 |  |
-|適用於 PostgreSQL 的資料庫 | 是 | 是 | 否 |  |
+|資料共用 | 否 | 否 | 否 |  |
+|適用于適用于 mariadb 的資料庫 | 是 | 是 | 否 |  |
+|適用于 MySQL 的資料庫 | 是 | 是 | 否 |  |
+|適用于于 postgresql 的資料庫 | 是 | 是 | 否 |  |
 |Database Migration Service | 否 | 否 | 否 |  |
 |Databricks | 否 | 是 | 否 |  |
 |DDoS 保護 | 是 | 是 | 否 |  |
@@ -111,7 +111,7 @@ ms.locfileid: "76263416"
 |Front Door | 是 | 是 | 否 |  |
 |函式 | 是 | 是 | 否 |  |
 |HDInsight | 否 | 是 | 否 |  |
-|HPC Cache | 否 | 否 | 否 |  |
+|HPC 快取 | 否 | 否 | 否 |  |
 |資訊保護 | 否 | 是 | 否 |  |
 |Intune | 否 | 是 | 否 |  |
 |IoT Central | 否 | 否 | 否 |  |

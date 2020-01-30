@@ -6,14 +6,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 02/28/2019
+ms.date: 02/28/2020
 ms.author: ellacroi
-ms.openlocfilehash: 0b12e122cef3a05af7a09918ba434d103e33a1a2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 54ad3049789a737ffb29519b6546973acda9b4ae
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822946"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843832"
 ---
 # <a name="geographic-availability-and-currency-support"></a>地理可用性和貨幣支援
 
@@ -28,7 +28,7 @@ Azure Marketplace 和 AppSource 供應專案可以在141個地理位置中購買
 | 安哥拉                              | AO        | 美元          |
 | 阿根廷                           | AR        | 美元          |
 | 亞美尼亞                             | AM        | 美元          |
-| 澳大利亞                           | AU        | 澳幣          |
+| 澳洲                           | AU        | 澳幣          |
 | 奧地利                             | AT        | 歐元          |
 | 亞塞拜然                          | AZ        | 美元          |
 | 巴林                             | BH        | 美元          |
@@ -49,12 +49,13 @@ Azure Marketplace 和 AppSource 供應專案可以在141個地理位置中購買
 | 維德角                          | CV        | 美元          |
 | 開曼群島                      | KY        | 美元          |
 | 智利                               | CL        | 美元          |
+| 中國\**                            | CN        | N/A          |
 | 哥倫比亞                            | CO        | 美元          |
 | 哥斯大黎加                          | CR        | 美元          |
 | 象牙海岸                       | CI        | 美元          |
-| 克羅埃西亞                             | HR        | 歐元          |
+| 克羅埃西亞                             | 人力資源        | 歐元          |
 | 古拉果                             | 順        | 美元          |
-| 賽浦路斯                              | CY        | 歐元          |
+| 賽普勒斯                              | CY        | 歐元          |
 | 捷克共和國                      | CZ        | 歐元          |
 | 丹麥                             | DK        | 丹麥幣          |
 | 多明尼加共和國                  | DO        | 美元          |
@@ -76,7 +77,7 @@ Azure Marketplace 和 AppSource 供應專案可以在141個地理位置中購買
 | 香港特別行政區                       | HK        | 美元          |
 | 匈牙利                             | HU        | 歐元          |
 | 冰島                             | IS        | 歐元          |
-| 印度                               | IN        | 印度幣          |
+| 印度                               | IN        | INR          |
 | 印尼                           | ID        | 美元          |
 | 伊拉克                                | IQ        | 美元          |
 | 愛爾蘭                             | IE        | 歐元          |
@@ -119,7 +120,7 @@ Azure Marketplace 和 AppSource 供應專案可以在141個地理位置中購買
 | 巴勒斯坦民族權力機構               | PS        | 美元          |
 | 巴拿馬                              | PA        | 美元          |
 | 巴拉圭                            | PY        | 美元          |
-| 祕魯                                | PE        | 美元          |
+| 秘魯                                | PE        | 美元          |
 | 菲律賓                         | PH        | 美元          |
 | 波蘭                              | PL        | 歐元          |
 | 葡萄牙                            | PT        | 歐元          |
@@ -154,7 +155,7 @@ Azure Marketplace 和 AppSource 供應專案可以在141個地理位置中購買
 | 烏克蘭                             | UA        | 美元          |
 | 阿拉伯聯合大公國                | AE        | 美元          |
 | 英國                      | GB        | 英鎊          |
-| 美國                       | US        | 美元          |
+| 美國                       | 美國        | 美元          |
 | 烏拉圭                             | UY        | 美元          |
 | 烏茲別克                          | UZ        | 美元          |
 | 委內瑞拉                           | VE        | 美元          |
@@ -165,3 +166,5 @@ Azure Marketplace 和 AppSource 供應專案可以在141個地理位置中購買
 |   |   |   |
 
 \* 巴西的客戶，透過雲端解決方案提供者（CSP）的 Marketplace 會使用美元。
+
+\** 僅限免費和 BYOL VM 映射。

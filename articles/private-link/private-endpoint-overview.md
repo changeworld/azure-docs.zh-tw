@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: 38f424287788537cc5711bab8da60b5798a84b3a
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: cd06d4cbf62078c2c7a5def4a0032ddce97d67f0
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867680"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842447"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什麼是 Azure 私用端點？
 
@@ -56,7 +56,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
 |**Azure SQL Database** | Microsoft.Sql/servers    |  Sql Server （sqlServer）        |
 |**Azure SQL 資料倉儲** | Microsoft.Sql/servers    |  Sql Server （sqlServer）        |
 |**Azure 儲存體**  | Microsoft.Storage/storageAccounts    |  Blob （blob、blob_secondary）<BR> 資料表（資料表、table_secondary）<BR> 佇列（佇列、queue_secondary）<BR> File （file，file_secondary）<BR> Web （web、web_secondary）        |
-|**Azure Data Lake Storage Gen2** \(部分機器翻譯\)  | Microsoft.Storage/storageAccounts    |  Blob （blob、blob_secondary）       |
+|**Azure Data Lake Storage Gen2** \(部分機器翻譯\)  | Microsoft.Storage/storageAccounts    |  Blob （blob、blob_secondary）<BR> Data Lake 檔案系統 Gen2 （dfs，dfs_secondary）       |
 |**Azure Cosmos DB** | AzureCosmosDB/databaseAccounts | Sql、MongoDB、Cassandra、Gremlin、Table|
 |**適用於 PostgreSQL 的 Azure 資料庫-單一伺服器** | Microsoft.DBforPostgreSQL/servers   | postgresqlServer |
 |**適用於 MySQL 的 Azure 資料庫** | Microsoft.DBforMySQL/servers    | mysqlServer |
@@ -101,7 +101,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
  
 針對 Azure 服務，請使用下表中所述的建議區功能變數名稱稱：
 
-|私人連結資源類型   |子資源  |區功能變數名稱稱  |
+|私人連結資源類型   |Subresource  |區功能變數名稱稱  |
 |---------|---------|---------|
 |SQL DB/DW （Microsoft .Sql/servers）    |  Sql Server （sqlServer）        |   privatelink.database.windows.net       |
 |儲存體帳戶（Microsoft 儲存體/storageAccounts）    |  Blob （blob、blob_secondary）        |    privatelink.blob.core.windows.net      |

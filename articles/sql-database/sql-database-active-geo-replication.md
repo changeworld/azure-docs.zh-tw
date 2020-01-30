@@ -1,5 +1,5 @@
 ---
-title: 主動式異地複寫
+title: 使用中的地理複寫
 description: 使用作用中異地複寫，在相同或不同資料中心 (區域) 中建立個別資料庫之可讀取的次要資料庫。
 services: sql-database
 ms.service: sql-database
@@ -11,16 +11,16 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2019
-ms.openlocfilehash: 33697fd8d3b0c6faea423026e1462834c6b1ef4c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e32250102d095f341b2de918037b9ad834adfd33
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822664"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842645"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>建立和使用主動式異地複寫
 
-作用中異地複寫是 Azure SQL Database 的功能，可讓您在相同或不同資料中心 (區域) 中的 SQL Database 伺服器上建立個別資料庫的可讀取次要資料庫。
+主動式異地複寫是一項 Azure SQL Database 的功能，可讓您在相同或不同資料中心（區域）中的 SQL Database 伺服器上，建立個別資料庫的可讀取次要資料庫。
 
 > [!NOTE]
 > 受控執行個體不支援作用中異地複寫。 針對受控執行個體的異地容錯移轉，請使用[自動容錯移轉群組](sql-database-auto-failover-group.md)。
@@ -124,6 +124,79 @@ ms.locfileid: "73822664"
 
 如需 SQL Database 計算大小的詳細資訊，請參閱 [SQL Database 服務層是什麼](sql-database-purchase-models.md)。
 
+## <a name="cross-subscription-geo-replication"></a>跨訂用帳戶異地複寫
+
+若要在屬於不同訂用帳戶的兩個資料庫之間設定主動式異地複寫（不論是在相同的租使用者之下），您必須遵循本節所述的特殊程式。  此程式是以 SQL 命令為基礎，而且需要： 
+
+- 在兩部伺服器上建立特殊許可權登入
+- 將 IP 位址新增到在這兩部伺服器上執行變更的用戶端允許清單（例如，SQL Server Management Studio 的主機 IP 位址）。 
+
+執行變更的用戶端需要主伺服器的網路存取權。 雖然您必須將相同的用戶端 IP 位址新增至次要伺服器上的允許清單，但並不是絕對需要與次要伺服器的網路連線。 
+
+### <a name="on-the-master-of-the-primary-server"></a>在主伺服器的主機上
+
+1. 將 IP 位址新增至執行變更之用戶端的允許清單（如需詳細資訊，請參閱[設定防火牆](sql-database-firewall-configure.md)）。 
+1. 建立專門用來設定主動式異地複寫的登入（並視需要調整認證）：
+
+   ```sql
+   create login geodrsetup with password = 'ComplexPassword01'
+   ```
+
+1. 建立對應的使用者，並將它指派給 dbmanager 角色： 
+
+   ```sql
+   create user geodrsetup for login gedrsetup
+   alter role geodrsetup dbmanager add member geodrsetup
+   ```
+
+1. 請記下使用此查詢的新登入 SID： 
+
+   ```sql
+   select sid from sys.sql_logins where name = 'geodrsetup'
+   ```
+
+### <a name="on-the-source-database-on-the-primary-server"></a>在主伺服器上的源資料庫上
+
+1. 為相同的登入建立使用者：
+
+   ```sql
+   create user geodrsetup for login geodrsetup
+   ```
+
+1. 將使用者新增至 db_owner 角色：
+
+   ```sql
+   alter role db_owner add member geodrsetup
+   ```
+
+### <a name="on-the-master-of-the-secondary-server"></a>在次要伺服器的主要複本上 
+
+1. 將 IP 位址新增至執行變更之用戶端的允許清單。 它必須與主伺服器完全相同的 IP 位址。 
+1. 使用相同的使用者名稱密碼和 SID，在主伺服器上建立相同的登入： 
+
+   ```sql
+   create login geodrsetup with password = 'ComplexPassword01', sid=0x010600000000006400000000000000001C98F52B95D9C84BBBA8578FACE37C3E
+   ```
+
+1. 建立對應的使用者，並將它指派給 dbmanager 角色：
+
+   ```sql
+   create user geodrsetup for login geodrsetup;
+   alter role dbmanager add member geodrsetup
+   ```
+
+### <a name="on-the-master-of-the-primary-server"></a>在主伺服器的主機上
+
+1. 使用新的登入，登入主伺服器的主伺服器。 
+1. 在次要伺服器上建立源資料庫的次要複本（視需要調整資料庫名稱和 servername）：
+
+   ```sql
+   alter database dbrep add secondary on server <servername>
+   ```
+
+初始設定之後，就可以移除所建立的使用者、登入和防火牆規則。 
+
+
 ## <a name="keeping-credentials-and-firewall-rules-in-sync"></a>保持認證和防火牆規則同步
 
 我們建議您針對異地複寫資料庫使用[資料庫層級 IP 防火牆規則](sql-database-firewall-configure.md)，以便在資料庫中複寫這些規則，以確保所有次要資料庫具有與主要複本相同的 IP 防火牆規則。 此方法不需要客戶手動設定及維護同時裝載主要和次要資料庫之伺服器上的防火牆規則。 同樣地，針對資料存取使用 [自主資料庫使用者](sql-database-manage-logins.md) ，確保主要與次要資料庫永遠具有相同的使用者認證，在容錯移轉時不會因為登入和密碼不相符而有任何中斷。 使用額外的 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)，客戶可以管理主要和次要資料庫的使用者存取，並且排除在資料庫中管理認證的需求。
@@ -150,12 +223,12 @@ ms.locfileid: "73822664"
 
 ## <a name="monitoring-geo-replication-lag"></a>監視異地複寫延遲
 
-若要監視 RPO 方面的延遲，請使用主資料庫上[dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database)的*replication_lag_sec*資料行。 它會顯示在主資料庫上認可的交易與次要複本之間的延遲（以秒為單位）。 例如 如果 lag 的值為1秒，則表示主要受到中斷的影響，並起始容錯移轉，而不會儲存最新轉換的1秒。 
+若要監視 RPO 方面的延遲，請使用主資料庫上[dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database)的*replication_lag_sec*資料行。 它會顯示在主資料庫上認可的交易與次要複本之間的延遲（以秒為單位）。 例如： 如果 lag 的值為1秒，則表示主要受到中斷的影響，並起始容錯移轉，而不會儲存最新轉換的1秒。 
 
 若要針對已套用至次要資料庫的主資料庫變更來測量 lag （也就是可從次要複本讀取），請將次要資料庫上的*last_commit*時間與主資料庫上的相同值進行比較。
 
 > [!NOTE]
-> 有時主資料庫上的*replication_lag_sec*具有 Null 值，這表示主要複本目前不知道次要複本的距離。   這通常會在進程重新開機之後發生，而且應該是暫時性的狀況。 如果*replication_lag_sec*在一段很長的時間內傳回 Null，請考慮對應用程式發出警示。 它會指出次要資料庫因永久連線失敗而無法與主要複本通訊。 有時候，次要與主資料庫上*last_commit*時間之間的差異也可能會變大。 例如 如果在一段長時間未變更的情況下，在主要複本上進行認可，則在快速傳回0之前，差異將會跳到較大的值。 當這兩個值之間的差異持續很長時，請將其視為錯誤狀況。
+> 有時主資料庫上的*replication_lag_sec*具有 Null 值，這表示主要複本目前不知道次要複本的距離。   這通常會在進程重新開機之後發生，而且應該是暫時性的狀況。 如果*replication_lag_sec*在一段很長的時間內傳回 Null，請考慮對應用程式發出警示。 它會指出次要資料庫因永久連線失敗而無法與主要複本通訊。 有時候，次要與主資料庫上*last_commit*時間之間的差異也可能會變大。 例如： 如果在一段長時間未變更的情況下，在主要複本上進行認可，則在快速傳回0之前，差異將會跳到較大的值。 當這兩個值之間的差異持續很長時，請將其視為錯誤狀況。
 
 
 ## <a name="programmatically-managing-active-geo-replication"></a>以程式設計方式管理主動式異地複寫
@@ -167,7 +240,7 @@ ms.locfileid: "73822664"
 > [!IMPORTANT]
 > 這些 Transact-SQL 命令僅適用於作用中異地複寫，不適用於容錯移轉群組。 因此它們也不適用於受控執行個體，因為受控執行個體僅支援容錯移轉群組。
 
-| 命令 | 說明 |
+| Command | 說明 |
 | --- | --- |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |使用 ADD SECONDARY ON SERVER 引數，針對現有資料庫建立次要資料庫並開始資料複寫 |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |使用 FAILOVER 或 FORCE_FAILOVER_ALLOW_DATA_LOSS，將次要資料庫切換為主要資料庫以便開始容錯移轉 |

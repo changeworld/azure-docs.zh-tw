@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/06/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d754964ac6c16c87e6f0825b4f1a955d38fa3530
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: f11258457e60ea3458b0ede1fe00f042041bcb1a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756223"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841245"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>教學課程︰設定 G Suite 來自動佈建使用者
 
@@ -209,6 +209,7 @@ Azure Active Directory 使用稱為「指派」的概念，來判斷哪些使用
 
 ## <a name="common-issues"></a>常見問題
 * 當用來建立連接的帳戶不是 GSuite 的系統管理員時，可能會發生授權失敗。 確定用來授與存取權的帳戶具有使用者需要布建之**所有網域**的系統管理員許可權。 
+* Azure AD 支援在 GSuite 中停用使用者，使其無法存取應用程式，但不會刪除 GSuite 中的使用者。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: apimpm
-ms.openlocfilehash: c4607a2dce995e554f0426f1beb810fe213015de
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6054c595bca26dc2a0432c53369a60a61e3efde0
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430602"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841858"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>在內部虛擬網路中使用 Azure API 管理服務
 在 Azure 虛擬網路中，Azure API 管理可以管理無法在網際網路上存取的 API。 有許多 VPN 技術可讓您建立連線。 API 管理在虛擬網路內有兩種主要的部署模式：
@@ -126,7 +126,7 @@ ms.locfileid: "75430602"
 
 * 來自子網範圍的負載平衡*私人*虛擬 IP 位址將會保留，並用來存取虛擬網路中的 API 管理服務端點。 您可以在 Azure 入口網站中服務的 [總覽] 分頁上找到此*私人*IP 位址。 此位址必須向虛擬網路所使用的 DNS 伺服器註冊。
 * 負載平衡的*公用*IP 位址（VIP）也會保留，以透過埠3443提供管理服務端點的存取權。 您可以在 Azure 入口網站中服務的 總覽 分頁上找到此*公用*IP 位址。 *公用*IP 位址只用于透過埠3443對 `management` 端點的控制平面流量，而且可以鎖定到[ApiManagement][ServiceTags] servicetag。
-* 子網 IP 範圍（DIP）中的 IP 位址將會指派給服務中的每個 VM，並用來存取虛擬網路中的資源。 公用 IP 位址（VIP）將用來存取虛擬網路外部的資源。 如果使用 IP 限制清單來保護虛擬網路中的資源，則必須指定部署 API 管理服務之子網的整個範圍，以授與或限制來自服務的存取權。
+* 子網 IP 範圍（DIP）中的 IP 位址將會指派給服務中的每個 VM，並將用來存取虛擬網路中的資源。 公用 IP 位址（VIP）將用來存取虛擬網路外部的資源。 如果使用 IP 限制清單來保護虛擬網路中的資源，則必須指定部署 API 管理服務之子網的整個範圍，以授與或限制服務的存取權。
 * 負載平衡的公用和私人 IP 位址可在 Azure 入口網站的 總覽 分頁中找到。
 * 如果服務已從中移除，然後再新增回虛擬網路，則指派給公用和私用存取的 IP 位址可能會變更。 如果發生這種情況，可能需要更新虛擬網路中的 DNS 註冊、路由規則和 IP 限制清單。
 

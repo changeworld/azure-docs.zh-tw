@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 7df1651be01b4bed533c1173cc37bddda58f0aa3
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 597839f633ed2b925b86c5f859a0fb2d3b64dd59
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895821"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773666"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>媒體服務作業 REST API 概觀 
 
@@ -45,7 +45,7 @@ ms.locfileid: "74895821"
         Accept: application/json;odata=verbose
         DataServiceVersion: 3.0
         MaxDataServiceVersion: 3.0
-        x-ms-version: 2.17
+        x-ms-version: 2.19
         Authorization: Bearer <ENCODED JWT TOKEN> 
         Host: media.windows.net
   
@@ -58,9 +58,9 @@ ms.locfileid: "74895821"
 ## <a name="standard-http-request-headers-supported-by-media-services"></a>媒體服務支援的標準 HTTP 要求標頭
 您對媒體服務每次呼叫，有一組必須在要求中包含的必要標頭，以及一組可能會想要包含的選擇性標頭。 下表列出必要的標頭：
 
-| 標頭 | Type | Value |
+| 頁首 | 類型 | 值 |
 | --- | --- | --- |
-| Authorization |Bearer |Bearer 是唯一接受的授權機制。 此值也必須包含 Azure Active Directory 所提供的存取權杖。 |
+| 授權 |Bearer |Bearer 是唯一接受的授權機制。 此值也必須包含 Azure Active Directory 所提供的存取權杖。 |
 | x-ms-version |Decimal |2.17 (或最新版本)|
 | DataServiceVersion |Decimal |3.0 |
 | MaxDataServiceVersion |Decimal |3.0 |
@@ -72,7 +72,7 @@ ms.locfileid: "74895821"
 
 以下是一組選擇性標頭：
 
-| 標頭 | Type | Value |
+| 頁首 | 類型 | 值 |
 | --- | --- | --- |
 | 日期 |RFC 1123 日期 |要求的時間戳記 |
 | Accept |內容類型 |如下所示的回應要求內容類型：<p> -application/json;odata=verbose<p> - application/atom+xml<p> 回應可能會有不同的內容類型，例如 Blob 擷取，成功的回應會在其中包含 Blob 資料流做為裝載。 |
@@ -86,18 +86,18 @@ ms.locfileid: "74895821"
 ## <a name="standard-http-response-headers-supported-by-media-services"></a>媒體服務支援的標準 HTTP 回應標頭
 以下是一組可能會根據您所要求的資源，以及您要執行的動作而傳回給您的標頭。
 
-| 標頭 | Type | Value |
+| 頁首 | 類型 | 值 |
 | --- | --- | --- |
 | request-id |String |目前作業的唯一識別碼，由服務產生。 |
 | client-request-id |String |在原始要求中，呼叫者所指定的識別碼 (如果有的話)。 |
 | 日期 |RFC 1123 日期 |處理要求的日期/時間。 |
-| Content-Type |視情況而異 |回應主體的內容類型。 |
-| Content-Encoding |視情況而異 |Gzip 或 deflate (視情況)。 |
+| Content-Type |不定 |回應主體的內容類型。 |
+| Content-Encoding |不定 |Gzip 或 deflate (視情況)。 |
 
 ## <a name="standard-http-verbs-supported-by-media-services"></a>媒體服務支援的標準 HTTP 指令動詞
 以下是進行 HTTP 要求時，可以使用的 HTTP 指令動詞完整清單：
 
-| 指令動詞 | 描述 |
+| 動詞命令 | 說明 |
 | --- | --- |
 | GET |傳回物件的目前值。 |
 | POST |根據提供的資料建立物件或提交命令。 |

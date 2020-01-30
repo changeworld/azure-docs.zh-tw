@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a627b0eebc3aa4a19b0670f899d3032d8df58da4
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: f9573f4d226df4eb6068af679f2eb45dc87c7e40
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620461"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840055"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的使用者帳戶概觀
 
@@ -70,18 +70,18 @@ ms.locfileid: "73620461"
 
 您可以邀請外部使用者成為租用戶的來賓使用者。 將來賓使用者邀請到 Azure AD B2C 租用戶的典型案例是為了分擔管理責任。 如需使用來賓帳戶的範例，請參閱 [Azure Active Directory B2B 共同作業使用者的屬性](../active-directory/b2b/user-properties.md)。
 
-將來賓使用者邀請到租用戶時，您必須提供收件者的電子郵件地址和描述邀請詳情的訊息。 邀請連結會將使用者帶往同意頁面，該頁面已選取 [開始使用] 按鈕，並已接受權限檢閱。 如果收件匣並未連結至電子郵件地址，使用者可以使用受邀認證移至 Microsoft 頁面以瀏覽至同意頁面。 接著，系統會強制使用者兌換邀請，方式和在電子郵件中按一下連結時相同。 例如： `https://myapps.microsoft.com/B2CTENANTNAME`。
+將來賓使用者邀請到租用戶時，您必須提供收件者的電子郵件地址和描述邀請詳情的訊息。 邀請連結會將使用者帶往同意頁面，該頁面已選取 [開始使用] 按鈕，並已接受權限檢閱。 如果收件匣並未連結至電子郵件地址，使用者可以使用受邀認證移至 Microsoft 頁面以瀏覽至同意頁面。 接著，系統會強制使用者兌換邀請，方式和在電子郵件中按一下連結時相同。 例如： `https://myapps.microsoft.com/B2CTENANTNAME` 。
 
 您也可以使用 [Microsoft Graph API](https://docs.microsoft.com/graph/api/invitation-post?view=graph-rest-beta) 邀請來賓使用者。
 
 ## <a name="consumer-user"></a>取用者使用者
 
-取用者使用者可以登入 Azure AD B2C 所保護的應用程式，但無法存取 Azure 資源，例如 Azure 入口網站。 取用者使用者可以使用本機帳戶或同盟帳戶，例如 Facebook 或 Twitter。 取用者帳戶是藉由使用[註冊或登入使用者流程](../active-directory-b2c/active-directory-b2c-reference-policies.md)、使用 Azure AD 圖形 API，或使用 Azure 入口網站來建立。
+取用者使用者可以登入 Azure AD B2C 所保護的應用程式，但無法存取 Azure 資源，例如 Azure 入口網站。 取用者使用者可以使用本機帳戶或同盟帳戶，例如 Facebook 或 Twitter。 取用者帳戶是藉由使用[註冊或登入使用者流程](user-flow-overview.md)、使用 Azure AD 圖形 API，或使用 Azure 入口網站來建立。
 
-您可以指定使用自訂使用者屬性建立取用者使用者帳戶時所要收集的資料。 如需詳細資訊，請參閱[在 Azure Active Directory B2C 中定義自訂屬性](../active-directory-b2c/active-directory-b2c-reference-custom-attr.md)。
+您可以指定使用自訂使用者屬性建立取用者使用者帳戶時所要收集的資料。 如需詳細資訊，請參閱[在 Azure Active Directory B2C 中定義自訂屬性](user-flow-custom-attributes.md)。
 
-您可以使用**使用 Azure AD 圖形 API** 中[建立取用者使用者帳戶](active-directory-b2c-devquickstarts-graph-dotnet.md)一節的資訊，來建立 Azure AD B2C 取用者帳戶。 您也可以使用同一篇文章中**更新取用者使用者帳戶**一節的資訊，來管理帳戶的屬性。
+您可以使用[使用 Azure AD 圖形 API](manage-user-accounts-graph-api.md) 中**建立取用者使用者帳戶**一節的資訊，來建立 Azure AD B2C 取用者帳戶。 您也可以使用同一篇文章中**更新取用者使用者帳戶**一節的資訊，來管理帳戶的屬性。
 
 ### <a name="migrate-consumer-user-accounts"></a>遷移取用者使用者帳戶
 
-您可能有需要將任何識別提供者的現有取用者使用者帳戶遷移至 Azure AD B2C。 如需詳細資訊，請參閱[使用者移轉](active-directory-b2c-user-migration.md)或[遷移具有社交身分識別的使用者](active-directory-b2c-social-migration.md)。
+您可能有需要將任何識別提供者的現有取用者使用者帳戶遷移至 Azure AD B2C。 如需詳細資訊，請參閱[使用者移轉](user-migration.md)或[遷移具有社交身分識別的使用者](migrate-social-identities.md)。

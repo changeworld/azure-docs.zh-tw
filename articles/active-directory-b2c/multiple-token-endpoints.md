@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f07eb65243b4f797a2955e33aca50ed8c46d256e
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: e6a92d12e7f2f24289aafa7e4a9acc9edccbd34c
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950981"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840395"
 ---
 # <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>將以 OWIN 為基礎的 Web API 遷移至 b2clogin.com
 
@@ -33,7 +33,7 @@ ms.locfileid: "74950981"
 
 繼續進行本文中的步驟之前，您必須先準備好下列 Azure AD B2C 資源：
 
-* 在您的租使用者中建立的[使用者流程](tutorial-create-user-flows.md)或[自訂原則](active-directory-b2c-get-started-custom.md)
+* 在您的租使用者中建立的[使用者流程](tutorial-create-user-flows.md)或[自訂原則](custom-policy-get-started.md)
 
 ## <a name="get-token-issuer-endpoints"></a>取得權杖簽發者端點
 
@@ -147,7 +147,7 @@ After （以 B2C 租使用者的名稱取代 `{your-b2c-tenant}`）：
 
 本文提供一種方法，說明如何設定執行 Microsoft OWIN 中介軟體（Katana）的 Web API，以接受來自多個簽發者端點的權杖。 您可能會注意到，如果您想要針對自己的租使用者建立及執行這些專案，TaskService 和 TaskWebApp 專案*的 web.config 檔案*中會有其他幾個字串。 如果您想要查看它們的實際運作方式，歡迎您修改專案，不過，完整的逐步解說不在本文的討論範圍內。
 
-如需 Azure AD B2C 所發出之不同安全性權杖類型的詳細資訊，請參閱[Azure Active Directory B2C 中的權杖總覽](active-directory-b2c-reference-tokens.md)。
+如需 Azure AD B2C 所發出之不同安全性權杖類型的詳細資訊，請參閱[Azure Active Directory B2C 中的權杖總覽](tokens-overview.md)。
 
 <!-- LINKS - External -->
 [sample-archive]: https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip

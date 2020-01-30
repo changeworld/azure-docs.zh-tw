@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 01/06/2019
+ms.date: 01/27/2019
 ms.author: aahi
-ms.openlocfilehash: a9bfa2a51341bf60f92378f5d96a390bd1d92db1
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 9aa00898c6a567d495ed0c66bcf7bd475067fa0d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732773"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774147"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>如何在文字分析中使用已命名的實體識別
 
@@ -23,7 +23,7 @@ ms.locfileid: "75732773"
 
 ### <a name="entity-linking"></a>實體連結
 
-實體連結能夠識別並區分在文字中找到之實體的身分識別（例如，判斷 `Mars` 的單字是否指的是地球，或 war 的上帝）。 此程式需要以適當的語言呈現知識庫，以連結已辨識的實體文字。 
+實體連結能夠識別並區分在文字中找到之實體的身分識別（例如，判斷 `Mars` 的單字是否指的是地球，或 war 的上帝）。 此程式需要以適當的語言呈現知識庫，以連結已辨識的實體文字。 實體連結會使用[維琪百科](https://www.wikipedia.org/)做為此知識庫。
 
 
 ### <a name="named-entity-recognition-ner"></a>具名實體辨識 (NER)
@@ -83,7 +83,7 @@ ms.locfileid: "75732773"
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
 
-#### <a name="version-3-public-previewtabversion-3"></a>[第3版（公開預覽）](#tab/version-3)
+#### <a name="version-3-public-previewtabversion-3"></a>[第 3 版 (公開預覽版)](#tab/version-3)
 
 ### <a name="entity-types"></a>實體類型
 
@@ -154,7 +154,7 @@ NER
 
 ### <a name="example-ner-request"></a>範例 NER 要求 
 
-以下是您可能會傳送至 API 的內容範例。 這兩個 API 版本的要求格式都相同。
+以下是您可能會傳送至 API 的內容範例。 這兩個 API 版本的要求格式是相同的。
 
 ```json
 {
@@ -172,7 +172,7 @@ NER
 
 分析會在接收要求時執行。 請參閱概觀中的[資料限制](../overview.md#data-limits)一節，以取得您每分鐘和每秒鐘可以傳送的要求大小和數量資訊。
 
-文字分析 API 是無狀態的。 您的帳戶中不會儲存任何資料，而且會在回應中立即傳回結果。
+文字分析 API 是無狀態的。 您的帳戶中不會儲存任何資料，且結果會在回應中立即傳回。
 
 ## <a name="view-results"></a>檢視結果
 
@@ -217,7 +217,7 @@ NER
 }
 ```
 
-#### <a name="version-3-public-previewtabversion-3"></a>[第3版（公開預覽）](#tab/version-3)
+#### <a name="version-3-public-previewtabversion-3"></a>[第 3 版 (公開預覽版)](#tab/version-3)
 
 ### <a name="example-v3-responses"></a>範例 v3 回應
 

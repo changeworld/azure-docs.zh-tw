@@ -1,19 +1,18 @@
 ---
 title: 適用于 Apache HBase 的 Azure HDInsight 加速寫入
 description: 概述 Azure HDInsight 加速寫入功能，其使用 premium 受控磁片來改善 Apache HBase 寫入記錄檔的效能。
-services: hdinsight
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: ebcc91bb374183a3f2fe000f37c66230459befa3
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.date: 01/24/2020
+ms.openlocfilehash: 7165bab96d037f6782bc9aa6767cadd9b35f058c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156925"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76764603"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>適用于 Apache HBase 的 Azure HDInsight 加速寫入
 
@@ -33,13 +32,13 @@ HBase 會先將資料更新寫入一種認可記錄，稱為「寫入前記錄�
 
 ## <a name="accelerated-writes-feature-in-azure-hdinsight-for-apache-hbase"></a>Apache HBase Azure HDInsight 中的加速寫入功能
 
-加速寫入功能可解決使用雲端儲存體中預先寫入記錄檔所造成的較高寫入延遲問題。  HDInsight Apache HBase 叢集的加速寫入功能會將高階 SSD 受控磁片附加到每個 RegionServer （背景工作節點）。 然後，預先寫入的記錄會寫入裝載于這些高階受控磁片（而不是雲端儲存體）上的 Hadoop 檔案系統（HDFS）。  Premium 受控磁片會使用固態硬碟（Ssd），並提供容錯的絕佳 i/o 效能。  不同于非受控磁片，如果某個儲存裝置停止運作，則不會影響相同可用性設定組中的其他儲存單位。  因此，受控磁片可為您的應用程式提供低寫入延遲和更佳的復原能力。 若要深入瞭解 Azure 受控磁片，請參閱[azure 受控磁片簡介](../../virtual-machines/windows/managed-disks-overview.md)。 
+加速寫入功能可解決使用雲端儲存體中預先寫入記錄檔所造成的較高寫入延遲問題。  HDInsight Apache HBase 叢集的加速寫入功能會將高階 SSD 受控磁片附加到每個 RegionServer （背景工作節點）。 然後，預先寫入的記錄會寫入裝載于這些高階受控磁片（而不是雲端儲存體）上的 Hadoop 檔案系統（HDFS）。  Premium 受控磁片會使用固態硬碟（Ssd），並提供容錯的絕佳 i/o 效能。  不同于非受控磁片，如果某個儲存裝置停止運作，它不會影響相同可用性設定組中的其他儲存單位。  因此，受控磁片可為您的應用程式提供低寫入延遲和更佳的復原能力。 若要深入瞭解 Azure 受控磁片，請參閱[azure 受控磁片簡介](../../virtual-machines/windows/managed-disks-overview.md)。
 
 ## <a name="how-to-enable-accelerated-writes-for-hbase-in-hdinsight"></a>如何在 HDInsight 中啟用 HBase 的加速寫入
 
-若要使用加速寫入功能建立新的 HBase 叢集，請遵循在[HDInsight 中設定](../hdinsight-hadoop-provision-linux-clusters.md)叢集中的步驟，直到您到達**步驟3，儲存體**為止。 在 [**中繼存放區設定**] 下，按一下 [**啟用加速寫入**] 旁的核取方塊。 然後，繼續進行叢集建立的其餘步驟。
+若要使用加速寫入功能建立新的 HBase 叢集，請遵循在[HDInsight 中設定](../hdinsight-hadoop-provision-linux-clusters.md)叢集中的步驟，直到您到達**步驟3，儲存體**為止。 在 [**中繼存放區設定**] 下，選取 [**啟用 HBase 加速寫入**] 旁的核取方塊。 然後，繼續進行叢集建立的其餘步驟。
 
-![啟用 HDInsight Apache HBase 的加速寫入選項](./media/apache-hbase-accelerated-writes/accelerated-writes-cluster-creation.png)
+![啟用 HDInsight Apache HBase 的加速寫入選項](./media/apache-hbase-accelerated-writes/azure-portal-cluster-storage-hbase.png)
 
 ## <a name="other-considerations"></a>其他考量
 
@@ -55,7 +54,7 @@ flush 'mytable'
 disable 'mytable'
 ```
 
-相應減少叢集時，請遵循類似的步驟：清除資料表並停用資料表以停止傳入的資料。 您無法將叢集擴充到三個以下的節點。
+相應減少叢集時，請遵循類似的步驟：清除資料表並停用資料表以停止傳入的資料。 您無法將叢集擴充至少於三個節點。
 
 遵循這些步驟可確保成功相應減少，並避免因複寫中或暫存檔案而導致 namenode 進入安全模式的可能性。
 

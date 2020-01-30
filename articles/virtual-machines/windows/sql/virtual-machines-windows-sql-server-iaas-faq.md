@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 4919c8f303488b583ea4d10dca87dd29bfb52e99
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3b73c329c3db54ba78db15ced8e919af4d4a45d7
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75374075"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76835159"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>在 Azure 中 Windows 虛擬機器上執行的 SQL Server 常見問題集
 
@@ -80,16 +80,7 @@ ms.locfileid: "75374075"
 
 1. **如何在 Azure VM 上安裝 SQL Server 授權版本？**
 
-   有三種方法可以取得憑證。 如果您是 enterprise 合約（EA）客戶，則可以布建其中一個[支援授權的虛擬機器映射](virtual-machines-windows-sql-server-iaas-overview.md#BYOL)，也就是所謂的自備授權（BYOL）。 如果您有[軟體保證](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-default)，可以在現有的隨用隨付（PAYG）映射上啟用[Azure Hybrid Benefit](virtual-machines-windows-sql-ahb.md) 。 或者，您可以將 SQL Server 安裝媒體複製到 Windows Server VM，然後在 VM 上安裝 SQL Server。 請務必向[資源提供者](virtual-machines-windows-sql-register-with-resource-provider.md)註冊您的 SQL Server VM，以取得入口網站管理、自動備份和自動修補等功能。 
-
-1. **如果只是用於待命/容錯移轉，需要對 Azure VM 上的 SQL Server 授權付費嗎？**
-
-   若要讓待命次要可用性群組或容錯移轉叢集實例具有免費的被動授權，您必須符合[產品授權條款](https://www.microsoft.com/licensing/product-licensing/products)中所述的下列所有準則：
-
-   1. 您具有透過[軟體保證](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3)的[授權流動性](https://www.microsoft.com/licensing/licensing-programs/software-assurance-license-mobility?activetab=software-assurance-license-mobility-pivot:primaryr2)。 
-   1. 被動 SQL Server 實例不會將 SQL Server 資料提供給用戶端，或執行 active SQL Server 工作負載。 它只會用來與主伺服器進行同步處理，否則會以暖待命狀態維護被動資料庫。 如果它正在提供資料，例如向執行中 SQL Server 工作負載的用戶端報告，或除了產品條款中所指定內容以外的其他工作，則必須是付費的授權 SQL Server 實例。 在次要實例上允許下列活動：資料庫一致性檢查或 CheckDB、完整備份、交易記錄備份，以及監視資源使用量資料。 您也可以同時執行主要和對應的嚴重損壞修復實例，以執行每90天的嚴重損壞修復測試。 
-   1. Active SQL Server 授權涵蓋于軟體保證中，並允許**一個**被動的次要 SQL Server 實例，與授權作用中伺服器的計算數量相同。 
-   1. 次要 SQL Server VM 會利用 Azure 入口網站中的故障[修復](virtual-machines-windows-sql-high-availability-dr.md#free-dr-replica-in-azure)授權。
+   有三種方式可執行此動作。 如果您是 enterprise 合約（EA）客戶，則可以布建其中一個[支援授權的虛擬機器映射](virtual-machines-windows-sql-server-iaas-overview.md#BYOL)，也就是所謂的自備授權（BYOL）。 如果您有[軟體保證](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-default)，可以在現有的隨用隨付（PAYG）映射上啟用[Azure Hybrid Benefit](virtual-machines-windows-sql-ahb.md) 。 或者，您可以將 SQL Server 安裝媒體複製到 Windows Server VM，然後在 VM 上安裝 SQL Server。 請務必向[資源提供者](virtual-machines-windows-sql-register-with-resource-provider.md)註冊您的 SQL Server VM，以取得入口網站管理、自動備份和自動修補等功能。 
 
 1. **如果是從其中一個隨用隨付資源庫映像建立，可以將 VM 變更為使用自己的 SQL Server 授權嗎？**
 
@@ -98,6 +89,10 @@ ms.locfileid: "75374075"
 1. **切換授權模型是否必須讓 SQL Server 停機？**
 
    不會。 [變更授權模型](virtual-machines-windows-sql-ahb.md)不需要將 SQL Server 停機，因為變更會立即生效，且不需要重新啟動 VM。 不過，若要向 SQL Server VM 資源提供者註冊您的 SQL Server VM， [Sql iaas 擴充](virtual-machines-windows-sql-server-agent-extension.md)功能是必要條件，而且以_完整_模式安裝 sql iaas 延伸模組會重新開機 SQL Server 服務。 因此，如果需要安裝 SQL IaaS 延伸模組，請以_輕量_模式將它安裝到有限的功能，或在維護期間以_完整_模式安裝。 以_輕量_模式安裝的 SQL IaaS 擴充功能可以隨時升級為_完整_模式，但需要重新開機 SQL Server 服務。 
+   
+1. **可以在使用傳統模型部署的 SQL Server VM 上切換授權模型嗎？**
+
+   不會。 傳統 VM 不支援變更授權模型。 您可以將 VM 遷移至 Azure Resource Manager 模型，並向 SQL Server VM 資源提供者註冊。 一旦向 SQL Server VM 資源提供者註冊 VM 之後，授權模型變更就會在 VM 上提供。
 
 1. **我是否可以使用 Azure 入口網站來管理相同 VM 上的多個實例？**
 
@@ -106,6 +101,32 @@ ms.locfileid: "75374075"
 1. **CSP 訂用帳戶是否能啟用 Azure Hybrid Benefit？**
 
    是，Azure Hybrid Benefit 適用於 CSP 訂用帳戶。 CSP 客戶應該先部署隨用隨付映像，然後將[授權模式變更](virtual-machines-windows-sql-ahb.md)為自備授權。
+   
+ 
+1. **如果只是用於待命/容錯移轉，需要對 Azure VM 上的 SQL Server 授權付費嗎？**
+
+   若要讓待命次要可用性群組或容錯移轉叢集實例具有免費的被動授權，您必須符合[產品授權條款](https://www.microsoft.com/licensing/product-licensing/products)中所述的下列所有準則：
+
+   1. 您具有透過[軟體保證](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3)的[授權流動性](https://www.microsoft.com/licensing/licensing-programs/software-assurance-license-mobility?activetab=software-assurance-license-mobility-pivot:primaryr2)。 
+   1. 被動 SQL Server 實例不會將 SQL Server 資料提供給用戶端，或執行 active SQL Server 工作負載。 它只會用來與主伺服器進行同步處理，否則會以暖待命狀態維護被動資料庫。 如果它正在提供資料，例如向執行中 SQL Server 工作負載的用戶端報告，或除了產品條款中所指定內容以外的其他工作，則必須是付費的授權 SQL Server 實例。 在次要實例上允許下列活動：資料庫一致性檢查或 CheckDB、完整備份、交易記錄備份，以及監視資源使用量資料。 您也可以同時執行主要和對應的嚴重損壞修復實例，以執行每90天的嚴重損壞修復測試。 
+   1. Active SQL Server 授權涵蓋于軟體保證中，並允許**一個**被動的次要 SQL Server 實例，與授權作用中伺服器的計算數量相同。 
+   1. 次要 SQL Server VM 會利用 Azure 入口網站中的故障[修復](virtual-machines-windows-sql-high-availability-dr.md#free-dr-replica-in-azure)授權。
+   
+1. **什麼是被動實例？**
+
+   被動 SQL Server 實例不會將 SQL Server 資料提供給用戶端，或執行 active SQL Server 工作負載。 它只會用來與主伺服器進行同步處理，否則會以暖待命狀態維護被動資料庫。 如果它正在提供資料，例如向執行中 SQL Server 工作負載的用戶端報告，或除了產品條款中所指定內容以外的其他工作，則必須是付費的授權 SQL Server 實例。 在次要實例上允許下列活動：資料庫一致性檢查或 CheckDB、完整備份、交易記錄備份，以及監視資源使用量資料。 您也可以同時執行主要和對應的嚴重損壞修復實例，以執行每90天的嚴重損壞修復測試。
+   
+
+1. **哪些案例可以利用 Distaster 復原（DR）權益？**
+
+   [授權指南](https://aka.ms/sql2019licenseguide)提供可使用嚴重損壞修復權益的案例。 如需詳細資訊，請參閱您的產品條款，並與您的授權連絡人或客戶經理交談。
+
+1. **哪些訂閱支援嚴重損壞修復（DR）權益？**
+
+   提供軟體保證對等訂用帳戶許可權做為固定權益的完整程式可支援 DR 權益。 這包括。 但不限於開放值（OV）、開放值訂用帳戶（OVS-ES）、Enterprise 合約（EA）、企業訂閱合約（EAS），以及伺服器和雲端註冊（SCE）。 如需詳細資訊，請參閱[產品條款](https://www.microsoft.com/licensing/product-licensing/products)，並與您的授權連絡人或 acocunt manager 交談。 
+
+   
+ ## <a name="resource-provider"></a>資源提供者
 
 1. **使用新的 SQL Server VM 資源提供者註冊我的 VM 會帶來額外的成本嗎？**
 
@@ -127,9 +148,7 @@ ms.locfileid: "75374075"
 
     可以。 若您從自己的媒體部署 SQL Server，而且已安裝 SQL IaaS 延伸模組，您可以向資源提供者註冊您自己的 SQL Server VM，以取得 SQL IaaS 延伸模組所提供的管理能力優點。 不過，您無法將自我部署的 SQL Server VM 轉換為隨用隨付。
 
-1. **可以在使用傳統模型部署的 SQL Server VM 上切換授權模型嗎？**
 
-   不會。 傳統 VM 不支援變更授權模型。 您可以將 VM 遷移至 Azure Resource Manager 模型，並向 SQL Server VM 資源提供者註冊。 一旦向 SQL Server VM 資源提供者註冊 VM 之後，授權模型變更就會在 VM 上提供。 
    
 
 
@@ -181,9 +200,9 @@ ms.locfileid: "75374075"
 
 ## <a name="general"></a>一般
 
-1. **Azure VM 上是否支援 SQL Server 容錯移轉叢集執行個體 (FCI)？**
+1. **Azure Vm 上是否支援 SQL Server 容錯移轉叢集實例（FCI）？**
 
-   可以。 您可以[在 Windows Server 2016 上建立 Windows 容錯移轉叢集](virtual-machines-windows-portal-sql-create-failover-cluster.md)，並使用儲存空間直接存取 (S2D) 來連結叢集儲存體。 或者，您可以使用 [Azure 虛擬機器中的 SQL Server 的高可用性和災害復原](virtual-machines-windows-sql-high-availability-dr.md#azure-only-high-availability-solutions)中所述的協力廠商叢集或儲存體解決方案。
+   可以。 您可以針對儲存子系統使用[premium 檔案共用（PFS）](virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md)或[儲存空間直接存取（S2D）](virtual-machines-windows-portal-sql-create-failover-cluster.md)來安裝容錯移轉叢集實例。 Premium 檔案共用提供 IOPS 和輸送量容量，以符合許多工作負載的需求。 針對需要大量 IO 的工作負載，請考慮使用以受控 premium 或 ultra 為基礎的儲存空間直接存取。 或者，您可以使用 [Azure 虛擬機器中的 SQL Server 的高可用性和災害復原](virtual-machines-windows-sql-high-availability-dr.md#azure-only-high-availability-solutions)中所述的協力廠商叢集或儲存體解決方案。
 
    > [!IMPORTANT]
    > 目前，Azure 上的 SQL Server FCI 不支援_完整_的[SQL Server IaaS 代理程式擴充](virtual-machines-windows-sql-server-agent-extension.md)功能。 建議您從參與 FCI 的 Vm 卸載_完整_的延伸模組，並改為在_輕量_模式中安裝延伸模組。 此延伸模組支援一些功能，例如自動備份和修補，以及一些適用于 SQL Server 的入口網站功能。 卸載_完整_代理程式之後，這些功能將無法在 SQL Server vm 上使用。

@@ -5,18 +5,18 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 01/28/2020
 ms.author: helohr
-ms.openlocfilehash: 3f725d7e902b1e020c26e82007d4d257b2fd21c4
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: e525976edee08097d75605ea1921d0552ed02785
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293176"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841058"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows 虛擬桌面合作夥伴整合
 
-本文列出 Windows 虛擬桌面的夥伴。
+本文列出 Windows 虛擬桌面的核准合作夥伴提供者和獨立軟體廠商。
 
 ## <a name="citrix"></a>Citrix
 

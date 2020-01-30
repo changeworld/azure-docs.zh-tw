@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 88ad32a289d499cd385f8f3095113a4b329b80f4
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 6c486e59f32afd09a9934ae2298172ccb4ee2414
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701530"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768111"
 ---
 # <a name="web-app-that-signs-in-users-move-to-production"></a>登入使用者的 Web 應用程式：移至生產環境
 
@@ -29,6 +29,13 @@ ms.locfileid: "76701530"
 
 ## <a name="next-steps"></a>後續步驟
 
+### <a name="same-site"></a>相同網站
+
+請確定您瞭解新版本 Chrome 瀏覽器的可能問題
+
+> [!div class="nextstepaction"]
+> [如何處理 Chrome 瀏覽器中的 SameSite cookie 變更](howto-handle-samesite-cookie-changes-chrome-browser.md)
+
 ### <a name="scenario-for-calling-web-apis"></a>呼叫 web Api 的案例
 
 在您的 web 應用程式登入使用者之後，它可以代表登入的使用者呼叫 web Api。 從 web 應用程式呼叫 web Api 是下列案例的物件：
@@ -36,7 +43,7 @@ ms.locfileid: "76701530"
 > [!div class="nextstepaction"]
 > [呼叫 Web API 的 Web 應用程式](scenario-web-app-call-api-overview.md)
 
-### <a name="deep-dive-aspnet-core-web-app-tutorial"></a>深入探討： ASP.NET Core web 應用程式教學課程
+## <a name="deep-dive-aspnet-core-web-app-tutorial"></a>深入探討： ASP.NET Core web 應用程式教學課程
 
 深入瞭解使用此 ASP.NET Core 教學課程來登入使用者的其他方式： 
 
@@ -49,9 +56,9 @@ ms.locfileid: "76701530"
 - 多個組織
 - 公司或學校帳戶，或個人 Microsoft 帳戶
 - [Azure AD B2C](https://aka.ms/aadb2c)
-- 國家/地區雲端
+- 國家雲端
 
-### <a name="sample-code-java-web-app"></a>範例程式碼： JAVA web 應用程式
+## <a name="sample-code-java-web-app"></a>範例程式碼： JAVA web 應用程式
 
 從 GitHub 上的此範例深入瞭解 JAVA web 應用程式： 
 

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 09/09/2019
-ms.openlocfilehash: c8051126fc4a895c6e72e90942fac65d777afd8e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.date: 01/27/2020
+ms.openlocfilehash: be6fd633f026c98e8f75467dc8661e695e121721
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546481"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841262"
 ---
 # <a name="summarize-data"></a>資料總結
 
@@ -24,7 +24,7 @@ ms.locfileid: "76546481"
 
 當您想要瞭解完整資料集的特性時，摘要統計資料會很有用。 例如，您可能需要知道：
 
-- 每個資料行中遺漏多少值？
+- 每個資料行中有多少個遺漏值？
 - 功能資料行中有多少個唯一值？
 - 每個資料行的平均值和標準差為何？
 
@@ -70,6 +70,20 @@ ms.locfileid: "76546481"
 |**P5**|5% 百分位數|
 |**P95**|95% 百分位數|
 |**P 99。5**|99.5% 百分位數 |
+
+## <a name="technical-notes"></a>技術說明
+
+- 若為非數值資料行，則只會計算 [計數]、[唯一值計數] 和 [遺漏值計數] 的值。 若為其他統計資料，則會傳回 null 值。
+
+- 包含布林值的資料行是使用下列規則來處理：
+
+    - 計算 Min 時，會套用邏輯 AND。
+    
+    - 計算 Max 時，會套用邏輯 OR
+    
+    - 在計算範圍時，模組會先檢查資料行中的唯一值數目是否等於2。
+    
+    - 在計算需要浮點計算的任何統計資料時，True 的值會被視為1.0，而 False 的值會被視為0.0。
 
 ## <a name="next-steps"></a>後續步驟
 

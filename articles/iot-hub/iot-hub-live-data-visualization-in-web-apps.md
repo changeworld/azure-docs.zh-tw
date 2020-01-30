@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 05/31/2019
 ms.author: robinsh
-ms.openlocfilehash: 073a766662b2ead4b816276fa7fda6dc5e6caca7
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 6c7981d15acf2b2b71dfb4234f85b738efe62ce0
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954639"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767954"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>在 web 應用程式中將 Azure IoT 中樞的即時感應器資料視覺化
 
@@ -165,10 +165,10 @@ set EventHubConsumerGroup=YourConsumerGroupName
    az appservice plan create --name <app service plan name> --resource-group <your resource group name> --sku FREE
    ```
 
-2. 現在，在您的 App Service 方案中布建 web 應用程式。 `--deployment-local-git` 參數可讓您從本機電腦上的 Git 儲存機制上傳和部署 web 應用程式程式碼。 您的 web 應用程式名稱必須是全域唯一的，而且可以包含大小寫字母、數位和連字號。
+2. 現在，在您的 App Service 方案中布建 web 應用程式。 `--deployment-local-git` 參數可讓您從本機電腦上的 Git 儲存機制上傳和部署 web 應用程式程式碼。 您的 web 應用程式名稱必須是全域唯一的，而且可以包含大小寫字母、數位和連字號。 請務必針對 `--runtime` 參數指定節點版本10.6 或更新版本，視您使用的 node.js 執行階段版本而定。 您可以使用 `az webapp list-runtimes` 命令來取得支援的執行時間清單。
 
    ```azurecli-interactive
-   az webapp create -n <your web app name> -g <your resource group name> -p <your app service plan name> --deployment-local-git
+   az webapp create -n <your web app name> -g <your resource group name> -p <your app service plan name> --runtime "node|10.6" --deployment-local-git
    ```
 
 3. 現在，針對指定 IoT 中樞連接字串和事件中樞取用者群組的環境變數，新增應用程式設定。 個別設定是在 `-settings` 參數中以空格分隔。 使用您的 IoT 中樞的服務連接字串，以及您先前在本教學課程中建立的取用者群組。 請勿將值加上引號。
@@ -227,7 +227,7 @@ set EventHubConsumerGroup=YourConsumerGroupName
     az webapp show -n <your web app name> -g <your resource group name> --query state
     ```
 
-11. 在瀏覽器中，瀏覽至 `https://<your web app name>.azurewebsites.net`。 一個網頁，類似于您在本機執行 web 應用程式時所看到的網頁。 假設您的裝置正在執行並傳送資料，您應該會看到裝置所傳送之50最近溫度和濕度讀數的執行中繪圖。
+11. 在瀏覽器中，瀏覽至 `https://<your web app name>.azurewebsites.net` 。 一個網頁，類似于您在本機執行 web 應用程式時所看到的網頁。 假設您的裝置正在執行並傳送資料，您應該會看到裝置所傳送之50最近溫度和濕度讀數的執行中繪圖。
 
 ## <a name="troubleshooting"></a>疑難排解
 

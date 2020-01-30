@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: cda02408f9e90cb9f19a4f7d806a34e5cff9c33c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f2876ea32bdcd900a454ae6b7ac58c11b8ec67c3
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426044"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840480"
 ---
 # <a name="test-live-data-locally-using-azure-stream-analytics-tools-for-visual-studio-preview"></a>使用適用於 Visual Studio 的 Azure 串流分析工具 (預覽) 在本機測試即時資料
 
@@ -38,7 +38,6 @@ ms.locfileid: "75426044"
 2. 若要測試即時資料，從下拉式清單方塊中選擇 [使用雲端輸入]。
 
    ![Azure 串流分析 Visual Studio 的即時雲端輸出](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input.png)
-
 
 3. 設定**開始時間**，以定義作業將開始處理輸入資料的時間。 作業可能需要提前讀取輸入資料，以確保會有精確的結果。 預設的時間會設定為目前時間的前 30 分鐘。
 
@@ -65,6 +64,5 @@ ms.locfileid: "75426044"
 ## <a name="next-steps"></a>後續步驟
 
 * [使用適用於 Visual Studio 的 Azure 串流分析工具建立串流分析作業](stream-analytics-quick-create-vs.md)
-* [安裝適用於 Visual Studio 的 Azure 串流分析工具](stream-analytics-tools-for-visual-studio-install.md)
 * [使用 Visual Studio 在本機測試串流分析查詢](stream-analytics-vs-tools-local-run.md)
 * [使用 Visual Studio 檢視 Azure 串流分析工作](stream-analytics-vs-tools.md)

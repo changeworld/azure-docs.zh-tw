@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 162597bf3d02cdfe53d321185b326bfbb1f6bd0d
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 2e2a3dbf0ce3be28a78f04eb5bb1c369aeff1441
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712763"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773442"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -99,7 +99,7 @@ ms.locfileid: "76712763"
 | OutputClaimsTransformations | 0:1 | 先前定義的宣告轉換參考清單，應在來自宣告提供者的宣告受到接收後再執行。 |
 | ValidationTechnicalProfiles | 0:n | 其他技術設定檔的參考清單，技術設定檔會用來進行用途的驗證。 如需詳細資訊，請參閱[驗證技術設定檔](validation-technical-profile.md)|
 | SubjectNamingInfo | 0:1 | 控制權杖中主體名稱的產生，其中主體名稱與宣告分開指定。 例如，OAuth 或 SAML。  |
-| IncludeInSso | 0:1 |  此技術設定檔的使用是否應該套用會話的單一登入（SSO）行為，或改為要求明確的互動。 可能的值：`true` (預設) 或 `false`。 |
+| IncludeInSso | 0:1 |  此技術設定檔的使用是否應該套用會話的單一登入（SSO）行為，或改為要求明確的互動。 此元素僅適用于驗證技術設定檔中使用的 SelfAsserted 設定檔。 可能的值：`true` (預設) 或 `false`。 |
 | IncludeClaimsFromTechnicalProfile | 0:1 | 技術設定檔的識別碼，您打算將所有輸入和輸出宣告加入此技術設定檔。 必須在相同原則檔中定義參考的技術設定檔。 |
 | IncludeTechnicalProfile |0:1 | 技術設定檔的識別碼，您打算將所有資料加入此技術設定檔。 參考的技術設定檔必須存在於相同的原則檔中。 |
 | UseTechnicalProfileForSessionManagement | 0:1 | 用於工作階段管理的不同技術設定檔。 |

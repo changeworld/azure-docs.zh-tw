@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/09/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 259ce2b1881c31c2558539fed34513575d193a48
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 9d96db5cf062da1b2e8badd80a9a00620b724fd4
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961984"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840412"
 ---
 # <a name="use-the-azure-portal-to-create-and-delete-consumer-users-in-azure-ad-b2c"></a>使用 Azure 入口網站在 Azure AD B2C 中建立和刪除取用者使用者
 
@@ -30,7 +30,7 @@ ms.locfileid: "73961984"
 如 Azure AD B2C 中[的使用者帳戶總覽](user-overview.md)中所述，您可以在 Azure AD B2C 目錄中建立三種類型的使用者帳戶：
 
 * Work
-* 來賓
+* 訪客
 * 消費者
 
 本文著重于在 Azure 入口網站中使用取用**者帳戶**。 如需建立和刪除工作和來賓帳戶的相關資訊，請參閱[使用 Azure Active Directory 新增或刪除使用者](../active-directory/fundamentals/add-users-azure-active-directory.md)。
@@ -61,4 +61,4 @@ ms.locfileid: "73961984"
 
 ## <a name="next-steps"></a>後續步驟
 
-如需自動化的使用者管理案例，例如將使用者從另一個識別提供者遷移至您的 Azure AD B2C 目錄，請參閱[Azure AD B2C：使用者遷移](active-directory-b2c-user-migration.md)。
+如需自動化的使用者管理案例，例如將使用者從另一個識別提供者遷移至您的 Azure AD B2C 目錄，請參閱[Azure AD B2C：使用者遷移](user-migration.md)。

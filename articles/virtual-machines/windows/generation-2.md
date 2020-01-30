@@ -3,7 +3,7 @@ title: 第2代 Vm 的 Azure 支援
 description: 第2代 Vm 的 Azure 支援總覽
 services: virtual-machines-windows
 documentationcenter: ''
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -11,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 12/03/2019
-ms.author: lahugh
-ms.openlocfilehash: 6f03826bf0b82150fa89ad6e17cbcb76f98bb835
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/28/2020
+ms.author: jushiman
+ms.openlocfilehash: ace08d95e1f2eb5a6e7252ecdf505e282b04ddf8
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790045"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76837338"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 上第2代 Vm 的支援
 
@@ -30,7 +30,7 @@ ms.locfileid: "74790045"
 
 ## <a name="generation-2-vm-sizes"></a>第2代 VM 大小
 
-Azure 中的所有 VM 大小都支援第1代 Vm。 Azure 現在為下列選取的 VM 系列提供第2代支援：
+Azure 中的所有 VM 大小都支援第1代 Vm （Mv2 系列 Vm 除外）。 Azure 現在為下列選取的 VM 系列提供第2代支援：
 
 * [B 系列](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable)
 * [DC 系列](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dc-series)
@@ -123,6 +123,12 @@ Windows 和 SLES 的第2代映射包含在與 Gen1 映射相同的伺服器供�
 
 ```powershell
 Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer WindowsServer
+```
+
+或者，您可以使用 Azure CLI 查看**發行者**所列出的任何可用第2代映射。
+
+```azurecli
+az vm image list --publisher Canonical --sku gen2 --output table --all
 ```
 
 如果您使用 Windows Server 2012 做為作業系統來建立 VM，則會選取第1代（BIOS）或第2代（UEFI） VM SKU，如下所示：

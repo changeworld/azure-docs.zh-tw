@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: cc492b29fd6bc4a820543740e9d1962fc74f2cfc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 21a3597a8c3675a060359b5e4feb9561e02f0149
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425518"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840140"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>教學課程：在 Azure Active Directory B2C 中建立使用者流程
 
-在您的應用程式中，您可能會有可讓使用者註冊、登入或管理其設定檔的[使用者流程](active-directory-b2c-reference-policies.md)。 您可以在您的 Azure Active Directory B2C （Azure AD B2C）租使用者中建立多個不同類型的使用者流程，並視需要在您的應用程式中使用它們。 使用者流程可以跨應用程式重複使用。
+在您的應用程式中，您可能會有可讓使用者註冊、登入或管理其設定檔的[使用者流程](user-flow-overview.md)。 您可以在您的 Azure Active Directory B2C （Azure AD B2C）租使用者中建立多個不同類型的使用者流程，並視需要在您的應用程式中使用它們。 使用者流程可以跨應用程式重複使用。
 
 在本文中，您將學會如何：
 

@@ -11,16 +11,16 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3370ec8de0fb49b92c0fb4dd429439e293ad1d8b
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: bc8dbfd315702f666d6b811e855d6bcd99df938e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949869"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836043"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>關於 Azure Active Directory B2C 自訂原則中的宣告解析程式
 
-Azure Active Directory B2C （Azure AD B2C）[自訂原則](active-directory-b2c-overview-custom.md)中的宣告解析程式會提供有關授權要求的內容資訊，例如原則名稱、要求相互關聯識別碼、使用者介面語言等等。
+Azure Active Directory B2C （Azure AD B2C）[自訂原則](custom-policy-overview.md)中的宣告解析程式會提供有關授權要求的內容資訊，例如原則名稱、要求相互關聯識別碼、使用者介面語言等等。
 
 若要在輸入或輸出宣告中使用宣告解析程式，您必須在 [ClaimsSchema](claimsschema.md) 元素下方定義字串 **ClaimType**，然後在輸入或輸出宣告元素中設定宣告解析程式的 **DefaultValue**。 Azure AD B2C 會讀取宣告解析程式的值，並在技術設定檔中使用該值。
 
@@ -46,16 +46,16 @@ Azure Active Directory B2C （Azure AD B2C）[自訂原則](active-directory-b2c
 
 ### <a name="culture"></a>文化特性
 
-| 宣告 | 描述 | 範例 |
+| 宣告 | 說明 | 範例 |
 | ----- | ----------- | --------|
 | {Culture:LanguageName} | 語言的雙字母 ISO 代碼。 | en |
 | {Culture:LCID}   | 語言代碼的 LCID。 | 1033 |
 | {Culture:RegionName} | 區域的雙字母 ISO 代碼。 | 美國 |
-| {Culture:RFC5646} | RFC5646 語言代碼。 | en-US |
+| {Culture:RFC5646} | RFC5646 語言代碼。 | zh-TW |
 
 ### <a name="policy"></a>原則
 
-| 宣告 | 描述 | 範例 |
+| 宣告 | 說明 | 範例 |
 | ----- | ----------- | --------|
 | {Policy:PolicyId} | 信賴憑證者原則名稱。 | B2C_1A_signup_signin |
 | {Policy:RelyingPartyTenantId} | 信賴憑證者原則的租用戶識別碼。 | your-tenant.onmicrosoft.com |
@@ -64,7 +64,7 @@ Azure Active Directory B2C （Azure AD B2C）[自訂原則](active-directory-b2c
 
 ### <a name="openid-connect"></a>OpenID Connect
 
-| 宣告 | 描述 | 範例 |
+| 宣告 | 說明 | 範例 |
 | ----- | ----------- | --------|
 | {OIDC:AuthenticationContextReferences} |`acr_values` 查詢字串參數。 | N/A |
 | {OIDC:ClientId} |`client_id` 查詢字串參數。 | 00000000-0000-0000-0000-000000000000 |
@@ -72,13 +72,13 @@ Azure Active Directory B2C （Azure AD B2C）[自訂原則](active-directory-b2c
 | {OIDC:LoginHint} |  `login_hint` 查詢字串參數。 | someone@contoso.com |
 | {OIDC:MaxAge} | `max_age`。 | N/A |
 | {OIDC:Nonce} |`Nonce` 查詢字串參數。 | defaultNonce |
-| {OIDC:Prompt} | `prompt` 查詢字串參數。 | 登入 |
+| {OIDC:Prompt} | `prompt` 查詢字串參數。 | login |
 | {OIDC:Resource} |`resource` 查詢字串參數。 | N/A |
 | {OIDC:scope} |`scope` 查詢字串參數。 | openid |
 
 ### <a name="context"></a>Context
 
-| 宣告 | 描述 | 範例 |
+| 宣告 | 說明 | 範例 |
 | ----- | ----------- | --------|
 | {Context:BuildNumber} | 身分識別體驗架構版本 (組建編號)。  | 1.0.507.0 |
 | {Context:CorrelationId} | 相互關連識別碼。  | 00000000-0000-0000-0000-000000000000 |
@@ -91,7 +91,7 @@ Azure Active Directory B2C （Azure AD B2C）[自訂原則](active-directory-b2c
 
 OIDC 或 OAuth2 要求中所包含的任何參數名稱均可對應至使用者旅程圖中的宣告。 例如，來自應用程式的要求可能包含名稱為 `app_session`、`loyalty_number` 或任何自訂查詢字串的查詢字串參數。
 
-| 宣告 | 描述 | 範例 |
+| 宣告 | 說明 | 範例 |
 | ----- | ----------------------- | --------|
 | {OAUTH-KV:campaignId} | 查詢字串參數。 | hawaii |
 | {OAUTH-KV:app_session} | 查詢字串參數。 | A3C5R |
@@ -100,7 +100,7 @@ OIDC 或 OAuth2 要求中所包含的任何參數名稱均可對應至使用者�
 
 ### <a name="oauth2"></a>OAuth2
 
-| 宣告 | 描述 | 範例 |
+| 宣告 | 說明 | 範例 |
 | ----- | ----------------------- | --------|
 | {oauth2:access_token} | 存取權杖。 | N/A |
 
@@ -137,7 +137,7 @@ OIDC 或 OAuth2 要求中所包含的任何參數名稱均可對應至使用者�
 
 ### <a name="dynamic-ui-customization"></a>動態 UI 自訂
 
-Azure AD B2C 可讓您將查詢字串參數傳至 HTML 內容定義端點，以便您動態轉譯頁面內容。 例如，您可以根據從 Web 或行動裝置應用程式傳遞的自訂參數，變更 Azure AD B2C 註冊或登入頁面的背景影像。 如需詳細資訊，請參閱[使用 Azure Active Directory B2C 中的自訂原則動態設定 UI](active-directory-b2c-ui-customization-custom-dynamic.md)。 您也可以根據語言參數將 HTML 網頁當地語系化，也可以根據用戶端識別碼來變更內容。
+Azure AD B2C 可讓您將查詢字串參數傳至 HTML 內容定義端點，以便您動態轉譯頁面內容。 例如，您可以根據從 Web 或行動裝置應用程式傳遞的自訂參數，變更 Azure AD B2C 註冊或登入頁面的背景影像。 如需詳細資訊，請參閱[使用 Azure Active Directory B2C 中的自訂原則動態設定 UI](custom-policy-ui-customization-dynamic.md)。 您也可以根據語言參數將 HTML 網頁當地語系化，也可以根據用戶端識別碼來變更內容。
 
 下列範例會在查詢字串中傳入名為 **campaignId** (值為 `hawaii`) 的參數、**語言**代碼 `en-US`，和代表用戶端識別碼的 **app**：
 
@@ -159,7 +159,7 @@ Azure AD B2C 可讓您將查詢字串參數傳至 HTML 內容定義端點，以�
 
 ### <a name="application-insights-technical-profile"></a>Application Insights 技術設定檔
 
-透過 Azure Application Insights 和宣告解析程式，您可以取得關於使用者行為的深入解析。 在 Application Insights 技術設定檔中，您可以將保存的輸入宣告傳送至 Azure Application Insights。 如需詳細資訊，請參閱[使用 Application Insights 在 Azure AD B2C 旅程圖內追蹤使用者行為](active-directory-b2c-custom-guide-eventlogger-appins.md)。 下列範例會將原則識別碼、相互關聯識別碼、語言和用戶端識別碼傳送至 Azure Application Insights。
+透過 Azure Application Insights 和宣告解析程式，您可以取得關於使用者行為的深入解析。 在 Application Insights 技術設定檔中，您可以將保存的輸入宣告傳送至 Azure Application Insights。 如需詳細資訊，請參閱[使用 Application Insights 在 Azure AD B2C 旅程圖內追蹤使用者行為](analytics-with-application-insights.md)。 下列範例會將原則識別碼、相互關聯識別碼、語言和用戶端識別碼傳送至 Azure Application Insights。
 
 ```XML
 <TechnicalProfile Id="AzureInsights-Common">

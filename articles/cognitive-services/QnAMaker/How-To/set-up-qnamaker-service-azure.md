@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: ec19f4b4140fb6f4a1dc968f4e2cac3c3d7a1e76
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dc3bb6882963205e17e37f52ec9dcdffecdf9e21
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447721"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843091"
 ---
 # <a name="manage-qna-maker-resources"></a>管理 QnA Maker 資源
 
@@ -116,9 +116,37 @@ QnA Maker 會建立數個 Azure 資源。 若要減少管理和受益于成本�
 
 深入瞭解[App service](../../../app-service/index.yml)和[Search 服務](../../../search/index.yml)。
 
-### <a name="using-a-single-search-service"></a>使用單一搜尋服務
+## <a name="using-a-single-search-service"></a>使用單一搜尋服務
 
 如果您透過入口網站建立 QnA 服務及其相依性（例如搜尋），系統就會為您建立搜尋服務，並連結至 QnA Maker 服務。 建立這些資源之後，您可以更新 App Service 設定，以使用先前現有的搜尋服務，並移除您剛建立的搜尋服務。
+
+如果您透過 Azure Resource Manager 範本建立 QnA 服務，您可以建立所有資源，並控制 App Service 建立，以使用現有的搜尋服務。
+
+
+## <a name="configure-qna-maker-to-use-different-cognitive-search-resource"></a>設定 QnA Maker 以使用不同的認知搜尋資源
+
+如果您透過入口網站建立 QnA 服務及其相依性（例如搜尋），系統就會為您建立搜尋服務，並連結至 QnA Maker 服務。 建立這些資源之後，您可以更新 App Service 設定，以使用先前現有的搜尋服務，並移除您剛建立的搜尋服務。
+
+QnA Maker 的**App Service**資源會使用認知搜尋資源。 為了變更 QnA Maker 所使用的認知搜尋資源，您必須變更 Azure 入口網站中的設定。
+
+1. 取得您想要 QnA Maker 使用之認知搜尋資源的系統**管理金鑰**和**名稱**。
+
+1. 登入[Azure 入口網站](https://portal.azure.com)並尋找與您的 QnA Maker 資源相關聯的**App Service** 。 這兩個都具有相同的名稱。
+
+1. 依序選取 [設定] 和 [**設定** **]。** 這會顯示 QnA Maker App Service 的所有現有設定。
+
+    > [!div class="mx-imgBorder"]
+    > ![Azure 入口網站的螢幕擷取畫面，其中顯示 App Service 的 configuration 設定](../media/qnamaker-how-to-upgrade-qnamaker/change-search-service-app-service-configuration.png)
+
+1. 變更下列索引鍵的值：
+
+    * **AzureSearchAdminKey**
+    * **AzureSearchName**
+
+1. 若要使用新的設定，您必須重新開機 App service。 選取 **[總覽**]，然後選取 [**重新開機**]。
+
+    > [!div class="mx-imgBorder"]
+    > 在設定變更後，Azure 入口網站重新開機 App Service 的 ![螢幕擷取畫面](../media/qnamaker-how-to-upgrade-qnamaker/screenshot-azure-portal-restart-app-service.png)
 
 如果您透過 Azure Resource Manager 範本建立 QnA 服務，您可以建立所有資源，並控制 App Service 建立，以使用現有的搜尋服務。
 

@@ -3,12 +3,12 @@ title: 使用容器的 Azure 監視器監視 Kubernetes 叢集健全狀況 |Micr
 description: 本文說明如何使用適用于容器的 Azure 監視器，來查看和分析 AKS 和非 AKS 叢集的健康情況。
 ms.topic: conceptual
 ms.date: 12/01/2019
-ms.openlocfilehash: 9ee710eb916923756633e65f3287751ba9a9dde3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f50ef13efca78bbb5285b99759b8111dc1915ad0
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75405087"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843985"
 ---
 # <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>了解使用適用於容器之 Azure 監視器的 Kubernetes 叢集健康狀態
 
@@ -23,7 +23,7 @@ ms.locfileid: "75405087"
 >[!NOTE]
 >若要支援 AKS Engine 叢集，請確認它符合下列內容：
 >- 它使用最新版的[HELM 用戶端](https://helm.sh/docs/using_helm/)。
->- 容器化代理程式版本為*microsoft/oms： ciprod11012019*。 若要升級代理程式，請參閱[升級 Kubernetes 叢集上的代理程式](container-insights-manage-agent.md#upgrading-agent-on-monitored-kubernetes-cluster)。
+>- 容器化代理程式版本為*microsoft/oms： ciprod11012019*。 若要升級代理程式，請參閱[升級 Kubernetes 叢集上的代理程式](container-insights-manage-agent.md#upgrade-agent-on-monitored-kubernetes-cluster)。
 >
 
 ## <a name="overview"></a>概觀
@@ -48,13 +48,13 @@ Kubernetes 叢集健康情況是根據下列 Kubernetes 物件和抽象概念所
 * 評估節點和容器的記憶體使用率。
 * Pod 和節點的狀態，取決於 Kubernetes 回報的就緒狀態計算。
 
-用來指示狀態的圖示如下：
+用來表示狀態的圖示如下所示：
 
 |圖示|意義|  
 |--------|-----------|  
-|![綠色核取圖示表示狀況良好](./media/container-insights-health/healthyicon.png)|成功，健全狀況正常 (綠色)|  
-|![黃色三角形和驚嘆號表示警告](./media/container-insights-health/warningicon.png)|警告 (黃色)|  
-|![具有白色 X 的紅色按鈕表示重大狀態](./media/container-insights-health/criticalicon.png)|重大 (紅色)|  
+|![綠色核取圖示表示狀況良好](./media/container-insights-health/healthyicon.png)|成功，健全狀況正常（綠色）|  
+|![黃色三角形和驚嘆號為警告](./media/container-insights-health/warningicon.png)|警告（黃色）|  
+|![具有白色 X 的紅色按鈕表示重大狀態](./media/container-insights-health/criticalicon.png)|重大（紅色）|  
 |![呈現灰色圖示](./media/container-insights-health/grayicon.png)|未知（灰色）|  
 
 ## <a name="monitor-configuration"></a>監視設定

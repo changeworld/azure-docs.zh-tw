@@ -11,25 +11,25 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a49eae95628645f6586a637c103433b122b5d287
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 2bc02433be9ee7955b0e10ac659ee40e315e5a5e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950947"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840157"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>教學課程：在 Azure Active Directory B2C 中將識別提供者新增至您的應用程式
 
-在您的應用程式中，您可以讓使用者使用不同的識別提供者登入。 *識別提供者*可建立、維護及管理身分識別資訊，同時對應用程式提供驗證服務。 您可以使用 Azure 入口網站，將 Azure Active Directory B2C （Azure AD B2C）支援的身分識別提供者新增至您的[使用者流程](active-directory-b2c-reference-policies.md)。
+在您的應用程式中，您可以讓使用者使用不同的識別提供者登入。 *識別提供者*可建立、維護及管理身分識別資訊，同時對應用程式提供驗證服務。 您可以使用 Azure 入口網站，將 Azure Active Directory B2C （Azure AD B2C）支援的身分識別提供者新增至您的[使用者流程](user-flow-overview.md)。
 
-在本文中，您將了解：
+在本文中，您將學會如何：
 
 > [!div class="checklist"]
 > * 建立識別提供者應用程式
 > * 將識別提供者新增至您的租用戶
 > * 將識別提供者新增至您的使用者流程
 
-您在應用程式中通常只會使用一個識別提供者，但您可以選擇新增更多個。 本教學課程說明如何將 Azure AD 識別提供者和 Facebook 識別提供者新增至您的應用程式。 將這兩個這些識別提供者新增至應用程式是選用作業。 您也可以新增其他身分識別提供者，例如[Amazon](active-directory-b2c-setup-amzn-app.md)、 [GitHub](active-directory-b2c-setup-github-app.md)、 [Google](active-directory-b2c-setup-goog-app.md)、 [LinkedIn](active-directory-b2c-setup-li-app.md)、 [Microsoft](active-directory-b2c-setup-msa-app.md)或[Twitter](active-directory-b2c-setup-twitter-app.md)。
+您在應用程式中通常只會使用一個識別提供者，但您可以選擇新增更多個。 本教學課程說明如何將 Azure AD 識別提供者和 Facebook 識別提供者新增至您的應用程式。 將這兩個這些識別提供者新增至應用程式是選用作業。 您也可以新增其他身分識別提供者，例如[Amazon](identity-provider-amazon.md)、 [GitHub](identity-provider-github.md)、 [Google](identity-provider-google.md)、 [LinkedIn](identity-provider-linkedin.md)、 [Microsoft](identity-provider-microsoft-account.md)或[Twitter](identity-provider-twitter.md)。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -96,7 +96,7 @@ ms.locfileid: "74950947"
 ### <a name="add-the-azure-active-directory-identity-provider"></a>新增 Azure Active Directory 識別提供者
 
 1. 請確定您使用的是包含 Azure AD B2C 租使用者的目錄。 在頂端功能表中選取 [**目錄 + 訂**用帳戶] 篩選，然後選擇包含您 Azure AD B2C 租使用者的目錄。
-1. 選擇 Azure 入口網站左上角的**所有服務**，然後搜尋並選取 **Azure AD B2C**。
+1. 選擇 Azure 入口網站左上角的 [所有服務]，然後搜尋並選取 [Azure AD B2C]。
 1. 選取 [**識別提供者**]，然後選取 **[新增 OpenID Connect 提供者]** 。
 1. 輸入 [名稱]。 例如，輸入 *Contoso Azure AD*。
 1. 在 [**中繼資料 url**] 中，輸入下列 url，將 `your-AD-tenant-domain` 取代為 Azure AD 租使用者的功能變數名稱：

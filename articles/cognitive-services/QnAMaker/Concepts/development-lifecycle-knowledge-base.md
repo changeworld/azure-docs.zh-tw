@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 09/25/2019
+ms.date: 01/27/2020
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 1cb5af13bdd309c762337e64ecde8538afc756b0
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: b1978e45a7554358ddd948879143411f89e4c1b2
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73794849"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843400"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>QnA Maker 中的知識庫生命週期
-QnA Maker 在反覆的週期中學習模型變更、語句範例、發佈資料以及從端點查詢收集資料時，會有最佳學習成效。 
+QnA Maker 在反覆的週期中學習模型變更、語句範例、發佈資料以及從端點查詢收集資料時，會有最佳學習成效。
 
 ![撰寫循環](../media/qnamaker-concepts-lifecycle/kb-lifecycle.png)
 
@@ -28,14 +28,14 @@ QnA Maker 知識庫 (KB) 端點會根據知識庫的內容對使用者查詢提�
 
 ## <a name="testing-and-updating-the-knowledge-base"></a>測試和更新知識庫
 
-知識庫在填入內容 (透過編輯或自動擷取) 後即可供測試。 互動式測試可以透過**測試**面板在 QnA Maker 入口網站中完成，方法是輸入一般使用者查詢，並確認傳回的回應具有正確的回應和足夠的信賴分數。 
+知識庫在填入內容 (透過編輯或自動擷取) 後即可供測試。 互動式測試可以透過**測試**面板在 QnA Maker 入口網站中完成，方法是輸入一般使用者查詢，並確認傳回的回應具有正確的回應和足夠的信賴分數。
 
-* **若要修正低信賴分數**：新增替代問題。 
-* **當查詢不正確地傳回[預設回應](confidence-score.md#change-default-answer)時**：請將新答案新增至正確的問題。 
+* **若要修正低信賴分數**：新增替代問題。
+* **當查詢不正確地傳回[預設回應](../How-to/change-default-answer.md)時**：請將新答案新增至正確的問題。
 
 「測試-更新」的這個密封迴圈會持續執行，直到您得到滿意的結果為止。 了解如何[測試知識庫](../How-To/test-knowledge-base.md)。
 
-針對大型 Kb，請使用自動化測試搭配[GENERATEANSWER API](../how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api)和 `isTest` body 屬性來查詢 `test` 知識庫，而不是已發行的知識庫。 
+針對大型 Kb，請使用自動化測試搭配[GENERATEANSWER API](../how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api)和 `isTest` body 屬性，以查詢 `test` 知識庫，而不是已發行的知識庫。
 
 ```json
 {
@@ -51,7 +51,7 @@ QnA Maker 知識庫 (KB) 端點會根據知識庫的內容對使用者查詢提�
 
 如此，對測試版知識庫所做的任何變更，都不會對可能正在生產應用程式中執行的已發行版本造成影響。
 
-這些知識庫全都可以個別進行測試。 您可以使用 Api，以 generateAnswer 呼叫中的 `isTest` body 屬性作為目標的測試版本。
+這些知識庫全都可以個別進行測試。 使用 Api 時，您可以使用 generateAnswer 呼叫中的 `isTest` body 屬性，以知識庫測試版本為目標。
 
 了解如何[發佈知識庫](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)。
 
@@ -62,13 +62,27 @@ QnA Maker 知識庫 (KB) 端點會根據知識庫的內容對使用者查詢提�
 
 您可以根據從分析得出的結論，適當[更新您的知識庫](../How-To/edit-knowledge-base.md)。
 
-## <a name="version-control-of-a-knowledge-base"></a>知識庫的版本控制
+## <a name="version-control-for-data-in-your-knowledge-base"></a>知識庫中資料的版本控制
 
-QnA Maker 不提供版本控制。 您必須從 [**設定**] 頁面匯出知識庫，並使用您自己的方法和工具。
+資料的版本控制是透過 QnA Maker 入口網站中 [**設定**] 頁面上的 [匯入/匯出] 功能來提供。
 
-從 [**設定**] 頁面完成將知識庫匯出為 TSV 或 XLS 格式的作業。 
+您可以使用 `.tsv` 或 `.xls` 格式來匯出知識庫，藉以備份知識庫。 匯出之後，請將此檔案納入一般原始檔控制檢查的一部分。
 
-當您需要回到特定版本時，您需要從本機系統匯入該檔案。 在 [**設定**] 頁面上，匯入 TSV 或 XLS 檔案。 這會將目前知識庫中的問題和答案取代為匯入檔案的內容。   
+當您需要回到特定版本時，您需要從本機系統匯入該檔案。 匯出的**知識庫只能透過**[**設定**] 頁面上的 [匯入] 使用。 它不能當做檔案或 URL 檔資料來源使用。 這會將目前知識庫中的問題和答案取代為匯入檔案的內容。
+
+## <a name="test-and-production-knowledge-base"></a>測試和生產知識庫
+知識庫是透過 QnA Maker 所建立、維護及使用的問題與解答集存放庫。 每個 QnA Maker 資源都可以保存多個知識庫。
+
+知識庫有兩種狀態： [*測試*] 和 [*已發行*]。
+
+### <a name="test-knowledge-base"></a>測試知識庫
+
+*測試知識庫*是目前編輯、儲存和測試的版本，以取得回應的正確性和完整性。 對測試知識庫所做的變更不會影響應用程式或聊天機器人的終端使用者。 測試知識庫在 HTTP 要求中稱為 `test`。 QnA Maker 的入口網站互動式**測試**窗格提供 `test` 知識。
+
+### <a name="production-knowledge-base"></a>生產知識庫
+
+*已發佈的知識庫*是在聊天機器人或應用程式中使用的版本。 發佈知識庫的動作會將測試知識庫的內容放在已發行的知識庫版本中。 由於已發佈的知識庫是應用程式透過端點所使用的版本，因此請確定內容正確且經過妥善測試。 已發佈的知識庫在 HTTP 要求中稱為 `prod`。
+
 
 ## <a name="next-steps"></a>後續步驟
 

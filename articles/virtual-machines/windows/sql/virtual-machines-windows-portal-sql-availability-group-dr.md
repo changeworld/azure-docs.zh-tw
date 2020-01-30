@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: 96b7c3cf59f947d1476ad840ae81695356d869b6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: cd27e581aaca241fc15886f9f72546f92391b744
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037544"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772730"
 ---
 # <a name="configure-an-availability-group-on-azure-sql-server-virtual-machines-in-different-regions"></a>在不同區域中的 Azure SQL Server 虛擬機器上設定可用性群組
 
@@ -93,9 +93,26 @@ ms.locfileid: "74037544"
 
 1. [將新的 SQL Server 新增到 Windows Server 容錯移轉叢集](virtual-machines-windows-portal-sql-availability-group-tutorial.md#addNode)。
 
-1. 在叢集上建立 IP 位址資源。
+1. 將 IP 位址資源新增至叢集。
 
-   您可以在「容錯移轉叢集管理員」中建立 IP 位址資源。 在可用性群組角色上按一下滑鼠右鍵，然後依序按一下 [加入資源]、[其他資源]、[IP 位址]。
+   您可以在「容錯移轉叢集管理員」中建立 IP 位址資源。 選取叢集的名稱，然後以滑鼠右鍵按一下 [叢集**核心資源**] 底下的叢集名稱，然後選取 [**屬性**]： 
+
+   ![叢集屬性](./media/virtual-machines-windows-portal-sql-availability-group-dr/cluster-name-properties.png)
+
+   在 [**屬性**] 對話方塊中，選取 [ **IP 位址**] 底下的 [**新增**]，然後從遠端網路區域新增叢集名稱的 IP 位址。 在 [ **IP 位址**] 對話方塊中選取 **[確定]** ，然後在 [叢集**內容] 對話方塊**中再次選取 **[確定**]，以儲存新的 IP 位址。 
+
+   ![新增叢集 IP](./media/virtual-machines-windows-portal-sql-availability-group-dr/add-cluster-ip-address.png)
+
+
+1. 將 IP 位址新增為核心叢集名稱的相依性。
+
+   再開啟一次叢集屬性，然後選取 [相依**性] 索引**標籤。設定兩個 IP 位址的或相依性： 
+
+   ![叢集屬性](./media/virtual-machines-windows-portal-sql-availability-group-dr/cluster-ip-dependencies.png)
+
+1. 將 IP 位址資源新增至叢集中的可用性群組角色。 
+
+   以滑鼠右鍵按一下容錯移轉叢集管理員中的 [可用性群組] 角色，選取 [**新增資源**]、[**更多資源**]，然後選取 [ **IP 位址**]。
 
    ![建立 IP 位址](./media/virtual-machines-windows-portal-sql-availability-group-dr/20-add-ip-resource.png)
 
@@ -103,16 +120,6 @@ ms.locfileid: "74037544"
 
    - 使用來自遠端資料中心的網路。
    - 指派來自新 Azure Load Balancer 的 IP 位址。 
-
-1. 在「SQL Server 組態管理員」中的新 SQL Server 上，[啟用 Always On 可用性群組](https://msdn.microsoft.com/library/ff878259.aspx)。
-
-1. [在新的 SQL Server 上開啟防火牆連接埠](virtual-machines-windows-portal-sql-availability-group-prereq.md#endpoint-firewall)。
-
-   您需要開啟的連接埠號碼取決於您的環境。 請開啟要供鏡像端點及 Azure Load Balancer 健康情況探查使用的連接埠。
-
-1. [將複本新增到新 SQL Server 上的可用性群組](https://msdn.microsoft.com/library/hh213239.aspx)。
-
-   針對遠端 Azure 區域中的複本，請設定它來進行非同步複寫搭配手動容錯移轉。  
 
 1. 將 IP 位址資源新增為接聽程式用戶端存取點 (網路名稱) 叢集的相依性。
 
@@ -138,6 +145,17 @@ ms.locfileid: "74037544"
    Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"=$ProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
    ```
 
+1. 在「SQL Server 組態管理員」中的新 SQL Server 上，[啟用 Always On 可用性群組](/sql/database-engine/availability-groups/windows/enable-and-disable-always-on-availability-groups-sql-server)。
+
+1. [在新的 SQL Server 上開啟防火牆連接埠](virtual-machines-windows-portal-sql-availability-group-prereq.md#endpoint-firewall)。
+
+   您需要開啟的連接埠號碼取決於您的環境。 請開啟要供鏡像端點及 Azure Load Balancer 健康情況探查使用的連接埠。
+
+
+1. [將複本新增到新 SQL Server 上的可用性群組](/sql/database-engine/availability-groups/windows/use-the-add-replica-to-availability-group-wizard-sql-server-management-studio)。
+
+   針對遠端 Azure 區域中的複本，請設定它來進行非同步複寫搭配手動容錯移轉。  
+
 ## <a name="set-connection-for-multiple-subnets"></a>設定多個子網路的連線
 
 遠端資料中心內的複本是可用性群組的一部份，但是位於不同的子網路。 如果此複本變成主要複本，可能會發生應用程式連線逾時。 此行為與多子網路部署中的內部部署可用性群組相同。 若要允許來自用戶端應用程式的連線，請更新用戶端連線，或在叢集網路名稱資源上設定名稱解析快取功能。
@@ -148,7 +166,7 @@ ms.locfileid: "74037544"
 
 ## <a name="fail-over-to-remote-region"></a>容錯移轉至遠端區域
 
-若要測試對遠端區域的接聽程式連線能力，您可以將複本容錯移轉至遠端區域。 當複本是非同步複本時，容錯移轉容易導致潛在的資料遺失。 若要容錯移轉又不遺失資料，請將可用性模式變更為同步，並將容錯移轉模式設定為自動。 請使用下列步驟：
+若要測試對遠端區域的接聽程式連線能力，您可以將複本容錯移轉至遠端區域。 當複本是非同步複本時，容錯移轉容易導致潛在的資料遺失。 若要容錯移轉又不遺失資料，請將可用性模式變更為同步，並將容錯移轉模式設定為自動。 使用下列步驟：
 
 1. 在 [物件總管] 中，連接到裝載主要複本的 SQL Server 執行個體。
 1. 在 [AlwaysOn 可用性群組]、[可用性群組] 底下，於您的可用性群組上按一下滑鼠右鍵，然後按一下 [屬性]。
@@ -166,9 +184,9 @@ ms.locfileid: "74037544"
 
 | 位置 | 伺服器執行個體 | 角色 | 可用性模式 | 容錯移轉模式
 | ----- | ----- | ----- | ----- | -----
-| 主要資料中心 | SQL-1 | 主要 | 同步 | 自動
+| 主要資料中心 | SQL-1 | Primary | 同步 | 自動
 | 主要資料中心 | SQL-2 | 次要 | 同步 | 自動
-| 次要或遠端資料中心 | SQL-3 | 次要 | 非同步 | 手動
+| 次要或遠端資料中心 | SQL-3 | 次要 | 非同步的 | 手動
 
 
 ### <a name="more-information-about-planned-and-forced-manual-failover"></a>有關計劃性和強制性容錯移轉的更多詳細資訊
@@ -180,7 +198,7 @@ ms.locfileid: "74037544"
 
 ## <a name="additional-links"></a>其他連結
 
-* [Always On 可用性群組](https://msdn.microsoft.com/library/hh510230.aspx)
+* [AlwaysOn 可用性群組](https://msdn.microsoft.com/library/hh510230.aspx)
 * [Azure 虛擬機器](https://docs.microsoft.com/azure/virtual-machines/windows/)
 * [Azure Load Balancer](virtual-machines-windows-portal-sql-availability-group-tutorial.md#configure-internal-load-balancer)
 * [Azure 可用性設定組](../manage-availability.md)

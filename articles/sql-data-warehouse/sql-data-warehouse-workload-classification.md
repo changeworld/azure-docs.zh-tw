@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 05/01/2019
+ms.date: 01/27/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 15ca4b9fe3c40b7bf49d86464858747642e3cb5a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ab7c8ba64057b4f27e00a2928a65de8eadc78c4b
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685378"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768839"
 ---
 # <a name="azure-sql-data-warehouse-workload-classification"></a>Azure SQL 資料倉儲工作負載分類
 
@@ -36,16 +36,26 @@ ms.locfileid: "73685378"
 
 ## <a name="classification-process"></a>分類程序
 
-現今 SQL 資料倉儲中的分類是藉由將使用者指派給具有對應資源類別（使用[sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)指派）的角色來達成。 對資源類別登入以外的要求加上特性的能力，會受到這項功能的限制。 「[建立工作負載分類器](/sql/t-sql/statements/create-workload-classifier-transact-sql)」語法現在提供更豐富的分類方法。  使用此語法，SQL 資料倉儲使用者可以將重要性和資源類別指派給要求。  
+現今 SQL 資料倉儲中的分類是藉由將使用者指派給具有對應資源類別（使用[sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)指派）的角色來達成。 對資源類別登入以外的要求加上特性的能力，會受到這項功能的限制。 「[建立工作負載分類器](/sql/t-sql/statements/create-workload-classifier-transact-sql)」語法現在提供更豐富的分類方法。  使用此語法，SQL 資料倉儲使用者可以透過 `workload_group` 參數指派重要性，以及指派給要求的系統資源數量。 
 
 > [!NOTE]
 > 分類是根據每個要求來評估。 單一會話中的多個要求可以不同方式分類。
 
-## <a name="classification-precedence"></a>分類優先順序
+## <a name="classification-weighting"></a>分類加權
 
-做為分類程式的一部分，會決定要指派給哪個資源類別的優先順序。 以資料庫使用者為依據的分類優先順序高於角色成員資格。 如果您建立將 UserA 資料庫使用者對應至 mediumrc 資源類別的分類器。 然後，將 RoleA 資料庫角色（其 UserA 為成員）對應至 largerc 資源類別。 將資料庫使用者對應至 mediumrc 資源類別的分類器，會優先于將 RoleA 資料庫角色對應至 largerc 資源類別的分類器。
+做為分類程式的一部分，加權是用來判斷指派的工作負載群組。  加權如下所示：
 
-如果使用者是多個角色的成員，並在多個分類器中指派或比對不同的資源類別，則會給予使用者最高的資源類別指派。  這種行為與現有的資源類別指派行為一致。
+|分類器參數 |Weight   |
+|---------------------|---------|
+|成員名稱： USER      |64       |
+|成員名稱： ROLE      |32       |
+|WLM_LABEL            |16       |
+|WLM_CONTEXT          |8        |
+|START_TIME/END_TIME  |4        |
+
+`membername` 參數是必要的。  不過，如果指定的成員名稱是資料庫使用者，而不是資料庫角色，則使用者的加權會較高，因此會選擇分類器。
+
+如果使用者是多個角色的成員，且被指派了不同的資源類別或在多個分類器中相符，該使用者將獲得最高的資源類別指派。  這種行為與現有的資源類別指派行為一致。
 
 ## <a name="system-classifiers"></a>系統分類器
 
@@ -59,7 +69,7 @@ SELECT * FROM sys.workload_management_workload_classifiers where classifier_id <
 
 代表您建立的系統分類器提供遷移至工作負載分類的簡單路徑。 使用具有分類優先順序的資源類別角色對應，在您開始建立具有重要性的新分類器時，可能會導致分類誤判。
 
-請考慮下列狀況：
+請考慮下列案例：
 
 - 現有的資料倉儲具有指派給 largerc 資源類別角色的資料庫使用者 DBAUser。 資源類別指派是使用 sp_addrolemember 完成。
 - 現在已使用工作負載管理來更新資料倉儲。

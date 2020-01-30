@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 92925dc32d7f26b224811aa852112a275f112b35
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 3f6d4849b02f320c7479469b4ee56be50e4f8dee
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950828"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840089"
 ---
 # <a name="javascript-and-page-layout-versions-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的 JavaScript 和頁面配置版本
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Azure AD B2C 為使用者流程和自訂原則中的使用者介面元素，提供一組封裝內容，其中包含 HTML、CSS 和 JavaScript。 若要為您的應用程式啟用 JavaScript，您必須將專案新增至您的[自訂原則](active-directory-b2c-overview-custom.md)，或在入口網站中為使用者流程啟用它、選取頁面配置，然後在您的要求中使用[b2clogin.com](b2clogin.md) 。
+Azure AD B2C 為使用者流程和自訂原則中的使用者介面元素，提供一組封裝內容，其中包含 HTML、CSS 和 JavaScript。 若要為您的應用程式啟用 JavaScript，您必須將專案新增至您的[自訂原則](custom-policy-overview.md)，或在入口網站中為使用者流程啟用它、選取頁面配置，然後在您的要求中使用[b2clogin.com](b2clogin.md) 。
 
 如果您想要啟用[javascript](javascript-samples.md)用戶端程式代碼，您會想要確定以 javascript 為基礎的元素是不可變的。 否則，任何變更都可能會在使用者頁面上造成非預期的行為。 若要避免這些問題，您可以強制使用頁面配置，並指定頁面配置版本。 這麼做可確保您根據 JavaScript 的所有內容定義都是不可變的。 即使您不想要啟用 JavaScript，您也可以為頁面指定頁面配置版本。
 

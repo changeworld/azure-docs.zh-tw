@@ -17,12 +17,12 @@ ms.date: 04/12/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 97f05afadf38063a58e15e16cbf2e2c3d3e781ca
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 0ed1cb6a080a35fa81c6a859f88d987020c8504c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700255"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773331"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft 身分識別平臺和 OpenID Connect 通訊協定
 
@@ -75,7 +75,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 }
 ```
 
-如果您的應用程式具有自訂簽署金鑰做為使用[宣告對應](active-directory-claims-mapping.md)功能的結果，您必須附加包含應用程式識別碼的 `appid` 查詢參數，才能取得指向應用程式簽署金鑰資訊的 `jwks_uri`。 例如： `https://login.microsoftonline.com/{tenant}/.well-known/v2.0/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` 包含 `https://login.microsoftonline.com/{tenant}/discovery/v2.0/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e`的 `jwks_uri`。
+如果您的應用程式具有自訂簽署金鑰做為使用[宣告對應](active-directory-claims-mapping.md)功能的結果，您必須附加包含應用程式識別碼的 `appid` 查詢參數，才能取得指向應用程式簽署金鑰資訊的 `jwks_uri`。 例如： `https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` 包含 `https://login.microsoftonline.com/{tenant}/discovery/v2.0/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e`的 `jwks_uri`。
 
 一般而言，您可使用此中繼資料文件來設定 OpenID Connect 程式庫或 SDK；程式庫會使用中繼資料來執行其工作。 不過，如果您不是使用預先建立的 OpenID Connect 程式庫，您可以遵循本文其餘部分中的步驟，使用 Microsoft 身分識別平臺端點在 web 應用程式中進行登入。
 

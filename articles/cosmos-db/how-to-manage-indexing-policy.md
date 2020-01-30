@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: thweiss
-ms.openlocfilehash: 3b98975df194af4625087e1beb556efb2a347f43
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 58e8767de786ed2ae92d19c01287aa05c8b63fbb
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872055"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767982"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中的索引編製原則
 
@@ -607,9 +607,9 @@ const containerResponse = await client.database('database').container('container
 const indexTransformationProgress = replaceResponse.headers['x-ms-documentdb-collection-index-transformation-progress'];
 ```
 
-## <a name="use-the-python-sdk"></a>使用 Python SDK
+## <a name="use-the-python-sdk-v3"></a>使用 Python SDK V3
 
-使用 [Python SDK](https://pypi.org/project/azure-cosmos/) 時 (請參閱關於其使用方式的[這個快速入門](create-sql-api-python.md))，系統會以字典的形式來管理容器設定。 您可以從這個字典存取索引編製原則和其所有屬性。
+使用[PYTHON SDK V3](https://pypi.org/project/azure-cosmos/)時（請參閱[本快速入門](create-sql-api-python.md)中有關其使用方式的資訊），容器設定會當做字典來管理。 您可以從這個字典存取索引編製原則和其所有屬性。
 
 取得容器的詳細資料
 
@@ -671,9 +671,75 @@ container['indexingPolicy']['compositeIndexes'] = [
 response = client.ReplaceContainer(containerPath, container)
 ```
 
+## <a name="use-the-python-sdk-v4"></a>使用 Python SDK V4
+
+使用[PYTHON SDK V4](https://pypi.org/project/azure-cosmos/)時，容器設定會當做字典來管理。 您可以從這個字典存取索引編製原則和其所有屬性。
+
+取得容器的詳細資料
+
+```python
+database_client = cosmos_client.get_database_client('database')
+container_client = database_client.get_container_client('container')
+container = container_client.read()
+```
+
+將索引編制模式設定為一致
+
+```python
+indexingPolicy = {
+    'indexingMode': 'consistent'
+}
+```
+
+定義包含路徑和空間索引的索引編制原則
+
+```python
+indexingPolicy = {
+    "indexingMode":"consistent",
+    "spatialIndexes":[
+        {"path":"/location/*","types":["Point"]}
+    ],
+    "includedPaths":[{"path":"/age/*","indexes":[]}],
+    "excludedPaths":[{"path":"/*"}]
+}
+```
+
+定義具有排除路徑的索引編制原則
+
+```python
+indexingPolicy = {
+    "indexingMode":"consistent",
+    "includedPaths":[{"path":"/*","indexes":[]}],
+    "excludedPaths":[{"path":"/name/*"}]
+}
+```
+
+加入複合索引
+
+```python
+indexingPolicy['compositeIndexes'] = [
+    [
+        {
+            "path": "/name",
+            "order": "ascending"
+        },
+        {
+            "path": "/age",
+            "order": "descending"
+        }
+    ]
+]
+```
+
+使用變更來更新容器
+
+```python
+response = database_client.replace_container(container_client, container['partitionKey'], indexingPolicy)
+```
+
 ## <a name="next-steps"></a>後續步驟
 
-在下列文章中深入了解索引編製：
+在下列文章中深入了解編製索引：
 
 - [索引編製概觀](index-overview.md)
 - [編製索引原則](index-policy.md)

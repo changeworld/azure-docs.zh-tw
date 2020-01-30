@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 10/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 214797f187c1812932c00bdf2a39c5ed79e15d4b
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: dbb689182a45367061ae129304a98a8ee9962051
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712670"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840106"
 ---
 # <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>教學課程：在 Azure Active Directory B2C 中註冊應用程式
 
-您的[應用程式](active-directory-b2c-apps.md)必須先在您管理的租使用者中註冊，才可以與 Azure Active Directory B2C （Azure AD B2C）互動。 本教學課程示範如何使用 Azure 入口網站註冊 Web 應用程式。
+您的[應用程式](application-types.md)必須先在您管理的租使用者中註冊，才可以與 Azure Active Directory B2C （Azure AD B2C）互動。 本教學課程示範如何使用 Azure 入口網站註冊 Web 應用程式。
 
 在本文中，您將學會如何：
 

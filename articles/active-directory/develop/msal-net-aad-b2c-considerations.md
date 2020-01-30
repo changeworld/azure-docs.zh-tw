@@ -13,12 +13,12 @@ ms.date: 10/29/2019
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 0f3aaa2489b94d254d64d5844e1a2e41d5ecc132
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: f28b7abc2b3a9ba753a2f7923c9cfed1897c8522
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695699"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834190"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>使用 MSAL.NET 以社交身分識別登入使用者
 
@@ -176,7 +176,7 @@ MSAL.Net 支援[權杖](/dotnet/api/microsoft.identity.client.tokencache?view=az
 或者，如果您使用[B2C 自訂原則](https://aka.ms/ief)，您可以使用 `tid` 宣告，因為它提供了將額外的宣告傳回給應用程式的功能。 若要深入瞭解[宣告轉換](/azure/active-directory-b2c/claims-transformation-technical-profile)
 
 #### <a name="mitigation-for-missing-from-the-token-response"></a>「權杖回應遺失」的緩和措施
-其中一個選項是使用 "name" 宣告做為慣用的使用者名稱。 此程式會在 [傳回宣告] 欄中提及于此[B2C](../../active-directory-b2c/active-directory-b2c-reference-policies.md)檔 > 中，選擇成功編輯設定檔後，您要在授權權杖中傳回給應用程式的宣告。 例如，選取 [顯示名稱]、[郵遞區號]。
+其中一個選項是使用 "name" 宣告做為慣用的使用者名稱。 此程式會在 [傳回宣告] 欄中提及于此[B2C](../../active-directory-b2c/user-flow-overview.md)檔 > 中，選擇成功編輯設定檔後，您要在授權權杖中傳回給應用程式的宣告。 例如，選取 [顯示名稱]、[郵遞區號]。
 
 ## <a name="next-steps"></a>後續步驟 
 

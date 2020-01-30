@@ -15,16 +15,16 @@ ms.date: 11/25/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eefdb42cebad2b7f532392254b652742527ed862
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 9848e686188288b507a0a74d0f9fa16f8f0e4253
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76711483"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841194"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-applications-with-azure-active-directory"></a>使用 Azure Active Directory 自動化應用程式的使用者布建和解除布建
 
-在 Azure Active Directory （Azure AD）中，**應用程式**布建一詞指的是在使用者需要存取的雲端（[SaaS](https://azure.microsoft.com/overview/what-is-saas/)）應用程式中自動建立使用者身分識別和角色。 除了建立使用者身分識別以外，自動布建還包括維護和移除使用者身分識別，做為狀態或角色變更。 常見的案例包括將 Azure AD 的使用者布建到[Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md)、 [Salesforce](../saas-apps/salesforce-provisioning-tutorial.md)、 [ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md)等應用程式中。
+在 Azure Active Directory （Azure AD）中，**應用程式**布建一詞指的是在使用者需要存取的雲端（[SaaS](https://azure.microsoft.com/overview/what-is-saas/)）應用程式中自動建立使用者身分識別和角色。 除了建立使用者身分識別以外，自動佈建還包括隨著狀態或角色變更，維護和移除使用者身分識別。 常見的案例包括將 Azure AD 使用者佈建到 [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md)、[Salesforce](../saas-apps/salesforce-provisioning-tutorial.md)、[ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md)等應用程式。
 
 ![布建總覽圖表](media/user-provisioning/provisioning-overview.png)
 
@@ -67,7 +67,7 @@ Azure AD 為許多熱門的 SaaS 應用程式和人力資源系統提供預先�
 
 * **支援 SCIM 2.0 的應用程式**。 如需如何以一般方式連接可執行 SCIM 2.0 型使用者管理 Api 之應用程式的相關資訊，請參閱[建立 SCIM 端點和設定使用者](use-scim-to-provision-users-and-groups.md)布建。
 
-## <a name="what-is-scim"></a>什麼是 SCIM？
+## <a name="what-is-system-for-cross-domain-identity-management-scim"></a>跨網域身分識別管理（SCIM）的系統是什麼？
 
 為了協助自動布建和取消布建，應用程式會公開專屬的使用者和群組 Api。 不過，嘗試在多個應用程式中管理使用者的任何人，都會告訴您，每個應用程式都會嘗試執行相同的簡單動作，例如建立或更新使用者、將使用者新增至群組或解除布建使用者。 不過，所有這些簡單動作的執行方式有點不同，使用不同的端點路徑、指定使用者資訊的不同方法，以及代表每個資訊元素的不同架構。
 

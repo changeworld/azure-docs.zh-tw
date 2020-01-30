@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 12/05/2019
-ms.openlocfilehash: 4833b8a1835bd5da3327c73058f170fb0a5738a8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/24/2020
+ms.openlocfilehash: 3877632565c1ca2c9a16681e03f8931a94af0599
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450693"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765754"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>適用於 VM 的 Azure 監視器正式推出（GA）的常見問題
 
@@ -20,19 +20,28 @@ ms.locfileid: "75450693"
 
 ## <a name="updates-for-azure-monitor-for-vms"></a>適用於 VM 的 Azure 監視器的更新
 
-我們打算在2020年1月發行新版本的適用於 VM 的 Azure 監視器。 在此版本後啟用適用于 Vm 的 Azure 監視器的客戶會自動收到新版本，但已使用適用於 VM 的 Azure 監視器的現有客戶將會收到升級的提示。 如果您在多個工作區中有大型部署，此常見問題和我們的檔會提供執行大規模升級的指引。
+我們發行了新版本的適用於 VM 的 Azure 監視器。 啟用適用于 Vm 的 Azure 監視器的客戶現在會收到新版本，但已使用適用於 VM 的 Azure 監視器的現有客戶將會收到升級的提示。 如果您在多個工作區中有大型部署，此常見問題和我們的檔會提供執行大規模升級的指引。
 
-進行這項升級時，適用於 VM 的 Azure 監視器效能資料會儲存在與[容器 Azure 監視器](container-insights-overview.md)相同的 `InsightsMetrics` 資料表中，讓您更輕鬆地查詢這兩個資料集。 此外，您也可以儲存我們無法在先前使用的資料表中儲存的更多樣化資料集。 我們的效能檢視也會更新為使用這個新資料表。
+透過這項升級，適用於 VM 的 Azure 監視器效能資料會儲存在與[容器 Azure 監視器](container-insights-overview.md)相同的*InsightsMetrics*資料表中，讓您更輕鬆地查詢這兩個資料集。 此外，您也可以儲存我們無法在先前使用的資料表中儲存的更多樣化資料集。 
 
-我們即將移至串連資料組的新資料類型。 這項變更將于2019年12月發生，並會在 Azure 更新 blog 中宣佈。 目前儲存在 `ServiceMapComputer_CL` 和 `ServiceMapProcess_CL`（也就是自訂記錄資料表）中的資料將會移至名為 `VMComputer` 的專用資料類型和 `VMProcess`。 藉由移至專用的資料類型，它們會獲得資料內嵌的優先順序，而資料表架構將會在所有客戶上標準化。
+在下一周或兩個中，我們的效能觀點也會更新為使用這個新的資料表。
 
 我們發現，詢問現有客戶的升級會導致工作流程中斷，這就是為什麼我們在公開預覽期間選擇立即執行此動作，而不是在 GA 之後才進行。
 
+
 ## <a name="what-is-changing"></a>變更內容為何？
 
-目前當您完成適用於 VM 的 Azure 監視器的上架程式時，您會在您選取用來儲存監視資料的工作區中啟用服務對應解決方案，然後為我們從您的 Vm 收集的資料設定效能計數器。 我們將發行名為**VMInsights**的新解決方案，其中包含資料收集的額外功能，以及將此資料儲存在 Log Analytics 工作區中的新位置。
+我們發行了名為 VMInsights 的新解決方案，其中包含資料收集的額外功能，以及將此資料儲存在 Log Analytics 工作區中的新位置。 
 
-我們目前在 Log Analytics 工作區中使用效能計數器的程式會將資料傳送至 `Perf` 資料表。 這個新的解決方案會將資料傳送至名為 `InsightsMetrics` 的資料表，也就是用於容器的 Azure 監視器。 這個資料表架構可讓我們儲存與 Perf 資料表格式不相容的其他計量和服務資料集。
+在過去，我們已在您的工作區上啟用 ServiceMap 解決方案，並在您的 Log Analytics 工作區中設定效能計數器，以將資料傳送至*Perf*資料表。 這個新的解決方案會將資料傳送至名為*InsightsMetrics*的資料表，也就是用於容器的 Azure 監視器。 這個資料表架構可讓我們儲存與*Perf*資料表格式不相容的其他計量和服務資料集。
+
+
+## <a name="how-do-i-upgrade"></a>如何? 升級嗎？
+需要升級的每個 VM 都將在 Azure 入口網站中適用於 VM 的 Azure 監視器的 [**開始**使用] 索引標籤中識別。 您可以升級單一 VM，或選取多個來一起升級。 使用下列命令以使用 PowerShell 進行升級：
+
+```PowerShell
+Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <resource-group-name> -WorkspaceName <workspace-name> -IntelligencePackName "VMInsights" -Enabled $True
+```
 
 ## <a name="what-should-i-do-about-the-performance-counters-in-my-workspace-if-i-install-the-vminsights-solution"></a>如果我安裝 VMInsights 解決方案，我應該如何處理 [我的工作區] 中的效能計數器？
 

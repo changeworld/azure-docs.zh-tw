@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/23/2020
+ms.date: 01/27/2020
 ms.author: diberry
-ms.openlocfilehash: ed0b9450217b06ff145641d9e268ccee28ee49b2
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 95b7c7446a47fafd26d00b0da4d880786340fcd0
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76710592"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775142"
 ---
 # <a name="how-to-improve-the-luis-app-by-reviewing-endpoint-utterances"></a>如何藉由審查端點語句來改善 LUIS 應用程式
 
@@ -27,6 +27,22 @@ ms.locfileid: "76710592"
 ## <a name="enable-active-learning"></a>啟用主動式學習
 
 若要啟用主動式學習，您必須記錄使用者查詢。 這是藉由呼叫具有 `log=true` querystring 參數和值的[端點查詢](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint)來完成。
+
+使用 LUIS 入口網站來建立正確的端點查詢。
+
+1. 在[預覽 LUIS 入口網站](https://preview.luis.ai/)中，從應用程式清單中選取您的應用程式。
+1. 移至 [**管理**] 區段，然後選取 [ **Azure 資源**]。
+1. 針對指派的預測資源，選取 [**變更查詢參數**]。
+
+    > [!div class="mx-imgBorder"]
+    > ![使用 LUIS 入口網站來儲存主動學習所需的記錄檔。](./media/luis-tutorial-review-endpoint-utterances/azure-portal-change-query-url-settings.png)
+
+1. 藉由選取 [**完成**] 來切換**儲存記錄**檔，然後再加以儲存。
+
+    > [!div class="mx-imgBorder"]
+    > ![使用 LUIS 入口網站來儲存主動學習所需的記錄檔。](./media/luis-tutorial-review-endpoint-utterances/luis-portal-manage-azure-resource-save-logs.png)
+
+     此動作會藉由加入 `log=true` querystring 參數來變更範例 URL。 在對執行時間端點進行預測查詢時，複製並使用已變更的範例查詢 URL。
 
 ## <a name="correct-intent-predictions-to-align-utterances"></a>更正意圖預測以對齊語句
 

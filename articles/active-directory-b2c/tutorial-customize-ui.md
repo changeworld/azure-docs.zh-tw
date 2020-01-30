@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: eba9919b7a1d89e6aea8fb93ef8c4b3e92960368
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 1b0ad7049375cb20d2daa0e6f920b680d03530a5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950862"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840123"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>教學課程：在 Azure Active Directory B2C 中自訂使用者體驗的介面
 
-如需更常見的使用者體驗，例如註冊、登入和設定檔編輯，您可以使用 Azure Active Directory B2C （Azure AD B2C）中的[使用者流程](active-directory-b2c-reference-policies.md)。 本教學課程中的資訊可協助您了解如何使用自己的 HTML 和 CSS 檔案，為這些體驗[自訂使用者介面 (UI)](customize-ui-overview.md)。
+如需更常見的使用者體驗，例如註冊、登入和設定檔編輯，您可以使用 Azure Active Directory B2C （Azure AD B2C）中的[使用者流程](user-flow-overview.md)。 本教學課程中的資訊可協助您了解如何使用自己的 HTML 和 CSS 檔案，為這些體驗[自訂使用者介面 (UI)](customize-ui-overview.md)。
 
-在本文中，您將了解：
+在本文中，您將學會如何：
 
 > [!div class="checklist"]
 > * 建立 UI 自訂檔案
@@ -71,7 +71,7 @@ ms.locfileid: "74950862"
 
     ![Azure 入口網站中 Azure Blob 儲存體的 CORS 設定頁面](./media/tutorial-customize-ui/enable-cors.png)
 
-5. 按一下 [儲存]。
+5. 按一下 [檔案]。
 
 ### <a name="create-the-customization-files"></a>建立自訂檔案
 
@@ -138,7 +138,7 @@ ms.locfileid: "74950862"
 
 ## <a name="update-the-user-flow"></a>更新使用者流程
 
-1. 選擇 Azure 入口網站左上角的**所有服務**，然後搜尋並選取 **Azure AD B2C**。
+1. 選擇 Azure 入口網站左上角的 [所有服務]，然後搜尋並選取 [Azure AD B2C]。
 2. 選取 [使用者流程 (原則)]，然後選取 *B2C_1_signupsignin1* 使用者流程。
 3. 選取 [頁面配置]，然後針對 [統一註冊或登入頁面] 底下的 [使用自訂頁面內容] 按一下 [是]。
 4. 在 [自訂頁面 URI] 中，輸入您先前記下的 custom-ui.html 檔案 URI。
@@ -166,4 +166,4 @@ ms.locfileid: "74950862"
 > * 測試自訂的 UI
 
 > [!div class="nextstepaction"]
-> [Azure Active Directory B2C 中的語言自訂](active-directory-b2c-reference-language-customization.md)
+> [Azure Active Directory B2C 中的語言自訂](user-flow-language-customization.md)

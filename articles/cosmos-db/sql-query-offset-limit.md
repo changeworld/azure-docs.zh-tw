@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: a8df220be211c3c8d8cdeab8a8aebfd35e77ebf8
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 3d23676885323e370cee1e9cc9e98c7128faf2e0
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732581"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771579"
 ---
 # <a name="offset-limit-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的位移限制子句
 
@@ -37,7 +37,11 @@ OFFSET <offset_amount> LIMIT <limit_amount>
 
 ## <a name="remarks"></a>備註
   
-  Offset 限制子句中需要有位移計數和限制計數。 如果使用選擇性的 `ORDER BY` 子句，則會藉由跳過已排序的值來產生結果集。 否則，查詢會傳回固定的值順序。 此子句現在支援單一分割區中的查詢，以及跨分割區查詢。
+  `OFFSET LIMIT` 子句中都需要 `OFFSET` 計數和 `LIMIT` 計數。 如果使用選擇性的 `ORDER BY` 子句，則會藉由跳過已排序的值來產生結果集。 否則，查詢會傳回固定的值順序。
+
+  具有 `OFFSET LIMIT` 之查詢的 RU 費用會隨著位移增加的詞彙數目而增加。 對於包含多個頁面結果的查詢，我們通常建議使用接續 token。 接續 token 是一個「書簽」，可供稍後繼續查詢的位置使用。 如果您使用 `OFFSET LIMIT`，就不會有「書簽」。 如果您想要傳回查詢的下一個頁面，您必須從頭開始。
+  
+  當您想要完全略過檔並儲存用戶端資源時，應該使用 `OFFSET LIMIT`。 例如，如果您想要跳到1000th 查詢結果，而不需要看到結果1到999，則應該使用 `OFFSET LIMIT`。 在後端，`OFFSET LIMIT` 仍會載入每份檔，包括已略過的檔。 效能優勢是避免處理不需要的檔，而節省用戶端資源。
 
 ## <a name="examples"></a>範例
 

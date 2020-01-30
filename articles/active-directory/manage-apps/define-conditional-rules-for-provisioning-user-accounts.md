@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a82efda4cf53931dbf81b993b12a2927f02dfa0b
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 3401ed08a9332d4bb2735e536df33c201b28ca0e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76711692"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841943"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>含範圍篩選器的屬性型應用程式佈建
 本文的目標在於說明如何使用範圍篩選條件來定義以屬性為基礎的規則，以決定將哪些使用者佈建到應用程式。
@@ -94,7 +94,12 @@ Azure AD 佈建服務所處理的每個使用者或群組，一律會根據每�
    g. **REGEX MATCH**。 如果評估的屬性符合規則運算式模式，子句會傳回 "true"。 例如：\([1-9][0-9]\) 符合介於 10 到 99 之間的任何數字。
 
    h. **NOT REGEX MATCH**。 如果評估的屬性不符合規則運算式模式，子句會傳回 "true"。
- 
+   
+   i. **Greater_Than。** 如果評估的屬性大於值，子句會傳回 "true"。 範圍篩選器上指定的值必須是整數，而使用者上的屬性必須是整數 [0，1，2,...]。 
+   
+   j. **Greater_Than_OR_EQUALS。** 如果評估的屬性大於或等於值，子句會傳回 "true"。 範圍篩選器上指定的值必須是整數，而使用者上的屬性必須是整數 [0，1，2,...]。 
+
+
 >[!IMPORTANT] 
 > 不支援 Include 和 IsMemberOf 篩選。 很快就會從 UI 中移除它們。
 

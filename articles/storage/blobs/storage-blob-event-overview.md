@@ -8,32 +8,35 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: cbrooks
-ms.openlocfilehash: b813ef89bb1a55f769d0ea2391855ba5d671c140
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 78ec5b6d330f03d78dcb4e798b23d588fd93398e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648803"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76835958"
 ---
 # <a name="reacting-to-blob-storage-events"></a>回應 Blob 儲存體事件
 
-Azure 儲存體事件可讓應用程式使用新式無伺服器架構, 對事件做出反應, 例如建立和刪除 blob。 它不需要複雜的程式碼或昂貴且無效率的輪詢服務來執行此動作。
+Azure 儲存體事件可讓應用程式對事件做出反應，例如建立和刪除 blob。 它不需要複雜的程式碼或昂貴且無效率的輪詢服務來執行此動作。
 
-相反地, 事件會透過[Azure 事件方格](https://azure.microsoft.com/services/event-grid/)推送至「訂閱者」, 例如 Azure Functions、Azure Logic Apps, 甚至是您自己的自訂 HTTP 接聽程式, 而您只需支付使用的部分。
+事件會使用[Azure 事件方格](https://azure.microsoft.com/services/event-grid/)推送至訂閱者，例如 Azure Functions、Azure Logic Apps，甚至是您自己的 HTTP 接聽程式。 最棒的是，您只需為使用的部分付費。
 
-Blob 儲存體事件會可靠地傳送到 Event Grid 服務, 透過豐富的重試原則和寄不出的信件傳遞, 為您的應用程式提供可靠的傳遞服務。
+Blob 儲存體會將事件傳送至事件方格，透過豐富的重試原則和無效信件，為您的應用程式提供可靠的事件傳遞。
 
 常見的 Blob 儲存體事件案例包括映像或影片處理、搜尋索引，或任何檔案導向的工作流程。 非同步檔案上傳非常適合事件。 在變更不常見但情況需要立即回應的情況下，以事件為基礎的架構可能特別有效。
 
-如果您想要立即試用, 請參閱下列任何快速入門文章:
+如果您想要立即試用，請參閱下列任何快速入門文章：
 
-|如果您想要使用此工具:    |請參閱這篇文章: |
+|如果您想要使用此工具：    |請參閱這篇文章： |
 |--|-|
-|Azure 入口網站    |[快速入門：使用 Azure 入口網站將 Blob 儲存體事件路由至 web 端點](https://docs.microsoft.com/azure/event-grid/blob-event-quickstart-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure Portal    |[快速入門：使用 Azure 入口網站將 Blob 儲存體事件路由至 web 端點](https://docs.microsoft.com/azure/event-grid/blob-event-quickstart-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |PowerShell    |[快速入門：使用 PowerShell 將儲存體事件路由至 web 端點](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart-powershell?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Azure CLI    |[快速入門：使用 Azure CLI 將儲存體事件路由至 web 端點](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 
-如果您的帳戶具有階層式命名空間, 本教學課程將說明如何在 Azure Databricks 中, 將事件方格訂用帳戶、Azure 函式和[作業](https://docs.azuredatabricks.net/user-guide/jobs.html)連接在一起:[教學課程：使用 Azure Data Lake Storage Gen2 事件來更新 Databricks Delta 資料表](data-lake-storage-events.md)。
+如果您的帳戶具有階層式命名空間，本教學課程將說明如何在 Azure Databricks：[教學課程：使用 Azure Data Lake Storage Gen2 事件來更新 Databricks Delta 資料表](data-lake-storage-events.md)中，將事件方格訂用帳戶、Azure 函式和[作業](https://docs.azuredatabricks.net/user-guide/jobs.html)連接在一起。
+
+>[!NOTE]
+> 只有種類為 StorageV2 的儲存體帳戶 **（一般用途 v2）** 和**BlobStorage**支援事件整合。 **儲存體（genral 用途 v1）** 不*支援與*事件方格整合。
 
 ## <a name="the-event-model"></a>事件模型
 
@@ -41,20 +44,20 @@ Blob 儲存體事件會可靠地傳送到 Event Grid 服務, 透過豐富的重�
 
 ![Event Grid 模型](./media/storage-blob-event-overview/event-grid-functional-model.png)
 
-首先, 訂閱某個事件的端點。 然後, 當觸發事件時, 事件方格服務會將該事件的相關資料傳送至端點。
+首先，訂閱某個事件的端點。 然後，當觸發事件時，事件方格服務會將該事件的相關資料傳送至端點。
 
-若要瞭解, 請參閱[Blob 儲存體事件架構](../../event-grid/event-schema-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)文章:
+若要瞭解，請參閱[Blob 儲存體事件架構](../../event-grid/event-schema-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)文章：
 
 > [!div class="checklist"]
-> * Blob 儲存體事件的完整清單, 以及每個事件的觸發方式。
+> * Blob 儲存體事件的完整清單，以及每個事件的觸發方式。
 > * 事件方格會針對每個事件傳送的資料範例。
 > * 出現在資料中的每個索引鍵值組的用途。
 
 ## <a name="filtering-events"></a>篩選事件
 
-Blob 事件訂閱可以根據事件類型來篩選，也可以依據容器名稱和建立或刪除之物件的 Blob 名稱進行篩選。  篩選可以在事件訂用帳戶的[建立](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest)期間或[稍後](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest)套用至事件訂用帳戶。 事件格線中的主體篩選是根據 “begins with” 和 “ends with” 的相符項目來運作，以將具有相符主體的事件傳遞給訂閱者。
+Blob[事件可以](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest)依事件種類、容器名稱或已建立/刪除之物件的名稱進行篩選。 事件方格中的篩選準則符合主體的開頭或結尾，因此具有相符主旨的事件會前往訂閱者。
 
-若要深入瞭解如何套用篩選器, 請參閱[篩選事件方格的事件](https://docs.microsoft.com/azure/event-grid/how-to-filter-events)。
+若要深入瞭解如何套用篩選器，請參閱[篩選事件方格的事件](https://docs.microsoft.com/azure/event-grid/how-to-filter-events)。
 
 Blob 儲存體事件的主體使用格式：
 
@@ -94,7 +97,7 @@ Blob 儲存體事件的主體使用格式：
 > * 請使用 [blobType] 欄位以了解 Blob 允許何種類型的作業，以及您應該使用何種類型的用戶端程式庫來存取 Blob。 有效值為 `BlockBlob` 或 `PageBlob`。 
 > * 請使用帶有 `CloudBlockBlob` 和 `CloudAppendBlob` 建構函式的 [url] 欄位存取 Blob。
 > * 請忽略您不了解的欄位。 此做法將有助於保持未來可能新增功能的彈性。
-> * 如果您想要確保只有在完全認可區塊 Blob 時才會觸發**microsoft.storage.blobcreated**事件`CopyBlob`, 請篩選、 `PutBlob` `PutBlockList`或`FlushWithClose` REST API 呼叫的事件。 只有在資料完全認可至區塊 Blob 之後, 這些 API 呼叫才會觸發**microsoft.storage.blobcreated**事件。 若要瞭解如何建立篩選準則, 請參閱[篩選事件方格的事件](https://docs.microsoft.com/azure/event-grid/how-to-filter-events)。
+> * 如果您想要確保只有在完全認可區塊 Blob 時才會觸發**microsoft.storage.blobcreated**事件，請篩選 `CopyBlob`、`PutBlob`、`PutBlockList` 或 `FlushWithClose` REST API 呼叫的事件。 只有在資料完全認可至區塊 Blob 之後，這些 API 呼叫才會觸發**microsoft.storage.blobcreated**事件。 若要瞭解如何建立篩選準則，請參閱[篩選事件方格的事件](https://docs.microsoft.com/azure/event-grid/how-to-filter-events)。
 
 
 ## <a name="next-steps"></a>後續步驟

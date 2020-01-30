@@ -12,12 +12,12 @@ ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 16651441919ecd5167e518f68addd8964e767001
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 09c704237e3c1fde8a7591d610d1b801dd016c46
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76043523"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836648"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>在 Azure AD B2C 中註冊 SAML 應用程式
 
@@ -41,11 +41,11 @@ Azure AD B2C 利用下列兩種方式的其中一種來達到 SAML 互通性：
 | 案例 | Azure AD B2C 角色 | 操作說明 |
 | -------- | ----------------- | ------- |
 | 我的應用程式預期 SAML 判斷提示會完成驗證。 | **Azure AD B2C 作為身分識別提供者（IdP）**<br />Azure AD B2C 會作為應用程式的 SAML IdP。 | 本文。 |
-| 我的使用者必須使用與 SAML 相容的身分識別提供者（例如 ADFS、Salesforce 或 Shibboleth）進行單一登入。  | **Azure AD B2C 會作為服務提供者（SP）**<br />當連接到 SAML 識別提供者時，Azure AD B2C 會作為服務提供者。 這是您的應用程式與 SAML 識別提供者之間的同盟 proxy。  | <ul><li>[使用自訂原則，設定以 ADFS 作為 SAML IdP 的登入](active-directory-b2c-custom-setup-adfs2016-idp.md)</li><li>[使用自訂原則來設定使用 Salesforce SAML 提供者進行登入](active-directory-b2c-setup-sf-app-custom.md)</li></ul> |
+| 我的使用者必須使用與 SAML 相容的身分識別提供者（例如 ADFS、Salesforce 或 Shibboleth）進行單一登入。  | **Azure AD B2C 會作為服務提供者（SP）**<br />當連接到 SAML 識別提供者時，Azure AD B2C 會作為服務提供者。 這是您的應用程式與 SAML 識別提供者之間的同盟 proxy。  | <ul><li>[使用自訂原則，設定以 ADFS 作為 SAML IdP 的登入](identity-provider-adfs2016-custom.md)</li><li>[使用自訂原則來設定使用 Salesforce SAML 提供者進行登入](identity-provider-salesforce-custom.md)</li></ul> |
 
 ## <a name="prerequisites"></a>必要條件
 
-* 完成在 Azure AD B2C 中[開始使用自訂原則](active-directory-b2c-get-started-custom.md)中的步驟。 您需要從文章中討論的自訂原則入門套件中的*SocialAndLocalAccounts*自訂原則。
+* 完成在 Azure AD B2C 中[開始使用自訂原則](custom-policy-get-started.md)中的步驟。 您需要從文章中討論的自訂原則入門套件中的*SocialAndLocalAccounts*自訂原則。
 * 安全性聲明標記語言（SAML）通訊協定的基本瞭解。
 * 設定為 SAML 服務提供者（SP）的 web 應用程式。 在本教學課程中，您可以使用我們提供的[SAML 測試應用程式][samltest]。
 

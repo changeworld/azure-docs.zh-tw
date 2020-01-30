@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: e6aa53ab5e71cbcc830e31ee1f3650feca7db63b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 107233248e5d0a8d6b578d9395d4cdbade79a842
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885512"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772619"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure 中繼資料服務：Windows VM 的已排定事件
 
@@ -28,7 +28,7 @@ ms.locfileid: "74885512"
 如需 Linux 上已排定事件的資訊，請參閱 [Linux VM 的已排定事件](../linux/scheduled-events.md)。
 
 > [!Note] 
-> 「已排定的事件」已在所有 Azure 區域中正式推出。 請參閱[版本和區域可用性](#version-and-region-availability)以取得最新的版本資訊。
+> 已排定事件已在所有 Azure 區域中正式推出。 請參閱[版本和區域可用性](#version-and-region-availability)以取得最新的版本資訊。
 
 ## <a name="why-scheduled-events"></a>為什麼要使用排定的事件？
 
@@ -54,9 +54,9 @@ ms.locfileid: "74885512"
 如果您是使用可由 VM 內存取的 REST 端點來執行虛擬機器，Azure 中繼資料服務會公開這類相關資訊。 這項資訊是透過無法路由傳送的 IP 取得，因此不會在 VM 之外公開。
 
 ### <a name="endpoint-discovery"></a>端點探索
-針對已啟用 VNET 的 VM，中繼資料服務可以從靜態非可路由 IP `169.254.169.254` 取得。 最新版「已排定的事件」的完整端點為： 
+針對已啟用 VNET 的 VM，中繼資料服務可以從靜態非可路由 IP `169.254.169.254` 取得。 最新版已排定事件的完整端點為： 
 
- > `http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01`
+ > `http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01`
 
 如果虛擬機器不是在虛擬網路中建立，則針對雲端服務和傳統 VM 的預設案例，需要其他邏輯來探索可使用的 IP 位址。 請參閱此範例以了解如何[探索主機端點](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm)。
 
@@ -75,7 +75,7 @@ ms.locfileid: "74885512"
 ### <a name="enabling-and-disabling-scheduled-events"></a>啟用和停用已排定事件
 系統會在您第一次提出事件要求時，為您的服務啟用「已排定事件」。 您可能會在第一次呼叫中遇到長達兩分鐘的延遲回應。 您應該定期查詢端點，以偵測近期的維護事件，以及執行之維護活動的狀態。
 
-如果您的服務在 24 小時內都未提出要求，系統就會為您的服務停用「已排定的事件」。
+如果長達 24 小時未提出要求，您的服務就會停用已排定事件。
 
 ### <a name="user-initiated-maintenance"></a>使用者起始的維護
 使用者透過 Azure 入口網站、API、CLI 或 PowerShell 起始的虛擬機器維護，將會產生「排定的事件」。 這可讓您測試應用程式中的維護準備邏輯，讓應用程式可以為使用者啟動的維護預作準備。
@@ -115,7 +115,7 @@ curl http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01 -H @
 DocumentIncarnation 是 ETag，透過它很容易就能檢查自從上次查詢之後，事件裝載是否已變更。
 
 ### <a name="event-properties"></a>事件屬性
-|屬性  |  描述 |
+|屬性  |  說明 |
 | - | - |
 | EventId | 此事件的全域唯一識別碼。 <br><br> 範例： <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
 | EventType | 此事件造成的影響。 <br><br> 值： <br><ul><li> `Freeze`：虛擬機器已排程暫停幾秒鐘。 CPU 和網路連線可能會暫止，但不會影響記憶體或開啟的檔案。 <li>`Reboot`：虛擬機器已排定要重新開機 (非持續性記憶體都會遺失)。 <li>`Redeploy`︰虛擬機器已排定要移至另一個節點 (暫時磁碟都會遺失)。 <li>`Preempt`：正在刪除點虛擬機器（暫時磁片會遺失）。|

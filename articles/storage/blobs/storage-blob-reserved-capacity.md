@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f393ab23df49751efbbcb3d70314b2ac404a8b77
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 3f9a1cfa92ffa454758849f52cc1977cef6df63a
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981821"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768401"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>使用保留容量將 Blob 儲存體的成本優化
 
@@ -54,7 +54,7 @@ Azure 儲存體保留容量適用于標準儲存體帳戶中的資源，包括�
 
 - 您至少必須是一個企業或個別訂用帳戶的**擁有**者角色，且具有隨用隨付費率。
 - 針對企業訂用帳戶，必須在 EA 入口網站中啟用**新增保留實例**。 或者，如果該設定已停用，則您必須是訂用帳戶上的 EA 系統管理員。
-- 若為雲端解決方案提供者 (CSP) 方案，則只有系統管理員代表或銷售代表可以購買 Azure Cosmos DB 保留容量。
+- 針對雲端解決方案提供者（CSP）計畫，只有系統管理員代理程式或銷售代理人可以購買 Azure Blob 儲存體保留容量。
 
 ## <a name="determine-required-capacity-before-purchase"></a>在購買前先決定所需的容量
 

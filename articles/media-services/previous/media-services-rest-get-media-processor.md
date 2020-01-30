@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: d342cff6d322195ee88a74215f814be7d702aa5e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3d7b3922c9bb7eb79cd6436ba1b265714678fcc8
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60761951"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774897"
 ---
 # <a name="how-to-get-a-media-processor-instance"></a>如何取得媒體處理器執行個體
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "60761951"
 > 
 > 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 媒體處理器是一項元件，可處理特定處理視訊或音訊工作，例如編碼、格式轉換、加密或解密媒體內容。 提交至媒體服務的所有工作都需要媒體處理器，才能編碼、加密或轉換視訊或音訊內容。 
 
 ## <a name="azure-media-processors"></a>Azure 媒體處理器 
@@ -41,7 +41,7 @@ ms.locfileid: "60761951"
 >[!NOTE]
 >在媒體服務中存取實體時，您必須在 HTTP 要求中設定特定的標頭欄位和值。 如需詳細資訊，請參閱 [媒體服務 REST API 開發設定](media-services-rest-how-to-use.md)。
 
-## <a name="connect-to-media-services"></a>連線到媒體服務
+## <a name="connect-to-media-services"></a>連接到媒體服務
 
 如需連線至 AMS API 的詳細資訊，請參閱[使用 Azure AD 驗證存取 Azure 媒體服務 API](media-services-use-aad-auth-to-access-ams-api.md)。 
 
@@ -59,7 +59,7 @@ ms.locfileid: "60761951"
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer <token>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: media.windows.net
 
 回應：

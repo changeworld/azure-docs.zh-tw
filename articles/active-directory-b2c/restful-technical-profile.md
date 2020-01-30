@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 00d5ba6fd86ea722270dfbe73324323bd831a529
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 8a562345caf47540321528560a5ee0b4854c42a9
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263365"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840276"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定義 Azure Active Directory B2C 自訂原則中的 RESTful 技術設定檔
 
@@ -260,7 +260,7 @@ public class ResponseContent
 
 如需使用 RESTful 技術設定檔的範例，請參閱下列文章：
 
-- [將 REST API 宣告交換整合到 Azure AD B2C 使用者旅程圖中以作為使用者輸入的驗證](active-directory-b2c-custom-rest-api-netfw.md)
-- [使用 HTTP 基本驗證保護 RESTful 服務](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
-- [使用用戶端憑證保護您的 RESTful 服務](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
-- [逐步解說︰將 REST API 宣告交換整合到 Azure AD B2C 使用者旅程圖中以作為使用者輸入的驗證](active-directory-b2c-rest-api-validation-custom.md)
+- [將 REST API 宣告交換整合到 Azure AD B2C 使用者旅程圖中以作為使用者輸入的驗證](rest-api-claims-exchange-dotnet.md)
+- [使用 HTTP 基本驗證保護 RESTful 服務](secure-rest-api-dotnet-basic-auth.md)
+- [使用用戶端憑證保護您的 RESTful 服務](secure-rest-api-dotnet-certificate-auth.md)
+- [逐步解說︰將 REST API 宣告交換整合到 Azure AD B2C 使用者旅程圖中以作為使用者輸入的驗證](custom-policy-rest-api-claims-validation.md)

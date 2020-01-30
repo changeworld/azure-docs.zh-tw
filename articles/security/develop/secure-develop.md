@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 9a4f5094837b0c642c4de75180039064de4e40c2
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 76219ec454fd105ed4bbf1a2fa0e922475d8dd1f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513978"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834972"
 ---
 # <a name="develop-secure-applications-on-azure"></a>在 Azure 上開發安全的應用程式
 在本文中，我們會提供您在開發雲端應用程式時應考慮的安全性活動和控制項。 涵蓋 Microsoft[安全性開發週期（SDL）](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx)的執行期間和驗證階段所要考慮的安全性問題和概念。 其目標是要協助您定義活動和 Azure 服務，您可以用來開發更安全的應用程式。
@@ -89,7 +89,7 @@ Azure Marketplace 提供的[開發人員工具](https://azuremarketplace.microso
 
 若要防範暴力密碼破解和字典式猜測，您必須執行強式密碼原則，以確保使用者建立複雜的密碼（例如，長度最少12個字元，而且需要英數位元和特殊字元）。
 
-您可以使用身分識別架構來建立和強制執行密碼原則。 Azure AD B2C 提供[內建原則](../../active-directory-b2c/tutorial-create-user-flows.md#create-a-password-reset-user-flow)、[自助式密碼重設](../../active-directory-b2c/active-directory-b2c-reference-sspr.md)等等，協助您進行密碼管理。
+您可以使用身分識別架構來建立和強制執行密碼原則。 Azure AD B2C 提供[內建原則](../../active-directory-b2c/tutorial-create-user-flows.md#create-a-password-reset-user-flow)、[自助式密碼重設](../../active-directory-b2c/user-flow-self-service-password-reset.md)等等，協助您進行密碼管理。
 
 若要防禦預設帳戶的攻擊，請確認所有金鑰和密碼都是可取代的，而且會在您安裝資源後加以產生或取代。
 

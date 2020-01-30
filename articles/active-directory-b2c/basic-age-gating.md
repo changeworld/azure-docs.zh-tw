@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f7eb4d8e784acc659f6661ef6efbdb06816b142c
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 1fc63b222fd2f08bb4b5596d58f825c8f6b1910e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064444"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836231"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中啟用年齡管制
 
@@ -25,32 +25,32 @@ ms.locfileid: "71064444"
 
 Azure Active Directory B2C （Azure AD B2C）中的年齡管制可讓您識別想要使用應用程式的未成年人。 您可以選擇封鎖未成年人，使其無法登入應用程式。 使用者也可以返回應用程式，並確定其年齡群組和家長同意狀態。 Azure AD B2C 可以在不需要家長同意的情況下封鎖未成年人。 Azure AD B2C 也可以設定為允許應用程式決定如何處理未成年人。
 
-在您的[使用者流程](active-directory-b2c-reference-policies.md)中啟用年齡管制之後，系統會詢問使用者是否已出生，以及其居住所在的國家/地區。 如果使用者登入先前未輸入資訊，則他們需要在下次登入時輸入該資訊。 每次使用者登入時都會套用這些規則。
+在您的[使用者流程](user-flow-overview.md)中啟用年齡管制之後，系統會詢問使用者是否已出生，以及其居住所在的國家/地區。 如果使用者登入先前未輸入資訊，則他們需要在下次登入時輸入該資訊。 每次使用者登入時都會套用這些規則。
 
 Azure AD B2C 會使用使用者輸入的資訊，來確定他們是否為未成年人。 然後，會更新其帳戶中的 **ageGroup** 欄位。 值可為 `null`、`Undefined`、`Minor`、`Adult` 和 `NotAdult`。  然後，**ageGroup** 和 **consentProvidedForMinor** 欄位用於計算 **legalAgeGroupClassification** 的值。
 
 年齡管制牽涉到兩個年齡值：某人不再被視為未成年人的年齡，以及未成年人必須取得家長同意的年齡。 下表列出可用於定義未成年人和未成年人需要同意的年齡規則。
 
-| 國家/區域 | 國家/地區名稱 | 未成年人同意年齡 | 未成年人年齡 |
+| 國家/地區 | 國家/地區名稱 | 未成年人同意年齡 | 未成年人年齡 |
 | -------------- | ------------------- | ----------------- | --------- |
-| 預設 | None | None | 18 |
-| AE | 阿拉伯聯合大公國 | None | 21 |
+| 預設 | 無 | 無 | 18 |
+| AE | 阿拉伯聯合大公國 | 無 | 21 |
 | AT | 奧地利 | 14 | 18 |
 | BE | 比利時 | 14 | 18 |
 | BG | 保加利亞 | 16 | 18 |
-| BH | 巴林 | None | 21 |
-| CM | 喀麥隆 | None | 21 |
+| BH | 巴林 | 無 | 21 |
+| CM | 喀麥隆 | 無 | 21 |
 | CY | 賽普勒斯 | 16 | 18 |
 | CZ | 捷克共和國 | 16 | 18 |
 | DE | 德國 | 16 | 18 |
 | DK | 丹麥 | 16 | 18 |
 | EE | 愛沙尼亞 | 16 | 18 |
-| EG | 埃及 | None | 21 |
+| EG | 埃及 | 無 | 21 |
 | ES | 西班牙 | 13 | 18 |
 | FR | 法國 | 16 | 18 |
 | GB | 英國 | 13 | 18 |
 | GR | 希臘 | 16 | 18 |
-| HR | 克羅埃西亞 | 16 | 18 |
+| 人力資源 | 克羅埃西亞 | 16 | 18 |
 | HU | 匈牙利 | 16 | 18 |
 | IE | 愛爾蘭 | 13 | 18 |
 | IT | 義大利 | 16 | 18 |
@@ -59,19 +59,19 @@ Azure AD B2C 會使用使用者輸入的資訊，來確定他們是否為未成�
 | LU | 盧森堡 | 16 | 18 |
 | LV | 拉脫維亞 | 16 | 18 |
 | MT | 馬爾他 | 16 | 18 |
-| NA | 納米比亞 | None | 21 |
+| NA | 納米比亞 | 無 | 21 |
 | NL | 荷蘭 | 16 | 18 |
 | PL | 波蘭 | 13 | 18 |
 | PT | 葡萄牙 | 16 | 18 |
 | RO | 羅馬尼亞 | 16 | 18 |
 | SE | 瑞典 | 13 | 18 |
-| SG | 新加坡 | None | 21 |
+| SG | 新加坡 | 無 | 21 |
 | SI | 斯洛維尼亞 | 16 | 18 |
 | SK | 斯洛伐克 | 16 | 18 |
-| TD | 查德 | None | 21 |
-| 二四 | 泰國 | None | 20 |
-| TW | 台灣 | None | 20 |
-| US | 美國 | 13 | 18 |
+| TD | 查德 | 無 | 21 |
+| 二四 | 泰國 | 無 | 20 |
+| TW | 台灣 | 無 | 20 |
+| 美國 | 美國 | 13 | 18 |
 
 ## <a name="age-gating-options"></a>年齡管制選項
 

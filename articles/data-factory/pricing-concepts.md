@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/27/2019
-ms.openlocfilehash: 247e41faa39520089dc5c95a34b4fb4b6b618761
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: ee5acc97e4b05a0e93f4ceee8c04b400da211b49
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552129"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769501"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>透過範例了解 Data Factory 定價
 
@@ -156,7 +156,7 @@ ms.locfileid: "75552129"
 | 資料流程假設：執行時間 = 10 分鐘 + 10 最小 TTL | 10 \* 16 核心的一般計算，TTL 為10 |
 | 監視管線假設：僅發生 1 次執行 | 2 個重試的監視執行記錄 (1 個用於管線執行，1 個用於活動執行) |
 
-**總案例定價： $0.3011**
+**總案例定價： $1.4631**
 
 - Data Factory 作業 = **$0.0001**
   - 讀取/寫入 = 10\*00001 = $0.0001 [1 讀取/寫入 = $0.50/50000 = 0.00001]

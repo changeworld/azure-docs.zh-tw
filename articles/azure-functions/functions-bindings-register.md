@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 07/08/2019
 ms.author: cshoe
-ms.openlocfilehash: 599becae0225bea623c383ead49cd9abcea6fff2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 35df4c6c20345053bcc39a267a90a7bb1b227241
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231099"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766238"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>註冊 Azure Functions 系結延伸模組
 
@@ -26,7 +26,7 @@ ms.locfileid: "74231099"
 
 | 開發環境 |註冊<br/> 在 Functions 1.x 中  |註冊<br/> 在 Functions 2.x 中  |
 |-------------------------|------------------------------------|------------------------------------|
-|Azure 入口網站|自動|自動|
+|Azure Portal|自動|自動|
 |Non-.NET 語言或本機 Azure Core 工具開發|自動|[使用 Azure Functions Core Tools 和延伸模組配套](#extension-bundles)|
 |C#使用 Visual Studio 的類別庫|[使用 NuGet 工具](#vs)|[使用 NuGet 工具](#vs)|
 |使用 Visual Studio Code 的 C# 類別庫|N/A|[使用 .NET Core CLI](#vs-code)|
@@ -57,14 +57,11 @@ Install-Package Microsoft.Azure.WebJobs.Extensions.ServiceBus -Version <TARGET_V
 
 用於指定系結的封裝名稱會在該系結的參考文章中提供。 如需範例，請參閱[服務匯流排繫結參考文章的套件一節](functions-bindings-service-bus.md#packages---functions-1x)。
 
-請以特定版本的套件 (例如 `<TARGET_VERSION>`) 取代範例中的 `3.0.0-beta5`。 有效版本會列在[NuGet.org](https://nuget.org)的個別套件頁面上。對應至函式執行時間1.x 或2.x 的主要版本，會在系結的參考文章中指定。
+請以特定版本的套件 (例如 `3.0.0-beta5`) 取代範例中的 `<TARGET_VERSION>`。 有效版本會列在[NuGet.org](https://nuget.org)的個別套件頁面上。對應至函式執行時間1.x 或2.x 的主要版本，會在系結的參考文章中指定。
 
 如果您使用 `Install-Package` 來參考系結，則不需要使用[延伸](#extension-bundles)模組配套。 這個方法是 Visual Studio 內建的類別庫所特有。
 
 ## <a name="vs-code"></a>C#具有 Visual Studio Code 的類別庫
-
-> [!NOTE]
-> 我們建議使用[延伸](#extension-bundles)模組配套，讓函式自動安裝一組相容的系結延伸模組套件。 
 
 在**Visual Studio Code**中，使用 .NET Core CLI 中C#的[dotnet add package](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package)命令，從命令提示字元安裝類別庫專案的套件。 下列範例示範如何新增系結：
 
@@ -76,7 +73,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.<BINDING_TYPE_NAME> --vers
 
 將 `<BINDING_TYPE_NAME>` 取代為包含您所需系結的套件名稱。 您可以在支援的系結[清單](./functions-triggers-bindings.md#supported-bindings)中找到所需的系結參考文章。
 
-請以特定版本的套件 (例如 `<TARGET_VERSION>`) 取代範例中的 `3.0.0-beta5`。 有效版本會列在[NuGet.org](https://nuget.org)的個別套件頁面上。對應至函式執行時間1.x 或2.x 的主要版本，會在系結的參考文章中指定。
+請以特定版本的套件 (例如 `3.0.0-beta5`) 取代範例中的 `<TARGET_VERSION>`。 有效版本會列在[NuGet.org](https://nuget.org)的個別套件頁面上。對應至函式執行時間1.x 或2.x 的主要版本，會在系結的參考文章中指定。
 
 ## <a name="next-steps"></a>後續步驟
 > [!div class="nextstepaction"]

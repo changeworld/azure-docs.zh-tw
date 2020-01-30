@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d737d010f323a5d5b230091ad07ba530d25d6e51
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: d14e6f98f49f112c8b20abec573b48c3b12705db
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949401"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841228"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中自訂使用者介面
 
@@ -28,17 +28,17 @@ ms.locfileid: "74949401"
 
 ### <a name="user-flows"></a>使用者流程
 
-如果您使用[使用者流程](active-directory-b2c-reference-policies.md)，您可以使用內建的*頁面配置範本*，或使用您自己的 HTML 和 CSS 來變更使用者流程頁面的外觀。 本文稍後將討論這兩種方法。
+如果您使用[使用者流程](user-flow-overview.md)，您可以使用內建的*頁面配置範本*，或使用您自己的 HTML 和 CSS 來變更使用者流程頁面的外觀。 本文稍後將討論這兩種方法。
 
 您可以使用[Azure 入口網站](tutorial-customize-ui.md)來設定使用者流程的 UI 自訂。
 
 ### <a name="custom-policies"></a>自訂原則
 
-如果您在應用程式中使用[自訂原則](active-directory-b2c-overview-custom.md)來提供註冊或登入、密碼重設或設定檔編輯，請使用[原則檔案來自訂 UI](active-directory-b2c-ui-customization-custom.md)。
+如果您在應用程式中使用[自訂原則](custom-policy-overview.md)來提供註冊或登入、密碼重設或設定檔編輯，請使用[原則檔案來自訂 UI](custom-policy-ui-customization.md)。
 
-如果您需要根據客戶的決策提供動態內容，請使用可根據查詢字串中傳送的參數，[動態變更頁面內容](active-directory-b2c-ui-customization-custom-dynamic.md)的自訂原則。 例如，您可以根據您從 web 或行動裝置應用程式傳遞的參數，在 Azure AD B2C 註冊或登入頁面上變更背景影像。
+如果您需要根據客戶的決策提供動態內容，請使用可根據查詢字串中傳送的參數，[動態變更頁面內容](custom-policy-ui-customization-dynamic.md)的自訂原則。 例如，您可以根據您從 web 或行動裝置應用程式傳遞的參數，在 Azure AD B2C 註冊或登入頁面上變更背景影像。
 
-### <a name="javascript"></a>Javascript
+### <a name="javascript"></a>JavaScript
 
 您可以在[使用者流程](user-flow-javascript-overview.md)和[自訂原則](page-layout.md)中啟用用戶端 JavaScript 程式碼。
 
@@ -65,6 +65,8 @@ ms.locfileid: "74949401"
 選擇範本時，選取的配置將套用到使用者流程中的所有頁面，並且每一頁的 URI 會顯示在 [自訂頁面 URI] 欄位中。
 
 ## <a name="custom-html-and-css"></a>自訂 HTML 和 CSS
+
+如果您想要使用自訂的 HTML 和 CSS 來設計自己的原則配置，可以針對原則中的每個版面配置名稱，切換 [使用自訂頁面內容] 切換來執行此動作。 請遵循下列關於自訂版面配置設定的指示：
 
 Azure AD B2C 會使用稱為[跨原始資源分享（CORS）](https://www.w3.org/TR/cors/)的方法，在客戶的瀏覽器中執行程式碼。
 
@@ -146,11 +148,11 @@ Azure AD B2C 會使用稱為[跨原始資源分享（CORS）](https://www.w3.org
 | 社交帳戶註冊 | 可在使用社交識別提供者 (例如 Facebook 或 Google) 的現有帳戶註冊時顯示。 當您必須使用註冊表單從客戶收集其他資訊時，就會使用它。 |
 | 統一的註冊或登入 | 可處理客戶的註冊和登入，這些客戶可使用社交識別提供者 (例如 Facebook、Google) 或本機帳戶。 |
 | 多因素驗證 | 客戶可以在註冊或登入期間驗證其電話號碼 (使用文字或語音)。 |
-| Error | 提供錯誤資訊給客戶。 |
+| 錯誤 | 提供錯誤資訊給客戶。 |
 
 ## <a name="localize-content"></a>當地語系化內容
 
-您可以在 Azure AD B2C 租用戶上啟用[語言自訂](active-directory-b2c-reference-language-customization.md)，以將 HTML 內容當地語系化。 啟用此功能可讓 Azure AD B2C 將 OpenID Connect 參數 `ui-locales` 轉送至您的端點。 內容伺服器可使用此參數來提供語言特定的 HTML 頁面。
+您可以在 Azure AD B2C 租用戶上啟用[語言自訂](user-flow-language-customization.md)，以將 HTML 內容當地語系化。 啟用此功能可讓 Azure AD B2C 將 OpenID Connect 參數 `ui-locales` 轉送至您的端點。 內容伺服器可使用此參數來提供語言特定的 HTML 頁面。
 
 您可以根據所使用的地區設定，從不同的地方提取內容。 在已啟用 CORS 的端點中，您可以針對特定語言設定主機內容的資料夾結構。 如果您使用萬用字元值 `{Culture:RFC5646}`，則會呼叫正確的語言。
 
@@ -179,4 +181,4 @@ https://contoso.blob.core.windows.net/fr/myHTML/unified.html
     [在 Azure Active Directory B2C 中自訂應用程式的使用者介面](tutorial-customize-ui.md)。
 - 如果您使用的是**自訂原則**，您可以使用下列文章開始自訂 UI：
 
-    [在 Azure Active Directory B2C 中使用自訂原則來自訂應用程式的使用者介面](active-directory-b2c-ui-customization-custom.md)。
+    [在 Azure Active Directory B2C 中使用自訂原則來自訂應用程式的使用者介面](custom-policy-ui-customization.md)。

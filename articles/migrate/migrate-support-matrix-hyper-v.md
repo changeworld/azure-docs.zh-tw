@@ -3,12 +3,12 @@ title: 支援 Azure Migrate 中的 Hyper-v 評估
 description: 瞭解 Azure Migrate 的 Hyper-v 評估支援。
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 1a036e2f22bb1fd9dac65a3cc643224ecbea3c69
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 9c1228992d71e56b9118e88967478e619c14959a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154800"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834462"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Hyper-v 評估的支援矩陣
 
@@ -64,7 +64,7 @@ Azure Migrate 會使用[Azure Migrate 設備](migrate-appliance.md)來進行探�
 
 **裝置** | **[連接]**
 --- | ---
-**台** | TCP 通訊埠3389上的輸入連線，以允許應用裝置的遠端桌面連線。<br/> 埠44368上的輸入連線，可使用 URL 從遠端存取應用裝置管理應用程式： ``` https://<appliance-ip-or-name>:44368 ```<br/> 埠443、5671和5672上的輸出連線，以將探索和效能中繼資料傳送至 Azure Migrate。
+**台** | TCP 通訊埠3389上的輸入連線，以允許應用裝置的遠端桌面連線。<br/> 埠44368上的輸入連線，可使用 URL 從遠端存取應用裝置管理應用程式： ``` https://<appliance-ip-or-name>:44368 ```<br/> 埠443（HTTPS）、5671和5672（AMQP）上的輸出連線，以將探索和效能中繼資料傳送至 Azure Migrate。
 **Hyper-v 主機/叢集** | WinRM 埠5985（HTTP）和5986（HTTPS）上的輸入連線，可使用通用訊息模型（CIM）會話提取 Hyper-v Vm 的設定和效能中繼資料。
 
 ## <a name="agent-based-dependency-visualization"></a>以代理程式為基礎的相依性視覺效果

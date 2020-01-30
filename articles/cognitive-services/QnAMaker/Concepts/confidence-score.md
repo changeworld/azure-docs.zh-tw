@@ -1,29 +1,29 @@
 ---
-title: 信賴分數 - QnA Maker
+title: 信賴分數-QnA Maker
 titleSuffix: Azure Cognitive Services
-description: 信賴分數表示解答對給定的使用者查詢而言的切合程度。
+description: 必須發行知識庫。 發佈之後，就會使用 generateAnswer API，在執行時間預測端點上查詢知識庫。
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 01/27/2020
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: e2f7136ea7b973386eeb746a74ad09fadb490e83
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: d901a803311805825c22503af6098e805a67e8f6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229109"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843447"
 ---
-# <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>QnA Maker 知識庫的信賴分數
-當使用者查詢與某個知識庫相符時，QnA Maker 會傳回相關的答案以及信賴分數。 此分數表示該答案針對指定之使用者查詢正確比對的信賴度。 
+# <a name="the-confidence-score-of-an-answer"></a>解答的信賴分數
+當使用者查詢與某個知識庫相符時，QnA Maker 會傳回相關的答案以及信賴分數。 此分數表示該答案針對指定之使用者查詢正確比對的信賴度。
 
 信賴分數是介於 0 到 100 之間的數字。 100 分是極可能完全相符，而 0 分表示找不到相符的答案。 分數越高，表示答案的信賴度越好。 針對指定的查詢，可能會傳回多個答案。 在這種情況下，會以信賴分數遞減的順序傳回答案。
 
-在下列範例中，您可以看到一個 QnA 實體和 2 個問題。 
+在下列範例中，您可以看到一個 QnA 實體和 2 個問題。
 
 
 ![範例 QnA 組](../media/qnamaker-concepts-confidencescore/ranker-example-qna.png)
@@ -57,9 +57,9 @@ ms.locfileid: "74229109"
 > [!NOTE]
 > 較新的 QnA Maker 版本包括改善評分邏輯，並可能影響您的閾值。 每當您更新服務時，請務必視需要測試和調整閾值。 您可以[在此](https://www.qnamaker.ai/UserSettings)檢查您的 QnA 服務版本，並[在此](../How-To/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates)了解如何取得最新的更新。
 
-## <a name="set-threshold"></a>設定閾值 
+## <a name="set-threshold"></a>設定閾值
 
-將臨界值分數設定為[GENERATEANSWER API JSON 主體](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration)的屬性。 這表示您會針對每個 GenerateAnswer 呼叫進行設定。 
+將臨界值分數設定為[GENERATEANSWER API JSON 主體](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration)的屬性。 這表示您會針對每個 GenerateAnswer 呼叫進行設定。
 
 從 bot framework 中，使用[C#](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-c)或[node.js](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-nodejs)將分數設定為 options 物件的一部分。
 
@@ -72,40 +72,23 @@ ms.locfileid: "74229109"
 
 
 ## <a name="confidence-score-differences-between-test-and-production"></a>測試與生產環境之間的信賴分數差異
-在測試和發佈的知識庫版本之間，即使內容相同，不過答案的信賴分數可能會略微變化。 這是因為測試的內容和已發佈的知識庫位於不同的 Azure 認知搜尋索引中。 
+在測試和發佈的知識庫版本之間，即使內容相同，不過答案的信賴分數可能會略微變化。 這是因為測試的內容和已發佈的知識庫位於不同的 Azure 認知搜尋索引中。
 
 測試索引會保存您知識庫的所有 QnA 組。 當查詢測試索引時，查詢會套用至整個索引，然後將結果限制為該特定知識庫的資料分割。 如果測試查詢結果對您驗證知識庫的能力有負面影響，您可以：
 * 使用下列其中一項來組織您的知識庫：
-    * 1個資源限制為 1 KB：將您的單一 QnA 資源（和產生的 Azure 認知搜尋測試索引）限制為單一知識庫。 
+    * 1個資源限制為 1 KB：將您的單一 QnA 資源（和產生的 Azure 認知搜尋測試索引）限制為單一知識庫。
     * 2個資源-1 個用於測試，1個用於生產環境：有兩個 QnA Maker 資源，使用一個用於測試（具有自己的測試和生產索引），另一個用於產品（也有自己的測試和生產索引）
 * 而且，在同時查詢測試和生產知識庫時，一律會使用相同的參數（例如 **[top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)** ）
 
 發佈知識庫時，知識庫的問題與答案內容會從測試索引移到 Azure 搜尋服務中的生產索引。 請查看[發佈](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)作業的運作方式。
 
-如果您在不同的區域中有知識庫，每個區域都會使用自己的 Azure 認知搜尋索引。 由於會使用不同的索引，因此，分數將不會完全相同。 
+如果您在不同的區域中有知識庫，每個區域都會使用自己的 Azure 認知搜尋索引。 由於會使用不同的索引，因此，分數將不會完全相同。
 
 
 ## <a name="no-match-found"></a>未找到相符項目
-順位排定程式找不到適當的相符項目時，會傳回 0.0 的信賴分數或「無」，而且預設回應是「在資料庫中找不到適當的相符項目」。 您可以在呼叫端點的 bot 或應用程式代碼中覆寫此[預設回應](#change-default-answer)。 或者，您也可以在 Azure 中設定覆寫回應，這會變更特定 QnA Maker 服務中部署的所有知識庫預設值。
-
-## <a name="change-default-answer"></a>變更預設答案
-
-1. 移至 [Azure 入口網站](https://portal.azure.com)，並瀏覽到代表您建立的 QnA Maker 服務之用的資源群組。
-
-2. 按一下以開啟 **App Service**。
-
-    ![在 Azure 入口網站中，存取 QnA Maker 的 App Service](../media/qnamaker-concepts-confidencescore/set-default-response.png)
-
-3. 按一下 [應用程式設定]，並編輯 [DefaultAnswer] 欄位成為所需的預設回應。 按一下 [儲存]。
-
-    ![選取 [應用程式設定]，然後編輯 QnA Maker 的 DefaultAnswer](../media/qnamaker-concepts-confidencescore/change-response.png)
-
-4. 重新啟動您的應用程式服務
-
-    ![變更 DefaultAnswer 之後，請重新啟動 QnA Maker Appservice](../media/qnamaker-faq/qnamaker-appservice-restart.png)
-
+順位排定程式找不到適當的相符項目時，會傳回 0.0 的信賴分數或「無」，而且預設回應是「在資料庫中找不到適當的相符項目」。 您可以在呼叫端點的 bot 或應用程式代碼中覆寫此[預設回應](../How-To/metadata-generateanswer-usage.md)。 或者，您也可以在 Azure 中設定覆寫回應，這會變更特定 QnA Maker 服務中部署的所有知識庫預設值。
 
 ## <a name="next-steps"></a>後續步驟
 > [!div class="nextstepaction"]
-> [支援的資料來源](./data-sources-supported.md)
+> [最佳做法](./best-practices.md)
 

@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: a9c45321d12b659febfeb4913d66ea3732813918
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9b9e39776e519a91a4464532e11e85da711087b3
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769518"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766243"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Azure Functions 系結運算式模式
 
@@ -67,7 +67,7 @@ public static void Run(
 }
 ```
 
-## <a name="trigger-file-name"></a>觸發程序檔案名稱
+## <a name="trigger-file-name"></a>觸發程式檔案名
 
 Blob 觸發程序的 `path` 可以是可讓您參考其他繫結和函式程式碼中之觸發 Blob 名稱的模式。 此模式也可以包含篩選條件，該條件會指定哪個 Blob 可以觸發函式引動過程。
 
@@ -131,7 +131,19 @@ public static void Run(
 
 ```
 
-您也可以為檔案名稱的各個部分 (例如副檔名) 建立運算式。 如需如何在 Blob 路徑字串中使用運算式和模式的詳細資訊，請參閱[儲存體 Blob 繫結參考](functions-bindings-storage-blob.md)。
+您也可以為部分檔案名建立運算式。 在下列範例中，只會在符合模式的檔案名上觸發函數： `anyname-anyfile.csv`
+
+```json
+{
+    "name": "myBlob",
+    "type": "blobTrigger",
+    "direction": "in",
+    "path": "testContainerName/{date}-{filetype}.csv",
+    "connection": "OrderStorageConnection"
+}
+```
+
+如需如何在 Blob 路徑字串中使用運算式和模式的詳細資訊，請參閱[儲存體 Blob 繫結參考](functions-bindings-storage-blob.md)。
 
 ## <a name="trigger-metadata"></a>觸發程序中繼資料
 

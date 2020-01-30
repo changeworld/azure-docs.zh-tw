@@ -1,20 +1,20 @@
 ---
 title: 將 Azure 服務匯流排應用程式與中斷和災難隔離
-description: 用來保護應用程式，避免潛在服務匯流排中斷的技巧。
+description: 這篇文章提供保護應用程式免于潛在 Azure 服務匯流排中斷的技術。
 services: service-bus-messaging
 author: axisc
 manager: timlt
 editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 09/14/2018
+ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 9375ea4637db7727a40477177f180ab70bd4f417
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2a7f5d5eacb2d03e64ae95d34e1cf0bd37bbc7f2
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462146"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774595"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>將應用程式與服務匯流排中斷和災難隔絕的最佳做法
 

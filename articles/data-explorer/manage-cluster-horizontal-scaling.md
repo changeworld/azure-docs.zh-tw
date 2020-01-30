@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 52a9c0a13723361bbc93362cdd9e2c73ef0372f2
-ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
+ms.openlocfilehash: 8ab192957ead806b4bb3ae8e7395589f3b1ecbbe
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74942234"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76833289"
 ---
 # <a name="manage-cluster-horizontal-scaling-scale-out-in-azure-data-explorer-to-accommodate-changing-demand"></a>在 Azure 資料總管中管理叢集水準調整（向外延展）以配合變更需求
 
@@ -58,9 +58,10 @@ ms.locfileid: "74942234"
 當您的叢集接近使用率的狀態時，請相應放大以維持最佳效能。 相應放大會在以下情況發生：
 * 叢集實例的數目低於使用者定義的實例數目上限。
 * 快取使用率超過一小時。
+* CPU 長達一小時以上。
 
 > [!NOTE]
-> 相應放大邏輯目前不會考慮使用內嵌的使用率和 CPU 計量。 如果這些計量對您的使用案例很重要，請使用[自訂自動](#custom-autoscale)調整。
+> 相應放大邏輯目前不會考慮使用內嵌使用率計量。 如果此度量對您的使用案例很重要，請使用[自訂自動](#custom-autoscale)調整。
 
 **相應縮小**
 
@@ -104,11 +105,11 @@ ms.locfileid: "74942234"
     | **持續時間 (分鐘)** | 選擇適當的時間長度，讓系統在計算計量時有所依據。 從預設的 10 分鐘開始。 |
     |  |  |
 
-    **Action**
+    **動作**
 
     | 設定 | 描述和值 |
     | --- | --- |
-    | **作業** | 選擇相應縮小或相應放大的適當選項。 |
+    | **運算** | 選擇相應縮小或相應放大的適當選項。 |
     | **執行個體計數** | 選擇滿足計量條件時，您欲新增或移除的節點或執行個體數。 |
     | **冷卻時間 (分鐘)** | 選擇調整大小作業間適當的時間間隔。 請從預設的五分鐘開始。 |
     |  |  |

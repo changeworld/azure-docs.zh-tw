@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 1bdca9de0bb6fea608f2a30aa9928f2518fc9dce
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ef8596d8dcc9502f590c55223f207e71f5b91cf6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978163"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843934"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>跨資料中心的媒體服務功能情節和可用性
 
@@ -131,7 +131,7 @@ AMS 在世界各地多個資料中心運作。 這些資料中心會依據地理
 
 ![即時工作流程](./media/scenarios-and-availability/media-services-live-streaming-new.png)
 
-如需詳細資訊，請參閱 [使用啟用的通道來以 Azure 媒體服務執行即時編碼](media-services-manage-live-encoder-enabled-channels.md)。
+如需詳細資訊，請參閱 [使用啟用的通道以 Azure 媒體服務執行即時編碼](media-services-manage-live-encoder-enabled-channels.md)。
 
 如需資料中心內可用性的資訊，請參閱[可用性](#availability)一節。
 
@@ -149,7 +149,7 @@ AMS 客戶可以使用其 AMS 帳戶來調整串流端點、媒體處理和儲�
 
 * 媒體服務客戶可以選擇一個**標準**串流端點或一個**進階**串流端點。 大多數的串流工作負載都適合使用**標準**串流端點。 其所含的功能與**進階**串流端點相同，並會自動調整輸出頻寬。 
 
-    **進階**串流端點適合進階工作，提供專用並能靈活調整的頻寬容量。 擁有**進階**串流端點的客戶預設會取得一個串流單位 (SU)。 藉由新增 SU 可以調整串流端點。 每個 SU 都可為應用程式提供額外的頻寬容量。 如需調整**進階**串流端點的詳細資訊，請參閱[調整串流端點](media-services-portal-scale-streaming-endpoints.md)主題。
+    **進階**串流端點適合進階工作負載，提供專用並能靈活調整的頻寬容量。 擁有**進階**串流端點的客戶預設會取得一個串流單位 (SU)。 藉由新增 SU 可以調整串流端點。 每個 SU 都可為應用程式提供額外的頻寬容量。 如需調整**進階**串流端點的詳細資訊，請參閱[調整串流端點](media-services-portal-scale-streaming-endpoints.md)主題。
 
 * 媒體服務帳戶是與保留單元類型相關聯，後者決定媒體處理工作的速度。 您可以選擇下列的保留單元類型：**S1**、**S2** 或 **S3**。 例如，在執行相同編碼作業的前提下，使用 **S2** 保留單元類型的速度會比 **S1** 類型快。
 
@@ -177,10 +177,10 @@ AMS 客戶可以使用其 AMS 帳戶來調整串流端點、媒體處理和儲�
 
 #### <a name="availability"></a>可用性
 
-|Name|狀態|資料中心
+|名稱|狀態|資料中心
 |---|---|---|
 |Standard|正式上市|所有|
-|高級|正式上市|所有|
+|高階|正式上市|所有|
 
 ### <a name="live-encoding"></a>即時編碼
 
@@ -211,9 +211,8 @@ AMS 提供兩個隨選編碼器：**媒體編碼器標準**和**媒體編碼器�
 |Azure 媒體索引器|正式上市|所有|
 |Azure 媒體動作偵測器|預覽|所有|
 |Azure 媒體 OCR|預覽|所有|
-|Azure Media Redactor|預覽|所有|
+|Azure Media Redactor|正式上市|所有|
 |Azure 媒體視訊縮圖|預覽|所有|
-|Azure 媒體索引器 2|預覽|所有區域 (中國和美國聯邦政府區域除外)|
 
 ### <a name="protection"></a>保護
 
@@ -255,7 +254,7 @@ Microsoft Azure 媒體服務可讓您保護媒體從離開電腦到進行儲存�
 
 ## <a name="additional-notes"></a>其他注意事項
 
-* Widevine 是 Google Inc. 所提供的服務，並受到 Google，Inc. 的服務條款和隱私權原則所約束。
+* Widevine 是 Google Inc. 所提供的服務，並受到 Google Inc. 的服務條款和隱私權原則所約束。
 
 ## <a name="next-steps"></a>後續步驟
 

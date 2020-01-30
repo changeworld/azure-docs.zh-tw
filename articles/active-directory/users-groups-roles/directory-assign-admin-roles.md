@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3090c0bb809b302f0326d2586d2ce1426e4ace85
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: b606566fa2b8154eb9ac8fda97d3c3ae81cd3447
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760601"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767428"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的系統管理員角色權限
 
@@ -1720,7 +1720,7 @@ Exchange 服務管理員 | Exchange 系統管理員 | 29232cdf-9323-42fd-ade2-1d
 全域讀者 | 全域讀者 | f2ef992c-3afb-46b9-b7cf-a126ee74c451
 群組管理員 | 群組管理員 | fdd7a751-b60b-444a-984c-02652fe8fa1c 
 來賓邀請者 | 來賓邀請者 | 95e79109-95c0-4d8e-aee3-d01accf2d47b
-服務台系統管理員 | 密碼管理員 | 729827e3-9c14-49f7-bb1b-9608f156bbb8
+服務台系統管理員 | 服務台管理員 | 729827e3-9c14-49f7-bb1b-9608f156bbb8
 Intune 服務管理員 | Intune 管理員 | 3a2c62db-5318-420d-8d74-23affee5d9d5
 Kaizala 系統管理員 | Kaizala 系統管理員 | 74ef975b-6605-40af-a5d2-b9539d836353
 授權管理員 | 授權管理員 | 4d6ac14f-3453-41d0-bef9-a3e0c569773a

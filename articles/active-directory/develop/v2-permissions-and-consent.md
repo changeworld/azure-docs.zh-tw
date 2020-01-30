@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/10/2019
+ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 29e099e1c53f83d038caa697d11158fd5939ca7b
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 567df85fa634570b0ac04fe6da906776a74c0550
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700306"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76833341"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft 身分識別平台端點中的權限和同意
 
@@ -168,13 +168,16 @@ Microsoft 生態系統中的某些高特權權限可以設定為「受系統管�
 
 ### <a name="request-the-permissions-in-the-app-registration-portal"></a>在應用程式註冊入口網站中要求權限
 
-管理員同意不接受範圍參數，因此所要求的任何權限都必須以靜態方式定義在應用程式的註冊中。 一般來說，最佳做法是確保指定之應用程式靜態定義的許可權，是它將以動態/累加方式要求的許可權超集合。
+應用程式可在應用程式註冊入口網站中，記錄他們所需的許可權（包括委派和應用程式）。  這可讓您使用 `/.default` 範圍和 Azure 入口網站的 [授與系統管理員同意] 選項。  一般來說，最佳做法是確保指定之應用程式靜態定義的許可權，是它將以動態/累加方式要求的許可權超集合。
+
+> [!NOTE]
+應用程式許可權只能透過使用[`/.default`](#the-default-scope)來要求-因此，如果您的應用程式需要應用程式許可權，請確定它們列在應用程式註冊入口網站中。  
 
 #### <a name="to-configure-the-list-of-statically-requested-permissions-for-an-application"></a>設定應用程式的靜態要求許可權清單
 
 1. 在 [ [Azure 入口網站-應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗] 中移至您的應用程式，或[建立應用](quickstart-register-app.md)程式（如果尚未這麼做）。
 2. 找出 [ **Api 許可權**] 區段，然後在 [api 許可權] 中按一下 [新增許可權]。
-3. 從可用的 Api 清單中選取 [ **Microsoft Graph** ]，然後新增您的應用程式所需的許可權。
+3. 從可用的 Api 清單中選取您偏好的資源（例如**Microsoft Graph**），然後新增您的應用程式所需的許可權。
 3. [儲存] 應用程式註冊。
 
 ### <a name="recommended-sign-the-user-into-your-app"></a>建議：將使用者登入您的應用程式
@@ -205,7 +208,7 @@ Microsoft 生態系統中的某些高特權權限可以設定為「受系統管�
 | `client_id` | 必要項 | **應用程式（用戶端）識別碼**， [Azure 入口網站](https://go.microsoft.com/fwlink/?linkid=2083908)指派給您應用程式的應用程式註冊體驗。 |
 | `redirect_uri` | 必要項 |您想要傳送回應以供應用程式處理的重新導向 URI。 它必須與您在應用程式註冊入口網站中註冊的其中一個重新導向 URI 完全相符。 |
 | `state` | 建議 | 同樣會隨權杖回應傳回之要求中所包含的值。 它可以是您想要的任何內容的字串。 請在驗證要求出現之前，先使用此狀態在應用程式中將使用者狀態的相關資訊 (例如他們之前所在的網頁或檢視) 編碼。 |
-|`scope`        | 必要項      | 定義應用程式所要求的許可權集合。 這可以是靜態（使用/.default）或動態範圍。  這可能包括 OIDC 範圍（`openid`、`profile`、`email`）。 | 
+|`scope`        | 必要項      | 定義應用程式所要求的許可權集合。 這可以是靜態（使用[`/.default`](#the-default-scope)）或動態範圍。  這可能包括 OIDC 範圍（`openid`、`profile`、`email`）。 如果您需要應用程式許可權，則必須使用 `/.default` 來要求靜態設定的許可權清單。  | 
 
 
 此時，Azure AD 會要求租用戶系統管理員登入來完成要求。 系統會要求系統管理員核准您在 `scope` 參數中要求的擁有權限。  如果您已使用靜態（`/.default`）值，它的運作方式就像是 v1.0 系統管理員同意端點，並要求同意所有在應用程式的必要許可權中找到的範圍。
@@ -264,9 +267,9 @@ Content-Type: application/json
 
 ## <a name="the-default-scope"></a>/.default 範圍
 
-您可以使用 `/.default` 範圍，協助將您的應用程式從 v1.0 端點遷移至 Microsoft 身分識別平臺端點。 這是每個應用程式的內建範圍，其參考在應用程式註冊時設定的靜態權限清單。 `scope` 值為 `https://graph.microsoft.com/.default` 在功能上與 v1.0 端點 `resource=https://graph.microsoft.com` 相同 - 也就是說，它會對應用程式已在 Azure 入口網站中註冊的 Microsoft Graph 範圍要求權杖。
+您可以使用 `/.default` 範圍，協助將您的應用程式從 v1.0 端點遷移至 Microsoft 身分識別平臺端點。 這是每個應用程式的內建範圍，其參考在應用程式註冊時設定的靜態權限清單。 `scope` 值為 `https://graph.microsoft.com/.default` 在功能上與 v1.0 端點 `resource=https://graph.microsoft.com` 相同 - 也就是說，它會對應用程式已在 Azure 入口網站中註冊的 Microsoft Graph 範圍要求權杖。  它是使用資源 URI + `/.default` 來建立的（例如，如果資源 URI 是 `https://contosoApp.com`的，則要求的範圍會 `https://contosoApp.com/.default`）。  請參閱[尾端斜線的一節](#trailing-slash-and-default)，以瞭解您必須包含第二個斜線才能正確要求權杖的情況。  
 
-/.Default 範圍可以用於任何 OAuth 2.0 流程中，但在代理者[流程](v2-oauth2-on-behalf-of-flow.md)和[用戶端認證流程](v2-oauth2-client-creds-grant-flow.md)中是必要的。  
+/.Default 範圍可以用於任何 OAuth 2.0 流程中，但在代理者[流程](v2-oauth2-on-behalf-of-flow.md)和[用戶端認證流程](v2-oauth2-client-creds-grant-flow.md)中都是必要的，而且在使用 v2 系統管理員同意端點來要求應用程式許可權時也是必要的。  
 
 > [!NOTE]
 > 用戶端無法在單一要求中結合靜態（`/.default`）和動態同意。 因此，`scope=https://graph.microsoft.com/.default+mail.read` 會因為範圍類型的組合而導致錯誤。
@@ -281,15 +284,15 @@ Content-Type: application/json
 
 #### <a name="example-1-the-user-or-tenant-admin-has-granted-permissions"></a>範例1：使用者或租使用者管理員已授與許可權
 
-使用者 (或租用戶管理員) 已對用戶端授與 Microsoft Graph 權限 `mail.read` 和 `user.read`。 如果用戶端對 `scope=https://graph.microsoft.com/.default` 提出要求，則不論向 Microsoft Graph 註冊權限的用戶端應用程式的內容為何，都不會顯示同意提示。 系統會傳回一個權杖，其中包含 `mail.read` 和 `user.read` 範圍。
+在此範例中，使用者（或租使用者系統管理員）已授與用戶端 `mail.read` 和 `user.read`的 Microsoft Graph 許可權。 如果用戶端對 `scope=https://graph.microsoft.com/.default` 提出要求，則不論向 Microsoft Graph 註冊權限的用戶端應用程式的內容為何，都不會顯示同意提示。 系統會傳回一個權杖，其中包含 `mail.read` 和 `user.read` 範圍。
 
 #### <a name="example-2-the-user-hasnt-granted-permissions-between-the-client-and-the-resource"></a>範例2：使用者未授與用戶端與資源之間的許可權
 
-用戶端與 Microsoft Graph 之間不存在使用者同意。 用戶端已註冊 `user.read` 和 `contacts.read` 權限，以及 Azure Key Vault 範圍 `https://vault.azure.net/user_impersonation`。 當用戶端向 `scope=https://graph.microsoft.com/.default` 要求權杖時，使用者會看見 `user.read`、`contacts.read` 和 Key Vault `user_impersonation` 範圍的同意畫面。 傳回的權杖只包含 `user.read` 和 `contacts.read` 範圍。
+在此範例中，用戶端與 Microsoft Graph 之間不會有使用者的同意。 用戶端已註冊 `user.read` 和 `contacts.read` 權限，以及 Azure Key Vault 範圍 `https://vault.azure.net/user_impersonation`。 當用戶端向 `scope=https://graph.microsoft.com/.default` 要求權杖時，使用者會看見 `user.read`、`contacts.read` 和 Key Vault `user_impersonation` 範圍的同意畫面。 傳回的權杖只會有 `user.read` 和 `contacts.read` 範圍，而且僅適用于 Microsoft Graph。 
 
 #### <a name="example-3-the-user-has-consented-and-the-client-requests-additional-scopes"></a>範例3：使用者已同意，而且用戶端要求其他範圍
 
-使用者已經對用戶端同意 `mail.read`。 用戶端已在其註冊中註冊 `contacts.read` 範圍。 當用戶端使用 `scope=https://graph.microsoft.com/.default` 提出權杖要求，並透過 `prompt=consent` 要求同意時，使用者只會對應用程式註冊的所有權限看到同意畫面。 `contacts.read` 將會呈現在同意畫面中，但 `mail.read` 不會。 傳回的權杖會適用於 Microsoft Graph，而且包含 `mail.read` 和 `contacts.read`。
+在此範例中，使用者已同意用戶端的 `mail.read`。 用戶端已在其註冊中註冊 `contacts.read` 範圍。 當用戶端使用 `scope=https://graph.microsoft.com/.default` 提出權杖要求，並透過 `prompt=consent`要求同意時，使用者會看到應用程式所註冊的所有（而且只有）許可權的同意畫面。 `contacts.read` 將會呈現在同意畫面中，但 `mail.read` 不會。 傳回的權杖會適用於 Microsoft Graph，而且包含 `mail.read` 和 `contacts.read`。
 
 ### <a name="using-the-default-scope-with-the-client"></a>使用 /.default 範圍搭配用戶端
 
@@ -306,7 +309,13 @@ response_type=token            //code or a hybrid flow is also possible here
 &state=1234
 ```
 
-這會對所有已註冊的權限產生同意畫面 (根據上述的同意和 `/.default` 描述，如果適用的話)，然後傳回 id_token，而不是存取權杖。  這種行為適用于從 ADAL 移至 MSAL 的特定舊版用戶端，而且不應該供以 Microsoft 身分識別平臺端點為目標的新用戶端使用。  
+這會對所有已註冊的權限產生同意畫面 (根據上述的同意和 `/.default` 描述，如果適用的話)，然後傳回 id_token，而不是存取權杖。  這種行為適用于從 ADAL 移至 MSAL 的特定舊版用戶端，而且**不應該**供以 Microsoft 身分識別平臺端點為目標的新用戶端使用。  
+
+### <a name="trailing-slash-and-default"></a>尾端斜線和/.default
+
+某些資源 Uri 的尾端斜線（`https://contoso.com/`，而不是 `https://contoso.com`），這可能會造成權杖驗證的問題。  這主要發生在要求 Azure 資源管理（`https://management.azure.com/`）的權杖時，其資源 URI 尾端有斜線，而且要求權杖時必須要有它。  因此，要求 `https://management.azure.com/` 和使用 `/.default`的權杖時，您必須要求 `https://management.azure.com//.default`-請注意雙斜線！ 
+
+一般-如果您已驗證權杖是否已發行，且 API 會拒絕該權杖接受它，請考慮新增第二個斜線，然後再試一次。 發生這種情況是因為登入伺服器會發出權杖，其中的物件符合 `scope` 參數中的 Uri，`/.default` 從結尾移除。  如果移除尾端斜線，登入伺服器仍然會處理要求，並對資源 URI 進行驗證，即使它們不再相符也一樣-這是非標準的，不應該由您的應用程式依賴。 
 
 ## <a name="troubleshooting-permissions-and-consent"></a>針對權限和同意進行疑難排解
 

@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 1/05/2020
-ms.openlocfilehash: 7b45ddce0435a903c63855dea8a01353a7ab36ec
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 9b838edea4b5f47fe57305c593944ef5fa93a63c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722538"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768669"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自動容錯移轉群組可以啟用多個資料庫透明且協調的容錯移轉
 
@@ -326,8 +326,8 @@ ms.locfileid: "76722538"
 如果您的商務持續性計劃需要使用具有自動容錯移轉的群組，可以使用傳統的防火牆規則，來限制對您 SQL 資料庫的存取。 若要支援自動容錯移轉，請遵循下列步驟：
 
 1. [建立公用 IP](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
-2. [建立公用負載平衡器](../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-a-basic-load-balancer)並為其指派公用 IP。
-3. [建立虛擬網路和虛擬機器](../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-back-end-servers)以用於前端元件
+2. [建立公用負載平衡器](../load-balancer/quickstart-load-balancer-standard-public-portal.md)並為其指派公用 IP。
+3. [建立虛擬網路和虛擬機器](../load-balancer/quickstart-load-balancer-standard-public-portal.md)以用於前端元件
 4. [建立網路安全性群組](../virtual-network/security-overview.md)並設定輸入連線。
 5. 請使用 'Sql' [服務標籤](../virtual-network/security-overview.md#service-tags)確定會開啟到 Azure SQL 資料庫的輸出連線。
 6. 建立 [SQL 資料庫防火牆規則](sql-database-firewall-configure.md)以允許您在步驟 1 中所建立公用 IP 位址的輸入流量。

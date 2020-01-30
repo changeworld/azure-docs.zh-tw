@@ -3,26 +3,26 @@ title: 在容器群組中啟用 SSL
 description: 為在 Azure 容器實例中執行的容器群組建立 SSL 或 TLS 端點
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 7578ad6f8c451694a90dde00b74bf2e8c6c61109
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 541d53a9a9530f7ac80227dbae598b3da2691301
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483483"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773065"
 ---
 # <a name="enable-an-ssl-endpoint-in-a-container-group"></a>在容器群組中啟用 SSL 端點
 
 本文說明如何使用應用程式容器和執行 SSL 提供者的側車容器來建立[容器群組](container-instances-container-groups.md)。 藉由設定具有個別 SSL 端點的容器群組，您可以為應用程式啟用 SSL 連線，而不需要變更您的應用程式程式碼。
 
-您設定由兩個容器組成的容器群組：
+您可以設定由兩個容器組成的範例容器群組：
 * 應用程式容器，使用公用的 Microsoft [aci-helloworld](https://hub.docker.com/_/microsoft-azuredocs-aci-helloworld)映射執行簡單的 web 應用程式。 
 * 執行公用[Nginx](https://hub.docker.com/_/nginx)映射的側車容器，設定為使用 SSL。 
 
-在此範例中，容器群組只會針對 Nginx 公開端口443及其公用 IP 位址。 Nginx 會將 HTTPS 要求路由傳送至隨附的 web 應用程式，它會在內部接聽埠80。 您可以針對接聽其他埠的容器應用程式調整範例。
+在此範例中，容器群組只會針對 Nginx 公開端口443及其公用 IP 位址。 Nginx 會將 HTTPS 要求路由傳送至隨附的 web 應用程式，它會在內部接聽埠80。 您可以針對接聽其他埠的容器應用程式調整範例。 如需在容器群組中啟用 SSL 的其他方法，請參閱[後續步驟](#next-steps)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-您可以使用 Azure Cloud Shell 或安裝在本機的 Azure CLI 來完成本文。 如果您想要在本機使用，建議使用 2.0.55 版或更新版本。 執行 `az --version` 找出版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+您可以使用 Azure Cloud Shell 或安裝在本機的 Azure CLI 來完成本文。 如果您想要在本機使用，建議使用 2.0.55 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-a-self-signed-certificate"></a>建立自我簽署憑證
 
@@ -38,7 +38,7 @@ openssl req -new -newkey rsa:2048 -nodes -keyout ssl.key -out ssl.csr
 
 依照提示來新增識別資訊。 針對 [一般名稱]，輸入與憑證相關聯的主機名稱。 當系統提示您輸入密碼時，請按 Enter 而不輸入，以略過加入密碼。
 
-執行下列命令，從憑證要求建立自我簽署憑證（.crt 檔案）。 例如︰
+執行下列命令，從憑證要求建立自我簽署憑證（.crt 檔案）。 例如：
 
 ```console
 openssl x509 -req -days 365 -in ssl.csr -signkey ssl.key -out ssl.crt
@@ -235,4 +235,10 @@ app-with-ssl  myresourcegroup  Running   mcr.microsoft.com/azuredocs/nginx, aci-
 
 雖然本文使用側車中的 Nginx，但您可以使用另一個 SSL 提供者，例如[Caddy](https://caddyserver.com/)。
 
-在容器群組中啟用 SSL 的另一個方法，是在具有[azure 應用程式閘道](../application-gateway/overview.md)的[azure 虛擬網路](container-instances-vnet.md)中部署群組。 閘道可以設定為 SSL 端點。 請參閱您可以調整的範例[部署範本](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet)，以在閘道上啟用 SSL 終止。
+如果您在[Azure 虛擬網路](container-instances-vnet.md)中部署容器群組，您可以考慮使用其他選項來啟用後端容器實例的 SSL 端點，包括：
+
+* [Azure Functions Proxy](../azure-functions/functions-proxies.md)
+* [Azure API 管理](../api-management/api-management-key-concepts.md)
+* [Azure 應用程式閘道](../application-gateway/overview.md)
+
+若要使用應用程式閘道，請參閱範例[部署範本](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet)。

@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2019
 ms.author: dech
-ms.openlocfilehash: 8c65b7d010e521ec78322de9807f741c856a2381
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: dcec310db43baa513b2d574d03f3f35dee3f773b
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264843"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768027"
 ---
-# <a name="enable-notebooks-for-azure-cosmos-db-accounts"></a>啟用 Azure Cosmos DB 帳戶的筆記本
+# <a name="enable-notebooks-for-azure-cosmos-db-accounts-preview"></a>啟用 Azure Cosmos DB 帳戶的筆記本（預覽）
 
 > [!IMPORTANT]
 > 下列 Azure 區域目前提供適用于 Azure Cosmos DB 的內建筆記本：澳大利亞東部、美國東部、美國東部2、北歐、美國中南部、東南亞、英國南部、西歐和美國西部2。 若要使用筆記本，請[建立具有筆記本的新帳戶](#enable-notebooks-in-a-new-cosmos-account)，或在其中一個區域中的[現有帳戶上啟用筆記本](#enable-notebooks-in-an-existing-cosmos-account)。

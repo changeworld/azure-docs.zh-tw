@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9cf3bcc514118c7f8052981c39023d6cac361d22
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 2da009189e0265aafcb26b7ec96837965f1ea0c5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314720"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76838542"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>針對 Azure 認知搜尋中的常見索引子錯誤和警告進行疑難排解
 
@@ -74,7 +74,7 @@ ms.locfileid: "76314720"
 | 缺少檔索引鍵 | 檔索引鍵不能遺失或空白 | 確保所有檔都具有有效的檔索引鍵 |
 | 檔索引鍵無效 | 檔索引鍵的長度不能超過1024個字元 | 修改檔索引鍵以符合驗證需求。 |
 | 無法將欄位對應套用至欄位 | 無法將對應函數 `'functionName'` 套用至欄位 `'fieldName'`。 陣列不可以是 null。 參數名稱：位元組 | 再次檢查索引子上定義的[欄位](search-indexer-field-mappings.md)對應，並與失敗檔之指定欄位的資料進行比較。 可能需要修改欄位對應或檔資料。 |
-| 無法讀取域值 | 無法讀取位於索引 `'fieldIndex'`的資料行 `'fieldName'` 的值。 從伺服器接收結果時發生傳輸層級錯誤。 (提供者: TCP 提供者，錯誤: 0 - 遠端主機已強制關閉一個現存的連線)。 | 這些錯誤通常是因為資料來源的基礎服務發生非預期的連接問題。 請稍後再試著透過索引子執行檔。 |
+| 無法讀取域值 | 無法讀取位於索引 `'fieldIndex'`的資料行 `'fieldName'` 的值。 從伺服器接收結果時發生傳輸層級錯誤。 （提供者： TCP 提供者，錯誤： 0-遠端主機已強制關閉現有的連接）。 | 這些錯誤通常是因為資料來源的基礎服務發生非預期的連接問題。 請稍後再試著透過索引子執行檔。 |
 
 <a name="could-not-execute-skill"/>
 
@@ -147,7 +147,7 @@ ms.locfileid: "76314720"
 | 檔在集合中包含太多物件 | 檔中的集合超過[所有複雜集合的最大專案數限制](search-limits-quotas-capacity.md#index-limits)「具有索引鍵的檔 `'1000052'` 在集合中具有 `'4303'` 物件（JSON 陣列）。 在整份檔的集合中，最多可以有 `'3000'` 的物件。 請移除集合中的物件，然後嘗試重新編制檔的索引。」 | 我們建議您將檔中複雜集合的大小縮減為低於限制，並避免高儲存體使用率。
 | 無法連接到目標索引（在重試後仍會繼續），因為服務正在進行其他負載，例如查詢或索引。 | 無法建立連接以更新索引。 搜尋服務正在負荷過重。 | [相應增加您的搜尋服務](search-capacity-planning.md)
 | 搜尋服務正在修補以進行服務更新，或處於拓撲重新設定的過程中。 | 無法建立連接以更新索引。 搜尋服務目前已關閉/搜尋服務正在進行轉換。 | 以至少3個複本設定服務，每個[SLA 檔](https://azure.microsoft.com/support/legal/sla/search/v1_0/)的可用性99.9%
-| 基礎計算/網路資源（罕見）中的失敗 | 無法建立連接以更新索引。 發生未知錯誤。 | 設定要依照[排程執行](search-howto-schedule-indexers.md)的索引子，以從失敗狀態中收取。
+| 基礎計算/網路資源（罕見）中的失敗 | 無法建立連接以更新索引。 發生未知的失敗。 | 設定要依照[排程執行](search-howto-schedule-indexers.md)的索引子，以從失敗狀態中收取。
 | 由於網路問題，在超時期間內，對目標索引所做的索引編制要求並未認可。 | 無法及時建立與搜尋索引的連接。 | 設定要依照[排程執行](search-howto-schedule-indexers.md)的索引子，以從失敗狀態中收取。 此外，如果此錯誤狀況持續發生，請嘗試降低索引子的[批次大小](https://docs.microsoft.com/rest/api/searchservice/create-indexer#parameters)。
 
 <a name="could-not-index-document-because-the-indexer-data-to-index-was-invalid"/>
@@ -249,7 +249,7 @@ ms.locfileid: "76314720"
 ```
 
 以下是每個可能產生此錯誤訊息之技能的目前支援語言參考：
-* [文字分析支援的語言](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)（適用[于 KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md)、 [EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)和[SentimentSkill](cognitive-search-skill-sentiment.md)）
+* [文字分析支援的語言](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)（適用于[KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md)、 [EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)、 [SentimentSkill](cognitive-search-skill-sentiment.md)和[PIIDetectionSkill](cognitive-search-skill-pii-detection.md)）
 * [翻譯工具支援的語言](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)（適用于[文字 TranslationSkill](cognitive-search-skill-text-translation.md)）
 * [文字 SplitSkill](cognitive-search-skill-textsplit.md)支援的語言： `da, de, en, es, fi, fr, it, ko, pt`
 
@@ -303,7 +303,7 @@ ms.locfileid: "76314720"
 <a name="truncated-extracted-text-to-x-characters"/>
 
 ## <a name="warning-truncated-extracted-text-to-x-characters"></a>警告：已將解壓縮的文字截斷成 X 個字元
-索引子會限制可以從任何一份檔中解壓縮多少文字。 此限制取決於定價層：免費層的32000個字元、適用于基本的64000，以及標準、標準 S2 和標準 S3 層的4000000。 已截斷的文字將不會編制索引。 若要避免這個警告，請嘗試將包含大量文字的檔分解成多個小型的檔。 
+索引子會限制可以從任何一份檔中解壓縮多少文字。 此限制取決於定價層：免費層的32000個字元、[基本] 的 [64000]、[標準] 的 [4000000]、[標準 S2 的 8000000] 和 [標準 S3 的 16000000]。 已截斷的文字將不會編制索引。 若要避免這個警告，請嘗試將包含大量文字的檔分解成多個小型的檔。 
 
 如需詳細資訊，請參閱[索引子限制](search-limits-quotas-capacity.md#indexer-limits)。
 

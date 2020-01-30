@@ -4,23 +4,20 @@ titleSuffix: Azure Network Watcher
 description: 此頁面描述如何使用網路監看員封包擷取並搭配 Capanalysis，將往返於 VM 的流量模式視覺化。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: 936d881b-49f9-4798-8e45-d7185ec9fe89
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 3baf73eed09e6880820952b8457526b6c21dd83b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: f36db28b58cd57b6407019b378a82632aa6c6228
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277767"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840650"
 ---
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>使用開放原始碼工具將往返於 VM 的網路流量模式視覺化
 
@@ -38,7 +35,7 @@ Azure 的網路監看員可讓您在網路上執行封包擷取，以便擷取�
 
 ### <a name="install-capanalysis"></a>安裝 CapAnalysis
 
-若要在虛擬機器上安裝 CapAnalysis，您可以參考此處的官方指示： https://www.capanalysis.net/ca/how-to-install-capanalysis。
+若要在虛擬機器上安裝 CapAnalysis，您可以參考此處的官方指示： https://www.capanalysis.net/ca/how-to-install-capanalysis 。
 若要從遠端存取 CapAnalysis，您必須在 VM 上新增輸入安全性規則，以開啟連接埠 9877。 如需有關在網路安全性群組中建立規則的詳細資訊，請參閱[在現有 NSG 中建立規則](../virtual-network/manage-network-security-group.md#create-a-security-rule)。 成功新增規則之後，您應該能夠從 `http://<PublicIP>:9877` 存取CapAnalysis
 
 ### <a name="use-azure-network-watcher-to-start-a-packet-capture-session"></a>使用 Azure 網路監看員啟動封包擷取工作階段
@@ -81,7 +78,7 @@ CapAnalysis 提供各種選項將封包擷取視覺化，各以不同的觀點�
 
     ![geomap][8]
 
-1. 篩選器
+1. 篩選
 
     CapAnalysis 提供一組可快速分析特定封包的篩選器。 例如，您可以選擇依通訊協定來篩選資料，以具體深入探索該流量子集。
 

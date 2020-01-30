@@ -2,21 +2,21 @@
 title: 來自 ACR 工作的跨登錄驗證
 description: 使用 Azure 資源的受控識別來設定 Azure Container Registry 工作（ACR 工作）以存取另一個私人 Azure Container Registry
 ms.topic: article
-ms.date: 07/12/2019
-ms.openlocfilehash: 3dc4792f196ab7553f3167983ce34850669fa5bc
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.date: 01/14/2020
+ms.openlocfilehash: 47b2a50784cf56b089fea0981e5a06d581b8ba3a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456190"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842483"
 ---
 # <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>使用 Azure 管理的身分識別在 ACR 工作中進行跨登錄驗證 
 
 在[ACR](container-registry-tasks-overview.md)工作中，您可以[啟用 Azure 資源的受控識別](container-registry-tasks-authentication-managed-identity.md)。 此工作可以使用身分識別來存取其他 Azure 資源，而不需要提供或管理認證。 
 
-在本文中，您將瞭解如何在從登錄中提取映射的工作中啟用受控識別，而這項作業與用來執行工作的映射不同。
+在本文中，您將瞭解如何在工作中啟用受控識別，從不同于用來執行工作的登錄中提取映射。
 
-若要建立 Azure 資源，本文會要求您執行 Azure CLI 版2.0.68 或更新版本。 執行 `az --version` 找出版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli]。
+若要建立 Azure 資源，本文會要求您執行 Azure CLI 版2.0.68 或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli]。
 
 ## <a name="scenario-overview"></a>案例概觀
 
@@ -26,7 +26,7 @@ ms.locfileid: "74456190"
 
 在真實世界的案例中，組織可能會維護一組可供所有開發小組用來建立其應用程式的基底映射。 這些基底映射會儲存在公司登錄中，每個開發小組僅具有「提取」許可權。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 在本文中，您需要兩個 Azure container registry：
 
@@ -55,11 +55,11 @@ az acr build --image baseimages/node:9-alpine --registry mybaseregistry --file D
 這個範例[多步驟](container-registry-tasks-multi-step.md)工作的步驟定義于[YAML](container-registry-tasks-reference-yaml.md)檔案中。 在您的本機工作目錄中建立名為 `helloworldtask.yaml` 的檔案，並貼上下列內容。 使用基底登錄的伺服器名稱，更新組建步驟中 `REGISTRY_NAME` 的值。
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
 # Replace mybaseregistry with the name of your registry containing the base image
-  - build: -t {{.Run.Registry}}/hello-world:{{.Run.ID}}  https://github.com/Azure-Samples/acr-build-helloworld-node.git -f Dockerfile-app --build-arg REGISTRY_NAME=mybaseregistry.azurecr.io
-  - push: ["{{.Run.Registry}}/hello-world:{{.Run.ID}}"]
+  - build: -t $Registry/hello-world:$ID  https://github.com/Azure-Samples/acr-build-helloworld-node.git -f Dockerfile-app --build-arg REGISTRY_NAME=mybaseregistry.azurecr.io
+  - push: ["$Registry/hello-world:$ID"]
 ```
 
 「組建」步驟會使用 helloworld 中的 `Dockerfile-app` 檔案來建立映射，而這是[Azure 範例/acr-組建-節點](https://github.com/Azure-Samples/acr-build-helloworld-node.git)存放庫。 `--build-arg` 會參考基底登錄以提取基底映射。 成功建立時，會將映射推送至用來執行工作的登錄。
@@ -116,12 +116,15 @@ baseregID=$(az acr show --name mybaseregistry --query id --output tsv)
 使用[az role 指派 create][az-role-assignment-create]命令，將身分識別指派給基底登錄的 `acrpull` 角色。 此角色只有從登錄提取映射的許可權。
 
 ```azurecli
-az role assignment create --assignee $principalID --scope $baseregID --role acrpull
+az role assignment create \
+  --assignee $principalID \
+  --scope $baseregID \
+  --role acrpull
 ```
 
 ## <a name="add-target-registry-credentials-to-task"></a>將目標登錄認證新增至工作
 
-現在，使用[az acr task credential add][az-acr-task-credential-add]命令，將身分識別的認證新增至工作，讓它可以使用基底登錄進行驗證。 執行命令，其對應于您在工作中啟用的受控識別類型。 如果您已啟用使用者指派的身分識別，請以身分識別的用戶端識別碼傳遞 `--use-identity`。 如果您已啟用系統指派的身分識別，請傳遞 `--use-identity [system]`。
+現在，請使用[az acr task credential add][az-acr-task-credential-add]命令，讓工作能夠使用身分識別的認證，向基底登錄進行驗證。 執行命令，其對應于您在工作中啟用的受控識別類型。 如果您已啟用使用者指派的身分識別，請以身分識別的用戶端識別碼傳遞 `--use-identity`。 如果您已啟用系統指派的身分識別，請傳遞 `--use-identity [system]`。
 
 ```azurecli
 # Add credentials for user-assigned identity to the task

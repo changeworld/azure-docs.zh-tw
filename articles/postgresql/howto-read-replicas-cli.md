@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/23/2020
-ms.openlocfilehash: bb2c83757bd86d02a93c52bacdd03ce89186614e
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: b10ac3b4bc9dacd723b8b1265911df721b781189
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719767"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774795"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>從 Azure CLI 建立及管理讀取複本，REST API
 
@@ -38,8 +38,8 @@ ms.locfileid: "76719767"
    ```
 
 > [!NOTE]
-> 如果您在嘗試設定 replication_support azure 時收到「指定 Azure CLI 的值無效」錯誤，可能是您的伺服器預設已有複本集。 Bug 導致無法在複本為內部預設值的較新伺服器上正確反映此設定。
-> 您可以略過準備主要步驟，並移至建立複本。
+> 如果您在嘗試設定 replication_support azure 時收到「指定 Azure CLI 的值無效」錯誤，可能是您的伺服器預設已有複本集。 Bug 導致無法在複本為內部預設值的較新伺服器上正確反映此設定。 <br><br>
+> 您可以略過準備主要步驟，並移至建立複本。 <br><br>
 > 如果您想要確認您的伺服器是在此類別中，請造訪 Azure 入口網站中的伺服器複寫頁面。 [停用複寫] 將會呈現灰色，而且工具列中的 [新增複本] 將會變成作用中。
 
 2. 重新開機伺服器以套用變更。

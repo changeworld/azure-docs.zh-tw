@@ -5,19 +5,19 @@ ms.topic: article
 ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 15b556781f8ba620ab61c502b6f55e55e98df83c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a9d875e2c3899fa91b9cc41c0ee3b5a93ec5b8c8
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430538"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843781"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>設定 Azure App Service 的部署認證
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) 支援兩種認證類，用於[本機 Git 部署](deploy-local-git.md)和 [FTP/S 部署](deploy-ftp.md)。 這些認證與您的 Azure 訂用帳號憑證不同。
 
 * **使用者層級認證**︰一組用於整個 Azure 帳戶的認證。 它可以用來將任何應用程式部署至 Azure 帳戶有權存取的任何訂用帳戶的 App Service 中。 其為呈現在入口網站 GUI 中的預設集合 (例如應用程式[資源頁面](../azure-resource-manager/management/manage-resources-portal.md#manage-resources)的 [概觀] 和 [屬性])。 當使用者透過以角色為基礎的存取控制（RBAC）或共同管理員許可權授與應用程式存取權時，該使用者可以使用自己的使用者層級認證，直到存取權被撤銷為止。 請勿與其他 Azure 使用者共用這些認證。
 
-* **應用程式層級認證**︰一組用於單個 應用程式的認證。 它只可以用來部署該應用程式。 每個應用程式的認證都會在建立應用程式時自動產生。 您無法手動設定它們，但可隨時重設。 若是要透過 (RBAC) 授與應用程式層級認證存取權的使用者，該使用者就必須是應用程式上的參與者或更高權限。 讀者不允許發佈且無法存取那些認證。
+* **應用程式層級認證**︰一組用於單個 應用程式的認證。 它只可以用來部署該應用程式。 每個應用程式的認證都會在建立應用程式時自動產生。 您無法手動設定它們，但可隨時重設。 若要讓使用者透過（RBAC）獲得應用層級認證的存取權，該使用者必須是應用程式上的參與者或更高版本（包括網站參與者內建角色）。 讀者不允許發佈且無法存取那些認證。
 
 ## <a name="userscope"></a>設定使用者層級認證
 

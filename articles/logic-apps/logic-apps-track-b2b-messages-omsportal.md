@@ -3,17 +3,15 @@ title: 使用 Azure 監視器記錄追蹤 B2B 訊息
 description: 使用 Azure Log Analytics 追蹤整合帳戶和 Azure Logic Apps 的 B2B 通訊
 services: logic-apps
 ms.suite: integration
-author: divyaswarnkar
-ms.author: divswa
-ms.reviewer: jonfan, estfan, logicappspm
+ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: 3726b0c8c22614d2acc797295543e69f9358d69c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 6e66bdfcfe9e84c1095f03a41439b904c7cb96df
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792925"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773722"
 ---
 # <a name="track-b2b-messages-with-azure-monitor-logs"></a>使用 Azure 監視器記錄追蹤 B2B 訊息
 
@@ -106,7 +104,7 @@ B2B 訊息經過處理後，您就可以在 [Logic Apps B2B] 圖格上檢視這�
 3. 若要檢視或匯出特定訊息的輸入和輸出，請選取這些訊息，然後選擇 [下載]。 系統提示您時，請將 .zip 檔案儲存至本機電腦，然後解壓縮該檔案。 
 
    解壓縮的資料夾包含每個所選訊息的資料夾。 
-   如果您設定通知，訊息資料夾也會包含具有通知詳細資料的檔案。 
+   如果您設定了通知，則 message 資料夾也會包含具有確認詳細資料的檔案。 
    每個訊息資料夾都會至少有這些檔案： 
    
    * 具有輸入承載和輸出承載詳細資料的人類可讀檔案
@@ -145,7 +143,7 @@ B2B 訊息經過處理後，您就可以在 [Logic Apps B2B] 圖格上檢視這�
 
 以下是每個 AS2 訊息的屬性描述。
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 | --- | --- |
 | 傳送者 | 針對 AS2 協議的 [接收設定] 中所指定的來賓合作夥伴，或 [傳送設定] 中所指定的主機合作夥伴 |
 | 接收者 | 針對 AS2 協議的 [接收設定] 中所指定的主機合作夥伴，或 [傳送設定] 中所指定的來賓合作夥伴 |
@@ -154,8 +152,8 @@ B2B 訊息經過處理後，您就可以在 [Logic Apps B2B] 圖格上檢視這�
 | Ack | MDN 訊息狀態 <br>接受 = 已接收或傳送正值的 MDN。 <br>暫止 = 等候接收或傳送 MDN。 <br>拒絕 = 已接收或傳送負值的 MDN。 <br>不需要 = 未在協議中設定 MDN。 |
 | 方向 | AS2 訊息方向 |
 | 相互關連識別碼 | 與邏輯應用程式中所有觸發程序和動作相關聯的識別碼 |
-| 訊息識別碼 | 來自 AS2 訊息標頭的 AS2 訊息識別碼 |
-| Timestamp | AS2 動作處理訊息的時間 |
+| 訊息 ID | 來自 AS2 訊息標頭的 AS2 訊息識別碼 |
+| 時間戳記 | AS2 動作處理訊息的時間 |
 |          |             |
 
 <a name="as2-folder-file-names"></a>
@@ -167,7 +165,7 @@ B2B 訊息經過處理後，您就可以在 [Logic Apps B2B] 圖格上檢視這�
 | 資料夾或檔案 | 名稱格式 |
 | :------------- | :---------- |
 | 訊息資料夾 | [寄件者]\_[接收者]\_AS2\_[相互關聯識別碼]\_[訊息識別碼]\_[時間戳記] |
-| 輸入、輸出和通知檔案 (若已設定) | **輸入承載**：[寄件者]\_[接收者]\_AS2\_[相互關聯識別碼]\_input_payload.txt </p>**輸出承載**：[寄件者]\_[接收者]\_AS2\_[相互關聯識別碼]\_output\_payload.txt </p></p>**輸入**：[寄件者]\_[接收者]\_AS2\_[相互關聯識別碼]\_inputs.txt </p></p>**輸出**：[寄件者]\_[接收者]\_AS2\_[相互關聯識別碼]\_outputs.txt |
+| 輸入、輸出，以及設定通知檔案 | **輸入承載**：[寄件者]\_[接收者]\_AS2\_[相互關聯識別碼]\_input_payload.txt </p>**輸出承載**：[寄件者]\_[接收者]\_AS2\_[相互關聯識別碼]\_output\_payload.txt </p></p>**輸入**：[寄件者]\_[接收者]\_AS2\_[相互關聯識別碼]\_inputs.txt </p></p>**輸出**：[寄件者]\_[接收者]\_AS2\_[相互關聯識別碼]\_outputs.txt |
 |          |             |
 
 <a name="x12-message-properties"></a>
@@ -176,7 +174,7 @@ B2B 訊息經過處理後，您就可以在 [Logic Apps B2B] 圖格上檢視這�
 
 以下是每個 X12 訊息的屬性描述。
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 | --- | --- |
 | 傳送者 | 針對 X12 協議的 [接收設定] 中所指定的來賓合作夥伴，或 [傳送設定] 中所指定的主機合作夥伴 |
 | 接收者 | 針對 X12 協議的 [接收設定] 中所指定的主機合作夥伴，或 [傳送設定] 中所指定的來賓合作夥伴 |
@@ -188,7 +186,7 @@ B2B 訊息經過處理後，您就可以在 [Logic Apps B2B] 圖格上檢視這�
 | 訊息類型 | EDI X12 訊息類型 |
 | ICN | X12 訊息的交換控制編號 |
 | TSCN | X12 訊息的交易集控制編號 |
-| Timestamp | X12 動作處理訊息的時間 |
+| 時間戳記 | X12 動作處理訊息的時間 |
 |          |             |
 
 <a name="x12-folder-file-names"></a>
@@ -200,7 +198,7 @@ B2B 訊息經過處理後，您就可以在 [Logic Apps B2B] 圖格上檢視這�
 | 資料夾或檔案 | 名稱格式 |
 | :------------- | :---------- |
 | 訊息資料夾 | [寄件者]\_[接收者]\_X12\_[交換控制編號]\_[通用控制編號]\_[交易集控制編號]\_[時間戳記] |
-| 輸入、輸出和通知檔案 (若已設定) | **輸入承載**：[寄件者]\_[接收者]\_X12\_[交換控制編號]\_input_payload.txt </p>**輸出承載**：[寄件者]\_[接收者]\_X12\_[交換控制編號]\_output\_payload.txt </p></p>**輸入**：[寄件者]\_[接收者]\_X12\_[交換控制編號]\_inputs.txt </p></p>**輸出**：[寄件者]\_[接收者]\_X12\_[交換控制編號]\_outputs.txt |
+| 輸入、輸出，以及設定通知檔案 | **輸入承載**：[寄件者]\_[接收者]\_X12\_[交換控制編號]\_input_payload.txt </p>**輸出承載**：[寄件者]\_[接收者]\_X12\_[交換控制編號]\_output\_payload.txt </p></p>**輸入**：[寄件者]\_[接收者]\_X12\_[交換控制編號]\_inputs.txt </p></p>**輸出**：[寄件者]\_[接收者]\_X12\_[交換控制編號]\_outputs.txt |
 |          |             |
 
 <a name="EDIFACT-message-properties"></a>
@@ -209,7 +207,7 @@ B2B 訊息經過處理後，您就可以在 [Logic Apps B2B] 圖格上檢視這�
 
 以下是每個 EDIFACT 訊息的屬性描述。
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 | --- | --- |
 | 傳送者 | 針對 EDIFACT 協議的 [接收設定] 中所指定的來賓合作夥伴，或 [傳送設定] 中所指定的主機合作夥伴 |
 | 接收者 | 針對 EDIFACT 協議的 [接收設定] 中所指定的主機合作夥伴，或 [傳送設定] 中所指定的來賓合作夥伴 |
@@ -221,7 +219,7 @@ B2B 訊息經過處理後，您就可以在 [Logic Apps B2B] 圖格上檢視這�
 | 訊息類型 | EDIFACT 訊息類型 |
 | ICN | EDIFACT 訊息的交換控制編號 |
 | TSCN | EDIFACT 訊息的交易集控制編號 |
-| Timestamp | EDIFACT 動作處理訊息的時間 |
+| 時間戳記 | EDIFACT 動作處理訊息的時間 |
 |          |               |
 
 <a name="edifact-folder-file-names"></a>
@@ -233,7 +231,7 @@ B2B 訊息經過處理後，您就可以在 [Logic Apps B2B] 圖格上檢視這�
 | 資料夾或檔案 | 名稱格式 |
 | :------------- | :---------- |
 | 訊息資料夾 | [寄件者]\_[接收者]\_EDIFACT\_[交換控制編號]\_[通用控制編號]\_[交易集控制編號]\_[時間戳記] |
-| 輸入、輸出和通知檔案 (若已設定) | **輸入承載**：[寄件者]\_[接收者]\_EDIFACT\_[交換控制編號]\_input_payload.txt </p>**輸出承載**：[寄件者]\_[接收者]\_EDIFACT\_[交換控制編號]\_output\_payload.txt </p></p>**輸入**：[寄件者]\_[接收者]\_EDIFACT\_[交換控制編號]\_inputs.txt </p></p>**輸出**：[寄件者]\_[接收者]\_EDIFACT\_[交換控制編號]\_outputs.txt |
+| 輸入、輸出，以及設定通知檔案 | **輸入承載**：[寄件者]\_[接收者]\_EDIFACT\_[交換控制編號]\_input_payload.txt </p>**輸出承載**：[寄件者]\_[接收者]\_EDIFACT\_[交換控制編號]\_output\_payload.txt </p></p>**輸入**：[寄件者]\_[接收者]\_EDIFACT\_[交換控制編號]\_inputs.txt </p></p>**輸出**：[寄件者]\_[接收者]\_EDIFACT\_[交換控制編號]\_outputs.txt |
 |          |             |
 
 ## <a name="next-steps"></a>後續步驟

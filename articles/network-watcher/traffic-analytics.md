@@ -3,23 +3,21 @@ title: Azure 流量分析 | Microsoft Docs
 description: 了解如何透過流量分析來分析 Azure 網路安全性群組流量記錄。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
-ms.author: kumud
+ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: 91fb4551f4651f44a1f7358951c5d4cc0ff70644
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: 6cec7c813b0723ac770da6ebd04f4d2cf26a1409
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73907151"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840582"
 ---
 # <a name="traffic-analytics"></a>流量分析
 
@@ -76,7 +74,7 @@ Azure 虛擬網路具有 NSG 流量記錄，可為您了解透過與個別網路
 * 巴西南部
 * 英國西部
 * 英國南部
-* 澳洲東部
+* 澳大利亞東部
 * 澳洲東南部
 * 東亞
 * 東南亞
@@ -85,7 +83,7 @@ Azure 虛擬網路具有 NSG 流量記錄，可為您了解透過與個別網路
 * 印度南部
 * 日本東部 
 * 日本西部
-* 美國政府維吉尼亞州
+* US Gov 維吉尼亞州
 * 中國東部 2
 
 ## <a name="supported-regions-log-analytics-workspaces"></a>支援的區域： Log Analytics 工作區
@@ -107,17 +105,17 @@ Log Analytics 工作區必須存在於下列區域：
 * 巴西南部
 * 英國西部
 * 英國南部
-* 澳洲東部
+* 澳大利亞東部
 * 澳洲東南部
 * 東亞
 * 東南亞
 * 南韓中部
 * 印度中部
 * 日本東部
-* 美國政府維吉尼亞州
+* US Gov 維吉尼亞州
 * 中國東部 2
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 ### <a name="user-access-requirements"></a>使用者存取需求
 
@@ -125,9 +123,9 @@ Log Analytics 工作區必須存在於下列區域：
 
 |部署模型   | 角色                   |
 |---------          |---------               |
-|資源管理員   | 擁有者                  |
+|Resource Manager   | 擁有者                  |
 |                   | 參與者            |
-|                   | 讀取器                 |
+|                   | 讀取者                 |
 |                   | 網路參與者    |
 
 如果您的帳戶未指派給其中一個內建角色，則必須指派給一個[自訂角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)，且該角色已獲得下列訂用帳戶層級的動作：
@@ -196,7 +194,7 @@ New-AzStorageAccount `
 > [!NOTE]
 >裝載流量分析解決方案和 NSG 的記錄分析工作區不需要位於相同區域中。 例如，您可以用西歐區域的工作區來處理流量分析，而 NSG 則位於美國東部和美國西部。 在相同的工作區中可設定多個 NSG。
 
-8. 選取 [ **儲存**]。
+8. 選取 [儲存]。
 
     ![選取儲存體帳戶、Log Analytics 工作區和啟用流量分析](./media/traffic-analytics/ta-customprocessinginterval.png)
 
@@ -212,7 +210,7 @@ New-AzStorageAccount `
 
 此儀表板第一次可能需要 30 分鐘才會出現，因為流量分析必須先彙總足夠的資料以衍生有意義的深入資訊，才能夠產生任何報告。
 
-## <a name="usage-scenarios"></a>使用案例
+## <a name="usage-scenarios"></a>使用方法案例
 
 您在流量分析完整設定後可能想要取得的深入資訊如下：
 
@@ -294,7 +292,7 @@ New-AzStorageAccount `
 
     ![顯示流量分布的儀表板](./media/traffic-analytics/dashboard-showcasing-traffic-distribution.png)
 
-- 地理地圖會顯示選取參數的頂端功能區，例如資料中心（已部署/無部署/使用中/非使用中分析/已啟用/未啟用的流量分析）和國家/地區（提供作用中的良性/惡意流量）部署
+- 地理地圖會顯示選取參數的頂端功能區，例如資料中心（已部署/無部署/使用中/非使用中分析/已啟用/未啟用的流量分析），以及對使用中部署造成良性/惡意流量的國家/地區：
 
     ![顯示使用中部署的地理地圖檢視](./media/traffic-analytics/geo-map-view-showcasing-active-deployment.png)
 

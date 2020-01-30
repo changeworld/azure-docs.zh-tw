@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 06/17/2019
+ms.date: 01/27/2020
 ms.author: mlearned
-ms.openlocfilehash: 497dab37f178a9ae7d0ab6cd647a10bac44539f8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d1d04ab3ebb96d2739b991620b05aa307d9eaf91
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472500"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767443"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>預覽-使用 Azure CLI 在 Azure Kubernetes Service （AKS）叢集上建立 Windows Server 容器
 
@@ -69,7 +69,7 @@ az feature register --name WindowsPreview --namespace Microsoft.ContainerService
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/WindowsPreview')].{Name:name,State:properties.state}"
 ```
 
-當註冊狀態為 `Registered` 時，請按 Ctrl-c 停止監視狀態。  然後使用[az provider register][az-provider-register]命令重新整理*microsoft.containerservice*資源提供者的註冊：
+當註冊狀態為 `Registered`時，請按 Ctrl-c 停止監視狀態。  然後使用[az provider register][az-provider-register]命令重新整理*microsoft.containerservice*資源提供者的註冊：
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -89,7 +89,7 @@ az provider register --namespace Microsoft.ContainerService
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
-Azure 資源群組是在其中部署與管理 Azure 資源的邏輯群組。 建立資源群組時，系統會要求您指定位置。 此位置是儲存資源群組中繼資料的位置，如果您未在資源建立期間指定另一個區域，此位置也會是您在 Azure 中執行資源的位置。 使用 [az group create][az-group-create] 命令來建立資源群組。
+Azure 資源群組是部署及管理 Azure 資源所在的邏輯群組。 建立資源群組時，系統會要求您指定位置。 此位置是儲存資源群組中繼資料的位置，如果您未在資源建立期間指定另一個區域，此位置也會是您在 Azure 中執行資源的位置。 使用 [az group create][az-group-create] 命令來建立資源群組。
 
 下列範例會在 eastus 位置建立名為 myResourceGroup 的資源群組。
 
@@ -136,7 +136,7 @@ az aks create \
     --name myAKSCluster \
     --node-count 2 \
     --enable-addons monitoring \
-    --kubernetes-version 1.14.6 \
+    --kubernetes-version 1.15.7 \
     --generate-ssh-keys \
     --windows-admin-password $PASSWORD_WIN \
     --windows-admin-username azureuser \
@@ -162,12 +162,12 @@ az aks nodepool add \
     --os-type Windows \
     --name npwin \
     --node-count 1 \
-    --kubernetes-version 1.14.6
+    --kubernetes-version 1.15.7
 ```
 
-上述命令會建立名為*npwin*的新節點集區，並將它新增至*myAKSCluster*。 建立節點集區以執行 Windows Server 容器時，[*節點-vm-大小*] 的預設值為 [ *Standard_D2s_v3*]。 如果您選擇設定 [*節點-vm 大小*] 參數，請檢查[受限制的 vm 大小][restricted-vm-sizes]清單。 建議的最小大小為*Standard_D2s_v3*。 上述命令也會使用執行 `az aks create` 時，在預設 vnet 中建立的預設子網。
+上述命令會建立名為*npwin*的新節點集區，並將它新增至*myAKSCluster*。 建立節點集區以執行 Windows Server 容器時，[*節點-vm-大小*] 的預設值為 [ *Standard_D2s_v3*]。 如果您選擇設定 [*節點-vm 大小*] 參數，請檢查[受限制的 vm 大小][restricted-vm-sizes]清單。 建議的最小大小為*Standard_D2s_v3*。 上述命令也會使用執行 `az aks create`時，預設 vnet 中所建立的預設子網。
 
-## <a name="connect-to-the-cluster"></a>連接到叢集
+## <a name="connect-to-the-cluster"></a>連線至叢集
 
 若要管理 Kubernetes 叢集，請使用 Kubernetes 命令列用戶端：[kubectl][kubectl]。 如果您使用 Azure Cloud Shell，則 `kubectl` 已安裝。 若要在本機安裝 `kubectl`，請使用 [az aks install-cli][az-aks-install-cli] 命令：
 
@@ -181,7 +181,7 @@ az aks install-cli
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-若要驗證叢集的連線，請使用 [kubectl get][kubectl-get] 命令來傳回叢集節點的清單。
+若要驗證針對您叢集的連線，請使用 [kubectl get][kubectl-get] 命令來傳回叢集節點的清單。
 
 ```azurecli-interactive
 kubectl get nodes
@@ -191,8 +191,8 @@ kubectl get nodes
 
 ```
 NAME                                STATUS   ROLES   AGE    VERSION
-aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.14.6
-aksnpwin987654                      Ready    agent   108s   v1.14.6
+aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.15.7
+aksnpwin987654                      Ready    agent   108s   v1.15.7
 ```
 
 ## <a name="run-the-application"></a>執行應用程式

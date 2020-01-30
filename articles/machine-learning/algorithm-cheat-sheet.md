@@ -9,18 +9,20 @@ ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
 ms.date: 11/04/2019
-ms.openlocfilehash: b43f2f351345f05c3eb56a84fb1a0eadb4826707
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 82d4131170002a3d9ffd78933c9dc566c3b1d921
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771507"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767636"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>Azure Machine Learning 設計工具的 Machine Learning 演算法功能提要
 
 **Azure Machine Learning 演算法小祕技**可協助您針對預測性分析模型選擇正確的演算法。
 
 Azure Machine Learning 具有來自***分類***、***推薦系統*** ***、叢集***、***異常偵測***、***回歸***和***文字分析***系列的大型演算法程式庫。 每項的設計均是用來處理不同類型的機器學習服務問題。
+
+如需其他指引，請參閱[如何選取演算法](how-to-select-algorithms.md)
 
 ## <a name="download-machine-learning-algorithm-cheat-sheet"></a>下載： Machine Learning 演算法功能提要
 
@@ -32,7 +34,7 @@ Azure Machine Learning 具有來自***分類***、***推薦系統*** ***、叢�
 
 ## <a name="how-to-use-the-machine-learning-algorithm-cheat-sheet"></a>如何使用 Machine Learning 演算法功能提要
 
-這份演算法小祕技中提供的建議是近似經驗法則。 您可以屈從有些建議，也可以公然違反有些建議。 其主要目的是建議起點。 別擔心您的資料上會出現數種演算法間勢均力敵的競爭。 您只需要瞭解每個演算法的原則，以及產生資料的系統。
+這份演算法小祕技中提供的建議是近似經驗法則。 您可以屈從有些建議，也可以公然違反有些建議。 這份功能重點是用來建議起點。 別擔心您的資料上會出現數種演算法間勢均力敵的競爭。 您只需要瞭解每個演算法的原則，以及產生資料的系統。
 
 每個機器學習演算法都有自己的樣式或感應偏差。 針對特定問題，可能會有數種演算法適合，而其中一個演算法可能比其他演算法更適合。 但不一定能夠事先知道哪一種最適合。 在這類情況下，小祕技中會一起列出數個演算法。 適當策略就是嘗試一個演算法，而如果結果還不滿意，就嘗試其他演算法。 
 
@@ -48,17 +50,17 @@ Azure Machine Learning 具有來自***分類***、***推薦系統*** ***、叢�
 
 ### <a name="unsupervised-learning"></a>非監督式學習
 
-在未監督的學習中，資料點沒有與其相關聯的標籤。 然而，未經指導的學習演算法的目標在於以某種方式組織資料或描述其結構。 這可能表示將資料劃分為叢集 (如 K-Means 所為)，或尋找各種查看複雜資料的方式，使其變得更簡單。
+在未監督的學習中，資料點沒有與其相關聯的標籤。 然而，未經指導的學習演算法的目標在於以某種方式組織資料或描述其結構。 不受監督學習會將資料分組到叢集，例如，做為平均值，或尋找不同的方式來查看複雜資料，使其更簡單。
 
 ### <a name="reinforcement-learning"></a>增強式學習
 
-在增強式學習中，演算法需要選擇一個動作來回應每個資料點。 這是在機器人領域中的常見方法，其中在某個時間點的感應器讀數集就是一個資料點，而演算法必須選擇機器人的下一個動作。 它也很適合用於物聯網 (Internet of Things) 應用程式。 此學習演算法也會在短時間內收到獎勵訊號，指出決策的好壞程度。 演算法會據此修改其策略，以達到最高的獎勵。 
+在增強式學習中，演算法需要選擇一個動作來回應每個資料點。 這是在機器人領域中的常見方法，其中在某個時間點的感應器讀數集就是一個資料點，而演算法必須選擇機器人的下一個動作。 它也很適合用於物聯網 (Internet of Things) 應用程式。 此學習演算法也會在短時間內收到獎勵訊號，指出決策的好壞程度。 根據此信號，演算法會修改其策略，以達到最高的報酬。 
 
 ## <a name="next-steps"></a>後續步驟
 
-* [瞭解 Azure Machine Learning 和 Azure 入口網站中的 studio](overview-what-is-azure-ml.md)。
+* 請參閱其他關於[如何選取演算法](how-to-select-algorithms.md)的指引
 
-* 請參閱[演算法和模組參考](algorithm-module-reference/module-reference.md)中的演算法和模組清單。
+* [瞭解 Azure Machine Learning 和 Azure 入口網站中的 studio](overview-what-is-azure-ml.md)。
 
 * [教學課程：在 Azure Machine Learning 設計工具中建立預測模型](tutorial-designer-automobile-price-train-score.md)。
 

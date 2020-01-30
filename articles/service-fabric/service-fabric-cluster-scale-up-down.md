@@ -3,12 +3,12 @@ title: 將 Service Fabric 叢集相應縮小或相應放大
 description: 針對每個節點類型/虛擬機器擴展集設定自動調整規模規則，以相應縮小或相應放大 Service Fabric 叢集以符合需求。 新增或移除 Service Fabric 叢集的節點
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: ef7d4c3d3d48bed790851834d848f05060243636
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 42193ee06eda3f1d8c56b4db3251763b9dc52076
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451950"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774455"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>將叢集相應縮小或相應放大
 
@@ -101,7 +101,7 @@ Service fabric 系統服務會在叢集中的主要節點類型上執行。 向�
 為了讓叢集節點在升級和容錯網域之間平均分配，因而讓它們的使用率更加平均，應該先移除最近建立的節點。 換句話說，節點的移除順序應該與建立順序相反。 最近建立的節點具有最大的 `virtual machine scale set InstanceId` 屬性值。 下列程式碼範例會傳回最近建立的節點。
 
 ```powershell
-Get-ServiceFabricNode | Sort-Object { $_.NodeName.Substring($_.NodeName.LastIndexOf('_') + 1) } -Descending | Select-Object -First 1
+Get-ServiceFabricNode | Sort-Object NodeInstanceId -Descending | Select-Object -First 1
 ```
 
 ```azurecli

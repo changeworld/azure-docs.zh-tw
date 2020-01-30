@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 96bf088e6db29817d1ae4276c254a84723e5d03d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8cb0340d9e04db2bfbf088bce9505351d7588cd9
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480186"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840327"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>在 Azure AD B2C 中使用自訂原則設定電話註冊和登入
 
@@ -30,7 +30,7 @@ Azure Active Directory B2C （Azure AD B2C）中的電話註冊和登入可讓�
 
 * [Azure AD B2C 租用戶](tutorial-create-tenant.md)
 * 在您的租使用者中[註冊的 Web 應用程式](tutorial-register-applications.md)
-* 已上傳至您租使用者的[自訂原則](active-directory-b2c-get-started-custom.md)
+* 已上傳至您租使用者的[自訂原則](custom-policy-get-started.md)
 
 ## <a name="get-the-phone-sign-up--sign-in-starter-pack"></a>取得電話註冊 & 登入入門套件
 
@@ -44,7 +44,7 @@ Azure Active Directory B2C （Azure AD B2C）中的電話註冊和登入可讓�
 
 1. 在每個檔案中，將字串 `yourtenant` 取代為 Azure AD B2C 租使用者的名稱。 例如，如果您的 B2C 租使用者名稱是*contosob2c*，則 `yourtenant.onmicrosoft.com` 的所有實例都會 `contosob2c.onmicrosoft.com`。
 
-1. 完成在[Azure Active Directory B2C 中開始使用自訂](active-directory-b2c-get-started-custom.md)原則中的[將應用程式識別碼新增至自訂原則](active-directory-b2c-get-started-custom.md#add-application-ids-to-the-custom-policy)一節中的步驟。 在此情況下，請使用完成必要條件*IdentityExperienceFramework*和*ProxyIdentityExperienceFramework*時所註冊的兩個應用程式的**應用程式（用戶端）識別碼**，更新 `/phone-number-passwordless/` **`Phone_Email_Base.xml`** 。
+1. 完成在[Azure Active Directory B2C 中開始使用自訂](custom-policy-get-started.md)原則中的[將應用程式識別碼新增至自訂原則](custom-policy-get-started.md#add-application-ids-to-the-custom-policy)一節中的步驟。 在此情況下，請使用完成必要條件*IdentityExperienceFramework*和*ProxyIdentityExperienceFramework*時所註冊的兩個應用程式的**應用程式（用戶端）識別碼**，更新 `/phone-number-passwordless/` **`Phone_Email_Base.xml`** 。
 
 ## <a name="upload-the-policy-files"></a>上傳原則檔案
 

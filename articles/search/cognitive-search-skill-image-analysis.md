@@ -8,21 +8,21 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4819f34e16efebcdab734270988382e086c44e36
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 106f83e4c8fdf33ac8752e5942dbb22a2df78693
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73479712"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840497"
 ---
 # <a name="image-analysis-cognitive-skill"></a>映像分析認知技能
 
 **映像分析**技能可根據映像內容擷取一組豐富的視覺功能。 例如，您可以從映像產生標題、產生標記，或識別名人和地標。 這項技能會使用認知服務中[電腦視覺](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)所提供的機器學習模型。 
 
 > [!NOTE]
-> 小型磁片區（低於20筆交易）可以在 Azure 認知搜尋中免費執行，但較大的工作負載[則需要附加可計費的認知服務資源](cognitive-search-attach-cognitive-services.md)。 在認知服務中呼叫 Api 時，會產生費用，並在 Azure 認知搜尋中以檔破解階段的形式進行映射解壓縮。 從文件中擷取文字不會產生費用。
+> 小型磁片區（低於20筆交易）可以在 Azure 認知搜尋中免費執行，但較大的工作負載[則需要附加可計費的認知服務資源](cognitive-search-attach-cognitive-services.md)。 在認知服務中呼叫 API，以及在 Azure 認知搜尋的文件萃取階段中擷取影像時，都會產生費用。 從文件中擷取文字不會產生費用。
 >
-> 內建技能的執行會依現有的[認知服務預付型方案價格](https://azure.microsoft.com/pricing/details/cognitive-services/)收費。 [Azure 認知搜尋定價頁面](https://go.microsoft.com/fwlink/?linkid=2042400)會說明影像提取定價。
+> 內建技能的執行會依現有的[認知服務預付型方案價格](https://azure.microsoft.com/pricing/details/cognitive-services/)收費。 影像擷取定價的說明請見 [Azure 認知搜尋定價頁面](https://go.microsoft.com/fwlink/?linkid=2042400)。
 
 
 ## <a name="odatatype"></a>@odata.type  
@@ -34,8 +34,8 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 
 | 參數名稱     | 說明 |
 |--------------------|-------------|
-| defaultLanguageCode   |  此字串表示要傳回的語言。 服務會以指定語言傳回辨識結果。 如果未指定此屬性，則預設值為「en」。 <br/><br/>支援的語言為： <br/>*en* - 英文 (預設) <br/> *zh* - 簡體中文|
-|visualFeatures |   此字串陣列表示要傳回的視覺功能類型。 有效的視覺功能類型包括：  <ul><li> *類別*-根據認知服務[電腦視覺檔](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)中所定義的分類，將影像內容分類。 </li><li> *標記* - 使用與映像內容相關之字組的詳細清單標記映像。</li><li>*描述*-使用完整的英文句子來描述影像內容。</li><li>*臉部*-偵測臉部是否存在。 如果有的話，會產生座標、性別和年齡。</li><li>    *imageType* -偵測影像是否為美工圖案或線條繪圖。</li><li>  *色彩*-決定輔色、主要色彩，以及影像是否為黑色 & 白色。</li><li>*成人*-偵測影像本質上是否為色情（描述裸體或性別 act）。 也會偵測出性暗示內容。</li></ul> 視覺功能的名稱會區分大小寫。|
+| defaultLanguageCode   |  此字串表示要傳回的語言。 服務會以指定語言傳回辨識結果。 如果未指定此屬性，則預設值為 "en"。 <br/><br/>支援的語言為： <br/>*en* - 英文 (預設) <br/> *es* -西班牙文 <br/> *ja-jp* -日文 <br/> *pt* -葡萄牙文 <br/> *zh* - 簡體中文|
+| visualFeatures |  此字串陣列表示要傳回的視覺功能類型。 有效的視覺功能類型包括：  <ul><li>*成人*-偵測影像本質上是否為色情（描述裸體或性別 act），或為繁雜（描述極端的暴力或血壓）。 也會偵測到有色情的暗示性內容（也稱為猥褻內容）。</li><li>*品牌*-偵測影像內的各種品牌，包括大約的位置。 *品牌*視覺功能僅提供英文版。</li><li> *類別*-根據認知服務[電腦視覺檔](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)中所定義的分類，將影像內容分類。 </li><li> *色彩*-決定輔色、主要色彩，以及影像是否為黑色 & 白色。</li><li>*描述*-以支援的語言描述具有完整句子的影像內容。</li><li>*臉部*-偵測臉部是否存在。 如果有的話，會產生座標、性別和年齡。</li><li>  *imageType* -偵測影像是否為美工圖案或線條繪圖。</li><li>  *物件*-偵測影像內的各種物件，包括大約的位置。 [*物件*] 視覺效果功能僅提供英文版。</li><li> *標記* - 使用與映像內容相關之字組的詳細清單標記映像。</li></ul> 視覺功能的名稱會區分大小寫。|
 | 詳細資料   | 字串陣列表示要傳回的特定領域詳細資料。 有效的視覺功能類型包括： <ul><li>*名人*-識別映射中偵測到的名人。</li><li>*地標*-識別映射中偵測到的地標。 </li></ul> |
 
 ## <a name="skill-inputs"></a>技能輸入
@@ -353,138 +353,163 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 
 ```json
 {
-    "values": [
-        {
-            "recordId": "1",
-            "data": {
-                "categories": [
-                    {
-                        "name": "abstract_",
-                        "score": 0.00390625
-                    },
-                    {
-                        "name": "people_",
-                        "score": 0.83984375,
-                        "detail": {
-                            "celebrities": [
-                                {
-                                    "name": "Satya Nadella",
-                                    "faceBoundingBox": [
-                                        {
-                                            "x": 273,
-                                            "y": 309
-                                        },
-                                        {
-                                            "x": 395,
-                                            "y": 309
-                                        },
-                                        {
-                                            "x": 395,
-                                            "y": 431
-                                        },
-                                        {
-                                            "x": 273,
-                                            "y": 431
-                                        }
-                                    ],
-                                    "confidence": 0.999028444
-                                }
-                            ],
-                            "landmarks": [
-                                {
-                                    "name": "Forbidden City",
-                                    "confidence": 0.9978346
-                                }
-                            ]
-                        }
-                    }
-                ],
-                "adult": {
-                    "isAdultContent": false,
-                    "isRacyContent": false,
-                    "adultScore": 0.0934349000453949,
-                    "racyScore": 0.068613491952419281
-                },
-                "tags": [
-                    {
-                        "name": "person",
-                        "confidence": 0.98979085683822632
-                    },
-                    {
-                        "name": "man",
-                        "confidence": 0.94493889808654785
-                    },
-                    {
-                        "name": "outdoor",
-                        "confidence": 0.938492476940155
-                    },
-                    {
-                        "name": "window",
-                        "confidence": 0.89513939619064331
-                    }
-                ],
-                "description": {
-                    "tags": [
-                        "person",
-                        "man",
-                        "outdoor",
-                        "window",
-                        "glasses"
-                    ],
-                    "captions": [
+  "values": [
+    {
+      "recordId": "1",
+      "data": {
+        "categories": [
+          {
+            "name": "abstract_",
+            "score": 0.00390625
+          },
+          {
+            "name": "people_",
+            "score": 0.83984375,
+            "detail": {
+              "celebrities": [
+                {
+                  "name": "Satya Nadella",
+                  "faceBoundingBox": [
                         {
-                            "text": "Satya Nadella sitting on a bench",
-                            "confidence": 0.48293603002174407
+                            "x": 273,
+                            "y": 309
+                        },
+                        {
+                            "x": 395,
+                            "y": 309
+                        },
+                        {
+                            "x": 395,
+                            "y": 431
+                        },
+                        {
+                            "x": 273,
+                            "y": 431
                         }
-                    ]
-                },
-                "requestId": "0dbec5ad-a3d3-4f7e-96b4-dfd57efe967d",
-                "metadata": {
-                    "width": 1500,
-                    "height": 1000,
-                    "format": "Jpeg"
-                },
-                "faces": [
-                    {
-                        "age": 44,
-                        "gender": "Male",
-                        "faceBoundingBox": [
-                            {
-                                "x": 1601,
-                                "y": 395
-                            },
-                            {
-                                "x": 1653,
-                                "y": 395
-                            },
-                            {
-                                "x": 1653,
-                                "y": 447
-                            },
-                            {
-                                "x": 1601,
-                                "y": 447
-                            }
-                        ]
-                    }
-                ],
-                "color": {
-                    "dominantColorForeground": "Brown",
-                    "dominantColorBackground": "Brown",
-                    "dominantColors": [
-                        "Brown",
-                        "Black"
                     ],
-                    "accentColor": "873B59",
-                    "isBwImg": false
-                    },
-                "imageType": {
-                    "clipArtType": 0,
-                    "lineDrawingType": 0
+                  "confidence": 0.999028444
                 }
+              ],
+              "landmarks": [
+                {
+                  "name": "Forbidden City",
+                  "confidence": 0.9978346
+                }
+              ]
             }
-        }
-    ]
+          }
+        ],
+        "adult": {
+          "isAdultContent": false,
+          "isRacyContent": false,
+          "isGoryContent": false,
+          "adultScore": 0.0934349000453949,
+          "racyScore": 0.068613491952419281,
+          "goreScore": 0.08928389008070282
+        },
+        "tags": [
+          {
+            "name": "person",
+            "confidence": 0.98979085683822632
+          },
+          {
+            "name": "man",
+            "confidence": 0.94493889808654785
+          },
+          {
+            "name": "outdoor",
+            "confidence": 0.938492476940155
+          },
+          {
+            "name": "window",
+            "confidence": 0.89513939619064331
+          }
+        ],
+        "description": {
+          "tags": [
+            "person",
+            "man",
+            "outdoor",
+            "window",
+            "glasses"
+          ],
+          "captions": [
+            {
+              "text": "Satya Nadella sitting on a bench",
+              "confidence": 0.48293603002174407
+            }
+          ]
+        },
+        "requestId": "0dbec5ad-a3d3-4f7e-96b4-dfd57efe967d",
+        "metadata": {
+          "width": 1500,
+          "height": 1000,
+          "format": "Jpeg"
+        },
+        "faces": [
+          {
+            "age": 44,
+            "gender": "Male",
+            "faceBoundingBox": [
+                {
+                    "x": 1601,
+                    "y": 395
+                },
+                {
+                    "x": 1653,
+                    "y": 395
+                },
+                {
+                    "x": 1653,
+                    "y": 447
+                },
+                {
+                    "x": 1601,
+                    "y": 447
+                }
+            ]
+          }
+        ],
+        "color": {
+          "dominantColorForeground": "Brown",
+          "dominantColorBackground": "Brown",
+          "dominantColors": [
+            "Brown",
+            "Black"
+          ],
+          "accentColor": "873B59",
+          "isBwImg": false
+        },
+        "imageType": {
+          "clipArtType": 0,
+          "lineDrawingType": 0
+        },
+        "objects": [
+          {
+            "rectangle": {
+              "x": 25,
+              "y": 43,
+              "w": 172,
+              "h": 140
+            },
+            "object": "person",
+            "confidence": 0.931
+          }
+        ],
+        "brands":[  
+           {  
+              "name":"Microsoft",
+              "rectangle":{  
+                 "x":20,
+                 "y":97,
+                 "w":62,
+                 "h":52
+              }
+           }
+        ]
+      }
+    }
+  ]
 }
 ```
 
@@ -518,7 +543,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
             ]
 ```
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 + [內建技能](cognitive-search-predefined-skills.md)
 + [如何定義技能集](cognitive-search-defining-skillset.md) (英文)
