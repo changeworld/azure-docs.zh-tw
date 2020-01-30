@@ -1,9 +1,7 @@
 ---
 title: 快速入門 - 在 Azure 入口網站中建立虛擬機器擴展集
 description: 了解如何使用 Azure 入口網站快速建立虛擬機器擴展集，以開始使用您的部署。
-services: virtual-machine-scale-sets.
 author: cynthn
-manager: gwallace
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
@@ -12,12 +10,12 @@ ms.topic: quickstart
 ms.custom: H1Hack27Feb2017
 ms.date: 10/23/2019
 ms.author: cynthn
-ms.openlocfilehash: 5a44aad7471c29a387337a5ee988e66287fca3ca
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2acde4efa1dc118498f3c7da29c75e48c0478ac0
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351149"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543132"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>快速入門：在 Azure 入口網站建立虛擬機器擴展集
 
@@ -33,7 +31,7 @@ ms.locfileid: "75351149"
 
 Azure [負載平衡器](../load-balancer/load-balancer-overview.md)會在良好的虛擬機器執行個體之間散發傳入流量。 
 
-首先，使用入口網站建立公用基本負載平衡器。 您所建立的名稱和公用 IP 位址會自動設定為負載平衡器的前端。
+首先，使用入口網站建立公用 Standard Load Balancer。 您所建立的名稱和公用 IP 位址會自動設定為負載平衡器的前端。
 
 1. 在搜尋方塊中，輸入 **load balancer**。 在搜尋結果中的 [Marketplace]  下，選取 [負載平衡器]  。
 1. 在 [建立負載平衡器]  頁面的 [基本]  索引標籤中，輸入或選取下列資訊：
