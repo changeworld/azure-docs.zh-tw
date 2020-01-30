@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 11/04/2019
-ms.openlocfilehash: 1c5b2879659305e55bb01e4cfab27c7a1b343155
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: c35afe6e3d6ec74e8fc7cd134f533d1e618c820e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894860"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845734"
 ---
 # <a name="monitoring-azure-machine-learning"></a>監視 Azure Machine Learning
 
@@ -32,7 +32,7 @@ ms.locfileid: "75894860"
 
 Azure Machine Learning 使用 Azure 監視器來記錄監視資料，這是 Azure 中的完整堆疊監視服務。 Azure 監視器提供一組完整的功能來監視您的 Azure 資源。 它也可以監視其他雲端和內部部署中的資源。
 
-從[Azure 監視器總覽](/azure/azure-monitor/overview)一文開始，其中提供監視功能的總覽。 下列各節將使用 Azure 監視器搭配 Azure Machine Learning，以提供有關這項資訊的詳細資料。
+從[Azure 監視器總覽](/azure/azure-monitor/overview)一文開始，其中提供監視功能的總覽。 下列各節會藉由提供搭配 Azure Machine Learning 使用 Azure 監視器的細節，來建立這項資訊。
 
 若要瞭解與 Azure 監視器相關聯的成本，請參閱[使用量和估計成本](/azure/azure-monitor/platform/usage-estimated-costs)。 若要瞭解資料在 Azure 監視器中顯示所需的時間，請參閱[記錄資料內嵌時間](/azure/azure-monitor/platform/data-ingestion-time)。
 

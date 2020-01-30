@@ -8,12 +8,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 11/27/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: aaa551619b48bb385bf5b1fef2331d382e32a040
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b0a800a95d00e482b2342911111f43cfadb5a9c6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406542"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845632"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用量和成本
 
@@ -38,9 +38,9 @@ Application Insights 的設計，是為了取得監視 web 應用程式的可用
 
 ### <a name="data-collection-when-using-sampling"></a>使用取樣時的資料收集
 
-透過 ASP.NET SDK 的調適型[取樣](https://docs.microsoft.com/azure/azure-monitor/app/sampling#adaptive-sampling-in-your-aspnetaspnet-core-web-applications)，資料磁片區會自動調整，以保持在預設 Application Insights 監視的指定最大傳輸速率。 如果應用程式產生較少的遙測資料（例如，在進行調試時或由於低使用量的緣故），取樣處理器就不會卸載專案，只要磁片區低於每秒設定的事件數層級即可。 針對高容量的應用程式，預設臨界值為每秒五個事件，調適型取樣會將每日事件數限制為432000。 使用一般的平均事件大小 1 KB，這會對應13.4 到每個節點每31天的遙測資料，每個月裝載您的應用程式（因為取樣是在每個節點的本機執行）。 
+透過 ASP.NET SDK 的調適型[取樣](sampling.md#adaptive-sampling)，資料磁片區會自動調整，以保持在預設 Application Insights 監視的指定最大傳輸速率。 如果應用程式產生較少的遙測資料（例如，在進行調試時或由於低使用量的緣故），取樣處理器就不會卸載專案，只要磁片區低於每秒設定的事件數層級即可。 針對高容量的應用程式，預設臨界值為每秒五個事件，調適型取樣會將每日事件數限制為432000。 使用一般的平均事件大小 1 KB，這會對應13.4 到每個節點每31天的遙測資料，每個月裝載您的應用程式（因為取樣是在每個節點的本機執行）。 
 
-針對不支援調適型取樣的 Sdk，您可以使用內建[取樣](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling)，其中會根據要保留的資料百分比來 Application Insights 接收資料，或針對[ASP.NET、ASP.NET Core 和 JAVA 網站的固定速率取樣](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-java-websites-and-python-applications)，減少從您的 web 伺服器和網頁瀏覽器傳送的流量
+針對不支援調適型取樣的 Sdk，您可以使用內建[取樣](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling)，其中會根據要保留的資料百分比來 Application Insights 接收資料，或針對[ASP.NET、ASP.NET Core 和 JAVA 網站的固定速率取樣](sampling.md#fixed-rate-sampling)，減少從您的 web 伺服器和網頁瀏覽器傳送的流量
 
 ### <a name="learn-from-what-similar-customers-collect"></a>瞭解類似客戶所收集的內容
 

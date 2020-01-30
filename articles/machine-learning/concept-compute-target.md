@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: 58df0fe6a598d97e0a9d985052cf3a8c198eb4cc
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 15bf6533106fe826c56b38cfb345c509d6d67966
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541331"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844087"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning 中的計算目標是什麼？ 
 
@@ -58,7 +58,7 @@ Azure Machine Learning 在不同的計算資源上有不同的支援。  您也�
 建立這些計算資源時，會自動成為您工作區的一部分，而不像其他類型的計算目標。
 
 > [!NOTE]
-> 計算執行個體僅適用於區域為 [美國中北部] 或 [英國南部] 的工作區。
+> 計算實例僅適用于具有**美國中北部**、* * 美國東部 2 * ***、北歐**或**英國南部**的工作區。
 >如果您的工作區位於任何其他區域，您可繼續建立並使用 [Notebook VM](concept-compute-instance.md#notebookvm)。 
 
 ### <a name="compute-clusters"></a>計算叢集

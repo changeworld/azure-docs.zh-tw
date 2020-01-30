@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.author: jmartens
 author: j-martens
 ms.date: 12/09/2019
-ms.openlocfilehash: 9798cbd2b1c9dca489e843a7102f213757e4de75
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 27243f47df7da22ab4adda088bdf631c1030dd6c
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771814"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845195"
 ---
 # <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote"></a>以互動方式在具有 VS Code 遠端的 Azure Machine Learning 計算實例上進行偵錯工具
 
 在本文中，您將瞭解如何在 Azure Machine Learning 計算實例上設定 Visual Studio Code 遠端，讓您可以從 VS Code**以互動方式進行程式碼的偵錯工具**。 
 
 > [!NOTE]
-> 計算執行個體僅適用於區域為 [美國中北部] 或 [英國南部] 的工作區。
+> 計算實例僅適用于具有**美國中北部**、* * 美國東部 2 * ***、北歐**或**英國南部**的工作區。
 
 + [Azure Machine Learning 計算實例](concept-compute-instance.md)是一種完全受控的雲端式工作站，適用于資料科學家，並為 IT 系統管理員提供管理和企業就緒功能。 
 

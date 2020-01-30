@@ -3,12 +3,12 @@ title: 使用 Visual Studio Code 開發 Azure Functions
 description: 瞭解如何使用適用于 Visual Studio Code 的 Azure Functions 延伸模組來開發和測試 Azure Functions。
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 4a5f60c2da8a77f385dba40dcd4d342583e989c1
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 59c350b267583a2bccfdd66996aa6c1f97954218
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547416"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845391"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>使用 Visual Studio Code 開發 Azure Functions
 
@@ -65,11 +65,13 @@ Azure Functions 延伸模組提供下列優點：
 
 1. 選取函數應用程式專案的資料夾，然後選取函式**專案的語言**。
 
+1. 如果您尚未安裝核心工具，系統會要求您選取要安裝的核心工具**版本**。 選擇2.x 版或更新版本。 
+
 1. 選取 [ **HTTP 觸發**程式] 函式範本，或者您可以選取 [**立即略過**] 來建立不含函式的專案。 您稍後可以隨時將函式[新增至您的專案](#add-a-function-to-your-project)。
 
     ![選擇 HTTP 觸發程序範本](./media/functions-develop-vs-code/create-function-choose-template.png)
 
-1. 在 [函式名稱] 中輸入**HTTPTrigger** ，然後選取 Enter，再選取 [**函數**授權]。 當您呼叫函式端點時，此授權層級會要求您提供[函數金鑰](functions-bindings-http-webhook.md#authorization-keys)。
+1. 在 [函式名稱] 中輸入**HttpExample** ，然後選取 Enter，再選取 [**函數**授權]。 當您呼叫函式端點時，此授權層級會要求您提供[函數金鑰](functions-bindings-http-webhook.md#authorization-keys)。
 
     ![選取函數授權](./media/functions-develop-vs-code/create-function-auth.png)
 
@@ -189,6 +191,8 @@ context.bindings.msg = "Name passed to the function: " req.query.name;
 ---
 
 [!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
+
+[!INCLUDE [functions-sign-in-vs-code](../../includes/functions-sign-in-vs-code.md)]
 
 ## <a name="publish-to-azure"></a>發佈至 Azure
 

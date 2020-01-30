@@ -4,22 +4,20 @@ titleSuffix: Azure Network Watcher
 description: 本文說明如何使用 Azure 自動化和網路監看員診斷內部部署連線
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 07847289c156aaa48b9d15c40d4135ce2cf39c10
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: 74c9f44ff5fbbbb50bba1594d371633fd49857eb
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275916"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845047"
 ---
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>使用網路監看員疑難排解來監視 VPN 閘道
 

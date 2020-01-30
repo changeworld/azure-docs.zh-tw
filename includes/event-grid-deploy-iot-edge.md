@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/10/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 8656bbb070e2b05a06ea22dd1634a40182b440cb
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: b453a04a170764a037eed7415eaf71e5a4d37526
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73098683"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844578"
 ---
 ## <a name="deploy-event-grid-iot-edge-module"></a>IoT Edge 模組部署事件方格
 
@@ -43,6 +43,8 @@ ms.locfileid: "73098683"
 1. 從下拉式清單中的模組類型，選取 [ **IoT Edge 模組**]
 1. 提供容器的 [名稱]、[映射]、[容器] 建立選項：
 
+[!INCLUDE [event-grid-edge-module-version-update](event-grid-edge-module-version-update.md)]
+
    * **名稱**： eventgridmodule
    * **映射 URI**： `mcr.microsoft.com/azure-event-grid/iotedge:latest`
    * **容器建立選項**：
@@ -50,8 +52,8 @@ ms.locfileid: "73098683"
     ```json
         {
           "Env": [
-            "inbound:clientAuth:clientCert:enabled=false",
-            "outbound:webhook:httpsOnly=false"
+            "inbound__clientAuth:clientCert__enabled=false",
+            "outbound__webhook__httpsOnly=false"
           ],
           "HostConfig": {
             "PortBindings": {

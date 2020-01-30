@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: e46574ae7f8faa67c2cc0c1afef1917270f69175
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 1c2047fc4b92ecd5776cb835a2f2138c25f5cb65
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715894"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845460"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>將 Azure 活動記錄匯出至儲存體或 Azure 事件中樞
 
@@ -36,9 +36,10 @@ ms.locfileid: "76715894"
 ### <a name="storage-account"></a>儲存體帳戶
 如果您要封存活動記錄檔，您必須[建立儲存體帳戶](../../storage/common/storage-account-create.md)（如果您還沒有的話）。 您不應該使用已儲存其他非監視資料的現有儲存體帳戶，讓您可以更有效地控制監視資料的存取。 不過，如果您也將記錄和計量封存到儲存體帳戶，您可以選擇使用相同的儲存體帳戶，將所有監視資料保留在中央位置。
 
-儲存體帳戶不一定要和訂用帳戶發出記錄屬於相同的訂用帳戶，只要使用者有適當的設定可 RBAC 存取這兩個訂用帳戶即可。
-> [!NOTE]
->  您目前無法將資料封存到位在安全虛擬網路後面的儲存體帳戶。
+儲存體帳戶不一定要和訂用帳戶發出記錄屬於相同的訂用帳戶，只要使用者有適當的設定可 RBAC 存取這兩個訂用帳戶即可。 
+
+> [!TIP]
+> 請參閱[設定 Azure 儲存體防火牆和虛擬網路](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)，以在受保護的虛擬網路後方提供儲存體帳戶的存取權。
 
 ### <a name="event-hubs"></a>事件中樞
 如果您要將活動記錄傳送至事件中樞，則需要[建立事件中樞](../../event-hubs/event-hubs-create.md)（如果還沒有的話）。 如果您先前已將活動記錄事件串流至此事件中樞命名空間，則會重複使用該事件中樞。

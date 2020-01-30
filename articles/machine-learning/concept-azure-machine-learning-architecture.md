@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: e3dcd9305a48b0d34f1bcbea64d6628efabc1235
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 8e1f144fdf94df445fb64b9b489cba1e9998f381
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546056"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845611"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning 的運作方式：架構和概念
 
@@ -85,7 +85,7 @@ ms.locfileid: "76546056"
 ### <a name="compute-instance"></a>計算實例（預覽）
 
 > [!NOTE]
-> 計算執行個體僅適用於區域為 [美國中北部] 或 [英國南部] 的工作區。
+> 計算實例僅適用于具有**美國中北部**、* * 美國東部 2 * ***、北歐**或**英國南部**的工作區。
 >如果您的工作區位於任何其他區域，您可繼續建立並使用 [Notebook VM](concept-compute-instance.md#notebookvm)。 
 
 **Azure Machine Learning 計算實例**（先前稱為「筆記本 VM」）是完全受控的雲端式工作站，其中包含針對機器學習服務安裝的多個工具和環境。 計算實例可用來做為定型和推斷作業的計算目標。 對於大型工作，使用多重節點調整功能[Azure Machine Learning 計算](how-to-set-up-training-targets.md#amlcompute)叢集是較佳的計算目標選擇。

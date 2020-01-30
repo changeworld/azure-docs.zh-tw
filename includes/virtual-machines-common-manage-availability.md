@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 5350ecdd3b73894e43db3b9f342fc657cf73f224
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 40810b9a9b295f2aa9d56caaf4b51cab7dbbe5bc
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76268270"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76887658"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>了解 VM 重新開機 - 維護與停機時間
 有三種情況可能會導致 Azure 中的虛擬機器受到影響：未規劃的硬體維護、未預期的停機時間以及規劃的維護。
@@ -79,12 +79,13 @@ Get-AzComputeResourceSku | where{$_.ResourceType -eq 'availabilitySets' -and $_.
 az vm list-skus --resource-type availabilitySets --query '[?name==`Aligned`].{Location:locationInfo[0].location, MaximumFaultDomainCount:capabilities[0].value}' -o Table
 ```
 
-> 注意：在某些情況下，相同 AvailabilitySet 的2個 Vm 部分可能會共用相同的 FaultDomain。 這可以藉由進入您的 AvailabilitySet 並檢查「容錯網域」資料行來確認。
-> 當部署 Vm 時發生下列順序時，可能會觀察到此行為：
+> [!NOTE]
+> 在某些情況下，相同 AvailabilitySet 中的2部 Vm 可能會共用相同的 FaultDomain。 您可以進入可用性設定組，並檢查 [**容錯網域**] 資料行，以確認這一點。
+> 這可能是部署 Vm 時的下列順序所造成：
 > - 部署第1個 VM
 > - 停止/解除配置第1個 VM
 > - 在這些情況下部署第2個 VM，第2個 VM 的 OS 磁片可能會建立在與第一個 VM 相同的容錯網域上，因此第二個 VM 也會落在相同的 FaultDomain 上。 
-> 若要避免此問題，建議不要在其部署之間停止/解除配置 VM。
+> 若要避免此問題，建議您不要在部署之間停止/解除配置 Vm。
 
 如果您打算使用 VM 搭配非受控磁碟，請針對 VM 的虛擬硬碟 (VHD) 在其中儲存為[分頁 Blob](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) 的儲存體帳戶，遵循以下的最佳做法。
 

@@ -1,6 +1,6 @@
 ---
 title: 粗略 Relocalization
-description: 粗略的 relocalization 快速入門手冊。
+description: 瞭解如何使用粗略的 relocalization 來尋找您附近的錨點。
 author: bucurb
 manager: dacoghl
 services: azure-spatial-anchors
@@ -8,12 +8,12 @@ ms.author: bobuc
 ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 6143f50b9f1f6738daf3e69d4cc0e00742e1e35a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4c1604eaad1ebdedf6a360a647fe5b9f95c829c6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75356343"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844389"
 ---
 # <a name="coarse-relocalization"></a>粗略地重新當地語系化
 

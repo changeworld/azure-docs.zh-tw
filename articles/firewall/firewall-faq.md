@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 01/29/2020
 ms.author: victorh
-ms.openlocfilehash: ac8ec9a86c388f41493d60d79a21db28fbf2aa95
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 8b55f31f12ab1057ac2e0f625a0285b6518cc44a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646206"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845764"
 ---
 # <a name="azure-firewall-faq"></a>Azure 防火牆常見問題集
 
@@ -54,7 +54,7 @@ Azure 防火牆支援規則和規則集合。 規則集合是一組共用相同�
 
 ## <a name="does-azure-firewall-support-inbound-traffic-filtering"></a>Azure 防火牆是否支援輸入流量篩選？
 
-Azure 防火牆支援輸入和輸出篩選。 輸入保留適用於非 HTTP/S 通訊協定。 例如 RDP、SSH 及 FTP 通訊協定。
+Azure 防火牆支援輸入和輸出篩選。 輸入保護通常用於非 HTTP/S 通訊協定。 例如 RDP、SSH 及 FTP 通訊協定。 如需最佳的輸入 HTTP/S 保護，請使用 web 應用程式防火牆，例如[Azure 應用程式閘道上的 Azure Web 應用程式防火牆](../web-application-firewall/ag/ag-overview.md)。
 
 ## <a name="which-logging-and-analytics-services-are-supported-by-the-azure-firewall"></a>Azure 防火牆支援哪些記錄和分析服務？
 

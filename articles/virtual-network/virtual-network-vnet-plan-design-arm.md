@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: kumud
-ms.openlocfilehash: 3624c8fd8b15f6d35917f4ead676221d93a26ddc
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: dfa7681b43bd18e15ee929156ab9a45bb9790c5b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646484"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845581"
 ---
 # <a name="plan-virtual-networks"></a>規劃虛擬網路
 
@@ -39,7 +39,7 @@ ms.locfileid: "75646484"
 
 ## <a name="subscriptions"></a>訂閱
 
-您可以在每個訂用帳戶內，部署[限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)之內的多個虛擬網路。 例如，有些組織針對不同部門會有不同的訂用帳戶。 如需訂用帳戶的詳細資訊和相關考量，請參閱[訂用帳戶治理](/azure/architecture/cloud-adoption-guide/subscription-governance#define-your-hierarchy)。
+您可以在每個訂用帳戶內，部署[限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)之內的多個虛擬網路。 例如，有些組織針對不同部門會有不同的訂用帳戶。 如需訂用帳戶的詳細資訊和相關考量，請參閱[訂用帳戶治理](/azure/cloud-adoption-framework/reference/migration-with-enterprise-scaffold#define-your-hierarchy)。
 
 ## <a name="segmentation"></a>分割
 

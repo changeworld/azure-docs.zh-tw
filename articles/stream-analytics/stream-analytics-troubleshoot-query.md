@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5534a46ba99d1536d331b5852ef47588f03d73a4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bf0740bbdd4754aeba43e64f1076a1bea33cffc6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980268"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844409"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>對 Azure 串流分析查詢進行疑難排解
 
@@ -21,21 +21,24 @@ ms.locfileid: "75980268"
 
 ## <a name="query-is-not-producing-expected-output"></a>查詢未產生預期的輸出
 1.  在本機執行測試以檢查錯誤：
-    - 在 [查詢] 索引標籤上，選取 [測試]。 使用下載的範例資料[測試查詢](stream-analytics-test-query.md)。 檢查是否有任何錯誤並嘗試修正。   
-    - 您也可以使用適用於 Visual Studio 的串流分析工具，[直接對即時輸入測試您的查詢](stream-analytics-live-data-local-testing.md)。
+    - 在 Azure 入口網站的 [**查詢**] 索引標籤上，選取 [**測試**]。 使用下載的範例資料[測試查詢](stream-analytics-test-query.md)。 檢查是否有任何錯誤並嘗試修正。   
+    - 您也可以使用適用于 Visual Studio 或[Visual Studio Code](visual-studio-code-local-run-live-input.md)的 Azure 串流分析工具，在[本機測試您的查詢](stream-analytics-live-data-local-testing.md)。 
 
-2.  如果您使用 [**Timestamp By**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics)，請確定事件有大於[作業開始時間](stream-analytics-out-of-order-and-late-events.md)的時間戳記。
+2.  在適用于 Visual Studio 的 Azure 串流分析工具中，[使用工作圖表在本機逐步執行 Debug 查詢](debug-locally-using-job-diagram.md)。 作業圖表會顯示資料如何透過多個查詢步驟從輸入來源（事件中樞、IoT 中樞等）流動，最後輸出到接收。 每個查詢步驟都會對應至使用 WITH 語句在腳本中定義的暫存結果集。 您可以在每個中繼結果集的每個查詢步驟中，查看資料和計量，以找出問題的來源。
+    ![作業圖表預覽結果](./media/debug-locally-using-job-diagram/preview-result.png)
 
-3.  排除常見的錯誤，例如︰
+3.  如果您使用 [**Timestamp By**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics)，請確定事件有大於[作業開始時間](stream-analytics-out-of-order-and-late-events.md)的時間戳記。
+
+4.  排除常見的錯誤，例如︰
     - 查詢中的 [**WHERE**](https://docs.microsoft.com/stream-analytics-query/where-azure-stream-analytics) 子句篩選出所有事件，造成無法產生任何輸出作業。
     - [**CAST**](https://docs.microsoft.com/stream-analytics-query/cast-azure-stream-analytics) 函式失敗，導致作業失敗。 若要避免 cast 類型的失敗，請改為使用 [**TRY_CAST**](https://docs.microsoft.com/stream-analytics-query/try-cast-azure-stream-analytics)。
     - 當您使用視窗函式時，請等候完整的視窗運作時間，以查看查詢的輸出。
     - 事件的時間戳記早於作業開始時間，因此事件遭到刪除。
 
-4.  確定事件排序原則已如預期設定。 移至 [設定]，然後選取[**事件排序**](stream-analytics-out-of-order-and-late-events.md)。 如果您使用 [測試] 按鈕測試查詢，則不會套用原則。 此結果是在瀏覽器中進行測試與在生產環境中執行作業之間的一個差異。
+5.  確定事件排序原則已如預期設定。 移至 [設定]，然後選取[**事件排序**](stream-analytics-out-of-order-and-late-events.md)。 如果您使用 [測試] 按鈕測試查詢，則不會套用原則。 此結果是在瀏覽器中進行測試與在生產環境中執行作業之間的一個差異。 
 
-5. 使用稽核和診斷記錄進行偵錯：
-    - 使用[稽核記錄](../azure-resource-manager/management/view-activity-logs.md)，並透過篩選找出錯誤並進行偵錯。
+6. 使用稽核和診斷記錄進行偵錯：
+    - 使用[稽核記錄](../azure-resource-manager/resource-group-audit.md)，並透過篩選找出錯誤並進行偵錯。
     - 使用[作業診斷記錄](stream-analytics-job-diagnostic-logs.md)找出錯誤並進行偵錯。
 
 ## <a name="job-is-consuming-too-many-streaming-units"></a>作業耗用了太多串流單位

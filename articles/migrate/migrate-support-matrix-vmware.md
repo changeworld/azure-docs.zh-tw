@@ -3,12 +3,12 @@ title: Azure Migrate 中的 VMware 評估支援
 description: 深入瞭解 Azure Migrate 中的 VMware 評估支援。
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 74dae71404fe827c9e19d5e3042afd2f98a7a5dd
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 8ed20ecd37eacdcb771db7c166ff8fc22b96cb89
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154681"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846187"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware 評估的支援矩陣 
 
@@ -52,7 +52,7 @@ ms.locfileid: "76154681"
 --- | ---
 **vCenter Server** | 您想要探索及評估的機器必須受 vCenter Server 5.5、6.0、6.5 或6.7 版的管理。
 **許可權（評量）** | vCenter Server 唯讀帳戶。
-**許可權（應用程式探索）** | 具有唯讀存取權的 vCenter Server 帳戶，以及為虛擬機器啟用 > 來賓作業的許可權。
+**許可權（應用程式探索）** | 具有唯讀存取權的 vCenter Server 帳戶，以及為**虛擬機器啟用 > 來賓作業**的許可權。
 **許可權（相依性視覺效果）** | 具有唯讀存取權的中央伺服器帳戶，以及為**虛擬機器**啟用的許可權 > **來賓作業**。
 
 
@@ -67,8 +67,9 @@ Azure Migrate 會使用[Azure Migrate 設備](migrate-appliance.md)來進行探�
 
 **裝置** | **[連接]**
 --- | ---
-Appliance (設備) | TCP 通訊埠3389上的輸入連線，以允許應用裝置的遠端桌面連線。<br/><br/> 埠44368上的輸入連線，可使用 URL 從遠端存取應用裝置管理應用程式： ```https://<appliance-ip-or-name>:44368``` <br/><br/>埠443、5671和5672上的輸出連線，以將探索和效能中繼資料傳送至 Azure Migrate。
+Appliance (設備) | TCP 通訊埠3389上的輸入連線，以允許應用裝置的遠端桌面連線。<br/><br/> 埠44368上的輸入連線，可使用 URL 從遠端存取應用裝置管理應用程式： ```https://<appliance-ip-or-name>:44368``` <br/><br/>埠443（HTTPS）、5671和5672（AMQP）上的輸出連線，以將探索和效能中繼資料傳送至 Azure Migrate。
 vCenter 伺服器 | TCP 通訊埠443上的輸入連線，以允許設備收集設定和效能中繼資料以進行評量。 <br/><br/> 根據預設，設備會連線到埠443上的 vCenter。 如果 vCenter server 在不同的埠上接聽，您可以在設定探索時修改埠。
+ESXi 主機 | **僅針對[應用程式探索](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#application-discovery)和[無代理](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-dependency-visualization)程式相依性視覺效果的必要項** <br/><br/> 設備會連線到 TCP 通訊埠443上的 ESXi 主機，以探索應用程式，並在主機上執行的 Vm 上執行無代理程式相依性視覺效果。
 
 ## <a name="agent-based-dependency-visualization"></a>以代理程式為基礎的相依性視覺效果
 

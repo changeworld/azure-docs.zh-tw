@@ -7,14 +7,14 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/06/2019
-ms.openlocfilehash: 2c015db828bcbfa8b26f519b3a4707b5ec69b8f3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b452cb986e6f662aeb33c2a475f18695ebc75745
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982499"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846100"
 ---
-# <a name="customer-managed-key-disk-encryption"></a>客戶管理的金鑰磁片加密
+# <a name="customer-managed-key-disk-encryption"></a>客戶管理金鑰磁碟加密
 
 Azure HDInsight 支援客戶管理的金鑰，也稱為攜帶您自己的金鑰（BYOK）加密，適用于受控磁片上的資料，以及連接至 HDInsight 叢集 Vm 的資源磁片。 這項功能可讓您使用 Azure Key Vault 來管理在 HDInsight 叢集上保護待用資料的加密金鑰。 您的叢集可能會有一或多個附加的 Azure 儲存體帳戶，其中的加密金鑰也可以是 Microsoft 管理或由客戶管理，但加密服務不同。
 
@@ -79,7 +79,7 @@ HDInsight 僅支援 Azure Key Vault。 如果您有自己的金鑰保存庫，�
 
     b. 在 [選取主體] 底下，選擇您所建立的使用者指派受控識別。
 
-    ![為 Azure Key Vault 存取原則設定 [選取主體]](./media/disk-encryption/add-key-vault-access-policy-select-principal.png)
+    ![為 Azure Key Vault 存取原則設定 [選取主體]](./media/disk-encryption/azure-portal-add-access-policy.png)
 
     c. 將 [金鑰權限] 設定為 [取得]、[將金鑰解除包裝] 及 [包裝金鑰]。
 
@@ -100,6 +100,8 @@ HDInsight 僅支援 Azure Key Vault。 如果您有自己的金鑰保存庫，�
 ### <a name="using-the-azure-portal"></a>使用 Azure 入口網站
 
 叢集建立期間，請提供完整的金鑰 URL，包括金鑰版本。 例如： `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4` 。 您也需要將受控識別指派給叢集，並提供金鑰 URI。
+
+![建立新叢集](./media/disk-encryption/create-cluster-portal.png)
 
 ### <a name="using-azure-cli"></a>使用 Azure CLI
 

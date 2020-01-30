@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 690a9751111ca4c86ebb34825f2845ea59d6f186
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6ee339cb709a5d825b39b4accf294761c99ee41a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462488"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846277"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure 認知搜尋中的服務限制
 
@@ -117,7 +117,7 @@ ms.locfileid: "75462488"
 | 執行時間上限 <sup>5</sup> | 1-3 分鐘 |24 小時 |24 小時 |24 小時 |24 小時 |N/A  |24 小時 |24 小時 |
 | 影像分析的認知搜尋技能集或 Blob 索引適用的執行時間上限 <sup>5</sup> | 3-10 分鐘 |2 小時 |2 小時 |2 小時 |2 小時 |N/A  |2 小時 |2 小時 |
 | Blob 索引子︰Blob 大小上限，MB |16 |16 |128 |256 |256 |N/A  |256 |256 |
-| Blob 索引子︰從 Blob 擷取的內容字元數上限 |32,000 |64,000 |4&nbsp;百萬 |4&nbsp;百萬 |4&nbsp;百萬 |N/A |4&nbsp;百萬 |4&nbsp;百萬 |
+| Blob 索引子︰從 Blob 擷取的內容字元數上限 |32,000 |64,000 |4&nbsp;百萬 |8&nbsp;百萬 |16&nbsp;百萬 |N/A |4&nbsp;百萬 |4&nbsp;百萬 |
 
 <sup>1</sup> 免費服務有索引子執行時間上限，針對 Blob 來源為 3 分鐘，針對其他所有資料來源為 1 分鐘。 對於呼叫認知服務的 AI 索引，免費服務限制為每天20個免費交易，其中的交易會定義為成功通過擴充管線的檔。
 
@@ -151,7 +151,7 @@ ms.locfileid: "75462488"
 
 ## <a name="data-limits-ai-enrichment"></a>資料限制（AI 擴充）
 
-針對[實體](cognitive-search-skill-entity-recognition.md)辨識、[關鍵字組提取](cognitive-search-skill-keyphrases.md)、[情感分析](cognitive-search-skill-sentiment.md)和[語言偵測](cognitive-search-skill-language-detection.md)呼叫文字分析資源的[AI 擴充管線](cognitive-search-concept-intro.md)，受限於資料限制。 記錄的大小上限應為50000個字元，如[`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)所測量。 如果您需要先分割資料，再將該資料傳送至情感分析器，請使用[文字分割技能](cognitive-search-skill-textsplit.md)。
+針對[實體](cognitive-search-skill-entity-recognition.md)辨識、[關鍵字組提取](cognitive-search-skill-keyphrases.md)、[情感分析](cognitive-search-skill-sentiment.md)、[語言偵測](cognitive-search-skill-language-detection.md)和[PII 偵測](cognitive-search-skill-pii-detection.md)呼叫文字分析資源的[AI 擴充管線](cognitive-search-concept-intro.md)，受限於資料限制。 記錄的大小上限應為50000個字元，如[`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)所測量。 如果您需要先分割資料，再將該資料傳送至情感分析器，請使用[文字分割技能](cognitive-search-skill-textsplit.md)。
 
 ## <a name="throttling-limits"></a>節流限制
 

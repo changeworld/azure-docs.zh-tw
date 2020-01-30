@@ -6,12 +6,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 03/19/2019
-ms.openlocfilehash: 89b7dc639a3140f17a62087c5ba0d05fb6df4d7f
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 26bd6c8b31bd16c058c5cb35cab086117b9f8cc5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883144"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845807"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault 虛刪除概觀
 
@@ -36,13 +36,21 @@ Azure Key Vault 是由 Azure Resource Manager 管理的追蹤資源。 Azure Res
 
 使用此功能時，對 Key Vault 或 Key Vault 物件進行的 DELETE 作業是虛刪除，實際上會在指定的保留期間 (90 天) 內保留資源，但物件看起來會像已刪除。 此服務進一步提供復原已刪除物件的機制 (基本上是復原刪除作業)。 
 
-虛刪除是選擇性的 Key Vault 行為，在此版本中**預設未啟用**。 您可以透過[CLI](key-vault-soft-delete-cli.md)或[Powershell](key-vault-soft-delete-powershell.md)來開啟它。
+針對新建立的金鑰保存庫，現在預設會開啟虛刪除。 您可以透過[Azure CLI](key-vault-soft-delete-cli.md)或[Azure Powershell](key-vault-soft-delete-powershell.md)來停用它。
+
+預設的保留期限為90天，但可以透過 Azure 入口網站將保留原則間隔設定為從7到90天的值。 清除保護保留原則會使用相同的間隔。 
+
+在金鑰保存庫上設定虛刪除之後，即無法停用它，而且無法變更保留原則間隔。 
+
+在達到保留期限之前，您無法重複使用已虛刪除的金鑰保存庫名稱。 
 
 ### <a name="purge-protection"></a>清除保護 
 
-開啟 [清除保護] 時，除非已超過90天的保留期間，否則無法清除 [已刪除] 狀態的保存庫或物件。 這些保存庫和物件仍然可以復原，以確保客戶會遵循保留原則。 
-
 [清除保護] 是選擇性的 Key Vault 行為，**預設不會啟用**。 您可以透過[CLI](key-vault-soft-delete-cli.md#enabling-purge-protection)或[Powershell](key-vault-soft-delete-powershell.md#enabling-purge-protection)來開啟它。
+
+開啟 [清除保護] 時，除非已達到保留期限，否則無法清除 [已刪除] 狀態的保存庫或物件。 虛刪除的保存庫和物件仍然可以復原，確保會遵循保留原則。 
+
+預設的保留期限為90天，但可以透過 Azure 入口網站將保留原則間隔設定為從7到90天的值。 一旦設定保留原則間隔並加以儲存，就無法對該保存庫進行變更。 
 
 ### <a name="permitted-purge"></a>允許的清除作業
 
@@ -86,6 +94,6 @@ Azure Key Vault 是由 Azure Resource Manager 管理的追蹤資源。 Azure Res
 
 下列兩個指南提供使用虛刪除的主要使用方式案例。
 
-- [如何使用 Key Vault 虛刪除與 PowerShell](key-vault-soft-delete-powershell.md) 
-- [如何使用 Key Vault 虛刪除與 CLI](key-vault-soft-delete-cli.md)
+- [如何透過 PowerShell 使用金鑰保存庫虛刪除](key-vault-soft-delete-powershell.md) 
+- [如何透過 CLI 使用金鑰保存庫虛刪除](key-vault-soft-delete-cli.md)
 

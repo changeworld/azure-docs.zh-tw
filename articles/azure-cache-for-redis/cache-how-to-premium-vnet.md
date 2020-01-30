@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: f449dc08dede30a7dec977bb66e0a2c0b509a1f0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6c7c041565f6376e7f8b8b84f5076b30c1eec7bf
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433495"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846399"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>如何設定進階 Azure Cache for Redis 的虛擬網路支援
 Azure Cache for Redis 有不同的快取供應項目，可讓您彈性選擇快取大小和功能，包括叢集功能、持續性及虛擬網路支援等「進階」層功能。 VNet 是雲端中的私人網路。 當 Azure Cache for Redis 執行個體是以 VNet 設定時，它將無法公開定址，而只能從 VNet 中的虛擬機器和應用程式存取。 本文說明如何設定進階 Azure Cache for Redis 執行個體的虛擬網路支援。
@@ -37,7 +37,7 @@ Azure Cache for Redis 有不同的快取供應項目，可讓您彈性選擇快�
 
 ![虛擬網路][redis-cache-vnet]
 
-從 [子網路] 下拉式清單中選取所需的子網路，然後指定所需的 [靜態 IP 位址]。 如果您使用傳統的 VNet，[靜態 IP 位址] 欄位就是選擇性的，而且如果未指定任何位址，則會從選取的子網路選擇一個。
+從 [**子網**] 下拉式清單中選取所需的子網。  如有需要，請指定**靜態 IP 位址**。 [**靜態 IP 位址**] 欄位是選擇性的，如果未指定，則會從選取的子網選擇一個。
 
 > [!IMPORTANT]
 > 將 Azure Cache for Redis 部署到 Resource Manager VNet 時，快取必須位於專用子網路中，其中只能包含 Azure Cache for Redis 執行個體，不含其他任何資源。 如果嘗試將 Azure Cache for Redis 部署到含有其他資源的 Resource Manager VNet 子網路，部署將會失敗。

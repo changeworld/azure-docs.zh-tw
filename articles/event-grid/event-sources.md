@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 3a87475146e2b23c4a824e568ea3da33e1f4abf0
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 3a52d906d958fdfd1d7e09c6229b12af3204bc52
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512941"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846393"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Azure 事件方格中的事件來源
 
@@ -132,6 +132,9 @@ Key Vault 與事件方格的整合目前為預覽狀態。
 ## <a name="storage"></a>儲存體
 
 訂閱 Blob 儲存體事件，以回應 Blob 建立和刪除事件。
+
+>[!NOTE]
+> 只有種類為 StorageV2 的儲存體帳戶 **（一般用途 v2）** 和**BlobStorage**支援事件整合。 **儲存體（genral 用途 v1）** 不*支援與*事件方格整合。
 
 |Title  |說明  |
 |---------|---------|

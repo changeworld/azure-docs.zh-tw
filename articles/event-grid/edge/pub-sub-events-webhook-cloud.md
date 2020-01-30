@@ -9,16 +9,16 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 5fb6cab4bfeea4308873210fb5f9122b37b61dcd
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: c82f1edfc3acd73c1d38425f963aaaf2976a1cc5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73100316"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844579"
 ---
 # <a name="tutorial-publish-subscribe-to-events-in-cloud"></a>教學課程：發佈、訂閱雲端中的事件
 
-本文會逐步解說在 IoT Edge 上使用事件方格發佈和訂閱事件所需的所有步驟。
+本文會逐步解說在 IoT Edge 上使用事件方格發佈和訂閱事件所需的所有步驟。 本教學課程會使用和 Azure Function 作為事件處理常式。 如需其他目的地類型，請參閱[事件處理常式](event-handlers.md)。
 
 請參閱[事件方格概念](concepts.md)，以瞭解事件方格主題和訂用帳戶在繼續之前的功能。
 
@@ -107,6 +107,8 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 ## <a name="create-an-event-subscription"></a>建立事件訂閱
 
 訂閱者可以註冊發佈至主題的事件。 若要接收任何事件，訂閱者必須在感關注的主題上建立 Event grid 訂用帳戶。
+
+[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
 1. 使用下列內容建立 subscription2。 如需裝載的詳細資訊，請參閱我們的[API 檔](api.md)。
 
@@ -203,3 +205,4 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 * 在[linux](persist-state-linux.md)或[Windows](persist-state-windows.md)上設定事件方格模組的持續性
 * 遵循[檔](configure-client-auth.md)以設定用戶端驗證
 * 遵循本[教學](forward-events-event-grid-cloud.md)課程，將事件轉寄到雲端中的 Azure 事件方格
+* [監視邊緣上的主題和訂用帳戶](monitor-topics-subscriptions.md)

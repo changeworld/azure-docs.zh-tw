@@ -3,12 +3,12 @@ title: 使用 Azure CLI 備份 Azure 檔案共用
 description: 瞭解如何使用 Azure CLI 來備份復原服務保存庫中的 Azure 檔案共用
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.openlocfilehash: 10ae6d88e8a40ba4175e664ed338f0a02be7a7ca
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: ff1d8c6245521d2d0262b0440177d65713058742
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294483"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844036"
 ---
 # <a name="back-up-azure-file-shares-with-cli"></a>使用 CLI 來備份 Azure 檔案共用
 
@@ -104,7 +104,7 @@ Name                                  ResourceGroup
 
 您必須定義下列參數，以觸發隨選備份：
 
-* **--container-name**是主控檔案共用的儲存體帳戶名稱。 若要取得容器的**名稱**或**易記名稱**，請使用[az backup container list](https://docs.microsoft.com/azure/backup/container?view=azure-cli-latest#az-backup-container-list)命令。
+* **--container-name**是主控檔案共用的儲存體帳戶名稱。 若要取得容器的**名稱**或**易記名稱**，請使用[az backup container list](/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list)命令。
 * **--item-name**是您想要觸發隨選備份的檔案共用名稱。 若要取出已備份專案的**名稱**或**易記名稱**，請使用[az backup item list](https://docs.microsoft.com/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list)命令。
 * **--保留-直到**指定要保留復原點的日期為止。 此值應以 UTC 時間格式（dd-mm-yyyy）來設定。
 

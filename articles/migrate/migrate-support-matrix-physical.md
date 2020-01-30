@@ -3,12 +3,12 @@ title: 支援 Azure Migrate 的實體伺服器評估
 description: 瞭解 Azure Migrate 的實體伺服器評估支援。
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 057d384c14328deca2853e891f23250aa1d61702
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 489f95bbbbeb261b56f1a3a86da44f5fcce0adf5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154783"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846565"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>實體伺服器評估的支援矩陣 
 
@@ -55,8 +55,8 @@ Azure Migrate 會使用[Azure Migrate 設備](migrate-appliance.md)來進行探�
 
 **裝置** | **[連接]**
 --- | ---
-**台** | TCP 通訊埠3389上的輸入連線，以允許應用裝置的遠端桌面連線。<br/> 埠44368上的輸入連線，可使用 URL 從遠端存取應用裝置管理應用程式： ``` https://<appliance-ip-or-name>:44368 ```<br/> 埠443、5671和5672上的輸出連線，以將探索和效能中繼資料傳送至 Azure Migrate。
-**實體伺服器** | **Windows：** 埠443上的輸入連線、WinRM 埠5985（HTTP）和5986（HTTPS），以從 Windows 伺服器提取設定和效能中繼資料。 <br/> **Linux：** 埠22（UDP）上的輸入連線，可從 Linux 伺服器提取設定和效能中繼資料。 |
+**台** | TCP 通訊埠3389上的輸入連線，以允許應用裝置的遠端桌面連線。<br/> 埠44368上的輸入連線，可使用 URL 從遠端存取應用裝置管理應用程式： ``` https://<appliance-ip-or-name>:44368 ```<br/> 埠443（HTTPS）、5671和5672（AMQP）上的輸出連線，以將探索和效能中繼資料傳送至 Azure Migrate。
+**實體伺服器** | **Windows：** WinRM 埠5985（HTTP）和5986（HTTPS）上的輸入連線，可從 Windows 伺服器提取設定和效能中繼資料。 <br/> **Linux：** 埠22（UDP）上的輸入連線，可從 Linux 伺服器提取設定和效能中繼資料。 |
 
 ## <a name="agent-based-dependency-visualization"></a>以代理程式為基礎的相依性視覺效果
 

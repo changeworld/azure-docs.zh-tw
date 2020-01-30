@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 073205b5bdc3f6de80bd7e347469c3f06aeb515b
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: d0034810ff86de2a40e275ca54a2f0f9cbc856c2
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73098658"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844695"
 ---
 # <a name="tutorial-forward-events-to-iothub"></a>教學課程：將事件轉寄至 IoTHub
 
@@ -78,9 +78,11 @@ ms.locfileid: "73098658"
         ]
    ```
 
-## <a name="create-event-subscription"></a>建立事件訂用帳戶
+## <a name="create-event-subscription"></a>建立事件訂閱
 
 訂閱者可以註冊發佈至主題的事件。 若要接收任何事件，他們必須在感關注的主題上建立 Event grid 訂用帳戶。
+
+[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
 1. 使用下列內容建立 subscription4。 如需裝載的詳細資訊，請參閱我們的[API 檔](api.md)。
 
@@ -212,3 +214,4 @@ ms.locfileid: "73098658"
 * 在[linux](persist-state-linux.md)或[Windows](persist-state-windows.md)上設定事件方格模組的持續性
 * 遵循[檔](configure-client-auth.md)以設定用戶端驗證
 * 遵循本[教學](forward-events-event-grid-cloud.md)課程，將事件轉寄到雲端中的 Azure 事件方格
+* [監視邊緣上的主題和訂用帳戶](monitor-topics-subscriptions.md)

@@ -9,16 +9,18 @@ ms.date: 10/06/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 3506399537fe2cb16014ceb3429bce5aeee8cb69
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 39b16c6cfd5b94d412827ed88197edbef2da1453
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73100342"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844627"
 ---
 # <a name="persist-state-in-linux"></a>在 Linux 中保存狀態
 
-在 [事件方格] 模組中建立的主題和訂用帳戶預設會儲存在容器檔案系統中。 若無持續性，如果重新部署模組，則所有建立的中繼資料都會遺失。 目前只有中繼資料會保存。 事件會儲存在記憶體中。 如果重新部署或重新開機事件方格模組，則任何未傳遞的事件都會遺失。
+在「事件方格」模組中建立的主題和訂用帳戶預設會儲存在容器檔案系統中。 若無持續性，如果重新部署模組，則所有建立的中繼資料都會遺失。 若要在部署和重新開機時保留資料，您需要將資料保存在容器檔案系統之外。
+
+根據預設，只會保存中繼資料，而事件仍會儲存在記憶體中，以提升效能。 請遵循保存事件一節來啟用事件持續性。
 
 本文提供在 Linux 部署中部署具有持續性之事件方格模組的步驟。
 
@@ -61,7 +63,8 @@ ms.locfileid: "73100342"
   ],
   "HostConfig": {
     "Binds": [
-      "egmetadataDbVol:/app/metadataDb"
+      "egmetadataDbVol:/app/metadataDb",
+      "egdataDbVol:/app/eventsDb"
     ],
     "PortBindings": {
       "4438/tcp": [
@@ -74,7 +77,7 @@ ms.locfileid: "73100342"
 }
 ```
 
-或者，您可以使用 docker 用戶端命令來建立 docker 磁片區。 
+您可以在主機系統上建立目錄並掛接該目錄，而不是裝載磁片區。
 
 ## <a name="persistence-via-host-directory-mount"></a>透過主機目錄掛接的持續性
 
@@ -138,7 +141,8 @@ ms.locfileid: "73100342"
           ],
           "HostConfig": {
                 "Binds": [
-                  "/myhostdir:/app/metadataDb"
+                  "/myhostdir:/app/metadataDb",
+                  "/myhostdir2:/app/eventsDb"
                 ],
                 "PortBindings": {
                       "4438/tcp": [
@@ -153,3 +157,32 @@ ms.locfileid: "73100342"
 
     >[!IMPORTANT]
     >請勿變更 bind 值的第二個部分。 它會指向模組內的特定位置。 針對 linux 上的事件方格模組，它必須是 **/app/metadata**。
+
+
+## <a name="persist-events"></a>保存事件
+
+若要啟用事件持續性，您必須先使用上述各節，透過磁片區掛接或主機目錄掛接來啟用中繼資料持續性。
+
+保存事件的重要注意事項：
+
+* 保存事件是根據每個事件訂用帳戶來啟用，並且會在裝載磁片區或目錄後加入宣告。
+* 事件持續性會在建立時于事件訂用帳戶上設定，而且在建立事件訂閱之後就無法修改。 若要切換事件持續性，您必須刪除並重新建立事件訂閱。
+* 保存事件幾乎總是比記憶體中的作業慢，不過速度的差異會高度依賴磁片磁碟機的特性。 速度和可靠性之間的取捨是所有訊息系統固有的，但通常只會成為大規模的 noticible。
+
+若要在事件訂用帳戶上啟用事件持續性，請將 `persistencePolicy` 設定為 `true`：
+
+ ```json
+        {
+          "properties": {
+            "persistencePolicy": {
+              "isPersisted": "true"
+            },
+            "destination": {
+              "endpointType": "WebHook",
+              "properties": {
+                "endpointUrl": "<your-webhook-url>"
+              }
+            }
+          }
+        }
+ ```

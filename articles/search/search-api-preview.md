@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/04/2020
-ms.openlocfilehash: eb73d614ca94bc1fa007a14f3705e50c74ab9e4f
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 940ada83aeabf4bf8746ad5f90592e0917f7b403
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922466"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844440"
 ---
 # <a name="azure-cognitive-search-service-rest-api-version-2019-05-06-preview"></a>Azure 認知搜尋服務 REST api-版本 2019-05-06-預覽
 
@@ -30,10 +30,6 @@ ms.locfileid: "75922466"
 + [Cosmos DB 索引子](search-howto-index-cosmosdb.md)支援 MongoDB api （預覽）、Gremlin API （預覽）和 Cassandra API （預覽）。
 
 + [Azure Data Lake Storage Gen2 索引子（預覽）](search-howto-index-azure-data-lake-storage.md)可以從 Data Lake Storage Gen2 編制內容和中繼資料的索引。
-
-+ 檔[解壓縮（預覽）](cognitive-search-skill-document-extraction.md)是在編制索引期間使用的認知技能，可讓您從技能集中解壓縮檔案的內容。 過去，只有在技能集執行之前才會發生檔破解。 隨著這項技能的增加，您也可以在技能集執行期間執行此作業。
-
-+ [文字翻譯（預覽）](cognitive-search-skill-text-translation.md)是在索引編制期間所使用的認知技能，可評估文字，而針對每一筆記錄，會傳回轉譯為指定目的語言的文字。
 
 + [知識存放區](knowledge-store-concept-intro.md)是以 AI 為基礎的擴充管線的新目的地。 實體資料結構存在於 Azure Blob 儲存體和 Azure 資料表儲存體中，而且當您執行具有附加認知技能集的索引子時，它會建立並填入。 知識存放區本身的定義是在技能集定義內指定。 在知識存放區定義中，您可以透過*投射*專案來控制資料的實體結構，這些元素會決定如何塑造資料、資料是否儲存在資料表儲存體或 Blob 儲存體中，以及是否有多個視圖。
 

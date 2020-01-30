@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 169b0c8084259ac27b466dbfd3606e465da35d99
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: e403d690470f3c4f1d0c8e565e90641d9c114a80
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73098629"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844529"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>教學課程：在本機發佈、訂閱事件
 
@@ -59,11 +59,13 @@ ms.locfileid: "73098629"
    * **映射 URI**： `mcr.microsoft.com/azure-event-grid/iotedge:latest`
    * **容器建立選項**：
 
+   [!INCLUDE [event-grid-edge-module-version-update](../../../includes/event-grid-edge-module-version-update.md)]
+
     ```json
         {
           "Env": [
-            "inbound:clientAuth:clientCert:enabled=false",
-            "outbound:webhook:httpsOnly=false"
+            "inbound__clientAuth__clientCert__enabled=false",
+            "outbound__webhook__httpsOnly=false"
           ],
           "HostConfig": {
             "PortBindings": {
@@ -178,6 +180,8 @@ ms.locfileid: "73098629"
 ## <a name="create-an-event-subscription"></a>建立事件訂閱
 
 訂閱者可以註冊發佈至主題的事件。 若要接收任何事件，您必須為感關注的主題建立 Event Grid 訂用帳戶。
+
+[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
 1. 建立具有下列內容的訂用帳戶. json。 如需裝載的詳細資訊，請參閱我們的[API 檔](api.md)
 
@@ -307,4 +311,5 @@ ms.locfileid: "73098629"
 - 遵循[檔](configure-client-auth.md)以設定用戶端驗證
 - 遵循本[教學](pub-sub-events-webhook-cloud.md)課程，將事件轉送到雲端中的 Azure Functions
 - [回應 IoT Edge 上的 Blob 儲存體事件](react-blob-storage-events-locally.md)
+- [監視邊緣上的主題和訂用帳戶](monitor-topics-subscriptions.md)
 

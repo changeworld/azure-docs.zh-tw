@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7e83aa69cb4099885fc45e719c812a6c92299b7a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 161d9d18c914f65b3ab3ef7e44f8cd2f4a1992db
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75359900"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76887640"
 ---
 此文章將回答有關 Azure 受控磁碟和 Azure 進階 SSD 磁碟的一些常見問題。
 
@@ -145,31 +145,23 @@ Azure 受控磁碟目前只支援本地備援儲存體受控磁碟。
 
 進階 SSD、標準 SSD 和標準 HDD 支援快照集。 針對這三種磁片類型，所有磁片大小（包括大小上限為 32 TiB 的磁片）都支援快照集。 Ultra 磁片不支援快照集。
 
-### <a name="disk-reservation"></a>磁片保留
+**什麼是 Azure 磁片保留專案？**
+磁片保留可讓您事先購買一年的磁片儲存體，以降低總成本。 如需有關 Azure 磁片保留的詳細資訊，請參閱主題的文章：[瞭解保留折扣如何套用至 Azure 磁片](../articles/cost-management-billing/reservations/understand-disk-reservations.md)。
 
-**什麼是 Azure 磁片保留？**
-磁片保留可讓您事先購買一年的磁片儲存體，以降低總成本。
+**Azure 磁片保留提供哪些選項？** Azure 磁片保留可讓您選擇從 P30 （1 TiB）中的指定 Sku 購買 Premium Ssd （一年期），最高可達 P80 （32 TiB）。 購買磁片保留所需的最小磁片量並無任何限制。 此外，您也可以選擇以單筆預付或月付的方式付款。 進階 SSD 受控磁碟不會套用額外的交易成本。 
 
-**Azure 磁片保留提供哪些選項？**
-Azure 磁片保留可讓您選擇從 P30 （1 TiB）中的指定 Sku 購買 Premium Ssd （一年期），最高可達 P80 （32 TiB）。 購買磁片保留所需的最小磁片量並無任何限制。 此外，您也可以選擇以單筆預付或月付的方式付款。 進階 SSD 受控磁碟不會套用額外的交易成本。
+保留是以磁片的形式進行，而不是容量。 換句話說，當您保留 P80 （32 TiB）磁片時，您會取得單一 P80 磁片，然後無法將該特定的保留區分割成兩個較小的 P70 （16個 TiB）磁片。 當然，您可以盡可能保留所需的磁片數量或數目，包括兩個不同的 P70 （16 TiB）磁片。
 
-保留是以磁片的形式進行，而不是容量。 換句話說，當您保留 P80 （32 TiB）磁片時，您會取得單一 P80 磁片，然後就無法將該特定的保留區分配成兩個較小的 P70 （16 TiB）磁片。 當然，您可以盡可能保留所需的磁片數量或數目，包括兩個不同的 P70 （16 TiB）磁片。
+**Azure 磁片保留的套用方式為何？**  
+磁片保留會遵循類似于保留的虛擬機器（VM）實例的模型。 其差異在於，磁片保留無法套用至不同的 Sku，而 VM 實例則可以。 如需 VM 實例的詳細資訊，請參閱[使用 Azure 保留的 VM 執行個體節省成本](../articles/virtual-machines/linux/prepay-reserved-vm-instances.md)。    
 
-**Azure 磁片保留會如何計費？**
-- 若為 Enterprise 合約（EA）客戶，則會先使用 Azure 承諾用量來購買 Azure 磁片保留。 在 EA 客戶已用完所有承諾用量金額的情況下，仍可購買磁片保留，而這些購買專案將會在下一期的超額帳單上支付預付金的單一付款。
+我**可以在多個區域中使用透過 Azure 磁片保留購買的資料儲存體嗎？**     
+Azure 磁片保留會針對特定區域和 SKU （例如美國東部2中的 P30）購買，因此不能在這些結構外使用。 您一律可以針對其他區域或 Sku 中的磁片儲存體需求購買額外的 Azure 磁片保留。 
 
-- 針對透過 Azure.com 購買的客戶，在購買時，會針對 Azure 磁片保留期的完整提前付款（或每月固定付款）支付檔案的信用卡費用。
-
-**Azure 磁片保留的套用方式為何？**
-磁片保留會遵循類似于保留的虛擬機器（VM）實例的模型。 其差異在於，磁片保留無法套用至不同的 Sku，而 VM 實例則可以。 如需 VM 實例的詳細資訊，請參閱[使用 Azure 保留的 VM 執行個體節省成本](../articles/virtual-machines/linux/prepay-reserved-vm-instances.md)。 
-
-**我可以在多個區域中使用透過 Azure 磁片保留購買的資料儲存體嗎？**
-Azure 磁片保留會針對特定區域和 SKU （例如美國東部2中的 P30）購買，因此不能在這些結構外使用。 您一律可以針對其他區域或 Sku 中的磁片儲存體需求購買額外的 Azure 磁片保留。
-
-**當我的 Azure 磁片保留過期時，會發生什麼事？**
+**當我的 Azure 磁片保留過期時，會發生什麼事？**    
 您將會在到期前30天收到電子郵件通知，並在到期日再次出現。 保留到期後，部署的磁片將會繼續執行，且會以最新的[隨用隨付費率](https://azure.microsoft.com/pricing/details/managed-disks/)計費。
 
-## <a name="ultra-disks"></a>Ultra 磁碟
+## <a name="ultra-disks"></a>Ultra 磁片
 
 **我該如何將 ultra 磁片輸送量設定為？**
 如果您不確定要如何設定磁片輸送量，建議您先從假設 IO 大小 16 KiB 開始，並在監視應用程式時從該處調整效能。 此公式為：輸送量（MBps = IOPS） * 16/1000。

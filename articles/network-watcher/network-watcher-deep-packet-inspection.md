@@ -3,9 +3,7 @@ title: 使用 Azure 網路監看員進行封包檢查 | Microsoft Docs
 description: 本文說明如何使用網路監看員執行從 VM 收集的深度封包檢查
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: 7b907d00-9c35-40f5-a61e-beb7b782276f
 ms.service: network-watcher
 ms.devlang: na
@@ -13,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 7f3fc69bbfd881a26ceb25705852558b66c60153
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: damendo
+ms.openlocfilehash: c937a07133dc38d2d9e1e1ef2cc324b4c8bb360e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64716897"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845074"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>使用 Azure 網路監看員進行封包檢查
 
@@ -31,7 +29,7 @@ ms.locfileid: "64716897"
 
 本案例假設您已經在虛擬機器上執行封包擷取。 若要了解如何建立封包擷取，請造訪[使用入口網站管理封包擷取](network-watcher-packet-capture-manage-portal.md)，或使用 REST 則請造訪[使用 REST API 管理封包擷取](network-watcher-packet-capture-manage-rest.md)。
 
-## <a name="scenario"></a>狀況
+## <a name="scenario"></a>案例
 
 在此案例中，您將會：
 
@@ -41,7 +39,7 @@ ms.locfileid: "64716897"
 
 在此案例中，我們會說明如何檢視兩個端點之間發生的傳輸控制通訊協定 (TCP) 對話的初始來回時間 (RTT)。
 
-建立 TCP 連線時，連線中傳送的前三個封包會遵循通常稱為三向交握的模式。 藉由檢查此交握期間傳送的前兩個封包 (來自用戶端的初始要求和來自伺服器的回應)，我們可以計算建立此連線的延遲。 此延遲是指來回時間 (RTT)。 如需有關 TCP 通訊協定和三向交握的資訊，請參閱下列資源。 [https://doi.org/10.13012/J8PN93H8](https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip )
+建立 TCP 連線時，連線中傳送的前三個封包會遵循通常稱為三向交握的模式。 藉由檢查此交握期間傳送的前兩個封包 (來自用戶端的初始要求和來自伺服器的回應)，我們可以計算建立此連線的延遲。 此延遲是指來回時間 (RTT)。 如需有關 TCP 通訊協定和三向交握的資訊，請參閱下列資源。 https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip
 
 ### <a name="step-1"></a>步驟 1
 
@@ -53,7 +51,7 @@ ms.locfileid: "64716897"
 
 ### <a name="step-3"></a>步驟 3
 
-若要在 TCP 對話中檢視初始的來回時間 (RTT)，我們將只會看到參與 TCP 交握的前兩個封包。 我們將在三向交握中使用前兩個封包，也就是 [SYN]、[SYN, ACK] 封包。 它們會針對 TCP 標頭中設定的旗標命名。 在交握期間的最後一個封包 ([ACK] 封包) 不會用於此案例。 [SYN] 封包會由用戶端傳送。 一旦收到它後，伺服器會傳送 [ACK] 封包做為從用戶端 SYN 接收的認可。 利用伺服器的回應需要極少額外負荷的特性，我們將用戶端接收 [SYN, ACK] 封包的時間減去用戶端傳送 [SYN] 封包的時間來計算 RTT。
+若要在 TCP 對話中檢視初始的來回時間 (RTT)，我們將只會看到參與 TCP 交握的前兩個封包。 我們將在三向交握中使用前兩個封包，也就是 [SYN]、[SYN, ACK] 封包。 它們會針對 TCP 標頭中設定的旗標命名。 在交握期間的最後一個封包 ([ACK] 封包) 不會用於此案例。 [SYN] 封包會由用戶端傳送。 一旦收到，伺服器就會傳送 [ACK] 封包，做為從用戶端接收 SYN 的認可。 利用伺服器的回應需要極少額外負荷的特性，我們將用戶端接收 [SYN, ACK] 封包的時間減去用戶端傳送 [SYN] 封包的時間來計算 RTT。
 
 使用 WireShark，系統會為我們計算此值。
 
@@ -79,7 +77,7 @@ ms.locfileid: "64716897"
 
 ### <a name="step-1"></a>步驟 1
 
-使用先前案例中相同的擷取按一下 [統計資料]   > [通訊協定階層] 
+使用先前案例中相同的擷取按一下 [統計資料] > [通訊協定階層]
 
 ![通訊協定階層功能表][2]
 
@@ -95,7 +93,7 @@ ms.locfileid: "64716897"
 
 ### <a name="step-1"></a>步驟 1
 
-使用先前案例中相同的擷取按一下 [統計資料]   > [IPv4 統計資料]   > [目的地和連接埠] 
+使用先前案例中相同的擷取按一下 [統計資料] > [IPv4 統計資料] > [目的地和連接埠]
 
 ![封包擷取視窗][4]
 

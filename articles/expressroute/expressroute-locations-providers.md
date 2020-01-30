@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 01/17/2020
+ms.date: 01/28/2020
 ms.author: cherylmc
-ms.openlocfilehash: cbddd912831247e30f2913414c6dfa13131dde99
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 02e2c0472a6ba7449229a5de5c6d8948be064644
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719852"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845796"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作夥伴和對等互連位置
 
@@ -95,7 +95,7 @@ ExpressRoute 位置（有時稱為「對等位置」或「符合我的位置」�
 | **Dubai2** | [du datamena](http://datamena.com/solutions/data-centre) | 3 | 阿拉伯聯合大公國北部 | n/a | du datamena、Megaport、橙色、Orixcom |
 | **都柏林** | [Equinix DB3](https://www.equinix.com/locations/europe-colocation/ireland-colocation/dublin-data-centers/db3/) | 1 | 北歐 | 10G、100G | Colt、eir、Equinix、Interxion、Megaport |
 | **法蘭克福** | [Interxion FRA11](https://www.interxion.com/Locations/frankfurt/) | 1 | 德國中西部 | 10G、100G | Colt、CIX、GEANT、Interxion、Megaport、橙色、Telia 電訊廠商 |
-| **Geneva** | [Equinix GV2](https://www.equinix.com/locations/europe-colocation/switzerland-colocation/geneva-data-centers/gv2/) | 1 | 瑞士西部 | 10G、100G | Equinix |
+| **Geneva** | [Equinix GV2](https://www.equinix.com/locations/europe-colocation/switzerland-colocation/geneva-data-centers/gv2/) | 1 | 瑞士西部 | 10G、100G | Equinix、Megaport |
 | **香港特別行政區** | [Equinix HK1](https://www.equinix.com/locations/asia-colocation/hong-kong-colocation/hong-kong-data-center/hk1/) | 2 | 東亞 | n/a | Aryaka networks Networks，英屬電信，CenturyLink Cloud Connect，首席電信，中國電信全球，Equinix，InterCloud，Megaport，NTT 通訊，橙色，PCCW GLOBAL LIMITED 全球有限，Tata 通訊，Telia 電訊，Verizon |
 | **雅加達** | Telkom 印尼 | 4 | n/a | 10G | |
 | **約翰尼斯堡** | [Teraco JB1](https://www.teraco.co.za/data-centre-locations/johannesburg/#jb1) | 3 | 南非北部 | 10G | 英屬電信，網際網路解決方案-雲端連線，液體電信，橙色，Teraco |
@@ -108,7 +108,7 @@ ExpressRoute 位置（有時稱為「對等位置」或「符合我的位置」�
 | **墨爾本** | [NextDC M1](https://www.nextdc.com/data-centres/m1-melbourne-data-centre) | 2 | 澳洲東南部 | 10G、100G | AARNet、Devoli、Equinix、Megaport、NEXTDC、Optus、Telstra Corporation、TPG 電信 |
 | **邁阿密** | [Equinix MI1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/miami-data-centers/mi1/) | 1 | n/a | 10G | C3ntro、Equinix、Megaport、Neutrona Networks |
 | **米蘭** | [IRIDEOS](https://irideos.it/en/data-centers/) | 1 | n/a | 10G | |
-| **蒙特婁** | [Cologix MTL3](https://www.cologix.com/data-centers/montreal/mtl3/) | 1 | n/a | n/a | 鐘加拿大、Cologix、Megaport、Telus、Zayo |
+| **蒙特婁** | [Cologix MTL3](https://www.cologix.com/data-centers/montreal/mtl3/) | 1 | n/a | 10G、100G | 鐘加拿大、Cologix、Megaport、Telus、Zayo |
 | **孟買** | Tata Communications | 2 | 印度西部 | n/a | Global CloudXchange （GCX）、依賴 Jio、Sify、Tata 通訊、Verizon |
 | **孟買2** | Airtel | 2 | 印度西部 | n/a | Airtel、Sify、Vodafone Idea |
 | **慕尼克** | [EdgeConneX](https://www.edgeconnex.com/locations/europe/) | 1 | n/a | 10G、100G | |
@@ -160,7 +160,7 @@ Azure 國家/地區雲端彼此隔離，而不是全球商業 Azure。 一個 Az
 | **位置** | **服務提供者** |
 | --- | --- |
 | **北京** |China Telecom |
-| **北京 2** | 中國電信，GDS |
+| **北京 2** | 中國電信、中國 Unicom、GDS |
 | **上海** |China Telecom |
 | **上海 2** | 中國電信，GDS |
 

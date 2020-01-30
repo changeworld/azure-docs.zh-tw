@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
-ms.openlocfilehash: 9d71dd854c9a5059c2d0a48f57ad3ba5bb1eddf9
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 2636e9a225002148e4cd79bb2176e0883aed623a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721314"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844933"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中的記錄
 適用於 PostgreSQL 的 Azure 資料庫可讓您設定和存取 Postgres 的標準記錄。 記錄可用來識別、疑難排解和修復設定錯誤和效能較佳。 您可以設定和存取的記錄資訊包括錯誤、查詢資訊、自動資料清理記錄、連接和檢查點。 （不提供交易記錄檔的存取權）。
@@ -69,7 +69,7 @@ ms.locfileid: "76721314"
 
 ### <a name="access-diagnostic-logs"></a>存取診斷記錄
 
-您存取記錄的方式取決於您選擇的端點。 如需 Azure 儲存體，請參閱[記錄儲存體帳戶](../azure-monitor/platform/resource-logs-collect-storage.md)一文中的架構。 如事件中樞，請參閱[串流 Azure 記錄](../azure-monitor/platform/resource-logs-stream-event-hubs.md)一文。
+您存取記錄的方式取決於您選擇的端點。 如 Azure 儲存體，請參閱[記錄儲存體帳戶](../azure-monitor/platform/resource-logs-collect-storage.md)一文。 如事件中樞，請參閱[串流 Azure 記錄](../azure-monitor/platform/resource-logs-stream-event-hubs.md)一文。
 
 針對 Azure 監視器記錄檔，記錄會傳送至您選取的工作區。 Postgres 記錄會使用**AzureDiagnostics**收集模式，因此可以從 AzureDiagnostics 資料表進行查詢。 資料表中的欄位如下所述。 深入瞭解[Azure 監視器記錄查詢](../azure-monitor/log-query/log-query-overview.md)總覽中的查詢和警示。
 
@@ -78,7 +78,7 @@ ms.locfileid: "76721314"
 在過去一天內搜尋特定伺服器的所有 Postgres 記錄
 ```
 AzureDiagnostics
-| where LogicalServerName_s == 'myservername'
+| where LogicalServerName_s == "myservername"
 | where TimeGenerated > ago(1d) 
 ```
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/22/2019
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 2c5312c2e0a7121237c4d11197d90a2a5638557c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: d94937a738034904413eac8b256121f14221d1ac
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76020974"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845987"
 ---
 | 資源 | 預設限制 | 上限 |
 | --- | --- | --- |
@@ -21,16 +21,17 @@ ms.locfileid: "76020974"
 | 每一[訂用帳戶](../articles/billing-buy-sign-up-azure-subscription.md)的 VM 總計核心 |每個區域 20<sup>1</sup>個。 | 請連絡支援人員。 |
 | Azure 點 VM 每個[訂](../articles/billing-buy-sign-up-azure-subscription.md)用帳戶的核心總數 |每個區域 20<sup>1</sup>個。 | 請連絡支援人員。 |
 | 每個系列的 VM，例如 Dv2 和 F，每個[訂](../articles/billing-buy-sign-up-azure-subscription.md)用帳戶的核心 |每個區域 20<sup>1</sup>個。 | 請連絡支援人員。 |
-| 每個訂用帳戶[共同管理員](../articles/cost-management-billing/manage/add-change-subscription-administrator.md) |無限制。 |無限制。 |
 | 每一訂用帳戶每一區域的[儲存體帳戶](../articles/storage/common/storage-account-create.md) |250 |250 |
-| 每個訂用帳戶的[資源群組](../articles/azure-resource-manager/management/overview.md) |980 |980 |
 | 每個訂用帳戶的[可用性設定組](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) |2000每個區域。 |2000每個區域。 |
+| 每一訂用帳戶[同質群組](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) |N/A<sup>3</sup> |N/A<sup>3</sup> |
+| 每一訂用帳戶[雲端服務](../articles/cloud-services/cloud-services-choose-me.md) |N/A<sup>3</sup> |N/A<sup>3</sup> |
+| 每個訂用帳戶的[資源群組](../articles/azure-resource-manager/management/overview.md) |980 |980 |
 | Azure Resource Manager API 要求大小 |4194304個位元組。 |4194304個位元組。 |
 | 每個訂用帳戶的標記<sup>2</sup> |無限制。 |無限制。 |
 | 每個訂用帳戶的唯一標記計算<sup>2</sup> | 10,000 | 10,000 |
-| 每一訂用帳戶[雲端服務](../articles/cloud-services/cloud-services-choose-me.md) |不適用<sup>3</sup> |不適用<sup>3</sup> |
-| 每一訂用帳戶[同質群組](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) |不適用<sup>3</sup> |不適用<sup>3</sup> |
 | 每個位置[的訂用帳戶層級部署](../articles/azure-resource-manager/templates/deploy-to-subscription.md) | 800<sup>4</sup> | 800 |
+| 每個 Azure Active Directory 租使用者的訂用帳戶 | 無限制。 | 無限制。 |
+| 每個訂用帳戶[共同管理員](../articles/cost-management-billing/manage/add-change-subscription-administrator.md) |無限制。 |無限制。 |
 
 <sup>1</sup>預設限制會因供應專案類別類型而異，例如免費試用版和隨用隨付，以及依系列（例如 Dv2、F 和 G）。例如，Enterprise 合約訂閱的預設值是350。
 

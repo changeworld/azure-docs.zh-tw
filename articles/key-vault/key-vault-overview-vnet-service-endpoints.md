@@ -8,12 +8,12 @@ manager: rkarlin
 ms.date: 01/02/2019
 ms.service: key-vault
 ms.topic: conceptual
-ms.openlocfilehash: e31153a1c490948266714633202d5e59fe66fa3a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: d8461cb2d98ec8fe914c2cc878e9002d132c9995
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980477"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845831"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault 的虛擬網路服務端點
 
@@ -75,7 +75,8 @@ Azure Key Vault 的虛擬網路服務端點可讓您將存取權限制為指定�
 |Azure Databricks|[快速、簡單且可共同作業的 Apache Spark 型分析服務](../azure-databricks/what-is-azure-databricks.md)|
 |Azure API 管理|[使用 MSI 從 Key Vault 部署自訂網域的憑證](../api-management/api-management-howto-use-managed-service-identity.md#use-the-managed-service-identity-to-access-other-resources)|
 |Azure Data Factory|[從 Data Factory 的 Key Vault 中提取資料存放區認證](https://go.microsoft.com/fwlink/?linkid=2109491)|
-
+|Azure 事件中樞|[針對客戶管理的金鑰案例，允許存取金鑰保存庫](https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key)|
+|Azure 服務匯流排|[針對客戶管理的金鑰案例，允許存取金鑰保存庫](https://docs.microsoft.com/azure/service-bus-messaging/configure-customer-managed-key)|
 
 
 > [!NOTE]

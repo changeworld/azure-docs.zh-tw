@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/14/2020
-ms.openlocfilehash: 03be29cde42478abf32492f55a296aeee0a4a478
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: fabb2524547bd7837d3644d79f0023311ddccdfc
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547246"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845547"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>刪除和還原 Azure Log Analytics 工作區
 
@@ -23,7 +23,7 @@ ms.locfileid: "76547246"
 當您刪除 Log Analytics 工作區時，會執行虛刪除作業，以允許在14天內復原工作區（包括其資料和連線的代理程式），不論是意外或刻意刪除。 在虛刪除期間之後，工作區資源和其資料無法復原–其資料會排入佇列以供永久刪除，並在30天內完全清除。 工作區名稱是「已發行」，您可以用它來建立新的工作區。
 
 > [!NOTE]
-> 虛刪除行為無法關閉。 我們很快就會新增一個選項，在刪除作業中使用 ' force ' 標記時，覆寫虛刪除。
+> 如果您想要覆寫虛刪除行為並永久刪除工作區，請遵循[永久工作區刪除](#Permanent workspace delete)中的步驟。
 
 當您刪除工作區時，想要特別小心，因為可能有重要的資料和設定可能會對您的服務作業造成負面影響。 審查哪些代理程式、解決方案和其他 Azure 服務，以及將其資料儲存在 Log Analytics 中的來源，例如：
 

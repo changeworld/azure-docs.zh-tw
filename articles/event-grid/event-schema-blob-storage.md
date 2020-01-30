@@ -7,18 +7,21 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 9c5b7b4301eb9cf019399795fc45b69fe152061d
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 4a71f50a130bd9b22965d39fa942b47c70857a86
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722317"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844474"
 ---
 # <a name="azure-event-grid-event-schema-for-blob-storage"></a>blob 儲存體的 Azure Event Grid 事件結構描述
 
 本文提供 blob 儲存體事件的屬性與結構描述。 如需事件架構的簡介，請參閱[Azure Event Grid 事件架構](event-schema.md)。
 
 如需範例指令碼和教學課程的清單，請參閱[儲存體事件來源](event-sources.md#storage)。
+
+>[!NOTE]
+> 只有種類為 StorageV2 的儲存體帳戶 **（一般用途 v2）** 和**BlobStorage**支援事件整合。 **儲存體（genral 用途 v1）** 不*支援與*事件方格整合。
 
 ## <a name="list-of-events-for-blob-rest-apis"></a>Blob REST Api 的事件清單
 

@@ -4,12 +4,12 @@ description: 瞭解 Azure App Service 如何更新 OS 和執行時間、應用�
 ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1a56fed04399325be315d8d977e5a72223bddac5
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 02fa89305c19ee4ec5e151ad36f7f5fa3e130f63
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688578"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846252"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Azure App Service 中的 OS 和執行階段修補
 
@@ -83,6 +83,7 @@ az webapp config set --java-version 1.8 --java-container Tomcat --java-container
 | PHP 版本 | 位於 `https://<appname>.scm.azurewebsites.net/DebugConsole`，在命令提示字元中執行下列命令： <br> `php --version` |
 | 預設的 Node.js 版本 | 在 [Cloud Shell](../cloud-shell/overview.md) 中執行下列命令︰ <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
 | Python 版本 | 位於 `https://<appname>.scm.azurewebsites.net/DebugConsole`，在命令提示字元中執行下列命令： <br> `python --version` |  
+| Java 版本 | 位於 `https://<appname>.scm.azurewebsites.net/DebugConsole`，在命令提示字元中執行下列命令： <br> `java -version` |  
 
 > [!NOTE]  
 > 您無法存取登錄位置 `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages` (這裡儲存了有關 ["KB" 修補程式](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins)的資訊)。

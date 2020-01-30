@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
-ms.openlocfilehash: 875d8f498fc8405a53d8fb60631c52ce09b30a62
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 95cd759a5ef4f5f67ecf56e60595e709bbc8b44f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431919"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845691"
 ---
 # <a name="live-transcription-preview"></a>即時轉譯（預覽）
 
@@ -31,7 +31,7 @@ Azure 媒體服務會以不同的通訊協定提供影片、音訊和現在的�
 
 ## <a name="creating-the-live-event"></a>建立實況活動 
 
-若要建立實況活動，您可以將 PUT 作業傳送至2019-05-01 版，例如： 
+若要建立實況活動，您可以將 PUT 作業傳送至 2019-05-01-preview 版本，例如： 
 
 ```
 PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/liveEvents/:liveEventName?api-version=2019-05-01-preview&autoStart=true 

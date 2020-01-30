@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: container-service
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 43ea197c4dc774a4e011cd9fb2b3adcf94866d90
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 423f0866494054702330c8e51fb1ef45e74a0650
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926089"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845696"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>使用 Azure CLI 建立和設定 Azure Kubernetes Service (AKS) 叢集以使用虛擬節點
 
@@ -77,11 +77,11 @@ Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中�
 
 若要開啟 Cloud Shell，請選取程式碼區塊右上角的 [試試看]。 您也可以移至 [https://shell.azure.com/bash](https://shell.azure.com/bash)，從另一個瀏覽器索引標籤啟動 Cloud Shell。 選取 [複製] 即可複製程式碼區塊，將它貼到 Cloud Shell 中，然後按 enter 鍵加以執行。
 
-如果您偏好在本機安裝和使用 CLI，本文需要有 Azure CLI 2.0.49 版或更新版本。 執行 `az --version` 找出版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
+如果您偏好在本機安裝和使用 CLI，本文需要有 Azure CLI 2.0.49 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
-Azure 資源群組是在其中部署與管理 Azure 資源的邏輯群組。 使用 [az group create][az-group-create] 命令來建立資源群組。 下列範例會在 westus 位置建立名為 myResourceGroup 的資源群組。
+Azure 資源群組是部署及管理 Azure 資源所在的邏輯群組。 使用 [az group create][az-group-create] 命令來建立資源群組。 下列範例會在 westus 位置建立名為 myResourceGroup 的資源群組。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westus
@@ -174,7 +174,7 @@ az aks create \
     --client-secret <password>
 ```
 
-幾分鐘之後，此命令就會完成，並以 JSON 格式傳回叢集的相關資訊。
+在數分鐘之後，該命令會完成並傳回關於節點的 JSON 格式資料。
 
 ## <a name="enable-virtual-nodes-addon"></a>啟用虛擬節點增益集
 
@@ -188,7 +188,7 @@ az aks enable-addons \
     --subnet-name myVirtualNodeSubnet
 ```
 
-## <a name="connect-to-the-cluster"></a>連接到叢集
+## <a name="connect-to-the-cluster"></a>連線至叢集
 
 若要設定 `kubectl` 以連線到 Kubernetes 叢集，請使用 [az aks get-credentials][az-aks-get-credentials] 命令。 此步驟會下載憑證並設定 Kubernetes CLI 以供使用。
 
@@ -196,7 +196,7 @@ az aks enable-addons \
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-若要驗證叢集的連線，請使用 [kubectl get][kubectl-get] 命令來傳回叢集節點的清單。
+若要驗證針對您叢集的連線，請使用 [kubectl get][kubectl-get] 命令來傳回叢集節點的清單。
 
 ```console
 kubectl get nodes
@@ -319,6 +319,10 @@ az aks disable-addons --resource-group myResourceGroup --name myAKSCluster --add
 
 現在，移除虛擬網路資源和資源群組：
 
+
+> [!NOTE]
+> 如果您在嘗試移除網路設定檔時收到錯誤，請允許3-4 天讓平臺自動減輕問題，然後再次嘗試刪除。 如果您需要立即刪除網路設定檔，請開啟參考 Azure 容器實例服務的[支援要求](https://azure.microsoft.com/support/create-ticket/)。
+
 ```azurecli-interactive
 # Change the name of your resource group, cluster and network resources as needed
 RES_GROUP=myResourceGroup
@@ -334,12 +338,6 @@ NETWORK_PROFILE_ID=$(az network profile list --resource-group $NODE_RES_GROUP --
 
 # Delete the network profile
 az network profile delete --id $NETWORK_PROFILE_ID -y
-
-# Get the service association link (SAL) ID
-SAL_ID=$(az network vnet subnet show --resource-group $RES_GROUP --vnet-name $AKS_VNET --name $AKS_SUBNET --query id --output tsv)/providers/Microsoft.ContainerInstance/serviceAssociationLinks/default
-
-# Delete the default SAL ID for the subnet
-az resource delete --ids $SAL_ID --api-version 2018-07-01
 
 # Delete the subnet delegation to Azure Container Instances
 az network vnet subnet update --resource-group $RES_GROUP --vnet-name $AKS_VNET --name $AKS_SUBNET --remove delegations 0

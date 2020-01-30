@@ -1,31 +1,19 @@
 ---
 title: Azure Migrate 支援矩陣
 description: 提供支援設定的摘要，以及 Azure Migrate 服務的限制。
-services: backup
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 01/28/2020
 ms.author: raynew
-ms.openlocfilehash: fa6ea1ec1992c94d44531cda9802290edf8db301
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 5c29b80f30b024d34ec4e8f65e51b59fc70e8f93
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74669143"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846557"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrate 支援矩陣
 
 您可以使用[Azure Migrate 服務](migrate-overview.md)來評估電腦，並將機器遷移至 Microsoft Azure 雲端。 本文摘要說明 Azure Migrate 案例和部署的一般支援設定和限制。
-
-
-## <a name="azure-migrate-versions"></a>Azure Migrate 版本
-
-Azure Migrate 服務有兩個版本：
-
-- **目前版本**：使用此版本，您可以建立新的 Azure Migrate 專案、探索內部部署評估，以及協調評量與遷移。 [深入了解提出技術問題。
-- **先前版本**：針對使用舊版 Azure Migrate 的客戶（僅支援內部部署 VMware vm 的評估），您現在應該使用目前的版本。 在先前的版本中，您無法建立新的 Azure Migrate 專案或執行新的探索。
 
 ## <a name="supported-assessmentmigration-scenarios"></a>支援的評估/遷移案例
 
@@ -64,12 +52,22 @@ Azure Migrate 伺服器移轉 | NA | 遷移[VMware vm](tutorial-migrate-vmware.m
 
 **支援** | **詳細資料**
 --- | ---
-Subscription | 您可以在訂用帳戶中有多個 Azure Migrate 專案。
+訂閱 | 您可以在訂用帳戶中有多個 Azure Migrate 專案。
 Azure 權限 | 您需要訂用帳戶中的「參與者」或「擁有者」許可權，才能建立 Azure Migrate 專案。
 VMware VM  | 在單一專案中評估最多35000個 VMware Vm。
 Hyper-V VM | 在單一專案中評估最多35000個 Hyper-v Vm。
 
 專案可以包含 VMware Vm 和 Hyper-v Vm，最多可達評量限制。
+
+## <a name="azure-permissions"></a>Azure 權限
+
+若要讓 Azure Migrate 與 Azure 搭配使用，您需要這些許可權，才能開始評估和遷移機器。
+
+**Task** | **權限** | **詳細資料**
+--- | --- | ---
+建立 Azure Migrate 專案 | 您的 Azure 帳戶需要可建立專案的權限。 | 針對[VMware](tutorial-prepare-vmware.md#assign-permissions-to-create-project)、 [hyper-v](tutorial-prepare-hyper-v.md#assign-permissions-to-create-project)或[實體伺服器](tutorial-prepare-physical.md#assign-permissions-to-create-project)進行設定。
+註冊 Azure Migrate 設備 | Azure Migrate 使用輕量的[Azure Migrate 設備](migrate-appliance.md)，透過 Azure Migrate server 評估來評估 vmware vm，並使用 Azure Migrate 伺服器遷移來執行 vmware vm 的[無代理程式遷移](server-migrate-overview.md)。 此設備會探索 VM，並將 VM 的中繼資料和效能資料傳送至 Azure Migrate。<br/><br/> 在註冊期間，Azure Migrate 會建立兩個可唯一識別設備的 Azure Active Directory (Azure AD) 應用程式，並且需要可建立這些應用程式的權限。<br/><br/> - 第一個應用程式會與 Azure Migrate 服務端點進行通訊。<br/><br/> - 第二個應用程式會存取在註冊期間建立的 Azure Key Vault，以儲存 Azure AD 的應用程式資訊和設備組態設定。 | 針對[VMware](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance)、 [hyper-v](tutorial-prepare-hyper-v.md#assign-permissions-to-register-the-appliance)或[實體伺服器](tutorial-prepare-physical.md#assign-permissions-to-register-the-appliance)進行設定。
+建立用於 VMware 無代理程式遷移的金鑰保存庫 | 若要遷移具有無代理程式 Azure Migrate 伺服器遷移的 VMware Vm，Azure Migrate 會建立 Key Vault 來管理訂用帳戶中複寫儲存體帳戶的存取金鑰。 若要建立保存庫，您可以在 Azure Migrate 專案所在的資源群組上設定許可權（擁有者、參與者和使用者存取系統管理員）。 | [設定](tutorial-prepare-vmware.md#assign-role-assignment-permissions)許可權。
 
 ## <a name="supported-geographies"></a>支援的地理位置
 
@@ -104,6 +102,14 @@ Azure 政府機構 | US Gov 維吉尼亞州
 
 請[參閱](migrate-support-matrix-hyper-v.md)適用于 hyper-v vm 的 Azure Migrate server 評估和伺服器遷移支援對照表。
 
+
+
+## <a name="azure-migrate-versions"></a>Azure Migrate 版本
+
+Azure Migrate 服務有兩個版本：
+
+- **目前版本**：使用此版本，您可以建立新的 Azure Migrate 專案、探索內部部署評估，以及協調評量與遷移。 [深入了解](whats-new.md#release-version-july-2019)。
+- **先前版本**：針對使用舊版 Azure Migrate 的客戶（僅支援內部部署 VMware vm 的評估），您現在應該使用目前的版本。 在先前的版本中，您無法建立新的 Azure Migrate 專案或執行新的探索。
 
 ## <a name="next-steps"></a>後續步驟
 

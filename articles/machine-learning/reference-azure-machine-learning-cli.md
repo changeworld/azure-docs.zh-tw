@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 11/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9b30ace8d7ae7a818611856d46b2c50ed8db06f7
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: fe9cee44970da94c346caffc0d5fe76ffebf4a0b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76292445"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845145"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning"></a>使用適用于 Azure Machine Learning 的 CLI 擴充功能
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -175,7 +175,7 @@ az extension remove -n azure-cli-ml
     az ml dataset register -f mydataset.json
     ```
 
-    如需用來定義資料集之 JSON 檔案格式的詳細資訊，請使用 `az ml dataset --show-template`。
+    如需用來定義資料集之 JSON 檔案格式的詳細資訊，請使用 `az ml dataset register --show-template`。
 
     如需詳細資訊，請參閱[az ml dataset register](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-archive)。
 

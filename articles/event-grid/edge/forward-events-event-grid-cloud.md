@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 502a495bad4115daf9f0f4ffed276a307adf1fc4
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 7184fb5c45ce41de2bd63b55fb67cbd9ba6361e3
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73100645"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844712"
 ---
 # <a name="tutorial-forward-events-to-event-grid-cloud"></a>教學課程：將事件轉寄至事件方格雲端
 
@@ -23,7 +23,7 @@ ms.locfileid: "73100645"
 * 對雲端中的邊緣事件做出回應。
 * 將事件轉送到雲端中的事件方格，並使用 Azure 事件中樞或 Azure 儲存體佇列來緩衝事件，然後再于雲端中處理它們。
 
-若要完成本教學課程，您需要瞭解[edge](concepts.md)和[Azure](../concepts.md)上的事件方格概念。
+ 若要完成本教學課程，您需要瞭解[edge](concepts.md)和[Azure](../concepts.md)上的事件方格概念。 如需其他目的地類型，請參閱[事件處理常式](event-handlers.md)。 
 
 ## <a name="prerequisites"></a>必要條件 
 為了完成本教學課程，您將需要：
@@ -83,6 +83,7 @@ ms.locfileid: "73100645"
   
 ## <a name="create-event-grid-subscription-at-the-edge"></a>在邊緣建立事件方格訂用帳戶
 
+[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
 1. 使用下列內容建立 subscription3。 如需裝載的詳細資訊，請參閱我們的[API 檔](api.md)。
 
@@ -201,3 +202,4 @@ ms.locfileid: "73100645"
 * 若要針對在 IoT Edge 上使用 Azure 事件方格的問題進行疑難排解，請參閱[疑難排解指南](troubleshoot.md)。
 * 遵循本[教學](forward-events-iothub.md)課程將事件轉寄至 IoTHub
 * 遵循本[教學](pub-sub-events-webhook-cloud.md)課程，將事件轉寄到雲端中的 Webhook
+* [監視邊緣上的主題和訂用帳戶](monitor-topics-subscriptions.md)

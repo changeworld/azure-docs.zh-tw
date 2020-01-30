@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: juliako
 ms.reviewer: milanga; johndeu
-ms.openlocfilehash: 66edbc872fe5f1d4320107aa21ed2792bdd4fecc
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 4b0d360c11313e086f6ec26e5ee46b8d6f49869a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083894"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844338"
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>媒體服務平台上的媒體分析 
 
@@ -31,10 +31,9 @@ ms.locfileid: "74083894"
 
 |媒體處理器名稱|停用日期|其他注意事項|
 |---|---|
-|[Azure 媒體索引子2](media-services-process-content-with-indexer2.md)| 2020年1月1日|[Azure 媒體服務影片索引子](https://docs.microsoft.com/azure/media-services/video-indexer/)會取代此媒體處理器。 如需詳細資訊，請參閱[從 Azure 媒體索引子2遷移至 Azure 媒體服務影片索引子](migrate-indexer-v1-v2.md)。|
 |[Azure Media Indexer](media-services-index-content.md)|2020年10月1日|[Azure 媒體服務影片索引子](https://docs.microsoft.com/azure/media-services/video-indexer/)會取代此媒體處理器。 如需詳細資訊，請參閱[從 Azure 媒體索引子遷移至 Azure 媒體服務影片索引子](migrate-indexer-v1-v2.md)
  
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概觀
 
 越來越多組織採用影片做為慣用的媒體，用來訓練員工、連絡客戶與記錄商務功能。 雖然雲端運算可供儲存、串流及存取大型媒體檔案， 但隨著公司影片庫內容的成長，需要同樣有效的方法深入分析內容。 
 
@@ -50,22 +49,26 @@ ms.locfileid: "74083894"
 
 ## <a name="media-analytics-services"></a>媒體分析服務
 
-### <a name="indexer"></a>索引器
-Azure 媒體索引器可讓您的內容可供搜尋，並且產生隱藏式輔助字幕。 相較於舊版，Azure 媒體索引器 2 (預覽版) 速度更快，支援更多的語言。 支援的語言包括英文、西班牙文、法文、德文、義大利文、中文、葡萄牙文和阿拉伯文。 如需詳細資訊和範例，請參閱[利用 Azure 媒體索引器 2 處理影片](media-services-process-content-with-indexer2.md)。
+### <a name="indexer"></a>索引子
+Azure 媒體索引器可讓您的內容可供搜尋，並且產生隱藏式輔助字幕。 如需詳細資訊和範例，請參閱[使用 Azure 媒體索引子編制媒體檔案的索引](media-services-index-content.md)。
+
 ### <a name="motion-detector"></a>動作偵測
 您可以使用動作偵測在影片中偵測背景靜止的動作。 如此一來，便能夠檢查監視攝影機所偵測到的動作事件中是否有誤判。 如需詳細資訊和範例，請參閱 [Azure 媒體分析的動作偵測](media-services-motion-detection.md)。
+
 ### <a name="face-detector"></a>臉部偵測
 透過使用臉部偵測，您便能偵測人臉及其表情，包括快樂、悲傷及驚喜。 這項服務有數個實用的產業應用程式 (將於稍後說明)，包括彙總並分析事件參與人員的反應。 如需詳細資訊和範例，請參閱 [Azure 媒體分析的臉部和情緒偵測](media-services-face-and-emotion-detection.md)。
+
 ### <a name="video-summarization"></a>影片摘要
 視訊摘要可自動選取來源視訊的有趣片段，協助您建立較長視訊的摘要。 針對片長較長的影片，如果您想要提供精彩內容的快速概觀，此功能非常有用。 如需詳細資訊和範例，請參閱[使用 Azure 媒體影片縮圖建立影片摘要](media-services-video-summarization.md)。
 ### <a name="optical-character-recognition"></a>光學字元辨識
 Azure 媒體 OCR (光學字元辨識) 可讓您將影片檔中的文字內容轉換成可編輯、可搜尋的數位文字。 接著您便可從媒體的影片訊號中自動擷取出有意義的中繼資料。
 ### <a name="scalable-face-redaction"></a>可調整式臉部修訂
 Azure 媒體修訂器是媒體分析媒體處理器，可在雲端提供可調整式臉部修訂。 您可以使用臉部修訂功能修改影片，將所選人物的臉部變得模糊。 您可能會想要在新聞媒體中或涉及公共安全時，使用臉部修訂服務。 當要手動修訂多個臉部時，即使片長只有數分鐘，也會花上數小時修訂，但若使用此服務，則只需要幾個簡單的步驟就能完成臉部修訂。 如需詳細資訊，請參閱[使用 Azure 媒體分析修訂臉部](media-services-face-redaction.md)一文。
-### <a name="content-moderation"></a>內容仲裁
-Azure 內容仲裁可讓您針對影片使用機器輔助仲裁。 例如，您可能想偵測影片中潛在的成人和辛辣內容，並由您的人力仲裁小組檢閱加上旗標的內容。 但手動仲裁不需要的影片內容是很耗費時間和成本的工作。 透過此服務和相關聯的檢閱工具，您可以結合機器輔助仲裁和人機互動 (human-in-the-loop) 功能，以有效率且符合成本效益的方式獲得最佳結果。 若要進一步了解，請參閱[使用 Azure 內容仲裁處理您的視訊](media-services-content-moderation.md)一文。
 
-## <a name="common-scenarios"></a>常見案例
+### <a name="content-moderation"></a>內容仲裁
+Azure 內容仲裁可讓您針對影片使用機器輔助仲裁。 例如，您可能會想要偵測影片中潛在的成人和猥褻內容，並由您的人力仲裁小組檢閱這些被標記的內容。 但手動仲裁不需要的影片內容是很耗費時間和成本的工作。 透過此服務和相關聯的檢閱工具，您可以結合機器輔助仲裁和人機互動 (human-in-the-loop) 功能，以有效率且符合成本效益的方式獲得最佳結果。 若要進一步了解，請參閱[使用 Azure 內容仲裁處理您的視訊](media-services-content-moderation.md)一文。
+
+## <a name="common-scenarios"></a>一般狀況
 媒體分析可協助組織和企業從影片中得到新的見解，並更有效地管理大量的影片內容。 以下是幾個案例︰
 
 * **客服中心**。 即使社交媒體出現，但客服中心仍能協助處理大量的客戶服務交易。 客服中心的語音資料經編碼後可成為大量的客戶資訊，企業可分析這些資訊以提高客戶滿意度。 組織可使用媒體索引器擷取文字，及建置搜尋索引與儀表板。 接著便可以從一般客訴、客訴來源及其他相關資料中獲取情報。
@@ -75,8 +78,8 @@ Azure 內容仲裁可讓您針對影片使用機器輔助仲裁。 例如，您�
 本節列出所有媒體分析媒體處理器，並示範如何使用 .NET 或 REST 來取得媒體處理器 (MP) 物件。
 
 ### <a name="mp-names"></a>MP 名稱
-* Azure 媒體索引器 2 預覽
-* Azure Media Indexer
+
+* Azure 媒體索引器
 * Azure 媒體臉部偵測器
 * Azure 媒體動作偵測器
 * Azure 媒體視訊縮圖
@@ -112,7 +115,7 @@ Azure 內容仲裁可讓您針對影片使用機器輔助仲裁。 例如，您�
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer <token>
-    x-ms-version: 2.12
+    x-ms-version: 2.19
     Host: media.windows.net
 
 回應：

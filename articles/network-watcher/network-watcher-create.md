@@ -3,9 +3,7 @@ title: 建立 Azure 網路監看員執行個體 | Microsoft Docs
 description: 了解如何在 Azure 區域中啟用網路監看員。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: b1314119-0b87-4f4d-b44c-2c4d0547fb76
 ms.service: network-watcher
 ms.devlang: na
@@ -13,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: fd293c2815721295715c5e02846c55d4cdb74a32
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.author: damendo
+ms.openlocfilehash: b091c501fb565fb267c40f686dc037e41f3c90ee
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693479"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845133"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>建立 Azure 網路監看員執行個體
 
@@ -51,7 +49,7 @@ az provider register -n Microsoft.Network
 
 ## <a name="create-a-network-watcher-in-the-portal"></a>在入口網站中建立網路監看員
 
-瀏覽至 [所有服務]  >  [網路]  >  [網路監看員]。 您可以選取要啟用網路監看員的所有訂用帳戶。 此動作會在每個可用區域建立網路監看員。
+瀏覽至 [所有服務] >  [網路] >  [網路監看員]。 您可以選取要啟用網路監看員的所有訂用帳戶。 此動作會在每個可用區域建立網路監看員。
 
 ![建立網路監看員](./media/network-watcher-create/figure1.png)
 
@@ -105,7 +103,7 @@ armclient put "https://management.azure.com/subscriptions/${subscriptionId}/reso
 
 ## <a name="delete-a-network-watcher-in-the-portal"></a>在入口網站中刪除網路監看員
 
-瀏覽至 [所有服務]  >  [網路]  >  [網路監看員]。
+瀏覽至 [所有服務] >  [網路] >  [網路監看員]。
 
 如果您還沒有的話，請選取 [總覽] 索引標籤。 使用下拉式清單來選取您想要在其中停用網路監看員的訂用帳戶。
 按一下箭號，以展開所選訂用帳戶的區域清單。 針對任何指定的，請使用右邊的3個點來存取內容功能表。

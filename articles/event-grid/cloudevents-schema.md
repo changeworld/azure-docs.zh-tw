@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: e7cddf95a6537e5799acc523effb484c2249453d
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 25a24c5bb44c77038a508e4c2f4e099132101f6a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548045"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844729"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>搭配事件方格使用 CloudEvents v1.0 架構
 
@@ -73,7 +73,6 @@ CloudEvents 提供用以發佈和取用雲端型事件的常見事件結構描�
 |--------------------|---------------------
 | CloudEvents 格式 | CloudEvents 格式
 | 事件方格格式  | CloudEvents 格式
-| CloudEvents 格式 | 事件方格格式
 | 事件方格格式  | 事件方格格式
 
 對於所有的事件結構描述，事件方格在發佈至事件方格主題和建立事件訂閱時，都需要進行驗證。 如需詳細資訊，請參閱 [Event Grid 安全性和驗證](security-authentication.md)。
@@ -109,8 +108,6 @@ New-AzureRmEventGridTopic `
   -Name <topic_name> `
   -InputSchema CloudEventSchemaV1_0
 ```
-
-CloudEvents 的目前版本不支援事件的批次處理。 若要透過 CloudEvent 結構描述將事件發佈至主題，請個別發佈每個事件。
 
 ### <a name="output-schema"></a>輸出結構描述
 

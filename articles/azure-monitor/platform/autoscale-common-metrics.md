@@ -4,12 +4,12 @@ description: 了解哪些度量常用於自動調整您的雲端服務、虛擬�
 ms.topic: conceptual
 ms.date: 12/6/2016
 ms.subservice: autoscale
-ms.openlocfilehash: 7b9c19ba3b85813eb12f6b906427f3cfdc9a0f67
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2c335168683212337876c963a7cfdb441d0ac69a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364589"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845572"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure 監視器自動調整的常用度量
 
@@ -36,7 +36,7 @@ Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.mic
 - [以 Resource Manager 為基礎的 Windows 和 Linux VM 的主機度量](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)
 - [以 Resource Manager 為基礎的 Windows 和 Linux VM 擴展集的主機度量](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)
 
-### <a name="guest-os-metrics-resource-manager-based-windows-vms"></a>客體 OS 度量以 Resource Manager 為基礎的 Windows VM
+### <a name="guest-os-metrics-for-resource-manager-based-windows-vms"></a>Resource Manager 為基礎的 Windows Vm 的客體作業系統計量
 在 Azure 中建立 VM 時會使用診斷擴充來啟用診斷。 診斷擴充會發出一組取自 VM 內的度量。 這表示您可以關閉自動調整依預設不發出的度量。
 
 您可以在 PowerShell 中使用下列命令產生度量清單。
@@ -129,8 +129,8 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | \NetworkInterface\TotalTxErrors |計數 |
 | \NetworkInterface\TotalCollisions |計數 |
 
-## <a name="commonly-used-web-server-farm-metrics"></a>常用的 Web (伺服器陣列) 度量
-您也可以根據常用的 Web 伺服器度量 (如 Http 佇列長度) 執行自動調整。 它的計量名稱是 **HttpQueueLength**。  下一節會列出可用的伺服器陣列 (Web Apps) 度量。
+## <a name="commonly-used-app-service-server-farm-metrics"></a>常用 App Service （伺服器陣列）計量
+您也可以根據常用的 Web 伺服器度量 (如 Http 佇列長度) 執行自動調整。 其度量名稱是**HttpQueueLength**。  下一節會列出可用的伺服器陣列（App Service）計量。
 
 ### <a name="web-apps-metrics"></a>Web Apps 度量
 您可以在 PowerShell 中使用下列命令產生 Web Apps 清單。
@@ -159,8 +159,8 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 
 ```
 "metricName": "ApproximateMessageCount",
- "metricNamespace": "",
- "metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.ClassicStorage/storageAccounts/STORAGE_ACCOUNT_NAME/services/queue/queues/QUEUE_NAME"
+"metricNamespace": "",
+"metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.ClassicStorage/storageAccounts/STORAGE_ACCOUNT_NAME/services/queue/queues/QUEUE_NAME"
  ```
 
 使用 (非傳統) 儲存體帳戶時，metricTrigger 會包含：
@@ -177,7 +177,7 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 若使用 VM 擴展集，您可以更新 Resource Manager 範本中的自動調整設定，改為使用 metricName 作為 ApproximateMessageCount，並傳遞儲存體佇列的識別碼作為 *metricResourceUri*。
 
 ```
-"metricName": "MessageCount",
+"metricName": "ApproximateMessageCount",
  "metricNamespace": "",
 "metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.ServiceBus/namespaces/SB_NAMESPACE/queues/QUEUE_NAME"
 ```

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 01/08/2019
-ms.openlocfilehash: 56be45b8d0f8086d9a64811fe715fad967fca33e
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.date: 01/24/2020
+ms.openlocfilehash: 9d484afb1d80ee6b110438cc3ddea1d3d67ad999
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027767"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844678"
 ---
 # <a name="release-notes"></a>版本資訊
 
@@ -23,7 +23,7 @@ ms.locfileid: "76027767"
 
 Azure HDInsight 是 Azure 上的開放原始碼分析企業客戶中最受歡迎的其中一項服務。
 
-## <a name="release-date-01092019"></a>發行日期：01/09/2019
+## <a name="release-date-01092020"></a>發行日期：01/09/2020
 
 此版本適用于 HDInsight 3.6 和4.0。 在數天內，所有區域都可以使用 HDInsight 版本。 此處的 [發行日期] 表示第一個區域發行日期。 如果您沒有看到下列變更，請在您的區域中等候幾天的版本。
 
@@ -65,3 +65,34 @@ HDInsight 會繼續改善叢集的可靠性和效能。
 
 ## <a name="component-version-change"></a>元件版本變更
 此版本沒有任何元件版本變更。 您可以在這裡找到 HDInsight 4.0 ad HDInsight 3.6 的目前元件版本。
+
+## <a name="known-issues"></a>已知問題
+
+從2020年1月24日起，有一個作用中的問題，當您嘗試使用 Jupyter 筆記本時，可能會收到錯誤。 使用下列步驟來修正問題。 您也可以參閱這篇[MSDN 文章](https://social.msdn.microsoft.com/Forums/en-us/8c763fb4-79a9-496f-a75c-44a125e934ac/hdinshight-create-not-create-jupyter-notebook?forum=hdinsight)或這[篇 StackOverflow 文章](https://stackoverflow.com/questions/59687614/azure-hdinsight-jupyter-notebook-not-working/59831103)，以取得最新資訊或提出其他問題。 修正問題時，將會更新此頁面。
+
+**錯誤**
+
+* ValueError：無法將筆記本轉換為 v5，因為該版本不存在
+* 載入筆記本時發生錯誤。載入此筆記本時發生未知的錯誤。 此版本可以載入筆記本格式 v4 或更早版本
+
+**原因** 
+
+叢集上的 _version .py 檔案已更新為5.x，而不是 4.4. x. # #。
+
+**方案**
+
+如果您建立新的 Jupyter 筆記本，並收到上述其中一個錯誤，請執行下列步驟來修正此問題。
+
+1. 前往 https://CLUSTERNAME.azurehdinsight.net ，在網頁瀏覽器中開啟 Ambari，其中 CLUSTERNAME 是您的叢集名稱。
+1. 在 Ambari 的左側功能表中，按一下 [ **Jupyter**]，然後在 [**服務動作**] 上按一下 [**停止**]。
+1. 透過 ssh 連線到 Jupyter 服務執行所在的叢集前端節點。
+1. 在 sudo 模式中開啟下列檔案/usr/bin/anaconda/lib/python2.7/site-packages/nbformat/_version. .py。
+1. 現有的專案應該會顯示與下列程式碼類似的內容： 
+
+    version_info = （5，0，3）
+
+    將專案修改為： 
+    
+    version_info = （4，4，0）
+1. 儲存檔案。
+1. 返回 [Ambari]，然後在 [**服務動作**] 中，按一下 [**全部重新開機**]。

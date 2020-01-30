@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: aeda79ec4cb850ce73db18398c57d90aa4eb2acd
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 226ed1fcc72eada399c0a9a9eb4225d79cd83dd7
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759494"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845899"
 ---
 # <a name="hyperscale-service-tier"></a>超大規模資料庫服務層級
 
@@ -72,7 +72,7 @@ Azure SQL Database 中的超大規模資料庫服務層級提供下列額外功�
 
 - **儲存體**：
 
-  您設定超大規模資料庫時，不需要指定資料大小上限。 在超大規模資料庫層中，資料庫儲存體費用會依實際配置的大小來計算。 儲存體會自動設定在 40 GB 和 100 TB 之間，以增量方式在 10 GB 和 40 GB 之間進行調整。 建立超大規模資料庫資料庫時，其起始大小為 10 GB，且每隔10分鐘會開始增加 10 GB，直到達到 40 GB 的大小為止。
+  您設定超大規模資料庫時，不需要指定資料大小上限。 在超大規模資料庫層中，資料庫儲存體費用會依實際配置的大小來計算。 儲存體會自動設定在 40 GB 和 100 TB 之間，10 gb 增量為 10 gb。 如有需要，多個資料檔案可能會同時成長。 建立超大規模資料庫資料庫時，其起始大小為 10 GB，且每隔10分鐘會開始增加 10 GB，直到達到 40 GB 的大小為止。
 
 如需有關超大規模定價的詳細資訊，請參閱 [Azure SQL Database 定價](https://azure.microsoft.com/pricing/details/sql-database/single/)
 
@@ -110,15 +110,15 @@ Azure 儲存體包含資料庫中的所有資料檔案。 頁面伺服器會將 
 
 超大規模資料庫架構可以快速加速/減速其他唯讀計算節點，因而允許大規模讀取功能，也可以釋出主要計算節點來提供更多寫入要求。 此外，基於超大規模資料庫架構的共用儲存體架構，也可以快速相應增加/減少計算節點。
 
-## <a name="create-a-hyperscale-database"></a>建立超大規模資料庫
+## <a name="create-a-hyperscale-database"></a>建立超大規模資料庫資料庫
 
-可以使用 [Azure 入口網站](https://portal.azure.com)、[T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)、[Powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase) 或是 [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create) 來建立超大規模資料庫。 超大規模資料庫僅在使用[以虛擬核心為基礎的購買模型](sql-database-service-tiers-vcore.md)時才提供。
+您可以使用[Azure 入口網站](https://portal.azure.com)、 [t-sql](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)、 [Powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase)或[CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)來建立超大規模資料庫資料庫。 超大規模資料庫資料庫只能使用[vCore 為基礎的購買模型](sql-database-service-tiers-vcore.md)。
 
 下列 T-SQL 命令會建立超大規模資料庫。 您必須在 `CREATE DATABASE` 陳述式中指定版本和服務目標。 如需有效服務目標的清單，請參閱[資源限制](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale---provisioned-compute---gen4)。
 
 ```sql
--- Create a HyperScale Database
-CREATE DATABASE [HyperScaleDB1] (EDITION = 'HyperScale', SERVICE_OBJECTIVE = 'HS_Gen5_4');
+-- Create a Hyperscale Database
+CREATE DATABASE [HyperscaleDB1] (EDITION = 'Hyperscale', SERVICE_OBJECTIVE = 'HS_Gen5_4');
 GO
 ```
 這會在具有4個核心的第5代硬體上建立超大規模資料庫資料庫。
@@ -130,14 +130,14 @@ GO
 下列 T-SQL 命令會將資料庫移至超大規模資料庫服務層級。 您必須在 `ALTER DATABASE` 陳述式中指定版本和服務目標。
 
 ```sql
--- Alter a database to make it a HyperScale Database
-ALTER DATABASE [DB2] MODIFY (EDITION = 'HyperScale', SERVICE_OBJECTIVE = 'HS_Gen5_4');
+-- Alter a database to make it a Hyperscale Database
+ALTER DATABASE [DB2] MODIFY (EDITION = 'Hyperscale', SERVICE_OBJECTIVE = 'HS_Gen5_4');
 GO
 ```
 
 ## <a name="connect-to-a-read-scale-replica-of-a-hyperscale-database"></a>連線到超大規模資料庫的讀取縮放複本
 
-在超大規模資料庫中，用戶端所提供連接字串中的 `ApplicationIntent` 引數會指出連線應路由至寫入複本還是唯讀次要複本。 如果 `ApplicationIntent` 設為 `READONLY`，且資料庫沒有次要複本，連線將會路由至主要複本，並預設為 `ReadWrite` 行為。
+在超大規模資料庫資料庫中，用戶端所提供之連接字串中的 `ApplicationIntent` 引數會指示連接是否路由傳送至寫入複本或唯讀次要複本。 如果 `ApplicationIntent` 設為 `READONLY`，且資料庫沒有次要複本，連線將會路由至主要複本，並預設為 `ReadWrite` 行為。
 
 ```cmd
 -- Connection string with application intent
@@ -160,7 +160,7 @@ Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationInte
 2. 依照從自動備份還原 Azure SQL 資料庫頁面上的「[地理還原](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups#geo-restore)」主題中的指示進行。
 
 > [!NOTE]
-> 因為來源和目標位於不同的區域，所以資料庫無法與源資料庫共用快照集儲存體，就像在非異地還原一樣，這樣會非常快速地完成。  在超大規模資料庫資料庫的異地還原案例中，即使目標位於異地複寫儲存體的配對區域中，也會是資料的大小作業。  這表示進行異地還原的時間會與要還原之資料庫的大小成正比。  如果目標是在配對的區域中，則複本將會在資料中心內，速度會明顯比透過網際網路的長距離複製快，但它仍會複製所有的位。
+> 因為來源和目標位於不同的區域，所以資料庫無法與源資料庫共用快照集儲存體，就像在非異地還原一樣，這樣會非常快速地完成。 在超大規模資料庫資料庫的異地還原案例中，即使目標位於異地複寫儲存體的配對區域中，也會是資料的大小作業。  這表示進行異地還原的時間會與要還原之資料庫的大小成正比。  如果目標是在配對的區域中，則複本將會在區域內，其速度會明顯比跨區域複製快，但它仍會是資料大小的作業。
 
 ## <a name=regions></a>可用區域
 

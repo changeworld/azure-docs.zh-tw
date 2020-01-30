@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: a9c64f4bafa770de9bbbd97ae9a0295b72d81f54
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 24114defe5e78bb7adbd006adc4ddbf8250b3188
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719818"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844967"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 認知搜尋的新功能
 
@@ -26,6 +26,10 @@ ms.locfileid: "76719818"
 Azure 搜尋服務現在已重新命名為「 **Azure 認知搜尋**」，以反映核心作業中已展開（但尚未選用）的認知技能和 AI 處理的使用方式。 API 版本、NuGet 套件、命名空間和端點都不會變更。 新的和現有的搜尋解決方案不受服務名稱變更的影響。
 
 ## <a name="feature-announcements"></a>功能公告
+
+### <a name="february-2020"></a>2020年2月
+
++ [PII 偵測](cognitive-search-skill-pii-detection.md)是在編制索引期間使用的認知技能，可從輸入文字中解壓縮個人識別資訊，並可讓您選擇以各種方式從該文字遮罩它。
 
 ### <a name="january-2020"></a>2020 年 1 月
 
@@ -52,7 +56,7 @@ Azure 搜尋服務現在已重新命名為「 **Azure 認知搜尋**」，以反
 
 + 檔[解壓縮（預覽）](cognitive-search-skill-document-extraction.md)是在編制索引期間使用的認知技能，可讓您從技能集中解壓縮檔案的內容。 過去，只有在技能集執行之前才會發生檔破解。 隨著這項技能的增加，您也可以在技能集執行期間執行此作業。
 
-+ [文字翻譯（預覽）](cognitive-search-skill-text-translation.md)是在索引編制期間所使用的認知技能，可評估文字，而針對每一筆記錄，會傳回轉譯為指定目的語言的文字。
++ [文字翻譯](cognitive-search-skill-text-translation.md)是在索引編制期間所使用的認知技能，可評估文字，而針對每筆記錄，會傳回轉譯為指定目的語言的文字。
 
 + [Power BI 範本](https://github.com/Azure-Samples/cognitive-search-templates/blob/master/README.md)可以快速開始您的視覺效果，並分析 Power BI desktop 中的知識存放區中豐富的內容。 此範本是針對透過 [匯[入資料] wizard](knowledge-store-create-portal.md)建立的 Azure 資料表投影所設計。
 

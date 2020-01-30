@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: 890095718833c90a6764d0799d2081b393b1d0bd
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: ee80c04a6365c2cf337c4033a90df8d2993c299d
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72887746"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845989"
 ---
 下列限制適用于 Azure 事件方格系統主題和自訂主題，而*不*是事件網域。
 
@@ -23,7 +23,7 @@ ms.locfileid: "72887746"
 | 每個主題的事件訂用帳戶 | 500 |
 | 自訂主題 (輸入) 的發佈速率 | 每個主題每秒 5,000 個事件 |
 | 發行要求 | 每秒250 |
-| 事件大小 | 公開上市（GA）中的 64 KB 支援。 1 MB 的支援目前為預覽狀態。 |
+| 事件大小 | 1 MB （以多個 64-KB 的事件計費） |
 
 下列限制僅適用于事件網域。
 

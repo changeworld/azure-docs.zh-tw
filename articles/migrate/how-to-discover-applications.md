@@ -3,12 +3,12 @@ title: 使用 Azure Migrate 探索內部部署伺服器上的應用程式、角�
 description: 瞭解如何在具有 Azure Migrate Server 評估的內部部署伺服器上探索應用程式、角色和功能。
 ms.topic: article
 ms.date: 11/20/2019
-ms.openlocfilehash: 454d70a53c3ea00a4dc592703c0bc04d5517b97f
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 7c3a6360e051b8cb694393695e75578ce2c135ec
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280759"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846308"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>探索機器應用程式、角色和功能
 
@@ -28,7 +28,7 @@ ms.locfileid: "76280759"
 2. 請確定您已將 [Azure Migrate：伺服器評估工具][新增](how-to-assess.md)至專案。
 4. 請檢查[vmware 需求](migrate-support-matrix-vmware.md#vmware-requirements)，以使用 Azure Migrate 設備探索和評定 vmware vm。
 5. 檢查部署 Azure Migrate 設備的[需求](migrate-appliance.md)。
-6. 確認應用程式探索的[支援和需求](/migrate-support-matrix-vmware.md#application-discovery)。
+6. 確認應用程式探索的[支援和需求](migrate-support-matrix-vmware.md#application-discovery)。
 
 ## <a name="prepare-for-app-discovery"></a>準備應用程式探索
 

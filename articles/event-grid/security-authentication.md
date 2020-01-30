@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: babanisa
-ms.openlocfilehash: dfa53acaf392e225873a40b05b8517de2f9780dc
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: e8913c1f198c89bdcd779d2faf2706f9d4079c5c
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74169568"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846303"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid 安全性與驗證 
 
@@ -85,9 +85,9 @@ Webhook 是從 Azure 事件方格接收事件的眾多方法之一。 當新事�
 }
 ```
 
-您必須傳回「HTTP 200 正常」回應狀態碼。 接受的 HTTP 202 無法辨識為有效的 Event Grid 訂用帳戶驗證回應。Http 要求必須在30秒內完成。 如果作業未在30秒內完成，則會取消作業，而且可能會在5秒後重試作業。 如果所有的嘗試都失敗，則會將它視為驗證交握錯誤。
+您必須傳回「HTTP 200 正常」回應狀態碼。 「HTTP 202 已接受」無法辨識為有效的「事件方格」訂閱驗證回應。 Http 要求必須在30秒內完成。 如果作業未在30秒內完成，則會取消作業，而且可能會在5秒後重試作業。 如果所有的嘗試都失敗，則會將它視為驗證交握錯誤。
 
-或者，您可以藉由將 GET 要求傳送至驗證 URL，以手動方式驗證訂用帳戶。 事件訂用帳戶會保持為擱置狀態，直到驗證為止。驗證 Url 會使用埠553。 如果您的防火牆規則封鎖埠553，則可能需要更新規則，才能成功進行手動交握。
+或者，您可以藉由將 GET 要求傳送至驗證 URL，以手動方式驗證訂用帳戶。 事件訂用帳戶會保持擱置狀態，直到通過驗證為止。 驗證 Url 會使用埠553。 如果您的防火牆規則封鎖埠553，則可能需要更新規則，才能成功進行手動交握。
 
 如需有關處理訂閱驗證交握的範例，請參閱 [C# 範例](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/blob/master/EventGridConsumer/EventGridConsumer/Function1.cs) \(英文\)。
 
@@ -95,7 +95,7 @@ Webhook 是從 Azure 事件方格接收事件的眾多方法之一。 當新事�
 
 在事件訂閱建立期間，如果您看到錯誤訊息，例如「嘗試驗證提供的端點 HTTPs：\//your-endpoint-here 失敗。 如需詳細資訊，請流覽 HTTPs：\//aka.ms/esvalidation」，這表示驗證交握失敗。 若要解決此錯誤，請執行以下幾方面的驗證：
 
-* 您是否有權控制目標端點中的應用程式程式碼？ 例如，如果您要撰寫以 HTTP 觸發程序為基礎的 Azure 函式，您是否能夠存取應用程式的程式碼而加以變更？
+* 您是否控制在目標端點中執行的應用程式程式碼？ 例如，如果您要撰寫以 HTTP 觸發程序為基礎的 Azure 函式，您是否能夠存取應用程式的程式碼而加以變更？
 * 如果您有應用程式程式碼的存取權，請實作以 ValidationCode 為基礎的交握機制，如上述範例所示。
 
 * 如果您沒有應用程式程式碼的存取權 (例如，如果您使用支援 Webhook 的第三方服務)，您可以使用手動交握機制。 請確定您使用的 API 版本是 2018-05-01-preview 或更新版本 (安裝事件方格的 Azure CLI 擴充功能)，才能接收驗證事件中的 validationUrl。 若要完成手動驗證交握，請取得 `validationUrl` 屬性的值，並在網頁瀏覽器中瀏覽該 URL。 如果驗證成功，您應該會在網頁瀏覽器中看到驗證已成功的訊息。 您會看到事件訂閱的 provisioningState 為「成功」。 
@@ -109,7 +109,7 @@ Webhook 是從 Azure 事件方格接收事件的眾多方法之一。 當新事�
 #### <a name="query-parameters"></a>查詢參數
 您可以在建立事件訂閱時將查詢參數新增至 Webhook URL，以保護您的 Webhook 端點。 將這些查詢參數中的其中一個設定為祕密，例如[存取權杖](https://en.wikipedia.org/wiki/Access_token)。 Webhook 可以使用秘密來辨識事件是否來自「事件方格」且具有有效的權限。 事件格線會在傳遞至 Webhook 的每個事件中包含這些查詢參數。
 
-編輯事件訂閱時，除非在 Azure [CLI](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) 中使用 [--include-full-endpoint-url](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 參數，否則不會顯示或傳回查詢參數。
+編輯事件訂閱時，除非在 Azure [CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 中使用 [--include-full-endpoint-url](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) 參數，否則不會顯示或傳回查詢參數。
 
 最後請務必注意，Azure Event Grid 只支援 HTTPS Webhook 端點。
 
@@ -348,6 +348,10 @@ Azure Event Grid 讓您能控制給予不同使用者進行各種管理作業的
 ```
 
 您可以搭配 [PowerShell](../role-based-access-control/custom-roles-powershell.md)、[Azure CLI](../role-based-access-control/custom-roles-cli.md) 和 [REST](../role-based-access-control/custom-roles-rest.md) 建立自訂角色。
+
+## <a name="encryption-at-rest"></a>待用加密
+
+由「事件方格」服務寫入磁片的所有事件或資料都會由 Microsoft 管理的金鑰加密，以確保它會在待用時加密。 此外，事件或資料保留的最長時間為24小時，遵循[事件方格重試原則](delivery-and-retry.md)。 事件方格會在24小時或事件存留時間之後自動刪除所有事件或資料，以較少者為准。
 
 ## <a name="next-steps"></a>後續步驟
 
