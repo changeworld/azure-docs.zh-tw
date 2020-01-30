@@ -8,16 +8,16 @@ ms.topic: overview
 ms.date: 05/21/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: cc6b1a2516a454c843f176e947cc3a56186b0b47
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 9cd3703881de1600a4b151d855fff832d041ca54
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75939932"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717939"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 簡介
 
-Azure Cosmos DB Cassandra API 可供針對 [Apache Cassandra](http://cassandra.apache.org) 撰寫的應用程式作為資料存放區。 這表示，藉由使用符合 CQLv4 的現有 [Apache 驅動程式](http://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver)，您現有的 Cassandra 應用程式現在可以與 Azure Cosmos DB Cassandra API 通訊。 在許多情況下，只需變更連接字串，您就可以從使用 Apache Cassandra 切換為使用 Azure Cosmos DB 的 Cassandra API。 
+Azure Cosmos DB Cassandra API 可供針對 [Apache Cassandra](https://cassandra.apache.org) 撰寫的應用程式作為資料存放區。 這表示，藉由使用符合 CQLv4 的現有 [Apache 驅動程式](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver)，您現有的 Cassandra 應用程式現在可以與 Azure Cosmos DB Cassandra API 通訊。 在許多情況下，只需變更連接字串，您就可以從使用 Apache Cassandra 切換為使用 Azure Cosmos DB 的 Cassandra API。 
 
 使用 Cassandra 查詢語言 (CQL)、Cassandra 型工具 (例如 cqlsh)，以及您熟悉的 Cassandra 用戶端驅動程式，Cassandra API 可讓您與儲存在 Azure Cosmos DB 中的資料互動。
 

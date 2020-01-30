@@ -11,13 +11,12 @@ ms.workload: identity
 ms.date: 10/15/2019
 ms.author: twhitney
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84603dfa865afe1c7661f49d7dac7374fa62a2a0
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: e0616ae2c3b58c694e300abca28a9e34f8442fcb
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920781"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76703706"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>快速入門：從 Android 應用程式登入使用者並呼叫 Microsoft Graph API
 
@@ -36,7 +35,7 @@ ms.locfileid: "74920781"
 > * Android 16+
 
 > [!div class="sxs-lookup" renderon="portal"]
-> ### <a name="step-1-configure-your-application-in-the-azure-portal"></a>步驟 1：在 Azure 入口網站中設定您的應用程式 
+> ### <a name="step-1-configure-your-application-in-the-azure-portal"></a>步驟 1:在 Azure 入口網站中設定您的應用程式 
 >  若要讓此快速入門中的程式碼範例正確運作，您必須新增與 Auth 訊息代理程式相容的重導 URI。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [為我進行這些變更]()
@@ -44,7 +43,7 @@ ms.locfileid: "74920781"
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![已設定](media/quickstart-v2-android/green-check.png) 您的應用程式已設定了這些屬性
 >
-> ### <a name="step-2-download-the-project"></a>步驟 2：下載專案 
+> ### <a name="step-2-download-the-project"></a>步驟 2:下載專案 
 > * [下載程式碼範例](https://github.com/Azure-Samples/ms-identity-android-java/archive/master.zip)
 >
 > ### <a name="step-3-configure-your-project"></a>步驟 3：設定您的專案
@@ -130,11 +129,11 @@ ms.locfileid: "74920781"
 > > 本快速入門支援 Enter_the_Supported_Account_Info_Here。
 
 > [!div renderon="docs"]
-> ## <a name="step-1-get-the-sample-app"></a>步驟 1：取得範例應用程式
+> ## <a name="step-1-get-the-sample-app"></a>步驟 1:取得範例應用程式
 >
 > [下載程式碼](https://github.com/Azure-Samples/ms-identity-android-java/archive/master.zip)。
 >
-> ## <a name="step-2-run-the-sample-app"></a>步驟 2：執行範例應用程式
+> ## <a name="step-2-run-the-sample-app"></a>步驟 2:執行範例應用程式
 >
 > 從 Android Studio 的**可用裝置**下拉式清單中選取您的模擬器或實體裝置，然後執行應用程式。
 >

@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 8ec3e399459adfbb7cef9e3eafbaa024fec1589f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 26c7996d6a955a183121a59254131dcb1dc6706f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447610"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844257"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>快速入門：建立、訓練及發佈您的 QnA Maker 知識庫
 
@@ -155,9 +155,8 @@ ms.locfileid: "75447610"
 
 其他資訊：
 
-* [ Markdown 格式](../concepts/data-sources-supported.md)
-* [測試您的 markdown](../concepts/data-sources-supported.md#testing-your-markdown)
-* QnA Maker [資料來源](../Concepts/data-sources-supported.md)。
+* [ Markdown 格式](../reference-markdown-format.md)
+* QnA Maker [資料來源](../concepts/knowledge-base.md)。
 * [Bot 資源組態設定](../tutorials/create-qna-bot.md)。
 
 > [!div class="nextstepaction"]

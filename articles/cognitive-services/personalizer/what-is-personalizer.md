@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 01/21/2020
 ms.author: diberry
-ms.openlocfilehash: 756363d0c46dee6f7d0037fda48ab22dbdaeb0b0
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 685e4f841ba077c81f46a27af8040fa6c57c0021
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514292"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846206"
 ---
 # <a name="what-is-personalizer"></a>什麼是個人化工具？
 
@@ -99,6 +99,6 @@ Azure 個人化工具是雲端式 API 服務，可協助您的用戶端應用程
 * [什麼是增強式學習？](concepts-reinforcement-learning.md)
 * [了解排名要求的功能和動作](concepts-features.md)
 * [了解如何判斷獎勵要求的分數](concept-rewards.md)
-* [快速入門]()
-* [教學課程]()
+* [快速入門](sdk-learning-loop.md)
+* [教學課程](tutorial-use-azure-notebook-generate-loop-data.md)
 * [使用互動式示範](https://personalizationdemo.azurewebsites.net/)

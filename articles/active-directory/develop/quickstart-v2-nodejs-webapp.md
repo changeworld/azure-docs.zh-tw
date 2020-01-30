@@ -11,13 +11,12 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2869333fe0e9103724b9b1075270a5c3301c472
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0d69f762cea53f2a4c022ad6dddb52faeced1adf
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74968012"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76703332"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>快速入門：將使用 OpenID Connect 的登入新增至 Node.js Web 應用程式
 
@@ -25,7 +24,7 @@ ms.locfileid: "74968012"
 
 在本快速入門中，您將了解如何在使用 Node.js 與 Express 所建置的 Web 應用程式中設定 OpenID Connect 驗證。 此範例已設計為可在任何平台上執行。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要執行此範例，您將需要：
 
@@ -44,7 +43,7 @@ ms.locfileid: "74968012"
 1. 選取 [新增註冊]  。
 
 1. 當 [註冊應用程式]  頁面出現時，輸入您應用程式的註冊資訊：
-    - 在 [名稱]  區段中，輸入將對應用程式使用者顯示、且有意義的名稱。 例如︰MyWebApp
+    - 在 [名稱]  區段中，輸入將對應用程式使用者顯示、且有意義的名稱。 例如：MyWebApp
     - 在 [支援的帳戶類型]  區段中，選取 [任何組織目錄中的帳戶及個人的 Microsoft 帳戶 (例如 Skype、Xbox、Outlook.com)]  。
 
     如果有多個重新導向 URI，您稍後必須在應用程式建立成功之後，從 [驗證]  索引標籤新增這些 URI。

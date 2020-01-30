@@ -40,8 +40,6 @@
           href: role-definitions.md
         - name: 列出角色定義
           href: role-definitions-list.md
-        - name: 內建角色
-          href: built-in-roles.md
     - name: 列出角色指派
       items:
         - name: 入口網站
@@ -96,6 +94,8 @@
       href: troubleshooting.md
 - name: 參考
   items:
+    - name: 內建角色
+      href: built-in-roles.md
     - name: 資源提供者作業
       href: resource-provider-operations.md
     - name: RBAC 限制

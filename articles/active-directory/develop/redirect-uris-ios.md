@@ -17,13 +17,12 @@ ms.date: 08/28/2019
 ms.author: twhitney
 ms.reviewer: jak
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a401f019f38d00790b1975f7a0a68d6097c21a70
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b7fe65938b6f96a649a5a2a9ec1d1b921a95dd49
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920356"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76703077"
 ---
 # <a name="using-redirect-uris-with-the-microsoft-authentication-library-for-ios-and-macos"></a>使用重新導向 URI 搭配適用於 iOS 和 macOS 的 Microsoft 驗證程式庫
 
@@ -41,7 +40,7 @@ Microsoft 驗證程式庫 (MSAL) 要求以特定格式向 Azure AD 應用程式�
 
 為了讓 Microsoft 身分識別平台能跨應用程式共用權杖，每個應用程式都必須有相同的用戶端識別碼或應用程式識別碼。 這是您在入口網站中註冊應用程式時所提供的唯一識別碼 (而不是您依應用程式向 Apple 註冊的應用程式套件組合識別碼)。
 
-每個 iOS 應用程式的重新導向 URI 必須不同。 這可讓 Microsoft 識別服務唯一識別共用應用程式識別碼的不同應用程式。 每個應用程式可以在 Azure 入口網站中註冊多個重新導向 URI。 組件中的每個應用程式將會有不同的重新導向 URI。 例如︰
+每個 iOS 應用程式的重新導向 URI 必須不同。 這可讓 Microsoft 識別服務唯一識別共用應用程式識別碼的不同應用程式。 每個應用程式可以在 Azure 入口網站中註冊多個重新導向 URI。 組件中的每個應用程式將會有不同的重新導向 URI。 例如：
 
 假設在 Azure 入口網站中進行下列應用程式註冊：
 
@@ -83,7 +82,7 @@ MSAL 會驗證您的重新導向 URI 是否正確註冊，如果為否，則會�
 
 ## <a name="use-a-custom-redirect-uri"></a>使用自訂重新導向 URI
 
-若要使用自訂重新導向 URI，請將 `redirectUri` 參數傳遞至 `MSALPublicClientApplicationConfig`，並在初始化物件時將該物件傳遞至 `MSALPublicClientApplication`。 如果重新導向 URI 無效，則初始設定式會傳回 `nil` 並以其他資訊設定 `redirectURIError`。  例如︰
+若要使用自訂重新導向 URI，請將 `redirectUri` 參數傳遞至 `MSALPublicClientApplicationConfig`，並在初始化物件時將該物件傳遞至 `MSALPublicClientApplication`。 如果重新導向 URI 無效，則初始設定式會傳回 `nil` 並以其他資訊設定 `redirectURIError`。  例如：
 
 Objective-C：
 

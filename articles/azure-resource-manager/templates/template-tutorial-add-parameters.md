@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 28c171dfa067ec9b3eff2e0d7e5d5dd0a0c274c0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 89101a96f4fc228e2d5c45d67e10b52ac5d8aa11
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75471683"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773196"
 ---
 # <a name="tutorial-add-parameters-to-your-resource-manager-template"></a>教學課程：將參數新增至 Resource Manager 範本
 
@@ -26,7 +26,7 @@ ms.locfileid: "75471683"
 
 在上一個教學課程結束時，您的範本會具有下列 JSON：
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json":::
 
 您可能已注意到此範本有問題。 儲存體帳戶名稱是硬式編碼的。 您每次只能使用此範本來部署相同的儲存體帳戶。 若要部署不同名稱的儲存體帳戶，您必須建立新的範本，這顯然不是將部署自動化的實用方式。
 
@@ -36,7 +36,7 @@ ms.locfileid: "75471683"
 
 複製整個檔案，並以其內容取代您的範本。
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-name/azuredeploy.json?range=1-26&highlight=4-10,15)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-name/azuredeploy.json" range="1-26" highlight="4-10,15":::
 
 ## <a name="deploy-template"></a>部署範本
 
@@ -80,7 +80,7 @@ az group deployment create \
 
 先前的範本一律會部署 Standard_LRS 儲存體帳戶。 您可能想要彈性地根據環境來部署不同的 SKU。 下列範例顯示為 SKU 新增參數所做的變更。 複製整個檔案，並貼到您的範本上。
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json?range=1-40&highlight=10-23,32)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json" range="1-40" highlight="10-23,32":::
 
 **storageSKU** 參數有預設值。 當部署期間未指定值時，就會使用此值。 它也有一份允許的值清單。 這些值符合建立儲存體帳戶所需的值。 您不希望範本的使用者傳入無法使用的 SKU。
 

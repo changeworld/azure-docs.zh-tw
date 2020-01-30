@@ -9,20 +9,21 @@ ms.date: 11/07/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 39793d65600ad57689ffac17ef83823f5d19b591
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 4236b7ad3b15d1bb58a146f5905d226e0c3833d5
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561077"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760942"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>教學課程：開發適用於 Linux 裝置的 C IoT Edge 模組
 
-使用 Visual Studio Code 開發 C 程式碼，並將它部署到執行 Azure IoT Edge 的 Linux 裝置。 
+使用 Visual Studio Code 開發 C 程式碼，並將它部署到執行 Azure IoT Edge 的 Linux 裝置。
 
 您可以使用 IoT Edge 模組來部署程式碼，將您的商務邏輯直接實作到您的 IoT Edge 裝置。 本教學課程會逐步引導您建立並部署能篩選感應器資料的 IoT Edge 模組。 在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
+>
 > * 使用 Visual Studio Code 以 C 語言建立 IoT Edge 模組
 > * 使用 Visual Studio Code 和 Docker 建立 Docker 映像，並將其發佈至容器登錄
 > * 將模組部署到您的 IoT Edge 裝置
@@ -36,16 +37,16 @@ ms.locfileid: "74561077"
 
 本教學課程示範如何使用 **Visual Studio Code** 以 **C** 開發模組，以及如何將其部署到 **Linux 裝置**。 如果您要開發適用於 Windows 裝置的模組，請改為移至[開發適用於 Windows 裝置的 C IoT Edge 模組](tutorial-c-module-windows.md)。
 
-請使用下表了解開發 C 模組並部署至 Linux 的選項： 
+請使用下表了解開發 C 模組並部署至 Linux 的選項：
 
-| C | Visual Studio Code | Visual Studio | 
+| C | Visual Studio Code | Visual Studio |
 | - | ------------------ | ------------- |
 | **Linux AMD64** | ![在 Linux AMD64 上將 VS Code 使用於 C 模組](./media/tutorial-c-module/green-check.png) | ![在 Linux AMD64 上將 VS 使用於 C 模組](./media/tutorial-c-module/green-check.png) |
 | **Linux ARM32** | ![在 Linux ARM32 上將 VS Code 使用於 C 模組](./media/tutorial-c-module/green-check.png) | ![在 Linux ARM32 上將 VS 使用於 C 模組](./media/tutorial-c-module/green-check.png) |
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-在開始本教學課程之前，您應該已經完成先前的教學課程，以針對 Linux 容器開發設定您的開發環境：[開發適用於 Linux 裝置的 IoT Edge 模組](tutorial-develop-for-linux.md)。 完成該教學課程之後，您應該會具備下列必要條件： 
+在開始本教學課程之前，您應該已經完成先前的教學課程，以針對 Linux 容器開發設定您的開發環境：[開發適用於 Linux 裝置的 IoT Edge 模組](tutorial-develop-for-linux.md)。 完成該教學課程之後，您應該會具備下列必要條件：
 
 * Azure 中的免費或標準層 [IoT 中樞](../iot-hub/iot-hub-create-through-portal.md)。
 * [執行 Azure IoT Edge 的 Linux 裝置](quickstart-linux.md)
@@ -53,13 +54,13 @@ ms.locfileid: "74561077"
 * 已設定 [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 的 [Visual Studio Code](https://code.visualstudio.com/)。
 * [Docker CE](https://docs.docker.com/install/) 設定為執行 Linux 容器。
 
-若要以 C 開發 IoT Edge 模組，請在您的開發機器上安裝下列其他必要條件： 
+若要以 C 開發 IoT Edge 模組，請在您的開發機器上安裝下列其他必要條件：
 
 * 適用於 Visual Studio Code 的 [C/C++ 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)。
 
 ## <a name="create-a-module-project"></a>建立模組專案
 
-下列步驟會使用 Visual Studio Code 和 Azure IoT Tools 擴充功能來建立適用於 C 的 IoT Edge 模組專案。 建立專案範本後，新增程式碼，以便模組根據其報告的屬性篩選出訊息。 
+下列步驟會使用 Visual Studio Code 和 Azure IoT Tools 擴充功能來建立適用於 C 的 IoT Edge 模組專案。 建立專案範本後，新增程式碼，以便模組根據其報告的屬性篩選出訊息。
 
 ### <a name="create-a-new-project"></a>建立新專案
 
@@ -69,7 +70,7 @@ ms.locfileid: "74561077"
 
 2. 在命令選擇區中，輸入並執行命令 **Azure:Sign in**，然後遵循指示來登入您的 Azure 帳戶。 如果您已登入，則可以略過此步驟。
 
-3. 在命令選擇區中，輸入並執行命令 **Azure IoT Edge:New IoT Edge solution**。 依照命令選擇區中的提示建立解決方案。
+3. 在命令選擇區中，輸入並執行命令 Azure IoT Edge:**新增 IoT Edge 解決方案**。 依照命令選擇區中的提示建立解決方案。
 
    | 欄位 | 值 |
    | ----- | ----- |
@@ -78,7 +79,7 @@ ms.locfileid: "74561077"
    | 選取模組範本 | 選擇 [C 模組]  。 |
    | 提供模組名稱 | 將模組命名為 **CModule**。 |
    | 提供模組的 Docker 映像存放庫 | 映像存放庫包含容器登錄名稱和容器映像名稱。 您的容器映像會從您在上一個步驟中提供的名稱預先填入。 將 **localhost:5000** 取代為 Azure Container Registry 的登入伺服器值。 您可以在 Azure 入口網站中，從容器登錄的 [概觀] 頁面擷取登入伺服器。 <br><br> 最終的映像存放庫看起來類似於：\<登錄名稱\>.azurecr.io/cmodule。 |
- 
+
    ![提供 Docker 映像存放庫](./media/tutorial-c-module/repository.png)
 
 ### <a name="add-your-registry-credentials"></a>新增登錄認證
@@ -91,15 +92,15 @@ ms.locfileid: "74561077"
 
 ### <a name="select-your-target-architecture"></a>選取您的目標架構
 
-目前，Visual Studio Code 可以開發適用於 Linux AMD64 和 Linux ARM32v7 裝置的 C 模組。 您必須為每個解決方案都選取要作為目標的架構，因為容器是針對每個架構類型，以不同方式建置和執行。 預設值為 Linux AMD64。 
+目前，Visual Studio Code 可以開發適用於 Linux AMD64 和 Linux ARM32v7 裝置的 C 模組。 您必須為每個解決方案都選取要作為目標的架構，因為容器是針對每個架構類型，以不同方式建置和執行。 預設值為 Linux AMD64。
 
-1. 開啟命令選擇區並搜尋 **Azure IoT Edge:Set Default Target Platform for Edge Solution**，或選取視窗底部側邊欄的捷徑圖示。 
+1. 開啟命令選擇區並搜尋 **Azure IoT Edge:Set Default Target Platform for Edge Solution**，或選取視窗底部側邊欄的捷徑圖示。
 
-2. 在命令選擇區中，從選項清單中選取目標架構。 針對此教學課程，我們是使用 Ubuntu 虛擬機器作為 IoT Edge 裝置，因此會保留預設 **amd64**。 
+2. 在命令選擇區中，從選項清單中選取目標架構。 針對此教學課程，我們是使用 Ubuntu 虛擬機器作為 IoT Edge 裝置，因此會保留預設 **amd64**。
 
 ### <a name="update-the-module-with-custom-code"></a>使用自訂程式碼來更新模組
 
-預設模組程式碼會透過輸入佇列接收訊息，並透過輸出佇列傳遞這些訊息。 讓我們新增一些額外的程式碼，讓模組在邊緣處理訊息，然後再將它們轉送到 IoT 中樞。 更新模組，以分析每則訊息中的溫度資料，而且只有在溫度超過特定閾值時，才會將訊息傳送到 IoT 中樞。 
+預設模組程式碼會透過輸入佇列接收訊息，並透過輸出佇列傳遞這些訊息。 讓我們新增一些額外的程式碼，讓模組在邊緣處理訊息，然後再將它們轉送到 IoT 中樞。 更新模組，以分析每則訊息中的溫度資料，而且只有在溫度超過特定閾值時，才會將訊息傳送到 IoT 中樞。
 
 1. 在此案例中，來自感應器的資料會以 JSON 格式傳入。 若要篩選 JSON 格式的訊息，請匯入適用於 C 的 JSON 程式庫。本教學課程使用 Parson。
 
@@ -107,7 +108,7 @@ ms.locfileid: "74561077"
 
    2. 開啟 [模組]   > [CModule]   > [CMakeLists.txt]  。 在檔案頂端匯入 Parson 檔案，作為名為 **my_parson** 的程式庫。
 
-      ```
+      ```txt
       add_library(my_parson
           parson.c
           parson.h
@@ -130,7 +131,7 @@ ms.locfileid: "74561077"
     static double temperatureThreshold = 25;
     ```
 
-1. 在 main.c 中尋找 `CreateMessageInstance` 函式。 使用下列程式碼取代內部 if-else 陳述式，以新增幾行功能： 
+1. 在 main.c 中尋找 `CreateMessageInstance` 函式。 使用下列程式碼取代內部 if-else 陳述式，以新增幾行功能：
 
    ```c
        if ((messageInstance->messageHandle = IoTHubMessage_Clone(message)) == NULL)
@@ -149,9 +150,9 @@ ms.locfileid: "74561077"
        }
    ```
 
-   else 陳述式中的新程式碼行會將新屬性新增至訊息，以將此訊息標示為警示。 此程式碼會將所有訊息標示為警示，因為我們將新增只會在回報高溫時將訊息傳送至 IoT 中樞的功能。 
+   else 陳述式中的新程式碼行會將新屬性新增至訊息，以將此訊息標示為警示。 此程式碼會將所有訊息標示為警示，因為我們將新增只會在回報高溫時將訊息傳送至 IoT 中樞的功能。
 
-1. 將整個 `InputQueue1Callback` 函式取代為下列程式碼。 此函式會實作實際的傳訊篩選條件。 收到訊息時，它會檢查報告的溫度是否超過閾值。 如果為是，則會透過其輸出佇列轉送訊息。 如果為否，則會忽略此訊息。 
+1. 將整個 `InputQueue1Callback` 函式取代為下列程式碼。 此函式會實作實際的傳訊篩選條件。 收到訊息時，它會檢查報告的溫度是否超過閾值。 如果為是，則會透過其輸出佇列轉送訊息。 如果為否，則會忽略此訊息。
 
     ```c
     static unsigned char *bytearray_to_str(const unsigned char *buffer, size_t len)
@@ -271,7 +272,7 @@ ms.locfileid: "74561077"
 
 1. 儲存 main.c 檔案。
 
-1. 在 VS Code 總管中，於 IoT Edge 解決方案工作區中開啟 **deployment.template.json** 檔案。 
+1. 在 VS Code 總管中，於 IoT Edge 解決方案工作區中開啟 **deployment.template.json** 檔案。
 
 1. 在部署資訊清單中新增 CModule 模組對應項。 在 `moduleContent` 區段底部，於 `$edgeHub` 模組對應項後面插入下列 JSON 內容：
 
@@ -294,14 +295,14 @@ ms.locfileid: "74561077"
 1. 選取 [檢視]   > [終端機]  ，以開啟 VS Code 終端機。
 
 1. 在終端機中輸入下列命令來登入 Docker。 使用您 Azure 容器登錄中的使用者名稱、密碼和登入伺服器登入。 您可以在 Azure 入口網站中，從登錄的 [存取金鑰]  區段擷取這些值。
-     
+
    ```bash
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
    您可能會收到安全性警告，建議您使用 `--password-stdin`。 雖然建議生產案例使用該最佳做法，但是不在本教學課程的討論範圍內。 如需詳細資訊，請參閱 [docker login](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) 參考。
 
-2. 在 VS Code 總管中，以滑鼠右鍵按一下 **deployment.template.json** 檔案，然後選取 [建置並推送 IoT Edge 解決方案]  。
+1. 在 VS Code 總管中，以滑鼠右鍵按一下 **deployment.template.json** 檔案，然後選取 [建置並推送 IoT Edge 解決方案]  。
 
    建置和推送命令會啟動三項作業。 首先，它會在解決方案中建立名為 **config** 的新資料夾，以保存完整部署資訊清單 (根據部署範本中的資訊建立)，以及其他解決方案檔案。 接著，它會執行 `docker build`，以根據目標架構的適當 dockerfile 建置容器映像。 然後，它會執行 `docker push` 以將映像存放庫推送至您的容器登錄。
 
@@ -309,7 +310,7 @@ ms.locfileid: "74561077"
 
 使用 Visual Studio Code 總管和 Azure IoT Tools 擴充功能，將模組專案部署到您的 IoT Edge 裝置。 您已備妥您的案例所需的部署資訊清單，即 config 資料夾中的 **deployment.json** 檔案。 現在您只需選取要接收部署的裝置即可。
 
-請確定您的 IoT Edge 裝置已啟動並執行。 
+請確定您的 IoT Edge 裝置已啟動並執行。
 
 1. 在 Visual Studio Code 總管中，展開 [Azure IoT 中樞裝置]  區段來查看您的 IoT 裝置清單。
 
@@ -327,7 +328,7 @@ ms.locfileid: "74561077"
 
 1. 在 Visual Studio Code 總管中，以滑鼠右鍵按一下 IoT Edge 裝置的名稱，然後選取 [開始監視內建事件端點]  。
 
-2. 檢視送達 IoT 中樞的訊息。 訊息可能需要一段時間才能送達，因為 IoT Edge 裝置必須接收其新的部署和啟動所有模組。 然後，我們對 CModule 程式碼所做的變更會等到機器溫度達到 25 度時才會傳送訊息。 它也會將 [警示]  訊息類型新增至任何觸達該溫度閾值的訊息。 
+2. 檢視送達 IoT 中樞的訊息。 訊息可能需要一段時間才能送達，因為 IoT Edge 裝置必須接收其新的部署和啟動所有模組。 然後，我們對 CModule 程式碼所做的變更會等到機器溫度達到 25 度時才會傳送訊息。 它也會將 [警示]  訊息類型新增至任何觸達該溫度閾值的訊息。
 
    ![檢視送達 IoT 中樞的訊息](./media/tutorial-c-module/view-d2c-message.png)
 
@@ -335,17 +336,17 @@ ms.locfileid: "74561077"
 
 我們已使用部署資訊清單中的 CModule 模組對應項，設定 25 度的溫度閾值。 您可以使用模組對應項來變更此功能，而不必更新模組程式碼。
 
-1. 在 Visual Studio Code 中，展開您 IoT Edge 裝置底下的詳細資料，以查看執行中的模組。 
+1. 在 Visual Studio Code 中，展開您 IoT Edge 裝置底下的詳細資料，以查看執行中的模組。
 
-2. 以滑鼠右鍵按一下 **CModule** 並選取 [編輯模組對應項]  。 
+2. 以滑鼠右鍵按一下 **CModule** 並選取 [編輯模組對應項]  。
 
-3. 在所需的屬性中尋找 **TemperatureThreshold**。 將其值變更為高於最近報告溫度 5 到 10 度的新溫度。 
+3. 在所需的屬性中尋找 **TemperatureThreshold**。 將其值變更為高於最近報告溫度 5 到 10 度的新溫度。
 
 4. 儲存模組對應項檔案。
 
-5. 以滑鼠右鍵按一下模組對應項編輯窗格中的任意位置，然後選取 [更新模組對應項]  。 
+5. 以滑鼠右鍵按一下模組對應項編輯窗格中的任意位置，然後選取 [更新模組對應項]  。
 
-5. 監視傳入的裝置到雲端訊息。 在新的溫度閾值送達前，您應該會看到訊息停止。 
+6. 監視傳入的裝置到雲端訊息。 在新的溫度閾值送達前，您應該會看到訊息停止。
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -355,10 +356,9 @@ ms.locfileid: "74561077"
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已建立包含程式碼的 IoT Edge 模組，可篩選您 IoT Edge 裝置所產生的原始資料。 當您準備好建置自己的模組時，可以進一步了解如何[開發自己的 IoT Edge 模組](module-development.md)或如何[使用 Visual Studio Code 開發模組](how-to-vs-code-develop-module.md)。 如需 IoT Edge 模組 (包括模擬溫度模組) 的範例，請參閱 [IoT Edge 模組範例](https://github.com/Azure/iotedge/tree/master/edge-modules)和 [IoT C SDK 範例](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples)。 
+在本教學課程中，您已建立包含程式碼的 IoT Edge 模組，可篩選您 IoT Edge 裝置所產生的原始資料。 當您準備好建置自己的模組時，可以進一步了解如何[開發自己的 IoT Edge 模組](module-development.md)或如何[使用 Visual Studio Code 開發模組](how-to-vs-code-develop-module.md)。 如需 IoT Edge 模組 (包括模擬溫度模組) 的範例，請參閱 [IoT Edge 模組範例](https://github.com/Azure/iotedge/tree/master/edge-modules)和 [IoT C SDK 範例](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples)。
 
 您可以繼續進行後續教學課程，以了解 Azure IoT Edge 如何協助您部署 Azure 雲端服務，以在邊緣處理和分析資料。
 
@@ -367,4 +367,3 @@ ms.locfileid: "74561077"
 > [串流分析](tutorial-deploy-stream-analytics.md)
 > [Machine Learning](tutorial-deploy-machine-learning.md)
 > [自訂視覺服務](tutorial-deploy-custom-vision.md)
-

@@ -4,9 +4,7 @@ titleSuffix: Azure Network Watcher
 description: 在本教學課程中，了解如何使用網路監看員的 VPN 診斷功能，針對透過 Azure 虛擬網路閘道連線到內部部署或其他虛擬網路的 Azure 虛擬網路，診斷其間的通訊問題。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 Customer intent: I need to determine why resources in a virtual network can't communicate with resources in a different network.
 ms.service: network-watcher
 ms.devlang: na
@@ -14,14 +12,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: e2ec59cf609fcde79d289e321331ca5018401a5e
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 974e45b761fb45e4bc1c451fa6755e16cab49e11
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419728"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834674"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站診斷網路之間的通訊問題
 
@@ -37,7 +35,7 @@ ms.locfileid: "74419728"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要使用 VPN 診斷，您必須具有現有且正在執行中的 VPN 閘道。 如果您沒有現有 VPN 閘到可以診斷，可以使用 [PowerShell 指令碼](../vpn-gateway/scripts/vpn-gateway-sample-site-to-site-powershell.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)部署一個閘道。 您可以從下列位置執行 PowerShell 指令碼：
 - **本機 PowerShell 安裝**：此指令碼需要 Azure PowerShell `Az` 模組。 執行 `Get-Module -ListAvailable Az` 來了解安裝的版本。 如果您需要升級，請參閱[安裝 Azure PowerShell](/powershell/azure/install-Az-ps)。 如果您在本機執行 PowerShell，則也需要執行 `Connect-AzAccount` 以建立與 Azure 的連線。
@@ -88,7 +86,7 @@ ms.locfileid: "74419728"
 
 1. 再次完成[診斷閘道](#diagnose-a-gateway)的步驟 7，但是這次選取連線。 在下列範例中，會測試名為 **VNet1toSite1** 的連線：
 
-    ![連線](./media/diagnose-communication-problem-between-networks/connection.png)
+    ![Connection](./media/diagnose-communication-problem-between-networks/connection.png)
 
     測試會執行數分鐘。
 2. 連線測試完成之後，您會收到類似下圖中 [狀態]  和 [動作]  索引標籤上所顯示的結果：

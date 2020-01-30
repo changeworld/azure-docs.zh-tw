@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/22/2019
 ms.author: diberry
-ms.openlocfilehash: ae5e3481d51a27b05afdb334e6e04c785a68c01a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 664d6006ab78f91a8ed0e199cf78fae9512efd73
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447683"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843034"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>快速入門：使用 QnA Maker 入口網站新增問題和答案
 
@@ -28,7 +28,7 @@ ms.locfileid: "75447683"
 <a name="qna-table"></a>
 
 
-|Set|問題|Answer|中繼資料|
+|設定|問題|Answer|中繼資料|
 |--|--|--|--|
 |#1|`How large a knowledge base can I create?`<br><br>`What is the max size of a knowledge base?`<br><br>`How many GB of data can a knowledge base hold?` |`The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`|`service=qna_maker`<br>`link_in_answer=true`|
 |#2|`How many knowledge bases can I have for my QnA Maker service?`<br><br>`I selected a Azure Cognitive Search tier that holds 15 knowledge bases, but I can only create 14 - what is going on?`<br><br>`What is the connection between the number of knowledge bases in my QnA Maker service and the Azure Cognitive Search service size?` |`Each knowledge base uses 1 index, and all the knowledge bases share a test index. You can have N-1 knowledge bases where N is the number of indexes your Azure Cognitive Search tier supports.`|`service=search`<br>`link_in_answer=false`|
@@ -86,7 +86,7 @@ ms.locfileid: "75447683"
 
 ## <a name="add-metadata-to-filter-the-answers"></a>新增中繼資料以篩選答案
 
-將中繼資料新增至問答集可讓用戶端應用程式要求經過篩選的答案。 系統會先套用此篩選條件，再套用[第一個和第二個順位排定程式](../concepts/knowledge-base.md#ranker-process)。
+將中繼資料新增至問答集可讓用戶端應用程式要求經過篩選的答案。 系統會先套用此篩選條件，再套用[第一個和第二個順位排定程式](../concepts/query-knowledge-base.md#ranker-process)。
 
 1. 從[此快速入門的第一個表格](#qna-table)中新增第二個問答集，但不要包含中繼資料，然後繼續進行下列步驟。
 

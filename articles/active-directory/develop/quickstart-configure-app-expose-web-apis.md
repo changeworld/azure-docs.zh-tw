@@ -12,13 +12,12 @@ ms.date: 08/14/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a45b3ee9bf9cea71255ac9a83f970d2b6c72b67f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e005ba9c5458849863bd4668ffde1e0f6fb4bf91
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74966107"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704216"
 ---
 # <a name="quickstart-configure-an-application-to-expose-web-apis"></a>快速入門：設定應用程式以公開 Web API
 
@@ -26,7 +25,7 @@ ms.locfileid: "74966107"
 
 在本快速入門中，您將了解如何設定應用程式來公開新的範圍，以便將應用程式提供給用戶端應用程式使用。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始之前，請先確定您已完成以下先決條件：
 
@@ -60,7 +59,7 @@ ms.locfileid: "74966107"
 
 1. 當 [新增範圍]  頁面出現時，輸入範圍的資訊：
 
-    | 欄位 | 說明 |
+    | 欄位 | 描述 |
     |-------|-------------|
     | **範圍名稱** | 為範圍輸入有意義的名稱。<br><br>例如： `Employees.Read.All` 。 |
     | **誰可以同意** | 選取此範圍可由使用者同意，還是必須由管理員同意。 選取 [僅限系統管理員]  以要求較高權限。 |
@@ -69,7 +68,7 @@ ms.locfileid: "74966107"
 
     如果使用者可以同意範圍，也請新增下列欄位的值：
 
-    | 欄位 | 說明 |
+    | 欄位 | 描述 |
     |-------|-------------|
     | **使用者同意顯示名稱** | 為範圍輸入有意義的名稱，以便讓使用者看到。<br><br>例如， `Read-only access to your Employee records` |
     | **使用者同意描述** | 為範圍輸入有意義的描述，以便讓使用者看到。<br><br>例如， `Allow the application to have read-only access to your Employee data.` |

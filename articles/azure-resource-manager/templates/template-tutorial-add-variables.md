@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a27022f8c06449d8b05f90f78055b983bc88c01c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 881d91d5b8ca06a9591b8752af0a73da7f00b0c1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75471523"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765496"
 ---
 # <a name="tutorial-add-variables-to-your-resource-manager-template"></a>教學課程：將變數新增至 Resource Manager 範本
 
@@ -26,7 +26,7 @@ ms.locfileid: "75471523"
 
 在上一個教學課程結束時，您的範本會具有下列 JSON：
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.json":::
 
 儲存體帳戶名稱的參數很難使用，因為您必須提供唯一的名稱。 如果您已完成本系列中先前的教學課程，則可能已經厭倦猜測唯一的名稱。 您可以藉由新增可為儲存體帳戶建構唯一名稱的變數來解決此問題。
 
@@ -34,7 +34,7 @@ ms.locfileid: "75471523"
 
 下列範例會反白顯示將變數新增至範本，以建立唯一儲存體帳戶名稱的變更。 複製整個檔案，並以其內容取代您的範本。
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json?range=1-47&highlight=5-9,29-31,36)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json" range="1-47" highlight="5-9,29-31,36":::
 
 請注意，它包含名為 **uniqueStorageName** 的變數。 此變數會使用四個函式來建構字串值。
 

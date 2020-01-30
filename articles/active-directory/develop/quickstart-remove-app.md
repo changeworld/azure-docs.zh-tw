@@ -12,13 +12,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: fff6d07bd0e353541dec23fd8c3edf7407ef6d68
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 3cc9e4458f14a63bad7f484bc16683248895ede9
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963285"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704080"
 ---
 # <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform"></a>快速入門：移除使用 Microsoft 身分識別平台所註冊的應用程式
 
@@ -29,7 +28,7 @@ ms.locfileid: "74963285"
 * 移除您或組織所編寫的應用程式
 * 移除其他組織所編寫的應用程式
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 您必須擁有已有應用程式在其中註冊的租用戶。 若要了解如何新增和註冊應用程式，請參閱[使用 Microsoft 身分識別平台來註冊應用程式](quickstart-register-app.md)。
 

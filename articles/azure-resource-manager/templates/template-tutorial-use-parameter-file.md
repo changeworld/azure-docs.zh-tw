@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: abafa00febe0431acf5c678cc179c6c114fa9179
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6a12d92c0cfb9d86ebf4c335c351944997f79b4e
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75470833"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773156"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-resource-manager-template"></a>教學課程：使用參數檔案來部署 Resource Manager 範本
 
@@ -26,7 +26,7 @@ ms.locfileid: "75470833"
 
 範本有許多您可在部署期間提供的參數。 在上一個教學課程結束時，您的範本看起來如下：
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json":::
 
 此範本運作良好，但現在您想要輕鬆地管理您為範本傳入的參數。
 
@@ -36,13 +36,13 @@ ms.locfileid: "75470833"
 
 在 VS Code 中，建立含有下列內容的新檔案。 以 **azuredeploy.parameters.dev.json** 名稱來儲存檔案。
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.dev.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.dev.json":::
 
 此檔案是適用於開發環境的參數檔案。 請注意，它會針對儲存體帳戶使用 Standard_LRS、使用 **dev** 前置詞來為資源命名，並將 **Environment** 標記設定為 **Dev**。
 
 同樣地，建立含有下列內容的新檔案。 以 **azuredeploy.parameters.prod.json** 名稱來儲存檔案。
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.prod.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.prod.json":::
 
 此檔案是適用於實際執行環境的參數檔案。 請注意，它會針對儲存體帳戶使用 Standard_GRS、使用 **contoso** 前置詞來為資源命名，並將 **Environment** 標記設定為 **Production**。 在真正的實際執行環境中，您也想要將應用程式服務與免費的 SKU 搭配使用，但我們將繼續使用該 SKU 來進行此教學課程。
 

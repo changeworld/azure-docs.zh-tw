@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 924c369465bf53ea5f58de906bd0894ce822cac3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8686b15501e267ab23efe654d28a3e67369a8d03
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75471673"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765595"
 ---
 # <a name="tutorial-add-a-resource-to-your-resource-manager-template"></a>教學課程：將資源新增至 Resource Manager 範本
 
@@ -28,7 +28,7 @@ ms.locfileid: "75471673"
 
 以唯一的儲存體帳戶名稱取代 **{provide-unique-name}** 。 儲存體帳戶名稱必須是 Azure 中是獨一無二的。 名稱必須只有小寫字母或數字。 名稱長度不得超過 24 個字元。 您可以嘗試使用 **store1** 作為前置詞，然後加上您的姓名縮寫和今天日期之類的命名模式。 例如，您使用的名稱看起來可能像 **store1abc09092019**。
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json?range=1-19&highlight=5-17)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json" range="1-19" highlight="5-17":::
 
 猜測儲存體帳戶的唯一名稱並不容易，而且不適合用於自動化大型部署。 在此教學課程系列稍後，您將使用範本功能更輕鬆地建立唯一名稱。
 

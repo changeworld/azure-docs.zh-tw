@@ -10,16 +10,16 @@ ms.topic: overview
 ms.date: 09/19/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4d45e4c79f46061ca177858fd517153fb5f29c41
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 5801cc4fdfeb4bbdf7c22e2be2f686558611a7f6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123681"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840208"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C 的技術和功能概觀
 
-本文與[關於 Azure Active Directory B2C](active-directory-b2c-overview.md) 搭配，可提供更深入的服務介紹。 這裡會討論您在服務中使用的主要資源、其功能，以及這些項目如何讓您在應用程式中為客戶提供完整的自訂身分識別體驗。
+本文與[關於 Azure Active Directory B2C](overview.md) 搭配，可提供更深入的服務介紹。 這裡會討論您在服務中使用的主要資源、其功能，以及這些項目如何讓您在應用程式中為客戶提供完整的自訂身分識別體驗。
 
 ## <a name="azure-ad-b2c-tenant"></a>Azure AD B2C 租用戶
 
@@ -109,13 +109,13 @@ Azure AD B2C 的可延伸原則架構是其核心優點。 原則可描述使用
 
 大部分的行動、Web 和單頁應用程式最常見的身分識別案例，都可以透過使用者流程有效地定義和實作。 建議您使用內建的使用者流程，除非您有需要完整自訂原則彈性的複雜使用者旅程圖案例。
 
-在 [Azure Active Directory B2C 中的使用者流程](active-directory-b2c-reference-policies.md)中深入了解使用者流程。
+在 [Azure Active Directory B2C 中的使用者流程](user-flow-overview.md)中深入了解使用者流程。
 
 ### <a name="custom-policy"></a>自訂原則
 
 自訂原則可將 Identity Experience Framework (IEF) 協調流程引擎的完整功能存取解除鎖定。 透過自訂原則，您可以利用 IEF 建立幾乎任何您可想像的驗證、使用者註冊或設定檔編輯體驗。
 
-Identity Experience Framework 可讓您利用任何步驟組合來建立使用者旅程圖。 例如︰
+Identity Experience Framework 可讓您利用任何步驟組合來建立使用者旅程圖。 例如：
 
 * 與其他識別提供者同盟
 * 第一方和第三方多重要素驗證 (MFA) 挑戰
@@ -130,13 +130,13 @@ Identity Experience Framework 可讓您利用任何步驟組合來建立使用�
 
 當您需要建立複雜的身分識別案例時，自訂原則的強大彈性最合適。 設定自訂原則的開發人員必須仔細定義信任關係，以包含中繼資料端點、精確的宣告交換定義，並設定每個識別提供者所需的祕密、金鑰和憑證。
 
-在 [Azure Active Directory B2C 中的自訂原則](active-directory-b2c-overview-custom.md)中深入了解自訂原則。
+在 [Azure Active Directory B2C 中的自訂原則](custom-policy-overview.md)中深入了解自訂原則。
 
 ## <a name="protocols-and-tokens"></a>通訊協定和權杖
 
-Azure AD B2C 支援在使用者旅程圖中使用 [OpenID Connect 和 OAuth 2.0 通訊協定](active-directory-b2c-reference-protocols.md)。 在 Azure AD B2C 的 OpenID Connect 實作中，您的應用程式會向 Azure AD B2C 發出驗證要求，以起始使用者旅程圖。
+Azure AD B2C 支援在使用者旅程圖中使用 [OpenID Connect 和 OAuth 2.0 通訊協定](protocols-overview.md)。 在 Azure AD B2C 的 OpenID Connect 實作中，您的應用程式會向 Azure AD B2C 發出驗證要求，以起始使用者旅程圖。
 
-提出 Azure AD B2C 的要求後會產生安全性權杖，例如[識別碼權杖或存取權杖](active-directory-b2c-reference-tokens.md)。 此安全性權杖會定義使用者的身分識別。 權杖接收自 Azure AD B2C 端點，像是 `/token` 或 `/authorize` 端點。 利用這些權杖，您可以存取可用來驗證身分識別和允許存取安全資源的宣告。
+提出 Azure AD B2C 的要求後會產生安全性權杖，例如[識別碼權杖或存取權杖](tokens-overview.md)。 此安全性權杖會定義使用者的身分識別。 權杖接收自 Azure AD B2C 端點，像是 `/token` 或 `/authorize` 端點。 利用這些權杖，您可以存取可用來驗證身分識別和允許存取安全資源的宣告。
 
 針對外部身分識別，Azure AD B2C 支援與任何 OAuth 1.0、OAuth 2.0、OpenID Connect、SAML 和 WS-同盟識別提供者同盟。
 
@@ -172,7 +172,7 @@ Azure AD B2C 中的語言自訂可讓您適應不同的語言，以符合您客�
 
 ![以不同語言顯示 UI 文字的三個註冊登入頁面](media/technical-overview/localization.png)
 
-若要了解當地語系化的運作方式，請參閱 [Azure Active Directory B2C 中的語言自訂](active-directory-b2c-reference-language-customization.md)。
+若要了解當地語系化的運作方式，請參閱 [Azure Active Directory B2C 中的語言自訂](user-flow-language-customization.md)。
 
 ## <a name="add-your-own-business-logic"></a>新增您自己的商務邏輯
 
@@ -195,7 +195,7 @@ Azure AD B2C 中的語言自訂可讓您適應不同的語言，以符合您客�
 * Azure AD B2C 在目錄中建立新帳戶之後
 * Azure AD B2C 發出存取權杖之前
 
-若要瞭解如何在 Azure AD B2C 中使用自訂原則來整合 RESTful API，請參閱[在 Azure AD B2C 使用者旅程圖中整合 REST API 宣告交換](active-directory-b2c-custom-rest-api-netfw.md)。
+若要瞭解如何在 Azure AD B2C 中使用自訂原則來整合 RESTful API，請參閱[在 Azure AD B2C 使用者旅程圖中整合 REST API 宣告交換](rest-api-claims-exchange-dotnet.md)。
 
 ## <a name="protect-customer-identities"></a>保護客戶身分識別
 
@@ -223,7 +223,7 @@ Azure AD B2C 租用戶會與用於員工和合作夥伴的企業 Azure Active Di
 
 Azure AD B2C 多重要素驗證 (MFA) 有助於保護對資料與應用程式的存取，同時讓使用者能夠方便使用。 它藉由要求第二種形式的驗證來提供額外的安全性，並藉由提供一系列易於使用的驗證方法來提供強式驗證。 因您可以管理員身分所做的設定決定不同，使用者不一定會通過 MFA。
 
-請參閱[在 Azure Active Directory B2C 中啟用多重要素驗證](active-directory-b2c-reference-mfa.md)，了解如何在使用者流程中啟用 MFA。
+請參閱[在 Azure Active Directory B2C 中啟用多重要素驗證](custom-policy-multi-factor-authentication.md)，了解如何在使用者流程中啟用 MFA。
 
 ### <a name="smart-account-lockout"></a>智慧帳戶鎖定
 
@@ -231,13 +231,13 @@ Azure AD B2C 多重要素驗證 (MFA) 有助於保護對資料與應用程式的
 
 ![帳戶智慧鎖定](media/technical-overview/smart-lockout1.png)
 
-如需管理密碼保護設定的詳細資訊，請參閱[管理對 Azure Active Directory B2C 中的資源與資料的威脅](active-directory-b2c-reference-threat-management.md)。
+如需管理密碼保護設定的詳細資訊，請參閱[管理對 Azure Active Directory B2C 中的資源與資料的威脅](threat-management.md)。
 
 ### <a name="password-complexity"></a>密碼複雜度
 
 在註冊期間或密碼重設期間，使用者必須提供符合複雜度規則的密碼。 根據預設，Azure AD B2C 會強制執行強式密碼原則。 Azure AD B2C 也會提供設定選項，以便指定客戶所用密碼的複雜度需求。
 
-您可以在[使用者流程](active-directory-b2c-reference-password-complexity.md)和[自訂原則](active-directory-b2c-reference-password-complexity-custom.md)中設定密碼複雜度需求。
+您可以在[使用者流程](user-flow-password-complexity.md)和[自訂原則](custom-policy-password-complexity.md)中設定密碼複雜度需求。
 
 ## <a name="auditing-and-logs"></a>稽核和記錄
 
@@ -254,13 +254,13 @@ Azure AD B2C 會發出稽核記錄，其中包含有關其資源、發行的權�
 
 ![Azure 入口網站中顯示的個別使用者稽核記錄](media/technical-overview/audit-log.png)
 
-如需稽核記錄的其他詳細資訊，請參閱[存取 Azure AD B2C 稽核記錄](active-directory-b2c-reference-audit-logs.md)。
+如需稽核記錄的其他詳細資訊，請參閱[存取 Azure AD B2C 稽核記錄](view-audit-logs.md)。
 
 ### <a name="usage-insights"></a>使用見解
 
 Azure AD B2C 可讓您探索人員何時註冊或登入您的 Web 應用程式，使用者的所在位置，以及他們使用何種瀏覽器與作業系統。 藉由使用自訂原則將 Azure Application Insights 整合到 Azure AD B2C，您可深入了解人員如何註冊、登入、重設其密碼，或編輯其設定檔。 您可以透過了解這些來制定近期開發週期的資料導向決策。
 
-在[使用 Application Insights 在 Azure Active Directory B2C 中追蹤使用者行為](active-directory-b2c-custom-guide-eventlogger-appins.md)中深入了解使用情況分析。
+在[使用 Application Insights 在 Azure Active Directory B2C 中追蹤使用者行為](analytics-with-application-insights.md)中深入了解使用情況分析。
 
 ## <a name="next-steps"></a>後續步驟
 

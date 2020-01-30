@@ -11,12 +11,12 @@ metadata:
   services: cognitive-services
   title: QnA Maker 文件
   description: QnA Maker 是一項雲端式 API 服務，可對您的資料建立交談式的問答層。 QnA Maker 可讓您加強常見問題集文件或 URL 及產品手冊等半結構化內容中的問題與解答服務。 QnA Maker 服務會將使用者的自然語言問題與知識庫中各個 QnA 可能包含的最佳解答比對，以回答這些問題。
-  ms.openlocfilehash: 03518a1d7156d57424b28980d05bb03bfef56503
-  ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+  ms.openlocfilehash: e566fdb18bdabe80447de9b2882cf7d57209d15e
+  ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 01/14/2020
-  ms.locfileid: "75945595"
+  ms.lasthandoff: 01/29/2020
+  ms.locfileid: "76844104"
 landingContent:
 - title: 關於 QnA Maker
   linkLists:
@@ -35,7 +35,7 @@ landingContent:
     - text: 開發生命週期
       url: concepts/development-lifecycle-knowledge-base.md
     - text: 資料來源
-      url: concepts/data-sources-supported.md
+      url: concepts/knowledge-base.md
   - linkListType: video
     links:
     - text: 在短短幾分鐘內建立 Bot

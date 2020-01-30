@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 540e037e83d359dc67cb32f98dec0319bf490707
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 381f9f54a95b6d457aa65c7e8ef6abe49fe9eeea
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75471703"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765740"
 ---
 # <a name="tutorial-add-outputs-to-your-resource-manager-template"></a>教學課程：將輸出新增至 Resource Manager 範本
 
@@ -26,7 +26,7 @@ ms.locfileid: "75471703"
 
 在上一個教學課程結束時，您的範本會具有下列 JSON：
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json":::
 
 它會部署儲存體帳戶，但不會傳回任何有關儲存體帳戶的資訊。 您可能需要擷取新資源的屬性，以便稍後可供參考。
 
@@ -36,7 +36,7 @@ ms.locfileid: "75471703"
 
 下列範例會反白顯示對範本所做以新增輸出值的變更。 複製整個檔案，並以其內容取代您的範本。
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json?range=1-53&highlight=47-52)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json" range="1-53" highlight="47-52":::
 
 關於您新增的輸出值，有一些需注意的重要項目。
 

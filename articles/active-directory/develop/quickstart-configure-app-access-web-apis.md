@@ -12,13 +12,12 @@ ms.date: 08/07/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec5fe8e93c9032a07c1defe5b28753e0f520a320
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 32691892ccae31541855f47bd8274aa28b6dc185
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963328"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704284"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>快速入門：設定用戶端應用程式以存取 Web API
 
@@ -40,7 +39,7 @@ ms.locfileid: "74963328"
 * [將認證新增至 Web 應用程式](#add-credentials-to-your-web-application)
 * [新增用來存取 Web API 的權限](#add-permissions-to-access-web-apis)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始之前，請先確定您已完成以下先決條件：
 
@@ -125,7 +124,7 @@ ms.locfileid: "74963328"
 
 1. 根據您選取的平台輸入設定資訊。
 
-   | 平台                | 選擇              | 組態設定            |
+   | 平台                | Choices              | 組態設定            |
    |-------------------------|----------------------|-----------------------------------|
    | **Web 應用程式**    | **Web**              | 輸入應用程式的**重新導向 URI**。 |
    | **行動裝置應用程式** | **iOS**              | 輸入應用程式的 [套件組合識別碼]  ，您可以在 XCode 中的 Info.plist 或 [組建設定] 中找到它。 新增套件組合識別碼會自動建立應用程式的重新導向 URI。 |

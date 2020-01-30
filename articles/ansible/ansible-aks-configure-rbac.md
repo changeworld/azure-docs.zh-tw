@@ -4,12 +4,12 @@ description: 了解如何使用 Ansible 在 Azure Kubernetes Service(AKS) 叢集
 keywords: ansible, azure, devops, bash, cloudshell, 劇本, aks, 容器, aks, kubernetes, azure active directory, rbac
 ms.topic: tutorial
 ms.date: 04/30/2019
-ms.openlocfilehash: 1be123eb06bd2679169478daf27a7148d2a8b055
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 5fac42383ee56318cc4b8f39323c02d05853dbb6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74156864"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836961"
 ---
 # <a name="tutorial-configure-role-based-access-control-rbac-roles-in-azure-kubernetes-service-aks-using-ansible"></a>教學課程：使用 Ansible 在 Azure Kubernetes Service (AKS) 中設定角色型存取控制 (RBAC) 角色
 
@@ -26,7 +26,7 @@ AKS 可設定為使用 [Azure Active Directory (AD)](/azure/active-directory/) �
 > * 建立已啟用 Azure AD 的 AKS 叢集
 > * 在叢集中設定 RBAC 角色
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
@@ -123,7 +123,7 @@ AKS 可設定為使用 [Azure Active Directory (AD)](/azure/active-directory/) �
 
 1. 在頁面頂端的 [搜尋] 欄位中，輸入 `Azure Active Directory`。 
 
-1. 按一下 `Enter`。
+1. 按一下 [ `Enter`]。
 
 1. 在 [管理]  功能表中，選取 [使用者]  。
 
@@ -156,7 +156,7 @@ subjects:
   name: <your-aad-account>
 ```
 
-請將 `&lt;your-aad-account>` 預留位置取代為您的 Azure AD 租用戶[物件識別碼](#get-the-azure-ad-object-id)。
+請將 `<your-aad-account>` 預留位置取代為您的 Azure AD 租用戶[物件識別碼](#get-the-azure-ad-object-id)。
 
 將下列劇本 (此劇本將您的新角色部署至 AKS) 儲存為 `aks-kube-deploy.yml`：
 

@@ -159,8 +159,6 @@
       href: troubleshoot-deploy-vm-linux.md
     - name: Windows
       href: troubleshoot-deploy-vm-windows.md
-    - name: 重新啟動、關閉或停止服務
-      href: boot-error-troubleshoot-windows.md
 - name: 裝置名稱已變更
   href: troubleshoot-device-names-problems.md
 - name: VM 復原存取
@@ -199,6 +197,8 @@
       href: troubleshoot-critical-service-failed-boot-error.md
     - name: 重新開機迴圈
       href: troubleshoot-reboot-loop.md
+    - name: 重新啟動、關閉或停止服務
+      href: boot-error-troubleshoot-windows.md
     - name: 在執行 Windows 更新時停滯
       href: troubleshoot-stuck-updating-boot-error.md
 - name: 節流處理錯誤

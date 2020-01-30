@@ -4,8 +4,7 @@ titleSuffix: Azure Network Watcher
 description: 在本教學課程中，您將了解如何使用 Azure 網路監看員的下一個躍點功，來診斷虛擬機器網路路由問題。
 services: network-watcher
 documentationcenter: network-watcher
-author: KumudD
-manager: twooley
+author: damendo
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to diagnose virtual machine (VM) network routing problem that prevents communication to different destinations.
@@ -16,14 +15,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
 ms.date: 04/20/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: f9c7139dc9c27ed5b4f97f38e98b4663e9676288
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 52d398fa9c258528ef8f87842ba94f139bbf737b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276036"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845214"
 ---
 # <a name="tutorial-diagnose-a-virtual-machine-network-routing-problem-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站診斷虛擬機器網路路由問題
 
@@ -52,11 +51,11 @@ ms.locfileid: "74276036"
     |設定|值|
     |---|---|
     |名稱|myVm|
-    |使用者名稱| 輸入您選擇的使用者名稱。|
+    |[使用者名稱]| 輸入您選擇的使用者名稱。|
     |密碼| 輸入您選擇的密碼。 密碼長度至少必須有 12 個字元，而且符合[定義的複雜度需求](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     |訂用帳戶| 選取您的訂用帳戶。|
     |資源群組| 選取 [新建]  ，然後輸入 **myResourceGroup**。|
-    |位置| 選取 [美國東部] |
+    |Location| 選取 [美國東部] |
 
 4. 選取 VM 的大小，然後選取 [選取]  。
 5. 在 [設定]  底下，接受所有預設值，然後選取 [確定]  。
@@ -119,7 +118,7 @@ Azure 會自動建立通往預設目的地的路由。 您可以建立覆寫預�
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已建立 VM 並診斷來自 VM 的網路路由。 您已了解 Azure 會建立數個預設路由及測試通往兩個不同目的地的路由。 深入了解[Azure 中的路由](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)以及如何[建立自訂路由](../virtual-network/manage-route-table.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-route)。
+在本教學課程中，您已建立 VM 並診斷來自 VM 的網路路由。 您已了解 Azure 會建立數個預設路由，並測試通往兩個不同目的地的路由。 深入了解 [Azure 中的路由](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)以及如何[建立自訂路由](../virtual-network/manage-route-table.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-route)。
 
 針對輸出 VM 連線，您也可以使用網路監看員的[連線疑難排解](network-watcher-connectivity-portal.md)功能，來決定延遲、VM 與端點之間所允許和拒絕的網路流量，以及用於端點的路由。 了解如何使用網路監看員的連線監視功能，來監視一段時間中 VM 與端點 (例如 IP 位址或 URL) 之間的通訊情形。
 

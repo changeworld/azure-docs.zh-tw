@@ -2,18 +2,18 @@
 author: aahill
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/28/2019
+ms.date: 01/22/2020
 ms.author: aahi
-ms.openlocfilehash: 7cb3dce31592771deb5c57b9d73670465f7424fe
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: d5197cfe749ae27b9f8807ba62825c8a73371c85
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281476"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748849"
 ---
 <a name="HOLTop"></a>
 
-[參考文件](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesTextAnalytics) | [套件 (NPM)](https://www.npmjs.com/package/azure-cognitiveservices-textanalytics) | [範例](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
+[參考文件](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesTextAnalytics) | [套件 (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-textanalytics) | [範例](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -28,13 +28,13 @@ ms.locfileid: "76281476"
 
 ### <a name="create-a-new-nodejs-application"></a>建立新的 Node.js 應用程式
 
-在主控台視窗 (例如 cmd、PowerShell 或 Bash) 中，為您的應用程式建立新的目錄，並瀏覽至該目錄。 
+在主控台視窗 (例如 cmd、PowerShell 或 Bash) 中，為您的應用程式建立新的目錄，並瀏覽至該目錄。
 
 ```console
 mkdir myapp && cd myapp
 ```
 
-執行命令 `npm init`，以使用 `package.json` 檔案建立節點應用程式。 
+執行命令 `npm init`，以使用 `package.json` 檔案建立節點應用程式。
 
 ```console
 npm init
@@ -67,9 +67,9 @@ npm install @azure/cognitiveservices-textanalytics @azure/ms-rest-js
 
 文字分析用戶端是一個 [TextAnalyticsClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient) 物件，會使用您的金鑰向 Azure 進行驗證。 此用戶端提供數種用來分析文字 (以單一字串或批次的形式) 的方法。
 
-文字會以 `documents` 清單的形式傳送至 API，而此清單中列載 `id`、`text` 和 `language` 屬性的組合 (視使用的方法而定) 所屬的 `dictionary` 物件。 `text` 屬性會儲存要在原始 `language` 中分析的文字，而 `id` 可以是任何值。 
+文字會以 `documents` 清單的形式傳送至 API，而此清單中列載 `id`、`text` 和 `language` 屬性的組合 (視使用的方法而定) 所屬的 `dictionary` 物件。 `text` 屬性會儲存要在原始 `language` 中分析的文字，而 `id` 可以是任何值。
 
-回應物件是一份清單，包含每個文件的分析資訊。 
+回應物件是一份清單，包含每個文件的分析資訊。
 
 ## <a name="code-examples"></a>程式碼範例
 

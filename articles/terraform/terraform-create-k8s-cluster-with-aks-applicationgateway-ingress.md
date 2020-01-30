@@ -3,12 +3,12 @@ title: 教學課程 - 在 Azure Kubernetes Service 中建立應用程式閘道�
 description: 教學課程說明如何使用 Azure Kubernetes Service 建立 Kubernetes 叢集並以應用程式閘道作為輸入控制器
 ms.topic: tutorial
 ms.date: 11/13/2019
-ms.openlocfilehash: 898a2052f31965ee45ab2cc5df6956af4831b0d2
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: da9768c8b2ad854b116ef1b9eab801661f547bfa
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867408"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772862"
 ---
 # <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>教學課程：在 Azure Kubernetes Service 中建立應用程式閘道輸入控制器
 
@@ -51,7 +51,7 @@ ms.locfileid: "75867408"
     cd clouddrive
     ```
 
-1. 建立名為 `terraform-aks-k8s` 的目錄。
+1. 建立名為 `terraform-aks-appgw-ingress` 的目錄。
 
     ```bash
     mkdir terraform-aks-appgw-ingress
@@ -731,8 +731,8 @@ kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/maste
     - `armAuth.secretJSON`:只有在選擇服務主體秘密類型 (當 `armAuth.type` 已設定為 `servicePrincipal`) 時才需要。
 
     重要注意事項：
-    - `identityResourceID` 值是在 terraform 指令碼中建立的，而且可以透過執行 `echo "$(terraform output identity_client_id)"` 找到。
-    - `identityClientID` 值是在 terraform 指令碼中建立的，而且可以透過執行 `echo "$(terraform output identity_resource_id)"` 找到。
+    - `identityResourceID` 值是在 terraform 指令碼中建立的，而且可以透過執行 `echo "$(terraform output identity_resource_id)"` 找到。
+    - `identityClientID` 值是在 terraform 指令碼中建立的，而且可以透過執行 `echo "$(terraform output identity_client_id)"` 找到。
     - `<resource-group>` 值是應用程式閘道的資源群組。
     - `<identity-name>` 值是所建立身分識別的名稱。
     - 指定訂用帳戶的所有身分識別都可以使用 `az identity list` 列出。

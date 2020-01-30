@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7ccc4aaed8e5827fbc06b252c8c88b814d9a31fb
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: c2a15393c5c8e685e9a565f1099eeee935c0d5da
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133995"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845835"
 ---
 # <a name="use-logic-apps-to-receive-email-about-status-changes-of-key-vault-secrets"></a>使用 Logic Apps 接收有關金鑰保存庫祕密狀態變更的電子郵件
 
@@ -22,7 +22,7 @@ ms.locfileid: "74133995"
 
 如需 Azure Key Vault/Azure 事件方格整合的概觀，請參閱[使用 Azure 事件方格監視 Key Vault (預覽)](event-grid-overview.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - Azure Logic Apps 支援的任何電子郵件提供者 (例如 Office 365 Outlook) 所提供的電子郵件帳戶。 這個電子郵件帳戶用來傳送事件通知。 如需支援的完整邏輯應用程式連接器清單，請參閱[連接器概觀](/connectors)
 - Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
@@ -34,7 +34,6 @@ ms.locfileid: "74133995"
 
 若要建立 Azure 事件方格訂用帳戶，請遵循下列步驟：
 
-1. 使用下列連結來開啟 Azure 入口網站： https://portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true 
 1. 在 Azure 入口網站中，移至您的金鑰保存庫，選取 [事件] > [開始使用]  然後按一下 [Logic Apps]  。
 
     
@@ -87,7 +86,7 @@ ms.locfileid: "74133995"
 ## <a name="next-steps"></a>後續步驟
 
 - 概觀：[使用 Azure 事件方格監視 Key Vault (預覽)](event-grid-overview.md)
-- 作法：[將金鑰保存庫通知路由傳送至 Azure 自動化](event-grid-tutorial.md)。
+- 如何：[將金鑰保存庫通知路由傳送至 Azure 自動化](event-grid-tutorial.md)。
 - [Azure Key Vault 的 Azure 事件方格事件結構描述 (預覽)](../event-grid/event-schema-key-vault.md)
 - 深入了解 [Azure Event Grid](../event-grid/index.yml)。
 - 深入了解 [Azure App Service 的 Logic Apps 功能](../logic-apps/index.yml)。

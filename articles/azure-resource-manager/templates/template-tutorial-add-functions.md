@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b32b0377502697e32e56e5c8324ca287c9a3cf69
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1db391f42aeb4fdf80baf001150f845daef3bf4f
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75471803"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773214"
 ---
 # <a name="tutorial-add-template-functions-to-your-resource-manager-template"></a>教學課程：將範本函式新增至 Resource Manager 範本
 
@@ -26,7 +26,7 @@ ms.locfileid: "75471803"
 
 在上一個教學課程結束時，您的範本會具有下列 JSON：
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json":::
 
 儲存體帳戶的位置已硬式編碼為**美國東部**。 不過，您可能需要將儲存體帳戶部署到其他區域。 您會再次遇到範本缺乏彈性的問題。 您可以新增 location 的參數，但如果其預設值比硬式編碼的值更合理，那就太好了。
 
@@ -40,7 +40,7 @@ ms.locfileid: "75471803"
 
 複製整個檔案，並以其內容取代您的範本。
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.json?range=1-44&highlight=24-27,34)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.json" range="1-44" highlight="24-27,34":::
 
 ## <a name="deploy-template"></a>部署範本
 

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f005266b6e2e12a13f79b3f2007b1bbbafb4acef
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 1b5ebbcd3a891149a72b3dbe8cb19b3c8de528a1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311553"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773757"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>快速入門：使用 Azure CLI 從 Azure Key Vault 設定及擷取祕密
 
@@ -73,7 +73,7 @@ az keyvault create --name "Contoso-Vault2" --resource-group "ContosoResourceGrou
 az keyvault secret set --vault-name "Contoso-Vault2" --name "ExamplePassword" --value "hVFkk965BuUv"
 ```
 
-透過使用其 URI，您現在可以參照您新增至 Azure Key Vault 的密碼。 使用 **https://ContosoVault.vault.azure.net/secrets/ExamplePassword** 來取得最新版本。 
+透過使用其 URI，您現在可以參照您新增至 Azure Key Vault 的密碼。 使用 **https://Contoso-Vault2.vault.azure.net/secrets/ExamplePassword** 來取得最新版本。 
 
 若要以純文字檢視包含在祕密中的值：
 

@@ -9,12 +9,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 11/21/2019
-ms.openlocfilehash: e1ee616adadcabb2deb3fa08a5f3d4f768fddfd5
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: fa6e393500e9deeb91ee84aa5255320003817f08
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045643"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719886"
 ---
 # <a name="tutorial-configure-transactional-replication-between-two-managed-instances-and-sql-server"></a>教學課程：設定兩個受控執行個體與 SQL Server 之間的異動複寫
 
@@ -385,7 +385,7 @@ INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')
 
 使用**新增訂閱**精靈來新增訂閱時，您可能會發現 [發行集]  頁面上沒有任何資料庫和發行集列為可用的選項，且您可能會看到下列錯誤訊息：
 
-`There are no publications to which yuo can subscribe, either because this server has no publications or because you do not have sufficient privileges to access the publications.`
+`There are no publications to which you can subscribe, either because this server has no publications or because you do not have sufficient privileges to access the publications.`
  
 雖然此錯誤訊息可能是正確的，且您連線到的發行者上實際上並沒有可用的發行集，或是您缺少足夠的權限，但這項錯誤也可能是舊版的 SQL Server Management Studio 所造成的。 請嘗試升級至 SQL Server Management Studio 18.0 或更新版本，將此問題從根本原因中排除。 
 

@@ -7,25 +7,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 01/22/2020
 ms.author: pafarley
-ms.openlocfilehash: 95b15924db7e5b1b788656d7592bb4ad87e07ce2
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 530665168cc1ed21f1664e3012bbf37e52d96fbf
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76166755"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716175"
 ---
 # <a name="quickstart-computer-vision-client-library-for-nodejs"></a>快速入門：適用於 Node.js 的電腦視覺用戶端程式庫
 
-開始使用適用於 Node.js 的電腦視覺用戶端程式庫。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。 
+開始使用適用於 Node.js 的電腦視覺用戶端程式庫。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。
 
 使用適用於 Node.js 的電腦視覺用戶端程式庫可執行下列作業：
 
 * [分析影像](#analyze-an-image)
 * [讀取印刷和手寫文字](#read-printed-and-handwritten-text)
 
-[參考文件](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-computervision) | [套件 (npm)](https://www.npmjs.com/package/azure-cognitiveservices-computervision) | [範例](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
+[參考文件](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-computervision) | [套件 (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-computervision) | [範例](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -38,20 +38,20 @@ ms.locfileid: "76166755"
 
 Azure 認知服務會由您訂閱的 Azure 資源呈現。 請使用 [Azure 入口網站](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) 在本機電腦上建立電腦視覺的資源。 您也可以：
 
-* 取得可免費使用 7 天的[試用版金鑰](https://azure.microsoft.com/try/cognitive-services/#decision)。 註冊之後，即可在 [Azure 網站](https://azure.microsoft.com/try/cognitive-services/my-apis/)上取得該金鑰。  
+* 取得可免費使用 7 天的[試用版金鑰](https://azure.microsoft.com/try/cognitive-services/#decision)。 註冊之後，即可在 [Azure 網站](https://azure.microsoft.com/try/cognitive-services/my-apis/)上取得該金鑰。
 * 在 [Azure 入口網站](https://portal.azure.com/)上檢視您的資源。
 
 從試用版訂用帳戶或資源取得金鑰後，請為名稱分別是 `COMPUTER_VISION_SUBSCRIPTION_KEY` 和 `COMPUTER_VISION_ENDPOINT` 的金鑰及端點 URL [建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。
- 
+
 ### <a name="create-a-new-nodejs-application"></a>建立新的 Node.js 應用程式
 
-在主控台視窗 (例如 cmd、PowerShell 或 Bash) 中，為您的應用程式建立新的目錄，並瀏覽至該目錄。 
+在主控台視窗 (例如 cmd、PowerShell 或 Bash) 中，為您的應用程式建立新的目錄，並瀏覽至該目錄。
 
 ```console
 mkdir myapp && cd myapp
 ```
 
-執行命令 `npm init`，以使用 `package.json` 檔案建立節點應用程式。 
+執行命令 `npm init`，以使用 `package.json` 檔案建立節點應用程式。
 
 ```console
 npm init
@@ -59,7 +59,7 @@ npm init
 
 ### <a name="install-the-client-library"></a>安裝用戶端程式庫
 
-安裝 `ms-rest-azure` 和 `azure-cognitiveservices-computervision` NPM 套件：
+安裝 `ms-rest-azure` 和 `@azure/cognitiveservices-computervision` NPM 套件：
 
 ```console
 npm install @azure/cognitiveservices-computervision
@@ -177,11 +177,11 @@ npm install @azure/cognitiveservices-computervision
 
 定義要使用的影像 URL：
 
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_adult_image)] 
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_adult_image)]
 
 然後新增下列程式碼來偵測成人內容，並將結果輸出到主控台。
 
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_adult)] 
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_adult)]
 
 ### <a name="get-image-color-scheme"></a>取得影像色彩配置
 
@@ -195,7 +195,7 @@ npm install @azure/cognitiveservices-computervision
 
 ### <a name="get-domain-specific-content"></a>取得特定領域內容
 
-電腦視覺可以使用特製化模型來對影像執行進一步的分析。 如需詳細資訊，請參閱[特定領域內容](../concept-detecting-domain-content.md)。 
+電腦視覺可以使用特製化模型來對影像執行進一步的分析。 如需詳細資訊，請參閱[特定領域內容](../concept-detecting-domain-content.md)。
 
 首先，定義要分析的影像 URL：
 

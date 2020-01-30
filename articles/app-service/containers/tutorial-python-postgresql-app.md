@@ -3,17 +3,17 @@ title: 教學課程：使用 Postgre 的 Linux Python 應用程式
 description: 了解如何藉由連線至 Azure 中的 PostgreSQL 資料庫，讓 Linux Python 應用程式在 Azure App Service 中運作。 本教學課程中使用 Django。
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 12/14/2019
+ms.date: 01/23/2020
 ms.custom:
 - mvc
 - seodec18
 - seo-python-october2019
-ms.openlocfilehash: e0880cd1c16a8a0080551bbeaefe04f2f8dd705b
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: 3aa5b5085a6120ca513f0aeba344e7f541f0fd72
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75681007"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76713421"
 ---
 # <a name="tutorial-run-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>教學課程：在 Azure App Service 中透過 PostgreSQL 執行 Python (Django) Web 應用程式
 
@@ -47,6 +47,11 @@ ms.locfileid: "75681007"
 在本機終端機視窗中，以內建 `postgres` 使用者身分執行 `psql`，以連線至本機 PostgreSQL 伺服器。
 
 ```bash
+sudo su - postgres
+psql
+```
+或
+```PowerShell
 psql -U postgres
 ```
 
@@ -166,7 +171,7 @@ Quit the server with CONTROL-C.
 將 *\<resourcegroup-name>* 和 *\<region>* 取代為您要使用之資源群組的名稱和區域。 針對 *\<admin-username>* 和 *\<admin-password>* ，請建立資料庫管理員帳戶的使用者認證。 請記下 *\<admin-username>* 和 *\<admin-password>* ，以便稍後用來登入 PostgreSQL 伺服器和資料庫。
 
 ```azurecli-interactive
-az postgres server create --resource-group <resourcegroup-name> --name <postgresql-name> --location "<region>" --admin-user <admin-username> --admin-password <admin-password> --sku-name B_Gen4_1
+az postgres server create --resource-group <resourcegroup-name> --name <postgresql-name> --location "<region>" --admin-user <admin-username> --admin-password <admin-password> --sku-name B_Gen5_1
 ```
 
 建立適用於 PostgreSQL 的 Azure 資料庫伺服器後，Azure CLI 會傳回類似於下列範例的 JSON 程式碼：
@@ -174,15 +179,19 @@ az postgres server create --resource-group <resourcegroup-name> --name <postgres
 ```json
 {
   "administratorLogin": "myusername",
+  "earliestRestoreDate": "2020-01-22T19:02:15.727000+00:00",
   "fullyQualifiedDomainName": "myservername.postgres.database.azure.com",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.DBforPostgreSQL/servers/myservername",
-  "location": "westus",
+  "location": "westeurope",
+  "masterServerId": "",
   "name": "myservername",
+  "replicaCapacity": 5,
+  "replicationRole": "None",
   "resourceGroup": "myresourcegroup",
   "sku": {
     "capacity": 1,
-    "family": "Gen4",
-    "name": "B_Gen4_1",
+    "family": "Gen5",
+    "name": "B_Gen5_1",
     "size": null,
     "tier": "Basic"
   },
@@ -276,6 +285,8 @@ python manage.py runserver
 
 再次移至 *http:\//localhost:8000*，然後查看顯示的投票問題。 您的應用程式此時會將資料寫入至「適用於 PostgreSQL 的 Azure 資料庫」資料庫。
 
+如需停止 Django 伺服器，請在終端機上輸入 Ctrl+C。
+
 ## <a name="deploy-the-web-app-to-azure-app-service"></a>將 Web 應用程式部署至 Azure App Service
 
 在此步驟中，您會將與「適用於 PostgreSQL 的 Azure 資料庫」資料庫連線的 Python 應用程式部署至 Azure App Service。
@@ -353,25 +364,29 @@ az webapp config appsettings set --name <app-name> --resource-group <resourcegro
 [!INCLUDE [app-service-plan-no-h](../../../includes/app-service-web-git-push-to-azure-no-h.md)]
 
 ```bash 
-Counting objects: 7, done.
+Counting objects: 60, done.
 Delta compression using up to 8 threads.
-Compressing objects: 100% (7/7), done.
-Writing objects: 100% (7/7), 775 bytes | 0 bytes/s, done.
-Total 7 (delta 4), reused 0 (delta 0)
+Compressing objects: 100% (51/51), done.
+Writing objects: 100% (60/60), 15.37 KiB | 749.00 KiB/s, done.
+Total 60 (delta 9), reused 0 (delta 0)
+remote: Deploy Async
 remote: Updating branch 'master'.
 remote: Updating submodules.
-remote: Preparing deployment for commit id '6520eeafcc'.
-remote: Generating deployment script.
-remote: Running deployment command...
-remote: Python deployment.
-remote: Kudu sync from: '/home/site/repository' to: '/home/site/wwwroot'
+remote: Preparing deployment for commit id '06f3f7c0cb'.
+remote: Repository path is /home/site/repository
+remote: Running oryx build...
+remote: Build orchestrated by Microsoft Oryx, https://github.com/Microsoft/Oryx
+remote: You can report issues at https://github.com/Microsoft/Oryx/issues
 . 
 . 
 . 
+remote: Done in 100 sec(s).
+remote: Running post deployment command(s)...
+remote: Triggering recycle (preview mode disabled).
 remote: Deployment successful.
-remote: App container will begin restart within 10 seconds.
+remote: Deployment Logs : 'https://<app-name>.scm.azurewebsites.net/newui/jsonviewer?view_url=/api/deployments/06f3f7c0cb52ce3b4aff85c2b5099fbacb65ab94/log'
 To https://<app-name>.scm.azurewebsites.net/<app-name>.git 
-   06b6df4..6520eea  master -> master
+ * [new branch]      master -> master
 ```  
 
 App Service 部署伺服器會在存放庫的根目錄看到 requirements.txt  ，並在 `git push` 之後自動執行 Python 套件管理。

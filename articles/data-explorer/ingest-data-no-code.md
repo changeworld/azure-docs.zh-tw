@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: tutorial
-ms.date: 11/17/2019
-ms.openlocfilehash: 2574f27b4b86bab276a56f95fda9fa2a1434c095
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.date: 01/29/2020
+ms.openlocfilehash: c160f04ef7120a6c90991d8e6ecdf98b2f0d348e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74995927"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836554"
 ---
 # <a name="tutorial-ingest-and-query-monitoring-data-in-azure-data-explorer"></a>教學課程：在 Azure 資料總管中擷取和查詢監視資料 
 
@@ -30,7 +30,7 @@ ms.locfileid: "74995927"
 > [!NOTE]
 > 在相同的 Azure 位置或區域中建立所有資源。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/)。
 * [Azure 資料總管叢集和資料庫](create-cluster-database-portal.md)。 在本教學課程中，資料庫名稱為 *TestDatabase*。
@@ -330,7 +330,7 @@ Azure 監視器記錄的結構不是表格式的。 您將操作資料，並將�
 2. 將[更新原則](/azure/kusto/concepts/updatepolicy)新增至目標資料表。 此原則會對 *DiagnosticRawRecords* 中繼資料資料表中任何新擷取的資料自動執行查詢，並將其結果擷取至 *DiagnosticMetrics* 資料表：
 
     ```kusto
-    .alter table DiagnosticMetrics policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticMetricsExpand()", "IsEnabled": "True"}]'
+    .alter table DiagnosticMetrics policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticMetricsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
     ```
 
 # <a name="diagnostic-logstabdiagnostic-logs"></a>[診斷記錄](#tab/diagnostic-logs)
@@ -344,7 +344,7 @@ Azure 監視器記錄的結構不是表格式的。 您將操作資料，並將�
         | mv-expand events = Records
         | where isnotempty(events.operationName)
         | project
-            Timestamp = todatetime(events.time),
+            Timestamp = todatetime(events['time']),
             ResourceId = tostring(events.resourceId),
             OperationName = tostring(events.operationName),
             Result = tostring(events.resultType),
@@ -363,7 +363,7 @@ Azure 監視器記錄的結構不是表格式的。 您將操作資料，並將�
 2. 將[更新原則](/azure/kusto/concepts/updatepolicy)新增至目標資料表。 此原則會對 *DiagnosticRawRecords* 中繼資料資料表中任何新擷取的資料自動執行查詢，並將其結果擷取至 *DiagnosticLogs* 資料表：
 
     ```kusto
-    .alter table DiagnosticLogs policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticLogsExpand()", "IsEnabled": "True"}]'
+    .alter table DiagnosticLogs policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticLogsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
     ```
 
 # <a name="activity-logstabactivity-logs"></a>[活動記錄](#tab/activity-logs)
@@ -376,7 +376,7 @@ Azure 監視器記錄的結構不是表格式的。 您將操作資料，並將�
         ActivityLogsRawRecords
         | mv-expand events = Records
         | project
-            Timestamp = todatetime(events.time),
+            Timestamp = todatetime(events['time']),
             ResourceId = tostring(events.resourceId),
             OperationName = tostring(events.operationName),
             Category = tostring(events.category),
@@ -393,7 +393,7 @@ Azure 監視器記錄的結構不是表格式的。 您將操作資料，並將�
 2. 將[更新原則](/azure/kusto/concepts/updatepolicy)新增至目標資料表。 此原則會對 *ActivityLogsRawRecords* 中繼資料資料表中任何新擷取的資料自動執行查詢，並將其結果擷取至 *ActivityLogs* 資料表中：
 
     ```kusto
-    .alter table ActivityLogs policy update @'[{"Source": "ActivityLogsRawRecords", "Query": "ActivityLogRecordsExpand()", "IsEnabled": "True"}]'
+    .alter table ActivityLogs policy update @'[{"Source": "ActivityLogsRawRecords", "Query": "ActivityLogRecordsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
     ```
 ---
 
@@ -521,7 +521,7 @@ Azure 診斷設定能夠將計量和記錄匯出至儲存體帳戶或事件中�
 
      **設定** | **建議的值** | **欄位描述**
     |---|---|---|
-    | **資料表** | *DiagnosticRawRecords* | 您在 *TestDatabase* 資料庫中建立的資料表。 |
+    | **Table** | *DiagnosticRawRecords* | 您在 *TestDatabase* 資料庫中建立的資料表。 |
     | **資料格式** | *JSON* | 在資料表中使用的格式。 |
     | **資料行對應** | *DiagnosticRawRecordsMapping* | 您在 *TestDatabase* 資料庫中建立的對應，會將傳入的 JSON 資料對應至 *DiagnosticRawRecords* 資料表的資料行名稱與資料類型。|
     | | |
@@ -548,7 +548,7 @@ Azure 診斷設定能夠將計量和記錄匯出至儲存體帳戶或事件中�
 
      **設定** | **建議的值** | **欄位描述**
     |---|---|---|
-    | **資料表** | *ActivityLogsRawRecords* | 您在 *TestDatabase* 資料庫中建立的資料表。 |
+    | **Table** | *ActivityLogsRawRecords* | 您在 *TestDatabase* 資料庫中建立的資料表。 |
     | **資料格式** | *JSON* | 在資料表中使用的格式。 |
     | **資料行對應** | *ActivityLogsRawRecordsMapping* | 您在 *TestDatabase* 資料庫中建立的對應，會將傳入的 JSON 資料對應至 *ActivityLogsRawRecords* 資料表的資料行名稱與資料類型。|
     | | |

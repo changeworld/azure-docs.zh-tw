@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: dfe2d5925e19697a2e3ed4491958da1325df5574
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 72086f1df2b497a722b2752b56a32e6c269fe32d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75467551"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768141"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -185,7 +185,7 @@ namespace helloworld
 
 現在您已準備好使用語音服務來建立應用程式，並測試我們的語音合成。
 
-1. **編譯器代碼** - 從 Visual Studio 的功能表列中，選擇 [建置]   > [建置解決方案]  。
+1. **編譯程式碼** - 從 Visual Studio 的功能表列中，選擇 [建置]   > [建置解決方案]  。
 2. **啟動應用程式** - 從功能表列中，選擇 [偵錯]   > [開始偵錯]  ，或按 **F5**。
 3. **開始合成** - 您的文字會轉換成語音，並儲存在指定的音訊資料中。
 

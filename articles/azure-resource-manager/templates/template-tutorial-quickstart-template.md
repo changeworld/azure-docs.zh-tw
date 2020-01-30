@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 99eb1581c03732691af5eaf9f482ca4ba0605863
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0feb0a1a682328f1e23a7d800eb4f5653a6acdd1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75471133"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765410"
 ---
 # <a name="tutorial-use-azure-quickstart-templates"></a>教學課程：使用 Azure 快速入門範本
 
@@ -26,7 +26,7 @@ ms.locfileid: "75471133"
 
 在上一個教學課程結束時，您的範本會具有下列 JSON：
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/export-template/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/export-template/azuredeploy.json":::
 
 此範本適用於部署儲存體帳戶和 App Service 方案，但您可能想要在其中新增網站。 您可以使用預先建置的範本，快速探索部署資源所需的 JSON。
 
@@ -45,7 +45,7 @@ ms.locfileid: "75471133"
 
 將快速入門範本與現有範本合併：
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/quickstart-template/azuredeploy.json?range=1-108&highlight=32-45,49,85-100)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/quickstart-template/azuredeploy.json" range="1-108" highlight="32-45,49,85-100":::
 
 Web 應用程式名稱在 Azure 上必須是唯一的。 為避免名稱重複，已將 **webAppPortalName** 變數從 **"webAppPortalName": "[concat(parameters('webAppName'), '-webapp')]"** 更新為 **"webAppPortalName": "[concat(parameters('webAppName'), uniqueString(resourceGroup().id))]"** 。
 

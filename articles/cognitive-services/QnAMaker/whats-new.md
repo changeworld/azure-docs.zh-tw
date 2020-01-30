@@ -10,18 +10,18 @@ ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 11/08/2019
 ms.author: diberry
-ms.openlocfilehash: 94c2f86b6d0a592e53c2ab1f9833bdb045f81583
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 2d7615d810e96beb61c3fe0b182a88158dc77c07
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325880"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844831"
 ---
 # <a name="whats-new-in-qna-maker"></a>QnA Maker 的新功能
 
-了解該服務的新功能。 這些項目可能是版本資訊、影片、部落格文章與其他類型的資訊。 將此頁面加入書簽，以掌握服務的最新狀態。  
+了解該服務的新功能。 這些項目可能是版本資訊、影片、部落格文章與其他類型的資訊。 將此頁面加入書簽，以掌握服務的最新狀態。
 
-## <a name="release-notes"></a>版本資訊 
+## <a name="release-notes"></a>版本資訊
 
 了解 QnA Maker 的新功能。
 
@@ -33,15 +33,15 @@ ms.locfileid: "74325880"
 
 ### <a name="october-2019"></a>2019 年 10 月
 
-* 針對 QnA Maker 服務中的所有知識庫[明確設定語言](./how-to/language-knowledge-base.md#select-language-when-creating-first-knowledge-base)。 
+* 針對 QnA Maker 服務中的所有知識庫[明確設定語言](./how-to/language-knowledge-base.md#select-language-when-creating-first-knowledge-base)。
 
 ### <a name="september-2019"></a>2019 年 9 月
 
-* 使用 [XLS 檔案格式](concepts/data-sources-supported.md)匯入及匯出 
+* 使用 [XLS 檔案格式](concepts/content-types.md)匯入及匯出
 
 ### <a name="june-2019"></a>2019 年 6 月
 
-* 已改善法文、義大利文、德文、西班牙文、葡萄牙文的[順位排定程式模型](concepts/knowledge-base.md#ranker-process)
+* 已改善法文、義大利文、德文、西班牙文、葡萄牙文的[順位排定程式模型](concepts/query-knowledge-base.md#ranker-process)
 
 ### <a name="april-2019"></a>2019 年 4 月
 
@@ -51,7 +51,7 @@ ms.locfileid: "74325880"
 ### <a name="march-2019"></a>2019 年 3 月
 
 * [主動式學習](how-to/improve-knowledge-base.md)以真實使用者問題為基礎提供新問題替代項的建議
-* 改善的英文版自然語言處理 (NLP) [順位排定程式](concepts/knowledge-base.md#ranker-process)模型 
+* 改善的英文版自然語言處理 (NLP) [順位排定程式](concepts/query-knowledge-base.md#ranker-process)模型
 
 > [!div class="nextstepaction"]
 > [建立 QnA Maker 服務](how-to/set-up-qnamaker-service-azure.md)

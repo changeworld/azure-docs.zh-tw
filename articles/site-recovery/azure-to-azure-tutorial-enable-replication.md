@@ -2,14 +2,15 @@
 title: 使用 Azure Site Recovery 設定 Azure VM 災害復原
 description: 了解如何使用 Azure Site Recovery 服務，設定 Azure VM 到不同 Azure 區域的災害復原。
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 1/24/2020
+ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7d78064285057f6abd91c3ca95e01ec86f1a1a39
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 979b390f65363b43f33ce2f09d26844c3cc1a2e8
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169342"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759784"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>設定適用於 Azure VM 的災害復原
 
@@ -75,17 +76,6 @@ ms.locfileid: "76169342"
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>IP 位址範圍的輸出連線能力
 
 如果您使用網路安全性群組 (NSG)，請針對 Azure 儲存體、Azure Active Directory、Site Recovery 服務和 Site Recovery 監視的存取權建立以服務標籤為基礎的 NSG 規則。 [深入了解](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)。
-
-> [!NOTE]
-> 建議您一律針對輸出存取權使用服務標籤來設定 NSG 規則。
-
-若要使用 IP 位址來控制輸出連線能力，請在 IP 式防火牆、Proxy 或 NSG 規則上允許這些位址：
-
-- [Microsoft Azure 資料中心 IP 範圍](https://www.microsoft.com/download/details.aspx?id=41653)
-- [德國 Windows Azure 資料中心 IP 範圍](https://www.microsoft.com/download/details.aspx?id=54770)
-- [中國 Windows Azure 資料中心 IP 範圍](https://www.microsoft.com/download/details.aspx?id=42064)
-- [Office 365 URL 與 IP 位址範圍](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity)
-- [Site Recovery 服務端點 IP 位址](https://aka.ms/site-recovery-public-ips)
 
 ## <a name="verify-azure-vm-certificates"></a>驗證 Azure VM 憑證
 

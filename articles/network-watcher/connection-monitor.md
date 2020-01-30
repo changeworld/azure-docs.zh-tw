@@ -3,8 +3,7 @@ title: 教學課程 - 使用 Azure 入口網站監視網路通訊
 description: 在本教學課程中，了解如何使用 Azure 網路監看員的連線監視功能，監視兩部虛擬機器之間的網路通訊。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
+author: damendo
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to monitor communication between a VM and another VM. If the communication fails, I need to know why, so that I can resolve the problem.
@@ -14,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 9d01060a966d55d26d7fc308ee352fb79cc73363
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: acdaf2318c3082db876ed9c69b704d3d00cd4c90
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419704"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834649"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站監視兩部虛擬機器之間的網路通訊
 
@@ -52,11 +51,11 @@ ms.locfileid: "74419704"
     |設定|值|
     |---|---|
     |名稱|myVm1|
-    |使用者名稱| 輸入您選擇的使用者名稱。|
+    |[使用者名稱]| 輸入您選擇的使用者名稱。|
     |密碼| 輸入您選擇的密碼。 密碼長度至少必須有 12 個字元，而且符合[定義的複雜度需求](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     |訂用帳戶| 選取您的訂用帳戶。|
     |資源群組| 選取 [新建]  ，然後輸入 **myResourceGroup**。|
-    |位置| 選取 [美國東部] |
+    |Location| 選取 [美國東部] |
 
 4. 選取 VM 的大小，然後選取 [選取]  。
 5. 在 [設定]  底下，選取 [延伸模組]  。 選取 [新增擴充功能]  ，然後選取 [適用於 Windows 的網路監看員代理程式]  ，如下圖所示：
@@ -77,7 +76,7 @@ ms.locfileid: "74419704"
 | 3 | 名稱                                  | myVm2                                                                   |
 | 3 | 驗證類型                   | 貼上您的 SSH 公開金鑰，或選取 [密碼]  ，然後輸入密碼。 |
 | 3 | 資源群組                        | 選取 [使用現有項目]  ，然後選取 [myResourceGroup]  。                 |
-| 6 | 擴充功能                            | **適用於 Linux 的網路監看員代理程式**                                             |
+| 6 | 延伸模組                            | **適用於 Linux 的網路監看員代理程式**                                             |
 
 部署 VM 需要幾分鐘的時間。 等候虛擬機器完成部署，再繼續進行其餘步驟。
 
@@ -96,10 +95,10 @@ ms.locfileid: "74419704"
     | 名稱                     | myVm1-myVm2(22)     |
     | 來源                   |                     |
     | 虛擬機器          | myVm1               |
-    | 目的地              |                     |
+    | Destination              |                     |
     | 選取虛擬機器 |                     |
     | 虛擬機器          | myVm2               |
-    | Port                     | 22                  |
+    | 連接埠                     | 22                  |
 
     ![新增連線監視器](./media/connection-monitor/add-connection-monitor.png)
 

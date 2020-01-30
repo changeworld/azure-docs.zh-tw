@@ -10,12 +10,12 @@ ms.subservice: integration
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 82d366b3f807e21e3531da00da78520fed90bc66
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: fc1fdddc7a157828fcc4770c4e8237af9a45fdc3
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73645250"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720022"
 ---
 # <a name="source-control-integration-for-azure-sql-data-warehouse"></a>Azure SQL 資料倉儲的原始檔控制整合
 
@@ -37,7 +37,7 @@ ms.locfileid: "73645250"
 
    ![管理連線](media/sql-data-warehouse-source-control-integration/2-manage-connections.png "管理連線")
 
-   ![連線](media/sql-data-warehouse-source-control-integration/3-connect.png "連線")
+   ![[連接]](media/sql-data-warehouse-source-control-integration/3-connect.png "連線")
 
 3. 將您的 Azure Repo 存放庫從您的專案複製到本機電腦
 
@@ -55,7 +55,7 @@ ms.locfileid: "73645250"
 
 3. 在 Visual Studio 的 Team Explorer 中，將您的所有變更認可至本機 Git 存放庫 
 
-   ![認可](media/sql-data-warehouse-source-control-integration/6.5-commit-push-changes.png "認可")  
+   ![認可](media/sql-data-warehouse-source-control-integration/6.5-commit-push-changes.png "Commit")  
 
 4. 現在您已在複製的存放庫中將變更認可到本機，接著請同步您的變更並將變更推送至 Azure DevOps 專案中的 Azure Repo 存放庫。
 
@@ -82,13 +82,3 @@ ms.locfileid: "73645250"
 ## <a name="next-steps"></a>後續步驟
 
 - [Azure SQL 資料倉儲的開發](sql-data-warehouse-overview-develop.md)
-
-<!--Image references-->
-
-<!--Article references-->
-
-
-<!--MSDN references-->
-
-<!--Other Web references-->
-
