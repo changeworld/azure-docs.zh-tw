@@ -13,26 +13,25 @@
 - name: 快速入門
   expanded: true
   items:
-    - name: '建立函式 - C#'
-      href: functions-create-your-first-function-visual-studio.md
-    - name: 建立函式 - Java
-      href: functions-create-first-java-maven.md
-    - name: 建立函式 - JavaScript
-      href: functions-create-first-function-vs-code.md
-    - name: 建立函式 - PowerShell
-      href: functions-create-first-function-powershell.md
-    - name: 建立函式 - Python
-      href: functions-create-first-function-python.md
-    - name: 連線到伺服器
+    - name: 建立函式
+      expanded: true
       items:
-        - name: '儲存體 - C#'
-          href: functions-add-output-binding-storage-queue-vs.md
-        - name: 儲存體 - Java
-          href: functions-add-output-binding-storage-queue-java.md
-        - name: 儲存體 - JavaScript
+        - name: Visual Studio Code
+          href: /azure/azure-functions/functions-create-first-function-vs-code
+        - name: Visual Studio
+          href: functions-create-your-first-function-visual-studio.md
+        - name: 命令列
+          href: functions-create-first-azure-function-azure-cli.md
+        - name: Maven (Java)
+          href: functions-create-first-java-maven.md
+    - name: 連線至儲存體
+      items:
+        - name: Visual Studio Code
           href: functions-add-output-binding-storage-queue-vs-code.md
-        - name: 儲存體 - Python
-          href: functions-add-output-binding-storage-queue-python.md
+        - name: Visual Studio
+          href: functions-add-output-binding-storage-queue-vs.md
+        - name: Maven (Java)
+          href: functions-add-output-binding-storage-queue-java.md
 - name: 教學課程
   items:
     - name: 搭配使用 Functions 與 Logic Apps
@@ -137,7 +136,7 @@
       href: functions-networking-options.md
     - name: IP 位址
       href: ip-addresses.md
-- name: 使用說明指南
+- name: 操作指南
   items:
     - name: 開發
       items:
@@ -160,7 +159,7 @@
                 - name: Azure 入口網站
                   href: functions-create-first-azure-function.md
                 - name: 命令列
-                  href: functions-create-first-azure-function-azure-cli.md
+                  href: create-cli.md
                 - name: Visual Studio
                   href: create-visual-studio.md
                 - name: Visual Studio Code
@@ -205,7 +204,7 @@
               href: functions-debug-event-grid-trigger-local.md
         - name: 相依性插入
           href: functions-dotnet-dependency-injection.md
-        - name: 管理連線
+        - name: 管理連接
           href: manage-connections.md
           displayName: best practice
         - name: 錯誤處理
@@ -378,7 +377,7 @@
       href: /learn/browse/?products=azure-functions
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/functions/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'

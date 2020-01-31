@@ -24,6 +24,8 @@
   items:
     - name: Event Grid 概念
       href: concepts.md
+    - name: 事件處理常式和目的地
+      href: event-handlers.md
     - name: 安全性和驗證
       href: security-authentication.md
     - name: 事件結構描述
@@ -34,7 +36,7 @@
       href: delivery-output-batching.md
     - name: 進階篩選
       href: advanced-filtering.md
-- name: 使用說明指南
+- name: 操作指南
   items:
     - name: 保存狀態
       items:
@@ -42,6 +44,8 @@
           href: persist-state-linux.md
         - name: Windows
           href: persist-state-windows.md
+    - name: 監視主題和訂用帳戶
+      href: monitor-topics-subscriptions.md
     - name: 設定 API 通訊協定
       href: configure-api-protocol.md
     - name: 設定用戶端驗證
@@ -60,3 +64,5 @@
       href: configure-event-grid.md
     - name: 模組對應項組態結構描述
       href: twin-json.md
+    - name: 版本資訊
+      href: release-notes.md

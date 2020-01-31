@@ -44,6 +44,8 @@
           href: class-type-database-management.md
         - name: Python 和 Jupyter Notebook
           href: class-type-jupyter-notebook.md
+        - name: 使用 Android Studio 進行行動應用程式開發
+          href: class-type-mobile-dev-android-studio.md
     - name: 建立及設定實驗室帳戶 (實驗室帳戶擁有者)
       items:
         - name: 建立及管理實驗室帳戶
@@ -100,7 +102,7 @@
   items:
     - name: Azure 更新
       href: 'https://azure.microsoft.com/updates/?product=lab-services'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/lab-services/'
     - name: 堆疊溢位
       href: 'https://stackoverflow.com/questions/tagged/azure-lab-services'

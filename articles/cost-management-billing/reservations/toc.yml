@@ -12,6 +12,8 @@
           href: prepay-sql-data-warehouse-charges.md
         - name: 購買虛擬機器保留
           href: ../../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
+        - name: Azure 磁碟儲存體
+          href: ../../virtual-machines/linux/disks-reserved-capacity.md?toc=/azure/billing/TOC.json
         - name: 購買 Azure 儲存體保留
           href: ../../storage/blobs/storage-blob-reserved-capacity.md?toc=/azure/billing/TOC.json
         - name: 購買 Cosmos DB 保留
@@ -40,8 +42,12 @@
       items:
         - name: 保留 VM 執行個體折扣
           href: ../manage/understand-vm-reservation-charges.md
+        - name: 建立保留建議的方式
+          href: reserved-instance-purchase-recommendations.md
         - name: Azure 儲存體保留容量折扣
           href: understand-storage-charges.md
+        - name: Azure 磁碟儲存體保留折扣
+          href: understand-disk-reservations.md
         - name: Cosmos DB 保留容量折扣
           href: understand-cosmosdb-reservation-charges.md
         - name: SQL Database 保留容量折扣
