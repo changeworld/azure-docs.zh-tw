@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: b70fcb1d63636984e1d014723b50170651a553d9
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 0fef7d6f59b8893ff400914f491f421cddf436b7
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156874"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842915"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>設定 Azure Machine Learning 的開發環境
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -59,7 +59,7 @@ Azure Machine Learning 工作區。 若要建立工作區，請參閱[建立 Azu
 Azure Machine Learning[計算實例（預覽）](concept-compute-instance.md)是安全的雲端式 Azure 工作站，可為數據科學家提供 Jupyter 筆記本伺服器、JupyterLab 和完整備妥的 ML 環境。
 
 > [!NOTE]
-> 計算執行個體僅適用於區域為 [美國中北部] 或 [英國南部] 的工作區。
+> 計算實例僅適用于具有**美國中北部**、* * 美國東部 2 * ***、北歐**或**英國南部**的工作區。
 >如果您的工作區位於任何其他區域，您可繼續建立並使用 [Notebook VM](concept-compute-instance.md#notebookvm)。
 
 不需要為計算實例安裝或設定任何內容。  從您的 Azure Machine Learning 工作區中隨時建立一個。 只提供名稱，並指定 Azure VM 類型。 請在本教學課程中立即試用[：設定環境和工作區](tutorial-1st-experiment-sdk-setup.md)。
@@ -397,5 +397,5 @@ SDK for Databricks 搭配自動化機器學習服務 ![**sdk，並**在 Databric
 
 ## <a name="next-steps"></a>後續步驟
 
-- 在 Azure Machine Learning 使用 MNIST 資料集[定型模型](tutorial-train-models-with-aml.md)] \(英文\)
+- 在 Azure Machine Learning 使用 MNIST 資料集[定型模型](tutorial-train-models-with-aml.md) \(英文\)
 - 檢視[適用於 Python 的 Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) \(英文\) 參考

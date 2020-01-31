@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.author: diberry
-ms.openlocfilehash: de078399a29af1c7eb2ae3fb237e1550ccaeacfa
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 681f00adde1d440fbb41f2e66652db34d53fbf99
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872293"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843255"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>使用後續追蹤提示來建立多回合對話
 
@@ -65,7 +65,7 @@ ms.locfileid: "74872293"
 
 * 使用標題和子標題來表示階層。 例如，您可以利用 h1 來表示父 QnA 和 h2，以表示應該當做提示的 QnA。 使用 [小標題大小] 來表示後續的階層。 請勿使用樣式、色彩或其他一些機制來表示檔中的結構，QnA Maker 不會解壓縮多回合提示。
 
-* 標題的第一個字元必須是大寫。 
+* 標題的第一個字元必須是大寫。
 
 * 請不要以問號結束標題，`?`。
 
@@ -97,7 +97,7 @@ ms.locfileid: "74872293"
 
 [多回合內容] 會顯示在第一個資料行中。
 
-![![內容 [預覽] 資料行](../media/conversational-coNtext/surface-manual-pdf-follow-up-prompt.png)](../media/conversational-context/surface-manual-pdf-follow-up-prompt.png#lightbox)
+![![內容（預覽）資料行](../media/conversational-coNtext/surface-manual-pdf-follow-up-prompt.png)](../media/conversational-context/surface-manual-pdf-follow-up-prompt.png#lightbox)
 
 在上圖中， **#1**表示資料行中的粗體文字，表示目前的問題。 父問題是資料列中的最上層專案。 其底下的任何問題都是連結的問答配對。 這些專案是可選取的，因此您可以立即移至其他內容專案。
 
@@ -113,7 +113,7 @@ ms.locfileid: "74872293"
 1. 在**Signout**的資料列中，選取 [**回應**] 資料行中的 [**新增後續追蹤提示**]。
 1. 在 [**後續提示**] 快顯視窗的欄位中，輸入下列值：
 
-    |欄位|Value|
+    |欄位|值|
     |--|--|
     |顯示文字|輸入 **[關閉裝置**]。 這是要在後續的提示中顯示的自訂文字。|
     |僅限內容| 選取此核取方塊。 只有當問題指定了內容時，才會傳回答案。|
@@ -150,7 +150,7 @@ ms.locfileid: "74872293"
 1. 在此問題的 [**解答**] 資料行中，選取 [**新增後續追蹤提示**]。
 1. 在 **[後續追蹤] （預覽）** 底下，輸入下列值以建立新的後續追蹤提示：
 
-    |欄位|Value|
+    |欄位|值|
     |--|--|
     |顯示文字|*建立 Windows 帳戶*。 要顯示在後續提示中的自訂文字。|
     |僅限內容|選取此核取方塊。 只有當問題指定了內容時，才會傳回此答案。|
@@ -368,7 +368,7 @@ QnA Maker _GenerateAnswer_ JSON 回應包含 `answers` 物件中第一個專案�
 
 ## <a name="export-knowledge-base-for-version-control"></a>匯出版本控制的知識庫
 
-QnA Maker 在已匯出的檔案中包含多回合交談步驟，以支援 QnA Maker 入口網站中的[版本控制](../concepts/development-lifecycle-knowledge-base.md#version-control-of-a-knowledge-base)。
+QnA Maker 在匯出的檔案中包含多回合交談步驟，藉以支援版本控制。
 
 ## <a name="next-steps"></a>後續步驟
 

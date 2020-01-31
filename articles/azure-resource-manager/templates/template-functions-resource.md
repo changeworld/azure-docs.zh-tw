@@ -3,12 +3,12 @@ title: 範本函式-資源
 description: 描述 Azure Resource Manager 範本中用來擷取資源相關值的函式。
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: 1b860876b0d8967a6a3f90c7bb68f20d6c442109
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 9021d7419820a9d321658c2b1fea8edb7e79b9a0
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513859"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773243"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager 範本的資源函式
 
@@ -443,7 +443,7 @@ reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])
 
 | 參數 | 必要項 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| resourceName 或 resourceIdentifier |是 |string |資源的名稱或唯一識別碼。 當參考目前範本中的資源時，只會提供資源名稱做為參數。 參考先前部署的資源時，請提供資源識別碼。 |
+| resourceName 或 resourceIdentifier |是 |string |資源的名稱或唯一識別碼。 當參考目前範本中的資源時，只會提供資源名稱做為參數。 參考先前部署的資源時，或資源的名稱不明確時，請提供資源識別碼。 |
 | apiVersion |否 |string |指定的資源的 API 版本。 如果在相同的範本內未供應資源，則請包含此參數。 一般而言，格式為 **yyyy-mm-dd**。 如需適用于您資源的有效 API 版本，請參閱[範本參考](/azure/templates/)。 |
 | 'Full' |否 |string |值，指定是否要傳回完整資源物件。 如果您未指定 `'Full'`，則只會傳回資源的屬性物件。 完整物件包括例如資源識別碼和位置的值。 |
 
@@ -460,11 +460,11 @@ reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])
 ```json
 "outputs": {
     "BlobUri": {
-        "value": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName')), '2016-01-01').primaryEndpoints.blob]",
+        "value": "[reference(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName')).primaryEndpoints.blob]",
         "type" : "string"
     },
     "FQDN": {
-        "value": "[reference(concat('Microsoft.Network/publicIPAddresses/', parameters('ipAddressName')), '2016-03-30').dnsSettings.fqdn]",
+        "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', parameters('ipAddressName')).dnsSettings.fqdn]",
         "type" : "string"
     }
 }
@@ -476,11 +476,11 @@ reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])
 {
   "type": "Microsoft.KeyVault/vaults",
   "properties": {
-    "tenantId": "[reference(concat('Microsoft.Compute/virtualMachines/', variables('vmName')), '2017-03-30', 'Full').identity.tenantId]",
+    "tenantId": "[subscription().tenantId]",
     "accessPolicies": [
       {
-        "tenantId": "[reference(concat('Microsoft.Compute/virtualMachines/', variables('vmName')), '2017-03-30', 'Full').identity.tenantId]",
-        "objectId": "[reference(concat('Microsoft.Compute/virtualMachines/', variables('vmName')), '2017-03-30', 'Full').identity.principalId]",
+        "tenantId": "[reference(reosurceId('Microsoft.Compute/virtualMachines', variables('vmName')), '2019-03-01', 'Full').identity.tenantId]",
+        "objectId": "[reference(resourceId('Microsoft.Compute/virtualMachines', variables('vmName')), '2019-03-01', 'Full').identity.principalId]",
         "permissions": {
           "keys": [
             "all"
@@ -520,10 +520,10 @@ reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])
 "value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2018-07-01')]"
 ```
 
-若要避免與您所參考的資源不明確，您可以提供完整的資源名稱。
+若要避免與您所參考的資源不明確，您可以提供完整的資源識別碼。
 
 ```json
-"value": "[reference(concat('Microsoft.Network/publicIPAddresses/', parameters('ipAddressName')))]"
+"value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', parameters('ipAddressName'))]"
 ```
 
 當建構資源的完整參考時，要從類型和名稱合併區段的順序並非只是將兩個串連。 相反地，在命名空間之後，使用從最特定到最不特定的一連串*類型/名稱*組：
@@ -534,6 +534,8 @@ reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])
 
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt` 為正確 `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` 為不正確
 
+若要簡化任何資源識別碼的建立，請使用本檔中所述的 `resourceId()` 函式，而不是 `concat()` 函數。
+
 ### <a name="get-managed-identity"></a>取得受控識別
 
 [適用于 Azure 資源的受控](../../active-directory/managed-identities-azure-resources/overview.md)識別是針對某些資源隱含建立的[擴充資源類型](../management/extension-resource-types.md)。 因為受控識別未明確定義于範本中，所以您必須參考要套用身分識別的資源。 使用 `Full` 來取得所有屬性，包括隱含建立的身分識別。
@@ -541,7 +543,7 @@ reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])
 例如，若要取得適用于虛擬機器擴展集之受控識別的租使用者識別碼，請使用：
 
 ```json
-"tenantId": "[reference(concat('Microsoft.Compute/virtualMachineScaleSets/',  variables('vmNodeType0Name')), variables('vmssApiVersion'), 'Full').Identity.tenantId]"
+"tenantId": "[reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  variables('vmNodeType0Name')), '2019-03-01', 'Full').Identity.tenantId]"
 ```
 
 ### <a name="reference-example"></a>參考範例

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/23/2020
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: e56722831ef05364b8ee4d342553158fba19ffaa
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 159b00f9417f4a572655f1f93208dbc755012922
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760720"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844848"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>疑難排解 QnA Maker
 
@@ -95,7 +95,7 @@ QnA Maker 會在 QnA Maker 入口網站中提供**協助**bot，協助您。 您
 
 ### <a name="why-is-my-sharepoint-link-not-getting-extracted"></a>為什麼我的 SharePoint 連結無法供擷取？
 
-如需詳細資訊，請參閱[資料來源位置](./Concepts/data-sources-supported.md#data-source-locations)。
+如需詳細資訊，請參閱[資料來源位置](./Concepts/knowledge-base.md#data-source-locations)。
 
 ### <a name="the-updates-that-i-made-to-my-knowledge-base-are-not-reflected-on-publish-why-not"></a>我對知識庫所做的更新並未在發佈時反映。 為何會這樣呢？
 

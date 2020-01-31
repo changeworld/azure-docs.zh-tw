@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 1a9c058e590e5df9ab9ec82d900e22f7154d00a0
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 79c27d252136281249c217f51019e53987922334
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561927"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846448"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions 網路功能選項
 
@@ -30,11 +30,11 @@ ms.locfileid: "75561927"
 
 |                |[耗用量方案](functions-scale.md#consumption-plan)|[Premium 方案](functions-scale.md#premium-plan)|[App Service 計劃](functions-scale.md#app-service-plan)|[App Service 環境](../app-service/environment/intro.md)|
 |----------------|-----------|----------------|---------|-----------------------|  
-|[私人網站存取 & 的輸入 IP 限制](#inbound-ip-restrictions)|✅有|✅有|✅有|✅有|
-|[虛擬網路整合](#virtual-network-integration)|❌沒有|✅是（地區）|✅是（區域和閘道）|✅有|
-|[虛擬網路觸發程式（非 HTTP）](#virtual-network-triggers-non-http)|❌沒有| ✅有 |✅有|✅有|
-|[混合式連接](#hybrid-connections)（僅限 Windows）|❌沒有|✅有|✅有|✅有|
-|[輸出 IP 限制](#outbound-ip-restrictions)|❌沒有| ❌沒有|❌沒有|✅有|
+|[私人網站存取 & 的輸入 IP 限制](#inbound-ip-restrictions)|✅是|✅是|✅是|✅是|
+|[虛擬網路整合](#virtual-network-integration)|❌否|✅是（地區）|✅是（區域和閘道）|✅是|
+|[虛擬網路觸發程式（非 HTTP）](#virtual-network-triggers-non-http)|❌否| ✅是 |✅是|✅是|
+|[混合式連接](#hybrid-connections)（僅限 Windows）|❌否|✅是|✅是|✅是|
+|[輸出 IP 限制](#outbound-ip-restrictions)|❌否| ❌否|❌否|✅是|
 
 ## <a name="inbound-ip-restrictions"></a>輸入 IP 限制
 
@@ -129,14 +129,14 @@ Key Vault 參考可讓您在 Azure Functions 應用程式中使用來自 Azure K
 
 ### <a name="premium-plan-with-virtual-network-triggers"></a>具有虛擬網路觸發程式的 Premium 方案
 
-在高階計畫中執行時，您可以將非 HTTP 觸發程式函式連接到在虛擬網路中執行的服務。 若要這樣做，您必須啟用函數應用程式的虛擬網路觸發程式支援。 在 [**函數應用程式設定**] 下的 [ [Azure 入口網站](https://portal.azure.com)中，可找到**虛擬網路觸發程式支援**設定。
+在高階計畫中執行時，您可以將非 HTTP 觸發程式函式連接到在虛擬網路中執行的服務。 若要這樣做，您必須啟用函數應用程式的虛擬網路觸發程式支援。 在 [**函數應用程式設定**] 下的  [Azure 入口網站](https://portal.azure.com)中，可找到**虛擬網路觸發程式支援**設定。
 
 ![VNETToggle](media/functions-networking-options/virtual-network-trigger-toggle.png)
 
 您也可以使用下列 Azure CLI 命令來啟用虛擬網路觸發程式：
 
 ```azurecli-interactive
-az resource update -g <resource_group> -n <premium_plan_name> --set properties.functionsRuntimeScaleMonitoringEnabled=1
+az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.functionsRuntimeScaleMonitoringEnabled=1 --resource-type Microsoft.Web/sites
 ```
 
 函數執行時間的2.x 版和更新版本支援虛擬網路觸發程式。 支援下列非 HTTP 觸發程式類型。
