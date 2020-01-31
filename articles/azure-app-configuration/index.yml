@@ -4,9 +4,9 @@ title: Azure 應用程式組態預覽文件
 metadata:
   title: Azure 應用程式組態文件 - 教學課程和 API 參考
   description: Azure 應用程式組態是一項受控服務，可協助開發人員簡單且安全地集中管理其應用程式與功能設定。
-  author: yegu-ms
+  author: lisaguthrie
   manager: maiye
-  ms.author: yegu
+  ms.author: lcozzens
   ms.service: azure-app-configuration
   ms.topic: landing-page
   ms.date: 04/19/2019

@@ -65,6 +65,7 @@
       items:
         - name: 了解及調整串流單位
           href: stream-analytics-streaming-unit-consumption.md
+          displayName: 'scale, performance'
         - name: 改善查詢效能
           href: stream-analytics-parallelization.md
         - name: 重新分割您的輸入

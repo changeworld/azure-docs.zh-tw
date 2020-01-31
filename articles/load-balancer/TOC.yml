@@ -28,12 +28,6 @@
       href: tutorial-load-balancer-standard-public-zonal-portal.md
     - name: 在 Load Balancer 中設定連接埠轉送
       href: tutorial-load-balancer-port-forwarding-portal.md
-- name: 範例
-  items:
-    - name: Azure CLI
-      href: cli-samples.md
-    - name: Azure PowerShell
-      href: powershell-samples.md
 - name: 概念
   items:
     - name: 元件與限制
@@ -50,8 +44,6 @@
           href: load-balancer-query-metrics-rest-api.md
     - name: 高可用性連接埠
       href: load-balancer-ha-ports-overview.md
-    - name: IPv6 支援
-      href: 'https://docs.microsoft.com/azure/virtual-network/ipv6-overview'
     - name: 多個前端
       href: load-balancer-multivip-overview.md
     - name: 輸出連線
@@ -68,10 +60,6 @@
   items:
     - name: 將基本公用 Load Balancer 升級為標準公用 Load Balancer
       href: upgrade-basic-standard.md
-    - name: 跨越多個可用性區域為虛擬機器進行負載平衡 (CLI)
-      href: load-balancer-standard-public-zone-redundant-cli.md
-    - name: 在區域內為虛擬機器進行負載平衡 (CLI)
-      href: load-balancer-standard-public-zonal-cli.md
     - name: 設定輸出規則
       items:
         - name: Azure CLI
@@ -121,6 +109,12 @@
       items:
         - name: 針對 Azure Load Balancer 進行疑難排解
           href: load-balancer-troubleshoot.md
+- name: 範例
+  items:
+    - name: Azure CLI
+      href: cli-samples.md
+    - name: Azure PowerShell
+      href: powershell-samples.md
 - name: 參考
   items:
     - name: 程式碼範例

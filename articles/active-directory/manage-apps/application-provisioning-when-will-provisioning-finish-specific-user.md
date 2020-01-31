@@ -16,12 +16,12 @@ ms.date: 09/03/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8238d2b417dbe03ad0623e472f1a239940c1bc8
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: e7296c63a467b2f53550b3e609cf1146244cf933
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75681373"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712116"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>檢查使用者布建的狀態
 
@@ -35,12 +35,12 @@ Azure AD 布建服務會對來源系統和目標系統執行初始布建週期�
 - 目前正在執行或上次完成的布建週期類型（初始或增量）。
 - 顯示已完成布建週期百分比的**進度**列。 百分比會反映已布建的頁面計數。 請注意，每個頁面都可以包含多個使用者或群組，因此百分比不會直接與所布建的使用者、群組或角色數目相互關聯。
 - 您可以使用 [重新整理 **] 按鈕來**讓視圖保持更新。
-- 連接器資料存放區中的**使用者**和**群組**數目。 一旦將物件新增至布建範圍，此計數就會增加。 如果使用者已虛刪除或遭到刪除，此計數將不會關閉，因為這不會從連接器資料存放區中移除物件。 [重設](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)cd 之後，此計數將會重新匯出第一次同步處理 
+- 連接器資料存放區中的**使用者**和**群組**數目。 一旦將物件新增至布建範圍，此計數就會增加。 如果使用者已虛刪除或遭到刪除，此計數將不會關閉，因為這不會從連接器資料存放區中移除物件。 [重設](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)cd 之後，此計數會 recaculated 第一次同步處理 
 - **View Audit Logs**連結，會開啟 Azure AD 布建記錄檔，以取得使用者布建服務所執行之所有作業的詳細資料，包括個別使用者的布建狀態（請參閱下面的「使用布建[記錄](#use-provisioning-logs-to-check-a-users-provisioning-status)」一節）。
 
 布建週期完成之後，[**統計資料]** 區段會顯示已布建到 [日期] 的使用者和群組累計數目，以及最後一個週期的完成日期和持續時間。 **活動識別碼**會唯一識別最新的布建週期。 **工作**識別碼是布建工作的唯一識別碼，而且是您租使用者中的應用程式專用。
 
-在 Azure 入口網站中，您可以在**Azure Active Directory &gt; 企業應用程式 &gt;** \[\] 布建] 索引標籤中，看到布建進度。
+在 Azure 入口網站中，您可以在**Azure Active Directory &gt; 企業應用程式 &gt;** \[\] 布建 索引標籤中，看到布建進度。
 
 ![布建頁面進度列](media/application-provisioning-when-will-provisioning-finish-specific-user/provisioning-progress-bar-section.png)
 
@@ -60,7 +60,7 @@ Azure AD 布建服務會對來源系統和目標系統執行初始布建週期�
 如需有關如何在 Azure 入口網站中讀取布建記錄的詳細資訊，請參閱布建[報告指南](check-status-user-account-provisioning.md)。
 
 ## <a name="how-long-will-it-take-to-provision-users"></a>佈建使用者需要多久時間？
-在應用程式中使用自動使用者布建時，Azure AD 會根據定期排程的時間[間隔（通常](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)是每40分鐘），在應用程式中自動布建和更新使用者帳戶。
+在應用程式中使用自動使用者布建時，Azure AD 會根據定期排程的時間[間隔（通常](assign-user-or-group-access-portal.md)是每40分鐘），在應用程式中自動布建和更新使用者帳戶。
 
 提供給指定使用者所需的時間，主要取決於您的布建作業是執行初始迴圈還是增量迴圈。
 
@@ -102,7 +102,7 @@ Azure AD 布建服務會對來源系統和目標系統執行初始布建週期�
 
 - 指派群組的數目和大小。 同步指派群組所花的時間可能比同步使用者的時間長。 指派群組的數目和大小會影響效能。 如果應用程式[啟用群組物件同步處理的對應](customize-application-attributes.md#editing-group-attribute-mappings)，則除了使用者外，群組屬性 (例如群組名稱和成員資格) 也會一起同步。 比起只同步使用者物件，這些額外的同步處理將會花費更長時間。
 
-- 如果效能變成問題，而您嘗試在租使用者中布建大部分的使用者和群組，請使用範圍篩選器。 範圍設定篩選條件可讓您根據特定的屬性值篩選出使用者，以微調佈建服務從 Azure AD 擷取的資料。 如需範圍設定篩選條件的詳細資訊，請參閱[含範圍篩選器的屬性型應用程式佈建](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。
+- 如果效能變成問題，而您嘗試在租使用者中布建大部分的使用者和群組，請使用範圍篩選器。 範圍設定篩選條件可讓您根據特定的屬性值篩選出使用者，以微調佈建服務從 Azure AD 擷取的資料。 如需範圍設定篩選條件的詳細資訊，請參閱[含範圍篩選器的屬性型應用程式佈建](define-conditional-rules-for-provisioning-user-accounts.md)。
 
 ## <a name="next-steps"></a>後續步驟
-[使用 Azure Active Directory 自動進行 SaaS 應用程式的使用者佈建和解除佈建](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning)
+[使用 Azure Active Directory 自動進行 SaaS 應用程式的使用者佈建和解除佈建](user-provisioning.md)
