@@ -15,12 +15,12 @@ ms.date: 09/09/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6a6714a1a9e7a2724d07584dd7b548ada2f201b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 77865ad3fe23d1413b6b957d351d9d9d92d22fb7
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430217"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711977"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>教學課程︰關於使用者帳戶自動佈建的報告
 
@@ -44,7 +44,7 @@ Azure Active Directory （Azure AD）包含[使用者帳戶](user-provisioning.m
 
 ## <a name="getting-provisioning-reports-from-the-azure-portal"></a>從 Azure 入口網站取得布建報告
 
-若要取得給定應用程式的布建報告資訊，請先啟動[Azure 入口網站](https://portal.azure.com)，然後**Azure Active Directory** &gt;**企業應用程式**] &gt; [**活動**] 區段中的 [布建**記錄（預覽）** ]。 您也可以流覽至已設定布建的企業應用程式。 例如，如果您要在 LinkedIn Elevate 中佈建使用者，則應用程式詳細資料的導覽路徑為︰
+若要取得給定應用程式的布建報告資訊，請先啟動[Azure 入口網站](https://portal.azure.com)，然後**Azure Active Directory** &gt;**企業應用程式** &gt; [**活動**] 區段中的 [布建**記錄（預覽）** ]。 您也可以流覽至已設定布建的企業應用程式。 例如，如果您要在 LinkedIn Elevate 中佈建使用者，則應用程式詳細資料的導覽路徑為︰
 
 **Azure Active Directory > 企業應用程式 > 所有應用程式 > LinkedIn Elevate**
 
@@ -61,7 +61,7 @@ Azure Active Directory （Azure AD）包含[使用者帳戶](user-provisioning.m
 
 **目前的狀態**應該是系統管理員要查看布建作業的操作健全狀況的第一個位置。
 
- ![摘要報告](./media/check-status-user-account-provisioning/provisioning-progress-bar-section.png)
+ ![摘要報告](media/check-status-user-account-provisioning/provisioning-progress-bar-section.png)
 
 ## <a name="provisioning-logs-preview"></a>布建記錄（預覽）
 
