@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 2453b29c5efd768930f534df89d4c62320ed4770
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: 3bd13a63c3f4fa275f7e4789c184802445519388
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965349"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772615"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>在 Azure 虛擬機器上使用 premium 檔案共用設定 SQL Server 容錯移轉叢集實例
 
@@ -77,13 +77,15 @@ Premium 檔案共用可提供 IOPS 和整個容量，以符合許多工作負載
 
 - Microsoft Azure 訂用帳戶。
 - Azure 虛擬機器上的 Windows 網域。
-- 具有在 Azure 虛擬機器和 Active Directory 中建立物件之許可權的帳戶。
+- 具有在 Azure 虛擬機器和 Active Directory 中建立物件之許可權的網域使用者帳戶。
+- 執行 SQL Server 服務的網域使用者帳戶，而且您可以在掛接檔案共用時，使用登入虛擬機器。  
 - 具有足夠 IP 位址空間可供這些元件使用的 Azure 虛擬網路和子網：
    - 兩部虛擬機器。
    - 容錯移轉叢集的 IP 位址。
    - 每個 FCI 上一個 IP 位址。
 - 在 Azure 網路上設定的 DNS，指向網域控制站。
-- 高階檔案[共用](../../../storage/files/storage-how-to-create-premium-fileshare.md)，是以您的資料庫儲存配額為基礎，供您的資料檔案使用。
+- 用來作為叢集磁片磁碟機的高階檔案[共用](../../../storage/files/storage-how-to-create-premium-fileshare.md)，根據您的資料檔案之資料庫的儲存空間配額。
+- 如果您使用 Windows Server 2012 R2 和更舊版本，您將需要另一個檔案共用做為檔案共用見證，因為 Windows 2016 和更新版本支援雲端見證。 您可以使用另一個 Azure 檔案共用，也可以在個別的虛擬機器上使用檔案共用。 如果您要使用另一個 Azure 檔案共用，您可以使用與用於叢集磁片磁碟機的 premium 檔案共用相同的程式來掛接它。 
 
 準備好這些必要條件之後，您就可以開始建立您的容錯移轉叢集。 第一步是建立虛擬機器。
 
@@ -151,7 +153,7 @@ Premium 檔案共用可提供 IOPS 和整個容量，以符合許多工作負載
 
    在每部虛擬機器上，開啟 Windows 防火牆上的下列埠：
 
-   | 目的 | TCP 連接埠 | 注意
+   | 目的 | TCP 埠 | 注意
    | ------ | ------ | ------
    | SQL Server | 1433 | 適用於 SDL Server 預設執行個體的一般連接埠。 若您曾使用來自資源庫的映像，此連接埠會自動開啟。
    | 健全狀況探查 | 59999 | 任何開啟的 TCP 連接埠。 在接下來的步驟中，設定負載平衝器[健全狀況探查](#probe)和要使用此連接埠的叢集。
@@ -180,7 +182,8 @@ Premium 檔案共用可提供 IOPS 和整個容量，以符合許多工作負載
 1. 在要參與叢集的每個 SQL Server VM 上重複這些步驟。
 
   > [!IMPORTANT]
-  > 請考慮針對備份檔案使用個別的檔案共用，以儲存此共用的資料和記錄檔的 IOPS 和空間容量。 您可以針對備份檔案使用 premium 或 standard 檔案共用。
+  > - 請考慮針對備份檔案使用個別的檔案共用，以儲存此共用的資料和記錄檔的 IOPS 和空間容量。 您可以針對備份檔案使用 premium 或 standard 檔案共用。
+  > - 如果您使用的是 Windows 2012 R2 和更舊版本，請遵循這些相同的步驟來掛接您要做為檔案共用見證的檔案共用。 
 
 ## <a name="step-3-configure-the-failover-cluster-with-the-file-share"></a>步驟3：使用檔案共用設定容錯移轉叢集
 
@@ -189,7 +192,7 @@ Premium 檔案共用可提供 IOPS 和整個容量，以符合許多工作負載
 1. 新增 Windows Server 容錯移轉叢集功能。
 1. 驗證叢集。
 1. 建立容錯移轉叢集。
-1. 建立雲端見證。
+1. 建立雲端見證（適用于 Windows Server 2016 和更新版本）或檔案共用見證（適用于 Windows Server 2012 R2 和更舊版本）。
 
 
 ### <a name="add-windows-server-failover-clustering"></a>新增 Windows Server 容錯移轉叢集
@@ -263,9 +266,9 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 ```
 
 
-### <a name="create-a-cloud-witness"></a>建立雲端見證
+### <a name="create-a-cloud-witness-win-2016-"></a>建立雲端見證（Win 2016 +）
 
-雲端見證是一種新類型的叢集仲裁見證，儲存在 Azure 儲存體 blob 中。 這將不再需要裝載見證共用的個別 VM。
+如果您是在 Windows Server 2016 和更新版本上，您必須建立雲端見證。 雲端見證是一種新類型的叢集仲裁見證，儲存在 Azure 儲存體 blob 中。 這不需要裝載見證共用的個別 VM，或使用個別的檔案共用。
 
 1. [建立容錯移轉叢集的雲端見證](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness)。
 
@@ -273,7 +276,11 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 1. 儲存存取金鑰和容器 URL。
 
-1. 設定容錯移轉叢集的叢集仲裁見證。 請參閱在[使用者介面中設定仲裁見證](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness)。
+### <a name="configure-quorum"></a>設定仲裁 
+
+若為 Windows Server 2016 和更新版本，請將叢集設定為使用您剛才建立的雲端見證。 遵循所有步驟，[在使用者介面中設定仲裁見證](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness)。
+
+針對 Windows Server 2012 R2 和更舊版本，請遵循在[使用者介面中設定仲裁見證中](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness)的相同步驟，但在 [**選取仲裁見證**] 頁面上，選取 [**設定檔案共用見證**] 選項。 指定配置為檔案共用見證的檔案共用，無論您是在另一部虛擬機器上設定，或從 Azure 掛接。 
 
 
 ## <a name="step-4-test-cluster-failover"></a>步驟4：測試叢集容錯移轉
@@ -296,7 +303,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 1. 選取 [**新增 SQL Server 容錯移轉叢集安裝**]。 請遵循精靈內的指示安裝 SQL Server FCI。
 
-   FCI 資料目錄必須位於 premium 檔案共用上。 輸入共用的完整路徑，格式為： `\\storageaccountname.file.core.windows.net\filesharename\foldername`。 隨即會出現警告，告訴您您已指定檔案伺服器做為資料目錄。 這是預期的警告。 請確定您用來保存檔案共用的帳戶，與 SQL Server 服務用來避免可能發生失敗的帳戶相同。
+   FCI 資料目錄必須位於 premium 檔案共用上。 輸入共用的完整路徑，格式為： `\\storageaccountname.file.core.windows.net\filesharename\foldername`。 隨即會出現警告，告訴您您已指定檔案伺服器做為資料目錄。 這是預期的警告。 當您保存檔案共用時，請確定您透過 RDP 連線到 VM 的使用者帳戶，與 SQL Server 服務用來避免可能發生失敗的帳戶相同。
 
    :::image type="content" source="media/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share/use-file-share-as-data-directories.png" alt-text="使用檔案共用作為 SQL 資料目錄":::
 

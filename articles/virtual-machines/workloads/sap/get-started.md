@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/17/2020
+ms.date: 01/28/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 55872d48dcf2a85812e1627e4e85bcd98b25d576
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 3c609c659d99ce6eca0326a5a14cbbb67099e686
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271330"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840463"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 來裝載和執行 SAP 工作負載案例
 
@@ -121,6 +121,7 @@ Azure 上的 SAP 工作負載區段中的檔變更會列在本文結尾。
 
 ## <a name="change-log"></a>變更記錄檔
 
+- 01/28/2020：在[RHEL 上的 Azure vm 上 SAP Hana 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel)變更，使 SAP Hana 叢集資源的超時時間與 Red Hat 的建議保持一致
 - 01/17/2020：在[Azure 鄰近放置群組中變更 SAP 應用程式的最佳網路延遲](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios)，以變更將現有 vm 移至鄰近位置群組的區段
 - 01/17/2020： Azure 可用性區域的[SAP 工作負載](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones)設定變更為指向可自動測量可用性區域之間延遲的程式
 - 01/16/2020：變更[如何在 Azure 上安裝和設定 SAP Hana （大型實例）](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-installation)以調整 OS 版本到 HANA IaaS 硬體目錄
@@ -132,7 +133,7 @@ Azure 上的 SAP 工作負載區段中的檔變更會列在本文結尾。
 - 11/21/2019：在[SUSE Linux Enterprise Server 上使用 Azure NetApp Files 的 Azure vm 上的待命節點 SAP Hana 相應](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)放大的變更，以簡化 NFS 識別碼對應的設定，並變更建議的主要網路介面以簡化路由。
 - 11/15/2019： [SUSE Linux Enterprise Server 上的 Sap NetWeaver 高可用性](high-availability-guide-suse-netapp-files.md)的次要變更，其中包含適用于 sap 應用程式的 Azure netapp files 和[RED HAT ENTERPRISE LINUX 上的 Sap NetWeaver 的高可用性，以及適用于 sap 應用程式的 azure netapp files](high-availability-guide-rhel-netapp-files.md) ，以清楚瞭解容量集區大小限制，以及僅支援 NFSv3 版本的 remove 語句。
 - 11/12/2019：[在 Windows 上使用 Azure NetApp Files （SMB）發行 SAP NetWeaver 的高可用性](high-availability-guide-windows-netapp-files-smb.md)
-- 11/08/2019： SUSE Linux Enterprise Server 上[的 Azure vm 上的 SAP Hana 的高可用性](sap-hana-high-availability.md)變更、在[azure 虛擬機器（vm）上設定 SAP Hana 系統](sap-hana-high-availability-rhel.md)複寫、 [azure 虛擬機器 sap NetWeaver on](high-availability-guide-suse.md)sap [NetWeaver](high-availability-guide-suse-netapp-files.md)的高可用性、azure SUSE Linux Enterprise Server 上的 sap NetWeaver 的高可用性、虛擬機器上的 sap 的 azure SUSE Linux Enterprise Server 高可用性[](high-availability-guide-rhel.md)， [Azure 虛擬機器高可用性，適用于 Red Hat Enterprise Linux 上的 sap NetWeaver，其中包含 Azure NetApp Files](high-availability-guide-rhel-netapp-files.md)、 [AZURE vm 上的 NFS 高可用性、SUSE Linux Enterprise Server 上的](high-availability-guide-suse-nfs.md)GlusterFS、azure vm 上的 NETWEAVER，以及[適用于 SAP 的 Red Hat Enterprise Linux](high-availability-guide-rhel-glusterfs.md)以建議 azure 標準負載平衡器  
+- 11/08/2019： SUSE Linux Enterprise Server 上[的 Azure vm 上的 SAP Hana 的高可用性](sap-hana-high-availability.md)變更、在[azure 虛擬機器（vm）上設定 SAP Hana 系統](sap-hana-high-availability-rhel.md)複寫、 [azure 虛擬機器 sap NetWeaver on](high-availability-guide-suse.md)sap [NetWeaver](high-availability-guide-suse-netapp-files.md)的高可用性、azure SUSE Linux Enterprise Server 上的 sap NetWeaver 的高可用性、虛擬機器上的 sap [的 azure SUSE Linux Enterprise Server 高可用性](high-availability-guide-rhel.md)， [Azure 虛擬機器高可用性，適用于 Red Hat Enterprise Linux 上的 sap NetWeaver，其中包含 Azure NetApp Files](high-availability-guide-rhel-netapp-files.md)、 [AZURE vm 上的 NFS 高可用性、SUSE Linux Enterprise Server 上的](high-availability-guide-suse-nfs.md)GlusterFS、azure vm 上的 NETWEAVER，以及[適用于 SAP 的 Red Hat Enterprise Linux](high-availability-guide-rhel-glusterfs.md)以建議 azure 標準負載平衡器  
 - 11/08/2019： [SAP 工作負載規劃和部署檢查清單](sap-deployment-checklist.md)中的變更，以闡明加密建議  
 - 11/04/2019：在[Azure 中的 SUSE Linux Enterprise Server 上設定 Pacemaker](high-availability-guide-suse-pacemaker.md) ，以直接使用單播設定建立叢集的變更  
 - 10/29/2019：[在 SAP 高可用性案例中使用 Azure Standard Load Balancer 虛擬機器的公用端點連線能力](high-availability-guide-standard-load-balancer-outbound-connections.md)
