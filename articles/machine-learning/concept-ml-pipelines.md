@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/06/2019
-ms.openlocfilehash: c93c936664f65e7846f6c4ad82d9aead973fa129
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 840c5cf061658f3210fec963b82b490185b92a4b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772596"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905726"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>什麼是 Azure Machine Learning 管線？
 
@@ -202,7 +202,21 @@ pipeline_run.wait_for_completion()
 |**再使用性**|建立特定案例的管線範本，例如重新定型和批次評分。 透過簡單的 REST 呼叫，從外部系統觸發已發佈的管線。|
 |**追蹤和版本控制**|使用管線 SDK 明確地為您的資料來源、輸入及輸出命名與設定版本，而不需在逐一查看時手動追蹤資料和結果路徑。 您也可以個別管理指令碼和資源，以提升產能。|
 | **模組** | 區隔考慮和隔離變更，可讓軟體以更快的速度以較高的品質來發展。 | 
-|**共同作業**|管線可讓資料科學家在機器學習設計流程的所有區域之間共同作業，同時能夠同時處理管線步驟。|
+|**協作**|管線可讓資料科學家在機器學習設計流程的所有區域之間共同作業，同時能夠同時處理管線步驟。|
+
+## <a name="modules"></a>模組
+
+雖然管線步驟允許重複使用上一次執行的結果，但在許多情況下，此步驟的結構會假設必須在本機提供必要的腳本和相依檔案。 如果資料科學家想要以現有的程式碼為基礎，腳本和相依性通常必須從個別的存放庫複製。
+
+模組與管線步驟的使用方式類似，但提供可透過工作區進行的版本控制，這可讓共同作業和大規模重複使用。 模組的設計是要在多個管線中重複使用，而且可以進化以配合不同的使用案例來調整特定的計算。 使用者可以透過工作區執行下列工作，而不需要使用外部存放庫：
+
+* 建立新的模組，併發布現有模組的新版本
+* 取代現有的版本
+* 將版本標示為停用，以防止取用者使用該版本
+* 指定預設版本
+* 從工作區的版本取出模組，以確保小組使用相同的程式碼
+
+如需如何在 Azure Machine Learning 管線中建立、連接及使用模組的程式碼範例，請參閱[筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-how-to-use-modulestep.ipynb)。
 
 ## <a name="next-steps"></a>後續步驟
 

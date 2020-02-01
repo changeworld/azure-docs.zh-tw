@@ -1,16 +1,16 @@
 ---
 title: Azure Service Fabric CLI-sfctl 屬性
-description: 深入瞭解 sfctl，這是 Azure Service Fabric 命令列介面。 包含用來 storying 及查詢屬性的命令清單。
+description: 深入瞭解 sfctl，這是 Azure Service Fabric 命令列介面。 包含用來儲存和查詢屬性的命令清單。
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: d9129f07db9f3499b51707965d10426dbc3d3c12
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: a9bd75e0b7f8bfceb50a71ca83b60ff1e7b45508
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639100"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905823"
 ---
 # <a name="sfctl-property"></a>sfctl property
 在 Service Fabric 名稱底下儲存和查詢屬性。
@@ -105,7 +105,7 @@ Service Fabric 名稱可以包含一或多個儲存自訂資訊的具名屬性�
 | --- | --- |
 | --name-id       [必要] | 不含 'fabric\:' URI 配置的 Service Fabric 名稱。 |
 | --property-name [必要] | Service Fabric 屬性的名稱。 |
-| --value         [必要] | 描述 Service Fabric 屬性值。 這是一個 JSON 字串。 <br><br> 此 JSON 字串有兩個欄位，資料的 'Kind' (種類) 和資料的 'Value' (值)。 'Kind' 值必須是 JSON 字串中第一個出現的項目，其值可以是 'Binary'、'Int64'、'Double'、'String' 或 'Guid'。 此值應該是可序列化成所指定類型的值。 'Kind' 和 'Data' 值都應該以字串形式提供。 |
+| --value         [必要] | 描述 Service Fabric 屬性值。 這是一個 JSON 字串。 <br><br> Json 字串有兩個欄位（資料的「種類」）和值（輸入為數據的「資料」）。 'Kind' 值必須是 JSON 字串中第一個出現的項目，其值可以是 'Binary'、'Int64'、'Double'、'String' 或 'Guid'。 此值應該是可序列化成所指定類型的值。 'Kind' 和 'Data' 值都應該以字串形式提供。 |
 | --custom-id-type | 屬性的自訂類型識別碼。 使用此屬性時，使用者將能夠標記屬性值的類型。 |
 | --timeout -t | 預設值\: 60。 |
 

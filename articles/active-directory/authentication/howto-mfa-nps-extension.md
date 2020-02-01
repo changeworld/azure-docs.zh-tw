@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4da2e3696dd1fad1dcce81831385f1e21891f97
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 43f355f22774477466d2965cef02adcc4ec4f497
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712532"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76908848"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>將現有的 NPS 基礎結構與 Azure Multi-Factor Authentication 整合
 
@@ -192,6 +192,23 @@ NPS 伺服器會連線到 Azure Active Directory，並驗證 MFA 要求。 為�
 
 > [!NOTE]
 > 如果您使用自己的憑證，而不是透過 PowerShell 指令碼產生憑證，請確定這些憑證遵守 NPS 命名慣例。 主體名稱必須是 **CN=\<租用戶識別碼\>,OU=Microsoft NPS Extension**。 
+
+### <a name="microsoft-azure-government-additional-steps"></a>Microsoft Azure Government 其他步驟
+
+針對使用 Azure Government 雲端的客戶，每個 NPS 伺服器上都需要下列額外的設定步驟：
+
+1. 在 NPS 伺服器上開啟 [**登錄編輯程式**]。
+1. 瀏覽至 `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa`。 設定下列機碼值：
+
+    | 登錄機碼       | 值 |
+    |--------------------|-----------------------------------|
+    | AZURE_MFA_HOSTNAME | adnotifications.windowsazure.us   |
+    | STS_URL            | https://login.microsoftonline.us/ |
+
+1. 重複前兩個步驟，為每個 NPS 伺服器設定登錄機碼值。
+1. 重新開機每個 NPS 伺服器的 NPS 服務。
+
+    針對最小的影響，請將每一部 NPS 伺服器一次從 NLB 輪替中執行，並等候所有連線清空。
 
 ### <a name="certificate-rollover"></a>憑證變換
 

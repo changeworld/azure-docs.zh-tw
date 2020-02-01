@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 地圖服務搜尋服務搜尋位置 |Microsoft Azure 對應
-description: 在本文中，您將瞭解如何使用 Microsoft Azure Maps 搜尋服務來搜尋位置。
+title: 使用 Azure 地圖服務搜尋服務來搜尋位置 |Microsoft Azure 對應
+description: 在本文中，您將瞭解如何使用 [地理編碼] 和 [反向地理編碼] 的 [Microsoft Azure 對應] 搜尋服務來搜尋位置。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 01/15/2020
@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 20a2c18875096680cd1eba7601e88965fcbcc568
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 3b5da7eab9cff5c5e051fc4d5ab7ff582a95c20d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715349"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899238"
 ---
-# <a name="using-azure-maps-search-services-for-geocoding-and-reverse-geocoding"></a>使用 Azure 地圖服務搜尋服務進行地理編碼和反向地理編碼
+# <a name="search-for-a-location-using-azure-maps-search-services"></a>使用 Azure 地圖服務搜尋服務搜尋位置
 
 Azure 地圖服務[搜尋服務](https://docs.microsoft.com/rest/api/maps/search)是一組 RESTful api，旨在協助開發人員搜尋位址、位置、依名稱或類別的商務清單，以及其他地理資訊。 除了支援傳統地理編碼，服務也可以根據緯度和經度來反轉地理編碼位址和交叉街道。 搜尋所傳回的緯度和經度值可用來做為其他 Azure 地圖服務服務（例如[路線](https://docs.microsoft.com/rest/api/maps/route)和[氣象](https://docs.microsoft.com/rest/api/maps/weather)服務）中的參數。
 
-讓我們來瞭解如何：
+在本文中，您將瞭解如何：
 
 * 使用[搜尋位址 API]( https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)來要求位址（地理編碼位址位置）的緯度和經度座標
 * 使用[模糊搜尋 API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)搜尋位址或感對的點（POI）
@@ -29,7 +29,7 @@ Azure 地圖服務[搜尋服務](https://docs.microsoft.com/rest/api/maps/search
 
 ## <a name="prerequisites"></a>必要條件
 
-若要完成本文中的步驟，您必須先建立 Azure 地圖服務帳戶，並取得地圖服務帳戶金鑰。 依照[建立帳戶](quick-demo-map-app.md#create-an-account-with-azure-maps)中的指示來建立 Azure 地圖服務帳戶訂用帳戶，並遵循[取得主要金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步驟來取得您帳戶的主要金鑰。 如需 Azure 地圖服務中驗證的詳細資訊，請參閱[Azure 地圖服務中的管理驗證](./how-to-manage-authentication.md)。
+若要完成本文中的步驟，您必須先建立 Azure 地圖服務帳戶，並取得地圖服務帳戶金鑰。 依照[建立帳戶](quick-demo-map-app.md#create-an-account-with-azure-maps)中的指示來建立 Azure 地圖服務帳戶訂用帳戶，並遵循[取得主要金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步驟來取得您帳戶的主要金鑰。 如需 Azure 地圖服務中驗證的詳細資訊，請參閱[管理 Azure 地圖服務中的驗證](./how-to-manage-authentication.md)。
 
 本文使用 [Postman 應用程式](https://www.getpostman.com/apps)來建置 REST 呼叫。 您可以使用您偏好的任何 API 開發環境。
 
@@ -79,7 +79,7 @@ Azure 地圖服務[搜尋服務](https://docs.microsoft.com/rest/api/maps/search
 
 **typeahead** 旗標會指示地址搜尋 API 將查詢視為部分輸入，並傳回預測值的陣列。
 
-## <a name="search-for-an-address-using-fuzzy-search-api"></a>使用模糊搜尋 API 搜尋位址
+## <a name="using-fuzzy-search-api"></a>使用模糊搜尋 API
 
 當您不知道使用者輸入的搜尋查詢內容時，建議使用 Azure 地圖服務[模糊搜尋 API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) 。 此 API 會將相關的點（POI）搜尋和地理編碼結合成標準的「單行搜尋」。 例如，該 API 可以處理任何地址或 POI 權杖之組合的輸入。 API 也可與內容相關的位置進行加權 (lat./lon. pair)，完全受到座標和半徑所限制，或可以更廣泛地執行，不受任何地理偏差錨點影響。
 
@@ -136,49 +136,12 @@ Azure 地圖服務[搜尋服務](https://docs.microsoft.com/rest/api/maps/search
     | lat | 47.620525 |
     | lon | -122.349274 |
 
-## <a name="search-for-address-properties-and-coordinates"></a>搜尋地址內容和座標
 
-您可以將完整或部分街道位址傳遞給搜尋位址 API。 您仍然會收到包含詳細位址屬性的回應。 詳細的位址屬性是高度和經度、municipality 或子分支中的位置值之類的值。
+## <a name="search-for-a-street-address-using-reverse-address-search"></a>使用反向地址搜尋來搜尋街道地址
 
-1. 在 Postman 中，按一下 [新要求] | [取得要求]，然後將它命名為**地址搜尋**。
-2. 在 [建立器] 索引標籤上，選取 [取得] HTTP 方法、輸入您 API 端點的要求 URL，然後選取授權通訊協定 (如果有的話)。
+Azure 地圖服務[取得搜尋位址反向 API]( https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)可協助將座標（範例：37.786505、-122.3862）轉譯為人類易懂的街道位址。 最常見的情況是追蹤應用程式，您會從裝置或資產接收 GPS 摘要，並想要知道座標所在的位址。
+如果您有一組要反向地理編碼的座標位置，您可以在單一 API 呼叫中使用[Post 搜尋位址反向批次 API](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressreversebatch)來傳送查詢批次。
 
-    ![地址搜尋](./media/how-to-search-for-address/address_search_url.png)
-  
-    | 參數 | 建議的值 |
-    |---------------|------------------------------------------------|
-    | HTTP method | GET |
-    | 要求 URL | [https://atlas.microsoft.com/search/address/json?](https://atlas.microsoft.com/search/address/json?) |
-    | 授權 | 無授權 |
-
-3. 按一下 [Params]，然後輸入下列金鑰 / 值組來作為要求 URL 中的查詢或路徑參數：
-  
-    ![地址搜尋](./media/how-to-search-for-address/address_search_params.png)
-  
-    | 索引鍵 | 值 |
-    |------------------|-------------------------|
-    | api-version | 1.0 |
-    | subscription-key | \<您的 Azure 地圖服務金鑰\> |
-    | 查詢 | 400 Broad St, Seattle, WA 98109 |
-  
-4. 按一下 [傳送]，然後檢視回應本文。
-  
-    在此情況下，您指定了完整的地址查詢，並在回應主體中接收單一結果。
-  
-5. 在 Params 中，將查詢字串編輯為下列值：
-    ```plaintext
-        400 Broad, Seattle
-    ```
-
-6. 將下列機碼值組加入 **Params** 區段並按一下 [傳送]：
-
-    | 索引鍵 | 值 |
-    |-----|------------|
-    | typeahead | true |
-
-    **typeahead** 旗標會指示地址搜尋 API 將查詢視為部分輸入，並傳回預測值的陣列。
-
-## <a name="make-a-reverse-address-search"></a>進行反向位址搜尋
 
 1. 在 Postman 中，按一下 [新要求] | [取得要求]，然後將它命名為**反向地址搜尋**。
 
@@ -265,3 +228,4 @@ Azure 地圖服務[搜尋服務](https://docs.microsoft.com/rest/api/maps/search
 ## <a name="next-steps"></a>後續步驟
 
 - 探索 [Azure 地圖服務搜尋服務](https://docs.microsoft.com/rest/api/maps/search) \(英文\) API 文件。
+- 瞭解[最佳作法](https://docs.microsoft.com/azure/azure-maps/how-to-use-best-practices-for-search)。
