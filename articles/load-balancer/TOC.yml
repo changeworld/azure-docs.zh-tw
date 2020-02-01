@@ -6,16 +6,14 @@
       href: load-balancer-overview.md
 - name: 快速入門
   items:
-    - name: 建立 Azure Load Balancer
-      items:
-        - name: 入口網站
-          href: quickstart-load-balancer-standard-public-portal.md
-        - name: Azure CLI
-          href: quickstart-load-balancer-standard-public-cli.md
-        - name: Azure PowerShell
-          href: quickstart-create-standard-load-balancer-powershell.md
-        - name: '[範本]'
-          href: quickstart-load-balancer-standard-public-template.md
+    - name: 入口網站
+      href: quickstart-load-balancer-standard-public-portal.md
+    - name: Azure CLI
+      href: quickstart-load-balancer-standard-public-cli.md
+    - name: Azure PowerShell
+      href: quickstart-create-standard-load-balancer-powershell.md
+    - name: '[範本]'
+      href: quickstart-load-balancer-standard-public-template.md
 - name: 教學課程
   items:
     - name: VM 的負載平衡網際網路流量
@@ -28,6 +26,12 @@
       href: tutorial-load-balancer-standard-public-zonal-portal.md
     - name: 在 Load Balancer 中設定連接埠轉送
       href: tutorial-load-balancer-port-forwarding-portal.md
+- name: 範例
+  items:
+    - name: Azure CLI
+      href: cli-samples.md
+    - name: Azure PowerShell
+      href: powershell-samples.md
 - name: 概念
   items:
     - name: 元件與限制
@@ -109,12 +113,6 @@
       items:
         - name: 針對 Azure Load Balancer 進行疑難排解
           href: load-balancer-troubleshoot.md
-- name: 範例
-  items:
-    - name: Azure CLI
-      href: cli-samples.md
-    - name: Azure PowerShell
-      href: powershell-samples.md
 - name: 參考
   items:
     - name: 程式碼範例

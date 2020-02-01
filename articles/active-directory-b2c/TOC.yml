@@ -382,6 +382,7 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=active-directory-b2c'
     - name: Cookie 定義
       href: cookie-definitions.md
+      displayName: 'cookies, SameSite'
     - name: 錯誤碼
       href: error-codes.md
     - name: 區域可用性與資料落地
