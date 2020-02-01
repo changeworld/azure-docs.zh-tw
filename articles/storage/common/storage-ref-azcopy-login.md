@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: e7998ea0753ba7ab5d97142c34dc9e333f8b4f5d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d6b2fbe28aae8e8233aaeb75bc9b43a35a9ab588
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034070"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905275"
 ---
 # <a name="azcopy-login"></a>azcopy 登入
 
@@ -99,8 +99,10 @@ azcopy login --service-principal --certificate-path /path/to/my/cert
 
 ## <a name="options"></a>選項
 
-|選項|描述|
+|選項|說明|
 |--|--|
+|--aad-端點|要使用的 Azure Active Directory 端點。 預設值（適用于公用 Azure 雲端的 [https://login.microsoftonline.com) ] 是正確的。 在國家雲端中進行驗證時，請設定此參數。 請參閱[Azure AD 驗證端點](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints)。
+受控服務識別不需要此旗標。|
 |--應用程式識別碼字串|使用者指派之身分識別的應用程式識別碼。 服務主體驗證所需。|
 |--憑證-路徑字串|SPN 驗證的憑證路徑。 以憑證為基礎的服務主體驗證所需。|
 |-h, --help|顯示登入命令的說明內容。|
@@ -113,11 +115,11 @@ azcopy login --service-principal --certificate-path /path/to/my/cert
 
 ## <a name="options-inherited-from-parent-commands"></a>繼承自父命令的選項
 
-|選項|描述|
+|選項|說明|
 |---|---|
 |--cap-mbps uint32|上限（以每秒 mb 為單位）傳輸速率。 時間點的輸送量可能會與端點略有不同。 如果此選項設定為零或省略，則輸送量不會限制。|
 |--output-類型字串|命令輸出的格式。 選項包括： text、json。 預設值為 "text"。|
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 - [azcopy](storage-ref-azcopy.md)

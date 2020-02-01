@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI-sfctl 應用程式
 description: 深入瞭解 sfctl，這是 Azure Service Fabric 命令列介面。 包含用來管理應用程式的命令清單。
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 4d416408fd83d7bc316c7045c2a0031fe50d36f5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: b4e1066bba1db387c9dc0600bc55522f0b5fe897
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645407"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906204"
 ---
 # <a name="sfctl-application"></a>sfctl application
 建立、刪除與管理應用程式和應用程式類型。
@@ -529,10 +529,13 @@ ms.locfileid: "75645407"
 
 |引數|說明|
 | --- | --- |
-| --path   [必要] | 本機應用程式套件的路徑。 |
+| --path [必要] | 本機應用程式套件的路徑。 |
+| --壓縮 | 僅適用于 Service Fabric 應用程式封裝。 建立新的資料夾，其中包含壓縮的應用程式封裝到預設位置，或是壓縮位置參數所指定的位置，然後上傳新建立的資料夾。 <br><br> 如果已經有 sfctl 產生的壓縮檔案，則會在設定此旗標時覆寫該檔案。 如果目錄不是應用程式封裝，則會傳回錯誤。 如果它已經是壓縮的應用程式封裝，則會依原樣複製資料夾。 根據預設，在成功上傳之後，新建立的壓縮應用程式封裝將會刪除。 如果上傳未成功，請視需要手動清除壓縮的封裝。 如果壓縮的位置參數參考了不存在的目錄，刪除作業就不會移除任何可能已建立的空白目錄。 |
+| --已壓縮-位置 | 要放置壓縮應用程式封裝的位置。 <br><br> 如果沒有提供位置，壓縮的封裝將會放在新建立的資料夾底下，稱為 sfctl_compressed_temp 在 path 引數中指定的父目錄底下。 例如，如果 path 引數的值為 C\:/FolderA/AppPkg，則壓縮的封裝將會新增至 C\:/FolderA/sfctl_compressed_temp/AppPkg。 |
 | --imagestore-string | 將應用程式套件上傳至其中的目的地映像存放區。  預設值：fabric\:ImageStore。 <br><br> 若要上傳至檔案位置，請使用 ' file\:' 來啟動此參數。 否則，此值應為映射存放區連接字串，例如預設值。 |
+| --保留壓縮 | 是否要在成功上傳完成時保留產生的壓縮封裝。 <br><br> 如果未設定，則在成功完成時，將會刪除壓縮的應用程式套件。 如果上傳失敗，則應用程式封裝一律會保留在輸出目錄中，以供重新上傳。 |
 | --show-progress | 顯示大型套件的檔案上傳進度。 |
-| --timeout -t | 總超時（以秒為單位）。 上傳將會失敗，並在上傳超時時間過後傳回錯誤。 此超時時間適用于整個應用程式封裝，而個別檔案超時會等於剩餘的超時時間。  預設\: 300。 |
+| --timeout -t | 總超時（以秒為單位）。 上傳將會失敗，並在上傳超時時間過後傳回錯誤。 此超時時間適用于整個應用程式封裝，而個別檔案超時會等於剩餘的超時時間。 Timeout 不包含壓縮應用程式封裝所需的時間。  預設\: 300。 |
 
 ### <a name="global-arguments"></a>全域引數
 

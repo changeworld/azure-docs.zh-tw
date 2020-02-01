@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.author: cherylmc
-ms.openlocfilehash: 02e2c0472a6ba7449229a5de5c6d8948be064644
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c4124f46e1b900e240858e4dcd332f13ba0950ec
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845796"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901604"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作夥伴和對等互連位置
 
@@ -205,7 +205,7 @@ Azure 國家/地區雲端彼此隔離，而不是全球商業 Azure。 一個 Az
 | **開普敦** | Teraco | MTN |
 | **芝加哥** | Equinix| Crown Castle，Windstream 的頻譜企業 |
 | **達拉斯** | Equinix、Megaport | Axtel，C3ntro 電信，Cox Business，Crown Castle，資料 Foundry，頻譜企業，Transtelco |
-| **法蘭克福** | Interxion | BICS、Cinia、Nianet、QSC AG、Telekom Deutschland GmbH |
+| **法蘭克福** | Interxion | BICS、Cinia、Equinix、Nianet、QSC AG、Telekom Deutschland GmbH |
 | **漢堡** | Equinix | Cinia |
 | **香港特別行政區** | Equinix | Chief、Macroview Telecom |
 | **約翰尼斯堡** | Teraco | MTN |

@@ -8,14 +8,14 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/28/2019
+ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: b416b38cfac48260f3375696caa2ecabcb4d57a9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 870bb9720500b6eda5e7b9eb258b6764a94f01b6
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75973918"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76903584"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>可保護身分識別基礎結構的五個步驟
 
@@ -28,8 +28,8 @@ ms.locfileid: "75973918"
 * 強化認證。
 * 減少受攻擊面。
 * 將威脅回應自動化。
-* 增加對稽核和監視的認識。
-* 透過自助服務實現更具預測性且更完整的使用者安全性。
+* 利用雲端智慧。
+* 啟用終端使用者自助服務。
 
 閱讀這份檢查清單時，請務必追蹤哪些功能和步驟已完成。
 
@@ -116,7 +116,7 @@ Microsoft 建議採用下列根據 [NIST 指導方針](https://pages.nist.gov/80
 
 請務必瞭解各種[Azure AD 的應用程式同意體驗](https://docs.microsoft.com/azure/active-directory/develop/application-consent-experience)、[許可權和同意類型](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)，以及其對您組織安全性狀態的影響。 根據預設，Azure AD 中的所有使用者都可以授與應用程式，利用 Microsoft 身分識別平臺來存取貴組織的資料。 雖然允許使用者自行同意，可以讓使用者輕鬆地取得與 Microsoft 365、Azure 及其他服務整合的實用應用程式，如果未小心使用和監視，則可能會代表風險。
 
-Microsoft 建議[停用未來的使用者同意作業](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-removing-user-access#i-want-to-disable-all-future-user-consent-operations-to-any-application)，以協助降低您的介面區並降低此風險。 如果停用使用者同意，仍然會接受先前的同意授與，但所有未來的同意作業都必須由系統管理員執行。 使用者可以透過整合式[管理員同意要求工作流程](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow)或您自己的支援程式來要求系統管理員同意。 停用此功能之前，建議您先檢查您的審核記錄，以瞭解使用者同意哪些應用程式，並據此規劃變更。 對於您想要允許所有使用者存取的應用程式，請考慮[代表所有使用者](https://docs.microsoft.com/azure/active-directory/develop/v2-admin-consent)授與同意，並確保尚未個別同意的使用者能夠存取應用程式。 如果您不想讓這些應用程式可供所有案例中的所有使用者使用，請使用[應用程式指派](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups)和[條件式存取](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)來限制使用者對應用程式的存取。
+Microsoft 建議[停用未來的使用者同意作業](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-removing-user-access#i-want-to-disable-all-future-user-consent-operations-to-any-application)，以協助降低您的介面區並降低此風險。 如果停用使用者同意，仍然會接受先前的同意授與，但所有未來的同意作業都必須由系統管理員執行。 使用者可以透過整合式[管理員同意要求工作流程](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow)或您自己的支援程式來要求系統管理員同意。 停用使用者同意之前，請使用我們的[建議](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-consent-requests)，在您的組織中規劃這項變更。 對於您想要允許所有使用者存取的應用程式，請考慮[代表所有使用者](https://docs.microsoft.com/azure/active-directory/develop/v2-admin-consent)授與同意，並確保尚未個別同意的使用者能夠存取應用程式。 如果您不想讓這些應用程式可供所有案例中的所有使用者使用，請使用[應用程式指派](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups)和[條件式存取](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)來限制使用者對應用程式的存取。
 
 請確定使用者可以要求系統管理員核准新的應用程式，以減少使用者的摩擦、將支援量降到最低，以及防止使用者使用非 Azure AD 認證來註冊應用程式。 一旦您控制同意作業，系統管理員應該定期審核應用程式和同意的許可權。
 
@@ -134,7 +134,7 @@ Microsoft 建議[停用未來的使用者同意作業](https://docs.microsoft.co
 
 啟用 Azure AD PIM，然後檢視已獲派系統管理角色的使用者，並將這些角色中的不必要帳戶移除。 對於其餘特殊權限使用者，則將它們從永久性角色改為合適角色。 最後，請建立適當原則，以確定當使用者需要存取那些特殊權限角色時，可以搭配必要的變更控制安全地進行。
 
-在部署特殊權限帳戶程序時，請遵循[最佳做法建立至少兩個緊急帳戶](../../active-directory/users-groups-roles/directory-admin-roles-secure.md)，以確定您自己在遭到鎖定時，仍可存取 Azure AD。
+在部署您的特殊許可權帳戶程式的過程中，請遵循[最佳作法來建立至少兩個緊急帳戶](../../active-directory/users-groups-roles/directory-admin-roles-secure.md)，以確保您可以在鎖定自己時，繼續存取 Azure AD。
 
 ## <a name="step-3---automate-threat-response"></a>步驟 3 - 將威脅回應自動化
 
@@ -152,7 +152,7 @@ Azure Active Directory 有許多會自動攔截攻擊的功能，可讓偵測與
 
 ![從匿名 IP 登入](./media/steps-secure-identity/azure-ad-sec-steps2.png)
 
-## <a name="step-4---increase-your-awareness"></a>步驟 4 - 增加認識
+## <a name="step-4---utilize-cloud-intelligence"></a>步驟 4-利用雲端智慧
 
 安全性相關事件的稽核和記錄及相關警示是有效保護策略的重要元件。 安全性記錄和報告會提供可疑活動的電子記錄，並協助您偵測可能指出從外部嘗試或成功滲透網路以及內部攻擊的模式。 您可以使用審核來監視使用者活動、記載法規合規性、進行法庭分析等等。 警示會提供安全性事件通知。
 
@@ -180,7 +180,7 @@ Azure AD Identity Protection 能提供兩個您應該每天監視的重要報告
 
 使用者可以誘騙流覽至遭入侵的網站，或能夠存取其設定檔資訊和使用者資料的應用程式，例如其電子郵件。 惡意的執行者可以使用其所接收到的已同意權限來對使用者的信箱內容進行加密，並要求使用者支付贖金以重新存取其信箱資料。 系統[管理員應該檢查並審核](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants)使用者所提供的許可權，或停用使用者預設同意的能力。
 
-除了審核使用者所提供的許可權之外，它也可以協助您嘗試並明確[找出有風險或不想要的 OAuth 應用程式](https://docs.microsoft.com/cloud-app-security/investigate-risky-oauth)，這是高階環境可用的功能。
+除了審核使用者所提供的許可權之外，您還可以在高階環境中找出有[風險或不想要的 OAuth 應用程式](https://docs.microsoft.com/cloud-app-security/investigate-risky-oauth)。
 
 ## <a name="step-5---enable-end-user-self-service"></a>步驟 5-啟用終端使用者自助服務
 
@@ -196,7 +196,7 @@ Azure AD 提供非系統管理員使用安全性群組、Office 365 群組、應
 
 ### <a name="implement-azure-ad-access-reviews"></a>實作 Azure AD 存取權檢閱
 
-透過[Azure AD 的存取權審查](../../active-directory/governance/access-reviews-overview.md)，您可以管理存取套件和群組成員資格、企業應用程式的存取權，以及特殊許可權角色指派，以確保您維持安全性標準。  使用者本身的定期監督、資源擁有者和其他審查人員可確保使用者在不再需要時，不會長期保留存取權。
+透過[Azure AD 的存取權審查](../../active-directory/governance/access-reviews-overview.md)，您可以管理存取套件和群組成員資格、企業應用程式的存取權，以及特殊許可權角色指派，以確保您維持安全性標準。  使用者本身、資源擁有者和其他審核者的定期監督，可確保使用者在不再需要時，不會長期保留存取權。
 
 ## <a name="summary"></a>摘要
 
@@ -205,7 +205,7 @@ Azure AD 提供非系統管理員使用安全性群組、Office 365 群組、應
 * 強化認證。
 * 減少受攻擊面。
 * 將威脅回應自動化。
-* 增加對稽核和監視的認識。
+* 利用雲端智慧。
 * 透過自助服務實現更具預測性且更完整的使用者安全性。
 
 我們非常感謝您如此嚴肅地看待身分識別安全性，希望這份文件有助於讓貴組織達成更安全的狀態。

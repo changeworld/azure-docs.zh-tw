@@ -9,12 +9,12 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/30/2019
 tags: connectors
-ms.openlocfilehash: a9cf818e8b31ea2efb2f2ef2f0848a759e017dfa
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 3990a9d53a8e53ddd29683440917031bc1bb6448
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790868"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904646"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>從 Azure Logic Apps 連線至 SAP 系統
 
@@ -213,7 +213,7 @@ SAP 連接器會透過[內部部署資料閘道](../logic-apps/logic-apps-gatewa
 1. 傳送 HTTP 要求後，請等候來自邏輯應用程式的回應。
 
    > [!NOTE]
-   > 如果回應所需的所有步驟未在[要求逾時期限](./logic-apps-limits-and-config.md)內完成，邏輯應用程式可能會逾時。 如果發生此情況，要求可能就會遭到封鎖。 為協助您診斷問題，請了解如何[檢查和監控邏輯應用程式](../logic-apps/logic-apps-monitor-your-logic-apps.md)。
+   > 如果回應所需的所有步驟未在[要求逾時期限](./logic-apps-limits-and-config.md)內完成，邏輯應用程式可能會逾時。 如果發生此情況，要求可能就會遭到封鎖。 為協助您診斷問題，請了解如何[檢查和監控邏輯應用程式](../logic-apps/monitor-logic-apps.md)。
 
 您現在已建立可與您的 SAP 伺服器通訊的邏輯應用程式。 您現在已為邏輯應用程式設定 SAP 連線，接下來可探索其他可用的 SAP 動作如：BAPI 和 RFC。
 
@@ -464,7 +464,7 @@ SAP 連接器會透過[內部部署資料閘道](../logic-apps/logic-apps-gatewa
 
    ![在連接中設定 SAP SNC](media/logic-apps-using-sap-connector/configure-sapsnc.png)
 
-   | 屬性 | 描述 |
+   | 屬性 | 說明 |
    |----------| ------------|
    | **SNC 程式庫路徑** | 相對於 NCo 安裝位置或絕對路徑的 SNC 程式庫名稱或路徑。 範例 `sapsnc.dll` 或 `.\security\sapsnc.dll` 或 `c:\security\sapsnc.dll`。 |
    | **SNC SSO** | 當您透過 SNC 連接時，SNC 身分識別通常用來驗證呼叫端。 另一個選項是覆寫，讓使用者和密碼資訊可以用來驗證呼叫者，但這一行仍然是加密的。 |
@@ -546,7 +546,7 @@ SAP 連接器會透過[內部部署資料閘道](../logic-apps/logic-apps-gatewa
 
    執行此步驟之後，在 SAP 連接器端和 SAP 系統端上，目前的交易都會標示為「已完成」。
 
-## <a name="known-issues-and-limitations"></a>已知問題與限制
+## <a name="known-issues-and-limitations"></a>已知問題和限制
 
 以下是 SAP 連接器目前的已知問題和限制：
 

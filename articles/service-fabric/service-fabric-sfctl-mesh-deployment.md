@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI-sfctl 網狀架構部署
 description: 深入瞭解 sfctl，這是 Azure Service Fabric 命令列介面。 包含用來建立 Service Fabric 網格資源的命令清單。
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 6512cce075906fc8708a39fa0747ec27be33e961
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 108389407221779ed20e81310f084b7b5c23b8c7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645356"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906035"
 ---
 # <a name="sfctl-mesh-deployment"></a>sfctl mesh deployment
 建立 Service Fabric Mesh 資源。
@@ -28,8 +28,8 @@ ms.locfileid: "75645356"
 
 |引數|說明|
 | --- | --- |
-| --input-yaml-files [必要] | 以逗號分隔的所有 yaml 檔案的相對/絕對檔案路徑，或包含 yaml 檔案之目錄的相對/絕對路徑（遞迴）。 |
-| --parameters | Yaml 檔案或 json 物件的相對/絕對路徑，其中包含需要覆寫的參數。 |
+| --input-yaml-files [必要] | 以逗號分隔的所有 yaml 檔案或包含 yaml 檔案之目錄（遞迴）的相對或絕對路徑的相對或絕對檔案路徑。 |
+| --parameters | Yaml 檔或 json 物件的相對或絕對路徑，其中包含需要覆寫的參數。 |
 
 ### <a name="global-arguments"></a>全域引數
 

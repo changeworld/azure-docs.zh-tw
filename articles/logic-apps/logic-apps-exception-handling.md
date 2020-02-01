@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
-ms.openlocfilehash: 21314d3c80832c14538130ce373ccf6d2dd19f18
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 73b116117530e5a2103b604efbf757d691006508
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965942"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906691"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>處理 Azure Logic Apps 中的錯誤和例外狀況
 
@@ -360,9 +360,9 @@ ms.locfileid: "75965942"
 
 若要執行不同的例外狀況處理模式，您可以使用本文前面描述的運算式。 您可以選擇在範圍之外執行單一例外狀況處理動作，以接受整個篩選後的失敗陣列，並移除 `For_each` 動作。 如先前所述，您也可以包含 `\@result()` 回應中的其他有用屬性。
 
-## <a name="azure-diagnostics-and-metrics"></a>Azure 診斷和計量
+## <a name="set-up-azure-monitor-logs"></a>設定 Azure 監視器記錄
 
-上述模式非常適合處理執行內的錯誤和例外狀況，但您也可以識別和回應與執行本身無關的錯誤。 [Azure 診斷](../logic-apps/logic-apps-monitor-your-logic-apps.md)提供一個簡單的方式，將所有工作流程事件（包括所有執行和動作狀態）傳送至 Azure 儲存體帳戶或使用[Azure 事件中樞](../event-hubs/event-hubs-about.md)建立的事件中樞。
+上述模式非常適合處理執行內的錯誤和例外狀況，但您也可以識別和回應與執行本身無關的錯誤。 [Azure 監視器](../azure-monitor/overview.md)提供一個簡單的方式，將所有工作流程事件（包括所有執行和動作狀態）傳送至[Log Analytics 工作區](../azure-monitor/platform/data-platform-logs.md)、 [Azure 儲存體帳戶](../storage/blobs/storage-blobs-overview.md)或[Azure 事件中樞](../event-hubs/event-hubs-about.md)。
 
 若要評估執行狀態，您可以監視記錄和度量，或將它們發佈至您偏好使用的任何監視工具。 其中一個可能的選項是透過「事件中樞」將所有事件串流到 [Azure 串流分析](https://azure.microsoft.com/services/stream-analytics/)。 在「串流分析」中，您可以根據診斷記錄中的任何異常、平均或失敗，撰寫即時查詢。 您可以使用「串流分析」將資訊傳送到其他資料來源，例如傳送到佇列、主題、SQL、Azure Cosmos DB 或 Power BI。
 

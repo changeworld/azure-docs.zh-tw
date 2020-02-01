@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 527d0a602b9da1f2d4f21890e896eba9a951494b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 887c10097187f193f55c6e301be3e739a16d6bf7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842711"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906917"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>針對 Azure 檔案同步進行移難排解
 使用 Azure 檔案同步，將組織的檔案共用集中在 Azure 檔案服務中，同時保有內部部署檔案伺服器的彈性、效能及相容性。 Azure 檔案同步會將 Windows Server 轉換成 Azure 檔案共用的快速快取。 您可以使用 Windows Server 上可用的任何通訊協定來從本機存取資料，包括 SMB、NFS 和 FTPS。 您可以視需要存取多個散佈於世界各地的快取。
@@ -1102,7 +1102,7 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 | 0x80c83007 | -2134364153 | ECS_E_STORAGE_ERROR | 因為 Azure 儲存體問題，所以無法將檔案分層。 | 如果錯誤持續發生，請開啟支援要求。 |
 | 0x800703e3 | -2147023901 | ERROR_OPERATION_ABORTED | 檔案無法進行層級，因為它已在同一時間重新叫用。 | 不需要任何動作。 當召回完成且檔案不再使用時，此檔案會進行分層。 |
 | 0x80c80264 | -2134375836 | ECS_E_GHOSTING_FILE_NOT_SYNCED | 檔案無法進行階層處理，因為它尚未同步處理至 Azure 檔案共用。 | 不需要任何動作。 當檔案已同步處理至 Azure 檔案共用之後，就會進行層級。 |
-| 0x80070001 | -2147942401 | ERROR_INVALID_FUNCTION | 因為雲端階層處理篩選器驅動程式（microsoft.storagesync）並未執行，所以檔案無法進行層次處理。 | 若要解決此問題，請開啟提升許可權的命令提示字元，然後執行下列命令： fltmc load microsoft.storagesync <br>如果執行 fltmc 命令時，microsoft.storagesync 篩選器驅動程式無法載入，請將 Azure 檔案同步代理程式卸載，重新開機伺服器，然後重新安裝 Azure 檔案同步代理程式。 |
+| 0x80070001 | -2147942401 | ERROR_INVALID_FUNCTION | 因為雲端階層處理篩選器驅動程式（microsoft.storagesync）並未執行，所以檔案無法進行層次處理。 | 若要解決此問題，請開啟提升許可權的命令提示字元，然後執行下列命令： `fltmc load storagesync`<br>如果執行 fltmc 命令時，microsoft.storagesync 篩選器驅動程式無法載入，請將 Azure 檔案同步代理程式卸載，重新開機伺服器，然後重新安裝 Azure 檔案同步代理程式。 |
 | 0x80070070 | -2147024784 | ERROR_DISK_FULL | 因為伺服器端點所在磁片區上的磁碟空間不足，所以無法將檔案分層。 | 若要解決此問題，請在伺服器端點所在的磁片區上釋放至少 100 MB 的磁碟空間。 |
 | 0x80070490 | -2147023728 | ERROR_NOT_FOUND | 檔案無法進行階層處理，因為它尚未同步處理至 Azure 檔案共用。 | 不需要任何動作。 當檔案已同步處理至 Azure 檔案共用之後，就會進行層級。 |
 | 0x80c80262 | -2134375838 | ECS_E_GHOSTING_UNSUPPORTED_RP | 檔案無法進行層級，因為它是不支援的重新分析點。 | 如果檔案是重復資料刪除重新分析點，請遵循[規劃指南](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#data-deduplication)中的步驟來啟用重復資料刪除支援。 不支援重復資料刪除以外的重新分析點的檔案，也不會進行分層。  |

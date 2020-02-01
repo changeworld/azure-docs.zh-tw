@@ -7,6 +7,7 @@ author: curtand
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.subservice: pim
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,12 +16,12 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92ea116414e12cb231fdbaa5ec9ad375d2c0eea9
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 06ceb2d2c98c3f9b6b184b98ddaadea610d525d2
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74144993"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896565"
 ---
 # <a name="activate-an-azure-ad-custom-role-in-privileged-identity-management"></a>在 Privileged Identity Management (PIM) 中啟用 Azure AD 自訂角色
 
@@ -53,7 +54,7 @@ Azure Active Directory (Azure AD) 中的 Privileged Identity Management 現在�
 
 1. 如有需要，請指定自訂的啟用開始時間。 使用時，角色成員會在指定的時間啟用。
 1. 在 [原因] 方塊中輸入此啟用要求的原因。 這在角色設定中可以是必要或非必要的項目。
-1. 選取 [ **啟用**]。
+1. 選取 [啟用]。
 
 如果角色不需要核准，則會根據您的設定加以啟用，並新增至作用中角色的清單。 如果您想要使用已啟用的角色，請從[在 Privileged Identity Management 中指派 Azure AD 自訂角色](azure-ad-custom-roles-assign.md)中的步驟開始操作。
 

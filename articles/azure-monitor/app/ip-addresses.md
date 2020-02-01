@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 12/19/2019
-ms.openlocfilehash: c571a4f36372b250a05564182b240bc4007240a1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 02f1e5e3f3252ffa026d8dffe9fe83c9e5abe65b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977804"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899154"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Application Insights 和 Log Analytics 使用的 IP 位址
 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 服務會使用一些 IP 位址。 如果您所監視的應用程式裝載於防火牆後面，您可能需要知道這些位址。
@@ -56,6 +56,14 @@ ms.locfileid: "75977804"
 
 ## <a name="availability-tests"></a>可用性集合
 這是用來執行 [可用性 Web 測試](../../azure-monitor/app/monitor-web-app-availability.md) 的位址清單。 如果您想要在您的應用程式上執行 Web 測試，但您的 Web 伺服器限於為特定用戶端提供服務，則您必須允許來自我們的可用性測試伺服器的連入流量。
+
+如果您使用 Azure 網路安全性群組，請直接新增**輸入連接埠規則**，以允許來自 Application Insights 可用性測試的流量，方法是選取 [**服務**標籤] 做**為來源，** 並**ApplicationInsightsAvailability**作為**來源服務標記**。
+
+>[!div class="mx-imgBorder"]
+>![在 [設定] 下選取 [輸入安全性規則]，然後選取索引標籤頂端的 [新增] ](./media/ip-addresses/add-inbound-security-rule.png)
+
+>[!div class="mx-imgBorder"]
+>![新增輸入安全性規則 索引標籤](./media/ip-addresses/add-inbound-security-rule2.png)
 
 為來自這些位址 (IP 位址會依照位置分組) 的連入流量開啟連接埠 80 (http) 和 443 (https)︰
 

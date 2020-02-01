@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 01/15/2020
+ms.date: 01/29/2020
 ms.author: mlearned
-ms.openlocfilehash: 5df7a8a639c87f90df0d3d22f84c4e93ac81e3a2
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 661ed72265b81f47cbe8e9cf26595632360ec352
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028318"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898802"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 上建立 HTTPS 輸入控制器
 
@@ -92,7 +92,7 @@ az network dns record-set a add-record \
 ```
 
 > [!NOTE]
-> （選擇性）您可以設定輸入控制器 IP 位址的 FQDN，而不是自訂網域。
+> （選擇性）您可以設定輸入控制器 IP 位址的 FQDN，而不是自訂網域。 請注意，此範例適用于 Bash shell。
 > 
 > ```azurecli-interactive
 > # Public IP address of your ingress controller

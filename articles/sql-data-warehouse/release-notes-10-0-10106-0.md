@@ -11,12 +11,12 @@ ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6d51213402f852daee8fe4a6b5dbbd473afda659
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 917a698840850182d2d41ef780ba01d948e11c2f
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122452"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896382"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Azure SQL 資料倉儲版本資訊
 
@@ -38,6 +38,7 @@ ms.locfileid: "76122452"
 | --- | --- |
 |**工作負載管理入口網站計量（預覽）**|隨著過去10月的預覽[工作負載隔離](/azure/sql-data-warehouse/sql-data-warehouse-workload-isolation)版本，使用者可以建立自己的[工作負載群組](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)，以有效率地管理系統資源，並確保符合商務 sla。  作為 Azure Synapse 分析的整體[工作負載管理](/azure/sql-data-warehouse/sql-data-warehouse-workload-management)增強功能的一部分，現在提供新的[工作負載管理監視計量](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor)。</br> </br> 監視您的工作負載現在具有下列計量的更深入見解： </br> -有效的 cap 資源百分比  </br> -有效的最低資源百分比 </br> -工作負載群組作用中查詢 </br> -依最大資源百分比配置的工作負載群組 </br> -依系統百分比配置的工作負載群組 </br> -工作負載群組查詢超時 </br> -工作負載群組佇列查詢 </br></br> 使用這些計量來識別[工作負載群組瓶頸](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor#workload-group-bottleneck)或設定了使用量過[低之工作負載隔離](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor#underutilized-workload-isolation)的工作負載群組。  這些度量可在 Azure 入口網站中使用，允許依工作負載群組進行分割。  篩選您最愛的圖形，並將其釘選到儀表板，以快速存取見解。|
 |**入口網站監視計量**| 已將下列計量新增至入口網站，以監視整體查詢活動： </br> -使用中查詢 </br> -已排入佇列的查詢 </br> </br>這些計量會與[監視資源使用率和查詢使用中的檔案](/azure/sql-data-warehouse/sql-data-warehouse-concept-resource-utilization-query-activity)中的現有計量一併說明。|
+|**產品名稱**|自2020年6月起，SELECT @@VERSION 所傳回的產品名稱將從 Microsoft Azure SQL 資料倉儲變更為 Azure Synapse 分析。 我們將在我們的版本資訊中發佈排程。 這項變更與在應用程式代碼中從 SELECT @@VERSION 的結果中剖析產品名稱的客戶有關。 若要避免因為產品品牌再造而變更應用程式代碼，請使用下列命令來查詢 SERVERPROPERTY 中的資料庫產品名稱和版本。 </br> 傳回 DW 版本號碼 XX。X XXXXX。X （不含產品名稱）使用此命令：選取 SERVERPROPERTY （' ProductVersion '） </br> 若要傳回 engine 版本，請使用此命令，以針對 Azure Synapse Analytics （先前為 SQL 資料倉儲）傳回6： SELECT SERVERPROPERTY （' EngineEdition '）|
 
 ## <a name="october-2019"></a>2019 年 10 月
 

@@ -1,16 +1,14 @@
 ---
 title: Azure Service Fabric 診斷常見案例
 description: 深入瞭解如何針對 Azure Service Fabric 應用程式中常見的監視和診斷案例進行疑難排解。
-author: srrengar
 ms.topic: article
 ms.date: 02/25/2019
-ms.author: srrengar
-ms.openlocfilehash: b012e37bef7fe21e869fc3af415ca57b74c61dd8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 3c7f027bad71d48db5fba002f778f23db8225fa5
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645781"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906941"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>針對 Service Fabric 的常見案例進行診斷
 
@@ -134,6 +132,7 @@ ms.locfileid: "75645781"
 
 ## <a name="next-steps"></a>後續步驟
 
+* [查詢一般程式碼套件啟用錯誤](./service-fabric-diagnostics-code-package-errors.md)
 * [在 AI 中設定警示](../azure-monitor/app/alerts.md)以收到效能或使用方式的變更通知
 * [Application Insights 的智慧偵測](../azure-monitor/app/proactive-diagnostics.md)會對傳送至 AI 的遙測資料執行主動式分析，對可能的效能問題提出警告。
 * 深入瞭解 Azure 監視器記錄[警示](../log-analytics/log-analytics-alerts.md)，以協助偵測和診斷。

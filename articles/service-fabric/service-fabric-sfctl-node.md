@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI-sfctl 節點
 description: 深入瞭解 sfctl，這是 Azure Service Fabric 命令列介面。 包含用來管理叢集節點的命令清單。
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 43b242d6c7c41b6198b8f909ab5ae056f0982307
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 5881e6485003abd4fd23a7f6d06a428e768c00fa
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645288"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905871"
 ---
 # <a name="sfctl-node"></a>sfctl node
 管理形成叢集的節點。
@@ -19,17 +19,44 @@ ms.locfileid: "75645288"
 
 |Command|說明|
 | --- | --- |
+| 新增-設定-參數-覆寫 | 在指定的節點上新增設定覆寫清單。 |
 | disable | 停用有指定停用意圖的 Service Fabric 叢集節點。 |
 | enable | 啟用目前停用的 Service Fabric 叢集節點。 |
+| 取得-設定-覆寫 | 取得指定節點上的設定覆寫清單。 |
 | 醫療 | 取得 Service Fabric 節點的健康情況。 |
 | info | 取得 Service Fabric 叢集中特定節點的相關資訊。 |
 | list | 取得 Service Fabric 叢集中的節點清單。 |
 | load | 取得 Service Fabric 節點的負載資訊。 |
+| 移除-設定-覆寫 | 移除指定節點上的設定覆寫。 |
 | remove-state | 通知 Service Fabric 某個節點上的永續性狀態已永久移除或遺失。 |
 | report-health | 傳送 Service Fabric 節點的健康情況報告。 |
 | restart | 重新啟動 Service Fabric 叢集節點。 |
 | transition | 啟動或停止叢集節點。 |
 | transition-status | 取得使用 StartNodeTransition 啟動的作業進度。 |
+
+## <a name="sfctl-node-add-configuration-parameter-overrides"></a>sfctl 節點新增-設定-參數-覆寫
+在指定的節點上新增設定覆寫清單。
+
+此 api 可讓您在指定的節點上新增所有現有的設定覆寫。
+
+### <a name="arguments"></a>引數
+
+|引數|說明|
+| --- | --- |
+| --config-參數-覆寫-清單 [必要] | 新增設定覆寫清單的描述。 |
+| --node-name [Required] | 節點的名稱。 |
+| --force | 強制在指定的節點上新增設定覆寫。 |
+| --timeout -t | 執行作業的伺服器超時（以秒為單位）。 這個超時時間會指定用戶端願意等待要求的作業完成的持續期間。 此參數的預設值為60秒。  預設值\: 60。 |
+
+### <a name="global-arguments"></a>全域引數
+
+|引數|說明|
+| --- | --- |
+| --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
+| --help -h | 顯示此說明訊息並結束。 |
+| --output -o | 輸出格式。  允許的值\:json、jsonc、table、tsv。  預設值\:json。 |
+| --query | JMESPath 查詢字串。 如需詳細資訊和範例，請參閱 http\://jmespath.org/。 |
+| --verbose | 增加記錄詳細資訊。 使用 --debug 來取得完整偵錯記錄。 |
 
 ## <a name="sfctl-node-disable"></a>sfctl node disable
 停用有指定停用意圖的 Service Fabric 叢集節點。
@@ -58,6 +85,28 @@ ms.locfileid: "75645288"
 啟用目前停用的 Service Fabric 叢集節點。
 
 啟用目前停用的 Service Fabric 叢集節點。 節點在啟用之後，將再次成為可供放置新複本的目標，且留在節點上的所有已停用複本都會重新啟用。
+
+### <a name="arguments"></a>引數
+
+|引數|說明|
+| --- | --- |
+| --node-name [必要] | 節點的名稱。 |
+| --timeout -t | 執行作業的伺服器超時（以秒為單位）。 這個超時時間會指定用戶端願意等待要求的作業完成的持續期間。 此參數的預設值為60秒。  預設值\: 60。 |
+
+### <a name="global-arguments"></a>全域引數
+
+|引數|說明|
+| --- | --- |
+| --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
+| --help -h | 顯示此說明訊息並結束。 |
+| --output -o | 輸出格式。  允許的值\:json、jsonc、table、tsv。  預設值\:json。 |
+| --query | JMESPath 查詢字串。 如需詳細資訊和範例，請參閱 http\://jmespath.org/。 |
+| --verbose | 增加記錄詳細資訊。 使用 --debug 來取得完整偵錯記錄。 |
+
+## <a name="sfctl-node-get-configuration-overrides"></a>sfctl 節點取得設定-覆寫
+取得指定節點上的設定覆寫清單。
+
+此 api 可讓您取得指定節點上所有現有的設定覆寫。
 
 ### <a name="arguments"></a>引數
 
@@ -167,10 +216,32 @@ ms.locfileid: "75645288"
 | --query | JMESPath 查詢字串。 如需詳細資訊和範例，請參閱 http\://jmespath.org/。 |
 | --verbose | 增加記錄詳細資訊。 使用 --debug 來取得完整偵錯記錄。 |
 
+## <a name="sfctl-node-remove-configuration-overrides"></a>sfctl 節點移除-設定-覆寫
+移除指定節點上的設定覆寫。
+
+此 api 允許移除指定節點上所有現有的設定覆寫。
+
+### <a name="arguments"></a>引數
+
+|引數|說明|
+| --- | --- |
+| --node-name [必要] | 節點的名稱。 |
+| --timeout -t | 執行作業的伺服器超時（以秒為單位）。 這個超時時間會指定用戶端願意等待要求的作業完成的持續期間。 此參數的預設值為60秒。  預設值\: 60。 |
+
+### <a name="global-arguments"></a>全域引數
+
+|引數|說明|
+| --- | --- |
+| --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
+| --help -h | 顯示此說明訊息並結束。 |
+| --output -o | 輸出格式。  允許的值\:json、jsonc、table、tsv。  預設值\:json。 |
+| --query | JMESPath 查詢字串。 如需詳細資訊和範例，請參閱 http\://jmespath.org/。 |
+| --verbose | 增加記錄詳細資訊。 使用 --debug 來取得完整偵錯記錄。 |
+
 ## <a name="sfctl-node-remove-state"></a>sfctl node remove-state
 通知 Service Fabric 某個節點上的永續性狀態已永久移除或遺失。
 
-這意謂著無法復原該節點的永續性狀態。 通常如果已將硬碟抹除乾淨或硬碟損毀，就會發生這種情況。 節點必須停止運作，此作業才能成功。 此作業可讓 Service Fabric 知道該節點上的複本已不存在，而 Service Fabric 應該停止等候這些複本恢復運作。 如果節點上的狀態尚未移除，而節點能夠在其狀態保持不變的情況下恢復運作，則請勿執行此 Cmdlet。 從 Service Fabric 6.5 開始，若要將此 API 用於種子節點，請將種子節點變更為一般（非種子）節點，然後叫用此 API 以移除節點狀態。 如果叢集在 Azure 上執行，則種子節點關閉後，Service Fabric 會嘗試自動將其變更為非種子節點。 若要進行這項操作，請確定主要節點類型中的非種子節點數目不小於向下種子節點的數目。 如有必要，請將更多節點新增至主要節點類型，以達成此目的。 針對獨立叢集，如果 [關閉種子] 節點不會在其狀態保持不變時恢復運作，請從叢集移除節點，請參閱 HTTPs\://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes。
+這意謂著無法復原該節點的永續性狀態。 通常如果已將硬碟抹除乾淨或硬碟損毀，就會發生這種情況。 節點必須停止運作，此作業才能成功。 此作業可讓 Service Fabric 知道該節點上的複本已不存在，而 Service Fabric 應該停止等候這些複本恢復運作。 如果節點上的狀態尚未移除，而節點能夠在其狀態保持不變的情況下恢復運作，則請勿執行此 Cmdlet。 從 Service Fabric 6.5 開始，若要將此 API 用於種子節點，請將種子節點變更為一般（非種子）節點，然後叫用此 API 以移除節點狀態。 如果叢集在 Azure 上執行，則種子節點關閉後，Service Fabric 會嘗試自動將其變更為非種子節點。 若要進行這項操作，請確定主要節點類型中的非種子節點數目不小於向下種子節點的數目。 如有必要，請將更多節點新增至主要節點類型，以達成此目的。 針對獨立叢集，如果 [關閉種子] 節點不會在其狀態保持不變時恢復運作，請從叢集移除節點，請參閱 HTTPs\://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes。
 
 ### <a name="arguments"></a>引數
 
@@ -207,7 +278,7 @@ ms.locfileid: "75645288"
 | --remove-when-expired | 指出是否要在報告到期時將報告自健康狀態資料存放區中移除的值。 <br><br> 如果設定為 true，就會在報告到期後，將報告自健康狀態資料存放區中移除。 如果設定為 false，則會在報告到期後，將報告視為錯誤。 此屬性的值預設為 false。 當用戶端會定期回報時，應該將 RemoveWhenExpired 設定為 false (預設值)。 如此一來，如果報告程式發生問題 (例如死結) 而無法回報，在健康情況報告到期時，系統就會將實體評估為錯誤。 這會將實體標幟為處於「錯誤」健康情況狀態。 |
 | --sequence-number | 此健康情況報告的序號 (以數值字串表示)。 <br><br> 健康狀態資料存放區會使用報告序號來偵測過時的報告。 如果未指定，就會在新增報告時，由健康情況用戶端自動產生序號。 |
 | --timeout -t | 預設值\: 60。 |
-| --ttl | 此健康情況報告的有效持續時間。 此欄位使用 ISO8601 格式指定持續時間。 <br><br> 當用戶端會定期回報時，其傳送報告的頻率應該高於存留時間。 如果用戶端報告轉換，可以將時間太長，設定為無限。 如果 RemoveWhenExpired 為 true，當存留時間到期時，系統會將包含健康情況資訊的健康情況事件自健康狀態資料存放區中移除，如果 RemoveWhenExpired 為 false，則會將該事件評估為錯誤。 如果未指定，存留時間會預設為 infinite 值。 |
+| --ttl | 此健康情況報告的有效持續時間。 此欄位使用 ISO8601 格式指定持續時間。 <br><br> 當用戶端會定期回報時，其傳送報告的頻率應該高於存留時間。 如果用戶端會針對轉換進行回報，則可以將存留時間設定為無限。 如果 RemoveWhenExpired 為 true，當存留時間到期時，系統會將包含健康情況資訊的健康情況事件自健康狀態資料存放區中移除，如果 RemoveWhenExpired 為 false，則會將該事件評估為錯誤。 如果未指定，存留時間會預設為 infinite 值。 |
 
 ### <a name="global-arguments"></a>全域引數
 

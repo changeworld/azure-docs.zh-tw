@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: jonbeck
-ms.openlocfilehash: 5e10c0905237f3cc28dd0ac113dfaf844e781bac
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: c16ff8fed19340811578ccb39cbac7242b7c5861
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646654"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905735"
 ---
 # <a name="sizes-for-linux-virtual-machines-in-azure"></a>Azure 中的 Linux 虛擬機器大小
 本文說明可用於執行 Linux 應用程式與工作負載之 Azure 虛擬機器的可用大小及選項。 同時也提供當您規劃使用這些資源時所需注意的部署考量。 本文也適用於 [Windows 虛擬機器](../windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
@@ -67,7 +67,7 @@ ms.locfileid: "75646654"
 - [儲存體最佳化](sizes-storage.md)
 - [GPU](sizes-gpu.md)
 - [高效能計算](sizes-hpc.md)
-- 查看 A 標準，Dv1 (D1-4 及 D11-14 v1) 與 A8-A11 系列的[上一代](sizes-previous-gen.md)頁面
+- 查看[前一代](sizes-previous-gen.md)頁面，以取得基本和標準、高效能的 A8-A11、D/DSv1 （D1-4 和 D11-14 v1）、F/Fsv1、G/GS、Lsv1 和 NVv2 系列。
 
 
 

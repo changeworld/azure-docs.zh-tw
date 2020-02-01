@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/25/2019
+ms.date: 01/30/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d14e6f98f49f112c8b20abec573b48c3b12705db
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f171d9d71d3e6f8fa57671578502675442293793
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841228"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76908921"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中自訂使用者介面
 
@@ -31,6 +31,9 @@ ms.locfileid: "76841228"
 如果您使用[使用者流程](user-flow-overview.md)，您可以使用內建的*頁面配置範本*，或使用您自己的 HTML 和 CSS 來變更使用者流程頁面的外觀。 本文稍後將討論這兩種方法。
 
 您可以使用[Azure 入口網站](tutorial-customize-ui.md)來設定使用者流程的 UI 自訂。
+
+> [!TIP]
+> 如果您只想修改使用者流程頁面的橫幅標誌、背景影像和背景色彩，可以嘗試本文稍後所述的[公司商標（預覽）](#company-branding-preview)功能。
 
 ### <a name="custom-policies"></a>自訂原則
 
@@ -149,6 +152,60 @@ Azure AD B2C 會使用稱為[跨原始資源分享（CORS）](https://www.w3.org
 | 統一的註冊或登入 | 可處理客戶的註冊和登入，這些客戶可使用社交識別提供者 (例如 Facebook、Google) 或本機帳戶。 |
 | 多因素驗證 | 客戶可以在註冊或登入期間驗證其電話號碼 (使用文字或語音)。 |
 | 錯誤 | 提供錯誤資訊給客戶。 |
+
+## <a name="company-branding-preview"></a>公司商標（預覽）
+
+您可以使用 Azure Active Directory[公司商標](../active-directory/fundamentals/customize-branding.md)，透過橫幅標誌、背景影像和背景色彩來自訂您的使用者流程頁面。
+
+若要自訂您的使用者流程頁面，請先在 Azure Active Directory 中設定公司商標，然後在 Azure AD B2C 的使用者流程頁面配置中加以啟用。
+
+[!INCLUDE [preview note](../../includes/active-directory-b2c-public-preview.md)]
+
+### <a name="configure-company-branding"></a>設定公司商標
+
+首先，設定**公司商標**內的橫幅標誌、背景影像和背景色彩。
+
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 在頂端功能表中選取 [目錄 + 訂用帳戶] 篩選，然後選取包含您 Azure AD B2C 租用戶的目錄。
+1. 在 Azure 入口網站中，搜尋並選取  **Azure AD B2C**。
+1. 在 [**管理**] 下，選取 [**公司商標**]。
+1. 依照[將商標新增至您組織的 Azure Active Directory 登入頁面](../active-directory/fundamentals/customize-branding.md)中的步驟進行。
+
+當您在 Azure AD B2C 中設定公司商標時，請記住下列事項：
+
+* Azure AD B2C 中的公司商標目前僅限於**背景影像**、**橫幅標誌**和**背景色彩**自訂。 *不支援*[公司商標] 窗格中的其他屬性（例如，在 [**高級設定**] 中）。
+* 在您的使用者流程頁面中，背景色彩會在載入背景影像之前顯示。 我們建議您選擇與背景影像中的色彩緊密相符的背景色彩，以提供更流暢的載入體驗。
+* 橫幅標誌會在使用者起始註冊使用者流程時，出現在傳送給使用者的驗證電子郵件中。
+
+### <a name="enable-branding-in-user-flow-pages"></a>在使用者流程頁面中啟用商標
+
+設定公司商標之後，請在您的使用者流程中加以啟用。
+
+1. 在 Azure 入口網站的左側功能表中，選取 [ **Azure AD B2C**]。
+1. 在 [**原則**] 底下，選取 **[使用者流程（原則）** ]。
+1. 選取您想要啟用公司商標的使用者流程。 「登*入 v1* 」和「*設定檔編輯 v1* 」使用者流程類型**不支援**公司商標。
+1. 在 [**自訂**] 底下，選取 [**頁面配置**]，然後選取您想要品牌的版面配置。 例如，選取 [**統一註冊或登入頁面**]。
+1. 針對 [**頁面配置版本（預覽）** ]，選擇 [版本**1.2.0** ] 或 [以上]。
+1. 選取 [儲存]。
+
+如果您想要在使用者流程中建立所有頁面的品牌，請在使用者流程中設定每個頁面配置的頁面配置版本。
+
+![Azure 入口網站中 Azure AD B2C 的頁面配置選取範圍](media/customize-ui-overview/portal-02-page-layout-select.png)
+
+此批註範例會在使用海藍色範本的 [*註冊和登入*使用者流程] 頁面上，顯示自訂橫幅標誌和背景影像：
+
+![Azure AD B2C 提供品牌化的註冊/登入頁面](media/customize-ui-overview/template-ocean-blue-branded.png)
+
+### <a name="use-company-branding-assets-in-custom-html"></a>在自訂 HTML 中使用公司商標資產
+
+若要在自訂 HTML 中使用您的公司商標資產，請在 `<div id="api">` 標籤外部新增下列標記：
+
+```HTML
+<img data-tenant-branding-background="true" />
+<img data-tenant-branding-logo="true" alt="Company Logo" />
+```
+
+影像來源會以背景影像和橫幅標誌的取代。 如[開始使用自訂 HTML 和 CSS](#get-started-with-custom-html-and-css)一節中所述，使用 CSS 類別來樣式並將資產放置在頁面上。
 
 ## <a name="localize-content"></a>當地語系化內容
 

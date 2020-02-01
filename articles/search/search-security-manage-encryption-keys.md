@@ -8,12 +8,12 @@ ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 6c7be7d92cae992e54ca6e9f50dda6342c57856b
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: cb17fe24339ad618229b3456ece15c206f79bdb7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945726"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899942"
 ---
 # <a name="encryption-at-rest-of-content-in-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>在 Azure Key Vault 中使用客戶管理的金鑰，在 Azure 認知搜尋中進行內容的待用加密
 
@@ -26,13 +26,13 @@ ms.locfileid: "75945726"
 金鑰不一定要位於相同的 Key Vault。 單一搜尋服務可以裝載多個加密的索引或同義字對應，每個都是以自己的客戶管理的加密金鑰進行加密，並儲存在不同的金鑰保存庫中。  您也可以在使用客戶管理的金鑰未加密的相同服務中擁有索引和同義字對應。 
 
 > [!IMPORTANT] 
-> 這項功能適用于[REST API 版本 2019-05-06](https://docs.microsoft.com/rest/api/searchservice/)和[.net SDK 版本 8.0-preview](search-dotnet-sdk-migration-version-9.md)。 目前不支援在 Azure 入口網站中設定客戶管理的加密金鑰。
+> 這項功能適用于[REST API 版本 2019-05-06](https://docs.microsoft.com/rest/api/searchservice/)和[.net SDK 版本 8.0-preview](search-dotnet-sdk-migration-version-9.md)。 目前不支援在 Azure 入口網站中設定客戶管理的加密金鑰。 搜尋服務必須在2019年1月之後建立，而且不能是免費（共用）服務。
 
 ## <a name="prerequisites"></a>必要條件
 
 此範例會使用下列服務。 
 
-+ [建立 Azure 認知搜尋服務](search-create-service-portal.md)，或在您目前的訂用帳戶下方[尋找現有服務](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 搜尋服務必須在2019年1月之後建立，而且不能是免費（共用）服務。
++ [建立 Azure 認知搜尋服務](search-create-service-portal.md)，或在您目前的訂用帳戶下方[尋找現有服務](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 
 
 + [建立 Azure Key Vault 資源](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault)，或在您的訂用帳戶下尋找現有的保存庫。
 

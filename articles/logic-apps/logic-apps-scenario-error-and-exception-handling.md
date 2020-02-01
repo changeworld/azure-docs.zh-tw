@@ -7,12 +7,12 @@ author: hedidin
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: 03ed4731e59280a3879d77ca3fb82f0158313aeb
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 1bb6e28c9dcae01f3233178706d2a24156fa509a
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771558"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76902696"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>案例︰適用於邏輯應用程式的例外狀況處理與記錄錯誤
 
@@ -481,5 +481,5 @@ Logic Apps 例外狀況管理 API 應用程式的原始程式碼可在此 GitHub
 ## <a name="next-steps"></a>後續步驟
 
 * [檢視更多邏輯應用程式的範例和案例](../logic-apps/logic-apps-examples-and-scenarios.md)
-* [了解如何監視邏輯應用程式](../logic-apps/logic-apps-monitor-your-logic-apps.md)
+* [監視 Logic Apps](../logic-apps/monitor-logic-apps.md)
 * [自動化邏輯應用程式部署](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)

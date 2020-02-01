@@ -1,17 +1,17 @@
 ---
 title: 在 Azure 應用程式組態同步處理中使用 GitHub 動作
 description: 在 GitHub 存放庫上執行已定義的動作時，請使用 GitHub 動作來觸發應用程式組態實例的更新
-author: jpconnock
-ms.author: jeconnoc
+author: lisaguthrie
+ms.author: lcozzens
 ms.date: 01/14/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 1b7586e6321318a3fe4566e8c744c17a1d7ee179
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 269ae5630d1524cb8f89d3af8728892079f6eb5f
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310595"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899619"
 ---
 # <a name="sync-your-app-configuration-instance-using-github-actions"></a>使用 GitHub 動作同步處理您的應用程式組態實例
 Azure 應用程式組態在 GitHub 存放庫上執行的動作觸發時，會使用 GitHub 動作來更新應用程式組態實例。 您可以利用 GitHub 工作流程來更新應用程式設定，以便將應用程式設定更新整合到用來更新應用程式程式碼的相同工作流程中。

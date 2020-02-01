@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: 433d53e09fce6d3f6b2010956da91c4b7cf91d49
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 111fab880887b54b2415d433bda2368c951381bd
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770164"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901227"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>使用事件中樞串流最忙碌路徑中的 Azure 診斷資料
 Azure 診斷會提供彈性的方法，用來收集來自雲端服務虛擬機器 (VM) 的度量和記錄，再將結果傳輸至 Azure 儲存體。 從 2016 年 3 月 (SDK 2.9) 的時間範圍開始，您可以使用 [Azure 事件中樞](https://azure.microsoft.com/services/event-hubs/)，將 Azure 診斷傳送至自訂的資料來源，並立即傳輸最忙碌路徑資料。
@@ -201,7 +201,7 @@ Azure 診斷會提供彈性的方法，用來收集來自雲端服務虛擬機�
 ## <a name="deploy-and-update-a-cloud-services-application-and-diagnostics-config"></a>部署和更新雲端服務應用程式和診斷設定
 Visual Studio 提供最簡單的路徑供您部署應用程式和事件中樞接收組態。 若要檢視及編輯檔案，請在 Visual Studio 中開啟 *.wadcfgx* 檔案，然後再加以編輯和儲存。 其路徑為 [雲端服務專案] > [角色] > (RoleName) > diagnostics.wadcfgx。  
 
-此時，Visual Studio、Visual Studio Team System 中的所有部署和部署更新動作，以及所有根據 MSBuild 和使用 **/t:publish** 目標的命令或指令碼，都會在封裝程序中納入 *.wadcfgx* 。 此外，部署和更新會使用 VM 上適當的 Azure 診斷代理程式擴充功能將檔案部署到 Azure。
+此時，Visual Studio、Visual Studio Team System 中的所有部署和部署更新動作，以及以 MSBuild 為基礎並使用 `/t:publish` 目標的所有命令或腳本，都會在封裝程式中包含*diagnostics.wadcfgx。* 此外，部署和更新會使用 VM 上適當的 Azure 診斷代理程式擴充功能將檔案部署到 Azure。
 
 在部署應用程式和 Azure 診斷組態後，您會立即在事件中樞的儀表板中看到活動。 這表示您已準備就緒，可以繼續在接聽程式用戶端或所選的分析工具中檢視最忙碌路徑資料。  
 
@@ -215,13 +215,72 @@ Visual Studio 提供最簡單的路徑供您部署應用程式和事件中樞接
 >
 
 ## <a name="view-hot-path-data"></a>檢視忙碌路徑資料
-如前文所述，接聽和處理事件中樞資料有許多使用案例。
+如前文所述，接聽和處理事件中樞資料有許多使用案例。 一個簡單的作法是建立小型測試主控台應用程式，接聽事件中樞並列印輸出串流。 
 
-一個簡單的作法是建立小型測試主控台應用程式，接聽事件中樞並列印輸出串流。 您可以將下列程式碼 (會在[開始使用事件中樞](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)中詳細說明) 放置在主控台應用程式中。  
+#### <a name="net-sdk-latest-500-or-latertablatest"></a>[最新的 .NET SDK （5.0.0 或更新版本）](#tab/latest)
+您可以將下列程式碼 (會在[開始使用事件中樞](../../event-hubs/get-started-dotnet-standard-send-v2.md)中詳細說明) 放置在主控台應用程式中。
 
-請注意，主控台應用程式必須包含 [Event Processor Host NuGet 套件](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/)。  
+```csharp
+using System;
+using System.Text;
+using System.Threading.Tasks;
+using Azure.Storage.Blobs;
+using Azure.Messaging.EventHubs;
+using Azure.Messaging.EventHubs.Processor;
+namespace Receiver1204
+{
+    class Program
+    {
+        private static readonly string ehubNamespaceConnectionString = "EVENT HUBS NAMESPACE CONNECTION STRING";
+        private static readonly string eventHubName = "EVENT HUB NAME";
+        private static readonly string blobStorageConnectionString = "AZURE STORAGE CONNECTION STRING";
+        private static readonly string blobContainerName = "BLOB CONTAINER NAME";
 
-請記得使用您資源的值取代 **Main** 函式中角括弧裡面的值。   
+        static async Task Main()
+        {
+            // Read from the default consumer group: $Default
+            string consumerGroup = EventHubConsumerClient.DefaultConsumerGroupName;
+
+            // Create a blob container client that the event processor will use 
+            BlobContainerClient storageClient = new BlobContainerClient(blobStorageConnectionString, blobContainerName);
+
+            // Create an event processor client to process events in the event hub
+            EventProcessorClientOptions options = new EventProcessorClientOptions { }
+            EventProcessorClient processor = new EventProcessorClient(storageClient, consumerGroup, ehubNamespaceConnectionString, eventHubName);
+
+            // Register handlers for processing events and handling errors
+            processor.ProcessEventAsync += ProcessEventHandler;
+            processor.ProcessErrorAsync += ProcessErrorHandler;
+
+            // Start the processing
+            await processor.StartProcessingAsync();
+
+            // Wait for 10 seconds for the events to be processed
+            await Task.Delay(TimeSpan.FromSeconds(10));
+
+            // Stop the processing
+            await processor.StopProcessingAsync();
+        }
+
+        static Task ProcessEventHandler(ProcessEventArgs eventArgs)
+        {
+            Console.WriteLine("\tRecevied event: {0}", Encoding.UTF8.GetString(eventArgs.Data.Body.ToArray()));
+            return Task.CompletedTask;
+        }
+
+        static Task ProcessErrorHandler(ProcessErrorEventArgs eventArgs)
+        {
+            Console.WriteLine($"\tPartition '{ eventArgs.PartitionId}': an unhandled exception was encountered. This was not expected to happen.");
+            Console.WriteLine(eventArgs.Exception.Message);
+            return Task.CompletedTask;
+        }
+    }
+}
+```
+
+#### <a name="net-sdk-legacy-410-or-earliertablegacy"></a>[.NET SDK 舊版（4.1.0 或更早版本）](#tab/legacy)
+
+您可以將下列程式碼 (會在[開始使用事件中樞](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)中詳細說明) 放置在主控台應用程式中。 請注意，主控台應用程式必須包含 [Event Processor Host Nuget 套件](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/)。 請記得使用您資源的值取代 **Main** 函式中角括弧裡面的值。   
 
 ```csharp
 //Console application code for EventHub test client
@@ -303,6 +362,7 @@ namespace EventHubListener
     }
 }
 ```
+---
 
 ## <a name="troubleshoot-event-hubs-sinks"></a>針對事件中樞接收進行疑難排解
 * 事件中樞不會如預期般顯示傳入或傳出事件活動。
@@ -310,7 +370,7 @@ namespace EventHubListener
     檢查已成功佈建您的事件中樞。 **.wadcfgx** 中 *PrivateConfig* 區段的所有連接資訊必須符合在入口網站中所示的資源的值。 請確定您已在入口網站中定義 SAS 原則 (此範例中為 “SendRule”)，並且對其授與「傳送」 權限。  
 * 執行更新之後，事件中樞不會再顯示傳入或傳出事件活動。
 
-    首先，請確定事件中樞和組態資訊正確，如先前所述。 有時候，系統會在部署更新時重設 **PrivateConfig** 。 建議的修正方式是對專案中的 *.wadcfgx* 進行所有變更，然後再推送完整的應用程式更新。 如果不可行，請確定診斷更新推送完整的 **PrivateConfig** ，包括 SAS 金鑰。  
+    首先，請確定事件中樞和設定資訊正確，如先前所述。 有時候，系統會在部署更新時重設 **PrivateConfig** 。 建議的修正方式是對專案中的 *.wadcfgx* 進行所有變更，然後再推送完整的應用程式更新。 如果不可行，請確定診斷更新推送完整的 **PrivateConfig** ，包括 SAS 金鑰。  
 * 我試過上述建議，不過事件中樞仍然無法運作。
 
     請嘗試查看 Azure 儲存體資料表，其中包含記錄和 Azure 診斷本身的錯誤︰ **WADDiagnosticInfrastructureLogsTable**。 其中一個選項是使用類似 [Azure 儲存體總管](https://www.storageexplorer.com) 的工具連接到此儲存體帳戶、檢視此資料表，並且新增過去 24 小時內時間戳記的查詢。 您可以使用此工具來匯出 .csv 檔案，並在 Microsoft Excel 之類的應用程式中開啟。 Excel 能輕鬆地搜尋電話卡字串 (如 **EventHubs**)，以便查看系統回報了哪些錯誤。  

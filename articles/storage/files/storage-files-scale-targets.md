@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 211dafd1ad3e30d37cfee926a7c93ba541037f62
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 2e05f0cb46e1e54ced5911c0a78dd026dbb7f4fa
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749499"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905593"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure 檔案服務延展性和效能目標
 
@@ -51,7 +51,7 @@ Azure 檔案儲存體需要考慮的限制有三個類別：儲存體帳戶、�
 ### <a name="file-share-and-file-scale-targets"></a>檔案共用和檔案調整目標
 
 > [!NOTE]
-> 大於 5 TiB 的標準檔案共用具有某些限制和區域限制。
+> 大於 5 TiB 的標準檔案共用有特定限制。
 > 如需啟用這些較大檔案共用大小的限制、區域資訊和指示清單，請參閱規劃指南中的上[架至較大](storage-files-planning.md#onboard-to-larger-file-shares-standard-tier)的檔案共用一節。
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]

@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 628b8bb5c3cb83ae6038a7150420893d7abe61d5
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 4b725c8a1bf0649a640c02a9a1828ec9014d36d6
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112278"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905652"
 ---
 # <a name="indexing-documents-in-azure-data-lake-storage-gen2"></a>在 Azure Data Lake Storage Gen2 中編制檔的索引
 
@@ -47,3 +47,10 @@ ms.locfileid: "74112278"
 Azure Data Lake Storage Gen2 會實作用於支援 Azure 角色型存取控制（RBAC）和 POSIX 型存取控制清單（Acl）的[存取控制模型](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。 從 Data Lake Storage Gen2 編制內容的索引時，Azure 認知搜尋不會從內容中解壓縮 RBAC 和 ACL 資訊。 因此，此資訊不會包含在您的 Azure 認知搜尋索引中。
 
 如果在索引中維護每份檔的存取控制十分重要，則由應用程式開發人員負責執行[安全性](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search)調整。
+
+## <a name="change-detection"></a>變更偵測
+
+Data Lake Storage Gen2 索引子支援變更偵測。 這表示當索引子執行時，它只會重新編制 blob 的 `LastModified` 時間戳記所決定的已變更 blob。
+
+> [!NOTE] 
+> Data Lake Storage Gen2 允許重新命名目錄。 當目錄重新命名時，該目錄中 blob 的時間戳記不會更新。 因此，索引子將不會重新編制這些 blob 的索引。 如果您需要在目錄重新命名之後重新建立索引目錄中的 blob，因為它們現在有新的 Url，您將需要更新目錄中所有 blob 的 `LastModified` 時間戳記，讓索引子知道在未來執行期間將它們重新編制索引。

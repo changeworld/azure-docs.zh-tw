@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 12/18/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 475e91957ab94538d07112ba808edd7c7d08f59e
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 0210317ef74433b740feb043a1cc4f1f9bc2ef57
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310776"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901144"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>支援 Azure 監視器的計量
 
@@ -572,13 +572,13 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |資料磁片寫入位元組數/秒|資料磁碟寫入位元組/秒 (預覽)|每秒計數|Average|在監視期間寫入單一磁片的位元組/秒|LUN|
 |資料磁片讀取作業/秒|資料磁碟讀取作業/秒 (預覽)|每秒計數|Average|在監視期間從單一磁片讀取 IOPS|LUN|
 |資料磁片寫入作業/秒|資料磁碟寫入作業/秒 (預覽)|每秒計數|Average|在監視期間從單一磁片寫入 IOPS|LUN|
-|資料磁碟佇列深度|資料磁片佇列深度（預覽）|計數|Average|資料磁碟佇列深度 (或佇列長度)|LUN|
+|資料磁片佇列深度|資料磁片佇列深度（預覽）|計數|Average|資料磁碟佇列深度 (或佇列長度)|LUN|
 |OS 磁片讀取位元組數/秒|OS 磁碟讀取位元組/秒 (預覽)|每秒計數|Average|OS 磁片在監視期間從單一磁片讀取的位元組/秒|無|
 |OS 磁片寫入位元組數/秒|OS 磁碟寫入位元組/秒 (預覽)|每秒計數|Average|OS 磁片在監視期間寫入單一磁片的位元組/秒|無|
 |OS 磁片讀取作業數/秒|OS 磁碟讀取作業/秒 (預覽)|每秒計數|Average|在 OS 磁片監視期間從單一磁片讀取 IOPS|無|
 |OS 磁片寫入作業/秒|OS 磁碟寫入作業/秒 (預覽)|每秒計數|Average|針對 OS 磁片在監視期間從單一磁片寫入 IOPS|無|
-|OS 磁碟佇列深度|OS 磁片佇列深度（預覽）|計數|Average|OS 磁碟佇列深度 (或佇列長度)|無|
-|連入流量|連入流量|計數|Average|輸入流量是傳入方向的目前流量數（進入 VM 的流量）|無|
+|OS 磁片佇列深度|OS 磁片佇列深度（預覽）|計數|Average|OS 磁碟佇列深度 (或佇列長度)|無|
+|輸入流量|輸入流量|計數|Average|輸入流量是傳入方向的目前流量數（進入 VM 的流量）|無|
 |輸出流程|輸出流程|計數|Average|輸出流程是輸出方向的目前流量數（從 VM 傳出的流量）|無|
 |輸入流量最大建立速率|輸入流量最大建立速率（預覽）|每秒計數|Average|輸入流量的最大建立速率（進入 VM 的流量）|無|
 |輸出流量最大建立速率|輸出流量最大建立速率（預覽）|每秒計數|Average|輸出流量的最大建立速率（從 VM 傳出的流量）|無|
@@ -617,13 +617,13 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |資料磁片寫入位元組數/秒|資料磁碟寫入位元組/秒 (預覽)|每秒計數|Average|在監視期間寫入單一磁片的位元組/秒|LUN，VMName|
 |資料磁片讀取作業/秒|資料磁碟讀取作業/秒 (預覽)|每秒計數|Average|在監視期間從單一磁片讀取 IOPS|LUN，VMName|
 |資料磁片寫入作業/秒|資料磁碟寫入作業/秒 (預覽)|每秒計數|Average|在監視期間從單一磁片寫入 IOPS|LUN，VMName|
-|資料磁碟佇列深度|資料磁片佇列深度（預覽）|計數|Average|資料磁碟佇列深度 (或佇列長度)|LUN，VMName|
+|資料磁片佇列深度|資料磁片佇列深度（預覽）|計數|Average|資料磁碟佇列深度 (或佇列長度)|LUN，VMName|
 |OS 磁片讀取位元組數/秒|OS 磁碟讀取位元組/秒 (預覽)|每秒計數|Average|OS 磁片在監視期間從單一磁片讀取的位元組/秒|VMName|
 |OS 磁片寫入位元組數/秒|OS 磁碟寫入位元組/秒 (預覽)|每秒計數|Average|OS 磁片在監視期間寫入單一磁片的位元組/秒|VMName|
 |OS 磁片讀取作業數/秒|OS 磁碟讀取作業/秒 (預覽)|每秒計數|Average|在 OS 磁片監視期間從單一磁片讀取 IOPS|VMName|
 |OS 磁片寫入作業/秒|OS 磁碟寫入作業/秒 (預覽)|每秒計數|Average|針對 OS 磁片在監視期間從單一磁片寫入 IOPS|VMName|
-|OS 磁碟佇列深度|OS 磁片佇列深度（預覽）|計數|Average|OS 磁碟佇列深度 (或佇列長度)|VMName|
-|連入流量|連入流量|計數|Average|輸入流量是傳入方向的目前流量數（進入 VM 的流量）|VMName|
+|OS 磁片佇列深度|OS 磁片佇列深度（預覽）|計數|Average|OS 磁碟佇列深度 (或佇列長度)|VMName|
+|輸入流量|輸入流量|計數|Average|輸入流量是傳入方向的目前流量數（進入 VM 的流量）|VMName|
 |輸出流程|輸出流程|計數|Average|輸出流程是輸出方向的目前流量數（從 VM 傳出的流量）|VMName|
 |輸入流量最大建立速率|輸入流量最大建立速率（預覽）|每秒計數|Average|輸入流量的最大建立速率（進入 VM 的流量）|VMName|
 |輸出流量最大建立速率|輸出流量最大建立速率（預覽）|每秒計數|Average|輸出流量的最大建立速率（從 VM 傳出的流量）|VMName|
@@ -662,13 +662,13 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |資料磁片寫入位元組數/秒|資料磁碟寫入位元組/秒 (預覽)|每秒計數|Average|在監視期間寫入單一磁片的位元組/秒|LUN|
 |資料磁片讀取作業/秒|資料磁碟讀取作業/秒 (預覽)|每秒計數|Average|在監視期間從單一磁片讀取 IOPS|LUN|
 |資料磁片寫入作業/秒|資料磁碟寫入作業/秒 (預覽)|每秒計數|Average|在監視期間從單一磁片寫入 IOPS|LUN|
-|資料磁碟佇列深度|資料磁片佇列深度（預覽）|計數|Average|資料磁碟佇列深度 (或佇列長度)|LUN|
+|資料磁片佇列深度|資料磁片佇列深度（預覽）|計數|Average|資料磁碟佇列深度 (或佇列長度)|LUN|
 |OS 磁片讀取位元組數/秒|OS 磁碟讀取位元組/秒 (預覽)|每秒計數|Average|OS 磁片在監視期間從單一磁片讀取的位元組/秒|無|
 |OS 磁片寫入位元組數/秒|OS 磁碟寫入位元組/秒 (預覽)|每秒計數|Average|OS 磁片在監視期間寫入單一磁片的位元組/秒|無|
 |OS 磁片讀取作業數/秒|OS 磁碟讀取作業/秒 (預覽)|每秒計數|Average|在 OS 磁片監視期間從單一磁片讀取 IOPS|無|
 |OS 磁片寫入作業/秒|OS 磁碟寫入作業/秒 (預覽)|每秒計數|Average|針對 OS 磁片在監視期間從單一磁片寫入 IOPS|無|
-|OS 磁碟佇列深度|OS 磁片佇列深度（預覽）|計數|Average|OS 磁碟佇列深度 (或佇列長度)|無|
-|連入流量|連入流量|計數|Average|輸入流量是傳入方向的目前流量數（進入 VM 的流量）|無|
+|OS 磁片佇列深度|OS 磁片佇列深度（預覽）|計數|Average|OS 磁碟佇列深度 (或佇列長度)|無|
+|輸入流量|輸入流量|計數|Average|輸入流量是傳入方向的目前流量數（進入 VM 的流量）|無|
 |輸出流程|輸出流程|計數|Average|輸出流程是輸出方向的目前流量數（從 VM 傳出的流量）|無|
 |輸入流量最大建立速率|輸入流量最大建立速率（預覽）|每秒計數|Average|輸入流量的最大建立速率（進入 VM 的流量）|無|
 |輸出流量最大建立速率|輸出流量最大建立速率（預覽）|每秒計數|Average|輸出流量的最大建立速率（從 VM 傳出的流量）|無|
@@ -696,7 +696,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |SuccessfulPullCount|成功的提取計數|計數|Average|成功的映射提取次數|無|
 |TotalPushCount|總推送計數|計數|Average|映射推播總數總計|無|
 |SuccessfulPushCount|成功推送計數|計數|Average|成功的映射推送數目|無|
-|RunDuration|執行持續期間|毫秒|總計|執行持續時間（毫秒）|無|
+|RunDuration|執行持續時間|毫秒|總計|執行持續時間（毫秒）|無|
 
 
 ## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft.ContainerService/managedClusters
@@ -1185,7 +1185,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |CacheUtilization|快取使用率|百分比|Average|在叢集範圍的使用率等級|無|
 |QueryDuration|查詢持續時間|毫秒|Average|查詢持續時間 (以秒為單位)|QueryStatus|
 |IngestionUtilization|內嵌使用率|百分比|Average|在叢集中使用的擷取位置的比率|無|
-|KeepAlive|保持運作|計數|Average|例行性檢查指出對查詢的叢集回應|無|
+|保|保持運作|計數|Average|例行性檢查指出對查詢的叢集回應|無|
 |IngestionVolumeInMB|內嵌磁片區（以 MB 為單位）|計數|總計|擷取到叢集的資料總量 (以 MB 為單位)|資料庫|
 |IngestionLatencyInSeconds|內嵌延遲（以秒為單位）|秒|Average|從來源 (例如，訊息位於 EventHub 中) 擷取到叢集的擷取時間，以秒為單位|無|
 |EventsProcessedForEventHubs|已處理的事件（適用于事件/IoT 中樞）|計數|總計|從事件/IoT 中樞內嵌時，由叢集處理的事件數目|EventStatus|
@@ -1851,8 +1851,8 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |dwu_used|已使用 DWU|計數|最大值|已使用 DWU。 僅適用于資料倉儲。|無|
 |cache_hit_percent|快取命中的百分比|百分比|最大值|快取命中百分比。 僅適用于資料倉儲。|無|
 |cache_used_percent|已用快取的百分比|百分比|最大值|快取已使用百分比。 僅適用于資料倉儲。|無|
-|sqlserver_process_core_percent|SQL Server 處理常式核心百分比|百分比|最大值|CPU 使用量（以 SQL DB 進程的百分比表示）。 不適用於資料倉儲。|無|
-|sqlserver_process_memory_percent|SQL Server 處理常式記憶體百分比|百分比|最大值|記憶體使用量，以 SQL DB 進程的百分比表示。 不適用於資料倉儲。|無|
+|sqlserver_process_core_percent|SQL Server 處理常式核心百分比|百分比|最大值|SQL Server 進程的 CPU 使用量百分比（由作業系統測量）。 目前僅適用于無伺服器資料庫。|無|
+|sqlserver_process_memory_percent|SQL Server 處理常式記憶體百分比|百分比|最大值|SQL Server 進程的記憶體使用量百分比（由作業系統測量）。 目前僅適用于無伺服器資料庫。|無|
 |tempdb_data_size|Tempdb 資料檔案大小 Kb|計數|最大值|Tempdb 資料檔案大小（Kb）。 不適用於資料倉儲。|無|
 |tempdb_log_size|Tempdb 記錄檔大小 Kb|計數|最大值|Tempdb 記錄檔大小（Kb）。 不適用於資料倉儲。|無|
 |tempdb_log_used_percent|使用的 Tempdb 百分比記錄|百分比|最大值|使用的 Tempdb 百分比記錄。 不適用於資料倉儲。|無|

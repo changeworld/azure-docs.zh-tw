@@ -9,12 +9,12 @@ ms.author: mbullwin
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e30c4812ad11d7b39197062da30c90b2d8b1649b
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: c851978ea1b5af3006f1835f022c30aa7e7128f7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281065"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899072"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights 中的取樣
 
@@ -531,7 +531,7 @@ union requests,dependencies,pageViews,browserTimings,exceptions,traces
 
 *我一律想要看見特定罕見的事件。我要如何讓它們通過取樣模組？*
 
-* 達成此目標的最佳方式是撰寫自訂[TelemetryInitializer](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)，將您要保留的遙測專案上的 `SamplingPercentage` 設為100，如下所示。 因為初始化運算式保證會在遙測處理器（包括取樣）之前執行，所以這可確保所有取樣技術都會忽略任何取樣考慮的這個專案。
+* 達成此目標的最佳方式是撰寫自訂[TelemetryInitializer](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)，將您要保留的遙測專案上的 `SamplingPercentage` 設為100，如下所示。 因為初始化運算式保證會在遙測處理器（包括取樣）之前執行，所以這可確保所有取樣技術都會忽略任何取樣考慮的這個專案。 自訂遙測初始化運算式可在 ASP.NET SDK、ASP.NET Core SDK、JavaScript SDK 和 JAVA SDK 中取得。 例如，您可以使用 ASP.NET SDK 來設定遙測初始化運算式：
 
     ```csharp
     public class MyTelemetryInitializer : ITelemetryInitializer

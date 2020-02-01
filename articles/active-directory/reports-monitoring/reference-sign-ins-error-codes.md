@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7a025835275169b260dfd1f91b65341b5ba02ff
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: da2d598c7bb6d7b06e57dd497d1e2aebf1b63694
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294094"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898898"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>登入活動報告錯誤碼 
 
@@ -143,6 +143,7 @@ ms.locfileid: "76294094"
 |53002|使用的應用程式不是條件式存取的已核准應用程式。 使用者所使用的應用程式，必須是已核准使用的應用程式清單其中一個，才能取得存取權。|
 |53003|因為條件式存取原則，所以已封鎖存取。|
 |53004|使用者必須先完成多重要素驗證註冊程序，才能存取此內容。 使用者應該註冊多重要素驗證。|
+|53032|已封鎖帳戶，因為 Azure AD Identity Protection 的原則。|
 |65001|應用程式 X 沒有存取應用程式 Y 的權限，或已撤銷此權限。 或者，使用者或系統管理員尚未同意使用識別碼為 X 的應用程式。針對此使用者和資源傳送互動式授權要求。 或者，使用者或系統管理員尚未同意使用識別碼為 X 的應用程式。將授權要求傳送給租用戶管理員，以代表應用程式 Y 對資源 Z 採取行動。|
 |65004|使用者不同意存取應用程式。 讓使用者重試登入，並同意應用程式|
 |65005|應用程式所需資源存取清單不包含資源可探索的應用程式，或用戶端應用程式已要求存取未在其所需資源存取清單中指定的資源，或 Graph 服務傳回不正確的要求或找不到資源。 如果應用程式支援 SAML，則可能是您在設定應用程式時所使用的識別碼 (實體) 不正確。 請嘗試使用下列連結中針對 SAML 所列出的解決方案：[https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)|

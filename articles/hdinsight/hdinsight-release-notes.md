@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 01/24/2020
-ms.openlocfilehash: 9d484afb1d80ee6b110438cc3ddea1d3d67ad999
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 01/29/2020
+ms.openlocfilehash: 091ca4d632d89405d85c66e264aff9867979fcd4
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844678"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905226"
 ---
 # <a name="release-notes"></a>版本資訊
 
@@ -68,7 +68,7 @@ HDInsight 會繼續改善叢集的可靠性和效能。
 
 ## <a name="known-issues"></a>已知問題
 
-從2020年1月24日起，有一個作用中的問題，當您嘗試使用 Jupyter 筆記本時，可能會收到錯誤。 使用下列步驟來修正問題。 您也可以參閱這篇[MSDN 文章](https://social.msdn.microsoft.com/Forums/en-us/8c763fb4-79a9-496f-a75c-44a125e934ac/hdinshight-create-not-create-jupyter-notebook?forum=hdinsight)或這[篇 StackOverflow 文章](https://stackoverflow.com/questions/59687614/azure-hdinsight-jupyter-notebook-not-working/59831103)，以取得最新資訊或提出其他問題。 修正問題時，將會更新此頁面。
+從2020年1月29日起，有一個作用中的問題，當您嘗試使用 Jupyter 筆記本時，可能會收到錯誤。 使用下列步驟來修正問題。 您也可以參閱這篇[MSDN 文章](https://social.msdn.microsoft.com/Forums/en-us/8c763fb4-79a9-496f-a75c-44a125e934ac/hdinshight-create-not-create-jupyter-notebook?forum=hdinsight)或這[篇 StackOverflow 文章](https://stackoverflow.com/questions/59687614/azure-hdinsight-jupyter-notebook-not-working/59831103)，以取得最新資訊或提出其他問題。 修正問題時，將會更新此頁面。
 
 **錯誤**
 
@@ -77,22 +77,26 @@ HDInsight 會繼續改善叢集的可靠性和效能。
 
 **原因** 
 
-叢集上的 _version .py 檔案已更新為5.x，而不是 4.4. x. # #。
+叢集上 _version 的 .py 檔案已更新為5.x，而不是 4.4. x. # #，或 Ambari 必須重新開機。
 
 **方案**
 
 如果您建立新的 Jupyter 筆記本，並收到上述其中一個錯誤，請執行下列步驟來修正此問題。
 
-1. 前往 https://CLUSTERNAME.azurehdinsight.net ，在網頁瀏覽器中開啟 Ambari，其中 CLUSTERNAME 是您的叢集名稱。
+1. 前往 `https://CLUSTERNAME.azurehdinsight.net`，在網頁瀏覽器中開啟 Ambari，其中 CLUSTERNAME 是您的叢集名稱。
 1. 在 Ambari 的左側功能表中，按一下 [ **Jupyter**]，然後在 [**服務動作**] 上按一下 [**停止**]。
 1. 透過 ssh 連線到 Jupyter 服務執行所在的叢集前端節點。
 1. 在 sudo 模式中開啟下列檔案/usr/bin/anaconda/lib/python2.7/site-packages/nbformat/_version. .py。
-1. 現有的專案應該會顯示與下列程式碼類似的內容： 
+1. 檢查 version_info 的值。
+1. 如果 version_info 的值設定為： 
 
     version_info = （5，0，3）
 
-    將專案修改為： 
+    然後將專案修改為： 
     
     version_info = （4，4，0）
-1. 儲存檔案。
+
+    並儲存檔案。 
+
+    如果 version_info 已設定為（4，4，0），請繼續進行下一個步驟，因為只有 Ambari 需要重新開機，不需要進行其他任何變更。
 1. 返回 [Ambari]，然後在 [**服務動作**] 中，按一下 [**全部重新開機**]。

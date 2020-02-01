@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI-sfctl store
 description: 深入瞭解 sfctl，這是 Azure Service Fabric 命令列介面。 包含用來在叢集映射存放區上執行檔案層級作業的命令清單。
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 64a8ea963afa9e20dfafb71db69b2baf66959369
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 75c62b54ff3aa7f3af344aa3e1ca81d431ae0ab2
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645254"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905620"
 ---
 # <a name="sfctl-store"></a>sfctl store
 在叢集映像存放區上執行基本檔案層級作業。

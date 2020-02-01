@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI-sfctl 叢集
 description: 深入瞭解 sfctl，這是 Azure Service Fabric 命令列介面。 包含用來管理叢集的命令清單。
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 807457f3edaef8e0edcdbf53b482e2e4ffee174c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 007ad6f59f0ce304db579f4faa1bb95611a93a37
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639151"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906145"
 ---
 # <a name="sfctl-cluster"></a>sfctl cluster
 選取、管理和操作 Service Fabric 叢集。
@@ -93,7 +93,7 @@ ms.locfileid: "75639151"
 | --applications-health-state-filter | 允許根據健康情況狀態，篩選叢集健康情況查詢結果中所傳回的應用程式健康情況狀態物件。 此參數的可能值包括從 HealthStateFilter 列舉成員或對這些成員的位元運算取得的整數值。 只會傳回符合篩選條件的應用程式。 所有應用程式都會用來評估彙總的健康情況狀態。 如果未指定，則會傳回所有項目。 狀態值是以旗標為基礎的列舉，因此值可以是使用位元 'OR' 運算子取得的這些值的組合。 例如，如果提供的值為 6，則會傳回 HealthState 值為 OK (2) 和 Warning (4) 的應用程式健康情況狀態。  <br> - Default - 預設值。 符合任何 HealthState。 值為零。  <br> - None - 不符合任何 HealthState 值的篩選條件。 用來在指定狀態集合沒有任何結果時傳回。 值為 1。  <br> - Ok - 符合輸入含 HealthState 值 Ok 的篩選條件。 值為 2。  <br> - Warning - 符合輸入含 HealthState 值 Warning 的篩選條件。 值為 4。  <br> - Error - 符合輸入含 HealthState 值 Error 的篩選條件。 值為 8。  <br> - All - 符合輸入含任何 HealthState 值的篩選條件。 值為 65535。 |
 | --events-health-state-filter | 可根據健康情況狀態來篩選所傳回的 HealthEvent 物件集合。 此參數的可能值包括下列其中一個健康情況狀態的整數值。 只會傳回符合篩選條件的事件。 所有事件都會用來評估彙總的健康情況狀態。 如果未指定，則會傳回所有項目。 狀態值是以旗標為基礎的列舉，因而此值可以是使用位元 'OR' 運算子所取得這些值的組合。 例如，如果提供的值為 6，則會傳回 HealthState 值為 OK (2) 和 Warning (4) 的所有事件。  <br> - Default - 預設值。 符合任何 HealthState。 值為零。  <br> - None - 不符合任何 HealthState 值的篩選條件。 用來在指定狀態集合沒有任何結果時傳回。 值為 1。  <br> - Ok - 符合輸入含 HealthState 值 Ok 的篩選條件。 值為 2。  <br> - Warning - 符合輸入含 HealthState 值 Warning 的篩選條件。 值為 4。  <br> - Error - 符合輸入含 HealthState 值 Error 的篩選條件。 值為 8。  <br> - All - 符合輸入含任何 HealthState 值的篩選條件。 值為 65535。 |
 | --exclude-health-statistics | 指出是否應該在查詢結果中一併傳回健康情況統計資料。 預設為 False。 統計資料會顯示健康情況狀態為 Ok、Warning 及 Error 的子實體數目。 |
-| --include-system-application-health-statistics | 指出健康情況統計資料是否應該包含 fabric\:/系統應用程式健康情況統計資料。 預設為 False。 如果 IncludeSystemApplicationHealthStatistics 設定為 true，則健康情況統計資料會包含屬於 fabric\:/系統應用程式的實體。 否則，查詢結果只會包含使用者應用程式的健康情況統計資料。 健康情況統計資料必須包含在查詢結果中，才能套用此參數。 |
+| --include-system-application-health-statistics | 指出健康情況統計資料是否應該包含 fabric\:/System 應用程式健康情況統計資料。 預設為 False。 如果將 IncludeSystemApplicationHealthStatistics 設定為 true，健康情況統計資料就會包含屬於 fabric\:/System 應用程式的實體。 否則，查詢結果只會包含使用者應用程式的健康情況統計資料。 健康情況統計資料必須包含在查詢結果中，才能套用此參數。 |
 | --nodes-health-state-filter | 允許根據健康情況狀態，篩選叢集健康情況查詢結果中所傳回的節點健康情況狀態物件。 此參數的可能值包括下列其中一個健康情況狀態的整數值。 只會傳回符合篩選條件的節點。 所有節點都會用來評估彙總的健康情況狀態。 如果未指定，則會傳回所有項目。 狀態值是以旗標為基礎的列舉，因此值可以是使用位元 'OR' 運算子取得的這些值的組合。 例如，如果提供的值為 6，則會傳回 HealthState 值為 OK (2) 和 Warning (4) 的節點健康情況狀態。  <br> - Default - 預設值。 符合任何 HealthState。 值為零。  <br> - None - 不符合任何 HealthState 值的篩選條件。 用來在指定狀態集合沒有任何結果時傳回。 值為 1。  <br> - Ok - 符合輸入含 HealthState 值 Ok 的篩選條件。 值為 2。  <br> - Warning - 符合輸入含 HealthState 值 Warning 的篩選條件。 值為 4。  <br> - Error - 符合輸入含 HealthState 值 Error 的篩選條件。 值為 8。  <br> - All - 符合輸入含任何 HealthState 值的篩選條件。 值為 65535。 |
 | --timeout -t | 執行作業的伺服器超時（以秒為單位）。 這個超時時間會指定用戶端願意等待要求的作業完成的持續期間。 此參數的預設值為60秒。  預設值\: 60。 |
 
@@ -235,7 +235,7 @@ ms.locfileid: "75639151"
 | --remove-when-expired | 指出是否要在報告到期時將報告自健康狀態資料存放區中移除的值。 <br><br> 如果設定為 true，就會在報告到期後，將報告自健康狀態資料存放區中移除。 如果設定為 false，則會在報告到期後，將報告視為錯誤。 此屬性的值預設為 false。 當用戶端會定期回報時，應該將 RemoveWhenExpired 設定為 false (預設值)。 如此一來，如果報告程式發生問題 (例如死結) 而無法回報，在健康情況報告到期時，系統就會將實體評估為錯誤。 這會將實體標幟為處於「錯誤」健康情況狀態。 |
 | --sequence-number | 此健康情況報告的序號 (以數值字串表示)。 <br><br> 健康狀態資料存放區會使用報告序號來偵測過時的報告。 如果未指定，就會在新增報告時，由健康情況用戶端自動產生序號。 |
 | --timeout -t | 預設值\: 60。 |
-| --ttl | 此健康情況報告的有效持續時間。 此欄位使用 ISO8601 格式指定持續時間。 <br><br> 當用戶端會定期回報時，其傳送報告的頻率應該高於存留時間。 如果用戶端報告轉換，可以將時間太長，設定為無限。 如果 RemoveWhenExpired 為 true，當存留時間到期時，系統會將包含健康情況資訊的健康情況事件自健康狀態資料存放區中移除，如果 RemoveWhenExpired 為 false，則會將該事件評估為錯誤。 如果未指定，存留時間會預設為 infinite 值。 |
+| --ttl | 此健康情況報告的有效持續時間。 此欄位使用 ISO8601 格式指定持續時間。 <br><br> 當用戶端會定期回報時，其傳送報告的頻率應該高於存留時間。 如果用戶端會針對轉換進行回報，則可以將存留時間設定為無限。 如果 RemoveWhenExpired 為 true，當存留時間到期時，系統會將包含健康情況資訊的健康情況事件自健康狀態資料存放區中移除，如果 RemoveWhenExpired 為 false，則會將該事件評估為錯誤。 如果未指定，存留時間會預設為 infinite 值。 |
 
 ### <a name="global-arguments"></a>全域引數
 
@@ -250,7 +250,7 @@ ms.locfileid: "75639151"
 ## <a name="sfctl-cluster-select"></a>sfctl cluster select
 連線到 Service Fabric 叢集端點。
 
-如果連線到安全的叢集，請指定憑證 (.crt) 和金鑰檔案 (.key) 的絕對路徑，或包含兩者之單一檔案 (.pem) 的絕對路徑。 請勿指定兩者。 您也可以在連線到安全的叢集時，視需要一併指定 CA 組合檔案的絕對路徑，或是受信任 CA 憑證目錄的絕對路徑。  不需要先執行此命令即可連接到叢集，包括與 localhost 的連線。 不過，連接至本機叢集不需要明確的端點。
+如果連線到安全的叢集，請指定憑證 (.crt) 和金鑰檔案 (.key) 的絕對路徑，或包含兩者之單一檔案 (.pem) 的絕對路徑。 請勿指定兩者。 您也可以在連線到安全的叢集時，視需要一併指定 CA 組合檔案的絕對路徑，或是受信任 CA 憑證目錄的絕對路徑。  不需要先執行此命令即可連接到叢集，包括與 localhost 的連線。 不過，連接至本機叢集不需要明確的端點。  如果使用自我簽署的憑證，或其他未被知名 CA 簽署的憑證，請傳入--CA 參數，以確保驗證通過。 如果不在生產叢集上，若要略過用戶端驗證（適用于自我簽署或不知名的 CA 簽署），請使用--no-verify 選項。 雖然可能，但不建議用於生產叢集。 否則，可能會產生憑證驗證錯誤。
 
 ### <a name="arguments"></a>引數
 

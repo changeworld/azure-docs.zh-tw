@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/12/2019
+ms.date: 01/30/2020
 ms.author: akjosh
-ms.openlocfilehash: 072e30baa4ebb976a662019e5213f7eb26808a93
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 604be42ec74f75e3aa9c790092ed83aee4ad25e1
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969954"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76907019"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-windows"></a>適用于 Windows 的 Azure 監視器虛擬機器擴充功能
 
@@ -38,6 +38,7 @@ Azure 監視器記錄可提供跨雲端和內部部署資產的監視功能。 M
 
 | Log Analytics Windows 代理程式套件組合版本 | Azure 監視器 Windows VM 延伸模組版本 | 發行日期 | 版本資訊 |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
+| 10.20.18018 | 1.0.18018 | 2019 年 10 月 | <ul><li> 次要錯誤修正和穩定改良功能 </li></ul> |
 | 10.20.18011 | 1.0.18011 | 2019 年 7 月 | <ul><li> 次要錯誤修正和穩定改良功能 </li><li> 將 MaxExpressionDepth 增加至10000 </li></ul> |
 | 10.20.18001 | 1.0.18001 | 2019 年 6 月 | <ul><li> 次要錯誤修正和穩定改良功能 </li><li> 已新增在進行 proxy 連線時停用預設認證的功能（WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH 的支援） </li></ul>|
 | 10.19.13515 | 1.0.13515 | 2019 年 3 月 | <ul><li>次要穩定修正 </li></ul> |
@@ -46,7 +47,7 @@ Azure 監視器記錄可提供跨雲端和內部部署資產的監視功能。 M
 | 8.0.11103 | n/a |  2018 年 4 月 | |
 | 8.0.11081 | 1.0.11081 | 2017年11月 | | 
 | 8.0.11072 | 1.0.11072 | 2017年9月 | |
-| 8.0.11049 | 1.0.11049 | 2017 年 2 月 | |
+| 8.0.11049 | 1.0.11049 | 2017年2月 | |
 
 ### <a name="azure-security-center"></a>Azure 資訊安全中心
 

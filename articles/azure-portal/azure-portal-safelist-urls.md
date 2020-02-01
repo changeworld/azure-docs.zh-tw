@@ -1,30 +1,33 @@
 ---
-title: Azure 入口網站 Url 的安全Microsoft Docs
+title: 將防火牆或 proxy 伺服器上的 Azure 入口網站 Url
 description: 將這些 Url 新增至 proxy 伺服器略過，以與 Azure 入口網站及其服務進行通訊
 services: azure-portal
 keywords: ''
 author: mgblythe
 ms.author: mblythe
-ms.date: 09/13/2019
+ms.date: 01/29/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 3f81d41bc6d8ce07ea4e7b11c7c48f9b68d70466
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: c5bba7296a05cfbb72698a991ece1ef298689bd1
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310558"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900651"
 ---
 # <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>將防火牆或 proxy 伺服器上的 Azure 入口網站 Url
 
-若要在您的本機或廣域網路與 Azure 雲端之間取得良好的效能和連線，請設定內部部署安全性裝置略過 Azure 入口網站 Url 的安全性限制。 網路系統管理員通常會部署 proxy 伺服器、防火牆或其他裝置，以協助保護及控制使用者存取網際網路的方式。 不過，設計來保護使用者的規則有時可以封鎖或減緩合法的商務相關網際網路流量，包括您與 Azure 之間的通訊。 若要優化您的網路與 Azure 入口網站及其服務之間的連線，建議您將 Azure 入口網站的 Url 新增至您的安全。
+您可以設定內部部署安全性裝置，略過 Azure 入口網站 Url 的安全性限制。 此設定可改善您的本機或廣域網路與 Azure 雲端之間的效能和連線能力。
+
+網路系統管理員通常會部署 proxy 伺服器、防火牆或其他裝置。 這些裝置有助於保護安全，並控制使用者存取網際網路的方式。 為了保護使用者而設計的規則，有時會封鎖或減緩合法的商務相關網際網路流量。 此流量包括您與 Azure 之間的通訊。 若要優化您的網路與 Azure 入口網站及其服務之間的連線，建議您將 Azure 入口網站的 Url 新增至您的安全。
 
 ## <a name="azure-portal-urls-for-proxy-bypass"></a>Azure 入口網站 proxy 略過的 Url
 
-Azure 入口網站的安全的 URL 端點是您組織部署所在的 Azure 雲端特有的。 選取您的雲端，然後將 Url 清單新增至您的 proxy 伺服器或防火牆，以允許這些端點的網路流量略過限制。
+Azure 入口網站的安全的 URL 端點是您組織部署所在的 Azure 雲端特有的。 若要允許這些端點的網路流量略過限制，請選取您的雲端。 然後，將 Url 清單新增至您的 proxy 伺服器或防火牆。
 
 #### <a name="public-cloudtabpublic-cloud"></a>[公用雲端](#tab/public-cloud)
+
 ```
 *.aadcdn.microsoftonline-p.com
 *.aka.ms
@@ -48,6 +51,7 @@ Azure 入口網站的安全的 URL 端點是您組織部署所在的 Azure 雲�
 ```
 
 #### <a name="us-government-cloudtabus-government-cloud"></a>[美國政府雲端](#tab/us-government-cloud)
+
 ```
 *.azure.us
 *.loganalytics.us
@@ -60,6 +64,7 @@ Azure 入口網站的安全的 URL 端點是您組織部署所在的 Azure 雲�
 ```
 
 #### <a name="china-government-cloudtabchina-government-cloud"></a>[中國政府雲端](#tab/china-government-cloud)
+
 ```
 *.azure.cn
 *.microsoft.cn

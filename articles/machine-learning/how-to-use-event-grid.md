@@ -10,12 +10,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 11/04/2019
-ms.openlocfilehash: 885ddd5c25a36e2b12379ea7639956c1c4ca5437
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 0da5fe56bd56d360cd8052976bdde0cdc910c9a5
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75538419"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904275"
 ---
 # <a name="create-event-driven-machine-learning-workflows-preview"></a>建立事件驅動機器學習工作流程（預覽）
 
@@ -32,21 +32,6 @@ ms.locfileid: "75538419"
 
 * 您將為其建立事件之 Azure Machine Learning 工作區的參與者或擁有者存取權。
 * 選取事件處理常式端點，例如 webhook 或事件中樞。 如需詳細資訊，請參閱[事件處理常式](https://docs.microsoft.com/azure/event-grid/event-handlers)。 
-
-## <a name="register-resource-providers"></a>註冊資源提供者
-
-如果您在 1 2019 年11月之前使用了 Azure 事件方格或 Machine Learning，您可能需要先重新註冊資源提供者，才能依照本檔中的步驟進行。 若要重新註冊提供者，請使用下列步驟：
-
-1. 移至 Azure 入口網站__並選取__ 訂用帳戶。 選取您想要使用的訂用帳戶。
-1. 選取 [__資源提供者__]，然後搜尋__EventGrid__。
-1. 選取 [ __EventGrid__ ] 專案，然後選取 [__重新註冊__]。
-
-    ![重新註冊-資源提供者](./media/how-to-use-event-grid/re-register-resource-provider.png)
-
-1. 搜尋__microsoft.machinelearningservices__，選取該專案，然後選取 [__重新註冊__]。
-
-> [!TIP]
-> 如果您沒有完成這些步驟的許可權，請要求您的訂用帳戶管理員加以執行。
 
 ## <a name="configure-machine-learning-events-using-the-azure-portal"></a>使用 Azure 入口網站設定機器學習事件
 

@@ -3,12 +3,12 @@ title: Azure 資源-QnA Maker
 description: QnA Maker 使用數個 Azure 來源，各有不同的用途。 瞭解個別使用它們的方式，可讓您規劃並選取正確的定價層，或知道何時要變更定價層。 瞭解它們的組合使用方式，可讓您在發生問題時找出並加以修正。
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 2b3a06122ce6123cd8edcedf5dfbf38c3c12218a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 77aced459c7731a2cac432538cfc66ed9ce83f9d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846366"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76902075"
 ---
 # <a name="azure-resources-for-qna-maker"></a>適用于 QnA Maker 的 Azure 資源
 
@@ -111,6 +111,10 @@ QnA Maker 資源的資源名稱（例如 `qna-westus-f0-b`）也會用來命名�
 QnA Maker 資源可讓您在執行時間存取撰寫和發佈 Api，以及 QnA 集的自然語言處理（NLP）型第二個排名層（ranker #2）。
 
 第二個排名會套用可包含中繼資料和後續提示的智慧型篩選準則。
+
+#### <a name="qna-maker-resource-configuration-settings"></a>QnA Maker 資源設定
+
+當您在[QnA Maker 入口網站](https://qnamaker.ai)中建立新的知識庫時，**語言**設定是在資源層級套用的唯一設定。 當您建立資源的第一個知識庫時，請選取語言。 
 
 ### <a name="app-service-and-app-service-plan"></a>App service 和 App service 方案
 

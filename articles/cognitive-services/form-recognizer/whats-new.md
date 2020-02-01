@@ -1,5 +1,5 @@
 ---
-title: 表單辨識器有哪些新功能？
+title: 表單辨識器的新功能
 titleSuffix: Azure Cognitive Services
 description: 瞭解表單辨識器 API 的最新變更。
 author: PatrickFarley
@@ -9,14 +9,14 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.author: pafarley
-ms.openlocfilehash: cb5639dcf0e13ea03d34604816b3939085674c2e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2109d25d3962063c711dcab491855d9ebf1cf694
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462373"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901875"
 ---
-# <a name="whats-new-in-form-recognizer"></a>表單辨識器有哪些新功能？
+# <a name="whats-new-in-form-recognizer"></a>表單辨識器的新功能
 
 本文將重點放在新版本的表單辨識器 API 中的主要變更。
 
@@ -25,13 +25,10 @@ ms.locfileid: "75462373"
 
 ## <a name="form-recognizer-20-preview"></a>表單辨識器2.0 （預覽）
 
-> [!IMPORTANT]
-> 表單辨識器2.0 目前可用於 `West US 2` 和 `West Europe` 區域中的訂閱。 如果您的訂用帳戶不在此區域中，請使用 1.0 API。 用於定型和使用自訂模型的快速入門適用于 v1.0 和 v2.0。
-
 ### <a name="new-features"></a>新功能
 
 * **自訂模型**
-  * **使用標籤進行定型**您現在可以使用手動加上標籤的資料來定型自訂模型。 這會導致更佳的模型，而且可以產生可搭配複雜表單或表單使用的模型，其中包含不含索引鍵的值。
+  * **使用標籤進行定型**您現在可以使用手動加上標籤的資料來定型自訂模型。 這會造就表現更佳的模型，並可產生可搭配複雜表單或含有值 (但不含索引鍵) 的表單使用的模型。
   * **非同步 API**您可以使用非同步 API 呼叫來定型和分析大型資料集和檔案。
   * **TIFF 檔案支援**您現在可以使用 TIFF 檔來定型和解壓縮資料。
   * **提取精確度改進**

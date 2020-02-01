@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: container-service
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 423f0866494054702330c8e51fb1ef45e74a0650
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 2133d1aefe3363a2fb2af73c004e22ba0a0239ca
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845696"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901501"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>使用 Azure CLI 建立和設定 Azure Kubernetes Service (AKS) 叢集以使用虛擬節點
 
@@ -318,10 +318,6 @@ az aks disable-addons --resource-group myResourceGroup --name myAKSCluster --add
 ```
 
 現在，移除虛擬網路資源和資源群組：
-
-
-> [!NOTE]
-> 如果您在嘗試移除網路設定檔時收到錯誤，請允許3-4 天讓平臺自動減輕問題，然後再次嘗試刪除。 如果您需要立即刪除網路設定檔，請開啟參考 Azure 容器實例服務的[支援要求](https://azure.microsoft.com/support/create-ticket/)。
 
 ```azurecli-interactive
 # Change the name of your resource group, cluster and network resources as needed

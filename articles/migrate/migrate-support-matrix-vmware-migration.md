@@ -3,12 +3,12 @@ title: Azure Migrate 中的 VMware 遷移支援
 description: 深入瞭解 Azure Migrate 中的 VMware VM 遷移支援。
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: e33811563063c0f8eb94b9927d07596d51cd45e4
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 6593d4de6823f15f570ab8922d76cbe84fb0e348
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030220"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901536"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 遷移的支援矩陣
 
@@ -24,7 +24,7 @@ ms.locfileid: "76030220"
 
 請參閱[這篇文章](server-migrate-overview.md)，以找出您想要使用的方法。
 
-## <a name="migration-limitations"></a>移轉限制
+## <a name="migration-limitations"></a>遷移限制
 
 - 您一次最多可以選取10部 Vm 來進行複寫。 如果您想要遷移更多電腦，請以10個群組進行複寫。
 - 針對 VMware 無代理程式移轉，您最多可以同時執行 100 個複寫。
@@ -123,7 +123,15 @@ vSphere/EXSI 主機 | TCP 埠902上用於設備的輸入，以從快照集複寫
 
 - 瞭解 VMware 的複寫[設備需求](migrate-replication-appliance.md#appliance-requirements)。
 - MySQL 必須安裝在設備上。 瞭解[安裝選項](migrate-replication-appliance.md#mysql-installation)。
-- 瞭解複寫設備需要存取的[url](migrate-replication-appliance.md#url-access) 。
+- 瞭解複寫設備需要存取的[url](migrate-replication-appliance.md#url-access)和[埠]()。
+
+## <a name="agent-based-ports"></a>以代理程式為基礎的埠
+
+**裝置** | **[連接]**
+--- | ---
+VM | 在 Vm 上執行的行動服務會與埠 HTTPS 443 輸入上的內部部署複寫設備（設定伺服器）進行通訊，以進行複寫管理。<br/><br/> VM 會透過輸入連接埠 HTTPS 9443 將複寫資料傳送至處理伺服器 (在設定伺服器電腦上執行)。 您可以修改此連接埠。
+複寫設備 | 複寫設備會透過埠 HTTPS 443 輸出來協調與 Azure 的複寫。
+處理序伺服器 | 進程伺服器會接收復寫資料、將其優化並加以加密，並透過埠443輸出將它傳送至 Azure 儲存體。<br/> 根據預設，進程伺服器會在複寫設備上執行。
 
 ## <a name="azure-vm-requirements"></a>Azure VM 需求
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.openlocfilehash: 76603642b90bd4d3926e10ce1c5a3c38391362cf
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 2624f9fafd82aad9613d6940eca69486d897aa08
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749769"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905337"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>使用 Azure Toolkit for IntelliJ 來在 HDInsight 中透過 VPN 遠端偵錯 Apache Spark 應用程式
 
@@ -35,7 +35,7 @@ ms.locfileid: "75749769"
 * **IntelliJ IDEA**。 本文章使用 2017.1 版。 您可以從 [JetBrains 網站](https://www.jetbrains.com/idea/download/) \(英文\) 安裝它。
 * **適用於 IntelliJ 的 Azure 工具組中的 HDInsight 工具**。 適用於 IntelliJ 的 HDInsight 工具是適用於 IntelliJ 的 Azure 工具組的一部分。 如需有關如何安裝 Azure 工具組的指示，請參閱[安裝適用於 IntelliJ 的 Azure 工具組](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation)。
 * **從 IntelliJ IDEA 登入您的 Azure 訂用帳戶**。 請依照[使用 Azure Toolkit for IntelliJ 為 HDInsight 叢集建立 Apache Spark 應用程式](apache-spark-intellij-tool-plugin.md)中的指示進行。
-* **例外狀況的因應措施**。 在 Windows 電腦上執行 Spark Scala 應用程式以進行遠端偵錯時，可能會發生例外狀況。 這個例外狀況會在 [SPARK 2356](https://issues.apache.org/jira/browse/SPARK-2356) 中說明，並會因 Windows 中的 WinUtils.exe 檔案遺失而發生。 若要解決這個錯誤，您必須[下載可執行檔](https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe)，並將其放至如 **C:\WinUtils\bin** 的位置。 新增環境變數 **HADOOP_HOME**，然後將變數的值設為 **C\WinUtils**。
+* **例外狀況的因應措施**。 在 Windows 電腦上執行 Spark Scala 應用程式以進行遠端偵錯時，可能會發生例外狀況。 這個例外狀況會在 [SPARK 2356](https://issues.apache.org/jira/browse/SPARK-2356) 中說明，並會因 Windows 中的 WinUtils.exe 檔案遺失而發生。 若要解決此錯誤，您必須將 `https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe` 下載到**C:\WinUtils\bin**之類的位置。 新增環境變數 **HADOOP_HOME**，然後將變數的值設為 **C\WinUtils**。
 
 ## <a name="step-1-create-an-azure-virtual-network"></a>步驟 1：建立 Azure 虛擬網路
 

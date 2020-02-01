@@ -1,14 +1,14 @@
 ---
 title: Azure 委派的資源管理
 description: 受控服務供應項目能允許服務提供者在 Azure Marketplace 中向客戶銷售資源管理供應項目。
-ms.date: 01/17/2020
+ms.date: 01/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1fc3d95b1becccc014afeb4621d17770a03e38a4
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 15814b1ca3b1b78de521033836e3614d18fd0c71
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263909"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904311"
 ---
 # <a name="azure-delegated-resource-management"></a>Azure 委派的資源管理
 
@@ -44,7 +44,7 @@ Azure 委派的資源管理可讓使用者以邏輯方式將資源從某個租�
 
 ## <a name="support-for-azure-delegated-resource-management"></a>適用於 Azure 委派的資源管理的支援
 
-如果您需要與 Azure 委派的資源管理相關的協助，則可以在 Azure 入口網站中建立支援要求。 針對 [問題類型]，請選擇 [技術]。 選取訂用帳戶，然後選取 [委派的資源管理] (位於 [監視與管理] 底下)。
+如果您需要與 Azure 委派的資源管理相關的協助，則可以在 Azure 入口網站中建立支援要求。 針對 [問題類型]，請選擇 [技術]。 選取訂用帳戶，然後選取 [**燈塔**] （在 [**監視 & 管理**] 底下）。
 
 ## <a name="next-steps"></a>後續步驟
 

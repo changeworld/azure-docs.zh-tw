@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: 772f6f51fb98b3a9adbd1efe6571842c667e8e8e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/30/2020
+ms.openlocfilehash: 35dbd064a09a96dae58e1b15a6d8889bda45ee0d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427022"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899840"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>選擇 Azure 認知搜尋的定價層
 
@@ -21,15 +21,20 @@ ms.locfileid: "75427022"
 
 大部分的客戶都是從免費層開始，讓他們可以評估服務。 評估後，通常會在開發和生產部署的其中一個較高層級建立第二個服務。
 
-雖然所有層（包括免費層）通常都會提供功能同位，但較大的工作負載可能會要求較高的層級。 例如， [AI 擴充](cognitive-search-concept-intro.md)具有長時間執行的技能，會在免費的服務上使用，除非資料集很小。
+## <a name="feature-availability-by-tier"></a>依層級的功能可用性
 
-> [!NOTE] 
-> 功能同位的例外狀況是無法在 S3 HD 上使用的[索引子](search-indexer-overview.md)。
->
+幾乎每一層都有提供所有功能，包括免費，但需要大量資源的功能或工作流程可能無法正常運作，除非您提供足夠的容量。 例如， [AI 擴充](cognitive-search-concept-intro.md)具有長時間執行的技能，會在免費的服務上使用，除非資料集很小。
 
-## <a name="available-tiers"></a>可用層
+下表描述層相關的功能條件約束。
 
-層級會反映裝載服務之硬體的特性 (而非功能)，並會依下列方式來加以區分：
+| 功能 | 限制 |
+|---------|-------------|
+| [索引](search-indexer-overview.md) | 在 S3 HD 上無法使用索引子。 |
+| [客戶管理的加密金鑰](search-security-manage-encryption-keys.md) | 免費層無法使用。 |
+
+## <a name="tiers-skus"></a>層（Sku）
+
+層級的差異如下：
 
 + 您可以建立的索引和索引子數量
 + 分割區的大小和速度 (實體儲存體)
@@ -97,9 +102,9 @@ SU 是服務*所使用*之*複本*和資料分割的乘積： **（R x P = SU）
 
 大多數客戶只能線上提供總容量的一部分，其餘部分則保留。 針對計費，您所上線的資料分割和複本數目（由 SU 公式計算）會決定您以小時為單位支付的費用。
 
-## <a name="how-to-manage-and-reduce-costs"></a>如何管理和降低成本
+## <a name="how-to-manage-costs"></a>如何管理成本
 
-除了下列建議以外，請造訪[計費和成本管理](https://docs.microsoft.com/azure/billing/billing-getting-started)。
+下列建議可協助您最少保留成本：
 
 - 在相同區域中建立所有資源，或盡可能在較少的區域中，以最小化或排除頻寬費用。
 
@@ -109,7 +114,11 @@ SU 是服務*所使用*之*複本*和資料分割的乘積： **（R x P = SU）
 
 - 針對需要大量資源的作業（例如索引編制）進行相應增加，然後針對一般查詢工作負載重新調整。 開始使用 Azure 認知搜尋的最低設定（一個 SU 由一個資料分割和一個複本組成），然後監視使用者活動，以識別可能表示需要更多容量的使用模式。 如果有可預測的模式，您可以同步處理調整與活動（您需要撰寫程式碼來自動化這項作業）。
 
-您無法關閉搜尋服務來減少帳單。 專用資源一律可運作，並配置給您的服務存留期專屬使用。 就服務本身而言，降低帳單的唯一方法，是將複本和分割區減少到仍然提供可接受的效能和[SLA 合規性](https://azure.microsoft.com/support/legal/sla/search/v1_0/)的層級，或在較低層建立服務（S1 每小時費率低於 S2 或 S3 速率）。 假設您在負載預測的低端布建服務，則您可以建立第二個較大的階層式服務，在第二個服務上重建索引，然後刪除第一個服務。
+此外，請造訪[計費和成本管理](https://docs.microsoft.com/azure/billing/billing-getting-started)，以取得與消費相關的內建工具和功能。
+
+不可能暫時關閉搜尋服務。 專用資源一律可運作，並配置給您的服務存留期專屬使用。 刪除服務是永久的，也會刪除其相關聯的資料。
+
+就服務本身而言，降低帳單的唯一方法，是將複本和分割區減少到仍然提供可接受的效能和[SLA 合規性](https://azure.microsoft.com/support/legal/sla/search/v1_0/)的層級，或在較低層建立服務（S1 每小時費率低於 S2 或 S3 速率）。 假設您在負載預測的低端布建服務，則您可以建立第二個較大的階層式服務，在第二個服務上重建索引，然後刪除第一個服務。
 
 ## <a name="how-to-evaluate-capacity-requirements"></a>如何評估容量需求
 

@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
-ms.openlocfilehash: 58c0ff8cf8a579e2b97ebbe195f47e4baef4621a
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: aac0060527af7b7d880f971e7608be3fa44a2d15
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666817"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905106"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>從預先建置的範本建立邏輯應用程式工作流程
 
@@ -50,7 +50,7 @@ Logic Apps 提供範本來協助您更快速開始建立工作流程，這些範
    | **訂用帳戶** | 您的 Azure 訂用帳戶名稱 | 選取您要使用的 Azure 訂用帳戶。 | 
    | **資源群組** | 您的 Azure 資源群組名稱 | 為此邏輯應用程式建立或選取一個 [Azure 資源群組](../azure-resource-manager/management/overview.md)，並用以組織與此應用程式關聯的所有資源。 | 
    | **位置** | 您的 Azure 資料中心區域 | 選取用於部署邏輯應用程式的資料中心區域，例如，美國西部。 | 
-   | **Log Analytics** | **Off** (預設值) 或 **On** | 透過[Azure 監視器記錄](../log-analytics/log-analytics-overview.md)，開啟邏輯應用程式的[診斷記錄](../logic-apps/logic-apps-monitor-your-logic-apps.md#turn-on-diagnostics-logging-for-your-logic-app)。 您必須已經有 Log Analytics 工作區。 | 
+   | **Log Analytics** | **Off** (預設值) 或 **On** | 使用[Azure 監視器記錄](../log-analytics/log-analytics-overview.md)來設定邏輯應用程式的[診斷記錄](../logic-apps/monitor-logic-apps-log-analytics.md)。 您必須已經有 Log Analytics 工作區。 | 
    |||| 
 
 4. 當您準備就緒時，請選取 [釘選到儀表板]。 這樣一來，邏輯應用程式就會在部署之後自動出現在 Azure 儀表板上並開啟。 選擇 [建立]。

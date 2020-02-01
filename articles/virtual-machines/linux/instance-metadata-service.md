@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: ad3f9329ce79812e908fd15037e2054ca5a8906e
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 5b3f3eea4d23d84d684648d19fb67258d1ea2050
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045150"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76907008"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure 執行個體中繼資料服務
 
@@ -444,7 +444,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 }
 ```
 
-## <a name="metadata-apis"></a>中繼資料 API
+## <a name="metadata-apis"></a>中繼資料 Api
 
 下列 Api 可透過中繼資料端點取得：
 
@@ -542,7 +542,7 @@ Nonce 是選擇性的10位數位符串。 如果未提供，IMDS 會在其位置
 
 可以透過 Powershell 公用程式 `curl` 在 Windows 中擷取執行個體中繼資料：
 
- ```bash
+ ```powershell
 curl -H @{'Metadata'='true'} "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890" | select -ExpandProperty Content
 ```
 

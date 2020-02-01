@@ -1,5 +1,5 @@
 ---
-title: 變更簽章雜湊演算法，適用於 Office 365 信賴憑證者信任-Azure
+title: 變更 Office 365 信賴憑證者信任的簽章雜湊演算法-Azure
 description: 本頁面提供變更與 Office 365 搭配運作之同盟信任的 SHA 演算法的指導方針
 keywords: SHA1,SHA256,O365,同盟,aadconnect,adfs,ad fs,變更 sha,同盟信任,信賴憑證者信任
 services: active-directory
@@ -9,6 +9,7 @@ manager: daveba
 editor: ''
 ms.assetid: cf6880e2-af78-4cc9-91bc-b64de4428bbd
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,15 +17,15 @@ ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b6c81343d52f016dc779f9e08176a0d909684c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2233b434fda628dcf812a62f06541fc4b0296aba
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65138631"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897346"
 ---
 # <a name="change-signature-hash-algorithm-for-office-365-relying-party-trust"></a>變更 Office 365 信賴憑證者信任的簽章雜湊演算法
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 Active Directory 同盟服務 (AD FS) 會將其權杖簽署到 Microsoft Azure Active Directory 以確保它們無法被竄改。 此簽章可以是以 SHA1 或 SHA256 為基礎。 Azure Active Directory 現在支援以 SHA256 演算法簽署的權杖，建議您將權杖簽署演算法設定為 SHA256 以獲得最高層級的安全性。 本文說明將權杖簽署演算法設定為更安全 SHA256 層級所需的步驟。
 
 >[!NOTE]
@@ -35,10 +36,10 @@ Active Directory 同盟服務 (AD FS) 會將其權杖簽署到 Microsoft Azure A
 
 ### <a name="ad-fs-management-console"></a>AD FS 管理主控台
 1. 在主要 AD FS 伺服器上，開啟 [AD FS 管理主控台]。
-2. 展開 AD FS 節點，然後按一下 [信賴憑證者信任]  。
-3. 在您的 Office 365/Azure 信賴憑證者信任上按一下滑鼠右鍵，然後選取 [屬性]  。
-4. 選取 [進階]  索引標籤，然後選取安全雜湊演算法 SHA256。
-5. 按一下 [確定]  。
+2. 展開 AD FS 節點，然後按一下 [信賴憑證者信任]。
+3. 在您的 Office 365/Azure 信賴憑證者信任上按一下滑鼠右鍵，然後選取 [屬性]。
+4. 選取 [進階] 索引標籤，然後選取安全雜湊演算法 SHA256。
+5. 按一下 [確定]。
 
 ![SHA256 簽署演算法--MMC](./media/how-to-connect-fed-sha256-guidance/mmc.png)
 

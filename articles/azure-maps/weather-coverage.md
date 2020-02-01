@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 630a018c25ac8663fd369c1256e376b8039182c9
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: b5875d0672fc187920883abe208ad30c4d2b1051
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910810"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898547"
 ---
 # <a name="azure-maps-weather-coverage"></a>Azure 地圖服務氣象涵蓋範圍
 
@@ -87,7 +87,7 @@ Azure 地圖服務對於所有國家/地區沒有相同層級的資訊和精確�
 | 千里達及托巴哥                      | ✓ |   |  ✓| 
 | 土克斯及開科斯群島                 | ✓ |   |  ✓| 
 | 美國外島                    | ✓ |   |  ✓| 
-| 美屬維爾京群島                      | ✓ |   |  ✓| 
+| 美國英屬維爾京群島                      | ✓ |   |  ✓| 
 | 美國                            | ✓ | ✓ |  ✓| 
 | 烏拉圭                                  | ✓ |   |  ✓| 
 | 委內瑞拉                                | ✓ |   |  ✓| 
@@ -179,7 +179,6 @@ Azure 地圖服務對於所有國家/地區沒有相同層級的資訊和精確�
 | 阿富汗                       | ✓ |   |  ✓| 
 | 美屬薩摩亞                    | ✓ |   |  ✓| 
 | 澳洲                         | ✓ | ✓ |  ✓| 
-| 亞塞拜然                        | ✓ |   |  ✓| 
 | 孟加拉                        | ✓ |   |  ✓| 
 | 不丹                            | ✓ |   |  ✓| 
 | 英屬印度洋領土    | ✓ |   |  ✓| 
@@ -221,7 +220,7 @@ Azure 地圖服務對於所有國家/地區沒有相同層級的資訊和精確�
 | 帛琉                             | ✓ |   |  ✓| 
 | 巴布亞紐幾內亞                  | ✓ |   |  ✓| 
 | 菲律賓                       | ✓ |   |  ✓| 
-| 皮特康群島                  | ✓ |   |  ✓| 
+| 皮特凱恩群島                  | ✓ |   |  ✓| 
 | 薩摩亞                             | ✓ |   |  ✓| 
 | 新加坡                         | ✓ |   |  ✓| 
 | 索羅門群島                   | ✓ |   |  ✓| 
@@ -247,7 +246,8 @@ Azure 地圖服務對於所有國家/地區沒有相同層級的資訊和精確�
 | 阿爾巴尼亞                | ✓ |   |  ✓| 
 | 安道爾                | ✓ |   |  ✓| 
 | 亞美尼亞                | ✓ |   |  ✓| 
-| 奧地利                | ✓ | ✓ |  ✓| 
+| 奧地利                | ✓ | ✓ |  ✓|
+| 亞塞拜然             | ✓ |   |  ✓| 
 | 白俄羅斯                | ✓ |   |  ✓| 
 | 比利時                | ✓ | ✓ |  ✓| 
 | 波士尼亞赫塞哥維納 | ✓ | ✓ |  ✓| 

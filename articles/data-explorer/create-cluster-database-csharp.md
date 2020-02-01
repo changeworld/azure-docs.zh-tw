@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 7dc032d52a8cb3c5c54cf57c7ae7bf697796b5cc
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 2d800dc401b0d85b26a71817a1a70d66539203ae
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910608"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76902115"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-c"></a>使用 C# 建立 Azure 資料總管叢集與資料庫
 
@@ -75,7 +75,7 @@ Azure Data Explorer 是快速、完全受控的資料分析服務，可即時分
    | clusterName | *mykustocluster* | 所需的叢集名稱。|
    | skuName | *Standard_D13_v2* | 將用於叢集的 SKU。 |
    | tier | *Standard* | SKU 層。 |
-   | 處理能力 | *number* | 叢集的實例數目。 |
+   | 存儲 | *number* | 叢集的實例數目。 |
    | resourceGroupName | *testrg* | 將在其中建立叢集的資源群組名稱。 |
 
     > [!NOTE]
@@ -97,10 +97,13 @@ Azure Data Explorer 是快速、完全受控的資料分析服務，可即時分
     var hotCachePeriod = new TimeSpan(3650, 0, 0, 0);
     var softDeletePeriod = new TimeSpan(3650, 0, 0, 0);
     var databaseName = "mykustodatabase";
-    var database = new Database(location: location, softDeletePeriod: softDeletePeriod, hotCachePeriod: hotCachePeriod);
+    var database = new ReadWriteDatabase(location: location, softDeletePeriod: softDeletePeriod, hotCachePeriod: hotCachePeriod);
 
     await kustoManagementClient.Databases.CreateOrUpdateAsync(resourceGroupName, clusterName, databaseName, database);
     ```
+
+        [!NOTE]
+        If you are using C# version 2.0.0 or below, use Database instead of ReadWriteDatabase.
 
    |**設定** | **建議的值** | **欄位描述**|
    |---|---|---|
@@ -113,7 +116,7 @@ Azure Data Explorer 是快速、完全受控的資料分析服務，可即時分
 2. 執行下列命令以查看您所建立的資料庫：
 
     ```csharp
-    kustoManagementClient.Databases.Get(resourceGroupName, clusterName, databaseName);
+    kustoManagementClient.Databases.Get(resourceGroupName, clusterName, databaseName) as ReadWriteDatabase;
     ```
 
 您此時有一個叢集和一個資料庫。

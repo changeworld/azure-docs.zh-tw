@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: c17576bb8cd772742b5335000a2453ff34753779
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 64f285ea27bde4565d051a84a65c5b4d7b8e9e8c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457075"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906976"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>參考 - IoT 中樞配額和節流
 
@@ -107,6 +107,7 @@ IoT 中樞會強制執行其他操作限制：
 | 自動裝置和模組設定<sup>1</sup> | 每個付費 SKU 中樞 100 項設定。 每個免費 SKU 中樞 20 項設定。 |
 | IoT Edge 自動部署<sup>1</sup> | 每個部署 20 個模組。 每個付費 SKU 中樞100部署（包括分層部署）。 每個免費 SKU 中樞10個部署。 |
 | 對應項<sup>1</sup> | 所需屬性和報告屬性區段的大小上限為 32 KB。 標記的大小上限為 8 KB。 |
+| 共用存取原則 | 共用存取原則的最大數目為16 |
 
 <sup>1</sup>「IoT 中樞」的基本層中不提供此功能。 如需詳細資訊，請參閱[如何選擇適合的 IoT 中樞](iot-hub-scaling.md)。
 

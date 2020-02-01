@@ -3,19 +3,21 @@ title: Azure 訂用帳戶限制與配額
 description: 提供通用的 Azure 訂用帳戶和服務限制、配額和條件約束的清單。 本文包含如何增加限制和最大值的資訊。
 tags: billing
 ms.topic: conceptual
-ms.date: 01/28/2020
-ms.openlocfilehash: c6661ce6d3e0f62c47b1f234898dbf47de36f3ee
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 01/30/2020
+ms.openlocfilehash: c5714dd30be4d557086667a74fff2ff8117e2a2b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845986"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901407"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 訂閱和服務的限制、配額和條件
 
 本文件列出一些最常見的 Microsoft Azure 限制，有時也稱為配額。 本文件目前未涵蓋所有 Azure 服務。 經過一段時間，清單就會展開並更新，以涵蓋更多服務。
 
 若要深入瞭解 Azure 定價，請參閱[azure 定價總覽](https://azure.microsoft.com/pricing/)。 在這裡，您可以使用[定價計算機](https://azure.microsoft.com/pricing/calculator/)來預估成本。 您也可以移至特定服務（例如[Windows vm](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)）的定價詳細資料頁面。 如需協助您管理成本的祕訣，請參閱[使用 Azure 計費與成本管理避免非預期的成本](../../billing/billing-getting-started.md)。
+
+如需資源名稱的限制，請參閱[Azure 資源的命名規則和限制](resource-name-rules.md)。
 
 > [!NOTE]
 > 如果您想要將限制或配額提升到預設限制以上，請免費[開啟線上客戶支援要求](../templates/error-resource-quota.md)。 限制無法高於下表所示的最大限制值。 如果沒有上限資料行，則資源沒有可調整的限制。
@@ -25,7 +27,7 @@ ms.locfileid: "76845986"
 
 ## <a name="limits-and-azure-resource-manager"></a>限制和 Azure Resource Manager
 
-現在可以將多個 Azure 資源結合成單一 Azure 資源群組。 當您使用資源群組時，限制為 [全域] 會在具有 Azure Resource Manager 的地區層級進行管理。 如需 Azure 資源群組的詳細資訊，請參閱[Azure Resource Manager 總覽](overview.md)。
+您可以將多個 Azure 資源結合成一個 Azure 資源群組。 當您使用資源群組時，限制為 [全域] 會在具有 Azure Resource Manager 的地區層級進行管理。 如需 Azure 資源群組的詳細資訊，請參閱[Azure Resource Manager 總覽](overview.md)。
 
 在下列限制清單中，當您使用 Azure Resource Manager 時，新的資料表會反映任何限制的差異。 例如，有一個訂用帳戶**限制**資料表和訂用帳戶**限制 Azure Resource Manager**資料表。 當限制適用于這兩種情況時，它只會顯示在第一個資料表中。 除非另有說明，限制在所有區域中全域適用。
 
@@ -484,3 +486,4 @@ ms.locfileid: "76845986"
 * [瞭解 Azure 限制和增加](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 * [Azure 的虛擬機器和雲端服務大小](../../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Azure 雲端服務的大小](../../cloud-services/cloud-services-sizes-specs.md)
+* [Azure 資源的命名規則和限制](resource-name-rules.md)

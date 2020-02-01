@@ -6,17 +6,18 @@ author: martincoetzer
 manager: daveba
 tags: azuread
 ms.service: active-directory
+ms.subservice: authentication
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/19/2018
+ms.date: 01/29/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 478cccb3a8235291a4c4f0566cd130b4b75dbe6b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0ca5817e744ff81efcd549bc328d7ce5eeedb2d2
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74208562"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76908729"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>使用 Azure Active Directory 來建立具彈性的存取控制管理策略
 
@@ -117,7 +118,7 @@ ms.locfileid: "74208562"
 * 如果一個認證類型或一個存取控制機制發生中斷會影響對您應用程式的存取，請設定一組遞補原則。 請設定一個狀態為停用且要求以「加入網域」作為控制措施的原則，用來作為需要協力廠商 MFA 提供者的作用中原則備份。
 * 藉由依循[密碼指引](https://aka.ms/passwordguidance) \(英文\) 白皮書中的做法，降低不要求使用 MFA 時不良執行者猜測密碼的風險。
 * 部署 [Azure AD 自助密碼重設 (SSPR)](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr) 和 [Azure AD 密碼保護](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-deploy)，以確保使用者不會使用一般密碼和您選擇禁止的字詞。
-* 使用在未達到特定驗證層級時，會限制應用程式內的存取而不直接切換回完整存取的原則。 例如︰
+* 使用在未達到特定驗證層級時，會限制應用程式內的存取而不直接切換回完整存取的原則。 例如：
   * 設定一個將受限工作階段宣告傳送給 Exchange 和 SharePoint 的備份原則。
   * 如果您的組織使用 Microsoft Cloud App Security，請考慮切換回會牽涉 MCAS 的原則，然後 MCAS 就會允許唯讀存取而非上傳。
 * 為您的原則命名，以確定在中斷期間可以輕易找到這些原則。 請在原則名稱中包含下列元素：
@@ -257,9 +258,9 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
  > 如果您擴大受信任的 IP 位址以解除封鎖存取，則不會產生與 IP 位址相關聯的風險偵測（例如不可能的移動或不熟悉的位置）。
 
 >[!NOTE]
- > 只有在使用 [Azure AD Premium 授權](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-mfasettings)的情況下，才能為 Azure MFA 設定[受信任的 IP](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-licensing)。
+ > 只有在使用 [Azure AD Premium 授權](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-licensing)的情況下，才能為 Azure MFA 設定[受信任的 IP](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-mfasettings)。
 
-## <a name="learn-more"></a>詳細資訊
+## <a name="learn-more"></a>了解更多
 
 * [Azure AD 驗證文件](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-iis)
 * [在 Azure AD 中管理緊急存取系統管理帳戶](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)

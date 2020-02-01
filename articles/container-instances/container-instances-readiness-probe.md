@@ -3,12 +3,12 @@ title: 在容器實例上設定準備就緒探查
 description: 瞭解如何設定探查，以確保 Azure 容器實例中的容器只會在準備好時才接收要求
 ms.topic: article
 ms.date: 10/17/2019
-ms.openlocfilehash: 5ebbcdeee231e3e67abd6758485a12984137997e
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 50cb341788434a6dc0bb0a1423d9e59a3d93634d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533552"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901846"
 ---
 # <a name="configure-readiness-probes"></a>設定整備度探查
 
@@ -17,6 +17,9 @@ ms.locfileid: "74533552"
 本文說明如何部署包含準備就緒探查的容器群組，讓容器只會在探查成功時收到流量。
 
 Azure 容器實例也支援「[活動探查](container-instances-liveness-probe.md)」，您可以將其設定為導致狀況不良的容器自動重新開機。
+
+> [!NOTE]
+> 目前您無法在部署至虛擬網路的容器群組中使用準備就緒探查。
 
 ## <a name="yaml-configuration"></a>YAML 設定
 

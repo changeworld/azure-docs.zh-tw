@@ -1,19 +1,19 @@
 ---
 title: 建立叢集錯誤字典
 description: 瞭解如何建立叢集錯誤字典。
-ms.reviewer: hrasheed
 author: karkrish
-ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
-ms.topic: troubleshooting
-ms.date: 11/19/2019
 ms.author: v-todmc
-ms.openlocfilehash: ee9ed5374b12c3130d952770a4be6a759e37339a
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.reviewer: hrasheed
+ms.service: hdinsight
+ms.topic: troubleshooting
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 11/19/2019
+ms.openlocfilehash: 6e5ed996a0f44bae6c37027bc01f30be85d164f9
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156857"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905490"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight：叢集建立錯誤
 
@@ -210,7 +210,7 @@ HDInsight 服務無法存取您在建立叢集要求中提供的腳本動作 URL
 
 ### <a name="resolution"></a>解析度
 
-檢查[azure 狀態](https://status.azure.com/status)頁面中可能會影響叢集部署的任何 azure 中斷。 如果沒有中斷，請重試叢集部署。
+檢查[azure 狀態](https://status.azure.com)頁面中可能會影響叢集部署的任何 azure 中斷。 如果沒有中斷，請重試叢集部署。
 
 ## <a name="next-steps"></a>後續步驟
 

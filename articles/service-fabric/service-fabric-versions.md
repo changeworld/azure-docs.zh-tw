@@ -2,13 +2,13 @@
 title: Azure 中支援的叢集版本 Service Fabric
 description: 瞭解 Azure Service Fabric 中的叢集版本，包括來自 Service Fabric team blog 的最新發行連結。
 ms.topic: troubleshooting
-ms.date: 11/18/2019
-ms.openlocfilehash: 1d54f4f459b71469c5d10c949d35841572242c07
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 01/28/2020
+ms.openlocfilehash: 80ecf0861f3d740fff6b68b0373f94d0e2845a9d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638998"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76903473"
 ---
 # <a name="supported-service-fabric-versions"></a>支援的 Service Fabric 版本
 
@@ -30,7 +30,7 @@ ms.locfileid: "75638998"
 | 5.4.* | 5.1.158.* |小於或等於 2.4 版本 |2017 年 5 月 10 日       |
 | 5.5.* | 5.4.164.* |小於或等於 2.5 版本 |2017 年 8 月 10 日    |
 | 5.6.* | 5.4.164.* |小於或等於 2.6 版本 |2017 年 10 月 13 日   |
-| 5.7.* | 5.4.164.* |小於或等於 2.7 版 |2017 年 12 月 15 日  |
+| 5.7.* | 5.4.164.* |小於或等於 2.7 版 |2017年12月15日  |
 | 6.0.* | 5.6.205.* |小於或等於 2.8 版 |2018年3月30日     |
 | 6.1.* | 5.7.221.* |小於或等於 3.0 版 |2018 年 7 月 15 日      |
 | 6.2.* | 6.0.232.* |小於或等於 3.1 版 |2018年10月26日   |
@@ -100,3 +100,4 @@ ms.locfileid: "75638998"
 | 6.5 CU3 | 6.5.664.9590 | 6.5.466.1 |
 | 6.5 CU5 | 6.5.676.9590 | 6.5.467.1 |
 | 7.0 RTO | 7.0.457.9590 | 7.0.457.1 |
+| 7.0 CU2 | 7.0.464.9590 | 7.0.464.1 |

@@ -1,5 +1,5 @@
 ---
-title: 開發視訊播放器應用程式
+title: 開發視訊播放程式應用程式
 description: 本主題會提供 Player Framework 和外掛程式的連結，可讓您開發自己的用戶端應用程式，以使用來自媒體服務的串流媒體。
 author: Juliako
 manager: femila
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: b8d4ff3e833dcbe92802845796e3b826735b68ce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 39459267919747ed49e9fa3f05746294eaf741dc
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61465638"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906835"
 ---
-# <a name="develop-video-player-applications"></a>開發視訊播放器應用程式
-## <a name="overview"></a>總覽
+# <a name="develop-video-player-applications"></a>開發視訊播放程式應用程式
+## <a name="overview"></a>概觀
 Azure 媒體服務提供一些工具，供您用來建立適用於大部分平台的豐富、動態用戶端播放器應用程式，此處所述的平台包括：iOS 裝置、Android 裝置、Windows、Windows Phone、Xbox 和機上盒。 本主題也會提供 SDK 和 Player Framework 連結，可讓您開發自己的用戶端應用程式，使用來自 Azure 媒體服務的串流媒體。
 
 >[!NOTE]
->建立 AMS 帳戶時，**預設**串流端點會新增至 [已停止]  狀態的帳戶。 若要開始串流內容並利用動態封裝和動態加密功能，您想要串流內容的串流端點必須處於 [執行中]  狀態。 
+>建立 AMS 帳戶時，**預設**串流端點會新增至 [已停止] 狀態的帳戶。 若要開始串流內容並利用動態封裝和動態加密功能，您想要串流內容的串流端點必須處於 [執行中] 狀態。 
  
 ## <a name="azure-media-player"></a>Azure 媒體播放器
 [Azure 媒體播放器](https://aka.ms/ampinfo) 是一款網頁視訊播放器，可以在各種瀏覽器和裝置上播放 Microsoft Azure 媒體服務的媒體內容。 Azure Media Player 採用業界標準，例如 HTML5、媒體來源延伸模組 (MSE) 和加密媒體擴充功能 (EME)，提供豐富的調適性串流體驗。 無法在裝置或瀏覽器使用這些標準時，Azure Media Player 則會使用 Flash 和 Silverlight 做為後援技術。 不論使用何種播放技術，開發人員都會有統一的 JavaScript 介面來存取應用程式開發介面。 這樣我們就可以在各種裝置和瀏覽器上順利播放 Azure 媒體服務提供的內容。
 
 我們可以利用 Microsoft Azure 媒體服務播放 DASH、Smooth Streaming 和 HLS 資料流等格式的內容。 Azure Media Player 會考量這些不同的格式，並根據平台/瀏覽器功能自動播放最合適的連結。 Microsoft Azure 媒體服務也允許利用 PlayReady 加密或 AES 128 位元信封加密，進行資產的動態加密。 只要設定正確，Azure Media Player 允許解密 PlayReady 和 AES 128 位元加密的內容。 
 
-其他資訊：
+詳細資訊：
 
 * [Azure Media Player](https://aka.ms/ampinfo)
 * [Azure Media Player 文件](https://aka.ms/ampdocs) 
@@ -46,11 +46,11 @@ Azure 媒體服務提供一些工具，供您用來建立適用於大部分平�
 
 * [Smooth Streaming Client SDK](https://www.iis.net/downloads/microsoft/smooth-streaming) 
 * [Smooth Streaming Windows 市集應用程式](media-services-build-smooth-streaming-apps.md)
-* [Microsoft 媒體平台：播放器架構](https://playerframework.codeplex.com/) 
+* [Microsoft 媒體平台：Player Framework](https://playerframework.codeplex.com/) 
 * [HTML5 Player Framework 文件](https://playerframework.codeplex.com/wikipage?title=HTML5%20Player&referringTitle=Documentation) 
 * [Microsoft Smooth Streaming Plugin for OSMF](https://www.microsoft.com/download/details.aspx?id=36057) 
 * [Licensing Microsoft® Smooth Streaming Client Porting Kit](https://aka.ms/sspk) 
-* [XBOX Video Application Development](https://xbox.create.msdn.com/) 
+* [XBOX Video Application Development](https://www.xbox.com/en-US/developers) 
 
 ## <a name="advertising"></a>廣告
 Azure 媒體服務允許透過 Windows Media 平台插入廣告：Player Framework。 具備廣告支援的播放器架構都適用於 Windows 8、Silverlight、Windows Phone 8 和 iOS 裝置。 每一個播放器架構都有範例程式碼，教您如何實作播放器應用程式。 目前有三種不同的廣告可以插入媒體中：
@@ -61,7 +61,7 @@ Azure 媒體服務允許透過 Windows Media 平台插入廣告：Player Framewo
 
 隨播 – 顯示在播放器之外的廣告
 
-廣告可以放在主要影片時間軸的任何時間點。 您必須告訴播放器何時播放廣告以及要播放哪些廣告。 使用一組標準的 XML 格式檔案即可：Video Ad Service Template (VAST)、Digital Video Multiple Ad Playlist (VMAP)、Media Abstract Sequencing Template (MAST) 以及 Digital Video Player Ad Interface Definition (VPAID)。 VAST 檔案會指定要顯示的廣告。 VMAP 檔案會指定何時播放各種廣告而且包含 VAST XML。 MAST 檔案是另一種廣告排序的方法，而且也包含 VAST XML。 VPAID 檔案會定義影片播放器廣告和廣告或廣告伺服器之間的介面。 如需詳細資訊，請參閱 [插入廣告](https://msdn.microsoft.com/library/dn387398.aspx)。
+廣告可以放在主要影片時間軸的任何時間點。 您必須告訴播放器何時播放廣告以及要播放哪些廣告。 使用一組標準的 XML 格式檔案即可搞定：Video Ad Service Template (VAST)、Digital Video Multiple Ad Playlist (VMAP)、Media Abstract Sequencing Template (MAST) 以及 Digital Video Player Ad Interface Definition (VPAID)。 VAST 檔案會指定要顯示的廣告。 VMAP 檔案會指定何時播放各種廣告而且包含 VAST XML。 MAST 檔案是另一種廣告排序的方法，而且也包含 VAST XML。 VPAID 檔案會定義影片播放器廣告和廣告或廣告伺服器之間的介面。 如需詳細資訊，請參閱 [插入廣告](https://msdn.microsoft.com/library/dn387398.aspx)。
 
 如需了解即時資料流視訊的隱藏式字幕和廣告支援，請參閱 [支援的隱藏式輔助字幕和廣告插入標準](https://msdn.microsoft.com/library/c49e0b4d-357e-4cca-95e5-2288924d1ff3#caption_ad)。
 

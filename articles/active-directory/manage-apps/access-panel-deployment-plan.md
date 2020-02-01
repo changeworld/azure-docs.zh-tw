@@ -15,12 +15,12 @@ ms.date: 09/27/2019
 ms.author: baselden
 ms.reviewer: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e9b2119964ec2af792e2f2a5b942fde12cf7eab
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 04d8b6c6d40aa81bf56baed59f90417f2147fa56
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512846"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897068"
 ---
 # <a name="plan-an-azure-active-directory-access-panel-deployment"></a>規劃 Azure Active Directory 存取面板部署
 
@@ -37,7 +37,7 @@ Azure Active Directory （Azure AD）存取面板是以 web 為基礎的入口�
 它也可讓系統管理員管理：
 
 * 服務條款
-* 組織
+* 各
 * 存取檢閱
 
 
@@ -55,7 +55,7 @@ Azure AD 存取面板以下列方式獲益企業：
 
 **啟用健全的審核和使用方式追蹤**：所有使用者功能的審核和使用方式追蹤可讓您知道使用者何時使用其資源，並確保您可以評估安全性。
 
-### <a name="licensing-considerations"></a>授權考慮
+### <a name="licensing-considerations"></a>授權考量
 
 存取面板是免費的，而且不需要在基本層級使用任何授權。 不過，目錄中的物件數目和您想要部署的其他功能可能需要額外的授權。 某些具有授權需求的常見 Azure AD 案例包括下列安全性功能：
 
@@ -89,10 +89,10 @@ Azure AD 存取面板以下列方式獲益企業：
 | 控管| 定義和監視 Azure AD 連線應用程式和群組的使用者指派生命週期。 |
 | 安全性| 資源的存取權是透過使用者和群組指派來控制。 只有授權的使用者可以管理資源存取權。 |
 | 效能| 已記載並監視存取指派傳播時間軸。 |
-| 使用者經驗| 使用者知道存取面板功能以及如何使用它們。|
-| 使用者經驗| 使用者可以管理其對應用程式和群組的存取權。|
-| 使用者經驗| 使用者可以管理自己的帳戶。 |
-| 使用者經驗| 使用者瞭解瀏覽器的相容性。 |
+| 使用者體驗| 使用者知道存取面板功能以及如何使用它們。|
+| 使用者體驗| 使用者可以管理其對應用程式和群組的存取權。|
+| 使用者體驗| 使用者可以管理自己的帳戶。 |
+| 使用者體驗| 使用者瞭解瀏覽器的相容性。 |
 | 支援| 使用者可以尋找存取面板問題的支援。 |
 
 ### <a name="best-practices-for-deploying-the-azure-ad-access-panel"></a>部署 Azure AD 存取面板的最佳做法
@@ -227,9 +227,9 @@ Azure AD 支援三種不同的方式，可[在應用程式中啟用單一登入]
 
 任何 Azure AD SSO 功能的應用程式都可以新增至我的應用程式啟動器。 其他應用程式則是使用連結的 SSO 選項來新增。 您可以設定應用程式磚，以連結至現有 web 應用程式的 URL。 連結的 SSO 可讓您開始將使用者導向我的應用程式入口網站，而不需要將所有應用程式遷移至 Azure AD SSO。 您可以逐漸移至 Azure AD SSO 設定的應用程式，而不會中斷使用者的體驗。
 
-#### <a name="use-my-apps-workspaces-preview"></a>使用我的應用程式的工作區（預覽）
+#### <a name="use-my-apps-collections"></a>使用我的應用程式集合
 
-根據預設，所有應用程式會同時列在單一頁面上。 但是，您可以使用工作區將相關應用程式群組在一起，並將它們顯示在不同的索引標籤上，使其更容易尋找。 例如，您可以使用工作區，針對特定的作業角色、工作、專案等，建立應用程式的邏輯群組。 如需相關資訊，請參閱[如何使用我的應用程式工作區自訂使用者存取面板（預覽）](access-panel-workspaces.md)。 
+根據預設，所有應用程式會同時列在單一頁面上。 但是，您可以使用集合將相關的應用程式群組在一起，並將它們顯示在不同的索引標籤上，使其更容易尋找。 例如，您可以使用集合，針對特定的作業角色、工作、專案等，建立應用程式的邏輯群組。 如需相關資訊，請參閱[如何使用我的應用程式集合自訂使用者存取面板](access-panel-collections.md)。 
 
 #### <a name="plan-whether-to-use-my-apps-or-an-existing-portal"></a>規劃是否要使用我的應用程式或現有的入口網站
 
@@ -261,10 +261,10 @@ Azure AD 支援三種不同的方式，可[在應用程式中啟用單一登入]
 
 Azure AD 提供可提供[技術和商務深入解析的報表](https://azure.microsoft.com/documentation/articles/active-directory-view-access-usage-reports/)。 請與您的商務和技術應用程式擁有者合作，以取得這些報表的擁有權，並定期使用它們。 下表提供一般報告案例的一些範例。
 
-|   | 管理風險| 提升生產力| 治理和合規性 |
+|   | 管理風險| 提高生產力| 治理和合規性 |
 |  - |- | - | - |
 | 報表類型|  應用程式許可權和使用方式| 帳戶佈建活動| 審查誰正在存取應用程式 |
-| 可能的動作| Audit access;撤銷許可權| 補救任何布建錯誤| [撤銷存取權] |
+| 可能的動作| Audit access;撤銷許可權| 補救任何布建錯誤| 撤銷存取權 |
 
 Azure AD 會將大部分的審核資料保留30天。 資料可透過 Azure 系統管理員入口網站或 API 取得，供您下載至您的分析系統。
 

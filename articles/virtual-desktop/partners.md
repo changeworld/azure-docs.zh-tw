@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 01/28/2020
+ms.date: 01/30/2020
 ms.author: helohr
-ms.openlocfilehash: e525976edee08097d75605ea1921d0552ed02785
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: b7c7c21f14eddf29c3dda1f420d7748a4c23e53d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841058"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906898"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows 虛擬桌面合作夥伴整合
 
@@ -38,6 +38,14 @@ Microsoft Azure 的 VMware 範圍雲端可讓組織將自己的 Microsoft Azure 
 
 - [在 Microsoft Azure 上註冊適用于地平線雲端的技術預覽](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html)。
 - [前往合作夥伴網站](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html)。
+
+## <a name="10zig"></a>10ZiG
+
+![10ZiG 標誌](./media/partners/10zig.png)
+
+10ZiG 技術（具有最尖端的瘦和零用戶端硬體和軟體）是與 Microsoft 以及專用 Microsoft Azure 和 Windows 虛擬桌面合作夥伴的長期以來非常合作夥伴。 10ZiG Windows 10 以 IoT 為基礎的瘦用戶端是功能強大、可靠且價格實惠的端點，適用于所有的 Windows 虛擬桌面多使用者。 10ZiG Manager 軟體提供卓越的管理和部署，不需要任何額外的費用。 10ZiG 技術小組、先進的擔保計畫和不麻煩的示範，都是雲端中的一次性 Windows 虛擬桌面多會話支援解決方案。
+
+10ZiG's 世界-瘦和零用戶端端點裝置的市場領導地位，以及虛擬桌面的管理軟體，都是以其客戶的工作方式一例。 其瘦用戶端硬體隨附 thoughtfully 結構化的權益功能和選項，其設計目的是為了確保客戶根據其需求接收正確的用戶端裝置。 10ZiG 會自訂其裝置，以配合客戶環境使用 Windows 型和 Linux 型用戶端，以在雲端內部和外部虛擬桌面提供最佳效能。
 
 ## <a name="cloudhouse"></a>Cloudhouse
 
@@ -133,6 +141,14 @@ Liquidware Essentials 藉由有效率地搜集使用者設定檔並收集重要�
 - [請參閱聯合解決方案簡介](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oSY1)。
 - [前往合作夥伴網站](https://www.liquidware.com/solutions/solutions-platform/microsoft)。
 
+## <a name="liquit"></a>Liquit
+
+![Liquit 標誌](./media/partners/liquit.png)
+
+Liquit 應用程式匯總與傳遞軟體可讓企業和服務提供者與所有工作區後端（Citrix、VMWare、Windows 虛擬桌面、RDP 和舊版）連線併合並，並提供自訂且一致的客戶無論客戶的應用程式位於何處，都能獲得經驗。 當客戶發佈智慧圖示時，Liquit 會根據客戶的位置、裝置和設定檔許可權來決定要在何處啟動應用程式。
+
+身為認證的整合合作夥伴，Liquit 有助於加速轉換至雲端，而不需要進行 rip 和取代延遲。 Windows 虛擬桌面可以輕鬆地連接到現有的環境、建立工作區，以及提供桌面。 然後您可以將時間從舊平臺移出，並在後端進行變更，而不需要您的使用者注意到。 無論應用程式位於何處，都能獲得一致的使用者體驗、彈性的基礎結構，以及維持其控制。
+
 ## <a name="login-vsi"></a>登入 .VSI
 
 ![登入 .VSI 標誌](./media/partners/loginvsi.png)
@@ -202,6 +218,16 @@ RDPSoft 是 Windows 虛擬桌面合作夥伴，提供強大且實惠的監視、
 RDPSoft 的遠端桌面指揮解決方案增強了 Windows 虛擬桌面系統管理。 高階管理功能藉由提供遠端協助、使用者會話和流程管理，簡化 Windows 虛擬桌面管理工作的委派，以支援服務台人員。 同時，遠端桌面操作套件會收集有關每個使用者的效能和負載、使用者活動和審核、Windows 虛擬桌面連線品質（延遲和頻寬）、授權和安全性到中央 Azure SQL 的豐富計量要審核的資料庫實例。 有了 RDPSoft，豐富的歷程記錄報告和完整的儀表板只需按一下即可。
 
 - [前往合作夥伴網站](https://www.rdpsoft.com/products/remote-desktop-commander/suite/)
+
+## <a name="sepago"></a>sepago
+
+![sepago 標誌](./media/partners/sepago.png)
+
+sepago 在2002中是由 Cologne 中的四位朋友所建立。 現今，sepago 是一項 IT 管理諮詢，其中包含穩定增加的 sepagists 數目，並在德國的 Cologne、慕尼克和 Hamburg 中提供位置。 sepago 是自動化應用程式布建、虛擬化、雲端解決方案和 IT 安全性的專家。 sepago 支援中型和大型公司進行數位轉型，並確保使用者可以安全且有效率地工作。
+
+sepago 的創新和開發實驗室使用海量資料和 AI 技術建立智慧型解決方案。 這些解決方案的重點在於提升企業、使用者體驗，以及 Windows 虛擬桌面等合作夥伴產品的管理中心。
+
+- [前往合作夥伴網站](https://www.sepago.de/wvd-value-add-tools/)
 
 ## <a name="thinprint"></a>ThinPrint
 

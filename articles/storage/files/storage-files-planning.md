@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a51bb91a63f032f87da59fe95f5e3282cbaa0bea
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: b77d6fe03a051c019519f195d55cdeb00fb9afb2
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771610"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906261"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>規劃 Azure 檔案服務部署
 
@@ -201,49 +201,14 @@ GRS 會將您的資料複寫到次要區域中的另一個資料中心，但如�
 
 ### <a name="regional-availability"></a>區域可用性
 
-標準檔案共用適用于最多 5 TiB 的所有區域。 在特定區域中，這些區域會以 100 TiB 限制提供，下表列出這些地區：
+具有 100 TiB 容量限制的標準檔案共用，可在所有 Azure 區域中全域取得-
 
-|地區 |支援的冗余 |
-|-------|---------|
-|澳洲中部    |LRS     |
-|澳洲中部 2    |LRS     |
-|澳大利亞東部 |LRS     |
-|澳洲東南部|LRS |
-|巴西南部    |LRS     |
-|加拿大中部  |LRS     |
-|加拿大東部     |LRS     |
-|印度中部  |LRS     |
-|美國中部 *   |LRS、ZRS    |
-|東亞      |LRS     |
-|美國東部 *        |LRS、ZRS|
-|美國東部 2 *      |LRS、ZRS     |
-|法國中部 |LRS、ZRS|
-|法國南部   |LRS     |
-|日本東部     |LRS     |
-|日本西部     |LRS     |
-|南韓中部  |LRS     |
-|南韓南部    |LRS     |
-|美國中北部 |LRS   |
-|北歐   |LRS     |
-|印度南部    |LRS     |
-|美國中南部 |LRS     |
-|東南亞 |LRS、ZRS|
-|瑞士北部    |LRS     |
-|瑞士西部    |LRS     |
-|阿拉伯聯合大公國中部    |LRS     |
-|阿拉伯聯合大公國北部    |LRS     |
-|英國北部   |LRS、ZRS    |
-|英國南部    |LRS     |
-|英國西部    |LRS     |
-|美國中西部|LRS     |
-|西歐 *    |LRS、ZRS|
-|印度西部   |LRS     |
-|美國西部        |LRS     |
-|美國西部 2      |LRS、ZRS|
+- LRS：除了南非北部和南非西部以外的所有區域。
+   - 國家雲端（政府、德國、中國）可透過 PowerShell 和 Azure 命令列介面（CLI）來支援。 沒有入口網站支援。 
+   - 「美國東部」、「東部美國2」、「西歐」：支援所有新的帳戶。 少數現有帳戶尚未完成升級程式。 您可以藉由嘗試[啟用大型檔案共用](storage-files-how-to-create-large-file-share.md)，檢查現有的儲存體帳戶是否已完成升級程式。
 
-\* 新帳戶支援，並非所有現有的帳戶都已完成升級程式。 您可以藉由嘗試[啟用大型檔案共用](storage-files-how-to-create-large-file-share.md)，檢查現有的儲存體帳戶是否已完成升級程式。
-
-為協助我們設定新區域和功能的優先順序，請填寫這[份問卷](https://aka.ms/azurefilesatscalesurvey)。
+- ZRS：除了日本東部、北歐、南非北部以外的所有區域。
+- GRS/切換：不支援。
 
 ### <a name="enable-and-create-larger-file-shares"></a>啟用和建立較大的檔案共用
 

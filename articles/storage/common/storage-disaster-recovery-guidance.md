@@ -10,12 +10,12 @@ ms.date: 01/23/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: bca780eb31a16d3854a2e4dfac821d5a68e9ca43
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 40a7f49cbb2d74b55ccb85dce64eea936a20801e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719325"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905522"
 ---
 # <a name="disaster-recovery-and-account-failover-preview"></a>嚴重損壞修復和帳戶容錯移轉（預覽）
 
@@ -126,21 +126,6 @@ Microsoft 也建議您將應用程式設計成可以因應可能的寫入失敗�
 - 美國西部 2
 
 預覽僅適用於非生產環境。 生產環境的服務等級協定 (SLA) 目前無法使用。
-
-### <a name="register-for-the-preview"></a>註冊預覽
-
-若要註冊預覽，請在 PowerShell 中執行下列命令。 請務必將括號中的預留位置取代為您自己的訂用帳戶識別碼：
-
-```powershell
-Connect-AzAccount -SubscriptionId <subscription-id>
-Register-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
-```
-
-可能需要5-7 天的時間，才能收到預覽的核准。 若要確任您的註冊是否已被核准，請執行下列命令：
-
-```powershell
-Get-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
-```
 
 ### <a name="additional-considerations"></a>其他考量
 

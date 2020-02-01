@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI-sfctl 服務
 description: 深入瞭解 sfctl，這是 Azure Service Fabric 命令列介面。 包含用來管理服務、服務類型和服務套件的命令清單。
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 24ba7fea2ed51ea57c0a44e3c1f26b5df6043e1e
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 696de713129ca71dd7f2451501a7cc9eca0ee9b9
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639066"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906231"
 ---
 # <a name="sfctl-service"></a>sfctl service
 建立、刪除與管理服務、服務類型和服務套件。
@@ -110,7 +110,7 @@ ms.locfileid: "75639066"
 | --int-scheme-low | 使用統一整數分割區配置時，索引鍵整數範圍的開頭。 |
 | --load-metrics | 在節點之間進行服務負載平衡時，所使用的計量 JSON 編碼清單。 |
 | --min-replica-set-size | 以數字表示的最小複本集大小。 這只適用於具狀態服務。 |
-| --move-cost | 指定服務的移動成本。 可能的值為：'Zero'、'Low'、'Medium'、'High'。 |
+| --move-cost | 指定服務的移動成本。 可能的值為\: ' 零 '、' Low '、' Medium '、' High '、' VeryHigh '。 |
 | --named-scheme | 指出服務應該有多個具名資料分割。 |
 | --named-scheme-list | 使用具名分割區配置時，要在其間分割服務的名稱 JSON 編碼清單。 |
 | --no-persisted-state | 如果為 true，即表示服務不會在本機磁碟上儲存任何持續性狀態，或只會將狀態儲存在記憶體中。 |
@@ -118,6 +118,7 @@ ms.locfileid: "75639066"
 | --quorum-loss-wait | 允許分割區處於仲裁遺失狀態的持續時間上限 (秒)。 這只適用於具狀態服務。 |
 | --replica-restart-wait | 關閉複本與建立新複本之間的持續時間 (秒)。 這只適用於具狀態服務。 |
 | --scaling-policies | 此服務的規模調整原則 JSON 編碼清單。 |
+| --服務-放置時間 | 在報告組建停滯之前，複本可以保持建置的持續時間。 這只適用於具狀態服務。 |
 | --singleton-scheme | 指出服務應該有單一分割區，或應該是非分割服務。 |
 | --stand-by-replica-keep | StandBy 複本在被移除前的保留持續時間上限 (秒)。 這只適用於具狀態服務。 |
 | --stateful | 指出服務是具狀態服務。 |
@@ -562,11 +563,12 @@ ms.locfileid: "75639066"
 | --instance-count | 執行個體計數。 這只適用於無狀態服務。 |
 | --load-metrics | 在節點之間進行負載平衡時所使用計量的 JSON 編碼清單。 |
 | --min-replica-set-size | 以數字表示的最小複本集大小。 這只適用於具狀態服務。 |
-| --move-cost | 指定服務的移動成本。 可能的值為：'Zero'、'Low'、'Medium'、'High'。 |
+| --move-cost | 指定服務的移動成本。 可能的值為\: ' 零 '、' Low '、' Medium '、' High '、' VeryHigh '。 |
 | --placement-policy-list | 服務的放置原則 JSON 編碼清單，以及任何相關聯的網域名稱。 原則可以是一或多個\: `NonPartiallyPlaceService`、`PreferPrimaryDomain`、`RequireDomain`、`RequireDomainDistribution`。 |
 | --quorum-loss-wait | 允許分割區處於仲裁遺失狀態的持續時間上限 (秒)。 這只適用於具狀態服務。 |
 | --replica-restart-wait | 關閉複本與建立新複本之間的持續時間 (秒)。 這只適用於具狀態服務。 |
 | --scaling-policies | 此服務的規模調整原則 JSON 編碼清單。 |
+| --服務-放置時間 | 在報告組建停滯之前，複本可以保持建置的持續時間。 這只適用於具狀態服務。 |
 | --stand-by-replica-keep | StandBy 複本在被移除前的保留持續時間上限 (秒)。 這只適用於具狀態服務。 |
 | --stateful | 指出目標服務是具狀態服務。 |
 | --stateless | 指出目標服務是無狀態服務。 |

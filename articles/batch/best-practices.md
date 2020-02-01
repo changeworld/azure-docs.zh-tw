@@ -7,12 +7,12 @@ ms.date: 11/22/2019
 ms.service: batch
 ms.topic: article
 manager: gwallace
-ms.openlocfilehash: 20fc7844054fc7e05f56105e69ad6bd8a4272ed8
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: c2acd09df51b942a08a85d96d907e064367377a7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026155"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900289"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch 最佳做法
 
@@ -67,7 +67,7 @@ Batch 集區是在 Batch 服務上執行作業的計算資源。 下列各節提
 
 集區配置失敗可能會在第一次配置或後續調整大小的任何時間點發生。 這可能是因為在某個區域發生暫時容量耗盡，或批次所依賴的其他 Azure 服務失敗。 您的核心配額不是保證，而是限制。
 
-### <a name="unplanned-downtime"></a>非計劃性停機
+### <a name="unplanned-downtime"></a>非計畫的停機時間
 
 Batch 集區可以在 Azure 中遇到停機事件。 在規劃和開發 Batch 的案例或工作流程時，請務必記住這一點。
 
@@ -152,3 +152,15 @@ Batch 可以自動重試工作。 重試的類型有兩種：使用者控制和�
 ### <a name="security-isolation"></a>安全性隔離：
 
 基於隔離的目的，如果您的案例需要隔離作業，則您應該將這些作業放在不同的集區中來隔離。 集區是 Batch 中的安全性隔離界限，而且根據預設，不會顯示或無法彼此通訊的兩個集區。 避免使用個別的 Batch 帳戶做為隔離的方法。
+
+## <a name="moving"></a>變化
+
+### <a name="move-batch-account-across-regions"></a>跨區域移動 Batch 帳戶 
+
+在許多情況下，您會想要將現有的 Batch 帳戶從一個區域移至另一個區域。 例如，您可能會想要移到另一個區域，做為嚴重損壞修復計畫的一部分。
+
+Azure Batch 帳戶無法從一個區域移至另一個區域。 不過，您可以使用 Azure Resource Manager 範本來匯出 Batch 帳戶的現有設定。  接著，您可以將 Batch 帳戶匯出至範本、修改參數以符合目的地區域，然後將範本部署到新的區域，藉此將資源放在另一個區域中。 將範本上傳至新的區域之後，您必須重新建立憑證、作業排程和應用程式套件。 若要認可變更並完成 Batch 帳戶的移動，請記得刪除原始的 Batch 帳戶或資源群組。  
+
+如需 Resource Manager 和範本的詳細資訊，請參閱[快速入門：使用 Azure 入口網站來建立和部署 Azure Resource Manager 範本](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)。
+
+

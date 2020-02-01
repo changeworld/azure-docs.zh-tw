@@ -9,11 +9,11 @@ ms.date: 04/24/2018
 ms.author: lizross
 ms.custom: include file
 ms.openlocfilehash: b049b3651f12b1a73a3511d030bbdbbfaceb2480
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "67173699"
 ---
 >[!Note] 
-> 本文提供如何從裝置或服務上刪除個人資料的步驟，而且可以用來支援 GDPR 的義務。 如果您想要尋找有關 GDPR 的一般資訊，請參閱 [Service Trust 入口網站的 GDPR 區段](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted)。
+> 本文提供如何從裝置或服務上刪除個人資料的步驟，而且可以用來支援 GDPR 的義務。 如果您正在尋找與 GDPR 相關的一般資訊，請參閱[服務信任入口網站的 GDPR 區段](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted)。

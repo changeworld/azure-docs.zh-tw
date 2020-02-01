@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/10/2017
-ms.openlocfilehash: 25dff0cb14467513bf1cc60fd1fb6c2205bd2276
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 09b77862ad3379efeb8b3063a9d6c60b062ca2d7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666895"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905133"
 ---
 # <a name="set-up-cross-region-disaster-recovery-for-integration-accounts-in-azure-logic-apps"></a>在 Azure Logic Apps 中設定整合帳戶的跨區域嚴重損壞修復
 
@@ -240,5 +240,5 @@ EDI EDIFACT 文件的商務持續性是根據控制編號。
 
 ## <a name="next-steps"></a>後續步驟
 
-[監視 B2B 訊息](logic-apps-monitor-b2b-message.md)
+[使用 Azure 監視器記錄監視 B2B 訊息](../logic-apps/monitor-b2b-messages-log-analytics.md)
 

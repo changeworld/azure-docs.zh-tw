@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 8d5377f7ec8de14f3d7d55bc109f6be731991051
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 1fec2778ce8c839c5bac0c1d74085db0f8b283ce
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775257"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76902997"
 ---
 # <a name="virtual-network-service-tags"></a>虛擬網路服務標籤 
 <a name="network-service-tags"></a>
@@ -43,7 +43,7 @@ ms.locfileid: "76775257"
 | 標記 | 目的 | 可以使用輸入或輸出嗎？ | 可以是地區嗎？ | 可以與 Azure 防火牆搭配使用嗎？ |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **ApiManagement** | Azure API 管理-專用部署的管理流量。 | 兩者 | 否 | 是 |
-| **ApplicationInsightsAvailability** | Application Insights 可用性。 | 兩者 | 否 | 否 |
+| **ApplicationInsightsAvailability** | Application Insights 可用性。 | 輸入 | 否 | 否 |
 | **AppService**    | Azure App Service。 對 web 應用程式前端的輸出安全性規則，建議使用此標記。 | 輸出 | 是 | 是 |
 | **AppServiceManagement** | 專用於 App Service 環境之部署的管理流量。 | 兩者 | 否 | 是 |
 | **AzureActiveDirectory** | Azure Active Directory。 | 輸出 | 否 | 是 |

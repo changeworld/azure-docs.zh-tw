@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: ff6136dea8a25a39e045665d61bdd5d93eeb58a5
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 5b72ee02c2bbf811293a2bcdb15590e16e300a02
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792132"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906682"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Azure Logic Apps 的常見情節、範例、教學課程和逐步解說
 
@@ -75,15 +75,15 @@ ms.locfileid: "74792132"
 * [將動作與範圍群組在一起](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)
 * [在工作流程中撰寫錯誤和例外狀況處理](../logic-apps/logic-apps-exception-handling.md)
 * [使用案例︰醫療保健公司如何使用邏輯應用程式的例外狀況處理來處理 HL7 FHIR 工作流程](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
-* [開啟現有 Logic Apps 的監視、記錄和警示](../logic-apps/logic-apps-monitor-your-logic-apps.md)
-* [建立 Logic Apps 時開啟監視和診斷記錄](../logic-apps/logic-apps-monitor-your-logic-apps-oms.md)
+* [開啟現有 Logic Apps 的監視、記錄和警示](../logic-apps/monitor-logic-apps.md)
+* [建立 Logic Apps 時開啟監視和診斷記錄](../logic-apps/monitor-logic-apps-log-analytics.md)
 
 ## <a name="deploy-and-manage-logic-apps"></a>部署和管理邏輯應用程式
 
 您可以透過 Visual Studio、Azure DevOps 或其他任何原始檔控制和自動化建置工具，完整地開發及部署邏輯應用程式。 為了支援將工作流程與相依連線部署在資源範本中的功能，邏輯應用程式使用 Azure 資源部署範本。 Visual Studio 工具會自動產生這些範本，您可以將其簽入原始檔控制以便控制版本。
 
 * [使用 Visual Studio 建立和部署邏輯應用程式](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
-* [開啟現有 Logic Apps 的監視、記錄和警示](../logic-apps/logic-apps-monitor-your-logic-apps.md)
+* [開啟現有 Logic Apps 的監視、記錄和警示](../logic-apps/monitor-logic-apps.md)
 * [自動化邏輯應用程式部署](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 * [範例：從 Azure Logic Apps 連接到 Azure 服務匯流排佇列，並使用 Azure Pipelines 在 Azure DevOps 中進行部署](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [範例：從 Azure Logic Apps 連接到 Azure 儲存體帳戶，並使用 Azure Pipelines 在 Azure DevOps 中進行部署](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)

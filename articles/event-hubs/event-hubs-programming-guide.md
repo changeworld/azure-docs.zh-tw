@@ -1,5 +1,5 @@
 ---
-title: .NET 程式設計指南-Azure 事件中樞 |Microsoft Docs
+title: .NET 程式設計指南-Azure 事件中樞（舊版） |Microsoft Docs
 description: 本文提供有關如何使用 Azure .NET SDK 為「Azure 事件中樞」撰寫程式碼的資訊。
 services: event-hubs
 documentationcenter: na
@@ -7,17 +7,21 @@ author: ShubhaVijayasarathy
 ms.service: event-hubs
 ms.custom: seodec18
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 01/15/2020
 ms.author: shvija
-ms.openlocfilehash: c2e23c38abbec5fd0e6010bdfc0feca882a6180d
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: afd466e0266cf2d95f95eb8536943f5856c26a58
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309823"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899914"
 ---
-# <a name="net-programming-guide-for-azure-event-hubs"></a>Azure 事件中樞的 .NET 程式設計指南
+# <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>Azure 事件中樞的 .NET 程式設計指南（EventHubs 套件的舊版）
 本文會討論一些使用 Azure 事件中樞來撰寫程式碼的常見案例。 它假設使用者對事件中樞已有初步了解。 如需事件中樞的概念概觀，請參閱 [事件中樞概觀](event-hubs-what-is-event-hubs.md)。
+
+> [!WARNING]
+> 本指南適用于舊的**EventHubs**套件。 我們建議您[遷移](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MIGRATIONGUIDE.md)程式碼，以使用最新的[EventHubs](get-started-dotnet-standard-send-v2.md)套件。  
+
 
 ## <a name="event-publishers"></a>事件發佈者
 
@@ -58,7 +62,7 @@ eventHubClient = EventHubClient.CreateFromConnectionString(connectionStringBuild
 
 ## <a name="event-serialization"></a>事件序列化
 
-[EventData][] 類別具有[兩個多載建構函式](/dotnet/api/microsoft.azure.eventhubs.eventdata.-ctor)，它們會採用代表事件資料承載的各種參數 (位元組或位元組陣列)。 在搭配使用 JSON 和 [EventData][]時，您可以使用 **Encoding.UTF8.GetBytes()** 來擷取 JSON 編碼字串的位元組陣列。 例如:
+[EventData][] 類別具有[兩個多載建構函式](/dotnet/api/microsoft.azure.eventhubs.eventdata.-ctor)，它們會採用代表事件資料承載的各種參數 (位元組或位元組陣列)。 在搭配使用 JSON 和 [EventData][]時，您可以使用 **Encoding.UTF8.GetBytes()** 來擷取 JSON 編碼字串的位元組陣列。 例如：
 
 ```csharp
 for (var i = 0; i < numMessagesToSend; i++)
@@ -69,7 +73,7 @@ for (var i = 0; i < numMessagesToSend; i++)
 }
 ```
 
-## <a name="partition-key"></a>分割區索引鍵
+## <a name="partition-key"></a>資料分割索引鍵
 
 > [!NOTE]
 > 如果您不熟悉分割區，請參閱[這篇文章](event-hubs-features.md#partitions)。 
@@ -110,7 +114,7 @@ for (var i = 0; i < numMessagesToSend; i++)
 * [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync)
 * [ProcessErrorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processerrorasync)
 
-若要啟動事件處理，請將 [EventProcessorHost][] 具現化，其中需為事件中樞提供適當的參數。 例如:
+若要啟動事件處理，請將 [EventProcessorHost][] 具現化，其中需為事件中樞提供適當的參數。 例如：
 
 > [!NOTE]
 > EventProcessorHost 及其相關類別會在**EventHubs**中提供。 依照[本文](event-hubs-dotnet-framework-getstarted-send.md#add-the-event-hubs-nuget-package)中的指示, 或在 [[套件管理員主控台](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)] 視窗中發出下列命令, 將套件新增至您的 Visual Studio`Install-Package Microsoft.Azure.EventHubs.Processor`專案。

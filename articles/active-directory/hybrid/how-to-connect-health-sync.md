@@ -7,6 +7,7 @@ author: zhiweiwangmsft
 manager: daveba
 ms.assetid: 1dfbeaba-bda2-4f68-ac89-1dbfaf5b4015
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abed56ee64cbca8646c1aa1d24fea292aa4d8de3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 61490f75d12967f7f396d5f767f2d2e696474572
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60245314"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897201"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>使用 Azure AD Connect Health 監視 Azure AD Connect 同步處理
 下列文件適用於使用 Azure AD Connect Health 來監視 Azure AD Connect (同步處理)。  如需使用 Azure AD Connect Health 來監視 AD FS 的詳細資訊，請參閱 [在 AD FS 使用 Azure AD Connect Health](how-to-connect-health-adfs.md)。 此外，如需使用 Azure AD Connect Health 來監視 Active Directory 網域服務的詳細資訊，請參閱 [在 AD DS 使用 Azure AD Connect Health](how-to-connect-health-adds.md)。
@@ -69,7 +70,7 @@ ms.locfileid: "60245314"
 * 此報告涵蓋同步處理用戶端所記錄的錯誤 (Azure AD Connect 1.1.281.0 版或更高版本)
 * 它包含同步處理引擎上執行的最後一個同步處理作業所發生的錯誤 (Azure AD Connector 上的「匯出」)。
 * 用於同步處理的 Azure AD Connect Health 代理程式必須有指向所需端點的輸出連線，此報告才會包含最新的資料。
-* 此報告**每隔 30 分鐘更新一次**，使用的是用於同步處理的 Azure AD Connect Health 代理程式所上傳的資料。它提供下列重要功能
+* 報表會**每隔30分鐘更新一次**，並使用 Azure AD Connect Health 代理程式所上傳的資料進行同步處理。它提供下列主要功能
 
   * 錯誤分類
   * 依各類別之錯誤列出物件
@@ -80,7 +81,7 @@ ms.locfileid: "60245314"
 ### <a name="categorization-of-errors"></a>錯誤分類
 此報告將現有的同步處理錯誤分成下列類別︰
 
-| Category | 描述 |
+| 類別 | 說明 |
 | --- | --- |
 | 重複的屬性 |當 Azure AD Connect 嘗試在 Azure AD 中以一或多個重複的屬性值建立或更新物件時發生錯誤，這些屬性在租用戶中必須是唯一的，例如 proxyAddresses、UserPrincipalName。 |
 | 資料不符 |當大致相符無法比對物件時發生錯誤，導致同步處理錯誤。 |
@@ -100,8 +101,8 @@ ms.locfileid: "60245314"
 每個錯誤的詳細檢視中提供下列資料
 
 * 已醒目提示衝突的屬性
-* 所涉及之「AD 物件」  的識別項
-* 所涉及之「Azure AD 物件」  的識別項 (視情況)
+* 所涉及之「AD 物件」的識別項
+* 所涉及之「Azure AD 物件」的識別項 (視情況)
 * 錯誤描述及如何修正
 
 ![同步處理錯誤報告詳細資料](./media/how-to-connect-health-sync/duplicateAttributeSyncError.png)

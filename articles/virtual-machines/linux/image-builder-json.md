@@ -7,12 +7,12 @@ ms.date: 01/23/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 9183805e2817459ac2c408648981b6989edf4e62
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 4ac2c1266933716697a658b1ba88efd8c2f05d34
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760006"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905755"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>預覽：建立 Azure 映射產生器範本 
 
@@ -317,6 +317,8 @@ OS 支援： Windows
 - **restartCheckCommand** –用來檢查重新開機是否成功的命令（選擇性）。 
 - **restartTimeout** -以大小和單位的字串指定的重新開機超時。 例如，`5m` （5分鐘）或 `2h` （2小時）。 預設值為： ' 5m '
 
+### <a name="linux-restart"></a>Linux 重新開機  
+沒有 Linux 重新開機自訂器; 不過，如果您要安裝驅動程式或需要重新開機的元件，您可以安裝它們，並使用 Shell 自訂程式叫用重新開機，組建 VM 會有20min 的 SSH 超時。
 
 ### <a name="powershell-customizer"></a>PowerShell 自訂者 
 Shell 自訂程式支援執行 PowerShell 腳本和內嵌命令，必須可公開存取腳本，才能存取它們。

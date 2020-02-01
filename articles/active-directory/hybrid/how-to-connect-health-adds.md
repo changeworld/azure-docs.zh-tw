@@ -8,6 +8,7 @@ manager: daveba
 editor: curtand
 ms.assetid: 19e3cf15-f150-46a3-a10c-2990702cd700
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,15 +16,15 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73f30f4f16ad879468a424d6e5cbe81e68b7c33d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e27287a414a2a4edef3e9090b7d91beb1c70f554
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60350602"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897305"
 ---
 # <a name="using-azure-ad-connect-health-with-ad-ds"></a>在 AD DS 使用 Azure AD Connect Health
-下列文件適用於使用 Azure AD Connect Health 來監視 Active Directory 網域服務。 支援的 AD DS 版本是：Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2 及 Windows Server 2016。
+下列文件適用於使用 Azure AD Connect Health 來監視 Active Directory 網域服務。 AD DS 支援的版本：Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2 及 Windows Server 2016。
 
 如需使用 Azure AD Connect Health 來監視 AD FS 的詳細資訊，請參閱[在 AD FS 使用 Azure AD Connect Health](how-to-connect-health-adfs.md)。 此外，如需使用 Azure AD Connect Health 來監視 Azure AD Connect (同步處理) 的詳細資訊，請參閱 [使用適用於同步處理的 Azure AD Connect Health](how-to-connect-health-sync.md)。
 

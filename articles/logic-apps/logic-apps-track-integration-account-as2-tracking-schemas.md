@@ -1,38 +1,38 @@
 ---
 title: 適用于 B2B 訊息的 AS2 追蹤架構
-description: 建立 AS2 追蹤結構描述，以針對採用 Enterprise Integration Pack 的 Azure Logic Apps 監視整合帳戶中的 B2B 訊息
+description: 建立追蹤架構以監視 Azure Logic Apps 中的 AS2 訊息
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 01/27/2017
-ms.openlocfilehash: 515d7cfc985ee9929f70de2c862170ff79ae4d60
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/01/2020
+ms.openlocfilehash: bccf69362279afd9e8148b20b61ff3ea9b472a03
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792818"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906968"
 ---
-# <a name="create-schemas-for-tracking-as2-messages-and-mdns-in-integration-accounts-for-azure-logic-apps"></a>建立結構描述，以便追蹤 Azure Logic Apps 整合帳戶中的 AS2 訊息和 MDN
+# <a name="create-schemas-for-tracking-as2-messages-in-azure-logic-apps"></a>在 Azure Logic Apps 中建立用來追蹤 AS2 訊息的架構
 
 您可以在整合帳戶中使用這些 AS2 追蹤結構描述，協助您監視企業對企業 (B2B) 交易的成功、錯誤及訊息屬性︰
 
 * AS2 訊息追蹤結構描述
-* AS2 MDN 追蹤結構描述
+* AS2 訊息處置通知（MDN）追蹤架構
 
 ## <a name="as2-message-tracking-schema"></a>AS2 訊息追蹤結構描述
 
 ```json
 {
-   "agreementProperties": {  
-      "senderPartnerName": "",  
-      "receiverPartnerName": "",  
-      "as2To": "",  
-      "as2From": "",  
-      "agreementName": ""  
-   },  
+   "agreementProperties": {
+      "senderPartnerName": "",
+      "receiverPartnerName": "",
+      "as2To": "",
+      "as2From": "",
+      "agreementName": ""
+   },
    "messageProperties": {
       "direction": "",
       "messageId": "",
@@ -43,10 +43,8 @@ ms.locfileid: "74792818"
       "isMessageEncrypted": "",
       "isMessageCompressed": "",
       "correlationMessageId": "",
-      "incomingHeaders": {
-       },
-      "outgoingHeaders": {
-       },
+      "incomingHeaders": {},
+      "outgoingHeaders": {},
       "isNrrEnabled": "",
       "isMdnExpected": "",
       "mdnType": ""
@@ -54,28 +52,28 @@ ms.locfileid: "74792818"
 }
 ```
 
-| 屬性 | Type | 描述 |
-| --- | --- | --- |
-| senderPartnerName | String | AS2 訊息傳送者的夥伴名稱。 (選用) |
-| receiverPartnerName | String | AS2 訊息接收者的夥伴名稱。 (選用) |
-| as2To | String | AS2 訊息接收者的名稱，從 AS2 訊息的標頭。 (必要) |
-| as2From | String | AS2 訊息傳送者的名稱，從 AS2 訊息的標頭。 (必要) |
-| agreementName | String | 據以解析訊息的 AS2 合約名稱。 (選用) |
-| direction | String | 訊息流程的方向，接收或傳送。 (必要) |
-| messageId | String | AS2 訊息 ID，從 AS2 訊息的標頭 (選用) |
-| dispositionType |String | 訊息處理通知 (MDN) 配置類型值。 (選用) |
-| fileName | String | 檔案名稱，從 AS2 訊息的標頭。 (選用) |
-| isMessageFailed |Boolean | AS2 訊息是否失敗。 (必要) |
-| isMessageSigned | Boolean | AS2 訊息是否簽署。 (必要) |
-| isMessageEncrypted | Boolean | AS2 訊息是否加密。 (必要) |
-| isMessageCompressed |Boolean | AS2 訊息是否壓縮。 (必要) |
-| correlationMessageId | String | AS2 訊息識別碼，將訊息與 MDN 相互關聯。 (選用) |
-| incomingHeaders |JToken 的字典 | 內送 AS2 訊息標頭詳細資料。 (選用) |
-| outgoingHeaders |JToken 的字典 | 外寄 AS2 訊息標頭詳細資料。 (選用) |
-| isNrrEnabled | Boolean | 如果不知道值，則使用預設值。 (必要) |
-| isMdnExpected | Boolean | 如果不知道值，則使用預設值。 (必要) |
-| mdnType | 例舉 | 允許的值為 **NotConfigured**、**Sync** 和 **Async**。 (必要) |
-||||
+| 屬性 | 必要項 | 類型 | 說明 |
+|----------|----------|------|-------------|
+| senderPartnerName | 否 | String | AS2 訊息寄件者的夥伴名稱 |
+| receiverPartnerName | 否 | String | AS2 訊息接收者的夥伴名稱 |
+| as2To | 是 | String | As2 訊息的標頭中的 AS2 訊息接收者名稱 |
+| as2From | 是 | String | As2 訊息的標頭中的 AS2 訊息寄件者名稱 |
+| agreementName | 否 | String | 據以解析訊息的 AS2 合約名稱 |
+| direction | 是 | String | 訊息流程的方向，也就是 `receive` 或 `send` |
+| messageId | 否 | String | As2 訊息標頭的 AS2 訊息識別碼 |
+| dispositionType | 否 | String | 訊息處置通知（MDN）配置類型值 |
+| fileName | 否 | String | AS2 訊息標頭中的檔案名 |
+| isMessageFailed | 是 | Boolean | AS2 訊息是否失敗 |
+| isMessageSigned | 是 | Boolean | 是否已簽署 AS2 訊息 |
+| isMessageEncrypted | 是 | Boolean | AS2 訊息是否已加密 |
+| isMessageCompressed | 是 | Boolean | 是否已壓縮 AS2 訊息 |
+| correlationMessageId | 否 | String | AS2 訊息識別碼，用來將訊息與 Mdn 相互關聯 |
+| incomingHeaders | 否 | JToken 的字典 | 傳入的 AS2 訊息標頭詳細資料 |
+| outgoingHeaders | 否 | JToken 的字典 | 外寄 AS2 訊息標頭詳細資料 |
+| isNrrEnabled | 是 | Boolean | 如果不知道值，是否要使用預設值 |
+| isMdnExpected | 是 | Boolean | 如果不知道值，是否要使用預設值 |
+| mdnType | 是 | 例舉 | 允許的值： `NotConfigured`、`Sync`和 `Async` |
+|||||
 
 ## <a name="as2-mdn-tracking-schema"></a>AS2 MDN 追蹤結構描述
 
@@ -86,7 +84,7 @@ ms.locfileid: "74792818"
       "receiverPartnerName": "",
       "as2To": "",
       "as2From": "",
-      "agreementName": "g"
+      "agreementName": ""
    },
    "messageProperties": {
       "direction": "",
@@ -107,26 +105,26 @@ ms.locfileid: "74792818"
 }
 ```
 
-| 屬性 | Type | 描述 |
-| --- | --- | --- |
-| senderPartnerName | String | AS2 訊息傳送者的夥伴名稱。 (選用) |
-| receiverPartnerName | String | AS2 訊息接收者的夥伴名稱。 (選用) |
-| as2To | String | 接收該 AS2 訊息的夥伴名稱。 (必要) |
-| as2From | String | 傳送該 AS2 訊息的夥伴名稱。 (必要) |
-| agreementName | String | 據以解析訊息的 AS2 合約名稱。 (選用) |
-| direction |String | 訊息流程的方向，接收或傳送。 (必要) |
-| messageId | String | AS2 訊息識別碼。 (選用) |
-| originalMessageId |String | AS2 原始訊息識別碼。 (選用) |
-| dispositionType | String | MDN 處置類型值。 (選用) |
-| isMessageFailed |Boolean | AS2 訊息是否失敗。 (必要) |
-| isMessageSigned |Boolean | AS2 訊息是否簽署。 (必要) |
-| isNrrEnabled | Boolean | 如果不知道值，則使用預設值。 (必要) |
-| StatusCode | 例舉 | 允許的值為 **Accepted**、**Rejected** 和 **AcceptedWithErrors**。 (必要) |
-| micVerificationStatus | 例舉 | 允許的值為 **NotApplicable**、**Succeeded** 和 **Failed**。 (必要) |
-| correlationMessageId | String | 相互關連識別碼。 原始 messaged 識別碼 (設定 MDN 之訊息的訊息識別碼)。 (選用) |
-| incomingHeaders | JToken 的字典 | 指出內送訊息標頭詳細資料。 (選用) |
-| outgoingHeaders |JToken 的字典 | 指出外寄訊息標頭詳細資料。 (選用) |
-||||
+| 屬性 | 必要項 | 類型 | 說明 |
+|----------|----------|------|-------------|
+| senderPartnerName | 否 | String | AS2 訊息寄件者的夥伴名稱 |
+| receiverPartnerName | 否 | String | AS2 訊息接收者的夥伴名稱 |
+| as2To | 是 | String | 接收 AS2 訊息的夥伴名稱 |
+| as2From | 是 | String | 傳送 AS2 訊息的夥伴名稱 |
+| agreementName | 否 | String | 據以解析訊息的 AS2 合約名稱 |
+| direction | 是 | String | 訊息流程的方向，也就是 `receive` 或 `send` |
+| messageId | 否 | String | AS2 訊息識別碼 |
+| originalMessageId | 否 | String | AS2 原始訊息識別碼 |
+| dispositionType | 否 | String | MDN 配置類型值 |
+| isMessageFailed | 是 | Boolean | AS2 訊息是否失敗 |
+| isMessageSigned | 是 | Boolean | 是否已簽署 AS2 訊息 |
+| isNrrEnabled | 是 | Boolean | 如果不知道值，是否要使用預設值 |
+| StatusCode | 是 | 例舉 | 允許的值： `Accepted`、`Rejected`和 `AcceptedWithErrors` |
+| micVerificationStatus | 是 | 例舉 | 允許的值：`NotApplicable`、`Succeeded`和 `Failed` |
+| correlationMessageId | 否 | String | 相互關聯識別碼，這是已設定 MDN 之原始訊息的識別碼 |
+| incomingHeaders | 否 | JToken 的字典 | 傳入訊息標頭詳細資料 |
+| outgoingHeaders | 否 | JToken 的字典 | 外寄訊息標頭詳細資料 |
+|||||
 
 ## <a name="b2b-protocol-tracking-schemas"></a>B2B 通訊協定追蹤結構描述
 
@@ -137,5 +135,4 @@ ms.locfileid: "74792818"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 了解[監視 B2B 訊息](logic-apps-monitor-b2b-message.md)
-* 瞭解如何[在 Azure 監視器記錄中追蹤 B2B 訊息](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)
+* [使用 Azure 監視器記錄監視 B2B 訊息](../logic-apps/monitor-b2b-messages-log-analytics.md)

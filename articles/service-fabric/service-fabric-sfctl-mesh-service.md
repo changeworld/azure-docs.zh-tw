@@ -3,21 +3,21 @@ title: Azure Service Fabric CLI-sfctl 網格服務
 description: 深入瞭解 sfctl，這是 Azure Service Fabric 命令列介面。 包含用來取得應用程式資源服務詳細資料的命令清單。
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 1ae04d054a254746d59b85f4fe366cebf19e3faf
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 2b9f16062b02d7a1a3403d396643a7989b8976b7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646087"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905932"
 ---
 # <a name="sfctl-mesh-service"></a>sfctl mesh service
 取得服務詳細資料和應用程式資源的清單服務。
 
 ## <a name="commands"></a>命令
 
-|命令|描述|
+|Command|說明|
 | --- | --- |
 | list | 可列出所有服務資源。 |
 | 顯示 | 可取得指定名稱的服務資源。 |
@@ -29,13 +29,13 @@ ms.locfileid: "75646087"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --app-name --application-name [必要] | 應用程式的名稱。 |
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -50,14 +50,14 @@ ms.locfileid: "75646087"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --app-name --application-name [必要] | 應用程式的名稱。 |
 | --name -n                     [必要] | 服務的名稱。 |
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |

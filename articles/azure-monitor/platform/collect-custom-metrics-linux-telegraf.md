@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: b4cf5dc53c0fe256c9ecab5a844300224b860e44
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 365330aa445bcf8e5b1aec575d5e646d533ceaf7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926754"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901331"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>使用 InfluxData Telegraf 代理程式收集 Linux VM 的自訂計量
 
@@ -21,7 +21,7 @@ ms.locfileid: "74926754"
 
 ## <a name="influxdata-telegraf-agent"></a>InfluxData Telegraf 代理程式 
 
-[Telegraf](https://docs.influxdata.com/telegraf/v1.7/) 是外掛程式驅動的代理程式，能夠從 150 個不同的來源收集計量。 根據 VM 上執行的工作負載而定，您可以將代理程式設定為運用特製化輸入外掛程式來收集計量。 範例包括 MySQL、NGINX 和 Apache。 藉由使用輸出外掛程式，代理程式即可寫入至您選擇的目的地。 Telegraf 代理程式已與 Azure 監視器自訂計量 REST API 直接整合， 可支援 Azure 監視器輸出外掛程式。 代理程式可以使用此外掛程式，收集 Linux VM 上的工作負載特有計量，並作為自訂計量提交至 Azure 監視器。 
+[Telegraf](https://docs.influxdata.com/telegraf/) 是外掛程式驅動的代理程式，能夠從 150 個不同的來源收集計量。 根據 VM 上執行的工作負載而定，您可以將代理程式設定為運用特製化輸入外掛程式來收集計量。 範例包括 MySQL、NGINX 和 Apache。 藉由使用輸出外掛程式，代理程式即可寫入至您選擇的目的地。 Telegraf 代理程式已與 Azure 監視器自訂計量 REST API 直接整合， 可支援 Azure 監視器輸出外掛程式。 代理程式可以使用此外掛程式，收集 Linux VM 上的工作負載特有計量，並作為自訂計量提交至 Azure 監視器。 
 
  ![Telegraf 代理程式概觀](./media/collect-custom-metrics-linux-telegraf/telegraf-agent-overview.png)
 

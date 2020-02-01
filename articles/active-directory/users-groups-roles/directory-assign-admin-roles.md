@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b606566fa2b8154eb9ac8fda97d3c3ae81cd3447
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 4b5ac2e899de33614fa30b1f4baf0e85efec26bb
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76767428"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898851"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的系統管理員角色權限
 
@@ -194,7 +194,7 @@ ms.locfileid: "76767428"
 
 ### <a name="directory-writersdirectory-writers-permissions"></a>[目錄寫入器](#directory-writers-permissions)
 
-這是舊版角色，可指派給不支援[同意架構](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)的應用程式。 不應將它指派給任何使用者。
+這是舊版角色，可指派給不支援[同意架構](../develop/quickstart-register-app.md)的應用程式。 不應將它指派給任何使用者。
 
 ### <a name="dynamics-365-administrator--crm-administratorcrm-service-administrator-permissions"></a>[Dynamics 365 管理員/CRM 管理員](#crm-service-administrator-permissions)
 

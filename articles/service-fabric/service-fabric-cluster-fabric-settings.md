@@ -3,12 +3,12 @@ title: 變更 Azure Service Fabric 叢集設定
 description: 本文說明您可以自訂的網狀架構設定和網狀架構升級原則。
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: ba98d4d30d14cb3a1981652fc0b86354923a8851
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 284e8ad566192f027d466ad08d66c2fc5265381d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772120"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905195"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>自訂 Service Fabric 叢集設定
 本文說明您可以為 Service Fabric 叢集自訂的各種網狀架構設定。 針對裝載於 Azure 中的叢集，您可以透過 [Azure 入口網站](https://portal.azure.com)或使用 Azure Resource Manager 範本來自訂設定。 如需詳細資訊，請參閱[升級 Azure 叢集的設定](service-fabric-cluster-config-upgrade-azure.md)。 針對獨立叢集，您會透過更新 *ClusterConfig.json* 檔案並在叢集上執行設定升級來自訂設定。 如需詳細資訊，請參閱[升級獨立叢集的設定](service-fabric-cluster-config-upgrade-windows-server.md)。
@@ -89,6 +89,7 @@ ms.locfileid: "75772120"
 |TargetReplicaSetSize |整數，預設值為 7 |不允許|ClusterManager 的 TargetReplicaSetSize。 |
 |UpgradeHealthCheckInterval |時間 (秒)，預設值為 60 |動態|受監視應用程式升級期間的健康狀態檢查頻率 |
 |UpgradeStatusPollInterval |時間 (秒)，預設值為 60 |動態|輪詢應用程式升級狀態的頻率。 此值決定任何 GetApplicationUpgradeProgress 呼叫的更新速率 |
+|CompleteClientRequest | 布林值，預設值為 false |動態| 在 CM 接受時完成用戶端要求。 |
 
 ## <a name="common"></a>通用
 
@@ -568,6 +569,8 @@ ms.locfileid: "75772120"
 |ValidatePlacementConstraint | 布林值，預設值為 true |動態| 指定在服務的 ServiceDescription 更新時，是否要驗證服務的 PlacementConstraint 運算式。 |
 |ValidatePrimaryPlacementConstraintOnPromote| 布林值，預設值為 TRUE |動態|指定是否評估服務的 PlacementConstraint 運算式是否針對容錯移轉的主要喜好設定。 |
 |VerboseHealthReportLimit | 整數，預設值為 20 | 動態|定義在針對複本報告健康狀態警告之前，複本必須未放置的次數 (如果已啟用詳細健康狀態報告)。 |
+|NodeLoadsOperationalTracingEnabled | 布林值，預設值為 true |動態|在事件存放區中啟用節點載入操作結構化追蹤的設定。 |
+|NodeLoadsOperationalTracingInterval | TimeSpan，預設值為 Common：： TimeSpan：： FromSeconds （20） | 動態|以秒為單位指定時間範圍。 針對每個服務網域，追蹤節點載入至事件存放區的間隔。 |
 
 ## <a name="reconfigurationagent"></a>ReconfigurationAgent
 

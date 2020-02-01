@@ -8,12 +8,12 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/29/2019
 ms.subservice: blobs
-ms.openlocfilehash: 8dc5599e681d9aee84f884cd4990163a2481d386
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: a35239354d23f75361d5577d6b7efc8254943147
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708157"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906585"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure 儲存體中的靜態網站代管
 
@@ -81,22 +81,16 @@ ms.locfileid: "75708157"
 
 不過，主要 blob 服務端點 `https://contosoblobaccount.blob.core.windows.net/$web/index.html` 的公用存取權會從 [私用] 變更為 [公用]。 現在使用者可以使用這兩個端點的其中一個來開啟該檔案。
 
-## <a name="content-delivery-network-cdn-and-secure-socket-layer-ssl-support"></a>內容傳遞網路（CDN）和安全通訊端層（SSL）支援
+## <a name="mapping-a-custom-domain-to-a-static-website-url"></a>將自訂網域對應至靜態網站 URL
 
-若要讓您的靜態網站檔案可透過自訂網域和 HTTPS 取得，請參閱[使用 AZURE CDN 透過 HTTPS 以自訂網域存取 blob](storage-https-custom-domain-cdn.md)。 在此程式中，您必須將 CDN 指向主要的*靜態網站*端點，而不是主要*blob 服務*端點。 您可能需要等候幾分鐘，您的內容才會顯示，因為 CDN 設定不會立即執行。
+您可以透過自訂網域，讓您的靜態網站可供使用。 
 
-當您更新靜態網站時，請務必清除 CDN 端點，以清除 CDN edge server 上的快取內容。 如需詳細資訊，請參閱[清除 Azure CDN 端點](../../cdn/cdn-purge-endpoint.md)。
+針對您的自訂網域啟用 HTTP 存取比較容易，因為 Azure 儲存體原本就支援它。 若要啟用 HTTPS，您必須使用 Azure CDN，因為 Azure 儲存體尚未以原生方式支援使用自訂網域的 HTTPS。 如需逐步指引，請參閱[將自訂網域對應至 Azure Blob 儲存體端點](storage-custom-domain-name.md)。
 
-> [!NOTE]
-> HTTPS 是透過帳戶 web 端點以原生方式支援，因此 web 端點可透過 HTTP 和 HTTPS 存取。 不過，如果儲存體帳戶設定為需要透過 HTTPS 進行安全傳輸，則使用者必須使用 HTTPS 端點。 如需詳細資訊，請參閱[Azure 儲存體中需要安全傳輸](../common/storage-require-secure-transfer.md)。
->
-> 透過 HTTPS 使用自訂網域時，必須使用 Azure CDN。
+如果儲存體帳戶設定為需要透過 HTTPS 進行[安全傳輸](../common/storage-require-secure-transfer.md)，則使用者必須使用 HTTPs 端點。 
 
-## <a name="custom-domain-names"></a>自訂網域名稱
-
-您可以透過自訂網域，讓您的靜態網站可供使用。 若要深入瞭解，請參閱為[您的 Azure 儲存體帳戶設定自訂功能變數名稱](storage-custom-domain-name.md)。
-
-若要深入瞭解如何在 Azure 上裝載您的網域，請參閱[在 Azure DNS 中託管您的網域](../../dns/dns-delegate-domain-azure-dns.md)。
+> [!TIP]
+> 請考慮將您的網域裝載在 Azure 上。 如需詳細資訊，請參閱[在 Azure DNS 中託管您的網域](../../dns/dns-delegate-domain-azure-dns.md)。
 
 ## <a name="pricing"></a>定價
 
@@ -111,8 +105,7 @@ ms.locfileid: "75708157"
 ## <a name="next-steps"></a>後續步驟
 
 * [在 Azure 儲存體中裝載靜態網站](storage-blob-static-website-how-to.md)
-* [使用 Azure CDN 透過 HTTPS 以自訂網域存取 blob](storage-https-custom-domain-cdn.md)
-* [針對 Blob 或 Web 端點設定自訂網域名稱](storage-custom-domain-name.md)
+* [將自訂網域對應至 Azure Blob 儲存體端點](storage-custom-domain-name.md)
 * [Azure Functions](/azure/azure-functions/functions-overview)
 * [Azure App Service](/azure/app-service/overview)
 * [建置您的第一個無伺服器 Web 應用程式](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database)

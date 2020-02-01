@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/26/2019
-ms.openlocfilehash: ea60faf5b5689fa674095201d3db18422d3e0f1b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 093bfbd976ace41f635976ff27fa4292e5c4df3c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980489"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905148"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>使用 Azure HDInsight 疑難排解叢集建立失敗
 
@@ -39,7 +39,7 @@ ms.locfileid: "75980489"
 
 以訂用帳戶為基礎的 Azure 原則可以拒絕建立公用 IP 位址。 建立 HDInsight 叢集需要兩個公用 IP。  
 
-一般來說，下列原則可能會影響叢集的建立：
+一般來說，下列原則可能會影響叢集建立：
 
 * 原則會防止在訂用帳戶內建立 IP 位址 & 負載平衡器。
 * 防止建立儲存體帳戶的原則。
@@ -53,10 +53,10 @@ ms.locfileid: "75980489"
 
 | 來源 IP 位址 | 目的地 | 方向 |
 |---|---|---|
-| 168.61.49.99 | *:443 | 輸入 |
-| 23.99.5.239 | *:443 | 輸入 |
-| 168.61.48.131 | *:443 | 輸入 |
-| 138.91.141.162 | *:443 | 輸入 |
+| 168.61.49.99 | *：443 | 輸入 |
+| 23.99.5.239 | *：443 | 輸入 |
+| 168.61.48.131 | *：443 | 輸入 |
+| 138.91.141.162 | *：443 | 輸入 |
 
 此外，也請新增叢集建立所在區域特定的 IP 位址。 如需每個 Azure 區域的地址清單，請參閱[HDInsight 管理 IP 位址](../hdinsight-management-ip-addresses.md)。
 
@@ -72,13 +72,13 @@ ms.locfileid: "75980489"
 
 ## <a name="storage-account-name-restrictions"></a>儲存體帳戶名稱限制
 
-儲存體帳戶名稱不可超過 24 個字元，且不可包含特殊字元。 這些限制也適用於儲存體帳戶中的預設容器名稱。
+儲存體帳戶名稱不可超過24個字元，且不能包含特殊字元。 這些限制也適用於儲存體帳戶中的預設容器名稱。
 
 其他命名限制也適用于建立叢集。 如需詳細資訊，請參閱叢集[名稱限制](../hdinsight-hadoop-provision-linux-clusters.md#cluster-name)。
 
 ## <a name="service-outages"></a>服務中斷
 
-檢查[Azure 狀態](https://status.azure.com/status)是否有任何可能的中斷或服務問題。
+檢查[Azure 狀態](https://status.azure.com)是否有任何可能的中斷或服務問題。
 
 ## <a name="next-steps"></a>後續步驟
 

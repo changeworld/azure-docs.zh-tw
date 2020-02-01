@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 81daada7a62da86772d4657a1a8aaff91f27b673
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 4dd026377d5824853dd713a59a86ed742990bade
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045589"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898841"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API 管理開發人員入口網站總覽
 
@@ -68,7 +68,7 @@ ms.locfileid: "76045589"
 
 入口網站是以[Paperbits 架構](https://paperbits.io/)的調整分支為基礎。 原始的 Paperbits 功能已擴充，可提供 API 管理特定的 widget （例如 Api 清單、產品清單），以及用於儲存和抓取內容的 API 管理服務連接器。
 
-## <a name="faq"></a> 常見問題集
+## <a name="faq"></a>常見問題
 
 在本節中，我們會回答有關新開發人員入口網站的常見問題，這些是一般性質的問題。 如需自我裝載版本的特定問題，請參閱[GitHub 存放庫的 wiki 一節](https://github.com/Azure/api-management-developer-portal/wiki)。
 
@@ -213,6 +213,18 @@ New-AzRoleAssignment -SignInName "user1@contoso.com" -RoleDefinitionName "APIM N
 如果您的 API 管理服務位於 VNet 中，請參閱上述的 VNet 連線問題。
 
 呼叫失敗也可能是因為 SSL 憑證已指派至自訂網域，而不受瀏覽器信任。 作為緩和措施，您可以移除管理端點自訂網域-API 管理會切換回具有受信任憑證的預設端點。
+
+### <a name="whats-the-browser-support-for-the-portal"></a>入口網站的瀏覽器支援為何？
+
+| 瀏覽器                     | 支援的       |
+|-----------------------------|-----------------|
+| Apple Safari                | 是<sup>1</sup> |
+| Google Chrome               | 是<sup>1</sup> |
+| Microsoft Edge              | 是<sup>1</sup> |
+| Microsoft Internet Explorer | 否              |
+| Mozilla Firefox             | 是<sup>1</sup> |
+
+ <small><sup>1</sup>在兩個最新的生產版本中都有支援。</small>
 
 ## <a name="next-steps"></a>後續步驟
 

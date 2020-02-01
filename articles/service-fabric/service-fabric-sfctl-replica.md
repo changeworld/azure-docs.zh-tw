@@ -3,28 +3,28 @@ title: Azure Service Fabric CLI-sfctl 複本
 description: 深入瞭解 sfctl，這是 Azure Service Fabric 命令列介面。 包含用來管理複本的命令清單。
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: a0588d84a79407b5df5033f0a32851fc708d598b
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: f6ad0b4c08ac8d710340fe654a068d0a3804e58f
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646036"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905817"
 ---
 # <a name="sfctl-replica"></a>sfctl replica
 管理屬於服務分割區的複本。
 
 ## <a name="commands"></a>命令
 
-|命令|描述|
+|Command|說明|
 | --- | --- |
 | deployed | 取得在 Service Fabric 節點上部署的複本詳細資料。 |
 | deployed-list | 取得在 Service Fabric 節點上部署的複本清單。 |
-| health | 取得 Service Fabric 具狀態服務複本或無狀態服務執行個體的健康情況。 |
-| 資訊 | 取得 Service Fabric 分割區複本的相關資訊。 |
+| 醫療 | 取得 Service Fabric 具狀態服務複本或無狀態服務執行個體的健康情況。 |
+| info | 取得 Service Fabric 分割區複本的相關資訊。 |
 | list | 取得 Service Fabric 服務分割區複本的相關資訊。 |
-| 移除 | 移除在節點上執行的服務複本。 |
+| remove | 移除在節點上執行的服務複本。 |
 | report-health | 傳送 Service Fabric 複本的健康情況報告。 |
 | restart | 重新啟動節點上執行之持續性服務的服務複本。 |
 
@@ -35,7 +35,7 @@ ms.locfileid: "75646036"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --node-name [必要] | 節點的名稱。 |
 | --partition-id [必要] | 分割區的識別。 |
@@ -44,7 +44,7 @@ ms.locfileid: "75646036"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -59,7 +59,7 @@ ms.locfileid: "75646036"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --application-id [必要] | 應用程式的身分識別。 這通常是不含 'fabric\:' URI 配置的完整應用程式名稱。 從 6.0 版開始，階層的名稱會以 "\~" 字元分隔。 例如，如果應用程式名稱是 "fabric\:/myapp/app1"，則應用程式識別在 6.0+ 中會是 "myapp\~app1"，而在舊版中會是 "myapp/app1"。 |
 | --node-name      [必要] | 節點的名稱。 |
@@ -69,7 +69,7 @@ ms.locfileid: "75646036"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -84,7 +84,7 @@ ms.locfileid: "75646036"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --partition-id [必要] | 分割區的識別。 |
 | --replica-id [必要] | 複本的識別碼。 |
@@ -93,7 +93,7 @@ ms.locfileid: "75646036"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -108,7 +108,7 @@ ms.locfileid: "75646036"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --partition-id [必要] | 分割區的識別。 |
 | --replica-id [必要] | 複本的識別碼。 |
@@ -116,7 +116,7 @@ ms.locfileid: "75646036"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -131,7 +131,7 @@ GetReplicas 端點會傳回指定分割區複本的相關資訊。 回應會包�
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --partition-id [必要] | 分割區的識別。 |
 | --continuation-token | 接續權杖參數可用來取得下一組結果。 當來自系統的結果無法放入單一回應中時，API 的回應中會包含具有非空白值的接續權杖。 當此值傳遞至下一個 API 呼叫時，API 會傳回下一組結果。 如果沒有任何進一步的結果，接續權杖就不會包含值。 此參數的值不能經過 URL 編碼。 |
@@ -139,7 +139,7 @@ GetReplicas 端點會傳回指定分割區複本的相關資訊。 回應會包�
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -154,7 +154,7 @@ GetReplicas 端點會傳回指定分割區複本的相關資訊。 回應會包�
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --node-name [必要] | 節點的名稱。 |
 | --partition-id [必要] | 分割區的識別。 |
@@ -164,7 +164,7 @@ GetReplicas 端點會傳回指定分割區複本的相關資訊。 回應會包�
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -179,7 +179,7 @@ GetReplicas 端點會傳回指定分割區複本的相關資訊。 回應會包�
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --health-property [必要] | 健康情況資訊的屬性。 <br><br> 實體可以有不同屬性的健康情況報告。 屬性是一個字串而不是固定的列舉，以便讓報告程式在分類觸發報告的狀態條件時較有彈性。 例如，SourceId 為 "LocalWatchdog" 的報告程式可以監視節點上可用磁碟的狀態，因此可以針對該節點回報 "AvailableDisk" 屬性。 該相同報告程式還可以監視節點連線能力，因此可以針對該相同節點回報 "Connectivity" 屬性。 在健康狀態資料存放區中，會將這些報告視為所指定節點的個別健康情況事件。 與 SourceId 搭配使用時，此屬性可唯一識別健康情況資訊。 |
 | --health-state    [必要] | 可能的值包括：'Invalid'、'Ok'、'Warning'、'Error'、'Unknown'。 |
@@ -196,7 +196,7 @@ GetReplicas 端點會傳回指定分割區複本的相關資訊。 回應會包�
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -211,7 +211,7 @@ GetReplicas 端點會傳回指定分割區複本的相關資訊。 回應會包�
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --node-name [必要] | 節點的名稱。 |
 | --partition-id [必要] | 分割區的識別。 |
@@ -220,7 +220,7 @@ GetReplicas 端點會傳回指定分割區複本的相關資訊。 回應會包�
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |

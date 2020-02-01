@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
-ms.openlocfilehash: d76338ccd4dcdf7a9a9a96baa1fb47ed5272d5ff
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 8a8619da831dfa5b240bd93d3a046c49cc30affa
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821958"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901432"
 ---
 | 資源 | 標準檔案共用 | Premium 檔案共用 |
 |----------|---------------|------------------------------------------|
@@ -27,4 +27,4 @@ ms.locfileid: "72821958"
 | 物件 (目錄和檔案) 名稱長度上限 | 2048個字元 | 2048個字元 |
 | 最大路徑名稱元件 (在路徑 \A\B\C\D 中，每個字母都是元件) | 255 個字元 | 255 個字元 |
 
-\* 無法在所有區域使用，請參閱[區域可用性](../articles/storage/files/storage-files-planning.md#regional-availability)以取得可用區域的清單。
+在大部分區域中都有提供 \*，請參閱[區域可用性](../articles/storage/files/storage-files-planning.md#regional-availability)以取得可用區域的詳細資料。

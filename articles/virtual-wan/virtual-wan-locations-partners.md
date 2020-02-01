@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect find a Virtual WAN partner
-ms.openlocfilehash: 44ce62f957dbdd71a41962ae7257cbc6e048e03c
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: e52296f459c68fab2816faa2606674ddc1b370ee
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953314"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896365"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>虛擬 WAN 夥伴與虛擬中樞位置
 
@@ -40,7 +40,7 @@ Azure 虛擬 WAN 是一種網路服務，透過 Azure 提供最佳且自動化�
 
 [!INCLUDE [partners](../../includes/virtual-wan-partners-include.md)]
 
-下列合作夥伴會在我們的未來藍圖中預定： Arista、Aruba HPE、Cisco Systems、F5 Networks、Open Systems 和 VMWare Velocloud。
+下列合作夥伴會在我們的未來藍圖中預定： Arista、Aruba HPE、Cisco Systems、F5 Networks、Open Systems、SharpLink 和 VMWare Velocloud。
 
 ## <a name="locations"></a>位置
 

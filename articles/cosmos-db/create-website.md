@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: feab221c24034fe29df420b4f9eb6d84e06a90b5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 11b84877171fae8e788d3298973fd74645b35480
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719331"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901924"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本部署 Azure Cosmos DB 和 Azure App Service Web Apps
 本教學課程示範如何使用 Azure Resource Manager 範本，來部署和整合 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)、[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) Web 應用程式及範例 Web 應用程式。
@@ -69,7 +69,7 @@ ms.locfileid: "76719331"
    ![範本部署 UI 的螢幕擷取畫面](./media/create-website/TemplateDeployment6.png)
 7. 部署完成時，隨即開啟 [資源群組] 窗格。
    ![資源群組窗格的螢幕擷取畫面](./media/create-website/TemplateDeployment7.png)  
-8. 若要使用應用程式，請巡覽至 Web 應用程式 URL (上述範例中的 URL 會是 http://mydemodocdbwebapp.azurewebsites.net) )。  您會看到下列的 Web 應用程式：
+8. 若要使用應用程式，請流覽至 web 應用程式 URL （在上述範例中，URL 會是 `http://mydemodocdbwebapp.azurewebsites.net`）。  您會看到下列的 Web 應用程式：
    
    ![範例待辦事項應用程式](./media/create-website/image2.png)
 9. 請繼續在 Web 應用程式中建立幾個工作，然後回到 Azure 入口網站的 [資源群組] 窗格。 按一下 [資源] 清單中的 Azure Cosmos DB 帳戶資源，然後按一下 [資料總管]。

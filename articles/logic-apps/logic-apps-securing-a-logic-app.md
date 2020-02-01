@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: 4f8c20534cdd5abdf5ae97bb097238cf508480c7
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 73b8a559eddec51dbc01f1d55f70414360ff2956
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843543"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898424"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>保護 Azure Logic Apps 中的存取和資料
 
@@ -324,7 +324,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 #### <a name="considerations-when-hiding-inputs-and-outputs"></a>隱藏輸入和輸出時的考慮
 
-* 當您保護觸發程式或動作的輸入或輸出時，Logic Apps 不會將受保護的資料傳送至 Azure Log Analytics。 此外，您也無法將[追蹤的屬性](logic-apps-monitor-your-logic-apps.md#azure-diagnostics-event-settings-and-details)新增至該觸發程式或動作以進行監視。
+* 當您保護觸發程式或動作的輸入或輸出時，Logic Apps 不會將受保護的資料傳送至 Azure Log Analytics。 此外，您也無法將[追蹤的屬性](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data)新增至該觸發程式或動作以進行監視。
 
 * [用於處理工作流程歷程記錄的 LOGIC APPS API](https://docs.microsoft.com/rest/api/logic/)不會傳回安全的輸出。
 
@@ -806,7 +806,7 @@ Authorization: OAuth realm="Photos",
 
 ## <a name="next-steps"></a>後續步驟
 
-* [自動化 Azure Logic Apps 的部署](logic-apps-azure-resource-manager-templates-overview.md)  
-* [監視邏輯應用程式](logic-apps-monitor-your-logic-apps.md)  
-* [診斷邏輯應用程式失敗和問題](logic-apps-diagnosing-failures.md)  
-* [自動化邏輯應用程式部署](logic-apps-azure-resource-manager-templates-overview.md)
+* [自動化 Azure Logic Apps 的部署](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)  
+* [監視 Logic Apps](../logic-apps/monitor-logic-apps-log-analytics.md)  
+* [診斷邏輯應用程式失敗和問題](../logic-apps/logic-apps-diagnosing-failures.md)  
+* [自動化邏輯應用程式部署](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)

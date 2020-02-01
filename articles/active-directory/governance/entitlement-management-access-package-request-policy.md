@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 649a4a50766d26f73584dae4481652c8007b2e9e
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 493ba6396a7ceb11b917fbda5dd6c37c070f2fee
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174669"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897609"
 ---
 # <a name="change-request-and-approval-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中變更存取套件的要求和核准設定
 
@@ -42,6 +42,9 @@ ms.locfileid: "73174669"
 | 我想要允許目錄中的使用者，以及我目錄以外的使用者要求存取套件 | 多個 |
 | 我想要為某些使用者指定不同的核准設定 | 多個 |
 | 我想要讓某些使用者存取套件指派，使其在其他使用者可以擴充其存取權時過期 | 多個 |
+
+如需套用多項原則時所使用之優先順序邏輯的詳細資訊，請參閱[多個原則](entitlement-management-troubleshoot.md#multiple-policies
+)。
 
 ### <a name="open-an-existing-policy-of-request-and-approval-settings"></a>開啟要求和核准設定的現有原則
 
@@ -83,7 +86,7 @@ ms.locfileid: "73174669"
 
     ![建立具有名稱和描述的原則](./media/entitlement-management-access-package-request-policy/policy-name-description.png)
 
-1. 按 **[下一步**] 以開啟 [**要求**] 索引標籤。
+1. 按 [下一步] 以開啟 [要求] 索引標籤。
 
 1. 執行下列其中一個要求區段中的步驟。
 

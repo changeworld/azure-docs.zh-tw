@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/23/2020
+ms.date: 01/28/2020
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 159b00f9417f4a572655f1f93208dbc755012922
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
-ms.translationtype: HT
+ms.openlocfilehash: 18d7e02689cc9c5fe9282a6a2456b8b1574ec85e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844848"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901647"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>疑難排解 QnA Maker
 
@@ -39,13 +39,6 @@ ms.locfileid: "76844848"
 1. [總覽] 區段提供端點 URL
 
     ![QnAMaker 端點](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-gethostname.png)
-
-
-## <a name="use-the-help-bot-in-the-qna-maker-portal"></a>使用 QnA Maker 入口網站中的說明 bot
-
-QnA Maker 會在 QnA Maker 入口網站中提供**協助**bot，協助您。 您可以在每個網頁上取得說明 bot。 Bot 會使用 QnA Maker 來提供解答，並提供[ C# bot Framework 程式碼專案](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-support)給 bot，讓您可以快速啟動並執行自己的回應 bot。
-
-![![QnA Maker 在 QnA Maker 入口網站中提供可協助您的 * * 說明 * * bot。](./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png)](./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png#lightbox)
 
 ## <a name="manage-the-knowledge-base"></a>管理知識庫
 

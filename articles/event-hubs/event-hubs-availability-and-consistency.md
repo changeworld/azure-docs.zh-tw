@@ -4,7 +4,6 @@ description: 如何使用分割區，以便透過 Azure 事件中樞提供最大
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
-manager: timlt
 editor: ''
 ms.assetid: 8f3637a1-bbd7-481e-be49-b3adf9510ba1
 ms.service: event-hubs
@@ -12,15 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 01/29/2020
 ms.author: shvija
-ms.openlocfilehash: 425f4d9dbd6478af834bee6c88d0f13bdaa45b16
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 808e813ad90626acec893a021634566f091c895f
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273681"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904477"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>事件中樞的可用性和一致性
 
@@ -49,16 +47,53 @@ Brewer 的理論會定義一致性和可用性，如下所示：
 
 有一個既可確保排序又可讓運作時間達到最長的可能解決方案，就是在您的事件處理應用程式中彙總事件。 達到此目的的最簡單方式，就是為您的事件標上自訂序號屬性戳記。 下列程式碼顯示一個範例：
 
+#### <a name="azuremessagingeventhubs-500-or-latertablatest"></a>[EventHubs （5.0.0 或更新版本）](#tab/latest)
+
 ```csharp
-// Get the latest sequence number from your application
+// create a producer client that you can use to send events to an event hub
+await using (var producerClient = new EventHubProducerClient(connectionString, eventHubName))
+{
+    // get the latest sequence number from your application
+    var sequenceNumber = GetNextSequenceNumber();
+
+    // create a batch of events 
+    using EventDataBatch eventBatch = await producerClient.CreateBatchAsync();
+
+    // create a new EventData object by encoding a string as a byte array
+    var data = new EventData(Encoding.UTF8.GetBytes("This is my message..."));
+
+    // set a custom sequence number property
+    data.Properties.Add("SequenceNumber", sequenceNumber);
+
+    // add events to the batch. An event is a represented by a collection of bytes and metadata. 
+    eventBatch.TryAdd(data);
+
+    // use the producer client to send the batch of events to the event hub
+    await producerClient.SendAsync(eventBatch);
+}
+```
+
+#### <a name="microsoftazureeventhubs-410-or-earliertabold"></a>[EventHubs （4.1.0 或更早版本）](#tab/old)
+```csharp
+// Create an Event Hubs client
+var client = new EventHubClient(connectionString, eventHubName);
+
+//Create a producer to produce events
+EventHubProducer producer = client.CreateProducer();
+
+// Get the latest sequence number from your application 
 var sequenceNumber = GetNextSequenceNumber();
+
 // Create a new EventData object by encoding a string as a byte array
 var data = new EventData(Encoding.UTF8.GetBytes("This is my message..."));
+
 // Set a custom sequence number property
 data.Properties.Add("SequenceNumber", sequenceNumber);
+
 // Send single message async
-await eventHubClient.SendAsync(data);
+await producer.SendAsync(data);
 ```
+---
 
 這個範例會將事件傳送到事件中樞的其中一個可用分割區，然後從您的應用程式設定對應的序號。 這個解決方案會要求您的處理應用程式保留狀態，但會為您的傳送者提供一個更可能可供使用的端點。
 

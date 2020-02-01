@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewers: klam, logicappspm
 ms.topic: conceptual
-ms.date: 10/11/2019
+ms.date: 01/14/2020
 tags: connectors
-ms.openlocfilehash: 822a6d1cd812ead8e677a66a9b1e47ebdbcf8aea
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 0949e50c5a4993dfbcc83b41ef01d2cea82350a8
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030154"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900274"
 ---
 # <a name="receive-and-respond-to-incoming-https-calls-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 接收和回應連入的 HTTPS 呼叫
 
@@ -23,7 +23,9 @@ ms.locfileid: "76030154"
 * 接收並回應來自另一個邏輯應用程式的 HTTPS 呼叫。
 
 > [!NOTE]
-> 要求觸發程式*僅*支援連入呼叫的傳輸層安全性（TLS）1.2。 撥出電話會繼續支援 TLS 1.0、1.1 和1.2。 如果您看到 SSL 交握錯誤，請確定您使用的是 TLS 1.2。 對於傳入的呼叫，以下是支援的加密套件：
+> 要求觸發程式*僅*支援連入呼叫的傳輸層安全性（TLS）1.2。 撥出電話會繼續支援 TLS 1.0、1.1 和1.2。 如需詳細資訊，請參閱[解決 TLS 1.0 問題](https://docs.microsoft.com/security/solving-tls1-problem)。
+>
+> 如果您看到 SSL 交握錯誤，請確定您使用的是 TLS 1.2。 對於傳入的呼叫，以下是支援的加密套件：
 >
 > * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
 > * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
@@ -167,7 +169,7 @@ ms.locfileid: "76030154"
 
    [**方法**] 屬性會出現在觸發程式中，讓您可以從清單中選取方法。
 
-   ![Select 方法](./media/connectors-native-reqres/select-method.png)
+   ![選取方法](./media/connectors-native-reqres/select-method.png)
 
 1. 現在，新增另一個動作做為工作流程中的下一個步驟。 在觸發程式底下，選取 **[下一步]** ，讓您可以找到想要新增的動作。
 

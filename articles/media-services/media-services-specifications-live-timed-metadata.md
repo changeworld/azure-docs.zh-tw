@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
-ms.openlocfilehash: e686328464ac88abf28a0a8985d338838abca3d0
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 03b40dea4949bb50c30f7755b56294ac53107403
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514233"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905256"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>針對即時串流中的計時中繼資料傳送訊號 
 
@@ -47,7 +47,7 @@ ms.locfileid: "76514233"
 | 廣告中斷            | 一或多個廣告可能排程傳遞的位置或時間點。與「可用」和「放置」商機相同。                                                                                                                     |
 | Ad 決策服務 | 決定將對使用者顯示哪些 ad 和持續時間的外部服務。 服務通常是由合作夥伴提供，並超出本檔的範圍。                                                                    |
 | 提示                 | 未來廣告中斷的時間和參數的指示。 請注意，提示可能表示擱置切換至廣告中斷、擱置切換到廣告中斷內的下一個 ad，以及從廣告中斷切換至主要內容。           |
-| 封裝程式            | Azure 媒體服務「串流端點」提供了破折號和 HLS 的動態封裝功能，在媒體產業中稱為「包裝程式」。                                                                              |
+| R            | Azure 媒體服務「串流端點」提供了破折號和 HLS 的動態封裝功能，在媒體產業中稱為「包裝程式」。                                                                              |
 | 呈現時間   | 事件呈現給檢視者的時間。 此時間代表使用者會看到事件的媒體時間軸位置。 例如，SCTE-35 splice_info() 命令訊息的呈現時間是 splice_time()。 |
 | 抵達時間        | 事件訊息抵達的時間。 此時間通常與事件的呈現時間截然不同，因為事件訊息是在事件的呈現時間之前傳送。                                                    |
 | 疏鬆資料軌        | 不連續且時間已與父代或控制播放軌同步的媒體播放軌。                                                                                                                                                  |
@@ -249,7 +249,7 @@ Azure 媒體服務可以接聽並回應數個 [AMF0] 訊息類型，可用來對
  
 #### <a name="example-mpeg-dash-manifest-output-when-using-adobe-rtmp-simple-mode"></a>使用 Adobe RTMP simple 模式時的 MPEG 破折號資訊清單輸出範例
 
-請參閱[3.3.2.1 FOR MPEG 破折號. Mpd EventStream Using Adobe simple mode](#3321-example-mpeg-dash-mpd-manifest-signaling-of-rtmp-streaming-using-adobe-simple-mode)
+請參閱[使用 Adobe simple 模式的範例 3.3.2.1 MPEG 破折號. Mpd EventStream](#3321-example-mpeg-dash-mpd-manifest-signaling-of-rtmp-streaming-using-adobe-simple-mode)
 
 請參閱[使用單一期間和 Adobe simple 模式的範例3.3.3.1 破折號資訊清單](#3331-example-mpeg-dash-manifest-mpd-with-single-period-eventstream-using-adobe-simple-mode-signals)
 
@@ -280,7 +280,7 @@ Azure 媒體服務可以接聽並回應數個 [AMF0] 訊息類型，可用來對
 請參閱[使用 SCTE 的3.3.3.2 範例破折號資訊清單-35](#3332-example-mpeg-dash-manifest-mpd-with-multi-period-eventstream-using-adobe-scte35-mode-signaling)
 
 #### <a name="example-hls-manifest-m3u8-with-scte-35-mode-signal"></a>範例 HLS 資訊清單. m3u8 with SCTE-35 模式信號
-請參閱[使用 SCTE 的3.3.1.1 範例 HLS 資訊清單範例-35](#3211-example-hls-manifest-m3u8-showing-ext-x-daterange-signaling-of-scte-35)
+請參閱[3.2.1.1 範例 HLS 資訊清單中的 SCTE-35 一節](#3211-example-hls-manifest-m3u8-showing-ext-x-daterange-signaling-of-scte-35)
 
 ## <a name="215-rtmp-ad-signaling-with-oncuepoint-for-elemental-live"></a>針對 Elemental Live 以 "onCuePoint" 2.1.5 RTMP 廣告信號
 

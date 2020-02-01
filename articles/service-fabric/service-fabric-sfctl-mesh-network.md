@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI-sfctl 網狀網路
 description: 深入瞭解 sfctl，這是 Azure Service Fabric 命令列介面。 包含用來取得和刪除 Service Fabric 網格網路資源的命令清單。
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 2d9d86d41dc031cca2730011c2322e9feb30c827
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 9aa0b6795508cb94200c486df092b867c1086316
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646121"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905990"
 ---
 # <a name="sfctl-mesh-network"></a>sfctl mesh network
 可取得和刪除 mesh 網路資源。

@@ -8,20 +8,18 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 299bbfbc50e9ba779898ab0e0e9dec060bf6541d
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 3173fe010106963b9079bf151c92957735253e84
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687583"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898760"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>Linux 上的 Azure App Service 支援 SSH
 
-[安全殼層 (SSH)](https://wikipedia.org/wiki/Secure_Shell) 通常用於從命令列終端機，遠端執行系統管理命令。 Linux 上的 App Service 會利用每個用於新 Web 應用程式的「執行階段堆疊」的內建 Docker 映像，來提供應用程式容器內的 SSH 支援。 
+[安全殼層 (SSH)](https://wikipedia.org/wiki/Secure_Shell) 通常用於從命令列終端機，遠端執行系統管理命令。 Linux 上的 App Service 會在應用程式容器中提供 SSH 支援。 
 
-![執行階段堆疊](./media/app-service-linux-ssh-support/app-service-linux-runtime-stack.png)
-
-對於自訂 Docker 映像，藉由在自訂映像中設定 SSH 伺服器。
+![Linux App Service SSH](./media/app-service-linux-ssh-support/app-service-linux-ssh.png)
 
 您也可以使用 SSH 和 SFTP，直接從本機開發電腦連線到容器。
 

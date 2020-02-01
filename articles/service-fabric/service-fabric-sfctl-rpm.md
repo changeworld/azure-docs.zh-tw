@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI-sfctl rpm
 description: 深入瞭解 sfctl，這是 Azure Service Fabric 命令列介面。 包含修復管理員服務的命令清單。
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 674970276046034d13801db7c1bb4ab5175385fb
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 1787c0c8a8d5994ce1f1e9e4c55f155bbca6934c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639083"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904936"
 ---
 # <a name="sfctl-rpm"></a>sfctl rpm
 查詢命令，並將其傳送至修復管理員服務。
@@ -77,7 +77,7 @@ ms.locfileid: "75639083"
 |引數|說明|
 | --- | --- |
 | --executor-filter | 其宣告的工作應該包含在清單中的修復執行程式名稱。 |
-| --state-filter | 下列值的位元 OR，指定結果清單中應該包含哪些工作狀態。 <br> 1 - 已建立 <br>2 - 已宣告  <br>4 - 正在準備  <br>8 - 已核准  <br>16 - 正在執行  <br>32 - 正在還原  <br>64 - 已完成 |
+| --state-filter | 下列值的位元 OR，指定結果清單中應該包含哪些工作狀態。 <ul><li>1 - 已建立</li><li>2-宣告</li><li>4-準備</li><li>8-已核准</li><li>16-執行中</li><li>32-正在還原</li><li>64 - 已完成</li></ul>
 | --task-id-filter | 要比對的修復工作識別碼前置詞。 |
 
 ### <a name="global-arguments"></a>全域引數

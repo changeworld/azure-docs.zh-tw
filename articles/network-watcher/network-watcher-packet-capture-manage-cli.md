@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 7eea4c05a48c5e055766f942cc44ee4cf189de5d
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f83fb2377f2db1deaed453131a61e26677b3d87d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840856"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896395"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-azure-cli"></a>使用 Azure CLI，利用 Azure 網路監看員管理封包擷取
 
@@ -52,7 +52,7 @@ ms.locfileid: "76840856"
 
 ### <a name="step-1"></a>步驟 1
 
-執行 `az vm extension set` Cmdlet 在客體虛擬機器上安裝封包擷取代理程式。
+執行 `az vm extension set` 命令，以在來賓虛擬機器上安裝封包捕獲代理程式。
 
 若為 Windows 虛擬機器：
 
@@ -63,15 +63,21 @@ az vm extension set --resource-group resourceGroupName --vm-name virtualMachineN
 若為 Linux 虛擬機器：
 
 ```azurecli
-az vm extension set --resource-group resourceGroupName --vm-name virtualMachineName --publisher Microsoft.Azure.NetworkWatcher --name NetworkWatcherAgentLinux--version 1.4
+az vm extension set --resource-group resourceGroupName --vm-name virtualMachineName --publisher Microsoft.Azure.NetworkWatcher --name NetworkWatcherAgentLinux --version 1.4
 ```
 
 ### <a name="step-2"></a>步驟 2
 
-為了確定是否已安裝代理程式，請執行 `vm extension show` Cmdlet，並將資源群組和虛擬機器名稱傳遞給它。 檢查結果清單以確定代理程式已安裝。
+若要確定已安裝代理程式，請執行 `vm extension show` 命令，並將資源群組和虛擬機器名稱傳遞給它。 檢查結果清單以確定代理程式已安裝。
 
+若為 Windows 虛擬機器：
 ```azurecli
 az vm extension show --resource-group resourceGroupName --vm-name virtualMachineName --name NetworkWatcherAgentWindows
+```
+
+若為 Linux 虛擬機器：
+```azurecli
+az vm extension show --resource-group resourceGroupName --vm-name virtualMachineName --name AzureNetworkWatcherExtension
 ```
 
 下列範例是執行 `az vm extension show` 所得回應的範例
@@ -100,31 +106,24 @@ az vm extension show --resource-group resourceGroupName --vm-name virtualMachine
 
 完成上述步驟之後，虛擬機器上便已安裝封包擷取代理程式。
 
+
 ### <a name="step-1"></a>步驟 1
-
-下一步是擷取網路監看員執行個體。 網路監看員的名稱會傳遞給步驟 4 中的 `az network watcher show` Cmdlet。
-
-```azurecli
-az network watcher show --resource-group resourceGroup --name networkWatcherName
-```
-
-### <a name="step-2"></a>步驟 2
 
 擷取儲存體帳戶。 此儲存體帳戶會用來儲存封包擷取檔案。
 
 ```azurecli
-azure storage account list
+az storage account list
 ```
 
-### <a name="step-3"></a>步驟 3
+### <a name="step-2"></a>步驟 2
 
-可使用篩選器來限制封包擷取所儲存的資料。 下列範例會設定具有多個篩選器的封包擷取。  前三個篩選器只會收集從本機 IP 10.0.0.3 流往目的地連接埠 20、80 和 443 的連出 TCP 流量。  最後一個篩選器只會收集 UDP 流量。
+此時，您已準備好建立封包捕獲。  首先，讓我們來檢查您可能想要設定的參數。 篩選器是一個這類參數，可以用來限制封包捕獲所儲存的資料。 下列範例會設定具有多個篩選器的封包擷取。  前三個篩選器只會收集從本機 IP 10.0.0.3 流往目的地連接埠 20、80 和 443 的連出 TCP 流量。  最後一個篩選器只會收集 UDP 流量。
 
 ```azurecli
 az network watcher packet-capture create --resource-group {resourceGroupName} --vm {vmName} --name packetCaptureName --storage-account {storageAccountName} --filters "[{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"20\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"80\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"443\"},{\"protocol\":\"UDP\"}]"
 ```
 
-下列範例是執行 `az network watcher packet-capture create` Cmdlet 後預期會得到的輸出。
+下列範例是執行 `az network watcher packet-capture create` 命令的預期輸出。
 
 ```json
 {
@@ -179,13 +178,13 @@ roviders/microsoft.compute/virtualmachines/{vmName}/2017/05/25/packetcapture_16_
 
 ## <a name="get-a-packet-capture"></a>取得封包擷取
 
-執行 `az network watcher packet-capture show-status` Cmdlet 以擷取目前正在執行或已完成之封包擷取的狀態。
+執行 `az network watcher packet-capture show-status` 命令，會抓取目前正在執行或已完成之封包捕獲的狀態。
 
 ```azurecli
 az network watcher packet-capture show-status --name packetCaptureName --location {networkWatcherLocation}
 ```
 
-下列範例是 `az network watcher packet-capture show-status` Cmdlet 的輸出。 下列範例是擷取停止 (Stopped) 的時候，其中 StopReason 為 TimeExceeded。 
+下列範例是 `az network watcher packet-capture show-status` 命令的輸出。 下列範例是擷取停止 (Stopped) 的時候，其中 StopReason 為 TimeExceeded。 
 
 ```
 {
@@ -204,14 +203,14 @@ cketCaptures/packetCaptureName",
 
 ## <a name="stop-a-packet-capture"></a>停止封包擷取
 
-藉由執行 `az network watcher packet-capture stop` Cmdlet，如果擷取工作階段正在進行中，則會加以停止。
+藉由執行 `az network watcher packet-capture stop` 命令，如果正在進行 capture 會話，就會停止。
 
 ```azurecli
 az network watcher packet-capture stop --name packetCaptureName --location westcentralus
 ```
 
 > [!NOTE]
-> 此 Cmdlet 若執行於目前正在執行的擷取工作階段或已停止的現有工作階段，則不會傳回任何回應。
+> 在目前正在執行的 capture 會話或已經停止的現有會話上執行時，此命令不會傳回任何回應。
 
 ## <a name="delete-a-packet-capture"></a>刪除封包擷取
 

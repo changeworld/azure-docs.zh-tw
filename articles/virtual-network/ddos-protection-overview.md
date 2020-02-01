@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: kumud
-ms.openlocfilehash: 23dcabf74284c36f0cb221db7e192859aa75f1f6
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 0b0052d58ab4f950467902c4b177e844c9bc498d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544543"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905185"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS Protection Standard 概觀
 
@@ -41,7 +41,7 @@ ms.locfileid: "76544543"
 |風險降低報告                              |否                                    |攻擊後的風險降低報告                |
 |風險降低流程記錄                            |否                                    |適用于 SIEM 整合的 NRT 記錄資料流程           |
 |遷移原則自訂                 |否                                    |與 DDoS 專家接洽                           |
-|支援                                         |盡力而為                           |在主動攻擊期間存取 DDoS 專家|
+|支援                                         |最佳做法                           |在主動攻擊期間存取 DDoS 專家|
 |SLA                                             |Azure 地區                          |應用程式保證 & 成本保護       |
 |定價                                         |免費                                  |每月 & 使用方式                         |
 
@@ -51,9 +51,9 @@ DDoS 保護標準層可降低下列攻擊類型的風險：
 
 - **巨流量攻擊**：此攻擊的目的在於以大量看似合法的流量填滿網路層。 它包括 UDP 洪水攻擊、放大洪水攻擊和其他詐騙封包洪水攻擊。 DDoS 保護標準層可降低這些潛在多 GB 攻擊的風險，方法是自動使用 Azure 的全球網路規模來快吸並清除這些攻擊。
 - **通訊協定攻擊**：這些攻擊透過利用第 3 層和第 4 層通訊協定堆疊中的弱點，讓目標無法供存取。 它包括 SYN 洪水攻擊、反映攻擊和其他通訊協定攻擊。 DDoS 保護標準層可透過與用戶端互動來區別惡意與合法流量並封鎖惡意流量，以降低這些攻擊的風險。 
-- **資源 (應用程式) 層攻擊**：這些攻擊會鎖定 Web 應用程式封包，以中斷主機之間的資料傳輸。 攻擊包括 HTTP 通訊協定違規、SQL 插入、跨網站指令碼和其他第 7 層攻擊。 使用 Azure [應用程式閘道 Web 應用程式防火牆](../application-gateway/application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)搭配 DDoS Protection Standard，以提供這些攻擊的防禦。 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall) 還提供了協力廠商 Web 應用程式防火牆供應項目。
+- **資源 (應用程式) 層攻擊**：這些攻擊會鎖定 Web 應用程式封包，以中斷主機之間的資料傳輸。 攻擊包括 HTTP 通訊協定違規、SQL 插入、跨網站指令碼和其他第 7 層攻擊。 使用 Web 應用程式防火牆（例如 Azure[應用程式閘道 web 應用程式防火牆](../application-gateway/application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)）以及 DDoS 保護標準，以提供這些攻擊的防禦。 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall) 還提供了協力廠商 Web 應用程式防火牆供應項目。
 
-DDoS Protection Standard 可保護虛擬網路中的資源，包括與虛擬機器相關聯的公用 IP 位址、內部負載平衡器，以及應用程式閘道。 與應用程式閘道 Web 應用程式防火牆搭配的 DDoS Protection Standard 可以提供完整的第 3 層至第 7 層安全防護功能。
+DDoS Protection Standard 可保護虛擬網路中的資源，包括與虛擬機器相關聯的公用 IP 位址、內部負載平衡器，以及應用程式閘道。 當結合應用程式閘道 web 應用程式防火牆，或在具有公用 IP 的虛擬網路中部署的協力廠商 web 應用程式防火牆時，DDoS 保護標準可以提供完整的第3層至第7層的風險降低功能。
 
 ## <a name="ddos-protection-standard-features"></a>DDoS Protection Standard 功能
 

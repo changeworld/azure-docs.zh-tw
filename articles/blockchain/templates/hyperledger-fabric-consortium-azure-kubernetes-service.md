@@ -4,12 +4,12 @@ description: 如何在 Azure Kubernetes Service 上部署和設定 Hyperledger F
 ms.date: 01/08/2020
 ms.topic: article
 ms.reviewer: v-umha
-ms.openlocfilehash: 59e13b671f68c29271227d481b41562256d66fd6
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 93f78f2c8bc32a2012e5635e0daec10b8c51d167
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289640"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901623"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service （AKS）上的 Hyperledger 網狀架構聯盟
 
@@ -466,7 +466,7 @@ npm run queryCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL -f <que
 
 ```
 
-在 `<queryFunction>` 和 `<queryFuncArgs>` 中，分別傳遞查詢函式名稱和以逗號分隔的引數清單。 同樣地，將 `fabcar` 鏈碼做為參考，以查詢全球狀態設定 `<queryFunction>` 中的所有車輛，以 `"queryAllCars"` 和 `<queryArgs>' to `"" '。
+在 `<queryFunction>` 和 `<queryFuncArgs>` 中，分別傳遞查詢函式名稱和以逗號分隔的引數清單。 同樣地，將 `fabcar` 鏈碼做為參考，以查詢全球狀態集合中的所有車輛 `<queryFunction>`，`"queryAllCars"` 和 `<queryArgs>` `""`。
 
 如需命令中傳遞之引數的詳細資訊，請參閱命令說明
 

@@ -8,6 +8,7 @@ manager: daveba
 editor: curtand
 ms.assetid: 8dd4e998-747b-4c52-b8d3-3900fe77d88f
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,61 +16,61 @@ ms.topic: reference
 ms.date: 03/20/2019
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27c0d3055512145396f204fdb17e9375f65a0db3
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: ace8d170a5ba48c00775c3b376df8bb70a337d5d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562327"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897045"
 ---
-# <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health：版本發行歷程記錄
+# <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health︰版本發行歷程記錄
 Azure Active Directory 團隊會定期以新的特性和功能更新 Azure AD Connect Health。 本文列出已發行的版本和功能。  
 
 > [!NOTE]
-> 發行新版本時, Connect Health 代理程式會自動更新。 請確定已從 Azure 入口網站啟用自動升級設定。 
+> 發行新版本時，Connect Health 代理程式會自動更新。 請確定已從 Azure 入口網站啟用自動升級設定。
 >
 
 Azure AD Connect Health for Sync 會與 Azure AD Connect Health 安裝整合。 深入了解 [Azure AD Connect 版本歷程記錄](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history) 如需功能意見反應，請在 [Connect Health User Voice 頻道](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591)投票
 
-## <a name="july-2019"></a>2019年7月
+## <a name="july-2019"></a>2019 年 7 月
 **代理程式更新**
-* AD FS 的 Azure AD Connect Health 代理程式 (版本 3.1.59.0) 
+* AD FS 的 Azure AD Connect Health 代理程式（版本3.1.59.0） 
    1. TestWindowsTransport 中的文字變更
    2. AD FS RP 上傳的變更
    
-* AD FS 的 Azure AD Connect Health 代理程式 (版本 3.1.56.0) 
+* AD FS 的 Azure AD Connect Health 代理程式（版本3.1.56.0） 
    1. 新增 TestWindowsTransport 測試和移除 CheckOffice365Endpoints 測試中的 WsTrust 端點檢查
    2. 記錄 OS 和 .NET 資訊
    3. 將 RP 設定訊息上傳大小增加至 1 MB。
    4. 錯誤修正
    
-* AD DS 的 Azure AD Connect Health 代理程式 (版本 3.1.56.0) 
+* AD DS 的 Azure AD Connect Health 代理程式（版本3.1.56.0） 
    1. 記錄 OS 和 .NET 資訊 
    2. 錯誤修正
 
 ## <a name="may-2019"></a>2019 年 5 月
 **代理程式更新：** 
-* AD FS 的 Azure AD Connect Health 代理程式 (版本 3.1.51.0) 
-   1. Bug 修正, 以區別共用同一個用戶端要求識別碼的多個登入。
-   2. Bug 修正, 以剖析語言當地語系化伺服器上的錯誤使用者名稱/密碼錯誤。   
+* AD FS 的 Azure AD Connect Health 代理程式（版本3.1.51.0） 
+   1. Bug 修正，以區別共用同一個用戶端要求識別碼的多個登入。
+   2. Bug 修正，以剖析語言當地語系化伺服器上的錯誤使用者名稱/密碼錯誤。   
 
 ## <a name="april-2019"></a>2019 年 4 月
 **代理程式更新：** 
-* AD FS 的 Azure AD Connect Health 代理程式 (版本 3.1.46.0) 
+* AD FS 的 Azure AD Connect Health 代理程式（版本3.1.46.0） 
    1. 修正檢查 ADFS 的重複 SPN 警示進程
 
 ## <a name="march-2019"></a>2019 年 3 月
 **代理程式更新：** 
-* AD DS 的 Azure AD Connect Health 代理程式 (版本 3.1.41.0)  
+* AD DS 的 Azure AD Connect Health 代理程式（版本3.1.41.0）  
    1. .NET 版本集合
-   2. 當遺失特定類別時, 效能計數器集合的改進
-   3. 錯誤修正, 以防止產生多個監視代理程式實例
+   2. 當遺失特定類別時，效能計數器集合的改進
+   3. 錯誤修正，以防止產生多個監視代理程式實例
 
-* AD FS 的 Azure AD Connect Health 代理程式 (版本 3.1.41.0) 
+* AD FS 的 Azure AD Connect Health 代理程式（版本3.1.41.0） 
    1. 使用 ADFSToolBox 整合和升級 AD FS 測試腳本
    2. 執行 .NET 版本集合
-   3. 當遺失特定類別時, 效能計數器集合的改進
-   4. 錯誤修正, 以防止產生多個監視代理程式實例
+   3. 當遺失特定類別時，效能計數器集合的改進
+   4. 錯誤修正，以防止產生多個監視代理程式實例
 
 
 ## <a name="november-2018"></a>2018 年 11 月
@@ -156,7 +157,7 @@ Azure AD Connect Health for Sync 會與 Azure AD Connect Health 安裝整合。 
 **代理程式更新：**
 
  * 隨著 Azure AD Connect 1.1.649.0 版發行的 Azure AD Connect Health Agent for Sync (3.0.129.0 版)
-<br></br> 已修正 Azure AD Connect 與 Azure AD Connect Health Agent for Sync 之間的版本相容性問題。此問題會影響要執行 Azure AD Connect 就地升級到 1.1.647.0 版，但目前擁有的是健康情況代理程式 3.0.127.0 版的客戶。 升級之後，健康情況代理程式就不會再將有關 Azure AD Connect 同步處理服務的健康情況資料傳送至 Azure AD 健康情況服務。 透過此修正，就會在 Azure AD Connect 就地升級期間安裝健康情況代理程式 3.0.129.0 版。 健康情況代理程式 3.0.129.0 版與 Azure AD Connect 1.1.649.0 版 沒有相容性問題。
+<br></br> 已修正 Azure AD Connect 與 Azure AD Connect Health 代理程式之間的版本相容性問題，以進行同步處理。此問題會影響正在執行 Azure AD Connect 就地升級至版本1.1.647.0 版的客戶，但目前有健康情況代理程式版本3.0.127.0。 升級之後，健康情況代理程式就不會再將有關 Azure AD Connect 同步處理服務的健康情況資料傳送至 Azure AD 健康情況服務。 透過此修正，就會在 Azure AD Connect 就地升級期間安裝健康情況代理程式 3.0.129.0 版。 健康情況代理程式 3.0.129.0 版與 Azure AD Connect 1.1.649.0 版 沒有相容性問題。
 
 ## <a name="july-2017"></a>2017 年 7 月
 **代理程式更新：**

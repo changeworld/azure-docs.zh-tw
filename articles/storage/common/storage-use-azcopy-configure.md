@@ -4,16 +4,16 @@ description: 設定、優化和疑難排解 AzCopy。
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 01/28/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 6a1dcd2d8734d7701dab6d913beb8af0ad4e35ab
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 00ce40e24a01b765419186a609ecf19ce53c772b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75371389"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905271"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>設定、優化和疑難排解 AzCopy
 
@@ -41,6 +41,14 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 blob �
 ## <a name="optimize-performance"></a>將效能最佳化
 
 您可以基準效能，然後使用命令和環境變數來尋找效能和資源耗用量之間的最佳取捨。
+
+本節可協助您執行這些優化工作：
+
+> [!div class="checklist"]
+> * 執行基準測試
+> * 輸送量最佳化
+> * 優化記憶體使用 
+> * 優化檔案同步處理
 
 ### <a name="run-benchmark-tests"></a>執行基準測試
 
@@ -97,6 +105,14 @@ azcopy jobs resume <job-id> --cap-mbps 10
 | **Windows** | `set AZCOPY_BUFFER_GB=<value>` |
 | **Linux** | `export AZCOPY_BUFFER_GB=<value>` |
 | **MacOS** | `export AZCOPY_BUFFER_GB=<value>` |
+
+### <a name="optimize-file-synchronization"></a>優化檔案同步處理
+
+[Sync](storage-ref-azcopy-sync.md)命令會識別目的地上的所有檔案，然後比較檔案名和上次修改的時間戳記，然後再開始同步處理作業。 如果您有大量的檔案，您可以藉由排除這項提前處理來改善效能。 
+
+若要完成此動作，請改用[azcopy copy](storage-ref-azcopy-copy.md)命令，並將 `--overwrite` 旗標設定為 `ifSourceNewer`。 AzCopy 會比較複製的檔案，而不需要執行任何前置掃描和比較。 當有大量檔案要比較時，這會提供效能邊緣。
+
+[Azcopy copy](storage-ref-azcopy-copy.md)命令不會從目的地刪除檔案，因此，如果您想要在目的地上不再存在檔案時刪除檔案中的檔案，請使用[azcopy 同步](storage-ref-azcopy-sync.md)命令，並將 `--delete-destination` 旗標設為 `true` 或 `prompt`的值。 
 
 ## <a name="troubleshoot-issues"></a>針對問題進行疑難排解
 

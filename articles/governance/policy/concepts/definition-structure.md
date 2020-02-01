@@ -3,12 +3,12 @@ title: 原則定義結構的詳細資料
 description: 說明如何使用原則定義來建立組織中 Azure 資源的慣例。
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: 909d8e69e02b55ee6e45515b0d9c316a549e1332
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: e37ff6e1bde594014510880492c2572ad1634400
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972840"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904423"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure 原則定義結構
 
@@ -175,6 +175,9 @@ ms.locfileid: "75972840"
 ## <a name="display-name-and-description"></a>顯示名稱和描述
 
 您可以使用 **displayName** 和 **description** 來識別原則定義，以及提供其使用時機的內容。 **displayName** 的長度上限為 _128_ 個字元，**description** 的長度上限則為 _512_ 個字元。
+
+> [!NOTE]
+> 在建立或更新原則定義時，**識別碼**、**類型**和**名稱**是由 json 外部的屬性所定義，而且在 json 檔案中並不需要。 透過 SDK 提取原則定義會傳回**識別碼**、**類型**和**名稱**屬性做為 JSON 的一部分，但每個都是與原則定義相關的唯讀資訊。
 
 ## <a name="policy-rule"></a>原則規則
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: 6b5793408545c2a61a30b5d89bc41d35460ed3eb
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 52108d40c53c2470d542bd9c6816453ba2b6ebba
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76119460"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896295"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door-service"></a>使用 Azure Front 開門服務的 Web 應用程式防火牆來設定 IP 限制規則
 本文說明如何使用 Azure CLI、Azure PowerShell 或 Azure Resource Manager 範本，在 Azure Front 門板服務的 Web 應用程式防火牆（WAF）中設定 IP 限制規則。
@@ -66,12 +66,12 @@ az network front-door waf-policy rule create \
 接下來，將符合條件新增至規則：
 
 ```azurecli
-az network front-door waf-policy rule match-condition add\
+az network front-door waf-policy rule match-condition add \
 --match-variable RemoteAddr \
---operator IPMatch
---values "ip-address-range-1" "ip-address-range-2"
---negate true\
---name IPAllowListRule\
+--operator IPMatch \
+--values "ip-address-range-1" "ip-address-range-2" \
+--negate true \
+--name IPAllowListRule \
   --resource-group <resource-group-name> \
   --policy-name IPAllowPolicyExampleCLI 
   ```
@@ -91,7 +91,7 @@ az network front-door waf-policy rule match-condition add\
 
    ```azurecli
    az network front-door update \
-     --set FrontendEndpoints[0].WebApplicationFirewallPolicyLink.id=/subscriptions/<subscription ID>/resourcegroups/<resource- name>/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/IPAllowPolicyExampleCLI \
+     --set FrontendEndpoints[0].WebApplicationFirewallPolicyLink.id=/subscriptions/<subscription ID>/resourcegroups/resource-group-name/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/IPAllowPolicyExampleCLI \
      --name <frontdoor-name>
      --resource-group <resource-group-name>
    ```

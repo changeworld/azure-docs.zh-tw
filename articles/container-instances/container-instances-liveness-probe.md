@@ -3,12 +3,12 @@ title: 在容器實例上設定活動探查
 description: 了解如何在 Azure 容器執行個體中設定活躍度探查，以重新啟動狀況不良的容器
 ms.topic: article
 ms.date: 06/08/2018
-ms.openlocfilehash: 96d98d18a3f0ac666fb2c057216f7844b176d177
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 566f7952aff1cf460272fbb418a2a0efff411881
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481686"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901904"
 ---
 # <a name="configure-liveness-probes"></a>設定活躍度探查
 
@@ -17,6 +17,9 @@ ms.locfileid: "74481686"
 本文說明如何部署包含活躍度探查的容器群組，示範如何自動重新啟動模擬的狀況不良容器。
 
 Azure 容器實例也支援[就緒探查](container-instances-readiness-probe.md)，您可以進行設定，以確保只有當流量準備好時，才會到達容器。
+
+> [!NOTE]
+> 目前您無法在部署至虛擬網路的容器群組中使用活動探查。
 
 ## <a name="yaml-deployment"></a>YAML 部署
 
@@ -60,7 +63,7 @@ az container create --resource-group myResourceGroup --name livenesstest -f live
 
 ### <a name="start-command"></a>啟動命令
 
-部署會定義當容器第一次開始執行（由 `command` 屬性定義，它會接受字串陣列）時要執行的啟動命令。 在此範例中，它將啟動 Bash 工作階段，並藉由傳遞下列命令，在 `healthy` 目錄內建立名為 `/tmp` 的檔案：
+部署會定義當容器第一次開始執行（由 `command` 屬性定義，它會接受字串陣列）時要執行的啟動命令。 在此範例中，它將啟動 Bash 工作階段，並藉由傳遞下列命令，在 `/tmp` 目錄內建立名為 `healthy` 的檔案：
 
 ```bash
 /bin/sh -c "touch /tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 600"

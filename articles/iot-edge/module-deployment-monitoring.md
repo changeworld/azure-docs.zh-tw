@@ -4,16 +4,16 @@ description: 使用 Azure IoT Edge 中的自動部署，根據共用標籤來管
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 12/12/2019
+ms.date: 01/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 406830add1891a058e9b43fccb8435aa4d339ed0
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 8aaac6100ba980301ff3e85a3ac3959bfee89b49
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548674"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76895959"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>了解單一裝置或大規模的 IoT Edge 自動部署
 
@@ -61,7 +61,7 @@ IoT Edge 自動部署會指派 IoT Edge 模組映像，在一組目標 IoT Edge 
 
 例如，您的部署具有目標條件標記。環境 = ' 生產 '。 當您開始進行部署時，有 10 個生產裝置。 模組已成功安裝在這 10 個裝置中。 [IoT Edge 代理程式狀態] 會顯示10個裝置、10個成功的回應、0個失敗回應，以及0個待決回應。 現在，您再新增五個具有 tags.environment = 'prod' 的裝置。 服務會偵測到變更，而 IoT Edge 代理程式狀態會變成15個裝置、10個成功回應、0個失敗回應，以及5個新裝置部署時的等待回應。
 
-使用裝置對應項標籤上的任何布林值條件或 deviceId 來選取目標裝置。 如果想要使用具標籤的條件，您需要在與屬性相同的層級下，在裝置對應項中新增 "標籤":{} 區段。 [深入了解裝置對應項中的標籤](../iot-hub/iot-hub-devguide-device-twins.md)
+在裝置對應項標記、裝置對應項報告屬性或 deviceId 上使用任何布林值條件，以選取目標裝置。 如果想要使用具標籤的條件，您需要在與屬性相同的層級下，在裝置對應項中新增 "標籤":{} 區段。 [深入了解裝置對應項中的標籤](../iot-hub/iot-hub-devguide-device-twins.md)
 
 目標條件的範例：
 
@@ -70,10 +70,11 @@ IoT Edge 自動部署會指派 IoT Edge 模組映像，在一組目標 IoT Edge 
 * tags.environment = 'prod' AND tags.location = 'westus'
 * tags.environment = 'prod' OR tags.location = 'westus'
 * tags.operator = 'John' AND tags.environment = 'prod' NOT deviceId = 'linuxprod1'
+* 屬性。已回報。 devicemodel 傳遞 = ' 4000x '
 
-以下是建構目標條件時的某些限制：
+當您建立目標條件時，請考慮下列條件約束：
 
-* 在裝置對應項中，您只能使用標籤或 deviceId 來建置目標條件。
+* 在裝置對應項中，您只能使用標記、報告屬性或 deviceId 來建立目標條件。
 * 目標條件的任何部分皆不允許雙引號。 使用單引號。
 * 單引號代表目標條件的值。 因此，如果單引號是裝置名稱的一部分，您必須使用另一個單引號來避開使用單引號。 例如，若要瞄準稱為 `operator'sDevice` 的裝置，請撰寫 `deviceId='operator''sDevice'`。
 * 在目標條件值中允許使用數字、字母和下列字元：`-:.+%_#*?!(),=@;$`。
@@ -92,8 +93,8 @@ IoT Edge 自動部署會指派 IoT Edge 模組映像，在一組目標 IoT Edge 
 
 * [**目標**] 會顯示符合部署目標條件的 IoT Edge 裝置。
 * [已套用]**會顯示目標**IoT Edge 未受其他較高優先順序部署設定目標的裝置。
-* [**報告成功**] 會顯示已向服務回報已成功部署模組的 IoT Edge 裝置。
-* **報告失敗**顯示已回報給服務的 IoT Edge 裝置，指出一或多個模組尚未成功部署。 若要進一步調查此錯誤，請遠端連線到那些裝置並檢視記錄檔。
+* [**報告成功**] 會顯示已回報已成功部署模組的 IoT Edge 裝置。
+* **報告失敗**顯示已回報一或多個模組尚未成功部署的 IoT Edge 裝置。 若要進一步調查此錯誤，請遠端連線到那些裝置並檢視記錄檔。
 
 此外，您也可以定義自己的自訂計量，以協助監視和管理部署。
 
@@ -112,7 +113,7 @@ SELECT deviceId FROM devices
 
 分層部署與任何自動部署具有相同的基本元件。 它們會根據裝置 twins 中的標籤來鎖定裝置，並提供與標籤、計量和狀態報表有關的功能。 分層部署也會指派優先順序，但不會使用優先順序來決定要將哪個部署套用至裝置，優先順序會決定如何在裝置上排序多個部署。 例如，如果兩個分層部署具有相同名稱的模組或路由，則會套用優先順序較高的分層部署，同時覆寫較低的優先順序。
 
-系統執行時間模組（edgeAgent 和 edgeHub）不會設定為分層部署的一部分。 分層部署的任何目標 IoT Edge 裝置，都需要先套用標準自動部署，以提供可新增分層部署的基礎。
+系統執行時間模組（edgeAgent 和 edgeHub）不會設定為分層部署的一部分。 分層部署的任何目標 IoT Edge 裝置，都需要先套用標準自動部署。 自動部署提供可新增分層部署的基礎。
 
 IoT Edge 裝置只能套用一種標準自動部署，但它可以套用多層式自動部署。 以裝置為目標的任何分層部署，其優先順序必須高於該裝置的自動部署。
 
@@ -141,7 +142,7 @@ IoT Edge 裝置只能套用一種標準自動部署，但它可以套用多層�
 }
 ```
 
-在以相同裝置或相同裝置子集為目標的多層式部署中，您可能會想要新增額外的屬性，告知模擬感應器傳送1000訊息，然後停止。 您不想要覆寫現有的屬性，因此您會在所需的屬性（稱為 `layeredProperties`）中建立新的區段，其中包含新的屬性：
+在以部分或所有相同裝置為目標的分層部署中，您可以新增屬性，告知模擬感應器傳送1000訊息，然後停止。 您不想要覆寫現有的屬性，因此您會在所需的屬性（稱為 `layeredProperties`）中建立新的區段，其中包含新的屬性：
 
 ```json
 "SimulatedTemperatureSensor": {
@@ -184,7 +185,7 @@ IoT Edge 裝置只能套用一種標準自動部署，但它可以套用多層�
 
 部署可以在接收到錯誤或設定錯誤的情況下復原。 因為部署會定義 IoT Edge 裝置的絕對模組設定，所以即使目標是要移除所有模組，也必須以較低的優先順序將額外的部署目標設為相同的裝置。  
 
-刪除部署並不會從目標裝置移除模組。 必須有另一個部署來定義裝置的新設定，即使是空的部署也是如此。
+刪除部署並不會將模組從目標裝置中移除。 必須有另一個部署來定義裝置的新設定，即使是空的部署也是如此。
 
 依照以下順序執行復原：
 

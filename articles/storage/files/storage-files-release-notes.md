@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 67f04b3873da020853c2523f6acc8c7dc7dcdedc
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: d0e830aaca4f952f75c220b4f482ce831883b058
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749594"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905564"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure 檔案同步代理程式的版本資訊
 Azure 檔案同步可讓您將組織的檔案共用集中在「Azure 檔案服務」中，而不需要犧牲內部部署檔案伺服器的靈活度、效能及相容性。 您的 Windows Server 安裝會轉換成 Azure 檔案共用的快速快取。 您可以使用 Windows Server 上可用的任何通訊協定來從本機存取資料 (包括 SMB、NFS 和 FTPS)。 您可以視需要存取多個散佈於世界各地的快取。
@@ -35,9 +35,9 @@ Azure 檔案同步代理程式支援下列版本：
 | 2019年6月更新彙總套件- [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | 2019年6月13日 | 支援的 |
 | 5月2019更新彙總套件- [KB4489737](https://support.microsoft.com/help/4489737)| 6.1.0.0 | 2019 5 月7日 | 支援的 |
 | V6 發行- [KB4489736](https://support.microsoft.com/help/4489736)| 6.0.0.0 | 2019年4月21日 | 支援的 |
-| 2019年4月更新彙總套件- [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 2019年4月4日 | 支援的 |
-| 2019年3月更新彙總套件- [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 2019年3月7日 | 支援的 |
-| V5 版本 - [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 2019 年 2 月 12 日 | 支援的 |
+| 2019年4月更新彙總套件- [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 2019年4月4日 | 支援的代理程式版本將于2020年2月12日到期 |
+| 2019年3月更新彙總套件- [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 2019年3月7日 | 支援的代理程式版本將于2020年2月12日到期 |
+| V5 版本 - [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 2019 年 2 月 12 日 | 支援的代理程式版本將于2020年2月12日到期 |
 | V4 版本 | 4.0.1.0-4.3.0.0 版 | N/A | 不支援-代理程式版本已于2019年11月6日過期 |
 | V3 版本 | 3.1.0.0-v3.4.0。0 | N/A | 不支援-代理程式版本已于2019年8月19日到期 |
 | 預先 GA 的代理程式 | 1.1.0.0 - 3.0.13.0 | N/A | 不支援 - 代理程式版本已於 2018 年 10 月1 日過期 |

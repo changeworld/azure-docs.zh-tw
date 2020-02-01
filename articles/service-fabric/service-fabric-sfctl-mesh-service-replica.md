@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI-sfctl 網格服務-複本
 description: 深入瞭解 sfctl，這是 Azure Service Fabric 命令列介面。 包含用來取得應用程式資源複本詳細資料的命令清單。
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 219a691dd1b74ec2214c156018e6e3f62366f523
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: ac604ec0a854964746ef34627b054e853662265f
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645322"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905946"
 ---
 # <a name="sfctl-mesh-service-replica"></a>sfctl mesh service-replica
 取得複本服務詳細資料和應用程式資源中指定服務的清單複本。

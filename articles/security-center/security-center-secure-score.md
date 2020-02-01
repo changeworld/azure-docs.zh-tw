@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/15/2019
 ms.author: memildin
-ms.openlocfilehash: bd896cbee98bd61518c9a093f86e088f0b018d73
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 79154a13722654ef5cbbe7ac99bb67d4b761fe60
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156653"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76903455"
 ---
 # <a name="improve-your-secure-score-in-azure-security-center"></a>在 Azure 資訊安全中心中改善您的安全分數
 
@@ -34,7 +34,7 @@ ms.locfileid: "76156653"
 ## <a name="secure-score-calculation"></a>安全分數的計算
 
 「資訊安全中心」會模擬安全分析師的工作，檢閱您的安全性建議並套用進階演算法來判斷每項建議的重要性。
-「Azure 資訊安全中心」會不斷檢閱您的作用中建議並根據這些建議計算您的安全分數，建議的分數則是從將對工作負載安全性產生最大影響的嚴重性和安全性最佳做法導出。
+Azure 資訊安全中心會持續審查您的使用中建議，並根據其計算您的安全分數，建議的分數是從其嚴重性和安全性最佳做法衍生而來，這會影響您的工作負載安全性。
 
 「資訊安全中心」也會為您提供一個**整體安全分數**。 
 

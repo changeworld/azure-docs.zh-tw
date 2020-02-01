@@ -12,12 +12,12 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: d66b3e1b6ed2c8eef9f5cd21c0657648ad550ebe
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 06ca26ee9a8af7f49aba6a48a1831d30d5886851
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896161"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896349"
 ---
 # <a name="access-azure-media-services-api-with-the-azure-cli"></a>使用 Azure CLI 存取 Azure 媒體服務 API
  
@@ -28,7 +28,8 @@ ms.locfileid: "74896161"
 * REST 媒體服務的資源 URI
 * Azure AD 應用程式值：用戶端識別碼和用戶端祕密
 
-如需詳細說明，請參閱[存取媒體服務 V3 api](media-services-apis-overview.md#accessing-the-azure-media-services-api)。
+> [!IMPORTANT]
+> 如需詳細說明，請參閱[存取媒體服務 V3 api](media-services-apis-overview.md#accessing-the-azure-media-services-api)。
 
 本主題說明如何使用 Azure CLI 建立 Azure AD 應用程式和服務主體，以及取得必要的值來存取 Azure 媒體服務資源。
 

@@ -8,6 +8,7 @@ manager: daveba
 editor: curtand
 ms.assetid: 1cc8ae90-607d-4925-9c30-6770a4bd1b4e
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68249fc9a599ab49e8d5fd231fa63e91a6e3a21f
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 4e9468c0a0f6844c7522ff43761cf58f4beea27e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330113"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897364"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health 代理程式安裝
 
@@ -30,7 +31,7 @@ ms.locfileid: "72330113"
 
 下表是使用 Azure AD Connect Health 的需求清單。
 
-| 需求 | 描述 |
+| 需求 | 說明 |
 | --- | --- |
 | Azure AD Premium |Azure AD Connect Health 是 Azure AD Premium 的一個功能，而且需要 Azure AD Premium。 <br /><br />如需詳細資訊，請參閱[開始使用 Azure AD Premium](../fundamentals/active-directory-get-started-premium.md) <br />若要開始使用 30 天免費試用版，請參閱[開始使用試用版](https://azure.microsoft.com/trial/get-started-active-directory/)。 |
 | 您必須是 Azure AD 的全域系統管理員，才能開始使用 Azure AD Connect Health |依預設，只有全域系統管理員可以安裝和設定 Health 代理程式，以便開始使用、存取入口網站，以及在 Azure AD Connect Health 內執行任何作業。 如需詳細資訊，請參閱[管理您的 Azure AD 目錄](../fundamentals/active-directory-administer.md)。 <br /><br /> 使用角色型存取控制，您可以允許貴組織中的其他使用者存取 Azure AD Connect Health。 如需詳細資訊，請參閱[適用於 Azure AD Connect Health 的角色型存取控制](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)。 <br /><br />**重要：** 在安裝代理程式時使用的帳戶必須是工作或學校帳戶。 不能是 Microsoft 帳戶。 如需詳細資訊，請參閱[以組織身分註冊 Azure](../fundamentals/sign-up-organization.md) |
@@ -39,13 +40,13 @@ ms.locfileid: "72330113"
 |以 IP 位址為基礎的輸出連線 | 如需防火牆上以 IP 位址為基礎的篩選，請參閱 [Azure IP 範圍](https://www.microsoft.com/download/details.aspx?id=41653)。|
 | 已篩選或停用輸出流量的 SSL 檢查 | 如果網路層的輸出流量有 SSL 檢查或終止，代理程式註冊步驟或資料上傳作業可能會失敗。 深入了解[如何設定 SSL 檢查](https://technet.microsoft.com/library/ee796230.aspx) |
 | 防火牆連接埠 (位於執行代理程式的伺服器上) |為了讓代理程式能與 Azure AD Health 服務端點進行通訊，代理程式要求開啟下列防火牆連接埠。<br /><br /><li>TCP 通訊埠 443</li><li>TCP 通訊埠 5671</li> <br />請注意，最新版的代理程式不再需要連接埠 5671。 升級到最新版本，因此只需要連接埠 443。 深入了解[啟用防火牆連接埠](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) |
-| 如果啟用 IE 增強式安全性，則允許下列網站 |如果啟用 IE 增強式安全性，則在即將安裝代理程式的伺服器上必須允許下列網站。<br /><br /><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>HTTPs： \//aadcdn. msftauth. net</li><li>Azure Active Directory 所信任適用於您組織的同盟伺服器。 例如：https:\//sts.contoso.com</li> 深入瞭解[如何設定 IE](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing)。 如果您的網路中有 proxy，請參閱下面的附注。|
+| 如果啟用 IE 增強式安全性，則允許下列網站 |如果啟用 IE 增強式安全性，則在即將安裝代理程式的伺服器上必須允許下列網站。<br /><br /><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>HTTPs：\//aadcdn.msftauth.net</li><li>Azure Active Directory 所信任適用於您組織的同盟伺服器。 例如：https:\//sts.contoso.com</li> 深入瞭解[如何設定 IE](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing)。 如果您的網路中有 proxy，請參閱下面的附注。|
 | 確定已安裝 PowerShell 4.0 版或更新版本 | <li>Windows Server 2008 R2 隨附了 PowerShell 2.0 版，它對代理程式來說並不足夠。 如以下的 [Windows Server 2008 R2 伺服器上的代理程式安裝](#agent-installation-on-windows-server-2008-r2-servers)中所述，更新 PowerShell。</li><li>Windows Server 2012 隨附了 PowerShell 3.0 版，它對代理程式來說並不足夠。  [更新](https://www.microsoft.com/download/details.aspx?id=40855) Windows Management Framework。</li><li>Windows Server 2012 R2 和更新版本隨附了足夠的 PowerShell 最新版本。</li>|
 |停用 FIPS|Azure AD Connect Health 代理程式不支援 FIPS。|
 
 
 > [!NOTE]
-> 如果您有高度鎖定且非常受限的環境，則除了上述的 [允許的 IE 增強式安全性設定] 中所列的 Url 以外，您還需要將下列服務端點清單中所述的 Url 列入允許清單。 
+> 如果您有高度鎖定且非常受限的環境，則除了上述的 [允許的 IE 增強式安全性設定] 中所列的 Url 以外，您還需要將下列服務端點清單中所述的 Url 列入白名單。 
 >
 
 ### <a name="outbound-connectivity-to-the-azure-service-endpoints"></a>Azure 服務端點的輸出連線
@@ -384,7 +385,7 @@ Register-AzureADConnectHealthADDSAgent -UserPrincipalName $USERNAME -Credential 
 
 * [Azure AD Connect Health](whatis-hybrid-identity-health.md)
 * [Azure AD Connect Health 操作](how-to-connect-health-operations.md)
-* [在 AD FS 使用 Azure AD Connect Health](how-to-connect-health-adfs.md)
+* [使用 Azure AD Connect Health 來搭配 AD FS](how-to-connect-health-adfs.md)
 * [使用 Azure AD Connect Health 進行同步處理](how-to-connect-health-sync.md)
 * [在 AD DS 使用 Azure AD Connect Health](how-to-connect-health-adds.md)
 * [Azure AD Connect Health 常見問題集](reference-connect-health-faq.md)

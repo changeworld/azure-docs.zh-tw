@@ -3,14 +3,14 @@ title: 開始使用 Azure Service Fabric CLI
 description: 了解如何使用 Azure Service Fabric CLI。 了解如何連線到叢集，以及如何管理應用程式。
 author: jeffj6123
 ms.topic: conceptual
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 4c3a41fe4dba351c10ad8488d4d339bc797597ad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b4ddc5bb52aeef622a33ace7b3ffad4694d7c072
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463386"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904830"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
 
@@ -30,7 +30,8 @@ Service Fabric CLI 旨在支援 Service Fabric SDK 的最新執行階段版本�
 
 | CLI 版本   | 支援的執行階段版本 |
 |---------------|---------------------------|
-| 最新（~ = 8）  | 最新（~ = 6.5）            |
+| 最新（~ = 9）  | 最新 (~=7)              |
+| 8.0.0         | 6.5                       |
 | 7.1.0         | 6.4                       |
 | 6.0.0         | 6.3                       |
 | 5.0.0         | 6.2                       |

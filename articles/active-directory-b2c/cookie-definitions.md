@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 399b63cab2594610260997f8e5ecef9c3c05318f
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: c6e48a663e4d1702851e11bc5124e56c52309d08
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712815"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76908865"
 ---
 # <a name="cookies-definitions-for-azure-ad-b2c"></a>Azure AD B2C 的 cookie 定義
 
@@ -30,7 +30,10 @@ Microsoft Azure AD B2C 服務與 SameSite 瀏覽器設定相容，包括支援�
 
 開發人員必須使用新的 cookie 設定 `SameSite=None`，來指定跨網站存取的 cookie。 當 `SameSite=None` 屬性存在時，必須使用額外的 `Secure` 屬性，因此跨網站 cookie 只能透過 HTTPS 連線來存取。 驗證並測試您所有的應用程式，包括使用 Azure AD B2C 的應用程式。
 
-如需詳細資訊，請參閱適用[于客戶網站和 Chrome 80 版或更新版本中的 Microsoft 服務和產品](https://support.microsoft.com/help/4522904/potential-disruption-to-customer-websites-in-latest-chrome)。
+如需詳細資訊，請參閱：
+
+* [處理 Chrome 瀏覽器中的 SameSite cookie 變更](../active-directory/develop/howto-handle-samesite-cookie-changes-chrome-browser.md)
+* [對客戶網站和 Chrome 80 版或更新版本中的 Microsoft 服務和產品的影響](https://support.microsoft.com/help/4522904/potential-disruption-to-customer-websites-in-latest-chrome)
 
 ## <a name="cookies"></a>Cookie
 

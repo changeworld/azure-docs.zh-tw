@@ -7,13 +7,13 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/04/2020
-ms.openlocfilehash: 940ada83aeabf4bf8746ad5f90592e0917f7b403
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 01/15/2020
+ms.openlocfilehash: 71c6879f467823ab01f4c60ac4d9f26cffcd4eea
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844440"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896114"
 ---
 # <a name="azure-cognitive-search-service-rest-api-version-2019-05-06-preview"></a>Azure 認知搜尋服務 REST api-版本 2019-05-06-預覽
 
@@ -22,8 +22,11 @@ ms.locfileid: "76844440"
 > [!NOTE]
 > 預覽功能適用於目標為收集意見反應的測試和實驗，而且可能會有所變更。 我們強烈建議您避免在實際執行的應用程式中使用預覽 API。
 
+## <a name="features-in-2019-05-06-preview"></a>2019-05-06-Preview 中的功能
 
-## <a name="new-in-2019-05-06-preview"></a>2019-05-06-Preview 的新功能
+此區段會列出具有預覽狀態的功能。 大部分都是在目前的 2019-05-06-Preview API 中新增的，但有些類似的 `moreLikeThis` 是從已推出至最新預覽 API 的舊版預覽版本進行。 
+
+預覽功能正式推出後，就會從這份清單中移除。 您可以查看[服務更新](https://azure.microsoft.com/updates/?product=search)或有關正式運作之公告的[新功能](whats-new.md)。
 
 + 累加[擴充（預覽）](cognitive-search-incremental-indexing-conceptual.md)會將快取新增至擴充管線，讓您在目標修改（例如，對技能集或另一個物件的更新）不會變更內容時，重複使用現有的輸出。 快取只適用于技能集所產生的擴充檔。
 
@@ -33,13 +36,11 @@ ms.locfileid: "76844440"
 
 + [知識存放區](knowledge-store-concept-intro.md)是以 AI 為基礎的擴充管線的新目的地。 實體資料結構存在於 Azure Blob 儲存體和 Azure 資料表儲存體中，而且當您執行具有附加認知技能集的索引子時，它會建立並填入。 知識存放區本身的定義是在技能集定義內指定。 在知識存放區定義中，您可以透過*投射*專案來控制資料的實體結構，這些元素會決定如何塑造資料、資料是否儲存在資料表儲存體或 Blob 儲存體中，以及是否有多個視圖。
 
-## <a name="earlier-preview-features"></a>舊版預覽功能
-
-舊版預覽中宣布的功能仍處於公開預覽。 如果您使用舊版預覽 api-version 呼叫 API，則可以繼續使用該版本或切換到 `2019-05-06-Preview`，而不會更改預期的行為。
-
 + [moreLikeThis 查詢參數](search-more-like-this.md)，可尋找與特定文件相關的文件。 這個功能已存在舊版預覽中。 
 
-+ [CSV blob 索引](search-howto-index-csv-blobs.md)會建立一行檔，而不是每個文字 blob 一份檔。
+## <a name="earlier-preview-features"></a>舊版預覽功能
+
+在先前預覽中宣佈的功能（如果尚未轉換為正式運作）仍處於公開預覽狀態。 如果您使用舊版預覽 api-version 呼叫 API，則可以繼續使用該版本或切換到 `2019-05-06-Preview`，而不會更改預期的行為。
 
 ## <a name="how-to-call-a-preview-api"></a>如何呼叫預覽 API
 

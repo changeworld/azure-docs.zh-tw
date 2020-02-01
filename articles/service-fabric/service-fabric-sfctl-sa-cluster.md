@@ -3,21 +3,21 @@ title: Azure Service Fabric CLI-sfctl sa-叢集
 description: 深入瞭解 sfctl，這是 Azure Service Fabric 命令列介面。 包含用來管理獨立叢集的命令清單。
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 765d7d76cb13758417bb3927ff9620026ca763b1
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 233148c04fb1a9c6cf1d6c7042c12c54eebd0205
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646019"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904933"
 ---
 # <a name="sfctl-sa-cluster"></a>sfctl sa-cluster
 管理獨立 Service Fabric 叢集。
 
 ## <a name="commands"></a>命令
 
-|命令|描述|
+|Command|說明|
 | --- | --- |
 | config | 取得 Service Fabric 獨立叢集設定。 |
 | config-upgrade | 開始升級 Service Fabric 獨立叢集的設定。 |
@@ -30,14 +30,14 @@ ms.locfileid: "75646019"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --configuration-api-version [必要] | 獨立叢集 JSON 設定的 API 版本。 |
 | --timeout -t | 執行作業的伺服器超時（以秒為單位）。 這個超時時間會指定用戶端願意等待要求的作業完成的持續期間。 此參數的預設值為60秒。  預設值\: 60。 |
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -52,7 +52,7 @@ ms.locfileid: "75646019"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --cluster-config            [必要] | 叢集設定。 |
 | --application-health-policies | 引發錯誤之前，應用程式類型名稱和健康情況不良最大百分比組合的 JSON 編碼目錄。 |
@@ -69,7 +69,7 @@ ms.locfileid: "75646019"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -80,9 +80,9 @@ ms.locfileid: "75646019"
 ### <a name="examples"></a>範例
 
 啟動叢集組態更新
-``` 
-sfctl sa-cluster config-upgrade --cluster-config <YOUR CLUSTER CONFIG> --application-health-    
-policies "{"fabric:/System":{"ConsiderWarningAsError":true}}"   
+```
+sfctl sa-cluster config-upgrade --cluster-config <YOUR CLUSTER CONFIG> --application-health-
+policies "{"fabric:/System":{"ConsiderWarningAsError":true}}"
 ```
 
 ## <a name="sfctl-sa-cluster-upgrade-status"></a>sfctl sa-cluster upgrade-status
@@ -92,13 +92,13 @@ policies "{"fabric:/System":{"ConsiderWarningAsError":true}}"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --timeout -t | 執行作業的伺服器超時（以秒為單位）。 這個超時時間會指定用戶端願意等待要求的作業完成的持續期間。 此參數的預設值為60秒。  預設值\: 60。 |
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |

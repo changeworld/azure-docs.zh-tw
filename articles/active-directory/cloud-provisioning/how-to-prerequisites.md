@@ -11,12 +11,12 @@ ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 019c2f8a13a80de395803ca1782e578c049a7923
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 51e5c58d29f01cadcc3ea2e8ec48ae67e58c4180
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75549341"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76909035"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect 雲端布建的必要條件
 本文提供如何選擇及使用 Azure Active Directory （Azure AD）連接雲端布建作為身分識別解決方案的指引。
@@ -29,6 +29,9 @@ ms.locfileid: "75549341"
 - Azure AD 租使用者的全域系統管理員帳戶。
 - 適用于使用 Windows 2012 R2 或更新版本之布建代理程式的內部部署伺服器。
 - 內部部署防火牆設定。
+
+>[!NOTE]
+>布建代理程式目前只能安裝在英文版的伺服器上。 在非英文的伺服器上安裝英文語言套件不是有效的因應措施，並會導致代理程式無法安裝。 
 
 檔的其餘部分會提供這些必要條件的逐步指示。
 

@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI-sfctl 設定遙測
 description: 深入瞭解 sfctl，這是 Azure Service Fabric 命令列介面。 包含用來設定 sfctl 遙測的命令清單。
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: cdb4a44c8f19b31c164e2ba3ea5e16b7a09e743e
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 6af5fa944ef399756f9e890ddd77a7f5f32e2bfb
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645271"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76903024"
 ---
 # <a name="sfctl-settings-telemetry"></a>sfctl settings telemetry
 在 sfctl 的此執行個體設定遙測設定。

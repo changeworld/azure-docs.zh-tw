@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI-sfctl 混亂排程
 description: 深入瞭解 sfctl，這是 Azure Service Fabric 命令列介面。 包含用於混亂排程的命令清單。
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: bff83e1d25d04f91611f5bea6c69dfcd299af04c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 29b365c48e405830e238945f1d94156f477c15b4
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639168"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906181"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl chaos schedule
 取得並設定 chaos 排程。
@@ -71,9 +71,10 @@ Chaos 會根據 Chaos 排程自動排定執行。 如果提供的版本與伺服
 
 ### <a name="examples"></a>範例
 
-下列命令會將排程設定為 (假設目前的排程版本為 0) 在 2016-01-01 開始並在 2038-01-01 到期，一週 7 天、每天 24 小時執行 Chaos。 Chaos 將會排定在該時間於叢集上執行。
-
-    sfctl chaos schedule set --version 0 --start-date-utc "2016-01-01T00:00:00.000Z" --expiry-date-utc "2038-01-01T00:00:00.000Z"
+下列命令會將排程設定為 (假設目前的排程版本為 0) 在 2016-01-01 開始並在 2038-01-01 到期，一週 7 天、每天 24 小時執行 Chaos。
+Chaos 將會排定在該時間於叢集上執行。
+```
+sfctl chaos schedule set --version 0 --start-date-utc "2016-01-01T00:00:00.000Z" --expiry-date-utc "2038-01-01T00:00:00.000Z"
     --chaos-parameters-dictionary
     [
     {
@@ -134,6 +135,8 @@ Chaos 會根據 Chaos 排程自動排定執行。 如果提供的版本與伺服
         ]
     }
     ]
+```
+
 
 
 ## <a name="next-steps"></a>後續步驟
