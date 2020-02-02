@@ -130,6 +130,9 @@
     - name: 效能考量
       href: functions-best-practices.md
       displayName: best practice
+    - name: 儲存體考量
+      href: storage-considerations.md
+      displayName: 'encryption, keys'
     - name: 函式 Proxy
       href: functions-proxies.md
     - name: 網路功能選項
