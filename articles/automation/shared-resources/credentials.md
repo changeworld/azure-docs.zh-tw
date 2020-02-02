@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: shared-capabilities
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/12/2019
+ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 582645919825c308fce4fe3211fa601955aaf37d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 767c1fddbc3d1f46d4341a70c990c2b57ad40e54
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850171"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76930421"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Azure 自動化中的認證資產
 
@@ -25,33 +25,22 @@ ms.locfileid: "74850171"
 > [!NOTE]
 > Azure 自動化中的安全資產包括認證、憑證、連接和加密的變數。 這些資產都會經過加密，並使用為每個自動化帳戶產生的唯一金鑰儲存在 Azure 自動化中。 此金鑰會儲存在 Key Vault 中。 在儲存安全資產之前，系統會從 Key Vault 載入金鑰，然後用來加密資產。
 
-## <a name="azure-classic-powershell-cmdlets"></a>Azure 傳統 PowerShell Cmdlet
+## <a name="azure-powershell-az-cmdlets"></a>Azure PowerShell Az Cmdlet
 
-下表中的 Cmdlet 是用來透過 Windows PowerShell 建立和管理自動化認證資產。  它們隨附于[Azure PowerShell 模組](/powershell/azure/overview)中，可在自動化 RUNBOOK 和 DSC 設定中使用。
+針對 Azure PowerShell Az 模組，下表中的 Cmdlet 是用來使用 Windows PowerShell 建立和管理自動化認證資產。 它們會隨附于[AzureAz 模組](/powershell/azure/new-azureps-module-az?view=azps-1.1.0)中，可在自動化 RUNBOOK 和 DSC 設定中使用。
 
-| Cmdlet | 描述 |
+| 指令程式 | 說明 |
 |:--- |:--- |
-| [Get-AzureAutomationCredential](/powershell/module/servicemanagement/azure/get-azureautomationcredential) |擷取認證資產的相關資訊。 您只能從 **Get-AutomationPSCredential** 活動擷取認證本身。 |
-| [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential) |建立新的自動化認證。 |
-| [移除-Set-azureautomationcredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential) |移除自動化認證。 |
-| [設定-Set-azureautomationcredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential) |設定現有自動化認證的屬性。 |
-
-## <a name="azurerm-powershell-cmdlets"></a>AzureRM PowerShell Cmdlet
-
-針對 AzureRM，下表中的 Cmdlet 可透過 Windows PowerShell 來建立和管理自動化認證資產。  它們會隨附于[AzureRM 模組](/powershell/azure/overview)中，可在自動化 RUNBOOK 和 DSC 設定中使用。
-
-| Cmdlet | 描述 |
-|:--- |:--- |
-| [Get-AzureRmAutomationCredential](/powershell/module/azurerm.automation/get-azurermautomationcredential) |擷取認證資產的相關資訊。 這不會傳回 PSCredential 物件。  |
-| [New-AzureRmAutomationCredential](/powershell/module/azurerm.automation/new-azurermautomationcredential) |建立新的自動化認證。 |
-| [Remove-AzureRmAutomationCredential](/powershell/module/azurerm.automation/remove-azurermautomationcredential) |移除自動化認證。 |
-| [Set-AzureRmAutomationCredential](/powershell/module/azurerm.automation/set-azurermautomationcredential) |設定現有自動化認證的屬性。 |
+| [AzAutomationCredential](/powershell/module/az.automation/get-azautomationcredential?view=azps-3.3.0) |擷取認證資產的相關資訊。 這不會傳回 PSCredential 物件。  |
+| [新增-AzAutomationCredential](/powershell/module/az.automation/new-azautomationcredential?view=azps-3.3.0) |建立新的自動化認證。 |
+| [移除-AzAutomationCredential](/powershell/module/az.automation/remove-azautomationcredential?view=azps-3.3.0) |移除自動化認證。 |
+| [設定-AzAutomationCredential](/powershell/module/az.automation/set-azautomationcredential?view=azps-3.3.0) |設定現有自動化認證的屬性。 |
 
 ## <a name="activities"></a>活動
 
 下表中的活動用來存取中 Runbook 和 DSC 設定的認證。
 
-| 活動 | 描述 |
+| 活動 | 說明 |
 |:--- |:--- |
 | Get-AutomationPSCredential |取得要在 Runbook 或 DSC 設定中使用的認證。 傳回 [System.Management.Automation.PSCredential](/dotnet/api/system.management.automation.pscredential) 物件。 |
 
@@ -62,7 +51,7 @@ ms.locfileid: "74850171"
 
 下表中的函式用於存取 Python2 Runbook 中的認證。
 
-| 函式 | 描述 |
+| 函式 | 說明 |
 |:---|:---|
 | automationassets.get_automation_credential | 擷取認證資產的相關資訊。 |
 
@@ -74,8 +63,8 @@ ms.locfileid: "74850171"
 ### <a name="to-create-a-new-credential-asset-with-the-azure-portal"></a>使用 Azure 入口網站建立新的認證資產
 
 1. 從您的自動化帳戶中，選取 [共用資源] 下的 [認證]。
-1. 按一下 [+ 新增認證]。
-1. 完成表單，然後按一下 [ **建立** ] 以儲存新認證。
+1. 選取 [新增認證]。
+1. 完成表單，然後選取 [**建立**] 以儲存新的認證。
 
 > [!NOTE]
 > 「Azure 自動化」中不支援使用多重要素驗證的使用者帳戶。
@@ -96,7 +85,7 @@ New-AzureAutomationCredential -AutomationAccountName "MyAutomationAccount" -Name
 您會使用 **Get-AutomationPSCredential** 活動在 Runbook 或 DSC 設定中擷取認證資產。 這會傳回 [PSCredential 物件](/dotnet/api/system.management.automation.pscredential) ，您可以對需要 PSCredential 參數的活動或 Cmdlet 搭配使用此物件。 您也可以擷取要個別使用的認證物件的屬性。 物件具備使用者名稱和安全密碼的屬性，或是您可以使用 **GetNetworkCredential** 方法來傳回將提供不安全版本的密碼的 [NetworkCredential](/dotnet/api/system.net.networkcredential) 物件。
 
 > [!NOTE]
-> **Get-azurermautomationcredential**不會傳回可用於驗證的**PSCredential** 。 它只提供認證的相關資訊。 如果您需要在 runbook 中使用認證，則必須使用**AutomationPSCredential**來取出**PSCredential**物件。
+> **AzAutomationCredential**不會傳回可用於驗證的**PSCredential** 。 它只提供認證的相關資訊。 如果您需要在 runbook 中使用認證，則必須使用**AutomationPSCredential**來取出**PSCredential**物件。
 
 ### <a name="textual-runbook-sample"></a>文字式 Runbook 範例
 
@@ -109,7 +98,7 @@ $securePassword = $myCredential.Password
 $password = $myCredential.GetNetworkCredential().Password
 ```
 
-您也可以使用認證，透過[AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount)向 Azure 進行驗證。 在大部分的情況下，您應該使用「執行身分」[帳戶](../manage-runas-account.md)，並使用[get-automationconnection](../automation-connections.md)來取出它。
+您也可以使用認證，透過[disconnect-azaccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.3.0)向 Azure 進行驗證。 在大部分的情況下，您應該使用「執行身分」[帳戶](../manage-runas-account.md)，並使用[AzAutomationConnection](../automation-connections.md)來取出它。
 
 ```azurepowershell
 $myCred = Get-AutomationPSCredential -Name 'MyCredential'
@@ -128,7 +117,7 @@ Connect-AzureRmAccount -Credential $myPsCred
 
 ![加入認證至畫布](../media/credentials/credential-add-canvas.png)
 
-下圖顯示在圖形化 Runbook 中使用認證的範例。  在此情況下，它會用來向 Azure 資源提供 runbook 的驗證，如[使用 Azure AD 使用者帳戶來驗證 runbook](../automation-create-aduser-account.md)中所述。  第一個活動會擷取可存取 Azure 訂用帳戶的認證。  然後 **Add-AzureAccount** 活動會使用這個認證來為隨後的任何活動提供驗證。  因為 [Get-AutomationPSCredential](../automation-graphical-authoring-intro.md#links-and-workflow) 需要單一物件，因此推出了 **管線連結** 。  
+下圖顯示在圖形化 Runbook 中使用認證的範例。 在此情況下，它會用來向 Azure 資源提供 runbook 的驗證，如[使用 Azure AD 使用者帳戶來驗證 runbook](../automation-create-aduser-account.md)中所述。 第一個活動會擷取可存取 Azure 訂用帳戶的認證。 **AzureRmAccount**活動接著會使用此認證來為其之後的任何活動提供驗證。 因為 [Get-AutomationPSCredential](../automation-graphical-authoring-intro.md#links-and-workflow) 需要單一物件，因此推出了 **管線連結** 。  
 
 ![加入認證至畫布](../media/credentials/get-credential.png)
 

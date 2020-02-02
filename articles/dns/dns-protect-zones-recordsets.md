@@ -2,17 +2,17 @@
 title: 保護 DNS 區域和記錄-Azure DNS
 description: 在此學習路徑中，開始在 Microsoft Azure DNS 中保護 DNS 區域和記錄集。
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: article
 ms.date: 12/4/2018
-ms.author: allensu
-ms.openlocfilehash: c87f9d51c69c4f4d330862e83e5cc8e8e849a988
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.author: rohink
+ms.openlocfilehash: 64c71047c60482ff198dbba833d4d0a35c80c60d
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969012"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932424"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>如何保護 DNS 區域和記錄
 

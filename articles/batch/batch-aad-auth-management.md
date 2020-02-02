@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Active Directory 驗證 Batch Management 解決方案 | Microsoft Docs
-description: 以 Azure Resource Manager 建立的應用程式和 Batch 資源提供者會使用 Azure AD 進行驗證。
+title: 使用 Azure Active Directory 驗證 Batch 管理解決方案
+description: 探索使用 Azure Active Directory 從使用 Batch Management .NET 程式庫的應用程式進行驗證。
 services: batch
 documentationcenter: .net
 author: ju-shim
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/27/2017
 ms.author: jushiman
-ms.openlocfilehash: 19aac0e25f9a036ce52d72a51e1ab7270eaaf3e5
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 1dce5118040e6164a468b0d5470d28e5cd06d8c5
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029844"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938268"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>使用 Active Directory 驗證 Batch Management 解決方案
 

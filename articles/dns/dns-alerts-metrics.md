@@ -3,7 +3,7 @@ title: 計量和警示-Azure DNS
 description: 在此學習路徑中，開始使用 Azure DNS 計量和警示。
 services: dns
 documentationcenter: na
-author: asudbring
+author: rohinkoul
 manager: kumudD
 ms.service: dns
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2018
-ms.author: allensu
-ms.openlocfilehash: dc4d7de3d235fcdaf4a7f681065ba6e2857eb2ce
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 42acbc0d32b3ce5de4befcf112b68f611ad70542
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212408"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937446"
 ---
 # <a name="azure-dns-metrics-and-alerts"></a>Azure DNS 計量與警示
 Azure DNS 是 DNS 網域的主機服務，採用 Microsoft Azure 基礎結構來提供名稱解析。 本文說明 Azure DNS 服務的計量與警示。

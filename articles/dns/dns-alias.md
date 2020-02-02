@@ -2,17 +2,17 @@
 title: 別名記錄總覽-Azure DNS
 description: 在本文中，您將瞭解如何支援 Microsoft Azure DNS 中的別名記錄。
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: article
 ms.date: 08/09/2019
-ms.author: allensu
-ms.openlocfilehash: da396d3e3db4acd1a9843977b8b3e3d51c33f021
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 085e5fc20a6b5356e012eb2f674fafc00cef828f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212331"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937331"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Azure DNS 別名記錄概觀
 
@@ -27,7 +27,7 @@ Azure DNS 區域中的下列記錄類型支援別名記錄集：
 > [!NOTE]
 > 如果您想要使用 A 或 AAAA 記錄類型的別名記錄以指向 [Azure 流量管理員設定檔](../traffic-manager/quickstart-create-traffic-manager-profile.md)，您必須確保流量管理員設定檔只有[外部端點](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints)。 您必須針對流量管理員中的外部端點，提供 IPv4 或 IPv6 位址。 您無法在端點中使用完整功能變數名稱（Fqdn）。 在理想情況下，請使用靜態 IP 位址。
 
-## <a name="capabilities"></a>功能
+## <a name="capabilities"></a>容量
 
 - **從 DNS A/AAAA 記錄集指向公用 IP 資源**。 您可以建立 A/AAAA 記錄集，並將其設為指向公用 IP 資源（標準或基本）的別名記錄集。 當公用 IP 位址變更或刪除時，DNS 記錄集就會自動變更。 系統會避免使用指向不正確 IP 位址的懸空 DNS 記錄。
 

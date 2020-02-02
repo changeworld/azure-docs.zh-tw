@@ -1,6 +1,6 @@
 ---
-title: 在使用者帳戶之下執行工作 - Azure Batch | Microsoft Docs
-description: 設定在 Azure Batch 中執行工作所需的使用者帳戶
+title: 在使用者帳戶下執行工作-Azure Batch
+description: 能夠設定您想要執行工作的使用者帳戶是很有説明的。 瞭解使用者帳戶的類型，以及如何設定它們。
 services: batch
 author: ju-shim
 manager: gwallace
@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 11/18/2019
 ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: d4975935c872f059dde6b08bcd7a4f06540c2dfd
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 01342c8fcd0d2d3c603762b06350a9fcf7c12d03
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029595"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937969"
 ---
 > [!NOTE] 
 > 本文中討論的使用者帳戶與用於遠端桌面通訊協定（RDP）或安全殼層（SSH）的使用者帳戶不同，基於安全考慮。 

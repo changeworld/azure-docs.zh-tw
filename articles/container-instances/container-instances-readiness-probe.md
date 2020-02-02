@@ -2,13 +2,13 @@
 title: 在容器實例上設定準備就緒探查
 description: 瞭解如何設定探查，以確保 Azure 容器實例中的容器只會在準備好時才接收要求
 ms.topic: article
-ms.date: 10/17/2019
-ms.openlocfilehash: 50cb341788434a6dc0bb0a1423d9e59a3d93634d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 01/30/2020
+ms.openlocfilehash: 64bb4a3e429ce820835abbf8e235600e592f7868
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901846"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935687"
 ---
 # <a name="configure-readiness-probes"></a>設定整備度探查
 
@@ -23,7 +23,7 @@ Azure 容器實例也支援「[活動探查](container-instances-liveness-probe.
 
 ## <a name="yaml-configuration"></a>YAML 設定
 
-例如，使用包含準備就緒探查的下列程式碼片段來建立 `readiness-probe.yaml` 檔案。 此檔案會定義由執行小型 web 應用程式的容器所組成的容器群組。 應用程式會從公用 `mcr.microsoft.com/azuredocs/aci-helloworld` 映射進行部署。 此容器應用程式也會在快速入門中示範，例如[使用 Azure CLI 在 Azure 中部署容器實例](container-instances-quickstart.md)。
+例如，使用包含準備就緒探查的下列程式碼片段來建立 `readiness-probe.yaml` 檔案。 此檔案會定義由執行小型 web 應用程式的容器所組成的容器群組。 應用程式會從公用 `mcr.microsoft.com/azuredocs/aci-helloworld` 映射進行部署。 此容器化應用程式也會在使用 Azure CLI 和其他快速入門在[Azure 中部署容器實例](container-instances-quickstart.md)中示範。
 
 ```yaml
 apiVersion: 2018-10-01
@@ -63,7 +63,9 @@ type: Microsoft.ContainerInstance/containerGroups
 
 ### <a name="start-command"></a>啟動命令
 
-YAML 檔案包含要在容器啟動時執行的啟動命令，由接受字串陣列的 `command` 屬性所定義。 此命令會模擬 web 應用程式執行的時間，但容器尚未就緒。 首先，它會啟動 shell 會話，並執行 `node` 命令來啟動 web 應用程式。 它也會開始睡眠240秒，然後在 `/tmp` 目錄中建立名為 `ready` 的檔案：
+部署包含一個 `command` 屬性，可定義在容器第一次開始執行時執行的啟動命令。 這個屬性會接受字串陣列。 此命令會模擬 web 應用程式執行的時間，但容器尚未就緒。 
+
+首先，它會啟動 shell 會話，並執行 `node` 命令來啟動 web 應用程式。 它也會開始睡眠240秒，然後在 `/tmp` 目錄中建立名為 `ready` 的檔案：
 
 ```console
 node /usr/src/app/index.js & (sleep 240; touch /tmp/ready); wait

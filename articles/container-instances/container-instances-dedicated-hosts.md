@@ -1,15 +1,16 @@
 ---
 title: 在專用主機上部署
-description: 使用專用主機，為您的工作負載達成真正的主機層級隔離
+description: 使用專用主機，為您的 Azure 容器實例工作負載達成真正的主機層級隔離
 ms.topic: article
-ms.date: 01/10/2020
-ms.author: danlep
-ms.openlocfilehash: 619a39f4d08a4308cb0f566bc50860e9562bf9e4
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.date: 01/17/2020
+author: dkkapur
+ms.author: dekapur
+ms.openlocfilehash: adad0ddfc78530b3a3a7c139d9a95ec4790c8053
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903752"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934139"
 ---
 # <a name="deploy-on-dedicated-hosts"></a>在專用主機上部署
 
@@ -17,22 +18,49 @@ ms.locfileid: "75903752"
 
 專用 sku 適用于需要從實體伺服器觀點來隔離工作負載的容器工作負載。
 
-## <a name="using-the-dedicated-sku"></a>使用專用 sku
+## <a name="prerequisites"></a>必要條件
+
+* 使用專用 sku 之任何訂用帳戶的預設限制為0。 如果您想要將此 sku 用於生產容器部署，請建立[Azure 支援要求][azure-support]以增加限制。
+
+## <a name="use-the-dedicated-sku"></a>使用專用 sku
 
 > [!IMPORTANT]
-> 使用專用 sku 僅適用于目前推出的最新 API 版本（2019-12-01）。在您的部署範本中指定此 API 版本。 此外，使用專用 sku 之任何訂用帳戶的預設限制為0。 如果您想要將此 sku 用於生產容器部署，請建立[Azure 支援要求][azure-support]
+> 使用專用 sku 僅適用于目前推出的最新 API 版本（2019-12-01）。在您的部署範本中指定此 API 版本。
+>
 
-從 API 版本2019-12-01 開始，部署範本的 [容器群組屬性] 區段底下會有一個「sku」屬性，這是 ACI 部署所需的內容。 目前，您可以使用此屬性做為 ACI Azure Resource Manager 部署範本的一部分。 您可以在[教學課程：使用 Resource Manager 範本部署多容器群組](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group)中，深入瞭解如何使用範本部署 ACI 資源。 
+從 API 版本2019-12-01 開始，部署範本的 [容器群組屬性] 區段底下會有一個 `sku` 屬性，這是 ACI 部署的必要項。 目前，您可以使用此屬性做為 ACI Azure Resource Manager 部署範本的一部分。 在[教學課程：使用 Resource Manager 範本部署多容器群組](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group)中，深入瞭解如何使用範本部署 ACI 資源。 
 
-Sku 屬性可以有下列其中一個值：
-* 標準-標準 ACI 部署選擇，其仍可保證程式管理層級安全性 
-* 專用-用於具有容器群組專用實體主機的工作負載層級隔離
+`sku` 屬性可以有下列其中一個值：
+* `Standard`-標準 ACI 部署選擇，其仍可保證程式管理層級安全性 
+* `Dedicated`-用於與容器群組的專用實體主機進行工作負載層級隔離
 
 ## <a name="modify-your-json-deployment-template"></a>修改您的 JSON 部署範本
 
-在您的部署範本中，指定容器群組資源的位置，確定 `"apiVersion": "2019-12-01",`。 在容器群組資源的 [屬性] 區段中，設定 [`"sku": "Dedicated",`]。
+在您的部署範本中，修改或加入下列屬性：
+* 在 [`resources`] 底下，將 `apiVersion` 設定為 [`2012-12-01`]。
+* 在容器群組屬性底下，新增具有值 `Dedicated`的 `sku` 屬性。
 
 以下是使用專用 sku 的容器群組部署範本之 resources 區段的範例程式碼片段：
+
+```json
+[...]
+"resources": [
+    {
+        "name": "[parameters('containerGroupName')]",
+        "type": "Microsoft.ContainerInstance/containerGroups",
+        "apiVersion": "2019-12-01",
+        "location": "[resourceGroup().location]",    
+        "properties": {
+            "sku": "Dedicated",
+            "containers": {
+                [...]
+            }
+        }
+    }
+]
+```
+
+以下是一個完整的範本，它會部署執行單一容器實例的範例容器群組：
 
 ```json
 {
@@ -91,9 +119,8 @@ Sku 屬性可以有下列其中一個值：
                     ],
                     "type": "Public"
                 },
-                "osType": "Linux",
+                "osType": "Linux"
             },
-            "location": "eastus2euap",
             "tags": {}
         }
     ]
@@ -116,7 +143,7 @@ az group create --name myResourceGroup --location eastus
 az group deployment create --resource-group myResourceGroup --template-file deployment-template.json
 ```
 
-在幾秒內，您應該會從 Azure 收到首次回應。 部署完成之後，ACI 服務所保存的所有相關資料都會以您提供的金鑰進行加密。
+在幾秒內，您應該會從 Azure 收到首次回應。 成功的部署會在專用主機上進行。
 
 <!-- LINKS - Internal -->
 [az-group-create]: /cli/azure/group#az-group-create

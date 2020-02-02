@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 161d9d18c914f65b3ab3ef7e44f8cd2f4a1992db
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 39bcaac2ca94eedebd991a1c4e93f324ef651888
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76887640"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76961454"
 ---
 此文章將回答有關 Azure 受控磁碟和 Azure 進階 SSD 磁碟的一些常見問題。
 
@@ -429,7 +429,7 @@ Azure 支援的分頁 Blob 大小上限是 8 TiB (8,191 GiB)。 連結至 VM 作
 
 **Azure 備份和 Azure Site Recovery 服務支援的最大磁片大小為何？**
 
-Azure 備份和 Azure Site Recovery 服務支援的最大磁碟大小為 4 TiB。 目前尚未提供最大 32 TiB 的磁片支援。
+Azure 備份支援的最大磁片大小為 32 TiB （適用于加密磁片的4個 TiB）。 Azure Site Recovery 支援的最大磁片大小為 8 TiB。 Azure Site Recovery 中尚未提供最多 32 TiB 的較大磁片支援。
 
 **適用于標準 SSD 和標準 HDD 磁片的最大磁片大小（> 4 TiB）建議的 VM 大小為何，以達到優化的磁片 IOPS 和頻寬？**
 

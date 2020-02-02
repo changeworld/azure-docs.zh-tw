@@ -11,12 +11,12 @@ ms.date: 01/13/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 66edde9591d4491fa630772f99372f9901319b2f
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 287ad5467f9f3aac7eb8c9d7c19ea15c380c6879
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940588"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935419"
 ---
 # <a name="what-is-workload-management"></a>什麼是工作負載管理？
 
@@ -31,7 +31,7 @@ ms.locfileid: "75940588"
 - 從資料倉儲匯出資料
 
 資料倉儲的效能處理能力取決於[資料倉儲單位](what-is-a-data-warehouse-unit-dwu-cdwu.md)。
-- 若要查看配置給所有效能設定檔的資源，請參閱 [記憶體和並行限制] 記憶體並行-limits.md）。
+- 若要查看配置給所有效能設定檔的資源，請參閱[記憶體和平行存取限制](memory-concurrency-limits.md)。
 - 若要調整容量，您可以相應[增加或相應減少規模](quickstart-scale-compute-portal.md)。
 
 

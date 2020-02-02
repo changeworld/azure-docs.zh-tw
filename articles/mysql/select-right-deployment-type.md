@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 3cc03ba1670299f1ea43a1fde666c2917eaf6b9d
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 8cff61d547e75b186869b3ab4d57c5eb12e6e2f5
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770453"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935454"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>在 Azure 中選擇正確的 MySQL 伺服器選項
 
@@ -36,7 +36,7 @@ ms.locfileid: "74770453"
 | 服務等級協定 (SLA)                | 提供99.99% 可用性的 SLA| 同一個可用性設定組中有兩個或多個實例，最高可達99.95% 的可用性。<br/><br/>使用 premium 儲存體的單一實例 VM，99.9% 的可用性。<br/><br/>99.99% 搭配多個可用性設定組中的多個實例使用可用性區域。<br/><br/>請參閱[虛擬機器 SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)。 |
 | 作業系統修補        | 自動  | 由客戶管理 |
 | MySQL 修補     | 自動  | 由客戶管理 |
-| 高可用性 | 高可用性（HA）模型是根據發生節點層級中斷時的內建容錯移轉機制。 在這種情況下，服務會自動建立新的實例，並將儲存體附加至這個實例。 | 客戶架構設計、實施、測試及維護高可用性。 功能可能包括 always on 容錯移轉叢集、always on 群組複寫、記錄傳送或異動複寫。|
+| 高可用性 | 高可用性（HA）模型是根據發生節點層級中斷時的內建容錯移轉機制。 在這種情況下，服務會自動建立新的實例，並將儲存體附加至這個實例。 | 客戶架構設計、實施、測試及維護高可用性。 功能可能包括叢集、複寫等。|
 | 區域備援 | 目前不支援 | Azure Vm 可設定為在不同的可用性區域中執行。 針對內部部署解決方案，客戶必須建立、管理及維護自己的次要資料中心。|
 | 混合式案例 | 使用[資料](https://docs.microsoft.com/azure/mysql/concepts-data-in-replication)輸入複寫時，您可以將外部 MySQL 伺服器的資料同步處理到適用於 MySQL 的 Azure 資料庫服務。 外部伺服器可以位於內部部署環境、虛擬機器中或其他雲端提供者所裝載的資料庫服務內。<br/><br/> 使用 [[讀取複本](https://docs.microsoft.com/azure/mysql/concepts-read-replicas)] 功能，您可以將資料從適用於 MySQL 的 Azure 資料庫主伺服器複寫到最多五部唯讀複本伺服器。 複本位於相同的 Azure 區域內或跨區域。 唯讀複本會使用 binlog 複寫技術以非同步方式更新。| 由客戶管理
 | 備份與還原 | 會自動建立[伺服器備份](https://docs.microsoft.com/azure/mysql/concepts-backup#backups)，並將它們儲存在使用者設定的儲存體中，這可能是本機的冗余或異地多餘的。 此服務會取得完整、差異和交易記錄備份 | 由客戶管理 |

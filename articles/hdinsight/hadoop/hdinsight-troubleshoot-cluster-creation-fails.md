@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/26/2019
-ms.openlocfilehash: 093bfbd976ace41f635976ff27fa4292e5c4df3c
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 1e13c7ef8eae81ef2a12a8761b0596f6329f94dc
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905148"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937914"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>使用 Azure HDInsight 疑難排解叢集建立失敗
 
@@ -64,7 +64,7 @@ ms.locfileid: "76905148"
 
 ## <a name="resources-locks"></a>資源鎖定  
 
-請確定[您的虛擬網路和資源群組](../../azure-resource-manager/management/lock-resources.md)沒有任何鎖定。  
+請確定[您的虛擬網路和資源群組](../../azure-resource-manager/management/lock-resources.md)沒有任何鎖定。 如果資源群組已鎖定，則無法建立或刪除叢集。 
 
 ## <a name="unsupported-component-versions"></a>不支援的元件版本
 

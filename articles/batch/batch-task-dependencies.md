@@ -1,5 +1,5 @@
 ---
-title: 使用工作相依性以便在其他工作完成時執行工作 - Azure Batch | Microsoft Docs
+title: 建立工作相依性來執行工作-Azure Batch
 description: 建立相依於其他工作完成的工作，以便在 Azure Batch 中處理 MapReduce 樣式和類似的巨量資料工作負載。
 services: batch
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 875e0314c41a6bb277769361b6faa0345312db2b
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 733c6e0fb178ed246ac77e0783225ddd642a5fed
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026242"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937777"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>建立工作相依性，以便執行相依於其他工作的工作
 

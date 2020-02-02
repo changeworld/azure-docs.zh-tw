@@ -3,7 +3,7 @@ title: 適用于應用程式 HA 的路由流量-Azure CLI-流量管理員
 description: Azure CLI 指令碼範例：路由傳送流量以達到應用程式的高可用性
 services: traffic-manager
 documentationcenter: traffic-manager
-author: asudbring
+author: rohinkoul
 manager: twooley
 editor: tysonn
 tags: azure-infrastructure
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 ms.date: 04/26/2018
-ms.author: allensu
-ms.openlocfilehash: 02807d3773b5d27d59ab6b03a22f7637bae95aca
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.author: rohink
+ms.openlocfilehash: e4912e0e285d41bf2de4cf439788a943251cfae8
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006401"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934784"
 ---
 # <a name="route-traffic-for-high-availability-of-applications-using-azure-cli"></a>使用 Azure CLI 路由傳送流量以達到應用程式的高可用性
 
@@ -48,7 +48,7 @@ az group delete --name myResourceGroup2 --yes
 
 此指令碼使用下列命令來建立資源群組、Web 應用程式、流量管理員設定檔和所有相關資源。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意事項 |
+| Command | 注意 |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | 建立用來存放所有資源的資源群組。 |
 | [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan) | 建立 App Service 方案。 這就像是 Azure Web 應用程式的伺服器陣列。 |

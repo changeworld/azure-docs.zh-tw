@@ -2,13 +2,13 @@
 title: Azure Site Recovery 的新功能
 description: 提供新功能的摘要，以及 Azure Site Recovery 服務中的最新更新。
 ms.topic: conceptual
-ms.date: 01/07/2020
-ms.openlocfilehash: ecd42c624cf1fe62c8041a0b8798585c8870cabc
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 01/31/2020
+ms.openlocfilehash: d6aa04586c9c087a736c7e1b10b8c21328a63cab
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76896043"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934930"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery 最新功能
 
@@ -36,6 +36,18 @@ ms.locfileid: "76896043"
 
 ## <a name="updates-january-2020"></a>更新（2020年1月）
 
+### <a name="update-rollup-44"></a>更新彙總套件44
+[更新彙總套件 44](https://support.microsoft.com/help/4538187/update-rollup-44-for-azure-site-recovery)提供下列更新。
+
+**更新** | **詳細資料**
+--- | ---
+**問題修正/改進** | Site Recovery 代理程式和提供者的一些更新（如匯總中所述）。
+
+### <a name="azure-vmware-disaster-recovery"></a>Azure VMware 嚴重損壞修復
+
+Azure 虛擬機器現在支援使用客戶管理的金鑰進行待用加密的 Vm。 [深入了解](azure-to-azure-how-to-enable-replication-cmk-disks.md)。
+
+
 ### <a name="update-rollup-43"></a>更新彙總套件43
 
 [更新彙總套件 43](https://support.microsoft.com/help/4537047/update-rollup-43-for-azure-site-recovery)提供下列更新。
@@ -58,7 +70,7 @@ ms.locfileid: "76896043"
 **問題修正/改進** | 一些修正和改進（如匯總中所述）
 
 
-## <a name="azure-vm-disaster-recovery"></a>Azure VM 嚴重損壞修復
+### <a name="azure-vm-disaster-recovery"></a>Azure VM 嚴重損壞修復
 
 資料表中摘要說明 Azure VM 嚴重損壞修復的新功能。
 

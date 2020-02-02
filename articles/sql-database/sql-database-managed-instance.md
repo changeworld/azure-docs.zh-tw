@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 01/21/2020
-ms.openlocfilehash: fb9b665f5631e6992966679b1dc0864539fde543
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: d28eb6c4ee4fadf8a090a17121f6910eb34135e3
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514550"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935214"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>什麼是 Azure SQL Database 受控實例？
 
@@ -147,7 +147,7 @@ Azure SQL Database 提供管理作業，可讓您在不再需要時，用來自�
 
 下表摘要說明作業和一般的整體持續時間：
 
-|類別  |作業  |長時間執行的區段  |預估持續期間  |
+|類別  |作業  |長時間執行的區段  |預估持續時間  |
 |---------|---------|---------|---------|
 |**部署** |空白子網中的第一個實例|建立虛擬叢集|90% 的作業在4小時內完成|
 |部署 |非空白子網中另一個硬體世代的第一個實例（例如，第一個 Gen 5 實例，位於具有 Gen 4 實例的子網中）|虛擬叢集建立 *|90% 的作業在4小時內完成|
@@ -188,7 +188,7 @@ Azure SQL Database 受控實例目前無法使用[加速資料庫](sql-database-
 
 下表摘要說明取消特定管理作業的能力，以及一般的整體持續時間：
 
-類別  |作業  |可取消  |估計的取消持續時間  |
+類別  |作業  |取消  |估計的取消持續時間  |
 |---------|---------|---------|---------|
 |部署 |實例建立 |否 |  |
 |更新 |實例儲存體相應增加/減少（一般用途） |否 |  |
@@ -303,7 +303,7 @@ Azure 資料庫移轉服務是一個完全受控的服務，能夠從多個資�
 
 ### <a name="key-differences-between-sql-server-on-premises-and-in-a-managed-instance"></a>SQL Server 內部部署和受控執行個體之間的主要差異
 
-受控執行個體部署選項的優勢是其在雲端中一律是最新狀態，這表示內部部署 SQL Server 中的某些功能可能已過時、已停用或已有替代方案。 在某些情況，當工具必須辨識特定功能的運作方式稍有不同，或是服務不在某個環境中執行時，您無法完全控制：
+受控執行個體部署選項的優勢是其在雲端中一律是最新狀態，這表示內部部署 SQL Server 中的某些功能可能已過時、已停用或已有替代方案。 在某些情況下，當工具需要辨識特定功能的運作方式稍有不同，或服務正在環境中執行時，您無法完全控制：
 
 - 高可用性會使用類似 [Always On 可用性群組](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)的技術來內建及預先設定。
 - 自動備份和時間點還原。 客戶可以起始 `copy-only` 備份，這不會干擾自動備份鏈結。

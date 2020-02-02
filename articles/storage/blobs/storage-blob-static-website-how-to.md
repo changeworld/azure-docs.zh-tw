@@ -7,12 +7,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 05/28/2019
-ms.openlocfilehash: d5b8121c7888903f3e4552a21a6ddc175ecc5176
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4214c4eb9fbe1d3e39d1ee16289f30b893b94653
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489082"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906612"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>在 Azure 儲存體中裝載靜態網站
 
@@ -221,10 +221,5 @@ Write-Output $storageAccount.PrimaryEndpoints.Web
 
 ## <a name="next-steps"></a>後續步驟
 
-* [Azure 儲存體中的靜態網站代管](storage-blob-static-website.md)
-* [使用 Azure CDN 透過 HTTPS 以自訂網域存取 blob](storage-https-custom-domain-cdn.md)
-* [針對 Blob 或 Web 端點設定自訂網域名稱](storage-custom-domain-name.md)
-* [Azure Functions](/azure/azure-functions/functions-overview)
-* [Azure App Service](/azure/app-service/overview)
-* [建置您的第一個無伺服器 Web 應用程式](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database)
-* [教學課程：在 Azure DNS 中裝載您的網域](../../dns/dns-delegate-domain-azure-dns.md)
+* 瞭解如何使用您的靜態網站來設定自訂網域。 請參閱[將自訂網域對應至 Azure Blob 儲存體端點](storage-custom-domain-name.md)。
+

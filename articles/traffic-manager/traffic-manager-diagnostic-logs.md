@@ -2,7 +2,7 @@
 title: 在 Azure流量管理員中啟用診斷記錄
 description: 了解如何啟用流量管理員設定檔的診斷記，以及如何存取建立為結果的記錄檔。
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -10,13 +10,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
-ms.author: allensu
-ms.openlocfilehash: b2ebeb41e69b7edfd43c38cc3b828069a1b3401a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohink
+ms.openlocfilehash: 0ed2ecef86795f62aa3fe5798dcd0d07adbaf9cc
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071237"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938683"
 ---
 # <a name="enable-diagnostic-logging-in-azure-traffic-manager"></a>在 Azure流量管理員中啟用診斷記錄
 
@@ -57,8 +57,8 @@ Azure 流量管理員診斷記錄可提供流量管理員設定檔資源行為�
 ## <a name="access-log-files"></a>存取記錄檔
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 
 1. 在入口網站中瀏覽至您的 Azure 儲存體帳戶。
-2. 在 Azure 儲存體帳戶的 [概觀]  頁面中，於選取 [服務]  底下選取 [Blob]  。
-3. 針對 [容器]  ，選取 **insights-logs-probehealthstatusevents**，並向下瀏覽至 PT1H.json 檔案，然後按一下 [下載]  以下載並儲存一份此記錄。
+2. 在 Azure 儲存體帳戶的 [概觀] 頁面中，於選取 [服務] 底下選取 [Blob]。
+3. 針對 [容器]，選取 **insights-logs-probehealthstatusevents**，並向下瀏覽至 PT1H.json 檔案，然後按一下 [下載] 以下載並儲存一份此記錄。
 
     ![從 blob 儲存體存取您流量管理員設定檔記錄檔](./media/traffic-manager-logs/traffic-manager-logs.png)
 
@@ -71,9 +71,9 @@ Azure 流量管理員診斷記錄可提供流量管理員設定檔資源行為�
 
 |||||
 |----|----|---|---|
-|**欄位名稱**|**欄位類型**|**定義**|**範例**|
-|EndpointName|字串|正在記錄其健全狀況狀態的流量管理員端點的名稱。|*myPrimaryEndpoint*|
-|狀態|字串|所探查流量管理員端點的健全狀況狀態。 狀態可以是 **Up** 或 **down**。|**Up**|
+|**欄位名稱**|**欄位類型**|**[定義]**|**範例**|
+|EndpointName|String|正在記錄其健全狀況狀態的流量管理員端點的名稱。|*myPrimaryEndpoint*|
+|狀態|String|所探查流量管理員端點的健全狀況狀態。 狀態可以是 **Up** 或 **down**。|**Up**|
 |||||
 
 ## <a name="next-steps"></a>後續步驟

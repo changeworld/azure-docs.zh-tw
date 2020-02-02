@@ -2,17 +2,17 @@
 title: 委派子域-Azure DNS
 description: 在此學習路徑中，開始委派 Azure DNS 子域。
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: article
 ms.date: 2/7/2019
-ms.author: allensu
-ms.openlocfilehash: 462282e9674e7a253f61c96338b54174c80fb03f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: cd1443a9ca8ccf7172072078734f21d789d36194
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212381"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937442"
 ---
 # <a name="delegate-an-azure-dns-subdomain"></a>委派 Azure DNS 子網域
 
@@ -20,7 +20,7 @@ ms.locfileid: "74212381"
 
 您也可以依喜好使用 [Azure PowerShell](delegate-subdomain-ps.md) 委派子網域。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要委派 Azure DNS 子網域，必須先將您的公用網域委派給 Azure DNS。 如需如何設定名稱伺服器以便進行委派的指示，請參閱[將網域委派給 Azure DNS](./dns-delegate-domain-azure-dns.md)。 一旦將您的網域委派給您的 Azure DNS 區域之後，就能夠委派子網域。
 

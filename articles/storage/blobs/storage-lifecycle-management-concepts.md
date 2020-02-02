@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 6bf391f22843991bf224539b82037c0e29251e7b
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: fdc98991134e0857d24575d22962a52e43266cbe
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260948"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939229"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>管理 Azure Blob 儲存體生命週期
 
@@ -287,7 +287,7 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 篩選會將規則動作限制為儲存體帳戶內的 Blob 子集。 如果定義一個以上的篩選條件，則邏輯 `AND` 會在所有篩選器上執行。
 
-篩選器包括：
+篩選準則包括：
 
 | 篩選名稱 | 篩選類型 | 注意 | 必要 |
 |-------------|-------------|-------|-------------|
@@ -348,9 +348,9 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 }
 ```
 
-### <a name="archive-data-at-ingest"></a>封存內嵌資料
+### <a name="archive-data-after-ingest"></a>內嵌後保存資料
 
-有些資料在雲端維持閒置狀態，而且儲存後就很少存取。 下列生命週期原則設定為在內嵌後封存資料。 這個範例會將容器 `archivecontainer` 內儲存體帳戶中的區塊 blob 轉換成封存層。 轉換的完成方式是在上次修改時間的0天后對 blob 採取行動：
+有些資料在雲端維持閒置狀態，而且儲存後就很少存取。 下列生命週期原則設定為在內嵌後不久就封存資料。 這個範例會將容器 `archivecontainer` 內儲存體帳戶中的區塊 blob 轉換成封存層。 轉換的完成方式是在上次修改時間的0天后對 blob 採取行動：
 
 > [!NOTE] 
 > 建議您直接將 blob 上傳到封存層，以提高效率。 您可以使用[PutBlob](https://docs.microsoft.com/rest/api/storageservices/put-blob)或[PutBlockList](https://docs.microsoft.com/rest/api/storageservices/put-block-list)的 x-ms-訪問層標頭搭配 REST 2018-11-09 和更新版本，或我們最新的 blob 儲存體用戶端程式庫。 

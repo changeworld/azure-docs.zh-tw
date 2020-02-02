@@ -4,22 +4,22 @@ description: 如何將資料從您的 Azure IoT Central 應用程式匯出至 Az
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 12/06/2019
+ms.date: 01/30/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: 1aac5af916e414178676a1caf42fead41109de68
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 612db9963b02e905c3a48d61a4f7a7ed6f832fba
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974456"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939008"
 ---
 # <a name="export-your-azure-iot-central-data-preview-features"></a>匯出您的 Azure IoT Central 資料（預覽功能）
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-*本主題適用於系統管理員。*
+*此主題適用於系統管理員。*
 
 本文說明如何使用 Azure IoT Central 中的連續資料匯出功能，將您的資料匯出至**Azure 事件中樞**、 **Azure 服務匯流排**或**Azure Blob 儲存體**實例。 資料會以 JSON 格式匯出，而且可以包含遙測、裝置資訊和裝置範本資訊。 將匯出的資料用於：
 
@@ -31,7 +31,7 @@ ms.locfileid: "74974456"
 
 ## <a name="prerequisites"></a>必要條件
 
-您必須是 IoT Central 應用程式中的系統管理員
+您必須是 IoT Central 應用程式中的系統管理員，或具有資料匯出許可權。
 
 ## <a name="set-up-export-destination"></a>設定匯出目的地
 
@@ -78,7 +78,7 @@ ms.locfileid: "74974456"
 2. 在左窗格中，選取 [**資料匯出**]。
 
     > [!Note]
-    > 如果您在左窗格中沒有看到 [資料匯出]，則您不是應用程式中的系統管理員。 請連絡系統管理員來設定資料匯出。
+    > 如果您在左窗格中沒有看到 [資料匯出]，表示您沒有在應用程式中設定資料匯出的許可權。 請連絡系統管理員來設定資料匯出。
 
 3. 選取右上方的 [ **+ 新增**] 按鈕。 選擇**Azure 事件中樞**、 **Azure 服務匯流排**或**Azure Blob 儲存體**的其中一個作為匯出目的地。 每個應用程式的匯出數目上限為五個。
 
@@ -104,7 +104,7 @@ ms.locfileid: "74974456"
 
 7. 在 [**要匯出的資料**] 底下，將 [類型] 設定為 [**開啟**]，以選擇要匯出的資料類型。
 
-8. 若要開啟連續資料匯出，請確定 [**資料匯出**切換] 為 [**開啟**]。 選取 [儲存]。
+8. 若要開啟連續資料匯出，請確定已**開啟**[**啟用**] 切換。 選取 [儲存]。
 
 9. 幾分鐘後，您的資料就會出現在您選擇的目的地。
 
@@ -189,15 +189,16 @@ ms.locfileid: "74974456"
 
 ## <a name="devices"></a>裝置
 
-快照中的每個訊息或記錄都代表自上次匯出訊息之後，裝置的一或多個變更和其屬性。 其中包括：
+快照中的每個訊息或記錄都代表裝置的一或多項變更，以及自上次匯出訊息之後的裝置和雲端屬性。 這包括：
 
-- IoT Central 中裝置的 `@id`
-- 裝置的 `name`
-- 來自[裝置佈建服務](../core/howto-connect-nodejs.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json) 的 `deviceId`
-- 裝置範本資訊
+- IoT Central 中裝置的 `id`
+- 裝置的 `displayName`
+- `instanceOf` 中的裝置範本識別碼
+- `simulated` 旗標，如果裝置是模擬裝置，則為 true
+- `provisioned` 旗標，如果已布建裝置，則為 true
+- `approved` 旗標，如果裝置已核准傳送資料，則為 true
 - 屬性值
-
-每個裝置所屬的裝置範本都會以 `instanceOf`表示。 若要取得裝置範本的名稱和其他資訊，請務必同時匯出裝置範本資料。
+- `properties` 包括裝置和雲端屬性值
 
 未匯出已刪除的裝置。 目前，在匯出的訊息中並沒有任何適用於已刪除之裝置的指標。
 
@@ -210,46 +211,41 @@ ms.locfileid: "74974456"
 ```json
 {
   "body":{
-    "@id":"<id>",
-    "@type":"Device",
-    "displayName":"Airbox - 266d30aedn5",
-    "data":{
-      "$cloudProperties":{
-        "Color":"blue"
-      },
-      "EnvironmentalSensor":{
-        "thsensormodel":{
-          "reported":{
-            "value":"A1",
-            "$lastUpdatedTimestamp":"2019-10-02T18:14:49.3820326Z"
-          }
-        },
-        "pm25sensormodel":{
-          "reported":{
-            "value":"P1",
-            "$lastUpdatedTimestamp":"2019-10-02T18:14:49.3820326Z"
-          }
+    "id": "<device Id>",
+    "etag": "<etag>",
+    "displayName": "Sensor 1",
+    "instanceOf": "<device template Id>",
+    "simulated": false,
+    "provisioned": true,
+    "approved": true,
+    "properties": {
+        "sensorComponent": {
+            "setTemp": "30",
+            "fwVersion": "2.0.1",
+            "status": { "first": "first", "second": "second" },
+            "$metadata": {
+                "setTemp": {
+                    "desiredValue": "30",
+                    "desiredVersion": 3,
+                    "desiredTimestamp": "2020-02-01T17:15:08.9284049Z",
+                    "ackVersion": 3
+                },
+                "fwVersion": { "ackVersion": 3 },
+                "status": {
+                    "desiredValue": {
+                        "first": "first",
+                        "second": "second"
+                    },
+                    "desiredVersion": 2,
+                    "desiredTimestamp": "2020-02-01T17:15:08.9284049Z",
+                    "ackVersion": 2
+                }
+            },
+            
         }
-      },
-      "urn_azureiot_DeviceManagement_DeviceInformation":{
-        "totalStorage":{
-          "reported":{
-            "value":3088.1959855710156,
-            "$lastUpdatedTimestamp":"2019-10-02T18:14:49.3820326Z"
-          }
-        },
-        "totalMemory":{
-          "reported":{
-            "value":16005.703586477555,
-            "$lastUpdatedTimestamp":"2019-10-02T18:14:49.3820326Z"
-          }
-        }
-      }
     },
-    "instanceOf":"<templateId>",
-    "deviceId":"<deviceId>",
-    "simulated":true
-  },
+    "installDate": { "installDate": "2020-02-01" }
+},
   "annotations":{
     "iotcentral-message-source":"devices",
     "x-opt-partition-key":"<partitionKey>",
@@ -259,13 +255,324 @@ ms.locfileid: "74974456"
   },
   "partitionKey":"<partitionKey>",
   "sequenceNumber":39740,
-  "enqueuedTimeUtc":"2019-10-02T18:14:49.3820326Z",
+  "enqueuedTimeUtc":"2020-02-01T18:14:49.3820326Z",
   "offset":"<offset>"
 }
 ```
 
 這是包含 Blob 儲存體中的裝置和屬性資料的範例快照集。 匯出的檔案包含每筆記錄一行。
 
+```json
+{
+  "id": "<device Id>",
+  "etag": "<etag>",
+  "displayName": "Sensor 1",
+  "instanceOf": "<device template Id>",
+  "simulated": false,
+  "provisioned": true,
+  "approved": true,
+  "properties": {
+      "sensorComponent": {
+          "setTemp": "30",
+          "fwVersion": "2.0.1",
+          "status": { "first": "first", "second": "second" },
+          "$metadata": {
+              "setTemp": {
+                  "desiredValue": "30",
+                  "desiredVersion": 3,
+                  "desiredTimestamp": "2020-02-01T17:15:08.9284049Z",
+                  "ackVersion": 3
+              },
+              "fwVersion": { "ackVersion": 3 },
+              "status": {
+                  "desiredValue": {
+                      "first": "first",
+                      "second": "second"
+                  },
+                  "desiredVersion": 2,
+                  "desiredTimestamp": "2020-02-01T17:15:08.9284049Z",
+                  "ackVersion": 2
+              }
+          },
+          
+      }
+  },
+  "installDate": { "installDate": "2020-02-01" }
+}
+```
+
+## <a name="device-templates"></a>裝置範本
+
+每個訊息或快照記錄都代表自上次匯出訊息之後，已發行之裝置範本的一或多項變更。 在每個訊息或記錄中傳送的資訊包括：
+
+- 符合上述裝置串流 `instanceOf` 的裝置範本 `id`
+- 裝置範本的 `displayName`
+- 裝置 `capabilityModel` 包括其 `interfaces`，以及遙測、屬性和命令定義
+- `cloudProperties` 定義
+- 覆寫和初始值，以內嵌 `capabilityModel`
+
+刪除的裝置範本不會匯出。 目前，在匯出的訊息中並沒有任何適用於已刪除之裝置範本的指標。
+
+針對事件中樞和服務匯流排，包含裝置範本資料的訊息會以近乎即時的方式傳送到您的事件中樞或服務匯流排佇列或主題，因為它出現在 IoT Central 中。 
+
+針對 Blob 儲存體，包含自最後一個寫入後所有變更的新快照集會每分鐘匯出一次。
+
+這是有關事件中樞或服務匯流排的佇列或主題中的裝置範本資料的範例訊息：
+
+```json
+{
+  "body":{
+      "id": "<device template id>",
+      "etag": "<etag>",
+      "types": ["DeviceModel"],
+      "displayName": "Sensor template",
+      "capabilityModel": {
+          "@id": "<capability model id>",
+          "@type": ["CapabilityModel"],
+          "contents": [],
+          "implements": [
+              {
+                  "@id": "<component Id>",
+                  "@type": ["InterfaceInstance"],
+                  "name": "sensorComponent",
+                  "schema": {
+                      "@id": "<interface Id>",
+                      "@type": ["Interface"],
+                      "displayName": "Sensor interface",
+                      "contents": [
+                          {
+                              "@id": "<id>",
+                              "@type": ["Telemetry"],
+                              "displayName": "Humidity",
+                              "name": "humidity",
+                              "schema": "double"
+                          },
+                          {
+                              "@id": "<id>",
+                              "@type": ["Telemetry", "SemanticType/Event"],
+                              "displayName": "Error event",
+                              "name": "error",
+                              "schema": "integer"
+                          },
+                          {
+                              "@id": "<id>",
+                              "@type": ["Property"],
+                              "displayName": "Set temperature",
+                              "name": "setTemp",
+                              "writable": true,
+                              "schema": "integer",
+                              "unit": "Units/Temperature/fahrenheit",
+                              "initialValue": "30"
+                          },
+                          {
+                              "@id": "<id>",
+                              "@type": ["Property"],
+                              "displayName": "Firmware version read only",
+                              "name": "fwversion",
+                              "schema": "string"
+                          },
+                          {
+                              "@id": "<id>",
+                              "@type": ["Property"],
+                              "displayName": "Display status",
+                              "name": "status",
+                              "writable": true,
+                              "schema": {
+                                  "@id": "urn:testInterface:status:obj:ka8iw8wka:1",
+                                  "@type": ["Object"]
+                              }
+                          },
+                          {
+                              "@id": "<id>",
+                              "@type": ["Command"],
+                              "commandType": "synchronous",
+                              "request": {
+                                  "@id": "<id>",
+                                  "@type": ["SchemaField"],
+                                  "displayName": "Configuration",
+                                  "name": "config",
+                                  "schema": "string"
+                              },
+                              "response": {
+                                  "@id": "<id>",
+                                  "@type": ["SchemaField"],
+                                  "displayName": "Response",
+                                  "name": "response",
+                                  "schema": "string"
+                              },
+                              "displayName": "Configure sensor",
+                              "name": "sensorConfig"
+                          }
+                      ]
+                  }
+              }
+          ],
+          "displayName": "Sensor capability model"
+      },
+      "solutionModel": {
+          "@id": "<id>",
+          "@type": ["SolutionModel"],
+          "cloudProperties": [
+              {
+                  "@id": "<id>",
+                  "@type": ["CloudProperty"],
+                  "displayName": "Install date",
+                  "name": "installDate",
+                  "schema": "dateTime",
+                  "valueDetail": {
+                      "@id": "<id>",
+                      "@type": ["ValueDetail/DateTimeValueDetail"]
+                  }
+              }
+          ]
+      }
+  },
+    "annotations":{
+      "iotcentral-message-source":"deviceTemplates",
+      "x-opt-partition-key":"<partitionKey>",
+      "x-opt-sequence-number":25315,
+      "x-opt-offset":"<offset>",
+      "x-opt-enqueued-time":1539274985085
+    },
+    "partitionKey":"<partitionKey>",
+    "sequenceNumber":25315,
+    "enqueuedTimeUtc":"2019-10-02T16:23:05.085Z",
+    "offset":"<offset>"
+  }
+}
+```
+
+這是包含 Blob 儲存體中的裝置和屬性資料的範例快照集。 匯出的檔案包含每筆記錄一行。
+
+```json
+{
+      "id": "<device template id>",
+      "etag": "<etag>",
+      "types": ["DeviceModel"],
+      "displayName": "Sensor template",
+      "capabilityModel": {
+          "@id": "<capability model id>",
+          "@type": ["CapabilityModel"],
+          "contents": [],
+          "implements": [
+              {
+                  "@id": "<component Id>",
+                  "@type": ["InterfaceInstance"],
+                  "name": "Sensor component",
+                  "schema": {
+                      "@id": "<interface Id>",
+                      "@type": ["Interface"],
+                      "displayName": "Sensor interface",
+                      "contents": [
+                          {
+                              "@id": "<id>",
+                              "@type": ["Telemetry"],
+                              "displayName": "Humidity",
+                              "name": "humidity",
+                              "schema": "double"
+                          },
+                          {
+                              "@id": "<id>",
+                              "@type": ["Telemetry", "SemanticType/Event"],
+                              "displayName": "Error event",
+                              "name": "error",
+                              "schema": "integer"
+                          },
+                          {
+                              "@id": "<id>",
+                              "@type": ["Property"],
+                              "displayName": "Set temperature",
+                              "name": "setTemp",
+                              "writable": true,
+                              "schema": "integer",
+                              "unit": "Units/Temperature/fahrenheit",
+                              "initialValue": "30"
+                          },
+                          {
+                              "@id": "<id>",
+                              "@type": ["Property"],
+                              "displayName": "Firmware version read only",
+                              "name": "fwversion",
+                              "schema": "string"
+                          },
+                          {
+                              "@id": "<id>",
+                              "@type": ["Property"],
+                              "displayName": "Display status",
+                              "name": "status",
+                              "writable": true,
+                              "schema": {
+                                  "@id": "urn:testInterface:status:obj:ka8iw8wka:1",
+                                  "@type": ["Object"]
+                              }
+                          },
+                          {
+                              "@id": "<id>",
+                              "@type": ["Command"],
+                              "commandType": "synchronous",
+                              "request": {
+                                  "@id": "<id>",
+                                  "@type": ["SchemaField"],
+                                  "displayName": "Configuration",
+                                  "name": "config",
+                                  "schema": "string"
+                              },
+                              "response": {
+                                  "@id": "<id>",
+                                  "@type": ["SchemaField"],
+                                  "displayName": "Response",
+                                  "name": "response",
+                                  "schema": "string"
+                              },
+                              "displayName": "Configure sensor",
+                              "name": "sensorconfig"
+                          }
+                      ]
+                  }
+              }
+          ],
+          "displayName": "Sensor capability model"
+      },
+      "solutionModel": {
+          "@id": "<id>",
+          "@type": ["SolutionModel"],
+          "cloudProperties": [
+              {
+                  "@id": "<id>",
+                  "@type": ["CloudProperty"],
+                  "displayName": "Install date",
+                  "name": "installDate",
+                  "schema": "dateTime",
+                  "valueDetail": {
+                      "@id": "<id>",
+                      "@type": ["ValueDetail/DateTimeValueDetail"]
+                  }
+              }
+          ]
+      }
+  }
+```
+## <a name="data-format-change-notice"></a>資料格式變更通知
+
+> [!Note]
+> 遙測資料流程資料格式不會受到這項變更的影響。 只有裝置和裝置範本的資料流程會受到影響。
+
+如果您在預覽應用程式中已開啟 [*裝置*] 和 [*裝置範本*] 資料流程的現有資料匯出，則必須將您的匯出更新為**2020 年6月 30**日。 這適用于匯出至 Azure Blob 儲存體、Azure 事件中樞和 Azure 服務匯流排。
+
+從2020年2月3日開始，已啟用裝置和裝置範本之應用程式中的所有新匯出都會有上述的資料格式。 在此之前建立的所有匯出都會維持舊的資料格式，直到2020年6月30日為止，之後這些匯出會自動遷移至新的資料格式。 新的資料格式符合 IoT Central 公用 API 中的[裝置](https://docs.microsoft.com/rest/api/iotcentral/devices/get)、[裝置屬性](https://docs.microsoft.com/rest/api/iotcentral/devices/getproperties)、[裝置雲端屬性](https://docs.microsoft.com/rest/api/iotcentral/devices/getcloudproperties)和[裝置範本](https://docs.microsoft.com/rest/api/iotcentral/devicetemplates/get)物件。 
+ 
+針對**裝置**，舊資料格式與新資料格式之間的顯著差異包括：
+- 已移除裝置的 `@id`，`deviceId` 重新命名為 `id` 
+- 已新增 `provisioned` 旗標來描述裝置的布建狀態
+- 新增 `approved` 旗標，以描述裝置的核准狀態
+- 包含裝置和雲端屬性的 `properties`，符合公用 API 中的實體
+
+針對**裝置範本**，舊資料格式與新資料格式之間的顯著差異包括：
+
+- 裝置範本的 `@id` 會重新命名為 `id`
+- 裝置範本的 `@type` 會重新命名為 `types`，而現在是陣列
+
+### <a name="devices-format-deprecated-as-of-3-february-2020"></a>裝置（從2020年2月3日起已淘汰的格式）
 ```json
 {
   "@id":"<id-value>",
@@ -310,172 +617,7 @@ ms.locfileid: "74974456"
 }
 ```
 
-## <a name="device-templates"></a>裝置範本
-
-每個訊息或快照記錄代表自上次匯出訊息之後，對裝置範本的一或多項變更。 在每個訊息或記錄中傳送的資訊包括：
-
-- 符合上述裝置串流 `instanceOf` 的裝置範本 `@id`
-- 裝置範本的 `name`
-- 裝置範本的 `version`
-- 裝置 `capabilityModel` 包括其 `interfaces`，以及遙測、屬性和命令定義
-- `cloudProperties` 定義
-- 覆寫和初始值，以內嵌 `capabilityModel`
-
-刪除的裝置範本不會匯出。 目前，在匯出的訊息中並沒有任何適用於已刪除之裝置範本的指標。
-
-針對事件中樞和服務匯流排，包含裝置範本資料的訊息會以近乎即時的方式傳送到您的事件中樞或服務匯流排佇列或主題，因為它出現在 IoT Central 中。 
-
-針對 Blob 儲存體，包含自最後一個寫入後所有變更的新快照集會每分鐘匯出一次。
-
-這是有關事件中樞或服務匯流排的佇列或主題中的裝置範本資料的範例訊息：
-
-```json
-{
-  "body":{
-    "@id":"<template-id>",
-    "@type":"DeviceModelDefinition",
-    "displayName":"Airbox",
-    "capabilityModel":{
-      "@id":"<id>",
-      "@type":"CapabilityModel",
-      "implements":[
-        {
-          "@id":"<id>",
-          "@type":"InterfaceInstance",
-          "name":"EnvironmentalSensor",
-          "schema":{
-            "@id":"<id>",
-            "@type":"Interface",
-            "comment":"Requires temperature and humidity sensors.",
-            "description":"Provides functionality to report temperature, humidity. Provides telemetry, commands and read-write properties",
-            "displayName":"Environmental Sensor",
-            "contents":[
-              {
-                "@id":"<id>",
-                "@type":"Telemetry",
-                "description":"Current temperature on the device",
-                "displayName":"Temperature",
-                "name":"temp",
-                "schema":"double",
-                "unit":"Units/Temperature/celsius",
-                "valueDetail":{
-                  "@id":"<id>",
-                  "@type":"ValueDetail/NumberValueDetail",
-                  "minValue":{
-                    "@value":"50"
-                  }
-                },
-                "visualizationDetail":{
-                  "@id":"<id>",
-                  "@type":"VisualizationDetail"
-                }
-              },
-              {
-                "@id":"<id>",
-                "@type":"Telemetry",
-                "description":"Current humidity on the device",
-                "displayName":"Humidity",
-                "name":"humid",
-                "schema":"integer"
-              },
-              {
-                "@id":"<id>",
-                "@type":"Telemetry",
-                "description":"Current PM2.5 on the device",
-                "displayName":"PM2.5",
-                "name":"pm25",
-                "schema":"integer"
-              },
-              {
-                "@id":"<id>",
-                "@type":"Property",
-                "description":"T&H Sensor Model Name",
-                "displayName":"T&H Sensor Model",
-                "name":"thsensormodel",
-                "schema":"string"
-              },
-              {
-                "@id":"<id>",
-                "@type":"Property",
-                "description":"PM2.5 Sensor Model Name",
-                "displayName":"PM2.5 Sensor Model",
-                "name":"pm25sensormodel",
-                "schema":"string"
-              }
-            ]
-          }
-        },
-        {
-          "@id":"<id>",
-          "@type":"InterfaceInstance",
-          "name":"urn_azureiot_DeviceManagement_DeviceInformation",
-          "schema":{
-            "@id":"<id>",
-            "@type":"Interface",
-            "displayName":"Device information",
-            "contents":[
-              {
-                "@id":"<id>",
-                "@type":"Property",
-                "comment":"Total available storage on the device in kilobytes. Ex. 20480000 kilobytes.",
-                "displayName":"Total storage",
-                "name":"totalStorage",
-                "displayUnit":"kilobytes",
-                "schema":"long"
-              },
-              {
-                "@id":"<id>",
-                "@type":"Property",
-                "comment":"Total available memory on the device in kilobytes. Ex. 256000 kilobytes.",
-                "displayName":"Total memory",
-                "name":"totalMemory",
-                "displayUnit":"kilobytes",
-                "schema":"long"
-              }
-            ]
-          }
-        }
-      ],
-      "displayName":"AAEONAirbox52"
-    },
-    "solutionModel":{
-      "@id":"<id>",
-      "@type":"SolutionModel",
-      "cloudProperties":[
-        {
-          "@id":"<id>",
-          "@type":"CloudProperty",
-          "displayName":"Color",
-          "name":"Color",
-          "schema":"string",
-          "valueDetail":{
-            "@id":"<id>",
-            "@type":"ValueDetail/StringValueDetail"
-          },
-          "visualizationDetail":{
-            "@id":"<id>",
-            "@type":"VisualizationDetail"
-          }
-        }
-      ]
-    },
-    "annotations":{
-      "iotcentral-message-source":"deviceTemplates",
-      "x-opt-partition-key":"<partitionKey>",
-      "x-opt-sequence-number":25315,
-      "x-opt-offset":"<offset>",
-      "x-opt-enqueued-time":1539274985085
-    },
-    "partitionKey":"<partitionKey>",
-    "sequenceNumber":25315,
-    "enqueuedTimeUtc":"2019-10-02T16:23:05.085Z",
-    "offset":"<offset>"
-  }
-}
-```
-
-這是包含 Blob 儲存體中的裝置和屬性資料的範例快照集。 匯出的檔案包含每筆記錄一行。
-
+### <a name="device-templates-format-deprecated-as-of-3-february-2020"></a>裝置範本（從2020年2月3日起已淘汰的格式）
 ```json
 {
   "@id":"<template-id>",
@@ -607,7 +749,6 @@ ms.locfileid: "74974456"
   }
 }
 ```
-
 ## <a name="next-steps"></a>後續步驟
 
 既然您已經知道如何將資料匯出至 Azure 事件中樞、Azure 服務匯流排和 Azure Blob 儲存體，請繼續進行下一個步驟：

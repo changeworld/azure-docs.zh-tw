@@ -3,12 +3,12 @@ title: ACR 工作概觀
 description: ACR 工作簡介，這是 Azure Container Registry 中的一套功能，可在雲端中提供安全、自動化的容器映射組建、管理和修補。
 ms.topic: article
 ms.date: 09/05/2019
-ms.openlocfilehash: 96997f963f0bcb319d5318e2dd88a6e1e21fb36b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f8ab3c3bd259f83a61d0b030a49e158ccd6e2a69
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74840760"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938885"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>使用 ACR 工作自動化容器映射組建和維護
 
@@ -56,15 +56,15 @@ ACR 工作支援數種建立和維護容器映射和其他成品的案例。 如
 
 當您將 Git 存放庫設定為工作的內容時，ACR 工作支援下列觸發程式：
 
-| 觸發程序 | 預設啟用 |
+| 觸發程序 | 預設為啟用 |
 | ------- | ------------------ |
-| 認可 | 是 |
+| Commit | 是 |
 | 提取要求 | 否 |
 
 若要設定原始程式碼更新觸發程式，您必須提供工作個人存取權杖（PAT），以在公用或私人 GitHub 或 Azure DevOps 存放庫中設定 webhook。
 
 > [!NOTE]
-> 目前，ACR 工作不支援 GitHub Enterprise 存放庫中的認可或提取要求觸發程式。
+> 目前，ACR 工作不支援 GitHub Enterprise 存放庫中的認可或提取要求觸發程序。
 
 若要了解如何在認可原始程式碼時觸發建置，請參閱第二個「ACR 工作」教學課程：[使用 Azure Container Registry 工作自動執行容器映像建置](container-registry-tutorial-build-task.md)。
 
@@ -116,12 +116,13 @@ ACR 工作支援數種建立和維護容器映射和其他成品的案例。 如
 
 下表顯示「ACR 工作」的幾個所支援內容位置範例：
 
-| 內容位置 | 描述 | 範例 |
+| 內容位置 | 說明 | 範例 |
 | ---------------- | ----------- | ------- |
 | 本機檔案系統 | 本機檔案系統上目錄內的檔案。 | `/home/user/projects/myapp` |
 | GitHub 主要分支 | 公用或私人 GitHub 存放庫之主要（或其他預設）分支內的檔案。  | `https://github.com/gituser/myapp-repo.git` |
 | GitHub 分支 | 公用或私人 GitHub 存放庫的特定分支。| `https://github.com/gituser/myapp-repo.git#mybranch` |
 | GitHub 子資料夾 | 公用或私人 GitHub 存放庫中子資料夾內的檔案。 範例會顯示分支和子資料夾規格的組合。 | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
+| GitHub 認可 | 公用或私人 GitHub 存放庫中的特定認可。 範例會顯示認可雜湊（SHA）和子資料夾規格的組合。 | `https://github.com/gituser/myapp-repo.git#git-commit-hash:myfolder` |
 | Azure DevOps 子資料夾 | 公用或私人 Azure 存放庫中子資料夾內的檔案。 範例會顯示分支和子資料夾規格的組合。 | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
 | 遠端 Tarball | 遠端 Web 伺服器上壓縮封存中的檔案。 | `http://remoteserver/myapp.tar.gz` |
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 7bd097885d629a6c8541b57195f2a2996e45ffaf
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 9886f41b25e7c1b34f9805a2c16b716c642ae90e
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552656"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76936299"
 ---
 # <a name="container-security-in-security-center"></a>資訊安全中心中的容器安全性
 
@@ -32,7 +32,7 @@ Azure 資訊安全中心是適用于容器安全性的 Azure 原生解決方案�
 [![Azure 資訊安全中心的 [容器安全性] 索引標籤](media/container-security/container-security-tab.png)](media/container-security/container-security-tab.png#lightbox)
 
 ## <a name="vulnerability-management---scanning-container-images-preview"></a>弱點管理-掃描容器映射（預覽）
-若要監視您的 Azure Container Registry，請確定您是在資訊安全中心的標準層（請參閱[定價](/azure/security-center/security-center-pricing)）。 然後啟用選用的容器登錄套件組合。 推送新的映射時，資訊安全中心會使用領先業界的弱點掃描廠商 Qualys 掃描映射。
+若要監視 ARM 型 Azure Container Registry，請確定您是在資訊安全中心的標準層（請參閱[定價](/azure/security-center/security-center-pricing)）。 然後啟用選用的容器登錄套件組合。 推送新的映射時，資訊安全中心會使用領先業界的弱點掃描廠商 Qualys 掃描映射。
 
 找到問題時（依 Qualys 或資訊安全中心），您會在資訊安全中心儀表板中收到通知。 針對每個弱點，資訊安全中心提供可採取動作的建議，以及嚴重性分類，以及如何修復問題的指引。 如需資訊安全中心建議的詳細資訊，請參閱[建議的參考清單](recommendations-reference.md)。
 

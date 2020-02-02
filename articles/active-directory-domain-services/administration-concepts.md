@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/08/2019
+ms.date: 01/31/2020
 ms.author: iainfou
-ms.openlocfilehash: f239bab48e732755361fe734fdc24b37d3823c63
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 682935fa2324b8de4992ab2f90c7f71e05c4f8ac
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481013"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931574"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 中的使用者帳戶、密碼和管理的管理概念
 
@@ -34,7 +34,7 @@ ms.locfileid: "74481013"
 * 使用者帳戶可以從 Azure AD 同步處理。 這包括直接在 Azure AD 中建立的僅限雲端使用者帳戶，以及使用 Azure AD Connect 從內部部署 AD DS 環境同步處理的混合式使用者帳戶。
     * Azure AD DS 中的大部分使用者帳戶都是透過 Azure AD 的同步處理常式來建立。
 * 使用者帳戶可以在 Azure AD DS 受控網域中手動建立，而且不存在於 Azure AD 中。
-    * 如果您需要為只在 Azure AD DS 中執行的應用程式建立服務帳戶，您可以在受控網域中手動建立它們。 由於同步處理是從 Azure AD 單向的，因此在 Azure AD DS 中建立的使用者帳戶不會同步處理回 Azure AD。
+    * 如果您需要為只在 Azure AD DS 中執行的應用程式建立服務帳戶，您可以在受控網域中手動建立它們。 由於同步處理是從 Azure AD 的一種方式，因此在 Azure AD DS 中建立的使用者帳戶不會同步處理回 Azure AD。
 
 ## <a name="password-policy"></a>密碼原則
 
@@ -60,7 +60,7 @@ Azure AD DS 包含預設密碼原則，可定義帳戶鎖定、密碼最長使�
 一旦正確設定之後，可用的密碼雜湊就會儲存在 Azure AD DS 受控網域中。 如果您刪除 Azure AD DS 受控網域，此時儲存的任何密碼雜湊也會一併刪除。 如果您稍後建立 Azure AD DS 受控網域，則 Azure AD 中同步處理的認證資訊無法重複使用-您必須重新設定密碼雜湊同步處理，以再次儲存密碼雜湊。 先前加入網域的 VM 或使用者將無法立即進行驗證 - Azure AD 需要在新的 Azure AD DS 受控網域中產生並儲存密碼雜湊。 如需詳細資訊，請參閱 [Azure AD DS 和 Azure AD Connect 的密碼雜湊同步程序][azure-ad-password-sync]。
 
 > [!IMPORTANT]
-> Azure AD Connect 應該只安裝並設定為與內部部署 AD DS 環境同步處理。 不支援在 Azure AD DS 受控網域中安裝 Azure AD Connect，以將物件同步處理回 Azure AD。
+> Azure AD Connect 應該只會為了與內部部署 AD DS 環境同步處理而安裝和設定。 不支援在 Azure AD DS 受控網域中安裝 Azure AD Connect，以將物件同步處理回 Azure AD。
 
 ## <a name="forests-and-trusts"></a>樹系和信任
 
@@ -68,11 +68,41 @@ Azure AD DS 包含預設密碼原則，可定義帳戶鎖定、密碼最長使�
 
 在 Azure AD DS 中，樹系僅包含一個網域。 內部部署 AD DS 樹系通常包含許多網域。 在大型組織中，尤其是在合併和收購之後，您最後可能會有多個內部部署樹系，每個樹系都包含多個網域。
 
-根據預設，系統會將 Azure AD DS 受控網域建立為*使用者*樹系。 這種類型的樹系會同步處理 Azure AD 的所有物件，包括在內部部署 AD DS 環境中建立的任何使用者帳戶。 使用者帳戶可以直接針對 Azure AD DS 受控網域進行驗證，例如登入已加入網域的 VM。 使用者樹系適用于可以同步處理密碼雜湊，而使用者不使用獨佔式登入方法（例如智慧卡驗證）的情況。
+根據預設，系統會將 Azure AD DS 受控網域建立為*使用者*樹系。 這種類型的樹系會同步 Azure AD 中的所有物件，包括在內部部署 AD DS 環境中建立的任何使用者帳戶。 使用者帳戶可以直接針對 Azure AD DS 受控網域進行驗證，例如登入已加入網域的 VM。 使用者樹系適用于可以同步處理密碼雜湊，而使用者不使用獨佔式登入方法（例如智慧卡驗證）的情況。
 
 在 Azure AD DS*資源*樹系中，使用者會從其內部部署 AD DS 對單向樹系*信任*進行驗證。 使用此方法時，使用者物件和密碼雜湊不會同步處理至 Azure AD DS。 使用者物件和認證僅存在於內部部署 AD DS。 這種方法可讓企業裝載 Azure 中的資源和應用程式平臺，而這些是依賴傳統驗證（例如 LDAPS、Kerberos 或 NTLM），但會移除任何驗證問題或考慮。 Azure AD DS 資源樹系目前為預覽狀態。
 
 如需有關 Azure AD DS 中樹系類型的詳細資訊，請參閱[什麼是資源][concepts-forest]樹系？和[樹系信任在 Azure AD DS 中如何運作？][concepts-trust]
+
+## <a name="azure-ad-ds-skus"></a>Azure AD DS Sku
+
+在 Azure AD DS 中，可用的效能和功能是以 SKU 為基礎。 當您建立受控網域時，您會選取 SKU，而且您可以在部署受控網域之後，隨著業務需求變更來切換 Sku。 下表列出可用的 Sku 和兩者之間的差異：
+
+| SKU 名稱   | 物件計數上限 | 備份頻率 | 輸出樹系信任的最大數目 |
+|------------|----------------------|------------------|----|
+| Standard   | 無限制            | 每7天     | 0  |
+| Enterprise | 無限制            | 每3天     | 5  |
+| 高階    | 無限制            | 每日            | 10 |
+
+在這些 Azure AD DS Sku 之前，會使用以 Azure AD DS 受控網域中的物件數目（使用者和電腦帳戶）為基礎的計費模型。 根據受控網域中的物件數目，不再有可變的定價。
+
+如需詳細資訊，請參閱[AZURE AD DS 定價頁面][pricing]。
+
+### <a name="managed-domain-performance"></a>受控網域效能
+
+網域效能會根據應用程式的驗證方式而有所不同。 額外的計算資源可能有助於改善查詢回應時間，並縮短同步作業所花費的時間。 隨著 SKU 層級的增加，適用于受控網域的計算資源也會增加。 監視應用程式的效能，並規劃所需的資源。
+
+如果您的商務或應用程式需求變更，而您需要 Azure AD DS 受控網域的額外計算能力，您可以切換到不同的 SKU。
+
+### <a name="backup-frequency"></a>備份頻率
+
+備份頻率會決定採用受控網域的快照集的頻率。 備份是由 Azure 平臺管理的自動化程式。 如果您的受控網域發生問題，Azure 支援可協助您從備份進行還原。 由於同步處理只會*從*Azure AD 發生，因此 Azure AD DS 管理的網域中的任何問題都不會影響 Azure AD 或內部部署 AD DS 環境和功能。
+
+隨著 SKU 層級的增加，這些備份快照的頻率也會增加。 請檢查您的業務需求和復原點目標（RPO），以判斷受控網域所需的備份頻率。 如果您的商務或應用程式需求變更，而您需要更頻繁的備份，您可以切換到不同的 SKU。
+
+### <a name="outbound-forests"></a>輸出樹系
+
+上一節詳述的單向輸出樹系信任從 Azure AD DS 受控網域到內部部署 AD DS 環境（目前處於預覽階段）。 SKU 會決定您可以為 Azure AD DS 受控網域建立的樹系信任數目上限。 請檢查您的商務和應用程式需求，以判斷您實際需要多少信任，並挑選適當的 Azure AD DS SKU。 同樣地，如果您的業務需求變更，而您需要建立額外的樹系信任，您可以切換到不同的 SKU。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -87,3 +117,6 @@ Azure AD DS 包含預設密碼原則，可定義帳戶鎖定、密碼最長使�
 [tutorial-create-instance-advanced]: tutorial-create-instance-advanced.md
 [concepts-forest]: concepts-resource-forest.md
 [concepts-trust]: concepts-forest-trust.md
+
+<!-- EXTERNAL LINKS -->
+[pricing]: https://azure.microsoft.com/pricing/details/active-directory-ds/

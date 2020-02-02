@@ -2,17 +2,17 @@
 title: 私人區域的案例-Azure DNS
 description: 在本文中，您將瞭解使用 Azure DNS 私人區域的常見案例。
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: article
 ms.date: 10/05/2019
-ms.author: allensu
-ms.openlocfilehash: 2eb7e9e4df5bdf0f8eb047cc8594bd862245770d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: ab850adb2e9a25778d5f44ba711eb0762fe562c8
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210464"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939330"
 ---
 # <a name="azure-dns-private-zones-scenarios"></a>Azure DNS 私人區域案例
 
@@ -54,5 +54,5 @@ Azure DNS 私人區域能在虛擬網路內及虛擬網路之間提供名稱解�
 
 如需深入了解 DNS 區域和記錄，請瀏覽：[DNS 區域和記錄的概觀](dns-zones-records.md)。
 
-深入了解 Azure 的一些其他重要[網路功能](../networking/networking-overview.md)。
+了解 Azure 的一些其他重要[網路功能](../networking/networking-overview.md)。
 

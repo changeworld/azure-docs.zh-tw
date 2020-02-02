@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 5a15b3b9e51772d8c7e5312968fecb180069e2a7
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 4cc3b1789ef2f7ef44e5421cbacb5a93c2a0a1ff
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911255"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933617"
 ---
 # <a name="add-html-markers-to-the-map"></a>在地圖中新增 HTML 標記
 
@@ -24,7 +24,7 @@ ms.locfileid: "75911255"
 > HTML 標記不會連線至資料來源。 相反地，位置資訊會直接新增至標記中，標記則會新增至地圖的 `markers` 屬性，即 [HtmlMarkerManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkermanager?view=azure-iot-typescript-latest)。
 
 > [!IMPORTANT]
-> Azure 地圖服務 Web 控制項中的大多數圖層會使用 WebGL 來進行轉譯，HTML 標記則與之不同，會使用傳統的 DOM 元素來進行轉譯。 因此，新增了頁面的 HTML 標記越多，其中的 DOM 元素就會越多。 在新增幾百個 HTML 標記之後，效能就會下降。 因此，對於規模較大的資料集，請考慮將資料叢集化，或使用「符號」或「泡泡」圖層。
+> Azure 地圖服務 Web 控制項中的大多數圖層會使用 WebGL 來進行轉譯，HTML 標記則與之不同，會使用傳統的 DOM 元素來進行轉譯。 因此，新增至頁面的 HTML 標籤越多，就會有更多的 DOM 元素。 在新增幾百個 HTML 標記之後，效能就會下降。 因此，對於規模較大的資料集，請考慮將資料叢集化，或使用「符號」或「泡泡」圖層。
 
 ## <a name="add-an-html-marker"></a>新增 HTML 標記
 
@@ -33,7 +33,7 @@ ms.locfileid: "75911255"
 下列程式碼會建立 HTML 標籤，並將 color 屬性設為 "DodgerBlue"，並將 text 屬性設定為 "10"。 快顯視窗會附加至標記，並使用 `click` 事件來切換快顯視窗的可見度。
 
 ```javascript
-//Create a HTML marker and add it to the map.
+//Create an HTML marker and add it to the map.
 var marker = new atlas.HtmlMarker({
     color: 'DodgerBlue',
     text: '10',

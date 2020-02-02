@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2019
 ms.author: terrylan
-ms.openlocfilehash: a936fb4a0a6eadc2840fc6d642428091a6b0fe9e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 11bf7c0ae05c2e52d59efb32be47ce6bd96fac4f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771269"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937970"
 ---
 # <a name="develop-secure-app-for-an-azure-ad-app"></a>開發 Azure AD 應用程式的安全應用程式
 ## <a name="overview"></a>概觀
@@ -185,7 +185,7 @@ $gwSubnet = New-AzVirtualNetworkSubnetConfig -Name 'appgwsubnet' -AddressPrefix 
 
 #Assign an address range to be used for the back-end address pool.
 
-$nicSubnet = New-AzVirtualNetworkSubnetConfig  -Name 'appsubnet' -AddressPrefix 10.0.0.0/24
+$nicSubnet = New-AzVirtualNetworkSubnetConfig  -Name 'appsubnet' -AddressPrefix 10.0.2.0/24
 
 #Create a virtual network with the subnets defined in the preceding steps.
 
@@ -212,7 +212,7 @@ $fipconfig = New-AzApplicationGatewayFrontendIPConfig -Name 'fip01' -PublicIPAdd
 
 #Configure the back-end IP address pool with the IP addresses of the back-end web servers
 
-$pool = New-AzApplicationGatewayBackendAddressPool -Name 'pool01' -BackendIPAddresses 10.0.0.0
+$pool = New-AzApplicationGatewayBackendAddressPool -Name 'pool01' -BackendIPAddresses 10.0.3.11
 
 #Configure the front-end IP port for the public IP endpoint
 
@@ -222,6 +222,7 @@ $fp = New-AzApplicationGatewayFrontendPort -Name 'port01'  -Port 443
 
 $passwd = ConvertTo-SecureString  "P@ssword!1" -AsPlainText -Force 
 $cert = New-AzApplicationGatewaySSLCertificate -Name cert01 -CertificateFile "C:\AAD\Securities\Certificates\sslcert.com.cer" -Password $passwd 
+
 
 #Create the HTTP listener for the application gateway
 
@@ -334,7 +335,7 @@ App Service 實例可以與虛擬網路整合。 此整合可讓您設定網路�
 
 5. 在 NSG 的 [子網] 分頁上，選取 [**關聯**]，選取部署中所建立的虛擬網路，然後選取名為**gw-subnet**的閘道子網。 NSG 會套用至子網。
 
-6. 建立另一個 NSG，如同在先前的步驟中，這次適用于 App Service 實例。 取個名稱。 新增埠443的輸入規則，如同您針對應用程式閘道 NSG 所做的一樣。
+6. 建立另一個 NSG，如同在先前的步驟中，這次適用于 App Service 實例。 為它命名。 新增埠443的輸入規則，如同您針對應用程式閘道 NSG 所做的一樣。
 
    如果您將 App Service 實例部署在 App Service 環境實例上（這不是此應用程式的情況），您可以在 App Service NSG 的輸入安全性群組上開啟埠454-455，以新增輸入規則以允許 Azure 服務健康狀態探查。 設定如下：
 
@@ -465,7 +466,7 @@ Azure 會建立預設原則，指定系統管理員需要雙因素驗證來登�
    1. 移至 Azure 入口網站中的 [ **Azure Active Directory** ] 索引標籤
    2. 在 [安全性] 類別底下，選取 [條件式存取]。 您會看到此畫面
 
-       ![條件式存取 - 原則](./media/secure-aad-app/ad-mfa-conditional-add.png)
+       ![條件式存取-原則](./media/secure-aad-app/ad-mfa-conditional-add.png)
 
 如果您無法建立新的原則
 

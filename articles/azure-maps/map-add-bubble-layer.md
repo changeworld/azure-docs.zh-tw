@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 0088cced84da08828d02d3a0f83846babf286b71
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 462d820824ad6c53ad4b93ad5c88c66128619467
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911275"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933656"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>將泡泡圖層新增至地圖
 
@@ -25,7 +25,7 @@ ms.locfileid: "75911275"
 
 ## <a name="add-a-bubble-layer"></a>新增泡泡圖層
 
-下列程式碼會將點陣列載入至資料來源，並將它連接到反升[圖層](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)。 反升層會提供選項，以五個圖元呈現每個氣泡的半徑、白色的填滿色彩、藍色的筆觸色彩，以及六個圖元的筆觸寬度。 
+下列程式碼會將點陣列載入至資料來源。 然後，資料點會連接到反升[圖層](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)。 反升層會以五個圖元呈現每個氣泡的半徑、白色的填滿色彩、藍色的筆觸色彩，以及六個圖元的筆觸寬度。 
 
 ```javascript
 //Add point locations.

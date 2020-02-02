@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 01/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: cc99b469701b3974a5b8a2f235ee3a9edb798368
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2c946c49884ef0de6843028976d4ec00ccfbcdfe
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790242"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934856"
 ---
 # <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>在 Azure 入口網站中建立新的 Time Series Insights 環境
 
@@ -42,14 +42,14 @@ ms.locfileid: "74790242"
    
    [![建立時間序列深入解析資源群組](media/time-series-insights-get-started/tsi-configure-and-create.png)](media/time-series-insights-get-started/tsi-configure-and-create.png#lightbox)
    
-   設定|建議的值|描述
+   設定|建議的值|說明
    ---|---|---
    環境名稱 | 唯一的名稱 | 此名稱代表[時間序列總管](https://insights.timeseries.azure.com)中的環境
-   Subscription | 您的訂用帳戶 | 如果您有多個訂用帳戶，最好是選擇包含事件來源的訂用帳戶。 Time Series Insights 可以自動偵測相同訂用帳戶中現有的 Azure IoT 中樞與事件中樞資源。
-   Resource group | 建立新的或使用現有的 | 資源群組是一起使用之 Azure 資源的集合。 您可以選擇現有的資源群組，例如包含事件中樞或 IoT 中樞的資源群組。 或者，如果此資源與其他資源不相關，您可以製作新的群組。
-   Location | 最接近您的事件來源 | 最好是選擇包含事件來源資料的相同資料中心位置，以避免跨區域和跨地區頻寬成本，以及在將資料移出區域時增加延遲。
+   訂閱 | 您的訂用帳戶 | 如果您有多個訂用帳戶，最好是選擇包含事件來源的訂用帳戶。 時間序列深入解析可以自動偵測相同訂用帳戶中現有的 Azure IoT 中樞和事件中樞資源。
+   資源群組 | 建立新的或使用現有的 | 資源群組是一起使用之 Azure 資源的集合。 您可以選擇現有的資源群組，例如包含事件中樞或 IoT 中樞的資源群組。 或者，如果此資源與其他資源不相關，您可以製作新的群組。
+   位置 | 最接近您的事件來源 | 最好是選擇包含事件來源資料的相同資料中心位置，以避免跨區域和跨地區頻寬成本，以及在將資料移出區域時增加延遲。
    價格層 | S1 | 選擇所需的輸送量。 如需最低成本和入門容量，選取 S1。
-   Capacity | 1 | 容量是套用至輸入速率、儲存體容量以及與選取之 SKU 相關聯成本的乘數。  您可以在環境建立後變更其容量。 如需最低成本，選取 1 作為容量。 
+   容量 | 1 | 容量是套用至輸入速率、儲存體容量以及與選取之 SKU 相關聯成本的乘數。  您可以在環境建立後變更其容量。 如需最低成本，選取 1 作為容量。 
   
 1. 選取 [建立] 以開始佈建程序。 這需要幾分鐘的時間。
 
@@ -69,6 +69,6 @@ ms.locfileid: "74790242"
 
 * [新增事件中樞事件來源](time-series-insights-how-to-add-an-event-source-eventhub.md)到您的 Azure 時間序列深入解析環境。
 
-* [傳送事件](time-series-insights-send-events.md)到事件來源。
+* [將事件傳送](time-series-insights-send-events.md)到事件來源。
 
 * 在[時間序列深入解析總管](https://insights.timeseries.azure.com)中檢視您的環境。

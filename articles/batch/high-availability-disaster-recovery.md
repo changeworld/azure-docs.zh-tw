@@ -1,6 +1,6 @@
 ---
-title: 高可用性和災害復原 - Azure Batch | Microsoft Docs
-description: 了解如何設計 Batch 應用程式以因應區域性中斷
+title: 高可用性和嚴重損壞修復-Azure Batch
+description: 瞭解如何設計 Batch 應用程式，以因應區域中斷情形。 工作負載應該容錯移轉至另一個區域，或在兩個或多個區域之間分割。
 services: batch
 documentationcenter: ''
 author: ju-shim
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: jushiman
-ms.openlocfilehash: f30d2d8e7d08277a5782c3fc39c10fcdff9463f2
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 11546a6a664e6fb185a32d8e6cd593a850803fe8
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029547"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76930104"
 ---
 # <a name="design-your-application-for-high-availability"></a>針對高可用性設計應用程式
 
