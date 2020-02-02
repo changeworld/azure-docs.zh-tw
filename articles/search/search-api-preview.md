@@ -1,32 +1,34 @@
 ---
-title: REST API 版本 2019-05-06-Preview
+title: REST API 中的預覽功能
 titleSuffix: Azure Cognitive Search
-description: Azure 認知搜尋服務 REST API 版本 2019-05-06-Preview 包含實驗性功能，例如知識存放區和增量擴充的索引子快取。
+description: Azure 認知搜尋服務 REST API 2019-05-06 版-Preview 包含實驗性功能，例如知識存放區和增量擴充的索引子快取。
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/15/2020
-ms.openlocfilehash: 71c6879f467823ab01f4c60ac4d9f26cffcd4eea
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 01/30/2020
+ms.openlocfilehash: 9985e7ac70c5851699839a95d1e23af4dcca35e7
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76896114"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935109"
 ---
-# <a name="azure-cognitive-search-service-rest-api-version-2019-05-06-preview"></a>Azure 認知搜尋服務 REST api-版本 2019-05-06-預覽
+# <a name="preview-features-in-azure-cognitive-search"></a>Azure 認知搜尋中的預覽功能
 
-本文說明搜尋服務 REST API 的 `api-version=2019-05-06-Preview` 版本，並提供尚未正式推出的實驗性功能。
+本文列出目前處於預覽狀態的功能。 從預覽轉換為正式運作的功能會從此清單中移除。 您可以查看[服務更新](https://azure.microsoft.com/updates/?product=search)或有關正式運作之公告的[新功能](whats-new.md)。
 
-> [!NOTE]
-> 預覽功能適用於目標為收集意見反應的測試和實驗，而且可能會有所變更。 我們強烈建議您避免在實際執行的應用程式中使用預覽 API。
+雖然某些預覽功能可能會在入口網站和 .NET SDK 中提供，但 REST API 一律會有預覽功能。 目前的預覽 API 版本為 `2019-05-06-Preview`。
 
-## <a name="features-in-2019-05-06-preview"></a>2019-05-06-Preview 中的功能
+> [!IMPORTANT]
+> 預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-此區段會列出具有預覽狀態的功能。 大部分都是在目前的 2019-05-06-Preview API 中新增的，但有些類似的 `moreLikeThis` 是從已推出至最新預覽 API 的舊版預覽版本進行。 
+## <a name="features-in-public-preview"></a>公開預覽中的功能
 
-預覽功能正式推出後，就會從這份清單中移除。 您可以查看[服務更新](https://azure.microsoft.com/updates/?product=search)或有關正式運作之公告的[新功能](whats-new.md)。
++ [自訂實體查閱（預覽）](cognitive-search-skill-custom-entity-lookup.md )會從自訂、使用者定義的單字和片語清單中尋找文字。 使用這份清單，它會以任何相符的實體標記所有檔。 此技能也支援某種程度的模糊比對，可套用來尋找類似但不完全精確的相符專案。 
+
++ [PII 偵測（預覽）](cognitive-search-skill-pii-detection.md)是在編制索引期間使用的認知技能，可從輸入文字中解壓縮個人識別資訊，並可讓您選擇以各種方式從該文字遮罩它。
 
 + 累加[擴充（預覽）](cognitive-search-incremental-indexing-conceptual.md)會將快取新增至擴充管線，讓您在目標修改（例如，對技能集或另一個物件的更新）不會變更內容時，重複使用現有的輸出。 快取只適用于技能集所產生的擴充檔。
 
@@ -34,9 +36,9 @@ ms.locfileid: "76896114"
 
 + [Azure Data Lake Storage Gen2 索引子（預覽）](search-howto-index-azure-data-lake-storage.md)可以從 Data Lake Storage Gen2 編制內容和中繼資料的索引。
 
-+ [知識存放區](knowledge-store-concept-intro.md)是以 AI 為基礎的擴充管線的新目的地。 實體資料結構存在於 Azure Blob 儲存體和 Azure 資料表儲存體中，而且當您執行具有附加認知技能集的索引子時，它會建立並填入。 知識存放區本身的定義是在技能集定義內指定。 在知識存放區定義中，您可以透過*投射*專案來控制資料的實體結構，這些元素會決定如何塑造資料、資料是否儲存在資料表儲存體或 Blob 儲存體中，以及是否有多個視圖。
++ [知識存放區（預覽）](knowledge-store-concept-intro.md)是以 AI 為基礎的擴充管線的新目的地。 實體資料結構存在於 Azure Blob 儲存體和 Azure 資料表儲存體中，而且當您執行具有附加認知技能集的索引子時，它會建立並填入。 知識存放區本身的定義是在技能集定義內指定。 在知識存放區定義中，您可以透過*投射*專案來控制資料的實體結構，這些元素會決定如何塑造資料、資料是否儲存在資料表儲存體或 Blob 儲存體中，以及是否有多個視圖。
 
-+ [moreLikeThis 查詢參數](search-more-like-this.md)，可尋找與特定文件相關的文件。 這個功能已存在舊版預覽中。 
++ [moreLikeThis 查詢參數（預覽）](search-more-like-this.md)會尋找與特定檔相關的檔。 這個功能已存在舊版預覽中。 
 
 ## <a name="earlier-preview-features"></a>舊版預覽功能
 

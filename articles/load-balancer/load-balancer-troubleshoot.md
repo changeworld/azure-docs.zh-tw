@@ -13,16 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: 63706a3cdd34e5656f881c8668d8b88d9ac2e9ff
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ca9b70bd71a618f8e3d5f4fe9504ba66a9f14c6f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843917"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935486"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>針對 Azure Load Balancer 進行疑難排解
 
-此頁面提供 Azure Load Balancer 常見問題的疑難排解資訊。 當負載平衡器的連線無法使用時，最常見的徵兆如下︰ 
+本頁面提供基本和標準一般 Azure Load Balancer 問題的疑難排解資訊。 如需標準 Load Balancer 的詳細資訊，請參閱[標準 Load Balancer 概觀](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics)。
+
+當負載平衡器的連線無法使用時，最常見的徵兆如下︰ 
+
 - 負載平衡器後方的 VM 未回應健康狀態探查 
 - 負載平衡器後方的 VM 未回應設定連接埠的流量
 
@@ -124,6 +127,10 @@ ms.locfileid: "76843917"
 如果在 VNet 內設定內部 Load Balancer，且其中一個參與的後端 VM 嘗試存取內部 Load Balancer 前端，則當流程對應至原始 VM 時，會發生失敗。 不支援此狀況。 請檢閱[限制](concepts-limitations.md#limitations)以取得詳細討論。
 
 **解決方式** 有數種方式可為此案例排除障礙，包括使用 Proxy。 請評估使用應用程式閘道或其他第三方 Proxy (例如 nginx 或 haproxy)。 如需應用程式閘道的詳細資訊，請參閱[應用程式閘道的概觀](../application-gateway/application-gateway-introduction.md)
+
+## <a name="symptom-cannot-change-backend-port-for-existing-lb-rule-of-a-load-balancer-which-has-vm-scale-set-deployed-in-the-backend-pool"></a>徵兆：無法針對已在後端集區中部署 VM 擴展集的負載平衡器，變更其現有 LB 規則的後端埠。 
+### <a name="cause--the-backend-port-cannot-be-modified-for-a-load-balancing-rule-thats-used-by-a-health-probe-for-load-balancer-referenced-by-vm-scale-set"></a>原因：無法針對 VM 擴展集所參考的負載平衡器所使用的負載平衡規則，修改後端埠。
+**解決**方式若要變更埠，您可以藉由更新 VM 擴展集來移除健康情況探查、更新埠，然後再次設定健康情況探查。
 
 ## <a name="additional-network-captures"></a>其他網路擷取
 如果您決定開啟支援案例，請收集下列資訊以便更快解決問題。 選擇單一的後端 VM 來執行下列測試︰

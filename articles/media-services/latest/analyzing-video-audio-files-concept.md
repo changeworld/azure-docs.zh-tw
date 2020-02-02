@@ -10,14 +10,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 09/21/2019
+ms.date: 01/30/2020
 ms.author: juliako
-ms.openlocfilehash: 23d546d6adcdb91b4ef4702b81fe77536fe9f3d3
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 91a09df83c8ba474d3124c3322f4e3dd5eb7367c
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186267"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934678"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>使用 Azure 媒體服務分析影片和音訊檔案
 
@@ -27,6 +27,10 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從您的影片和音訊�
 
 > [!NOTE]
 > 使用視訊或音訊分析程式的預設時，可使用 Azure 入口網站將帳戶設定為擁有 10 個 S3 編碼保留單元。 如需詳細資訊，請參閱[調整媒體處理](media-reserved-units-cli-how-to.md)。
+
+## <a name="compliance-privacy-and-security"></a>合規性、隱私權和安全性
+
+重要提醒是，您必須遵守使用影片索引子時的所有相關法律，而且不得使用影片索引子或任何其他 Azure 服務，以違反其他人的權利或可能會對其他人造成傷害的方式。 在將任何影片（包括任何生物特徵辨識資料）上傳到影片索引子服務以進行處理和儲存之前，您必須在影片的個人中擁有所有適當的許可權，包括所有適當的同意。 若要瞭解影片索引子中的合規性、隱私權和安全性，請閱讀 Microsoft[認知服務條款](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)。 如需 Microsoft 的隱私權責任和資料處理，請參閱 Microsoft 的[隱私權聲明](https://privacy.microsoft.com/PrivacyStatement)、[線上服務條款（「OST」）](https://www.microsoft.com/licensing/product-licensing/products)和[資料處理](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67)增補（「DPA」）。 其他隱私權資訊（包括資料保留、刪除/損毀）可在 OST 和[此處](../video-indexer/faq.md)取得。 藉由使用影片索引子，貴使用者同意遵守認知服務條款、OST、DPA 和隱私權聲明。
 
 ## <a name="built-in-presets"></a>內建預設
 
@@ -63,10 +67,10 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從您的影片和音訊�
 
 ### <a name="transcript"></a>文字記錄
 
-|名稱|描述|
+|名稱|說明|
 |---|---|
 |id|行識別碼。|
-|文字|文字記錄本身。|
+|text|文字記錄本身。|
 |語言|文字記錄語言。 用於支援文字記錄，其中每一行可以有不同的語言。|
 |執行個體|這一行曾出現的時間範圍清單。 如果執行個體是文字記錄，它只能有 1 個執行個體。|
 
@@ -101,10 +105,10 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從您的影片和音訊�
 
 ### <a name="ocr"></a>ocr
 
-|名稱|描述|
+|名稱|說明|
 |---|---|
 |id|OCR 行識別碼。|
-|文字|OCR 文字。|
+|text|OCR 文字。|
 |信賴度|辨識信賴。|
 |語言|OCR 語言。|
 |執行個體|此 OCR 曾出現的時間範圍清單 (相同的 OCR 可以出現多次)。|
@@ -144,12 +148,12 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從您的影片和音訊�
 
 ### <a name="faces"></a>臉部
 
-|名稱|描述|
+|名稱|說明|
 |---|---|
 |id|臉部識別碼。|
-|名稱|臉部名稱。 它可以是「未知的 #0」、已識別的名人或客戶訓練的人員。|
+|NAME|臉部名稱。 它可以是「未知的 #0」、已識別的名人或客戶訓練的人員。|
 |信賴度|臉部識別信賴。|
-|Description|名人的描述。 |
+|description|名人的描述。 |
 |thumbnailId|該臉部的縮圖識別碼。|
 |knownPersonId|內部識別碼（如果是已知的人員）。|
 |referenceId|Bing 識別碼（如果是 Bing 名人）。|
@@ -189,7 +193,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從您的影片和音訊�
 
 ### <a name="shots"></a>擷取畫面
 
-|名稱|描述|
+|名稱|說明|
 |---|---|
 |id|擷取畫面識別碼。|
 |keyFrames|擷取畫面的主要畫面清單 (每個主要畫面都有一個識別碼和執行個體的時間範圍清單)。 主要畫面格執行個體中有縮圖識別碼欄位，其中包含主要畫面格的縮圖識別碼。|
@@ -246,7 +250,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從您的影片和音訊�
 
 ### <a name="statistics"></a>統計資料
 
-|名稱|描述|
+|名稱|說明|
 |---|---|
 |CorrespondenceCount|影片中的對應數目。|
 |WordCount|每個說話者的字數。|
@@ -259,7 +263,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從您的影片和音訊�
 
 人氣會依據其 sentimentType 欄位 (Positive/Neutral/Negative) 加以彙總。 例如：0-0.1、0.1-0.2。
 
-|名稱|描述|
+|名稱|說明|
 |---|---|
 |id|人氣識別碼。|
 |averageScore |所有該人氣類型執行個體的總分平均值 - Positive/Neutral/Negative|
@@ -294,10 +298,10 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從您的影片和音訊�
 
 ### <a name="labels"></a>標籤
 
-|名稱|描述|
+|名稱|說明|
 |---|---|
 |id|標籤識別碼。|
-|名稱|標籤名稱 (例如，電腦、電視)。|
+|NAME|標籤名稱 (例如，電腦、電視)。|
 |語言|標籤名稱語言 (轉譯時)。 BCP-47|
 |執行個體|此標籤曾出現的時間範圍清單 (同一個標籤可以出現多次)。 每個執行個體都有一個信賴度欄位。 |
 
@@ -352,10 +356,10 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從您的影片和音訊�
 
 ### <a name="keywords"></a>關鍵字
 
-|名稱|描述|
+|名稱|說明|
 |---|---|
 |id|關鍵字識別碼。|
-|文字|關鍵字。|
+|text|關鍵字。|
 |信賴度|關鍵字的辨識信賴。|
 |語言|關鍵字語言 (轉譯時)。|
 |執行個體|此關鍵字曾出現的時間範圍清單 (同一個關鍵字可以出現多次)。|
@@ -403,7 +407,7 @@ visualContentModeration 區塊包含影片索引器偵測到可能含有成人�
 
 經發現含有成人或猥褻內容的影片，只能供私人檢視。 使用者可以提交內容的人工審核要求，在此情況下，`IsAdult` 屬性會包含人工審核的結果。
 
-|名稱|描述|
+|名稱|說明|
 |---|---|
 |id|視覺內容仲裁識別碼。|
 |adultScore|成人分數 (由內容仲裁提供)。|

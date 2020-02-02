@@ -9,14 +9,14 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 0ab714efc3e9eb0de9d6753854031110e09fe06b
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 79e65671613364f5cc05153d90cfdcd5959a279f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147842"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939316"
 ---
-# <a name="get-started-with-device-management-net"></a>開始使用裝置管理 (.NET)
+# <a name="get-started-with-device-management-net"></a>開始使用裝置管理（.NET）
 
 [!INCLUDE [iot-hub-selector-dm-getstarted](../../includes/iot-hub-selector-dm-getstarted.md)]
 
@@ -30,9 +30,9 @@ ms.locfileid: "70147842"
 
 在本教學課程結尾，您會有兩個 .NET 主控台應用程式：
 
-* **SimulateManagedDevice**。 此應用程式會使用稍早建立的裝置身分識別連接到您的 IoT 中樞, 接收重新開機直接方法, 模擬實體重新開機, 並報告上一次重新開機的時間。
+* **SimulateManagedDevice**。 此應用程式會使用稍早建立的裝置身分識別連接到您的 IoT 中樞，接收重新開機直接方法，模擬實體重新開機，並報告上一次重新開機的時間。
 
-* **TriggerReboot**。 此應用程式會在模擬裝置應用程式中呼叫直接方法、顯示回應, 並顯示更新的報告屬性。
+* **TriggerReboot**。 此應用程式會在模擬裝置應用程式中呼叫直接方法、顯示回應，並顯示更新的報告屬性。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -56,19 +56,19 @@ ms.locfileid: "70147842"
 
 ## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>使用直接方法在裝置上觸發遠端重新啟動
 
-在本節中, 您會使用C#來建立 .net 主控台應用程式, 其會使用直接方法在裝置上起始遠端重新開機。 應用程式使用裝置對應項查詢來探索該裝置的上次重新開機時間。
+在本節中，您會使用C#來建立 .net 主控台應用程式，其會使用直接方法在裝置上起始遠端重新開機。 應用程式使用裝置對應項查詢來探索該裝置的上次重新開機時間。
 
-1. 在 Visual Studio 中, 選取 [**建立新專案**]。
+1. 在 Visual Studio 中，選取 [建立新專案]。
 
-1. 在 [**建立新專案**] 中, 尋找並選取 [**主控台應用程式 (.NET Framework)** ] 專案範本, 然後選取 **[下一步]** 。
+1. 在 [**建立新專案**] 中，尋找並選取 [**主控台應用程式（.NET Framework）** ] 專案範本，然後選取 **[下一步]** 。
 
-1. 在 [**設定您的新專案**] 中, 將專案命名為*TriggerReboot*, 然後選取 [.NET Framework 4.5.1 版或更新版本]。 選取 [建立]。
+1. 在 [**設定您的新專案**] 中，將專案命名為*TriggerReboot*，然後選取 [.NET Framework 4.5.1 版或更新版本]。 選取 [建立]。
 
     ![新的 Visual C# Windows 傳統桌面專案](./media/iot-hub-csharp-csharp-device-management-get-started/create-trigger-reboot-configure.png)
 
-1. 在**方案總管**中, 以滑鼠右鍵按一下**TriggerReboot**專案, 然後選取 [**管理 NuGet 套件**]。
+1. 在**方案總管**中，以滑鼠右鍵按一下**TriggerReboot**專案，然後選取 [**管理 NuGet 套件**]。
 
-1. 選取 **[流覽]** , 然後搜尋並選取 [ **Microsoft Azure 裝置**]。 選取 [**安裝**] 以安裝**Microsoft Azure 裝置**套件。
+1. 選取 **[流覽]** ，然後搜尋並選取 [ **Microsoft Azure 裝置**]。 選取 [**安裝**] 以安裝**Microsoft Azure 裝置**套件。
 
     ![NuGet 封裝管理員視窗](./media/iot-hub-csharp-csharp-device-management-get-started/create-trigger-reboot-nuget-devices.png)
 
@@ -81,7 +81,7 @@ ms.locfileid: "70147842"
    using Microsoft.Azure.Devices.Shared;
    ```
 
-1. 將下列欄位新增到 **Program** 類別。 將預留位置值取代為您先前在[取得 IoT 中樞連接字串](#get-the-iot-hub-connection-string)中複製的 IoT 中樞連接字串。 `{iot hub connection string}`
+1. 將下列欄位新增到 **Program** 類別。 將 `{iot hub connection string}` 預留位置的值取代為您先前在[取得 IoT 中樞連接字串](#get-the-iot-hub-connection-string)中所複製的 IoT 中樞連接字串。
 
    ```csharp
    static RegistryManager registryManager;
@@ -126,7 +126,7 @@ ms.locfileid: "70147842"
    Console.ReadLine();
    ```
 
-1. 選取 [**組建** > ] [**組建方案**]。
+1. 選取 [建置] > [建置方案]。
 
 > [!NOTE]
 > 本教學課程只針對裝置的回報屬性執行單一查詢。 在生產環境程式碼中，建議您進行輪詢以偵測回報屬性中的變更。
@@ -141,21 +141,21 @@ ms.locfileid: "70147842"
 
 * 使用回報的屬性來啟用裝置對應項查詢，以識別裝置及其上次重新啟動時間。
 
-若要建立模擬裝置應用程式, 請遵循下列步驟:
+若要建立模擬裝置應用程式，請遵循下列步驟：
 
-1. 在 Visual Studio 中, 在您已建立的 TriggerReboot 方案中  > , 選取 [檔案] [**新增** > ] [**專案**]。 在 [**建立新專案**] 中, 尋找並選取 [**主控台應用程式 (.NET Framework)** ] 專案範本, 然後選取 **[下一步]** 。
+1. 在 Visual Studio 中，在您已建立的 TriggerReboot 方案中 **，選取 [** 檔案 > **新增** > **專案**]。 在 [**建立新專案**] 中，尋找並選取 [**主控台應用程式（.NET Framework）** ] 專案範本，然後選取 **[下一步]** 。
 
-1. 在 [**設定您的新專案**] 中, 將專案命名為*SimulateManagedDevice*, 然後在 [**方案**] 中選取 [**新增至方案**]。 選取 [建立]。
+1. 在 [**設定您的新專案**] 中，將專案命名為*SimulateManagedDevice*，然後在 [**方案**] 中選取 [**新增至方案**]。 選取 [建立]。
 
     ![命名並將專案新增至方案](./media/iot-hub-csharp-csharp-device-management-get-started/configure-device-app.png)
 
-1. 在方案總管中, 以滑鼠右鍵按一下新的**SimulateManagedDevice**專案, 然後選取 [**管理 NuGet 套件**]。
+1. 在方案總管中，以滑鼠右鍵按一下新的**SimulateManagedDevice**專案，然後選取 [**管理 NuGet 套件**]。
 
-1. 選取 **[流覽]** , 然後搜尋並選取 [ **Microsoft. Azure. 用戶端**]。 選取 [安裝]。
+1. 選取 **[流覽]** ，然後搜尋並選取 [ **Microsoft. Azure. 用戶端**]。 選取 [安裝]。
 
     ![NuGet 套件管理員視窗用戶端應用程式](./media/iot-hub-csharp-csharp-device-management-get-started/create-device-nuget-devices-client.png)
 
-   此步驟會下載及安裝[Azure IoT 裝置 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet 套件及其相依專案, 並新增對它的參考。
+   此步驟會下載及安裝[Azure IoT 裝置 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet 套件及其相依專案，並新增對它的參考。
 
 1. 在 **Program.cs** 檔案開頭處新增下列 `using` 陳述式：
 
@@ -164,7 +164,7 @@ ms.locfileid: "70147842"
     using Microsoft.Azure.Devices.Shared;
     ```
 
-1. 將下列欄位新增到 **Program** 類別。 將預留位置值取代為您先前在[IoT 中樞註冊新裝置](#register-a-new-device-in-the-iot-hub)中所記下的裝置連接字串。 `{device connection string}`
+1. 將下列欄位新增到 **Program** 類別。 使用您先前在[IoT 中樞中註冊新裝置](#register-a-new-device-in-the-iot-hub)中所記下的裝置連接字串來取代 `{device connection string}` 的預留位置值。
 
     ```csharp
     static string DeviceConnectionString = "{device connection string}";
@@ -200,7 +200,7 @@ ms.locfileid: "70147842"
            Console.WriteLine("Error in sample: {0}", ex.Message);
        }
 
-       string result = "'Reboot started.'";
+       string result = @"{""result"":""Reboot started.""}";
        return Task.FromResult(new MethodResponse(Encoding.UTF8.GetBytes(result), 200));
    }
    ```
@@ -232,22 +232,22 @@ ms.locfileid: "70147842"
    }
    ```
 
-1. 在方案總管中, 以滑鼠右鍵按一下您的方案, 然後選取 [**設定啟始專案**]。
+1. 在方案總管中，以滑鼠右鍵按一下您的方案，然後選取 [**設定啟始專案**]。
 
-1. 針對 [**一般屬性** > ] [**啟始專案**], 選取 [**單一啟始專案**], 然後選取 [ **SimulateManagedDevice** ] 專案。 選取 [ **確定** ] 以儲存變更。
+1. 針對 **一般屬性** > **啟始專案**，選取 **單一啟始專案**，然後選取  **SimulateManagedDevice**  專案。 選取 [ **確定** ] 以儲存變更。
 
-1. 選取 [**組建** > ] [**組建方案**]。
+1. 選取 [建置] > [建置方案]。
 
 > [!NOTE]
-> 為了簡單起見，本教學課程不會實作任何重試原則。 在生產環境程式碼中, 您應該如[暫時性錯誤處理](/azure/architecture/best-practices/transient-faults)所建議, 執行重試原則 (例如指數輪詢)。
+> 為了簡單起見，本教學課程不會實作任何重試原則。 在生產環境程式碼中，您應該如[暫時性錯誤處理](/azure/architecture/best-practices/transient-faults)所建議，執行重試原則（例如指數輪詢）。
 
 ## <a name="run-the-apps"></a>執行應用程式
 
 您現在已經準備好執行應用程式。
 
-1. 若要執行 .NET 裝置應用程式**SimulateManagedDevice**, 請在方案總管中, 以滑鼠右鍵按一下**SimulateManagedDevice**專案, 選取 [ **Debug**], 然後選取 [**開始新實例**]。 應用程式應該會開始接聽來自 IoT 中樞的方法呼叫。
+1. 若要執行 .NET 裝置應用程式**SimulateManagedDevice**，請在方案總管中，以滑鼠右鍵按一下**SimulateManagedDevice**專案，選取 [ **Debug**]，然後選取 [**開始新實例**]。 應用程式應該會開始接聽來自 IoT 中樞的方法呼叫。
 
-1. 在裝置連線並等候方法叫用之後, 以滑鼠右鍵按一下**TriggerReboot**專案, 選取 [ **Debug**], 然後選取 [**開始新實例**]。
+1. 在裝置連線並等候方法叫用之後，以滑鼠右鍵按一下**TriggerReboot**專案，選取 [ **Debug**]，然後選取 [**開始新實例**]。
 
    您應該會看到 "Rebooting!" 顯示在 **SimulatedManagedDevice** 主控台中，以及看到回報的裝置屬性顯示在 **TriggerReboot** 主控台中，其中包括上次重新啟動時間。
 

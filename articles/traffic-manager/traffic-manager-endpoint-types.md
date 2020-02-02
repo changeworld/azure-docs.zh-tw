@@ -3,7 +3,7 @@ title: 流量管理員端點類型 | Microsoft Docs
 description: 本文說明可搭配 Azure 流量管理員使用的各類型端點
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
-ms.author: allensu
-ms.openlocfilehash: 9de5b161c6bb1897058898dddd620ad093f148be
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.author: rohink
+ms.openlocfilehash: 3d8f899a7899243129d31c2620a51dc764a8e917
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981061"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938651"
 ---
 # <a name="traffic-manager-endpoints"></a>流量管理員端點
 
@@ -26,7 +26,7 @@ Microsoft Azure 流量管理員可讓您控制如何將網路流量分散到在�
 流量管理員支援三種類型的端點：
 
 * **Azure 端點** 用於在 Azure 中裝載的服務。
-* **外部端點**適用于 IPv4/IPv6 位址、fqdn 或裝載于 Azure 外部的服務 (可以是內部部署或具有不同的主控提供者)。
+* **外部端點**適用于 IPv4/IPv6 位址、fqdn 或裝載于 Azure 外部的服務（可以是內部部署或具有不同的主控提供者）。
 * **巢狀端點** 用於合併流量管理員端點，以建立更有彈性的流量路由配置，進而支援更大型且更複雜部署的需求。
 
 在單一流量管理員設定檔中結合不同類型的端點的方式不受限。 每個設定檔可以包含任意混合的端點類型。
@@ -38,13 +38,13 @@ Microsoft Azure 流量管理員可讓您控制如何將網路流量分散到在�
 在流量管理員中，Azure 端點用於以 Azure 為基礎的服務。 支援下列的 Azure 資源類型︰
 
 * PaaS 雲端服務
-* Web 應用程式
+* Web Apps
 * Web 應用程式位置
 * PublicIPAddress 資源 (可以直接或透過 Azure Load Balancer 連接至 VM)。 PublicIpAddress 必須已獲指派 DNS 名稱，才能在流量管理員設定檔中使用。
 
 PublicIPAddress 資源是 Azure Resource Manager 資源。 它們不存在於傳統部署模型中。 因此，僅在流量管理員的 Azure Resource Manager 經驗中才支援。 透過 Resource Manager 和傳統部署模型可支援其他端點類型。
 
-使用 Azure 端點時, 流量管理員會偵測 Web 應用程式何時停止和啟動。 此狀態會反映在端點狀態中。 如需詳細資訊，請參閱[流量管理員端點監視](traffic-manager-monitoring.md#endpoint-and-profile-status)。 當基礎服務停止時，流量管理員不會執行端點健康情況檢查或將流量導向端點。 已停止的執行個體不會產生流量管理員計費事件。 重新啟動服務時，計費會繼續，端點也能夠接收流量。 這項偵測並不適用於 PublicIpAddress 端點。
+使用 Azure 端點時，流量管理員會偵測 Web 應用程式何時停止和啟動。 此狀態會反映在端點狀態中。 如需詳細資訊，請參閱[流量管理員端點監視](traffic-manager-monitoring.md#endpoint-and-profile-status)。 當基礎服務停止時，流量管理員不會執行端點健康情況檢查或將流量導向端點。 已停止的執行個體不會產生流量管理員計費事件。 重新啟動服務時，計費會繼續，端點也能夠接收流量。 這項偵測並不適用於 PublicIpAddress 端點。
 
 ## <a name="external-endpoints"></a>外部端點
 

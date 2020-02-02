@@ -3,7 +3,7 @@ title: 使用 Azure PowerShell 管理 Azure DNS 中的 DNS 記錄 | Microsoft Do
 description: 將網域裝載於 Azure DNS 時，在 Azure DNS 管理 DNS 記錄集和記錄。 對記錄集和記錄執行作業的所有 PowerShell 命令。
 services: dns
 documentationcenter: na
-author: asudbring
+author: rohinkoul
 manager: timlt
 ms.assetid: 7136a373-0682-471c-9c28-9e00d2add9c2
 ms.service: dns
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
-ms.author: allensu
-ms.openlocfilehash: c11a5c4a3cfe18fbc203ad641ab1de866915bcc4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: b9244d9b2bdc9cb20195bbc103c0b1eb48a9de63
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211679"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932537"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>使用 Azure PowerShell 管理 Azure DNS 中的 DNS 記錄和記錄集
 
@@ -230,7 +230,7 @@ $recordsets = Get-AzDnsRecordSet -Zone $zone
     Set-AzDnsRecordSet -RecordSet $rs
     ```
 
-使用 `Set-AzDnsRecordSet`，用指定的記錄集*取代* Azure DNS 中現有的記錄集 (與其中所包含的所有記錄)。 [Etag 檢查 ](dns-zones-records.md#etags) 是用來確保並行變更不會遭到覆寫。 您可以使用選擇性的 `-Overwrite` 參數來停用這些檢查。
+使用 `Set-AzDnsRecordSet` 會以指定的記錄集*取代*Azure DNS 中的現有記錄集（以及它所包含的所有記錄）。 [Etag 檢查 ](dns-zones-records.md#etags) 是用來確保並行變更不會遭到覆寫。 您可以使用選擇性的 `-Overwrite` 參數來停用這些檢查。
 
 作業的此序列也可以「經由管道輸送」，亦即使用管道傳遞記錄集物件，而不是以參數進行傳遞。
 
@@ -238,7 +238,7 @@ $recordsets = Get-AzDnsRecordSet -Zone $zone
 Get-AzDnsRecordSet -Name "www" –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Add-AzDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzDnsRecordSet
 ```
 
-上述範例顯示如何將 'A' 記錄新增至類型 'A' 的現有記錄集。 作業的類似序列也可用來將記錄新增至其他類型的記錄集，可透過每一個記錄類型專屬的其他變數取代 `-Ipv4Address` 的 `Add-AzDnsRecordConfig` 變數。 每個記錄類型的參數對 `New-AzDnsRecordConfig` Cmdlet 而言是相同的，如以上「其他記錄類型範例」所示。
+上述範例顯示如何將 'A' 記錄新增至類型 'A' 的現有記錄集。 作業的類似序列也可用來將記錄新增至其他類型的記錄集，可透過每一個記錄類型專屬的其他變數取代 `Add-AzDnsRecordConfig` 的 `-Ipv4Address` 變數。 每個記錄類型的參數對 `New-AzDnsRecordConfig` Cmdlet 而言是相同的，如以上「其他記錄類型範例」所示。
 
 類型 'CNAME' 或 'SOA' 的記錄集不能包含多個記錄。 這個條件是起因於 DNS 標準。 而非 Azure DNS 的限制。
 
@@ -388,7 +388,7 @@ Get-AzDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -ResourceGrou
 
 如果 `$ConfirmPreference`PowerShell 喜好設定變數的值為 `Medium` 或更低，則每個 cmdlet 會提示確認。 因為 `$ConfirmPreference` 的預設值為 `High`，使用預設 PowerShell 設定時不會出現這些提示。
 
-您可以使用 `$ConfirmPreference` 參數覆寫目前 `-Confirm` 設定。 如果您指定 `-Confirm` 或 `-Confirm:$True`，此 cmdlet 在執行前會提示您進行確認。 如果您指定 `-Confirm:$False`，此 cmdlet 不會提示您進行確認。 
+您可以使用 `-Confirm` 參數覆寫目前 `$ConfirmPreference` 設定。 如果您指定 `-Confirm` 或 `-Confirm:$True`，此 cmdlet 在執行前會提示您進行確認。 如果您指定 `-Confirm:$False`，此 cmdlet 不會提示您進行確認。 
 
 如需 `-Confirm` 和 `$ConfirmPreference` 的詳細資訊，請參閱[有關喜好設定變數](/powershell/module/microsoft.powershell.core/about/about_preference_variables)。
 

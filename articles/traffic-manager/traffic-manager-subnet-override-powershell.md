@@ -3,18 +3,18 @@ title: 使用 Azure PowerShell 的 Azure 流量管理員子網覆寫 |Microsoft 
 description: 本文將協助您瞭解如何使用流量管理員子網覆寫來覆寫流量管理員設定檔的路由方法，以根據使用者 IP 位址，透過預先定義的 IP 範圍，將流量導向端點使用 Azure 的端點對應PowerShell.
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.topic: article
 ms.service: traffic-manager
 ms.date: 09/18/2019
-ms.author: allensu
-ms.openlocfilehash: 93362c0e1b359583e30886172f8ccb155c5ffaf4
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.author: rohink
+ms.openlocfilehash: 323093ec78a9486d19496b0ee90e37cb42eea341
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348885"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938426"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-powershell"></a>使用 Azure Powershell 流量管理員子網覆寫
 

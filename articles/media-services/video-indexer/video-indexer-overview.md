@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/23/2019
 ms.author: juliako
-ms.openlocfilehash: a942277b5616f3e8220e7fc0fd00f7d660d76d3e
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 6d03e66d125c4234a95e5a79f212bc81e7cea560
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892697"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933384"
 ---
 # <a name="what-is-video-indexer"></a>什麼是影片索引器？
 
@@ -26,6 +26,10 @@ ms.locfileid: "74892697"
 下圖為圖例，而不是影片索引子在後端運作方式的技術說明。
 
 ![Azure 媒體服務影片索引子流程圖](./media/video-indexer-overview/model-chart.png)
+
+## <a name="compliance-privacy-and-security"></a>合規性、隱私權和安全性
+ 
+重要提醒是，您必須遵守使用影片索引子時的所有相關法律，而且不得使用影片索引子或任何其他 Azure 服務，以違反其他人的權利或可能會對其他人造成傷害的方式。 在將任何影片（包括任何生物特徵辨識資料）上傳到影片索引子服務以進行處理和儲存之前，您必須在影片的個人中擁有所有適當的許可權，包括所有適當的同意。 若要瞭解影片索引子中的合規性、隱私權和安全性，請閱讀 Microsoft[認知服務條款](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)。 如需 Microsoft 的隱私權責任和資料處理，請參閱 Microsoft 的[隱私權聲明](https://privacy.microsoft.com/PrivacyStatement)、[線上服務條款（「OST」）](https://www.microsoft.com/licensing/product-licensing/products)和[資料處理](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67)增補（「DPA」）。 其他隱私權資訊（包括資料保留、刪除/損毀）可在 OST 和[此處](faq.md)取得。 藉由使用影片索引子，貴使用者同意遵守認知服務條款、OST、DPA 和隱私權聲明。
 
 ## <a name="what-can-i-do-with-video-indexer"></a>影片索引器有何用途？
 
@@ -105,7 +109,7 @@ ms.locfileid: "74892697"
 
 ## <a name="next-steps"></a>後續步驟
 
-您已可以開始使用影片索引器。 如需詳細資訊，請參閱下列文章。
+您已可以開始使用影片索引器。 如需詳細資訊，請參閱下列文章：
 
 - [開始使用影片索引子網站](video-indexer-get-started.md)。
 - [使用影片索引子來處理內容 REST API](video-indexer-use-apis.md)。

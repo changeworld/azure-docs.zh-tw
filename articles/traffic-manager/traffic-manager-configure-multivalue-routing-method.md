@@ -3,7 +3,7 @@ title: 設定多值流量路由-Azure 流量管理員
 description: 本文說明如何設定流量管理員，以路由傳送流量至 A/AAAA 端點。
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: allensu
-ms.openlocfilehash: 3e5e6cb55b86df8a48f96771fb2436afa8acaa18
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.author: rohink
+ms.openlocfilehash: daf7d09916d276130e337f7acea738228ee23707
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74040359"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938769"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>在流量管理員中設定多值路由方法
 
@@ -33,7 +33,7 @@ ms.locfileid: "74040359"
 建立流量管理原設定檔的資源群組。
 1. 在 Azure 入口網站的左側窗格上，選取 [資源群組]。
 2. 在 [資源群組] 的頁面頂端上，選取 [新增]。
-3. 在 [資源群組名稱] 中，輸入名稱 **myResourceGroupTM1**。 針對 [資源群組位置]，選取 [美國東部]，然後選取 [確定]。
+3. 在 [資源群組名稱] 中，輸入名稱 *myResourceGroupTM1*。 針對 [資源群組位置]，選取 [美國東部]，然後選取 [確定]。
 
 ## <a name="create-a-traffic-manager-profile"></a>建立流量管理員設定檔
 建立流量管理員設定檔，其導向使用者流量的方式是將使用者流量傳送至具有最低延遲的端點。
@@ -45,7 +45,7 @@ ms.locfileid: "74040359"
     | ---                     | ---                                                |
     | 名稱                   | 此名稱在 trafficmanager.net 區域內必須是唯一的，而且會產生 DNS 名稱 trafficmanager.net，用以存取您的流量管理員設定檔。                                   |
     | 路由方法          | 選取 [多值]路由方法。                                       |
-    | 訂閱            | 選取您的訂閱。                          |
+    | 訂閱            | 選取您的訂用帳戶。                          |
     | 資源群組          | 選取 [myResourceGroupTM1]。 |
     | 位置                | 這項設定是指資源群組的位置，完全不影響將部署到全球的流量管理員設定檔。                              |
    |        |           | 
@@ -62,7 +62,7 @@ ms.locfileid: "74040359"
 
     | 設定                 | 值                                              |
     | ---                     | ---                                                |
-    | 在系統提示您進行確認時，輸入                    | 外部端點                                   |
+    | 類型                    | 外部端點                                   |
     | 名稱           | myEndpoint1                                        |
     | 完網域名稱 (FQDN) 或 IP           | 輸入您希望新增至此流量管理員設定檔之端點的公用 IP 位址                         |
     |        |           |

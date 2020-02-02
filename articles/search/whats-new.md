@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: 24114defe5e78bb7adbd006adc4ddbf8250b3188
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 01/30/2020
+ms.openlocfilehash: d0e0e8a5aa3a3e43997e3f9512525be9f51d2018
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844967"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934858"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 認知搜尋的新功能
 
@@ -29,13 +29,15 @@ Azure 搜尋服務現在已重新命名為「 **Azure 認知搜尋**」，以反
 
 ### <a name="february-2020"></a>2020年2月
 
-+ [PII 偵測](cognitive-search-skill-pii-detection.md)是在編制索引期間使用的認知技能，可從輸入文字中解壓縮個人識別資訊，並可讓您選擇以各種方式從該文字遮罩它。
++ [PII 偵測（預覽）](cognitive-search-skill-pii-detection.md)是在編制索引期間使用的認知技能，可從輸入文字中解壓縮個人識別資訊，並可讓您選擇以各種方式從該文字遮罩它。
+
++ [自訂實體查閱（預覽）](cognitive-search-skill-custom-entity-lookup.md )會從自訂、使用者定義的單字和片語清單中尋找文字。 使用這份清單，它會以任何相符的實體標記所有檔。 此技能也支援某種程度的模糊比對，可套用來尋找類似但不完全精確的相符專案。 
 
 ### <a name="january-2020"></a>2020 年 1 月
 
 + [客戶管理的加密金鑰](search-security-manage-encryption-keys.md)現在已正式推出。 如果您使用 REST，您可以使用 `api-version=2019-05-06`來存取此功能。 對於 managed 程式碼，即使功能不在預覽中，正確的封裝仍然是[.NET SDK 版本 8.0-preview](search-dotnet-sdk-migration-version-9.md) 。 
 
-+ 搜尋服務的私用存取可透過兩種機制取得：
++ 搜尋服務的私用存取是透過兩種機制提供，目前處於預覽狀態：
 
   + 您可以使用管理 REST API `api-version=2019-10-01-Preview` 來建立服務，以限制對特定 IP 位址的存取。 預覽 API 在[CREATEORUPDATE api](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate)中有新的**IpRule**和**NetworkRuleSet**屬性。 此預覽功能適用于選取的區域。 如需詳細資訊，請參閱[如何使用管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)。
 

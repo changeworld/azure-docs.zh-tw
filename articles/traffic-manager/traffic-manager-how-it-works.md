@@ -3,7 +3,7 @@ title: Azure 流量管理員的運作方式 | Microsoft Docs
 description: 本文將協助您了解流量管理員如何路由傳送流量，以提高 Web 應用程式的效能和可用性
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
-ms.author: allensu
-ms.openlocfilehash: 281e1e591d7c3cc31b77a116fb42af49dc27798c
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.author: rohink
+ms.openlocfilehash: 709e89b94ba10db954aa5cf3f70aeffb0d239edb
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68312139"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938628"
 ---
 # <a name="how-traffic-manager-works"></a>流量管理員的運作方式
 
@@ -85,9 +85,9 @@ Contoso Corp 開發出新的合作夥伴入口網站。 此入口網站的 URL �
 
 * [我可以使用具有「naked」功能變數名稱的流量管理員嗎？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-a-naked-domain-name)
 
-* [處理 DNS 查詢時, 流量管理員考慮用戶端子網位址嗎？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries)
+* [處理 DNS 查詢時，流量管理員考慮用戶端子網位址嗎？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries)
 
-* [什麼是 DNS TTL, 以及它對我的使用者有何影響？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-is-dns-ttl-and-how-does-it-impact-my-users)
+* [什麼是 DNS TTL，以及它對我的使用者有何影響？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-is-dns-ttl-and-how-does-it-impact-my-users)
 
 * [我可以將流量管理員回應的 TTL 設定為高或低？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-high-or-low-can-i-set-the-ttl-for-traffic-manager-responses)
 

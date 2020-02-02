@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 6652ca30d9f38eb6184fce5f1ff5428d29c271a6
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: e2ad8eb181685d3ac3de8b1e0ed7ef8ddfa4e224
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911261"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933286"
 ---
 # <a name="add-controls-to-a-map"></a>將控制項新增至對應
 
-本文說明如何將控制項新增至地圖。 您也將了解如何建立具有所有控制項和[樣式選擇器](https://docs.microsoft.com/azure/azure-maps/choose-map-style)的地圖。
+本文說明如何將控制項新增至地圖。 您也將瞭解如何使用所有控制項和[樣式選擇器](https://docs.microsoft.com/azure/azure-maps/choose-map-style)來建立地圖。
 
 ## <a name="add-zoom-control"></a>新增縮放控制項
 
@@ -39,7 +39,7 @@ map.controls.add(new atlas.control.ZoomControl(), {
 
 ## <a name="add-pitch-control"></a>新增傾斜角度控制項
 
-[音調] 控制項會新增按鈕，以傾斜相對於水準地圖的間距。 下列程式碼範例會建立[PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol)類別的實例，並將其新增至地圖的右上角。
+[音調] 控制項會新增按鈕，以傾斜相對於水準地圖的間距。 下列程式碼範例會建立[PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol)類別的實例。 它會將 PitchControl 新增至地圖的右上角。
 
 ```javascript
 //Construct a pitch control and add it to the map.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: allensu
-ms.openlocfilehash: 7ed58201fa7aa1e608cba6d64ac95740cf9a60dc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 0a21af683d9fa7849d3e96c545983c9f40a8d4c6
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965926"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935324"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>適用于公用基本 Load Balancer 的 Azure 監視器記錄
 
@@ -156,11 +156,11 @@ JSON 輸出顯示 [*事件名稱*] 屬性，它會描述負載平衡器建立警
 
 JSON 輸出在屬性欄位中顯示了探查健全狀況狀態的基本資訊。 *DipDownCount*屬性會顯示後端上因為探查回應失敗而無法接收網路流量的實例總數。
 
-### <a name="view-and-analyze-the-audit-log"></a>檢視和分析稽核記錄檔
+### <a name="view-and-analyze-the-activity-log"></a>檢視和分析活動記錄檔
 
-您可以使用下列任何方法，檢視和分析稽核記錄檔資料：
+您可以使用下列任何方法，檢視和分析活動記錄檔資料：
 
-* **Azure 工具：** 透過 Azure PowerShell、Azure 命令列介面（CLI）、Azure REST API 或 Azure 入口網站，從 audit 記錄取出資訊。 [稽核作業與資源管理員](../azure-resource-manager/management/view-activity-logs.md) 一文會詳述每個方法的逐步指示。
+* **Azure 工具：** 透過 Azure PowerShell、Azure 命令列介面（CLI）、Azure REST API 或 Azure 入口網站，從活動記錄中取出資訊。 [稽核作業與資源管理員](../azure-resource-manager/management/view-activity-logs.md) 一文會詳述每個方法的逐步指示。
 * **Power BI︰** 如果還沒有 [Power BI](https:// .microsoft.com/pricing) 帳戶，您可以免費試用。 使用 [Power BI 的 Azure 稽核記錄內容套件](https:// .microsoft.com/documentation/ -content-pack-azure-audit-logs)，您可以使用預先設定的儀表板來分析資料，或根據您的需求自訂檢視。
 
 ### <a name="view-and-analyze-the-health-probe-and-event-log"></a>檢視和分析健全狀況探查與事件記錄檔

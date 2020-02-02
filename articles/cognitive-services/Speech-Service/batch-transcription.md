@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: panosper
-ms.openlocfilehash: 5732df2551eafa74b81f9a918a1cb7cf5ac1395c
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 8a53f1cfbde2f518848e7ef1104bf41ba4996961
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76768032"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76936397"
 ---
 # <a name="how-to-use-batch-transcription"></a>如何使用批次轉譯
 
@@ -78,7 +78,7 @@ Batch 轉譯 API 支援下列格式：
     "AddWordLevelTimestamps" : "True | False",
     "AddSentiment" : "True | False",
     "AddDiarization" : "True | False",
-    "TranscriptionResultsContainerUrl" : "<SAS to Azure container to store results into (write permission required)>"
+    "TranscriptionResultsContainerUrl" : "<service SAS URI to Azure container to store results into (write permission required)>"
   }
 }
 ```
@@ -94,7 +94,7 @@ Batch 轉譯 API 支援下列格式：
 | `AddWordLevelTimestamps` | 指定是否將字組層級時間戳記新增至輸出。 接受的值為`true` 會啟用字組層級時間戳記，而 `false` (預設值) 會停用。 |
 | `AddSentiment` | 指定應該將情感新增至語句。 接受的值為 `true`，可讓每個語句的情感和 `false` （預設值）停用它。 |
 | `AddDiarization` | 指定應該在輸入上執行 diarization 分析，這應該是包含兩個語音的 mono 通道。 接受的值為 `true`，可讓 diarization 和 `false` （預設值）停用它。 它也需要 `AddWordLevelTimestamps` 設定為 true。|
-|`TranscriptionResultsContainerUrl`|選擇性的 SAS 權杖到 Azure 中可寫入的容器。 結果將會儲存在此容器中。
+|`TranscriptionResultsContainerUrl`|選擇性的 URL，其中包含[服務 SAS](../../storage/common/storage-sas-overview.md)至 Azure 中可寫入的容器。 結果將會儲存在此容器中。
 
 ### <a name="storage"></a>儲存體
 

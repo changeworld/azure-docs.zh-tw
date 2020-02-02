@@ -1,6 +1,6 @@
 ---
 title: 成本分析和預算-Azure Batch
-description: 瞭解如何取得成本分析，並為您的 Batch 工作負載設定預算。
+description: 瞭解如何取得成本分析，並為用來執行 Batch 工作負載的基礎計算資源和軟體授權設定預算。
 services: batch
 author: ju-shim
 manager: gwallace
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 07/19/2019
 ms.author: jushiman
-ms.openlocfilehash: 7707d966049e9eced1add1104441af8fee356ef0
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 0cd17271d041b41f9f71c7861e29ab8116c74710
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029561"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76930197"
 ---
 # <a name="cost-analysis-and-budgets-for-azure-batch"></a>Azure Batch 的成本分析和預算
 

@@ -3,17 +3,17 @@ title: 匯入和匯出網域區域檔案-Azure CLI
 titleSuffix: Azure DNS
 description: 了解如何使用 Azure CLI 匯入和匯出 DNS 區域檔案至 Azure DNS
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.date: 4/3/2019
-ms.author: allensu
+ms.author: rohink
 ms.topic: conceptual
-ms.openlocfilehash: 036486ed15c9d6502b5e1655bdab4643128bca4b
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 9475870185e4aee1b6f2ffbe175435cd4f6d8bed
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082904"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76936966"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>使用 Azure CLI 匯入及匯出 DNS 區域檔案
 
@@ -55,7 +55,7 @@ Azure CLI 是用來管理 Azure 服務的跨平台命令列工具。 它可從 [
 * `$ORIGIN` 指示詞為選擇性並受到支援。 若未設定 `$ORIGIN` ，則使用的預設值是在命令列上指定的區域名稱 (加上結尾的 ".")。
 * `$INCLUDE` 和 `$GENERATE` 指示詞不受支援。
 * 支援這些記錄類型： A、AAAA、CAA、CNAME、MX、NS、SOA、SRV 和 TXT。
-* Azure DNS 會在建立區域時，自動建立 SOA 記錄。 當您匯入區域檔案時，所有 SOA 參數都會取自該區域檔案，但  *參數*除外`host`。 這個參數會使用 Azure DNS 所提供的值。 這是因為此參數必須參照 Azure DNS 所提供的主要名稱伺服器。
+* Azure DNS 會在建立區域時，自動建立 SOA 記錄。 當您匯入區域檔案時，所有 SOA 參數都會取自該區域檔案，但 `host` 參數*除外*。 這個參數會使用 Azure DNS 所提供的值。 這是因為此參數必須參照 Azure DNS 所提供的主要名稱伺服器。
 * Azure DNS 也會在建立區域時，自動建立位於區域頂點的名稱伺服器記錄集。 只會匯入此記錄集的 TTL。 這些記錄包含 Azure DNS 所提供的名稱伺服器名稱。 所匯入區域檔案中包含的值不會覆寫記錄資料。
 * 在公開預覽期間，Azure DNS 僅支援單一字串 TXT 記錄。 Multistring TXT 記錄會串連起來並截斷為 255 個字元。
 
@@ -75,7 +75,7 @@ az network dns zone import -g <resource group> -n <zone name> -f <zone file name
 
 如果資源群組中不存在具有此名稱的區域，則會為您建立。 如果區域已經存在，則匯入的記錄集會與現有的記錄集合併。 
 
-### <a name="step-1-import-a-zone-file"></a>步驟 1. 匯入區域檔案
+### <a name="step-1-import-a-zone-file"></a>步驟 1： 匯入區域檔案
 
 匯入 **contoso.com**區域的區域檔案。
 
@@ -91,7 +91,7 @@ az network dns zone import -g <resource group> -n <zone name> -f <zone file name
     az network dns zone import -g myresourcegroup -n contoso.com -f contoso.com.txt
     ```
 
-### <a name="step-2-verify-the-zone"></a>步驟 2. 確認區域
+### <a name="step-2-verify-the-zone"></a>步驟 2： 確認區域
 
 若要在匯入檔案之後確認 DNS 區域，您可以使用下列任何一個方法︰
 
@@ -149,7 +149,7 @@ az network dns zone import -g <resource group> -n <zone name> -f <zone file name
         134.170.188.221
     ```
 
-### <a name="step-3-update-dns-delegation"></a>步驟 3. 更新 DNS 委派
+### <a name="step-3-update-dns-delegation"></a>步驟 3： 更新 DNS 委派
 
 確認已正確匯入區域之後，必須更新 DNS 委派以指向 Azure DNS 名稱伺服器。 如需詳細資訊，請參閱 [更新 DNS 委派](dns-domain-delegation.md)。
 

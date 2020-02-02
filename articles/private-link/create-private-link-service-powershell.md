@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: c4395628ac31dd69a4978f7f68ecc24ca1e15cfb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 225ae9d07cc6df2fa809e250083ee6007ab2f945
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453115"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932087"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>使用 Azure PowerShell 建立私人連結服務
 本文說明如何使用 Azure PowerShell 在 Azure 中建立私人連結服務。
@@ -109,7 +109,7 @@ $privateLinkService = New-AzPrivateLinkService `
 $pls = Get-AzPrivateLinkService -Name $plsName -ResourceGroupName $rgName 
 ```
 
-在此階段，您的私用連結服務已成功建立，並已準備好接收流量。 請注意，上述範例只是為了示範如何使用 PowerShell 建立私用連結服務。  我們尚未設定負載平衡器後端集區或後端集區上的任何應用程式來接聽流量。 如果您想要查看端對端流量流程，強烈建議您在標準負載平衡器後方設定應用程式。 
+在此階段，您的私用連結服務已成功建立，並已準備好接收流量。 請注意，上述範例只是為了示範如何使用 PowerShell 建立私用連結服務。  我們尚未設定負載平衡器後端集區或後端集區上的任何應用程式來接聽流量。 如果您想要查看端對端流量流程，強烈建議您將應用程式設定在您的標準負載平衡器後方。 
 
 接下來，我們將示範如何使用 PowerShell 將此服務對應至不同 VNet 中的私人端點。 同樣地，此範例僅限於建立私人端點，以及連接到上面所建立的私用連結服務。 您可以在虛擬網路中建立虛擬機器，以將流量傳送至私用端點，以建立您的案例。 
 

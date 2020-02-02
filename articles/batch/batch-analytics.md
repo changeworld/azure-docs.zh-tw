@@ -1,6 +1,6 @@
 ---
-title: Azure Batch 分析 | Microsoft Docs
-description: Azure Batch 分析的參考。
+title: Azure Batch 分析
+description: 批次分析中的主題包含批次服務資源所適用事件和警示的參考資訊。
 services: batch
 author: ju-shim
 manager: gwallace
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: jushiman
-ms.openlocfilehash: 39a8bfb6a48bf55ae9f2ec36f7716959e6ada9dd
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 5f5063ff2b285a0613d8c7bf367007997afcb778
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027394"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935265"
 ---
 # <a name="batch-analytics"></a>批次分析
 批次分析中的主題包含批次服務資源所適用事件和警示的參考資訊。

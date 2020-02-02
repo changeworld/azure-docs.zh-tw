@@ -1,28 +1,29 @@
 ---
-title: 將 HDInsight 叢集升級為更新的版本 - Azure
-description: 瞭解將您的 Azure HDInsight 叢集升級為較新版本的指導方針。
-author: omidm1
-ms.author: omidm
+title: 將叢集遷移至較新的版本
+titleSuffix: Azure HDInsight
+description: 瞭解將您的 Azure HDInsight 叢集遷移至較新版本的指導方針。
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 12/06/2019
-ms.openlocfilehash: 1a1d4a71786ebb1e68f59084086b3256a1c1ea40
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.date: 01/31/2020
+ms.openlocfilehash: 95892bba1b3152dda718a4af3c5f45072054fdae
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951151"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935495"
 ---
-# <a name="upgrade-hdinsight-cluster-to-a-newer-version"></a>將 HDInsight 叢集升級為更新的版本
+# <a name="migrate-hdinsight-cluster-to-a-newer-version"></a>將 HDInsight 叢集遷移至較新的版本
 
-若要充分利用最新的 HDInsight 功能，建議您將 HDInsight 叢集升級到最新的版本。 依照下面的指導方針升級您的 HDInsight 叢集版本。
+若要利用最新的 HDInsight 功能，建議您將 HDInsight 叢集定期遷移至最新版本。 HDInsight 不支援就地升級，其中現有的叢集會升級至較新的元件版本。 您必須使用所需的元件和平臺版本來建立新的叢集，然後將您的應用程式遷移以使用新的叢集。 請遵循下列指導方針來遷移 HDInsight 叢集版本。
 
 > [!NOTE]  
 > 如需受支援 HDInsight 版本的詳細資訊，請參閱 [HDInsight 元件版本](hdinsight-component-versioning.md#supported-hdinsight-versions)。
 
-## <a name="upgrade-tasks"></a>升級工作
+## <a name="migration-tasks"></a>移轉工作
 
 升級 HDInsight 叢集的工作流程如下。
 ![HDInsight 升級工作流程圖表](./media/hdinsight-upgrade-cluster/upgrade-workflow-diagram.png)
@@ -39,6 +40,18 @@ ms.locfileid: "74951151"
 1. 使用與先前叢集所使用之預設資料存放區相同的資料存放區，在具有最新 (或受支援) 之 HDI 版本的 VNET 子網路中建立叢集。 這將能允許新叢集針對現有的生產資料繼續運作。
 1. 匯入任何已備份的暫時性資料。
 1. 使用新叢集啟動工作/繼續處理。
+
+## <a name="workload-specific-guidance"></a>工作負載特定指引
+
+下列檔提供如何遷移特定工作負載的指引：
+
+* [遷移 HBase](/hbase/apache-hbase-migrate-new-version.md)
+* [遷移 Kafka](/kafka/migrate-versions.md)
+* [遷移 Hive/互動式查詢](/interactive-query/apache-hive-migrate-workloads.md)
+
+## <a name="backup-and-restore"></a>備份及還原
+
+如需資料庫備份和還原的詳細資訊，請參閱[使用自動資料庫備份來復原 AZURE SQL 資料庫](../sql-database/sql-database-recovery-using-backups.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

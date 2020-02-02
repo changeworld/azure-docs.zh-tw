@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: bd0ec46d224e68f92b5d042826633d1efc7c336e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3637a11724c1f0bab049077c5abbd817e168bd44
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425425"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931223"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>教學課程：在 Azure Active Directory Domain Services （預覽）中建立內部部署網域的輸出樹系信任
 
@@ -45,7 +45,7 @@ ms.locfileid: "75425425"
     * 如有需要，請[建立並設定 Azure Active Directory Domain Services 執行個體][create-azure-ad-ds-instance-advanced]。
     
     > [!IMPORTANT]
-    > 請確定您使用*資源*樹系建立了 Azure AD DS 受控網域。 預設選項會建立*使用者*樹系。 只有資源樹系可以建立對內部內部部署 AD DS 環境的信任。
+    > 請確定您使用*資源*樹系建立了 Azure AD DS 受控網域。 預設選項會建立*使用者*樹系。 只有資源樹系可以建立對內部內部部署 AD DS 環境的信任。 您也需要為受控網域使用最低的*企業*SKU。 如有需要，請[變更 AZURE AD DS 受控網域的 SKU][howto-change-sku]。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
@@ -188,7 +188,7 @@ ms.locfileid: "75425425"
 1. 從 [**群組或使用者名稱**] 清單中選取 [ *FileServerAccess* ]。 在 [ **FileServerAccess 的許可權**] 清單中，選擇 [*允許*] 作為 [**修改**] 和 [**寫入**] 許可權，然後選取 **[確定]** 。
 1. 選取 [**共用**] 索引標籤，然後選擇 [ **Advanced 共用 ...** ]
 1. 選擇 [**共用此資料夾**]，然後在 [**共用名稱**] 中為檔案共用輸入易記的名稱，例如*CrossForestShare*。
-1. 選取 [權限]。 在 [ **Everyone 的許可權**] 清單中，選擇 [**允許**] 做為 [**變更**] 許可權。
+1. 選取 [**許可權**]。 在 [ **Everyone 的許可權**] 清單中，選擇 [**允許**] 做為 [**變更**] 許可權。
 1. 選取 **[確定]** 兩次，然後按一下 [**關閉**]。
 
 #### <a name="validate-cross-forest-authentication-to-a-resource"></a>驗證資源的跨樹系驗證
@@ -220,3 +220,4 @@ ms.locfileid: "75425425"
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance-advanced]: tutorial-create-instance-advanced.md
+[howto-change-sku]: change-sku.md

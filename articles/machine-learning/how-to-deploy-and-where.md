@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: fbfe120484f7a5fdfb847448a4bba2309f3fedc6
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 3b3b83719da4c1c19706845fa4cb1dc75712d145
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543557"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932386"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -26,8 +26,8 @@ ms.locfileid: "76543557"
 無論[您部署](#target)模型的位置為何，工作流程都很類似：
 
 1. 註冊模型。
-1. 準備部署。 (指定資產、使用方式、計算目標。)
-1. 將模型部署至計算目標。
+1. 準備部署。 （指定資產、使用量、計算目標）。
+1. 將模型部署到計算目標。
 1. 測試已部署的模型，也稱為 web 服務。
 
 如需部署工作流程中相關概念的詳細資訊，請參閱[使用 Azure Machine Learning 來管理、部署和監視模型](concept-model-management-and-deployment.md)。
@@ -40,7 +40,7 @@ ms.locfileid: "76543557"
 
 - [Machine Learning 服務的 Azure CLI 擴充](reference-azure-machine-learning-cli.md)功能、[適用于 PYTHON 的 Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)，或[Azure Machine Learning Visual Studio Code 延伸](tutorial-setup-vscode-extension.md)模組。
 
-## <a name="connect-to-your-workspace"></a>連線到您的工作區
+## <a name="connect-to-your-workspace"></a>連接到您的工作區
 
 下列程式碼示範如何使用快取至本機開發環境的資訊，連接到 Azure Machine Learning 的工作區：
 
@@ -174,12 +174,12 @@ Azure ML 支援在單一端點後方部署單一或多個模型。
 
 ## <a name="prepare-to-deploy"></a>準備部署
 
-若要部署模型，您需要下列項目：
+若要部署模型，您需要下列專案：
 
-* **輸入指令碼**。 此腳本會接受要求，使用模型來評分要求，並傳回結果。
+* **輸入腳本**。 此腳本會接受要求，使用模型來評分要求，並傳回結果。
 
     > [!IMPORTANT]
-    > * 這是模型特定的輸入指令碼。 它必須瞭解傳入要求資料的格式、您的模型所預期的資料格式，以及傳回給用戶端的資料格式。
+    > * 專案腳本是您的模型特有的。 它必須瞭解傳入要求資料的格式、您的模型所預期的資料格式，以及傳回給用戶端的資料格式。
     >
     >   如果要求資料的格式無法供您的模型使用，腳本就可以將它轉換成可接受的格式。 它也可以在將回應傳回給用戶端之前，先將它轉換。
     >
@@ -187,21 +187,21 @@ Azure ML 支援在單一端點後方部署單一或多個模型。
     >
     >   可能適用于您案例的替代方法是[批次預測](how-to-use-parallel-run-step.md)，這會在計分期間提供資料存放區的存取權。
 
-* **相依性**，例如執行輸入指令碼或模型所需的協助程式指令碼或 Python/Conda 套件。
+* 相依性，例如執行專案腳本或模型所**需的 helper**腳本或 Python/Conda 套件。
 
-* 計算目標裝載已部署模型的**部署設定**。 此設定會描述執行模型所需的記憶體和 CPU 需求等內容。
+* 裝載已部署模型之計算目標的**部署**設定。 此設定會描述執行模型所需的記憶體和 CPU 需求等事項。
 
-這些項目封裝成「推斷設定」和「部署設定」。 推斷設定會參考輸入指令碼和其他相依性。 使用 SDK 執行部署時，會以程式設計方式定義這些設定。 使用 CLI 時，則會在 JSON 檔案中進行定義。
+這些專案會封裝成*推斷*設定和*部署*設定。 推斷設定會參考專案腳本和其他相依性。 當您使用 SDK 執行部署時，會以程式設計方式定義這些設定。 當您使用 CLI 時，您會在 JSON 檔案中定義它們。
 
 ### <a id="script"></a>1. 定義您的輸入腳本和相依性
 
-輸入指令碼會接收提交給已部署 Web 服務的資料，並將其傳遞給模型。 然後，它會採用模型傳回的回應，並將該回應傳回至用戶端。 *此腳本專屬於您的模型*。 它必須瞭解模型預期和傳回的資料。
+專案腳本會接收提交至已部署 web 服務的資料，並將它傳遞至模型。 然後，它會採用模型傳回的回應，並將該回應傳回至用戶端。 *此腳本專屬於您的模型*。 它必須瞭解模型預期和傳回的資料。
 
-指令碼包含載入和執行模型的兩個函式：
+此腳本包含兩個載入和執行模型的函式：
 
 * `init()`：此函式通常會將模型載入至全域物件。 當您的 web 服務的 Docker 容器已啟動時，此函式只會執行一次。
 
-* `run(input_data)`：此函式會根據輸入資料，使用模型來預測值。 執行的輸入和輸出通常使用 JSON 進行序列化和還原序列化。 您也可以使用原始的二進位資料。 您可以先轉換資料，再將資料傳送給模型或傳回用戶端。
+* `run(input_data)`：此函式會根據輸入資料，使用模型來預測值。 執行的輸入和輸出通常會使用 JSON 進行序列化和還原序列化。 您也可以使用原始的二進位資料。 您可以先轉換資料，然後再將它傳送至模型，或將它傳回給用戶端。
 
 #### <a name="locate-model-files-in-your-entry-script"></a>在您的輸入腳本中尋找模型檔案
 
@@ -220,17 +220,23 @@ AZUREML_MODEL_DIR 是在服務部署期間建立的環境變數。 您可以使�
 | 單一模型 | 包含模型的資料夾路徑。 |
 | 多個模型 | 包含所有模型之資料夾的路徑。 模型是以名稱和版本在此資料夾中找到（`$MODEL_NAME/$VERSION`） |
 
-若要取得模型中檔案的路徑，請將環境變數與您要尋找的檔案名結合。
-在註冊和部署期間，會保留模型檔案的檔案名。 
+在模型註冊和部署期間，模型會放在 AZUREML_MODEL_DIR 路徑中，並保留其原始檔案名。
+
+若要在您的輸入腳本中取得模型檔案的路徑，請將環境變數與您要尋找的檔案路徑結合。
 
 **單一模型範例**
 ```python
+# Example when the model is a file
 model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_regression_model.pkl')
+
+# Example when the model is a folder containing a file
+file_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'my_model_folder', 'sklearn_regression_model.pkl')
 ```
 
 **多個模型範例**
 ```python
-model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_model/1/sklearn_regression_model.pkl')
+# Example when the model is a file, and the deployment contains multiple models
+model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_model', '1', 'sklearn_regression_model.pkl')
 ```
 
 ##### <a name="get_model_path"></a>get_model_path
@@ -425,7 +431,7 @@ def run(request):
 ```
 
 > [!IMPORTANT]
-> `AMLRequest` 類別位於 `azureml.contrib` 命名空間中。 當我們改善服務時，此命名空間中的實體會經常變更。 此命名空間中的任何專案都應視為不受 Microsoft 完全支援的預覽。
+> `AMLRequest` 類別是在 `azureml.contrib` 命名空間中。 當我們改善服務時，此命名空間中的實體會經常變更。 此命名空間中的任何專案都應視為不受 Microsoft 完全支援的預覽。
 >
 > 如果您需要在本機開發環境中測試此項，您可以使用下列命令來安裝元件：
 >
@@ -471,7 +477,7 @@ def run(request):
 ```
 
 > [!IMPORTANT]
-> `AMLResponse` 類別位於 `azureml.contrib` 命名空間中。 當我們改善服務時，此命名空間中的實體會經常變更。 此命名空間中的任何專案都應視為不受 Microsoft 完全支援的預覽。
+> `AMLResponse` 類別是在 `azureml.contrib` 命名空間中。 當我們改善服務時，此命名空間中的實體會經常變更。 此命名空間中的任何專案都應視為不受 Microsoft 完全支援的預覽。
 >
 > 如果您需要在本機開發環境中測試此項，您可以使用下列命令來安裝元件：
 >
@@ -859,7 +865,7 @@ Azure Machine Learning 計算目標是由 Azure Machine Learning 建立和管理
 ## <a name="download-a-model"></a>下載模型
 如果您想要下載您的模型以在自己的執行環境中使用，您可以使用下列 SDK/CLI 命令來執行此動作：
 
-SDK：
+SDK
 ```python
 model_path = Model(ws,'mymodel').download()
 ```
@@ -912,7 +918,7 @@ service_name = 'onnx-mnist-service'
 service = Model.deploy(ws, service_name, [model])
 ```
 
-### <a name="scikit-learn-models"></a>Scikit-learn 模型
+### <a name="scikit-learn-models"></a>Scikit-learn-學習模型
 
 所有內建的 scikit-learn-學習模型類型都不支援任何程式碼模型部署。
 

@@ -1,31 +1,31 @@
 ---
-title: 使用 Azure IoT 中樞診斷連線中斷並進行疑難排解
-description: 了解如何透過 Azure IoT 中樞的裝置連線能力，診斷常見錯誤並進行疑難排解
+title: 使用 Azure IoT 中樞進行中斷連線的監視和疑難排解
+description: 瞭解如何針對 Azure IoT 中樞的裝置連線功能進行常見錯誤的監視和疑難排解
 author: jlian
 manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 07/19/2018
+ms.date: 01/30/2020
 ms.author: jlian
-ms.openlocfilehash: 3904c6390cfe8de197bae470c4ae32d22605ae6a
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: ed1abe3565805810a6a3fe383e1ddfa209950469
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801420"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935381"
 ---
-# <a name="detect-and-troubleshoot-disconnects-with-azure-iot-hub"></a>使用 Azure IoT 中樞偵測連線中斷並進行疑難排解
+# <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>使用 Azure IoT 中樞來監視、診斷和疑難排解中斷連線
 
-IoT 裝置的連線問題可能因為有許多可能的失敗點而難以排解。 裝置端應用程式邏輯、實體網路、通訊協定、硬體和 Azure IoT 中樞全都可能造成問題。 本文提供有關如何偵測從雲端 (相對於裝置端) 連線裝置的問題建議並進行疑難排解。
+IoT 裝置的連線問題可能因為有許多可能的失敗點而難以排解。 應用程式邏輯、實體網路、通訊協定、硬體、IoT 中樞和其他雲端服務都可能造成問題。 偵測並找出問題來源的能力很重要。 不過，大規模的 IoT 解決方案可能會有數千部裝置，因此不可行地手動檢查個別裝置。 為了協助您大規模偵測、診斷及疑難排解這些問題，請使用 IoT 中樞透過 Azure 監視器提供的監視功能。 這些功能僅限於 IoT 中樞可以觀察的內容，因此我們也建議您遵循監視裝置和其他 Azure 服務的最佳作法。
 
 ## <a name="get-alerts-and-error-logs"></a>取得警示和錯誤記錄
 
-使用 Azure 監視器，在裝置連線卸除時取得警示並寫入記錄。
+使用 Azure 監視器來取得警示，並在裝置中斷連線時寫入記錄。
 
 ### <a name="turn-on-diagnostic-logs"></a>開啟診斷記錄
 
-若要記錄裝置連線事件和錯誤，請開啟 IoT 中樞的診斷功能。
+若要記錄裝置連線事件和錯誤，請開啟 IoT 中樞的診斷功能。 建議您儘早開啟這些記錄檔，因為如果未啟用診斷記錄，當裝置中斷連線時，您將不會有任何資訊可以疑難排解的問題。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
@@ -43,7 +43,7 @@ IoT 裝置的連線問題可能因為有許多可能的失敗點而難以排解�
 
 若要深入了解，請參閱[監視 Azure IoT 中樞的健康情況並快速診斷問題](iot-hub-monitor-resource-health.md)。
 
-### <a name="set-up-alerts-for-the-_connected-devices_-count-metric"></a>為_已連線的裝置_計數計量設定警示
+### <a name="set-up-alerts-for-device-disconnect-at-scale"></a>設定大規模裝置中斷連線的警示
 
 若要在裝置中斷連線時取得警示，請在 [**連接的裝置（預覽）** ] 計量上設定警示。
 
@@ -57,43 +57,46 @@ IoT 裝置的連線問題可能因為有許多可能的失敗點而難以排解�
 
 5. 選取 [**新增條件**]，然後選取 [已連線的裝置（預覽）]。
 
-6. 遵循提示，完成設定您想要的閾值和警示選項。
+6. 依照下列提示設定閾值和警示。
 
-若要深入了解，請參閱[什麼是 Microsoft Azure 中的傳統警示？](../azure-monitor/platform/alerts-overview.md)。
+若要深入瞭解，請參閱[什麼是 Microsoft Azure 中的警示？](../azure-monitor/platform/alerts-overview.md)。
+
+#### <a name="detecting-individual-device-disconnects"></a>偵測個別裝置中斷連線
+
+若要偵測*每一裝置的*中斷連線，例如當您需要知道 factory 剛離線時，請[使用事件方格設定裝置中斷連接事件](iot-hub-event-grid.md)。
 
 ## <a name="resolve-connectivity-errors"></a>解決連線錯誤
 
-開啟已連線裝置的診斷記錄和警示後，您會在發生錯誤時收到警示。 這一節說明如何在收到警示時解決常見問題。 下列步驟假設您已設定診斷記錄的 Azure 監視器記錄。
+開啟已連線裝置的診斷記錄和警示後，您會在發生錯誤時收到警示。 本節說明當您收到警示時，如何尋找常見的問題。 下列步驟假設您已設定診斷記錄的 Azure 監視器記錄。
 
-1. 在 Azure 入口網站中，前往 **Log Analytics** 的工作區。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 選取 [記錄搜尋]。
+1. 瀏覽至您的 IoT 中樞。
 
-3. 若要隔離 IoT 中樞的連線錯誤記錄，請輸入下列查詢，然後選取 [執行]：
+1. 選取 [記錄]。
+
+1. 若要隔離 IoT 中樞的連線錯誤記錄，請輸入下列查詢，然後選取 [執行]：
 
     ```kusto
-    search *
-    | where ( Type == "AzureDiagnostics" and ResourceType == "IOTHUBS")
-    | where ( Category == "Connections" and Level == "Error")
+    AzureDiagnostics
+    | where ( ResourceType == "IOTHUBS" and Category == "Connections" and Level == "Error")
     ```
 
 1. 如果有結果，請尋找 `OperationName`、`ResultType` (錯誤碼) 和 `ResultDescription` (錯誤訊息)，以取得關於錯誤的詳細資訊。
 
    ![錯誤記錄的範例](./media/iot-hub-troubleshoot-connectivity/diag-logs.png)
 
-2. 使用此表格來了解和解決常見錯誤。
+1. 針對最常見的錯誤，請遵循問題解析指南：
 
-    | Error | 根本原因 | 解析度 |
-    |-------|------------|------------|
-    | 404104 DeviceConnectionClosedRemotely | 裝置已關閉連線，但 IoT 中樞不知道原因為何。 常見原因包括 MQTT/AMQP 逾時和網際網路連線中斷。 | 藉由[測試連線](tutorial-connectivity.md)，確定裝置可以連線到 IoT 中樞。 如果連線正常，但裝置連線會間歇性中斷，請務必針對您所選的通訊協定 (MQTT/AMPQ)，實作適當的保持運作裝置邏輯。 |
-    | 401003 IoTHubUnauthorized | IoT 中樞無法驗證連線。 | 請確定 SAS 或您使用的其他安全性權杖並未過期。 不需特殊設定，[Azure IoT SDK](iot-hub-devguide-sdks.md) 就會自動產生權杖。 |
-    | 409002 LinkCreationConflict | 裝置有多個連線。 裝置出現新的連線要求時，IoT 中樞會關閉有此錯誤的前一個連線。 | 最常見的情況是，裝置偵測到中斷連線並嘗試重新建立連線，但 IoT 中樞仍將其視為連線的裝置。 IoT 中樞會關閉先前的連線，並記錄此錯誤。 此錯誤通常會顯現為不同暫時性問題的副作用，所以請尋找記錄中的其他錯誤，進一步進行疑難排解。 否則，請務必在連線中斷後才發出新的連線要求。 |
-    | 500001 ServerError | IoT 中樞發生伺服器端問題。 最有可能是暫時性問題。 在 IoT 中樞小組努力維護 [SLA](https://azure.microsoft.com/support/legal/sla/iot-hub/) 的同時，小部分的 IoT 中樞節點可能會偶爾遇到暫時性錯誤。 當您的裝置嘗試連線到有問題的節點時，您會收到這個錯誤。 | 若要解決暫時性失敗，請從裝置發出重試。 若要[自動管理重試](iot-hub-reliability-features-in-sdks.md#connection-and-retry)，請確定您使用最新版的 [Azure IoT SDK](iot-hub-devguide-sdks.md)。<br><br>如需暫時性錯誤處理和重試的最佳做法，請參閱[暫時性錯誤處理](/azure/architecture/best-practices/transient-faults)。  <br><br>如果在重試後仍有問題，請檢查[資源健康情況](iot-hub-monitor-resource-health.md#use-azure-resource-health)和 [Azure 狀態](https://azure.microsoft.com/status/history/)，了解 IoT 中樞是否有已知的問題。 如果沒有任何已知問題且問題持續發生，請[連絡支援人員](https://azure.microsoft.com/support/options/)以便進一步調查。 |
-    | 500008 GenericTimeout | IoT 中樞無法在逾時前完成連線要求。如同 500001 ServerError，此錯誤可能是暫時性錯誤。 | 請遵循 500001 ServerError 的疑難排解步驟，以找出根本原因並解決此錯誤。|
+    - **[404104 DeviceConnectionClosedRemotely](iot-hub-troubleshoot-error-404104-deviceconnectionclosedremotely.md)**
+    - **[401003 IoTHubUnauthorized](iot-hub-troubleshoot-error-401003-iothubunauthorized.md)**
+    - **[409002 LinkCreationConflict](iot-hub-troubleshoot-error-409002-linkcreationconflict.md)**
+    - **[500001 ServerError](iot-hub-troubleshoot-error-500xxx-internal-errors.md)**
+    - **[500008 GenericTimeout](iot-hub-troubleshoot-error-500xxx-internal-errors.md)**
 
-## <a name="other-steps-to-try"></a>其他要嘗試的步驟
+## <a name="i-tried-the-steps-but-they-didnt-work"></a>我嘗試了這些步驟，但它們沒有作用
 
-如果上述步驟無法解決問題，您可以嘗試：
+如果先前的步驟沒有説明，請嘗試：
 
 * 如果您可以存取有問題的裝置 (實體或遠端 (如 SSH))，請遵循[裝置端疑難排解指南](https://github.com/Azure/azure-iot-sdk-node/wiki/Troubleshooting-Guide-Devices)，繼續進行疑難排解。
 

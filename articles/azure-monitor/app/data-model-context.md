@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/15/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 0351f4fe65745242da58d3c3fb2f9fbe5c722d06
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 893e1c3a58f4a62a1e0e9b734cc156b3d75d8779
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677448"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933057"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>遙測內容：Application Insights 資料模型
 
@@ -96,7 +96,7 @@ ms.locfileid: "72677448"
 
 ## <a name="account-id"></a>帳戶識別碼
 
-在多租用戶應用程式中，此為使用者使用的帳戶識別碼或名稱。 範例包括 Azure 入口網站的訂用帳戶識別碼或部落格平台的部落格名稱。
+在多租用戶應用程式中，此為使用者使用的帳戶識別碼或名稱。 範例可能是 Azure 入口網站的訂用帳戶識別碼，或用於建立日誌平臺的 blog 名稱。
 
 最大長度：1024
 

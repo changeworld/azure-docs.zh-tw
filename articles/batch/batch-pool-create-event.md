@@ -1,6 +1,6 @@
 ---
-title: Azure Batch 集區建立事件 | Microsoft Docs
-description: Batch 集區建立事件的參考。
+title: Azure Batch 集區建立事件
+description: Batch 集區建立事件的參考，會在建立集區之後發出。 記錄檔內容將公開集區的一 般資訊。
 services: batch
 author: ju-shim
 manager: gwallace
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: jushiman
-ms.openlocfilehash: b804d828d276c39febf7fdd9347bce04a062676a
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: cb109daee20300d4564ecd40c0a3c14de0f3de1c
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026742"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76929842"
 ---
 # <a name="pool-create-event"></a>集區建立事件
 

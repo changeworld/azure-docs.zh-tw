@@ -2,17 +2,17 @@
 title: 在區域頂點裝載負載平衡的 Azure Web 應用程式
 description: 使用 Azure DNS 別名記錄，在區域頂點裝載負載平衡的 Web 應用程式
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: article
 ms.date: 08/10/2019
-ms.author: allensu
-ms.openlocfilehash: a673a74f8f6f919e7ebb7fc3b065ee0742ab3a10
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 8ba96a028d51e6e5503bb4a8e6735b48033c9ba1
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212358"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937373"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>在區域頂點裝載負載平衡的 Azure Web 應用程式
 
@@ -26,11 +26,11 @@ DNS 通訊協定可防止在區域頂點指派 A 或 AAAA 記錄以外的任何�
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-必須提供可用的網域名稱，如此才能裝載於 Azure DNS 進行測試。 您必須擁有此網域的完整控制權。 完整控制權包括能夠設定網域的名稱伺服器 (NS) 記錄。
+必須提供可用的網域名稱，如此才能裝載於 Azure DNS 進行測試。 您必須擁有此網域的完整控制權。 完整控制權包括為網域設定名稱伺服器 (NS) 記錄的能力。
 
-如需有關在 Azure DNS 中裝載網域的指示，請參閱[教學課程：在 Azure DNS 中裝載您的網域](dns-delegate-domain-azure-dns.md)。
+關於在 Azure DNS 中裝載網域的指示，請參閱[教學課程：在 Azure DNS 中裝載您的網域](dns-delegate-domain-azure-dns.md)。
 
 本教學課程使用的範例網域是 contoso.com，但請使用您自己的網域名稱。
 
@@ -43,7 +43,7 @@ DNS 通訊協定可防止在區域頂點指派 A 或 AAAA 記錄以外的任何�
 使用下表的設定資訊，在您的資源群組中建立兩個 Web App Service 方案。 如需建立 App Service 方案的詳細資訊，請參閱[管理 Azure 中的 App Service 方案](../app-service/app-service-plan-manage.md)。
 
 
-|名稱  |作業系統  |位置  |定價層  |
+|名稱  |作業系統  |位置  |價格層次  |
 |---------|---------|---------|---------|
 |ASP-01     |Windows|美國東部|開發/測試 D1-共用|
 |ASP-02     |Windows|美國中部|開發/測試 D1-共用|
@@ -58,7 +58,7 @@ DNS 通訊協定可防止在區域頂點指派 A 或 AAAA 記錄以外的任何�
 4. 選取 [建立]。
 5. 接受預設值，並使用下表來設定這兩個 Web 應用程式：
 
-   |名稱<br>(在 .azurewebsites.net 內必須是唯一的)|資源群組 |執行階段堆疊|區域|App Service 方案/位置
+   |名稱<br>(在 .azurewebsites.net 內必須是唯一的)|資源群組 |執行階段堆疊|地區|App Service 方案/位置
    |---------|---------|-|-|-------|
    |App-01|使用現有項目<br>選取您的資源群組|.NET Core 2.2|美國東部|ASP-01 （D1）|
    |App-02|使用現有項目<br>選取您的資源群組|.NET Core 2.2|美國中部|ASP-02 （D1）|
@@ -87,7 +87,7 @@ DNS 通訊協定可防止在區域頂點指派 A 或 AAAA 記錄以外的任何�
 3. 選取 [新增]。
 4. 使用下表來設定端點：
 
-   |在系統提示您進行確認時，輸入  |名稱  |目標  |位置  |自訂標題設定|
+   |類型  |名稱  |確定目標  |位置  |自訂標題設定|
    |---------|---------|---------|---------|---------|
    |外部端點     |End-01|您針對 App-01 記錄的 IP 位址|美國東部|host:\<您針對 App-01 記錄的 URL\><br>範例：**host:app-01.azurewebsites.net**|
    |外部端點     |End-02|您針對 App-02 記錄的 IP 位址|美國中部|host:\<您針對 App-02 記錄的 URL\><br>範例：**host:app-02.azurewebsites.net**
@@ -104,7 +104,7 @@ DNS 通訊協定可防止在區域頂點指派 A 或 AAAA 記錄以外的任何�
 2. 選取 [記錄集]。
 3. 使用下表新增記錄集。 針對此值，請使用您先前記錄的實際 web 應用程式 URL：
 
-   |名稱  |在系統提示您進行確認時，輸入  |值|
+   |名稱  |類型  |值|
    |---------|---------|-|
    |@     |TXT|App-01.azurewebsites.net|
 
@@ -132,9 +132,9 @@ DNS 通訊協定可防止在區域頂點指派 A 或 AAAA 記錄以外的任何�
 2. 選取 [記錄集]。
 3. 使用下表來新增記錄集：
 
-   |名稱  |在系統提示您進行確認時，輸入  |別名記錄集  |別名類型  |Azure 資源|
+   |名稱  |類型  |別名記錄集  |別名類型  |Azure 資源|
    |---------|---------|---------|---------|-----|
-   |@     |A|yes|Azure 資源|流量管理員 - 您的設定檔|
+   |@     |A|是|Azure 資源|流量管理員 - 您的設定檔|
 
 
 ## <a name="test-your-web-apps"></a>測試您的 Web 應用程式

@@ -3,7 +3,7 @@ title: 設定子網流量路由-Azure 流量管理員
 description: 本文說明如何設定流量管理員，以從特定子網路路由傳送流量。
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,25 +11,25 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
-ms.author: allensu
-ms.openlocfilehash: d3751a14e8c317d6a4f23c1aa051b7e13305acf5
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.author: rohink
+ms.openlocfilehash: 60cddce610d223433d0ffe1f6b9234625aca9881
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014600"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938743"
 ---
 # <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>使用流量管理員根據使用者子網路將流量導向特定端點
 
-本文說明如何設定子網路流量路由方法。 **子網路**流量路由方法可讓您將一組 IP 位址範圍對應至特定端點，而當流量管理員收到要求時，它會檢查要求的來源 IP，並傳回與它相關聯的端點。
+本文說明如何設定子網路流量路由方法。 **子網路**流量路由方法可讓您將一組 IP 位址範圍對應至特定端點，而當流量管理員收到要求時，會檢查要求的來源 IP，並傳回與其相關聯的端點。
 
 在本文探討的案例中，使用子網路路由時，流量會根據使用者的查詢 IP 位址，而路由傳送至內部網站或生產網站。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 若要查看流量管理員的運作，本教學課程會要求您部署下列項目：
-- 在不同 Azure 區域中執行的兩個基本網站 - **美國東部** (作為內部網站) 和**西歐** (作為生產網站)。
+- 在不同 Azure 區域中執行的兩個基本網站，分別是**美國東部** (作為內部網站) 和**西歐** (作為生產網站)。
 - 用於測試流量管理員的兩個測試 VM - 一個 VM 位於**美國東部**，另一個 VM 位於**西歐**。
 
 測試 VM 可用來說明流量管理員如何根據使用者查詢的來源子網路，將使用者流量路由傳送至內部網站或生產網站。
@@ -45,7 +45,7 @@ ms.locfileid: "74014600"
 2. 在每個 VM 上安裝 IIS 伺服器並更新預設網站頁面，該頁面描述使用者在造訪網站時所連線的 VM 名稱。
 
 #### <a name="create-vms-for-running-websites"></a>建立 VM 以供執行網站
-在本節中，您會在*美國東部*和*西歐* Azure 區域中建立 **myEndpointVMEastUS** 和 **myEndpointVMWEurope** 兩個 VM。
+在本節中，您會在**美國東部**和**西歐** Azure 區域中建立 *myEndpointVMEastUS* 和 *myEndpointVMWEurope* 兩個 VM。
 
 1. 在 Azure 入口網站的左上角，選取 [建立資源] > [計算] > [Windows Server 2016 VM]。
 2. 針對 [基本資料] 輸入或選取下列資訊、接受其餘設定的預設值，然後選取 [建立]：
@@ -53,7 +53,7 @@ ms.locfileid: "74014600"
     |設定|值|
     |---|---|
     |名稱|myIISVMEastUS|
-    |使用者名稱| 輸入您選擇的使用者名稱。|
+    |[使用者名稱]| 輸入您選擇的使用者名稱。|
     |密碼| 輸入您選擇的密碼。 密碼長度至少必須有 12 個字元，而且符合[定義的複雜度需求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     |資源群組| 選取 [新增]，然後輸入 myResourceGroupTM1。|
     |位置| 選取 [美國東部]。|
@@ -131,7 +131,7 @@ ms.locfileid: "74014600"
 
 ### <a name="create-test-vms"></a>建立測試 VM
 
-在本節中，您會在每個 Azure 區域 (*美國東部*和*西歐*) 中建立 VM (**mVMEastUS** 和 **myVMWestEurope**)。 當您瀏覽至網站時，您將使用這些 VM 來測試流量管理員如何將流量路由至最接近的 IIS 伺服器。
+在本節中，您會在每個 Azure 區域 (**美國東部**和**西歐**) 中建立 VM (*mVMEastUS* 和 *myVMWestEurope*)。 當您瀏覽至網站時，您將使用這些 VM 來測試流量管理員如何將流量路由至最接近的 IIS 伺服器。
 
 1. 在 Azure 入口網站的左上角，選取 [建立資源] > [計算] > [Windows Server 2016 VM]。
 2. 針對 [基本資料] 輸入或選取下列資訊、接受其餘設定的預設值，然後選取 [建立]：
@@ -139,7 +139,7 @@ ms.locfileid: "74014600"
     |設定|值|
     |---|---|
     |名稱|myVMEastUS|
-    |使用者名稱| 輸入您選擇的使用者名稱。|
+    |[使用者名稱]| 輸入您選擇的使用者名稱。|
     |密碼| 輸入您選擇的密碼。 密碼長度至少必須有 12 個字元，而且符合[定義的複雜度需求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     |資源群組| 選取 [現有]，然後選取 [myResourceGroupTM1]。|
     |||
@@ -149,7 +149,7 @@ ms.locfileid: "74014600"
 
     |設定|值|
     |---|---|
-    |虛擬網路| 選取 [虛擬網路]，在 [建立虛擬網路] 中，針對 [名稱] 輸入 myVNet3，針對子網路輸入 mySubnet3。|
+    |虛擬網路| 選取 [虛擬網路]，在 [建立虛擬網路] 中，對 [名稱] 輸入 *myVNet3*，而對 [子網路] 則輸入 *mySubnet3*。|
     |網路安全性群組|選取 [基本]，然後在 [選取公用輸入連接埠] 下拉式清單中，選取 **HTTP** 和 **RDP** |
     |開機診斷|選取 [已停用]。|
     |||
@@ -162,7 +162,7 @@ ms.locfileid: "74014600"
     |---|---|
     |虛擬機器名稱 | *myVMWEurope*|
     |資源群組 | 選取 [現有]，然後輸入 *myResourceGroupTM2*|
-    |虛擬網路 | 選取 [虛擬網路]，在 [建立虛擬網路] 中，針對 [名稱] 輸入 myVNet4，針對子網路輸入 mySubnet4。|
+    |虛擬網路 | 選取 [虛擬網路]，在 [建立虛擬網路] 中，對 [名稱] 輸入 *myVNet4*，而對 [子網路] 則輸入 *mySubnet4*。|
     |||
 
 8. 可能需要數分鐘才會建立虛擬機器。 請等到這兩個虛擬機器都已建立，再繼續進行其餘步驟。
@@ -177,7 +177,7 @@ ms.locfileid: "74014600"
     | ---                     | ---                                                |
     | 名稱                   | 此名稱在 trafficmanager.net 區域內必須是唯一的，而且會產生 DNS 名稱 trafficmanager.net，用以存取您的流量管理員設定檔。                                   |
     | 路由方法          | 選取 [子網路] 路由方法。                                       |
-    | 訂閱            | 選取您的訂閱。                          |
+    | 訂閱            | 選取您的訂用帳戶。                          |
     | 資源群組          | 選取 [現有]，然後輸入 *myResourceGroupTM1*。 |
     | |                              |
     |
@@ -186,7 +186,7 @@ ms.locfileid: "74014600"
 
 ## <a name="add-traffic-manager-endpoints"></a>新增流量管理員端點
 
-新增兩個在 IIS 伺服器中執行的 VM，分別是 *myIISVMEastUS* 和  & myIISVMWEurope *，以便根據使用者的查詢子網路路由傳送使用者流量。
+新增兩個在 IIS 伺服器中執行的 VM，分別是 *myIISVMEastUS* 和 *myIISVMWEurope*，以便根據使用者的查詢子網路路由傳送使用者流量。
 
 1. 在入口網站的搜尋列中，搜尋您在上一節建立的流量管理員設定檔名稱，然後在顯示的結果中選取設定檔。
 2. 在 [流量管理員設定檔] 的 [設定] 區段中，按一下 [端點]，然後按一下 [新增]。
@@ -194,7 +194,7 @@ ms.locfileid: "74014600"
 
     | 設定                 | 值                                              |
     | ---                     | ---                                                |
-    | 在系統提示您進行確認時，輸入                    | Azure 端點                                   |
+    | 類型                    | Azure 端點                                   |
     | 名稱           | myTestWebSiteEndpoint                                        |
     | 目標資源類型           | 公用 IP 位址                          |
     | 目標資源          | **選擇公用 IP 位址**以顯示具有相同訂用帳戶下公用 IP 位址的資源清單。 在 [資源] 中，選取名為 *myIISVMEastUS-ip* 的公用 IP 位址。 這是美國東部 IIS 伺服器 VM 的公用 IP 位址。|
@@ -209,8 +209,8 @@ ms.locfileid: "74014600"
 在本節中，您會測試流量管理員如何將使用者流量從指定子網路路由傳送至特定端點。 若要查看運作中的流量管理員，請完成下列步驟：
 1. 決定流量管理員設定檔的 DNS 名稱。
 2. 檢視流量管理員的運作，如下所示：
-    - 從位於*美國東部*區域的測試 VM (**myVMEastUS**)，在網頁瀏覽器中瀏覽至您流量管理員設定檔的 DNS 名稱。
-    - 從位於*西歐*區域的測試 VM (**myVMEastUS**)，在網頁瀏覽器中瀏覽至您流量管理員設定檔的 DNS 名稱。
+    - 從位於**美國東部**區域的測試 VM (*myVMEastUS*)，在網頁瀏覽器中瀏覽至您流量管理員設定檔的 DNS 名稱。
+    - 從位於**西歐**區域的測試 VM (*myVMEastUS*)，在網頁瀏覽器中瀏覽至您流量管理員設定檔的 DNS 名稱。
 
 ### <a name="determine-dns-name-of-traffic-manager-profile"></a>決定流量管理員設定檔的 DNS 名稱
 在本教學課程中，為了簡單起見，您可使用流量管理員設定檔的 DNS 名稱來瀏覽網站。
@@ -235,7 +235,7 @@ ms.locfileid: "74014600"
 
    ![測試流量管理員設定檔](./media/traffic-manager-subnet-routing-method/test-traffic-manager.png)
 
-2. 接下來，使用步驟 1-5 來連線到位於*西歐*的 VM **myVMWestEurope**，並從這個 VM 瀏覽到流量管理員設定檔網域名稱。 由於 VM *myVMWestEurope* IP 位址與端點 *myIISVMEastUS* 相關聯，因此網頁瀏覽器會啟動測試網站伺服器 *myIISVMWEurope*。
+2. 接下來，使用步驟 1-5 來連線到位於**西歐**的 VM *myVMWestEurope*，並從這個 VM 瀏覽到流量管理員設定檔網域名稱。 由於 VM *myVMWestEurope* IP 位址與端點 *myIISVMEastUS* 相關聯，因此網頁瀏覽器會啟動測試網站伺服器 *myIISVMWEurope*。
 
 ## <a name="delete-the-traffic-manager-profile"></a>刪除流量管理員設定檔
 如果不再需要，請刪除資源群組 (**ResourceGroupTM1** 和 **ResourceGroupTM2**)。 若要這麼做，請選取資源群組 (**ResourceGroupTM1** 或 **ResourceGroupTM2**)，然後選取 [刪除]。

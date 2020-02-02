@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 1/24/2020
 ms.author: mlearned
-ms.openlocfilehash: a477c2011ff3c6cf1987ed80ef5c19c26abc40f0
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 934dfdb43d6d2e4ccc346b728f0ac4f5febea327
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76713336"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932583"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>建立私人 Azure Kubernetes Service 叢集（預覽）
 
@@ -131,7 +131,7 @@ API 伺服器端點沒有公用 IP 位址。 因此，您必須在虛擬網路�
 * 若要使用自訂 DNS 伺服器，請使用 DNS 部署 AD 伺服器以轉寄至此 IP 168.63.129.16
 
 ## <a name="limitations"></a>限制 
-* 目前不支援可用性區域
+* 目前僅支援美國東部2和美國西部2區域的可用性區域
 * [Azure 私人連結服務限制][private-link-service]適用于私人叢集、azure 私人端點和虛擬網路服務端點，但目前在相同的虛擬網路中並不支援。
 * 不支援私人叢集中的虛擬節點來微調私人 Azure 虛擬網路中的私人 Azure 容器實例（ACI）
 * 不支援使用私人叢集的現成 Azure DevOps 整合

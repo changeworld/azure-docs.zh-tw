@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 5bdcd955919a91760f16287a62956542cfaa47c5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f9135d0a602bfa1f36f9723311e82a4d26abe6c9
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225291"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934561"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure 中的輸出連線
 
@@ -40,7 +40,7 @@ Azure 會使用來源網路位址轉譯 (SNAT) 執行這項功能。 當多個�
 
 使用 [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) 時，會明確定義 Azure Load Balancer 和相關資源。  Azure 目前提供三個不同的方法，來達成 Azure Resource Manager 資源的輸出連線。 
 
-| SKU | 案例 | 方法 | IP 通訊協定 | 描述 |
+| SKU | 案例 | 方法 | IP 通訊協定 | 說明 |
 | --- | --- | --- | --- | --- |
 | 標準、基本 | [1. 具有公用 IP 位址的 VM （不論是否有 Load Balancer）](#ilpip) | SNAT，未使用連接埠偽裝 | TCP、UDP、ICMP、ESP | Azure 會使用指派給執行個體 NIC 之 IP 設定的公用 IP。 執行個體有所有可用的暫時連接埠。 使用 Standard Load Balancer 時，您應該使用[輸出規則](load-balancer-outbound-rules-overview.md)明確定義輸出連線 |
 | 標準、基本 | [2. 與 VM 相關聯的公用 Load Balancer （實例上沒有公用 IP 位址）](#lb) | SNAT 搭配使用 Load Balancer 前端的連接埠偽裝 (PAT) | TCP、UDP |Azure 會與多個私人 IP 位址共用公用 Load Balancer 前端的公用 IP 位址。 Azure 會使用前端的暫時連接埠來進行 PAT。 |
@@ -91,7 +91,7 @@ SNAT 連接埠會預先配置，如[了解 SNAT 和 PAT](#snat) 一節所述。 
 
 ### <a name="multife"></a>輸出流程的多個前端
 
-#### <a name="standard-load-balancer"></a>Standard Load Balancer
+#### <a name="standard-load-balancer"></a>標準 Load Balancer
 
 當[多個 (公用) IP 前端](load-balancer-multivip-overview.md)存在時，Standard Load Balancer 會同時使用輸出流程的所有候選項目。 如果已針對輸出連線啟用負載平衡規則，則將每個前端乘以可用預先配置 SNAT 連接埠的數目。
 
@@ -160,7 +160,7 @@ Azure 會將 SNAT 連接埠預先配置到每個 VM 之 NIC 的 IP 設定。 當
 
 | 集區大小 (VM 執行個體) | 對每個 IP 設定預先配置 SNAT 連接埠|
 | --- | --- |
-| 1-50 | 1024 |
+| 1-50 | 1,024 |
 | 51-100 | 512 |
 | 101-200 | 256 |
 | 201-400 | 128 |
@@ -176,7 +176,7 @@ Azure 會將 SNAT 連接埠預先配置到每個 VM 之 NIC 的 IP 設定。 當
 
 如果後端集區大小縮減而轉換成較低的層級，可用的 SNAT 連接埠數目就會增加。 在此情況下，現有已配置 SNAT 連接埠及其各自流程都不會受到影響。
 
-SNAT 連接埠配置是 IP 傳輸通訊協定專屬 (TCP 和 UDP 會分別維護)，並且在下列條件底下釋放：
+SNAT 連接埠配置為 IP 傳輸通訊協定專屬 (TCP 和 UDP 會個別維護)，並且在下列條件之下釋出：
 
 ### <a name="tcp-snat-port-release"></a>TCP SNAT 連接埠釋出
 
@@ -188,14 +188,14 @@ SNAT 連接埠配置是 IP 傳輸通訊協定專屬 (TCP 和 UDP 會分別維護
 
 - 如果已達到閒置超時，則會釋放埠。
 
-## <a name="problemsolving"></a> 解決問題 
+## <a name="problemsolving"></a>解決問題 
 
 本節的用意是協助您降低 Azure 中輸出連線可能會發生的 SNAT 耗盡。
 
-### <a name="snatexhaust"></a> 管理 SNAT (PAT) 連接埠耗盡
+### <a name="snatexhaust"></a>管理 SNAT (PAT) 連接埠耗盡
 用於[PAT](#pat)的[暫時埠](#preallocatedports)是可耗盡資源，如[不含公用 ip 位址的獨立 vm](#defaultsnat)和[沒有公用 ip 位址的負載平衡 vm](#lb)中所述。
 
-如果您知道將會對相同的目的地 IP 位址和連接埠起始許多輸出 TCP 或 UDP 連線，並且觀察到失敗的輸出連線，或是支援人員告知您 SNAT 連接埠 ([PAT](#preallocatedports) 使用的預先配置[暫時連接埠](#pat)) 將耗盡，您有數個可緩和這些問題的一般選項。 請檢閱這些選項並判斷哪一個可用且最適合您的案例。 可能會有一或多個選項有助於管理此案例。
+如果您知道將會對相同的目的地 IP 位址和連接埠起始許多輸出 TCP 或 UDP 連線，並且觀察到失敗的輸出連線，或是支援人員告知您 SNAT 連接埠 ([PAT](#pat) 使用的預先配置[暫時連接埠](#preallocatedports)) 將耗盡，您有數個可緩和這些問題的一般選項。 請檢閱這些選項並判斷哪一個可用且最適合您的案例。 可能會有一或多個選項有助於管理此案例。
 
 如果您在了解輸出連線行為方面遇到問題，您可以使用 IP 堆疊統計資料 (netstat)。 或是使用封包擷取來觀察連線行為，也會很有幫助。 您可以在您執行個體的客體 OS 中執行這些封包擷取，或使用[網路監看員來進行封包擷取](../network-watcher/network-watcher-packet-capture-manage-portal.md)。
 
@@ -210,7 +210,7 @@ SNAT 連接埠配置是 IP 傳輸通訊協定專屬 (TCP 和 UDP 會分別維護
 連線共用可能已存在於您用來開發應用程式的架構中，或是您應用程式的組態設定中。 您可以將連線共用與連線重複使用搭配使用。 這樣，您的多個要求就會將數目固定且可預測的連接埠取用至相同的目的地 IP 位址和連接埠。 這些要求也會因為系統有效率地使用 TCP 交易來降低延遲和資源使用量而受益。 UDP 交易也有幫助，因為管理 UDP 流程數目可接著避免發生耗盡狀況，並管理 SNAT 連接埠使用量。
 
 #### <a name="retry logic"></a>將應用程式修改成使用較不積極的重試邏輯
-當用於 [PAT](#preallocatedports) 的[預先配置暫時連接埠](#pat)耗盡或發生應用程式失敗時，不含衰減和降速邏輯的積極或暴力重試會造成耗盡的情況發生或持續存在。 您可以使用較不積極的重試邏輯，以降低對暫時連接埠的需求。 
+當用於 [PAT](#pat) 的[預先配置暫時連接埠](#preallocatedports)耗盡或發生應用程式失敗時，不含衰減和降速邏輯的積極或暴力重試會造成耗盡的情況發生或持續存在。 您可以使用較不積極的重試邏輯，以降低對暫時連接埠的需求。 
 
 暫時連接埠有 4 分鐘的閒置逾時 (無法調整)。 如果重試太過積極，耗盡情況就沒有機會進行自我清理。 因此，考慮應用程式重試交易的方式和頻率，是設計的一個重要部分。
 
@@ -237,7 +237,7 @@ SNAT 連接埠配置是 IP 傳輸通訊協定專屬 (TCP 和 UDP 會分別維護
 
 ### <a name="idletimeout"></a>使用 Keepalive 來重設輸出閒置逾時
 
-連出連線有 4 分鐘的閒置逾時。 此逾時無法調整。 不過，您可以使用傳輸 (例如 TCP Keepalive) 或應用程式層 Keepalive 來重新整理閒置流程，然後視需要重設此閒置逾時。  
+連出連線有 4 分鐘的閒置逾時。 此超時時間可透過[輸出規則](../load-balancer/load-balancer-outbound-rules-overview.md#idletimeout)來調整。 您也可以使用傳輸（例如 TCP keepalive）或應用層 keepalive 來重新整理閒置流程，並視需要重設此閒置超時。  
 
 使用 TCP 存留時，在連線的一端啟用它們就已足夠。 例如，只在伺服器端啟用它們來重設流程的閒置計時器就已足夠，不需要在兩端都起始 TCP 存留。  應用程式層也有類似概念，包括資料庫用戶端-伺服器組態。  請檢查伺服器端以了解應用程式特定存留有哪些選項存在。
 
@@ -261,7 +261,7 @@ SNAT 連接埠配置是 IP 傳輸通訊協定專屬 (TCP 和 UDP 會分別維護
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入了解[標準 Load Balancer](load-balancer-standard-overview.md)。
+- 深入了解[標準負載平衡器](load-balancer-standard-overview.md)。
 - 深入了解標準公用 Load Balancer 的[輸出規則](load-balancer-outbound-rules-overview.md)。
 - 深入了解 [Load Balancer](load-balancer-overview.md)。
 - 深入了解[網路安全性群組](../virtual-network/security-overview.md)。

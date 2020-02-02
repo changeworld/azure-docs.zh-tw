@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 79bafb331cb7ad38ea7cad9e510b22886b647764
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 45d210725f7f09663b126528479655d7f4d9c19f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911139"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933362"
 ---
 # <a name="add-a-popup-to-the-map"></a>在地圖上新增快顯
 
@@ -22,7 +22,7 @@ ms.locfileid: "75911139"
 
 ## <a name="understand-the-code"></a>了解程式碼
 
-下列程式碼會使用符號圖層，將具有 `name` 和 `description` 屬性的點特徵新增至地圖。 隨即會建立[快顯視窗類別](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)的實例，但不會顯示。 滑鼠事件會加入至符號圖層，以在滑鼠停留在符號標記上時，觸發開啟和關閉快顯視窗。 當標記符號暫留時，快顯的 `position` 屬性會以標記的位置更新，而 `content` 選項會以一些 HTML 來更新，其中會包裝 `name` 和游標暫留之 point 功能的 `description` 屬性。 然後會使用其 `open` 函式，在地圖上顯示快顯。
+下列程式碼會使用符號圖層，將具有 `name` 和 `description` 屬性的點特徵新增至地圖。 隨即會建立[快顯視窗類別](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)的實例，但不會顯示。 滑鼠事件會新增至符號圖層，以觸發開啟和關閉快顯視窗。 當標記符號暫留時，快顯的 `position` 屬性會以標記的位置更新，而 `content` 選項會以一些 HTML 來更新，其中會包裝 `name` 和游標暫留之點功能的 `description` 屬性。 然後會使用其 `open` 函式，在地圖上顯示快顯。
 
 ```javascript
 //Define an HTML template for a custom popup content laypout.
@@ -85,7 +85,7 @@ map.events.add('mouseleave', symbolLayer, function (){
 
 ## <a name="reusing-a-popup-with-multiple-points"></a>重複使用具有多個點的快顯
 
-當您有大量的點，而且只想要一次顯示一個快顯視窗時，最好的方法是建立一個快顯並重複使用它，而不是針對每個點功能建立快捷方式。 藉由重複使用快顯，應用程式所建立的 DOM 元素數目會大幅減少，而能夠提供更好的效能。 下列範例會建立3點特徵。 如果您對任何一個特徵按一下，便會顯示快顯，內有該點特徵的內容。
+當您有大量的點，而且只想要一次顯示一個快顯時，最好的方法是建立一個快顯視窗並重複使用。 藉由重複使用快顯，應用程式所建立的 DOM 元素數目會大幅減少，而能夠提供更好的效能。 下列範例會建立3點特徵。 如果您對任何一個特徵按一下，便會顯示快顯，內有該點特徵的內容。
 
 <br/>
 
@@ -94,7 +94,7 @@ map.events.add('mouseleave', symbolLayer, function (){
 
 ## <a name="customizing-a-popup"></a>自訂快顯視窗
 
-根據預設，快顯視窗會有白色背景、底部的指標箭號，以及右上角的 [關閉] 按鈕。 下列範例會使用快顯視窗的 [`fillColor`] 選項，將背景色彩變更為黑色。 將 [`shoCloseButton`] 選項設定為 [false]，就會移除 [關閉] 按鈕。 快顯的 HTML 內容會使用快顯視窗邊緣的10圖元填補，而文字則會設為白色，使其在黑色背景上顯示良好。  
+根據預設，快顯視窗會有白色背景、底部的指標箭號，以及右上角的 [關閉] 按鈕。 下列範例會使用快顯視窗的 [`fillColor`] 選項，將背景色彩變更為黑色。 將 [`CloseButton`] 選項設定為 [false]，就會移除 [關閉] 按鈕。 快顯視窗的 HTML 內容會使用從快顯的邊緣填補10圖元。 文字會設為白色，因此顯示在黑色背景上。  
 
 <br/>
 
@@ -104,7 +104,7 @@ map.events.add('mouseleave', symbolLayer, function (){
 
 ## <a name="popup-events"></a>快顯視窗事件
 
-您可以開啟、關閉和拖曳快顯視窗。 Popup 類別提供事件，協助開發人員對這些動作做出反應。 下列範例會反白顯示當您開啟、關閉或拖曳快顯視窗時，所引發的事件。 
+您可以開啟、關閉和拖曳快顯視窗。 Popup 類別提供的事件可協助開發人員回應這些事件。 下列範例會反白顯示當使用者開啟、關閉或拖曳快顯視窗時，所引發的事件。 
 
 <br/>
 

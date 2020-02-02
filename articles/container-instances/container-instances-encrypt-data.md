@@ -2,14 +2,15 @@
 title: 加密部署資料
 description: 瞭解為您的容器實例資源保存的資料加密，以及如何使用客戶管理的金鑰來加密資料
 ms.topic: article
-ms.date: 01/10/2020
-ms.author: danlep
-ms.openlocfilehash: 146effd7f1a7ad1ddd94886d1a79e2914bd1c94b
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.date: 01/17/2020
+author: dkkapur
+ms.author: dekapur
+ms.openlocfilehash: 14a51ce103d831bcf1dfd52c892102f72531a4c8
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75904207"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934309"
 ---
 # <a name="encrypt-deployment-data"></a>加密部署資料
 
@@ -80,22 +81,25 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 
 存取原則現在應該會顯示在您的金鑰保存庫的存取原則中。
 
-![新增存取原則](./media/container-instances-encrypt-data/access-policy.png)
+![新的存取原則](./media/container-instances-encrypt-data/access-policy.png)
 
 ### <a name="modify-your-json-deployment-template"></a>修改您的 JSON 部署範本
 
 > [!IMPORTANT]
 > 使用客戶管理的金鑰來加密部署資料，可在目前推出的最新 API 版本（2019-12-01）中取得。在您的部署範本中指定此 API 版本。 如果您有任何問題，請與 Azure 支援服務聯繫。
 
-設定金鑰保存庫金鑰和存取原則之後，請將下列屬性新增至您的 ACI 部署範本。 您可以在[教學課程：使用 Resource Manager 範本部署多容器群組](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group)中，深入瞭解如何使用範本部署 ACI 資源。 
+設定金鑰保存庫金鑰和存取原則之後，請將下列屬性新增至您的 ACI 部署範本。 在[教學課程：使用 Resource Manager 範本部署多容器群組](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group)中，深入瞭解如何使用範本部署 ACI 資源。 
+* 在 [`resources`] 底下，將 `apiVersion` 設定為 [`2012-12-01`]。
+* 在部署範本的 [容器群組屬性] 區段底下，新增包含下列值的 `encryptionProperties`：
+  * `vaultBaseUrl`：金鑰保存庫的 DNS 名稱，可以在入口網站中金鑰保存庫資源的 [總覽] 分頁中找到。
+  * `keyName`：稍早產生的金鑰名稱
+  * `keyVersion`：金鑰的目前版本。 您可以按一下金鑰本身（在金鑰保存庫資源的 [設定] 區段中的 [金鑰] 底下）來找到此值
+* 在容器群組屬性底下，新增具有值 `Standard`的 `sku` 屬性。 API 版本2019-12-01 中需要 `sku` 屬性。
 
-具體而言，在部署範本的容器群組屬性區段底下，新增 "encryptionProperties"，其中包含下列值：
-* vaultBaseUrl：金鑰保存庫的 DNS 名稱，可以在入口網站中金鑰保存庫資源的 [總覽] 分頁中找到。
-* keyName：稍早產生的金鑰名稱
-* keyVersion：金鑰的目前版本。 您可以按一下金鑰本身（在金鑰保存庫資源的 [設定] 區段中的 [金鑰] 底下）來找到此值
-
+下列範本程式碼片段顯示用來加密部署資料的其他屬性：
 
 ```json
+[...]
 "resources": [
     {
         "name": "[parameters('containerGroupName')]",
@@ -108,12 +112,107 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
                 "keyName": "acikey",
                 "keyVersion": "xxxxxxxxxxxxxxxx"
             },
+            "sku": "Standard",
             "containers": {
                 [...]
             }
         }
     }
 ]
+```
+
+以下是完整的範本，可從[教學課程：使用 Resource Manager 範本部署多容器群組](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group)中的範本進行調整。 
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "containerGroupName": {
+      "type": "string",
+      "defaultValue": "myContainerGroup",
+      "metadata": {
+        "description": "Container Group name."
+      }
+    }
+  },
+  "variables": {
+    "container1name": "aci-tutorial-app",
+    "container1image": "mcr.microsoft.com/azuredocs/aci-helloworld:latest",
+    "container2name": "aci-tutorial-sidecar",
+    "container2image": "mcr.microsoft.com/azuredocs/aci-tutorial-sidecar"
+  },
+  "resources": [
+    {
+      "name": "[parameters('containerGroupName')]",
+      "type": "Microsoft.ContainerInstance/containerGroups",
+      "apiVersion": "2019-12-01",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "encryptionProperties": {
+            "vaultBaseUrl": "https://example.vault.azure.net",
+            "keyName": "acikey",
+            "keyVersion": "xxxxxxxxxxxxxxxx"
+        },
+        "sku": "Standard",  
+        "containers": [
+          {
+            "name": "[variables('container1name')]",
+            "properties": {
+              "image": "[variables('container1image')]",
+              "resources": {
+                "requests": {
+                  "cpu": 1,
+                  "memoryInGb": 1.5
+                }
+              },
+              "ports": [
+                {
+                  "port": 80
+                },
+                {
+                  "port": 8080
+                }
+              ]
+            }
+          },
+          {
+            "name": "[variables('container2name')]",
+            "properties": {
+              "image": "[variables('container2image')]",
+              "resources": {
+                "requests": {
+                  "cpu": 1,
+                  "memoryInGb": 1.5
+                }
+              }
+            }
+          }
+        ],
+        "osType": "Linux",
+        "ipAddress": {
+          "type": "Public",
+          "ports": [
+            {
+              "protocol": "tcp",
+              "port": "80"
+            },
+            {
+                "protocol": "tcp",
+                "port": "8080"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "outputs": {
+    "containerIPv4Address": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.ContainerInstance/containerGroups/', parameters('containerGroupName'))).ipAddress.ip]"
+    }
+  }
+}
 ```
 
 ### <a name="deploy-your-resources"></a>部署您的資源

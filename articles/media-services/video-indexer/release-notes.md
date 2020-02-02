@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 01/07/2020
 ms.author: juliako
-ms.openlocfilehash: 88effd58e807d39e5915aa41425ecf2e8ca8e3cc
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: f1387273f9736fea70682177d5d48dc2f141bbad
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75832317"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933850"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure 媒體服務影片索引子版本資訊
 
@@ -29,6 +29,24 @@ ms.locfileid: "75832317"
 * 已知問題
 * 錯誤修正
 * 已被取代的功能
+
+## <a name="january-2020"></a>2020 年 1 月
+ 
+### <a name="custom-language-support-for-additional-languages"></a>其他語言的自訂語言支援
+
+影片索引子現在支援 `ar-SY`、`en-UK`和 `en-AU` 的自訂語言模型（僅限 API）。
+ 
+### <a name="delete-account-timeframe-action-update"></a>刪除帳戶時間範圍動作更新
+
+[刪除帳戶] 動作現在會在90天內刪除帳戶，而不是48小時。
+ 
+### <a name="new-video-indexer-github-repository"></a>新的影片索引子 GitHub 存放庫
+
+新的影片索引子 GitHub 具有不同的專案、快速入門手冊和程式碼範例現已推出： https://github.com/Azure-Samples/media-services-video-indexer
+ 
+### <a name="swagger-update"></a>Swagger 更新
+
+影片索引子會將**驗證**和**作業**整合成單一[影片索引子 OpenAPI 規格（swagger）](https://api-portal.videoindexer.ai/docs/services/Operations/export?DocumentFormat=OpenApiJson)。 Develpers 可以在[影片索引子開發人員入口網站](https://api-portal.videoindexer.ai/)中找到 api。
 
 ## <a name="december-2019"></a>2019 年 12 月
 

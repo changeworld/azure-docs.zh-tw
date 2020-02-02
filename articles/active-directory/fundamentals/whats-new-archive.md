@@ -2,23 +2,23 @@
 title: 封存 Azure Active Directory 中的新功能？ | Microsoft Docs
 description: 此內容集的 [概觀] 區段所含的新增功能版本資訊包含 6 個月的活動。 6 個月後，這些項目就會從主要文章中移除，並放入此封存文章中。
 services: active-directory
-author: eross-msft
+author: msmimart
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/10/2019
-ms.author: lizross
+ms.date: 01/27/2020
+ms.author: mimart
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2dc2a8d523b2aabd72348529561f7cfdac1b7a9d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c92305d3b8aae5bbc54df58d414cd9b103945bcb
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422803"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931449"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>封存 Azure Active Directory 中的新功能？
 
@@ -31,6 +31,263 @@ Azure Active Directory 的新功能？版本資訊提供：
 - 錯誤修正
 - 已被取代的功能
 - 方案變更
+
+---
+
+## <a name="july-2019"></a>2019 年 7 月
+
+### <a name="plan-for-change-application-proxy-service-update-to-support-only-tls-12"></a>規劃變更：應用程式 Proxy 服務更新僅支援 TLS 1。2
+
+**類型：** 方案變更  
+**服務類別：** 應用程式 Proxy  
+**產品功能：** 存取控制
+
+為了協助提供您最強的加密，我們將開始限制只有 TLS 1.2 通訊協定的應用程式 Proxy 服務存取。 這項限制一開始會向已使用 TLS 1.2 通訊協定的客戶推出，因此您不會看到影響。 TLS 1.0 和 TLS 1.1 通訊協定的完整淘汰將于2019年8月31日完成。 仍在使用 TLS 1.0 和 TLS 1.1 的客戶，將會收到針對此變更進行準備的 advanced 通知。
+
+若要在此變更期間維持與應用程式 Proxy 服務的連線，建議您確定您的用戶端-伺服器和瀏覽器伺服器組合已更新為使用 TLS 1.2。 我們也建議您務必包含員工所使用的任何用戶端系統，以存取透過應用程式 Proxy 服務發佈的應用程式。
+
+如需詳細資訊，請參閱在[Azure Active Directory 中新增透過應用程式 Proxy 進行遠端存取的內部部署應用程式](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application)。
+
+---
+
+### <a name="plan-for-change-design-updates-are-coming-for-the-application-gallery"></a>規劃變更：應用程式庫即將推出設計更新
+
+**類型：** 方案變更  
+**服務類別：** 企業應用程式  
+**產品功能：** SSO
+
+新的使用者介面變更即將進入 [**加入應用程式**] 分頁之 [元件**庫**] 區域的設計。 這些變更可協助您更輕鬆地找到支援自動布建、OpenID Connect、安全性聲明標記語言（SAML）和密碼單一登入（SSO）的應用程式。
+
+---
+
+### <a name="plan-for-change-removal-of-the-mfa-server-ip-address-from-the-office-365-ip-address"></a>規劃變更：從 Office 365 IP 位址移除 MFA server IP 位址
+
+**類型：** 方案變更  
+**服務類別：** MFA  
+**產品功能：** 身分識別安全性與保護
+
+我們會從[Office 365 Ip 位址和 URL Web 服務](https://docs.microsoft.com/office365/enterprise/office-365-ip-web-service)移除 MFA 伺服器 ip 位址。 如果您目前依賴這些頁面來更新您的防火牆設定，您必須確定也包含**Azure 多因素驗證服務器防火牆需求**一節中所記載的 IP 位址清單，如[開始使用 Azure 多因素驗證服務器](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-deploy#azure-multi-factor-authentication-server-firewall-requirements)一文。
+
+---
+
+### <a name="app-only-tokens-now-require-the-client-app-to-exist-in-the-resource-tenant"></a>僅限應用程式權杖現在需要用戶端應用程式存在於資源租使用者中
+
+**類型：** 固定  
+**服務類別：** 驗證 (登入)  
+**產品功能：** 使用者驗證
+
+在2019年7月26日，我們變更了透過[用戶端認證授](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)與提供僅限應用程式權杖的方式。 先前，應用程式可以取得權杖來呼叫其他應用程式，而不論用戶端應用程式是否在租使用者中。 我們已更新此行為，因此只有存在於資源租使用者中的用戶端應用程式，才能呼叫單一租使用者資源（有時稱為 Web Api）。
+
+如果您的應用程式不在資源租使用者中，您將會收到錯誤訊息，指出，`The service principal named <app_name> was not found in the tenant named <tenant_name>. This can happen if the application has not been installed by the administrator of the tenant.` 若要修正此問題，您必須使用系統[管理員同意端點](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#using-the-admin-consent-endpoint)或[透過 PowerShell](https://docs.microsoft.com/azure/active-directory/develop/howto-authenticate-service-principal-powershell)，在租使用者中建立用戶端 app service 主體，以確保您的租使用者已提供應用程式許可權以在租使用者內操作。
+
+如需詳細資訊，請參閱[驗證的新功能](https://docs.microsoft.com/azure/active-directory/develop/reference-breaking-changes#app-only-tokens-for-single-tenant-applications-are-only-issued-if-the-client-app-exists-in-the-resource-tenant)。
+
+> [!NOTE]
+> 用戶端與 API 之間的現有同意仍不需要。 應用程式仍應執行自己的授權檢查。
+
+---
+
+### <a name="new-passwordless-sign-in-to-azure-ad-using-fido2-security-keys"></a>新的無密碼使用 FIDO2 安全性金鑰登入 Azure AD
+
+**類型：** 新功能  
+**服務類別：** 驗證 (登入)  
+**產品功能：** 使用者驗證
+
+Azure AD 客戶現在可以設定原則來管理其組織之使用者和群組的 FIDO2 安全性金鑰。 使用者也可以自行註冊其安全性金鑰、使用金鑰在網站上登入其 Microsoft 帳戶，同時在具備 FIDO 功能的裝置上登入，以及登入其已加入 Azure AD 的 Windows 10 裝置。
+
+如需詳細資訊，請參閱為[Azure AD （預覽）啟用無密碼登入](/azure/active-directory/authentication/concept-authentication-passwordless)以取得系統管理員相關資訊，以及[將安全性資訊設定為使用安全性金鑰（預覽）](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-security-key)來取得使用者相關資訊。
+
+---
+
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---july-2019"></a>Azure AD App 資源庫中提供的新同盟應用程式-2019 年7月
+
+**類型：** 新功能  
+**服務類別：** 企業應用程式  
+**產品功能：** 協力廠商整合
+
+我們已在2019年7月，將具有同盟支援的18個新應用程式新增至應用程式庫：
+
+[Ungerboeck Software](https://docs.microsoft.com/azure/active-directory/saas-apps/ungerboeck-software-tutorial)，[鮮圖樣 Omnichannel Contact Center](https://docs.microsoft.com/azure/active-directory/saas-apps/bright-pattern-omnichannel-contact-center-tutorial)，[聰明的 Nelly](https://docs.microsoft.com/azure/active-directory/saas-apps/clever-nelly-tutorial)， [AcquireIO](https://docs.microsoft.com/azure/active-directory/saas-apps/acquireio-tutorial)， [Looop](https://www.looop.co/schedule-a-demo/)， [productboard](https://docs.microsoft.com/azure/active-directory/saas-apps/productboard-tutorial)， [MS Azure SSO Access for Ethidex 合規性 Office™](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on#password-based-sso)， [Hype](https://docs.microsoft.com/azure/active-directory/saas-apps/hype-tutorial)， [Abstract](https://docs.microsoft.com/azure/active-directory/saas-apps/abstract-tutorial)， [Ascentis](https://docs.microsoft.com/azure/active-directory/saas-apps/ascentis-tutorial)， [Flipsnack](https://www.flipsnack.com/accounts/sign-in-sso.html)， [Wandera](https://docs.microsoft.com/azure/active-directory/saas-apps/wandera-tutorial)， [TwineSocial](https://twinesocial.com/) [，Kallidus，HyperAnna](https://docs.microsoft.com/azure/active-directory/saas-apps/kallidus-tutorial) [，](https://docs.microsoft.com/azure/active-directory/saas-apps/hyperanna-tutorial) [PharmID WasteWitness](https://www.pharmid.com/)，i2B [Connect](https://www.i2b-online.com/sign-up-to-use-i2b-connect-here-sso-access/)， [JFrog Artifactory](https://docs.microsoft.com/azure/active-directory/saas-apps/jfrog-artifactory-tutorial)
+
+如需應用程式的詳細資訊，請參閱[與 Azure Active Directory 整合的 SaaS 應用程式](https://aka.ms/appstutorial)。 如需在 Azure AD 應用程式庫中列出應用程式的詳細資訊，請參閱[在 Azure Active Directory 應用程式庫中列出您的應用程式](https://aka.ms/azureadapprequest)。
+
+---
+
+### <a name="automate-user-account-provisioning-for-these-newly-supported-saas-apps"></a>針對這些新支援的 SaaS 應用程式自動布建使用者帳戶
+
+**類型：** 新功能  
+**服務類別：** 企業應用程式  
+**產品功能：** 監視和報告
+
+您現在可以自動為這些新整合的應用程式建立、更新和刪除使用者帳戶：
+
+- [撥號盤](https://docs.microsoft.com/azure/active-directory/saas-apps/dialpad-provisioning-tutorial)
+
+- [同盟目錄](https://docs.microsoft.com/azure/active-directory/saas-apps/federated-directory-provisioning-tutorial)
+
+- [Figma](https://docs.microsoft.com/azure/active-directory/saas-apps/figma-provisioning-tutorial)
+
+- [Leapsome](https://docs.microsoft.com/azure/active-directory/saas-apps/leapsome-provisioning-tutorial)
+
+- [Peakon](https://docs.microsoft.com/azure/active-directory/saas-apps/peakon-provisioning-tutorial)
+
+- [Smartsheet](https://docs.microsoft.com/azure/active-directory/saas-apps/smartsheet-provisioning-tutorial)
+
+如需如何使用自動使用者帳戶布建更進一步保護組織安全的詳細資訊，請參閱[使用 Azure AD 自動化 SaaS 應用程式的使用者](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)布建
+
+---
+
+### <a name="new-azure-ad-domain-services-service-tag-for-network-security-group"></a>網路安全性群組的新 Azure AD Domain Services 服務標記
+
+**類型：** 新功能  
+**服務類別：** Azure AD Domain Services  
+**產品功能：** Azure AD Domain Services
+
+如果您不想管理長清單的 IP 位址和範圍，可以使用 Azure 網路安全性群組中的新**AzureActiveDirectoryDomainServices**網路服務標籤，協助保護您 Azure AD Domain Services 虛擬網路子網的輸入流量。
+
+如需這個新服務標記的詳細資訊，請參閱[Azure AD Domain Services 的網路安全性群組](../../active-directory-domain-services/network-considerations.md#network-security-groups-and-required-ports)。
+
+---
+
+### <a name="new-security-audits-for-azure-ad-domain-services-public-preview"></a>Azure AD Domain Services 的新安全性審查（公開預覽）
+
+**類型：** 新功能  
+**服務類別：** Azure AD Domain Services  
+**產品功能：** Azure AD Domain Services
+
+我們很高興宣佈發行 Azure AD 網域服務安全性審核到公開預覽。 安全性審核透過將安全性審核事件串流至目標資源（包括 Azure 儲存體、Azure Log Analytics 工作區，以及使用 Azure AD 網域服務的 Azure 事件中樞），協助您對驗證服務提供重要的深入解析。入口.
+
+如需詳細資訊，請參閱[啟用 Azure AD Domain Services 的安全性審核（預覽）](https://docs.microsoft.com/azure/active-directory-domain-services/security-audit-events)。
+
+---
+
+### <a name="new-authentication-methods-usage--insights-public-preview"></a>新的驗證方法使用 & insights （公開預覽）
+
+**類型：** 新功能  
+**服務類別：** 自助式密碼重設  
+**產品功能：** 監視和報告
+
+新的驗證方法使用 & insights 報告可協助您瞭解 Azure 多因素驗證和自助式密碼重設等功能在您的組織中註冊和使用的方式，包括已註冊的數目每項功能的使用者、用來重設密碼的自助式密碼重設頻率，以及重設發生的方法。
+
+如需詳細資訊，請參閱[驗證方法使用 & insights （預覽）](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-methods-usage-insights)。
+
+---
+
+### <a name="new-security-reports-are-available-for-all-azure-ad-administrators-public-preview"></a>所有 Azure AD 系統管理員都可以使用新的安全性報告（公開預覽）
+
+**類型：** 新功能  
+**服務類別：** 身分識別保護  
+**產品功能：** 身分識別安全性與保護
+
+所有 Azure AD 系統管理員現在都可以選取現有安全性報告頂端的橫幅（例如 [已**標示為有風險的使用者**] 報告），以開始使用有風險的**使用者**和有風險的登**入**報告中所示的新安全性體驗。 經過一段時間之後，所有的安全性報告都會從較舊的版本移至新版本，而新的報表會提供您下列額外的功能：
+
+- 先進的篩選和排序
+
+- 大量動作，例如關閉使用者風險
+
+- 確認遭盜用或安全的實體
+
+- 風險狀態，涵蓋：風險、已解除、已補救且已確認遭到入侵
+
+如需詳細資訊，請參閱有[風險的使用者報告](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risky-users)和有[風險的登入報告](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risky-sign-ins)。
+
+---
+
+### <a name="new-security-audits-for-azure-ad-domain-services-public-preview"></a>Azure AD Domain Services 的新安全性審查（公開預覽）
+
+**類型：** 新功能  
+**服務類別：** Azure AD Domain Services  
+**產品功能：** Azure AD Domain Services
+
+我們很高興宣佈發行 Azure AD 網域服務安全性審核到公開預覽。 安全性審核透過將安全性審核事件串流至目標資源（包括 Azure 儲存體、Azure Log Analytics 工作區，以及使用 Azure AD 網域服務的 Azure 事件中樞），協助您對驗證服務提供重要的深入解析。入口.
+
+如需詳細資訊，請參閱[啟用 Azure AD Domain Services 的安全性審核（預覽）](https://docs.microsoft.com/azure/active-directory-domain-services/security-audit-events)。
+
+---
+
+### <a name="new-b2b-direct-federation-using-samlws-fed-public-preview"></a>使用 SAML/WS-送出新的 B2B 直接同盟（公開預覽）
+
+**類型：** 新功能  
+**服務類別：** B2B  
+**產品功能：** B2B/B2C
+
+直接同盟可協助您更輕鬆地使用其 IT 受控識別解決方案不 Azure AD 的合作夥伴，方法是使用支援 SAML 或 WS-ADDRESSING 標準的身分識別系統。 在您設定與夥伴的直接同盟關聯性之後，您從該網域邀請的任何新來賓使用者都可以使用其現有的組織帳戶與您共同作業，讓您的來賓使用者體驗更順暢。
+
+如需詳細資訊，請參閱[來賓使用者的直接與 AD FS 和協力廠商提供者的同盟（預覽）](https://docs.microsoft.com/azure/active-directory/b2b/direct-federation)。
+
+---
+
+### <a name="automate-user-account-provisioning-for-these-newly-supported-saas-apps"></a>針對這些新支援的 SaaS 應用程式自動布建使用者帳戶
+
+**類型：** 新功能  
+**服務類別：** 企業應用程式  
+**產品功能：** 監視和報告
+
+您現在可以自動為這些新整合的應用程式建立、更新和刪除使用者帳戶：
+
+- [撥號盤](https://docs.microsoft.com/azure/active-directory/saas-apps/dialpad-provisioning-tutorial)
+
+- [同盟目錄](https://docs.microsoft.com/azure/active-directory/saas-apps/federated-directory-provisioning-tutorial)
+
+- [Figma](https://docs.microsoft.com/azure/active-directory/saas-apps/figma-provisioning-tutorial)
+
+- [Leapsome](https://docs.microsoft.com/azure/active-directory/saas-apps/leapsome-provisioning-tutorial)
+
+- [Peakon](https://docs.microsoft.com/azure/active-directory/saas-apps/peakon-provisioning-tutorial)
+
+- [Smartsheet](https://docs.microsoft.com/azure/active-directory/saas-apps/smartsheet-provisioning-tutorial)
+
+如需如何使用自動使用者帳戶布建更進一步保護組織安全的詳細資訊，請參閱[使用 Azure AD 自動化 SaaS 應用程式的使用者](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)布建。
+
+---
+
+### <a name="new-check-for-duplicate-group-names-in-the-azure-ad-portal"></a>在 Azure AD 入口網站中新檢查重複的組名
+
+**類型：** 新功能  
+**服務類別：** 群組管理  
+**產品功能：** 共同作業
+
+現在，當您從 Azure AD 入口網站建立或更新組名時，我們會執行檢查以查看您是否在資源中複製現有的組名。 如果我們判斷該名稱已被另一個群組使用，系統會要求您修改您的名稱。
+
+如需詳細資訊，請參閱在[Azure AD 入口網站中管理群組](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context)。
+
+---
+
+### <a name="azure-ad-now-supports-static-query-parameters-in-reply-redirect-uris"></a>Azure AD 現在支援回復（重新導向） Uri 中的靜態查詢參數
+
+**類型：** 新功能  
+**服務類別：** 驗證 (登入)  
+**產品功能：** 使用者驗證
+
+Azure AD 的應用程式現在可以針對 OAuth 2.0 要求，使用靜態查詢參數（例如，`https://contoso.com/oauth2?idp=microsoft`）註冊並使用回復（重新導向） Uri。 靜態查詢參數受限於回復 uri 的字串比對，就像回復 URI 的任何其他部分一樣。 如果沒有任何已註冊的字串符合 URL 解碼的重新導向 uri，則會拒絕要求。 如果找到回復 URI，則會使用整個字串來重新導向使用者，包括靜態查詢參數。
+
+動態回復 Uri 仍然是禁止的，因為它們代表安全性風險，而且無法用來在驗證要求中保留狀態資訊。 基於此目的，請使用 `state` 參數。
+
+目前，Azure 入口網站的應用程式註冊畫面仍會封鎖查詢參數。 不過，您可以手動編輯應用程式資訊清單，以在您的應用程式中新增和測試查詢參數。 如需詳細資訊，請參閱[驗證的新功能](https://docs.microsoft.com/azure/active-directory/develop/reference-breaking-changes#redirect-uris-can-now-contain-query-string-parameters)。
+
+---
+
+### <a name="activity-logs-ms-graph-apis-for-azure-ad-are-now-available-through-powershell-cmdlets"></a>Azure AD 的活動記錄（MS Graph Api）現在可透過 PowerShell Cmdlet 取得
+
+**類型：** 新功能  
+**服務類別：** 報告  
+**產品功能：** 監視和報告
+
+我們很高興宣佈，Azure AD 活動記錄（Audit 和登入報告）現在可以透過 Azure AD PowerShell 模組取得。 之前，您可以使用 MS 圖形 API 端點來建立自己的腳本，現在我們已將該功能擴充至 PowerShell Cmdlet。
+
+如需有關如何使用這些 Cmdlet 的詳細資訊，請參閱[適用于報告的 Azure AD PowerShell Cmdlet](https://docs.microsoft.com/azure/active-directory/reports-monitoring/reference-powershell-reporting)。
+
+---
+
+### <a name="updated-filter-controls-for-audit-and-sign-in-logs-in-azure-ad"></a>已更新 Azure AD 中 Audit 和登入記錄的篩選器控制項
+
+**類型：** 已變更的功能  
+**服務類別：** 報告  
+**產品功能：** 監視和報告
+
+我們已更新 Audit 和登入記錄報告，因此您現在可以套用各種篩選，而不需要將它們新增為報表畫面上的資料行。 此外，您現在可以決定要在螢幕上顯示的篩選數目。 這些更新會共同合作，讓您的報表更容易閱讀，而且更有範圍滿足您的需求。
+
+如需這些更新的詳細資訊，請參閱[篩選 audit 記錄](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-audit-logs#filtering-audit-logs)和[篩選登入活動](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins#filter-sign-in-activities)。
 
 ---
 
@@ -250,7 +507,7 @@ TLS 1.0 和 TLS 1.1 的淘汰會在2019年8月31日發生，但我們會提供�
 
 - 在群組建立期間選擇電子郵件地址及新增擁有者的能力。
 
-如需詳細資訊，請參閱[使用 Azure Active Directory 建立基本群組並新增成員](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal)。
+如需詳細資訊，請參閱[建立基本群組和使用 Azure Active Directory 新增成員](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal)。
 
 ---
 
@@ -314,7 +571,7 @@ TLS 1.0 和 TLS 1.1 的淘汰會在2019年8月31日發生，但我們會提供�
 
 Azure AD 的威脅情報偵測現在已在更新的 Azure AD Identity Protection 功能中提供。 這種新功能有助於指出特定使用者或活動的異常使用者活動，其與根據 Microsoft 內部和外部威脅情報來源的已知攻擊模式一致。
 
-如需 Azure AD Identity Protection 重新整理版本的詳細資訊，請參閱[現已公開預覽的四個主要 Azure AD Identity Protection 增強功能](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Four-major-Azure-AD-Identity-Protection-enhancements-are-now-in/ba-p/326935)，以及[Azure Active Directory Identity Protection 的內容（重新整理）。](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-v2) 。 如需有關 Azure AD 威脅情報偵測的詳細資訊，請參閱[Azure Active Directory Identity Protection 風險](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-risks)偵測一文。
+如需 Azure AD Identity Protection 重新整理版本的詳細資訊，請參閱[現已公開預覽的四個主要 Azure AD Identity Protection 增強功能](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Four-major-Azure-AD-Identity-Protection-enhancements-are-now-in/ba-p/326935)，以及[Azure Active Directory Identity Protection 的內容（重新整理）。](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-v2) 篇. 如需有關 Azure AD 威脅情報偵測的詳細資訊，請參閱[Azure Active Directory Identity Protection 風險](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-risks)偵測一文。
 
 ---
 

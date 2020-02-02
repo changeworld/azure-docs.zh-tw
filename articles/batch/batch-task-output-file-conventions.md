@@ -1,6 +1,6 @@
 ---
-title: 使用適用於 .NET 的檔案慣例程式庫將作業和工作輸出保存到 Azure 儲存體 - Azure Batch | Microsoft Docs
-description: 了解如何使用適用於 .NET 的 Azure Batch 檔案慣例程式庫，將 Batch 工作和作業輸出保存到 Azure 儲存體，並在 Azure 入口網站檢視保存的輸出。
+title: 使用 .NET 檔案慣例程式庫將輸出資料保存到 Azure 儲存體-Azure Batch
+description: 瞭解如何使用適用于 .NET 的 Azure Batch 檔案慣例程式庫，將 Batch 工作 & 作業輸出保存至 Azure 儲存體，並在 Azure 入口網站中查看該輸出。
 services: batch
 documentationcenter: .net
 author: ju-shim
@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 11/14/2018
 ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 306407252a6f5bc4071947b6aafa2d50bccc97a8
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 8b57ab7168b331734d7811e04284db56bc782f3f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842728"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935274"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>使用適用於 .NET 的 Batch 檔案慣例程式庫將作業和工作輸出保存到 Azure 儲存體
 

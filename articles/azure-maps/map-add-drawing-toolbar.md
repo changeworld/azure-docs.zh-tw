@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 553dffd14182c93a52ed076e742830c68130551b
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 4c89765a3bc59a37a182a2dfabf0727f95b575b8
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911224"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933234"
 ---
 # <a name="add-a-drawing-tools-toolbar-to-a-map"></a>將繪圖工具工具列新增至地圖
 
@@ -68,7 +68,7 @@ drawingManager = new atlas.drawing.DrawingManager(map, {
 
 ## <a name="change-drawing-rendering-style"></a>變更繪圖轉譯樣式
 
-下列程式碼會從 [繪圖管理員] 取得轉譯圖層，並修改其選項以變更繪圖的轉譯樣式。 在此情況下，點將會以藍色標記圖示呈現，線條會是紅色，而四個圖元寬，多邊形會有綠色填滿色彩和橙色外框。
+下列程式碼會從 [繪圖管理員] 取得轉譯圖層，並修改其選項以變更繪圖的轉譯樣式。 在此情況下，點將會以藍色標記圖示呈現。 線條會是紅色和四個圖元寬。 多邊形會有綠色填滿色彩和橙色外框。
 
 ```Javascript
 var layers = drawingManager.getLayers();

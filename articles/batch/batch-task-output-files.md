@@ -1,6 +1,6 @@
 ---
-title: 使用 Batch 服務 API 將作業和工作輸出保存到 Azure 儲存體 - Azure Batch | Microsoft Docs
-description: 了解如何使用 Batch 服務 API 將工作和作業輸出保存到 Azure 儲存體。
+title: 使用 Batch 服務 API 將輸出資料保存到 Azure 儲存體-Azure Batch
+description: 瞭解如何使用 Batch 服務 API 將 Batch 工作和作業輸出資料保存到 Azure 儲存體。
 services: batch
 author: ju-shim
 manager: gwallace
@@ -12,12 +12,12 @@ ms.workload: big-compute
 ms.date: 03/05/2019
 ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 8d77da2a0298758dad3eff1a61aff45796bfb6c5
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: a7ac927ccc27af10999310fde9a5dede7b4539e0
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029629"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939086"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>使用 Batch 服務 API 將工作資料保存到 Azure 儲存體
 

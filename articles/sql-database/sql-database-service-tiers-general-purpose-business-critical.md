@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 01/23/2020
-ms.openlocfilehash: fab24d55509ab315775437ca343e35fc90174f63
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 01/30/2020
+ms.openlocfilehash: 09cc9e1475616700aa77cdf92fd7ca808cd4290c
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715099"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937847"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Azure SQL Database 服務層級
 
@@ -53,7 +53,7 @@ Azure SQL Database 是以針對雲端環境調整的 SQL Server 資料庫引擎�
 |**記憶體內部 OLTP** | | N/A | N/A | 可用 |
 |**唯讀複本**| | 0內建 <br> 0-4 使用[異地](sql-database-active-geo-replication.md)複寫 | 0-4 內建 | 1個內建，包含在價格中 <br> 0-4 使用[異地](sql-database-active-geo-replication.md)複寫 |
 |**定價/計費** | 單一資料庫 | [vCore、保留的儲存體和備份儲存體](https://azure.microsoft.com/pricing/details/sql-database/single/)會收費。 <br/>IOPS 不會收費。 | [每個複本的 vCore 和使用的儲存體](https://azure.microsoft.com/pricing/details/sql-database/single/)都會收費。 <br/>IOPS 尚未收費。 | [vCore、保留的儲存體和備份儲存體](https://azure.microsoft.com/pricing/details/sql-database/single/)會收費。 <br/>IOPS 不會收費。 |
-|| 受控執行個體 | [vCore 和保留的儲存體](https://azure.microsoft.com/pricing/details/sql-database/managed/)會收費。 <br/>IOPS 不會收費。<br/>備份儲存體尚未收費。 | N/A | [vCore 和保留的儲存體](https://azure.microsoft.com/pricing/details/sql-database/managed/)會收費。 <br/>IOPS 不會收費。<br/>備份儲存體尚未收費。 | 
+|| 受控執行個體 | [vCore、保留的儲存體和備份儲存體](https://azure.microsoft.com/pricing/details/sql-database/managed/)會收費。 <br/>不收取 IOPS 費用| N/A | [vCore、保留的儲存體和備份儲存體](https://azure.microsoft.com/pricing/details/sql-database/managed/)會收費。 <br/>IOPS 不會收費。| 
 |**折扣模型**| | [保留的實例](sql-database-reserved-capacity.md)<br/>[Azure Hybrid Benefit](sql-database-azure-hybrid-benefit.md) （不適用於開發/測試訂閱）<br/>[企業](https://azure.microsoft.com/offers/ms-azr-0148p/)與[隨用隨付](https://azure.microsoft.com/offers/ms-azr-0023p/)開發/測試訂閱| [Azure Hybrid Benefit](sql-database-azure-hybrid-benefit.md) （不適用於開發/測試訂閱）<br/>[企業](https://azure.microsoft.com/offers/ms-azr-0148p/)與[隨用隨付](https://azure.microsoft.com/offers/ms-azr-0023p/)開發/測試訂閱| [保留的實例](sql-database-reserved-capacity.md)<br/>[Azure Hybrid Benefit](sql-database-azure-hybrid-benefit.md) （不適用於開發/測試訂閱）<br/>[企業](https://azure.microsoft.com/offers/ms-azr-0148p/)與[隨用隨付](https://azure.microsoft.com/offers/ms-azr-0023p/)開發/測試訂閱|
 
 如需詳細資訊，請參閱單一資料庫中的服務層[級（vCore）](sql-database-vcore-resource-limits-single-databases.md)、[單一資料庫集區（vCore）](sql-database-dtu-resource-limits-single-databases.md)、[單一資料庫（dtu）](sql-database-dtu-resource-limits-single-databases.md)、[單一資料庫集區（dtu）](sql-database-dtu-resource-limits-single-databases.md)和[受控執行個體](sql-database-managed-instance-resource-limits.md)頁面中的詳細差異。

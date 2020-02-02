@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: longl
-ms.openlocfilehash: 44392b807659ff8f13511b48d0afd33db080e4f6
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: da9ad5576d146c007e45124668875e9681860ce6
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76166466"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938833"
 ---
 # <a name="specify-a-face-recognition-model"></a>指定臉部辨識模式
 
@@ -109,6 +109,7 @@ await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognit
 
 * [臉部 .NET SDK](../Quickstarts/csharp-sdk.md)
 * [臉部 Python SDK](../Quickstarts/python-sdk.md)
+* [臉部 Go SDK](../Quickstarts/go-sdk.md)
 
 [臉部-]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d
 [臉部-尋找類似]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237

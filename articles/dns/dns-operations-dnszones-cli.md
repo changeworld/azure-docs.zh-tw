@@ -3,7 +3,7 @@ title: 管理 Azure DNS 中的 DNS 區域 - Azure CLI | Microsoft Docs
 description: 您可以使用 Azure CLI 管理 DNS 區域。 本文說明如何在 Azure DNS 上更新、刪除及建立 DNS 區域。
 services: dns
 documentationcenter: na
-author: asudbring
+author: rohinkoul
 manager: timlt
 ms.assetid: 8ab63bc4-5135-4ed8-8c0b-5f0712b9afed
 ms.service: dns
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2017
-ms.author: allensu
-ms.openlocfilehash: e1a3c401de32beb9757011ac306443334da8b867
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 413c2ab3ee04249c2bb52bf42ca6a31a58fb9082
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211931"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76936935"
 ---
 # <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli"></a>如何使用 Azure CLI 管理 Azure DNS 中的 DNS 區域
 
@@ -42,7 +42,7 @@ ms.locfileid: "74211931"
 
 在開始設定之前，請確認您具備下列項目。
 
-* Azure 訂閱。 如果您還沒有 Azure 訂用帳戶，則可以啟用 [MSDN 訂戶權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或註冊[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
+* Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，則可以啟用 [MSDN 訂戶權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或註冊[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
 
 * 安裝最新版的 Azure CLI，該 CLI 適用於 Windows、Linux 或 MAC。 您可以在 [安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2)中取得詳細資訊。
 
@@ -62,7 +62,7 @@ az login
 az account list
 ```
 
-選擇要使用哪一個 Azure 訂用帳戶。
+選擇其中一個要使用的 Azure 訂用帳戶。
 
 ```azurecli
 az account set --subscription "subscription name"
@@ -76,7 +76,7 @@ az extension add --name dns
 
 ### <a name="create-a-resource-group"></a>建立資源群組
 
-Azure Resource Manager 需要所有的資源群組指定一個位置。 這用來作為該資源群組中資源的預設位置。 然而，因為所有 DNS 資源是全球性，而非區域性，資源群組位置的選擇不會對 Azure DNS 造成影響。
+Azure 資源管理員需要所有的資源群組指定一個位置。 這用來作為該資源群組中資源的預設位置。 然而，因為所有 DNS 資源是全球性，而非區域性，資源群組位置的選擇不會對 Azure DNS 造成影響。
 
 如果您使用現有的資源群組，則可略過此步驟。
 
@@ -86,7 +86,7 @@ az group create --name myresourcegroup --location "West US"
 
 ## <a name="getting-help"></a>取得說明
 
-與 Azure DNS 相關的所有 Azure CLI 命令都會以 `az network dns` 開頭。 使用 `--help` 選項 (簡短形式為 `-h`) 即可取得每個命令的說明。  例如︰
+與 Azure DNS 相關的所有 Azure CLI 命令都會以 `az network dns` 開頭。 使用 `--help` 選項 (簡短形式為 `-h`) 即可取得每個命令的說明。  例如：
 
 ```azurecli
 az network dns --help
@@ -106,7 +106,7 @@ az network dns zone create --resource-group MyResourceGroup --name contoso.com
 
 ### <a name="to-create-a-dns-zone-with-tags"></a>使用標籤建立 DNS 區域
 
-下列範例示範如何使用 [ 參數 (簡短形式為 ](dns-zones-records.md#tags))，利用 *project = demo* 和 *env = test* 這兩個 `--tags`Azure Resource Manager 標籤`-t`，建立 DNS 區域：
+下列範例示範如何使用 `--tags` 參數 (簡短形式為 `-t`)，利用 *project = demo* 和 *env = test* 這兩個 [Azure Resource Manager 標籤](dns-zones-records.md#tags)，建立 DNS 區域：
 
 ```azurecli
 az network dns zone create --resource-group MyResourceGroup --name contoso.com --tags "project=demo" "env=test"

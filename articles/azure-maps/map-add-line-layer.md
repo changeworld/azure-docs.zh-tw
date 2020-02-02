@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 5b59bdc06d455c7bd0ec9cf889f5cfa382948467
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 8503b12be628fe7d5651221c9d0379bee3e292bd
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911177"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933471"
 ---
 # <a name="add-a-line-layer-to-the-map"></a>將線條圖層新增至地圖
 
@@ -23,7 +23,7 @@ ms.locfileid: "75911177"
 > [!TIP]
 > 根據預設，線條圖層會轉譯多邊形和資料來源中線條的座標。 若要限制圖層，使其只呈現 LineString 功能，請將圖層的 `filter` 屬性設定為 `['==', ['geometry-type'], 'LineString']` 或 `['any', ['==', ['geometry-type'], 'LineString'], ['==', ['geometry-type'], 'MultiLineString']]` （如果您也想要包含 MultiLineString 功能）。
 
-下列程式碼會示範如何建立一行、將它加入至資料來源，並使用[LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest)類別以線條圖層呈現。
+下列程式碼顯示如何建立線條。 將這一行加入至資料來源，然後使用[LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest)類別，以線條圖層呈現。
 
 ```javascript
 //Create a data source and add it to the map.
@@ -51,7 +51,7 @@ map.layers.add(new atlas.layer.LineLayer(dataSource, null, {
 
 ## <a name="add-symbols-along-a-line"></a>沿著一行新增符號
 
-這個範例會示範如何在地圖上沿著線條加入箭號圖示。 使用符號圖層時，將「放置」選項設定為「行」，這會沿著線條轉譯符號並旋轉圖示（0度 = 右方）。
+這個範例會示範如何在地圖上沿著線條加入箭號圖示。 使用符號層時，請將「位置」選項設定為「行」。 此選項會沿著這一行呈現符號，並旋轉圖示（0度 = 右方）。
 
 <br/>
 
@@ -66,7 +66,7 @@ map.layers.add(new atlas.layer.LineLayer(dataSource, null, {
 
 ## <a name="add-a-stroke-gradient-to-a-line"></a>將筆觸漸層新增至線條
 
-除了能夠將單一筆劃色彩套用至線條外，您也可以用色彩漸層填滿一行，以顯示從一個線段到下一個線段的轉換。 例如，您可以使用線條漸層來代表經過一段時間和距離的變更，或在連接的物件線上有不同的溫度。 若要將這項功能套用至一行，資料來源必須將 `lineMetrics` 選項設為 true，然後將色彩漸層運算式傳遞至該行的 `strokeColor` 選項。 筆劃漸層運算式必須參考向運算式公開計算結果行度量的 `['line-progress']` 日期運算式。
+您可以將單一筆劃色彩套用至線條。 您也可以使用色彩漸層填滿一行，以顯示從一個線段到下一個線段的轉換。 例如，您可以使用線條漸層來代表經過一段時間和距離的變更，或在連接的物件線上有不同的溫度。 若要將這項功能套用至一行，資料來源必須將 `lineMetrics` 選項設為 true，然後將色彩漸層運算式傳遞至該行的 `strokeColor` 選項。 筆劃漸層運算式必須參考向運算式公開計算結果行度量的 `['line-progress']` 日期運算式。
 
 <br/>
 
