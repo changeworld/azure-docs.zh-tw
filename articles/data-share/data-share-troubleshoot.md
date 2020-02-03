@@ -7,12 +7,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 07/10/2019
-ms.openlocfilehash: 6ad612d56b25da9e092070198e321e7fca8ad96b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 901f2b56bc045dc9a9837dd18b2e6ce7169aa3b9
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490557"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964221"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share"></a>針對 Azure 資料共用中的常見問題進行疑難排解 
 
@@ -24,53 +24,72 @@ ms.locfileid: "73490557"
 
 ![沒有邀請](media/no-invites.png)
 
-上述錯誤是此服務的已知問題，目前正在處理。 解決方法是遵循下列步驟。 
+這可能是因為下列原因：
 
-1. 在 Azure 入口網站中，瀏覽到 [訂用帳戶]。
-1. 選取您用於 Azure Data Share 的訂用帳戶
-1. 按一下 [資源提供者]
-1. 搜尋 Microsoft.DataShare
-1. 按一下 [註冊]
+* **Azure 資料共用服務並未註冊為 Azure 租使用者中任何 Azure 訂用帳戶的資源提供者。** 如果您的 Azure 租使用者中沒有資料共用資源，您將會遇到此問題。 當您建立 Azure 資料共用資源時，它會自動在您的 Azure 訂用帳戶中註冊資源提供者。 您也可以依照下列步驟，手動註冊資料共用服務。 您必須擁有 Azure 參與者角色，才能完成這些步驟。
 
-您必須擁有 [Azure 參與者 RBAC 角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor)才能完成這些步驟。 
+    1. 在 Azure 入口網站中，瀏覽到 [訂用帳戶]。
+    1. 選取您想要用來建立 Azure 資料共用資源的訂用帳戶
+    1. 按一下 [資源提供者]
+    1. 搜尋**DataShare**
+    1. 按一下 [註冊] 
 
-如果您仍然無法看見資料共用邀請，請連絡您的資料提供者，並確保他們是將邀請傳送到您的 Azure 登入電子郵件地址，而「不是」您的電子郵件別名。 
+    您必須擁有 [Azure 參與者 RBAC 角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor)才能完成這些步驟。 
 
-> [!IMPORTANT]
-> 如果您已接受 Azure Data Share 邀請並結束服務才設定儲存體，請遵循[設定資料集對應](how-to-configure-mapping.md)操作指南所述的指示，來了解如何完成所接收資料共用的設定，並開始接收資料。 
+* **邀請會傳送至您的電子郵件別名，而不是您的 Azure 登入電子郵件。** 如果您已註冊 Azure 資料共用服務，或已在 Azure 租使用者中建立資料共用資源，但仍無法看到邀請，可能是因為提供者已將您的電子郵件別名輸入為收件者，而不是您的 Azure 登入電子郵件地址。 請洽詢您的資料提供者，並確定他們已將邀請傳送至您的 Azure 登入電子郵件地址，而不是您的電子郵件別名。
 
-## <a name="error-when-creating-or-receiving-a-new-data-share"></a>建立或接收新的 Data Share 時發生錯誤
+* **已接受邀請。** 電子郵件中的連結會帶您前往 Azure 入口網站中的資料共用邀請頁面，其中只會列出暫止的邀請。 如果您已經接受邀請，它就不會再顯示在 [資料共用邀請] 頁面中。 繼續前往您用來接受邀請的資料共用資源，以查看已接收的共用，並設定您的目標 Azure 資料總管叢集設定。
 
-「錯誤：作業傳回不正確狀態碼 ' BadRequest '」
+## <a name="error-when-creating-or-receiving-a-new-share"></a>建立或接收新的共用時發生錯誤
 
-「錯誤： AuthorizationFailed」
+「無法加入資料集」
 
-「錯誤：儲存體帳戶的角色指派」
+「無法對應資料集」
 
-![權限錯誤](media/error-write-privilege.png)
+「無法將資料共用資源 x 存取權授與 y」
 
-如果您在建立新的資料共用或接收新的資料共用時收到任何上述錯誤，原因會是沒有足夠的儲存體帳戶權限。 所需權限為 *Microsoft.Authorization/role assignments/write*，其存在於儲存體擁有者角色，或者也可以指派給自訂角色。 即使您建立了儲存體帳戶，但不代表您就會自動成為儲存體帳戶的擁有者。 請遵循下列步驟來對自己授與儲存體帳戶的擁有者角色。 或者，您也可以建立有此權限的自訂角色，再將自己新增至該角色。  
+「您沒有 x 的適當許可權」
 
-1. 在 Azure 入口網站中瀏覽至儲存體帳戶
-1. 選取 [存取控制 (IAM)]
-1. 按一下 [新增]
-1. 將您自己新增為擁有者。
+「我們無法將 Azure 資料共用帳戶的寫入權限新增到一或多個選取的資源」
+
+如果您在建立新的共用或對應資料集時收到上述任何錯誤，可能是因為 Azure 資料存放區的許可權不足。 如需必要許可權，請參閱[角色和需求](concepts-roles-permissions.md)。 
+
+您需要有寫入權限，才能共用或接收 Azure 資料存放區中的資料，這通常存在於參與者角色中。 
+
+如果這是您第一次從 Azure 資料存放區共用或接收資料，您也需要有*Microsoft 授權/角色指派/寫入*許可權，這通常存在於擁有者角色中。 即使您已建立 Azure 資料存放區資源，也不會自動將您設為資源的擁有者。 有了適當的許可權，Azure 資料共用服務就會自動授與資料共用資源的受控識別對資料存放區的存取權。 此程式可能需要幾分鐘的時間才會生效。 如果您因為這項延遲而遇到失敗，請在幾分鐘後再試一次。
+
+以 SQL 為基礎的共用需要額外的許可權。 如需詳細資訊，請參閱疑難排解以 SQL 為基礎的共用。
 
 ## <a name="troubleshooting-sql-based-sharing"></a>疑難排解以 SQL 為基礎的共用
 
-「錯誤：未新增 x 資料集，因為您沒有共用所需的許可權。」
+「SQL database 中不存在使用者 x」
 
-如果您從以 SQL 為基礎的來源新增資料集時收到此錯誤，可能是因為您未在 SQL Server 上建立 Azure 資料共用 MSI 的使用者。  若要解決此問題，請執行下列腳本：
+如果您從以 SQL 為基礎的來源新增資料集時收到此錯誤，可能是因為您未在 SQL Server 上建立 Azure 資料共用受控識別的使用者。  若要解決此問題，請執行下列腳本：
 
 ```sql
-    create user <share_acct_name> from external provider;     
-    exec sp_addrolemember db_owner, <share_acct_name>; 
+    create user "<share_acct_name>" from external provider; 
+    exec sp_addrolemember db_datareader, "<share_acct_name>";
 ```      
-請注意， *< share_acc_name >* 是您的資料共用帳戶的名稱。 如果您尚未建立資料共用帳戶，您可以稍後再回到此必要條件。         
+如果您在將資料集對應至以 SQL 為基礎的目標時收到此錯誤，可能是因為您未在 SQL Server 上建立 Azure 資料共用受控識別的使用者。  若要解決此問題，請執行下列腳本：
 
-請確定您已遵循[共用資料](share-your-data.md)教學課程中所列的所有必要條件。
+```sql
+    create user "<share_acc_name>" from external provider; 
+    exec sp_addrolemember db_datareader, "<share_acc_name>"; 
+    exec sp_addrolemember db_datawriter, "<share_acc_name>"; 
+    exec sp_addrolemember db_ddladmin, "<share_acc_name>";
+```
+請注意， *< share_acc_name >* 是您的資料共用資源名稱。      
+
+請確定您已遵循[共用資料](share-your-data.md)及[接受和接收資料](subscribe-to-data-share.md)教學課程中所列的所有必要條件。
+
+## <a name="snapshot-failed"></a>快照集失敗
+快照集可能會因為各種原因而失敗。 若要尋找詳細的錯誤訊息，請按一下快照的開始時間，然後按每個資料集的狀態。 
+
+如果錯誤訊息與許可權相關，請確認資料共用服務具有必要的許可權。 如需詳細資訊，請參閱[角色和需求](concepts-roles-permissions.md)。 如果這是您第一次建立快照集，可能需要幾分鐘的時間，才會將 Azure 資料存放區的存取權授與資料共用資源。 請稍候幾分鐘，然後再試一次。
 
 ## <a name="next-steps"></a>後續步驟
 
-若要了解如何開始共用資料，請繼續進行[共用資料](share-your-data.md)教學課程。
+若要了解如何開始共用資料，請繼續進行[共用資料](share-your-data.md)教學課程。 
+
+若要瞭解如何接收資料，請繼續進行[接受和接收資料](subscribe-to-data-share.md)教學課程。
 

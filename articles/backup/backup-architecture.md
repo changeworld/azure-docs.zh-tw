@@ -3,12 +3,12 @@ title: 架構概觀
 description: 概略說明 Azure 備份服務所使用的架構、元件和程序。
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: de532bb02b4ecf5e912a71df404418338325d582
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f311f6d49a776a49080675f3c1ccc28a7a27cb92
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450187"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963932"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure 備份架構和元件
 
@@ -101,6 +101,23 @@ Azure 備份提供不同的備份代理程式，視要備份的機器類型而�
 備份已刪除重複資料的磁碟 | | | ![部分][yellow]<br/><br/> 僅用於內部部署的 DPM/MABS 伺服器。
 
 ![資料表索引鍵](./media/backup-architecture/table-key.png)
+
+## <a name="backup-policy-essentials"></a>備份原則基本資訊
+
+- 每個保存庫都會建立備份原則。
+- 您可以針對下列工作負載的備份建立備份原則
+  - Azure VM
+  - Azure VM 中的 SQL
+  - Azure 檔案共用
+- 您可以將一個原則指派給多項資源。 Azure VM 備份原則可用來保護許多 Azure VM。
+- 原則是由兩個元件所組成
+  - 排程：製作備份的時間
+  - 保留期：每個備份應保留的時間長度。
+- 排程可以定義為「每日」或「每週」的特定時間點。
+- 您可以定義「每日」、「每週」、「每月」、「每年」備份點的保留期。
+- 「每週」是指於當週的特定一天備份，「每月」代表於當月的特定一天備份，而「每年」是指於當年的特定一天備份。
+- 「每月」、「每年」備份點的保留期也稱為 "LongTermRetention"。
+- 建立保存庫時，也會建立名為 "DefaultPolicy" 的 Azure VM 備份原則，並可用於備份 Azure Vm。
 
 ## <a name="architecture-built-in-azure-vm-backup"></a>架構：內建的 Azure VM 備份
 

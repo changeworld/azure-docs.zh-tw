@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 08/23/2019
-ms.openlocfilehash: f1fd776f903b4f5b4f315147f460143c7843fdc9
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.date: 02/03/2020
+ms.openlocfilehash: 87798c93bbc1098daea2f7258a3af3e26bb4bb93
+ms.sourcegitcommit: 85d52b799621d35d7df32c2cb1e339071c619bb3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689067"
+ms.lasthandoff: 02/03/2020
+ms.locfileid: "76966090"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>在運算式中使用函數來進行 Azure Logic Apps 和電源自動化的參考指南
 
@@ -2032,7 +2032,7 @@ formatNumber(<number>, <format>, <locale>?)
 假設您想要格式化 `1234567890`的數位。 這個範例會將該數位格式化為字串 "1234567890.00"。
 
 ```
-formatNumber(1234567890, "{0:0,0.00}", "en-us")
+formatNumber(1234567890, '{0:0,0.00}', 'en-us')
 ```
 
 \* 範例 2 "
@@ -2040,7 +2040,7 @@ formatNumber(1234567890, "{0:0,0.00}", "en-us")
 假設您想要格式化 `1234567890`的數位。 這個範例會將數位格式化為字串 "1.234.567.890，00"。
 
 ```
-formatNumber(1234567890, "{0:0,0.00}", "is-is")
+formatNumber(1234567890, '{0:0,0.00}', 'is-is')
 ```
 
 *範例 3*
@@ -2048,7 +2048,7 @@ formatNumber(1234567890, "{0:0,0.00}", "is-is")
 假設您想要格式化 `17.35`的數位。 這個範例會將數位格式化為字串 "$17.35"。
 
 ```
-formatNumber(17.36, "{0:C2}")
+formatNumber(17.36, 'C2')
 ```
 
 *範例 4*
@@ -2056,7 +2056,7 @@ formatNumber(17.36, "{0:C2}")
 假設您想要格式化 `17.35`的數位。 這個範例會將數位格式化為字串 "17，35 kr"。
 
 ```
-formatNumber(17.36, "{0:C2}", "is-is")
+formatNumber(17.36, 'C2', 'is-is')
 ```
 
 <a name="getFutureTime"></a>

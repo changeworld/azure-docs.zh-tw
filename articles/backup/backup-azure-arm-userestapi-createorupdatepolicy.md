@@ -4,33 +4,18 @@ description: 在本文中，您將瞭解如何使用 REST API 來建立和管理
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: a086fc9c8be22f177d7fb1205e3545ddc52f5c83
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 0718ebc3612f53f1c2cc279096dd92de69bb5ef6
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554896"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963847"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>使用 REST API 建立 Azure 復原服務備份原則
 
 [原則 REST API 文件](/rest/api/backup/protectionpolicies/createorupdate)概述為 Azure 復原服務保存庫建立備份原則的步驟。 讓我們使用這份文件作為參考，以建立 Azure VM 備份的原則。
 
-## <a name="backup-policy-essentials"></a>備份原則基本資訊
-
-- 每個保存庫都會建立備份原則。
-- 您可以針對下列工作負載的備份建立備份原則
-  - Azure VM
-  - Azure VM 中的 SQL
-  - Azure 檔案共用
-- 您可以將一個原則指派給多項資源。 Azure VM 備份原則可用來保護許多 Azure VM。
-- 原則是由兩個元件所組成
-  - 排程：製作備份的時間
-  - 保留期：每個備份應保留的時間長度。
-- 排程可以定義為「每日」或「每週」的特定時間點。
-- 您可以定義「每日」、「每週」、「每月」、「每年」備份點的保留期。
-- 「每週」是指於當週的特定一天備份，「每月」代表於當月的特定一天備份，而「每年」是指於當年的特定一天備份。
-- 「每月」、「每年」備份點的保留期也稱為 "LongTermRetention"。
-- 建立保存庫時，也會建立名為 "DefaultPolicy" 的 Azure VM 備份原則，並可用於備份 Azure Vm。
+## <a name="create-or-update-a-policy"></a>建立或更新原則
 
 若要建立或更新 Azure 備份原則，請使用下列 PUT 作業
 
@@ -44,10 +29,10 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 例如，若要建立 Azure VM 備份的原則，以下是要求本文的元件。
 
-|Name  |必要項  |Type  |描述  |
+|名稱  |必要項  |類型  |說明  |
 |---------|---------|---------|---------|
 |properties     |   是      |  ProtectionPolicy：[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource 屬性        |
-|tags     |         | Object        |  資源標籤       |
+|tags     |         | 物件        |  資源標籤       |
 
 如需要求本文中的完整定義清單，請參閱[備份原則 REST API 文件](/rest/api/backup/protectionpolicies/createorupdate)。
 
@@ -152,7 +137,7 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 它會傳回兩個回應：在建立另一個作業時，202（已接受），然後在該作業完成時傳回200（確定）。
 
-|Name  |Type  |描述  |
+|名稱  |類型  |說明  |
 |---------|---------|---------|
 |200 確定     |    [保護 PolicyResource](/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  確定       |
 |202 已接受     |         |     已接受    |

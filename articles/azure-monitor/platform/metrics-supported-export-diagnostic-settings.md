@@ -8,12 +8,12 @@ ms.date: 05/20/2019
 author: rboucher
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 5d38786d3c7b852d3a9b65cd366eed68ebbb01e3
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: dcf5276393400be864e738d89bc5713f5aac242b
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152947"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963473"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>透過診斷設定可匯出 Azure 監視器平臺計量
 
@@ -24,6 +24,19 @@ Azure 監視器預設會提供[平臺計量](data-platform-metrics.md)，而且�
 2. 使用[計量 REST API](https://docs.microsoft.com/rest/api/monitor/metrics/list)
 
 由於 Azure 監視器後端的複雜性，並非所有計量都可以使用診斷設定匯出。 下表列出哪些可以使用診斷設定來匯出。
+
+資料表包含下列資料行。 
+- 可透過診斷設定匯出嗎？ 
+- ResourceType 
+- 計量 
+- MetricDisplayName
+- 單位 
+- AggregationType
+
+
+> [!NOTE]
+> 下表在底部可能會有水準捲軸。 如果您認為遺失資訊，請檢查捲軸是否為左側的方向。  
+
 
 可透過診斷設定匯出嗎？ | ResourceType | 計量 | MetricDisplayName | 單位 | AggregationType
 |----|-----|------|----|----|-----|
@@ -435,7 +448,7 @@ Azure 監視器預設會提供[平臺計量](data-platform-metrics.md)，而且�
 是 | Microsoft.CognitiveServices/accounts | TotalTransactions | 交易數總計 | 計數 | 總計
 是 | Microsoft.Compute/virtualMachines | CPU Credits Consumed | CPU Credits Consumed | 計數 | Average
 是 | Microsoft.Compute/virtualMachines | 剩餘 CPU 信用額度 | 剩餘 CPU 信用額度 | 計數 | Average
-是 | Microsoft.Compute/virtualMachines | 資料磁碟佇列深度 | 資料磁片佇列深度（預覽） | 計數 | Average
+是 | Microsoft.Compute/virtualMachines | 資料磁片佇列深度 | 資料磁片佇列深度（預覽） | 計數 | Average
 是 | Microsoft.Compute/virtualMachines | 資料磁片讀取位元組數/秒 | 資料磁碟讀取位元組/秒 (預覽) | 每秒計數 | Average
 是 | Microsoft.Compute/virtualMachines | 資料磁片讀取作業/秒 | 資料磁碟讀取作業/秒 (預覽) | 每秒計數 | Average
 是 | Microsoft.Compute/virtualMachines | 資料磁片寫入位元組數/秒 | 資料磁碟寫入位元組/秒 (預覽) | 每秒計數 | Average
@@ -444,13 +457,13 @@ Azure 監視器預設會提供[平臺計量](data-platform-metrics.md)，而且�
 是 | Microsoft.Compute/virtualMachines | Disk Read Operations/Sec | Disk Read Operations/Sec | 每秒計數 | Average
 是 | Microsoft.Compute/virtualMachines | Disk Write Bytes | Disk Write Bytes | 位元組 | 總計
 是 | Microsoft.Compute/virtualMachines | Disk Write Operations/Sec | Disk Write Operations/Sec | 每秒計數 | Average
-是 | Microsoft.Compute/virtualMachines | 連入流量 | 連入流量 | 計數 | Average
+是 | Microsoft.Compute/virtualMachines | 輸入流量 | 輸入流量 | 計數 | Average
 是 | Microsoft.Compute/virtualMachines | 輸入流量最大建立速率 | 輸入流量最大建立速率（預覽） | 每秒計數 | Average
 是 | Microsoft.Compute/virtualMachines | Network In | 計費中的網路（已淘汰） | 位元組 | 總計
 是 | Microsoft.Compute/virtualMachines | 網路總計 | 網路總計 | 位元組 | 總計
 是 | Microsoft.Compute/virtualMachines | Network Out | 網路輸出計費（已淘汰） | 位元組 | 總計
 是 | Microsoft.Compute/virtualMachines | 網路輸出總計 | 網路輸出總計 | 位元組 | 總計
-是 | Microsoft.Compute/virtualMachines | OS 磁碟佇列深度 | OS 磁片佇列深度（預覽） | 計數 | Average
+是 | Microsoft.Compute/virtualMachines | OS 磁片佇列深度 | OS 磁片佇列深度（預覽） | 計數 | Average
 是 | Microsoft.Compute/virtualMachines | OS 磁片讀取位元組數/秒 | OS 磁碟讀取位元組/秒 (預覽) | 每秒計數 | Average
 是 | Microsoft.Compute/virtualMachines | OS 磁片讀取作業數/秒 | OS 磁碟讀取作業/秒 (預覽) | 每秒計數 | Average
 是 | Microsoft.Compute/virtualMachines | OS 磁片寫入位元組數/秒 | OS 磁碟寫入位元組/秒 (預覽) | 每秒計數 | Average
@@ -474,7 +487,7 @@ Azure 監視器預設會提供[平臺計量](data-platform-metrics.md)，而且�
 是 | Microsoft.Compute/virtualMachines | Premium OS 磁碟快取讀取遺漏 | Premium OS 磁碟快取讀取遺漏（預覽） | 百分比 | Average
 是 | Microsoft.Compute/virtualMachineScaleSets | CPU Credits Consumed | CPU Credits Consumed | 計數 | Average
 是 | Microsoft.Compute/virtualMachineScaleSets | 剩餘 CPU 信用額度 | 剩餘 CPU 信用額度 | 計數 | Average
-是 | Microsoft.Compute/virtualMachineScaleSets | 資料磁碟佇列深度 | 資料磁片佇列深度（預覽） | 計數 | Average
+是 | Microsoft.Compute/virtualMachineScaleSets | 資料磁片佇列深度 | 資料磁片佇列深度（預覽） | 計數 | Average
 是 | Microsoft.Compute/virtualMachineScaleSets | 資料磁片讀取位元組數/秒 | 資料磁碟讀取位元組/秒 (預覽) | 每秒計數 | Average
 是 | Microsoft.Compute/virtualMachineScaleSets | 資料磁片讀取作業/秒 | 資料磁碟讀取作業/秒 (預覽) | 每秒計數 | Average
 是 | Microsoft.Compute/virtualMachineScaleSets | 資料磁片寫入位元組數/秒 | 資料磁碟寫入位元組/秒 (預覽) | 每秒計數 | Average
@@ -483,13 +496,13 @@ Azure 監視器預設會提供[平臺計量](data-platform-metrics.md)，而且�
 是 | Microsoft.Compute/virtualMachineScaleSets | Disk Read Operations/Sec | Disk Read Operations/Sec | 每秒計數 | Average
 是 | Microsoft.Compute/virtualMachineScaleSets | Disk Write Bytes | Disk Write Bytes | 位元組 | 總計
 是 | Microsoft.Compute/virtualMachineScaleSets | Disk Write Operations/Sec | Disk Write Operations/Sec | 每秒計數 | Average
-是 | Microsoft.Compute/virtualMachineScaleSets | 連入流量 | 連入流量 | 計數 | Average
+是 | Microsoft.Compute/virtualMachineScaleSets | 輸入流量 | 輸入流量 | 計數 | Average
 是 | Microsoft.Compute/virtualMachineScaleSets | 輸入流量最大建立速率 | 輸入流量最大建立速率（預覽） | 每秒計數 | Average
 是 | Microsoft.Compute/virtualMachineScaleSets | Network In | 計費中的網路（已淘汰） | 位元組 | 總計
 是 | Microsoft.Compute/virtualMachineScaleSets | 網路總計 | 網路總計 | 位元組 | 總計
 是 | Microsoft.Compute/virtualMachineScaleSets | Network Out | 網路輸出計費（已淘汰） | 位元組 | 總計
 是 | Microsoft.Compute/virtualMachineScaleSets | 網路輸出總計 | 網路輸出總計 | 位元組 | 總計
-是 | Microsoft.Compute/virtualMachineScaleSets | OS 磁碟佇列深度 | OS 磁片佇列深度（預覽） | 計數 | Average
+是 | Microsoft.Compute/virtualMachineScaleSets | OS 磁片佇列深度 | OS 磁片佇列深度（預覽） | 計數 | Average
 是 | Microsoft.Compute/virtualMachineScaleSets | OS 磁片讀取位元組數/秒 | OS 磁碟讀取位元組/秒 (預覽) | 每秒計數 | Average
 是 | Microsoft.Compute/virtualMachineScaleSets | OS 磁片讀取作業數/秒 | OS 磁碟讀取作業/秒 (預覽) | 每秒計數 | Average
 是 | Microsoft.Compute/virtualMachineScaleSets | OS 磁片寫入位元組數/秒 | OS 磁碟寫入位元組/秒 (預覽) | 每秒計數 | Average
@@ -513,7 +526,7 @@ Azure 監視器預設會提供[平臺計量](data-platform-metrics.md)，而且�
 是 | Microsoft.Compute/virtualMachineScaleSets | Premium OS 磁碟快取讀取遺漏 | Premium OS 磁碟快取讀取遺漏（預覽） | 百分比 | Average
 是 | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | CPU Credits Consumed | CPU Credits Consumed | 計數 | Average
 是 | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | 剩餘 CPU 信用額度 | 剩餘 CPU 信用額度 | 計數 | Average
-是 | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | 資料磁碟佇列深度 | 資料磁片佇列深度（預覽） | 計數 | Average
+是 | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | 資料磁片佇列深度 | 資料磁片佇列深度（預覽） | 計數 | Average
 是 | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | 資料磁片讀取位元組數/秒 | 資料磁碟讀取位元組/秒 (預覽) | 每秒計數 | Average
 是 | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | 資料磁片讀取作業/秒 | 資料磁碟讀取作業/秒 (預覽) | 每秒計數 | Average
 是 | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | 資料磁片寫入位元組數/秒 | 資料磁碟寫入位元組/秒 (預覽) | 每秒計數 | Average
@@ -522,13 +535,13 @@ Azure 監視器預設會提供[平臺計量](data-platform-metrics.md)，而且�
 是 | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | Disk Read Operations/Sec | Disk Read Operations/Sec | 每秒計數 | Average
 是 | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | Disk Write Bytes | Disk Write Bytes | 位元組 | 總計
 是 | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | Disk Write Operations/Sec | Disk Write Operations/Sec | 每秒計數 | Average
-是 | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | 連入流量 | 連入流量 | 計數 | Average
+是 | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | 輸入流量 | 輸入流量 | 計數 | Average
 是 | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | 輸入流量最大建立速率 | 輸入流量最大建立速率（預覽） | 每秒計數 | Average
 是 | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | Network In | 計費中的網路（已淘汰） | 位元組 | 總計
 是 | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | 網路總計 | 網路總計 | 位元組 | 總計
 是 | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | Network Out | 網路輸出計費（已淘汰） | 位元組 | 總計
 是 | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | 網路輸出總計 | 網路輸出總計 | 位元組 | 總計
-是 | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | OS 磁碟佇列深度 | OS 磁片佇列深度（預覽） | 計數 | Average
+是 | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | OS 磁片佇列深度 | OS 磁片佇列深度（預覽） | 計數 | Average
 是 | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | OS 磁片讀取位元組數/秒 | OS 磁碟讀取位元組/秒 (預覽) | 每秒計數 | Average
 是 | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | OS 磁片讀取作業數/秒 | OS 磁碟讀取作業/秒 (預覽) | 每秒計數 | Average
 是 | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | OS 磁片寫入位元組數/秒 | OS 磁碟寫入位元組/秒 (預覽) | 每秒計數 | Average
@@ -554,7 +567,7 @@ Azure 監視器預設會提供[平臺計量](data-platform-metrics.md)，而且�
 是 | Microsoft.ContainerInstance/containerGroups | MemoryUsage | 記憶體使用量 | 位元組 | Average
 是 | Microsoft.ContainerInstance/containerGroups | NetworkBytesReceivedPerSecond | 每秒接收的網路位元組數 | 位元組 | Average
 是 | Microsoft.ContainerInstance/containerGroups | NetworkBytesReceivedPerSecond | 每秒傳輸的網路位元組數 | 位元組 | Average
-是 | Microsoft.ContainerRegistry/registries | RunDuration | 執行持續期間 | 毫秒 | 總計
+是 | Microsoft.ContainerRegistry/registries | RunDuration | 執行持續時間 | 毫秒 | 總計
 是 | Microsoft.ContainerRegistry/registries | SuccessfulPullCount | 成功的提取計數 | 計數 | Average
 是 | Microsoft.ContainerRegistry/registries | SuccessfulPushCount | 成功推送計數 | 計數 | Average
 是 | Microsoft.ContainerRegistry/registries | TotalPullCount | 總提取計數 | 計數 | Average
@@ -883,7 +896,7 @@ Azure 監視器預設會提供[平臺計量](data-platform-metrics.md)，而且�
 是 | Microsoft.Kusto/Clusters | IngestionResult | 內嵌結果 | 計數 | 計數
 是 | Microsoft.Kusto/Clusters | IngestionUtilization | 內嵌使用率 | 百分比 | Average
 是 | Microsoft.Kusto/Clusters | IngestionVolumeInMB | 內嵌磁片區（以 MB 為單位） | 計數 | 總計
-是 | Microsoft.Kusto/Clusters | KeepAlive | 保持運作 | 計數 | Average
+是 | Microsoft.Kusto/Clusters | 保 | 保持運作 | 計數 | Average
 是 | Microsoft.Kusto/Clusters | QueryDuration | 查詢持續時間 | 毫秒 | Average
 是 | Microsoft.Kusto/Clusters | SteamingIngestRequestRate | 串流內嵌要求速率 | 計數 | RateRequestsPerSecond
 是 | Microsoft.Kusto/Clusters | StreamingIngestDataRate | 串流內嵌資料速率 | 計數 | Average

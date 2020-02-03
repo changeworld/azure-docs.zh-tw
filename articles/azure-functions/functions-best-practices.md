@@ -5,12 +5,12 @@ ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 19674cb024bd9b9c9ea9f510080e30614fad8b60
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f808ff2a88a86df25b555f94257168e2d176e7f8
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433303"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963646"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>將 Azure Functions 效能和可靠性最佳化
 
@@ -74,7 +74,9 @@ ms.locfileid: "75433303"
 
 ### <a name="avoid-sharing-storage-accounts"></a>避免共用儲存體帳戶
 
-當您建立函數應用程式時，您必須將它與儲存體帳戶產生關聯。 儲存體帳戶連線會保留在[AzureWebJobsStorage 應用程式設定](./functions-app-settings.md#azurewebjobsstorage)中。 若要將效能最大化，請針對每個函式應用程式使用個別的儲存體帳戶。 當您有 Durable Functions 或事件中樞觸發的函式時，這一點特別重要，這兩個函數都會產生大量的儲存體交易。 當您的應用程式邏輯與 Azure 儲存體（不論是直接（使用儲存體 SDK）或其中一個儲存體系結）互動時，您應該使用專用的儲存體帳戶。 例如，如果您有事件中樞觸發的函式將一些資料寫入 blob 儲存體，請使用兩個儲存體帳戶&mdash;一個用於函式應用程式，另一個用於函式所儲存的 blob。
+當您建立函數應用程式時，您必須將它與儲存體帳戶產生關聯。 儲存體帳戶連線會保留在[AzureWebJobsStorage 應用程式設定](./functions-app-settings.md#azurewebjobsstorage)中。 
+
+[!INCLUDE [functions-shared-storage](../../includes/functions-shared-storage.md)]
 
 ### <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>不要在相同函式應用程式中混用測試和實際執行程式碼
 

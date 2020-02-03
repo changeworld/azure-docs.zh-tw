@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 04/26/2019
-ms.openlocfilehash: 6dbe61c47a7323e2dec599d2f3c77453aa6f8d82
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 02/01/2020
+ms.openlocfilehash: aa7197dc631ea281bd5616b572f4ca01aeb9d45c
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973521"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964765"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>在 vCore 和 DTU 購買模型之間做選擇
 
@@ -47,15 +47,15 @@ Azure SQL Database 可讓您輕鬆購買完全受控的平臺即服務（PaaS）
 
 在布建的計算層中，計算成本會反映為應用程式布建的計算容量總計。
 
-在業務關鍵服務層級中，我們會自動配置至少 3 個複本。 為了反映這項額外的計算資源配置，以 vCore 為基礎的購買模型中的價格比一般用途服務層級更高的商務關鍵服務層級中的 2.7 x 以上。 同樣地，商務關鍵服務層級中的每 GB 儲存價格也會反映 SSD 儲存體的高 i/o 和低延遲。
+在業務關鍵服務層級中，我們會自動配置至少 3 個複本。 為了反映這項額外的計算資源配置，以 vCore 為基礎的購買模型中的價格比一般用途服務層級更高的商務關鍵服務層級中的 2.7 x 以上。 同樣地，商務關鍵服務層級中的每 GB 儲存體價格也會反映較高的 IO 限制和較低的 SSD 儲存體延遲。
 
-針對業務關鍵服務層級和一般用途服務層級，備份儲存體的成本相同，因為這兩個層級都使用標準儲存體。
+對於業務關鍵服務層級和一般用途服務層級而言，備份儲存體的成本相同，因為這兩層都使用標準儲存體來進行備份。
 
 ### <a name="serverless-compute-costs"></a>無伺服器計算成本
 
 如需如何定義計算容量和計算無伺服器計算層成本的說明，請參閱[SQL Database 無伺服器](sql-database-serverless.md)。
 
-## <a name="storage-costs"></a>儲存體成本
+## <a name="storage-costs"></a>儲存成本
 
 不同類型的儲存體會以不同方式計費。 對於資料儲存體，會根據您選取的資料庫或集區大小上限來支付已布建儲存體的費用。 除非您減少或增加該上限，否則成本不會變更。 備份儲存體與您執行個體的自動備份相關聯，而且是動態配置的。 增加您的備份保留期限，會增加您的實例所耗用的備份儲存體。
 
@@ -125,7 +125,19 @@ Dtu 最適合用於瞭解針對不同計算大小和服務層級的 Azure SQL �
 
 ### <a name="determine-the-number-of-dtus-needed-by-a-workload"></a>判斷工作負載所需的 DTU 數目
 
-如果您想要將現有的內部部署或 SQL Server 的虛擬機器工作負載遷移至 Azure SQL Database，請使用[dtu 計算機](https://dtucalculator.azurewebsites.net/)來估計所需的 dtu 數目。 針對現有的 Azure SQL Database 工作負載，請使用[查詢效能深入](sql-database-query-performance.md)解析來瞭解您的資料庫資源耗用量（dtu），並取得優化工作負載的更深入見解。 [Dm_db_ resource_stats](https://msdn.microsoft.com/library/dn800981.aspx)動態管理檢視（DMV）可讓您查看過去一小時的資源耗用量。 [ [Resource_stats](https://msdn.microsoft.com/library/dn269979.aspx)目錄] 視圖會顯示過去14天的資源耗用量，但以較低的精確度為五分鐘的平均值。
+如果您想要將現有的內部部署或 SQL Server 的虛擬機器工作負載遷移至 Azure SQL Database，請使用[dtu 計算機](https://dtucalculator.azurewebsites.net/)來估計所需的 dtu 數目。 針對現有的 Azure SQL Database 工作負載，請使用[查詢效能深入](sql-database-query-performance.md)解析來瞭解您的資料庫資源耗用量（dtu），並取得優化工作負載的更深入見解。 [Dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)動態管理檢視（DMV）可讓您查看過去一小時的資源耗用量。 [ [Resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)目錄] 視圖會顯示過去14天的資源耗用量，但以較低的精確度為五分鐘的平均值。
+
+### <a name="determine-dtu-utilization"></a>判斷 DTU 使用率
+
+若要判斷 DTU/eDTU 使用率相對於資料庫或彈性集區之 DTU/eDTU 限制的平均百分比，請使用下列公式：
+
+`avg_dtu_percent = MAX(avg_cpu_percent, avg_data_io_percent, avg_log_write_percent)`
+
+此公式的輸入值可以從[sys.databases 取得 dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)、 [sys.databases resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)和[sys.databases。 elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) dmv。 換句話說，若要針對資料庫或彈性集區的 DTU/eDTU 限制，判斷 DTU/eDTU 使用率的百分比，請從下列位置挑選最大的百分比值： `avg_cpu_percent`、`avg_data_io_percent`和 `avg_log_write_percent` 在指定的時間點。
+
+> [!NOTE]
+> 資料庫的 DTU 限制是由資料庫可用的 CPU、讀取、寫入和記憶體所決定。 不過，由於 SQL Server 資料庫引擎通常會使用其資料快取的所有可用記憶體來改善效能，因此不論目前的資料庫負載為何，`avg_memory_usage_percent` 值通常會接近100%。 因此，即使記憶體間接影響 DTU 限制，也不會用於 DTU 使用率公式中。
+>
 
 ### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>能受益於彈性資源集區的工作負載
 

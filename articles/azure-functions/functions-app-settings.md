@@ -3,12 +3,12 @@ title: Azure Functions 的應用程式設定參考
 description: Azure Functions 應用程式設定或環境變數的參考文件。
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 87852d940204f574350321e2690b70c9835093d9
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 3853ccbfd492bfaf4a82d62e6d31ab938285ee2e
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921099"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963694"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions 的應用程式設定參考
 
@@ -32,14 +32,14 @@ ms.locfileid: "75921099"
 
 ## <a name="azurewebjobsdashboard"></a>AzureWebJobsDashboard
 
-選擇性儲存體帳戶連接字串，用於儲存記錄並將它們顯示在入口網站的 [監視器] 索引標籤中。 儲存體帳戶必須是一般用途的帳戶，支援 Blob、佇列和資料表。 請參閱[儲存體帳戶](functions-infrastructure-as-code.md#storage-account)和[儲存體帳戶需求](functions-create-function-app-portal.md#storage-account-requirements)。
+選擇性儲存體帳戶連接字串，用於儲存記錄並將它們顯示在入口網站的 [監視器] 索引標籤中。 此設定僅適用于以1.x 版 Azure Functions 執行時間為目標的應用程式。 儲存體帳戶必須是一般用途的帳戶，支援 Blob、佇列和資料表。 若要深入瞭解，請參閱[儲存體帳戶需求](storage-considerations.md#storage-account-requirements)。
 
 |索引鍵|範例值|
 |---|------------|
-|AzureWebJobsDashboard|DefaultEndpointsProtocol=https;AccountName=[name];AccountKey=[key]|
+|AzureWebJobsDashboard|DefaultEndpointsProtocol = HTTPs;AccountName =<name>;AccountKey =<key>|
 
-> [!TIP]
-> 為改善效能和體驗，建議使用 APPINSIGHTS_INSTRUMENTATIONKEY 和適用於監視的 App Insights，而非 AzureWebJobsDashboard
+> [!NOTE]
+> 為了獲得更好的效能和經驗，執行時間2.x 版和更新版本會使用 APPINSIGHTS_INSTRUMENTATIONKEY 和 App Insights 來進行監視，而不是 `AzureWebJobsDashboard`。
 
 ## <a name="azurewebjobsdisablehomepage"></a>AzureWebJobsDisableHomepage
 
@@ -79,7 +79,7 @@ ms.locfileid: "75921099"
 
 ## <a name="azurewebjobsstorage"></a>AzureWebJobsStorage
 
-Azure Functions 執行階段會將此儲存體帳戶連接字串用於所有函式 (由 HTTP 觸發的函式除外)。 儲存體帳戶必須是一般用途的帳戶，支援 Blob、佇列和資料表。 請參閱[儲存體帳戶](functions-infrastructure-as-code.md#storage-account)和[儲存體帳戶需求](functions-create-function-app-portal.md#storage-account-requirements)。
+Azure Functions 執行階段會將此儲存體帳戶連接字串用於所有函式 (由 HTTP 觸發的函式除外)。 儲存體帳戶必須是一般用途的帳戶，支援 Blob、佇列和資料表。 請參閱[儲存體帳戶](functions-infrastructure-as-code.md#storage-account)和[儲存體帳戶需求](storage-considerations.md#storage-account-requirements)。
 
 |索引鍵|範例值|
 |---|------------|

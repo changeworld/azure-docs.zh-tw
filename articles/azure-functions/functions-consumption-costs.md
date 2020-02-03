@@ -3,12 +3,12 @@ title: 估計 Azure Functions 中的耗用量方案成本
 description: 瞭解如何在 Azure 中的取用方案中執行函數應用程式時，更清楚地預估可能產生的成本。
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6a68069ab9af54c1c8cfaf6c20727181e48ba1ec
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 0e3177d7c65eb1624441427f123e6f95095bdbbd
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75890326"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963983"
 ---
 # <a name="estimating-consumption-plan-costs"></a>估計耗用量方案成本
 
@@ -47,7 +47,7 @@ Durable Functions 也可以在取用量方案中執行。 若要深入瞭解使�
 
 | 相關成本 | 說明 |
 | ------------ | ----------- |
-| **儲存體帳戶** | 每個函式應用程式都需要您擁有相關聯的一般用途[Azure 儲存體帳戶](../storage/common/storage-introduction.md#types-of-storage-accounts)，這會[分別計費](https://azure.microsoft.com/pricing/details/storage/)。 此帳戶是由函式執行時間在內部使用，但您也可以將它用於儲存體觸發程式和系結。 如果您沒有儲存體帳戶，則會在建立函數應用程式時為您建立一個。 若要深入瞭解，請參閱[儲存體帳戶需求](functions-scale.md#storage-account-requirements)。|
+| **儲存體帳戶** | 每個函式應用程式都需要您擁有相關聯的一般用途[Azure 儲存體帳戶](../storage/common/storage-introduction.md#types-of-storage-accounts)，這會[分別計費](https://azure.microsoft.com/pricing/details/storage/)。 此帳戶是由函式執行時間在內部使用，但您也可以將它用於儲存體觸發程式和系結。 如果您沒有儲存體帳戶，則會在建立函數應用程式時為您建立一個。 若要深入瞭解，請參閱[儲存體帳戶需求](storage-considerations.md#storage-account-requirements)。|
 | **Application Insights** | 函式依賴[Application Insights](../azure-monitor/app/app-insights-overview.md) ，為您的函式應用程式提供高效能的監視體驗。 雖然並非必要，但您應該[啟用 Application Insights 整合](functions-monitoring.md#enable-application-insights-integration)。 每個月都會包含免費的遙測資料授與。 若要深入瞭解，請參閱[Azure 監視器定價頁面](https://azure.microsoft.com/pricing/details/monitor/)。 |
 | **網路頻寬** | 您不需支付相同區域中 Azure 服務之間的資料傳輸費用。 不過，輸出資料傳輸至另一個區域或 Azure 外部可能會產生成本。 若要深入瞭解，請參閱[頻寬定價詳細資料](https://azure.microsoft.com/pricing/details/bandwidth/)。 |
 

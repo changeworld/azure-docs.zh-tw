@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/03/2019
+ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: 4d91eecc6168ae195fecdf788f091fd70b785f05
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 8bbbd8248c7418b667e34389cb47bd3f6b4f06ab
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937139"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963813"
 ---
 # <a name="send-security-messages-sdk"></a>傳送安全性訊息 SDK
 
@@ -46,7 +46,7 @@ IoT 的 Azure 資訊安全中心會使用下列準則來定義安全性訊息：
 - 如果訊息符合[安全性訊息架構](https://aka.ms/iot-security-schemas)
 - 如果訊息在傳送之前已設定為安全性訊息
 
-每個安全性訊息都包含寄件者的元`AgentId`資料`AgentVersion` `MessageSchemaVersion` ，例如、和安全性事件清單。
+每個安全性訊息都包含寄件者的中繼資料，例如 `AgentId`、`AgentVersion`、`MessageSchemaVersion` 和安全性事件清單。
 架構會定義安全性訊息（包括事件種類）的有效和必要屬性。
 
 >[!Note]
@@ -57,7 +57,7 @@ IoT 的 Azure 資訊安全中心會使用下列準則來定義安全性訊息：
 
 ## <a name="valid-message-example"></a>有效的訊息範例
 
-下列範例顯示有效的安全性訊息物件。 此範例包含訊息中繼資料和一個`ProcessCreate`安全性事件。
+下列範例顯示有效的安全性訊息物件。 此範例包含訊息中繼資料和一個 `ProcessCreate` 安全性事件。
 
 一旦設定為安全性訊息並傳送之後，IoT 的 Azure 資訊安全中心就會處理此訊息。
 
@@ -91,7 +91,7 @@ IoT 的 Azure 資訊安全中心會使用下列準則來定義安全性訊息：
 
 ## <a name="send-security-messages"></a>傳送安全性訊息 
 
-使用[Azure Iot C 裝置 sdk](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview)、 [azure C# IoT 裝置](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview)sdk、 [Azure IOT node.js SDK](https://github.com/Azure/azure-iot-sdk-node)、 [azure iot Python sdk](https://github.com/Azure/azure-iot-sdk-python)或 [azure iot JAVA sdk，在不使用 IoT 代理程式的 Azure 資訊安全中心的情況下傳送安全性訊息](https://github.com/Azure/azure-iot-sdk-java).
+使用[Azure Iot C 裝置 sdk](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview)、 [AZURE C# IoT 裝置 SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview)、 [Azure IOT node.js SDK](https://github.com/Azure/azure-iot-sdk-node)、 [azure iot Python sdk](https://github.com/Azure/azure-iot-sdk-python)或[azure iot JAVA SDK](https://github.com/Azure/azure-iot-sdk-java)，在*不*使用 IoT 代理程式的 Azure 資訊安全中心的情況下傳送安全性訊息。
 
 若要從您的裝置傳送裝置資料以供 IoT Azure 資訊安全中心處理，請使用下列其中一個 Api 將訊息標示為正確路由至 IoT 處理管線的 Azure 資訊安全中心。 
 
@@ -192,14 +192,21 @@ function SendSecurityMessage(messageContent)
 
 #### <a name="python-api"></a>Python API
 
+若要使用 Python API，您必須安裝[azure iot 裝置](https://pypi.org/project/azure-iot-device/)套件。
+
+使用 Python API 時，您可以透過模組或使用唯一的裝置或模組連接字串，透過裝置傳送安全性訊息。 搭配裝置使用下列 Python 腳本範例時，請使用**IoTHubDeviceClient**，並搭配模組使用**IoTHubModuleClient**。 
+
 ```python
+from azure.iot.device.aio import IoTHubDeviceClient, IoTHubModuleClient
+from azure.iot.device import Message
+
 async def send_security_message_async(message_content):
     conn_str = os.getenv("<connection_string>")
     device_client = IoTHubDeviceClient.create_from_connection_string(conn_str)
     await device_client.connect()
     security_message = Message(message_content)
     security_message.set_as_security_message()
-    await device_client.send_d2c_message(security_message)
+    await device_client.send_message(security_message)
     await device_client.disconnect()
 ```
 

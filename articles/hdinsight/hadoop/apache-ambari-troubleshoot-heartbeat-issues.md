@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 09/11/2019
-ms.openlocfilehash: ae5cfcfcd394aab644b35ac66aafa213dc49dd42
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: ae05a0d0866c38c2414bacb638fa90936bb6dc15
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895390"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964612"
 ---
 # <a name="apache-ambari-heartbeat-issues-in-azure-hdinsight"></a>Azure HDInsight 中的 Apache Ambari 的心跳問題
 
@@ -82,6 +82,21 @@ Ambari 代理程式尚未啟動，這會導致 Ambari UI 的警示，而這些�
     ```
 
     如果容錯移轉控制器服務未執行，可能是因為發生問題而導致 hdinsight 代理程式無法啟動容錯移轉控制器。 檢查 `/var/log/hdinsight-agent/hdinsight-agent.out` 檔案中的 hdinsight 代理程式記錄檔。
+
+## <a name="scenario-heartbeat-lost-for-ambari"></a>案例： Ambari 遺失的心跳
+
+### <a name="issue"></a>問題
+
+Ambari 的心跳代理程式已遺失。
+
+### <a name="cause"></a>原因
+
+OMS 記錄會導致高 CPU 使用率。
+
+### <a name="resolution"></a>解析度
+
+* 使用[AzHDInsightOperationsManagementSuite](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightoperationsmanagementsuite?view=azps-2.8.0) PowerShell 模組停用 OMS 記錄。 
+* 刪除 `mdsd.warn` 記錄檔
 
 ---
 

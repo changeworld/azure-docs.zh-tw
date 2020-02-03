@@ -3,12 +3,12 @@ title: 使用 Visual Studio Code 開發 Azure Functions
 description: 瞭解如何使用適用于 Visual Studio Code 的 Azure Functions 延伸模組來開發和測試 Azure Functions。
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 59c350b267583a2bccfdd66996aa6c1f97954218
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7e533d5826d429a716ad1592d75159782ed43fa7
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845391"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964003"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>使用 Visual Studio Code 開發 Azure Functions
 
@@ -79,6 +79,8 @@ Azure Functions 延伸模組提供下列優點：
 
     ![Visual Studio Code 中的 HTTP 觸發函式範本](./media/functions-develop-vs-code/new-function-full.png)
 
+### <a name="generated-project-files"></a>產生的專案檔
+
 專案範本會以您選擇的語言建立專案，並安裝所需的相依性。 針對任何語言，新的專案會有下列檔案：
 
 * **host.json**：讓您設定 Functions 主機。 當您在本機執行函式時，以及在 Azure 中執行函式時，會套用這些設定。 如需詳細資訊，請參閱 [host.json 參考](functions-host-json.md)。
@@ -87,6 +89,30 @@ Azure Functions 延伸模組提供下列優點：
 
     >[!IMPORTANT]
     >因為本機. 設定的 json 檔案可以包含秘密，所以您必須將它從您的專案原始檔控制中排除。
+
+根據您的語言而定，會建立這些其他檔案：
+
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+
+* 實作用函式的[HttpExample.cs 類別庫](functions-dotnet-class-library.md#functions-class-library-project)檔案。
+
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+
+* 根資料夾中的 package. json 檔案。
+
+* HttpExample 資料夾，其中包含函式[. json 定義](functions-reference-node.md#folder-structure)檔和[.js](functions-reference-node.md#exporting-a-function)檔案，也就是包含函式程式碼的 node.js 檔案。
+
+<!-- # [PowerShell](#tab/powershell)
+
+* An HttpExample folder that contains the [function.json definition file](functions-reference-python.md#programming-model) and the run.ps1 file, which contains the function code.
+ 
+# [Python](#tab/python)
+    
+* A project-level requirements.txt file that lists packages required by Functions.
+    
+* An HttpExample folder that contains the [function.json definition file](functions-reference-python.md#programming-model) and the \_\_init\_\_.py file, which contains the function code.
+     -->
+---
 
 此時，您可以藉由修改函式[. json](#add-a-function-to-your-project)檔案，或[將參數新增至C#類別庫](#add-a-function-to-your-project)函式，將輸入和輸出系結新增至函式。
 

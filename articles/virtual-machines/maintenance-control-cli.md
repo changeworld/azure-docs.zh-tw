@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/21/2019
 ms.author: cynthn
-ms.openlocfilehash: 6172b5da60037051517a43b1b3b8b91b50ab2aac
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: e2eb77bfd000ecaa3bad5fd3c5792d1aa3a81964
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895894"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964867"
 ---
 # <a name="preview-control-updates-with-maintenance-control-and-the-azure-cli"></a>預覽：使用維護控制和 Azure CLI 控制更新
 
@@ -31,13 +31,13 @@ ms.locfileid: "75895894"
 > [!IMPORTANT]
 > 維護控制目前為公開預覽狀態。
 > 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-> 
+>
 
 ## <a name="limitations"></a>限制
 
 - Vm 必須位於[專用主機](./linux/dedicated-hosts.md)上，或使用[隔離的 VM 大小](./linux/isolation.md)建立。
 - 35天后，將會自動套用更新。
-- 使用者必須擁有**資源擁有**者存取權。
+- 使用者必須擁有**資源參與者**存取權。
 
 
 ## <a name="install-the-maintenance-extension"></a>安裝維護延伸模組
@@ -151,6 +151,23 @@ az maintenance assignment list \
 
 使用 `az maintenance update list` 查看是否有擱置中的更新。 更新--訂用帳戶為包含 VM 之訂用帳戶的識別碼。
 
+如果沒有任何更新，此命令會傳回錯誤訊息，其中將包含文字： `Resource not found...StatusCode: 404`。
+
+如果有更新，即使有多個擱置中的更新，也只會傳回一個。 此更新的資料會在物件中傳回：
+
+```text
+[
+  {
+    "impactDurationInSec": 9,
+    "impactType": "Freeze",
+    "maintenanceScope": "Host",
+    "notBefore": "2020-03-03T07:23:04.905538+00:00",
+    "resourceId": "/subscriptions/9120c5ff-e78e-4bd0-b29f-75c19cadd078/resourcegroups/DemoRG/providers/Microsoft.Compute/hostGroups/demoHostGroup/hosts/myHost",
+    "status": "Pending"
+  }
+]
+  ```
+
 ### <a name="isolated-vm"></a>隔離的 VM
 
 檢查隔離 VM 的暫止更新。 在此範例中，會將輸出格式化為資料表以方便閱讀。
@@ -166,7 +183,7 @@ az maintenance update list \
 
 ### <a name="dedicated-host"></a>專用主機
 
-以檢查專用主機的暫止更新。 在此範例中，會將輸出格式化為資料表以方便閱讀。 將資源的值取代為您自己的值。
+檢查專用主機（ADH）的擱置更新。 在此範例中，會將輸出格式化為資料表以方便閱讀。 將資源的值取代為您自己的值。
 
 ```azurecli-interactive
 az maintenance update list \
@@ -182,7 +199,7 @@ az maintenance update list \
 
 ## <a name="apply-updates"></a>套用更新
 
-使用 `az maintenance apply update` 來套用擱置中的更新。
+使用 `az maintenance apply update` 來套用擱置中的更新。 成功時，此命令會傳回 JSON，其中包含更新的詳細資料。
 
 ### <a name="isolated-vm"></a>隔離的 VM
 
@@ -191,7 +208,7 @@ az maintenance update list \
 ```azurecli-interactive
 az maintenance applyupdate create \
    --subscription 1111abcd-1a11-1a2b-1a12-123456789abc \
-   -g myMaintenanceRG\
+   --resource-group myMaintenanceRG \
    --resource-name myVM \
    --resource-type virtualMachines \
    --provider-name Microsoft.Compute
@@ -205,7 +222,7 @@ az maintenance applyupdate create \
 ```azurecli-interactive
 az maintenance applyupdate create \
    --subscription 1111abcd-1a11-1a2b-1a12-123456789abc \
-   -g myHostResourceGroup \
+   --resource-group myHostResourceGroup \
    --resource-name myHost \
    --resource-type hosts \
    --provider-name Microsoft.Compute \
@@ -217,9 +234,9 @@ az maintenance applyupdate create \
 
 您可以使用 `az maintenance applyupdate get`來檢查更新進度。 
 
-### <a name="isolated-vm"></a>隔離的 VM
+您可以使用 `default` 做為更新名稱，以查看上次更新的結果，或以執行 `az maintenance applyupdate create`時傳回的更新名稱取代 `myUpdateName`。
 
-以您執行 `az maintenance applyupdate create`時所傳回的更新名稱取代 `myUpdateName`。
+### <a name="isolated-vm"></a>隔離的 VM
 
 ```azurecli-interactive
 az maintenance applyupdate get \
@@ -227,7 +244,7 @@ az maintenance applyupdate get \
    --resource-name myVM \
    --resource-type virtualMachines \
    --provider-name Microsoft.Compute \
-   --apply-update-name myUpdateName 
+   --apply-update-name default 
 ```
 
 ### <a name="dedicated-host"></a>專用主機
@@ -241,7 +258,7 @@ az maintenance applyupdate get \
    --provider-name Microsoft.Compute \
    --resource-parent-name myHostGroup \ 
    --resource-parent-type hostGroups \
-   --apply-update-name default \
+   --apply-update-name myUpdateName \
    --query "{LastUpdate:lastUpdateTime, Name:name, ResourceGroup:resourceGroup, Status:status}" \
    --output table
 ```
