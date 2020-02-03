@@ -33,7 +33,7 @@ ms.locfileid: "76719869"
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 如果您沒有 Azure 訂用帳戶，請先[建立帳戶](https://azure.microsoft.com/free/)再開始。
 
@@ -194,7 +194,7 @@ R 現在會傳回單一值做為結果。
 |---|
 |1542|
 
-為什麼呢？ 在此案例中，因為這兩個引數可以當做長度相同的向量來處理，所以 R 會傳回內積做為矩陣。  這是根據線性代數的規則所預期的行為。 不過，如果您的下游應用程式預期輸出架構永遠不會變更，則可能會造成問題！
+原因為何？ 在此案例中，因為這兩個引數可以當做長度相同的向量來處理，所以 R 會傳回內積做為矩陣。  這是根據線性代數的規則所預期的行為。 不過，如果您的下游應用程式預期輸出架構永遠不會變更，則可能會造成問題！
 
 ## <a name="merge-or-multiply-columns-of-different-length"></a>合併或相乘不同長度的資料行
 

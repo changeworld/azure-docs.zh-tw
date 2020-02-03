@@ -53,7 +53,7 @@ IoT 中樞使用安全性權杖來驗證裝置和服務，以避免透過網路�
 
 * AMQP：SASL PLAIN 和 AMQP 宣告式安全性 (若為 IoT 中樞層級權杖時為 `{policyName}@sas.root.{iothubName}`；若為裝置範圍權杖時為 `{deviceId}`)。
 
-* MQTT：CONNECT 封包使用 `{deviceId}` 作為 `{ClientId}`，在 [使用者名稱] 欄位中使用 `{IoThubhostname}/{deviceId}`，而在 [密碼] 欄位中則使用 SAS 權杖。
+* MQTT：CONNECT 封包使用 `{deviceId}` 作為 `{ClientId}`，在 [使用者名稱]`{IoThubhostname}/{deviceId}`**欄位中使用**，而在 [密碼] 欄位中則使用 SAS 權杖。
 
 * HTTP︰有效權杖位於驗證要求標頭中。
 
@@ -91,7 +91,7 @@ Azure IoT 中樞允許針對每個安全性金鑰定義[存取控制原則](../a
 
 * **DeviceConnect**。 授與裝置面向端點的存取權。 例如，它會授與傳送裝置到雲端的訊息和接收雲端到裝置的訊息的權限。 裝置會使用此權限。
 
-利用[安全性權杖](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)取得 IoT 中樞之 **DeviceConnect** 權限的方法有兩種：使用裝置身分識別金鑰，或使用共用存取金鑰。 此外，請務必注意所有可從裝置存取的功能，在設計上會於前置詞為 `/devices/{deviceId}`的端點公開。
+利用**安全性權杖**取得 IoT 中樞之 [DeviceConnect](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app) 權限的方法有兩種：使用裝置身分識別金鑰，或使用共用存取金鑰。 此外，請務必注意所有可從裝置存取的功能，在設計上會於前置詞為 `/devices/{deviceId}`的端點公開。
 
 服務元件只能使用授與適當權限的共用存取原則來[產生安全性權杖](../articles/iot-hub/iot-hub-devguide-security.md#use-security-tokens-from-service-components)。
 

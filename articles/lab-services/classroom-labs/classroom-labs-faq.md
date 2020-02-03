@@ -31,7 +31,7 @@ ms.locfileid: "76718022"
 ## <a name="schedules"></a>排程
 
 ### <a name="do-all-vms-in-the-lab-start-automatically-when-a-schedule-is-set"></a>設定排程時，實驗室中的所有 Vm 都會自動啟動嗎？ 
-不會。 並非所有 Vm。 僅依排程指派給使用者的 Vm。 未指派給使用者的 Vm 不會自動啟動。 這是設計的。 
+否。 並非所有 Vm。 僅依排程指派給使用者的 Vm。 未指派給使用者的 Vm 不會自動啟動。 這是設計的。 
 
 ## <a name="lab-accounts"></a>實驗室帳戶
 
@@ -47,7 +47,7 @@ ms.locfileid: "76718022"
 ### <a name="what-public-ip-address-range-should-i-open-on-my-organizations-firewall-settings-to-connect-to-lab-virtual-machines-via-rdpssh"></a>我應該在組織的防火牆設定上開啟哪些公用 IP 位址範圍，以透過 RDP/SSH 連接到實驗室虛擬機器？
 請參閱[AZURE IP 範圍和服務標籤-公用雲端](https://www.microsoft.com/download/details.aspx?id=56519)，其可為 Azure 中的資料中心提供公用 IP 位址範圍。 您可以開啟實驗室帳戶所在區域的 IP 位址。
 
-## <a name="users"></a>使用者人數
+## <a name="users"></a>使用者
 
 ### <a name="how-many-users-can-be-in-a-classroom-lab"></a>教室實驗室中可以有多少使用者？
 您最多可以新增400個使用者到教室實驗室。 

@@ -31,7 +31,7 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 
 * * *
 
-當您編輯 LUIS 應用程式時，從該 LUIS 應用程式的 [設定] 頁面，以及從您 URL 的一部分 (在 `/apps/` 之後)，都可以取得 `appID`。 `subscription-key` 是用來查詢您應用程式的端點金鑰。 在學習 LUIS 期間，雖然您可以使用免費的撰寫/入門金鑰，但請務必將端點金鑰變更為支援[預期的 LUIS 使用方式](luis-boundaries.md#key-limits)的金鑰。 `timezoneOffset` 單位為分鐘。
+當您編輯 LUIS 應用程式時，從該 LUIS 應用程式的 [設定]`appID`**頁面，以及從您 URL 的一部分 (在** 之後)，都可以取得 `/apps/`。 `subscription-key` 是用來查詢您應用程式的端點金鑰。 在學習 LUIS 期間，雖然您可以使用免費的撰寫/入門金鑰，但請務必將端點金鑰變更為支援[預期的 LUIS 使用方式](luis-boundaries.md#key-limits)的金鑰。 `timezoneOffset` 單位為分鐘。
 
 **HTTPS 回應**包含 LUIS 可以根據目前已發佈之預備或生產環境端點模型來判斷的所有意圖和實體資訊。 端點 URL 是在 [LUIS](luis-reference-regions.md) 網站、[管理] 區段、[金鑰和端點] 頁面上找到的。
 
@@ -135,7 +135,7 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 
 意圖會依最高分到最低分排序。
 
-|資料物件|資料類型|資料位置|值|分數|
+|資料物件|資料類型|資料位置|值|Score|
 |--|--|--|--|:--|
 |Intent|String|intents[0].intent|"GetStoreInfo"|0.984749258|
 |Intent|String|intents[1].intent|"None"|0.0168218873|
@@ -681,7 +681,7 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 
 [Pattern。 any](reference-entity-pattern-any.md)是僅用於模式範本語句的可變長度預留位置，用來標記實體開始和結束的位置。
 
-## <a name="sentiment-analysis"></a>情緒分析
+## <a name="sentiment-analysis"></a>情感分析
 如果已設定情感分析，LUIS JSON 回應就會包含情感分析。 若要深入了解情感分析，請參閱[文字分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)文件。
 
 ### <a name="sentiment-data"></a>情感資料

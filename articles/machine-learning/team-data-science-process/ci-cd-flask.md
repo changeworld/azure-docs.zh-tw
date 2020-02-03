@@ -60,7 +60,7 @@ ms.locfileid: "76721824"
 10. 應用程式的使用者要求會經過 DNS 伺服器。
 11. DNS 伺服器會將要求傳遞給負載平衡器，並將回應傳回給使用者。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - [Team Data Science Process (TDSP)](/azure/machine-learning/team-data-science-process/)
 - [Azure Machine Learning (AML)](/azure/machine-learning/)

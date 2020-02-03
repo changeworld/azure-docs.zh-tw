@@ -19,7 +19,7 @@ ms.locfileid: "76720311"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure Synapse Analytics （先前稱為 SQL DW）架構 
 
-Azure Synapse 是一種無限制的分析服務，可將企業資料倉儲和巨量資料分析整合在一起。 您可以自由使用無伺服器隨選資源或佈建資源，照自己的決定大規模查詢資料。 Azure Synapse 將這兩者結合在一起，透過整合的體驗擷取、準備、管理和處理資料，以滿足立即的 BI 和機器學習需求。
+Azure Synapse 是一種無限制的分析服務，可將企業資料倉儲和巨量資料分析整合在一起。 可讓您自由使用無伺服器隨選或佈建資源，隨意且大規模地查詢您的資料。 Azure Synapse 將這兩個世界結合在一起，以整合、準備、管理和提供資料，以滿足立即的 BI 和機器學習需求。
 
  Azure Synapse 有四個元件：
 - SQL 分析：完成 T-sql 型分析 

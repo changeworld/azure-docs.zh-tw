@@ -30,7 +30,7 @@ Key Vault 的 VM 擴充功能支援下列 Linux 散發套件：
 
 ## <a name="extension-schema"></a>擴充功能結構描述
 
-下列 JSON 顯示金鑰保存庫 VM 擴充功能的結構描述。 此擴充功能不需要受保護的設定，其所有設定都會被視為沒有安全性影響的資訊。 此擴充功能需要有受監視的祕密、輪詢頻率和目的地憑證存放區的清單。 具體而言：  
+下列 JSON 顯示金鑰保存庫 VM 擴充功能的結構描述。 此擴充功能不需要受保護的設定，其所有設定都會被視為沒有安全性影響的資訊。 此擴充功能需要有受監視的祕密、輪詢頻率和目的地憑證存放區的清單。 具體來說：  
 ```json
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -70,13 +70,13 @@ Key Vault 的 VM 擴充功能支援下列 Linux 散發套件：
 | 名稱 | 值 / 範例 | 資料類型 |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
-| publisher | Microsoft.Azure.KeyVault | string |
-| type | KeyVaultForLinux | string |
+| publisher | Microsoft.Azure.KeyVault | 字串 |
+| type | KeyVaultForLinux | 字串 |
 | typeHandlerVersion | 1.0 | int |
-| pollingIntervalInS | 3600 | string |
-| certificateStoreName | MY | string |
+| pollingIntervalInS | 3600 | 字串 |
+| certificateStoreName | MY | 字串 |
 | linkOnRenewal | false | boolean |
-| certificateStoreLocation  | LocalMachine | string |
+| certificateStoreLocation  | LocalMachine | 字串 |
 | requiredInitialSync | true | boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | 字串陣列
 

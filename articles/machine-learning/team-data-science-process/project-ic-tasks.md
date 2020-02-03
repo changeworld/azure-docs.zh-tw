@@ -32,7 +32,7 @@ ms.locfileid: "76721246"
 > [!NOTE] 
 > 本文使用 Azure Repos 和資料科學虛擬機器（DSVM）來設定 TDSP 環境，因為這是在 Microsoft 執行 TDSP 的方式。 如果您的小組使用其他程式碼裝載或開發平臺，則個別參與者工作會相同，但完成這些工作的方式可能會不同。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本教學課程假設您的[群組管理員](group-manager-tasks.md)、[小組負責人](team-lead-tasks.md)和[專案負責人](project-lead-tasks.md)已設定下列資源和許可權：
 

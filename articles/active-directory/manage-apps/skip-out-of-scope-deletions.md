@@ -50,7 +50,7 @@ ms.locfileid: "76711645"
 
 ## <a name="step-3-get-existing-app-credentials-and-connectivity-details"></a>步驟3：取得現有的應用程式認證和連線詳細資料
 
-在「Microsoft Graph 總管」中，執行下列 GET 查詢，其中以從[步驟 1](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id) 擷取的 **ServicePrincipalId** 取代 [servicePrincipalId]。
+在「Microsoft Graph 總管」中，執行下列 GET 查詢，其中以從**步驟 1** 擷取的 [ServicePrincipalId](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id) 取代 [servicePrincipalId]。
 
 ```http
    GET https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/secrets

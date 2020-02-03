@@ -26,7 +26,7 @@ ms.locfileid: "76714386"
 
 本教學課程旨在說明您需要在 Salesforce 和 Azure AD 中執行的步驟，以將使用者帳戶從 Azure AD 自動佈建和取消佈建至 Salesforce。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本教學課程中說明的案例假設您已經具有下列項目：
 

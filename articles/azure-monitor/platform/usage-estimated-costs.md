@@ -25,7 +25,7 @@ ms.locfileid: "76715781"
 
 ## <a name="azure-monitor-pricing-model"></a>Azure 監視器計價模式
 
-基本 Azure 監視器計費模型是以雲端為基礎、以耗用量為基礎的定價（「隨用隨付」）。 您只須就使用的資源付費。 定價詳細資料適用于[警示、計量、通知](https://azure.microsoft.com/pricing/details/monitor/)、 [Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/)和[Application Insights](https://azure.microsoft.com/pricing/details/application-insights/)。 
+基本 Azure 監視器計費模型是以雲端為基礎、以耗用量為基礎的定價（「隨用隨付」）。 您只需依據使用量付費。 定價詳細資料適用于[警示、計量、通知](https://azure.microsoft.com/pricing/details/monitor/)、 [Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/)和[Application Insights](https://azure.microsoft.com/pricing/details/application-insights/)。 
 
 除了記錄資料的隨用隨付模式以外，Log Analytics 也具有容量保留，可讓您省下25% 的費用（相較于隨用隨付價格）。 容量保留定價可讓您從 100 GB/天開始購買保留。 任何高於保留層級的使用量都會依照隨用隨付費率計費。 [深入瞭解](https://azure.microsoft.com/pricing/details/monitor/)容量保留定價。
 
@@ -57,7 +57,7 @@ Azure 在[Azure 成本管理 + 計費](https://docs.microsoft.com/azure/cost-man
 
 然後，若要查看過去30天的 Azure 監視器成本，請按一下 [**每日成本**] 磚，選擇 [相對日期] 底下的 [過去30天]，然後新增篩選來選取服務名稱：
 
-1. Azure Monitor
+1. Azure 監視器
 2. Application Insights
 3. Log Analytics
 4. 深入解析與分析

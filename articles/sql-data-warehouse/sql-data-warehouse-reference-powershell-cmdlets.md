@@ -76,7 +76,7 @@ $resultDatabase = $database | Resume-AzSqlDatabase
 * [Remove-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabase)
 * [Restore-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)
 * [繼續-Set-azsqldatabase 搭配](https://docs.microsoft.com/powershell/module/az.sql/resume-azsqldatabase)
-* [Select-AzSubscription](https://msdn.microsoft.com/library/dn722499.aspx)
+* [選取-Get-azsubscription](https://msdn.microsoft.com/library/dn722499.aspx)
 * [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase)
 * [暫止-Set-azsqldatabase 搭配](https://docs.microsoft.com/powershell/module/az.sql/suspend-azsqldatabase)
 

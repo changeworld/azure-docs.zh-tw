@@ -305,6 +305,6 @@ Microsoft 至少會在停用 SDK 的 **12 個月** 之前提供通知，以供�
 ## <a name="faq"></a>常見問題集
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 若要深入了解 Cosmos DB，請參閱 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 服務頁面。
 

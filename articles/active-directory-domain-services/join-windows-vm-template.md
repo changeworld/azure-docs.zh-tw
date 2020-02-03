@@ -24,7 +24,7 @@ ms.locfileid: "76712565"
 
 本文說明如何使用 Resource Manager 範本，建立 Windows Server VM 並將其加入 Azure AD DS 受控網域。 您也會瞭解如何將現有的 Windows Server VM 加入 Azure AD DS 網域。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成此教學課程，您需要下列資源和權限：
 
@@ -86,9 +86,9 @@ Resource Manager 範本可讓您在程式碼中定義 Azure 基礎結構。 Vm �
 
     | 設定                   | 值 |
     |---------------------------|-------|
-    | 訂閱              | 挑選已啟用 Azure AD Domain Services 的相同 Azure 訂用帳戶。 |
+    | 訂用帳戶              | 挑選已啟用 Azure AD Domain Services 的相同 Azure 訂用帳戶。 |
     | 資源群組            | 選擇您 VM 的資源群組。 |
-    | 位置                  | 選取 VM 的位置。 |
+    | Location                  | 選取 VM 的位置。 |
     | 現有的 VNET 名稱        | 要連接 VM 的現有虛擬網路名稱，例如*myVnet*。 |
     | 現有的子網名稱      | 現有虛擬網路子網的名稱，例如*工作負載*。 |
     | DNS 標籤首碼          | 輸入要用於 VM 的 DNS 名稱，例如*myvm*。 |
@@ -119,9 +119,9 @@ Resource Manager 範本可讓您在程式碼中定義 Azure 基礎結構。 Vm �
 
     | 設定                   | 值 |
     |---------------------------|-------|
-    | 訂閱              | 挑選已啟用 Azure AD Domain Services 的相同 Azure 訂用帳戶。 |
+    | 訂用帳戶              | 挑選已啟用 Azure AD Domain Services 的相同 Azure 訂用帳戶。 |
     | 資源群組            | 選擇包含現有 VM 的資源群組。 |
-    | 位置                  | 選取現有 VM 的位置。 |
+    | Location                  | 選取現有 VM 的位置。 |
     | VM 清單                   | 輸入要加入 Azure AD DS 受控網域的現有 VM 逗號分隔清單，例如*myVM1、myVM2*。 |
     | 加入網域的使用者名稱     | Azure AD DS 受控網域中的使用者帳戶，應該用來將 VM 加入受控網域，例如 `contosoadmin@aadds.contoso.com`。 此帳戶必須是*AZURE AD DC 系統管理員*群組的成員。 |
     | 加入網域的使用者密碼 | 先前設定中所指定使用者帳戶的密碼。 |

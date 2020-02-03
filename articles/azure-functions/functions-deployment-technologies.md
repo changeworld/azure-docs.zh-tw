@@ -42,7 +42,7 @@ Azure Functions 支援跨平臺本機開發和 Windows 和 Linux 上的裝載。
 <sup>1</sup>需要[手動觸發同步](#trigger-syncing)處理的部署技術。  
 <sup>2</sup>只有針對 Linux 上的函式使用 Premium 和專用方案的 HTTP 和計時器觸發程式，才會啟用入口網站編輯功能。
 
-## <a name="key-concepts"></a>主要概念
+## <a name="key-concepts"></a>重要概念
 
 若要瞭解部署在 Azure Functions 中的使用方式，某些重要概念十分重要。
 
@@ -78,7 +78,7 @@ Azure Functions 可以自動在 zip 部署後所收到的程式碼上執行組�
 
 當應用程式在 Linux 上以遠端方式建立時，它們會[從部署套件執行](run-functions-from-deployment-package.md)。 
 
-##### <a name="consumption-plan"></a>使用量方案
+##### <a name="consumption-plan"></a>取用方案
 
 在取用方案中執行的 Linux 函式應用程式沒有 SCM/Kudu 網站，這會限制部署選項。 不過，在取用方案中執行的 Linux 上的函式應用程式會支援遠端組建。
 

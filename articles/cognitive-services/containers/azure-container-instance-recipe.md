@@ -21,7 +21,7 @@ ms.locfileid: "76716993"
 
 在下列步驟中，您可以使用 Azure[容器實例](https://docs.microsoft.com/azure/container-instances/)，輕鬆地調整雲端中的 azure 認知服務應用程式。 容器化可協助您專注于建立應用程式，而不是管理基礎結構。 如需使用容器的詳細資訊，請參閱[功能與優點](../cognitive-services-container-support.md#features-and-benefits)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 配方適用于任何認知服務的容器。 您必須先在 Azure 入口網站中建立認知服務資源，才能使用此配方。 每個支援容器的認知服務都有「如何安裝」檔，專門用來安裝和設定容器的服務。 某些服務需要檔案或一組檔案作為容器的輸入，請務必先瞭解並成功使用容器，然後再使用此解決方案。
 

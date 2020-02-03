@@ -30,7 +30,7 @@ ms.locfileid: "76722419"
 [深入瞭解 Azure 應用程式 Insights](../azure-monitor/app/app-insights-overview.md)。 
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 如果您沒有 Azure 訂用帳戶，請在開始前先建立一個免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)
 

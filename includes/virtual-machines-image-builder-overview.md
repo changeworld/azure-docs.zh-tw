@@ -33,7 +33,7 @@ Azure VM 映射產生器（Azure 映射產生器）可讓您從以 Windows 或 L
 - 以 VHD 格式建立映射。
  
 
-## <a name="regions"></a>地區
+## <a name="regions"></a>區域
 Azure 映射產生器服務會在這些區域中提供預覽。 映射可以散佈在這些區域之外。
 - 美國東部
 - 美國東部 2
@@ -79,7 +79,7 @@ Azure 映射產生器是完全受控的 Azure 服務，可供 Azure 資源提供
 1. 作為映射建立的一部分，映射產生器會根據範本散發映射，然後刪除 IT_\<DestinationResourceGroup > _\<TemplateName > 為進程建立的資源群組中的其他資源。
 
 
-## <a name="permissions"></a>使用權限
+## <a name="permissions"></a>權限
 
 若要允許 Azure VM 映射產生器將映射發佈至受控映射或共用映射資源庫，您必須為服務「Azure 虛擬機器映射產生器」提供「參與者」許可權（應用程式識別碼： cf32a0cc-373c-47c9-9156-0db11f6a6dfc）的資源群組。 
 

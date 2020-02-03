@@ -30,7 +30,7 @@ ms.locfileid: "76720379"
 
 此錯誤會指向自訂 DNS 設定的問題。 虛擬網路內的 DNS 伺服器可以將 DNS 查詢轉送到 Azure 的遞迴解析程式，以解析該虛擬網路內的主機名稱（如需詳細資訊，請參閱[虛擬網路中的名稱解析](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)）。 存取 Azure 的遞迴解析程式是透過所提供的虛擬 IP 168.63.129.16。 此 IP 只能從 Azure Vm 存取。 因此，如果您使用內部部署 DNS 伺服器，或您的 DNS 伺服器是 Azure VM，而不是叢集虛擬網路的一部分，則無法使用。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 1. 透過 Ssh 連線到屬於叢集一部分的 VM，然後執行命令 `hostname -f`。 這會傳回主機的完整功能變數名稱（在下列指示中稱為 `<host_fqdn>`）。
 
@@ -56,7 +56,7 @@ ms.locfileid: "76720379"
 
 Azure 儲存體和 SQL 沒有固定的 IP 位址，所以我們需要允許所有 Ip 的輸出連線，以允許存取這些服務。 確切的解決步驟取決於您是否已設定網路安全性群組（NSG）或使用者定義的規則（UDR）。 請參閱[使用網路安全性群組和使用者定義的路由來控制 HDInsight 的網路流量](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ip)一節，以取得這些設定的詳細資料。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 * 如果您的叢集使用[網路安全性群組（NSG）](../../virtual-network/virtual-network-vnet-plan-design-arm.md)。
 
@@ -85,7 +85,7 @@ ErrorDescription: Virtual Network configuration is not compatible with HDInsight
 
 可能是自訂 DNS 設定的問題。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 驗證168.63.129.16 是否在自訂 DNS 鏈中。 虛擬網路內的 DNS 可以將要求轉送到 Azure 內的遞迴解析程式，以解析該虛擬網路內的主機名稱。 如需詳細資訊，請參閱[虛擬網路中的名稱解析](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)。 存取 Azure 的遞迴解析程式是透過所提供的虛擬 IP 168.63.129.16。
 

@@ -27,7 +27,7 @@ ms.locfileid: "76721484"
 > 當您開啟「連續資料匯出」時，只會取得從該時刻的資料。 目前，無法擷取「連續資料匯出」時的資料。 若要保留更多歷史資料，請儘早開啟「連續資料匯出」。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 您必須是 IoT Central 應用程式中的系統管理員
 
@@ -101,7 +101,7 @@ ms.locfileid: "76721484"
 
 ## <a name="data-format"></a>資料格式 
 
-### <a name="measurements"></a>度量
+### <a name="measurements"></a>量測
 
 匯出的度量資料包含 IoT Central 在該時間期間從所有裝置收到的所有新訊息。 匯出之檔案所使用的格式與 [IoT 中樞訊息路由](https://docs.microsoft.com/azure/iot-hub/iot-hub-csharp-csharp-process-d2c)匯出至 Blob 儲存體的訊息檔案格式相同。
 
@@ -132,7 +132,7 @@ ms.locfileid: "76721484"
 當第一次開啟「連續資料匯出」時，會匯出包含所有裝置的單一快照集。 每個裝置包含：
 - IoT Central 中裝置的 `id`
 - 裝置的 `name`
-- 來自[裝置佈建服務](/azure/iot-central/core/howto-connect-nodejs) 的 `deviceId`
+- 來自`deviceId`裝置佈建服務[ 的 ](/azure/iot-central/core/howto-connect-nodejs)
 - 裝置範本資訊
 - 屬性值
 - 設定值

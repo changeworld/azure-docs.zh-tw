@@ -24,7 +24,7 @@ ms.locfileid: "76721263"
 
 下列文章說明如何在 Data Science Process 中三個常用的不同儲存體環境中探索資料：
 
-* 使用 [Pandas](https://pandas.pydata.org/) Python 套件，探索 [Azure Blob 容器](explore-data-blob.md)資料。
+* 使用 [Pandas](explore-data-blob.md) Python 套件，探索 [Azure Blob 容器](https://pandas.pydata.org/)資料。
 * 使用 SQL 及使用 Python 這類程式設計語言，探索 [SQL Server](explore-data-sql-server.md) 資料。
 * 使用 Hive 查詢來探索 [Hive 資料表](explore-data-hive-tables.md)資料。
 

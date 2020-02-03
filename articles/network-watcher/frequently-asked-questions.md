@@ -34,7 +34,7 @@ ms.locfileid: "76720261"
   * [[拓撲] 視圖](https://docs.microsoft.com/azure/network-watcher/view-network-topology)會顯示虛擬網路中的資源，以及它們之間的關聯性。
   * [連接監視器](https://docs.microsoft.com/azure/network-watcher/connection-monitor)可讓您監視 VM 與另一個網路資源之間的連線和延遲。
   * [網路效能監視器](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor)可讓您監視混合式網路架構、Expressroute 線路和服務/應用程式端點之間的連線能力和延遲。  
-* 診斷程式
+* 診斷
   * [IP 流量驗證](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview)可讓您偵測 VM 層級的流量篩選問題。
   * [下一個躍點](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview)可協助您驗證流量路由和偵測路由問題。
   * 連線[疑難排解](https://docs.microsoft.com/azure/network-watcher/network-watcher-connectivity-portal)可讓 VM 與另一個網路資源之間進行一次性的連線和延遲檢查。

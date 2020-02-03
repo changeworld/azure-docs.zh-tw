@@ -63,7 +63,7 @@ az provider register --namespace Microsoft.ContainerInstance
 ## <a name="known-limitations"></a>已知限制
 虛擬節點功能非常依賴 ACI 的功能集。 虛擬節點尚未支援下列案例
 
-* 使用服務主體來提取 ACR 映射。 [因應措施](https://github.com/virtual-kubelet/virtual-kubelet/blob/master/providers/azure/README.md#Private-registry)是使用[Kubernetes 秘密](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line)
+* 使用服務主體來提取 ACR 映射。 因[應措施](https://github.com/virtual-kubelet/virtual-kubelet/blob/master/providers/azure/README.md#Private-registry)是使用[Kubernetes 秘密](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line)
 * [虛擬網路限制](../container-instances/container-instances-vnet.md)，包括 VNet 對等互連、Kubernetes 網路原則，以及使用網路安全性群組連到網際網路的輸出流量。
 * Init 容器
 * [主機別名](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
@@ -191,13 +191,13 @@ Pod 會從 Azure 虛擬網路的子網路 (為搭配使用虛擬節點而委派)
 kubectl run -it --rm virtual-node-test --image=debian
 ```
 
-使用 `apt-get` 在 Pod 中安裝 `curl`：
+使用 `curl` 在 Pod 中安裝 `apt-get`：
 
 ```azurecli-interactive
 apt-get update && apt-get install -y curl
 ```
 
-現在您可以使用 `curl` (例如 http://10.241.0.4) 來存取 Pod 的位址。 提供前述 `kubectl get pods` 命令中您自己的 IP 位址：
+現在您可以使用 `curl` (例如 *http://10.241.0.4* ) 來存取 Pod 的位址。 提供前述 `kubectl get pods` 命令中您自己的 IP 位址：
 
 ```azurecli-interactive
 curl -L http://10.241.0.4

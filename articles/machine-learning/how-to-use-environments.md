@@ -33,7 +33,7 @@ ms.locfileid: "76717825"
 
 如需環境如何在 Azure Machine Learning 中工作的高階總覽，請參閱[什麼是 ML 環境？](concept-environments.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * [適用于 Python 的 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
 * [Azure Machine Learning 工作區](how-to-manage-workspace.md)
@@ -231,16 +231,16 @@ build.wait_for_completion(show_output=True)
 
  Azure Machine Learning `Environment` 類別的[`DockerSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockersection?view=azure-ml-py)可讓您精確地自訂和控制執行訓練的客體作業系統。
 
-當您 `enable` Docker 時，服務會建立 Docker 映射。 It also creates a Python environment that uses your specifications within that Docker container. This functionality provides additional isolation and reproducibility for your training runs.
+當您 `enable` Docker 時，服務會建立 Docker 映射。 它也會建立一個使用您在該 Docker 容器內之規格的 Python 環境。 此功能可為您的定型執行提供額外的隔離和重現性。
 
 ```python
 # Creates the environment inside a Docker container.
 myenv.docker.enabled = True
 ```
 
-By default, the newly built Docker image appears in the container registry that's associated with the workspace.  The repository name has the form *azureml/azureml_\<uuid\>* . The unique identifier (*uuid*) part of the name corresponds to a hash that's computed from the environment configuration. This correspondence allows the service to determine whether an image for the given environment already exists for reuse.
+根據預設，新建立的 Docker 映射會出現在與工作區相關聯的 container registry 中。  存放庫名稱的形式為*azureml/azureml_\<uuid\>* 。 名稱的唯一識別碼（*uuid*）部分會對應到從環境設定計算的雜湊。 這種對應可讓服務判斷指定環境的影像是否已存在，以供重複使用。
 
-Additionally, the service automatically uses one of the Ubuntu Linux-based [base images](https://github.com/Azure/AzureML-Containers). It installs the specified Python packages. The base image has CPU versions and GPU versions. Azure Machine Learning automatically detects which version to use.
+此外，服務會自動使用其中一個以 Ubuntu Linux 為基礎的[基底映射](https://github.com/Azure/AzureML-Containers)。 它會安裝指定的 Python 套件。 基底映射具有 CPU 版本和 GPU 版本。 Azure Machine Learning 會自動偵測要使用哪個版本。
 
 ```python
 # Specify custom Docker base image and registry, if you don't want to use the defaults
@@ -253,15 +253,15 @@ myenv.docker.base_dockerfile=dockerfile_contents_of_your_base_image
 ```
 
 > [!NOTE]
-> If you specify `environment.python.user_managed_dependencies=False` while you're using a custom Docker image, then the service will build a Conda environment within the image. It will execute the run in that environment instead of using any Python libraries that you installed on the base image. Set the parameter to `True` to use your own installed packages.
+> 如果您在使用自訂 Docker 映射時指定 `environment.python.user_managed_dependencies=False`，則服務會在映射中建立 Conda 環境。 它會在該環境中執行執行，而不是使用您安裝在基底映射上的任何 Python 程式庫。 將參數設定為 `True`，以使用您自己安裝的套件。
 
-## <a name="use-environments-for-training"></a>Use environments for training
+## <a name="use-environments-for-training"></a>使用環境進行定型
 
-To submit a training run, you need to combine your environment, [compute target](concept-compute-target.md), and your training Python script into a run configuration. This configuration is a wrapper object that's used for submitting runs.
+若要提交定型回合，您需要將您的環境、[計算目標](concept-compute-target.md)和訓練 Python 腳本結合成執行設定。 此設定是用於提交執行的包裝函式物件。
 
-When you submit a training run, the building of a new environment can take several minutes. The duration depends on the size of the required dependencies. The environments are cached by the service. So as long as the environment definition remains unchanged, you incur the full setup time only once.
+當您提交定型回合時，新環境的建立可能需要幾分鐘的時間。 持續時間視所需相依性的大小而定。 服務會快取環境。 因此只要環境定義維持不變，您只會產生一次完整的安裝時間。
 
-The following local script run example shows where you would use [`ScriptRunConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?view=azure-ml-py) as your wrapper object.
+下列本機腳本執行範例會顯示您要使用[`ScriptRunConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?view=azure-ml-py)做為包裝函式物件的位置。
 
 ```python
 from azureml.core import ScriptRunConfig, Experiment
@@ -285,15 +285,15 @@ run = exp.submit(runconfig)
 ```
 
 > [!NOTE]
-> To disable the run history or run snapshots, use the setting under `ScriptRunConfig.run_config.history`.
+> 若要停用執行歷程記錄或執行快照集，請使用 [`ScriptRunConfig.run_config.history`] 底下的設定。
 
-If you don't specify the environment in your run configuration, then the service creates a default environment when you submit your run.
+如果您未在回合設定中指定環境，則服務會在您提交執行時建立預設環境。
 
-### <a name="use-an-estimator-for-training"></a>Use an estimator for training
+### <a name="use-an-estimator-for-training"></a>使用估計工具進行訓練
 
-If you use an [estimator](how-to-train-ml-models.md) for training, then you can submit the estimator instance directly. It already encapsulates the environment and the compute target.
+如果您使用[估計工具](how-to-train-ml-models.md)進行定型，則可以直接提交估計工具實例。 它已封裝環境和計算目標。
 
-The following code uses an estimator for a single-node training run. It runs on a remote compute for a `scikit-learn` model. It assumes that you previously created a compute target object, `compute_target`, and a datastore object, `ds`.
+下列程式碼會使用估計工具來執行單一節點定型。 它會在 `scikit-learn` 模型的遠端計算上執行。 它假設您先前已建立計算目標物件、`compute_target`和資料存放區物件 `ds`。
 
 ```python
 from azureml.train.estimator import Estimator
@@ -313,13 +313,13 @@ sk_est = Estimator(source_directory='./my-sklearn-proj',
 run = experiment.submit(sk_est)
 ```
 
-## <a name="use-environments-for-web-service-deployment"></a>Use environments for web service deployment
+## <a name="use-environments-for-web-service-deployment"></a>使用 web 服務部署的環境
 
-You can use environments when you deploy your model as a web service. This capability enables a reproducible, connected workflow. In this workflow, you can train, test, and deploy your model by using the same libraries in both your training compute and your inference compute.
+當您將模型部署為 web 服務時，可以使用環境。 這項功能可讓您重現已連線的工作流程。 在此工作流程中，您可以在定型計算和推斷計算中使用相同的程式庫，來定型、測試及部署您的模型。
 
-To deploy a web service, combine the environment, inference compute, scoring script, and registered model in your deployment object, [`deploy()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-). For more information, see [How and where to deploy models](how-to-deploy-and-where.md).
+若要部署 web 服務，請在您的部署物件中結合環境、推斷計算、評分腳本和已註冊的模型， [`deploy()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)。 如需詳細資訊，請參閱[如何和部署模型的位置](how-to-deploy-and-where.md)。
 
-In this example, assume that you've completed a training run. Now you want to deploy that model to Azure Container Instances. When you build the web service, the model and scoring files are mounted on the image, and the Azure Machine Learning inference stack is added to the image.
+在此範例中，假設您已完成定型回合。 現在您想要將該模型部署到 Azure 容器實例。 當您建立 web 服務時，模型和計分檔案會裝載在映射上，而 Azure Machine Learning 推斷堆疊會加入至映射。
 
 ```python
 from azureml.core.model import InferenceConfig, Model
@@ -345,23 +345,23 @@ service = Model.deploy(
 
 ## <a name="example-notebooks"></a>Notebook 範例
 
-This [example notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/using-environments) expands upon concepts and methods demonstrated in this article.
+這個[範例筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/using-environments)會在本文中示範的概念和方法上展開。
 
-[Deploy a model using a custom Docker base image](how-to-deploy-custom-docker-image.md) demonstrates how to deploy a model using a custom Docker base image.
+[使用自訂的 docker 基底映射部署模型](how-to-deploy-custom-docker-image.md)示範如何使用自訂的 docker 基底映射來部署模型。
 
-This [example notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/spark) demonstrates how to deploy a Spark model as a web service.
+這個[範例筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/spark)會示範如何將 Spark 模型部署為 web 服務。
 
-## <a name="create-and-manage-environments-with-the-cli"></a>Create and manage environments with the CLI
+## <a name="create-and-manage-environments-with-the-cli"></a>使用 CLI 建立和管理環境
 
-The [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md) mirrors most of the functionality of the Python SDK. You can use it to create and manage environments. The commands that we discuss in this section demonstrate basic functionality.
+[AZURE MACHINE LEARNING CLI](reference-azure-machine-learning-cli.md)會鏡像 Python SDK 的大部分功能。 您可以使用它來建立和管理環境。 我們在本節中討論的命令會示範基本功能。
 
-The following command scaffolds the files for a default environment definition in the specified directory. These files are JSON files. They work like the corresponding class in the SDK. You can use the files to create new environments that have custom settings. 
+下列命令會在指定的目錄中 scaffold 預設環境定義的檔案。 這些檔案是 JSON 檔案。 其作用類似 SDK 中的對應類別。 您可以使用這些檔案來建立具有自訂設定的新環境。 
 
 ```azurecli-interactive
 az ml environment scaffold -n myenv -d myenvdir
 ```
 
-Run the following command to register an environment from a specified directory.
+執行下列命令，以從指定的目錄註冊環境。
 
 ```azurecli-interactive
 az ml environment register -d myenvdir

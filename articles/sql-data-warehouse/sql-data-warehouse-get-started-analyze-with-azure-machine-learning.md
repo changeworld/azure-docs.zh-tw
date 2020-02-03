@@ -34,7 +34,7 @@ ms.locfileid: "76721280"
 > 
 > 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 若要逐步執行本教學課程，您需要：
 
 * 預先載入 AdventureWorksDW 範例資料的 SQL 資料倉儲。 若要進行佈建，請參閱 [建立 SQL 資料倉儲](create-data-warehouse-portal.md) 並選擇載入範例資料。 如果您已經有資料倉儲但沒有範例資料，您可以 [手動載入範例資料](sql-data-warehouse-load-sample-databases.md)。
@@ -83,7 +83,7 @@ FROM [dbo].[vTargetMail]
 1. 將 [**資料轉換 < 操作**] 底下的 [**選取資料行**] 模組拖曳到畫布中。 將此模組連接到匯**入資料**模組。
 2. 按一下 [屬性] 窗格中的 [啟動資料行選取器] 來指定您想要卸除的資料行。
 
-   ![專案資料行](media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img4-projectcolumns-new.png)
+   ![投射資料行](media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img4-projectcolumns-new.png)
 3. 排除兩個資料行：CustomerAlternateKey 和 GeographyKey。
 
    ![移除不必要的資料行](media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img5-columnselector-new.png)

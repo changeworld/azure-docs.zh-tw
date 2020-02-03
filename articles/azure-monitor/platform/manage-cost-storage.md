@@ -33,7 +33,7 @@ Azure 監視器記錄是設計用來調整和支援每天從企業中的任何�
 
 在本文中，我們將探討如何主動監視內嵌資料量和儲存體成長，並定義限制以控制這些相關成本。 
 
-## <a name="pricing-model"></a>計價模式
+## <a name="pricing-model"></a>定價模式
 
 Log Analytics 的預設定價是以資料量內嵌為基礎的隨**用隨付**模型，並選擇性地保留較長的資料保留。 資料量會以要儲存的資料大小來測量。 每個 Log Analytics 工作區都是以個別服務的方式計費，並會提供給您的 Azure 訂用帳戶帳單。 視下列因素而定，資料內嵌量可能會相當可觀： 
 
@@ -162,7 +162,7 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 
 您可以為工作區設定每日上限和限制每日擷取，但請謹慎使用，因為您的目標是不要達到每日限制。  否則，您會遺失當天其餘時間的資料，這可能會影響其功能取決於工作區中一直在提供的最新資料的其他 Azure 服務和解決方案。  如此一來，您在資源健全狀況支援 IT 服務時觀察和接收警示的功能會受到影響。  每日上限是用來管理受控資源中非預期增加的資料量，並保持在限制範圍內，或當您想要限制工作區未規劃的費用時使用。  
 
-若達到每日限制，將停止收集當天剩餘時間的需計費資料類型。 在所選取的 Log Analytics 工作區中，頁面頂端會出現警告橫幅，且系統會將作業事件傳送至 **LogManagement** 類別下的「Operation」 資料表。 一旦過了「每日限制的設定時間」下定義的重設時間後，資料收集就會繼續執行。 我們建議您根據此作業事件定義警示規則，設定為在達到每日資料限制時發出通知。 
+若達到每日限制，將停止收集當天剩餘時間的需計費資料類型。 在所選取的 Log Analytics 工作區中，頁面頂端會出現警告橫幅，且系統會將作業事件傳送至 *LogManagement* 類別下的「Operation」 資料表。 一旦過了「每日限制的設定時間」下定義的重設時間後，資料收集就會繼續執行。 我們建議您根據此作業事件定義警示規則，設定為在達到每日資料限制時發出通知。 
 
 > [!NOTE]
 > 每日上限不會從 Azure 資訊安全中心停止收集資料，但在2017年6月19日前安裝 Azure 資訊安全中心的工作區除外。 
@@ -283,7 +283,7 @@ union withsource = tt *
 | summarize Bytes=sum(_BilledSize) by  computerName | sort by Bytes nulls last
 ```
 
-[屬性](log-standard-properties.md#_isbillable)會指定內嵌資料是否會產生費用。`_IsBillable`
+`_IsBillable`[屬性](log-standard-properties.md#_isbillable)會指定內嵌資料是否會產生費用。
 
 若要查看每部電腦內嵌的可**計費**事件計數，請使用 
 
@@ -358,7 +358,7 @@ union withsource = tt *
 | 安全性事件            | 選取[一般或最小安全性事件](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection#data-collection-tier) <br> 變更安全性稽核原則為只收集所需事件。 特別檢閱下列原則是否需要收集事件： <br> - [a稽核篩選平台](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [稽核登錄](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [稽核檔案系統](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [稽核核心物件](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [稽核控制代碼操作](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> - 稽核抽取式存放裝置 |
 | 效能計數器       | 變更[效能計數器組態](data-sources-performance-counters.md)以： <br> - 減少收集頻率 <br> - 減少效能計數器的數目 |
 | 事件記錄                 | 變更[事件記錄組態](data-sources-windows-events.md)以： <br> - 減少所收集的事件記錄數目 <br> - 只收集必要的事件層級。 例如，不要收集「資訊」層級事件 |
-| Syslog                     | 變更 [Syslog 組態](data-sources-syslog.md)以： <br> - 減少所收集的設施數目 <br> - 只收集必要的事件層級。 例如，不要收集「資訊」和「偵錯」層級事件 |
+| syslog                     | 變更 [Syslog 組態](data-sources-syslog.md)以： <br> - 減少所收集的設施數目 <br> - 只收集必要的事件層級。 例如，不要收集「資訊」和「偵錯」層級事件 |
 | AzureDiagnostics           | 變更資源記錄集合： <br> - 減少會將記錄傳送至 Log Analytics 的資源數目 <br> - 只收集必要的記錄 |
 | 電腦中不需要解決方案的方案資料 | 使用[方案目標](../insights/solution-targeting.md)，只從必要的電腦群組收集資料。 |
 
@@ -443,7 +443,7 @@ union withsource = $table Usage
 - **警示準則**：指定下列項目：
    - **訊號名稱**：選取 [自訂記錄搜尋]
    - 將 [搜尋查詢] 設定為 `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1000.)) by Type | where DataGB > 100`
-   - [警示邏輯] 為 [根據結果數目]，而 [條件] 為 [大於臨界值 0]
+   - **警示邏輯**是**根據***結果數目*，而**條件**則*大於***閾值** *0*
    - [時間週期] 為 1440 分鐘，而 [警示頻率] 設定為 60 分鐘，因為使用量資料每小時只會更新一次。
 - **定義警示詳細資料**：指定下列項目：
    - 將 [名稱] 設定為「在 24 小時內大於 100GB 的資料量」
@@ -457,7 +457,7 @@ union withsource = $table Usage
 - **警示準則**：指定下列項目：
    - **訊號名稱**：選取 [自訂記錄搜尋]
    - 將 [搜尋查詢] 設定為 `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1000.)) by Type | where EstimatedGB > 100`
-   - [警示邏輯] 為 [根據結果數目]，而 [條件] 為 [大於臨界值 0]
+   - **警示邏輯**是**根據***結果數目*，而**條件**則*大於***閾值** *0*
    - [時間週期] 為 180 分鐘，而 [警示頻率] 設定為 60 分鐘，因為使用量資料每小時只會更新一次。
 - **定義警示詳細資料**：指定下列項目：
    - 將 [名稱] 設定為「預計在 24 小時內大於 100GB 的資料量」
@@ -482,7 +482,7 @@ Operation | where OperationCategory == 'Data Collection Status'
 
 當資料收集停止時，OperationStatus 為**Warning**。 當資料收集開始時，OperationStatus 就會**成功**。 下表描述資料收集停止的原因，並建議為繼續資料收集所要採取的動作：  
 
-|收集停止的原因| 解決方案| 
+|收集停止的原因| 解決方法| 
 |-----------------------|---------|
 |已達舊版免費定價層的每日限制 |請等到隔天自動重新開始收集，或變更為付費定價層。|
 |已達您工作區的每日上限|等到自動重新開始收集或提高每日資料量限制，如「管理每日資料量上限」中所述。 每日上限重設時間會顯示於 [資料量管理] 頁面上。 |

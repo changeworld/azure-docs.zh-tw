@@ -24,7 +24,7 @@ ms.locfileid: "76722164"
 
 此工作是 [Team Data Science Process](overview.md) 中的一個步驟。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 本文假設您已經：
 
 * 建立 Azure 儲存體帳戶。 如需指示，請參閱[建立 Azure 儲存體帳戶](../../storage/common/storage-account-create.md)
@@ -69,5 +69,5 @@ ms.locfileid: "76722164"
             ON a.<common_columnname1>=b.<common_columnname1> and a.<common_columnname2>=b.<common_columnname2>
 
 ## <a name="additional-query-scripts-for-taxi-trip-data-scenarios"></a>計程車路線資料案例的其他查詢指令碼
-[GitHub 存放庫](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts)中也會提供 [NYC 計程車車程資料](https://chriswhong.com/open-data/foil_nyc_taxi/)案例的專屬查詢範例。 這些查詢已經具備指定的資料結構描述，且準備好進行提交來執行。
+[GitHub 存放庫](https://chriswhong.com/open-data/foil_nyc_taxi/)中也會提供 [NYC 計程車車程資料](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts)案例的專屬查詢範例。 這些查詢已經具備指定的資料結構描述，且準備好進行提交來執行。
 

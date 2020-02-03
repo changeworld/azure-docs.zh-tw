@@ -165,7 +165,7 @@ Set-AzStorageAccount -ResourceGroupName <resource_group> -AccountName <storage_a
 az storage account update -g <resource_group> -n <storage_account> --set kind=StorageV2
 ```
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 - [Azure 儲存體複寫](storage-redundancy.md)
 - [本地備援儲存體 (LRS)：適用於 Azure 儲存體的低成本資料備援](storage-redundancy-lrs.md)
 - [異地備援儲存體 (GRS)：適用於 Azure 儲存體的跨區域複寫](storage-redundancy-grs.md)

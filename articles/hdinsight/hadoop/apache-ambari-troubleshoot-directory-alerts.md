@@ -31,7 +31,7 @@ ms.locfileid: "76722833"
 
 受影響的背景工作節點上遺漏 Ambari 警示中所述的目錄。
 
-## <a name="resolution"></a>解析度
+## <a name="resolution"></a>解決方案
 
 在受影響的背景工作節點上手動建立遺漏的目錄。
 

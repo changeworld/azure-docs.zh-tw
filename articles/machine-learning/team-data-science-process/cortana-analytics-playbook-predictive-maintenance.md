@@ -42,7 +42,7 @@ BDM 內容並未預期讀者事先具備任何的資料科學知識。 在 TDM �
 ## <a name="business-case-for-predictive-maintenance"></a>預測性維護的商務案例
 
 企業會要求重要設備能以尖峰效率和使用率執行，以實現其資本投資的報酬。 這些資產可能包括飛機引擎、渦輪機、電梯或工業用冷卻設備 (價值數百萬)，以至影印機、咖啡機或冷飲機等日常設備。
-- 根據預設，大部分企業都很依賴「矯正性維護」，也就是在故障時更換零件。 矯正性維護雖能確保零件受到充分使用 (因而不浪費零件壽命)，但會增加企業為停機、人力和未排程維護需求 (停工時數，或據點不便) 付出的成本。
+- 根據預設，大部分企業都很依賴「矯正性維護」，也就是在故障時更換零件。 矯正性維護可確保零件完全使用 (因而不浪費零件壽命)，但企業卻付出停機、人力和未排程維護需求 (停工時數，或據點不便) 的成本。
 - 在下一個層次，企業會練習「預防性維護」，以判斷零件的使用年限，並且在故障前進行維護或更換。 預防性維護可避免事先未料到和重大的失敗。 但是，排程停機時間的高成本、在其實用存留期間內使用元件的情況，以及人力仍然保持不變。
 - 「預測性維護」的目的在於藉由啟用零件的 Just-In-Time 更換，讓矯正性與預防性維護之間達到最佳平衡。 這種方法只會在零件接近故障時進行更換。 企業可藉由延長零件壽命 (相較於預防性維護) 和減少未排程維護和人力成本 (透過矯正性維護)，獲得成本節省和競爭優勢。
 
@@ -219,9 +219,9 @@ PdM 有另一個實用的技巧，就是使用可偵測資料異常的演算法�
 #### <a name="tumbling-aggregates"></a>輪轉彙總
 針對資產的每個標示記錄，會定義大小為_w-<sub>k</sub>_ 的視窗，其中_k_是大小為_w_的視窗數目。然後，會針對記錄時間戳記之前的期間，建立超過_k_ _個輪轉的 windows_ _w-k，w-<sub>（k-1）</sub>，...，w-<sub>2</sub>，w-<sub>1</sub>_  。 _k_ 若為較小數字可擷取短期的效果，若為較大數字則可擷取長期的降低模式。 (請參閱圖 2)。
 
-![圖 2。 輪轉彙總特徵](./media/cortana-analytics-playbook-predictive-maintenance/tumbling-aggregate-features.png)
+![圖 2. 輪轉彙總特徵](./media/cortana-analytics-playbook-predictive-maintenance/tumbling-aggregate-features.png)
 
-圖 2。 輪轉彙總特徵
+圖 2. 輪轉彙總特徵
 
 例如，使用 W = 1 和 k = 3 可建立風力渦輪機使用案例的延隔時間特徵。 這些特徵意味著在使用上限和下限極端值的過去三個月中每個月的延隔時間。
 
@@ -231,7 +231,7 @@ PdM 有另一個實用的技巧，就是使用可偵測資料異常的演算法�
 
 目前為止所討論的資料準備工作應會導致資料整理成如下所示的方式。 訓練、測試及驗證資料應具有此邏輯結構描述 (此範例是以天為單位顯示時間)。
 
-| 資產識別碼 | 時間 | \<功能資料行 > | 標籤 |
+| 資產識別碼 | Time | \<功能資料行 > | 標籤 |
 | ---- | ---- | --- | --- |
 | A123 |第 1 天 | 。 。 。 | 。 |
 | A123 |第 2 天 | 。 。 。 | 。 |
@@ -266,9 +266,9 @@ PdM 有另一個實用的技巧，就是使用可偵測資料異常的演算法�
 #### <a name="label-construction-for-binary-classification"></a>二元分類的標籤建構
 此處的問題是：「資產在接下來 X 個時間單位內會故障的機率為何？」 若要回答這個問題，請將資產故障前的 X 筆記錄標記為「即將故障」(標籤 = 1)，並將所有其他記錄標記為「正常」(標籤 = 0)。 (請參閱圖 3)。
 
-![圖 3。 二元分類的標記方式](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-binary-classification.png)
+![圖 3. 二元分類的標記方式](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-binary-classification.png)
 
-圖 3。 二元分類的標記方式
+圖 3. 二元分類的標記方式
 
 以下列出某些使用案例的標記策略範例。
 - _航班延誤_： X 可以選擇為一天，以預測接下來24小時內的延遲。 接著，在故障前 24 小時內的所有航班都已標記為 1。
@@ -283,9 +283,9 @@ PdM 有另一個實用的技巧，就是使用可偵測資料異常的演算法�
 #### <a name="label-construction-for-regression"></a>迴歸的標籤建構
 這裡的問題是：「設備的剩餘使用年限 (RUL) 為何？」 針對故障前的每筆記錄，將標籤計算為在下步故障前剩餘的時間單位數。 在此方法中，標籤為連續變數。 (請參閱圖 4)。
 
-![圖 4。 迴歸的標記方式](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-regression.png)
+![圖 4. 迴歸的標記方式](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-regression.png)
 
-圖 4。 迴歸的標記方式
+圖 4. 迴歸的標記方式
 
 為了迴歸，所以會使用故障點參考進行標記。 若不知道資產在故障前存留多久，便無法進行計算。 因此與二元分類對比，資料中沒有任何失敗的資產不能用於模型化。 這個問題可由另一個稱為[存活分析](https://en.wikipedia.org/wiki/Survival_analysis)的統計技巧來得到最妥善的解決。 但是，將此技巧套用至資料會頻繁地隨時間變化的 PdM 使用案例時，則可能會引起混亂。 如需有關存活分析的詳細資訊，請參閱[這一份精簡資料](https://www.cscu.cornell.edu/news/news.php/stnews78.pdf)。
 
@@ -297,15 +297,15 @@ PdM 有另一個實用的技巧，就是使用可偵測資料異常的演算法�
 #### <a name="label-construction-for-multi-class-classification"></a>多類別分類的標籤建構
 此處的問題是：「資產在接下來 _nZ_ 個時間單位內會故障的機率為何 (其中 _n_ 是期間數目)？」 若要回答這個問題，請使用時段 (3Z、2Z、Z) 標記資產故障前的 nZ 筆記錄。 將所有其他記錄標記為「正常」(標籤 = 0)。 在此方法中，目標變數會保留「類別」值。 (請參閱圖 5)。
 
-![圖 5。 多元分類的失敗時間預測標籤](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-failure-time-prediction.png)
+![圖 5. 多元分類的失敗時間預測標籤](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-failure-time-prediction.png)
 
-圖 5。 故障時間預測的多類別分類標記方式
+圖 5. 故障時間預測的多類別分類標記方式
 
 此處的問題是：「由於根本原因/問題 _P<sub>i</sub>_ ，資產在接下來 X 個時間單位內會故障的機率為何？」 其中 _i_ 是可能的根本原因數目。 若要回答這個問題，請將資產故障前的 X 筆記錄標記為「由於根本原因 _P<sub>i</sub>_ 即將故障」(標籤 = _P<sub>i</sub>_ )。 將所有其他記錄標記為「標準」(標籤 = 0)。 在此方法中，標籤也是類別變數 (請參閱圖 6)。
 
-![圖 6。 多元分類的根本原因預測標籤](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-root-cause-prediction.png)
+![圖 6. 多元分類的根本原因預測標籤](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-root-cause-prediction.png)
 
-圖 6。 根本原因預測的多類別分類標記方式
+圖 6. 根本原因預測的多類別分類標記方式
 
 此模型將指派因為每個 P_i<sub></sub>_ 的故障機率，以及沒有故障的機率。 這些機率可依大小排序，以便預設未來最可能發生的問題。
 
@@ -339,11 +339,11 @@ PdM 有另一個實用的技巧，就是使用可偵測資料異常的演算法�
 
 假設有一連串的時間戳記事件，例如來自各種感應器的測量資料。 針對包含多個事件的時間範圍，定義訓練和測試範例的特徵及標籤。 例如，對於二元分類，根據過去的事件建立特徵，並根據未來 "X" 個時間單位內的未來事件建立標籤 (請參閱[特徵設計](#feature-engineering)和模型化技巧章節)。 因此，範例的標記時間範圍會晚於其特徵的時間範圍。
 
-對於時間相依分割，挑選「訓練截止時間 T<sub>c</sub>」，以便使用截至 T<sub>c</sub> 為止的過去資料微調的超參數來訓練模型。 為了避免超出 T<sub>c</sub> 的未來標籤外洩至訓練資料中，請選擇最新的時間，以將訓練範例標記為 T<sub>c</sub> 前的 X 個時間單位。 在 圖 7 所示的範例中，每個方塊都代表資料集中的一筆記錄，其特徵和標籤的計算方式如上所述。 此圖顯示當 X=2 和 W=3 時，應該進入訓練和測試集的記錄：
+對於時間相依分割，挑選「訓練截止時間 T_c<sub>」</sub>_ ，以便使用截至 T<sub>c</sub> 為止的過去資料微調的超參數來訓練模型。 為了避免超出 T<sub>c</sub> 的未來標籤外洩至訓練資料中，請選擇最新的時間，以將訓練範例標記為 T<sub>c</sub> 前的 X 個時間單位。 在 圖 7 所示的範例中，每個方塊都代表資料集中的一筆記錄，其特徵和標籤的計算方式如上所述。 此圖顯示當 X=2 和 W=3 時，應該進入訓練和測試集的記錄：
 
-![圖 7。 二元分類的時間相依分割](./media/cortana-analytics-playbook-predictive-maintenance/time-dependent-split-for-binary-classification.png)
+![圖 7. 二元分類的時間相依分割](./media/cortana-analytics-playbook-predictive-maintenance/time-dependent-split-for-binary-classification.png)
 
-圖 7。 二元分類的時間相依分割
+圖 7. 二元分類的時間相依分割
 
 綠色方塊表示屬於可用於訓練之時間單位的記錄。 每個訓練範例的產生方式：考慮將過去三個期間用於特徵產生，以及將 T<sub>c</sub> 之前的兩個未來期間用於標記。 如果兩個未來期間的任何部分超出 T<sub>c</sub>，請將該範例從訓練資料集中排除，因為無法取得超過 T<sub>c</sub> 的可見性。
 
@@ -423,7 +423,7 @@ PdM 有另一個實用的技巧，就是使用可偵測資料異常的演算法�
 
 本指南的最後一節提供 PdM 解決方案範本、教學課程，以及在 Azure 中實作之實驗的清單。 在某些情況下，只要分鐘內就可以將這些 PdM 應用程式部署到 Azure 訂用帳戶。 它們可以當作概念證明示範、替代方式試驗的沙箱，或實際生產實作的加速器。 這些範本位於 [Azure AI 資源庫](https://gallery.azure.ai)或 [Azure GitHub](https://github.com/Azure)。 經過一段時間，這些不同的範例就會納入此解決方案範本。
 
-| # | Title | 說明 |
+| # | Title | 描述 |
 |--:|:------|-------------|
 | 2 | [Azure 預測性維護解決方案範本](https://github.com/Azure/AI-PredictiveMaintenance) | 一種開放原始碼解決方案範本，示範 Azure ML 模型化和完整的 Azure 基礎結構，能夠支援 IoT 遠端監視內容中的預測性維護案例。 |
 | 3 | [深入學習預測性維護](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) | Azure Notebook，內含使用 LSTM (長短期記憶) 網路 (循環類神經網路的類別) 進行預測性維護的示範解決方案，以及[有關此範例的部落格文章](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance)。|
@@ -440,14 +440,14 @@ PdM 有另一個實用的技巧，就是使用可偵測資料異常的演算法�
 
 | 訓練資源  | 可用性 |
 |:-------------------|--------------|
-| [使用樹狀結構和隨機樹系的 PdM 學習路徑](https://aischool.microsoft.com/learning-paths/1H5vH5wAYcAy88CoQWQcA8) | 公用 | 
-| [使用深度學習的 PdM 學習路徑](https://aischool.microsoft.com/learning-paths/FSIXxYkOGcauo0eUO8qAS) | 公用 |
-| [使用 Azure 的 AI 開發人員](https://azure.microsoft.com/training/learning-paths/azure-ai-developer) | 公用 |
-| [Microsoft AI School](https://aischool.microsoft.com/learning-paths) | 公用 |
-| [GitHub 中的 Azure AI 學習](https://github.com/Azure/connectthedots/blob/master/readme.md) | 公用 |
-| [LinkedIn Learning](https://www.linkedin.com/learning) | 公用 |
-| [Microsoft AI YouTube 網路研討會](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | 公用 |
-| [Microsoft AI Show](https://channel9.msdn.com/Shows/AI-Show) | 公用 |
+| [使用樹狀結構和隨機樹系的 PdM 學習路徑](https://aischool.microsoft.com/learning-paths/1H5vH5wAYcAy88CoQWQcA8) | 公開 | 
+| [使用深度學習的 PdM 學習路徑](https://aischool.microsoft.com/learning-paths/FSIXxYkOGcauo0eUO8qAS) | 公開 |
+| [使用 Azure 的 AI 開發人員](https://azure.microsoft.com/training/learning-paths/azure-ai-developer) | 公開 |
+| [Microsoft AI School](https://aischool.microsoft.com/learning-paths) | 公開 |
+| [GitHub 中的 Azure AI 學習](https://github.com/Azure/connectthedots/blob/master/readme.md) | 公開 |
+| [LinkedIn Learning](https://www.linkedin.com/learning) | 公開 |
+| [Microsoft AI YouTube 網路研討會](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | 公開 |
+| [Microsoft AI Show](https://channel9.msdn.com/Shows/AI-Show) | 公開 |
 | [LearnAI@MS](https://learnanalytics.microsoft.com) | 合作夥伴 |
 | [Microsoft 合作夥伴網路](https://learningportal.microsoft.com) | 合作夥伴 |
 

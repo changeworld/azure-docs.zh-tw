@@ -327,7 +327,7 @@ Python 不支援屬性。
 
 下表說明您在 *function.json* 檔案中設定的繫結設定屬性內容和 `TwilioSms` 屬性。
 
-| v1 function.json 屬性 | v2 function.json 屬性 | 屬性內容 |說明|
+| v1 function.json 屬性 | v2 function.json 屬性 | 屬性內容 |描述|
 |---------|---------|---------|----------------------|
 |**type**|**type**| 必須設為 `twilioSms`。|
 |**direction**|**direction**| 必須設為 `out`。|

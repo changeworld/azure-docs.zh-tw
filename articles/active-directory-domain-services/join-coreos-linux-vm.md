@@ -24,7 +24,7 @@ ms.locfileid: "76712607"
 
 本文說明如何將 CoreOS VM 加入 Azure AD DS 受控網域。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成此教學課程，您需要下列資源和權限：
 

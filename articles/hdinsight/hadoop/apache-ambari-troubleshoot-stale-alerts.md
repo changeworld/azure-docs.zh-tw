@@ -34,7 +34,7 @@ Ambari 代理程式會持續執行健康情況檢查，以監視許多資源的�
 
 * 叢集中的少數主機可能裝載許多元件，因此需要執行許多警示。 如果元件的數目很大，警示工作可能會錯過排程的間隔
 
-## <a name="resolution"></a>解析度
+## <a name="resolution"></a>解決方案
 
 ### <a name="increase-alert-interval-time"></a>增加警示間隔時間
 

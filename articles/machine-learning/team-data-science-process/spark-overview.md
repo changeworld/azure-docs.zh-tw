@@ -65,7 +65,7 @@ ms.locfileid: "76718509"
 
 如需 Spark 2.0 模型和評分的模型耗用量實際運作的相關指引，請參閱[有關耗用量的 Spark 1.6 文件](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb)，以取得概述所需步驟的範例。 若要在 Spark 2.0 上使用此範例，請使用[這個](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py)檔案來取代 Python 程式碼檔案。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 下列程序與 Spark 1.6 相關。 對於 Spark 2.0 版本，請使用先前說明和連結的 Notebook。
 
@@ -174,7 +174,7 @@ ms.locfileid: "76718509"
 
 ![泛型方法的羅吉斯迴歸 ROC 曲線](./media/spark-overview/pyspark-jupyter-autovisualization.png)
 
-## <a name="whats-next"></a>接下來呢？
+## <a name="whats-next"></a>下一步
 現在您已使用 HDInsight Spark 叢集進行設定，並已上傳 Jupyter 筆記本，您已準備要逐步執行對應至這三個 PySpark Notebook 的主題。 這些主題示範如何瀏覽資料、建立和取用模型。 進階的資料探索和模型化 Notebook 顯示如何包括交叉驗證、超參數清除和模型評估。
 
 **使用 Spark 資料探索和模型化：** ：遵循[使用 Spark MLlib 工具組來建立資料的二進位分類和迴歸模型](spark-data-exploration-modeling.md)主題的內容，來探索資料集，以及建立、評分、評估 Machine Learning 模型。

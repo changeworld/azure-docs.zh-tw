@@ -36,7 +36,7 @@ ms.locfileid: "76720107"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="set-up-key-vault"></a>設定 Key Vault
+## <a name="set-up-key-vault"></a>設定金鑰保存庫
 
 若要讓應用程式能夠從金鑰保存庫擷取密碼，您必須先建立此密碼，並上傳至保存庫。
 

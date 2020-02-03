@@ -34,7 +34,7 @@ ms.locfileid: "76720866"
 > 
 > 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 若要執行本文所述的工作，您必須已設定 Azure 訂用帳戶和 Azure 儲存體帳戶。 您需要 Azure 儲存體帳戶名稱和帳戶金鑰，才能上傳或下載資料。
 
 * 若要設定 **Azure 訂用帳戶**，請參閱 [免費試用一個月](https://azure.microsoft.com/pricing/free-trial/)。
@@ -64,7 +64,7 @@ ms.locfileid: "76720866"
 
 此工作使用的參數如下所述：
 
-| 欄位 | 說明 |
+| 欄位 | 描述 |
 | --- | --- |
 | **AzureStorageConnection** |指定現有的 Azure 儲存體連線管理員，或建立參考指向 blob 檔案裝載位置之 Azure 儲存體帳戶的新。 |
 | **BlobContainer** |指定將已上傳的檔案保存為 blob 的 blob 容器名稱。 |

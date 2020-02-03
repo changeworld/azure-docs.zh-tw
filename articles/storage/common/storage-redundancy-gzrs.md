@@ -157,7 +157,7 @@ Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-a
 
 支援代表會聯絡您以提供協助。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - [Azure 儲存體複寫](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 - [本地備援儲存體 (LRS)：適用於 Azure 儲存體的低成本資料備援](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)

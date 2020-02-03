@@ -34,7 +34,7 @@ ms.locfileid: "76717921"
 ### <a name="azure-data-lake-analytics"></a>Azure Data Lake Analytics
 [Microsoft Azure Data Lake](https://azure.microsoft.com/solutions/data-lake/) 具備所有必要的功能，讓資料科學家能夠輕易地儲存任何大小、形狀和速度的資料，並以高延展性且符合成本效益的方式，進行資料處理、進階分析和建構機器學習服務模型。   只在實際處理資料時，才需要依個別作業付費。 Azure Data Lake Analytics 包括 U-SQL，此語言融合 SQL 的宣告性質和 C# 表達能力，提供可調整的分散式查詢功能。 它可讓您在讀取、插入自訂邏輯和使用者定義函式 (UDF) 上套用結構描述，以處理非結構化資料，並包含擴充性，可精細控制如何大規模執行。 若要深入了解 U-SQL 背後的設計原理，請參閱 [Visual Studio 部落格文章](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/)。
 
-Data Lake Analytics 也是 Cortana Analytics Suite 的重要組成部分，並可搭配 Azure SQL 資料倉儲、Power BI 與 Data Factory 一起使用。 這種組合提供了完整的雲端 big data 和 advanced analytics 平臺。
+Data Lake Analytics 也是 Cortana Analytics 套件的重要組成部分，可搭配 Azure SQL 資料倉儲、Power BI 與 Data Factory 一起使用。 這種組合提供了完整的雲端 big data 和 advanced analytics 平臺。
 
 本逐步解說首先描述如何安裝完成資料科學程序工作所需的必要條件和資源。 接著，它會使用 U-SQL 概述資料處理步驟，並示範如何搭配使用 Python 和 Hive 與 Azure Machine Learning Studio （傳統）來建立和部署預測模型。
 
@@ -48,9 +48,9 @@ Data Lake Analytics 也是 Cortana Analytics Suite 的重要組成部分，並�
 Azure Machine Learning Studio （傳統）是用來建立和部署使用兩種方法的預測模型：首先使用 Python 腳本，然後在 HDInsight （Hadoop）叢集上使用 Hive 資料表。
 
 ### <a name="scripts"></a>指令碼
-本逐步解說只概述主要步驟。 您可以從 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough) 下載完整的 **U-SQL 指令碼**和 **Jupyter Notebook**。
+本逐步解說只概述主要步驟。 您可以從 **GitHub** 下載完整的 **U-SQL 指令碼**和 [Jupyter Notebook](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 開始運用這些主題之前，您必須符合下列條件：
 
 * Azure 訂用帳戶。 如果還沒有訂用帳戶，請參閱 [取得 Azure 免費試用](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
@@ -690,7 +690,7 @@ Azure Machine Learning Studio （傳統）可以直接從 Azure Data Lake Storag
 ## <a name="summary"></a>摘要
 藉由完成此逐步解說，您已建立資料科學環境，以在 Azure Data Lake 中建立可調整的端對端解決方案。 這個環境可用來分析大型公用資料集，透過資料科學程序的標準步驟來取得此公用資料集，過程中從取得資料開始、經過模型訓練，最後將模型部署成 Web 服務。 U-SQL 是用來處理、流覽和取樣資料。 Python 和 Hive 與 Azure Machine Learning Studio （傳統）搭配使用，以建立和部署預測模型。
 
-## <a name="whats-next"></a>接下來呢？
+## <a name="whats-next"></a>下一步
 [Team Data Science Process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 的學習路徑提供可說明進階分析程序中每個步驟的主題連結。 [Team Data Science Process 逐步解說](walkthroughs.md) 頁面上分項列出一系列逐步解說，示範如何在各種不同預測性分析案例中使用資源和服務：
 
 * [Team Data Science Process 實務：使用 SQL 資料倉儲](sqldw-walkthrough.md)

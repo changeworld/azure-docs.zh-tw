@@ -22,7 +22,7 @@ Azure 受控磁片有四種磁片類型： Azure ultra Ssd （預覽）、premiu
 
  
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 因為轉換需要重新開機虛擬機器（VM），所以您應該在預先存在的維護期間排程磁片儲存體的遷移。
 * 如果您的磁片未受管理，請先[將它轉換為受控磁片](convert-unmanaged-to-managed-disks.md)，以便在儲存體選項之間切換。

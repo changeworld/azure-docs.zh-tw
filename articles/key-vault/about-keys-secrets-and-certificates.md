@@ -27,7 +27,7 @@ Azure Key Vault 可讓 Microsoft Azure 應用程式和使用者儲存及使用�
 
 如需 Key Vault 的一般詳細資訊，請參閱[什麼是 Azure Key Vault？](/azure/key-vault/key-vault-overview)
 
-## <a name="azure-key-vault"></a>Azure Key Vault
+## <a name="azure-key-vault"></a>Azure 金鑰保存庫
 
 以下各節會提供適用於 Key Vault 服務實作的一般資訊。
 
@@ -69,7 +69,7 @@ JavaScript 物件標記法 (JSON) 和 JavaScript 物件簽章與加密 (JOSE) �
 
 `https://{keyvault-name}.vault.azure.net/{object-type}/{object-name}/{object-version}`  
 
-地點：  
+其中：  
 
 |||  
 |-|-|  
@@ -330,7 +330,7 @@ Key Vault 憑證具有下列屬性：
 > [!Note] 
 > 如果 Key Vault 憑證到期，其可定址金鑰和秘密將變得無法使用。  
 
-#### <a name="tags"></a>標籤
+#### <a name="tags"></a>Tags
 
  用戶端指定的金鑰值組字典，類似於金鑰與秘密中的標記。  
 

@@ -32,25 +32,25 @@ ms.locfileid: "76715440"
 
 ## <a name="roles-and-permission-to-access-the-payout-report"></a>存取支出報表的角色和許可權
 
-| 報表/頁面    | 帳戶擁有者    | Manager  | Developer | 商務參與者 |  財務參與者 | 市場行銷人員 |
+| 報表/頁面    | 帳戶擁有者    | Manager  | 開發人員 | 商務參與者 |  財務參與者 | 市場行銷人員 |
 |------------------|------------------|----------|-----------|----|----|-----|
-| 取得報告（包括近乎即時的資料） | 可查看 | 可查看 | 無存取權 | 無存取權 | 可查看 | 無存取權 |
-| 意見反應報告/回應 | 可以查看和傳送意見反應 | 可以查看和傳送意見反應 | 可以查看和傳送意見反應 | 無存取權 | 無存取權 | 可以查看和傳送意見反應 |
-| 健康情況報告（包括近乎即時的資料） | 可查看 | 可查看 | 可查看 | 可查看 | 無存取權 | 無存取權 |
-| 使用方式報表 | 可查看 | 可查看 | 可查看 | 可查看 | 無存取權 | 無存取權 |
-| 支出帳戶 | 可以更新 | 無存取權 | 無存取權 | 無存取權 | 可以更新 | 無存取權 |
-| 稅務設定檔 | 可以更新 | 無存取權 | 無存取權 | 無存取權 | 可以更新 | 無存取權 |
-| 支出摘要 | 可查看 | 無存取權 | 無存取權 | 無存取權 | 可查看 | 無存取權 |
+| 取得報告（包括近乎即時的資料） | 可查看 | 可查看 | 不允許存取 | 不允許存取 | 可查看 | 不允許存取 |
+| 意見反應報告/回應 | 可以查看和傳送意見反應 | 可以查看和傳送意見反應 | 可以查看和傳送意見反應 | 不允許存取 | 不允許存取 | 可以查看和傳送意見反應 |
+| 健康情況報告（包括近乎即時的資料） | 可查看 | 可查看 | 可查看 | 可查看 | 不允許存取 | 不允許存取 |
+| 使用方式報表 | 可查看 | 可查看 | 可查看 | 可查看 | 不允許存取 | 不允許存取 |
+| 支出帳戶 | 可以更新 | 不允許存取 | 不允許存取 | 不允許存取 | 可以更新 | 不允許存取 |
+| 稅務設定檔 | 可以更新 | 不允許存取 | 不允許存取 | 不允許存取 | 可以更新 | 不允許存取 |
+| 支出摘要 | 可查看 | 不允許存取 | 不允許存取 | 不允許存取 | 可查看 | 不允許存取 |
 
 ## <a name="payout-report-difference-between-cloud-partner-portal-and-partner-center"></a>支出報表： Cloud Partner 入口網站與合作夥伴中心之間的差異
 
-| | 雲端合作夥伴入口網站 | 合作夥伴中心 |
+| | 雲端合作夥伴入口網站 | 夥伴中心 |
 |---------|---------|---------|
 | 連結 | [https://cloudpartner.azure.com/](https://cloudpartner.azure.com) | [https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory](https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory)和[https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments](https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments) |
 | 導覽 | 深入解析支出中提供的支出報告 | 合作夥伴中心提供的支出報告-支出圖示 |
-| 範圍 | <ul> <li>針對進行中、收集和付費的集合，可以看到每行專案的交易 </li> <li>報表-顯示訂單建立後的所有明細專案，包括進行中的收集和進行中的帳單，以及尚未符合資格的收集狀態和明細專案。 </li> </ul> | <ul> <li>會在專案被視為合格收益後顯示。</li> <li>客戶必須先支付給 Microsoft，然後 Isv 才會看到付款報告開始。</li> <li>支出報表將不會顯示收集進行中，且正在進行計費。  </li> </ul>  |
+| 影響範圍 | <ul> <li>針對進行中、收集和付費的集合，可以看到每行專案的交易 </li> <li>報表-顯示訂單建立後的所有明細專案，包括進行中的收集和進行中的帳單，以及尚未符合資格的收集狀態和明細專案。 </li> </ul> | <ul> <li>會在專案被視為合格收益後顯示。</li> <li>客戶必須先支付給 Microsoft，然後 Isv 才會看到付款報告開始。</li> <li>支出報表將不會顯示收集進行中，且正在進行計費。  </li> </ul>  |
 | 交易尚未就緒，無法支付支出 | 計費進行中 | 下一個估計付款：支出狀態為 [未處理] 狀態。  |
-| 支出狀態 |  | 尚未 <br> 收益符合付款資格。 如獎勵計畫的程式指南中所定義，它會維持在此狀態的冷卻期間。 <br> <br> 提交 <br> 付款順序-在處理付款之前產生暫止的內部評論。 <br> <br> 發送 <br> 付款已傳送到您的銀行。 |
+| 支出狀態 |  | 尚未 <br> 收益符合付款資格。 如獎勵計畫的程式指南中所定義，它會維持在此狀態的冷卻期間。 <br> <br> 提交 <br> 付款順序-在處理付款之前產生暫止的內部評論。 <br> <br> 寄件日期： <br> 付款已傳送到您的銀行。 |
 
 ## <a name="customer-types"></a>客戶類型
 
@@ -68,23 +68,23 @@ ms.locfileid: "76715440"
 
 ## <a name="corelation-between-payout-and-usage"></a>支出和使用量之間的 Corelation
 
-|說明    |    日期  | 訂單/使用量  | 比率 |
+|描述    |    Date  | 訂單/使用量  | 支付 |
 |----------|----------|-----------|-------------|
-|訂單期間   | 2019年8月15日-8 月30日-2019 | **相互關聯屬性訂單** <br> <ul> <li>訂單</li> <li>CustomerId</li> </ul> <br> **使用量** <br> <ul> <li>CustomerId </li> <li>客戶名稱</li> <li>(UsageReference)發票/LineItemId</li> <li> 預估的延伸費用 <br> 預估付款 (PC) </li> </ul> |  |
+|訂單期間   | 2019年8月15日-8 月30日-2019 | **相互關聯屬性訂單** <br> <ul> <li>訂單 ID</li> <li>CustomerId</li> </ul> <br> **使用量** <br> <ul> <li>CustomerId </li> <li>客戶名稱</li> <li>(UsageReference)發票/LineItemId</li> <li> 預估的延伸費用 <br> 預估付款 (PC) </li> </ul> |  |
 |期間結束 (月)   | 2019年8月30日 | | |
 |計費日期 | 2019年9月1日 | | |
 |客戶付款日期 | 2019年9月1日 | | |
-|委付期間 (僅信用卡，30 天) | 2019年9月1日-2019 年9月30日 | | **相互關聯屬性訂單：** <br> <ul><li>AssetId</li> <li>客戶識別碼</li> <li> 客戶名稱</li> </ul> <br> **使用量** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>客戶名稱</li> <li>訂單</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **支出狀態：** 尚未 |
+|委付期間 (僅信用卡，30 天) | 2019年9月1日-2019 年9月30日 | | **相互關聯屬性訂單：** <br> <ul><li>AssetId</li> <li>客戶識別碼</li> <li> 客戶名稱</li> </ul> <br> **使用量** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>客戶名稱</li> <li>訂單 ID</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **支出狀態：** 尚未 |
 |收帳期間開始 | 2019年9月1日 | | |
 |收帳期間結束 (最大值，30 天) | 2019年9月30日 | | |
-|付款計算日期 (每月第 15 日) | 2019年10月1日 | | **相互關聯屬性** <br> <ul><li>AssetId</li> <li>客戶識別碼</li> <li>客戶名稱</li> </ul> <br> **使用量** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>客戶名稱</li> <li>訂單</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **支出狀態：** 提交 |
-|付款日期 | 2019年10月15日 | | **相互關聯屬性** <br> <ul><li>AssetId</li> <li>客戶識別碼</li> <li> 客戶名稱</li> </ul> <br> **使用量** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>客戶名稱</li> <li>訂單</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **支出狀態：** 已傳送付款 |
+|付款計算日期 (每月第 15 日) | 2019年10月1日 | | **相互關聯屬性** <br> <ul><li>AssetId</li> <li>客戶識別碼</li> <li>客戶名稱</li> </ul> <br> **使用量** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>客戶名稱</li> <li>訂單 ID</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **支出狀態：** 提交 |
+|付款日期 | 2019年10月15日 | | **相互關聯屬性** <br> <ul><li>AssetId</li> <li>客戶識別碼</li> <li> 客戶名稱</li> </ul> <br> **使用量** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>客戶名稱</li> <li>訂單 ID</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **支出狀態：** 已傳送付款 |
 
 ### <a name="enterprise-agreement-quarterlymonthly-customers"></a>Enterprise 合約（每季/每月客戶）
 
-| 說明 |    日期  | 用量 | 比率 |
+| 描述 |    Date  | 使用量 | 支付 |
 |----------|----------|---------|-----------|
-|訂單期間 | 2019年8月15日-8 月30日-2019 | **相互關聯屬性訂單** <br> <ul> <li>訂單</li> <li>CustomerId</li> </ul> <br> **使用方式報表** <br> <ul> <li>CustomerId </li> <li>客戶名稱</li> <li>(UsageReference)發票/LineItemId</li> <li> 預估的延伸費用 <br> 預估付款 (PC) </li> </ul> | |
+|訂單期間 | 2019年8月15日-8 月30日-2019 | **相互關聯屬性訂單** <br> <ul> <li>訂單 ID</li> <li>CustomerId</li> </ul> <br> **使用方式報表** <br> <ul> <li>CustomerId </li> <li>客戶名稱</li> <li>(UsageReference)發票/LineItemId</li> <li> 預估的延伸費用 <br> 預估付款 (PC) </li> </ul> | |
 |期間結束 (季) | 2019年9月30日 | | |
 |計費日期 | 2019年10月15日 | | |
 |委付期間 (僅信用卡，30 天) | n/a | | |
@@ -93,13 +93,13 @@ ms.locfileid: "76715440"
 |收帳期間結束 (最大值，90 天) | 2020年1月15日 | | |
 |客戶付款日期 | 2019年12月30日 | | |
 |支出計算 | 2020年1月15日 | | |
-|付款日期 | 2020年2月15日 | | **以季為基礎的客戶** <br> <br> **訂單報表** <br> <ul><li>AssetId</li> <li>客戶識別碼</li> <li> 客戶名稱</li> </ul> <br> **使用量** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>客戶名稱</li> <li>訂單</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **支出狀態：** 已傳送 |
+|付款日期 | 2020年2月15日 | | **以季為基礎的客戶** <br> <br> **訂單報表** <br> <ul><li>AssetId</li> <li>客戶識別碼</li> <li> 客戶名稱</li> </ul> <br> **使用量** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>客戶名稱</li> <li>訂單 ID</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **支出狀態：** 已傳送 |
 
 ## <a name="transaction-history-download-export"></a>交易記錄下載匯出
 
 此選項會提供您在 [交易歷程記錄] 頁面中看到的每個賺取明細專案的下載、賺取類型、日期、相關聯的交易金額、客戶、產品，以及適用于獎勵計畫的其他交易詳細資料。
 
-| 資料行名稱     | 說明    |
+| 資料行名稱     | 描述    |
 |-------------|-------------------------------|
 | earningId                      | 每個收益的唯一識別碼                                                                                                       |
 | participantId                  | 方案下合作夥伴賺取的主要身分識別                                                                            |
@@ -165,7 +165,7 @@ ms.locfileid: "76715440"
 | earningAmountInLastPaymentCurrency       | 在最後一個付款貨幣中的賺取金額（如果未支付先前付款，欄位將會是空的）                                                                                                                   |
 | lastPaymentCurrency       | [上次付款貨幣] （如果未支付先前付款，欄位將會是空的）                                                                                                                   |
 | AssetId       | Marketplace 服務客戶訂單的唯一識別碼。  它代表交易的採購明細專案。 可以有多個資產。                                                                                                                   |
-| 訂單       | 與客戶的發票相關                                                                                                                   |
+| 訂單 ID       | 與客戶的發票相關                                                                                                                   |
 | LineItemId       | 客戶發票中的個別線條                                                                                                                   |
 | 客戶國家/地區       | 客戶提供的國家/地區名稱。  這可能與客戶的 Azure 訂用帳戶中的國家/地區不同。                                                                                                                   |
 | 客戶 EmailAddress       | 終端客戶所提供的電子郵件地址。  這可能與客戶的 Azure 訂用帳戶中的電子郵件地址不同。                                                                                                                   |

@@ -159,7 +159,7 @@ As an example, the following hero icon is for the Azure Container Service.
 4. amp.com the tile -->
 
 
-## <a name="legal"></a>法律聲明
+## <a name="legal"></a>法律
 
 可在此區段提供每個供應項目兩份必要的法律文件：隱私權原則和使用條款。
 

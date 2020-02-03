@@ -24,7 +24,7 @@ Azure DevTest Labs 可讓您使用 Azure 入口網站快速建立自助開發/�
 
 若要將使用者新增至實驗室，請將使用者新增至實驗室的**DevTest Labs 使用者**角色。 本文說明如何使用下列其中一種方式，自動將使用者新增至實驗室：
 
-- Azure Resource Manager 範本
+- Azure 資源管理員範本
 - Azure PowerShell Cmdlet 
 - Azure CLI。
 
@@ -132,7 +132,7 @@ $userObjectId = (Get-AzureRmADUser -UserPrincipalName ‘email@company.com').Id
 
 您也可以使用 Azure Active Directory 的 PowerShell Cmdlet，其中包括[set-msoluser](/powershell/module/msonline/get-msoluser?view=azureadps-1.0)、 [get-msolgroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0)和[new-msolserviceprincipal](/powershell/module/msonline/get-msolserviceprincipal?view=azureadps-1.0)。
 
-### <a name="scope"></a>範圍
+### <a name="scope"></a>影響範圍
 範圍指定應該套用角色指派的資源或資源群組。 針對資源，範圍的格式為： `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{provider-namespace}/{resource-type}/{resource-name}`。 此範本會使用 `subscription().subscriptionId` 函式來填入 `subscription-id` 部分和 `resourceGroup().name` 範本函式，以填入 `resource-group-name` 部分。 使用這些函式表示您要為其指派角色的實驗室，必須存在於目前的訂用帳戶中，以及部署範本所使用的相同資源群組。 最後一個部分（`resource-name`）是實驗室的名稱。 此值是透過此範例中的樣板參數所接收。 
 
 範本中的角色範圍： 

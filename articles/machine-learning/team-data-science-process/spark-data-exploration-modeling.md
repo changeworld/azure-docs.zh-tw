@@ -39,7 +39,7 @@ ms.locfileid: "76718628"
 > 
 > 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 您需要 Azure 帳戶和 Spark 1.6 (或 Spark 2.0) HDInsight 叢集，才能完成此逐步解說。 請參閱[使用 Azure HDInsight 上的 Spark 的資料科學概觀](spark-overview.md)以取得這些需求。 此主題也包括這裡使用的 NYC 2013 計程車資料的描述，以及如何從 Spark 叢集的 Jupyter Notebook 執行程式碼的指示。 
 
 ## <a name="spark-clusters-and-notebooks"></a>Spark 叢集和 Notebook
@@ -1094,7 +1094,7 @@ BoostedTreeClassificationFileLoc = modelDir + "GradientBoostingTreeClassificatio
 
 BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-05-0317_06_51.737282"
 
-## <a name="whats-next"></a>接下來呢？
+## <a name="whats-next"></a>下一步
 現在已使用 Spark MlLib 建立迴歸和分類模型，您已瞭解如何評分及評估這些模型。 進階資料探索和模型化筆記本深入探討到包括交叉驗證、超參數清除和模型評估。 
 
 **模型耗用量︰** 若要瞭解如何評分及評估本主題中所建立的分類和迴歸模型，請參閱 [評分及評估 Spark 建置機器學習服務模型](spark-model-consumption.md)。

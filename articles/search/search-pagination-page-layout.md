@@ -53,7 +53,7 @@ ms.locfileid: "76721569"
 
     GET /indexes/online-catalog/docs?search=*&$top=15&$skip=30&$count=true
 
-## <a name="layout"></a>Layout
+## <a name="layout"></a>版面配置
 
 在搜尋結果頁面中，您可能會想要顯示縮圖、欄位子集以及完整產品頁面的連結。
 

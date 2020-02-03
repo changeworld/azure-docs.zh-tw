@@ -31,7 +31,7 @@ ms.locfileid: "76719138"
 > [!NOTE]
 > 如需可用來建置兩個應用程式，以在裝置與您的解決方案後端執行的 Azure IoT SDK 相關資訊，請參閱 [Azure IoT SDK](iot-hub-devguide-sdks.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 使用中的 Azure 帳戶。 (如果您沒有帳戶，只需要幾分鐘的時間就可以建立 [Azure 免費帳戶](https://azure.microsoft.com/pricing/free-trial/))。
 
@@ -49,7 +49,7 @@ ms.locfileid: "76719138"
 
 ## <a name="create-a-device-identity-and-a-module-identity-in-iot-hub"></a>在 IoT 中樞中建立裝置身分識別與模組身分識別
 
-在本節中，您會建立 C 應用程式，它會在 IoT 中樞的身分識別登錄中建立裝置身分識別和模組身分識別。 裝置或模組無法連線到 IoT 中樞，除非它在身分識別登錄中具有項目。 如需詳細資訊，請參閱 [IoT 中樞開發人員指南](iot-hub-devguide-identity-registry.md)的**身分識別登錄**一節。 當您執行此主控台應用程式時，它會針對裝置和模組產生唯一的識別碼和金鑰。 當裝置和模組將裝置到雲端的訊息傳送給 IoT 中樞時，裝置和模組會使用這些值來識別自己。 識別碼會區分大小寫。
+在本節中，您會建立 C 應用程式，它會在 IoT 中樞的身分識別登錄中建立裝置身分識別和模組身分識別。 裝置或模組無法連線到 IoT 中樞，除非它在身分識別登錄中具有項目。 如需詳細資訊，請參閱 **IoT 中樞開發人員指南**的[身分識別登錄](iot-hub-devguide-identity-registry.md)一節。 當您執行此主控台應用程式時，它會針對裝置和模組產生唯一的識別碼和金鑰。 當裝置和模組將裝置到雲端的訊息傳送給 IoT 中樞時，裝置和模組會使用這些值來識別自己。 識別碼會區分大小寫。
 
 將下列程式碼新增至 C 檔案：
 

@@ -235,7 +235,7 @@ Azure SQL Database 中的資料庫和 SQL Server 中的資料庫兩者之間的�
 - 提供新的語法 `TO EXTERNAL MONITOR`，以啟用甚至中樞和 Azure 監視器記錄目標。
 - `TO FILE` 語法**不受支援**，因為 SQL Database 無法存取 Windows 檔案共用。
 - **不支援**關機選項。
-- **不支援**使用 0 的 `queue_delay`。
+- `queue_delay`不支援**使用 0 的** 。
 
 ## <a name="next-steps"></a>後續步驟
 

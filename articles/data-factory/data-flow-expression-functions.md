@@ -43,7 +43,8 @@ ___
 * ``[10, 20] + [30, 40] -> [10, 20, 30, 40]``
 * ``toTimestamp('2019-02-03 05:19:28.871', 'yyyy-MM-dd HH:mm:ss.SSS') + (days(1) + hours(2) - seconds(10)) -> toTimestamp('2019-02-04 07:19:18.871', 'yyyy-MM-dd HH:mm:ss.SSS')``
 ___
-### <code>addDays</code><br/><br/>
+### <code>addDays</code>
+<code><b>addDays(<i>&lt;date/timestamp&gt;</i> : datetime, <i>&lt;days to add&gt;</i> : integral) => datetime</b></code><br/><br/>
 在日期或時間戳記中增加天數。 與 date * ``addDays(toDate('2016-08-08'), 1) -> toDate('2016-08-09')``
 ___
 ### <code>addMonths</code>的 + 運算子相同 
@@ -385,7 +386,8 @@ ___
 * ``lpad('dumbo', 4, '-') -> 'dumb'``
 * ' ' lpad （' dumbo '，8，' < > '）-> ' < > ltrim<dumbo'``
 ___
-### <code></code><br/><br/>
+### <code></code>
+<code><b>ltrim(<i>&lt;string to trim&gt;</i> : string, [<i>&lt;trim characters&gt;</i> : string]) => string</b></code><br/><br/>
 從左側修剪開頭字元的字串。 若未指定第二個參數，則會修剪空白字元。 否則，它會修剪第二個參數中指定的任何字元 * ``ltrim('  dumbo  ') -> 'dumbo  '``
 * ``ltrim('!--!du!mbo!', '-!') -> 'du!mbo!'``
 ___

@@ -45,7 +45,7 @@ Azure Active Directory (Azure AD) 會利用 [System for Cross-Domain Identity Ma
 
 ## <a name="were-the-services-fixes-described-automatically-applied-to-my-pre-existing-scim-app"></a>上述服務修正會自動套用至我既存的 SCIM 應用程式嗎？
 
-不會。 由於這會構成 SCIM 應用程式的一項重大變更，並撰寫應用程式程式碼來使用舊版行為，因此這些變更不會自動套用至現有的應用程式。
+否。 由於這會構成 SCIM 應用程式的一項重大變更，並撰寫應用程式程式碼來使用舊版行為，因此這些變更不會自動套用至現有的應用程式。
 
 在修正日期之後，這些變更會套用至 Azure 入口網站中已設定之所有[不在資源庫內的新 SCIM 應用程式](configure-single-sign-on-non-gallery-applications.md)。
 
@@ -53,12 +53,12 @@ Azure Active Directory (Azure AD) 會利用 [System for Cross-Domain Identity Ma
 
 ## <a name="can-i-migrate-an-existing-scim-based-user-provisioning-job-to-include-the-latest-service-fixes"></a>我可以遷移現有的 SCIM 使用者佈建作業以包含最新服務修正嗎？
 
-可以。 如果您已使用此應用程式執行個體進行單一登入，並需要遷移現有的佈建作業以包含最新修正，請遵循下列程序。 此程序描述如何使用 Microsoft Graph API 和 Microsoft Graph API 總管，從您現有的 SCIM 應用程式中移除舊佈建作業，並建立新的佈建作業來展示新行為。
+是。 如果您已使用此應用程式執行個體進行單一登入，並需要遷移現有的佈建作業以包含最新修正，請遵循下列程序。 此程序描述如何使用 Microsoft Graph API 和 Microsoft Graph API 總管，從您現有的 SCIM 應用程式中移除舊佈建作業，並建立新的佈建作業來展示新行為。
 
 > [!NOTE]
 > 如果您的應用程式仍在開發中，且尚未針對單一登入或使用者佈建進行部署，則最簡單的解決方法是在 Azure 入口網站的 [Azure Active Directory] > [企業應用程式] 區段中刪除應用程式項目，然後直接使用 [建立應用程式] > [不在資源庫內] 選項新增應用程式項目。 這是執行下列程序的替代方案。
  
-1. 登入 Azure 入口網站 https://portal.azure.com 。
+1. 登入 Azure 入口網站 https://portal.azure.com。
 2. 在 Azure 入口網站的 [Azure Active Directory] > [企業應用程式] 區段中，尋找並選取您現有的 SCIM 應用程式。
 3. 在您現有 SCIM 應用程式的 [屬性] 區段中，複製 [物件識別碼]。
 4. 在新的網頁瀏覽器視窗中，前往 https://developer.microsoft.com/graph/graph-explorer 並以新增應用程式所在的 Azure AD 租用戶系統管理員身分登入。
@@ -96,9 +96,9 @@ Azure Active Directory (Azure AD) 會利用 [System for Cross-Domain Identity Ma
 
 ## <a name="can-i-add-a-new-non-gallery-app-that-has-the-old-user-provisioning-behavior"></a>我可以新增具有舊使用者佈建行為且不在資源庫內的應用程式嗎？
 
-可以。 如果您已撰寫應用程式程式碼來使用修正前的舊行為，且需要部署應用程式的新執行個體，請遵循下列程序。 此程序描述如何使用 Microsoft Graph API 和 Microsoft Graph API 總管，建立 SCIM 佈建作業來展示舊行為。
+是。 如果您已撰寫應用程式程式碼來使用修正前的舊行為，且需要部署應用程式的新執行個體，請遵循下列程序。 此程序描述如何使用 Microsoft Graph API 和 Microsoft Graph API 總管，建立 SCIM 佈建作業來展示舊行為。
  
-1. 登入 Azure 入口網站 https://portal.azure.com 。
+1. 登入 Azure 入口網站 https://portal.azure.com。
 2. 在 Azure 入口網站的 [Azure Active Directory] > [企業應用程式] > [建立應用程式] 區段中，建立**不在資源庫內**的新應用程式。
 3. 在新自訂應用程式的 [屬性] 區段中，複製 [物件識別碼]。
 4. 在新的網頁瀏覽器視窗中，前往 https://developer.microsoft.com/graph/graph-explorer 並以新增應用程式所在的 Azure AD 租用戶系統管理員身分登入。

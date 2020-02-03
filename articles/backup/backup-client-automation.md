@@ -411,7 +411,7 @@ PolicyState     : Valid
 $sched = New-OBSchedule -DaysOfWeek Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday -TimesOfDay 2:00
 ```
 
-### <a name="retention"></a>保留期
+### <a name="retention"></a>保留
 
 ```powershell
 $rtn = New-OBRetentionPolicy -RetentionDays 32 -RetentionWeeklyPolicy -RetentionWeeks 13 -WeekDaysOfWeek Sunday -WeekTimesOfDay 2:00  -RetentionMonthlyPolicy -RetentionMonths 13 -MonthDaysOfMonth 1 -MonthTimesOfDay 2:00
@@ -658,7 +658,7 @@ ItemLastModifiedTime : 21-Jun-14 6:43:02 AM
 $RecoveryOption = New-OBRecoveryOption -DestinationPath "C:\temp" -OverwriteType Skip
 ```
 
-現在，從 `Get-OBRecoverableItem` Cmdlet 的輸出，在選取的 `$Item` 上使用 [Start-OBRecovery](https://technet.microsoft.com/library/hh770402.aspx) 命令來觸發還原程序：
+現在，從 [ Cmdlet 的輸出，在選取的 ](https://technet.microsoft.com/library/hh770402.aspx) 上使用 `$Item`Start-OBRecovery`Get-OBRecoverableItem` 命令來觸發還原程序：
 
 ```powershell
 Start-OBRecovery -RecoverableItem $Item -RecoveryOption $RecoveryOption

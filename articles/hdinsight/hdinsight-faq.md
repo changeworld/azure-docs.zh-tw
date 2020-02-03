@@ -80,7 +80,7 @@ Azure HDInsight 叢集具有不同類型的虛擬機器或節點。 每種節點
 
 ### <a name="can-i-install-additional-components-on-my-cluster"></a>我可以在叢集上安裝其他元件嗎？
 
-可以。 若要安裝其他元件或自訂叢集設定，請使用：
+是。 若要安裝其他元件或自訂叢集設定，請使用：
 
 - 在建立期間或之後的腳本。 腳本是透過[腳本動作](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)叫用，這是您可以從 Azure 入口網站、Hdinsight Windows PowerShell Cmdlet 或 HDINSIGHT .net SDK 使用的設定選項。 此設定選項可以從 Azure 入口網站、HDInsight Windows PowerShell Cmdlet 或 HDInsight .NET SDK 使用。
 
@@ -202,7 +202,7 @@ ktutil: q
 
 ### <a name="can-i-use-a-self-signed-certificate-in-an-aad-ds-secure-ldap-setup-and-provision-an-esp-cluster"></a>我可以在 AAD DS 安全 LDAP 安裝程式中使用自我簽署憑證，並布建 ESP 叢集嗎？
 
-建議使用憑證授權單位單位所發行的憑證，但 ESP 也支援使用自我簽署憑證。 如需詳細資訊，請參閱：
+建議使用憑證授權單位單位所發行的憑證，但 ESP 也支援使用自我簽署憑證。 如需詳細資訊，請參閱
 
 - [啟用 Azure Active Directory Domain Services](domain-joined/apache-domain-joined-configure-using-azure-adds.md#enable-azure-ad-ds)
 
@@ -279,7 +279,7 @@ done
 
 目前，blob 儲存體和 Azure Data Lake Storage Gen1 或 Gen2 不存在任何 Ranger 外掛程式。 針對 ESP 叢集，您應該使用 Azure Data Lake Storage，因為您至少可以使用 HDFS 工具，在檔案系統層級手動設定細微許可權。 此外，使用 Azure Data Lake Storage 時，ESP 叢集會使用叢集層級的 Azure Active Directory 來執行一些檔案系統存取控制。 
 
-您可以使用 Azure 儲存體總管，將資料存取原則指派給使用者的安全性群組。 如需詳細資訊，請參閱：
+您可以使用 Azure 儲存體總管，將資料存取原則指派給使用者的安全性群組。 如需詳細資訊，請參閱
 
 - [如何? 將 Azure AD 使用者的許可權設定為使用 Hive 或其他服務來查詢 Data Lake Storage Gen2 中的資料嗎？](hdinsight-hadoop-use-data-lake-storage-gen2.md#how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services)
 - [搭配 Azure Data Lake Storage Gen2 使用 Azure 儲存體總管設定檔案和目錄等級使用權限](/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)

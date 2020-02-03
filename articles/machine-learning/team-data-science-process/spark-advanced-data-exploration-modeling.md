@@ -198,7 +198,7 @@ PySpark 核心提供一些預先定義的「magic」，這是您可以使用 %% 
 此程式碼與後續程式碼片段使用了 SQL magic 來查詢範例及本機 magic 以繪製資料。
 
 * **SQL magic (`%%sql`)** HDInsight PySpark 核心支援針對 sqlContext 進行簡單的內嵌 HiveQL 查詢。 「-o VARIABLE_NAME」引數會將 SQL 查詢的輸出，保存為 Jupyter 伺服器上的 Pandas 資料框架。 這代表會在本機模式中使用此引數。
-* **`%%local` magic** 是用來在 Jupyter 伺服器本機 (HDInsight 叢集的前端節點) 上執行程式碼。 一般來說，您使用 `%%sql -o` magic 之後使用 `%%local` magic 來執行查詢。 -o 參數會將 SQL 查詢的輸出保存在本機。 接著 `%%local` magic 會針對保存在本機之 SQL 查詢的輸出，觸發下一組程式碼片段在本機執行。 執行完程式碼後，輸出將會自動以視覺化方式呈現。
+* **`%%local` magic** 是用來在 Jupyter 伺服器本機 (HDInsight 叢集的前端節點) 上執行程式碼。 一般來說，您使用 `%%local` magic 之後使用 `%%sql -o` magic 來執行查詢。 -o 參數會將 SQL 查詢的輸出保存在本機。 接著 `%%local` magic 會針對保存在本機之 SQL 查詢的輸出，觸發下一組程式碼片段在本機執行。 執行完程式碼後，輸出將會自動以視覺化方式呈現。
 
 此查詢會擷取按乘客計數排列的車程。 
 
@@ -1453,7 +1453,7 @@ BoostedTreeClassificationFileLoc = modelDir + "GradientBoostingTreeClassificatio
 
 BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-05-0316_52_18.827237"
 
-## <a name="whats-next"></a>接下來呢？
+## <a name="whats-next"></a>下一步
 現在已使用 Spark MlLib 建立迴歸和分類模型，您已瞭解如何評分及評估這些模型。
 
 **模型耗用量︰** 若要瞭解如何評分及評估本主題中所建立的分類和迴歸模型，請參閱 [評分及評估 Spark 建置機器學習服務模型](spark-model-consumption.md)。

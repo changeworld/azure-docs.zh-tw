@@ -335,8 +335,8 @@ Azure Marketplace API 的端點為 `https://marketplaceapi.microsoft.com`。
 | id                 | String        | 作業的識別碼。                                                                      |
 | status             | 例舉          | 下列其中之一的作業狀態：`In Progress`、 `Succeeded` 或 `Failed`。          |
 | resourceLocation   | String        | 已建立或修改之訂用帳戶的連結。 此連結可協助用戶端取得更新的狀態後續作業。 此值並未針對 `Unsubscribe` 作業進行設定。 |
-| created            | 日期時間      | 作業建立時間 (UTC)。                                                           |
-| lastModified       | 日期時間      | 作業上次更新時間 (UTC)。                                                      |
+| created            | Datetime      | 作業建立時間 (UTC)。                                                           |
+| lastModified       | Datetime      | 作業上次更新時間 (UTC)。                                                      |
 |  |  |  |
 
 *回應碼*
@@ -407,8 +407,8 @@ Azure Marketplace API 的端點為 `https://marketplaceapi.microsoft.com`。
 | planId                 | String        | 使用者訂閱的方案識別碼。          |
 | saasSubscriptionName   | String        | SaaS 訂用帳戶名稱。                |
 | saasSubscriptionStatus | 例舉          | 作業狀態。  下列其中之一：  <br/> - `Subscribed`：訂用帳戶作用中。  <br/> - `Pending`：使用者建立了該資源，但它不是由 ISV 所啟動。   <br/> - `Unsubscribed`：使用者已取消訂閱。   <br/> - `Suspended`：使用者已暫止訂用帳戶。   <br/> - `Deactivated`：Azure 訂用帳戶已暫時停用。  |
-| created                | 日期時間      | 建立訂用帳戶的時間戳記值 (UTC)。 |
-| lastModified           | 日期時間      | 已修改之訂用帳戶的時間戳記值 (UTC)。 |
+| created                | Datetime      | 建立訂用帳戶的時間戳記值 (UTC)。 |
+| lastModified           | Datetime      | 已修改之訂用帳戶的時間戳記值 (UTC)。 |
 |  |  |  |
 
 *回應碼*
@@ -479,8 +479,8 @@ Azure Marketplace API 的端點為 `https://marketplaceapi.microsoft.com`。
 | planId                 | String        | 使用者訂閱的方案識別碼          |
 | saasSubscriptionName   | String        | SaaS 訂用帳戶的名稱                |
 | saasSubscriptionStatus | 例舉          | 作業狀態。  下列其中之一：  <br/> - `Subscribed`：訂用帳戶作用中。  <br/> - `Pending`：使用者建立了該資源，但它不是由 ISV 所啟動。   <br/> - `Unsubscribed`：使用者已取消訂閱。   <br/> - `Suspended`：使用者已暫止訂用帳戶。   <br/> - `Deactivated`：Azure 訂用帳戶已暫時停用。  |
-| created                | 日期時間      | 訂用帳戶建立時間戳記值（UTC） |
-| lastModified           | 日期時間      | 訂用帳戶修改的時間戳記值（UTC） |
+| created                | Datetime      | 訂用帳戶建立時間戳記值（UTC） |
+| lastModified           | Datetime      | 訂用帳戶修改的時間戳記值（UTC） |
 |  |  |  |
 
 *回應碼*

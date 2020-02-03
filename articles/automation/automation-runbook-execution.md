@@ -173,7 +173,7 @@ catch
 }
 ```
 
-#### <a name="throw"></a>放棄
+#### <a name="throw"></a>擲回
 
 [Throw](/powershell/module/microsoft.powershell.core/about/about_throw)可以用來產生終止錯誤。 在 runbook 中定義您自己的邏輯時，這會很有用。 如果符合應停止腳本的特定準則，您可以使用 `throw` 來停止腳本。 下列範例會顯示使用 `throw`所需的電腦函數參數。
 
@@ -197,18 +197,18 @@ function Get-ContosoFiles
 
 下表描述工作可能會有不同的狀態。 PowerShell 有兩種錯誤類型：終止和非終止錯誤。 如果發生終止錯誤，則會將 Runbook 狀態設為 [失敗]。 非終止錯誤可讓指令碼在錯誤發生後繼續執行。 非終止錯誤的範例會使用 `Get-ChildItem` Cmdlet 搭配不存在的路徑。 PowerShell 發現路徑不存在，則會擲回錯誤，並繼續下一步資料夾。 此錯誤不會將 Runbook 狀態設為 [失敗] 且可能標示為 [已完成]。 若要強制 Runbook 在非終止錯誤時停止，您可以在 Cmdlet 上使用 `-ErrorAction Stop`。
 
-| 狀態 | 說明 |
+| 狀態 | 描述 |
 |:--- |:--- |
 | Completed |工作已成功完成。 |
 | 失敗 |針對 [圖形化和 PowerShell 工作流程 Runbook](automation-runbook-types.md)，此 Runbook 無法編譯。 針對 [PowerShell 指令碼 Runbook](automation-runbook-types.md)，此 Runbook 無法啟動，或作業發生例外狀況。 |
 | 處理失敗，正在等候資源 |工作失敗，因為其達到 [公平共用](#fair-share) 的三次上限，且每次從相同的檢查點或啟動 Runbook 開始。 |
 | 已排入佇列 |工作正在等候取得自動化背景工作中的資源，以便可啟動。 |
-| 正在啟動 |此作業已指派給背景工作角色，並且系統正在進行啟動。 |
+| 啟動中 |此作業已指派給背景工作角色，並且系統正在進行啟動。 |
 | 繼續中 |工作暫停後，系統正在繼續工作。 |
 | 執行中 |工作正在執行。 |
 | 執行中，正在等候資源 |工作已卸載，因為已達到 [公平共用](#fair-share) 上限。 作業很快會從其上一個檢查點繼續。 |
 | 已停止 |工作完成之前已由使用者停止。 |
-| 正在停止 |系統正在停止作業。 |
+| 停止中 |系統正在停止作業。 |
 | 暫止 |工作已由使用者、系統或 Runbook 中的命令暫停。 如果 Runbook 沒有檢查點，它會從 Runbook 的開頭開始。 如果它有檢查點，則可重新啟動並從其最後一個檢查點繼續。 只有在發生例外狀況時，系統才會暫止 Runbook。 根據預設，ErrorActionPreference 會設定為 [繼續]，代表作業會在發生錯誤時繼續執行。 如果此喜好設定變數設定為 [停止]，作業會在發生錯誤時暫停。 只適用於 [圖形化和 PowerShell 工作流程 Runbook](automation-runbook-types.md) 。 |
 | Suspending |因使用者要求，系統正在嘗試暫停工作。 Runbook 必須達到其下一個檢查點才能暫停。 如果它已通過其最後一個檢查點，則可在暫停之前完成。 只適用於 [圖形化和 PowerShell 工作流程 Runbook](automation-runbook-types.md) 。 |
 

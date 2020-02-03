@@ -185,8 +185,8 @@ Microsoft 身分識別平臺端點將演進以排除此處所列的限制，因�
 
 Microsoft 身分識別平臺端點不支援 SAML 或 WS-同盟;它只支援 OpenID Connect 和 OAuth 2.0。  對於 1.0 版端點 OAuth 2.0 通訊協定的重大變更為： 
 
-* 如果設定選擇性宣告**或**在要求中指定 scope=email，則會傳回 `email` 宣告。 
-* 現已支援代替 `resource` 參數的 `scope` 參數。  
+* 如果設定選擇性宣告`email`或**在要求中指定 scope=email，則會傳回**  宣告。 
+* 現已支援代替 `scope` 參數的 `resource` 參數。  
 * 已修改許多回應，使它們更符合 OAuth 2.0 的規範，例如正確地將 `expires_in` 傳回為 Int 而不是字串。  
 
 若要進一步瞭解 Microsoft 身分識別平臺端點中支援的通訊協定功能範圍，請參閱[OpenID connect 和 OAuth 2.0 通訊協定參考](active-directory-v2-protocols.md)。

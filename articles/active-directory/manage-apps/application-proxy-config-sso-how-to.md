@@ -28,7 +28,7 @@ ms.locfileid: "76712027"
 單一登入 (SSO) 可讓您的使用者在不需要多次驗證的情況下存取應用程式。 它允許單一驗證在雲端中針對 Azure Active Directory 發生，並允許服務或連接器模擬使用者，以完成來自應用程式的任何其他驗證挑戰。
 
 ## <a name="how-to-configure-single-sign-on"></a>如何設定單一登入
-若要設定 SSO，請先確定您的應用程式已透過 Azure Active Directory 針對預先驗證進行設定。 若要進行此設定，請移至**Azure Active Directory** -&gt;**企業應用程式** -&gt; 應用程式 -&gt; 應用程式**Proxy**-**所有應用**程式。 在這個頁面上，您會看到 [預先驗證] 欄位，請確定它已設定為 [Azure Active Directory]。 
+若要設定 SSO，請先確定您的應用程式已透過 Azure Active Directory 針對預先驗證進行設定。 若要進行此設定，請移至**Azure Active Directory** -&gt;**企業應用程式** -&gt; 應用程式 -&gt; 應用程式**Proxy**-**所有應用**程式。&gt; 在這個頁面上，您會看到 [預先驗證] 欄位，請確定它已設定為 [Azure Active Directory]。 
 
 如需預先驗證方法的詳細資訊，請參閱[應用程式發佈文件](application-proxy-add-on-premises-application.md)的步驟 4。
 

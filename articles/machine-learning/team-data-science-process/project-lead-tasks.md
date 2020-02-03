@@ -36,7 +36,7 @@ ms.locfileid: "76714424"
 > [!NOTE] 
 > 本文使用 Azure Repos 來設定 TDSP 專案，因為這是在 Microsoft 執行 TDSP 的方式。 如果您的小組使用另一個程式碼裝載平臺，則專案負責人工作會相同，但完成這些工作的方式可能會不同。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本教學課程假設您的[群組管理員](group-manager-tasks.md)和[小組負責人](team-lead-tasks.md)已設定下列資源和許可權：
 

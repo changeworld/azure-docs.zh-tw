@@ -54,7 +54,7 @@ NYC 計程車車程資料是約 20 GB 的壓縮逗點分隔值 (CSV) 檔案 (未
    
         Class 0: tip_amount = $0
         Class 1: tip_amount > $0
-- **多元分類**：預測針對該趟車程支付的小費金額範圍。 我們將 tip\_amount 分成五個類別：
+- **多元分類**：預測針對該趟車程支付的小費金額範圍。 我們將 tip*amount\_* 分成五個類別：
    
         Class 0: tip_amount = $0
         Class 1: tip_amount > $0 and tip_amount <= $5
@@ -382,7 +382,7 @@ NYC 計程車資料集會依月份自然分割資料，可讓我們更快速處�
 > 
 > 
 
-此範例會識別在特定期間內超過 100 趟車程的圓形徽章 (計程車數目)。 由於這個查詢受到資料分割變數 **month** 的條件約束，因此使用資料分割資料表會很有幫助。 查詢結果會寫入前端節點上 `C:\temp` 中的本機檔案 **queryoutput.tsv**。
+此範例會識別在特定期間內超過 100 趟車程的圓形徽章 (計程車數目)。 由於這個查詢受到資料分割變數 **month** 的條件約束，因此使用資料分割資料表會很有幫助。 查詢結果會寫入前端節點上 **中的本機檔案**queryoutput.tsv`C:\temp`。
 
     hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql" > C:\temp\queryoutput.tsv
 
@@ -443,7 +443,7 @@ NYC 計程車資料集中的圓形徽章會識別唯一的計程車。 您可以
 
 常見的探索資料分析目標是去掉無效或不正確的記錄。 本節的範例會判斷經度或緯度欄位是否包含遠離 NYC 區域的值。 由於這類記錄可能具有錯誤的經度-緯度值，因此我們想要從用來建立模型的任何資料中排除這些錯誤值。
 
-以下是要檢查之 sample\_hive\_quality\_assessment.hql 檔案的內容。
+以下是要檢查之 sample**hive\_quality\_assessment.hql\_** 檔案的內容。
 
         SELECT COUNT(*) FROM nyctaxidb.trip
         WHERE month=1
@@ -574,7 +574,7 @@ NYC 計程車資料集中的圓形徽章會識別唯一的計程車。 您可以
 在探索資料分析階段之後，我們現在已準備好縮小取樣資料，以便在 Machine Learning 中建置模型。 在本節中，我們會示範如何使用 Hive 查詢縮小取樣資料。 Machine Learning 然後從匯[入資料][import-data]模組存取它。
 
 ### <a name="down-sampling-the-data"></a>縮小取樣資料
-這個程序包含兩個步驟。 首先我們在所有記錄都會出現的三個索引鍵 (**medallion**、**hack\_license** 和 **pickup\_datetime**) 上加入 **nyctaxidb.trip** 和 **nyctaxidb.fare** 資料表。 接著產生二元分類標籤 **tipped** 和多元分類標籤 **tip\_class**。
+這個程序包含兩個步驟。 首先我們在所有記錄都會出現的三個索引鍵 (**medallion**、**hack**license**和**pickup**datetime\_) 上加入** nyctaxidb.trip **和 \_nyctaxidb.fare** 資料表。 接著產生二元分類標籤 **tipped** 和多元分類標籤 **tip\_class**。
 
 若要能夠直接從 Machine Learning 的匯[入資料][import-data]模組使用縮小取樣的資料，您應該將上述查詢的結果儲存至內部 Hive 資料表。 接下來我們將建立內部 Hive 資料表，並以加入和縮小取樣的資料來填入其內容。
 
@@ -721,7 +721,7 @@ NYC 計程車資料集中的圓形徽章會識別唯一的計程車。 您可以
 
 以下是匯[入資料][import-data]模組及輸入參數的一些詳細資料：
 
-**HCatalog 伺服器 URI**：如果叢集名稱是**abc123**，請使用： https://abc123.azurehdinsight.net 。
+**HCatalog 伺服器 URI**：如果叢集名稱是**abc123**，請使用： https://abc123.azurehdinsight.net。
 
 **Hadoop 使用者帳戶名稱**：為叢集選擇的使用者名稱 (非遠端存取使用者名稱)。
 

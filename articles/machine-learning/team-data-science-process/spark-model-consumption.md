@@ -32,7 +32,7 @@ ms.locfileid: "76718543"
 若要修改此 Jupyter Notebook for Spark 1.6 來與 HDInsight Spark 2.0 叢集搭配使用，請使用[這個檔案](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py)來取代 Python 程式碼檔案。 此程式碼示範如何使用 Spark 2.0 中所建立的模型。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 1. 您需要 Azure 帳戶和 Spark 1.6 (或 Spark 2.0) HDInsight 叢集，才能完成此逐步解說。 請參閱[使用 Azure HDInsight 上的 Spark 的資料科學概觀](spark-overview.md)以取得這些需求。 此主題也包括這裡使用的 NYC 2013 計程車資料的描述，以及如何從 Spark 叢集的 Jupyter Notebook 執行程式碼的指示。 
 2. 使用 Spark 1.6 叢集或 Spark 2.0 筆記本的「[使用 spark 進行資料探索和模型](spark-data-exploration-modeling.md)化」主題，在這裡建立要評分的機器學習服務模型。 
@@ -586,6 +586,6 @@ Spark 提供一個機制，透過 REST 介面 (包含稱為 Livy 的元件) 從�
 
 ![Logic Apps 設計工具](./media/spark-model-consumption/spark-logica-app-client.png)
 
-## <a name="whats-next"></a>接下來呢？
+## <a name="whats-next"></a>下一步
 **交叉驗證和超參數掃掠**：如需如何使用交叉驗證和超參數掃掠訓練模型的相關資訊，請參閱 [使用 Spark 進階資料探索和模型化](spark-advanced-data-exploration-modeling.md)
 

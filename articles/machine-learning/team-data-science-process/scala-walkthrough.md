@@ -39,7 +39,7 @@ ms.locfileid: "76716772"
 > 
 > 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 * 您必須擁有 Azure 訂用帳戶。 如果還沒有， [請取得 Azure 免費試用](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * 您需要 Azure HDInsight 3.4 Spark 1.6 叢集來完成下列程序。 若要建立叢集，請參閱 [開始使用：在 Azure HDInsight 上建立 Apache Spark](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)中的指示。 在 [選取叢集類型] 功能表上設定叢集類型和版本。
 
@@ -260,7 +260,7 @@ Spark 可以讀取和寫入 Azure Blob 儲存體。 您可以使用 Spark 來處
 根據預設，在背景工作節點上保存的工作階段內容中，可取得您從 Jupyter Notebook 執行之任何程式碼片段的輸出。 如果您想要將車程儲存至每個計算的背景工作節點，而且如果在 Jupyter 伺服器節點 (此為前端節點) 的本機上可取得計算所需的所有資料，您可以使用 `%%local` Magic 在 Jupyter 伺服器上執行程式碼片段。
 
 * **SQL magic** (`%%sql`)。 HDInsight Spark 核心支援針對 SQLContext 進行簡單的內嵌 HiveQL 查詢。 (`-o VARIABLE_NAME`) 引數會將 SQL 查詢的輸出，保存為 Jupyter 伺服器上的 Pandas 資料框架。 這項設定表示輸出將會以原生模式提供。
-* `%%local`**魔術**。 `%%local` magic 在 Jupyter 伺服器本機 (HDInsight 叢集的前端節點) 上執行程式碼。 一般而言，您會使用 `%%local` magic 來搭配含有 `-o` 參數的 `%%sql` magic。 `-o` 參數會保存本機 SQL 查詢的輸出，然後 `%%local` magic 會針對已保存在本機上的 SQL 查詢輸出，觸發下一組要在本機上執行的程式碼片段。
+* `%%local`**魔術**。 `%%local` magic 在 Jupyter 伺服器本機 (HDInsight 叢集的前端節點) 上執行程式碼。 一般而言，您會使用 `%%local` magic 來搭配含有 `%%sql` 參數的 `-o` magic。 `-o` 參數會保存本機 SQL 查詢的輸出，然後 `%%local` magic 會針對已保存在本機上的 SQL 查詢輸出，觸發下一組要在本機上執行的程式碼片段。
 
 ### <a name="query-the-data-by-using-sql"></a>使用 SQL 查詢資料
 此查詢會依照費用金額、乘客計數和小費金額擷取計程車車程。
@@ -289,9 +289,9 @@ Spark 可以讀取和寫入 Azure Blob 儲存體。 您可以使用 Spark 來處
 
  在您執行程式碼之後，Spark 核心會將 SQL (HiveQL) 查詢的輸出自動視覺化。 您可以選擇數種類型的視覺效果︰
 
-* 表格
+* Table
 * 圓形圖
-* 線條
+* 折線圖
 * 區域
 * 長條圖
 
@@ -535,9 +535,9 @@ MLlib 的模型化和預測函式需要先執行功能來分類要索引或編�
 ## <a name="binary-classification-model-predict-whether-a-tip-should-be-paid"></a>二進位分類模型：預測是否應支付小費
 在本節中，您會建立三種類型的二進位分類模型來預測是否應支付小費：
 
-* 使用 Spark ML `LogisticRegression()` 函式的**羅吉斯迴歸模型**
-* 使用 Spark ML `RandomForestClassifier()` 函式的**隨機樹系分類模型**
-* 使用 MLlib `GradientBoostedTrees()` 函式的**梯度推進樹分類模型**
+* 使用 Spark ML  **函式的**羅吉斯迴歸模型`LogisticRegression()`
+* 使用 Spark ML  **函式的**隨機樹系分類模型`RandomForestClassifier()`
+* 使用 MLlib  **函式的**梯度推進樹分類模型`GradientBoostedTrees()`
 
 ### <a name="create-a-logistic-regression-model"></a>建立羅吉斯迴歸模型
 接著，使用 Spark ML `LogisticRegression()` 函式建立羅吉斯迴歸模型。 您會在一系列步驟中建立模型建置程式碼︰
@@ -728,8 +728,8 @@ ROC 曲線夏的領域 = 0.9846895479241554
 ## <a name="regression-model-predict-tip-amount"></a>迴歸模型：預測小費金額
 在本節中，您會建立兩種類型的迴歸模型來預測小費金額︰
 
-* 使用 Spark ML `LinearRegression()` 函式的**正規化線性迴歸模型**。 您將儲存模型，並對測試資料評估模型。
-* 使用 Spark ML `GBTRegressor()` 函式的**梯度推進樹迴歸模型**。
+* 使用 Spark ML  **函式的**正規化線性迴歸模型`LinearRegression()`。 您將儲存模型，並對測試資料評估模型。
+* 使用 Spark ML  **函式的**梯度推進樹迴歸模型`GBTRegressor()`。
 
 ### <a name="create-a-regularized-linear-regression-model"></a>建立正則化線性迴歸模型
     # RECORD THE START TIME

@@ -25,7 +25,7 @@ ms.locfileid: "76716905"
 
 在單一主機電腦上協調多個容器映射可能會很有用。 在本文中，我們會將「辨識文字」和「表單辨識器」容器一起提取在一起。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 此程式需要幾個必須在本機上安裝和執行的工具：
 
@@ -172,13 +172,13 @@ IMAGE ID            REPOSITORY                                                  
 
 ### <a name="test-the-recognize-text-container"></a>測試辨識文字容器
 
-在主機電腦上開啟瀏覽器，並使用 yaml 檔案中的指定埠（例如 http://localhost:5021/swagger/index.html ）移至**localhost** 。 您可以使用 API 中的「試試看」功能來測試辨識文字端點。
+在主機電腦上開啟瀏覽器，並使用 yaml 檔案中的指定埠（例如 http://localhost:5021/swagger/index.html）移至**localhost** 。 您可以使用 API 中的「試試看」功能來測試辨識文字端點。
 
 ![辨識文字容器](media/recognize-text-swagger-page.png)
 
 ### <a name="test-the-form-recognizer-container"></a>測試表單辨識器容器
 
-在主機電腦上開啟瀏覽器，並使用 yaml 檔案中的指定埠（例如 http://localhost:5010/swagger/index.html ）移至**localhost** 。 您可以使用 API 中的「試試看」功能來測試表單辨識器端點。
+在主機電腦上開啟瀏覽器，並使用 yaml 檔案中的指定埠（例如 http://localhost:5010/swagger/index.html）移至**localhost** 。 您可以使用 API 中的「試試看」功能來測試表單辨識器端點。
 
 ![表單辨識器容器](media/form-recognizer-swagger-page.png)
 

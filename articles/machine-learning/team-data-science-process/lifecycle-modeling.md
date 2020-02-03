@@ -69,7 +69,7 @@ ms.locfileid: "76720464"
 
 我們透過 TDSP 提供[自動化模型和報告工具](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/Modeling) \(英文\)，其可透過多個演算法及參數掃掠來執行，以產生基準模型。 它也會產生基準模型報告，摘要說明每個模型和參數組合的效能 (包括變數重要性)。 此程序也會反覆進行，因為這可促成進一步的功能設計。 
 
-## <a name="artifacts"></a>Artifacts
+## <a name="artifacts"></a>構件
 此階段所產生的成品包括︰
 
    * [特徵集](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md) \(英文\)：**Data definition** 報告的 **Feature sets** 區段會說明針對模型化所開發的特徵。 它包含產生特徵的程式碼指標，以及特徵產生方式的描述。

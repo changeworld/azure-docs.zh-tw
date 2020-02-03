@@ -282,7 +282,7 @@ ALTER INDEX ALL ON [cso].[FactOnlineSales]          REBUILD;
 ## <a name="6-optimize-statistics"></a>6. 優化統計資料
 最好是在載入之後立即建立單一資料行統計資料。 如果您知道特定資料行不會在查詢述詞中，您可以略過建立這些資料行的統計資料。 如果您在每個資料行上建立單一資料行統計資料，可能需要很長的時間才能重建所有的統計資料。 
 
-如果您決定要在每個資料表的每個資料行上建立單一資料行統計資料，便可以使用[統計資料](sql-data-warehouse-tables-statistics.md)一文中的預存程序程式碼範例 `prc_sqldw_create_stats`。
+如果您決定要在每個資料表的每個資料行上建立單一資料行統計資料，便可以使用`prc_sqldw_create_stats`統計資料[一文中的預存程序程式碼範例 ](sql-data-warehouse-tables-statistics.md)。
 
 下列範例為建立統計資料的好起點。 它會在維度資料表中的每個資料行上，以及在事實資料表中的每個聯結資料行上建立單一資料行統計資料。 您之後隨時可以將單一或多個資料行統計資料新增到其他事實資料表資料行上。
 

@@ -22,7 +22,7 @@ ms.locfileid: "76721212"
 ## <a name="troubleshoot-using-the-azure-portal"></a>使用 Azure 入口網站進行疑難排解
 您可以使用 Azure 監視器來檢視 Gen2 快取計量，以針對查詢效能進行疑難排解。 請先移至 Azure 入口網站，然後按一下監視器：
 
-![Azure Monitor](./media/sql-data-warehouse-cache-portal/cache_0.png)
+![Azure 監視器](./media/sql-data-warehouse-cache-portal/cache_0.png)
 
 選取 [計量] 按鈕，並填入資料倉儲的**訂**用帳戶、**資源** **群組**、**資源類型**和**資源名稱**。
 

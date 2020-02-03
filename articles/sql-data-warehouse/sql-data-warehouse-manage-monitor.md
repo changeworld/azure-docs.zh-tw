@@ -20,7 +20,7 @@ ms.locfileid: "76721144"
 # <a name="monitor-your-workload-using-dmvs"></a>使用 DMV 監視工作負載
 本文說明如何使用動態管理檢視 (DMV) 來監視您的工作負載。 其中包括調查 Azure SQL 資料倉儲中的查詢執行。
 
-## <a name="permissions"></a>使用權限
+## <a name="permissions"></a>權限
 若要查詢此文章中的 DMV，您需要「檢視資料庫狀態」或「控制」權限。 通常授與「檢視資料庫狀態」是慣用的權限，因為它較具限制性。
 
 ```sql

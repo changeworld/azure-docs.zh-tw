@@ -22,7 +22,7 @@ ms.locfileid: "76722572"
 
 您可以建置 Azure Service Fabric 應用程式，以使用 Mac OS X 在 Linux 叢集上執行。本文件涵蓋如何設定您的 Mac 進行開發。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 Azure Service Fabric 不會在 Mac OS X 上以原生方式執行。若要執行本機 Service Fabric 叢集，我們提供預先設定的 Docker 容器映像。 開始之前，您需要：
 
 * 至少 4 GB 的 RAM。

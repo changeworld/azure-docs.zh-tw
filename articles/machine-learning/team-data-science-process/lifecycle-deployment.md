@@ -52,7 +52,7 @@ ms.locfileid: "76720481"
 
 如需使用 Azure Machine Learning Web 服務實作模型的範例，請參閱[部署 Azure Machine Learning Web 服務](../studio/deploy-a-machine-learning-web-service.md)。 對於您部署的生產模型和資料管線，建議您在其中建置遙測和監視。 這種做法有助於後續的系統狀態報告和疑難排解。  
 
-## <a name="artifacts"></a>Artifacts
+## <a name="artifacts"></a>構件
 
 * 顯示系統健康情況和重要計量的狀態儀表板
 * 具有部署詳細資料的最終模型報告

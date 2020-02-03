@@ -35,4 +35,4 @@ ms.locfileid: "76722781"
 
 ## <a name="customer-feedback"></a>客戶回函
 
-儘管實施 TLS 1.2 是業界最佳的加密選項，也會依計畫推行，我們仍希望了解客戶在採用 TLS 1.2 時的具體部署方式和困難之處。 基於此目的，您可以將您的意見傳送至[iot_tls1_deprecation@microsoft.com](mailto:iot_tls1_deprecation@microsoft.com)。
+雖然 TLS 1.2 強制是業界頂尖的最佳加密選擇，並會依計畫啟用，但我們仍希望收到客戶有關其特定部署和採用 TLS 1.2 的問題。 基於此目的，您可以將您的意見傳送至[iot_tls1_deprecation@microsoft.com](mailto:iot_tls1_deprecation@microsoft.com)。

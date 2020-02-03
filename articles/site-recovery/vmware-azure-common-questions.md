@@ -26,7 +26,7 @@ ms.locfileid: "76719546"
 
 ### <a name="can-i-use-site-recovery-to-migrate-vmware-vms-to-azure"></a>我可以使用 Site Recovery 將 VMware Vm 遷移至 Azure 嗎？
 
-可以。 除了使用 Site Recovery 來設定 VMware Vm 的完整嚴重損壞修復之外，您也可以使用 Site Recovery 將內部部署 VMware Vm 遷移至 Azure。 在此案例中，您會將內部部署 VMware Vm 複寫至 Azure 儲存體。 然後，您會從內部部署環境容錯移轉至 Azure。 容錯移轉之後，您的應用程式和工作負載將可在 Azure VM 上使用及執行。 此程式就像是設定完整的嚴重損壞修復，不同的是，在遷移時，您無法從 Azure 容錯回復。
+是。 除了使用 Site Recovery 來設定 VMware Vm 的完整嚴重損壞修復之外，您也可以使用 Site Recovery 將內部部署 VMware Vm 遷移至 Azure。 在此案例中，您會將內部部署 VMware Vm 複寫至 Azure 儲存體。 然後，您會從內部部署環境容錯移轉至 Azure。 容錯移轉之後，您的應用程式和工作負載將可在 Azure VM 上使用及執行。 此程式就像是設定完整的嚴重損壞修復，不同的是，在遷移時，您無法從 Azure 容錯回復。
 
 ### <a name="does-my-azure-account-need-permissions-to-create-vms"></a>我的 Azure 帳戶是否需要建立 VM 的權限？
 
@@ -73,7 +73,7 @@ Site Recovery 需要存取 VMware 伺服器才能：
 
 Site Recovery 已通過 ISO 27001:2013 和27018、HIPAA 和 DPA 的認證。 它正在進行 SOC2 和 FedRAMP JAB 評量。
 
-## <a name="pricing"></a>定價
+## <a name="pricing"></a>價格
 
 ### <a name="how-do-i-calculate-approximate-charges-for-vmware-disaster-recovery"></a>如何? 計算 VMware 嚴重損壞修復的大約費用？
 
@@ -116,7 +116,7 @@ Site Recovery 會將內部部署 VMware Vm 和實體伺服器複寫至 Azure 中
 
 ### <a name="can-i-replicate-new-machines-to-storage-accounts"></a>我可以將新機器複寫到儲存體帳戶嗎？
 
-不會。 自2019年3月起，在 Azure 入口網站中，您只能複寫至 Azure 受控磁片。
+否。 自2019年3月起，在 Azure 入口網站中，您只能複寫至 Azure 受控磁片。
 
 只有使用 PowerShell 或 REST API （版本2018-01-10 或2016-08-10），才可以將新 Vm 複寫到儲存體帳戶。
 
@@ -135,7 +135,7 @@ Site Recovery 會將內部部署 VMware Vm 和實體伺服器複寫至 Azure 中
 
 ### <a name="can-i-switch-replication-from-managed-disks-to-unmanaged-disks"></a>我可以將複寫從受控磁片切換到非受控磁片嗎？
 
-不會。 不支援從受控切換至非受控。
+否。 不支援從受控切換至非受控。
 
 ## <a name="replication"></a>複寫
 
@@ -180,7 +180,7 @@ Site Recovery 會將內部部署 VMware Vm 和實體伺服器複寫至 Azure 中
 
 ### <a name="can-i-migrate-on-premises-machines-to-a-new-vcenter-server-without-impacting-ongoing-replication"></a>我可以將內部部署機器遷移到新的 vCenter Server，而不會影響進行中的複寫嗎？
 
-不會。 VMware Vcenter 或遷移的變更會影響進行中的複寫。 使用新的 vCenter Server 設定 Site Recovery，並再次啟用機器的複寫。
+否。 VMware Vcenter 或遷移的變更會影響進行中的複寫。 使用新的 vCenter Server 設定 Site Recovery，並再次啟用機器的複寫。
 
 ### <a name="can-i-replicate-to-a-cache-or-target-storage-account-that-has-a-virtual-network-with-azure-firewalls-configured-on-it"></a>我可以複寫至已設定虛擬網路（具有 Azure 防火牆）的快取或目標儲存體帳戶嗎？
 
@@ -188,7 +188,7 @@ Site Recovery 會將內部部署 VMware Vm 和實體伺服器複寫至 Azure 中
 
 ## <a name="component-upgrade"></a>元件升級
 
-### <a name="my-version-of-the-mobility-services-agent-or-configuration-server-is-old-and-my-upgrade-failed-what-do-i-do"></a>我的行動服務代理程式或設定伺服器的版本是舊的，而我的升級失敗。 我該怎麼做？
+### <a name="my-version-of-the-mobility-services-agent-or-configuration-server-is-old-and-my-upgrade-failed-what-do-i-do"></a>我的行動服務代理程式或設定伺服器的版本是舊的，而我的升級失敗。 該怎麼辦？
 
 Site Recovery 遵循 N-4 支援模型。 [深入瞭解](https://aka.ms/asr_support_statement)如何從非常舊的版本升級。
 
@@ -202,7 +202,7 @@ Site Recovery 遵循 N-4 支援模型。 [深入瞭解](https://aka.ms/asr_suppo
 
 ## <a name="do-i-need-to-reboot-source-machines-for-each-upgrade"></a>是否需要針對每個升級重新開機來源機器？
 
-建議您重新開機，但不是每次升級都強制。 [深入了解](https://aka.ms/asr_vmware_upgrades)。
+建議您重新開機，但不是每次升級都強制。 [詳細資訊](https://aka.ms/asr_vmware_upgrades)。
 
 ## <a name="configuration-server"></a>組態伺服器
 
@@ -234,7 +234,7 @@ Site Recovery 遵循 N-4 支援模型。 [深入瞭解](https://aka.ms/asr_suppo
 
 ### <a name="can-a-configuration-server-replicate-to-more-than-one-region"></a>組態伺服器是否可複寫到多個區域？
 
-不會。 若要複寫到多個區域，您必須在每個區域中都有設定伺服器。
+否。 若要複寫到多個區域，您必須在每個區域中都有設定伺服器。
 
 ### <a name="can-i-host-a-configuration-server-in-azure"></a>是否可將組態伺服器裝載在 Azure 中？
 
@@ -258,23 +258,23 @@ Site Recovery 遵循 N-4 支援模型。 [深入瞭解](https://aka.ms/asr_suppo
 
 ### <a name="when-im-setting-up-the-configuration-server-can-i-download-and-install-mysql-manually"></a>在設定組態伺服器時，是否可以手動下載並安裝 MySQL？
 
-可以。 下載 MySQL，並將它放在 C:\Temp\ASRSetup 資料夾中。 然後，手動安裝它。 當您設定組態伺服器 VM 時，如果您接受條款，MySQL 在 [下載並安裝] 中就會列示為 [已安裝]。
+是。 下載 MySQL，並將它放在 C:\Temp\ASRSetup 資料夾中。 然後，手動安裝它。 當您設定組態伺服器 VM 時，如果您接受條款，MySQL 在 [下載並安裝] 中就會列示為 [已安裝]。
 
 ### <a name="can-i-avoid-downloading-mysql-but-let-site-recovery-install-it"></a>是否可以不要下載 MySQL 而讓 Site Recovery 加以安裝？
 
-可以。 下載 MySQL 安裝程式，並將它放在 C:\Temp\ASRSetup 資料夾中。 當您安裝設定伺服器 VM 時，請接受條款，然後選取 [**下載並安裝**]。 入口網站將會使用您新增的安裝程式來安裝 MySQL。
+是。 下載 MySQL 安裝程式，並將它放在 C:\Temp\ASRSetup 資料夾中。 當您安裝設定伺服器 VM 時，請接受條款，然後選取 [**下載並安裝**]。 入口網站將會使用您新增的安裝程式來安裝 MySQL。
 
 ### <a name="can-i-use-the-configuration-server-vm-for-anything-else"></a>組態伺服器 VM 是否可用於任何其他位置？
 
-不會。 僅針對設定伺服器使用 VM。
+否。 僅針對設定伺服器使用 VM。
 
 ### <a name="can-i-clone-a-configuration-server-and-use-it-for-orchestration"></a>是否可以複製組態伺服器並將它用於協調流程？
 
-不會。 設定全新的設定伺服器，以避免註冊問題。
+否。 設定全新的設定伺服器，以避免註冊問題。
 
 ### <a name="can-i-change-the-vault-in-which-the-configuration-server-is-registered"></a>我可以變更設定伺服器註冊所在的保存庫嗎？
 
-不會。 保存庫與設定伺服器相關聯之後，即無法變更。 [瞭解](vmware-azure-manage-configuration-server.md#register-a-configuration-server-with-a-different-vault)如何向不同的保存庫註冊設定伺服器。
+否。 保存庫與設定伺服器相關聯之後，即無法變更。 [瞭解](vmware-azure-manage-configuration-server.md#register-a-configuration-server-with-a-different-vault)如何向不同的保存庫註冊設定伺服器。
 
 ### <a name="can-i-use-the-same-configuration-server-for-disaster-recovery-of-both-vmware-vms-and-physical-servers"></a>是否可以將相同的設定伺服器用於 VMware Vm 和實體伺服器的嚴重損壞修復？
 
@@ -326,7 +326,7 @@ Site Recovery 遵循 N-4 支援模型。 [深入瞭解](https://aka.ms/asr_suppo
 
 ### <a name="how-do-i-access-azure-vms-after-failover"></a>在容錯移轉之後如何存取 Azure VM？
 
-容錯移轉之後，您可以透過安全的網際網路連線、透過站對站 VPN 或透過 Azure ExpressRoute 存取 Azure Vm。 若要連接，您必須準備幾個專案。 [深入了解](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)。
+容錯移轉之後，您可以透過安全的網際網路連線、透過站對站 VPN 或透過 Azure ExpressRoute 存取 Azure Vm。 若要連接，您必須準備幾個專案。 [詳細資訊](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)。
 
 ### <a name="is-failed-over-data-resilient"></a>容錯回復資料是否可復原？
 
@@ -338,7 +338,7 @@ Azure 是針對復原能力而設計的。 Site Recovery 是根據 Azure 服務�
 
 ### <a name="can-i-fail-back-to-a-different-location"></a>是否可容錯回復至不同的位置？
 
-可以。 如果您已容錯回復至 Azure，如果原始的位置無法使用，您可以容錯回復至不同的位置。 [深入了解](concepts-types-of-failback.md#alternate-location-recovery-alr)。
+是。 如果您已容錯回復至 Azure，如果原始的位置無法使用，您可以容錯回復至不同的位置。 [詳細資訊](concepts-types-of-failback.md#alternate-location-recovery-alr)。
 
 ### <a name="why-do-i-need-a-vpn-or-expressroute-with-private-peering-to-fail-back"></a>為什麼我需要具有私人對等互連的 VPN 或 ExpressRoute 才能容錯回復？
 
@@ -349,13 +349,13 @@ Azure 是針對復原能力而設計的。 Site Recovery 是根據 Azure 服務�
 
 ### <a name="can-i-set-up-replication-with-scripting"></a>是否可以使用指令碼設定複寫？
 
-可以。 您可以使用 Rest API、PowerShell 或 Azure SDK，將 Site Recovery 工作流程自動化。 [深入了解](vmware-azure-disaster-recovery-powershell.md)。
+是。 您可以使用 Rest API、PowerShell 或 Azure SDK，將 Site Recovery 工作流程自動化。 [詳細資訊](vmware-azure-disaster-recovery-powershell.md)。
 
 ## <a name="performance-and-capacity"></a>效能與容量
 
 ### <a name="can-i-throttle-replication-bandwidth"></a>是否可進行複寫頻寬節流？
 
-可以。 [深入了解](site-recovery-plan-capacity-vmware.md)。
+是。 [詳細資訊](site-recovery-plan-capacity-vmware.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

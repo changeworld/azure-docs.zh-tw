@@ -25,7 +25,7 @@ Azure 應用程式閘道是由數個元件所組成，您可以在不同的案�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 ### <a name="azure-virtual-network-and-dedicated-subnet"></a>Azure 虛擬網路和專用子網
 
@@ -93,7 +93,7 @@ Azure 也會在每個子網中保留5個 IP 位址供內部使用：前4個和�
 
 前端 IP 位址會與接聽程式相關*聯，以*檢查前端 ip 上的傳入要求。
 
-## <a name="listeners"></a>接聽程式
+## <a name="listeners"></a>Listeners
 
 接聽程式是一個邏輯實體，會使用埠、通訊協定、主機和 IP 位址來檢查傳入的連線要求。 當您設定接聽程式時，必須輸入這些值，以符合閘道上傳入要求中的對應值。
 
@@ -241,7 +241,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 #### <a name="rewrite-the-http-header-setting"></a>重寫 HTTP 標頭設定
 
-此設定會在要求和回應封包于用戶端與後端集區之間移動時，新增、移除或更新 HTTP 要求和回應標頭。 如需詳細資訊，請參閱：
+此設定會在要求和回應封包于用戶端與後端集區之間移動時，新增、移除或更新 HTTP 要求和回應標頭。 如需詳細資訊，請參閱
 
  - [重寫 HTTP 標頭總覽](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)
  - [設定 HTTP 標頭重寫](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers-portal)
@@ -264,7 +264,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 這項設定與接聽程式中的 HTTPS 結合，[可支援端對端 SSL](https://docs.microsoft.com/azure/application-gateway/ssl-overview)。 這可讓您安全地將加密的機密資料傳輸至後端。 後端集區中已啟用端對端 SSL 的每部後端伺服器，都必須使用憑證來設定，以允許安全通訊。
 
-### <a name="port"></a>Port
+### <a name="port"></a>連接埠
 
 此設定會指定後端伺服器用來接聽來自應用程式閘道之流量的埠。 您可以設定範圍從1到65535的埠。
 
@@ -325,7 +325,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 這項功能會以您指定的主機名稱取代應用程式閘道上的傳入要求中的*主機*標頭。
 
-例如，如果在 [**主機名稱**] 設定中指定*www.contoso.com* ，則將要求轉寄至後端伺服器時，原始要求 * https://appgw.eastus.cloudapp.azure.com/path1 會變更為 * https://www.contoso.com/path1 。
+例如，如果在 [**主機名稱**] 設定中指定*www.contoso.com* ，則將要求轉寄至後端伺服器時，原始要求 * https://appgw.eastus.cloudapp.azure.com/path1 會變更為 * https://www.contoso.com/path1。
 
 ## <a name="back-end-pool"></a>後端集區
 

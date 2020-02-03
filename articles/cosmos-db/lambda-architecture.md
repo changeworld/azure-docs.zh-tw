@@ -179,7 +179,7 @@ val writeConfig = Config(writeConfigMap)
 
 ```
 
-指定 `SaveMode` (指出是否要 `Overwrite` 或 `Append` 文件) 後，建立與上述範例中的 Spark SQL 查詢類似的 `tweets_bytags` 資料框架。  建立 `tweets_bytags` 資料框架後，您可以使用已先前指定的 `writeConfig` 進行的 `write` 方法儲存該資料框架。
+指定 `SaveMode` (指出是否要 `Overwrite` 或 `Append` 文件) 後，建立與上述範例中的 Spark SQL 查詢類似的 `tweets_bytags` 資料框架。  建立 `tweets_bytags` 資料框架後，您可以使用已先前指定的 `write` 進行的 `writeConfig` 方法儲存該資料框架。
 
 ```
 // Import SaveMode so you can Overwrite, Append, ErrorIfExists, Ignore

@@ -46,7 +46,7 @@ HTTP 觸發程序可讓您透過 HTTP 要求叫用函式。 您可以使用 HTTP
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-下列範例會顯示在查詢字串或 HTTP 要求主體中尋找 `name` 參數的 [C# 函式](functions-dotnet-class-library.md)。 請注意，傳回值用於輸出繫結，但傳回值屬性並非必要。
+下列範例會顯示在查詢字串或 HTTP 要求主體中尋找 [ 參數的 ](functions-dotnet-class-library.md)C# 函式`name`。 請注意，傳回值用於輸出繫結，但傳回值屬性並非必要。
 
 ```cs
 [FunctionName("HttpTriggerCSharp")]
@@ -424,7 +424,7 @@ public class ToDoItem {
 
 ```
 
-此範例會讀取 POST 要求的主體。 要求主體會自動還原序列化至 ```ToDoItem``` 物件，並傳回至用戶端，且內容類型為 ```application/json```。 ```ToDoItem``` 參數會在指派給 ```HttpMessageResponse.Builder``` 類別的 ```body``` 屬性時，由 Functions 執行階段序列化。
+此範例會讀取 POST 要求的主體。 要求主體會自動還原序列化至 ```ToDoItem``` 物件，並傳回至用戶端，且內容類型為 ```application/json```。 ```ToDoItem``` 參數會在指派給 ```body``` 類別的 ```HttpMessageResponse.Builder``` 屬性時，由 Functions 執行階段序列化。
 
 ```java
 @FunctionName("TriggerPojoPost")
@@ -515,7 +515,7 @@ public HttpResponseMessage<String> HttpTrigger(
 
 下表說明您在 *function.json* 檔案中設定的繫結設定屬性內容和 `HttpTrigger` 屬性。
 
-|function.json 屬性 | 屬性內容 |說明|
+|function.json 屬性 | 屬性內容 |描述|
 |---------|---------|----------------------|
 | **type** | n/a| 必要項目 - 必須設定為 `httpTrigger`。 |
 | **direction** | n/a| 必要項目 - 必須設定為 `in`。 |
@@ -670,7 +670,7 @@ public class HttpTriggerJava {
 
 ---
 
-所有函式路由預設前面都會加上 *api*。 您也可以在 [host.json](functions-host-json.md) 檔案中使用 `http.routePrefix` 屬性來自訂或移除前置詞。 下列範例會在 *host.json* 檔案中使用空字串作為前置詞來移除 *api* 路由前置詞。
+所有函式路由預設前面都會加上 *api*。 您也可以在 `http.routePrefix`host.json[ 檔案中使用 ](functions-host-json.md) 屬性來自訂或移除前置詞。 下列範例會在 *host.json* 檔案中使用空字串作為前置詞來移除 *api* 路由前置詞。
 
 ```json
 {
@@ -866,7 +866,7 @@ Webhook 授權是由 Webhook 接收器元件 (HTTP 觸發程序的一部分) 處
 
 ## <a name="trigger---limits"></a>觸發程序的 - 限制
 
-HTTP 要求長度的限制為 100 MB (104,857,600 個位元組)，而 URL 長度的限制為 4 KB (4,096 個位元組)。 這些限制由執行階段 [Web.config 檔案](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config)的 `httpRuntime` 元素所指定。
+HTTP 要求長度的限制為 100 MB (104,857,600 個位元組)，而 URL 長度的限制為 4 KB (4,096 個位元組)。 這些限制由執行階段 `httpRuntime`Web.config 檔案[的 ](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config) 元素所指定。
 
 如果使用 HTTP 觸發程式的函式未在230秒內完成， [Azure Load Balancer](../app-service/faq-availability-performance-application-issues.md#why-does-my-request-time-out-after-230-seconds)將會超時，並傳回 HTTP 502 錯誤。 函式會繼續執行，但無法傳回 HTTP 回應。 對於長時間執行的函式，建議您遵循非同步模式，並傳回可以偵測要求狀態的位置。 如需函式可以執行多久的相關資訊，請參閱[級別和裝載 - 使用情況方案](functions-scale.md#timeout)。
 
@@ -878,7 +878,7 @@ HTTP 要求長度的限制為 100 MB (104,857,600 個位元組)，而 URL 長度
 
 下表說明您在 function.json 檔案中設定的繫結設定屬性。 就 C# 類別程式庫而言，沒有任何屬性 (Attribute) 的屬性 (Property) 與這些 *function.json* 屬性 (Property) 對應。
 
-|屬性  |說明  |
+|屬性  |描述  |
 |---------|---------|
 | **type** |必須設為 `http`。 |
 | **direction** | 必須設為 `out`。 |
@@ -917,11 +917,11 @@ HTTP 要求長度的限制為 100 MB (104,857,600 個位元組)，而 URL 長度
 }
 ```
 
-|屬性  |預設 | 說明 |
+|屬性  |預設 | 描述 |
 |---------|---------|---------| 
 | customHeaders|無|可讓您設定 HTTP 回應中的自訂標頭。 先前的範例會將 `X-Content-Type-Options` 標頭新增至回應，以避免內容類型探查。 |
 |dynamicThrottlesEnabled|true<sup>\*</sup>|啟用時，此設定會促使要求處理管線定期檢查系統效能計數器，例如連線/執行緒/處理程序/記憶體/CPU/其他，而且如果這些計數器中任一個超過內建的臨界值上限 (80%)，則要求會遭到拒絕，並包含 429「忙碌」的回應，直到計數器回到正常水平。<br/><sup>\*</sup>耗用量方案中的預設值為 `true`。 專用方案中的預設值為 `false`。|
-|hsts|未啟用|當 `isEnabled` 設定為 `true`時，會強制執行[.Net Core 的 HTTP 嚴格傳輸安全性（HSTS）行為](/aspnet/core/security/enforcing-ssl?view=aspnetcore-3.0&tabs=visual-studio#hsts)，如[`HstsOptions` 類別](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions?view=aspnetcore-3.0)中所定義。 上述範例也會將[`maxAge`](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions.maxage?view=aspnetcore-3.0#Microsoft_AspNetCore_HttpsPolicy_HstsOptions_MaxAge)屬性設定為10天。 支援的 `hsts` 屬性包括： <table><tr><th>屬性</th><th>說明</th></tr><tr><td>excludedHosts</td><td>未新增 HSTS 標頭之主機名稱的字串陣列。</td></tr><tr><td>includeSubDomains</td><td>布林值，指出是否啟用嚴格傳輸安全性標頭的 includeSubDomain 參數。</td></tr><tr><td>maxAge</td><td>定義嚴格傳輸安全性標頭的最大壽命參數的字串。</td></tr><tr><td>預先載入</td><td>布林值，指出是否啟用嚴格傳輸安全性標頭的預先載入參數。</td></tr></table>|
+|hsts|未啟用|當 `isEnabled` 設定為 `true`時，會強制執行[.Net Core 的 HTTP 嚴格傳輸安全性（HSTS）行為](/aspnet/core/security/enforcing-ssl?view=aspnetcore-3.0&tabs=visual-studio#hsts)，如[`HstsOptions` 類別](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions?view=aspnetcore-3.0)中所定義。 上述範例也會將[`maxAge`](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions.maxage?view=aspnetcore-3.0#Microsoft_AspNetCore_HttpsPolicy_HstsOptions_MaxAge)屬性設定為10天。 支援的 `hsts` 屬性包括： <table><tr><th>屬性</th><th>描述</th></tr><tr><td>excludedHosts</td><td>未新增 HSTS 標頭之主機名稱的字串陣列。</td></tr><tr><td>includeSubDomains</td><td>布林值，指出是否啟用嚴格傳輸安全性標頭的 includeSubDomain 參數。</td></tr><tr><td>maxAge</td><td>定義嚴格傳輸安全性標頭的最大壽命參數的字串。</td></tr><tr><td>預先載入</td><td>布林值，指出是否啟用嚴格傳輸安全性標頭的預先載入參數。</td></tr></table>|
 |maxConcurrentRequests|100<sup>\*</sup>|平行執行的 HTTP 函式數目上限。 這可讓您控制並行作業，幫助您管理資源使用率。 例如，您可能有一個使用大量系統資源（記憶體/cpu/通訊端）的 HTTP 函式，因此當並行處理太高時，會造成問題。 或者，如果函式對第三方服務發出傳出要求，則需要限制這些呼叫的速率。 在這些情況下，套用節流會有所幫助。 <br/><sup>*</sup>耗用量方案的預設值為100。 專用方案的預設值是無限制的（`-1`）。|
 |maxOutstandingRequests|200<sup>\*</sup>|在任何指定時間保留的未完成要求數目上限。 此限制包括已排入佇列但尚未開始執行的要求，以及任何進行中的執行。 會以 429「忙碌」回應來拒絕任何超過此限制的連入要求。 這樣可讓呼叫者採用以時間為基礎的重試策略，並且也協助您控制要求延遲的上限。 此動作只會控制在指令碼主機執行路徑內發生的佇列處理。 其他佇列 (例如 ASP.NET 要求佇列) 仍然有效，且不受此設定的影響。 <br/><sup>\*</sup>耗用量方案的預設值為200。 專用方案的預設值是無限制的（`-1`）。|
 |routePrefix|api|適用於所有路由的路由前置詞。 若要移除預設前置詞，請使用空字串。 |

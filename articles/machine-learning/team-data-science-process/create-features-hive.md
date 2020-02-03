@@ -23,11 +23,11 @@ ms.locfileid: "76721773"
 
 建立特徵所需的作業可能耗用大量記憶體。 在此情況下，Hive 查詢的效能會變得十分重要，可微調某些參數來改善。 最後一節討論如何微調這些參數。
 
-[GitHub 存放庫](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts)中也會提供 [NYC 計程車車程資料](https://chriswhong.com/open-data/foil_nyc_taxi/)案例特定的查詢範例。 這些查詢已經具備指定的資料結構描述，且準備好進行提交來執行。 最後一節也會討論使用者可以微調的參數，以改善 Hive 查詢的效能。
+[GitHub 存放庫](https://chriswhong.com/open-data/foil_nyc_taxi/)中也會提供 [NYC 計程車車程資料](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts)案例特定的查詢範例。 這些查詢已經具備指定的資料結構描述，且準備好進行提交來執行。 最後一節也會討論使用者可以微調的參數，以改善 Hive 查詢的效能。
 
 此工作是 [Team Data Science Process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)中的一個步驟。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 本文假設您已經：
 
 * 建立 Azure 儲存體帳戶。 如需指示，請參閱[建立 Azure 儲存體帳戶](../../storage/common/storage-account-create.md)
@@ -134,7 +134,7 @@ Hive 會和一組 UDF 一起出現，用來處理日期時間欄位。 在 Hive 
 
 ![建立工作區](./media/create-features-hive/atan2new.png)
 
-您可以在 <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">Apache Hive wiki</a> 上的**內建函式**一節中找到 Hive 內嵌 UDF 的完整清單。  
+您可以在 **Apache Hive wiki** 上的<a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">內建函式</a>一節中找到 Hive 內嵌 UDF 的完整清單。  
 
 ## <a name="tuning"></a> 進階主題：微調 Hive 參數以提升查詢速度
 Hive 叢集的預設參數設定可能不適合 Hive 查詢以及查詢正在處理的資料。 本節將討論一些使用者可以微調以提升 Hive 查詢效能的參數。 使用者需要在處理資料的查詢之前新增參數微調查詢。

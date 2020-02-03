@@ -20,7 +20,7 @@ ms.locfileid: "76722249"
 
 在本文中，您將瞭解如何以程式設計方式排程管線以在 Azure 上執行。 您可以選擇根據經過時間或檔案系統變更來建立排程。 以時間為基礎的排程可以用來處理例行的工作，例如監視資料漂移。 以變更為基礎的排程可用於回應異常或無法預期的變更，例如上傳的新資料或正在編輯的舊資料。 學習如何建立排程之後，您將瞭解如何取出和停用排程。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://aka.ms/AMLFree)。
 
@@ -134,7 +134,7 @@ stop_by_schedule_id(ws, schedule_id)
 
 在本文中，您使用了適用于 Python 的 Azure Machine Learning SDK，以兩種不同的方式來排程管線。 一個排程會根據經過的時鐘時間而重複。 如果在指定的 `Datastore` 上或在該存放區的目錄內修改檔案，就會執行另一個排程。 您已瞭解如何使用入口網站來檢查管線和個別執行。 最後，您已瞭解如何停用排程，讓管線停止執行。
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱
 
 > [!div class="nextstepaction"]
 > [使用 Azure Machine Learning 管線進行批次評分](tutorial-pipeline-batch-scoring-classification.md)

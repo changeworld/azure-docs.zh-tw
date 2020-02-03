@@ -106,7 +106,7 @@ az eventgrid topic key list --name <topic-name> -g <topic-resource-group> --quer
 |Success  | 200 確定  |
 |事件資料的格式不正確 | 400 不正確的要求 |
 |存取金鑰無效 | 401 未經授權 |
-|端點不正確 | 404 - 找不到 |
+|端點不正確 | 404 找不到 |
 |陣列或事件超過大小限制 | 413 承載太大 |
 
 對於錯誤，訊息內文的格式如下：

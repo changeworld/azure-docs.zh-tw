@@ -23,7 +23,7 @@ Azure 串流分析是完全受控的服務，可用來對雲端中的串流資�
 
 在本文中，您將瞭解如何使用資料倉儲資料庫做為串流分析作業的輸出接收。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 首先，執行 [開始使用 Azure 資料流分析](../stream-analytics/stream-analytics-real-time-fraud-detection.md) 教學課程的下列步驟。  
 
 1. 建立事件中樞輸入

@@ -17,7 +17,7 @@ ms.locfileid: "76722555"
 
 下面是會顯示的功能：
 
-|資訊清單|功能|
+|資訊清單|特性|
 |---|---|
 |[應用程式資訊清單](#application-manifest)| [覆寫環境變數](service-fabric-get-started-containers.md#configure-and-set-environment-variables)、[設定容器連接埠對主機的對應](service-fabric-get-started-containers.md#configure-container-port-to-host-port-mapping-and-container-to-container-discovery)、[設定容器登錄驗證](service-fabric-get-started-containers.md#configure-container-repository-authentication)、[資源管理](service-fabric-resource-governance.md)、[設定隔離模式](service-fabric-get-started-containers.md#configure-isolation-mode)、[指定 OS 組建專屬的容器映像](service-fabric-get-started-containers.md#specify-os-build-specific-container-images)| 
 |[FrontEndService 服務資訊清單](#frontendservice-service-manifest)| [設定環境變數](service-fabric-get-started-containers.md#configure-and-set-environment-variables)、[設定端點](service-fabric-get-started-containers.md#configure-communication)、將命令傳遞至容器、[將憑證匯入容器中](service-fabric-securing-containers.md)| 

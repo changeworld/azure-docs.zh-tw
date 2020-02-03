@@ -88,7 +88,7 @@ Azure 資料庫移轉服務必要條件在所有支援的移轉案例中都是�
 **問：如何? 設定 Microsoft Azure 虛擬網路嗎？**
 雖然有多個 Microsoft 教學課程可引導您完成設定虛擬網路的程式，但官方檔會出現在[Azure 虛擬網路](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)一文。
 
-## <a name="usage"></a>用量
+## <a name="usage"></a>使用量
 
 **問：使用 Azure 資料庫移轉服務執行資料庫移轉所需步驟的摘要為何？**
 在典型的簡單資料庫移轉期間，您必須：

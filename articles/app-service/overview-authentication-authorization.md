@@ -1,5 +1,5 @@
 ---
-title: 驗證與授權
+title: 驗證和授權
 description: 瞭解 Azure App Service 中內建的驗證和授權支援，以及它如何協助保護您的應用程式免于未經授權的存取。
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.topic: article
@@ -13,7 +13,7 @@ ms.contentlocale: zh-TW
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76715118"
 ---
-# <a name="authentication-and-authorization-in-azure-app-service"></a>Azure App Service 中的驗證和授權
+# <a name="authentication-and-authorization-in-azure-app-service"></a>Azure App Service 中的驗證與授權
 
 > [!NOTE]
 > 目前，Azure App 服務和 Azure Functions 不支援 AAD V2 （包括 MSAL）。 請回來查看是否有更新。
@@ -125,14 +125,14 @@ App Service 使用[同盟身分識別](https://en.wikipedia.org/wiki/Federated_i
 
 ### <a name="allow-only-authenticated-requests"></a>僅允許已驗證的要求
 
-選項為 [使用 \<提供者> 登入]。 App Service 會將所有匿名要求重新導向至您所選提供者的 `/.auth/login/<provider>`。 如果匿名要求來自原生行動應用程式，則傳回的回應是 `HTTP 401 Unauthorized`。
+選項為 [使用 **提供者> 登入]\<** 。 App Service 會將所有匿名要求重新導向至您所選提供者的 `/.auth/login/<provider>`。 如果匿名要求來自原生行動應用程式，則傳回的回應是 `HTTP 401 Unauthorized`。
 
 使用此選項時，您不需要在應用程式中撰寫任何驗證程式碼。 您可以藉由檢查使用者的宣告來處理更精細的授權 (例如特定角色授權，請參閱[存取使用者宣告](app-service-authentication-how-to.md#access-user-claims))。
 
 > [!CAUTION]
 > 以這種方式限制存取適用于應用程式的所有呼叫，這對於想要公開使用首頁的應用程式（如許多單頁應用程式），可能不是理想的做法。
 
-## <a name="more-resources"></a>更多資源
+## <a name="more-resources"></a>其他資源
 
 [教學課程：在 Azure App Service 中端對端驗證和授權使用者 (Windows)](app-service-web-tutorial-auth-aad.md)  
 [教學課程：在適用於 Linux 的 Azure App Service 中端對端驗證和授權使用者](containers/tutorial-auth-aad.md)  

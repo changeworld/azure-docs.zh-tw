@@ -53,7 +53,7 @@ Azure Cache for Redis 有不同的快取供應項目，可讓您彈性選擇快�
 > 
 > 
 
-如需搭配 StackExchange.Redis 用戶端使用叢集的範例程式碼，請參閱 [Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) 範例的 [clustering.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) 部分。
+如需搭配 StackExchange.Redis 用戶端使用叢集的範例程式碼，請參閱 [Hello World](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) 範例的 [clustering.cs](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) 部分。
 
 <a name="cluster-size"></a>
 
@@ -105,13 +105,13 @@ Azure Cache for Redis 有不同的快取供應項目，可讓您彈性選擇快�
 
 如需詳細資訊，請參閱[金鑰散發模型](https://redis.io/topics/cluster-spec#keys-distribution-model)、[Redis 叢集資料分區化](https://redis.io/topics/cluster-tutorial#redis-cluster-data-sharding)和[金鑰主題標籤](https://redis.io/topics/cluster-spec#keys-hash-tags)。
 
-如需搭配 StackExchange.Redis 用戶端使用叢集，並尋找相同分區中之金鑰的範例程式碼，請參閱 [Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) 範例的 [clustering.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) 部分。
+如需搭配 StackExchange.Redis 用戶端使用叢集，並尋找相同分區中之金鑰的範例程式碼，請參閱 [Hello World](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) 範例的 [clustering.cs](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) 部分。
 
 ### <a name="what-is-the-largest-cache-size-i-can-create"></a>我可以建立的最大快取大小為何？
 最大的 premium 快取大小為 120 GB。 您最多可以建立10個分區，讓您的大小上限為 1.2 TB GB。 如果您需要較大的大小，可以 [要求更多](mailto:wapteams@microsoft.com?subject=Redis%20Cache%20quota%20increase)。 如需詳細資訊，請參閱 [Azure Redis 快取價格](https://azure.microsoft.com/pricing/details/cache/)。
 
 ### <a name="do-all-redis-clients-support-clustering"></a>所有 Redis 用戶端都支援叢集嗎？
-並非所有用戶端都支援 Redis 叢集！ 請查看您所使用之程式庫的檔，以確認您使用的是支援叢集的程式庫和版本。 Stackexchange.redis. Redis 是一個程式庫，在其較新版本中支援叢集。 如需其他用戶端的詳細資訊，請參閱 [Redis 叢集教學課程](https://redis.io/topics/cluster-tutorial)的 [試用叢集](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster)一節。 
+並非所有用戶端都支援 Redis 叢集！ 請查看您所使用之程式庫的檔，以確認您使用的是支援叢集的程式庫和版本。 Stackexchange.redis. Redis 是一個程式庫，在其較新版本中支援叢集。 如需其他用戶端的詳細資訊，請參閱 [Redis 叢集教學課程](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster)的 [試用叢集](https://redis.io/topics/cluster-tutorial)一節。 
 
 Redis 叢集通訊協定需要每個用戶端直接以群集模式連接到每個分區，同時定義新的錯誤回應，例如 ' 已移動 ' na ' CROSSSLOTS '。 嘗試使用不支援叢集模式快取叢集的用戶端，可能會導致許多移動的重新導向[例外](https://redis.io/topics/cluster-spec#moved-redirection)狀況，或只是中斷您的應用程式（如果您要進行跨位置的多金鑰要求）。
 
@@ -136,7 +136,7 @@ Redis 叢集通訊協定需要每個用戶端直接以群集模式連接到每�
 如為 SSL，將 `1300N` 取代為 `1500N`。
 
 ### <a name="can-i-configure-clustering-for-a-previously-created-cache"></a>我可以為先前建立的快取設定叢集嗎？
-可以。 如果不是，請先確定您的快取為 premium。 接下來，您應該能夠看到叢集設定選項，包括啟用叢集的選項。 您可以在建立快取之後，或在您第一次啟用叢集之後，變更叢集大小。
+是。 如果不是，請先確定您的快取為 premium。 接下來，您應該能夠看到叢集設定選項，包括啟用叢集的選項。 您可以在建立快取之後，或在您第一次啟用叢集之後，變更叢集大小。
 
    >[!IMPORTANT]
    >您無法復原啟用群集。 和已啟用叢集的快取，而且只有一個分區的行為*不同*于*不*含叢集的相同大小快取。

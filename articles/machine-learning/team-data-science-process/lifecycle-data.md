@@ -63,7 +63,7 @@ TDSP 提供自動化公用程式 [IDEAR](https://github.com/Azure/Azure-TDSP-Uti
    * 串流或即時 
    * 混合式 
 
-## <a name="artifacts"></a>Artifacts
+## <a name="artifacts"></a>構件
 以下是此階段的交付項目：
 
    * [資料品質報告](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/DataSummaryReport.md) \(英文\)︰這份報告包含資料摘要、每個屬性與目標之間的關聯性、變數排名等等。 TDSP 中所提供的 [IDEAR](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils) 工具，可在任何表格式資料集 (例如 CSV 檔案或關聯式資料表) 上快速產生這份報告。 

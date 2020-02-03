@@ -43,7 +43,7 @@ ms.locfileid: "76718441"
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
 
-聯結 trip\_data 和 trip\_fare 的「唯一索引鍵」是由下列三個欄位所組成：
+聯結 trip**data 和 trip**fare 的「唯一索引鍵」\_\_是由下列三個欄位所組成：
 
 * medallion、
 * hack\_license 和
@@ -53,7 +53,7 @@ ms.locfileid: "76718441"
 我們根據 *tip\_amount* 將三個預測問題公式化來說明三種類型的模型化工作：
 
 1. **二元分類**：用來預測是否已針對旅程付費，亦即，大於 $0 的*tip\_金額*是正向範例，而*tip\_* $0 是負的範例。
-2. **多類別分類**：預測針對該車程所支付之小費的金額範圍。 我們將 tip\_amount 分成五個分類收納組或類別：
+2. **多類別分類**：預測針對該車程所支付之小費的金額範圍。 我們將 tip*amount\_* 分成五個分類收納組或類別：
 
         Class 0 : tip_amount = $0
         Class 1 : tip_amount > $0 and tip_amount <= $5
@@ -711,7 +711,7 @@ ms.locfileid: "76718441"
 
 ![長條圖輸出][3]
 
-與
+和
 
     pd.Series(trip_dist_bin_id).value_counts().plot(kind='line')
 

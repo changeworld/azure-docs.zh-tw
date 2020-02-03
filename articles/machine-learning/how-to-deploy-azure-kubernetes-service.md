@@ -37,7 +37,7 @@ ms.locfileid: "76722379"
 > [!IMPORTANT]
 > 建立或附加程式是一次性的工作。 一旦 AKS 叢集連線到工作區，您就可以將它用於部署。 如果您不再需要 AKS 叢集，您可以卸離或刪除該叢集。 卸離或刪除之後，您將無法再部署到叢集。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - Azure Machine Learning 工作區。 如需詳細資訊，請參閱[建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。
 

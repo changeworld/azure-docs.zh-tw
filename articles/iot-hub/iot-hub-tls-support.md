@@ -78,7 +78,7 @@ TLS 1.0 和1.1 被視為舊版，並已規劃要淘汰。 如需詳細資訊，�
 
 使用下列連結，在 IoT 中樞用戶端 Sdk 中設定 TLS 1.2 和允許的密碼。
 
-| 語言 | 支援 TLS 1。2 | 文件 |
+| Language | 支援 TLS 1。2 | 文件 |
 |----------|-------------------|---------------|
 | C        | 是               | [連結](https://aka.ms/Tls_C_SDK_IoT) |
 | Python   | 是               | [連結](https://aka.ms/Tls_Python_SDK_IoT) |

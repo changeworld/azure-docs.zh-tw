@@ -28,7 +28,7 @@ Azure 受控代理程式更新可讓發行者根據受控應用程式實例的�
 6. 請依照本文的**通知架構**一節中的指示來剖析通知要求，並根據通知來執行您的商務邏輯。
 
 ## <a name="add-service-catalog-application-definition-notifications"></a>新增服務類別目錄應用程式定義通知
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>Azure 入口網站
 若要開始使用，請參閱[透過 Azure 入口網站發佈服務目錄應用程式](./publish-portal.md)。
 
 ![Azure 入口網站中的服務類別目錄應用程式定義通知](./media/publish-notifications/service-catalog-notifications.png)
@@ -73,8 +73,8 @@ PUT | 已接受 | 受控資源群組已在應用程式 PUT 之後成功建立並
 PUT | 成功 | 在 PUT 之後，完整布建受控應用程式成功。
 PUT | 失敗 | 在任何時間點布建應用程式實例的失敗。
 PATCH | 成功 | 在受控應用程式實例上成功修補之後，更新標記、JIT 存取原則或受控識別。
-刪除 | 正在刪除 | 一旦使用者起始受控應用程式實例的刪除即可。
-刪除 | 已刪除 | 在完整且成功的受控應用程式刪除之後。
+刪除 | 刪除中 | 一旦使用者起始受控應用程式實例的刪除即可。
+刪除 | Deleted | 在完整且成功的受控應用程式刪除之後。
 刪除 | 失敗 | 在解除布建程式期間封鎖刪除的任何錯誤之後。
 ## <a name="notification-schema"></a>通知架構
 當您啟動 webhook 端點來處理通知時，您必須剖析承載以取得重要的屬性，然後對通知採取動作。 服務類別目錄和 Azure Marketplace 受控代理程式更新提供許多相同的屬性。 範例後面的表格中會概述兩個小差異。
@@ -176,7 +176,7 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
 
 ```
 
-參數 | 說明
+參數 | 描述
 ---|---
 eventType | 觸發通知的事件種類。 （例如 PUT、PATCH、DELETE）。
 applicationId | 觸發通知之受控應用程式的完整資源識別碼。

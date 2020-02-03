@@ -74,7 +74,7 @@ ms.locfileid: "76710343"
 
 舉例來說，您可能發現現有的系統必須收集並記錄其他類型的資料，才能解決問題並達成專案目標。 在此情況下，您可能會想要尋找外部資料來源或更新系統以收集新資料。
 
-## <a name="artifacts"></a>Artifacts
+## <a name="artifacts"></a>構件
 以下是此階段的交付項目︰
 
    * [規範文件](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Charter.md)：TDSP 專案結構定義中會提供標準範本。 規範文件是即時文件。 當您進行新的探索，以及當商務需求變更時，您就要更新整個專案的範本。 關鍵在於要反覆審視這份文件，並隨著探索程序的進行，新增更多詳細資料。 讓客戶和其他專案關係人參與變更，並清楚地說明進行這些變更的原因。  

@@ -80,7 +80,7 @@ Azure AD 的使用者布建服務可自動化下列以 HR 為基礎的身分識�
 
 對於將來自雲端 HR 應用程式並布建到 Active Directory 或 Azure AD 的每個使用者，您也需要有效的 Azure AD Premium P1 或更高的訂用帳戶授權。 在雲端 HR 應用程式中所擁有的任何不正確授權數目，可能會在使用者布建期間導致錯誤。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 - Azure AD 全域管理員存取權來設定 Azure AD Connect 布建代理程式。
 - 雲端 HR 應用程式的測試和實際執行實例。
@@ -257,7 +257,7 @@ Azure AD Connect 布建代理程式部署拓撲取決於您打算整合的雲端
 
 當您起始權變-權變進程時，請收集下列需求。
 
-| 流程 | 要求 |
+| Process | 需求 |
 | - | - |
 | **權變** | 從身分識別生命週期的觀點來看，您要如何處理 rehires？ Rehires 要保留舊的員工識別碼嗎？ |
 | | 您是否處理未來的員工，並事先為他們建立 Active Directory 帳戶？ 這些帳戶是以已啟用或已停用狀態建立的嗎？ |
@@ -276,7 +276,7 @@ Azure AD Connect 布建代理程式部署拓撲取決於您打算整合的雲端
 
 當您起始權變-權變進程時，請收集下列需求。
 
-| 流程 | 要求 |
+| Process | 需求 |
 | - | - |
 | **權變** | Active Directory 帳戶建立程式是手動、自動化或部分自動化的嗎？ |
 | | 您是否計畫將自訂屬性從雲端 HR 應用程式傳播至 Active Directory？ |

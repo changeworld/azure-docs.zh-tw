@@ -77,7 +77,7 @@ Microsoft Graph 繫結可透過 _繫結擴充功能_ 提供。 繫結擴充功�
 
 * [範例](#auth-token---example)
 * [屬性](#auth-token---attributes)
-* [Configuration](#auth-token---configuration)
+* [組態](#auth-token---configuration)
 * [使用量](#auth-token---usage)
 
 ### <a name="auth-token---example"></a>驗證權杖 - 範例
@@ -205,7 +205,7 @@ module.exports = function (context, req) {
 
 下表說明您在 *function.json* 檔案中設定的繫結設定屬性內容和 `Token` 屬性。
 
-|function.json 屬性 | 屬性內容 |說明|
+|function.json 屬性 | 屬性內容 |描述|
 |---------|---------|----------------------|
 |**name**| n/a |必要項目 - 函式程式碼中用於驗證權杖的變數名稱。 請參閱[從程式碼使用驗證權杖輸入繫結](#token-input-code)。|
 |**type**| n/a |必要項目 - 必須設定為 `token`。|
@@ -235,7 +235,7 @@ Excel 資料表輸入繫結會讀取儲存在 OneDrive 中 Excel 資料表的內
 
 * [範例](#excel-input---example)
 * [屬性](#excel-input---attributes)
-* [Configuration](#excel-input---configuration)
+* [組態](#excel-input---configuration)
 * [使用量](#excel-input---usage)
 
 ### <a name="excel-input---example"></a>Excel 輸入 - 範例
@@ -340,7 +340,7 @@ module.exports = function (context, req) {
 
 下表說明您在 *function.json* 檔案中設定的繫結設定屬性內容和 `Excel` 屬性。
 
-|function.json 屬性 | 屬性內容 |說明|
+|function.json 屬性 | 屬性內容 |描述|
 |---------|---------|----------------------|
 |**name**| n/a |必要項目 - 函式程式碼中用於 Excel 資料表的變數名稱。 請參閱[從程式碼使用 Excel 資料表輸入繫結](#excel-input-code)。|
 |**type**| n/a |必要項目 - 必須設定為 `excel`。|
@@ -384,7 +384,7 @@ Excel 輸出繫結會修改儲存在 OneDrive 中 Excel 資料表的內容。
 
 * [範例](#excel-output---example)
 * [屬性](#excel-output---attributes)
-* [Configuration](#excel-output---configuration)
+* [組態](#excel-output---configuration)
 * [使用量](#excel-output---usage)
 
 ### <a name="excel-output---example"></a>Excel 輸出 - 範例
@@ -502,7 +502,7 @@ module.exports = function (context, req) {
 
 下表說明您在 *function.json* 檔案中設定的繫結設定屬性內容和 `Excel` 屬性。
 
-|function.json 屬性 | 屬性內容 |說明|
+|function.json 屬性 | 屬性內容 |描述|
 |---------|---------|----------------------|
 |**name**| n/a |必要項目 - 函式程式碼中用於驗證權杖的變數名稱。 請參閱[從程式碼使用 Excel 資料表輸出繫結](#excel-output-code)。|
 |**type**| n/a |必要項目 - 必須設定為 `excel`。|
@@ -543,7 +543,7 @@ OneDrive 檔案輸入繫結會讀取儲存在 OneDrive 中的檔案內容。
 
 * [範例](#file-input---example)
 * [屬性](#file-input---attributes)
-* [Configuration](#file-input---configuration)
+* [組態](#file-input---configuration)
 * [使用量](#file-input---usage)
 
 ### <a name="file-input---example"></a>檔案輸入 - 範例
@@ -648,7 +648,7 @@ module.exports = function (context, req) {
 
 下表說明您在 *function.json* 檔案中設定的繫結設定屬性內容和 `OneDrive` 屬性。
 
-|function.json 屬性 | 屬性內容 |說明|
+|function.json 屬性 | 屬性內容 |描述|
 |---------|---------|----------------------|
 |**name**| n/a |必要項目 - 函式程式碼中用於檔案的變數名稱。 請參閱[從程式碼使用 OneDrive 檔案輸入繫結](#onedrive-input-code)。|
 |**type**| n/a |必要項目 - 必須設定為 `onedrive`。|
@@ -669,8 +669,8 @@ module.exports = function (context, req) {
 
 繫結會向 .NET 函式公開下列類型：
 - byte[]
-- Stream
-- string
+- STREAM
+- 字串
 - Microsoft.Graph.DriveItem
 
 
@@ -687,7 +687,7 @@ OneDrive 檔案輸出繫結會修改儲存在 OneDrive 中的檔案內容。
 
 * [範例](#file-output---example)
 * [屬性](#file-output---attributes)
-* [Configuration](#file-output---configuration)
+* [組態](#file-output---configuration)
 * [使用量](#file-output---usage)
 
 ### <a name="file-output---example"></a>檔案輸出 - 範例
@@ -796,7 +796,7 @@ module.exports = function (context, req) {
 
 下表說明您在 *function.json* 檔案中設定的繫結設定屬性內容和 `OneDrive` 屬性。
 
-|function.json 屬性 | 屬性內容 |說明|
+|function.json 屬性 | 屬性內容 |描述|
 |---------|---------|----------------------|
 |**name**| n/a |必要項目 - 函式程式碼中用於檔案的變數名稱。 請參閱[從程式碼使用 OneDrive 檔案輸出繫結](#onedrive-output-code)。|
 |**type**| n/a |必要項目 - 必須設定為 `onedrive`。|
@@ -817,8 +817,8 @@ module.exports = function (context, req) {
 
 繫結會向 .NET 函式公開下列類型：
 - byte[]
-- Stream
-- string
+- STREAM
+- 字串
 - Microsoft.Graph.DriveItem
 
 
@@ -834,7 +834,7 @@ Outlook 訊息輸出繫結會透過 Outlook 傳送電子郵件訊息。
 
 * [範例](#outlook-output---example)
 * [屬性](#outlook-output---attributes)
-* [Configuration](#outlook-output---configuration)
+* [組態](#outlook-output---configuration)
 * [使用量](#outlook-output---usage)
 
 ### <a name="outlook-output---example"></a>Outlook 輸出 - 範例
@@ -947,7 +947,7 @@ module.exports = function (context, req) {
 
 下表說明您在 *function.json* 檔案中設定的繫結設定屬性內容和 `Outlook` 屬性。
 
-|function.json 屬性 | 屬性內容 |說明|
+|function.json 屬性 | 屬性內容 |描述|
 |---------|---------|----------------------|
 |**name**| n/a |必要項目 - 函式程式碼中用於電子郵件訊息的變數名稱。 請參閱[從程式碼使用 Outlook 訊息輸出繫結](#outlook-output-code)。|
 |**type**| n/a |必要項目 - 必須設定為 `outlook`。|
@@ -968,7 +968,7 @@ module.exports = function (context, req) {
 繫結會向 .NET 函式公開下列類型：
 - Microsoft.Graph.Message
 - Newtonsoft.Json.Linq.JObject
-- string
+- 字串
 - 自訂物件類型 (使用結構化模型繫結)
 
 
@@ -999,7 +999,7 @@ Microsoft Graph Webhook 觸發程序可讓函式回應從 Microsoft Graph 傳入
 
 * [範例](#webhook-trigger---example)
 * [屬性](#webhook-trigger---attributes)
-* [Configuration](#webhook-trigger---configuration)
+* [組態](#webhook-trigger---configuration)
 * [使用量](#webhook-trigger---usage)
 
 ### <a name="webhook-trigger---example"></a>Webhook 觸發程序 - 範例
@@ -1090,7 +1090,7 @@ module.exports = function (context) {
 
 下表說明您在 *function.json* 檔案中設定的繫結設定屬性內容和 `GraphWebhookTrigger` 屬性。
 
-|function.json 屬性 | 屬性內容 |說明|
+|function.json 屬性 | 屬性內容 |描述|
 |---------|---------|----------------------|
 |**name**| n/a |必要項目 - 函式程式碼中用於電子郵件訊息的變數名稱。 請參閱[從程式碼使用 Outlook 訊息輸出繫結](#outlook-output-code)。|
 |**type**| n/a |必要項目 - 必須設定為 `graphWebhook`。|
@@ -1118,7 +1118,7 @@ Microsoft Graph Webhook 輸入繫結可讓您擷取由此函式應用程式管�
 
 * [範例](#webhook-input---example)
 * [屬性](#webhook-input---attributes)
-* [Configuration](#webhook-input---configuration)
+* [組態](#webhook-input---configuration)
 * [使用量](#webhook-input---usage)
 
 ### <a name="webhook-input---example"></a>Webhook 輸入 - 範例
@@ -1242,7 +1242,7 @@ module.exports = function (context, req) {
 
 下表說明您在 *function.json* 檔案中設定的繫結設定屬性內容和 `GraphWebhookSubscription` 屬性。
 
-|function.json 屬性 | 屬性內容 |說明|
+|function.json 屬性 | 屬性內容 |描述|
 |---------|---------|----------------------|
 |**name**| n/a |必要項目 - 函式程式碼中用於電子郵件訊息的變數名稱。 請參閱[從程式碼使用 Outlook 訊息輸出繫結](#outlook-output-code)。|
 |**type**| n/a |必要項目 - 必須設定為 `graphWebhookSubscription`。|
@@ -1269,7 +1269,7 @@ Webhook 訂用帳戶輸出繫結可讓您建立、刪除和重新整理 Microsof
 
 * [範例](#webhook-output---example)
 * [屬性](#webhook-output---attributes)
-* [Configuration](#webhook-output---configuration)
+* [組態](#webhook-output---configuration)
 * [使用量](#webhook-output---usage)
 
 ### <a name="webhook-output---example"></a>Webhook 輸出 - 範例
@@ -1383,7 +1383,7 @@ module.exports = function (context, req) {
 
 下表說明您在 *function.json* 檔案中設定的繫結設定屬性內容和 `GraphWebhookSubscription` 屬性。
 
-|function.json 屬性 | 屬性內容 |說明|
+|function.json 屬性 | 屬性內容 |描述|
 |---------|---------|----------------------|
 |**name**| n/a |必要項目 - 函式程式碼中用於電子郵件訊息的變數名稱。 請參閱[從程式碼使用 Outlook 訊息輸出繫結](#outlook-output-code)。|
 |**type**| n/a |必要項目 - 必須設定為 `graphWebhookSubscription`。|
@@ -1398,7 +1398,7 @@ module.exports = function (context, req) {
 ### <a name="webhook-output---usage"></a>Webhook 輸出 - 使用方式
 
 繫結會向 .NET 函式公開下列類型：
-- string
+- 字串
 - Microsoft.Graph.Subscription
 
 
