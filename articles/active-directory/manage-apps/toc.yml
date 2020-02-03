@@ -151,8 +151,8 @@
               href: methods-for-assigning-users-and-groups.md
             - name: 將使用者指派給應用程式
               href: assign-user-or-group-access-portal.md
-            - name: 在我的應用程式上建立工作區 (預覽)
-              href: access-panel-workspaces.md
+            - name: 在我的應用程式上建立集合
+              href: access-panel-collections.md
             - name: 使用服務應用程式存取
               href: access-panel-manage-self-service-access.md
             - name: 將使用者存取權從應用程式移除的方法

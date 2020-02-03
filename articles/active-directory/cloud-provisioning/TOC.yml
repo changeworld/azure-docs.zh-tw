@@ -24,7 +24,7 @@
       href: concept-attributes.md
     - name: 在 Azure Active Directory 中撰寫屬性對應的運算式
       href: reference-expressions.md
-- name: 使用說明指南
+- name: 操作指南
   items:
     - name: 安裝與升級
       items:
@@ -34,6 +34,8 @@
           href: how-to-install.md
         - name: 雲端佈建組態
           href: how-to-configure.md
+        - name: 使用單一登入
+          href: how-to-sso.md
     - name: 規劃和設計
       items:
         - name: Azure AD Connect 雲端佈建的拓撲和案例

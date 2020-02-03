@@ -26,13 +26,13 @@
           href: event-hubs-resource-manager-namespace-event-hub.md
     - name: 傳送及接收事件
       items:
-        - name: .NET Core
-          href: event-hubs-dotnet-standard-getstarted-send.md
-        - name: Java
+        - name: .NET Core (Azure.Messaging.EventHubs)
+          href: get-started-dotnet-standard-send-v2.md
+        - name: Java (azure-eventhubs)
           href: event-hubs-java-get-started-send.md
-        - name: Python
+        - name: Python (azure-eventhub 第 5 版)
           href: get-started-python-send-v2.md
-        - name: Node.js
+        - name: Node.js (azure/event-hubs 第 5 版)
           href: get-started-node-send-v2.md
         - name: Go
           href: event-hubs-go-get-started-send.md
@@ -40,15 +40,13 @@
           href: event-hubs-c-getstarted-send.md
         - name: Apache Storm (僅接受)
           href: event-hubs-storm-getstarted-receive.md
-        - name: .NET Framework
-          href: event-hubs-dotnet-framework-getstarted-send.md
     - name: 擷取事件
       items:
         - name: 使用 Azure 入口網站啟用事件中樞擷取
           href: event-hubs-capture-enable-through-portal.md
         - name: 使用 Resource Manager 範本啟用事件中樞擷取
           href: event-hubs-resource-manager-namespace-event-hub-enable-capture.md
-        - name: 使用 Python 擷取事件中樞資料
+        - name: 使用 Python 擷取事件中樞資料 (azure-eventhub 第 5 版)
           href: get-started-capture-python-v2.md
     - name: 串流至適用於 Apache Kafka 的事件中樞
       href: event-hubs-quickstart-kafka-enabled-event-hubs.md
@@ -71,8 +69,10 @@
   items:
     - name: 事件中樞詞彙
       href: event-hubs-features.md
-    - name: 事件處理器主機
+    - name: 事件處理器主機 (舊版 SDK)
       href: event-hubs-event-processor-host.md
+    - name: 事件處理器 (最新的 SDK)
+      href: event-processor-balance-partition-load.md
     - name: 可用性和一致性
       href: event-hubs-availability-and-consistency.md
     - name: 延展性
@@ -116,20 +116,26 @@
           href: event-hubs-exchange-events-different-protocols.md
         - name: 程式設計指南
           items:
-            - name: Python
+            - name: .NET (Azure.Messaging.EventHubs)
+              href: 'https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/README.md'
+            - name: Python (azure-eventhub 第 5 版)
               href: 'https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/README.md'
-            - name: JavaScript
+            - name: JavaScript (azure/event-hubs 第 5 版)
               href: 'https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/README.md'
-            - name: .NET 程式設計指南
+            - name: .NET (Microsoft.Azure.EventHubs)
               href: event-hubs-programming-guide.md
-        - name: 使用 Python 讀取擷取的資料 (舊版)
+        - name: 使用 Python 讀取擷取的資料 (azure-eventhub 第 1 版)
           href: event-hubs-capture-python.md
-        - name: 傳送及接收事件 (舊版)
+        - name: 傳送和接收事件 (舊版/套件)
           items:
-            - name: Python (舊版)
+            - name: .NET Core (Microsoft.Azure.EventHubs)
+              href: event-hubs-dotnet-standard-getstarted-send.md
+            - name: Python (azure-eventhub 第 1 版)
               href: event-hubs-python-get-started-send.md
-            - name: Node.js (舊版)
+            - name: Node.js (azure/event-hubs 第 2 版)
               href: event-hubs-node-get-started-send.md
+            - name: .NET Framework (Microsoft.Azure.EventHubs)
+              href: event-hubs-dotnet-framework-getstarted-send.md
     - name: 處理資料
       items:
         - name: 使用 Azure 串流分析處理資料
@@ -186,34 +192,52 @@
           href: resource-manager-exceptions.md
 - name: 參考
   items:
-    - name: Java
-      items:
-        - name: com.microsoft.azure.eventhubs
-          href: /java/api/com.microsoft.azure.eventhubs
-        - name: com.microsoft.azure.eventprocessorhost
-          href: /java/api/com.microsoft.azure.eventprocessorhost
     - name: .NET
       items:
-        - name: Microsoft.Azure.EventHubs
-          href: /dotnet/api/microsoft.azure.eventhubs
-        - name: Microsoft.Azure.EventHubs.Processor
-          href: /dotnet/api/microsoft.azure.eventhubs.processor
-        - name: Microsoft.ServiceBus.Messaging
-          href: /dotnet/api/microsoft.servicebus.messaging
-        - name: Microsoft.ServiceBus.Messaging.EventProcessorHost
-          href: /dotnet/api/microsoft.servicebus.messaging.eventprocessorhost
-        - name: Microsoft.Azure.Management.EventHub
+        - name: 用戶端程式庫
+          items:
+            - name: 從 Microsoft.Azure.EventHubs 遷移至 Azure.Messaging.EventHubs
+              href: 'https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MIGRATIONGUIDE.md'
+            - name: Azure.Messaging.EventHubs (最新版)
+              href: /dotnet/api/azure.messaging.eventhubs?view=azure-dotnet-preview
+            - name: Microsoft.Azure.EventHubs (舊版)
+              href: /dotnet/api/microsoft.azure.eventhubs
+            - name: Microsoft.ServiceBus.Messaging (舊版)
+              href: /dotnet/api/microsoft.servicebus.messaging
+        - name: 管理程式庫
           href: /dotnet/api/microsoft.azure.management.eventhub
-    - name: Node.js
+    - name: Java
       items:
-        - name: 從版本 2 遷移至版本 5
-          href: 'https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md'
-        - name: API 參考資料
-          href: /javascript/api/overview/azure/event-hub?view=azure-node-latest
+        - name: 用戶端程式庫
+          items:
+            - name: azure-eventhubs
+              href: /java/api/overview/azure/eventhubs/client?view=azure-java-stable
+        - name: 管理程式庫
+          href: /java/api/com.microsoft.azure.management.eventhub?view=azure-java-stable
     - name: Python
       items:
-        - name: 從版本 1 遷移至版本 5
+        - name: 從 azure-eventhub 第 1 版遷移至第 5 版
           href: 'https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md'
+        - name: 用戶端程式庫
+          items:
+            - name: azure-eventhub 第 5 版
+              href: /python/api/azure-eventhub/?view=azure-python-preview
+            - name: azure-eventhub 第 1 版
+              href: /python/api/azure-eventhub/?view=azure-python
+        - name: 管理程式庫
+          href: /python/api/overview/azure/event-hub?view=azure-python
+    - name: Node.js
+      items:
+        - name: 從 azure/eventhubs 第 2 版遷移至第 5 版
+          href: 'https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md'
+        - name: 用戶端程式庫
+          items:
+            - name: azure/eventhubs 第 5 版
+              href: /javascript/api/@azure/event-hubs/?view=azure-node-preview
+            - name: azure/eventhubs 第 2 版
+              href: /javascript/api/@azure/event-hubs/?view=azure-node-latest
+        - name: 管理程式庫
+          href: /javascript/api/@azure/arm-eventhub/?view=azure-node-latest
     - name: REST
       href: /rest/api/eventhub
     - name: Resource Manager 範本
@@ -228,7 +252,7 @@
       href: event-hubs-faq.md
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/?category=iot'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/event-hubs/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'

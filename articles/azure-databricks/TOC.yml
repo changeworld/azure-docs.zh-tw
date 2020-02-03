@@ -888,13 +888,19 @@
             - name: 外部的存取追蹤
               href: /azure/databricks/applications/mlflow/access-hosted-tracking-server
               maintainContext: true
+        - name: 使用 MLflow 搜尋 API 建立儀表板
+          href: /azure/databricks/applications/mlflow/build-dashboards
+          maintainContext: true
         - name: 儲存、載入和部署模型
           items:
             - name: 儲存、載入和部署概觀
               href: /azure/databricks/applications/mlflow/models
               maintainContext: true
             - name: MLflow 模型範例
-              href: /azure/databricks/applications/mlflow/  model-examples
+              href: /azure/databricks/applications/mlflow/model-example
+              maintainContext: true
+            - name: Azure 上的 scikit learn 模型部署
+              href: /azure/databricks/applications/mlflow/scikit-learn-model-deployment-on-azure-ml
               maintainContext: true
         - name: 使用 MLflow 專案重現執行
           href: /azure/databricks/applications/mlflow/projects
@@ -1411,7 +1417,7 @@
               maintainContext: true
         - name: Python
           items:
-            - name: 使用 Anaconda 範本建立叢集
+            - name: 使用 Conda 範本建立叢集
               href: /azure/databricks/kb/python/anaconda-environment
               maintainContext: true
             - name: 安裝和編譯 Cython
@@ -1465,6 +1471,9 @@
           items:
             - name: 在 Scala 中執行 C++ 程式碼
               href: /azure/databricks/kb/scala/running-c-plus-plus-code-scala
+              maintainContext: true
+            - name: 並行 Spark JAR 作業失敗
+              href: /azure/databricks/kb/scala/spark-jar-job-error
               maintainContext: true
         - name: SQL
           items:

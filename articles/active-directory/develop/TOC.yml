@@ -753,3 +753,5 @@
       href: developer-support-help-options.md
     - name: 適用於 Azure 資源的受控識別
       href: 'https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview'
+    - name: Microsoft 身分識別平台影片
+      href: identity-videos.md

@@ -82,11 +82,7 @@
             - name: 4 - 驗證輸送量和延遲計量
               href: storage-blob-scalable-app-verify-metrics.md
         - name: 託管靜態網站
-          items:
-            - name: 1 - 建立靜態網站
-              href: storage-blob-static-website-host.md
-            - name: 2 - 使用 SSL 啟用自訂網域
-              href: storage-blob-static-website-custom-domain.md
+          href: storage-blob-static-website-host.md
         - name: 設計高可用性的應用程式
           items:
             - name: 1 - 讓您的應用程式保持高可用性
@@ -383,10 +379,12 @@
             - name: 使用 Azure 儲存體模擬器
               href: ../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 託管靜態網站
-          href: storage-blob-static-website-how-to.md
-        - name: 將 Azure CDN 對應至自訂網域以便透過 HTTPS 存取
-          href: storage-https-custom-domain-cdn.md
-        - name: 設定自訂網域
+          items:
+            - name: 託管靜態網站
+              href: storage-blob-static-website-how-to.md
+            - name: 與 Azure CDN 整合
+              href: static-website-content-delivery-network.md
+        - name: 使用自訂網域
           href: storage-custom-domain-name.md
         - name: 將事件路由至自訂端點
           href: storage-blob-event-quickstart.md

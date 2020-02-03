@@ -330,16 +330,13 @@
     - name: 監視
       items:
         - name: 監視邏輯應用程式
-          href: logic-apps-monitor-your-logic-apps.md
+          href: monitor-logic-apps.md
         - name: 使用 Azure 監視器記錄監視邏輯應用程式
-          href: logic-apps-monitor-your-logic-apps-oms.md
+          href: monitor-logic-apps-log-analytics.md
         - name: 使用 Azure 監視器記錄監視 B2B 訊息
-          href: logic-apps-monitor-b2b-message.md
-          items:
-            - name: 使用 Azure 監視器記錄追蹤 B2B 訊息
-              href: logic-apps-track-b2b-messages-omsportal.md
-            - name: 使用 Azure 監視器記錄為 B2B 訊息建立查詢
-              href: logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md
+          href: monitor-b2b-messages-log-analytics.md
+        - name: 建立監視和追蹤查詢
+          href: create-monitoring-tracking-queries.md
     - name: 範例、案例和逐步解說
       href: logic-apps-examples-and-scenarios.md
       items:
