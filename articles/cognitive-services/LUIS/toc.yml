@@ -67,21 +67,11 @@
     - name: 與 Bot 搭配使用
       items:
         - name: '搭配 C#'
-          items:
-            - name: 1. 建立基本 Bot
-              href: luis-csharp-tutorial-bf-v4.md
-              displayName: 'bot framework, framework, sdk, abs'
-            - name: 2. 將遙測新增到 Application Insights
-              href: luis-tutorial-bot-csharp-appinsights.md
-              displayName: 'Application insight, kusto'
+          href: luis-csharp-tutorial-bf-v4.md
+          displayName: 'bot framework, framework, sdk, abs'
         - name: 搭配 Node.js
-          items:
-            - name: 1. 建立基本 Bot
-              displayName: 'bot framework, framework, sdk, abs'
-              href: luis-nodejs-tutorial-bf-v4.md
-            - name: 2. 將遙測新增到 Application Insights
-              displayName: 'Application insight, kusto'
-              href: luis-tutorial-bot-nodejs-appinsights.md
+          displayName: 'bot framework, framework, sdk, abs'
+          href: luis-nodejs-tutorial-bf-v4.md
 - name: 概念
   items:
     - name: 開發生命週期

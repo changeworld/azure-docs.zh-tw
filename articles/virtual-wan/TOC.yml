@@ -47,8 +47,9 @@
     - name: 設定適用於使用者 VPN 的多應用程式 Azure AD 驗證 (預覽)
       href: openvpn-azure-ad-tenant-multi-app.md
     - name: 設定自動化 (虛擬 WAN 夥伴)
-    - name: 下載全域型和中樞型 VPN 設定檔
       href: virtual-wan-configure-automation-providers.md
+    - name: 下載全域型和中樞型 VPN 設定檔
+      href: global-hub-profile.md
     - name: 設定路由
       items:
         - name: 將流量從虛擬中樞路由傳送至 NVA

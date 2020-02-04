@@ -27,7 +27,7 @@ ms.locfileid: "74671396"
 若您已安裝 Visual Studio 2019：
 
 - 選取 [說明]   > [檢查更新]  以安裝最新的 Visual Studio 更新。
-- 選取 [工具]   > [取得工具及功能]  。
+- 選取 **[工具]**  >  **[取得工具及功能]** 。
 
 ## 建立 ASP.NET Web 應用程式<a name="create-and-publish-the-web-app"></a>
 
@@ -47,7 +47,7 @@ ms.locfileid: "74671396"
 
    ![建立 ASP.NET Web 應用程式](./media/app-service-web-get-started-dotnet-framework/select-mvc-template-vs2019.png)
 
-6. 從 Visual Studio 功能表中，選取 [偵錯]   > [啟動但不偵錯]  以在本機執行 Web 應用程式。
+6. 從 Visual Studio 功能表中，選取 **[偵錯]**  >  **[啟動但不偵錯]** 以在本機執行 Web 應用程式。
 
    ![在本機執行應用程式](./media/app-service-web-get-started-dotnet-framework/local-web-app.png)
 
@@ -83,7 +83,7 @@ ms.locfileid: "74671396"
    | 設定 | 建議的值 | 說明 |
    |-|-|-|
    |App Service 方案| myAppServicePlan | App Service 方案的名稱。 |
-   | 位置 | 西歐 | 裝載 Web 應用程式的資料中心。 |
+   | 位置 | 歐洲西部 | 裝載 Web 應用程式的資料中心。 |
    | 大小 | 免費 | [定價層](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)可決定裝載功能。 |
 
    ![建立 App Service 方案](./media/app-service-web-get-started-dotnet-framework/app-service-plan-framework-vs2019.png)

@@ -25,7 +25,7 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
 如果您詢問「如何改善我的資料庫效能？ 」，請考慮下列選項：
 
-## <a name="networking"></a>網路
+## <a name="networking"></a>網路功能
 <a id="direct-connection"></a>
 
 1. **原則︰使用直接連接模式**
@@ -47,7 +47,7 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
      |連線模式  |支援的通訊協定  |支援的 SDK  |API/服務連接埠  |
      |---------|---------|---------|---------|
      |閘道  |   HTTPS    |  所有 SDK    |   SQL （443）、Mongo （10250、10255、10256）、Table （443）、Cassandra （10350）、Graph （443）    |
-     |Direct    |     TCP    |  .NET SDK    | 10,000-20,000 範圍內的連接埠 |
+     |直接    |     TCP    |  .NET SDK    | 10,000-20,000 範圍內的連接埠 |
 
      Azure Cosmos DB 提供透過 HTTPS 的簡單且開放 RESTful 程式設計模型。 此外，它可提供有效率的 TCP 通訊協定，此 TCP 通訊協定在通訊模型中也符合 REST 限制，並且可以透過 .NET 用戶端 SDK 取得。 TCP 通訊協定會使用 SSL 來進行初始驗證和加密流量。 為了達到最佳效能，儘可能使用 TCP 通訊協定。
 
@@ -185,7 +185,7 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
     - 針對 VSTest 型的測試專案，可以從 [Visual Studio 測試] 功能表選項，選取 [測試]->[測試設定]->[以 X64 做為預設處理器架構] 來完成。
 
-    - 針對本機部署的 ASP.NET Web 應用程式，可以在 [工具]->[選項]->[專案和方案]->[Web 專案] 之下，選取 [將 64 位元版本的 IIS Express 用於網站和專案] 來完成。
+    - 針對本機部署的 ASP.NET Web 應用程式，可以在 [工具] **[選項]** -> **[專案和方案]** -> **[Web 專案]** -> 之下，選取 [將 64 位元版本的 IIS Express 用於網站和專案] 來完成。
 
     - 針對部署於 Azure 上的 ASP.NET Web 應用程式，可以在 Azure 入口網站上的 [應用程式設定] 中選擇 [以 64 位元做為平台] 來完成。
 
@@ -204,7 +204,7 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
     如需詳細資訊，請參閱 [Azure Cosmos DB 索引編製原則](index-policy.md)。
 
-## <a name="throughput"></a>輸送量
+## <a name="throughput"></a>Throughput
 <a id="measure-rus"></a>
 
 1. **測量和調整較低的要求單位/秒使用量**

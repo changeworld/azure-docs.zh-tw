@@ -20,7 +20,7 @@
       href: features-linux.md
     - name: Windows
       href: features-windows.md
-- name: 使用說明指南
+- name: 操作指南
   items:
     - name: Azure 磁碟加密
       items:
@@ -64,18 +64,26 @@
           href: hpccompute-gpu-linux.md
         - name: Windows
           href: hpccompute-gpu-windows.md
-    - name: Log Analytics
+    - name: Azure 監視器
       items:
-        - name: Linux
-          href: oms-linux.md
-        - name: Windows
-          href: oms-windows.md
-    - name: 適用於 VM 的 Azure 監視器
-      items:
-        - name: Linux 相依性代理程式
-          href: agent-dependency-linux.md
-        - name: Windows 相依性代理程式
-          href: agent-dependency-windows.md
+        - name: 診斷擴充功能
+          items:
+            - name: Linux
+              href: diagnostics-linux.md
+            - name: Windows
+              href: ../../azure-monitor/platform/diagnostics-extension-overview.md?toc=/azure/virtual-machines/extensions/toc.json
+        - name: Log Analytics
+          items:
+            - name: Linux
+              href: oms-linux.md
+            - name: Windows
+              href: oms-windows.md
+        - name: 適用於 VM 的 Azure 監視器
+          items:
+            - name: Linux 相依性代理程式
+              href: agent-dependency-linux.md
+            - name: Windows 相依性代理程式
+              href: agent-dependency-windows.md
     - name: PowerShell DSC
       href: dsc-overview.md
       items:
@@ -89,14 +97,6 @@
           href: dsc-template.md
     - name: 虛擬機器存取
       href: vmaccess.md
-    - name: 虛擬機器診斷
-      items:
-        - name: Linux
-          href: diagnostics-linux.md
-        - name: Windows
-          href: diagnostics-windows.md
-        - name: 使用範本
-          href: diagnostics-template.md
     - name: 第三方擴充功能
       items:
         - name: Chef

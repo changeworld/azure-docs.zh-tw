@@ -8,16 +8,16 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 782a23ba95519438dd369d3f69f52f7526461821
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 69a5452134e290f2072a9316ce1f067296ed2320
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156755"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939404"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>使用 Just-In-Time 管理虛擬機器存取
 
-Just-In-Time (JIT) 虛擬機器 (VM) 存取可用於鎖定 Azure VM 的輸入流量、降低暴露於攻擊的風險，同時能夠視需要輕鬆連線至 VM。
+即時（JIT）虛擬機器（VM）存取可用於鎖定 Azure Vm 的輸入流量、降低暴露于攻擊的風險，並在需要時輕鬆地連接到 Vm。
 
 > [!NOTE]
 > Just-in-Time 功能由資訊安全中心的標準層提供。 若要深入了解資訊安全中心的定價層，請參閱[價格](security-center-pricing.md)。
@@ -48,7 +48,7 @@ Just-In-Time (JIT) 虛擬機器 (VM) 存取可用於鎖定 Azure VM 的輸入流
 
 | 若要讓使用者能夠： | 要設定的許可權|
 | --- | --- |
-| 設定或編輯 VM 的 JIT 原則 | *將這些動作指派給角色：*  <ul><li>在與 VM 相關聯的訂用帳戶或資源群組範圍內：<br/> `Microsoft.Security/locations/jitNetworkAccessPolicies/write` </li><li> 在訂用帳戶或資源群組或 VM 的範圍內： <br/>`Microsoft.Compute/virtualMachines/write`</li></ul> | 
+| 設定或編輯 VM 的 JIT 原則 | *將這些動作指派給角色：*  <ul><li>在與 VM 相關聯的訂用帳戶或資源群組範圍內：<br/> `Microsoft.Security/locations/jitNetworkAccessPolicies/write` </li><li> 在 VM 的訂用帳戶或資源群組範圍內： <br/>`Microsoft.Compute/virtualMachines/write`</li></ul> | 
 |要求存取虛擬機器的 JIT 存取 | *將這些動作指派給使用者：*  <ul><li>在與 VM 相關聯的訂用帳戶或資源群組範圍內：<br/>  `Microsoft.Security/locations/jitNetworkAccessPolicies/initiate/action` </li><li>在與 VM 相關聯的訂用帳戶或資源群組範圍內：<br/>  `Microsoft.Security/locations/jitNetworkAccessPolicies/*/read` </li><li>  在訂用帳戶或資源群組或 VM 的範圍內：<br/> `Microsoft.Compute/virtualMachines/read` </li><li>  在訂用帳戶或資源群組或 VM 的範圍內：<br/> `Microsoft.Network/networkInterfaces/*/read` </li></ul>|
 
 
