@@ -5,33 +5,29 @@ author: alexkarcher-msft
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: 40037252ddf8e505ae7fe734813d598e7de96336
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 910b582cb40b9f8aff6a553621b4677d6b019826
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834224"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963881"
 ---
 # <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>如何針對「無法連線至函式執行階段」的情形進行疑難排解
 
-
-## <a name="error-text"></a>錯誤文字
-本文的目的是要在函式入口網站中顯示下列錯誤時進行疑難排解。
+本文的目的是要在 Azure 入口網站中顯示「函式執行時間無法連線」錯誤訊息時進行疑難排解。 發生此錯誤時，您會看到下列錯誤字串顯示在入口網站中。
 
 `Error: Azure Functions Runtime is unreachable. Click here for details on storage configuration`
 
-### <a name="summary"></a>摘要
-當 Azure Functions 執行階段無法啟動時，就會發生此問題。 之所以會發生這個錯誤，最常見的原因是函式應用程式無法存取其儲存體帳戶。 [在此深入了解儲存體帳戶需求](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements)
+當 Azure Functions 執行階段無法啟動時，就會發生這種情況。 之所以會發生這個錯誤，最常見的原因是函式應用程式無法存取其儲存體帳戶。 若要深入瞭解，請參閱[儲存體帳戶需求](storage-considerations.md#storage-account-requirements)。
 
-### <a name="troubleshooting"></a>疑難排解
-我們會逐步說明四種最常見的錯誤案例、如何加以識別，以及如何解決每個案例。
+本文的其餘部分可協助您針對此錯誤的下列原因進行疑難排解，包括如何識別和解決每個案例。
 
-1. 儲存體帳戶已刪除
-1. 儲存體帳戶的應用程式設定已刪除
-1. 儲存體帳戶的認證無效
-1. 無法存取儲存體帳戶
-1. 每日執行配額已滿
-1. 應用程式位於防火牆後方
++ [儲存體帳戶已刪除](#storage-account-deleted)
++ [儲存體帳戶的應用程式設定已刪除](#storage-account-application-settings-deleted)
++ [儲存體帳戶的認證無效](#storage-account-credentials-invalid)
++ [無法存取儲存體帳戶](#storage-account-inaccessible)
++ [超過每日執行配額](#daily-execution-quota-full)
++ [您的應用程式位於防火牆後方](#app-is-behind-a-firewall)
 
 
 ## <a name="storage-account-deleted"></a>儲存體帳戶已刪除
@@ -60,9 +56,9 @@ ms.locfileid: "75834224"
 
 ### <a name="guidance"></a>指導方針
 
-* 請勿對上述任何設定核取 [位置設定]。 當您交換部署位置時，函式將會中斷。
-* 請勿將這些設定修改為自動化部署的一部分。
-* 在建立時，必須提供這些設定，且設定必須有效。 即使事後新增設定，不包含這些設定的自動化部署仍會導致應用程式無法運作。
+* 請不要核取任何這些設定的 [位置設定]。 當您交換部署位置時，函數應用程式會中斷。
+* 請勿在自動部署過程中修改這些設定。
+* 在建立時，必須提供這些設定，且設定必須有效。 不包含這些設定的自動化部署會導致不會執行的函式應用程式，即使稍後再新增設定也是如此。
 
 ## <a name="storage-account-credentials-invalid"></a>儲存體帳戶的認證無效
 
@@ -70,36 +66,31 @@ ms.locfileid: "75834224"
 
 ## <a name="storage-account-inaccessible"></a>無法存取儲存體帳戶
 
-函式應用程式必須能夠存取儲存體帳戶。 導致函式無法存取儲存體帳戶的常見問題包括：
+您的函數應用程式必須能夠存取儲存體帳戶。 導致函式無法存取儲存體帳戶的常見問題包括：
 
-* 部署到 App Service 環境的函式應用程式沒有正確的網路規則，而無法允許流量進出儲存體帳戶
-* 儲存體帳戶的防火牆已啟用，且未設定為允許流量進出函式。 [在此深入了解儲存體帳戶防火牆組態](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
++ 部署到 App Service 環境（ASE）的函式應用程式，沒有正確的網路規則，以允許進出儲存體帳戶的流量。
+
++ 儲存體帳戶防火牆已啟用，且未設定為允許進出功能的流量。 若要深入了解，請參閱[設定 Azure 儲存體防火牆和虛擬網路](../storage/common/storage-network-security.md)。
 
 ## <a name="daily-execution-quota-full"></a>每日執行配額已滿
 
-如果您已設定每日執行配額，則會暫時停用您的函數應用程式，且許多入口網站控制項將變成無法使用。 
+如果您已設定每日執行配額，則會暫時停用您的函式應用程式，這會導致許多入口網站控制項變得無法使用。 
 
-* 若要確認，請在入口網站中開啟 平臺功能 > 函數應用程式設定。 如果您超過配額，則會看到下列訊息：
-    * `The Function App has reached daily usage quota and has been stopped until the next 24 hours time frame.`
-* 請移除配額，然後重新啟動應用程式來解決此問題。
++ 若要在[Azure 入口網站](https://portal.azure.com)中確認，請在函式應用程式中開啟 [**平臺功能**] > **函數應用程式設定**。 當您超過設定的**每日使用量配額**時，您會看到下列訊息：
+
+    `The function app has reached daily usage quota and has been stopped until the next 24 hours time frame.`
+
++ 若要解決此問題，請移除或增加每日配額，然後重新開機您的應用程式。 否則，應用程式的執行會在隔天后遭到封鎖。
 
 ## <a name="app-is-behind-a-firewall"></a>應用程式位於防火牆後方
 
 如果您的函式應用程式[裝載于內部負載平衡的 App Service 環境](../app-service/environment/create-ilb-ase.md)中，而且設定為封鎖輸入網際網路流量，或設定了[輸入 IP 限制](functions-networking-options.md#inbound-ip-restrictions)以封鎖網際網路存取，則無法連線到您的函式執行時間。 Azure 入口網站會直接呼叫執行中的應用程式來提取函式清單，也會對 KUDU 端點進行 HTTP 呼叫。 [`Platform Features`] 索引標籤下的平台層級設定仍然可以使用。
 
-* 若要驗證您的 ASE 設定，請流覽至 ASE 所在子網的 NSG，並驗證輸入規則，以允許來自您正在存取應用程式之電腦的公用 IP 流量。 您也可以從連線至執行應用程式之虛擬網路的電腦，或在虛擬網路中執行的虛擬機器，使用入口網站。 [如需輸入規則設定的詳細資訊，請參閱這裡](https://docs.microsoft.com/azure/app-service/environment/network-info#network-security-groups)
+若要驗證您的 ASE 設定，請流覽至 ASE 所在子網的 NSG，並驗證輸入規則，以允許來自您正在存取應用程式之電腦的公用 IP 流量。 您也可以從連線至執行應用程式之虛擬網路的電腦，或在虛擬網路中執行的虛擬機器，使用入口網站。 [如需輸入規則設定的詳細資訊，請參閱這裡](../app-service/environment/network-info.md#network-security-groups)
 
 ## <a name="next-steps"></a>後續步驟
 
-現在，您的函式應用程式已恢復運作，接下來請看看我們的快速入門及開發人員參考，以便讓其重新啟動並執行！
+瞭解如何監視您的函數應用程式：
 
-* [建立您的第一個Azure Functions](functions-create-first-azure-function.md)  
-  直接進入正題並使用 Azure Functions 快速入門建立您的第一個函數。 
-* [Azure Functions 開發人員參考](functions-reference.md)  
-  提供更多有關 Azure Functions 執行階段的技術資訊，以及可供撰寫函數程式碼及定義觸發程序和繫結時參考。
-* [測試 Azure Functions](functions-test-a-function.md)  
-  說明可用於測試函式的各種工具和技巧。
-* [如何調整 Azure 函式](functions-scale.md)  
-  討論 Azure Functions 可用的服務方案，包括使用情況主控方案，以及如何選擇正確的方案。 
-* [深入了解 Azure App Service](../app-service/overview.md)  
-  Azure Functions 會利用 Azure App Service 來執行核心功能，例如部署、環境變數和診斷。 
+> [!div class="nextstepaction"]
+> [監視 Azure Functions](functions-monitoring.md)

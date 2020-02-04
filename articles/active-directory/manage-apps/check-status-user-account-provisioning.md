@@ -44,7 +44,8 @@ Azure Active Directory （Azure AD）包含[使用者帳戶](user-provisioning.m
 
 ## <a name="getting-provisioning-reports-from-the-azure-portal"></a>從 Azure 入口網站取得布建報告
 
-若要取得給定應用程式的布建報告資訊，請先啟動[Azure 入口網站](https://portal.azure.com)，然後**Azure Active Directory** &gt;**企業應用程式** &gt; [**活動**] 區段中的 [布建**記錄（預覽）** ]。 您也可以流覽至已設定布建的企業應用程式。 例如，如果您要在 LinkedIn Elevate 中佈建使用者，則應用程式詳細資料的導覽路徑為︰
+若要取得給定應用程式的布建報告資訊，請先啟動[Azure 入口網站](https://portal.azure.com)，然後**Azure Active Directory** &gt;**企業應用程式**] &gt; [**活動**] 區段中的 [布建**記錄（預覽）**。
+ 您也可以流覽至已設定布建的企業應用程式。 例如，如果您要在 LinkedIn Elevate 中佈建使用者，則應用程式詳細資料的導覽路徑為︰
 
 **Azure Active Directory > 企業應用程式 > 所有應用程式 > LinkedIn Elevate**
 

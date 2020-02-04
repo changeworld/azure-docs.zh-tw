@@ -40,7 +40,7 @@ Azure AD 布建服務會對來源系統和目標系統執行初始布建週期�
 
 布建週期完成之後，[**統計資料]** 區段會顯示已布建到 [日期] 的使用者和群組累計數目，以及最後一個週期的完成日期和持續時間。 **活動識別碼**會唯一識別最新的布建週期。 **工作**識別碼是布建工作的唯一識別碼，而且是您租使用者中的應用程式專用。
 
-在 Azure 入口網站中，您可以在**Azure Active Directory &gt; 企業應用程式 &gt;** \[\] 布建 索引標籤中，看到布建進度。
+在 Azure 入口網站中，您可以在**Azure Active Directory &gt; 企業應用程式 &gt;** \[\] 布建] 索引標籤中，看到布建進度。&gt;
 
 ![布建頁面進度列](media/application-provisioning-when-will-provisioning-finish-specific-user/provisioning-progress-bar-section.png)
 
