@@ -10,7 +10,7 @@ ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: b1bbc11d7772e4f56d7dc6ead580b0a0cbd3cd8d
 ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/30/2019
 ms.locfileid: "68669559"

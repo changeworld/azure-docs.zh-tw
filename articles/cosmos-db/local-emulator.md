@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 07/26/2019
-ms.openlocfilehash: bcab5f76b95939b0a9a4232eab2bcf8b2a5fd40b
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 3e51db98403b507c1c34ee455cfe218ea52c529b
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76309977"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760567"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>使用 Azure Cosmos 模擬器進行本機開發和測試
 
@@ -181,7 +181,7 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 
 從系統管理員的命令提示字元中，使用 "/EnableGremlinEndpoint" 來啟動模擬器。 或者，您也可以設定環境變數 `AZURE_COSMOS_EMULATOR_GREMLIN_ENDPOINT=true`
 
-* [安裝 apache-tinkerpop-gremlin-console-3.3.4](https://tinkerpop.apache.org/downloads.html)
+* [安裝 apache-tinkerpop-gremlin-console-3.3.4](https://archive.apache.org/dist/tinkerpop/3.3.4)。
 
 * 在模擬器的 [資料總管] 中，建立資料庫 "db1" 和集合 "coll1"；針對分割區索引鍵，選擇 "/name"
 
@@ -283,7 +283,7 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 如果您在超過目前分割區計數之後嘗試建立容器，模擬器就會擲回 ServiceUnavailable 例外狀況，並隨附下列訊息。
 
 「很抱歉，這個區域目前出現了大量的需求，此時無法完成您的需求。 我們正持續努力讓越來越多容量上線，並建議您再試一次。
-ActivityId：12345678-1234-1234-1234-123456789abc"
+ActivityId：12345678-1234-1234-1234-123456789abc」
 
 若要變更 Azure Cosmos 模擬器中可用的容器數目，請執行下列步驟：
 
@@ -291,7 +291,7 @@ ActivityId：12345678-1234-1234-1234-123456789abc"
 2. 刪除此資料夾 `%LOCALAPPDATA%\CosmosDBEmulator` 中的所有模擬器資料。
 3. 結束所有開啟的執行個體，方法是以滑鼠右鍵按一下系統匣上的 [Azure Cosmos DB 模擬器]  圖示，然後按一下 [結束]  。 結束所有執行個體可能需要數分鐘的時間。
 4. 安裝最新版的 [Azure Cosmos 模擬器](https://aka.ms/cosmosdb-emulator)。
-5. 啟動具有 PartitionCount 旗標的模擬器，方法是設定值 <= 250。 例如： `C:\Program Files\Azure Cosmos DB Emulator> Microsoft.Azure.Cosmos.Emulator.exe /PartitionCount=100` 。
+5. 啟動具有 PartitionCount 旗標的模擬器，方法是設定值 <= 250。 例如：`C:\Program Files\Azure Cosmos DB Emulator> Microsoft.Azure.Cosmos.Emulator.exe /PartitionCount=100` 。
 
 ## <a name="controlling-the-emulator"></a>控制模擬器
 

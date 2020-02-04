@@ -389,6 +389,8 @@
               href: cognitive-search-predefined-skills.md
             - name: 條件式
               href: cognitive-search-skill-conditional.md
+            - name: 自訂實體查閱
+              href: cognitive-search-skill-custom-entity-lookup.md
             - name: 文件擷取
               href: cognitive-search-skill-document-extraction.md
             - name: 實體辨識

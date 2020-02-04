@@ -71,7 +71,7 @@ Azure 認知服務針對透過[Azure 入口網站](https://portal.azure.com)、 
 | 端點類型 | 區域 | 端點 |
 |---------------|--------|----------|
 | 公開 | 全域（翻譯工具文字 & Bing） | `https://api.cognitive.microsoft.com` |
-| | 澳洲東部 | `https://australiaeast.api.cognitive.microsoft.com` |
+| | 澳大利亞東部 | `https://australiaeast.api.cognitive.microsoft.com` |
 | | 巴西南部 | `https://brazilsouth.api.cognitive.microsoft.com` |
 | | 加拿大中部 | `https://canadacentral.api.cognitive.microsoft.com` |
 | | 美國中部 | `https://centralus.api.cognitive.microsoft.com` |
@@ -89,7 +89,7 @@ Azure 認知服務針對透過[Azure 入口網站](https://portal.azure.com)、 
 | | 東南亞 | `https://southeastasia.api.cognitive.microsoft.com` |
 | | 英國南部 | `https://uksouth.api.cognitive.microsoft.com` |
 | | 美國中西部 | `https://westcentralus.api.cognitive.microsoft.com` |
-| | 西歐 | `https://westeurope.api.cognitive.microsoft.com` |
+| | 歐洲西部 | `https://westeurope.api.cognitive.microsoft.com` |
 | | 美國西部 | `https://westus.api.cognitive.microsoft.com` |
 | | 美國西部 2 | `https://westus2.api.cognitive.microsoft.com` |
 | US Gov | 美國政府維吉尼亞州 | `https://virginia.api.cognitive.microsoft.us` |

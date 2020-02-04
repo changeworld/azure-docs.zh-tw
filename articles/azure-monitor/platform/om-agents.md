@@ -47,7 +47,7 @@ ms.locfileid: "75363654"
 * 支援的區域-System Center Operations Manager 連接到 Log Analytics 工作區時，僅支援下列 Azure 區域：
     - 美國中西部
     - 澳大利亞東南部
-    - 西歐
+    - 歐洲西部
     - 美國東部
     - 東南亞
     - 日本東部

@@ -106,7 +106,7 @@ ms.locfileid: "75982267"
 |    USGovTexas            |    美國政府德克薩斯州                           |
 |    usgovvirginia         |    美國政府維吉尼亞州                        |
 |    westcentralus         |    美國中西部                       |
-|    westeurope            |    西歐                           |
+|    westeurope            |    歐洲西部                           |
 |    WestIndia             |    印度西部                               |
 |    westus                |    美國西部                               |
 |    westus2               |    美國西部 2                             |

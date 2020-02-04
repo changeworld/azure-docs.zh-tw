@@ -79,6 +79,8 @@
           href: delete-aadds.md
         - name: 從傳統部署進行遷移 (預覽)
           href: migrate-from-classic-vnet.md
+        - name: 變更 SKU
+          href: change-sku.md
     - name: 保護 Azure AD DS
       items:
         - name: 保護受控網域

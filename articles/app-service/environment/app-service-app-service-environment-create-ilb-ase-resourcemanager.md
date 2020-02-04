@@ -80,7 +80,7 @@ ms.locfileid: "74688782"
 「azuredeploy.parameters.json」 檔案中的參數如下所列︰
 
 * appServiceEnvironmentName︰要設定之 ILB ASE 的名稱。
-* existingAseLocation︰包含 ILB ASE 部署所在的 Azure 區域的文字字串。  例如 "South Central US"。
+* existingAseLocation︰包含 ILB ASE 部署所在的 Azure 區域的文字字串。  例如 "美國中南部"。
 * pfxBlobString：.pfx 檔案的 based64 編碼字串表示法。  使用稍早所示的程式碼片段，您會複製 "exportedcert.pfx.b64" 中包含的字串並貼入做為 pfxBlobString 屬性的值。
 * password：用來保護 .pfx 檔案的密碼。
 * certificateThumbprint︰憑證的指紋。  如果您從 Powershell 擷取此值 (例如先前程式碼片段中的 $certificate.Thumbprint )，您可以使用現況值。  不過，如果您從 Windows 憑證對話方塊複製此值，請記得去除多餘的空格。  CertificateThumbprint 應如下所示︰AF3143EB61D43F6727842115BB7F17BBCECAECAE

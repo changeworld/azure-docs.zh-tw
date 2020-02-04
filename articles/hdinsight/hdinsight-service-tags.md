@@ -57,8 +57,8 @@ ms.locfileid: "75435464"
 | 國家/地區 | 地區 | 服務標記 |
 | ---- | ---- | ---- |
 | 澳洲 | 澳大利亞東部 | AustraliaEast |
-| &nbsp; | 澳洲東南部 | AustraliaSoutheast |
-| &nbsp; | 澳洲中部 | AustraliaCentral |
+| &nbsp; | 澳大利亞東南部 | AustraliaSoutheast |
+| &nbsp; | 澳大利亞中部 | AustraliaCentral |
 | 中國 | 中國東部 2 | ChinaEast2 |
 | &nbsp; | 中國北部 2 | ChinaNorth2 |
 | 美國 | 美國中北部 | NorthCentralUS |
@@ -103,7 +103,7 @@ ms.locfileid: "75435464"
 | &nbsp; | 美國西部 | WestUS |
 | 日本 | 日本東部 | JapanEast |
 | 歐洲 | 北歐 | NorthEurope |
-| &nbsp; | 西歐| WestEurope |
+| &nbsp; | 歐洲西部| WestEurope |
 | 亞洲 | 東亞 | EastAsia |
 | &nbsp; | 東南亞 | SoutheastAsia |
 | 澳洲 | 澳大利亞東部 | AustraliaEast |

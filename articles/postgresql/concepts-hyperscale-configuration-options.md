@@ -44,7 +44,7 @@ ms.locfileid: "74975630"
 * 歐洲
     * 北歐
     * 英國南部
-    * 西歐
+    * 歐洲西部
 
 具有星號（\*）的區域尚未支援[高可用性](concepts-hyperscale-high-availability.md)。
 

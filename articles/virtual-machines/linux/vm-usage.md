@@ -99,14 +99,14 @@ ms.locfileid: "74034225"
 |    uksouth               |    英國南部                              |
 |    UKSouth2              |    英國南部 2                            |
 |    ukwest                |    英國西部                               |
-|    USDoDCentral          |    美國國防部中央                        |
-|    USDoDEast             |    美國 DoD 東部                           |
+|    USDoDCentral          |    US DoD 中部                        |
+|    USDoDEast             |    US DoD 東部                           |
 |    USGovArizona          |    美國政府亞利桑那州                         |
 |    usgoviowa             |    美國政府愛荷華州                            |
 |    USGovTexas            |    美國政府德克薩斯州                           |
 |    usgovvirginia         |    美國政府維吉尼亞州                        |
 |    westcentralus         |    美國中西部                       |
-|    westeurope            |    西歐                           |
+|    westeurope            |    歐洲西部                           |
 |    WestIndia             |    印度西部                               |
 |    westus                |    美國西部                               |
 |    westus2               |    美國西部 2                             |

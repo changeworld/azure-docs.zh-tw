@@ -174,12 +174,28 @@
               href: manage-cluster-vertical-scaling.md
             - name: 檢查叢集健康情況
               href: check-cluster-health.md
+            - name: 新增叢集主體
+              items:
+                - name: 'C#'
+                  href: cluster-principal-csharp.md
+                - name: Python
+                  href: cluster-principal-python.md
+                - name: Azure Resource Manager 範本
+                  href: cluster-principal-resource-manager.md
         - name: 資料庫
           items:
             - name: 追蹤者資料庫
               href: follower.md
             - name: 管理資料庫權限
               href: manage-database-permissions.md
+            - name: 新增資料庫主體
+              items:
+                - name: 'C#'
+                  href: database-principal-csharp.md
+                - name: Python
+                  href: database-principal-python.md
+                - name: Azure Resource Manager 範本
+                  href: database-principal-resource-manager.md
             - name: 原則
               items:
                 - name: 'C#'

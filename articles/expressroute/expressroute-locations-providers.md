@@ -47,7 +47,7 @@ ExpressRoute 位置（有時稱為「對等位置」或「符合我的位置」�
 | **亞洲** | 東亞、東南亞 |香港特別行政區、雅加達、吉隆坡、新加坡、新加坡2、臺北 |
 | **印度** | 印度西部、印度中部、印度南部 |辰內、辰內 2、孟買、孟買 2 |
 | **日本** | 日本西部、日本東部 |大阪、東京 |
-| **大洋洲** | 澳洲東南部、澳洲東部 |奧克蘭，墨爾本，Sydney2，悉尼， | 
+| **大洋洲** | 澳大利亞東南部、澳大利亞東部 |奧克蘭，墨爾本，Sydney2，悉尼， | 
 | **南韓** | 南韓中部、南韓南部 |釜山、首爾|
 | **阿拉伯聯合大公國** | 阿拉伯聯合大公國中部，阿拉伯聯合大公國北部 | 杜拜、Dubai2 |
 | **南非** | 南非西部，南非北部 |開普敦、約翰尼斯堡 |
@@ -77,13 +77,13 @@ ExpressRoute 位置（有時稱為「對等位置」或「符合我的位置」�
 ### <a name="global-commercial-azure"></a>全球商業 Azure
 | **位置** | **位址** | **區域** | **本機 Azure 區域** | **ER Direct** | **服務提供者** |
 | --- | --- | --- | --- | --- | --- |
-| **阿姆斯特丹** | [Equinix AM5](https://www.equinix.com/locations/europe-colocation/netherlands-colocation/amsterdam-data-centers/am5/) | 1 | 西歐 | 10G、100G | Aryaka networks 網路，位於 & T NetBond、英屬電信、Colt、Equinix、euNetworks、GÉANT、InterCloud、Interxion、KPN、IX 觸及、Level 3 通訊、Megaport、NTT 通訊、橙色、Tata 通訊、Telefonica、Telenor、Telia 運輸公司、Verizon、Zayo |
-| **阿姆斯特丹2** | [Interxion AMS8](https://www.interxion.com/Locations/amsterdam/schiphol/) | 1 | 西歐 | 10G、100G | CenturyLink Cloud Connect、Colt、CIX、euNetworks、Interxion、橙色、Vodafone |
+| **阿姆斯特丹** | [Equinix AM5](https://www.equinix.com/locations/europe-colocation/netherlands-colocation/amsterdam-data-centers/am5/) | 1 | 歐洲西部 | 10G、100G | Aryaka networks 網路，位於 & T NetBond、英屬電信、Colt、Equinix、euNetworks、GÉANT、InterCloud、Interxion、KPN、IX 觸及、Level 3 通訊、Megaport、NTT 通訊、橙色、Tata 通訊、Telefonica、Telenor、Telia 運輸公司、Verizon、Zayo |
+| **阿姆斯特丹2** | [Interxion AMS8](https://www.interxion.com/Locations/amsterdam/schiphol/) | 1 | 歐洲西部 | 10G、100G | CenturyLink Cloud Connect、Colt、CIX、euNetworks、Interxion、橙色、Vodafone |
 | **亞特蘭大** | [Equinix AT2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/atlanta-data-centers/at2/) | 1 | n/a | n/a | Equinix、Megaport |
 | **奧克蘭** | [Vocus Group NZ Albany](https://www.vocus.co.nz/business/cloud-data-centres) | 2 | n/a | 10G | Devoli、Kordia、Megaport、Spark NZ、Vocus Group NZ |
 | **斧山** | [LG CNS](https://www.lgcns.com/datacenter) | 2 | 南韓南部 | n/a | LG CNS |
-| **坎培拉** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | 1 | 澳洲中部 | 10G、100G | CDC |
-| **坎培拉2** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | 1 | 澳洲中部 2| 10G、100G | CDC |
+| **坎培拉** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | 1 | 澳大利亞中部 | 10G、100G | CDC |
+| **坎培拉2** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | 1 | 澳大利亞中部 2| 10G、100G | CDC |
 | **開普敦** | [Teraco CT1](https://www.teraco.co.za/data-centre-locations/cape-town/) | 3 | 南非西部 | 10G | Internet Solutions - Cloud Connect、Liquid Telecom、Teraco |
 | **辰內** | Tata Communications | 2 | 印度南部 | 10G | Global CloudXchange (GCX)、SIFY、Tata Communications |
 | **辰內2** | Airtel | 2 | 印度南部 | n/a | Airtel |
@@ -105,7 +105,7 @@ ExpressRoute 位置（有時稱為「對等位置」或「符合我的位置」�
 | **London2** | [Telehouse 北部2](https://www.telehouse.net/data-centres/emea/uk-data-centres/london-data-centres/north-two) | 1 | 英國南部 | 10G、100G | Colt，IX 觸及，Equinix，Megaport，Telehouse-KDDI |
 | **洛杉磯** | [CoreSite LA1](https://www.coresite.com/data-centers/locations/los-angeles/one-wilshire) | 1 | n/a | n/a | CoreSite、Equinix、Megaport、Neutrona Networks、NTT、Transtelco、Zayo |
 | **馬賽** |[Interxion MRS1](https://www.interxion.com/Locations/marseille/) | 1 | 法國南部 | n/a | CIX、GEANT、Interxion、Jaguar Network |
-| **墨爾本** | [NextDC M1](https://www.nextdc.com/data-centres/m1-melbourne-data-centre) | 2 | 澳洲東南部 | 10G、100G | AARNet、Devoli、Equinix、Megaport、NEXTDC、Optus、Telstra Corporation、TPG 電信 |
+| **墨爾本** | [NextDC M1](https://www.nextdc.com/data-centres/m1-melbourne-data-centre) | 2 | 澳大利亞東南部 | 10G、100G | AARNet、Devoli、Equinix、Megaport、NEXTDC、Optus、Telstra Corporation、TPG 電信 |
 | **邁阿密** | [Equinix MI1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/miami-data-centers/mi1/) | 1 | n/a | 10G | C3ntro、Equinix、Megaport、Neutrona Networks |
 | **米蘭** | [IRIDEOS](https://irideos.it/en/data-centers/) | 1 | n/a | 10G | |
 | **蒙特婁** | [Cologix MTL3](https://www.cologix.com/data-centers/montreal/mtl3/) | 1 | n/a | 10G、100G | 鐘加拿大、Cologix、Megaport、Telus、Zayo |

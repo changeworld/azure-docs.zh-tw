@@ -292,7 +292,7 @@ curl -X "POST" "https://login.microsoftonline.com/$TENANTID/oauth2/token" \
 
 * 將 `$SUBSCRIPTIONID` 設定為建立服務主體時所收到的訂用帳戶識別碼。
 * 將 `$ACCESSTOKEN` 設定為上一個步驟中所收到的存取權杖。
-* 將 `DATACENTERLOCATION` 取代為您要在其中建立資源群組和資源的資料中心。 例如 'South Central US'。
+* 將 `DATACENTERLOCATION` 取代為您要在其中建立資源群組和資源的資料中心。 例如 '美國中南部'。
 * 將 `$RESOURCEGROUPNAME` 設定為您想要用於此群組的名稱︰
 
 ```bash

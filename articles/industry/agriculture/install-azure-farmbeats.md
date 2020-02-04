@@ -61,7 +61,7 @@ Azure FarmBeats 的成本是基礎 Azure 服務成本的匯總。 您可以使�
 * 美國西部
 * 美國西部 2
 * 北歐
-* 西歐
+* 歐洲西部
 * 東南亞
 
 ### <a name="time-taken"></a>花費時間

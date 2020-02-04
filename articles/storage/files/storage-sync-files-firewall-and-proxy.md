@@ -107,8 +107,8 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 
 | 雲端  | 地區 | 主要端點 URL | 配對的區域 | 探索 URL |
 |--------|--------|----------------------|---------------|---------------|
-| 公用 |澳大利亞東部 | HTTPs：\//kailani-aue.one.microsoft.com | 澳洲東南部 | HTTPs：\//tm-kailani-aue.one.microsoft.com |
-| 公用 |澳洲東南部 | HTTPs：\//kailani-aus.one.microsoft.com | 澳大利亞東部 | HTTPs：\//tm-kailani-aus.one.microsoft.com |
+| 公用 |澳大利亞東部 | HTTPs：\//kailani-aue.one.microsoft.com | 澳大利亞東南部 | HTTPs：\//tm-kailani-aue.one.microsoft.com |
+| 公用 |澳大利亞東南部 | HTTPs：\//kailani-aus.one.microsoft.com | 澳大利亞東部 | HTTPs：\//tm-kailani-aus.one.microsoft.com |
 | 公用 | 巴西南部 | HTTPs：\//brazilsouth01.afs.azure.net | 美國中南部 | HTTPs：\//tm-brazilsouth01.afs.azure.net |
 | 公用 | 加拿大中部 | HTTPs：\//kailani-cac.one.microsoft.com | 加拿大東部 | HTTPs：\//tm-kailani-cac.one.microsoft.com |
 | 公用 | 加拿大東部 | HTTPs：\//kailani-cae.one.microsoft.com | 加拿大中部 | HTTPs：\//tm-kailani.cae.one.microsoft.com |
@@ -122,14 +122,14 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 | 公用 | 南韓中部 | HTTPs：\//koreacentral01.afs.azure.net/ | 南韓南部 | HTTPs：\//tm-koreacentral01.afs.azure.net/ |
 | 公用 | 南韓南部 | HTTPs：\//koreasouth01.afs.azure.net/ | 南韓中部 | HTTPs：\//tm-koreasouth01.afs.azure.net/ |
 | 公用 | 美國中北部 | https:\//northcentralus01.afs.azure.net | 美國中南部 | https:\//tm-northcentralus01.afs.azure.net |
-| 公用 | 北歐 | HTTPs：\//kailani7.one.microsoft.com | 西歐 | HTTPs：\//tm-kailani7.one.microsoft.com |
+| 公用 | 北歐 | HTTPs：\//kailani7.one.microsoft.com | 歐洲西部 | HTTPs：\//tm-kailani7.one.microsoft.com |
 | 公用 | 美國中南部 | https:\//southcentralus01.afs.azure.net | 美國中北部 | https:\//tm-southcentralus01.afs.azure.net |
 | 公用 | 印度南部 | HTTPs：\//kailani-sin.one.microsoft.com | 印度中部 | HTTPs：\//tm-kailani-sin.one.microsoft.com |
 | 公用 | 東南亞 | HTTPs：\//kailani10.one.microsoft.com | 東亞 | HTTPs：\//tm-kailani10.one.microsoft.com |
 | 公用 | 英國南部 | HTTPs：\//kailani-uks.one.microsoft.com | 英國西部 | HTTPs：\//tm-kailani-uks.one.microsoft.com |
 | 公用 | 英國西部 | HTTPs：\//kailani-ukw.one.microsoft.com | 英國南部 | HTTPs：\//tm-kailani-ukw.one.microsoft.com |
 | 公用 | 美國中西部 | https:\//westcentralus01.afs.azure.net | 美國西部 2 | HTTPs：\//tm-westcentralus01.afs.azure.net |
-| 公用 | 西歐 | HTTPs：\//kailani6.one.microsoft.com | 北歐 | HTTPs：\//tm-kailani6.one.microsoft.com |
+| 公用 | 歐洲西部 | HTTPs：\//kailani6.one.microsoft.com | 北歐 | HTTPs：\//tm-kailani6.one.microsoft.com |
 | 公用 | 美國西部 | HTTPs：\//kailani.one.microsoft.com | 美國東部 | HTTPs：\//tm-kailani.one.microsoft.com |
 | 公用 | 美國西部 2 | HTTPs：\//westus201.afs.azure.net | 美國中西部 | HTTPs：\//tm-westus201.afs.azure.net |
 | 政府機關 | US Gov 亞利桑那州 | HTTPs：\//usgovarizona01.afs.azure.us | US Gov 德克薩斯州 | HTTPs：\//tm-usgovarizona01.afs.azure.us |
