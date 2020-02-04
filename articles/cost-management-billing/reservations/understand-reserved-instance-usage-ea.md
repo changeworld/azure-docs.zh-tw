@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 06/30/2019
 ms.author: banders
 ms.openlocfilehash: af0769ae4e242c86a56ff63d5f7c9ecbe9382b48
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995412"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>取得 Enterprise 合約保留成本和使用量
@@ -33,7 +33,7 @@ Marketplace 費用會合併在使用量資料中。 您可以從單一資料來�
 
 ## <a name="reservation-charges-in-azure-usage-data"></a>Azure 使用量資料中的保留費用
 
-資料分成兩個不同的資料集：_實際成本_和_分攤成本_。 這兩個資料集有何不同：
+資料分成兩個不同的資料集：「實際成本」  和「分攤成本」  。 這兩個資料集有何不同：
 
 **實際成本** - 提供資料來調節您的每月帳單。 此資料具有保留購買成本和保留套用詳細資料。 透過這項資料，您可以知道哪個訂用帳戶或資源群組或資源在特定一天內收到保留折扣。 收到保留折扣之使用量的 EffectivePrice 為零。
 
@@ -65,9 +65,9 @@ Azure 使用量資料中的其他可用資訊已變更：
 
 您可以呼叫[使用量詳細資料 API](/rest/api/consumption/usagedetails/list)來取得新資料。 如需術語的詳細資訊，請參閱[使用量詞彙](../understand/understand-usage.md)。 呼叫端應該是使用 [EA 入口網站](https://ea.azure.com)之 Enterprise 合約的企業系統管理員。 唯讀企業系統管理員也可以取得資料。
 
-請注意，這項資料不適[用於企業客戶的報告 api-使用量詳細](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail)資料。
+請注意，在[適用於 Enterprise 客戶的報告 API - 使用量詳細資料](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail)中無法取得此資料。
 
-以下是使用狀況詳細資料 API 的範例呼叫：
+以下是對使用量詳細資料 API 的呼叫範例：
 
 ```
 https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-05-01&amp;$filter={filter}
@@ -89,15 +89,15 @@ https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enroll
 
 ## <a name="download-the-usage-csv-file-with-new-data"></a>下載含有新資料的使用量 CSV 檔案
 
-如果您是 EA 管理員，您可以從 Azure 入口網站下載包含新使用量資料的 CSV 檔案。 此資料無法從 EA 入口網站（ea.azure.com）取得，您必須從 Azure 入口網站（portal.azure.com）下載使用量檔案，才能看到新的資料。
+如果您是 EA 管理員，您可以從 Azure 入口網站下載包含新使用量資料的 CSV 檔案。 這項資料無法從 EA 入口網站 (ea.azure.com) 取得，您必須從 Azure 入口網站 (portal.azure.com) 下載使用量檔案，才能看到新的資料。
 
 在 Azure 入口網站中，瀏覽至[成本管理 + 帳單](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/BillingAccounts)。
 
 1. 選取計費帳戶。
-2. 按一下 [使用量 + 費用]。
-3. 按一下 [下載]。  
+2. 按一下 [使用量 + 費用]  。
+3. 按一下 [下載]  。  
 ![顯示如何在 Azure 入口網站中下載 CSV 使用量資料檔案的範例](./media/understand-reserved-instance-usage-ea/portal-download-csv.png)
-4. 在 [下載使用量 +費用] 的 [使用量詳細資料第 2 版] 底下，選取 [所有費用 (使用量和購買)]，然後按 [下載]。 針對 [分攤費用 (使用量和購買)] 重複執行。
+4. 在 [下載使用量 +費用]  的 [使用量詳細資料第 2 版]  底下，選取 [所有費用 (使用量和購買)]  ，然後按 [下載]。 針對 [分攤費用 (使用量和購買)]  重複執行。
 
 您下載的 CSV 檔案包含實際成本和分攤成本。
 
@@ -111,7 +111,7 @@ https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enroll
 
 ### <a name="get-underutilized-reservation-quantity-and-costs"></a>取得未充分利用的保留數量和成本
 
-取得分攤成本資料，並篩選_ChargeType_ _= UnusedReservation_。 您可取得每日未使用的保留數量和成本。 您可以分別使用 _ReservationId_ 和 _ProductOrderId_ 欄位來篩選保留或保留訂單的資料。 如果保留已 100% 利用，則記錄的數量為 0。
+取得分攤成本資料，並對 _ChargeType_ _= UnusedReservation_ 進行篩選。 您可取得每日未使用的保留數量和成本。 您可以分別使用 _ReservationId_ 和 _ProductOrderId_ 欄位來篩選保留或保留訂單的資料。 如果保留已 100% 利用，則記錄的數量為 0。
 
 ### <a name="amortize-reservation-costs"></a>攤銷保留成本
 
@@ -123,8 +123,8 @@ https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enroll
 
 - 資源 (例如 VM)
 - 資源群組
-- 標籤
-- 訂閱
+- Tags
+- 訂用帳戶
 
 ### <a name="get-the-blended-rate-for-chargeback"></a>取得退款的混合費率
 
@@ -144,13 +144,13 @@ https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enroll
 
 ## <a name="reservation-purchases-and-amortization-in-cost-analysis"></a>成本分析中的保留購買和分攤
 
-在[成本分析](https://aka.ms/costanalysis)中可取得保留成本。 根據預設，成本分析會顯示 [實際成本]，這就是您帳單上顯示成本的方式。 若要檢視已細分並與使用權益的資源相關聯的保留購買，請切換為 [分攤成本]：
+在[成本分析](https://aka.ms/costanalysis)中可取得保留成本。 根據預設，成本分析會顯示 [實際成本]  ，這就是您帳單上顯示成本的方式。 若要檢視已細分並與使用權益的資源相關聯的保留購買，請切換為 [分攤成本]  ：
 
 ![顯示在成本分析中何處選取分攤成本的範例](./media/understand-reserved-instance-usage-ea/portal-cost-analysis-amortized-view.png)
 
-依費用類型分組，以查看使用量、購買和退費的細目；或依保留分組以取得保留和隨選成本的細目。 請記住，當您查看實際成本時，您會看到的唯一保留成本是購買，但成本會配置給在查看分攤成本時使用權益的個別資源。 在查看分攤成本時，您也會看到新的 **UnusedReservation** 費用類型。
+依費用類型分組，以查看使用量、購買和退費的細目；或依保留分組以取得保留和隨選成本的細目。 請記住，當您查看實際成本時，您會看到的唯一保留成本就是購買，但成本將會分攤給在查看分攤成本時使用權益的個別資源。 在查看分攤成本時，您也會看到新的 **UnusedReservation** 費用類型。
 
-## <a name="need-help-contact-us"></a>需要協助嗎？ 連絡我們。
+## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡。
 
 如果您有問題或需要協助，請[建立支援要求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 

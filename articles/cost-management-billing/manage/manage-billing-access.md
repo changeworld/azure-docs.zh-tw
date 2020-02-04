@@ -17,10 +17,10 @@ ms.date: 12/02/2018
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 9f78675878bd7a36e27ec1bdce0f3e38540d6039
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991434"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>管理對 Azure 帳單資訊的存取
@@ -57,19 +57,19 @@ ms.locfileid: "75991434"
 
 1. 以帳戶管理員身分登入 [Azure 入口網站](https://portal.azure.com/)。
 
-1. 針對 [成本管理 + 帳單] 進行搜尋。
+1. 針對 [成本管理 + 帳單]  進行搜尋。
 
     ![顯示 Azure 入口網站搜尋的螢幕擷取畫面](./media/manage-billing-access/billing-search-cost-management-billing.png)
 
-1. 從左側窗格中選取 [訂用帳戶]。 視存取權而定，您可能需要選取計費範圍，然後選取 [訂用帳戶]。
+1. 從左側窗格中選取 [訂用帳戶]  。 視存取權而定，您可能需要選取計費範圍，然後選取 [訂用帳戶]  。
 
     ![顯示選取訂用帳戶的螢幕擷取畫面](./media/manage-billing-access/billing-select-subscriptions.png)
 
-1. 選取 [發票]，然後選取 [存取發票]。
+1. 選取 [發票]  ，然後選取 [存取發票]  。
 
     ![螢幕擷取畫面顯示如何委派存取發票](./media/manage-billing-access/aa-optin01.png)
 
-1. 選取 [開啟]，然後儲存。
+1. 選取 [開啟]  ，然後儲存。
 
     ![螢幕擷取畫面顯示委派存取發票的開關](./media/manage-billing-access/aa-optinallow01.png)
 
@@ -83,28 +83,28 @@ ms.locfileid: "75991434"
 
 1. 以帳戶管理員身分登入 [Azure 入口網站](https://portal.azure.com/)。
 
-1. 針對 [成本管理 + 帳單] 進行搜尋。
+1. 針對 [成本管理 + 帳單]  進行搜尋。
 
     ![顯示 Azure 入口網站搜尋的螢幕擷取畫面](./media/manage-billing-access/billing-search-cost-management-billing.png)
 
-1. 從左側窗格中選取 [訂用帳戶]。 視存取權而定，您可能需要選取計費範圍，然後選取 [訂用帳戶]。
+1. 從左側窗格中選取 [訂用帳戶]  。 視存取權而定，您可能需要選取計費範圍，然後選取 [訂用帳戶]  。
 
     ![顯示選取訂用帳戶的螢幕擷取畫面](./media/manage-billing-access/billing-select-subscriptions.png)
 
-1. 選取 [存取控制 (IAM)]。
-1. 從頁面頂端選取 [新增]。
+1. 選取 [存取控制 (IAM)]  。
+1. 從頁面頂端選取 [新增]  。
 
     ![顯示按一下新增角色指派的螢幕擷取畫面](./media/manage-billing-access/billing-click-add-role-assignment.png)
 
-1. 在 [角色] 下拉式清單中，選擇 [帳單讀者]。
-1. 在 [選取] 文字方塊中，鍵入您要新增的使用者名稱或電子郵件。
+1. 在 [角色]  下拉式清單中，選擇 [帳單讀者]  。
+1. 在 [選取]  文字方塊中，鍵入您要新增的使用者名稱或電子郵件。
 1. 選取使用者。
-1. 選取 [儲存]。
+1. 選取 [儲存]  。
     ![顯示按一下新增角色指派的螢幕擷取畫面](./media/manage-billing-access/billing-save-role-assignment.png)
 
 1. 在幾分鐘之後，即會針對訂用帳戶將「帳單讀者」角色指派給使用者。
 
-** 如果您是 EA 客戶，帳戶擁有者或部門系統管理員可以將「帳單讀者」角色指派給小組成員。 但若要讓帳單讀者檢視部門或帳戶的帳單資訊，企業系統管理員必須在企業版入口網站中啟用 [AO 檢視費用] 或 [DA 檢視費用] 原則。
+** 如果您是 EA 客戶，帳戶擁有者或部門系統管理員可以將「帳單讀者」角色指派給小組成員。 但若要讓帳單讀者檢視部門或帳戶的帳單資訊，企業系統管理員必須在企業版入口網站中啟用 [AO 檢視費用]  或 [DA 檢視費用]  原則。
 
 ## <a name="check-the-type-of-your-billing-account"></a>檢查您的計費帳戶類型
 [!INCLUDE [billing-check-account-type](../../../includes/billing-check-account-type.md)]
@@ -114,6 +114,6 @@ ms.locfileid: "75991434"
 - 具備其他角色 (例如「擁有者」和「參與者」) 的使用者不僅可存取帳單資訊，還可存取 Azure 服務。 若要管理這些角色，請參閱[使用 RBAC 和 Azure 入口網站來管理存取權](../../role-based-access-control/role-assignments-portal.md)。
 - 如需角色的詳細資訊，請參閱 [Azure 資源的內建角色](../../role-based-access-control/built-in-roles.md)。
 
-## <a name="need-help-contact-us"></a>需要協助嗎？ 連絡我們。
+## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡。
 
 如有問題或需要協助，請[建立支援要求](https://go.microsoft.com/fwlink/?linkid=2083458)。

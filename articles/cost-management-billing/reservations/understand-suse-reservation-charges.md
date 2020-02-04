@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 09/30/2019
 ms.author: banders
 ms.openlocfilehash: f3d0c123fcbd16f3a4125ad74f0502863b6ce6d1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995256"
 ---
 # <a name="azure-software-plan-discount"></a>Azure 軟體方案折扣
@@ -29,9 +29,9 @@ SUSE 和 RedHat 的 Azure 軟體方案是已部署的 VM 所適用的保留。 �
 
 ## <a name="how-reservation-discount-is-applied"></a>保留折扣的套用方式
 
-保留折扣採「不用則作廢」的原則。 因此，如果您有任何一小時沒有相符的資源，就會失去該小時的保留數量。 您無法遞轉未使用的保留時數。
+保留折扣採「不用則作廢」  的原則。 因此，如果您有任何一小時沒有相符的資源，就會失去該小時的保留數量。 您無法遞轉未使用的保留時數。
 
-當您關閉資源時，保留折扣會自動套用至指定範圍中另一個相符的資源。 如果在指定的範圍內找不到相符的資源，則會「失去」保留時數。
+當您關閉資源時，保留折扣會自動套用至指定範圍中另一個相符的資源。 如果在指定的範圍內找不到相符的資源，則會「失去」  保留時數。
 
 ## <a name="review-redhat-vm-usage-before-you-buy"></a>購買前請先檢閱 RedHat VM 使用量
 
@@ -143,7 +143,7 @@ Azure 入口網站市集名稱：
 |SLES 3-4 個核心 vCPU |0c3ebb4c-db7d-4125-b45a-0534764d4bda|1.92308|D4s_v3|
 |SLES 5 個以上 vCPU |7b349b65-d906-42e5-833f-b2af38513468|2.30769| D8s_v3|
 
-## <a name="need-help-contact-us"></a>需要協助嗎？ 連絡我們
+## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡
 
 如有問題或需要協助，請[建立支援要求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 

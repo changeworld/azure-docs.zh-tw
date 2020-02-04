@@ -1,5 +1,5 @@
 ---
-title: Microsoft 客戶合約的帳單角色-Azure
+title: Microsoft 客戶合約的計費角色 - Azure
 description: 了解 Azure 中可對 Microsoft 客戶合約的計費帳戶進行處理的計費角色。
 author: amberbhargava
 manager: amberbhargava
@@ -11,10 +11,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: eaec828abe83164d18796cfb2e795a363353fab4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75987937"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>了解 Azure 中的 Microsoft 客戶合約管理角色
@@ -27,7 +27,7 @@ ms.locfileid: "75987937"
 
 下表說明您用來管理計費帳戶、帳單設定檔和發票區段的計費角色。
 
-|角色|說明|
+|角色|描述|
 |---|---|
 |計費帳戶擁有者|管理計費帳戶的所有項目|
 |計費帳戶參與者|管理計費帳戶上除了權限以外的所有項目|
@@ -182,17 +182,17 @@ ms.locfileid: "75987937"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 搜尋 [成本管理 + 帳單]。
+2. 搜尋 [成本管理 + 帳單]  。
 
    ![顯示 Azure 入口網站搜尋的螢幕擷取畫面](./media/understand-mca-roles/billing-search-cost-management-billing.png)
 
-3. 在您想要授與存取權的範圍內 (例如計費帳戶、帳單設定檔或發票區段)，選取 [存取控制 (IAM)]。
+3. 在您想要授與存取權的範圍內 (例如計費帳戶、帳單設定檔或發票區段)，選取 [存取控制 (IAM)]  。
 
 4. [存取控制 (IAM)] 頁面會列出指派給該範圍內每個角色的使用者和群組。
 
    ![顯示計費帳戶管理員清單的螢幕擷取畫面](./media/understand-mca-roles/billing-list-admins.png)
 
-5. 若要為使用者授與存取權，請從頁面頂端選取 [新增]。 在 [角色] 下拉式清單中，選取角色。 輸入您要為其授與存取權之使用者的電子郵件地址。 選取 [儲存] 以指派角色。
+5. 若要為使用者授與存取權，請從頁面頂端選取 [新增]  。 在 [角色] 下拉式清單中，選取角色。 輸入您要為其授與存取權之使用者的電子郵件地址。 選取 [儲存]  以指派角色。
 
    ![顯示將管理員新增至計費帳戶的螢幕擷取畫面](./media/understand-mca-roles/billing-add-admin.png)
 
@@ -203,7 +203,7 @@ ms.locfileid: "75987937"
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>檢查 Microsoft 客戶合約的存取
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-support"></a>需要協助嗎？ 連絡客戶支援
+## <a name="need-help-contact-support"></a>需要協助嗎？ 請連絡支援人員
 如果需要協助，請[連絡支援人員](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解決您的問題。
 
 ## <a name="next-steps"></a>後續步驟

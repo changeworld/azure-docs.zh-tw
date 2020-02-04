@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: banders
 ms.openlocfilehash: be5c8cac1b0b7f926f97206ec27bf6fbc9914c91
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75989913"
 ---
 # <a name="reactivate-a-disabled-azure-subscription"></a>重新啟用已停用的 Azure 訂用帳戶
@@ -51,13 +51,13 @@ ms.locfileid: "75989913"
 
 1. 登入[帳戶中心](https://account.windowsazure.com/Subscriptions)。
 1. 選取已取消的訂用帳戶。
-1. 按一下 [重新啟動]。
+1. 按一下 [重新啟動]  。
 
     ![顯示右窗格中重新啟用連結的螢幕擷取畫面](./media/subscription-disabled/reactivate-sub.png)
 
 對於其他訂用帳戶類型，請[連絡支援人員](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以將您的訂用帳戶重新啟動。
 
-## <a name="need-help-contact-us"></a>需要協助嗎？ 連絡我們。
+## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡。
 
 如有問題或需要協助，請[建立支援要求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 

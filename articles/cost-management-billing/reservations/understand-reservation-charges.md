@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 09/30/2019
 ms.author: banders
 ms.openlocfilehash: f7382fc81bbb7e0f3ac61b19c1efa1e7de3e9ed7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995464"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-sql-databases"></a>保留折扣套用至 Azure SQL Database 的方式
@@ -27,13 +27,13 @@ ms.locfileid: "75995464"
 
 ## <a name="how-reservation-discount-is-applied"></a>保留折扣的套用方式
 
-保留折扣採「不用則作廢」的原則。 因此，如果您有任何一小時沒有相符的資源，就會失去該小時的保留數量。 您無法遞轉未使用的保留時數。
+保留折扣採「不用則作廢」  的原則。 因此，如果您有任何一小時沒有相符的資源，就會失去該小時的保留數量。 您無法遞轉未使用的保留時數。
 
-當您關閉資源時，保留折扣會自動套用至指定範圍中另一個相符的資源。 如果在指定的範圍內找不到相符的資源，則會「失去」保留時數。
+當您關閉資源時，保留折扣會自動套用至指定範圍中另一個相符的資源。 如果在指定的範圍內找不到相符的資源，則會「失去」  保留時數。
 
 ## <a name="discount-applied-to-sql-databases"></a>適用於 SQL Database 的折扣
 
- SQL Database 保留容量折扣會套用至執行中的 SQL Database (以小時計算)。 您所購買的保留會與對應到執行中 SQL Database 所發出的計算使用量進行比對。 若 SQL Database 執行時間不滿一小時，保留會自動套用至其他符合保留屬性的 SQL Database。 此折扣可以同時套用至各個執行中的 SQL Database。 如果沒有既符合保留屬性又執行滿一個小時的 SQL Database，您就無法獲得該小時的完整保留折扣權益。
+ SQL Database 保留容量折扣會套用至執行中的 SQL Database (以小時計算)。 您所購買的保留會與對應到執行中 SQL Database 所發出的計算使用量進行比對。 對於未執行滿一個小時的 SQL Database，此保留會自動套用至其他與保留屬性相符的 SQL Database。 此折扣可以同時套用至各個執行中的 SQL Database。 如果沒有既符合保留屬性又執行滿一個小時的 SQL Database，您就無法獲得該小時的完整保留折扣權益。
 
 下列範例說明根據所購買的核心數目，以及在您執行時，SQL Database 保留容量折扣的套用方式。
 
@@ -47,7 +47,7 @@ ms.locfileid: "75995464"
 
 若要在計費使用量報告中了解及檢視 Azure Reservations 的應用，請參閱[了解 Azure 保留使用量](understand-reserved-instance-usage-ea.md)。
 
-## <a name="need-help-contact-us"></a>需要協助嗎？ 連絡我們
+## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡
 
 如有問題或需要協助，請[建立支援要求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 

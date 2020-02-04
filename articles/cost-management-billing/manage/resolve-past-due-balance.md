@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: banders
 ms.openlocfilehash: 7216af00413b1f8022957ac134f67a5c27b6cc78
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75987898"
 ---
 # <a name="resolve-past-due-balance-for-your-azure-subscription"></a>解決 Azure 訂用帳戶的逾期未付帳款
@@ -32,14 +32,14 @@ ms.locfileid: "75987898"
 ## <a name="resolve-past-due-balance-in-the-azure-portal"></a>在 Azure 入口網站中解決逾期餘額
 
 1. 以帳戶管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
-1. 搜尋 [成本管理 + 帳單]。
-1. 在 [概觀] 頁面中，您會看到訂用帳戶清單。 如果您的訂用帳戶狀態為逾期，請按一下 [結算餘額] 連結。
+1. 搜尋 [成本管理 + 帳單]  。
+1. 在 [概觀] 頁面中，您會看到訂用帳戶清單。 如果您的訂用帳戶狀態為逾期，請按一下 [結算餘額]  連結。
     ![顯示結算餘額連結的螢幕擷取畫面](./media/resolve-past-due-balance/settle-balance-entry-point.png)
 1. 未付總餘額會使用失敗的付款方式反映所有 Microsoft 服務的未付費用。
 1. 選取付款方式來支付餘額。 針對目前使用失敗付款方式的所有訂用帳戶，此付款方式會成為其有效付款方式。
     ![顯示 [選取付款方式] 連結的螢幕擷取畫面](./media/resolve-past-due-balance/settle-balance-screen.png)
 1. 如果選取的付款方式也有 Microsoft 服務的未付費用，這會反映於未付的總餘額。 您也必須支付那些未付費用。
-1. 按一下 [付款]。
+1. 按一下 [付款]  。
 
 ## <a name="troubleshoot-declined-credit-card"></a>針對遭拒的信用卡進行疑難排解
 
@@ -59,6 +59,6 @@ ms.locfileid: "75987898"
 如果您已處理款項，但您的訂用帳戶狀態仍為停用，請連絡 [Azure 支援服務](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
 
-## <a name="need-help-contact-us"></a>需要協助嗎？ 連絡我們。
+## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡。
 
 如有問題或需要協助，請[建立支援要求](https://go.microsoft.com/fwlink/?linkid=2083458)。

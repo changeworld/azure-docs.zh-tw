@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/01/2019
 ms.author: banders
 ms.openlocfilehash: cf9bb7f3b9661d5957ad569fce7112fe16659761
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995945"
 ---
 # <a name="purchase-reservations-with-monthly-payments"></a>購買或每月付款的 Azure 保留
@@ -34,17 +34,17 @@ ms.locfileid: "75995945"
 
 ![顯示保留購買的範例](./media/monthly-payments-reservations/purchase-reservation.png)
 
-在購買保留時，您可以檢視付款排程。 按一下 [檢視完整付款排程]。
+在購買保留時，您可以檢視付款排程。 按一下 [檢視完整付款排程]  。
 
 ![顯示保留付款排程的範例](./media/monthly-payments-reservations/prepurchase-schedule.png)
 
-若要在購買後檢視付款排程，請選取保留，並按一下 [保留訂單識別碼]，然後按一下 [付款] 索引標籤。
+若要在購買後檢視付款排程，請選取保留，並按一下 [保留訂單識別碼]  ，然後按一下 [付款]  索引標籤。
 
 ## <a name="view-payments-made"></a>檢視已支付的款項
 
 您可以使用 API、使用量資料和成本分析來檢視已支付的款項。 針對每月付款的保留，使用量資料和保留費用 API 中的頻率值會顯示為**定期**。 針對預先付款的保留，此值會顯示為**一次性**。
 
-成本分析會在預設檢視中顯示每月的購買。 在 [費用類型] 上套用 [購買]，以及在 [頻率] 上套用 [定期] 來進行篩選，即可查看所有購買。 若只要檢視保留，請篩選 [保留]。
+成本分析會在預設檢視中顯示每月的購買。 在 [費用類型]  上套用 [購買]  ，以及在 [頻率]  上套用 [定期]  來進行篩選，即可查看所有購買。 若只要檢視保留，請篩選 [保留]  。
 
 ![在成本分析中顯示保留購買費用的範例](./media/monthly-payments-reservations/cost-analysis.png)
 

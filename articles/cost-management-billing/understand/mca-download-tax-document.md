@@ -13,10 +13,10 @@ ms.date: 10/01/2019
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: ad2388e0e24b76d38a53ff2439deb6dccc8277d5
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75990953"
 ---
 # <a name="view-and-download-tax-documents-for-your-azure-invoice"></a>檢視及下載 Azure 發票的稅務文件
@@ -26,12 +26,12 @@ ms.locfileid: "75990953"
 ## <a name="view-and-download-tax-documents"></a>檢視及下載稅務文件
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 搜尋 [成本管理 + 帳單]。
+1. 搜尋 [成本管理 + 帳單]  。
 1. 視存取權之不同，您可能必須選取計費帳戶或帳單設定檔。
-1. 在左側功能表中，選取 [計費] 之下的 [發票]。
+1. 在左側功能表中，選取 [計費]  之下的 [發票]  。
 1. 在發票方格中，尋找與您要下載的稅務文件相對應的發票資料列。
 1. 按一下下載圖示或資料列結尾處的省略符號 (`...`)。
-7. 在下載功能表中選取 [稅務文件]。 每張發票可能會顯示多份稅務文件，視帳單設定檔的國家/地區而定。
+7. 在下載功能表中選取 [稅務文件]  。 每張發票可能會顯示多份稅務文件，視帳單設定檔的國家/地區而定。
 
 ## <a name="check-billing-account-type"></a>檢查計費帳戶類型
 [!INCLUDE [billing-check-account-type](../../../includes/billing-check-account-type.md)]

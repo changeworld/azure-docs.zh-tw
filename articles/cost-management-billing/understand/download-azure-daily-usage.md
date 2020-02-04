@@ -9,10 +9,10 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 01/03/2020
 ms.openlocfilehash: 02d446d1b70b64092501804e793b400e983a4d80
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995126"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>檢視及下載您的 Azure 使用量和費用
@@ -24,44 +24,44 @@ ms.locfileid: "75995126"
 ## <a name="download-usage-from-the-azure-portal-csv"></a>從 Azure 入口網站下載使用量 (.csv)
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 搜尋 [成本管理 + 帳單]。
+1. 搜尋 [成本管理 + 帳單]  。
 
     ![顯示 Azure 入口網站搜尋的螢幕擷取畫面](./media/download-azure-daily-usage/portal-cm-billing-search.png)
 
 1. 視存取權之不同，您可能必須選取計費帳戶或帳單設定檔。
-1. 在左側功能表中，選取 [計費] 之下的 [發票]。
+1. 在左側功能表中，選取 [計費]  之下的 [發票]  。
 1. 在發票方格中，尋找對應至所要下載使用量的計費週期資料列。
-1. 選取右側的 [**下載] 圖示**或省略號（`...`）。
-1. [下載] 窗格會在右側開啟。 從 [**使用量詳細資料**] 區段中選取 [**下載**]。
+1. 選取**下載圖示**或右側的省略符號 (`...`)。
+1. [下載] 窗格會在右側開啟。 從 [使用量詳細資料]  區段中，選取 [下載]  。
 
 ## <a name="download-usage-for-ea-customers"></a>下載 EA 客戶的使用量
 
 若要檢視及下載 EA 客戶的使用量資料，您必須是企業系統管理員、帳戶擁有者或部門系統管理員，並且已啟用檢視費用原則。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 搜尋 [成本管理 + 帳單]。
+1. 搜尋 [成本管理 + 帳單]  。
 
     ![顯示 Azure 入口網站搜尋的螢幕擷取畫面](./media/download-azure-daily-usage/portal-cm-billing-search.png)
 
-1. 選取 [使用量 + 費用]。
-1. 針對您想要下載的月份，選取 [下載]。
+1. 選取 [使用量 + 費用]  。
+1. 針對您想要下載的月份，選取 [下載]  。
 
 ## <a name="download-usage-for-pending-charges"></a>下載待決費用的使用量
 
 如果您有 Microsoft 客戶合約，您可以下載目前計費週期的當月使用量。 這些使用量費用尚未計費。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 搜尋 [成本管理 + 帳單]。
+2. 搜尋 [成本管理 + 帳單]  。
 3. 選取帳單設定檔。 視存取權之不同，您可能必須先選取計費帳戶。
-4. 在 [概觀] 區域中，尋找位於當月費用下方的下載連結。
-5. 選取 [Azure 使用量和費用]。
+4. 在 [概觀]  區域中，尋找位於當月費用下方的下載連結。
+5. 選取 [Azure 使用量和費用]  。
 
     ![顯示從概觀下載的螢幕擷取畫面](./media/download-azure-daily-usage/open-usage01.png)
 
 ## <a name="check-your-billing-account-type"></a>檢查您的計費帳戶類型
 [!INCLUDE [billing-check-account-type](../../../includes/billing-check-account-type.md)]
 
-## <a name="need-help-contact-us"></a>需要協助嗎？ 連絡我們。
+## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡。
 
 如果您有問題或需要協助，請[建立支援要求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 

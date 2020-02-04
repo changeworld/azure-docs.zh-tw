@@ -14,10 +14,10 @@ ms.date: 10/01/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3e1e99313454c8352b96b8f11ec35f482521f7b5
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75989770"
 ---
 # <a name="upgrade-your-azure-free-account-or-azure-for-students-starter-account"></a>將您的 Azure 免費帳戶或 Azure 學生入門版帳戶升級
@@ -30,7 +30,7 @@ ms.locfileid: "75989770"
 
 ## <a name="upgrade-your-azure-free-account"></a>將您的 Azure 免費帳戶升級
 
-當您將 Azure 免費帳戶升級時，您可剩餘的點數保留整整 30 天 (從註冊時算起)。 例如：如果您在11月註冊，並在11月升級，則任何未使用的信用額度都將可供使用，直到11月30日為止。 您也可以在升級後的 12 個月內存取免費服務。
+當您將 Azure 免費帳戶升級時，您可剩餘的點數保留整整 30 天 (從註冊時算起)。 例如：如果您在 11 月 1 日註冊並於 11 月 5 日升級，則任何未使用的點數都可使用到 11 月 30 日為止。 您也可以在升級後的 12 個月內存取免費服務。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)
 1. 尋找**訂用帳戶**。
@@ -38,7 +38,7 @@ ms.locfileid: "75989770"
     ![顯示搜尋的螢幕擷取畫面](./media/upgrade-azure-subscription/search-subscriptions-ibiza.png)
 
 1. 選取您註冊 Azure 免費帳戶時建立的訂用帳戶。
-1. 在訂用帳戶概觀中，按一下命令列中的 [升級訂用帳戶] 按鈕。 如果您沒有看到 [升級訂用帳戶] 按鈕，請按一下頁面頂端的 [升級] 橫幅。
+1. 在訂用帳戶概觀中，按一下命令列中的 [升級訂用帳戶]  按鈕。 如果您沒有看到 [升級訂用帳戶] 按鈕，請按一下頁面頂端的 [升級] 橫幅。
 
     ![顯示升級按鈕的螢幕擷取畫面](./media/upgrade-azure-subscription/free-upgrade-button.png)
 
@@ -52,7 +52,7 @@ ms.locfileid: "75989770"
 
 1. 為您的訂用帳戶選擇支援方案。 若要深入了解支援方案，請參閱 [Azure 支援方案](https://azure.microsoft.com/us/support/plans/)。
 
-1. 按一下 [升級]。
+1. 按一下 [升級]  。
 
 <a id="student"></a>
 
@@ -68,7 +68,7 @@ ms.locfileid: "75989770"
     ![顯示搜尋的螢幕擷取畫面](./media/upgrade-azure-subscription/search-subscriptions-ibiza.png)
 
 1. 選取當您註冊 Azure 學生入門版帳戶時所建立的訂用帳戶。
-1. 在訂用帳戶概觀中，按一下命令列中的 [升級訂用帳戶]。
+1. 在訂用帳戶概觀中，按一下命令列中的 [升級訂用帳戶]  。
 
     ![顯示學生版升級按鈕的螢幕擷取畫面](./media/upgrade-azure-subscription/student-upgrade-ibiza.png)
 
@@ -78,7 +78,7 @@ ms.locfileid: "75989770"
 1. 您可能需要輸入電話號碼來驗證您的身分識別。
 1. 輸入您訂用帳戶的名稱。
 1. 為您的訂用帳戶選擇支援方案。 若要深入了解支援方案，請參閱 [Azure 支援方案](https://azure.microsoft.com/us/support/plans/)。
-1. 按一下 [升級]。
+1. 按一下 [升級]  。
 
 ## <a name="next-steps"></a>後續步驟
 

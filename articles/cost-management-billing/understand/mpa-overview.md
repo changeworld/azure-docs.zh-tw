@@ -11,10 +11,10 @@ ms.workload: na
 ms.date: 10/24/2019
 ms.author: banders
 ms.openlocfilehash: 13ac51fc4cefa4d66cf9d8310dce80704454bd93
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "76122146"
 ---
 # <a name="get-started-with-your-microsoft-partner-agreement-billing-account"></a>開始使用您的 Microsoft 合作夥伴合約計費帳戶
@@ -31,7 +31,7 @@ Microsoft 合作夥伴合約的計費帳戶包含您計費所用之每種貨幣�
 
 ![顯示 Microsoft 合作夥伴合約計費階層的圖表](./media/mpa-overview/mpa-hierarchy.svg)
 
-貴組織中具有 [全域管理員] 和 [管理員代理人] 角色的使用者可以管理計費帳戶、帳單設定檔和客戶。 若要深入了解，請參閱[合作夥伴中心 - 指派使用者角色和權限](https://docs.microsoft.com/partner-center/permissions-overview)。
+貴組織中具有 [全域管理員]  和 [管理員代理人]  角色的使用者可以管理計費帳戶、帳單設定檔和客戶。 若要深入了解，請參閱[合作夥伴中心 - 指派使用者角色和權限](https://docs.microsoft.com/partner-center/permissions-overview)。
 
 ## <a name="billing-profiles"></a>帳單設定檔
 
@@ -55,19 +55,19 @@ Microsoft 合作夥伴合約的計費帳戶包含您計費所用之每種貨幣�
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-1. 針對 [成本管理 + 帳單] 進行搜尋。
+1. 針對 [成本管理 + 帳單]  進行搜尋。
 
    ![顯示 Azure 入口網站搜尋的螢幕擷取畫面](./media/mpa-overview/search-cmb.png)
 
-1. 從左側選取 [客戶]，然後從清單中選取客戶。
+1. 從左側選取 [客戶]  ，然後從清單中選取客戶。
 
    ![顯示選取客戶的螢幕擷取畫面](./media/mpa-overview/mpa-customers.png)
 
-1. 從左側選取 [原則]。
+1. 從左側選取 [原則]  。
 
    ![顯示原則的螢幕擷取畫面](./media/mpa-overview/mpa-change-policy.png)
 
-1. 選取 [是]。
+1. 選取 [是]  。
 
 ## <a name="resellers"></a>經銷商
 
@@ -76,7 +76,7 @@ CSP [兩層式模型](https://docs.microsoft.com/partner-center)中的間接提�
 ## <a name="check-access-to-a-microsoft-partner-agreement"></a>檢查 Microsoft 合作夥伴合約的存取權
 [!INCLUDE [billing-check-mpa](../../../includes/billing-check-mpa.md)]
 
-## <a name="need-help-contact-support"></a>需要協助嗎？ 連絡客戶支援
+## <a name="need-help-contact-support"></a>需要協助嗎？ 請連絡支援人員
 
 如果需要協助，請[連絡支援人員](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解決您的問題。
 

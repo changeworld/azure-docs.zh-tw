@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 793caae31841c0ea744a80a811c86aa4af63f60a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75990966"
 ---
 # <a name="terms-in-your-microsoft-customer-agreement-invoice"></a>您 Microsoft 客戶合約發票中的詞彙
@@ -24,9 +24,9 @@ ms.locfileid: "75990966"
 
 發票會為您提供費用的摘要以及付款的指示。 您可以從 [Azure 入口網站](https://portal.azure.com/)下載可攜式文件格式 (.pdf) 的發票，或可透過電子郵件傳送。 如需詳細資訊，請參閱[檢視及下載您的 Microsoft Azure 發票](download-azure-invoice.md)。
 
-## <a name="billing-period"></a>計費週期
+## <a name="billing-period"></a>計費期間
 
-您的發票會按月開立。 您可以在 [Azure 入口網站](https://portal.azure.com/)中查看帳單設定檔屬性下方的*發票日期*，以確認您會在一個月中的哪一天收到發票。 在計費期間結束和發票日期之間發生的費用，會包含在下個月的發票中，因為這些費用屬於下一個計費期間。 每張發票的計費期間開始和結束日期都會列在 [帳單摘要] 上方的發票 PDF 中。
+您的發票會按月開立。 您可以在 [Azure 入口網站](https://portal.azure.com/)中查看帳單設定檔屬性下方的*發票日期*，以確認您會在一個月中的哪一天收到發票。 在計費期間結束和發票日期之間發生的費用，會包含在下個月的發票中，因為這些費用屬於下一個計費期間。 每張發票的計費期間開始和結束日期都會列在 [帳單摘要]  上方的發票 PDF 中。
 
 ## <a name="invoice-terms-and-descriptions"></a>發票詞彙和說明
 
@@ -34,11 +34,11 @@ ms.locfileid: "75990966"
 
 ### <a name="invoice-summary"></a>發票摘要
 
-[發票摘要] 位於第一頁的頂端，會顯示您的帳單設定檔和支付方式的相關資訊。
+[發票摘要]  位於第一頁的頂端，會顯示您的帳單設定檔和支付方式的相關資訊。
 
 ![發票摘要區段](./media/mca-understand-your-invoice/invoicesummary.png)
 
-| 條款 | 說明 |
+| 詞彙 | 描述 |
 | --- | --- |
 | 買方 |您的法律實體地址，可在計費帳戶屬性中找到|
 | 帳單收件者 |接收發票之帳單設定檔的帳單地址，可在帳單設定檔屬性中找到|
@@ -50,11 +50,11 @@ ms.locfileid: "75990966"
 
 ### <a name="billing-summary"></a>帳單摘要
 
-[帳單摘要] 會根據帳單設定檔顯示自上一個計費期間起的費用、已套用的任何點數、稅金，以及應付金額總計。
+[帳單摘要]  會根據帳單設定檔顯示自上一個計費期間起的費用、已套用的任何點數、稅金，以及應付金額總計。
 
 ![帳單摘要區段](./media/mca-understand-your-invoice/billingsummary.png)
 
-| 條款 | 說明 |
+| 詞彙 | 描述 |
 | --- | --- |
 | Charges|此帳單設定檔自上一個計費期間起的 Microsoft 費用總數 |
 | 學分 |您因收益而獲得的點數 |
@@ -78,12 +78,12 @@ ms.locfileid: "75990966"
 
 ![依發票區段顯示詳細資料](./media/mca-understand-your-invoice/invoicesectiondetails.png)
 
-| 條款 |說明 |
+| 詞彙 |描述 |
 | --- | --- |
 | 單位價格 | 服務的有效單位價格 (以定價貨幣計算)，用來計算使用量的費率。 每個產品、服務系列、計量及供應項目的單位價格都不同。 |
 | 數量 | 計費期間所購買或使用的數量 |
 | 費用/點數 | 套用點數/退款後的費用淨額 |
-| Azure 信用額度 | 套用至費用/點數的 Azure 點數金額|
+| Azure 點數 | 套用至費用/點數的 Azure 點數金額|
 | 稅率 | 稅率視國家/地區而定 |
 | 稅額 | 購買時根據稅率套用的稅額 |
 | 總計 | 購買的應付金額總計 |
@@ -99,7 +99,7 @@ ms.locfileid: "75990966"
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>檢查 Microsoft 客戶合約的存取
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>需要協助嗎？ 連絡我們。
+## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡。
 
 如果您有問題或需要協助，請[建立支援要求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 

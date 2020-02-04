@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: banders
 ms.openlocfilehash: 553cc7fd27571ebc925e33f824060c023664a369
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991772"
 ---
 # <a name="export-and-view-your-top-level-subscription-information"></a>匯出並檢視最上層的訂用帳戶資訊
@@ -30,7 +30,7 @@ ms.locfileid: "75991772"
 下載的 .json 檔案會提供下列資訊：
 - 電子郵件：與帳戶相關聯的電子郵件地址。
 - Puid：與計費帳戶相關聯的唯一識別碼。
-- 訂用帳戶：屬於您帳戶的訂用帳戶清單 (依照訂用帳戶識別碼所列舉)。
+- SubscriptionIds：屬於您帳戶的訂用帳戶清單 (依照訂用帳戶識別碼所列舉)。
 
 ### <a name="subscriptionsjson-sample"></a>subscriptions.json 範例
 

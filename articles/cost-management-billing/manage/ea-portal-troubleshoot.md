@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.service: cost-management-billing
 manager: boalcsva
 ms.openlocfilehash: 41af65c2bfa35da30a0172ae7a39b3bad56597b8
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992123"
 ---
 # <a name="troubleshoot-azure-ea-portal-access"></a>針對 Azure EA 入口網站存取進行疑難排解
@@ -32,16 +32,16 @@ ms.locfileid: "75992123"
 - 跨租用戶的公司或學校帳戶 - 適用於已設定 Active Directory 與雲端同盟，且在多個租用戶上有帳戶的組織。
 - 混合帳戶 - 可讓您使用 Microsoft 帳戶和/或使用公司或學校帳戶新增使用者。
 
-新增至註冊的第一個公司或學校帳戶會決定「預設」或「主要」網域。 若要以另一個租用戶新增公司或學校帳戶，您必須將註冊下的驗證層級變更為跨租用戶驗證。
+新增至註冊的第一個公司或學校帳戶會決定「預設」  或「主要」  網域。 若要以另一個租用戶新增公司或學校帳戶，您必須將註冊下的驗證層級變更為跨租用戶驗證。
 
 若要更新驗證層級：
 
 1. 以企業系統管理員身分登入 Azure EA 入口網站。
-2. 從左方導覽面板按一下 [管理]。
-3. 按一下 [註冊] 索引標籤。
-4. 在 [註冊詳細資料] 底下，選取 [驗證層級]。
+2. 從左方導覽面板按一下 [管理]  。
+3. 按一下 [註冊]  索引標籤。
+4. 在 [註冊詳細資料]  底下，選取 [驗證層級]  。
 5. 按一下鉛筆符號。
-6. 按一下 [檔案]。
+6. 按一下 [檔案]  。
 
 ![顯示驗證層級的範例 ](./media/ea-portal-troubleshoot/create-ea-authentication-level-types.png)
 
@@ -60,14 +60,14 @@ Microsoft 帳戶必須在 [https://signup.live.com](https://signup.live.com/) �
   - 如果您使用的是公司帳戶，請輸入您的公司電子郵件和公司密碼。 您的組織會提供您公司密碼。 如果您遇到密碼相關問題，可以向 IT 部門詢問如何重設密碼。
   - 如果您使用的是 Microsoft 帳戶，請輸入您的 Microsoft 帳戶電子郵件地址和密碼。 如果您忘記 Microsoft 帳戶密碼，可以在 [https://account.live.com/password/reset](https://account.live.com/password/reset) 上重設密碼。
 - 請使用私密或無痕瀏覽器工作階段進行登入，如此便不會保留先前或現有工作階段中的 Cookie 或快取資訊。 清除瀏覽器的快取，並使用私密或無痕視窗來開啟 https://ea.azure.com 。
-- 如果您在使用 Microsoft 帳戶時收到「無效使用者」錯誤，可能是因為您有多個 Microsoft 帳戶。 您嘗試用來登入的使用者不是主要的電子郵件地址。
-或者，如果您收到「無效使用者」錯誤，可能是因為使用者新增至註冊時使用了錯誤的帳戶類型。 例如，使用了公司或學校帳戶，而不是 Microsoft 帳戶。 在此範例中，您可以讓另一位 EA 系統管理員新增正確的帳戶，或您需要連絡[支援人員](https://support.microsoft.com/supportforbusiness/productselection?sapId=cf791efa-485b-95a3-6fad-3daf9cd4027c)。
-  - 如果您需要檢查主要別名，請移至 [https://account.live.com](https://account.live.com)。 然後，按一下 [您的資訊]，然後按一下 [管理登入 Microsoft 的方式]。 遵循提示以確認替代電子郵件地址，並取得代碼來存取機密資訊。 輸入安全性驗證碼。 如果您不想要設定雙重要素驗證，請選取 [稍後設定]。
-  - 您會看到 [管理登入 Microsoft 的方式] 頁面，您可在其中檢視您的帳戶別名。 檢查主要別名是否為您用來登入 Azure EA 入口網站的別名。 如果不是，您可以將其設為您的主要別名。 或者，您可以改為將此主要別名用於 Azure EA 入口網站。
+- 如果您在使用 Microsoft 帳戶時收到「無效使用者」  錯誤，可能是因為您有多個 Microsoft 帳戶。 您嘗試用來登入的使用者不是主要的電子郵件地址。
+或者，如果您收到「無效使用者」  錯誤，可能是因為使用者新增至註冊時使用了錯誤的帳戶類型。 例如，使用了公司或學校帳戶，而不是 Microsoft 帳戶。 在此範例中，您可以讓另一位 EA 系統管理員新增正確的帳戶，或您需要連絡[支援人員](https://support.microsoft.com/supportforbusiness/productselection?sapId=cf791efa-485b-95a3-6fad-3daf9cd4027c)。
+  - 如果您需要檢查主要別名，請移至 [https://account.live.com](https://account.live.com)。 然後，按一下 [您的資訊]  ，然後按一下 [管理登入 Microsoft 的方式]  。 遵循提示以確認替代電子郵件地址，並取得代碼來存取機密資訊。 輸入安全性驗證碼。 如果您不想要設定雙重要素驗證，請選取 [稍後設定]  。
+  - 您會看到 [管理登入 Microsoft 的方式]  頁面，您可在其中檢視您的帳戶別名。 檢查主要別名是否為您用來登入 Azure EA 入口網站的別名。 如果不是，您可以將其設為您的主要別名。 或者，您可以改為將此主要別名用於 Azure EA 入口網站。
 
 ## <a name="no-activation-email-received"></a>未收到啟用電子郵件
 
-來自 Azure EA 入口網站的啟用電子郵件會從 *waep@microsoft.com* 寄出。 如果您未收到啟用電子郵件，請檢查電子郵件的垃圾郵件資料夾。 郵件主旨是「檢視/管理 Microsoft Azure 服務的邀請_主題」。 該郵件會傳送給每位新增的 EA 系統管理員。
+來自 Azure EA 入口網站的啟用電子郵件會從 *waep@microsoft.com* 寄出。 如果您未收到啟用電子郵件，請檢查電子郵件的垃圾郵件資料夾。 郵件主旨是「檢視/管理 Microsoft Azure 服務的邀請_主題」  。 該郵件會傳送給每位新增的 EA 系統管理員。
 
 如果您確定您已設定為 EA 系統管理員，則不需要等待收到啟用電子郵件才能登入 Azure EA 入口網站。 相反地，您可以移至 https://ea.azure.com ，並使用您的電子郵件地址 (公司、學校或 Microsoft 帳戶) 和密碼登入。
 
@@ -77,7 +77,7 @@ Microsoft 帳戶必須在 [https://signup.live.com](https://signup.live.com/) �
 
 ### <a name="i-would-like-to-add-a-new-ea-administrator-to-my-enrollment"></a>我想要將新的 EA 系統管理員新增至我的註冊
 
-現有的企業系統管理員可以新增企業系統管理員。 如果您是 EA 系統管理員，請登入 EA 入口網站，按一下 [管理]，然後按一下右上角的 [+ 新增系統管理員]，以新增 EA 系統管理員。 請確定您有其電子郵件地址和慣用的登入方法，例如透過工作/學校驗證或 Microsoft Live ID 來新增使用者。
+現有的企業系統管理員可以新增企業系統管理員。 如果您是 EA 系統管理員，請登入 EA 入口網站，按一下 [管理]  ，然後按一下右上角的 [+ 新增系統管理員]  ，以新增 EA 系統管理員。 請確定您有其電子郵件地址和慣用的登入方法，例如透過工作/學校驗證或 Microsoft Live ID 來新增使用者。
 
 如果您不是 EA 系統管理員，請與貴公司的 EA 系統管理員聯繫，要求他們將您新增至註冊。 當他們將您新增到註冊後，您將會收到啟用電子郵件。
 
@@ -137,18 +137,18 @@ EA 註冊可以有多個 EA 系統管理員，您可與另一個 EA 系統管理
 - 此外，您取得記錄檔將有所幫助。 以下是使用下列資訊來擷取網路追蹤的步驟：
   1. 開啟 Internet Explorer。
   1. 按 F12 鍵，這會開啟位於 IE 底部的方塊。
-  1. 選取 [網路] 索引標籤。
-  1. 按一下 [開始擷取]。
+  1. 選取 [網路]  索引標籤。
+  1. 按一下 [開始擷取]  。
   1. 執行造成錯誤的動作。
-  1. 一旦收到錯誤，請按一下 [停止解取]。
+  1. 一旦收到錯誤，請按一下 [停止解取]  。
   1. 儲存檔案，並在支援要求中包含資訊。
   1. 請確定您在支援要求中提供您的註冊號碼和電子郵件地址。
 
 ### <a name="what-is-the-difference-between-a-workschool-account-and-microsoft-account"></a>公司/學校帳戶和 Microsoft 帳戶有什麼差別？
 
-**Microsoft 帳戶：** 已與[https://signup.live.com](https://signup.live.com)上的 Live ID 建立關聯的帳戶。
+**Microsoft 帳戶：** 已與 [https://signup.live.com](https://signup.live.com) 上的 Live ID 相關聯的帳戶。
 
-**公司/學校帳戶：** 僅適用于已設定 active directory 與雲端同盟，且所有帳戶都在單一租使用者上的公司。 如果公司的內部 Active Directory 與雲端同盟，則可以使用公司/學校授權類型來新增使用者。
+**公司/學校帳戶：** 僅適用於已設定 Active Directory 與雲端同盟，且所有帳戶都在單一租用戶上的公司。 如果公司的內部 Active Directory 與雲端同盟，則可以使用公司/學校授權類型來新增使用者。
 
   從 2016 年 9 月起，Microsoft 不再允許將公司或學校電子郵件註冊為 Microsoft 帳戶。 如需詳細資訊，請參考下列資料：[https://blogs.technet.microsoft.com/enterprisemobility/2016/09/15/cleaning-up-the-azure-ad-and-microsoft-account-overlap/](https://blogs.technet.microsoft.com/enterprisemobility/2016/09/15/cleaning-up-the-azure-ad-and-microsoft-account-overlap/)。
 

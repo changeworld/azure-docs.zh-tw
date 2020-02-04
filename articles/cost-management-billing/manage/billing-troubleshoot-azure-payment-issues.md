@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 08/12/2019
 ms.author: jaserano
 ms.openlocfilehash: 986af72ed2ac10a285cfe32768d8541b7fce2428
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75989991"
 ---
 # <a name="troubleshoot-azure-payment-issues"></a>針對 Azure 付款問題進行疑難排解
@@ -38,7 +38,7 @@ ms.locfileid: "75989991"
 
 若要針對遭拒卡片的相關問題進行疑難排解，請參閱[如何在 Azure 註冊上針對遭到拒絕的卡片進行疑難排解](troubleshoot-declined-card.md)。
 
-## <a name="unable-to-delete-a-payment-method-because-of-cannot-delete-payment-method-error"></a>無法刪除付款方式，因為出現「無法刪除付款方式」錯誤
+## <a name="unable-to-delete-a-payment-method-because-of-cannot-delete-payment-method-error"></a>無法刪除付款方式，因為出現「無法刪除付款方式」  錯誤
 
 這是因為未付餘額所造成。 請先清除任何未付餘額，再刪除付款方式。
 
@@ -50,7 +50,7 @@ ms.locfileid: "75989991"
 
 ## <a name="unable-to-make-payment-for-a-subscription"></a>無法對訂用帳戶進行付款
 
-如果您收到錯誤訊息： [*付款已逾期]。您的付款條件發生問題* *，或抱歉，無法儲存資訊。請關閉瀏覽器，然後再試一次。* 由於您的財務機構拒絕了卡片，因此卡片上有暫止的付款。
+如果您收到錯誤訊息：*付款已逾期。您的付款方式有問題*或*我們很抱歉，資訊無法儲存。請關閉瀏覽器，然後再試一次。* 這可能是因為卡片上有待付款項，因為卡片遭到您金融機構的拒絕。
 
 請確認信用卡有足夠的餘額可付款。 如果沒有，請使用另一張卡片來進行付款，或與您的金融機構聯繫以解決問題。
 

@@ -13,10 +13,10 @@ ms.date: 03/01/2018
 ms.author: banders
 ROBOTS: NOINDEX
 ms.openlocfilehash: 111b95ddcff3667fa3f1e7df694af1d38887710f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75990017"
 ---
 # <a name="why-is-my-azure-for-students-subscription-disabled-and-how-do-i-reactivate-it"></a>我的 Azure for Students 訂用帳戶為何停用，以及如何將它重新啟動？
@@ -34,7 +34,7 @@ Azure for Students 帳戶提供美金 100 元的點數，以及 12 個月數量�
 
     ![顯示 Azure for Students 訂用帳戶點數資訊的螢幕擷取畫面](./media/azurestudents-subscription-disabled/azurestudents-credit-balance.png)
 
-3. 若要檢查耗用 Azure 點數的服務使用量，請從左方導覽中選取 [使用量]，然後選取您的 Azure for Students 訂用帳戶。
+3. 若要檢查耗用 Azure 點數的服務使用量，請從左方導覽中選取 [使用量]  ，然後選取您的 Azure for Students 訂用帳戶。
 
     ![顯示 Azure for Students 點數使用量資訊的螢幕擷取畫面](./media/azurestudents-subscription-disabled/azurestudents-credit-usage.png)
 
@@ -52,6 +52,6 @@ Azure for Students 帳戶提供美金 100 元的點數，以及 12 個月數量�
 
 如果您不小心取消了您的 Azure 學生版訂用帳戶，可以連絡 [Azure 支援](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)將它重新啟用。 重新啟動後，仍可使用剩餘點數和從註冊日期算起 12 個月的免費服務。
 
-## <a name="need-help-contact-us"></a>需要協助嗎？ 連絡我們。
+## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡。
 
 如有問題或需要協助，請[建立支援要求](https://go.microsoft.com/fwlink/?linkid=2083458)。

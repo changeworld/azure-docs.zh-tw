@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: bb3aa7970f993ec5e0ceb50d10cc0907ed225c2f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995867"
 ---
 # <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>使用預先購買來最佳化 Azure Databricks 成本
@@ -41,15 +41,15 @@ Databricks 預先購買會套用至所有 Databricks 工作負載和層級。 �
 
 您可以在 [Azure 入口網站](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D)中購買 Databricks 方案。 若要購買保留容量，您必須擁有至少一個企業訂用帳戶的擁有者角色。
 
-- 您必須是至少一個 Enterprise 合約的擁有者角色（供應專案號碼： MS-AZR-0017P-Ms-azr-0017p 或 MS-AZR-0017P-Ms-azr-0148p）或 Microsoft 客戶合約或具有隨用隨付費率的個別訂用帳戶（供應專案號碼： MS-MS-AZR-0017P-Ms-azr-0003p 或 MS-MS-AZR-0017P-Ms-azr-0023p）。
-- 針對 EA 訂用帳戶，必須在 EA 入口網站中啟用 [新增保留實例] 選項。 或者，如果該設定已停用，則您必須是訂用帳戶的 EA 系統管理員。
+- 您必須擔任下列項目的擁有者角色：至少一個 Enterprise 合約 (供應項目號碼：MS-AZR-0017P 或 MS-AZR-0148P) 或 Microsoft 客戶合約，或是使用隨用隨付費率的個別訂用帳戶 (供應項目號碼：MS-AZR-0003P 或 MS-AZR-0023P)。
+- 針對 EA 訂用帳戶，必須在 EA 入口網站中啟用 [新增保留執行個體] 選項。 或者，如果該設定已停用，則您必須是訂用帳戶的 EA 管理員。
 - 針對企業訂用帳戶，必須在 [EA 入口網站](https://ea.azure.com/)中啟用**新增保留執行個體**。 或者，如果該設定已停用，則您必須是訂用帳戶的 EA 系統管理員。
 
 **若要購買：**
 
 1. 移至 [Azure 入口網站](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D)。
-1. 選取訂用帳戶。 使用 [訂用帳戶] 清單來選取用來支付保留容量的訂用帳戶。 訂用帳戶的付款方式為收取保留容量的預付費用。 費用會從註冊的承諾用量金額餘額扣除或作為超額部分收費。
-1. 選取範圍。 使用 [範圍] 清單來選取訂用帳戶範圍：
+1. 選取一個訂用帳戶。 使用 [訂用帳戶]  清單來選取用來支付保留容量的訂用帳戶。 訂用帳戶的付款方式為收取保留容量的預付費用。 費用會從註冊的承諾用量金額餘額扣除或作為超額部分收費。
+1. 選取範圍。 使用 [範圍]  清單來選取訂用帳戶範圍：
     - **單一資源群組範圍** — 只會將保留折扣套用至所選資源群組中的相符資源。
     - **單一訂用帳戶範圍** — 會將保留折扣套用至所選訂用帳戶中的相符資源。
     - **共用範圍** — 會將保留折扣套用至計費內容中合格訂用帳戶的相符資源。 針對 Enterprise 合約客戶，計費內容為註冊。
@@ -71,7 +71,7 @@ Databricks 預先購買會套用至所有 Databricks 工作負載和層級。 �
 
 Databricks 預先購買方案不支援取消和交換。 所有購買都是無法改變的。
 
-## <a name="need-help-contact-us"></a>需要協助嗎？ 連絡我們。
+## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡。
 
 如果您有問題或需要協助，請[建立支援要求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
 

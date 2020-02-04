@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: c148351a4475bfdbee474a5e0951cc3b5717404e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995724"
 ---
 # <a name="how-azure-databricks-pre-purchase-discount-is-applied"></a>Azure Databricks 預先購買折扣的套用方式
@@ -37,13 +37,13 @@ Databricks 預先購買會套用至所有 Databricks 工作負載和層級。 �
 
 ## <a name="determine-plan-use"></a>確定方案的使用情形
 
-若要確定 DBCU 方案的使用情形，請移至 Azure 入口網站 > [保留]，然後按一下已購買的 Databricks 方案。 隨即會顯示您至今為止的使用情形和任何剩餘的單位。 如需如何確定保留使用情形的詳細資訊，請參閱[查看保留使用量](reservation-apis.md#see-reservation-usage)一文。
+若要確定 DBCU 方案的使用情形，請移至 Azure 入口網站 > [保留]  ，然後按一下已購買的 Databricks 方案。 隨即會顯示您至今為止的使用情形和任何剩餘的單位。 如需如何確定保留使用情形的詳細資訊，請參閱[查看保留使用量](reservation-apis.md#see-reservation-usage)一文。
 
 ## <a name="how-discount-application-shows-in-usage-data"></a>折扣套用方式會顯示在使用量資料中
 
 當預先購買折扣套用至 Databricks 使用量時，使用量資料中所顯示的隨選費用會是零。 如需保留成本和使用量資料的詳細資訊，請參閱[取得 Enterprise 合約保留成本和使用量](understand-reserved-instance-usage-ea.md)。
 
-## <a name="need-help-contact-us"></a>需要協助嗎？ 連絡我們。
+## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡。
 
 如果您有問題或需要協助，請[建立支援要求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
 

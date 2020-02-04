@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: banders
 ms.openlocfilehash: 6ae55e0075883de08af516b71089f00353975b34
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992838"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>新增、更新或移除用於 Azure 的信用卡
@@ -33,7 +33,7 @@ ms.locfileid: "75992838"
 ## <a name="add-a-new-credit-card-to-an-azure-subscription"></a>將新的信用卡新增至 Azure 訂用帳戶
 
 1. 以帳戶管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
-1. 搜尋 [成本管理 + 帳單]。
+1. 搜尋 [成本管理 + 帳單]  。
 
     ![顯示搜尋的螢幕擷取畫面](./media/change-credit-card/search.png)
 
@@ -47,9 +47,9 @@ ms.locfileid: "75992838"
 
     ![顯示新增卡片的螢幕擷取畫面。](./media/change-credit-card/sub-add-new-x.png)
 
-1. 若要讓此卡片成為您的有效付款方式，請在表單上方勾選 [將此方式設定成我的有效付款方式] 旁的方塊。 對於所有與選取的訂用帳戶使用相同卡片的訂用帳戶，這張卡片都將成為使用中的付款方式。
+1. 若要讓此卡片成為您的有效付款方式，請在表單上方勾選 [將此方式設定成我的有效付款方式]  旁的方塊。 對於所有與選取的訂用帳戶使用相同卡片的訂用帳戶，這張卡片都將成為使用中的付款方式。
 
-1. 選取 [下一步]。
+1. 選取 [下一步]  。
 
 如果在新增信用卡之後收到錯誤，請參閱[在 Azure 註冊時信用卡遭拒](../../billing/billing-credit-card-fails-during-azure-sign-up.md)。
 
@@ -58,7 +58,7 @@ ms.locfileid: "75992838"
 如果您的信用卡換卡，但號碼維持不變，請更新現有信用卡的詳細資料即可，例如有效期限。 如果您的信用卡號碼因為卡片遺失、遭竊或過期而變更，請遵循[將信用卡新增為付款方式](#addcard)一節中的步驟。 您不需要更新 CVV。
 
 1. 以帳戶管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
-1. 搜尋 [成本管理 + 帳單]。
+1. 搜尋 [成本管理 + 帳單]  。
 
     ![顯示搜尋的螢幕擷取畫面](./media/change-credit-card/search.png)
 
@@ -71,14 +71,14 @@ ms.locfileid: "75992838"
     ![顯示已選取信用卡的螢幕擷取畫面。](./media/change-credit-card/edit-card-x.png)
 
 1. 更新信用卡詳細資料。
-1. 選取 [儲存]。
+1. 選取 [儲存]  。
 
 ## <a name="use-a-different-credit-card"></a>使用不同的信用卡
 
 如果您有一個以上的訂用帳戶具有相同的有效付款方式，則變更任一訂用帳戶的有效付款方式也會更新其他訂用帳戶的有效付款方式。
 
 1. 以帳戶管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
-1. 搜尋 [成本管理 + 帳單]。
+1. 搜尋 [成本管理 + 帳單]  。
 
     ![顯示搜尋的螢幕擷取畫面](./media/change-credit-card/search.png)
 
@@ -88,17 +88,17 @@ ms.locfileid: "75992838"
     ![顯示已選取 [管理付款方式] 選項的螢幕擷取畫面。](./media/change-credit-card/payment-methods-blade-x.png)
 
 1. 選取要設為有效付款方式的卡片旁邊的方塊。
-1. 按一下 [設為有效]。
+1. 按一下 [設為有效]  。
     ![顯示已選取信用卡和設為有效的螢幕擷取畫面。](./media/change-credit-card/sub-change-active-x.png)
 
 ## <a name="remove-a-credit-card-from-the-account"></a>從帳戶中移除信用卡
 
 1. 以帳戶管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
-1. 選取頁面左側的 [成本管理 + 帳單]。
+1. 選取頁面左側的 [成本管理 + 帳單]  。
 
     ![顯示搜尋的螢幕擷取畫面](./media/change-credit-card/search.png)
 
-1. 在 [帳單] 下方選取 [付款方式]。
+1. 在 [帳單]  下方選取 [付款方式]  。
 
     ![顯示已選取 [管理付款方式] 選項的螢幕擷取畫面。](./media/change-credit-card/payment-methods-blade-x.png)
 
@@ -114,17 +114,17 @@ ms.locfileid: "75992838"
 如果您想要將預設付款方式切換為支票/電匯，請了解如何[將帳單設定檔切換為支票/電匯](pay-by-invoice.md)。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 針對 [成本管理 + 帳單] 進行搜尋。
-1. 在左側功能表中，按一下 [帳單設定檔]。
+1. 針對 [成本管理 + 帳單]  進行搜尋。
+1. 在左側功能表中，按一下 [帳單設定檔]  。
 
     ![在功能表中顯示帳單設定檔的螢幕擷取畫面](./media/change-credit-card/billing-profile.png)
 
 1. 選取帳單設定檔。
-1. 在左側功能表中，選取 [付款方式]。
+1. 在左側功能表中，選取 [付款方式]  。
 
    ![在功能表中顯示付款方式的螢幕擷取畫面](./media/change-credit-card/billing-profile-payment-methods.png)
 
-1. 在預設付款方式上方，按一下 [變更]。
+1. 在預設付款方式上方，按一下 [變更]  。
 
     ![顯示變更按鈕的螢幕擷取畫面](./media/change-credit-card/customer-led-switch-credit-card.png)
 
@@ -158,12 +158,12 @@ ms.locfileid: "75992838"
 
 ### <a name="how-do-i-change-the-tax-id"></a>如何變更統一編號？
 
-若要新增或更新統一編號，請在 [Azure 帳戶中心](https://account.azure.com/Profile)更新您的設定檔，然後選取 [稅務記錄]。 此統一編號會用於計算免稅金額，並出現在您的發票上。
+若要新增或更新統一編號，請在 [Azure 帳戶中心](https://account.azure.com/Profile)更新您的設定檔，然後選取 [稅務記錄]  。 此統一編號會用於計算免稅金額，並出現在您的發票上。
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>檢查 Microsoft 客戶合約的存取
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>需要協助嗎？ 連絡我們。
+## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡。
 
 如有問題或需要協助，請[建立支援要求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 

@@ -16,10 +16,10 @@ ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 513dac3a1cdcefa7a49116ea02af5410265af3ec
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991993"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>適用於企業客戶的報告 API 概觀
@@ -54,9 +54,9 @@ ms.locfileid: "75991993"
 
 
 ## <a name="api-response-codes"></a>API 回應碼   
-|回應狀態碼|訊息|說明|
+|回應狀態碼|訊息|描述|
 |-|-|-|
-|200| 確定|沒有錯誤|
+|200| [確定]|沒有錯誤|
 |401| 未經授權| API 金鑰找不到、無效或過期等。|
 |404| 無法使用| 找不到報告端點|
 |400| 不正確的要求| 無效的參數 - 資料範圍、EA 編號等。|

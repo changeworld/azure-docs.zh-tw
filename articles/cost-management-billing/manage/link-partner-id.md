@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: a67f2985e2db8c48d7e50a91d20c76b88c1c55e6
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991915"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>將合作夥伴識別碼連結到您的 Azure 帳戶
@@ -28,11 +28,11 @@ Microsoft 合作夥伴提供的服務可協助客戶使用 Microsoft 產品達�
 
 在您連結合作夥伴識別碼之前，您的客戶必須先透過下列其中一個選項，將其 Azure 資源的存取權提供給您：
 
-- **來賓使用者**：您的客戶可以將您新增為來賓使用者，並指派任何以角色為基礎的存取控制（RBAC）角色。 如需詳細資訊，請參閱[從另一個目錄中新增來賓使用者](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)。
+- **來賓使用者**：客戶可將您新增為來賓使用者，並指派任何角色型存取控制 (RBAC) 角色。 如需詳細資訊，請參閱[從另一個目錄中新增來賓使用者](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)。
 
-- **目錄帳戶**：您的客戶可以在自己的目錄中為您建立使用者帳戶，並指派任何 RBAC 角色。
+- **目錄帳戶**：客戶可以在自己的目錄中為您建立新使用者，並指派任何 RBAC 角色。
 
-- **服務主體**：您的客戶可以從您的組織在其目錄中新增應用程式或腳本，並指派任何 RBAC 角色。 應用程式或指令碼的身分識別稱為服務主體。
+- **服務主體**：客戶可從您的組織在其目錄中新增應用程式或指令碼，並指派任何 RBAC 角色。 應用程式或指令碼的身分識別稱為服務主體。
 
 ## <a name="link-to-a-partner-id"></a>連結到合作夥伴識別碼
 
@@ -48,7 +48,7 @@ Microsoft 合作夥伴提供的服務可協助客戶使用 Microsoft 產品達�
 
    ![顯示 [連結到合作夥伴識別碼] 的螢幕擷取畫面](./media/link-partner-id/link-partner-id01.png)
 
-4. 若要為另一個客戶連結合作夥伴識別碼，請切換目錄。 在 [切換目錄] 底下，選取您的目錄。
+4. 若要為另一個客戶連結合作夥伴識別碼，請切換目錄。 在 [切換目錄]  底下，選取您的目錄。
 
    ![顯示 [切換目錄] 的螢幕擷取畫面](./media/link-partner-id/directory-switcher.png)
 
@@ -128,7 +128,7 @@ C:\ az managementpartner delete --partner-id 12345
 
 **連結合作夥伴識別碼之後可加以改變嗎？**
 
-可以。 連結的合作夥伴識別碼可以變更、新增或移除。
+是。 連結的合作夥伴識別碼可以變更、新增或移除。
 
 **如果使用者在多個客戶租用戶中具有同一帳戶，將會如何？**
 

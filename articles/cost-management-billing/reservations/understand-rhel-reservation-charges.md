@@ -1,5 +1,5 @@
 ---
-title: Red Hat 保留方案折扣-Azure
+title: Red Hat 保留方案折扣 - Azure
 description: 了解 Red Hat 方案折扣如何套用至虛擬機器上的 Red Hat 軟體。
 services: billing
 documentationcenter: ''
@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/30/2019
 ms.author: cwatson
 ms.openlocfilehash: 280764d3b9185abd1d8112f641007a7dc1861b34
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995321"
 ---
 # <a name="understand-how-the-red-hat-linux-enterprise-software-reservation-plan-discount-is-applied-for-azure"></a>了解 Azure 會如何套用 Red Hat Linux Enterprise 軟體保留方案折扣
@@ -165,6 +165,6 @@ Azure 入口網站市集名稱：
 - [了解隨用隨付訂用帳戶的保留使用量](understand-reserved-instance-usage.md)
 - [了解 Enterprise 註冊的保留項目使用量](understand-reserved-instance-usage-ea.md)
 
-## <a name="need-help-contact-us"></a>需要協助嗎？ 連絡我們
+## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡
 
 如果您有問題或需要協助，請[建立支援要求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
 ms.openlocfilehash: 8680a575872053f4b575db70ec649b6c1669b961
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992136"
 ---
 # <a name="azure-enterprise-rest-apis"></a>Azure 企業版 REST API
@@ -37,7 +37,7 @@ Microsoft Enterprise Azure 客戶可以透過 REST API 取得使用量和帳單�
 
 ### <a name="enable-api-data-access"></a>啟用 API 資料存取
 
-角色擁有者可以在 Azure EA 入口網站中執行下列步驟。 瀏覽至 [報告] > [下載使用量] > [API 存取金鑰]。 然後他們可以：
+角色擁有者可以在 Azure EA 入口網站中執行下列步驟。 瀏覽至 [報告]   > [下載使用量]   > [API 存取金鑰]  。 然後他們可以：
 
 - 產生主要和次要存取金鑰。
 - 停用存取金鑰。
@@ -46,21 +46,21 @@ Microsoft Enterprise Azure 客戶可以透過 REST API 取得使用量和帳單�
 ### <a name="generate-or-retrieve-the-api-key"></a>產生或取出 API 金鑰
 
 1. 以企業系統管理員身分登入。
-2. 按一下左側導覽視窗中的 [報表]，然後按一下 [下載使用量] 索引標籤。
-3. 按一下 [API 存取金鑰]。
-4. 在 [註冊存取金鑰] 底下，選取產生金鑰符號以產生主要或次要金鑰。
-5. 選取 [展開金鑰] 以查看產生的完整 API 存取金鑰。
-6. 選取 [複製] 以取得可立即使用的 API 存取金鑰。
+2. 按一下左側導覽視窗中的 [報表]  ，然後按一下 [下載使用量]  索引標籤。
+3. 按一下 [API 存取金鑰]  。
+4. 在 [註冊存取金鑰]  底下，選取產生金鑰符號以產生主要或次要金鑰。
+5. 選取 [展開金鑰]  以查看產生的完整 API 存取金鑰。
+6. 選取 [複製]  以取得可立即使用的 API 存取金鑰。
 
 ![顯示 API 存取金鑰頁面的範例](./media/ea-portal-rest-apis/ea-create-generate-or-retrieve-the-api-key.png)
 
 如果您想要授與 API 存取金鑰的人員，不是您註冊中的企業系統管理員，請執行下列步驟：
 
-1. 在左側導覽視窗中，按一下 [管理]。
-2. 按一下 [DA 檢視費用] \(部門系統管理員檢視費用\) 旁的鉛筆符號。
-3. 選取 [啟用]，然後按一下 [儲存]。
-4. 按一下 [AO 檢視費用] \(帳戶擁有者檢視費用\) 旁的鉛筆符號。
-5. 選取 [啟用]，然後按一下 [儲存]。
+1. 在左側導覽視窗中，按一下 [管理]  。
+2. 按一下 [DA 檢視費用]  \(部門系統管理員檢視費用\) 旁的鉛筆符號。
+3. 選取 [啟用]  ，然後按一下 [儲存]  。
+4. 按一下 [AO 檢視費用]  \(帳戶擁有者檢視費用\) 旁的鉛筆符號。
+5. 選取 [啟用]  ，然後按一下 [儲存]  。
 
 ![顯示 DA 和 AO 檢視費用已啟用的範例](./media/ea-portal-rest-apis/create-ea-generate-or-retrieve-api-key-enable-ao-do-view.png) 上述步驟讓 API 存取金鑰持有者可存取使用量報表中的成本和價格資訊。
 
@@ -81,9 +81,9 @@ Swagger 端點可在下列 API 的 [Enterprise Reporting v3 API](https://consump
 
 當您使用 API 時，回應狀態碼會隨之顯示。 下表為這些狀態碼的描述。
 
-| 回應狀態碼 | 訊息 | 說明 |
+| 回應狀態碼 | 訊息 | 描述 |
 | --- | --- | --- |
-| 200 | 確定 | 沒有錯誤 |
+| 200 | [確定] | 沒有錯誤 |
 | 401 | 未經授權 | API 金鑰找不到、無效或過期等。 |
 | 404 | 無法使用 | 找不到報告端點 |
 | 400 | 不正確的要求 | 無效的參數 - 資料範圍、EA 編號等。 |
@@ -121,13 +121,13 @@ JSON 格式是從 CSV 報表產生的。 因此，此格式與摘要 CSV 格式�
 | SubscriptionId | SubscriptionId | SubscriptionId |   |
 | SubscriptionGuid | MOCPSubscriptionGuid | SubscriptionGuid |   |
 | 訂用帳戶名稱 | SubscriptionName | SubscriptionName |   |
-| 日期 | 日期 | 日期 | 顯示服務目錄報表執行的日期。 格式為不含時間戳記的日期字串。 |
-| 月 | 月 | 月 |   |
-| 天 | 天 | 天 |   |
-| 年 | 年 | 年 |   |
-| 產品 | BillableItemName | 產品 |   |
+| Date | Date | Date | 顯示服務目錄報表執行的日期。 格式為不含時間戳記的日期字串。 |
+| Month | Month | Month |   |
+| Day | Day | Day |   |
+| Year | Year | Year |   |
+| Products | BillableItemName | Products |   |
 | 計量識別碼 | ResourceGUID | 計量識別碼 |   |
-| 計量類別類別 | 服務 | MeterCategory | 有助於尋找服務。 適用於具有多個 ServiceType 的服務。 例如：虛擬機器。 |
+| 計量類別 | 服務 | MeterCategory | 有助於尋找服務。 適用於具有多個 ServiceType 的服務。 例如：虛擬機器。 |
 | 計量子類別 | ServiceType | MeterSubCategory | 提供服務的第二層詳細資料。 例如：A1 VM (非 Windows)。  |
 | 計量區域 | ServiceRegion | MeterRegion | 服務所需的第三層詳細資料。 有助於尋找 ResourceGUID 的區域內容。 |
 | 計量名稱 | ServiceResource | MeterName | 服務的名稱。 |
@@ -140,11 +140,11 @@ JSON 格式是從 CSV 報表產生的。 因此，此格式與摘要 CSV 格式�
 | ServiceInfo1 | ServiceInfo1 | ServiceInfo1 |   |
 | ServiceInfo2 | ServiceInfo2 | ServiceInfo2 |   |
 | AdditionalInfo | AdditionalInfo | AdditionalInfo |   |
-| 標籤 | 標籤 | 標籤 |   |
+| Tags | Tags | Tags |   |
 | 儲存體服務識別碼   | OrderNumber | StoreServiceIdentifier   |   |
 | 部門名稱 | DepartmentName | DepartmentName |   |
 | 成本中心 | CostCenter | CostCenter |   |
-| 度量單位 | UnitOfMeasure | UnitOfMeasure | 範例值：小時、GB、事件、推播、單位、單位時數、MB、每日單位 |
+| 測量單位 | UnitOfMeasure | UnitOfMeasure | 範例值：小時、GB、事件、推播、單位、單位時數、MB、每日單位 |
 | ResourceGroup | ResourceGroup | ResourceGroup |   |
 
 #### <a name="azure-marketplace-report"></a>Azure Marketplace 報表
@@ -156,21 +156,21 @@ JSON 格式是從 CSV 報表產生的。 因此，此格式與摘要 CSV 格式�
 | SubscriptionId | SubscriptionId | SubscriptionId |
 | SubscriptionGuid | SubscriptionGuid | SubscriptionGuid |
 | 訂用帳戶名稱 | SubscriptionName |  SubscriptionName |
-| 日期 | BillingCycle |  日期 (僅限日期字串。 無時間戳記)
-| 月 | 月 |  月 |
-| 天 | 天 |  天 |
-| 年 | 年 |  年 |
+| Date | BillingCycle |  日期 (僅限日期字串。 無時間戳記)
+| Month | Month |  Month |
+| Day | Day |  Day |
+| Year | Year |  Year |
 | 計量識別碼 | MeterResourceId |  計量識別碼 |
 | 發行者名稱 | PublisherFriendlyName |  PublisherName |
-| 優惠名稱 | OfferFriendlyName |  OfferName |
+| 供應項目名稱 | OfferFriendlyName |  OfferName |
 | 方案名稱 | PlanFriendlyName |  PlanName |
 | 已耗用的數量 | BilledQty |  ConsumedQuantity |
 | ResourceRate | ResourceRate | ResourceRate |
 | ExtendedCost | ExtendedCost | ExtendedCost |
-| 度量單位 | UnitOfMeasure | UnitOfMeasure |
+| 測量單位 | UnitOfMeasure | UnitOfMeasure |
 | 執行個體識別碼 | InstanceId | InstanceId |
 | 其他資訊 | AdditionalInfo | AdditionalInfo |
-| 標籤 | 標籤 | 標籤 |
+| Tags | Tags | Tags |
 | 訂單編號 | OrderNumber | OrderNumber |
 | 部門名稱 | DepartmentNames | DepartmentName |
 | 成本中心 | CostCenters |  CostCenter |
@@ -181,7 +181,7 @@ JSON 格式是從 CSV 報表產生的。 因此，此格式與摘要 CSV 格式�
 | CSV 資料行名稱 | JSON 資料行名稱 | 註解 |
 | --- | --- | --- |
 | 服務 | 服務 |  價格不會變更 |
-| 度量單位 | UnitOfMeasure |   |
+| 測量單位 | UnitOfMeasure |   |
 | 超額部分編號 | ConsumptionPartNumber |   |
 | 超額單位價格 | ConsumptionPrice |   |
 | 貨幣代碼 | CurrencyCode |     |

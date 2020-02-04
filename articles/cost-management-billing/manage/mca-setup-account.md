@@ -1,5 +1,5 @@
 ---
-title: 設定 Microsoft 客戶合約的帳單-Azure
+title: 設定 Microsoft 客戶合約的計費 - Azure
 description: 了解如何設定 Microsoft 客戶合約的計費帳戶。
 author: amberbhargava
 manager: amberb
@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 117d657712eba8d24ab18987f3e761553c15a858
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75994632"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>設定 Microsoft 客戶合約的計費帳戶
@@ -69,7 +69,7 @@ ms.locfileid: "75994632"
 
    ![顯示邀請企業系統管理員的螢幕擷取畫面](./media/mca-setup-account/ea-mca-invite-admins.png)
 
-4. 選取 [傳送要求]。
+4. 選取 [傳送要求]  。
 
    系統管理員會收到一則電子郵件，其中包含完成設定的指示。
 
@@ -132,7 +132,7 @@ ms.locfileid: "75994632"
 
 ### <a name="no-service-downtime"></a>沒有服務停機時間
 
-您訂用帳戶中的 Azure 服務可以持續執行，不會發生任何中斷。 我們僅會轉換您 Azure 訂用帳戶的帳務關係， 而不會影響現有資源、資源群組或管理群組。
+您訂用帳戶中的 Azure 服務可以持續執行，不會發生任何中斷。 我們僅會轉換您 Azure 訂用帳戶的帳務關係。 現有的資源、資源群組或管理群組不受影響。
 
 ### <a name="user-access-to-azure-resources"></a>Azure 資源的使用者存取
 
@@ -168,7 +168,7 @@ ms.locfileid: "75994632"
 
 ### <a name="closing-your-browser-during-setup"></a>在設定期間關閉您的瀏覽器
 
-在按一下 [開始轉換] 之前，您可以先關閉瀏覽器。 您可以使用電子郵件中提供的連結返回設定程序，並開始轉換。 如果您關閉瀏覽器，在轉換開始後，您的轉換將會繼續執行。 請回到 [轉換狀態] 頁面，以監視轉換的最新狀態。 轉換完成時，您會收到一則電子郵件。
+在按一下 [開始轉換]  之前，您可以先關閉瀏覽器。 您可以使用電子郵件中提供的連結返回設定程序，並開始轉換。 如果您關閉瀏覽器，在轉換開始後，您的轉換將會繼續執行。 請回到 [轉換狀態] 頁面，以監視轉換的最新狀態。 轉換完成時，您會收到一則電子郵件。
 
 ## <a name="complete-the-setup-in-the-azure-portal"></a>在 Azure 入口網站中完成設定
 
@@ -180,16 +180,16 @@ ms.locfileid: "75994632"
 
    `https://portal.azure.com/#blade/Microsoft_Azure_EA/EATransitionToMCA/enrollmentId/<enrollmentNumber>`
 
-3. 在設定的最後一個步驟中，選取 [開始轉換]。 在您選取 [開始轉換] 後：
+3. 在設定的最後一個步驟中，選取 [開始轉換]  。 在您選取 [開始轉換] 後：
 
     ![顯示設定精靈的螢幕擷取畫面](./media/mca-setup-account/ea-mca-set-up-wizard.png)
 
     - 新的計費帳戶中會建立與您的 Enterprise 合約階層相對應的計費階層。 如需詳細資訊，請參閱[了解您計費階層的變更](#understand-changes-to-your-billing-hierarchy)。
     - Enterprise 合約註冊中的系統管理員會獲得新計費帳戶的存取權，而能夠繼續管理組織的帳單。
-    - Azure 訂用帳戶的帳單會轉換至新的帳戶。 在**此轉換期間，您的 Azure 服務不會有任何影響。它們會繼續執行，而不會發生任何中斷**。
+    - Azure 訂用帳戶的帳單會轉換至新的帳戶。 **在此轉換期間，您的 Azure 服務將不受任何影響。它們會繼續執行，而不會發生任何中斷**。
     - 如果您有 Azure 保留，這些保留會移至新的計費帳戶，其權益或期限不變。
 
-4. 您可以在 [轉換狀態] 頁面上監視轉換的狀態。
+4. 您可以在 [轉換狀態]  頁面上監視轉換的狀態。
 
    ![顯示轉換狀態的螢幕擷取畫面](./media/mca-setup-account/ea-mca-set-up-status.png)
 
@@ -201,19 +201,19 @@ ms.locfileid: "75994632"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 搜尋 [成本管理 + 帳單]。
+2. 搜尋 [成本管理 + 帳單]  。
 
    ![顯示 Azure 入口網站搜尋的螢幕擷取畫面](./media/mca-setup-account/search-cmb.png)
 
 3. 選取計費帳戶。 計費帳戶的類型會是 **Microsoft 客戶合約**。
 
-4. 從左側選取 [Azure 訂用帳戶]。
+4. 從左側選取 [Azure 訂用帳戶]  。
 
    ![顯示訂用帳戶清單的螢幕擷取畫面](./media/mca-setup-account/mca-subscriptions-post-transition.png)
 
 從您的 Enterprise 合約註冊轉換到新計費帳戶的 Azure 訂用帳戶，會顯示在 [Azure 訂用帳戶] 頁面上。 如果您認為有任何訂用帳戶遺失，請在 Azure 入口網站中手動轉換訂用帳戶的帳單。 如需詳細資訊，請參閱[向其他使用者接管 Azure 訂用帳戶的帳單擁有權](mca-request-billing-ownership.md)
 
-### <a name="azure-reservations"></a>Azure 保留項目
+### <a name="azure-reservations"></a>Azure 保留
 
 您 Enterprise 合約註冊中的 Azure 保留都會移至新的計費帳戶，其權益或期限不變。 在轉換前完成的交易不會出現在新的計費帳戶中。 不過，您可以造訪 [Azure 保留頁面](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)，確認您的保留權益已套用至您的訂用帳戶。
 
@@ -221,13 +221,13 @@ ms.locfileid: "75994632"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 搜尋 [成本管理 + 帳單]。
+2. 搜尋 [成本管理 + 帳單]  。
 
    ![顯示 Azure 入口網站搜尋的螢幕擷取畫面](./media/mca-setup-account/search-cmb.png)
 
 3. 針對您的 **Microsoft 客戶合約**設定計費帳戶。
 
-4. 從左側選取 [存取控制 (IAM)]。
+4. 從左側選取 [存取控制 (IAM)]  。
 
    ![顯示轉換後的企業系統管理員存取權的螢幕擷取畫面](./media/mca-setup-account/mca-ea-admins-ba-access-post-transition.png)
 
@@ -237,13 +237,13 @@ ms.locfileid: "75994632"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 搜尋 [成本管理 + 帳單]。
+2. 搜尋 [成本管理 + 帳單]  。
 
    ![顯示 Azure 入口網站搜尋的螢幕擷取畫面](./media/mca-setup-account/search-cmb.png)
 
 3. 選取為您的註冊建立的帳單設定檔。 您可能需要根據存取權來選取帳單帳戶。 從計費帳戶中選取 [帳單設定檔]，然後選取帳單設定檔。
 
-4. 從左側選取 [存取控制 (IAM)]。
+4. 從左側選取 [存取控制 (IAM)]  。
 
    ![顯示轉換後的企業系統管理員存取權的螢幕擷取畫面](./media/mca-setup-account/mca-ea-admins-bp-access-post-transition.png)
 
@@ -253,21 +253,21 @@ ms.locfileid: "75994632"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 搜尋 [成本管理 + 帳單]。
+2. 搜尋 [成本管理 + 帳單]  。
 
    ![顯示 Azure 入口網站搜尋的螢幕擷取畫面](./media/mca-setup-account/search-cmb.png)。
 
-3. 選取發票區段。 發票區段會與其在 Enterprise 合約註冊中各自的部門同名。 您可能需要根據存取權來選取帳單帳戶。 從計費帳戶中選取 [帳單設定檔]，然後選取 [發票區段]。 從發票區段清單中，選取一個發票區段。
+3. 選取發票區段。 發票區段會與其在 Enterprise 合約註冊中各自的部門同名。 您可能需要根據存取權來選取帳單帳戶。 從計費帳戶中選取 [帳單設定檔]  ，然後選取 [發票區段]  。 從發票區段清單中，選取一個發票區段。
 
    ![顯示轉換後的發票區段清單的螢幕擷取畫面](./media/mca-setup-account/mca-invoice-sections-post-transition.png)
 
-4. 從左側選取 [存取控制 (IAM)]。
+4. 從左側選取 [存取控制 (IAM)]  。
 
     ![顯示轉換後的部門和帳戶管理員存取權的螢幕擷取畫面](./media/mca-setup-account/mca-department-account-admins-access-post-transition.png)
 
 企業系統管理員和部門系統管理員會列為發票區段擁有者或發票區段讀者，而部門中的帳戶擁有者則會列為 Azure 訂用帳戶建立者。 請對所有發票區段重複此步驟，以檢查 Enterprise 合約註冊中所有部門的存取權。 不屬於任何部門的帳戶擁有者，將有權存取名為**預設發票區段**的發票區段。 如果您認為有任何系統管理員的存取權遺失，您可以在 Azure 入口網站中為他們授與存取權。 如需詳細資訊，請參閱[在 Azure 入口網站中管理計費角色](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)。
 
-## <a name="need-help-contact-support"></a>需要協助嗎？ 連絡客戶支援
+## <a name="need-help-contact-support"></a>需要協助嗎？ 請連絡支援人員
 
 如果需要協助，請[連絡支援人員](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解決您的問題。
 

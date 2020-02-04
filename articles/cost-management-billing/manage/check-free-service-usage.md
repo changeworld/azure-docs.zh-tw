@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 83937e31d844ba0cc8efc17f1ecefa2ad6e7a7c1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992825"
 ---
 # <a name="check-usage-of-free-services-included-with-your-azure-free-account"></a>檢查 Azure 免費帳戶隨附的免費服務使用量
@@ -38,19 +38,19 @@ ms.locfileid: "75992825"
 
     該表有下列資料行：
 
-* **計量：** 識別所耗用服務的測量單位。
+* **計量：** 識別耗用服務的度量單位。
 * **使用量/限制：** 目前月份的使用量和計量的限額。
-* **狀態：** 服務的使用狀態。 根據您的使用量，您可有下列其中一個狀態：
-  * **不在使用中：** 您未使用計量，或計量的使用量尚未到達計費系統。
+* **狀態：** 服務的使用量狀態。 根據您的使用量，您可有下列其中一個狀態：
+  * **不在使用中：** 您未使用計量，或計費的使用量未達到計費系統的標準。
   * **已在 \<Date> 超過：** 您在 \<Date> 超過計量的限額。
-  * 不**太可能超過：** 您不太可能超過計量的限制。
-  * **\<日期 > 超過：** 您可能會超過計量在 \<日期 > 的限制。
+  * **不太可能超過：** 您不太可能超過計量的限額。
+  * **在 \<Date> 超過：** 您可能在 \<Date> 超過計量的限額。
 
 > [!IMPORTANT]
 >
 > 免費服務僅適用於當您註冊 Azure 免費帳戶時所建立的訂用帳戶。 如果您在訂用帳戶概觀頁面中看不到免費服務表格，則表示不適用於訂用帳戶。
 
-## <a name="need-help-contact-us"></a>需要協助嗎？ 連絡我們。
+## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡。
 
 如有問題或需要協助，請[建立支援要求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 

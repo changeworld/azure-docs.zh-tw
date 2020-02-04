@@ -11,10 +11,10 @@ ms.service: cost-management-billing
 manager: vitavor
 ms.custom: seodec18
 ms.openlocfilehash: 47a53136a8f299e5c8654d122d8e319be4ae29db
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75988379"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>如何透過 Azure 成本管理將雲端投資最佳化
@@ -39,7 +39,7 @@ Azure 成本管理可提供您規劃、分析以及減少費用，以便將雲�
 
 使用以下所述的原則，為貴組織在雲端成本管理方面的成就定位。
 
-#### <a name="planning"></a>計劃
+#### <a name="planning"></a>規劃
 
 全方位的前期規劃可讓您根據特定的業務需求，量身打造雲端使用情況。 自問：
 
@@ -56,7 +56,7 @@ Azure 成本管理可提供您規劃、分析以及減少費用，以便將雲�
 
 歸納組織中的成本，以確保負責的人員對其小組的費用負責。 若要充分了解貴組織的 Azure 費用，您應該整理資源並仔細歸納成本。 良好的組織有助於管理並降低成本，並使人員對組織中的有效費用負責。
 
-#### <a name="optimization"></a>最佳化
+#### <a name="optimization"></a>Optimization
 
 採取行動以減少費用。 根據透過規劃和增加成本可見度而蒐集到的結果充分發揮。 您可以考慮購買及授權最佳化，以及本文件稍後將詳細討論的基礎架構部署變更。
 

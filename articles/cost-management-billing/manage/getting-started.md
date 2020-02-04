@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: a78edc29ef85430dc8af57e60dfcba1f2e46413e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991473"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>使用 Azure 計費與成本管理避免非預期的費用
@@ -34,7 +34,7 @@ ms.locfileid: "75991473"
 使用下列其中一個工具來預估使用 Azure 服務的成本：
 - Azure 定價計算機
 - Azure 價位表
-- Azure Portal
+- Azure 入口網站
 
 下列各節中的影像顯示以美元為單位的定價範例。
 
@@ -76,13 +76,13 @@ ms.locfileid: "75991473"
 
 1. 瀏覽 [Azure 入口網站中的 [成本管理 + 帳單] 頁面](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade)。
 
-2. 按一下畫面左側的 [成本分析]，以查看依各種樞紐 (例如服務、位置和訂用帳戶) 細分的目前成本。 新增服務或進行採購之後，請等候 24 小時以便顯示資料。 根據預設，成本分析會顯示您所在範圍的成本。 例如，下面的螢幕擷取畫面中會顯示 Contoso 計費帳戶的成本。 使用 [範圍] 框，以切換至成本分析中的不同範圍。 如需有關範圍的詳細資訊，請參閱[了解並使用範圍](../costs/understand-work-scopes.md#scopes)。
+2. 按一下畫面左側的 [成本分析]  ，以查看依各種樞紐 (例如服務、位置和訂用帳戶) 細分的目前成本。 新增服務或進行採購之後，請等候 24 小時以便顯示資料。 根據預設，成本分析會顯示您所在範圍的成本。 例如，下面的螢幕擷取畫面中會顯示 Contoso 計費帳戶的成本。 使用 [範圍] 框，以切換至成本分析中的不同範圍。 如需有關範圍的詳細資訊，請參閱[了解並使用範圍](../costs/understand-work-scopes.md#scopes)。
 
     ![Azure 入口網站中成本分析檢視的螢幕擷取畫面](./media/getting-started/cost-analysis.png)
 
-4. 您可以依各種屬性 (例如標籤、資源類型和時間範圍) 進行篩選。 按一下 [新增篩選條件] 以新增屬性的篩選條件，然後選取要篩選的值。 選取 [匯出]，將此檢視匯出為逗號分隔值 (.csv) 檔案。
+4. 您可以依各種屬性 (例如標籤、資源類型和時間範圍) 進行篩選。 按一下 [新增篩選條件]  以新增屬性的篩選條件，然後選取要篩選的值。 選取 [匯出]  ，將此檢視匯出為逗號分隔值 (.csv) 檔案。
 
-5. 此外，您也可以按一下圖表的標籤，以查看該標籤的每日支出歷程記錄。 例如：在下方的螢幕擷取畫面中，按一下 [虛擬機器] 會顯示執行 Vm 的每日成本。
+5. 此外，您也可以按一下圖表的標籤，以查看該標籤的每日支出歷程記錄。 例如：在下面的螢幕擷取畫面中，按一下虛擬機器可顯示執行 VM 的每日成本。
 
     ![Azure 入口網站中消費歷程記錄檢視的螢幕擷取畫面](./media/getting-started/costhistory.png)
 
@@ -107,7 +107,7 @@ ms.locfileid: "75991473"
 
 ![Azure 入口網站中 Azure 建議程式按鈕的螢幕擷取畫面](./media/getting-started/advisor-button.png)
 
-從左側選取 [成本]。 您會在 [成本] 索引標籤中看到可操作的建議：
+從左側選取 [成本]  。 您會在 [成本]  索引標籤中看到可操作的建議：
 
 ![建議程式的成本建議範例的螢幕擷取畫面](./media/getting-started/advisor-action.png)
 
@@ -145,7 +145,7 @@ ms.locfileid: "75991473"
 - 如果您沒有看到成本，原因可能為下列其中之一：
     - 您沒有訂用帳戶層級的權限。 若要查看企業成本檢視，您必須是訂用帳戶層級上的帳單讀者、讀者、參與者或擁有者。
     - 您是帳戶擁有者且您的申請管理員已停用「AO 檢視費用」設定。  請連絡您的申請管理員以取得費用存取權。
-    - 您是部門管理員且您的申請管理員已停用 [DA 檢視費用] 設定。  請連絡您的註冊管理員以取得存取權。
+    - 您是部門管理員且您的申請管理員已停用 [DA 檢視費用]  設定。  請連絡您的註冊管理員以取得存取權。
     - 您是透過通道合作夥伴購買 Azure，而該合作夥伴未釋出定價資訊。  
 - 如果您在企業版入口網站中更新成本存取相關的設定，則變更可能需要幾分鐘才會在 Azure 入口網站中顯示。
 - 消費限制和發票指導方針不適用於 EA 訂用帳戶。
@@ -162,16 +162,16 @@ ms.locfileid: "75991473"
 
 ### <a name="request-a-service-level-agreement-credit-for-a-service-incident"></a>要求服務事件的服務等級協定點數
 
-服務等級協定 (SLA) 描述 Microsoft 對執行時間與連線能力的承諾。 當 Azure 服務遇到會影響執行時間或連線能力 (通常稱為「中斷」) 的問題時，系統就會回報服務事件。 如果我們未依照 SLA 中的說明來達到並維護每個服務的服務等級，則您可能有資格取得每月服務費用的信用額度。
+服務等級協定 (SLA) 描述 Microsoft 對執行時間與連線能力的承諾。 當 Azure 服務遇到會影響執行時間或連線能力 (通常稱為「中斷」  ) 的問題時，系統就會回報服務事件。 如果我們未依照 SLA 中的說明來達到並維護每個服務的服務等級，則您可能有資格取得每月服務費用的信用額度。
 
 若要要求點數：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。 如果您有多個帳戶，請確定您使用受 Azure 停機時間影響的帳戶。
 2. 建立新的支援要求。
-3. 在 [問題類型] 底下，選取 [計費]。
-4. 在 [問題類型] 底下，選取 [退費要求]。
+3. 在 [問題類型]  底下，選取 [計費]  。
+4. 在 [問題類型]  底下，選取 [退費要求]  。
 5. 新增詳細資料以指定您要求 SLA 信用額度，並提及日期/時間/時區以及受影響的服務 (VM、網站等)
-6. 請確認您的連絡人詳細資料，然後選取 [建立] 以提交您的要求。
+6. 請確認您的連絡人詳細資料，然後選取 [建立]  以提交您的要求。
 
 SLA 閾值會因服務而異。 例如，SQL Web 層的 SLA 為 99.9%，VM 的 SLA 為 99.95%，而 SQL 標準層的 SLA 為 99.99%。
 
@@ -179,7 +179,7 @@ SLA 閾值會因服務而異。 例如，SQL Web 層的 SLA 為 99.9%，VM 的 S
 
 如需詳細資訊，請參閱[服務等級協定](https://azure.microsoft.com/support/legal/sla/)和 [Azure 服務的 SLA 摘要](https://azure.microsoft.com/support/legal/sla/summary/)文件。
 
-## <a name="need-help-contact-us"></a>需要協助嗎？ 連絡我們。
+## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡。
 
 如有問題或需要協助，請[建立支援要求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 

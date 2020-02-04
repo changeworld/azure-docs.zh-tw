@@ -14,10 +14,10 @@ ms.date: 04/29/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a1cbbbcb110e9943f9714d9f6463c01b408fc1d7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75993046"
 ---
 # <a name="change-the-profile-information-for-your-azure-account"></a>變更 Azure 帳戶的設定檔資訊
@@ -29,7 +29,7 @@ Microsoft 會使用使用者 (不是帳戶管理員的帳戶使用者) 設定檔
 ## <a name="change-your-profile-information"></a>變更設定檔資訊
 
 1. 登入 [Azure 帳戶中心](https://account.azure.com/subscriptions)。
-1. 選取 [編輯詳細資料] 按鈕，然後更新 [設定檔] 資訊。
+1. 選取 [編輯詳細資料]  按鈕，然後更新 [設定檔]  資訊。
 
    ![Azure 設定檔資訊的範例](./media/change-azure-account-profile/profile.png)
 
@@ -72,11 +72,11 @@ Microsoft 會使用使用者 (不是帳戶管理員的帳戶使用者) 設定檔
 
 您可以使用下列其中一種方法來變更您的連絡人電子郵件地址：
 
-* 登入 [Azure 帳戶中心](https://account.azure.com/subscriptions)。 選取 [編輯詳細資料]，然後更新設定檔電子郵件地址。 更新設定檔電子郵件地址不會更新登入電子郵件地址。
+* 登入 [Azure 帳戶中心](https://account.azure.com/subscriptions)。 選取 [編輯詳細資料]  ，然後更新設定檔電子郵件地址。 更新設定檔電子郵件地址不會更新登入電子郵件地址。
 
 * 移至 Azure 入口網站中的[連絡人資訊](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade)區域，然後輸入電子郵件地址。 您所提供的地址會接收服務和行銷通訊。 Azure 帳戶中心設定檔中的電子郵件地址會更新為自動相符。 更新設定檔電子郵件地址不會更新登入電子郵件地址。
 
-* 在 [Azure 入口網站](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade)中，選取具有您的姓名縮寫或圖片的圖示。 然後，選取內容功能表（ **...** ）。接下來，從功能表中選取 [**我的連絡人資訊**]，然後輸入電子郵件地址。 您所提供的地址會接收服務和行銷通訊。 Azure 帳戶中心設定檔中的電子郵件地址會更新為自動相符。 更新設定檔電子郵件地址不會更新登入電子郵件地址。
+* 在 [Azure 入口網站](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade)中，選取具有您的姓名縮寫或圖片的圖示。 然後，選取快顯功能表 ( **...** )。接下來，從功能表中選取 [我的連絡人資訊]  ，然後輸入電子郵件地址。 您所提供的地址會接收服務和行銷通訊。 Azure 帳戶中心設定檔中的電子郵件地址會更新為自動相符。 更新設定檔電子郵件地址不會更新登入電子郵件地址。
 
 ![在 Azure 中更新電子郵件地址的範例](./media/change-azure-account-profile/azure-contact-information.png)
 
@@ -85,7 +85,7 @@ Microsoft 會使用使用者 (不是帳戶管理員的帳戶使用者) 設定檔
 若不想要接收行銷電子郵件：
 
 1. 前往[要求表單](https://account.microsoft.com/profile/permissions-link-request)，使用您的設定檔電子郵件地址提交要求。 您會經由電子郵件收到連結，以更新您的喜好設定。
-2. 選取該連結以開啟 [管理通訊權限] 頁面。 此頁面會顯示電子郵件地址所加入的行銷通訊類型。 清除您想要退出的任何主題，然後選取 [儲存]。
+2. 選取該連結以開啟 [管理通訊權限]  頁面。 此頁面會顯示電子郵件地址所加入的行銷通訊類型。 清除您想要退出的任何主題，然後選取 [儲存]  。
 
 ![用於管理通訊權限的頁面範例](./media/change-azure-account-profile/manage-communication-permissions.png)
 
@@ -93,12 +93,12 @@ Microsoft 會使用使用者 (不是帳戶管理員的帳戶使用者) 設定檔
 
 ## <a name="change-the-subscription-name"></a>變更訂用帳戶名稱
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)，從左窗格中選取 [訂用帳戶]，然後選取您要重新命名的訂用帳戶。
-1. 選取 [概觀]，然後從命令列選取 [重新命名]。
+1. 登入 [Azure 入口網站](https://portal.azure.com)，從左窗格中選取 [訂用帳戶]  ，然後選取您要重新命名的訂用帳戶。
+1. 選取 [概觀]  ，然後從命令列選取 [重新命名]  。
     ![重新命名 Azure 訂用帳戶的範例](./media/change-azure-account-profile/rename-sub.png)
-1. 變更名稱之後，請選取 [儲存]。
+1. 變更名稱之後，請選取 [儲存]  。
 
-## <a name="need-help-contact-us"></a>需要協助嗎？ 連絡我們。
+## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡。
 
 如果您有問題或需要協助，請[建立支援要求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 

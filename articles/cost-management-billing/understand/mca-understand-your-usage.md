@@ -1,5 +1,5 @@
 ---
-title: Microsoft 客戶合約 Azure 使用方式和費用檔案詞彙
+title: Microsoft 客戶合約 Azure 使用量和費用檔案術語
 description: 了解如何閱讀並看懂帳單設定檔的 Azure 使用量和費用 CSV 區段。
 author: bandersmsft
 manager: jureid
@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: b48cc5d5a36a382909adb250dd76b4f5783a4340
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75990901"
 ---
 # <a name="terms-in-the-azure-usage-and-charges-file-for-a-microsoft-customer-agreement"></a>Microsoft 客戶合約的 Azure 使用量和費用檔案術語
@@ -34,11 +34,11 @@ Azure 使用量和費用 CSV 檔案會包含目前計費週期的每日及計量
 
 | Azure EA 使用量 CSV | Microsoft 客戶合約 Azure 使用量和費用 CSV |
 | --- | --- |
-| 日期 | date |
-| 月| date |
-| 天 | date |
-| 年 | date |
-| 產品 | product |
+| Date | date |
+| Month| date |
+| Day | date |
+| Year | date |
+| Products | product |
 | 計量識別碼 | meterID |
 | MeterCategory | meterCategory |
 | MeterSubCategory | meterSubCategory |
@@ -53,7 +53,7 @@ Azure 使用量和費用 CSV 檔案會包含目前計費週期的每日及計量
 | ServiceInfo1 | serviceInfo1 |
 | ServiceInfo2 | serviceInfo2 |
 | AdditionalInfo | additionalInfo |
-| 標籤 | tags |
+| Tags | tags |
 | StoreServiceIdentifier | N/A |
 | DepartmentName | invoiceSection |
 | CostCenter | costCenter |
@@ -65,7 +65,7 @@ Azure 使用量和費用 CSV 檔案會包含目前計費週期的每日及計量
 
 下列術語會顯示在 Azure 使用量和費用檔案中。
 
-條款 | 說明
+詞彙 | 描述
 --- | ---
 invoiceId | 發票 PDF 中所列出的唯一文件識別碼
 previousInvoiceId | 如果此明細項目為退款，則為原始發票的參考
@@ -87,7 +87,7 @@ productOrderName | 產品訂單的唯一名稱
 consumedService | 所取用服務的名稱
 meterId | 計量的唯一識別碼
 meterName | 計量的名稱
-meterCategory | 計量的分類類別名稱。 例如，雲端服務、網路等等。
+meterCategory | 計量的分類類別名稱。 例如，雲端服務  、網路  等等。
 meterSubCategory | 計量的子分類類別名稱
 meterRegion | 可使用服務計量的區域名稱。 針對根據資料中心位置定價的某些服務，識別資料中心的位置。
 供應項目 | 所購買供應項目的名稱
@@ -107,8 +107,8 @@ resourceLocation | 識別正在執行資源的資料中心所在位置。
 location | 如果針對相同區域設定了不同的資源位置，則為資源的正規化位置
 quantity | 所購買或取用的單位數
 unitOfMeasure | 服務的計費測量單位。 例如，計算服務會依小時計費。
-chargeType | 費用的類型。 值： <ul><li>AsCharged-使用方式：根據 Azure 服務的使用量來計費的費用。 這包括因保留執行個體而不計費的 VM 使用量。</li><li>AsCharged-PurchaseMarketplace：來自 Marketplace 購買的一次性或固定週期性費用</li><li>AsCharged-UsageMarketplace：根據耗用量單位收費的 Marketplace 服務費用</li></ul>
-isAzureCreditEligible | 此旗標指出是否有資格支付服務費用，以使用 Azure 點數（值： True、False）
+chargeType | 費用的類型。 值： <ul><li>AsCharged-Usage：根據 Azure 服務使用量而產生的費用。 這包括因保留執行個體而不計費的 VM 使用量。</li><li>AsCharged-PurchaseMarketplace：來自 Marketplace 購買的一次性費用或固定週期性費用</li><li>AsCharged-UsageMarketplace：根據取用單位數而計費的 Marketplace 服務費用</li></ul>
+isAzureCreditEligible | 此旗標會指出服務費用是否有資格使用 Azure 點數來支付 (值：True、False)
 serviceInfo1 | 服務專屬的中繼資料
 serviceInfo2 | 舊版欄位，可擷取選擇性的服務特定中繼資料
 additionalInfo | 其他的服務專屬中繼資料。
@@ -121,7 +121,7 @@ tags | 您指派給資源的標記
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>檢查 Microsoft 客戶合約的存取
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>需要協助嗎？ 連絡我們。
+## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡。
 
 如果您有問題或需要協助，請[建立支援要求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 

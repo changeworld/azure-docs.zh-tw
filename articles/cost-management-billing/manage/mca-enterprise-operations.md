@@ -1,5 +1,5 @@
 ---
-title: Microsoft 客戶合約中的 EA 工作-Azure
+title: Microsoft 客戶合約中的 EA 工作 - Azure
 description: 了解如何在您新的計費帳戶中完成 Enterprise 合約工作。
 author: amberbhargava
 manager: amberb
@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 01/02/2020
 ms.author: banders
 ms.openlocfilehash: 0cdf95b8d91938d6b9b4de413bc5d5dcb8caa2f4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991239"
 ---
 # <a name="complete-enterprise-agreement-tasks-in-your-billing-account-for-a-microsoft-customer-agreement"></a>在您 Microsoft 客戶合約的計費帳戶中完成 Enterprise 合約工作
@@ -31,7 +31,7 @@ ms.locfileid: "75991239"
 
 | Enterprise 合約   | Microsoft 客戶合約    |
 |------------------------|--------------------------------------------------------|
-| 註冊            | 您可以使用帳單設定檔來管理組織的帳單，如同使用您的 Enterprise 合約註冊。 企業系統管理員會成為帳單設定檔的擁有者。 若要深入了解帳單設定檔，請參閱[了解帳單設定檔](../understand/mca-overview.md#billing-profiles)。
+| 申請            | 您可以使用帳單設定檔來管理組織的帳單，如同使用您的 Enterprise 合約註冊。 企業系統管理員會成為帳單設定檔的擁有者。 若要深入了解帳單設定檔，請參閱[了解帳單設定檔](../understand/mca-overview.md#billing-profiles)。
 | department            | 您可以使用發票區段來彙整成本，如同使用 Enterprise 合約註冊中的部門。 部門會成為發票區段，而部門系統管理員會成為個別發票區段的擁有者。 若要深入了解發票區段，請參閱[了解發票區段](../understand/mca-overview.md#invoice-sections)。 |
 | 帳戶               | 新的計費帳戶不支援在您的 Enterprise 合約中建立的帳戶。 帳戶的訂用帳戶屬於其部門的個別發票區段。 帳戶擁有者可建立及管理其發票區段的訂用帳戶。 |
 
@@ -80,7 +80,7 @@ ms.locfileid: "75991239"
 
 ### <a name="add-an-additional-enterprise-administrator"></a>新增其他企業系統管理員
 
-為使用者授與帳單設定檔的存取權，讓他們能夠檢視及管理組織的帳單。 您可以使用 Azure 入口網站中的 [存取控制 (IAM)] 頁面來授與存取權。  若要深入了解帳單設定檔角色，請參閱[帳單設定檔角色和工作](understand-mca-roles.md#billing-profile-roles-and-tasks)。
+為使用者授與帳單設定檔的存取權，讓他們能夠檢視及管理組織的帳單。 您可以使用 Azure 入口網站中的 [存取控制 (IAM)]  頁面來授與存取權。  若要深入了解帳單設定檔角色，請參閱[帳單設定檔角色和工作](understand-mca-roles.md#billing-profile-roles-and-tasks)。
 
 若要了解如何提供帳單設定檔的存取權，請參閱[在 Azure 入口網站中管理計費角色](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)。
 
@@ -110,7 +110,7 @@ ms.locfileid: "75991239"
 
 ### <a name="add-an-additional-department-administrator"></a>新增其他部門系統管理員
 
-系統會為您在 Enterprise 合約中的每個部門建立一個發票區段。 您可以使用 Azure 入口網站中的 [存取控制 (IAM)] 頁面，為其他人授與檢視和管理發票區段的存取權。 若要深入了解發票區段角色，請參閱[發票區段角色和工作](understand-mca-roles.md#invoice-section-roles-and-tasks)。
+系統會為您在 Enterprise 合約中的每個部門建立一個發票區段。 您可以使用 Azure 入口網站中的 [存取控制 (IAM)]  頁面，為其他人授與檢視和管理發票區段的存取權。 若要深入了解發票區段角色，請參閱[發票區段角色和工作](understand-mca-roles.md#invoice-section-roles-and-tasks)。
 
 若要了解如何提供發票區段的存取權，請參閱[在 Azure 入口網站中管理計費角色](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)。
 
@@ -144,7 +144,7 @@ Enterprise 合約上的帳戶擁有者會取得在新的計費帳戶上建立 Az
 
 您可以在[訂用帳戶頁面](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)或 Azure 成本分析上檢視訂用帳戶的費用。 如需 Azure 成本分析的詳細資訊，請參閱[使用成本分析探索及分析成本](../costs/quick-acm-cost-analysis.md)。
 
-## <a name="need-help-contact-support"></a>需要協助嗎？ 連絡客戶支援
+## <a name="need-help-contact-support"></a>需要協助嗎？ 請連絡支援人員
 
 如果需要協助，請[連絡支援人員](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解決您的問題。
 

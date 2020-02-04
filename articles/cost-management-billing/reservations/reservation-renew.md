@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: dfff02c554c94daf1dd7fd844cea461fd76589d8
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995711"
 ---
 # <a name="automatically-renew-reservations"></a>自動更新保留
@@ -27,11 +27,11 @@ ms.locfileid: "75995711"
 
 ## <a name="set-up-renewal"></a>設定更新
 
-移至 Azure 入口網站 > [保留]。
+移至 Azure 入口網站 > [保留]  。
 
 1. 選取保留。
-2. 按一下 [更新]。
-3. 選取 [在到期時自動購買新的保留]。  
+2. 按一下 [更新]  。
+3. 選取 [在到期時自動購買新的保留]  。  
   ![顯示保留更新的範例](./media/reservation-renew/reservation-renewal.png)
 
 ## <a name="if-you-dont-renew"></a>如果您未更新

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: banders
 ms.openlocfilehash: a35d7d4ef24218c96e305abf623f746c92c8aa87
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75993696"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>新增或變更 Azure 訂用帳戶系統管理員
@@ -41,8 +41,8 @@ Microsoft 建議您使用 RBAC 來管理對資源的存取。 不過，如果您
 如果您不確定誰是訂用帳戶的帳戶管理員，請使用下列步驟來找出帳戶管理員。
 
 1. 開啟 [Azure 入口網站中的 [訂用帳戶] 頁面](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)。
-1. 選取您想要檢查的訂用帳戶，然後查看 [設定]。
-1. 選取 [屬性]。 該訂用帳戶的帳戶管理員會顯示在 [帳戶管理員] 方塊中。
+1. 選取您想要檢查的訂用帳戶，然後查看 [設定]  。
+1. 選取 [屬性]  。 該訂用帳戶的帳戶管理員會顯示在 [帳戶管理員]  方塊中。
 
 ### <a name="to-assign-a-user-as-an-administrator"></a>將使用者指派為系統管理員
 
@@ -50,23 +50,23 @@ Microsoft 建議您使用 RBAC 來管理對資源的存取。 不過，如果您
 
 1. 選擇您想要授與存取權的訂用帳戶。
 
-1. 按一下 [存取控制 (IAM)]。
+1. 按一下 [存取控制 (IAM)]  。
 
-1. 按一下 [角色指派] 索引標籤以檢視此訂用帳戶的所有角色指派。
+1. 按一下 [角色指派]  索引標籤以檢視此訂用帳戶的所有角色指派。
 
     ![顯示角色指派的螢幕擷取畫面](./media/add-change-subscription-administrator/role-assignments.png)
 
-1. 按一下 [新增] > [新增角色指派]，以開啟 [新增角色指派] 窗格。
+1. 按一下 [新增]   > [新增角色指派]  ，以開啟 [新增角色指派]  窗格。
 
     如果您沒有指派角色的權限，此選項就會被停用。
 
-1. 在 [角色] 下拉式清單中，選取 [擁有者] 角色。
+1. 在 [角色]  下拉式清單中，選取 [擁有者]  角色。
 
-1. 在 [選取] 清單中，選取使用者。 如果在清單中未看到使用者，您可以在 [選取] 方塊中輸入，以在目錄中搜尋顯示名稱與電子郵件地址。
+1. 在 [選取]  清單中，選取使用者。 如果在清單中未看到使用者，您可以在 [選取]  方塊中輸入，以在目錄中搜尋顯示名稱與電子郵件地址。
 
     ![顯示已選取 [擁有者] 角色的螢幕擷取畫面](./media/add-change-subscription-administrator/add-role.png)
 
-1. 按一下 [儲存] 以指派角色。
+1. 按一下 [儲存]  以指派角色。
 
     在幾分鐘之後，即會在訂用帳戶範圍將「擁有者」角色指派給使用者。
 
@@ -74,9 +74,9 @@ Microsoft 建議您使用 RBAC 來管理對資源的存取。 不過，如果您
 
 * [什麼是角色型存取控制 (RBAC)？](../../role-based-access-control/overview.md)
 * [了解 Azure 中的不同角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)
-* [如何：將 Azure 訂用帳戶關聯或新增至 Azure Active Directory](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
+* [操作說明：將 Azure 訂用帳戶關聯或新增至 Azure Active Directory](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 * [Azure Active Directory 中的系統管理員角色權限](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)
 
-## <a name="need-help-contact-support"></a>需要協助嗎？ 連絡客戶支援
+## <a name="need-help-contact-support"></a>需要協助嗎？ 請連絡支援人員
 
 如果仍需要協助，請[連絡支援人員](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解決您的問題。

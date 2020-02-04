@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 1294ee126ecef1f635ffc4d6bec6da02c6171897
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995789"
 ---
 # <a name="how-reservation-discounts-apply-to-azure-app-service-isolated-stamps"></a>保留折扣如何套用至 Azure App Service 隔離式方案戳記
@@ -33,16 +33,16 @@ App Service 隔離式方案戳記費用折扣會套用至以小時為單位而�
 
 因此，戳記計量可能會在戳記的生命週期內，於 Windows 和 Linux 之間變來變去。 同時，保留會專屬於作業系統。 您必須購買保留來支援您打算部署至戳記的背景工作角色。 僅限 Windows 的戳記和混合式戳記會使用 Windows 保留。 只有 Linux 背景工作角色的戳記則會使用 Linux 保留。
 
-當您打算只讓戳記中有 Linux 背景工作角色時，才應該購買 Linux 保留。
+當您打算只  讓戳記中有 Linux 背景工作角色時，才應該購買 Linux 保留。
 
 ## <a name="discount-examples"></a>折扣範例
 
 下列範例會根據部署來顯示隔離式方案戳記費用保留執行個體折扣的套用方式。
 
-- **範例 1**：您在沒有 App Service 隔離式方案戳記的區域中購買一個隔離的保留戳記容量實例。 您在該區域中部署新的戳記，並支付該戳記的保留費率。
-- **範例 2**：您在已部署 App Service 隔離式方案戳記的區域中購買一個隔離的保留戳記容量實例。 您開始獲得已部署戳記的保留費率。
-- **範例 3**：您在已部署 App Service 隔離式方案戳記的區域中，購買一個隔離的保留戳記容量實例。 您開始在已部署的戳記上獲得保留費率。 之後，您刪除戳記並部署新的戳記。 您獲得新戳記的保留費率。 折扣不會延續至沒有已部署戳記的持續時間。
-- **範例 4**：您會在區域中購買一個隔離的 Linux 保留戳記容量實例，然後將新的戳記部署到該區域。 該戳記一開始在部署時並沒有背景工作角色，所以會發出 Windows 戳記計量。 您不會獲得折扣。 當第一個 Linux 背景工作角色部署到戳記上時，其會發出 Linux 戳記計量，並套用保留折扣。 如果之後將 Windows 背景工作角色部署到戳記上，戳記計量便會還原為 Windows。 您也就不會再獲得隔離式方案 Linux 保留戳記保留的折扣。
+- **範例 1**：您在沒有 App Service 隔離式方案戳記的區域中購買一個隔離式方案保留戳記容量執行個體。 您在該區域中部署新的戳記，並支付該戳記的保留費率。
+- **範例 2：** 您在已部署 App Service 隔離式方案戳記的區域中購買一個隔離式方案保留戳記容量執行個體。 您開始獲得已部署戳記的保留費率。
+- **範例 3**：您在已部署 App Service 隔離式方案戳記的區域中購買一個隔離式方案保留戳記容量執行個體。 您開始在已部署的戳記上獲得保留費率。 之後，您刪除戳記並部署新的戳記。 您獲得新戳記的保留費率。 折扣不會延續至沒有已部署戳記的持續時間。
+- **範例 4**：您在某個區域購買一個隔離式方案 Linux 保留戳記容量執行個體，然後將新戳記部署到該區域。 該戳記一開始在部署時並沒有背景工作角色，所以會發出 Windows 戳記計量。 您不會獲得折扣。 當第一個 Linux 背景工作角色部署到戳記上時，其會發出 Linux 戳記計量，並套用保留折扣。 如果之後將 Windows 背景工作角色部署到戳記上，戳記計量便會還原為 Windows。 您也就不會再獲得隔離式方案 Linux 保留戳記保留的折扣。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,21 +1,20 @@
 ---
 title: 在 Azure 中為 Cloudyn 設定儲存體帳戶 | Microsoft Docs
 description: 本文說明如何為 Cloudyn 設定 Azure 儲存體帳戶和 AWS 儲存體貯體。
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 01/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: benshy
+ms.reviewer: benshy
 ms.custom: secdec18
-ms.openlocfilehash: 2a8f3645dcf2987d0c0a204e7e8a86cd6d718e47
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: aa5fc1dddec6931b5eff1e34cf6c12b218bdf2fd
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75994866"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76769965"
 ---
 # <a name="configure-storage-accounts-for-cloudyn"></a>為 Cloudyn 設定儲存體帳戶
 
@@ -23,7 +22,7 @@ ms.locfileid: "75994866"
 
 您可以將 Cloudyn 報表儲存在 Cloudyn 入口網站、Azure 儲存體或 AWS 儲存體貯體中。 將報表儲存至 Cloudyn 入口網站中是免費的。 但您也可以選擇將報表儲存至雲端服務提供者的儲存體，只是那會產生額外費用。 本文將協助您設定 Azure 儲存體帳戶和 Amazon Web Services (AWS) 儲存體貯體，以儲存您的報表。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 您必須具有 Azure 儲存體帳戶或 Amazon 儲存體貯體。
 
@@ -36,24 +35,24 @@ ms.locfileid: "75994866"
 設定 Azure 儲存體以供 Cloudyn 使用相當簡單。 請收集儲存體帳戶的相關詳細資料，然後將它們複製到 Cloudyn 入口網站中。
 
 1. 在 https://portal.azure.com 登入 Azure 入口網站。
-2. 按一下 [所有服務]，選取 [儲存體帳戶]，捲動至您想要使用的儲存體帳戶，然後選取該帳戶。
-3. 在儲存體帳戶頁面上的 [設定] 底下，按一下 [存取金鑰]。
-4. 複製您的 [儲存體帳戶名稱] 和 key1 底下的 [連接字串]。  
+2. 按一下 [所有服務]  ，選取 [儲存體帳戶]  ，捲動至您想要使用的儲存體帳戶，然後選取該帳戶。
+3. 在儲存體帳戶頁面上的 [設定]  底下，按一下 [存取金鑰]  。
+4. 複製您的 [儲存體帳戶名稱]  和 key1 底下的 [連接字串]  。  
    ![複製儲存體帳戶名稱與連接字串](./media/storage-accounts/azure-storage-access-keys.png)  
 5. 從 Azure 入口網站中開啟 Cloudyn 入口網站，或瀏覽至 https://azure.cloudyn.com 並登入。
-6. 按一下齒輪符號，然後選取 [Reports Storage Management] \(報表儲存體管理\)。
-7. 按一下 [Add new +] \(新增 +\)，然後確認已選取 [Microsoft Azure]。 將您的 Azure 儲存體帳戶名稱貼到 [Name] \(名稱\) 區域中。 將您的**連接字串**貼到對應的區域中。 輸入容器名稱，然後按一下 [Save] \(儲存\)。  
+6. 按一下齒輪符號，然後選取 [Reports Storage Management] \(報表儲存體管理\)  。
+7. 按一下 [Add new +] \(新增 +\)  ，然後確認已選取 [Microsoft Azure]。 將您的 Azure 儲存體帳戶名稱貼到 [Name] \(名稱\)  區域中。 將您的**連接字串**貼到對應的區域中。 輸入容器名稱，然後按一下 [Save] \(儲存\)  。  
    ![在 [Add a new report storage] \(新增報表儲存體\)方塊中貼上 Azure 儲存體帳戶名稱與連接字串](./media/storage-accounts/azure-cloudyn-storage.png)
 
    您的新 Azure 報表儲存體項目會出現在儲存體帳戶清單中。  
     ![清單中的新 Azure 報表儲存體項目](./media/storage-accounts/azure-storage-entry.png)
 
 
-您現在已可將報表儲存至 Azure 儲存體。 在任何報表中，按一下 [Actions] \(動作\)，然後選取 [Schedule report] \(排程報表\)。 為報告命名，然後新增您自己的 URL 或使用自動建立的 URL。 選取 [Save to storage] \(儲存至儲存體\)，然後選取儲存體帳戶。 輸入要附加至報告檔案名稱的前置詞。 選取 CSV 或 JSON 檔案格式，然後儲存報表。
+您現在已可將報表儲存至 Azure 儲存體。 在任何報表中，按一下 [Actions] \(動作\)  ，然後選取 [Schedule report] \(排程報表\)  。 為報告命名，然後新增您自己的 URL 或使用自動建立的 URL。 選取 [Save to storage] \(儲存至儲存體\)  ，然後選取儲存體帳戶。 輸入要附加至報告檔案名稱的前置詞。 選取 CSV 或 JSON 檔案格式，然後儲存報表。
 
 ## <a name="configure-an-aws-storage-bucket"></a>設定 AWS 儲存體貯體
 
-Cloudyn 會使用現有的 AWS 認證 (使用者或角色) 將報表儲存至您的貯體。 為了測試存取，Cloudyn 會嘗試將一個小文字檔以 _check-bucket-permission.txt_ 檔案名稱儲存至貯體。
+Cloudyn 會使用現有的 AWS 認證：使用者或角色，以將報表儲存至您的貯體。 為了測試存取，Cloudyn 會嘗試將一個小文字檔以 _check-bucket-permission.txt_ 檔案名稱儲存至貯體。
 
 您需提供具備您貯體之 PutObject 權限的 Cloudyn 角色或使用者。 然後，使用現有的貯體或建立新貯體來儲存報表。 最後，決定如何管理儲存體類別、設定生命週期規則，或移除任何不必要的檔案。
 
@@ -61,11 +60,11 @@ Cloudyn 會使用現有的 AWS 認證 (使用者或角色) 將報表儲存至您
 
 建立新原則時，您需提供將報表儲存至 S3 貯體所需的確切權限。
 
-1. 登入 AWS 主控台，然後選取 [Services] \(服務\)。
-2. 從服務清單中，選取 [IAM]。
-3. 選取主控台左側的 [Policies] \(原則\)，然後按一下 [Create Policy] \(建立原則\)。
-4. 按一下 [JSON] 索引標籤。
-5. 下列原則可讓您將報表儲存至 S3 貯體。 複製下列原則範例並貼到 [ **JSON** ] 索引標籤中。使用您的值區名稱取代 &lt;bucketname&gt;。
+1. 登入 AWS 主控台，然後選取 [Services] \(服務\)  。
+2. 從服務清單中，選取 [IAM]  。
+3. 選取主控台左側的 [Policies] \(原則\)  ，然後按一下 [Create Policy] \(建立原則\)  。
+4. 按一下 [JSON]  索引標籤。
+5. 下列原則可讓您將報表儲存至 S3 貯體。 複製下列原則範例並貼到 [JSON]  索引標籤中。將 &lt;bucketname&gt; 取代成您的貯體名稱。
 
    ```json
    {
@@ -85,32 +84,32 @@ Cloudyn 會使用現有的 AWS 認證 (使用者或角色) 將報表儲存至您
    }
    ```
 
-6. 按一下 [Review policy] \(檢閱原則\)。  
+6. 按一下 [Review policy] \(檢閱原則\)  。  
     ![顯示範例資訊的 AWS JSON 原則](./media/storage-accounts/aws-policy.png)  
 7. 在 [Review policy] \(檢閱原則\) 頁面上，輸入您的原則名稱。 例如 _CloudynSaveReport2S3_。
-8. 按一下 [Create policy] \(建立原則\)。
+8. 按一下 [Create policy] \(建立原則\)  。
 
 ### <a name="attach-the-policy-to-a-cloudyn-role-or-user-in-your-account"></a>將原則連結至您帳戶中的 Cloudyn 角色或使用者
 
 若要連結新原則，您需開啟 AWS 主控台，然後編輯 Cloudyn 角色或使用者。
 
-1. 登入 AWS 主控台，然後選取 [Services] \(服務\)，再從服務清單中選取 [IAM]。
-2. 從主控台的左側選取 [Roles] \(角色\) 或 [Users] \(使用者\)。
+1. 登入 AWS 主控台，然後選取 [Services] \(服務\)  ，再從服務清單中選取 [IAM]  。
+2. 從主控台的左側選取 [Roles] \(角色\)  或 [Users] \(使用者\)  。
 
 **針對角色：**
 
   1. 按一下您的 Cloudyn 角色名稱。
-  2. 在 [Permissions] \(權限\) 索引標籤上，按一下 [Attach Policy] \(連結原則\)。
-  3. 搜尋您已建立的原則並選取它，然後按一下 [Attach Policy] \(連結原則\)。
+  2. 在 [Permissions] \(權限\)  索引標籤上，按一下 [Attach Policy] \(連結原則\)  。
+  3. 搜尋您已建立的原則並選取它，然後按一下 [Attach Policy] \(連結原則\)  。
     ![附加至您 Cloudyn 角色的範例原則](./media/storage-accounts/aws-attach-policy-role.png)
 
 **針對使用者：**
 
 1. 選取 [Cloudyn User] \(Cloudyn 使用者\)。
-2. 在 [Permissions] \(權限\) 索引標籤上，按一下 [Add permissions] \(新增權限\)。
-3. 在 [Grant Permission] \(授與權限\) 區段中，選取 [Attach existing policies directly] \(直接連結現有的原則\)。
-4. 搜尋您已建立的原則並選取它，然後按一下 [Next: Review] \(下一步: 檢閱\)。
-5. 在 [Add permissions to role name] \(將權限新增至角色名稱\) 頁面上，按一下 [Add permissions] \(新增權限\)。  
+2. 在 [Permissions] \(權限\)  索引標籤上，按一下 [Add permissions] \(新增權限\)  。
+3. 在 [Grant Permission] \(授與權限\)  區段中，選取 [Attach existing policies directly] \(直接連結現有的原則\)  。
+4. 搜尋您已建立的原則並選取它，然後按一下 [Next: Review] \(下一步: 檢閱\) **:** 。
+5. 在 [Add permissions to role name] \(將權限新增至角色名稱\) 頁面上，按一下 [Add permissions] \(新增權限\)  。  
     ![附加至您 Cloudyn 使用者的範例原則](./media/storage-accounts/aws-attach-policy-user.png)
 
 
@@ -119,7 +118,7 @@ Cloudyn 會使用現有的 AWS 認證 (使用者或角色) 將報表儲存至您
 您也可以使用貯體原則來設定權限，以在 S3 貯體上建立報表。 在傳統 S3 檢視中：
 
 1. 建立或選取一個現有的貯體。
-2. 選取 [Permissions] \(權限\) 索引標籤，然後按一下 [Bucket policy] \(貯體原則\)。
+2. 選取 [Permissions] \(權限\)  索引標籤，然後按一下 [Bucket policy] \(貯體原則\)  。
 3. 複製並貼上下列原則範例。 將 &lt;bucket\_name&gt; 和 &lt;Cloudyn\_principle&gt; 取代成您貯體的 ARN。 取代 Cloudyn 所使用角色或使用者的 ARN。
 
    ```
@@ -144,22 +143,22 @@ Cloudyn 會使用現有的 AWS 認證 (使用者或角色) 將報表儲存至您
    }
    ```
 
-4. 在貯體原則編輯器中，按一下 [Save] \(儲存\)。
+4. 在貯體原則編輯器中，按一下 [Save] \(儲存\)  。
 
 ### <a name="add-aws-report-storage-to-cloudyn"></a>將 AWS 報表儲存體新增至 Cloudyn
 
 1. 從 Azure 入口網站中開啟 Cloudyn 入口網站，或瀏覽至 https://azure.cloudyn.com 並登入。
-2. 按一下齒輪符號，然後選取 [Reports Storage Management] \(報表儲存體管理\)。
-3. 按一下 [Add new +] \(新增 +\)，然後確認已選取 [AWS]。
+2. 按一下齒輪符號，然後選取 [Reports Storage Management] \(報表儲存體管理\)  。
+3. 按一下 [Add new +] \(新增 +\)  ，然後確認已選取 [AWS]。
 4. 選取帳戶和儲存體貯體。 系統會自動填入 AWS 儲存體貯體。  
     ![[新增報表儲存體] 中的範例資訊](./media/storage-accounts/aws-cloudyn-storage.png)  
-5. 按一下 [Save] \(儲存\)，然後按一下 [OK] \(確定\)。
+5. 按一下 [Save] \(儲存\)  ，然後按一下 [OK] \(確定\)  。
 
     您的新 AWS 報表儲存體項目會出現在儲存體帳戶清單中。  
     ![新 AWS 報表儲存體項目會顯示在儲存體帳戶清單中](./media/storage-accounts/aws-storage-entry.png)
 
 
-您現在已可將報表儲存至 Azure 儲存體。 在任何報表中，按一下 [Actions] \(動作\)，然後選取 [Schedule report] \(排程報表\)。 為報告命名，然後新增您自己的 URL 或使用自動建立的 URL。 選取 [Save to storage] \(儲存至儲存體\)，然後選取儲存體帳戶。 輸入要附加至報告檔案名稱的前置詞。 選取 CSV 或 JSON 檔案格式，然後儲存報表。
+您現在已可將報表儲存至 Azure 儲存體。 在任何報表中，按一下 [Actions] \(動作\)  ，然後選取 [Schedule report] \(排程報表\)  。 為報告命名，然後新增您自己的 URL 或使用自動建立的 URL。 選取 [Save to storage] \(儲存至儲存體\)  ，然後選取儲存體帳戶。 輸入要附加至報告檔案名稱的前置詞。 選取 CSV 或 JSON 檔案格式，然後儲存報表。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: tamram
 ms.openlocfilehash: 40fba61b173979fb9362de73a87d6192aac9941d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995308"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-storage"></a>了解保留折扣如何套用至 Azure 儲存體
@@ -47,7 +47,7 @@ Azure 儲存體保留容量折扣是「不用則作廢」的折扣。 如果您�
 
 假設在保留期間內的指定小時內，您使用了 101 TB 的儲存容量。 保留折扣適用於 100 TB 的資料，而剩餘的 1 TB 會依該小時的隨用隨付費率計費。 如果您在下一個小時的使用量變更為 100 TB，則保留會涵蓋所有使用量。
 
-## <a name="need-help-contact-us"></a>需要協助嗎？ 連絡我們
+## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡
 
 如果您有問題或需要協助，請[建立支援要求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 

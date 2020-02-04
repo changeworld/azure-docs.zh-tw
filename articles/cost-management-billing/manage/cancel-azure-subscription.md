@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: e4ce97b69250d8af4c94e8eed8df9c9497e0bb46
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75993072"
 ---
 # <a name="cancel-your-azure-subscription"></a>取消 Azure 訂用帳戶
@@ -36,7 +36,7 @@ ms.locfileid: "75993072"
 
 1. 在 [Azure 入口網站的 [訂用帳戶] 頁面](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)中選取您的訂用帳戶。
 2. 選取您要取消的訂用帳戶。
-3. 選取[概觀]，然後選取 [取消訂用帳戶]。
+3. 選取[概觀]  ，然後選取 [取消訂用帳戶]  。
     ![顯示 [取消] 按鈕的螢幕擷取畫面](./media/cancel-azure-subscription/cancel_ibiza.png)
 3. 遵循提示並完成取消作業。
 
@@ -66,6 +66,6 @@ ms.locfileid: "75993072"
 
 如果您的訂用帳戶不是採用隨用隨付費率的訂用帳戶，請在取消後 90 天內與支援服務連絡，以重新啟動您的訂用帳戶。
 
-## <a name="need-help-contact-us"></a>需要協助嗎？ 連絡我們。
+## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡。
 
 如有問題或需要協助，請[建立支援要求](https://go.microsoft.com/fwlink/?linkid=2083458)。

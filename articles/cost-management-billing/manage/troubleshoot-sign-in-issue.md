@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 08/12/2019
 ms.author: v-miegge
 ms.openlocfilehash: 74cf3f197895823bcbd94db0bf3c7bd8065df767
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75988132"
 ---
 # <a name="troubleshoot-azure-subscription-sign-in-issues"></a>針對 Azure 訂用帳戶登入問題進行疑難排解
@@ -32,7 +32,7 @@ ms.locfileid: "75988132"
 
 - 重新整理頁面。
 - 使用另一個網際網路瀏覽器。
-- 使用您瀏覽器的私密瀏覽模式。 針對 Internet Explorer：按一下 [**工具**] > **安全性** > **InPrivate 瀏覽**]，然後流覽並登入[Azure 入口網站](https://portal.azure.com/)或[Azure 帳戶中心](https://account.azure.com/Subscriptions)。
+- 使用您瀏覽器的私密瀏覽模式。 若為 Internet Explorer：按一下 [工具]   > [安全性]   > [InPrivate 瀏覽]  ，然後瀏覽並登入 [Azure 入口網站](https://portal.azure.com/)或 [Azure 帳戶中心](https://account.azure.com/Subscriptions)。
 
 ### <a name="you-are-automatically-signed-in-as-a-different-user"></a>自動將您登入為不同的使用者
 
@@ -40,30 +40,30 @@ ms.locfileid: "75988132"
 
 若要解決此問題，請嘗試下列其中一個方法：
 
-- 清除快取並刪除網際網路 Cookie。 在 Internet Explorer 中，按一下 [工具] > [網際網路選項] > [刪除]。 確定已選取暫存檔、Cookie、密碼及瀏覽歷程記錄的核取方塊，然後按一下 [刪除]。
-- 重設 Internet Explorer 設定來還原您所做的任何個人設定。 按一下 [工具] > [網際網路選項] > [進階] > 選取 [刪除個人設定] 方塊 > [重設]。
-- 使用您瀏覽器的私密瀏覽模式。 針對 Internet Explorer：按一下 [**工具**] > **安全性** > **InPrivate 瀏覽**]，然後流覽並登入[Azure 入口網站](https://portal.azure.com/)或[Azure 帳戶中心](https://account.azure.com/Subscriptions)。
+- 清除快取並刪除網際網路 Cookie。 在 Internet Explorer 中，按一下 [工具]   > [網際網路選項]   > [刪除]  。 確定已選取暫存檔、Cookie、密碼及瀏覽歷程記錄的核取方塊，然後按一下 [刪除]。
+- 重設 Internet Explorer 設定來還原您所做的任何個人設定。 按一下 [工具]   > [網際網路選項]   > [進階]  > 選取 [刪除個人設定]  方塊 > [重設]  。
+- 使用您瀏覽器的私密瀏覽模式。 若為 Internet Explorer：按一下 [工具]   > [安全性]   > [InPrivate 瀏覽]  ，然後瀏覽並登入 [Azure 入口網站](https://portal.azure.com/)或 [Azure 帳戶中心](https://account.azure.com/Subscriptions)。
 
-### <a name="i-can-sign-in-but-i-see-no-subscriptions-found"></a>我可以登入但收到「找不到訂用帳戶」錯誤訊息
+### <a name="i-can-sign-in-but-i-see-no-subscriptions-found"></a>我可以登入但收到「找不到訂用帳戶」  錯誤訊息
 
 如果您選取錯誤的目錄或帳戶沒有足夠的權限，就會發生此問題。
 
-**案例1：** [Azure 入口網站](https://portal.azure.com/)收到錯誤訊息
+**案例 1：** 在 [Azure 入口網站](https://portal.azure.com/)中收到錯誤訊息
 
 若要修正此問題：
 
 - 確定您已選取正確的 Azure 目錄，方法是按一下右上角的帳戶。
 - 若已選取正確的 Azure 目錄，但您仍收到錯誤訊息，請[將您的帳戶新增為擁有者](add-change-subscription-administrator.md)。
 
-**案例2：** [Azure 帳戶中心](https://account.windowsazure.com/Subscriptions)收到錯誤訊息
+**案例 2：** 在 [Azure 帳戶中心](https://account.windowsazure.com/Subscriptions)收到錯誤訊息
 
 請檢查您所使用的帳戶是否為帳戶管理員。 若要確認誰是帳戶管理員，請依照下列步驟操作︰
 
 1. 登入 [Azure 入口網站中的訂用帳戶檢視](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)。
 
-2. 選取您想要檢查的訂用帳戶，然後查看 [設定]。
+2. 選取您想要檢查的訂用帳戶，然後查看 [設定]  。
 
-3. 選取 [屬性]。 該訂用帳戶的帳戶管理員會顯示在 [帳戶管理員] 方塊中。
+3. 選取 [屬性]  。 該訂用帳戶的帳戶管理員會顯示在 [帳戶管理員]  方塊中。
 
 ## <a name="additional-help-resources"></a>其他說明資源
 

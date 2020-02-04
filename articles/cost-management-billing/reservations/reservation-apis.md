@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 992e46cd8f10ff3c434f34a9f90c777870f3ada4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995815"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>適用於 Azure 保留自動化的 API
@@ -108,7 +108,7 @@ PUT https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/
 
 若要以程式設計方式變更範圍，請使用 API [保留 - 更新](/rest/api/reserved-vm-instances/reservation/update)。
 
-## <a name="learn-more"></a>了解更多
+## <a name="learn-more"></a>深入了解
 
 - [什麼是 Azure 的保留](save-compute-costs-reservations.md)
 - [了解 VM 保留折扣的套用方式](../manage/understand-vm-reservation-charges.md)

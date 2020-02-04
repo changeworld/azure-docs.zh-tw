@@ -11,10 +11,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 99ceebe0825c868e40f6a68f44ca55eee91f087c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992773"
 ---
 # <a name="create-services-included-with-azure-free-account"></a>建立 Azure 免費帳戶隨附的服務
@@ -22,7 +22,7 @@ ms.locfileid: "75992773"
 Azure 免費帳戶包含 12 個月數量有限的免費服務。 在這些限制內，您有彈性可使用各種組態中的免費服務來滿足您的需求。
 
 ## <a name="create-free-services-in-the-azure-portal"></a>在 Azure 入口網站中建立免費服務
-建議您使用[免費服務頁面](https://go.microsoft.com/fwlink/?linkid=859151)連結來建立免費服務。 或者，您也可以登入 [Azure 入口網站](https://portal.azure.com)，然後搜尋 [免費服務]。 當您從免費服務頁面建立服務時，大部分的欄位都會預先選取，讓您輕鬆地免費建立服務。
+建議您使用[免費服務頁面](https://go.microsoft.com/fwlink/?linkid=859151)連結來建立免費服務。 或者，您也可以登入 [Azure 入口網站](https://portal.azure.com)，然後搜尋 [免費服務]  。 當您從免費服務頁面建立服務時，大部分的欄位都會預先選取，讓您輕鬆地免費建立服務。
 
 ![顯示免費服務頁面的螢幕擷取畫面](./media/create-free-services/billing-freeservices-grid.png)
 
@@ -34,7 +34,7 @@ Azure 免費帳戶包含 12 個月數量有限的免費服務。 在這些限制
 ## <a name="create-multiple-service-instances-in-allowed-limits"></a>在允許的限制中建立多個服務執行個體
 只要使用量總和在使用量限制內，您便可以免費建立多個服務執行個體。 例如，Azure 免費帳戶每月免費提供您 750 小時的 B1S Windows 虛擬機器。 您可以採用想要的任何組合方式來使用這 750 小時。 例如，您可以建立 5 部 B1S Windows 虛擬機器，然後每部使用 150 個小時。
 
-## <a name="need-help-contact-us"></a>需要協助嗎？ 連絡我們。
+## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡。
 
 如有問題或需要協助，請[建立支援要求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 

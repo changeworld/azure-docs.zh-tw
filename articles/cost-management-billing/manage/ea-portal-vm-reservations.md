@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
 ms.openlocfilehash: 26c132d42bfc89c9b6e887c8ca02232848513698
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992071"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Azure EA VM 保留執行個體
@@ -48,13 +48,13 @@ Enterprise 合約客戶可以在 Azure 入口網站和 REST API 中檢視成本�
 
 ### <a name="how-to-buy-reserved-virtual-machine-instances"></a>如何購買保留的虛擬機器執行個體
 
-若要購買 Azure 保留的虛擬機器執行個體，Azure Enterprise 註冊管理員必須在 [Azure EA 入口網站](https://ea.azure.com/)中 [註冊] 索引標籤上的 [註冊詳細資料] 區段中，啟用 [保留執行個體] 購買選項。
+若要購買 Azure 保留的虛擬機器執行個體，Azure Enterprise 註冊管理員必須在 [Azure EA 入口網站](https://ea.azure.com/)中 [註冊]  索引標籤上的 [註冊詳細資料]  區段中，啟用 [保留執行個體]  購買選項。
 
 一旦啟用 EA 註冊以新增保留執行個體後，任何具有 EA 註冊相關聯作用中訂用帳戶的帳戶擁有者，都可以在 [Azure 入口網站](https://aka.ms/reservations)中購買保留的虛擬機器執行個體。 如需詳細資訊，請參閱[預付虛擬機器並且使用保留的虛擬機器執行個體來節省成本](https://go.microsoft.com/fwlink/?linkid=861721)。
 
 ### <a name="how-to-view-reserved-instance-purchase-details"></a>如何檢視保留執行個體購買詳細資料
 
-您可以透過 [Azure 入口網站](https://aka.ms/reservations)左側的 [保留] 功能表，或從 [Azure EA 入口網站](https://ea.azure.com/)檢視您的保留執行個體購買詳細資料。 從左側功能表中選取 [**報表**]，並依服務的 [_使用量摘要_] 索引標籤向下到 [_費用_] 區段。請前往區段的底部，而您的保留實例購買和使用量將會列出在結尾，如服務名稱旁的 ' 1 年 ' 或 ' 3 年 ' 指定，例如： Standard_DS1_v2 eastus 1 年或 Standard_D2s_v3 eastus2 3 年。
+您可以透過 [Azure 入口網站](https://aka.ms/reservations)左側的 [保留]  功能表，或從 [Azure EA 入口網站](https://ea.azure.com/)檢視您的保留執行個體購買詳細資料。 從左側功能表中選取 [報告]  ，然後向下捲動至 [使用量摘要]  索引標籤上的 [依服務顯示的費用]  區段。捲動至區段底部，而您的保留執行個體購買和使用量將會列在結尾，如服務名稱旁邊的「1 年」或「3 年」指名所示，例如：Standard_DS1_v2 eastus 1 年或 Standard_D2s_v3 eastus2 3 年。
 
 ### <a name="how-can-i-change-the-subscription-associated-with-reserved-instance-or-transfer-my-reserved-instance-benefits-to-a-subscription-under-the-same-account"></a>如何變更與保留執行個體相關聯的訂用帳戶，或將保留執行個體權益轉移到同一個帳戶下的訂用帳戶？
 
@@ -65,9 +65,9 @@ Enterprise 合約客戶可以在 Azure 入口網站和 REST API 中檢視成本�
 
 ### <a name="how-to-view-reserved-instance-usage-details"></a>如何檢視保留執行個體使用量詳細資料
 
-您可以在 [Azure 入口網站](https://aka.ms/reservations)或 [Azure EA 入口網站](https://ea.azure.com/) (適用於有權檢視帳單資訊的 EA 客戶) 的 [報告] > [使用量摘要] > [依費用顯示的費用] 之下，檢視您的保留執行個體使用量詳細資料。 您的保留實例可以識別為包含「保留」的服務名稱，例如：保留-基礎 VM 或虛擬機器保留-Windows Svr （1核心）。
+您可以在 [Azure 入口網站](https://aka.ms/reservations)或 [Azure EA 入口網站](https://ea.azure.com/) (適用於有權檢視帳單資訊的 EA 客戶) 的 [報告]   > [使用量摘要]   > [依費用顯示的費用]  之下，檢視您的保留執行個體使用量詳細資料。 您的保留執行個體可以包含 'Reservation' 的服務名稱進行識別，例如：Reservation-Base VM 或 Virtual Machines Reservation-Windows Svr (1 Core)。
 
-您的使用量詳細資料和進階報告下載 CSV 包含其他保留執行個體使用量資訊。 [其他資訊] 欄位可協助您識別保留執行個體使用量。
+您的使用量詳細資料和進階報告下載 CSV 包含其他保留執行個體使用量資訊。 [其他資訊]  欄位可協助您識別保留執行個體使用量。
 
 如果您並未使用 Azure Hybrid Benefit 來購買 Azure 保留的 VM 執行個體，保留執行個體將會發出兩個計量 (硬體和軟體)。 如果您使用了 Azure Hybrid Benefit 來購買保留執行個體，您在保留執行個體使用量詳細資料中就看不到軟體計量。
 

@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 09/26/2019
 ms.author: andalmia
 ms.openlocfilehash: 741e7cf0869e36b5788d0a883a4e982caf041512
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995932"
 ---
 # <a name="azure-subscription-states"></a>Azure 訂用帳戶狀態
 本文說明 Azure 訂用帳戶可能擁有的各種狀態。 在 [訂用帳戶] 刀鋒視窗底下，您會發現這些狀態顯示為「狀態」。
 
-| 訂用帳戶狀態 | 說明 |
+| 訂用帳戶狀態 | 描述 |
 |-------------| ----------------|
 | **使用中** | 您的 Azure 訂用帳戶為作用中。 您可以使用此訂用帳戶來部署新的資源及管理現有的資源。|
 | **超過期限** | 您的 Azure 訂用帳戶有擱置的未付款項。 您的訂用帳戶仍為作用中，但無法支付費用可能會導致訂用帳戶被停用。 [解決 Azure 訂用帳戶的逾期未付帳款。](https://docs.microsoft.com/azure/billing/billing-azure-subscription-past-due-balance) |

@@ -1,5 +1,5 @@
 ---
-title: 開始使用 Microsoft 客戶合約計費-Azure
+title: 開始使用 Microsoft 客戶合約計費 - Azure
 description: 了解您的 Microsoft 客戶合約計費帳戶
 author: bandersmsft
 manager: amberbhargava
@@ -11,10 +11,10 @@ ms.workload: na
 ms.date: 09/10/2019
 ms.author: banders
 ms.openlocfilehash: 7d26c98ae8e5b9b95038a4a775134282703fa7c6
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995113"
 ---
 # <a name="get-started-with-your-microsoft-customer-agreement-billing-account"></a>開始使用您的 Microsoft 客戶合約計費帳戶
@@ -65,7 +65,7 @@ Microsoft 客戶合約的計費帳戶包含一或多個帳單設定檔，可讓�
 
 Azure 方案會決定 Azure 訂用帳戶的定價和服務等級協定。 當您建立帳單設定檔時，將會自動啟用這些方案。 所有與帳單設定檔相關聯的發票區段，都可以使用這些方案。 具有發票區段存取權的使用者，可使用這些方案來建立 Azure 訂用帳戶。 Microsoft 客戶合約的計費帳戶支援下列 Azure 方案：
 
-| 方案             | 定義  |
+| 計畫             | 定義  |
 |------------------|-------------|
 |Microsoft Azure 方案   | 可讓使用者建立可執行任何工作負載的訂用帳戶。  |
 |用於開發/測試的 Microsoft Azure 方案 | 可讓 Visual Studio 訂閱者建立限用於開發或測試工作負載的定用帳戶。 這些訂用帳戶可享有較低費率，並獲得在 Azure 入口網站中存取專屬虛擬機器映像的權益。 |

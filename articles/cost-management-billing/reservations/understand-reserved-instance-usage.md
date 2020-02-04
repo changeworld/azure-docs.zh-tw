@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 1404f8626086124aa2c6affcf2d173cef0be7df3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995360"
 ---
 # <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>了解個別訂用帳戶 (採用隨用隨付費率) 的 Azure 保留使用量
@@ -35,13 +35,13 @@ ms.locfileid: "75995360"
 |ReservationId |8117adfb-1d94-4675-be2b-f3c1bca808b6|
 |數量 |1|
 |SKU | Standard_DS1_v2|
-|地區 | eastus |
+|區域 | eastus |
 
 已涵蓋虛擬機器的硬體部分，因為部署的虛擬機器符合保留屬性。 若要查看保留的 VM 執行個體未涵蓋哪些 Windows 軟體，請參閱 [Azure 保留 VM 執行個體的 Windows 軟體成本](reserved-instance-windows-software-costs.md)
 
 ### <a name="statement-section-of-csv-file-for-vms"></a>VM 的 CSV 檔案「說明」區段
 
-CSV 檔案的這個區段會顯示保留的整體使用量。 請對包含 **"Reservation-"** 的 [計量子類別] 欄位套用篩選。 您會看到類似下列螢幕擷取畫面的內容：
+CSV 檔案的這個區段會顯示保留的整體使用量。 請對包含 **"Reservation-"** 的 [計量子類別]  欄位套用篩選。 您會看到類似下列螢幕擷取畫面的內容：
 
 ![篩選後保留使用量詳細資料與費用的螢幕擷取畫面](./media/understand-reserved-instance-usage/billing-payg-reserved-instance-csv-statements.png)
 
@@ -53,10 +53,10 @@ CSV 檔案的這個區段會顯示保留的整體使用量。 請對包含 **"Re
 
 ![每日使用量詳細資料與費用的螢幕擷取畫面](./media/understand-reserved-instance-usage/billing-payg-reserved-instance-csv-details.png)
 
-1. [其他資訊] 欄位中的 **ReservationId** 是套用至 VM 的保留。
+1. [其他資訊]  欄位中的 **ReservationId** 是套用至 VM 的保留。
 2. **ConsumptionMeter** 是 VM 的計量識別碼。
-3. [**保留-基底 VM** **計量子類別**] 行代表 [語句] 區段中的 $0 成本。 執行此 VM 的成本已由保留支付。
-4. [計量識別碼] 是保留的計量識別碼。 此計量的成本為 $0。 任何有資格獲得保留折扣的 VM 都會出現此計量識別碼。
+3. **Reservation-Base VM** 的 [計量子類別]  行在 [說明] 區段中代表 $0 成本。 執行此 VM 的成本已由保留支付。
+4. [計量識別碼]  是保留的計量識別碼。 此計量的成本為 $0。 任何有資格獲得保留折扣的 VM 都會出現此計量識別碼。
 5. Standard_DS1_v2 是一種 vCPU 虛擬機器，且是在沒有 Azure Hybrid Benefit 的情況下部署的虛擬機器。 因此，這個計量涵蓋 Windows 軟體的額外費用。 若要尋找對應於 D 系列 1 核心 VM 的計量，請參閱 [Azure 保留 VM 執行個體的 Windows 軟體成本](reserved-instance-windows-software-costs.md)。 如果您擁有 Azure Hybrid Benefit，就不會產生此額外費用。
 
 ## <a name="usage-for-sql-database--cosmos-db-reservations"></a>SQL Database 與 Cosmos DB 保留的使用量
@@ -69,16 +69,16 @@ CSV 檔案的這個區段會顯示保留的整體使用量。 請對包含 **"Re
 |---| --- |
 |ReservationId |446ec809-423d-467c-8c5c-bbd5d22906b1|
 |數量 |2|
-|產品| SQL Database Gen 4 (2 核心)|
-|地區 | eastus |
+|Products| SQL Database Gen 4 (2 核心)|
+|區域 | eastus |
 
 ### <a name="statement-section-of-csv-file"></a>CSV 檔案的「說明」區段
 
-針對 [保留執行個體使用方式] 計量名稱進行篩選，然後選擇所需的 [計量類別目錄] - [Azure SQL 資料庫] 或 [Azure Cosmos DB]。 您會看到類似下列螢幕擷取畫面的內容：
+針對 [保留執行個體使用方式]  計量名稱進行篩選，然後選擇所需的 [計量類別目錄]  - [Azure SQL 資料庫] 或 [Azure Cosmos DB]。 您會看到類似下列螢幕擷取畫面的內容：
 
 ![SQL Database 保留容量的 CSV 檔案](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-statements.png)
 
-[保留的執行個體使用量] 行有保留所涵蓋的核心時數總數。 這一行的費率為 $0，原因是保留涵蓋該成本。
+[保留的執行個體使用量]  行有保留所涵蓋的核心時數總數。 這一行的費率為 $0，原因是保留涵蓋該成本。
 
 ### <a name="detail-section-of-csv-file"></a>CSV 檔案的「詳細資料」區段
 
@@ -86,11 +86,11 @@ CSV 檔案的這個區段會顯示保留的整體使用量。 請對包含 **"Re
 
 ![SQL Database 保留容量的 CSV 檔案](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-details.png)
 
-1. [其他資訊] 欄位中的 **ReservationId** 是套用至 SQL 資料庫資源的 SQL Database 保留容量。
+1. [其他資訊]  欄位中的 **ReservationId** 是套用至 SQL 資料庫資源的 SQL Database 保留容量。
 2. **ConsumptionMeter** 是 SQL Database 資源的計量識別碼。
-3. [計量識別碼] 是保留計量。 此計量的成本為 $0。 任何有資格獲得保留折扣的 SQL Database 資源都會在 CSV 檔案中顯示此計量識別碼。
+3. [計量識別碼]  是保留計量。 此計量的成本為 $0。 任何有資格獲得保留折扣的 SQL Database 資源都會在 CSV 檔案中顯示此計量識別碼。
 
-## <a name="need-help-contact-us"></a>需要協助嗎？ 連絡我們。
+## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡。
 
 如果您有問題或需要協助，請[建立支援要求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 

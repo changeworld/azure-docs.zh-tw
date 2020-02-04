@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: banders
 ms.openlocfilehash: 33fa553e9148a1ac838e6bf53fc83cf7eadd7499
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992578"
 ---
 # <a name="create-an-additional-azure-subscription"></a>建立額外的 Azure 訂用帳戶
@@ -36,7 +36,7 @@ ms.locfileid: "75992578"
 |---------|---------|
 |Enterprise 合約 (EA) |  Enterprise 合約註冊的帳戶擁有者角色。 如需詳細資訊，請參閱[了解 Azure 中的 Azure Enterprise 合約系統管理角色](understand-ea-roles.md)。    |
 |Microsoft 客戶合約 (MCA) |  發票區段、帳單設定檔或計費帳戶的擁有者或參與者角色。 或發票區段的 Azure 訂用帳戶建立者角色。  如需詳細資訊，請參閱[訂用帳戶計費角色和工作](understand-mca-roles.md#subscription-billing-roles-and-tasks)。    |
-|Microsoft 合作夥伴合約 (MPA) |   CSP 合作夥伴組織中的全域管理員和管理員代理人角色。 若要深入了解，請參閱[合作夥伴中心 - 指派使用者角色和權限](https://docs.microsoft.com/partner-center/permissions-overview)。  使用者必須登入合作夥伴租使用者，才能建立 Azure 訂用帳戶。   |
+|Microsoft 合作夥伴合約 (MPA) |   CSP 合作夥伴組織中的全域管理員和管理員代理人角色。 若要深入了解，請參閱[合作夥伴中心 - 指派使用者角色和權限](https://docs.microsoft.com/partner-center/permissions-overview)。  使用者必須登入合作夥伴租用戶，才能建立 Azure 訂用帳戶。   |
 
 ## <a name="create-a-subscription-in-the-azure-portal"></a>在 Azure 入口網站中建立訂用帳戶
 
@@ -45,13 +45,13 @@ ms.locfileid: "75992578"
 
    ![顯示在入口網站中搜尋訂用帳戶的螢幕擷取畫面](./media/create-subscription/billing-search-subscription-portal.png)
 
-1. 選取 [新增]。
+1. 選取 [新增]  。
 
    ![在 [訂用帳戶] 檢視中顯示 [新增] 按鈕的螢幕擷取畫面](./media/create-subscription/subscription-add.png)
 
 1. 如果您有多個計費帳戶的存取權，請選取您想建立訂用帳戶的計費帳戶。
 
-1. 填妥表單，然後按一下 [建立]。 下列表格針對每種計費帳戶類型列出表單上的欄位。
+1. 填妥表單，然後按一下 [建立]  。 下列表格針對每種計費帳戶類型列出表單上的欄位。
 
 **Enterprise 合約**
 
@@ -66,7 +66,7 @@ ms.locfileid: "75992578"
 |---------|---------|
 |帳單設定檔     | 訂用帳戶的費用將會計入您所選的帳單設定檔。 如果您只能存取一個帳單設定檔，選取項目將會呈現為灰色。     |
 |發票區段     | 訂用帳戶的費用將會顯示在帳單設定檔發票的這個發票區段。 如果您只能存取一個發票區段，選取項目將會呈現為灰色。  |
-|方案     | 如果您打算將此訂用帳戶用於開發或測試工作負載，請選取 [適用於 DevTest 的 Microsoft Azure 方案]，否則請使用 [Microsoft Azure 方案]。 如果帳單設定檔只啟用一個方案，則選取項目會呈現為灰色。  |
+|計畫     | 如果您打算將此訂用帳戶用於開發或測試工作負載，請選取 [適用於 DevTest 的 Microsoft Azure 方案]，否則請使用 [Microsoft Azure 方案]。 如果帳單設定檔只啟用一個方案，則選取項目會呈現為灰色。  |
 |名稱     | 可協助您輕鬆識別 Azure 入口網站中訂用帳戶的顯示名稱。  |
 
 **Microsoft 合作夥伴合約**
@@ -88,6 +88,6 @@ ms.locfileid: "75992578"
 - [建立用於資源組織及管理的管理群組](../../governance/management-groups/create.md)
 - [取消您的 Azure 訂用帳戶](cancel-azure-subscription.md)
 
-## <a name="need-help-contact-us"></a>需要協助嗎？ 連絡我們。
+## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡。
 
 如有問題或需要協助，請[建立支援要求](https://go.microsoft.com/fwlink/?linkid=2083458)。

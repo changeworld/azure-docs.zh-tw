@@ -12,10 +12,10 @@ ms.date: 10/01/2019
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 3abfac5f915b5c1c6020701feaa356d7a043ef8d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991824"
 ---
 # <a name="troubleshoot-enterprise-cost-views"></a>為企業成本檢視疑難排解
@@ -24,22 +24,22 @@ ms.locfileid: "75991824"
 
 ## <a name="enable-access-to-costs"></a>能夠存取成本
 
-您查看成本資訊時，是否看見「未經授權」訊息或「成本檢視在您的註冊中停用」 ？
+您查看成本資訊時，是否看見「未經授權」訊息或「成本檢視在您的註冊中停用」  ？
 ![訂用帳戶的「目前成本」欄位顯示「未授權」的螢幕擷取畫面。](./media/enterprise-mgmt-grp-troubleshoot-cost-view/unauthorized.png)
 
 這可能是下列其中一個原因所造成：
 
 1. 您是經由企業夥伴購買 Azure，而該夥伴尚未發佈價格。 請連絡夥伴更新[企業版入口網站](https://ea.azure.com)內的價格設定。
 2. 如果您是 EA Direct 客戶，有幾種可能：
-    * 您是帳戶擁有者，且您的註冊管理員已停用 [AO 檢視費用] 設定。  
-    * 您是部門管理員，且您的註冊管理員已停用 [DA 檢視費用] 設定。
+    * 您是帳戶擁有者，且您的註冊管理員已停用 [AO 檢視費用]  設定。  
+    * 您是部門管理員，且您的註冊管理員已停用 [DA 檢視費用]  設定。
     * 請連絡您的註冊管理員以取得存取權。 註冊管理員可以更新[企業版入口網站](https://ea.azure.com/manage/enrollment)中的設定。
 
       ![顯示企業版入口網站檢視費用設定的螢幕擷取畫面。](./media/enterprise-mgmt-grp-troubleshoot-cost-view/ea-portal-settings.png)
 
 ## <a name="asset-is-unavailable"></a>資產無法使用
 
-如果您在嘗試存取訂用帳戶或管理群組時收到「此資產無法使用」錯誤訊息，則表示您不具備可檢視此項目的正確角色。  
+如果您在嘗試存取訂用帳戶或管理群組時收到「此資產無法使用」  錯誤訊息，則表示您不具備可檢視此項目的正確角色。  
 
 ![顯示「資產無法使用」訊息的螢幕擷取畫面。](./media/enterprise-mgmt-grp-troubleshoot-cost-view/asset-not-found.png)
 

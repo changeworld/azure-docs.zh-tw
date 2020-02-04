@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 26d130023a4ed7b4131af3963ae7afdb33e79bd7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995178"
 ---
 # <a name="view-azure-reservations-in-the-azure-portal"></a>在 Azure 入口網站中檢視 Azure 保留
@@ -25,14 +25,14 @@ ms.locfileid: "75995178"
 
 ## <a name="view-purchased-reservations"></a>檢視已購買的保留
 
-當您購買保留時，您和帳戶管理員預設可以檢視該保留。 您和帳戶管理員會自動取得保留訂單和保留的「擁有者」角色。 若要允許其他人員檢視保留，您必須將他們新增為保留訂單或保留的「擁有者」或「讀者」。
+當您購買保留時，您和帳戶管理員預設可以檢視該保留。 您和帳戶管理員會自動取得保留訂單和保留的「擁有者」角色。 若要允許其他人員檢視保留，您必須將他們新增為保留訂單或保留的「擁有者」  或「讀者」  。
 
 如需詳細資訊，請參閱[新增或變更可以管理保留的使用者](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)。
 
 若要以「擁有者」或「讀者」身分檢視保留，
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 搜尋 [保留]。
+2. 搜尋 [保留]  。
     ![顯示 Azure 入口網站搜尋的螢幕擷取畫面](./media/view-reservations/portal-reservation-search.png)  
 3. 清單中會顯示您具備「擁有者」或「讀者」角色的所有保留。 每個保留都會顯示最後的已知使用率百分比。  
     ![顯示保留清單的範例](./media/view-reservations/view-reservations.png)
@@ -44,18 +44,18 @@ ms.locfileid: "75995178"
 
 ## <a name="view-reservation-transactions-for-enterprise-enrollments"></a>檢視 Enterprise 註冊的保留交易
 
- 如果您有合作夥伴主導的 Enterprise 註冊，請移至 EA 入口網站中的 [報告] 來檢視保留。 針對其他 Enterprise 註冊，您可以在 EA 入口網站及 Azure 入口網站中檢視保留。 您必須是 EA 系統管理員，才能檢視保留交易。
+ 如果您有合作夥伴主導的 Enterprise 註冊，請移至 EA 入口網站中的 [報告]  來檢視保留。 針對其他 Enterprise 註冊，您可以在 EA 入口網站及 Azure 入口網站中檢視保留。 您必須是 EA 系統管理員，才能檢視保留交易。
 
 若要在 Azure 入口網站中檢視保留交易，
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 搜尋 [成本管理 + 帳單]。
+1. 搜尋 [成本管理 + 帳單]  。
 
     ![顯示 Azure 入口網站搜尋的螢幕擷取畫面](./media/view-reservations/portal-cm-billing-search.png)
 
-1. 選取 [保留交易]。
-1. 若要篩選結果，請選取 [時間範圍]、[類型] 或 [描述]。
-1. 選取 [套用]。
+1. 選取 [保留交易]  。
+1. 若要篩選結果，請選取 [時間範圍]  、[類型]  或 [描述]  。
+1. 選取 [套用]  。
 
     ![顯示「保留交易」結果的螢幕擷取畫面](./media/view-reservations/portal-billing-reservation-transaction-results.png)
 
@@ -85,6 +85,6 @@ ms.locfileid: "75995178"
 - [了解 Enterprise 註冊的保留項目使用量](understand-reserved-instance-usage-ea.md)
 - [了解 CSP 訂用帳戶的保留使用量](https://docs.microsoft.com/partner-center/azure-reservations)
 
-## <a name="need-help-contact-us"></a>需要協助嗎？ 連絡我們
+## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡
 
 如有問題或需要協助，請[建立支援要求](https://go.microsoft.com/fwlink/?linkid=2083458)。

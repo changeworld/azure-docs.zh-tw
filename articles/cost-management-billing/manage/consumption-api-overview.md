@@ -12,10 +12,10 @@ ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 5ac0918fcd8c5a1eb9242d603a7e3433d0f709ed
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75988457"
 ---
 # <a name="azure-consumption-api-overview"></a>Azure 使用量 API 概觀
@@ -92,7 +92,7 @@ Azure 使用量 API 可存取：
 -   **篩選** - 使用下列可設定的篩選，將您的預算篩選為較小的資源子集
     - 資源群組
     - 資源名稱
-    - 計量器
+    - 計量
 -   **可設定的預算時段** - 指定預算應重設的頻率，以及預算有效的時間長度。
 
 如需詳細資訊，請參閱[預算 API](https://docs.microsoft.com/rest/api/consumption/budgets) 的技術規格。
@@ -105,7 +105,7 @@ Azure 使用量 API 可存取：
 
 -   **Azure 角色型存取控制** - 在 [Azure 入口網站](https://portal.azure.com)上或是透過 [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell Cmdlet](https://docs.microsoft.com/powershell/azure/overview) 設定存取原則，以指定哪些使用者或應用程式可以存取訂用帳戶的使用量資料。 呼叫端必須使用標準的 Azure Active Directory 權杖進行驗證。 將呼叫端新增到「發票讀者」、「讀者」、「擁有者」或「參與者」角色，以存取特定 Azure 訂用帳戶的使用情況資料。
 -   **篩選** - 使用下列篩選，量身打造您的建議結果：
-    - 範圍
+    - 影響範圍
     - 回顧期間
 -   **不同供應項目類型的保留資訊** - 保留資訊目前適用於企業和 Web Direct 客戶。
 

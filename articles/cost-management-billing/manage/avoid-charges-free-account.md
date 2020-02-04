@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 632d8ef84fc30ee7e97b8961d74fbb95ced42234
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75990056"
 ---
 # <a name="avoid-charges-with-your-azure-free-account"></a>避免 Azure 免費帳戶產生費用
@@ -43,7 +43,7 @@ Azure 免費帳戶提供使用量有限的每個月免費服務。 免費使用�
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 在左側導覽區域中，選取 [所有服務]。
+2. 在左側導覽區域中，選取 [所有服務]  。
 
 3.  選取 **訂用帳戶** 。
 
@@ -56,7 +56,7 @@ Azure 免費帳戶提供使用量有限的每個月免費服務。 免費使用�
 
 您的免費服務與數量到期後，就會以隨用隨付費率對您使用的任何服務收費。 您可以使用 Azure 入口網站，對於不使用的服務刪除資源。 如果您不想要使用任何 Azure 服務，可以[取消訂閱](cancel-azure-subscription.md)。
 
-## <a name="need-help-contact-us"></a>需要協助嗎？ 連絡我們。
+## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡。
 
 如有問題或需要協助，請[建立支援要求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 

@@ -9,10 +9,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.openlocfilehash: 88ab9c475d417bc935cf5d2d67f1678794fb74d1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995620"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-data-explorer"></a>了解保留折扣如何套用至 Azure 資料總管
@@ -21,9 +21,9 @@ ms.locfileid: "75995620"
 
 ## <a name="how-reservation-discount-is-applied"></a>保留折扣的套用方式
 
-保留折扣採「不用則作廢」的原則。 因此，如果您有任何一小時沒有相符的資源，就會失去該小時的保留數量。 您無法遞轉未使用的保留時數。
+保留折扣採「不用則作廢」  的原則。 因此，如果您有任何一小時沒有相符的資源，就會失去該小時的保留數量。 您無法遞轉未使用的保留時數。
 
-當您關閉資源時，保留折扣會自動套用至指定範圍中另一個相符的資源。 如果在指定的範圍內找不到相符的資源，則會「失去」保留時數。
+當您關閉資源時，保留折扣會自動套用至指定範圍中另一個相符的資源。 如果在指定的範圍內找不到相符的資源，則會「失去」  保留時數。
 
 ## <a name="reservation-discount-applied-to-azure-data-explorer-clusters"></a>套用至 Azure 資料總管叢集的保留折扣
 
@@ -36,7 +36,7 @@ ms.locfileid: "75995620"
 ## <a name="examples"></a>範例
 
 下列範例說明如何根據所購買的核心數目，以及其執行時間，套用 Azure 資料總管保留容量折扣。
-例如，對於引擎叢集大小： **2 D11_v2 vm**，您的隨選總費用是每小時 Azure 資料總管標記計量的四個單位。 
+例如，針對引擎叢集大小：**2 D11_v2 VM**，您的隨選總費用是針對每小時 4 單位的 Azure 資料總管加成計量。 
 
 **案例 1** 
 
@@ -58,7 +58,7 @@ ms.locfileid: "75995620"
 
 若要在計費使用量報告中了解及檢視 Azure Reservations 的應用，請參閱[了解 Azure 保留使用量](understand-reserved-instance-usage-ea.md)。
 
-## <a name="need-help-contact-us"></a>需要協助嗎？ 連絡我們
+## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡
 
 如果您有問題或需要協助，請[建立支援要求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 
