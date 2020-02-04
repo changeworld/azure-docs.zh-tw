@@ -9,12 +9,12 @@ ms.date: 11/05/2019
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 1aa8c9ff26b85f5af8095ad1cff062b224abff83
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 2daf17ccef1bca363fe92f71a332fbfa78637135
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982186"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844766"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>快速入門：使用 Azure 入口網站將 Blob 儲存體事件路由傳送至 Web 端點
 
@@ -41,6 +41,9 @@ Azure Event Grid 是一項雲端事件服務。 在本文中，您會使用 Azur
 1. 若要訂閱事件，請建立一般用途 v2 儲存體帳戶或 Blob 儲存體帳戶。 如需詳細資訊，請參閱[建立儲存體帳戶](../storage/common/storage-account-create.md)。
 
    ![啟動步驟](./media/blob-event-quickstart-portal/provide-blob-values.png)
+
+>[!NOTE]
+> 只有種類為 [StorageV2 (一般用途 v2)]  和 [BlobStorage]  的儲存體帳戶支援事件整合。 **儲存體 (一般用途 v1)** 不  支援與事件方格整合。
 
 ## <a name="create-a-message-endpoint"></a>建立訊息端點
 

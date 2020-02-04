@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: a514dbce91a98bd51e51b1724d631bc224b2f33a
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: b76441c8b11032d3713d7679acfc7f350533b76b
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75527921"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769186"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-python"></a>快速入門：適用於 Python 的 Azure Key Vault 用戶端程式庫
 
@@ -22,7 +22,7 @@ Azure 金鑰保存庫可協助保護雲端應用程式和服務所使用的密�
 - 提高金鑰和密碼的安全性和控制權。
 - 在幾分鐘內建立和匯入加密金鑰。
 - 透過雲端規模和全域備援減少延遲。
-- 簡化 SSL/TLS 憑證的工作並將其自動化。
+- 簡化 TLS/SSL 憑證的工作並將其自動化。
 - 使用經 FIPS 140-2 Level 2 驗證的 HSM。
 
 [API 參考文件](/python/api/overview/azure/key-vault?view=azure-python) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault) | [套件 (Python Package Index)](https://pypi.org/project/azure-keyvault/)
@@ -103,7 +103,7 @@ az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-se
 
 #### <a name="set-environmental-variables"></a>設定環境變數
 
-應用程式中的 DefaultAzureCredential 方法依賴三個環境變數：`AZURE_CLIENT_ID`、`AZURE_CLIENT_SECRET` 和 `AZURE_TENANT_ID`。 使用 `export VARNAME=VALUE` 格式，將這些變數設定為您在[建立服務主體](#create-a-service-principal)步驟中記下的 clientId、clientSecret 和 tenantId 值 (此方法只會設定您目前殼層的變數，以及從殼層建立的處理序；若要將這些變數永久新增至您的環境，請編輯您的 `/etc/environment ` 檔案)。 
+應用程式中的 DefaultAzureCredential 方法依賴三個環境變數：`AZURE_CLIENT_ID`、`AZURE_CLIENT_SECRET` 和 `AZURE_TENANT_ID`。 使用 `export VARNAME=VALUE` 格式，將這些變數設定為您在[建立服務主體](#create-a-service-principal)步驟中記下的 clientId、clientSecret 和 tenantId 值。 (此方法只會設定您目前殼層的變數，以及從殼層建立的處理序；若要將這些變數永久新增至您的環境，請編輯您的 `/etc/environment ` 檔案)。 
 
 您也需要將金鑰保存庫名稱儲存為稱為 `KEY_VAULT_NAME` 的環境變數。
 

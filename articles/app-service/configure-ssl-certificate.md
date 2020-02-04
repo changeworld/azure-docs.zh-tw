@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 1a9801fc0d8a2a013fa737c9d53138dc7d52b398
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: acf7fd91eff6a868074c61d557effa076033e799
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768450"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845920"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>在 Azure App Service 中新增 SSL 憑證
 
@@ -61,6 +61,7 @@ ms.locfileid: "75768450"
 - 不支援萬用字元憑證。
 - 不支援裸網域。
 - 不可匯出。
+- 不支援 DNS A 記錄。
 
 > [!NOTE]
 > 免費憑證由 DigiCert 所發行。 針對某些最上層網域，您必須使用下列值建立 [CAA 網域記錄](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization)，以明確允許 DigiCert 作為憑證簽發者：`0 issue digicert.com`。

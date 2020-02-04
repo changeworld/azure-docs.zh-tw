@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 10/17/2019
+ms.date: 01/23/2020
 ms.author: juliako
-ms.openlocfilehash: 05a515d5f74569ff8d0fa8aec68eb681dc79d2fc
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 3984f33cd97ada9b3d5301e45fe3506966880848
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779598"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719665"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>媒體服務 v3 中的動態封裝
 
@@ -29,18 +29,7 @@ Microsoft Azure 媒體服務可以用來為許多媒體來源檔案格式編碼�
 
 ## <a name="a-iddelivery-protocolsto-prepare-your-source-files-for-delivery"></a><a id="delivery-protocols"/>準備來源檔案以進行傳遞
 
-若要利用動態封裝功能，您必須將您的夾層 (來源) 檔案[編碼](encoding-concept.md)成一組多位元速率 MP4 (ISO 基礎媒體 14496-12) 檔案。 您必須具有內含經過編碼的 MP4 的[資產](assets-concept.md)，以及媒體服務動態封裝所需的串流設定檔。 從這組 MP4 檔案中，您可以使用動態封裝透過以下串流媒體通訊協定來傳遞影片：
-
-|通訊協定|範例|
-|---|---|
-|HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`|
-|HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`|
-|HLS CMAF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-cmaf)`|
-|MPEG-DASH CSF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-csf)` |
-|MPEG-DASH CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` |
-|Smooth Streaming| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`|
-
-如果您打算使用媒體服務動態加密來保護您的內容，請參閱[串流通訊協定和加密類型](content-protection-overview.md#streaming-protocols-and-encryption-types)。
+若要利用動態封裝功能，您必須將您的夾層 (來源) 檔案[編碼](encoding-concept.md)成一組多位元速率 MP4 (ISO 基礎媒體 14496-12) 檔案。 您必須具有內含經過編碼的 MP4 的[資產](assets-concept.md)，以及媒體服務動態封裝所需的串流設定檔。 從這組 MP4 檔案中，您可以使用動態封裝透過下面描述的串流媒體通訊協定來傳遞影片。
 
 > [!TIP]
 > 取得 MP4 檔案和串流設定檔的方法之一，是[使用媒體服務編碼您的夾層檔案](#encode-to-adaptive-bitrate-mp4s)。 
@@ -48,6 +37,36 @@ Microsoft Azure 媒體服務可以用來為許多媒體來源檔案格式編碼�
 若要讓已編碼資產中的視訊可供用戶端播放，您必須建立[串流定位器](streaming-locators-concept.md)並建置串流 URL。 接著，根據串流用戶端資訊清單中指定的格式 (HLS、MPEG DASH 或 Smooth Streaming)，您會以您所選擇的通訊協定接收資料流。
 
 因此，您只需要儲存及支付一種儲存格式之檔案的費用，媒體服務會根據用戶端的要求建置及提供適當的回應。
+
+如果您打算使用媒體服務動態加密來保護您的內容，請參閱[串流通訊協定和加密類型](content-protection-overview.md#streaming-protocols-and-encryption-types)。
+
+### <a name="hls-protocol"></a>HLS 通訊協定
+
+您的串流用戶端可以指定下列 HLS 格式：
+
+|通訊協定|範例|
+|---|---|
+|HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`||
+|HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`||
+|HLS CMAF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-cmaf)`||
+
+### <a name="mpeg-dash-protocol"></a>MPEG-DASH 通訊協定
+
+您的串流用戶端可以指定下列 MPEG-DASH 格式：
+
+|通訊協定|範例|
+|---|---|
+|MPEG-DASH CSF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-csf)` ||
+|MPEG-DASH CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` ||
+
+### <a name="smooth-streaming-protocol"></a>Smooth Streaming 通訊協定
+
+您的串流用戶端可以指定下列 Smooth Streaming 格式：
+
+|通訊協定|注意事項/範例| 
+|---|---|
+|Smooth Streaming| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`||
+|Smooth Streaming 2.0 (舊版資訊清單)|根據預設，Smooth Streaming 資訊清單格式包含重複的標記 (r-tag)。 不過，有些播放程式不支援 `r-tag`。 使用這些播放程式的用戶端可以使用停用 r-tag 的格式︰<br/><br/>`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=fmp4-v20)`|
 
 ## <a name="on-demand-streaming-workflow"></a>隨選資料流處理工作流程
 

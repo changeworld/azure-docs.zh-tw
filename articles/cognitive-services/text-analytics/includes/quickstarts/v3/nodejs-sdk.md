@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 01/13/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
-ms.openlocfilehash: 69899f521e73cb5af1af145a0915dbe1a017f307
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 8ae78bb8c0b70e20bfe12b8dc52c02abb6030bdf
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281130"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774102"
 ---
 <a name="HOLTop"></a>
 
@@ -22,6 +22,7 @@ ms.locfileid: "76281130"
 
 > [!NOTE]
 > * 本快速入門使用的是文字分析用戶端程式庫 `3.0-preview` 版，這個版本包含已改善的[情感分析](../../../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)和[具名實體辨識 (NER)](../../../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) 公開預覽。
+>
 > * 為求簡化，本文中的程式碼使用未受保護的認證儲存體。 針對生產案例，建議您以批次方式傳送字串，以取得效能和延展性。 例如，呼叫 `SentimentBatchAsync()`，而不是 `Sentiment()`。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -36,6 +37,9 @@ ms.locfileid: "76281130"
 [!INCLUDE [text-analytics-resource-creation](../resource-creation.md)]
 
 ### <a name="create-a-new-nodejs-application"></a>建立新的 Node.js 應用程式
+
+> [!NOTE]
+> 您也可以在[瀏覽器](https://github.com/Azure/azure-sdk-for-js/blob/master/documentation/Bundling.md)中執行此版本的文字分析用戶端程式庫。
 
 在主控台視窗 (例如 cmd、PowerShell 或 Bash) 中，為您的應用程式建立新的目錄，並瀏覽至該目錄。 
 

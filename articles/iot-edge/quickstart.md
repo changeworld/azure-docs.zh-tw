@@ -9,16 +9,16 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: aa6d3d61cb2ce0972653f787976a89e3d372ae27
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: cefd8472c23458b94c4da5ae3c239e9d427276bf
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75912349"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760176"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>快速入門：將您的第一個 IoT Edge 模組部署至虛擬 Windows 裝置
 
-藉由將容器化程式碼部署至虛擬 IoT Edge 裝置，在本快速入門中測試 Azure IoT Edge。 IoT Edge 可讓您從遠端管理裝置上的程式碼，以便可以將更多的工作負載傳送到邊緣。 在本快速入門中，建議您對 IoT Edge 裝置使用 Azure 虛擬機器，以便您可以快速建立測試機器、安裝必要條件，然後在完成時將它刪除。
+將容器化程式碼部署至虛擬 IoT Edge 裝置，以試用 Azure IoT Edge。 IoT Edge 可讓您從遠端管理裝置上的程式碼，以便可以將更多的工作負載傳送到邊緣。 在本快速入門中，建議您對 IoT Edge 裝置使用 Azure 虛擬機器。 使用虛擬機器，可讓您快速建立測試機器、安裝必要條件，然後在完成時將它刪除。
 
 在此快速入門中，您將了解如何：
 
@@ -50,7 +50,7 @@ ms.locfileid: "75912349"
 * 一個資源群組，用以管理本快速入門中使用的所有資源。
 
    ```azurecli-interactive
-   az group create --name IoTEdgeResources --location westus2 
+   az group create --name IoTEdgeResources --location westus2
    ```
 
 IoT Edge 裝置：
@@ -158,7 +158,7 @@ IoT Edge 執行階段會在所有 IoT Edge 裝置上部署。 它有三個元件
 
 5. 再次以系統管理員身分執行 PowerShell。
 
-6. **Initialize-IoTEdge** 命令會設定機器的 IoT Edge 執行階段。 此命令預設為 Windows 容器的手動佈建。 
+6. **Initialize-IoTEdge** 命令會設定機器的 IoT Edge 執行階段。 此命令預設為 Windows 容器的手動佈建。
 
    ```powershell
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
@@ -245,7 +245,7 @@ az group delete --name IoTEdgeResources
 
 在本快速入門中，您已建立 IoT Edge 裝置，並使用 Azure IoT Edge 雲端介面將程式碼部署至裝置上。 現在，您已有測試裝置，可產生其環境的相關原始資料。
 
-下一個步驟是設定您的本機開發環境，以便您可以開始建立執行您商務邏輯的 IoT Edge 模組。 
+下一個步驟是設定您的本機開發環境，以便您可以開始建立執行您商務邏輯的 IoT Edge 模組。
 
 > [!div class="nextstepaction"]
 > [開始開發 Windows 裝置適用的 IoT Edge 模組](tutorial-develop-for-windows.md)

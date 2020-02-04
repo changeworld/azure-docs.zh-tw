@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 01/21/2020
+ms.date: 01/27/2020
 ms.author: helohr
-ms.openlocfilehash: 318997e2ebd7a423d7793a75575617d06ab842ac
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 168a345427be47dc1c33f43be1af47daa8f638ef
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514267"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772775"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>什麼是 Windows 虛擬桌面？ 
 
@@ -99,13 +99,15 @@ Windows 虛擬桌面是可以在雲端執行的桌面與應用程式虛擬化服
 |kms.core.windows.net|TCP 連接埠 1688|Windows 10 啟用|
 
 >[!IMPORTANT]
->對於可靠的 Windows 虛擬桌面部署而言，開啟這些 URL 是不可或缺的。 不支援封鎖這些 URL 的存取，而且會影響服務功能。 這些 URL 僅對應於 Windows 虛擬桌面的網站和資源，並不包含其他服務 (例如 Azure AD) 的 URL。
+>對於可靠的 Windows 虛擬桌面部署而言，開啟這些 URL 是不可或缺的。 不支援封鎖這些 URL 的存取，而且會影響服務功能。 這些 URL 僅對應於 Windows 虛擬桌面的網站和資源，並不包含其他服務 (例如 Azure Active Directory) 的 URL。
 
 >[!NOTE]
+>Windows 虛擬桌面目前沒有 IP 位址範圍清單可供您列入允許網路流量的白名單。 我們目前僅支援將特定 URL 列入白名單。
+>
 >對於涉及服務流量的 URL，必須使用萬用字元 (*)。 如果您不想使用 * 來表示代理程式相關流量，下列方法可讓您不使用萬用字元來尋找 URL：
 >
 >1. 向 Windows 虛擬桌面主機集區註冊您的虛擬機器。
->2. 開啟 [事件檢視器]  並瀏覽至 [Windows]   > [應用程式記錄檔]  ，然後尋找事件識別碼 3702。
+>2. 開啟 [事件檢視器]  ，並瀏覽至 [Windows 記錄]   > [應用程式]   > [WVD-Agent]  ，然後尋找事件識別碼 3702。
 >3. 將您在事件識別碼 3702 下找到的 URL 列入白名單中。 事件識別碼 3702 下的 URL 會隨區域而不同。 您必須針對要在其中部署虛擬機器的每個區域，重複執行相關 URL 的白名單程序。
 
 Windows 虛擬桌面包含您交付給使用者的 Windows 桌面與應用程式，以及由 Microsoft 在 Azure 上裝載為服務的管理解決方案。 桌面和應用程式都可以部署在任何 Azure 區域的虛擬機器 (VM) 中，而這些 VM 的管理解決方案和資料都會位於美國。 這可能會導致資料轉送到美國。
@@ -137,7 +139,7 @@ Windows 虛擬桌面支援下列 x64 作業系統映像：
 * Windows Server 2016
 * Windows Server 2012 R2
 
-Windows 虛擬桌面不支援 x86 (32 位元)、Windows 10 Enterprise N 或 Windows 10 Enterprise KN 作業系統映像。
+Windows 虛擬桌面不支援 x86 (32 位元)、Windows 10 Enterprise N 或 Windows 10 Enterprise KN 作業系統映像。 由於磁區大小的限制，Windows 7 也不支援裝載於受控 Azure 儲存體上的任何 VHD 或 VHDX 型設定檔解決方案。
 
 可用的自動化和部署選項取決於您所選的作業系統和版本，如下表所示： 
 

@@ -11,15 +11,15 @@ ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 10/07/2019
+ms.date: 01/21/2020
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 992cface653bf3fe52afc7efa3f17573fcf91399
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b35c23e6dd88af01391bf7f01a7e736a1a744fff
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469656"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714438"
 ---
 # <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>教學課程：在 ASP.NET Core 應用程式中使用 Key Vault 參考
 
@@ -41,7 +41,7 @@ ms.locfileid: "73469656"
 > * 建立可參考 Key Vault 中儲存之值的應用程式組態金鑰。
 > * 從 ASP.NET Core Web 應用程式存取此金鑰的值。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始此教學課程之前，請先安裝 [.NET Core SDK](https://dotnet.microsoft.com/download)。
 
@@ -75,7 +75,7 @@ ms.locfileid: "73469656"
 1. 選取 [產生/匯入]  。
 1. 在 [建立祕密]  窗格中，輸入下列值：
     - **上傳選項**：輸入**手動**。
-    - **名稱**：輸入**訊息**。
+    - **Name**：輸入**訊息**。
     - **值**：輸入 **Hello from Key Vault**。
 1. 保留其他 [建立祕密]  屬性的預設值。
 1. 選取 [建立]  。
@@ -119,30 +119,62 @@ ms.locfileid: "73469656"
 
 1. 執行下列命令，讓服務主體存取您的金鑰保存庫：
 
-    ```
+    ```cmd
     az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
     ```
 
-1. 將 *clientId* 與 *clientSecret* 的祕密新增至祕密管理員，此工具可儲存您新增至 *.csproj* 檔案中的敏感性資料 (在[快速入門：使用 Azure 應用程式組態建立 ASP.NET Core 應用程式](./quickstart-aspnet-core-app.md)中)。 這些命令必須在和 *.csproj* 檔案相同的目錄中執行。
+1. 新增環境變數，以儲存 *clientId*、*clientSecret* 和 *tenantId* 的值。
 
-    ```
-    dotnet user-secrets set ConnectionStrings:KeyVaultClientId <clientId-of-your-service-principal>
-    dotnet user-secrets set ConnectionStrings:KeyVaultClientSecret <clientSecret-of-your-service-principal>
+    #### <a name="windows-command-prompttabcmd"></a>[Windows 命令提示字元](#tab/cmd)
+
+    ```cmd
+    setx AZURE_CLIENT_ID <clientId-of-your-service-principal>
+    setx AZURE_CLIENT_SECRET <clientSecret-of-your-service-principal>
+    setx AZURE_TENANT_ID <tenantId-of-your-service-principal>
     ```
 
-> [!NOTE]
-> 這些 Key Vault 認證只會在您的應用程式中使用。 您的應用程式會使用這些認證直接驗證 Key Vault。 它們永遠不會傳遞至應用程式組態服務。
+    #### <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+
+    ```PowerShell
+    $Env:AZURE_CLIENT_ID = <clientId-of-your-service-principal>
+    $Env:AZURE_CLIENT_SECRET = <clientSecret-of-your-service-principal>
+    $Env:AZURE_TENANT_ID = <tenantId-of-your-service-principal>
+    ```
+
+    #### <a name="bashtabbash"></a>[Bash](#tab/bash)
+
+    ```bash
+    export AZURE_CLIENT_ID = <clientId-of-your-service-principal>
+    export AZURE_CLIENT_SECRET = <clientSecret-of-your-service-principal>
+    export AZURE_TENANT_ID = <tenantId-of-your-service-principal>
+    ```
+
+    ---
+
+    > [!NOTE]
+    > 這些 Key Vault 認證只會在您的應用程式中使用。 您的應用程式會使用這些認證直接驗證 Key Vault。 它們永遠不會傳遞至應用程式組態服務。
+
+1. 重新啟動您的終端機，以載入這些新的環境變數。
 
 ## <a name="update-your-code-to-use-a-key-vault-reference"></a>更新您的程式碼以使用 Key Vault 參考
+
+1. 執行下列命令，以新增對必要 NuGet 套件的參考：
+
+    ```dotnetcli
+    dotnet add package Microsoft.Azure.KeyVault
+    dotnet add package Azure.Identity
+    ```
 
 1. 開啟 *Program.cs*，並加入對下列必要套件的參考：
 
     ```csharp
     using Microsoft.Azure.KeyVault;
-    using Microsoft.IdentityModel.Clients.ActiveDirectory;
+    using Azure.Identity;
     ```
 
 1. 藉由呼叫 `config.AddAzureAppConfiguration` 方法將 `CreateWebHostBuilder` 方法更新為使用應用程式設定。 包含 `UseAzureKeyVault` 選項，將新的 `KeyVaultClient` 參考傳入至您的 Key Vault。
+
+    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -151,18 +183,38 @@ ms.locfileid: "73469656"
             {
                 var settings = config.Build();
 
-                KeyVaultClient kvClient = new KeyVaultClient(async (authority, resource, scope) =>
+                config.AddAzureAppConfiguration(options =>
                 {
-                    var adCredential = new ClientCredential(settings["ConnectionStrings:KeyVaultClientId"], settings["ConnectionStrings:KeyVaultClientSecret"]);
-                    var authenticationContext = new AuthenticationContext(authority, null);
-                    return (await authenticationContext.AcquireTokenAsync(resource, adCredential)).AccessToken;
-                });
-
-                config.AddAzureAppConfiguration(options => {
                     options.Connect(settings["ConnectionStrings:AppConfig"])
-                            .UseAzureKeyVault(kvClient); });
+                            .ConfigureKeyVault(kv =>
+                            {
+                                kv.SetCredential(new DefaultAzureCredential());
+                            });
+                });
             })
             .UseStartup<Startup>();
+    ```
+
+    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3.x](#tab/core3x)
+
+    ```csharp
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+            webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+            {
+                var settings = config.Build();
+
+                config.AddAzureAppConfiguration(options =>
+                {
+                    options.Connect(settings["ConnectionStrings:AppConfig"])
+                            .ConfigureKeyVault(kv =>
+                            {
+                                kv.SetCredential(new DefaultAzureCredential());
+                            });
+                });
+            })
+            .UseStartup<Startup>());
     ```
 
 1. 當您初始化與應用程式組態的連線時，會將 `KeyVaultClient` 參考傳遞給 `UseAzureKeyVault` 方法。 初始化之後，您就可以存取 Key Vault 參考的值，就像存取一般應用程式組態金鑰的值一樣。
@@ -179,7 +231,7 @@ ms.locfileid: "73469656"
         }
         h1 {
             color: @Configuration["TestApp:Settings:FontColor"];
-            font-size: @Configuration["TestApp:Settings:FontSize"];
+            font-size: @Configuration["TestApp:Settings:FontSize"]px;
         }
     </style>
 

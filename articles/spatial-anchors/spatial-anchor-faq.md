@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: ac7fefd8ecabd40070b422c169befe64c08f12a8
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 563e2da8eba228636b05db2112739fdead4a4aa3
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277089"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844882"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Azure Spatial Anchors 的相關常見問題集
 
@@ -112,6 +112,7 @@ Azure Spatial Anchors 會遵循 [Azure 服務合約條款](https://go.microsoft.
 **答：** 開發人員可以使用他們熟悉的工具和裝置架構，透過 Azure Spatial Anchors 建置應用程式：
 
 - 適用於 HoloLens、iOS 和 Android 的 Unity
+- iOS 和 Android 上的 Xamarin
 - iOS 上的 Swift 或 Objective-C
 - Android 上的 Java 或 Android NDK
 - HoloLens 上的 C++/WinRT

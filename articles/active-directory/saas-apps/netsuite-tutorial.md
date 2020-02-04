@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 01/22/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9be353e6a030708ea0b9939689d8669506d3b80
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 6a920e58f1ffd4c3e3e9769bf6346100a8677b90
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289028"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760042"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>教學課程：整合 Azure AD 單一登入 (SSO) 與 NetSuite
 
@@ -98,8 +98,12 @@ NetSuite 支援：
     | `https://<Account ID>.na1.sandbox.NetSuite.com/saml2/acs`|
     | `https://<Account ID>.na2.sandbox.NetSuite.com/saml2/acs`|
 
-    > [!NOTE]
-    > 上述 URL 中的值不是真實的值。 請使用實際的 [回覆 URL] 來更新這些值。 請連絡 [NetSuite 客戶支援小組](http://www.netsuite.com/portal/services/support-services/suitesupport.shtml)以取得此值。 您也可以參考 Azure 入口網站中 [基本 SAML 組態]  區段所示的格式。
+    * 您將會在 Netsuite 組態區段中取得 **<`Account ID`>** 值，本教學課程稍後會在 [Netsuite 組態] 下的步驟 8 中加以說明。 您會發現確切的網域 (例如在此案例中為 system.na0.netsuite.com)。
+
+        ![設定單一登入](./media/NetSuite-tutorial/domain-value.png)
+
+        > [!NOTE]
+        > 上述 URL 中的值不是真實的值。 請使用實際的 [回覆 URL] 來更新這些值。 請連絡 [NetSuite 客戶支援小組](http://www.netsuite.com/portal/services/support-services/suitesupport.shtml)以取得此值。 您也可以參考 Azure 入口網站中 [基本 SAML 組態]  區段所示的格式。
 
 1. NetSuite 應用程式需要特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應加入 SAML 權杖屬性設定中。 以下螢幕擷取畫面顯示預設屬性清單。
 
@@ -204,7 +208,7 @@ NetSuite 支援：
 
     b. 在右側資料行上的 [公司資訊]  窗格上，複製 [帳戶識別碼]  值。
 
-    c. 將您從 NetSuite 帳戶複製的 [帳戶識別碼]  貼至 Azure AD 中的 [屬性值]  方塊中。 
+    c. 將您從 NetSuite 帳戶複製的 [帳戶識別碼]  貼至 Azure AD 中的 [屬性值]  方塊中。
 
 10. 在使用者可以執行單一登入 NetSuite 之前，必須先在 NetSuite 中指派適當的權限。 若要指派這些權限，請執行下列動作：
 

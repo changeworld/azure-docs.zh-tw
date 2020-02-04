@@ -1,5 +1,5 @@
 ---
-title: 快速入門：建立公用標準負載平衡器 - Azure CLI
+title: 快速入門：建立公用負載平衡器 - Azure CLI
 titleSuffix: Azure Load Balancer
 description: 本快速入門說明如何使用 Azure CLI 建立公用負載平衡器
 services: load-balancer
@@ -7,7 +7,7 @@ documentationcenter: na
 author: asudbring
 manager: twooley
 tags: azure-resource-manager
-Customer intent: I want to create a Standard Load balancer so that I can load balance internet traffic to VMs.
+Customer intent: I want to create a Load balancer so that I can load balance internet traffic to VMs.
 ms.assetid: a8bcdd88-f94c-4537-8143-c710eaa86818
 ms.service: load-balancer
 ms.devlang: na
@@ -17,16 +17,16 @@ ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 30f2fa7537ed481c25940a2ed67c99c58a7a80ed
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 8ef24630d255876c45d9cbc072fc989288f2ac5f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74214799"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76837182"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli"></a>快速入門：使用 Azure CLI 建立標準負載平衡器以平衡 VM 的負載
 
-本快速入門示範如何建立標準負載平衡器。 若要測試負載平衡器，您要部署兩部執行 Ubuntu 伺服器的虛擬機器 (VM)，並平衡兩個 VM 間 Web 應用程式的負載。
+本快速入門示範如何建立公用 Load Balancer。 若要測試負載平衡器，您要部署兩部執行 Ubuntu 伺服器的虛擬機器 (VM)，並平衡兩個 VM 間 Web 應用程式的負載。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
@@ -44,13 +44,21 @@ ms.locfileid: "74214799"
     --location eastus
 ```
 
-## <a name="create-a-public-standard-ip-address"></a>建立公用標準 IP 位址
+## <a name="create-a-public-ip-address"></a>建立公用 IP 位址
 
-若要在網際網路上存取您的 Web 應用程式，您需要負載平衡器的公用 IP 位址。 標準負載平衡器只支援標準公用 IP 位址。 使用 [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip)，在 myResourceGroupSLB  中建立名為 myPublicIP  的標準公用 IP 位址。
+若要在網際網路上存取您的 Web 應用程式，您需要負載平衡器的公用 IP 位址。 使用 [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip)，在 myResourceGroupSLB  中建立名為 myPublicIP  的標準區域備援公用 IP 位址。
 
 ```azurecli-interactive
   az network public-ip create --resource-group myResourceGroupSLB --name myPublicIP --sku standard
 ```
+
+若要在區域 1 中建立區域性公用 IP 位址，請使用：
+
+```azurecli-interactive
+  az network public-ip create --resource-group myResourceGroupSLB --name myPublicIP --sku standard --zone 1
+```
+
+ 使用 ```--sku basic``` 來建立基本公用 IP。 基本不支援可用性區域。 Microsoft 建議對生產工作負載使用標準 SKU。
 
 ## <a name="create-azure-load-balancer"></a>建立 Azure Load Balancer
 
@@ -62,7 +70,7 @@ ms.locfileid: "74214799"
 
 ### <a name="create-the-load-balancer"></a>建立負載平衡器
 
-使用 [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) 建立名為 **myLoadBalancer** 的公用 Azure Load Balancer，包含名為 **myFrontEnd** 的前端集區、名為 **myBackEndPool** 的後端集區，與您在前一個步驟中建立的公用 IP 位址 **myPublicIP** 相關聯。
+使用 [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) 建立名為 **myLoadBalancer** 的公用 Azure Load Balancer，包含名為 **myFrontEnd** 的前端集區、名為 **myBackEndPool** 的後端集區，與您在前一個步驟中建立的公用 IP 位址 **myPublicIP** 相關聯。 使用 ```--sku basic``` 來建立基本公用 IP。 Microsoft 建議對生產工作負載使用標準 SKU。
 
 ```azurecli-interactive
   az network lb create \
@@ -182,20 +190,11 @@ ms.locfileid: "74214799"
 
 ```
 
-
 ## <a name="create-backend-servers"></a>建立後端伺服器
 
 在此範例中，您要建立三個虛擬機器，作為負載平衡器的後端伺服器。 若要確認已成功建立負載平衡器，您也可在虛擬機器上安裝 NGINX。
 
-### <a name="create-an-availability-set"></a>建立可用性設定組
-
-使用 [az vm availabilityset create](/cli/azure/network/nic) 建立可用性設定組
-
- ```azurecli-interactive
-  az vm availability-set create \
-    --resource-group myResourceGroupSLB \
-    --name myAvailabilitySet
-```
+如果您要使用基本公用 IP 建立基本 Load Balancer，則必須使用 [az vm availabilityset create](/cli/azure/network/nic) 來建立可用性設定組，以在其中新增您的虛擬機器。 標準 Load Balancer 不需要此額外步驟。 Microsoft 建議使用「標準」。
 
 ### <a name="create-three-virtual-machines"></a>建立三個虛擬機器
 
@@ -300,9 +299,7 @@ runcmd:
 ```azurecli-interactive 
   az group delete --name myResourceGroupSLB
 ```
-## <a name="next-step"></a>後續步驟
-本快速入門中，您已建立標準 Load Balancer、將 VM 加以連結、設定負載平衡器流量規則、健康情況探查，接著測試負載平衡器。 若要深入了解 Azure Load Balancer，請繼續 Azure Load Balancer 的教學課程。
+## <a name="next-steps"></a>後續步驟
+在本快速入門中，您已建立標準負載平衡器、將 VM 連結到標準負載平衡器、設定負載平衡器流量規則、健康狀態探查，然後測試負載平衡器。 若要深入了解 Azure Load Balancer，請繼續進行 [Azure 負載平衡器教學課程](tutorial-load-balancer-standard-public-zone-redundant-portal.md)。
 
-> [!div class="nextstepaction"]
-> [Azure Load Balancer 教學課程](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
-
+深入了解 [Load Balancer 和可用性區域](load-balancer-standard-availability-zones.md)。

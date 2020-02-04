@@ -1,5 +1,5 @@
 ---
-title: 快速入門：使用 Python 查詢
+title: 使用 Python 查詢資料庫
 description: 本主題說明如何使用 Python 來建立連線到 Azure SQL 資料庫的程式，並使用 Transact-SQL 陳述式查詢。
 services: sql-database
 ms.service: sql-database
@@ -11,44 +11,56 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 42d5b500a48e427aad2372710597e0266b2e80aa
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e82f8feae0096202e48a58296dd2e9d21bb61885
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826986"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768563"
 ---
 # <a name="quickstart-use-python-to-query-an-azure-sql-database"></a>快速入門：使用 Python 查詢 Azure SQL 資料庫
 
- 本文示範如何使用 [Python](https://python.org) 來連線至 Azure SQL 資料庫，並使用 Transact-SQL 陳述式來查詢資料。 如需 SDK 的詳細資訊，請查看我們的[參考](https://docs.microsoft.com/python/api/overview/azure/sql)文件、[pyodbc GitHub 存放庫](https://github.com/mkleehammer/pyodbc/wiki/)，及 [pyodbc 範例](https://github.com/mkleehammer/pyodbc/wiki/Getting-started)。
+在本快速入門中，您會使用 Python 來連線至 Azure SQL 資料庫，並使用 T-SQL 陳述式來查詢資料。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-若要完成本快速入門，請確定您具備下列項目︰
+- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- [Azure SQL 資料庫](sql-database-single-database-get-started.md)
+- [Python](https://python.org/downloads) 3 和相關軟體
 
-- Azure SQL 資料庫。 您可以使用其中一個快速入門，在 Azure SQL Database 中建立資料庫並加以設定：
+  # <a name="macostabmacos"></a>[macOS](#tab/macos)
 
-  || 單一資料庫 | 受控執行個體 |
-  |:--- |:--- |:---|
-  | 建立| [入口網站](sql-database-single-database-get-started.md) | [入口網站](sql-database-managed-instance-get-started.md) |
-  || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
-  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | 設定 | [伺服器層級 IP 防火牆規則](sql-database-server-level-firewall-rule.md)| [VM 的連線能力](sql-database-managed-instance-configure-vm.md)|
-  |||[現場的連線能力](sql-database-managed-instance-configure-p2s.md)
-  |載入資料|每個快速入門載入的 Adventure Works|[還原 Wide World Importers](sql-database-managed-instance-get-started-restore.md)
-  |||從 [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 中的 [BACPAC](sql-database-import.md) 檔案還原或匯入 Adventure Works|
-  |||
+  若要安裝 Homebrew 和 Python、ODBC 驅動程式和 SQLCMD，以及適用於 SQL Server 的 Python 驅動程式，請使用[在 macOS 上使用 SQL Server 上建立 Python 應用程式](https://www.microsoft.com/sql-server/developer-get-started/python/mac/)中的 **1.2**、**1.3** 和 **2.1** 步驟。
 
-  > [!IMPORTANT]
-  > 本文中已撰寫的指令碼會使用 Adventure Works 資料庫。 對於受控執行個體，您必須將 Adventure Works 資料庫匯入執行個體資料庫中，或將本文中的指令碼修改為使用 Wide World Importers 資料庫。
-  
-- 您作業系統的 Python 與相關軟體：
-  
-  - **MacOS**：安裝 Homebrew 和 Python，安裝 ODBC 驅動程式和 SQLCMD，然後再安裝 Python Driver for SQL Server。 請參閱[在 macOS 上使用 SQL Server 建立 Python 應用程式](https://www.microsoft.com/sql-server/developer-get-started/python/mac/)中的步驟 1.2、1.3 和 2.1。 如需詳細資訊，請參閱[在 Linux 和 macOS 上安裝 Microsoft ODBC 驅動程式](https://docs.microsoft.com/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server)。
+  如需詳細資訊，請參閱 [macOS 上的 Microsoft ODBC 驅動程式](/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server)。
 
-  - **Ubuntu**：安裝 Python 和其他必要套件與 `sudo apt-get install python python-pip gcc g++ build-essential`。 下載並安裝 ODBC 驅動程式、SQLCMD 和 SQL Server 的 Python 驅動程式。 如需相關指示，請參閱[設定 pyodbc Python 開發的開發環境](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#linux)。
+  # <a name="ubuntutabubuntu"></a>[Ubuntu](#tab/ubuntu)
 
-  - **Windows**：安裝 Python、ODBC 驅動程式、SQLCMD 和 SQL Server 的 Python 驅動程式。 如需相關指示，請參閱[設定 pyodbc Python 開發的開發環境](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#windows)。
+  若要安裝 Python 和其他必要套件，請使用 `sudo apt-get install python python-pip gcc g++ build-essential`。
+
+  若要安裝 ODBC 驅動程式、SQLCMD 和適用於 SQL Server 的 Python 驅動程式，請參閱[設定適用於 pyodbc Python 開發的環境](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#linux)。
+
+  如需詳細資訊，請參閱 [Linux 上的 Microsoft ODBC 驅動程式](/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server)。
+
+  # <a name="windowstabwindows"></a>[Windows](#tab/windows)
+
+  若要安裝 Python、ODBC 驅動程式和 SQLCMD，以及適用於 SQL Server 的 Python 驅動程式，請參閱[設定適用於 pyodbc Python 開發的環境](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#windows)。
+
+  如需詳細資訊，請參閱 [Microsoft ODBC 驅動程式](/sql/connect/odbc/microsoft-odbc-driver-for-sql-server)。
+
+---
+
+> [!IMPORTANT]
+> 本文中已撰寫的指令碼會使用 **Adventure Works** 資料庫。
+
+> [!NOTE]
+> 您也可以視情況選擇使用 Azure SQL 受控執行個體。
+>
+> 若要建立和設定，請使用 [Azure 入口網站](sql-database-managed-instance-get-started.md)、[PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) 或 [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44)，然後設定[現場](sql-database-managed-instance-configure-p2s.md)或 [VM](sql-database-managed-instance-configure-vm.md) 連線能力。
+>
+> 若要載入資料，請參閱[使用 BACPAC 檔案還原](sql-database-import.md) (搭配 [Adventure Works](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works))，或參閱[還原 Wide World Importers 資料庫](sql-database-managed-instance-get-started-restore.md)。
+
+若要進一步探索 Python 和 Azure SQL 資料庫，請參閱[適用於 Python 的 Azure SQL 資料庫程式庫](/python/api/overview/azure/sql)、[pyodbc 存放庫](https://github.com/mkleehammer/pyodbc/wiki/)，以及 [pyodbc 範例](https://github.com/mkleehammer/pyodbc/wiki/Getting-started)。
 
 ## <a name="get-sql-server-connection-information"></a>取得 SQL Server 連線資訊
 
@@ -64,7 +76,7 @@ ms.locfileid: "73826986"
 
 1. 在文字編輯器中，建立名為 *sqltest.py* 的新檔案。  
    
-1. 新增下列程式碼。 用您自己的值取代 \<server>、\<database>、\<username>，以及 \<password>。
+1. 加入下列程式碼。 用您自己的值取代 \<server>、\<database>、\<username>，以及 \<password>。
    
    >[!IMPORTANT]
    >此範例中的程式碼使用範例 AdventureWorksLT 資料，您可以在建立資料庫時選擇這些範例資料作為來源。 如果您的資料庫中有不同的資料，請在 SELECT 查詢中使用來自您自己資料庫的資料表。 

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 08/23/2019
 ms.author: dech
-ms.openlocfilehash: d79ac0e368ad824f6ceaea7bbcba151ecec72336
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4ac3d74cb76a936cc88261a2fedf16764e8ae52f
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74220159"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718288"
 ---
 # <a name="nodejs-examples-to-manage-data-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中管理資料的 Node.js 範例
 
@@ -71,7 +71,7 @@ ms.locfileid: "74220159"
 
 ## <a name="item-examples"></a>項目範例
 
-[ItemManagement](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ItemManagement) 檔案會顯示如何在項目上執行 CRUD 作業。 若要在執行下列範例之前先了解 Azure Cosmos 文件，請參閱[使用資料庫、容器和項目](databases-containers-items.md)概念性文章。 
+[ItemManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ItemManagement.ts) 檔案會顯示如何在項目上執行 CRUD 作業。 若要在執行下列範例之前先了解 Azure Cosmos 文件，請參閱[使用資料庫、容器和項目](databases-containers-items.md)概念性文章。 
 
 | Task | API 參考資料 |
 | --- | --- |
@@ -98,7 +98,7 @@ ms.locfileid: "74220159"
 
 ## <a name="server-side-programming-examples"></a>伺服器端程式設計範例
 
-[ServerSideScripts](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ServerSideScripts) 專案的 [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ServerSideScripts/app.js) 檔案說明如何執行下列工作。 若要在執行下列範例之前了解 Azure Cosmos DB 中的伺服器端程式設計，請參閱[預存程序、觸發程序和使用者定義函式](stored-procedures-triggers-udfs.md)概念性文章。 
+[ServerSideScripts](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ServerSideScripts) 專案的 [index.ts](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ServerSideScripts/index.ts) 檔案說明如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos DB 中的伺服器端程式設計，請參閱[預存程序、觸發程序和使用者定義函式](stored-procedures-triggers-udfs.md)概念性文章。 
 
 | Task | API 參考資料 |
 | --- | --- |

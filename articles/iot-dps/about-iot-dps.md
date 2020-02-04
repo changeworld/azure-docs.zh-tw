@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: b28e09b2d304dc392442d98fe39654bab2c8d09c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: f9ac3c85bcd8e50918961649bdb5739fc66f1627
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645050"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772953"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>使用 Azure IoT 中樞裝置佈建服務來佈建裝置
 Microsoft Azure 提供一組豐富的整合式公用雲端服務，可滿足所有的 IoT 方案需求。 IoT 中樞裝置佈建服務是 IoT 中樞的協助程式服務，無須人為介入，即可對正確的 IoT 中樞進行 Just-In-Time 自動佈建，讓客戶能以安全又可調整的方式佈建數百萬個裝置。
@@ -80,7 +80,7 @@ Microsoft Azure 提供一組豐富的整合式公用雲端服務，可滿足所�
 * **註冊清單**包含可能在某處註冊的完整裝置記錄/裝置群組。 一旦註冊後，註冊清單就會包含裝置所需設定的相關資訊，並可以在任何時間進行更新。
 * **多個配置原則**可控制裝置佈建服務將裝置指派給 IoT 中樞的方式，從而支援您的情節：透過註冊清單控制最低延遲、權重相等的分佈 (預設值) 和靜態設定。 請注意，延遲會使用與[流量管理員](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#performance)相同的方法來決定。
 * **監視和診斷記錄**並確定一切運作正常。
-* **多重中樞支援**可讓裝置佈建服務來將裝置指派給一個以上的 IoT 中樞。 裝置佈建服務可與多個 Azure 訂用帳戶之間的中樞通訊。
+* **多重中樞支援**可讓裝置佈建服務在執行階段將裝置延後繫結至 IoT 中樞。 裝置佈建服務可與多個 Azure 訂用帳戶之間的中樞通訊。
 * **跨區域支援**可讓「裝置佈建服務」將裝置指派到其他區域的 IoT 中樞。
 
 您可以在[裝置概念](concepts-device.md)、[服務概念](concepts-service.md)和[安全性概念](concepts-security.md)中，深入了解裝置佈建中包含的概念和功能。

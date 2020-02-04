@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/04/2019
-ms.openlocfilehash: 2ef7f273d6838b1bc051c70539ef7d9da59d7148
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: e6ee75f4a7e00e8c21079e1336756db20221750f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754574"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76837998"
 ---
 # <a name="introduction-to-ai-in-azure-cognitive-search"></a>Azure 認知搜尋中的 AI 簡介
 
 AI 擴充是 Azure 認知搜尋服務索引的功能，可用來從影像、Blob 及其他非結構化的資料來源擷取文字，以擴充其內容並使其更容易在索引或知識存放區中被找到。 系統會透過附加到索引管線的「認知技術」  來進行擷取和擴充。 服務內建的認知技能可分為下列幾個類別： 
 
-+ **自然語言處理**技術，包括[實體辨識](cognitive-search-skill-entity-recognition.md)、[語言偵測](cognitive-search-skill-language-detection.md)、[關鍵片語擷取](cognitive-search-skill-keyphrases.md)、文字操作和[情感偵測](cognitive-search-skill-sentiment.md)。 透過這些技術，非結構化的文字將能取得新的型態，並對應為索引中可搜尋且可篩選的欄位。
++ **自然語言處理**技術，包括[實體辨識](cognitive-search-skill-entity-recognition.md)、[語言偵測](cognitive-search-skill-language-detection.md)、[關鍵片語擷取](cognitive-search-skill-keyphrases.md)、文字操作、[情感偵測](cognitive-search-skill-sentiment.md)和 [PII 偵測](cognitive-search-skill-pii-detection.md)。 透過這些技術，非結構化的文字將能取得新的型態，並對應為索引中可搜尋且可篩選的欄位。
 
 + **影像處理**技術，包括[光學字元辨識 (OCR)](cognitive-search-skill-ocr.md) 和[視覺特徵](cognitive-search-skill-image-analysis.md)的識別，例如臉部偵測、影像轉譯、影像辨識 (名人和地標)，或是色彩或影像方向之類的屬性。 您可以為影像內容建立可使用 Azure 認知搜尋服務的各種查詢功能來搜尋的文字表示法。
 
@@ -109,7 +109,7 @@ Azure 認知搜尋服務中的認知技術是以認知服務 API 中預先訓練
 | 認知技能 | 擴充管線中不可部分完成的轉換。 它通常是一種擷取或推斷結構的元件，因此能提高我們對輸入資料的了解。 輸出幾乎都是以文字為基礎，而處理則是自然語言處理，或是從影像輸入擷取或產生的文字的影像處理。 技能的輸出可以對應至索引中的欄位，或作為下游擴充的輸入。 技能可以是 Microsoft 預先定義並提供的，或是自訂的：由您建立和部署。 | [內建認知技能](cognitive-search-predefined-skills.md) |
 | 資料擷取 | 涵蓋多種形式的處理 (但與 AI 擴充有關)，實體辨識技能最常用來從原本未提供具體資訊的來源擷取資料 (實體)。 | 請參閱[實體辨識技能](cognitive-search-skill-entity-recognition.md)和[文件擷取技能 (預覽)](cognitive-search-skill-document-extraction.md)| 
 | 影像處理 | 從影像推斷文字 (例如辨識地標的能力)，或從影像擷取文字。 常見的範例包括從掃描的文件 (JPEG) 檔案中挑取字元的 OCR，或是在包含路標的相片中辨識街道名稱。 | 請參閱[影像分析技能](cognitive-search-skill-image-analysis.md)或 [OCR 技能](cognitive-search-skill-ocr.md)
-| 自然語言處理 | 文字輸入的相關深入解析和資訊的文字處理。 語言偵測、情感分析和關鍵片語擷取都是屬於自然語言處理的技能。  | 請參閱[關鍵片語擷取技能](cognitive-search-skill-keyphrases.md)、[語言偵測技能](cognitive-search-skill-language-detection.md)、[文字翻譯技能 (預覽)](cognitive-search-skill-text-translation.md)、[情感分析技能](cognitive-search-skill-sentiment.md) |
+| 自然語言處理 | 文字輸入的相關深入解析和資訊的文字處理。 語言偵測、情感分析和關鍵片語擷取都是屬於自然語言處理的技能。  | 請參閱[關鍵片語擷取技能](cognitive-search-skill-keyphrases.md)、[語言偵測技能](cognitive-search-skill-language-detection.md)、[文字翻譯技能](cognitive-search-skill-text-translation.md)、[情感分析技能](cognitive-search-skill-sentiment.md)、[PII 偵測技能 (預覽)](cognitive-search-skill-pii-detection.md) |
 | 文件萃取 | 在索引編製期間從非文字來源擷取或建立文字內容的程序。 光學字元辨識 (OCR) 也是範例之一，但它通常指涉索引子核心功能，因為索引子會從應用程式檔案中擷取內容。 提供來源檔案位置的資料來源，與提供欄位對應的索引子定義，都是文件萃取的關鍵因素。 | 請參閱[索引子概觀](search-indexer-overview.md) |
 | 塑形 | 將文字片段合併成較大的結構，或者反向將較大的文字區塊分解成可管理的大小，以進行進一步的下游處理。 | 請參閱[塑形器技能](cognitive-search-skill-shaper.md)、[文字合併技能](cognitive-search-skill-textmerger.md)、[文字分割技能](cognitive-search-skill-textsplit.md) |
 | 擴充的文件 | 在處理期間產生的暫時性內部結構，包含搜尋索引中反映的最後輸出。 技能集會決定要執行哪些擴充。 欄位對應將決定哪些資料元素會新增至索引。 (選擇性) 您可以建立知識存放區，以使用儲存體總管、Power BI 或連結到 Azure Blob 儲存體的任何其他工具來保存及探索擴充的文件。 | 請參閱[知識存放區 (預覽)](knowledge-store-concept-intro.md) |

@@ -7,14 +7,14 @@ author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 01/06/2020
+ms.date: 01/23/2020
 ms.custom: include file
-ms.openlocfilehash: a6adbe095b3ed486be8eb2e2611db5a40162d5dd
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: a1576e4a97af5de0b936c662de636aae542a19b5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895397"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748788"
 ---
 >[!NOTE]
 >本節提供 [Azure AD 應用程式註冊](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)的指示。
@@ -33,9 +33,18 @@ ms.locfileid: "75895397"
 
 1. 若要確定[應用程式註冊為**公用應用程式**](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration)，請開啟應用程式註冊的 [驗證]  窗格，並在該窗格中向下捲動。 在 [預設用戶端類型]  區段中，針對 [將應用程式視為公用用戶端]  選擇 [是]  ，然後點擊 [儲存]  。
 
-    檢查**存取權杖**，以在您的 Manifest.json 中啟用 **oauth2AllowImplicitFlow** 設定。
+    1. [重新導向 URI]  必須符合驗證要求所提供的位址：
 
-    [![公用用戶端組態設定](./media/digital-twins-permissions/aad-configure-public-client.png)](./media/digital-twins-permissions/aad-configure-public-client.png#lightbox)
+        * 對於裝載在本機開發環境中的應用程式，請選取 [公用用戶端 (行動和傳統型)]  。 請務必將 [預設用戶端類型]  設定為 [是]。
+        * 對於裝載在 Azure App Service 上的單頁應用程式，請選取 [Web]  。
+
+        選取 [公開用戶端 (行動裝置及桌上型電腦)]  並輸入 `http://localhost:8080/`。
+
+        [![設定重新導向 URI](./media/digital-twins-permissions/aad-app-configure-redirect-uris.png)](./media/digital-twins-permissions/aad-app-configure-redirect-uris.png#lightbox)
+
+    1. 檢查 [存取權杖]  ，以在您資源的 [資訊清單]  JSON 中將 **oauth2AllowImplicitFlow** 設定為 `true`。
+
+        [![公用用戶端組態設定](./media/digital-twins-permissions/aad-configure-public-client.png)](./media/digital-twins-permissions/aad-configure-public-client.png#lightbox)
 
 1.  開啟已註冊應用程式的 [概觀]  窗格，並將下列實體的值複製到暫存檔。 您會使用這些值來設定後續章節的應用程式範例。
 

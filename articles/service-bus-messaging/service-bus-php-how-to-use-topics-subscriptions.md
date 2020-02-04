@@ -1,6 +1,6 @@
 ---
-title: 快速入門：如何透過 PHP 使用服務匯流排主題
-description: 快速入門：了解如何在 Azure 中搭配使用服務匯流排主題與 PHP。
+title: 如何透過 PHP 使用 Azure 服務匯流排主題
+description: 在本教學課程中，了解如何從 PHP 應用程式使用 Azure 服務匯流排主題和訂用帳戶。
 services: service-bus-messaging
 documentationcenter: php
 author: axisc
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: b55d3c93f9926b7446dadf069b37a878caa81e15
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 92f25f4bdac4942478c93f717c81eadd2c2f5b4a
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721646"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760669"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-php"></a>快速入門：如何透過 PHP 使用服務匯流排主題和訂用帳戶
 
@@ -33,7 +33,7 @@ ms.locfileid: "73721646"
 - 從訂用帳戶接收訊息
 - 刪除主題和訂用帳戶
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 1. Azure 訂用帳戶。 若要完成此教學課程，您需要 Azure 帳戶。 您可以啟用自己的 [Visual Studio 或 MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或註冊[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
 2. 依照下列快速入門中的步驟操作：[快速入門：使用 Azure 入口網站建立服務匯流排主題和主題的訂用帳戶](service-bus-quickstart-topics-subscriptions-portal.md)，以建立服務匯流排**命名空間**及取得**連接字串**。
 

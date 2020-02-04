@@ -1,6 +1,6 @@
 ---
-title: 快速入門：如何在 Node.js 中使用 azure/service-bus 佇列
-description: 快速入門：了解如何在 Azure 中從 Node.js 應用程式透過 azure/service-bus 套件使用服務匯流排佇列。
+title: 如何在 Node.js 中使用 azure/service-bus 佇列
+description: 了解如何撰寫 Node.js 程式，以使用新的 @azure/service-bus 套件對服務匯流排佇列傳送及接收訊息。
 services: service-bus-messaging
 documentationcenter: nodejs
 author: axisc
@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 9901ccd6bb1abf27bb1141c618d0bfde167b9cc3
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 9db359d8331859e3eebf345d91fe5dc6e66c0d4c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721676"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774581"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-nodejs-and-the-azureservice-bus-package"></a>快速入門：了解如何透過 Node.js 和 azure/service-bus 套件使用服務匯流排佇列
 > [!div class="op_multi_selector" title1="程式設計語言" title2="Node.js 套件"]
@@ -27,7 +27,7 @@ ms.locfileid: "73721676"
 
 在本教學課程中，您將了解如何撰寫 Node.js 程式，以使用新的 [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) 套件對服務匯流排佇列傳送及接收訊息。 此套件使用較快速的 [AMQP 1.0 通訊協定](service-bus-amqp-overview.md)，而舊版的 [azure-sb](https://www.npmjs.com/package/azure-sb) 套件則使用[服務匯流排 REST 執行階段 API](/rest/api/servicebus/service-bus-runtime-rest)。 相關範例是以 JavaScript 撰寫的。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 - Azure 訂用帳戶。 若要完成此教學課程，您需要 Azure 帳戶。 您可以[啟用自己的 MSDN 訂戶權益](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)或是[註冊免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
 - 如果您沒有可用的佇列，請執行[使用 Azure 入口網站建立服務匯流排佇列](service-bus-quickstart-portal.md)一文中的步驟，以建立佇列。 請記下服務匯流排執行個體的連接字串，以及您所建立的佇列名稱。 我們將在範例中使用這些值。
 

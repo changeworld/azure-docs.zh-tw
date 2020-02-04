@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 10/24/2019
+ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 5aa4cc24484a4ba1da608da9676ade492db35b6c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9f25c845302d62e3bc9e230b4a6f8f2669f4ac35
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72936014"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774276"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>教學課程：使用 Azure Content Moderator 仲裁 Facebook 文章和留言
 
@@ -35,9 +35,9 @@ ms.locfileid: "72936014"
 ![透過 "FBListener" 接收 Facebook 資訊並透過 "CMListener" 傳送資訊的 Content Moderator 圖示](images/tutorial-facebook-moderation.png)
 
 > [!IMPORTANT]
-> 2018 年時，Facebook 已對 Facebook 應用程式實作更嚴格的調查。 如果您的應用程式未經過 Facebook 檢閱小組的檢閱與核准，您將無法完成本教學課程的步驟。
+> 2018 年時，Facebook 已對 Facebook 應用程式實作更嚴格的調查原則。 如果您的應用程式未經過 Facebook 檢閱小組的檢閱與核准，您將無法完成本教學課程的步驟。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - Content Moderator 訂用帳戶金鑰。 請依照[建立認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的指示，訂閱 Content Moderator 服務並取得金鑰。
 - [Facebook 帳戶](https://www.facebook.com/)。

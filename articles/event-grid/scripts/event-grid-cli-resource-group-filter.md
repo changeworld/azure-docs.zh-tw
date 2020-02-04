@@ -1,6 +1,6 @@
 ---
 title: Azure CLI - 訂閱資源群組和依資源進行篩選
-description: Azure CLI 指令碼範例 - 訂閱資源群組和依資源進行篩選
+description: 本文提供範例 Azure CLl 指令碼，示範如何訂閱資源的事件方格事件以及對資源進行篩選。
 services: event-grid
 documentationcenter: na
 author: spelluru
@@ -9,14 +9,14 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/22/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: f19890570b13278c15ab3264c83c9290326d69b3
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 3dfe31a38d1bc1ba8662246a5dec3f10d0d1c948
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790748"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720821"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-and-filter-for-a-resource-with-azure-cli"></a>使用 Azure CLI 訂閱資源群組的事件和篩選資源
 
@@ -40,7 +40,7 @@ ms.locfileid: "72790748"
 
 此指令碼會使用下列命令來建立事件訂用帳戶。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [az eventgrid event-subscription create](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription#az-eventgrid-event-subscription-create) | 建立事件格線訂用帳戶。 |
 | [az eventgrid event-subscription create](/cli/azure/ext/eventgrid/eventgrid/event-subscription#ext-eventgrid-az-eventgrid-event-subscription-create) - 延伸模組版本 | 建立事件格線訂用帳戶。 |

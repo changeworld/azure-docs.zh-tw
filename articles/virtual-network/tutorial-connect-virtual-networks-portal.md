@@ -4,25 +4,21 @@ description: 在本教學課程中，您將了解如何使用 Azure 入口網站
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
-editor: ''
-tags: azure-resource-manager
 Customer intent: I want to connect two virtual networks so that virtual machines in one virtual network can communicate with virtual machines in the other virtual network.
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 08/16/2018
+ms.date: 01/22/2020
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: b32f3762f2546a4d4956bf38c914173657e9d3da
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a3966615d28630fdd2ab799f478ef7edaa3377e1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499882"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775302"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站以虛擬網路對等互連連線虛擬網路
 
@@ -44,9 +40,9 @@ ms.locfileid: "73499882"
 
 ## <a name="create-virtual-networks"></a>建立虛擬網路
 
-1. 從 Azure 入口網站功能表或**首頁**，選取 [建立資源]  。
+1. 在 Azure 入口網站中，選取 [建立資源]  。
 2. 選取 [網絡]  ，然後選取 [虛擬網路]  。
-3. 在 [基本資料]  頁面上，輸入或選取下列資訊，然後接受其餘設定的預設值：
+3. 在 [基本資料]  索引標籤上，輸入或選取下列資訊，然後接受其餘設定的預設值：
 
     |設定|值|
     |---|---|
@@ -55,15 +51,17 @@ ms.locfileid: "73499882"
     |區域| 選取 [美國東部]  。|
     |名稱|myVirtualNetwork1|
 
-4. 在 [IP 位址]  頁面上，針對 [位址空間]  欄位輸入 10.0.0.0/16。 按一下下方的 [新增子網路]  按鈕，然後針對 [子網路名稱]  輸入 Subnet1 並針對 [子網路位址範圍]  輸入 10.0.0.0/24。
+4. 在 [IP 位址]  索引標籤上，針對 [位址空間]  欄位輸入 10.0.0.0/16。 按一下下面的 [新增子網路]  按鈕，然後針對 [子網路名稱]  輸入 Subnet1  並針對 [子網路位址範圍]  輸入 10.0.0.0/24。
+5. 選取 [檢閱 + 建立]  ，然後選取 [建立]  。
    
-5. 以下列變更再次完成步驟 1-3：
+5. 以下列變更再次完成步驟 1-5：
 
     |設定|值|
     |---|---|
     |名稱|myVirtualNetwork2|
     |位址空間|10.1.0.0/16|
     |資源群組| 選取 [使用現有的]  ，然後選取 [myResourceGroup]  。|
+    |子網路名稱 | Subnet2|
     |子網路位址範圍|10.1.0.0/24|
 
 ## <a name="peer-virtual-networks"></a>對等互連虛擬網路
@@ -96,7 +94,7 @@ ms.locfileid: "73499882"
 
 ### <a name="create-the-first-vm"></a>建立第一個 VM
 
-1. 從 Azure 入口網站功能表或**首頁**，選取 [建立資源]  。
+1. 在 Azure 入口網站中，選取 [建立資源]  。
 2. 選取 [計算]  ，然後選取 [Windows Server 2016 Datacenter]  。 您可以選取不同的作業系統，但是其餘步驟假設您選取的是 **Windows Server 2016 Datacenter**。 
 3. 針對 [基本資料]  輸入或選取下列資訊、接受其餘設定的預設值，然後選取 [建立]  ：
 
@@ -104,8 +102,8 @@ ms.locfileid: "73499882"
     |---|---|
     |資源群組| 選取 [使用現有的]  ，然後選取 [myResourceGroup]  。|
     |名稱|myVm1|
-    |位置| 選取 [美國東部]  。|
-    |使用者名稱| 輸入您選擇的使用者名稱。|
+    |Location| 選取 [美國東部]  。|
+    |[使用者名稱]| 輸入您選擇的使用者名稱。|
     |密碼| 輸入您選擇的密碼。 密碼長度至少必須有 12 個字元，而且符合[定義的複雜度需求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
    
 4. 針對 [大小]  選項選取 VM 大小。
@@ -115,9 +113,6 @@ ms.locfileid: "73499882"
     |---|---|
     |虛擬網路| myVirtualNetwork1 - 若尚未選取，請選取 [虛擬網路]  ，然後選取 [myVirtualNetwork1]  。|
     |子網路| Subnet1 - 若尚未選取，請選取 [子網路]  ，然後選取 [Subnet1]  。|
-    
-
-    ![虛擬機器設定](./media/tutorial-connect-virtual-networks-portal/virtual-machine-settings.png)
    
 6. 選取 [網路功能]  。 針對 [公用輸入連接埠]  選項選擇 [允許選取的連接埠]  。 針對底下的 [選取輸入連接埠]  選項選擇 [RDP]  。 
 

@@ -1,17 +1,17 @@
 ---
 title: 在 Kubernetes 上進行小組開發
 services: azure-dev-spaces
-ms.date: 04/25/2019
+ms.date: 01/22/2020
 ms.topic: quickstart
 description: 本快速入門說明如何使用 Azure Dev Spaces 對容器和微服務進行 Kubernetes 小組開發
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: b84bb67556eda3a453ede5a6fb745d8ae472fb6c
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: d2b31cce6604cef31de6f034566ebd46a4e92750
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290405"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721586"
 ---
 # <a name="quickstart-team-development-on-kubernetes---azure-dev-spaces"></a>快速入門：在 Kubernetes 上進行小組開發 - Azure Dev Spaces
 
@@ -27,7 +27,7 @@ ms.locfileid: "76290405"
 
 - Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，您可以建立[免費帳戶](https://azure.microsoft.com/free)。
 - [已安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
-- [已安裝 Helm 2.13 - 2.16][helm-installed]。
+- [已安裝 Helm 3][helm-installed]。
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>建立 Azure Kubernetes Service 叢集
 
@@ -82,39 +82,14 @@ MyAKS               MyResourceGroup   dev       fedcab0987.eus.azds.io
 
 無論用來部署應用程式的工具為何，您都可以在該應用程式已於叢集中執行之後，針對小組開發使用 Azure Dev Spaces。
 
-使用 `helm init` 和 `helm install` 命令來在叢集上設定並安裝範例應用程式。
+使用 `helm install` 命令在叢集上設定並安裝範例應用程式。
 
 ```cmd
 cd charts/
-helm init --wait
-helm install -n bikesharing . --dep-up --namespace dev --atomic 
-```
-> [!Note]
-> **如果您使用已啟用 RBAC 的叢集**，請務必設定 [Tiller 的服務帳戶](https://helm.sh/docs/using_helm/#role-based-access-control)。 否則，`helm` 命令將會失敗。
-
-`helm install` 命令可能需要幾分鐘的時間才能完成。 命令的輸出會顯示其於完成時部署至叢集之所有伺服器的狀態：
-
-```cmd
-$ cd charts/
-$ helm init --wait
-...
-Happy Helming!
-
-$ helm install -n bikesharing . --dep-up --namespace dev --atomic
-
-Hang tight while we grab the latest from your chart repositories...
-...
-NAME               READY  UP-TO-DATE  AVAILABLE  AGE
-bikes              1/1    1           1          4m32s
-bikesharingweb     1/1    1           1          4m32s
-billing            1/1    1           1          4m32s
-gateway            1/1    1           1          4m32s
-reservation        1/1    1           1          4m32s
-reservationengine  1/1    1           1          4m32s
-users              1/1    1           1          4m32s
+helm install bikesharing . --dependency-update --namespace dev --atomic
 ```
 
-在範例應用程式已安裝至叢集上，且基於您已在叢集上啟用 Dev Spaces 的原因，請使用 `azds list-uris` 命令來顯示目前所選取 *dev* 中之範例應用程式的 URL。
+`helm install` 命令可能需要幾分鐘的時間才能完成。 在範例應用程式已安裝至叢集上，且基於您已在叢集上啟用 Dev Spaces 的原因，請使用 `azds list-uris` 命令來顯示目前所選取 *dev* 中之範例應用程式的 URL。
 
 ```cmd
 $ azds list-uris
@@ -235,5 +210,5 @@ az group delete --name MyResourceGroup --yes --no-wait
 > [!div class="nextstepaction"]
 > [使用多個容器和小組開發](multi-service-nodejs.md)
 
-[helm-installed]: https://v2.helm.sh/docs/using_helm/#installing-helm
+[helm-installed]: https://helm.sh/docs/intro/install/
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

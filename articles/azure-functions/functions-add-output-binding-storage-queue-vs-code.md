@@ -3,12 +3,13 @@ title: 使用 Visual Studio Code 將函式連線至 Azure 儲存體
 description: 了解如何使用 Visual Studio Code 新增輸出繫結，以將函式連線至 Azure 儲存體佇列。
 ms.date: 06/25/2019
 ms.topic: quickstart
-ms.openlocfilehash: baddb6f02fe3d9c66e3c52d826ffe70c151d313e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+zone_pivot_groups: programming-languages-set-functions
+ms.openlocfilehash: 5b7d7be7854a216b7cb7b610ea6d51fdc496a93f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227444"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845647"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio-code"></a>使用 Visual Studio Code 將函式連線至 Azure 儲存體
 
@@ -18,13 +19,18 @@ ms.locfileid: "74227444"
 
 大部分的繫結都需要函式用來存取繫結服務的預存連接字串。 為了方便作業，您可以使用您以函式應用程式建立的儲存體帳戶。 此帳戶的連線已儲存在名為 `AzureWebJobsStorage` 的應用程式設定中。  
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始進行此文章內容之前，您必須符合下列需求：
 
 * 安裝[適用於 Visual Studio Code 的 Azure 儲存體擴充](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage) \(英文\)。
+
 * 安裝 [Azure 儲存體總管](https://storageexplorer.com/)。 儲存體總管是您將用來檢查由您的輸出繫結所產生之佇列訊息的工具。 儲存體總管支援安裝在以 macOS、Windows 和 Linux 為基礎的作業系統上。
-* 安裝 [.NET Core CLI 工具](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x) (僅適用於 C# 專案)。
+
+::: zone pivot="programming-language-csharp"
+* 安裝 [.NET Core CLI 工具](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x)。
+::: zone-end
+
 * 完成 [Visual Studio Code 快速入門第 1 部分](functions-create-first-function-vs-code.md)中的步驟。 
 
 此文章假設您已從 Visual Studio Code 登入您的 Azure 訂用帳戶。 您可以從命令選擇區執行 `Azure: Sign In` 來登入。 
@@ -46,49 +52,162 @@ ms.locfileid: "74227444"
 
 由於您是使用佇列儲存體輸出繫結，您必須先安裝儲存體繫結擴充才能執行專案。 
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell"
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+::: zone-end
+
+::: zone pivot="programming-language-csharp"
 
 除了 HTTP 和計時器觸發程序之外，繫結皆會以擴充套件的形式實作。 在終端機視窗中執行下列 [dotnet add package](/dotnet/core/tools/dotnet-add-package) 命令來將儲存體套件新增至您的專案。
 
 ```bash
 dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 ```
----
+
+::: zone-end
+
 現在，您可以將儲存體輸出繫結新增至您的專案。
 
 ## <a name="add-an-output-binding"></a>新增輸出繫結
 
 在函式中，每一種繫結都需要在 function.json 檔案中定義 `direction`、`type` 和唯一的 `name`。 定義這些屬性的方式會取決於您函式應用程式的語言。
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell"
 
 [!INCLUDE [functions-add-output-binding-json](../../includes/functions-add-output-binding-json.md)]
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+::: zone-end
+
+::: zone pivot="programming-language-csharp"
 
 [!INCLUDE [functions-add-storage-binding-csharp-library](../../includes/functions-add-storage-binding-csharp-library.md)]
 
----
+::: zone-end
 
 ## <a name="add-code-that-uses-the-output-binding"></a>新增會使用輸出繫結的程式碼
 
 在定義繫結之後，您即可使用繫結的 `name` 來以函式簽章中屬性的形式存取它。 藉由使用輸出繫結，您無須使用 Azure 儲存體 SDK 程式碼來進行驗證、取得佇列參考或寫入資料。 Functions 執行階段和佇列輸出繫結會為您進行這些工作。
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+::: zone pivot="programming-language-javascript"
 
 [!INCLUDE [functions-add-output-binding-js](../../includes/functions-add-output-binding-js.md)]
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+::: zone-end
+
+::: zone pivot="programming-language-typescript"
+
+加入會使用 `context.bindings` 上的 `msg` 輸出繫結物件的程式碼來建立佇列訊息。 在 `context.res` 陳述式前面新增此程式碼。
+
+```typescript
+// Add a message to the Storage queue.
+context.bindings.msg = "Name passed to the function: " + name;
+```
+
+此時，您的函式看起來應如下所示：
+
+```javascript
+import { AzureFunction, Context, HttpRequest } from "@azure/functions"
+
+const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
+    context.log('HTTP trigger function processed a request.');
+    const name = (req.query.name || (req.body && req.body.name));
+
+    if (name) {
+        // Add a message to the Storage queue.
+        context.bindings.msg = "Name passed to the function: " + name; 
+        // Send a "hello" response.
+        context.res = {
+            // status: 200, /* Defaults to 200 */
+            body: "Hello " + (req.query.name || req.body.name)
+        };
+    }
+    else {
+        context.res = {
+            status: 400,
+            body: "Please pass a name on the query string or in the request body"
+        };
+    }
+};
+
+export default httpTrigger;
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-powershell"
+
+新增使用 `Push-OutputBinding` Cmdlet 的程式碼，以使用 `msg` 輸出繫結將文字寫入至佇列。 在 `if` 陳述式中設定「確定」狀態之前，請先新增此程式碼。
+
+```powershell
+# Write the $name value to the queue.
+$outputMsg = "Name passed to the function: $name"
+Push-OutputBinding -name msg -Value $outputMsg
+```
+
+此時，您的函式看起來應如下所示：
+
+```powershell
+using namespace System.Net
+
+# Input bindings are passed in via param block.
+param($Request, $TriggerMetadata)
+
+# Write to the Azure Functions log stream.
+Write-Host "PowerShell HTTP trigger function processed a request."
+
+# Interact with query parameters or the body of the request.
+$name = $Request.Query.Name
+if (-not $name) {
+    $name = $Request.Body.Name
+}
+
+if ($name) {
+    # Write the $name value to the queue.
+    $outputMsg = "Name passed to the function: $name"
+    Push-OutputBinding -name msg -Value $outputMsg
+
+    $status = [HttpStatusCode]::OK
+    $body = "Hello $name"
+}
+else {
+    $status = [HttpStatusCode]::BadRequest
+    $body = "Please pass a name on the query string or in the request body."
+}
+
+# Associate values to output bindings by calling 'Push-OutputBinding'.
+Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
+    StatusCode = $status
+    Body = $body
+})
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-python"
+
+[!INCLUDE [functions-add-output-binding-python](../../includes/functions-add-output-binding-python.md)]
+
+::: zone-end
+
+::: zone pivot="programming-language-csharp"
 
 [!INCLUDE [functions-add-storage-binding-csharp-library-code](../../includes/functions-add-storage-binding-csharp-library-code.md)]
 
----
+::: zone-end
+
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-python"
 
 [!INCLUDE [functions-run-function-test-local-vs-code](../../includes/functions-run-function-test-local-vs-code.md)]
+
+::: zone-end
+
+::: zone pivot="programming-language-powershell"
+
+[!INCLUDE [functions-run-function-test-local-vs-code-ps](../../includes/functions-run-function-test-local-vs-code-ps.md)]
+
+::: zone-end
 
 您第一次使用輸出繫結時，Functions 執行階段會在儲存體帳戶中建立名為 **outqueue** 的新佇列。 您將會使用儲存體總管來確認佇列已連同新訊息一起被建立。
 
@@ -140,27 +259,13 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 您已建立資源來完成這些快速入門。 您可能必須支付這些資源，取決於您的[帳戶狀態](https://azure.microsoft.com/account/)和[服務定價](https://azure.microsoft.com/pricing/)。 如果您不再需要資源，刪除方式如下：
 
-1. 在 Visual Studio Code 中按 F1 以開啟命令選擇區。 在命令選擇區中，搜尋並選取 `Azure Functions: Open in portal`。
-
-1. 選擇您的函式應用程式，然後按 Enter。 函式應用程式頁面會在 [Azure 入口網站](https://portal.azure.com)中開啟。
-
-1. 在 [概觀]  索引標籤中，選取 [資源群組]  底下的具名連結。
-
-    ![選取要從函式應用程式分頁中刪除的資源群組。](./media/functions-add-output-binding-storage-queue-vs-code/functions-app-delete-resource-group.png)
-
-1. 在 [資源群組]  分頁中，檢閱包含資源的清單，並確認它們是您想要刪除的項目。
- 
-1. 選取 [刪除資源群組]  ，並遵循指示。
-
-   刪除需要幾分鐘的時間。 完成時，通知會出現幾秒鐘的時間。 您也可以選取分頁頂端的鈴鐺圖示以檢視通知。
+[!INCLUDE [functions-cleanup-resources-vs-code.md](../../includes/functions-cleanup-resources-vs-code.md)]
 
 ## <a name="next-steps"></a>後續步驟
 
-您已更新 HTTP 觸發的函式，以將資料寫入至儲存體佇列。 若要深入了解函式的開發，請參閱[使用 Visual Studio Code 開發 Azure Functions](functions-develop-vs-code.md)。
-
-接下來，您應為函式應用程式啟用 Application Insights 監視：
+您已更新 HTTP 觸發的函式，以將資料寫入至儲存體佇列。 接下來，您可以深入了解如何使用 Visual Studio Code 來開發 Functions：
 
 > [!div class="nextstepaction"]
-> [啟用 Application Insights 整合](functions-monitoring.md#manually-connect-an-app-insights-resource)
+> [使用 Visual Studio Code 來開發 Azure Functions](functions-develop-vs-code.md)
 
 [Azure 儲存體總管]: https://storageexplorer.com/

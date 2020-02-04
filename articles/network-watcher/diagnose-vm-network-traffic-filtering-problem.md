@@ -4,8 +4,7 @@ titleSuffix: Azure Network Watcher
 description: 在本快速入門中，您將了解如何使用 Azure 網路監看員的 IP 流量驗證功能來診斷虛擬機器網路流量篩選問題。
 services: network-watcher
 documentationcenter: network-watcher
-author: KumudD
-manager: twooley
+author: damendo
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to diagnose a virtual machine (VM) network traffic filter problem that prevents communication to and from a VM.
@@ -16,14 +15,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
 ms.date: 04/20/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: d436fab100dc05cde8a434af564c67477b33d8d3
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 68f575164487f726c2f6c7477ceacd731bb52b0f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276018"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844916"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站診斷虛擬機器網路流量篩選問題
 
@@ -44,11 +43,11 @@ ms.locfileid: "74276018"
     |設定|值|
     |---|---|
     |名稱|myVm|
-    |使用者名稱| 輸入您選擇的使用者名稱。|
+    |[使用者名稱]| 輸入您選擇的使用者名稱。|
     |密碼| 輸入您選擇的密碼。 密碼長度至少必須有 12 個字元，而且符合[定義的複雜度需求](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     |訂用帳戶| 選取您的訂用帳戶。|
     |資源群組| 選取 [新建]  ，然後輸入 **myResourceGroup**。|
-    |位置| 選取 [美國東部] |
+    |Location| 選取 [美國東部] |
 
 4. 選取 VM 的大小，然後選取 [選取]  。
 5. 在 [設定]  底下，接受所有預設值，然後選取 [確定]  。
@@ -73,7 +72,7 @@ ms.locfileid: "74276018"
 
 根據預設，當您建立 VM 時，Azure 會允許及拒絕 VM 的雙向網路流量。 您稍後可能會覆寫 Azure 的預設值，並允許或拒絕其他類型的流量。
 
-1. 在入口網站中，選取 [所有服務]  。 在 [篩選條件]  方塊的 [所有服務]  中，輸入 [網路監看員]  。 當結果中出現**網路監看員**時，請加以選取。
+1. 在入口網站中，選取 [所有服務]  。 在 [所有服務]  篩選  方塊中，輸入 [網路監看員]  。 當結果中出現**網路監看員**時，請加以選取。
 2. 在 [網路診斷工具]  底下，選取 [IP 流量驗證]  。
 3. 選取您的訂用帳戶，輸入或選取下列值，然後選取 [檢查]  ，如下圖所示：
 

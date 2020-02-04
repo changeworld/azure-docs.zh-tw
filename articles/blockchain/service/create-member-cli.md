@@ -1,15 +1,15 @@
 ---
 title: 建立 Azure 區塊鏈服務成員 - Azure CLI
 description: 使用 Azure CLI 建立區塊鏈聯盟的 Azure 區塊鏈服務成員。
-ms.date: 11/20/2019
+ms.date: 01/23/2020
 ms.topic: quickstart
 ms.reviewer: janders
-ms.openlocfilehash: 6a9673431c3da21b3ce645b9aff30506be1012f3
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 703444b6077c2301e1ffec77c8096fb76ddaa731
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455958"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759921"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-azure-cli"></a>快速入門：使用 Azure CLI 建立 Azure 區塊鏈服務的區塊鏈成員
 
@@ -37,7 +37,9 @@ az group create \
 
 ## <a name="create-a-blockchain-member"></a>建立區塊鏈成員
 
-在 Azure 區塊鏈服務中，建立在新的聯盟中執行仲裁總帳通訊協定的區塊鏈成員。 您必須傳入數個參數和屬性。 請將範例參數取代為您自己的值。
+Azure 區塊鏈服務成員是私人聯盟區塊鏈網路中的區塊鏈節點。 在佈建成員時，您可以建立或加入聯盟網路。 一個聯盟網路至少需要一個成員。 參與者所需的區塊鏈成員數目視您的案例而定。 聯盟參與者可以有一或多個區塊鏈成員，也可以與其他參與者共用成員。 如需聯盟的詳細資訊，請參閱 [Azure 區塊鏈服務聯盟](consortium.md)。
+
+您必須傳入數個參數和屬性。 請將範例參數取代為您自己的值。
 
 ```azurecli-interactive
 az resource create \
@@ -48,13 +50,13 @@ az resource create \
                     --properties '{"location":"westus2", "properties":{"password":"strongMemberAccountPassword@1", "protocol":"Quorum", "consortium":"myConsortiumName", "consortiumManagementAccountPassword":"strongConsortiumManagementPassword@1"}, "sku":{"name":"S0"}}'
 ```
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 |---------|-------------|
 | **resource-group** | Azure 區塊鏈服務資源建立所在的資源群組名稱。 請使用您在上一節中建立的資源群組。
-| **name** | 可識別 Azure 區塊鏈服務區塊鏈成員的唯一名稱。 用於公開端點位址的名稱。 例如： `myblockchainmember.blockchain.azure.com` 。
-| **位置** | 區塊鏈成員建立所在的 Azure 區域。 例如： `westus2` 。 選擇最靠近您的使用者或其他 Azure 應用程式的位置。
+| **name** | 可識別 Azure 區塊鏈服務區塊鏈成員的唯一名稱。 用於公開端點位址的名稱。 例如：`myblockchainmember.blockchain.azure.com` 。
+| **location** | 區塊鏈成員建立所在的 Azure 區域。 例如：`westus2` 。 選擇最靠近您的使用者或其他 Azure 應用程式的位置。
 | **password** | 成員預設交易節點的密碼。 連線至區塊鏈成員的預設交易節點公用端點時，請使用此密碼進行基本驗證。
-| **consortium** | 要加入或建立的聯盟名稱。
+| **consortium** | 要加入或建立的聯盟名稱。 如需聯盟的詳細資訊，請參閱 [Azure 區塊鏈服務聯盟](consortium.md)。
 | **consortiumAccountPassword** | 聯盟帳戶密碼也稱為成員帳戶密碼。 成員帳戶密碼可用來對為您的成員建立的 Ethereum 帳戶進行私密金鑰加密。 您可以使用帳戶成員和成員帳戶密碼進行聯盟管理。
 | **skuName** | 服務層級類型。 使用 S0 表示「標準」，B0 表示「基本」。
 
@@ -74,7 +76,7 @@ az group delete \
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已部署 Azure 區塊鏈服務成員和新的聯盟。 請嘗試下一個快速入門，使用適用於 Ethereum 的 Azure 區塊鏈開發套件來連結至 Azure 區塊鏈服務上的聯盟。
+在本快速入門中，您已部署 Azure 區塊鏈服務成員和新的聯盟。 請嘗試進行下一個快速入門，使用適用於 Ethereum 的 Azure 區塊鏈開發套件連結至 Azure 區塊鏈服務成員。
 
 > [!div class="nextstepaction"]
 > [使用 Visual Studio Code 連線至聯盟網路](connect-vscode.md)

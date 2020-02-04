@@ -8,22 +8,26 @@ ms.custom: mvc, devcenter
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
-ms.openlocfilehash: f01ac67b25cbcc098973a3beb0a2b7b311827a37
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 3694c0b74393068538a0c8f496444a1541d88fee
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766390"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769074"
 ---
-# <a name="use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>使用 Python 來連線和查詢適用於 PostgreSQL 的 Azure 資料庫中的資料 - 單一伺服器
-本快速入門示範如何在 macOS、Ubuntu Linux 或 Windows 上搭配 Python 來使用適用於 PostgreSQL 的 Azure 資料庫。 快速入門會說明如何連線到資料庫，以及如何使用 SQL 陳述式來查詢、插入、更新和刪除資料。 本文假設您已熟悉 Python，但還不熟悉適用於 PostgreSQL 的 Azure 資料庫。
+# <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>快速入門：使用 Python 來連線和查詢適用於 PostgreSQL 的 Azure 資料庫中的資料 - 單一伺服器
 
-## <a name="prerequisites"></a>必要條件
-- 適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器，可透過下列文件中的步驟建立：[快速入門：在 Azure 入口網站中建立適用於 PostgreSQL 的 Azure 資料庫伺服器](quickstart-create-server-database-portal.md)或[快速入門：使用 Azure CLI 建立適用於 PostgreSQL 的 Azure 資料庫](quickstart-create-server-database-azure-cli.md)。 
+在本快速入門中，您會在 macOS、Ubuntu Linux 或 Windows 上搭配 Python 使用適用於 PostgreSQL 的 Azure 資料庫。 快速入門會說明如何連線到資料庫，以及如何使用 SQL 陳述式來查詢、插入、更新和刪除資料。 本文假設您已熟悉 Python，但還不熟悉適用於 PostgreSQL 的 Azure 資料庫。
+
+## <a name="prerequisites"></a>Prerequisites
+
+- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+
+- 完成[快速入門：在 Azure 入口網站中建立適用於 PostgreSQL 的 Azure 資料庫伺服器](quickstart-create-server-database-portal.md)或[快速入門：使用 Azure CLI 建立適用於 PostgreSQL 的 Azure 資料庫](quickstart-create-server-database-azure-cli.md)。
   
 - [Python](https://www.python.org/downloads/) 2.7.9+ 或 3.4+。
   
-- [pip](https://pip.pypa.io/en/stable/installing/) 套件安裝程式的最新更新，可使用 `pip install -U pip` 安裝。 
+- 最新 [pip](https://pip.pypa.io/en/stable/installing/) 套件安裝程式。
 
 ## <a name="install-the-python-libraries-for-postgresql"></a>安裝適用於 PostgreSQL 的 Python =程式庫
 [psycopg2](https://pypi.python.org/pypi/psycopg2/) 模組可讓您連線到 PostgreSQL 資料庫並進行查詢，而且可作為 Linux、macOS 或 Windows 的 [Wheel](https://pythonwheels.com/) 套件提供。 安裝模組的二進位版本 (包括所有相依性)。 如需有關 `psycopg2` 安裝和需求的詳細資訊，請參閱[安裝](http://initd.org/psycopg/docs/install.html)。 

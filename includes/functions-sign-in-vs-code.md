@@ -2,25 +2,23 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 11/27/2018
+ms.date: 01/13/2020
 ms.author: glenga
-ms.openlocfilehash: 031a460862cf12efa02c139074e5a7066f0526c6
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: c6579b8b091f9053e1e64be3793d17953e464a16
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67173777"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842106"
 ---
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
-您必須先登入 Azure，才能發佈您的應用程式。
+您必須先登入 Azure，才能發佈您的應用程式。 如果您已經登入，請移至下一個區段。
 
-1. 在 [Azure：  函式] 區域中，選擇 [登入 Azure...]  。如果您還沒有帳戶，您可以建立**免費的 Azure 帳戶**。
+1. 選擇活動列中的 Azure 圖示，然後在 [Azure：  函式] 區域中，選擇 [登入 Azure...]  。如果您還沒有帳戶，您可以建立**免費的 Azure 帳戶**。
 
     ![瀏覽器中的函式 localhost 回應](./media/functions-sign-in-vs-code/functions-sign-into-azure.png)
 
-1. 出現提示時，選取 [複製及開啟]  ，或複製顯示的程式碼並在瀏覽器中開啟 <https://aka.ms/devicelogin>。
+1. 在瀏覽器中出現提示時，選擇您的 Azure 帳戶，並使用您的 Azure 帳號認證登入。 
 
-1. 在 [裝置登入]  頁面中貼上複製的程式碼，確認登入 Visual Studio Code，然後選取 [繼續]  。  
-
-1. 使用您的 Azure 帳戶認證完成登入。 順利登入之後，您可以關閉瀏覽器。
+1. 成功登入之後，您可以關閉新的瀏覽器視窗。 屬於您 Azure 帳戶的訂用帳戶會顯示在提要欄位中。

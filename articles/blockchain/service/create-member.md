@@ -1,15 +1,15 @@
 ---
 title: 建立 Azure 區塊鏈服務成員 - Azure 入口網站
 description: 使用 Azure 入口網站建立區塊鏈聯盟的 Azure 區塊鏈服務成員。
-ms.date: 11/18/2019
+ms.date: 01/23/2020
 ms.topic: quickstart
 ms.reviewer: janders
-ms.openlocfilehash: 90f859e4d2e2621afad9cab11d66e81018bd3147
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 03cd4be1228fcf6a501203e6efb40a8b45c30d0c
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455774"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760771"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立 Azure 區塊鏈服務的區塊鏈成員
 
@@ -19,7 +19,7 @@ ms.locfileid: "74455774"
 
 ## <a name="create-a-blockchain-member"></a>建立區塊鏈成員
 
-建立會在新的或現有的聯盟中執行仲裁總帳通訊協定的區塊鏈成員。
+Azure 區塊鏈服務成員是私人聯盟區塊鏈網路中的區塊鏈節點。 在佈建成員時，您可以建立或加入聯盟網路。 一個聯盟網路至少需要一個成員。 參與者所需的區塊鏈成員數目視您的案例而定。 聯盟參與者可以有一或多個區塊鏈成員，也可以與其他參與者共用成員。 如需聯盟的詳細資訊，請參閱 [Azure 區塊鏈服務聯盟](consortium.md)。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 選取 Azure 入口網站左上角的 [建立資源]  。
@@ -27,17 +27,16 @@ ms.locfileid: "74455774"
 
     ![Create Service](./media/create-member/create-member.png)
 
-    設定 | 說明
+    設定 | 描述
     --------|------------
     訂用帳戶 | 選取您要用於服務的 Azure 訂用帳戶。 如果您有多個訂用帳戶，請選擇資源計費的訂用帳戶。
     資源群組 | 建立新的資源群組名稱，或選擇您訂用帳戶中現有的資源群組名稱。
     區域 | 選擇要建立成員的區域。 聯盟的所有成員都必須位於相同的位置。
     通訊協定 | 目前，Azure 區塊鏈服務預覽版支援仲裁通訊協定。
-    聯盟 | 針對新的聯盟，請輸入唯一名稱。 如果是透過邀請來加入聯盟，請選擇您要加入的聯盟。
+    聯盟 | 針對新的聯盟，請輸入唯一名稱。 如果是透過邀請來加入聯盟，請選擇您要加入的聯盟。 如需聯盟的詳細資訊，請參閱 [Azure 區塊鏈服務聯盟](consortium.md)。
     名稱 | 選擇 Azure 區塊鏈服務成員的唯一名稱。 區塊鏈成員的名稱只能包含小寫字母和數字。 第一個字元必須是字母。 此值長度必須介於 2 至 20 個字元之間。
     成員帳戶密碼 | 成員帳戶密碼可用來對為您的成員建立的 Ethereum 帳戶進行私密金鑰加密。 您可以使用帳戶成員和成員帳戶密碼進行聯盟管理。
-    說明 | 聯盟描述。
-    價格 | 新服務的節點組態和成本。 選取 [變更]  連結，以在 [標準]  和 [基本]  層之間做選擇。
+    定價 | 新服務的節點組態和成本。 選取 [變更]  連結，以在 [標準]  和 [基本]  層之間做選擇。
     節點密碼 | 成員預設交易節點的密碼。 連線至區塊鏈成員的預設交易節點公用端點時，請使用此密碼進行基本驗證。
 
 1. 選取 [檢閱 + 建立]  以驗證您的設定。 選取 [建立]  以佈建服務。 佈建需要大約 10 分鐘的時間。
@@ -59,7 +58,7 @@ ms.locfileid: "74455774"
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已部署 Azure 區塊鏈服務成員和新的聯盟。 請嘗試下一個快速入門，使用適用於 Ethereum 的 Azure 區塊鏈開發套件來連結至 Azure 區塊鏈服務上的聯盟。
+在本快速入門中，您已部署 Azure 區塊鏈服務成員和新的聯盟。 請嘗試進行下一個快速入門，使用適用於 Ethereum 的 Azure 區塊鏈開發套件連結至 Azure 區塊鏈服務成員。
 
 > [!div class="nextstepaction"]
 > [使用 Visual Studio Code 連線至聯盟網路](connect-vscode.md)

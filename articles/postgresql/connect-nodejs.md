@@ -8,23 +8,24 @@ ms.custom: seo-javascript-september2019, seo-javascript-october2019
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: 44d99a9420fc33bdd01c05fdb04d94671b7c815b
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: ca3a8bb093e81404da638ff869e05b5a4626626e
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592358"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774815"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>快速入門：使用 Node.js 來連線和查詢適用於 PostgreSQL 的 Azure 資料庫中的資料 - 單一伺服器
-本快速入門示範如何使用 [Node.js](https://nodejs.org/) 應用程式來連線到適用於 PostgreSQL 的 Azure 資料庫。 它會顯示如何使用 SQL 陳述式來查詢、插入、更新和刪除資料庫中的資料。 本文中的步驟假設您已熟悉使用 Node.js 進行開發，但不熟悉適用於 PostgreSQL 的 Azure 資料庫。
 
-## <a name="prerequisites"></a>必要條件
-本快速入門使用在以下任一指南中建立的資源作為起點︰
-- [建立 DB - 入口網站](quickstart-create-server-database-portal.md)
-- [建立 DB - CLI](quickstart-create-server-database-azure-cli.md)
+在本快速入門中，您會使用 Node.js 應用程式來連線到適用於 PostgreSQL 的 Azure 資料庫。 它會顯示如何使用 SQL 陳述式來查詢、插入、更新和刪除資料庫中的資料。 本文中的步驟假設您已熟悉使用 Node.js 進行開發，但不熟悉適用於 PostgreSQL 的 Azure 資料庫。
 
-您也需要：
-- 安裝 [Node.js](https://nodejs.org)
+## <a name="prerequisites"></a>Prerequisites
+
+- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+
+- 完成[快速入門：在 Azure 入口網站中建立適用於 PostgreSQL 的 Azure 資料庫伺服器](quickstart-create-server-database-portal.md)或[快速入門：使用 Azure CLI 建立適用於 PostgreSQL 的 Azure 資料庫](quickstart-create-server-database-azure-cli.md)。
+
+- [Node.js](https://nodejs.org)
 
 ## <a name="install-pg-client"></a>安裝 pg 用戶端
 安裝 [pg](https://www.npmjs.com/package/pg)，也就是 PostgreSQL client for Node.js。
@@ -42,11 +43,11 @@ npm list
 ## <a name="get-connection-information"></a>取得連線資訊
 取得連線到 Azure Database for PostgreSQL 所需的連線資訊。 您需要完整的伺服器名稱和登入認證。
 
-1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 從 Azure 入口網站的左側功能表中，選取 [所有資源]  ，然後搜尋您所建立的伺服器 (例如 **mydemoserver**)。
-3. 選取伺服器名稱。
-4. 從伺服器的 [概觀]  面板，記下 [伺服器名稱]  和 [伺服器管理員登入名稱]  。 如果您忘記密碼，您也可以從此面板重設密碼。
- ![適用於 PostgreSQL 的 Azure 資料庫的連接字串](./media/connect-nodejs/server-details-azure-database-postgresql.png)
+1. 在 **Azure 入口網站**中，搜尋並選取您所建立的伺服器 (例如 [mydemoserver](https://portal.azure.com/))。
+
+1. 從伺服器的 [概觀]  面板，記下 [伺服器名稱]  和 [管理員使用者名稱]  。 如果您忘記密碼，您也可以從此面板重設密碼。
+
+   ![適用於 PostgreSQL 的 Azure 資料庫連接字串](./media/connect-nodejs/server-details-azure-database-postgresql.png)
 
 ## <a name="running-the-javascript-code-in-nodejs"></a>在 Node.js 中執行 JavaScript 程式碼
 您可藉由輸入 `node` 以從 Bash 殼層、終端機或 Windows 命令提示字元啟動 Node.js，然後複製範例 JavaScript 程式碼並將其貼至提示字元，以互動方式執行。 或者，您可以將 JavaScript 程式碼儲存成文字檔並以檔案名稱作為參數來啟動 `node filename.js`，進而執行它。

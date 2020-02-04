@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/19/2019
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: c8e1af7142dcafb6574b7d71b55dd85b3fbc18d2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f4e2395659659781da49159247991d0711491ff2
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75468455"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846023"
 ---
 > [!NOTE]
-> 此服務支援 [Azure 委派資源管理](../articles/lighthouse/concepts/azure-delegated-resource-management.md)，它允許服務提供者管理客戶從服務提供者的租用戶中委派的資源和訂用帳戶。 如需詳細資訊，請參閱 [Azure Lighthouse](../articles/lighthouse/overview.md)。
+> 此服務支援 [Azure 委派資源管理](../articles/lighthouse/concepts/azure-delegated-resource-management.md)，可讓服務提供者登入其本身的租用戶，以管理客戶所委派的訂用帳戶和資源群組。 如需詳細資訊，請參閱 [Azure Lighthouse](../articles/lighthouse/overview.md)。

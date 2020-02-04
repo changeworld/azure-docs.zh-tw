@@ -6,12 +6,12 @@ author: msangapu-msft
 ms.topic: tutorial
 ms.date: 04/29/2019
 ms.author: msangapu
-ms.openlocfilehash: 555a60579c11a7ecb9b39753c5e4b35e801edeb1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 531dc62cacc044187c7800dd8abcdad282c4e633
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422169"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759938"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>教學課程：在適用於容器的 Web 應用程式中建立多容器 (預覽) 應用程式
 
@@ -38,7 +38,7 @@ ms.locfileid: "75422169"
 
 ## <a name="download-the-sample"></a>下載範例
 
-在本教學課程中，您會使用 [Docker](https://docs.docker.com/compose/wordpress/#define-the-project) 中的 Compose 檔案，但您會加以修改，使其包含適用於 MySQL 的 Azure 資料庫、永續性儲存體和 Redis。 組態檔位於 [Azure 範例](https://github.com/Azure-Samples/multicontainerwordpress)中。 如需支援的設定選項，請參閱 [Docker Compose 選項](configure-custom-container.md#docker-compose-options)。
+在本教學課程中，您會使用 [Docker](https://docs.docker.com/compose/wordpress/#define-the-project) 中的 Compose 檔案，但您會將其修改為包含適用於 MySQL 的 Azure 資料庫、永續性儲存體和 Redis。 組態檔位於 [Azure 範例](https://github.com/Azure-Samples/multicontainerwordpress)中。 如需支援的設定選項，請參閱 [Docker Compose 選項](configure-custom-container.md#docker-compose-options)。
 
 [!code-yml[Main](../../../azure-app-service-multi-container/docker-compose-wordpress.yml)]
 

@@ -1,12 +1,12 @@
 ---
-title: 快速入門：建立標準負載平衡器 - Azure 入口網站
+title: 快速入門：建立公用負載平衡器 - Azure 入口網站
 titleSuffix: Azure Load Balancer
-description: 本快速入門說明如何使用 Azure 入口網站建立標準負載平衡器。
+description: 本快速入門說明如何使用 Azure 入口網站建立負載平衡器。
 services: load-balancer
 documentationcenter: na
 author: asudbring
 manager: twooley
-Customer intent: I want to create a Standard Load Balancer so that I can load balance internet traffic to VMs.
+Customer intent: I want to create a Load Balancer so that I can load balance internet traffic to VMs.
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: quickstart
@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 027e05b3fbf7163c4a1b927a2b83db84c7eef1ff
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 4a5775be66f95fb69db761c2356a61f80068bc75
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771456"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843866"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立標準負載平衡器以平衡 VM 的負載
+# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立負載平衡器以平衡 VM 的負載
 
-負載平衡會將傳入要求分散於多部虛擬機器，藉此提供高可用性和範圍。 您可使用 Azure 入口網站建立負載平衡器，以平衡虛擬機器 (VM) 的負載。 本快速入門示範如何使用標準負載平衡器來平衡 VM 的負載。
+負載平衡會將傳入要求分散於多部虛擬機器，藉此提供高可用性和範圍。 您可使用 Azure 入口網站建立負載平衡器，以平衡虛擬機器 (VM) 的負載。 本快速入門示範如何使用公用負載平衡器來平衡 VM 的負載。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
@@ -32,9 +32,9 @@ ms.locfileid: "75771456"
 
 登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
 
-## <a name="create-a-standard-load-balancer"></a>建立標準負載平衡器
+## <a name="create-a-load-balancer"></a>建立負載平衡器
 
-在本節中，您會建立標準負載平衡器，以協助平衡虛擬機器的負載。 您可以建立公用 Standard Load Balancer 或內部 Standard Load Balancer。 Standard Load Balancer 只支援標準公用 IP 位址，而不支援基本公用 IP 位址。 當您建立公用 Standard Load Balancer 時，也必須建立新的標準公用 IP 位址，而該 IP 位址會設定為標準負載平衡器的前端 (預設的名稱為 LoadBalancerFrontend  )。 
+在本節中，您會建立負載平衡器，協助平衡虛擬機器的負載。 您可以建立公用 Load Balancer 或內部 Load Balancer。 當您建立公用 Load Balancer 時，也必須建立新的公用 IP 位址，而該 IP 位址會設定為負載平衡器的前端 (預設的名稱為 LoadBalancerFrontend  )。
 
 1. 在畫面的左上方，選取 [建立資源]   > [網路]   > [負載平衡器]  。
 2. 在 [建立負載平衡器]  頁面的 [基本資料]  中，輸入或選取下列資訊、接受其餘設定的預設值，然後選取 [檢閱 + 建立]  ：
@@ -46,10 +46,11 @@ ms.locfileid: "75771456"
     | 名稱                   | *myLoadBalancer*                                   |
     | 區域         | 選取 [西歐]  。                                        |
     | 類型          | 選取 [公用]  。                                        |
-    | SKU           | 選取 [標準]  。                          |
-    | 公用 IP 位址 | 選取 [建立新的]  。 |
+    | SKU           | 選取 [標準]  或 [基本]  。 Microsoft 建議對生產工作負載使用「標準」。  |
+    | 公用 IP 位址 | 選取 [建立新的]  。 如果您有想要使用的現有公用 IP，請選取 [使用現有]  。 |
     | 公用 IP 位址名稱              | 在文字方塊中輸入 *myPublicIP*。   |
-    |可用性區域| 選取 [區域備援]  。    |
+    | 可用性區域 | 輸入「區域備援」  以建立復原性 Load Balancer。 若要建立區域性 Load Balancer，請從 1、2 或 3 選取特定區域 |
+
 3. 在 [檢閱 + 建立]  索引標籤中，選取 [建立]  。   
 
     ![建立標準負載平衡器](./media/quickstart-load-balancer-standard-public-portal/create-standard-load-balancer.png)
@@ -58,7 +59,7 @@ ms.locfileid: "75771456"
 
 在本節中，您會設定後端位址集區的負載平衡器設定、健康狀態探查，並指定平衡器規則。
 
-### <a name="create-a-backend-address-pool"></a>建立後端位址集區
+### <a name="create-a-backend-pool"></a>建立後端集區
 
 若要將流量分散至 VM，後端位址集區包含已連線至負載平衡器之虛擬 (NIC) 的 IP 位址。 建立後端位址集區 *myBackendPool*，以包含用於平衡網際網路流量負載的虛擬機器。
 
@@ -122,7 +123,7 @@ ms.locfileid: "75771456"
 1. 保留其餘的預設值，然後選取 [建立]  。
 
 ### <a name="create-virtual-machines"></a>建立虛擬機器
-標準負載平衡器只支援在後端集區中具有標準 IP 位址的 VM。 在本節中，您將使用三個不同區域 (區域 1  、區域 2  及區域 3  ) 中的標準公用 IP 位址來建立三部 VM (*myVM1*、*myVM2* 及 *myVM3*)，這些區域後續會新增至先前建立的 Standard Load Balancer 後端集區。
+公用 IP SKU 和 Load Balancer SKU 必須相符。 對於標準負載平衡器，使用後端集區中具有標準 IP 位址的 VM。 在本節中，您將使用三個不同區域 (區域 1  、區域 2  及區域 3  ) 中的標準公用 IP 位址來建立三部 VM (*myVM1*、*myVM2* 及 *myVM3*)，這些區域後續會新增至先前建立的 Load Balancer 後端集區。 如果選取了 [基本]，請使用具有基本 IP 位址的 VM。
 
 1. 在入口網站的左上方，選取 [建立資源]   >  **[計算]**  > [Windows Server 2019 Datacenter]  。 
    
@@ -138,7 +139,7 @@ ms.locfileid: "75771456"
 1. 在 [網路]  索引標籤中，確定已選取下列項目：
    - **虛擬網路**：*MyVNet*
    - **子網路**：*MyBackendSubnet*
-   - [公用 IP]  > 選取 [新建]  ，然後在 [建立公用 IP 位址]  視窗中，針對 [SKU]  選取 [標準]  ，並針對 [可用性區域]  選取 [區域備援]  ，然後選取 [確定]  。
+   - [公用 IP]  > 選取 [新建]  ，然後在 [建立公用 IP 位址]  視窗中，針對 [SKU]  選取 [標準]  ，並針對 [可用性區域]  選取 [區域備援]  ，然後選取 [確定]  。 如果建立了基本 Load Balancer，請選取 [基本]。 Microsoft 建議對生產工作負載使用標準 SKU。
    - 若要在 [網路安全性群組]  之下建立新的網路安全性群組 (NSG，一種防火牆類型)，請選取 [進階]  。 
        1. 在 [設定網路安全性群組]  欄位中，選取 [新建]  。 
        1. 輸入 *myNetworkSecurityGroup*，然後選取 [確定]  。
@@ -167,15 +168,20 @@ ms.locfileid: "75771456"
 1. 選取左側功能表中的 [所有服務]  、選取 [所有資源]  ，然後從資源清單選取 **myResourceGroupSLB** 資源群組中的 [myNetworkSecurityGroup]  。
 2. 在 [設定]  下，選取 [輸入安全性規則]  ，然後選取 [新增]  。
 3. 輸入輸入安全性規則 (名為 myHTTPRule  ) 的下列值，以允許使用連接埠 80 的輸入 HTTP 連線：
-    - 服務標記  - 作為 [來源]  。
-    - 網際網路  - 作為 [來源服務標記] 
-    - 80  - 作為 [目的地連接埠範圍] 
-    - TCP  - 作為 [通訊協定] 
-    - 允許  - 作為 [動作] 
-    - 100  作為 [優先順序] 
-    - myHTTPRule  作為名稱
-    - 允許 HTTP  - 作為描述
+    - **來源**：服務標記 
+    -  **來源服務標記**：*網際網路*
+    - **目的地連接埠範圍**：*80*
+    - **通訊協定**：*TCP*
+    - **動作**：*允許*
+    - **優先順序**：*100*
+    - **名稱**：*myHTTPRule* 
+    - **描述**：允許 HTTP  
 4. 選取 [新增]  。
+5. 使用下列不同的值，視需要針對輸入 RDP 規則重複這些步驟：
+   - **目的地連接埠範圍**：輸入 3389  。
+   - **優先順序**：輸入 200  。 
+   - **Name**：輸入 MyRDPRule  。 
+   - **描述**：輸入「允許 RDP」  。 
  
 ### <a name="install-iis"></a>安裝 IIS
 
@@ -214,7 +220,6 @@ ms.locfileid: "75771456"
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已建立標準負載平衡器、將 VM 連結到標準負載平衡器、設定負載平衡器流量規則、健康狀態探查，然後測試負載平衡器。 若要深入了解 Azure Load Balancer，請繼續 Azure Load Balancer 的教學課程。
+在本快速入門中，您已建立標準負載平衡器、將 VM 連結到標準負載平衡器、設定負載平衡器流量規則、健康狀態探查，然後測試負載平衡器。 若要深入了解 Azure Load Balancer，請繼續進行 [Azure 負載平衡器教學課程](tutorial-load-balancer-standard-public-zone-redundant-portal.md)。
 
-> [!div class="nextstepaction"]
-> [Azure Load Balancer 教學課程](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
+深入了解 [Load Balancer 和可用性區域](load-balancer-standard-availability-zones.md)。

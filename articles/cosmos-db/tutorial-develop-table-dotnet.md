@@ -1,19 +1,19 @@
 ---
 title: 使用 .NET Standard SDK 的 Azure Cosmos DB 資料表 API
 description: 了解如何在 Azure Cosmos DB 資料表 API 帳戶中儲存及查詢結構化資料
-author: wmengmsft
-ms.author: wmeng
+author: sakash279
+ms.author: akshanka
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
 ms.date: 12/03/2019
-ms.openlocfilehash: b3497df8acdb2e7d184dba54e93506146d842348
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: f4d6e1bb0d5db0dbfc30e14abc58321bce8d0baf
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314380"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76770715"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>透過 .NET SDK 開始使用 Azure Cosmos DB 資料表 API 和 Azure 資料表儲存體
 
@@ -178,6 +178,12 @@ public static async Task<CloudTable> CreateTableAsync(string tableName)
     Console.WriteLine();
     return table;
 }
+```
+
+如果您收到「503 服務無法使用例外狀況」錯誤，可能是因為連線模式所需的連接埠遭到防火牆封鎖。 若要修正此問題，請開啟所需的連接埠，或使用閘道模式連線，如下列程式碼所示：
+
+```csharp
+tableClient.TableClientConfiguration.UseRestExecutorForCosmosEndpoint = true;
 ```
 
 ## <a name="define-the-entity"></a>定義實體 

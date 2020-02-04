@@ -1,5 +1,5 @@
 ---
-title: 教學課程：建立 Windows 虛擬機器擴展集
+title: 教學課程：建立 Linux 虛擬機器擴展集
 description: 了解如何使用 Azure CLI 在 Linux VM 上使用虛擬機器擴展集，建立及部署高可用性應用程式
 services: virtual-machine-scale-sets
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/01/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 94e7bac3cbf3842375278a23bc39245425cda4b6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7a256fc5268c10dd05a2cf58747107cb26c3ced9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458664"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716552"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux-with-the-azure-cli"></a>教學課程：使用 Azure CLI 在 Linux 上建立虛擬機器擴展集及部署高可用性應用程式
 

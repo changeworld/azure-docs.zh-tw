@@ -13,33 +13,33 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: c1719064de53b79a127146d0ab034f461657cc64
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a54d418f668d8c7292c8332c1b14c4df45e59308
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64714904"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768453"
 ---
-# <a name="create-and-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>使用 Azure SQL Database 機器學習服務 (預覽) 在 R 中建立和定型預測模型
+# <a name="quickstart-create-and-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>快速入門：使用 Azure SQL Database 機器學習服務 (預覽) 在 R 中建立和定型預測模型
 
-在本快速入門中，您會使用 R 建立和定型預測模型，將模型儲存到 SQL 資料庫中的資料表，然後使用 [Azure SQL Database 中的機器學習服務 (搭配 R)](sql-database-machine-learning-services-overview.md) 公開預覽版，利用模型由新資料來進行值的預測。 
-
-您將在此快速入門中使用的模型是一個簡單的迴歸模型，可根據速度預測汽車的煞停距離。 您將使用 R 隨附的 **cars** 資料集，因為此資料集較小且易於了解。
-
-> [!TIP]
-> R 執行階段附有許多資料集，大小不一。 若要取得隨 R 安裝的資料集清單，請從 R 命令提示字元輸入 `library(help="datasets")`。
+在本快速入門中，您會使用 R 建立和定型預測模型，將模型儲存到資料庫中的資料表，然後使用 Azure SQL Database 中的機器學習服務 (搭配 R)，利用模型從新資料進行值的預測。
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-- 如果您沒有 Azure 訂用帳戶，請先[建立帳戶](https://azure.microsoft.com/free/)再開始。
+- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- 具有[伺服器層級防火牆規則](sql-database-server-level-firewall-rule.md)的 [Azure SQL 資料庫](sql-database-single-database-get-started.md)
+- 已啟用 R 的[機器學習服務](sql-database-machine-learning-services-overview.md)。 [註冊預覽版](sql-database-machine-learning-services-overview.md#signup)。
+- [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
 
-- 若要在這些練習中執行範例程式碼，您必須具有已啟用機器學習服務 (搭配 R) 的 Azure SQL 資料庫。 在公開預覽期間，Microsoft 會將您加入，並為您現有的或新的資料庫啟用機器學習服務。 請遵循[註冊預覽版](sql-database-machine-learning-services-overview.md#signup)中的步驟。
+> [!NOTE]
+> 在公開預覽期間，Microsoft 會將您加入，並為您現有的或新的資料庫啟用機器學習服務。
 
-- 確定您已安裝最新版的 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS)。 您可以使用其他資料庫管理或查詢工具來執行 R 指令碼，但是在本快速入門中，您將使用 SSMS。
+此範例會採用一個簡單的迴歸模型，使用以 R 納入的 **cars** 資料集根據速度來預測汽車的煞停距離。
 
-- 本快速入門需要您設定伺服器層級的防火牆規則。 如需如何執行這項操作的相關資訊，請參閱[建立伺服器層級的防火牆規則](sql-database-server-level-firewall-rule.md)。
+> [!TIP]
+> R 執行階段包含許多資料集，若要取得已安裝的資料集清單，請從 R 命令提示字元輸入 `library(help="datasets")`。
 
 ## <a name="create-and-train-a-predictive-model"></a>建立和定型預測模型
 
@@ -50,7 +50,7 @@ ms.locfileid: "64714904"
 - 提供定型模型時所使用的輸入資料。
 
 > [!TIP]
-> 如果您需要複習一下線性模型，請嘗試本教學課程，其中說明了使用 rxLinMod 來配適模型的程序：[配適線性模型](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model)
+> 如果您需要複習一下線性模型，請參閱下列教學課程，該課程說明使用 rxLinMod 來調整線性模型的程序：[配適線性模型](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model)
 
 在下列步驟中，您會設定定型資料、建立迴歸模型、使用定型資料進行定型，然後將模型儲存到 SQL 資料表。
 
@@ -173,9 +173,9 @@ VALUES (
 
 ![有其他輸出的定型模型](./media/sql-database-quickstart-r-train-score-model/r-train-model-with-additional-output.png)
 
-## <a name="score-new-data-using-the-trained-model"></a>使用已定型的模型進行新資料評分
+## <a name="score-new-data-using-the-trained-model"></a>使用定型的模型為新資料評分
 
-「評分」  一詞在資料科學中用來表示根據送入定型模型中的新資料來產生預測、機率或其他值的動作。 您會使用在上一節建立的模型對新資料進行預測評分。
+*評分*是資料科學中使用的詞彙，意指根據送入定型模型中的新資料來產生預測、可能性或其他值。 您需使用在上一節建立的模型，對新資料進行預測評分。
 
 您是否注意到，原始的定型資料僅止於每小時 25 英哩的速度？ 這是因為原始資料以 1920 年的實驗作為基礎！ 您可能會想知道，如果 1920 年代的汽車能開到每小時 60 英哩甚或 100 英哩的速度，需要多久的時間才能煞停？ 若要解答此問題，您可將一些新的速度值提供給您的模型。
 
@@ -244,7 +244,7 @@ VALUES (
 > [!NOTE]
 > 在此範例指令碼中，會在測試階段加入 `str` 函式，以檢查從 R 傳回的資料結構描述。您可於稍後移除陳述式。
 >
-> R 指令碼中使用的資料行名稱不一定要傳至預存程序輸出。 在此 WITH RESULTS 子句會定義一些新的資料行名稱。
+> R 指令碼中使用的資料行名稱不一定會傳遞至預存程序輸出。 在此 WITH RESULTS 子句會定義一些新的資料行名稱。
 
 ## <a name="next-steps"></a>後續步驟
 

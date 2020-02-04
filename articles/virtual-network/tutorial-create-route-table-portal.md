@@ -5,25 +5,20 @@ description: 在本教學課程中，您會了解如何使用 Azure 入口網站
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
-editor: ''
-tags: azure-resource-manager
 Customer intent: I want to route traffic from one subnet, to a different subnet, through a network virtual appliance.
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 12/12/2018
+ms.date: 01/22/2019
 ms.author: kumud
-ms.custom: mvc
-ms.openlocfilehash: be4a47d26bcfc407734956a3d9bf8778c5afcfb4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 96b6788e48b845ef7f0add11767eb36b47cac36b
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75350283"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775272"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站以路由表路由傳送網路流量
 
@@ -48,19 +43,19 @@ ms.locfileid: "75350283"
 
 ## <a name="create-a-route-table"></a>建立路由表
 
-1. 在畫面的左上方，選取 [建立資源]   > [網路]   > [路由表]  。
-
-1. 在 [建立路由表]  中，輸入或選取這項資訊：
+1. 從 Azure 入口網站功能表選取 [建立資源]  。
+2. 在搜尋方塊中，輸入「路由表」  。 當搜尋結果中出現**路由表**出時加以選取。
+3. 在 [路由表]  頁面中，選取 [建立]  。
+4. 在 [建立路由表]  中，輸入或選取這項資訊：
 
     | 設定 | 值 |
     | ------- | ----- |
     | 名稱 | 輸入 *myRouteTablePublic*。 |
     | 訂用帳戶 | 選取您的訂用帳戶。 |
     | 資源群組 | 選取 [新建]  ，輸入 *myResourceGroup*，然後選取 [確定]  。 |
-    | Location | 保留預設值 [美國東部]  。
+    | Location | 選取 [美國東部]  。
     | 虛擬網路閘道路由傳播 | 保留預設值 [啟用]  。 |
-
-1. 選取 [建立]  。
+5. 選取 [建立]  。
 
 ## <a name="create-a-route"></a>建立路由
 
@@ -160,14 +155,14 @@ NVA 是可協助您最佳化路由和防火牆等網路功能的 VM。 如果您
     | 虛擬機器名稱 | 輸入 *myVmNva*。 |
     | 區域 | 選取 [美國東部]  。 |
     | 可用性選項 | 保留預設值 [不需要基礎結構備援]  。 |
-    | 影像 | 保留預設值 [Windows Server 2016 Datacenter]  。 |
+    | 映像 | 保留預設值 [Windows Server 2016 Datacenter]  。 |
     | 大小 | 保留預設值 [標準 DS1 v2]  。 |
     | **系統管理員帳戶** |  |
     | 使用者名稱 | 輸入您選擇的使用者名稱。 |
     | 密碼 | 輸入您選擇的密碼。 密碼長度至少必須有 12 個字元，而且符合[定義的複雜度需求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     | 確認密碼 | 再次輸入密碼。 |
     | **輸入連接埠規則** |  |
-    | 公用輸入連接埠 | 保留預設值 [無]  。
+    | 公用輸入連接埠 | 選取 [無]  。
     | **節省費用** |  |
     | 已經有 Windows 授權？ | 保留預設值 [否]  。 |
 

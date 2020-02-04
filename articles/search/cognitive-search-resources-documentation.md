@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: cf0332909e053a0875d41a00d15f196b193ba15e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e73e69f90b1228154d7f209c54c6b52cc03d5eb4
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466708"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76837785"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Azure 認知搜尋中的 AI 擴充適用的文件資源
 
@@ -28,7 +28,7 @@ AI 擴充是 Azure 認知搜尋索引的一項功能，可在非文字來源和�
 + [範例：建立 AI 擴充的自訂技能](cognitive-search-create-custom-skill-example.md)
 
 ## <a name="how-to-guidance"></a>做法指引
-+ [如何定義技能集](cognitive-search-defining-skillset.md)
++ [如何定義技能集](cognitive-search-defining-skillset.md) (英文)
 + [如何參考技能集中的註釋](cognitive-search-concept-annotations-syntax.md)
 + [如何將欄位對應到索引](cognitive-search-output-field-mapping.md)
 + [如何處理影像並從影像擷取資訊](cognitive-search-concept-image-scenarios.md)
@@ -43,6 +43,7 @@ AI 擴充是 Azure 認知搜尋索引的一項功能，可在非文字來源和�
   + [Microsoft.Skills.Text.LanguageDetectionSkill](cognitive-search-skill-language-detection.md)
   + [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)
   + [Microsoft.Skills.Text.MergeSkill](cognitive-search-skill-textmerger.md)
+  + [Microsoft.Skills.Text.PIIDetectionSkill](cognitive-search-skill-pii-detection.md)
   + [Microsoft.Skills.Text.SplitSkill](cognitive-search-skill-textsplit.md)
   + [Microsoft.Skills.Text.SentimentSkill](cognitive-search-skill-sentiment.md)
   + [Microsoft.Skills.Text.TranslationSkill](cognitive-search-skill-text-translation.md)

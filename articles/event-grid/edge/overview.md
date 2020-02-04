@@ -7,19 +7,19 @@ ms.service: event-grid
 ms.topic: overview
 ms.date: 10/22/2019
 ms.author: babanisa
-ms.openlocfilehash: e03429ed3df5bd3518d5e5194bd842b9a4f290ba
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: feac5891734731e6f7377750127958a40a815036
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991491"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844646"
 ---
 # <a name="what-is-azure-event-grid-on-azure-iot-edge"></a>什麼是 Azure IoT Edge 上的 Azure 事件方格？
-IoT Edge 上的事件方格可將 Azure 事件方格的強大功能和彈性導入 Edge，用於各種發佈/訂閱和事件驅動案例。 您可以建立主題、發佈事件及訂閱多個目的地，不論它們是相同裝置、其他 Edge 裝置或雲端服務中的模組。
+IoT Edge 上的事件方格可將 Azure 事件方格的強大功能和彈性導入 Edge。 您可以建立主題、發佈事件及訂閱多個目的地，不論它們是相同裝置、其他 Edge 裝置或雲端服務中的模組。
 
-就像在雲端一樣，IoT Edge 上的事件方格模組可處理大規模的事件路由、篩選和可靠傳遞。 篩選事件可確保只有相關的事件會使用進階字串、數值和布林值篩選傳送至不同的事件處理常式。 重試邏輯可確保事件即使在發佈時無法使用，也可送達目標模組、Edge 裝置或雲端服務。 它可讓您在 IoT Edge 上使用事件方格，作為強大的儲存和轉送機制。
+就像在雲端一樣，IoT Edge 上的事件方格模組可處理大規模的事件路由、篩選和可靠傳遞。 篩選事件可確保只有相關的事件會使用進階字串、數值和布林值篩選傳送至不同的事件處理常式。 重試邏輯可確保事件即使在發佈時無法使用，也可送達目標目的地。 它可讓您在 IoT Edge 上使用事件方格，作為強大的儲存和轉送機制。
 
-IoT Edge 上的事件方格支援 CloudEvents v1.0 和自訂事件結構描述。 它也支援與雲端中的事件方格相同的發佈和訂閱語意，以便與 Azure 和第三方互通。
+IoT Edge 上的事件方格支援 CloudEvents v1.0 和自訂事件結構描述。 它也支援與雲端中的事件方格相同的發佈/訂閱語意，以方便互通。
 
 本文將概略說明 IoT Edge 上的 Azure 事件方格。 如需在 Edge 上使用此模組的逐步指示，請參閱 [在本機發佈、訂閱事件](pub-sub-events-webhook-local.md)。 
 
@@ -29,7 +29,7 @@ IoT Edge 上的事件方格支援 CloudEvents v1.0 和自訂事件結構描述�
 
 ## <a name="when-to-use-event-grid-on-iot-edge"></a>何時可使用 IoT Edge 上的事件方格
 
-IoT Edge 上的事件方格可提供一致、易於使用且可靠的事件模型，用以在 Edge 和雲端之間建置事件驅動架構。
+IoT Edge 上的事件方格可在 Edge 和雲端之間提供易於使用且可靠的事件模型。
 
 IoT Edge 上的事件方格是使用與 Azure 雲端服務對稱的執行階段介面區建立的，因此您可以在任何所需之處使用相同的事件和 API 呼叫。 現在，無論您是在雲端、Edge 或兩者之間進行發佈/訂閱，IoT Edge 都可作為可行的解決方案。
 
@@ -55,8 +55,12 @@ IoT Edge 上的事件方格可將事件傳送至您想要的任何位置。 目�
 
 * 其他模組，包括 IoT 中樞、函式和自訂模組
 * 其他 Edge 裝置
-* 雲端中裝載的服務，包括 Azure 事件方格和 Azure Functions
 * Webhook
+* Azure 事件方格雲端服務
+* 事件中樞
+* 服務匯流排佇列
+* 服務匯流排主題
+* 儲存體佇列
 
 ## <a name="supported-environments"></a>支援的環境
 目前支援 Windows 64 位元、Linux 64 位元和 ARM 32 位元環境。

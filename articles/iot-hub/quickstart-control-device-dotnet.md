@@ -10,12 +10,12 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: a106699f4e3148eba85acc913e6f97be6ce9be66
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: bffba0ce5481250a696cdf4ec0aed6b59620bfe9
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515084"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773837"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>快速入門：控制連線到 IoT 中樞的裝置 (.NET)
 
@@ -33,7 +33,7 @@ IoT 中樞是一項 Azure 服務，可讓您從雲端管理您的 IoT 裝置，�
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 您在此快速入門中執行的兩個範例應用程式是使用 C# 所撰寫的。 您的開發電腦上需要有 .NET Core SDK 2.1.0 或更高版本。
 
@@ -51,7 +51,7 @@ dotnet --version
 az extension add --name azure-cli-iot-ext
 ```
 
-如果您尚未這樣做，請從 https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip 下載範例 C# 專案並將 ZIP 封存檔解壓縮。
+如果您尚未這樣做，請從 https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip 下載 Azure IoT C# 範例並將 ZIP 封存檔解壓縮。
 
 ## <a name="create-an-iot-hub"></a>建立 IoT 中樞
 

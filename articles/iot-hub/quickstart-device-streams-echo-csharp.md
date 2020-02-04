@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 14139d56a9a733a284d0ec49cabcb3ff7ce67fce
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: ee709919f550a8b9afaf56e5e071522a494348ac
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084303"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773816"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>快速入門：透過 IoT 中樞裝置串流與使用 C# 的裝置應用程式進行通訊 (預覽)
 
@@ -28,7 +28,7 @@ Azure IoT 中樞目前支援裝置串流作為[預覽功能](https://azure.micro
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 裝置串流的預覽版目前僅支援在下列區域建立的 IoT 中樞：
   * 美國中部
@@ -50,7 +50,7 @@ Azure IoT 中樞目前支援裝置串流作為[預覽功能](https://azure.micro
     az extension add --name azure-cli-iot-ext
     ```
 
-* [下載範例 C# 專案](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)並將 ZIP 封存檔解壓縮。 您在裝置端和服務端都會用到它。
+* [下載 Azure IoT C# 範例](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)，然後將 ZIP 封存檔解壓縮。 您在裝置端和服務端都會用到它。
 
 ## <a name="create-an-iot-hub"></a>建立 IoT 中樞
 

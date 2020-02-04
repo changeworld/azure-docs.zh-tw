@@ -1,28 +1,28 @@
 ---
-title: 快速入門：建立標準負載平衡器 - Azure 範本
+title: 快速入門：建立負載平衡器 - Azure 範本
 titleSuffix: Azure Load Balancer
-description: 本快速入門說明如何使用 Azure Resource Manager 範本建立標準負載平衡器。
+description: 本快速入門說明如何使用 Azure Resource Manager 範本建立負載平衡器。
 services: load-balancer
 documentationcenter: na
 author: asudbring
 manager: twooley
-Customer intent: I want to create a Standard load balancer by using an Azure Resource Manager template so that I can load balance internet traffic to VMs.
+Customer intent: I want to create a load balancer by using an Azure Resource Manager template so that I can load balance internet traffic to VMs.
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/20/2019
+ms.date: 01/27/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 28c4ca59b20fcdd8ab0249392dc0f13cbabf1a97
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 69503968ece5e68b6e4777d72713565158009949
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970642"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843849"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-by-using-azure-resource-manager-template"></a>快速入門：使用 Azure Resource Manager 範本建立 Standard 負載平衡器以平衡 VM 的負載
+# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-by-using-azure-resource-manager-template"></a>快速入門：使用 Azure Resource Manager 範本建立負載平衡器以平衡 VM 的負載
 
 負載平衡會將傳入要求分散於多部虛擬機器 (VM)，藉此提供高可用性和範圍。 本快速入門會示範如何部署 Azure Resource Manager 範本，以建立標準負載平衡器來平衡 VM 的負載。 相較於其他部署方法，使用 Resource Manager 範本所需的步驟比較少。
 
@@ -30,9 +30,9 @@ ms.locfileid: "75970642"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="create-a-standard-load-balancer"></a>建立標準負載平衡器
+## <a name="create-a-load-balancer"></a>建立負載平衡器
 
-Standard Load Balancer 只支援標準公用 IP 位址。 當您建立標準負載平衡器時，您也必須建立新的標準公用 IP 位址，而該 IP 位址會設定為標準負載平衡器的前端。
+負載平衡器和公用 IP SKU 必須相符。 當您建立 Standard Load Balancer 時，您也必須建立新的標準公用 IP 位址，而該 IP 位址會設定為 Standard Load Balancer 的前端。 如果您想要建立基本負載平衡器，請使用[此範本](https://azure.microsoft.com/resources/templates/201-2-vms-loadbalancer-natrules/)。 Microsoft 建議對生產工作負載使用標準 SKU。
 
 本快速入門中使用的範本是[快速入門範本](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-load-balancer-standard-create/azuredeploy.json)。
 

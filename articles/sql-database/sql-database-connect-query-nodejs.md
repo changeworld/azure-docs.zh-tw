@@ -1,5 +1,5 @@
 ---
-title: 快速入門：使用 Node.js 查詢 Azure SQL 資料庫中的資料
+title: 使用 Node.js 查詢資料庫
 description: 如何使用 Node.js 來建立可連線到 Azure SQL 資料庫的程式，並使用 T-SQL 陳述式加以查詢。
 services: sql-database
 ms.service: sql-database
@@ -11,45 +11,46 @@ ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 03/25/2019
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 064baf0215a2eaf7b90b78716b87606990b8fd21
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c0da38a41bf613237ea3b164d70e4729a7284ca7
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279263"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768610"
 ---
 # <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>快速入門：使用 Node.js 查詢 Azure SQL 資料庫
 
-本快速入門示範如何使用 [Node.js](https://nodejs.org) \(英文\) 連線至 Azure SQL 資料庫。 您可以接著使用 T-SQL 陳述式來查詢資料。
+在本快速入門中，您會使用 Node.js 來連線至 Azure SQL 資料庫，並使用 T-SQL 陳述式來查詢資料。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-若要完成此範例，請確定您具有下列必要條件：
+- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- [Azure SQL 資料庫](sql-database-single-database-get-started.md)
+- [Node.js](https://nodejs.org) 相關軟體
 
-- Azure SQL 資料庫。 您可以使用其中一個快速入門，在 Azure SQL Database 中建立資料庫並加以設定：
+  # <a name="macostabmacos"></a>[macOS](#tab/macos)
 
-  || 單一資料庫 | 受控執行個體 |
-  |:--- |:--- |:---|
-  | 建立| [入口網站](sql-database-single-database-get-started.md) | [入口網站](sql-database-managed-instance-get-started.md) |
-  || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
-  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | 設定 | [伺服器層級 IP 防火牆規則](sql-database-server-level-firewall-rule.md)| [VM 的連線能力](sql-database-managed-instance-configure-vm.md)|
-  |||[現場的連線能力](sql-database-managed-instance-configure-p2s.md)
-  |載入資料|每個快速入門載入的 Adventure Works|[還原 Wide World Importers](sql-database-managed-instance-get-started-restore.md)
-  |||從 [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 中的 [BACPAC](sql-database-import.md) 檔案還原或匯入 Adventure Works|
-  |||
+  安裝 Homebrew 和 Node.js，然後使用[在 macOS 上使用 SQL Server 上建立 Node.js 應用程式](https://www.microsoft.com/sql-server/developer-get-started/node/mac/)中的 **1.2** 和 **1.3** 步驟來安裝 ODBC 驅動程式和 SQLCMD。
 
-  > [!IMPORTANT]
-  > 本文中已撰寫的指令碼會使用 Adventure Works 資料庫。 對於受控執行個體，您必須將 Adventure Works 資料庫匯入執行個體資料庫中，或將本文中的指令碼修改為使用 Wide World Importers 資料庫。
+  # <a name="ubuntutabubuntu"></a>[Ubuntu](#tab/ubuntu)
 
+  安裝 Node.js，然後使用[在 Ubuntu 上使用 SQL Server 上建立 Node.js 應用程式](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu/)中的 **1.2** 和 **1.3** 步驟來安裝 ODBC 驅動程式和 SQLCMD。
 
-- 您作業系統的 Node.js 相關軟體：
+  # <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
-  - **MacOS**，安裝 Homebrew 和 Node.js，然後安裝 ODBC 驅動程式和 SQLCMD。 請參閱[步驟 1.2 和 1.3](https://www.microsoft.com/sql-server/developer-get-started/node/mac/)。
-  
-  - **Ubuntu**，安裝 Node.js，然後安裝 ODBC 驅動程式和 SQLCMD。 請參閱[步驟 1.2 和 1.3](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu/)。
-  
-  - **Windows**，安裝 Chocolatey 和 Node.js，然後安裝 ODBC 驅動程式和 SQLCMD。 請參閱[步驟 1.2 和 1.3](https://www.microsoft.com/sql-server/developer-get-started/node/windows/)。
+  安裝 Chocolatey 和 Node.js，然後使用[在 Windows 上使用 SQL Server 上建立 Node.js 應用程式](https://www.microsoft.com/sql-server/developer-get-started/node/windows/)中的 **1.2** 和 **1.3** 步驟來安裝 ODBC 驅動程式和 SQLCMD。
+
+  ---
+
+> [!IMPORTANT]
+> 本文中已撰寫的指令碼會使用 **Adventure Works** 資料庫。
+
+> [!NOTE]
+> 您也可以視情況選擇使用 Azure SQL 受控執行個體。
+>
+> 若要建立和設定，請使用 [Azure 入口網站](sql-database-managed-instance-get-started.md)、[PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) 或 [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44)，然後設定[現場](sql-database-managed-instance-configure-p2s.md)或 [VM](sql-database-managed-instance-configure-vm.md) 連線能力。
+>
+> 若要載入資料，請參閱[使用 BACPAC 檔案還原](sql-database-import.md) (搭配 [Adventure Works](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works))，或參閱[還原 Wide World Importers 資料庫](sql-database-managed-instance-get-started-restore.md)。
 
 ## <a name="get-sql-server-connection-information"></a>取得 SQL Server 連線資訊
 

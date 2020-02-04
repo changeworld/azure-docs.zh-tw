@@ -2,18 +2,17 @@
 title: 教學課程 - 在 Azure 串流分析作業中執行 Azure Functions
 description: 在本教學課程中，您將了解如何設定 Azure Functions 作為串流分析作業的輸出接收。
 author: mamccrea
+ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 06/05/2019
-ms.author: mamccrea
-ms.reviewer: mamccrea
-ms.openlocfilehash: 84df3edcebb1ca9f14a68125ae9793f004e56c4d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/27/2020
+ms.openlocfilehash: 1797654f290d751eb5c1cb65a77aaa7ca7a35aa1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369315"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772879"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>教學課程：從 Azure 串流分析作業執行 Azure Functions 
 
@@ -51,7 +50,7 @@ ms.locfileid: "75369315"
 
 ## <a name="create-a-function-in-azure-functions-that-can-write-data-to-azure-cache-for-redis"></a>在 Azure Functions 中建立可將資料寫入至 Azure Cache for Redis 的函式
 
-1. 請參閱 Functions 文件的[建立函式應用程式](../azure-functions/functions-create-first-azure-function.md#create-a-function-app)一節。 這將逐步引導您使用 CSharp 語言建立函式應用程式和 [Azure Functions 中的 HTTP 觸發函式](../azure-functions/functions-create-first-azure-function.md#create-function)。  
+1. 請參閱 Functions 文件的[建立函式應用程式](../azure-functions/functions-create-first-azure-function.md#create-a-function-app)一節。 這一節會逐步引導您使用 CSharp 語言建立函式應用程式和 [Azure Functions 中的 HTTP 觸發函式](../azure-functions/functions-create-first-azure-function.md#create-function)。  
 
 2. 瀏覽至 **run.csx** 函式。 將它更新為下列程式碼。 將「\<此處為您的 Azure Cache for Redis 連接字串\>」  取代為您在上一節中擷取的 Azure Cache for Redis 主要連接字串。 
 
@@ -187,13 +186,10 @@ ms.locfileid: "75369315"
    此命令應該會列出指定索引鍵的值：
 
    ![Azure Cache for Redis 輸出的螢幕擷取畫面](./media/stream-analytics-with-azure-functions/image5.png)
-   
-## <a name="error-handling-and-retries"></a>錯誤處理和重試
-如果在將事件傳送至 Azure Functions 時作業失敗，串流分析會進行重試以完成作業。 不過，某些失敗發生之後並不會進行重試，說明如下：
 
- 1. HttpRequestExceptions
- 2. 要求實體太大 (HTTP 錯誤碼 413)
- 3. ApplicationExceptions
+## <a name="error-handling-and-retries"></a>錯誤處理和重試
+
+如果將事件傳送至 Azure Functions 時發生失敗，則串流分析會重試大部分的作業。 所有 http 例外狀況都會進行重試，直到成功但出現 http 錯誤413 (實體太大) 例外狀況為止。 實體太大的錯誤會被視為受制於[重試或捨棄原則](stream-analytics-output-error-policy.md)的資料錯誤。
 
 ## <a name="known-issues"></a>已知問題
 
@@ -210,7 +206,7 @@ ms.locfileid: "75369315"
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已建立可執行 Azure 函式的簡單串流分析作業，若要深入了解串流分析作業，請繼續進行下一個教學課程：
+在本教學課程中，您已建立可執行 Azure 函式的串流分析作業。 若要深入了解串流分析作業，請繼續下一個教學課程：
 
 > [!div class="nextstepaction"]
 > [在串流分析作業內執行 JavaScript 使用者定義函式](stream-analytics-javascript-user-defined-functions.md)

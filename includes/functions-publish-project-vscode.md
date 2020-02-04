@@ -1,47 +1,64 @@
 ---
-title: 包含檔案
-description: 包含檔案
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 04/16/2019
+ms.date: 01/12/2020
 ms.author: glenga
-ms.custom: include file
-ms.openlocfilehash: 30a6d8556a251ba76dff77e004fb864f3eaf04cf
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: f1553a5c9d55366b2764877b48d0606ff8e0b370
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76279576"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842102"
 ---
 ## <a name="publish-the-project-to-azure"></a>將專案發佈到 Azure
 
-Visual Studio Code 可讓您將函式專案直接發佈到 Azure。 在這過程中，您會在 Azure 訂用帳戶中建立函式應用程式和相關的資源。 函式應用程式會為函式提供執行內容。 專案會封裝並部署到您 Azure 訂用帳戶中的新函式應用程式。
+在這一節中，您會在 Azure 訂用帳戶中建立函式應用程式和相關資源，然後部署程式碼。 
 
-根據預設，Visual Studio Code 會建立所有建立函式應用程式所需的 Azure 資源。 這些資源的名稱會以您選擇的函式應用程式名稱為基礎。 如果您需要所建立資源的完整控制權，您可以[使用進階選項發佈](../articles/azure-functions/functions-develop-vs-code.md#enable-publishing-with-advanced-create-options)。
+1. 選擇活動列中的 Azure 圖示，然後在 [Azure：  函式] 區域中，選擇 [部署至函式應用程式...]  按鈕。
 
-本節假設您要在 Azure 中建立新的函式應用程式。
+    ![將專案發佈至 Azure](media/functions-publish-project-vscode/function-app-publish-project.png)
 
-> [!IMPORTANT]
-> 發佈至現有的函式應用程式會覆寫該應用程式在 Azure 中的內容。
+1. 依照提示提供下列資訊：
 
-1. 在 Visual Studio Code 中按 F1 以開啟命令選擇區。 在命令選擇區中，搜尋並選取 `Azure Functions: Deploy to function app...`。
+    ::: zone pivot="programming-language-csharp,programming-language-powershell"
 
-1. 如果未登入，系統會提示您**登入 Azure**。 您也可以建立**免費 Azure 帳戶**。 從瀏覽器成功登入之後，請返回 Visual Studio Code。 
+    | Prompt | 值 | 描述 |
+    | ------ | ----- | ----- |
+    | 選取訂閱 | 您的訂用帳戶 | 當您有多個訂用帳戶時顯示。 |
+    | 在 Azure 中選取函式應用程式 | + 建立新的函式應用程式 | 發佈至現有的函式應用程式會覆寫該應用程式在 Azure 中的內容。 |
+    | 輸入函式應用程式的全域唯一名稱 | 唯一的名稱 | 函式應用程式名稱的有效字元為 `a-z`、`0-9` 和 `-`。 |
+    | 選取新資源的位置 | 區域 | 選擇您附近的[區域](https://azure.microsoft.com/regions/)。 | 
 
-1. 如果您有多個訂用帳戶，請為函數應用程式**選取訂用帳戶**，然後選擇 [+ 在 Azure 中建立新函數應用程式]  。
+    ::: zone-end
 
-1. 輸入可識別您函式應用程式的全域唯一名稱，然後按 Enter。 函式應用程式名稱的有效字元為 `a-z`、`0-9` 和 `-`。
+    ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python"
 
-    當您按下 Enter 時，您的訂用帳戶中會建立下列 Azure 資源：
+    | Prompt | 值 | 描述 |
+    | ------ | ----- | ----- |
+    | 選取訂閱 | 您的訂用帳戶 | 當您有多個訂用帳戶時顯示。 |
+    | 在 Azure 中選取函式應用程式 | + 建立新的函式應用程式 | 發佈至現有的函式應用程式會覆寫該應用程式在 Azure 中的內容。 |
+    | 輸入函式應用程式的全域唯一名稱 | 唯一的名稱 | 函式應用程式名稱的有效字元為 `a-z`、`0-9` 和 `-`。 |
+    | 選取執行階段 | 您的版本 | 選擇您在本機上執行的語言版本。 |
+    | 選取新資源的位置 | 區域 | 選擇您附近的[區域](https://azure.microsoft.com/regions/)。 | 
 
-    * **[資源群組](../articles/azure-resource-manager/management/overview.md)** ：包含所有已建立的 Azure 資源。 該名稱是以您的函數應用程式名稱為根據。
-    * **[儲存體帳戶](../articles/storage/common/storage-account-create.md)** ：使用以您的函數應用程式名稱為根據的唯一名稱建立標準儲存體帳戶。
-    * **[主控方案](../articles/azure-functions/functions-scale.md)** ：在美國西部區域建立一個取用方案，來裝載您的無伺服器函數應用程式。
-    * **函數應用程式**：您的專案已部署到此新函數應用程式，並在其中執行。
+    ::: zone-end
 
-    建立函式應用程式並套用部署套件之後，即會顯示通知。 在通知中選取 [檢視輸出]  ，即可檢視建立和部署結果，包括您所建立的 Azure 資源。
+    
+1.  完成時，您的訂用帳戶中會建立下列 Azure 資源：
 
-1. 返回 [Azure：  函式] 區域中，在訂用帳戶下展開新函數應用程式。 展開 [函式]  ，以滑鼠右鍵按一下 [HttpTrigger]  ，然後選擇 [複製函數 URL]  。
+    + **[資源群組](../articles/azure-resource-manager/management/overview.md)** ：包含所有已建立的 Azure 資源。 該名稱是以您的函數應用程式名稱為根據。
+    + **[儲存體帳戶](../articles//storage/common/storage-introduction.md#types-of-storage-accounts)** ：使用以您的函數應用程式名稱為根據的唯一名稱建立標準儲存體帳戶。
+    + **[主控方案](../articles/azure-functions/functions-scale.md)** ：在美國西部區域建立一個取用方案，來裝載您的無伺服器函數應用程式。
+    + **函數應用程式**：您的專案已部署到此新函數應用程式，並在其中執行。
+    + **[Application Insights]()** ：系統會根據您的函式名稱建立連線至函式應用程式的執行個體。
+
+    建立函式應用程式並套用部署套件之後，即會顯示通知。 
+    
+1. 在通知中選取 [檢視輸出]  ，即可檢視建立和部署結果，包括您所建立的 Azure 資源。
+
+    ![建立完成通知](media/functions-publish-project-vscode/function-create-notifications.png)
+
+1. 返回 [Azure：  函式] 區域 (位於提要欄位中)，在訂用帳戶下展開新的函式應用程式。 展開 [函式]  ，以滑鼠右鍵按一下 (Windows) 或按住 Ctrl 並在 (MacOS) **HttpExample** 上按一下，然後選擇 [複製函式 URL]  。
 
     ![複製新 HTTP 觸發程序的函數 URL](./media/functions-publish-project-vscode/function-copy-endpoint-url.png)

@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: tutorial
-ms.date: 10/27/2019
+ms.date: 01/27/2020
 ms.author: nitinme
-ms.openlocfilehash: 14affb2c2aa53fc7a2b1a5946e81ad124800f678
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 0de0c83b0c459d29c304dbf51eaa44a62e895760
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981254"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773089"
 ---
 # <a name="tutorial-use-form-recognizer-with-azure-logic-apps-to-analyze-invoices"></a>教學課程：搭配使用表單辨識器和 Azure Logic Apps 來分析發票
 
-在本教學課程中，您會在使用表單辨識器 (屬於 Azure 認知服務套件一部分的服務) 的 Azure Logic Apps 中建立工作流程，以擷取發票中的資料。 您可以使用表單辨識器，先使用資料集範例來定型模型，然後再使用另一個資料集來測試模型。 本教學課程中使用的資料範例會儲存在 Azure 儲存體 Blob 容器中。
+在本教學課程中，您會在使用表單辨識器 (屬於 Azure 認知服務套件一部分的服務) 的 Azure Logic Apps 中建立工作流程，以擷取發票中的資料。 您可以先使用範例資料集來定型表單辨識器模型，然後再以另一個資料集測試該模型。
 
 本教學課程涵蓋下列內容：
 
@@ -41,12 +41,12 @@ ms.locfileid: "75981254"
 
 ## <a name="understand-the-invoice-to-be-analyzed"></a>了解要分析的發票
 
-我們用來定型模型和測試模型的資料集範例，可從 [GitHub](https://go.microsoft.com/fwlink/?linkid=2090451) 所提供的 .zip 檔案中取得。 請下載並解壓縮 .zip 檔案，並開啟 **/Train** 資料夾下的發票 PDF 檔案。 請注意其資料表的發票編號、發票日期等等。 
+您用來定型模型和測試模型的範例資料集，可從 [GitHub](https://go.microsoft.com/fwlink/?linkid=2090451) 所提供的 .zip 檔案中取得。 請下載並解壓縮 .zip 檔案，並開啟 **/Train** 資料夾下的發票 PDF 檔案。 請注意其資料表中的發票編號、發票日期等等。 
 
 > [!div class="mx-imgBorder"]
 > ![發票範例](media/tutorial-form-recognizer-with-logic-apps/sample-receipt.png)
 
-在本教學課程中，我們將了解如何使用透過 Azure Logic Apps 和表單辨識器所建立的工作流程，將這類資料表中的資訊擷取為 JSON 格式。
+在本教學課程中，您將了解如何使用 Azure Logic Apps 工作流程，將這類資料表中的資訊以 JSON 的格式擷取。
 
 ## <a name="create-an-azure-storage-blob-container"></a>建立 Azure 儲存體 Blob 容器
 
@@ -62,7 +62,7 @@ ms.locfileid: "75981254"
 
 下載 [GitHub](https://go.microsoft.com/fwlink/?linkid=2090451) 中所提供的資料範例。 將資料解壓縮至本機資料夾，並將 **/Train** 資料夾的內容上傳至您稍早建立的 **formrecocontainer**。 遵循[上傳區塊 Blob](../../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob) 中的指示，將資料上傳至容器。
 
-複製容器的 URL。 稍後在教學課程中需要此資訊。 如果您在建立儲存體帳戶和容器時所用的名稱和本教學課程所列的名稱一樣，則 URL 會是 *https:\//formrecostorage.blob.core.windows.net/formrecocontainer/* 。
+複製容器的 URL。 您稍後將在教學課程中用到此 URL。 如果您在建立儲存體帳戶和容器時所用的名稱和本教學課程所列的名稱一樣，則 URL 會是 *https:\//formrecostorage.blob.core.windows.net/formrecocontainer/* 。
 
 ## <a name="create-a-form-recognizer-resource"></a>建立表單辨識器資源
 
@@ -75,7 +75,7 @@ ms.locfileid: "75981254"
 * 設定邏輯應用程式，使其使用表單辨識器的**定型模型**作業，以您上傳至 Azure Blob 儲存體的資料範例來定型模型。
 * 設定邏輯應用程式，使其使用表單辨識器的**分析表單**作業，來使用您已定型的模型。 此元件會根據其先前定型的模型，來分析您提供給這個邏輯應用程式的發票。
 
-馬上開始！ 請遵循下列步驟來設定工作流程。
+請遵循下列步驟來設定工作流程。
 
 1. 在主要 Azure 功能表中，選取 [建立資源]   > [整合]   > [邏輯應用程式]  。
 
@@ -99,7 +99,7 @@ ms.locfileid: "75981254"
 
 ### <a name="configure-the-logic-app-to-trigger-the-workflow-when-an-email-arrives"></a>設定邏輯應用程式使其在電子郵件送達時觸發工作流程
 
-在本教學課程中，您會在收到附有發票的電子郵件時觸發工作流程。 在本教學課程中，我們選擇用 Office 365 作為電子郵件服務，但您也可以使用任何其他想使用的電子郵件提供者。
+在本教學課程中，您會在收到附有發票的電子郵件時觸發工作流程。 本教學課程使用 Office 365 作為電子郵件服務，但您也可以使用任何您想要使用的其他電子郵件提供者。
 
 1. 選取 [全部] 索引標籤、選取 [Office 365 Outlook]  ，然後在 [觸發程序]  底下，選取 [新的電子郵件送達時]  。
 
@@ -109,8 +109,8 @@ ms.locfileid: "75981254"
 
 1. 在下一個對話方塊中，執行下列步驟。
     1. 選取應監視是否有任何新電子郵件的資料夾。
-    1. 針對 [有附件]  選取 [是]  。 這可確保只有有附件的電子郵件才會觸發工作流程。
-    1. 針對 [包含附件]  選取 [是]  。 這可確保下游處理中會使用附件的內容。
+    1. 針對 [有附件]  ，選取 [是]  。 這可確保只有有附件的電子郵件才會觸發工作流程。
+    1. 針對 [包含附件]  ，選取 [是]  。 這可確保下游處理中會使用附件的內容。
 
         > [!div class="mx-imgBorder"]
         > ![設定邏輯應用程式的電子郵件觸發程序](media/tutorial-form-recognizer-with-logic-apps/logic-app-specify-email-folder.png)
@@ -149,14 +149,14 @@ ms.locfileid: "75981254"
     > [!div class="mx-imgBorder"]
     > ![分析表單辨識器模型](media/tutorial-form-recognizer-with-logic-apps/logic-app-form-reco-analyze-model.png)
 
-1. 在 [分析表單]  對話方塊中，執行下列動作：
+1. 在 [分析表單]  對話方塊中，執行下列步驟：
 
     1. 按一下 [模型識別碼]  文字方塊，然後在開啟的對話方塊中，選取 [動態內容]  索引標籤底下的 [modelId]  。 如此一來，您就可以為流程應用程式提供您在上一節所定型模型的模型識別碼。
 
         > [!div class="mx-imgBorder"]
         > ![針對表單辨識器使用 ModelID](media/tutorial-form-recognizer-with-logic-apps/analyze-form-model-id.png)
 
-    2. 按一下 [文件]  文字方塊，然後在開啟的對話方塊中，選取 [動態內容]  索引標籤底下的 [附件內容]  。 如此一來，您就可以將流程設定為使用所傳送電子郵件中附加的發票範例檔案來觸發工作流程。
+    2. 按一下 [文件]  文字方塊，然後在開啟的對話方塊中，選取 [動態內容]  索引標籤底下的 [附件內容]  。 如此，就可以將流程設定為使用在電子郵件中附加用以觸發工作流程的範例發票檔案。
 
         > [!div class="mx-imgBorder"]
         > ![使用電子郵件附件來分析發票](media/tutorial-form-recognizer-with-logic-apps/analyze-form-input-data.png)
@@ -165,7 +165,7 @@ ms.locfileid: "75981254"
 
 ### <a name="extract-the-table-information-from-the-invoice"></a>從發票中擷取資料表資訊
 
-在本節中，我們會設定邏輯應用程式，使其從發票內的資料表中擷取資訊。
+在本節中，您會設定邏輯應用程式，使其從發票內的資料表中擷取資訊。
 
 1. 選取 [新增動作]  、在 [選擇動作]  底下搜尋 [撰寫]  ，然後在可用的動作底下再次選取 [撰寫]  。
     ![從發票中擷取資料表資訊](media/tutorial-form-recognizer-with-logic-apps/extract-table.png)
@@ -179,7 +179,7 @@ ms.locfileid: "75981254"
 
 ## <a name="test-your-logic-app"></a>測試應用程式邏輯
 
-為了測試邏輯應用程式，請在您於 [GitHub](https://go.microsoft.com/fwlink/?linkid=2090451) 下載的資料集範例中，使用位於 **/Test** 資料夾內的發票範例。 執行下列步驟：
+為了測試邏輯應用程式，請在您於 [GitHub](https://go.microsoft.com/fwlink/?linkid=2090451) 下載的資料集範例中，使用位於 **/Test** 資料夾內的發票範例。 請遵循下列步驟：
 
 1. 從應用程式的 Azure Logic Apps 設計工具中，選取頂端工具列上的 [執行]  。 工作流程現在已啟用，並且會等待收到有附上發票的電子郵件。
 1. 將附有發票範例的電子郵件傳送到您在建立邏輯應用程式時所提供的電子郵件地址。 請確定電子郵件有傳遞至您在設定邏輯應用程式時所提供的資料夾。

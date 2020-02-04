@@ -1,29 +1,29 @@
 ---
-title: 快速入門：建立 Standard Load Balancer - Azure PowerShell
+title: 快速入門：建立 Load Balancer - Azure PowerShell
 titleSuffix: Azure Load Balancer
-description: 本快速入門說明如何使用 Azure PowerShell 建立 Standard Load Balancer。
+description: 本快速入門說明如何使用 Azure PowerShell 建立 Load Balancer
 services: load-balancer
 documentationcenter: na
 author: asudbring
 manager: twooley
-Customer intent: I want to create a Standard Load balancer so that I can load balance internet traffic to VMs.
+Customer intent: I want to create a Load balancer so that I can load balance internet traffic to VMs.
 ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/07/2019
+ms.date: 01/27/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 21488fbc8a5a9354db74d5b93719d100bce8878c
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 50a7854688164383bff08bfe55d356fe32239812
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045661"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846525"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-using-azure-powershell"></a>快速入門：使用 Azure PowerShell 來建立 Standard Load Balancer
+# <a name="quickstart-create-a-load-balancer-using-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立 Load Balancer
 
 本快速入門說明如何使用 Azure PowerShell 建立標準負載平衡器。 若要測試負載平衡器，您要部署三部執行 Windows Server 的虛擬機器 (VM)，並平衡兩部 VM 間 Web 應用程式的負載。 若要深入了解標準負載平衡器，請參閱[什麼是標準負載平衡器](load-balancer-standard-overview.md)。
 
@@ -45,7 +45,7 @@ New-AzResourceGroup -Name $rgName -Location $location
 
 ## <a name="create-a-public-ip-address"></a>建立公用 IP 位址
 
-若要存取網際網路上您的應用程式，您需要負載平衡器的公用 IP 位址。 使用 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) 建立公用 IP 位址。 下列範例會在 myResourceGroupSLB  資源群組中建立名為 myPublicIP  的公用 IP 位址：
+若要存取網際網路上您的應用程式，您需要負載平衡器的公用 IP 位址。 使用 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) 建立公用 IP 位址。 下列範例會在 *myResourceGroupSLB* 資源群組中建立名為 *myPublicIP* 的公用 IP 位址：
 
 ```azurepowershell
 $publicIp = New-AzPublicIpAddress `
@@ -56,11 +56,25 @@ $publicIp = New-AzPublicIpAddress `
  -SKU Standard
 ```
 
-## <a name="create-standard-load-balancer"></a>建立標準負載平衡器
+若要在區域 1 中建立區域性公用 IP 位址，請使用下列各項：
+
+```azurepowershell
+$publicIp = New-AzPublicIpAddress `
+ -ResourceGroupName $rgName `
+ -Name 'myPublicIP' `
+ -Location $location `
+ -AllocationMethod static `
+ -SKU Standard
+ -zone 1
+```
+
+使用 ```-SKU Basic``` 來建立基本公用 IP。 Microsoft 建議對生產工作負載使用「標準」。
+
+## <a name="create-load-balancer"></a>建立負載平衡器
 
 在本節中，您會設定負載平衡器的前端 IP 和後端位址集區，然後建立 Standard Load Balancer。
 
-### <a name="create-front-end-ip"></a>建立前端 IP
+### <a name="create-frontend-ip"></a>建立前端 IP
 
 使用 [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) 建立前端 IP。 下列範例會建立名為 myFrontEnd  的前端 IP 組態，並連結 myPublicIP  位址：
 
@@ -146,6 +160,8 @@ $lb = New-AzLoadBalancer `
   -InboundNatRule $natrule1,$natrule2,$natrule3
 ```
 
+使用 ```-SKU Basic``` 建立基本 Load Balancer。 Microsoft 建議對生產工作負載使用「標準」。
+
 ## <a name="create-network-resources"></a>建立網路資源
 您必須先建立支援的網路資源 - 虛擬網路和虛擬 NIC，才可部署一些 VM 及測試您的平衡器。 
 
@@ -195,6 +211,9 @@ $RdpPublicIP_3 = New-AzPublicIpAddress `
   -AllocationMethod static
 
 ```
+
+使用 ```-SKU Basic``` 建立基本公用 IP。 Microsoft 建議對生產工作負載使用「標準」。
+
 ### <a name="create-network-security-group"></a>建立網路安全性群組
 建立網路安全性群組，以定義虛擬網路的輸入連線。
 
@@ -356,7 +375,6 @@ Remove-AzResourceGroup -Name myResourceGroupSLB
 
 ## <a name="next-steps"></a>後續步驟
 
-本快速入門中，您已建立標準 Load Balancer、將 VM 加以連結、設定負載平衡器流量規則、健康狀態探查，接著測試負載平衡器。 若要深入了解 Azure Load Balancer，請繼續 Azure Load Balancer 的教學課程。
+在本快速入門中，您已建立標準負載平衡器、將 VM 連結到標準負載平衡器、設定負載平衡器流量規則、健康狀態探查，然後測試負載平衡器。 若要深入了解 Azure Load Balancer，請繼續進行 [Azure 負載平衡器教學課程](tutorial-load-balancer-standard-public-zone-redundant-portal.md)。
 
-> [!div class="nextstepaction"]
-> [Azure Load Balancer 教學課程](tutorial-load-balancer-basic-internal-portal.md)
+深入了解 [Load Balancer 和可用性區域](load-balancer-standard-availability-zones.md)。

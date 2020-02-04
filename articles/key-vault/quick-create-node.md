@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: e36e3ae9ce2e8ca116921de428b4dcc09b37afb6
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a59ba62df546c60c4086829eec355d3e69b69363
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978572"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773728"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-nodejs-v4"></a>快速入門：適用於 Node.js 的 Azure Key Vault 用戶端程式庫 (v4)
 
@@ -22,12 +22,12 @@ Azure 金鑰保存庫可協助保護雲端應用程式和服務所使用的密�
 - 提高金鑰和密碼的安全性和控制權。
 - 在幾分鐘內建立和匯入加密金鑰。
 - 透過雲端規模和全域備援減少延遲。
-- 簡化 SSL/TLS 憑證的工作並將其自動化。
+- 簡化 TLS/SSL 憑證的工作並將其自動化。
 - 使用經 FIPS 140-2 Level 2 驗證的 HSM。
 
 [API 參考文件](/javascript/api/overview/azure/key-vault?view=azure-node-latest) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault) | [套件 (npm)](https://www.npmjs.com/package/@azure/keyvault-secrets)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 適用於您作業系統的 [Node.js](https://nodejs.org) 目前版本。
@@ -103,7 +103,7 @@ az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-se
 
 #### <a name="set-environmental-variables"></a>設定環境變數
 
-應用程式中的 DefaultAzureCredential 方法依賴三個環境變數：`AZURE_CLIENT_ID`、`AZURE_CLIENT_SECRET` 和 `AZURE_TENANT_ID`。 使用 `export VARNAME=VALUE` 格式，將這些變數設定為您在[建立服務主體](#create-a-service-principal)步驟中記下的 clientId、clientSecret 和 tenantId 值 (這只會設定您目前殼層的變數，以及從殼層建立的處理序；若要將這些變數永久加入至您的環境，請編輯您的 `/etc/environment ` 檔案)。 
+應用程式中的 DefaultAzureCredential 方法依賴三個環境變數：`AZURE_CLIENT_ID`、`AZURE_CLIENT_SECRET` 和 `AZURE_TENANT_ID`。 使用 `export VARNAME=VALUE` 格式，將這些變數設定為您在[建立服務主體](#create-a-service-principal)步驟中記下的 clientId、clientSecret 和 tenantId 值。 (這只會設定您目前殼層的變數，以及從殼層建立的處理序；若要將這些變數永久加入至您的環境，請編輯您的 `/etc/environment ` 檔案)。 
 
 您也需要將金鑰保存庫名稱儲存為稱為 `KEY_VAULT_NAME` 的環境變數。
 

@@ -1,10 +1,9 @@
 ---
 title: 快速入門：透過 Python 使用 Azure 服務匯流排主題和訂用帳戶
-description: 了解如何從 Python 使用 Azure 服務匯流排主題和訂用帳戶。
+description: 本文示範如何建立 Azure 服務匯流排主題、訂用帳戶、將訊息傳送到主題及接收來自訂用帳戶的訊息。
 services: service-bus-messaging
 documentationcenter: python
 author: axisc
-manager: timlt
 editor: spelluru
 ms.assetid: c4f1d76c-7567-4b33-9193-3788f82934e4
 ms.service: service-bus-messaging
@@ -12,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 94a49b31139947c6323ab391b78ecd03ee911e0a
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 03e22c4c179850e5140015c0abc2d89f16d4b624
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748499"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774552"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-python"></a>快速入門：透過 Python 使用服務匯流排主題和訂用帳戶
 
@@ -33,7 +32,7 @@ ms.locfileid: "73748499"
 - 接收來自訂用帳戶的訊息
 - 刪除主題和訂用帳戶
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 - Azure 訂用帳戶。 您可以啟用自己的 [Visual Studio 或 MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或註冊[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
 - 服務匯流排命名空間，遵循[快速入門：使用 Azure 入口網站建立服務匯流排主題和訂用帳戶](service-bus-quickstart-topics-subscriptions-portal.md)中的步驟加以建立。 從 [共用存取原則]  畫面複製命名空間名稱、共用存取金鑰名稱和主要金鑰值，以便稍後在本快速入門中使用。 
 - Python 3.4x 或更新版本，已安裝 [Python SDK][Azure Python package] 套件。 如需詳細資訊，請參閱 [Python 安裝指南](/azure/python/python-sdk-azure-install)。

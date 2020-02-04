@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 01/27/2020
 ms.author: diberry
-ms.openlocfilehash: a67852d333a86c5acf20e8bf69004aa9131e1f9f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0ee2b33aa3388b3cb99aa42c338ded800c9679a4
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448078"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772487"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>快速入門：在 LUIS 入口網站中部署應用程式
 
@@ -74,6 +74,9 @@ LUIS 應用程式準備將表達預測傳回用戶端應用程式 (例如聊天�
 1. 完成相同的步驟，將製作金鑰新增至您的應用程式。
 
 1. 在新預測資源的資料表中尋找新的資料列並複製端點 URL。 以正確方式建構，可對 LUIS API 端點提出 `HTTP GET` 要求進行預測。
+
+> [!TIP]
+> 如果您想要使用主動式學習來改善 LUIS 應用程式，請選取 [變更查詢參數]  ，然後選取 [儲存記錄]  。 此動作會藉由新增 `log=true` 查詢字串參數來變更範例 URL。 對執行階段端點進行預測查詢時，請複製並使用已變更的範例查詢 URL。
 
 ## <a name="train-the-app"></a>進行應用程式定型
 

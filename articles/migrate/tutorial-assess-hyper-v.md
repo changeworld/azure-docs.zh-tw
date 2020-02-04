@@ -2,14 +2,14 @@
 title: 使用 Azure Migrate 來評估 Hyper-V VM 是否可移轉至 Azure | Microsoft Docs
 description: 說明如何使用 Azure Migrate 來評估內部部署 Hyper-V VM 是否可移轉至 Azure。
 ms.topic: tutorial
-ms.date: 01/01/2020
+ms.date: 01/23/2020
 ms.custom: mvc
-ms.openlocfilehash: f36b0fbae01b25e604222c76d41ac21c0a7ae5a9
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: e4c505d74ff3bebc21f696b1c4b894afcdaa9974
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029020"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845510"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>使用 Azure Migrate 伺服器評估來評估 Hyper-V VM
 
@@ -138,7 +138,7 @@ Azure Migrate 伺服器評估會執行輕量型 Hyper-V VM 設備。
 2. 在 [選擇匯入類型]  中，按一下 [複製虛擬機器 (建立新的唯一識別碼)]  。 然後按一下 [下一步]  。
 3. 在 [選擇目的地]  中，保留預設設定。 按 [下一步]  。
 4. 在 [儲存資料夾]  中，保留預設設定。 按 [下一步]  。
-5. 在 [選擇網路]  中，指定 VM 會使用的虛擬交換器。 此交換器必須能夠連線到網際網路，以將資料傳送至 Azure。
+5. 在 [選擇網路]  中，指定 VM 會使用的虛擬交換器。 此交換器必須能夠連線到網際網路，以將資料傳送至 Azure。 [了解](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch-for-hyper-v-virtual-machines)如何建立虛擬交換器。
 6. 在 [摘要]  中檢閱設定。 然後按一下 [ **完成**]。
 7. 在 [Hyper-V 管理員] > [虛擬機器]  中，啟動 VM。
 
@@ -258,7 +258,7 @@ Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com Hyper
 
     ![建立評估](./media/tutorial-assess-hyper-v/assessment-create.png)
 
-6. 評量建立好之後，可在 伺服器   > **Azure Migrate：** 。
+6. 評量建立好之後，可在 [伺服器]   >  **[Azure Migrate：伺服器評量]** 。
 7. 按一下 [匯出評估]  ，將其下載為 Excel 檔案。
 
 

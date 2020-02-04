@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 66e2cb30dcd58b7ad0c6cedbb547f75c8039bc58
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2f99f50ffcccb052526981a712ac5046836a44ae
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824144"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712896"
 ---
 # <a name="run-opc-publisher"></a>執行 OPC 發行者
 
@@ -532,7 +532,7 @@ OPC 發行者提供可用來執行下列動作的命令列選項：
 - IoT 中樞訊息大小 (預設為 `1`)：`--ms`
 - 監視的項目佇列容量：`--mq`
 
-`--mq` 參數能控制內部佇列的容量上限，其會對所有 OPC 節點值變更通知進行緩衝。 如果 OPC 發行者將訊息傳送至 IoT 中樞的速度不夠快，此佇列便會對通知進行緩衝。 參數會設定可被緩衝的通知數目。 如果您看見此佇列中的項目數目隨著測試回合持續增加，則為了避免失去訊息，您應該：
+`--mq` 參數能控制內部佇列的容量上限，其會對所有 OPC 節點值變更通知進行緩衝。 如果 OPC 發行者將訊息傳送至 IoT 中樞的速度不夠快，此佇列便會對通知進行緩衝。 參數會設定可被緩衝的通知數目。 如果您看到此佇列中的項目數隨著測試回合持續增加，為了避免失去訊息，您應：
 
 - 減少 IoT 中樞傳送間隔
 - 增加 IoT 中樞訊息大小
@@ -579,7 +579,7 @@ current working set in MB: 90
 ==========================================================================
 ```
 
-預設設定會每隔 10 秒鐘，或是每當可供 IoT 中樞使用的資料量達到 256 kB 時便將資料傳送至 IoT 中樞。 此設定會產生約 10 秒的中度延遲，但基於訊息大小較大的原因，其失去資料的機率也是最低的。 診斷輸出顯示沒有遺失的 OPC 節點更新：`monitored item notifications enqueue failure: 0`。
+預設設定會每隔 10 秒鐘，或是每當可供 IoT 中樞使用的資料量達到 256 kB 時便將資料傳送至 IoT 中樞。 此設定會產生約 10 秒的中度延遲，但由於訊息大小較大，其失去資料的機率也是最低的。 診斷輸出顯示沒有遺失的 OPC 節點更新：`monitored item notifications enqueue failure: 0`。
 
 #### <a name="constant-send-interval---si-1---ms-0"></a>常數傳送間隔 (--si 1 --ms 0)
 
@@ -681,7 +681,7 @@ current working set in MB: 90
 ==========================================================================
 ```
 
-此設定會對最大數目的 OPC 節點值更新進行批次處理。 最大的 IoT 中樞訊息大小是 256 kB，其已被設定於此。 沒有要求的傳送間隔，這代表供 IoT 中樞使用的資料量會決定延遲多寡。 此設定遺失任何 OPC 節點值的機率最低，且適合用來發行大量的節點。 當您使用此設定時，請確定您的案例沒有在未抵達 256 kB 的訊息大小時會產生高延遲的條件。
+此設定會對最大數目的 OPC 節點值更新進行批次處理。 最大的 IoT 中樞訊息大小是 256 kB，其已被設定於此。 沒有要求的傳送間隔，這代表供 IoT 中樞使用的資料量會決定延遲多寡。 此設定失去任何 OPC 節點值的機率最低，適合用來發佈大量的節點。 當您使用此設定時，請確定您的案例沒有在未抵達 256 kB 的訊息大小時會產生高延遲的條件。
 
 ## <a name="debug-the-application"></a>偵錯應用程式
 

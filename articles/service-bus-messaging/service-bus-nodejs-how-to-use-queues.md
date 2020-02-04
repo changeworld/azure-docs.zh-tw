@@ -1,6 +1,6 @@
 ---
 title: 使用 azure-sb 套件在 Node.js 中使用 Azure 服務匯流排佇列
-description: 快速入門：了解如何從 Node.js 應用程式，在 Azure 中使用服務匯流排佇列。
+description: 了解如何建立 Node.js 應用程式，以使用 azure-sb 套件對 Azure 服務匯流排佇列傳送及接收訊息。
 services: service-bus-messaging
 documentationcenter: nodejs
 author: axisc
@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/27/2020
 ms.author: aschhab
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 5fa74bdc632154e361fc4d95ed602e4b4d39a198
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fee7ff6ffbd18cf514ce1bfda81aca727ed362c3
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462180"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773514"
 ---
 # <a name="quickstart-use-service-bus-queues-in-azure-with-nodejs-and-the-azure-sb-package"></a>快速入門：透過 Node.js 和 azure-sb 套件在 Azure 中使用服務匯流排佇列
 
@@ -127,7 +127,7 @@ function (returnObject, finalCallback, next)
 
 在此回呼中，以及處理 `returnObject` (來自對伺服器之要求的回應) 之後，回呼必須叫用 `next` (如果存在) 以繼續處理其他篩選器，或是叫用 `finalCallback` 以結束服務叫用。
 
-Azure SDK for Node.js 包含了兩個實作重試邏輯的篩選器： `ExponentialRetryPolicyFilter` 與 `LinearRetryPolicyFilter`。 下列程式碼會建立使用 `ExponentialRetryPolicyFilter` 的 `ServiceBusService` 物件：
+Azure SDK for Node.js 包含了兩個實作重試邏輯的篩選器：`ExponentialRetryPolicyFilter` 與 `LinearRetryPolicyFilter`。 下列程式碼會建立使用 `ExponentialRetryPolicyFilter` 的 `ServiceBusService` 物件：
 
 ```javascript
 var retryOperations = new azure.ExponentialRetryPolicyFilter();

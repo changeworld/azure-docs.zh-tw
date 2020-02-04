@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: e06c8d5373f8740e8091daae242a4f7af6c0ea4a
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 0cde8b48e7bd1d1daa8f14dcded87001fb898fa7
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74995859"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769224"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-java"></a>快速入門：適用於 Java 的 Azure Key Vault 用戶端程式庫
 
@@ -22,12 +22,12 @@ Azure 金鑰保存庫可協助保護雲端應用程式和服務所使用的密�
 - 提高金鑰和密碼的安全性和控制權。
 - 在幾分鐘內建立和匯入加密金鑰。
 - 透過雲端規模和全域備援減少延遲。
-- 簡化 SSL/TLS 憑證的工作並將其自動化。
+- 簡化 TLS/SSL 憑證的工作並將其自動化。
 - 使用經 FIPS 140-2 Level 2 驗證的 HSM。
 
 [原始程式碼](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault) | [API 參考文件](https://azure.github.io/azure-sdk-for-java) | [產品文件](index.yml) | [範例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-secrets/src/samples/java/com/azure/security/keyvault/secrets)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - [Java 開發套件 (JDK)](/java/azure/jdk/?view=azure-java-stable) 8 版或更新版本
@@ -150,7 +150,7 @@ az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-se
 
 #### <a name="set-environmental-variables"></a>設定環境變數
 
-應用程式中的 DefaultAzureCredential 方法依賴三個環境變數：`AZURE_CLIENT_ID`、`AZURE_CLIENT_SECRET` 和 `AZURE_TENANT_ID`。 將這些變數設定為您在上述[建立服務主體](#create-a-service-principal)步驟中記下的 clientId、clientSecret 和 tenantId 值。 請使用 `export VARNAME=VALUE` 格式來設定您的環境變數。 (此方法只會設定您目前殼層的變數，以及從殼層建立的處理序；若要將這些變數永久新增至您的環境，請編輯您的 `/etc/environment ` 檔案。) 
+應用程式中的 DefaultAzureCredential 方法依賴三個環境變數：`AZURE_CLIENT_ID`、`AZURE_CLIENT_SECRET` 和 `AZURE_TENANT_ID`。 將這些變數設定為您在上述[建立服務主體](#create-a-service-principal)步驟中記下的 clientId、clientSecret 和 tenantId 值。 請使用 `export VARNAME=VALUE` 格式來設定您的環境變數。 (此方法只會設定您目前殼層的變數，以及從殼層建立的處理序；若要將這些變數永久新增至您的環境，請編輯您的 `/etc/environment ` 檔案)。 
 
 您也需要將金鑰保存庫名稱儲存為稱為 `KEY_VAULT_NAME` 的環境變數。
 

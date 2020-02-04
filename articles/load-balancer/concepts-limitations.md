@@ -9,17 +9,16 @@ ms.service: load-balancer
 Customer intent: As an IT administrator, I want to learn more about the Azure Load Balancer components and limitations and how it will affect my environment.
 ms.devlang: na
 ms.topic: overview
-ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/14/2019
+ms.date: 01/14/2020
 ms.author: allensu
-ms.openlocfilehash: 31c247199bfbfc57ffef376649edefd487fd1962
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 341bfddb86885df225874100400a854cf12120db
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263535"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76757794"
 ---
 # <a name="load-balancer-components-and-limitations"></a>Load Balancer 的元件與限制
 Azure Load Balancer 包含數個用於運作的主要元件。  您可以透過 Azure 入口網站、Azure CLI 或 Azure PowerShell，在您的訂用帳戶中設定這些元件。  
@@ -58,7 +57,7 @@ Azure Load Balancer 包含數個用於運作的主要元件。  您可以透過 
 
 Load Balancer 為 TCP 和 UDP 應用程式提供下列基本功能：
 
-* **負載平衡演算法**：有了 Azure Load Balancer，您就能建立負載平衡規則，將抵達前端的流量分送給各個後端集區執行個體。 Load Balancer 會使用雜湊演算法來分送輸入流程，並重寫流向後端集區執行個體的流程標頭。 當健康情況探查表示後端端點狀況良好時，伺服器便可以接收新的流程。
+* **負載平衡演算法**：有了 Azure Load Balancer，您就能建立負載平衡規則，將抵達前端的流量分送給各個後端集區執行個體。 Load Balancer 會使用雜湊演算法來分送輸入流程 (而非位元組)，並重寫流向後端集區執行個體的流程標頭。 當健康情況探查表示後端端點狀況良好時，伺服器便可以接收新的流程。
 根據預設，Load Balancer 會使用 5 個元組的雜湊。 
 
    雜湊包含： 

@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 05/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: 3322a9f2a7e09ee76c0fff94a2747c791ecf4804
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: dfe5a9a8b5503bb078cfd633a1f29774613b42b6
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975375"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769212"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v4"></a>快速入門：適用於 .NET 的 Azure Key Vault 用戶端程式庫 (SDK v4)
 
@@ -22,12 +22,12 @@ Azure 金鑰保存庫可協助保護雲端應用程式和服務所使用的密�
 - 提高金鑰和密碼的安全性和控制權。
 - 在幾分鐘內建立和匯入加密金鑰。
 - 透過雲端規模和全域備援減少延遲。
-- 簡化 SSL/TLS 憑證的工作並將其自動化。
+- 簡化 TLS/SSL 憑證的工作並將其自動化。
 - 使用經 FIPS 140-2 Level 2 驗證的 HSM。
 
 [API 參考文件](/dotnet/api/azure.security.keyvault.secrets?view=azure-dotnet) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault) | [套件 (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.Secrets/)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * [.NET Core 2.1 SDK 或更新版本](https://dotnet.microsoft.com/download/dotnet-core/2.1)。

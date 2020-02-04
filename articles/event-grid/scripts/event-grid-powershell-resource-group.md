@@ -1,23 +1,22 @@
 ---
 title: Azure PowerShell 指令碼範例 - 訂閱資源群組 | Microsoft Docs
-description: Azure PowerShell 指令碼範例 - 訂閱資源群組
+description: 本文提供範例 Azure PowerShell 指令碼，示範如何訂閱資源群組的事件方格事件。
 services: event-grid
 documentationcenter: na
-author: tfitzmac
-manager: timlt
+author: spelluru
 ms.service: event-grid
 ms.devlang: powershell
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/10/2018
-ms.author: tomfitz
-ms.openlocfilehash: db4be11286825a8a990918a80c687f86c2294c6d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 01/23/2020
+ms.author: spelluru
+ms.openlocfilehash: e285f628d1ec3afce55dc8fe4efa50a361dab5ed
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66117180"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720792"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-with-powershell"></a>使用 PowerShell 訂閱資源群組的事件
 
@@ -43,7 +42,7 @@ ms.locfileid: "66117180"
 
 此指令碼會使用下列命令來建立事件訂用帳戶。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [New-AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) | 建立事件格線訂用帳戶。 |
 

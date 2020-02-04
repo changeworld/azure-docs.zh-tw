@@ -1,6 +1,6 @@
 ---
 title: Azure 服務匯流排傳訊概觀 | Microsoft Docs
-description: 描述服務匯流排傳訊
+description: 本文提供 Azure 服務匯流排的高階總覽，其為完全受控的企業整合訊息代理程式。
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.author: aschhab
-ms.openlocfilehash: 12d4bada4f84098f1559ea7b59fbbd35e0801347
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 49a54491c36ef29209d1a53094cc5baf57057557
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561588"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759375"
 ---
 # <a name="what-is-azure-service-bus"></a>什麼是 Azure 服務匯流排？
 
@@ -47,7 +47,7 @@ Microsoft Azure 服務匯流排是完全受控的企業整合訊息代理程式�
 
 您也可以使用「主題」  來收送訊息。 佇列通常用於點對點通訊，主題則適用於發佈/訂閱案例。
 
-![話題](./media/service-bus-messaging-overview/about-service-bus-topic.png)
+![主題](./media/service-bus-messaging-overview/about-service-bus-topic.png)
 
 主題可以有多個獨立的訂用帳戶。 主題的訂閱者會收到該主題所接收每則訊息的複本。 訂用帳戶是具名實體。 訂用帳戶會持續保存，但可能會到期或自動刪除。
 

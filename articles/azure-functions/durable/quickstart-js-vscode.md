@@ -5,12 +5,12 @@ author: ColbyTresness
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.reviewer: azfuncdf, cotresne
-ms.openlocfilehash: 94ba2830824c4a918e9451a9fc5140d422110370
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b0a1d1a9305f6de2a072ee1ded310d8de174436b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231304"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845718"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>使用 JavaScript 建立第一個耐久函式
 
@@ -22,7 +22,7 @@ ms.locfileid: "74231304"
 
 ![在 Azure 中執行耐久函式](./media/quickstart-js-vscode/functions-vs-code-complete.png)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程：
 
@@ -38,7 +38,31 @@ ms.locfileid: "74231304"
 
 [!INCLUDE [functions-install-vs-code-extension](../../../includes/functions-install-vs-code-extension.md)]
 
-[!INCLUDE [functions-create-function-app-vs-code](../../../includes/functions-create-function-app-vs-code.md)]
+## <a name="create-an-azure-functions-project"></a>建立本機專案 
+
+在這一節中，您會使用 Visual Studio Code 來建立本機 Azure Functions 專案。 
+
+1. 在 Visual Studio Code 中按 F1 以開啟命令選擇區。 在命令選擇區中，搜尋並選取 `Azure Functions: Create new project...`。
+
+1. 選擇您專案工作區的目錄位置，然後選擇 [選取]  。
+
+    > [!NOTE]
+    > 這些步驟主要設計為在工作區以外的地方完成。 在此案例中，請勿選取屬於工作區的專案資料夾。
+
+1. 按照提示，針對您所需的語言提供下列資訊：
+
+    | Prompt | 值 | 描述 |
+    | ------ | ----- | ----------- |
+    | 為您的函式應用程式專案選取語言 | JavaScript | 建立本機 Node.js Functions 專案。 |
+    | 選取版本 | Azure Functions v2 | 您只會在尚未安裝 Core Tools 時看到此選項。 在此情況下，Core Tools 會在您第一次執行應用程式時安裝。 |
+    | 選取您專案第一個函式的範本 | HTTP 觸發程序 | 在新的函式應用程式中建立由 HTTP 觸發的函式。 |
+    | 提供函式名稱 | HttpTrigger | 按 Enter 鍵以使用預設名稱。 |
+    | 授權層級 | 函式 | 當您呼叫函式的 HTTP 端點時，`function` 授權層級會要求您提供存取金鑰。 這會使存取不安全的端點變得更加困難。 若要深入了解，請參閱[授權金鑰](../functions-bindings-http-webhook.md#authorization-keys)。  |
+    | 選取您要如何開啟專案 | 新增到工作區 | 在目前的工作區中建立函式應用程式。 |
+
+如有需要，Visual Studio Code 安裝 Azure Functions Core Tools。 其也會在新的工作區中建立函式應用程式專案。 此專案包含 [host.json](../functions-host-json.md) 和 [local.settings.json](../functions-run-local.md#local-settings-file) 組態檔。 其也會建立 HttpExample 資料夾，其中包含 [function.json 定義檔](../functions-reference-node.md#folder-structure)和 [index.js 檔案](../functions-reference-node.md#exporting-a-function) (這是包含函式程式碼的 Node.js 檔案)。
+
+此外，也會在根資料夾中建立 package.json 檔案。
 
 ## <a name="install-the-durable-functions-npm-package"></a>安裝 Durable Functions npm 套件
 
@@ -60,7 +84,7 @@ ms.locfileid: "74231304"
 
     ![選擇 HTTP 入門範本](./media/quickstart-js-vscode/create-function-choose-template.png)
 
-3. 將預設名稱保留為 `DurableFunctionsHttpStart` 並按下 ** **Enter**， 然後選取 [匿名]  驗證。
+3. 將預設名稱保留為 `DurableFunctionsHttpStart` 並按下 ** **Enter**，然後選取 [匿名]  驗證。
 
     ![選擇匿名驗證](./media/quickstart-js-vscode/create-function-anonymous-auth.png)
 

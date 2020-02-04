@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell - 訂閱 Blob 儲存體帳戶
-description: Azure 事件方格和 Azure PowerShell 指令碼範例 - 訂閱 Blob 儲存體帳戶
+description: 本文提供範例 Azure PowerShell 指令碼，示範如何訂閱 Blob 儲存體帳戶的事件方格事件。
 services: event-grid
 documentationcenter: na
 author: spelluru
@@ -9,14 +9,14 @@ ms.devlang: powershell
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/22/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 1e394b27818456b96118f80f17cf459ac08f45a9
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: a8a0982ca118663cbf0f7e4d72412ce8feda3c4b
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790508"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721433"
 ---
 # <a name="subscribe-to-events-for-a-blob-storage-account-with-powershell"></a>使用 PowerShell 訂閱 Blob 儲存體帳戶的事件
 
@@ -34,7 +34,7 @@ ms.locfileid: "72790508"
 
 此指令碼會使用下列命令來建立事件訂用帳戶。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [New-AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) | 建立事件格線訂用帳戶。 |
 

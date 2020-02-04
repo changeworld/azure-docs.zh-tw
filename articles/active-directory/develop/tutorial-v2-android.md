@@ -15,13 +15,12 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b4c4c9bc025e8fd506b298ed676674899e318481
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: d851e23e8f6915c7d52565f18eff4a73bd96c9c0
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689349"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758830"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-application"></a>教學課程：從 Android 應用程式登入使用者並呼叫 Microsoft Graph 
 
@@ -86,7 +85,7 @@ ms.locfileid: "75689349"
 6. 在 [設定 Android 應用程式]  頁面的 [簽章雜湊]  區段中，按一下 [產生開發簽章雜湊]  。 然後，複製要用於平台的 KeyTool 命令。
 
    > [!Note]
-   > KeyTool.exe 會安裝為 Java 開發套件 (JDK) 的一部分。 您也必須安裝 OpenSSL 工具來執行 KeyTool 命令。
+   > KeyTool.exe 會安裝為 Java 開發套件 (JDK) 的一部分。 您也必須安裝 OpenSSL 工具來執行 KeyTool 命令。 如需詳細資訊，請參閱[關於產生金鑰的 Android 文件](https://developer.android.com/studio/publish/app-signing#generate-key)。 
 
 7. 輸入 KeyTool 所產生的**簽章雜湊**。
 8. 按一下 `Configure` 並儲存出現在 [Android 設定]  頁面中的 [MSAL 設定]  ，以便稍後在設定應用程式時可加以輸入。  按一下 [完成]  。
@@ -156,8 +155,11 @@ ms.locfileid: "75689349"
         jcenter()
     }  
     dependencies{
-        implementation 'com.microsoft.identity.client:msal:1.0.+'
+        implementation 'com.microsoft.identity.client:msal:1.2.+'
         implementation 'com.microsoft.graph:microsoft-graph:1.5.+'
+    }
+    packagingOptions{
+        exclude("META-INF/jersey-module-version") 
     }
     ```
     [Microsoft Graph SDK 的詳細資訊](https://github.com/microsoftgraph/msgraph-sdk-java/)
@@ -191,7 +193,7 @@ import com.microsoft.identity.client.exception.*;
 ## <a name="instantiate-publicclientapplication"></a>具現化 PublicClientApplication
 #### <a name="initialize-variables"></a>初始化變數 
 ```java
-private final static String[] SCOPES = {"User.Read"};
+private final static String[] SCOPES = {"File.Read"};
 /* Azure AD v2 Configs */
 final static String AUTHORITY = "https://login.microsoftonline.com/common";
 private ISingleAccountPublicClientApplication mSingleAccountApp;

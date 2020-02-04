@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: f45859370ae178fb186399fdd2648bf37f0985aa
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: dfc9c045af5347ebd3f15df48d5a5756dd2a9e05
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910910"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844746"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>教學課程：使用 Azure Notebooks (Python) 規劃電動車的路線
 
-Azure 地圖服務是以原生方式整合到 Azure 的地理空間服務 API 組合。 透過這些 API，開發人員、企業及 ISV 就能建立定位感知的應用程式和 IoT、行動性、物流及資產追蹤解決方案。 
+Azure 地圖服務是以原生方式整合到 Azure 的地理空間服務 API 組合。 透過這些 API，開發人員、企業及 ISV 就能建立定位感知的應用程式、IoT、行動性、物流及資產追蹤解決方案。 
 
 您可以從 Python 和 R 等語言呼叫 Azure 地圖服務 REST API，以啟用地理空間資料分析和機器學習案例。 Azure 地圖服務提供一組健全的[路線規劃 API](https://docs.microsoft.com/rest/api/maps/route) \(英文\)，讓使用者能夠計算數個資料點之間的路線。 計算會以各種條件為依據，例如，車輛類型或可抵達的區域。 
 
-在此教學課程中，您將逐步執行一個案例，以協助電動車電量偏低的駕駛依據從該車輛位置的行車時間來找出可能最近的充電站。
+在本教學課程中，您將逐步協助電動車電量偏低的駕駛者。 駕駛者需要找到與車輛所在位置距離最近的充電站。
 
 在本教學課程中，您將：
 
@@ -39,7 +39,7 @@ Azure 地圖服務是以原生方式整合到 Azure 的地理空間服務 API �
 
 若要完成此教學課程，您必須先建立 Azure 地圖服務帳戶，並取得主要金鑰 (訂用帳戶金鑰)。 
 
-若要在 S1 定價層中建立 Azure 地圖服務帳戶訂用帳戶，請依照[建立帳戶](quick-demo-map-app.md#create-an-account-with-azure-maps)中的指示，建立使用 S1 定價層的 Azure 地圖服務帳戶訂用帳戶。 
+若要建立 Azure 地圖服務帳戶訂用帳戶，請依照[建立帳戶](quick-demo-map-app.md#create-an-account-with-azure-maps)中的指示操作。 您必須要有採用 S1 定價層的 Azure 地圖服務帳戶訂用帳戶。 
 
 若要取得帳戶的主要訂用帳戶金鑰，請依照[取得主要金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的指示操作。
 
@@ -47,7 +47,7 @@ Azure 地圖服務是以原生方式整合到 Azure 的地理空間服務 API �
 
 ## <a name="create-an-azure-notebook"></a>建立 Azure 筆記本
 
-若要遵循此教學課程，您必須建立 Azure 筆記本專案，並下載及執行 Jupyter 筆記本檔案。 此 Notebook 檔案包含 Python 程式碼，可實作本教學課程中的案例。 若要建立 Azure 筆記本專案，並將 Jupyter 筆記本文件上傳到其中，請執行下列動作：
+若要遵循此教學課程，您必須建立 Azure 筆記本專案，並下載及執行 Jupyter 筆記本檔案。 此 Notebook 檔案包含 Python 程式碼，可實作本教學課程中的案例。 若要建立 Azure Notebook 專案，並將 Jupyter Notebook 文件上傳到其中，請執行下列步驟：
 
 1. 前往 [Azure Notebooks](https://notebooks.azure.com) 並登入。 如需詳細資訊，請參閱[快速入門：登入並設定使用者識別碼](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks)。
 1. 在您的公用設定檔頁面上，選取 [我的專案]  。
@@ -64,7 +64,7 @@ Azure 地圖服務是以原生方式整合到 Azure 的地理空間服務 API �
 
 1. 選取 [建立]  。
 
-1. 專案建立之後，從 [Azure 地圖服務 Jupyter 筆記本存放庫](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook) \(英文\) 下載 [Jupyter 筆記本文件檔案](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb)。 
+1. 專案建立後，請從 [Azure 地圖服務 Jupyter Notebook 存放庫](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)下載 [Jupyter Notebook 文件檔案](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb)。
 
 1. 在 [我的專案]  頁面上的專案清單中選取您的專案，然後選取 [上傳]  以上傳 Jupyter 筆記本文件檔案。 
 
@@ -72,15 +72,15 @@ Azure 地圖服務是以原生方式整合到 Azure 的地理空間服務 API �
 
 1. 從您的電腦上傳檔案，然後選取 [完成]  。
 
-1. 成功完成上傳之後，您的檔案就會顯示在專案頁面上。 選取該檔案，以將其開啟為 Jupyter 筆記本。
+1. 成功完成上傳之後，您的檔案就會顯示在專案頁面上。 按兩下該檔案，使其以 Jupyter Notebook 的形式開啟。
 
-為協助您進一步了解在筆記本檔案中實作的功能，建議您在筆記本中就個別資料格逐一執行程式碼。 您可以選取筆記本應用程式頂端的 [執行]  按鈕，以執行每個資料格中的程式碼。
+為協助您進一步了解在 Notebook 檔案中實作的功能，請在 Notebook 中就個別資料格逐一執行程式碼。 您可以選取筆記本應用程式頂端的 [執行]  按鈕，以執行每個資料格中的程式碼。
 
   ![[執行] 按鈕](./media/tutorial-ev-routing/run.png)
 
 ## <a name="install-project-level-packages"></a>安裝專案層級套件
 
-若要在筆記本中執行程式碼，請執行下列動作，以在專案層級安裝套件：
+若要在 Notebook 中執行程式碼，請執行下列步驟，以在專案層級安裝套件：
 
 1. 從 [Azure 地圖服務 Jupyter 筆記本存放庫](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook) \(英文\) 下載 [*requirements.txt*](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) 檔案，然後將其上傳至您的專案。
 1. 在專案儀表板上，選取 [專案設定]  。 
@@ -95,9 +95,9 @@ Azure 地圖服務是以原生方式整合到 Azure 的地理空間服務 API �
 
 ## <a name="load-the-required-modules-and-frameworks"></a>載入必要的模組和架構
 
-若要載入所有必要的模組和架構，請執行下列指令碼：
+若要載入所有必要的模組和架構，請執行下列指令碼。
 
-```python
+```Python
 import time
 import aiohttp
 import urllib.parse
@@ -106,9 +106,9 @@ from IPython.display import Image, display
 
 ## <a name="request-the-reachable-range-boundary"></a>要求可抵達的範圍界限
 
-在我們的案例中，某家快遞公司的車隊編制了一些電動車。 在一天之中，電動車必須能夠在外充電而不需返回倉庫。 每當目前的剩餘電量低於一小時 (也就是，電動車的電量偏低) 時，您就要搜尋一組位於可抵達範圍內的充電站，並取得該範圍的界限資訊。 
+某家快遞公司的車隊編制了一些電動車。 在一天之中，電動車必須能夠在外充電而不需返回倉庫。 每當剩餘電量低於一小時，您就要搜尋一組位於可抵達範圍內的充電站。 基本上，當電量偏低時，您就會搜尋充電站。 而且，您也會取得該充電站範圍的界限資訊。 
 
-由於公司偏好使用兼顧經濟效益和速度的路線，因此要求的 routeType 為 *eco*。 下列指令碼會使用車輛的耗用量模型參數，來呼叫 Azure 地圖服務規劃路線服務的[取得路線範圍 API](https://docs.microsoft.com/rest/api/maps/route/getrouterange) \(英文\)。 指令碼接著會剖析回應以建立 geojson 格式的多邊形物件，其代表該輛車可抵達的最大範圍。
+由於公司偏好使用兼顧經濟效益和速度的路線，因此要求的 routeType 為 *eco*。 下列指令碼會呼叫 Azure 地圖服務規劃路線服務的[取得路線範圍 API](https://docs.microsoft.com/rest/api/maps/route/getrouterange)。 此指令碼會在車輛的耗電量模型中使用參數。 指令碼接著會剖析回應以建立 geojson 格式的多邊形物件，其代表該輛車可抵達的最大範圍。
 
 若要判斷電動車可抵達的範圍界限，請執行下列資料格中的指令碼：
 
@@ -173,7 +173,7 @@ for loc in range(len(searchPolyResponse["results"])):
 
 ## <a name="upload-the-reachable-range-and-charging-points-to-azure-maps-data-service"></a>將可抵達的範圍和充電地點上傳至 Azure 地圖服務資料服務
 
-您將會想要在地圖上將充電站和電動車可抵達的最大範圍界限視覺化。 若要這麼做，請使用[資料上傳 API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) \(英文\)，將界限資料和充電站當成 geojson 物件上傳至 Azure 地圖服務資料服務。 
+在地圖上，您可以將充電站和電動車可抵達的最大範圍界限視覺化。 若要這麼做，請將界限資料和充電站以 geojson 物件的形式上傳至 Azure 地圖服務資料服務。 使用[資料上傳 API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)。 
 
 若要將界限和充電地點資料上傳至 Azure 地圖服務資料服務，請執行下列兩個資料格：
 
@@ -239,7 +239,7 @@ poiUdid = getPoiUdid["udid"]
 
 ## <a name="render-the-charging-stations-and-reachable-range-on-a-map"></a>在地圖上轉譯充電站和可抵達的範圍
 
-當您將資料上傳至資料服務之後，執行下列指令碼來呼叫 Azure 地圖服務[取得地圖影像服務](https://docs.microsoft.com/rest/api/maps/render/getmapimage) \(英文\)，在靜態地圖影像上轉譯充電地點和可抵達的最大界限：
+將資料上傳至資料服務後，請呼叫 Azure 地圖服務的[取得地圖影像服務](https://docs.microsoft.com/rest/api/maps/render/getmapimage)。 此服務可藉由執行下列指令碼，用來在靜態地圖影像上轉譯充電地點和可抵達的最大界限：
 
 ```python
 # Get boundaries for the bounding box.
@@ -281,9 +281,9 @@ display(Image(poiRangeMap))
 
 ## <a name="find-the-optimal-charging-station"></a>尋找最適合前往的充電站
 
-當您決定了可抵達範圍內所有可能的充電站後，您想要知道可在最短的時間內抵達哪個充電站。 
+首先，您想要判斷可抵達範圍內的所有充電站。 然後，您想要知道其中哪個充電站可在最短的時間內到達。 
 
-下列指令碼會呼叫 Azure 地圖服務[矩陣路線規劃 API](https://docs.microsoft.com/rest/api/maps/route/postroutematrix) \(英文\)，其會傳回指定車輛位置前往每個充電站的行車時間和距離。 下一個資料格中的指令碼會剖析回應，以便依時間找到可抵達的最近充電站所在位置。
+下列指令碼會呼叫 Azure 地圖服務[矩陣路線規劃 API](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)。 該指令碼會傳回指定車輛位置前往每個充電站的行車時間和距離。 下一個資料格中的指令碼會剖析回應，以便依時間找到可抵達的最近充電站所在位置。
 
 若要找出可在最短時間內抵達的最近可抵達充電站，請執行下列資料格中的指令碼：
 
@@ -336,7 +336,7 @@ routeData = {
 
 ## <a name="visualize-the-route"></a>將路線視覺化
 
-若要協助將路線視覺化，您首先要使用 Azure 地圖服務[資料上傳 API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) \(英文\)，將路線資料當成 geojson 物件上傳至 Azure 地圖服務資料服務。 接著，呼叫轉譯服務[取得地圖影像 API](https://docs.microsoft.com/rest/api/maps/render/getmapimage) \(英文\)，以在地圖上轉譯該路線，並將其視覺化。
+若要協助將路線視覺化，您首先要將路線資料 geojson 物件的形式上傳至 Azure 地圖服務資料服務。 若要這麼做，請使用 Azure 地圖服務[資料上傳 API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)。 接著，請呼叫轉譯服務[取得地圖影像 API](https://docs.microsoft.com/rest/api/maps/render/getmapimage)，以在地圖上轉譯該路線，並將其視覺化。
 
 若要取得地圖上所轉譯路線的影像，請執行下列指令碼：
 

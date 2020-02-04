@@ -7,18 +7,18 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: bd1487d7922d8ea81c4b09773eed978e64cd9e8f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 648eb6cdb1787e1cbdf82bd8e5c8499b0dbaf02c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457231"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772265"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>教學課程：將 Azure 串流分析部署為 IoT Edge 模組
 
 許多 IoT 解決方案皆使用分析服務，來深入了解資料從 IoT 裝置送達雲端時的相關情形。 透過 Azure IoT Edge，您可以採取 [Azure 串流分析](https://docs.microsoft.com/azure/stream-analytics/)邏輯並將其運用於裝置本身。 藉由處理 Edge 上的遙測資料流，您將可減少上傳的資料量，並縮短將見解付諸行動的所需時間。
 
-Azure IoT Edge 和 Azure 串流分析可相互整合，讓您能夠直接在 Azure 入口網站中建立 Azure 串流分析作業，然後將其部署為 IoT Edge 模組，而無需額外的程式碼。  
+Azure IoT Edge 和 Azure 串流分析已整合，可簡化您的工作負載開發。 您可以在 Azure 入口網站中建立 Azure 串流分析作業，然後將其部署為 IoT Edge 模組 (不含額外程式碼)。  
 
 Azure 串流分析針對雲端中或 IoT Edge 上的資料，提供了豐富結構化的查詢語法。 如需詳細資訊，請參閱 [Azure 串流分析文件](../stream-analytics/stream-analytics-edge.md)。
 
@@ -33,7 +33,7 @@ Azure 串流分析針對雲端中或 IoT Edge 上的資料，提供了豐富結�
 
 <center>
 
-![圖表 - 教學課程架構、階段和部署 ASA 作業](./media/tutorial-deploy-stream-analytics/asa-architecture.png)
+![圖表 - 教學課程架構：階段和部署 ASA 作業](./media/tutorial-deploy-stream-analytics/asa-architecture.png)
 </center>
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -46,7 +46,7 @@ Azure IoT Edge 裝置：
 
 雲端資源：
 
-* Azure 中的免費或標準層 [IoT 中樞](../iot-hub/iot-hub-create-through-portal.md)。 
+* Azure 中的免費或標準層 [IoT 中樞](../iot-hub/iot-hub-create-through-portal.md)。
 
 ## <a name="create-an-azure-stream-analytics-job"></a>建立 Azure 串流分析作業
 
@@ -54,20 +54,20 @@ Azure IoT Edge 裝置：
 
 * 從您的 IoT Edge 裝置接收資料。
 * 查詢設定範圍外之值的遙測資料。
-* 根據查詢結果對 IoT Edge 裝置採取動作。 
+* 根據查詢結果對 IoT Edge 裝置採取動作。
 
 ### <a name="create-a-storage-account"></a>建立儲存體帳戶
 
-當您建立要在 IoT Edge 裝置上執行的 Azure 串流分析作業時，該作業必須以可從裝置呼叫的方式儲存。 您可以使用現有的 Azure 儲存體帳戶，或於此時建立新帳戶。 
+當您建立要在 IoT Edge 裝置上執行的 Azure 串流分析作業時，該作業必須以可從裝置呼叫的方式儲存。 您可以使用現有的 Azure 儲存體帳戶，或於此時建立新帳戶。
 
-1. 在 Azure 入口網站中，移至 [建立資源]   > [儲存體]   > [儲存體帳戶]  。 
+1. 在 Azure 入口網站中，移至 [建立資源]   > [儲存體]   > [儲存體帳戶]  。
 
 1. 提供下列值以建立您的儲存體帳戶：
 
    | 欄位 | 值 |
    | ----- | ----- |
    | 訂用帳戶 | 選擇與您的 IoT 中樞相同的訂用帳戶。 |
-   | 資源群組 | 建議您對於在 IoT Edge 快速入門和教學課程中建立的所有測試資源，使用相同的資源群組。 例如 **IoTEdgeResources**。 |
+   | 資源群組 | 建議您對 IoT Edge 快速入門和教學課程中的所有測試資源，使用相同的資源群組。 例如 **IoTEdgeResources**。 |
    | 名稱 | 提供儲存體帳戶的唯一名稱。 |
    | Location | 選擇接近您的位置。 |
 
@@ -88,7 +88,7 @@ Azure IoT Edge 裝置：
    | 資源群組 | 建議您對於在 IoT Edge 快速入門和教學課程中建立的所有測試資源，使用相同的資源群組。 例如 **IoTEdgeResources**。 |
    | Location | 選擇接近您的位置。 |
    | 裝載環境 | 選取 [邊緣]  。 |
- 
+
 1. 選取 [建立]  。
 
 ### <a name="configure-your-job"></a>設定您的作業
@@ -105,7 +105,7 @@ Azure IoT Edge 裝置：
 
 1. 從下拉式清單中選擇 [Edge 中樞]  。
 
-1. 在 [新增輸入]  窗格中，輸入 [溫度]  作為輸入的別名。 
+1. 在 [新增輸入]  窗格中，輸入 [溫度]  作為輸入的別名。
 
 1. 將其他欄位保留為預設值，然後選取 [儲存]  。
 
@@ -152,7 +152,7 @@ Azure IoT Edge 裝置：
 
 ## <a name="deploy-the-job"></a>部署作業
 
-現在您已經準備好要在 IoT Edge 裝置上部署 Azure 串流分析作業。 
+現在您已經準備好要在 IoT Edge 裝置上部署 Azure 串流分析作業。
 
 在本節中，您會使用 Azure 入口網站中的 [設定模組]  精靈建立*部署資訊清單*。 部署資訊清單是一個 JSON 檔案，用以說明將部署到裝置的所有模組、用來儲存模組映像的容器登錄、管理模組的方式，以及模組彼此通訊的方式。 IoT Edge 裝置會從 IoT 中樞擷取其部署資訊清單，然後使用其中的資訊來部署和設定它所有已指派的模組。
 

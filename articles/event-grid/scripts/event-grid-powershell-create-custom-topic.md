@@ -1,23 +1,22 @@
 ---
 title: Azure PowerShell 指令碼範例 - 建立自訂主題 | Microsoft Docs
-description: Azure PowerShell 指令碼範例 - 建立自訂主題
+description: 本文提供範例 Azure PowerShell 指令碼，示範如何建立事件方格自訂主題。
 services: event-grid
 documentationcenter: na
-author: tfitzmac
-manager: timlt
+author: spelluru
 ms.service: event-grid
 ms.devlang: powershell
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/10/2018
+ms.date: 01/23/2020
 ms.author: tomfitz
-ms.openlocfilehash: 20ad58c2e7209f8bed8014d5ce1dff094907590c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 900f31ff87e6a588fc1d1e3efd854437d2c8c1b9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66117160"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719937"
 ---
 # <a name="create-event-grid-custom-topic-with-powershell"></a>使用 PowerShell 建立 Event Grid 自訂主題
 
@@ -35,7 +34,7 @@ ms.locfileid: "66117160"
 
 此指令碼會使用下列命令來建立自訂主題。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [New-AzEventGridTopic](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridtopic) | 建立 Event Grid 自訂主題。 |
 

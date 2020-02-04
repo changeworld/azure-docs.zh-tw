@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
 ms.custom: include file
-ms.date: 01/14/2020
+ms.date: 01/23/2020
 ms.author: diberry
-ms.openlocfilehash: bf09d8e9b2dd8cebcf3ef8414afcc8ac031f4cdf
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 69814c89c1c44a63febbcac04a4d161cd4c0921f
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170493"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774242"
 ---
 使用適用於 Python 的 Language Understanding (LUIS) 撰寫用戶端程式庫可以：
 
@@ -187,3 +187,7 @@ LUIS 應用程式模型中的主要物件為意圖。 意圖會與使用者語�
 ```console
 python quickstart-file.py
 ```
+
+## <a name="clean-up-resources"></a>清除資源
+
+在完成預測後，請刪除檔案及其子目錄，以清除本快速入門中的工作。

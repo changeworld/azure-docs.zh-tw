@@ -1,6 +1,6 @@
 ---
-title: 快速入門：如何將服務匯流排佇列搭配 PHP 使用
-description: 快速入門：了解如何使用 Azure 中的服務匯流排佇列。 程式碼範例以 PHP 撰寫。
+title: 如何透過 PHP 使用 Azure 服務匯流排佇列
+description: 在本教學課程中，您將了解如何建立 PHP 應用程式以對服務匯流排佇列傳送和接收訊息。
 services: service-bus-messaging
 documentationcenter: php
 author: axisc
@@ -12,21 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: d576c269f4178c7543327c6b75f46f5487d7a205
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: fcb735d81cac587c75a133ad582f2a839551dcfa
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719198"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760686"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-php"></a>快速入門：如何將服務匯流排佇列搭配 PHP 使用
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
 在本教學課程中，您將了解如何建立 PHP 應用程式以對服務匯流排佇列傳送和接收訊息。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 1. Azure 訂用帳戶。 若要完成此教學課程，您需要 Azure 帳戶。 您可以[啟用自己的 MSDN 訂戶權益](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)或是[註冊免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
 2. 如果您沒有可用的佇列，請執行[使用 Azure 入口網站建立服務匯流排佇列](service-bus-quickstart-portal.md)一文中的步驟，以建立佇列。
     1. 閱讀服務匯流排**佇列**的快速**概觀**。 

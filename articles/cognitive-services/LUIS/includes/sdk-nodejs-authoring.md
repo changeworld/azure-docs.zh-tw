@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
 ms.custom: include file
-ms.date: 01/14/2020
+ms.date: 01/23/2020
 ms.author: diberry
-ms.openlocfilehash: 65611dfb171008deab9d1d6cb15f0470fcbc2753
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 58ee74f7b01738e67f9fddd39eb4eee59cdb65b6
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170489"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774200"
 ---
 使用適用於 Node.js 的 Language Understanding (LUIS) 撰寫用戶端程式庫可以：
 
@@ -25,7 +25,7 @@ ms.locfileid: "76170489"
 * 定型和發佈應用程式。
 * 刪除應用程式
 
-[參考文件](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-authoring) | [撰寫套件 (NPM)](https://www.npmjs.com/package/azure-cognitiveservices-luis-authoring) | [範例](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/luis_authoring_quickstart.js)
+[參考文件](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-authoring) | [撰寫套件 (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)、[執行階段套件 (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime) | [範例](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/luis_authoring_quickstart.js)
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -125,7 +125,7 @@ Language Understanding (LUIS) 撰寫用戶端是向 Azure 進行驗證的 [LUISA
 
 ## <a name="authenticate-the-client"></a>驗證用戶端
 
-使用您的金鑰建立 [CognitiveServicesCredentials]() 物件，並使用該物件與您的端點建立 [LUISAuthoringClient]() 物件。
+使用您的金鑰建立 [CognitiveServicesCredentials](https://docs.microsoft.com/javascript/api/@azure/ms-rest-js/apikeycredentials?view=azure-node-latest) 物件，並使用該物件與您的端點建立 [LUISAuthoringClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/luisauthoringclient?view=azure-node-latest) 物件。
 
 [!code-javascript[Create LUIS client object](~/cognitive-services-quickstart-code/javascript/LUIS/luis_authoring_quickstart.js?name=AuthoringCreateClient)]
 

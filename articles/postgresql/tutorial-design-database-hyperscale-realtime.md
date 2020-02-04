@@ -8,16 +8,16 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: e38de89902c46c6a77060d0d1e2532ab5bb59bb7
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f4eeb646de8b68c2c8d30586d0c75cece5317e40
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978095"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716324"
 ---
 # <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus"></a>教學課程：使用適用於 PostgreSQL 的 Azure 資料庫 – Hyperscale (Citus) 設計即時分析儀表板
 
-在此教學課程中，您可以使用適用於 PostgreSQL 的 Azure 資料庫 – Hyperscale (Citus) 了解如何：
+在本教學課程中，您可以使用適用於 PostgreSQL 的 Azure 資料庫 – 超大規模 (Citus) 了解如何：
 
 > [!div class="checklist"]
 > * 建立 Hyperscale (Citus) 伺服器群組
@@ -28,13 +28,13 @@ ms.locfileid: "74978095"
 > * 查詢原始和彙總資料
 > * 使資料過期
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [azure-postgresql-hyperscale-create-db](../../includes/azure-postgresql-hyperscale-create-db.md)]
 
 ## <a name="use-psql-utility-to-create-a-schema"></a>使用 psql 公用程式建立結構描述
 
-使用 psql 連線到適用於 PostgreSQL 的 Azure 資料庫 - Hyperscale (Citus) 後，您可以完成一些基本工作。 本教學課程會引導您擷取 Web 分析中的流量資料，然後彙總資料，以便根據該資料提供即時儀表板。
+使用 psql 連線到適用於 PostgreSQL 的 Azure 資料庫 - 超大規模 (Citus) 後，您可以完成一些基本工作。 本教學課程會引導您擷取 Web 分析中的流量資料，然後彙總資料，以便根據該資料提供即時儀表板。
 
 我們會建立一個資料表，該資料表將取用所有未經處理的 Web 流量資料。 在 psql 終端機中執行下列命令：
 
@@ -196,7 +196,7 @@ $$ LANGUAGE plpgsql;
 SELECT rollup_http_request();
 ```
 
-然後將資料放在預先彙總的表單中，我們即可查詢彙總資料表，以取得與稍早相同的報告。 請執行下列查詢：
+然後將資料放在預先彙總的表單中，我們即可查詢彙總資料表，以取得與稍早相同的報告。 執行下列查詢：
 
 ```sql
 SELECT site_id, ingest_time as minute, request_count,
@@ -222,8 +222,8 @@ DELETE FROM http_request_1min WHERE ingest_time < now() - interval '1 month';
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已了解如何佈建 Hyperscale (Citus) 伺服器群組。 您已使用 psql 連線到該群組、建立結構描述，以及分散資料。 您已了解如何查詢未經處理格式的資料、定期彙總該資料、查詢彙總的資料表，以及使舊資料過期。
+在本教學課程中，您已了解如何佈建 Hyperscale (Citus) 伺服器群組。 您已使用 psql 連線到該群組、建立結構描述，並散發資料。 您已了解如何查詢未經處理格式的資料、定期彙總該資料、查詢彙總的資料表，以及使舊資料過期。
 
-接下來，了解超大規模的概念。
+接下來，請了解超大規模的概念。
 > [!div class="nextstepaction"]
 > [Hyperscale 節點類型](https://aka.ms/hyperscale-concepts)

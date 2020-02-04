@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: fbda2f645308e30a6f408335b7a1b37095522921
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 5082ed06b4ce5baf3869fc035654be3c7a45f29f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003312"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845300"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-net"></a>教學課程：在 .NET 中搭配使用 Azure Key Vault 與 Windows 虛擬機器
 
@@ -37,7 +37,7 @@ Azure Key Vault 可協助您保護秘密，例如，API 金鑰、存取應用程
 
 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若為 Windows、Mac 和 Linux：
   * [Git](https://git-scm.com/downloads)
@@ -181,10 +181,11 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 ```
 
-編輯類別檔案，使其包含下列雙步驟程序中的程式碼：
+編輯類別檔案，使其包含下列三步驟程序中的程式碼：
 
 1. 從 VM 上的本機 MSI 端點擷取權杖。 這樣做也會從 Azure AD 擷取權杖。
-1. 將權杖傳遞給金鑰保存庫，然後擷取祕密。 
+2. 將權杖傳遞給金鑰保存庫，然後擷取祕密。 
+3. 將保存庫名稱和密碼名稱新增至要求。
 
 ```csharp
  class Program
@@ -205,9 +206,10 @@ using Newtonsoft.Json.Linq;
             WebResponse response = request.GetResponse();
             return ParseWebResponse(response, "access_token");
         }
-
+        
         static string FetchSecretValueFromKeyVault(string token)
         {
+            //Step 3: Add the vault name and secret name to the request.
             WebRequest kvRequest = WebRequest.Create("https://<YourVaultName>.vault.azure.net/secrets/<YourSecretName>?api-version=2016-10-01");
             kvRequest.Headers.Add("Authorization", "Bearer "+  token);
             WebResponse kvResponse = kvRequest.GetResponse();

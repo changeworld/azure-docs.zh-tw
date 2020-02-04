@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 實驗室服務設定實驗室帳戶 | Microsoft Docs
-description: 在本教學課程中，您會使用 Azure Lab Services 來設定實驗室帳戶。
+description: 了解如何使用 Azure Lab Services 設定實驗室帳戶、新增實驗室建立者，以及指定實驗室帳戶中的實驗室所要使用的 Marketplace 映像。
 services: devtest-lab, lab-services, virtual-machines
 documentationcenter: na
 author: spelluru
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/24/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 8c252870a82a60a561f12fab9d728c028458212a
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 62ccda96563a53ebc77337bb2f89cfddd4410a26
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562097"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719036"
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>教學課程：使用 Azure Lab Services 設定實驗室帳戶
 在 Azure Lab Services 中，實驗室帳戶會作為中心帳戶，用來管理組織的實驗室。 在您的實驗室帳戶中，您可以為他人授與建立實驗室的權限，以及設定對實驗室帳戶下的所有實驗室皆適用的原則。 在本教學課程中，請了解如何以實驗室管理員的身分建立實驗室帳戶。 
