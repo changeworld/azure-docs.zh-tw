@@ -230,7 +230,7 @@ namespace ExampleCustomCode.Serialization
 * 美國東部
 * 美國西部
 * 美國東部 2
-* 西歐
+* 歐洲西部
 
 您可以[要求](https://aka.ms/ccodereqregion)其他區域的支援。
 

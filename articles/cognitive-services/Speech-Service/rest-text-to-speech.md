@@ -59,7 +59,7 @@ ms.locfileid: "74975817"
 | 美國中南部 | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 東南亞 | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 英國南部 | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| 西歐 | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| 歐洲西部 | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 美國西部 | `https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 美國西部 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 

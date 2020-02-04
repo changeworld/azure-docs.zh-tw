@@ -167,7 +167,7 @@ Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationInte
 Azure SQL Database 超大規模資料庫層目前可在下欄區域使用：
 
 - 澳大利亞東部
-- 澳洲東南部
+- 澳大利亞東南部
 - 巴西南部
 - 加拿大中部
 - 美國中部
@@ -188,7 +188,7 @@ Azure SQL Database 超大規模資料庫層目前可在下欄區域使用：
 - 東南亞
 - 英國南部
 - 英國西部
-- 西歐
+- 歐洲西部
 - 美國西部
 - 美國西部 2
 

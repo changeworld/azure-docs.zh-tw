@@ -38,8 +38,12 @@
           href: ./ag/application-gateway-crs-rulegroups-rules.md
         - name: 自訂規則概觀
           href: ./ag/custom-waf-rules-overview.md
+        - name: 地區比對自訂規則
+          href: ./ag/geomatch-custom-rules.md
         - name: 要求大小限制與排除清單
           href: ./ag/application-gateway-waf-configuration.md
+        - name: WAF 原則概觀
+          href: ./ag/policy-overview.md
     - name: Front Door
       items:
         - name: 自訂規則

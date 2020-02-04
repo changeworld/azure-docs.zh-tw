@@ -112,7 +112,7 @@
               href: azure-create-vm.md
             - name: 在 Azure 中管理 CloudSimple VM
               href: azure-manage-vm.md
-    - name: 使用說明指南
+    - name: 操作指南
       items:
         - name: 保護您的環境
           href: private-cloud-secure.md
@@ -136,6 +136,8 @@
               href: on-premises-dns-setup.md
             - name: 設定高可用性的站對站 VPN 連線
               href: high-availability-vpn-connection.md
+            - name: 內部部署的私人雲端 DNS 設定
+              href: private-cloud-dns-forwarding.md
         - name: VMware 平台
           items:
             - name: 了解私人雲端權限模型
