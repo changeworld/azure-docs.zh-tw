@@ -72,7 +72,7 @@ ms.locfileid: "75982267"
 
 |    **Resource Manager 區域名稱**       |    **使用情況詳細資料中的資源位置**    |
 |--------------------------|------------------------------------------|
-|    australiaeast         |    澳洲東部                               |
+|    australiaeast         |    澳大利亞東部                               |
 |    australiasoutheast    |    澳洲東南部                          |
 |    brazilsouth           |    巴西南部                              |
 |    CanadaCentral         |    加拿大中部                            |
@@ -88,7 +88,7 @@ ms.locfileid: "75982267"
 |    GermanyNortheast      |    德國東北部                          |
 |    japaneast             |    日本東部                               |
 |    japanwest             |    日本西部                               |
-|    KoreaCentral          |    韓國中部                            |
+|    KoreaCentral          |    南韓中部                            |
 |    KoreaSouth            |    韓國南部                              |
 |    northcentralus        |    美國中北部                      |
 |    northeurope           |    北歐                          |

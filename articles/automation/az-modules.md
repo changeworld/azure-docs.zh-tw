@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 02/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8c832982a5525b0296155197d89684932cebaa95
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dfbf54c19aef00cbda886a4531797cda7ef3a191
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75418832"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986099"
 ---
 # <a name="az-module-support-in-azure-automation"></a>Azure 自動化中的 Az 模組支援
 
@@ -18,7 +18,7 @@ Azure 自動化支援在您的 Runbook 中使用 [Azure Powershell Az 模組](/p
 
 ## <a name="considerations"></a>考量
 
-在 Azure 自動化中使用 Az 模組時有許多要考量的事項。 Runbook 和模組可以由您的自動化帳戶中較高層級的解決方案使用。 編輯 Runbook 或升級模組可能會導致 Runbook 的問題。 您應該在匯入新的 `Az` 模組之前，在個別自動化帳戶中小心地測試所有 Runbook 和解決方案。 對模組的任何修改都可能會對[啟動/停止](automation-solution-vm-management.md)解決方案造成負面影響。 建議您不要在包含任何解決方案的自動化帳戶中更改模組和 Runbook。 此行為不是 Az 模組的特定項目。 將任何變更導入到您的自動化帳戶時，應該將此行為列入考量。
+在 Azure 自動化中使用 Az 模組時有許多要考量的事項。 Runbook 和模組可以由您的自動化帳戶中較高層級的解決方案使用。 編輯 Runbook 或升級模組可能會導致 Runbook 的問題。 您應該在匯入新的 `Az` 模組之前，在個別自動化帳戶中小心地測試所有 Runbook 和解決方案。 對模組的任何修改都可能會對[啟動/停止](automation-solution-vm-management.md)解決方案造成負面影響。 我們不建議在包含任何解決方案的自動化帳戶中改變模組和 runbook。 此行為不是 Az 模組的特定項目。 將任何變更導入到您的自動化帳戶時，應該將此行為列入考量。
 
 在您的自動化帳戶中匯入 `Az` 模組，不會自動在 Runbook 使用的 PowerShell 工作階段中匯入模組。 模組會在下列情況下匯入到 PowerShell 工作階段：
 

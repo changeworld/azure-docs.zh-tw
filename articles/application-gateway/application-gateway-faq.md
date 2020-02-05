@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: 14fe8780bb7919d942da186698275d5199f4586e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9d47986df9b9cbc6b8519aa0466b3434d6216e72
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770079"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985997"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>關於應用程式閘道的常見問題
 
@@ -68,7 +68,9 @@ Azure 應用程式閘道會以服務形式提供應用程式傳遞控制器（AD
 
 ### <a name="what-are-the-settings-for-keep-alive-timeout-and-tcp-idle-timeout"></a>Keep-alive timeout 和 TCP 閒置超時的設定為何？
 
- 在應用程式閘道 v1 SKU 中，keep-alive 超時時間為120秒。 V2 SKU 的保持連線超時時間為75秒。 在應用程式閘道的前端虛擬 IP （VIP）上，TCP 閒置超時是4分鐘的預設值。
+*Keep-alive timeout*會控制應用程式閘道等待用戶端在持續連線上傳送另一個 HTTP 要求的時間長度，然後再重複使用或關閉它。 *Tcp 閒置時間*會控制在沒有活動的情況下，tcp 連線保持開啟的時間長度。 
+
+應用程式閘道 v1 SKU 中的*保持連線超時時間*為120秒，而在 v2 sku 中為75秒。 在應用程式閘道 v1 和 v2 SKU 的前端虛擬 IP （VIP）上， *TCP 閒置超時*是4分鐘的預設值。 
 
 ### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>IP 或 DNS 名稱是否會在應用程式閘道的存留期內變更？
 

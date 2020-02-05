@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: seodec18
-ms.openlocfilehash: 777fa7caa80371592f93ee6f7458a7669fe6698f
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 433f8fa36f17f7cb145261273586a684658acda5
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121353"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985929"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>在 Azure App Service 中針對應用程式啟用診斷記錄
 ## <a name="overview"></a>概觀
@@ -26,9 +26,9 @@ Azure 提供內建診斷功能，可協助對 [App Service 應用程式](overvie
 |類型|平台|位置|說明|
 |-|-|-|-|
 | 應用程式記錄檔 | Windows、Linux | App Service 檔案系統和/或 Azure 儲存體 blob | 記錄您的應用程式代碼所產生的訊息。 這些訊息可以由您選擇的 web 架構，或直接使用您語言的標準記錄模式來產生。 每則訊息會指派下列其中一個類別：**重大**、**錯誤**、**警告**、**資訊**、 **Debug**和**Trace**。 當您啟用應用程式記錄時，您可以藉由設定嚴重性層級，來選取您想要記錄的詳細資訊。|
-| Web 伺服器記錄| Windows | App Service 檔案系統或 Azure 儲存體 blob| [W3C 擴充記錄檔格式](/windows/desktop/Http/w3c-logging)的原始 HTTP 要求資料。 每個記錄訊息都包含 HTTP 方法、資源 URI、用戶端 IP、用戶端埠、使用者代理程式、回應碼等資料。 |
+| Web 服務器記錄| Windows | App Service 檔案系統或 Azure 儲存體 blob| [W3C 擴充記錄檔格式](/windows/desktop/Http/w3c-logging)的原始 HTTP 要求資料。 每個記錄訊息都包含 HTTP 方法、資源 URI、用戶端 IP、用戶端埠、使用者代理程式、回應碼等資料。 |
 | 詳細的錯誤訊息| Windows | App Service 檔案系統 | 已傳送至用戶端瀏覽器的 *.htm*錯誤頁面複本。 基於安全考慮，詳細的錯誤網頁不應傳送至生產環境中的用戶端，但 App Service 可以在每次發生具有 HTTP 代碼400或更新版本的應用程式錯誤時儲存錯誤頁面。 該頁面可能包含有助於判斷伺服器傳回錯誤碼之原因的資訊。 |
-| 失敗的要求追蹤 | Windows | App Service 檔案系統 | 失敗要求的詳細追蹤資訊，包括用來處理要求的 IIS 元件追蹤，以及每個元件所花費的時間。 如果您想要改善網站效能或隔離特定的 HTTP 錯誤，這會相當有用。 會針對每個失敗的要求產生一個資料夾，其中包含 XML 記錄檔，以及用來查看記錄檔的 XSL 樣式表單。 |
+| 失敗要求的追蹤 | Windows | App Service 檔案系統 | 失敗要求的詳細追蹤資訊，包括用來處理要求的 IIS 元件追蹤，以及每個元件所花費的時間。 如果您想要改善網站效能或隔離特定的 HTTP 錯誤，這會相當有用。 會針對每個失敗的要求產生一個資料夾，其中包含 XML 記錄檔，以及用來查看記錄檔的 XSL 樣式表單。 |
 | 部署記錄 | Windows、Linux | App Service 檔案系統 | 當您將內容發佈至應用程式時，會記錄。 部署記錄會自動進行，而且沒有可設定的部署記錄。 它可協助您判斷部署失敗的原因。 例如，如果您使用[自訂部署腳本](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)，您可能會使用部署記錄來判斷腳本失敗的原因。 |
 
 > [!NOTE]
@@ -188,7 +188,7 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 | AppServiceHTTPLogs | 是 | 是 | Web 伺服器記錄 |
 | AppServiceEnvironmentPlatformLogs | 是 | 是 | App Service 環境：調整、設定變更及狀態記錄|
 | AppServiceAuditLogs | 是 | 是 | 透過 FTP 和 Kudu 登入活動 |
-| AppServiceFileAuditLogs | TBA | TBA | 透過 FTP 和 Kudu 的檔案變更 |
+| AppServiceFileAuditLogs | TBA | 是 | 透過 FTP 和 Kudu 的檔案變更 |
 | AppServiceAppLogs | TBA | JAVA SE & Tomcat | 應用程式記錄 |
 
 ## <a name="nextsteps"></a> 後續步驟

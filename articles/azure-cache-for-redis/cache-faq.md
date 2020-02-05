@@ -160,7 +160,7 @@ Azure Cache for Redis 會以廣受使用的開放原始碼軟體 [Redis](https:/
 | 雲端   | Redis 的 DNS 尾碼            |
 |---------|---------------------------------|
 | 公用  | *.redis.cache.windows.net       |
-| 美國政府  | *.redis.cache.usgovcloudapi.net |
+| US Gov  | *.redis.cache.usgovcloudapi.net |
 | 德國 | *.redis.cache.cloudapi.de       |
 | 中國   | *.redis.cache.chinacloudapi.cn  |
 

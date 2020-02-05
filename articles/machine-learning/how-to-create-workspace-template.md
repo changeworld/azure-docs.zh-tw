@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 11/04/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 6cd450ac18007e31d9d8144fdb0e8554dd31c363
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b8584a77eaf9f8db13c948051c34b18236e2cc1a
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75968653"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986371"
 ---
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -55,6 +55,9 @@ ms.locfileid: "75968653"
     範本將會針對大部分的資源使用您選取的位置。 例外狀況是 Application Insights 服務，該服務在其他服務可用的所有位置都無法使用。 如果您選取的位置無法使用，服務會建立在美國中南部位置。
 
 * **工作區名稱**是 Azure Machine Learning 工作區的易記名稱。
+
+    > [!NOTE]
+    > 工作區名稱不區分大小寫。
 
     其他服務的名稱會隨機產生。
 

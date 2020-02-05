@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 0e49a5c8edd074c71d5972ee8d9c2e81f9c512ea
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 22ed36c3c55d55ab9a733c2a0552f0ac3dcce1f5
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453956"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987647"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>從 CSP 入口網站建立和管理 Azure IoT Central 應用程式
 
@@ -39,9 +39,11 @@ Azure IoT Central 會列為可供系統管理員使用的服務。 選取頁面�
 
 ![建立 CSP 的應用程式頁面](media/howto-create-application-csp/image4-1.png)
 
-## <a name="payment-plan"></a>付款計劃
+![建立 Csp 帳單資訊的應用程式頁面](media/howto-create-application-csp/image4-2.png)
 
-您只能以 CSP 的身分，建立隨用隨付應用程式。 若要為客戶展示 Azure IoT Central，您可以個別建立試用應用程式。 在 [Azure IoT Central 定價頁面](https://azure.microsoft.com/pricing/details/iot-central/)上深入了解試用版和隨用隨付應用程式。
+## <a name="pricing-plan"></a>定價方案
+
+您只能建立使用標準定價方案作為 CSP 的應用程式。 若要展示 Azure IoT Central 給您的客戶，您可以建立應用程式來分別使用免費定價方案。 若要深入瞭解免費和標準定價方案，請在[Azure IoT Central 定價頁面](https://azure.microsoft.com/pricing/details/iot-central/)。
 
 ## <a name="application-name"></a>應用程式名稱
 
