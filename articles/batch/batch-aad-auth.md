@@ -3,8 +3,8 @@ title: 使用 Azure Active Directory 驗證 Azure Batch 服務
 description: Batch 支援 Azure AD 從 Batch 服務進行驗證。 瞭解如何以兩種方式的其中一種進行驗證。
 services: batch
 documentationcenter: .net
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 01/28/2020
-ms.author: jushiman
-ms.openlocfilehash: c855293a64ed63fdcb8a5ce797497dec428ab5ae
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.author: labrenne
+ms.openlocfilehash: f56c05f64086ac2e98e69d6b21fae7a0a63b5006
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935299"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019514"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>使用 Active Directory 驗證 Batch 服務解決方案
 

@@ -3,20 +3,22 @@ title: 使用自訂規則和通知擴充 Azure IoT Central |Microsoft Docs
 description: 身為解決方案開發人員，請設定 IoT Central 應用程式，以在裝置停止傳送遙測時傳送電子郵件通知。 此解決方案使用 Azure 串流分析、Azure Functions 和 SendGrid。
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/23/2019
+ms.date: 12/02/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 9042f3d34ee550af50e043167db6339f36b71bd0
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 541cbc0c34a691f51c1a3a53f71920379c447f5d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987589"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022438"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>使用串流分析、Azure Functions 和 SendGrid 的自訂規則擴充 Azure IoT Central
+
+
 
 本操作指南示範如何以解決方案開發人員的身分，以自訂規則和通知擴充您的 IoT Central 應用程式。 此範例顯示當裝置停止傳送遙測時，傳送通知給操作員。 解決方案會使用[Azure 串流分析](https://docs.microsoft.com/azure/stream-analytics/)查詢來偵測裝置何時停止傳送遙測。 串流分析作業會使用[Azure Functions](https://docs.microsoft.com/azure/azure-functions/) ，以使用[SendGrid](https://sendgrid.com/docs/for-developers/partners/microsoft-azure/)來傳送通知電子郵件。
 
@@ -41,14 +43,16 @@ ms.locfileid: "76987589"
 | 設定 | 值 |
 | ------- | ----- |
 | 定價方案 | Standard |
-| 應用程式範本 | 繼承應用程式 |
+| 應用程式範本 | 存放區內分析-條件監視 |
 | 應用程式名稱 | 接受預設值，或選擇您自己的名稱 |
 | URL | 接受預設值，或選擇您自己唯一的 URL 前置詞 |
 | 目錄 | 您的 Azure Active Directory 租使用者 |
 | Azure 訂用帳戶 | 您的 Azure 訂用帳戶 |
-| 地區 | 美國 |
+| 地區 | 您最接近的區域 |
 
 本文中的範例和螢幕擷取畫面會使用**美國**地區。 選擇接近您的位置的位置，並確定您在相同的區域中建立所有資源。
+
+此應用程式範本包含兩個傳送遙測的模擬控溫器裝置。
 
 ### <a name="resource-group"></a>資源群組
 
@@ -237,7 +241,7 @@ test-device-3   2019-05-02T14:24:28.919Z
 
 此解決方案使用串流分析查詢來偵測裝置停止傳送遙測超過120秒的時間。 查詢會使用來自事件中樞的遙測作為其輸入。 作業會將查詢結果傳送至函數應用程式。 在本節中，您會設定串流分析作業：
 
-1. 在 Azure 入口網站中，流覽至您的串流分析作業，在 [**工作拓撲**] 下選取 [**輸入**]，選擇 [ **+ 新增串流輸入**]，然後選擇 [**事件中樞**]。
+1. 在 Azure 入口網站中，流覽至您的串流分析作業，在 **工作拓撲** 下選取 **輸入**，選擇  **+ 新增串流輸入**，然後選擇 **事件中樞**。
 1. 使用下表中的資訊，使用您先前建立的事件中樞來設定輸入，然後選擇 [**儲存**]：
 
     | 設定 | 值 |
@@ -307,7 +311,7 @@ test-device-3   2019-05-02T14:24:28.919Z
 
 在[Azure IoT Central 應用程式管理員](https://aka.ms/iotcentral)網站上，流覽至您從 Contoso 範本建立的 IoT Central 應用程式。 在本節中，您會設定應用程式，以將遙測從模擬的裝置串流至您的事件中樞。 若要設定匯出：
 
-1. 流覽至 **連續資料匯出** 頁面，選取  **+ 新增**，然後**Azure 事件中樞**。
+1. 流覽至 **資料匯出** 頁面，選取  **+ 新增**，然後**Azure 事件中樞**。
 1. 使用下列設定來設定匯出，然後選取 [**儲存**]：
 
     | 設定 | 值 |
@@ -328,15 +332,15 @@ test-device-3   2019-05-02T14:24:28.919Z
 
 若要測試解決方案，您可以停用從 IoT Central 到模擬的已停止裝置的連續資料匯出：
 
-1. 在您的 IoT Central 應用程式中，流覽至 [**連續資料匯出**] 頁面，然後選取 [**匯出至事件中樞**匯出設定]。
+1. 在您的 IoT Central 應用程式中，流覽至 [**資料匯出**] 頁面，然後選取 [**匯出至事件中樞**匯出設定]。
 1. 將 [**已啟用**] 設定為**關閉**，然後選擇 [**儲存**]。
 1. 至少兩分鐘後，收件**電子郵件地址就會**收到一或多個類似下列範例內容的電子郵件：
 
     ```txt
     The following device(s) have stopped sending telemetry:
 
-    Device ID   Time
-    7b169aee-c843-4d41-9f25-7a02671ee659    2019-05-09T14:28:59.954Z
+    Device ID         Time
+    Thermostat-Zone1  2019-11-01T12:45:14.686Z
     ```
 
 ## <a name="tidy-up"></a>整理一下

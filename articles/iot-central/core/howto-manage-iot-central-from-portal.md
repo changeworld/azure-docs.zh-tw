@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 10/02/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 1e206d9a1b14fc8ff1b92e4eb7217824d81212cf
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 90bccf76b4c98c732cb926bb4252654d20478412
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990095"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018970"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>從 Azure 入口網站管理 IoT Central
 
@@ -41,14 +41,9 @@ ms.locfileid: "76990095"
 
 填寫表單中的所有欄位。 此表單類似于您在[Azure IoT Central 應用程式管理員](https://aka.ms/iotcentral)網站上填寫來建立應用程式的表單。 如需詳細資訊，請參閱[建立 IoT Central 應用程式](quick-deploy-iot-central.md)快速入門。
 
-您可以選取 [**繼承應用程式**] 作為應用程式範本，以建立具有正式運作功能的 IoT Central 應用程式，所有其他應用程式範本都會使用公開預覽功能。
-
 ![建立 IoT Central 表單](media/howto-manage-iot-central-from-portal/image6a.png)
 
-**位置**是您要在其中建立應用程式的[地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)。 一般而言，您應選擇實際上與您的裝置最接近的位置，以取得最佳效能。 Azure IoT Central 目前適用於**美國**、**澳洲**、**亞太地區**或**歐洲**。  選擇位置後，即無法將應用程式移到不同的位置。
-
-> [!NOTE]
-> 預覽應用程式範本目前僅適用于**歐洲**和**美國**地區。
+**Location**是您想要在其中建立應用程式的[地理](https://azure.microsoft.com/global-infrastructure/geographies/)位置。 一般而言，您應選擇實際上與您的裝置最接近的位置，以取得最佳效能。 Azure IoT Central 目前適用於**美國**、**澳洲**、**亞太地區**或**歐洲**。  選擇位置後，即無法將應用程式移到不同的位置。
 
 
 填寫所有欄位之後，請選取 [**建立**]。

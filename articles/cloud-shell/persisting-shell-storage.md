@@ -69,7 +69,7 @@ Cloud Shell 電腦存在於下列區域：
 |區域|地區|
 |---|---|
 |美洲|美國東部、美國中南部、美國西部|
-|歐洲|北歐、西歐|
+|歐洲|歐洲北部、歐洲西部|
 |亞太地區|印度中部、東南亞|
 
 ## <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>使用 Azure 資源原則限制資源建立

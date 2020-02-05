@@ -4,12 +4,12 @@ description: 瞭解 MARS 代理程式如何支援備份案例
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: d558a19b3025ab1400e873f97b0ce5e5a860c75a
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 348980b840b814c09ce46627f286489d4caa9f8f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902868"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023951"
 ---
 # <a name="about-the-microsoft-azure-recovery-services-mars-agent"></a>關於 Microsoft Azure 復原服務（MARS）代理程式
 
@@ -58,8 +58,7 @@ MARS 代理程式支援下列還原案例：
 ### <a name="additional-scenarios"></a>其他案例
 -   **備份 azure 虛擬機器中的特定檔案和資料夾**：備份 azure 虛擬機器（vm）的主要方法是使用 VM 上的 Azure 備份延伸模組。 延伸模組會備份整個 VM。 如果您想要備份 VM 中的特定檔案和資料夾，您可以在 Azure Vm 中安裝 MARS 代理程式。 如需詳細資訊，請參閱[架構：內建的 AZURE VM 備份](https://docs.microsoft.com/azure/backup/backup-architecture#architecture-built-in-azure-vm-backup)。
 
--   **離線植**入：資料至 Azure 的初始完整備份通常會傳輸大量資料，而且需要更多的網路頻寬。 後續備份只會傳輸差異或累加的資料量。 Azure 備份會壓縮初始備份。 透過*離線植*入的程式，Azure 備份可以使用磁片，將壓縮的初始備份資料離線上傳至 Azure。 如需詳細資訊，請參閱[DPM 和 Azure 備份伺服器的離線備份工作流程](https://docs.microsoft.com/azure/backup/backup-azure-backup-server-import-export-)。
-
+-   **離線植**入：資料至 Azure 的初始完整備份通常會傳輸大量資料，而且需要更多的網路頻寬。 後續備份只會傳輸差異或累加的資料量。 Azure 備份會壓縮初始備份。 透過*離線植*入的程式，Azure 備份可以使用磁片，將壓縮的初始備份資料離線上傳至 Azure。 如需詳細資訊，請參閱[使用 Azure 資料箱 Azure 備份離線備份](offline-backup-azure-data-box.md)。
 
 ## <a name="next-steps"></a>後續步驟
 [MARS 代理程式支援矩陣](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent)

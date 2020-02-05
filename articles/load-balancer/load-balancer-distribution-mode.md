@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: ddccd02e7157792d942309ae4f74933322f246f9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5c50186692438be5d0922cd329c28e665310e5c2
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225363"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023526"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>設定 Azure Load Balancer 的分配模式
 
@@ -30,9 +30,9 @@ Azure Load Balancer 的預設分配模式是五個元組的雜湊。
 
 元組是由下列各項所組成：
 * **來源 IP**
-* **來源埠**
+* **來源連接埠**
 * **目的地 IP**
-* **目的地埠**
+* **目的地連接埠**
 * **通訊協定類型**
 
 雜湊是用來將流量對應至可用的伺服器。 此演算法只會在傳輸會話內提供粘性。 相同會話中的封包會被導向至負載平衡端點後面的相同資料中心 IP。 當用戶端從相同的來源 IP 啟動新的會話時，來源埠會變更，並導致流量移至不同的資料中心端點。
@@ -59,7 +59,7 @@ Azure Load Balancer 的預設分配模式是五個元組的雜湊。
 
 ## <a name="configure-source-ip-affinity-settings"></a>設定來源 IP 同質性設定
 
-### <a name="azure-portal"></a>Azure 入口網站
+### <a name="azure-portal"></a>Azure Portal
 
 您可以藉由修改入口網站中的負載平衡規則來變更散發模式的設定。
 
@@ -181,7 +181,7 @@ Set-AzureLoadBalancedEndpoint -ServiceName MyService -LBSetName LBSet1 -Protocol
 
 如先前所述，請將兩個元組親和性的 `LoadBalancerDistribution` 專案設定為 sourceIP、針對三個元組親和性 sourceIPProtocol，或無親和性（五個元組親和性）。
 
-#### <a name="response"></a>Response
+#### <a name="response"></a>回應
 
     HTTP/1.1 202 Accepted
     Cache-Control: no-cache
@@ -194,5 +194,5 @@ Set-AzureLoadBalancedEndpoint -ServiceName MyService -LBSetName LBSet1 -Protocol
 ## <a name="next-steps"></a>後續步驟
 
 * [Azure 內部負載平衡器概觀](load-balancer-internal-overview.md)
-* [開始設定網際網路對應負載平衡器](load-balancer-get-started-internet-arm-ps.md)
+* [開始設定網際網路對應負載平衡器](quickstart-create-standard-load-balancer-powershell.md)
 * [設定負載平衡器的閒置 TCP 逾時設定](load-balancer-tcp-idle-timeout.md)

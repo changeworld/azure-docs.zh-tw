@@ -101,8 +101,6 @@
           href: ea-portal-vm-reservations.md
         - name: 針對 Azure EA 入口網站存取進行疑難排解
           href: ea-portal-troubleshoot.md
-        - name: Microsoft 客戶合約中的 EA 工作
-          href: mca-enterprise-operations.md
 - name: 疑難排解
   items:
     - name: 找不到訂用帳戶

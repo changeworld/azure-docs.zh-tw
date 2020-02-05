@@ -1,17 +1,17 @@
 ---
 title: GitHub 動作 & Azure Kubernetes Service
 services: azure-dev-spaces
-ms.date: 11/04/2019
+ms.date: 02/04/2020
 ms.topic: conceptual
 description: 使用 GitHub 動作和 Azure Dev Spaces，直接在 Azure Kubernetes Service 中檢查並測試提取要求的變更
 keywords: Docker，Kubernetes，Azure，AKS，Azure Kubernetes Service，容器，GitHub 動作，Helm，服務網格，服務網格路由，kubectl，k8s
 manager: gwallace
-ms.openlocfilehash: 7d96726e829154847744d9aec07a9cb0938f75de
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 35050d0c9d1e6062866747dc8544d03574a8d8fe
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771116"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77026093"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub 動作 & Azure Kubernetes Service （預覽）
 
@@ -58,14 +58,13 @@ az ad sp create-for-rbac --sdk-auth --skip-assignment
 
 儲存 JSON 輸出，因為在稍後的步驟中會用到它。
 
-
 使用[az aks show][az-aks-show]顯示 aks 叢集的*識別碼*：
 
 ```cmd
 az aks show -g MyResourceGroup -n MyAKS  --query id
 ```
 
-使用[az acr show][az-acr-show]顯示 acr 的*識別碼*：
+使用[az acr show][az-acr-show]顯示 Acr 的*識別碼*：
 
 ```cmd
 az acr show --name <acrName> --query id
@@ -93,7 +92,6 @@ az role assignment create --assignee <ClientId>  --scope <ACRId> --role AcrPush
 1. *CLUSTER_NAME*： AKS 叢集的名稱，在此範例中為*MyAKS*。
 1. *CONTAINER_REGISTRY*： ACR 的*loginServer* 。
 1. *主機*：您的開發人員空間的主機，其採用的格式 *< MASTER_SPACE >。 < APP_NAME >。 <* HOST_SUFFIX >，在此範例中為*dev.bikesharingweb.fedcab0987.eus.azds.io*。
-1. *HOST_SUFFIX*：開發人員空間的主機尾碼，在此範例中為*fedcab0987.eus.azds.io*。
 1. *IMAGE_PULL_SECRET*：您想要使用的秘密名稱，例如「*示範密碼*」。
 1. *MASTER_SPACE*：您的父系開發人員空間的名稱，在此範例中為*dev*。
 1. *REGISTRY_USERNAME*：從服務主體建立的 JSON 輸出中的*clientId* 。
@@ -101,6 +99,8 @@ az role assignment create --assignee <ClientId>  --scope <ACRId> --role AcrPush
 
 > [!NOTE]
 > 所有這些秘密都是由 GitHub 動作使用，並設定于[github/workflow/自行車. yml][github-action-yaml]中。
+
+（選擇性）如果您想要在合併 PR 之後更新主要空間，請新增*GATEWAY_HOST*秘密，其採用 *< MASTER_SPACE >. 閘道. <* HOST_SUFFIX >，在此範例中為*dev.gateway.fedcab0987.eus.azds.io*。 將變更合併到分叉中的主要分支之後，將會執行另一個動作，以在主要開發人員空間中重建並執行整個應用程式。 在此範例中，主要空間為*dev*。 此動作是在[github/workflow/bikesharing.clients.core. yml][github-action-bikesharing-yaml]中設定。
 
 ## <a name="create-a-new-branch-for-code-changes"></a>建立程式碼變更的新分支
 

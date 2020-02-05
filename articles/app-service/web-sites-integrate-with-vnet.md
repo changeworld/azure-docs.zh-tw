@@ -6,13 +6,13 @@ ms.assetid: 90bc6ec6-133d-4d87-a867-fcf77da75f5a
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 71dc37fc000b2f195478e06f7e755fa8df926444
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 472fe621fc7a95317f143ef96a1d7f8b5adfe581
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688296"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016964"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>將您的應用程式與 Azure 虛擬網路整合
 本檔說明 Azure App Service 虛擬網路整合功能，以及如何使用[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)中的應用程式進行設定。 [Azure 虛擬網路][VNETOverview]（vnet）可讓您將許多 Azure 資源放在非網際網路可路由網路中。  
@@ -31,7 +31,7 @@ VNet 整合功能有兩種形式
 
 應用程式一次只能使用一種形式的 VNet 整合功能。 問題是，您應該使用哪一項功能。 您可以使用其中一種來進行許多事項。 但明顯的差異如下：
 
-| 問題  | 方案 | 
+| 問題  | 解決方案 | 
 |----------|----------|
 | 想要在相同的區域中達到 RFC 1918 位址（10.0.0.0/8、172.16.0.0/12、192.168.0.0/16） | 區域 VNet 整合 |
 | 想要觸及傳統 VNet 或另一個區域中的 VNet 中的資源 | 閘道所需的 VNet 整合 |
@@ -74,7 +74,7 @@ VNet 整合不支援的事項包括：
 * 您只能到達 RFC 1918 範圍內的位址。 這些是 10.0.0.0/8、172.16.0.0/12、192.168.0.0/16 位址區塊中的位址。
 * 您無法跨全球對等互連連線連線到資源
 * 您不能將來自您應用程式的流量路由傳送到您的 VNet
-* 此功能僅適用于支援 PremiumV2 App Service 方案的較新 App Service 縮放單位。
+* 此功能僅適用于支援 PremiumV2 App Service 方案的較新 App Service 縮放單位。 請注意，這並不表示您的應用程式必須在 PremiumV2 SKU 上執行，而且必須在可使用 PremiumV2 選項的 App Service 方案上執行（這表示它是較新的縮放單位，其中也提供此 VNet 整合功能）。
 * 整合子網只能由一個 App Service 方案使用
 * App Service 環境中的隔離式方案應用程式無法使用此功能
 * 此功能需要在您的 Resource Manager VNet 中有一個/27 的未使用子網，且其32位址或更大

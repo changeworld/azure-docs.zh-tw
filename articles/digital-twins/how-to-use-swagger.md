@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 02/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: 86b7a1b373d80f0e6bb7f40f57f71d20e396a6c1
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 27874e5731bd6fb9821e7aeda9333adbdbb79099
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934604"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023288"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Azure Digital Twins Swagger 參考文件
 
@@ -93,11 +93,11 @@ Swagger 所提供的強大功能之一是直接透過文件 UI 來測試 API 端
 ## <a name="swagger-oauth-20-authorization"></a>Swagger OAuth 2.0 授權
 
 > [!NOTE]
-> * 建立 Azure 數位 Twins 資源的使用者主體將具有「空間管理員」角色指派，而且能夠為其他使用者建立其他角色指派。 這類使用者和其角色可以獲得授權以呼叫 Api。
+> * 建立 Azure 數位 Twins 資源的使用者主體將具有「空間管理員」角色指派，而且能夠為其他使用者建立其他角色指派。 這些使用者及其角色可以獲得授權，以呼叫 Api。
 
-1. 請遵循[此快速入門](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad)中的步驟來建立和設定 Azure AD 應用程式。 或者，您可以重複使用現有的應用程式註冊。
+1. 請依照[快速入門](quickstart-view-occupancy-dotnet.md#set-permissions-for-your-app)中的步驟來建立和設定 Azure Active Directory 應用程式。 或者，您可以重複使用現有的應用程式註冊。
 
-1. 將下列重新**導向 url**新增至您的 Azure AD 應用程式註冊：
+1. 將下列重新**導向 URI**新增至您的 Azure Active Directory 應用程式註冊：
 
     [![在 AAD 中註冊 Swagger 重新導向 url](media/how-to-use-swagger/swagger-aad-redirect-url-registration.png)](media/how-to-use-swagger/swagger-aad-redirect-url-registration.png#lightbox)
 
@@ -108,7 +108,9 @@ Swagger 所提供的強大功能之一是直接透過文件 UI 來測試 API 端
     |---------|---------|---------|
     | YOUR_SWAGGER_URL | 您的管理 REST API 在入口網站中找到的檔 URL  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
 
-1. 複製 Azure AD 應用程式的**用戶端識別碼**。
+1. 選取 [**隱含授**與 > **存取權杖**] 核取方塊，以允許使用 OAuth 2.0 隱含授與流程。 選取 [**設定**]，然後按一下 [**儲存**]。
+
+1. 複製 Azure Active Directory 應用程式的**用戶端識別碼**。
 
 完成 Azure Active Directory 註冊之後：
 

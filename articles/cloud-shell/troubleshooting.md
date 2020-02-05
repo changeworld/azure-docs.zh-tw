@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: 5af73e166f3caa4997851ae4b17d8377550bf40a
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: db1e2d09c1a75401a8ca24859e9b2d5da9f54b72
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961543"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024274"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 的疑難排解和限制
 
@@ -36,8 +36,8 @@ ms.locfileid: "73961543"
 
 ### <a name="disabling-cloud-shell-in-a-locked-down-network-environment"></a>在鎖定的網路環境中停用 Cloud Shell
 
-- **詳細資料**：建議系統管理員阻止其使用者存取 Cloud Shell。 Cloud Shell 利用 `ux.console.azure.com` 網域的存取權，這可能會遭到拒絕，並停止對 Cloud Shell e 的任何存取，包括 portal.azure.com、shell.azure.com、Visual Studio Code Azure 帳戶延伸模組，以及 docs.microsoft.com。
-- **解決方法**：透過環境的網路設定來限制 `ux.console.azure.com` 的存取權。 Cloud Shell 圖示仍會顯示在 portal.azure.com 中，但無法成功連線至該服務。
+- **詳細資料**：建議系統管理員阻止其使用者存取 Cloud Shell。 Cloud Shell 利用 `ux.console.azure.com` 網域的存取權，這可能會遭到拒絕，並停止對 Cloud Shell e 的任何存取，包括 portal.azure.com、shell.azure.com、Visual Studio Code Azure 帳戶延伸模組，以及 docs.microsoft.com。 在美國政府雲端中，entrypoint 是 `ux.console.azure.us`;沒有對應的 shell.azure.us。
+- **解決**方式：透過網路設定來限制對您環境的 `ux.console.azure.com` 或 `ux.console.azure.us` 的存取。 Cloud Shell 圖示仍會存在於 Azure 入口網站中，但無法成功連線到服務。
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>儲存體對話方塊 - 錯誤：403 RequestDisallowedByPolicy
 
@@ -117,7 +117,7 @@ Cloud Shell 支援下列最新版的瀏覽器：
 
 [!INCLUDE [copy-paste](../../includes/cloud-shell-copy-paste.md)]
 
-### <a name="usage-limits"></a>使用限制
+### <a name="usage-limits"></a>使用方式限制
 
 Cloud Shell 主要用於互動式的使用案例。 因此，任何長時間執行而沒有互動的工作階段會在不發出警告的情況下結束。
 

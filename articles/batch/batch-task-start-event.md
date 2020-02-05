@@ -2,21 +2,21 @@
 title: Azure Batch 工作開始事件
 description: Batch 工作開始事件的參考資訊。 一旦排程器已排程工作在計算節點上執行時，就會發出此事件。
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.assetid: ''
 ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: jushiman
-ms.openlocfilehash: 517a5c58bc1de7dd6ffa4dfd39d09f4b6b4fac1a
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.author: labrenne
+ms.openlocfilehash: bed3749e29867298f3e8258a08448b7b094055ec
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76939073"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022812"
 ---
 # <a name="task-start-event"></a>工作開始事件
 

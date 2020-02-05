@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 01/10/2020
-ms.openlocfilehash: 42b697babe2bc004663c80e6e2f71f90ba1e5e5b
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 02/03/2020
+ms.openlocfilehash: 377639d7a88478308709743ab842db71028686ed
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765405"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023305"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>如何針對 Azure Digital Twins 設定 Postman
 
@@ -33,45 +33,15 @@ ms.locfileid: "76765405"
 
 ## <a name="configure-azure-active-directory-to-use-the-oauth-20-implicit-grant-flow"></a>設定 Azure Active Directory 以使用 OAuth 2.0 隱含授權流程
 
-設定 Azure Active Directory 應用程式，以使用 OAuth 2.0 隱含授與流程。
-
-1. 開啟應用程式註冊的 [API 權限] 窗格。 選取 [新增權限] 按鈕。 在 [要求 API 權限] 窗格中，選取 [我的組織使用的 API] 索引標籤，然後搜尋：
-    
-    1. `Azure Digital Twins`答案中所述步驟，工作帳戶即會啟用。 選取 **Azure Digital Twins** API。
-
-        [![搜尋 API 或 Azure Digital Twins](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png)](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png#lightbox)
-
-    1. 或者，搜尋 `Azure Smart Spaces Service`。 選取 [Azure 智慧空間服務] API。
-
-        [![Azure 智慧空間的搜尋 API](../../includes/media/digital-twins-permissions/aad-app-search-api.png)](../../includes/media/digital-twins-permissions/aad-app-search-api.png#lightbox)
-
-    > [!IMPORTANT]
-    > 所顯示的 Azure AD API 名稱和識別碼取決於您的租用戶：
-    > * 測試租用戶和客戶帳戶應搜尋 `Azure Digital Twins`。
-    > * 其他 Microsoft 帳戶應搜尋 `Azure Smart Spaces Service`。
-
-1. 選取的 API 會在相同的 [要求 API 權限] 窗格中顯示為 **Azure Digital Twins**。 選取 [讀取 (1)] 下拉式清單，然後選取 [Read.Write] 核取方塊。 選取 [新增權限] 按鈕。
-
-    [![新增 Azure 數位 Twins 的 API 許可權](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
-
-1. 根據您組織的設定，您可能需要執行其他步驟，授與對此 API 的系統管理員存取權。 請連絡系統管理員以取得詳細資訊。 管理員存取權一經核准，您 API 的 [API 權限] 窗格中的 [需要管理員同意] 資料行就會顯示如下：
-
-    [![設定系統管理員同意核准](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png)](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
-
-1. 設定 `https://www.getpostman.com/oauth2/callback`的第二個重新**導向 URI** 。
+1. 請依照[快速入門](quickstart-view-occupancy-dotnet.md#set-permissions-for-your-app)中的步驟來建立和設定 Azure Active Directory 應用程式。 或者，您可以重複使用現有的應用程式註冊。
 
     [![設定新的 Postman 重新導向 URI](media/how-to-configure-postman/authentication-redirect-uri.png)](media/how-to-configure-postman/authentication-redirect-uri.png#lightbox)
 
-1. 若要確定[應用程式註冊為**公用應用程式**](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration)，請開啟應用程式註冊的 [驗證] 窗格，並在該窗格中向下捲動。 在 [預設用戶端類型] 區段中，針對 [將應用程式視為公用用戶端] 選擇 [是]，然後點擊 [儲存]。
+1. 現在，將重新**導向 URI**新增至 `https://www.getpostman.com/oauth2/callback`。
 
-    檢查**存取權杖**，以在您的 Manifest.json 中啟用 **oauth2AllowImplicitFlow** 設定。
+1. 選取 [**隱含授**與 > **存取權杖**] 核取方塊，以允許使用 OAuth 2.0 隱含授與流程。 選取 [**設定**]，然後按一下 [**儲存**]。
 
-    [![公用用戶端組態設定](../../includes/media/digital-twins-permissions/aad-configure-public-client.png)](../../includes/media/digital-twins-permissions/aad-configure-public-client.png#lightbox)
-
-1. 複製並保存 Azure Active Directory 應用程式的**應用程式識別碼**。 用於後續的步驟中。
-
-   [![Azure Active Directory 應用程式識別碼](../../includes/media/digital-twins-permissions/aad-app-reg-app-id.png)](../../includes/media//digital-twins-permissions/aad-app-reg-app-id.png#lightbox)
-
+1. 複製 Azure Active Directory 應用程式的**用戶端識別碼**。
 
 ## <a name="obtain-an-oauth-20-token"></a>取得 OAuth 2.0 權杖
 
@@ -91,15 +61,13 @@ ms.locfileid: "76765405"
 
 1. 前往 [www.getpostman.com](https://www.getpostman.com/) 以下載應用程式。
 
-1. 開啟 Postman 應用程式，然後按一下 [New] (新增) | [Create new] (新建)，然後選取 [Request] (要求)。 輸入要求名稱。 選取要儲存的集合或資料夾，然後按一下 [儲存]。 
-
 1. 我們想要提出 GET 要求。 選取 [**授權**] 索引標籤，選取 [OAuth 2.0]，然後選取 [**取得新的存取權杖**]。
 
     | 欄位  | 值 |
     |---------|---------|
     | 授與類型 | `Implicit` |
     | 回呼 URL | `https://www.getpostman.com/oauth2/callback` |
-    | 驗證 URL | 使用**步驟 2**中的**授權 URL** |
+    | 驗證 URL | 使用**步驟 1**中的**授權 URL** |
     | 用戶端識別碼 | 使用在上一節中建立或重複使用之 Azure Active Directory 應用**程式的應用程式識別碼** |
     | 範圍 | 保留空白 |
     | 狀態 | 保留空白 |

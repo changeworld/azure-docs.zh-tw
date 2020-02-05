@@ -4,12 +4,12 @@ description: 提供支援設定的摘要，以及 Azure Migrate 服務的限制�
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.author: raynew
-ms.openlocfilehash: 81939292885e33ec6397eb4a437bef63b4ad0787
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 5c3adecf62f9bd15c820baf116dbc01e5d3542fa
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990720"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77014006"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrate 支援矩陣
 
@@ -66,7 +66,7 @@ Hyper-V VM | 在單一專案中評估最多35000個 Hyper-v Vm。
 **Task** | **權限** | **詳細資料**
 --- | --- | ---
 建立 Azure Migrate 專案 | 您的 Azure 帳戶需要可建立專案的權限。 | 針對[VMware](tutorial-prepare-vmware.md#assign-permissions-to-create-project)、 [hyper-v](tutorial-prepare-hyper-v.md#assign-permissions-to-create-project)或[實體伺服器](tutorial-prepare-physical.md#assign-permissions-to-create-project)進行設定。
-註冊 Azure Migrate 設備 | Azure Migrate 使用輕量的[Azure Migrate 設備](migrate-appliance.md)，透過 Azure Migrate server 評估來評估 vmware vm，並使用 Azure Migrate 伺服器遷移來執行 vmware vm 的[無代理程式遷移](server-migrate-overview.md)。 此設備會探索 VM，並將 VM 的中繼資料和效能資料傳送至 Azure Migrate。<br/><br/> 在註冊期間，Azure Migrate 會建立兩個可唯一識別設備的 Azure Active Directory (Azure AD) 應用程式，並且需要可建立這些應用程式的權限。<br/><br/> - 第一個應用程式會與 Azure Migrate 服務端點進行通訊。<br/><br/> - 第二個應用程式會存取在註冊期間建立的 Azure Key Vault，以儲存 Azure AD 的應用程式資訊和設備組態設定。 | 針對[VMware](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance)、 [hyper-v](tutorial-prepare-hyper-v.md#assign-permissions-to-register-the-appliance)或[實體伺服器](tutorial-prepare-physical.md#assign-permissions-to-register-the-appliance)進行設定。
+註冊 Azure Migrate 設備| Azure Migrate 使用輕量的[Azure Migrate 設備](migrate-appliance.md)來評估具有 Azure Migrate server 評估的機器，並使用 Azure Migrate 伺服器遷移來執行 VMware vm 的[無代理程式遷移](server-migrate-overview.md)。 此設備會探索機器，然後將中繼資料和效能資料傳送至 Azure Migrate。<br/><br/> 註冊期間，註冊提供者（OffAzure、Microsoft. 遷移和 KeyVault）會向設備中選擇的訂用帳戶註冊，讓訂用帳戶可搭配資源提供者使用。 若要註冊，您需要訂用帳戶的「參與者」或「擁有者」存取權。<br/><br/> **VMware**-在上架期間，Azure Migrate 會建立兩個 Azure Active Directory （Azure AD）應用程式。 第一個應用程式會在設備代理程式和 Azure Migrate 服務之間進行通訊。 應用程式沒有許可權可進行 Azure 資源管理呼叫，或具有資源的 RBAC 存取權。 第二個應用程式只會存取在使用者訂用帳戶中建立的 Azure Key Vault，以進行無代理程式 VMware 遷移。 在無代理程式遷移中，Azure Migrate 會建立 Key Vault，以管理您訂用帳戶中複寫儲存體帳戶的存取金鑰。 當從設備啟動探索時，它在 Azure Key Vault （在客戶租使用者中）具有 RBAC 存取權。<br/><br/> **Hyper-v**-上線時。 Azure Migrate 會建立一個 Azure AD 應用程式。 應用程式會在設備代理程式和 Azure Migrate 服務之間進行通訊。 應用程式沒有許可權可進行 Azure 資源管理呼叫，或具有資源的 RBAC 存取權。 | 針對[VMware](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance)、 [hyper-v](tutorial-prepare-hyper-v.md#assign-permissions-to-register-the-appliance)或[實體伺服器](tutorial-prepare-physical.md#assign-permissions-to-register-the-appliance)進行設定。
 建立用於 VMware 無代理程式遷移的金鑰保存庫 | 若要遷移具有無代理程式 Azure Migrate 伺服器遷移的 VMware Vm，Azure Migrate 會建立 Key Vault 來管理訂用帳戶中複寫儲存體帳戶的存取金鑰。 若要建立保存庫，您可以在 Azure Migrate 專案所在的資源群組上設定許可權（擁有者、參與者和使用者存取系統管理員）。 | [設定](tutorial-prepare-vmware.md#assign-permissions-to-create-a-key-vault)許可權。
 
 ## <a name="supported-geographies"></a>支援的地理位置

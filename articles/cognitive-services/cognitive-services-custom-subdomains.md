@@ -83,7 +83,7 @@ Azure 認知服務針對透過[Azure 入口網站](https://portal.azure.com)、 
 | | 日本東部 | `https://japaneast.api.cognitive.microsoft.com` |
 | | 南韓中部 | `https://koreacentral.api.cognitive.microsoft.com` |
 | | 美國中北部 | `https://northcentralus.api.cognitive.microsoft.com` |
-| | 北歐 | `https://northeurope.api.cognitive.microsoft.com` |
+| | 歐洲北部 | `https://northeurope.api.cognitive.microsoft.com` |
 | | 南非北部 | `https://southafricanorth.api.cognitive.microsoft.com` |
 | | 美國中南部 | `https://southcentralus.api.cognitive.microsoft.com` |
 | | 東南亞 | `https://southeastasia.api.cognitive.microsoft.com` |
@@ -92,7 +92,7 @@ Azure 認知服務針對透過[Azure 入口網站](https://portal.azure.com)、 
 | | 歐洲西部 | `https://westeurope.api.cognitive.microsoft.com` |
 | | 美國西部 | `https://westus.api.cognitive.microsoft.com` |
 | | 美國西部 2 | `https://westus2.api.cognitive.microsoft.com` |
-| US Gov | 美國政府維吉尼亞州 | `https://virginia.api.cognitive.microsoft.us` |
+| US Gov | US Gov 維吉尼亞州 | `https://virginia.api.cognitive.microsoft.us` |
 | 中國 | 中國東部 2 | `https://chinaeast2.api.cognitive.azure.cn` |
 | | 中國北部 | `https://chinanorth.api.cognitive.azure.cn` |
 

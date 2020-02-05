@@ -3,24 +3,24 @@ title: 使用自訂分析擴充 Azure IoT Central |Microsoft Docs
 description: 身為解決方案開發人員，設定 IoT Central 應用程式來執行自訂分析和視覺效果。 此解決方案使用 Azure Databricks。
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/23/2019
+ms.date: 12/02/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 39d99b8b6167411fc75677878b7f82a27deab958
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 7e5e8331509e99a7e556105ff1ea8ca2d0b285e7
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987623"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023832"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>使用 Azure Databricks 以自訂分析延伸 Azure IoT Central
 
 本操作指南示範如何以解決方案開發人員的身分，以自訂分析和視覺效果擴充您的 IoT Central 應用程式。 此範例會使用[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/)工作區來分析 IoT Central 遙測串流，並產生視覺效果（例如[box 繪圖](https://wikipedia.org/wiki/Box_plot)）。
 
-本操作指南會示範如何使用[內建的分析工具](howto-create-analytics.md)，將 IoT Central 擴充超過其功能。
+本操作指南會示範如何使用[內建的分析工具](./howto-create-custom-analytics.md)，將 IoT Central 擴充超過其功能。
 
 在本操作指南中，您將瞭解如何：
 
@@ -40,14 +40,16 @@ ms.locfileid: "76987623"
 | 設定 | 值 |
 | ------- | ----- |
 | 定價方案 | Standard |
-| 應用程式範本 | 繼承應用程式 |
+| 應用程式範本 | 存放區內分析-條件監視 |
 | 應用程式名稱 | 接受預設值，或選擇您自己的名稱 |
 | URL | 接受預設值，或選擇您自己唯一的 URL 前置詞 |
 | 目錄 | 您的 Azure Active Directory 租使用者 |
 | Azure 訂用帳戶 | 您的 Azure 訂用帳戶 |
-| 地區 | 美國 |
+| 地區 | 您最接近的區域 |
 
 本文中的範例和螢幕擷取畫面會使用**美國**地區。 選擇接近您的位置的位置，並確定您在相同的區域中建立所有資源。
+
+此應用程式範本包含兩個傳送遙測的模擬控溫器裝置。
 
 ### <a name="resource-group"></a>資源群組
 
@@ -101,7 +103,7 @@ ms.locfileid: "76987623"
 
 在[Azure IoT Central 應用程式管理員](https://aka.ms/iotcentral)網站上，流覽至您從 Contoso 範本建立的 IoT Central 應用程式。 在本節中，您會設定應用程式，以將遙測從模擬的裝置串流至您的事件中樞。 若要設定匯出：
 
-1. 流覽至 **連續資料匯出** 頁面，選取  **+ 新增**，然後**Azure 事件中樞**。
+1. 流覽至 **資料匯出** 頁面，選取  **+ 新增**，然後**Azure 事件中樞**。
 1. 使用下列設定來設定匯出，然後選取 [**儲存**]：
 
     | 設定 | 值 |
@@ -114,7 +116,7 @@ ms.locfileid: "76987623"
     | 裝置 | 關 |
     | 裝置範本 | 關 |
 
-![連續資料匯出設定](media/howto-create-custom-analytics/cde-configuration.png)
+![資料匯出設定](media/howto-create-custom-analytics/cde-configuration.png)
 
 等到匯出狀態為 [**正在**執行]，然後再繼續。
 
@@ -132,7 +134,7 @@ ms.locfileid: "76987623"
 | ------- | ----- |
 | 叢集名稱 | centralanalysis |
 | 叢集模式 | Standard |
-| Databricks Runtime 版本 | 5.3 （Scala 2.11，Spark 2.4.0） |
+| Databricks Runtime 版本 | 5.5 LTS （Scala 2.11，Spark 2.4.3） |
 | Python 版本 | 3 |
 | 啟用自動調整功能 | 否 |
 | 在閒置幾分鐘後終止 | 30 |
@@ -229,4 +231,4 @@ ms.locfileid: "76987623"
 * 使用*連續資料匯出*，從 IoT Central 應用程式串流遙測。
 * 建立 Azure Databricks 環境來分析和繪製遙測資料。
 
-現在您已瞭解如何建立自訂分析，建議的下一個步驟是瞭解如何[在 Power BI 儀表板中視覺化和分析您的 Azure IoT Central 資料](howto-connect-powerbi.md)。
+現在您已瞭解如何建立自訂分析，建議的下一個步驟是瞭解如何[管理您的應用程式](howto-administer.md)。

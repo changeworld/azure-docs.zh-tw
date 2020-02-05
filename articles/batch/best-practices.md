@@ -1,18 +1,18 @@
 ---
 title: 最佳做法-Azure Batch
 description: 瞭解開發 Azure Batch 解決方案的最佳作法和實用秘訣。
-author: ju-shim
-ms.author: jushiman
+author: LauraBrenner
+ms.author: labrenne
 ms.date: 11/22/2019
 ms.service: batch
 ms.topic: article
-manager: gwallace
-ms.openlocfilehash: c2acd09df51b942a08a85d96d907e064367377a7
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+manager: evansma
+ms.openlocfilehash: 16fb2786f180b1e28b76d9246d599a871278d00d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76900289"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022727"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch 最佳做法
 

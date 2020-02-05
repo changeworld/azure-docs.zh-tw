@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 589d8219681304242585c9fed33a4e3d364909ec
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: fbb6170aa54c286a5a2d8353c1dd951859fdf8a0
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978896"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024580"
 ---
 # <a name="what-are-security-defaults"></a>什麼是安全性預設值？
 
@@ -94,6 +94,8 @@ Microsoft 將安全性預設值提供給所有人。 目標是要確保所有組
 在您的租使用者中啟用安全性預設值之後，任何存取 Azure 入口網站、Azure PowerShell 或 Azure CLI 的使用者都必須完成額外的驗證。 此原則適用于所有存取 Azure Resource Manager 的使用者，無論他們是系統管理員或使用者。 
 
 如果使用者未註冊多重要素驗證，使用者將需要使用 Microsoft Authenticator 應用程式進行註冊，才能繼續進行。 將不會提供14天的多重要素驗證註冊期間。
+
+2017之前的 Exchange Online 租使用者預設會停用新式驗證。 為了避免在透過這些租使用者進行驗證時，登入迴圈的可能性，您必須[啟用新式驗證](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online)。
 
 > [!NOTE]
 > Azure AD Connect 同步處理帳戶會從安全性預設中排除，且不會提示您註冊或執行多重要素驗證。 組織不應將此帳戶用於其他用途。

@@ -87,7 +87,7 @@ Data Factory 中的複製活動會將資料從來源資料存放區複製到接�
 * 從 Azure Blob 複製 GZip 壓縮文字 (CSV) 格式的資料，然後寫入 Azure SQL Database 中。
 
 ## <a name="global"></a>全域可用的資料移動
-Azure Data Factory 只在美國西部、美國東部和北歐區域提供使用。 不過，支援複製活動的服務可在下列區域和地理位置全域提供使用。 全域可用的拓撲可確保進行有效率的資料移動，通常可避免發生跨區域躍點的情況。 如需了解某區域中是否有 Data Factory 和「資料移動」可供使用，請參閱 [依區域提供的服務](https://azure.microsoft.com/regions/#services) 。
+Azure Data Factory 只在美國西部、美國東部和歐洲北部區域提供使用。 不過，支援複製活動的服務可在下列區域和地理位置全域提供使用。 全域可用的拓撲可確保進行有效率的資料移動，通常可避免發生跨區域躍點的情況。 如需了解某區域中是否有 Data Factory 和「資料移動」可供使用，請參閱 [依區域提供的服務](https://azure.microsoft.com/regions/#services) 。
 
 ### <a name="copy-data-between-cloud-data-stores"></a>在雲端資料存放區之間複製資料
 當來源和接收資料存放區都位於雲端時，Data Factory 會使用區域中最接近相同地理位置之接收的服務部署來移動資料。 如需對應資訊，請參閱下表︰
@@ -105,7 +105,7 @@ Azure Data Factory 只在美國西部、美國東部和北歐區域提供使用�
 | 加拿大 | 加拿大東部 | 加拿大中部 |
 | &nbsp; | 加拿大中部 | 加拿大中部 |
 | 巴西 | 巴西南部 | 巴西南部 |
-| 歐洲 | 北歐 | 北歐 |
+| 歐洲 | 歐洲北部 | 歐洲北部 |
 | &nbsp; | 歐洲西部 | 歐洲西部 |
 | 英國 | 英國西部 | 英國南部 |
 | &nbsp; | 英國南部 | 英國南部 |

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: a35cf935d990dbb61f440d2592d59d21f33a2ae8
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6507c2a2d1100d480c879c73861c02e477d38416
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037232"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77026127"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的存取控制
 
@@ -33,7 +33,7 @@ RBAC 會使用角色指派，有效地將許可權集套用至*安全性主體*�
 
 雖然使用 RBAC 角色指派是控制存取權限的強大機制，但它是相對於 Acl 的粗糙細微性機制。 RBAC 的最小細微性是在容器層級，而這會以高於 Acl 的優先順序進行評估。 因此，如果您將角色指派給容器範圍內的安全性主體，該安全性主體就會擁有與該角色中所有目錄和檔案相關聯的授權層級，而不論 ACL 指派為何。
 
-當安全性主體透過[內建角色](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)或自訂角色授與 RBAC 資料許可權時，系統會在要求授權時先評估這些許可權。 如果要求的作業是由安全性主體的 RBAC 指派授權，則會立即解析授權，而且不會執行任何額外的 ACL 檢查。 或者，如果安全性主體沒有 RBAC 指派，或要求的操作不符合指派的許可權，則會執行 ACL 檢查，以判斷安全性主體是否已獲授權執行要求的作業。
+當安全性主體透過[內建角色](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)或自訂角色授與 RBAC 資料許可權時，系統會在要求授權時先評估這些許可權。 如果要求的作業是由安全性主體的 RBAC 指派授權，則會立即解析授權，而且不會執行任何額外的 ACL 檢查。 或者，如果安全性主體不具有 RBAC 指派，或要求作業不符合指派的權限，則會執行 ACL 檢查來判斷安全性主體是否已獲授權執行要求作業。
 
 > [!NOTE]
 > 如果已將儲存體 Blob 資料擁有者內建角色指派給安全性主體，則會將安全性主體視為*超級使用者*，並被授與所有變更作業的完整存取權，包括設定目錄或檔案的擁有者，以及它們不是擁有者的目錄和檔案的 acl。 超級使用者存取權是唯一可變更資源擁有者的授權方式。
@@ -58,10 +58,15 @@ SAS 權杖會在其權杖中包含允許的權限。 SAS 權杖中包含的權�
 
 若要設定檔案和目錄層級許可權，請參閱下列任何一篇文章：
 
-|如果您想要使用此工具：    |請參閱這篇文章：    |
+|||
 |--------|-----------|
-|Azure 儲存體總管    |[搭配 Azure Data Lake Storage Gen2 使用 Azure 儲存體總管設定檔案和目錄等級使用權限](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)|
-|REST API    |[路徑-更新](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
+|Azure 儲存體總管 |[使用 Azure 儲存體總管來管理中的目錄、檔案和 Acl Azure Data Lake Storage Gen2](data-lake-storage-explorer.md#managing-access)|
+|.NET |[使用 .NET 管理 Azure Data Lake Storage Gen2 中的目錄、檔案和 Acl](data-lake-storage-directory-file-acl-dotnet.md)|
+|Java|[使用 JAVA 來管理 Azure Data Lake Storage Gen2 中的目錄、檔案和 Acl](data-lake-storage-directory-file-acl-java.md)|
+|Python|[使用 Python 來管理 Azure Data Lake Storage Gen2 中的目錄、檔案和 Acl](data-lake-storage-directory-file-acl-python.md)|
+|PowerShell|[使用 PowerShell 來管理 Azure Data Lake Storage Gen2 中的目錄、檔案和 Acl](data-lake-storage-directory-file-acl-powershell.md)|
+|Azure CLI|[使用 Azure CLI 來管理中的目錄、檔案和 Acl Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-cli.md)|
+|REST API |[路徑-更新](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]
 > 如果安全性主體是*服務*主體，請務必使用服務主體的物件識別碼，而不是相關應用程式註冊的物件識別碼。 若要取得服務主體的物件識別碼，請開啟 Azure CLI，然後使用此命令： `az ad sp show --id <Your App ID> --query objectId`。 請務必將 `<Your App ID>` 預留位置取代為應用程式註冊的應用程式識別碼。
@@ -269,7 +274,7 @@ def set_default_acls_for_new_child(parent, child):
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>我必須啟用 ACL 的支援嗎？
 
-號 只要開啟階層命名空間（HNS）功能，就會為儲存體帳戶啟用透過 Acl 的存取控制。
+不會。 只要開啟階層命名空間（HNS）功能，就會為儲存體帳戶啟用透過 Acl 的存取控制。
 
 如果 HNS 關閉，Azure RBAC 授權規則仍適用。
 
@@ -297,7 +302,7 @@ def set_default_acls_for_new_child(parent, child):
 
 擁有群組是從新檔案或目錄建立所在父目錄的擁有群組複製而來的。
 
-### <a name="i-am-the-owning-user-of-a-file-but-i-dont-have-the-rwx-permissions-i-need-what-do-i-do"></a>我是檔案的擁有使用者，但沒有我需要的 RWX 權限。 該怎麼辦？
+### <a name="i-am-the-owning-user-of-a-file-but-i-dont-have-the-rwx-permissions-i-need-what-do-i-do"></a>我是檔案的擁有使用者，但沒有我需要的 RWX 權限。 我該怎麼做？
 
 擁有使用者可以變更檔案的權限，以取得本身所需的任何 RWX 權限。
 
@@ -335,6 +340,6 @@ ACL 則不會繼承。 但預設 ACL 可以用來為父目錄下建立的子目�
 * [Ubuntu 上的 POSIX ACL](https://help.ubuntu.com/community/FilePermissionsACLs)
 * [Linux 上使用存取控制清單的 ACL](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 * [Azure Data Lake Storage Gen2 概觀](../blobs/data-lake-storage-introduction.md)

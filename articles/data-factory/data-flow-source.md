@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/12/2019
-ms.openlocfilehash: 7a438a52ab69810ecf49319c148f817da974ea61
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 128b15bd5b3ba3c3ac891719bf5c3ec8e5137cce
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440209"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023509"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>對應資料流程中的來源轉換 
 
@@ -44,6 +44,8 @@ Azure Data Factory 可以存取超過[90 的原生連接器](connector-overview.
 
 ![[來源設定] 索引標籤](media/data-flow/source1.png "[來源設定] 索引標籤")
 
+**測試連接：** 測試資料流程的 spark 服務是否可以成功連接到您的源資料集所使用的連結服務。 必須開啟 Debug 模式，才能啟用這項功能。
+
 **架構漂移：** [架構漂移](concepts-data-flow-schema-drift.md)是 data factory 能夠以原生方式處理您資料流程中的彈性架構，而不需要明確地定義資料行變更。
 
 * 如果來源資料行經常變更，請選取 [**允許架構漂移**] 方塊。 此設定可讓所有傳入的來源欄位流經接收的轉換。
@@ -69,13 +71,17 @@ Azure Data Factory 可以存取超過[90 的原生連接器](connector-overview.
 
 ![[投射] 索引標籤上的設定](media/data-flow/source3.png "投射")
 
-如果您的文字檔沒有已定義的架構，請選取 [偵測**資料類型**]，讓 Data Factory 將會取樣並推斷資料類型。 選取 [**定義預設格式**] 以自動偵測預設資料格式。 
+如果您的文字檔沒有已定義的架構，請選取 [偵測**資料類型**]，讓 Data Factory 將會取樣並推斷資料類型。 選取 [**定義預設格式**] 以自動偵測預設資料格式。
+
+**重設架構**會將投影重設為參考的資料集中所定義的投射。
 
 您可以在「向下串流衍生資料行」轉換中修改資料行資料類型。 使用 [選取] 轉換來修改資料行名稱。
 
 ### <a name="import-schema"></a>匯入架構
 
-支援複雜資料結構的資料集（例如 Avro 和 CosmosDB）不需要架構定義存在於資料集內。 因此，您將能夠在這些來源類型的 [**投射**] 索引標籤上，按一下 [匯**入架構**] 按鈕。
+[**預測**] 索引標籤上的 [匯**入架構**] 按鈕可讓您使用主動的 debug 叢集來建立架構投射。 適用于每個來源類型，在此匯入架構將會覆寫資料集中定義的投影。 Dataset 物件將不會變更。
+
+這在支援複雜資料結構的資料集（例如 Avro 和 CosmosDB）中很有用，因為它不需要架構定義存在於資料集內。
 
 ## <a name="optimize-the-source-transformation"></a>優化來源轉換
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/11/2019
-ms.openlocfilehash: 52bec8bba7bb3ddf545e3bd1866775f0964c6ad3
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 6e9e1d54599ab88092638762ccd7974e44c82cbf
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75893146"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025804"
 ---
 # <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>使用 Azure Data Factory 複製和轉換 Azure Cosmos DB （SQL API）中的資料
 
@@ -24,7 +24,7 @@ ms.locfileid: "75893146"
 > * [第 1 版](v1/data-factory-azure-documentdb-connector.md)
 > * [目前的版本](connector-azure-cosmos-db.md)
 
-本文概述如何使用 Azure Data Factory 中的複製活動，將資料從 Azure Cosmos DB （SQL API）複製到其中，並使用資料流程來轉換 Azure Cosmos DB （SQL API）中的資料。 若要了解 Azure Data Factory，請閱讀[簡介文章](introduction.md)。
+本文概述如何使用 Azure Data Factory 中的複製活動，從 Azure Cosmos DB (SQL API) 複製資料或將資料複製到該處，以及如何使用資料流程來轉換 Azure Cosmos DB (SQL API) 中的資料。 若要了解 Azure Data Factory，請閱讀[簡介文章](introduction.md)。
 
 >[!NOTE]
 >此連接器僅支援 Cosmos DB SQL API。 針對 MongoDB API，請參閱[適用於 MongoDB 的 Azure Cosmos DB API 連接器](connector-azure-cosmos-db-mongodb-api.md)。 目前不支援其他 API 類型。
@@ -268,6 +268,18 @@ Azure Cosmos DB （SQL API）資料集支援下列屬性：
 **輸送量：** 在讀取作業期間，針對此資料流程的每次執行，設定您想要套用至 CosmosDB 集合的 ru 數目的選擇性值。 最小值為400。
 
 **慣用區域：** 選擇此進程的慣用讀取區域。
+
+#### <a name="json-settings"></a>JSON 設定
+
+**單一檔：** 如果 ADF 將整個檔案視為單一 JSON 檔，請選取此選項。
+
+不具引號的資料**行名稱：** 如果 JSON 中的資料行名稱未加上引號，請選取此選項。
+
+**具有批註：** 如果您的 JSON 檔在資料中有批註，請使用此選項。
+
+以**單引號括住：** 如果您檔中的資料行和值以單引號括住，就應該選取此選項。
+
+**反斜線已轉義：** 如果使用反斜線來轉義 JSON 中的字元，請選擇此選項。
 
 ### <a name="sink-transformation"></a>接收轉換
 

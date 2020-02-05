@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: f0e7c3bbbdcd1edad24422163fde38e3fdce7e27
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 09003c26ead9108d07ae339fcf64235c246474a4
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988646"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024138"
 ---
 # <a name="introduction-to-incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Azure 認知搜尋中的增量擴充和快取簡介
 
@@ -26,7 +26,7 @@ ms.locfileid: "76988646"
 
 增量擴充會將快取新增至擴充管線。 索引子會快取檔破解的結果，以及每個檔的每項技能輸出。 技能集有所更新時，將只會重新執行已變更或下游的技能。 更新的結果會寫入至快取，而且會在搜尋索引或知識存放區中更新檔。
 
-實際上，快取會儲存在您 Azure 儲存體帳戶的 blob 容器中。 搜尋服務中的所有索引可共用相同的儲存體帳戶，以進行索引子快取。 每個索引子都會指派一個唯一且不可變的快取識別碼給它所使用的容器。
+實際上，快取會儲存在您 Azure 儲存體帳戶的 blob 容器中。 快取也會使用資料表儲存體來處理更新的內部記錄。 搜尋服務中的所有索引可共用相同的儲存體帳戶，以進行索引子快取。 每個索引子都會指派一個唯一且不可變的快取識別碼給它所使用的容器。
 
 ## <a name="cache-configuration"></a>快取組態
 

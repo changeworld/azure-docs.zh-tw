@@ -18,4 +18,4 @@ ms.locfileid: "75445830"
 | 美國東部、西歐、美國西部2 | Linux | K80、P100、V100 |
 | 東南亞 | Linux | P100、V100|
 | 印度中部 | Linux | V100 |
-| 北歐 | Linux | K80 |
+| 歐洲北部 | Linux | K80 |

@@ -8,14 +8,19 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: a9817205a419e2b61af66dba16d09620e2c1dec9
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 2bac317d6a3a5c6895a3cea4dae22694b603cabf
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310855"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024019"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>針對啟用或檢視 Application Insights Profiler 的問題進行疑難排解
+
+## <a name="active-issues"></a>作用中問題
+
+* 尚不支援 ASP.NET Core 3.x 應用程式的分析。
+  * 如果您必須開啟 Profiler，則因應措施是使用[ASP.NET Core 的 Application Insights Profiler](https://github.com/microsoft/ApplicationInsights-Profiler-AspNetCore)。 分析工具的標籤為 Linux，但它也適用于 Windows 上的 .NET Core 3.0 + 應用程式。 如需詳細資訊，請參閱[支援的版本](https://github.com/microsoft/ApplicationInsights-Profiler-AspNetCore#supported-versions)。
 
 ## <a id="troubleshooting"></a>一般疑難排解
 

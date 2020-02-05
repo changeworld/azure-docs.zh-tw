@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 9633975f53b3e398537067b17a870f621d9a7435
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 03daafd383810a5e6cf086ca8e546981b06fa6eb
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045058"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025702"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service 中使用標準 SKU 負載平衡器（AKS）
 
@@ -26,11 +26,11 @@ Azure Load Balancer 有兩種 SKU -「基本」和「標準」。 根據預設�
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果您選擇在本機安裝和使用 CLI，本文會要求您執行 Azure CLI 版2.0.74 或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][install-azure-cli]。
+如果您選擇在本機安裝和使用 CLI，本文會要求您執行 Azure CLI 版2.0.81 或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][install-azure-cli]。
 
 ## <a name="before-you-begin"></a>開始之前
 
-本文假設您有一個 AKS 叢集，其中具有*標準*SKU Azure Load Balancer。 如果您需要 AKS 叢集，請參閱[使用 Azure CLI][aks-quickstart-cli]或[使用 Azure 入口網站][aks-quickstart-portal]的 AKS 快速入門。
+本文假設您的 AKS 叢集具有*標準*SKU Azure Load Balancer。 如果您需要 AKS 叢集，請參閱[使用 Azure CLI][aks-quickstart-cli]或[使用 Azure 入口網站][aks-quickstart-portal]的 AKS 快速入門。
 
 如果您使用現有的子網或資源群組，則 AKS 叢集服務主體也需要管理網路資源的許可權。 一般來說，請將「*網路參與者*」角色指派給委派資源上的服務主體。 如需許可權的詳細資訊，請參閱[將 AKS 存取權委派給其他 Azure 資源][aks-sp]。
 
@@ -162,9 +162,14 @@ az aks create \
     --load-balancer-outbound-ip-prefixes <publicIpPrefixId1>,<publicIpPrefixId2>
 ```
 
-## <a name="show-the-outbound-rule-for-your-load-balancer"></a>顯示負載平衡器的輸出規則
+## <a name="configure-outbound-ports-and-idle-timeout"></a>設定輸出埠和閒置超時
 
-若要顯示在負載平衡器中建立的輸出規則，請使用[az network lb 輸出規則清單][az-network-lb-outbound-rule-list]，並指定 AKS 叢集的節點資源群組：
+> [!WARNING]
+> 下一節適用于較大規模網路的先進案例，或使用預設設定來解決 SNAT 耗盡問題。 您必須先正確清查 Vm 和 IP 位址的可用配額，才能從其預設值變更*AllocatedOutboundPorts*或*IdleTimeoutInMinutes* ，以便維持狀況良好的叢集。
+> 
+> 改變*AllocatedOutboundPorts*和*IdleTimeoutInMinutes*的值，可能會大幅變更負載平衡器輸出規則的行為。 請先參閱[Azure 中][azure-lb-outbound-connections]的[Load Balancer 輸出規則][azure-lb-outbound-rules-overview]、[負載平衡器輸出規則][azure-lb-outbound-rules]和輸出連線，再更新這些值，以充分瞭解變更的影響。
+
+輸出配置的埠及其閒置的超時會用於[SNAT][azure-lb-outbound-connections]。 根據預設，*標準*SKU 負載平衡器會[針對以後端集區大小為基礎的輸出埠數目][azure-lb-outbound-preallocatedports]，以及每個埠30分鐘的閒置超時，使用自動指派。 若要查看這些值，請使用[az network lb 輸出規則清單][az-network-lb-outbound-rule-list]來顯示負載平衡器的輸出規則：
 
 ```azurecli-interactive
 NODE_RG=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
@@ -179,7 +184,46 @@ AllocatedOutboundPorts    EnableTcpReset    IdleTimeoutInMinutes    Name        
 0                         True              30                      aksOutboundRule  All         Succeeded            MC_myResourceGroup_myAKSCluster_eastus  
 ```
 
-在範例輸出中， *AllocatedOutboundPorts*是0。 *AllocatedOutboundPorts*的值表示 SNAT 埠配置會根據後端集區大小還原為自動指派。 如需詳細資訊，請參閱[在 Azure 中][azure-lb-outbound-connections] [Load Balancer 輸出規則][azure-lb-outbound-rules]和輸出連線。
+範例輸出會顯示*AllocatedOutboundPorts*和*IdleTimeoutInMinutes*的預設值。 *AllocatedOutboundPorts*值為0時，會根據後端集區大小，使用自動指派的輸出埠數目來設定輸出埠的數目。 例如，如果叢集有50或更少的節點，則會配置每個節點的1024埠。
+
+如果您預期會根據上述預設設定來面對 SNAT 耗盡，請考慮變更*allocatedOutboundPorts*或*IdleTimeoutInMinutes*的設定。 每個額外的 IP 位址會啟用64000額外的埠來進行配置，不過，新增更多 IP 位址時，Azure Standard Load Balancer 不會自動增加每個節點的埠。 您可以藉由設定*負載平衡器-輸出埠*和*負載平衡器-閒置-timeout*參數來變更這些值。 例如：
+
+```azurecli-interactive
+az aks update \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --load-balancer-outbound-ports 0 \
+    --load-balancer-idle-timeout 30
+```
+
+> [!IMPORTANT]
+> 您必須在自訂*allocatedOutboundPorts*之前[計算所需的配額][calculate-required-quota]，以避免連線或調整問題。 您為*allocatedOutboundPorts*指定的值也必須是8的倍數。
+
+建立叢集時，您也可以使用*負載平衡器-輸出埠*和*負載平衡器-閒置時間*參數，但您也必須指定*負載平衡器管理-* -------------------------- *---* ---------- *---* -  例如：
+
+```azurecli-interactive
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --vm-set-type VirtualMachineScaleSets \
+    --node-count 1 \
+    --load-balancer-sku standard \
+    --generate-ssh-keys \
+    --load-balancer-managed-outbound-ip-count 2 \
+    --load-balancer-outbound-ports 0 \
+    --load-balancer-idle-timeout 30
+```
+
+從預設值改變*負載平衡器-輸出埠*和*負載平衡器-閒置時間*參數時，它會影響負載平衡器設定檔的行為，這會影響整個叢集。
+
+### <a name="required-quota-for-customizing-allocatedoutboundports"></a>自訂 allocatedOutboundPorts 所需的配額
+您必須根據節點 Vm 的數目和所需配置的輸出埠，擁有足夠的輸出 IP 容量。 若要驗證您有足夠的輸出 IP 容量，請使用下列公式： 
+ 
+*outboundIPs* \* 64000 \> *nodeVMs* \* *desiredAllocatedOutboundPorts*。
+ 
+例如，如果您有3個*nodeVMs*和 50000 *desiredAllocatedOutboundPorts*，您至少必須有3個*outboundIPs*。 建議您將額外的輸出 IP 容量納入所需的範圍外。 此外，您必須考慮叢集自動調整程式，以及在計算輸出 IP 容量時，節點集區升級的可能性。 針對叢集自動調整程式，請檢查目前的節點計數和最大節點計數，並使用較高的值。 若要進行升級，請針對允許升級的每個節點集區，考慮其他節點 VM。
+ 
+將*IdleTimeoutInMinutes*設定為不同于預設30分鐘的值時，請考慮您的工作負載需要輸出連線的時間長度。 也請考慮在 AKS 外部使用的*標準*SKU 負載平衡器的預設超時值為4分鐘。 *IdleTimeoutInMinutes*值可更精確地反映您的特定 AKS 工作負載，有助於減少因不再使用連接而造成的 SNAT 耗盡。
 
 ## <a name="restrict-access-to-specific-ip-ranges"></a>限制對特定 IP 範圍的存取
 
@@ -239,9 +283,12 @@ spec:
 [azure-lb-comparison]: ../load-balancer/concepts-limitations.md#skus
 [azure-lb-outbound-rules]: ../load-balancer/load-balancer-outbound-rules-overview.md#snatports
 [azure-lb-outbound-connections]: ../load-balancer/load-balancer-outbound-connections.md#snat
+[azure-lb-outbound-preallocatedports]: ../load-balancer/load-balancer-outbound-connections.md#preallocatedports
+[azure-lb-outbound-rules-overview]: ../load-balancer/load-balancer-outbound-rules-overview.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [internal-lb-yaml]: internal-lb.md#create-an-internal-load-balancer
 [kubernetes-concepts]: concepts-clusters-workloads.md
 [use-kubenet]: configure-kubenet.md
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
+[calculate-required-quota]: #required-quota-for-customizing-allocatedoutboundports

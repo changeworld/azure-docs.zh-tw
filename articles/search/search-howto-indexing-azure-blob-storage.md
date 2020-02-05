@@ -9,12 +9,13 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: cd2e34be7ef55c4ee6d18c6db6010134a7d935d1
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 1c2bac06f2526260fb290b63e5aa559a1e2337b4
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76895947"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77020619"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>如何使用 Azure 認知搜尋在 Azure Blob 儲存體中編制檔的索引
 
@@ -136,7 +137,7 @@ blob 索引子可以從下列文件格式擷取文字：
 > [!NOTE]
 > Azure 認知搜尋會根據定價層限制所要解壓縮的文字數目：免費層的32000個字元、[基本]、[64000]、[標準] 8000000、[standard S2 的 4000000] 和 [標準 S3 的 16000000]。 在已截斷的文件中，索引子的狀態回應會包含警告。  
 
-* 顯示在 blob 中的使用者指定中繼資料屬性 (如果有的話)，會逐字擷取。
+* 顯示在 blob 中的使用者指定中繼資料屬性 (如果有的話)，會逐字擷取。 請注意，這需要使用與 blob 的中繼資料索引鍵相同的名稱來定義欄位。 例如，如果您的 blob 具有值為 `High`之 `Sensitivity` 的中繼資料索引鍵，您應該在搜尋索引中定義名為 `Sensitivity` 的欄位，它會填入 `High`的值。
 * 標準 blob 中繼資料屬性會擷取到下列欄位：
 
   * **metadata\_storage\_name** (Edm.String) - blob 的檔案名稱。 例如，如果您有 blob /my-container/my-folder/subfolder/resume.pdf，這個欄位的值是 `resume.pdf`。

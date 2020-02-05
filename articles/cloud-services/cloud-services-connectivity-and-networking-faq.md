@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: 22f7c0ba98390b391a79a121f120b8ab6172cfb9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7caeba0e88f63106eae80f7142b5d65463f8d7a7
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845360"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019395"
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 雲端服務之連線能力和網路服務問題：常見問題集 (FAQ)
 
@@ -101,8 +101,8 @@ IIS 的 URL Rewrite 模組可用來將流向雲端服務 (例如，\*.cloudapp.n
 
 若要確定您雲端服務 (也稱為 VIP) 的公眾對應 IP 位址永遠不會變更，以便幾個特定用戶端可常態地將它設為允許清單，我們建議您使用與它相關聯的保留 IP。 否則，如果您刪除部署，Azure 提供的虛擬 IP 會從您的訂用帳戶中解除配置。 若要成功地進行 VIP 交換作業，您需要有生產位置和預備位置的個別保留 IP。 如果沒有這些 IP，交換作業將會失敗。 若要保留 IP 位址，並將它與您的雲端服務相關聯，請參閱下列文章：
 
-- [保留現有雲端服務的 IP 位址](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
-- [使用服務組態檔建立保留的 IP 至雲端服務的關聯](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
+- [保留現有雲端服務的 IP 位址](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#reserve-the-ip-address-of-an-existing-cloud-service)
+- [使用服務組態檔建立保留的 IP 至雲端服務的關聯](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
 
 如果您的角色有多個執行個體時，將 RIP 與您的雲端服務建立關聯就應該不會導致任何停機時間。 或者，您可以將 Azure 資料中心的 IP 範圍新增至允許清單。 您可以在 [Microsoft 下載中心](https://www.microsoft.com/en-us/download/details.aspx?id=41653)找到所有 Azure IP 範圍。
 

@@ -3,12 +3,12 @@ title: 建立叢集的 Azure Load Balancer 規則
 description: 設定 Azure Load Balancer 來開啟 Azure Service Fabric 叢集的連接埠。
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.openlocfilehash: 5cc392a74b8cf5ef92be8b5783b5b70289e602af
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f4599b2e0174381ab7df04aeeb33db7e3ee60f26
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351488"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025379"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>開啟 Service Fabric 叢集的連接埠
 
@@ -60,7 +60,7 @@ Azure CLI 命令有幾個參數，如下表所述：
 
 
 >[!NOTE]
->如需如何使用 Azure CLI 建立負載平衡器的詳細資訊，請參閱[使用 Azure CLI 建立負載平衡器](../load-balancer/load-balancer-get-started-internet-arm-cli.md)。
+>如需如何使用 Azure CLI 建立負載平衡器的詳細資訊，請參閱[使用 Azure CLI 建立負載平衡器](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)。
 
 ## <a name="powershell"></a>PowerShell
 
@@ -96,7 +96,7 @@ $lb | Set-AzLoadBalancer
 至於 `New-AzLoadBalancerRuleConfig` 命令，`-FrontendPort` 代表負載平衡器公開給外部連線的連接埠，而 `-BackendPort` 代表 Service Fabric 應用程式正在接聽的連接埠。
 
 >[!NOTE]
->如需如何使用 PowerShell 建立負載平衡器的詳細資訊，請參閱[使用 PowerShell 建立負載平衡器](../load-balancer/load-balancer-get-started-internet-arm-ps.md)。
+>如需如何使用 PowerShell 建立負載平衡器的詳細資訊，請參閱[使用 PowerShell 建立負載平衡器](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

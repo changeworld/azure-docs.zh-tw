@@ -2,22 +2,22 @@
 title: 在我的應用程式入口網站上更新您的群組資訊-Azure AD
 description: 瞭解如何查看和更新您的群組相關資訊，包括觀看您擁有的群組、建立新群組、查看您已經是成員的群組，以及加入您不在其中的任何群組。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 3/21/2019
-ms.author: lizross
+ms.date: 02/03/2020
+ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: de7fa1952b2e23276a9f088f5840e54675b44d01
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 00639462fce4e67561b8e50609264d4423872c82
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704947"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022291"
 ---
 # <a name="update-your-groups-info-on-the-my-apps-portal"></a>在我的應用程式入口網站上更新您的群組資訊
 
@@ -98,8 +98,6 @@ ms.locfileid: "76704947"
 
 建立群組之後，您可以編輯其詳細資料，包括更新任何現有的資訊。
 
-### <a name="to-edit-your-details"></a>編輯您的詳細資料
-
 1. 從 [**群組**] 頁面中選取您想要編輯的群組，然後在 [ *&lt;group_name&gt;* ] 頁面上選取 [**編輯詳細資料**]。
 
     [**編輯詳細資料**] 方塊隨即出現，您可以更新最初建立群組時所新增的資訊。
@@ -108,9 +106,7 @@ ms.locfileid: "76704947"
 
 ## <a name="add-or-remove-a-member"></a>新增或移除成員
 
-您可以為任何自己的群組新增或移除成員。
-
-### <a name="to-add-or-remove-a-member"></a>若要加入或移除成員
+您可以為您擁有的任何群組新增或移除成員。
 
 1. 選取您想要新增成員的群組，然後在 [ *&lt;group_name&gt;* ] 頁面上選取 [ **+** ]。
 
@@ -130,8 +126,6 @@ ms.locfileid: "76704947"
 
 如果您的組織允許，您可以續訂 Office 365 群組，延長您的到期日。
 
-### <a name="to-renew-a-group"></a>若要更新群組
-
 1. 選取您想要更新的 Office 365 群組，然後選取 [**更新群組**]。
 
     ![續訂 Office 365 群組，延長到期日](media/my-apps-portal/my-apps-portal-renew-group-link.png)
@@ -144,8 +138,6 @@ ms.locfileid: "76704947"
 
 您可以隨時刪除任何您自己的群組。 不過，如果您不小心刪除了某個群組，就必須建立它並再次新增成員。
 
-### <a name="to-delete-the-group"></a>若要刪除群組
-
 1. 選取您要永久刪除的群組，然後在 [ *&lt;group_name&gt;* ] 頁面上選取 [**刪除群組**]。
 
     ![已反白顯示刪除群組連結的 < Group_name > 頁面](media/my-apps-portal/my-apps-portal-delete-group-link.png)
@@ -156,9 +148,7 @@ ms.locfileid: "76704947"
 
 ## <a name="join-an-existing-group"></a>加入現有的群組
 
-您可以從 [**群組**] 頁面加入已存在的群組。
-
-### <a name="to-join-or-leave-a-group"></a>若要加入或離開群組
+您可以從 [**群組**] 頁面加入或離開已存在的群組。
 
 1. 在 [**群組**] 頁面上，從 [**我所在的群組**] 區域中選取 [**加入群組**]。
 
@@ -172,7 +162,7 @@ ms.locfileid: "76704947"
 
 3. 如果您不小心加入群組，或是您不再需要它的一部分，可以從 [**加入群組**] 頁面中選取組名，然後選取 [**離開群組**]。
 
-    ![[加入群組] 頁面，反白顯示 [保留群組] 按鈕](media/my-apps-portal/my-apps-portal-leave-group-link.png)    
+    ![[加入群組] 頁面，反白顯示 [保留群組] 按鈕](media/my-apps-portal/my-apps-portal-leave-group-link.png)
 
 ## <a name="next-steps"></a>後續步驟
 

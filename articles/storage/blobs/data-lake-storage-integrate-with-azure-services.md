@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 11/01/2019
 ms.author: normesta
-ms.openlocfilehash: de57776ea3bcc7486c5c26182c7e2a65e643d81c
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 7f43f69ebdac05b8f99739ea6b51453671b9a70a
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75862997"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024546"
 ---
 # <a name="integrate-azure-data-lake-storage-with-azure-services"></a>整合 Azure Data Lake Storage 與 Azure 服務
 
@@ -34,7 +34,7 @@ ms.locfileid: "75862997"
 |Data Box|  [使用 Azure 資料箱將內部部署 HDFS 存放區中的資料移轉至 Azure 儲存體](data-lake-storage-migrate-on-premises-hdfs-cluster.md)|
 |HDInsight | [搭配 Azure HDInsight 叢集使用 Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br>[搭配 Data Lake Storage Gen2 使用 HDFS CLI](data-lake-storage-use-hdfs-data-lake-storage.md) <br>[教學課程：在 Azure HDInsight 上使用 Apache Hive 來解壓縮、轉換和載入資料](data-lake-storage-tutorial-extract-transform-load-hive.md) |
 |IoT Hub | [使用 IoT 中樞訊息路由將裝置到雲端訊息傳送至不同的端點](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)|
-|Power BI|  [使用 Power BI 分析 Data Lake Storage Gen2 中的資料](data-lake-storage-use-power-bi.md) |
+|Power BI|  [使用 Power BI 分析 Data Lake Storage Gen2 中的資料](https://docs.microsoft.com/power-query/connectors/datalakestorage) |
 |SQL 資料倉儲 | [搭配 Azure SQL 資料倉儲使用](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-sql-data-warehouse-polybase)|
 |SQL Server Integration Services (SSIS) | [Azure 儲存體連線管理員](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-2017)|
 

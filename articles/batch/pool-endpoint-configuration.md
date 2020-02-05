@@ -2,18 +2,18 @@
 title: 在 Azure Batch 集區中設定節點端點 | Microsoft Docs
 description: 如何設定或停用 Azure Batch 集區內之計算節點上的 SSH 或 RDP 連接埠存取權。
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.service: batch
 ms.topic: article
 ms.date: 02/13/2018
-ms.author: jushiman
-ms.openlocfilehash: 1ac4c7647125cd6164235e98a4a828f6b072cbee
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.author: labrenne
+ms.openlocfilehash: 098ccf999391412520989c4ec2433fd73bc0a72d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029459"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77017219"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>設定或停用 Azure Batch 集區內計算節點的遠端存取權
 

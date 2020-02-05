@@ -1,24 +1,24 @@
 ---
 title: 驗證方法 |Microsoft Azure 對應
-description: 在本文中，您將瞭解使用 Microsoft Azure Maps 服務的 Azure Active Directory （Azure AD）或共用金鑰驗證。 瞭解如何取得 Azure 地圖服務訂用帳戶金鑰。
+description: 在本文中，您將瞭解 Azure Active Directory （Azure AD）和共用金鑰驗證。 這兩者都用於 Microsoft Azure Maps 服務。 瞭解如何取得 Azure 地圖服務訂用帳戶金鑰。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 12/30/2019
+ms.date: 01/28/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 006adae99b2430f4c08ce5fc692598e48f45c239
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 2bcc2d4c92e903b723bffa8461a8a1a10534d3e4
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911833"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025617"
 ---
 # <a name="authentication-with-azure-maps"></a>向 Azure 地圖服務驗證
 
-Azure 地圖服務支援兩種驗證要求的方式：共用金鑰和 Azure Active Directory （Azure AD）。 本文說明這些驗證方法，協助指導您的實作。
+Azure 地圖服務支援兩種驗證要求的方式：共用金鑰驗證和 Azure Active Directory 驗證。 本文說明這些驗證方法，協助指導您的實作。
 
 ## <a name="shared-key-authentication"></a>共用金鑰驗證
 
@@ -27,23 +27,22 @@ Azure 地圖服務支援兩種驗證要求的方式：共用金鑰和 Azure Acti
 如需在 Azure 入口網站中查看金鑰的詳細資訊，請參閱[管理驗證](https://aka.ms/amauthdetails)。
 
 > [!Tip]
-> 建議您定期重新產生金鑰。 您會收到兩個金鑰，以便使用一個金鑰維持連線，同時重新產生另一個金鑰。 在重新產生金鑰時，必須對所有存取此帳戶的應用程式進行更新，使其使用新的金鑰。
+> 建議您定期重新產生金鑰。 系統會提供您兩個金鑰，以便您在重新產生另一個金鑰時維持連線。 當您重新產生金鑰時，您必須使用新的金鑰來更新任何存取您帳戶的應用程式。
 
 
 
 ## <a name="authentication-with-azure-active-directory-preview"></a>使用 Azure Active Directory 進行驗證 (預覽)
 
-Azure 地圖服務現在提供 [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) 整合，以驗證 Azure 地圖服務的要求。 Azure AD 提供以身分識別為基礎的驗證（包括[角色型存取控制（RBAC））](https://docs.microsoft.com/azure/role-based-access-control/overview)，以將使用者層級、群組層級和應用層級的存取權授與 Azure 地圖服務資源。 後續幾節可協助您了解 Azure 地圖服務與 Azure AD 整合的概念和元件。
-
+Azure 地圖服務現在會使用[Azure Active Directory （Azure AD）](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)提供 Azure 地圖服務服務的要求驗證。 Azure AD 提供以身分識別為基礎的驗證，包括以[角色為基礎的存取控制（RBAC）](https://docs.microsoft.com/azure/role-based-access-control/overview)。 RBAC 是用來授與使用者層級、群組層級或應用層級的 Azure 地圖服務資源存取權。 下一節可協助您瞭解 Azure 地圖服務與 Azure AD 整合的概念和元件。
 ## <a name="authentication-with-oauth-access-tokens"></a>使用 OAuth 存取權杖進行驗證
 
 針對與包含 Azure 地圖服務帳戶的 Azure 訂用帳戶相關聯的 Azure AD 租用戶，Azure 地圖服務可接受 **OAuth 2.0** 存取權杖。 Azure 地圖服務可接受下列項目的權杖：
 
-* Azure AD 使用者。 
-* 使用使用者所委派權限的夥伴應用程式。
-* 適用於 Azure 資源的受控識別。
+* Azure AD 使用者
+* 使用使用者所委派許可權的合作夥伴應用程式
+* 適用於 Azure 資源的受控識別
 
-Azure 地圖服務會為每個 Azure 地圖服務帳戶產生「唯一識別碼 (用戶端識別碼)」。 當您將此用戶端識別碼與其他參數結合時，您可以根據您的 Azure 環境，指定下表中的值，以要求來自 Azure AD 的權杖。
+Azure 地圖服務會為每個 Azure 地圖服務帳戶產生「唯一識別碼 (用戶端識別碼)」。 當您將此用戶端識別碼與其他參數結合時，您可以從 Azure AD 要求權杖。 若要要求權杖，您必須根據您的 Azure 環境指定下表中的值。
 
 | Azure 環境   | Azure AD token 端點 |
 | --------------------|-------------------------|
@@ -57,7 +56,7 @@ Azure 地圖服務會為每個 Azure 地圖服務帳戶產生「唯一識別碼 
 
 ## <a name="request-azure-map-resources-with-oauth-tokens"></a>使用 OAuth 權杖要求 Azure 地圖服務資源
 
-從 Azure AD 接收權杖後，便可將設定了下列兩個必要要求標頭的要求傳送至 Azure 地圖服務：
+從 Azure AD 接收到權杖之後，會將要求傳送至具有下列必要要求標頭集的 Azure 地圖服務：
 
 | 要求標頭    |    值    |
 |:------------------|:------------|
@@ -80,9 +79,7 @@ Authorization: Bearer eyJ0e….HNIVN
 
 ## <a name="control-access-with-rbac"></a>使用 RBAC 控制存取權
 
-Azure AD 可讓您使用 RBAC 來控制安全資源的存取權。 建立 Azure 地圖服務帳戶並在您的 Azure AD 租使用者中註冊您的 Azure 地圖服務 Azure AD 應用程式之後，您可以在 Azure 地圖服務帳戶入口網站頁面上設定使用者、群組、應用程式或 Azure 資源的 RBAC。
-
-Azure 地圖服務可透過 Azure 資源的受控識別，支援個別 Azure AD 使用者、群組、應用程式和 Azure 服務的讀取存取控制。
+在 Azure AD 中，使用 RBAC 來控制受保護資源的存取權。 設定您的 Azure 地圖服務帳戶，並註冊您的 Azure 地圖服務 Azure AD 租使用者。 Azure 地圖服務可透過 Azure 資源的受控識別，支援個別 Azure AD 使用者、群組、應用程式、Azure 資源和 Azure 服務的讀取存取控制。 在 [Azure 地圖服務入口網站] 頁面上，您可以設定所需角色的 RBAC。
 
 ![Azure 地圖服務資料讀者 (預覽)](./media/azure-maps-authentication/concept.png)
 
@@ -90,7 +87,7 @@ Azure 地圖服務可透過 Azure 資源的受控識別，支援個別 Azure AD 
 
 ## <a name="managed-identities-for-azure-resources-and-azure-maps"></a>Azure 資源和 Azure 地圖服務的受控識別
 
-[Azure 資源的受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)可為 Azure 服務 (Azure App Service、Azure Functions、Azure 虛擬機器等等) 提供自動的受控識別，以便獲得授權來存取 Azure 地圖服務。  
+[適用于 azure 資源的受控](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)識別可為 azure 服務提供自動管理的身分識別，以獲得授權來存取 Azure 地圖服務服務。 受控識別的一些範例包括： Azure App Service、Azure Functions 和 Azure 虛擬機器。
 
 ## <a name="next-steps"></a>後續步驟
 

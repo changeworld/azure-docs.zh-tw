@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6a07d019893e69308b35b4a941fe50d2736efe01
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: fb36b81d1b2a343da334d63d9c0555ed537ef122
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921906"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024648"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions 的規模調整和主控
 
@@ -26,7 +26,7 @@ ms.locfileid: "75921906"
 
 Premium 方案提供額外的功能，例如高階計算實例、可無限期地保留實例，以及 VNet 連線能力。
 
-App Service 方案可讓您利用您所管理的專用基礎結構。 您的函數應用程式不會根據事件進行調整，這表示永遠不會相應減少為零。 （需要啟用[Always on](#always-on) ）。
+App Service 方案可讓您利用您所管理的專用基礎結構。 您的函數應用程式不會根據事件進行調整，這表示永遠不會相應縮小為零。 （需要啟用[Always on](#always-on) ）。
 
 ## <a name="hosting-plan-support"></a>主控方案支援
 
@@ -152,7 +152,7 @@ Azure Functions 的尺規單位是函式應用程式。 當函式應用程式相
 
 縮放比例會因為許多因素而有所不同，也會因為選取的觸發程序和語言不同，而進行不同的規模調整。 有幾個複雜的調整行為需要注意：
 
-* 單一函式應用程式只能相應增加至最多 200 個執行個體。 單一執行個體可能會一次處理一個以上的訊息或要求，因此沒有設定平行執行的數目上限。
+* 單一函數應用程式只會向外延展到最多200實例。 單一執行個體可能會一次處理一個以上的訊息或要求，因此沒有設定平行執行的數目上限。
 * 針對 HTTP 觸發程式，最多隻會每隔1秒配置一次新的實例。
 * 對於非 HTTP 觸發程式，新的實例最多隻會每隔30秒配置一次。
 

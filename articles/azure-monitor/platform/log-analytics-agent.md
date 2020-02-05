@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/29/2020
-ms.openlocfilehash: d43b580f60f5ae8d2782cf9762b02aa1360e5a40
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 57e560c52c9a8f10586c31231bcc9d6acc667558
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901195"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019531"
 ---
 # <a name="collect-log-data-with-the-log-analytics-agent"></a>使用 Log Analytics 代理程式收集記錄資料
 
@@ -106,7 +106,6 @@ Windows 代理程式正式支援下列 Windows 作業系統版本：
 
 |代理程式資源|連接埠 |方向 |略過 HTTPS 檢查|
 |------|---------|--------|--------|   
-|OMS *. azure .com |連接埠 443 |輸出 |是 |
 |*.ods.opinsights.azure.com |連接埠 443 |輸出|是 |  
 |*.oms.opinsights.azure.com |連接埠 443 |輸出|是 |  
 |*.blob.core.windows.net |連接埠 443 |輸出|是 |  

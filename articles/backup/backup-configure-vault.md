@@ -3,12 +3,12 @@ title: 使用 MARS 代理程式備份 Windows 電腦
 description: 使用 Azure 備份 Microsoft Recovery Services （MARS）代理程式來備份 Windows 機器。
 ms.topic: conceptual
 ms.date: 06/04/2019
-ms.openlocfilehash: c6e5ea1ed1ec9dd922793dfc6834238c431ddc38
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 990929cc95d1c25117873ca39415d33370456b91
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "76290864"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025532"
 ---
 # <a name="back-up-windows-machines-with-the-azure-backup-mars-agent"></a>使用 Azure 備份 MARS 代理程式備份 Windows 機器
 
@@ -215,10 +215,10 @@ Azure 備份會自動處理保存庫的儲存體。 您必須指定該儲存體�
         -   在當月的上一周的午夜和下午6:00 進行的備份會保留12個月。
         -   3月最後一周的星期六所進行的備份會保留10年。
 
-    ![保留範例](./media/backup-configure-vault/retention-example.png)
+        ![保留範例](./media/backup-configure-vault/retention-example.png)
 
 
-11. 在 **[選擇初始備份類型**] 中，決定您是否要透過網路進行初始備份，或使用離線備份（如需離線備份的詳細資訊，請參閱這[篇文章](backup-azure-backup-import-export.md)）。 若要透過網路進行初始備份，請選取 **[自動透過網路**]，然後按 **[下一步]** 。
+11. 在 **[選擇初始備份類型**] 中，決定您是否要透過網路進行初始備份，或使用離線備份（如需離線備份的詳細資訊，請參閱這[篇文章](offline-backup-azure-data-box.md)）。 若要透過網路進行初始備份，請選取 **[自動透過網路**]，然後按 **[下一步]** 。
 
     ![初始備份類型](./media/backup-azure-manage-mars/choose-initial-backup-type.png)
 
@@ -245,7 +245,7 @@ Azure 備份會自動處理保存庫的儲存體。 您必須指定該儲存體�
 5. 在資料中心，磁片資料會複製到 Azure 儲存體帳戶。
 6. Azure 備份會將資料從儲存體帳戶複製到保存庫，並排定增量備份。
 
-[深入瞭解](backup-azure-backup-import-export.md)離線植入。
+[深入瞭解](offline-backup-azure-data-box.md)離線植入。
 
 ### <a name="enable-network-throttling"></a>啟用網路節流
 

@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 84d5d7fc6490420857032ead964f5bccea8f397a
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 04e7aeddaa4e3aba38f1bf08893b0b0487109653
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910677"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025447"
 ---
 # <a name="azure-maps-render-coverage"></a>Azure 地圖轉譯涵蓋範圍
 
-Azure 地圖會同時使用點陣圖格和向量圖格來建立地圖。 在其最低解析度下，整個世界會剛好放進單一圖格裡。 在其最高解析度下，單一圖格代表 38 平方公尺。 因此，當您放大地圖時，將可更詳細地查看大陸、區域、城市和個別街道。 如需詳細資訊，請參閱[縮放層級和圖格格線](zoom-levels-and-tile-grid.md)。
+Azure 地圖會同時使用點陣圖格和向量圖格來建立地圖。 在最低解析度中，整個世界都適合單一磚。 在最高的解析度上，單一磚代表38正方形計量。 當您放大時，您會看到有關大陸、區域、城市和個別街道的更多詳細資料。 如需磚的詳細資訊，請參閱[縮放層級和磚方格](zoom-levels-and-tile-grid.md)。
 
-不過，地圖服務並未對所有區域提供相同層級的資訊和精確度。 下表提供各個區域預期應有之轉譯詳細程度的相關資訊。
+不過，地圖服務並未對所有區域提供相同層級的資訊和精確度。 下表詳細說明您可以為每個區域呈現的資訊層級。
 
 ## <a name="legend"></a>圖例
 

@@ -1,7 +1,7 @@
 ---
-title: CloudSimple 維護和更新
-titleSuffix: Azure VMware Solution by CloudSimple
-description: 說明已排程維護和更新的 CloudSimple 服務程式
+title: Azure VMware 解決方案（AVS）-AVS 維護和更新
+description: 說明已排程維護和更新的 AVS 服務程式
+titleSuffix: Azure VMware Solutions (AVS)
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -9,16 +9,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 826fae1123b355a4143118b53ba649f0939acaf7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bf5937183fc20579ecd21aca8543a0a78d4b9ff3
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75372818"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025022"
 ---
-# <a name="cloudsimple-maintenance-and-updates"></a>CloudSimple 維護和更新
+# <a name="avs-maintenance-and-updates"></a>AVS 維護和更新
 
-私用雲端環境的設計是不會有單一失敗點。
+AVS 私用雲端環境的設計是不會有單一失敗點。
 
 * ESXi 叢集已設定 vSphere 高可用性（HA）。 叢集的大小會調整為至少有一個備用節點可供復原。
 * 多餘的主要儲存體是由 vSAN 提供，這需要至少三個節點才能針對單一失敗提供保護。 vSAN 可以設定為較大的叢集提供更高的復原能力。
@@ -26,14 +26,14 @@ ms.locfileid: "75372818"
 * ESXi 主機具有多餘的風扇和 Nic。
 * TOR 和書脊交換器會在 HA 配對中設定，以提供復原功能。
 
-CloudSimple 會持續監視下列 Vm 的執行時間和可用性，並提供可用性 Sla：
+AVS 會持續監視下列 Vm 的執行時間和可用性，並提供可用性 Sla：
 
 * ESXi 主機
 * vCenter
 * PSC
 * NSX 管理員
 
-CloudSimple 也會持續監視失敗的下列各項：
+AVS 也會針對失敗持續監視下列各項：
 
 * 硬碟
 * 實體 NIC 埠
@@ -45,7 +45,7 @@ CloudSimple 也會持續監視失敗的下列各項：
 
 如果磁片或節點失敗，新的節點會自動新增至受影響的 VMware 叢集，以立即恢復健全狀況。
 
-CloudSimple 會在私人雲端中備份、維護和更新這些 VMware 元素：
+AVS 會在 AVS 私人雲端中備份、維護和更新這些 VMware 元素：
 
 * ESXi
 * vCenter 平臺服務
@@ -55,7 +55,7 @@ CloudSimple 會在私人雲端中備份、維護和更新這些 VMware 元素：
 
 ## <a name="back-up-and-restore"></a>備份和還原
 
-CloudSimple 備份包括：
+AVS 備份包含：
 
 * VCenter、PSC 和 DVS 規則的夜間增量備份。
 * 用來在應用層備份元件的 vCenter 原生 Api。
@@ -66,15 +66,15 @@ CloudSimple 備份包括：
 
 ## <a name="maintenance"></a>維護
 
-CloudSimple 會執行數種預定的維護。
+AVS 會進行幾種預定的維護。
 
 ### <a name="backendinternal-maintenance"></a>後端/內部維護
 
-這種維護通常牽涉到重新設定實體資產或安裝軟體修補程式。 它不會影響所服務資產的一般耗用量。 使用冗余的 Nic 進入每個實體機架時，一般的網路流量和私人雲端作業不會受到影響。 您可能會注意到，只有在您的組織預期在維護間隔期間使用完整多餘的頻寬時，才會影響效能。
+這種維護通常牽涉到重新設定實體資產或安裝軟體修補程式。 它不會影響所服務資產的一般耗用量。 使用冗余的 Nic 進入每個實體機架時，一般網路流量和 AVS 私人雲端作業不會受到影響。 您可能會注意到，只有在您的組織預期在維護間隔期間使用完整多餘的頻寬時，才會影響效能。
 
-### <a name="cloudsimple-portal-maintenance"></a>CloudSimple 入口網站維護
+### <a name="avs-portal-maintenance"></a>AVS 入口網站維護
 
-更新 CloudSimple 控制平面或基礎結構時，需要一些有限的服務停機時間。 目前，維護間隔的頻率可以是每個月一次。 頻率預期會在一段時間後遭到拒絕。 CloudSimple 會提供入口網站維護的通知，並盡可能縮短間隔。 在入口網站維護間隔期間，下列服務會繼續運作而不會產生任何影響：
+當您更新 AVS 控制平面或基礎結構時，需要一些有限的服務停機時間。 目前，維護間隔的頻率可以是每個月一次。 頻率預期會在一段時間後遭到拒絕。 AVS 提供入口網站維護的通知，並盡可能縮短間隔。 在入口網站維護間隔期間，下列服務會繼續運作而不會產生任何影響：
 
 * VMware 管理平面和應用程式
 * vCenter 存取
@@ -83,7 +83,7 @@ CloudSimple 會執行數種預定的維護。
 
 ### <a name="vmware-infrastructure-maintenance"></a>VMware 基礎結構維護
 
-有時候，您必須對 VMware 基礎結構的設定進行變更。  目前，這些間隔可能每隔1-2 個月發生一次，但頻率預期會隨著時間而遭到拒絕。 這種類型的維護通常可以執行，而不會中斷 CloudSimple 服務的一般耗用量。 在 VMware 維護間隔期間，下列服務會繼續運作而不會產生任何影響：
+有時候，您必須對 VMware 基礎結構的設定進行變更。 目前，這些間隔可能每隔1-2 個月發生一次，但頻率預期會隨著時間而遭到拒絕。 這種類型的維護通常可以執行，而不會中斷使用 AVS 服務的一般耗用量。 在 VMware 維護間隔期間，下列服務會繼續運作而不會產生任何影響：
 
 * VMware 管理平面和應用程式
 * vCenter 存取
@@ -92,7 +92,7 @@ CloudSimple 會執行數種預定的維護。
 
 ## <a name="updates-and-upgrades"></a>更新與升級
 
-CloudSimple 負責在私人雲端中管理 VMware 軟體（ESXi、vCenter、PSC 和 NSX）的生命週期。
+AVS 負責在 AVS 私用雲端中管理 VMware 軟體（ESXi、vCenter、PSC 和 NSX）的生命週期。
 
 軟體更新包括：
 
@@ -100,9 +100,9 @@ CloudSimple 負責在私人雲端中管理 VMware 軟體（ESXi、vCenter、PSC 
 * **更新**。 VMware 堆疊元件的次要版本變更。
 * **升級**。 VMware 堆疊元件的主要版本變更。
 
-CloudSimple 會在從 VMware 提供重大安全性修補程式後立即進行測試。 根據 SLA，CloudSimple 會在一周內匯總私人雲端環境的安全性修補程式。
+當您從 VMware 推出重大安全性修補程式時，AVS 就會立即進行測試。 根據 SLA，AVS 會在一周內推出「AVS 私用雲端環境」的安全性修補程式。
 
-CloudSimple 提供 VMware 軟體元件的每季維護更新。 當 VMware 軟體有新的主要版本可供使用時，CloudSimple 會與客戶合作，協調適合的維護時段進行升級。
+AVS 提供 VMware 軟體元件的每季維護更新。 當 VMware 軟體有新的主要版本可用時，AVS 會與客戶合作，協調適合的維護時段來進行升級。
 
 ## <a name="next-steps"></a>後續步驟
 

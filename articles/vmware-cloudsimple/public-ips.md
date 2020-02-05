@@ -1,6 +1,6 @@
 ---
-title: 依 CloudSimple 的 Azure VMware 解決方案-配置公用 IP 位址
-description: 說明如何為私人雲端環境中的虛擬機器配置公用 IP 位址
+title: Azure VMware 解決方案（AVS）-配置公用 IP 位址
+description: 說明如何在 AVS 私用雲端環境中配置虛擬機器的公用 IP 位址
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 565c9ad0fbd37b026a1ba555d83b9032d2efcba4
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 87133f5efb9f096d3fdb0956aab1caac58b4bd94
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773791"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024291"
 ---
-# <a name="allocate-public-ip-addresses-for-private-cloud-environment"></a>配置私人雲端環境的公用 IP 位址
+# <a name="allocate-public-ip-addresses-for-avs-private-cloud-environment"></a>為 AVS 私人雲端環境配置公用 IP 位址
 
-開啟 [網路] 頁面上的 [公用 ip] 索引標籤，為您的私人雲端環境中的虛擬機器配置公用 IP 位址。
+開啟 [網路] 頁面上的 [公用 ip] 索引標籤，為您的 AVS 私用雲端環境中的虛擬機器配置公用 IP 位址。
 
-1. [存取 CloudSimple 入口網站](access-cloudsimple-portal.md)，然後選取側邊功能表上的 [**網路**]。
+1. [存取 AVS 入口網站](access-cloudsimple-portal.md)，然後選取側邊功能表上的 [**網路**]。
 2. 選取 [**公用 ip**]。
 3. 按一下 [**新增公用 IP**]。
 

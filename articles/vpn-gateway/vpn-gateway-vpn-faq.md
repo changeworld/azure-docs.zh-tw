@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: 50b751d8e4e1a69a34e6421884f8b99c3eeb5924
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: c556b71acf814203a67317039dafeede5f7b65a6
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895987"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016743"
 ---
 # <a name="vpn-gateway-faq"></a>VPN 閘道常見問題集
 
@@ -68,14 +68,15 @@ VPN 閘道是一種虛擬網路閘道。 VPN 閘道可透過公用連線在您�
 
 路由式閘道實作路由式 VPN。 路由式 VPN 會使用 IP 轉送或路由表中的「路由」，直接封包至其對應的通道介面。 然後，通道介面會加密或解密輸入和輸出通道的封包。 路由式 VPN 的原則或流量選取器會設定為任意對任意 (或萬用字元)。
 
-### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>可以將我的原則型 VPN 閘道更新為路由型嗎？
+### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>我可以將以原則為基礎的 VPN 閘道更新為路由式嗎？
+
 不會。 Azure Vnet 閘道類型無法從原則式變更為以路由為基礎或其他方式。 閘道必須刪除並重新建立，程序大約要 60 分鐘的時間。 閘道的 IP 位址不會保留，預先共用金鑰 (PSK) 也不會保留。
 1. 刪除與要刪除之閘道相關聯的任何連線。
 1. 刪除閘道：
-1. [Azure 入口網站](vpn-gateway-delete-vnet-gateway-portal.md)
-1. [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
-1. [Azure Powershell - 傳統](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
-1. [建立所需類型的新閘道，並且完成 VPN 設定](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway)
+   - [Azure 入口網站](vpn-gateway-delete-vnet-gateway-portal.md)
+   - [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
+   - [Azure PowerShell-傳統](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
+1. [建立所需類型的新閘道，並完成 VPN 設定](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway)。
 
 ### <a name="do-i-need-a-gatewaysubnet"></a>是否需要 'GatewaySubnet'？
 
@@ -89,11 +90,15 @@ VPN 閘道是一種虛擬網路閘道。 VPN 閘道可透過公用連線在您�
 
 ### <a name="can-i-get-my-vpn-gateway-ip-address-before-i-create-it"></a>在建立之前是否可以取得我的 VPN 閘道 IP 位址？
 
-不會。 您必須先建立閘道才能取得 IP 位址。 如果您刪除並重新建立 VPN 閘道，IP 位址就會變更。
+區域冗余和區域性閘道（名稱中有_AZ_的閘道 sku）都依賴_標準 SKU_ Azure 公用 IP 資源。 Azure 標準 SKU 公用 IP 資源必須使用靜態配置方法。 因此，當您建立要用於它的標準 SKU 公用 IP 資源時，您的 VPN 閘道就會有公用 IP 位址。
+
+針對非區域多餘和非區域性閘道（名稱中_沒有_ _AZ_的閘道 sku），您無法在建立 VPN 閘道 IP 位址之前取得它。 只有當您刪除並重新建立 VPN 閘道時，IP 位址才會變更。
 
 ### <a name="can-i-request-a-static-public-ip-address-for-my-vpn-gateway"></a>是否可以要求我的 VPN 閘道的靜態公用 IP 位址？
 
-不會。 僅支援動態 IP 位址指派。 不過，這不表示 IP 位址變更之後已被指派至您的 VPN 閘道。 VPN 閘道 IP 位址只會在刪除或重新建立閘道時變更。 VPN 閘道公用 IP 位址不會因為重新調整、重設或 VPN 閘道的其他內部維護/升級而變更。 
+如上所述，區域冗余和區域性閘道（在名稱中具有_AZ_的閘道 sku）都依賴_標準 SKU_ Azure 公用 IP 資源。 Azure 標準 SKU 公用 IP 資源必須使用靜態配置方法。
+
+針對非區域多餘和非區域性閘道（_不_具有_AZ_ in Name 的閘道 sku），只支援動態 IP 位址指派。 不過，這並不表示 IP 位址會在指派給您的 VPN 閘道之後變更。 VPN 閘道 IP 位址變更的唯一時機是刪除閘道後再重新建立。 當您調整、重設或完成 VPN 閘道的其他內部維護和升級時，VPN 閘道公用 IP 位址不會變更。
 
 ### <a name="how-does-my-vpn-tunnel-get-authenticated"></a>我的 VPN 通道如何獲得驗證？
 

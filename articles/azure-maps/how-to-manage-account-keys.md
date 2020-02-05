@@ -3,17 +3,17 @@ title: 在 Azure 入口網站中管理您的 Azure 地圖服務帳戶 |Microsoft
 description: 在本文中，您將瞭解如何使用 Azure 入口網站來管理您的 Microsoft Azure Maps 帳戶。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/14/2019
+ms.date: 01/27/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 92c76780473372c3e2ef87cdf4da0f21a22d9ac6
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: a983eab03e948d092af652962d75211eb8ee3e7b
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911506"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025600"
 ---
 # <a name="manage-your-azure-maps-account"></a>管理 Azure 地圖服務帳戶
 
@@ -31,13 +31,13 @@ ms.locfileid: "75911506"
 
 4. 輸入新帳戶的資訊。
 
-![在 Azure 入口網站中輸入 Azure 地圖服務帳戶資訊](./media/how-to-manage-account-keys/new-account-portal.png)
+[![在 Azure 入口網站中輸入 Azure 地圖服務帳戶資訊](./media/how-to-manage-account-keys/new-account-portal.png)](./media/how-to-manage-account-keys/new-account-portal.png#lightbox)
 
 ## <a name="delete-an-account"></a>刪除帳戶
 
 您可以從 Azure 入口網站刪除帳戶。 瀏覽至帳戶概觀頁面，然後選取 [刪除]。
 
-![在 Azure 入口網站中刪除您的 Azure 地圖服務帳戶](./media/how-to-manage-account-keys/account-delete-portal.png)
+[![在 Azure 入口網站中刪除您的 Azure 地圖服務帳戶](./media/how-to-manage-account-keys/account-delete-portal.png)](./media/how-to-manage-account-keys/account-delete-portal.png#lightbox)
 
 接著，您會看到確認頁面。 您可以藉由鍵入帳戶名稱來確認刪除該帳戶。
 

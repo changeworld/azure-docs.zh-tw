@@ -4,17 +4,17 @@ description: 使用 Azure Batch 和其他 Azure 服務，藉由高載至雲端�
 services: batch
 ms.service: batch
 author: davefellows
-manager: gwallace
-ms.author: jushiman
+manager: evansma
+ms.author: labrenne
 ms.date: 02/07/2019
 ms.topic: conceptual
 ms.custom: seodec18
-ms.openlocfilehash: a04f59983aca4b7db1a58ab4e8b8a2da47a52783
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 20442a6618ca9357bb3be95879b68bffca45a40d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026305"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022948"
 ---
 # <a name="reference-architectures-for-azure-rendering"></a>Azure 轉譯的參考架構
 

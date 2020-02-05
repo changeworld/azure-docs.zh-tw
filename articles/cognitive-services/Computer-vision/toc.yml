@@ -117,7 +117,7 @@
       href: concept-recognizing-text.md
     - name: 成人內容偵測
       href: concept-detecting-adult-content.md
-- name: 使用說明指南
+- name: 操作指南
   items:
     - name: 呼叫電腦視覺 API
       href: Vision-API-How-to-Topics/HowToCallVisionAPI.md
@@ -135,8 +135,6 @@
         - name: 使用容器執行個體
           href: deploy-computer-vision-on-container-instances.md
           displayName: 'container instances, container, containers, images'
-    - name: 使用電腦視覺連線服務
-      href: vs-computer-vision-connected-service.md
     - name: 即時分析影片
       href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
 - name: 參考

@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/12/2019
-ms.openlocfilehash: 1c65a456270cdca345504c07b927a7ef7e1f725b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3b631c068d1a444691345e054219208c4c8b0b8c
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440278"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77020041"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>對應資料流程中的接收轉換
 
@@ -52,6 +52,12 @@ Azure Data Factory 可以存取超過[90 的原生連接器](connector-overview.
 類似于 [選取] 轉換，在接收器的 [**對應**] 索引標籤中，您可以決定要寫入的傳入資料行。 根據預設，所有輸入資料行（包括漂移資料行）都會對應。 這就是所謂的「**自動對應**」。
 
 當您關閉自動對應時，您可以加入宣告固定的資料行對應或以規則為基礎的對應。 以規則為基礎的對應可讓您撰寫具有模式比對的運算式，而固定對應則會對應邏輯和實體資料行名稱。 如需以規則為基礎之對應的詳細資訊，請參閱[對應資料流程中的資料行模式](concepts-data-flow-column-pattern.md#rule-based-mapping-in-select-and-sink)。
+
+## <a name="custom-sink-ordering"></a>自訂接收順序
+
+根據預設，資料會以非決定性的順序寫入至多個接收。 執行引擎會在轉換邏輯完成時以平行方式寫入資料，而且接收順序可能會因每次執行而異。 若要指定和精確的接收順序，請在資料流程的 [一般] 索引標籤中啟用**自訂接收順序**。 啟用時，會依遞增順序順序寫入接收。
+
+![自訂接收順序](media/data-flow/custom-sink-ordering.png "自訂接收順序")
 
 ## <a name="data-preview-in-sink"></a>接收中的資料預覽
 

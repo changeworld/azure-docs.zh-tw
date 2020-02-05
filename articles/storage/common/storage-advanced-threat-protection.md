@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/16/2019
+ms.date: 02/04/2020
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: 8efbf2107104f31bcfc5e4e5669dbed1835a034b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f9889f58ead8d1dd35ceb50fa100b2b466cbe7cf
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457407"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022387"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-storage"></a>設定 Azure 儲存體的先進威脅防護
 
@@ -29,7 +29,7 @@ Azure 儲存體的先進威脅防護提供一層額外的安全性情報，可�
 
 ## <a name="set-up-advanced-threat-protection"></a>設定先進的威脅防護
 
-預設會針對您的儲存體帳戶啟用 [先進的威脅防護]。 您可以透過下列各節所述的任一種方式來設定「先進的威脅防護」。
+您可以透過下列各節所述的任一種方式來設定「先進的威脅防護」。
 
 ### <a name="portaltabazure-portal"></a>[入口網站](#tab/azure-portal)
 

@@ -44,7 +44,7 @@
   items:
     - name: 程式碼範例
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+News+Search'
-- name: 使用說明指南
+- name: 操作指南
   items:
     - name: 處理命中結果醒目提示
       href: ../Bing-Web-Search/hit-highlighting.md
@@ -56,10 +56,6 @@
       href: ../bing-web-search/resize-and-crop-thumbnails.md
     - name: 從 API v5 升級到 v7
       href: bing-news-upgrade-guide-v5-to-v7.md
-    - name: 使用 Visual Studio
-      items:
-        - name: 使用 Bing 新聞搜尋連線服務
-          href: vs-bing-news-search-connected-service.md
 - name: 概念
   items:
     - name: 傳送搜尋查詢
@@ -89,7 +85,7 @@
       maintainContext: true
 - name: 資源
   items:
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/search-api/news/'
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/911449-bing-news-search-api'

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: ffb9480508366b223e49f173df3dc76cb711116d
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 5aa75de694d05ce31becc6996aca419dff256a3f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76769178"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023543"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer 健康情況探查
 
@@ -257,6 +257,6 @@ AzureLoadBalancer 服務標籤會在您的[網路安全性群組](../virtual-net
 ## <a name="next-steps"></a>後續步驟
 
 - 深入了解[標準 Load Balancer](load-balancer-standard-overview.md)
-- [開始使用 PowerShell 在資源管理員中建立公用負載平衡器](load-balancer-get-started-internet-arm-ps.md)
+- [開始使用 PowerShell 在資源管理員中建立公用負載平衡器](quickstart-create-standard-load-balancer-powershell.md)
 - [適用於健康情況探查的 REST API](https://docs.microsoft.com/rest/api/load-balancer/loadbalancerprobes/)
 - 透過 [Load Balancer 的 Uservoice](https://aka.ms/lbuservoice) 要求新的健康情況探查功能

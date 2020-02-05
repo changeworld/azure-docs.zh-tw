@@ -91,7 +91,7 @@ ms.locfileid: "74034225"
 |    KoreaCentral          |    南韓中部                            |
 |    KoreaSouth            |    韓國南部                              |
 |    northcentralus        |    美國中北部                      |
-|    northeurope           |    北歐                          |
+|    northeurope           |    歐洲北部                          |
 |    southcentralus        |    美國中南部                      |
 |    southeastasia         |    東南亞                        |
 |    SouthIndia            |    印度南部                              |

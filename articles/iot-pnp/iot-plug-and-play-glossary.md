@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: b6516b07f24c40fcb95d47e05b22dd7672c10f2a
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: ef5ce9cc1cda7f1ff6b1985771e20cb20123e264
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531196"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025634"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>IoT 隨插即用預覽詞彙詞彙
 
@@ -117,7 +117,7 @@ IoT 中樞是託管於雲端中的受控服務，可做為 IoT 應用程式與�
 
 ## <a name="device-provisioning-service"></a>裝置佈建服務
 
-[Azure IoT Central](#azure-iot-central)使用裝置布建服務來管理所有裝置註冊和連線。 如需詳細資訊，請參閱[Azure 中的裝置連線能力 IoT Central](../iot-central/preview/overview-iot-central-get-connected.md)。 您也可以使用裝置布建服務來管理裝置註冊，並聯機至 IoT 中樞型 IoT 解決方案。 如需詳細資訊，請參閱[使用 Azure IoT 中樞裝置](../iot-dps/about-iot-dps.md)布建服務布建裝置。
+[Azure IoT Central](#azure-iot-central)使用裝置布建服務來管理所有裝置註冊和連線。 如需詳細資訊，請參閱[Azure 中的裝置連線能力 IoT Central](../iot-central/core/concepts-get-connected.md)。 您也可以使用裝置布建服務來管理裝置註冊，並聯機至 IoT 中樞型 IoT 解決方案。 如需詳細資訊，請參閱[使用 Azure IoT 中樞裝置](../iot-dps/about-iot-dps.md)布建服務布建裝置。
 
 ## <a name="device-registration"></a>裝置註冊
 
@@ -155,7 +155,7 @@ IoT 中樞查詢語言會用於多個用途。 例如，您可以使用語言來
 
 IoT 隨插即用裝置通常是小型的獨立計算裝置，可收集資料或控制其他裝置，以及執行軟體或固件來實行[裝置功能模型](#device-capability-model)。  例如，IoT 隨插即用裝置可能是環境監視裝置，或是智慧型農業灌溉系統的控制器。 您可以撰寫雲端裝載的 IoT 解決方案，從 IoT 隨插即用裝置進行命令、控制和接收資料。 [Azure IoT 認證裝置目錄](#certified-for-iot-device-catalog)會列出可用的 IoT 隨插即用裝置。 目錄中的每個 IoT 隨插即用裝置都已經過驗證，而且具有[裝置功能模型](#device-capability-model)。
 
-## <a name="microsoft-partner-center"></a>Microsoft 夥伴中心
+## <a name="microsoft-partner-center"></a>Microsoft 合作夥伴中心
 
 [Microsoft 合作夥伴中心](https://docs.microsoft.com/partner-center/)是您的組織管理其與 Microsoft 的端對端關係的地方。 您需要 Microsoft 合作夥伴中心帳戶，才能在[Azure IoT 認證入口網站](#azure-certified-for-iot-portal)中認證您的[IoT 隨插即用裝置](#iot-plug-and-play-device)。
 

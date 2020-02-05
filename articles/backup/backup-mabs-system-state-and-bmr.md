@@ -3,12 +3,12 @@ title: 系統狀態和裸機復原保護
 description: 使用 Azure 備份伺服器來備份系統狀態及提供裸機復原 (BMR) 保護。
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: 2940ef5b8c0c2a7d751c46209253d4f4dbe6d13f
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 0e89b149fe8b06bdd70c72aa442f50125c5e3786
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172255"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025498"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-with-azure-backup-server"></a>使用 Azure 備份伺服器來備份系統狀態及還原為裸機
 
@@ -140,7 +140,7 @@ Azure 備份伺服器可備份系統狀態及提供裸機復原 (BMR) 保護。
 
 12. 在 [指定線上保留原則] 頁面上，選取要如何在 Azure 中保留透過每日、每週、每月和每年備份所建立的復原點。
 
-13. 在 [選擇線上複寫] 頁面上，選取要如何進行首次的資料完整複寫。 您可以透過網路進行複寫，也可以執行離線備份 (離線植入)。 離線備份會使用 Azure 匯入功能。 如需詳細資訊，請參閱 [Azure Backup 中的離線備份工作流程](backup-azure-backup-import-export.md)。
+13. 在 [選擇線上複寫] 頁面上，選取要如何進行首次的資料完整複寫。 您可以透過網路進行複寫，也可以執行離線備份 (離線植入)。 離線備份會使用 Azure 匯入功能。 如需詳細資訊，請參閱 [Azure Backup 中的離線備份工作流程](offline-backup-azure-data-box.md)。
 
 14. 在 [摘要] 頁面上檢閱您的設定。 在選取 [建立群組] 後，系統就會開始進行首次的資料複寫。 當資料複寫完成時，[狀態] 頁面上的保護群組狀態會是 [正常]。 之後，系統會按照保護群組設定進行備份。
 

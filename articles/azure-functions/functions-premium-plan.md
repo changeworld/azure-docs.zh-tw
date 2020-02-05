@@ -7,7 +7,7 @@ ms.date: 10/16/2019
 ms.author: jehollan
 ms.openlocfilehash: 5f6825243b7e410b49b54d04a028b5d71610ea68
 ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/31/2019
 ms.locfileid: "75561949"
@@ -116,7 +116,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 |日本西部| ✔ | |
 |南韓中部| ✔ |  |
 |美國中北部| ✔ |  |
-|北歐| ✔ | ✔<sup>1</sup> |
+|歐洲北部| ✔ | ✔<sup>1</sup> |
 |美國中南部| ✔ | ✔<sup>1</sup> |
 |印度南部 | ✔ | |
 |東南亞| ✔ | ✔<sup>1</sup> |

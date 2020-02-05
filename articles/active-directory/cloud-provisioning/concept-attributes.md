@@ -15,12 +15,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fc68626959daaccb5ddc05ce6148c5948052d41
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: cd013b44454cc0283ef84d6a978b15400eca8786
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75549375"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022489"
 ---
 # <a name="understand-the-azure-ad-schema"></a>瞭解 Azure AD 架構
 Azure Active Directory （Azure AD）中的物件（例如任何目錄）是以程式設計的高階資料結構，代表使用者、群組和連絡人等專案。 當您在 Azure AD 中建立新的使用者或連絡人時，就是建立該物件的新實例。 這些實例可以根據其屬性加以區別。
@@ -72,7 +72,7 @@ Azure AD 有兩種類型的屬性：
 1.  移至 [ [Graph Explorer]](https://developer.microsoft.com/graph/graph-explorer)。
 1.  使用您的全域管理員帳戶登入。
 1.  在左側選取 [**修改許可權**]，並確定已*同意*[**全部**]。
-1.  執行查詢 https://graph.microsoft.com/beta/serviceprincipals/ 。 此查詢會傳回服務主體的清單。
+1.  執行查詢 https://graph.microsoft.com/beta/serviceprincipals/? $filter = startswith （Displayname，' Active '）。 此查詢會傳回已篩選的服務主體清單。
 1.  找出 `"appDisplayName": "Active Directory to Azure Active Directory Provisioning"` 並記下 `"id"`的值。
     ```
     "value": [

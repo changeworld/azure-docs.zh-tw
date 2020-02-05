@@ -8,12 +8,12 @@ ms.author: sahubbar
 ms.date: 07/08/2019
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: 114946fa37ae161aeb2efd5b7cd50444c5df4c2b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 68d4dbff364f8d3fda72fc2377722031e9cccc3d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906703"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018885"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>在您的 Azure IoT Central 應用程式中建立及執行作業
 
@@ -38,7 +38,9 @@ ms.locfileid: "76906703"
 
     ![設定工作](./media/howto-run-a-job/configurejob.png)
 
-6. 選取您的裝置之後，請選擇 [**執行**] 或 [**儲存**]。 作業現在會出現在您的主要 [**作業**] 頁面上。 在此視圖中，您可以看到目前正在執行的作業，以及任何先前執行之作業的歷程記錄。 執行中的作業一律會顯示在清單頂端。 您已儲存的作業可以隨時重新開啟，以繼續編輯或執行。
+6. 在右側，選擇您想要執行作業的裝置。 選取最上方的核取方塊，就會在整個裝置集合中選取所有裝置。 藉由選取 [**名稱**] 旁的核取方塊，就會選取目前頁面上的所有裝置。
+
+7. 選取您的裝置之後，請選擇 [**執行**] 或 [**儲存**]。 作業現在會出現在您的主要 [**作業**] 頁面上。 在此視圖中，您可以看到目前正在執行的作業，以及任何先前執行之作業的歷程記錄。 執行中的作業一律會顯示在清單頂端。 您已儲存的作業可以隨時重新開啟，以繼續編輯或執行。
 
     ![檢視工作](./media/howto-run-a-job/viewjob.png)
 
@@ -103,6 +105,5 @@ ms.locfileid: "76906703"
 
 既然您已瞭解如何在 Azure IoT Central 應用程式中建立作業，以下是一些後續步驟：
 
-- [使用裝置集合](howto-use-device-sets.md)
 - [管理您的裝置](howto-manage-devices.md)
 - [建立裝置範本版本](howto-version-device-template.md)

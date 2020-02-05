@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 5205b12a5f9f6acad8755b69d6da2216ffd4d83e
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 408501232891a7971d03c89acc647d9ed19609b3
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760822"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77026144"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>特性是動作和內容的相關資訊
 
@@ -132,6 +132,8 @@ JSON 物件可以包含 nested JSON 物件和簡單屬性/值。 只有在陣列
 您可以藉由編輯特性集合，讓其規模變得更大以及讓密度變得更高或更低，來改善您的特性集合。
 
 例如，單位計算至秒的時間戳記，便是非常疏鬆的特性。 將時間分類成「早晨」、「中午」、「下午」等等，可以讓特性變得更密集 (更有效)。
+
+位置資訊的優點通常是建立更廣泛的分類。 例如，Lat：47.67402 ° N，Long：122.12154 ° W 之類的緯度經度座標太精確，並強制模型學習緯度和經度做為相異的維度。 當您嘗試根據位置資訊進行個人化時，可以在較大的磁區中將位置資訊分組。 簡單的方法是為 Lat-Long 數位選擇適當的進位精確度，並將緯度和經度結合成「區域」，方法是將它們設為一個字串。 例如，在大約幾公里的區域中，代表 47.67402 N、Long：122.12154 ° W 的好方法是 "location"： "34.3，12.1"。
 
 
 #### <a name="expand-feature-sets-with-extrapolated-information"></a>使用類推的資訊擴大特性集合

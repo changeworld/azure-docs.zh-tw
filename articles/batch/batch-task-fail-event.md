@@ -2,21 +2,21 @@
 title: Azure Batch 工作失敗事件
 description: Batch 工作失敗事件的參考。 除了 [工作完成] 事件之外，也會發出此事件，而且可以用來偵測工作失敗的時間。
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.assetid: ''
 ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 08/15/2019
-ms.author: jushiman
-ms.openlocfilehash: a3786eed56c22dcd2c756e935265faa763ca7072
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.author: labrenne
+ms.openlocfilehash: 2bc958d6dca2b3caae665e6f9b080c651ace9ea0
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026192"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022880"
 ---
 # <a name="task-fail-event"></a>工作失敗事件
 

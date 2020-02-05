@@ -2,31 +2,38 @@
 title: 從我的應用程式入口網站更新設定檔 & 帳戶資訊-Azure AD
 description: 瞭解如何更新您的個人資料，以及您的工作或學校帳戶資訊，包括變更密碼、開啟密碼重設、更新安全性驗證方法、查看貴組織的使用規定聲明，以及登出您已使用工作或學校帳戶登入的任何位置。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 3/21/2019
-ms.author: lizross
+ms.date: 02/03/2020
+ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 787a0b38cecd76c58017e6dff3da1607ac283d23
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: a6bcfa7fc58d47e64bff0838ff698bc59eda4e70
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704862"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022274"
 ---
-# <a name="update-your-profile-and-work-or-school-account-information-on-the-my-apps-portal"></a>在我的應用程式入口網站上更新您的設定檔和工作或學校帳戶資訊
+# <a name="update-your-profile-and-account-information-on-the-my-apps-portal"></a>在我的應用程式入口網站上更新您的設定檔和帳戶資訊
 
-您可以透過 [我的應用程式] Web 入口網站使用工作或學校帳戶，來檢視和啟動貴組織的許多雲端式應用程式、更新您的設定檔和帳戶資訊、查看您的**群組**資訊，以及執行您應用程式和群組的**存取權檢閱**。 如果您沒有 [我的應用程式] 入口網站的存取權，則必須連絡技術服務人員以取得權限。
+您可以使用公司或學校帳戶搭配 web 型**我的應用程式**入口網站， 
+
+- 查看和啟動許多組織的雲端式應用程式
+- 更新您的部分設定檔和帳戶資訊
+- 查看您的**群組**資訊
+- 針對您的應用程式和群組執行**存取權審查**。 
+
+如果您沒有 [我的應用程式] 入口網站的存取權，則必須連絡技術服務人員以取得權限。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
->[!Important]
->本內容適用於使用者。 如果您是系統管理員，可以在[應用程式管理文件](https://docs.microsoft.com/azure/active-directory/manage-apps)中找到更多關於如何設定和管理雲端式應用程式的資訊。
+> [!Important]
+> 本內容適用于**我的應用程式**使用者。 如果您是系統管理員，可以在[應用程式管理文件](https://docs.microsoft.com/azure/active-directory/manage-apps)中找到更多關於如何設定和管理雲端式應用程式的資訊。
 
 ## <a name="view-your-organization-related-profile-information"></a>查看組織相關的設定檔資訊
 

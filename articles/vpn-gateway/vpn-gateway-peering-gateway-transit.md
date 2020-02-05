@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 03/25/2018
 ms.author: yushwang
-ms.openlocfilehash: 4c3d2352467a1ed8e7979acac403908303ba3bc4
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 3f0f3528a59c721fe6926dd4c8c5039b680e1588
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834558"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025753"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>為虛擬網路對等互連設定 VPN 閘道傳輸
 
@@ -156,4 +156,4 @@ Add-AzVirtualNetworkPeering `
 ## <a name="next-steps"></a>後續步驟
 
 * 請先深入了解[虛擬網路對等互連的條件約束和行為](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)及[虛擬網路對等互連設定](../virtual-network/virtual-network-manage-peering.md#create-a-peering)，再建立虛擬網路對等互連以供生產環境使用。
-* 了解如何透過虛擬網路對等互連和閘道傳輸來[建立中樞和輪輻網路拓撲](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering)。
+* 了解如何透過虛擬網路對等互連和閘道傳輸來[建立中樞和輪輻網路拓撲](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke#virtual-network-peering)。
