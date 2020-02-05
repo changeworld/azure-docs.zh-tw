@@ -30,7 +30,7 @@ Azure IR 提供完全受控的計算，以原生方式執行資料移動並將�
 根據預設，每個資料處理站的後端都有 Azure IR，可支援在雲端資料存放區和在公用網路內計算服務的作業。 該 Azure IR 的位置是自動解析的。 如果連結的服務定義中並未指定 **connectVia** 屬性，則會使用預設的 Azure IR。 只有在您要明確定義 IR 位置，或是基於管理目的而以虛擬方式將不同 IR 上的活動執行作業分組時，才需要明確地建立 Azure IR。 
 
 ## <a name="create-azure-ir"></a>建立 Azure IR
-您可以使用**AzDataFactoryV2IntegrationRuntime** PowerShell Cmdlet 建立 Integration Runtime。 若要建立 Azure IR，您要對該命令指定名稱、位置和類型。 以下是使用位置設定為 "West Europe" (西歐) 來建立 Azure IR 的範例命令：
+您可以使用**AzDataFactoryV2IntegrationRuntime** PowerShell Cmdlet 建立 Integration Runtime。 若要建立 Azure IR，您要對該命令指定名稱、位置和類型。 以下是使用位置設定為 "West Europe" (歐洲西部) 來建立 Azure IR 的範例命令：
 
 ```powershell
 Set-AzDataFactoryV2IntegrationRuntime -DataFactoryName "SampleV2DataFactory1" -Name "MySampleAzureIR" -ResourceGroupName "ADFV2SampleRG" -Type Managed -Location "West Europe"

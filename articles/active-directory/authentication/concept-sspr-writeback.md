@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ddd7160a56a4529ee31c111f0e202ca235c71af
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 70d3e17a007e8cfa7eed299659d4cff114f72158
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544016"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023118"
 ---
 # <a name="what-is-password-writeback"></a>什麼是密碼回寫？
 
@@ -164,7 +164,7 @@ ms.locfileid: "76544016"
    * 從[Microsoft 365 系統管理中心](https://admin.microsoft.com)起始的任何使用者密碼重設
 
 > [!WARNING]
-> 使用 [使用者必須在下次登入時變更密碼] 核取方塊，在內部部署 Active Directory 系統管理工具（例如 Active Directory 使用者和電腦）或 Active Directory 管理中心支援做為 Azure AD Connect 的預覽功能。 如需詳細資訊，請參閱[使用 Azure AD Connect 同步來執行密碼雜湊同步處理](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-reset-on-next-logon)一文。
+> 使用 [使用者必須在下次登入時變更密碼] 核取方塊，在內部部署 Active Directory 系統管理工具（例如 Active Directory 使用者和電腦）或 Active Directory 管理中心支援做為 Azure AD Connect 的預覽功能。 如需詳細資訊，請參閱[使用 Azure AD Connect 同步來執行密碼雜湊同步處理](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-change-on-next-logon)一文。
 
 ## <a name="next-steps"></a>後續步驟
 

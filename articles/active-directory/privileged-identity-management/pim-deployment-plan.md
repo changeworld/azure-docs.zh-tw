@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 02/04/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eef096322c8a8cfbf1618447529d46f6fbfd13b1
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b8c77b3454026aa309d979bd938674e7c3ae7b6a
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74021858"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025991"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>部署 Azure AD Privileged Identity Management (PIM)
 
@@ -58,7 +58,7 @@ Azure AD Privileged Identity Management 可協助您管理跨 Azure AD、Azure �
 
 ### <a name="key-terminology"></a>重要術語
 
-| 詞彙或概念 | 描述 |
+| 詞彙或概念 | 說明 |
 | --- | --- |
 | 合格 | 需要使用者執行一或多個動作才能使用角色的角色指派。 如果使用者已有資格使用角色，即表示他們可以在需要執行特殊權限工作時啟用該角色。 使用者不論是具有永久角色指派還是合格角色指派，獲得的存取權並無差異。 唯一的差異在於有些使用者並不一直需要該存取權。 |
 | 啟用 | 此程序會執行一或多個動作，讓使用者使用有資格使用的角色。 動作可能包含執行多重要素驗證 (MFA) 檢查、提供業務理由，或是向指定的核准者要求核准。 |
@@ -99,7 +99,7 @@ Azure AD Privileged Identity Management 可協助您管理跨 Azure AD、Azure �
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-ad-roles"></a>專案關係人： Azure AD 角色的 Privileged Identity Management
 
-| 名稱 | 角色 | 動作 |
+| 名稱 | 角色 | 行動 |
 | --- | --- | --- |
 | 名稱和電子郵件 | **身分識別架構設計師或 Azure 全域系統管理員**<br/>身分識別管理小組所推派的代表人員，負責定義這項變更要如何與組織的核心身分識別管理基礎結構相配合。 | SO/R/I |
 | 名稱和電子郵件 | **服務擁有者/部門經理**<br/>單一或一組服務的 IT 擁有者所推派的代表人員。 它們是做出決策並協助為其小組推出 Privileged Identity Management 的關鍵。 | SO/R/I |
@@ -109,7 +109,7 @@ Azure AD Privileged Identity Management 可協助您管理跨 Azure AD、Azure �
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-resource-roles"></a>專案關係人：適用于 Azure 資源角色的 Privileged Identity Management
 
-| 名稱 | 角色 | 動作 |
+| 名稱 | 角色 | 行動 |
 | --- | --- | --- |
 | 名稱和電子郵件 | **訂用帳戶/資源擁有者**<br/>您想要部署的每個訂用帳戶或資源的 IT 擁有者的代表，Privileged Identity Management | SO/R/I |
 | 名稱和電子郵件 | **安全性擁有者**<br/>安全性團隊所推派的代表人員，可簽字同意該規劃符合組織的安全性需求。 | SO/R |
@@ -120,7 +120,7 @@ Azure AD Privileged Identity Management 可協助您管理跨 Azure AD、Azure �
 
 在規劃過程中，您必須先遵循我們的[開始使用 Privileged Identity Management](pim-getting-started.md)文章來同意並啟用 Privileged Identity Management。 啟用 Privileged Identity Management 可讓您存取專為協助部署而設計的一些功能。
 
-如果您的目標是要為 Azure 資源部署 Privileged Identity Management，您應該遵循我們的[探索 azure 資源以在 Privileged Identity Management 文章中進行管理](pim-resource-roles-discover-resources.md)。 只有每個資源、資源群組和訂用帳戶的擁有者，才能夠在 Privileged Identity Management 內探索它們。 如果您是全域管理員，嘗試部署 Azure 資源的 Privileged Identity Management，您可以提高[存取權以管理所有 azure](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)訂用帳戶，讓您能夠存取目錄中的所有 azure 資源進行探索。 不過，我們建議您先從每個訂用帳戶擁有者取得核准，再使用 Privileged Identity Management 來管理其資源。
+如果您的目標是要為 Azure 資源部署 Privileged Identity Management，您應該遵循我們的[探索 azure 資源以在 Privileged Identity Management 文章中進行管理](pim-resource-roles-discover-resources.md)。 只有訂用帳戶和管理群組的擁有者可以探索這些資源並將其上架到 Privileged Identity Management。 上架之後，所有層級的擁有者（包括管理群組、訂用帳戶、資源群組和資源）皆可使用 PIM 功能。 如果您是全域管理員，嘗試部署 Azure 資源的 Privileged Identity Management，您可以提高[存取權以管理所有 azure](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)訂用帳戶，讓您能夠存取目錄中的所有 azure 資源進行探索。 不過，我們建議您先從每個訂用帳戶擁有者取得核准，再使用 Privileged Identity Management 來管理其資源。
 
 ### <a name="enforce-principle-of-least-privilege"></a>強制執行最低權限原則
 
@@ -198,7 +198,7 @@ Azure AD Privileged Identity Management 可協助您管理跨 Azure AD、Azure �
 > [!TIP]
 > ： heavy_check_mark： **Microsoft 建議**您使用 Privileged Identity Management 來管理所有具有來賓使用者的角色，以降低與遭入侵之來賓使用者帳戶相關聯的風險。
 
-一般認為，相較於其他角色，有時候目錄讀取者、訊息中心讀取者和安全性讀取者等讀取者角色的重要性較低，原因是這些讀取者角色沒有寫入權限。 不過，我們發現部分客戶也會保護這些角色，因為獲得這些帳戶存取權的攻擊者或許就能讀取敏感性資料，例如個人識別資訊 (PII)。 在決定是否需要使用 Privileged Identity Management 來管理組織中的讀取者角色時，您應該將這一點納入考慮。
+一般認為，相較於其他角色，有時候目錄讀取者、訊息中心讀取者和安全性讀取者等讀取者角色的重要性較低，原因是這些讀取者角色沒有寫入權限。 不過，我們看過部分客戶也會保護這些角色，因為取得這些帳戶存取權的攻擊者可能可以讀取機密資料，例如個人資料。 在決定是否需要使用 Privileged Identity Management 來管理組織中的讀取者角色時，您應該將這一點納入考慮。
 
 #### <a name="azure-resource-roles"></a>Azure 資源角色
 
@@ -256,7 +256,7 @@ Azure AD Privileged Identity Management 可協助您管理跨 Azure AD、Azure �
 
 下表說明每個設定。
 
-| 設定 | 描述 |
+| 設定 | 說明 |
 | --- | --- |
 | 角色 | 要為其定義設定的角色名稱。 |
 | 需要 MFA | 符合資格的使用者是否必須先執行 MFA 才能啟動該角色。<br/><br/> ： heavy_check_mark： **Microsoft 建議**您針對所有系統管理員角色強制執行 MFA，特別是當角色具有來賓使用者時。 |

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: saudas
-ms.openlocfilehash: bba4196547bda3d3ddcf3344032de5b9286639a0
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 8c144fb0c9818e21c2ca5bd61525067b485531bb
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996743"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77026110"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 中支援的 Kubernetes 版本
 
@@ -96,7 +96,7 @@ New Supported Version List
 * 適用于 Kubernetes 的新**次要**版本
   * 所有使用者都會在新版本中公開通知，而將移除哪個版本。
   * 發行新的修補程式版本時，會同時移除最舊的修補程式發行。
-  * 客戶從公開通知日期起算**60 天**，以升級至支援的次要版本發行。
+  * 客戶從公開通知日期起算**30 天**，以升級至支援的次要版本發行。
 * 針對 Kubernetes 的新**修補程式**版本
   * 系統會通知所有使用者發行的新修補程式版本，並升級至最新的修補程式版本。
   * 使用者有**30 天**的時間可以升級至較新的受支援修補程式版本。 在移除最舊的之前，使用者有**30 天**的時間可以升級至支援的修補程式版本。

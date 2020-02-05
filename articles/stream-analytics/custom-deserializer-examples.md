@@ -226,7 +226,7 @@ namespace ExampleCustomCode.Serialization
 這項功能會在下欄區域內上市：
 
 * 美國中西部
-* 北歐
+* 歐洲北部
 * 美國東部
 * 美國西部
 * 美國東部 2

@@ -1,6 +1,6 @@
 ---
-title: Azure VMware Solution by CloudSimple-在私人雲端上設定 vCenter 身分識別來源
-description: 說明如何設定您的私用雲端 vCenter，以使用 Active Directory 進行驗證，讓 VMware 系統管理員存取 vCenter
+title: Azure VMware 解決方案（AVS）-在 AVS 私人雲端上設定 vCenter 身分識別來源
+description: 說明如何設定您的 AVS 私用雲端 vCenter，以使用 Active Directory 進行驗證，讓 VMware 系統管理員存取 vCenter
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -8,27 +8,27 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: eeced5205b836a15a43fbccfb8c6cb60b4bec29f
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: ad4a7b2bc67b7d50d9e9a5f8337a09dbe77366ea
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76542860"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77014210"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>設定要使用的 vCenter 身分識別來源 Active Directory
 
 ## <a name="about-vmware-vcenter-identity-sources"></a>關於 VMware vCenter 身分識別來源
 
-VMware vCenter 支援不同的身分識別來源，以驗證存取 vCenter 的使用者。  您的 CloudSimple 私人雲端 vCenter 可設定為使用 Active Directory 進行驗證，讓您的 VMware 系統管理員存取 vCenter。 當安裝程式完成時， **cloudowner**使用者可以將使用者從身分識別來源新增至 vCenter。  
+VMware vCenter 支援不同的身分識別來源，以驗證存取 vCenter 的使用者。 您可以設定您的 AVS 私人雲端 vCenter，以使用 Active Directory 進行驗證，讓您的 VMware 系統管理員存取 vCenter。 當安裝程式完成時， **cloudowner**使用者可以將使用者從身分識別來源新增至 vCenter。 
 
 您可以透過下列任何方式來設定您的 Active Directory 網域和網域控制站：
 
 * Active Directory 在內部部署環境中執行的網域和網域控制站
 * 以 Azure 訂用帳戶中的虛擬機器形式在 Azure 上執行的網域和網域控制站 Active Directory
-* 在您的私人雲端中執行的新 Active Directory 網域和網域控制站
+* 在您的 AVS 私人雲端中執行的新 Active Directory 網域和網域控制站
 * Azure Active Directory 服務
 
-本指南說明在您的訂用帳戶中設定執行于內部部署或作為虛擬機器之 Active Directory 網域和網域控制站的工作。  如果您想要使用 Azure AD 做為身分識別來源，請參閱[使用 Azure AD 作為 CloudSimple 私用雲端上的 vCenter 身分識別提供者](azure-ad.md)，以取得設定身分識別來源的詳細指示。
+本指南說明在您的訂用帳戶中設定執行于內部部署或作為虛擬機器之 Active Directory 網域和網域控制站的工作。 如果您想要使用 Azure AD 做為身分識別來源，請參閱在[AVS 私用雲端上使用 Azure AD 做為 vCenter 的識別提供者](azure-ad.md)，以取得設定身分識別來源的詳細指示。
 
 [新增身分識別來源](#add-an-identity-source-on-vcenter)之前，請暫時[提升您的 vCenter 許可權](escalate-private-cloud-privileges.md)。
 
@@ -39,14 +39,14 @@ VMware vCenter 支援不同的身分識別來源，以驗證存取 vCenter 的�
 ## <a name="identity-source-options"></a>識別來源選項
 
 * [將內部部署 Active Directory 新增為單一登入身分識別來源](#add-on-premises-active-directory-as-a-single-sign-on-identity-source)
-* [在私人雲端上設定新的 Active Directory](#set-up-new-active-directory-on-a-private-cloud)
+* [在 AVS 私人雲端上設定新的 Active Directory](#set-up-new-active-directory-on-an-avs-private-cloud)
 * [在 Azure 上設定 Active Directory](#set-up-active-directory-on-azure)
 
 ## <a name="add-on-premises-active-directory-as-a-single-sign-on-identity-source"></a>將內部部署 Active Directory 新增為單一登入身分識別來源
 
 若要將內部部署 Active Directory 設定為單一登入身分識別來源，您需要：
 
-* 從內部部署資料中心到私人雲端的[站對站 VPN](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)連線。
+* 從內部部署資料中心到您的 AVS 私人雲端的[站對站 VPN](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)連線。
 * 已將內部部署 DNS 伺服器 IP 新增至 vCenter 和平臺服務控制站（PSC）。
 
 設定 Active Directory 網域時，請使用下表中的資訊。
@@ -69,9 +69,9 @@ VMware vCenter 支援不同的身分識別來源，以驗證存取 vCenter 的�
 > [!TIP]
 > 您可以在[VMware 檔頁面](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.psc.doc/GUID-B23B1360-8838-4FF2-B074-71643C4CB040.html)上找到有關單一登入識別來源的詳細資訊。
 
-## <a name="set-up-new-active-directory-on-a-private-cloud"></a>在私人雲端上設定新的 Active Directory
+## <a name="set-up-new-active-directory-on-an-avs-private-cloud"></a>在 AVS 私人雲端上設定新的 Active Directory
 
-您可以在私人雲端上設定新的 Active Directory 網域，並使用它做為單一登入的身分識別來源。  Active Directory 網域可以是現有 Active Directory 樹系的一部分，或可設定為獨立樹系。
+您可以在您的 AVS 私人雲端上設定新的 Active Directory 網域，並使用它做為單一登入的身分識別來源。 Active Directory 網域可以是現有 Active Directory 樹系的一部分，或可設定為獨立樹系。
 
 ### <a name="new-active-directory-forest-and-domain"></a>新增 Active Directory 樹系和網域
 
@@ -100,15 +100,15 @@ VMware vCenter 支援不同的身分識別來源，以驗證存取 vCenter 的�
 
 ## <a name="set-up-active-directory-on-azure"></a>在 Azure 上設定 Active Directory
 
-在 Azure 上執行 Active Directory 類似于在內部部署環境中執行的 Active Directory。  若要將在 Azure 上執行的 Active Directory 設定為 vCenter 上的單一登入身分識別來源，vCenter server 和 PSC 必須能夠與 Active Directory 服務執行所在的 Azure 虛擬網路具有網路連線能力。  您可以使用 azure 虛擬網路連線，從執行 Active Directory 服務的 Azure 虛擬網路中[使用 ExpressRoute](azure-expressroute-connection.md)建立此連線，以 CloudSimple 私人雲端。
+在 Azure 上執行 Active Directory 類似于在內部部署環境中執行的 Active Directory。 若要將在 Azure 上執行的 Active Directory 設定為 vCenter 上的單一登入身分識別來源，vCenter server 和 PSC 必須能夠與 Active Directory 服務執行所在的 Azure 虛擬網路具有網路連線能力。 您可以使用 azure[虛擬網路](azure-expressroute-connection.md)連線，從執行 Active Directory 服務的 azure 虛擬網路到 AVS 私用雲端，以建立此連線能力。
 
-建立網路連線之後，請依照[將內部部署 Active Directory 新增為單一登入身分識別來源](#add-on-premises-active-directory-as-a-single-sign-on-identity-source)中的步驟，將它新增為身分識別來源。  
+建立網路連線之後，請依照[將內部部署 Active Directory 新增為單一登入身分識別來源](#add-on-premises-active-directory-as-a-single-sign-on-identity-source)中的步驟，將它新增為身分識別來源。 
 
 ## <a name="add-an-identity-source-on-vcenter"></a>在 vCenter 上新增身分識別來源
 
-1. [提升](escalate-private-cloud-privileges.md)私人雲端上的許可權。
+1. 在您的 AVS 私人雲端上[提升許可權](escalate-private-cloud-privileges.md)。
 
-2. 登入私人雲端的 vCenter。
+2. 登入您的 AVS 私人雲端的 vCenter。
 
 3. 選取 [**首頁] > [管理**]。
 

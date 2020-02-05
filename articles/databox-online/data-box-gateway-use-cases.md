@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure 資料方塊的閘道器使用案例 |Microsoft Docs
-description: 描述使用案例，Azure 資料方塊的閘道，可讓您將資料傳輸至 Azure 的虛擬應用裝置儲存體解決方案
+title: Microsoft Azure 資料箱閘道使用案例 |Microsoft Docs
+description: 說明 Azure 資料箱閘道的使用案例，這是一種可讓您將資料傳輸至 Azure 的虛擬應用裝置儲存體解決方案
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/02/2019
 ms.author: alkohli
-ms.openlocfilehash: e9092fb91ad98e6147647717e11d1a64bcff580e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e72113313e27949819db567c550401b1f051473f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754189"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022676"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Azure Data Box Gateway 的使用案例
 
@@ -44,14 +44,14 @@ Data Box Gateway 的主要優點之一是能夠持續將資料嵌入裝置，然
 
 ### <a name="move-data-to-archive-tier"></a>將資料移至封存層
 
-在開始之前，請確定您有執行中的 Data Box Gateway 裝置。 請依照下列文件中詳述的步驟：[教學課程：部署 Azure Data Box Gateway 的準備](data-box-gateway-deploy-prep.md)，並繼續進行下一個教學課程，直到您有可運作的裝置為止。
+在開始之前，請確定您有執行中的 Data Box Gateway 裝置。 依照[教學課程：準備部署 Azure 資料箱閘道](data-box-gateway-deploy-prep.md)並繼續進行下一個教學課程中所述的步驟，直到您擁有可運作的裝置為止。
 
 - 透過[使用 Data Box Gateway 傳輸資料](data-box-gateway-deploy-add-shares.md)中所述的一般傳輸程序，使用 Data Box Gateway 裝置將資料上傳至 Azure。
-- 將資料上傳之後，您必須將資料移至封存層。 設定 Blob 層有兩種方法：Azure PowerShell 指令碼或 Azure 儲存體生命週期管理原則。  
+- 將資料上傳之後，您必須將資料移至封存層。 您可以使用兩種方式來設定 blob 層： Azure PowerShell 腳本或 Azure 儲存體生命週期管理原則。  
     - 如果使用 Azure PowerShell，請遵循這些[步驟](/azure/databox/data-box-how-to-set-data-tier#use-azure-powershell-to-set-the-blob-tier)來將資料移至封存層。
     - 如果使用 Azure 生命週期管理，請遵循這些步驟來將資料移至封存層。
         - [註冊](/azure/storage/common/storage-lifecycle-management-concepts) Blob 生命週期管理服務預覽版，以使用封存層。
-        - 使用下列原則來[封存內嵌資料](/azure/storage/blobs/storage-lifecycle-management-concepts#archive-data-at-ingest)。
+        - 使用下列原則來[封存內嵌資料](/azure/storage/blobs/storage-lifecycle-management-concepts#archive-data-after-ingest)。
 - 標示為封存的 Blob 將無法再由閘道進行修改，除非將其移至經常性存取層或非經常性存取層。 如果檔案位在本機儲存體中，對本機複本所做的變更 (包括刪除) 不會上傳到封存層中。
 - 若要讀取封存儲存體中的資料，則必須將 Blob 層變更為經常性存取或非經常性存取，才能將資料解除凍結。 在閘道上[重新整理共用](data-box-gateway-manage-shares.md#refresh-shares)不會將 Blob 解除凍結。
 
@@ -79,11 +79,11 @@ Data Box Gateway 的主要優點之一是能夠持續將資料嵌入裝置，然
 
 請依照下列步驟使用 Data Box Gateway 進行持續擷取。
 
-1. 在 Data Box Gateway 上建立雲端共用。 此共用會自動將任何資料上傳至 Azure 儲存體帳戶。 移至 Data Box Gateway 資源中的 [共用]  ，然後按一下 [+ 新增共用]  。
+1. 在 Data Box Gateway 上建立雲端共用。 此共用會自動將任何資料上傳至 Azure 儲存體帳戶。 移至 Data Box Gateway 資源中的 [共用]，然後按一下 [+ 新增共用]。
 
     ![按一下 [新增共用]](media/data-box-gateway-use-cases/add-share1.png)
 
-2. 請確定此共用會對應到包含植入資料的容器。 針對 [選取 Blob 容器]  ，請選擇 [使用現有項目]  ，並瀏覽至其中有資料箱所傳輸資料的容器。
+2. 請確定此共用會對應到包含植入資料的容器。 針對 [選取 Blob 容器]，請選擇 [使用現有項目]，並瀏覽至其中有資料箱所傳輸資料的容器。
 
     ![共用設定](media/data-box-gateway-use-cases/share-settings-select-existing-container1.png)
 

@@ -6,13 +6,13 @@ ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
-ms.date: 01/21/2020
-ms.openlocfilehash: dff4901f1488406ed1259d1411a6b05b949382cb
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 02/04/2020
+ms.openlocfilehash: fcdcef5d63163b24fe5de0f547dc2dde00cd674f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715853"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016250"
 ---
 # <a name="update-to-azure-activity-log-collection-and-export"></a>更新至 Azure 活動記錄收集和匯出
 [Azure 活動記錄](platform-logs-overview.md)是一個[平臺記錄](platform-logs-overview.md)，可讓您深入瞭解 Azure 中發生的訂用帳戶層級事件。 將活動記錄專案傳送到[事件中樞或儲存體帳戶](activity-log-export.md)或[log Analytics 工作區](activity-log-collect.md)的方法，已變更為使用[診斷設定](diagnostic-settings.md)。 本文說明方法之間的差異，以及如何在準備變更為診斷設定時清除舊版設定。
@@ -53,6 +53,9 @@ ms.locfileid: "76715853"
 - Authorization_d
 - Claims_d
 - Properties_d
+
+> [!IMPORTANT]
+> 在某些情況下，這些資料行中的值可能全部大寫。 如果您有包含這些資料行的查詢，您應該使用[= ~ 運算子](https://docs.microsoft.com/azure/kusto/query/datatypes-string-operators)來執行不區分大小寫的比較。
 
 ## <a name="work-with-legacy-settings"></a>使用舊版設定
 如果您不選擇將取代為診斷設定，則收集活動記錄的舊版設定會繼續工作。 使用下列方法來管理訂用帳戶的記錄檔設定檔。

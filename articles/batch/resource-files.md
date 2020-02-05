@@ -2,18 +2,18 @@
 title: 建立和使用資源檔-Azure Batch
 description: 瞭解如何從各種輸入來源建立 Batch 資源檔。 本文涵蓋一些常見的方法，說明如何建立並將它們放置在 VM 上。
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.service: batch
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: jushiman
-ms.openlocfilehash: 61d4baffe65da52f8ca926bc911b26e3f1c9a79a
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.author: labrenne
+ms.openlocfilehash: dd8046891362cf4d4d7eed805fbc13d0f784a99c
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029342"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019259"
 ---
 # <a name="creating-and-using-resource-files"></a>建立和使用資源檔
 

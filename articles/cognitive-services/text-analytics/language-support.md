@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: fcf7051a631e74f2f6db918c7c861e32295ae9e8
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 3e7402be79f7b57a426543c35f08524e0da9d283
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732632"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024529"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>文字分析 API 支援的語言和區域
 
@@ -33,7 +33,7 @@ ms.locfileid: "75732632"
 
 情感分析、關鍵片語擷取和實體辨識的支援語言清單更具選擇性，因為分析器會進一步調整以配合其他語言的語言規則。 在命名實體辨識 v2 中，對一組完整[實體類型](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features)的支援目前僅限於下列語言： 
 * 繁體中文
-* 簡體中文
+* 中文-簡體
 * 法文
 * 德文
 * 西班牙文
@@ -51,8 +51,8 @@ ms.locfileid: "75732632"
 |:----------------------|:-------------:|:---------:|:-----------:|:------------------------:|:--------------:|:------------------:|
 | 阿拉伯文                |     `ar`      |           |             |           ✔ \*           |                |                    |
 | 捷克文                 |     `cs`      |           |             |           ✔ \*           |                |                    |
-| 簡體中文    |   `zh-hans`   |  ✔ \*\*   |             |            ✔             |                |                    |
-| 繁體中文   |   `zh-hant`   |  ✔ \*\*   |             |                          |                |                    |
+| 中文-簡體    |   `zh-hans`   |  ✔ \*\*   |             |            ✔             |                |                    |
+| 中文-繁體   |   `zh-hant`   |  ✔ \*\*   |             |                          |                |                    |
 | 丹麥文                |     `da`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
 | 荷蘭文                 |     `nl`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
 | 繁體中文               |     `en`      |   ✔ \**   |      ✔      |          ✔ \*\*          |     ✔ \**      |                    |
@@ -63,7 +63,7 @@ ms.locfileid: "75732632"
 | 匈牙利文             |     `hu`      |           |             |           ✔ \*           |                |                    |
 | 義大利文               |     `it`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
 | 日文              |     `ja`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
-| 韓文                |     `ko`      |           |      ✔      |           ✔ \*           |                |                    |
+| 韓文                |     `ko`      |   ✔ \*\*  |      ✔      |           ✔ \*           |                |                    |
 | 挪威文 (巴克摩)   |     `no`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
 | 波蘭文                |     `pl`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
 | 葡萄牙文 (葡萄牙) |    `pt-PT`    |   ✔\**    |      ✔      |           ✔ \*           |                | 也接受 `pt` |

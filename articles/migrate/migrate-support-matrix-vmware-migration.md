@@ -3,12 +3,12 @@ title: Azure Migrate 中的 VMware 遷移支援
 description: 深入瞭解 Azure Migrate 中的 VMware VM 遷移支援。
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 6593d4de6823f15f570ab8922d76cbe84fb0e348
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e5a2f40611f6b358a8b5ff1dfb99cadebae4fab6
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901536"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77013989"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 遷移的支援矩陣
 
@@ -123,7 +123,7 @@ vSphere/EXSI 主機 | TCP 埠902上用於設備的輸入，以從快照集複寫
 
 - 瞭解 VMware 的複寫[設備需求](migrate-replication-appliance.md#appliance-requirements)。
 - MySQL 必須安裝在設備上。 瞭解[安裝選項](migrate-replication-appliance.md#mysql-installation)。
-- 瞭解複寫設備需要存取的[url](migrate-replication-appliance.md#url-access)和[埠]()。
+- 瞭解複寫設備需要存取的[url](migrate-replication-appliance.md#url-access)和[埠](migrate-replication-appliance.md#port-access)。
 
 ## <a name="agent-based-ports"></a>以代理程式為基礎的埠
 

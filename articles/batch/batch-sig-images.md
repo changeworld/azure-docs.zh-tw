@@ -2,18 +2,18 @@
 title: 使用共用映射資源庫來建立自訂集區-Azure Batch |Microsoft Docs
 description: 使用共用映射資源庫建立 Batch 集區，以將自訂映射布建到包含應用程式所需軟體和資料的計算節點。 自訂映像是設定計算節點以執行 Batch 工作負載的有效方式。
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.service: batch
 ms.topic: article
 ms.date: 08/28/2019
-ms.author: jushiman
-ms.openlocfilehash: a933d0656bb4c22e848a663757f4e5e3fa276c61
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.author: labrenne
+ms.openlocfilehash: 2cff6a0e48fc7bf58a642f509fcda6b114e002ef
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029660"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022931"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>使用共用映射資源庫來建立自訂集區
 

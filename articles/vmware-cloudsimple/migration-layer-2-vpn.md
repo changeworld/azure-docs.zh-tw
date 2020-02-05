@@ -1,6 +1,6 @@
 ---
-title: Azure VMware Solution by CloudSimple-將第2層網路延展到私人雲端
-description: 說明如何在 CloudSimple 私用雲端和內部部署獨立 NSX Edge 用戶端上的 NSX-T 之間設定第2層 VPN
+title: Azure VMware 解決方案（AVS）-將第2層網路的內部部署延展到 AVS 私人雲端
+description: 說明如何在 AVS 私用雲端和內部部署獨立 NSX Edge 用戶端上的 NSX-T 之間設定第2層 VPN
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/19/2019
@@ -8,29 +8,29 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2ddfa9611143d5c3f823539e018c8afc885c6a46
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 975ffcd7142aac24363c2235db3742c155c1007b
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232388"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019820"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>使用第 2 層延伸網路遷移工作負載
 
-在本指南中，您將瞭解如何使用第2層 VPN （L2VPN），將第2層網路從您的內部部署環境延展到 CloudSimple 私用雲端。 此解決方案可讓您將內部部署 VMware 環境中執行的工作負載，遷移至相同子網位址空間內 Azure 中的私人雲端，而不需要重新建立您的工作負載。
+在本指南中，您將瞭解如何使用第2層 VPN （L2VPN），將第2層網路從內部部署環境延展至您的 AVS 私用雲端。 此解決方案可讓您將內部部署 VMware 環境中執行的工作負載，遷移到相同子網位址空間內的 Azure 中的 AVS 私人雲端，而不需要重新建立您的工作負載的 IP。
 
 以 L2VPN 為基礎的第2層網路延展可以在您的內部部署 VMware 環境中，使用或不含以 NSX 為基礎的網路。 如果您沒有適用于內部部署工作負載的以 NSX 為基礎的網路，您可以使用獨立的 NSX Edge 服務閘道。
 
 > [!NOTE]
-> 本指南涵蓋內部部署和私人雲端資料中心透過站對站 VPN 連線的案例。
+> 本指南涵蓋內部部署和 AVS 私用雲端資料中心透過站對站 VPN 連線的案例。
 
 ## <a name="deployment-scenario"></a>部署案例
 
-若要使用 L2VPN 延展您的內部部署網路，您必須設定 L2VPN 伺服器（目的地 NSX-T Tier0 路由器）和 L2VPN 用戶端（來源獨立用戶端）。  
+若要使用 L2VPN 延展您的內部部署網路，您必須設定 L2VPN 伺服器（目的地 NSX-T Tier0 路由器）和 L2VPN 用戶端（來源獨立用戶端）。 
 
-在此部署案例中，您的私用雲端會透過站對站 VPN 通道連線到您的內部部署環境，讓內部部署管理和 vMotion 子網與私人雲端管理和 vMotion 子網進行通訊。 跨 vCenter vMotion （xVC-vMotion）必須進行這種安排。 Tier0 路由器會部署為私人雲端中的 L2VPN 伺服器。
+在此部署案例中，您的 AVS 私人雲端會透過站對站 VPN 通道連線到您的內部部署環境，讓內部部署管理和 vMotion 子網與 AVS 私用雲端管理和 vMotion 子網進行通訊。 跨 vCenter vMotion （xVC-vMotion）必須進行這種安排。 Tier0 路由器會部署為 AVS 私人雲端中的 L2VPN 伺服器。
 
-獨立的 NSX Edge 會部署在您的內部部署環境中做為 L2VPN 用戶端，然後再與 L2VPN 伺服器配對。 GRE 通道端點會在每一端建立，並設定為將內部部署層2網路「延展」至您的私人雲端。 下圖說明此設定。
+獨立的 NSX Edge 會部署在您的內部部署環境中做為 L2VPN 用戶端，然後再與 L2VPN 伺服器配對。 GRE 通道端點會在每一端建立，並設定為將內部部署層2網路「延展」至您的 AVS 私用雲端。 下圖說明此設定。
 
 ![部署案例](media/l2vpn-deployment-scenario.png)
 
@@ -42,29 +42,29 @@ ms.locfileid: "74232388"
 
 * 內部部署 vSphere 版本為 6.7 U1 + 或 6.5 P03 +。
 * 內部部署 vSphere 授權位於企業 Plus 層級（適用于 vSphere 分散式交換器）。
-* 識別要延展到私人雲端的工作負載層2網路。
+* 識別要延展至您的 AVS 私人雲端的工作負載層2網路。
 * 在您的內部部署環境中識別第2層網路，以部署您的 L2VPN 用戶端應用裝置。
-* [已建立私人雲端](create-private-cloud.md)。
-* 獨立的 NSX-T Edge 應用裝置版本與您私用雲端環境中使用的 NSX-T Manager 版本（NSX-T 2.3.0）相容。
+* [已建立 AVS 私用雲端](create-private-cloud.md)。
+* 獨立的 NSX-T Edge 設備版本與您的 AVS 私用雲端環境中使用的 NSX-T Manager 版本（NSX-T 2.3.0）相容。
 * 已在內部部署 vCenter 中建立已啟用偽造傳輸的主幹埠群組。
 * 公用 IP 位址已保留供 NSX-T 獨立用戶端上行 IP 位址使用，而 1:1 NAT 已準備好用於兩個位址之間的轉譯。
-* DNS 轉送是設定在 az.cloudsimple.io 網域的內部部署 DNS 伺服器上，以指向私人雲端 DNS 伺服器。
+* DNS 轉送是在 az 的內部部署 DNS 伺服器上設定的。AVS.io 網域，指向 AVS 私人雲端 DNS 伺服器。
 * RTT 延遲小於或等於150毫秒，因為 vMotion 必須在兩個網站上運作。
 
 ## <a name="limitations-and-considerations"></a>限制與注意事項
 
-下表列出支援的 vSphere 版本和網路介面卡類型。  
+下表列出支援的 vSphere 版本和網路介面卡類型。 
 
 | vSphere 版本 | 來源 vSwitch 類型 | 虛擬 NIC 驅動程式 | 目標 vSwitch 類型 | 支援? |
 ------------ | ------------- | ------------ | ------------- | ------------- 
-| 全部 | DVS | 全部 | DVS | yes |
-| vSphere 6.7 UI 或更高版本、6.5 P03 或更高版本 | DVS | VMXNET3 | N-VDS | yes |
+| 所有 | DVS | 所有 | DVS | 是 |
+| vSphere 6.7 UI 或更高版本、6.5 P03 或更高版本 | DVS | VMXNET3 | N-VDS | 是 |
 | vSphere 6.7 UI 或更高版本、6.5 P03 或更高版本 | DVS | E1000 | N-VDS | [每個 VWware 不支援](https://kb.vmware.com/s/article/56991) |
-| vSphere 6.7 UI 或 6.5 P03、NSX-V 或版本低於 NSX-T 2.2、6.5 P03 或更高版本 | 全部 | 全部 | N-VDS | [每個 VWware 不支援](https://kb.vmware.com/s/article/56991) |
+| vSphere 6.7 UI 或 6.5 P03、NSX-V 或版本低於 NSX-T 2.2、6.5 P03 或更高版本 | 所有 | 所有 | N-VDS | [每個 VWware 不支援](https://kb.vmware.com/s/article/56991) |
 
 從 VMware NSX-T 2.3 版本：
 
-* 私人雲端端上透過 L2VPN 延展至內部部署的邏輯交換器，無法同時路由傳送。 延伸的邏輯交換器無法連線到邏輯路由器。
+* 在 AVS 私人雲端端，透過 L2VPN 延展到內部部署的邏輯交換器，無法同時路由傳送。 延伸的邏輯交換器無法連線到邏輯路由器。
 * L2VPN 和路由式 IPSEC Vpn 只能使用 API 呼叫來設定。
 
 如需詳細資訊，請參閱 VMware 檔中的[虛擬私人網路](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58.html#GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58__section_44B4972B5F12453B90625D98F86D5704)。
@@ -73,7 +73,7 @@ ms.locfileid: "74232388"
 
 ### <a name="on-premises-network-where-the-standalone-esg-l2-vpn-client-is-deployed"></a>部署獨立 ESG （L2 VPN 用戶端）的內部部署網路
 
-| **Item** | **值** |
+| **Item** | **ReplTest1** |
 |------------|-----------------|
 | 網路名稱 | MGMT_NET_VLAN469 |
 | VLAN | 469 |
@@ -83,23 +83,23 @@ ms.locfileid: "74232388"
 
 ### <a name="on-premises-network-to-be-stretched"></a>要伸展的內部部署網路
 
-| **Item** | **值** |
+| **Item** | **ReplTest1** |
 |------------|-----------------|
 | VLAN | 472 |
 | CIDR| 10.250.3.0/24 |
 
-### <a name="private-cloud-ip-schema-for-nsx-t-tier0-router-l2-vpn-serve"></a>適用于 NSX-T Tier0 路由器的私人雲端 IP 架構（L2 VPN 服務）
+### <a name="avs-private-cloud-ip-schema-for-nsx-t-tier0-router-l2-vpn-serve"></a>適用于 NSX-T Tier0 路由器的 AVS 私人雲端 IP 架構（L2 VPN 服務）
 
-| **Item** | **值** |
+| **Item** | **ReplTest1** |
 |------------|-----------------|
 | 回送介面 | 192.168.254.254/32 |
 | 通道介面 | 5.5.5.1/29 |
 | 邏輯交換器（已延展） | Stretch_LS |
 | 回送介面（NAT IP 位址） | 104.40.21.81 |
 
-### <a name="private-cloud-network-to-be-mapped-to-the-stretched-network"></a>要對應至延伸網路的私人雲端網路
+### <a name="avs-private-cloud-network-to-be-mapped-to-the-stretched-network"></a>要對應至延伸網路的 AVS 私人雲端網路
 
-| **Item** | **值** |
+| **Item** | **ReplTest1** |
 |------------|-----------------|
 | VLAN | 712 |
 | CIDR| 10.200.15.0/24 |
@@ -116,7 +116,7 @@ ms.locfileid: "74232388"
 
     ![注意管理 IP](media/l2vpn-fetch02.png)
 
-3. 開啟邊緣 VM 管理 IP 位址的 SSH 會話。 以使用者名稱**admin**和密碼**CloudSimple 123！** 執行 ```get logical-router``` 命令。
+3. 開啟邊緣 VM 管理 IP 位址的 SSH 會話。 以使用者名稱**管理員**和密碼**AVS 123！** 執行 ```get logical-router``` 命令。
 
     ![取得邏輯路由器輸出](media/l2vpn-fetch03.png)
 
@@ -126,7 +126,7 @@ ms.locfileid: "74232388"
 
     ![建立邏輯交換器](media/l2vpn-fetch04.png)
 
-6. 將虛擬交換器附加至第1層路由器，其中包含來自內部部署或私人雲端的連結本機 IP 位址或任何非重迭的子網。 請參閱 VMware 檔中的在[第1層邏輯路由器上新增下行通訊埠](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-E7EA867C-604C-4224-B61D-2A8EF41CB7A6.html)。
+6. 將虛擬交換器附加至第1層路由器，其中包含來自內部部署或您的 AVS 私人雲端的連結本機 IP 位址或任何非重迭的子網。 請參閱 VMware 檔中的在[第1層邏輯路由器上新增下行通訊埠](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-E7EA867C-604C-4224-B61D-2A8EF41CB7A6.html)。
 
     ![附加虛擬交換器](media/l2vpn-fetch05.png)
 
@@ -148,17 +148,17 @@ ms.locfileid: "74232388"
 
 ### <a name="allow-udp-5004500-for-ipsec"></a>允許 IPsec 的 UDP 500/4500
 
-1. 在 CloudSimple 入口網站中建立 Tier0 回送介面的[公用 IP 位址](public-ips.md)。
+1. 在 AVS 入口網站中建立 Tier0 回送介面的[公用 IP 位址](public-ips.md)。
 
 2. 建立具有可設定狀態規則的[防火牆資料表](firewall.md)，允許 UDP 500/4500 輸入流量，並將防火牆資料表附加到 HostTransport 子網。
 
 ### <a name="advertise-the-loopback-interface-ip-to-the-underlay-network"></a>將回送介面 IP 公告至 underlay 網路
 
-1. 為回送介面網路建立 null 路由。 登入 NSX-T Manager，並選取**網路** > **路由** > **路由器** > **提供者-LR** > **路由** > **靜態路由**。 按一下頁面底部的 [新增]。 針對 [**網路**]，輸入回送介面的 IP 位址。 針對 [**下一個躍點]** ，按一下 [**新增**]，為下一個躍點指定 [Null]，並保留預設值1來管理距離。
+1. 為回送介面網路建立 null 路由。 登入 NSX-T Manager，並選取**網路** > **路由** > **路由器** > **提供者-LR** > **路由** > **靜態路由**。 按一下 [新增]。 針對 [**網路**]，輸入回送介面的 IP 位址。 針對 [**下一個躍點]** ，按一下 [**新增**]，為下一個躍點指定 [Null]，並保留預設值1來管理距離。
 
     ![新增靜態路由](media/l2vpn-routing-security01.png)
 
-2. 建立 IP 首碼清單。 登入 NSX-T Manager，然後選取 **網路** > **路由** > **路由器** > **提供者-LR** > **路由** > **IP 首碼清單**。 按一下頁面底部的 [新增]。 輸入名稱以識別清單。 針對**前置詞，請按一下**[**新增**兩次]。 在第一行中，輸入「0.0.0.0/0」作為 [**網路**] 和 [拒絕] 以進行**動作**。 在第二行中，為 [**網路**] 選取 [**任何**]，並**允許**[**動作**]。
+2. 建立 IP 首碼清單。 登入 NSX-T Manager，然後選取 **網路** > **路由** > **路由器** > **提供者-LR** > **路由** > **IP 首碼清單**。 按一下 [新增]。 輸入名稱以識別清單。 針對**前置詞，請按一下**[**新增**兩次]。 在第一行中，輸入「0.0.0.0/0」作為 [**網路**] 和 [拒絕] 以進行**動作**。 在第二行中，為 [**網路**] 選取 [**任何**]，並**允許**[**動作**]。
 3. 將 IP 首碼清單附加至這兩個 BGP 鄰近專案（TOR）。 將 IP 首碼清單附加至 BGP 鄰居，可防止在 BGP 中將預設路由公告至 TOR 交換器。 不過，任何包含 null 路由的其他路由都會向 TOR 交換器通告回送介面的 IP 位址。
 
     ![建立 IP 首碼清單](media/l2vpn-routing-security02.png)
@@ -173,9 +173,9 @@ ms.locfileid: "74232388"
 
 ## <a name="configure-a-route-based-vpn-on-the-nsx-t-tier0-router"></a>在 NSX-T Tier0 路由器上設定以路由為基礎的 VPN
 
-使用下列範本來填入在 NSX-T Tier0 路由器上設定路由式 VPN 的所有詳細資料。 後續的 POST 呼叫中需要每個 POST 呼叫中的 Uuid。 L2VPN 的回送和通道介面的 IP 位址必須是唯一的，而且不會與內部部署或私人雲端網路重迭。
+使用下列範本來填入在 NSX-T Tier0 路由器上設定路由式 VPN 的所有詳細資料。 後續的 POST 呼叫中需要每個 POST 呼叫中的 Uuid。 L2VPN 的回送和通道介面的 IP 位址必須是唯一的，而且不會與內部部署或 AVS 私人雲端網路重迭。
 
-為用於 L2VPN 的回送和通道介面選擇的 IP 位址必須是唯一的，而且不會與內部部署或私人雲端網路重迭。 回送介面網路必須一律為/32。
+為用於 L2VPN 的回送和通道介面選擇的 IP 位址必須是唯一的，而且不會與內部部署或 AVS 私人雲端網路重迭。 回送介面網路必須一律為/32。
 
 ```
 Loopback interface ip : 192.168.254.254/32
@@ -422,13 +422,13 @@ GET https://192.168.110.201/api/v1/vpn/l2vpn/sessions/<session-id>/peer-codes
 
 ## <a name="deploy-the-nsx-t-standalone-client-on-premises"></a>部署 NSX-T 獨立用戶端（內部部署）
 
-在部署之前，請確認您的內部部署防火牆規則允許輸入和輸出 UDP 500/4500 流量從/傳送到先前針對 NSX-T T0 路由器回送介面所保留的 CloudSimple 公用 IP 位址。 
+在部署之前，請確認您的內部部署防火牆規則允許輸入和輸出 UDP 500/4500 流量從/傳送到先前針對 NSX-T T0 路由器回送介面所保留的 AVS 公用 IP 位址。 
 
 1. [下載獨立的 NSX Edge 用戶端](https://my.vmware.com/group/vmware/details?productId=673&rPId=33945&downloadGroup=NSX-T-230)從下載的配套 OVF 檔案，並將檔案解壓縮至資料夾。
 
     ![下載獨立的 NSX Edge 用戶端](media/l2vpn-deploy-client01.png)
 
-2. 移至含有所有已解壓縮檔案的資料夾。 針對大型設備大小或 NSX-l2t-NSX-l2t-client-large-m3.xlarge-ovf 和 NSX-l2t-client-Xlarge. ovf，選取所有的 vmdk （l2t-client-大型. mf 和）。 按一下 [下一步]。
+2. 移至含有所有已解壓縮檔案的資料夾。 針對大型設備大小或 NSX-l2t-NSX-l2t-client-large-m3.xlarge-ovf 和 NSX-l2t-client-Xlarge. ovf，選取所有的 vmdk （l2t-client-大型. mf 和）。 按 [下一步]。
 
     ![選取範本](media/l2vpn-deploy-client02.png) ![選取範本](media/l2vpn-deploy-client03.png)
 
@@ -440,7 +440,7 @@ GET https://192.168.110.201/api/v1/vpn/l2vpn/sessions/<session-id>/peer-codes
 
     ![選取資料存放區](media/l2vpn-deploy-client06.png)
 
-5. 針對 NSX-T 獨立用戶端選取正確的 [主幹（主幹 PG）]、[公用（上行 PG）] 和 [HA 介面（上行 PG）] 通訊埠群組。 按一下 [下一步]。
+5. 針對 NSX-T 獨立用戶端選取正確的 [主幹（主幹 PG）]、[公用（上行 PG）] 和 [HA 介面（上行 PG）] 通訊埠群組。 按 [下一步]。
 
     ![選取埠群組](media/l2vpn-deploy-client07.png)
 
@@ -448,14 +448,14 @@ GET https://192.168.110.201/api/v1/vpn/l2vpn/sessions/<session-id>/peer-codes
 
     展開 L2T：
 
-    * **對等位址**。 輸入 Tier0 回送介面的 Azure CloudSimple 入口網站上保留的 IP 位址。
+    * **對等位址**。 輸入在 Azure AVS 入口網站上為 Tier0 回送介面保留的 IP 位址。
     * **對等程式碼**。 貼上從 L2VPN 伺服器部署的最後一個步驟取得的對等程式碼。
     * **子介面 VLAN （通道識別碼）** 。 輸入要伸展的 VLAN ID。 在 [括弧（）] 中，輸入先前設定的通道識別碼。
 
     展開上行介面：
 
     * **DNS IP 位址**。 輸入內部部署的 DNS IP 位址。
-    * **預設閘道**。  輸入將作為此用戶端預設閘道的 VLAN 預設閘道。
+    * **預設閘道**。 輸入將作為此用戶端預設閘道的 VLAN 預設閘道。
     * **IP 位址**。 輸入獨立用戶端的上行 IP 位址。
     * **前置長度**。 輸入上行 VLAN/子網的前置長度。
     * **CLI 系統管理員/啟用/根使用者密碼**。 設定 admin/enable/root 帳戶的密碼。

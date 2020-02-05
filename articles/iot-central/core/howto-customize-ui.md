@@ -3,23 +3,23 @@ title: 自訂 Azure IoT Central UI |Microsoft Docs
 description: 如何自訂 Azure IoT central 應用程式的主題和說明連結
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/26/2019
+ms.date: 12/06/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 829ea1bcca36dfba2da3e3946b48b7249f69ee62
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3afa86aae3b51ea20610dcbff5211e59fb341650
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72953586"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018426"
 ---
 # <a name="customize-the-azure-iot-central-ui"></a>自訂 Azure IoT Central UI
 
-[!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
+本文說明如何以系統管理員的身分，藉由套用自訂主題和修改說明連結，以指向您自己的自訂說明資源，以自訂應用程式的 UI。 
 
-本文說明如何以系統管理員的身分，藉由套用自訂主題和修改說明連結，以指向您自己的自訂說明資源，以自訂應用程式的 UI。
+
 
 下列螢幕擷取畫面顯示使用標準主題的頁面：
 
@@ -41,7 +41,7 @@ ms.locfileid: "72953586"
 
 具有透明背景的 PNG 影像，不超過 1 MB。 此標誌會顯示在 IoT Central 應用程式標題列的左邊。
 
-如果您的標誌影像包含應用程式的名稱，您可以隱藏應用程式名稱文字。 如需詳細資訊，請參閱[管理您的應用程式](./howto-administer.md#change-application-name-and-url)。
+如果您的標誌影像包含應用程式的名稱，您可以隱藏應用程式名稱文字。 如需詳細資訊，請參閱[管理您的應用程式](howto-administer.md#change-application-name-and-url)。
 
 ### <a name="browser-icon-favicon"></a>瀏覽器圖示（favicon）
 
@@ -78,4 +78,4 @@ ms.locfileid: "72953586"
 既然您已瞭解如何在 IoT Central 應用程式中自訂 UI，以下是一些建議的後續步驟：
 
 - [管理您的應用程式](./howto-administer.md)
-- [將磚新增至儀表板](./howto-add-tiles-to-your-dashboard.md)
+- [將磚新增至儀表板](howto-add-tiles-to-your-dashboard.md)

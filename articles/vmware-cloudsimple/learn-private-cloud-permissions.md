@@ -1,6 +1,6 @@
 ---
-title: Azure VMware Solution by CloudSimple-私用雲端許可權模型
-description: 描述 CloudSimple 私用雲端許可權模型、群組和類別
+title: Azure VMware 解決方案（AVS）-AVS 私用雲端許可權模型
+description: 說明 AVS 私用雲端許可權模型、群組和類別
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/16/2019
@@ -8,39 +8,39 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 28c4dc7831f97d66eb4d47f08e640344d5cca0d1
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 9488c59ead23fb68633ccc56a0df905ebfeea079
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544305"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77014941"
 ---
-# <a name="cloudsimple-private-cloud-permission-model-of-vmware-vcenter"></a>VMware vCenter 的 CloudSimple 私用雲端許可權模型
+# <a name="avs-private-cloud-permission-model-of-vmware-vcenter"></a>VMware vCenter 的 AVS 私用雲端許可權模型
 
-CloudSimple 會保留私用雲端環境的完整系統管理存取權。 每個 CloudSimple 客戶都會被授與足夠的系統管理許可權，以在其環境中部署和管理虛擬機器。  如有需要，您可以暫時提升許可權以執行管理功能。
+AVS 保留了 AVS 私用雲端環境的完整系統管理存取權。 每個 AVS 客戶都會被授與足夠的系統管理許可權，以在其環境中部署和管理虛擬機器。 如有需要，您可以暫時提升許可權以執行管理功能。
 
 ## <a name="cloud-owner"></a>雲端擁有者
 
-當您建立私人雲端時，會在 vCenter 單一登入網域中建立**CloudOwner**使用者，其具有**雲端擁有者角色**的存取權，可管理私人雲端中的物件。 此使用者也可以設定額外的[vCenter 身分識別來源](set-vcenter-identity.md)，以及其他使用者到私人雲端 vCenter。
+當您建立 AVS 私人雲端時，會在 vCenter 單一登入網域中建立**CloudOwner**使用者，其具有**雲端擁有者角色**的存取權，可管理 AVS 私用雲端中的物件。 此使用者也可以設定其他[vCenter 身分識別來源](set-vcenter-identity.md)，以及其他使用者到 AVS 私用雲端 vCenter。
 
 > [!NOTE]
-> 建立私人雲端時，會 cloudowner@cloudsimple.local CloudSimple 私人雲端 vCenter 的預設使用者。
+> 當您建立了 AVS 私用雲端時，會 cloudowner@AVS.local 您的 AVS 私用雲端 vCenter 的預設使用者。
 
 ## <a name="user-groups"></a>使用者群組
 
-在部署私人雲端期間，會建立名為「**雲端擁有者-群組**」的群組。 此群組中的使用者可以管理私人雲端上 vSphere 環境的各個部分。 此群組會自動獲得**雲端擁有者角色**的許可權，而**CloudOwner**使用者會新增為此群組的成員。  CloudSimple 會建立具有有限許可權的其他群組，以方便管理。  您可以將任何使用者新增至這些預先建立的群組，而下列定義的許可權會自動指派給群組中的使用者。
+在部署 AVS 私人雲端期間，會建立名為「**雲端擁有者-群組**」的群組。 此群組中的使用者可以管理 vSphere 環境在 AVS 私人雲端上的各個部分。 此群組會自動獲得**雲端擁有者角色**的許可權，而**CloudOwner**使用者會新增為此群組的成員。 AVS 以有限的許可權建立其他群組，以方便管理。 您可以將任何使用者新增至這些預先建立的群組，而下列定義的許可權會自動指派給群組中的使用者。
 
 ### <a name="pre-created-groups"></a>預先建立的群組
 
-| 群組名稱 | 目的 | 角色 |
+| 組名 | 目的 | 角色 |
 | -------- | ------- | ------ |
-| 雲端擁有者-群組 | 此群組的成員具有私用雲端 vCenter 的系統管理許可權 | [雲端擁有者-角色](#cloud-owner-role) |
-| 雲端-全域叢集-系統管理-群組 | 此群組的成員具有私用雲端 vCenter 叢集的系統管理許可權 | [雲端-叢集-系統管理-角色](#cloud-cluster-admin-role) |
-| 雲端-全域存放裝置-系統管理-群組 | 此群組的成員可以管理私人雲端 vCenter 上的儲存體 | [雲端儲存體-系統管理-角色](#cloud-storage-admin-role) |
-| 雲端-全球網路-系統管理-群組 | 此群組的成員可以管理私人雲端 vCenter 上的網路和分散式通訊埠群組 | [雲端-網路-系統管理-角色](#cloud-network-admin-role) |
-| 雲端-全域-VM-系統管理-群組 | 此群組的成員可以管理私人雲端 vCenter 上的虛擬機器 | [雲端-VM-系統管理-角色](#cloud-vm-admin-role) |
+| 雲端擁有者-群組 | 此群組的成員具有 AVS 私用雲端 vCenter 的系統管理許可權 | [雲端擁有者-角色](#cloud-owner-role) |
+| 雲端-全域叢集-系統管理-群組 | 此群組的成員具有 AVS 私用雲端 vCenter 叢集的系統管理許可權 | [雲端-叢集-系統管理-角色](#cloud-cluster-admin-role) |
+| 雲端-全域存放裝置-系統管理-群組 | 此群組的成員可以管理 AVS 私用雲端 vCenter 上的儲存體 | [雲端儲存體-系統管理-角色](#cloud-storage-admin-role) |
+| 雲端-全球網路-系統管理-群組 | 此群組的成員可以管理 AVS 私用雲端 vCenter 上的網路和分散式通訊埠群組 | [雲端-網路-系統管理-角色](#cloud-network-admin-role) |
+| 雲端-全域-VM-系統管理-群組 | 此群組的成員可以管理 AVS 私用雲端 vCenter 上的虛擬機器 | [雲端-VM-系統管理-角色](#cloud-vm-admin-role) |
 
-若要授與個別使用者管理私人雲端的許可權，請建立新增至適當群組的使用者帳戶。
+若要授與個別使用者管理 AVS 私用雲端的許可權，請建立新增至適當群組的使用者帳戶。
 
 > [!CAUTION]
 > 新使用者必須僅新增至*雲端擁有者群組*、*雲端全域叢集-管理群組*、雲端-全域*存放裝置-* 系統管理群組、雲端-全域*網路-* 系統管理群組或*雲端全域 VM-管理群組*。  新增至系統*管理員*群組的使用者將會自動移除。  只有服務帳戶必須新增至*Administrators*群組，而服務帳戶不能用來登入 VSPHERE web UI。

@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 65167169248d83ebfec2c49c308673ec9315934e
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: f368ad7cf9b83195e35a2283de7a3644cc9fc317
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552902"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019752"
 ---
 # <a name="migrating-data-to-azure-vmware-solution-by-using-azure-data-box"></a>使用 Azure 資料箱將資料移轉至 Azure VMware 解決方案
 
 Microsoft Azure 資料箱雲端解決方案可讓您以快速、實惠且可靠的方式，將數 tb 的資料傳送至 Azure。 透過向您寄送專屬的資料箱存放裝置，來加速安全的資料傳輸。 每個存放裝置的可用儲存容量上限為 80 TB，並透過區域貨運公司傳輸到您的資料中心。 該裝置具有堅固的外殼，可在運輸過程中保護裝置與資料安全。
 
-藉由使用資料箱，您可以將 VMware 資料大量遷移到您的私人雲端。 內部部署 VMware vSphere 環境中的資料會透過網路檔案系統（NFS）通訊協定複製到資料箱。 大量資料移轉包括將虛擬機器、設定和相關聯資料的時間點複本儲存至資料箱，然後手動將其運送到 Azure。
+藉由使用資料箱，您可以將 VMware 資料大量遷移至您的 AVS 私用雲端。 內部部署 VMware vSphere 環境中的資料會透過網路檔案系統（NFS）通訊協定複製到資料箱。 大量資料移轉包括將虛擬機器、設定和相關聯資料的時間點複本儲存至資料箱，然後手動將其運送到 Azure。
 
 在本文中，您將瞭解：
 
@@ -27,7 +27,7 @@ Microsoft Azure 資料箱雲端解決方案可讓您以快速、實惠且可靠�
 * 透過 NFS 將資料從內部部署 VMware 環境複製到資料箱。
 * 準備資料箱的退貨。
 * 準備 blob 資料以複製到 Azure VMware 解決方案。
-* 將資料從 Azure 複製到您的私人雲端。
+* 將資料從 Azure 複製到您的 AVS 私用雲端。
 
 ## <a name="scenarios"></a>案例
 
@@ -44,11 +44,11 @@ Microsoft Azure 資料箱雲端解決方案可讓您以快速、實惠且可靠�
 
 * 在您的 Azure VMware 解決方案布建所在的相同區域中建立虛擬網路和儲存體帳戶。
 
-* 依照[使用 ExpressRoute 將 azure 虛擬網路連線至 CloudSimple](virtual-network-connection.md)中的步驟，建立從私人雲端到建立儲存體帳戶的虛擬網路的[Azure 虛擬網路](cloudsimple-azure-network-connection.md)連線。
+* 遵循[使用 ExpressRoute 將 azure 虛擬網路連接到 AVS](virtual-network-connection.md)中的步驟，從您的 AVS 私人雲端建立[Azure 虛擬網路](cloudsimple-azure-network-connection.md)連線到建立儲存體帳戶的虛擬網路。
 
 ## <a name="set-up-data-box-for-nfs"></a>設定 NFS 的資料箱
 
-依照教學課程：纜線的「連接到您的裝置」一節中的步驟，連接到您的資料箱本機 web UI [，並連接到您的 Azure 資料箱](../databox/data-box-deploy-set-up.md)。  設定資料箱以允許存取 NFS 用戶端：
+依照教學課程：纜線的「連接到您的裝置」一節中的步驟，連接到您的資料箱本機 web UI [，並連接到您的 Azure 資料箱](../databox/data-box-deploy-set-up.md)。 設定資料箱以允許存取 NFS 用戶端：
 
 1. 在本機 web UI 中，移至 [連線**並複製]** 頁面。 在 [ **nfs 設定**] 底下，選取 [ **nfs 用戶端存取**]。 
 
@@ -95,7 +95,7 @@ Microsoft Azure 資料箱雲端解決方案可讓您以快速、實惠且可靠�
 
    ![加入新的資料存放區-NFS 設定](media/databox-migration-add-datastore-nfs-configuration.png)
 
-6. 在嚮導的步驟4中，選取您想要裝載資料存放區的 ESXi 主機，然後選取 **[下一步]** 。  在叢集中，選取所有主機以確保虛擬機器的遷移。
+6. 在嚮導的步驟4中，選取您想要裝載資料存放區的 ESXi 主機，然後選取 **[下一步]** 。 在叢集中，選取所有主機以確保虛擬機器的遷移。
 
    ![加入新的資料存放區-選取主機](media/databox-migration-add-datastore-nfs-select-hosts.png)
 
@@ -103,7 +103,7 @@ Microsoft Azure 資料箱雲端解決方案可讓您以快速、實惠且可靠�
 
 ## <a name="copy-data-to-the-data-box-nfs-datastore"></a>將資料複製到資料箱 NFS 資料存放區
 
-虛擬機器可以遷移或複製到新的資料存放區。  您想要遷移的任何未使用虛擬機器，都可以使用**Storage vMotion**選項遷移到資料箱 NFS 資料存放區。 Active 虛擬機器可以複製到資料箱 NFS 資料存放區。
+虛擬機器可以遷移或複製到新的資料存放區。 您想要遷移的任何未使用虛擬機器，都可以使用**Storage vMotion**選項遷移到資料箱 NFS 資料存放區。 Active 虛擬機器可以複製到資料箱 NFS 資料存放區。
 
 * 識別並列出可以**移動**的虛擬機器。
 * 識別並列出必須**複製**的虛擬機器。
@@ -157,7 +157,7 @@ Microsoft Azure 資料箱雲端解決方案可讓您以快速、實惠且可靠�
 
 ### <a name="copy-iso-files-to-the-data-box-datastore"></a>將 ISO 檔案複製到資料箱資料存放區
 
-1. 從您的內部部署 vCenter web UI 中，移至 [**儲存體**]。  選取 [ **Databox-資料**存放區]，然後選取 [檔案 **]。** 建立用來儲存 ISO 檔案的新資料夾。
+1. 從您的內部部署 vCenter web UI 中，移至 [**儲存體**]。 選取 [ **Databox-資料**存放區]，然後選取 [檔案 **]。** 建立用來儲存 ISO 檔案的新資料夾。
 
     ![複製 ISO-建立新資料夾](media/databox-migration-create-folder.png)
 
@@ -213,28 +213,28 @@ Microsoft Azure 資料箱雲端解決方案可讓您以快速、實惠且可靠�
 
 ## <a name="copy-data-from-azure-storage-to-azure-vmware-solution"></a>將資料從 Azure 儲存體複製到 Azure VMware 解決方案
 
-當您的資料箱的訂單狀態顯示為 [已完成] 之後，您的 Azure 儲存體帳戶上將會提供複製到資料箱裝置的資料。 現在可以將資料複製到您的 Azure VMware 解決方案。 您必須使用 NFS 通訊協定，將儲存體帳戶中的資料複製到私人雲端的 vSAN 資料存放區。 
+當您的資料箱的訂單狀態顯示為 [已完成] 之後，您的 Azure 儲存體帳戶上將會提供複製到資料箱裝置的資料。 現在可以將資料複製到您的 Azure VMware 解決方案。 您必須使用 NFS 通訊協定，將儲存體帳戶中的資料複製到您的 AVS 私人雲端 vSAN 資料存放區。 
 
-首先，使用**AzCopy**，將 Blob 儲存體資料複製到 Azure 中 Linux 虛擬機器上的受控磁片。 透過 NFS 提供受控磁片，將 NFS 共用掛接為私人雲端上的資料存放區，然後複製資料。 這個方法可讓您更快速地將資料複製到您的私人雲端。
+首先，使用**AzCopy**，將 Blob 儲存體資料複製到 Azure 中 Linux 虛擬機器上的受控磁片。 透過 NFS 提供受控磁片，將 NFS 共用掛接為您的 AVS 私人雲端上的資料存放區，然後複製資料。 這個方法可讓您更快速地將資料複製到您的 AVS 私用雲端。
 
-### <a name="copy-data-to-your-private-cloud-using-a-linux-virtual-machine-and-managed-disks-and-then-export-as-nfs-share"></a>使用 Linux 虛擬機器和受控磁片將資料複製到私人雲端，然後匯出為 NFS 共用
+### <a name="copy-data-to-your-avs-private-cloud-using-a-linux-virtual-machine-and-managed-disks-and-then-export-as-nfs-share"></a>使用 Linux 虛擬機器和受控磁片將資料複製到您的 AVS 私人雲端，然後匯出為 NFS 共用
 
-1. 在您的儲存體帳戶建立所在的相同區域中，于 Azure 中建立[Linux 虛擬機器](../virtual-machines/linux/quick-create-portal.md)，並將 azure 虛擬網路連線到您的私人雲端。
+1. 在您的儲存體帳戶建立所在的相同區域中，于 Azure 中建立[Linux 虛擬機器](../virtual-machines/linux/quick-create-portal.md)，並與您的 AVS 私人雲端具有 Azure 虛擬網路連線。
 
-2. 建立儲存體容量大於 blob 資料量的受控磁片，並[將其連結至您的 Linux 虛擬機器](../virtual-machines/linux/attach-disk-portal.md)。  如果 blob 資料量大於可用的最大受控磁片容量，則必須以多個步驟或使用多個受控磁片來複製資料。
+2. 建立儲存體容量大於 blob 資料量的受控磁片，並[將其連結至您的 Linux 虛擬機器](../virtual-machines/linux/attach-disk-portal.md)。 如果 blob 資料量大於可用的最大受控磁片容量，則必須以多個步驟或使用多個受控磁片來複製資料。
 
 3. 連接到 Linux 虛擬機器並掛接受控磁片。
 
 4. [在您的 Linux 虛擬機器上安裝 AzCopy](../storage/common/storage-use-azcopy-v10.md)。
 
-5. 使用 AzCopy，將資料從您的 Azure Blob 儲存體下載到受控磁片。  命令語法： `azcopy copy "https://<storage-account-name>.blob.core.windows.net/<container-name>/*" "<local-directory-path>/"`。  以您的 Azure 儲存體帳戶名稱取代 `<storage-account-name>`，並以保留透過資料箱複製之資料的容器 `<container-name>`。
+5. 使用 AzCopy，將資料從您的 Azure Blob 儲存體下載到受控磁片。 命令語法： `azcopy copy "https://<storage-account-name>.blob.core.windows.net/<container-name>/*" "<local-directory-path>/"`。 以您的 Azure 儲存體帳戶名稱取代 `<storage-account-name>`，並以保留透過資料箱複製之資料的容器 `<container-name>`。
 
 6. 在您的 Linux 虛擬機器上安裝 NFS 伺服器：
 
     - 在 Ubuntu/Debian 發佈上： `sudo apt install nfs-kernel-server`。
     - 在 Enterprise Linux 散發套件上： `sudo yum install nfs-utils`。
 
-7. 變更受控磁片上的資料夾許可權，其中 Azure Blob 儲存體的資料已複製到該處。  針對您想要匯出為 NFS 共用的所有資料夾，變更其許可權。
+7. 變更受控磁片上的資料夾許可權，其中 Azure Blob 儲存體的資料已複製到該處。 針對您想要匯出為 NFS 共用的所有資料夾，變更其許可權。
 
     ```bash
     chmod -R 755 /<folder>/<subfolder>
@@ -247,7 +247,7 @@ Microsoft Azure 資料箱雲端解決方案可讓您以快速、實惠且可靠�
     sudo vi /etc/exports
     ```
     
-    針對私人雲端的每個 ESXi 主機 IP，在檔案中輸入下列幾行。  如果您要建立多個資料夾的共用，請新增所有資料夾。
+    針對您的 AVS 私人雲端的每個 ESXi 主機 IP，在檔案中輸入下列幾行。 如果您要建立多個資料夾的共用，請新增所有資料夾。
 
     ```bash
     /<folder>/<subfolder> <ESXiNode1IP>(rw,sync,no_root_squash,no_subtree_check)
@@ -261,11 +261,11 @@ Microsoft Azure 資料箱雲端解決方案可讓您以快速、實惠且可靠�
 10. 使用 `sudo systemctl restart nfs-kernel-server` 命令重新開機 NFS 核心伺服器。
 
 
-### <a name="mount-the-linux-virtual-machine-nfs-share-as-a-datastore-on-a-private-cloud-vcenter-cluster-and-then-copy-data"></a>將 Linux 虛擬機器 NFS 共用掛接為私人雲端 vCenter 叢集上的資料存放區，然後複製資料
+### <a name="mount-the-linux-virtual-machine-nfs-share-as-a-datastore-on-an-avs-private-cloud-vcenter-cluster-and-then-copy-data"></a>在 AVS 私人雲端 vCenter 叢集上掛接 Linux 虛擬機器 NFS 共用作為資料存放區，然後複製資料
 
-您必須將 Linux 虛擬機器的 NFS 共用掛接為私人雲端 vCenter 叢集上的資料存放區。 掛接之後，您可以將資料從 NFS 資料存放區複製到私人雲端 vSAN 資料存放區。
+您必須將 Linux 虛擬機器的 NFS 共用掛接為您的 AVS 私用雲端 vCenter 叢集上的資料存放區。 掛接之後，您可以從 NFS 資料存放區將資料複製到 AVS 私人雲端 vSAN 資料存放區。
 
-1. 登入您的私用雲端 vCenter server。
+1. 登入您的 AVS 私用雲端 vCenter server。
 
 2. 在 **資料中心** 上按一下滑鼠右鍵，選取 儲存體，選取 **新增資料**存放**區**，然後選取
 
@@ -279,11 +279,11 @@ Microsoft Azure 資料箱雲端解決方案可讓您以快速、實惠且可靠�
 
    ![加入新的資料存放區-NFS 版本](media/databox-migration-add-datastore-nfs-version.png)
 
-5. 在嚮導的步驟3中，指定資料存放區的名稱、路徑和伺服器。  您可以針對伺服器使用 Linux 虛擬機器的 IP 位址。  資料夾路徑的格式會是 `/<folder>/<subfolder>/`。
+5. 在嚮導的步驟3中，指定資料存放區的名稱、路徑和伺服器。 您可以針對伺服器使用 Linux 虛擬機器的 IP 位址。 資料夾路徑的格式會是 `/<folder>/<subfolder>/`。
 
    ![加入新的資料存放區-NFS 設定](media/databox-migration-add-datastore-nfs-configuration.png)
 
-6. 在嚮導的步驟4中，選取您想要裝載資料存放區的 ESXi 主機，然後選取 **[下一步]** 。  在叢集中，選取所有主機以確保虛擬機器的遷移。
+6. 在嚮導的步驟4中，選取您想要裝載資料存放區的 ESXi 主機，然後選取 **[下一步]** 。 在叢集中，選取所有主機以確保虛擬機器的遷移。
 
    ![加入新的資料存放區-選取主機](media/databox-migration-add-datastore-nfs-select-hosts.png)
 
@@ -291,13 +291,13 @@ Microsoft Azure 資料箱雲端解決方案可讓您以快速、實惠且可靠�
 
 ### <a name="add-virtual-machines-and-virtual-machine-templates-from-an-nfs-datastore-to-the-inventory"></a>從 NFS 資料存放區將虛擬機器和虛擬機器範本新增至清查
 
-1. 從您的私用雲端 vCenter web UI 中，移至 [**儲存體**]。  選取 Linux 虛擬機器 NFS 資料存放區，然後選取 [檔案 **]。**
+1. 從您的 AVS 私用雲端 vCenter web UI 中，移至 [**儲存體**]。 選取 Linux 虛擬機器 NFS 資料存放區，然後選取 [檔案 **]。**
 
     ![從 NFS 資料存放區選取檔案](media/databox-migration-datastore-select-files.png)
 
-2. 選取包含虛擬機器或虛擬機器範本的資料夾。  在詳細資料窗格中，選取虛擬機器的 vmx 檔案或虛擬機器範本的 .vmtx 檔案。
+2. 選取包含虛擬機器或虛擬機器範本的資料夾。 在詳細資料窗格中，選取虛擬機器的 vmx 檔案或虛擬機器範本的 .vmtx 檔案。
 
-3. 選取 [**註冊 VM** ]，在您的私人雲端 vCenter 上註冊虛擬機器。
+3. 選取 [**註冊 VM** ]，在您的 AVS 私用雲端 vCenter 上註冊虛擬機器。
 
     ![註冊虛擬機器](media/databox-migration-datastore-register-vm.png)
 
@@ -305,29 +305,29 @@ Microsoft Azure 資料箱雲端解決方案可讓您以快速、實惠且可靠�
 
 4. 針對所有虛擬機器和虛擬機器範本重複步驟3和4。
 
-5. 移至包含 ISO 檔案的資料夾。  選取 ISO 檔案，然後選取 [**複製到**]，將檔案複製到 vSAN 資料存放區上的資料夾。
+5. 移至包含 ISO 檔案的資料夾。 選取 ISO 檔案，然後選取 [**複製到**]，將檔案複製到 vSAN 資料存放區上的資料夾。
 
-虛擬機器和虛擬機器範本現在可在您的私用雲端 vCenter 上取得。 您必須先將這些虛擬機器從 NFS 資料存放區移至 vSAN 資料存放區，才能開啟它們。 您可以使用**Storage vMotion**選項，並選取 vSAN 資料存放區作為虛擬機器的目標。
+您的 AVS 私用雲端 vCenter 現在提供虛擬機器和虛擬機器範本。 您必須先將這些虛擬機器從 NFS 資料存放區移至 vSAN 資料存放區，才能開啟它們。 您可以使用**Storage vMotion**選項，並選取 vSAN 資料存放區作為虛擬機器的目標。
 
 虛擬機器範本必須從您的 Linux 虛擬機器 NFS 資料存放區複製到 vSAN 資料存放區。
 
 ### <a name="clean-up-your-linux-virtual-machine"></a>清除您的 Linux 虛擬機器
 
-將所有資料複製到您的私人雲端之後，您就可以從私人雲端移除 NFS 資料存放區：
+將所有資料複製到您的 AVS 私人雲端之後，您就可以從您的 AVS 私人雲端移除 NFS 資料存放區：
 
 1. 請確定所有虛擬機器和範本都已移動並複製到您的 vSAN 資料存放區。
 
 2. 從清查所有虛擬機器範本的 NFS 資料存放區中移除。
 
-3. 從您的私用雲端 vCenter 卸載 Linux 虛擬機器資料存放區。
+3. 從您的 AVS 私用雲端 vCenter 卸載 Linux 虛擬機器資料存放區。
 
 4. 從 Azure 刪除虛擬機器和受控磁片。
 
-5. 如果您不想要保留在儲存體帳戶中資料箱傳輸的資料，請刪除 Azure 儲存體帳戶。  
+5. 如果您不想要保留在儲存體帳戶中資料箱傳輸的資料，請刪除 Azure 儲存體帳戶。 
     
 
 
 ## <a name="next-steps"></a>後續步驟
 
 * 深入瞭解[資料箱](../databox/data-box-overview.md)。
-* 深入瞭解將[工作負載遷移至私用雲端](migrate-workloads.md)的不同選項。
+* 深入瞭解將[工作負載遷移至您的 AVS 私用雲端](migrate-workloads.md)的不同選項。

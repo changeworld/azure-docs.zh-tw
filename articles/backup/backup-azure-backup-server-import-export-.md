@@ -3,13 +3,13 @@ title: 適用於 DPM 和 Azure 備份伺服器的離線備份
 description: Azure 備份可讓您使用 Azure 匯入/匯出服務從網路傳送資料。 本文說明 DPM 和 Azure 備份伺服器的離線備份工作流程（MABS）。
 ms.reviewer: saurse
 ms.topic: conceptual
-ms.date: 05/08/2018
-ms.openlocfilehash: 259be99efdef29e3f7971632adf76c03175bba01
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.date: 1/28/2020
+ms.openlocfilehash: 6be75062ab0ce06784d8cd7c833e0070476acf60
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996318"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022574"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>適用於 DPM 和 Azure 備份伺服器的離線備份工作流程
 
@@ -56,13 +56,74 @@ Azure 備份的離線植入程序與 [Azure 匯入/匯出服務](../storage/comm
     | 美國 | [連結](https://portal.azure.us#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
     | 中國 | [連結](https://portal.azure.cn/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
 
-* 在您從中下載發佈設定檔案的訂用帳戶中，已建立採用「傳統」部署模型的「Azure 儲存體」帳戶，如下所示：
+* 已在您下載發佈設定檔案的訂用帳戶中建立具有*Resource Manager*部署模型的 Azure 儲存體帳戶，如下所示：
 
-  ![建立傳統儲存體帳戶](./media/backup-azure-backup-import-export/storageaccountclassiccreate.png)
+  ![建立具有 Resource Manager 開發的儲存體帳戶](./media/backup-azure-backup-import-export/storage-account-resource-manager.png)
 
 * 已建立具有足夠磁碟空間來存放初始複本的內部或外部暫存位置 (可能是網路共用或電腦上任何額外的磁碟機)。 例如：若您正在嘗試備份 500 GB 的檔案伺服器，請確定預備區域至少有 500 GB 的空間 (由於壓縮的關係，實際使用量會較少)。
 * 針對將送到 Azure 的磁碟，確保僅使用 2.5 英吋的 SSD，或是 2.5 英吋或 3.5 英吋的 SATA II/III 內部硬碟。 您可以使用高達 10 TB 的硬碟。 檢查 [Azure 匯入/匯出服務文件](../storage/common/storage-import-export-requirements.md#supported-hardware)以取得服務所支援的最新磁碟機組合。
 * SATA 磁碟機必須連接至要執行將備份資料從「暫存位置」複製到 SATA 磁碟機之作業的電腦 (稱為「複本電腦」)。 請確定已在「複本電腦」上啟用 BitLocker
+
+## <a name="prepare-the-server-for-the-offline-backup-process"></a>準備伺服器以進行離線備份程式
+
+>[!NOTE]
+> 如果您在 MARS 代理程式安裝中找不到列出的公用程式（例如*AzureOfflineBackupCertGen* ），請寫入 AskAzureBackupTeam@microsoft.com 以取得存取權。
+
+* 在伺服器上開啟提升許可權的命令提示字元，然後執行下列命令：
+
+    ```cmd
+    AzureOfflineBackupCertGen.exe CreateNewApplication SubscriptionId:<Subs ID>
+    ```
+
+    此工具會建立 Azure 離線備份 AD 應用程式（如果不存在的話）。
+
+    如果應用程式已存在，此可執行檔會要求您手動將憑證上傳至租使用者中的應用程式。 請依照本節中的步驟，[手動將憑證](#manually-upload-offline-backup-certificate)上傳至應用程式。
+
+* AzureOfflineBackup 工具將會產生 OfflineApplicationParams。  使用 MABS 或 DPM 將此檔案複製到伺服器。
+* 在 DPM/Azure 備份（MABS）伺服器上安裝[最新的 MARS 代理程式](https://aka.ms/azurebackup_agent)。
+* 向 Azure 註冊伺服器。
+* 執行以下命令：
+
+    ```cmd
+    AzureOfflineBackupCertGen.exe AddRegistryEntries SubscriptionId:<subscriptionid> xmlfilepath:<path of the OfflineApplicationParams.xml file>  storageaccountname:<storageaccountname configured with Azure Data Box>
+    ```
+
+* 上述命令會建立檔案 `C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch\MicrosoftBackupProvider\OfflineApplicationParams_<Storageaccountname>.xml`
+
+## <a name="manually-upload-offline-backup-certificate"></a>手動上傳離線備份憑證
+
+請遵循下列步驟，將離線備份憑證手動上傳至先前建立的 Azure Active Directory 應用程式，以供離線備份。
+
+1. 登入 Azure 入口網站。
+2. 移至**Azure Active Directory** > **應用程式註冊**
+3. 流覽至 [**擁有的應用程式**] 索引標籤，找出具有顯示名稱格式 `AzureOfflineBackup _<Azure User Id` 的應用程式，如下所示：
+
+    ![在擁有的應用程式索引標籤上尋找應用程式](./media/backup-azure-backup-import-export/owned-applications.png)
+
+4. 按一下 [應用程式]。 在左窗格的 [**管理**] 索引標籤下，移至 [**憑證 & 密碼**]。
+5. 檢查是否有預先存在的憑證或公開金鑰。 如果沒有，您可以在應用程式的 [**總覽**] 頁面上按一下 [**刪除**] 按鈕，安全地刪除應用程式。 在此之後，您可以重試步驟以[準備伺服器進行離線備份程式](#prepare-the-server-for-the-offline-backup-process)，並略過下列步驟。 否則，請從您想要設定離線備份的 DPM/Azure 備份伺服器（MABS）伺服器執行下列步驟。
+6. 開啟 [**管理電腦憑證應用程式** > **個人**] 索引標籤，然後尋找名稱為 `CB_AzureADCertforOfflineSeeding_<ResourceId>` 的憑證
+7. 選取上述憑證，以滑鼠右鍵按一下 [**所有**工作]，然後以 .Cer 格式**匯出**（不含私密金鑰）。
+8. 移至 Azure 入口網站中的 Azure 離線備份應用程式。
+9. 按一下 [**管理** > **憑證 & 秘密** > **上傳憑證**]，然後上傳在上一個步驟中匯出的憑證。
+
+    ![上傳憑證](./media/backup-azure-backup-import-export/upload-certificate.png)
+10. 在伺服器上，在 [執行] 視窗中輸入**regedit**來開啟登錄。
+11. 移至登錄專案*Computer \ HKEY_LOCAL_MACHINE \Software\microsoft\windows server\ Azure Backup\Config\CloudBackupProvider*。
+12. 以滑鼠右鍵按一下**CloudBackupProvider** ，並新增名稱為 `AzureADAppCertThumbprint_<Azure User Id>` 的新字串值
+
+    >[!NOTE]
+    > 注意：若要尋找 Azure 使用者識別碼，請執行下列其中一個步驟：
+    >
+    >1. 從 Azure 連線的 PowerShell 執行 `Get-AzureRmADUser -UserPrincipalName “Account Holder’s email as appears in the portal”` 命令。
+    >2. 流覽至登錄路徑： `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup; Name: CurrentUserId;`
+
+13. 以滑鼠右鍵按一下上一個步驟中新增的字串，然後選取 [**修改**]。 在 [值] 中，提供您在步驟7中匯出之憑證的指紋，然後按一下 **[確定]** 。
+14. 若要取得指紋的值，請按兩下憑證，然後選取 [**詳細資料**] 索引標籤並向下滾動，直到您看到 [指紋] 欄位為止。 按一下 [**指紋**] 並複製值。
+
+    ![從 [指紋] 欄位複製值](./media/backup-azure-backup-import-export/thumbprint-field.png)
+
+15. 繼續進行 [[工作流程](#workflow)] 區段以繼續進行離線備份程式。
 
 ## <a name="workflow"></a>工作流程
 
@@ -104,7 +165,7 @@ Azure 備份的離線植入程序與 [Azure 匯入/匯出服務](../storage/comm
 
 *AzureOfflineBackupDiskPrep* 公用程式可用來準備要送到最鄰近之 Azure 資料中心的 SATA 磁碟機。 此公用程式位於「復原服務」代理程式之安裝目錄的以下路徑中：
 
-    *\\Microsoft Azure Recovery Services Agent\\Utils\\*
+`*\\Microsoft Azure Recovery Services Agent\Utils\*`
 
 1. 移至該目錄，然後將 [AzureOfflineBackupDiskPrep] 目錄複製到已連接要準備之 SATA 磁碟機的複本電腦。 確認下列與複本電腦有關的事項：
 
@@ -121,7 +182,7 @@ Azure 備份的離線植入程序與 [Azure 匯入/匯出服務](../storage/comm
 
     `*.\AzureOfflineBackupDiskPrep.exe*   s:<*Staging Location Path*>   [p:<*Path to AzurePublishSettingsFile*>]`
 
-    | 參數 | 描述 |
+    | 參數 | 說明 |
     | --- | --- |
     | s:&lt;*預備位置路徑*&gt; |強制性輸入內容，用來提供在 **起始離線備份** 工作流程中所輸入的預備位置路徑。 |
     | p:&lt;*PublishSettingsFile 的路徑*&gt; |選擇性輸入內容，用來提供在**起始離線備份**工作流程中所輸入的 **Azure 發佈設定**檔案路徑。 |
@@ -162,7 +223,7 @@ Azure 備份的離線植入程序與 [Azure 匯入/匯出服務](../storage/comm
 
    `*.\AzureOfflineBackupDiskPrep.exe*  u:  s:<*Staging Location Path*>   p:<*Path to AzurePublishSettingsFile*>`
 
-    | 參數 | 描述 |
+    | 參數 | 說明 |
     | --- | --- |
     | u: | 必要輸入項目，用來更新 Azure 匯入工作的寄送詳細資料 |
     | s:&lt;*預備位置路徑*&gt; | 命令不是在來源電腦上執行時，必須輸入。 用來提供在**起始離線備份**工作流程中所輸入的暫存位置路徑。 |
@@ -218,4 +279,3 @@ Azure 備份的離線植入程序與 [Azure 匯入/匯出服務](../storage/comm
 ## <a name="next-steps"></a>後續步驟
 
 * 如有任何關於 Azure 匯入/匯出工作流程的問題，請參閱 [使用 Microsoft Azure 匯入/匯出服務將資料傳輸至 Blob 儲存體](../storage/common/storage-import-export-service.md)。
-

@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 07/11/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: df663861010177ba54c56ee4495458ea1b928359
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: a95b59c6cc0d486c1d4b10f39d0d272dd4b34f54
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76985708"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018987"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>從 Azure PowerShell 管理 IoT Central
 
@@ -61,30 +61,24 @@ New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
   -DisplayName "My Custom Display Name"
 ```
 
-腳本會先在「美國東部」位置為應用程式建立資源群組。 下表說明搭配 **New-AzIotCentralApp** 命令使用的參數：
+該指令碼會先為應用程式在美國東部區域中建立資源群組。 下表說明搭配 **New-AzIotCentralApp** 命令使用的參數：
 
 |參數         |說明 |
 |------------------|------------|
 |resourceGroupName |包含應用程式的資源群組。 此資源群組必須已經存在於您的訂用帳戶中。 |
-|位置 |根據預設，此 Cmdlet 會使用來自資源群組的位置。 目前，您可以在**美國**、**澳大利亞**、**亞太地區**或**歐洲**地區建立 IoT Central 應用程式。  |
+|位置 |根據預設，此 Cmdlet 會使用來自資源群組的位置。 目前，您可以在「**美國東部**」、「**美國西部** **」、「北歐」** 或「**西歐」區域中**，或在「**澳大利亞**」或「**亞太地區**地理位置」中建立 IoT Central 應用程式。  |
 |名稱              |應用程式在 Azure 入口網站中的名稱。 |
 |子網域         |應用程式 URL 中的子網域。 在範例中，應用程式 URL 是 https://mysubdomain.azureiotcentral.com 。 |
 |SKU               |目前，您可以使用**ST1**或**ST2**。 請參閱 [Azure IoT Central 價格](https://azure.microsoft.com/pricing/details/iot-central/)。 |
 |範本          | 要使用的應用程式範本。 如需詳細資訊，請參閱下列表格： |
 |DisplayName       |在 UI 中顯示的應用程式名稱。 |
 
-**具有正式推出功能的應用程式範本**
+**應用程式範本**
 
 | 範本名稱            | 說明 |
 | ------------------------ | ----------- |
 | iotc-default@1.0.0       | 為您建立空的應用程式，以填入您自己的裝置範本和裝置。
-
-
-**具有公開預覽功能的應用程式範本**
-
-| 範本名稱            | 說明 |
-| ------------------------ | ----------- |
-| iotc-pnp-preview@1.0.0   | 建立空白的隨插即用預覽應用程式，讓您填入自己的裝置範本和裝置。 |
+| iotc-pnp-preview@1.0.0   | 建立空的隨插即用（預覽）應用程式，讓您填入自己的裝置範本和裝置。 |
 | iotc-condition@1.0.0     | 建立具有存放區內分析-條件監視範本的應用程式。 使用此範本來連接和監視存放區環境。 |
 | iotc-consumption@1.0.0   | 建立具有水耗用量監視範本的應用程式。 使用此範本來監視和控制水流程。 |
 | iotc-distribution@1.0.0  | 建立具有數位散發範本的應用程式。 使用此範本來 digitalizing 主要資產和動作，以改善倉儲輸出效率。 |
@@ -96,9 +90,6 @@ New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
 | iotc-quality@1.0.0       | 建立具有水品質監控範本的應用程式。 使用此範本以數位方式監視水品質。|
 | iotc-store@1.0.0         | 建立具有存放區內分析-結帳範本的應用程式。 使用此範本來監視和管理您的存放區內的簽出流程。 |
 | iotc-waste@1.0.0         | 建立具有連線垃圾管理範本的應用程式。 使用此範本來監視浪費區間和分派欄位運算子。 |
-
-> [!NOTE]
-> 預覽應用程式範本目前僅適用于**歐洲**和**美國**地區。
 
 ## <a name="view-your-iot-central-applications"></a>檢視 IoT Central 應用程式
 

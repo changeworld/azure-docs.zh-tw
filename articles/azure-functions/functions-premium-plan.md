@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: 5f6825243b7e410b49b54d04a028b5d71610ea68
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
-ms.translationtype: HT
+ms.openlocfilehash: b373691a6b9649a43d68c9da93b49fd20536c42b
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561949"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024631"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions 進階方案
 
@@ -37,7 +37,7 @@ az functionapp plan create --resource-group <RESOURCE_GROUP> --name <PLAN_NAME> 
 
 ### <a name="pre-warmed-instances"></a>預先準備就緒的實例
 
-如果目前在取用方案中沒有發生任何事件和執行，您的應用程式可能會相應減少為零個實例。 當新事件進入時，必須將新的實例專門提供給在其上執行的應用程式。  根據應用程式，將新的實例特製化可能需要一些時間。  第一次呼叫時的此額外延遲通常稱為應用程式冷啟動。
+如果目前在取用方案中沒有發生任何事件和執行，您的應用程式可能會相應縮小為零個實例。 當新事件進入時，必須將新的實例專門提供給在其上執行的應用程式。  根據應用程式，將新的實例特製化可能需要一些時間。  第一次呼叫時的此額外延遲通常稱為應用程式冷啟動。
 
 在高階方案中，您可以讓應用程式預先準備就緒指定的實例數目，最多可達您最小的方案大小。  預先準備就緒的實例也可讓您在高負載前預先調整應用程式。 當應用程式相應放大時，它會先調整為預先準備就緒的實例。 其他實例會繼續緩衝並立即準備好進行下一個調整作業。 藉由擁有預先準備就緒之實例的緩衝區，您可以有效地避免冷啟動延遲。  預先準備就緒的實例是高階方案的一項功能，而且您必須至少保留一個執行中的實例，而且在計畫作用中的任何時候都可以使用。
 
@@ -100,10 +100,10 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 |地區| Windows | Linux |
 |--| -- | -- |
-|澳大利亞中部| ✔<sup>1</sup> | |
-|澳大利亞中部 2| ✔<sup>1</sup> | |
+|澳洲中部| ✔<sup>1</sup> | |
+|澳洲中部 2| ✔<sup>1</sup> | |
 |澳大利亞東部| ✔ | |
-|澳大利亞東南部 | ✔ | ✔<sup>1</sup> |
+|澳洲東南部 | ✔ | ✔<sup>1</sup> |
 |巴西南部| ✔<sup>2</sup> |  |
 |加拿大中部| ✔ |  |
 |美國中部| ✔ |  |
@@ -116,13 +116,13 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 |日本西部| ✔ | |
 |南韓中部| ✔ |  |
 |美國中北部| ✔ |  |
-|歐洲北部| ✔ | ✔<sup>1</sup> |
+|北歐| ✔ | ✔<sup>1</sup> |
 |美國中南部| ✔ | ✔<sup>1</sup> |
 |印度南部 | ✔ | |
 |東南亞| ✔ | ✔<sup>1</sup> |
 |英國南部| ✔ | |
 |英國西部| ✔ |  |
-|歐洲西部| ✔ | ✔<sup>1</sup> |
+|西歐| ✔ | ✔<sup>1</sup> |
 |印度西部| ✔ |  |
 |美國西部| ✔ | ✔<sup>1</sup> |
 |美國西部 2| ✔ |  |

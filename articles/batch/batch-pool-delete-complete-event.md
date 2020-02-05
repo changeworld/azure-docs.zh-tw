@@ -2,21 +2,21 @@
 title: Azure Batch 集區刪除完成事件
 description: Batch 集區刪除完成事件的參考。 集區刪除作業完成時，就會發出此事件。
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.assetid: ''
 ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: jushiman
-ms.openlocfilehash: 56dc4c91566cc5c41de6c91618d09e7a0ebb7172
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.author: labrenne
+ms.openlocfilehash: d317d7395a8246c109073a72338b55960cb50954
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76929843"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023611"
 ---
 # <a name="pool-delete-complete-event"></a>集區刪除完成事件
 

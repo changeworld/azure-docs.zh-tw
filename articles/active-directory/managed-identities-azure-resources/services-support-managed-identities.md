@@ -10,12 +10,12 @@ ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b91d3bdf2ba4b6b30e7b3d5b748fd90921e2025
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: a0b79a27526054f76d9d44e277c401e93214ec3c
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841160"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018698"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支援適用於 Azure 資源的受控識別服務
 
@@ -107,7 +107,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
 請參閱下列清單來設定 Azure Logic Apps 的受控識別 (若區域提供)：
 
-- [Azure 入口網站](/azure/logic-apps/create-managed-service-identity#azure-portal)
+- [Azure 入口網站](/azure/logic-apps/create-managed-service-identity#enable-system-assigned-identity-in-azure-portal)
 - [Azure Resource Manager 範本](/azure/app-service/overview-managed-identity)
 
 ### <a name="azure-data-factory-v2"></a>Azure Data Factory V2

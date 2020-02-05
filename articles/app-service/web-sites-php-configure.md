@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 2d35c31e23da7addcf0b4c341c6925f258d5c232
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: c73fb55e485d0c92d27eac2ac197a81337b9d5e1
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688251"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016794"
 ---
 # <a name="configure-php-in-azure-app-service"></a>在 Azure App Service 中設定 PHP
 
@@ -34,20 +34,6 @@ PHP 7.0 和 PHP 7.2 版本同樣可供使用，但預設並未啟用。 若要�
 2. 從 **[設定] 選取 [一般設定** **]，然後**選擇新的 PHP 版本。
 
 3. 按一下 [**一般設定**] 分頁頂端的 [**儲存**] 按鈕。
-
-### <a name="azure-powershell-windows"></a>Azure PowerShell (Windows)
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-1. 開啟 Azure PowerShell 並登入您的帳戶。
-
-        PS C:\> Connect-AzAccount
-2. 設定應用程式的 PHP 版本。
-
-        PS C:\> Set-AzureWebsite -PhpVersion {5.6 | 7.0 | 7.2} -Name {app-name}
-3. PHP 版本現在已設定完成。 您可確認這些設定：
-
-        PS C:\> Get-AzureWebsite -Name {app-name} | findstr PhpVersion
 
 ### <a name="azure-cli"></a>Azure CLI 
 
