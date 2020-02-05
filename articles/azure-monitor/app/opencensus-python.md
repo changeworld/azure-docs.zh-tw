@@ -8,12 +8,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 87c0b62cec0b61bfc52ec31233ca7c1f947fdd98
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 091cf26a0c18aba0925ad23e61950f8622f6080b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846127"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989513"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>設定 Python 應用程式的 Azure 監視器（預覽）
 
@@ -336,9 +336,9 @@ OpenCensus 提供的匯出工具會對應至您將在 Azure 監視器中看到�
         main()
     ```
 
-6. 您也可以將自訂維度新增至您的記錄。 在 Azure 監視器的 `customDimensions` 中，這些會以索引鍵/值組的形式顯示。
+6. 您也可以使用 [custom_dimensions] 欄位，將自訂屬性新增至您的記錄訊息中的*額外*關鍵字引數。 在 Azure 監視器的 `customDimensions` 中，這些會以索引鍵/值組的形式顯示。
 > [!NOTE]
-> 若要讓這項功能正常執行，您必須將字典當做引數傳遞至記錄檔，其他任何資料結構都會被忽略。 若要維護字串格式，請將它們儲存在字典中，並將它們當做引數傳遞。
+> 若要讓這項功能正常執行，您必須將字典傳遞至 custom_dimensions 欄位。 如果您傳遞任何其他類型的引數，記錄器將會忽略它們。
 
     ```python
     import logging
@@ -350,7 +350,17 @@ OpenCensus 提供的匯出工具會對應至您將在 Azure 監視器中看到�
     logger.addHandler(AzureLogHandler(
         connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
     )
-    logger.warning('action', {'key-1': 'value-1', 'key-2': 'value2'})
+
+    properties = {'custom_dimensions': {'key_1': 'value_1', 'key_2': 'value_2'}}
+
+    # Use properties in logging statements
+    logger.warning('action', extra=properties)
+
+    # Use properties in exception logs
+    try:
+        result = 1 / 0  # generate a ZeroDivisionError
+    except Exception:
+    logger.exception('Captured an exception.', extra=properties)
     ```
 
 7. 如需如何使用追蹤內容資料來擴充記錄檔的詳細資訊，請參閱 OpenCensus Python[記錄整合](https://docs.microsoft.com/azure/azure-monitor/app/correlation#log-correlation)。

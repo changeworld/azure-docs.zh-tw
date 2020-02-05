@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 12/4/2018
 ms.author: rohink
-ms.openlocfilehash: 64c71047c60482ff198dbba833d4d0a35c80c60d
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 549090f04f4969b00dc1c8ee8d5cc70a50523ca8
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76932424"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983821"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>如何保護 DNS 區域和記錄
 
@@ -205,7 +205,7 @@ New-AzResourceLock -LockLevel <lock level> -LockName "<lock name>" -ResourceName
 
 ```azurepowershell
 # Protect against zone delete with CanNotDelete lock on the record set
-New-AzResourceLock -LockLevel CanNotDelete -LockName "<lock name>" -ResourceName "<zone name>/@" -ResourceType" Microsoft.Network/DNSZones/SOA" -ResourceGroupName "<resource group name>"
+New-AzResourceLock -LockLevel CanNotDelete -LockName "<lock name>" -ResourceName "<zone name>/@" -ResourceType "Microsoft.Network/DNSZones/SOA" -ResourceGroupName "<resource group name>"
 ```
 
 防止意外區域刪除的另一個方法是使用自訂的角色來確保用來管理您的區域的操作員和服務帳戶不具備區域刪除權限。 真的需要刪除區域時，您可以強制執行兩個步驟刪除，先授與區域刪除權限 (在區域範圍，以防止刪除錯誤的區域)，然後其次刪除區域。

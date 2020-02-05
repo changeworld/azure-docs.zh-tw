@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/10/2020
+ms.date: 02/03/2020
 ms.author: radeltch
-ms.openlocfilehash: c2d6e3e42c581c255f207af4a5008e2d09c50a7d
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 1a413ce55604ef8b5c3219e8de466fcc23d41bac
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887116"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990936"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>SUSE Linux Enterprise Server 上的 Azure Vm 上的 SAP NetWeaver 高可用性與適用于 SAP 應用程式的 Azure NetApp Files
 
@@ -341,7 +341,7 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
    </code></pre>
 
    > [!NOTE]
-   > 請勿在叢集節點的主機名稱中使用短破折號。 否則叢集將無法運作。 這是已知的限制，而 SUSE 正在努力研發修正程式。 修正程式將會作為 sap-suse-cloud-connector 套件的修補程式來發行。
+   > 在主機名稱中使用破折號的已知問題，是以**3.1.1** **的套件版本**來修正。 如果在主機名稱中使用具有虛線的叢集節點，請確定您使用的是套件 sap-suse-叢集連接器的最低版本3.1.1。 否則叢集將無法運作。 
 
    請確定您已安裝新版的 SAP SUSE 叢集連接器。 舊版連接器稱為 sap_suse_cluster_connector，新版連接器稱為 **sap-suse-cluster-connector**。
 

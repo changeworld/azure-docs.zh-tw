@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: codepen
-ms.openlocfilehash: 53e207e33c56455642edc9dcfcf328f5ca87945f
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 359f2b42ca6f56087be53a5aeb328fe43a478d63
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910974"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988273"
 ---
 # <a name="show-directions-from-a-to-b"></a>顯示從甲地到乙地的指示
 
@@ -27,7 +27,7 @@ ms.locfileid: "75910974"
 <iframe height='500' scrolling='no' title='在地圖上顯示從甲地到乙地的指示 (服務模組)' src='//codepen.io/azuremaps/embed/RBZbep/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>查看畫筆<a href='https://codepen.io/azuremaps/pen/RBZbep/'>在地圖上顯示從甲地到乙地的指示 (服務模組)</a>，發佈者：Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)，發佈位置：<a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
-在上述程式碼中，程式碼的第一個區塊會建立地圖物件，並將驗證機制設定為使用存取權杖。 如需相關指示，您可以查看[建立對應](./map-create.md)。
+在上述程式碼中，第一個區塊會建立地圖物件，並將驗證機制設定為使用存取權杖。 如需相關指示，您可以查看[建立對應](./map-create.md)。
 
 第二個程式碼區塊會建立 `TokenCredential`，以使用存取權杖來驗證要 Azure 地圖服務的 HTTP 要求。 然後，它會將 `TokenCredential` 傳遞至 `atlas.service.MapsURL.newPipeline()`，並建立[管線](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest)實例。 `routeURL` 代表 Azure 地圖服務[路線規劃](https://docs.microsoft.com/rest/api/maps/route)作業的 URL。
 
@@ -35,15 +35,15 @@ ms.locfileid: "75910974"
 
 第四個程式碼區塊會建立開始和結束[點](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest)物件，並將它們加入至 dataSource 物件。
 
-線條是 LineString 的[功能](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest)。 [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) 會將 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中包裝的線條物件轉譯為地圖上的線條。 第四個程式碼區塊會建立線條圖層，並將其新增至地圖。 請在 [LinestringLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest) 查看線條圖層的屬性。
+「行」是 LineString 的[功能](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest)。 [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) 會將 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中包裝的線條物件轉譯為地圖上的線條。 第四個程式碼區塊會建立線條圖層，並將其新增至地圖。 請在 [LinestringLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest) 查看線條圖層的屬性。
 
-[符號層](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)會使用文字或圖示，將包裝在 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中的點式資料轉譯為地圖上的符號。 第五個程式碼區塊會建立符號圖層，並將其新增至地圖。
+[符號圖層](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)會使用文字或圖示來轉譯資料[源](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest)中所包裝的以點為基礎的資料。 文字或圖示會轉譯為地圖上的符號。 第五個程式碼區塊會建立符號圖層，並將其新增至地圖。
 
 第六個程式碼區塊會查詢 Azure 地圖服務路由服務，這是[服務模組](how-to-use-services-module.md)的一部分。 RouteURL 的[calculateRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl?view=azure-iot-typescript-latest#methods)方法是用來取得起點和終點之間的路線。 然後會使用 `geojson.getFeatures()` 方法來解壓縮回應中的 GeoJSON 功能集合，並將它加入至資料來源。 然後，它會將回應呈現為地圖上的路線。 如需有關將線條新增至地圖的詳細資訊，請參閱[在地圖上新增線條](map-add-line-layer.md)。
 
 程式碼的最後一個區塊會使用地圖的[setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-)屬性來設定地圖的界限。
 
-路線查詢、資料來源、符號和線條圖層以及觀景窗界限會建立並設定於地圖的[事件接聽程式](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)內，以確保在地圖完全載入後顯示結果。
+路由查詢、資料來源、符號、線條圖層和相機界限會建立並設定于地圖的[事件](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)接聽程式內。 此程式碼結構可確保只有在對應完全載入之後，才會顯示結果。
 
 ## <a name="query-the-route-via-fetch-api"></a>透過 Fetch API 查詢路由
 
@@ -64,7 +64,7 @@ ms.locfileid: "75910974"
 
 程式碼的最後一個區塊會使用[FETCH api](https://fetch.spec.whatwg.org/)向[AZURE 地圖服務的路由 api](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)提出搜尋要求。 然後會剖析回應。 如果回應成功，就會使用緯度和經度資訊，藉由連接這些點來建立一條陣列。 然後，將程式程式碼資料新增至資料來源，以轉譯地圖上的路線。 如需相關指示，您可以查看[在地圖上新增線條](map-add-line-layer.md)。
 
-路線查詢、資料來源、符號和線條圖層以及觀景窗界限會建立並設定於地圖的[事件接聽程式](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)內，以確保在地圖完全載入後顯示結果。
+路由查詢、資料來源、符號、線條圖層和相機界限會建立並設定于地圖的[事件](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)接聽程式內。 同樣地，我們想要確保在地圖完全載入後顯示結果。
 
 ## <a name="next-steps"></a>後續步驟
 

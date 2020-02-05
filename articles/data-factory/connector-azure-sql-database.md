@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/13/2019
-ms.openlocfilehash: 1268dc0d78bf64e0a4b79592c28a9c1e70db7bf3
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 01/28/2020
+ms.openlocfilehash: def57dc125a148abd330643fc5848a35cd3b52bf
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75892912"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990995"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure Data Factory 複製和轉換 Azure SQL Database 中的資料
 
@@ -140,7 +140,7 @@ ms.locfileid: "75892912"
     CREATE USER [your application name] FROM EXTERNAL PROVIDER;
     ```
 
-4. 授與服務主體所需的許可權，就像您一般對 SQL 使用者或其他人所做的一樣。 執行下列程式碼。 如需更多選項，請參閱[這份檔](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017)。
+4. 授與服務主體所需的許可權，就像您一般對 SQL 使用者或其他人所做的一樣。 執行下列程式碼。 如需更多選項，請參閱[此文件](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017) \(部分機器翻譯\)。
 
     ```sql
     EXEC sp_addrolemember [role name], [your application name];
@@ -187,7 +187,7 @@ ms.locfileid: "75892912"
     CREATE USER [your Data Factory name] FROM EXTERNAL PROVIDER;
     ```
 
-3. 授與 Data Factory 受控識別所需的許可權，就像您一般對 SQL 使用者和其他人所做的一樣。 執行下列程式碼。 如需更多選項，請參閱[這份檔](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017)。
+3. 授與 Data Factory 受控識別所需的許可權，就像您一般對 SQL 使用者和其他人所做的一樣。 執行下列程式碼。 如需更多選項，請參閱[此文件](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017) \(部分機器翻譯\)。
 
     ```sql
     EXEC sp_addrolemember [role name], [your Data Factory name];
@@ -589,6 +589,10 @@ END
 [接收] 轉換的 [**設定**] 索引標籤中提供 Azure SQL Database 特定的設定。
 
 **更新方法：** 決定您的資料庫目的地所允許的作業。 預設值是只允許插入。 若要更新、upsert 或刪除資料列，必須使用 alter-row 轉換來標記這些動作的資料列。 對於更新、更新插入和刪除，必須設定索引鍵資料行，以決定要改變哪一個資料列。
+
+![索引鍵資料行](media/data-flow/keycolumn.png "索引鍵資料行")
+
+ADF 會使用您在此處挑選為金鑰的資料行名稱，做為後續更新（upsert、刪除的一部分）。 因此，您必須挑選存在於接收對應中的資料行。 如果您不想要將值寫入此索引鍵資料行，請按一下 [略過寫入索引鍵資料行]。
 
 **資料表動作：** 決定在寫入之前，是否要重新建立或移除目的地資料表中的所有資料列。
 * 無：不會對資料表執行任何動作。

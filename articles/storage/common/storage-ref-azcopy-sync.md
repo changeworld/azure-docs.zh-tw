@@ -8,18 +8,18 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 6ecba85a859e902922dfa2b7563a3ceb96a9ef4d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1bff46c8584934ab8bcffce74763edc8363533d6
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457467"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988238"
 ---
 # <a name="azcopy-sync"></a>azcopy 同步
 
 將來源位置複製到目的地位置。
 
-## <a name="synopsis"></a>概要
+## <a name="synopsis"></a>摘要
 
 上次修改時間是用來進行比較。 如果目的地中上次修改時間較新，就會略過該檔案。
 
@@ -141,13 +141,13 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 **--exclude-** 在複製時排除這些路徑。 此選項不支援萬用字元（*）。 檢查相對路徑前置詞（例如： myFolder; myFolder/subDirName/file .pdf）。 與帳戶遍歷搭配使用時，路徑不會包含容器名稱。
 
-**--排除-模式**字串排除名稱符合模式清單的檔案。 例如： *.jpg;* 。pdf; exactName
+**--排除-模式**字串排除名稱符合模式清單的檔案。 例如： \*.jpg;\*.pdf; exactName
 
 **-h、--** 適用于同步處理的協助說明
 
 **--include-屬性**字串（僅限 Windows）只包含屬性符合屬性清單的檔案。 例如： A;今日R
 
-**--include-模式**字串只包含名稱符合模式清單的檔案。 例如： *.jpg;* 。pdf; exactName
+**--include-模式**字串只包含名稱符合模式清單的檔案。 例如： \*.jpg;\*.pdf; exactName
 
 **--記錄層級**字串會定義記錄檔的記錄詳細資訊、可用的層級： INFO （所有要求和回應）、警告（回應緩慢）、錯誤（僅限失敗的要求）和無（沒有輸出記錄）。 （預設資訊）。 （預設值為 "INFO"）
 

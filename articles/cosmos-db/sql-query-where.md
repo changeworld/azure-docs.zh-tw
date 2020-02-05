@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB 中的 WHERE 子句
 description: 瞭解適用于 Azure Cosmos DB 的 SQL WHERE 子句
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/10/2019
-ms.author: mjbrown
-ms.openlocfilehash: cd5643d8be06afcd43c5bfe38d6f5e9caa6f906e
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.date: 02/03/2020
+ms.author: tisande
+ms.openlocfilehash: 31653b598f0f3a79bf7f9c09231b1d111f167a16
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326631"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982224"
 ---
 # <a name="where-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 WHERE 子句
 
@@ -50,7 +50,7 @@ WHERE <filter_condition>
     WHERE f.id = "AndersenFamily"
 ```
 
-結果為：
+結果如下：
 
 ```json
     [{
@@ -74,7 +74,7 @@ WHERE <filter_condition>
 |位元    | \|, &, ^, <<, >>, >>> (zero-fill right shift) |
 |邏輯    | AND、OR、NOT      |
 |比較 | =, !=, &lt;, &gt;, &lt;=, &gt;=, <> |
-|字串     |  \|\| (串連) |
+|String     |  \|\| (串連) |
 
 下列查詢會使用二元運算子：
 
@@ -104,10 +104,10 @@ WHERE <filter_condition>
     WHERE (-c.grade = -5)  -- matching grades == 5
 ```
 
-您也可以在查詢中使用屬性參考。 例如，`SELECT * FROM Families f WHERE f.isRegistered` 會傳回包含屬性 `isRegistered` 的 JSON 專案，其值等於 `true`。 任何其他值（例如 `false`、`null`、`Undefined`、`<number>`、`<string>`、`<object>`或 `<array>`）都會從結果中排除該專案。 
+您也可以在查詢中使用屬性參考。 例如，`SELECT * FROM Families f WHERE f.isRegistered` 會傳回包含屬性 `isRegistered` 的 JSON 專案，其值等於 `true`。 任何其他值（例如 `false`、`null`、`Undefined`、`<number>`、`<string>`、`<object>`或 `<array>`）都會從結果中排除該專案。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [開始使用](sql-query-getting-started.md)
-- [Azure Cosmos DB .NET 範例](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [快速入門](sql-query-getting-started.md)
+- [IN 關鍵字](sql-query-keywords.md#in)
 - [FROM 子句](sql-query-from.md)

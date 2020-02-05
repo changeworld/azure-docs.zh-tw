@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2019
 ms.author: spelluru
-ms.openlocfilehash: fd3396a98359aef966cd8bb2f984e556fc6abcc7
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 08fbe9565356dc1b7db952fdd265770fef600ca8
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73584826"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989037"
 ---
 # <a name="create-and-manage-a-classroom-template-in-azure-lab-services"></a>在 Azure 實驗室服務中建立和管理教室範本
 實驗室中的範本是所有使用者的虛擬機器據以建立的基底虛擬機器映像。 設定範本虛擬機器以便能確實設定您要提供給實驗室使用者的虛擬機器。 您可以提供要給實驗室使用者查看的範本名稱與描述。 然後，發佈範本以便讓範本 VM 的執行個體可供實驗室使用者使用。 當您發佈範本時，Azure 實驗室服務會使用範本在實驗室中建立 VM。 在此程序中建立的 VM 數目與實驗室中允許的使用者數量上限相同 (此上限可在實驗室的使用原則中設定)。 所有虛擬機器都有與範本相同的設定。
@@ -39,17 +39,15 @@ ms.locfileid: "73584826"
 ## <a name="update-a-template-vm"></a>更新範本 VM
 使用下列步驟來更新範本 VM。  
 
-1. 在 [**範本**] 頁面上，選取工具列上的 [**自訂範本**]。 
-2. 在 [**自訂範本**] 對話方塊中，選取 [**繼續**]。 當您啟動範本並進行變更後，它將不再具有與最後發佈給使用者的虛擬機器相同的設定。 在您再次發佈之前，範本變更不會反映在使用者的現有虛擬機器上。
-
-    ![自訂對話方塊](../media/how-to-create-manage-template/customize-template-dialog.png)
 1. 等待範本 VM 啟動，然後選取工具列上的 **[連線至範本**] 以連線至範本 vm，並遵循指示進行。 如果是 Windows 電腦，您會看到下載 RDP 檔案的選項。 
+1. 一旦您連接到範本並進行變更後，它將不再具有與最後發佈給使用者的虛擬機器相同的設定。 在您再次發佈之前，範本變更不會反映在使用者的現有虛擬機器上。
 
     ![連線至範本 VM](../media/how-to-create-manage-template/connect-template-vm.png)
+    
 1. 安裝學生使用實驗室所需的任何軟體 (例如，Visual Studio、Azure 儲存體總管等)。 
-2. 中斷範本 VM 的連線 (關閉您的遠端桌面工作階段)。 
-3. 選取 [**停止範本**]，以**停止**範本 VM。 
-4. 遵循下一節中的步驟，**發佈**已更新的範本 VM。 
+1. 中斷範本 VM 的連線 (關閉您的遠端桌面工作階段)。 
+1. 選取 [**停止範本**]，以**停止**範本 VM。 
+1. 遵循下一節中的步驟，**發佈**已更新的範本 VM。 
 
 ## <a name="publish-the-template-vm"></a>發佈範本 VM  
 如果您未在建立實驗室時發行範本，也可以之後再發佈。 在發佈之前，請先連線至範本 VM，然後為其更新軟體。 當您發佈範本時，Azure 實驗室服務會使用範本在實驗室中建立 VM。 在此程式中建立的 Vm 數目是您第一次發佈時所指定的 Vm 數目，或您在 [虛擬機器集區] 頁面上指定的數量。 所有虛擬機器都有與範本相同的設定。 
@@ -61,7 +59,7 @@ ms.locfileid: "73584826"
 
     > [!IMPORTANT]
     > 範本發行後就無法取消發行。 但可以重新發佈範本。 
-4. 您可以在 [範本] 頁面上查看發佈程式的狀態。 等候範本狀態變更為 [已發佈]。 
+1. 您可以在 [範本] 頁面上查看發佈程式的狀態。 等候範本狀態變更為 [已發佈]。 
 
     ![發佈狀態](../media/how-to-create-manage-template/publish-status.png)
 1. 切換到 [虛擬機器] 頁面，確認您看到虛擬機器處於 [未指派] 狀態。 這些虛擬機器尚未指派給任何學生。 請等候 VM 建立。 它們應處於 [已停止] 狀態。 您可以在此頁面上啟動學生 VM、連線到 VM、停止 VM，以及刪除 VM。 您可以在此頁面啟動 VM，或是讓學生啟動 VM。 
@@ -70,7 +68,7 @@ ms.locfileid: "73584826"
 
 
 ## <a name="next-steps"></a>後續步驟
-請參閱下列文章：
+查看下列文章：
 
 - [以管理員身分建立及管理實驗室帳戶](how-to-manage-lab-accounts.md)
 - [以實驗室擁有者身分建立及管理實驗室](how-to-manage-classroom-labs.md)

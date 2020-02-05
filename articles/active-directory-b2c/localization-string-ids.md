@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/31/2020
+ms.date: 02/03/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 349932073394a967da58bf521449d22a48c1f91d
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: cd5e543a6d5dc2b59847a78bd925be68f8cdde25
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931725"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982852"
 ---
 # <a name="localization-string-ids"></a>當地語系化字串識別碼
 
@@ -216,7 +216,8 @@ ms.locfileid: "76931725"
 |verification_control_but_send_new_code |傳送新程式碼 |
 |verification_control_but_verify_code |驗證碼 |
 
-### <a name="verification-display-control-error-messages"></a>驗證顯示控制項錯誤訊息
+## <a name="one-time-password-error-messages"></a>一次密碼錯誤訊息
+以下是[一次性密碼技術設定檔](one-time-password-technical-profile.md)錯誤訊息的識別碼
 
 | ID | 預設值 |
 | -- | ------------- |

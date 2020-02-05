@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 5c22e29e51d9f2fc58720c555b8ad3b03d791db6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 39d99b8b6167411fc75677878b7f82a27deab958
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435038"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987623"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>使用 Azure Databricks 以自訂分析延伸 Azure IoT Central
 
@@ -39,8 +39,8 @@ ms.locfileid: "75435038"
 
 | 設定 | 值 |
 | ------- | ----- |
-| 付款計劃 | 隨用隨付 |
-| 應用程式範本 | 舊版應用程式 |
+| 定價方案 | Standard |
+| 應用程式範本 | 繼承應用程式 |
 | 應用程式名稱 | 接受預設值，或選擇您自己的名稱 |
 | URL | 接受預設值，或選擇您自己唯一的 URL 前置詞 |
 | 目錄 | 您的 Azure Active Directory 租使用者 |
@@ -136,7 +136,7 @@ ms.locfileid: "75435038"
 | Python 版本 | 3 |
 | 啟用自動調整功能 | 否 |
 | 在閒置幾分鐘後終止 | 30 |
-| 背景工作角色類型 | Standard_DS3_v2 |
+| 背景工作類型 | Standard_DS3_v2 |
 | 背景工作角色 | 1 |
 | 驅動程式類型 | 與背景工作角色相同 |
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 131621e05d7800e59ce3bbdec5c11c1da9facf11
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: df640f11e8a0e8af22c96a662a602e0de508715c
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442803"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985045"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>在 Azure API 管理中使用 Azure Active Directory 來授權開發人員帳戶
 
@@ -50,17 +50,17 @@ ms.locfileid: "75442803"
    ![在 Azure 入口網站中新增識別提供者的步驟](./media/api-management-howto-aad/api-management-with-aad001.png)  
 10. 在瀏覽器中開啟其他索引標籤。 
 11. 流覽至[Azure 入口網站應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)，在 Active Directory 中註冊應用程式。
-12. 在 [管理] 底下，選取 [應用程式註冊]。
+12. 在 [**管理**] 下，選取 [**應用程式註冊**]。
 13. 選取 [新增註冊]。 在 [**註冊應用程式**] 頁面上，設定值，如下所示：
     
-* 將 [**名稱**] 設定為有意義的名稱。 例如，*開發人員-入口網站*
-* 將**支援的帳戶類型**設定為**僅限此組織目錄中的帳戶**。 
-* 將 [重新**導向 URI** ] 設定為您從步驟9中所獲得的值。 
-* 選擇 [**註冊**]。 
+    * 將 [**名稱**] 設定為有意義的名稱。 例如，*開發人員-入口網站*
+    * 將**支援的帳戶類型**設定為**僅限此組織目錄中的帳戶**。 
+    * 將 [重新**導向 URI** ] 設定為您從步驟9中所獲得的值。 
+    * 選擇 [**註冊**]。 
 
 14.  註冊應用程式之後，請從 [**總覽**] 頁面複製**應用程式（用戶端）識別碼**。 
 15. 回到您的 API 管理實例。 在 [**新增識別提供者**] 視窗中，將 [**應用程式（用戶端）識別碼**] 值貼到 [**用戶端識別碼**] 方塊中。
-16. 切換回 Azure AD 設定，選取 [**管理**] 底下的 [**憑證 & 秘密**]。 選取 [新增用戶端密碼] 按鈕。 在 [描述] 中輸入值、針對 [到期] 選取任意選項，然後選擇 [新增]。 請先複製用戶端密碼值，再離開頁面。 您在下一個步驟將會用到這些資料。 
+16. 切換回 Azure AD 設定，選取 [**管理**] 底下的 [**憑證 & 秘密**]。 選取 [**新增用戶端密碼**] 按鈕。 在 [**描述**] 中輸入值，選取 [**到期**] 的任何選項，然後選擇 [**新增**]。 請先複製用戶端密碼值，再離開頁面。 您在下一個步驟將會用到這些資料。 
 17. 在 **管理** 底下選取 **驗證**，然後選取**隱含授**與 底下的 **識別碼**
 18. 回到您的 API 管理實例，將密碼貼入 [**用戶端密碼**] 方塊中。
 
@@ -71,10 +71,10 @@ ms.locfileid: "75442803"
 
 19. [新增識別提供者] 視窗也包含 [允許的租用戶] 文字方塊。 請在該處指定 Azure AD 執行個體的網域，您將會對它授與 API 管理服務執行個體的 API 存取權。 您可以使用換行符號、空格或逗號來分隔多個網域。
 
-> [!NOTE]
-> 您可以在 [允許的租用戶] 區段中指定多個網域。 在使用者可透過與註冊應用程式之原始網域不同的網域登入前，不同網域的全域管理員必須授與權限，應用程式才能存取目錄資料。 若要授與許可權，全域管理員應該： a。 移至 `https://<URL of your developer portal>/aadadminconsent` (例如， https://contoso.portal.azure-api.net/aadadminconsent) 。
-> b. 輸入想要授與存取權的 Azure AD 租用戶網域名稱。
-> c. 選取 [提交]。 
+    > [!NOTE]
+    > 您可以在 [允許的租用戶] 區段中指定多個網域。 在使用者可透過與註冊應用程式之原始網域不同的網域登入前，不同網域的全域管理員必須授與權限，應用程式才能存取目錄資料。 若要授與許可權，全域管理員應該： a。 移至 `https://<URL of your developer portal>/aadadminconsent` (例如， https://contoso.portal.azure-api.net/aadadminconsent) 。
+    > b. 輸入想要授與存取權的 Azure AD 租用戶網域名稱。
+    > c. 選取 [提交]。 
 
 20.  在您指定所需的設定之後，請選取 [新增]。
 
@@ -95,7 +95,7 @@ ms.locfileid: "75442803"
 
 1. 選取 [群組] 索引標籤。
 2. 選取 [新增 AAD 群組] 按鈕。
-   ![[新增 AAD 群組] 按鈕](./media/api-management-howto-aad/api-management-with-aad008.png)
+    ![[新增 AAD 群組] 按鈕](./media/api-management-howto-aad/api-management-with-aad008.png)
 3. 選取您想要新增的群組。
 4. 按 [選取] 按鈕。
 
@@ -105,11 +105,11 @@ ms.locfileid: "75442803"
 
 ## <a name="a-idlog_in_to_dev_portal-developer-portal---add-azure-ad-account-authentication"></a><a id="log_in_to_dev_portal"/> 開發人員入口網站-新增 Azure AD 帳戶驗證
 
-在開發人員入口網站中，可以使用 [ **OAuth 按鈕**] widget 來登入 AAD。 Widget 已包含在預設開發人員入口網站內容的登入頁面上。
-
-![AAD 按鈕 widget](./media/api-management-howto-aad/portal-oauth-widget.png)
+在開發人員入口網站中，您可以透過登入**按鈕： OAuth** widget 來登入 AAD。 Widget 已包含在預設開發人員入口網站內容的登入頁面上。
 
 當新的使用者登入 AAD 時，會自動建立新的帳戶，您可以考慮將相同的 widget 新增至註冊頁面。
+
+**註冊表單： oauth** widget 代表用來註冊 OAuth 的表單。
 
 > [!IMPORTANT]
 > 您必須重新[發佈入口網站](api-management-howto-developer-portal-customize.md#publish)，AAD 變更才會生效。

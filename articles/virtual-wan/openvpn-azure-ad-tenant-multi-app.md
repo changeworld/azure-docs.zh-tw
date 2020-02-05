@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 1/10/2020
 ms.author: alzam
-ms.openlocfilehash: b390b5f8b00f61994db820a3af7bce26a3e0a30d
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 90244b9dcf30c2ef01d4e57c9d8e35fa1d71f434
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934969"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985640"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>建立 P2S OpenVPN 通訊協定連接的 Azure Active Directory 租使用者
 
@@ -27,7 +27,7 @@ ms.locfileid: "75934969"
 使用[建立新的租](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)使用者文章中的步驟，建立 Azure AD 租使用者：
 
 * 組織名稱
-* 初始網域名稱
+* 初始功能變數名稱
 
 範例：
 
@@ -154,114 +154,116 @@ P2S 設定會定義用於連線遠端用戶端的參數。
 
    ```powershell
    $aadConfig = New-AzVpnServerConfiguration -ResourceGroupName <ResourceGroup> -Name newAADConfig -VpnProtocol OpenVPN -VpnAuthenticationType AAD -AadTenant $aadTenant -AadIssuer $aadIssuer -AadAudience $aadAudience -Location westcentralus
-> [!NOTE]
-> Do not use the Azure VPN client's application ID in the commands above as it will grant all users access to the VPN gateway. Use the ID of the application(s) you registered.
-
-## <a name="hub"></a>7. Edit hub assignment
-
-1. Navigate to the **Hubs** blade under the virtual WAN.
-2. Select the hub that you want to associate the vpn server configuration to and click the ellipsis (...).
-
-   ![new site](media/virtual-wan-point-to-site-azure-ad/p2s4.jpg)
-3. Click **Edit virtual hub**.
-4. Check the **Include point-to-site gateway** check box and pick the **Gateway scale unit** that you want.
-
-   ![new site](media/virtual-wan-point-to-site-azure-ad/p2s2.jpg)
-5. Enter the **Address pool** from which the VPN clients will be assigned IP addresses.
-6. Click **Confirm**.
-7. The operation will can take up to 30 minutes to complete.
-
-## <a name="device"></a>8. Download VPN profile
-
-Use the VPN profile to configure your clients.
-
-1. On the page for your virtual WAN, click **User VPN configurations**.
-2. At the top of the  page, click **Download user VPN config**.
-3. Once the file has finished creating, you can click the link to download it.
-4. Use the profile file to configure the VPN clients.
-
-4. Extract the downloaded zip file.
-
-5. Browse to the unzipped “AzureVPN” folder.
-
-6. Make a note of the location of the “azurevpnconfig.xml” file. The azurevpnconfig.xml contains the setting for the VPN connection and can be imported directly into the Azure VPN Client application. You can also distribute this file to all the users that need to connect via e-mail or other means. The user will need valid Azure AD credentials to connect successfully.
-## Configure user VPN clients
-
-To connect, you need to download the Azure VPN Client (Preview) and import the VPN client profile that was downloaded in the previous steps on every computer that wants to connect to the VNet.
+   ```
 
 > [!NOTE]
-> Azure AD authentication is supported only for OpenVPN® protocol connections.
+> 在上述命令中，請勿使用 Azure VPN 用戶端的應用程式識別碼，因為它會將 VPN 閘道的存取權授與所有使用者。 使用您所註冊之應用程式的識別碼。
+
+## <a name="hub"></a>7. 編輯中樞指派
+
+1. 瀏覽至虛擬 WAN 底下的 [中樞] 刀鋒視窗。
+2. 選取要與 VPN 伺服器設定產生關聯的中樞，然後按一下省略符號 (...)。
+
+   ![新網站](media/virtual-wan-point-to-site-azure-ad/p2s4.jpg)
+3. 按一下 [編輯虛擬中樞]。
+4. 勾選 [包含點對站閘道] 核取方塊，然後挑選您想要的 [閘道縮放單位]。
+
+   ![新網站](media/virtual-wan-point-to-site-azure-ad/p2s2.jpg)
+5. 輸入要從中將 IP 位址指派給 VPN 用戶端的 [位址集區]。
+6. 按一下 [確認]。
+7. 此作業最多可能需要 30 分鐘的時間才能完成。
+
+## <a name="device"></a>8. 下載 VPN 設定檔
+
+使用 VPN 設定檔來設定用戶端。
+
+1. 在虛擬 WAN 的頁面上，按一下 [使用者 VPN 設定]。
+2. 在頁面頂端，按一下 [下載使用者 VPN 設定]。
+3. 檔案建立完成之後，您可以按一下連結來下載。
+4. 使用設定檔檔案來設定 VPN 用戶端。
+
+4. 將下載的 zip 檔案解壓縮。
+
+5. 流覽至解壓縮的 "AzureVPN" 資料夾。
+
+6. 記下 "azurevpnconfig" 檔案的位置。 Azurevpnconfig 包含 VPN 連線的設定，而且可以直接匯入至 Azure VPN 用戶端應用程式。 您也可以將此檔案散發給所有需要透過電子郵件或其他方式連接的使用者。 使用者需要有效的 Azure AD 認證，才能成功連接。
+## <a name="configure-user-vpn-clients"></a>設定使用者 VPN 用戶端
+
+若要連線，您必須下載 Azure VPN Client (預覽)，並匯入在先前的步驟中在要連線至 VNet 的每一部電腦上下載的 VPN 用戶端設定檔。
+
+> [!NOTE]
+> Azure AD 驗證僅支援 OpenVPN® 通訊協定連線。
 >
 
-#### To download the Azure VPN client
+#### <a name="to-download-the-azure-vpn-client"></a>下載 Azure VPN Client
 
-Use this [link](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab) to download the Azure VPN Client (Preview).
+使用此[連結](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)下載 Azure VPN Client (預覽)。
 
-#### <a name="import"></a>To import a client profile
+#### <a name="import"></a>匯入用戶端設定檔
 
-1. On the page, select **Import**.
+1. 在頁面上，選取 [匯入]。
 
-    ![import](./media/virtual-wan-point-to-site-azure-ad/import/import1.jpg)
+    ![入口](./media/virtual-wan-point-to-site-azure-ad/import/import1.jpg)
 
-2. Browse to the profile xml file and select it. With the file selected, select **Open**.
+2. 瀏覽至設定檔 xml 檔案，並加以選取。 選取檔案後，請選取 [開啟]。
 
-    ![import](./media/virtual-wan-point-to-site-azure-ad/import/import2.jpg)
+    ![入口](./media/virtual-wan-point-to-site-azure-ad/import/import2.jpg)
 
-3. Specify the name of the profile and select **Save**.
+3. 指定設定檔的名稱，然後選取 [儲存]。
 
-    ![import](./media/virtual-wan-point-to-site-azure-ad/import/import3.jpg)
+    ![入口](./media/virtual-wan-point-to-site-azure-ad/import/import3.jpg)
 
-4. Select **Connect** to connect to the VPN.
+4. 選取 [連線] 以連線至 VPN。
 
-    ![import](./media/virtual-wan-point-to-site-azure-ad/import/import4.jpg)
+    ![入口](./media/virtual-wan-point-to-site-azure-ad/import/import4.jpg)
 
-5. Once connected, the icon will turn green and say **Connected**.
+5. 連線之後，圖示將會變成綠色，並顯示為 [已連線]。
 
-    ![import](./media/virtual-wan-point-to-site-azure-ad/import/import5.jpg)
+    ![入口](./media/virtual-wan-point-to-site-azure-ad/import/import5.jpg)
 
-#### <a name="delete"></a>To delete a client profile
+#### <a name="delete"></a>刪除用戶端設定檔
 
-1. Select the ellipsis (...) next to the client profile that you want to delete. Then, select **Remove**.
+1. 選取要刪除的用戶端設定檔旁的省略符號 (...)。 然後，選取 [移除]。
 
     ![delete](./media/virtual-wan-point-to-site-azure-ad/delete/delete1.jpg)
 
-2. Select **Remove** to delete.
+2. 選取 [移除] 以刪除。
 
     ![delete](./media/virtual-wan-point-to-site-azure-ad/delete/delete2.jpg)
 
-#### <a name="diagnose"></a>Diagnose connection issues
+#### <a name="diagnose"></a>診斷連線問題
 
-1. To diagnose connection issues, you can use the **Diagnose** tool. Select the ellipsis (...) next to the VPN connection that you want to diagnose to reveal the menu. Then select **Diagnose**.
+1. 若要診斷連線問題，您可以使用**診斷**工具。 選取要診斷的 VPN 連線旁的省略符號 (...)，以顯示功能表。 然後，選取 [診斷]。
 
-    ![diagnose](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose1.jpg)
+    ![診斷](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose1.jpg)
 
-2. On the **Connection Properties** page, select **Run Diagnosis**.
+2. 在 [連線屬性] 頁面上，選取 [執行診斷]。
 
-    ![diagnose](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose2.jpg)
+    ![診斷](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose2.jpg)
 
-3. Sign in with your credentials.
+3. 使用您的認證登入。
 
-    ![diagnose](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose3.jpg)
+    ![診斷](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose3.jpg)
 
-4. View the diagnosis results.
+4. 檢視診斷結果。
 
-    ![diagnose](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose4.jpg)
+    ![診斷](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose4.jpg)
 
-## <a name="viewwan"></a>View your virtual WAN
+## <a name="viewwan"></a>檢視您的虛擬 WAN
 
-1. Navigate to the virtual WAN.
-2. On the Overview page, each point on the map represents a hub. Hover over any point to view the hub health summary.
-3. In the Hubs and connections section, you can view hub status, site, region, VPN connection status, and bytes in and out.
+1. 瀏覽至虛擬 WAN。
+2. 在 [概觀] 頁面中，地圖上的每個點都代表著中樞。 暫留在任一點上，即可檢視中樞健康情況摘要。
+3. 在 [中樞與連線] 區段中，您可以檢視中樞狀態、網站、區域、VPN 連線狀態和輸入與輸出位元組。
 
-## <a name="viewhealth"></a>View your resource health
+## <a name="viewhealth"></a>檢視資源健康狀態
 
-1. Navigate to your WAN.
-2. On your WAN page, in the **SUPPORT + Troubleshooting** section, click **Health** and view your resource.
+1. 瀏覽至您的 WAN。
+2. 在 WAN 頁面上的 [支援 + 疑難排解] 區段中，按一下 [健康情況] 並檢視您的資源。
 
 
-## <a name="cleanup"></a>Clean up resources
+## <a name="cleanup"></a>清除資源
 
-When you no longer need these resources, you can use [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) to remove the resource group and all of the resources it contains. Replace "myResourceGroup" with the name of your resource group and run the following PowerShell command:
+您可以使用 [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) 來移除不再需要的資源群組，以及其所包含的所有資源。 將 "myResourceGroup" 取代為您的資源群組名稱，然後執行下列 PowerShell 命令：
 
 ```azurepowershell-interactive
 Remove-AzureRmResourceGroup -Name myResourceGroup -Force

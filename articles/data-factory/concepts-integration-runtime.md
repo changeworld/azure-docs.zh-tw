@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/31/2019
-ms.openlocfilehash: 40660c0397f8b7fd7c370e2e0f697cae26b9bb48
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 01/28/2020
+ms.openlocfilehash: 194bc7983019a616d534a4146f86fff59f9719dc
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927159"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990516"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure Data Factory 中的整合執行階段
 整合執行階段 (IR) 是 Azure Data Factory 所使用的計算基礎結構，可跨不同網路環境提供下列資料整合功能：
@@ -42,7 +42,7 @@ IR 類型 | 公用網路 | 私人網路
 ------- | -------------- | ---------------
 Azure | 資料流程<br/>資料移動<br/>活動分派 | &nbsp;
 自我裝載 | 資料移動<br/>活動分派 | 資料移動<br/>活動分派
-Azure-SSIS | SSIS 套件執行 | SSIS 套件執行
+Azure-SSIS | SSIS 封裝執行 | SSIS 封裝執行
 
 下圖顯示如何結合使用不同的整合執行階段，以提供豐富的資料整合功能和網路支援：
 
@@ -106,7 +106,7 @@ Azure-SSIS IR 是一個完全受控的 Azure VM 叢集，專門用來執行您�
 - [教學課程：將 SSIS 套件部署至 Azure](tutorial-create-azure-ssis-runtime-portal.md)。 本文逐步說明如何建立 Azure-SSIS IR，並使用 Azure SQL 資料庫裝載 SSIS 目錄。 
 - [如何：建立 Azure-SSIS 整合執行階段](create-azure-ssis-integration-runtime.md)。 這篇文章會詳述教學課程，並提供使用 Azure SQL Database 受控執行個體，以及將 IR 加入虛擬網路的指示。 
 - [監視 Azure-SSIS IR](monitor-integration-runtime.md#azure-ssis-integration-runtime). 本文示範如何在傳回的資訊中擷取 Azure-SSIS IR 的相關資訊和狀態描述。 
-- [管理 Azure-SSIS IR](manage-azure-ssis-integration-runtime.md). 本文示範如何停止、啟動或移除 Azure-SSIS IR。 它也會告訴您如何將更多節點新增至 IR，藉此相應放大 Azure SSIS IR。 
+- [管理 Azure-SSIS IR](manage-azure-ssis-integration-runtime.md). 本文示範如何停止、啟動或移除 Azure-SSIS IR。 它也會示範如何將更多節點新增至 IR，藉此相應放大 Azure-SSIS IR。 
 - [將 Azure-SSIS IR 加入虛擬網路](join-azure-ssis-integration-runtime-virtual-network.md)。 這篇文章提供將 Azure SSIS IR 加入至 Azure 虛擬網路的概念資訊。 它也提供使用 Azure 入口網站來設定虛擬網路，好讓 Azure SSIS IR 可加入虛擬網路的步驟。 
 
 ## <a name="integration-runtime-location"></a>整合執行階段位置
@@ -141,9 +141,9 @@ Data Factory 位置中儲存資料處理站的中繼資料，也是觸發管道�
 ### <a name="azure-ssis-ir-location"></a>Azure-SSIS IR 位置
 為了在擷取、轉換和下載 (ETL) 工作流程中達到高效能，務必選取正確的 Azure-SSIS IR 位置。
 
-- Azure-SSIS IR 的位置不需要與資料處理站的位置相同，但應該與您自己的 Azure SQL Database/受控執行個體伺服器 (要裝載 SSISDB) 的位置相同。 如此一來，您的 Azure-SSIS 整合執行階段就可以輕易存取 SSISDB，而不會在不同的位置之間產生過多流量。
-- 如果您沒有現有的 Azure SQL Database/受控執行個體伺服器來裝載 SSISDB，但有內部部署資料來源/目的地，您應該在已連線至內部部署網路之虛擬網路的相同位置中，建立新的 Azure SQL Database/受控執行個體伺服器。  如此一來，您就可以使用新的 Azure SQL Database/受控執行個體伺服器並加入該虛擬網路，以建立 Azure-SSIS IR，全部都在相同的位置中，能儘量避免在不同位置之間移動資料。
-- 如果要裝載 SSISDB 的現有 Azure SQL Database/受控執行個體伺服器的位置，與連線至內部部署網路的虛擬網路的位置不相同，請先在相同位置使用現有的 Azure SQL Database/受控執行個體伺服器並加入另一個，以建立您的 Azure-SSIS IR，然後設定不同位置之間的虛擬網路對虛擬網路連線。
+- 您的 Azure SSIS IR 位置不需要與資料處理站的位置相同，但應該與您自己的 Azure SQL Database 或要裝載 SSISDB 的受控執行個體伺服器位置相同。 如此一來，您的 Azure-SSIS 整合執行階段就可以輕易存取 SSISDB，而不會在不同的位置之間產生過多流量。
+- 如果您沒有現有的 Azure SQL Database 或受控執行個體伺服器來裝載 SSISDB，但有內部部署資料來源/目的地，您應該在與內部部署網路連線之虛擬網路的相同位置中，建立新的 Azure SQL Database 或受控執行個體伺服器。  如此一來，您就可以使用新的 Azure SQL Database 或受控執行個體伺服器建立您的 Azure SSIS IR，並加入該虛擬網路，全都放在相同的位置，以有效地將不同位置的資料移動降到最低。
+- 如果您現有 Azure SQL Database 或裝載 SSISDB 的受控執行個體伺服器位置與連線到內部部署網路的虛擬網路位置不同，請先使用現有的 Azure SQL Database 建立您的 Azure SSIS IR，或受控執行個體伺服器並將另一個虛擬網路加入相同的位置，然後將虛擬網路設定為不同位置之間的虛擬網路連線。
 
 下圖顯示 Data Factory 及其整合執行階段的位置設定：
 
@@ -163,16 +163,16 @@ Data Factory 位置中儲存資料處理站的中繼資料，也是觸發管道�
 
 查閱和 GetMetadata 的活動會在與資料存放區連結服務相關聯的整合執行階段上執行。
 
-### <a name="transformation-activity"></a>轉換活動
+### <a name="external-transformation-activity"></a>外部轉換活動
 
-每個轉換活動都有一個指向整合執行階段的目標計算「連結服務」。 轉換活動就是從這個整合執行階段執行個體分派而來。
+利用外部計算引擎的每個外部轉換活動都有一個目標計算連結服務，指向整合執行時間。 此整合執行時間實例會決定該外部手動編碼轉換活動的分派位置。
 
 ### <a name="data-flow-activity"></a>資料流程活動
 
-資料流程活動會在與其相關聯的整合執行時間上執行。 
+資料流程活動會在與其相關聯的 Azure 整合執行時間上執行。 資料流程所使用的 Spark 計算是由 Azure Integration Runtime 中的資料流程屬性所決定，而且是由 ADF 完全管理。
 
 ## <a name="next-steps"></a>後續步驟
-請參閱下列文章：
+查看下列文章：
 
 - [建立 Azure 整合執行時間](create-azure-integration-runtime.md)
 - [建立自我裝載整合執行階段](create-self-hosted-integration-runtime.md)

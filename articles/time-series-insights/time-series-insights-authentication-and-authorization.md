@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 12/09/2019
+ms.date: 02/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: 960eb9b48a158358a076202db0d435feb918a6c8
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: ff5f7a80e2dcedb1795bae14ee9140c2842303a5
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863473"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984520"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API 的驗證和授權
 
@@ -93,7 +93,7 @@ Azure Active Directory 應用程式註冊流程牽涉到三個主要步驟。
 
    1. 當應用程式呼叫 Time Series Insights API 時，此權杖即可傳入 `Authorization` 標頭。
 
-* 或者，開發人員可以選擇使用 MSAL 進行驗證。 如需深入瞭解，請參閱[遷移至 MSAL](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration) 。 
+* 或者，開發人員可以選擇使用 MSAL 進行驗證。 閱讀有關[遷移至 MSAL](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration)的資訊，並參閱我們的[管理 Azure 時間序列深入解析環境C#的 GA 參考資料](time-series-insights-manage-reference-data-csharp.md)，以深入瞭解。 
 
 ## <a name="common-headers-and-parameters"></a>一般標頭和參數
 
@@ -136,7 +136,7 @@ Azure Active Directory 應用程式註冊流程牽涉到三個主要步驟。
 | 回應標頭 | 說明 |
 | --- | --- |
 | Content-Type | 只支援 `application/json`。 |
-| x-ms-request-id | 伺服器產生的要求識別碼。 可以用來與 Microsoft 聯繫以調查要求。 |
+| x-ms-要求識別碼 | 伺服器產生的要求識別碼。 可以用來與 Microsoft 聯繫以調查要求。 |
 | x-ms-屬性-找不到-行為 | GA API 選擇性回應標頭。 可能的值為 `ThrowError` （預設）或 `UseNull`。 |
 
 ### <a name="http-parameters"></a>HTTP 參數

@@ -3,12 +3,12 @@ title: 原則定義結構的詳細資料
 description: 說明如何使用原則定義來建立組織中 Azure 資源的慣例。
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: e37ff6e1bde594014510880492c2572ad1634400
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 7502c1c9a2e125052abf71e50273fbd9bab15cd1
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76904423"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989870"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure 原則定義結構
 
@@ -251,8 +251,7 @@ ms.locfileid: "76904423"
 使用 **like** 和 **notLike** 條件時，您可以在值中提供 `*` 萬用字元。
 值不應包含多個 `*` 萬用字元。
 
-當使用**match**和**notMatch**條件時，請提供 `#` 來比對數位、為字母 `?`、`.` 比對任何字元，以及任何其他字元以符合該實際字元。
-**match** 和 **notMatch** 都會區分大小寫。 不會區分大小寫的替代項目，可在 **matchInsensitively** 和 **notMatchInsensitively** 中取得。 如需範例，請參閱[允許數個名稱模式](../samples/allow-multiple-name-patterns.md)。
+當使用**match**和**notMatch**條件時，請提供 `#` 來比對數位、為字母 `?`、`.` 比對任何字元，以及任何其他字元以符合該實際字元。 While、 **match**和**notMatch**區分大小寫，所有其他評估_stringValue_的條件都不區分大小寫。 不會區分大小寫的替代項目，可在 **matchInsensitively** 和 **notMatchInsensitively** 中取得。 如需範例，請參閱[允許數個名稱模式](../samples/allow-multiple-name-patterns.md)。
 
 ### <a name="fields"></a>欄位
 
@@ -399,7 +398,7 @@ ms.locfileid: "76904423"
 
 ### <a name="count"></a>計數
 
-計算資源裝載中陣列成員數目符合條件運算式的條件，可以使用**計數**運算式來形成。 常見的案例是檢查「至少其中一個」、「全部」、「全部」或「無」陣列成員是否符合條件。 **count**會評估條件運算式的每個陣列成員，並加總_true_結果，然後再與運算式運算子進行比較。
+計算資源裝載中陣列成員數目符合條件運算式的條件，可以使用**計數**運算式來形成。 常見的案例是檢查「至少其中一個」、「全部」、「全部」或「無」陣列成員是否符合條件。 **count**會評估條件運算式的每個[\[\*\] 別名](#understanding-the--alias)陣列成員，並加總_true_結果，然後再與運算式運算子進行比較。
 
 **計數**運算式的結構為：
 
@@ -763,10 +762,7 @@ Azure 原則支援下列類型的效果：
                 }
             }
         ]
-    },
-    "id": "/subscriptions/<subscription-id>/providers/Microsoft.Authorization/policySetDefinitions/billingTagsPolicy",
-    "type": "Microsoft.Authorization/policySetDefinitions",
-    "name": "billingTagsPolicy"
+    }
 }
 ```
 

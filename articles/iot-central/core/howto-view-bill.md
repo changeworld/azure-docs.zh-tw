@@ -1,6 +1,6 @@
 ---
-title: 在 Azure IoT Central 應用程式中，查看您的帳單並將試用版轉換為隨用隨付 |Microsoft Docs
-description: 身為系統管理員，瞭解如何在 Azure IoT Central 應用程式中，查看您的帳單並從試用版轉換為隨用隨付
+title: 在 Azure IoT Central 應用程式中管理您的帳單並從免費定價方案轉換 |Microsoft Docs
+description: 身為系統管理員，瞭解如何管理您的帳單，並從免費定價方案移至 Azure IoT Central 應用程式中的標準定價方案
 author: v-krghan
 ms.author: v-krghan
 ms.date: 07/26/2019
@@ -8,45 +8,60 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 16a58bfc3fa245ed1ede19b0439419ab4590234e
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: e45109842a081b437c20de81321bf70f909efa2a
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72952572"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982331"
 ---
 # <a name="view-your-bill-in-iot-central-application"></a>在 IoT Central 應用程式中查看您的帳單
 
-本文說明如何以系統管理員的身分，在 [管理] 區段中查看 Azure IoT Central 應用程式中的帳單，以及如何將您的試用版轉換成隨用隨付。
+本文說明如何以系統管理員身分，在 [管理] 區段中管理 Azure IoT Central 應用程式中的帳單。 您將瞭解如何將您的應用程式從免費定價方案移至標準定價方案，以及如何升級或降級您的定價方案。
 
-若要存取並使用 [管理] 區段，您必須屬於 Azure IoT Central 應用程式的**管理員**角色。 如果您建立 Azure IoT Central 應用程式，就會自動將您指派給該應用程式的**管理員**角色。
+若要存取並使用 [**管理**] 區段，您必須是 [*系統管理員*] 角色，或具有可讓您查看 Azure IoT Central 應用程式計費的*自訂使用者角色*。 如果您建立 Azure IoT Central 應用程式，就會自動將您指派給該應用程式的**管理員**角色。
 
-## <a name="view-your-bill"></a>檢視您的帳單
+## <a name="move-from-free-to-standard-pricing-plan"></a>從免費移至標準定價方案
 
-若要檢視帳單，請移至 [管理] 區段中的 [帳單] 頁面。 Azure 帳單頁面即會在新的索引標籤中開啟，您可在其中看見每個 Azure IoT Central 應用程式的帳單。
+- 使用免費定價方案的應用程式在到期前七天免費。 為了避免資料遺失，您可以在到期前隨時將它們移至標準定價方案。
 
-## <a name="convert-your-trial-to-pay-as-you-go"></a>將試用版轉換為隨用隨付
-
-- **試用版**應用程式可以免費試用七天。 此類應用程式可在到期前隨時轉換成隨用隨付。
-- 隨用**隨付**應用程式會依每個裝置計費，每個訂用帳戶的前五個裝置免費。
-
-您可以在 [Azure IoT Central 定價頁面](https://azure.microsoft.com/pricing/details/iot-central/)上深入了解定價。
-
-在 [帳單] 區段中，您可以將試用版應用程式轉換成隨用隨付。
+在 [定價] 區段中，您可以將應用程式從免費移至標準定價方案。
 
 若要完成此自助程序，請遵循這些步驟：
 
-1. 請移至 [管理] 區段中的 [帳單] 頁面。
+1. 移至 [**管理**] 區段中的 [**定價**] 頁面。
 
     ![試用狀態](media/howto-administer/freetrialbilling.png)
 
-1. 選取 [**轉換為隨用隨付**]。
+1. 選取 [**轉換為付費方案**]。
 
     ![轉換試用](media/howto-administer/convert.png)
 
-1. 選取適當的 Azure Active Directory，然後選取要用於隨用隨付應用程式的 Azure 訂用帳戶。
+1. 選取適當的 Azure Active Directory，然後選取要用於使用付費方案之應用程式的 Azure 訂用帳戶。
 
-1. 在您選取 [**轉換**] 之後，您的應用程式現在是隨用隨付應用程式，而您會開始計費。
+1. 在您選取 [**轉換**] 之後，您的應用程式現在會使用付費方案，並開始計費。
+
+> [!Note]
+> 根據預設，您會轉換成*標準 2*定價方案。
+
+## <a name="how-to-change-your-application-pricing-plan"></a>如何變更您的應用程式定價方案
+
+- 使用標準定價方案的應用程式會依每個裝置計費，而每個應用程式的前兩個裝置免費。
+
+在 [定價] 區段中，您可以隨時升級或降級 Azure IoT 定價方案。
+
+1. 移至 [**管理**] 區段中的 [**定價**] 頁面。
+
+    ![試用狀態](media/howto-administer/pricing.png)
+
+1. 選取**方案**，然後按一下 [**儲存**] 以升級或降級。
+
+在 [Azure IoT Central 定價頁面](https://azure.microsoft.com/pricing/details/iot-central/)上深入了解定價。
+
+## <a name="view-your-bill"></a>檢視您的帳單
+
+若要查看您的帳單，請移至 [**管理**] 區段中的 [**定價**] 頁面。 [Azure 定價] 頁面會在新的索引標籤中開啟，您可以在其中查看每個 Azure IoT Central 應用程式的帳單。
+
 
 ## <a name="next-steps"></a>後續步驟
 

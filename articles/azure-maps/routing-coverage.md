@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: f6e16ed6646340a5c623ecd027e8b0fe323bf7f9
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: b19c23c7adb8dce84530b8f3f8d994f4e32869cc
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910618"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988935"
 ---
 # <a name="azure-maps-routing-coverage"></a>Azure 地圖服務路線規劃涵蓋範圍
 
-本文提供 Azure 地圖服務路線規劃的涵蓋範圍資訊。 當您搜尋從位置 A 到 B 的最佳路線時，Azure 地圖服務可以提供高度精確的旅遊時間、即時更新的旅遊資訊和路線指示。 此路由會考慮其他搜尋詞彙，例如目前的流量、車輛類型和條件，以避免。 將路由優化的能力取決於區域，因為 Azure 地圖服務具有各種不同層級的資訊，以及適用于不同區域的精確度。 下表列出區域和您可以為其要求的資訊類型。
+本文提供 Azure 地圖服務路線規劃的涵蓋範圍資訊。 在搜尋查詢中，Azure 地圖服務會傳回從位置 A 到位置 B 的最佳路由。您提供了精確的旅遊時間、旅遊資訊的即時更新和路線指示。 您也可以新增其他搜尋參數，例如目前的流量、車輛類型，以及要避免的條件。 路由的優化取決於區域。 這是因為 Azure 地圖服務對於不同的區域具有各種層級的資訊和精確度。 下表列出區域和您可以為其要求的資訊類型。
  
 檢查[**地理編碼**](geocoding-coverage.md)的涵蓋範圍。       
 檢查[**流量**](traffic-coverage.md)的涵蓋範圍。  
@@ -111,11 +111,11 @@ ms.locfileid: "75910618"
 | 巴拿馬                         |        ✓       |                      |             |
 | 巴拉圭                       |        ✓       |                      |             |
 | 秘魯                           |        ✓       |         ✓            |             |
-| 聖克里斯多福及尼維斯            |        ✓       |                      |             |
+| 聖基茨和尼維斯            |        ✓       |                      |             |
 | 聖露西亞                      |        ✓       |                      |             |
 | 聖文森特 & 格林納丁斯       |        ✓       |                      |             |
 | 蘇利南                       |        ✓       |                      |             |
-| 千里達及托巴哥              |        ✓       |                      |             |
+| 特立尼達 & 多巴哥              |        ✓       |                      |             |
 | 美國                  |        ✓       |         ✓            |     ✓      | 
 | \+ 美屬薩摩亞                |        ✓       |                      |             |
 | \+ 北馬里安納群島      |        ✓       |                      |             |

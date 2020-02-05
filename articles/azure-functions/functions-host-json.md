@@ -3,18 +3,18 @@ title: 適用於 Azure Functions 2.x 的 host.json 參考
 description: Azure Functions host.json 檔案與 v2 執行階段的參考文件。
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 782998e49b9af3bf4d2ae5a561faaca399c6809f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 6c4cfbb40c0337a6141d3b1f9844a33227a4963f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978805"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988697"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 和更新版本的 host. json 參考 
 
 > [!div class="op_single_selector" title1="選取您要使用的 Azure Functions 執行階段版本： "]
 > * [第 1 版](functions-host-json-v1.md)
-> * [第 2 版](functions-host-json.md)
+> * [第2版 +](functions-host-json.md)
 
 *host.json* 中繼資料檔案所包含的全域設定選項會影響函式應用程式的所有函式。 本文列出從 Azure Functions 執行時間2.x 版開始可用的設定。  
 
@@ -27,7 +27,7 @@ ms.locfileid: "75978805"
 
 ## <a name="sample-hostjson-file"></a>範例 host.json 檔案
 
-下列範例*主機. json*檔案已指定所有可能的選項（不包括僅供內部使用的任何選項）。
+下列2.x 版的範例*主機.* x + 已指定所有可能的選項（不包括僅供內部使用的任何選項）。
 
 ```json
 {
@@ -377,7 +377,7 @@ Singleton 鎖定行為的組態設定。 如需詳細資訊，請參閱[單一�
 
 ## <a name="version"></a>version
 
-目標為 v2 執行階段的函數應用程式必須要有 `"version": "2.0"` 版本字串。
+此值表示 host. json 的架構版本。 以 v2 執行時間或更新版本為目標的函式應用程式需要版本字串 `"version": "2.0"`。 V2 和 v3 之間沒有任何主機。 json 架構變更。
 
 ## <a name="watchdirectories"></a>watchDirectories
 

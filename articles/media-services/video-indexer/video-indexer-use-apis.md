@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 02/03/2020
 ms.author: juliako
-ms.openlocfilehash: 4da437fecf0529194d72b2d403302ff81055ec0f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 8b6d160f71bfe8b2e5c447296d511b54ce6542c8
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892680"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989768"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>教學課程：使用影片索引子 API
 
@@ -86,7 +86,7 @@ ms.locfileid: "74892680"
 
 * 使用**影片索引器開發人員入口網站**，以程式設計方式取得帳戶識別碼。
 
-    使用[取得帳戶](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Accounts?) API。
+    使用[取得帳戶](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Account?)API。
 
     > [!TIP]
     > 您可以藉由定義 `generateAccessTokens=true` 來產生帳戶的存取權杖。
@@ -214,4 +214,6 @@ Debug.WriteLine(playerWidgetLink);
 
 ## <a name="next-steps"></a>後續步驟
 
-[查看輸出 JSON 的詳細資料](video-indexer-output-json-v2.md)。
+- [檢查輸出 JSON 的詳細資料](video-indexer-output-json-v2.md)
+- 查看範例程式[代碼](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/API)，示範上傳影片和編制索引的重要層面。 遵循程式碼可讓您瞭解如何使用我們的 API 來進行基本功能。 請務必閱讀內嵌批註，並注意我們的最佳做法妥通知。
+

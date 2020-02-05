@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: conceptual
-ms.date: 05/09/2019
-ms.author: maheshb
-ms.openlocfilehash: f04bfc306a89c7bb6caf3f928f5fdfec66358649
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.date: 02/03/2020
+ms.author: aahi
+ms.openlocfilehash: f00ffee47e3eb6366d632d8b6ee9beb01f048442
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072748"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983107"
 ---
 # <a name="call-your-bing-custom-search-instance-from-the-portal"></a>從入口網站呼叫 Bing 自訂搜尋執行個體
 
@@ -31,7 +31,7 @@ ms.locfileid: "74072748"
 一些重要參數如下：
 
 
-|參數  |描述  |
+|參數  |說明  |
 |---------|---------|
 |查詢     | 要搜尋的搜尋字詞。 僅適用於網頁、影像、影片與自動建議端點 |
 |自訂組態識別碼 | 所選取自訂搜尋執行個體的組態識別碼。 這是唯讀欄位。 |
@@ -40,11 +40,11 @@ ms.locfileid: "74072748"
 
 按一下 [其他參數] 會顯示下列參數：  
 
-|參數  |描述  |
+|參數  |說明  |
 |---------|---------|
-|安全搜尋     | 用來篩選成人內容網頁的篩選條件。 僅適用於網頁、影像、影片與裝載 UI 端點。        |
+|安全搜尋     | 用來篩選成人內容網頁的篩選條件。 僅適用於網頁、影像、影片與裝載 UI 端點。 請注意，Bing 自訂影片搜尋只支援兩個值： `moderate` 和 `strict`。        |
 |使用者介面語言    | 用於使用者介面字串的語言。 例如，若您在裝載 UI 中啟用影像與影片， [影像] 與 [影片] 索引標籤會使用指定的語言。        |
-|Count     | 回應中傳回的搜尋結果數目。 僅適用於網頁、影像與影片端點。         |
+|計數     | 回應中傳回的搜尋結果數目。 僅適用於網頁、影像與影片端點。         |
 |Offset    | 傳回結果之前要跳過的搜尋結果數目。 僅適用於網頁、影像與影片端點。        |
     
 指定所有必要選項之後，請按一下 [呼叫] 在右窗格中檢視 JSON 回應。 如果您選取裝載 UI 端點，可以從底部窗格測試搜尋體驗。

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 11dae2b6d771138503643c402ba4525df1f04a88
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4f311d2772a6a60798795b4f2e6237e8153b9547
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430755"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76981205"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>如何在 Azure API 管理中使用 Azure Active Directory B2C 授權開發人員帳戶
 
@@ -38,61 +38,65 @@ Azure Active Directory B2C 是適用於取用者導向 Web 與行動應用程式
    > [!NOTE]
    > 如果您尚未建立 API 管理服務實例，請參閱[開始使用 AZURE Api 管理教學][Get started with Azure API Management]課程中的[建立 api 管理服務實例][Create an API Management service instance]。
 
-2. 在 **[** 身分識別] 底下。 按一下頂端的 [+ 新增]。
+1. 在 **[** 身分識別] 底下。 按一下頂端的 [+ 新增]。
 
    [新增識別提供者] 窗格隨即出現在右邊。 選擇 [Azure Active Directory B2C]。
     
    ![將 AAD B2C 新增為識別提供者][api-management-howto-add-b2c-identity-provider]
 
-3. 複製 [重新導向 URL]。
+1. 複製 [重新導向 URL]。
 
    ![AAD B2C 識別提供者重新導向 URL][api-management-howto-copy-b2c-identity-provider-redirect-url]
 
-4. 以新的索引標籤存取 Azure 入口網站中的 Azure Active Directory B2C 租用戶，然後開啟 [應用程式] 刀鋒視窗。
+1. 以新的索引標籤存取 Azure 入口網站中的 Azure Active Directory B2C 租用戶，然後開啟 [應用程式] 刀鋒視窗。
 
    ![註冊新的應用程式 1][api-management-howto-aad-b2c-portal-menu]
 
-5. 按一下 [新增] 按鈕以建立新的 Azure Active Directory B2C 應用程式。
+1. 按一下 [新增] 按鈕以建立新的 Azure Active Directory B2C 應用程式。
 
    ![註冊新的應用程式 2][api-management-howto-aad-b2c-add-button]
 
-6. 在 [新增應用程式] 刀鋒視窗中，輸入應用程式的名稱。 在 [Web 應用程式/Web API] 下選擇 [是]，然後在 [允許隱含流程] 下選擇 [是]。 將在步驟 3 複製的**重新導向 URL** 貼到 [回覆 URL] 文字方塊。
+1. 在 [新增應用程式] 刀鋒視窗中，輸入應用程式的名稱。 在 [Web 應用程式/Web API] 下選擇 [是]，然後在 [允許隱含流程] 下選擇 [是]。 將在步驟 3 複製的**重新導向 URL** 貼到 [回覆 URL] 文字方塊。
 
    ![註冊新的應用程式 3][api-management-howto-aad-b2c-app-details]
 
-7. 按一下 [ **建立** ] 按鈕。 應用程式在建立後會出現在 [應用程式] 刀鋒視窗。 按一下應用程式名稱可查看其詳細資料。
+1. 如果您使用的是新的開發人員入口網站（而不是舊版開發人員入口網站），請在應用程式宣告中包含**指定的名稱**、**姓氏**和**使用者的物件識別碼**。
+
+    ![應用程式宣告](./media/api-management-howto-aad-b2c/api-management-application-claims.png)
+
+1. 按一下 [ **建立** ] 按鈕。 應用程式在建立後會出現在 [應用程式] 刀鋒視窗。 按一下應用程式名稱可查看其詳細資料。
 
    ![註冊新的應用程式 4][api-management-howto-aad-b2c-app-created]
 
-8. 從 [屬性] 刀鋒視窗複製 [應用程式識別碼] 到剪貼簿。
+1. 從 [屬性] 刀鋒視窗複製 [應用程式識別碼] 到剪貼簿。
 
    ![應用程式識別碼 1][api-management-howto-aad-b2c-app-id]
 
-9. 切換回 API 管理的 [新增識別提供者] 窗格，然後將識別碼貼到 [用戶端識別碼] 文字方塊。
+1. 切換回 API 管理的 [新增識別提供者] 窗格，然後將識別碼貼到 [用戶端識別碼] 文字方塊。
     
-10. 切換回 B2C 應用程式註冊，按一下 [金鑰] 按鈕，然後按一下 [產生金鑰]。 按一下 [儲存] 以儲存組態並顯示**應用程式金鑰**。 複製金鑰至剪貼簿。
+1.  切換回 B2C 應用程式註冊，按一下 [金鑰] 按鈕，然後按一下 [產生金鑰]。 按一下 [儲存] 以儲存組態並顯示**應用程式金鑰**。 複製金鑰至剪貼簿。
 
     ![應用程式金鑰 1][api-management-howto-aad-b2c-app-key]
 
-11. 切換回 API 管理的 [新增識別提供者] 窗格，然後將金鑰貼到 [用戶端密碼] 文字方塊。
+1.  切換回 API 管理的 [新增識別提供者] 窗格，然後將金鑰貼到 [用戶端密碼] 文字方塊。
     
-12. 指定登入**租**使用者中 Azure Active Directory B2C 租使用者的功能變數名稱。
+1.  指定登入**租**使用者中 Azure Active Directory B2C 租使用者的功能變數名稱。
 
-13. [**授權**單位] 欄位可讓您控制要使用的 Azure AD B2C 登入 URL。 將值設定為 **< your_b2c_tenant_name >. .b2clogin.com .com**。
+1.  [**授權**單位] 欄位可讓您控制要使用的 Azure AD B2C 登入 URL。 將值設定為 **< your_b2c_tenant_name >. .b2clogin.com .com**。
 
-14. 指定 B2C 租用戶原則中的 [註冊原則] 和 [登入原則]。 (選擇性) 您也可以提供 [設定檔編輯原則] 和 [密碼重設原則]。
+1. 指定 B2C 租用戶原則中的 [註冊原則] 和 [登入原則]。 (選擇性) 您也可以提供 [設定檔編輯原則] 和 [密碼重設原則]。
 
-15. 指定需要的組態之後，按一下 [儲存]。
+1. 指定需要的組態之後，按一下 [儲存]。
 
     儲存變更後，開發人員就可以使用 Azure Active Directory B2C 建立新帳戶和登入開發人員入口網站。
 
 ## <a name="developer-portal---add-azure-ad-b2c-account-authentication"></a>開發人員入口網站-新增 Azure AD B2C 帳戶驗證
 
-在開發人員入口網站中，可以使用 [ **OAuth 按鈕**] widget 來登入 AAD B2C。 Widget 已包含在預設開發人員入口網站內容的登入頁面上。
-
-![AAD 按鈕 widget](./media/api-management-howto-aad/portal-oauth-widget.png)
+在開發人員入口網站中，您可以使用 [登入]**按鈕： [OAuth** widget] 來登入 AAD B2C。 Widget 已包含在預設開發人員入口網站內容的登入頁面上。
 
 當新的使用者登入 AAD B2C 時，會自動建立新的帳戶，您可以考慮將相同的 widget 新增至註冊頁面。
+
+**註冊表單： oauth** widget 代表用來註冊 OAuth 的表單。
 
 > [!IMPORTANT]
 > 您必須重新[發佈入口網站](api-management-howto-developer-portal-customize.md#publish)，AAD 變更才會生效。

@@ -5,13 +5,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.openlocfilehash: 888c1f0bb38a5317cc27790ea47917c182d49593
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 02/03/2020
+ms.openlocfilehash: e1eb852b7cf7aea887dea429e19b0a3b1ac5805a
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72925631"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989853"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure 串流分析作業的相容性層級
 
@@ -27,7 +27,7 @@ Azure 串流分析目前支援三種相容性層級：
 
 * 1.0-先前的行為
 * 1.1-預設行為
-* 1.2 （預覽）-最近的評估改良功能的最新行為
+* 1.2-最近改良功能的最新行為
 
 原始的1.0 相容性層級是在幾年前的 Azure 串流分析正式運作期間引進。
 
@@ -47,9 +47,9 @@ Azure 串流分析目前支援三種相容性層級：
 
 ![Azure 入口網站中的串流分析相容性層級](media/stream-analytics-compatibility-level/stream-analytics-compatibility.png)
 
-更新相容性層級時，T-SQL 編譯器會以對應至所選相容性層級的語法來驗證作業。
+當您更新相容性層級時，T 編譯器會以對應至所選相容性層級的語法來驗證作業。
 
-## <a name="compatibility-level-12-preview"></a>相容性層級1.2 （預覽）
+## <a name="compatibility-level-12"></a>相容性層級 1.2
 
 相容性層級1.2 引進下列主要變更：
 
@@ -123,7 +123,7 @@ Upsert 行為是*insert 或 replace*。
 
 `@\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId":"1", "Temperature":64\}\u0001`
 
-**1.1 層級：** 訊息內容包含直接沒有其他標記的資料流程。 例如：`{ "SensorId":"1", "Temperature":64}`
+**1.1 層級：** 訊息內容包含直接沒有其他標記的資料流程。 例如： `{ "SensorId":"1", "Temperature":64}`
 
 ### <a name="persisting-case-sensitivity-for-field-names"></a>功能變數名稱的保存區分大小寫
 

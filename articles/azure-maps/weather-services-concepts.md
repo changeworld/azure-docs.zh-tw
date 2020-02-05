@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4bf13477bfee39b5be39715374592811e8f8cc89
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: bcf100236d4a2a707a007a24e9e51105cc9ca0ac
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911034"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76991174"
 ---
 # <a name="weather-services-in-azure-maps"></a>Azure 地圖服務中的氣象服務
 
@@ -21,13 +21,13 @@ ms.locfileid: "75911034"
 
 ## <a name="unit-types"></a>單位類型
 
-某些氣象服務 Api 可讓使用者指定以度量或英制單位傳回資料。 針對這些 Api 傳回的回應也會包含 Unittype.pixel 表示，也就是可用於單元翻譯的數值。 請參閱下表來解讀這些值。
+某些氣象服務 Api 可讓使用者指定以度量或英制單位傳回資料。 針對這些 Api 傳回的回應包含 Unittype.pixel 表示，以及可用於單元轉譯的數值。 請參閱下表來解讀這些值。
 
 |Unittype.pixel 表示|說明         |
 |--------|--------------------|
 |0       |英呎                |
 |1       |英吋              |
-|2       |英里               |
+|2       |數               |
 |3       |毫米          |
 |4       |釐米          |
 |5       |計數器               |
@@ -45,14 +45,14 @@ ms.locfileid: "75911034"
 |17      |攝氏             |
 |18      |華氏          |
 |19      |克式              |
-|20      |percent             |
+|20      |率             |
 |21      |FLOAT               |
 |22      |integer             |
 
 
 ## <a name="weather-icons"></a>氣象圖示
 
-某些天氣服務 Api 會在回應中傳回圖示代碼（iconCode），這是一個可用於定義圖示的數值。 請不要直接從您的應用程式連結到這些映射，Url 可以和將會變更。
+某些天氣服務 Api 會在回應中傳回 `iconCode`。 `iconCode` 是用來定義圖示的數位值。 請勿直接從您的應用程式連結到這些映射，Url 可以和將會變更。
 
 | 圖示編號 |圖示| 天 | 日 | 文字 |
 |-------------|:----:|-----|-------|------|
@@ -62,7 +62,7 @@ ms.locfileid: "75911034"
 | 4           |![](./media/weather-services-concepts/intermittent-clouds.png)         | 是 |  否    | 間歇雲端|
 | 5           |![](./media/weather-services-concepts/hazy-sunshine.png)               | 是 |  否    | 模糊陽光 |
 | 6           |![](./media/weather-services-concepts/mostly-cloudy.png)               | 是 |  否    | 大部分的雲|
-| 7           |![](./media/weather-services-concepts/cloudy-i.png)                     | 是 |  是   | 雲端多雲 |
+| 7           |![](./media/weather-services-concepts/cloudy-i.png)                     | 是 |  是   | 雲 |
 | 8           |![](./media/weather-services-concepts/dreary-overcast.png)             | 是 |  是   | 單調（Overcast）|
 | 11           |![](./media/weather-services-concepts/fog-i.png)                       | 是 |  是   | 雲|
 | 12           |![](./media/weather-services-concepts/showers-i.png)                   | 是 |  是   | 大氣|
@@ -77,7 +77,7 @@ ms.locfileid: "75911034"
 | 21           |![](./media/weather-services-concepts/partly-sunny-flurries.png)       | 是 |  否    | 部分 Sunny 與 Flurries|
 | 22           |![](./media/weather-services-concepts/snow-i.png)                      | 是 |  是   | Snow|
 | 23           |![](./media/weather-services-concepts/mostly-cloudy-snow.png)          | 是 |  否    | 大多是具有雪的一種雲|
-| 24           |![](./media/weather-services-concepts/ice-i.png)                       | 是 |  是   | Ice |
+| 24           |![](./media/weather-services-concepts/ice-i.png)                       | 是 |  是   | 抵銷 |
 | 25           |![](./media/weather-services-concepts/sleet-i.png)                     | 是 |  是   | Sleet|
 | 26           |![](./media/weather-services-concepts/freezing-rain.png)              | 是 |  是   | 凍結 Rain|
 | 29           |![](./media/weather-services-concepts/rain-snow.png)                  | 是 |  是   | 雨和雪|

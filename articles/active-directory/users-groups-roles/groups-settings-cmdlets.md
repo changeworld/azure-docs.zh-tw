@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7547608e227ca6b8d57bc1d4384ccdee181d9970
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7b5d74c7c599f31694a68e7582a6447af8471508
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430846"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984943"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>設定群組設定的 Azure Active Directory Cmdlet
 
@@ -178,9 +178,9 @@ Cmdlet 是 Azure Active Directory PowerShell V2 模組的一部分。 如需有�
    ```powershell
    $Setting = $template.CreateDirectorySetting()
    ```  
-4. 然後更新 AllowAddGuests 設定
+4. 然後更新 AllowToAddGuests 設定
    ```powershell
-   $Setting["AllowAddGuests"] = $False
+   $Setting["AllowToAddGuests"] = $False
    ```  
 5. 然後套用設定：
   
@@ -234,7 +234,7 @@ Cmdlet 是 Azure Active Directory PowerShell V2 模組的一部分。 如需有�
    AllowGuestsToAccessGroups     True
    GuestUsageGuidelinesUrl
    GroupCreationAllowedGroupId
-   AllowAddGuests              True
+   AllowToAddGuests              True
    UsageGuidelinesUrl            https://guideline.example.com
    ClassificationList
    EnableGroupCreation           True
@@ -271,7 +271,7 @@ Cmdlet 是 Azure Active Directory PowerShell V2 模組的一部分。 如需有�
 
 4. 將設定設為必要值︰
    ```powershell
-   $SettingCopy["AllowAddGuests"]=$False
+   $SettingCopy["AllowToAddGuests"]=$False
    ```
 5. 取得您想要套用此設定之群組的識別碼：
    ```powershell
@@ -297,7 +297,7 @@ Cmdlet 是 Azure Active Directory PowerShell V2 模組的一部分。 如需有�
    ```
 3. 視需要更新群組的設定，例如
    ```powershell
-   $Setting["AllowAddGuests"] = $True
+   $Setting["AllowToAddGuests"] = $True
    ```
 4. 然後取得此特定群組之設定的識別碼：
    ```powershell

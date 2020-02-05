@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 01/13/2020
-ms.openlocfilehash: fafb40c8505b7178782ab15c14184c5bec052a1b
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 3dfdbc56456ea67c830d0e1e9785b9d0032bf2cc
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76937867"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988207"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>在 Azure 虛擬網路中保護 Azure ML 實驗和推斷作業
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -180,8 +180,8 @@ Machine Learning Compute 目前使用 Azure Batch 服務將 VM 佈建在指定�
 - 使用 NSG 規則拒絕連出網際網路連線。
 
 - 針對__計算實例__或__計算__叢集，將輸出流量限制為下列專案：
-   - Azure 儲存體，方法是使用__儲存體__的__服務標記__
-   - Azure Container Registry，方法是使用__AzureContainerRegistry__的__服務標記__
+   - Azure 儲存體，方法是使用__RegionName__的__服務標記__。 其中 `{RegionName}` 是 Azure 區域的名稱。
+   - Azure Container Registry，方法是使用__AzureContainerRegistry. RegionName__的__服務標記__。 其中 `{RegionName}` 是 Azure 區域的名稱。
    - Azure Machine Learning，方法是使用__AzureMachineLearning__的__服務標記__
    
 - 針對__計算實例__，請同時新增下列專案：

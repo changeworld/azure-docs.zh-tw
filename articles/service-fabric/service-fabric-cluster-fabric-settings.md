@@ -3,12 +3,12 @@ title: 變更 Azure Service Fabric 叢集設定
 description: 本文說明您可以自訂的網狀架構設定和網狀架構升級原則。
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 284e8ad566192f027d466ad08d66c2fc5265381d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f42cfd1b41ab463c3c3042987b5d0a0b3b00f67e
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905195"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986184"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>自訂 Service Fabric 叢集設定
 本文說明您可以為 Service Fabric 叢集自訂的各種網狀架構設定。 針對裝載於 Azure 中的叢集，您可以透過 [Azure 入口網站](https://portal.azure.com)或使用 Azure Resource Manager 範本來自訂設定。 如需詳細資訊，請參閱[升級 Azure 叢集的設定](service-fabric-cluster-config-upgrade-azure.md)。 針對獨立叢集，您會透過更新 *ClusterConfig.json* 檔案並在叢集上執行設定升級來自訂設定。 如需詳細資訊，請參閱[升級獨立叢集的設定](service-fabric-cluster-config-upgrade-windows-server.md)。
@@ -831,7 +831,7 @@ ms.locfileid: "76905195"
 | **參數** | **允許的值** | **升級原則** | **指引或簡短描述** |
 | --- | --- | --- | --- |
 |ContainerNetworkName|字串，預設值為 ""| 靜態 |要在設定容器網路時使用的網路名稱。|
-|ContainerNetworkSetup|布林值，預設值為 FALSE| 靜態 |是否要設定容器網路。|
+|ContainerNetworkSetup|bool，預設值為 FALSE （Linux），預設值為 TRUE （Windows）| 靜態 |是否要設定容器網路。|
 |FabricDataRoot |String | 不允許 |Service Fabric 資料的根目錄。 預設為 Azure d:\svcfab |
 |FabricLogRoot |String | 不允許 |Service Fabric 記錄的根目錄。 這是放置 SF 記錄和追蹤的位置。 |
 |NodesToBeRemoved|字串，預設值為 ""| 動態 |應在設定升級過程中移除的節點。 (僅適用於獨立部署)|

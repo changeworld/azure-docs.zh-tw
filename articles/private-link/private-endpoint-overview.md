@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: cd06d4cbf62078c2c7a5def4a0032ddce97d67f0
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 27b430ca6e90eba933662bd35d8d97b08234c84e
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842447"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989020"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什麼是 Azure 私用端點？
 
@@ -130,9 +130,7 @@ Azure 會在公用 DNS 上建立正式名稱 DNS 記錄（CNAME），以將解�
 
 |限制 |說明 |降低  |
 |---------|---------|---------|
-|網路安全性群組（NSG）規則和使用者定義的路由不適用於私人端點    |私用端點上不支援 NSG。 雖然包含私用端點的子網可以有相關聯的 NSG，但這些規則不會對私用端點所處理的流量生效。 您必須[停用網路原則強制執行](disable-private-endpoint-network-policy.md)，才能在子網中部署私人端點。 在相同子網上裝載的其他工作負載上仍會強制執行 NSG。 任何用戶端子網上的路由都會使用/32 前置詞，變更預設路由行為需要類似的 UDR  | 針對來源用戶端上的輸出流量使用 NSG 規則，以控制流量。 部署具有/32 前置詞的個別路由，以覆寫私用端點路由        |
-|  不支援只有私人端點的對等互連虛擬網路   |   連接到對等互連上的私用端點時虛擬網路不支援任何其他工作負載       | 在對等互連虛擬網路上部署單一 VM 以啟用連線能力 |
-|特製化工作負載無法存取私人端點    |   下列部署到虛擬網路的服務無法使用私人端點來存取任何私人連結資源：<br>App Service 方案</br>Azure 容器執行個體</br>Azure NetApp Files</br>Azure 專用 HSM<br>       |   預覽期間不會緩和風險。       |
+|網路安全性群組（NSG）規則和使用者定義的路由不適用於私人端點    |私用端點上不支援 NSG。 雖然包含私用端點的子網可以有相關聯的 NSG，但這些規則不會對私用端點所處理的流量生效。 您必須[停用網路原則強制執行](disable-private-endpoint-network-policy.md)，才能在子網中部署私人端點。 在相同子網上裝載的其他工作負載上仍會強制執行 NSG。 任何用戶端子網上的路由都會使用/32 前置詞，變更預設路由行為需要類似的 UDR  | 針對來源用戶端上的輸出流量使用 NSG 規則，以控制流量。 部署具有/32 前置詞的個別路由，以覆寫私用端點路由。 輸出連線的 NSG 流量記錄和監視資訊仍然受支援且可供使用        |
 
 
 ## <a name="next-steps"></a>後續步驟

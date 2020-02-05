@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/21/2019
 ms.author: cynthn
-ms.openlocfilehash: e2eb77bfd000ecaa3bad5fd3c5792d1aa3a81964
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 13e4923bc5d49843710c9df4523992f541f1d343
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964867"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988017"
 ---
 # <a name="preview-control-updates-with-maintenance-control-and-the-azure-cli"></a>預覽：使用維護控制和 Azure CLI 控制更新
 
@@ -183,7 +183,7 @@ az maintenance update list \
 
 ### <a name="dedicated-host"></a>專用主機
 
-檢查專用主機（ADH）的擱置更新。 在此範例中，會將輸出格式化為資料表以方便閱讀。 將資源的值取代為您自己的值。
+以檢查專用主機的暫止更新。 在此範例中，會將輸出格式化為資料表以方便閱讀。 將資源的值取代為您自己的值。
 
 ```azurecli-interactive
 az maintenance update list \

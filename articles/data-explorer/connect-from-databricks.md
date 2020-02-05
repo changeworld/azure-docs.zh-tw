@@ -7,21 +7,21 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.openlocfilehash: 55257d441916971b505432247f28033d6222c3be
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 03dee0570faa863ca411ed91f2a6ec85a1e38380
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60861197"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985674"
 ---
 # <a name="connect-to-azure-data-explorer-from-azure-databricks-by-using-python"></a>使用 Python 從 Azure Databricks 連線至 Azure 資料總管
 
 [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/what-is-azure-databricks) 是針對 Microsoft Azure 平台進行最佳化的 Apache Spark 分析平台。 本文說明如何使用 Azure Databricks 中的 Python 程式庫從 Azure 資料總管存取資料。 您可以透過數種方式向 Azure 資料總管進行驗證，包括裝置登入和 Azure Active Directory (Azure AD) 應用程式。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - [建立 Azure 資料總管叢集與資料庫](/azure/data-explorer/create-cluster-database-portal)。
-- [建立 Azure Databricks 工作區](/azure/azure-databricks/quickstart-create-databricks-workspace-portal#create-an-azure-databricks-workspace)。 在 [Azure Databricks 服務]  下方的 [定價層]  下拉式清單中，選取 [Premium]  。 此選取項目可讓您使用 Azure Databricks 祕密儲存您的認證，並在 Notebook 和作業中加以參考。
+- [建立 Azure Databricks 工作區](/azure/azure-databricks/quickstart-create-databricks-workspace-portal#create-an-azure-databricks-workspace)。 在 [Azure Databricks 服務] 下方的 [定價層] 下拉式清單中，選取 [Premium]。 此選取項目可讓您使用 Azure Databricks 祕密儲存您的認證，並在 Notebook 和作業中加以參考。
 
 - 在 Azure Databricks 中使用下列規格 (執行範例 Notebook 所需的最低設定) [建立叢集](https://docs.azuredatabricks.net/user-guide/clusters/create.html)：
 

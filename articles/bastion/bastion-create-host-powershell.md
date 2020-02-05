@@ -5,18 +5,20 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6cae6d258da2ddf0c3bfaade65ae74f1201b67b7
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: c3e4c2f2bac45f2e366764473a34b0536bb4cc44
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121068"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990431"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-powershell"></a>使用 Azure PowerShell 建立 Azure 防禦主機
 
-本文說明如何建立 Azure 防禦主機。 一旦在您的虛擬網路中布建 Azure 防禦服務，您在相同虛擬網路中的所有 Vm 都可以使用順暢的 RDP/SSH 體驗。 此部署依虛擬網路來進行，而非以訂用帳戶/帳戶或虛擬機器為依據。
+本文說明如何使用 PowerShell 建立 Azure 防禦主機。 一旦在您的虛擬網路中布建 Azure 防禦服務，相同虛擬網路中的所有 Vm 都可以使用順暢的 RDP/SSH 體驗。 Azure 防禦部署是針對每個虛擬網路，而不是每個訂用帳戶/帳戶或虛擬機器。
+
+（選擇性）您可以使用[Azure 入口網站](bastion-create-host-portal.md)來建立 Azure 防禦主機。
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -28,7 +30,7 @@ ms.locfileid: "74121068"
 
 本節可協助您使用 Azure PowerShell 建立新的 Azure 防禦資源。
 
-1. 建立虛擬網路和 Azure 防禦子網。 您必須使用 [名稱] 值**AzureBastionSubnet**來建立 Azure 防禦子網。 此值可讓 Azure 知道要將防禦資源部署到哪一個子網。 這與閘道子網不同。 您必須使用至少為/27 或更大子網的子網（/27、/26 等等）。 建立不含任何路由表或委派的**AzureBastionSubnet** 。 當您在**AzureBastionSubnet**上使用網路安全性群組時，請參閱使用[nsg](bastion-nsg.md)。
+1. 建立虛擬網路和 Azure 防禦子網。 您必須使用 [名稱] 值**AzureBastionSubnet**來建立 Azure 防禦子網。 此值可讓 Azure 知道要將防禦資源部署到哪一個子網。 這與閘道子網不同。 您必須使用至少為/27 或更大子網的子網（/27、/26 等等）。 建立不含任何路由表或委派的**AzureBastionSubnet** 。 如果您在**AzureBastionSubnet**上使用網路安全性群組，請參閱[使用 nsg](bastion-nsg.md)一文。
 
    ```azurepowershell-interactive
    $subnetName = "AzureBastionSubnet"
@@ -50,4 +52,6 @@ ms.locfileid: "74121068"
 
 ## <a name="next-steps"></a>後續步驟
 
-閱讀防禦[常見問題](bastion-faq.md)。
+* 如需其他資訊，請閱讀防禦[常見問題](bastion-faq.md)。
+
+* 若要搭配使用網路安全性群組與 Azure 防禦子網，請參閱使用[nsg](bastion-nsg.md)。

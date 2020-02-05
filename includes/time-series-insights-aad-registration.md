@@ -8,13 +8,13 @@ ms.service: time-series-insights
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.date: 12/06/2019
-ms.openlocfilehash: 4d32980e825f12c76b5c8bf8df0673fa82065751
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/03/2020
+ms.openlocfilehash: 5be6e7937a6e1f710b8e2576a9058963413fb6c2
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460411"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984519"
 ---
 1. 在 [Azure 入口網站](https://ms.portal.azure.com/)中，選取 [Azure Active Directory] > [應用程式註冊] > [新增註冊]。
 
@@ -34,18 +34,30 @@ ms.locfileid: "75460411"
 
 1. [驗證] 刀鋒視窗會指定重要的驗證組態設定。 
 
+    1. 藉由選取 [ **+ 新增平臺**] 來新增重新**導向 Uri**和設定**存取權杖**。
+
+    1. 藉由選取 **[是] 或 [** **否**]，判斷應用程式是否為**公用用戶端**。
+
+    1. 確認支援的帳戶和租使用者。
+
+    [![設定隱含授與](media/time-series-insights-aad-registration/active-directory-auth-blade.png)](media/time-series-insights-aad-registration/active-directory-auth-blade.png#lightbox)
+
+1. 選取適當的平臺之後，請在使用者介面右邊的側邊面板中設定重新**導向 uri**和**存取權杖**。
+
     1. [重新導向 URI] 必須符合驗證要求所提供的位址：
 
-        * 對於裝載在本機開發環境中的應用程式，請選取 [公用用戶端 (行動和傳統型)]。 請務必將 [預設用戶端類型] 設定為 [是]。
-        * 對於裝載在 Azure App Service 上的單頁應用程式，請選取 [Web]。
+        * 對於裝載在本機開發環境中的應用程式，請選取 [公用用戶端 (行動和傳統型)]。 請務必將 [**公用用戶端**] 設定為 **[是]** 。
+        * 針對裝載于 Azure App Service 上的單一頁面應用程式，選取 [ **Web**]。
+
+    1. 判斷**登出 URL**是否合適。
 
     1. 藉由檢查**存取權杖**或**識別碼權杖**來啟用隱含授與流程。
 
-   [![建立重新導向 Uri 及設定隱含授與](media/time-series-insights-aad-registration/active-directory-auth-blade.png)](media/time-series-insights-aad-registration/active-directory-auth-blade.png#lightbox)
+    [![建立重新導向 Uri](media/time-series-insights-aad-registration/active-directory-auth-redirect-uri.png)](media/time-series-insights-aad-registration/active-directory-auth-redirect-uri.png#lightbox)
 
-   按一下 [檔案]。
+    依序按一下 [**設定**] 和 [**儲存**]。
 
-1. 選取 [憑證 & 密碼]，接著 [新的用戶端密碼] 來建立應用程式密碼，以供用戶端用來證明其身分識別。
+1. 選取 [**憑證 & 秘密**] [**新的用戶端密碼**] 來建立應用程式密碼，讓您的用戶端應用程式可用來證明其身分識別。
 
    [![建立新的用戶端密碼](media/time-series-insights-aad-registration/active-directory-application-keys-save.png)](media/time-series-insights-aad-registration/active-directory-application-keys-save.png#lightbox)
 

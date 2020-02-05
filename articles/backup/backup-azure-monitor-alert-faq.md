@@ -4,50 +4,49 @@ description: 在本文中，您可以找到有關 Azure 備份監視警示和 Az
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 9cf7bf49d29b5faa9811a591b45179fe83c1d483
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: f5be97458ba658f315c31ae34e540842b64e3ec4
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172919"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989564"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Azure 備份監視警示-常見問題
 
-本文會回答有關 Azure 監視警示的常見問題。
+本文將回答有關 Azure 備份監視和報告的常見問題。
 
 ## <a name="configure-azure-backup-reports"></a>設定 Azure 備份報告
 
-### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-storage-account"></a>如何確認報告資料是否已開始流入儲存體帳戶？
+### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-log-analytics-la-workspace"></a>如何? 檢查報告資料是否已開始流入 Log Analytics （LA）工作區？
 
-請前往您所設定的儲存體帳戶，然後選取容器。 如果容器有 insights-logs-azurebackupreport 的項目，則表示報告資料已經開始流入。
+流覽至您已設定的 LA 工作區，流覽至 [**記錄**] 功能表項目，然後執行 [查詢 CoreAzureBackup] |請花1。 如果您看到傳回的記錄，則表示資料已開始流入工作區。 初始資料推送最多可能需要24小時的時間。
 
-### <a name="what-is-the-frequency-of-data-push-to-a-storage-account-and-the-azure-backup-content-pack-in-power-bi"></a>將資料推送到儲存體帳戶和 Power BI 中 Azure 備份內容套件的頻率為何？
+### <a name="what-is-the-frequency-of-data-push-to-an-la-workspace"></a>將資料推送至 LA 工作區的頻率為何？
 
-  針對使用時間尚未達一天的使用者，大約需要 24 小時的時間，才能將資料推送到儲存體帳戶。 完成此初始推送之後，就會依下圖所示的頻率重新整理資料。
+保存庫中的診斷資料會抽出至 Log Analytics 工作區，並有一些延遲。 每個事件從復原服務保存庫推送後的20到30分鐘都會抵達 Log Analytics 工作區。 以下是延遲的進一步詳細資料：
 
-* 與 [作業]、[警示]、[備份項目]、[保存庫]、[受保護的伺服器]及 [原則] 相關的資料會在記錄資料的同時推送到客戶儲存體帳戶。
+* 在所有解決方案中，備份服務的內建警示會在建立後立即推送。 因此，它們通常會在20到30分鐘後出現在 Log Analytics 工作區中。
+* 在所有解決方案中，隨選備份作業和還原作業會在完成時立即推送。
+* 對於 SQL 備份以外的所有解決方案，排程的備份作業會在完成時立即推送。
+* 針對 SQL 備份，因為記錄備份可能每隔15分鐘發生一次，所以所有已完成的排程備份作業（包括記錄）的資訊每隔6小時會進行批次處理和推送。
+* 在所有解決方案中，其他資訊（例如備份專案、原則、復原點、儲存體等等）都會一次推送至少一次。
+* 備份設定的變更（例如變更原則或編輯原則）會觸發所有相關備份資訊的推送。
 
-* 與 [儲存體] 相關的資料會每 24 小時推送到客戶儲存體帳戶。
+### <a name="how-long-can-i-retain-reporting-data"></a>可以保留報告資料多久？
 
-    ![Azure 備份報表資料推送頻率](./media/backup-azure-configure-reports/reports-data-refresh-cycle.png)
+建立 LA 工作區之後，您可以選擇最多保留2年的資料。 根據預設，LA 工作區會保留31天的資料。
 
-* Power BI 具有[一天一次的排程重新整理](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/#what-can-be-refreshed)。 您可以手動重新整理 Power BI 中內容套件的資料。
+### <a name="will-i-see-all-my-data-in-reports-after-i-configure-the-la-workspace"></a>設定 LA 工作區之後，我會在報表中看到所有的資料嗎？
 
-### <a name="how-long-can-i-retain-reports"></a>報告可以保留多久？
-
-設定儲存體帳戶時，您可以為儲存體帳戶中的報告資料選取保留期間。 請依照[針對報告設定儲存體帳戶](backup-azure-configure-reports.md#configure-storage-account-for-reports)一節中的步驟 6 進行操作。 您也可以根據需求，[在 Excel 中分析報告](https://powerbi.microsoft.com/documentation/powerbi-service-analyze-in-excel/)並儲存它們，以延長保留期間。
-
-### <a name="will-i-see-all-my-data-in-reports-after-i-configure-the-storage-account"></a>在設定儲存體帳戶之後，我是否會在報告中看到所有的資料？
-
- 在您設定儲存體帳戶之後產生的所有資料都會被推送到儲存體帳戶，並會出現在報告中。 系統不會推送進行中的作業來提供報告。 在作業完成或失敗之後，才會將其傳送至報告。
-
-### <a name="if-i-already-configured-the-storage-account-to-view-reports-can-i-change-the-configuration-to-use-another-storage-account"></a>如果我已經設定儲存體帳戶以檢視報告，是否可以變更設定以使用其他儲存體帳戶？
-
-是。您可以變更設定以指向不同的儲存體帳戶。 請在您連線到「Azure 備份」內容套件時，使用新設定的儲存體帳戶。 此外，在設定不同的儲存體帳戶之後，新資料便會流入這個儲存體帳戶。 較舊的資料 (在您變更設定之前的資料) 仍會保留在較舊的儲存體帳戶中。
+ 在您設定診斷設定後所產生的所有資料都會推送至 LA 工作區，並可在報表中使用。 系統不會推送進行中的作業來提供報告。 作業完成或失敗之後，它就會傳送至報告。
 
 ### <a name="can-i-view-reports-across-vaults-and-subscriptions"></a>我是否可以跨保存庫和訂用帳戶檢視報告？
 
-是。您可以在不同的保存庫上設定相同的儲存體帳戶，以檢視跨保存庫的報告。 您也可以針對跨訂用帳戶的保存庫設定相同的儲存體帳戶。 接著，您便可以在於 Power BI 中連線至「Azure 備份」內容套件時，使用這個儲存體帳戶來檢視報告。 所選儲存體帳戶必須與「復原服務」保存庫位於相同的區域。
+是，您可以跨保存庫和訂用帳戶以及區域來查看報表。 您的資料可能位於單一 LA 工作區或一組 LA 工作區中。
+
+### <a name="can-i-view-reports-across-tenants"></a>我可以跨租使用者查看報表嗎？
+
+如果您是具有客戶訂用帳戶或 LA 工作區之委派存取權的[Azure 燈塔](https://azure.microsoft.com/services/azure-lighthouse/)使用者，您可以使用備份報表來查看所有租使用者的資料。
 
 ### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Azure 備份代理程式作業狀態需要多久時間才會反映在入口網站中？
 
@@ -59,7 +58,7 @@ Azure 入口網站最多可能需要 15 分鐘，才會反映 Azure 備份代理
 
 ### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>是否會有已設定通知但不會傳送電子郵件的情況？
 
-是。 在下列情況下，不會傳送通知。
+可以。 在下列情況下，不會傳送通知。
 
 * 如果通知設為每小時，而且在一小時內引發警示並加以解決
 * 作業遭到取消時
@@ -77,7 +76,7 @@ Azure 入口網站最多可能需要 15 分鐘，才會反映 Azure 備份代理
 
 ### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>是否會有已設定通知但不會傳送電子郵件的情況？
 
-是。 在下列情況下，不會傳送通知：
+可以。 在下列情況下，不會傳送通知：
 
 * 如果通知設為每小時，而且在一小時內引發警示並加以解決
 * 作業遭到取消時

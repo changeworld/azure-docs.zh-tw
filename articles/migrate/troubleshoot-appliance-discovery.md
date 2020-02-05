@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 3f3604205d4aedffdda128ec4a6b895786245e56
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: e8d0f446442db6eeb0aec38efcc69bdf09c9b56f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772024"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990703"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>針對 Azure Migrate 設備和探索進行疑難排解
 
@@ -39,14 +39,7 @@ ms.locfileid: "76772024"
 如果設備機器位於 proxy 後方，就會發生這種情況。
 
 - 如果 proxy 需要授權認證，請務必提供這些認證。
-- 如果您使用以 URL 為基礎的防火牆 proxy 來控制輸出連線能力，請將下列 Url 新增至允許清單：
-
-    - [適用于 VMware 評估的 Url](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)
-    - [Hyper-v 評估的 Url](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v)
-    - [VMware 無代理程式遷移的 Url](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)
-    - [以 VMware 代理程式為基礎之遷移的 URL](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)
-    - [Hyper-v 遷移的 Url](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v)
-
+- 如果您使用以 URL 為基礎的防火牆 proxy 來控制輸出連線能力，請將[這些 url](migrate-appliance.md#url-access)新增至允許清單。
 - 如果您使用攔截 proxy 來連線到網際網路，請使用[這些步驟](https://docs.microsoft.com/azure/migrate/concepts-collector)將 proxy 憑證匯入至應用裝置 VM。
 
 ##  <a name="datetime-synchronization-error"></a>日期/時間同步處理錯誤

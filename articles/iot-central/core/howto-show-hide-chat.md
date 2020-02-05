@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: d861a5d1da6ebc9cedbe2dff764cd5b6e7dd04e1
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f858e0dd475361ff097f5a05ae01df2af00e4eca
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827393"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989989"
 ---
 # <a name="toggle-live-chat"></a>切換即時聊天
 
 本操作說明文章會示範如何在您的 IoT Central 應用程式中切換即時聊天。 您可以使用即時聊天來存取技術支援。
 
 > [!NOTE]
-> 聊天選項僅適用于試用訂閱。
+> 聊天選項僅適用于使用免費定價方案所建立的應用程式。
 
 ## <a name="chat-with-us"></a>與我們聊聊
 

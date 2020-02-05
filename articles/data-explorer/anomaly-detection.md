@@ -1,5 +1,5 @@
 ---
-title: Azure 中的時間序列異常偵測和預測資料總管
+title: 時間序列異常偵測 & 預測-Azure 資料總管
 description: 瞭解如何使用 Azure 資料總管分析時間序列資料，以進行異常偵測和預測。
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: 0e06569a3a6948836201b333501bf2de0416d4ca
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 4a7463d6149a921a4a29b43eaebb78a01543323a
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766033"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985820"
 ---
 # <a name="anomaly-detection-and-forecasting-in-azure-data-explorer"></a>Azure 資料總管中的異常偵測和預測
 
@@ -125,7 +125,7 @@ demo_make_series2
 
 ![時間序列擴充性](media/anomaly-detection/series-scalability.png)
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
 本檔詳述適用于時間序列異常偵測和預測的原生 Azure 資料總管功能。 每個原始時間序列會分解成季節性、趨勢和剩餘元件，以偵測異常和/或預測。 這些功能可用於近乎即時的監視案例，例如錯誤偵測、預測性維護，以及需求和負載預測。
 

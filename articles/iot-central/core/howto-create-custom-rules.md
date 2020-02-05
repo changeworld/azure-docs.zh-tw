@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 98b5cc707ca8b5ebd1ee88f02082fd3f10fa73dc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9042f3d34ee550af50e043167db6339f36b71bd0
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434993"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987589"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>使用串流分析、Azure Functions 和 SendGrid 的自訂規則擴充 Azure IoT Central
 
@@ -40,8 +40,8 @@ ms.locfileid: "75434993"
 
 | 設定 | 值 |
 | ------- | ----- |
-| 付款計劃 | 隨用隨付 |
-| 應用程式範本 | 舊版應用程式 |
+| 定價方案 | Standard |
+| 應用程式範本 | 繼承應用程式 |
 | 應用程式名稱 | 接受預設值，或選擇您自己的名稱 |
 | URL | 接受預設值，或選擇您自己唯一的 URL 前置詞 |
 | 目錄 | 您的 Azure Active Directory 租使用者 |

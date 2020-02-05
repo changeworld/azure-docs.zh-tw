@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 02/04/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b82001b8bceac620dec9f1fe6ef47f4aa81b1011
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b6c70e1a5c7e5b81157c09a794ff75e276a20d1f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425612"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982733"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自訂原則中定義自我判斷技術設定檔
 
@@ -189,15 +189,16 @@ ms.locfileid: "75425612"
 
 | 屬性 | 必要項 | 說明 |
 | --------- | -------- | ----------- |
-| setting.showContinueButton | 否 | 顯示繼續按鈕。 可能的值：`true` (預設) 或 `false` |
-| setting.showCancelButton | 否 | 顯示取消按鈕。 可能的值：`true` (預設) 或 `false` |
 | setting.operatingMode | 否 | 對於登入頁面，此屬性會控制使用者名稱欄位的行為，例如輸入驗證和錯誤訊息。 預期的值：`Username` 或 `Email`。 |
+| AllowGenerationOfClaimsWithNullValues| 否| [允許] 產生具有 null 值的宣告。 例如，在案例中，使用者不會選取核取方塊。|
 | ContentDefinitionReferenceId | 是 | 與此技術設定檔相關聯的[內容定義](contentdefinitions.md)識別碼。 |
 | EnforceEmailVerification | 否 | 針對註冊或設定檔編輯，強制執行電子郵件驗證。 可能的值：`true` (預設) 或 `false`。 |
-| setting.showSignupLink | 否 | 顯示註冊按鈕。 可能的值：`true` (預設) 或 `false` |
 | setting.retryLimit | 否 | 控制使用者可嘗試提供資料以針對驗證技術設定檔進行檢查的次數。 例如，使用者嘗試使用已經存在的帳戶進行註冊，並持續嘗試，直到達到限制為止。
 | SignUpTarget | 否 | 註冊目標交換識別碼。 當使用者按一下註冊按鈕時，Azure AD B2C 就會執行指定的交換識別碼。 |
-
+| setting.showCancelButton | 否 | 顯示取消按鈕。 可能的值：`true` (預設) 或 `false` |
+| setting.showContinueButton | 否 | 顯示繼續按鈕。 可能的值：`true` (預設) 或 `false` |
+| setting.showSignupLink | 否 | 顯示註冊按鈕。 可能的值：`true` (預設) 或 `false` |
+| 設定. forgotPasswordLinkLocation| 否| 顯示 [忘記密碼] 連結。 可能的值： `AfterInput` （預設）此連結會顯示在頁面底部，`None` 則會移除 [忘記密碼] 連結。| 
 ## <a name="cryptographic-keys"></a>密碼編譯金鑰
 
 不使用 **CryptographicKeys** 元素。

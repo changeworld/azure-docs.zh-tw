@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
-ms.openlocfilehash: d013fc257bc03d7961a4f2d5ae52d0fde12c83bb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f3c2b1aa8f41b382bea96b33108d23bf09850c78
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844070"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984756"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>什麼是 Azure Machine Learning 工作區？
 
@@ -79,7 +79,7 @@ ms.locfileid: "76844070"
 | 建立筆記本 VM |   | **&check;** | |     |
 
 > [!NOTE]
-> 計算實例僅適用于具有**美國中北部**、* * 美國東部 2 * ***、北歐**或**英國南部**的工作區。
+> 計算實例僅適用于區域為**美國中北部**、**美國東部 2**、**北歐**或**英國南部**的工作區，並支援其他即將推出的區域。
 >如果您的工作區位於任何其他區域，您可繼續建立並使用 [Notebook VM](concept-compute-instance.md#notebookvm)。
 
 ## <a name='create-workspace'></a>建立工作區
@@ -92,6 +92,9 @@ ms.locfileid: "76844070"
 * 使用[適用于 python 的 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace) ，從 Python 腳本或木星筆記本即時建立工作區
 * 當您需要使用公司安全性標準來自動化或自訂建立時，請使用[Azure Resource Manager 範本](how-to-create-workspace-template.md)或[Azure Machine Learning CLI](reference-azure-machine-learning-cli.md) 。
 * 如果您在 Visual Studio Code 中工作，請使用[VS Code 延伸](tutorial-setup-vscode-extension.md)模組。
+
+> [!NOTE]
+> 工作區名稱不區分大小寫。
 
 ## <a name="upgrade"></a>升級至 Enterprise edition
 

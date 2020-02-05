@@ -8,12 +8,12 @@ ms.date: 07/10/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: philmea
-ms.openlocfilehash: cc89033cedcdf185ce7e18c3981045e2a20569f5
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 1992b8925d5d9ba59c36452187f5b6eb510e72dc
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72952169"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990805"
 ---
 # <a name="group-multiple-actions-to-run-from-one-or-more-rules"></a>從一或多個規則將多個動作分組以執行
 
@@ -25,7 +25,7 @@ ms.locfileid: "72952169"
 
 ## <a name="prerequisites"></a>必要條件
 
-- 隨用隨付應用程式
+- 使用標準定價方案建立的應用程式
 - 用來建立和管理 Azure 監視器動作群組的 Azure 帳戶和訂用帳戶
 
 ## <a name="create-action-groups"></a>建立動作群組

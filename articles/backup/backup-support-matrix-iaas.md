@@ -3,12 +3,12 @@ title: Azure VM 備份的支援矩陣
 description: 摘要說明使用 Azure 備份服務來備份 Azure VM 時的支援設定和限制。
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 8475e90e247aa2a0c081d25486c4ada0854a9e89
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 990e97274d9e35201dfb7930167dc4f9da975d83
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705389"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988119"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 備份的支援矩陣
 
@@ -26,7 +26,7 @@ ms.locfileid: "76705389"
 
 **案例** | **Backup** | **代理程式** |**Restore**
 --- | --- | --- | ---
-直接備份 Azure VM  | 備份整個 VM。  | Azure VM 上不需要代理程式。 Azure 備份會安裝並使用在 VM 上執行的[AZURE vm 代理](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)程式的擴充功能。 | 以下列方式進行還原：<br/><br/> - **建立基本 VM**。 如果 VM 沒有任何特殊設定（例如多個 IP 位址），這會很有用。<br/><br/> - **還原 VM 磁碟**。 還原磁碟。 然後將它連結至現有的 VM，或使用 PowerShell 從磁片建立新的 VM。<br/><br/> - **取代 VM 磁碟**。 如果有 VM 存在，且該 VM 使用受控磁碟 (未加密)，您可以還原某個磁碟，並用它來取代 VM 上現有的磁碟。<br/><br/> - **還原特定檔案/資料夾**。 您可以從 VM （而不是從整個 VM）還原檔案/資料夾。
+直接備份 Azure VM  | 備份整個 VM。  | Azure VM 上不需要其他代理程式。 Azure 備份會安裝並使用在 VM 上執行的[AZURE vm 代理](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)程式的擴充功能。 | 以下列方式進行還原：<br/><br/> - **建立基本 VM**。 如果 VM 沒有任何特殊設定（例如多個 IP 位址），這會很有用。<br/><br/> - **還原 VM 磁碟**。 還原磁碟。 然後將它連結至現有的 VM，或使用 PowerShell 從磁片建立新的 VM。<br/><br/> - **取代 VM 磁碟**。 如果有 VM 存在，且該 VM 使用受控磁碟 (未加密)，您可以還原某個磁碟，並用它來取代 VM 上現有的磁碟。<br/><br/> - **還原特定檔案/資料夾**。 您可以從 VM （而不是從整個 VM）還原檔案/資料夾。
 直接備份 Azure Vm （僅限 Windows）  | 備份特定檔案/資料夾/磁片區。 | 安裝[Azure 復原服務代理程式](backup-azure-file-folder-backup-faq.md)。<br/><br/> 您可以將 MARS 代理程式與 Azure VM 代理程式的備份擴充功能一起執行，以在檔案/資料夾層級備份 VM。 | 還原特定資料夾/檔案。
 將 Azure VM 備份至備份伺服器  | 備份檔案/資料夾/磁片區;系統狀態/裸機檔案;應用程式資料至 System Center DPM 或 Microsoft Azure 備份 Server （MABS）。<br/><br/> DPM/MABS 接著會備份至備份保存庫。 | 在 VM 上安裝 DPM/MABS 保護代理程式。 在 DPM/MABS 上安装 MARS 代理程式。| 還原檔案/資料夾/磁碟區、系統狀態/裸機檔案、應用程式資料。
 
@@ -153,7 +153,7 @@ VM 大小 |至少有 2 個 CPU 核心和 1 GB RAM 的任何 Azure VM 大小。<b
 備份從自訂映射（協力廠商）部署的 Vm |支援。<br/><br/> VM 必須執行支援的作業系統。<br/><br/> 復原 VM 上的檔案時，只能還原至相容的作業系統 (而非較舊或較新版的作業系統)。
 備份遷移至 Azure 的 Vm| 支援。<br/><br/> 若要備份 VM，必須在已移轉的機器上安裝 VM 代理程式。
 備份多部 VM 一致性 | Azure 備份不會提供跨多個 Vm 的資料和應用程式一致性。
-使用[診斷設定](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview)進行備份  | 不支援。 <br/><br/> 如果使用 [[建立新](backup-azure-arm-restore-vms.md#create-a-vm)的] 選項來觸發使用診斷設定來還原 Azure VM，則還原會失敗。
+使用[診斷設定](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview)進行備份  | 不支援. <br/><br/> 如果使用 [[建立新](backup-azure-arm-restore-vms.md#create-a-vm)的] 選項來觸發使用診斷設定來還原 Azure VM，則還原會失敗。
 還原區域釘選的 Vm | 支援（適用于在2019年1月之後備份且[可用性區域](https://azure.microsoft.com/global-infrastructure/availability-zones/)可供使用的 VM）。<br/><br/>我們目前支援還原至固定在 Vm 中的相同區域。 不過，如果區域無法使用，還原將會失敗。
 Gen2 Vm | 支援的 <br> Azure 備份支援[Gen2 vm](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/)的備份與還原。 從復原點還原這些 Vm 時，它們會還原為[Gen2 vm](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/)。
 

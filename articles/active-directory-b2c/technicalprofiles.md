@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 01/29/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2e2a3dbf0ce3be28a78f04eb5bb1c369aeff1441
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: ad6b84323ac49713506bc61bd0051421e0234a94
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773442"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982274"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -84,7 +84,7 @@ ms.locfileid: "76773442"
 | 元素 | 發生次數 | 說明 |
 | ------- | ----------- | ----------- |
 | 網域 | 0:1 | 技術設定檔的網域名稱。 例如，如果您的技術設定檔指定 Facebook 識別提供者，則網域名稱為 Facebook.com。 |
-| DisplayName | 0:1 | 可向使用者顯示的技術設定檔名稱。 |
+| DisplayName | 1:1 | 可向使用者顯示的技術設定檔名稱。 |
 | 說明 | 0:1 | 可向使用者顯示的技術設定檔描述。 |
 | 通訊協定 | 0:1 | 用於與其他合作對象進行通訊的通訊協定。 |
 | 中繼資料 | 0:1 | 通訊協定使用的機碼值組，用於在交易過程中與端點通訊。 |

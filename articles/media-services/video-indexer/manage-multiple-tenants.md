@@ -13,12 +13,12 @@ ms.topic: article
 ms.custom: ''
 ms.date: 05/15/2019
 ms.author: ikbarmen
-ms.openlocfilehash: a9b75c3454c67112b0e00c7ea4b4e8c676ebcc97
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 18f2cf3daa281400151ba223e1735e7138d97e8e
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65949479"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990499"
 ---
 # <a name="manage-multiple-tenants"></a>管理多個租用戶
 
@@ -45,7 +45,7 @@ ms.locfileid: "65949479"
 * 由於每個租用戶擁有多個影片索引器 (及相關的媒體服務) 帳戶，因此難以管理。
 
 > [!TIP]
-> 在[影片索引器開發人員入口網站](https://api-portal.videoindexer.ai/)中為您的系統建立系統管理員使用者，並使用授權 API 為您的租用戶提供相關的[帳戶存取權杖](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token)。
+> 在[影片索引器開發人員入口網站](https://api-portal.videoindexer.ai/)中為您的系統建立系統管理員使用者，並使用授權 API 為您的租用戶提供相關的[帳戶存取權杖](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Account-Access-Token)。
 
 ## <a name="single-video-indexer-account-for-all-users"></a>所有使用者的單一影片索引器帳戶
 
@@ -68,7 +68,7 @@ ms.locfileid: "65949479"
 
 ## <a name="azure-subscription-per-tenant"></a>每個租用戶的 Azure 訂用帳戶 
 
-當使用這個架構，每個租用戶會有自己的 Azure 訂用帳戶。 針對每個使用者，您將在租用戶訂用帳戶中建立新的影片索引器帳戶。
+使用此架構時，每個租使用者都會有自己的 Azure 訂用帳戶。 針對每個使用者，您將在租用戶訂用帳戶中建立新的影片索引器帳戶。
 
 ![每個租用戶的 Azure 訂用帳戶](./media/manage-multiple-tenants/azure-subscription-per-tenant.png)
 

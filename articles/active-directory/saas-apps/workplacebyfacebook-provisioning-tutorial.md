@@ -15,23 +15,34 @@ ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c10171ae59772f58411997d16dc4ad1472e94e29
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 81c9d8582eb41d4a13799c42383ff22010c60577
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996930"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985152"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>教學課程：設定 Workplace by Facebook 來自動佈建使用者
 
-本教學課程旨在說明您需要在 Workplace by Facebook 和 Azure AD 中執行的步驟，以將使用者帳戶從 Azure AD 自動佈建和取消佈建至 Workplace by Facebook。
+本教學課程說明您需要在 Workplace by Facebook 和 Azure Active Directory （Azure AD）中執行的步驟，以設定自動使用者布建。 設定之後，Azure AD 會使用 Azure AD 布建服務，自動布建及取消布建使用者和群組到[Workplace By Facebook](https://work.workplace.com/) 。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../manage-apps/user-provisioning.md)。
+
+> [!NOTE]
+> Workplace by Facebook 中的 Azure AD 協力廠商應用程式已獲核准。 客戶在12月16日不會中斷服務。 當您需要轉換至新的應用程式時，您會在 Workplace by Facebook 管理主控台中看到一個附注，指出期限為 28-2-2020。 我們正努力盡可能簡單地轉換，並在此于月底的轉換中提供更新。
+
+## <a name="capabilities-supported"></a>支援的功能
+> [!div class="checklist"]
+> * 在 Workplace by Facebook 中建立使用者
+> * 當使用者不再需要存取權時，移除 Workplace by Facebook 中的使用者
+> * 在 Azure AD 與 Workplace by Facebook 之間保持使用者屬性同步
+> * [單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/workplacebyfacebook-tutorial)至 Workplace by Facebook （建議選項）
 
 ## <a name="prerequisites"></a>必要條件
 
-若要設定 Azure AD 與 Workplace by Facebook 的整合，您需要下列項目：
+本教學課程中概述的案例假設您已經具有下列必要條件：
 
-- 一個 Azure AD 訂用帳戶
-- 已啟用 Workplace by Facebook 單一登入的訂用帳戶
+* [Azure AD 租使用者](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* Azure AD 中的使用者帳戶，具有設定布建的[許可權](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)（例如，應用程式系統管理員、雲端應用程式系統管理員、應用程式擁有者或全域管理員）
+* 已啟用 Workplace by Facebook 單一登入的訂用帳戶
 
 > [!NOTE]
 > 若要測試本教學課程中的步驟，我們不建議使用生產環境。
@@ -41,68 +52,119 @@ ms.locfileid: "74996930"
 - 除非必要，否則請勿使用生產環境。
 - 如果您沒有 Azure AD 試用環境，您可以在 [這裡](https://azure.microsoft.com/pricing/free-trial/)取得一個月試用。
 
-## <a name="assigning-users-to-workplace-by-facebook"></a>將使用者指派給 Workplace by Facebook
+## <a name="step-1-plan-your-provisioning-deployment"></a>步驟 1： 規劃您的布建部署
+1. 深入瞭解布建[服務的運作方式](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。
+2. 判斷誰會在布建[範圍](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)內。
+3. 決定要[在 Azure AD 與 Workplace By Facebook 之間對應的](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)資料。
 
-Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使用者應接收對指定應用程式的存取權。 在自動使用者帳戶佈建的內容中，只有「已指派」至 Azure AD 中的應用程式之使用者和群組會進行同步處理。
+## <a name="step-2-configure-workplace-by-facebook-to-support-provisioning-with-azure-ad"></a>步驟 2： 設定 Workplace by Facebook 以支援以 Azure AD 進行布建
 
 在設定並啟用佈建服務之前，您必須決定 Azure AD 中的哪些使用者及/或群組代表需要 Workplace by Facebook 應用程式存取權的使用者。 一旦決定後，您可以依照此處的指示，將這些使用者指派給 Workplace by Facebook 應用程式︰
-
-[將使用者或群組指派給企業應用程式](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
-
-### <a name="important-tips-for-assigning-users-to-workplace-by-facebook"></a>將使用者指派給 Workplace by Facebook 的重要秘訣
 
 *   建議將單一 Azure AD 使用者指派給 Workplace by Facebook，以測試佈建設定。 其他使用者及/或群組可能會稍後再指派。
 
 *   將使用者指派給 Workplace by Facebook 時，必須選取有效的使用者角色。 「預設存取」角色不適用於佈建。
 
-## <a name="enable-user-provisioning"></a>啟用使用者佈建
+## <a name="step-3-add-workplace-by-facebook-from-the-azure-ad-application-gallery"></a>步驟 3： 從 Azure AD 應用程式庫新增 Workplace by Facebook
 
-本節會引導您將 Azure AD 連線至 Workplace by Facebook 的使用者帳戶佈建 API，以及根據 Azure AD 中的使用者和群組指派，設定佈建服務以在 Workplace by Facebook 中建立、更新和停用指派的使用者帳戶。
+從 Azure AD 應用程式庫新增 Workplace by Facebook，以開始管理布建至 Workplace by Facebook。 如果您先前已針對 SSO 設定 Workplace by Facebook，則可以使用相同的應用程式。 不過，建議您在一開始測試整合時，建立個別的應用程式。 在[這裡](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)深入瞭解如何從資源庫新增應用程式。
 
->[!Tip]
->您也可以選擇啟用 Workplace by Facebook 的 SAML 型單一登入，並遵循 [Azure 入口網站](https://portal.azure.com)中提供的指示。 可以獨立設定自動佈建的單一登入，雖然這兩個功能彼此補充。
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步驟 4： 定義將在布建範圍內的人員 
 
-### <a name="to-configure-user-account-provisioning-to-workplace-by-facebook-in-azure-ad"></a>若要在 Azure AD 中設定要佈建到 Workplace by Facebook 的使用者帳戶：
+Azure AD 布建服務可讓您根據指派給應用程式的人員，或根據使用者/群組的屬性，來界定將布建的物件。 如果您選擇根據指派將布建到您的應用程式的範圍，您可以使用下列[步驟](../manage-apps/assign-user-or-group-access-portal.md)，將使用者和群組指派給應用程式。 如果您選擇將僅根據使用者或群組的屬性布建的使用者範圍，您可以使用範圍篩選器，如[這裡](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所述。 
 
-本節旨在說明如何對 Workplace by Facebook 啟用 Active Directory 使用者帳戶的佈建。
+* 將使用者和群組指派給 Workplace by Facebook 時，您必須選取 [**預設存取**] 以外的角色。 具有預設存取角色的使用者會從布建中排除，且在布建記錄中會被標示為不有效率。 如果應用程式上唯一可用的角色是預設存取角色，您可以[更新應用程式資訊清單](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)來新增其他角色。 
 
-Azure AD 支援將指派之使用者的帳戶詳細資料自動同步處理至 Workplace by Facebook 的功能。 這個自動同步處理可讓 Workplace by Facebook 在使用者嘗試第一次登入之前，取得授權使用者存取所需的資料。 當存取在 Azure AD 中被撤銷時，它也會從 Workplace by Facebook 取消佈建使用者。
+* 從小規模開始。 在推出給所有人之前，先使用一小組的使用者和群組進行測試。 當布建的範圍設定為 [已指派的使用者和群組] 時，您可以藉由將一或兩個使用者或群組指派給應用程式來控制此項。 當 [範圍] 設定為 [所有使用者和群組] 時，您可以指定以[屬性為基礎的範圍篩選器](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。 
 
-1. 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽至 [Azure Active Directory] > [企業應用程式] > [所有應用程式] 區段。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。 選取 [**企業應用程式**]，然後選取 [**所有應用程式**]。
 
-2. 如果您已經設定單一登入的 Workplace by Facebook，使用 [搜尋] 欄位搜尋您的 Workplace by Facebook 執行個體。 否則，請選取 [新增]，並在應用程式庫中搜尋 [Workplace by Facebook]。 從搜尋結果中選取 Workplace by Facebook，並將它新增至您的應用程式清單。
+    ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-3. 選取您的 Workplace by Facebook 執行個體，然後選取 [佈建] 索引標籤。
+2. 在應用程式清單中，選取 [Workplace by Facebook]。
 
-4. 將 [佈建模式] 設定為 [自動]。 
+    ![應用程式清單中的 Workplace by Facebook 連結](common/all-applications.png)
+
+3. 選取 [佈建] 索引標籤。
+
+    ![布建索引標籤](common/provisioning.png)
+
+4. 將 [佈建模式] 設定為 [自動]。
+
+    ![布建索引標籤](common/provisioning-automatic.png)
+
+5. 在 [**管理員認證**] 區段下，按一下 [**授權**]。 系統會將您重新導向至 Workplace by Facebook 的授權頁面。 輸入您的 Workplace by Facebook 使用者名稱，然後按一下 [**繼續**] 按鈕。 按一下 [**測試連接**] 以確保 Azure AD 可以連接到 Workplace by Facebook。 如果連線失敗，請確定您的 Workplace by Facebook 帳戶具有系統管理員許可權，然後再試一次。
 
     ![佈建](./media/workplacebyfacebook-provisioning-tutorial/provisioning.png)
 
-5. 在 [管理員認證] 區段下，輸入 Workplace by Facebook 系統管理員的 [存取權杖]，並且將 [租用戶 URL] 設定為 `https://www.facebook.com/scim/v1/`。 請參閱這些[指示](https://developers.facebook.com/docs/workplace/integrations/custom-integrations/apps)，以建立工作場所的存取權杖。 
+    ![授權](./media/workplacebyfacebook-provisioning-tutorial/workplacelogin.png)
 
-6. 在 Azure 入口網站中，按一下 [測試連線]以確保 Azure AD 可以連線到您的 Workplace by Facebook 應用程式。 如果連線失敗，請確定您的 Workplace by Facebook 帳戶具有小組系統管理員權限。
+6. 在 [**通知電子郵件**] 欄位中，輸入應收到布建錯誤通知之個人或群組的電子郵件地址，然後選取 [**發生失敗時傳送電子郵件通知**] 核取方塊。
 
-7. 在 [通知電子郵件] 欄位中，輸入應收到佈建錯誤通知的個人或群組之電子郵件地址，然後勾選核取方塊。
+    ![通知電子郵件](common/provisioning-notification-email.png)
 
-8. 按一下 [儲存]。
+7. 選取 [儲存]。
 
-9. 在 [對應] 區段中，選取 [同步處理 Azure Active Directory 使用者至 Workplace by Facebook]。
+8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Workplace by Facebook**]。
 
-10. 在 [屬性對應] 區段中，檢閱從 Azure AD 同步至 Workplace by Facebook 的使用者屬性。 選取為 [比對] 屬性的屬性會用來比對 Workplace by Facebook 中的使用者帳戶以進行更新作業。 選取 [儲存] 按鈕以認可任何變更。
+9. 在 [**屬性對應**] 區段中，檢查從 Azure AD 同步到 Workplace by Facebook 的使用者屬性。 選取為 [比對] 屬性的屬性會用來比對 Workplace by Facebook 中的使用者帳戶以進行更新作業。 如果您選擇變更相符的[目標屬性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，您必須確定 Workplace BY Facebook API 支援根據該屬性來篩選使用者。 選取 [儲存] 按鈕以認可所有變更。
 
-11. 若要啟用 Workplace by Facebook 的 Azure AD 佈建服務，在 [設定] 區段中，將 [佈建狀態] 變更為 [開啟]
+   |屬性|類型|
+   |---|---|
+   |userName|String|
+   |displayName|String|
+   |作用中|Boolean|
+   |title|Boolean|
+   |emails[type eq "work"].value|String|
+   |name.givenName|String|
+   |name.familyName|String|
+   |名稱。格式化|String|
+   |位址 [類型 eq "work"]。已格式化|String|
+   |addresses[type eq "work"].streetAddress|String|
+   |位址 [類型 eq "work"]. 位置|String|
+   |位址 [類型 eq "work"]. region|String|
+   |位址 [類型 eq "work"]. country|String|
+   |addresses[type eq "work"].postalCode|String|
+   |位址 [類型 eq "other"]。已格式化|String|
+   |phoneNumbers[type eq "work"].value|String|
+   |phoneNumbers[type eq "mobile"].value|String|
+   |phoneNumbers[type eq "fax"].value|String|
+   |externalId|String|
+   |preferredLanguage|String|
+   |urn： ietf： params： scim：架構：擴充功能： enterprise：2.0： User： manager|String|
+   |urn： ietf： params： scim：架構：擴充功能： enterprise：2.0： User：部門|String|
 
-12. 按一下 [儲存]。
+10. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 
-如需有關如何設定自動佈建的詳細資訊，請參閱 [https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers](https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers)。
+11. 若要啟用 Workplace by Facebook 的 Azure AD 布建服務，請在 [**設定**] 區段中，將 [布建**狀態**] 變更為 [**開啟**]。
 
-您現在可以建立測試帳戶了。 請等候 20 分鐘以驗證帳戶已同步至 Workplace by Facebook。
+    ![佈建狀態已切換為開啟](common/provisioning-toggle-on.png)
 
-> [!NOTE]
-> Workplace by Facebook 中的 Azure AD 協力廠商應用程式已獲核准。 客戶在12月16日不會中斷服務。 當您需要轉換至新的應用程式時，您會在 Workplace by Facebook 管理主控台中看到一個附注，指出期限為 28-2-2020。 我們正努力盡可能簡單地轉換，並在此于月底的轉換中提供更新。
+12. 在 [**設定**] 區段的 [**範圍**] 中選擇所需的值，以定義您想要布建到 Workplace by Facebook 的使用者和/或群組。
+
+    ![佈建範圍](common/provisioning-scope.png)
+
+13. 當您準備好要佈建時，按一下 [儲存]。
+
+    ![儲存雲端佈建設定](common/provisioning-configuration-save.png)
+
+此作業會啟動 [**設定**] 區段的 [**範圍**] 中定義的所有使用者和群組的初始同步處理迴圈。 初始週期比後續迴圈花費更多時間執行，只要 Azure AD 布建服務正在執行，這大約每40分鐘就會發生一次。 
+
+## <a name="step-6-monitor-your-deployment"></a>步驟 6. 監視您的部署
+設定布建之後，請使用下列資源來監視您的部署：
+
+1. 使用布建[記錄](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)來判斷哪些使用者已成功布建或失敗
+2. 檢查[進度](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)列以查看布建週期的狀態，以及關閉其完成的方式
+3. 如果布建設定似乎處於狀況不良的狀態，應用程式將會進入隔離。 [在這裡](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)深入瞭解隔離狀態。
+
+## <a name="troubleshooting-tips"></a>疑難排解提示
+*  如果您看到使用者未成功建立，而且有一個具有代碼 "1789003" 的 audit 記錄事件，表示使用者來自未驗證的網域。
 
 ## <a name="additional-resources"></a>其他資源
 
-* [管理企業應用程式的使用者帳戶佈建](tutorial-list.md)
+* [管理企業應用程式的使用者帳戶佈建](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
-* [設定單一登入](workplacebyfacebook-tutorial.md)
+
+## <a name="next-steps"></a>後續步驟
+
+* [瞭解如何針對佈建活動檢閱記錄和取得報告](../manage-apps/check-status-user-account-provisioning.md)

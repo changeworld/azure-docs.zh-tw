@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 742cb76f491e76db6dc9ec415c6718066b46f137
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 06fdb9733ad9c173c88936e5502214b58f5d10ee
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911086"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985912"
 ---
 # <a name="interact-with-the-map"></a>與地圖互動
 
-本文說明如何使用 [[對應類別事件](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?#events)] 屬性來反白顯示地圖上的事件和地圖的不同圖層。 此外，也會示範如何使用地圖類別事件屬性來醒目提示您與 HTML 標記互動時的事件。
+本文說明如何使用[map 事件類別](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?#events)。 屬性會反白顯示地圖上的事件和地圖的不同圖層。 您也可以在與 HTML 標籤互動時，反白顯示事件。
 
 ## <a name="interact-with-the-map"></a>與地圖互動
 
-請使用下面的地圖來播放，並查看右邊反白顯示的對應滑鼠事件。 您可以按一下 [JS] 索引標籤來檢視和編輯 JavaScript 程式碼。 您也可以按一下 [在 CodePen 上編輯] 按鈕，並在 CodePen 上編輯程式碼。
+請使用下面的地圖來播放，並查看右邊反白顯示的對應滑鼠事件。 您可以按一下 [JS] 索引標籤來檢視和編輯 JavaScript 程式碼。 您也可以按一下 [在**CodePen 上編輯**]，以修改 CodePen 上的程式碼。
 
 <br/>
 
@@ -31,7 +31,7 @@ ms.locfileid: "75911086"
 
 ## <a name="interact-with-map-layers"></a>與地圖圖層互動
 
-下列程式碼會反白顯示當您與符號層互動時所引發的事件名稱。 符號、反升、線條和多邊形圖層都支援相同的事件集。 熱度圖和磚圖層不支援任何這些事件。
+下列程式碼會在您與符號層互動時，反白顯示引發的事件。 符號、反升、線條和多邊形圖層都支援相同的事件集。 熱度圖和磚圖層不支援任何這些事件。
 
 <br/>
 

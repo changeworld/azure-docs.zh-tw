@@ -4,18 +4,18 @@ description: 如何使用 Azure 入口網站來管理及更新 Azure HPC 快取
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 1/08/2020
+ms.date: 1/29/2020
 ms.author: rohogue
-ms.openlocfilehash: a166a904b2e63419efd5803fd54be1d1b59836fb
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 9ad6348e15c8a25f721a89be7eab3e17c58ae17c
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867089"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988831"
 ---
 # <a name="manage-your-cache-from-the-azure-portal"></a>從 Azure 入口網站管理您的快取
 
-Azure 入口網站中的 快取總覽 頁面會顯示您快取的專案詳細資料、快取狀態和基本統計資料。 它也具有可刪除快取、將資料排清至長期儲存或更新軟體的控制項。
+Azure 入口網站中的 快取總覽 頁面會顯示您快取的專案詳細資料、快取狀態和基本統計資料。 它也有控制項可以停止或啟動快取、刪除快取、將資料排清至長期儲存區，以及更新軟體。
 
 若要開啟 總覽 頁面，請在 Azure 入口網站中選取您的快取資源。 例如，載入 [**所有資源**] 頁面，然後按一下快取名稱。
 
@@ -23,12 +23,29 @@ Azure 入口網站中的 快取總覽 頁面會顯示您快取的專案詳細資
 
 頁面頂端的按鈕可協助您管理快取：
 
+* **啟動**和[**停止**](#stop-the-cache)-暫停快取作業
 * [**Flush**](#flush-cached-data) -將變更的資料寫入儲存體目標
 * [**升級**](#upgrade-cache-software)-更新快取軟體
 * 重新**整理-重載**[總覽] 頁面
 * [**刪除**](#delete-the-cache)-永久終結快取
 
 如需這些選項的詳細資訊，請參閱下方。
+
+## <a name="stop-the-cache"></a>停止快取
+
+您可以停止快取，以降低非使用中期間的成本。 當快取停止時，您不需支付執行時間費用，但會向您收取快取已配置磁片儲存體的費用。 （如需詳細資訊，請參閱[定價](https://aka.ms/hpc-cache-pricing)頁面）。
+
+已停止的快取不會回應用戶端要求。 您應該先卸載用戶端，然後再停止快取。
+
+[**停止**] 按鈕會暫停作用中的快取。 當快取狀態為 [**狀況良好**] 或 [**降級**] 時，就可以使用 [**停止**] 按鈕。
+
+![具有 [停止] 反白顯示之頂端按鈕的螢幕擷取畫面，以及描述停止動作並詢問「您要繼續嗎？」的快顯訊息 具有 [是] （預設值）和 [無] 按鈕](media/stop-cache.png)
+
+當您按一下 [是] 確認停止快取之後，快取會自動將其內容排清到儲存體目標。 此程式可能需要一些時間，但可確保資料的一致性。 最後，快取狀態會變更為 [**已停止**]。
+
+若要重新開機已停止的快取，請按一下 [**開始**] 按鈕。 不需要確認。
+
+![[開始] 反白顯示之頂端按鈕的螢幕擷取畫面](media/start-cache.png)
 
 ## <a name="flush-cached-data"></a>清除快取的資料
 
@@ -68,13 +85,14 @@ Azure 入口網站中的 快取總覽 頁面會顯示您快取的專案詳細資
 > [!NOTE]
 > 在刪除快取之前，Azure HPC 快取不會自動將已變更的資料從快取寫入後端儲存體系統。
 >
-> 若要確保快取中的所有資料都已寫入長期儲存體，請遵循此程式：
+> 若要確定快取中的所有資料都已寫入長期儲存體，請先[停止](#stop-the-cache)快取，再刪除它。 請確定它顯示狀態為 [**已停止**]，然後再按一下 [刪除] 按鈕。
+<!--... written to long-term storage, follow this procedure:
 >
-> 1. 使用 [儲存體目標] 頁面上的 [刪除] 按鈕，從 Azure HPC 快[取中移除](hpc-cache-edit-storage.md#remove-a-storage-target)每個儲存體目標。 系統會在移除目標之前，自動將任何已變更的資料從快取寫入後端儲存體系統。
-> 1. 等待儲存體目標完全移除。 如果要從快取寫入大量資料，此程式可能需要一小時或更久的時間。 完成時，入口網站通知會指出刪除作業已成功，且儲存體目標會從清單中消失。
-> 1. 刪除所有受影響的儲存體目標之後，即可放心地刪除快取。
+> 1. [Remove](hpc-cache-edit-storage.md#remove-a-storage-target) each storage target from the Azure HPC Cache by using the delete button on the Storage targets page. The system automatically writes any changed data from the cache to the back-end storage system before removing the target.
+> 1. Wait for the storage target to be completely removed. The process can take an hour or longer if there is a lot of data to write from the cache. When it is done, a portal notification says that the delete operation was successful, and the storage target disappears from the list.
+> 1. After all affected storage targets have been deleted, it is safe to delete the cache.
 >
-> 或者，您可以使用 [[清除](#flush-cached-data)] 選項來儲存快取的資料，但如果用戶端在排清完成之後，但在終結快取實例之前，將變更寫入快取，則會有一個小風險。
+> Alternatively, you can use the [flush](#flush-cached-data) option to save cached data, but there is a small risk of losing work if a client writes a change to the cache after the flush completes but before the cache instance is destroyed.-->
 
 ## <a name="cache-metrics-and-monitoring"></a>快取計量和監視
 

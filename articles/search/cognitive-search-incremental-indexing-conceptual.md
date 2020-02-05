@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 285b3608bc57d88ca2e81ed14355923436ed9d8d
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: f0e7c3bbbdcd1edad24422163fde38e3fdce7e27
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028521"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988646"
 ---
 # <a name="introduction-to-incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Azure 認知搜尋中的增量擴充和快取簡介
 
@@ -97,7 +97,7 @@ PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-versi
 
 快取的目的是要避免不必要的處理，但假設您變更了索引子無法偵測的技能（例如，變更外部程式碼中的某個專案，例如自訂技能）。
 
-在此情況下，您可以使用[重設技能](preview-api-resetskills.md)來強制重新處理特定技能，包括任何相依于該技能輸出的下游技能。 此 API 會接受 POST 要求，其中包含應失效並標示為重新處理的技能清單。 重設技能之後，請執行索引子來叫用管線。
+在此情況下，您可以使用[重設技能](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/reset-skills)來強制重新處理特定技能，包括任何相依于該技能輸出的下游技能。 此 API 會接受 POST 要求，其中包含應失效並標示為重新處理的技能清單。 重設技能之後，請執行索引子來叫用管線。
 
 ## <a name="change-detection"></a>變更偵測
 
@@ -136,39 +136,27 @@ PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-versi
 * 變更知識存放區投射，導致文件重新投射
 * 索引子的輸出欄位對應已變更，導致文件重新投射至索引
 
-## <a name="api-reference-content-for-incremental-enrichment"></a>累加式擴充的 API 參考內容
+## <a name="api-reference"></a>API 參考
 
-REST `api-version=2019-05-06-Preview` 提供適用于累加擴充的 Api，以及索引子、技能集和資料來源的新增專案。 [官方參考檔](https://docs.microsoft.com/rest/api/searchservice/)適用于正式運作的 api，並不涵蓋預覽功能。 下一節提供受影響 Api 的參考內容。
+REST API 版本 `2019-05-06-Preview` 會透過索引子、技能集和資料來源上的其他屬性提供累加擴充。 除了參考檔之外，如需如何呼叫 Api 的詳細資訊，請參閱[設定增量擴充](search-howto-incremental-index.md)的快取。
 
-如需用法資訊和範例，請參閱設定快取[以進行累加式擴充](search-howto-incremental-index.md)。
++ [建立索引子（api 版本 = 2019-05 06-01.5.1-Preview）](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-indexer) 
 
-### <a name="indexers"></a>索引工具
++ [更新索引子（api 版本 = 2019-05 06-01.5.1-Preview）](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-indexer) 
 
-[建立索引子](https://docs.microsoft.com/rest/api/searchservice/create-indexer)和[更新索引子](https://docs.microsoft.com/rest/api/searchservice/update-indexer)現在會公開與快取相關的新屬性：
++ [Update 技能集（api 版本 = 2019-05 06-01.5.1-Preview）](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-skillset) （要求上的新 URI 參數）
 
-+ `StorageAccountConnectionString`：將用來快取中繼結果之儲存體帳戶的連接字串。
++ [重設技能（api 版本 = 2019-05 06-01.5.1-Preview）](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/reset-skills)
 
-+ `EnableReprocessing`：設定為 [`false`] 時，預設為 [`true`]，檔會繼續寫入快取，但不會根據快取資料重新處理任何現有的檔。
++ 資料庫索引子（Azure SQL、Cosmos DB）。 某些索引子會透過查詢抓取資料。 若為抓取資料的查詢，[更新資料來源](https://docs.microsoft.com/rest/api/searchservice/update-data-source)支援要求**ignoreResetRequirement**上的新參數，當您的更新動作不應使快取失效時，應該將其設定為 `true`。 
 
-+ `ID` （唯讀）： `ID` 是 `annotationCache` 儲存體帳戶內的容器識別碼，將作為此索引子的快取使用。 此快取對此索引子而言將是唯一的，而且，如果刪除索引子並使用相同的名稱加以重新建立，則會重新產生 `ID`。 `ID` 無法設定，它一律會由服務產生。
-
-### <a name="skillsets"></a>技能集
-
-+ [Update 技能集](https://docs.microsoft.com/rest/api/searchservice/update-skillset)支援要求上的新參數： `disableCacheReprocessingChangeDetection`，當您不想要根據目前的動作來更新現有的檔時，應該設定為 [`true`]。
-
-+ [重設技能](preview-api-resetskills.md)是用來使技能集失效的新作業。
-
-### <a name="datasources"></a>資料來源
-
-+ 某些索引子會透過查詢抓取資料。 若為抓取資料的查詢，[更新資料來源](https://docs.microsoft.com/rest/api/searchservice/update-data-source)支援要求 `ignoreResetRequirement`的新參數，當您的更新動作不應使快取無效時，應該將其設定為 `true`。
-
-請謹慎使用 `ignoreResetRequirement`，因為它可能會導致不容易偵測到的資料中發生非預期的不一致。
+  請謹慎使用**ignoreResetRequirement** ，因為它可能會導致不容易偵測到的資料中發生非預期的不一致。
 
 ## <a name="next-steps"></a>後續步驟
 
-累加式擴充是一項強大的功能，可將變更追蹤延伸至技能集和 AI 擴充。 隨著技能集的演變，增量擴充可確保最少的工作完成，同時仍能讓您的檔達到最終一致性。
+累加式擴充是一項強大的功能，可將變更追蹤延伸至技能集和 AI 擴充。 AIncremental 擴充可讓您在反復執行技能集設計時重複使用現有已處理的內容。
 
-開始使用，方法是在定義新的索引子時，將快取新增至現有的索引子或是新增快取。
+下一個步驟是在定義新的索引子時，在現有的索引子上啟用快取，或加入快取。
 
 > [!div class="nextstepaction"]
 > [設定增量擴充的快取](search-howto-incremental-index.md)

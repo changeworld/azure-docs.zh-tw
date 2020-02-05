@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/27/2019
+ms.date: 02/03/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 639277177bf63e659e5b0ea804eca5e20f956831
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 98d9730168764f0ba683a246f9ac224c13d3bf31
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74948826"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982801"
 ---
 # <a name="general-claims-transformations"></a>一般宣告轉換
 
@@ -24,14 +24,43 @@ ms.locfileid: "74948826"
 
 本文提供在 Azure Active Directory B2C （Azure AD B2C）中使用 Identity Experience Framework 架構之一般宣告轉換的範例。 如需詳細資訊，請參閱 [ClaimsTransformations](claimstransformations.md)。
 
+## <a name="copyclaim"></a>CopyClaim
+
+將宣告的值複製到另一個。 這兩個宣告必須來自相同的類型。
+
+| 項目 | TransformationClaimType | 資料類型 | 注意 |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputClaim | string、int | 要複製的宣告類型。 |
+| OutputClaim | outputClaim | string、int | 叫用此 ClaimsTransformation 之後所產生的 ClaimType。 |
+
+使用此宣告轉換，將字串或數值宣告中的值複製到另一個宣告。 下列範例會將 externalEmail 宣告值複製到電子郵件宣告。
+
+```XML
+<ClaimsTransformation Id="CopyEmailAddress" TransformationMethod="CopyClaim"> 
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="externalEmail" TransformationClaimType="inputClaim"/>
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="email" TransformationClaimType="outputClaim"/>
+  </OutputClaims>         
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>範例
+
+- 輸入宣告：
+    - **inputClaim**：bob@contoso.com
+- 輸出宣告：
+    - **outputClaim**：bob@contoso.com 
+
 ## <a name="doesclaimexist"></a>DoesClaimExist
 
 檢查 **inputClaim** 是否存在，並據以將 **outputClaim** 設定為 True 或 False。
 
-| Item | TransformationClaimType | 資料類型 | 注意 |
+| 項目 | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim |任意 | 必須驗證其存在的輸入宣告。 |
-| OutputClaim | outputClaim | 布林值 | 叫用此 ClaimsTransformation 之後所產生的 ClaimType。 |
+| OutputClaim | outputClaim | boolean | 叫用此 ClaimsTransformation 之後所產生的 ClaimType。 |
 
 使用此宣告轉換來檢查某個宣告是否存在或包含任何值。 傳回值是布林值，會指出宣告是否存在。 下列範例會檢查電子郵件地址是否存在。
 
@@ -57,7 +86,7 @@ ms.locfileid: "74948826"
 
 使用 salt 和祕密，針對提供的純文字進行雜湊處理。 使用的雜湊演算法是 SHA-256。
 
-| Item | TransformationClaimType | 資料類型 | 注意 |
+| 項目 | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | plaintext | string | 要加密的輸入宣告 |
 | InputClaim | salt | string | Salt 參數。 您可以使用 `CreateRandomString` 宣告轉換來建立隨機值。 |

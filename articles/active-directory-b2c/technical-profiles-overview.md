@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 03/02/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 100f059f7c9f18ab6920f50c850b3b8d5a617908
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 69582291ca1da95003e26a6922899defd7d5e477
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840191"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982393"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>關於 Azure Active Directory B2C 自訂原則中的技術設定檔
 
@@ -40,6 +40,7 @@ ms.locfileid: "76840191"
 - [自我判斷](self-asserted-technical-profile.md) - 與使用者進行互動。 例如，收集使用者的認證以進行登入、呈現註冊頁面或密碼重設。
 - [工作階段管理](custom-policy-reference-sso.md) - 處理各種不同類型的工作階段。
 - **Application Insights**
+- 單次[密碼](one-time-password-technical-profile.md)-提供管理單次密碼的產生和驗證的支援。 
 
 ## <a name="technical-profile-flow"></a>技術設定檔流程
 

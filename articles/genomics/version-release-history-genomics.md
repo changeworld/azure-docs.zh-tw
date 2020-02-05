@@ -9,22 +9,25 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: conceptual
 ms.date: 01/11/2019
-ms.openlocfilehash: 03bbbed53cd0494e8507a156d0fadac8dcd4297a
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 20475e2cde1b42790740889cf341b3a0a0afccc0
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249145"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76991077"
 ---
 # <a name="version-release-history"></a>版本發行歷程記錄
 Microsoft Genomics 小組會定期更新 Microsoft Genomics Python 用戶端，以進行修正並推出新功能。 
 
 ## <a name="latest-release"></a>最新版本
-目前的 Python 用戶端是 0.8.1 版。 此版本已在 2018 年 12 月 3 日發行，並支援使用 GATK 3.5 和 GATK4 來執行工作流程。 它也支援 gVCF 輸出。
+目前的 Python 用戶端為版本0.9.0。 它是在 6 2019 年2月發行，並支援使用 GATK 3.5 和 GATK4 來執行工作流程。 它支援 gVCF 輸出，而且可以接受選擇性引數來進行輸出壓縮。
 
 
-## <a name="release-history"></a>發行歷程記錄 
-Microsoft Genomics Python 用戶端大約每年會發行兩個新版本。 新版 Microsoft Genomics Python 用戶端發行時，此處就會更新修正程式和功能的清單。 新版本發行時，舊版本應該會繼續支援至少 90 天。 當舊版停止支援時，此頁面便會指出這一點。 
+## <a name="release-history"></a>版本歷程記錄 
+Microsoft Genomics Python 用戶端的新版本每年發行一次。 新版 Microsoft Genomics Python 用戶端發行時，此處就會更新修正程式和功能的清單。 新版本發行時，舊版本應該會繼續支援至少 90 天。 當舊版停止支援時，此頁面便會指出這一點。 
+
+### <a name="version-090"></a>版本0.9。0
+版本0.9.0 包含輸出壓縮的支援。 這相當於執行 `-bgzip`，然後在 [.vcf] 或 [gvcf] 輸出上 `-tabix`。 如需詳細資訊，請參閱[常見問題](frequently-asked-questions-genomics.md)。 
 
 ### <a name="version-081"></a>0\.8.1 版
 0\.8.1 版包含次要錯誤 (bug) 的修正。  

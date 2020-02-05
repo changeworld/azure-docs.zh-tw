@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
-ms.date: 11/19/2019
-ms.openlocfilehash: 4f1fe1ea031cd7831ffb24ee4302d6834a8d9976
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 02/03/2019
+ms.openlocfilehash: 305af8e8acd7e7a54fae8c831d36bee0aad4ad6b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981894"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990975"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL 透明資料加密與客戶管理的金鑰
 
@@ -124,7 +124,7 @@ Azure SQL[透明資料加密（TDE）](https://docs.microsoft.com/sql/relational
 
 - 如果在8小時內還原金鑰存取，資料庫將會在下一個小時內自動修復。
 
-- 如果在超過8個小時後還原金鑰存取，則無法自動修復，而且視資料庫的大小而定，資料庫可能需要相當長的時間，而且需要開啟支援票證。 一旦資料庫恢復上線，先前設定的伺服器層級設定（例如[容錯移轉群組](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group)設定、時間點還原歷程記錄，以及標記）將會遺失。 因此，建議您執行通知系統，讓您在8小時內識別並處理基礎金鑰存取問題。
+- 如果在超過8個小時後還原金鑰存取，則不可能自動修復，並且讓資料庫返回入口網站上需要額外的步驟，視資料庫的大小而定，可能需要相當長的時間。 一旦資料庫恢復上線，先前設定的伺服器層級設定（例如[容錯移轉群組](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group)設定、時間點還原歷程記錄，以及標記）將會**遺失**。 因此，建議您執行通知系統，讓您在8小時內識別並處理基礎金鑰存取問題。
 
 ### <a name="accidental-tde-protector-access-revocation"></a>意外 TDE 保護裝置存取撤銷
 

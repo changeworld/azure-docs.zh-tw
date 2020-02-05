@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: 246af99cfec5ca41347da70e80bfc6dfff448eb3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f17b4ee0e4ce79cd12a6fda6f056b4e63b4161c9
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75368030"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76991026"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 虛擬網路中的資源名稱解析
 
@@ -31,13 +31,13 @@ ms.locfileid: "75368030"
 您使用的名稱解析類型取決於資源如何彼此通訊。 下表說明各種案例和對應的名稱解析解決方案：
 
 > [!NOTE]
-> 視您的案例而定，您可以使用「Azure DNS 私人區域」功能，該功能目前處於公開預覽狀態。 如需詳細資訊，請參閱[使用私人網域的 Azure DNS](../dns/private-dns-overview.md)。
+> 視您的案例而定，您可能會想要使用 Azure DNS 私人區域。 如需詳細資訊，請參閱[使用私人網域的 Azure DNS](../dns/private-dns-overview.md)。
 >
 
 | **案例** | **方案** | **尾碼** |
 | --- | --- | --- |
-| 相同虛擬網路內的 VM 之間或相同雲端服務的 Azure 雲端服務角色執行個體之間所進行的名稱解析。 | [Azure DNS 私人區域](../dns/private-dns-overview.md)或 [Azure 提供的名稱解析](#azure-provided-name-resolution) |主機名稱或 FQDN |
-| 不同虛擬網路的 VM 之間或不同雲端服務的角色執行個體之間所進行的名稱解析。 |[Azure DNS 私人區域](../dns/private-dns-overview.md)，或客戶受控的 DNS 伺服器將虛擬網路之間的查詢轉送供 Azure (DNS Proxy) 解析。 請參閱[使用專屬 DNS 伺服器的名稱解析](#name-resolution-that-uses-your-own-dns-server)。 |僅 FQDN |
+| 相同虛擬網路內的 VM 之間或相同雲端服務的 Azure 雲端服務角色執行個體之間所進行的名稱解析。 | [Azure DNS 私人區域](../dns/private-dns-overview.md)或[Azure 提供的名稱解析](#azure-provided-name-resolution) |主機名稱或 FQDN |
+| 不同虛擬網路的 VM 之間或不同雲端服務的角色執行個體之間所進行的名稱解析。 |[Azure DNS 私人區域](../dns/private-dns-overview.md)或，客戶管理的 DNS 伺服器會在虛擬網路之間轉送查詢，以供 AZURE （DNS proxy）解析。 請參閱[使用專屬 DNS 伺服器的名稱解析](#name-resolution-that-uses-your-own-dns-server)。 |僅 FQDN |
 | 從使用虛擬網路整合的 Azure App Service (Web App、Function 或 Bot) 將名稱解析相同虛擬網路中的角色執行個體或 VM。 |客戶管理的 DNS 伺服器將虛擬網路之間的查詢轉送供 Azure (DNS Proxy) 解析。 請參閱[使用專屬 DNS 伺服器的名稱解析](#name-resolution-that-uses-your-own-dns-server)。 |僅 FQDN |
 | 從 App Service Web Apps 將名稱解析到相同虛擬網路中的 VM。 |客戶管理的 DNS 伺服器將虛擬網路之間的查詢轉送供 Azure (DNS Proxy) 解析。 請參閱[使用專屬 DNS 伺服器的名稱解析](#name-resolution-that-uses-your-own-dns-server)。 |僅 FQDN |
 | 從某個虛擬網路的 App Service Web Apps 將名稱解析到不同虛擬網路中的 VM。 |客戶管理的 DNS 伺服器將虛擬網路之間的查詢轉送供 Azure (DNS Proxy) 解析。 請參閱[使用專屬 DNS 伺服器的名稱解析](#name-resolution-that-uses-your-own-dns-server)。 |僅 FQDN |

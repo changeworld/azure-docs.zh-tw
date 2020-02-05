@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: b5875d0672fc187920883abe208ad30c4d2b1051
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 77b95806c2040e7950e1133fcc4c7bc5e0e2ab53
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898547"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989598"
 ---
 # <a name="azure-maps-weather-coverage"></a>Azure 地圖服務氣象涵蓋範圍
 
-本文提供 Azure 地圖服務[氣象服務](https://aka.ms/AzureMapsWeatherService)的涵蓋範圍資訊。 Azure 地圖服務氣象資料服務可以傳回如雷達圖、目前天氣狀況、天氣預測及路線中天氣的詳細資訊。
+本文提供 Azure 地圖服務[氣象服務](https://aka.ms/AzureMapsWeatherService)的涵蓋範圍資訊。 Azure 地圖服務氣象資料服務會傳回如雷達圖、目前天氣狀況、天氣預測，以及沿著路線的天氣等詳細資訊。
 
 Azure 地圖服務對於所有國家/地區沒有相同層級的資訊和精確度。
 

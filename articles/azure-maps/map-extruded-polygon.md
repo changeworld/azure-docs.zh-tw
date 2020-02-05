@@ -9,21 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 36914240caf3c1321dfa0102bd87cb29173f8b1d
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: f01e07ea2bbfd0f6b3b0cc19dd219d71984a0d45
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911060"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988561"
 ---
 # <a name="add-a-polygon-extrusion-layer-to-the-map"></a>將多邊形延伸圖層新增至地圖
 
-本文說明如何使用多邊形的 [延伸圖層] 來轉譯 `Polygon` 的區域，並 `MultiPolygon` 特徵幾何繪製為地圖上的凸出形狀。 Azure 地圖服務 Web SDK 也支援建立 Circle 幾何，如[擴充 GeoJSON 架構](extend-geojson.md#circle)中所定義。 在地圖上轉譯時，這些圓形會轉換成多邊形。 如果包裝了，所有功能幾何也可以輕鬆地更新[。Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest)類別。
-
+本文說明如何使用多邊形的 [延伸圖層] 來轉譯 `Polygon` 的區域，並 `MultiPolygon` 特徵幾何呈現為拉伸的圖形。 Azure 地圖服務 Web SDK 支援以[擴充 GeoJSON 架構](extend-geojson.md#circle)中所定義的方式呈現圓形幾何。 在地圖上轉譯時，可以將這些圓形轉換成多邊形。 以阿特拉斯包裝時，可以輕鬆地更新所有功能幾何[。Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest)類別。
 
 ## <a name="use-a-polygon-extrusion-layer"></a>使用多邊形延伸圖層
 
-當[多邊形拉伸圖層](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer?view=azure-maps-typescript-latest)連接到資料來源並載入地圖上時，它會將 `Polygon` 的區域和 `MultiPolygon` 特徵轉譯為拉伸的圖形。 多邊形拉伸圖層的 [`height`] 和 [`base`] 屬性，會定義從拉伸圖形的地面和高度到量（以度量為**單位**）的基底距離。 下列程式碼示範如何建立多邊形、將它加入至資料來源，並使用多邊形的 [延伸層] 類別來呈現它。
+將[多邊形的延伸圖層](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer?view=azure-maps-typescript-latest)連接至資料來源。 然後，將它載入對應上。 多邊形的 [區域分布圖層] 會將 `Polygon` 的區域和 `MultiPolygon` 功能呈現為拉伸的圖形。 多邊形拉伸圖層的 [`height`] 和 [`base`] 屬性，會定義從拉伸圖形的地面和高度到量（以度量為**單位**）的基底距離。 下列程式碼示範如何建立多邊形、將它加入至資料來源，並使用多邊形的 [延伸層] 類別來呈現它。
 
 > [!Note]
 > 多邊形延伸層中所定義的 `base` 值應該小於或等於 `height`。
@@ -34,9 +33,9 @@ ms.locfileid: "75911060"
 請參閱<a href='https://codepen.io'>CodePen</a>上的 Azure 地圖服務（<a href='https://codepen.io/azuremaps'>@azuremaps</a>）的畫筆已<a href='https://codepen.io/azuremaps/pen/wvvBpvE'>拉伸多邊形</a>。</iframe>
 
 
-## <a name="add-data-driven-multipolygons"></a>新增資料驅動 multipolygons
+## <a name="add-data-driven-polygons"></a>新增資料驅動的多邊形
 
-分級著色圖地圖可以使用多邊形延伸圖層來轉譯，方法是設定其 `height` 和 `fillColor` 屬性，與 `Polygon` 和 `MultiPolygon` 功能幾何中統計變數的測量比例成正比。 下列程式碼範例會根據州的人口密度測量，顯示分級著色圖的拉伸對應。
+分級著色圖地圖可以使用多邊形的 [延伸圖層] 來呈現。 將 `height` 和 `fillColor` 的延伸圖層屬性設定為 `Polygon` 和 `MultiPolygon` 功能幾何中統計變數的測量。 下列程式碼範例會根據州的人口密度測量，顯示分級著色圖的拉伸對應。
 
 <br/>
 
@@ -62,7 +61,7 @@ Azure 地圖服務會使用 GeoJSON 架構的擴充版本，如[這裡](https://
 } 
 ```
 
-Azure 地圖服務 Web SDK 會將這些 `Point` 功能轉換成幕後的 `Polygon` 功能，並可使用多邊形的延伸層在地圖上轉譯，如下列程式碼範例所示。
+Azure 地圖服務的 Web SDK 會將這些 `Point` 功能轉換成幕後的 `Polygon` 功能。 這些 `Point` 功能可以使用多邊形的 [延伸圖層] 在地圖上轉譯，如下列程式碼範例所示。
 
 <br/>
 
@@ -72,7 +71,7 @@ Azure 地圖服務 Web SDK 會將這些 `Point` 功能轉換成幕後的 `Polygo
 
 ## <a name="customize-a-polygon-extrusion-layer"></a>自訂多邊形的延伸圖層
 
-多邊形的 [延伸] 圖層會有數個樣式選項。 以下是可讓您試用這些選項的工具。
+多邊形的 [延伸圖層] 有數個樣式選項。 以下是可讓您試用這些選項的工具。
 
 <br/>
 

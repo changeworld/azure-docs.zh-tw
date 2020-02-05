@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 6bfbbb38d164dcb179541084de3ffeb89f44668d
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: e985fdda4638529e8ade2c700456d595ff355e8a
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911323"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988731"
 ---
 # <a name="use-the-azure-maps-services-module"></a>使用 Azure 地圖服務 services 模組
 
@@ -31,7 +31,7 @@ Azure 地圖服務 Web SDK 提供*服務模組*。 此模組是協助程式程�
 
     - 或者，使用[Azure 對應-rest](https://www.npmjs.com/package/azure-maps-rest) npm 套件，在本機載入 AZURE 地圖服務 Web SDK 原始程式碼的服務模組，然後將它裝載在您的應用程式中。 此套件也包含 TypeScript 定義。 使用此命令：
     
-        > **npm install azure-maps-rest**
+        > **npm 安裝 azure-地圖服務-rest**
     
         然後，將腳本參考新增至檔案的 `<head>` 元素：
 

@@ -3,12 +3,12 @@ title: 支援 Azure Migrate 的實體伺服器評估
 description: 瞭解 Azure Migrate 的實體伺服器評估支援。
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 489f95bbbbeb261b56f1a3a86da44f5fcce0adf5
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f2698d0ff046147599a8c5c791a0980a54090932
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846565"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990329"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>實體伺服器評估的支援矩陣 
 
@@ -38,7 +38,7 @@ ms.locfileid: "76846565"
 | **支援**                | **詳細資料**               
 | :-------------------       | :------------------- |
 | **實體伺服器部署**       | 實體伺服器可以是獨立或部署在叢集中。 |
-| **權限**           | **Windows：** 在您要包含在探索中的所有 Windows 伺服器上設定本機使用者帳戶。 使用者帳戶必須新增至這些群組-遠端桌面使用者、效能監視器使用者和效能記錄使用者。 <br/> **Linux：** 您在要探索的 Linux 伺服器上需要根帳號。 |
+| **權限**           | **Windows：** 在您要包含在探索中的所有 Windows 伺服器上，設定本機或網域使用者帳戶。 使用者帳戶必須新增至這些群組-遠端桌面使用者、效能監視器使用者和效能記錄使用者。 <br/> **Linux：** 您在要探索的 Linux 伺服器上需要根帳號。 |
 | **作業系統** | 除了下列以外，所有的[Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)和[Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)作業系統都受到支援：<br/> Windows Server 2003 <br/> SUSE Linux|
 
 

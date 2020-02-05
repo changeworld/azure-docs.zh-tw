@@ -6,14 +6,14 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/11/2019
+ms.date: 02/2/2020
 ms.custom: seodec18
-ms.openlocfilehash: cf6b94418516f681bf6c782fe02f3434faa5374e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e58e36b3caa5a5ecd137cb9cb61dad7ddb95ff3a
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426286"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986983"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure 串流分析輸出至 Azure Cosmos DB  
 Azure 串流分析可以將 JSON 輸出的目標設為[Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) ，針對非結構化 JSON 資料啟用資料封存和低延遲查詢。 本文件涵蓋實作這種組態的一些最佳作法。
@@ -97,7 +97,7 @@ Azure Cosmos DB 會根據您的工作負載自動調整資料分割。 因此，
 
 使用1.2，串流分析在 Azure Cosmos DB 中使用100% 的可用輸送量更為聰明，只有節流或速率限制的 resubmissions。 這可為其他工作負載（例如在容器上執行的查詢）提供更好的體驗。 如果您想要查看串流分析如何使用 Azure Cosmos DB 作為每秒1000到10000個訊息的接收器來相應放大，請嘗試[此 Azure 範例專案](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb)。
 
-Azure Cosmos DB 輸出的輸送量與1.0 和1.1 相同。 由於1.2 目前不是預設值，因此您可以使用入口網站或使用[建立串流分析作業 REST API 呼叫](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-job)來設定串流分析作業[的相容性層級](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level)。 我們*強烈建議*您在 Azure Cosmos DB 的串流分析中使用相容性層級1.2。
+Azure Cosmos DB 輸出的輸送量與1.0 和1.1 相同。 我們*強烈建議*您在 Azure Cosmos DB 的串流分析中使用相容性層級1.2。
 
 ## <a name="azure-cosmos-db-settings-for-json-output"></a>JSON 輸出的 Azure Cosmos DB 設定
 

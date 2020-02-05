@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 07/29/2019
+ms.date: 02/03/2020
 ms.author: juliako
-ms.openlocfilehash: b9fb15fc9f3dc51a0df40a4ccb738a97d4558dff
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: ed3e2cf9830e3776886e662fd27f43f76728d6b2
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76545886"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988714"
 ---
 # <a name="embed-video-indexer-widgets-in-your-applications"></a>在您的應用程式中內嵌影片索引子小工具
 
@@ -86,9 +86,9 @@ ms.locfileid: "76545886"
     
 若要取得認知深入解析小工具內容，請使用下列其中一項：<br/>
 - [取得深入解析 Widget](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) API。<br/>
-- [取得影片存取權杖](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?)。 將它當做查詢參數新增至 URL。 將此 URL 指定為 iframe 的**src**值，如先前所示。
+- [取得影片存取權杖](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Access-Token?)。 將它當做查詢參數新增至 URL。 將此 URL 指定為 iframe 的**src**值，如先前所示。
 
-若要在內嵌 widget 中提供編輯見解功能，您必須傳遞包含編輯許可權的存取權杖。 使用 [[取得深入解析 Widget](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) ] 或 [使用 `&allowEdit=true`[取得影片存取權杖](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?)]。 
+若要在內嵌 widget 中提供編輯見解功能，您必須傳遞包含編輯許可權的存取權杖。 使用 [[取得深入解析 Widget](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) ] 或 [使用 `&allowEdit=true`[取得影片存取權杖](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Access-Token?)]。 
 
 ## <a name="widgets-interaction"></a>小工具互動
 
@@ -262,8 +262,25 @@ iframe 視窗的標題也可透過將 `&title=<YourTitle>` 提供給 iframe URL 
 
 如果您想要停用標題，您可以將 `captions` 參數值當做 `false`傳遞。
 
-#### <a name="autoplay"></a>自動播放
+#### <a name="autoplay"></a>播放
 根據預設，播放程式會開始播放影片。 您可以將 `&autoplay=false` 傳遞至先前的內嵌 URL，以選擇不進行。
+
+## <a name="code-samples"></a>程式碼範例
+
+請參閱程式[代碼範例](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/Widgets)存放庫，其中包含影片索引子 API 和小工具的範例：
+
+| 檔案/資料夾                       | 說明                                |
+|-----------------------------------|--------------------------------------------|
+| `azure-media-player`              | 在自訂 Azure 媒體播放機中載入影片索引子影片                        |
+| `azure-media-player-vi-insights`  | 使用自訂 Azure 媒體播放機內嵌 VI 深入解析                             |
+| `control-vi-embedded-player`      | 內嵌 VI Player 並從外部加以控制                                    |
+| `custom-index-location`           | 從自訂的外部位置內嵌 VI 深入解析（可以是客戶的 blob）     |
+| `embed-both-insights`             | VI 深入解析播放機和深入解析的基本使用方式                            |
+| `embed-insights-with-AMP`         | 使用自訂 Azure 媒體播放機內嵌 VI 深入解析 widget                      |
+| `customize-the-widgets`           | 使用自訂選項內嵌 VI widget                                     |
+| `embed-both-widgets`              | 內嵌 VI 播放程式和見解，並在其間進行通訊                      |
+| `url-generator`                   | 根據使用者指定的選項產生 widget 自訂內嵌 url             |
+| `html5-player`                    | 使用預設的 HTML5 影片播放機內嵌 VI 深入解析                            |
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 4c729d2502464df021df4d03e989d489b2d1ecea
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 89c4dd294cbbf0953545e1055e32adfc5f7cce28
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72954587"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990788"
 ---
 # <a name="manage-your-iot-central-application"></a>管理您的 IoT Central 應用程式
 
@@ -40,9 +40,9 @@ ms.locfileid: "72954587"
 
 ## <a name="copy-an-application"></a>複製應用程式
 
-您可以建立任何應用程式複本，並減去其中的任何裝置執行個體、裝置資料歷程記錄和使用者資料。 此複本是隨用隨付應用程式，您必須支付費用。 如此一來，您無法建立試用版應用程式。
+您可以建立任何應用程式複本，並減去其中的任何裝置執行個體、裝置資料歷程記錄和使用者資料。 此複本會使用您將支付費用的標準定價方案。 您無法以這種方式建立使用免費定價方案的應用程式。
 
-選取 [**複製**]。 在對話方塊中，輸入新隨用隨付應用程式的詳細資料。 然後選取 [**複製**] 以確認您想要繼續。 在[建立應用程式](quick-deploy-iot-central.md)快速入門中，深入了解此表單中的欄位。
+選取 [**複製**]。 在 [] 對話方塊中，輸入新應用程式的詳細資料。 然後選取 [**複製**] 以確認您想要繼續。 在[建立應用程式](quick-deploy-iot-central.md)快速入門中，深入了解此表單中的欄位。
 
 ![[應用程式設定] 頁面](media/howto-administer/appcopy2.png)
 
@@ -71,7 +71,7 @@ IoT Central 的 Azure Resource Manager SDK 套件適用於 Node、Python、C#、
 
 若要深入瞭解，請參閱下列 GitHub 存放庫和套件：
 
-| 語言 | 存放庫 | Package |
+| 語言 | Repository | Package |
 | ---------| ---------- | ------- |
 | 節點 | [https://github.com/Azure/azure-sdk-for-node](https://github.com/Azure/azure-sdk-for-node) | [https://www.npmjs.com/package/azure-arm-iotcentral](https://www.npmjs.com/package/azure-arm-iotcentral)
 | Python |[https://github.com/Azure/azure-sdk-for-python](https://github.com/Azure/azure-sdk-for-python) | [https://pypi.org/project/azure-mgmt-iotcentral](https://pypi.org/project/azure-mgmt-iotcentral)

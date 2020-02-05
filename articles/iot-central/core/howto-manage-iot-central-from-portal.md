@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 10/02/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 60c1109d0f540c8301cc536c2079537dca5115f4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1e206d9a1b14fc8ff1b92e4eb7217824d81212cf
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435016"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990095"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>從 Azure 入口網站管理 IoT Central
 
@@ -50,7 +50,6 @@ ms.locfileid: "75435016"
 > [!NOTE]
 > 預覽應用程式範本目前僅適用于**歐洲**和**美國**地區。
 
-![管理入口網站：建立 IoT Central 資源](media/howto-manage-iot-central-from-portal/image1a.png)  
 
 填寫所有欄位之後，請選取 [**建立**]。
 
@@ -59,7 +58,7 @@ ms.locfileid: "75435016"
 如果您已有 Azure IoT Central 應用程式，則可以將其刪除，或移至 Azure 入口網站中的其他訂用帳戶或資源群組。
 
 > [!NOTE]
-> 您無法查看 Azure 入口網站中的試用版應用程式，因為這類應用程式並未與您的訂用帳戶相關聯。
+> 您看不到在 Azure 入口網站的免費定價方案上建立的應用程式，因為它們並未與您的訂用帳戶相關聯。
 
 若要開始使用，請選取左側主窗格中的 [**所有資源**]。 使用搜尋方塊鍵入您應用程式的名稱，以在您的資源清單中找到該名稱。 然後選取您想要管理的 IoT Central 應用程式。
 

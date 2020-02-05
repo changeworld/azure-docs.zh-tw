@@ -9,14 +9,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: conceptual
-ms.date: 01/27/2020
+ms.date: 02/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: a1263ecacc2af0559c726fb12c799d0e6d2f1014
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: dce7db9fc508c70d79be62a7e97b3bf52a316b22
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543336"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983693"
 ---
 # <a name="track-models-metrics-with-mlflow-and-azure-machine-learning-preview"></a>使用 MLflow 和 Azure Machine Learning 追蹤模型計量（預覽）
 
@@ -108,7 +108,7 @@ with mlflow.start_run():
 
 遠端執行可讓您以更強大的計算（例如啟用 GPU 的虛擬機器，或 Machine Learning Compute 叢集）來定型模型。 如需瞭解不同的計算選項，請參閱[設定模型定型的計算目標](how-to-set-up-training-targets.md)。
 
-使用[`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py)類別來設定您的計算和訓練執行環境。 在環境的[`CondaDependencies`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py)區段中包含 `mlflow` 和 `azure-contrib-run` pip 套件。 然後使用您的遠端計算來建立[`ScriptRunConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?view=azure-ml-py)做為計算目標。
+使用[`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py)類別來設定您的計算和訓練執行環境。 在環境的[`CondaDependencies`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py)區段中包含 `mlflow` 和 `azureml-mlflow` pip 套件。 然後使用您的遠端計算來建立[`ScriptRunConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?view=azure-ml-py)做為計算目標。
 
 ```Python
 from azureml.core.environment import Environment
@@ -120,7 +120,7 @@ exp = Experiment(workspace = 'my_workspace',
 
 mlflow_env = Environment(name='mlflow-env')
 
-cd = CondaDependencies.create(pip_packages=['mlflow', 'azureml-contrib-run'])
+cd = CondaDependencies.create(pip_packages=['mlflow', 'azureml-mlflow'])
 
 mlflow_env.python.conda_dependencies = cd
 

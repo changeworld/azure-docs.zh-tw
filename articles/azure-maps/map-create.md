@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 49c86f3e6c654ecbfcd07809f42a1b038ca3f8ab
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 578abae5b206b31674b00b9d27ef34174b93759f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911115"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988578"
 ---
 # <a name="create-a-map"></a>建立地圖
 
@@ -22,7 +22,7 @@ ms.locfileid: "75911115"
 
 ## <a name="loading-a-map"></a>載入對應
 
-若要載入對應，請建立[map 類別](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)的新實例。 在初始化對應時，會傳入用來轉譯對應的 DIV 專案識別碼，以及要在載入對應時使用的一組選項。 如果未在 `atlas` 命名空間上指定預設驗證資訊，載入對應時，就必須在對應選項中指定這項資訊。 對應會以非同步方式載入數個資源，以提高效能。 因此，建立 map 實例之後，請將 `ready` 或 `load` 事件附加至對應，然後在該事件處理常式中加入與對應互動的任何額外程式碼。 當對應的資源載入足以與程式互動時，`ready` 事件就會引發。 在初始對應視圖完全載入完成後，就會引發 `load` 事件。 
+若要載入對應，請建立[map 類別](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)的新實例。 在初始化對應時，傳遞 DIV 元素識別碼來轉譯對應，並傳遞一組要在載入對應時使用的選項。 如果未在 `atlas` 命名空間上指定預設驗證資訊，載入對應時，就必須在對應選項中指定這項資訊。 對應會以非同步方式載入數個資源，以提高效能。 因此，建立 map 實例之後，請將 `ready` 或 `load` 事件附加至對應，然後將與對應互動的任何額外程式碼加入至事件處理常式。 當對應的資源載入足以與程式互動時，`ready` 事件就會引發。 在初始對應視圖完全載入完成後，就會引發 `load` 事件。 
 
 <br/>
 
@@ -31,11 +31,11 @@ ms.locfileid: "75911115"
 </iframe>
 
 > [!TIP]
-> 可以在同一個頁面上載入多個對應，而且每個對應都可以使用相同或不同的驗證和語言設定。
+> 您可以在相同的頁面上載入多個對應。 相同頁面上的多個對應可能會使用相同或不同的驗證和語言設定。
 
 ## <a name="show-a-single-copy-of-the-world"></a>顯示單一的世界複本
 
-當地圖在寬螢幕上放大時，會以水準方式顯示多個世界複本。 這適用于大部分的案例，但某些應用程式可能只會想要看到一份全球的複本。 這可以藉由將 [對應] `renderWorldCopies` 選項設定為 [`false`] 來完成。
+當地圖在寬螢幕上放大時，會以水準方式顯示多個世界複本。 此選項適用于某些案例，但對於其他應用程式，您可以看到一份世界的單一複本。 這種行為的執行方式是將 map `renderWorldCopies` 選項設定為 `false`。
 
 <br/>
 
@@ -45,13 +45,13 @@ ms.locfileid: "75911115"
 
 ## <a name="controlling-the-map-camera"></a>控制地圖攝影機
 
-有兩種方式可以使用相機來設定地圖的顯示區域。 您可以在載入對應時設定相機選項（例如置中和縮放），或在對應載入後隨時呼叫 `setCamera` 選項，以程式設計方式更新地圖視圖。  
+有兩種方式可以使用地圖的相機來設定地圖的顯示區域。 您可以在載入對應時設定相機選項。 或者，您可以在對應載入之後，隨時呼叫 `setCamera` 選項，以程式設計方式更新地圖視圖。  
 
 <a id="setCameraOptions"></a>
 
 ### <a name="set-the-camera"></a>設定觀景窗
 
-在下列程式碼中，會建立[地圖物件](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)，並設定置中和縮放選項。 [置中] 和 [縮放] 層級等地圖屬性是[CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)的一部分。
+在下列程式碼中，會建立[地圖物件](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)，並設定置中和縮放選項。 地圖屬性（例如置中和縮放層級）是[CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)的一部分。
 
 <br/>
 
@@ -71,7 +71,7 @@ ms.locfileid: "75911115"
 
 ### <a name="animate-map-view"></a>以動畫方式呈現地圖的檢視
 
-在下列程式碼中，第一個程式碼區塊會建立地圖，並設定地圖樣式、置中和縮放值。 在第二個程式碼區塊中，會建立 [動畫] 按鈕的 click 事件處理常式。 按一下此按鈕時，會使用[CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)， [AnimationOptions](/javascript/api/azure-maps-control/atlas.animationoptions)的一些隨機值來呼叫 setCamera 函數。
+在下列程式碼中，第一個程式碼區塊會建立地圖，並設定 [輸入] 和 [縮放] 地圖樣式。 在第二個程式碼區塊中，會建立 [動畫] 按鈕的 click 事件處理常式。 按一下此按鈕時，會使用[CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)和[AnimationOptions](/javascript/api/azure-maps-control/atlas.animationoptions)的一些隨機值來呼叫 `setCamera` 函式。
 
 <br/>
 
@@ -80,7 +80,7 @@ ms.locfileid: "75911115"
 
 ## <a name="try-out-the-code"></a>試用程式碼
 
-看一下上述範例程式碼。 您可以在左側的 [JS] 索引標籤上編輯 JavaScript 程式碼，並在右側的 [結果] 索引標籤上看到地圖檢視變更。 您也可以按一下 [在 CodePen 上編輯] 按鈕，並在 CodePen 中編輯程式碼。
+查看程式碼範例。 您可以編輯 [ **JS]** 索引標籤內的 JavaScript 程式碼，並在 [**結果]** 索引標籤上查看地圖視圖的變更。您也可以在右上角按一下**CodePen 上**的 [編輯]，然後修改 CodePen 中的程式碼。
 
 <a id="relatedReference"></a>
 

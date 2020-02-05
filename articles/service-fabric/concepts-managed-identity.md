@@ -4,12 +4,12 @@ description: 瞭解如何使用適用于 Azure 的受控識別搭配 Service Fab
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: f477acab332cf39de2504c675b04abb5b14a305f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 06ebcfdf3d6a3815908752153acb09437d745d15
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934972"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986745"
 ---
 # <a name="using-managed-identities-for-azure-with-service-fabric-preview"></a>搭配 Service Fabric 使用適用于 Azure 的受控識別（預覽）
 
@@ -30,7 +30,7 @@ ms.locfileid: "76934972"
 
 - **服務主體**-Azure Active Directory 物件，代表指定租使用者中 AAD 應用程式的投影（也請參閱[服務主體](../active-directory/develop/developer-glossary.md#service-principal-object)）。
 
-有兩種類型的受控識別：
+受控身分識別有兩種：
 
 - **系統指派的受控識別**會直接在 Azure 服務實例上啟用。  系統指派之身分識別的生命週期對其啟用所在的 Azure 服務實例而言是唯一的。
 - **使用者指派的受控識別**會以獨立 Azure 資源的形式建立。 身分識別可指派給一或多個 Azure 服務實例，並與這些實例的生命週期分開管理。
@@ -39,7 +39,7 @@ ms.locfileid: "76934972"
 
 ## <a name="supported-scenarios-for-service-fabric-applications"></a>Service Fabric 應用程式的支援案例
 
-只有 Azure 部署的 Service Fabric 叢集才支援 Service Fabric 的受控識別，而且僅適用于部署為 Azure 資源的應用程式;未部署為 Azure 資源的應用程式無法指派身分識別。 在概念上，支援 Azure Service Fabric 叢集中的受控識別是由兩個階段所組成：
+只有 Azure 部署的 Service Fabric 叢集才支援 Service Fabric 的受控識別，而且僅適用于部署為 Azure 資源的應用程式;未部署為 Azure 資源的應用程式無法指派身分識別。 概念上說，支援 Azure Service Fabric 叢集中的受控識別是由兩個階段所組成：
 
 1. 將一個或多個受控識別指派給應用程式資源;應用程式可能會分別指派單一系統指派的身分識別，以及（或）高達32的使用者指派身分識別。
 

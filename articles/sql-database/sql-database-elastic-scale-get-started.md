@@ -11,12 +11,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: b5c323bf3d5ff55c2c30961003e8c456cbe39c82
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4577f611287a27366b1168e07565861c16fe0e38
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823668"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987017"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>開始使用彈性資料庫工具
 
@@ -81,7 +81,7 @@ ms.locfileid: "73823668"
 
 若要下載及執行範例，請遵循下列步驟： 
 
-1. 從 MSDN 下載 [Azure SQL 的彈性 DB 工具：開始使用範例](https://code.msdn.microsoft.com/windowsapps/Elastic-Scale-with-Azure-a80d8dc6)。 將範例解壓縮至您選擇的位置。
+1. 下載[適用于 AZURE SQL 的彈性 DB 工具-消費者入門範例](https://github.com/Azure/elastic-db-tools)。 將範例解壓縮至您選擇的位置。
 
 2. 若要建立專案，從 *C#* 目錄開啟 *ElasticScaleStarterKit.sln* 方案。
 
@@ -91,7 +91,7 @@ ms.locfileid: "73823668"
 
 5. 若要深入了解用戶端程式庫功能，請利用各種選項進行實驗。 請記下應用程式在主控台輸出中採用的步驟，並盡情探索其後的程式碼。
    
-    ![Progress][4]
+    ![進度][4]
 
 恭喜！ 您已使用彈性資料庫工具，在 SQL Database 上成功建置並執行您的第一個分區化應用程式。 請使用 Visual Studio 或 SQL Server Management Studio 連接到您的 SQL 資料庫，以快速瀏覽範例所建立的分區。 您會看見範例所建立的新範例分區資料庫和分區對應管理員資料庫。
 
@@ -127,7 +127,7 @@ ms.locfileid: "73823668"
 如需有關彈性資料庫工具的詳細資訊，請參閱下列文章：
 
 * 程式碼範例： 
-  * 彈性資料庫工具 ([.NET](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-a80d8dc6?SRC=VSIDE)、[Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22))
+  * 彈性資料庫工具 ([.NET](https://github.com/Azure/elastic-db-tools)、[Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22))
   * [適用於 Azure SQL 的彈性資料庫工具 - Entity Framework 整合](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)
   * [指令碼中心的分區彈性](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
 * 部落格：[Elastic Scale 公告 (英文)](https://azure.microsoft.com/blog/20../../introducing-elastic-scale-preview-for-azure-sql-database/)

@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: b88327ea0b5d2958cc1c86fa317415f2441af894
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7fe1c2f74ca2a7b0fa4aefad934c45edd6f85a73
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494481"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990436"
 ---
 # <a name="connect-using-ssh-to-a-linux-virtual-machine-using-azure-bastion"></a>使用 Azure 防禦將 SSH 連線至 Linux 虛擬機器
 
@@ -27,13 +27,24 @@ SSH 私密金鑰的格式必須以 `"-----BEGIN RSA PRIVATE KEY-----"` 開頭，
 
 ## <a name="before-you-begin"></a>開始之前
 
-請確定您已為 VM 所在的虛擬網路設定 Azure 防禦主機。 如需詳細資訊，請參閱[建立 Azure 防禦主機](bastion-create-host-portal.md)。 在虛擬網路中布建並部署防禦服務之後，您就可以使用它來連線到此虛擬網路中的任何 VM。 當您使用防禦來連線時，它會假設您使用 RDP 連線至 Windows VM，而 SSH 則是連線到您的 Linux Vm。
+請確定您已為 VM 所在的虛擬網路設定 Azure 防禦主機。 如需詳細資訊，請參閱[建立 Azure 防禦主機](bastion-create-host-portal.md)。 在虛擬網路中布建並部署防禦服務之後，您就可以使用它來連線到此虛擬網路中的任何 VM。 
+
+當您使用防禦來連線時，它會假設您使用 RDP 連線至 Windows VM，而 SSH 則是連線到您的 Linux Vm。 如需連線到 Windows VM 的詳細資訊，請參閱連線[至 vm-Windows](bastion-connect-vm-rdp.md)。
+
+### <a name="required-roles"></a>必要角色
 
 若要建立連線，必須具備下列角色：
 
 * 虛擬機器上的讀取者角色
 * 虛擬機器的私人 IP 位址與 NIC 上的讀取者角色
 * Azure Bastion 資源上的讀取者角色
+
+### <a name="ports"></a>連接埠
+
+若要透過 SSH 連接到 Linux VM，您必須在 VM 上開啟下列埠：
+
+* 輸入埠： SSH （22）
+
 
 ## <a name="username"></a>連接：使用使用者名稱和密碼
 

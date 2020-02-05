@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a5885df67464095061d9a95aa59010a1629fb8f8
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: d5adc94061cd656b0654fba6609d36ecfd38c75d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76930340"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988034"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>混合式 Runbook 背景工作的疑難排解
 
@@ -22,7 +22,7 @@ ms.locfileid: "76930340"
 
 ## <a name="general"></a>一般
 
-混合式 Runbook 背景工作角色取決於與自動化帳戶通訊的代理程式，來註冊背景工作角色、接收 Runbook 作業及報告狀態。 對於 Windows，此代理程式是適用于 Windows 的 Log Analytics 代理程式（也稱為 Microsoft Monitoring Agent （MMA））。 針對 Linux，這是適用于 Linux 的 Log Analytics 代理程式。
+混合式 Runbook 背景工作角色取決於與自動化帳戶通訊的代理程式，來註冊背景工作角色、接收 Runbook 作業及報告狀態。 對於 Windows，此代理程式是適用于 Windows 的 Log Analytics 代理程式，也稱為 Microsoft Monitoring Agent （MMA）。 針對 Linux，這是適用于 Linux 的 Log Analytics 代理程式。
 
 ### <a name="runbook-execution-fails"></a>案例：Runbook 執行失敗
 
@@ -34,7 +34,7 @@ Runbook 執行失敗且您收到下列錯誤：
 "The job action 'Activate' cannot be run, because the process stopped unexpectedly. The job action was attempted three times."
 ```
 
-Runbook 在嘗試執行三次後會馬上暫止。 有些情況可能會中斷 runbook 的完成。 相關的錯誤訊息可能不包含任何其他資訊。
+您的 runbook 在嘗試執行三次後很快就會暫停。 有些情況可能會中斷 runbook 的完成。 相關的錯誤訊息可能不包含任何其他資訊。
 
 #### <a name="cause"></a>原因
 
@@ -72,7 +72,6 @@ At line:3 char:1
     + CategoryInfo          : CloseError: (:) [Connect-AzureRmAccount], ArgumentException
     + FullyQualifiedErrorId : Microsoft.Azure.Commands.Profile.ConnectAzureRmAccountCommand
 ```
-
 #### <a name="cause"></a>原因
 
 當您在混合式 Runbook 背景工作角色上執行的 Runbook 中嘗試使用[執行身分帳戶](../manage-runas-account.md)時，若沒有執行身分帳戶憑證，就會發生此錯誤。 混合式 Runbook 背景工作角色預設在本機沒有憑證資產，執行身分帳戶需要此憑證才能正常運作。
@@ -80,41 +79,6 @@ At line:3 char:1
 #### <a name="resolution"></a>解析度
 
 如果您的混合式 Runbook 背景工作角色是 Azure VM，您可以改[為使用 azure 資源的受控](../automation-hrw-run-runbooks.md#managed-identities-for-azure-resources)識別。 此案例可讓您使用 Azure VM 的受控識別（而非執行身分帳戶）來向 Azure 資源進行驗證，藉此簡化驗證。 當混合式 Runbook 背景工作角色是內部部署電腦時，您必須在電腦上安裝執行身分帳戶憑證。 若要瞭解如何安裝憑證，請參閱在[混合式 runbook 背景工作角色上執行 runbook](../automation-hrw-run-runbooks.md)中執行 PowerShell runbook 匯出-export-runascertificatetohybridworker 的步驟。
-
-## <a name="linux"></a>Linux
-
-Linux 混合式 Runbook 背景工作角色取決於[適用于 linux 的 Log Analytics 代理程式](../../azure-monitor/platform/log-analytics-agent.md)，來與您的自動化帳戶進行通訊，以註冊背景工作角色、接收 Runbook 作業及報告狀態。 如果註冊背景工作角色失敗，請參考以下一些可能的錯誤原因：
-
-### <a name="oms-agent-not-running"></a>案例：適用于 Linux 的 Log Analytics 代理程式未執行
-
-#### <a name="issue"></a>問題
-
-適用于 Linux 的 Log Analytics 代理程式未執行
-
-#### <a name="cause"></a>原因
-
-如果代理程式未執行，它會讓 Linux 混合式 Runbook 背景工作角色無法與 Azure 自動化進行通訊。 代理程式無法執行的原因有很多種。
-
-#### <a name="resolution"></a>解析度
-
- 輸入下列命令，確認代理程式正在執行：`ps -ef | grep python`。 您所看到的輸出應該會類似下列具有 **nxautomation** 使用者帳戶的 Python 處理序。 如果未啟用更新管理或 Azure 自動化解決方案，下列處理序都不會執行。
-
-```bash
-nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
-nxautom+   8593      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/hybridworker.py /var/opt/microsoft/omsagent/state/automationworker/worker.conf managed rworkspace:<workspaceId> rversion:<Linux hybrid worker version>
-nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/hybridworker.py /var/opt/microsoft/omsagent/<workspaceId>/state/automationworker/diy/worker.conf managed rworkspace:<workspaceId> rversion:<Linux hybrid worker version>
-```
-
-下列清單顯示已針對 Linux 混合式 Runbook 背景工作角色啟動的處理序。 這些程序全都位於 `/var/opt/microsoft/omsagent/state/automationworker/` 目錄。
-
-
-* **oms.conf** - 此值是背景工作管理員程序。 它會直接從 DSC 啟動。
-
-* **worker.conf** - 此處理序是自動註冊的混合式背景工作角色處理序，會由背景工作角色管理員來啟動。 更新管理會使用此處理序，且使用者不會注意到此處理序。 如果機器上未啟用更新管理解決方案，就不會出現此處理序。
-
-* **diy/worker.conf** - 此處理序是 DIY 混合式背景工作處理序。 DIY 混合式背景工作處理序可用來在混合式 Runbook 背景工作角色上執行使用者 Runbook。 它與自動註冊的混合式背景工作進程不同，主要細節是使用不同的設定。 如果已停用 Azure 自動化解決方案，而且未註冊 DIY Linux 混合式背景工作角色，則不會出現此進程。
-
-若代理程式未執行，請執行下列命令來啟動服務： `sudo /opt/microsoft/omsagent/bin/service_control restart`。
 
 ### <a name="error-403-on-registration"></a>案例：在混合式 Runbook 背景工作角色註冊期間發生錯誤403
 
@@ -142,6 +106,41 @@ nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfi
 您的 Log Analytics 工作區和自動化帳戶必須位於已連結的區域。 如需支援的區域清單，請參閱[Azure 自動化和 Log Analytics 工作區](../how-to/region-mappings.md)對應。
 
 您可能也需要更新電腦的日期和時間區域。 如果您選取自訂的時間範圍，請確定範圍是以 UTC 為准，這可能會與您的當地時區不同。
+
+## <a name="linux"></a>Linux
+
+Linux 混合式 Runbook 背景工作角色取決於[適用于 linux 的 Log Analytics 代理程式](../../azure-monitor/platform/log-analytics-agent.md)，來與您的自動化帳戶進行通訊，以註冊背景工作角色、接收 Runbook 作業及報告狀態。 如果註冊背景工作角色失敗，請參考以下一些可能的錯誤原因：
+
+### <a name="oms-agent-not-running"></a>案例：適用于 Linux 的 Log Analytics 代理程式未執行
+
+#### <a name="issue"></a>問題
+
+適用于 Linux 的 Log Analytics 代理程式未執行
+
+#### <a name="cause"></a>原因
+
+如果代理程式未執行，它會讓 Linux 混合式 Runbook 背景工作角色無法與 Azure 自動化進行通訊。 代理程式可能因各種原因而無法執行。
+
+#### <a name="resolution"></a>解析度
+
+ 輸入下列命令，確認代理程式正在執行：`ps -ef | grep python`。 您所看到的輸出應該會類似下列具有 **nxautomation** 使用者帳戶的 Python 處理序。 如果未啟用更新管理或 Azure 自動化解決方案，下列處理序都不會執行。
+
+```bash
+nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
+nxautom+   8593      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/hybridworker.py /var/opt/microsoft/omsagent/state/automationworker/worker.conf managed rworkspace:<workspaceId> rversion:<Linux hybrid worker version>
+nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/hybridworker.py /var/opt/microsoft/omsagent/<workspaceId>/state/automationworker/diy/worker.conf managed rworkspace:<workspaceId> rversion:<Linux hybrid worker version>
+```
+
+下列清單顯示已針對 Linux 混合式 Runbook 背景工作角色啟動的處理序。 這些程序全都位於 `/var/opt/microsoft/omsagent/state/automationworker/` 目錄。
+
+
+* **oms** -背景工作角色管理員進程。 它會直接從 DSC 啟動。
+
+* **worker. 會議**-自動註冊的混合式背景工作進程，它是由背景工作角色管理員啟動。 更新管理會使用此處理序，且使用者不會注意到此處理序。 如果機器上未啟用更新管理解決方案，就不會出現此處理序。
+
+* **diy/worker. 會議**-diy 混合式背景工作進程。 DIY 混合式背景工作處理序可用來在混合式 Runbook 背景工作角色上執行使用者 Runbook。 它與自動註冊的混合式背景工作進程不同，主要細節是使用不同的設定。 如果已停用 Azure 自動化解決方案，而且未註冊 DIY Linux 混合式背景工作角色，則不會出現此進程。
+
+若代理程式未執行，請執行下列命令來啟動服務： `sudo /opt/microsoft/omsagent/bin/service_control restart`。
 
 ### <a name="class-does-not-exist"></a>案例：指定的類別不存在
 
@@ -181,7 +180,7 @@ Windows 混合式 Runbook 背景工作角色取決於[適用于 Windows 的 Log 
 
 #### <a name="resolution"></a>解析度
 
-記錄儲存每一個混合式背景工作角色本機的 C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes 中。 您可以檢查 [**應用程式和服務 Logs\Microsoft-SMA\Operations** ] 和 [**應用程式和服務 Logs\Operations 管理員**] 事件記錄檔中是否有任何警告或錯誤事件，指出會影響角色上線的連線能力或其他問題，以在正常作業下進行 Azure 自動化或問題。 如需 Log Analytics 代理程式問題的其他協助疑難排解，請參閱針對[Log Analytics Windows 代理程式的問題進行疑難排解](../../azure-monitor/platform/agent-windows-troubleshoot.md)。
+記錄儲存每一個混合式背景工作角色本機的 C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes 中。 您可以確認 [**應用程式和服務 Logs\Microsoft-SMA\Operations** ] 和 [**應用程式及服務 Logs\Operations 管理員**] 事件記錄檔中是否有任何警告或錯誤事件，指出會影響角色上線的連線能力或其他問題，以在正常作業下進行 Azure 自動化或問題。 如需 Log Analytics 代理程式問題的其他協助疑難排解，請參閱針對[Log Analytics Windows 代理程式的問題進行疑難排解](../../azure-monitor/platform/agent-windows-troubleshoot.md)。
 
 [Runbook 輸出和訊息](../automation-runbook-output-and-messages.md) 會從混合式背景工作角色傳送到 Azure 自動化，就像雲端中執行的 Runbook 工作一樣。 您也可以啟用詳細資訊和進度資料流，就像您在其他 Runbook 中的作法一樣。
 

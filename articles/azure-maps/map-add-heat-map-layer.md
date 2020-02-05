@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 98c8db4e4b866879a437d1ffad6668cbae42fcdf
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: d52d808813078c2aca7de59aa626e83f96221720
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933596"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986235"
 ---
 # <a name="add-a-heat-map-layer"></a>新增熱度圖層
 
@@ -49,7 +49,7 @@ map.sources.add(datasource);
 //Load a dataset of points, in this case earthquake data from the USGS.
 datasource.importDataFromUrl('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson');
 
-//Create a heatmap and add it to the map.
+//Create a heat map and add it to the map.
 map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
   radius: 10,
   opacity: 0.8
@@ -108,14 +108,12 @@ map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
 
 > [!TIP]
 > 當您在資料來源上啟用叢集時，彼此接近的點會群組在一起，成為一個叢集點。 您可以使用每個叢集的點計數做為熱度圖的權數運算式。 這可能會大幅減少要轉譯的點數目。 叢集的點計數會儲存在 point 功能的 `point_count` 屬性中： 
-
 > ```JavaScript
 > var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 >    weight: ['get', 'point_count']
 > });
 > ```
-
-> 如果群集半徑只是幾個圖元，則轉譯中會有小型的視覺差異。 較大的半徑會將更多的點分組到每個叢集，並改善熱度圖的效能。
+> 如果群集半徑只是幾個圖元，轉譯中會有一個小型的視覺差異。 較大的半徑會將更多的點分組到每個叢集，並改善熱度圖的效能。
 
 ## <a name="next-steps"></a>後續步驟
 

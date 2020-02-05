@@ -1,18 +1,18 @@
 ---
-title: 複製和貼上虛擬機器： Azure 防禦 |Microsoft Docs
+title: 複製和貼上虛擬機器： Azure 防禦
 description: 在本文中，您將瞭解如何使用防禦，在 Azure VM 之間進行複製和貼上。
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: ed8d52a4932271020dfb2a010392b312fa38703b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0aaf816cdfe7d42fd345eb4f010cf47b1615f462
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73519360"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989530"
 ---
 # <a name="copy-and-paste-to-a-virtual-machine-azure-bastion"></a>複製並貼到虛擬機器： Azure 防禦
 
@@ -37,7 +37,7 @@ ms.locfileid: "73519360"
 1. 通常，複製的文字會自動顯示在防禦複製貼上調色板上。 如果您的文字不在該處，請將文字貼入調色板的文字區域中。
 1. 文字出現在文字區域中之後，您就可以將它貼到遠端會話。
 
-   ![Paste](./media/bastion-vm-manage/local.png)
+   ![paste](./media/bastion-vm-manage/local.png)
 
 ## <a name="from"></a>從遠端會話複製
 
@@ -52,7 +52,7 @@ ms.locfileid: "73519360"
 1. 通常，複製的文字會自動顯示在防禦複製貼上調色板上。 如果您的文字不在該處，請將文字貼入調色板的文字區域中。
 1. 文字出現在文字區域中之後，您就可以將它貼到本機裝置上。
 
-   ![Paste](./media/bastion-vm-manage/local2.png)
+   ![paste](./media/bastion-vm-manage/local2.png)
  
 ## <a name="next-steps"></a>後續步驟
 

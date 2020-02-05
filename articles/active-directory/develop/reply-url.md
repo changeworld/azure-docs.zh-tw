@@ -10,17 +10,22 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 7e289b83daa9c30703d94a7f4c0ff459f96256c0
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 1367bf32eea58b828c00ee23a59a32a2fec699ab
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702516"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983090"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>重新導向 URI/回覆 URL 限制
 
 [重新導向 URI] 或 [回復 URL] 是指當應用程式成功授權並授與授權碼或存取權杖時，授權伺服器會將使用者傳送至的位置。 程式碼或權杖包含在 [重新導向 URI] 或 [回復權杖] 中，因此請務必在應用程式註冊過程中註冊正確的位置。
 
+ 下列限制適用于回復 Url：
+
+    * 回復 URL 的開頭必須是配置 `https`。
+    * 回復 URL 會區分大小寫。 其大小寫必須符合您執行中應用程式之 URL 路徑的大小寫。 例如，如果您的應用程式包含作為其路徑 `.../abc/response-oidc`的一部分，請勿在回復 URL 中指定 `.../ABC/response-oidc`。 由於網頁瀏覽器會將路徑視為區分大小寫，因此如果將與 `.../abc/response-oidc` 相關聯的 cookie 重新導向至不相符的 `.../ABC/response-oidc` URL，可能會予以排除。
+    
 ## <a name="maximum-number-of-redirect-uris"></a>重新導向 Uri 的數目上限
 
 下表顯示當您註冊應用程式時，可以新增的重新導向 Uri 數目上限。

@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
-ms.openlocfilehash: 8cc097bc7083729a0e99c93376fe46b170760cf4
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: af608dcfbb5d98cf3116de4e14dc12bf6facb97b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327490"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989904"
 ---
 # <a name="animated-character-detection-preview"></a>動畫字元偵測（預覽）
 
@@ -40,7 +40,7 @@ Azure 媒體服務影片索引子可透過與[認知服務自訂視覺](https://
 
 ### <a name="trial-vs-paid"></a>試用版與付費
 
-|功能|試用版|付費|
+|功能|試用|付費|
 |---|---|---|
 |自訂視覺帳戶|由影片索引子在幕後進行管理。 |您的自訂視覺帳戶已連線到影片索引子。|
 |動畫模型的數目|一個|每個帳戶最多100個模型（自訂視覺限制）。|
@@ -69,7 +69,7 @@ Azure 媒體服務影片索引子可透過與[認知服務自訂視覺](https://
 
     * 定型金鑰（適用于訓練資源）
     * 預測金鑰（適用于預測資源）
-    * Endpoint 
+    * 端點 
     * 預測資源識別碼
     
     > [!NOTE]
@@ -81,7 +81,7 @@ Azure 媒體服務影片索引子可透過與[認知服務自訂視覺](https://
 1. 選取 **[連線自訂視覺帳戶（預覽）]** ，然後按一下 [**試用**]。
 1. 填寫必要欄位以及存取權杖，然後按一下 [**傳送**]。 
 
-    如需如何取得影片索引子存取權杖的詳細資訊，請移至[開發人員入口網站](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)，並查看[相關的檔](video-indexer-use-apis.md#obtain-access-token-using-the-authorization-api)。  
+    如需如何取得影片索引子存取權杖的詳細資訊，請移至[開發人員入口網站](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Account-Access-Token?)，並查看[相關的檔](video-indexer-use-apis.md#obtain-access-token-using-the-authorization-api)。  
 1. 一旦呼叫傳回 200 OK 回應，就會連接您的帳戶。
 1. 若要確認您的連線，請流覽至[影片索引子](https://vi.microsoft.com/)入口網站：
 1. 按一下右上角的 [**內容模型自訂**] 按鈕。

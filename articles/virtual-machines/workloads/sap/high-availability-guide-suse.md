@@ -3,8 +3,8 @@ title: SAP NetWeaver 在適用於 SAP 應用程式之 SUSE Linux Enterprise Serv
 description: SAP NetWeaver 在適用於 SAP 應用程式之 SUSE Linux Enterprise Server 上的高可用性指南
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: mssedusch
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/07/2019
-ms.author: sedusch
-ms.openlocfilehash: d08f17bd22188f3d969261d8626d47a9e0faf08e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.date: 02/03/2020
+ms.author: radeltch
+ms.openlocfilehash: 77a26d229ddc4ce5f35fde3db010e3b7c146a563
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839616"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985512"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>SAP NetWeaver 在適用於 SAP 應用程式之 SUSE Linux Enterprise Server 上的 Azure VM 高可用性
 
@@ -277,7 +277,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
    </code></pre>
 
    > [!NOTE]
-   > 請勿在叢集節點的主機名稱中使用短破折號。 否則叢集將無法運作。 這是已知的限制，而 SUSE 正在努力研發修正程式。 修正程式將會作為 sap-suse-cloud-connector 套件的修補程式來發行。
+   > 在主機名稱中使用破折號的已知問題，是以**3.1.1** **的套件版本**來修正。 如果在主機名稱中使用具有虛線的叢集節點，請確定您使用的是套件 sap-suse-叢集連接器的最低版本3.1.1。 否則叢集將無法運作。 
 
    請確定您已安裝新版的 SAP SUSE 叢集連接器。 舊版連接器稱為 sap_suse_cluster_connector，新版連接器稱為 **sap-suse-cluster-connector**。
 

@@ -3,12 +3,12 @@ title: MARS 代理程式的支援矩陣
 description: 本文摘要說明當您備份執行 Microsoft Azure 復原服務（MARS）代理程式的電腦時的 Azure 備份支援。
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 27ad81c42a079485d8eab95bb1250cba41e8fb5b
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: a87d778bff5a52f4251d83e401028c9949713e33
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281269"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988068"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>使用 Microsoft Azure 復原服務 (MARS) 代理程式進行備份的支援矩陣
 
@@ -95,8 +95,6 @@ Windows 7 (Ultimate、企業版、專業版、家用進階版/基本版、入門
 Windows Server 2016 (Standard、Datacenter、Essentials) | 是 | 是 | -.NET 4。5 <br> -Windows PowerShell <br> -最新相容的 Microsoft VC + + 可轉散發套件 <br> -Microsoft Management Console （MMC）3。0
 Windows Server 2012 R2(Standard、Datacenter、Essentials) | 是 | 是 | -.NET 4。5 <br> -Windows PowerShell <br> -最新相容的 Microsoft VC + + 可轉散發套件 <br> -Microsoft Management Console （MMC）3。0
 Windows Server 2012 (Standard、Datacenter、Essentials) | 是 | 是 |-.NET 4。5 <br> -Windows PowerShell <br> -最新相容的 Microsoft VC + + 可轉散發套件 <br> -Microsoft Management Console （MMC）3。0 <br> -部署映射服務與管理（DISM.EXE）
-Windows Server 2008 R2 (Standard、Enterprise、Datacenter、Foundation) | 是 | 是 | -.NET 3.5、.Net 4。5 <br> -Windows PowerShell <br> -相容的 Microsoft VC + + 可轉散發套件 <br> -Microsoft Management Console （MMC）3。0 <br> -部署映射服務與管理（DISM.EXE）
-Windows Server 2008 SP2 (Standard、Datacenter、Foundation) | 是 | 否 | -.NET 3.5、.Net 4。5 <br> -Windows PowerShell <br> -相容的 Microsoft VC + + 可轉散發套件 <br> -Microsoft Management Console （MMC）3。0 <br> -部署映射服務與管理（DISM.EXE） <br> -Virtual Server 2005 基底 + KB KB948515
 Windows Storage Server 2016/2012 R2/2012 （Standard、Workgroup） | 是 | 否 | -.NET 4。5 <br> -Windows PowerShell <br> -最新相容的 Microsoft VC + + 可轉散發套件 <br> -Microsoft Management Console （MMC）3。0
 Windows Server 2019 (Standard、Datacenter、Essentials) | 是 | 是 | -.NET 4。5 <br> -Windows PowerShell <br> -最新相容的 Microsoft VC + + 可轉散發套件 <br> -Microsoft Management Console （MMC）3。0
 

@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-baselines
-ms.openlocfilehash: 2d12fa85fbc134ba2578795619db89f4a5058b26
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: de6bbb81b04b93cce8ab7ddaf1d983cb7e4a700d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934751"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990584"
 ---
-# <a name="overview-of-azure-security-controls"></a>Azure 安全性控制的總覽
+# <a name="overview-of-azure-security-controls"></a>Azure 資訊安全中心控管概觀
 
 Azure 安全性基準測試包含的建議可協助您改善 Azure 上應用程式和資料的安全性。
 
@@ -51,4 +51,5 @@ Azure 安全性基準測試包含的建議可協助您改善 Azure 上應用程�
 ## <a name="next-steps"></a>後續步驟
 
 - 請參閱第一個安全性控制：[網路安全性](security-control-network-security.md)
+- 閱讀[Azure 安全性基準測試簡介](introduction.md)
 - 下載[Azure 安全性基準測試 v1 excel 試算表](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/spreadsheets)
