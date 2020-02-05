@@ -14,11 +14,11 @@
       href: learn/quick-monitor-azure-resource.md
     - name: 監視虛擬機器
       items:
-        - name: 收集 - Azure VM
+        - name: Azure VM
           href: learn/quick-collect-azurevm.md
-        - name: 收集 - Linux 電腦
+        - name: Linux 電腦
           href: learn/quick-collect-linux-computer.md
-        - name: 收集 - Windows 電腦
+        - name: Windows 電腦
           href: learn/quick-collect-windows-computer.md
     - name: 監視應用程式
       items:
@@ -439,6 +439,8 @@
               href: app/configuration-with-applicationinsights-config.md
             - name: 將自訂資料來源相互關聯
               href: app/custom-data-correlation.md
+            - name: 連接字串
+              href: app/sdk-connection-string.md
             - name: 特殊主題
               items:
                 - name: 深入診斷 Web Apps 和服務
@@ -535,23 +537,18 @@
               href: 'faq.md#agents'
             - name: Azure 診斷擴充功能
               items:
-                - name: 概觀
-                  href: platform/diagnostics-extension-overview.md
-                - name: 收集記錄
-                  href: platform/azure-storage-iis-table.md
                 - name: Windows
+                  displayname: diagnostics extension
                   items:
-                    - name: 版本歷程記錄
-                      href: platform/diagnostics-extension-schema.md
-                    - name: 結構描述
-                      href: platform/diagnostics-extension-schema-1dot3.md
-                    - name: 傳送到 Azure 儲存體
-                      href: platform/diagnostics-extension-to-storage.md
-                    - name: 傳送至 Application Insights
-                      href: platform/diagnostics-extension-to-application-insights.md
-                    - name: 傳送至事件中樞
-                      href: platform/diagnostics-extension-stream-event-hubs.md
-                    - name: 傳送給 Azure 監視器作為自訂計量
+                    - name: 概觀
+                      href: platform/diagnostics-extension-overview.md
+                    - name: 安裝和設定
+                      items:
+                        - name: PowerShell
+                          href: ../virtual-machines/extensions/diagnostics-windows.md?toc=/azure/azure-monitor/toc.json
+                        - name: Resource Manager 範本
+                          href: ../virtual-machines/extensions/diagnostics-template.md?toc=/azure/azure-monitor/toc.json
+                    - name: 傳送至 Azure 監視器計量
                       items:
                         - name: 虛擬機器
                           href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
@@ -561,15 +558,26 @@
                           href: platform/collect-custom-metrics-guestos-vm-classic.md
                         - name: 雲端服務
                           href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
+                    - name: 傳送至事件中樞
+                      href: platform/diagnostics-extension-stream-event-hubs.md
+                    - name: 傳送至記錄
+                      href: platform/azure-storage-iis-table.md
+                    - name: 傳送到 Azure 儲存體
+                      href: platform/diagnostics-extension-to-storage.md
+                    - name: 傳送至 Application Insights
+                      href: platform/diagnostics-extension-to-application-insights.md
+                    - name: 版本歷程記錄
+                      href: platform/diagnostics-extension-schema.md
                     - name: JSON 行資源記錄格式
                       href: platform/diagnostic-logs-append-blobs.md
                     - name: 疑難排解
                       href: platform/diagnostics-extension-troubleshooting.md
                 - name: Linux
+                  displayname: diagnostics extension
                   items:
-                    - name: 搭配 VM 使用
-                      href: ../virtual-machines/extensions/diagnostics-linux.md
-                    - name: 使用 Telegraf 的自訂計量
+                    - name: 概觀
+                      href: ../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/azure-monitor/toc.json
+                    - name: 使用 Telegraf 收集計量
                       href: platform/collect-custom-metrics-linux-telegraf.md
             - name: Log Analytics 代理程式
               items:
@@ -589,6 +597,28 @@
                   href: platform/agent-manage.md
                 - name: 代理程式健康狀態
                   href: insights/solution-agenthealth.md
+                - name: 資料來源
+                  items:
+                    - name: 概觀
+                      href: platform/agent-data-sources.md
+                    - name: Windows 事件
+                      href: platform/data-sources-windows-events.md
+                    - name: 自訂 JSON 資料
+                      href: platform/data-sources-json.md
+                    - name: CollectD 效能資料
+                      href: platform/data-sources-collectd.md
+                    - name: syslog
+                      href: platform/data-sources-syslog.md
+                    - name: 效能計數器
+                      href: platform/data-sources-performance-counters.md
+                    - name: Linux 應用程式的效能
+                      href: platform/data-sources-linux-applications.md
+                    - name: IIS 記錄
+                      href: platform/data-sources-iis-logs.md
+                    - name: 自訂的記錄
+                      href: platform/data-sources-custom-logs.md
+                    - name: 自訂欄位
+                      href: platform/custom-fields.md
             - name: 疑難排解
               items:
                 - name: Log Analytics VM 延伸模組
@@ -600,28 +630,6 @@
                 - name: Log Analytics Linux 代理程式
                   displayname: 'troubleshoot, troubleshooting'
                   href: platform/agent-linux-troubleshoot.md
-        - name: 代理程式資料來源
-          items:
-            - name: 概觀
-              href: platform/agent-data-sources.md
-            - name: Windows 事件
-              href: platform/data-sources-windows-events.md
-            - name: 自訂 JSON 資料
-              href: platform/data-sources-json.md
-            - name: CollectD 效能資料
-              href: platform/data-sources-collectd.md
-            - name: syslog
-              href: platform/data-sources-syslog.md
-            - name: 效能計數器
-              href: platform/data-sources-performance-counters.md
-            - name: Linux 應用程式的效能
-              href: platform/data-sources-linux-applications.md
-            - name: IIS 記錄
-              href: platform/data-sources-iis-logs.md
-            - name: 自訂的記錄
-              href: platform/data-sources-custom-logs.md
-            - name: 自訂欄位
-              href: platform/custom-fields.md
         - name: 適用於 VM 的 Azure 監視器
           items:
             - name: 概觀
@@ -660,14 +668,16 @@
               href: insights/vminsights-dependency-agent-maintenance.md
             - name: 停用監視
               href: insights/vminsights-optout.md
-        - name: 容量和效能解決方案
-          href: insights/capacity-performance.md
-        - name: VMware Analytics 解決方案
-          href: insights/vmware.md
-        - name: Wire Data 解決方案
-          href: insights/wire-data.md
-        - name: 服務對應解決方案
-          href: insights/service-map.md
+        - name: 方案
+          items:
+            - name: 容量和效能解決方案
+              href: insights/capacity-performance.md
+            - name: VMware Analytics 解決方案
+              href: insights/vmware.md
+            - name: Wire Data 解決方案
+              href: insights/wire-data.md
+            - name: 服務對應解決方案
+              href: insights/service-map.md
         - name: 電腦群組
           href: platform/computer-groups.md
     - name: 監視容器
@@ -1125,6 +1135,10 @@
   items:
     - name: 服務限制
       href: service-limits.md
+    - name: 診斷擴充功能
+      items:
+        - name: 結構描述
+          href: platform/diagnostics-extension-schema-1dot3.md
     - name: Application Insights
       items:
         - name: 相依性自動收集

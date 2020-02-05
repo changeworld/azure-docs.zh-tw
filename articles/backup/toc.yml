@@ -258,6 +258,8 @@
           href: backup-azure-backup-server-import-export-.md
     - name: 監視和警示
       items:
+        - name: 使用備份總管
+          href: monitor-azure-backup-with-backup-explorer.md
         - name: 使用 Azure 入口網站
           href: backup-azure-monitoring-built-in-monitor.md
         - name: 使用 Azure 監視器

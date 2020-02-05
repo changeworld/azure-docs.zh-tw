@@ -152,6 +152,8 @@
           href: deploy-nested-template-environments.md
         - name: 使用 Azure 受控識別部署環境
           href: use-managed-identities-environments.md
+        - name: 環境的安全性警示
+          href: environment-security-alerts.md
     - name: 管理可重複使用的範本
       items:
         - name: 自訂映像或公式
