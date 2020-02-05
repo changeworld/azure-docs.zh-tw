@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: a4a97ebd0e44bfd3b0ee167a2f3a7da435ac5087
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f56a724174b81966642b2870360014597436eade
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512999"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76981084"
 ---
 # <a name="session-monitoring-and-management-for-azure-bastion"></a>Azure 防禦的會話監視和管理
 
@@ -22,13 +22,13 @@ ms.locfileid: "73512999"
 
 1. 在  [Azure 入口網站](https://portal.azure.com)中，流覽至您的 azure 防禦資源，然後從 Azure 防禦頁面選取 **會話**]。
 
-   ![討論會](./media/session-monitoring/sessions.png)
+   ![工作階段](./media/session-monitoring/sessions.png)
 2. 在 [**會話**] 頁面上，您可以看到在右側進行的遠端會話。
 
    ![查看會話](./media/session-monitoring/view-session.png)
 3. 選取 **[** 重新整理] 以查看已更新的遠端會話清單。 當您選取 [重新整理] 時，Azure 防禦會提取最新的監視資訊，並在入口網站中重新整理。
 
-   ![恢復](./media/session-monitoring/refresh.png)
+   ![refresh](./media/session-monitoring/refresh.png)
 
 >[!IMPORTANT]
 > 針對來自閘道管理員的輸入流量啟用埠4443，讓會話監視能夠正常執行。

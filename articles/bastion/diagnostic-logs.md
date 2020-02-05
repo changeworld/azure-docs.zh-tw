@@ -1,26 +1,26 @@
 ---
-title: 啟用及使用 Azure 防禦診斷記錄 |Microsoft Docs
+title: 啟用及使用 Azure 防禦診斷記錄
 description: 在本文中，您將瞭解如何啟用及使用 Azure 防禦診斷記錄。
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 8ae421b48f3cfa8055f636052c990f99e0c775b4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2167a17d5d388c97ad357398c4ac2676e43be5a4
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512401"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989445"
 ---
 # <a name="enable-and-work-with-bastion-diagnostic-logs"></a>啟用和使用防禦診斷記錄
 
-當使用者使用 Azure 防禦連線到工作負載時，防禦可以記錄遠端會話的診斷。 接著，您可以使用診斷來查看哪些使用者連線到哪些工作負載，以及從何處和其他這類相關的記錄資訊。 若要使用診斷，您必須在 Azure 防禦上啟用診斷記錄。 本文可協助您啟用診斷記錄，然後再查看記錄。
+當使用者使用 Azure 防禦連線到工作負載時，防禦可以記錄遠端會話的診斷。 接著，您可以使用診斷，來查看哪些使用者連線到哪些工作負載、從何處，以及其他這類相關的記錄資訊。 若要使用診斷，您必須在 Azure 防禦上啟用診斷記錄。 本文可協助您啟用診斷記錄，然後再查看記錄。
 
 ## <a name="enable"></a>啟用診斷記錄
 
-1. 在  [Azure 入口網站](https://portal.azure.com)中，流覽至您的 azure 防禦資源，然後從 Azure 防禦頁面選取 **診斷設定**]。
+1. 在  [Azure 入口網站](https://portal.azure.com)中，流覽至您的 azure 防禦資源，然後從 Azure 防禦頁面選取 **診斷設定**。
 
    ![診斷設定](./media/diagnostic-logs/1diagnostics-settings.png)
 2. 選取 [**診斷設定**]，然後選取 [ **+ 新增診斷設定**] 以新增記錄的目的地。

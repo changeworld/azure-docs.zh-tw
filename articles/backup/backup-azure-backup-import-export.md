@@ -4,12 +4,12 @@ description: 了解 Azure 備份如何讓您使用 Azure 匯入/匯出服務在�
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: 47d4c4fb63c2aa0e2944456048b06070e235f012
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 162d129eaea83ef6623daaa063e8a088c021e25d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997355"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022608"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>在 Azure 備份中離線備份工作流程
 
@@ -75,6 +75,15 @@ Azure 備份的離線植入程序與 [Azure 匯入/匯出服務](../storage/comm
 
     ![匯入畫面](./media/backup-azure-backup-import-export/offlinebackup_inputs.png)
 
+2. 選取 [**使用我自己的磁片傳送**] 選項。
+
+    >[!NOTE]
+    >我們建議使用 Azure 資料箱選項，以離線傳輸初始備份資料。 此選項可讓您藉由提供 Microsoft 專屬、安全且可篡改的 Azure 資料箱裝置（可由 MARS 代理程式直接寫入備份資料），來節省購買您自己的 Azure 相容磁片所需的工作。
+
+3. 按 **[下一步]** 並仔細填入輸入：
+
+    ![輸入您的磁片詳細資料](./media/backup-azure-backup-import-export/your-disk-details.png)
+
    輸入的說明如下：
 
     * **預備位置**：初始備份所寫入的暫時儲存體位置。 暫存位置可能位於網路共用或本機電腦上。 如果複本電腦和來源電腦不同，則建議您指定預備位置的完整網路路徑。
@@ -85,15 +94,15 @@ Azure 備份的離線植入程序與 [Azure 匯入/匯出服務](../storage/comm
   
    在畫面上提供輸入，然後按 [下一步]。 儲存所提供的「暫存位置」和「Azure 匯入作業名稱」 ，因為這是準備磁碟時所需的資訊。
 
-2. 出現系統提示時，登入您的 Azure 訂用帳戶。 您必須先登入，Azure 備份才能建立 Azure Active Directory 應用程式，並提供必要的權限來存取 Azure 匯入服務。
+4. 出現系統提示時，登入您的 Azure 訂用帳戶。 您必須先登入，Azure 備份才能建立 Azure Active Directory 應用程式，並提供必要的權限來存取 Azure 匯入服務。
 
-    ![立即備份](./media/backup-azure-backup-import-export/azurelogin.png)
+    ![立即備份](./media/backup-azure-backup-import-export/azure-login.png)
 
-3. 完成工作流程，然後在 Azure 備份代理程式管理主控台中，按一下 [立即備份]。
+5. 完成工作流程，然後在 Azure 備份代理程式管理主控台中，按一下 [立即備份]。
 
     ![立即備份](./media/backup-azure-backup-import-export/backupnow.png)
 
-4. 在精靈的 [確認] 頁面中，按一下 [備份]。 在設定過程中，初始備份會寫入暫存區域。
+6. 在精靈的 [確認] 頁面中，按一下 [備份]。 在設定過程中，初始備份會寫入暫存區域。
 
    ![確認您已經準備好立即備份](./media/backup-azure-backup-import-export/backupnow-confirmation.png)
 
@@ -122,7 +131,7 @@ Azure 備份的離線植入程序與 [Azure 匯入/匯出服務](../storage/comm
 
     ```.\AzureOfflineBackupDiskPrep.exe s:<Staging Location Path>```
 
-    | 參數 | 描述 |
+    | 參數 | 說明 |
     | --- | --- |
     | s:&lt;*預備位置路徑*&gt; |強制性輸入用來提供在**起始離線備份**工作流程中所輸入的暫存位置路徑。 |
     | p:&lt;*PublishSettingsFile 的路徑*&gt; |選擇性輸入內容，用來提供在**起始離線備份**工作流程中所輸入的 **Azure 發佈設定**檔案路徑。 |
@@ -206,4 +215,3 @@ Azure 備份的離線植入程序與 [Azure 匯入/匯出服務](../storage/comm
 ## <a name="next-steps"></a>後續步驟
 
 * 如有任何關於 Azure 匯入/匯出工作流程的問題，請參閱 [使用 Microsoft Azure 匯入/匯出服務將資料傳輸至 Blob 儲存體](../storage/common/storage-import-export-service.md)。
-

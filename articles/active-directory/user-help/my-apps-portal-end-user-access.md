@@ -2,31 +2,38 @@
 title: 找出 & 在我的應用程式入口網站上使用應用程式-Azure AD
 description: 瞭解如何尋找我的應用程式入口網站，以及如何存取貴組織的雲端式應用程式。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 3/21/2019
-ms.author: lizross
+ms.date: 02/03/2020
+ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: c15580481c153a58122db593f678998be485b57d
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: a5dae30c8b8f43602581b39005389211da83cb9e
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704998"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022268"
 ---
-# <a name="locate-and-use-your-organizations-cloud-based-apps-on-the-my-apps-portal"></a>在我的應用程式入口網站上找出並使用您組織的雲端式應用程式
+# <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>從我的應用程式入口網站登入和啟動應用程式
 
-您可以透過 [我的應用程式] Web 入口網站使用工作或學校帳戶，來檢視和啟動貴組織的許多雲端式應用程式、更新您的設定檔和帳戶資訊、查看您的**群組**資訊，以及執行您應用程式和群組的**存取權檢閱**。 如果您沒有 [我的應用程式] 入口網站的存取權，則必須連絡技術服務人員以取得權限。
+您可以使用公司或學校帳戶搭配 web 型**我的應用程式**入口網站來執行下列動作：
+
+- 查看和啟動許多組織的雲端式應用程式
+- 更新您的設定檔和帳戶資訊
+- 查看您的**群組**資訊
+- 針對您的應用程式和群組執行**存取權審查**
+
+如果您沒有 [我的應用程式] 入口網站的存取權，請連絡技術服務人員以取得權限。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
->[!Important]
->本內容適用於使用者。 如果您是系統管理員，可以在[應用程式管理文件](https://docs.microsoft.com/azure/active-directory/manage-apps)中找到更多關於如何設定和管理雲端式應用程式的資訊。
+> [!Important]
+> 本內容適用于我的應用程式使用者。 如果您是系統管理員，可以在[應用程式管理文件](https://docs.microsoft.com/azure/active-directory/manage-apps)中找到更多關於如何設定和管理雲端式應用程式的資訊。
 
 ## <a name="supported-browsers"></a>支援的瀏覽器
 
@@ -66,7 +73,8 @@ ms.locfileid: "76704998"
 
 您的**網址**列右側會加入一個圖示，讓您可以登入並自訂擴充功能。
 
-#### <a name="to-change-your-my-apps-portal-using-the-extension"></a>使用延伸模組來變更您的我的應用程式入口網站
+## <a name="to-change-your-my-apps-portal-using-the-extension"></a>使用延伸模組來變更您的我的應用程式入口網站
+
 您可以在 [**最近使用**的] 區段中選擇要查看的應用程式數目，並決定是否要允許您組織的內部 url 重新導向。
 
 1. 選取 [新增**我的應用程式安全登入延伸**模組] 圖示 ![延伸模組圖示，](media/my-apps-portal/my-apps-portal-extension-icon.png) 在**網址**列的右邊，然後選取 [登**入以開始**使用]。
@@ -78,18 +86,20 @@ ms.locfileid: "76704998"
     ![擴充功能的 [設定] 頁面，其中顯示可用的自訂專案](media/my-apps-portal/my-apps-portal-extension-settings-page.png)
 
 ## <a name="access-and-use-the-my-apps-portal-by-device"></a>依裝置存取和使用我的應用程式入口網站
+
 您可以從受 Intune 管理的瀏覽器，或從 iOS 或 Android 行動裝置存取和使用電腦上的我的應用程式入口網站。
 
 ![我的應用程式入口網站中的 [應用程式] 頁面](media/my-apps-portal/my-apps-portal-apps-page.png)
 
 ### <a name="access-and-use-the-my-apps-portal-on-your-computer"></a>在您的電腦上存取並使用我的應用程式入口網站
+
 如果您有權存取和使用組織的雲端式應用程式，您可以透過**我的應用程式**入口網站來取得。
 
-1. 登入您的公司或學校帳戶。
+1. 在您的電腦上登入您的公司或學校帳戶。
 
-2. 開啟您的網頁瀏覽器並移至 https://myapps.microsoft.com ，或使用您組織所提供的連結。 例如，您可能會被導向至您組織的自訂頁面，例如 https://myapps.microsoft.com/contoso.com 。
+2. 在支援的網頁瀏覽器中，開啟並移至 [https://myapps.microsoft.com ]，或使用組織提供的連結（如果他們將您導向至自訂網頁，例如 `https://myapps.microsoft.com/contoso.com` ）。
 
-    [**應用程式**] 頁面隨即出現，其中顯示貴組織所擁有且可供您使用的所有雲端應用程式。
+    [**應用程式**] 頁面隨即出現，其中顯示貴組織所擁有可供您使用的所有雲端應用程式。
 
 3. 從 [**應用程式**] 頁面中，選取您想要開始使用的應用程式。
 
@@ -101,7 +111,7 @@ ms.locfileid: "76704998"
 
 1. 在您的行動裝置上，從[Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8)和[Google Play 商店](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser)下載並安裝 Intune Managed Browser 應用程式。
 
-2. 開啟 Intune Managed Browser 應用程式、移至 https://myapps.microsoft.com ，或使用貴組織所提供的連結。 例如，您可能會被導向至您組織的自訂頁面，例如 https://myapps.microsoft.com/contoso.com 。
+2. 開啟 Intune Managed Browser 應用程式、移至 https://myapps.microsoft.com ，或使用組織提供的連結（如果他們將您導向至自訂頁面，例如 https://myapps.microsoft.com/contoso.com ）。
 
     [**應用程式**] 頁面隨即出現，其中顯示貴組織所擁有且可供您使用的所有雲端應用程式。
 
@@ -111,13 +121,13 @@ ms.locfileid: "76704998"
 
 ### <a name="access-and-use-the-my-apps-portal-on-an-ios-device"></a>在 iOS 裝置上存取和使用我的應用程式入口網站
 
-從執行 iOS 版本7或更新版本的 iPhone 或 iPad 裝置，觀看並使用**我的應用程式**入口網站。 您也可以安裝我的應用程式行動裝置[應用程式](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8)，以在您的 iOS 裝置上存取貴組織的應用程式。 
+從執行 iOS 版本7或更新版本的 iPhone 或 iPad 裝置，觀看並使用**我的應用程式**入口網站。 您也可以安裝我的應用程式行動裝置[應用程式](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8)，以在您的 iOS 裝置上存取貴組織的應用程式。
 
 1. 在您的行動裝置上，啟動 web 瀏覽器應用程式，例如 Safari。
 
-2. 請移至 https://myapps.microsoft.com ，或使用您組織所提供的連結。 例如，您可能會被導向至您組織的自訂頁面，例如 https://myapps.microsoft.com/contoso.com 。
+2. 移至 [https://myapps.microsoft.com ]，或使用組織提供的連結（如果他們將您導向至自訂頁面，例如 https://myapps.microsoft.com/contoso.com ）。
 
-    [**應用程式**] 頁面隨即出現，其中顯示貴組織所擁有且可供您使用的所有雲端應用程式。
+    [**應用程式**] 頁面隨即出現，其中顯示貴組織所擁有可供您使用的所有雲端應用程式。
 
 3. 從 [**應用程式**] 頁面中，選取您想要開始使用的應用程式。
 
@@ -129,7 +139,7 @@ ms.locfileid: "76704998"
 
 1. 在您的行動裝置上，啟動 web 瀏覽器應用程式，例如 Google Chrome。
 
-2. 請移至 https://myapps.microsoft.com ，或使用您組織所提供的連結。 例如，您可能會被導向至您組織的自訂頁面，例如 https://myapps.microsoft.com/contoso.com 。
+2. 移至 [https://myapps.microsoft.com ]，或使用組織提供的連結（如果他們將您導向至自訂頁面，例如 https://myapps.microsoft.com/contoso.com ）。
 
     [**應用程式**] 頁面隨即出現，其中顯示貴組織所擁有且可供您使用的所有雲端應用程式。
 
@@ -141,17 +151,39 @@ ms.locfileid: "76704998"
 
 如果您的系統管理員已授與您許可權，您可以將新的應用程式新增至 [**應用程式**] 頁面。
 
-1. 從 [**應用程式**] 頁面中，選取 [**新增應用程式**]。
+1. 在 [**應用程式**] 頁面中，執行下列其中一項：
+    - 如果您是原始我的應用程式體驗，請選取 [**新增應用程式**]，如下所示。
 
-    [**新增應用程式**] 頁面隨即出現。
+      ![我的應用程式入口網站中的 [新增應用程式] 頁面](media/my-apps-portal/my-apps-portal-add-apps-page.png)
 
-    ![我的應用程式入口網站中的 [新增應用程式] 頁面](media/my-apps-portal/my-apps-portal-add-apps-page.png)
+    - 如果您處於更新的我的應用程式體驗，請選取 [**新增自助應用程式**]。
+
+       ![在我的應用程式入口網站的 myapplications.microsoft.com 中新增應用程式頁面](media/my-apps-portal/my-apps-portal-add-app-link.png)
 
 2. 從提供的清單中選取您想要新增的應用程式，然後選取 [**新增**]。
 
 3. 應用程式會新增至 [**應用程式**] 頁面上的清單。
 
-    某些應用程式可能需要系統管理員核准，才能新增。 在此情況下，應用程式在系統管理員核准之前，不會新增至 [**應用程式**] 頁面。
+    某些應用程式可能需要系統管理員核准，才能新增。 發生這種情況時，應用程式就不會新增至 [**應用程式**] 頁面，直到系統管理員核准為止。
+
+## <a name="start-a-cloud-based-app"></a>啟動以雲端為基礎的應用程式
+
+您可以從**我的應用程式**入口網站啟動任何可用的雲端型應用程式。 您只會看到您有權使用的應用程式。
+
+- 從 [**應用程式**] 頁面中，選取您想要開始使用的應用程式。
+
+    隨即會開啟應用程式的新頁面，您可以在此登入（如有需要），或開始使用應用程式。
+
+## <a name="activities-in-the-my-apps-portal"></a>我的應用程式入口網站中的活動
+
+進入**我的應用程式**入口網站之後，您可以：
+
+- 將應用程式組織為貴組織所建立和提供的各種類別。 如需詳細資訊，請參閱[在我的應用程式入口網站中存取和使用集合](my-applications-portal-workspaces.md)。
+
+- 檢閱、更新或撤銷已授與應用程式的權限。 如需詳細資訊，請參閱在[我的應用程式入口網站中編輯或撤銷應用程式許可權](my-applications-portal-permissions-saved-accounts.md)。
+
+>[!Note]
+>如果您沒有看到任何可用的集合或類別，這表示您的系統管理員尚未設定或與您共用任何。 請洽詢您組織的技術服務人員，以取得共用集合的其他協助或許可權。
 
 ## <a name="next-steps"></a>後續步驟
 
