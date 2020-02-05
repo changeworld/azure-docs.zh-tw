@@ -63,7 +63,7 @@ ms.locfileid: "75433221"
     | **訂用帳戶** | 您的訂用帳戶 | 用來建立資源的訂用帳戶。 | 
     | **[資源群組](../azure-resource-manager/management/overview.md)**  | myResourceGroup | 選擇 `myResourceGroup`，或使用您的函數應用程式建立的資源群組。 當您完成本教學課程時，針對函數應用程式、WordPress VM 和主控方案使用相同的資源群組，可讓您更輕鬆地清除資源。 |
     | **虛擬機器名稱** | VNET Wordpress | VM 名稱在資源群組中必須是唯一的 |
-    | **[區內](https://azure.microsoft.com/regions/)** | (歐洲) 西歐 | 選擇接近您或接近存取 VM 之函數的區域。 |
+    | **[區內](https://azure.microsoft.com/regions/)** | (歐洲) 歐洲西部 | 選擇接近您或接近存取 VM 之函數的區域。 |
     | **大小** | B1s | 選擇 [**變更大小**]，然後選取 B1s 標準映射，其具有 1 vCPU 和 1 GB 的記憶體。 |
     | **驗證類型** | 密碼 | 若要使用密碼驗證，您也必須指定使用者**名稱**、安全**密碼**，然後**確認密碼**。 在本教學課程中，您不需要登入 VM，除非您需要進行疑難排解。 |
 

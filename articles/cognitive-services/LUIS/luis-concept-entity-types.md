@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: diberry
-ms.openlocfilehash: 6ee156efb5512c92d86ba05513b6a2b91df4eae8
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
-ms.translationtype: MT
+ms.openlocfilehash: 808e110ccb45b0b4f7bf34a43597c1f7a7bc0fed
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976956"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422574"
 ---
 # <a name="entities-and-their-purpose-in-luis"></a>實體及其在 LUIS 中的用途
 
@@ -75,7 +75,7 @@ ms.locfileid: "74976956"
 
 機器學習的實體會根據透過定型語句學習到的內容觸發。 **條件約束**是套用至機器學習實體的選擇性規則，會根據非機器學習的實體（例如[清單](reference-entity-list.md)或[Regex](reference-entity-regular-expression.md)）的精確文字比對定義，進一步限制觸發。 例如，`size` 機器學習的實體可以有 `sizeList` 清單實體的條件約束，限制只有在遇到 `sizeList` 實體內所包含的值時，才會觸發 `size` 實體。
 
-[**描述**](luis-concept-feature.md)項是為了提升預測之單字或片語的相關性而套用的功能。 因為它們是用來*描述*意圖或實體，所以稱為 *「描述項*」。 描述項說明資料的特性或屬性，例如 LUIS 觀察及學習的重要單字或片語。
+[**描述**](luis-concept-feature.md)項是為了提升預測之單字或片語的相關性而套用的功能。 因為它們是用來*描述*意圖或實體，所以稱為 *「描述項*」。 描述元會說明資料的特性或屬性，例如重要的單字或片語。 該 LUIS 會觀察並學習。
 
 當您在 LUIS 應用程式中建立片語清單功能時，預設會全域啟用，並會在所有意圖和實體之間平均套用。 不過，如果您將片語清單套用為機器學習實體（或*模型*）的描述項（功能），則其範圍會縮減為只套用至該模型，而且不再與所有其他模型搭配使用。 使用片語清單做為模型的描述項有助於分解，方法是協助其適用之模型的精確度。
 
@@ -141,4 +141,3 @@ LUIS 入口網站會顯示實體（在範例中為語句）與您所選取的實
 請參閱[新增實體](luis-how-to-add-entities.md)，以深入了解如何將實體新增至 LUIS 應用程式。
 
 請參閱[教學課程：在 Language Understanding （LUIS）中使用機器學習的實體從使用者語句解壓縮結構化資料](tutorial-machine-learned-entity.md)，以瞭解如何使用機器學習的實體從語句中解壓縮結構化資料。
- 
