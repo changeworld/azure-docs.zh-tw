@@ -7,12 +7,12 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 648eb6cdb1787e1cbdf82bd8e5c8499b0dbaf02c
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: d8c3bde0f32c1df6c98f6a71f6ab830c21256903
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772265"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906281"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>教學課程：將 Azure 串流分析部署為 IoT Edge 模組
 
@@ -197,8 +197,8 @@ Azure IoT Edge 裝置：
     | --- | --- |
     | `telemetryToCloud` | `FROM /messages/modules/SimulatedTemperatureSensor/* INTO $upstream` |
     | `alertsToCloud` | `FROM /messages/modules/{moduleName}/* INTO $upstream` |
-    | `alertsToReset` | `FROM /messages/modules/{moduleName}/* INTO BrokeredEndpoint(\"/modules/SimulatedTemperatureSensor/inputs/control\")` |
-    | `telemetryToAsa` | `FROM /messages/modules/SimulatedTemperatureSensor/* INTO BrokeredEndpoint(\"/modules/{moduleName}/inputs/temperature\")`|
+    | `alertsToReset` | `FROM /messages/modules/{moduleName}/* INTO BrokeredEndpoint("/modules/SimulatedTemperatureSensor/inputs/control")` |
+    | `telemetryToAsa` | `FROM /messages/modules/SimulatedTemperatureSensor/* INTO BrokeredEndpoint("/modules/{moduleName}/inputs/temperature")`|
 
     您在此處宣告的路由，會定義通過 IoT Edge 裝置的資料流程。 來自 SimulatedTemperatureSensor 的遙測資料會傳送至 IoT 中樞，以及先前在串流分析作業中設定的**溫度**輸入。 **警示**輸出訊息會傳送至 IoT 中樞和 SimulatedTemperatureSensor 模組，以觸發重設命令。
 

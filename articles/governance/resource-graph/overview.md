@@ -3,12 +3,12 @@ title: Azure Resource Graph 概觀
 description: 了解 Azure Resource Graph 服務如何能夠在訂用帳戶和租用戶之間，大規模地進行複雜的資源查詢。
 ms.date: 10/21/2019
 ms.topic: overview
-ms.openlocfilehash: 301543075d587079af0f53b6200890a75bfbb768
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 1e84de19d35f0c5f5d7975c8a94d5164100013e4
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965967"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76936524"
 ---
 # <a name="what-is-azure-resource-graph"></a>什麼是 Azure Resource Graph？
 
@@ -23,9 +23,9 @@ Azure Resource Graph 是 Azure 中的一項服務，透過大規模查詢指定�
 
 > [!NOTE]
 > Azure Resource Graph 負責提供 Azure 入口網站的搜尋列、「所有資源」的全新瀏覽體驗以及用於 Azure 原則的[變更記錄](../policy/how-to/determine-non-compliance.md#change-history-preview)
->   「視覺效果差異」。 其目的是協助客戶管理大規模的環境。
+>  __ 「視覺效果差異」。 其目的是協助客戶管理大規模的環境。
 
-[!INCLUDE [service-provider-management-toolkit](../../../includes/azure-lighthouse-supported-service.md)]
+[!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="how-does-resource-graph-complement-azure-resource-manager"></a>Resource Graph 輔助 Resource Manager 的方式
 

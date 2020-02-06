@@ -3,24 +3,24 @@ title: 教學課程 - 使用 Azure 流量管理員設定子網路流量路由
 description: 本教學課程說明如何設定流量管理員，以將流量從使用者子網路路由傳送到特定端點。
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
-ms.author: allensu
-ms.openlocfilehash: 00bc453ebb0e467f48bd886fc7c6b6c422693864
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.author: rohink
+ms.openlocfilehash: b00bc1c95e2f593523c584c4abfe9381e5697f79
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420269"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939465"
 ---
 # <a name="tutorial-direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>教學課程：使用流量管理員根據使用者子網路將流量導向特定端點
 
-本文說明如何設定子網路流量路由方法。 **子網路**流量路由方法可讓您將一組 IP 位址範圍對應至特定端點，而當流量管理員收到要求時，它會檢查要求的來源 IP，並傳回與它相關聯的端點。
+本文說明如何設定子網路流量路由方法。 **子網路**流量路由方法可讓您將一組 IP 位址範圍對應至特定端點，而當流量管理員收到要求時，會檢查要求的來源 IP，並傳回與其相關聯的端點。
 
 在本教學課程中，使用子網路路由時，流量會根據使用者的查詢 IP 位址而路由傳送至內部網站或生產網站。
 
@@ -36,12 +36,12 @@ ms.locfileid: "74420269"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要查看流量管理員的運作，本教學課程會要求您部署下列項目：
 
-- 在不同 Azure 區域中執行的兩個基本網站，分別是**美國東部** (作為內部網站) 和**西歐** (作為生產網站)。
-- 用於測試流量管理員的兩個測試 VM - 一個 VM 位於**美國東部**，另一個 VM 位於**西歐**。
+- 在不同 Azure 區域中執行的兩個基本網站，分別是**美國東部** (作為內部網站) 和**歐洲西部** (作為生產網站)。
+- 用於測試流量管理員的兩個測試 VM - 一個 VM 位於**美國東部**，另一個 VM 位於**歐洲西部**。
 
 測試 VM 可用來說明流量管理員如何根據使用者查詢的來源子網路，將使用者流量路由傳送至內部網站或生產網站。
 
@@ -53,7 +53,7 @@ ms.locfileid: "74420269"
 
 在本節中，您會建立兩個網站執行個體，這兩個執行個體可在兩個 Azure 區域中為流量管理員設定檔提供兩個服務端點。 請執行下列步驟來建立這兩個網站：
 
-1. 建立兩個 VM 來執行基本網站 - 一個位於**美國東部**，另一個位於**西歐**。
+1. 建立兩個 VM 來執行基本網站 - 一個位於**美國東部**，另一個位於**歐洲西部**。
 2. 在每個 VM 上安裝 IIS 伺服器並更新預設網站頁面，該頁面描述使用者在造訪網站時所連線的 VM 名稱。
 
 #### <a name="create-vms-for-running-websites"></a>建立 VM 以供執行網站
@@ -212,7 +212,7 @@ ms.locfileid: "74420269"
 5. 您可能會在登入過程中收到憑證警告。 如果您收到警告，請選取 [是]  或 [繼續]  以繼續進行連線。
 6. 在 VM *myVMEastUS* 的網頁瀏覽器中，輸入流量管理員設定檔的 DNS 名稱，以檢視您的網站。 因為 VM myVMEastUS  IP 位址與端點 myInternalWebsiteEndpoint  相關聯，網頁瀏覽器會啟動測試網站伺服器 - myIISVMEastUS  。
 
-7. 接下來，使用步驟 1-5 來連線到位於**西歐**的 VM *myVMWestEurope*，並從這個 VM 瀏覽到流量管理員設定檔網域名稱。 因為 VM myVMWestEurope  IP 位址與端點 myProductionWebsiteEndpoint  相關聯，網頁瀏覽器會啟動測試網站伺服器 - myIISVMWestEurope  。
+7. 接下來，使用步驟 1-5 來連線到位於**歐洲西部**的 VM *myVMWestEurope*，並從這個 VM 瀏覽到流量管理員設定檔網域名稱。 因為 VM myVMWestEurope  IP 位址與端點 myProductionWebsiteEndpoint  相關聯，網頁瀏覽器會啟動測試網站伺服器 - myIISVMWestEurope  。
 
 ## <a name="delete-the-traffic-manager-profile"></a>刪除流量管理員設定檔
 

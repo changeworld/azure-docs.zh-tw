@@ -1,14 +1,14 @@
 ---
 title: 部署 PCI-DSS 3.2.1 藍圖範例
 description: 支付卡產業資料安全性標準 v3.2.1 藍圖範例的部署步驟，其中包括藍圖成品參數的詳細資料。
-ms.date: 06/24/2019
+ms.date: 01/29/2020
 ms.topic: sample
-ms.openlocfilehash: aa641b35f1a7533a13803e7984c83df2f3268de6
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 9df9392430fd0496ffb5e635a6fc3e31ba708208
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546556"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905551"
 ---
 # <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>部署 PCI-DSS 3.2.1 藍圖範例
 
@@ -91,7 +91,7 @@ ms.locfileid: "74546556"
 
 下表提供藍圖成品參數的清單：
 
-|成品名稱|成品類型|參數名稱|說明|
+|成品名稱|成品類型|參數名稱|描述|
 |-|-|-|-|
 |\[預覽\] 稽核 PCI v3.2.1:2018 控制及部署特定 VM 擴充功能，以支援稽核需求|原則指派|資源類型清單 | 稽核所選資源類型的診斷設定。 預設會選取所有資源| 
 |允許的位置|原則指派|允許的位置清單|允許在其中部署任何資源的資料中心位置清單。 這份清單可自訂為全球所需的 Azure 位置。 選取您想要允許的位置。| 
