@@ -3,23 +3,23 @@ title: Azure Migrate 中的 Hyper-v 遷移支援
 description: 瞭解 Azure Migrate 的 Hyper-v 遷移支援。
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 96bf423f25911d0befbfd420ac2fb01ba6c8fb65
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 4ca946597417ccde0e00c8bf09c70207bc4f85b9
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030259"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031641"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Hyper-v 遷移的支援矩陣
 
 本文摘要說明使用[Azure Migrate：伺服器遷移](migrate-services-overview.md#azure-migrate-server-migration-tool)來遷移 hyper-v vm 的支援設定和限制。 如果您要尋找評估 Hyper-v Vm 以遷移至 Azure 的相關資訊，請參閱[評估支援對照表](migrate-support-matrix-hyper-v.md)。
 
-## <a name="migration-limitations"></a>移轉限制
+## <a name="migration-limitations"></a>遷移限制
 
 您一次最多可以選取10部 Vm 來進行複寫。 如果您想要遷移更多電腦，請以10個群組進行複寫。
 
 
-## <a name="hyper-v-hosts"></a>Hyper-V 主機
+## <a name="hyper-v-hosts"></a>Hyper-v 主機
 
 | **支援**                | **詳細資料**               
 | :-------------------       | :------------------- |
@@ -36,7 +36,7 @@ ms.locfileid: "76030259"
 | **作業系統** | Azure 支援的所有[Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)和[Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)作業系統。 |
 | **權限**           | 您需要您想要評估的每部 Hyper-v VM 上的系統管理員許可權。 |
 | **Integration Services**       | [Hyper-v Integration Services](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services)必須在您評估的 vm 上執行，才能捕捉作業系統資訊。 |
-| **Azure 的必要變更** | 有些 VM 可能需要變更，才能在 Azure 中執行。 Azure Migrate 會針對下列作業系統自動進行這些變更：<br/> -Red Hat Enterprise Linux 6.5 +、7.0 +<br/> -CentOS 6.5 +、7.0 +</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS、16.04 LTS、18.04 LTS<br/> -Debian 7、8<br/><br/> 如果是其他作業系統，您必須在進行遷移之前手動進行調整。 相關文章包含如何執行這項操作的指示。 |
+| **Azure 的必要變更** | 有些 VM 可能需要變更，才能在 Azure 中執行。 您必須先手動進行調整，再進行遷移。 相關文章包含如何執行這項操作的指示。 |
 | **Linux 開機**                 | 如果/boot 是在專用磁碟分割上，它應該位於 OS 磁片上，而不會散佈到多個磁片上。<br/> 如果/boot 是根（/）分割區的一部分，則 '/' 磁碟分割應該位於 OS 磁片上，而不是跨越其他磁片。 |
 | **UEFI 開機**                  | Azure 中已遷移的 VM 會自動轉換為 BIOS 開機 VM。 VM 應僅執行 Windows Server 2012 和更新版本。 OS 磁片最多隻能有五個磁碟分割或更少，且 OS 磁片的大小應小於 300 GB。
   |
@@ -66,11 +66,11 @@ ms.locfileid: "76030259"
 資料磁碟計數 | 64 或以下。 | 若不支援，則檢查會失敗。
 資料磁碟大小 | 最多 4,095 GB | 若不支援，則檢查會失敗。
 網路介面卡 | 支援多個介面卡。 |
-共用 VHD | 不支援。 | 若不支援，則檢查會失敗。
+共用的 VHD | 不支援。 | 若不支援，則檢查會失敗。
 FC 磁碟 | 不支援。 | 若不支援，則檢查會失敗。
 BitLocker | 不支援。 | 為電腦啟用複寫之前必須先停用 BitLocker。
 VM 名稱 | 從 1 到 63 個字元。<br/> 只能使用字母、數字和連字號。<br/><br/> 電腦名稱必須以字母或數字為開頭或結尾。 |  更新 Site Recovery 中電腦屬性的值。
-在遷移後連接-Windows | 若要在遷移後連線至執行 Windows 的 Azure Vm：<br/> -在遷移之前，在內部部署 VM 上啟用 RDP。 確定已針對 [公用] 設定檔新增 TCP 和 UDP 規則，且在 [Windows 防火牆] > [允許的應用程式] 中已針對所有設定檔允許 RDP。<br/> 針對站對站 VPN 存取，啟用 RDP 並允許**Windows 防火牆**中的 Rdp -> **允許的應用程式和功能**用於**網域和專用**網。 此外，請檢查作業系統的 SAN 原則是否設定為**OnlineAll**。 [深入了解](prepare-for-migration.md)。 |
+在遷移後連接-Windows | 若要在遷移後連線至執行 Windows 的 Azure Vm：<br/> -在遷移之前，在內部部署 VM 上啟用 RDP。 確定已針對 [公用] 設定檔新增 TCP 和 UDP 規則，且在 [Windows 防火牆] > [允許的應用程式] 中已針對所有設定檔允許 RDP。<br/> 針對站對站 VPN 存取，啟用 RDP 並允許**Windows 防火牆**中的 Rdp -> **允許的應用程式和功能**用於**網域和專用**網。 此外，請檢查作業系統的 SAN 原則是否設定為**OnlineAll**。 [詳細資訊](prepare-for-migration.md)。 |
 在遷移後連接-Linux | 若要在使用 SSH 進行遷移之後連線到 Azure Vm：<br/> 在進行遷移之前，請在內部部署機器上，確認安全殼層服務已設定為 [啟動]，且防火牆規則允許 SSH 連線。<br/> 容錯移轉之後，在 Azure VM 上，允許已容錯移轉的 VM 上的網路安全性群組規則之 SSH 埠的連入連線，以及它所連接的 Azure 子網。 此外，請新增 VM 的公用 IP 位址。 |  
 
 ## <a name="next-steps"></a>後續步驟

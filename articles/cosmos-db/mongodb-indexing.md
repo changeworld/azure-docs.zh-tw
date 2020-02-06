@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: e51e96c0c553bcf37284878cab11f3ec592ddd05
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: c8879884cf3d882e6a6b441244ed139072bedeeb
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72753382"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029464"
 ---
 # <a name="indexing-using-azure-cosmos-dbs-api-for-mongodb"></a>使用 Azure Cosmos DB 的 MongoDB 版 API 進行索引編製
 
@@ -32,6 +32,89 @@ Azure Cosmos DB 的 MongoDB 版 API 會運用 Cosmos DB 的自動索引管理功
 使用3.6 連線通訊協定的帳戶支援真正的複合索引。 下列命令會在欄位 ' a ' 和 ' b ' 上建立複合索引： `db.coll.createIndex({a:1,b:1})`
 
 複合索引可以用來一次在多個欄位上有效率地進行排序，例如： `db.coll.find().sort({a:1,b:1})`
+
+### <a name="track-the-index-progress"></a>追蹤索引進度
+
+3\.6 版的 Azure Cosmos DB 的 MongoDB API 帳戶支援 `currentOp()` 命令，以追蹤資料庫實例上的索引進度。 此命令會傳回一份檔，其中包含資料庫實例上進行中作業的相關資訊。 `currentOp` 命令是用來追蹤原生 MongoDB 中所有進行中的作業，而在 Azure Cosmos DB 適用于 MongoDB 的 API 中，此命令只支援追蹤索引操作。
+
+以下是一些範例，示範如何使用 `currentOp` 命令來追蹤索引進度：
+
+•取得集合的索引進度：
+
+   ```shell
+   db.currentOp({"command.createIndexes": <collectionName>, "command.$db": <databaseName>})
+   ```
+
+•取得資料庫中所有集合的索引進度：
+
+  ```shell
+  db.currentOp({"command.$db": <databaseName>})
+  ```
+
+•取得 Azure Cosmos 帳戶中所有資料庫和集合的索引進度：
+
+  ```shell
+  db.currentOp({"command.createIndexes": { $exists : true } })
+  ```
+
+索引進度詳細資料包含目前索引作業的進度百分比。 下列範例顯示索引進度的不同階段的輸出檔案格式：
+
+1. 如果 ' foo ' 集合上的索引作業和具有60% 索引編制的 ' bar ' 資料庫已完成，則會有下列輸出檔案。 `Inprog[0].progress.total` 顯示100做為目標完成。
+
+   ```json
+   {
+        "inprog" : [
+        {
+                ………………...
+                "command" : {
+                        "createIndexes" : foo
+                        "indexes" :[ ],
+                        "$db" : bar
+                },
+                "msg" : "Index Build (background) Index Build (background): 60 %",
+                "progress" : {
+                        "done" : 60,
+                        "total" : 100
+                },
+                …………..…..
+        }
+        ],
+        "ok" : 1
+   }
+   ```
+
+2. 對於剛在 ' foo ' 集合和 ' bar ' 資料庫上啟動的索引作業，輸出檔案可能會顯示0% 的進度，直到達到可測量的層級為止。
+
+   ```json
+   {
+        "inprog" : [
+        {
+                ………………...
+                "command" : {
+                        "createIndexes" : foo
+                        "indexes" :[ ],
+                        "$db" : bar
+                },
+                "msg" : "Index Build (background) Index Build (background): 0 %",
+                "progress" : {
+                        "done" : 0,
+                        "total" : 100
+                },
+                …………..…..
+        }
+        ],
+       "ok" : 1
+   }
+   ```
+
+3. 當進行中的索引作業完成時，輸出檔案會顯示空白的 inprog 作業。
+
+   ```json
+   {
+      "inprog" : [],
+      "ok" : 1
+   }
+   ```
 
 ## <a name="indexing-for-version-32"></a>3\.2 版的索引
 

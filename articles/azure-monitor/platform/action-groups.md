@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 8/19/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: a954898a334ead15d8ffdf6dab6e6a309bd57089
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
-ms.translationtype: MT
+ms.openlocfilehash: cc01145423d2961e32bf17313a2873633399d21a
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659826"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901483"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 入口網站中建立和管理動作群組
 動作群組是 Azure 訂用帳戶擁有者定義的通知喜好設定集合。 Azure 監視器和服務健康狀態警示使用動作群組來通知使用者警示已被觸發。 根據使用者的需求而定，不同的警示可能使用相同的動作群組或不同的動作群組。 一個訂用帳戶中最多可設定 2,000 個動作群組。
@@ -88,13 +88,13 @@ ms.locfileid: "75659826"
 
 動作群組中的電子郵件動作數目可能有限。 請參閱[速率限制資訊](./../../azure-monitor/platform/alerts-rate-limiting.md)一文。
 
-### <a name="email-azure-resource-manager-role"></a>寄送電子郵件給 Azure Resource Manager 角色
+### <a name="email-azure-resource-manager-role"></a>Azure Resource Manager 角色的電子郵件
 傳送電子郵件給訂用帳戶角色的成員。
 
 動作群組中的電子郵件動作數目可能有限。 請參閱[速率限制資訊](./../../azure-monitor/platform/alerts-rate-limiting.md)一文。
 
 ### <a name="function"></a>函式
-設定為動作的函式應用程式的函式金鑰會透過函式 API 進行讀取，這目前需要 v2 函式應用程式，以將應用程式設定 "AzureWebJobsSecretStorageType" 設為 "files"。 如需詳細資訊，請參閱[函數 V2 中的金鑰管理變更]( https://aka.ms/funcsecrets)。
+在[Azure Functions](../../azure-functions/functions-create-first-azure-function.md#create-a-function-app)中呼叫現有的 HTTP 觸發程式端點。
 
 動作群組中的函式動作數目可能有限。
 

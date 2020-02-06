@@ -3,12 +3,12 @@ title: 容器即時資料的安裝 Azure 監視器（預覽） |Microsoft Docs
 description: 本文說明如何設定容器記錄（stdout/stderr）和事件的即時視圖，而不需使用 kubectl 與容器的 Azure 監視器。
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 5a3d020132e3c93eab7fec46d1ffe45d00b5ed43
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1ca52384e5ce657e4fedeb42e3304449a2d6be11
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75404708"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030663"
 ---
 # <a name="how-to-setup-the-live-data-preview-feature"></a>如何設定即時資料（預覽）功能
 
@@ -101,7 +101,7 @@ Azure AD 用戶端註冊必須重新設定，才能讓 Azure 入口網站將授�
 如需有關 Kubernetes 中 advanced security 設定的詳細資訊，請參閱[Kubernetes 檔](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)。 
 
 >[!NOTE]
->如果您要建立已啟用 RBAC 的新叢集，請參閱[整合 Azure Active Directory 與 Azure Kubernetes Service](../../aks/azure-ad-integration.md) ，並遵循步驟來設定 Azure AD 驗證。 在建立用戶端應用程式的步驟中，該區段中的附注會反白顯示您需要為容器的 Azure 監視器建立的兩個重新導向 Url。 
+>如果您要建立已啟用 RBAC 的新叢集，請參閱[整合 Azure Active Directory 與 Azure Kubernetes Service](../../aks/azure-ad-integration.md) ，並遵循步驟來設定 Azure AD 驗證。 在建立用戶端應用程式的步驟中，該區段中的附注會針對符合下列步驟3中所指定容器的 Azure 監視器，反白顯示您需要建立的兩個重新導向 Url。
 
 ### <a name="client-registration-reconfiguration"></a>用戶端註冊重新設定
 

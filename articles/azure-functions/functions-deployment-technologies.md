@@ -1,17 +1,17 @@
 ---
 title: Azure Functions 中的部署技術
 description: 瞭解您可以將程式碼部署到 Azure Functions 的不同方式。
-author: ColbyTresness
+author: georgewallace
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.author: cotresne
-ms.openlocfilehash: 39b3a96ddd3a9007600d1fa956c4e2d48f6adae9
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.author: gwallace
+ms.openlocfilehash: 7b95fae3c7b713a9f97c31578a3bb24a9062fa2e
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714799"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029855"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Functions 中的部署技術
 
@@ -114,7 +114,7 @@ Azure Functions 提供下列部署方法。
 
 您可以部署包含函數應用程式的 Linux 容器映射。
 
->__使用方式：__ 在 Premium 或專屬方案中建立 Linux 函數應用程式，並指定要執行的容器映射。 您可以使用兩種方式執行此動作：
+>__使用方式：__ 在 Premium 或專屬方案中建立 Linux 函數應用程式，並指定要執行的容器映射。 執行這項作業的方法有兩種：
 >
 >* 在 Azure 入口網站中的 Azure App Service 方案上建立 Linux 函數應用程式。 針對 [**發佈**]，選取 [ **Docker 映射**]，然後設定容器。 輸入裝載映射的位置。
 >* 使用 Azure CLI，在 App Service 方案上建立 Linux 函數應用程式。 若要瞭解作法，請參閱[使用自訂映射在 Linux 上建立](functions-create-function-linux-custom-image.md#create-supporting-azure-resources-for-your-function)函式。

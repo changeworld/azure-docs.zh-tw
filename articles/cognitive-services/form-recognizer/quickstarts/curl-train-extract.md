@@ -9,21 +9,18 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 961a5cc3d8c90007e314f40ba98693d978fe8888
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 0cd7625a8e89365ccb966c0aa847e5b337f33acc
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76771938"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900193"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>快速入門：搭配使用 REST API 與 cURL 將表單辨識器模型定型並擷取表單資料
 
 在本快速入門中，您將搭配使用 Azure 表單辨識器的 REST API 與 cURL 來定型及評分表單，以擷取金鑰/值組和資料表。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-
-> [!IMPORTANT]
-> 本快速入門會使用表單辨識器 v2.0 API。 如果您的訂用帳戶不在 `West US 2` 或 `West Europe` 區域中，您必須使用 v1.0 API。 請改為遵循 [v1.0 快速入門](./curl-train-extract-v1.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 

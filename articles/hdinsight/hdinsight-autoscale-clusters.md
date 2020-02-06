@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/22/2019
-ms.openlocfilehash: 45804bd3e81e7363010979b7a6e028356b3a5080
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: ace9794bd72aa124137a6b543c79979e8f5ca7c0
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780057"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031238"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>自動調整 Azure HDInsight 叢集規模
 
@@ -26,7 +26,7 @@ Azure HDInsight 的叢集自動調整功能會自動相應增加和減少叢集�
 
 下表描述與自動調整功能相容的叢集類型和版本。
 
-| 版本 | Spark | Hive | LLAP | HBase | Kafka | Storm | ML |
+| 版本 | Spark | Hive | LLAP | hbase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
 | 不含 ESP 的 HDInsight 3。6 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
 | 不含 ESP 的 HDInsight 4。0 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
@@ -192,7 +192,7 @@ HDInsight 服務會計算需要多少個新的背景工作節點，以符合目�
 
 若要在執行中的叢集上啟用自動調整，請選取 **設定** 底下的 叢集**大小** 然後按一下 [**啟用自動**調整]。 選取您想要的自動調整類型，並輸入以負載為基礎或以排程為基礎的縮放選項。 最後，按一下 [ **儲存**]。
 
-![啟用以背景工作節點排程為基礎的自動調整執行叢集](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-enable-running-cluster.png)
+![啟用以背景工作節點排程為基礎的自動調整執行叢集](./media/hdinsight-autoscale-clusters/azure-portal-settings-autoscale.png)
 
 #### <a name="using-the-rest-api"></a>使用 REST API
 
@@ -247,7 +247,7 @@ Azure 入口網站中所列的叢集狀態可協助您監視自動調整活動�
 
 | 叢集狀態 | 說明 |
 |---|---|
-| 執行中 | 叢集正常運作。 所有先前的自動調整活動都已順利完成。 |
+| 正在執行 | 叢集正常運作。 所有先前的自動調整活動都已順利完成。 |
 | 更新  | 正在更新叢集自動調整設定。  |
 | HDInsight 設定  | 叢集擴充或相應減少作業進行中。  |
 | 更新錯誤  | HDInsight 在自動調整設定更新期間發生問題。 客戶可以選擇重試更新或停用自動調整。  |

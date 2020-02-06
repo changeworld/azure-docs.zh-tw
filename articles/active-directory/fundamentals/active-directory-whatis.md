@@ -5,17 +5,18 @@ services: active-directory
 author: msaburnley
 manager: daveba
 ms.service: active-directory
+ms.subservice: fundamentals
 ms.topic: overview
 ms.date: 07/31/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e0e028be6b4a507ba97f9126c791ee77c764c70
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: c4d32522ef88504b96d262c654dac7c08c292761
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72880500"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897468"
 ---
 # <a name="what-is-azure-active-directory"></a>什麼是 Azure Active Directory？
 
@@ -58,11 +59,11 @@ Office 365 或 Microsoft Azure 等 Microsoft Online 業務服務需要 Azure AD 
 
 如需如何將 Azure 訂用帳戶關聯至 Azure AD 的詳細資訊，請參閱[操作說明：將 Azure 訂用帳戶關聯或新增至 Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)，以及如需如何將授權指派給使用者的詳細資訊，請參閱[操作說明：指派或移除 Azure Active Directory 授權](license-users-groups.md)。
 
-## <a name="terminology"></a>術語
+## <a name="terminology"></a>詞彙
 
 若要深入了解 Azure AD 及其文件，建議檢閱下列詞彙。
 
-|詞彙或概念|說明|
+|詞彙或概念|描述|
 |---------------|-----------|
 |身分識別| 可以獲得驗證的項目。 身分識別可以是具有使用者名稱和密碼的使用者。 身分識別也包含需要透過祕密金鑰或憑證進行驗證的應用程式或其他伺服器。|
 |帳戶| 具有相關聯資料的身分識別。 您無法擁有沒有身分識別的帳戶。|
@@ -83,10 +84,10 @@ Office 365 或 Microsoft Azure 等 Microsoft Online 業務服務需要 Azure AD 
 
 在選擇 Azure AD 授權後，您便可存取組織可用的下列功能 (部分或全部)：
 
-|類別|說明|
+|類別|描述|
 |-------|-----------|
 |應用程式管理|使用應用程式 Proxy、單一登入、「我的 app」入口網站 (也稱為「存取面板」) 和軟體即服務 (SaaS) 應用程式，來管理雲端和內部部署應用程式。 如需詳細資訊，請參閱[如何為內部部署應用程式提供安全的遠端存取](../manage-apps/application-proxy.md)和[應用程式管理文件](../manage-apps/index.yml)。|
-|Authentication|管理 Azure Active Directory 自助式密碼重設、Multi-Factor Authentication、自訂的禁用密碼清單與智慧鎖定。 如需詳細資訊，請參閱 [Azure AD 驗證文件](../authentication/index.yml)。|
+|驗證|管理 Azure Active Directory 自助式密碼重設、Multi-Factor Authentication、自訂的禁用密碼清單與智慧鎖定。 如需詳細資訊，請參閱 [Azure AD 驗證文件](../authentication/index.yml)。|
 |企業對企業 (B2B)|在管理來賓使用者和外部合作夥伴的同時，持續掌控住您自己的公司資料。 如需詳細資訊，請參閱 [Azure Active Directory B2B 文件](../b2b/index.yml)。|
 |企業對消費者 (B2C)|自訂和控制使用者在使用應用程式時，要如何註冊、登入和管理其設定檔。 如需詳細資訊，請參閱 [Azure Active Directory B2C 文件](../../active-directory-b2c/index.yml)。|
 |條件式存取|管理雲端應用程式的存取權。 如需詳細資訊，請參閱 [Azure AD 條件式存取文件](../conditional-access/index.yml)。|

@@ -3,12 +3,12 @@ title: Azure Migrate 設備
 description: 提供伺服器評估和遷移中所使用的 Azure Migrate 設備的總覽。
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: 6311f24a9c977b5f8b34384f0754f041a0c57ce7
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 652fe9d379d6e2ba50e9e282f384905e154368d8
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990737"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031658"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 設備
 
@@ -63,12 +63,12 @@ Hyper-V VM | Azure Migrate：伺服器評估 | 探索 Hyper-v Vm<br/><br/> 收�
 
 **需求** | **實體** 
 --- | ---
-**下載格式** | Zip 資料夾（使用 PowerShell 安裝程式腳本）
+**下載格式** | Zip 資料夾（使用 PowerShell 型安裝程式腳本）
 **下載連結** | [下載連結](https://go.microsoft.com/fwlink/?linkid=2105112)
 **下載大小** | 59.7 MB
-**硬體** | 專用實體機器或 VM。 執行設備的電腦需要 16 GB RAM、8個 vcpu，大約 80 GB 的儲存空間，以及外部交換器。<br/> 設備需要靜態或動態 IP 位址，以及網際網路存取。
+**硬體** | 專用實體機器，或使用虛擬機器。 執行設備的電腦需要 16 GB RAM、8個 vcpu，大約 80 GB 的儲存空間，以及外部交換器。<br/> 設備需要靜態或動態 IP 位址，以及網際網路存取。
 **雜湊值** | MD5：1e92ede3e87c03bd148e56a708cdd33f<br/><br/> SHA256： a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
-**軟體** | 設備機器應執行 Windows Server 2016。 
+**作業系統** | 設備機器應執行 Windows Server 2016。 
 **設備部署**   |  設備安裝程式腳本會從入口網站下載（在壓縮的資料夾中）。 <br/> 您會將資料夾解壓縮，並執行 PowerShell 腳本（AzureMigrateInstaller）。
 **探索** | 設備可以探索最多250部實體伺服器。
 **設備元件** | 管理應用程式：應用裝置中的 Web 應用程式，可在部署期間進行使用者輸入。<br/> 探索代理程式：收集電腦設定資料。<br/> 評量代理程式：收集效能資料。<br/>  自動更新服務：更新元件（每隔24小時執行一次）。
@@ -85,15 +85,16 @@ Azure Migrate 設備需要網際網路的連線能力。
 --- | --- |
 *.portal.azure.com  | 瀏覽至 Azure 入口網站。
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com | 登入您的 Azure 訂用帳戶。
-*.microsoftonline.com <br/> *.microsoftonline-p.com | 建立設備 Active Directory 應用程式，以與 Azure Migrate 通訊。
+\* microsoftonline.com <br/> *.microsoftonline-p.com | 建立設備 Active Directory 應用程式，以與 Azure Migrate 通訊。
 management.azure.com | 建立設備 Active Directory 應用程式，以與 Azure Migrate 服務進行通訊。
 dc.services.visualstudio.com | 上傳用於內部監視的應用程式記錄。
 *.vault.azure.net | 管理 Azure Key Vault 中的秘密。
 aka.ms/* | 允許存取稱為的連結。 用於 Azure Migrate 設備更新。
 download.microsoft.com/download | 允許從 Microsoft 下載下載。
-*.servicebus.windows.net | **用於 VMware 無代理程式遷移**<br/><br/> 設備與 Azure Migrate 服務之間的通訊。
-*.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | **用於 VMware 無代理程式遷移**<br/><br/> 連接到 Azure Migrate 服務 Url。
-*.blob.core.windows.net |  **用於 VMware 無代理程式遷移**<br/><br/>將資料上傳至儲存體。
+*.servicebus.windows.net | 設備與 Azure Migrate 服務之間的通訊。
+*.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com | 連接到 Azure Migrate 服務 Url。
+*.hypervrecoverymanager.windowsazure.com | **用於 VMware 無代理程式遷移**<br/><br/> 連接到 Azure Migrate 服務 Url。
+*.blob.core.windows.net |  **用於 VMware 無代理程式遷移**<br/><br/>將資料上傳至儲存體以進行遷移。
 
 
 
@@ -107,7 +108,7 @@ download.microsoft.com/download | 允許從 Microsoft 下載下載。
 **Data** | **計數器** | **評量影響**
 --- | --- | ---
 CPU 使用率 | cpu.usage.average | 建議的 VM 大小/成本
-記憶體使用量 | mem.usage.average | 建議的 VM 大小/成本
+記憶體使用率 | mem.usage.average | 建議的 VM 大小/成本
 磁片讀取輸送量（每秒 MB） | virtualDisk.read.average | 磁片大小、儲存體成本、VM 大小的計算
 磁片寫入輸送量（每秒 MB） | virtualDisk.write.average | 磁片大小、儲存體成本、VM 大小的計算
 每秒的磁片讀取作業數 | virtualDisk.numberReadAveraged.average | 磁片大小、儲存體成本、VM 大小的計算
@@ -139,7 +140,7 @@ VM 描述 | vm.Summary.Config.Annotation
 磁碟大小清單 | vm.Config.Hardware.Device.ToList().FindAll(x => is VirtualDisk)
 網路介面卡清單 | vm.Config.Hardware.Device.ToList().FindAll(x => is VirtualEthernet).count
 CPU 使用率 | cpu.usage.average
-記憶體使用量 |mem.usage.average
+記憶體使用率 |mem.usage.average
 **每個磁片詳細資料** | 
 磁碟機碼值 | disk.Key
 Dikunit 號碼 | disk.UnitNumber
@@ -215,9 +216,9 @@ VM 電源狀態 | Msvm_ComputerSystem | EnabledState
 IP 位址（綜合 Nic） | Msvm_GuestNetworkAdapterConfiguration | IPAddresses
 DHCP 已啟用（綜合 Nic） | Msvm_GuestNetworkAdapterConfiguration | DHCPEnabled
 NIC 識別碼（綜合 Nic） | Msvm_SyntheticEthernetPortSettingData | InstanceID
-NIC MAC 位址（綜合 Nic） | Msvm_SyntheticEthernetPortSettingData | 位址
+NIC MAC 位址（綜合 Nic） | Msvm_SyntheticEthernetPortSettingData | 地址
 NIC 識別碼（舊版 Nic） | MsvmEmulatedEthernetPortSetting 資料 | InstanceID
-NIC MAC 識別碼（舊版 Nic） | MsvmEmulatedEthernetPortSetting 資料 | 位址
+NIC MAC 識別碼（舊版 Nic） | MsvmEmulatedEthernetPortSetting 資料 | 地址
 
 
 

@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 71344f954990952856f031829f13273e062b62c5
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 65006b8357db44c3e1b8f8d9e819615b5dd9db6e
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933159"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031743"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>針對 Runbook 的錯誤進行疑難排解
 
@@ -113,7 +113,7 @@ The subscription named <subscription name> cannot be found.
 1. 為了確定它能獨立運作，請在 Azure 自動化外部測試您的指令碼。
 2. 請務必先執行 `Add-AzureAccount` Cmdlet，再執行 `Select-AzureSubscription` Cmdlet。
 3. 在 Runbook 的開頭加上 `Disable-AzureRmContextAutosave –Scope Process`。 這個 Cmdlet 確保所有認證只會套用到目前 Runbook 的執行。
-4. 如果您仍然看到此錯誤訊息，請在 `Add-AzureAccount` Cmdlet 之後新增 **AzureRmContext** 參數，以修改您的程式碼，然後執行此程式碼。
+4. 如果您仍然看到此錯誤訊息，請在 **Cmdlet 之後新增**AzureRmContext`Add-AzureAccount` 參數，以修改您的程式碼，然後執行此程式碼。
 
    ```powershell
    Disable-AzureRmContextAutosave –Scope Process
@@ -363,7 +363,7 @@ Object reference not set to an instance of an object
 
 ### <a name="cause"></a>原因
 
-已知的問題是，如果 Set-azurermautomationrunbook 包含物件，則不會正確處理輸出資料流程。
+已知的問題是，如果包含物件，Set-azurermautomationrunbook 就不會正確地處理輸出資料流程。
 
 ### <a name="resolution"></a>解析度
 
@@ -528,7 +528,7 @@ Runbook 會在 Azure 沙箱中的公平共用所允許的3小時限制內執行�
 有兩種方法可以解決此錯誤：
 
 * 編輯 Runbook，並減少它所發出的作業資料流數目。
-* 減少在執行 Cmdlet 時所要擷取的資料流數目。 若要這麼做，您可以指定讓 `Get-AzureRmAutomationJobOutput` Cmdlet 的 `-Stream Output` 參數僅擷取輸出資料流。 
+* 減少在執行 Cmdlet 時所要擷取的資料流數目。 若要這麼做，您可以指定讓 `-Stream Output` Cmdlet 的 `Get-AzureRmAutomationJobOutput` 參數僅擷取輸出資料流。 
 
 ## <a name="cannot-invoke-method"></a>案例： PowerShell 工作失敗，發生錯誤：無法叫用方法
 
@@ -552,6 +552,22 @@ Exception was thrown - Cannot invoke method. Method invocation is supported only
 * 如果您的 runbook 有此錯誤訊息，請在混合式 Runbook 背景工作角色上執行
 
 若要深入瞭解此行為和 Azure 自動化 Runbook 的其他行為，請參閱[Runbook 行為](../automation-runbook-execution.md#runbook-behavior)。
+
+## <a name="scenario-linux-hybrid-runbook-worker-receives-a-prompt-for-a-password-when-signing-a-runbook"></a>案例： Linux 混合式 Runbook 背景工作角色在簽署 Runbook 時收到密碼提示
+
+### <a name="issue"></a>問題
+
+針對 Linux 混合式 Runbook 背景工作角色執行**sudo**命令時，會抓取未預期的密碼提示。
+
+### <a name="cause"></a>原因
+
+Sudoers 檔案中未正確設定適用于 Linux 的 Log Analytics 代理程式的 nxautomationuser 帳戶。 混合式 Runbook 背景工作角色需要適當的帳戶許可權和其他資料設定，才能在 Linux Runbook Worker 上簽署 runbook。
+
+### <a name="resolution"></a>解析度
+
+* 請確定混合式 Runbook 背景工作角色在機器上具有 GnuPG （GPG）可執行檔。
+
+* 確認 sudoers 檔案中的 nxautomationuser 帳戶設定。 請參閱[在混合式 Runbook 背景工作角色上執行 runbook](../automation-hrw-run-runbooks.md)
 
 ## <a name="other"></a>我的問題未列于上方
 

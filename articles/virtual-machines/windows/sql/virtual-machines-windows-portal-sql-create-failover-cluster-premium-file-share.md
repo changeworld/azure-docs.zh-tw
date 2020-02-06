@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 3bd13a63c3f4fa275f7e4789c184802445519388
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
-ms.translationtype: HT
+ms.openlocfilehash: 57dc7bb98bf4c2f733be0f2c94e17481a429be6d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772615"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906792"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>在 Azure 虛擬機器上使用 premium 檔案共用設定 SQL Server 容錯移轉叢集實例
 
@@ -185,7 +185,7 @@ Premium 檔案共用可提供 IOPS 和整個容量，以符合許多工作負載
   > - 請考慮針對備份檔案使用個別的檔案共用，以儲存此共用的資料和記錄檔的 IOPS 和空間容量。 您可以針對備份檔案使用 premium 或 standard 檔案共用。
   > - 如果您使用的是 Windows 2012 R2 和更舊版本，請遵循這些相同的步驟來掛接您要做為檔案共用見證的檔案共用。 
 
-## <a name="step-3-configure-the-failover-cluster-with-the-file-share"></a>步驟3：使用檔案共用設定容錯移轉叢集
+## <a name="step-3-configure-the-failover-cluster"></a>步驟3：設定容錯移轉叢集
 
 下一個步驟是設定容錯移轉叢集。 在此步驟中，您將完成下列子步驟：
 

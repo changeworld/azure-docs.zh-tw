@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 04/26/2019
+ms.date: 02/02/2019
 ms.author: mlearned
-ms.openlocfilehash: 26f1544cab5cf5be2edd52f97c758d46eb835514
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 9a82b51083a7d31bc39c4556712c1489bad8bca0
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103779"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031470"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>整合 Azure Active Directory 與 Azure Kubernetes Service
 
@@ -56,7 +56,7 @@ Azure AD 驗證會提供給具有 OpenID Connect 的 AKS 叢集。 OpenID Connec
 
     b. 針對**支援的帳戶類型**，請選取 [**僅此組織目錄中的帳戶**]。
     
-    c. 針對 [重新導向 URI 類型] 選擇 [ **Web** ]，然後輸入任何 URI 格式的值 *https://aksazureadserver* ，例如。
+    c. 針對 [重新導向 URI 類型] 選擇 [ **Web** ]，然後輸入任何 URI 格式的值，例如 *https://aksazureadserver* 。
 
     d. 當您完成時，請選取 [**註冊**]。
 
@@ -116,7 +116,14 @@ Azure AD 驗證會提供給具有 OpenID Connect 的 AKS 叢集。 OpenID Connec
 
     b. 針對**支援的帳戶類型**，請選取 [**僅此組織目錄中的帳戶**]。
 
-    c. 針對 [重新導向 URI 類型] 選取 [ **Web** ]，然後輸入任何 URI 格式的 *https://aksazureadclient* 值，例如。
+    c. 針對 [重新導向 URI 類型] 選取 [ **Web** ]，然後輸入任何 URI 格式的值，例如 *https://aksazureadclient* 。
+
+    >[!NOTE]
+    >如果您要建立啟用 RBAC 的新叢集以支援容器的 Azure 監視器，請將下列兩個額外的重新導向 Url 新增到此清單中，作為**Web**應用程式類型。 第一個 [基底 URL] 值應該是 `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`，而第二個 [基底 URL] 值應該是 `https://monitoring.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`。
+    >
+    >如果您在 Azure 中國使用這項功能，第一個 [基底 URL] 值應該是 `https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`，而第二個 [基底 URL] 值應該是 [`https://monitoring.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`]。
+    >
+    >如需進一步資訊，請參閱如何設定適用于容器的 Azure 監視器[即時資料（預覽）功能](../azure-monitor/insights/container-insights-livedata-setup.md)和[設定 AD 整合式驗證](../azure-monitor/insights/container-insights-livedata-setup.md#configure-ad-integrated-authentication)下的驗證步驟一節。
 
     d. 當您完成時，請選取 [**註冊**]。
 
@@ -128,7 +135,7 @@ Azure AD 驗證會提供給具有 OpenID Connect 的 AKS 叢集。 OpenID Connec
 
     ![設定應用程式權限](media/aad-integration/select-api.png)
 
-    c. 選取 [**新增許可權**]。
+    c. 選取 [新增權限]。
 
     d. 在 **[授與同意**] 底下，選取 **[授與系統管理員同意**]。 如果目前的帳戶不是租使用者系統管理員，則無法使用此按鈕。授與許可權時，入口網站中會顯示下列通知：
 
@@ -146,7 +153,7 @@ Azure AD 驗證會提供給具有 OpenID Connect 的 AKS 叢集。 OpenID Connec
 
 接下來，取得 Azure 租使用者的識別碼。 當您建立 AKS 叢集時，會使用此值。
 
-從 Azure 入口網站中，選取  **Azure Active Directory**  > **屬性**，並記下**目錄識別碼**。 當您建立已啟用 Azure AD 的 AKS 叢集時，這個值稱為租使用者識別碼。
+從 Azure 入口網站中，選取  **Azure Active Directory** > **屬性**，並記下 **目錄識別碼**。 當您建立已啟用 Azure AD 的 AKS 叢集時，這個值稱為租使用者識別碼。
 
 ![取得 Azure 租用戶識別碼](media/aad-integration/tenant-id.png)
 
@@ -180,7 +187,7 @@ AKS 叢集需要幾分鐘的時間來建立。
 
 使用 Azure Active Directory 帳戶搭配 AKS 叢集之前，您必須先建立角色系結或叢集角色系結。 角色會定義要授與的許可權，而系結會將其套用至所需的使用者。 這些指派可以套用至指定的命名空間或在整個叢集中套用。 如需詳細資訊，請參閱[使用 RBAC 授權][rbac-authorization]。
 
-首先，使用[az aks get-認證][az-aks-get-credentials]命令`--admin`搭配引數，以使用系統管理員存取權登入叢集。
+首先，使用[az aks get-認證][az-aks-get-credentials]命令搭配 `--admin` 引數，以使用系統管理員存取權登入叢集。
 
 ```azurecli
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --admin
@@ -254,7 +261,7 @@ kubectl apply -f rbac-aad-group.yaml
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-執行`kubectl`命令之後，系統會提示您使用 Azure 進行驗證。 依照畫面上的指示完成程式，如下列範例所示：
+執行 `kubectl` 命令之後，系統會提示您使用 Azure 進行驗證。 依照畫面上的指示完成程式，如下列範例所示：
 
 ```console
 $ kubectl get nodes
@@ -278,7 +285,7 @@ error: You must be logged in to the server (Unauthorized)
 
 - 您已定義適當的物件識別碼或 UPN，視使用者帳戶是否位於相同的 Azure AD 租使用者而定。
 - 使用者不是超過200個群組的成員。
-- 在 [應用程式註冊] 中定義的密碼，符合使用`--aad-server-app-secret`設定的值。
+- 在 [應用程式註冊] 中定義的秘密，會符合使用 `--aad-server-app-secret`所設定的值。
 
 ## <a name="next-steps"></a>後續步驟
 

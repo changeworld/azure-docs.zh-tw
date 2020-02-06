@@ -3,17 +3,17 @@ title: 將舊版 Azure DNS 私人區域遷移至新的資源模型
 titleSuffix: Azure DNS
 description: 本指南提供有關如何將舊版 DNS 私人區域移轉至最新的資源模型的逐步指示
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 06/18/2019
-ms.author: allensu
-ms.openlocfilehash: 3beac014ee69120df518e0358a5fdbef5818f7cf
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.author: rohink
+ms.openlocfilehash: d29885104d6f39a17b5bdeb786cda8f56f58d987
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076738"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939356"
 ---
 # <a name="migrating-legacy-azure-dns-private-zones-to-new-resource-model"></a>將舊版 Azure DNS 私人區域移轉至新的資源模型
 
@@ -25,7 +25,7 @@ az account set --subscription <SubscriptionId>
 az network dns zone list --query "[?zoneType=='Private']"
 ```
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 請確定您已安裝最新版本的 Azure PowerShell。 如需 Azure PowerShell (Az) 以及如何安裝它的詳細資訊，請造訪 https://docs.microsoft.com/powershell/azure/new-azureps-module-az
 
@@ -98,7 +98,7 @@ PrivateDnsMigrationScript.ps1
 >[!IMPORTANT]
 >如果因為任何原因，針對移轉區域的 DNS 解析無法如預期般運作，請在上述步驟中輸入 'N'，指令碼會將 DNS 解析切換回舊版區域。 建立支援票證，我們可協助您移轉 DNS 區域。
 
-## <a name="cleanup"></a>清除
+## <a name="cleanup"></a>清理
 
 此步驟將刪除舊版 DNS 區域，並且只有在您確認 DNS 解析如預期般運作之後才能執行。 系統會提示您刪除每個私人 DNS 區域。 確認該區域的 DNS 解析正常運作之後，在每個提示字元處輸入“Y”。
 

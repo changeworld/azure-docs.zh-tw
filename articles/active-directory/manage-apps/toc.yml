@@ -82,7 +82,7 @@
       items:
         - name: 規劃雲端 HR 使用者佈建部署
           href: plan-cloud-hr-provision.md
-    - name: 適用於內部部屬應用程式的 Application Proxy
+    - name: 適用於內部部屬應用程式的應用程式 Proxy
       items:
         - name: 應用程式 Proxy
           href: application-proxy.md
@@ -291,7 +291,7 @@
               href: application-provisioning-when-will-provisioning-finish.md
             - name: 佈建記錄
               href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context
-    - name: 適用於內部部屬應用程式的 Application Proxy
+    - name: 適用於內部部屬應用程式的應用程式 Proxy
       items:
         - name: 設定連接器
           items:
@@ -331,6 +331,8 @@
                   href: application-proxy-configure-single-sign-on-on-premises-apps.md
             - name: 發佈逐步解說
               items:
+                - name: 與 NDES 伺服器上的應用程式 Proxy 整合
+                  href: active-directory-app-proxy-protect-ndes.md
                 - name: 與 Azure AD Domain Services 整合
                   href: /azure/active-directory-domain-services/deploy-azure-app-proxy?context=azure/active-directory/manage-apps/context/manage-apps-context
                 - name: 與 Power BI 整合
@@ -405,7 +407,7 @@
       items:
         - name: 佈建代理程式版本記錄
           href: provisioning-agent-release-version-history.md
-    - name: 適用於內部部屬應用程式的 Application Proxy
+    - name: 適用於內部部屬應用程式的應用程式 Proxy
       items:
         - name: 應用程式 Proxy 常見問題集
           href: application-proxy-faq.md

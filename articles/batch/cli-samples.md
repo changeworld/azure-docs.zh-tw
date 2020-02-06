@@ -3,8 +3,8 @@ title: Azure CLI 範例 - Batch
 description: 適用於 Azure Batch 服務的 Azure CLI 範例。 了解如何建立 Batch 帳戶並新增應用程式。
 services: batch
 documentationcenter: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: ''
 ms.date: 01/29/2018
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: 9ee364c4256c88738e02a9f3dd47a5e531a958b2
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: dd95511365a25c8f642cb7dcc5ef477f90926d31
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026161"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022693"
 ---
 # <a name="azure-cli-examples-for-azure-batch"></a>適用於 Azure Batch 的 Azure CLI 範例
 

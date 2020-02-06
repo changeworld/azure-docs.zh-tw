@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: 1cc3664ff8472a6b5a73fa89588611f59ac27e6a
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: de644e49d998ad260532078de5c93c482cbc6fbc
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720261"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029486"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>關於 Azure 網路監看員的常見問題（FAQ）
 [Azure 網路監看員](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)服務提供一套工具，可用來監視、診斷、查看計量，以及啟用或停用 Azure 虛擬網路中的資源記錄。 本文會回答有關此服務的常見問題。
@@ -54,17 +54,29 @@ ms.locfileid: "76720261"
 ### <a name="which-regions-is-network-watcher-supportedavailable-in"></a>網路監看員支援/提供哪些區域？
 您可以在[Azure 服務可用性頁面](https://azure.microsoft.com/global-infrastructure/services/?products=network-watcher)上查看最新的區域可用性
 
-### <a name="what-are-resource-limits-on-network-watcher"></a>網路監看員上的資源限制為何？
-如需所有限制，請參閱[服務限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#network-watcher-limits)頁面。  
+### <a name="which-permissions-are-needed-to-use-network-watcher"></a>使用網路監看員需要哪些許可權？
+請參閱[使用網路監看員所需的 RBAC 許可權](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions)清單。 若要部署資源，您需要 NetworkWatcherRG 的「參與者」許可權（請參閱下文）。
 
-### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>為什麼每個區域只允許一個網路監看員實例？
-網路監看員只需要針對訂用帳戶啟用一次，它的功能才能正常執行，這不是服務的限制。
+### <a name="how-do-i-enable-network-watcher"></a>如何啟用網路監看員？
+系統會針對每個訂用帳戶[自動啟用](https://azure.microsoft.com/updates/azure-network-watcher-will-be-enabled-by-default-for-subscriptions-containing-virtual-networks/)網路監看員服務。
+
+### <a name="what-is-the-network-watcher-deployment-model"></a>什麼是網路監看員部署模型？
+網路監看員的父資源會在每個區域中使用唯一的實例進行部署。 命名格式： NetworkWatcher_RegionName。 範例： NetworkWatcher_centralus 是「美國中部」區域的網路監看員資源。
+
+### <a name="what-is-the-networkwatcherrg"></a>什麼是 NetworkWatcherRG？
+網路監看員資源位於隱藏的**NetworkWatcherRG**資源群組中，會自動建立。 例如，NSG 流量記錄資源是網路監看員的子資源，而且會在 NetworkWatcherRG 中啟用。
 
 ### <a name="why-do-i-need-to-install-the-network-watcher-extension"></a>為什麼需要安裝網路監看員延伸模組？ 
 需要產生或攔截 VM 流量的任何功能都需要網路監看員延伸模組。 
 
 ### <a name="which-features-require-the-network-watcher-extension"></a>哪些功能需要網路監看員延伸模組？
-只有封包捕獲、連線疑難排解和連線監視需要有網路監看員延伸模組。
+「封包捕獲」、「連線疑難排解」和「連線監視器」功能都需要有網路監看員延伸模組。
+
+### <a name="what-are-resource-limits-on-network-watcher"></a>網路監看員上的資源限制為何？
+如需所有限制，請參閱[服務限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#network-watcher-limits)頁面。  
+
+### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>為什麼每個區域只允許一個網路監看員實例？
+網路監看員只需要針對訂用帳戶啟用一次，它的功能才能正常執行，這不是服務的限制。
 
 ## <a name="nsg-flow-logs"></a>NSG 流量記錄
 
@@ -85,7 +97,7 @@ ms.locfileid: "76720261"
 
 ### <a name="how-do-i-use-nsg-flow-logs-with-a-storage-account-behind-a-service-endpoint"></a>如何? 在服務端點後方的儲存體帳戶中使用 NSG 流量記錄嗎？
 
-NSG 流量記錄會與服務端點 compantible，而不需要任何額外的設定。 請參閱在虛擬網路中[啟用服務端點的教學](https://docs.microsoft.com/azure/virtual-network/tutorial-restrict-network-access-to-resources#enable-a-service-endpoint)課程。
+NSG 流量記錄與服務端點相容，而不需要任何額外的設定。 請參閱在虛擬網路中[啟用服務端點的教學](https://docs.microsoft.com/azure/virtual-network/tutorial-restrict-network-access-to-resources#enable-a-service-endpoint)課程。
 
 
 ### <a name="what-is-the-difference-between-flow-logs-versions-1--2"></a>流量記錄版本 1 & 2 之間的差異為何？

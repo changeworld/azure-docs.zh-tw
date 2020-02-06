@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/03/2019
-ms.openlocfilehash: 555596ba1040fcbd5c9131869fd275d749e0d734
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 0930bbcfff41a667f08f5dfc5744c16476ddd8a1
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934030"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031438"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>使用腳本動作自訂 Azure HDInsight 叢集
 
@@ -20,7 +20,7 @@ Azure HDInsight 提供名為**指令碼動作**的設定方法，會叫用自訂
 
 指令碼動作也可以發佈到 Azure Marketplace 做為 HDInsight 應用程式。 如需有關 HDInsight 應用程式的詳細資訊，請參閱[將 HDInsight 應用程式發佈到 Azure Marketplace](hdinsight-apps-publish-applications.md)。
 
-## <a name="permissions"></a>使用權限
+## <a name="permissions"></a>權限
 
 針對已加入網域的 HDInsight 叢集，當您對叢集使用指令碼動作時，必須有兩個 Apache Ambari 權限︰
 
@@ -144,11 +144,11 @@ Azure HDInsight 提供名為**指令碼動作**的設定方法，會叫用自訂
 
 HDInsight 提供一些指令碼以在 HDInsight 叢集上安裝下列元件：
 
-| 名稱 | 指令碼 |
+| 名稱 | 指令檔 |
 | --- | --- |
-| 新增 Azure 儲存體帳戶 |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`答案中所述步驟，工作帳戶即會啟用。 請參閱[將其他儲存體帳戶新增至 HDInsight](hdinsight-hadoop-add-storage.md)。 |
-| 安裝 Hue |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`答案中所述步驟，工作帳戶即會啟用。 請參閱[在 HDInsight Hadoop 叢集上安裝和使用 Hue](hdinsight-hadoop-hue-linux.md)。 |
-| 預先載入 Hive 程式庫 |`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`答案中所述步驟，工作帳戶即會啟用。 請參閱[建立 HDInsight 叢集時新增自訂 Apache Hive 程式庫](hdinsight-hadoop-add-hive-libraries.md)。 |
+| 新增 Azure 儲存體帳戶 |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`第 1 課：建立 Windows Azure 儲存體物件{2}。 請參閱[將其他儲存體帳戶新增至 HDInsight](hdinsight-hadoop-add-storage.md)。 |
+| 安裝 Hue |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`第 1 課：建立 Windows Azure 儲存體物件{2}。 請參閱[在 HDInsight Hadoop 叢集上安裝和使用 Hue](hdinsight-hadoop-hue-linux.md)。 |
+| 預先載入 Hive 程式庫 |`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`第 1 課：建立 Windows Azure 儲存體物件{2}。 請參閱[建立 HDInsight 叢集時新增自訂 Apache Hive 程式庫](hdinsight-hadoop-add-hive-libraries.md)。 |
 
 ## <a name="use-a-script-action-during-cluster-creation"></a>在建立叢集期間使用指令碼動作
 
@@ -156,9 +156,9 @@ HDInsight 提供一些指令碼以在 HDInsight 叢集上安裝下列元件：
 
 ### <a name="use-a-script-action-during-cluster-creation-from-the-azure-portal"></a>在建立叢集期間從 Azure 入口網站使用指令碼動作
 
-1. 開始建立叢集，如在[HDInsight 中建立以 Linux 為基礎](hdinsight-hadoop-create-linux-clusters-portal.md)的叢集中所述，使用 Azure 入口網站。 在叢集建立期間，您會到達步驟6：**腳本動作**。 流覽至**選擇性** >  **+ [提交新**的]。
+1. 開始建立叢集，如在[HDInsight 中建立以 Linux 為基礎](hdinsight-hadoop-create-linux-clusters-portal.md)的叢集中所述，使用 Azure 入口網站。 從 [設定 **+ 定價**] 索引標籤中，選取 [ **+ 新增腳本動作**]。
 
-    ![Azure 入口網站叢集腳本動作](./media/hdinsight-hadoop-customize-cluster-linux/azure-portal-cluster-classic-script-action.png)
+    ![Azure 入口網站叢集腳本動作](./media/hdinsight-hadoop-customize-cluster-linux/azure-portal-cluster-configuration-scriptaction.png)
 
 1. 使用 [選取指令碼] 項目來選取預先製作的指令碼。 若要使用自訂指令碼，請選取 [自訂]。 然後為您的指令碼提供 [名稱] 和 [Bash 指令碼 URI]。
 
@@ -180,9 +180,9 @@ HDInsight 提供一些指令碼以在 HDInsight 叢集上安裝下列元件：
 
     ![HDInsight 多個腳本動作](./media/hdinsight-hadoop-customize-cluster-linux/multiple-scripts-actions.png)
 
-    當您完成新增腳本時，請選取 [__選取__] 按鈕，然後按 [__下一步]__ 按鈕繼續前往 [叢集__摘要__] 區段。
+    當您完成新增腳本時，您會返回 [設定 **+ 定價**] 索引標籤。
 
-1. 若要建立叢集，請從 [叢集摘要] 區段選取 [建立]。
+1. 如往常般完成剩餘的叢集建立步驟。
 
 ### <a name="use-a-script-action-from-azure-resource-manager-templates"></a>從 Azure Resource Manager 範本使用指令碼動作
 
@@ -349,7 +349,7 @@ HDInsight .NET SDK 提供用戶端程式庫，可讓您更輕鬆地從 .NET 應�
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-| Cmdlet | 函式 |
+| Cmdlet | 函數 |
 | --- | --- |
 | `Get-AzHDInsightPersistedScriptAction` |擷取持續性指令碼動作的相關資訊。 |
 | `Get-AzHDInsightScriptActionHistory` |擷取已套用到叢集的指令碼動作歷程記錄，或特定指令碼的詳細資料。 |
@@ -365,7 +365,7 @@ HDInsight .NET SDK 提供用戶端程式庫，可讓您更輕鬆地從 .NET 應�
 
 ### <a name="the-azure-classic-cli"></a>Azure 傳統 CLI
 
-| Cmdlet | 函式 |
+| Cmdlet | 函數 |
 | --- | --- |
 | `azure hdinsight script-action persisted list <clustername>` |擷取持續性指令碼動作的清單。 |
 | `azure hdinsight script-action persisted show <clustername> <scriptname>` |擷取特定持續性指令碼動作的相關資訊。 |
@@ -386,7 +386,7 @@ HDInsight .NET SDK 提供用戶端程式庫，可讓您更輕鬆地從 .NET 應�
 
 ## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>支援在 HDInsight 叢集上使用開放原始碼軟體
 
-Microsoft Azure HDInsight 服務會使用以 Apache Hadoop 為中心的開放原始碼技術生態系統。 Microsoft Azure 可為開放原始碼技術提供一般層級的支援。 如需詳細資訊，請參閱 [Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)的**支援範圍**一節。 HDInsight 服務針對內建元件提供額外等級的支援。
+Microsoft Azure HDInsight 服務會使用以 Apache Hadoop 為中心的開放原始碼技術生態系統。 Microsoft Azure 可為開放原始碼技術提供一般層級的支援。 如需詳細資訊，請參閱 **Azure 支援常見問題集**的[支援範圍](https://azure.microsoft.com/support/faq/)一節。 HDInsight 服務針對內建元件提供額外等級的支援。
 
 HDInsight 服務中有兩種類型的開放原始碼元件可供使用：
 
@@ -429,7 +429,7 @@ HDInsight 服務提供數種方式以使用自訂元件。 不論元件在叢集
 
     ![Ambari Web UI 列與選取的 ops](./media/hdinsight-hadoop-customize-cluster-linux/hdi-apache-ambari-nav.png)
 
-3. 尋找在 [作業] 欄位中有 **run\_customscriptaction** 的項目。 這些項目是在執行指令碼動作時建立的。
+3. 尋找在 [作業] **\_ 欄位中有** run**customscriptaction** 的項目。 這些項目是在執行指令碼動作時建立的。
 
     ![Apache Ambari 腳本動作作業](./media/hdinsight-hadoop-customize-cluster-linux/ambari-script-action.png)
 
@@ -495,7 +495,7 @@ sudo pip install azure-storage==0.20.0
 
 如果您的叢集是在 2016 年 3 月 15 日之前建立的，您在指令碼動作歷程記錄中就可能不會看到項目。 調整叢集大小會導致指令碼顯示在指令碼動作歷程記錄中。
 
-有兩種例外狀況：
+以下有兩個例外:
 
 * 您的叢集是在 2015 年 9 月 1 日之前建立的。 此日期是引進指令碼動作的日期。 任何叢集只要是在此日期之前建立的，都不可能是使用指令碼動作來建立叢集。
 

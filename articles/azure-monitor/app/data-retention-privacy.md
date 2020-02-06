@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/29/2019
-ms.openlocfilehash: b4550f55d160a77c2fb149dd509ca1cfad784f79
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: ba8a76cd4d3804bcb062ae0554e3fe7002804ed2
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513451"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031675"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights 中的資料收集、保留和儲存
 
@@ -52,7 +52,7 @@ Application Insights SDK 可用於多種應用程式類型：裝載於您自己�
 ### <a name="what-kinds-of-data-are-collected"></a>會收集哪些類型的資料？
 主要類別如下：
 
-* [Web 伺服器遙測](../../azure-monitor/app/asp-net.md) - HTTP 要求。  URI、處理要求所花費的時間、回應碼、用戶端 IP 位址。 `Session id`答案中所述步驟，工作帳戶即會啟用。
+* [Web 伺服器遙測](../../azure-monitor/app/asp-net.md) - HTTP 要求。  URI、處理要求所花費的時間、回應碼、用戶端 IP 位址。 `Session id`第 1 課：建立 Windows Azure 儲存體物件{2}。
 * [網頁](../../azure-monitor/app/javascript.md) - 頁面、使用者和工作階段計數。 頁面載入時間。 例外狀況。 Ajax 呼叫。
 * 效能計數器 - 記憶體、CPU、IO、網路佔用量。
 * 用戶端和伺服器內容 - OS、地區設定、裝置類型、瀏覽器和螢幕解析度。
@@ -98,7 +98,7 @@ Microsoft 只會使用這項資料，以將服務提供給您。
 * 建立新的 Application Insights 時，您可以選取位置。 請[在這裡](https://azure.microsoft.com/global-infrastructure/services/?products=all)深入瞭解每個區域的 Application Insights 可用性。
 
 #### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-europe-or-southeast-asia"></a>這是否表示我的應用程式必須裝載在美國、歐洲或東南亞？
-* 不會。 您的應用程式可以在任何地方執行，在您自己的內部部署主機上或雲端中皆可。
+* No。 您的應用程式可以在任何地方執行，在您自己的內部部署主機上或雲端中皆可。
 
 ## <a name="how-secure-is-my-data"></a>我的資料有多安全？
 Application Insights 是一項 Azure 服務。 如需安全性原則的相關說明，請參閱[ Azure 安全性、隱私權及法規遵循白皮書](https://go.microsoft.com/fwlink/?linkid=392408)。
@@ -134,7 +134,7 @@ Microsoft 人員對您的資料存取會受到限制。 我們只有在獲得您
 
 `C:\Users\username\AppData\Local\Temp` 用來保存資料。 此位置不可設定從 config 目錄設定，且存取此資料夾的權限僅限定於具有必要認證的特定使用者。 （如需詳細資訊，請參閱[執行](https://github.com/Microsoft/ApplicationInsights-Java/blob/40809cb6857231e572309a5901e1227305c27c1a/core/src/main/java/com/microsoft/applicationinsights/internal/util/LocalFileSystemUtils.java#L48-L72)）。
 
-###  <a name="net"></a>.NET
+###  <a name="net"></a>.Net
 
 根據預設，`ServerTelemetryChannel` 會使用現行使用者的本機應用程式資料的資料夾 `%localAppData%\Microsoft\ApplicationInsights` 或暫存資料夾 `%TMP%`。 (請參閱此處的[實作](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84))。
 
@@ -161,7 +161,7 @@ Microsoft 人員對您的資料存取會受到限制。 我們只有在獲得您
 
 根據預設，`ServerTelemetryChannel` 會使用現行使用者的本機應用程式資料的資料夾 `%localAppData%\Microsoft\ApplicationInsights` 或暫存資料夾 `%TMP%`。 （請參閱這裡的[實](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84)作為）。在 Linux 環境中，除非指定了儲存體資料夾，否則本機儲存體將會停用。
 
-下列程式碼片段說明如何在 `Startup.cs` 類別的 `ConfigureServices()` 方法中設定 `ServerTelemetryChannel.StorageFolder`：
+下列程式碼片段說明如何在 `ServerTelemetryChannel.StorageFolder` 類別的 `ConfigureServices()` 方法中設定 `Startup.cs`：
 
 ```csharp
 services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {StorageFolder = "/tmp/myfolder"});
@@ -173,9 +173,20 @@ services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {
 
 依預設會使用 `%TEMP%/appInsights-node{INSTRUMENTATION KEY}` 來保存資料。 存取此資料夾的權限僅限定於目前的使用者和系統管理員。 (請參閱此處的[實作](https://github.com/Microsoft/ApplicationInsights-node.js/blob/develop/Library/Sender.ts))。
 
-您可以在 [Sender.ts](https://github.com/Microsoft/ApplicationInsights-node.js/blob/7a1ecb91da5ea0febf5ceab13d6a4bf01a63933d/Library/Sender.ts#L384) 中變更靜態變數 `Sender.TEMPDIR_PREFIX` 的執行階段值，以覆寫資料夾前置詞 `appInsights-node`。
+您可以在 `appInsights-node`Sender.ts`Sender.TEMPDIR_PREFIX` 中變更靜態變數 [ 的執行階段值，以覆寫資料夾前置詞 ](https://github.com/Microsoft/ApplicationInsights-node.js/blob/7a1ecb91da5ea0febf5ceab13d6a4bf01a63933d/Library/Sender.ts#L384)。
 
+### <a name="opencensus-python"></a>OpenCensus Python
 
+根據預設，OpenCensus Python SDK 會使用目前的使用者資料夾 `%username%/.opencensus/.azure/`。 存取此資料夾的權限僅限定於目前的使用者和系統管理員。 （請參閱這裡的[實](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/storage.py)作為）。具有保存資料的資料夾將會在產生遙測的 Python 檔案之後命名。
+
+您可以變更儲存體檔案的位置，方法是在您所使用的匯出工具的函式中傳入 `storage_path` 參數。
+
+```python
+AzureLogHandler(
+  connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000',
+  storage_path='<your-path-here>',
+)
+```
 
 ## <a name="how-do-i-send-data-to-application-insights-using-tls-12"></a>如何使用 TLS 1.2 將資料傳送至 Application Insights？
 
@@ -234,15 +245,15 @@ openssl s_client -connect bing.com:443 -tls1_2
 
 | 您的動作 | 收集的資料類別 (請參閱下一個資料表) |
 | --- | --- |
-| [將 Application Insights SDK 新增至 .NET Web 專案][greenbrown] |ServerContext<br/>推斷<br/>效能計數器<br/>要求<br/>**例外狀況**<br/>Session<br/>使用者人數 |
+| [將 Application Insights SDK 新增至 .NET Web 專案][greenbrown] |ServerContext<br/>推斷<br/>效能計數器<br/>要求<br/>**例外狀況**<br/>工作階段<br/>使用者 |
 | [在 IIS 上安裝狀態監視器][redfield] |相依性<br/>ServerContext<br/>推斷<br/>效能計數器 |
-| [將 Application Insights SDK 新增至 JAVA web 應用程式][java] |ServerContext<br/>推斷<br/>要求<br/>Session<br/>使用者人數 |
-| [將 JavaScript SDK 新增至網頁][client] |ClientContext <br/>推斷<br/>頁<br/>ClientPerf<br/>Ajax |
+| [將 Application Insights SDK 新增至 JAVA web 應用程式][java] |ServerContext<br/>推斷<br/>要求<br/>工作階段<br/>使用者 |
+| [將 JavaScript SDK 新增至網頁][client] |ClientContext <br/>推斷<br/>頁面<br/>ClientPerf<br/>Ajax |
 | [定義預設屬性][apiproperties] |**屬性** |
 | [呼叫 TrackMetric][api] |數字值<br/>**屬性** |
 | [通話軌 *][api] |事件名稱<br/>**屬性** |
 | [呼叫 TrackException][api] |**例外狀況**<br/>堆疊傾印<br/>**屬性** |
-| SDK 無法收集資料。 例如： <br/> - 無法存取效能計數器<br/> - 遙測初始設定式中發生例外狀況 |SDK 診斷 |
+| SDK 無法收集資料。 例如， <br/> - 無法存取效能計數器<br/> - 遙測初始設定式中發生例外狀況 |SDK 診斷 |
 
 如需[其他平臺的 sdk][platforms]，請參閱其檔。
 
@@ -253,11 +264,11 @@ openssl s_client -connect bing.com:443 -tls1_2
 | **屬性** |**任何資料 - 取決於您的程式碼** |
 | DeviceContext |`Id`，IP，地區設定，裝置型號，網路，網路類型，OEM 名稱，螢幕解析度，角色實例，角色名稱，裝置類型 |
 | ClientContext |作業系統、地區設定、語言、網路、視窗解析度 |
-| Session |`session id` |
+| 工作階段 |`session id` |
 | ServerContext |電腦名稱、地區設定、作業系統、裝置、使用者工作階段、使用者內容、作業 |
 | 推斷 |從 IP 位址的地區位置、時間戳記、作業系統、瀏覽器 |
 | 計量 |計量名稱和值 |
-| 活動 |事件名稱和值 |
+| 事件 |事件名稱和值 |
 | PageViews |URL 和頁面名稱或螢幕名稱 |
 | 用戶端效能 |URL/頁面名稱、瀏覽器載入時間 |
 | Ajax |從網頁向伺服器發出的 HTTP 呼叫 |

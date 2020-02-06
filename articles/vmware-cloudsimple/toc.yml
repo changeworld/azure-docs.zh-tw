@@ -1,9 +1,9 @@
-- name: 由 CloudSimple 提供的 VMware 解決方案
+- name: VMware 解決方案 (AVS)
   href: /azure/vmware-cloudsimple
   items:
     - name: 概觀
       items:
-        - name: 什麼是由 CloudSimple 提供的 VMware 解決方案
+        - name: 什麼是 VMware 解決方案 (AVS)
           href: cloudsimple-vmware-solutions-overview.md
         - name: 管理的重要概念
           href: key-concepts.md
@@ -14,9 +14,9 @@
           href: cloudsimple-network-checklist.md
         - name: 初始化和佈建容量
           href: quickstart-create-cloudsimple-service.md
-        - name: 設定私人雲端環境
+        - name: 設定 AVS 私人雲端環境
           href: quickstart-create-private-cloud.md
-        - name: 在私人雲端上建立 VMware VM
+        - name: 在 AVS 私人雲端上建立 VMware VM
           href: quickstart-create-private-cloud-vmware-virtual-machine.md
         - name: 在 Azure 上取用 VMware VM
           href: quickstart-create-vmware-virtual-machine.md
@@ -26,7 +26,7 @@
           href: cloudsimple-service.md
         - name: 節點
           href: cloudsimple-node.md
-        - name: 私人雲端
+        - name: AVS 私人雲端
           href: cloudsimple-private-cloud.md
         - name: 虛擬機器
           href: cloudsimple-virtual-machines.md
@@ -44,7 +44,7 @@
           href: cloudsimple-account.md
         - name: 活動管理
           href: cloudsimple-activity.md
-        - name: 私人雲端上的 VMware
+        - name: AVS 私人雲端上的 VMware
           href: vmware-components.md
         - name: 安全性概觀
           href: cloudsimple-security.md
@@ -56,9 +56,9 @@
           href: cloudsimple-faq.md
     - name: 教學課程
       items:
-        - name: 建立 CloudSimple 服務
+        - name: 建立 AVS 服務
           href: create-cloudsimple-service.md
-        - name: 存取 CloudSimple 入口網站
+        - name: 存取 AVS 入口網站
           href: access-cloudsimple-portal.md
         - name: 內部部署防火牆組態
           href: on-premises-firewall-configuration.md
@@ -70,25 +70,25 @@
               href: create-nodes.md
             - name: 刪除節點
               href: delete-nodes.md
-        - name: 管理私人雲端資源
+        - name: 管理 AVS 私人雲端資源
           items:
-            - name: 建立私人雲端
+            - name: 建立 AVS 私人雲端
               href: create-private-cloud.md
-            - name: 管理私人雲端
+            - name: 管理 AVS 私人雲端
               href: manage-private-cloud.md
-            - name: 擴充私人雲端
+            - name: 擴充 AVS 私人雲端
               href: expand-private-cloud.md
-            - name: 壓縮私人雲端
+            - name: 壓縮 AVS 私人雲端
               href: shrink-private-cloud.md
             - name: 對應您的 Azure 訂用帳戶
               href: azure-subscription-mapping.md
             - name: 提升權限
               href: escalate-private-cloud-privileges.md
-            - name: 刪除私人雲端
+            - name: 刪除 AVS 私人雲端
               href: delete-private-cloud.md
-        - name: 監視 CloudSimple 活動
+        - name: 監視 AVS 活動
           href: monitor-activity.md
-        - name: 設定私人雲端網路
+        - name: 設定 AVS 私人雲端網路
           items:
             - name: 建立及管理 VLAN 和子網路
               href: create-vlan-subnet.md
@@ -98,35 +98,35 @@
               href: public-ips.md
             - name: 設定 VPN 連線
               href: vpn-gateway.md
-            - name: 連線到 CloudSimple 的虛擬網路
+            - name: AVS 的虛擬網路連線
               href: virtual-network-connection.md
-        - name: 管理 CloudSimple 入口網站帳戶
+        - name: 管理 AVS 入口網站帳戶
           items:
             - name: 檢視帳戶摘要
               href: account.md
             - name: 檢視使用者清單
               href: users.md
-        - name: 設定 CloudSimple 虛擬機器
+        - name: 設定 AVS 虛擬機器
           items:
-            - name: 在 Azure 中建立 CloudSimple VM
+            - name: 在 Azure 中建立 AVS VM
               href: azure-create-vm.md
-            - name: 在 Azure 中管理 CloudSimple VM
+            - name: 管理 Azure 中的 AVS VM
               href: azure-manage-vm.md
     - name: 操作指南
       items:
         - name: 保護您的環境
           href: private-cloud-secure.md
-        - name: 私人雲端管理
+        - name: AVS 私人雲端管理
           items:
-            - name: 提升私人雲端權限
+            - name: 提升 AVS 私人雲端權限
               href: escalate-privileges.md
             - name: 工作負載 DNS 和 DHCP 設定
               href: dns-dhcp-setup.md
             - name: 使用第 2 層延伸網路遷移工作負載
               href: migration-layer-2-vpn.md
-        - name: 私人雲端網路
+        - name: AVS 私人雲端網路
           items:
-            - name: 私人雲端的 VPN 連線
+            - name: AVS 私人雲端的 VPN 連線
               href: set-up-vpn.md
             - name: 透過 ExpressRoute 的內部部署網路連線
               href: on-premises-connection.md
@@ -140,15 +140,15 @@
               href: private-cloud-dns-forwarding.md
         - name: VMware 平台
           items:
-            - name: 了解私人雲端權限模型
+            - name: 了解 AVS 私人雲端權限模型
               href: learn-private-cloud-permissions.md
             - name: vCenter 身分識別來源
               href: set-vcenter-identity.md
             - name: Azure 應用程式閘道與 VMware VM
               href: azure-application-gateway.md
-            - name: 將私人雲端 vCenter 伺服器設定為 vRealize 自動化端點
+            - name: 將 AVS 私人雲端 vCenter 伺服器設定為 vRealize 自動化端點
               href: configure-server-vrealize-automation-endpoint.md
-            - name: 將工作負載 VM 遷移至私人雲端
+            - name: 將工作負載 VM 遷移至 AVS 私人雲端
               href: migrate-workloads.md
             - name: 使用 Azure 資料箱移轉
               href: migration-using-azure-data-box.md
@@ -160,19 +160,19 @@
           items:
             - name: 備份工作負載虛擬機器
               href: backup-workloads-veeam.md
-            - name: 使用 Zerto 將私人雲端設定為災難復原站台
+            - name: 使用 Zerto 將 AVS 私人雲端設定為災難復原站台
               href: disaster-recovery-zerto.md
-            - name: 使用 VMware SRM 將私人雲端設定為災害復原網站
+            - name: 使用 VMware SRM 將 AVS 私人雲端設定為災害復原站台
               href: disaster-recovery-site-recovery-manager.md
             - name: VMware 水平解決方案指南
               href: horizon-guide.md
-            - name: 設定私人雲端的 vSAN 加密
+            - name: 設定 AVS 私人雲端的 vSAN 加密
               href: vsan-encryption.md
-            - name: 為 Oracle RAC 最佳化您的私人雲端
+            - name: 為 Oracle RAC 最佳化您的 AVS 私人雲端
               href: oracle-real-application-clusters.md
         - name: Azure 核心整合
           items:
-            - name: 私人雲端 vCenter 上的 Azure AD 身分識別來源
+            - name: AVS 私人雲端 vCenter 上的 Azure AD 身分識別來源
               href: azure-ad.md
             - name: 透過 ExpressRoute 的內部部署網路連線
               href: on-premises-connection.md

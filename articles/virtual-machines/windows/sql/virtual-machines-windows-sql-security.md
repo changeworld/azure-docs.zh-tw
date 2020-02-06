@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 6b2f9853c2699b69a0c9be13e6925a4b30f358f7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f5ea0ddff38532b119d8d984f2dabd6d898b44a5
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102017"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031351"
 ---
 # <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Azure 虛擬機器中的 SQL Server 安全性考量
 
@@ -57,6 +57,10 @@ Azure 符合多種業界規範及標準，可讓您使用在虛擬機器中執�
 
 最後，請考慮對 Azure 虛擬機器中的 SQL Server Database Engine 執行個體啟用已加密的連線。 使用簽署的憑證設定 SQL Server 執行個體。 如需詳細資訊，請參閱[啟用 Database Engine 的加密連接](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)和[連接字串語法](https://msdn.microsoft.com/library/ms254500.aspx)。
 
+## <a name="encryption"></a>加密
+
+受控磁片提供伺服器端加密，並 Azure 磁碟加密。 [伺服器端加密](/azure/virtual-machines/windows/disk-encryption)提供待用加密，並保護您的資料，以符合您的組織安全性和合規性承諾。 [Azure 磁碟加密](/azure/security/fundamentals/azure-disk-encryption-vms-vmss)使用 BITLOCKER 或 DM Crypt 技術，並與 Azure Key Vault 整合，以加密作業系統和資料磁片。 
+
 ## <a name="use-a-non-default-port"></a>使用非預設連接埠
 
 根據預設，SQL Server 會在已知的通訊埠 1433 上接聽。 為了提高安全性，將 SQL Server 設定為在非預設連接埠 (例如 1401) 上接聽。 如果您在 Azure 入口網站中佈建 SQL Server 資源庫映像，您可以在 [SQL Server 設定] 刀鋒視窗中指定此連接埠。
@@ -65,7 +69,7 @@ Azure 符合多種業界規範及標準，可讓您使用在虛擬機器中執�
 
 若要在佈建後進行此設定，您有兩個選項：
 
-- 針對 Resource Manager Vm, 您可以從 [ [SQL 虛擬機器] 資源](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource)選取 [**安全性**]。 這可提供變更連接埠的選項。
+- 針對 Resource Manager Vm，您可以從 [ [SQL 虛擬機器] 資源](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource)選取 [**安全性**]。 這可提供變更連接埠的選項。
 
   ![在入口網站中變更 TCP 連接埠](./media/virtual-machines-windows-sql-security/sql-vm-change-tcp-port.png)
 
@@ -93,9 +97,14 @@ Azure 符合多種業界規範及標準，可讓您使用在虛擬機器中執�
 
   - 如果您必須使用 **SA** 登入，請在佈建後啟用此登入，然後指派新的強式密碼。
 
-## <a name="follow-on-premises-best-practices"></a>遵循內部部署最佳做法
+## <a name="additional-best-practices"></a>其他最佳做法
 
-除了本主題中所述的作法，建議您檢閱並實作適用的傳統內部部署安全性作法。 如需詳細資訊，請參閱 [SQL Server 安裝的安全性考量](https://docs.microsoft.com/sql/sql-server/install/security-considerations-for-a-sql-server-installation)
+除了本主題中所述的作法以外，我們也建議您從傳統內部部署安全性作法，以及虛擬機器安全性最佳作法，檢查並執行安全性最佳作法。 
+
+如需內部部署安全性作法的詳細資訊，請參閱 SQL Server 安裝和資訊[安全中心](/sql/relational-databases/security/security-center-for-sql-server-database-engine-and-azure-sql-database)的[安全性考慮](/sql/sql-server/install/security-considerations-for-a-sql-server-installation)。 
+
+如需虛擬機器安全性的詳細資訊，請參閱[虛擬機器安全性總覽](/azure/security/fundamentals/virtual-machines-overview)。
+
 
 ## <a name="next-steps"></a>後續步驟
 

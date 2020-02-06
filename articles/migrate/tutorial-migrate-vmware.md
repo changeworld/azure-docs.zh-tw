@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Migrate 執行 VMware VM 的無代理程�
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.custom: mvc
-ms.openlocfilehash: fa77b9d730c28c21569064d05ca3a600dfb71071
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 79ba3f17b225357267cbd114659851614279bb7f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028705"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989360"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>將 VMware VM 遷移至 Azure (無代理程式)
 
@@ -184,7 +184,7 @@ Azure Migrate 需要稍微變更 VM，以確保 VM 可以遷移至 Azure。
 - **服務匯流排**：Azure Migrate 伺服器移轉會使用服務匯流排將複寫協調訊息傳送至設備。
 - **閘道儲存體帳戶**：伺服器移轉會使用閘道儲存體帳戶來儲存所複寫 VM 的相關狀態資訊。
 - **記錄儲存體帳戶**︰Azure Migrate 設備會將 VM 的複寫記錄上傳至記錄儲存體帳戶。 Azure Migrate 會將複寫資訊套用到複本受控磁碟。
-- **金鑰保存庫**：Azure Migrate 設備會使用金鑰保存庫來管理服務匯流排的連接字串，以及複寫中所用儲存體帳戶的存取金鑰。 當您準備好時，您應該設定金鑰保存庫存取儲存體帳戶所需的權限。 [檢閱這些權限](tutorial-prepare-vmware.md#assign-role-assignment-permissions)。   
+- **金鑰保存庫**：Azure Migrate 設備會使用金鑰保存庫來管理服務匯流排的連接字串，以及複寫中所用儲存體帳戶的存取金鑰。 當您準備好時，您應該設定金鑰保存庫存取儲存體帳戶所需的權限。 [檢閱這些權限](tutorial-prepare-vmware.md#assign-permissions-to-create-a-key-vault)。   
 
 
 ## <a name="track-and-monitor"></a>追蹤和監視

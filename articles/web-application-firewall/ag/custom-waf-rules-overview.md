@@ -7,12 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 01/30/2020
 ms.author: victorh
-ms.openlocfilehash: 9d9deca0365e13a0a8ad7404a476b05d0afef077
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 072c7bd5b5b292ca4f0e53c59fcb7e9771331a94
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935004"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031726"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Azure 應用程式閘道上的 Web 應用程式防火牆 v2 自訂規則
 
@@ -92,7 +92,7 @@ $BlockRule = New-AzApplicationGatewayFirewallCustomRule `
 
 ### <a name="name-optional"></a>名稱 [選用]
 
-規則的名稱。  它會出現在記錄中。
+規則名稱。  它會出現在記錄中。
 
 ### <a name="priority-required"></a>優先順序 [必要]
 

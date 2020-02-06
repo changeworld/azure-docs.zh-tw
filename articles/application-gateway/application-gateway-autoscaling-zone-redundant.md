@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/09/2019
 ms.author: victorh
-ms.openlocfilehash: 66978f313f5cb3881f8befc61289d7de0f4214cb
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 8fe38870f593dd57d8e4dad5601ea404e99c3d10
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668155"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031555"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>自動調整規模和區域備援應用程式閘道 v2 
 
@@ -37,12 +37,12 @@ ms.locfileid: "74668155"
 
 Standard_v2 和 WAF_v2 SKU 適用于下欄區域：美國中北部、美國中南部、美國西部、美國西部2、美國東部、美國東部2、美國中部、北歐、西歐、東南亞、法國中部、英國西部、日本東部、日本西部、澳大利亞東部、澳大利亞東南部、巴西南部、加拿大中部、加拿大東部、東亞、韓國中部、南韓南部、英國南部、印度中部、印度西部、印度南部。
 
-## <a name="pricing"></a>價格
+## <a name="pricing"></a>Pricing
 
 使用 v2 SKU，計價模式會以耗用量來驅動，不再附加至實例計數或大小。 V2 SKU 定價有兩個元件：
 
 - **固定價格**-這是布建 Standard_v2 或 WAF_v2 閘道的每小時（或部分小時）價格。 請注意，0個額外的最低實例仍會確保服務的高可用性，一律包含固定價格。
-- **容量單位價格**-這是以耗用量為基礎的成本，除了固定成本之外，也會收取費用。 容量單位收費也以小時或部分小時計。 容量單位分為三個面向 - 計算單位、持續連線與產量。 計算單位會計算耗用的處理器容量。 影響計算單位的因素包括 TLS 連線數/秒、URL 重寫計算，以及 WAF 規則處理。 持續連線是在給定的計費間隔中，針對應用程式閘道建立的 TCP 連線量值。 輸送量是系統在指定計費間隔中處理的平均每秒 Mb 數。  計費是針對保留實例計數以上的任何專案，在容量單位層級上完成。
+- **容量單位價格**-這是以耗用量為基礎的成本，除了固定成本之外，也會收取費用。 容量單位費用也會每小時或每小時計算一次。 容量單位有三個維度：計算單位、持續連線和輸送量。 計算單位是已耗用處理器容量的量值。 影響計算單位的因素包括 TLS 連線數/秒、URL 重寫計算，以及 WAF 規則處理。 持續連線是在給定的計費間隔中，針對應用程式閘道建立的 TCP 連線量值。 輸送量是系統在指定計費間隔中處理的平均每秒 Mb 數。  計費是針對保留實例計數以上的任何專案，在容量單位層級上完成。
 
 每個容量單位最多包含：1個計算單位，或2500持續連線，或 2.22-Mbps 輸送量。
 
@@ -64,7 +64,7 @@ Standard_v2 和 WAF_v2 SKU 適用于下欄區域：美國中北部、美國中�
 | Standard_v2                                       |    0.20             | 0.0080                          |
 | WAF_v2                                            |    0.36             | 0.0144                          |
 
-如需更多定價資訊，請參閱[定價頁面](https://azure.microsoft.com/pricing/details/application-gateway/)。 計費排定于2019年7月1日開始。
+如需更多定價資訊，請參閱[定價頁面](https://azure.microsoft.com/pricing/details/application-gateway/)。 
 
 **範例 1**
 
@@ -141,7 +141,7 @@ Standard_v2 和 WAF_v2 SKU 適用于下欄區域：美國中北部、美國中�
 
 |                                                   | v1 SKU   | v2 SKU   |
 | ------------------------------------------------- | -------- | -------- |
-| 自動調整                                       |          | &#x2713; |
+| 自動調整規模                                       |          | &#x2713; |
 | 區域備援                                   |          | &#x2713; |
 | 靜態 VIP                                        |          | &#x2713; |
 | Azure Kubernetes Service （AKS）輸入控制器 |          | &#x2713; |
@@ -165,14 +165,14 @@ Standard_v2 和 WAF_v2 SKU 適用于下欄區域：美國中北部、美國中�
 
 ## <a name="differences-with-v1-sku"></a>V1 SKU 的差異
 
-|時差|詳細資料|
+|差異|詳細資料|
 |--|--|
 |驗證憑證|不支援。<br>如需詳細資訊，請參閱[應用程式閘道端對端 SSL 的概觀](ssl-overview.md#end-to-end-ssl-with-the-v2-sku)。|
 |在相同子網路上混合使用 Standard_v2 和標準應用程式閘道|不支援|
 |應用程式閘道子網路上的使用者定義路由 (UDR)|不支援|
 |輸入連接埠範圍的 NSG| - Standard_v2 SKU 適用 65200 至 65535<br>- 標準 SKU 適用 65503 至 65534<br>如需詳細資訊，請參閱[常見問題集](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet)。|
 |Azure 診斷中的效能記錄|不支援。<br>應該使用 Azure 計量。|
-|計費|排程于2019年7月1日開始計費。|
+|帳務|排程于2019年7月1日開始計費。|
 |FIPS 模式|目前不支援。|
 |純 ILB 模式|目前不支援。 支援將公用與 ILB 模式搭配使用。|
 |Netwatcher 整合|不支援。|

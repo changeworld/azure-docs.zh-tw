@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d5adc94061cd656b0654fba6609d36ecfd38c75d
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 4d804499116631be6f922f67f8b8f6c7063a6d5c
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988034"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030722"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>混合式 Runbook 背景工作的疑難排解
 
@@ -28,41 +28,39 @@ ms.locfileid: "76988034"
 
 #### <a name="issue"></a>問題
 
-Runbook 執行失敗且您收到下列錯誤：
+Runbook 執行失敗，並出現下列錯誤。
 
 ```error
 "The job action 'Activate' cannot be run, because the process stopped unexpectedly. The job action was attempted three times."
 ```
 
-您的 runbook 在嘗試執行三次後很快就會暫停。 有些情況可能會中斷 runbook 的完成。 相關的錯誤訊息可能不包含任何其他資訊。
+您的 runbook 在嘗試執行三次後很快就會暫停。 有一些條件可以中斷 runbook 完成。 相關的錯誤訊息可能不會包含任何其他資訊。
 
 #### <a name="cause"></a>原因
 
 可能的原因如下：
 
-* Runbook 無法使用本機資源驗證
+* Runbook 無法使用本機資源進行驗證。
 
-* Hybrid Worker 位於 Proxy 或防火牆後方
-
-* Runbook 無法使用本機資源驗證
+* 混合式背景工作角色位於 Proxy 或防火牆後方。
 
 * 設定為執行「混合式 Runbook 背景工作角色」功能的電腦不符合最低硬體需求。
 
 #### <a name="resolution"></a>解析度
 
-確認電腦可透過連接埠 443 輸出存取 *.azure-automation.net。
+確認電腦對埠443上的 *. azure-automation.net 具有輸出存取權。
 
 執行混合式 Runbook 背景工作角色的電腦應符合最低硬體需求，才能將背景工作角色設定為裝載此功能。 Runbook 及其使用的背景進程可能會導致系統過度使用，並導致 runbook 作業延遲或超時。
 
-確認執行混合式 Runbook 背景工作角色功能的電腦滿足最低硬體需求。 如果滿足最低硬體需求，請監視 CPU 和記憶體使用率，判斷混合式 Runbook 背景工作角色處理序之效能和 Windows 之間是否有任何相互關聯。 任何記憶體或 CPU 壓力都可能表示需要升級資源。 您也可以選擇其他可支援最低需求，也能在工作負載需求指出需要增加資源時擴充的計算資源。
+確認執行「混合式 Runbook 背景工作角色」功能的電腦符合最低硬體需求。 如果滿足最低硬體需求，請監視 CPU 和記憶體使用率，判斷混合式 Runbook 背景工作角色處理序之效能和 Windows 之間是否有任何相互關聯。 任何記憶體或 CPU 壓力都可能表示需要升級資源。 您也可以選取不同的計算資源來支援最低需求，並在工作負載需求指出需要增加時進行調整。
 
-查閱 **Microsoft-SMA** 事件記錄檔，找出描述為「Win32 處理序結束，代碼為 [4294967295]」的對應事件。 此錯誤的原因是您尚未在 Runbook 中設定驗證，或尚未指定混合式背景工作角色群組的執行身分認證。 檢閱 [Runbook 權限](../automation-hrw-run-runbooks.md#runbook-permissions)，確認 Runbook 的驗證設定正確無誤。
+查閱 **Microsoft-SMA** 事件記錄檔，找出描述為「Win32 處理序結束，代碼為 [4294967295]」的對應事件。 此錯誤的原因是您尚未在 runbook 中設定驗證，或指定混合式背景工作角色群組的執行身分認證。 審查[runbook 許可權](../automation-hrw-run-runbooks.md#runbook-permissions)，以確認您已正確設定 runbook 的驗證。
 
 ### <a name="no-cert-found"></a>案例：在混合式 Runbook 背景工作角色的憑證存放區中找不到憑證
 
 #### <a name="issue"></a>問題
 
-混合式 Runbook 背景工作角色上執行的 Runbook 失敗並出現下列錯誤訊息：
+在混合式 Runbook 背景工作角色上執行的 runbook 因下列錯誤訊息而失敗。
 
 ```error
 Connect-AzureRmAccount : No certificate was found in the certificate store with thumbprint 0000000000000000000000000000000000000000
@@ -74,7 +72,7 @@ At line:3 char:1
 ```
 #### <a name="cause"></a>原因
 
-當您在混合式 Runbook 背景工作角色上執行的 Runbook 中嘗試使用[執行身分帳戶](../manage-runas-account.md)時，若沒有執行身分帳戶憑證，就會發生此錯誤。 混合式 Runbook 背景工作角色預設在本機沒有憑證資產，執行身分帳戶需要此憑證才能正常運作。
+當您嘗試在執行身分帳戶憑證不存在的混合式 Runbook 背景工作角色上執行的 runbook 中使用[執行身分帳戶](../manage-runas-account.md)時，就會發生此錯誤。 混合式 Runbook 背景工作角色預設不會有本機的憑證資產，因此執行身分帳戶必須要有此認證才能正常運作。
 
 #### <a name="resolution"></a>解析度
 
@@ -133,10 +131,9 @@ nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfi
 
 下列清單顯示已針對 Linux 混合式 Runbook 背景工作角色啟動的處理序。 這些程序全都位於 `/var/opt/microsoft/omsagent/state/automationworker/` 目錄。
 
-
 * **oms** -背景工作角色管理員進程。 它會直接從 DSC 啟動。
 
-* **worker. 會議**-自動註冊的混合式背景工作進程，它是由背景工作角色管理員啟動。 更新管理會使用此處理序，且使用者不會注意到此處理序。 如果機器上未啟用更新管理解決方案，就不會出現此處理序。
+* **worker. 會議**-自動註冊的混合式背景工作進程。 它是由背景工作角色管理員啟動。 更新管理會使用此處理序，且使用者不會注意到此處理序。 如果機器上未啟用更新管理解決方案，就不會出現此處理序。
 
 * **diy/worker. 會議**-diy 混合式背景工作進程。 DIY 混合式背景工作處理序可用來在混合式 Runbook 背景工作角色上執行使用者 Runbook。 它與自動註冊的混合式背景工作進程不同，主要細節是使用不同的設定。 如果已停用 Azure 自動化解決方案，而且未註冊 DIY Linux 混合式背景工作角色，則不會出現此進程。
 

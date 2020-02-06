@@ -17,12 +17,12 @@ ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 567df85fa634570b0ac04fe6da906776a74c0550
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e673c2dfd9b3bef6d443498fc96a8c71e0737851
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76833341"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030756"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft 身分識別平台端點中的權限和同意
 
@@ -49,7 +49,7 @@ Microsoft 身分識別平台會實作 [OAuth 2.0](active-directory-v2-protocols.
 
 * 讀取使用者的行事曆
 * 寫入使用者的行事曆
-* 以使用者身分傳送郵件
+* 以使用者身分傳送電子郵件
 
 藉由定義這些類型的權限，資源可以更精細地掌控其資料及 API 功能的公開方式。 第三方應用程式可向使用者和系統管理員要求這些權限，且必須在他們核准要求後，應用程式才可存取資料或代表使用者執行動作。 透過將資源的功能切割成較小的權限集，便可將協力廠商應用程式建置成只要求它們執行其功能所需的特定權限。 使用者和系統管理員可以確切知道應用程式可存取的資料，而且可以更確信它不會有惡意的意圖。 開發人員應一律遵守最低權限的概念，而僅就其應用程式運作所需的程度要求權限。
 
@@ -89,7 +89,7 @@ Microsoft 身分識別平臺的 OpenID Connect 具有一些定義完善的範圍
 
 `email` 範圍可以與 `openid` 範圍及任何其他範圍搭配使用。 它會以 `email` 宣告的形式為應用程式提供使用者主要電子郵件地址的存取權。 只有當電子郵件地址與使用者帳戶相關聯時，`email` 宣告才會包含在權杖中，而這不一定都是如此。 如果它使用 `email` 範圍，您的應用程式就應該做好準備，以處理權杖中沒有 `email` 宣告的情況。
 
-### <a name="profile"></a>設定檔
+### <a name="profile"></a>profile (設定檔)
 
 `profile` 範圍可以與 `openid` 範圍及任何其他範圍搭配使用。 它會為應用程式提供大量使用者相關資訊的存取權。 它可以存取的資訊包括但不限於使用者的名字、姓氏、慣用的使用者名稱和物件識別碼。 如需特定使用者之識別碼權杖中可用的設定檔宣告完整清單，請參閱 [`id_tokens` 參考](id-tokens.md)。
 
@@ -202,9 +202,9 @@ Microsoft 生態系統中的某些高特權權限可以設定為「受系統管�
 ```
 
 
-| 參數     | 條件     | 說明                                                                               |
+| 參數     | 條件     | 描述                                                                               |
 |:--------------|:--------------|:-----------------------------------------------------------------------------------------|
-| `tenant` | 必要項 | 您想要要求權限的目錄租用戶。 可以提供 GUID 或易記的名稱格式，或是一般會參考使用 `common` (如範例所示)。 |
+| `tenant` | 必要項 | 您想要要求權限的目錄租用戶。 可以提供 GUID 或易記名稱格式，或與組織一般參考，如範例中所示。 請勿使用「通用」，因為個人帳戶無法提供系統管理員同意，除非在租使用者的內容中。 若要確保與管理租使用者的個人帳戶具有最佳相容性，請盡可能使用租使用者識別碼。 |
 | `client_id` | 必要項 | **應用程式（用戶端）識別碼**， [Azure 入口網站](https://go.microsoft.com/fwlink/?linkid=2083908)指派給您應用程式的應用程式註冊體驗。 |
 | `redirect_uri` | 必要項 |您想要傳送回應以供應用程式處理的重新導向 URI。 它必須與您在應用程式註冊入口網站中註冊的其中一個重新導向 URI 完全相符。 |
 | `state` | 建議 | 同樣會隨權杖回應傳回之要求中所包含的值。 它可以是您想要的任何內容的字串。 請在驗證要求出現之前，先使用此狀態在應用程式中將使用者狀態的相關資訊 (例如他們之前所在的網頁或檢視) 編碼。 |
@@ -221,7 +221,7 @@ Microsoft 生態系統中的某些高特權權限可以設定為「受系統管�
 GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b95&state=state=12345&admin_consent=True
 ```
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 | --- | --- |
 | `tenant` | 將應用程式所要求的權限授與應用程式的目錄租用戶 (採用 GUID 格式)。 |
 | `state` | 一個包含在要求中而將一併在權杖回應中傳回的值。 它可以是您想要的任何內容的字串。 此狀態用於在驗證要求出現之前，於應用程式中編碼使用者的狀態資訊，例如之前所在的網頁或檢視。 |
@@ -235,7 +235,7 @@ GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b
 GET http://localhost/myapp/permissions?error=permission_denied&error_description=The+admin+canceled+the+request
 ```
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 | --- | --- |
 | `error` | 用以分類發生的錯誤類型與回應錯誤的錯誤碼字串。 |
 | `error_description` | 可協助開發人員識別錯誤根本原因的特定錯誤訊息。 |

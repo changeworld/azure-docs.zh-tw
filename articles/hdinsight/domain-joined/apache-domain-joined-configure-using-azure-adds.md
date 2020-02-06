@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seodec18
-ms.date: 10/02/2019
-ms.openlocfilehash: 01de2173ee5d55f24f97e1d057e96d93a56c2af0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/03/2020
+ms.openlocfilehash: a3a23e2adb60b2b0fd5f4a5e790990ce2ad85fa9
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435962"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031136"
 ---
 # <a name="enterprise-security-package-configurations-with-azure-active-directory-domain-services-in-hdinsight"></a>在 HDInsight 中使用 Azure Active Directory Domain Services 的企業安全性套件設定
 
@@ -77,7 +77,7 @@ HDInsight 企業安全性套件需要特定的網域服務作業，例如建立 
 
 ![HDInsight 受控識別操作員角色指派](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-managed-identity-operator-role-assignment.png)
 
-## <a name="network-considerations"></a>網路考量事項
+## <a name="network-considerations"></a>網路考量
 
 > [!NOTE]  
 > Azure AD DS 必須部署在以 Azure Resource Manager 為基礎的虛擬網路中。 Azure AD DS 不支援傳統虛擬網路。 如需詳細資訊，請參閱[使用 Azure 入口網站啟用 Azure Active Directory Domain Services](../../active-directory-domain-services/tutorial-create-instance-advanced.md#create-and-configure-the-virtual-network)。

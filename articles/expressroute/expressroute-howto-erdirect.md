@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: jaredro
-ms.openlocfilehash: c5cb8366465d5983823184c87eb54fad6aaffbd0
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 2722a852b1119ef619bc414bce5cb3a8ff6f8f00
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705916"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031607"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>如何設定 ExpressRoute Direct
 
@@ -27,7 +27,13 @@ ExpressRoute Direct 可讓您在策略性分散於世界各地的對等互連位
 
    Select-AzSubscription -Subscription "<SubscriptionID or SubscriptionName>"
    ```
-2. 列出支援 ExpressRoute Direct 的所有位置。
+   
+2. 將您的訂用帳戶重新註冊至 Microsoft，以存取 expressrouteportslocation 和 expressrouteport Api。
+
+   ```powershell
+   Register-AzResourceProvider -ProviderNameSpace "Microsoft.Network"
+   ```   
+3. 列出支援 ExpressRoute Direct 的所有位置。
   
    ```powershell
    Get-AzExpressRoutePortsLocation
@@ -60,7 +66,7 @@ ExpressRoute Direct 可讓您在策略性分散於世界各地的對等互連位
    Contact             : support@equinix.com
    AvailableBandwidths : []
    ```
-3. 判斷以上所列的位置是否有可用的頻寬
+4. 判斷以上所列的位置是否有可用的頻寬
 
    ```powershell
    Get-AzExpressRoutePortsLocation -LocationName "Equinix-San-Jose-SV1"
@@ -82,7 +88,7 @@ ExpressRoute Direct 可讓您在策略性分散於世界各地的對等互連位
                           }
                         ]
    ```
-4. 根據以上所選的位置建立 ExpressRoute Direct 資源
+5. 根據以上所選的位置建立 ExpressRoute Direct 資源
 
    ExpressRoute Direct 支援 QinQ 與 Dot1Q 封裝。 如果選取 QinQ，則每個 ExpressRoute 線路都會動態獲得指派的 S-Tag，並將成為整個 ExpressRoute Direct 資源中唯一的。 線路上的每個 C-Tag 必須是線路上唯一的，但不是 ExpressRoute Direct 上唯一的。  
 

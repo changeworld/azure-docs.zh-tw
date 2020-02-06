@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: 6a9385a49e85806464e8f9ccf11d9232fae42435
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 933f0c52cf0d65c7dca480971589c0d0f2ebabf0
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461123"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906768"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>準備 Windows VHD 或 VHDX 以上傳至 Azure
 
@@ -33,6 +33,22 @@ ms.locfileid: "75461123"
 > 本文中的指示適用于：
 >1. 64位版本的 Windows Server 2008 R2 和更新版本的 Windows Server 作業系統。 如需在 Azure 中執行32位作業系統的詳細資訊，請參閱[Azure vm 中的32位作業系統支援](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines)。
 >2. 如果將使用任何嚴重損壞修復工具來遷移工作負載（例如 Azure Site Recovery 或 Azure Migrate），仍必須執行此程式，並在虛擬作業系統上進行準備，然後再進行遷移。
+
+## <a name="system-file-checker-sfc-command"></a>系統檔案檢查程式（SFC）命令
+
+### <a name="run-windows-system-file-checker-utility-run-sfc-scannow-on-os-prior-to-generalization-step-of-creating-customer-os-image"></a>在建立客戶作業系統映射的一般化步驟之前，在 OS 上執行 Windows 系統檔案檢查工具公用程式（執行 sfc/scannow）
+
+系統檔案檢查程式（SFC）命令是用來驗證和取代 Windows 系統檔案。
+
+若要執行 SFC 命令：
+
+1. 以系統管理員身分開啟提升許可權的命令提示字元。
+1. 輸入 `sfc /scannow` 並選取**Enter**。
+
+    ![系統檔案檢查程式](media/prepare-for-upload-vhd-image/system-file-checker.png)
+
+
+在 SFC 掃描完成之後，請嘗試安裝 Windows 更新並重新啟動電腦。
 
 ## <a name="convert-the-virtual-disk-to-a-fixed-size-and-to-vhd"></a>將虛擬磁片轉換成固定大小和 VHD
 
@@ -156,7 +172,7 @@ Get-Service -Name RemoteRegistry | Where-Object { $_.StartType -ne 'Automatic' }
 請確定已正確設定遠端存取的下列設定：
 
 >[!NOTE] 
->當您執行 `Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services -Name <object name> -Value <value>`時，可能會收到錯誤訊息。 您可以放心忽略這個訊息。 這表示網域不會透過群組原則物件來推送該設定。
+>當您執行 `Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services -Name <object name> -Value <value>`時，可能會收到錯誤訊息。 您可以放心地忽略此訊息。 這表示網域不會透過群組原則物件來推送該設定。
 
 1. 遠端桌面通訊協定 (RDP) 已啟用：
    

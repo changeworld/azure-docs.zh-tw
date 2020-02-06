@@ -17,12 +17,12 @@ ms.date: 08/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6ccc04ccdaf92764da8f45af1e5dda98af822587
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 3d16c1950cbae0bcc7dd858e5520eb8bfc6e496d
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690846"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030773"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-by-using-the-sql-server-iaas-agent-extension"></a>使用 SQL Server IaaS 代理程式擴充功能，將 Azure 虛擬機器上的管理工作自動化
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ SQL Server IaaS 代理程式擴充功能 (SqlIaasExtension) 會在 Azure 虛擬�
 ## <a name="supported-services"></a>支援的服務
 SQL Server IaaS 代理程式擴充功能支援下列管理工作︰
 
-| 系統管理功能 | 說明 |
+| 系統管理功能 | 描述 |
 | --- | --- |
 | **SQL Server 自動備份** |針對預設實例或虛擬機器上[已正確安裝](virtual-machines-windows-sql-server-iaas-faq.md#administration)之 SQL Server 實例的所有資料庫，自動排程備份。 如需詳細資訊，請參閱[Azure 虛擬機器中的 SQL Server 自動備份（Resource Manager）](virtual-machines-windows-sql-automated-backup.md)。 |
 | **SQL Server 自動修補** |設定維護期間 (在此期間會進行 VM 的重要 Windows 更新)，以避免在工作負載尖峰時段進行更新。 如需詳細資訊，請參閱[Azure 虛擬機器中的 SQL Server 的自動修補（Resource Manager）](virtual-machines-windows-sql-automated-patching.md)。 |
@@ -82,10 +82,9 @@ SQL Server IaaS 代理程式擴充功能支援下列管理工作︰
 當您向[SQL VM 資源提供者](virtual-machines-windows-sql-register-with-resource-provider.md)註冊您的 SQL Server VM 時，會安裝 SQL Server IaaS 延伸模組。 如有需要，您可以使用下列 PowerShell 命令，手動安裝 SQL Server IaaS 代理程式： 
 
   ```powershell-interactive
-    Set-AzVMExtension -ResourceGroupName "<ResourceGroupName>" `
-    -Location "<VMLocation>" -VMName "<VMName>" `
-    -Name "SqlIaasExtension" -Publisher "Microsoft.SqlServer.Management" `
-    -ExtensionType "SqlIaaSAgent" -TypeHandlerVersion "2.0";  
+    Set-AzVMSqlServerExtension -VMName "sql2017" `
+    -ResourceGroupName "LabsqlIAASagent" -Name "SQLIaasExtension" `
+    -Version "2.0" -Location "Central US";  
   ```
 
 > [!NOTE]

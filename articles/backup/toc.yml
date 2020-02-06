@@ -252,9 +252,13 @@
           href: backup-azure-backup-cloud-as-tape.md
     - name: 離線備份
       items:
-        - name: 設定離線備份
+        - name: 概觀
+          href: offline-backup-overview.md
+        - name: 使用 Azure 資料箱進行離線備份
+          href: offline-backup-azure-data-box.md
+        - name: 使用匯入/匯出 (MARS) 進行離線備份
           href: backup-azure-backup-import-export.md
-        - name: 適用於 DPM 和 Azure 備份伺服器的離線備份
+        - name: 使用匯入/匯出 (DPM/MABS) 進行離線備份
           href: backup-azure-backup-server-import-export-.md
     - name: 監視和警示
       items:

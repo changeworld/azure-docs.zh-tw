@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 2d26cbce3398b9a44530553fbff0413c631b7579
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 0649908e4767e48d23306c72b8db92dea9f26284
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75744779"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030912"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>調整 Azure HDInsight 叢集
 
@@ -29,7 +29,7 @@ HDInsight 具有彈性，可讓您選擇相應增加和相應減少叢集中的�
 
 Microsoft 提供下列公用程式來調整叢集：
 
-|公用程式 | 說明|
+|公用程式 | 描述|
 |---|---|
 |[PowerShell Az](https://docs.microsoft.com/powershell/azure)|[AzHDInsightClusterSize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) -ClusterName \<叢集名稱 >-TargetInstanceCount \<NewSize >|
 |[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) -ClusterName \<叢集名稱 >-TargetInstanceCount \<NewSize >|
@@ -37,7 +37,7 @@ Microsoft 提供下列公用程式來調整叢集：
 |[Azure CLI](hdinsight-administer-use-command-line.md)|azure hdinsight 叢集調整大小 \<clusterName > \<目標實例計數 > |
 |[Azure 入口網站](https://portal.azure.com)|開啟您的 HDInsight 叢集窗格，選取左側功能表上的 [叢集**大小**]，然後在 [叢集大小] 窗格上，輸入背景工作節點的數目，然後選取 [儲存]。|  
 
-![Azure 入口網站 scale cluster 選項](./media/hdinsight-scaling-best-practices/scale-cluster-blade1.png)
+![Azure 入口網站 scale cluster 選項](./media/hdinsight-scaling-best-practices/azure-portal-settings-nodes.png)
 
 只要使用上述任一方法，您即可在幾分鐘內相應增加或相應減少 HDInsight 叢集。
 
@@ -59,7 +59,7 @@ Microsoft 提供下列公用程式來調整叢集：
 
     減少資料節點數目以縮減 Hadoop 叢集時，系統會重新啟動叢集中的部分服務。 此行為會導致所有執行中和擱置的工作在調整作業完成時失敗。 但您可以在作業完成後重新提交這些工作。
 
-* Apache HBase
+* Apache HBase (英文)
 
     您可以順暢地在 HBase 叢集運作時對其新增或移除資料節點。 區域伺服器會在完成調整作業的數分鐘之內自動取得平衡。 但是，您也可以手動平衡區域伺服器，方法是登入叢集的前端節點，然後從命令提示字元視窗執行下列命令：
 
@@ -126,7 +126,7 @@ Microsoft 提供下列公用程式來調整叢集：
 yarn application -kill <application_id>
 ```
 
-例如：
+例如，
 
 ```bash
 yarn application -kill "application_1499348398273_0003"

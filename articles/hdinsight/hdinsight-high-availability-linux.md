@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 68f4eb4fbad2a571e078cb9aedcfd56c80ffe054
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 8c3e377faef4e18bff01fd7001751d1f1e347b8d
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747871"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030860"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>HDInsight 中 Apache Hadoop 叢集的可用性和可靠性
 
@@ -46,7 +46,7 @@ Nimbus 節點是 Apache Storm 叢集隨附的節點。 Nimbus 節點會透過在
 
 [ZooKeeper](https://zookeeper.apache.org/) 節點用於前端節點上主要服務的前置選擇。 它們也可用來確保服務、資料（背景工作）節點和閘道知道主要服務在哪一個前端節點上為作用中狀態。 根據預設，HDInsight 會提供三個 ZooKeeper 節點。
 
-### <a name="worker-nodes"></a>背景工作角色節點
+### <a name="worker-nodes"></a>背景工作節點
 
 當作業提交至叢集時，背景工作節點會執行實際的資料分析。 如果背景工作節點失敗，它所執行的工作將會提交至另一個背景工作節點。 根據預設，HDInsight 會建立四個背景工作節點。 不過，您可以視需要在叢集建立期間和之後變更該數字。
 
@@ -64,7 +64,7 @@ Nimbus 節點是 Apache Storm 叢集隨附的節點。 Nimbus 節點會透過在
 
 公用網關的存取權僅限於埠443（HTTPS）、22和23。
 
-|Port |說明 |
+|Port |描述 |
 |---|---|
 |443|用來存取裝載于前端節點上的 Ambari 和其他 web UI 或 REST Api。|
 |22|用來以 SSH 存取主要前端節點或邊緣節點。|
@@ -97,7 +97,7 @@ curl -u admin:$password "https://$clusterName.azurehdinsight.net/api/v1/clusters
 
 您可以使用下列方法，連接到無法直接透過網際網路存取的節點：
 
-|方法 |說明 |
+|方法 |描述 |
 |---|---|
 |SSH|使用 SSH 連線到前端節點之後，您便可以接著從前端節點使用 SSH 來連線到叢集中的其他節點。 如需詳細資訊，請參閱[搭配 HDInsight 使用 SSH](hdinsight-hadoop-linux-use-ssh-unix.md) 文件。|
 |SSH 通道|如果您需要存取裝載在其中一個節點上的 web 服務，但未公開到網際網路，您必須使用 SSH 通道。 如需詳細資訊，請參閱[搭配 HDInsight 使用 SSH 通道](hdinsight-linux-ambari-ssh-tunnel.md)文件。|
@@ -119,7 +119,7 @@ curl -u admin:$password "https://$clusterName.azurehdinsight.net/api/v1/clusters
 
 下列警示可協助監視叢集的可用性：
 
-| 警示名稱                               | 說明                                                                                                                                                                                  |
+| 警示名稱                               | 描述                                                                                                                                                                                  |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 度量監視狀態                    | 此警示會指出計量監視器進程的狀態，由監視狀態腳本決定。                                                                                   |
 | Ambari 代理程式的心跳                   | 如果伺服器已失去與代理程式的連線，就會觸發此警示。                                                                                                                        |
@@ -248,7 +248,7 @@ curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CL
     cd /var/log/hadoop/hdfs
     get *
 
-如需可用命令清單，請在 `sftp>` 提示中輸入 `help`。
+如需可用命令清單，請在 `help` 提示中輸入 `sftp>`。
 
 > [!NOTE]  
 > 使用 SFTP 連線時，也提供圖形化介面可讓您以視覺化方式檢視檔案系統。 例如： [MobaXTerm](https://mobaxterm.mobatek.net/) 可讓您使用類似於「Windows 檔案總管」的介面瀏覽檔案系統。
@@ -270,7 +270,7 @@ curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CL
 
 * **Azure 入口網站**：建立叢集時，您可以設定叢集所使用的節點大小：
 
-    ![可選取節點大小的 [叢集映像建立精靈]](./media/hdinsight-high-availability-linux/hdinsight-headnodesize.png)
+    ![可選取節點大小的 [叢集映像建立精靈]](./media/hdinsight-high-availability-linux/azure-portal-cluster-configuration-pricing-hadoop.png)
 
 * **Azure CLI**：使用[`az hdinsight create`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create)命令時，您可以使用 `--headnode-size`、`--workernode-size`和 `--zookeepernode-size` 參數來設定 Head、worker 和 ZooKeeper 節點的大小。
 

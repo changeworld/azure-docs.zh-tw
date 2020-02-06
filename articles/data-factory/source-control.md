@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/09/2019
-ms.openlocfilehash: fc38dce3deaa601c9ed36f60439a08bb89cc7630
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 1cc5932eca520b0bbc0c592b54d36ea8b5942b08
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646892"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031624"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory 中的原始檔控制
 
@@ -70,7 +70,7 @@ Azure Data Factory 的使用者介面體驗（UX）有兩種適用于視覺製�
 
 [設定] 窗格會顯示下列 Azure Repos 程式碼存放庫設定：
 
-| 設定 | 說明 | 值 |
+| 設定 | 描述 | 值 |
 |:--- |:--- |:--- |
 | **存放庫類型** | Azure Repos 程式碼存放庫的類型。<br/> | Azure DevOps Git 或 GitHub |
 | **Azure Active Directory** | 您的 Azure AD 租用戶名稱。 | `<your tenant name>` |
@@ -157,7 +157,7 @@ GitHub 與 Data Factory 的整合支援公用 GitHub (即 [https://github.com](h
 
 - GitHub 與 Data Factory 的視覺效果撰寫工具整合僅適用于 Data Factory 的正式運作版本。
 
-- 針對每個資源類型（例如管線和資料集），最多可以從單一 GitHub 分支提取1000個實體。 若達到此限制，建議您將資源分割成不同的工廠。
+- 針對每個資源類型（例如管線和資料集），最多可以從單一 GitHub 分支提取1000個實體。 若達到此限制，建議您將資源分割成不同的工廠。 Azure DevOps Git 沒有這項限制。
 
 ## <a name="switch-to-a-different-git-repo"></a>切換至不同的 Git 存放庫
 
@@ -187,7 +187,7 @@ GitHub 與 Data Factory 的整合支援公用 GitHub (即 [https://github.com](h
 
 ### <a name="configure-publishing-settings"></a>設定發佈設定
 
-若要設定發佈分支 (亦即儲存 Resource Manager 範本的分支)，請將 `publish_config.json` 檔案新增至共同作業分支中的根資料夾。 Data Factory 會讀取此檔案、尋找 `publishBranch` 欄位，然後使用所提供的值來建立新分支 (如果尚未存在)。 接著，它會將所有 Resource Manager 範本都儲存到指定的位置。 例如：
+若要設定發佈分支 (亦即儲存 Resource Manager 範本的分支)，請將 `publish_config.json` 檔案新增至共同作業分支中的根資料夾。 Data Factory 會讀取此檔案、尋找 `publishBranch` 欄位，然後使用所提供的值來建立新分支 (如果尚未存在)。 接著，它會將所有 Resource Manager 範本都儲存到指定的位置。 例如，
 
 ```json
 {
@@ -226,7 +226,7 @@ GitHub 與 Data Factory 的整合支援公用 GitHub (即 [https://github.com](h
 
 ## <a name="best-practices-for-git-integration"></a>Git 整合的最佳做法
 
-### <a name="permissions"></a>使用權限
+### <a name="permissions"></a>權限
 
 通常您不會希望每個小組成員都擁有更新處理站的許可權。 建議使用下列許可權設定：
 
@@ -249,13 +249,18 @@ GitHub 與 Data Factory 的整合支援公用 GitHub (即 [https://github.com](h
 
 1. 移除目前的 Git 存放庫
 1. 以相同的設定重新設定 Git，但請確定已選取 [**將現有的 Data Factory 資源匯入到存放庫**]，然後選擇 [**新增分支**]
-1. 從您的共同作業分支刪除所有資源
 1. 建立提取要求以將變更合併到共同作業分支 
+
+以下是一些可能會導致過時發佈分支的情況範例：
+- 使用者有多個分支。 在一個功能分支中，他們會刪除未 AKV 關聯的連結服務（非 AKV 連結服務會立即發行，不論它們是否在 Git 中），而且永遠不會將功能分支合併到共同作業 brnach。
+- 使用者使用 SDK 或 PowerShell 修改過 data factory
+- 使用者已將所有資源移到新的分支，並嘗試第一次發行。 匯入資源時，應該手動建立連結服務。
+- 使用者以手動方式上傳非 AKV 連結服務或 Integration Runtime JSON。 它們會從另一個資源（例如資料集、連結的服務或管線）參考該資源。 透過 UX 建立的非 AKV 連結服務會立即發佈，因為認證需要加密。 如果您上傳參考該連結服務的資料集並嘗試發佈，UX 會允許它，因為它存在於 git 環境中。 它會在發行時遭到拒絕，因為它不存在於 data factory 服務中。
 
 ## <a name="provide-feedback"></a>提供意見反應
 選取 [意見反應] 可為功能加上註解，也可以向 Microsoft 通報工具問題：
 
-![意見反應](media/author-visually/provide-feedback.png)
+![意見](media/author-visually/provide-feedback.png)
 
 ## <a name="next-steps"></a>後續步驟
 
