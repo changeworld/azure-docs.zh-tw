@@ -27,7 +27,7 @@ Azure 在世界各地多個資料中心運作。 這些資料中心會依據地�
 基於合規性或法務目的，Azure 有一些特殊區域，您在建置應用程式時可能會想要使用這些區域。 這些特殊區域包括：
 
 * **US Gov 維吉尼亞州**和 **US Gov 愛荷華州**
-  * 由經篩選的美國人士所操作、適用於美國政府機構及其合作夥伴的實體與邏輯網路隔離 Azure 執行個體。 包含其他法規遵循認證，例如 [FedRAMP](https://www.microsoft.com/en-us/TrustCenter/Compliance/FedRAMP) 和 [DISA](https://www.microsoft.com/en-us/TrustCenter/Compliance/DISA)。 深入了解 [Azure Government](https://azure.microsoft.com/features/gov/)。
+  * 由經篩選的美國人士所操作、適用於 US Gov 機構及其合作夥伴的實體與邏輯網路隔離 Azure 執行個體。 包含其他法規遵循認證，例如 [FedRAMP](https://www.microsoft.com/en-us/TrustCenter/Compliance/FedRAMP) 和 [DISA](https://www.microsoft.com/en-us/TrustCenter/Compliance/DISA)。 深入了解 [Azure Government](https://azure.microsoft.com/features/gov/)。
 * **中國東部**和**中國北部**
   * 這些區域是透過 Microsoft 與 21Vianet 之間的唯一合作關係提供，其中 Microsoft 不會直接維護資料中心。 查看更多有關[Azure 中國世紀](https://www.windowsazure.cn/)的資訊。
 * **德國中部**和**德國東北部**

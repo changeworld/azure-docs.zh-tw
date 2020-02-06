@@ -100,8 +100,8 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 |地區| Windows | Linux |
 |--| -- | -- |
-|澳洲中部| ✔<sup>1</sup> | |
-|澳洲中部 2| ✔<sup>1</sup> | |
+|澳大利亞中部| ✔<sup>1</sup> | |
+|澳大利亞中部 2| ✔<sup>1</sup> | |
 |澳大利亞東部| ✔ | |
 |澳大利亞東南部 | ✔ | ✔<sup>1</sup> |
 |巴西南部| ✔<sup>2</sup> |  |

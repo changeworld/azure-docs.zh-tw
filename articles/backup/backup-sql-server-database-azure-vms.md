@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解如何使用 Azure 備份來備份 Azure
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 8125f6d98151f91faaccef512e4bcfd2946fcdd0
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 10f55bb4c5c488975f075aa0382296f808a9a5b1
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773123"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029566"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>備份 Azure VM 中的 SQL Server 資料庫
 
@@ -17,7 +17,7 @@ SQL Server 資料庫是需要低復原點目標（RPO）和長期保留的重要
 
 本文說明如何將在 Azure VM 上執行的 SQL Server 資料庫備份至 Azure 備份復原服務保存庫。
 
-在本文中，您將學會如何：
+在本文中，您將了解如何：
 
 > [!div class="checklist"]
 >
@@ -110,6 +110,9 @@ SQL Server 資料庫是需要低復原點目標（RPO）和長期保留的重要
 
 別名適用于不支援的字元，但我們建議您避免使用它們。 如需詳細資訊，請參閱 [了解表格服務資料模型](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN)。
 
+>[!NOTE]
+>不支援在其名稱中使用特殊字元（例如 "+" 或 "&"）的資料庫**設定保護**作業。 您可以變更資料庫名稱或啟用**自動保護**，這樣可以成功保護這些資料庫。
+
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
 ## <a name="discover-sql-server-databases"></a>探索 SQL Server 資料庫
@@ -193,7 +196,7 @@ SQL Server 資料庫是需要低復原點目標（RPO）和長期保留的重要
 
 7. 在入口網站的 [通知] 區域中，追蹤設定進度。
 
-    ![[通知] 區域](./media/backup-azure-sql-database/notifications-area.png)
+    ![通知區域](./media/backup-azure-sql-database/notifications-area.png)
 
 ### <a name="create-a-backup-policy"></a>建立備份原則
 
@@ -251,7 +254,7 @@ SQL Server 資料庫是需要低復原點目標（RPO）和長期保留的重要
 
     ![編輯記錄備份原則](./media/backup-azure-sql-database/log-backup-policy-editor.png)
 
-13. 在 [**備份原則**] 功能表上，選擇是否要啟用**SQL 備份壓縮**。 預設會停用此選項。 若已啟用，SQL Server 會將壓縮的備份串流傳送到 VDI。  請注意，Azure 備份會根據此控制項的值，以 COMPRESSION/NO_COMPRESSION 子句覆寫實例層級預設值。
+13. 在 [**備份原則**] 功能表上，選擇是否要啟用**SQL 備份壓縮**。 此選項預設為停用。 若已啟用，SQL Server 會將壓縮的備份串流傳送到 VDI。  請注意，Azure 備份會根據此控制項的值，以 COMPRESSION/NO_COMPRESSION 子句覆寫實例層級預設值。
 
 14. 完成備份原則的編輯之後，請選取 [確定]。
 

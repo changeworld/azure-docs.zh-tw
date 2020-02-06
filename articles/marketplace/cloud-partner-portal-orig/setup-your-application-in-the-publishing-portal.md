@@ -85,7 +85,7 @@ ms.locfileid: "73814689"
 
 在本節中，請選取可使用您套件的 CRM 區域。 如需哪些 CRM 區域提供哪些國家/地區的相關資訊，請參閱連結： [https://o365datacentermap.azurewebsites.net/](https://o365datacentermap.azurewebsites.net/)
 
-注意：部署至德國「主權與美國政府雲端」主權區域，需要特殊權限且認證期間需要進行驗證
+注意：部署至德國「主權與 US Gov 雲端」主權區域，需要特殊權限且認證期間需要進行驗證
 
 ## <a name="storefront-details"></a>店面詳細資料
 
