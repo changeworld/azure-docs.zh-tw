@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 11/14/2019
 ms.author: pafarley
-ms.openlocfilehash: f00702326cf6fe2efd8d4abbfce7174815ea0b1d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 158faaba1525e162c40c44179f30f7c3cea83b38
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770283"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025906"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>使用範例標籤工具，以標籤定型表單辨識器模型
 
@@ -26,7 +26,6 @@ ms.locfileid: "75770283"
 
 若要完成此快速入門，您必須：
 - 有權存取表單辨識器的有限存取預覽版。 若要存取此預覽服務，請先填寫並提交[表單辨識器存取要求](https://aka.ms/FormRecognizerRequestAccess)表單。 您會收到一封電子郵件，其中包含建立表單辨識器資源的連結。
-- 存取表單辨識器範例標籤工具。 若要取得存取權，請填寫並提交[表單辨識器標籤工具要求表單](https://aka.ms/LabelToolRequestAccess)。 您會收到一封電子郵件，其中包含如何取得認證並存取私人容器登錄的指示。 
 - 至少有六個相同類型的表單。 您將使用此資料來定型模型和測試表單。 您可以使用本快速入門的[範例資料集](https://go.microsoft.com/fwlink/?linkid=2090451)。 將訓練檔案上傳至 Azure 儲存體帳戶中 Blob 儲存體容器的根目錄。
 
 ## <a name="set-up-the-sample-labeling-tool"></a>設定範例標籤工具
@@ -38,18 +37,13 @@ ms.locfileid: "75770283"
     |:--|:--|:--|
     |範例標籤工具|2 核心、4 GB 記憶體|4 核心，8 GB 記憶體|
     
-1. 接下來，您將需要 [Azure 命令列介面 (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 請將其安裝在您的電腦上 (如果尚未安裝)。
-1. 在命令提示字元中輸入下列命令。 `<username>` 和 `<password>` 的值位於您的「歡迎使用表單辨識器」電子郵件中。
-    ```
-    docker login containerpreview.azurecr.io -u <username> -p <password>
-    ```
 1. 使用 `docker pull` 命令取得範例標籤工具容器。
     ```
-    docker pull containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer-custom-supervised-labeltool:latest
+    docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool
     ```
 1. 現在您已準備就緒，可使用 `docker run` 執行容器。
     ```
-    docker run -it -p 3000:80 containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer-custom-supervised-labeltool eula=accept
+    docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool eula=accept
     ```
 
    此命令會讓範例標籤工具可透過網頁瀏覽器來使用。 移至 [http://localhost:3000](http://localhost:3000)。

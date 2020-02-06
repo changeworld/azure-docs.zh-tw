@@ -4,7 +4,7 @@ description: 了解如何將 Azure Batch 服務用於大規模的平行工作負
 services: batch
 documentationcenter: ''
 author: mscurrell
-manager: gwallace
+manager: evansma
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 01/19/2018
 ms.author: markscu
 ms.custom: mvc
-ms.openlocfilehash: ee61f0f550a09640469914d29bde175028b59142
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7ca2a5e91a0ec0d765e106baca20f135996bc26e
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094330"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022795"
 ---
 # <a name="what-is-azure-batch"></a>什麼是 Azure Batch？
 
@@ -71,7 +71,7 @@ Batch 的一個常見案例涉及在一組計算節點上相應放大本質平�
 ![Batch 方案逐步解說](./media/batch-technical-overview/tech_overview_03.png)
 
 
-|步驟  |說明  |
+|步驟  |描述  |
 |---------|---------|
 |1.將**輸入檔案**和處理這些檔案的**應用程式**上傳到您的 Azure 儲存體帳戶。     |輸入檔案可以是應用程式會處理的任何資料，例如財務模型化資料或要轉碼的視訊檔案。 應用程式檔案可以包含處理資料的指令碼或應用程式，例如媒體轉碼器。|
 |2.在您的 Batch 帳戶中建立計算節點的 Batch **集區**、要在集區上執行工作負載的**作業**，以及作業中的**工作**。     | 集區節點就是執行工作的虛擬機器。 指定節點數目和節點大小等屬性、Windows 或 Linux 虛擬機器映像，以及將節點加入集區時要安裝的應用程式。 若要管理集區的成本與大小，可使用[低優先順序虛擬機器](batch-low-pri-vms.md)或隨著工作負載的變化[自動縮放](batch-automatic-scaling.md)節點數目。 <br/><br/>當您將工作加入至作業時，Batch 服務會自動排程工作在集區中的計算節點上執行。 每一項工作會使用您上傳的應用程式來處理輸入檔。 |

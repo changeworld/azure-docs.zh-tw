@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: 637da382af333d069161b25c6fcb5666f843a855
-  ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+  ms.openlocfilehash: 416d4a1eee6f3fe89fbe697bda896b30c8441756
+  ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 11/12/2019
-  ms.locfileid: "73957955"
+  ms.lasthandoff: 02/05/2020
+  ms.locfileid: "77020806"
 landingContent:
 - title: 建置零售解決方案
   linkLists:
@@ -40,19 +40,19 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: 連線 Rigado Cascade 500
-      url: ../preview/howto-connect-rigado-cascade-500.md
+      url: ../core/howto-connect-rigado-cascade-500.md
 - title: 進行連線
   linkLists:
   - linkListType: tutorial
     links:
     - text: 設定裝置範本
-      url: ../preview/howto-set-up-template.md
-    - text: 與 IoT 隨插即用裝置連線
-      url: ../preview/tutorial-connect-pnp-device.md
+      url: ../core/howto-set-up-template.md
+    - text: 連接 IoT 隨插即用 (預覽) 裝置
+      url: ../core/tutorial-connect-pnp-device.md
   - linkListType: how-to-guide
     links:
     - text: 準備及連線 MXChip IoT DevKit
-      url: ../preview/howto-connect-devkit.md
+      url: ../core/howto-connect-devkit.md
     - text: 連線其他 IoT 雲端
       url: ../core/howto-build-iotc-device-bridge.md
 - title: 保持連線
@@ -60,46 +60,46 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: 使用裝置群組
-      url: ../preview/tutorial-use-device-groups.md
+      url: ../core/tutorial-use-device-groups.md
   - linkListType: how-to-guide
     links:
     - text: 管理您的裝置
-      url: ../preview/howto-manage-devices.md
+      url: ../core/howto-manage-devices.md
     - text: 執行作業
       url: ../core/howto-run-a-job.md
     - text: 分析您的裝置資料
-      url: ../preview/howto-create-analytics.md
+      url: ../core/howto-create-analytics.md
 - title: 轉換
   linkLists:
   - linkListType: tutorial
     links:
     - text: 建立規則
-      url: ../preview/quick-configure-rules.md
+      url: ../core/quick-configure-rules.md
     - text: 建立遙測規則
-      url: ../preview/tutorial-create-telemetry-rules.md
+      url: ../core/tutorial-create-telemetry-rules.md
     - text: 匯出至 Blob 儲存體
-      url: ../preview/howto-export-data.md
+      url: ../core/howto-export-data.md
   - linkListType: how-to-guide
     links:
     - text: 建立自訂規則
-      url: ../preview/howto-create-custom-rules.md
+      url: ../core/howto-create-custom-rules.md
     - text: 建立自訂分析
-      url: ../preview/howto-create-custom-analytics.md
+      url: ../core/howto-create-custom-analytics.md
 - title: 系統管理
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: 管理您的應用程式
-      url: ../preview/howto-administer.md
+      url: ../core/howto-administer.md
     - text: 管理使用者和角色
-      url: ../preview/howto-manage-users-roles.md
+      url: ../core/howto-manage-users-roles.md
     - text: 檢視您的帳單
-      url: ../preview/howto-view-bill.md
+      url: ../core/howto-view-bill.md
     - text: 自訂應用程式 UI
-      url: ../preview/howto-customize-ui.md
+      url: ../core/howto-customize-ui.md
     - text: 設定個人儀表板
       url: ../core/howto-create-personal-dashboards.md
     - text: 使用儀表板圖格
       url: ../core/howto-add-tiles-to-your-dashboard.md
     - text: 使用應用程式範本
-      url: ../preview/howto-use-app-templates.md
+      url: ../core/howto-use-app-templates.md

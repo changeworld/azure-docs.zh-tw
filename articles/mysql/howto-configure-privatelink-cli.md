@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 3ab02f0522ab52870d24f667ff91665e8aa0a4eb
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 59c38423f771685dc79a8be12a383cfdec6a0266
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281320"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031521"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-preview-using-cli"></a>使用 CLI 建立和管理適用於 MySQL 的 Azure 資料庫（預覽）的私用連結
 
@@ -114,7 +114,7 @@ az resource show --ids $networkInterfaceId --api-version 2019-04-01 -o json
  
 #Create DNS records 
 az network private-dns record-set a create --name myserver --zone-name privatelink.mysql.database.azure.com --resource-group myResourceGroup  
-az network private-dns record-set a add-record --record-set-name myserver --zone-name privatelink.mysql.database.windows.net --resource-group myResourceGroup -a <Private IP Address>
+az network private-dns record-set a add-record --record-set-name myserver --zone-name privatelink.mysql.database.azure.com --resource-group myResourceGroup -a <Private IP Address>
 ```
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>從網際網路連線至 VM
@@ -136,7 +136,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
         > [!NOTE]
         > 您可能需要選取 [其他選擇] > [使用不同的帳戶]，以指定您在建立 VM 時輸入的認證。
 
-1. 選取 [確定]。
+1. 選取 **\[確定\]** 。
 
 1. 您可能會在登入過程中收到憑證警告。 如果您收到憑證警告，請選取 [是] 或 [繼續]。
 

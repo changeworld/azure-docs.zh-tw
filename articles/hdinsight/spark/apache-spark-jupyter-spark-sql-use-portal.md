@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 09/27/2019
 ms.custom: mvc
-ms.openlocfilehash: 214a88ad8b0f5dd0352004edc125705ad2f04fc7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c2751f30bdea46a30aa12bd458a12d7640cba404
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494145"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029535"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-portal"></a>快速入門：使用 Azure 入口網站在 Azure HDInsight 中建立 Apache Spark 叢集
 
@@ -34,12 +34,12 @@ ms.locfileid: "73494145"
 
 1. 在 [基本]  下方，提供下列值：
 
-    |屬性  |說明  |
+    |屬性  |描述  |
     |---------|---------|
     |訂用帳戶  | 從下拉式清單中，選取用於此叢集的 Azure 訂用帳戶。 針對本快速入門所使用的訂用帳戶是 **Azure**。 |
     |資源群組 | 指定您是要建立新的資源群組，還是使用現有資源群組。 資源群組是存放 Azure 方案相關資源的容器。 針對本快速入門所使用的資源群組名稱是 **myResourceGroup**。 |
     |叢集名稱 | 提供 HDInsight Spark 叢集的名稱。 針對本快速入門所使用的叢集名稱是 **myspark2019**。|
-    |位置   | 選取資源群組的位置。 此範本會使用這個位置，用於建立叢集以及預設叢集儲存體。 本快速入門所使用的位置是**美國東部**。 |
+    |Location   | 選取資源群組的位置。 此範本會使用這個位置，用於建立叢集以及預設叢集儲存體。 本快速入門所使用的位置是**美國東部**。 |
     |叢集類型| 選取 [spark]  作為叢集類型。|
     |叢集版本|一旦選取叢集類型，此欄位就會自動填入預設版本。|
     |叢集登入使用者名稱| 輸入叢集登入使用者名稱。  預設名稱為 *admin*。您稍後會在本快速入門中使用此帳戶來登入 Jupyter Notebook。 |
@@ -52,14 +52,14 @@ ms.locfileid: "73494145"
 
 1. 在 [儲存體]  下方，提供下列值：
 
-    |屬性  |說明  |
+    |屬性  |描述  |
     |---------|---------|
     |主要儲存體類型|使用預設值 [Azure 儲存體]  。|
     |選取方法|使用預設值 [從清單中選取]  。|
     |主要儲存體帳戶|使用自動填入的值。|
     |容器|使用自動填入的值。|
 
-    ![建立 HDInsight Spark 叢集基本設定](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-storage-spark.png "在 HDInsight 中建立 Spark 叢集基本設定")
+    ![建立 HDInsight Spark 叢集基本設定](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-storage.png "在 HDInsight 中建立 Spark 叢集基本設定")
 
     選取 [檢閱 + 建立]  繼續執行。
 

@@ -2,7 +2,7 @@
 title: 快速入門：建立設定檔以讓應用程式具有高可用性 - Azure PowerShell - Azure 流量管理員
 description: 本快速入門文章會說明如何建立流量管理員設定檔，以建置高可用性的 Web 應用程式。
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 mnager: twooley
 Customer intent: As an IT admin, I want to direct user traffic to ensure high availability of web applications.
 ms.service: traffic-manager
@@ -11,13 +11,13 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/04/2019
-ms.author: allensu
-ms.openlocfilehash: 01749c2bd9091449e11e4dd30e88d2fe7d0df78b
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.author: rohink
+ms.openlocfilehash: 0ab7392b4fa6e248d51392706fedaed156344a99
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483751"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934809"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立流量管理員設定檔以獲得高可用性的 Web 應用程式
 
@@ -67,7 +67,7 @@ New-AzTrafficManagerProfile `
 
 ## <a name="create-web-apps"></a>建立 Web Apps
 
-在本快速入門中，您必須在兩個不同的 Azure 區域 (美國東部  和西歐  ) 中部署 Web 應用程式的兩個執行個體。 每個執行個體都會作為流量管理員的主要和容錯移轉端點。
+在本快速入門中，您必須在兩個不同的 Azure 區域 (美國東部  和歐洲西部  ) 中部署 Web 應用程式的兩個執行個體。 每個執行個體都會作為流量管理員的主要和容錯移轉端點。
 
 ### <a name="create-web-app-service-plans"></a>建立 Web App Service 方案
 針對您將在兩個不同 Azure 區域中部署的兩個 Web 應用程式執行個體，請使用 [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) 建立 Web App Service 方案。

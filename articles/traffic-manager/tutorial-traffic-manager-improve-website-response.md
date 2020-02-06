@@ -2,7 +2,7 @@
 title: 教學課程 - 使用 Azure 流量管理員來改善網站回應
 description: 本教學課程文章說明如何建立流量管理員設定檔，以建置高度回應的網站。
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 Customer intent: As an IT Admin, I want to route traffic so I can improve website response by choosing the endpoint with lowest latency.
 ms.service: traffic-manager
 ms.devlang: na
@@ -10,13 +10,13 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/23/2018
-ms.author: allensu
-ms.openlocfilehash: 3686e9a7d82f8134b44cd40468c5e430eb2e72f3
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.author: rohink
+ms.openlocfilehash: 9027b1574144e2addbc84fceb16deba9014826fe
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422853"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938401"
 ---
 # <a name="tutorial-improve-website-response-using-traffic-manager"></a>教學課程：使用流量管理員來改善網站回應
 
@@ -34,12 +34,12 @@ ms.locfileid: "74422853"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要查看流量管理員的運作，本教學課程會要求您部署下列項目：
 
-- 在不同 Azure 區域中執行的兩個基本網站執行個體 - **美國東部**和**西歐**。
-- 用於測試流量管理員的兩個測試 VM - 一個 VM 位於**美國東部**，另一個 VM 位於**西歐**。 測試 VM 用來說明流量管理員如何將使用者流量路由傳送至在相同區域中執行的網站，因為該網站可提供最低延遲。
+- 在不同 Azure 區域中執行的兩個基本網站執行個體 - **美國東部**和**歐洲西部**。
+- 用於測試流量管理員的兩個測試 VM - 一個 VM 位於**美國東部**，另一個 VM 位於**歐洲西部**。 測試 VM 用來說明流量管理員如何將使用者流量路由傳送至在相同區域中執行的網站，因為該網站可提供最低延遲。
 
 ### <a name="sign-in-to-azure"></a>登入 Azure
 
@@ -49,7 +49,7 @@ ms.locfileid: "74422853"
 
 在本節中，您會建立兩個網站執行個體，這兩個執行個體可在兩個 Azure 區域中為流量管理員設定檔提供兩個服務端點。 請執行下列步驟來建立這兩個網站：
 
-1. 建立兩個 VM 來執行基本網站 - 一個位於**美國東部**，另一個位於**西歐**。
+1. 建立兩個 VM 來執行基本網站 - 一個位於**美國東部**，另一個位於**歐洲西部**。
 2. 在每個 VM 上安裝 IIS 伺服器並更新預設網站頁面，該頁面描述使用者在造訪網站時所連線的 VM 名稱。
 
 #### <a name="create-vms-for-running-websites"></a>建立 VM 以供執行網站
@@ -145,7 +145,7 @@ ms.locfileid: "74422853"
     | 路由方法          | 選取 [效能]  路由方法。                                       |
     | 訂用帳戶            | 選取您的訂用帳戶。                          |
     | 資源群組          | 選取資源群組 myResourceGroupTM1  。 |
-    | 位置                | 選取 [美國東部]  。 這項設定是指資源群組的位置，完全不影響將部署到全球的流量管理員設定檔。                              |
+    | Location                | 選取 [美國東部]  。 這項設定是指資源群組的位置，完全不影響將部署到全球的流量管理員設定檔。                              |
     |
 
     ![建立流量管理員設定檔](./media/tutorial-traffic-manager-improve-website-response/traffic-manager-profile.png)
@@ -205,7 +205,7 @@ ms.locfileid: "74422853"
 
    ![測試流量管理員設定檔](./media/tutorial-traffic-manager-improve-website-response/eastus-traffic-manager-test.png)
 
-2. 接下來，使用步驟 1-5 來連線到位於**西歐**的 VM *myVMWestEurope*，並從這個 VM 瀏覽到流量管理員設定檔網域名稱。 VM 位於**西歐**，所以您現在會路由至在最接近 IIS 伺服器 *myIISVMWestEurope* (位於**西歐**) 上裝載的網站。
+2. 接下來，使用步驟 1-5 來連線到位於**歐洲西部**的 VM *myVMWestEurope*，並從這個 VM 瀏覽到流量管理員設定檔網域名稱。 VM 位於**歐洲西部**，所以您現在會路由至在最接近 IIS 伺服器 *myIISVMWestEurope* (位於**歐洲西部**) 上裝載的網站。
 
    ![測試流量管理員設定檔](./media/tutorial-traffic-manager-improve-website-response/westeurope-traffic-manager-test.png)
 

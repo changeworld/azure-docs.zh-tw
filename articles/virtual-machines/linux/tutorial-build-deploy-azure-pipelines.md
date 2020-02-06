@@ -11,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops
-ms.openlocfilehash: 8fda8e3079084ad917ad5a7fcfc4f80a622e2d82
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: bb7c773d02c5da5c115af79cd9e90c78e71eb6bf
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277246"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988323"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>教學課程：使用 Azure DevOps Services 和 Azure Pipelines 在 Azure 中將應用程式部署至 Linux 虛擬機器
 
@@ -86,7 +86,7 @@ https://github.com/azure-devops/fabrikam-node
 
 - 若要部署以 Java Spring Boot 和 Spring Cloud 為基礎的應用程式，請使用[這個](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804)範本在 Azure 中建立 Linux VM，以提供完整支援的 OpenJDK 型執行階段。
 - 若要在 Tomcat 伺服器上部署 Java Servlet，請使用[這個](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804) Azure 範本建立具有 Java 8 的 Linux VM，並[將 Tomcat 9.x 設定為服務](https://tomcat.apache.org/tomcat-9.0-doc/setup.html)。
-- 若要部署 Java EE 型應用程式，請使用 Azure 範本建立 [Linux VM + Java + WebSphere 9.x](https://azuremarketplace.microsoft.com/marketplace/apps/midvision.websphere-application-server-nde-90) 或 [Linux VM + Java + WebLogic 12.x](https://azuremarketplace.microsoft.com/marketplace/apps/Oracle.OracleWebLogicServer12cEnterprise) 或 [Linux VM +Java](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804) + WildFly/JBoss 14 
+- 若要部署 Java EE 型應用程式，請使用 Azure 範本建立 [Linux VM + Java + WebSphere 9.x](https://azuremarketplace.microsoft.com/marketplace/apps/midvision.websphere-application-server-nde-90) 或 [Linux VM + Java + WebLogic 12.x](https://azuremarketplace.microsoft.com/marketplace/apps/oracle.20191009-arm-oraclelinux-wls-admin) 或 [Linux VM +Java](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804) + WildFly/JBoss 14 
 
 #### <a name="javascripttabjava-script"></a>[JavaScript](#tab/java-script)
 

@@ -2,17 +2,17 @@
 title: 教學課程：裝載您的網域和子網域 - Azure DNS
 description: 在本文中，您將了解如何設定 Azure DNS 以裝載 DNS 區域。
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
-ms.author: allensu
-ms.openlocfilehash: 062a5beaec30d510d37af436e00f4d57785245cd
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 8f29a2bbe0eb392927dd111b13e2260111ddd18e
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212203"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937308"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>教學課程：在 Azure DNS 上裝載您的網域
 
@@ -32,7 +32,7 @@ ms.locfileid: "74212203"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 您必須提供可用的網域名稱，才能使用可裝載於 Azure DNS 的網域名稱進行測試。 您必須擁有此網域的完整控制權。 完整控制權包括為網域設定名稱伺服器 (NS) 記錄的能力。
 
@@ -47,7 +47,7 @@ ms.locfileid: "74212203"
 1. 選取 [建立 DNS 區域]  。
 1. 在 [建立 DNS 區域]  頁面中輸入下列的值，然後選取 [建立]  ：
 
-   | **設定** | **值** | **詳細資料** |
+   | **設定** | **ReplTest1** | **詳細資料** |
    |---|---|---|
    |**名稱**|[您的網域名稱] |您所購買的網域名稱。 本教學課程以 contoso.net 作為範例。|
    |**訂用帳戶**|[您的訂用帳戶]|選取要在其中建立區域的訂用帳戶。|

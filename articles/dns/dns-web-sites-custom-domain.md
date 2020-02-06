@@ -2,17 +2,17 @@
 title: 教學課程 - 建立 Web 應用程式的自訂 Azure DNS 記錄
 description: 在本教學課程中，您會使用 Azure DNS 來建立 Web 應用程式的自訂網域 DNS 記錄。
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
-ms.author: allensu
-ms.openlocfilehash: e0a0129f45e5e7612b6ecd79475a49822b42ba19
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 8722a52a097f7f830287d125a4e56e9bbcb9f932
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211211"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939106"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>教學課程：在自訂網域中建立 Web 應用程式的 DNS 記錄 
 
@@ -43,7 +43,7 @@ ms.locfileid: "74211211"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -175,7 +175,7 @@ set-AzWebApp `
 > [!NOTE]
 > 請確定您納入了 `http://` 前置詞，否則瀏覽器可能會嘗試為您預測 URL！
 
-這兩個 URL 應該會導向相同的頁面。 例如︰
+這兩個 URL 應該會導向相同的頁面。 例如：
 
 ![Contoso 應用程式服務](media/dns-web-sites-custom-domain/contoso-app-svc.png)
 

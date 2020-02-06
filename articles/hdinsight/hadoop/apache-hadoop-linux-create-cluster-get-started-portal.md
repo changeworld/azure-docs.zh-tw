@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
 ms.date: 09/25/2019
-ms.openlocfilehash: cab46c4fe2ff0bd1f86c6d98a3b37efb3547a3ce
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 35dc4938760ca83a6781d5791c746ee2f74310ab
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044577"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031576"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-azure-portal"></a>快速入門：使用 Azure 入口網站在 Azure HDInsight 中建立 Apache Hadoop 叢集
 
@@ -38,12 +38,12 @@ HDInsight 目前隨附 [7 個不同的叢集類型](../hdinsight-overview.md#clu
 
 1. 在 [基本]  之下，輸入或選取下列值：
 
-    |屬性  |說明  |
+    |屬性  |描述  |
     |---------|---------|
     |訂用帳戶    |  選取 Azure 訂用帳戶。 |
     |資源群組     | 建立資源群組，或選取現有的資源群組。  資源群組是 Azure 元件的容器。  在此案例中，資源群組包含 HDInsight 叢集和相依的 Azure 儲存體帳戶。 |
     |叢集名稱   | 輸入 Hadoop 叢集的名稱。 由於 HDInsight 中的所有叢集共用相同的 DNS 命名空間，因此這個名稱必須是唯一的。 名稱最多可包含 59 個字元，而這些字元可以是字母、數字和連字號。 名稱的第一個和最後一個字元不可以是連字號。 |
-    |位置    | 選取您要建立叢集的 Azure 位置。  選擇靠近您的位置，以獲得最佳效能。 |
+    |Location    | 選取您要建立叢集的 Azure 位置。  選擇靠近您的位置，以獲得最佳效能。 |
     |叢集類型| 選取 [選取叢集類型]  。 然後選取 [Hadoop]  作為叢集類型。|
     |版本|將會指定叢集類型的預設版本。 如果您想要指定不同的版本，請從下拉式清單中選取。|
     |叢集登入使用者名稱和密碼    | 預設登入名稱為 **admin**。密碼長度至少必須為 10 個字元，且必須包含至少一個數字、一個大寫字母及一個小寫字母、一個非英數字元 (除了字元 ' " ` \)。 確定您**不會提供**常見密碼，例如 "Pass@word1"。|
@@ -56,14 +56,14 @@ HDInsight 目前隨附 [7 個不同的叢集類型](../hdinsight-overview.md#clu
 
 1. 在 [儲存體]  索引標籤中，提供下列值：
 
-    |屬性  |說明  |
+    |屬性  |描述  |
     |---------|---------|
     |主要儲存體類型|使用預設值 [Azure 儲存體]  。|
     |選取方法|使用預設值 [從清單中選取]  。|
     |主要儲存體帳戶|使用下拉式清單來選取現有的儲存體帳戶，或選取 [新建]  。 如果您建立新的帳戶，其名稱的長度必須介於 3 到 24 個字元之間，且只能包含數字和小寫字母。|
     |容器|使用自動填入的值。|
 
-    ![HDInsight Linux 開始提供叢集儲存體值](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-storage-blank.png "提供用來建立 HDInsight 叢集的儲存體值")
+    ![HDInsight Linux 開始提供叢集儲存體值](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-storage.png "提供用來建立 HDInsight 叢集的儲存體值")
 
     選取 [檢閱 + 建立]  索引標籤。
 

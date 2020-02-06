@@ -7,6 +7,8 @@
 - name: 快速入門
   expanded: true
   items:
+    - name: 連線監視器 (預覽)
+      href: connection-monitor-2-preview.md
     - name: 診斷虛擬機器流量篩選問題 - 入口網站
       href: diagnose-vm-network-traffic-filtering-problem.md
     - name: 診斷虛擬機器流量篩選問題 - PowerShell

@@ -1,19 +1,19 @@
 ---
 title: 與連線至 Azure IoT 解決方案的 IoT 隨插即用預覽版裝置互動 | Microsoft Docs
 description: 使用 C# (.NET) 連線至已連接 Azure IoT 解決方案的 IoT 隨插即用預覽版裝置，並與其互動。
-author: baanders
-ms.author: baanders
+author: dominicbetts
+ms.author: dobett
 ms.date: 12/30/2019
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 9e8bc6c4ad7ed852ddaae2e193b91887fcd92e47
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 0953f68839217c1c75eb86f8399ce023f3863ab4
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75550769"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963966"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-c"></a>快速入門：與已連線至解決方案的 IoT 隨插即用預覽版裝置互動 (C#)
 

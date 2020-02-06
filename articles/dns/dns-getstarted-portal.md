@@ -3,17 +3,17 @@ title: 快速入門：建立 DNS 區域和記錄 - Azure 入口網站
 titleSuffix: Azure DNS
 description: 使用此逐步快速入門指南，了解如何使用 Azure 入口網站建立 Azure DNS 區域和記錄。
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
 ms.date: 3/11/2019
-ms.author: allensu
-ms.openlocfilehash: cb81b0ec2b5283ba242dd7c2dd549c330e230f0a
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.author: rohink
+ms.openlocfilehash: 26e5386f1c9730f1600e59a002ea7845b82ffe06
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082915"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937122"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立 Azure DNS 區域和記錄
 
@@ -42,7 +42,7 @@ DNS 區域包含網域的 DNS 項目。 若要開始將網域裝載到 Azure DNS
 
 1. 在 [建立 DNS 區域]  頁面上，輸入或選取下列值：
 
-   - **名稱**：針對此快速入門的範例，輸入 *contoso.xyz*。 DNS 區域名稱可以是任何尚未在 Azure DNS 伺服器上設定的值。 實際值將是您向網域名稱註冊機構購買的網域。
+   - **Name**：針對此快速入門的範例，輸入 *contoso.xyz*。 DNS 區域名稱可以是任何尚未在 Azure DNS 伺服器上設定的值。 實際值將是您向網域名稱註冊機構購買的網域。
    - **資源群組**：選取 [新建]  ，輸入 *MyResourceGroup*，然後選取 [確定]  。 資源群組名稱在 Azure 訂用帳戶中必須是唯一的。 
 
 1. 選取 [建立]  。
@@ -63,7 +63,7 @@ DNS 區域包含網域的 DNS 項目。 若要開始將網域裝載到 Azure DNS
 
 1. 在 [新增記錄集]  頁面上，輸入或選取下列值：
 
-   - **名稱**：輸入 *www*。 記錄名稱是要解析為指定 IP 位址的主機名稱。
+   - **Name**：輸入 *www*。 記錄名稱是要解析為指定 IP 位址的主機名稱。
    - **類型**：選取 [A]  。'A' 記錄是最常見的類型，但還有其他適用於郵件伺服器 ('MX')、IPv6 位址 ('AAAA') 等項目的記錄類型。 
    - **TTL**：輸入 *1*。 DNS 要求的*存留時間*會指定 DNS 伺服器和用戶端可快取回應的時間長度。
    - **TTL 單位**：選取 [小時]  。 這是 **TTL** 值的時間單位。 
@@ -89,7 +89,7 @@ DNS 區域包含網域的 DNS 項目。 若要開始將網域裝載到 Azure DNS
    nslookup www.contoso.xyz <name server name>
    ```
 
-   例如︰
+   例如：
 
    ```
    nslookup www.contoso.xyz ns1-08.azure-dns.com.

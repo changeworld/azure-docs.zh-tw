@@ -4,18 +4,18 @@ description: 使用 Azure Functions 建立無伺服器 Python 程式碼並部署
 ms.date: 01/15/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 452c5aeab5d2a1092cb7d338d37e26a82d92396e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c665f807d78c699423db457bf57dca2f16109913
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845502"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898575"
 ---
 # <a name="quickstart-create-an-http-triggered-python-function-in-azure"></a>快速入門：在 Azure 中建立 HTTP 觸發的 Python 函式
 
 在本文中，您會使用命令列工具建立可回應 HTTP 要求的 Python 函式。 在本機測試程式碼之後，您可以將其部署到 Azure Functions 的無伺服器環境。 完成本快速入門後，您的 Azure 帳戶中會產生幾美分或更少的少許費用。
 
-這也是本文的 [Visual Studio Code 版本](/azure/python/tutorial-vs-code-serverless-python-01)。
+這也是本文的 [Visual Studio Code 版本](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-python)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -222,7 +222,7 @@ Http Functions:
     > [!NOTE]
     > 您無法在相同的資源群組中裝載 Linux 和 Windows 應用程式。 如果您有名為 `AzureFunctionsQuickstart-rg` 的現有資源群組，且其中包含 Windows 函式應用程式或 Web 應用程式，則必須使用不同的資源群組。
     
-1. 使用 [az storage account create](/cli/azure/storage/account#az-storage-account-create) 命令，在您的資源群組和區域中建立一般用途的儲存體帳戶。 在下列範例中， `<storage_name>`。 名稱只能包含 3 到 24 個字元的數字和小寫字母。 `Standard_LRS` 可指定典型的一般用途帳戶。
+1. 使用 [az storage account create](/cli/azure/storage/account#az-storage-account-create) 命令，在您的資源群組和區域中建立一般用途的儲存體帳戶。 在下列範例中，使用適合您的全域唯一名稱取代 `<storage_name>`。 名稱只能包含 3 到 24 個字元的數字和小寫字母。 `Standard_LRS` 可指定典型的一般用途帳戶。
 
     ```azurecli
     az storage account create --name <storage_name> --location westeurope --resource-group AzureFunctionsQuickstart-rg --sku Standard_LRS

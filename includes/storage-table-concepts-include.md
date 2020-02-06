@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: 83f66fb7e4d9b07cdcd72e47da1b397a85886e29
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 91a52e7eac40c0ac2ab682f251a2ae0013259b25
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75467006"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "77013655"
 ---
 ## <a name="what-is-table-storage"></a>什麼是資料表儲存體
 Azure 資料表儲存體可儲存大量的結構化資料。 此服務是一個 NoSQL 資料存放區，接受來自 Azure 雲端內外經過驗證的呼叫。 Azure 資料表很適合儲存結構化、非關聯式資料。 資料表儲存體的一般用途包括：
@@ -31,7 +31,7 @@ Azure 資料表儲存體可儲存大量的結構化資料。 此服務是一個 
   Azure Cosmos DB 資料表 API 帳戶會使用下列格式：`http://<storage account>.table.cosmosdb.azure.com/<table>`  
 
   您可以使用此位址搭配 OData 通訊協定來直接定址 Azure 資料表。 如需詳細資訊，請參閱 [OData.org][OData.org]。
-* **帳戶：** 所有對 Azure 儲存體的存取都是透過儲存體帳戶進行。 如需儲存體帳戶的詳細資訊，請參閱 [儲存體帳戶概觀][../articles/storage/common/storage-account-overview.md]。
+* **帳戶：** 所有對 Azure 儲存體的存取都是透過儲存體帳戶進行。 如需儲存體帳戶的詳細資訊，請參閱[儲存體帳戶概觀](../articles/storage/common/storage-account-overview.md)。
 
     所有對 Azure Cosmos DB 的存取都會透過資料表 API 帳戶執行。 如需建立資料表 API 帳戶的詳細資訊，請參閱[建立資料表 API 帳戶](../articles/cosmos-db/create-table-dotnet.md#create-a-database-account)。
 * **資料表**：資料表是一組實體。 資料表不強制規定實體的結構描述，這表示單一資料表包含的實體可以有幾組不同的屬性。  

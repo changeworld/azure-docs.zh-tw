@@ -4,16 +4,13 @@
   items:
     - name: 什麼是驗證？
       href: overview-authentication.md
-- name: 快速入門
-  items:
-    - name: 設定密碼重設
-      href: quickstart-sspr.md
 - name: 教學課程
+  expanded: true
   items:
-    - name: 1 為應用程式啟用 MFA
+    - name: 啟用自助式密碼重設
+      href: tutorial-enable-sspr.md
+    - name: 為應用程式啟用 MFA
       href: tutorial-mfa-applications.md
-    - name: 2 啟用 SSPR 試驗
-      href: tutorial-sspr-pilot.md
     - name: 啟用 SSPR 內部部署整合
       href: tutorial-enable-writeback.md
     - name: 整合 Azure Identity Protection
@@ -228,7 +225,7 @@
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
     - name: MSDN 論壇
       href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: 服務更新
       href: ../fundamentals/whats-new.md

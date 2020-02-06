@@ -2,7 +2,7 @@
 title: 快速入門：建立應用程式 HA 的設定檔 - Azure CLI - Azure 流量管理員
 description: 本快速入門文章會說明如何建立流量管理員設定檔，以建置高可用性的 Web 應用程式。
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 mnager: twooley
 Customer intent: As an IT admin, I want to direct user traffic to ensure high availability of web applications.
 ms.service: traffic-manager
@@ -11,13 +11,13 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
-ms.author: allensu
-ms.openlocfilehash: b724a3e469c5dd8f7b4c4f30adef00c58c5c47c5
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.author: rohink
+ms.openlocfilehash: 36ad1c47e115f06aea2017a049cefe36304504bf
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483909"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934830"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-cli"></a>快速入門：使用 Azure CLI 建立流量管理員設定檔以獲得高可用性的 Web 應用程式
 
@@ -66,7 +66,7 @@ az network traffic-manager profile create \
 
 ## <a name="create-web-apps"></a>建立 Web 應用程式
 
-在本快速入門中，您必須在不同的 Azure 區域 (美國東部  和西歐  ) 中部署 Web 應用程式的兩個執行個體。 每個執行個體都會作為流量管理員的主要和容錯移轉端點。
+在本快速入門中，您必須在不同的 Azure 區域 (美國東部  和歐洲西部  ) 中部署 Web 應用程式的兩個執行個體。 每個執行個體都會作為流量管理員的主要和容錯移轉端點。
 
 ### <a name="create-web-app-service-plans"></a>建立 Web App Service 方案
 針對您將在兩個不同 Azure 區域中部署的兩個 Web 應用程式執行個體，使用 [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) 建立 Web App Service 方案。
@@ -89,7 +89,7 @@ az appservice plan create \
 
 ```
 ### <a name="create-a-web-app-in-the-app-service-plan"></a>在 App Service 方案中建立 Web 應用程式
-使用 [az webapp create](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-create)，在「美國東部」  和「西歐」  Azure 區域的 App Service 方案中建立 Web 應用程式的兩個執行個體。
+使用 [az webapp create](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-create)，在「美國東部」  和「歐洲西部」  Azure 區域的 App Service 方案中建立 Web 應用程式的兩個執行個體。
 
 在下列範例中，以唯一的應用程式名稱取代 **<app1name_eastus>** 和 **<app2name_westeurope>** ，並以上一節中用來建立 App Service 方案的名稱取代 **<appspname_eastus>** 和 **<appspname_westeurope>** 。
 
@@ -111,7 +111,7 @@ az webapp create \
 使用 [az network traffic-manager endpoint create](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create)，將兩個 Web 應用程式當作流量管理員端點新增到流量管理員設定檔，如下所示：
 
 - 決定 Web 應用程式識別碼，並將位於「美國東部」  Azure 區域的 Web 應用程式新增為主要端點，以便路由傳送所有的使用者流量。 
-- 決定 Web 應用程式識別碼，並將位於「西歐」  Azure 區域的 Web 應用程式新增為容錯移轉端點。 
+- 決定 Web 應用程式識別碼，並將位於「歐洲西部」  Azure 區域的 Web 應用程式新增為容錯移轉端點。 
 
 當主要端點無法使用時，流量就會自動路由傳送到容錯移轉端點。
 
@@ -141,7 +141,7 @@ az network traffic-manager endpoint create \
     --endpoint-status Enabled
 ```
 
-**西歐端點**
+**歐洲西部端點**
 
 ```azurecli-interactive
 

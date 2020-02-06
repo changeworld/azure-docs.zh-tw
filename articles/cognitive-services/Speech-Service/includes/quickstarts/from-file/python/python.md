@@ -2,19 +2,19 @@
 title: 快速入門：辨識來自音訊檔案的語音，Python - 語音服務
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: chlandsi
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 01/14/2020
-ms.author: chlandsi
-ms.openlocfilehash: 587a0e83eb6b8c96b44589f7f5701526c23e2aae
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.date: 01/30/2020
+ms.author: dapine
+ms.openlocfilehash: bcf0679d83becfb3c4ae900769c0a42dc1359e5d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76038108"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76909209"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -23,8 +23,8 @@ ms.locfileid: "76038108"
 > [!div class="checklist"]
 > * [建立 Azure 語音資源](../../../../get-started.md)
 > * [建立 LUIS 應用程式並取得端點金鑰](../../../../quickstarts/create-luis.md)
-> * [設定開發環境](../../../../quickstarts/setup-platform.md)
-> * [建立空的範例專案](../../../../quickstarts/create-project.md)
+> * [設定開發環境](../../../../quickstarts/setup-platform.md?pivots=programming-language-python)
+> * [建立空的範例專案](../../../../quickstarts/create-project.md?pivots=programming-language-python)
 
 [!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 

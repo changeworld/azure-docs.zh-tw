@@ -7,12 +7,12 @@ keywords: azure 自動化, DSC, powershell, Desired State Configuration, 更新�
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 3037f96464b0902ca3923bdaea2bddff39c47733
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3359d99d7e20bbced8950171fa34592fd2612500
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421936"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76930405"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Azure 自動化簡介
 
@@ -75,6 +75,8 @@ Azure 自動化可跨基礎結構和應用程式的生命週期進行管理。 �
 * **監視** - 識別電腦上造成問題的變更，並加以修復或向管理系統呈報。
 * **保護** - 如果產生安全性警示，就隔離 VM。 設定客體需求。
 * **控管** - 設定小組的角色型存取控制。 復原未使用的資源。
+
+[!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="pricing-for-automation"></a>自動化的定價
 

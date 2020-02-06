@@ -4,7 +4,7 @@ titleSuffix: Azure App Configuration
 description: 在本教學課程中，您將了解如何使用 Azure 應用程式組態個別管理功能旗標與應用程式。
 services: azure-app-configuration
 documentationcenter: ''
-author: yegu-ms
+author: lisaguthrie
 manager: maiye
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 04/19/2019
-ms.author: yegu
+ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 620cd6e1712a89e13bf876310c0d3248c4a4d1e7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ccab8014000f9f684249bf2c1f800f74c92e7369
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75413998"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899359"
 ---
 # <a name="tutorial-manage-feature-flags-in-azure-app-configuration"></a>教學課程：在 Azure 應用程式組態中管理功能旗標
 

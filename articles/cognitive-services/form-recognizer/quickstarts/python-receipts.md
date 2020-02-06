@@ -9,21 +9,18 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 6b6fa03337e857c6dda43f8c6ae41713d8c3dbe0
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 2b800cbc2f836d415afbb53a8415e9e400f40d0e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774182"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901960"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>快速入門：搭配使用表單辨識器 REST API 和 Python 來擷取收據資料
 
 在本快速入門中，您將使用 Azure 表單辨識器 REST API 搭配 Python 來擷取及識別美國銷售收據中的相關資訊。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-
-> [!IMPORTANT]
-> 本快速入門會使用表單辨識器 v2.0 API。 如果您的訂用帳戶不在 `West US 2` 或 `West Europe` 區域中，您必須使用 v1.0 API。 請改為遵循 [v1.0 快速入門](./curl-train-extract-v1.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 

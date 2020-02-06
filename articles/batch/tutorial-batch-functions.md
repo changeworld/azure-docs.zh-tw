@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure Functions 觸發 Batch 作業
 description: 教學課程 - 在文件新增至儲存體 blob 時，將 OCR 套用至已掃描的文件
-author: ju-shim
+author: LauraBrenner
 ms.service: batch
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: peshultz
 ms.custom: mvc
-ms.openlocfilehash: e3c85d7dfceecfb85223a9688debf4e8937e7c35
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: a967fdc14b85f294ee11cbcc57a8d2280dba38e8
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76275974"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77017185"
 ---
 # <a name="tutorial-trigger-a-batch-job-using-azure-functions"></a>教學課程：使用 Azure Functions 觸發 Batch 作業
 

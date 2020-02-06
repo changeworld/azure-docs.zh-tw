@@ -3,17 +3,17 @@ title: 教學課程：建立別名記錄以支援網域頂點名稱 - 流量管�
 titleSuffix: Azure DNS
 description: 本教學課程說明如何使用「流量管理員」來設定 Auzre DNS 別名記錄，以支援使用網域頂點名稱。
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
-ms.author: allensu
-ms.openlocfilehash: 3834b782be054611de67b782b7fcd0c46cbf3a19
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.author: rohink
+ms.openlocfilehash: 749e5eae64aa0d33c90ef8694da9a093647b8a8b
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082260"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937931"
 ---
 # <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>教學課程：使用流量管理員設定別名記錄以支援頂點網域名稱 
 
@@ -31,7 +31,7 @@ ms.locfileid: "74082260"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 必須提供可用的網域名稱，如此才能裝載於 Azure DNS 進行測試。 您必須擁有此網域的完整控制權。 完整控制權包括為網域設定名稱伺服器 (NS) 記錄的能力。
 
 如需如何在 Azure DNS 中裝載網域的相關指示，請參閱[教學課程：在 Azure DNS 上託管您的網域](dns-delegate-domain-azure-dns.md)。

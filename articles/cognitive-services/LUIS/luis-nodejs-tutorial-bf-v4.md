@@ -1,28 +1,18 @@
 ---
 title: 教學課程：Language Understanding Bot Node.js v4
-titleSuffix: Azure Cognitive Services
 description: 使用 Node.js，在本教學課程中建置與 Language Understanding (LUIS) 整合的聊天機器人。 此聊天機器人會使用人力資源應用程式來快速實作聊天機器人解決方案。 此 Bot 是使用 Bot Framework 第 4 版和 Azure Web 應用程式 Bot 所建置的。
-services: cognitive-services
-author: diberry
-ms.custom: seodec18
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 10/14/2019
-ms.author: diberry
-ms.openlocfilehash: 754d9d74a5d2c74a873145eaaddaaced29aa2ca8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/03/2020
+ms.openlocfilehash: 3ce12176957412a5599ced8b043f553969194efb
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448006"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987830"
 ---
-# <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>教學課程：使用以 Node.js 中 Language Understanding 啟用的 Web 應用程式 Bot 
+# <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>教學課程：使用以 Node.js 中 Language Understanding 啟用的 Web 應用程式 Bot
 
 使用 Node.js 建置與 Language Understanding (LUIS) 整合的聊天 Bot。 此 Bot 是使用 Azure [Web 應用程式 Bot](https://docs.microsoft.com/azure/bot-service/) 資源和 [Bot Framework 版本](https://github.com/Microsoft/botbuilder-dotnet) V4 所建置的。
-
-[!INCLUDE [Waiting for Bot refresh](./includes/wait-bot-upgrade.md)]
 
 **在本教學課程中，您將了解如何：**
 
@@ -67,16 +57,17 @@ ms.locfileid: "75448006"
     |SDK 版本|Bot Framework 版本|**SDK v4**|
     |SDK 語言|Bot 的程式設計語言|**Node.js**|
     |Bot|Bot 類型|**基本 Bot**|
-    
+
 1. 選取 [建立]  。 這會建立 Bot 服務，並將其部署到 Azure。 此程序中的一部份會為您建立名為 `luis-nodejs-bot-XXXX` 的 LUIS 應用程式。 這個名稱是根據 /Azure Bot Service 應用程式名稱。
 
-    [![建立 Web 應用程式 Bot](./media/bfv4-nodejs/create-web-app-service.png)](./media/bfv4-nodejs/create-web-app-service.png#lightbox)
+    > [!div class="mx-imgBorder"]
+    > [![建立 Web 應用程式 Bot](./media/bfv4-nodejs/create-web-app-service.png)](./media/bfv4-nodejs/create-web-app-service.png#lightbox)
 
     等候 Bot 服務建立後再繼續。
 
 ## <a name="the-bot-has-a-language-understanding-model"></a>Bot 具有 Language Understanding 模型
 
-Bot 服務建立流程也會以意圖和語句範例來建立新 LUIS 應用程式。 Bot 提供的意圖會對應到新 LUIS 應用程式的下列意圖： 
+Bot 服務建立流程也會以意圖和語句範例來建立新 LUIS 應用程式。 Bot 提供的意圖會對應到新 LUIS 應用程式的下列意圖：
 
 |基本 Bot 的 LUIS 意圖|範例語句|
 |--|--|
@@ -87,31 +78,31 @@ Bot 服務建立流程也會以意圖和語句範例來建立新 LUIS 應用程�
 
 ## <a name="test-the-bot-in-web-chat"></a>在網路聊天中測試 Bot
 
-1. 針對新的 Bot 仍在 Azure 入口網站時，選取 [在網路聊天中測試]  。 
-1. 在 [輸入您的訊息]  文字方塊中，輸入文字 `Book a flight from Seattle to Berlin tomorrow`。 Bot 的回應會驗證您是否要預訂班機。 
+1. 針對新的 Bot 仍在 Azure 入口網站時，選取 [在網路聊天中測試]  。
+1. 在 [輸入您的訊息]  文字方塊中，輸入文字 `Book a flight from Seattle to Berlin tomorrow`。 Bot 的回應會驗證您是否要預訂班機。
 
     ![Azure 入口網站的螢幕擷取畫面，輸入文字 'hello'。](./media/bfv4-nodejs/ask-bot-question-in-portal-test-in-web-chat.png)
 
-    您可以使用測試功能快速測試您的 Bot。 如需完整測試 (包括偵錯)，請下載 Bot 程式碼並使用 Visual Studio。 
+    您可以使用測試功能快速測試您的 Bot。 如需完整測試 (包括偵錯)，請下載 Bot 程式碼並使用 Visual Studio。
 
 ## <a name="download-the-web-app-bot-source-code"></a>下載 Web 應用程式 Bot 來源程式碼
-若要開發 Web 應用程式 Bot 程式碼，請下載程式碼並在您的本機電腦上使用。 
+若要開發 Web 應用程式 Bot 程式碼，請下載程式碼並在您的本機電腦上使用。
 
-1. 在 Azure 入口網站中，從 [Bot 管理]  區段中選取 [建置]  。 
+1. 在 Azure 入口網站中，從 [Bot 管理]  區段中選取 [建置]  。
 
-1. 選取 [下載 Bot 原始程式碼]  。 
+1. 選取 [下載 Bot 原始程式碼]  。
 
     [![下載基本 Bot 的 Web 應用程式 Bot 原始程式碼](../../../includes/media/cognitive-services-luis/bfv4/download-code.png)](../../../includes/media/cognitive-services-luis/bfv4/download-code.png#lightbox)
 
-1. 當快顯對話方塊詢問**在下載的 ZIP 檔案中包含應用程式設定嗎？** ，選取 [是]  。 這會提供 LUIS 設定。 
+1. 當快顯對話方塊詢問**在下載的 ZIP 檔案中包含應用程式設定嗎？** ，選取 [是]  。 這會提供 LUIS 設定。
 
-1. 如果原始程式碼已壓縮為 zip 檔，將會有提供程式碼下載連結的訊息。 選取連結。 
+1. 如果原始程式碼已壓縮為 zip 檔，將會有提供程式碼下載連結的訊息。 選取連結。
 
-1. 將 zip 檔儲存到本機電腦並解壓縮。 在 Visual Studio 中開啟專案。 
+1. 將 zip 檔儲存到本機電腦並解壓縮。 在 Visual Studio 中開啟專案。
 
 ## <a name="review-code-to-send-utterance-to-luis-and-get-response"></a>檢閱程式碼以將語句傳送至 LUIS 並取得回應
 
-1. 若要將使用者語句傳送至 LUIS 預測端點，請開啟 [對話方塊] -> [flightBookingRecognizer.js]  檔案。 此階段會將進入 Bot 的使用者語句傳送到 LUIS。 LUIS 提供的回應是從 **executeLuisQuery** 方法所傳回。  
+1. 若要將使用者語句傳送至 LUIS 預測端點，請開啟 [對話方塊] -> [flightBookingRecognizer.js]  檔案。 此階段會將進入 Bot 的使用者語句傳送到 LUIS。 LUIS 提供的回應是從 **executeLuisQuery** 方法所傳回。
 
     ````javascript
     class FlightBookingRecognizer {
@@ -135,64 +126,72 @@ Bot 服務建立流程也會以意圖和語句範例來建立新 LUIS 應用程�
 
 
     ````javascript
-    class MainDialog extends ComponentDialog {
+    // Copyright (c) Microsoft Corporation. All rights reserved.
+    // Licensed under the MIT License.
 
-        constructor(luisRecognizer, bookingDialog) {
-            ...
-            this.luisRecognizer = luisRecognizer;
-            ...
+    const { LuisRecognizer } = require('botbuilder-ai');
+
+    class FlightBookingRecognizer {
+        constructor(config) {
+            const luisIsConfigured = config && config.applicationId && config.endpointKey && config.endpoint;
+            if (luisIsConfigured) {
+                this.recognizer = new LuisRecognizer(config, {}, true);
+            }
         }
 
-
-        ...
+        get isConfigured() {
+            return (this.recognizer !== undefined);
+        }
 
         /**
-         * Second step in the waterfall.  This will use LUIS to attempt to extract the origin, destination and travel dates.
-         * Then, it hands off to the bookingDialog child dialog to collect any remaining details.
+         * Returns an object with preformatted LUIS results for the bot's dialogs to consume.
+         * @param {TurnContext} context
          */
-        async actStep(stepContext) {
-
-            ...
-
-            const luisResult = await this.luisRecognizer.executeLuisQuery(stepContext.context);
-
-            switch (LuisRecognizer.topIntent(luisResult)) {
-                    case 'BookFlight':
-                        // Extract the values for the composite entities from the LUIS result.
-                        const fromEntities = this.luisRecognizer.getFromEntities(luisResult);
-                        const toEntities = this.luisRecognizer.getToEntities(luisResult);
-            
-                        // Show a warning for Origin and Destination if we can't resolve them.
-                        await this.showWarningForUnsupportedCities(stepContext.context, fromEntities, toEntities);
-            
-                        // Initialize BookingDetails with any entities we may have found in the response.
-                        bookingDetails.destination = toEntities.airport;
-                        bookingDetails.origin = fromEntities.airport;
-                        bookingDetails.travelDate = this.luisRecognizer.getTravelDate(luisResult);
-                        console.log('LUIS extracted these booking details:', JSON.stringify(bookingDetails));
-            
-                        // Run the BookingDialog passing in whatever details we have from the LUIS call, it will fill out the remainder.
-                        return await stepContext.beginDialog('bookingDialog', bookingDetails);
-            
-                    case 'GetWeather':
-                        // We haven't implemented the GetWeatherDialog so we just display a TODO message.
-                        const getWeatherMessageText = 'TODO: get weather flow here';
-                        await stepContext.context.sendActivity(getWeatherMessageText, getWeatherMessageText, InputHints.IgnoringInput);
-                        break;
-            
-                    default:
-                        // Catch all for unhandled intents
-                        const didntUnderstandMessageText = `Sorry, I didn't get that. Please try asking in a different way (intent was ${ LuisRecognizer.topIntent(luisResult) })`;
-                        await stepContext.context.sendActivity(didntUnderstandMessageText, didntUnderstandMessageText, InputHints.IgnoringInput);
-                    }
-            
-                    return await stepContext.next();
-
+        async executeLuisQuery(context) {
+            return await this.recognizer.recognize(context);
         }
 
-        ...
+        getFromEntities(result) {
+            let fromValue, fromAirportValue;
+            if (result.entities.$instance.From) {
+                fromValue = result.entities.$instance.From[0].text;
+            }
+            if (fromValue && result.entities.From[0].Airport) {
+                fromAirportValue = result.entities.From[0].Airport[0][0];
+            }
 
+            return { from: fromValue, airport: fromAirportValue };
+        }
+
+        getToEntities(result) {
+            let toValue, toAirportValue;
+            if (result.entities.$instance.To) {
+                toValue = result.entities.$instance.To[0].text;
+            }
+            if (toValue && result.entities.To[0].Airport) {
+                toAirportValue = result.entities.To[0].Airport[0][0];
+            }
+
+            return { to: toValue, airport: toAirportValue };
+        }
+
+        /**
+         * This value will be a TIMEX. And we are only interested in a Date so grab the first result and drop the Time part.
+         * TIMEX is a format that represents DateTime expressions that include some ambiguity. e.g. missing a Year.
+         */
+        getTravelDate(result) {
+            const datetimeEntity = result.entities.datetime;
+            if (!datetimeEntity || !datetimeEntity[0]) return undefined;
+
+            const timex = datetimeEntity[0].timex;
+            if (!timex || !timex[0]) return undefined;
+
+            const datetime = timex[0].split('T')[0];
+            return datetime;
+        }
     }
+
+    module.exports.FlightBookingRecognizer = FlightBookingRecognizer;
     ````
 <a name="ask-bot-a-question-for-the-book-flight-intent"></a>
 
@@ -208,7 +207,7 @@ Bot 服務建立流程也會以意圖和語句範例來建立新 LUIS 應用程�
 
     [![模擬器中的基本 Bot 回應](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
 
-1. 選取 [是]  。 Bot 會回應其動作摘要。 
+1. 選取 [是]  。 Bot 會回應其動作摘要。
 1. 從 Bot 模擬器的記錄中，選取包含 `Luis Trace` 的資料行。 這會顯示針對意圖和語句實體 LUIS 的 JSON 回應。
 
     [![模擬器中的基本 Bot 回應](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
@@ -218,7 +217,7 @@ Bot 服務建立流程也會以意圖和語句範例來建立新 LUIS 應用程�
 
 ## <a name="next-steps"></a>後續步驟
 
-查看更多聊天機器人[範例](https://github.com/microsoft/botframework-solutions)。 
+查看更多聊天機器人[範例](https://github.com/microsoft/botframework-solutions)。
 
 > [!div class="nextstepaction"]
 > [使用自訂主體網域建置 Language Understanding 應用程式](luis-quickstart-intents-only.md)

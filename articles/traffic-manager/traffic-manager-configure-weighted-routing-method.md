@@ -3,7 +3,7 @@ title: 教學課程 - 使用 Azure 流量管理員設定加權循環配置流量
 description: 本教學課程將說明如何在流量管理員中使用循環配置資源方法對流量進行負載平衡
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
-ms.author: allensu
-ms.openlocfilehash: 06bb86e635b7b3377e1f313ef3aa3487e1c215bc
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.author: rohink
+ms.openlocfilehash: 8bdc710b36cae70d29d32333f431b8a9dda154cc
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422762"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938717"
 ---
 # <a name="tutorial-configure-the-weighted-traffic-routing-method-in-traffic-manager"></a>教學課程：在流量管理員中設定加權流量路由方法
 

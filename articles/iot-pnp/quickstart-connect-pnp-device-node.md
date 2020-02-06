@@ -1,19 +1,19 @@
 ---
 title: 將 IoT 隨插即用預覽版的範例裝置程式碼連線至 IoT 中樞 | Microsoft Docs
 description: 使用 Node.js 建置並執行連線至 IoT 中樞的 IoT 隨插即用預覽版範例裝置程式碼。 使用 Azure IoT 檔案總管工具，檢視裝置傳送至中樞的資訊。
-author: baanders
-ms.author: baanders
+author: dominicbetts
+ms.author: dobett
 ms.date: 12/26/2019
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 64f478d9d5c3330167df81de9766ff02eb943c98
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: c5d69ae21cd240b0c68b9694a55de2cf879a1966
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531193"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964782"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-to-iot-hub-nodejs"></a>快速入門：將範例 IoT 隨插即用預覽版裝置應用程式連線至 IoT 中樞 (Node.js)
 

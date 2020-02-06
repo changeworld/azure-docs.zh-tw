@@ -2,17 +2,17 @@
 title: 快速入門 - 使用 Azure 入口網站建立 Azure 私人 DNS 區域
 description: 在本快速入門中，您可以建立並測試私人 DNS 區域，並記錄在 Azure DNS 中。 這份逐步指南將引導您使用 Azure 入口網站建立和管理第一個私人 DNS 區域和記錄。
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
 ms.date: 10/11/2019
-ms.author: allensu
-ms.openlocfilehash: 48c5684dd491a91b6da212f78c535433ac2aecf7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 8391d92a2e2970378c11c043ca9f5d4f6dc44696
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210760"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939375"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立 Azure 私人 DNS 區域
 
@@ -49,7 +49,7 @@ DNS 區域包含網域的 DNS 項目。 若要開始將網域裝載到 Azure DNS
 1. 在 [建立私人 DNS 區域]  頁面上，輸入或選取下列值：
 
    - **資源群組**：選取 [新建]  ，輸入*MyAzureResourceGroup*，然後選取 [確定]  。 資源群組名稱在 Azure 訂用帳戶中必須是唯一的。 
-   -  **名稱**：針對此範例，輸入 private.contoso.com  。
+   -  **Name**：針對此範例，輸入 private.contoso.com  。
 1. 針對 [資源群組位置]  ，選取 [美國中西部]  。
 
 1. 選取 [檢閱 + 建立]  。

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: 8a6e8dad7549b3656d4387cfad1d0c3a44b13975
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b219b507ac14b2a66b23f93d9fb1035f56cb8164
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965971"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018681"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>快速入門：將「使用 Microsoft 登入」新增至 Python Web 應用程式
 
@@ -28,12 +28,12 @@ ms.locfileid: "74965971"
 
 ![示範本快速入門所產生之範例應用程式的運作方式](media/quickstart-v2-python-webapp/python-quickstart.svg)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要執行此範例，您將需要：
 
 - [Python 2.7+](https://www.python.org/downloads/release/python-2713) 或 [Python 3+](https://www.python.org/downloads/release/python-364/)
-- [Flask](http://flask.pocoo.org/)、[Flask-Session](https://pythonhosted.org/Flask-Session/)、[requests](https://requests.kennethreitz.org//en/master/)
+- [Flask](http://flask.pocoo.org/)、[Flask-Session](https://pythonhosted.org/Flask-Session/)、[requests](https://requests.kennethreitz.org/en/master/)
 - [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python)
 
 > [!div renderon="docs"]
@@ -51,7 +51,7 @@ ms.locfileid: "74965971"
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>選項 2：註冊並手動設定您的應用程式和程式碼範例
 >
-> #### <a name="step-1-register-your-application"></a>步驟 1：註冊您的應用程式
+> #### <a name="step-1-register-your-application"></a>步驟 1:註冊您的應用程式
 >
 > 若要手動註冊您的應用程式，並將應用程式註冊資訊新增到您的解決方案，請執行下列步驟：
 >
@@ -80,7 +80,7 @@ ms.locfileid: "74965971"
 >
 > [!div class="sxs-lookup" renderon="portal"]
 >
-> #### <a name="step-1-configure-your-application-in-azure-portal"></a>步驟 1：在 Azure 入口網站中設定您的應用程式
+> #### <a name="step-1-configure-your-application-in-azure-portal"></a>步驟 1:在 Azure 入口網站中設定您的應用程式
 >
 > 若要讓本快速入門中的程式碼範例能正常運作，您需要：
 >
@@ -93,7 +93,7 @@ ms.locfileid: "74965971"
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![已設定](media/quickstart-v2-aspnet-webapp/green-check.png) 您的應用程式已設定了這個屬性
 
-#### <a name="step-2-download-your-project"></a>步驟 2：下載您的專案
+#### <a name="step-2-download-your-project"></a>步驟 2:下載您的專案
 
 [下載程式碼範例](https://github.com/Azure-Samples/ms-identity-python-webapp/archive/master.zip)
 

@@ -1,17 +1,17 @@
 ---
 title: 將功能旗標新增至 ASP.NET Core 的快速入門
 description: 將功能旗標新增至 ASP.NET Core 應用程式，並使用 Azure 應用程式組態進行管理
-author: jpconnock
+author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 01/14/2020
-ms.author: jeconnoc
-ms.openlocfilehash: 6858648bc07546f30d4ebb92150c52f8c7729acd
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.author: lcozzens
+ms.openlocfilehash: fda0e8072984a25b33731a775780231538e92e3d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260273"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898690"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>快速入門：將功能旗標新增至 ASP.NET Core 應用程式
 

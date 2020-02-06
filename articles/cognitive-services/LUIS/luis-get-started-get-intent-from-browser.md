@@ -9,44 +9,44 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 10/17/2019
+ms.date: 02/03/2020
 ms.author: diberry
-ms.openlocfilehash: 2ca0f9faf1623df9212072abbc960cba41a6414b
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: e06bb4c09b3ebab25c0c0ef8ac5c51f6842f34cd
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76165751"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987949"
 ---
 # <a name="quickstart-get-intent-with-a-browser"></a>快速入門：使用瀏覽器取得意圖
 
-若要了解 LUIS 預測端點所傳回的內容，請在網頁瀏覽器中檢視預測結果。 
+若要了解 LUIS 預測端點所傳回的內容，請在網頁瀏覽器中檢視預測結果。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 若要查詢公用應用程式，您需要：
 
-* 您自己的 Language Understanding (LUIS) 撰寫或預測金鑰，其可從 [LUIS 入口網站 (預覽)](https://preview.luis.ai/) 取得。 若您還沒有訂用帳戶可建立金鑰，您可以註冊[免費帳戶](https://azure.microsoft.com/free/)。 
-* 公用應用程式的識別碼：`df67dcdb-c37d-46af-88e1-8b97951ca1c2`。 
+* 您自己的 Language Understanding (LUIS) 撰寫或預測金鑰，其可從 [LUIS 入口網站 (預覽)](https://preview.luis.ai/) 取得。 若您還沒有訂用帳戶可建立金鑰，您可以註冊[免費帳戶](https://azure.microsoft.com/free/)。
+* 公用應用程式的識別碼：`df67dcdb-c37d-46af-88e1-8b97951ca1c2`。
 
 ## <a name="use-the-browser-to-see-predictions"></a>使用瀏覽器查看預測
 
-1. 請開啟網頁瀏覽器。 
+1. 請開啟網頁瀏覽器。
 1. 使用下列完整的 URL，將 `YOUR-KEY` 取代為您自己的 LUIS 撰寫或預測金鑰。 要求是 GET 要求，包含以您的 LUIS 撰寫或預測金鑰作為查詢字串參數的授權。
 
     #### <a name="v3-prediction-requesttabv3-1-1"></a>[V3 預測要求](#tab/V3-1-1)
-    
-    
+
+
     **GET** 端點 (依位置) 要求的 V3 URL 格式為：
-    
+
     `
     https://westus.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?query=turn on all lights&subscription-key=YOUR-KEY
     `
 
     #### <a name="v2-prediction-requesttabv2-1-2"></a>[V2 預測要求](#tab/V2-1-2)
-    
+
     **GET** 端點要求的 V2 URL 格式為：
-    
+
     `
     https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?subscription-key=YOUR-KEY&q=turn on all lights
     `
@@ -97,7 +97,7 @@ ms.locfileid: "76165751"
 
     * * *
 
-1. 若要查看所有意圖，請新增適當的查詢字串參數。 
+1. 若要查看所有意圖，請新增適當的查詢字串參數。
 
     #### <a name="v3-prediction-endpointtabv3-3-1"></a>[V3 預測端點](#tab/V3-3-1)
 
@@ -174,7 +174,7 @@ ms.locfileid: "76165751"
     ```
 
 
-<!-- FIX - is the public app getting updated for the new prebuilt domain with entities? -->   
+<!-- FIX - is the public app getting updated for the new prebuilt domain with entities? -->
 
 ## <a name="next-steps"></a>後續步驟
 

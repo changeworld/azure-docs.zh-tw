@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: 964ba16fb7421c58f43d8b7d0d0d96f5cd377579
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 5f3a8fa7b9619958db1d7213236e27d00b417c54
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261871"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939120"
 ---
 # <a name="what-is-azure-sentinel"></a>什麼是 Azure Sentinel？
 
@@ -37,17 +37,17 @@ Azure Sentinel 可讓您鳥瞰檢視整個企業，以減輕攻擊日益複雜�
 
 - 使用內建的常見工作協調流程和自動化，**快速回應事件**。
 
-
 ![Azure Sentinel 核心功能](./media/overview/core-capabilities.png)
 
 Azure Sentinel 以完方位的現有 Azure 服務為基礎，原生併入經過實證的基礎，諸如 Log Analytics 和 Logic Apps 等。 Azure Sentinel 利用 AI 擴充您的調查和偵測，並提供 Microsoft 威脅情報資料流，讓您能夠自備威脅情報。 
 
- 
 ## <a name="connect-to-all-your-data"></a>連線到您所有的資料
 
 若要將 Azure Sentinel 上架，必須先[連線到安全性來源](connect-data-sources.md)。 Azure Sentinel 隨附多種適用於 Microsoft 解決方案的連接器，現成可用且提供即時整合，包括 Microsoft 威脅防護解決方案與 Microsoft 365 來源，例如 Office 365、Azure AD、Azure ATP 和 Microsoft Cloud App Security 等等。 此外，還有適用於非 Microsoft 解決方案的內建連接器，用於連線至更廣泛的安全性生態系統。 您也可以使用常見事件格式 (Syslog 或 REST API) 來連線資料來源與 Azure Sentinel。  
 
 ![資料收集器](./media/collect-data/collect-data-page.png)
+
+[!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="workbooks"></a>活頁簿
 

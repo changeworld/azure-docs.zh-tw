@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 12/09/2019
 ms.author: swmachan
-ms.openlocfilehash: 5e19e4247e58135c6a9bb7c6cc327cb566d294df
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0075862e198ce67cc7367efe94d624ad18e6eb3b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978453"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984162"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>教學課程：建置採用 Azure 認知服務的 Flask 應用程式
 
@@ -44,7 +44,7 @@ Flask 是一個可建立 Web 應用程式的微架構。 這表示 Flask 會提�
 * [Flask 文件](http://flask.pocoo.org/)
 * [Flask for Dummies - Flask 的初學者指南](https://codeburst.io/flask-for-dummies-a-beginners-guide-to-flask-part-uno-53aec6afc5b1)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 我們要先檢視本教學課程所將需要的軟體和訂用帳戶金鑰。
 
@@ -103,7 +103,7 @@ Flask 是一個可建立 Web 應用程式的微架構。 這表示 Flask 會提�
 
 2. 用來啟用虛擬環境的命令取決於您的平台/殼層：   
 
-   | 平台 | 殼層 | 命令 |
+   | 平台 | 殼層 | Command |
    |----------|-------|---------|
    | macOS/Linux | bash/zsh | `source venv/bin/activate` |
    | Windows | Bash | `source venv/Scripts/activate` |
@@ -128,7 +128,7 @@ Flask 是一個可建立 Web 應用程式的微架構。 這表示 Flask 會提�
    ```
 
 > [!NOTE]
-> 如果您想要深入了解要求，請參閱[要求：HTTP for Humans](http://docs.python-requests.org/en/master/)。
+> 如果您想要深入了解要求，請參閱[要求：HTTP for Humans](https://2.python-requests.org/en/master/)。
 
 ### <a name="install-and-configure-flask"></a>安裝和設定 Flask
 

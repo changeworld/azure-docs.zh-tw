@@ -1,6 +1,6 @@
 ---
-title: 由 CloudSimple 提供的 Azure VMware 解決方案
-description: Azure VMware Solution by CloudSimple 的文件入口網站。
+title: Azure VMware Solutions (AVS)
+description: Azure VMware Solutions (AVS) 的文件入口網站。
 author: sharaths-cs
 ms.author: b-mashar
 ms.date: 08/20/2019
@@ -8,23 +8,23 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 936a9eb4d9b33b45800fab213fc72a306a04146e
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: d81ea6778f3ba31d72c34334b1439994b076647c
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972747"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025209"
 ---
-# <a name="azure-vmware-solution-by-cloudsimple"></a>由 CloudSimple 提供的 Azure VMware 解決方案
+# <a name="azure-vmware-solution-by-avs"></a>AVS 提供的 Azure VMware 解決方案
 
-歡迎使用一站式 入口網站，以取得 Azure VMware Solution by CloudSimple 的協助。
+歡迎使用一站式入口網站，以取得 AVS 提供的 Azure VMware 解決方案協助。
 在文件網站中，您可以了解下列主題：
 
 ## <a name="overview"></a>概觀
 
-深入了解 Azure VMware Solution by CloudSimple
+深入了解 Azure VMware Solutions (AVS)
 
-* 在[什麼是 Azure VMware Solution by CloudSimple](cloudsimple-vmware-solutions-overview.md) 中了解其功能、優點和使用案例
+* 在[什麼是 AVS 提供的 Azure VMware 解決方案](cloudsimple-vmware-solutions-overview.md)中了解其功能、優點和使用案例
 * 檢閱[系統管理的重要概念](key-concepts.md)
 
 ## <a name="quickstart"></a>快速入門
@@ -32,17 +32,17 @@ ms.locfileid: "69972747"
 了解如何開始使用解決方案
 
 * 了解如何[初始化服務和購買容量](quickstart-create-cloudsimple-service.md)
-* 在[設定私人雲端環境](quickstart-create-private-cloud.md)中了解如何建立新的 VMware 環境
+* 在[設定 AVS 私人雲端環境](quickstart-create-private-cloud.md)中了解如何建立新的 VMware 環境
 * 檢閱[在 Azure 上使用 VMware VM](quickstart-create-vmware-virtual-machine.md) 一文，了解如何整合 VMware 與 Azure 的管理
 
 ## <a name="concepts"></a>概念
 
 了解下列概念
 
-* [CloudSimple 服務](cloudsimple-service.md) (也稱為「Azure VMware Solution by CloudSimple - 服務」)。 每個區域都必須建立一次此資源。
-* 藉由建立一或多個 [CloudSimple 節點](cloudsimple-node.md)資源來購買環境的容量。 這些資源也稱為「Azure VMware Solution by CloudSimple - 節點」。
-* 使用[私人雲端](cloudsimple-private-cloud.md)初始化和設定您的 VMware 環境。
-* 使用 [CloudSimple 虛擬機器](cloudsimple-virtual-machines.md) (也稱為「Azure VMware Solution by CloudSimple - 虛擬機器」) 整合管理。
+* [AVS 服務](cloudsimple-service.md) (亦稱為「Azure VMware Solutions (AVS) - 服務」)。 每個區域都必須建立一次此資源。
+* 藉由建立一或多個 [AVS 節點](cloudsimple-node.md)資源來購買環境的容量。 這些資源也稱為「AVS 提供的 Azure VMware 解決方案 - 節點」。
+* 使用 [AVS 私人雲端](cloudsimple-private-cloud.md)初始化和設定您的 VMware 環境。
+* 使用 [AVS 虛擬機器](cloudsimple-virtual-machines.md) (也稱為「Azure VMware Solutions (AVS) - 虛擬機器」) 整合管理。
 * 使用 [VLAN/子網路](cloudsimple-vlans-subnets.md)來設計基礎網路。
 * 使用[防火牆資料表](cloudsimple-firewall-tables.md)資源來分割和保護您的基礎網路。
 * 使用 [VPN 閘道](cloudsimple-vpn-gateways.md)，透過 WAN 取得 VMware 環境的安全存取。
@@ -56,10 +56,10 @@ ms.locfileid: "69972747"
 
 了解如何執行一般工作，例如：
 
-* 在您要部署 VMware 環境的每個區域中，[建立 CloudSimple 服務](create-cloudsimple-service.md)。
-* 在 [CloudSimple 入口網站](access-cloudsimple-portal.md)中管理核心服務功能。
-* 藉由[購買 CloudSimple 節點](create-nodes.md)，為您的基礎結構啟用容量和最佳化計費。
-* 使用私人雲端管理 VMware 環境設定。 您可以[建立](create-private-cloud.md)、[管理](manage-private-cloud.md)、[擴充](expand-private-cloud.md)或[縮小](shrink-private-cloud.md)私人雲端。
+* 在您要部署 VMware 環境的每個區域中，[建立 AVS 服務](create-cloudsimple-service.md)。
+* 在 [AVS 入口網站](access-cloudsimple-portal.md)中管理核心服務功能。
+* 藉由[購買 AVS 節點](create-nodes.md)，為您的基礎結構啟用容量和最佳化計費。
+* 使用 AVS 私人雲端管理 VMware 環境設定。 您可以[建立](create-private-cloud.md)、[管理](manage-private-cloud.md)、[擴充](expand-private-cloud.md)或[壓縮](shrink-private-cloud.md) AVS 私人雲端。
 * 藉由[對應 Azure 訂用帳戶](azure-subscription-mapping.md)來啟用整合管理。
 * 使用[活動頁面](monitor-activity.md)來監視使用者和系統活動。
 * 藉由[建立和管理子網路](create-vlan-subnet.md)，為您的環境設定網路功能。
@@ -68,7 +68,7 @@ ms.locfileid: "69972747"
 * 藉由[設定 VPN](vpn-gateway.md)，從內部網路或用戶端工作站啟用連線能力。
 * 從您的[內部部署環境](on-premises-connection.md)和 [Azure 虛擬網路](virtual-network-connection.md)啟用通訊。
 * 在[帳戶摘要](account.md)中設定警示目標並檢視總購買容量
-* 檢視已存取 CloudSimple 入口網站的[使用者](users.md)。
+* 檢視已存取 AVS 入口網站的[使用者](users.md)。
 * 從 Azure 入口網站管理 VMware 虛擬機器：
     * 在 Azure 入口網站中[建立虛擬機器](azure-create-vm.md)。
     * [管理虛擬機器](azure-manage-vm.md) (您已建立的虛擬機器)。

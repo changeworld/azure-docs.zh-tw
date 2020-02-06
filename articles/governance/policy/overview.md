@@ -4,12 +4,12 @@ description: Azure 原則是 Azure 中的一個服務，您可以在 Azure 環�
 ms.date: 11/25/2019
 ms.topic: overview
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9babfd52071ed7d033761802f696c3b6021287af
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e886f37a8d7f1395b5c831e81e600ecc6e2dd20f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846027"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937824"
 ---
 # <a name="what-is-azure-policy"></a>什麼是 Azure 原則？
 
@@ -24,7 +24,7 @@ Azure 原則是 Azure 中的一個服務，您可以用來建立、指派和管�
 > [!IMPORTANT]
 > 無論定價層為何，所有指派現在都會提供 Azure 原則的合規性評估。 如果指派未顯示合規性資料，請確定已向 Microsoft.PolicyInsights 資源提供者註冊訂用帳戶。
 
-[!INCLUDE [service-provider-management-toolkit](../../../includes/azure-lighthouse-supported-service.md)]
+[!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="how-is-it-different-from-rbac"></a>它和 RBAC 有什麼不同？
 

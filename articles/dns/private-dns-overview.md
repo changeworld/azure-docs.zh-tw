@@ -2,17 +2,17 @@
 title: 什麼是 Azure Private DNS？
 description: 在本文中，請先參閱 Microsoft Azure 上的私人 DNS 主機服務概觀。
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: overview
 ms.date: 6/12/2019
-ms.author: allensu
-ms.openlocfilehash: 2e457dcccfd89d2dcf94a0cc3728cfee9bb1a611
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 97b266398b3ea46d09b04524dad34922f21b1a95
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210641"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939293"
 ---
 # <a name="what-is-azure-private-dns"></a>什麼是 Azure Private DNS？
 
@@ -64,7 +64,7 @@ Azure DNS 有下列限制：
 * 已連結虛擬網路的私人 IP 位址反向 DNS 會傳回 *internal.cloudapp.net* 作為虛擬機器的預設尾碼。 若虛擬網路連結至已啟用自動註冊的私人區域，私人 IP 位址的反向 DNS 會傳回兩個 FQDN，一個具有預設尾碼 *internal.cloudapp.net*，另一個則具有私人區域的尾碼。
 * 目前無法原生支援條件式轉送。 啟用 Azure 和內部部署網路之間的解析。 請參閱 [VM 與角色執行個體的名稱解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)
  
-## <a name="pricing"></a>價格
+## <a name="pricing"></a>定價
 
 如需價格相關資訊，請參閱 [Azure DNS 定價](https://azure.microsoft.com/pricing/details/dns/)。
 

@@ -2,17 +2,17 @@
 title: 建立 DNS 區域和網域名稱記錄 - Azure CLI - Azure DNS
 description: 此 Azure CLI 指令碼範例會示範如何建立 DNS 區域和網域名稱記錄
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: sample
 ms.date: 09/20/2019
-ms.author: allensu
-ms.openlocfilehash: 8f5dde0a35f31d2c33ab2857659efc88339c2ead
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: b1db9ffb895470dd9224dc020eb82b0bbf6560c1
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210388"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939298"
 ---
 # <a name="azure-cli-script-example-create-a-dns-zone-and-record"></a>Azure CLI 指令碼範例：建立 DNS 區域和記錄
 
@@ -38,7 +38,7 @@ az group delete -n myResourceGroup
 
 此指令碼使用下列命令來建立資源群組、虛擬機器、可用性設定組、負載平衡器和所有相關資源。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | 建立用來存放所有資源的資源群組。 |
 | [az network dns zone create](/cli/azure/network/dns/zone#az-network-dns-zone-create) | 建立 Azure DNS 區域。 |

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 52791719e518f6a6b1a4178d8b9a010f1db14fc4
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 4078f2a005dcd324fa9c1d31cdca4b1f8337eecd
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003860"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988374"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-python"></a>教學課程：在 Python 中搭配使用 Azure Key Vault 與 Windows 虛擬機器
 
@@ -36,7 +36,7 @@ Azure Key Vault 可協助您保護秘密，例如，API 金鑰、存取應用程
 
 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若為 Windows、Mac 和 Linux：
   * [Git](https://git-scm.com/downloads)
@@ -136,7 +136,7 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssigned
 
 ## <a name="create-and-run-a-sample-python-app"></a>建立和執行 Python 應用程式範例
 
-下一個區段是名為 Sample.py  的範例檔案。 此檔案會使用[要求](http://docs.python-requests.org/en/master/)程式庫來發出 HTTP GET 呼叫。
+下一個區段是名為 Sample.py  的範例檔案。 此檔案會使用[要求](https://2.python-requests.org/en/master/)程式庫來發出 HTTP GET 呼叫。
 
 ## <a name="edit-samplepy"></a>編輯 Sample.py
 

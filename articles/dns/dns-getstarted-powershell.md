@@ -3,17 +3,17 @@ title: 快速入門：建立 Azure DNS 區域和記錄 - Azure PowerShell
 titleSuffix: Azure DNS
 description: 了解如何在 Azure DNS 中建立 DNS 區域和記錄。 這份逐步快速入門將引導您使用 Azure PowerShell 來建立和管理第一個 DNS 區域和第一筆記錄。
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
 ms.date: 3/11/2019
-ms.author: allensu
-ms.openlocfilehash: 0d3852824702bbc88925981c3c665b1b3fda7404
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.author: rohink
+ms.openlocfilehash: e33f6fdba1a15032d76b94804d610e292f663d59
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072177"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937166"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立 Azure DNS 區域和記錄
 
@@ -27,7 +27,7 @@ Azure DNS 也支援建立私人網域。 如需有關如何建立第一個私人
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="create-the-resource-group"></a>建立資源群組
 
@@ -81,7 +81,7 @@ Get-AzDnsRecordSet -ZoneName contoso.xyz -ResourceGroupName MyResourceGroup
    nslookup www.contoso.xyz <name server name>
    ```
 
-   例如︰
+   例如：
 
    ```
    nslookup www.contoso.xyz ns1-08.azure-dns.com.

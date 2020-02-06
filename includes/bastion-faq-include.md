@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 12/17/2019
+ms.date: 02/03/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c085ce4aba6760b09dcc3eaf2f6232c5cc904706
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 922e8a71a22db975685cb82bbd51a125c619ccf2
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75469735"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989482"
 ---
 ### <a name="regions"></a>哪些區域可用？
 
@@ -21,7 +21,7 @@ ms.locfileid: "75469735"
 
 ### <a name="publicip"></a>我的虛擬機器需要使用公用 IP 嗎？
 
-您不需要在與 Azure Bastion 服務連線的 Azure 虛擬機器上使用 公用 IP。 Bastion 服務將會透過虛擬網路中的虛擬機器私人 IP，開啟 RDP/SSH 工作階段/連線至您的虛擬機器。
+使用 Azure Bastion 連線至 VM 時，在要連線的 Azure 虛擬機器不需要公用 IP。 Bastion 服務將會透過虛擬網路中的虛擬機器私人 IP，開啟 RDP/SSH 工作階段/連線至您的虛擬機器。
 
 ### <a name="is-ipv6-supported"></a>是否支援 IPV6？
 

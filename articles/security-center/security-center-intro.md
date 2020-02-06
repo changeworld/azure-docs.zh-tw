@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: 378ad4fde94e8bccfbdad9765545675822d202ff
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: 759cc3f22d8b57036bad48326ffec1d6fca42696
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558624"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939443"
 ---
 # <a name="what-is-azure-security-center"></a>什麼是 Azure 資訊安全中心？
 
@@ -42,6 +42,8 @@ Azure 資訊安全中心可解決三項最急迫的安全性挑戰：
 -   **抵禦威脅**：資訊安全中心會評估您的工作負載，並提出威脅預防建議和威脅偵測警示。
 
 -   **更快保障安全**：在資訊安全中心的一切都是以雲端速度完成。 因為原生整合，使得部署資訊安全中心相當容易，能夠使用 Azure 服務為您自動佈建和提供保護。
+
+[!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="architecture"></a>架構
 

@@ -4,16 +4,16 @@ description: 本文將說明 Azure EA 入口網站中可能發生的一些 Azure
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/02/2020
+ms.date: 02/04/2020
 ms.topic: troubleshooting
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 41af65c2bfa35da30a0172ae7a39b3bad56597b8
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 1a8900085bfb447b50c7b777fabc264201a37591
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75992123"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025719"
 ---
 # <a name="troubleshoot-azure-ea-portal-access"></a>針對 Azure EA 入口網站存取進行疑難排解
 

@@ -2,17 +2,17 @@
 title: 快速入門 - Azure PowerShell 建立 Azure 私人 DNS 區域
 description: 在本文中，您可以建立並測試私人 DNS 區域，並記錄在 Azure DNS 中。 這份逐步指南將引導您使用 Azure PowerShell，來建立和管理第一個私人 DNS 區域和第一筆記錄。
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
 ms.date: 10/05/2019
-ms.author: allensu
-ms.openlocfilehash: 5532eb9897de2f746b194fb6bd496548e989b994
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 0db53bcd6516bd52e2796deaa49fe0dd582e0588
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210827"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939381"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立 Azure 私人 DNS 區域
 
@@ -22,7 +22,7 @@ ms.locfileid: "74210827"
 
 DNS 區域用來裝載特定網域的 DNS 記錄。 若要開始將網域裝載到 Azure DNS 中，您必須建立該網域名稱的 DNS 區域。 接著在此 DNS 區域內，建立網域的每筆 DNS 記錄。 若要將私人 DNS 區域發佈至虛擬網路，指定可以在區域內解析記錄的虛擬網路清單。  這稱為「連結」  虛擬網路。 啟用自動註冊時，Azure DNS 也會在每次建立虛擬機器時更新區域記錄，變更其 IP 位址，或者在刪除虛擬機器時更新。
 
-在本文中，您將了解：
+在本文中，您將學會如何：
 
 > [!div class="checklist"]
 > * 建立私人 DNS 區域

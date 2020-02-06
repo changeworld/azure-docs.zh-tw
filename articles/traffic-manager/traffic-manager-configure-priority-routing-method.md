@@ -3,7 +3,7 @@ title: 教學課程 - 使用 Azure 流量管理員設定優先順序流量路由
 description: 本教學課程將說明如何在流量管理員中設定優先順序流量路由方法
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
-ms.author: allensu
-ms.openlocfilehash: d5d58ec39841274b78ababf9f73f00a262cc37be
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.author: rohink
+ms.openlocfilehash: ca223a19ff7ddeae95878f941f3cf295664e62b4
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420296"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938718"
 ---
 # <a name="tutorial-configure-priority-traffic-routing-method-in-traffic-manager"></a>教學課程：在流量管理員中設定優先順序流量路由方法
 
@@ -44,7 +44,7 @@ ms.locfileid: "74420296"
 10. 測試組態中的變更，如下所示：
     1.  在入口網站的搜尋列中，搜尋流量管理員設定檔名稱，並按一下於結果中顯示的流量管理員設定檔。
     2.  在 [流量管理員設定檔]  刀鋒視窗中，按一下 [概觀]  。
-    3.  [流量管理員設定檔]  刀鋒視窗會顯示新建立流量管理員設定檔的 DNS 名稱。 這可由任何用戶端使用 (例如使用網頁瀏覽器進行瀏覽)，以路由傳送到由路由類型所決定的正確端點。 在此情況下，所有的要求都將路由傳送到第一個端點，且如果流量管理員偵測到端點狀況不良，流量會自動容錯移轉到下一個端點。
+    3.  [流量管理員設定檔]  刀鋒視窗會顯示新建立之流量管理員設定檔的 DNS 名稱。 這可由任何用戶端使用 (例如使用網頁瀏覽器進行瀏覽)，以路由傳送至由路由類型所決定的正確端點。 在此情況下，所有的要求都將路由傳送到第一個端點，且如果流量管理員偵測到端點狀況不良，流量會自動容錯移轉到下一個端點。
 11. 在流量管理員設定檔運作後，您可以編輯授權 DNS 伺服器上的 DNS 記錄，以將您的公司網域名稱指向流量管理員網域名稱。
 
 ![使用流量管理員設定優先順序流量路由方法][1]

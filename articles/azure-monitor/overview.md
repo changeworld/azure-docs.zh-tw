@@ -7,12 +7,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: 58dd53d9380448f177da48659b4f48c261bcfc14
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: f5d98ecdac3acacda2b592f88e7db45dc181e8da
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75745429"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934468"
 ---
 # <a name="azure-monitor-overview"></a>Azure 監視器概觀
 
@@ -26,14 +26,16 @@ Azure 監視器可藉由提供全方位的解決方案，以便收集、分析�
 - 使用[智慧警示](platform/alerts-smartgroups-overview.md)與[自動化動作](platform/alerts-action-rules.md)來支援大規模作業。
 - 使用 Azure [儀表板](learn/tutorial-logs-dashboards.md)與 [Workbooks](app/usage-workbooks.md) 建立視覺效果。
 
-## <a name="overview"></a>概觀
-下圖提供 Azure 監視器的高階檢視。 圖表的中間是計量和記錄的資料存放區，而這兩者是 Azure 監視器所用資料的兩個基本類型。 左邊的[監視資料來源](platform/data-sources.md)會填入這些[資料存放區](platform/data-platform.md)。 右邊是 Azure 監視器對此收集資料執行的不同功能，例如分析、警示及串流處理至外部系統。
+[!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
+## <a name="overview"></a>概觀
+
+下圖提供 Azure 監視器的高階檢視。 圖表的中間是計量和記錄的資料存放區，而這兩者是 Azure 監視器所用資料的兩個基本類型。 左邊的[監視資料來源](platform/data-sources.md)會填入這些[資料存放區](platform/data-platform.md)。 右邊是 Azure 監視器對此收集資料執行的不同功能，例如分析、警示及串流處理至外部系統。
 
 ![Azure 監視器概觀](media/overview/overview.png)
 
-
 ## <a name="monitoring-data-platform"></a>監視資料平台
+
 Azure 監視器所收集的所有資料均符合下列兩個基本類型之一：[計量和記錄](platform/data-platform.md)。 [計量](platform/data-platform-metrics.md)為數值，可描述系統在特定時間點的某個方面。 它們屬於輕量型，而且能夠支援近乎即時的案例。 [記錄](platform/data-platform-logs.md)包含不同類型的資料，而資料會針對每個類型組織成不同的屬性集。 除了效能資料，還會將事件和追蹤之類的遙測資料儲存為記錄，讓它能夠全部組合在一起進行分析。
 
 對於許多 Azure 資源，您會在 Azure 入口網站的 [概觀] 頁面當中看到 Azure 監視器所收集的資料。 比方說，查看一下任何虛擬機器，您會看到數個顯示效能計量的圖表。 按一下任何圖表，以在 Azure 入口網站的[計量瀏覽器](platform/metrics-charts.md)中開啟資料，可讓您將一段時間的多個計量值繪製成圖表。  您可以互動方式檢視圖表，或將其釘選到儀表板，利用其他視覺效果進行檢視。
@@ -47,6 +49,7 @@ Azure 監視器使用 Azure 資料總管使用的 [Kusto 查詢語言](/azure/ku
 ![記錄](media/overview/logs.png)
 
 ## <a name="what-data-does-azure-monitor-collect"></a>Azure 監視器會收集哪些資料？
+
 Azure 監視器可以從各種來源收集資料。 您可以考慮為各層中的應用程式監視資料，範圍從您的應用程式、它所倚賴的任何作業系統和服務，以至平台本身。 Azure 監視器會從下列各層收集資料：
 
 - **應用程式監視資料**：您所撰寫程式碼的效能和功能相關資料 (不論其平台為何)。
@@ -62,9 +65,8 @@ Azure 監視器可以從各種來源收集資料。 您可以考慮為各層中�
 為您的 [App Service 應用程式](app/azure-web-apps.md)或 [VM 與虛擬機器擴展集應用程式](app/azure-vm-vmss-apps.md)啟用監視功能，讓 Application Insights 收集應用程式的詳細資訊，包括頁面檢視、應用程式要求和例外狀況。 設定[可用性測試](app/monitor-web-app-availability.md)來模擬使用者流量，進一步確認您應用程式的可用性。
 
 ### <a name="custom-sources"></a>自訂來源
+
 Azure 監視器可以使用[資料收集器 API](platform/data-collector-api.md)，從任何 REST 用戶端收集記錄資料。 這可讓您建立自訂監視案例，並且將監視延伸到不會透過其他來源公開遙測的資源。
-
-
 
 ## <a name="insights"></a>深入解析
 如果監視資料可以提高您對於運算環境作業的可見性，監視資料才有用處。 Azure 監視器包含數個功能和工具，可對您的應用程式及其相依的其他資源提供寶貴的深入解析。 [監視解決方案](insights/solutions.md)和功能 (例如 [Application Insights](app/app-insights-overview.md) 和[適用於容器的 Azure 監視器](insights/container-insights-overview.md)) 可針對您應用程式和特定 Azure 服務的不同層面提供深入解析。 

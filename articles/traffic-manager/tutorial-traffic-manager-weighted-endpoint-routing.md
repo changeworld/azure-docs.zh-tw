@@ -2,18 +2,18 @@
 title: 教學課程：將流量路由傳送至加權端點 - Azure 流量管理員
 description: 本教學課程文章說明如何使用流量管理員將流量路由至加權端點。
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 Customer intent: As an IT Admin, I want to distribute traffic based on the weight assigned to a website endpoint so that I can control the user traffic to a given website.
 ms.service: traffic-manager
 ms.topic: tutorial
 ms.date: 10/15/2018
-ms.author: allensu
-ms.openlocfilehash: 45ece08599722e04c4e6799fa5c3589cba1fca42
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.author: rohink
+ms.openlocfilehash: a4738b2e36786cd627f53af3e36bd8f1e3fbc375
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037923"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939471"
 ---
 # <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>教學課程：使用流量管理員控制加權端點的流量路由
 
@@ -31,7 +31,7 @@ ms.locfileid: "74037923"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要檢視運作中的流量管理員，請為本教學課程部署下列項目：
 
@@ -51,7 +51,7 @@ ms.locfileid: "74037923"
 
 #### <a name="create-vms-for-running-websites"></a>建立 VM 以供執行網站
 
-在本節中，您會在美國東部和西歐的 Azure 區域中建立兩個 VM (myIISVMEastUS  和 myIISVMWestEurope  )。
+在本節中，您會在美國東部和歐洲西部的 Azure 區域中建立兩個 VM (myIISVMEastUS  和 myIISVMWestEurope  )。
 
 1. 在 Azure 入口網站的左上角，選取 [建立資源]   > [計算]   > [Windows Server 2019 Datacenter]  。
 2. 在 [建立虛擬機器]  中，輸入或選取 [基本資訊]  索引標籤中的下列值：
