@@ -251,7 +251,7 @@ def main(req: func.HttpRequest, msg: func.Out[func.QueueMessage]) -> str:
     
 1. 如先前的快速入門所示，使用瀏覽器或 CURL 來測試已重新部署的函式。
 
-    # <a name="browsertabbrowser"></a>[[瀏覽器]](#tab/browser)
+    # <a name="browsertabbrowser"></a>[瀏覽器](#tab/browser)
     
     將發佈命令的輸出中顯示的完整**叫用 URL** 複製到瀏覽器網址列中 (請附加查詢參數 `&name=Azure`)。 瀏覽器應該會顯示與您在本機執行函式時類似的輸出。
 
