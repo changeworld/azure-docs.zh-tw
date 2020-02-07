@@ -4,6 +4,12 @@
   items:
     - name: 關於虛擬 WAN
       href: virtual-wan-about.md
+    - name: 架構
+      items:
+        - name: 遷移至虛擬 WAN
+          href: migrate-from-hub-spoke-topology.md
+        - name: 全域傳輸網路架構
+          href: virtual-wan-global-transit-network-architecture.md
 - name: 教學課程
   items:
     - name: 建立站對站連線
@@ -18,12 +24,6 @@
       href: virtual-wan-locations-partners.md
     - name: IPsec 原則
       href: virtual-wan-ipsec.md
-    - name: 架構
-      items:
-        - name: 遷移至虛擬 WAN
-          href: migrate-from-hub-spoke-topology.md
-        - name: 全域傳輸網路架構
-          href: virtual-wan-global-transit-network-architecture.md
 - name: 操作指南
   items:
     - name: 將虛擬網路閘道連線到虛擬 WAN
