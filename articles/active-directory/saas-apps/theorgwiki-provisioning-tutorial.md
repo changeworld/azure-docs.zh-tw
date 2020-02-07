@@ -15,21 +15,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: f691b3e80bdde546074b9f243add82ace00c6301
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 2b0b11ae89e1f0d150b84f49b04a8badcb44e82c
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69576377"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063133"
 ---
 # <a name="tutorial-configure-theorgwiki-for-automatic-user-provisioning"></a>教學課程：設定 TheOrgWiki 來自動布建使用者
 
-本教學課程的目的是要示範要在 TheOrgWiki 和 Azure Active Directory (Azure AD) 中執行的步驟, 以設定 Azure AD 自動布建和取消布建使用者和/或群組至 TheOrgWiki。
+本教學課程的目的是要示範要在 TheOrgWiki 和 Azure Active Directory （Azure AD）中執行的步驟，以設定 Azure AD 自動布建和取消布建使用者和/或群組至 TheOrgWiki。
 
 > [!NOTE]
-> 本教學課程會說明建置在 Azure AD 使用者佈建服務之上的連接器。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../manage-apps/user-provisioning.md)。
+> 本教學課程會說明建置在 Azure AD 使用者佈建服務之上的連接器。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../app-provisioning/user-provisioning.md)。
 >
-> 此連接器目前為公開預覽版。 如需預覽功能之一般 Microsoft Azure 使用規定的詳細資訊, 請參閱[Microsoft Azure 預覽的補充使用](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)規定。
+> 此連接器目前為公開預覽版。 如需有關預覽功能的一般 Microsoft Azure 使用規定詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用規定](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -41,27 +41,27 @@ ms.locfileid: "69576377"
 
 ## <a name="assign-users-to-theorgwiki"></a>將使用者指派給 TheOrgWiki
 
-Azure Active Directory 使用稱為「指派」的概念, 來判斷哪些使用者應接收所選應用程式的存取權。 在自動使用者布建的內容中, 只有已指派給 Azure AD 中應用程式的使用者和/或群組會進行同步處理。
+Azure Active Directory 使用稱為「指派」的概念，來判斷哪些使用者應接收所選應用程式的存取權。 在自動使用者布建的內容中，只有已指派給 Azure AD 中應用程式的使用者和/或群組會進行同步處理。
 
-在設定並啟用自動使用者布建之前, 您應該決定 Azure AD 中的哪些使用者和/或群組需要存取 TheOrgWiki。 一旦決定後, 您可以遵循此處的指示, 將這些使用者和/或群組指派給 TheOrgWiki:
+在設定並啟用自動使用者布建之前，您應該決定 Azure AD 中的哪些使用者和/或群組需要存取 TheOrgWiki。 一旦決定後，您可以遵循此處的指示，將這些使用者和/或群組指派給 TheOrgWiki：
 
 * [將使用者或群組指派給企業應用程式](../manage-apps/assign-user-or-group-access-portal.md)
 
 ## <a name="important-tips-for-assigning-users-to-theorgwiki"></a>將使用者指派給 TheOrgWiki 的重要秘訣
 
-* 建議將單一 Azure AD 使用者指派給 TheOrgWiki, 以測試自動使用者布建設定。 其他使用者及/或群組可能會稍後再指派。
+* 建議將單一 Azure AD 使用者指派給 TheOrgWiki，以測試自動使用者布建設定。 其他使用者及/或群組可能會稍後再指派。
 
-* 將使用者指派給 TheOrgWiki 時, 您必須在 [指派] 對話方塊中選取任何有效的應用程式特定角色 (如果有的話)。 具有**預設存取**角色的使用者會從佈建中排除。
+* 將使用者指派給 TheOrgWiki 時，您必須在 [指派] 對話方塊中選取任何有效的應用程式特定角色（如果有的話）。 具有**預設存取**角色的使用者會從佈建中排除。
 
 ## <a name="set-up-theorgwiki-for-provisioning"></a>設定 TheOrgWiki 以提供布建
 
-將 TheOrgWiki 設定為使用 Azure AD 自動布建使用者之前, 您必須啟用 TheOrgWiki 上的 SCIM 布建。
+將 TheOrgWiki 設定為使用 Azure AD 自動布建使用者之前，您必須啟用 TheOrgWiki 上的 SCIM 布建。
 
 1. 登入您的[TheOrgWiki 管理主控台](https://www.theorgwiki.com/login/)。 按一下 [**管理主控台**]。
 
     ![TheOrgWiki 新增 SCIM](media/theorgwiki-provisioning-tutorial/login.png)
 
-2. 在管理主控台中, 按一下 [**設定]** 索引標籤。 
+2. 在管理主控台中，按一下 [**設定]** 索引標籤。 
 
     ![TheOrgWiki 新增 SCIM](media/theorgwiki-provisioning-tutorial/settings.png)
     
@@ -69,7 +69,7 @@ Azure Active Directory 使用稱為「指派」的概念, 來判斷哪些使用�
 
     ![TheOrgWiki 新增 SCIM](media/theorgwiki-provisioning-tutorial/serviceaccount.png)
 
-4. 按一下 [ **+ 服務帳戶**]。 在 [**服務帳戶類型**] 底下, 選取 [**權杖**型]。 按一下 [儲存]。
+4. 按一下 [ **+ 服務帳戶**]。 在 [**服務帳戶類型**] 底下，選取 [**權杖**型]。 Haga clic en **Guardar**.
 
     ![TheOrgWiki 新增 SCIM](media/theorgwiki-provisioning-tutorial/auth.png)
 
@@ -79,9 +79,9 @@ Azure Active Directory 使用稱為「指派」的概念, 來判斷哪些使用�
 
 ## <a name="add-theorgwiki-from-the-gallery"></a>從資源庫新增 TheOrgWiki
 
-若要使用 Azure AD 設定 TheOrgWiki 來自動布建使用者, 您需要從 Azure AD 應用程式資源庫將 TheOrgWiki 新增至受控 SaaS 應用程式清單。
+若要使用 Azure AD 設定 TheOrgWiki 來自動布建使用者，您需要從 Azure AD 應用程式資源庫將 TheOrgWiki 新增至受控 SaaS 應用程式清單。
 
-1. 在 **[Azure 入口網站](https://portal.azure.com)** 的左側導覽窗格中, 選取 [ **Azure Active Directory**]。
+1. 在 **[Azure 入口網站](https://portal.azure.com)** 的左側導覽窗格中，選取 [ **Azure Active Directory**]。
 
     ![Azure Active Directory 按鈕](common/select-azuread.png)
 
@@ -89,42 +89,42 @@ Azure Active Directory 使用稱為「指派」的概念, 來判斷哪些使用�
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-3. 若要新增新的應用程式, 請選取窗格頂端的 [**新增應用程式**] 按鈕。
+3. 若要新增新的應用程式，請選取窗格頂端的 [**新增應用程式**] 按鈕。
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中, 輸入**TheOrgWiki**, 並在 [結果] 面板中選取 [ **TheOrgWiki** ]。 
+4. 在搜尋方塊中，輸入**TheOrgWiki**，並在 [結果] 面板中選取 [ **TheOrgWiki** ]。 
 
     ![結果清單中的 TheOrgWiki](common/search-new-app.png)
 
-5. 選取 [**註冊 TheOrgWiki** ] 按鈕, 以將您重新導向至 TheOrgWiki 的登入頁面。 
+5. 選取 [**註冊 TheOrgWiki** ] 按鈕，以將您重新導向至 TheOrgWiki 的登入頁面。 
 
     ![TheOrgWiki 新增 SCIM](media/theorgwiki-provisioning-tutorial/image00.png)
 
-6.  在右上角, 選取 **[登**入]。
+6.  在右上角，選取 **[登**入]。
 
     ![TheOrgWiki 新增 SCIM](media/theorgwiki-provisioning-tutorial/image02.png)
 
-7. 當 TheOrgWiki 是 OpenIDConnect 應用程式時, 請選擇使用您的 Microsoft 工作帳戶登入 OrgWiki。
+7. 當 TheOrgWiki 是 OpenIDConnect 應用程式時，請選擇使用您的 Microsoft 工作帳戶登入 OrgWiki。
 
     ![TheOrgWiki 新增 SCIM](media/theorgwiki-provisioning-tutorial/image03.png)
     
-8. 成功驗證之後, 應用程式會自動新增至您的租使用者, 並將您重新導向至您的 TheOrgWiki 帳戶。
+8. 成功驗證之後，應用程式會自動新增至您的租使用者，並將您重新導向至您的 TheOrgWiki 帳戶。
 
     ![OrgWiki 新增 SCIM](media/theorgwiki-provisioning-tutorial/image04.png)
 
 ## <a name="configure-automatic-user-provisioning-to-theorgwiki"></a>設定自動使用者布建至 TheOrgWiki 
 
-本節將引導您逐步設定 Azure AD 布建服務, 以根據 Azure AD 中的使用者和/或群組指派, 在 TheOrgWiki 中建立、更新和停用使用者和/或群組。
+本節將引導您逐步設定 Azure AD 布建服務，以根據 Azure AD 中的使用者和/或群組指派，在 TheOrgWiki 中建立、更新和停用使用者和/或群組。
 
 
-### <a name="to-configure-automatic-user-provisioning-for-theorgwiki-in-azure-ad"></a>若要在 Azure AD 中設定 TheOrgWiki 的自動使用者布建:
+### <a name="to-configure-automatic-user-provisioning-for-theorgwiki-in-azure-ad"></a>若要在 Azure AD 中設定 TheOrgWiki 的自動使用者布建：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。 選取 [**企業應用程式**], 然後選取 [**所有應用程式**]。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。 選取 [**企業應用程式**]，然後選取 [**所有應用程式**]。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-2. 在應用程式清單中, 選取 [ **TheOrgWiki**]。
+2. 在應用程式清單中，選取 [ **TheOrgWiki**]。
 
     ![應用程式清單中的 OrgWiki 連結](common/all-applications.png)
 
@@ -136,54 +136,54 @@ Azure Active Directory 使用稱為「指派」的概念, 來判斷哪些使用�
 
     ![布建索引標籤](common/provisioning-automatic.png)
 
-5. 在 [**管理員認證**] 區段下`https://<TheOrgWiki Subdomain        value>.theorgwiki.com/api/v2/scim/v2/` , 輸入 [**租使用者 URL**]。 
+5. 在 [**管理員認證**] 區段下，于 [**租使用者 URL**] 中輸入 `https://<TheOrgWiki Subdomain        value>.theorgwiki.com/api/v2/scim/v2/`。 
 
     範例： `https://test1.theorgwiki.com/api/v2/scim/v2/`
 
 > [!NOTE]
 > **子域值**只能在 TheOrgWiki 的初始註冊程式期間設定。
  
-6. 在 [**秘密權杖**] 欄位中輸入您先前從 TheOrgWiki 取出的權杖值。 按一下 [**測試連接**] 以確保 Azure AD 可以連接到 TheOrgWiki。 如果連線失敗, 請確定您的 TheOrgWiki 帳戶具有系統管理員許可權, 然後再試一次。
+6. 在 [**秘密權杖**] 欄位中輸入您先前從 TheOrgWiki 取出的權杖值。 按一下 [**測試連接**] 以確保 Azure AD 可以連接到 TheOrgWiki。 如果連線失敗，請確定您的 TheOrgWiki 帳戶具有系統管理員許可權，然後再試一次。
 
-    ![租使用者 URL + 權杖](common/provisioning-testconnection-tenanturltoken.png)
+    ![租用戶 URL + 權杖](common/provisioning-testconnection-tenanturltoken.png)
 
 7. 在 [通知電子郵件] 欄位中，輸入應該收到佈建錯誤通知的個人或群組電子郵件地址，然後選取 [發生失敗時傳送電子郵件通知] 核取方塊。
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-8. 按一下 [儲存]。
+8. Haga clic en **Guardar**.
 
-9. 在 [對應] 區段下, 選取 [**同步處理 Azure Active Directory 使用者至 TheOrgWiki**]。
+9. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 TheOrgWiki**]。
 
     ![TheOrgWiki 使用者對應](media/theorgwiki-provisioning-tutorial/usermapping.png)
 
-10. 在 [**屬性對應**] 區段中, 檢查從 Azure AD 同步處理到 TheOrgWiki 的使用者屬性。 選取為 [比對] 屬性的屬性會用來比對 TheOrgWiki 中的使用者帳戶, 以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
+10. 在 [**屬性對應**] 區段中，檢查從 Azure AD 同步處理到 TheOrgWiki 的使用者屬性。 選取為 [比對] 屬性**的屬性會**用來比對 TheOrgWiki 中的使用者帳戶，以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
-    ![TheOrgWiki 使用者屬性](media/theorgwiki-provisioning-tutorial/userattribute.png).
+    ![TheOrgWiki 使用者屬性](media/theorgwiki-provisioning-tutorial/userattribute.png)。
 
-11. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
+11. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 
-12. 若要啟用 TheOrgWiki 的 Azure AD 布建服務, 請在 [**設定**] 區段中將 [布建**狀態**] 變更為 [**開啟**]。
+12. 若要啟用 TheOrgWiki 的 Azure AD 布建服務，請在 [**設定**] 區段中將 [布建**狀態**] 變更為 [**開啟**]。
 
-    ![布建狀態已切換為開啟](common/provisioning-toggle-on.png)
+    ![佈建狀態已切換為開啟](common/provisioning-toggle-on.png)
 
-13. 在 [**設定**] 區段的 [**範圍**] 中選擇所需的值, 以定義您想要布建到 OrgWiki 的使用者和/或群組。
+13. 在 [**設定**] 區段的 [**範圍**] 中選擇所需的值，以定義您想要布建到 OrgWiki 的使用者和/或群組。
 
-    ![布建範圍](common/provisioning-scope.png)
+    ![佈建範圍](common/provisioning-scope.png)
 
 14. 當您準備好要佈建時，按一下 [儲存]。
 
-    ![正在儲存布建設定](common/provisioning-configuration-save.png)
+    ![儲存雲端佈建設定](common/provisioning-configuration-save.png)
 
-此作業會對在 [設定] 區段的 [範圍] 中定義的所有使用者和/或群組，啟動首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行。 如需布建使用者和/或群組所需時間長度的詳細資訊, 請參閱布建[使用者需要多久時間](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)。
+此作業會對在 [設定] 區段的 [範圍] 中定義的所有使用者和/或群組，啟動首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行。 如需布建使用者和/或群組所需時間長度的詳細資訊，請參閱布建[使用者需要多久時間](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)。
 
-您可以使用 [**目前狀態**] 區段來監視進度, 並遵循 [布建活動報告] 的連結, 其中描述 TheOrgWiki 上的 Azure AD 布建服務所執行的所有動作。 如需詳細資訊, 請參閱[檢查使用者](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md)布建的狀態。 若要讀取 Azure AD 布建記錄, 請參閱[關於自動使用者帳戶](../manage-apps/check-status-user-account-provisioning.md)布建的報告。
+您可以使用 [**目前狀態**] 區段來監視進度，並遵循 [布建活動報告] 的連結，其中描述 TheOrgWiki 上的 Azure AD 布建服務所執行的所有動作。 如需詳細資訊，請參閱[檢查使用者](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)布建的狀態。 若要讀取 Azure AD 布建記錄，請參閱[關於自動使用者帳戶](../app-provisioning/check-status-user-account-provisioning.md)布建的報告。
 
 ## <a name="additional-resources"></a>其他資源
 
-* [管理企業應用程式的使用者帳戶](../manage-apps/configure-automatic-user-provisioning-portal.md)布建。
+* [管理企業應用程式的使用者帳戶](../app-provisioning/configure-automatic-user-provisioning-portal.md)布建。
 * [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>後續步驟
 
-* [了解如何針對佈建活動檢閱記錄和取得報告](../manage-apps/check-status-user-account-provisioning.md)。
+* [了解如何針對佈建活動檢閱記錄和取得報告](../app-provisioning/check-status-user-account-provisioning.md)。

@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b49b10acb7f2deaed217bb28478d2c98a033eab9
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 83133fed401dac51a8dd6a653ccfd86117e956ed
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768670"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046476"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>為 Office 365 群組設定到期原則
 
@@ -28,12 +28,12 @@ ms.locfileid: "75768670"
 
 一旦您為群組設定到期日：
 
-- 具有使用者活動的群組會在到期時自動更新
-- 如果群組未自動更新，群組的擁有者會收到更新群組的通知
-- 未更新的群組會遭到刪除
-- 群組擁有者或系統管理員可在 30 天內還原已刪除的任何 Office 365 群組
+- 具有使用者活動的群組會在到期時自動更新。
+- 群組的擁有者會收到更新群組的通知（如果群組不是自動更新）。
+- 任何未更新的群組都會遭到刪除。
+- 群組擁有者或系統管理員可以在30天內還原已刪除的任何 Office 365 群組。
 
-目前只能針對 Azure AD 組織中的所有 Office 365 群組設定一個到期原則。
+目前，Azure AD 組織中的所有 Office 365 群組都只能設定一個到期原則。
 
 > [!NOTE]
 > 針對 Office 365 群組設定及使用到期原則時，您需要擁有但不一定要為套用到期原則之所有群組的成員指派 Azure AD Premium 授權。
@@ -42,7 +42,7 @@ ms.locfileid: "75768670"
 
 ## <a name="activity-based-automatic-renewal"></a>以活動為基礎的自動續約
 
-使用 Azure AD 情報，群組現在會根據是否已在最近使用過，而自動更新。 這項功能不需要由群組擁有者進行手動動作，因為它是根據 Office 365 服務（如 Outlook、SharePoint、小組或 Yammer）中群組的使用者活動而定。 例如，如果擁有者或群組成員執行的作業類似在 SharePoint 中上傳檔、流覽小組頻道，或傳送電子郵件至 Outlook 中的群組，則會自動更新該群組，而且擁有者不會收到任何更新通知。
+使用 Azure AD 情報，群組現在會根據最近是否已使用來自動更新。 這項功能不需要由群組擁有者進行手動動作，因為它是以 Office 365 服務（如 Outlook、SharePoint、小組或 Yammer）的群組使用者活動為基礎。 例如，如果擁有者或群組成員執行的作業類似在 SharePoint 中上傳檔、流覽小組頻道，或傳送電子郵件至 Outlook 中的群組，則會自動更新該群組，而且擁有者不會收到任何更新通知。
 
 ### <a name="activities-that-automatically-renew-group-expiration"></a>自動更新群組到期的活動
 
@@ -56,11 +56,13 @@ ms.locfileid: "75768670"
 
 系統管理員可以從 Azure AD 的活動稽核記錄中，取得自動更新的群組清單。
 
+![根據活動自動更新群組](./media/groups-lifecycle/audit-logs-autorenew-group.png)
+
 ## <a name="roles-and-permissions"></a>角色和權限
 
 以下是可以針對 Azure AD 中的 Office 365 群組設定及使用到期日的角色。
 
-角色 | 使用權限
+角色 | 權限
 -------- | --------
 全域管理員、群組系統管理員或使用者系統管理員 | 可以建立、讀取、更新或刪除 Office 365 群組到期日原則設定<br>可以更新任何 Office 365 群組
 User | 可以更新它們所擁有的 Office 365 群組<br>可以還原它們所擁有的 Office 365 群組<br>可以讀取到期原則設定
@@ -87,7 +89,7 @@ User | 可以更新它們所擁有的 Office 365 群組<br>可以還原它們所
 
 > [!NOTE]
 > - 當您第一次設定到期日時，任何早于到期間隔的群組都會設定為35天，直到到期為止，除非群組自動更新或擁有者續訂為止。
-> - 刪除並還原動態群組時，會將它視為新的群組，並根據規則重新填入。 此程序最多可能需要 24 小時。
+> - 刪除並還原動態群組時，會將它視為新的群組，並根據規則重新填入。 此程式最多可能需要24小時的時間。
 > - 小組中所使用群組的到期通知會出現在小組擁有者摘要中。
 
 ## <a name="email-notifications"></a>電子郵件通知

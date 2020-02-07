@@ -10,14 +10,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/11/2019
+ms.date: 02/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: ff86c25de006495e3536f2ff907e1cf40a216f8e
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 89e3bf95a6b048e5e97cfb151ef9302b70eac1c9
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927852"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048558"
 ---
 # <a name="azure-dedicated-hsm-deployment-architecture"></a>Azure 專用 HSM 部署架構
 
@@ -32,17 +32,20 @@ Azure 專用硬體安全模組 (HSM) 可在 Azure 中提供密碼編譯金鑰儲
 * 美國東部
 * 美國東部 2
 * 美國西部
-* 美國西部 2
 * 美國中南部
 * 東南亞
 * 東亞
-* 歐洲北部
-* 歐洲西部
+* 印度中部
+* 印度南部
+* 日本東部
+* 日本西部
+* 北歐
+* 西歐
 * 英國南部
 * 英國西部
 * 加拿大中部
 * 加拿大東部
-* 澳大利亞東部
+* 澳洲東部
 * 澳大利亞東南部
 
 其中每個區域都會將硬體安全模組 (HSM) 機架部署在兩個獨立資料中心或至少兩個獨立可用性區域中。 東南亞有三個可用性區域，而美國東部 2 有兩個。 歐洲、亞洲和美國共有八個地區提供專用硬體安全模組 (HSM) 服務。 如需 Azure 區域的詳細資訊，請參閱官方 [Azure 區域資訊](https://azure.microsoft.com/global-infrastructure/regions/)。
@@ -64,7 +67,7 @@ Azure 專用硬體安全模組 (HSM) 可在 Azure 中提供密碼編譯金鑰儲
 
 一旦決定部署架構之後，即會由 Gemalto 提供大部分的設定活動以實作該架構。 這包括裝置設定以及應用程式整合案例。 如需詳細資訊，請使用 [Gemalto 客戶支援](https://supportportal.gemalto.com/csm/)入口網站，並下載管理和設定指南。 Microsoft 合作夥伴網站提供多種整合指南。
 建議您在佈建裝置或設計與部署應用程式之前，先充分了解服務的所有重要概念，例如高可用性和安全性。
-更多概念層級主題：
+更多概念層級的主題：
 
 * [高可用性](high-availability.md)
 * [實體安全性](physical-security.md)

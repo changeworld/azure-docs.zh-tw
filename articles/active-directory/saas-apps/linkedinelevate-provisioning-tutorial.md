@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea6f9923062d960f18203b081702e69a30dd3c9e
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: fa0a26eaeac431ed2c78c5bd938bbbe7dff14e0e
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276835"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057408"
 ---
 # <a name="tutorial-configure-linkedin-elevate-for-automatic-user-provisioning"></a>教學課程︰設定 LinkedIn Elevate 來自動佈建使用者
 
 本教學課程旨在說明您需要在 LinkedIn Elevate 和 Azure AD 中執行的步驟，以將使用者帳戶從 Azure AD 自動佈建和取消佈建至 LinkedIn Elevate。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中說明的案例假設您已經具有下列項目：
 
@@ -106,7 +106,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 12. 在 [通知電子郵件] 欄位中輸入應收到佈建錯誤通知的個人或群組之電子郵件地址，然後勾選下列核取方塊。
 
-13. 按一下 [檔案]。
+13. Haga clic en **Guardar**.
 
 14. 在 [屬性對應] 區段中，檢閱將從 Azure AD 同步至 LinkedIn Elevate 的使用者和群組屬性。 請注意，選取為 [比對] 屬性的屬性會用來比對 LinkedIn Elevate 中的使用者帳戶和群組以進行更新作業。 選取 [儲存] 按鈕以認可任何變更。
 
@@ -114,13 +114,13 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 15. 若要啟用 LinkedIn Elevate 的 Azure AD 佈建服務，在 [設定]區段中，將 [佈建狀態] 變更為 [開啟]
 
-16. 按一下 [檔案]。
+16. Haga clic en **Guardar**.
 
 這會啟動在 [使用者和群組] 區段中指派給 LinkedIn Elevate 的任何使用者和/或群組之初始同步處理。 請注意，初始同步處理會比後續同步處理花費更多時間執行，只要服務正在執行，這大約每 40 分鐘便會發生一次。 您可以使用 [同步處理詳細資料] 區段來監視進度，並依循連結前往佈建活動記錄，此記錄會描述您 LinkedIn Elevate 應用程式上佈建服務所執行的所有動作。
 
-如需如何讀取 Azure AD 佈建記錄的詳細資訊，請參閱[關於使用者帳戶自動佈建的報告](../manage-apps/check-status-user-account-provisioning.md)。
+如需如何讀取 Azure AD 佈建記錄的詳細資訊，請參閱[關於使用者帳戶自動佈建的報告](../app-provisioning/check-status-user-account-provisioning.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-* [管理企業應用程式的使用者帳戶佈建](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [管理企業應用程式的使用者帳戶佈建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)

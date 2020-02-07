@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 168f11e82305a0e08923289e71ae6ea0d36c1734
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0273a0a729d39de27b9e417c23624992d1d55b42
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458804"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064377"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>開始使用 Azure 串流分析：即時詐騙偵測
 
@@ -55,26 +55,33 @@ ms.locfileid: "75458804"
 ### <a name="create-a-namespace-and-event-hub"></a>建立命名空間和事件中樞
 在此程序中，您需要先建立事件中樞命名空間，再將事件中樞新增至該命名空間。 事件中樞命名空間可在邏輯上將相關的事件匯流排執行個體分組。 
 
-1. 登入 Azure 入口網站，按一下 [建立資源] > [物聯網] > [事件中樞]。 
+1. 登入 Azure 入口網站，然後按一下畫面左上方的 [**建立資源**]。
 
-2. 在 [建立命名空間] 窗格中，輸入命名空間名稱，例如 `<yourname>-eh-ns-demo`。 您可以使用任何名稱作為命名空間，但名稱在 URL 中必須有效，而且在整個 Azure 內必須唯一的。 
+2. 選取左側功能表中的 [所有服務] ，然後選取 [分析] **`*` 類別中 [事件中樞]** **旁邊的**星號 ( **)** 。 確認 [事件中樞] 已新增至左側導覽功能表中的 [我的最愛]。 
+
+   ![搜尋事件中樞](./media/stream-analytics-real-time-fraud-detection/select-event-hubs-menu.png)
+
+3. 選取左側導覽功能表中 [我的最愛] 下方的 [事件中樞]，然後選取工具列上的 [新增]。
+
+   ![[新增] 按鈕](./media/stream-analytics-real-time-fraud-detection/event-hubs-add-toolbar.png)
+
+4. 在 [建立命名空間] 窗格中，輸入命名空間名稱，例如 `<yourname>-eh-ns-demo`。 您可以使用任何名稱作為命名空間，但名稱在 URL 中必須有效，而且在整個 Azure 內必須唯一的。 
     
-3. 選取訂用帳戶並建立或選擇資源群組，然後按一下 [建立]。
+5. 選取訂用帳戶並建立或選擇資源群組，然後按一下 [建立]。
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-namespace-new-portal.png" alt="Create event hub namespace in Azure portal" width="300px"/>
 
-4. 當命名空間完成部署時，請在 Azure 資源清單中尋找事件中樞命名空間。 
+6. 當命名空間完成部署時，請在 Azure 資源清單中尋找事件中樞命名空間。 
 
-5. 按一下新的命名空間，然後在命名空間窗格中，按一下 [事件中樞]。
+7. 按一下新的命名空間，然後在命名空間窗格中，按一下 [事件中樞]。
 
    ![建立新事件中樞的 [新增事件中樞] 按鈕](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-button-new-portal.png)    
  
-6. 將新的事件中樞命名為 `asa-eh-frauddetection-demo`。 您可以使用不同的名稱。 如果這樣做，請記下來，因為稍後需要用到此名稱。 您目前不需要為事件中樞設定其他任何選項。
+8. 將新的事件中樞命名為 `asa-eh-frauddetection-demo`。 您可以使用不同的名稱。 如果這樣做，請記下來，因為稍後需要用到此名稱。 您目前不需要為事件中樞設定其他任何選項。
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png" alt="Name event hub in Azure portal" width="400px"/>
     
- 
-7. 按一下頁面底部的 [新增]。
+9. 按一下 [建立]。
 
 ### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>授權存取事件中樞並取得連接字串
 
@@ -91,7 +98,7 @@ ms.locfileid: "75458804"
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-shared-access-policy-manage-new-portal.png" alt="Create shared access policy for Stream Analytics" width="300px"/>
  
-4.  按一下頁面底部的 [新增]。
+4.  按一下 [建立]。
 
 5.  部署原則之後，在共用存取原則清單中按一下此原則。
 
@@ -171,7 +178,7 @@ ms.locfileid: "75458804"
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-job-new-portal.png" alt="Create Stream Analytics job in portal" width="300px"/>
 
-3. 按一下頁面底部的 [新增]。
+3. 按一下 [建立]。
 
     即可建立作業，入口網站會顯示作業詳細資料。 但還沒有開始運作，您必須先設定作業，作業才能啟動。
 
@@ -187,7 +194,7 @@ ms.locfileid: "75458804"
    |**設定**  |**建議的值**  |**說明**  |
    |---------|---------|---------|
    |輸入別名  |  CallStream   |  輸入名稱以識別作業的輸入。   |
-   |訂閱   |  \<您的訂用帳戶\> |  根據您建立的事件中樞，選取事件中樞所在的 Azure 訂用帳戶。   |
+   |訂用帳戶   |  \<您的訂用帳戶\> |  根據您建立的事件中樞，選取事件中樞所在的 Azure 訂用帳戶。   |
    |事件中樞命名空間  |  asa-eh-ns-demo |  輸入事件中樞命名空間的名稱。   |
    |事件中樞名稱  | asa-eh-frauddetection-demo | 選取事件中樞的名稱。   |
    |事件中樞原則名稱  | asa-policy-manage-demo | 選取您稍早建立的存取原則。   |
@@ -196,7 +203,7 @@ ms.locfileid: "75458804"
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-input-new-portal.png" alt="Create Stream Analytics input in portal" width="300px"/>
 
 
-4. 按一下頁面底部的 [新增]。
+4. 按一下 [建立]。
 
 ## <a name="create-queries-to-transform-real-time-data"></a>建立查詢來轉換即時資料
 
@@ -213,7 +220,7 @@ ms.locfileid: "75458804"
 TelcoGenerator 應用程式正在將通話記錄傳送到事件中樞，而串流分析作業已設定來讀取事件中樞。 您可以使用查詢來測試作業，確定能正確讀取。 若要在 Azure 主控台測試查詢，您需要範例資料。 在這個逐步解說中，您將從傳入事件中樞的資料流擷取範例資料。
 
 1. 請確定 TelcoGenerator 應用程式正在執行且產生通話記錄。
-2. 在入口網站中，返回串流分析作業窗格 (如果已關閉此窗格，請在 [所有資源] 窗格中搜尋 `asa_frauddetection_job_demo`)。
+2. 在入口網站中，返回串流分析作業窗格 (如果已關閉此窗格，請在 [所有資源]`asa_frauddetection_job_demo`**窗格中搜尋**)。
 3. 按一下 [查詢] 方塊。 Azure 會列出作業已設定的輸入和輸出，還可讓您建立查詢，在輸入資料流傳送至輸出時進行轉換。
 4. 在 [查詢] 窗格中，按一下 `CallStream` 輸入旁邊的點，然後選取 [來自輸入的範例資料]。
 
@@ -288,7 +295,7 @@ TelcoGenerator 應用程式正在將通話記錄傳送到事件中樞，而串�
         GROUP BY TUMBLINGWINDOW(s, 5), SwitchNum
         ```
 
-    此查詢在 `FROM` 子句中使用 `Timestamp By` 關鍵字，以指定使用輸入資料流中的哪個時間戳記欄位來定義輪轉視窗。 在此案例中，視窗會將每一筆記錄的資料依 `CallRecTime` 欄位分段。 (如果未指定欄位，則時間範圍作業會使用每個事件抵達事件中樞的時間。 請參閱[串流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)中的＜抵達時間與應用時間的比較＞。 
+    此查詢在 `Timestamp By` 子句中使用 `FROM` 關鍵字，以指定使用輸入資料流中的哪個時間戳記欄位來定義輪轉視窗。 在此案例中，視窗會將每一筆記錄的資料依 `CallRecTime` 欄位分段。 (如果未指定欄位，則時間範圍作業會使用每個事件抵達事件中樞的時間。 請參閱[串流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)中的＜抵達時間與應用時間的比較＞。 
 
     投影包含 `System.Timestamp`，它會傳回每個視窗結尾的時間戳記。 
 
@@ -348,7 +355,7 @@ TelcoGenerator 應用程式正在將通話記錄傳送到事件中樞，而串�
 
    ![在 Azure 入口網站中建立儲存體帳戶](./media/stream-analytics-real-time-fraud-detection/stream-analytics-storage-account-create.png)
 
-2. 在 Azure 入口網站中，返回串流分析作業窗格。 (如果已關閉此窗格，請在 [所有資源] 窗格中搜尋 `asa_frauddetection_job_demo`)。
+2. 在 Azure 入口網站中，返回串流分析作業窗格。 (如果已關閉此窗格，請在 [所有資源]`asa_frauddetection_job_demo`**窗格中搜尋**)。
 
 3. 在 [作業拓撲] 區段中，按一下 [輸出] 方塊。
 
@@ -357,14 +364,14 @@ TelcoGenerator 應用程式正在將通話記錄傳送到事件中樞，而串�
    |**設定**  |**建議的值**  |**說明**  |
    |---------|---------|---------|
    |輸出別名  |  CallStream-FraudulentCalls   |  輸入名稱以識別作業的輸出。   |
-   |訂閱   |  \<您的訂用帳戶\> |  選取您在其中建立儲存體帳戶的 Azure 訂用帳戶。 儲存體帳戶可以位在相同或不同的訂用帳戶中。 此範例假設您已在相同的訂用帳戶中建立儲存體帳戶。 |
+   |訂用帳戶   |  \<您的訂用帳戶\> |  選取您在其中建立儲存體帳戶的 Azure 訂用帳戶。 儲存體帳戶可以位在相同或不同的訂用帳戶中。 此範例假設您已在相同的訂用帳戶中建立儲存體帳戶。 |
    |儲存體帳戶  |  asaehstorage |  輸入建立之儲存體帳戶的名稱。 |
    |容器  | asa-fraudulentcalls-demo | 選擇 [建立新項目]，然後輸入容器名稱。 |
 
     <br/>
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-output-blob-storage-new-console.png" alt="Create blob output for Stream Analytics job" width="300px"/>
     
-5. 按一下 [檔案]。 
+5. Haga clic en **Guardar**. 
 
 
 ## <a name="start-the-streaming-analytics-job"></a>啟動串流分析作業

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: obboms
-ms.openlocfilehash: 3ef584c48ab44fd3616b5c7897d589bddbe45dc0
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 9b9c4b326596887774d9dfc0dd792052ec672be2
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549252"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063810"
 ---
 # <a name="manually-create-and-use-an-nfs-network-file-system-linux-server-volume-with-azure-kubernetes-service-aks"></a>以 Azure Kubernetes Service （AKS）手動建立和使用 NFS （網路檔案系統） Linux 伺服器磁片區
 在容器之間共用資料通常是容器型服務和應用程式的必要元件。 您通常會有各種 pod 需要存取外部持續性磁片區上的相同資訊。    
@@ -74,7 +74,7 @@ echo "/export        localhost(rw,async,insecure,fsid=0,crossmnt,no_subtree_chec
 
 nohup service nfs-kernel-server restart
 ```
-伺服器將會重新開機（因為腳本），而且您可以將 NFS 伺服器掛接至 AKS
+伺服器將會重新開機（因為腳本），而且您可以將 NFS 伺服器掛接到 AKS。
 
 >[!IMPORTANT]  
 >請務必將**AKS_SUBNET**取代為叢集的正確一個，否則 "*" 會將您的 NFS 伺服器開啟至所有埠和連線。
@@ -93,7 +93,8 @@ chmod +x ~/nfs-server-setup.sh
 ```
 
 ## <a name="connecting-aks-cluster-to-nfs-server"></a>將 AKS 叢集連接到 NFS 伺服器
-我們可以藉由布建持續性磁片區和持續性磁片區宣告，將 NFS 伺服器連線到叢集，以指定如何存取磁片區。  
+我們可以藉由布建持續性磁片區和持續性磁片區宣告，將 NFS 伺服器連線到叢集，以指定如何存取磁片區。
+
 需要在相同或對等互連的虛擬網路中連接這兩個服務。 如需在相同 VNET 中設定叢集的指示，請參閱：[在現有的 vnet 中建立 AKS][aks-virtual-network]叢集
 
 一旦它們位於相同的虛擬網路（或對等互連）中，您就必須在 AKS 叢集中布建持續性磁片區和持續性磁片區宣告。 然後，容器可以將 NFS 磁片磁碟機掛接到其本機目錄。

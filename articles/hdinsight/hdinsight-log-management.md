@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: e5abc9e75e11424b5d0dc4c260b412d0e414ad83
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.custom: hdinsightactive
+ms.date: 02/05/2020
+ms.openlocfilehash: 8c3cbf4c18b32a94abfe95e77be768020b44fda6
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837956"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064677"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>管理 HDInsight 叢集的記錄
 
@@ -69,7 +69,7 @@ az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
 
 * 考量監視解決方案或服務是否能提供實用的效益。 Microsoft System Center 提供 [HDInsight 管理組件](https://www.microsoft.com/download/details.aspx?id=42521)。 您也可以使用協力廠商工具 (例如 Apache Chukwa 和 Ganglia) 來收集和集中記錄。 許多公司都提供服務來監視以 Hadoop 為基礎的 big data 解決方案，例如： Centerity、Compuware APM、Sematext SPM 和 Zettaset Orchestrator。
 
-## <a name="step-2-manage-cluster-service-versions-and-view-script-action-logs"></a>步驟 2：管理叢集服務版本及檢視指令碼動作記錄
+## <a name="step-2-manage-cluster-service-versions-and-view-logs"></a>步驟2：管理叢集服務版本和查看記錄
 
 典型的 HDInsight 叢集會使用數個服務和開放原始碼軟體套件 (例如 Apache HBase 和 Apache Spark 等)。 針對某些工作負載 (例如生物資訊學)，您可能除了作業執行記錄之外，還必須保留服務組態記錄歷程記錄。
 
@@ -89,15 +89,27 @@ Apache Ambari 提供 Web UI 和 REST API，可簡化 HDInsight 叢集的管理�
 
 HDInsight [指令碼動作](hdinsight-hadoop-customize-cluster-linux.md)會以手動方式或在指定時，於叢集上執行指令碼。 例如，指令碼動作可用來在叢集上安裝額外的軟體，或是更改組態設定的預設值。 指令碼動作記錄可讓您深入了解在設定叢集時發生的錯誤，還可了解可能影響叢集效能和可用性的組態設定變更。  若要查看指令碼動作的狀態，請選取 Ambari UI 上的 [ops] 按鈕，或是存取預設儲存體帳戶中的狀態記錄。 儲存體記錄位於 `/STORAGE_ACCOUNT_NAME/DEFAULT_CONTAINER_NAME/custom-scriptaction-logs/CLUSTER_NAME/DATE`。
 
+### <a name="view-ambari-alerts-status-logs"></a>查看 Ambari 警示狀態記錄
+
+Apache Ambari 會將警示狀態變更寫入 `ambari-alerts.log`。 完整路徑為 `/var/log/ambari-server/ambari-alerts.log`。 若要啟用記錄檔的偵錯工具，請在 [`# Log alert state changes` 來源] 下的 [`/etc/ambari-server/conf/log4j.properties.` 變更] 中變更屬性：
+
+```
+log4j.logger.alerts=INFO,alerts
+
+to
+
+log4j.logger.alerts=DEBUG,alerts
+```
+
 ## <a name="step-3-manage-the-cluster-job-execution-log-files"></a>步驟 3：管理叢集作業執行記錄檔
 
-下一步是檢閱各種服務的作業執行記錄檔。  服務可能包括 Apache HBase、Apache Spark 及許多其他服務。 Hadoop 叢集會產生大量的詳細資訊記錄檔，因此判斷哪些記錄檔很有用（而不是）會很耗時。  對於目標性的記錄檔管理來說，了解記錄系統相當重要。  以下是一個範例記錄檔。
+下一步是檢閱各種服務的作業執行記錄檔。  服務可能包括 Apache HBase、Apache Spark 及許多其他服務。 Hadoop 叢集會產生大量的詳細資訊記錄檔，因此判斷哪些記錄檔很有用（而不是）會很耗時。  對於目標性的記錄檔管理來說，了解記錄系統相當重要。  下圖是範例記錄檔。
 
 ![HDInsight 範例記錄檔範例輸出](./media/hdinsight-log-management/hdi-log-file-example.png)
 
 ### <a name="access-the-hadoop-log-files"></a>存取 Hadoop 記錄檔
 
-HDInsight 會將其記錄檔同時儲存在叢集檔案系統和 Azure 儲存體中。 您可以藉由開啟與叢集的[SSH](hdinsight-hadoop-linux-use-ssh-unix.md)連線並流覽檔案系統，或使用遠端前端節點伺服器上的 Hadoop YARN 狀態入口網站，檢查叢集中的記錄檔。 您可以使用任何能夠存取和下載 Azure 儲存體中資料的工具，來檢查 Azure 儲存體中的記錄檔。 例如， [AzCopy](../storage/common/storage-use-azcopy.md)、 [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer)和 Visual Studio 伺服器總管。 您也可以使用 PowerShell 和「Azure 儲存體用戶端」程式庫或 Azure .NET SDK，來存取 Azure Blob 儲存體中的資料。
+HDInsight 會將其記錄檔儲存在叢集檔案系統和 Azure 儲存體中。 您可以藉由開啟與叢集的[SSH](hdinsight-hadoop-linux-use-ssh-unix.md)連線並流覽檔案系統，或使用遠端前端節點伺服器上的 Hadoop YARN 狀態入口網站，檢查叢集中的記錄檔。 您可以使用任何可從 Azure 儲存體存取和下載資料的工具，檢查 Azure 儲存體中的記錄檔。 例如， [AzCopy](../storage/common/storage-use-azcopy.md)、 [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer)和 Visual Studio 伺服器總管。 您也可以使用 PowerShell 和「Azure 儲存體用戶端」程式庫或 Azure .NET SDK，來存取 Azure Blob 儲存體中的資料。
 
 Hadoop 會將作業的工作以「工作嘗試」的形式在叢集中的各種節點上執行。 HDInsight 可以起始理論上的工作嘗試，終止任何其他未先完成的工作嘗試。 這會產生將即時記錄至控制器、stderr 及 syslog 記錄檔的重要活動。 此外，多個工作嘗試會同時執行，但記錄檔只能以線性方式顯示結果。
 
@@ -140,7 +152,7 @@ YARN ResourceManager UI 會在叢集前端節點上執行，您可以透過 Amba
 
 接著，請分析一段時間內主要記錄儲存體位置中的記錄資料磁碟區。 例如，您可以分析 30-60-90 天期間內的磁碟區和成長情況。  請將此資訊記錄在試算表中，或使用其他工具 (例如 Visual Studio、「Azure 儲存體總管」或 Power Query for Excel) 來記錄此資訊。 如需詳細資訊，請參閱[分析 HDInsight 記錄](hdinsight-debug-jobs.md)。  
 
-您現在已有足夠的資訊來建立主要記錄的記錄管理策略。  請使用您的試算表 (或所選擇的工具) 來預測記錄大小成長及 Azure 服務成本增加的記錄儲存體。  也請考慮您要檢查之記錄集的任何記錄保留需求。  在判斷哪些記錄可以刪除 (如果有的話) 及哪些記錄應該保留並封存至較低廉的 Azure 儲存體之後，現在您即可重新預測未來的記錄儲存體成本。
+您現在已有足夠的資訊來建立主要記錄的記錄管理策略。  請使用您的試算表 (或所選擇的工具) 來預測記錄大小成長及 Azure 服務成本增加的記錄儲存體。  也請考慮您要檢查之記錄集的任何記錄保留需求。  現在您可以在判斷哪些記錄檔可以刪除（如果有的話），以及應該保留並封存哪些記錄到較便宜的 Azure 儲存體之後，reforecast 未來的記錄儲存體成本。
 
 ## <a name="step-5-determine-log-archive-policies-and-processes"></a>步驟 5：判斷記錄封存原則和程序
 
@@ -154,8 +166,8 @@ YARN ResourceManager UI 會在叢集前端節點上執行，您可以透過 Amba
 
 ### <a name="accessing-azure-storage-metrics"></a>存取 Azure 儲存體計量
 
-您可以設定讓 Azure 儲存體記錄儲存體作業和存取。 您可以使用這些非常詳細的記錄來監視和規劃容量，以及稽核對儲存體發出的要求。 所記錄的資訊包括延遲詳細資料，可讓您監視和微調解決方案的效能。
-您可以使用適用於 Hadoop 的 .NET SDK，來檢查針對儲存 HDInsight 叢集之資料的 Azure 儲存體產生的記錄檔。
+Azure 儲存體可以設定為記錄儲存體作業和存取。 您可以使用這些非常詳細的記錄來監視和規劃容量，以及稽核對儲存體發出的要求。 所記錄的資訊包括延遲詳細資料，可讓您監視和微調解決方案的效能。
+您可以使用適用于 Hadoop 的 .NET SDK 來檢查針對保留 HDInsight 叢集資料的 Azure 儲存體所產生的記錄檔。
 
 ### <a name="control-the-size-and-number-of-backup-indexes-for-old-log-files"></a>控制舊記錄檔的備份索引大小和數目
 

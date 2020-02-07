@@ -3,12 +3,12 @@ title: 了解資源鎖定
 description: 瞭解 Azure 藍圖中的鎖定選項，以在指派藍圖時保護資源。
 ms.date: 04/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 50f506cc57f67ca2ae2b07e342750d6c5099e739
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: e042a4d117e28a2fd2228ce36f1be98a1da31e91
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406397"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057340"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>了解 Azure 藍圖中的資源鎖定
 
@@ -16,12 +16,12 @@ ms.locfileid: "74406397"
 
 ## <a name="locking-modes-and-states"></a>鎖定模式和狀態
 
-鎖定模式適用于藍圖指派，它有三個選項： [**不要鎖定**]、[**唯讀**] 或 [**不要刪除**]。 鎖定模式會在藍圖指派期間的成品部署過程中進行設定。 您可以藉由更新藍圖指派來設定不同的鎖定模式。
+鎖定模式適用於藍圖指派，它提供三個選項：**不要鎖定**、**唯讀**或**不要刪除**。 鎖定模式會在藍圖指派期間的成品部署過程中進行設定。 您可以藉由更新藍圖指派來設定不同的鎖定模式。
 不過，鎖定模式無法變更藍圖外部。
 
-藍圖指派中成品所建立的資源具有四個狀態： [**未鎖定**]、[**唯讀**]、[**無法編輯]/[刪除**] 或 [**無法刪除**]。 每個成品類型都可以處於**未鎖定**狀態。 下表可用來判斷資源的狀態：
+藍圖指派中成品所建立的資源有四種狀態：**未鎖定**、**唯讀**、**無法編輯/刪除**或**無法刪除**。 每個成品類型都可以處於**未鎖定**狀態。 下表可用來判斷資源的狀態：
 
-|模式|成品資源類型|State|描述|
+|[模式]|成品資源類型|State|描述|
 |-|-|-|-|
 |不要鎖定|*|未鎖定|資源並未受到藍圖保護。 此狀態也可用於從藍圖指派外部新增至**唯讀**或**不要刪除**資源群組成品的資源。|
 |唯讀|資源群組|無法編輯/刪除|此資源群組是唯讀的，而且無法修改資源群組上的標記。 **未鎖定**資源可以在這個資源群組中新增、移動、變更或刪除。|
@@ -45,13 +45,13 @@ ms.locfileid: "74406397"
 
 ## <a name="how-blueprint-locks-work"></a>藍圖鎖定的運作方式
 
-如果指派選取了 [唯讀][](../../../role-based-access-control/deny-assignments.md) 或 [不要刪除] 選項，則在藍圖指派期間，會將 RBAC **拒絕指派**的拒絕動作套用到成品資源。 拒絕動作會由藍圖指派的受控身分識別來新增，並且只能透過相同的受控身分識別從成品資源中移除。 此安全性措施可強制執行鎖定機制，並防止移除藍圖外部的藍圖鎖定。
+如果指派選取了 [唯讀] 或 [不要刪除] 選項，則在藍圖指派期間，會將 RBAC [拒絕指派](../../../role-based-access-control/deny-assignments.md)的拒絕動作套用到成品資源。 拒絕動作會由藍圖指派的受控身分識別來新增，並且只能透過相同的受控身分識別從成品資源中移除。 此安全性措施可強制執行鎖定機制，並防止移除藍圖外部的藍圖鎖定。
 
 ![在資源群組上建立藍圖拒絕指派](../media/resource-locking/blueprint-deny-assignment.png)
 
 每個模式的[拒絕指派屬性](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties)如下所示：
 
-|模式 |許可權。動作 |許可權。 NotActions |主體 [i]。型 |ExcludePrincipals [i]。號 | DoNotApplyToChildScopes |
+|[模式] |許可權。動作 |許可權。 NotActions |主體 [i]。型 |ExcludePrincipals [i]。號 | DoNotApplyToChildScopes |
 |-|-|-|-|-|-|
 |唯讀 |**\*** |**\*/read** |SystemDefined （每個人） |**excludedPrincipals**中的藍圖指派和使用者定義 |資源群組- _true_;資源- _false_ |
 |不要刪除 |**\*/delete** | |SystemDefined （每個人） |**excludedPrincipals**中的藍圖指派和使用者定義 |資源群組- _true_;資源- _false_ |
@@ -102,6 +102,26 @@ ms.locfileid: "74406397"
   }
 }
 ```
+
+## <a name="exclude-an-action-from-a-deny-assignment"></a>從拒絕指派中排除動作
+
+類似于在藍圖指派中的[拒絕指派](../../../role-based-access-control/deny-assignments.md)上[排除主體](#exclude-a-principal-from-a-deny-assignment)，您可以排除特定的[RBAC](../../../role-based-access-control/resource-provider-operations.md)作業。 在**屬性. 鎖定**區塊內，在**excludedPrincipals**為的相同位置中，可以新增**excludedActions** ：
+
+```json
+"locks": {
+    "mode": "AllResourcesDoNotDelete",
+    "excludedPrincipals": [
+        "7be2f100-3af5-4c15-bcb7-27ee43784a1f",
+        "38833b56-194d-420b-90ce-cff578296714"
+    ],
+    "excludedActions": [
+        "Microsoft.ContainerRegistry/registries/push/write",
+        "Microsoft.Authorization/*/read"
+    ]
+},
+```
+
+雖然**excludedPrincipals**必須是明確的，但**excludedActions**專案可以利用 `*` 來進行 RBAC 作業的萬用字元比對。
 
 ## <a name="next-steps"></a>後續步驟
 

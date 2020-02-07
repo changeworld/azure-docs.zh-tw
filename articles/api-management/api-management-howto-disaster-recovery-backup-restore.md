@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/26/2019
+ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: fccb9dfe88d39849fb87bdce4b81ac9ee22fada5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8f748764d0f61e4932b2d4710f5a6805a5eddf0e
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430704"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047474"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>如何在 Azure API 管理中使用服務備份和還原實作災害復原
 
@@ -67,16 +67,15 @@ ms.locfileid: "75430704"
 
 4. 輸入應用程式的名稱。
 5. 針對應用程式類型，選取 [原生]。
-6. 輸入 [重新導向 URI] 的預留位置 URL，例如 `http://resources`，因為它是必要的欄位，但稍後不會使用這個值。 按一下核取方塊以儲存應用程式。
-7. 按一下頁面底部的 [新增]。
+6. 輸入 [重新導向 URI]`http://resources`**的預留位置 URL，例如**，因為它是必要的欄位，但稍後不會使用這個值。 按一下核取方塊以儲存應用程式。
+7. 按一下 [建立]。
 
 ### <a name="add-an-application"></a>新增應用程式
 
-1. 在建立應用程式之後，按一下 [設定]。
-2. 按一下 [必要權限]。
-3. 按一下 [+新增]。
-4. 按 [選取 API]。
-5. 選擇 [ **Windows** **AZURE 服務管理 API**]。
+1. 建立應用程式之後，按一下 [ **API 許可權**]。
+2. 按一下 [ **+ 新增許可權**]。
+4. 按 [**選取 Microsoft api**]。
+5. 選擇 [ **Azure 服務管理**]。
 6. 按 [選取]。
 
     ![新增權限](./media/api-management-howto-disaster-recovery-backup-restore/add-app.png)
@@ -120,12 +119,12 @@ namespace GetTokenResourceManagerRequests
 
     ![端點][api-management-endpoint]
 
-2. 使用您瀏覽至 [設定] 頁面取得的值來取代 `{application id}`。
-3. 以來自您 Azure Active Directory 應用程式 [重新導向 URI] 索引標籤的值取代 `{redirect uri}`。
+2. 使用您瀏覽至 [設定]`{application id}`**頁面取得的值來取代**。
+3. 以來自您 Azure Active Directory 應用程式 [重新導向 URI]`{redirect uri}`**索引標籤的值取代**。
 
     指定值之後，程式碼範例應該會傳回類似以下範例的權杖：
 
-    ![Token][api-management-arm-token]
+    ![權杖][api-management-arm-token]
 
     > [!NOTE]
     > 權杖可能會在一段時間之後過期。 再次執行程式碼範例即可產生新的權杖。
@@ -168,19 +167,22 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 將 `Content-Type` 要求標頭的值設定為 `application/json`。
 
-備份作業的執行時間較長，因此可能需要數分鐘的時間才能完成。 如果要求成功並已開始備份程序，您就會收到含有 `Location` 標頭的 `202 Accepted` 回應狀態碼。 請向 `Location` 標頭中的 URL 發出 'GET' 要求，以查明作業的狀態。 在備份進行時，您會持續收到「202 已接受」狀態碼。 回應碼 `200 OK` 代表備份作業已成功完成。
+備份作業的執行時間較長，因此可能需要數分鐘的時間才能完成。 如果要求成功並已開始備份程序，您就會收到含有 `202 Accepted` 標頭的 `Location` 回應狀態碼。 請向 `Location` 標頭中的 URL 發出 'GET' 要求，以查明作業的狀態。 在備份進行時，您會持續收到「202 已接受」狀態碼。 回應碼 `200 OK` 代表備份作業已成功完成。
 
-進行備份要求時，請注意下列條件約束：
+建立備份或還原要求時，請注意下列條件約束：
 
 -   在要求本文中指定的**容器** **必須存在**。
--   備份在進行時，**請避免變更服務管理** (例如 SKU 升級或降級)、避免變更網域名稱等等。
+-   當備份正在進行時，**避免服務中的管理變更**，例如 SKU 升級或降級、功能變數名稱變更等等。
 -   備份還原的**保證僅限建立後的 30 天內**。
 -   備份**不包含**用來建立分析報告的**使用量資料**。 請使用 [Azure API 管理 REST API][azure api management rest api] 來定期擷取分析報告，以利妥善保存。
 -   此外，下列專案不是備份資料的一部分：自訂網域 SSL 憑證，以及客戶所上傳的任何中繼或根憑證、開發人員入口網站內容和虛擬網路整合設定。
 -   執行服務備份的頻率會影響您的復原點目標。 為了盡可能縮小，建議您實作定期備份，並在針對 API 管理服務進行變更後執行隨選備份。
 -   在備份作業進行時針對服務組態 (例如 API、原則及開發人員入口網站外觀) 所做的**變更** **可能會從備份中排除，因此可能會遺失**。
--   **允許**從控制平面存取 Azure 儲存體帳戶。 客戶應該在其儲存體帳戶上開啟下列一組輸入 Ip 來進行備份。 
-    > 13.84.189.17/32、13.85.22.63/32、23.96.224.175/32、23.101.166.38/32、52.162.110.80/32、104.214.19.224/32、13.64.39.16/32、40.81.47.216/32、51.145.179.78/32、52.142.95.35/32、40.90.185.46/32、20.40.125.155/32
+-   如果已啟用[防火牆][azure-storage-ip-firewall]，**允許**從控制平面存取 Azure 儲存體帳戶。 客戶應該在其儲存體帳戶上開啟一組[AZURE API 管理控制平面 IP 位址][control-plane-ip-address]，以便進行備份或還原。 
+
+> [!NOTE]
+> 如果您嘗試使用已啟用[防火牆][azure-storage-ip-firewall]的儲存體帳戶來進行備份/還原至 API 管理服務，則在相同的 Azure 區域中，這將無法正常執行。 這是因為 Azure 儲存體的要求不會從計算 > （Azure Api 管理控制平面） Snat 轉譯到公用 IP。 跨區域儲存體要求將會 Snat 轉譯。
+
 ### <a name="step2"></a>還原 API 管理服務
 
 若要從先前建立的備份還原 API 管理服務，請發出以下 HTTP 要求：
@@ -209,7 +211,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 將 `Content-Type` 要求標頭的值設定為 `application/json`。
 
-還原作業的執行時間較長，因此可能需要 30 分鐘以上的時間才能完成。 如果要求成功並已開始還原程序，您就會收到含有 `Location` 標頭的 `202 Accepted` 回應狀態碼。 請向 `Location` 標頭中的 URL 發出 'GET' 要求，以查明作業的狀態。 在還原進行時，您會持續收到「202 已接受」狀態碼。 回應碼 `200 OK` 代表還原作業已成功完成。
+還原作業的執行時間較長，因此可能需要 30 分鐘以上的時間才能完成。 如果要求成功並已開始還原程序，您就會收到含有 `202 Accepted` 標頭的 `Location` 回應狀態碼。 請向 `Location` 標頭中的 URL 發出 'GET' 要求，以查明作業的狀態。 在還原進行時，您會持續收到「202 已接受」狀態碼。 回應碼 `200 OK` 代表還原作業已成功完成。
 
 > [!IMPORTANT]
 > 作為還原目的地之服務的 **SKU** **必須符合**所要還原之已備份服務的 SKU。
@@ -241,3 +243,5 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 [api-management-aad-resources]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-aad-resources.png
 [api-management-arm-token]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-arm-token.png
 [api-management-endpoint]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-endpoint.png
+[control-plane-ip-address]: api-management-using-with-vnet.md#control-plane-ips
+[azure-storage-ip-firewall]: ../storage/common/storage-network-security.md#grant-access-from-an-internet-ip-range

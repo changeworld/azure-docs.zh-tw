@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 11/04/2019
-ms.openlocfilehash: 778b369e08ff6b0c6e4075c5a8d3d2a234bde70e
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 012300c95fd1edd135b97f52ed3702ce3e7ef0bd
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894890"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048961"
 ---
 # <a name="what-is-automated-machine-learning"></a>什麼是自動化機器學習服務？
 
@@ -83,7 +83,7 @@ ms.locfileid: "75894890"
 
 在每個自動化機器學習實驗中，您的資料都會自動調整或正規化，以協助演算法執行得很好。  在模型定型期間，下列其中一個調整或正規化技術將會套用至每個模型。
 
-|調整&nbsp;&&nbsp;正規化| 說明 |
+|調整&nbsp;&&nbsp;正規化| 描述 |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | 藉由移除平均值並調整為單位變異數，將功能標準化  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | 藉由依該資料行的最小值和最大值調整每項功能來轉換功能  |
@@ -95,11 +95,11 @@ ms.locfileid: "75894890"
 
 ### <a name="advanced-preprocessing-optional-featurization"></a>Advanced 前置處理：選擇性特徵化
 
-另外還提供額外的先進前置處理和特徵化，例如資料護欄、編碼和轉換。 [深入瞭解包含的特徵化](how-to-create-portal-experiments.md#preprocess)。 啟用此設定的方式：
+另外還提供額外的先進前置處理和特徵化，例如資料護欄、編碼和轉換。 [深入瞭解包含的特徵化](how-to-create-portal-experiments.md#featurization)。 啟用此設定的方式：
 
-+ Azure Machine Learning studio：在 [設定**執行**] 區段中選取 [ **View 特徵化] 設定** [，其中包含下列步驟](how-to-create-portal-experiments.md)。
++ Azure Machine Learning studio：在 [ **View 其他**設定] 區段中[使用下列步驟](how-to-create-portal-experiments.md#create-and-run-experiment)啟用**自動特徵化**。
 
-+ Python SDK：指定[`AutoMLConfig` 類別](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)的 `"feauturization": auto' / 'off' / FeaturizationConfig`。
++ Python SDK：指定[`AutoMLConfig` 類別](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)的 `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'`。 
 
 ## <a name="prevent-over-fitting"></a>防止過度調整
 
@@ -139,7 +139,7 @@ ms.locfileid: "75894890"
 
 請考慮下列已定型的模型及其對應的定型和測試精確度。
 
-| 型號 | 定型精確度 | 測試精確度 |
+| 模型 | 定型精確度 | 測試精確度 |
 |-------|----------------|---------------|
 | A | 99.9% | 95% |
 | B | 87% | 87% |
@@ -193,7 +193,7 @@ ms.locfileid: "75894890"
 
 此外，自動化 ML 執行會自動產生下列圖表，這可協助您瞭解模型分類的正確性，並識別可能受到不平衡資料影響的模型。
 
-圖表| 說明
+圖表| 描述
 ---|---
 [混淆矩陣](how-to-understand-automated-ml.md#confusion-matrix)| 針對資料的實際標籤，評估正確分類的標籤。 
 [精確度-召回](how-to-understand-automated-ml.md#precision-recall-chart)| 根據找到的標籤實例的比率，評估正確標籤的比率 
@@ -215,7 +215,7 @@ ms.locfileid: "75894890"
 
 自動化 ML 也適用于其他 Microsoft 解決方案，例如：
 
-|整合|說明|
+|整合|描述|
 |------------|-----------|
 |[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|使用 Visual Studio 和 Visual Studio Code 搭配 ML.NET 自動化 ML （預覽），在 .NET 應用程式中自動選取和定型模型。|
 |[HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|以平行方式在 HDInsight 叢集中的 Spark 上相應放大您的自動化 ML 訓練作業。|

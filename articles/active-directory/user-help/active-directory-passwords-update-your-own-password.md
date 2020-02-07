@@ -2,7 +2,7 @@
 title: 使用安全性資訊重設您的密碼 - Azure Active Directory | Microsoft Docs
 description: 如何在您忘記密碼時，使用安全性資訊和雙步驟驗證來重設自己的密碼。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 01/15/2020
-ms.author: lizross
-ms.openlocfilehash: ad4831cfb5b09083b4ee76b6badf3936b2256138
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.author: curtand
+ms.openlocfilehash: 3ed79be318319009aabb1b1ef0c42c4021bbbabe
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263484"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062654"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>使用安全性資訊重設公司或學校密碼
 
@@ -155,7 +155,7 @@ ms.locfileid: "76263484"
 
 以下提供一些常見的錯誤案例及其解決方案：
 
-|問題|說明|解決方案|
+|問題|描述|解決方案|
 | --- | --- | --- |
 |當我嘗試變更密碼時，收到一個錯誤。 |您的密碼包含使密碼容易猜到的字組、片語或模式。| 請使用強度更高的密碼重試。|
 |在輸入我的使用者識別碼之後，會移至一個畫面指出「請連絡您的系統管理員」。|Microsoft 已判定您的使用者帳戶密碼會由您內部部署環境中的系統管理員所管理。 因此，您無法從 [無法存取您的帳戶] 連結重設密碼。 |請連絡您的系統管理員以獲得更多協助。|

@@ -7,14 +7,14 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 1052ef799949550ddaf492b8aa5b77ab9526d092
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 93c0b3e27156655acee24d424cd890b48bb8e4e7
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780278"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064983"
 ---
-# <a name="ingest-data-from-iot-hub-into-azure-data-explorer-preview"></a>將資料從 IoT 中樞內嵌到 Azure 資料總管（預覽）
+# <a name="ingest-data-from-iot-hub-into-azure-data-explorer"></a>將資料從 IoT 中樞內嵌到 Azure 資料總管 
 
 > [!div class="op_single_selector"]
 > * [入口網站](ingest-data-iot-hub.md)
@@ -80,7 +80,7 @@ Azure 資料總管是一項快速又可高度調整的資料探索服務，可�
     **設定** | **欄位描述**
     |---|---|
     | 資料連線名稱 | 您想要在 Azure 中建立的連線名稱資料總管
-    | IoT Hub | IoT 中樞名稱 |
+    | IoT 中樞 | IoT 中樞名稱 |
     | 共用存取原則 | 共用存取原則的名稱。 必須擁有讀取權限 |
     | 取用者群組 |  在 IoT 中樞內建端點中定義的取用者群組 |
     | 事件系統屬性 | [IoT 中樞事件系統屬性](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages)。 加入系統屬性時，[建立](/azure/kusto/management/tables#create-table)或[更新](/azure/kusto/management/tables#alter-table-and-alter-merge-table)資料表架構和[對應](/azure/kusto/management/mappings)以包含選取的屬性。 | | | 
@@ -95,7 +95,7 @@ Azure 資料總管是一項快速又可高度調整的資料探索服務，可�
 
      **設定** | **建議的值** | **欄位描述**
     |---|---|---|
-    | 表格 | *TestTable* | 您在**testdb**中建立的資料表。 |
+    | Table | *TestTable* | 您在**testdb**中建立的資料表。 |
     | 資料格式 | *JSON* | 支援的格式為 Avro、CSV、JSON、多行 JSON、PSV、SOHSV、SCSV、TSV、TSVE 和 TXT。 |
     | 資料行對應 | *TestMapping* | 您在**testdb**中建立的[對應](/azure/kusto/management/mappings)，其會將傳入的 JSON 資料對應至**testdb**的資料行名稱和資料類型。 對 JSON、多行 JSON 和 AVRO 而言是必要的，而且對於其他格式則為選擇性。|
     | | |

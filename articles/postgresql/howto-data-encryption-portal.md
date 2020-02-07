@@ -1,26 +1,26 @@
 ---
-title: 使用入口網站適用於 PostgreSQL 的 Azure 資料庫單一伺服器的資料加密
+title: 使用 Azure 入口網站適用於 PostgreSQL 的 Azure 資料庫單一伺服器的資料加密
 description: 瞭解如何使用 Azure 入口網站設定和管理適用於 PostgreSQL 的 Azure 資料庫單一伺服器的資料加密。
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 9c935ad8f77e2f8a6198a8ac095e0cc60c025a72
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 4be80e9ded2fe4009c05a2b699342f848491994a
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028628"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046131"
 ---
-# <a name="data-encryption-for-azure-database-for-postgresql-single-server-using-portal"></a>使用入口網站適用於 PostgreSQL 的 Azure 資料庫單一伺服器的資料加密
+# <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-portal"></a>使用 Azure 入口網站適用於 PostgreSQL 的 Azure 資料庫單一伺服器的資料加密
 
-在本文中，您將瞭解如何設定和管理，以使用 Azure 入口網站來設定適用於 PostgreSQL 的 Azure 資料庫單一伺服器的資料加密。
+瞭解如何使用 Azure 入口網站來設定及管理適用於 PostgreSQL 的 Azure 資料庫單一伺服器的資料加密。
 
-## <a name="prerequisites-for-cli"></a>CLI 的必要條件
+## <a name="prerequisites-for-azure-cli"></a>Azure CLI 的必要條件
 
 * 您必須具有 Azure 訂用帳戶，並且是該訂用帳戶的系統管理員。
-* 建立要用於客戶管理金鑰的 Azure Key Vault 和金鑰。
+* 在 Azure Key Vault 中，建立金鑰保存庫和金鑰，以用於客戶管理的金鑰。
 * 金鑰保存庫必須具有下列屬性，才能當做客戶管理的金鑰使用：
   * [虛刪除](../key-vault/key-vault-ovw-soft-delete.md)
 
@@ -34,66 +34,66 @@ ms.locfileid: "76028628"
     az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
     ```
 
-* 金鑰必須具有下列屬性，才能用於客戶管理的金鑰。
+* 金鑰必須具有下列屬性，才能當做客戶管理的金鑰使用：
   * 沒有到期日
   * 未停用
-  * 能夠執行_取得_、_包裝金鑰_和解除包裝_金鑰_作業
+  * 能夠執行取得、包裝金鑰和解除包裝金鑰作業
 
-## <a name="setting-the-right-permissions-for-key-operations"></a>設定金鑰作業的正確許可權
+## <a name="set-the-right-permissions-for-key-operations"></a>設定金鑰作業的正確許可權
 
-1. 在 Azure Key Vault 上，選取 **存取原則**，然後按一下 **新增存取原則**。
+1. 在 Key Vault 中，選取 **存取**原則 > **新增存取原則**。
 
-   ![存取原則總覽](media/concepts-data-access-and-security-data-encryption/show-access-policy-overview.png)
+   ![已反白顯示存取原則和新增存取原則的 Key Vault 螢幕擷取畫面](media/concepts-data-access-and-security-data-encryption/show-access-policy-overview.png)
 
-2. 在 [**金鑰許可權**] 底下，選取 [**取得**] **、[包裝]、[** 解除**封裝**] 和 [**主體**]，這是于 postgresql 伺服器的名稱。 如果在現有主體的清單中找不到您的伺服器主體，您將需要嘗試第一次設定資料加密（這會失敗）來註冊它。  
+2. 選取 [**金鑰許可權**]，然後選取 [**取得**]、[**換行**]、[解除包裝] 和 [**主體** **]，這**是于 postgresql 伺服器的名稱。 如果在現有主體的清單中找不到您的伺服器主體，您必須註冊它。 當您第一次嘗試設定資料加密時，系統會提示您註冊伺服器主體，否則會失敗。  
 
    ![存取原則總覽](media/concepts-data-access-and-security-data-encryption/access-policy-wrap-unwrap.png)
 
-3. **儲存**設定。
+3. 選取 [儲存]。
 
-## <a name="setting-data-encryption-for-azure-database-for-postgresql-single-server"></a>設定適用於 PostgreSQL 的 Azure 資料庫單一伺服器的資料加密
+## <a name="set-data-encryption-for-azure-database-for-postgresql-single-server"></a>設定適用於 PostgreSQL 的 Azure 資料庫單一伺服器的資料加密
 
-1. 在 **適用於 PostgreSQL 的 Azure 資料庫**上，選取 **資料加密** 來設定客戶管理的金鑰設定。
+1. 在 適用於 PostgreSQL 的 Azure 資料庫中，選取 **資料加密** 來設定客戶管理的金鑰。
 
-   ![設定資料加密](media/concepts-data-access-and-security-data-encryption/data-encryption-overview.png)
+   ![適用於 PostgreSQL 的 Azure 資料庫的螢幕擷取畫面，其中已反白顯示資料加密](media/concepts-data-access-and-security-data-encryption/data-encryption-overview.png)
 
-2. 您可以選取**Key Vault**和**金鑰**組，或傳遞**金鑰識別碼**。
+2. 您可以選取金鑰保存庫和金鑰組，或輸入金鑰識別碼。
 
-   ![設定 Key Vault](media/concepts-data-access-and-security-data-encryption/setting-data-encryption.png)
+   ![適用於 PostgreSQL 的 Azure 資料庫的螢幕擷取畫面，其中已反白顯示資料加密選項](media/concepts-data-access-and-security-data-encryption/setting-data-encryption.png)
 
-3. **儲存**設定。
+3. 選取 [儲存]。
 
-4. 若要確保所有檔案（包括**暫存檔案**）都已完整加密，則**需要** **重新開機**伺服器。
+4. 若要確保所有檔案（包括暫存檔案）都已完全加密，請重新開機伺服器。
 
-## <a name="restoring-or-creating-replica-of-the-server-which-has-data-encryption-enabled"></a>還原或建立已啟用資料加密之伺服器的複本
+## <a name="restore-or-create-a-replica-of-the-server"></a>還原或建立伺服器複本
 
-一旦適用於 PostgreSQL 的 Azure 資料庫單一伺服器以客戶的受控金鑰加密（儲存在 Key Vault 中），任何新建立的伺服器複本都會透過本機或異地還原作業或複本（本機/跨區域）作業來進行。 因此，如果是加密的于 postgresql 伺服器，您可以遵循下列步驟來建立加密的已還原伺服器。
+使用儲存在 Key Vault 中的客戶管理金鑰加密適用於 PostgreSQL 的 Azure 資料庫單一伺服器之後，任何新建立的伺服器複本也會一併加密。 您可以透過本機或異地還原作業，或透過複本（本機/跨區域）作業來建立此新複本。 因此，如果是加密的于 postgresql 伺服器，您可以使用下列步驟來建立加密的已還原伺服器。
 
-1. 在您的伺服器上，選取 **[總覽**]，然後選取 [**還原**]。
+1. 在您的伺服器上，選取 **[總覽**] > [**還原**]。
 
-   ![起始-還原](media/concepts-data-access-and-security-data-encryption/show-restore.png)
+   ![適用於 PostgreSQL 的 Azure 資料庫的螢幕擷取畫面，其中已反白顯示總覽和還原](media/concepts-data-access-and-security-data-encryption/show-restore.png)
 
-   或針對已啟用複寫功能的伺服器，在 [**設定**] 標題底下 **，選取 [** 複寫]，如下所示：
+   或針對已啟用複寫功能的伺服器，在 [**設定**] 標題底下 **，選取 [** 複寫]。
 
-   ![起始-複本](media/concepts-data-access-and-security-data-encryption/postgresql-replica.png)
+   ![已反白顯示覆寫的適用於 PostgreSQL 的 Azure 資料庫螢幕擷取畫面](media/concepts-data-access-and-security-data-encryption/postgresql-replica.png)
 
-2. 一旦還原作業完成，新建立的伺服器就會使用主伺服器的金鑰加密資料。 不過，伺服器上的功能和選項已停用，而伺服器則會標示為**無法存取**的狀態。 此行為是為了防止任何資料操作而設計，因為新伺服器的身分識別仍然沒有存取 Key Vault 的許可權。
+2. 在還原作業完成之後，新建立的伺服器會以主伺服器的金鑰進行加密。 不過，伺服器上的功能和選項已停用，而且伺服器無法存取。 這會防止任何資料操作，因為新伺服器的身分識別尚未獲得存取金鑰保存庫的許可權。
 
-   ![標記伺服器無法存取](media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png)
+   ![適用於 PostgreSQL 的 Azure 資料庫的螢幕擷取畫面，反白顯示狀態為無法存取](media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png)
 
-3. 若要修正無法存取的狀態，您必須重新驗證還原之伺服器上的金鑰。 依序選取 [**資料加密**] 窗格和 [重新**驗證金鑰**] 按鈕。
+3. 若要讓伺服器可供存取，請重新驗證已還原伺服器上的金鑰。 選取 [**資料加密**] > 重新**驗證金鑰**。
 
    > [!NOTE]
-   > 第一次重新驗證的嘗試將會失敗，因為新伺服器的服務主體必須獲得金鑰保存庫的存取權。 若要產生服務主體，請選取 [重新**驗證金鑰**]，這將會產生錯誤，但會產生服務主體。 之後，請參閱上述第[2 節中的](#setting-the-right-permissions-for-key-operations)步驟。
+   > 第一次重新驗證的嘗試將會失敗，因為必須將金鑰保存庫的存取權提供給新伺服器的服務主體。 若要產生服務主體，請選取 [重新**驗證金鑰**]，這將會顯示錯誤，但會產生服務主體。 之後，請參閱本文稍早的[步驟](#set-the-right-permissions-for-key-operations)。
 
-   ![重新驗證服務器](media/concepts-data-access-and-security-data-encryption/show-revalidate-data-encryption.png)
+   ![適用於 PostgreSQL 的 Azure 資料庫的螢幕擷取畫面，反白顯示重新驗證步驟](media/concepts-data-access-and-security-data-encryption/show-revalidate-data-encryption.png)
 
-   您必須將新伺服器的存取權授與 Key Vault。
+   您必須將金鑰保存庫的存取權授與新的伺服器。
 
-4. 註冊服務主體之後，您必須再次重新驗證金鑰，伺服器才會繼續正常運作。
+4. 註冊服務主體之後，再次重新驗證金鑰，伺服器就會繼續正常運作。
 
-   ![一般伺服器已還原](media/concepts-data-access-and-security-data-encryption/restore-successful.png)
+   ![適用於 PostgreSQL 的 Azure 資料庫的螢幕擷取畫面，其中顯示已還原的功能](media/concepts-data-access-and-security-data-encryption/restore-successful.png)
 
 ## <a name="next-steps"></a>後續步驟
 
- 若要深入瞭解資料加密，請參閱[什麼是 Azure 資料加密](concepts-data-encryption-postgresql.md)。
+ 若要深入瞭解資料加密，請參閱[使用客戶管理的金鑰適用於 PostgreSQL 的 Azure 資料庫單一伺服器資料加密](concepts-data-encryption-postgresql.md)。

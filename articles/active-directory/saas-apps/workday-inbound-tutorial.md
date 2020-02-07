@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94fc50bf238a74b7d8b45625d88b2d23d7dd1a13
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: a7e5dc9c177dbddda8bf229ec7949f53b70e616c
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613752"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064301"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>教學課程︰設定 Workday 來自動佈建使用者
 
@@ -28,7 +28,7 @@ ms.locfileid: "75613752"
 
 ## <a name="overview"></a>概觀
 
-[Azure Active Directory 使用者佈建服務](../manage-apps/user-provisioning.md)與 [Workday Human Resources API](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) 整合以佈建使用者帳戶。 Azure AD 使用此連接啟用下列使用者佈建工作流程：
+[Azure Active Directory 使用者佈建服務](../app-provisioning/user-provisioning.md)與 [Workday Human Resources API](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) 整合以佈建使用者帳戶。 Azure AD 使用此連接啟用下列使用者佈建工作流程：
 
 * **將使用者佈建至 Active Directory** - 將選取的使用者集合從 Workday 佈建至一或多個 Active Directory 網域。
 
@@ -40,13 +40,13 @@ ms.locfileid: "75613752"
 
 Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，可讓下列人力資源和身分識別生命週期管理案例的自動化：
 
-* **雇用新員工** - 將新員工新增至 Workday 時，系統會在 Active Directory、Azure Active Directory、Office 365 (選擇性) 和 [Azure AD 支援的其他 SaaS 應用程式](../manage-apps/user-provisioning.md)中自動建立使用者帳戶，並將電子郵件地址寫回 Workday。
+* **雇用新員工** - 將新員工新增至 Workday 時，系統會在 Active Directory、Azure Active Directory、Office 365 (選擇性) 和 [Azure AD 支援的其他 SaaS 應用程式](../app-provisioning/user-provisioning.md)中自動建立使用者帳戶，並將電子郵件地址寫回 Workday。
 
-* **員工屬性和設定檔更新** - 在 Workday 中更新員工記錄時 (例如姓名、職稱或經理)，系統會在 Active Directory、Azure Active Directory、Office 365 (選擇性) 和 [Azure AD 支援的其他 SaaS 應用程式](../manage-apps/user-provisioning.md)中自動更新其使用者帳戶。
+* **員工屬性和設定檔更新** - 在 Workday 中更新員工記錄時 (例如姓名、職稱或經理)，系統會在 Active Directory、Azure Active Directory、Office 365 (選擇性) 和 [Azure AD 支援的其他 SaaS 應用程式](../app-provisioning/user-provisioning.md)中自動更新其使用者帳戶。
 
-* **員工離職** - 在 Workday 中將員工設定為離職時，系統會在 Active Directory、Azure Active Directory、Office 365 (選擇性) 和 [Azure AD 支援的其他 SaaS 應用程式](../manage-apps/user-provisioning.md)中自動停用其使用者帳戶。
+* **員工離職** - 在 Workday 中將員工設定為離職時，系統會在 Active Directory、Azure Active Directory、Office 365 (選擇性) 和 [Azure AD 支援的其他 SaaS 應用程式](../app-provisioning/user-provisioning.md)中自動停用其使用者帳戶。
 
-* **重新雇用員工** - 在 Workday 中重新雇用員工時，系統會自動重新啟用其舊帳戶或將其重新佈建 (取決於您的喜好設定) 至 Active Directory、Azure Active Directory、Office 365 (選擇性) 和 [Azure AD 支援的其他 SaaS 應用程式](../manage-apps/user-provisioning.md)。
+* **重新雇用員工** - 在 Workday 中重新雇用員工時，系統會自動重新啟用其舊帳戶或將其重新佈建 (取決於您的喜好設定) 至 Active Directory、Azure Active Directory、Office 365 (選擇性) 和 [Azure AD 支援的其他 SaaS 應用程式](../app-provisioning/user-provisioning.md)。
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>誰最適合使用此使用者佈建解決方案？
 
@@ -87,7 +87,7 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 
 本節涵蓋下列規劃層面：
 
-* [先決條件](#prerequisites)
+* [必要條件](#prerequisites)
 * [選取要部署的佈建連接器應用程式](#selecting-provisioning-connector-apps-to-deploy)
 * [Azure AD Connect 佈建代理程式的部署規劃](#planning-deployment-of-azure-ad-connect-provisioning-agent)
 * [與多個 Active Directory 網域整合](#integrating-with-multiple-active-directory-domains)
@@ -153,8 +153,8 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 
 |   |   |
 | - | - |
-| 不會。 內部部署環境部署的代理程式數目 | 3 (適用於高可用性和容錯移轉) |
-| 不會。 Azure 入口網站中設定的「Workday 至 AD 使用者佈建應用程式」數目 | 1 |
+| No。 內部部署環境部署的代理程式數目 | 3 (適用於高可用性和容錯移轉) |
+| No。 Azure 入口網站中設定的「Workday 至 AD 使用者佈建應用程式」數目 | 1 |
 
   ![實例 1](./media/workday-inbound-tutorial/dep_scenario1.png)
 
@@ -164,8 +164,8 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 
 |   |   |
 | - | - |
-| 不會。 內部部署環境部署的代理程式數目 | 3 (適用於高可用性和容錯移轉) |
-| 不會。 Azure 入口網站中設定的「Workday 至 AD 使用者佈建應用程式」數目 | 每一子網域一個應用程式 |
+| No。 內部部署環境部署的代理程式數目 | 3 (適用於高可用性和容錯移轉) |
+| No。 Azure 入口網站中設定的「Workday 至 AD 使用者佈建應用程式」數目 | 每一子網域一個應用程式 |
 
   ![案例 2](./media/workday-inbound-tutorial/dep_scenario2.png)
 
@@ -175,8 +175,8 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 
 |   |   |
 | - | - |
-| 不會。 內部部署環境部署的代理程式數目 | 每一不相鄰的 AD 樹系 3 個 |
-| 不會。 Azure 入口網站中設定的「Workday 至 AD 使用者佈建應用程式」數目 | 每一子網域一個應用程式 |
+| No。 內部部署環境部署的代理程式數目 | 每一不相鄰的 AD 樹系 3 個 |
+| No。 Azure 入口網站中設定的「Workday 至 AD 使用者佈建應用程式」數目 | 每一子網域一個應用程式 |
 
   ![案例 3](./media/workday-inbound-tutorial/dep_scenario3.png)
 
@@ -255,7 +255,7 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 
 1. 在搜尋方塊中輸入 create security group，然後按一下 [建立安全性群組]連結。
 
-    ![建立安全群組](./media/workday-inbound-tutorial/wd_isu_03.png "建立安全性群組")
+    ![建立安全群組](./media/workday-inbound-tutorial/wd_isu_03.png "CreateSecurity 群組")
 2. 完成**建立安全性群組**工作。 
 
    * Workday 中有兩種類型的安全性群組：
@@ -264,7 +264,7 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
    * 請洽詢您的 Workday 整合合作夥伴，以選取適用於整合的安全性群組類型。
    * 知道群組類型之後，請從 [Type of Tenanted Security Group] \(租用安全性群組類型\) 下拉式清單中選取 [Integration System Security Group (Unconstrained)] \(整合系統安全性群組 (不受限制)\) 或 [Integration System Security Group (Constrained)] \(整合系統安全性群組 (受限制)\)。
 
-     ![建立安全群組](./media/workday-inbound-tutorial/wd_isu_04.png "建立安全性群組")
+     ![建立安全群組](./media/workday-inbound-tutorial/wd_isu_04.png "CreateSecurity 群組")
 
 3. 安全性群組成功建立之後，您會看到可用來將成員指派到安全性群組的頁面。 請將在上個步驟中建立的新整合系統使用者新增到此安全性群組。 如果您使用「受限制」安全性群組，則也需要選取適當的組織範圍。
 
@@ -312,9 +312,9 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
    | ---------- | ---------- |
    | Get 和 Put | 人員資料：公用人員報告 |
    | Get 和 Put | 人員資料：工作連絡人資訊 |
-   | 取得 | 人員資料：所有職位 |
-   | 取得 | 人員資料：目前人員配置資訊 |
-   | 取得 | 人員資料：人員個人檔案的職稱 |
+   | Get | 人員資料：所有職位 |
+   | Get | 人員資料：目前人員配置資訊 |
+   | Get | 人員資料：人員個人檔案的職稱 |
    | Get 和 Put | Workday 帳戶 |
 
 ### <a name="configuring-business-process-security-policy-permissions"></a>設定商務程序安全性原則權限
@@ -350,7 +350,7 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 1. 輸入供稽核用的註解並按一下 [確定]按鈕，以開始「啟用擱置的安全性原則變更」工作。
 1. 在下一個畫面核取 [確認] 核取方塊，然後按一下 [確定] 以完成工作。
 
-    ![啟用擱置的安全性](./media/workday-inbound-tutorial/wd_isu_18.png "啟用擱置的安全性")  
+    ![啟用擱置的安全性](./media/workday-inbound-tutorial/wd_isu_18.png "啟動擱置安全性")  
 
 ## <a name="configuring-user-provisioning-from-workday-to-active-directory"></a>設定將使用者從 Workday 佈建至 Active Directory
 
@@ -455,7 +455,7 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 
    * **管理員密碼** – 輸入 Workday 整合系統帳戶的密碼
 
-   * **租用戶 URL** – 輸入租用戶 Workday Web 服務端點的 URL。 此值應該看起來像這樣： https://wd3-impl-services1.workday.com/ccx/service/contoso4 ，其中會以您的正確租用戶名稱取代 *contoso4*，以及以正確的環境字串取代 *wd3-impl*。
+   * **租用戶 URL** – 輸入租用戶 Workday Web 服務端點的 URL。 此值應該看起來像這樣： https://wd3-impl-services1.workday.com/ccx/service/contoso4，其中會以您的正確租用戶名稱取代 *contoso4*，以及以正確的環境字串取代 *wd3-impl*。
 
    * **Active Directory 樹系** – 向代理程式註冊的 Active Directory 網域「名稱」。 請使用下拉式清單來選取用於佈建的目標網域。 此值通常是如下的字串：*contoso.com*
 
@@ -472,7 +472,7 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 
    * 按一下 [測試連線] 按鈕。 如果連線測試成功，請按一下頂端的 [儲存] 按鈕。 如果失敗，請仔細檢查代理程式上設定的 Workday 認證和 AD 認證是否有效。
 
-     ![Azure Portal](./media/workday-inbound-tutorial/wd_1.png)
+     ![Azure 入口網站](./media/workday-inbound-tutorial/wd_1.png)
 
    * 順利儲存認證之後，[對應] 區段會顯示 [Synchronize Workday Workers to On Premises Active Directory] \(將 Workday 人員同步至內部部署 Active Directory\) 預設對應
 
@@ -502,7 +502,7 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
    > 第一次設定佈建應用程式時，您將需要測試及確認屬性對應和運算式，以確保它提供您所需的結果。 Microsoft 建議您使用 [來源物件範圍] 底下的範圍篩選，利用幾個來自 Workday 的測試使用者來測試您的對應。 確認對應能夠運作之後，您便可以移除篩選，或逐漸擴大篩選來包含更多使用者。
 
    > [!CAUTION] 
-   > 布建引擎的預設行為是停用/刪除超出範圍的使用者。 這可能不適合您的 Workday 進行 AD 整合。 若要覆寫此預設行為，請參閱[略過刪除超出範圍的使用者帳戶一](../manage-apps/skip-out-of-scope-deletions.md)文
+   > 布建引擎的預設行為是停用/刪除超出範圍的使用者。 這可能不適合您的 Workday 進行 AD 整合。 若要覆寫此預設行為，請參閱[略過刪除超出範圍的使用者帳戶一](../app-provisioning/skip-out-of-scope-deletions.md)文
   
 1. 在 [目標物件動作] 欄位中，您可以全域篩選在 Active Directory 上執行的動作。 最常見的動作是 [建立] 和 [更新]。
 
@@ -516,7 +516,7 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 
          * **常數** – 將靜態的常數字串值寫入至 AD 屬性
 
-         * **運算式** – 可讓您根據一或多個 Workday 屬性，將自訂值寫入 AD 屬性。 [如需詳細資訊，請參閱這篇有關運算式的文章](../manage-apps/functions-for-customizing-application-data.md)。
+         * **運算式** – 可讓您根據一或多個 Workday 屬性，將自訂值寫入 AD 屬性。 [如需詳細資訊，請參閱這篇有關運算式的文章](../app-provisioning/functions-for-customizing-application-data.md)。
 
       * **來源屬性** - 來自 Workday 的使用者屬性。 如果您要尋找的屬性不存在，請參閱[自訂 Workday 使用者屬性的清單](#customizing-the-list-of-workday-user-attributes)。
 
@@ -537,15 +537,15 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 
 1. 若要儲存您的對應，請按一下 [屬性對應] 區段頂端的 [儲存]。
 
-   ![Azure Portal](./media/workday-inbound-tutorial/wd_2.png)
+   ![Azure 入口網站](./media/workday-inbound-tutorial/wd_2.png)
 
 #### <a name="below-are-some-example-attribute-mappings-between-workday-and-active-directory-with-some-common-expressions"></a>以下是 Workday 與 Active Directory 之間的一些範例屬性對應，以及一些常用運算式
 
 * 對應至 *parentDistinguishedName* 屬性的運算式可用來根據一或多個 Workday 來源屬性，將使用者佈建至不同的 OU。 此處的範例會根據使用者的所在城市將使用者放在不同 OU 中。
 
-* Active Directory 中的 *userPrincipalName* 屬性是使用重複資料刪除函式 [SelectUniqueValue](../manage-apps/functions-for-customizing-application-data.md#selectuniquevalue) 來產生的，此函式會檢查目標 AD 網域中是否有所產生的值，且只有當該值是唯一值時，才會設定它。  
+* Active Directory 中的 *userPrincipalName* 屬性是使用重複資料刪除函式 [SelectUniqueValue](../app-provisioning/functions-for-customizing-application-data.md#selectuniquevalue) 來產生的，此函式會檢查目標 AD 網域中是否有所產生的值，且只有當該值是唯一值時，才會設定它。  
 
-* [此為有關撰寫運算式的文件](../manage-apps/functions-for-customizing-application-data.md)。 本節包含說明如何移除特殊字元的範例。
+* [此為有關撰寫運算式的文件](../app-provisioning/functions-for-customizing-application-data.md)。 本節包含說明如何移除特殊字元的範例。
 
 | WORKDAY 屬性 | ACTIVE DIRECTORY 屬性 |  比對識別碼？ | 建立/更新 |
 | ---------- | ---------- | ---------- | ---------- |
@@ -611,7 +611,7 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 
    * **管理員密碼** – 輸入 Workday 整合系統帳戶的密碼
 
-   * **租用戶 URL** – 輸入租用戶 Workday Web 服務端點的 URL。 此值應該看起來像這樣： https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources ，其中會以您的正確租用戶名稱取代 *contoso4*，以及以正確的環境字串取代 *wd3-impl*。 如果不知道此 URL，請與您的 Workday 整合夥伴或支援代表合作，來判斷要使用的正確 URL。
+   * **租用戶 URL** – 輸入租用戶 Workday Web 服務端點的 URL。 此值應該看起來像這樣： https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources，其中會以您的正確租用戶名稱取代 *contoso4*，以及以正確的環境字串取代 *wd3-impl*。 如果不知道此 URL，請與您的 Workday 整合夥伴或支援代表合作，來判斷要使用的正確 URL。
 
    * **通知電子郵件** – 輸入您的電子郵件地址，然後勾選 [發生失敗時傳送電子郵件] 核取方塊。
 
@@ -653,7 +653,7 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 
       * **常數** – 將靜態的常數字串值寫入至 AD 屬性
 
-      * **運算式** – 可讓您根據一或多個 Workday 屬性，將自訂值寫入 AD 屬性。 [如需詳細資訊，請參閱這篇有關運算式的文章](../manage-apps/functions-for-customizing-application-data.md)。
+      * **運算式** – 可讓您根據一或多個 Workday 屬性，將自訂值寫入 AD 屬性。 [如需詳細資訊，請參閱這篇有關運算式的文章](../app-provisioning/functions-for-customizing-application-data.md)。
 
    * **來源屬性** - 來自 Workday 的使用者屬性。 如果您要尋找的屬性不存在，請參閱[自訂 Workday 使用者屬性的清單](#customizing-the-list-of-workday-user-attributes)。
 
@@ -708,7 +708,7 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 
    * **管理員密碼** – 輸入 Workday 整合系統帳戶的密碼
 
-   * **租用戶 URL –** 輸入租用戶 Workday Web 服務端點的 URL。 此值應該看起來像這樣： https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources ，其中會以您的正確租用戶名稱取代 *contoso4*，以及以正確的環境字串取代 *wd3-impl* (如有必要)。
+   * **租用戶 URL –** 輸入租用戶 Workday Web 服務端點的 URL。 此值應該看起來像這樣： https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources，其中會以您的正確租用戶名稱取代 *contoso4*，以及以正確的環境字串取代 *wd3-impl* (如有必要)。
 
    * **通知電子郵件** – 輸入您的電子郵件地址，然後勾選 [發生失敗時傳送電子郵件] 核取方塊。
 
@@ -737,7 +737,7 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 
 1. 在 [佈建] 索引標籤中，將 [佈建狀態] 設定為 [開啟]。
 
-2. 按一下 [檔案]。
+2. Haga clic en **Guardar**.
 
 3. 此作業會啟動初始同步，所需花費的時數會視 Workday 租用戶中的使用者人數而定。 
 
@@ -745,7 +745,7 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 
 5. 在初始同步完成之後，它會在 [佈建] 索引標籤中寫入稽核摘要報告，如下所示。
 
-   ![Azure Portal](./media/workday-inbound-tutorial/wd_3.png)
+   ![Azure 入口網站](./media/workday-inbound-tutorial/wd_3.png)
 
 ## <a name="frequently-asked-questions-faq"></a>常見問題集 (FAQ)
 
@@ -848,7 +848,7 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 * 移至 [控制台] -> [解除安裝或變更程式] 功能表
 * 尋找與 [Microsoft Azure AD Connect 佈建代理程式] 項目對應的版本
 
-  ![Azure Portal](./media/workday-inbound-tutorial/pa_version.png)
+  ![Azure 入口網站](./media/workday-inbound-tutorial/pa_version.png)
 
 #### <a name="does-microsoft-automatically-push-provisioning-agent-updates"></a>Microsoft 是否會自動推送佈建代理程式更新？
 
@@ -1023,9 +1023,9 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
     )
      ```
     另請參閱：
-  * [Switch 函式語法](../manage-apps/functions-for-customizing-application-data.md#switch)
-  * [Join 函式語法](../manage-apps/functions-for-customizing-application-data.md#join)
-  * [Append 函式語法](../manage-apps/functions-for-customizing-application-data.md#append)
+  * [Switch 函式語法](../app-provisioning/functions-for-customizing-application-data.md#switch)
+  * [Join 函式語法](../app-provisioning/functions-for-customizing-application-data.md#join)
+  * [Append 函式語法](../app-provisioning/functions-for-customizing-application-data.md#append)
 
 #### <a name="how-can-i-use-selectuniquevalue-to-generate-unique-values-for-samaccountname-attribute"></a>如何使用 SelectUniqueValue 來為 samAccountName 屬性產生唯一值？
 
@@ -1043,17 +1043,17 @@ SelectUniqueValue(
 
 另請參閱：
 
-* [Mid 函式語法](../manage-apps/functions-for-customizing-application-data.md#mid)
-* [Replace 函式語法](../manage-apps/functions-for-customizing-application-data.md#replace)
-* [SelectUniqueValue 函式語法](../manage-apps/functions-for-customizing-application-data.md#selectuniquevalue)
+* [Mid 函式語法](../app-provisioning/functions-for-customizing-application-data.md#mid)
+* [Replace 函式語法](../app-provisioning/functions-for-customizing-application-data.md#replace)
+* [SelectUniqueValue 函式語法](../app-provisioning/functions-for-customizing-application-data.md#selectuniquevalue)
 
 #### <a name="how-do-i-remove-characters-with-diacritics-and-convert-them-into-normal-english-alphabets"></a>如何移除含有變音符號的字元，並將其轉換成一般英文字母？
 
-建構使用者的電子郵件地址或 CN 值時，請使用 [NormalizeDiacritics](../manage-apps/functions-for-customizing-application-data.md#normalizediacritics) 函式來移除使用者名字和姓氏中的特殊字元。
+建構使用者的電子郵件地址或 CN 值時，請使用 [NormalizeDiacritics](../app-provisioning/functions-for-customizing-application-data.md#normalizediacritics) 函式來移除使用者名字和姓氏中的特殊字元。
 
-## <a name="troubleshooting-tips"></a>疑難排解提示
+## <a name="troubleshooting-tips"></a>疑難排解秘訣
 
-本節提供有關如何使用「Azure AD 稽核記錄」和「Windows Server 事件檢視器」記錄，針對 Workday 整合的相關佈建問題進行疑難排解的特定指引。 其以一般疑難排解步驟和教學課程中所捕獲的概念為基礎[：自動使用者帳戶](../manage-apps/check-status-user-account-provisioning.md)布建的報告
+本節提供有關如何使用「Azure AD 稽核記錄」和「Windows Server 事件檢視器」記錄，針對 Workday 整合的相關佈建問題進行疑難排解的特定指引。 其以一般疑難排解步驟和教學課程中所捕獲的概念為基礎[：自動使用者帳戶](../app-provisioning/check-status-user-account-provisioning.md)布建的報告
 
 本節涵蓋下列疑難排解層面：
 
@@ -1209,7 +1209,7 @@ manager 屬性是 AD 中的參考屬性。 佈建服務不會在進行使用者�
 |#|錯誤案例 |可能的原因|建議的解決方式|
 |--|---|---|---|
 |1.| Audit 記錄檔中的匯出作業失敗，訊息*錯誤： OperationsError-SvcErr：發生作業錯誤。未設定目錄服務的高階參考。因此，目錄服務無法對此樹系外的物件發出參照。* | 通常，如果未正確設定 [Active Directory 容器] OU，或用於 *parentDistinguishedName* 的「運算式對應」有問題，就會出現此錯誤。 | 檢查 [Active Directory 容器] OU 參數是否有錯字。 如果您在屬性對應中使用 *parentDistinguishedName*，請確定它一律會評估為 AD 網域內的已知容器。 請檢查稽核記錄中的「匯出」事件，以查看產生的值。 |
-|2.| 在 audit 記錄檔中匯出作業失敗，錯誤碼： *SystemForCrossDomainIdentityManagementBadResponse*和 message *error： ConstraintViolation-AtrErr：要求中的值無效。屬性的值不在可接受的值範圍內。\N 詳細資料： CONSTRAINT_ATT_TYPE-公司*。 | 雖然此錯誤是 *company* 屬性特定的錯誤，但針對其他屬性 (例如 *CN*)，您也可能看到此錯誤。 之所以會出現此錯誤，是因為 AD 的強制執行結構描述條件約束緣故。 AD 中的 *company* 和 *CN* 等屬性預設有 64 個字元的上限。 如果來自 Workday 的值超過 64 個字元，您就會看到此錯誤訊息。 | 檢查稽核記錄中的「匯出」事件，以查看錯誤訊息中所回報屬性的值。 請考慮使用 [Mid](../manage-apps/functions-for-customizing-application-data.md#mid) 函式以截斷來自 Workday 的值，或將對應變更至沒有類似之長度條件約束的 AD 屬性。  |
+|2.| 在 audit 記錄檔中匯出作業失敗，錯誤碼： *SystemForCrossDomainIdentityManagementBadResponse*和 message *error： ConstraintViolation-AtrErr：要求中的值無效。屬性的值不在可接受的值範圍內。\N 詳細資料： CONSTRAINT_ATT_TYPE-公司*。 | 雖然此錯誤是 *company* 屬性特定的錯誤，但針對其他屬性 (例如 *CN*)，您也可能看到此錯誤。 之所以會出現此錯誤，是因為 AD 的強制執行結構描述條件約束緣故。 AD 中的 *company* 和 *CN* 等屬性預設有 64 個字元的上限。 如果來自 Workday 的值超過 64 個字元，您就會看到此錯誤訊息。 | 檢查稽核記錄中的「匯出」事件，以查看錯誤訊息中所回報屬性的值。 請考慮使用 [Mid](../app-provisioning/functions-for-customizing-application-data.md#mid) 函式以截斷來自 Workday 的值，或將對應變更至沒有類似之長度條件約束的 AD 屬性。  |
 
 #### <a name="ad-user-account-update-errors"></a>AD 使用者帳戶更新錯誤
 
@@ -1257,7 +1257,7 @@ Azure AD 佈建服務支援自訂清單或 Workday 屬性的功能，以包含�
 
     ![Workday Studio](./media/workday-inbound-tutorial/wdstudio2.png)
 
-9. 選取 [確定]。
+9. 選取 **[確定]** 。
 
 10. 在 [Request] \(要求\) 窗格中，貼上以下的 XML 並將 **Employee_ID** 設定為您 Workday 租用戶中真實使用者的員工識別碼。 選取已填入您想擷取之屬性的使用者。
 
@@ -1348,7 +1348,7 @@ Azure AD 佈建服務支援自訂清單或 Workday 屬性的功能，以包含�
 
 ### <a name="exporting-and-importing-your-configuration"></a>匯出及匯入您的設定
 
-請參閱[匯出和匯入](../manage-apps/export-import-provisioning-configuration.md)布建設定一文
+請參閱[匯出和匯入](../app-provisioning/export-import-provisioning-configuration.md)布建設定一文
 
 ## <a name="managing-personal-data"></a>管理個人資料
 
@@ -1362,7 +1362,7 @@ Azure AD 佈建服務會歸類到 GDPR 分類的**資料處理器**類別。 作
 
 ## <a name="next-steps"></a>後續步驟
 
-* [瞭解如何針對佈建活動檢閱記錄和取得報告](../manage-apps/check-status-user-account-provisioning.md)
+* [瞭解如何針對佈建活動檢閱記錄和取得報告](../app-provisioning/check-status-user-account-provisioning.md)
 * [了解如何設定 Workday 與 Azure Active Directory 之間的單一登入](workday-tutorial.md)
 * [了解如何將其他 SaaS 應用程式與 Azure Active Directory 整合](tutorial-list.md)
 * [了解如何使用 Microsoft Graph API 來管理佈建設定](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) \(英文\)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: Zhchia
-ms.openlocfilehash: 46972209a8fa509ff2f17832ab8329aa3cef2548
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 5dd4f5ac6152c22b5e2a84ecc0774672bcd5590b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71840318"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064184"
 ---
 # <a name="tutorial-configure-wrike-for-automatic-user-provisioning"></a>教學課程：設定 Wrike 來自動布建使用者
 
@@ -40,7 +40,7 @@ ms.locfileid: "71840318"
 * Wrike 中具有系統管理員許可權的使用者帳戶
 
 ## <a name="assign-users-to-wrike"></a>將使用者指派給 Wrike
-Azure Active Directory 使用稱為「*指派*」的概念, 來判斷哪些使用者應接收所選應用程式的存取權。 在自動使用者布建的內容中，只有指派給 Azure AD 中應用程式的使用者或群組會進行同步處理。
+Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使用者應接收所選應用程式的存取權。 在自動使用者布建的內容中，只有指派給 Azure AD 中應用程式的使用者或群組會進行同步處理。
 
 在您設定並啟用自動使用者布建之前，請先決定 Azure AD 中的哪些使用者或群組需要存取 Wrike。 然後遵循此處的指示，將這些使用者或群組指派給 Wrike：
 
@@ -66,9 +66,9 @@ Azure Active Directory 使用稱為「*指派*」的概念, 來判斷哪些使�
 
 3.  選取 [SCIM]。 複製**基底 URL**。
 
-    ![基底 URL](media/Wrike-provisioning-tutorial/Wrike-tenanturl.png)
+    ![基礎 URL](media/Wrike-provisioning-tutorial/Wrike-tenanturl.png)
 
-4. 選取 [ **API** > ] [**Azure SCIM**]。
+4. 選取 [ **API** > **Azure SCIM**]。
 
     ![Azure SCIM](media/Wrike-provisioning-tutorial/Wrike-add-scim.png)
 
@@ -95,7 +95,7 @@ Azure Active Directory 使用稱為「*指派*」的概念, 來判斷哪些使�
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-3. 若要新增新的應用程式, 請選取窗格頂端的 [**新增應用程式**] 按鈕。
+3. 若要新增新的應用程式，請選取窗格頂端的 [**新增應用程式**] 按鈕。
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
@@ -113,7 +113,7 @@ Azure Active Directory 使用稱為「*指派*」的概念, 來判斷哪些使�
 
 ### <a name="configure-automatic-user-provisioning-for-wrike-in-azure-ad"></a>在 Azure AD 中設定自動使用者布建以進行 Wrike
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。 選取 [**企業應用程式**]  >  個 [**所有應用程式**]。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。 選取 [**企業應用程式**] > [**所有應用程式**]。
 
     ![所有應用程式](common/enterprise-applications.png)
 
@@ -147,7 +147,7 @@ Azure Active Directory 使用稱為「*指派*」的概念, 來判斷哪些使�
 
     ![Wrike 使用者屬性](media/Wrike-provisioning-tutorial/Wrike-user-attributes.png)
 
-11. 若要設定範圍篩選準則，請遵循[範圍篩選教學](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)課程中的指示。
+11. 若要設定範圍篩選準則，請遵循[範圍篩選教學](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)課程中的指示。
 
 12. 若要啟用 Wrike 的 Azure AD 布建服務，請在 [**設定**] 區段中將 [布建**狀態**] 變更為 [**開啟**]。
 
@@ -155,21 +155,21 @@ Azure Active Directory 使用稱為「*指派*」的概念, 來判斷哪些使�
 
 13. 在 [**設定**] 區段的 [**範圍**] 中選擇所需的值，以定義您想要布建到 Wrike 的使用者或群組。
 
-    ![布建範圍](common/provisioning-scope.png)
+    ![佈建範圍](common/provisioning-scope.png)
 
 14. 當您準備好要布建時，請選取 [**儲存**]。
 
     ![正在儲存布建設定](common/provisioning-configuration-save.png)
 
-這項作業會啟動 [**設定**] 區段的 [**範圍**] 中定義的所有使用者或群組的首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行。 如需使用者或群組布建多久時間的詳細資訊，請參閱布建[使用者需要](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)多久時間？。
+這項作業會啟動 [**設定**] 區段的 [**範圍**] 中定義的所有使用者或群組的首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行。 如需使用者或群組布建多久時間的詳細資訊，請參閱布建[使用者需要](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)多久時間？。
 
-您可以使用 [**目前狀態**] 區段來監視進度，並遵循 [布建活動報告] 的連結，其中描述 Wrike 上的 Azure AD 布建服務所執行的所有動作。 如需詳細資訊，請參閱[檢查使用者](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md)布建的狀態。 若要讀取 Azure AD 布建記錄，請參閱[關於自動使用者帳戶](../manage-apps/check-status-user-account-provisioning.md)布建的報告。
+您可以使用 [**目前狀態**] 區段來監視進度，並遵循 [布建活動報告] 的連結，其中描述 Wrike 上的 Azure AD 布建服務所執行的所有動作。 如需詳細資訊，請參閱[檢查使用者](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)布建的狀態。 若要讀取 Azure AD 布建記錄，請參閱[關於自動使用者帳戶](../app-provisioning/check-status-user-account-provisioning.md)布建的報告。
 
 ## <a name="additional-resources"></a>其他資源
 
-* [管理企業應用程式的使用者帳戶佈建](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [管理企業應用程式的使用者帳戶佈建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>後續步驟
 
-* [瞭解如何針對佈建活動檢閱記錄和取得報告](../manage-apps/check-status-user-account-provisioning.md)
+* [瞭解如何針對佈建活動檢閱記錄和取得報告](../app-provisioning/check-status-user-account-provisioning.md)

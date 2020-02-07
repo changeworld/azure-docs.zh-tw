@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b77d6fe03a051c019519f195d55cdeb00fb9afb2
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 5a9e5e014740302c439036bd3889761f4750344f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906261"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062858"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>規劃 Azure 檔案服務部署
 
@@ -129,7 +129,7 @@ Azure 備份適用于 premium 檔案共用，Azure Kubernetes Service 支援1.13
 |10240      | 10240  | 最多30720  | 675 | 450   |
 |33792      | 33792  | 最多100000 | 2088 | 1392   |
 |51200      | 51200  | 最多100000 | 3,132 | 2088   |
-|102400     | 100,000 家 | 最多100000 | 6204 | 4136   |
+|102400     | 100,000 | 最多100000 | 6204 | 4136   |
 
 > [!NOTE]
 > 檔案共用效能受限於機器網路限制、可用的網路頻寬、IO 大小、平行處理，還有許多其他因素。 例如，根據具有8個 KiB 讀取/寫入 IO 大小的內部測試，透過 SMB 連線到 premium 檔案共用的單一 Windows 虛擬機器*標準 F16s_v2*，可以達到20K 的讀取 IOPS 和15K 寫入 iops。 使用 512 MiB 讀取/寫入 IO 大小，相同的 VM 可以達到 1.1 GiB/s 輸出，以及 370 MiB/s 輸入輸送量。 若要達到最大效能等級，請將負載分散到多個 Vm。 請參閱[疑難排解指南](storage-troubleshooting-files-performance.md)，以瞭解一些常見的效能問題和因應措施。
@@ -204,8 +204,7 @@ GRS 會將您的資料複寫到次要區域中的另一個資料中心，但如�
 具有 100 TiB 容量限制的標準檔案共用，可在所有 Azure 區域中全域取得-
 
 - LRS：除了南非北部和南非西部以外的所有區域。
-   - 國家雲端（政府、德國、中國）可透過 PowerShell 和 Azure 命令列介面（CLI）來支援。 沒有入口網站支援。 
-   - 「美國東部」、「東部美國2」、「西歐」：支援所有新的帳戶。 少數現有帳戶尚未完成升級程式。 您可以藉由嘗試[啟用大型檔案共用](storage-files-how-to-create-large-file-share.md)，檢查現有的儲存體帳戶是否已完成升級程式。
+   - 美國東部和西歐：支援所有新的帳戶。 少數現有帳戶尚未完成升級程式。 您可以藉由嘗試[啟用大型檔案共用](storage-files-how-to-create-large-file-share.md)，檢查現有的儲存體帳戶是否已完成升級程式。
 
 - ZRS：除了日本東部、北歐、南非北部以外的所有區域。
 - GRS/切換：不支援。

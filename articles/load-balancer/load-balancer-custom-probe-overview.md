@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 5aa75de694d05ce31becc6996aca419dff256a3f
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 5517b6434d8d654e8aa7e28bec8f6d2a3d9ca73b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023543"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77056677"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer 健康情況探查
 
@@ -128,7 +128,7 @@ HTTP 和 HTTPS 探查建立在 TCP 探查的基礎上，並會發出含有指定
 
 在以下情況，HTTP / HTTPS 探查會失敗：
 * 探查端點會傳回 200 以外的 HTTP 回應碼 (例如，403、404 或 500)。 這會立即將健康情況探查標記為關閉。 
-* 探查端點在 31 秒的逾時期間內完全沒有回應。 在探查被標示為非執行中之前，直到達到所有逾時時間間隔總和為止，這段時間內已有多個探查要求並未獲得回應。
+* 探查端點在探查間隔的最小值和30秒的超時期間都不會回應。 在探查被標示為非執行中之前，直到達到所有逾時時間間隔總和為止，這段時間內已有多個探查要求並未獲得回應。
 * 探查端點會透過 TCP 重設關閉連線。
 
 以下說明如何在 Resource Manager 範本中表示這種探查設定：
@@ -252,7 +252,7 @@ AzureLoadBalancer 服務標籤會在您的[網路安全性群組](../virtual-net
 ## <a name="limitations"></a>限制
 
 - HTTPS 探查不支援使用用戶端憑證進行相互驗證。
-- 當 TCP 時間戳記啟用時，您應該 assumehHealth 探查將會失敗。
+- 您應該假設啟用 TCP 時間戳記時，健康情況探查將會失敗。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -2,7 +2,7 @@
 title: 從我的帳戶入口網站中，查看隱私權相關資訊-Azure AD
 description: 瞭解您的組織如何從我的帳戶入口網站的 [隱私權] 頁面使用您的隱私權相關資訊。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: jpettere
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.author: lizross
-ms.openlocfilehash: 232a17a21c7172bbf5056ae990679d87600ee6a0
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: 94187cc7c0c3500a86d47a5f244457ee020581a3
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705083"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062433"
 ---
 # <a name="view-how-your-organization-uses-your-privacy-related-data"></a>瞭解您的組織如何使用您的隱私權相關資料
 

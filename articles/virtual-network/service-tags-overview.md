@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 1fec2778ce8c839c5bac0c1d74085db0f8b283ce
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 26906f2a7343dbaf09f3107d2598e81a42c65091
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76902997"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064643"
 ---
 # <a name="virtual-network-service-tags"></a>虛擬網路服務標籤 
 <a name="network-service-tags"></a>
@@ -40,7 +40,7 @@ ms.locfileid: "76902997"
 
 根據預設，服務標記會反映整個雲端的範圍。 某些服務標籤也會藉由將對應的 IP 範圍限制為指定的區域，來提供更細微的控制。 例如，服務標籤**儲存體**代表整個雲端 Azure 儲存體，但**WestUS**會將範圍縮小為只有 WESTUS 區域的儲存體 IP 位址範圍。 下表指出每個服務標記是否支援這類區域範圍。  
 
-| 標記 | 目的 | 可以使用輸入或輸出嗎？ | 可以是地區嗎？ | 可以與 Azure 防火牆搭配使用嗎？ |
+| Tag | 目的 | 可以使用輸入或輸出嗎？ | 可以是地區嗎？ | 可以與 Azure 防火牆搭配使用嗎？ |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **ApiManagement** | Azure API 管理-專用部署的管理流量。 | 兩者 | 否 | 是 |
 | **ApplicationInsightsAvailability** | Application Insights 可用性。 | 輸入 | 否 | 否 |
@@ -85,7 +85,7 @@ ms.locfileid: "76902997"
 | **MicrosoftCloudAppSecurity** | Microsoft Cloud App Security。 | 輸出 | 否 | 否 |
 | **MicrosoftContainerRegistry** | 適用于 Microsoft 容器映射的 container registry。 <br/><br/>*注意：* 也請將下列 IP 列入白名單（即將移除此相依性）：204.79.197.219。 | 輸出 | 是 | 是 |
 | **ServiceBus** | Azure 服務匯流排使用 Premium 服務層級的流量。 | 輸出 | 是 | 是 |
-| **ServiceFabric** | Azure Service Fabric。 | 輸出 | 否 | 否 |
+| **ServiceFabric** | Azure Service Fabric。<br/><br/>*注意：* 此標記代表每個區域之控制平面的 Service Fabric 服務端點。 這可讓客戶從其 VNET 執行其 Service Fabric 叢集的管理作業（例如 HTTPs://westus.servicefabric.azure.com） | 兩者 | 否 | 否 |
 | **Sql** | Azure SQL Database、適用於 MySQL 的 Azure 資料庫、適用於 PostgreSQL 的 Azure 資料庫和 Azure SQL 資料倉儲。<br/><br/>*注意：* 此標記代表服務，而不是服務的特定實例。 例如，標籤代表 SQL Database 或伺服器服務，但不代表特定的 Azure SQL Database。 | 輸出 | 是 | 是 |
 | **SqlManagement** | 適用于 SQL 專用部署的管理流量。 | 兩者 | 否 | 是 |
 | **Storage** | Azure 儲存體。 <br/><br/>*注意：* 此標記代表服務，而不是服務的特定實例。 例如，標籤代表 Azure 儲存體服務，但不代表特定的 Azure 儲存體帳戶。 | 輸出 | 是 | 是 |
@@ -97,7 +97,7 @@ ms.locfileid: "76902997"
 >| 傳統拼寫 | 對等 Resource Manager 標記 |
 >|---|---|
 >| AZURE_LOADBALANCER | AzureLoadBalancer |
->| 網際網路 | Internet |
+>| 網際網路 | 網際網路 |
 >| VIRTUAL_NETWORK | VirtualNetwork |
 
 > [!NOTE]
@@ -117,7 +117,7 @@ ms.locfileid: "76902997"
 - [Azure CLI](https://docs.microsoft.com/cli/azure/network?view=azure-cli-latest#az-network-list-service-tags)
 
 > [!NOTE]
-> 當它處於公開預覽狀態時，探索 API 可能會傳回的資訊不如 JSON 下載所傳回的資訊。 （請參閱下一節）。
+> 當它處於公開預覽狀態時，探索 API 可能會傳回的資訊不如 JSON 下載所傳回的資訊。 (請參閱下節)。
 
 
 ### <a name="discover-service-tags-by-using-downloadable-json-files"></a>使用可下載的 JSON 檔案探索服務標記 

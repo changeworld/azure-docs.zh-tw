@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: b4396c82851969b39841ba77fb8aba9679363474
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 00ab3e9c7902e253d39a38eb0e98ee166244bca2
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986490"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048573"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>在 Python 中設定自動化 ML 實驗
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -109,7 +109,7 @@ automl_config = AutoMLConfig(task = "classification")
 * 輕鬆地將靜態檔案或 URL 來源中的資料傳輸至您的工作區
 * 在雲端計算資源上執行時，將您的資料提供給訓練腳本
 
-如需使用`Dataset`類別將資料掛接至計算目標的範例，請參閱 [how to](how-to-train-with-datasets.md#option-2--mount-files-to-a-remote-compute-target)。
+如需使用 `Dataset` 類別將資料掛接至計算目標的範例，請參閱 how [to](how-to-train-with-datasets.md#option-2--mount-files-to-a-remote-compute-target) 。
 
 ## <a name="train-and-validation-data"></a>訓練和驗證資料
 
@@ -189,12 +189,18 @@ automl_config = AutoMLConfig(task = "classification")
 
 ### <a name="data-featurization"></a>資料特徵化
 
-在每個自動化的機器學習實驗中，您的資料都會[自動調整並正規化](concept-automated-ml.md#preprocess)，以協助*特定*的演算法，而這些演算法會受到不同規模的功能所影響。  不過，您也可以啟用其他特徵化，例如遺漏值插補、編碼和轉換。 [深入瞭解包含的特徵化](how-to-create-portal-experiments.md#preprocess)。
+在每個自動化的機器學習實驗中，您的資料都會[自動調整並正規化](concept-automated-ml.md#preprocess)，以協助*特定*的演算法，而這些演算法會受到不同規模的功能所影響。  不過，您也可以啟用其他特徵化，例如遺漏值插補、編碼和轉換。 [深入瞭解包含的特徵化](how-to-create-portal-experiments.md#featurization)。
 
-若要啟用此特徵化，請指定[`AutoMLConfig` 類別](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)的 `"featurization": 'auto'`。
+在設定您的實驗時，您可以 `featurization`啟用 [advanced] 設定。 下表顯示[`AutoMLConfig` 類別](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)中已接受的特徵化設定。
+
+|特徵化設定 | 描述 |
+| ------------- | ------------- |
+|`"featurization":`&nbsp;`'FeaturizationConfig'`| 表示應該使用自訂的特徵化步驟。 [瞭解如何自訂特徵化](how-to-configure-auto-train.md#customize-feature-engineering)。|
+|`"featurization": 'off'`| 表示不應自動執行特徵化步驟。|
+|`"featurization": 'auto'`| 指出在前置處理過程中，會自動執行[資料護欄和特徵化步驟](how-to-create-portal-experiments.md#advanced-featurization-options)。|
 
 > [!NOTE]
-> 自動化機器學習前置處理步驟 (功能正規化、處理遺漏的資料、將文字轉換成數值等等) 會成為基礎模型的一部分。 使用模型進行預測時，定型期間所套用的相同前置處理步驟會自動套用至您的輸入資料。
+> 自動化機器學習特徵化步驟（功能正規化、處理遺漏的資料、將文字轉換成數值等等）會成為基礎模型的一部分。 使用模型進行預測時，在定型期間所套用的相同特徵化步驟會自動套用至您的輸入資料。
 
 ### <a name="time-series-forecasting"></a>時間序列預測
 時間序列 `forecasting` 工作需要 configuration 物件中的其他參數：
@@ -397,18 +403,18 @@ best_run, fitted_model = automl_run.get_output()
     'Tranformations': ['DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime']}]
   ```
 
-   地點：
+   其中：
 
    |輸出|定義|
    |----|--------|
    |RawFeatureName|提供的輸入功能/資料行名稱。|
    |TypeDetected|偵測到輸入功能的資料類型。|
-   |刪除|指出輸入功能是否已卸載或使用。|
+   |卸除|指出輸入功能是否已卸載或使用。|
    |EngineeringFeatureCount|透過自動化功能工程轉換所產生的功能數目。|
    |轉換|套用至輸入功能以產生工程功能的轉換清單。|
    
 ### <a name="customize-feature-engineering"></a>自訂功能工程
-若要自訂功能工程，請指定 `"feauturization":FeaturizationConfig`。
+若要自訂功能工程，請指定 `"featurization": FeaturizationConfig`。
 
 支援的自訂包括：
 

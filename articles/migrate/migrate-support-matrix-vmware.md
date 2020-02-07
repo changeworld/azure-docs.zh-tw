@@ -3,12 +3,12 @@ title: Azure Migrate 中的 VMware 評估支援
 description: 深入瞭解 Azure Migrate 中的 VMware 評估支援。
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 8ed20ecd37eacdcb771db7c166ff8fc22b96cb89
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 2fab94b66e09d3923e481326b3650f1beb621dc4
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846187"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048757"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware 評估的支援矩陣 
 
@@ -88,7 +88,7 @@ ESXi 主機 | **僅針對[應用程式探索](https://docs.microsoft.com/azure/m
 
 ## <a name="agentless-dependency-visualization"></a>無代理程式的相依性視覺效果
 
-這個選項目前為預覽狀態。 [深入了解](how-to-create-group-machine-dependencies-agentless.md)。 下表摘要說明需求。
+這個選項目前為預覽狀態。 [詳細資訊](how-to-create-group-machine-dependencies-agentless.md)。 下表摘要說明需求。
 
 **需求** | **詳細資料**
 --- | ---
@@ -96,7 +96,7 @@ ESXi 主機 | **僅針對[應用程式探索](https://docs.microsoft.com/azure/m
 **VM 支援** | 目前僅支援 VMware Vm。
 **Windows VM** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64 位元)
 **Linux VM** | Red Hat Enterprise Linux 7、6、5<br/> Ubuntu Linux 14.04、16.04<br/> Debian 7、8<br/> Oracle Linux 6、7<br/> CentOS 5、6、7。
-**Windows 帳戶** |  視覺效果需要具有來賓存取權的使用者帳戶。
+**Windows 帳戶** |  視覺效果需要本機或網域系統管理員帳戶。
 **Linux 帳戶** | 視覺效果需要具有根許可權的使用者帳戶。<br/><br/> 或者，使用者帳戶需要/bin/netstat 和/bin/ls 檔案的下列許可權： CAP_DAC_READ_SEARCH 和 CAP_SYS_PTRACE。
 **VM 代理程式** | Vm 上不需要代理程式。
 **VMware 工具** | VMware 工具必須安裝在您想要分析的 Vm 上並加以執行。

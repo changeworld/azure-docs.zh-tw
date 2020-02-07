@@ -10,13 +10,13 @@ ms.author: nibaccam
 author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
-ms.openlocfilehash: 808d7ac7ded9b250e0835da51b6b547c05c622a9
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 02/04/2020
+ms.openlocfilehash: 620aab2d2104c9e08de6e7ea47511ff45a482ec4
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720396"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046104"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>使用 Azure Machine Learning studio 建立、探索及部署自動化的機器學習實驗
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -47,7 +47,7 @@ ms.locfileid: "76720396"
 
 ## <a name="create-and-run-experiment"></a>建立並執行實驗
 
-1. 選取 [ **+ 建立實驗**] 並填入表單。
+1. 選取 [ **+ 新增] [自動 ML 執行**] 並填入表單。
 
 1. 從儲存體容器中選取資料集，或建立新的資料集。 您可以從本機檔案、web url、資料存放區或 Azure 開放資料集建立資料集。 
 
@@ -113,16 +113,19 @@ ms.locfileid: "76720396"
 
         1. 選取 [預測範圍]：指出模型能夠預測到未來的時間單位數（分鐘/小時/天/周/月/年）。 需要進一步預測模型，使其變得更不精確。 [深入瞭解預測和水準預測](how-to-auto-train-forecast.md)。
 
-1. 選擇性新增設定：您可以用來更有效控制定型作業的其他設定。 否則會根據實驗選取範圍和資料來套用預設值。 
+1. 選擇性View 加法 configuration 設定：您可以用來更有效控制訓練作業的其他設定。 否則會根據實驗選取範圍和資料來套用預設值。 
 
     其他組態|描述
     ------|------
     主要計量| 用來評分模型的主要度量。 [深入瞭解模型計量](how-to-configure-auto-train.md#explore-model-metrics)。
-    自動特製化| 選取以啟用或停用自動化機器學習完成的前置處理。 前置處理包含自動資料清理、準備和轉換來產生綜合功能。 [深入瞭解](#preprocess)前置處理。
+    自動特製化| 選取以啟用或停用自動化機器學習完成的前置處理。 前置處理包含自動資料清理、準備和轉換來產生綜合功能。 時間序列預測工作類型不支援。 [深入瞭解](#featurization)前置處理。 
+    說明最佳模型 | 選取以啟用或停用以顯示建議最佳模型的可解釋性
     封鎖的演算法| 選取您想要從定型作業中排除的演算法。
     結束準則| 符合上述任一條件時，就會停止定型作業。 <br> *定型作業時間（小時）* ：允許執行訓練作業的時間長度。 <br> *度量分數臨界值*：所有管線的最小度量分數。 這可確保如果您有想要觸達的已定義目標計量，則不需要花費更多時間來進行定型作業。
     驗證| 選取要在定型作業中使用的其中一個交叉驗證選項。 [深入瞭解交叉驗證](how-to-configure-auto-train.md)。
-    並行| *並行反覆運算*數上限：要在定型作業中測試的管線數目上限（反覆運算）。 作業不會執行超過指定的反覆運算次數。 <br> *每個反復專案的最大核心*數：選取您要在使用多核心計算時使用的多核心限制。
+    並行| *並行反覆運算*數上限：要在定型作業中測試的管線數目上限（反覆運算）。 作業不會執行超過指定的反覆運算次數。
+
+1. 選擇性查看特徵化設定：如果您選擇在 [**其他設定**] 表單中啟用**自動特徵化**，此表單就是您指定要執行這些 featurizations 之資料行的位置，並選取要用於遺漏值 imputations 的統計值。
 
 <a name="profile"></a>
 
@@ -151,17 +154,13 @@ Variance| 量值分佈在此資料行中的值是來自其平均值。
 峰度| 測量此資料行的資料與一般散發的比較程度。
 
 
-<a name="preprocess"></a>
+<a name="featurization"></a>
 
 ## <a name="advanced-featurization-options"></a>Advanced 特徵化選項
 
-在設定您的實驗時，您可以 `feauturization`啟用 [advanced] 設定。 
+自動化機器學習服務會自動提供前置處理和資料護欄，協助您找出並管理資料的潛在問題。 
 
-|特徵化設定 | 描述 |
-| ------------- | ------------- |
-|"feauturization" = ' FeaturizationConfig '| 表示應該使用自訂的特徵化步驟。 [瞭解如何自訂特徵化](how-to-configure-auto-train.md#customize-feature-engineering)。|
-|"feauturization" = ' off '| 表示不應自動執行特徵化步驟。|
-|"feauturization" = ' auto '| 指出在前置處理中，會自動執行下列資料護欄和特徵化步驟。|
+### <a name="preprocessing"></a>前置處理
 
 |前置處理&nbsp;步驟| 描述 |
 | ------------- | ------------- |
@@ -177,7 +176,7 @@ Variance| 量值分佈在此資料行中的值是來自其平均值。
 
 ### <a name="data-guardrails"></a>資料護欄
 
-自動化機器學習服務提供資料護欄，可協助您識別資料的潛在問題（例如遺漏值、類別不平衡），並協助採取更正動作來改善結果。 有許多最佳做法可供使用，而且可以套用以達成可靠的結果。 
+資料護欄會自動套用，以協助您識別資料的潛在問題（例如遺漏值、類別不平衡），並協助採取更正動作來改善結果。 有許多最佳做法可供使用，而且可以套用以達成可靠的結果。 
 
 下表說明目前支援的資料護欄，以及使用者在提交實驗時可能會遇到的相關狀態。
 
@@ -191,14 +190,11 @@ Guardrail|狀態|&nbsp;觸發程式的條件&nbsp;
 
 ## <a name="run-experiment-and-view-results"></a>執行實驗並查看結果
 
-選取 [**啟動**] 以執行您的實驗。 實驗準備程式可能需要10分鐘的時間。 定型作業可能需要額外2-3 分鐘的時間，每個管線才會完成執行。
+選取 **[完成]** 以執行您的實驗。 實驗準備程式可能需要10分鐘的時間。 定型作業可能需要額外2-3 分鐘的時間，每個管線才會完成執行。
 
 ### <a name="view-experiment-details"></a>檢視實驗詳細資料
 
->[!NOTE]
-> 定期**選取**[重新整理] 以查看執行的狀態。 
-
-[**執行詳細資料**] 畫面會開啟至 [**詳細**資料] 索引標籤。此畫面會顯示實驗執行的摘要，包括**執行狀態**。 
+[**執行詳細資料**] 畫面會開啟至 [**詳細**資料] 索引標籤。此畫面會顯示實驗執行的摘要，包括執行編號旁邊的狀態列。 
 
 [**模型**] 索引標籤包含依據度量分數所建立的模型清單。 根據預設，以所選計量為最高分數的模型會在清單頂端。 當定型作業嘗試多個模型時，會將它們加入清單中。 使用此來快速比較目前為止所產生之模型的計量。
 
@@ -218,9 +214,9 @@ Guardrail|狀態|&nbsp;觸發程式的條件&nbsp;
 
 1. 您有幾個部署選項。 
 
-    + 選項1：若要部署最佳模型（根據您所定義的度量準則），請從 [詳細資料] 索引標籤選取 [部署最佳模型]。
+    + 選項1：若要部署最佳模型（根據您所定義的度量準則），請選取 [**詳細資料**] 索引標籤上的 [**部署最佳模型**] 按鈕。
 
-    + 選項2：若要從此實驗部署特定模型反復專案，請向下切入模型以開啟其 [模型詳細資料] 索引標籤，然後選取 [部署模型]。
+    + 選項2：若要從此實驗部署特定模型反復專案，請向下切入模型以開啟其 [**模型詳細資料**] 索引標籤，然後選取 [**部署模型**]。
 
 1. 填入 [**部署模型**] 窗格。
 
@@ -229,7 +225,7 @@ Guardrail|狀態|&nbsp;觸發程式的條件&nbsp;
     名稱| 為您的部署輸入唯一的名稱。
     描述| 輸入描述，以更清楚地識別此部署的用途。
     計算類型| 選取您想要部署的端點類型： *Azure Kubernetes Service （AKS）* 或*Azure 容器實例（ACI）* 。
-    名稱| *僅適用于 AKS：* 選取您想要部署的 AKS 叢集名稱。
+    計算名稱| *僅適用于 AKS：* 選取您想要部署的 AKS 叢集名稱。
     啟用驗證 | 選取即可允許以權杖或金鑰為基礎的驗證。
     使用自訂部署資產| 如果您想要上傳自己的評分腳本和環境檔案，請啟用此功能。 [深入瞭解評分腳本](how-to-deploy-and-where.md#script)。
 
@@ -244,7 +240,7 @@ Guardrail|狀態|&nbsp;觸發程式的條件&nbsp;
 
 ## <a name="next-steps"></a>後續步驟
 
-* 嘗試[使用 Azure Machine Learning 建立您的第一個自動化 ML 實驗](tutorial-first-experiment-automated-ml.md)的端對端教學課程。 
+* 嘗試[使用 Azure Machine Learning studio 建立第一個自動化 ML 實驗](tutorial-first-experiment-automated-ml.md)的端對端教學課程。 
 * [深入瞭解自動化機器學習](concept-automated-ml.md)和 Azure Machine Learning。
 * [瞭解自動化的機器學習結果](how-to-understand-automated-ml.md)。
 * [瞭解如何使用 web 服務](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service)。

@@ -7,12 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 56c2d96e6e4a5900770aaefcabb424eddb1cbde6
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 8f91ed926c733b211443805722b6817b1ce005b6
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74531383"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048352"
 ---
 # <a name="what-are-wrangling-data-flows"></a>什麼是整頓的資料流程？
 
@@ -42,9 +42,9 @@ Azure Data Factory 中的整頓資料流程可讓您以雲端規模反復執行�
 
 | 連接器 | 資料格式 | 驗證類型 |
 | -- | -- | --|
-| [Azure Blob 儲存體](connector-azure-blob-storage.md) | CSV | 帳戶金鑰 |
+| [Azure Blob 儲存體](connector-azure-blob-storage.md) | CSV、Parquet | 帳戶金鑰 |
 | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | CSV | 服務主體 |
-| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | CSV | 帳戶金鑰，服務主體 |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) \(部分機器翻譯\) | CSV、Parquet | 帳戶金鑰，服務主體 |
 | [Azure SQL Database](connector-azure-sql-database.md) | - | SQL 驗證 |
 | [Azure Synapse 分析](connector-azure-sql-data-warehouse.md) | - | SQL 驗證 |
 

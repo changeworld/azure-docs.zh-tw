@@ -12,16 +12,16 @@ ms.date: 02/18/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: luleon, hirsin, paulgarn
-ms.openlocfilehash: 630d178a4f1a802d5c98b570544822e4f4013a5a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 648338f2ba57ad1c460c1c5b4a8d9a2ee91ebb1b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697008"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063708"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>針對 Azure Active Directory 中應用程式的 SAML 型單一登入進行偵錯
 
-了解如何在 Azure Active Directory (Azure AD) 中支援[安全性聲明標記語言 (SAML) 2.0](https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language) 的應用程式內尋找[單一登入](../manage-apps/what-is-single-sign-on.md)問題，並加以修正。 
+了解如何在 Azure Active Directory (Azure AD) 中支援[安全性聲明標記語言 (SAML) 2.0](../manage-apps/what-is-single-sign-on.md) 的應用程式內尋找[單一登入](https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language)問題，並加以修正。 
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -101,4 +101,4 @@ ms.locfileid: "76697008"
 
 ## <a name="next-steps"></a>後續步驟
 
-現在，單一登入正在使用您的應用程式，您可以將[使用者布建和解除布建到 SaaS 應用程式](../manage-apps/user-provisioning.md)，或[開始使用條件式存取](../conditional-access/app-based-conditional-access.md)。
+現在，單一登入正在使用您的應用程式，您可以將[使用者布建和解除布建到 SaaS 應用程式](../app-provisioning/user-provisioning.md)，或[開始使用條件式存取](../conditional-access/app-based-conditional-access.md)。

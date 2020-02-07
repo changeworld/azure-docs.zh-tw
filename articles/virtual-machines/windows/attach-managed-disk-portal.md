@@ -4,15 +4,15 @@ description: 如何使用 Azure 入口網站將受控資料磁碟連結到 Windo
 author: roygara
 ms.service: virtual-machines-windows
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 02/06/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 0610b235d218c24c108e39aeb9bd3b2cf8c9c663
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8b651d6e5ca9262d38f5bfb9e10c404e2614809e
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463429"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77055663"
 ---
 # <a name="attach-a-managed-data-disk-to-a-windows-vm-by-using-the-azure-portal"></a>使用 Azure 入口網站將受控資料磁碟連結到 Windows VM
 
@@ -42,7 +42,7 @@ ms.locfileid: "75463429"
 6. 關閉 [磁碟管理]。
 7. 隨即出現一個快顯視窗，通知您必須先將新的磁碟格式化之後才能使用。 選取 [格式化磁碟]。
 8. 在 [格式化新磁碟] 視窗中，檢查設定，然後選取 [開始]。
-9. 隨即出現警告，通知您格式化磁碟會清除所有資料。 選取 [確定]。
+9. 隨即出現警告，通知您格式化磁碟會清除所有資料。 選取 **[確定]** 。
 10. 格式化完成後，請選取 [確定]。
 
 ## <a name="next-steps"></a>後續步驟

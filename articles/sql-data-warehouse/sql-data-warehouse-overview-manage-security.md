@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8e9ab9dddad35708b58d32802452789adf84a19e
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 5eeb1c25264c36909774ec689b7410765881c8e2
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759460"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064728"
 ---
 # <a name="secure-a-database-in-sql-data-warehouse"></a>保護 SQL 資料倉儲中的資料庫
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "76759460"
 
 本文逐步解說保護 Azure SQL 資料倉儲資料庫的基本概念。 本文尤其著重於協助您開始利用資源，以在資料庫上限制存取、保護資料，以及監視活動。
 
-## <a name="connection-security"></a>連線安全性
+## <a name="connection-security"></a>連接安全性
 「連線安全性」是指如何使用防火牆規則和連線加密，限制和保護資料庫的連線。
 
 伺服器和資料庫都使用防火牆規則，拒絕來自尚未明確列入允許清單之 IP 位址的連線嘗試。 若要允許來自應用程式或用戶端機器之公用 IP 位址的連線，您必須先使用 Azure 入口網站、REST API 或 PowerShell 建立伺服器層級的防火牆規則。 

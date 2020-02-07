@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/03/2020
+ms.date: 02/05/2020
 ms.author: b-juche
-ms.openlocfilehash: 9559f1d52f87314670162482e10714dad13be5bb
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: aaa7e5e65ced2a9899bef5a811ee74be42a8548f
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046167"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048819"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>關於 Azure NetApp Files 的常見問題
 
@@ -29,7 +29,7 @@ ms.locfileid: "76046167"
 
 ### <a name="does-the-nfs-data-path-go-over-the-internet"></a>NFS 資料路徑是否經過網際網路？  
 
-不會。 NFS 資料路徑不會經過網際網路。 Azure NetApp Files 是一種 Azure 原生服務，可部署到提供服務的 Azure 虛擬網路（VNet）中。 Azure NetApp Files 會使用委派的子網，並直接在 VNet 上布建網路介面。 
+否。 NFS 資料路徑不會經過網際網路。 Azure NetApp Files 是一種 Azure 原生服務，可部署到提供服務的 Azure 虛擬網路（VNet）中。 Azure NetApp Files 會使用委派的子網，並直接在 VNet 上布建網路介面。 
 
 如需詳細資訊，請參閱[Azure NetApp Files 網路規劃的指導方針](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies)。  
 
@@ -131,7 +131,9 @@ Azure NetApp Files 支援 NFSv3 和 NFSv 4.1。 您可以使用任何一個 NFS 
 
 ### <a name="how-many-active-directory-connections-are-supported"></a>支援多少個 Active Directory 連接？
 
-Azure NetApp Files 目前僅支援每個 NetApp 帳戶、每個訂用帳戶和每個區域中有一個 Active Directory 連線;連接不會在 NetApp 帳戶之間共用。
+即使 AD 連線是在不同的 NetApp 帳戶中，Azure NetApp Files 也不支援單一*區域*中的多個 ACTIVE DIRECTORY （AD）連線。 不過，只要 AD 連線位於不同的區域中，您就可以在單一*訂*用帳戶中有多個 ad 連接。 如果您在單一區域中需要多個 AD 連線，您可以使用不同的訂用帳戶來執行這項操作。 
+
+AD 連線設定為每個 NetApp 帳戶;AD 連線只會透過其建立所在的 NetApp 帳戶來顯示。
 
 ### <a name="does-azure-netapp-files-support-azure-active-directory"></a>Azure NetApp Files 是否支援 Azure Active Directory？ 
 
@@ -155,7 +157,7 @@ Azure NetApp Files 提供容量集區和磁片區使用計量。 您也可以使
 
 ### <a name="can-i-manage-azure-netapp-files-through-azure-storage-explorer"></a>我可以透過 Azure 儲存體總管來管理 Azure NetApp Files 嗎？
 
-不會。 Azure 儲存體總管不支援 Azure NetApp Files。
+否。 Azure 儲存體總管不支援 Azure NetApp Files。
 
 ## <a name="data-migration-and-protection-faqs"></a>資料移轉和保護常見問題
 
@@ -189,11 +191,11 @@ NetApp 提供以 SaaS 為基礎的解決方案，即[Netapp Cloud Sync](https://
 
 ### <a name="is-migration-with-azure-data-box-supported"></a>是否支援使用 Azure 資料箱進行遷移？
 
-不會。 Azure 資料箱目前不支援 Azure NetApp Files。 
+否。 Azure 資料箱目前不支援 Azure NetApp Files。 
 
 ### <a name="is-migration-with-azure-importexport-service-supported"></a>是否支援使用 Azure 匯入/匯出服務進行遷移？
 
-不會。 Azure 匯入/匯出服務目前不支援 Azure NetApp Files。
+否。 Azure 匯入/匯出服務目前不支援 Azure NetApp Files。
 
 ## <a name="next-steps"></a>後續步驟  
 

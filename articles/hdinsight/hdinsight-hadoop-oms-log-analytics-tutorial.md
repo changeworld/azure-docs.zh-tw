@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/05/2019
-ms.openlocfilehash: a693b14bb61eb52a09ab1f1ecd5d00b339357d5d
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.date: 02/06/2020
+ms.openlocfilehash: 980569edf8322c6c22a4357a5b946ded85f0ebe4
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240378"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063727"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>使用 Azure 監視器記錄來監視 HDInsight 叢集
 
@@ -24,11 +24,11 @@ ms.locfileid: "71240378"
 
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* **Log Analytics 工作區**。 您可以將此工作區視為唯一的 Azure 監視器記錄環境，其具有自己的資料存放庫、資料來源和解決方案。 如需指示，請參閱[建立 Log Analytics 工作區](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace)。
+* Log Analytics 工作區。 您可以將此工作區視為唯一的 Azure 監視器記錄環境，其具有自己的資料存放庫、資料來源和解決方案。 如需指示，請參閱[建立 Log Analytics 工作區](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace)。
 
-* **Azure HDInsight 叢集**。 目前，您可以使用 Azure 監視器記錄搭配下列 HDInsight 叢集類型：
+* Azure HDInsight 叢集。 目前，您可以使用 Azure 監視器記錄搭配下列 HDInsight 叢集類型：
 
   * Hadoop
   * hbase
@@ -39,7 +39,7 @@ ms.locfileid: "71240378"
 
   如需如何建立 HDInsight 叢集的指示，請參閱[開始使用 Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)。  
 
-* **Azure PowerShell Az 模組**。  請參閱[新的 Azure PowerShell Az 模組簡介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)。
+* Azure PowerShell Az 模組。  請參閱[新的 Azure PowerShell Az 模組簡介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)。
 
 > [!NOTE]  
 > 建議您將 HDInsight 叢集和 Log Analytics 工作區放在相同的區域中，以提升效能。 在所有 Azure 區域中都無法使用 Azure 監視器記錄。
@@ -50,15 +50,15 @@ ms.locfileid: "71240378"
 
 1. 從 [ [Azure 入口網站](https://portal.azure.com/)] 中，選取您的叢集。  請參閱[列出和顯示叢集](./hdinsight-administer-use-portal-linux.md#showClusters)以取得指示。 叢集會在新的入口網站頁面中開啟。
 
-1. 在左邊的 [監視]下方，選取 [Operations Management Suite]。
+1. 從左側的 [**監視**] 底下，選取 [ **Azure 監視器**]。
 
-1. 從主要檢視中的 [OMS 監視] 下方，選取 [啟用]。
+1. 從主要視圖的 [ **Azure 監視器整合**] 底下，選取 [**啟用**]。
 
 1. 從 [選取工作區] 下拉式清單中，選取現有的 Log Analytics 工作區。
 
 1. 選取 [儲存]。  需要一些時間來儲存設定。
 
-    ![針對 HDInsight 叢集啟用監視](./media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-enable-monitoring.png "針對 HDInsight 叢集啟用監視")
+    ![啟用 HDInsight 叢集的監視](./media/hdinsight-hadoop-oms-log-analytics-tutorial/azure-portal-monitoring.png "啟用 HDInsight 叢集的監視")
 
 ## <a name="enable-azure-monitor-logs-by-using-azure-powershell"></a>使用 Azure PowerShell 啟用 Azure 監視器記錄
 
@@ -94,13 +94,13 @@ HDInsight 提供叢集特定的管理解決方案，可讓您針對 Azure 監視
 可用的 HDInsight 解決方案如下：
 
 * HDInsight Hadoop 監視
-* HDInsight HBase 監控
+* HDInsight HBase 監視
 * HDInsight 互動式查詢監視
 * HDInsight Kafka 監視
 * HDInsight Spark 監視
 * HDInsight Storm 監視
 
-如需安裝管理解決方案的指示，請參閱[在 Azure 中的管理解決方案](../azure-monitor/insights/solutions.md#install-a-monitoring-solution)。 若要進行實驗，請安裝 HDInsight Hadoop 監視解決方案。 完成後，您會看到 **HDInsightHadoop** 圖格列示於 [摘要] 下方。 選取 **HDInsightHadoop** 圖格。 HDInsightHadoop 解決方案顯示如下：
+如需安裝管理解決方案的指示，請參閱[在 Azure 中的管理解決方案](../azure-monitor/insights/solutions.md#install-a-monitoring-solution)。 若要進行實驗，請安裝 HDInsight Hadoop 監視解決方案。 完成時，您會看到 [**摘要**] 底下列出 [ **HDInsightHadoop** ] 磚。 選取 **HDInsightHadoop** 圖格。 HDInsightHadoop 解決方案顯示如下：
 
 ![HDInsight 監視解決方案檢視](media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-oms-hdinsight-hadoop-monitoring-solution.png)
 
@@ -114,7 +114,7 @@ Azure 監視器也支援收集和分析叢集中節點的效能計量。 如需�
 
 HDInsight 會藉由匯入下列類型的記錄，以 Azure 監視器記錄來支援叢集審核：
 
-* `log_gateway_audit_CL`-此表格提供來自叢集閘道節點的審核記錄，以顯示成功和失敗的登入嘗試。
+* `log_gateway_audit_CL`-此表提供來自叢集閘道節點的審核記錄，以顯示成功和失敗的登入嘗試。
 * `log_auth_CL`-此資料表會提供 SSH 記錄檔，其中包含成功和失敗的登入嘗試。
 * `log_ambari_audit_CL`-此資料表提供來自 Ambari 的 audit 記錄。
 * `log_ranger_audti_CL`-此資料表會從 ESP 叢集上的 Apache Ranger 提供 audit 記錄。

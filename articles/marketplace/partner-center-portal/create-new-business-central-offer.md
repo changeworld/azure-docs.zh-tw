@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 22a5b86c8b3df4da5fe338a8ba1230d0247a5826
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 4c0467039cf4fefd7625f1146c4bade99b49304d
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046015"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048734"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>建立新的 Dynamics 365 Business Central 供應專案
 
@@ -100,7 +100,7 @@ ms.locfileid: "76046015"
 
 選取最少1個，最多三個類別，用來將您的供應專案放入適當的 marketplace 搜尋區域。 請務必在供應專案描述中，呼叫您的供應專案如何支援這些類別。 
 
-### <a name="industry"></a>產業
+### <a name="industry"></a>業界
 
 [!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
@@ -108,19 +108,9 @@ ms.locfileid: "76046015"
 
 輸入供應專案的版本號碼。 客戶會看到此版本列在供應專案的詳細資料頁面上。
 
-### <a name="standard-contract"></a>標準合約
+### <a name="terms-and-conditions"></a>Terms and conditions
 
-為了簡化客戶的採購程式，並降低軟體廠商的法律複雜度，Microsoft 提供了標準合約範本，以協助在 marketplace 中進行交易。
-
-除了製作自訂條款及條件以外，您還可以選擇在標準合約下提供軟體，而客戶只需要審查並接受一次。
-
-您可以在這裡找到標準合約： https://go.microsoft.com/fwlink/?linkid=2041178
-
-若要使用標準合約，請核取 [**使用標準合約？** ] 方塊。
-
-#### <a name="terms-of-use"></a>使用規定
-
-如果您未核取 [**使用標準合約嗎？** ] 方塊，您必須在 [**使用規定**] 欄位中提供您自己的法律使用規定。 輸入最多10000個字元的文字，或者，如果您的使用規定需要較長的描述，請提供可在其中找到額外授權條款的 URL。 客戶必須先接受這些條款，才能試用您的應用程式。
+在 [**條款及條件**] 欄位中提供您自己的法律條款與條件。 您也可以提供 URL，以便找到您的條款及條件。 客戶必須接受這些條款，才能試用您的供應專案。
 
 ## <a name="offer-listing"></a>供應專案清單
 
@@ -139,7 +129,7 @@ ms.locfileid: "76046015"
 
 提供供應專案的簡短描述（最多100個字元），這可用於 marketplace 搜尋結果。
 
-### <a name="description"></a>說明
+### <a name="description"></a>描述
 
 提供供應專案的較長描述（最多3000個字元）。 在 marketplace 清單總覽中，客戶會看到這項描述。 包含您供應專案的價值主張、主要優點、類別及/或產業關聯、應用程式內購買機會，以及任何必要的公開。 
 
@@ -206,7 +196,7 @@ ms.locfileid: "76046015"
 
 在本節中，您可以提供向客戶顯示供應專案時所要使用的標誌和影像。 所有影像都必須是 .png 格式。
 
-#### <a name="store-logos"></a>Microsoft Store標誌。
+#### <a name="store-logos"></a>儲存標誌
 
 提供兩種大小的供應專案標誌：**小型（48 x 48）** 和**大型（216 x 216）** 。
 
@@ -317,9 +307,9 @@ Microsoft 可以藉由使用這種類型的試用產品來裝載和維護服務�
 
 - **試用產品持續時間**（必要）：藉由定義時數來輸入試用產品保持作用中狀態的時間長度。 過了數小時之後，會話就會結束，而且不再使用您的其中一個授權。 我們建議的值為2-24 小時，視您的供應專案複雜度而定。 此持續時間可能只會由整數小時數來設定（例如，"2" 小時，"1.5" 無效）。  使用者可以要求新的會話（如果工作時間已用盡），並想要再次存取試用產品。
 
-- **實例 url** （必要）：客戶將開始其試用產品的 URL。 一般來說，您的 Dynamics 365 實例 URL 會安裝範例資料（例如 https://testdrive.crm.dynamics.com) ，以執行您的應用程式。
+- **實例 url** （必要）：客戶將開始其試用產品的 URL。 一般來說，您的 Dynamics 365 實例 URL 會安裝範例資料（例如 https://testdrive.crm.dynamics.com)，以執行您的應用程式。
 
-- **實例 WEB API url** （必要）：藉由登入您的 Microsoft 365 帳戶並流覽至 **設定** \&Gt，抓取 Dynamics 365 實例的 Web API url。**自訂**\&gt;**開發人員資源**\&gt;**實例 WEB API （服務根 URL）** ，複製此處找到的 URL （例如， https://testdrive.crm.dynamics.com/api/data/v9.0) 。
+- **實例 WEB API url** （必要）：藉由登入您的 Microsoft 365 帳戶並流覽至 **設定** \&Gt，抓取 Dynamics 365 實例的 Web API url。**自訂**\&gt;**開發人員資源**\&gt;**實例 WEB API （服務根 URL）** ，複製此處找到的 URL （例如， https://testdrive.crm.dynamics.com/api/data/v9.0)。
 
 - **角色名稱**（必要）：提供您在自訂 Dynamics 365 試用產品中定義的安全性角色名稱，其將在其試用產品期間指派給使用者（例如，[測試-磁片]-[角色]）。
 

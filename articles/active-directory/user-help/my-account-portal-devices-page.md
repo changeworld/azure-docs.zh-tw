@@ -2,7 +2,7 @@
 title: 從我的帳戶入口網站管理已連線的裝置-Azure AD
 description: 如何從我的帳戶入口網站的 [裝置] 頁面，查看及停用連線到工作或學校帳戶的裝置。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: jpettere
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.author: lizross
-ms.openlocfilehash: 60eb0fb0f7129b148b4a30f9ed96b402d6b018fb
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: e273a44c1cbc5a6a6161f059038c7e87973a33d5
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705151"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062484"
 ---
 # <a name="manage-your-connected-devices-from-the-devices-page"></a>從 [裝置] 頁面管理已連線的裝置
 
@@ -31,7 +31,7 @@ ms.locfileid: "76705151"
 
 ## <a name="view-your-connected-devices"></a>檢視已連線裝置
 
-1. 登入您的公司或學校帳戶，然後移至 **我的帳戶** （ https://myprofile.microsoft.com/)  頁面。
+1. 登入您的公司或學校帳戶，然後移至 **我的帳戶** （ https://myprofile.microsoft.com/) 頁面。
 
 2. 從左側瀏覽窗格選取 [裝置]，或從 [裝置] 區塊選取 [管理裝置] 連結。
 

@@ -1,18 +1,17 @@
 ---
 title: 概念 - Azure Kubernetes Service (AKS) 中的網路功能
 description: 了解 Azure Kubernetes Service (AKS) 中的網路功能，包括 kubenet 和 Azure CNI 網路功能、輸入控制器、負載平衡器和靜態 IP 位址。
-services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: mlearned
-ms.openlocfilehash: 7c1a25c4d2df83c9bcfb33b658e3d3100d850b6e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 86fa59a3d1c07aae842404c465b908e550708071
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547960"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047448"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 中的網路概念
 
@@ -99,14 +98,14 @@ Kubenet 與 Azure CNI 之間存在下列行為差異：
 
 | 功能                                                                                   | Kubenet   | Azure CNI |
 |----------------------------------------------------------------------------------------------|-----------|-----------|
-| 在現有或新的虛擬網路中部署叢集                                            | 支援的 Udr 手動套用 | 支援的 |
-| Pod-pod 連線能力                                                                         | 支援的 | 支援的 |
+| 在現有或新的虛擬網路中部署叢集                                            | 支援的 Udr 手動套用 | 支援 |
+| Pod-pod 連線能力                                                                         | 支援 | 支援 |
 | Pod-VM 連線能力;相同虛擬網路中的 VM                                          | 適用于 pod 起始時 | 適用于這兩種方式 |
 | Pod-VM 連線能力;對等互連虛擬網路中的 VM                                            | 適用于 pod 起始時 | 適用于這兩種方式 |
 | 使用 VPN 或 Express Route 的內部部署存取                                                | 適用于 pod 起始時 | 適用于這兩種方式 |
-| 存取受服務端點保護的資源                                             | 支援的 | 支援的 |
-| 使用負載平衡器服務、應用程式閘道或輸入控制器來公開 Kubernetes 服務 | 支援的 | 支援的 |
-| 預設 Azure DNS 和私人區域                                                          | 支援的 | 支援的 |
+| 存取受服務端點保護的資源                                             | 支援 | 支援 |
+| 使用負載平衡器服務、應用程式閘道或輸入控制器來公開 Kubernetes 服務 | 支援 | 支援 |
+| 預設 Azure DNS 和私人區域                                                          | 支援 | 支援 |
 
 ### <a name="support-scope-between-network-models"></a>網路模型之間的支援範圍
 
@@ -132,7 +131,7 @@ Kubenet 與 Azure CNI 之間存在下列行為差異：
 
 輸入的另一個常見功能是終止 SSL/TLS。 在透過 HTTPS 存取的大型 Web 應用程式上，可由輸入資源來處理 TLS 終止，而無須由應用程式本身處理。 若要提供自動 TLS 憑證產生和設定的功能，您可以將輸入資源設定為使用 Let's Encrypt 之類的資源提供者。 如需使用 Let's Encrypt 設定 NGINX 輸入控制器的詳細資訊，請參閱輸入[和 TLS][aks-ingress-tls]。
 
-您也可以設定輸入控制器，在 AKS 叢集中的容器要求上保留用戶端來源 IP。 當用戶端的要求透過輸入控制器路由至 AKS 叢集中的容器時，該要求的原始來源 IP 將無法供目標容器使用。 當您啟用*用戶端來源 ip 保留*時，用戶端的來源 ip 會在要求標頭中的 [ *X-轉送-針對*] 下提供。 如果您在輸入控制器上使用用戶端來源 IP 保留，則無法使用 SSL 傳遞。 用戶端來源 IP 保留和 SSL 傳遞可以與其他服務搭配使用，例如*LoadBalancer*類型。
+您也可以設定輸入控制器，在 AKS 叢集中的容器要求上保留用戶端來源 IP。 當用戶端的要求透過輸入控制器路由至 AKS 叢集中的容器時，該要求的原始來源 IP 將無法供目標容器使用。 當您啟用*用戶端來源 ip 保留*時，用戶端的來源 ip 會在要求標頭中的 [ *X-轉送-針對*] 下提供。 如果您要在輸入控制器上使用用戶端來源 IP 保留，則無法使用 SSL 傳遞。 用戶端來源 IP 保留和 SSL 傳遞可以與其他服務搭配使用，例如*LoadBalancer*類型。
 
 ## <a name="network-security-groups"></a>網路安全性群組
 

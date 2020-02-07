@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/13/2019
+ms.date: 02/05/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60a480327efacee2d1eb74353b2d0ef7885a6194
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a409d71ff3eae3bc62527a0669a74696246a50cd
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024206"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048077"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>在 Privileged Identity Management 中設定 Azure AD 角色設定
 
@@ -43,12 +43,8 @@ ms.locfileid: "77024206"
 請依照下列步驟開啟 Azure AD 角色的設定。
 
 1. 以特殊[許可權角色管理員](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)角色中的使用者身分登入[Azure 入口網站](https://portal.azure.com/)。
-
-1. 開啟 **Azure AD Privileged Identity Management**。
-
-1. 選取 [ **Azure AD 角色**]。
-
-1. 選取 [**角色設定**]。
+gt
+1. 開啟**Azure AD Privileged Identity Management** &gt; **Azure AD**角色 &gt;**角色設定**。
 
     ![列出 Azure 資源角色的 [角色設定] 頁面](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
 
@@ -89,7 +85,7 @@ Privileged Identity Management 可針對兩個不同的案例選擇性地強制�
 
 ### <a name="require-multi-factor-authentication-on-active-assignment"></a>要求為有效指派進行 Multi-Factor Authentication
 
-在某些情況下，您可能會想要在短時間內將使用者或群組指派給某個角色（例如一天）。 在此情況下，指派的使用者不需要要求啟用。 在此案例中，當使用者使用其角色指派時，Privileged Identity Management 無法強制執行多重要素驗證，因為它們已在角色中從指派的時間開始生效。
+在某些情況下，您可能會想要在短時間內將使用者指派給某個角色（例如一天）。 在此情況下，指派的使用者不需要要求啟用。 在此案例中，當使用者使用其角色指派時，Privileged Identity Management 無法強制執行多重要素驗證，因為它們已在角色中從指派的時間開始生效。
 
 若要確保資源管理員履行指派，就是他們所說的是誰，您可以勾選 [在作用中**指派時需要多重要素驗證**] 方塊，對作用中的指派強制執行多重要素驗證。
 
@@ -115,11 +111,11 @@ Privileged Identity Management 可針對兩個不同的案例選擇性地強制�
 
 1. 請核取 [需要核准才可啟用] 核取方塊。
 
-1. 選取 [**選取核准者**] 以開啟 [**選取成員或群組**] 頁面。
+1. 選取 [**選取核准者**]。
 
     ![選取使用者或群組窗格以選取核准者](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
 
-1. 至少選取一個使用者或群組，然後按一下 [**選取**]。 您可以新增任何使用者和群組的組合。 您必須至少選取一個核准者。 沒有任何預設核准者。
+1. 選取至少一位使用者，然後按一下 [**選取**]。 您必須至少選取一個核准者。 沒有任何預設核准者。
 
     您的選項將出現在所選取的核准者清單中。
 
@@ -208,7 +204,7 @@ Privileged Identity Management 可針對兩個不同的案例選擇性地強制�
 
     ![Azure AD 角色-設定-需要核准](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval-select-approvers.png)
 
-1. 除了特殊權限角色管理員以外，請選取一或多個核准者，然後按一下 [**選取**]。 您可以選取使用者或群組。 我們建議您至少新增兩個核准者。 即使您將自己新增為核准者，也無法自行核准角色啟用。 您的選項將出現在所選取的核准者清單中。
+1. 除了特殊權限角色管理員以外，請選取一或多個核准者，然後按一下 [**選取**]。 我們建議您至少新增兩個核准者。 即使您將自己新增為核准者，也無法自行核准角色啟用。 您的選項將出現在所選取的核准者清單中。
 
 1. 在您指定所有角色設定之後，請選取 [**儲存**] 以儲存變更。
 

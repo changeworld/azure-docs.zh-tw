@@ -3,12 +3,12 @@ title: 在資源上撰寫陣列屬性的原則
 description: 瞭解如何使用陣列參數和陣列語言運算式、評估 [*] 別名，以及附加具有 Azure 原則定義規則的元素。
 ms.date: 11/26/2019
 ms.topic: how-to
-ms.openlocfilehash: 462d9acbda37bbbd007af6d6d1267e9b0e7d3e0a
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 991d159f6444133d902382bc9ca43bc2acd201e2
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023186"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77050072"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>在 Azure 資源上撰寫陣列屬性的原則
 
@@ -140,8 +140,7 @@ As**類型**為_字串_，指派原則時只能設定一個值。 如果指派�
 
 ### <a name="evaluating-the--alias"></a>評估 [*] 別名
 
-具有附加至其名稱之 **\[\*\]** 的別名，表示該**類型**為_陣列_。 **\[\*\]** 可讓您個別評估陣列的每個專案，而不是評估整個陣列的值，而是以邏輯和其間的方式來計算陣列的每個元素。 在下列三個標準案例中，每個專案評估適用于： _None_、 _Any_或_All_元素相符。
-針對複雜的案例，請使用[count](../concepts/definition-structure.md#count)。
+具有附加至其名稱之 **\[\*\]** 的別名，表示該**類型**為_陣列_。 **\[\*\]** 可讓您個別評估陣列的每個專案，而不是評估整個陣列的值，而是以邏輯和其間的方式來計算陣列的每個元素。 在下列三個標準案例中，每個專案評估適用于： _None_、 _Any_或_All_元素相符。 針對複雜的案例，請使用[count](../concepts/definition-structure.md#count)。
 
 只有當**if**規則評估為 true 時，原則**引擎才會觸發中的** **效果**。
 這一點很重要，請務必瞭解 **\[\*\]** 評估陣列的每個個別元素的方式。
@@ -184,7 +183,7 @@ As**類型**為_字串_，指派原則時只能設定一個值。 如果指派�
 
 下列結果是條件和範例原則規則和上述現有值陣列的組合結果：
 
-|條件 |成果 | 案例 |說明 |
+|條件 |成果 | 狀況 |說明 |
 |-|-|-|-|
 |`{<field>,"notEquals":"127.0.0.1"}` |這裡 |無相符 |一個陣列元素會評估為 false （127.0.0.1！ = 127.0.0.1），另一個為 true （127.0.0.1！ = 192.168.1.1），因此**notEquals**條件為_false_且不會觸發效果。 |
 |`{<field>,"notEquals":"10.0.4.1"}` |原則效果 |無相符 |這兩個陣列元素會評估為 true （10.0.4.1！ = 127.0.0.1 和10.0.4.1！ = 192.168.1.1），因此**notEquals**條件為_true_ ，且會觸發效果。 |

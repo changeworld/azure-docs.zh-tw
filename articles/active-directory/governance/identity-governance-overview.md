@@ -16,12 +16,12 @@ ms.date: 10/24/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c90052d1d75ba65a8e0b0e7a2cd26a279019a82d
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: bd319dd6a83a392f6df26d07a58be22a9c8bdb61
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173147"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063674"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>什麼是 Azure AD Identity Governance？
 
@@ -58,7 +58,7 @@ Azure Active Directory （Azure AD）身分識別治理可讓您透過適當的�
 
 一般而言，IT 會將存取核准決策委派給商務決策者。  此外，IT 可能是使用者本身。  例如，存取歐洲境內公司行銷應用程式中的機密客戶資料的使用者需要知道公司的原則。 來賓使用者可能不知道他們受邀的組織中資料的處理需求。
 
-組織可以透過[動態群組](../users-groups-roles/groups-dynamic-membership.md)這類技術，並結合使用者佈建至 [SaaS 應用程式](../saas-apps/tutorial-list.md)或[與 SCIM 整合的應用程式](../manage-apps/use-scim-to-provision-users-and-groups.md)來自動存取生命週期程序。  組織也可以控制哪些[來賓使用者能夠存取內部部署應用程式](../b2b/hybrid-cloud-to-on-premises.md)。  接著可以利用週期性 [Azure AD 存取權檢閱](access-reviews-overview.md)，定期檢閱這些存取權限。   [Azure AD 權利管理](entitlement-management-overview.md)也可讓您定義使用者如何跨群組和小組成員資格、應用程式角色和 SharePoint Online 角色的封裝來要求存取權。
+組織可以透過[動態群組](../users-groups-roles/groups-dynamic-membership.md)這類技術，並結合使用者佈建至 [SaaS 應用程式](../saas-apps/tutorial-list.md)或[與 SCIM 整合的應用程式](../app-provisioning/use-scim-to-provision-users-and-groups.md)來自動存取生命週期程序。  組織也可以控制哪些[來賓使用者能夠存取內部部署應用程式](../b2b/hybrid-cloud-to-on-premises.md)。  接著可以利用週期性 [Azure AD 存取權檢閱](access-reviews-overview.md)，定期檢閱這些存取權限。   [Azure AD 權利管理](entitlement-management-overview.md)也可讓您定義使用者如何跨群組和小組成員資格、應用程式角色和 SharePoint Online 角色的封裝來要求存取權。
 
 當使用者嘗試存取應用程式時，Azure AD 會強制執行[條件式存取](/azure/active-directory/conditional-access/)原則。 例如，條件式存取原則可以包含顯示[使用](../conditional-access/terms-of-use.md)規定，並確保使用者在能夠存取應用程式之前，[已同意這些條款](../conditional-access/require-tou.md)。
 
@@ -81,7 +81,7 @@ Azure Active Directory （Azure AD）身分識別治理可讓您透過適當的�
 
 雖然沒有適用于每個客戶的完美解決方案或建議，但下列設定指南也提供 Microsoft 建議您遵循的基準原則，以確保更安全且更具生產力的工作力。
 
-- [身分識別與裝置存取組態](/microsoft-365/enterprise/microsoft-365-policies-configurations)
+- [身分識別與裝置存取設定](/microsoft-365/enterprise/microsoft-365-policies-configurations)
 - [保護特殊權限存取](../users-groups-roles/directory-admin-roles-secure.md)
 
 ## <a name="appendix---least-privileged-roles-for-managing-in-identity-governance-features"></a>附錄-在身分識別治理功能中管理的最低特殊許可權角色
@@ -91,7 +91,7 @@ Azure Active Directory （Azure AD）身分識別治理可讓您透過適當的�
 | 功能 | 最低特殊權限角色 |
 | ------- | --------------------- |
 | 權利管理 | 使用者系統管理員（在將 SharePoint Online 網站新增至目錄時除外，這需要全域管理員） |
-| 存取檢閱 | 使用者系統管理員（但 Azure 或 Azure AD 角色的存取權審查除外，這需要特殊權限角色管理員） |
+| 存取權檢閱 | 使用者系統管理員（但 Azure 或 Azure AD 角色的存取權審查除外，這需要特殊權限角色管理員） |
 |Privileged Identity Management | 特殊權限角色管理員 |
 | 使用規定 | 安全性系統管理員或條件式存取管理員 |
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f578840726543027a8c1b1db9bd88ea42f6e85fa
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: f6218b32fb9574adf62384d2a6ee5a62f3788de8
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264062"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062144"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>安裝及設定內部部署資料閘道
 
@@ -43,8 +43,6 @@ ms.locfileid: "76264062"
 * 安裝閘道時，您用來登入電腦的使用者帳戶必須具有「登入為服務」權限。 安裝完成時，內部部署資料閘道服務會使用 NT SERVICE\PBIEgwService 帳戶登入為服務。 在安裝期間可以指定不同的帳戶，或是可在安裝完成後於服務中指定。 在安裝時請確定群組原則設定允許您用於登入的帳戶，且您選擇的服務帳戶具有「登入為服務」權限。
 * 如果[租用戶](/previous-versions/azure/azure-services/jj573650(v=azure.100)#what-is-an-azure-ad-tenant)與您要註冊閘道的訂用帳戶相同，請以 Azure AD 中的帳戶登入 Azure。 安裝和註冊閘道時不支援 Azure B2B (來賓) 帳戶。
 * 如果資料來源位於 Azure 虛擬網路 (VNet) 上，您必須設定 [AlwaysUseGateway](analysis-services-vnet-gateway.md) 伺服器屬性。
-* Azure 德國區域不支援此處所述的 (統一) 閘道。 相反地，使用在入口網站中伺服器的 [快速入門]中安裝的 **Azure Analysis Service 專用內部部署閘道**。 
-
 
 ## <a name="download"></a>下載
 
@@ -127,7 +125,7 @@ ms.locfileid: "76264062"
 
     ![將伺服器連線至閘道資源成功](media/analysis-services-gateway-install/aas-gateway-connect-success.png)
 
-就這樣， 如果您需要開啟連接埠，或進行疑難排解，請務必簽出[內部部署資料閘道](analysis-services-gateway.md)。
+就這麼簡單。 如果您需要開啟連接埠，或進行疑難排解，請務必簽出[內部部署資料閘道](analysis-services-gateway.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

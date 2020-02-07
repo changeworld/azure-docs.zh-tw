@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/11/2019
-ms.openlocfilehash: 81b57191a02dd3214928ac90e2761f5f8dfb2cfc
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.custom: hdinsightactive
+ms.date: 02/05/2020
+ms.openlocfilehash: d8cb8bfa32db958b6dfdda0df23429669ce2a439
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311669"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063793"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>使用 Apache Ambari Web UI 管理 HDInsight 叢集
 
@@ -29,10 +29,10 @@ Apache Ambari 提供容易使用的 Web UI 和 REST API，可簡化 Apache Hadoo
 
 ## <a name="connectivity"></a>連線能力
 
-您的 HDInsight 叢集上有 Ambari Web UI，位於 `https://CLUSTERNAME.azurehdinsight.net`，其中 `CLUSTERNAME` 是叢集的名稱。
+Ambari Web UI 可在您的 HDInsight 叢集的 `https://CLUSTERNAME.azurehdinsight.net`取得，其中 `CLUSTERNAME` 是叢集的名稱。
 
 > [!IMPORTANT]  
-> 連線到 HDInsight 上的 Ambari 需要 HTTPS。 當系統提示要驗證時，請使用您在叢集建立時所提供的系統管理帳戶名稱和密碼。
+> 連線到 HDInsight 上的 Ambari 需要 HTTPS。 當系統提示要驗證時，請使用您在叢集建立時所提供的系統管理帳戶名稱和密碼。 如果系統不會提示您輸入認證，請檢查您的網路設定，以確認用戶端與 Azure HDInsight 叢集之間沒有連線問題。
 
 ## <a name="ssh-tunnel-proxy"></a>SSH 通道 (Proxy)
 
@@ -58,7 +58,7 @@ Apache Ambari 提供容易使用的 Web UI 和 REST API，可簡化 Apache Hadoo
 |服務|叢集中服務的資訊和設定。|
 |主機|叢集中節點的資訊和設定。|
 |警示|資訊、警告和重要警示的記錄。|
-|Admin|安裝在叢集上的軟體堆疊/服務、服務帳戶資訊及 Kerberos 安全性。|
+|管理|安裝在叢集上的軟體堆疊/服務、服務帳戶資訊及 Kerberos 安全性。|
 |[系統管理] 按鈕|Ambari 管理、使用者設定和登出。|
 
 ## <a name="monitoring"></a>監視
@@ -70,7 +70,7 @@ Apache Ambari 提供容易使用的 Web UI 和 REST API，可簡化 Apache Hadoo
 * **確定**
 * **警告**
 * **重要**
-* **未知**
+* **UNKNOWN**
 
 [確定] 以外的警示會導致頁面頂端出現 [# 個警示] 項目，以顯示警示數目。 選取此項目會顯示警示及其狀態。
 
@@ -156,7 +156,7 @@ Apache Ambari 提供容易使用的 Web UI 和 REST API，可簡化 Apache Hadoo
     |啟動所有元件|啟動主機上的所有元件。|
     |停止所有元件|停止主機上的所有元件。|
     |重新開機所有元件|停止並啟動主機上的所有元件。|
-    |開啟維護模式|抑制主機的警示。 如果您執行的動作會產生警示，則應該啟用此模式。 例如，停止和啟動服務。|
+    |開啟維護模式|抑制主機的警示。 如果您要執行會產生警示的動作，則應該啟用此模式。 例如，停止和啟動服務。|
     |關閉維護模式|將主機恢復正常警示。|
     |Stop|停止主機上的 DataNode 或 NodeManagers。|
     |Start|在主機上啟動 DataNode 或 NodeManagers。|
@@ -193,7 +193,7 @@ Apache Ambari 提供容易使用的 Web UI 和 REST API，可簡化 Apache Hadoo
 
 1. 從 [儀表板] 或 [服務] 頁面選取服務。
 
-2. 選取 [ **設定** ] 索引標籤。隨即會顯示目前的組態。 同時也會顯示先前組態的清單。
+2. 選取 [**選項**] 索引標籤。目前的設定隨即顯示。 同時也會顯示先前組態的清單。
 
     ![Apache Ambari 服務設定](./media/hdinsight-hadoop-manage-ambari/ambari-service-configs.png)
 

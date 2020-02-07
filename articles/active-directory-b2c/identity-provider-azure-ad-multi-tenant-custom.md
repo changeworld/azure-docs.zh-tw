@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 02/06/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8a222aa63387f7c57f8896b013f71f0c1bf40b2e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 2f7bf9fea1b1e15d1ca24686a84e272dd60ceaf5
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849613"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061585"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則來設定多租用戶 Azure Active Directory 的登入
 
@@ -63,6 +63,19 @@ ms.locfileid: "76849613"
 1. 在 [**秘密**] 中，輸入您先前記錄的用戶端密碼。
 1. 針對 [金鑰使用方法]，選取 `Signature`。
 1. 選取 [建立]。
+
+## <a name="configuring-optional-claims"></a>設定選擇性宣告
+
+如果您想要從 Azure AD 取得 `family_name` 和 `given_name` 宣告，您可以在 Azure 入口網站 UI 或應用程式資訊清單中設定應用程式的選擇性宣告。 如需詳細資訊，請參閱[如何提供選擇性宣告給您的 Azure AD 應用程式](../active-directory/develop/active-directory-optional-claims.md)。
+
+1. 登入 [Azure 入口網站](https://portal.azure.com)。 搜尋並選取 [Azure Active Directory]。
+1. 從 [**管理**] 區段中，選取 [**應用程式註冊**]。
+1. 在清單中選取您想要為其設定選擇性宣告的應用程式。
+1. 從 [**管理**] 區段中，選取 [**權杖設定（預覽）** ]。
+1. 選取 [**新增選擇性**宣告]。
+1. 選取您想要設定的權杖類型。
+1. 選取要新增的選擇性宣告。
+1. 按一下 [加入]。
 
 ## <a name="add-a-claims-provider"></a>新增宣告提供者
 
@@ -134,7 +147,7 @@ ms.locfileid: "76849613"
 
 您必須更新有效權杖簽發者清單，並將存取權僅限於能夠登入的特定 Azure AD 租用戶使用者清單。
 
-若要取得這些值，請查看您想要讓使用者從中登入的每個 Azure AD 租使用者的 OpenID Connect 探索中繼資料。 中繼資料 URL 的格式類似于 `https://login.microsoftonline.com/your-tenant/v2.0/.well-known/openid-configuration`，其中 `your-tenant` 是您 Azure AD 的租使用者名稱。 例如：
+若要取得這些值，請查看您想要讓使用者從中登入的每個 Azure AD 租使用者的 OpenID Connect 探索中繼資料。 中繼資料 URL 的格式類似于 `https://login.microsoftonline.com/your-tenant/v2.0/.well-known/openid-configuration`，其中 `your-tenant` 是您 Azure AD 的租使用者名稱。 例如，
 
 `https://login.microsoftonline.com/fabrikam.onmicrosoft.com/v2.0/.well-known/openid-configuration`
 
@@ -156,7 +169,7 @@ ms.locfileid: "76849613"
 目前，識別提供者已設定，但還未出現在任何註冊/登入畫面中。 若要讓它可供使用，您必須建立現有範本使用者旅程圖的複本，然後修改它，讓它也包含 Azure AD 識別提供者。
 
 1. 從 Starter Pack 開啟 TrustFrameworkBase.xml 檔案。
-2. 尋找並複製包含 `Id="SignUpOrSignIn"` 之 **UserJourney** 元素的整個內容。
+2. 尋找並複製包含 **之**UserJourney`Id="SignUpOrSignIn"` 元素的整個內容。
 3. 開啟 *TrustFrameworkExtensions.xml*，並尋找 **UserJourneys** 元素。 如果此元素不存在，請新增。
 4. 貼上您複製的整個 **UserJourney** 元素內容作為 **UserJourneys** 元素的子系。
 5. 重新命名使用者旅程圖的識別碼。 例如： `SignUpSignInContoso` 。
@@ -176,7 +189,7 @@ ms.locfileid: "76849613"
 
 現在已備妥按鈕，您需要將它連結至動作。 在此案例中，動作是讓 Azure AD B2C 與 Azure AD 通訊以接收權杖。 藉由連結 Azure AD 宣告提供者的技術設定檔，將按鈕連結至動作。
 
-1. 在使用者旅程圖中，尋找包含 `Order="2"` 的 **OrchestrationStep**。
+1. 在使用者旅程圖中，尋找包含 **的**OrchestrationStep`Order="2"`。
 2. 新增下列 **ClaimsExchange** 元素，請確定用於 **Id** 的值與用於 **TargetClaimsExchangeId** 的值相同：
 
     ```XML

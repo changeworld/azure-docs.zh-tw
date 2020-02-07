@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: snehaa
-ms.openlocfilehash: a9d008406e59c66a8b742194e2e2d388c778ac9e
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: baf01c0a0d5c6154305f7137c24deb0365b5e812
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989343"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062093"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate：常見的問題
 
@@ -23,7 +23,7 @@ ms.locfileid: "76989343"
 
 ## <a name="what-is-azure-migrate"></a>什麼是 Azure Migrate？
 
-Azure Migrate 提供中央中樞，以追蹤內部部署應用程式和工作負載的探索、評估和遷移，以及私人/公用雲端 Vm 至 Azure。 該中樞能提供 Azure Migrate 工具以進行評估和移轉，也提供協力廠商獨立軟體廠商 (ISV) 的供應項目。 [深入了解](migrate-services-overview.md)。
+Azure Migrate 提供中央中樞，以追蹤內部部署應用程式和工作負載的探索、評估和遷移，以及私人/公用雲端 Vm 至 Azure。 該中樞能提供 Azure Migrate 工具以進行評估和移轉，也提供協力廠商獨立軟體廠商 (ISV) 的供應項目。 [詳細資訊](migrate-services-overview.md)。
 
 
 ## <a name="what-can-i-do-with-azure-migrate"></a>Azure Migrate 可以怎麼做？
@@ -67,9 +67,7 @@ Azure Migrate 提供集中式的中樞，供您評估和遷移至 Azure。 [Azur
 [瞭解如何](how-to-delete-project.md)刪除專案。 
 
 
-## <a name="do-machines-retain-domain-identity-after-migration"></a>機器是否會在遷移後保留網域身分識別？
 
-假設網域服務已[整合到 Azure](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/)，則在遷移之後會保留網域成員資格和網域中的機器身分識別。 
 
 ## <a name="next-steps"></a>後續步驟
 閱讀[Azure Migrate 的總覽](migrate-services-overview.md)。

@@ -1,5 +1,6 @@
 ---
-title: 透過 Azure Active Directory 瞭解不具密碼的世界 |Microsoft Docs
+title: Azure AD 的無密碼 authentication
+titleSuffix: Active Directory
 description: 本指南可協助 Ceo、Cio、Ciso、首席身分識別架構設計人員、企業架構設計人員，以及負責為其 Azure Active Directory 執行選擇無密碼驗證方法的 IT 決策者。
 keywords: 無密碼、azuread
 author: martincoetzer
@@ -9,12 +10,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 39078e298093c2c2ab4835925a2ba8a70269f5f5
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 5fc6a4a23573995cf791a21ec7cf3a7d68d048e8
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945592"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064473"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>沒有密碼的世界 Azure Active Directory
 
@@ -24,7 +25,7 @@ ms.locfileid: "75945592"
 
 本文是您旅程的開端，可協助您瞭解及執行 Microsoft 的無密碼解決方案，並協助您在下列一個或多個選項之間做選擇：
 
-* **Windows Hello 企業版**。 在 Windows 10 中，Windows Hello 企業版會使用強式雙因素驗證取代電腦與行動裝置上的密碼。 這項驗證是由一種新的使用者認證類型所組成，該認證系結至裝置，並使用生物識別辨識或 PIN。
+* **Windows Hello 企業版**。 在 Windows 10 中，Windows Hello 企業版會以電腦和行動裝置上的強式雙因素驗證取代密碼。 這項驗證是由一種新的使用者認證類型所組成，該認證系結至裝置，並使用生物識別辨識或 PIN。
 
 * **使用 Microsoft Authenticator 無密碼登入**。 Microsoft Authenticator 應用程式可在不使用密碼的情況下，用來登入 Azure AD 帳戶。 與 Windows Hello 企業版的技術類似，Microsoft Authenticator 使用以金鑰為基礎的驗證來啟用系結至裝置的使用者認證，並使用生物特徵辨識或 PIN。
 
@@ -50,7 +51,7 @@ Windows Hello 企業版適用于擁有自己指定 Windows 電腦的資訊工作
 
 Windows Hello 企業版是一種分散式系統，其使用數個元件來完成裝置註冊、布建和驗證。 因此，部署需要在組織內的多個小組之間進行適當的規劃。 Windows Hello 企業版[規劃指南](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-planning-guide)可用來協助您決定要使用的 Windows Hello 企業版部署類型，以及您需要考慮的選項。
 
-部署 Windows Hello 企業版時，您有許多選項可以選擇。 提供多個選項可確保幾乎每個組織都可以部署 Windows Hello 企業版。 請考慮下列支援的部署類型：
+部署 Windows Hello 企業版時，有許多選項可供您選擇。 提供多個選項可確保幾乎每個組織都可以部署 Windows Hello 企業版。 請考慮下列支援的部署類型：
 
 * [混合式 Azure AD 聯結的金鑰信任部署](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-key-trust)
 
@@ -109,7 +110,7 @@ Windows Hello 企業版提供便利的登入體驗，可驗證使用者以 Azure
 
 [MICROSOFT PIN 重設服務](/windows/security/identity-protection/hello-for-business/hello-feature-pin-reset)是 Azure AD 中的一項功能，可讓使用者視需要重設其 PIN。 系統管理員可以使用群組原則、Microsoft Intune 或相容的 MDM，將 Windows 10 裝置設定為安全地使用 Microsoft PIN 重設服務，讓使用者可以透過設定或在鎖定畫面上重設忘記的 PIN，而不需要重新註冊。
 
-有時候使用者必須切換回使用密碼。 [自助式密碼重設](../../active-directory/authentication/howto-sspr-deployment.md)（SSPR）是另一項 Azure AD 功能，可讓使用者重設其密碼，而不需要洽詢 IT 人員。 使用者必須註冊或由他人為其註冊取得自助式密碼重設，才能使用服務。 在註冊期間，使用者會選擇其組織所啟用的一或多個驗證方法。 SSPR 可讓使用者無論在何處或當天的時間，都能快速地解除封鎖並繼續工作。 藉由允許使用者解除封鎖自己，您的組織可以減少非生產力的時間，以及最常見的密碼相關問題的高支援成本。
+有時候使用者必須切換回使用密碼。 [自助式密碼重設](../../active-directory/authentication/howto-sspr-deployment.md)（SSPR）是另一項 Azure AD 功能，可讓使用者重設其密碼，而不需要洽詢 IT 人員。 使用者必須註冊或註冊自助式密碼重設，才能使用服務。 在註冊期間，使用者會選擇其組織所啟用的一或多個驗證方法。 SSPR 可讓使用者無論在何處或當天的時間，都能快速地解除封鎖並繼續工作。 藉由允許使用者解除封鎖自己，您的組織可以減少非生產力的時間，以及最常見的密碼相關問題的高支援成本。
 
 ## <a name="passwordless-sign-in-with-microsoft-authenticator"></a>使用 Microsoft Authenticator 無密碼登入
 
@@ -236,7 +237,7 @@ FIDO2 安全性金鑰可以用來登入 Azure AD，方法是在 Windows 10 鎖�
 
 * 驗證器應用程式或硬體權杖--程式碼
 
-* 撥打電話
+* 通話
 
 * 簡訊
 
@@ -283,7 +284,7 @@ FIDO2 安全性金鑰可提供安全驗證，與外型規格無關。 安全性�
 
 ||**Windows Hello 企業版**|**無密碼使用 Microsoft Authenticator 應用程式登入**|**FIDO2 安全性金鑰**|
 |:-|:-|:-|:-|
-|**先決條件**| Windows 10，版本 1809 或更新版本<br>Azure Active Directory| Microsoft Authenticator 應用程式<br>電話（執行 Android 6.0 或更新版本的 iOS 和 Android 裝置）。|Windows 10，版本 1809 或更新版本<br>Azure Active Directory|
+|**先決條件**| Windows 10 1809 版或更新版本<br>Azure Active Directory| Microsoft Authenticator 應用程式<br>電話（執行 Android 6.0 或更新版本的 iOS 和 Android 裝置）。|Windows 10 1809 版或更新版本<br>Azure Active Directory|
 |**模式**|平台|軟體|硬體|
 |**系統和裝置**|具有內建信賴平臺模組（TPM）的電腦<br>PIN 和生物識別辨識 |電話上的 PIN 和生物識別辨識|FIDO2 與 Microsoft 相容的安全性裝置|
 |**使用者體驗**|使用 PIN 或生物識別辨識（臉部、鳶尾花或指紋）來登入 Windows 裝置。<br>Windows Hello 驗證會系結至裝置;使用者需要裝置和登入元件（例如 PIN 或生物特徵辨識因素）來存取公司資源。|使用具有指紋掃描、臉部或鳶尾花辨識或 PIN 的行動電話登入。<br>使用者從他們的電腦或行動電話登入公司或個人帳戶。|使用 FIDO2 安全性裝置（生物識別、PIN 和 NFC）登入<br>使用者可以根據組織控制來存取裝置，並根據 PIN 進行驗證、使用 USB 安全性金鑰和具備 NFC 功能的智慧卡、金鑰或穿戴式裝置等裝置進行生物識別。|
@@ -291,7 +292,7 @@ FIDO2 安全性金鑰可提供安全驗證，與外型規格無關。 安全性�
 
 使用下表來選擇哪些方法將支援您的需求和使用者。
 
-|生活|案例|環境|無密碼技術|
+|生活|狀況|環境|無密碼技術|
 |:-|:-|:-|:-|
 |**管理員**|保護裝置的存取權以進行管理工作|指派的 Windows 10 裝置|Windows Hello 企業版和（或） FIDO2 安全性金鑰|
 |**管理員**|非 Windows 裝置上的管理工作| 行動或非 windows 裝置|無密碼使用 Microsoft Authenticator 應用程式登入|

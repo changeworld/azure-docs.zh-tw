@@ -15,23 +15,23 @@ ms.workload: identity
 ms.date: 11/29/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b51aeabaa4bb7fa9884c95cf0da2dc68ba5b64b0
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: f8f48f73248e2108e79b8e244ed0d7b51855092a
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184107"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048145"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-in-the-azure-portal"></a>在 Azure 入口網站中檢視受控識別的服務主體
 
-適用於 Azure 資源的受控識別會在 Azure Active Directory 中為 Azure 服務提供自動的受控識別。 您可以使用此身分識別來完成任何支援 Azure AD 驗證的服務驗證，不需要任何您程式碼中的認證。 
+Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供自動受控識別。 您可以使用此身分識別來向任何支援 Azure AD 驗證的服務進行驗證，不需要任何您程式碼中的認證。 
 
 在本文中，您會了解如何使用 Azure 入口網站來檢視受控識別的服務主體。
 
  > [!NOTE] 
  > 服務主體是企業應用程式。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 如果您不熟悉 Azure 資源的受控識別，請參閱[概觀一節](overview.md)。
 - 如果您還沒有 Azure 帳戶，請[註冊免費帳戶](https://azure.microsoft.com/free/)。
@@ -42,7 +42,7 @@ ms.locfileid: "74184107"
 此程序示範如何檢視已啟用系統指派身分識別的 VM 所具有的服務主體 (應用程式適用同樣的步驟)。
 
 1. 按一下 [Azure Active Directory]，然後按一下 [企業應用程式]。
-2. 在 [應用程式類型] 下方，選擇 [所有應用程式]。
+2. 在 [**應用程式類型**] 底下選擇 [**所有應用程式**]，**然後按一下 [** 套用]。
 3. 在搜尋篩選方塊中，輸入已啟用受控識別的 VM 或應用程式所具有的名稱，或從顯示的清單中選出。
 
    ![在入口網站中檢視受控識別服務主體](./media/how-to-view-managed-identity-service-principal-portal/view-managed-identity-service-principal-portal.png)

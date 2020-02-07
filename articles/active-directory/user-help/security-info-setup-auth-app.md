@@ -2,7 +2,7 @@
 title: 將 Microsoft Authenticator 應用程式設定為您的驗證方法-Azure AD
 description: 如何設定您的安全性資訊（預覽）頁面，以使用 Microsoft Authenticator 應用程式作為驗證方法來驗證您的身分識別。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 02/13/2019
-ms.author: lizross
-ms.openlocfilehash: 9a3efc6f6b1b7137e8e29e37edd968765712fef5
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: 16cb512d3f8f8afcc199cb52c13e09b12107576f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704964"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062416"
 ---
 # <a name="set-up-the-microsoft-authenticator-app-as-your-verification-method"></a>將 Microsoft Authenticator 應用程式設定為您的驗證方法
 
@@ -31,7 +31,7 @@ ms.locfileid: "76704964"
 
 ## <a name="security-vs-password-reset-verification"></a>安全性與密碼重設驗證
 
-安全性資訊方法可用於雙因素安全性驗證和密碼重設。 不過，並非所有方法都同時適用於這兩者。
+雙因素安全性驗證和密碼重設都會使用安全性資訊方法。 不過，並非所有方法都同時適用於這兩者。
 
 | 方法 | 用於 |
 | ------ | -------- |

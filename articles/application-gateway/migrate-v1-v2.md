@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 719686cb123355359391c5cb1e517ff9cfd88371
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9909c46015fffb3bea3eef094599312e28b935c5
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231733"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046205"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>將 Azure 應用程式閘道和 Web 應用程式防火牆從 v1 遷移至 v2
 
@@ -102,7 +102,7 @@ ms.locfileid: "74231733"
    * **appgwName： [String]：選擇性**。 這是您指定用來做為新 Standard_v2 或 WAF_v2 閘道之名稱的字串。 如果未提供此參數，則會使用現有 v1 閘道的名稱，並將尾碼附加 *_v2* 。
    * **sslCertificates： [PSApplicationGatewaySslCertificate]：選擇性**。  您建立來代表 v1 閘道之 SSL 憑證的 PSApplicationGatewaySslCertificate 物件清單（以逗號分隔），必須上傳至新的 v2 閘道。 針對您針對標準 v1 或 WAF v1 閘道所設定的每個 SSL 憑證，您可以透過此處顯示的 `New-AzApplicationGatewaySslCertificate` 命令來建立新的 PSApplicationGatewaySslCertificate 物件。 您需要 SSL 憑證檔案的路徑和密碼。
 
-       只有在您未針對 v1 閘道或 WAF 設定 HTTPS 接聽程式時，這個參數才是選擇性的。 如果您至少有一個 HTTPS 接聽程式設定，就必須指定此參數。
+     只有在您未針對 v1 閘道或 WAF 設定 HTTPS 接聽程式時，這個參數才是選擇性的。 如果您至少有一個 HTTPS 接聽程式設定，就必須指定此參數。
 
       ```azurepowershell  
       $password = ConvertTo-SecureString <cert-password> -AsPlainText -Force
@@ -114,12 +114,17 @@ ms.locfileid: "74231733"
         -Password $password
       ```
 
-      您可以在上述範例中傳入 `$mySslCert1, $mySslCert2` （以逗號分隔），做為腳本中此參數的值。
-   * **trustedRootCertificates： [PSApplicationGatewayTrustedRootCertificate]：選擇性**。 以逗號分隔的 PSApplicationGatewayTrustedRootCertificate 物件清單，可讓您建立來代表[受信任的根憑證](ssl-overview.md)，以從您的 v2 閘道驗證後端實例。  
+     您可以在上述範例中傳入 `$mySslCert1, $mySslCert2` （以逗號分隔），做為腳本中此參數的值。
+   * **trustedRootCertificates： [PSApplicationGatewayTrustedRootCertificate]：選擇性**。 以逗號分隔的 PSApplicationGatewayTrustedRootCertificate 物件清單，可讓您建立來代表[受信任的根憑證](ssl-overview.md)，以從您的 v2 閘道驗證後端實例。
+   
+      ```azurepowershell
+      $certFilePath = ".\rootCA.cer"
+      $trustedCert = New-AzApplicationGatewayTrustedRootCertificate -Name "trustedCert1" -CertificateFile $certFilePath
+      ```
 
       若要建立 PSApplicationGatewayTrustedRootCertificate 物件的清單，請參閱[AzApplicationGatewayTrustedRootCertificate](https://docs.microsoft.com/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0)。
    * **privateIpAddress： [String]：選擇性**。 您想要與新的 v2 閘道產生關聯的特定私人 IP 位址。  這必須來自您為新的 v2 閘道配置的相同 VNet。 如果未指定，腳本會為您的 v2 閘道配置私人 IP 位址。
-    * **publicIpResourceId： [String]：選擇性**。 您的訂用帳戶中要配置給新 v2 閘道的公用 IP 位址（標準 SKU）資源的 resourceId。 如果未指定此項，腳本會在相同的資源群組中配置新的公用 IP。 名稱是已附加 *-IP*的 v2 閘道名稱。
+   * **publicIpResourceId： [String]：選擇性**。 您的訂用帳戶中，您想要配置給新 v2 閘道的現有公用 IP 位址（標準 SKU）資源的 resourceId。 如果未指定此項，腳本會在相同的資源群組中配置新的公用 IP。 名稱是已附加 *-IP*的 v2 閘道名稱。
    * **validateMigration： [switch]：選擇性**。 如果您想要讓腳本在建立 v2 閘道和設定複本之後執行一些基本設定比較驗證，請使用此參數。 根據預設，不會進行任何驗證。
    * **enableAutoScale： [switch]：選擇性**。 如果您想要腳本在建立新的 v2 閘道上啟用自動調整，請使用此參數。 預設會停用自動調整。 您一律可以在稍後於新建立的 v2 閘道上手動加以啟用。
 
@@ -132,10 +137,10 @@ ms.locfileid: "74231733"
       -resourceId /subscriptions/8b1d0fea-8d57-4975-adfb-308f1f4d12aa/resourceGroups/MyResourceGroup/providers/Microsoft.Network/applicationGateways/myv1appgateway `
       -subnetAddressRange 10.0.0.0/24 `
       -appgwname "MynewV2gw" `
-      -sslCertificates $Certs `
+      -sslCertificates $mySslCert1,$mySslCert2 `
       -trustedRootCertificates $trustedCert `
       -privateIpAddress "10.0.0.1" `
-      -publicIpResourceId "MyPublicIP" `
+      -publicIpResourceId "/subscriptions/8b1d0fea-8d57-4975-adfb-308f1f4d12aa/resourceGroups/MyResourceGroup/providers/Microsoft.Network/publicIPAddresses/MyPublicIP" `
       -validateMigration -enableAutoScale
    ```
 
@@ -152,7 +157,7 @@ ms.locfileid: "74231733"
     您可以更新您的 DNS 記錄，以指向與 Standard_v2 應用程式閘道相關聯的前端 IP 或 DNS 標籤。 視 DNS 記錄上設定的 TTL 而定，您的所有用戶端流量可能需要一些時間才能遷移至新的 v2 閘道。
 * **自訂 dns 區域（例如，contoso.com），其指向與您 v1 閘道相關聯的 DNS 標籤（例如：使用 CNAME 記錄*myappgw.eastus.cloudapp.azure.com* ）** 。
 
-   您有兩個選擇：
+   您有兩種選擇：
 
   * 如果您在應用程式閘道上使用公用 IP 位址，您可以使用流量管理員設定檔進行受控制的細微遷移，以累加方式將流量（加權流量路由方法）路由傳送至新的 v2 閘道。
 
@@ -174,7 +179,7 @@ ms.locfileid: "74231733"
 
 ### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-v1-gateway-to-the-newly-created-v2-gateway"></a>Azure PowerShell 腳本是否也會將來自 v1 閘道的流量切換到新建立的 v2 閘道？
 
-號 Azure PowerShell 腳本只會遷移設定。 實際的流量遷移是您在控制中的責任。
+否。 Azure PowerShell 腳本只會遷移設定。 實際的流量遷移是您在控制中的責任。
 
 ### <a name="is-the-new-v2-gateway-created-by-the-azure-powershell-script-sized-appropriately-to-handle-all-of-the-traffic-that-is-currently-served-by-my-v1-gateway"></a>Azure PowerShell 腳本所建立的新 v2 閘道是否會適當地調整大小，以處理我的 v1 閘道目前所提供的所有流量？
 
@@ -182,11 +187,11 @@ Azure PowerShell 腳本會建立具有適當大小的新 v2 閘道，以處理�
 
 ### <a name="i-configured-my-v1-gateway--to-send-logs-to-azure-storage-does-the-script-replicate-this-configuration-for-v2-as-well"></a>我設定了 v1 閘道，以將記錄傳送至 Azure 儲存體。 腳本是否也會針對 v2 複寫此設定？
 
-號 此腳本不會複寫 v2 的此設定。 您必須將記錄檔設定分別新增至已遷移的 v2 閘道。
+否。 此腳本不會複寫 v2 的此設定。 您必須將記錄檔設定分別新增至已遷移的 v2 閘道。
 
 ### <a name="does-this-script-support-certificates-uploaded-to-azure-keyvault-"></a>此腳本是否支援將憑證上傳至 Azure KeyVault？
 
-號 目前腳本不支援 KeyVault 中的憑證。 不過，未來的版本將會考慮這一點。
+否。 目前腳本不支援 KeyVault 中的憑證。 不過，未來的版本將會考慮這一點。
 
 ### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>我在使用此腳本時遇到一些問題。 如何取得協助？
   

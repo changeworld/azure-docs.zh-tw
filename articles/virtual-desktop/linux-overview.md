@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
-ms.openlocfilehash: f7d62487605c26a68e7c71b6d95d7814da0a07c9
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 47e38d79e8aa4656b8164c94b4ef439bf431e01d
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776387"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049657"
 ---
 # <a name="linux-support"></a>Linux 支援
 
@@ -30,10 +30,10 @@ SDK 與大部分以 Ubuntu 18.04 或更新版本為基礎的作業系統相容�
 
 SDK 支援與桌上型電腦和遠端應用程式會話之間的多個連接。 支援下列重新導向：
 
-| 重新導向       | 支援的 |
+| 重新導向       | 支援 |
 | :---------------- | :-------: |
 | 鍵盤          | &#10004;  |
-| 右鍵             | &#10004;  |
+| 滑鼠             | &#10004;  |
 | 音訊 in          | &#10004;  |
 | 音訊輸出         | &#10004;  |
 | 剪貼簿（文字）  | &#10004;  |
@@ -55,7 +55,7 @@ SDK 也支援多個監視器顯示設定，只要您為會話選取的監視器�
 
 ## <a name="next-steps"></a>後續步驟
 
-您可以在我們的[技術小組論壇](https://go.microsoft.com/fwlink/?linkid=2116541)上要求存取 Linux SDK。
+SDK 目前正在開發中。 我們將會更新本檔，其中包含可用的 SDK 存取指示。
 
 查看下列用戶端的檔：
 

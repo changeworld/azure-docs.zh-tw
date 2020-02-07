@@ -15,19 +15,41 @@ ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81c9d8582eb41d4a13799c42383ff22010c60577
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 11a5e92ccf1104f36b3f2b045f9922158b1f7330
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76985152"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064136"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>教學課程：設定 Workplace by Facebook 來自動佈建使用者
 
 本教學課程說明您需要在 Workplace by Facebook 和 Azure Active Directory （Azure AD）中執行的步驟，以設定自動使用者布建。 設定之後，Azure AD 會使用 Azure AD 布建服務，自動布建及取消布建使用者和群組到[Workplace By Facebook](https://work.workplace.com/) 。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../manage-apps/user-provisioning.md)。
 
-> [!NOTE]
-> Workplace by Facebook 中的 Azure AD 協力廠商應用程式已獲核准。 客戶在12月16日不會中斷服務。 當您需要轉換至新的應用程式時，您會在 Workplace by Facebook 管理主控台中看到一個附注，指出期限為 28-2-2020。 我們正努力盡可能簡單地轉換，並在此于月底的轉換中提供更新。
+## <a name="migrating-to-the-new-workplace-by-facebook-application"></a>遷移至新的 Workplace by Facebook 應用程式
+如果您已經與 Workplace by Facebook 整合，請參閱下一節，瞭解即將推出的變更。 如果您是第一次設定 Workplace by Facebook，可以略過本節並移至支援的功能。 
+
+#### <a name="whats-changing"></a>有哪些變更項目？
+* Azure AD 端上的變更：在 Workplace 中布建使用者的授權方法，過去是長期的秘密權杖。 很快地，您會看到授權方法已變更為 OAuth 授權授與。 
+* 工作場所端的變更：先前 Azure AD 應用程式是 Workplace by Facebook 中的自訂整合。 現在您會看到工作場所整合目錄中的 Azure AD，做為協力廠商應用程式。 
+
+ 
+
+#### <a name="what-do-i-need-to-do-to-migrate-my-existing-custom-integration-to-the-new-application"></a>將現有的自訂整合遷移到新的應用程式時，我需要做什麼？
+如果您現有的工作地點整合具有有效的權杖，則**不需要採取任何動作**。 我們會每週自動將客戶遷移至新的應用程式。 這會在幕後完全完成。 如果您無法等候，而想要手動移至新的應用程式，您可以從資源庫新增 Workplace 的新實例，然後重新設定布建。 Workplace 的所有新實例將會自動使用新的應用程式版本。 
+
+ 
+如果您的工作地點整合是隔離的，您必須再次提供有效的權杖，才能讓我們遷移您。 [系統管理員認證] 區段會呈現灰色，但是您可以附加下列**專案（？Microsoft_AAD_IAM_userProvisioningEnableCredentialsOverride = true**）至您的 URL，以再次儲存認證。 
+
+https://portal.azure.com/?Microsoft_AAD_IAM_userProvisioningEnableCredentialsOverride=true
+
+ 
+#### <a name="the-admin-credentials-section-is-greyed-out-on-my-application-and-i-cant-save-why"></a>我的應用程式上的 [管理員認證] 區段呈現灰色，因此無法儲存。 為什麼？
+我們已鎖定現有工作場所客戶的 [系統管理員認證] 區段。 當您的租使用者已遷移至新的 Workplace 應用程式時，您將能夠再次更新 [管理員認證] 區段。 如果您無法等待，您可以使用上述 URL 來編輯您的應用程式。 
+
+ 
+#### <a name="when-will-these-changes-happen"></a>這些變更何時會發生？
+Workplace 的所有新實例都已使用新的整合/授權方法。 現有的整合將于二月逐步遷移。 所有租使用者的遷移將會在該月結束後完成。 
 
 ## <a name="capabilities-supported"></a>支援的功能
 > [!div class="checklist"]
@@ -157,7 +179,7 @@ Azure AD 布建服務可讓您根據指派給應用程式的人員，或根據�
 2. 檢查[進度](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)列以查看布建週期的狀態，以及關閉其完成的方式
 3. 如果布建設定似乎處於狀況不良的狀態，應用程式將會進入隔離。 [在這裡](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)深入瞭解隔離狀態。
 
-## <a name="troubleshooting-tips"></a>疑難排解提示
+## <a name="troubleshooting-tips"></a>疑難排解秘訣
 *  如果您看到使用者未成功建立，而且有一個具有代碼 "1789003" 的 audit 記錄事件，表示使用者來自未驗證的網域。
 
 ## <a name="additional-resources"></a>其他資源

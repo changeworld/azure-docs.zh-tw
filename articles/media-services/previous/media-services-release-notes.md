@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: 5b1daab724d979206983ee758760790967abc06d
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 310b3778a43c74db30940368d35c39c99f64a28c
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513383"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049980"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure 媒體服務版本資訊
 
@@ -32,7 +32,7 @@ Azure 媒體服務的這些版本資訊彙總了舊版發行後的變更和已�
 ## <a name="a-idissuesknown-issues"></a><a id="issues"/>的已知問題
 ### <a name="a-idgeneral_issuesmedia-services-general-issues"></a><a id="general_issues"/>媒體服務一般問題
 
-| 問題 | 說明 |
+| 問題 | 描述 |
 | --- | --- |
 | 有幾個常用的 HTTP 標題未提供於 REST API 中。 |如果您使用 REST API 來開發媒體服務應用程式，您會發現有些常用的 HTTP 標題欄位 (包括 CLIENT-REQUEST-ID、REQUEST-ID 和 RETURN-CLIENT-REQUEST-ID) 不受支援。 這些標頭將在未來的更新中加入。 |
 | 不允許 percent-encoding。 |媒體服務會在建置串流內容的 URL 時，使用 IAssetFile.Name 屬性的值 (例如 `http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters`)。 基於此原因，不允許使用 percent-encoding。 Name 屬性的值不可有下列任何[百分比編碼保留字元](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!*'();:@&=+$,/?%#[]"。 此外，副檔名只能有一個 "."。 |
@@ -60,7 +60,7 @@ Azure 媒體服務的這些版本資訊彙總了舊版發行後的變更和已�
 
 ### <a name="deprecation-of-media-processors"></a>淘汰媒體處理器
 
-我們宣佈淘汰*Windows Azure 媒體編碼器*（WAME）和*Azure 媒體編碼器*（AME）媒體處理器，其將于2020年3月1日淘汰。
+我們宣佈*Windows Azure 媒體編碼器*（WAME）和*Azure 媒體編碼器*（AME）媒體處理器已淘汰。 如需停用日期，請參閱此[舊版元件](legacy-components.md)主題。
 
 如需詳細資訊，請參閱[將 WAME 遷移至媒體編碼器標準](https://go.microsoft.com/fwlink/?LinkId=2101334)並[將 AME 遷移至媒體編碼器標準](https://go.microsoft.com/fwlink/?LinkId=2101335)。
 
@@ -208,7 +208,7 @@ Media Services SDK for .NET (3.5.3) 的最新版本包含 Google Widevine 相關
 ### <a name="azure-sdk-for-php"></a>Azure SDK for PHP
 Azure SDK 小組已發佈新版的 [Azure SDK for PHP](https://github.com/Azure/azure-sdk-for-php) 套件，其中包含媒體服務的更新與新功能。 特別是，Media Services SDK for PHP 現在支援最新的[內容保護](media-services-content-protection-overview.md)功能。 這些功能是採用 AES 和 DRM (PlayReady 與 Widevine)，並選擇性使用權杖限制的動態加密。 它也支援調整 [編碼單位](media-services-dotnet-encoding-units.md)大小。
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱
 
 * 以下[程式碼範例](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)可協助您快速上手：
   * **vodworkflow_aes.php**：此 PHP 檔案說明如何使用 AES-128 動態加密和金鑰傳遞服務。 其內容以[使用 AES-128 動態加密和金鑰傳遞服務](media-services-protect-with-aes128.md)中說明的 .NET 範例為基礎。
@@ -247,7 +247,7 @@ Azure SDK 小組已發佈新版的 [Azure SDK for PHP](https://github.com/Azure/
 如需詳細資訊，請參閱 [此部落格](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/)。
 
 ## <a id="august_changes_15"></a>2015 年 8 月版本
-* 現在已有適用於 Java 0.8.0 版本的媒體服務 SDK 和新範例可供使用。 如需詳細資訊，請參閱：
+* 現在已有適用於 Java 0.8.0 版本的媒體服務 SDK 和新範例可供使用。 如需詳細資訊，請參閱
     
 * Azure 媒體播放器已更新而具有多重音訊串流支援。 如需詳細資訊，請參閱 [此部落格文章](https://azure.microsoft.com/blog/2015/08/13/azure-media-player-update-with-multi-audio-stream-support/)。
 

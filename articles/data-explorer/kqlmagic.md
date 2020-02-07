@@ -7,19 +7,19 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: ba21ec6ba82ac4984d3c51fc46f88de2cd56b2b2
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 83902ea5a3e73603311a0c469126ed603d0ebd16
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933684"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064864"
 ---
 # <a name="use-a-jupyter-notebook-and-kqlmagic-extension-to-analyze-data-in-azure-data-explorer"></a>使用 Jupyter Notebook 和 Kqlmagic 延伸模組來分析 Azure 中的資料資料總管
 
 Jupyter Notebook 是開放原始碼的 Web 應用程式，可讓您建立及共用含有即時程式碼、方程式、視覺效果和敘述文字的文件。 使用方式包含資料清理和轉換、數字模擬、統計模型、資料視覺效果和機器學習。
-[Jupyter Notebook](https://jupyter.org/) 支援 magic 函式，可藉由支援其他命令來擴展核心的功能。 KQL magic 是一種命令，可在 Jupyter Notebook 中擴展 Python 核心的功能，讓您能夠以原生方式執行 Kusto 語言查詢。 您可以輕鬆地結合 Python 和 Kusto 查詢語言，以使用與 `render` 命令整合在一起的豐富 Plot.ly 程式庫，來查詢並以視覺方式呈現資料。 支援用於執行查詢的資料來源。 這些資料來源包括 Azure 資料總管, 這是適用于記錄和遙測資料的快速且可高度調整的資料探索服務, 以及 Azure 監視器記錄和 Application Insights。 KQL magic 也可以與 Azure Notebooks、Jupyter Lab 及 Visual Studio Code Jupyter 延伸模組搭配運作。
+[Jupyter Notebook](https://jupyter.org/) 支援 magic 函式，可藉由支援其他命令來擴展核心的功能。 KQL magic 是一種命令，可在 Jupyter Notebook 中擴展 Python 核心的功能，讓您能夠以原生方式執行 Kusto 語言查詢。 您可以輕鬆地結合 Python 和 Kusto 查詢語言，以使用與 `render` 命令整合在一起的豐富 Plot.ly 程式庫，來查詢並以視覺方式呈現資料。 支援用於執行查詢的資料來源。 這些資料來源包括 Azure 資料總管，這是適用于記錄和遙測資料的快速且可高度調整的資料探索服務，以及 Azure 監視器記錄和 Application Insights。 KQL magic 也可以與 Azure Notebooks、Jupyter Lab 及 Visual Studio Code Jupyter 延伸模組搭配運作。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - 屬於 Azure Active Directory (AAD) 成員的組織電子郵件帳戶。
 - 本機電腦上已安裝 Jupyter Notebook，或使用 Azure Notebook 並複製範例 [Azure Notebook](https://kustomagicsamples-manojraheja.notebooks.azure.com/j/notebooks/Getting%20Started%20with%20kqlmagic%20on%20Azure%20Data%20Explorer.ipynb)
@@ -40,7 +40,7 @@ Jupyter Notebook 是開放原始碼的 Web 應用程式，可讓您建立及共�
     %reload_ext Kqlmagic
     ```
     > [!NOTE]
-    > 按一下核心 > 變更核心 > Python 3.6, 將核心版本變更為 Python 3。6
+    > 按一下核心 > 變更核心 > Python 3.6，將核心版本變更為 Python 3。6
     
 ## <a name="connect-to-the-azure-data-explorer-help-cluster"></a>連線至 Azure 資料總管協助叢集
 
@@ -79,7 +79,7 @@ StormEvents
 
 ### <a name="customize-the-chart-colors"></a>自訂圖表色彩
 
-如果您不喜歡預設的調色盤，請使用調色盤選項自訂圖表。 可用的調色盤可以在這裡找到：[為 KQL magic 查詢圖表結果選擇調色盤](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FColorYourCharts.ipynb)
+如果您不喜歡預設的調色盤，請使用調色盤選項自訂圖表。 您可以在這裡找到可用的調色板：[針對 KQL 魔術查詢圖表結果選擇色彩調色板](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FColorYourCharts.ipynb)
 
 1. 獲取調色盤清單：
 
@@ -100,7 +100,7 @@ StormEvents
 
 ## <a name="parameterize-a-query-with-python"></a>使用 Python 將查詢參數化
 
-KQL magic 可讓您簡單地在 Kusto 查詢語言與 Python 之間進行交換。 若要深入了解：[使用 Python 將 KQL magic 查詢參數化](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FParametrizeYourQuery.ipynb)
+KQL magic 可讓您簡單地在 Kusto 查詢語言與 Python 之間進行交換。 若要深入瞭解：[使用 Python 參數化您的 KQL 魔術查詢](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FParametrizeYourQuery.ipynb)
 
 ### <a name="use-a-python-variable-in-your-kql-query"></a>在 KQL 查詢中使用 Python 變數
 
@@ -168,7 +168,7 @@ df.head(10)
     ```
 
 > [!TIP]
-> 若要接收所有可用設定的相關`%config KQLmagic`資訊, 請使用。 若要疑難排解並捕捉 Kusto 錯誤 (例如連接問題和不正確的查詢), 請使用`%config Kqlmagic.short_errors=False`
+> 若要接收所有可用設定的相關資訊，請使用 `%config Kqlmagic`。 若要疑難排解並捕捉 Kusto 錯誤（例如連接問題和不正確的查詢），請使用 `%config Kqlmagic.short_errors=False`
 
 ## <a name="next-steps"></a>後續步驟
 

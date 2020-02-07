@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 309af904f0dbfc0664c4341803cb6a4dc8a2c8a4
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 23c292a950deea262ee063b4141b07a4f64f9f84
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839293"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061304"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>搭配 Azure HDInsight 叢集使用 Data Lake Storage Gen1
 
@@ -108,13 +108,13 @@ New-AzResourceGroupDeployment `
 
 ## <a name="use-data-lake-storage-gen1-as-additional-storage"></a>使用 Data Lake Storage Gen1 作為其他儲存體
 
-您也可以使用 Data Lake Storage Gen1 作為叢集的其他儲存體。 在這種情況下，叢集預設儲存體可以是 Azure 儲存體 Blob 或 Data Lake Storage 帳戶。 如果您是針對儲存在 Data Lake Storage 中的資料執行 HDInsight 作業作為額外的儲存體，則必須使用檔案的完整路徑。 例如：
+您也可以使用 Data Lake Storage Gen1 作為叢集的其他儲存體。 在這種情況下，叢集預設儲存體可以是 Azure 儲存體 Blob 或 Data Lake Storage 帳戶。 如果您是針對儲存在 Data Lake Storage 中的資料執行 HDInsight 作業作為額外的儲存體，則必須使用檔案的完整路徑。 例如，
 
     adl://mydatalakestore.azuredatalakestore.net/<file_path>
 
 請注意，現在 URL 中沒有任何 **cluster_root_path**。 這是因為在這種情況下，Data Lake Storage 不是預設儲存體，因此您只需要提供檔案的路徑。
 
-若要能夠使用 Data Lake Storage Gen1 作為其他儲存體，您只需要將您儲存檔案之位置的路徑存取權授與服務主體即可。  例如：
+若要能夠使用 Data Lake Storage Gen1 作為其他儲存體，您只需要將您儲存檔案之位置的路徑存取權授與服務主體即可。  例如，
 
     adl://mydatalakestore.azuredatalakestore.net/<file_path>
 
@@ -210,7 +210,7 @@ LOCATION 'adl:///example/data/';
 LOCATION '/example/data/';
 ```
 
-## <a name="identify-storage-path-from-abmari"></a>識別來自 Abmari 的儲存體路徑
+## <a name="identify-storage-path-from-ambari"></a>識別來自 Ambari 的儲存體路徑
 
 若要識別已設定之預設存放區的完整路徑，請流覽至**HDFS** ** > 設定，然後**在 [篩選] 輸入方塊中輸入 `fs.defaultFS`。
 
@@ -301,7 +301,7 @@ Invoke-AzResourceAction `
 
 在本文中，您已了解如何搭配 HDInsight 使用 HDFS 相容的 Azure Data Lake Storage Gen1。 這可讓您建立可調整、長期封存的資料取得解決方案，並利用 HDInsight 來揭開儲存的結構化和非結構化資料內的資訊。
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱
 
 * [開始使用 Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [快速入門：在 HDInsight 中設定叢集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)

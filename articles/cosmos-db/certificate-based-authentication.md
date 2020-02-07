@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: 9e9dd529edea23b27de2e3841079244558d6689a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: acdf268874b1dc1c24116ba36e2b4233a2702a5f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442109"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064490"
 ---
 # <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>以憑證為基礎的驗證，用於從 Azure Cosmos DB 帳戶存取金鑰的 Azure AD 身分識別
 
-以憑證為基礎的驗證可讓您的用戶端應用程式使用 Azure Active Directory （Azure AD）搭配用戶端憑證來進行驗證。 您可以在需要身分識別的電腦（例如 Azure 中的內部部署機器或虛擬機器）上執行以憑證為基礎的驗證。 您的應用程式可以讀取 Azure Cosmos DB 金鑰，而不需要直接在應用程式中擁有金鑰。 本文說明如何建立範例 Azure AD 應用程式、將其設定為以憑證為基礎的驗證、使用新的應用程式身分識別登入 Azure，然後從您的 Azure Cosmos 帳戶中抓取金鑰。 本文使用 Azure PowerShell 來設定身分識別，並提供C#範例應用程式來驗證和存取 Azure Cosmos 帳戶中的金鑰。  
+憑證式驗證可讓您使用 Azure Active Directory (Azure AD) 搭配用戶端憑證，驗證您的用戶端應用程式。 您可以在需要身分識別的電腦 (例如 Azure 中的內部部署機器或虛擬機器) 上執行憑證式驗證。 您的應用程式可以讀取 Azure Cosmos DB 金鑰，而不需要直接在應用程式中擁有金鑰。 本文說明如何建立範例 Azure AD 應用程式、將其設定為以憑證為基礎的驗證、使用新的應用程式身分識別登入 Azure，然後從您的 Azure Cosmos 帳戶中抓取金鑰。 本文使用 Azure PowerShell 來設定身分識別，並提供C#範例應用程式來驗證和存取 Azure Cosmos 帳戶中的金鑰。  
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -55,7 +55,6 @@ ms.locfileid: "75442109"
 1. 以系統管理員許可權開啟 Windows PowerShell ISE。 如果您尚未這麼做，請安裝 AZ PowerShell 模組，並連接到您的訂用帳戶。 如果您有多個訂閱，您可以設定目前訂用帳戶的內容，如下列命令所示：
 
    ```powershell
-
    Install-Module -Name Az -AllowClobber
    Connect-AzAccount
 

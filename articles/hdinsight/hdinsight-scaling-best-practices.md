@@ -6,13 +6,13 @@ ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/22/2019
-ms.openlocfilehash: 0649908e4767e48d23306c72b8db92dea9f26284
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.date: 02/05/2020
+ms.openlocfilehash: 035f819cfaad82373f7cb55a7bb2d14fc53bb49b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030912"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064626"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>調整 Azure HDInsight 叢集
 
@@ -216,6 +216,10 @@ org.apache.http.conn.HttpHostConnectException: Connect to active-headnode-name.s
 如果您的叢集在相應減少到三個背景工作角色節點時經常卡在安全模式，而且先前的步驟沒有作用，則您可以保留至少三個背景工作節點，以避免叢集完全進入安全模式。
 
 保留三個背景工作角色節點比相應減少到只有一個背景工作節點更耗費成本，但它會防止您的叢集停滯在安全模式中。
+
+### <a name="scale-hdinsight-down-to-one-worker-node"></a>將 HDInsight 向下調整為一個背景工作節點
+
+即使叢集縮小為1個節點，背景工作節點0仍然會存留下來。 背景工作節點0永遠無法解除委任。
 
 #### <a name="run-the-command-to-leave-safe-mode"></a>執行命令來脫離安全模式
 

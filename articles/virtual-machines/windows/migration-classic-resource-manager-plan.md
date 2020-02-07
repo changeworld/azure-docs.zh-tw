@@ -3,8 +3,8 @@ title: 規劃從傳統遷移至 Azure Resource Manager
 description: 將 IaaS 資源從傳統移轉至 Azure Resource Manager 的規劃
 services: virtual-machines-windows
 documentationcenter: ''
-author: singhkays
-manager: gwallace
+author: tanmaygore
+manager: vashan
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 78492a2c-2694-4023-a7b8-c97d3708dcb7
@@ -12,26 +12,23 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 04/01/2017
-ms.author: kasing
-ms.openlocfilehash: d5245f73520a77648fc590520185a2cf66bffd02
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 02/06/2020
+ms.author: tagore
+ms.openlocfilehash: 2d7eca56556c8a1097b625b8f4b0e2de2facbc60
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980895"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061602"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>將 IaaS 資源從傳統移轉至 Azure Resource Manager 的規劃
 雖然 Azure Resource Manager 提供了許多令人讚嘆的功能，但請務必詳加規劃您的移轉作業，以確保一切順利進行。 詳細規劃可確保您在執行移轉活動期間不會遇到問題。
-
-> [!NOTE]
-> 下列方針中，絕大多數是由與客戶合作移轉大型環境的 Azure 客戶諮詢團隊和雲端方案架構設計人員所提供。 因此，本文件將隨著出現成功的新模式而繼續更新，請不定時回來查看，以了解是否有任何新的建議。
 
 移轉旅程有四個一般階段：<br>
 
 ![移轉階段](../media/virtual-machines-windows-migration-classic-resource-manager/plan-labtest-migrate-beyond.png)
 
-## <a name="plan"></a>方案
+## <a name="plan"></a>計畫
 
 ### <a name="technical-considerations-and-tradeoffs"></a>技術考量和取捨
 
@@ -44,7 +41,7 @@ ms.locfileid: "75980895"
 5. 您的作業團隊目前支援傳統和 Azure Resource Manager 中的應用程式/VM 嗎？
 6. Azure Resource Manager 如何變更您的 VM 部署、管理、監視和報告處理程序 (如果有的話)？  需要更新部署指令碼嗎？
 7. 警示專案關係人 (使用者、應用程式擁有者，以及基礎結構擁有者) 的通訊規劃為何？
-8. 根據環境的複雜度，是否應該有應用程式無法供使用者和應用程式擁有者使用的維護期間？  如果曾用過，使用了多久？
+8. 根據環境的複雜度，是否應該有應用程式無法供使用者和應用程式擁有者使用的維護期間？  如果是這樣，該期間需要多久？
 9. 確保專案關係人了解並精通 Azure Resource Manager 的訓練規劃為何？
 10. 移轉的程式管理或專案管理規劃為何？
 11. Azure Resource Manager 移轉和其他相關技術藍圖的時間表為何？  它們之間的配合是否理想？

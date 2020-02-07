@@ -2,7 +2,7 @@
 title: 變更您的公司或學校帳戶密碼-Azure AD
 description: 瞭解如何從我的帳戶入口網站的 [變更密碼] 頁面變更您的工作或學校帳戶密碼。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: jpettere
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.author: lizross
-ms.openlocfilehash: f92df704047e1d36e69e40ce5299b8d01e48e9eb
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: 06e5abe04ed1ec75dcbf1b216bfaab1a7458ce72
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705168"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064048"
 ---
 # <a name="change-your-work-or-school-account-password-from-the-change-password-page"></a>從 [變更密碼] 頁面變更您的公司或學校帳戶密碼
 
@@ -27,7 +27,7 @@ ms.locfileid: "76705168"
 
 ## <a name="update-a-password-from-the-change-password-page"></a>從 [變更密碼] 頁面更新密碼
 
-1. 使用現有的密碼登入您的公司或學校帳戶，然後移至 **我的帳戶** （ https://myprofile.microsoft.com/)  頁面。
+1. 使用現有的密碼登入您的公司或學校帳戶，然後移至 **我的帳戶** （ https://myprofile.microsoft.com/) 頁面。
 
 2. 從左側流覽窗格中選取 [**密碼**]，或從 [**密碼**] 區塊選取 [**變更密碼**] 連結。
 

@@ -12,12 +12,12 @@ ms.date: 05/08/2019
 ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c4547bddeea8b67bd3377124b1c299662fea3e6
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: dfe4aeb17f482cc9d4126efc6d65d3f7d173536b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274178"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063538"
 ---
 # <a name="configure-linked-sign-on"></a>設定連結的登入
 
@@ -45,9 +45,9 @@ ms.locfileid: "74274178"
  
 1. 您可以將使用者和群組指派給應用程式，這會導致應用程式出現在[Office 365 應用程式啟動器](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/)或適用于這些使用者的[Azure AD 存取面板](end-user-experiences.md)中。
 
-1. 選取 [ **儲存**]。
+1. 選取 [儲存]。
 
 ## <a name="next-steps"></a>後續步驟
 
 - [將使用者或群組指派給應用程式](methods-for-assigning-users-and-groups.md)
-- [設定使用者帳戶自動佈建](configure-automatic-user-provisioning-portal.md)
+- [設定使用者帳戶自動佈建](../app-provisioning/configure-automatic-user-provisioning-portal.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/26/2020
 ms.author: damendo
-ms.openlocfilehash: 2ae6314accf5ad9143e1e103239c2e7c884ec947
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 6980518da00e6849c327ca712bbeadaa816ae479
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776634"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77056660"
 ---
 # <a name="configure-nsg-flow-logs-from-an-azure-resource-manager-template"></a>從 Azure Resource Manager 範本設定 NSG 流量記錄
 
@@ -38,7 +38,7 @@ ms.locfileid: "76776634"
 
 ## <a name="nsg-flow-logs-object"></a>NSG 流量記錄物件
 
-具有 all with 參數的 NSG Flow 記錄物件如下所示。
+具有所有參數的 NSG Flow 記錄物件如下所示。
 如需屬性的完整總覽，您可以閱讀[NSG 流量記錄範本參考](https://docs.microsoft.com/azure/templates/microsoft.network/2019-11-01/networkwatchers/flowlogs#RetentionPolicyParameters)。
 
 ```json

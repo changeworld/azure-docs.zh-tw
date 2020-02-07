@@ -14,19 +14,19 @@ ms.topic: article
 ms.date: 01/06/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f11258457e60ea3458b0ede1fe00f042041bcb1a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 969a2fb5444ae8ece2aa302c04a5bbb85dcca917
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841245"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057697"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>教學課程︰設定 G Suite 來自動佈建使用者
 
 本教學課程的目的是要示範在 G Suite 中執行的步驟，並 Azure Active Directory （Azure AD）將 Azure AD 設定為自動布建和取消布建使用者和/或群組至 G Suite。
 
 > [!NOTE]
-> 本教學課程會說明建置在 Azure AD 使用者佈建服務之上的連接器。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../manage-apps/user-provisioning.md)。
+> 本教學課程會說明建置在 Azure AD 使用者佈建服務之上的連接器。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../app-provisioning/user-provisioning.md)。
 
 > [!NOTE]
 > G Suite 連接器最近已于2019年10月更新。 對 G Suite 連接器所做的變更包括：
@@ -163,7 +163,7 @@ Azure Active Directory 使用稱為「指派」的概念，來判斷哪些使用
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-1. 按一下 [檔案]。
+1. Haga clic en **Guardar**.
 
 1. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者到 G Suite**]。
 
@@ -181,7 +181,7 @@ Azure Active Directory 使用稱為「指派」的概念，來判斷哪些使用
 
     ![G Suite 群組屬性](media/google-apps-provisioning-tutorial/groupattributes.png)
 
-1. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
+1. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 
 1. 若要啟用 G Suite 的 Azure AD 布建服務，請在 [**設定**] 區段中，將 [布建**狀態**] 變更為 [**開啟**]。
 
@@ -200,11 +200,11 @@ Azure Active Directory 使用稱為「指派」的概念，來判斷哪些使用
 > [!NOTE]
 > 如果使用者已經有使用 Azure AD 使用者之電子郵件地址的現有個人/消費者帳戶，則可能會在執行目錄同步作業之前，使用 Google Transfer Tool 來解決一些問題。
 
-如需如何讀取 Azure AD 佈建記錄的詳細資訊，請參閱[關於使用者帳戶自動佈建的報告](../manage-apps/check-status-user-account-provisioning.md)。
+如需如何讀取 Azure AD 佈建記錄的詳細資訊，請參閱[關於使用者帳戶自動佈建的報告](../app-provisioning/check-status-user-account-provisioning.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-* [管理企業應用程式的使用者帳戶佈建](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [管理企業應用程式的使用者帳戶佈建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="common-issues"></a>常見問題
@@ -213,7 +213,7 @@ Azure Active Directory 使用稱為「指派」的概念，來判斷哪些使用
 
 ## <a name="next-steps"></a>後續步驟
 
-* [瞭解如何針對佈建活動檢閱記錄和取得報告](../manage-apps/check-status-user-account-provisioning.md)
+* [瞭解如何針對佈建活動檢閱記錄和取得報告](../app-provisioning/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 

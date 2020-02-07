@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
 ms.author: rezas
-ms.openlocfilehash: f4125aae954519beead99db45fc8a35264d5731e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dcbc03257b8bfeacda700f60f2724f2d02ec147d
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429275"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048278"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>了解 IoT 中樞的直接方法並從中樞叫用直接方法
 
@@ -73,7 +73,10 @@ IoT 中樞上具有**服務連線**權限的任何人都可以叫用裝置上的
     }
     ```
 
-逾時 (秒)。 如果未設定逾時，它會預設為 30 秒。
+在要求中提供為 `responseTimeoutInSeconds` 的值，就是 IoT 中樞服務必須等待完成裝置上的直接方法執行的時間量。 將此超時時間設定為至少是裝置預期的直接方法執行時間。 如果未提供 timeout，則會使用預設值30秒。 `responseTimeoutInSeconds` 的最小和最大值分別為5和300秒。
+
+在要求中提供為 `connectTimeoutInSeconds` 的值，是呼叫直接方法的時間量，IoT 中樞服務必須等待中斷連線的裝置才會上線。 預設值為0，表示在直接方法叫用時，裝置必須已上線。 `connectTimeoutInSeconds` 的最大值為300秒。
+
 
 #### <a name="example"></a>範例
 
@@ -98,7 +101,10 @@ curl -X POST \
 
 後端應用程式會接收由下列項目組成的回應：
 
-* HTTP 狀態碼，用於來自 IoT 中樞的錯誤，包括裝置目前未連接的 404 錯誤。
+* *HTTP 狀態碼*：
+  * 200表示成功執行直接方法;
+  * 404表示任一裝置識別碼無效，或裝置在叫用直接方法時未上線，並于之後 `connectTimeoutInSeconds` （使用伴隨的錯誤訊息來瞭解根本原因）;
+  * 504表示因裝置未回應 `responseTimeoutInSeconds`內的直接方法呼叫而導致的閘道超時。
 
 * 標頭，包含 ETag、要求識別碼、內容類型及內容編碼。
 

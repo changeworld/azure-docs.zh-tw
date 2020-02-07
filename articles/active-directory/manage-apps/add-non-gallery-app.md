@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6656361fd4634c46cd5216b57eb8465536319f09
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: bd5a5f100dbe09c3b82f58183a118ee3bf455f70
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73062785"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063606"
 ---
 # <a name="add-an-unlisted-non-gallery-application-to-your-azure-ad-organization"></a>將未列出的（非資源庫）應用程式新增至您的 Azure AD 組織
 
@@ -25,7 +25,7 @@ ms.locfileid: "73062785"
 
 - 支援[安全性聲明標記語言（SAML） 2.0](https://wikipedia.org/wiki/SAML_2.0)身分識別提供者（由 SP 起始或 IdP 起始）之任何應用程式的自助服務整合
 - Web 應用程式可在使用 [密碼型 SSO](what-is-single-sign-on.md#password-based-sso)
-- 使用[系統進行跨網域身分識別管理（SCIM）通訊協定以進行使用者](use-scim-to-provision-users-and-groups.md)布建之應用程式的自助連線
+- 使用[系統進行跨網域身分識別管理（SCIM）通訊協定以進行使用者](../app-provisioning/use-scim-to-provision-users-and-groups.md)布建之應用程式的自助連線
 - 能夠在 [Office 365 應用程式啟動器](https://www.microsoft.com/microsoft-365/blog/2014/10/16/organize-office-365-new-app-launcher-2/)或 [Azure AD 存取面板](what-is-single-sign-on.md#linked-sign-on)中新增任何應用程式的連結
 
 本文說明如何將不在資源庫內的應用程式新增至 Azure 入口網站中的**企業應用程式**，而不需撰寫程式碼。 如果您要尋找如何將自訂應用程式與 Azure AD 整合的開發人員指引，請參閱[Azure AD 的驗證案例](../develop/authentication-scenarios.md)。 當您開發使用新通訊協定（例如[OpenId connect/OAuth](../develop/active-directory-v2-protocols.md) ）來驗證使用者的應用程式時，您可以使用 Azure 入口網站中的[應用程式註冊](../develop/quickstart-register-app.md)體驗，向 Microsoft 身分識別平臺註冊它。

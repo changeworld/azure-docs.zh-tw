@@ -6,19 +6,19 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/19/2017
-ms.openlocfilehash: cbeaa3e148d6fbe20d7ddb4d04cd00d6300f9818
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/06/2020
+ms.openlocfilehash: 9a7cb80b5510ff0ac4a2491d896aded866180c19
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75402436"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062127"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Azure 監視器中的代理程式健全狀況解決方案
 Azure 中的代理程式健全狀況解決方案可協助您瞭解，所有代理程式都會直接向 Azure 監視器中的 Log Analytics 工作區報告，或是連線到 Azure 監視器的 System Center Operations Manager 管理群組（沒有回應），正在提交運算元據。  您可以也追蹤已部署的代理程式數目，其散佈地區，並執行其他查詢，以留意 Azure、其他雲端環境或內部部署中部署之代理程式的散佈情形。    
 
 ## <a name="prerequisites"></a>必要條件
-部署這個解決方案之前，請確認您目前支援向 Log Analytics 工作區或向與工作區整合之 [Operations Manager 管理群組](../../azure-monitor/platform/om-agents.md)回報的 [Windows 代理程式](../../log-analytics/log-analytics-windows-agent.md)。
+部署這個解決方案之前，請確認您目前支援向 Log Analytics 工作區或向與工作區整合之 [Operations Manager 管理群組](../../log-analytics/log-analytics-windows-agent.md)回報的 [Windows 代理程式](../../azure-monitor/platform/om-agents.md)。
 
 ## <a name="solution-components"></a>方案元件
 此解決方案包含下列已新增到您的工作區以及直接連線之代理程式或 Operations Manager 連線之管理群組的資源。
@@ -39,7 +39,7 @@ Azure 中的代理程式健全狀況解決方案可協助您瞭解，所有代�
 ### <a name="supported-agents"></a>支援的代理程式
 下表描述此方案支援的連接來源。
 
-| 連接的來源 | 支援的 | 說明 |
+| 連接的來源 | 支援 | 描述 |
 | --- | --- | --- |
 | Windows 代理程式 | 是 | 系統會從直接 Windows 代理程式收集活動訊號事件。|
 | System Center Operations Manager 管理群組 | 是 | 系統會每隔60秒向管理群組回報的代理程式收集心跳事件，然後轉送至 Azure 監視器。 不需要從 Operations Manager 代理程式直接連接到 Azure 監視器。 將事件資料從管理群組轉送至 Log Analytics 工作區。|
@@ -49,7 +49,7 @@ Azure 中的代理程式健全狀況解決方案可協助您瞭解，所有代�
 
 按一下 [代理程式健全狀況] 圖格，以開啟 [代理程式健全狀況] 儀表板。  此儀表板包含下表中的資料行。 每個資料行依計數列出前十個事件，這幾個事件符合該資料行中指定時間範圍的準則。 您可以選取每個資料行右下角的 [查看全部]，或按一下資料行標頭，以執行記錄搜尋來提供完整清單。
 
-| Column | 說明 |
+| 資料行 | 描述 |
 |--------|-------------|
 | 不同時間的代理程式計數 | Linux 和 Windows 代理程式為期七天的代理程式計數趨勢。|
 | 沒有回應的代理程式計數 | 在過去 24 小時內尚未傳送活動訊號的代理程式清單。|
@@ -68,7 +68,7 @@ Azure 中的代理程式健全狀況解決方案可協助您瞭解，所有代�
 ### <a name="heartbeat-records"></a>活動訊號記錄
 系統會建立類型為 [活動訊號] 的記錄。  這些記錄具有下表中的屬性。  
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 | --- | --- |
 | `Type` | *活動訊號*|
 | `Category` | 值為 [直接代理程式]、[SCOM 代理程式] 或 [SCOM 管理伺服器]。|
@@ -79,7 +79,7 @@ Azure 中的代理程式健全狀況解決方案可協助您瞭解，所有代�
 | `Version` | Log Analytics 代理程式或 Operations Manager 代理程式版本。|
 | `SCAgentChannel` | 值為 [Direct] 和/或 [SCManagementServer]。|
 | `IsGatewayInstalled` | 如果已安裝 Log Analytics 閘道，則值為「true」，否則值為「false」。|
-| `ComputerIP` | 電腦的 IP 位址。|
+| `ComputerIP` | 電腦的公用 IP 位址。 在 Azure Vm 上，這會顯示公用 IP （如果有的話）。 針對使用私人 ip 的 Vm，這會顯示 Azure SNAT 位址（而非私人 IP 位址）。 |
 | `RemoteIPCountry` | 電腦部署所在的地理位置。|
 | `ManagementGroupName` | Operations Manager 管理群組的名稱。|
 | `SourceComputerId` | 電腦的唯一識別碼。|
@@ -91,7 +91,7 @@ Azure 中的代理程式健全狀況解決方案可協助您瞭解，所有代�
 ## <a name="sample-log-searches"></a>記錄搜尋範例
 下表提供此解決方案所收集之記錄的記錄搜尋範例。
 
-| 查詢 | 說明 |
+| 查詢 | 描述 |
 |:---|:---|
 | Heartbeat &#124; distinct Computer |代理程式總數 |
 | Heartbeat &#124; summarize LastCall = max(TimeGenerated) by Computer &#124; where LastCall < ago(24h) |過去 24 小時內沒有回應的代理程式計數 |

@@ -2,7 +2,7 @@
 title: 將安全性金鑰設定為您的驗證方法-Azure AD
 description: 如何設定您的安全性資訊（預覽）頁面，以驗證您的身分識別使用快速身分識別線上（FIDO2）安全性金鑰做為您的驗證方法。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: librown
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.author: lizross
-ms.openlocfilehash: 3e16602128a70077d0a7962522ad3898421c8997
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: ee868ded0dc3a46f2ec20d0141aa2576cbf71f45
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704913"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062331"
 ---
 # <a name="set-up-a-security-key-as-your-verification-method"></a>將安全性金鑰設定為您的驗證方法
 
@@ -29,7 +29,7 @@ ms.locfileid: "76704913"
 
 ## <a name="security-verification-versus-password-reset-authentication"></a>安全性驗證與密碼重設驗證
 
-安全性資訊方法可用於雙因素安全性驗證和密碼重設。 不過，並非所有方法都同時適用於這兩者。
+雙因素安全性驗證和密碼重設都會使用安全性資訊方法。 不過，並非所有方法都同時適用於這兩者。
 
 | 方法 | 用於 |
 | ------ | -------- |

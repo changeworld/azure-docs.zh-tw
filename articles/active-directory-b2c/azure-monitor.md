@@ -10,17 +10,17 @@ ms.workload: identity
 ms.topic: conceptual
 ms.author: marsma
 ms.subservice: B2C
-ms.date: 02/03/2020
-ms.openlocfilehash: 108c9c1112327a3fcadeff4c4074f31f976a4e3d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.date: 02/05/2020
+ms.openlocfilehash: b701449e8cfb7a379522ee6ccb93f5569bd703d8
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026753"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77045993"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>使用 Azure 監視器監視 Azure AD B2C
 
-使用 Azure 監視器將 Azure Active Directory B2C （Azure AD B2C）使用活動事件路由至不同的監視解決方案。 您可以保留記錄以供長期使用，或與協力廠商安全性資訊和事件管理（SIEM）工具整合，以深入瞭解您的環境。
+使用 Azure 監視器將 Azure Active Directory B2C （Azure AD B2C）登入和[審核](view-audit-logs.md)記錄路由傳送至不同的監視解決方案。 您可以保留記錄以供長期使用，或與協力廠商安全性資訊和事件管理（SIEM）工具整合，以深入瞭解您的環境。
 
 您可以將記錄事件路由至：
 
@@ -28,9 +28,9 @@ ms.locfileid: "77026753"
 * Azure 事件中樞（並與您的 Splunk 和 Sumo 邏輯實例整合）。
 * Azure Log Analytics 工作區（用來分析資料、建立儀表板，以及針對特定事件發出警示）。
 
-![Azure Monitor](./media/azure-monitor/azure-monitor-flow.png)
+![Azure 監視器](./media/azure-monitor/azure-monitor-flow.png)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本文中的步驟，請使用 Azure PowerShell 模組來部署 Azure Resource Manager 範本。
 

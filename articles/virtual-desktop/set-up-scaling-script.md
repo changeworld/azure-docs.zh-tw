@@ -1,138 +1,255 @@
 ---
-title: 動態調整 Windows 虛擬桌面工作階段主機-Azure
-description: 說明如何為 Windows 虛擬桌面工作階段主機設定自動調整腳本。
+title: 調整工作階段主機 Azure 自動化-Azure
+description: 如何使用 Azure 自動化自動調整 Windows 虛擬桌面工作階段主機。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/10/2019
+ms.date: 02/06/2020
 ms.author: helohr
-ms.openlocfilehash: a991a41466d216b9f245c20dbd8054f3ae5ef3d0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c201df03bb156bac3f63d03cc4ca35215792f65c
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451331"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061476"
 ---
-# <a name="scale-session-hosts-dynamically"></a>動態調整工作階段主機
+# <a name="scale-session-hosts-using-azure-automation"></a>使用 Azure 自動化調整工作階段主機規模
 
-針對 Azure 中的許多 Windows 虛擬桌面部署，虛擬機器成本代表總 Windows 虛擬桌面部署成本的重要部分。 若要降低成本，最好在離峰使用時間關閉和解除配置工作階段主機虛擬機器（Vm），然後在尖峰使用時間時重新開機它們。
+您可以藉由調整您的虛擬機器（Vm），降低總 Windows 虛擬桌面部署成本。 這表示關閉和解除配置工作階段主機 Vm 期間的離峰使用時數，然後將它們重新開啟，並在尖峰時間重新配置它們。
 
-本文使用簡單的調整腳本，在您的 Windows 虛擬桌面環境中自動調整工作階段主機虛擬機器。 若要深入瞭解調整腳本的運作方式，請參閱[調整腳本的運作方式](#how-the-scaling-script-works)一節。
+在本文中，您將瞭解以 Azure 自動化和 Azure Logic Apps 為基礎的調整工具，其會自動調整 Windows 虛擬桌面環境中的工作階段主機虛擬機器。 若要瞭解如何使用調整工具，請直接跳至[必要條件](#prerequisites)。
+
+## <a name="how-the-scaling-tool-works"></a>調整工具的運作方式
+
+調整工具為想要優化其工作階段主機 VM 成本的客戶提供低成本的自動化選項。
+
+您可以使用調整工具來執行下列動作：
+ 
+- 根據尖峰和離峰上班時間，排程要啟動和停止的 Vm。
+- 根據每個 CPU 核心的會話數目相應放大 Vm。
+- 在離峰時段相應縮小 Vm，使工作階段主機 Vm 的最小數目維持在執行狀態。
+
+調整工具會使用 Azure 自動化 PowerShell runbook、webhook 和 Azure Logic Apps 的組合來運作。 當此工具執行時，Azure Logic Apps 會呼叫 webhook 來啟動 Azure 自動化 runbook。 Runbook 接著會建立作業。
+
+在尖峰使用時間期間，作業會檢查目前會話的數目，以及每個主機集區目前正在執行之工作階段主機的 VM 容量。 它會使用此資訊來計算執行中的工作階段主機 Vm 是否可以根據針對**createazurelogicapp**檔案所定義的*SessionThresholdPerCPU*參數來支援現有會話。 如果工作階段主機 Vm 無法支援現有的會話，此作業會啟動主機集區中的其他工作階段主機 Vm。
+
+>[!NOTE]
+>*SessionThresholdPerCPU*不會限制 VM 上的會話數目。 此參數只會決定何時需要啟動新的 Vm，以對連線進行負載平衡。 若要限制會話數目，您必須遵循 RdsHostPool 的指示，以適當地[設定](https://docs.microsoft.com/powershell/module/windowsvirtualdesktop/set-rdshostpool) *MaxSessionLimit*參數。
+
+在離峰使用時間期間，作業會根據*MinimumNumberOfRDSH*參數決定應關閉哪些工作階段主機 vm。 作業會將工作階段主機 Vm 設定為清空模式，以防止新會話連接到主機。 如果您將*LimitSecondsToForceLogOffUser*參數設定為非零的正值，腳本會通知任何目前已登入的使用者儲存其工作、等候設定的時間量，然後強制使用者登出。當工作階段主機 VM 上的所有使用者會話都已登出之後，腳本將會關閉 VM。
+
+如果您將*LimitSecondsToForceLogOffUser*參數設定為零，此作業將會允許指定群組原則中的會話設定，處理登出使用者會話。 若要查看這些群組原則，請移至 **電腦**設定 > **原則** > **系統管理範本** > **Windows 元件** > 終端機**服務** > **終端機伺服器** > **會話時間限制**。 如果工作階段主機 VM 上有任何使用中會話，此作業會讓工作階段主機 VM 繼續執行。 如果沒有作用中的會話，此作業將會關閉工作階段主機 VM。
+
+作業會根據設定的週期間隔定期執行。 您可以根據 Windows 虛擬桌面環境的大小來變更此間隔，但請記住，啟動和關閉虛擬機器可能需要一些時間，因此請記得考慮延遲。 建議您將週期間隔設定為每15分鐘一次。
+
+不過，此工具也有下列限制：
+
+- 此解決方案只適用于集區工作階段主機 Vm。
+- 此解決方案會管理任何區域中的 Vm，但只能在與您的 Azure 自動化帳戶和 Azure Logic Apps 相同的訂用帳戶中使用。
+
+>[!NOTE]
+>調整工具可控制要調整之主機集區的負載平衡模式。 它會將其設定為尖峰和離峰時段的廣度優先負載平衡。
 
 ## <a name="prerequisites"></a>必要條件
 
-執行腳本的環境必須具備下列專案：
+開始設定調整工具之前，請確定您已備妥下列專案：
 
-- 具有查詢該租使用者之許可權的 Windows 虛擬桌面租使用者和帳戶或服務主體（例如 RDS 參與者）。
-- 已設定並向 Windows 虛擬桌面服務註冊的工作階段主機集區 Vm。
-- 透過工作排程器執行排程工作的額外虛擬機器，並具有工作階段主機的網路存取權。 這在檔中稍後會以 scaler VM 的形式加以參考。
-- 在執行排程工作的 VM 上安裝的[Microsoft Azure Resource Manager PowerShell 模組](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)。
-- 安裝在執行排程工作之 VM 上的[Windows 虛擬桌面 PowerShell 模組](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)。
+- [Windows 虛擬桌面租使用者和主機集](create-host-pools-arm-template.md)區
+- 已設定並向 Windows 虛擬桌面服務註冊的工作階段主機集區 Vm
+- 具有 Azure 訂用帳戶之[參與者存取權](../role-based-access-control/role-assignments-portal.md)的使用者
 
-## <a name="recommendations-and-limitations"></a>建議和限制
+您用來部署工具的機器必須具備： 
 
-執行調整腳本時，請留意下列事項：
+- Windows PowerShell 5.1 或更新版本
+- Microsoft Az PowerShell 模組
 
-- 此調整腳本只能處理執行調整腳本之排程工作的每個實例的一個主機集區。
-- 執行調整腳本的排程工作必須位於永遠開啟的 VM 上。
-- 為調整腳本的每個實例和其設定建立個別的資料夾。
-- 此腳本不支援以系統管理員身分登入，以 Windows 虛擬桌面具有需要多重要素驗證的 Azure AD 使用者帳戶。 建議您使用服務主體來存取 Windows 虛擬桌面服務和 Azure。 遵循[此教學](create-service-principal-role-powershell.md)課程，以使用 PowerShell 建立服務主體和角色指派。
-- Azure 的 SLA 保證僅適用于可用性設定組中的 Vm。 檔的目前版本描述具有單一 VM 執行調整的環境，這可能不符合可用性需求。
+如果一切就緒，讓我們開始吧。
 
-## <a name="deploy-the-scaling-script"></a>部署調整腳本
+## <a name="create-an-azure-automation-account"></a>建立 Azure 自動化帳戶
 
-下列程式會告訴您如何部署調整腳本。
+首先，您需要 Azure 自動化帳戶來執行 PowerShell runbook。 以下說明如何設定您的帳戶：
 
-### <a name="prepare-your-environment-for-the-scaling-script"></a>準備您的環境以進行調整腳本
+1. 以系統管理員身分開啟 Windows PowerShell。
+2. 執行下列 Cmdlet 來登入您的 Azure 帳戶。
 
-首先，準備您的環境以進行調整腳本：
+     ```powershell
+     Login-AzAccount
+     ```
 
-1. 使用網域系統管理帳戶登入將執行排程工作的 VM （scaler VM）。
-2. 在 scaler VM 上建立資料夾，以保存調整腳本和其設定（例如**C：\\調整-HostPool1**）。
-3. 從[調整腳本存放庫](https://github.com/Azure/RDS-Templates/tree/master/wvd-sh/WVD%20scaling%20script)下載**basicScale**、 **config.xml**和**Functions-PSStoredCredentials**檔案，以及**PowershellModules**資料夾，並將其複製到您在步驟2中建立的資料夾。 有兩種主要方式可在將檔案複製到 scaler VM 之前取得檔案：
-    - 將 git 存放庫複製到本機電腦。
-    - 查看每個檔案的**原始**版本，將每個檔案的內容複寫並貼到文字編輯器中，然後以對應的檔案名和檔案類型儲存檔案。 
+     >[!NOTE]
+     >您的帳戶必須具有您想要部署調整工具之 Azure 訂用帳戶的參與者許可權。
 
-### <a name="create-securely-stored-credentials"></a>建立安全儲存的認證
+3. 執行下列 Cmdlet 來下載用來建立 Azure 自動化帳戶的腳本：
 
-接下來，您必須建立安全儲存的認證：
+     ```powershell
+     Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/RDS-Templates/master/wvd-templates/wvd-scaling-script/createazureautomationaccount.ps1" -OutFile "your local machine path\ createazureautomationaccount.ps1"
+     ```
 
-1. 以系統管理員身分開啟 PowerShell ISE。
-2. 執行下列 Cmdlet 來匯入 RDS PowerShell 模組：
+4. 執行下列 Cmdlet 來執行腳本，並建立 Azure 自動化帳戶：
 
-    ```powershell
-    Install-Module Microsoft.RdInfra.RdPowershell
-    ```
-    
-3. 開啟 [編輯] 窗格並載入**Function-PSStoredCredentials**檔案，然後執行整個腳本（F5）
-4. 執行下列 Cmdlet：
-    
-    ```powershell
-    Set-Variable -Name KeyPath -Scope Global -Value <LocalScalingScriptFolder>
-    ```
-    
-    例如，**集合-變數名稱 KeyPath-範圍全域值 "c：\\調整-HostPool1"**
-5. 執行**StoredCredential-KeyPath \$KeyPath** Cmdlet。 出現提示時，請輸入您的 Windows 虛擬桌面認證，其具有查詢主機集區的許可權（主機集區是在**config.xml**中指定）。
-    - 如果您使用不同的服務主體或標準帳戶，請針對每個帳戶執行**StoredCredential-KeyPath \$KeyPath** Cmdlet 一次，以建立本機儲存的認證。
-6. 執行**StoredCredential-List** ，確認已成功建立認證。
+     ```powershell
+     .\createazureautomationaccount.ps1 -SubscriptionID <azuresubscriptionid> -ResourceGroupName <resourcegroupname> -AutomationAccountName <name of automation account> -Location "Azure region for deployment"
+     ```
 
-### <a name="configure-the-configjson-file"></a>設定 config json 檔案
+5. Cmdlet 的輸出會包含 webhook URI。 請務必保留 URI 的記錄，因為當您設定 Azure 邏輯應用程式的執行排程時，會使用它做為參數。
 
-在下欄欄位中輸入相關的值，以更新 config.xml 中的調整腳本設定：
+設定 Azure 自動化帳戶之後，請登入您的 Azure 訂用帳戶，並檢查以確定您的 Azure 自動化帳戶和相關的 runbook 已出現在您指定的資源群組中，如下圖所示：
 
-| 欄位                     | 說明                    |
-|-------------------------------|------------------------------------|
-| AADTenantId                   | 與會話主機 Vm 執行所在的訂用帳戶相關聯的 Azure AD 租使用者識別碼     |
-| AADApplicationId              | 服務主體應用程式識別碼                                                       |
-| AADServicePrincipalSecret     | 這可以在測試階段輸入，但一旦您使用 Functions-PSStoredCredentials 建立認證，就會保持空白 **。**    |
-| currentAzureSubscriptionId    | 工作階段主機 Vm 執行所在的 Azure 訂用帳戶識別碼                        |
-| tenantName                    | Windows 虛擬桌面租使用者名稱                                                    |
-| hostPoolName                  | Windows 虛擬桌面主機集區名稱                                                 |
-| RDBroker                      | WVD 服務的 URL，預設值為 HTTPs：\//rdbroker.wvd.microsoft.com             |
-| 使用者名稱                      | 服務主體應用程式識別碼（可能會有與 AADApplicationId 相同的服務主體）或不含多重要素驗證的標準使用者 |
-| isServicePrincipal            | 接受的值為**true**或**false**。 指出所使用的第二組認證是否為服務主體或標準帳戶。 |
-| BeginPeakTime                 | 當尖峰使用時間開始時                                                            |
-| EndPeakTime                   | 當尖峰使用時間結束時                                                              |
-| TimeDifferenceInHours         | 當地時間與 UTC 之間的時差（以小時為單位）                                   |
-| SessionThresholdPerCPU        | 每個 CPU 閾值的會話數目上限，用於判斷新工作階段主機 VM 何時需要在尖峰時段啟動。  |
-| MinimumNumberOfRDSH           | 主機集區 Vm 的最小數目，以在離峰使用時間繼續執行             |
-| LimitSecondsToForceLogOffUser | 強制使用者登出前等待的秒數。如果設定為0，則不會強制使用者登出。  |
-| LogOffMessageTitle            | 在強制登出之前傳送給使用者的訊息標題                  |
-| LogOffMessageBody             | 登出之前傳送給使用者的警告訊息本文。例如，「這部電腦會在 X 分鐘內關機。 請儲存您的工作並登出。」 |
+![Azure 總覽頁面的影像，其中顯示新建立的自動化帳戶和 runbook。](media/automation-account.png)
 
-### <a name="configure-the-task-scheduler"></a>設定工作排程器
+若要檢查您的 webhook 是否應為其所在位置，請移至畫面左側的 [資源] 清單，然後選取 [ **webhook**]。
 
-設定 JSON 檔案之後，您必須將工作排程器設為定期執行 basicScaler 檔案的時間。
+## <a name="create-an-azure-automation-run-as-account"></a>建立 Azure 自動化執行身分帳戶
 
-1. 啟動**工作排程器**。
-2. 在 [**工作排程器**] 視窗中，選取 [**建立**工作]。
-3. 在 **[建立工作**] 對話方塊中，選取 [一般] 索引標籤，輸入**名稱**（例如，"Dynamic RDSH"），選取 **[** **不論使用者是否登入**，也要執行，並**以最高許可權執行**]。
-4. 移至 [**觸發**程式] 索引標籤，然後選取 [**新增 ...** ]
-5. 在 [**新增觸發**程式] 對話方塊的 [ **Advanced settings**] 底下，勾選 [**重複**工作]，然後選取適當的期間和持續時間（例如， **15 分鐘**或**無限期**）。
-6. 選取 [**動作**] 索引標籤和 [**新增 ...** ]
-7. 在 [**新增動作**] 對話方塊中，于 [**程式/腳本**] 欄位中輸入**Powershell** ，然後在 [**新增引數（選擇性）** ] 欄位中輸入**C：\\調整\\basicScale。**
-8. 移至 [**條件**和**設定**] 索引標籤，然後選取 **[確定]** 以接受每個的預設設定。
-9. 輸入您打算執行調整腳本之系統管理帳戶的密碼。
+現在您已有 Azure 自動化帳戶，您也必須建立 Azure 自動化執行身分帳戶，才能存取您的 Azure 資源。
 
-## <a name="how-the-scaling-script-works"></a>調整腳本的運作方式
+[Azure 自動化執行身分帳戶](../automation/manage-runas-account.md)會使用 azure Cmdlet 提供驗證來管理 azure 中的資源。 當您建立執行身分帳戶時，它會在 Azure Active Directory 中建立新的服務主體使用者，並在訂用帳戶層級將參與者角色指派給服務主體使用者，Azure 執行身分帳戶是用來安全地進行驗證的絕佳方式憑證和服務主體名稱，而不需要將使用者名稱和密碼儲存在認證物件中。 若要深入瞭解執行身分驗證，請參閱[限制執行身分帳戶許可權](../automation/manage-runas-account.md#limiting-run-as-account-permissions)。
 
-此調整腳本會從 config.xml 檔案讀取設定，包括一天內尖峰使用期間的開始和結束。
+任何身為訂用帳戶管理員角色成員和訂閱共同管理員的使用者，都可以遵循下一節的指示來建立執行身分帳戶。
 
-在尖峰使用時間期間，腳本會檢查目前的會話數目，以及每個主機集區目前執行的 RDSH 容量。 它會計算執行中的工作階段主機 Vm 是否有足夠的容量來支援以 config.xml 檔案中定義的 SessionThresholdPerCPU 參數為基礎的現有會話。 如果不是，腳本會啟動主機集區中的其他工作階段主機 Vm。
+若要在您的 Azure 帳戶中建立執行身分帳戶：
 
-在離峰使用時間期間，腳本會根據 config.xml 檔案中的 MinimumNumberOfRDSH 參數，決定應關閉哪些工作階段主機 Vm。 腳本會將工作階段主機 Vm 設定為清空模式，以防止新會話連接到主機。 如果您將 config.xml 檔案中的**LimitSecondsToForceLogOffUser**參數設定為非零的正值，腳本會通知任何目前已登入的使用者儲存工作、等候設定的時間量，然後強制使用者登出。在工作階段主機 VM 上登出所有使用者會話之後，腳本將會關閉伺服器。
+1. 在 Azure 入口網站中，選取 [所有服務]。 在資源清單中，輸入並選取 [**自動化帳戶**]。
 
-如果您將 config.xml 檔案中的**LimitSecondsToForceLogOffUser**參數設定為零，則腳本會允許主機集區內容中的會話設定，處理登出使用者會話。 如果工作階段主機 VM 上有任何會話，它會讓工作階段主機 VM 保持執行狀態。 如果沒有任何會話，腳本將會關閉工作階段主機 VM。
+2. 在 [**自動化帳戶**] 頁面上，選取自動化帳戶的名稱。
 
-此腳本是設計為使用工作排程器在 scaler VM 伺服器上定期執行。 根據您遠端桌面服務環境的大小來選取適當的時間間隔，並記住啟動和關閉虛擬機器可能需要一些時間。 建議您每隔15分鐘執行調整腳本。
+3. 在視窗左側的窗格中，選取 [帳戶設定] 區段下的 [**執行身分帳戶**]。
 
-## <a name="log-files"></a>記錄檔
+4. 選取 [ **Azure 執行身分帳戶**]。 當 [**新增 Azure 執行身分帳戶**] 窗格出現時，請參閱總覽資訊，然後選取 [**建立**] 以開始帳戶建立程式。
 
-調整腳本會建立兩個記錄檔： **WVDTenantScale**和**WVDTenantUsage**。 **WVDTenantScale**會在每次執行調整腳本時記錄事件和錯誤（如果有的話）。
+5. 請稍候幾分鐘，讓 Azure 建立執行身分帳戶。 您可以在 [通知] 底下的功能表中追蹤建立進度。
 
-**WVDTenantUsage**會在您每次執行調整腳本時，記錄作用中的核心數目和作用中的虛擬機器數目。 您可以使用這項資訊來預估 Microsoft Azure Vm 的實際使用量和成本。 檔案會格式化為逗號分隔值，每個專案都包含下列資訊：
+6. 當程式完成時，它會在指定的自動化帳戶中建立名為 AzureRunAsConnection 的資產。 連接資產會保存應用程式識別碼、租使用者識別碼、訂用帳戶識別碼和憑證指紋。 請記住 [應用程式識別碼]，因為您稍後將會用到它。
 
->時間、主機集區、核心、Vm
+### <a name="create-a-role-assignment-in-windows-virtual-desktop"></a>在 Windows 虛擬桌面中建立角色指派
 
-檔案名也可以修改為擁有 .csv 副檔名、載入 Microsoft Excel，然後進行分析。
+接下來，您必須建立角色指派，讓 AzureRunAsConnection 可以與 Windows 虛擬桌面互動。 請務必使用 PowerShell，以有權建立角色指派的帳戶登入。
+
+首先，下載並匯入[Windows 虛擬桌面 powershell 模組](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)，以在您的 powershell 會話中使用（如果您還沒有這麼做）。 執行下列 PowerShell Cmdlet 以連線至 Windows 虛擬桌面並顯示您的租用戶。
+
+```powershell
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+
+Get-RdsTenant
+```
+
+當您找到您想要調整之主機集區的租使用者時，請遵循[建立 Azure 自動化帳戶](#create-an-azure-automation-account)中的指示，並使用您從上一個 Cmdlet 取得的租使用者名稱來建立角色指派：
+
+```powershell
+New-RdsRoleAssignment -RoleDefinitionName "RDS Contributor" -ApplicationId <applicationid> -TenantName <tenantname>
+```
+
+## <a name="create-the-azure-logic-app-and-execution-schedule"></a>建立 Azure 邏輯應用程式和執行排程
+
+最後，您必須建立 Azure 邏輯應用程式，並為新的調整工具設定執行排程。
+
+1.  以系統管理員身分開啟 Windows PowerShell
+
+2.  執行下列 Cmdlet 來登入您的 Azure 帳戶。
+
+     ```powershell
+     Login-AzAccount
+     ```
+
+3. 執行下列 Cmdlet，以在本機電腦上下載 createazurelogicapp 腳本檔案。
+
+     ```powershell
+     Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/RDS-Templates/master/wvd-templates/wvd-scaling-script/createazurelogicapp.ps1" -OutFile "your local machine path\ createazurelogicapp.ps1"
+     ```
+
+4. 執行下列 Cmdlet，以具有 RDS 擁有者或 RDS 參與者許可權的帳戶登入 Windows 虛擬桌面。
+
+     ```powershell
+     Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+     ```
+
+5. 執行下列 PowerShell 腳本，以建立 Azure 邏輯應用程式和執行排程。
+
+     ```powershell
+     $resourceGroupName = Read-Host -Prompt "Enter the name of the resource group for the new Azure Logic App"
+     
+     $aadTenantId = Read-Host -Prompt "Enter your Azure AD tenant ID"
+
+     $subscriptionId = Read-Host -Prompt "Enter your Azure Subscription ID"
+
+     $tenantName = Read-Host -Prompt "Enter the name of your WVD tenant"
+
+     $hostPoolName = Read-Host -Prompt "Enter the name of the host pool you’d like to scale"
+
+     $recurrenceInterval = Read-Host -Prompt "Enter how often you’d like the job to run in minutes, e.g. ‘15’"
+
+     $beginPeakTime = Read-Host -Prompt "Enter the start time for peak hours in local time, e.g. 9:00"
+
+     $endPeakTime = Read-Host -Prompt "Enter the end time for peak hours in local time, e.g. 18:00"
+
+     $timeDifference = Read-Host -Prompt "Enter the time difference between local time and UTC in hours, e.g. +5:30"
+
+     $sessionThresholdPerCPU = Read-Host -Prompt "Enter the maximum number of sessions per CPU that will be used as a threshold to determine when new session host VMs need to be started during peak hours"
+
+     $minimumNumberOfRdsh = Read-Host -Prompt "Enter the minimum number of session host VMs to keep running during off-peak hours"
+
+     $limitSecondsToForceLogOffUser = Read-Host -Prompt "Enter the number of seconds to wait before automatically signing out users. If set to 0, users will be signed out immediately"
+
+     $logOffMessageTitle = Read-Host -Prompt "Enter the title of the message sent to the user before they are forced to sign out"
+
+     $logOffMessageBody = Read-Host -Prompt "Enter the body of the message sent to the user before they are forced to sign out"
+
+     $location = Read-Host -Prompt "Enter the name of the Azure region where you will be creating the logic app"
+
+     $connectionAssetName = Read-Host -Prompt "Enter the name of the Azure RunAs connection asset"
+
+     $webHookURI = Read-Host -Prompt "Enter the URI of the WebHook returned by when you created the Azure Automation Account"
+
+     $automationAccountName = Read-Host -Prompt "Enter the name of the Azure Automation Account"
+
+     $maintenanceTagName = Read-Host -Prompt "Enter the name of the Tag associated with VMs you don’t want to be managed by this scaling tool"
+
+     .\createazurelogicapp.ps1 -ResourceGroupName $resourceGroupName `
+       -AADTenantID $aadTenantId `
+       -SubscriptionID $subscriptionId `
+       -TenantName $tenantName `
+       -HostPoolName $hostPoolName `
+       -RecurrenceInterval $recurrenceInterval `
+       -BeginPeakTime $beginPeakTime `
+       -EndPeakTime $endPeakTime `
+       -TimeDifference $timeDifference `
+       -SessionThresholdPerCPU $sessionThresholdPerCPU `
+       -MinimumNumberOfRDSH $minimumNumberOfRdsh `
+       -LimitSecondsToForceLogOffUser $limitSecondsToForceLogOffUser `
+       -LogOffMessageTitle $logOffMessageTitle `
+       -LogOffMessageBody $logOffMessageBody `
+       -Location $location `
+       -ConnectionAssetName $connectionAssetName `
+       -WebHookURI $webHookURI `
+       -AutomationAccountName $automationAccountName `
+       -MaintenanceTagName $maintenanceTagName
+     ```
+
+     執行腳本之後，邏輯應用程式應該會出現在資源群組中，如下圖所示。
+
+     ![範例 Azure 邏輯應用程式的 [總覽] 頁面影像。](media/logic-app.png)
+
+若要對執行排程進行變更（例如變更週期間隔或時區），請移至自動調整排程器並選取 [**編輯**]，移至 [Logic Apps 設計工具]。
+
+![Logic Apps 設計工具的影像。 可讓使用者編輯週期和 webhook 檔案的 [週期] 和 [Webhook] 功能表開啟。](media/logic-apps-designer.png)
+
+## <a name="manage-your-scaling-tool"></a>管理您的調整工具
+
+既然您已建立調整工具，就可以存取其輸出。 本節說明一些您可能會覺得有用的功能。
+
+### <a name="view-job-status"></a>檢視作業狀態
+
+您可以在 Azure 入口網站中查看所有 runbook 作業的摘要狀態，或查看更深入的特定 runbook 作業狀態。
+
+在您選取的自動化帳戶右側的 [作業統計資料] 底下，您可以查看所有 runbook 作業的摘要清單。 開啟視窗左側的 [**作業**] 頁面，會顯示目前的工作狀態、開始時間和完成時間。
+
+![[作業狀態] 頁面的螢幕擷取畫面。](media/jobs-status.png)
+
+### <a name="view-logs-and-scaling-tool-output"></a>查看記錄和調整工具輸出
+
+您可以藉由開啟 runbook 並選取您的作業名稱，來查看向外延展和相應縮小操作的記錄。
+
+在裝載 Azure 自動化帳戶的資源群組中，流覽至 runbook （預設名稱是 WVDAutoScaleRunbook），然後選取 **[總覽**]。 在 [總覽] 頁面上，選取 [最近使用的作業] 底下的作業，以查看其調整工具輸出，如下圖所示。
+
+![縮放工具的輸出視窗影像。](media/tool-output.png)

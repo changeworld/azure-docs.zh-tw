@@ -2,7 +2,7 @@
 title: 設定文字訊息做為您的驗證方法-Azure AD
 description: 如何設定您的安全性資訊（預覽）頁面，以使用文字訊息作為驗證方法來驗證您的身分識別。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 02/13/2019
-ms.author: lizross
-ms.openlocfilehash: 1d21445d12ea8ae7040627c6f9bdae7c744953c3
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: 0525ee6d0ac5df61113e5a97c9812394323ffb3d
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704811"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062348"
 ---
 # <a name="set-up-text-messaging-as-your-verification-method"></a>設定文字訊息做為您的驗證方法
 

@@ -15,12 +15,12 @@ ms.date: 07/16/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1291db8cd895a1104183ae2b5388eb6a23305874
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 89b16a8479f8975d101b8a4e26dcb1885d9730bd
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895924"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063375"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>整合 Azure Active Directory 與應用程式入門指南
 
@@ -85,7 +85,7 @@ ms.locfileid: "72895924"
 下列文章描述使用 Azure AD 連接器和 Azure AD 將應用程式與 Azure AD 整合之後，您可以管理對應用程式的存取的方式。
 
 * [使用 Azure AD 管理應用程式的存取](what-is-access-management.md)
-* [使用 Azure AD 連接器自動化](user-provisioning.md)
+* [使用 Azure AD 連接器自動化](../app-provisioning/user-provisioning.md)
 * [將使用者指派給應用程式](../active-directory-applications-guiding-developers-assigning-users.md)
 * [將群組指派給應用程式](../active-directory-applications-guiding-developers-assigning-groups.md)
 * [共用帳戶](../active-directory-sharing-accounts.md)

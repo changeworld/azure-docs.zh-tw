@@ -15,23 +15,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: a4ddcf27869ea7484f98329d14d01bfad83af219
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: a3e1c936d46e0d9b0ad3b98dafeda7df0b4a23db
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709529"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77058458"
 ---
 # <a name="tutorial-configure-elium-for-automatic-user-provisioning"></a>教學課程：設定 Elium 來自動布建使用者
 
 本教學課程說明如何設定 Elium 和 Azure Active Directory （Azure AD），以將使用者或群組自動布建和取消布建至 Elium。
 
 > [!NOTE]
-> 本教學課程說明建立在 Azure AD 使用者布建服務之上的連接器。 如需有關此服務的用途和運作方式，以及常見問題的重要詳細資料，請參閱[使用 Azure Active Directory 自動化 SaaS 應用程式的使用者](../manage-apps/user-provisioning.md)布建和解除布建。
+> 本教學課程說明建立在 Azure AD 使用者布建服務之上的連接器。 如需有關此服務的用途和運作方式，以及常見問題的重要詳細資料，請參閱[使用 Azure Active Directory 自動化 SaaS 應用程式的使用者](../app-provisioning/user-provisioning.md)布建和解除布建。
 >
-> 此連接器目前為預覽狀態。 如需預覽中 Azure 功能的一般使用規定，請參閱[Microsoft Azure 預覽的補充使用](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)規定。
+> 此連接器目前為預覽版。 如需預覽中 Azure 功能的一般使用規定，請參閱[Microsoft Azure 預覽的補充使用](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)規定。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 本教學課程假設您已經具有下列必要條件：
 
@@ -130,7 +130,7 @@ Azure AD 使用稱為「*指派*」的概念，來判斷哪些使用者會收到
 
     ![Azure AD 和 Elium 之間的屬性對應](media/Elium-provisioning-tutorial/userattribute.png)
 
-1. 若要設定範圍篩選準則，請遵循[範圍篩選教學](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)課程中的指示。
+1. 若要設定範圍篩選準則，請遵循[範圍篩選教學](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)課程中的指示。
 
 1. 若要啟用 Elium 的 Azure AD 布建服務，請在 [**設定**] 區段中將 [布建**狀態**] 變更為 [**開啟**]。
 
@@ -144,15 +144,15 @@ Azure AD 使用稱為「*指派*」的概念，來判斷哪些使用者會收到
 
     ![[儲存] 按鈕以提供布建設定](common/provisioning-configuration-save.png)
 
-這項作業會啟動 [**設定**] 區段的 [**範圍**] 中定義的所有使用者和群組的首次同步處理。 此初始同步處理常式所花費的時間比之後同步。 如需布建所需時間的詳細資訊，請參閱布建[使用者需要多久時間？](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)。
+這項作業會啟動 [**設定**] 區段的 [**範圍**] 中定義的所有使用者和群組的首次同步處理。 此初始同步處理常式所花費的時間比之後同步。 如需布建所需時間的詳細資訊，請參閱布建[使用者需要多久時間？](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)。
 
-使用 [**目前狀態**] 區段來監視進度，並遵循您的布建活動報告的連結。 布建活動報表會描述 Elium 上的 Azure AD 布建服務所執行的所有動作。 如需詳細資訊，請參閱[檢查使用者](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md)布建的狀態。 若要讀取 Azure AD 布建記錄，請參閱[關於自動使用者帳戶](../manage-apps/check-status-user-account-provisioning.md)布建的報告。
+使用 [**目前狀態**] 區段來監視進度，並遵循您的布建活動報告的連結。 布建活動報表會描述 Elium 上的 Azure AD 布建服務所執行的所有動作。 如需詳細資訊，請參閱[檢查使用者](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)布建的狀態。 若要讀取 Azure AD 布建記錄，請參閱[關於自動使用者帳戶](../app-provisioning/check-status-user-account-provisioning.md)布建的報告。
 
 ## <a name="additional-resources"></a>其他資源
 
-* [管理企業應用程式的使用者帳戶](../manage-apps/configure-automatic-user-provisioning-portal.md)布建。
+* [管理企業應用程式的使用者帳戶](../app-provisioning/configure-automatic-user-provisioning-portal.md)布建。
 * [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>後續步驟
 
-* [瞭解如何針對佈建活動檢閱記錄和取得報告](../manage-apps/check-status-user-account-provisioning.md)
+* [瞭解如何針對佈建活動檢閱記錄和取得報告](../app-provisioning/check-status-user-account-provisioning.md)

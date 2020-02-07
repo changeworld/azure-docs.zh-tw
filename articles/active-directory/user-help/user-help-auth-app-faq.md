@@ -2,7 +2,7 @@
 title: 有關 Microsoft Authenticator 應用程式 Azure AD 的問題 & 解答
 description: 有關 Microsoft 驗證應用程式和雙因素驗證的常見問題與解答（Faq）。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.assetid: f04d5bce-e99e-4f75-82d1-ef6369be3402
 ms.service: active-directory
@@ -10,14 +10,14 @@ ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 01/16/2020
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 70f4844a8c157ba7964ce1053c007db8e9301336
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 3df7e772ea88a7a58780f08ff20f44d50f01c336
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704692"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063878"
 ---
 # <a name="frequently-asked-questions-faqs-about-the-microsoft-authenticator-app"></a>關於 Microsoft Authenticator 應用程式的常見問題（Faq）
 
@@ -27,7 +27,7 @@ Microsoft Authenticator 應用程式取代了 Azure Authenticator 應用程式�
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 
-| 問題 | 解決方案 |
+| 問題 | 解決方法 |
 | -------- | -------- |
 | Authenticator 會為我儲存何種資料，而我該如何刪除它？ | Microsoft Authenticator 應用程式會收集三種類型的資訊：<ul><li>您新增帳戶時提供的帳戶資訊。 這項資料可以藉由移除帳戶來移除。</li><li>診斷記錄資料，在您透過應用程式的 [說明] 功能表，選擇**傳送記錄**給 Microsoft 之前，此資料只會存在應用程式中。 這些記錄檔包含個人資料，像是電子郵件地址 (例如alain@contoso.com)、伺服器/IP 位址和裝置資料 (例如裝置名稱和作業系統版本)，以及僅限有助於應用程式問題移難排解所需資訊的個人資料。 您可以隨時在應用程式中檢視這些記錄檔，以查看所收集的資訊。 如果您傳送記錄檔，驗證應用程式的工程師就可以使用此資訊來對客戶回報問題進行疑難排解。</li><li>非個人的可識別使用資料，例如「已啟動的新增帳戶流程/已成功新增的帳戶」或「已核准的通知」。 這項資料是我們的工程決策中不可或缺的一部分，可協助我們判斷哪些功能對您而言很重要，以及要透過應用程式更新形式來改善的地方。 身為應用程式使用者的您，可以在第一次啟動應用程式時看到此資料收集的通知，而系統也會讓您知道可以在應用程式的 [設定] 頁面上關閉此設定。 您可以隨時啟用或停用此設定。</li></ul> |
 | 應用程式中的程式碼有什麼作用？ | 當您開啟 Microsoft Authenticator 應用程式時，將看到您已新增的帳戶顯示為磚，而且每個磚旁邊都有一個六或八位數的數字。<br><br>您將使用這些驗證碼來驗證您就是您所說的人員。 使用您的使用者名稱和密碼登入之後，您將輸入與您的帳戶位於同一個磚的驗證碼。 例如，如果您以 Alain 登入 Contoso 帳戶，您就會使用驗證碼 427303。<br><br>![應用程式中的 [帳戶] 畫面](./media/user-help-auth-app-faq/auth-app-accounts.png) |
@@ -51,7 +51,7 @@ Microsoft Authenticator 應用程式取代了 Azure Authenticator 應用程式�
 | 什麼是應用程式鎖定功能，其如何協助提升我使用裝置時的安全性？ | 若要讓單次密碼、應用程式資訊和應用程式設定更加安全，您可以在 Microsoft Authenticator 應用程式中開啟應用程式鎖定功能。 從 Microsoft Authenticator 應用程式的 [設定] 畫面開啟 [應用程式鎖定]，代表系統會在您每次開啟 Microsoft Authenticator 應用程式時，要求您使用 PIN 碼或生物特徵辨識進行驗證。 這項功能可提供額外的保護，您在 Microsoft Authenticator 應用程式中核准通知的方式並不會改變。<br><br>**注意**<br>由於裝置註冊可能發生在 Microsoft Authenticator 應用程式以外的其他位置，例如在公司入口網站應用程式中或 Android 帳戶設定中，因此不保證應用程式鎖定會阻止使用者存取 Microsoft驗證器應用程式。 |
 | 為什麼我會收到關於帳戶活動的通知？ | 為了讓您更了解個人 Microsoft 帳戶的現況，我們會將活動通知傳送至您的 Microsoft Authenticator 應用程式。 這些通知會發生變更後立即顯示，以利確保您的安全性。 我們之前透過電子郵件和簡訊傳送這些通知，而現在已擴充為包括應用程式。 如需這些活動通知的詳細資訊，請參閱[若您的帳戶出現異常登入，將會如何](https://support.microsoft.com/help/13967/microsoft-account-unusual-sign-in)。 若要變更您收到通知的位置，請登入您帳戶的 [[我們可以如何與您的非關鍵帳戶警示](https://account.live.com/SecurityNotifications/Update)連線] 頁面。 |
 | 使用 iOS 隨附的預設郵件應用程式登入我的公司或學校帳戶時，我會收到 Microsoft Authenticator 應用程式的提示，以取得我的安全性驗證資訊。 輸入該資訊並返回郵件應用程式之後，我收到錯誤。 我該怎麼辦？ | 這很可能是因為您的登入和郵件應用程式會在兩個不同的應用程式中發生，導致初始背景登入進程停止運作並失敗。 若要嘗試修正此問題，建議您在登入郵件應用程式時，選取畫面右下方的**Safari**圖示。 藉由移至 Safari，整個登入程式會在單一應用程式中進行，讓您可以成功登入應用程式。 |
-| 我的一次性密碼（OTP）代碼無法運作。 我該怎麼做？ | 請確定您裝置上的日期和時間是正確的，而且會自動同步處理。 如果日期和時間錯誤或不同步，則程式碼將無法使用。 |
+| 我的一次性密碼（OTP）代碼無法運作。 我該怎麼辦？ | 請確定您裝置上的日期和時間是正確的，而且會自動同步處理。 如果日期和時間錯誤或不同步，則程式碼將無法使用。 |
 
 ## <a name="next-steps"></a>後續步驟
 

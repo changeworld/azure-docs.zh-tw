@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/18/2019
+ms.date: 02/05/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3d9316f42c8d0ac5b44cda2e484ca4c92110813d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2bda00924015bf5abc616b7c346eacfeda53c2ed
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75479146"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77045945"
 ---
 # <a name="custom-email-verification-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的自訂電子郵件驗證
 
@@ -389,6 +389,36 @@ JSON 物件的結構是由輸入參數和 InputClaims TransformationClaimTypes �
     </TechnicalProfile>
   </TechnicalProfiles>
 </ClaimsProvider>
+```
+
+## <a name="optional-localize-your-email"></a>選擇性當地語系化您的電子郵件
+
+若要將電子郵件當地語系化，您必須將當地語系化的字串傳送至 SendGrid 或您的電子郵件提供者。 例如，將電子郵件主旨、本文、您的程式碼訊息或電子郵件簽章當地語系化。 若要這樣做，您可以使用[GetLocalizedStringsTransformation](string-transformations.md)宣告轉換，將當地語系化的字串複製到宣告類型。 在產生 JSON 承載的 `GenerateSendGridRequestBody` 宣告轉換中，會使用包含當地語系化字串的輸入宣告。
+
+1. 在您的原則中，定義下列字串宣告： subject、message、codeIntro 和 signature。
+1. 定義[GetLocalizedStringsTransformation](string-transformations.md)宣告轉換，以將當地語系化的字串值取代為步驟1中的宣告。
+1. 將 `GenerateSendGridRequestBody` 宣告轉換變更為使用具有下列 XML 程式碼片段的輸入宣告。
+1. 更新您的 SendGrind 範本以使用動態參數來取代所有將以 Azure AD B2C 當地語系化的字串。
+
+```XML
+<ClaimsTransformation Id="GenerateSendGridRequestBody" TransformationMethod="GenerateJson">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="personalizations.0.to.0.email" />
+    <InputClaim ClaimTypeReferenceId="subject" TransformationClaimType="personalizations.0.dynamic_template_data.subject" />
+    <InputClaim ClaimTypeReferenceId="otp" TransformationClaimType="personalizations.0.dynamic_template_data.otp" />
+    <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="personalizations.0.dynamic_template_data.email" />
+    <InputClaim ClaimTypeReferenceId="message" TransformationClaimType="personalizations.0.dynamic_template_data.message" />
+    <InputClaim ClaimTypeReferenceId="codeIntro" TransformationClaimType="personalizations.0.dynamic_template_data.codeIntro" />
+    <InputClaim ClaimTypeReferenceId="signature" TransformationClaimType="personalizations.0.dynamic_template_data.signature" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="template_id" DataType="string" Value="d-1234567890" />
+    <InputParameter Id="from.email" DataType="string" Value="my_email@mydomain.com" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="sendGridReqBody" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
 ```
 
 ## <a name="next-steps"></a>後續步驟

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: malop
 ms.reviewer: kumud
-ms.openlocfilehash: d343f09320a95265ac5e84c80941f454a268ffd4
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 24bcc7e698527cd39958c53b48a0b36404c36bb4
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772171"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048831"
 ---
 # <a name="virtual-network-integration-for-azure-services"></a>Azure 服務的虛擬網路整合
 
@@ -60,4 +60,4 @@ ms.locfileid: "75772171"
 | 裝載 | [Azure 專用 HSM](../dedicated-hsm/index.yml?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure NetApp Files](../azure-netapp-files/azure-netapp-files-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>|是 <br/> 是 <br/>
 | | |
 
-¹「專用」意指只有服務特定資源可以部署在此子網中，且無法與客戶 VM/VMSSs 結合 <br/> 建議使用²，但不是服務所加諸的強制需求。
+¹「專用」意指只有服務特定資源可以部署在此子網中，且無法與客戶 VM/VMSSs 結合 <br/> ²建議您最好將這些服務安裝在專用的子網中，而不是服務所加諸的必要需求。

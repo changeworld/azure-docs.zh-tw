@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 04db62f402c25dd4a04281047f684dc23d41a502
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: e95a0b4b9f071a0fd3949d50eeee17b811dfb8ea
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934624"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064813"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT 中樞訊息路由查詢語法
 
@@ -50,9 +50,9 @@ IoT 中樞會針對所有裝置到雲端訊息定義[常見格式](iot-hub-devgu
 
 系統屬性可協助識別訊息的內容和來源。 
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
-| ContentType | string | 使用者會指定訊息的內容類型。 若要允許對訊息本文進行查詢，此值應該設為 application/JSON。 |
+| contentType | string | 使用者會指定訊息的內容類型。 若要允許對訊息本文進行查詢，此值應該設為 application/JSON。 |
 | contentEncoding | string | 使用者會指定訊息的編碼類型。 允許的值為 UTF-8、UTF-16、UTF-32 (若 contentType 是設為 application/JSON)。 |
 | iothub-connection-device-id | string | 此值是由 IoT 中樞設定，並能識別裝置的識別碼。 若要查詢，請使用 `$connectionDeviceId`。 |
 | iothub-enqueuedtime | string | 此值是由 IoT 中樞設定，並代表將訊息加入佇列的實際時間 (以 UTC 表示)。 若要查詢，請使用 `enqueuedTime`。 |
@@ -66,7 +66,7 @@ IoT 中樞會針對所有裝置到雲端訊息定義[常見格式](iot-hub-devgu
 
 ### <a name="query-expressions"></a>查詢運算式
 
-針對訊息系統屬性的查詢，需要其前面加上 `$` 符號。 針對應用程式屬性的查詢是透過屬性名稱來存取，因此不應該其前面加上 `$` 符號。 如果應用程式屬性名稱是以 `$` 作為開頭，則 IoT 中樞將會在系統屬性中搜尋它，並在找不到它的情況下於應用程式屬性中尋找它。 例如： 
+針對訊息系統屬性的查詢，需要其前面加上 `$` 符號。 針對應用程式屬性的查詢是透過屬性名稱來存取，因此不應該其前面加上 `$` 符號。 如果應用程式屬性名稱是以 `$` 作為開頭，則 IoT 中樞將會在系統屬性中搜尋它，並在找不到它的情況下於應用程式屬性中尋找它。 例如， 
 
 查詢系統屬性 contentEncoding 
 
@@ -196,7 +196,7 @@ $body.Weather.Temperature = 50 AND processingPath = 'hot'
 
 ### <a name="query-expressions"></a>查詢運算式
 
-針對訊息本文的查詢，需要在其前面加上 `$twin`。 您的查詢運算式也可以將對應項標記或屬性參考和內文參考、訊息系統屬性，以及訊息應用程式屬性參考進行結合。 我們建議在標記和屬性中使用唯一名稱，因為查詢不會區分大小寫。 這同時適用于裝置 twins 和模組 twins。 此外，也請避免使用 `twin`、`$twin`、`body` 或 `$body` 作為屬性名稱。 例如，以下是所有有效的查詢運算式： 
+訊息對應項的查詢前面必須加上 `$twin`。 您的查詢運算式也可以將對應項標記或屬性參考和內文參考、訊息系統屬性，以及訊息應用程式屬性參考進行結合。 我們建議在標記和屬性中使用唯一名稱，因為查詢不會區分大小寫。 這同時適用于裝置 twins 和模組 twins。 此外，也請避免使用 `twin`、`$twin`、`body` 或 `$body` 作為屬性名稱。 例如，以下是所有有效的查詢運算式： 
 
 ```sql
 $twin.properties.desired.telemetryConfig.sendFrequency = '5m'

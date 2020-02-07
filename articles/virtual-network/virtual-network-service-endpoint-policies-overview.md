@@ -11,20 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sumi
-ms.openlocfilehash: 86726eefb53638036a4e9207c648bf5ffe6c866e
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 1aa4328a6d5367ef356ce33807289a873c93d90f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595373"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77056694"
 ---
 # <a name="virtual-network-service-endpoint-policies-preview"></a>虛擬網路服務端點原則 (預覽)
 
 虛擬網路 (VNet) 服務端點原則可讓您篩選流向 Azure 服務的虛擬網路流量，以僅允許特定 Azure 服務資源經過服務端點。 端點原則可針對流向 Azure 服務的虛擬網路流量提供更細微的存取控制。
 
-這項功能會以__預覽__形式在下列 Azure 服務和地區提供：
-
-__Azure 儲存體__：WestCentralUS、 WestUS2、 NorthCentralUS、 SouthCentralUS、 CentralUS、 EastUS2。
+這項功能在 Azure 儲存體的所有公用 Azure 區域中都有提供__預覽__。
 
 如需此預覽的最新通知，請參閱 [Azure 虛擬網路更新](https://azure.microsoft.com/updates/?product=virtual-network)頁面。
 
@@ -142,9 +140,9 @@ __Azure 儲存體__：WestCentralUS、 WestUS2、 NorthCentralUS、 SouthCentral
 
 ## <a name="scenarios"></a>案例
 
-- **對等互連、已連線或多個虛擬網路**：若要篩選對等互連虛擬網路中的流量，您應該將端點原則個別套用至這些虛擬網路。
+- **對等互連或多個虛擬網路**：若要篩選對等互連虛擬網路中的流量，您應該將端點原則個別套用至這些虛擬網路。
 - **使用網路設備或 Azure 防火牆篩選網際網路流量**：使用原則來篩選通過端點的 Azure 服務流量，並透過設備或 Azure 防火牆來篩選其餘網際網路或 Azure 流量。 
-- **篩選已部署在虛擬網路中的 Azure 服務流量**：在預覽期間，服務端點原則不支援部署於虛擬網路中的任何受控 Azure 服務。 
+- **篩選部署於虛擬網路中 Azure 服務的流量**：在預覽期間，服務端點原則不支援部署於虛擬網路中的任何受控 Azure 服務。 
  如需特定服務，請參閱[限制](#limitations)。
 - **篩選從內部部署到 Azure 服務的流量**：服務端點原則只適用於來自原則相關聯子網路的流量。 若要允許從內部部署存取特定的 Azure 服務資源，則應該使用網路虛擬設備或防火牆篩選流量。
 
@@ -158,7 +156,7 @@ __Azure 儲存體__：WestCentralUS、 WestUS2、 NorthCentralUS、 SouthCentral
 - 存取端點原則中所列的帳戶時遭到拒絕
   - 網路安全性群組或防火牆篩選條件可能會封鎖存取
   - 如果移除/重新套用原則會導致連線中斷：
-    - 驗證 Azure 服務是否設定為允許透過端點從虛擬網路存取，或資源的預設原則是否設定為「全部允許」  。
+    - 驗證 Azure 服務是否設定為允許透過端點從虛擬網路存取，或資源的預設原則是否設定為「全部允許」。
       > [!NOTE]      
       > 服務資源不需要在虛擬網路中受到保護，也可以透過端點原則取得存取權。 不過，我們建議的安全性最佳做法是使用受信任網路來保護服務資源，例如：若是 Azure 虛擬網路，請透過服務端點來保護；若是內部部署，則透過 IP 防火牆來保護。
   
@@ -166,9 +164,9 @@ __Azure 儲存體__：WestCentralUS、 WestUS2、 NorthCentralUS、 SouthCentral
     - 請檢查網路安全性群組流量記錄是否顯示存取狀態，而儲存體記錄是否如預期般顯示透過服務端點的存取狀態。
     - 連絡 Azure 支援。
 - 存取服務端點原則中未列的帳戶時遭到拒絕
-  - 網路安全性群組或防火牆篩選條件可能會封鎖存取。 請確認端點區域允許使用「Azure 儲存體」  服務標籤。 如需了解原則的限制，請參閱[限制](#limitations)。
+  - 網路安全性群組或防火牆篩選條件可能會封鎖存取。 請確認端點區域允許使用「Azure 儲存體」服務標籤。 如需了解原則的限制，請參閱[限制](#limitations)。
   例如，如果套用原則，則會拒絕傳統儲存體帳戶的存取。
-  - 驗證 Azure 服務是否設定為允許透過端點從虛擬網路存取，或資源的預設原則是否設定為「全部允許」  。
+  - 驗證 Azure 服務是否設定為允許透過端點從虛擬網路存取，或資源的預設原則是否設定為「全部允許」。
 
 ## <a name="provisioning"></a>佈建
 
@@ -182,7 +180,7 @@ __Azure 儲存體__：WestCentralUS、 WestUS2、 NorthCentralUS、 SouthCentral
 
 服務端點原則會強制執行下列限制： 
 
- |Resource | 預設限制 |
+ |資源 | 預設限制 |
  |---------|---------------|
  |ServiceEndpointPoliciesPerSubscription |500 |
  |ServiceEndpintPoliciesPerSubnet|100 |

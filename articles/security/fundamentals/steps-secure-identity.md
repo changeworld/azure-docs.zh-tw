@@ -1,5 +1,6 @@
 ---
-title: 可在 Azure Active Directory 中保護身分識別基礎結構的五個步驟
+title: 保護您的 Azure AD 身分識別基礎結構
+titleSuffix: Azure Active Directory
 description: 本文件概述系統管理員所應實作以便有助自身使用 Azure AD 功能來保護組織的重要動作清單
 author: martincoetzer
 manager: manmeetb
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: 870bb9720500b6eda5e7b9eb258b6764a94f01b6
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: d3afc784688a14e4d5d2fc6ae9dc5c1a9e45c4a0
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76903584"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057204"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>可保護身分識別基礎結構的五個步驟
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
-ms.openlocfilehash: 84ab5da993541012fd2199a30d03f5c69e88bf2c
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 2de0cdd32428884170f549afacdbd52c3a10c93f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530029"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77060043"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-sap-successfactors-preview"></a>教學課程：將屬性回寫從 Azure AD 設定為 SAP SuccessFactors （預覽）
 本教學課程的目的是要說明從 Azure AD 到 SuccessFactors Employee Central 的回寫屬性所需執行的步驟。 目前唯一支援回寫的屬性是 [電子郵件] 屬性。 
@@ -106,7 +106,7 @@ ms.locfileid: "75530029"
 
 **若要設定 SuccessFactors 回寫：**
 
-1. 前往 <https://portal.azure.com>
+1. 移至 <https://portal.azure.com>。
 
 2. 在左側導覽列中，選取 [Azure Active Directory]
 
@@ -183,8 +183,8 @@ SuccessFactors 布建應用程式設定完成之後，您就可以在 Azure 入�
 
 ## <a name="next-steps"></a>後續步驟
 
-* [瞭解如何針對佈建活動檢閱記錄和取得報告](../manage-apps/check-status-user-account-provisioning.md)
+* [瞭解如何針對佈建活動檢閱記錄和取得報告](../app-provisioning/check-status-user-account-provisioning.md)
 * [瞭解如何設定 SuccessFactors 與 Azure Active Directory 之間的單一登入](successfactors-tutorial.md)
 * [了解如何將其他 SaaS 應用程式與 Azure Active Directory 整合](tutorial-list.md)
-* [瞭解如何匯出和匯入您的布建設定](../manage-apps/export-import-provisioning-configuration.md)
+* [瞭解如何匯出和匯入您的布建設定](../app-provisioning/export-import-provisioning-configuration.md)
 

@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81988f2643fd9acb911e6f70765cedbb4786f14c
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c64c40d93f9b525ac6adeca276797df65f32ef3e
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278246"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061270"
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>教學課程︰設定 Pingboard 來自動佈建使用者
 
 本教學課程旨在說明您需要遵循的步驟，以將使用者帳戶從 Azure Active Directory (Azure AD) 自動佈建和取消佈建至 Pingboard。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 本教學課程中說明的案例假設您已經具有下列項目：
 
@@ -72,7 +72,7 @@ Azure AD 會使用稱為「指派」的概念，來判斷哪些使用者應收�
 
     a. 在 [租用戶 URL] 中輸入 `https://your_domain.pingboard.com/scim/v2`，並將 "your_domain" 取代為您實際的網域。
 
-    b.這是另一個 C# 主控台應用程式。 使用系統管理員帳戶登入 [Pingboard](https://pingboard.com/)。
+    b. 使用系統管理員帳戶登入 [Pingboard](https://pingboard.com/)。
 
     c. 選取 [附加元件] > [整合] > [Azure Active Directory]。
 
@@ -84,11 +84,11 @@ Azure AD 會使用稱為「指派」的概念，來判斷哪些使用者應收�
 
 1. 在 [通知電子郵件] 中，輸入應收到佈建錯誤通知之個人或群組的電子郵件地址。 選取下方的核取方塊。
 
-1. 選取 [ **儲存**]。
+1. 選取 [儲存]。
 
 1. 在 [對應] 區段之下，選取 [將 Azure Active Directory 使用者同步至 Pingboard]。
 
-1. 在 [屬性對應] 區段中，檢閱要從 Azure AD 同步至 Pingboard 的使用者屬性。 選取為 [比對] 屬性的屬性會用來比對 Pingboard 中的使用者帳戶，以進行更新作業。 選取 [儲存] 認可任何變更。 如需詳細資訊，請參閱[自訂使用者佈建屬性對應](../manage-apps/customize-application-attributes.md)。
+1. 在 [屬性對應] 區段中，檢閱要從 Azure AD 同步至 Pingboard 的使用者屬性。 選取為 [比對] 屬性的屬性會用來比對 Pingboard 中的使用者帳戶，以進行更新作業。 選取 [儲存] 認可任何變更。 如需詳細資訊，請參閱[自訂使用者佈建屬性對應](../app-provisioning/customize-application-attributes.md)。
 
 1. 若要啟用 Pingboard 的 Azure AD 佈建服務，請在 [設定] 區段中，將 [佈建狀態] 變更為 [開啟]。
 
@@ -96,10 +96,10 @@ Azure AD 會使用稱為「指派」的概念，來判斷哪些使用者應收�
 
 初始同步處理會比後續同步處理花費更多時間執行，只要服務正在執行，這大約每 40 分鐘便會發生一次。 請使用 [同步處理詳細資料] 區段來監視進度，並依循連結來佈建活動記錄。 這些記錄會描述在 Pingboard 應用程式上佈建服務採取的所有動作。
 
-如需如何讀取 Azure AD 佈建記錄的詳細資訊，請參閱[關於使用者帳戶自動佈建的報告](../manage-apps/check-status-user-account-provisioning.md)。
+如需如何讀取 Azure AD 佈建記錄的詳細資訊，請參閱[關於使用者帳戶自動佈建的報告](../app-provisioning/check-status-user-account-provisioning.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-* [管理企業應用程式的使用者帳戶佈建](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [管理企業應用程式的使用者帳戶佈建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 * [設定單一登入](pingboard-tutorial.md)

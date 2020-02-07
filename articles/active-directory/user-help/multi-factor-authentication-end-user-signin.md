@@ -2,7 +2,7 @@
 title: 使用驗證搭配公司或學校帳戶登入-Azure AD
 description: 瞭解如何使用各種雙因素驗證方法來登入您的公司或學校帳戶。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.assetid: b310b762-471b-4b26-887a-a321c9e81d46
 ms.workload: identity
@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 04/02/2017
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: librown
 ms.custom: end-user, seo-update-azuread-jan
-ms.openlocfilehash: 648de7903a965d477343b974fdd615df45c3adc3
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 33cf9e284d2206ea497af7a5da7c3cf4a890cc87
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705236"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064082"
 ---
 # <a name="sign-in-to-your-work-or-school-account-using-your-two-factor-verification-method"></a>使用您的雙因素驗證方法來登入您的公司或學校帳戶
 
@@ -60,7 +60,7 @@ ms.locfileid: "76705236"
    ![Microsoft 傳送通知](./media/multi-factor-authentication-end-user-signin/notify.png)
 
 3. 在電話上開啟通知，然後選取 [驗證] 鍵。 如果貴公司要求 PIN，在此處輸入。
-4. 您現在應已登入。
+4. 您現在應該已經登入。
 
 ### <a name="to-sign-in-using-a-verification-code-with-the-microsoft-authenticator-app"></a>使用驗證碼登入 Microsoft 驗證器應用程式
 

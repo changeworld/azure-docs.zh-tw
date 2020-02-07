@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: hamusa
-ms.openlocfilehash: ff267aabe2f9e4cec38c307fe4382a84ba6d62df
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: c8ddd343cd00b24506382521361ebad33ad112a7
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76288945"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049765"
 ---
 # <a name="set-up-agentless-dependency-visualization-for-assessment"></a>設定無代理程式相依性視覺效果以進行評量
 
@@ -39,7 +39,7 @@ ms.locfileid: "76288945"
     - TCP 連線
     - 具有使用中連接的進程名稱
     - 執行上述進程的已安裝應用程式名稱
-    - 不會。 在每個輪詢間隔偵測到的連線數
+    - 否。 在每個輪詢間隔偵測到的連線數
 
 ## <a name="current-limitations"></a>目前的限制
 
@@ -53,7 +53,7 @@ ms.locfileid: "76288945"
 - 請確定您已[建立](how-to-add-tool-first-time.md)Azure Migrate 專案。
 - 無代理程式相依性分析目前僅適用于 VMware 機器。
 - 如果您已經建立專案，請確定您已[新增](how-to-assess.md)Azure Migrate：伺服器評估工具。
-- 請確定您已在 Azure Migrate 中探索到 VMware 電腦;您可以藉由設定適用于[VMware](how-to-set-up-appliance-vmware.md)的 Azure Migrate 設備來完成這項操作。 設備會探索內部部署機器，並將中繼資料和效能資料傳送至 Azure Migrate：伺服器評量。 [深入了解](migrate-appliance.md)。
+- 請確定您已在 Azure Migrate 中探索到 VMware 電腦;您可以藉由設定適用于[VMware](how-to-set-up-appliance-vmware.md)的 Azure Migrate 設備來完成這項操作。 設備會探索內部部署機器，並將中繼資料和效能資料傳送至 Azure Migrate：伺服器評量。 [詳細資訊](migrate-appliance.md)。
 - 檢查設定無代理程式相依性視覺效果[的需求](migrate-support-matrix-vmware.md#agentless-dependency-visualization)。
 
 
@@ -62,7 +62,7 @@ ms.locfileid: "76288945"
 
 設定具有必要許可權的使用者帳戶，讓伺服器評估可以存取 VM 進行探索。 您可以指定一個使用者帳戶。
 
-- **Windows vm 上的必要許可權**：使用者帳戶需要「來賓」存取權。
+- **Windows vm 上的必要許可權**：使用者帳戶必須是本機或網域系統管理員。
 - **Linux vm 上的必要許可權**：帳戶上需要根許可權。 或者，使用者帳戶需要/bin/netstat 和/bin/ls 檔案上的這兩項功能： CAP_DAC_READ_SEARCH 和 CAP_SYS_PTRACE。
 
 ## <a name="add-the-user-account-to-the-appliance"></a>將使用者帳戶新增至設備
@@ -96,7 +96,7 @@ ms.locfileid: "76288945"
 
 啟動相依性探索之後，您將能夠以視覺化方式呈現6小時的相依性。
 
-## <a name="visualize-dependencies"></a>視覺化相依性
+## <a name="visualize-dependencies"></a>將相依性視覺化
 
 1. 在 [ **Azure Migrate：伺服器評定**] 中，按一下 [探索到的**伺服器**]。
 2. 搜尋您要查看其相依性對應的電腦。

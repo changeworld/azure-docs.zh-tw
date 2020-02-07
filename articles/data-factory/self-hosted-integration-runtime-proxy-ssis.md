@@ -11,13 +11,13 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 12/23/2019
-ms.openlocfilehash: 48d4df5684c84e195810439912dd610f5af364d4
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.date: 02/06/2020
+ms.openlocfilehash: b20a615691d95c04574e2909f69b5a83a97f9d14
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964476"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048959"
 ---
 # <a name="configure-self-hosted-ir-as-a-proxy-for-azure-ssis-ir-in-adf"></a>設定自我裝載 IR 作為 ADF 中的 Azure SSIS IR 的 proxy
 
@@ -149,7 +149,7 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 ## <a name="current-limitations"></a>目前的限制
 
-- 目前僅支援使用 ODBC/OLEDB/一般檔案連接管理員和 ODBC/OLEDB/一般檔案來源的資料流程工作。 
+- 目前僅支援使用 ODBC/OLEDB/一般檔案連接管理員和 ODBC/OLEDB/一般檔案來源或 OLEDB 目的地的資料流程工作。 
 - 目前僅支援 Azure Blob 儲存體使用**帳戶金鑰**/**SAS URI**設定的已連結服務，/**服務主體**驗證。
 
 ## <a name="next-steps"></a>後續步驟

@@ -2,13 +2,13 @@
 title: Resource Manager 與傳統部署
 description: 描述資源管理員部署模型與傳統 (或服務管理) 部署模型之間的差異。
 ms.topic: conceptual
-ms.date: 08/22/2019
-ms.openlocfilehash: 4d7f17dace81198724a62dcc665c8c31acbcf6de
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.date: 02/06/2020
+ms.openlocfilehash: 85691d562f2b58cdced3264de11f3dd29a7ca168
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76168839"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064507"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager vs. 傳統部署：了解資源的部署模型和狀態
 
@@ -76,7 +76,7 @@ Get-AzVM -ResourceGroupName ExampleGroup
 
 下圖顯示部署透過 Resource Manager 的計算、網路和儲存體資源。
 
-![資源管理員架構](./media/deployment-models/arm_arch3.png)
+![Resource Manager 架構](./media/deployment-models/arm_arch3.png)
 
 請注意資源之間的下列關聯性：
 

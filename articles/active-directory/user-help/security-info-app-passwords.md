@@ -2,7 +2,7 @@
 title: 從 [安全性資訊（預覽）] 頁面建立應用程式密碼-Azure AD
 description: 建立自動產生的密碼（應用程式密碼），以用於任何非瀏覽器應用程式，或在您的組織中不支援雙因素驗證的任何應用程式。 此應用程式密碼與一般密碼不同，可以在安全性資訊頁面上設定。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 02/13/2018
-ms.author: lizross
-ms.openlocfilehash: d4076e379755518421ef79eca542ebdc99294a11
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: 787fa67ee77997fd1f9967db3abdbfc83d4ffad2
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704879"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064065"
 ---
 # <a name="create-app-passwords-from-the-security-info-preview-page"></a>從 [安全性資訊（預覽）] 頁面建立應用程式密碼
 

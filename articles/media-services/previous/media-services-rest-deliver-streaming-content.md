@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 8e3c2b7f4087f0f47466eff47b22c59dad19892e
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 787336f00a83d9403e3069754787743b9be6c5b1
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774932"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77050013"
 ---
 # <a name="publish-azure-media-services-content-using-rest"></a>使用 REST 發佈 Azure 媒體服務內容 
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.locfileid: "76774932"
 
 您也可以使用隨選串流定位器來建置指向可漸進式下載之 MP4 檔案的 URL。  
 
-本文章說明如何建立隨選串流定位器以發佈資產及建置 Smooth、MPEG DASH 和 HLS 串流 URL。 它也會示範如何建置漸進式下載 URL。
+本文章說明如何建立隨選串流定位器以發佈資產及建置 Smooth、MPEG DASH 和 HLS 串流 URL。 它也會說明如何建立漸進式下載 Url。
 
 [下列章節](#types) 說明列舉類型，REST 呼叫中會使用這些類型的值。   
 
@@ -41,7 +41,7 @@ ms.locfileid: "76774932"
 > 在媒體服務中存取實體時，您必須在 HTTP 要求中設定特定的標頭欄位和值。 如需詳細資訊，請參閱 [媒體服務 REST API 開發設定](media-services-rest-how-to-use.md)。
 > 
 
-## <a name="connect-to-media-services"></a>連接到媒體服務
+## <a name="connect-to-media-services"></a>連線到媒體服務
 
 如需連線至 AMS API 的詳細資訊，請參閱[使用 Azure AD 驗證存取 Azure 媒體服務 API](media-services-use-aad-auth-to-access-ams-api.md)。 
 
@@ -193,7 +193,7 @@ URL： **Path** + 資產檔案 MP4 名稱
 ## <a name="provide-feedback"></a>提供意見反應
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 [媒體服務作業 REST API 概觀](media-services-rest-how-to-use.md)
 
 [設定資產傳遞原則](media-services-rest-configure-asset-delivery-policy.md)

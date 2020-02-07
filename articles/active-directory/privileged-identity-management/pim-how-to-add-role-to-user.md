@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 09/17/2019
+ms.date: 01/05/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7cbb8c07b75509825795da45d8352140afd0864
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 3bec73ee7286ea831920fc20bd46cf43c2874081
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024223"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047090"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中指派 Azure AD 角色
 
@@ -61,19 +61,9 @@ Azure AD Privileged Identity Management （PIM）服務也允許特殊許可權�
 
 1. 選取要指派的角色，然後按一下 [選取]。
 
-    [**選取成員或群組**] 頁面隨即開啟。
+1. 選取您要指派給角色的成員，然後選取 [**選取**]。
 
-1. 選取您想要指派給角色的成員或群組，然後選取 [**選取**]。
-
-    ![選取成員或群組窗格](./media/pim-resource-roles-assign-roles/resources-select-member-or-group.png)
-
-    [成員資格設定] 窗格會即開啟。
-
-1. 在 [指派類型] 清單中選取 [合格] 或 [有效]。
-
-    ![成員資格設定窗格](./media/pim-resource-roles-assign-roles/resources-membership-settings-type.png)
-
-    適用于 Azure 資源的 Privileged Identity Management 提供兩種不同的指派類型：
+1. 在 [**成員資格設定**] 窗格的 [**指派類型**] 清單中，選取 [**合格** **] 或 [作用中]** 。
 
     - **合格**的指派會要求角色成員先執行某個動作才能使用此角色。 動作可能包含執行多重要素驗證 (MFA) 檢查、提供業務理由，或是向指定的核准者要求核准。
 
@@ -83,13 +73,9 @@ Azure AD Privileged Identity Management （PIM）服務也允許特殊許可權�
 
     根據不同角色設定，核取方塊可能不會出現或可能設為不可修改。
 
-1. 若要指定特定指派的持續時間，請清除核取方塊，並修改開始和/或結束日期和時間方塊。
+1. 若要指定特定指派的持續時間，請清除核取方塊，並修改開始和/或結束日期和時間方塊。 完成時，選取 [**完成**]。
 
     ![成員資格設定 - 日期和時間](./media/pim-resource-roles-assign-roles/resources-membership-settings-date.png)
-
-1. 完成時，選取 [**完成**]。
-
-    ![新增指派 - 新增](./media/pim-resource-roles-assign-roles/resources-new-assignment-add.png)
 
 1. 若要建立新的角色指派，**請選取 [新增]** 。 狀態通知會隨即顯示。
 

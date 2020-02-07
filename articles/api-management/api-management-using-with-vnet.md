@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 02/03/2020
+ms.date: 02/05/2020
 ms.author: apimpm
-ms.openlocfilehash: 59839df1e67c5ea7f18df373ad0530a2ea740209
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
-ms.translationtype: HT
+ms.openlocfilehash: c5a1aaac0edea1e5ab2e6cdf35f91f61eed23db5
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030892"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047489"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>如何將 Azure API 管理與虛擬網路搭配使用
 「Azure 虛擬網路」(VNET) 可讓您將任何 Azure 資源，放在您控制存取權的非網際網路可路由網路中。 然後，可以使用各種 VPN 技術，將這些網路連線到您的內部部署網路。 若要深入了解「Azure 虛擬網路」，請從以下資訊著手：[Azure 虛擬網路概觀](../virtual-network/virtual-networks-overview.md)。
@@ -31,7 +31,7 @@ Azure API 管理可以部署在虛擬網路 (VNET) 內，因此它可以存取�
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要執行本文所述的步驟，您必須具有：
 
@@ -59,11 +59,11 @@ Azure API 管理可以部署在虛擬網路 (VNET) 內，因此它可以存取�
 
     * **外部**：可透過外部負載平衡器從公用網際網路存取「API 管理」閘道和開發人員入口網站。 閘道可以存取虛擬網路內的資源。
 
-        ![公用對等][api-management-vnet-public]
+        ![公用對等互連][api-management-vnet-public]
 
     * **內部**：只能透過內部負載平衡器，從虛擬網路中存取 API 管理閘道和開發人員入口網站。 閘道可以存取虛擬網路內的資源。
 
-        ![私用對等][api-management-vnet-private]
+        ![私人對等互連][api-management-vnet-private]
 
 6. 如果您選取 [**外部**] 或 [**內部**]，您會看到布建您的 API 管理服務的所有區域清單。 選擇 [**位置**]，然後挑選其 [**虛擬網路**] 和 [**子網**]。 [虛擬網路] 清單會在您要設定的區域中，填入您的 Azure 訂用帳戶中所提供的傳統和 Resource Manager 虛擬網路。
 
@@ -136,8 +136,8 @@ Azure API 管理可以部署在虛擬網路 (VNET) 內，因此它可以存取�
 
     | Azure 環境 | 端點                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Azure 公用      | <ul><li>prod.warmpath.msftcloudes.com</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li><li>prod3-black.prod3.metrics.nsatc.net</li><li>prod3-red.prod3.metrics.nsatc.net</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`.warm.ingestion.msftcloudes.com，其中 `East US 2` 是 eastus2.warm.ingestion.msftcloudes.com</li></ul> |
-    | Azure 政府機構  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
+    | Azure 公用      | <ul><li>gcs.prod.monitoring.core.windows.net （**新增**）</li><li>prod.warmpath.msftcloudes.com （**即將淘汰**）</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li><li>prod3-black.prod3.metrics.nsatc.net</li><li>prod3-red.prod3.metrics.nsatc.net</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`.warm.ingestion.msftcloudes.com，其中 `East US 2` 是 eastus2.warm.ingestion.msftcloudes.com</li></ul> |
+    | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
     | Azure China 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
 
 + **Smtp 轉送**： smtp 轉送的輸出網路連線能力，它會在主機 `smtpi-co1.msn.com`、`smtpi-ch1.msn.com`、`smtpi-db3.msn.com`、`smtpi-sin.msn.com` 和 `ies.global.microsoft.com` 底下解析
@@ -206,7 +206,7 @@ IP 位址會被**Azure 環境**分割。 允許以**Global**標記的輸入要�
 | Azure 公用| 英國南部| 51.145.56.125|
 | Azure 公用| 印度西部| 40.81.89.24|
 | Azure 公用| 美國東部| 52.224.186.99|
-| Azure 公用| 歐洲西部| 51.145.179.78|
+| Azure 公用| 西歐| 51.145.179.78|
 | Azure 公用| 日本東部| 52.140.238.179|
 | Azure 公用| 法國中部| 40.66.60.111|
 | Azure 公用| 加拿大東部| 52.139.80.117|
@@ -222,13 +222,13 @@ IP 位址會被**Azure 環境**分割。 允許以**Global**標記的輸入要�
 | Azure 公用| 澳大利亞中部| 20.37.52.67|
 | Azure 公用| 印度南部| 20.44.33.246|
 | Azure 公用| 美國中部| 13.86.102.66|
-| Azure 公用| 澳大利亞東部| 20.40.125.155|
+| Azure 公用| 澳洲東部| 20.40.125.155|
 | Azure 公用| 美國西部 2| 51.143.127.203|
 | Azure 公用| 美國東部 2 EUAP| 52.253.229.253|
 | Azure 公用| 美國中部 EUAP| 52.253.159.160|
 | Azure 公用| 美國中南部| 20.188.77.119|
 | Azure 公用| 美國東部 2| 20.44.72.3|
-| Azure 公用| 歐洲北部| 52.142.95.35|
+| Azure 公用| 北歐| 52.142.95.35|
 | Azure 公用| 東亞| 52.139.152.27|
 | Azure 公用| 法國南部| 20.39.80.2|
 | Azure 公用| 瑞士西部| 51.107.96.8|
@@ -246,14 +246,14 @@ IP 位址會被**Azure 環境**分割。 允許以**Global**標記的輸入要�
 | Azure China 21Vianet| 中國東部| 40.126.120.30|
 | Azure China 21Vianet| 中國北部 2| 40.73.41.178|
 | Azure China 21Vianet| 中國東部 2| 40.73.104.4|
-| Azure 政府機構| USGov 弗吉尼亞州（全球）| 52.127.42.160|
-| Azure 政府機構| USGov 德克薩斯州（全球）| 52.127.34.192|
-| Azure 政府機構| 美國政府維吉尼亞州| 52.227.222.92|
-| Azure 政府機構| 美國政府愛荷華州| 13.73.72.21|
-| Azure 政府機構| 美國政府亞利桑那州| 52.244.32.39|
-| Azure 政府機構| 美國政府德克薩斯州| 52.243.154.118|
-| Azure 政府機構| USDoD 中部| 52.182.32.132|
-| Azure 政府機構| USDoD 東部| 52.181.32.192|
+| Azure Government| USGov 弗吉尼亞州（全球）| 52.127.42.160|
+| Azure Government| USGov 德克薩斯州（全球）| 52.127.34.192|
+| Azure Government| 美國政府維吉尼亞州| 52.227.222.92|
+| Azure Government| 美國政府愛荷華州| 13.73.72.21|
+| Azure Government| 美國政府亞利桑那州| 52.244.32.39|
+| Azure Government| 美國政府德克薩斯州| 52.243.154.118|
+| Azure Government| USDoD 中部| 52.182.32.132|
+| Azure Government| USDoD 東部| 52.181.32.192|
 
 ## <a name="related-content"></a>相關內容
 * [使用 VPN 閘道將虛擬網路連線到後端](../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti)

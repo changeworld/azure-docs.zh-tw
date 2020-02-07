@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 12/13/2019
 ms.author: juliako
-ms.openlocfilehash: 52d8dda8b543e5bdf3ca88ae3784df65be3a2ba1
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: b3d5e1f814a8eb083ab01623051f1b5b3723a9f1
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76962938"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049635"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒體服務 v3 版本資訊
 
@@ -90,7 +90,7 @@ ms.locfileid: "76962938"
 
 #### <a name="deprecation-of-media-processors"></a>淘汰媒體處理器
 
-我們宣佈*Azure 媒體索引子*和*Azure 媒體索引子 2 Preview*已淘汰。 如需停用日期，請參閱此[舊版元件](../previous/legacy-components.md)主題。 [Azure 媒體服務影片索引子](https://docs.microsoft.com/azure/media-services/video-indexer/)會取代這些舊版媒體處理器。
+我們宣佈*Azure 媒體索引子*和*Azure 媒體索引子 2 Preview*已淘汰。 如需停用日期，請參閱[舊版元件](../previous/legacy-components.md)主題。 [Azure 媒體服務影片索引子](https://docs.microsoft.com/azure/media-services/video-indexer/)會取代這些舊版媒體處理器。
 
 如需詳細資訊，請參閱[從 Azure 媒體索引子遷移和 Azure 媒體索引子2，到 Azure 媒體服務影片索引子](../previous/migrate-indexer-v1-v2.md)。
 
@@ -243,7 +243,7 @@ CLI 2.0 模組現已適用於 [Azure 媒體服務 v3 GA](https://docs.microsoft.
 
 - ```--preset-names``` 引數已取代為 ```--preset```。 現在您一次只能設定 1 個輸出/預設 (以新增更多必須執行 ```az ams transform output add``` 的項目)。 此外，您可傳遞自訂 JSON 的路徑以設定自訂 StandardEncoderPreset。
 - 傳遞要移除的輸出索引即可執行 ```az ams transform output remove```。
-- 已在 ```az ams transform create``` 和 ```az ams transform output add``` 命令中新增 ```--relative-priority, --on-error, --audio-language and --insights-to-extract``` 引數。
+- 已在 ```--relative-priority, --on-error, --audio-language and --insights-to-extract``` 和 ```az ams transform create``` 命令中新增 ```az ams transform output add``` 引數。
 
 ## <a name="october-2018---ga"></a>2018 年 10 月 - GA
 
@@ -302,7 +302,7 @@ Azure AD 驗證和角色型存取控制 (RBAC) 會啟用 Azure AD 中的安全�
 
 Apple HLS (iOS 11 +) 的 CMAF 和 'cbcs' 加密支援和支援 CMAF 的 MPEG-DASH 播放程式。
 
-### <a name="video-indexer"></a>影片索引器
+### <a name="video-indexer"></a>影片索引子
 
 我們已在 8 月發表了影片索引器 GA 版本。 如需目前支援功能的全新詳細資訊，請參閱[什麼是影片索引器](../../cognitive-services/video-indexer/video-indexer-overview.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json)。 
 

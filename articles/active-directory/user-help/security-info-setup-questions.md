@@ -2,7 +2,7 @@
 title: 將安全性問題設定為您的驗證方法-Azure AD
 description: 如何設定您的安全性資訊（預覽）頁面，以使用預先定義的安全性問題做為驗證方法來驗證您的身分識別。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 02/13/2019
-ms.author: lizross
-ms.openlocfilehash: e578b545a48468de347db0e0abc69dd0d3906606
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: 236f1e4e41488b926d9fc2e5e717e68090a0ed7b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704845"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063963"
 ---
 # <a name="set-up-security-questions-as-your-verification-method"></a>將安全性問題設定為您的驗證方法
 
@@ -29,7 +29,7 @@ ms.locfileid: "76704845"
 
 ## <a name="security-verification-versus-password-reset-authentication"></a>安全性驗證與密碼重設驗證
 
-安全性資訊方法可用於雙因素安全性驗證和密碼重設。 不過，並非所有方法都同時適用於這兩者。
+雙因素安全性驗證和密碼重設都會使用安全性資訊方法。 不過，並非所有方法都同時適用於這兩者。
 
 | 方法 | 用於 |
 | ------ | -------- |

@@ -2,7 +2,7 @@
 title: 從我的帳戶入口網站管理您的組織-Azure AD
 description: 如何從我的帳戶入口網站的 [組織] 頁面，查看並離開組織連線到您的工作或學校帳戶。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: jpettere
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.author: lizross
-ms.openlocfilehash: e8bea2c8eed210278b52b7ce6095a77c41fdd6ab
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: fbaca387dd8062f50bb7555c7be6e7f65ce346bf
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705134"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062467"
 ---
 # <a name="manage-your-connected-organizations-from-the-organizations-page"></a>從 [組織] 頁面管理已連線的組織
 
@@ -34,7 +34,7 @@ ms.locfileid: "76705134"
 
 ## <a name="view-your-organizations"></a>檢閱您的組織
 
-1. 登入您的公司或學校帳戶，然後移至 **我的帳戶** （ https://myprofile.microsoft.com/)  頁面。
+1. 登入您的公司或學校帳戶，然後移至 **我的帳戶** （ https://myprofile.microsoft.com/) 頁面。
 
 2. 從左側瀏覽窗格選取 [組織]，或從 [組織] 區塊選取 [管理組織] 連結。
 

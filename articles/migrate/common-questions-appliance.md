@@ -3,12 +3,12 @@ title: Azure Migrate 設備的相關常見問題
 description: 取得 Azure Migrate 設備的常見問題解答
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: c9727287160f996059e9c1fb2d1fb5aec5900ab5
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: de9583b7983dda904e06ea258ecb0d202644586b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76292327"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064694"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate 設備：常見的問題
 
@@ -16,6 +16,7 @@ ms.locfileid: "76292327"
 
 - 有關 Azure Migrate 的[一般問題](resources-faq.md)。
 - 探索、評估和相依性視覺效果的相關[問題](common-questions-discovery-assessment.md)。
+- 伺服器遷移的相關[問題](common-questions-server-migration.md)。
 
 
 ## <a name="what-is-the-azure-migrate-appliance"></a>什麼是 Azure Migrate 設備？
@@ -53,7 +54,7 @@ Azure Migrate 設備會持續分析內部部署機器，以測量 VM 效能資�
 - Hyper-v VM[效能資料](migrate-appliance.md#collected-performance-data-hyper-v)和[元](migrate-appliance.md#collected-metadata-hyper-v)資料。
 
 
-## <a name="how-is-data-stored"></a>儲存資料的方式
+## <a name="how-is-data-stored"></a>如何儲存資料？
 
 Azure Migrate 應用裝置所收集的資料會儲存在您建立遷移專案時所選擇的 Azure 位置。 
 
@@ -81,7 +82,7 @@ Azure Migrate 應用裝置所收集的資料會儲存在您建立遷移專案時
 
 ## <a name="can-i-connect-the-appliance-to-multiple-vcenter-servers"></a>我可以將設備連線到多部 vCenter Server 嗎？
 
-不會。 設備與 vCenter Server 之間會有一對一的對應。 若要探索多個 vCenter Server 實例上的 Vm，您必須部署多個應用裝置。
+No。 設備與 vCenter Server 之間會有一對一的對應。 若要探索多個 vCenter Server 實例上的 Vm，您必須部署多個應用裝置。
 
 ### <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>我可以使用設備探索多少部 Vm 或伺服器？
 

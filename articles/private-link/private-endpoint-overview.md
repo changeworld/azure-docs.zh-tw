@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: cbb5882950636e281d311bf0536acf5b92cf11ea
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: dd73f42aaa0d0bd1884892143d96446935a401a5
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77018596"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048448"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什麼是 Azure 私用端點？
 
@@ -22,7 +22,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
  私用端點會指定下列屬性： 
 
 
-|屬性  |說明 |
+|屬性  |描述 |
 |---------|---------|
 |名稱    |    資源群組內的唯一名稱。      |
 |子網路    |  要從虛擬網路部署和配置私人 IP 位址的子網。 如需子網需求，請參閱本文的限制一節。         |
@@ -54,7 +54,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
 |---------|---------|---------|
 |**私人連結服務**（您自己的服務）   |  Microsoft 網路/privateLinkServices       | empty |
 |**Azure SQL Database** | Microsoft.Sql/servers    |  Sql Server （sqlServer）        |
-|**Azure SQL 資料倉儲** | Microsoft.Sql/servers    |  Sql Server （sqlServer）        |
+|**Azure Synapse 分析** | Microsoft.Sql/servers    |  Sql Server （sqlServer）        |
 |**Azure 儲存體**  | Microsoft.Storage/storageAccounts    |  Blob （blob、blob_secondary）<BR> 資料表（資料表、table_secondary）<BR> 佇列（佇列、queue_secondary）<BR> File （file，file_secondary）<BR> Web （web、web_secondary）        |
 |**Azure Data Lake Storage Gen2** \(部分機器翻譯\)  | Microsoft.Storage/storageAccounts    |  Blob （blob、blob_secondary）<BR> Data Lake 檔案系統 Gen2 （dfs，dfs_secondary）       |
 |**Azure Cosmos DB** | AzureCosmosDB/databaseAccounts | Sql、MongoDB、Cassandra、Gremlin、Table|
@@ -115,7 +115,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
 |Azure Cosmos DB （AzureCosmosDB/databaseAccounts）|MongoDB |privatelink.mongo.cosmos.azure.com|
 |Azure Cosmos DB （AzureCosmosDB/databaseAccounts）|Cassandra|privatelink.cassandra.cosmos.azure.com|
 |Azure Cosmos DB （AzureCosmosDB/databaseAccounts）|Gremlin |privatelink.gremlin.cosmos.azure.com|
-|Azure Cosmos DB （AzureCosmosDB/databaseAccounts）|表格|privatelink.table.cosmos.azure.com|
+|Azure Cosmos DB （AzureCosmosDB/databaseAccounts）|Table|privatelink.table.cosmos.azure.com|
 |適用於 PostgreSQL 的 Azure 資料庫-單一伺服器（DBforPostgreSQL/servers）|postgresqlServer|privatelink.postgres.database.azure.com|
 |適用於 MySQL 的 Azure 資料庫（Microsoft.dbformysql/servers）|mysqlServer|privatelink.mysql.database.azure.com|
 |適用於 MariaDB 的 Azure 資料庫（DBforMariaDB/servers）|mariadbServer|privatelink.mariadb.database.azure.com|
@@ -130,7 +130,7 @@ Azure 會在公用 DNS 上建立正式名稱 DNS 記錄（CNAME），以將解�
 下表包含使用私用端點時的已知限制清單： 
 
 
-|限制 |說明 |降低  |
+|限制 |描述 |降低  |
 |---------|---------|---------|
 |網路安全性群組（NSG）規則和使用者定義的路由不適用於私人端點    |私用端點上不支援 NSG。 雖然包含私用端點的子網可以有相關聯的 NSG，但這些規則不會對私用端點所處理的流量生效。 您必須[停用網路原則強制執行](disable-private-endpoint-network-policy.md)，才能在子網中部署私人端點。 在相同子網上裝載的其他工作負載上仍會強制執行 NSG。 任何用戶端子網上的路由都會使用/32 前置詞，變更預設路由行為需要類似的 UDR  | 針對來源用戶端上的輸出流量使用 NSG 規則，以控制流量。 部署具有/32 前置詞的個別路由，以覆寫私用端點路由。 輸出連線的 NSG 流量記錄和監視資訊仍然受支援且可供使用        |
 

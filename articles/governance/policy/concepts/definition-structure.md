@@ -3,16 +3,18 @@ title: 原則定義結構的詳細資料
 description: 說明如何使用原則定義來建立組織中 Azure 資源的慣例。
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: 7502c1c9a2e125052abf71e50273fbd9bab15cd1
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: ba974228d63c542027ea5191d2c5877e7288b331
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989870"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77050026"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure 原則定義結構
 
-「Azure 原則」會使用資源原則定義為資源建立慣例。 每個定義都會描述資源合規性，以及當資源不符合規範時應套用的效果。
+Azure 原則會建立資源的慣例。 原則定義會描述資源合規性[條件](#conditions)，以及符合條件時所要採取的效果。 條件會將資源屬性[欄位](#fields)與所需的值進行比較。 您可以使用[別名](#aliases)來存取資源屬性欄位。 [資源屬性] 欄位可以是單一值欄位或多個值的[陣列](#understanding-the--alias)。 陣列的條件評估不同。
+深入瞭解[條件](#conditions)。
+
 藉由定義慣例，您可以控制成本以及更輕鬆地管理您的資源。 例如，您可以指定僅允許特定類型的虛擬機器。 或者，您可以要求所有資源都有特定標籤。 原則會由所有子資源繼承。 如果將某個原則套用至資源群組，它會適用於該資源群組中的所有資源。
 
 您可在這裡找到原則定義架構： [https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json)
@@ -73,6 +75,8 @@ ms.locfileid: "76989870"
 
 - `all`：評估資源群組和所有資源類型
 - `indexed`：只評估支援標記和位置的資源類型
+
+例如，資源 `Microsoft.Network/routeTables` 支援標記和位置，並在這兩種模式中進行評估。 不過，無法將資源 `Microsoft.Network/routeTables/routes` 標記為 `Indexed` 模式。
 
 我們建議您在大部分的情況下都將 **mode** 設定為 `all`。 透過入口網站使用 `all` 模式建立的所有原則定義。 如果您是使用 PowerShell 或 Azure CLI，則可手動指定 **mode** 參數。 如果原則定義未包含 **mode** 值，則在 Azure PowerShell 中會預設為 `all`，而在 Azure CLI 中會預設為 `null`。 `null` 模式與使用 `indexed` 來支援回溯相容性相同。
 
@@ -145,7 +149,7 @@ ms.locfileid: "76989870"
 }
 ```
 
-此範例參考[參數屬性](#parameter-properties)中示範的 **allowedLocations** 參數。
+此範例參考**參數屬性**中示範的 [allowedLocations](#parameter-properties) 參數。
 
 ### <a name="strongtype"></a>strongType
 
@@ -253,6 +257,8 @@ ms.locfileid: "76989870"
 
 當使用**match**和**notMatch**條件時，請提供 `#` 來比對數位、為字母 `?`、`.` 比對任何字元，以及任何其他字元以符合該實際字元。 While、 **match**和**notMatch**區分大小寫，所有其他評估_stringValue_的條件都不區分大小寫。 不會區分大小寫的替代項目，可在 **matchInsensitively** 和 **notMatchInsensitively** 中取得。 如需範例，請參閱[允許數個名稱模式](../samples/allow-multiple-name-patterns.md)。
 
+在 **\[\*\] 別名**陣列域值時，陣列中的每個元素都會以邏輯**和**之間的元素來個別評估。 如需詳細資訊，請參閱[評估 \[\*\] 別名](../how-to/author-policies-for-arrays.md#evaluating-the--alias)。
+
 ### <a name="fields"></a>欄位
 
 條件是透過欄位所形成。 欄位會比對資源要求裝載中的屬性，並描述資源的狀態。
@@ -320,7 +326,7 @@ ms.locfileid: "76989870"
 
 #### <a name="value-examples"></a>Value 範例
 
-此原則規則範例使用 **value** 來將 `resourceGroup()` 函式和傳回的 **name** 屬性與 `*netrg` 的 **like** 條件比較。 此規則會拒絕名稱結尾為 `*netrg`的任何資源群組中不屬於 `Microsoft.Network/*`**類型**的任何資源。
+此原則規則範例使用 **value** 來將 `resourceGroup()` 函式和傳回的 **name** 屬性與 **的**like`*netrg` 條件比較。 此規則會拒絕名稱結尾為 `*netrg`的任何資源群組中不屬於 `Microsoft.Network/*`**類型**的任何資源。
 
 ```json
 {
@@ -396,7 +402,7 @@ ms.locfileid: "76989870"
 
 使用修改過的原則規則，`if()` 在嘗試取得值少於三個字元的 `substring()` 之前，檢查**名稱**的長度。 如果**名稱**太短，則會改為傳回值「不是以 abc 開頭」，並與**abc**比較。 簡短名稱不是**abc**開頭的資源仍會失敗原則規則，但在評估期間不會再造成錯誤。
 
-### <a name="count"></a>計數
+### <a name="count"></a>Count
 
 計算資源裝載中陣列成員數目符合條件運算式的條件，可以使用**計數**運算式來形成。 常見的案例是檢查「至少其中一個」、「全部」、「全部」或「無」陣列成員是否符合條件。 **count**會評估條件運算式的每個[\[\*\] 別名](#understanding-the--alias)陣列成員，並加總_true_結果，然後再與運算式運算子進行比較。
 
@@ -536,7 +542,7 @@ ms.locfileid: "76989870"
 }
 ```
 
-### <a name="effect"></a>影響
+### <a name="effect"></a>效果
 
 Azure 原則支援下列類型的效果：
 
@@ -606,7 +612,7 @@ Azure 原則支援下列類型的效果：
 
   ![Visual Studio Code 的 Azure 原則延伸模組](../media/extension-for-vscode/extension-hover-shows-property-alias.png)
 
-- Azure 資源圖表
+- Azure Resource Graph
 
   使用 [`project`] 運算子來顯示資源的**別名**。
 

@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c4b8b03394eee6dffb79b0e40a22dd49880dee88
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 7ef868f156ac537cb066f293872f69135c4df25f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793494"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77059638"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-cognitive-search"></a>監視 Azure 認知搜尋中的資源耗用量和查詢活動
 
@@ -76,19 +76,21 @@ Azure 監視器記錄和 Blob 儲存體皆以免費服務的形式提供，因�
 
    您的儲存體帳戶必須存在於與 Azure 認知搜尋相同的區域中。
 
-2. 開啟您的搜尋服務 [概觀] 頁面。 在左側導覽窗格中，向下捲動至 [監視]，然後按一下 [啟用監視]。
+2. 開啟您的搜尋服務 [概觀] 頁面。 在左側導覽窗格中，向下流覽至 [**監視**]，然後按一下 [**診斷設定**]。
 
-   ![啟用監視](./media/search-monitor-usage/enable-monitoring.png "啟用監視")
+   ![診斷設定](./media/search-monitor-usage/diagnostic-settings.png "診斷設定")
 
-3. 選擇您想要匯出的資料︰記錄、計量或兩者。 您可以將它複製到儲存體帳戶、將其傳送至事件中樞，或將它匯出至 Azure 監視器記錄。
+3. 選取 [**新增診斷設定**]
+
+4. 選擇您想要匯出的資料︰記錄、計量或兩者。 您可以將它複製到儲存體帳戶、將其傳送至事件中樞，或將它匯出至 Azure 監視器記錄。
 
    若要封存至 Blob 儲存體，只有儲存體帳戶必須存在。 匯出記錄資料時，會視需要建立容器和 blob。
 
    ![設定 blob 儲存體封存](./media/search-monitor-usage/configure-blob-storage-archive.png "設定 blob 儲存體封存")
 
-4. 儲存設定檔。
+5. 儲存設定檔
 
-5. 藉由建立或刪除物件 (會建立記錄事件) 或提交查詢 (會產生計量) 來測試記錄功能。 
+6. 藉由建立或刪除物件 (會建立記錄事件) 或提交查詢 (會產生計量) 來測試記錄功能。 
 
 記錄功能在您儲存設定檔後便會啟用。 只有在有活動可供記錄或測量時，才會建立容器。 將資料複製到儲存體帳戶時，資料會格式化為 JSON 並放在兩個容器中︰
 
@@ -108,42 +110,42 @@ resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/pr
 ## <a name="log-schema"></a>記錄檔結構描述
 包含您搜尋服務流量記錄的 Blob 會結構化，如本節所述。 每個 Blob 都有一個名為**記錄**的根物件，其中包含記錄物件的陣列。 每個 Blob 都包含在同一小時內發生之所有作業的記錄。
 
-| Name | Type | 範例 | 注意 |
+| 名稱 | 類型 | 範例 | 注意 |
 | --- | --- | --- | --- |
 | time |Datetime |"2018-12-07T00:00:43.6872559Z" |作業的時間戳記 |
-| ResourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |您的 ResourceId |
-| operationName |string |"Query.Search" |作業的名稱 |
-| operationVersion |string |"2019-05-06" |使用的 api-version |
-| category |string |"OperationLogs" |常數 |
-| resultType |string |"Success" |可能的值：Success 或 Failure |
+| resourceId |字串 |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |您的 ResourceId |
+| operationName |字串 |"Query.Search" |作業的名稱 |
+| operationVersion |字串 |"2019-05-06" |使用的 api-version |
+| category |字串 |"OperationLogs" |常數 |
+| resultType |字串 |"Success" |可能的值：Success 或 Failure |
 | resultSignature |int |200 |HTTP 結果碼 |
 | durationMS |int |50 |作業的持續時間 (以毫秒為單位) |
-| properties |object |請參閱下表 |包含作業特定資料的物件 |
+| properties |物件 (object) |請參閱下表 |包含作業特定資料的物件 |
 
 **屬性結構描述**
 
-| Name | Type | 範例 | 注意 |
+| 名稱 | 類型 | 範例 | 注意 |
 | --- | --- | --- | --- |
-| 描述 |string |"GET /indexes('content')/docs" |作業的端點 |
-| 查詢 |string |"？ search = AzureSearch & $count = true & api 版本 = 2019-05-06" |查詢參數 |
+| 描述 |字串 |"GET /indexes('content')/docs" |作業的端點 |
+| 查詢 |字串 |"？ search = AzureSearch & $count = true & api 版本 = 2019-05-06" |查詢參數 |
 | 文件 |int |42 |處理的文件數目 |
-| IndexName |string |"testindex" |與作業相關聯的索引名稱 |
+| IndexName |字串 |"testindex" |與作業相關聯的索引名稱 |
 
 ## <a name="metrics-schema"></a>度量結構描述
 
 針對查詢要求，會擷取計量。
 
-| Name | Type | 範例 | 注意 |
+| 名稱 | 類型 | 範例 | 注意 |
 | --- | --- | --- | --- |
-| ResourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |您的資源識別碼 |
-| metricName |string |"Latency" |度量的名稱 |
+| resourceId |字串 |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |您的資源識別碼 |
+| metricName |字串 |"Latency" |度量的名稱 |
 | time |Datetime |"2018-12-07T00:00:43.6872559Z" |作業的時間戳記 |
 | average |int |64 |度量時間間隔中原始範例的平均值 |
 | minimum |int |37 |度量時間間隔中原始範例的最小值 |
 | maximum |int |78 |度量時間間隔中原始範例的最大值 |
 | total |int |258 |度量時間間隔中原始範例的總和值 |
-| 計數 |int |4 |用來產生度量的原始樣本數 |
-| timegrain |string |"PT1M" |採用 ISO 8601 的度量時間粒紋 |
+| count |int |4 |用來產生度量的原始樣本數 |
+| timegrain |字串 |"PT1M" |採用 ISO 8601 的度量時間粒紋 |
 
 每隔一分鐘就會回報所有計量。 每個度量會顯示每分鐘的最小值、最大值和平均值。
 

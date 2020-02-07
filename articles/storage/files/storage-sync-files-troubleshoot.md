@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 887c10097187f193f55c6e301be3e739a16d6bf7
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: b5a6b62e423b982cd7a852de844cd561997ba1e7
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906917"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048428"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>針對 Azure 檔案同步進行移難排解
 使用 Azure 檔案同步，將組織的檔案共用集中在 Azure 檔案服務中，同時保有內部部署檔案伺服器的彈性、效能及相容性。 Azure 檔案同步會將 Windows Server 轉換成 Azure 檔案共用的快速快取。 您可以使用 Windows Server 上可用的任何通訊協定來從本機存取資料，包括 SMB、NFS 和 FTPS。 您可以視需要存取多個散佈於世界各地的快取。
@@ -213,7 +213,7 @@ Set-AzStorageSyncServerEndpoint `
 > [!Note]  
 > 如果 [已註冊的伺服器] 刀鋒視窗上的伺服器狀態為 [顯示為離線]，請執行[伺服器端點的健康狀態為 [無活動] 或 [擱置中]，且 [已註冊的伺服器] 刀鋒視窗上的伺服器狀態為 [顯示為離線]](#server-endpoint-noactivity) 一節所列的步驟。
 
-## <a name="sync"></a>同步
+## <a name="sync"></a>Sync
 <a id="afs-change-detection"></a>**如果我直接在我的 Azure 檔案共用中透過 SMB 建立檔案，或是透過入口網站建立檔案，要等多久檔案才會同步至同步群組中的伺服器？**  
 [!INCLUDE [storage-sync-files-change-detection](../../../includes/storage-sync-files-change-detection.md)]
 
@@ -314,7 +314,7 @@ PerItemErrorCount: 1006.
 | HRESULT | HRESULT (十進位) | 錯誤字串 | 問題 | 補救 |
 |---------|-------------------|--------------|-------|-------------|
 | 0x80070043 | -2147942467 | ERROR_BAD_NET_NAME | 無法存取伺服器上的階層式檔案。 如果未在刪除伺服器端點之前重新叫用分層檔案，就會發生此問題。 | 若要解決此問題，請參閱在[刪除伺服器端點之後，伺服器上的](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)階層式檔案無法存取。 |
-| 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | 無法同步檔案或目錄變更，因為尚未同步相依的資料夾。 將在同步相依的變更之後同步此項目。 | 不需要任何動作。 |
+| 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | 無法同步檔案或目錄變更，因為尚未同步相依的資料夾。 將在同步相依的變更之後同步此項目。 | 不需要任何動作。 如果錯誤持續數天，請使用 Filesyncerrorsreport.ps1 PowerShell 腳本來判斷相依資料夾尚未同步處理的原因。 |
 | 0x80c80284 | -2134375804 | ECS_E_SYNC_CONSTRAINT_CONFLICT_SESSION_FAILED | 無法同步檔案或目錄變更，因為尚未同步相依資料夾，且同步會話失敗。 將在同步相依的變更之後同步此項目。 | 不需要任何動作。 如果錯誤持續發生，請調查同步會話失敗。 |
 | 0x8007007b | -2147024773 | ERROR_INVALID_NAME | 檔案或目錄名稱無效。 | 請重新命名有問題的檔案或目錄。 如需詳細資訊，請參閱[處理不支援的字元](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters)。 |
 | 0x80c80255 | -2134375851 | ECS_E_XSMB_REST_INCOMPATIBILITY | 檔案或目錄名稱無效。 | 請重新命名有問題的檔案或目錄。 如需詳細資訊，請參閱[處理不支援的字元](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters)。 |
@@ -392,7 +392,7 @@ PerItemErrorCount: 1006.
 | **錯誤字串** | ECS_E_SYNC_BLOCKED_ON_CHANGE_DETECTION_POST_RESTORE |
 | **需要補救** | 否 |
 
-不需執行任何動作。 使用 Azure 備份還原檔案或檔案共用（雲端端點）時，同步處理會遭到封鎖，直到 Azure 檔案共用上的變更偵測完成為止。 變更偵測會在還原完成時立即執行，而執行時間會取決於檔案共用中的檔案數目。
+您不需要執行任何動作。 使用 Azure 備份還原檔案或檔案共用（雲端端點）時，同步處理會遭到封鎖，直到 Azure 檔案共用上的變更偵測完成為止。 變更偵測會在還原完成時立即執行，而執行時間會取決於檔案共用中的檔案數目。
 
 <a id="-2147216747"></a>**同步處理失敗，因為同步處理資料庫已卸載。**  
 
@@ -1259,7 +1259,7 @@ $orphanFiles.OrphanedTieredFiles > OrphanTieredFiles.txt
 5. 重現問題。 完成時，輸入 **D**。
 6. 含有記錄和追蹤檔案的 .zip 檔案將會儲存在指定的輸出目錄中。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 - [監視 Azure 檔案同步](storage-sync-files-monitoring.md)
 - [Azure 檔案服務常見問題集](storage-files-faq.md)
 - [針對 Windows 中的 Azure 檔案服務問題進行疑難排解](storage-troubleshoot-windows-file-connection-problems.md)

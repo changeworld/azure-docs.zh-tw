@@ -5,14 +5,14 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 8/29/2019
+ms.date: 2/5/2019
 ms.author: absha
-ms.openlocfilehash: 695507b0d6997870dbea392e73e4f4470248d26c
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 1fa9c72f7ca305a03cdc90ea02cefe973932792b
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76985878"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046309"
 ---
 # <a name="metrics-for-application-gateway"></a>應用程式閘道的計量
 
@@ -132,6 +132,9 @@ ms.locfileid: "76985878"
 - **狀況不良的主機計數**
 
   健康情況探查所判定為狀況不良的後端數目。 您可以根據每個後端集區進行篩選，以顯示特定後端集區中狀況不良的主機數目。
+  
+- 每部**狀況良好主機的每分鐘要求**數後端集區中每個狀況良好的成員所收到的平均要求數（以分鐘為單位）。 您必須使用*BackendPool HTTPsettings)* 維度來指定後端集區。  
+  
 
 ## <a name="metrics-supported-by-application-gateway-v1-sku"></a>應用程式閘道 V1 SKU 支援的計量
 

@@ -3,12 +3,12 @@ title: 範本函式-資源
 description: 描述 Azure Resource Manager 範本中用來擷取資源相關值的函式。
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: b8d0a3e60654c9d3f951c6f288ea904bb4c0d50b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
-ms.translationtype: HT
+ms.openlocfilehash: cfcc9ff3af33fe9de813d8a31b7d102f00725ce4
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76900643"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048791"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager 範本的資源函式
 
@@ -112,7 +112,7 @@ extensionResourceId(resourceId, resourceType, resourceName1, [resourceName2], ..
 list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)
 ```
 
-此函式的語法因清單作業的名稱而異。 每項實作會對支援 list 作業的資源類型傳回值。 此作業必須以 `list` 開頭。 常見使用方式為 `listKeys` 和 `listSecrets`。 
+此函式的語法因清單作業的名稱而異。 每項實作會對支援 list 作業的資源類型傳回值。 此作業必須以 `list` 開頭。 常見使用方式為 `listKeys` 和 `listSecrets`。
 
 ### <a name="parameters"></a>參數
 
@@ -120,7 +120,7 @@ list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)
 |:--- |:--- |:--- |:--- |
 | resourceName 或 resourceIdentifier |是 |string |資源的唯一識別碼。 |
 | apiVersion |是 |string |資源執行階段狀態的 API 版本。 一般而言，格式為 **yyyy-mm-dd**。 |
-| functionValues |否 |object | 具有函式值的物件。 只針對以下函式提供此物件：可支援在儲存體帳戶上接收具有參數值的物件，例如 **listAccountSas**。 本文會顯示傳遞函式值的範例。 | 
+| functionValues |否 |object | 具有函式值的物件。 只針對以下函式提供此物件：可支援在儲存體帳戶上接收具有參數值的物件，例如 **listAccountSas**。 本文會顯示傳遞函式值的範例。 |
 
 ### <a name="valid-uses"></a>有效用法
 
@@ -154,7 +154,7 @@ list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)
 | Microsoft.DataFactory/datafactories/gateways | listauthkeys |
 | Microsoft.DataFactory/factories/integrationruntimes | [listauthkeys](/rest/api/datafactory/integrationruntimes/listauthkeys) |
 | Microsoft.DataLakeAnalytics/accounts/storageAccounts/Containers | [listSasTokens](/rest/api/datalakeanalytics/storageaccounts/listsastokens) |
-| DataShare/帳戶/共用 | [listSynchronizations](/rest/api/datashare/shares/listsynchronizations) | 
+| DataShare/帳戶/共用 | [listSynchronizations](/rest/api/datashare/shares/listsynchronizations) |
 | DataShare/accounts/shareSubscriptions | [listSourceShareSynchronizationSettings](/rest/api/datashare/sharesubscriptions/listsourcesharesynchronizationsettings) |
 | DataShare/accounts/shareSubscriptions | [listSynchronizationDetails](/rest/api/datashare/sharesubscriptions/listsynchronizationdetails) |
 | DataShare/accounts/shareSubscriptions | [listSynchronizations](/rest/api/datashare/sharesubscriptions/listsynchronizations) |
@@ -287,7 +287,7 @@ list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)
 
 ### <a name="list-example"></a>清單範例
 
-下列[範例範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/listkeys.json)顯示如何在 outputs 區段中從儲存體帳戶傳回主要和次要金鑰。 它也會傳回儲存體帳戶的 SAS 權杖。 
+下列[範例範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/listkeys.json)顯示如何在 outputs 區段中從儲存體帳戶傳回主要和次要金鑰。 它也會傳回儲存體帳戶的 SAS 權杖。
 
 若要取得 SAS 權杖，請傳遞物件以取得到期時間。 到期時間必須是未來的時間。 此範例的用意是要示範如何使用清單函式。 一般而言，您會在資源值中使用 SAS 權杖，而非將它傳回作為輸出值。 輸出值會儲存於部署歷程記錄，並不安全。
 
@@ -371,7 +371,7 @@ providers(providerNamespace, [resourceType])
 
 ### <a name="return-value"></a>傳回值
 
-每個支援類型都會以下列格式傳回： 
+每個支援類型都會以下列格式傳回：
 
 ```json
 {
@@ -460,11 +460,11 @@ reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])
 ```json
 "outputs": {
     "BlobUri": {
-        "value": "[reference(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName')).primaryEndpoints.blob]",
+        "value": "[reference(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))).primaryEndpoints.blob]",
         "type" : "string"
     },
     "FQDN": {
-        "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', parameters('ipAddressName')).dnsSettings.fqdn]",
+        "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', parameters('ipAddressName'))).dnsSettings.fqdn]",
         "type" : "string"
     }
 }
@@ -523,7 +523,7 @@ reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])
 若要避免與您所參考的資源不明確，您可以提供完整的資源識別碼。
 
 ```json
-"value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', parameters('ipAddressName'))]"
+"value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', parameters('ipAddressName')))]"
 ```
 
 當建構資源的完整參考時，要從類型和名稱合併區段的順序並非只是將兩個串連。 相反地，在命名空間之後，使用從最特定到最不特定的一連串*類型/名稱*組：
@@ -555,7 +555,7 @@ reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-      "storageAccountName": { 
+      "storageAccountName": {
           "type": "string"
       }
   },
@@ -585,7 +585,7 @@ reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])
       }
     }
 }
-``` 
+```
 
 上述範例會傳回兩個物件。 屬性物件會使用下列格式：
 
@@ -672,7 +672,7 @@ reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])
 resourceGroup()
 ```
 
-傳回代表目前資源群組的物件。 
+傳回代表目前資源群組的物件。
 
 ### <a name="return-value"></a>傳回值
 
@@ -752,7 +752,7 @@ resourceGroup 函式的常見用法是在和資源群組相同的位置中建立
 resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2], ...)
 ```
 
-傳回資源的唯一識別碼。 如果資源名稱不確定或未佈建在相同的範本內，請使用此函數。 
+傳回資源的唯一識別碼。 如果資源名稱不確定或未佈建在相同的範本內，請使用此函數。
 
 ### <a name="parameters"></a>參數
 
@@ -903,7 +903,7 @@ resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [
 subscription()
 ```
 
-傳回目前部署的訂用帳戶詳細資料。 
+傳回目前部署的訂用帳戶詳細資料。
 
 ### <a name="return-value"></a>傳回值
 
@@ -924,7 +924,7 @@ subscription()
 
 ### <a name="subscription-example"></a>訂用帳戶範例
 
-下列[範例範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/subscription.json)顯示在 outputs 區段中所呼叫的 subscription 函式。 
+下列[範例範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/subscription.json)顯示在 outputs 區段中所呼叫的 subscription 函式。
 
 ```json
 {

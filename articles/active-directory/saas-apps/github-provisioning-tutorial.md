@@ -15,24 +15,25 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02bae60622ca8f0e660c8fafbd21189d8e368ba9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 82f7252f2d9cdd2c54fae593d8463bfe84bd6ce2
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276597"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057646"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>教學課程︰設定 GitHub 來自動佈建使用者
 
 本教學課程旨在說明您需要在 GitHub 和 Azure AD 中執行的步驟，以將使用者帳戶從 Azure AD 自動佈建和取消佈建至 GitHub。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中說明的案例假設您已經具有下列項目：
 
 * Azure Active Directory 租用戶
 * 在 [GitHub Enterprise 雲端](https://help.github.com/articles/github-s-products/#github-enterprise)中建立的 GitHub 組織，需使用 [GitHub Enterprise 的計費方案](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)
 * GitHub 中具有組織系統管理員許可權的使用者帳戶
+* 請確定已為您的組織提供 OAuth 存取權，如[這裡](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization)所述
 
 > [!NOTE]
 > Azure AD 布建整合依賴[GITHUB SCIM API](https://developer.github.com/v3/scim/)，其可在[GitHub Enterprise 計費方案](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations) [GitHub Enterprise 雲端](https://help.github.com/articles/github-s-products/#github-enterprise)客戶使用。
@@ -70,7 +71,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
     ![GitHub 佈建](./media/github-provisioning-tutorial/GitHub1.png)
 
-5. 在 [系統管理員認證] 區段下，按一下 [授權]。 此作業會在新的瀏覽器視窗中開啟 GitHub 授權對話方塊。 
+5. 在 [系統管理員認證] 區段下，按一下 [授權]。 此作業會在新的瀏覽器視窗中開啟 GitHub 授權對話方塊。 請注意，您必須確定您已核准授權存取。 請遵循[這裡](https://help.github.com/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization)所述的指示。
 
 6. 在新視窗中，使用您的管理帳戶登入 GitHub。 在產生的授權對話方塊中，選取您想要啟用佈建的 GitHub 小組，然後選取 [授權]。 一旦完成後，回到 Azure 入口網站以完成佈建組態。
 
@@ -82,7 +83,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 8. 在 [通知電子郵件] 欄位中，輸入應收到佈建錯誤通知的個人或群組之電子郵件地址，然後勾選 [發生失敗時傳送電子郵件通知] 核取方塊。
 
-9. 按一下 [檔案]。
+9. Haga clic en **Guardar**.
 
 10. 在 [對應] 區段下，選取 [同步處理 Azure Active Directory 使用者至 GitHub]。
 
@@ -90,17 +91,17 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 12. 若要對 GitHub 啟用 Azure AD 佈建服務，請在 [設定]區段中，將 [佈建狀態] 變更為 [開啟]
 
-13. 按一下 [檔案]。
+13. Haga clic en **Guardar**.
 
 此作業會對 [使用者和群組] 區段中指派給 GitHub 的任何使用者和/或群組，啟動首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行，只要服務正在執行，這大約每 40 分鐘便會發生一次。 您可以使用 [同步處理詳細資料] 區段來監視進度，並依循連結前往佈建活動記錄，此記錄會描述佈建服務所執行的所有動作。
 
-如需如何讀取 Azure AD 佈建記錄的詳細資訊，請參閱[關於使用者帳戶自動佈建的報告](../manage-apps/check-status-user-account-provisioning.md)。
+如需如何讀取 Azure AD 佈建記錄的詳細資訊，請參閱[關於使用者帳戶自動佈建的報告](../app-provisioning/check-status-user-account-provisioning.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-* [管理企業應用程式的使用者帳戶佈建](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [管理企業應用程式的使用者帳戶佈建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>後續步驟
 
-* [瞭解如何針對佈建活動檢閱記錄和取得報告](../manage-apps/check-status-user-account-provisioning.md)
+* [瞭解如何針對佈建活動檢閱記錄和取得報告](../app-provisioning/check-status-user-account-provisioning.md)

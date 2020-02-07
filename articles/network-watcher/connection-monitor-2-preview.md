@@ -16,14 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: c993a08a4163d50a9632055da355e39b5bdde004
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 5dc705fbd17a12ee001e1e8de15b49e841f08b81
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026883"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049349"
 ---
-# <a name="overview"></a>概觀
+# <a name="unified-connectivity-monitoring-with-connection-monitor-preview"></a>使用連線監視器進行整合連線監視（預覽）
 
 連線監視器（預覽）可在 Azure 網路監看員中，為混合式和 Azure 雲端部署提供整合的端對端連線監視功能。 Azure 網路監看員提供工具來監視、診斷及查看 Azure 部署的連線相關計量。
 
@@ -78,8 +78,8 @@ ms.locfileid: "77026883"
 
 ### <a name="accessing-connection-monitor-preview"></a>存取連接監視器（預覽）
 
-1. 使用下列連結存取網路監看員：[https://ms.portal.azure.com/?Microsoft\_Azure\_Network\_connectionmonitorpreview=true#blade/Microsoft\_Azure\_Network/NetworkWatcherMenuBlade/connectionMonitorPreview](https://ms.portal.azure.com/?Microsoft_Azure_Network_connectionmonitorpreview=true#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/connectionMonitorPreview)
-2. 在網路監看員的左窗格中，按一下 [監視] 區段中的 [連接監視器（預覽）] 索引標籤。 只有在使用步驟1中指定的連結來存取網路監看員時，才會顯示此索引標籤。
+1. 從 Azure 入口網站首頁中，流覽網路監看員
+2. 在網路監看員的左窗格中，按一下 [監視] 區段中的 [連接監視器（預覽）] 索引標籤。
 3. 您可以看到使用連線監視器（預覽）體驗所建立的所有連線監視器。 所有使用 [連線監視器的傳統體驗] 索引標籤建立的連線監視器，都會顯示在 [連線監視器] 索引標籤中。
 
     ![建立連線監視](./media/connection-monitor-2-preview/cm-resource-view.png)
@@ -574,12 +574,12 @@ armclient PUT $ARM/$SUB/$NW/connectionMonitors/$connectionMonitorName/?api-versi
 
 資源類型-Microsoft. Network/networkWatchers/connectionMonitors
 
-| 計量 | 計量顯示名稱 | 單位 | 彙總類型 | 說明 | 維度 |
+| 計量 | 計量顯示名稱 | 單位 | 彙總類型 | 描述 | 維度 |
 | --- | --- | --- | --- | --- | --- |
 | ProbesFailedPercent | 失敗的探查百分比 | 百分比 | Average | 失敗的連線能力監視探查百分比 | 無維度 |
 | AverageRoundtripMs | 平均來回時間（毫秒） | 毫秒 | Average | 在來源與目的地之間所傳送連線能力監視探查的平均網路來回時間 (毫秒) |             無維度 |
-| ChecksFailedPercent （預覽） | % 檢查失敗（預覽） | 百分比 | Average | 測試的檢查失敗% |清單：-ConnectionMonitorResourceId-SourceAddress-未通過-SourceResourceId-SourceType-Protocol-DestinationAddress-DestinationName-DestinationResourceId-DestinationType-DestinationPort-TestGroupName-TestConfigurationName-區內 |
-| RoundTripTimeMs （預覽） | 來回時間（毫秒）（預覽） | 毫秒 | Average | 在來源與目的地之間傳送之檢查的來回時間（毫秒）。 此值不是平均 | 清單：-ConnectionMonitorResourceId-SourceAddress-未通過-SourceResourceId-SourceType-Protocol-DestinationAddress-DestinationName-DestinationResourceId-DestinationType-DestinationPort-TestGroupName-TestConfigurationName-區內 |
+| ChecksFailedPercent （預覽） | % 檢查失敗（預覽） | 百分比 | Average | 測試的檢查失敗% | * ConnectionMonitorResourceId <br> * SourceAddress <br> * 已的 <br> * SourceResourceId <br> * SourceType <br> * 通訊協定 <br> * DestinationAddress <br> * DestinationName <br> * DestinationResourceId <br> * DestinationType <br> * DestinationPort <br> * TestGroupName <br> * TestConfigurationName <br> * 區域 |
+| RoundTripTimeMs （預覽） | 來回時間（毫秒）（預覽） | 毫秒 | Average | 在來源與目的地之間傳送之檢查的來回時間（毫秒）。 此值不是平均 | * ConnectionMonitorResourceId <br> * SourceAddress <br> * 已的 <br> * SourceResourceId <br> * SourceType <br> * 通訊協定 <br> * DestinationAddress <br> * DestinationName <br> * DestinationResourceId <br> * DestinationType <br> * DestinationPort <br> * TestGroupName <br> * TestConfigurationName <br> * 區域 |
 
  ![監視計量](./media/connection-monitor-2-preview/monitor-metrics.png)
 
@@ -607,7 +607,7 @@ armclient PUT $ARM/$SUB/$NW/connectionMonitors/$connectionMonitorName/?api-versi
 
 針對具有內部部署 Vm 作為來源的網路，我們偵測到：
 
-* 要求已超時
+* 要求逾時
 * DNS 未解析的端點–暫時性或持續性。 URL 無效。
 * 找不到任何主機。
 * 來源無法連接到目的地。 無法透過 ICMP 到達目標。

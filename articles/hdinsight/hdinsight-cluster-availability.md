@@ -1,20 +1,19 @@
 ---
 title: 監視： Apache Ambari & Azure 監視器記錄-Azure HDInsight
 description: 瞭解如何使用 Ambari 和 Azure 監視器記錄來監視叢集的健全狀況和可用性。
-keywords: 監視，ambari，監視，log analytics，警示，可用性，健全狀況
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 11/25/2019
-ms.openlocfilehash: a21610fefcfe1632dffbfd8e055497476f7e59c1
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.date: 02/06/2020
+ms.openlocfilehash: 383366fa3e436c79bed28a7c47f1e9daa5f0d9de
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687840"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77060164"
 ---
 # <a name="how-to-monitor-cluster-availability-with-apache-ambari-and-azure-monitor-logs"></a>如何使用 Apache Ambari 和 Azure 監視器記錄監視叢集可用性
 
@@ -96,9 +95,9 @@ Azure 監視器記錄可讓多個資源（例如 HDInsight 叢集）所產生的
 
 ### <a name="enable-hdinsight-azure-monitor-logs-integration"></a>啟用 HDInsight Azure 監視器記錄整合
 
-從入口網站的 [HDInsight 叢集資源] 頁面中，選取 [ **Operations Management Suite**]。 然後，選取 [**啟用**]，然後從下拉式清單中選取您的 Log Analytics 工作區。
+從入口網站的 [HDInsight 叢集資源] 頁面中，選取 [ **Azure 監視器**]。 然後，選取 [**啟用**]，然後從下拉式選單中選取您的 Log Analytics 工作區。
 
-![HDInsight 操作管理套件](media/hdinsight-cluster-availability/hdi-portal-oms-enable.png)
+![HDInsight 操作管理套件](media/hdinsight-cluster-availability/azure-portal-monitoring.png)
 
 ### <a name="query-metrics-and-logs-tables"></a>查詢計量和記錄資料表
 

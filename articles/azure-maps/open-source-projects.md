@@ -9,18 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 7f9bd55054fca6b45a25ef737a1a00872e536ca8
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 5782f07167f72be2ea7b148ad1b0a61d8cb710e2
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75908932"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048903"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure 地圖服務的社區開放原始碼專案
 
-這些是由 Azure 地圖服務小組所建立和維護的開放原始碼、社區驅動的計畫，但不屬於標準產品或服務供應專案的一部分。 以下是一些較受歡迎的 Azure 地圖服務建立了開放原始碼專案和範例的清單。
+這些開放原始碼的社區驅動計畫是由 Azure 地圖服務小組所建立和維護。 它們不是標準產品或服務供應專案的一部分。
 
-| 專案名稱 | 說明 |
+以下列出一些最受歡迎的 Azure 地圖服務開放原始碼專案和範例。
+
+| 專案名稱 | 描述 |
 |-|-|
 | [Azure 地圖服務程式碼範例](https://github.com/Azure-Samples/AzureMapsCodeSamples) | 使用 web 型應用程式中 Azure 地圖服務的程式碼範例集合。 |
 | [Azure 地圖服務 Gov Cloud 程式碼範例](https://github.com/Azure-Samples/AzureMapsCodeSamples) | 透過 Azure Government Cloud 使用 Azure 地圖服務的程式碼範例集合。 |

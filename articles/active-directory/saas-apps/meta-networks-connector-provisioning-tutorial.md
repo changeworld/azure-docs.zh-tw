@@ -15,21 +15,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: Zhchia
-ms.openlocfilehash: 40927597031205b5fb1bcc5869922bcc4f3f265c
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 03c2dc6253fba5c2c7d59f3aefc5c1c663ed8248
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72518729"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061351"
 ---
 # <a name="tutorial-configure-meta-networks-connector-for-automatic-user-provisioning"></a>教學課程：設定元網路連接器以進行自動使用者布建
 
 本教學課程的目的是要示範在 Meta Networks Connector 和 Azure Active Directory （Azure AD）中執行的步驟，以設定 Azure AD 自動布建和取消布建使用者和/或群組至 Meta Networks Connector。
 
 > [!NOTE]
-> 本教學課程會說明建置在 Azure AD 使用者佈建服務之上的連接器。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../manage-apps/user-provisioning.md)。
+> 本教學課程會說明建置在 Azure AD 使用者佈建服務之上的連接器。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../app-provisioning/user-provisioning.md)。
 >
-> 此連接器目前為公開預覽版。 如需預覽功能之一般 Microsoft Azure 使用規定的詳細資訊，請參閱[Microsoft Azure 預覽的補充使用](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)規定。
+> 此連接器目前為公開預覽版。 如需有關預覽功能的一般 Microsoft Azure 使用規定詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用規定](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -84,7 +84,7 @@ Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使�
 
     ![Meta Networks Connector IdP 圖示](media/meta-networks-connector-provisioning-tutorial/icon.png)
 
-8.  在 [**設定 SCIM** ] 下，選取在先前步驟中建立的 API 金鑰名稱。 按一下 [儲存]。
+8.  在 [**設定 SCIM** ] 下，選取在先前步驟中建立的 API 金鑰名稱。 按一下 [ **儲存**]。
 
     ![Meta Networks Connector 設定 SCIM](media/meta-networks-connector-provisioning-tutorial/configure.png)
 
@@ -141,13 +141,13 @@ Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使�
 
 5. 在 [**管理員認證**] 區段下，于 [**租使用者 URL**] 中輸入 `https://api.metanetworks.com/v1/scim/<IdP ID>`。 輸入稍早在**秘密權杖**中所取得的**SCIM Authentication Token**值。 按一下 [**測試連接**] 以確保 Azure AD 可以連接到 Meta Networks Connector。 如果連線失敗，請確定您的 Meta Networks Connector 帳戶具有系統管理員許可權，然後再試一次。
 
-    ![租使用者 URL + 權杖](common/provisioning-testconnection-tenanturltoken.png)
+    ![租用戶 URL + 權杖](common/provisioning-testconnection-tenanturltoken.png)
 
-6. 在 [通知電子郵件] 欄位中，輸入應收到佈建錯誤通知的個人或群組之電子郵件地址，然後勾選 [發生失敗時傳送電子郵件通知] 核取方塊。
+6. 在 [通知電子郵件] 欄位中，輸入應該收到佈建錯誤通知的個人或群組電子郵件地址，然後選取 [發生失敗時傳送電子郵件通知] 核取方塊。
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 按一下 [儲存]。
+7. Haga clic en **Guardar**.
 
 8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者到 Meta Networks Connector**]。
 
@@ -165,30 +165,30 @@ Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使�
 
     ![Meta Networks Connector 群組屬性](media/meta-networks-connector-provisioning-tutorial/groupattributes.png)
 
-12. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
+12. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 
 13. 若要啟用 Meta Networks Connector 的 Azure AD 布建服務，請在 [**設定**] 區段中，將 [布建**狀態**] 變更為 [**開啟**]。
 
-    ![布建狀態已切換為開啟](common/provisioning-toggle-on.png)
+    ![佈建狀態已切換為開啟](common/provisioning-toggle-on.png)
 
 14. 在 [**設定**] 區段的 [**範圍**] 中選擇所需的值，以定義您想要布建到 Meta Networks Connector 的使用者和/或群組。
 
-    ![布建範圍](common/provisioning-scope.png)
+    ![佈建範圍](common/provisioning-scope.png)
 
 15. 當您準備好要佈建時，按一下 [儲存]。
 
-    ![正在儲存布建設定](common/provisioning-configuration-save.png)
+    ![儲存雲端佈建設定](common/provisioning-configuration-save.png)
 
 此作業會對在 [設定] 區段的 [範圍] 中定義的所有使用者和/或群組，啟動首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行，只要 Azure AD 佈建服務正在執行，這大約每 40 分鐘便會發生一次。 您可以使用 [**同步處理詳細資料**] 區段來監視進度，並遵循連結來布建活動報告，其中描述 Meta Networks 連接器上的 Azure AD 布建服務所執行的所有動作。
 
-如需如何讀取 Azure AD 佈建記錄的詳細資訊，請參閱[關於使用者帳戶自動佈建的報告](../manage-apps/check-status-user-account-provisioning.md)。
+如需如何讀取 Azure AD 佈建記錄的詳細資訊，請參閱[關於使用者帳戶自動佈建的報告](../app-provisioning/check-status-user-account-provisioning.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-* [管理企業應用程式的使用者帳戶佈建](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [管理企業應用程式的使用者帳戶佈建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>後續步驟
 
-* [瞭解如何針對佈建活動檢閱記錄和取得報告](../manage-apps/check-status-user-account-provisioning.md)
+* [瞭解如何針對佈建活動檢閱記錄和取得報告](../app-provisioning/check-status-user-account-provisioning.md)
 

@@ -8,12 +8,12 @@ ms.date: 01/30/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: 058fe9aea87879fe85dcbc6dcb864fd841fcb049
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a3d60bf38c4a9dad13dacf8ba9798c4078c1df1a
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026792"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049722"
 ---
 # <a name="export-your-azure-iot-central-data"></a>匯出您的 Azure IoT Central 資料
 
@@ -29,7 +29,7 @@ ms.locfileid: "77026792"
 > [!Note]
 > 當您開啟「連續資料匯出」時，只會取得從該時刻的資料。 目前，無法擷取「連續資料匯出」時的資料。 若要保留更多歷史資料，請儘早開啟「連續資料匯出」。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 您必須是 IoT Central 應用程式中的系統管理員，或具有資料匯出許可權。
 
@@ -62,10 +62,14 @@ ms.locfileid: "77026792"
 
 如果您沒有可匯出的現有 Azure 儲存體帳戶，請遵循下列步驟：
 
-1. [在 Azure 入口網站中建立新儲存體帳戶](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。 您可以深入瞭解如何建立新的[Azure Blob 儲存體帳戶](https://aka.ms/blobdocscreatestorageaccount)或[Azure Data Lake Storage v2 儲存體帳戶](../../storage/blobs/data-lake-storage-quickstart-create-account.md)。
+1. [在 Azure 入口網站中建立新儲存體帳戶](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。 您可以深入瞭解如何建立新的[Azure Blob 儲存體帳戶](https://aka.ms/blobdocscreatestorageaccount)或[Azure Data Lake Storage v2 儲存體帳戶](../../storage/blobs/data-lake-storage-quickstart-create-account.md)。 資料匯出只能將資料寫入支援區塊 blob 的儲存體帳戶。 下列是已知相容類型的儲存體帳戶清單： 
 
-    - 如果您選擇將資料匯出至 Azure Data Lake Storage v2 儲存體帳戶，則必須選擇 [ **BlobStorage** ] 作為**帳戶類型**。
-    - 您可以將資料匯出至訂用帳戶中不同于 IoT Central 應用程式的儲存體帳戶。 在此情況下，您將使用連接字串來進行連線。
+    |效能層級|帳戶類型|
+    |-|-|
+    |標準|一般用途 V2|
+    |標準|一般用途 V1|
+    |標準|Blob 儲存體|
+    |Premium|封鎖 Blob 儲存體|
 
 2. 在您的儲存體帳戶中建立容器。 移至您的儲存體帳戶。 在 [Blob 服務] 下，選取 [瀏覽 Blob]。 選取頂端的 [+ 容器] 以建立新的容器。
 

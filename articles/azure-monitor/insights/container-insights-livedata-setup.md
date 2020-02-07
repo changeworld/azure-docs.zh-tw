@@ -3,12 +3,12 @@ title: 容器即時資料的安裝 Azure 監視器（預覽） |Microsoft Docs
 description: 本文說明如何設定容器記錄（stdout/stderr）和事件的即時視圖，而不需使用 kubectl 與容器的 Azure 監視器。
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 1ca52384e5ce657e4fedeb42e3304449a2d6be11
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: cf42eea99e437a76bb437b23f6eaffae1f1f3bc6
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030663"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063759"
 ---
 # <a name="how-to-setup-the-live-data-preview-feature"></a>如何設定即時資料（預覽）功能
 
@@ -114,7 +114,7 @@ Azure AD 用戶端註冊必須重新設定，才能讓 Azure 入口網站將授�
     >[!NOTE]
     >如果您在 Azure 中國使用這項功能，第一個 [基底 URL] 值應該是 `https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`，而第二個 [基底 URL] 值應該是 [`https://monitoring.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`]。 
     
-4. 註冊重新導向 Url 之後，請在 [**高級設定**] 底下，選取 [**存取權杖**和**識別碼權杖**] 選項，然後儲存您的變更。
+4. 註冊重新導向 Url 之後，請在 [**隱含授**與] 底下，選取 [**存取權杖**和**識別碼權杖**] 選項，然後儲存您的變更。
 
 >[!NOTE]
 >只有在初始部署新的 AKS 叢集時，才可以完成使用單一登入的 Azure Active Directory 來設定驗證。 您無法針對已經部署的 AKS 叢集設定單一登入。

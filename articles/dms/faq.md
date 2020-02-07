@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 9fdbf3888b4302946fe20259a333842caa122836
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: f27d398af723a54443f531c05a503a5f2fbe13f6
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76717784"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064830"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>使用 Azure 資料庫移轉服務的常見問題
 
@@ -46,7 +46,7 @@ Azure 資料庫移轉服務是完全受控的服務，其設計目的是要在�
 > 若要使用「Azure 資料庫移轉服務」來執行線上移轉，必須根據「進階」定價層建立執行個體。 如需詳細資訊，請參閱 Azure 資料庫移轉服務的[定價](https://azure.microsoft.com/pricing/details/database-migration/)頁面。
 
 **問： Azure 資料庫移轉服務與其他 Microsoft 資料庫移轉工具（例如資料庫移轉小幫手（DMA）或 SQL Server 移轉小幫手（SSMA））有何不同？**
-Azure 資料庫移轉服務是資料庫移轉到大規模 Microsoft Azure 的慣用方法。 如需有關 Azure 資料庫移轉服務與其他 Microsoft 資料庫移轉工具相較之下的詳細資料，以及針對各種案例使用服務的建議，請參閱將[Microsoft 的資料庫移轉工具和服務區分](https://blogs.msdn.microsoft.com/datamigration/2017/10/13/differentiating-microsofts-database-migration-tools-and-services/)在一起的文章。
+Azure 資料庫移轉服務是資料庫移轉到大規模 Microsoft Azure 的慣用方法。 如需有關 Azure 資料庫移轉服務與其他 Microsoft 資料庫移轉工具相較之下的詳細資料，以及針對各種案例使用服務的建議，請參閱將[Microsoft 的資料庫移轉工具和服務區分](https://techcommunity.microsoft.com/t5/microsoft-data-migration/differentiating-microsoft-s-database-migration-tools-and/ba-p/368529)在一起的文章。
 
 **問： Azure 資料庫移轉服務與 Azure Migrate 供應專案有何不同？**
 Azure Migrate 可協助將內部部署虛擬機器遷移至 Azure IaaS。 此服務會評估移轉適用性，以及如何根據效能來調整大小，並估計在 Azure 中執行內部部署機器的成本。 Azure Migrate 可用來將內部部署的 VM 型工作負載隨即移轉到 Azure IaaS VM。 不過，與 Azure 資料庫移轉服務不同的是，Azure Migrate 不是適用于 Azure PaaS 關係資料庫平臺（例如 Azure SQL Database 或 Azure SQL Database 受控執行個體）的特製化資料庫移轉服務供應專案。
@@ -88,7 +88,7 @@ Azure 資料庫移轉服務必要條件在所有支援的移轉案例中都是�
 **問：如何? 設定 Microsoft Azure 虛擬網路嗎？**
 雖然有多個 Microsoft 教學課程可引導您完成設定虛擬網路的程式，但官方檔會出現在[Azure 虛擬網路](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)一文。
 
-## <a name="usage"></a>使用量
+## <a name="usage"></a>使用方式
 
 **問：使用 Azure 資料庫移轉服務執行資料庫移轉所需步驟的摘要為何？**
 在典型的簡單資料庫移轉期間，您必須：

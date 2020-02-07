@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/24/2020
-ms.openlocfilehash: 3877632565c1ca2c9a16681e03f8931a94af0599
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 01/31/2020
+ms.openlocfilehash: ea7c695ddb92d441018503839b974c1f4bb33473
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765754"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047853"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>適用於 VM 的 Azure 監視器正式推出（GA）的常見問題
 
@@ -37,7 +37,9 @@ ms.locfileid: "76765754"
 
 
 ## <a name="how-do-i-upgrade"></a>如何? 升級嗎？
-需要升級的每個 VM 都將在 Azure 入口網站中適用於 VM 的 Azure 監視器的 [**開始**使用] 索引標籤中識別。 您可以升級單一 VM，或選取多個來一起升級。 使用下列命令以使用 PowerShell 進行升級：
+當 Log Analytics 工作區升級至 Vm 的最新版本 Azure 監視器時，它會升級附加至該工作區的每個 Vm 上的相依性代理程式。 需要升級的每個 VM 都將在 Azure 入口網站中適用於 VM 的 Azure 監視器的 [**開始**使用] 索引標籤中識別。 當您選擇升級 VM 時，它會升級該 VM 的工作區，以及附加至該工作區的其他任何 Vm。 您可以選取單一 VM 或多個 Vm、資源群組或訂用帳戶。 
+
+使用下列命令來使用 PowerShell 升級工作區：
 
 ```PowerShell
 Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <resource-group-name> -WorkspaceName <workspace-name> -IntelligencePackName "VMInsights" -Enabled $True
@@ -53,7 +55,7 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <resource-grou
 >如果您有在 `Perf` 資料表中參考這些計數器的警示規則，您必須更新它們，以參考 `InsightsMetrics` 資料表中所儲存的新資料。 請參閱我們的檔，以取得您可以用來參考此資料表的範例記錄查詢。
 >
 
-如果您決定讓效能計數器保持啟用狀態，系統就會根據 [Log Analytics 定價 [（ https://azure.microsoft.com/pricing/details/monitor/) ，向您收取資料內嵌並儲存在 `Perf` 資料表中的費用。
+如果您決定讓效能計數器保持啟用狀態，系統就會根據 [Log Analytics 定價 [（ https://azure.microsoft.com/pricing/details/monitor/)，向您收取資料內嵌並儲存在 `Perf` 資料表中的費用。
 
 ## <a name="how-will-this-change-affect-my-alert-rules"></a>這種變更會如何影響我的警示規則？
 
@@ -97,7 +99,7 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <resource-grou
 
 ## <a name="health-feature-is-in-limited-public-preview"></a>健全狀況功能處於有限的公開預覽狀態
 
-我們已收到客戶關於 VM 健全狀況功能集的許多絕佳意見反應。 許多客戶對此功能表示有興趣，並對其可能支援監視工作流程表示興奮。 我們預計進行一系列變更來新增功能及解決我們收到的意見反應。 
+我們已收到客戶關於 VM 健全狀況功能集的許多絕佳意見反應。 這項功能和令人興奮的支援監視工作流程，這方面有許多興趣。 我們打算進行一系列的變更，以新增功能並解決我們所收到的意見反應。 
 
 為了將這些變更對新客戶的影響降至最低，我們已將這項功能移至**有限的公開預覽版**。 此更新會在2019年10月發生。
 

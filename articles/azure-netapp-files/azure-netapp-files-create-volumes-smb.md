@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 02/05/2020
 ms.author: b-juche
-ms.openlocfilehash: 6b1946cdaebd01a0742f9ce2b2efb5054ac9d2a8
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: c65da771dd483b3a79785d4bec2b89cbeefca5c4
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867442"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049893"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>建立適用於 Azure NetApp Files 的 SMB 磁碟區
 
@@ -40,7 +40,7 @@ Azure NetApp Files 支援 NFS 和 SMBv3 磁片區。 磁碟區的容量耗用量
 * 適當的埠必須在適用的 Windows Active Directory （AD）伺服器上開啟。  
     必要的埠如下所示： 
 
-    |     服務           |     Port     |     通訊協定     |
+    |     服務           |     連接埠     |     通訊協定     |
     |-----------------------|--------------|------------------|
     |    AD Web 服務    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
@@ -73,6 +73,8 @@ Azure NetApp Files 支援 NFS 和 SMBv3 磁片區。 磁碟區的容量耗用量
     如果您有無法透過 Azure NetApp Files 委派子網連線的網域控制站，您可以提交 Azure 支援要求，將範圍從**全域**（預設值）變更為**site**。  Azure NetApp Files 只需要與 Azure NetApp Files 委派子網位址空間所在網站中的網域控制站進行通訊。
 
     請參閱設計關於 AD 網站和服務[的網站拓撲](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology)。 
+    
+如需其他廣告資訊，請參閱 Azure NetApp Files [SMB 常見問題](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs)。 
 
 ## <a name="create-an-active-directory-connection"></a>建立 Active Directory 連線
 
