@@ -23,7 +23,7 @@ ms.locfileid: "76273506"
 
 本快速入門中會使用 Azure CLI 來部署 Kubernetes 叢集。 接著，在叢集上部署和執行多容器應用程式，其中包含 Web 前端和 Redis 執行個體。 完成後，即可透過網際網路來存取應用程式。 
 
-本文件中使用的範例應用程式是以 Python 撰寫。 這裡詳述的概念和步驟可用來將任何容器映像部署到 Kubernetes 叢集中。 在 [GitHub](https://github.com/Azure-Samples/azure-voting-app-redis.git) 上可取得此專案相關的程式碼、Dockerfile 和預先建立之 Kubernetes 資訊清單檔案。
+本文件中使用的範例應用程式是以 Python 撰寫。 這裡詳述的概念和步驟可用來將任何容器映像部署到 Kubernetes 叢集中。 [GitHub](https://github.com/Azure-Samples/azure-voting-app-redis.git) 在 上可取得此專案相關的程式碼、Dockerfile 和預先建立之 Kubernetes 資訊清單檔案。
 
 ![瀏覽至 Azure 投票的影像](media/container-service-kubernetes-walkthrough/azure-vote.png)
 
