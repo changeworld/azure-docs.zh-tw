@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5f36e82c2ff95800a058f56f9cc6b80ddf02dbf
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 1c46facb2d43137175730bf04fea0efec9c1ecbd
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967716"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063844"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>在 Azure AD 中保護混合式部署和雲端部署的特殊權限存取
 
@@ -230,7 +230,7 @@ Azure AD Identity Protection 是一種以演算法為基礎的監視和報告工
 
 有愈來愈多的公司使用者透過雲端服務取得特殊權限存取，這可能會導致未受管理的平台隨之增加。 其中包括將成為 Office 365 全域管理員的使用者、Azure 訂用帳戶系統管理員，以及可對 VM 或透過 SaaS 應用程式進行管理員存取的使用者。 此時，組織應讓所有員工 (尤其是管理員) 以不具特殊權限的使用者身分處理日常業務交易，而僅在必要時才採用管理員權限。 在初次採用管理員角色後具備此角色的使用者數目可能會增加，因此應完成存取權檢閱，以識別並確認每個適合啟動管理員權限的使用者。 
 
-執行下列動作：
+請執行下列動作：
 
 * 確認哪些使用者是 Azure AD 管理員，隨需啟用 Just-In-Time 管理員存取和角色型安全性控制。
 * 將沒有正當理由可取得管理員特殊權限存取權的使用者轉換為不同角色 (如果沒有符合資格的角色，則將其移除)。
@@ -298,7 +298,7 @@ Azure 記錄整合可讓您將來自 Azure 資源的原始記錄整合到組織�
 
 #### <a name="implement-user-provisioning-for-connected-apps"></a>為連線的應用程式實作使用者佈建
 
-Azure AD 可讓您自動化在雲端 (SaaS) 應用程式 (例如 Dropbox、Salesforce、ServiceNow 等等) 中建立、維護和移除使用者身分識別的作業。 如需詳細資訊，請參閱[自動化使用 Azure AD 對於 SaaS 應用程式的使用者佈建和解除佈建](../manage-apps/user-provisioning.md)。
+Azure AD 可讓您自動化在雲端 (SaaS) 應用程式 (例如 Dropbox、Salesforce、ServiceNow 等等) 中建立、維護和移除使用者身分識別的作業。 如需詳細資訊，請參閱[自動化使用 Azure AD 對於 SaaS 應用程式的使用者佈建和解除佈建](../app-provisioning/user-provisioning.md)。
 
 #### <a name="integrate-information-protection"></a>整合資訊保護
 

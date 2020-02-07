@@ -138,9 +138,9 @@ Azure 匯入/匯出服務支援與所有 Azure 儲存體帳戶相互複製資料
 針對匯入作業，會使用兩種方式來加密磁碟機。  
 
 
-- 在磁碟機準備期間執行 WAImportExport 工具時，於使用 dataset.csv  檔案時指定選項。 
+- 在磁碟機準備期間執行 WAImportExport 工具時，於使用 dataset.csv 檔案時指定選項。 
 
-- 在磁碟機上手動啟用 BitLocker 加密。 在磁碟機準備期間，於執行 WAImportExport 工具命令列時，在 driveset.csv  中指定加密金鑰。
+- 在磁碟機上手動啟用 BitLocker 加密。 在磁碟機準備期間，於執行 WAImportExport 工具命令列時，在 driveset.csv 中指定加密金鑰。
 
 
 針對匯出作業，您的資料複製到磁碟機之後，服務會使用 BitLocker 將磁碟機加密，然後才運送回去給您。 加密金鑰會透過 Azure 入口網站提供給您。

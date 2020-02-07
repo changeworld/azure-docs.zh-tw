@@ -12,12 +12,12 @@ ms.date: 07/19/2019
 ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 709f8083e50391718d34587bd0ea1d847cc41923
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: cf6c89e5f891c5f16551885fb40e8d5082fd6ba5
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841960"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063504"
 ---
 # <a name="configure-saml-based-single-sign-on-to-non-gallery-applications"></a>為非資源庫應用程式設定 SAML 型單一登入
 
@@ -50,13 +50,13 @@ ms.locfileid: "76841960"
 
 1. 輸入下列設定。 您應該會從應用程式廠商取得這些值。 您可手動輸入值或上傳中繼資料檔案，以擷取欄位的值。
 
-    | 基本 SAML 組態設定 | SP 起始 | idP 起始 | 說明 |
+    | 基本 SAML 組態設定 | SP 起始 | idP 起始 | 描述 |
     |:--|:--|:--|:--|
     | **識別碼（實體識別碼）** | 某些應用程式需要 | 某些應用程式需要 | 唯一識別應用程式。 Azure AD 會將識別碼傳送給應用程式作為 SAML 權杖的 Audience 參數。 應用程式應該會對其進行驗證。 在應用程式中提供的任何 SAML 中繼資料中，此值也會顯示為實體識別碼。 輸入使用下列模式的 URL： ' HTTPs://<subdomain>. contoso.com ' *。您可以在應用程式所傳送的**AuthnRequest** （SAML 要求）中找到此值做為**Issuer**元素。* |
     | **回覆 URL** | 必要項 | 必要項 | 指定應用程式預期要接收 SAML 權杖的位置。 此回覆 URL 也稱為判斷提示取用者服務 (ACS) URL。 您可以使用 [其他回復 URL] 欄位來指定多個回復 Url。 例如，您可能需要多個子域的其他回復 Url。 或者，基於測試目的，您可以一次指定多個回復 Url （本機主機和公用 Url）。 |
     | **登入 URL** | 必要項 | 請勿指定 | 當使用者開啟此 URL 時，服務提供者會重新導向至 Azure AD 以進行驗證，並將使用者登入。 Azure AD 會使用此 URL 從 Office 365 和 Azure AD「存取面板」中啟動應用程式。 當空白時，Azure AD 會在使用者從 Office 365、Azure AD 存取面板或 Azure AD SSO URL 啟動應用程式時，執行 IdP 起始的登入。|
-    | **轉送狀態** | 選用 | 選用 | 對應用程式指定在驗證完成後應將使用者重新導向到的位置。 此值通常是對應用程式而言有效的 URL。 不過，有些應用程式會以不同的方式使用此欄位。 如需詳細資訊，請詢問應用程式廠商。
-    | **登出 URL** | 選用 | 選用 | 用於將 SAML 登出回應傳回應用程式。
+    | **轉送狀態** | 選擇性 | 選擇性 | 對應用程式指定在驗證完成後應將使用者重新導向到的位置。 此值通常是對應用程式而言有效的 URL。 不過，有些應用程式會以不同的方式使用此欄位。 如需詳細資訊，請詢問應用程式廠商。
+    | **登出 URL** | 選擇性 | 選擇性 | 用於將 SAML 登出回應傳回應用程式。
 
 如需詳細資訊，請參閱[單一登入 SAML 通訊協定](../develop/single-sign-on-saml-protocol.md)。
 
@@ -122,9 +122,9 @@ Azure AD 會使用憑證來簽署它傳送至應用程式的 SAML 權杖。 您�
 
 ## <a name="step-4-set-up-the-application-to-use-azure-ad"></a>步驟 4： 將應用程式設定為使用 Azure AD
 
-[設定 \<applicationName>] 區段會列出必須在應用程式中設定而使其以 Azure AD 作為 SAML 識別提供者的值。 必要的值會根據應用程式而有所不同。 如需詳細資訊，請參閱應用程式的 SAML 文件。 若要尋找檔，請移至**設定 \<應用程式名稱 >** 標題，然後選取 [**查看逐步指示**]。 檔會出現在 [**設定**登入] 頁面中。 該頁面會引導您填寫 [**設定 \<應用程式名稱] >** 標題中的 [**登入 url**]、[ **Azure AD 識別碼**] 和 [**登出 URL** ] 值。
+[設定 **applicationName>]\<** 區段會列出必須在應用程式中設定而使其以 Azure AD 作為 SAML 識別提供者的值。 必要的值會根據應用程式而有所不同。 如需詳細資訊，請參閱應用程式的 SAML 文件。 若要尋找檔，請移至**設定 \<應用程式名稱 >** 標題，然後選取 [**查看逐步指示**]。 檔會出現在 [**設定**登入] 頁面中。 該頁面會引導您填寫 [**設定 \<應用程式名稱] >** 標題中的 [**登入 url**]、[ **Azure AD 識別碼**] 和 [**登出 URL** ] 值。
 
-1. 向下捲動至 [設定 \<applicationName>] 區段。 
+1. 向下捲動至 [設定 **applicationName>]\<** 區段。 
    
    ![步驟4設定應用程式](media/configure-single-sign-on-non-gallery-applications/step-four-app-config.png)
 
@@ -163,4 +163,4 @@ Azure AD 會使用憑證來簽署它傳送至應用程式的 SAML 權杖。 您�
 ## <a name="next-steps"></a>後續步驟
 
 - [將使用者或群組指派給應用程式](methods-for-assigning-users-and-groups.md)
-- [設定使用者帳戶自動佈建](configure-automatic-user-provisioning-portal.md)
+- [設定使用者帳戶自動佈建](../app-provisioning/configure-automatic-user-provisioning-portal.md)

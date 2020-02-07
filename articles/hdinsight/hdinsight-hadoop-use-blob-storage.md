@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 1e115c59cab4c340f927da516b5f937abf42e985
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 55cddf5317938dea353517cde7260a1aa531d1df
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839667"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061253"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>搭配 Azure HDInsight 叢集使用 Azure 儲存體
 
@@ -27,9 +27,9 @@ Apache Hadoop 支援預設檔案系統的概念。 預設檔案系統意指預�
 
 | 儲存體帳戶種類 | 支援的服務 | 支援的效能層級 | 支援的存取層 |
 |----------------------|--------------------|-----------------------------|------------------------|
-| StorageV2 (一般用途 v2)  | Blob     | 標準                    | 經常性、非經常性、封存\*   |
-| 儲存體（一般用途 v1）   | Blob     | 標準                    | N/A                    |
-| BlobStorage                    | Blob     | 標準                    | 經常性、非經常性、封存\*   |
+| StorageV2 (一般用途 v2)  | blob     | 標準                    | 經常性、非經常性、封存\*   |
+| 儲存體（一般用途 v1）   | blob     | 標準                    | N/A                    |
+| BlobStorage                    | blob     | 標準                    | 經常性、非經常性、封存\*   |
 
 不建議您使用預設的 Blob 容器來儲存商務資料。 最好在每次使用後刪除預設的 Blob 容器，以減少儲存成本。 預設容器包含應用程式與系統記錄。 請務必先擷取記錄再刪除容器。
 
@@ -122,7 +122,7 @@ LOCATION 'wasbs:///example/data/';
 LOCATION '/example/data/';
 ```
 
-## <a name="identify-storage-path-from-abmari"></a>識別來自 Abmari 的儲存體路徑
+## <a name="identify-storage-path-from-ambari"></a>識別來自 Ambari 的儲存體路徑
 
 * 若要識別已設定之預設存放區的完整路徑，請流覽至：
 
@@ -164,7 +164,7 @@ Microsoft 提供下列工具來使用 Azure 儲存體：
 
 在本文中，您已了解如何搭配 HDInsight 使用 HDFS 相容的 Azure 儲存體。 這可讓您建立可調整、長期封存的資料取得解決方案，並利用 HDInsight 來揭開儲存的結構化和非結構化資料內的資訊。
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱
 
 * [開始使用 Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [開始使用 Azure Data Lake Storage](../data-lake-store/data-lake-store-get-started-portal.md)

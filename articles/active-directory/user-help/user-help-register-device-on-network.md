@@ -2,7 +2,7 @@
 title: 在組織的網路上註冊個人裝置-Azure AD
 description: 了解如何在組織的網路上註冊您的個人裝置，讓您可以存取組織的受保護資源。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
@@ -10,15 +10,15 @@ ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/04/2019
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 2e3bd9ffa968038ae3f03eaf8de9c5271d6248f4
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: e2e6585bac100a09f3f98037e90b24738e22816f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704607"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063861"
 ---
 # <a name="register-your-personal-device-on-your-organizations-network"></a>在組織的網路上註冊您的個人裝置
 在組織的網路上註冊您的個人裝置 (通常是手機或平板電腦)。 註冊您的裝置之後，它將能夠存取組織的受限資源。

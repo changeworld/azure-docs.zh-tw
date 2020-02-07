@@ -2,21 +2,21 @@
 title: 將非 Microsoft 帳戶新增至 Microsoft Authenticator 應用程式-Azure AD
 description: 將非 Microsoft 帳戶（例如 Google 或 Facebook）新增至 Microsoft Authenticator 應用程式，以在使用雙因素驗證時驗證您的身分識別。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 01/24/2019
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: da5e2f60334148be1206ce61a9c6397a3acf85e3
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 8650d0170e8ff910140e2b432dd1c998d19e72d8
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704760"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063946"
 ---
 # <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>將非 Microsoft 帳戶新增至 Microsoft Authenticator 應用程式
 
@@ -44,7 +44,7 @@ ms.locfileid: "76704760"
 
 ### <a name="turn-on-two-factor-verification"></a>開啟雙因素驗證
 
-1. 在您的電腦上移至 https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome ，並選取 [開始使用]，然後驗證您的身分識別。
+1. 在您的電腦上移至 https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome，並選取 [開始使用]，然後驗證您的身分識別。
 
 2. 依照頁面上的步驟，為您的個人 Google 帳戶開啟雙步驟驗證。
 

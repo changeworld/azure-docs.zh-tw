@@ -16,18 +16,18 @@ ms.date: 03/27/2019
 ms.author: arvinh
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60a237e4295f17ce37f622022d318e9f2aff24d7
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: abeac030db419f7fb7d561df5dcd407684f20ca2
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276596"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77058902"
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>教學課程︰設定 Asana 來自動佈建使用者
 
 本教學課程旨在說明您需要在 Asana 和 Azure Active Directory (Azure AD) 中執行的步驟，以將使用者帳戶從 Azure AD 自動佈建和取消佈建至 Asana。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中說明的案例假設您已經具有下列項目：
 
@@ -73,7 +73,7 @@ Azure AD 使用稱為「*指派*」的概念，來判斷哪些使用者應接收
 
     a. 使用系統管理員帳戶登入 [Asana](https://app.asana.com)。
 
-    b.這是另一個 C# 主控台應用程式。 選取頂端列的設定檔照片，然後選取目前的組織名稱設定。
+    b. 選取頂端列的設定檔照片，然後選取目前的組織名稱設定。
 
     c. 移至 [服務帳戶] 索引標籤。
 
@@ -85,22 +85,22 @@ Azure AD 使用稱為「*指派*」的概念，來判斷哪些使用者應接收
 
 1. 在 [通知電子郵件] 中，輸入應收到佈建錯誤通知之個人或群組的電子郵件地址。 選取下方的核取方塊。
 
-1. 選取 [ **儲存**]。
+1. 選取 [儲存]。
 
 1. 在 [對應] 區段中，選取 [將 Azure Active Directory 使用者同步至 Asana]。
 
-1. 在 [屬性對應] 區段中，檢閱要從 Azure AD 同步至 Asana 的使用者屬性。 選取為 [比對] 屬性的屬性會用來比對 Asana 中的使用者帳戶以進行更新作業。 選取 [儲存] 認可任何變更。 如需詳細資訊，請參閱[自訂使用者佈建屬性對應](../manage-apps/customize-application-attributes.md)。
+1. 在 [屬性對應] 區段中，檢閱要從 Azure AD 同步至 Asana 的使用者屬性。 選取為 [比對] 屬性的屬性會用來比對 Asana 中的使用者帳戶以進行更新作業。 選取 [儲存] 認可任何變更。 如需詳細資訊，請參閱[自訂使用者佈建屬性對應](../app-provisioning/customize-application-attributes.md)。
 
 1. 若要啟用 Asana 的 Azure AD 佈建服務，請在 [設定] 區段中，將 [佈建狀態] 變更為 [開啟]。
 
-1. 選取 [ **儲存**]。
+1. 選取 [儲存]。
 
 現在首次同步處理會針對在 [使用者] 區段中指派給 Asana 的任何使用者啟動。 初始同步處理會比後續同步處理花費更多時間執行，只要服務正在執行，這大約每 40 分鐘便會發生一次。 請使用 [同步處理詳細資料] 區段來監視進度，並依循連結來佈建活動記錄。 稽核記錄會描述在 Asana 應用程式上佈建服務執行的所有動作。
 
-如需如何讀取 Azure AD 佈建記錄的詳細資訊，請參閱[關於使用者帳戶自動佈建的報告](../manage-apps/check-status-user-account-provisioning.md)。
+如需如何讀取 Azure AD 佈建記錄的詳細資訊，請參閱[關於使用者帳戶自動佈建的報告](../app-provisioning/check-status-user-account-provisioning.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-* [管理企業應用程式的使用者帳戶佈建](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [管理企業應用程式的使用者帳戶佈建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 * [設定單一登入](asana-tutorial.md)

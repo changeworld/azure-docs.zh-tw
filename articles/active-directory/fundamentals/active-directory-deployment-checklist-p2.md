@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc06931dd36c9ecd91ec1d748b9463f47f7afafc
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: f84226a631014b51338d47887fe3bafc969dc571
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72880595"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063640"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Azure Active Directory 功能部署指南
 
@@ -41,7 +41,7 @@ ms.locfileid: "72880595"
 
 在這個階段，系統管理員會啟用基準安全性功能，以在我們匯入或建立一般使用者帳戶之前，在 Azure AD 中建立更安全且容易使用的基礎。 此基本階段可確保您一開始就處於更安全的狀態，而且只需要向一般使用者介紹新概念一次。
 
-| Task | 詳細資料 | 必要授權 |
+| 工作 | 詳細資料 | 必要授權 |
 | ---- | ------ | ---------------- |
 | [指定超過一個全域管理員](../users-groups-roles/directory-emergency-access.md) | 在發生緊急狀況時，請指定至少兩個僅限雲端的永久全域管理員帳戶。 這些帳戶並非每天使用，而且應該有複雜的長密碼。 | Azure AD Free |
 | [可能的話，請使用非全域系統管理角色](../users-groups-roles/directory-assign-admin-roles.md) | 僅賦予您的系統管理員存取其所需存取區域的權限。 並非所有系統管理員都必須是全域管理員。 | Azure AD Free |
@@ -62,7 +62,7 @@ ms.locfileid: "72880595"
 
 接著，我們會匯入使用者，以及啟用同步處理、規劃來賓存取及準備支援額外功能，藉此擴建增階段 1 所設置的基礎。
 
-| Task | 詳細資料 | 必要授權 |
+| 工作 | 詳細資料 | 必要授權 |
 | ---- | ------ | ---------------- |
 | [安裝 Azure AD Connect](../connect/active-directory-aadconnect-select-installation.md) | 準備讓使用者從現有的內部部署目錄同步至雲端。 | Azure AD Free |
 | [實作密碼雜湊同步處理](../connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md) | 同步密碼雜湊，以允許複寫變更密碼、偵測和補救不正確的密碼，以及回報外洩的認證。 | Azure AD Free |
@@ -78,7 +78,7 @@ ms.locfileid: "72880595"
 
 當我們繼續以先前的階段為根基，我們會找出可供移轉以及與 Azure AD 整合的候選應用程式，並完成這些應用程式的設定。
 
-| Task | 詳細資料 | 必要授權 |
+| 工作 | 詳細資料 | 必要授權 |
 | ---- | ------ | ---------------- |
 | 識別您的應用程式 | 識別貴組織中使用的應用程式：內部部署應用程式、雲端中的 SaaS 應用程式，以及其他企業營運應用程式。 判斷這些應用程式是否可以且應該透過 Azure AD 管理。 | 不需要授權 |
 | [整合資源庫中支援的 SaaS 應用程式](../manage-apps/add-application-portal.md) | Azure AD 有一個資源庫，其中包含數千個預先整合的應用程式。 您組織使用的某些應用程式可能就在可從 Azure 入口網站直接存取的資源庫中。 | Azure AD Free |
@@ -88,18 +88,18 @@ ms.locfileid: "72880595"
 
 階段 4 可看見系統管理員強制執行系統管理的最低權限準則、完成其第一次存取權檢閱，以及讓一般使用者生命週期工作自動化。
 
-| Task | 詳細資料 | 必要授權 |
+| 工作 | 詳細資料 | 必要授權 |
 | ---- | ------ | ---------------- |
 | [強制使用 Privileged Identity Management](../privileged-identity-management/pim-security-wizard.md) | 從一般日常使用者帳戶中移除系統管理角色。 在成功執行多重要素驗證檢查、提供業務理由，或是向指定的核准者要求核准之後，讓系統管理使用者有資格使用其角色。 | Azure AD Premium P2 |
 | [在 PIM 中完成 Azure AD 目錄角色的存取權檢閱](../privileged-identity-management/pim-how-to-start-security-review.md) | 與您的安全性和領導小組合作，一起建立存取權檢閱原則，以根據貴組織原則來檢閱系統管理存取權。 | Azure AD Premium P2 |
 | [實作動態群組成員資格原則](../users-groups-roles/groups-dynamic-membership.md) | 使用動態群組，根據 HR (或您的真實來源) 的屬性自動將使用者指派至群組，例如部門、標題、區域和其他屬性。 |  |
 | [實作群組型應用程式佈建](../manage-apps/what-is-access-management.md) | 使用群組型存取管理佈建，為 SaaS 應用程式自動佈建使用者。 |  |
-| [自動化使用者佈建和解除佈建](../manage-apps/user-provisioning.md) | 從您員工帳戶的生命週期移除手動步驟，以防止未經授權的存取。 將真實來源 (HR系統) 中的身分識別同步至 Azure AD。 |  |
+| [自動化使用者佈建和解除佈建](../app-provisioning/user-provisioning.md) | 從您員工帳戶的生命週期移除手動步驟，以防止未經授權的存取。 將真實來源 (HR系統) 中的身分識別同步至 Azure AD。 |  |
 
 ## <a name="next-steps"></a>後續步驟
 
 [Azure AD 授權和定價詳細資料](https://azure.microsoft.com/pricing/details/active-directory/)
 
-[身分識別與裝置存取組態](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
+[身分識別與裝置存取設定](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
 
 [常見的建議身分識別和裝置存取原則](https://docs.microsoft.com/microsoft-365/enterprise/identity-access-policies)
