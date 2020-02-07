@@ -4,6 +4,8 @@
   items:
     - name: 簡介
       href: iot-introduction.md
+    - name: 選擇合適的 IoT 解決方案
+      href: iot-solution-options.md
     - name: Azure IoT 服務與技術
       href: iot-services-and-technologies.md
     - name: 支援和協助選項
