@@ -3,22 +3,22 @@ title: 在 MSAL apps 中記錄 |Azure
 titleSuffix: Microsoft identity platform
 description: 了解 Microsoft 驗證程式庫 (MSAL) 應用程式中的記錄。
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 11/11/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: cba213824cba86b4ea54e852b7e2f1ede83abfea
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 58697cc535357710c6889f05060b5e04e129ae7d
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695801"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084885"
 ---
 # <a name="logging-in-msal-applications"></a>MSAL 應用程式中的記錄
 
@@ -89,7 +89,7 @@ class Program
 - `tag` 是程式庫傳遞至回呼的字串。 它會與記錄專案相關聯，並可用於排序記錄訊息。
 - `logLevel` 可讓您決定想要的記錄層級。 支援的記錄層級為： `Error`、`Warning`、`Info`和 `Verbose`。
 - `message` 是記錄專案的內容。
-- `containsPII` 指定是否記錄包含個人資料或組織資料的訊息。 根據預設，這會設定為 false，讓您的應用程式不會記錄個人資料。 如果 `true``containsPII`，這個方法將會收到兩次訊息：一次是將 `containsPII` 參數設為 `false`，而不含個人資料，第二次將 `message` 參數設定為 `containsPii`，而訊息可能包含個人資料。 在某些情況下 (當訊息不包含個人資料時)，這兩個訊息將會相同。
+- `containsPII` 指定是否記錄包含個人資料或組織資料的訊息。 根據預設，這會設定為 false，讓您的應用程式不會記錄個人資料。 如果 `true``containsPII`，這個方法將會收到兩次訊息：一次是將 `containsPII` 參數設為 `false`，而不含個人資料，第二次將 `message` 參數設定為 `containsPii`，而訊息可能包含個人資料。`true` 在某些情況下 (當訊息不包含個人資料時)，這兩個訊息將會相同。
 
 ```java
 private StringBuilder mLogs;
@@ -210,7 +210,7 @@ MSALGlobalConfig.loggerConfig.piiEnabled = NO;
 
 若要在使用 iOS 和 macOS 的 MSAL 記錄時設定記錄層級，請使用下列其中一個值：
 
-|層級  |說明 |
+|層級  |描述 |
 |---------|---------|
 | `MSALLogLevelNothing`| 停用所有記錄 |
 | `MSALLogLevelError` | 預設層級，只有在發生錯誤時才會列印資訊 |
@@ -287,7 +287,7 @@ MSALGlobalConfig.loggerConfig.piiEnabled = false
 
 若要在使用 iOS 和 macOS 的 MSAL 記錄時設定記錄層級，請使用下列其中一個值：
 
-|層級  |說明 |
+|層級  |描述 |
 |---------|---------|
 | `MSALLogLevelNothing`| 停用所有記錄 |
 | `MSALLogLevelError` | 預設層級，只有在發生錯誤時才會列印資訊 |

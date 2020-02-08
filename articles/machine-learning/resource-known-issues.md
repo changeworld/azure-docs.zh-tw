@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9824f5cfd7b42860079536232b8a5ad40ea608c9
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 3243aa4c68e1cd6030986dc44cca47a555dc5356
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638352"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087146"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>已知問題和疑難排解 Azure Machine Learning
 
@@ -78,7 +78,7 @@ conda create -n <env-name> python=3.7.3
 
 您將無法在 FPGA 上部署模型，直到您已針對 FPGA 配額提出要求並已獲得核准。 若要要求存取權，請填妥配額要求表單： https://aka.ms/aml-real-time-ai
 
-## <a name="automated-machine-learning"></a>自動化的機器學習
+## <a name="automated-machine-learning"></a>自動化機器學習
 
 張量 Flow 自動化機器學習目前不支援張量流程版本1.13。 安裝此版本將導致封裝相依性停止運作。 我們正致力於在未來的版本中修正此問題。 
 
@@ -172,7 +172,7 @@ displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.g
 * 新增 `azureml-dataprep` 1.1.8 或更新版本。
 * 新增 `pyarrow` 0.11 版或更新版本。
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Azure 入口網站
 
 如果您從 SDK 或入口網站的共用連結直接檢視工作區，將無法在延伸模組中檢視包含訂用帳戶資訊的一般 [概觀] 頁面。 您也無法切換至另一個工作區。 如果您需要查看另一個工作區，因應措施是直接前往[Azure Machine Learning studio](https://ml.azure.com)並搜尋工作區名稱。
 
@@ -306,3 +306,9 @@ Azure ML 維護的 docker 映射及其內容可以在[AzureML 容器](https://gi
 ### <a name="pressing-esc-key-while-labeling-for-object-detection-creates-a-zero-size-label-on-the-top-left-corner-submitting-labels-in-this-state-fails"></a>當物件偵測標記時按下 Esc 鍵，會在左上角建立零大小的標籤。 在此狀態下提交卷標失敗。
 
 按一下旁邊的交叉標記來刪除標籤。
+
+## <a name="run-or-experiment-deletion"></a>執行或實驗刪除
+
+您可以使用[實驗.](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#archive--)封存方法，或從 Azure Machine Learning studio 用戶端中的實驗索引標籤視圖來封存實驗。 此動作會隱藏來自清單查詢和 views 的實驗，但不會將其刪除。
+
+目前不支援永久刪除個別實驗或執行。 如需刪除工作區資產的詳細資訊，請參閱[匯出或刪除您的 Machine Learning 服務工作區資料](how-to-export-delete-data.md)。

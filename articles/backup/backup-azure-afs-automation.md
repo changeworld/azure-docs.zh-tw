@@ -3,12 +3,12 @@ title: 使用 PowerShell 備份 Azure 檔案儲存體
 description: 在本文中，您將瞭解如何使用 Azure 備份服務和 PowerShell 來備份 Azure 檔案儲存體。
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 5147ab893d4ebad395d7dbd8cc25872177ec10a2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: a80589fb45937949b3612e12139ab1615bc1620d
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773110"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086952"
 ---
 # <a name="back-up-azure-files-with-powershell"></a>使用 PowerShell 備份 Azure 檔案儲存體
 
@@ -44,6 +44,13 @@ ms.locfileid: "76773110"
 設定 PowerShell，如下所示：
 
 1. [下載最新版的 Az PowerShell](/powershell/azure/install-az-ps)。 最低版本需求為 1.0.0。
+
+> [!WARNING]
+> 預覽所需的最小 PS 版本為 ' Az 1.0.0 '。 由於 GA 即將變更，所需的最低 PS 版本將會是 ' Az. Azurerm.recoveryservices 2.6.0 '。 請務必將所有現有的 PS 版本升級至此版本。 否則，現有的腳本會在 GA 之後中斷。 使用下列 PS 命令安裝最低版本
+
+```powershell
+Install-module -Name Az.RecoveryServices -RequiredVersion 2.6.0
+```
 
 2. 使用下列命令尋找 Azure 備份 PowerShell Cmdlet：
 
@@ -241,19 +248,32 @@ WorkloadName       Operation            Status                 StartTime        
 testAzureFS       ConfigureBackup      Completed            11/12/2018 2:15:26 PM     11/12/2018 2:16:11 PM     ec7d4f1d-40bd-46a4-9edb-3193c41f6bf6
 ```
 
+## <a name="important-notice---backup-item-identification-for-afs-backups"></a>重要通知-AFS 備份的備份專案識別
+
+本節概述從預覽到 GA 的 AFS 備份的備份專案抓取變更。
+
+啟用 AFS 的備份時，使用者會提供客戶易記的檔案共用名稱作為機構名稱，並建立備份專案。 備份專案的 ' name ' 是 Azure 備份服務所建立的唯一識別碼。 識別碼通常牽涉到使用者易記名稱。 但 Azure 服務在內部唯一識別 azure 檔案共用的方式有了變更。 這表示 AFS 備份的備份專案唯一名稱會是 GUID，而且不會與客戶易記名稱有任何關聯。 若要知道每個專案的唯一名稱，只要以 backupManagementType 和 WorkloadType 的相關篩選準則執行 ```Get-AzRecoveryServicesBackupItem``` 命令，即可取得所有相關的專案，然後觀察傳回的 PS 物件/回應中的名稱欄位。 一律建議您列出專案，然後從 [名稱] 欄位取得回應中的唯一名稱。 使用此值來篩選具有 ' Name ' 參數的專案。 否則，請使用 FriendlyName 參數來抓取具有客戶易記名稱/識別碼的專案。
+
+> [!WARNING]
+> 請確定 PS 版本已升級為 AFS 備份的 ' Az. Azurerm.recoveryservices 2.6.0 ' 的最低版本。 使用此版本時，[friendlyName] 篩選準則適用于 ```Get-AzRecoveryServicesBackupItem``` 命令。 將 azure 檔案共用名稱傳遞給 friendlyName 參數。 如果您將 azure 檔案共用名稱傳遞給 ' Name ' 參數，此版本會擲回警告，將此易記名稱傳遞給易記名稱參數。 若未安裝此最低版本，可能會導致現有的腳本失敗。 使用下列命令安裝 PS 的最低版本。
+
+```powershell
+Install-module -Name Az.RecoveryServices -RequiredVersion 2.6.0
+```
+
 ## <a name="trigger-an-on-demand-backup"></a>觸發隨選備份
 
 使用[備份 backup-azrecoveryservicesbackupitem](https://docs.microsoft.com/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem?view=azps-1.4.0)來執行受保護 Azure 檔案共用的隨選備份。
 
-1. 使用[AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-Azrecoveryservicesbackupcontainer)，從保存備份資料的保存庫中的容器，取出儲存體帳戶和檔案共用。
-2. 若要開始備份作業，您需使用 [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem) 來取得 VM 的相關資訊。
+1. 使用[AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-Azrecoveryservicesbackupcontainer)在保存備份資料的保存庫中，從容器中取出儲存體帳戶。
+2. 若要開始備份作業，您可以使用[backup-azrecoveryservicesbackupitem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem)取得 Azure 檔案共用的相關資訊。
 3. 使用 [Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/backup-Azrecoveryservicesbackupitem) 來執行隨選備份。
 
 執行隨選備份，如下所示：
 
 ```powershell
 $afsContainer = Get-AzRecoveryServicesBackupContainer -FriendlyName "testStorageAcct" -ContainerType AzureStorage
-$afsBkpItem = Get-AzRecoveryServicesBackupItem -Container $afsContainer -WorkloadType "AzureFiles" -Name "testAzureFS"
+$afsBkpItem = Get-AzRecoveryServicesBackupItem -Container $afsContainer -WorkloadType "AzureFiles" -FriendlyName "testAzureFS"
 $job =  Backup-AzRecoveryServicesBackupItem -Item $afsBkpItem
 ```
 
@@ -272,6 +292,9 @@ Azure 檔案共用快照用於進行備份時，因此通常在命令傳回此�
 隨選備份可以用來保留您的快照10年。 排程器可用來以選擇的保留來執行隨選 PowerShell 腳本，因此每週、每月或每年都會定期拍攝快照集。 取得一般快照集時，請參閱使用 Azure 備份進行[隨選備份的限制](https://docs.microsoft.com/azure/backup/backup-azure-files-faq#how-many-on-demand-backups-can-i-take-per-file-share)。
 
 如果您要尋找範例腳本，您可以使用 Azure 自動化 runbook 參閱 GitHub （<https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup>）上的範例腳本，讓您定期排程備份並保留最多10年。
+
+> [!WARNING]
+> 請確定在您的自動化 runbook 中，PS 版本已升級為 Azurerm.recoveryservices 2.6.0 的最小版本，以進行 AFS 備份。 您必須將舊的 ' AzureRM ' 模組取代為 ' Az ' 模組。 使用此版本時，[friendlyName] 篩選準則適用于 ```Get-AzRecoveryServicesBackupItem``` 命令。 將 azure 檔案共用名稱傳遞給 friendlyName 參數。 如果您將 azure 檔案共用名稱傳遞給 ' Name ' 參數，此版本會擲回警告，將此易記名稱傳遞給易記名稱參數。
 
 ## <a name="next-steps"></a>後續步驟
 

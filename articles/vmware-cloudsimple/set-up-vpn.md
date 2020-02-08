@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fbd2b227c9292593a7652044ef4c013bf0cfaf8e
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 8188fac270eadb6e09cc3561ddefb05aa59ba661
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77016998"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087136"
 ---
 # <a name="configure-a-vpn-connection-to-your-avs-private-cloud"></a>設定與您的 AVS 私人雲端的 VPN 連線
 
@@ -97,7 +97,7 @@ VPN 閘道可讓您從內部部署網路和從遠端用戶端電腦連線到 AVS
 
     ![編輯 VPN 連線](media/viscosity-edit-connection.png)
 
-7. 按一下 [**網路**] 索引標籤，然後輸入以逗號或空格分隔的 AVS 私人雲端 DNS 伺服器 IP 位址，以及網域做為 ```AVS.io```。 選取 [**略過 VPN 伺服器傳送的 DNS 設定**]。
+7. 按一下 [**網路**] 索引標籤，然後輸入以逗號或空格分隔的 AVS 私人雲端 DNS 伺服器 IP 位址，以及網域做為 ```az.cloudsimple.io```。 選取 [**略過 VPN 伺服器傳送的 DNS 設定**]。
 
     ![VPN 網路功能](media/viscosity-edit-connection-networking.png)
 
@@ -117,4 +117,4 @@ VPN 閘道可讓您從內部部署網路和從遠端用戶端電腦連線到 AVS
 
 > [!IMPORTANT]
 >    1. 在 VPN 裝置上，將 TCP MSS 固定設定為1200。 或者，如果您的 VPN 裝置不支援 MSS 固定，您也可以改為將通道介面上的 MTU 設定為1240個位元組。
-> 2. 設定站對站 VPN 之後，轉送 * 的 DNS 要求。AVS.io 至 AVS 私人雲端 DNS 伺服器。 依照內部[部署 DNS 設定](on-premises-dns-setup.md)中的指示進行。
+> 2. 設定站對站 VPN 之後，請將 *. cloudsimple.io 的 DNS 要求轉送到 AVS 私人雲端 DNS 伺服器。 依照內部[部署 DNS 設定](on-premises-dns-setup.md)中的指示進行。

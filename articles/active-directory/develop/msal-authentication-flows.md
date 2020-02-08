@@ -3,28 +3,28 @@ title: MSAL 驗證流程 |Azure
 titleSuffix: Microsoft identity platform
 description: 深入瞭解 Microsoft 驗證程式庫（MSAL）所使用的驗證流程和授權。
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/30/2020
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: bc906e1026dcc051ef152ff9fba94525ac700761
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: ace636152f6a0c9bf3896860eb17cc291bef2887
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76962081"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085123"
 ---
 # <a name="authentication-flows"></a>驗證流程
 
 本文說明 Microsoft Authentication Library （MSAL）所提供的不同驗證流程。  這些流程可以在各種不同的應用程式案例中使用。
 
-| 流程 | 說明 | 使用於|  
+| Flow | 描述 | 使用於|  
 | ---- | ----------- | ------- | 
 | [互動式](#interactive) | 透過互動式進程取得權杖，此程式會透過瀏覽器或快顯視窗提示使用者提供認證。 | [桌面應用程式](scenario-desktop-overview.md)、行動[應用程式](scenario-mobile-overview.md) |
 | [隱含授與](#implicit-grant) | 允許應用程式取得權杖，而不需要執行後端伺服器認證交換。 這可讓應用程式在用戶端 JavaScript 程式碼內，登入使用者、維護會話，以及取得其他 web Api 的權杖。| [單一頁面應用程式（SPA）](scenario-spa-overview.md) |
@@ -39,7 +39,7 @@ ms.locfileid: "76962081"
  
 視用戶端的建立方式而定，它可以使用 Microsoft 身分識別平臺所支援的一或多個驗證流程。  這些流程可能會產生各種權杖（id_tokens、重新整理權杖、存取權杖）以及授權碼，而且需要不同的權杖才能使其運作。 此圖表提供總覽：
  
-|流程 | 具備 | id_token | 存取權杖 | 重新整理權杖 | 授權碼 | 
+|Flow | 具備 | id_token | 存取權杖 | 重新整理權杖 | 授權碼 | 
 |-----|----------|----------|--------------|---------------|--------------------|
 |[授權碼流程](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
 |[隱含流程](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
@@ -151,7 +151,7 @@ MSAL 支援[OAuth 2 裝置程式碼流程](v2-oauth2-device-code.md)，可讓使
 
 在上圖中：
 
-1. 每當需要使用者驗證時，應用程式就會提供代碼，並要求使用者使用另一部裝置（例如連線到網際網路的 smartphone）來移至 URL （例如 https://microsoft.com/devicelogin) 。 接著，系統會提示使用者輸入程式碼，並繼續進行一般驗證體驗，包括同意提示和多重要素驗證（如有需要）。
+1. 每當需要使用者驗證時，應用程式就會提供代碼，並要求使用者使用另一部裝置（例如連線到網際網路的 smartphone）來移至 URL （例如 https://microsoft.com/devicelogin)。 接著，系統會提示使用者輸入程式碼，並繼續進行一般驗證體驗，包括同意提示和多重要素驗證（如有需要）。
 
 2. 成功驗證之後，命令列應用程式會透過後端通道接收所需的權杖，並使用它們來執行所需的 Web API 呼叫。
 

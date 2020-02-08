@@ -2,22 +2,22 @@
 title: 授權代理程式和如何啟用它們 |Azure
 description: 瞭解不同的授權代理程式 Microsoft 驗證程式庫（MSAL）可讓您的 Android app 使用，以及如何加以啟用。
 services: active-directory
-author: tylermsft
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 09/05/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: shoatman, brianmel, hahamil
 ms.custom: aaddev
-ms.openlocfilehash: c2d0c8a877ba856aa7a93bfc960c44b63cbe8f9c
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 4f1b3fc5b60069cfa47d437e4341ded141204418
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697994"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085325"
 ---
 # <a name="authorization-agents-android"></a>授權代理程式 (Android)
 

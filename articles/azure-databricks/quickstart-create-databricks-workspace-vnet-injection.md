@@ -8,18 +8,18 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 12/04/2019
-ms.openlocfilehash: 8d118170de01c7685ac9dba65c7e22cefb6d4829
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 046b2da7cdb966192e485ff9f5510eb63c9e0008
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263118"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086558"
 ---
 # <a name="quickstart-create-an-azure-databricks-workspace-in-your-own-virtual-network"></a>快速入門：在您自己的虛擬網路中建立 Azure Databricks 工作區
 
 Azure Databricks 的預設部署會建立由 Databricks 管理的新虛擬網路。 本快速入門說明如何改為在您自己的虛擬網路中建立 Azure Databricks 工作區。 您也會在該工作區中建立 Apache Spark 叢集。 
 
-如需有關為何可以選擇在自己的虛擬網路中建立 Azure Databricks 工作區的詳細資訊，請參閱 [在 Azure 虛擬網路（VNet 插入）中部署 Azure Databricks] （/databricks/administration-guide/cloud-configurations/azure/vnet-inject）。
+如需有關為何可以選擇在自己的虛擬網路中建立 Azure Databricks 工作區的詳細資訊，請參閱[在 Azure 虛擬網路（VNet 插入）中部署 Azure Databricks](https://docs.microsoft.com/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject)。
 
 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://azure.microsoft.com/free/databricks/)。
 
@@ -39,18 +39,18 @@ Azure Databricks 的預設部署會建立由 Databricks 管理的新虛擬網路
 
 2. 在 [**建立虛擬網路**] 下，套用下列設定： 
 
-    |設定|建議的值|說明|
+    |設定|建議的值|描述|
     |-------|---------------|-----------|
-    |訂閱|\<您的訂用帳戶\>|選取您要使用的 Azure 訂用帳戶。|
+    |訂用帳戶|\<您的訂用帳戶\>|選取您要使用的 Azure 訂用帳戶。|
     |資源群組|databricks-快速入門|選取 **[新建]** ，然後為您的帳戶輸入新的資源組名。|
     |名稱|databricks-快速入門|選取虛擬網路的 [名稱]。|
-    |地區|\<選取最接近使用者的區域\>|選取您可以裝載虛擬網路的地理位置。 使用最靠近您的使用者的位置。|
+    |區域|\<選取最接近使用者的區域\>|選取您可以裝載虛擬網路的地理位置。 使用最靠近您的使用者的位置。|
 
     ![Azure 入口網站上的虛擬網路基本概念](./media/quickstart-create-databricks-workspace-vnet-injection/create-virtual-network.png)
 
 3. 選取 **[下一步]： [IP 位址] >** 並套用下列設定。 然後選取 [**審查 + 建立**]。
     
-    |設定|建議的值|說明|
+    |設定|建議的值|描述|
     |-------|---------------|-----------|
     |IPv4 位址空間|10.2.0.0/16|CIDR 標記法中的虛擬網路位址範圍。 CIDR 範圍必須介於/16 和/24 之間|
     |子網路名稱|預設|選取虛擬網路中預設子網的 [名稱]。|
@@ -70,19 +70,19 @@ Azure Databricks 的預設部署會建立由 Databricks 管理的新虛擬網路
 
 2. 在 [ **Azure Databricks 服務**] 底下，套用下列設定：
 
-    |設定|建議的值|說明|
+    |設定|建議的值|描述|
     |-------|---------------|-----------|
     |工作區名稱|databricks-快速入門|選取您 Azure Databricks 工作區的 [名稱]。|
-    |訂閱|\<您的訂用帳戶\>|選取您要使用的 Azure 訂用帳戶。|
+    |訂用帳戶|\<您的訂用帳戶\>|選取您要使用的 Azure 訂用帳戶。|
     |資源群組|databricks-快速入門|選取您用於虛擬網路的相同資源群組。|
-    |位置|\<選取最接近使用者的區域\>|選擇與您的虛擬網路相同的位置。|
-    |價格層次|選擇 [Standard] 或 [Premium]。|如需定價層的詳細資訊，請參閱[Databricks 定價頁面](https://azure.microsoft.com/pricing/details/databricks/)。|
+    |Location|\<選取最接近使用者的區域\>|選擇與您的虛擬網路相同的位置。|
+    |定價層|選擇 [Standard] 或 [Premium]。|如需定價層的詳細資訊，請參閱[Databricks 定價頁面](https://azure.microsoft.com/pricing/details/databricks/)。|
 
     ![建立 Azure Databricks 的工作區基本概念](./media/quickstart-create-databricks-workspace-vnet-injection/create-databricks-workspace.png)
 
 3. 完成 [**基本**] 頁面上的輸入設定後，請選取 **[下一步：網路] >** 並套用下列設定：
 
-    |設定|建議的值|說明|
+    |設定|建議的值|描述|
     |-------|---------------|-----------|
     |在您的虛擬網路（VNet）中部署 Azure Databricks 工作區|是|此設定可讓您在虛擬網路中部署 Azure Databricks 工作區。|
     |虛擬網路|databricks-快速入門|選取您在上一節中建立的虛擬網路。|
@@ -124,7 +124,7 @@ Azure Databricks 的預設部署會建立由 Databricks 管理的新虛擬網路
 
 在完成本文後，您可以終止叢集。 若要這樣做，請從 Azure Databricks 工作區的左窗格中選取 [叢集]。 對於您想要終止的叢集，將游標移到 [動作] 資料行底下的省略符號上，然後選取 [終止] 圖示。 這會停止叢集。
 
-如果您不手動終止叢集，叢集將會自動停止，但前提是您已在建立叢集時選取 [在停止活動 \_\_ 分鐘後終止] 核取方塊。 在這種情況下，叢集將會在停止運作達指定時間後自動停止。
+如果您不手動終止叢集，叢集將會自動停止，但前提是您已在建立叢集時選取 [在停止活動 **\_ 分鐘後終止]\_** 核取方塊。 在這種情況下，叢集將會在停止運作達指定時間後自動停止。
 
 如果您不想要重複使用叢集，可以刪除您在 Azure 入口網站中建立的資源群組。
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: 9d47986df9b9cbc6b8519aa0466b3434d6216e72
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: f2f2e02cdb5698d7569e5be177d54ca4dcb0ae02
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76985997"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086530"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>關於應用程式閘道的常見問題
 
@@ -90,13 +90,13 @@ Azure 應用程式閘道會以服務形式提供應用程式傳遞控制器（AD
 
 ### <a name="can-i-deploy-more-than-one-application-gateway-resource-to-a-single-subnet"></a>可以將多個應用程式閘道資源部署到單一子網路嗎？
 
-可以。 除了給定應用程式閘道部署的多個實例以外，您還可以將另一個唯一的應用程式閘道資源布建到包含不同應用程式閘道資源的現有子網。
+是。 除了給定應用程式閘道部署的多個實例以外，您還可以將另一個唯一的應用程式閘道資源布建到包含不同應用程式閘道資源的現有子網。
 
 單一子網不能同時支援 Standard_v2 和標準應用程式閘道。
 
 ### <a name="does-application-gateway-support-x-forwarded-for-headers"></a>應用程式閘道是否支援 x-forwarded-for 標頭？
 
-可以。 請參閱對[要求的修改](https://docs.microsoft.com/azure/application-gateway/how-application-gateway-works#modifications-to-the-request)。
+是。 請參閱對[要求的修改](https://docs.microsoft.com/azure/application-gateway/how-application-gateway-works#modifications-to-the-request)。
 
 ### <a name="how-long-does-it-take-to-deploy-an-application-gateway-will-my-application-gateway-work-while-its-being-updated"></a>部署應用程式閘道需要多久的時間？ 我的應用程式閘道會在更新時工作嗎？
 
@@ -106,7 +106,7 @@ Azure 應用程式閘道會以服務形式提供應用程式傳遞控制器（AD
 
 ### <a name="can-i-use-exchange-server-as-a-backend-with-application-gateway"></a>我可以使用 Exchange Server 做為應用程式閘道的後端嗎？
 
-不會。 應用程式閘道不支援電子郵件通訊協定，例如 SMTP、IMAP 和 POP3。 
+否。 應用程式閘道不支援電子郵件通訊協定，例如 SMTP、IMAP 和 POP3。 
 
 ## <a name="performance"></a>效能
 
@@ -126,21 +126,21 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 
 ### <a name="does-manual-or-automatic-scale-up-or-scale-down-cause-downtime"></a>手動或自動相應增加或相應減少會造成停機時間嗎？
 
-不會。 執行個體已分散於升級網域和容錯網域。
+否。 執行個體已分散於升級網域和容錯網域。
 
 ### <a name="does-application-gateway-support-connection-draining"></a>應用程式閘道是否支援連線清空？
 
-可以。 您可以設定連線清空來變更後端集區中的成員，而不會中斷。 如需詳細資訊，請參閱[應用程式閘道的連接清空一節](overview.md#connection-draining)。
+是。 您可以設定連線清空來變更後端集區中的成員，而不會中斷。 如需詳細資訊，請參閱[應用程式閘道的連接清空一節](overview.md#connection-draining)。
 
 ### <a name="can-i-change-instance-size-from-medium-to-large-without-disruption"></a>是否可在中斷的情況下，將執行個體大小從中型變成大型？
 
-可以。 Azure 會將實例分散到更新和容錯網域，以確保實例不會同時失敗。 應用程式閘道支援調整的方式為藉由新增相同閘道的多個執行個體來分攤負載。
+是。
 
 ## <a name="configuration"></a>組態
 
 ### <a name="is-application-gateway-always-deployed-in-a-virtual-network"></a>應用程式閘道一律部署在虛擬網路中？
 
-可以。 應用程式閘道一律會部署在虛擬網路子網中。 這個子網只能包含應用程式閘道。 如需詳細資訊，請參閱[虛擬網路和子網需求](https://docs.microsoft.com/azure/application-gateway/configuration-overview#azure-virtual-network-and-dedicated-subnet)。
+是。 應用程式閘道一律會部署在虛擬網路子網中。 這個子網只能包含應用程式閘道。 如需詳細資訊，請參閱[虛擬網路和子網需求](https://docs.microsoft.com/azure/application-gateway/configuration-overview#azure-virtual-network-and-dedicated-subnet)。
 
 ### <a name="can-application-gateway-communicate-with-instances-outside-of-its-virtual-network-or-outside-of-its-subscription"></a>應用程式閘道可以與其虛擬網路以外或其訂用帳戶以外的實例進行通訊嗎？
 
@@ -148,7 +148,7 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 
 ### <a name="can-i-deploy-anything-else-in-the-application-gateway-subnet"></a>是否可以在應用程式閘道子網路中部署其他任何項目？
 
-不會。 但是，您可以在子網中部署其他應用程式閘道。
+否。 但是，您可以在子網中部署其他應用程式閘道。
 
 ### <a name="are-network-security-groups-supported-on-the-application-gateway-subnet"></a>應用程式閘道子網是否支援網路安全性群組？
 
@@ -164,11 +164,11 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 
 ### <a name="can-i-simultaneously-use-application-gateway-for-both-external-and-internal-traffic"></a>我可以同時針對外部和內部流量使用應用程式閘道嗎？
 
-可以。 應用程式閘道支援每個應用程式閘道一個內部 IP 和一個外部 IP。
+是。 應用程式閘道支援每個應用程式閘道一個內部 IP 和一個外部 IP。
 
 ### <a name="does-application-gateway-support-virtual-network-peering"></a>應用程式閘道是否支援虛擬網路對等互連？
 
-可以。 虛擬網路對等互連可協助對其他虛擬網路中的流量進行負載平衡。
+是。 虛擬網路對等互連可協助對其他虛擬網路中的流量進行負載平衡。
 
 ### <a name="can-i-talk-to-on-premises-servers-when-theyre-connected-by-expressroute-or-vpn-tunnels"></a>當內部部署伺服器是透過 ExpressRoute 或 VPN 通道進行連線時，我可以與它們溝通嗎？
 
@@ -180,7 +180,7 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 
 ### <a name="do-custom-probes-support-wildcards-or-regex-on-response-data"></a>自訂探查在回應資料上是否支援萬用字元或 RegEx？
 
-不會。 
+否。 
 
 ### <a name="how-are-routing-rules-processed-in-application-gateway"></a>應用程式閘道中的路由規則如何處理？
 
@@ -192,15 +192,15 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 
 ### <a name="can-i-allow-application-gateway-access-to-only-a-few-source-ip-addresses"></a>我可以只允許應用程式閘道存取一些來源 IP 位址嗎？
 
-可以。 請參閱[限制對特定來源 ip 的存取](https://docs.microsoft.com/azure/application-gateway/configuration-overview#allow-application-gateway-access-to-a-few-source-ips)。
+是。 請參閱[限制對特定來源 ip 的存取](https://docs.microsoft.com/azure/application-gateway/configuration-overview#allow-application-gateway-access-to-a-few-source-ips)。
 
 ### <a name="can-i-use-the-same-port-for-both-public-facing-and-private-facing-listeners"></a>公用和私用的接聽程式是否可以使用相同的埠？
 
-不會。
+否。
 
 ### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>是否有可從 v1 SKU 遷移至 v2 SKU 的指導方針？
 
-可以。 如需詳細資訊，請參閱[將 Azure 應用程式閘道和 Web 應用程式防火牆從 V1 遷移至 v2](migrate-v1-v2.md)。
+是。 如需詳細資訊，請參閱[將 Azure 應用程式閘道和 Web 應用程式防火牆從 V1 遷移至 v2](migrate-v1-v2.md)。
 
 ### <a name="does-application-gateway-support-ipv6"></a>應用程式閘道是否支援 IPv6？
 
@@ -249,15 +249,15 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 
 ### <a name="does-application-gateway-support-reencryption-of-traffic-to-the-backend"></a>應用程式閘道是否支援將流量重新加密至後端？
 
-可以。 應用程式閘道支援 SSL 卸載和端對端 SSL，這會 vm 對後端的流量。
+是。 應用程式閘道支援 SSL 卸載和端對端 SSL，這會 vm 對後端的流量。
 
 ### <a name="can-i-configure-ssl-policy-to-control-ssl-protocol-versions"></a>我可以設定 SSL 原則來控制 SSL 通訊協定版本嗎？
 
-可以。 您可以設定應用程式閘道拒絕 TLS 1.0、TLS 1.1 和 TLS 1.2。 根據預設，SSL 2.0 和3.0 已停用且無法設定。
+是。 您可以設定應用程式閘道拒絕 TLS 1.0、TLS 1.1 和 TLS 1.2。 根據預設，SSL 2.0 和3.0 已停用且無法設定。
 
 ### <a name="can-i-configure-cipher-suites-and-policy-order"></a>可以設定加密套件和原則的順序嗎？
 
-可以。 在應用程式閘道中，您可以[設定加密套件](application-gateway-ssl-policy-overview.md)。 若要定義自訂原則，請啟用至少一個下列的加密套件。 
+是。 在應用程式閘道中，您可以[設定加密套件](application-gateway-ssl-policy-overview.md)。 若要定義自訂原則，請啟用至少一個下列的加密套件。 
 
 * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 
 * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
@@ -292,7 +292,7 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 
 ### <a name="does-the-waf-sku-offer-all-the-features-available-in-the-standard-sku"></a>WAF SKU 是否提供標準 SKU 中所有可用的功能？
 
-可以。 WAF 支援標準 SKU 中的所有功能。
+是。 WAF 支援標準 SKU 中的所有功能。
 
 ### <a name="how-do-i-monitor-waf"></a>如何監視 WAF？
 
@@ -300,11 +300,11 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 
 ### <a name="does-detection-mode-block-traffic"></a>偵測模式是否會封鎖流量？
 
-不會。 偵測模式只會記錄觸發 WAF 規則的流量。
+否。 偵測模式只會記錄觸發 WAF 規則的流量。
 
 ### <a name="can-i-customize-waf-rules"></a>我可以自訂 WAF 規則嗎？
 
-可以。 如需詳細資訊，請參閱[自訂 WAF 規則群組和規則](application-gateway-customize-waf-rules-portal.md)。
+是。 如需詳細資訊，請參閱[自訂 WAF 規則群組和規則](application-gateway-customize-waf-rules-portal.md)。
 
 ### <a name="what-rules-are-currently-available-for-waf"></a>哪些規則目前可供 WAF？
 
@@ -322,11 +322,11 @@ WAF 目前支援 CRS [2.2.9](../web-application-firewall/ag/application-gateway-
 
 ### <a name="does-waf-support-ddos-protection"></a>WAF 是否支援 DDoS 保護？
 
-可以。 您可以在部署應用程式閘道的虛擬網路上，啟用 DDos 保護。 此設定確保 Azure DDoS 保護服務也會保護應用程式閘道虛擬 IP (VIP)。
+是。 您可以在部署應用程式閘道的虛擬網路上啟用 DDoS 保護。 此設定可確保 Azure DDoS 保護服務也會保護應用程式閘道虛擬 IP （VIP）。
 
 ### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>是否有可從 v1 SKU 遷移至 v2 SKU 的指導方針？
 
-可以。 如需詳細資訊，請參閱[將 Azure 應用程式閘道和 Web 應用程式防火牆從 V1 遷移至 v2](migrate-v1-v2.md)。
+是。 如需詳細資訊，請參閱[將 Azure 應用程式閘道和 Web 應用程式防火牆從 V1 遷移至 v2](migrate-v1-v2.md)。
 
 ## <a name="configuration---ingress-controller-for-aks"></a>設定-AKS 的輸入控制器
 
@@ -367,7 +367,7 @@ Kubernetes 可讓您建立 `deployment` 和 `service` 資源，以在叢集內�
 
 ### <a name="can-i-set-alerts-with-application-gateway"></a>是否可以設定應用程式閘道的警示？
 
-可以。 在應用程式閘道中，系統會在計量上設定警示。 如需詳細資訊，請參閱[應用程式閘道計量](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics)和[接收警示通知](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)。
+是。 在應用程式閘道中，系統會在計量上設定警示。 如需詳細資訊，請參閱[應用程式閘道計量](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics)和[接收警示通知](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)。
 
 ### <a name="how-do-i-analyze-traffic-statistics-for-application-gateway"></a>如何分析應用程式閘道的流量統計資料？
 
@@ -381,7 +381,7 @@ Kubernetes 可讓您建立 `deployment` 和 `service` 資源，以在叢集內�
 
 ### <a name="is-there-any-case-where-nsg-flow-logs-wont-show-allowed-traffic"></a>在任何情況下，NSG 流量記錄不會顯示允許的流量？
 
-可以。 如果您的設定符合下列案例，您將不會在 NSG 流量記錄中看到允許的流量：
+是。 如果您的設定符合下列案例，您將不會在 NSG 流量記錄中看到允許的流量：
 - 您已部署應用程式閘道 v2
 - 您在應用程式閘道子網上有 NSG
 - 您已在該 NSG 上啟用 NSG 流量記錄

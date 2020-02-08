@@ -10,15 +10,15 @@ ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 07/16/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 599b8a3fdbad5747b0b303c71aeef084d04db6df
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 7706a7f06cedde783e53a24ff385fa2376edcb93
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76694915"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083541"
 ---
 # <a name="xamarin-ios-specific-considerations-with-msalnet"></a>MSAL.NET 的 Xamarin iOS 特定考慮
 在 Xamarin iOS 上，當您使用 MSAL.NET 時，必須考慮幾個事項
@@ -103,7 +103,7 @@ var builder = PublicClientApplicationBuilder
 
 如需更多詳細資料，請在下列範例 readme.md 檔案的[IOS 特定考慮](https://github.com/azure-samples/active-directory-xamarin-native-v2#ios-specific-considerations)段落中提供：
 
-範例 | 平台 | 說明
+範例 | 平台 | 描述
 ------ | -------- | -----------
 [https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS、Android、UWP | 簡單的 Xamarin Forms 應用程式展示如何使用 MSAL 透過 Azure AD v2.0 端點來驗證 MSA 和 Azure AD，並使用產生的權杖來存取 Microsoft Graph。
 

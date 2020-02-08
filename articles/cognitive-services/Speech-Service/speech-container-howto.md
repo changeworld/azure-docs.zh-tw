@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: dapine
-ms.openlocfilehash: d5ecc104c7845a1881cbcdecfbccb75148f6e070
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: ca7e7f7460db82a357ed8aa240467a6894254217
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "74815368"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087003"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>安裝和執行語音服務容器（預覽）
 
@@ -26,7 +26,7 @@ ms.locfileid: "74815368"
 > [!IMPORTANT]
 > 所有語音容器目前都是[公開「閘道」預覽](../cognitive-services-container-support.md#public-gated-preview-container-registry-containerpreviewazurecrio)的一部分。 當語音容器進行公開上市（GA）時，將會發出公告。
 
-| 函式 | 功能 | 最新 |
+| 函式 | 特性 | 最新 |
 |--|--|--|
 | 語音轉文字 | 使用中繼結果，將連續即時語音或批次音訊錄音可將成文字。 | 2.0.0 |
 | 自訂語音轉換文字 | 使用自[定義語音入口網站](https://speech.microsoft.com/customspeech)中的自訂模型，將連續即時語音或批次錄音可將為具有中繼結果的文字。 | 2.0.0 |
@@ -35,11 +35,11 @@ ms.locfileid: "74815368"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 使用語音容器之前的必要條件如下：
 
-| 必要項 | 目的 |
+| 必要 | 目的 |
 |--|--|
 | Docker 引擎 | 您必須在[主機電腦](#the-host-computer)上安裝 Docker 引擎。 Docker 提供可在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上設定 Docker 環境的套件。 如需 Docker 和容器基本概念的入門，請參閱 [Docker 概觀](https://docs.docker.com/engine/docker-overview/) \(英文\)。<br><br> Docker 必須設定為允許容器與 Azure 連線，以及傳送帳單資料至 Azure。 <br><br> **在 Windows 上**，也必須將 Docker 設定為支援 Linux 容器。<br><br> |
 | 熟悉 Docker | 您應具備對 Docker 概念 (例如登錄、存放庫、容器和容器映像等) 的基本了解，以及基本 `docker` 命令的知識。 |
@@ -233,7 +233,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-text
 
 容器位於[主機電腦](#the-host-computer)上時，請透過下列程序來使用容器。
 
-1. 使用所需的計費設定[執行容器](#run-the-container-with-docker-run)。 `docker run` 命令有相關[範例](speech-container-configuration.md#example-docker-run-commands)可供參考。
+1. 使用所需的計費設定[執行容器](#run-the-container-with-docker-run)。 [ 命令有相關](speech-container-configuration.md#example-docker-run-commands)範例`docker run`可供參考。
 1. [查詢容器的預測端點](#query-the-containers-prediction-endpoint)。
 
 ## <a name="run-the-container-with-docker-run"></a>透過 `docker run` 執行容器
@@ -273,7 +273,7 @@ ApiKey={API_KEY}
 
 下表代表各種 `docker run` 參數及其對應的描述：
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 |---------|---------|
 | `{VOLUME_MOUNT}` | Docker 用來保存自訂模型的主機電腦[磁片區掛接](https://docs.docker.com/storage/volumes/)。 例如， *C:\CustomSpeech* ，其中*C 磁片磁碟機*位於主機電腦上。 |
 | `{MODEL_ID}` | 自訂語音入口網站的 [**訓練**] 頁面中的自訂語音**模型識別碼**。 |
@@ -335,7 +335,7 @@ ApiKey={API_KEY}
 
 下表代表各種 `docker run` 參數及其對應的描述：
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 |---------|---------|
 | `{VOLUME_MOUNT}` | Docker 用來保存自訂模型的主機電腦[磁片區掛接](https://docs.docker.com/storage/volumes/)。 例如， *C:\CustomSpeech* ，其中*C 磁片磁碟機*位於主機電腦上。 |
 | `{MODEL_ID}` | 自訂語音入口網站的 [**訓練**] 頁面中的自訂語音**模型識別碼**。 |
@@ -425,7 +425,7 @@ ApiKey={API_KEY}
   * *自訂文字轉換語音*
 * 容器映射是從 Azure 中的 container registry 下載。
 * 容器映像是在 Docker 中執行。
-* 您可以藉由指定容器的主機 URI，使用 REST API 或 SDK 來呼叫語音容器中的作業。
+* 不論是使用 REST API （僅限文字轉換語音）或是 SDK （語音轉換文字或文字轉換語音），您都要指定容器的主機 URI。 
 * 當具現化容器時，您必須提供帳單資訊。
 
 > [!IMPORTANT]

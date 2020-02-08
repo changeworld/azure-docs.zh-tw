@@ -9,12 +9,12 @@ ms.date: 12/13/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 2f52d72a1f2e3c3d1f3495c4b7f6f633db30778e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3360b92a1b71adcbf0364a16c197aecdab5700db
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437294"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086597"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>教學課程：回應 IoT Edge 上的 Blob 儲存體事件（預覽）
 本文說明如何在 IoT 模組上部署 Azure Blob 儲存體，其可做為事件方格發行者，以便在建立 Blob 時傳送事件以及將 Blob 刪除到事件方格。  
@@ -62,9 +62,8 @@ ms.locfileid: "75437294"
     ```json
         {
           "Env": [
-           "inbound:serverAuth:tlsPolicy=enabled",
-           "inbound:clientAuth:clientCert:enabled=false",
-           "outbound:webhook:httpsOnly=false"
+           "inbound__serverAuth__tlsPolicy=enabled",
+           "inbound__clientAuth__clientCert__enabled=false"
           ],
           "HostConfig": {
             "PortBindings": {
@@ -79,18 +78,15 @@ ms.locfileid: "75437294"
     ```    
 
  1. 按一下 [儲存]
- 1. 繼續進行下一節以新增 Azure Functions 模組
+ 1. 繼續進行下一節，以新增 Azure Event Grid 訂閱者模組，然後再將它們部署在一起。
 
     >[!IMPORTANT]
-    > 在本教學課程中，您將瞭解如何部署事件方格模組，以允許 HTTP/HTTPs 要求、用戶端驗證已停用，以及允許 HTTP 訂閱者。 對於生產工作負載，建議您只啟用已啟用用戶端驗證的 HTTPs 要求和訂閱者。 如需有關如何安全地設定 Event Grid 模組的詳細資訊，請參閱[安全性和驗證](security-authentication.md)。
+    > 在本教學課程中，您將瞭解如何部署事件方格模組，以允許 HTTP/HTTPs 要求、用戶端驗證已停用。 對於生產工作負載，建議您只啟用已啟用用戶端驗證的 HTTPs 要求和訂閱者。 如需有關如何安全地設定 Event Grid 模組的詳細資訊，請參閱[安全性和驗證](security-authentication.md)。
     
 
-## <a name="deploy-azure-function-iot-edge-module"></a>部署 Azure Function IoT Edge 模組
+## <a name="deploy-event-grid-subscriber-iot-edge-module"></a>IoT Edge 模組部署事件方格訂閱者
 
-本節說明如何部署 Azure Functions IoT 模組，其可做為事件方格訂閱者，以便傳遞事件。
-
->[!IMPORTANT]
->在本節中，您將部署範例 Azure 函數型訂閱模組。 當然，它可以是任何可接聽 HTTP POST 要求的自訂 IoT 模組。
+本節說明如何部署另一個 IoT 模組，做為可傳遞事件的事件處理常式。
 
 ### <a name="add-modules"></a>新增模組
 
@@ -99,23 +95,8 @@ ms.locfileid: "75437294"
 1. 提供容器的 [名稱]、[映射] 和 [容器] 建立選項：
 
    * **名稱**：訂閱者
-   * **映射 URI**： `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber-azfunc:latest`
-   * **容器建立選項**：
-
-       ```json
-            {
-              "HostConfig": {
-                "PortBindings": {
-                  "80/tcp": [
-                    {
-                      "HostPort": "8080"
-                    }
-                  ]
-                }
-              }
-            }
-       ```
-
+   * **映射 URI**： `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
+   * **容器建立選項**：無
 1. 按一下 [儲存]
 1. 繼續進行下一節以新增 Azure Blob 儲存體模組
 
@@ -133,7 +114,7 @@ ms.locfileid: "75437294"
    * **映射 URI**： mcr.microsoft.com/azure-blob-storage:latest
    * **容器建立選項**：
 
-```json
+   ```json
        {
          "Env":[
            "LOCAL_STORAGE_ACCOUNT_NAME=<your storage account name>",
@@ -149,13 +130,12 @@ ms.locfileid: "75437294"
            }
          }
        }
-```
-> [!IMPORTANT]
-> - Blob 儲存體模組可以同時使用 HTTPS 和 HTTP 來發行事件。 
-> - 如果您已啟用 EventGrid 的用戶端驗證，請務必將 EVENTGRID_ENDPOINT 的值更新為允許 HTTPs，如下所示： `EVENTGRID_ENDPOINT=https://<event grid module name>:4438` 
-> - 並將另一個環境變數 `AllowUnknownCertificateAuthority=true` 新增至上述 Json。 透過 HTTPS 與 EventGrid 交談時， **AllowUnknownCertificateAuthority**可讓存放裝置模組信任自我簽署的 EventGrid 伺服器憑證。
+   ```
 
-
+   > [!IMPORTANT]
+   > - Blob 儲存體模組可以同時使用 HTTPS 和 HTTP 來發行事件。 
+   > - 如果您已啟用 EventGrid 的用戶端驗證，請務必將 EVENTGRID_ENDPOINT 的值更新為 [允許 HTTPs]，如下所示： `EVENTGRID_ENDPOINT=https://<event grid module name>:4438`。
+   > - 此外，請將另一個環境變數 `AllowUnknownCertificateAuthority=true` 新增至上述 Json。 透過 HTTPS 與 EventGrid 交談時， **AllowUnknownCertificateAuthority**可讓存放裝置模組信任自我簽署的 EventGrid 伺服器憑證。
 
 4. 使用下列資訊來更新您複製的 JSON：
 
@@ -221,42 +201,41 @@ ms.locfileid: "75437294"
 2. 訂閱者可以註冊發佈至主題的事件。 若要接收任何事件，您必須建立**MicrosoftStorage**主題的 event Grid 訂用帳戶。
     1. 使用下列內容建立 blobsubscription。 如需裝載的詳細資訊，請參閱我們的[API 檔](api.md)
 
-    ```json
+       ```json
         {
           "properties": {
             "destination": {
               "endpointType": "WebHook",
               "properties": {
-                "endpointUrl": "http://subscriber:80/api/subscriber"
+                "endpointUrl": "https://subscriber:4430"
               }
             }
           }
         }
-    ```
+       ```
 
-    >[!NOTE]
-    > **EndpointType**屬性會指定訂閱者為**Webhook**。  **EndpointUrl**會指定訂閱者接聽事件的 URL。 此 URL 會對應至您稍早部署的 Azure 函式範例。
+       >[!NOTE]
+       > **EndpointType**屬性會指定訂閱者為**Webhook**。  **EndpointUrl**會指定訂閱者接聽事件的 URL。 此 URL 會對應至您稍早部署的 Azure 函式範例。
 
     2. 執行下列命令來建立主題的訂用帳戶。 確認您看到 [HTTP 狀態碼] 為 [`200 OK`]。
 
-    ```sh
-    curl -k -H "Content-Type: application/json" -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview
-    ```
+       ```sh
+       curl -k -H "Content-Type: application/json" -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview
+       ```
 
-    > [!IMPORTANT]
-    > - 針對 HTTPS 流程，如果透過 SAS 金鑰啟用用戶端驗證，則先前指定的 SAS 金鑰應新增為標頭。 因此，捲曲的要求將會是： `curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview` 
-    > - 針對 HTTPS 流程，如果透過憑證啟用用戶端驗證，則捲曲要求會是：`curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
-
+       > [!IMPORTANT]
+       > - 針對 HTTPS 流程，如果透過 SAS 金鑰啟用用戶端驗證，則先前指定的 SAS 金鑰應新增為標頭。 因此，捲曲的要求將會是： `curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview` 
+       > - 針對 HTTPS 流程，如果透過憑證啟用用戶端驗證，則捲曲要求會是：`curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
 
     3. 執行下列命令，確認已成功建立訂用帳戶。 應傳回200正常的 HTTP 狀態碼。
 
-    ```sh
-    curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview
-    ```
+       ```sh
+       curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview
+       ```
 
-    範例輸出：
+       範例輸出：
 
-    ```json
+       ```json
         {
           "id": "/iotHubs/eg-iot-edge-hub/devices/eg-edge-device/modules/eventgridmodule/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5",
           "type": "Microsoft.EventGrid/eventSubscriptions",
@@ -266,18 +245,18 @@ ms.locfileid: "75437294"
             "destination": {
               "endpointType": "WebHook",
               "properties": {
-                "endpointUrl": "http://subscriber:80/api/subscriber"
+                "endpointUrl": "https://subscriber:4430"
               }
             }
           }
         }
-    ```
+       ```
 
-    > [!IMPORTANT]
-    > - 針對 HTTPS 流程，如果透過 SAS 金鑰啟用用戶端驗證，則先前指定的 SAS 金鑰應新增為標頭。 因此，捲曲的要求將會是： `curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
-    > - 針對 HTTPS 流程，如果透過憑證啟用用戶端驗證，則捲曲要求會是： `curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
+       > [!IMPORTANT]
+       > - 針對 HTTPS 流程，如果透過 SAS 金鑰啟用用戶端驗證，則先前指定的 SAS 金鑰應新增為標頭。 因此，捲曲的要求將會是： `curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
+       > - 針對 HTTPS 流程，如果透過憑證啟用用戶端驗證，則捲曲要求會是： `curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
 
-2. 下載[Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/)並[將它連接到您的本機儲存體](../../iot-edge/how-to-store-data-blob.md#connect-to-your-local-storage-with-azure-storage-explorer)
+3. 下載[Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/)並[將它連接到您的本機儲存體](../../iot-edge/how-to-store-data-blob.md#connect-to-your-local-storage-with-azure-storage-explorer)
 
 ## <a name="verify-event-delivery"></a>驗證事件傳遞
 
@@ -289,7 +268,7 @@ ms.locfileid: "75437294"
     範例輸出：
 
     ```json
-            Received event data [
+            Received Event:
             {
               "id": "d278f2aa-2558-41aa-816b-e6d8cc8fa140",
               "topic": "MicrosoftStorage",
@@ -309,7 +288,6 @@ ms.locfileid: "75437294"
                 "blobType": "BlockBlob"
               }
             }
-          ]
     ```
 
 ### <a name="verify-blobdeleted-event-delivery"></a>確認 BlobDeleted 事件傳遞
@@ -320,7 +298,7 @@ ms.locfileid: "75437294"
     範例輸出：
     
     ```json
-            Received event data [
+            Received Event:
             {
               "id": "ac669b6f-8b0a-41f3-a6be-812a3ce6ac6d",
               "topic": "MicrosoftStorage",
@@ -340,7 +318,6 @@ ms.locfileid: "75437294"
                 "blobType": "BlockBlob"
               }
             }
-          ]
     ```
 
 恭喜！ 您已完成本教學課程。 下列各節提供事件屬性的詳細資料。
@@ -349,29 +326,29 @@ ms.locfileid: "75437294"
 
 以下是支援的事件屬性及其類型和描述的清單。 
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
-| 主題 | string | 事件來源的完整資源路徑。 此欄位不可寫入。 Event Grid 提供此值。 |
-| subject | string | 發行者定義事件主體的路徑。 |
-| eventType | string | 此事件來源已註冊的事件類型之一。 |
-| eventTime | string | 事件產生的時間，以提供者之 UTC 時間為準。 |
-| id | string | 事件的唯一識別碼。 |
-| data | object | blob 儲存體帳戶。 |
-| dataVersion | string | 資料物件的結構描述版本。 發行者會定義結構描述版本。 |
-| metadataVersion | string | 事件中繼資料的結構描述版本。 Event Grid 會定義最上層屬性的結構描述。 Event Grid 提供此值。 |
+| 主題 | 字串 | 事件來源的完整資源路徑。 此欄位不可寫入。 Event Grid 提供此值。 |
+| subject | 字串 | 發行者定義事件主體的路徑。 |
+| eventType | 字串 | 此事件來源已註冊的事件類型之一。 |
+| eventTime | 字串 | 事件產生的時間，以提供者之 UTC 時間為準。 |
+| id | 字串 | 事件的唯一識別碼。 |
+| data | 物件 (object) | blob 儲存體帳戶。 |
+| dataVersion | 字串 | 資料物件的結構描述版本。 發行者會定義結構描述版本。 |
+| metadataVersion | 字串 | 事件中繼資料的結構描述版本。 Event Grid 會定義最上層屬性的結構描述。 Event Grid 提供此值。 |
 
 資料物件具有下列屬性：
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
-| api | string | 觸發事件的作業。 它可能是下列其中一個值： <ul><li>Microsoft.storage.blobcreated-允許的值包括： `PutBlob` 和 `PutBlockList`</li><li>BlobDeleted-允許的值為 `DeleteBlob`、`DeleteAfterUpload` 和 `AutoDelete`。 <p>當自動刪除 blob 時，會產生 `DeleteAfterUpload` 事件，因為 deleteAfterUpload desired 屬性會設定為 true。 </p><p>當 blob 因為 deleteAfterMinutes 所需的屬性值過期而自動刪除時，就會產生 `AutoDelete` 事件。</p></li></ul>|
-| clientRequestId | string | 用於儲存體 API 作業的用戶端提供要求識別碼。 此識別碼可用來在記錄檔中使用「用戶端要求識別碼」欄位與 Azure 儲存體診斷記錄相互關聯，並可在使用「x-ms-用戶端要求-識別碼」標頭的用戶端要求中提供。 如需詳細資訊，請參閱[記錄格式](/rest/api/storageservices/storage-analytics-log-format)。 |
-| requestId | string | 儲存體 API 作業由服務產生的要求識別碼。 可用於利用記錄中的 "request-id-header" 欄位與 Azure 儲存體診斷記錄建立關聯，並從 'x-ms-request-id' 標頭中的 API 呼叫初始化傳回。 請參閱[記錄格式](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)。 |
-| etag | string | 此值可讓您依條件執行作業。 |
-| ContentType | string | 為 blob 指定內容類型。 |
+| api | 字串 | 觸發事件的作業。 它可能是下列其中一個值： <ul><li>Microsoft.storage.blobcreated-允許的值包括： `PutBlob` 和 `PutBlockList`</li><li>BlobDeleted-允許的值為 `DeleteBlob`、`DeleteAfterUpload` 和 `AutoDelete`。 <p>當自動刪除 blob 時，會產生 `DeleteAfterUpload` 事件，因為 deleteAfterUpload desired 屬性會設定為 true。 </p><p>當 blob 因為 deleteAfterMinutes 所需的屬性值過期而自動刪除時，就會產生 `AutoDelete` 事件。</p></li></ul>|
+| clientRequestId | 字串 | 用於儲存體 API 作業的用戶端提供要求識別碼。 此識別碼可用來在記錄檔中使用「用戶端要求識別碼」欄位與 Azure 儲存體診斷記錄相互關聯，並可在使用「x-ms-用戶端要求-識別碼」標頭的用戶端要求中提供。 如需詳細資訊，請參閱[記錄格式](/rest/api/storageservices/storage-analytics-log-format)。 |
+| requestId | 字串 | 服務為儲存體 API 作業所產生的要求識別碼。 可用於利用記錄中的 "request-id-header" 欄位與 Azure 儲存體診斷記錄建立關聯，並從 'x-ms-request-id' 標頭中的 API 呼叫初始化傳回。 請參閱[記錄格式](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)。 |
+| etag | 字串 | 此值可讓您依條件執行作業。 |
+| ContentType | 字串 | 為 blob 指定內容類型。 |
 | contentLength | integer | Blob 大小 (以位元組為單位)。 |
-| blobType | string | Blob 的類型。 有效值為 "BlockBlob" 或 "PageBlob"。 |
-| url | string | blob 的路徑。 <br>如果用戶端使用 Blob REST API，則 url 會有下列結構： *\<儲存體帳戶名稱\>. blob.core.windows.net/\<容器名稱*\>/\<檔案名\>。 <br>如果用戶端使用 Data Lake Storage REST API，則 url 會有下列結構： *\<儲存體帳戶名稱\>. dfs.core.windows.net/* \<檔案名\>/\<檔案名。 |
+| blobType | 字串 | Blob 的類型。 有效值為 "BlockBlob" 或 "PageBlob"。 |
+| url | 字串 | blob 的路徑。 <br>如果用戶端使用 Blob REST API，則 url 會有下列結構： *\<儲存體帳戶名稱\>. blob.core.windows.net/\<容器名稱*\>/\<檔案名\>。 <br>如果用戶端使用 Data Lake Storage REST API，則 url 會有下列結構： *\<儲存體帳戶名稱\>. dfs.core.windows.net/* \<檔案名\>/\<檔案名。\> |
 
 
 ## <a name="next-steps"></a>後續步驟

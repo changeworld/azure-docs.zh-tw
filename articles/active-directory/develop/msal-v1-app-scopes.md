@@ -2,30 +2,30 @@
 title: V1.0 應用程式的範圍（MSAL） |Azure
 description: 了解使用 Microsoft 驗證程式庫 (MSAL) 的 v1.0 應用程式範圍。
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 11/25/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: c532eb658e882f11bb380dce4f7a604097693c0f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: e0ef46d23ba267bbfc1ff539eb659fafe2b44f8e
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704352"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085693"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>接受 v1.0 權杖的 Web API 範圍
 
-OAuth2 許可權是適用于開發人員（v1.0） Web API （資源）應用程式公開給用戶端應用程式的 Azure Active Directory （Azure AD）許可權範圍。 這些權限範圍可能會在同意過程中授與用戶端應用程式。 請參閱 [Azure Active Directory 應用程式資訊清單參考](reference-app-manifest.md#manifest-reference)中的 `oauth2Permissions` 相關章節。
+OAuth2 許可權是適用于開發人員（v1.0） Web API （資源）應用程式公開給用戶端應用程式的 Azure Active Directory （Azure AD）許可權範圍。 這些權限範圍可能會在同意過程中授與用戶端應用程式。 請參閱 `oauth2Permissions`Azure Active Directory 應用程式資訊清單參考[中的 ](reference-app-manifest.md#manifest-reference) 相關章節。
 
 ## <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>要求存取 v1.0 應用程式特定 OAuth2 權限的範圍
 
-若要取得 v1.0 應用程式特定範圍的權杖（例如， https://graph.windows.net) 的 Azure AD 圖形，請將所需的資源識別碼與該資源的所需 OAuth2 許可權串連，以建立範圍。
+若要取得 v1.0 應用程式特定範圍的權杖（例如， https://graph.windows.net)的 Azure AD 圖形，請將所需的資源識別碼與該資源的所需 OAuth2 許可權串連，以建立範圍。
 
 例如，代表使用者存取應用程式識別碼 URI 為 `ResourceId` 的 v1.0 Web API：
 

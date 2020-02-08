@@ -3,22 +3,22 @@ title: 在驗證要求中傳遞自訂狀態（MSAL .js） |Azure
 titleSuffix: Microsoft identity platform
 description: 瞭解如何使用適用于 JavaScript 的 Microsoft 驗證程式庫（MSAL），在驗證要求中傳遞自訂狀態參數值。
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/16/2020
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: be2dd887358aa00c87a4b5668a99c425d83b59dc
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 1c05956f83ad3a6491627be8916fac2c8be2b7ff
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696022"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084945"
 ---
 # <a name="pass-custom-state-in-authentication-requests-using-msaljs"></a>使用 MSAL 在驗證要求中傳遞自訂狀態
 

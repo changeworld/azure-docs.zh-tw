@@ -3,12 +3,12 @@ title: 封裝 Azure Service Fabric 應用程式
 description: 瞭解如何封裝 Azure Service Fabric 應用程式，以及如何準備部署至叢集。
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 16bd48963040a8e30ff81f40c01134014eaccf48
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 7c99eec28ac06ecf666d6dda1015f889841a5dbf
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639678"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083638"
 ---
 # <a name="package-an-application"></a>封裝應用程式
 
@@ -56,9 +56,9 @@ D:\TEMP\MYAPPLICATIONTYPE
 
 ### <a name="build-a-package-by-using-visual-studio"></a>使用 Visual Studio 建置封裝
 
-如果您使用 Visual Studio 2015 來建立您的應用程式，您可以使用 [封裝] 命令來自動建立符合上述版面配置的封裝。
+如果您使用 Visual Studio 來建立應用程式，您可以使用 [*封裝*] 命令，自動建立符合上述版面配置的套件。
 
-若要建立封裝，請以滑鼠右鍵按一下方案總管中的應用程式專案，然後選擇 [封裝] 命令，如下所示：
+若要建立封裝，請以滑鼠右鍵按一下*方案總管*中的應用程式專案，然後選擇 [**封裝**] 命令：
 
 ![使用 Visual Studio 封裝應用程式][vs-package-command]
 
@@ -136,7 +136,7 @@ True
 
 您可以執行 PowerShell 命令 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps)，並搭配 `CompressPackage` 參數來壓縮封裝。 您可以使用相同的命令，並搭配 `UncompressPackage` 參數來將封裝解壓縮。
 
-下列命令會在不將封裝複製到映像存放區的情況下壓縮封裝。 您可以在不搭配 `SkipCopy` 旗標的情況下使用 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps)，視需求將壓縮的封裝複製到一或多個 Service Fabric 叢集。
+下列命令會在不將封裝複製到映像存放區的情況下壓縮封裝。 您可以在不搭配 [ 旗標的情況下使用 ](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps)Copy-ServiceFabricApplicationPackage`SkipCopy`，視需求將壓縮的封裝複製到一或多個 Service Fabric 叢集。
 該套件現在包含 `code`、`config` 及 `data` 套件的 ZIP 壓縮檔案。 因為許多內部作業需要，所以應用程式資訊清單和服務資訊清單不會經過壓縮。 例如，某些驗證的封裝共用作業、應用程式類型名稱和版本擷取作業都需要存取資訊清單。 對資訊清單進行壓縮，將會使這些作業效率不佳。
 
 ```

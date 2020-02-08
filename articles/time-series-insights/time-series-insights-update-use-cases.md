@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 02/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: 85b724a62f778620264ae308aa316e046a0e9f59
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 50ac2a728750c6b01dfc57fa7e20df25c856395a
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896086"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087385"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure 時間序列深入解析預覽版使用案例
 
@@ -62,7 +62,7 @@ Azure 時間序列深入解析是端對端的平臺即服務供應專案。 它�
 
 * 第三個方式是使用強大的 API 來查詢儲存在時間序列深入解析中的資料。 時間序列深入解析具有時態性運算子，例如 `from`、`to`、`first`和 `last`。 它具有匯總和轉換，例如 `average`、`min`、`max`、`split by`、`order by`和 `DateHistogram`。 它也有篩選運算子，例如 `has`、`in`、`and`、`or`、`greater than`和 `REGEX`。 所有這些運算子使下游應用程式能夠快速尋找資料中的有趣趨勢和模式。 您可以使用它們來填入自主的視覺效果，以找出異常狀況。
 
-## <a name="operational-analysis-and-driving-process-efficiency"></a>維運分析與推動流程效率
+## <a name="operational-analysis-and-driving-process-efficiency"></a>營運分析與推動流程效率
 
 使用時間序列深入解析可大規模監視設備的健康情況、使用方式和效能。 時間序列深入解析提供了一種衡量營運效率的簡單方法。 時間序列深入解析可協助您管理各式各樣無法預測的 IoT 工作負載，而且您不必犧牲內嵌或查詢的效能。
 

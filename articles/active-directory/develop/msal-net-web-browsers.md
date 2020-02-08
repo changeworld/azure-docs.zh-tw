@@ -3,22 +3,22 @@ title: 使用網頁瀏覽器（MSAL.NET） |Azure
 titleSuffix: Microsoft identity platform
 description: 瞭解搭配適用于 .NET 的 Microsoft 驗證程式庫（MSAL.NET）使用 Xamarin Android 時的特定考慮。
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 07/16/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: b0b0ac05e54619af0b1dd4a68918a89681f845bd
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: ed1f47ae99f6346a932d0fe94be7586dc25a672f
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695070"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084592"
 ---
 # <a name="using-web-browsers-msalnet"></a>使用網頁瀏覽器（MSAL.NET）
 
@@ -43,7 +43,7 @@ MSAL.NET 是多架構程式庫，而且具有架構專屬的程式碼，可在 U
 
 一般來說，建議您使用平臺預設值，這通常是系統瀏覽器。 系統瀏覽器更適合用來記住先前登入的使用者。 如果您需要變更此行為，請使用 `WithUseEmbeddedWebView(bool)`
 
-### <a name="at-a-glance"></a>概覽
+### <a name="at-a-glance"></a>速覽
 
 | Framework        | 內嵌 | 系統 | 預設 |
 | ------------- |-------------| -----| ----- |
@@ -53,7 +53,7 @@ MSAL.NET 是多架構程式庫，而且具有架構專屬的程式碼，可在 U
 | UWP | 是 | 否 | 內嵌 |
 | Xamarin.Android | 是 | 是  | 系統 |
 | Xamarin.iOS | 是 | 是  | 系統 |
-| Xamarin.Mac| 是 | 否 | 內嵌 |
+| Xamarin. Mac| 是 | 否 | 內嵌 |
 
 ^ 需要 "http://localhost" 重新導向 URI
 

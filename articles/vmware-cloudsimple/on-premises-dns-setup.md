@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: eadedcea7e6010cf93d118b3781630053609d29f
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 12c4362ae1b075af132d5971f4fe0461c9d91733
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77019599"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083094"
 ---
 # <a name="configure-dns-for-name-resolution-for-avs-private-cloud-vcenter-access-from-on-premises-workstations"></a>針對來自內部部署工作站的 AVS 私用雲端 vCenter 存取設定 DNS 以進行名稱解析
 
@@ -32,10 +32,10 @@ ms.locfileid: "77019599"
 
 針對 DNS 設定，請使用下列其中一個選項。
 
-* [在 DNS 伺服器上建立 * 的區域。AVS.io](#create-a-zone-on-a-microsoft-windows-dns-server)
-* [在您的內部部署 DNS 伺服器上建立條件轉寄站，以解析 *。AVS.io](#create-a-conditional-forwarder)
+* [在 DNS 伺服器上建立用於 *. cloudsimple.io 的區域](#create-a-zone-on-a-microsoft-windows-dns-server)
+* [在您的內部部署 DNS 伺服器上建立條件轉寄站，以解析 *. cloudsimple.io](#create-a-conditional-forwarder)
 
-## <a name="create-a-zone-on-the-dns-server-for-avsio"></a>在 DNS 伺服器上建立 * 的區域。AVS.io
+## <a name="create-a-zone-on-the-dns-server-for-cloudsimpleio"></a>在 DNS 伺服器上建立用於 *. cloudsimple.io 的區域
 
 您可以將區域設定為存根區域，並指向私人雲端上的 DNS 伺服器以進行名稱解析。 本節提供有關使用 BIND DNS 伺服器或 Microsoft Windows DNS 伺服器的資訊。
 
@@ -78,7 +78,7 @@ zone "az.cloudsimple.io"
 
 ## <a name="create-a-conditional-forwarder"></a>建立條件轉寄站
 
-條件式轉寄站會將所有 DNS 名稱解析要求轉送到指定的伺服器。 在此設定中，對 * 的任何要求。AVS.io 會轉送到位於 AVS 私人雲端上的 DNS 伺服器。 下列範例示範如何在不同類型的 DNS 伺服器上設定轉寄站。
+條件式轉寄站會將所有 DNS 名稱解析要求轉送到指定的伺服器。 使用此設定時，對 *. cloudsimple.io 的任何要求都會轉送到位於 AVS 私人雲端上的 DNS 伺服器。 下列範例示範如何在不同類型的 DNS 伺服器上設定轉寄站。
 
 ### <a name="create-a-conditional-forwarder-on-a-bind-dns-server"></a>在系結 DNS 伺服器上建立條件轉寄站
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 975ffcd7142aac24363c2235db3742c155c1007b
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: d4e25074203ddcc016f54842f25f52017c6137f0
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77019820"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083218"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>使用第 2 層延伸網路遷移工作負載
 
@@ -24,7 +24,7 @@ ms.locfileid: "77019820"
 > [!NOTE]
 > 本指南涵蓋內部部署和 AVS 私用雲端資料中心透過站對站 VPN 連線的案例。
 
-## <a name="deployment-scenario"></a>部署案例
+## <a name="deployment-scenario"></a>部署狀況
 
 若要使用 L2VPN 延展您的內部部署網路，您必須設定 L2VPN 伺服器（目的地 NSX-T Tier0 路由器）和 L2VPN 用戶端（來源獨立用戶端）。 
 
@@ -32,7 +32,7 @@ ms.locfileid: "77019820"
 
 獨立的 NSX Edge 會部署在您的內部部署環境中做為 L2VPN 用戶端，然後再與 L2VPN 伺服器配對。 GRE 通道端點會在每一端建立，並設定為將內部部署層2網路「延展」至您的 AVS 私用雲端。 下圖說明此設定。
 
-![部署案例](media/l2vpn-deployment-scenario.png)
+![部署狀況](media/l2vpn-deployment-scenario.png)
 
 若要深入瞭解如何使用 L2 VPN 進行遷移，請參閱 VMware 檔中的[虛擬私人網路](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58.html#GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58__section_44B4972B5F12453B90625D98F86D5704)。
 
@@ -48,19 +48,19 @@ ms.locfileid: "77019820"
 * 獨立的 NSX-T Edge 設備版本與您的 AVS 私用雲端環境中使用的 NSX-T Manager 版本（NSX-T 2.3.0）相容。
 * 已在內部部署 vCenter 中建立已啟用偽造傳輸的主幹埠群組。
 * 公用 IP 位址已保留供 NSX-T 獨立用戶端上行 IP 位址使用，而 1:1 NAT 已準備好用於兩個位址之間的轉譯。
-* DNS 轉送是在 az 的內部部署 DNS 伺服器上設定的。AVS.io 網域，指向 AVS 私人雲端 DNS 伺服器。
+* DNS 轉送是設定在 az.cloudsimple.io 網域的內部部署 DNS 伺服器上，以指向 AVS 私人雲端 DNS 伺服器。
 * RTT 延遲小於或等於150毫秒，因為 vMotion 必須在兩個網站上運作。
 
 ## <a name="limitations-and-considerations"></a>限制與注意事項
 
 下表列出支援的 vSphere 版本和網路介面卡類型。 
 
-| vSphere 版本 | 來源 vSwitch 類型 | 虛擬 NIC 驅動程式 | 目標 vSwitch 類型 | 支援? |
+| vSphere 版本 | 來源 vSwitch 類型 | 虛擬 NIC 驅動程式 | 目標 vSwitch 類型 | 支援？ |
 ------------ | ------------- | ------------ | ------------- | ------------- 
-| 所有 | DVS | 所有 | DVS | 是 |
+| 全部 | DVS | 全部 | DVS | 是 |
 | vSphere 6.7 UI 或更高版本、6.5 P03 或更高版本 | DVS | VMXNET3 | N-VDS | 是 |
 | vSphere 6.7 UI 或更高版本、6.5 P03 或更高版本 | DVS | E1000 | N-VDS | [每個 VWware 不支援](https://kb.vmware.com/s/article/56991) |
-| vSphere 6.7 UI 或 6.5 P03、NSX-V 或版本低於 NSX-T 2.2、6.5 P03 或更高版本 | 所有 | 所有 | N-VDS | [每個 VWware 不支援](https://kb.vmware.com/s/article/56991) |
+| vSphere 6.7 UI 或 6.5 P03、NSX-V 或版本低於 NSX-T 2.2、6.5 P03 或更高版本 | 全部 | 全部 | N-VDS | [每個 VWware 不支援](https://kb.vmware.com/s/article/56991) |
 
 從 VMware NSX-T 2.3 版本：
 

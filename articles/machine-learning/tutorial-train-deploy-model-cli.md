@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 70253e66903916bde05f9e6e55e3c0609cb4a146
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 1f609c33ea474508eb107c0df9993c2ba3483660
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841109"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087037"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>教學課程：從 CLI 訓練和部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "76841109"
 
 > [!div class="checklist"]
 > * 安裝機器學習擴充功能
-> * 建立 Azure 機器學習工作區
+> * 建立 Azure Machine Learning 工作區
 > * 建立用來定型模型的計算資源
 > * 定義和註冊用來定型模型的資料集
 > * 開始執行訓練
@@ -35,7 +35,7 @@ ms.locfileid: "76841109"
 > * 將模型部署為 Web 服務
 > * 使用 web 服務評分資料
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前先建立一個免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
@@ -381,7 +381,7 @@ az ml model deploy -n myservice -m "mymodel:1" --ic inferenceConfig.yml --dc aci
 
 `inferenceConfig.yml` 檔案提供如何使用模型進行推斷的相關資訊。 例如，它會參考專案腳本（`score.py`）和軟體相依性。 
 
-如需此檔案結構的詳細資訊，請參閱[推斷設定架構](reference-azure-machine-learning-cli.md#inference-configuration-schema)。 如需有關輸入腳本的詳細資訊，請參閱[使用 Azure Machine Learning 來部署模型](how-to-deploy-and-where.md#prepare-to-deploy)。
+如需此檔案結構的詳細資訊，請參閱[推斷設定架構](reference-azure-machine-learning-cli.md#inference-configuration-schema)。 如需有關輸入腳本的詳細資訊，請參閱[使用 Azure Machine Learning 來部署模型](how-to-deploy-and-where.md#prepare-deployment-artifacts)。
 
 `aciDeploymentConfig.yml` 說明用來裝載服務的部署環境。 部署設定適用于用於部署的計算類型。 在此情況下，會使用 Azure 容器實例。 如需詳細資訊，請參閱[部署設定架構](reference-azure-machine-learning-cli.md#deployment-configuration-schema)。
 
@@ -475,7 +475,7 @@ az group delete -g <resource-group-name> -y
 
 > [!div class="checklist"]
 > * 安裝機器學習擴充功能
-> * 建立 Azure 機器學習工作區
+> * 建立 Azure Machine Learning 工作區
 > * 建立用來定型模型的計算資源
 > * 定義和註冊用來定型模型的資料集
 > * 開始執行訓練

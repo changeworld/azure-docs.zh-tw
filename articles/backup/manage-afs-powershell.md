@@ -3,16 +3,19 @@ title: 使用 PowerShell 管理 Azure 檔案共用備份
 description: 瞭解如何使用 PowerShell 來管理和監視由 Azure 備份服務所備份的 Azure 檔案共用。
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 9004e16c4b7c6ee704460d744612bafcd32831b9
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: a9dc421db740963fc5cd11e868eb383694376ce1
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776413"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083174"
 ---
 # <a name="manage-azure-file-share-backups-with-powershell"></a>使用 PowerShell 管理 Azure 檔案共用備份
 
 本文說明如何使用 Azure PowerShell 來管理和監視由 Azure 備份服務所備份的 Azure 檔案共用。
+
+> [!WARNING]
+> 請確定 PS 版本已升級為 AFS 備份的 ' Az. Azurerm.recoveryservices 2.6.0 ' 的最低版本。 如需詳細資訊，請參閱概述這項變更需求[一節](backup-azure-afs-automation.md#important-notice---backup-item-identification-for-afs-backups)。
 
 ## <a name="modify-the-protection-policy"></a>修改保護原則
 

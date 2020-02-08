@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/22/2020
 ms.author: mlearned
-ms.openlocfilehash: 62be78df28d65c2ed16a9f45295edec8c5c360c4
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e494a5141a96409fc6691df3a5f1194600ad0c32
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901534"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086500"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service （AKS）中建立及管理叢集的多個節點集區
 
@@ -565,7 +565,7 @@ az group deployment create \
 ## <a name="assign-a-public-ip-per-node-in-a-node-pool"></a>為節點集區中的每個節點指派一個公用 IP
 
 > [!WARNING]
-> 在針對每個節點指派公用 IP 的預覽期間，因為可能會有負載平衡器規則與 VM 布建衝突，所以無法*在 AKS 中與 STANDARD LOAD BALANCER SKU*搭配使用。 在預覽期間，如果您需要為每個節點指派一個公用 IP，則必須使用*基本 LOAD BALANCER SKU* 。
+> 在針對每個節點指派公用 IP 的預覽期間，因為可能會有負載平衡器規則與 VM 布建衝突，所以無法*在 AKS 中與 STANDARD LOAD BALANCER SKU*搭配使用。 由於這項限制，此預覽功能不支援 Windows 代理程式組件區。 在預覽期間，如果您需要為每個節點指派一個公用 IP，則必須使用*基本 LOAD BALANCER SKU* 。
 
 AKS 節點不需要自己的公用 IP 位址進行通訊。 不過，某些情況下，節點集區中的節點可能需要有自己的公用 IP 位址。 其中一個範例是遊戲，其中主控台需要直接連線到雲端虛擬機器，以將躍點降至最低。 這可以藉由註冊個別的預覽功能 [節點公用 IP （預覽）] 來達成。
 

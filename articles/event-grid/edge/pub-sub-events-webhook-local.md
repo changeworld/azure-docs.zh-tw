@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: e403d690470f3c4f1d0c8e565e90641d9c114a80
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ba82b1bea4753cd51e275a78b248247032d79a01
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844529"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086632"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>教學課程：在本機發佈、訂閱事件
 
@@ -23,8 +23,8 @@ ms.locfileid: "76844529"
 > [!NOTE]
 > 若要瞭解 Azure 事件方格主題和訂用帳戶，請參閱[事件方格概念](concepts.md)。
 
-## <a name="prerequisites"></a>必要條件 
-為了完成本教學課程，您將需要：
+## <a name="prerequisites"></a>Prerequisites 
+若要完成這個教學課程，您將需要：
 
 * **Azure 訂**用帳戶-如果您還沒有帳戶，請建立一個[免費帳戶](https://azure.microsoft.com/free)。 
 * **Azure IoT 中樞和 IoT Edge 裝置**-遵循[Linux](../../iot-edge/quickstart-linux.md)或[Windows 裝置](../../iot-edge/quickstart.md)的快速入門中的步驟（如果您還沒有的話）。
@@ -64,8 +64,7 @@ ms.locfileid: "76844529"
     ```json
         {
           "Env": [
-            "inbound__clientAuth__clientCert__enabled=false",
-            "outbound__webhook__httpsOnly=false"
+            "inbound__clientAuth__clientCert__enabled=false"
           ],
           "HostConfig": {
             "PortBindings": {
@@ -79,21 +78,17 @@ ms.locfileid: "76844529"
         }
     ```    
  1. 按一下 [儲存]
- 1. 繼續進行下一節，以新增 Azure Functions 模組，然後再將它們部署在一起。
+ 1. 繼續進行下一節，以新增 Azure Event Grid 訂閱者模組，然後再將它們部署在一起。
 
     >[!IMPORTANT]
-    > 在本教學課程中，您將會部署已停用用戶端驗證的事件方格模組，並允許 HTTP 訂閱者。 針對生產工作負載，建議您啟用用戶端驗證，並僅允許 HTTPs 訂閱者。 如需有關如何安全地設定 Event Grid 模組的詳細資訊，請參閱[安全性和驗證](security-authentication.md)。
+    > 在本教學課程中，您將會部署已停用用戶端驗證的事件方格模組。 對於生產工作負載，我們建議您啟用用戶端驗證。 如需有關如何安全地設定 Event Grid 模組的詳細資訊，請參閱[安全性和驗證](security-authentication.md)。
     > 
     > 如果您使用 Azure VM 做為 edge 裝置，請新增輸入連接埠規則，以允許埠4438上的輸入流量。 如需新增規則的指示，請參閱[如何開啟 VM 的埠](../../virtual-machines/windows/nsg-quickstart-portal.md)。
     
 
-## <a name="deploy-azure-function-iot-edge-module"></a>部署 Azure Function IoT Edge 模組
+## <a name="deploy-event-grid-subscriber-iot-edge-module"></a>IoT Edge 模組部署事件方格訂閱者
 
-本節說明如何部署 Azure Functions IoT 模組，其可做為事件方格訂閱者，以便傳遞事件。
-
->[!IMPORTANT]
->在本節中，您將部署範例 Azure 函數型訂閱模組。 當然，它可以是任何可接聽 HTTP POST 要求的自訂 IoT 模組。
-
+本節說明如何部署另一個 IoT 模組，做為可傳遞事件的事件處理常式。
 
 ### <a name="add-modules"></a>新增模組
 
@@ -102,23 +97,8 @@ ms.locfileid: "76844529"
 1. 提供容器的 [名稱]、[映射] 和 [容器] 建立選項：
 
    * **名稱**：訂閱者
-   * **映射 URI**： `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber-azfunc:latest`
-   * **容器建立選項**：
-
-       ```json
-            {
-              "HostConfig": {
-                "PortBindings": {
-                  "80/tcp": [
-                    {
-                      "HostPort": "8080"
-                    }
-                  ]
-                }
-              }
-            }
-       ```
-
+   * **映射 URI**： `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
+   * **容器建立選項**：無
 1. 按一下 [儲存]
 1. 按 **[下一步]** 繼續前往 [路由] 區段
 
@@ -191,7 +171,7 @@ ms.locfileid: "76844529"
             "destination": {
               "endpointType": "WebHook",
               "properties": {
-                "endpointUrl": "http://subscriber:80/api/subscriber"
+                "endpointUrl": "https://subscriber:4430"
               }
             }
           }
@@ -199,7 +179,7 @@ ms.locfileid: "76844529"
     ```
 
     >[!NOTE]
-    > **EndpointType**屬性會指定訂閱者為**Webhook**。  **EndpointUrl**會指定訂閱者接聽事件的 URL。 此 URL 會對應至您稍早部署的 Azure 函式範例。
+    > **EndpointType**屬性會指定訂閱者為**Webhook**。  **EndpointUrl**會指定訂閱者接聽事件的 URL。 此 URL 會對應至您稍早部署的 Azure 訂閱者範例。
 2. 執行下列命令來建立主題的訂用帳戶。 確認您看到 [HTTP 狀態碼] 為 [`200 OK`]。
 
     ```sh
@@ -223,7 +203,7 @@ ms.locfileid: "76844529"
             "destination": {
               "endpointType": "WebHook",
               "properties": {
-                "endpointUrl": "http://subscriber:80/api/subscriber"
+                "endpointUrl": "https://subscriber:4430"
               }
             }
           }
@@ -275,7 +255,7 @@ ms.locfileid: "76844529"
     範例輸出：
 
     ```sh
-        Received event data [
+        Received Event:
             {
               "id": "eventId-func-0",
               "topic": "sampleTopic1",
@@ -289,7 +269,6 @@ ms.locfileid: "76844529"
                 "model": "Monster"
               }
             }
-          ]
     ```
 
 ## <a name="cleanup-resources"></a>清除資源

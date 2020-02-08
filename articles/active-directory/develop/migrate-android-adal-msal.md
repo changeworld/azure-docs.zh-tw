@@ -2,7 +2,7 @@
 title: 適用于 Android 的 MSAL 遷移指南的 ADAL |Azure
 description: 瞭解如何將您的 Azure Active Directory Authentication Library （ADAL） Android 應用程式遷移至 Microsoft 驗證程式庫（MSAL）。
 services: active-directory
-author: tylermsft
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: Android
 ms.workload: identity
 ms.date: 09/6/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
-ms.openlocfilehash: 0c7b059fd8d9b34ad6d1e565431d39ffc706cb45
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 21866bb7dab3d5a093ffc4655161b80853eadfc5
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696702"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084048"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>適用于 Android 的 MSAL 遷移指南的 ADAL
 
@@ -240,7 +240,7 @@ public interface SilentAuthenticationCallback {
 
 MSAL 例外狀況的清單
 
-|例外狀況  | 說明  |
+|例外狀況  | 描述  |
 |---------|---------|
 | `MsalException`     | MSAL 擲回的預設核取例外狀況。  |
 | `MsalClientException`     | 如果錯誤是用戶端，則擲回。 |

@@ -3,22 +3,22 @@ title: 用戶端應用程式設定（MSAL） |Azure
 titleSuffix: Microsoft identity platform
 description: 瞭解使用 Microsoft 驗證程式庫（MSAL）的公用用戶端和機密用戶端應用程式的設定選項。
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 09/27/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 5388dc101dbc4e06ce26f12bfd40645455e8dae8
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 0262d22ae00456ce06cb8efbf995f1a093b20043
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696477"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085000"
 ---
 # <a name="application-configuration-options"></a>應用程式設定選項
 
@@ -112,7 +112,7 @@ Azure AD 的雲端授權單位有兩個部分：
   ---------  | --------------
   桌面應用程式（.NET FW） | `https://login.microsoftonline.com/common/oauth2/nativeclient` 
   UWP | `WebAuthenticationBroker.GetCurrentApplicationCallbackUri()`的值。 這會將值設定為您需要註冊的 WebAuthenticationBroker GetCurrentApplicationCallbackUri （）結果，以啟用瀏覽器的 SSO
-  .NET Core | `https://localhost`答案中所述步驟，工作帳戶即會啟用。 這可讓使用者使用系統瀏覽器進行互動式驗證，因為 .NET Core 目前沒有內嵌 web 視圖的 UI。
+  .NET Core | `https://localhost`第 1 課：建立 Windows Azure 儲存體物件{2}。 這可讓使用者使用系統瀏覽器進行互動式驗證，因為 .NET Core 目前沒有內嵌 web 視圖的 UI。
 
 - 如果您要建立不支援 broker 的 Xamarin Android 和 iOS 應用程式（[重新導向 URI] 會自動設定為適用于 Xamarin Android 和 iOS 的 `msal{ClientId}://auth`，則不需要新增重新導向 URI
 

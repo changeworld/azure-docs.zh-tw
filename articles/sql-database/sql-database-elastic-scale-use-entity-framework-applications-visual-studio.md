@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/04/2019
-ms.openlocfilehash: 4198b3a9213ed535c6649c50a20f2ff957d60c94
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1653a904875964d86864c59c718603a6dacdcbda
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823495"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087180"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>搭配使用彈性資料庫用戶端程式庫與 Entity Framework
 
@@ -27,7 +27,7 @@ ms.locfileid: "73823495"
 若要下載本文的程式碼：
 
 * 需要 visual Studio 2012 或更新版本。 
-* 從 MSDN 下載 [Elastic DB Tools for Azure SQL - Entity Framework 整合範例](https://code.msdn.microsoft.com/windowsapps/Elastic-Scale-with-Azure-bae904ba)。 將範例解壓縮至您選擇的位置。
+* 下載[適用于 AZURE SQL 的彈性 DB 工具-Entity Framework 整合範例](https://github.com/Azure/elastic-db-tools/)。 將範例解壓縮至您選擇的位置。
 * 啟動 Visual Studio。 
 * 在 Visual Studio 中，選取 [檔案] -> [開啟專案/方案]。 
 * 在 [開啟專案] 對話方塊中，瀏覽至您下載的範例，然後選取 **EntityFrameworkCodeFirst.sln** 以開啟範例。 
@@ -133,7 +133,7 @@ public DbSet<Blog> Blogs { get; set; }
   * 分區對應會對分區建立開啟的連接，此分區保留給定分區化索引鍵的 Shardlet。
   * 這個開啟的連接會傳回給 DbContext 的基底類別建構函式，以指出此連接要給 EF 使用，而不要讓 EF 自動建立新的連接。 如此一來，連接已具有彈性資料庫用戶端 API 的性質，將可以保證分區對應管理作業時的一致性。
 
-在您的程式碼中使用 DbContext 子類別的新建構函式，而不是預設建構函式。 下列是一個範例： 
+在您的程式碼中使用 DbContext 子類別的新建構函式，而不是預設建構函式。 範例如下： 
 
 ```csharp
 // Create and save a new blog.
@@ -190,7 +190,7 @@ SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
 
 上述程式碼範例說明應用程式所需的預設建構函式重寫，以便使用資料相依路由與 Entity Framework。 下表將這個方法擴及其他建構函式。 
 
-| 目前的建構函式 | 重寫的資料建構函式 | 基底建構函式 | 注意事項 |
+| 目前的建構函式 | 重寫的資料建構函式 | 基底建構函式 | 注意 |
 | --- | --- | --- | --- |
 | MyContext() |ElasticScaleContext(ShardMap, TKey) |DbContext(DbConnection, bool) |連接必須是分區對應和資料相依路由索引鍵的函數。 您需要略過由 EF 自動建立連接，改用分區對應來代理連接。 |
 | MyContext(string) |ElasticScaleContext(ShardMap, TKey) |DbContext(DbConnection, bool) |連接是分區對應和資料相依路由索引鍵的函數。 固定的資料庫名稱或連接字串無法運作，因為它們會略過分區對應所執行的驗證。 |

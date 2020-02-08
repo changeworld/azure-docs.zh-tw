@@ -3,29 +3,29 @@ title: 初始化 MSAL.NET 用戶端應用程式 |Azure
 titleSuffix: Microsoft identity platform
 description: 瞭解如何使用適用于 .NET 的 Microsoft 驗證程式庫（MSAL.NET）來初始化公用用戶端和機密用戶端應用程式。
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 04/12/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 31af3691e9f55eb4263b5976c2dc82c029cbc3a0
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 57ce6ab31421cd4016f7e204eeabce82f2f7e6a7
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695546"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083979"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>使用 MSAL.NET 初始化用戶端應用程式
 本文說明如何使用適用于 .NET 的 Microsoft 驗證程式庫（MSAL.NET）來初始化公用用戶端和機密用戶端應用程式。  若要深入瞭解用戶端應用程式類型和應用程式設定選項，請參閱[總覽](msal-client-applications.md)。
 
 使用 MSAL.NET 3.x 時，將應用程式具現化的建議方式是使用應用程式構建者： `PublicClientApplicationBuilder` 和 `ConfidentialClientApplicationBuilder`。 它們提供強大的機制，讓您可以從程式碼或設定檔，或甚至混用這兩種方法來設定應用程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 在初始化應用程式之前，您必須先[註冊它](quickstart-register-app.md)，您的應用程式才能與 Microsoft 身分識別平臺整合。  註冊之後，您可能需要下列資訊（可在 Azure 入口網站中找到）：
 
 - 用戶端識別碼（代表 GUID 的字串）
@@ -96,7 +96,7 @@ IConfidentialClientApplication app = ConfidentialClientApplicationBuilder.Create
 
 您可以在公用用戶端或機密用戶端應用程式產生器上設定的修飾詞如下：
 
-|Modifier | 說明|
+|Modifier | 描述|
 |--------- | --------- |
 |`.WithAuthority()` 7 覆寫 | 將應用程式預設授權單位設定為 Azure AD 授權單位，而且可能會選擇 Azure 雲端、物件、租使用者（租使用者識別碼或功能變數名稱），或直接提供授權單位 URI。|
 |`.WithAdfsAuthority(string)` | 將應用程式預設授權單位設定為 ADFS 授權單位。|
@@ -115,7 +115,7 @@ IConfidentialClientApplication app = ConfidentialClientApplicationBuilder.Create
 
 您可以在 Xamarin 的公用用戶端應用程式建立器上設定的修飾詞為：
 
-|Modifier | 說明|
+|Modifier | 描述|
 |--------- | --------- |
 |`.WithIosKeychainSecurityGroup()` | **僅限 Xamarin**：設定 ios 金鑰鏈安全性群組（適用于快取持續性）。|
 
@@ -123,7 +123,7 @@ IConfidentialClientApplication app = ConfidentialClientApplicationBuilder.Create
 
 您可以在機密用戶端應用程式產生器上設定的修飾詞如下：
 
-|Modifier | 說明|
+|Modifier | 描述|
 |--------- | --------- |
 |`.WithCertificate(X509Certificate2 certificate)` | 設定以 Azure AD 識別應用程式的憑證。|
 |`.WithClientSecret(string clientSecret)` | 設定以 Azure AD 識別應用程式的用戶端秘密（應用程式密碼）。|

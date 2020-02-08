@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 05/21/2019
+ms.date: 02/06/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e65eb08873da71c7683fe3347484831dfff58793
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: fcb2198ea3f01e923022c205e478167240a01894
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932631"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084438"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>在 Azure AD 存取評論中建立群組和應用程式的存取權審查
 
@@ -28,7 +28,7 @@ ms.locfileid: "75932631"
 
 本文說明如何建立群組成員或應用程式存取的一或多個存取權審查。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - Azure AD Premium P2
 - 全域管理員或使用者管理員
@@ -93,7 +93,7 @@ ms.locfileid: "75932631"
 
     ![建立存取權審查-完成後的設定](./media/create-access-review/upon-completion-settings.png)
 
-1. 如果您想要對遭拒絕的使用者自動移除存取權，請將 [自動將結果套用至資源] 設為 [啟用]。 如果您想要在檢閱完成時手動套用結果，請將開關設為 [停用]。
+1. 如果您想要自動移除，存取被拒絕的使用者，請將 [**自動將結果套用至資源**] 設定為 [**啟用**]。 如果您想要在檢閱完成時手動套用結果，請將開關設為 [停用]。
 
 1. 使用 [若檢閱者未回應] 清單，指定檢閱者在檢閱期間內未檢閱的使用者將受到何種處置。 此設定並不會影響檢閱者已手動檢閱的使用者。 如果最終的檢閱者決定 [拒絕]，則會移除使用者的存取權。
 
@@ -127,6 +127,20 @@ ms.locfileid: "75932631"
 依預設，Azure AD 會在檢閱開始不久後傳送電子郵件給檢閱者。 如果您選擇不讓 Azure AD 傳送電子郵件，請務必通知檢閱者有存取權檢閱等待他們完成。 您可以向他們顯示如何[審查群組或應用程式存取權](perform-access-review.md)的指示。 如果您的評論是讓來賓審查自己的存取權，請向他們說明如何對[群組或應用程式檢查自己的存取權](review-your-access.md)。
 
 如果您已將來賓指派為審核者，而他們尚未接受邀請，他們將不會收到來自存取審查的電子郵件，因為他們必須先接受邀請，然後再進行審查。
+
+## <a name="access-review-status-table"></a>存取審查狀態資料表
+
+| 狀態 | 定義 |
+|--------|------------|
+|NotStarted | 已建立審查，使用者探索正在等候啟動。 |
+|正在初始化   | 使用者探索正在進行中，以識別屬於評論的所有使用者。 |
+|啟動中 | 正在開始審查。 如果已啟用電子郵件通知，則會將電子郵件傳送給審核者。 |
+|InProgress | 已開始審查。 如果已啟用電子郵件通知，則會將電子郵件傳送給審核者。 審核者可以在到期日之前提交決策。 |
+|' | 正在完成審查，並將電子郵件傳送給審核擁有者。 |
+|AutoReviewing | 審查是在「系統檢查」階段。 系統會針對未根據建議或預先設定的決策進行審核的使用者記錄決策。 |
+|AutoReviewed | 系統會針對所有未審核的使用者，記錄其決策。 如果已啟用自動套用，則審查已準備就緒，可繼續**申請**。 |
+|于 | 對於已核准的使用者，將不會變更存取權。 |
+|套用 | 已拒絕的使用者（如果有的話）已從資源或目錄中移除。 |
 
 ## <a name="create-reviews-via-apis"></a>透過 API 建立檢閱
 

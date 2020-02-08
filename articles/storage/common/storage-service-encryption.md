@@ -4,17 +4,17 @@ description: Azure 儲存體保護您的資料，方法是在將它保存到雲�
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 01/10/2020
+ms.date: 02/05/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: abb9325510b52672027338314e02466f2d28e701
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 86d6a63601036abdde4ee7ae73114566d749feca
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942197"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77082828"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>待用資料的 Azure 儲存體加密
 
@@ -46,8 +46,8 @@ Azure 儲存體中的資料會使用256位[AES 加密](https://en.wikipedia.org/
 |                                        |    Microsoft 管理的金鑰                             |    客戶管理的金鑰                                                                                                                        |    客戶提供的金鑰                                                          |
 |----------------------------------------|-------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
 |    加密/解密作業    |    Azure                                              |    Azure                                                                                                                                        |    Azure                                                                         |
-|    支援的 Azure 儲存體服務    |    所有                                                |    Blob 儲存體，Azure 檔案儲存體<sup>1，2</sup>                                                                                                               |    Blob 儲存體                                                                  |
-|    金鑰儲存                         |    Microsoft 金鑰存放區    |    Azure Key Vault                                                                                                                              |    Azure Key Vault 或任何其他金鑰存放區                                                                 |
+|    支援的 Azure 儲存體服務    |    全部                                                |    Blob 儲存體，Azure 檔案儲存體<sup>1，2</sup>                                                                                                               |    Blob 儲存體                                                                  |
+|    金鑰儲存                         |    Microsoft 金鑰存放區    |    Azure 金鑰保存庫                                                                                                                              |    Azure Key Vault 或任何其他金鑰存放區                                                                 |
 |    金鑰輪替責任         |    Microsoft                                          |    客戶                                                                                                                                     |    客戶                                                                      |
 |    金鑰使用量                           |    Microsoft                                          |    Azure 入口網站，儲存體資源提供者 REST API，Azure 儲存體管理程式庫，PowerShell，CLI        |    Azure 儲存體 REST API （Blob 儲存體），Azure 儲存體用戶端程式庫    |
 |    金鑰存取                          |    僅限 Microsoft                                     |    Microsoft、客戶                                                                                                                    |    僅限客戶                                                                 |
@@ -142,7 +142,7 @@ Azure 儲存體不會儲存或管理用戶端與要求一起傳送的加密金�
 
 針對 REST 呼叫，用戶端可以使用下列標頭，安全地將要求的加密金鑰資訊傳遞至 Blob 儲存體：
 
-|要求標頭 | 說明 |
+|要求標頭 | 描述 |
 |---------------|-------------|
 |`x-ms-encryption-key` |寫入和讀取要求都需要。 Base64 編碼的 AES-256 加密金鑰值。 |
 |`x-ms-encryption-key-sha256`| 寫入和讀取要求都需要。 加密金鑰的 Base64 編碼 SHA256。 |
@@ -164,9 +164,9 @@ Azure 儲存體不會儲存或管理用戶端與要求一起傳送的加密金�
 - [Set Blob Properties](/rest/api/storageservices/set-blob-properties) \(英文\)
 - [設定 Blob 中繼資料](/rest/api/storageservices/set-blob-metadata)
 - [取得 Blob](/rest/api/storageservices/get-blob)
-- [Get Blob Properties](/rest/api/storageservices/get-blob-properties)
+- [取得 Blob 屬性](/rest/api/storageservices/get-blob-properties)
 - [取得 Blob 中繼資料](/rest/api/storageservices/get-blob-metadata)
-- [擷取 Blob 快照集](/rest/api/storageservices/snapshot-blob)
+- [快照集 Blob](/rest/api/storageservices/snapshot-blob)
 
 ### <a name="rotate-customer-provided-keys"></a>輪替客戶提供的金鑰
 

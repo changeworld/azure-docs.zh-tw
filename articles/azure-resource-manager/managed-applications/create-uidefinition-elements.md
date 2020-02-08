@@ -3,14 +3,14 @@ title: 建立 UI 定義元素
 description: 描述在建構 Azure 入口網站的 UI 定義時要使用的元素。
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 11/11/2019
+ms.date: 02/06/2020
 ms.author: tomfitz
-ms.openlocfilehash: 0ceb8f5762bb6bc987757845426a0f2b380264f1
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 12bf5d131001d95a3f4327f95c24125dbf3fb510
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75650665"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086714"
 ---
 # <a name="createuidefinition-elements"></a>CreateUiDefinition 元素
 
@@ -33,7 +33,7 @@ ms.locfileid: "75650665"
 }
 ```
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要 | 描述 |
 | -------- | -------- | ----------- |
 | NAME | 是 | 要參考元素特定執行個體的內部識別碼。 元素名稱的最常見用法是在 `outputs`，其中指定元素的輸出值會對應到範本的參數。 您也可以使用它，將元素的輸出值繫結至另一個元素的 `defaultValue`。 |
 | type | 是 | 要呈現元素的 UI 控制項。 如需支援類型的清單，請參閱[元素](#elements)。 |
@@ -60,6 +60,7 @@ ms.locfileid: "75650665"
 - [Microsoft.Compute.CredentialsCombo](microsoft-compute-credentialscombo.md)
 - [Microsoft.Compute.SizeSelector](microsoft-compute-sizeselector.md)
 - [Microsoft.Compute.UserNameTextBox](microsoft-compute-usernametextbox.md)
+- [Microsoft.managedidentity. IdentitySelector](microsoft-managedidentity-identityselector.md)
 - [Microsoft.Network.PublicIpAddressCombo](microsoft-network-publicipaddresscombo.md)
 - [Microsoft.Network.VirtualNetworkCombo](microsoft-network-virtualnetworkcombo.md)
 - [Microsoft.Storage.MultiStorageAccountCombo](microsoft-storage-multistorageaccountcombo.md)

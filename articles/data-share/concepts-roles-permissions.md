@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 0f836553c3c3bb324d76d022af189f154b5b1972
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 36a492f6a3e86cfb2fc9505550cc2d9f4746e070
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964459"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087168"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Azure Data Share 的角色和需求 
 
@@ -91,7 +91,7 @@ Azure 資料共用資源的受控識別必須被授與 Azure 資料存放區的�
 
 ## <a name="resource-provider-registration"></a>資源提供者註冊 
 
-若要在您的 Azure 租使用者中第一次查看 Azure 資料共用邀請，您可能需要手動將 DataShare 資源提供者註冊到您的 Azure 訂用帳戶。 請遵循下列步驟，在您的 Azure 訂用帳戶中註冊 DataShare 資源提供者。 
+若要在您的 Azure 租使用者中第一次查看 Azure 資料共用邀請，您可能需要手動將 DataShare 資源提供者註冊到您的 Azure 訂用帳戶。 請遵循下列步驟，在您的 Azure 訂用帳戶中註冊 DataShare 資源提供者。 您需要 Azure 訂用帳戶的*參與者*存取權，才能註冊資源提供者。
 
 1. 在 Azure 入口網站中，流覽至 訂用帳戶 **。**
 1. 選取您要用於 Azure 資料共用的訂用帳戶。

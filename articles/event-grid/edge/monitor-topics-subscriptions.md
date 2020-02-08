@@ -8,12 +8,12 @@ ms.date: 01/09/2020
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 79b223de7a0a0cfdaf799b1f80e585a2a55f7e82
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ce7c92f121fb458d528d63d0af0aad025b377386
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849730"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086670"
 ---
 # <a name="monitor-topics-and-event-subscriptions"></a>監視主題和事件訂閱
 
@@ -40,7 +40,7 @@ ms.locfileid: "76849730"
         }
  ```    
 
-計量會在適用于 HTTP 的模組 `5888/metrics`，以及適用于 HTTPs 的 `4438/metrics`。 例如，`http://<modulename>:4438/metrics?api-version=2019-01-01-preview` HTTP。 此時，計量模組可以輪詢端點以收集此[範例架構](https://github.com/veyalla/ehm)中的計量。
+計量會在適用于 HTTP 的模組 `5888/metrics`，以及適用于 HTTPs 的 `4438/metrics`。 例如，`http://<modulename>:5888/metrics?api-version=2019-01-01-preview` HTTP。 此時，計量模組可以輪詢端點以收集此[範例架構](https://github.com/veyalla/ehm)中的計量。
 
 ## <a name="available-metrics"></a>可用的計量
 
@@ -48,7 +48,7 @@ ms.locfileid: "76849730"
 
 ### <a name="topic-metrics"></a>主題計量
 
-| 計量 | 說明 |
+| 計量 | 描述 |
 | ------ | ----------- |
 | EventsReceived | 發佈至主題的事件數目
 | UnmatchedEvents | 發行至主題的事件數目不符合事件訂用帳戶且已卸載
@@ -60,12 +60,12 @@ ms.locfileid: "76849730"
 
 ### <a name="event-subscription-metrics"></a>事件訂閱計量
 
-| 計量 | 說明 |
+| 計量 | 描述 |
 | ------ | ----------- |
 | deliverySuccessCounts | 成功傳遞至已設定端點的事件數目
-| deliveryFailureCounts | 無法對設定的端點進行事件傳遞嘗試次數
+| deliveryFailureCounts | 無法傳遞至已設定端點的事件數目
 | deliverySuccessLatencyMs | 成功傳遞事件的延遲（以毫秒為單位）
 | deliveryFailureLatencyMs | 事件傳遞失敗的延遲（以毫秒為單位）
 | systemDelayForFirstAttemptMs | 第一次嘗試傳遞之前事件的系統延遲（以毫秒為單位）
 | deliveryAttemptsCount | 事件傳遞嘗試次數-成功和失敗
-| expiredCounts | 無法傳遞的事件數目 
+| expiredCounts | 已過期且未傳遞至已設定端點的事件數目

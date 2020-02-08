@@ -3,12 +3,12 @@ title: Azure Migrate 中的 VMware 評估支援
 description: 深入瞭解 Azure Migrate 中的 VMware 評估支援。
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 2fab94b66e09d3923e481326b3650f1beb621dc4
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 1b3e81653ba934b209755391f08e60ef603e645a
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048757"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086771"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware 評估的支援矩陣 
 
@@ -99,7 +99,7 @@ ESXi 主機 | **僅針對[應用程式探索](https://docs.microsoft.com/azure/m
 **Windows 帳戶** |  視覺效果需要本機或網域系統管理員帳戶。
 **Linux 帳戶** | 視覺效果需要具有根許可權的使用者帳戶。<br/><br/> 或者，使用者帳戶需要/bin/netstat 和/bin/ls 檔案的下列許可權： CAP_DAC_READ_SEARCH 和 CAP_SYS_PTRACE。
 **VM 代理程式** | Vm 上不需要代理程式。
-**VMware 工具** | VMware 工具必須安裝在您想要分析的 Vm 上並加以執行。
+**VMware 工具** | VMware 工具必須安裝在您想要分析的 Vm 上並加以執行。 <br/> 如果您的 VMware 工具版本介於 9.10-10.2.0 之間，請務必將它升級至超過10.2.0。
 **vCenter 認證** | 具有唯讀存取權的 vCenter Server 帳戶，以及為虛擬機器 > 來賓作業啟用的許可權。
 **埠存取** | 在執行您想要分析之 Vm 的 ESXi 主機上，Azure Migrate 設備必須能夠連線到 TCP 通訊埠443。
 

@@ -3,12 +3,12 @@ title: 邏輯組織的標記資源
 description: 示範如何套用標籤以針對計費及管理來組織 Azure 資源。
 ms.topic: conceptual
 ms.date: 01/03/2020
-ms.openlocfilehash: 0b2fff801b01afce0907bf86887fb110478377c1
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 5751f2d1bc123c5918ae0fabc5b908b5f4fec71d
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665135"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087320"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>使用標記來組織 Azure 資源
 
@@ -394,7 +394,7 @@ IFS=$origIFS
 
 ### <a name="apply-tags-from-resource-group"></a>從資源群組套用標記
 
-若要將標記從資源群組套用至資源，請使用[resourceGroup](../templates/template-functions-resource.md#resourcegroup)函數。 取得標記值時，請使用 `tags.[tag-name]` 語法，而不是 `tags.tag-name` 語法，因為在點標記法中無法正確剖析某些字元。
+若要將標記從資源群組套用至資源，請使用[resourceGroup](../templates/template-functions-resource.md#resourcegroup)函數。 取得標記值時，請使用 `tags[tag-name]` 語法，而不是 `tags.tag-name` 語法，因為在點標記法中無法正確剖析某些字元。
 
 ```json
 {

@@ -3,22 +3,22 @@ title: ADAL 至 MSAL 遷移指南（MSAL iOS/macOS） |Azure
 titleSuffix: Microsoft identity platform
 description: 瞭解 iOS/macOS 的 MSAL 與 ObjectiveC 的 Azure AD 驗證程式庫之間的差異（ADAL）。ObjC），以及如何遷移至適用于 iOS/macOS 的 MSAL。
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/28/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: 311d6ed988777e94f5dd3fde8ac6e9aff1fb39fe
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 6050bdc8c2600998b9804b04b62102e74612719f
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696668"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085170"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>將應用程式遷移至適用于 iOS 和 macOS 的 MSAL
 

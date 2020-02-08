@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/26/2019
-ms.openlocfilehash: 4bdf842ae24d90850280a5a19038dbd00168ff2c
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.date: 02/07/2020
+ms.openlocfilehash: c6c3e9462b26b44857eea6b53092baeeb5034364
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053355"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087078"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中最佳化已佈建的輸送量成本
 
@@ -57,9 +57,9 @@ Azure Cosmos DB 可藉由提供所佈建的輸送量模型，於任何規模提�
 |----|----|----|
 |SQL API|資料庫|容器|
 |適用於 MongoDB 的 Azure Cosmos DB API|資料庫|集合|
-|Cassandra API|keyspace|表格|
-|Gremlin API|資料庫帳戶|圖表|
-|資料表 API|資料庫帳戶|表格|
+|Cassandra API|keyspace|Table|
+|Gremlin API|資料庫帳戶|圖形|
+|資料表 API|資料庫帳戶|Table|
 
 您可以在不同層級佈建輸送量，以根據工作負載特性獲得最佳成本。 如先前所述，您可以隨時以程式設計方式，對個別容器或集體形式的一組容器增加或減少所佈建的輸送量。 隨著工作負載的變化來彈性調整輸送量，您便只需支付您已設定的輸送量。 如果您的容器或一組容器分散在多個區域，則您對一個容器或一組容器所設定的輸送量，保證可供所有區域使用。
 
@@ -123,7 +123,7 @@ connectionPolicy.RetryOptions.MaxRetryWaitTimeInSeconds = 60;
 
 ## <a name="scale-your-throughput-elastically-and-on-demand"></a>彈性地隨需調整輸送量 
 
-您必須支付所佈建的輸送量，因此讓佈建的輸送量符合所需可協助您避免未用輸送量的費用。 您可以隨時視需要相應增加或減少所佈建的輸送量。  
+您必須支付所佈建的輸送量，因此讓佈建的輸送量符合所需可協助您避免未用輸送量的費用。 您可以隨時視需要相應增加或減少所佈建的輸送量。 如果您的輸送量需求非常可預測，您可以使用 Azure Functions 並使用計時器觸發程式來[增加或減少排程的輸送量](scale-on-schedule.md)。 
 
 * 監視 RU 取用量和限速要求的比率，您可能會發現您不需要整天或整週都保有固定的佈建輸送量。 夜間或週末所收到的流量可能會較少。 藉由使用 Azure 入口網站或 Azure Cosmos DB 原生 SDK 或 REST API，您可以隨時調整所佈建的輸送量。 Azure Cosmos DB 的 REST API 會提供端點讓您以程式設計方式更新容器的效能層級，以便您可以簡單地根據當天時間或星期幾來從程式碼調整輸送量。 此作業在執行時不會造成停機，而且通常不到一分鐘即可生效。 
 
@@ -178,7 +178,7 @@ connectionPolicy.RetryOptions.MaxRetryWaitTimeInSeconds = 60;
 接下來，您可以利用下列文章繼續深入了解 Azure Cosmos DB 中有關成本最佳化的詳細資訊：
 
 * 深入了解[最佳化開發與測試](optimize-dev-test.md)
-* 深入了解 [Azure Cosmos DB 上的計費](understand-your-bill.md)
+* 深入了解 [Azure Cosmos DB 帳單](understand-your-bill.md)
 * 深入了解[最佳化儲存體成本](optimize-cost-storage.md)
 * 深入了解[最佳化讀取和寫入的成本](optimize-cost-reads-writes.md)
 * 深入了解[最佳化查詢成本](optimize-cost-queries.md)

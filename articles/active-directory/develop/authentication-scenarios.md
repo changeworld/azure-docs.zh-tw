@@ -13,18 +13,18 @@ ms.date: 02/03/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 841ff610509c0d580ff8dca3a9fc14b816d56f1c
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 9760f09f2588f09263c96cf8c1be74129b117009
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983217"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085373"
 ---
 # <a name="authentication-basics"></a>驗證基本概念
 
 ## <a name="what-is-authentication"></a>什麼是驗證
 
-本文涵蓋許多您必須瞭解的驗證概念，以建立受保護的 web 應用程式、web Api 或呼叫受保護 Web Api 的應用程式。 如果您看到不熟悉的詞彙，請嘗試我們的（詞彙） [developer-glossary.md]。
+本文涵蓋許多您必須瞭解的驗證概念，以建立受保護的 web 應用程式、web Api 或呼叫受保護 Web Api 的應用程式。 如果您看到不熟悉的詞彙，請嘗試我們的[詞彙](developer-glossary.md)。
 
 **驗證**是證明您是誰所說的程式。 驗證 (Authentication) 有時會被簡稱為 AuthN。
 

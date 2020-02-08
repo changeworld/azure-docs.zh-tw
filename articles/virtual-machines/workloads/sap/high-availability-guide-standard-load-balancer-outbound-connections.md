@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/28/2019
+ms.date: 02/07/2020
 ms.author: radeltch
-ms.openlocfilehash: 179df26eb0cc75899c9b509ebe00410ffa916dc8
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 52179f15829981d59ff060784a49eccef89bb186
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935187"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083735"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>在 SAP 高可用性案例中使用 Azure Standard Load Balancer 虛擬機器的公用端點連線能力
 
@@ -106,7 +106,7 @@ SAP 系統通常包含機密的商務資料。 裝載 SAP 系統的 Vm 很少可
     az network lb outbound-rule create --address-pool MyBackendPoolOfPublicILB --frontend-ip-configs MyPublicILBFrondEndIP --idle-timeout 30 --lb-name MyPublicILB --name MyOutBoundRules  --outbound-ports 10000 --enable-tcp-reset true --protocol All --resource-group MyResourceGroup
    ```
 
-4. 建立網路安全性群組規則，以限制對特定公用端點的存取。 如果有現有的網路安全性群組，您可以調整它。 下列範例顯示如何僅允許存取 Azure 管理 API： 
+4. 建立網路安全性群組規則，以限制對特定公用端點的存取。 如果有現有的網路安全性群組，您可以調整它。 下列範例顯示如何啟用 Azure 管理 API 的存取： 
    1. 流覽至網路安全性群組
    1. 按一下 [輸出安全性規則]
    1. 新增規則以**拒絕**對**網際網路**的所有輸出存取。

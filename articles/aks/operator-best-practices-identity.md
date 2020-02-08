@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: mlearned
-ms.openlocfilehash: 06d15d66df0b2ec0049d4b2fffae6a9909b05dca
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 35cded14977988c80455a9c28a0e01e7913d58f4
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549133"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069501"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 中驗證和授權的最佳做法
 
@@ -122,7 +122,7 @@ roleRef:
 
 如需 AKS 中叢集作業的相關詳細資訊，請參閱下列最佳作法：
 
-* [多租使用者和叢集隔離][aks-best-practices-scheduler]
+* [多租使用者和叢集隔離][aks-best-practices-cluster-isolation]
 * [基本 Kubernetes 排程器功能][aks-best-practices-scheduler]
 * [Advanced Kubernetes 排程器功能][aks-best-practices-advanced-scheduler]
 

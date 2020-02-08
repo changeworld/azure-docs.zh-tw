@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1f34c4fb89d28a001a4af4d21879403a9ac5e860
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: e5ee43af97e79f1e835787d61bd79cfb256ef445
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024699"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083143"
 ---
 # <a name="set-up-avs-private-cloud-as-a-disaster-recovery-site-for-on-premises-vmware-workloads"></a>將 AVS 私用雲端設定為內部部署 VMware 工作負載的嚴重損壞修復網站
 
@@ -41,17 +41,17 @@ AVS 解決方案：
 
 下列各節說明如何在您的 AVS 私人雲端中使用 Zerto 虛擬複寫來部署 DR 解決方案。
 
-1. [先決條件](#prerequisites)
+1. [必要條件](#prerequisites)
 2. [您的 AVS 私用雲端上的選擇性設定](#optional-configuration-on-your-avs-private-cloud)
 3. [在您的 AVS 私人雲端上設定 ZVM 和 VRA](#set-up-zvm-and-vra-on-your-avs-private-cloud)
 4. [設定 Zerto 虛擬保護群組](#set-up-zerto-virtual-protection-group)
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 若要啟用從內部部署環境到您的 AVS 私人雲端的 Zerto 虛擬複寫，請完成下列必要條件。
 
 1. [在您的內部部署網路與您的 AVS 私人雲端之間設定站對站 VPN](set-up-vpn.md)連線。
-2. [設定 DNS 查閱，讓您的 Avs 私用雲端管理元件轉送到 Avs 私人雲端 DNS 伺服器](on-premises-dns-setup.md)。 若要啟用 DNS 查閱的轉送，請在您的內部部署 DNS 伺服器中建立轉送區域專案，以 `*.AVS.io` 至 AVS DNS 伺服器。
+2. [設定 DNS 查閱，讓您的 Avs 私用雲端管理元件轉送到 Avs 私人雲端 DNS 伺服器](on-premises-dns-setup.md)。 若要啟用 DNS 查閱的轉送，請在您的內部部署 DNS 伺服器中建立轉送區域專案，以 `*.cloudsimple.io` 至 AVS DNS 伺服器。
 3. 設定 DNS 查閱，以便將內部部署 vCenter 元件轉送至內部部署 DNS 伺服器。 您必須透過站對站 VPN，從您的 AVS 私用雲端連線到 DNS 伺服器。 如需協助，請提交[支援要求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)，並提供下列資訊。 
 
     * 內部部署 DNS 功能變數名稱

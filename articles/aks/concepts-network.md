@@ -5,13 +5,14 @@ author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
+ms.custom: fasttrack-edit
 ms.author: mlearned
-ms.openlocfilehash: 86fa59a3d1c07aae842404c465b908e550708071
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 06825f184365cfc439167be15580eb19bf5ecb38
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77047448"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084272"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 中的網路概念
 
@@ -106,6 +107,8 @@ Kubenet 與 Azure CNI 之間存在下列行為差異：
 | 存取受服務端點保護的資源                                             | 支援 | 支援 |
 | 使用負載平衡器服務、應用程式閘道或輸入控制器來公開 Kubernetes 服務 | 支援 | 支援 |
 | 預設 Azure DNS 和私人區域                                                          | 支援 | 支援 |
+
+關於 DNS，使用 kubenet 和 Azure CNI 外掛程式 DNS 是由 CoreDNS 所提供，在 AKS 中執行的守護程式集。 如需有關 Kubernetes 上 CoreDNS 的詳細資訊，請參閱[自訂 DNS 服務](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/)。 CoreDNS 是根據預設值來設定，以將未知的網域轉送到節點 DNS 伺服器，換句話說，是在部署 AKS 叢集的 Azure 虛擬網路的 DNS 功能。 因此，Azure DNS 和私人區域將適用于在 AKS 中執行的 pod。
 
 ### <a name="support-scope-between-network-models"></a>網路模型之間的支援範圍
 

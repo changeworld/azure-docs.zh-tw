@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 3b3b83719da4c1c19706845fa4cb1dc75712d145
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: bbb0992eaeef7892e5940130131ac139a339b47d
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76932386"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083247"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "76932386"
 
 如需部署工作流程中相關概念的詳細資訊，請參閱[使用 Azure Machine Learning 來管理、部署和監視模型](concept-model-management-and-deployment.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - Azure Machine Learning 工作區。 如需詳細資訊，請參閱[建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。
 
@@ -172,22 +172,22 @@ Azure ML 支援在單一端點後方部署單一或多個模型。
 
 如需顯示如何在單一容器化端點後方使用多個模型的 E2E 範例，請參閱[此範例](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-multi-model)
 
-## <a name="prepare-to-deploy"></a>準備部署
+## <a name="prepare-deployment-artifacts"></a>準備部署成品
 
-若要部署模型，您需要下列專案：
+若要部署模型，您需要下列各項：
 
-* **輸入腳本**。 此腳本會接受要求，使用模型來評分要求，並傳回結果。
+* **專案腳本 & 原始程式碼**相依性。 此腳本會接受要求，使用模型來評分要求，並傳回結果。
 
     > [!IMPORTANT]
     > * 專案腳本是您的模型特有的。 它必須瞭解傳入要求資料的格式、您的模型所預期的資料格式，以及傳回給用戶端的資料格式。
     >
     >   如果要求資料的格式無法供您的模型使用，腳本就可以將它轉換成可接受的格式。 它也可以在將回應傳回給用戶端之前，先將它轉換。
     >
-    > * Azure Machine Learning SDK 不會提供 web 服務或 IoT Edge 部署的方式來存取您的資料存放區或資料集。 如果您已部署的模型需要存取儲存在部署外部的資料，例如 Azure 儲存體帳戶中的資料，您必須使用相關的 SDK 開發自訂程式碼解決方案。 例如，[適用于 Python 的 AZURE 儲存體 SDK](https://github.com/Azure/azure-storage-python)。
+    > * Web 服務和 IoT Edge 部署無法存取工作區資料存放區或資料集。 如果您已部署的服務需要存取儲存在部署外部的資料，例如 Azure 儲存體帳戶中的資料，您必須使用相關的 SDK 開發自訂程式碼解決方案。 例如，[適用于 Python 的 AZURE 儲存體 SDK](https://github.com/Azure/azure-storage-python)。
     >
     >   可能適用于您案例的替代方法是[批次預測](how-to-use-parallel-run-step.md)，這會在計分期間提供資料存放區的存取權。
 
-* 相依性，例如執行專案腳本或模型所**需的 helper**腳本或 Python/Conda 套件。
+* **推斷環境**。 包含執行模型所需之已安裝封裝相依性的基底映射。
 
 * 裝載已部署模型之計算目標的**部署**設定。 此設定會描述執行模型所需的記憶體和 CPU 需求等事項。
 
@@ -485,7 +485,7 @@ def run(request):
 > pip install azureml-contrib-services
 > ```
 
-### <a name="2-define-your-inferenceconfig"></a>2. 定義您的 InferenceConfig
+### <a name="2-define-your-inference-environment"></a>2. 定義推斷環境
 
 推斷設定會描述如何設定模型來進行預測。 此設定不屬於您的輸入腳本。 它會參考您的輸入腳本，並用來尋找部署所需的所有資源。 稍後當您部署模型時，就會用到它。
 
@@ -538,8 +538,8 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 
 | 計算目標 | 部署設定範例 |
 | ----- | ----- |
-| 地方 | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
-| Azure 容器執行個體 | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
+| 本機 | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
+| Azure Container Instances | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 | Azure Kubernetes Service | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 
 本機、Azure 容器實例和 AKS web 服務的類別可以從 `azureml.core.webservice`匯入：
@@ -547,41 +547,6 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 ```python
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
 ```
-
-#### <a name="profiling"></a>分析
-
-在您將模型部署為服務之前，您可能會想要進行分析，以判斷最佳的 CPU 和記憶體需求。 您可以使用 SDK 或 CLI 來分析您的模型。 下列範例示範如何使用 SDK 來分析模型。
-
-> [!IMPORTANT]
-> 當您流量分析時，您所提供的推斷設定無法參考 Azure Machine Learning 環境。 相反地，請使用 `InferenceConfig` 物件的 `conda_file` 參數來定義軟體相依性。
-
-```python
-import json
-test_data = json.dumps({'data': [
-    [1,2,3,4,5,6,7,8,9,10]
-]})
-
-profile = Model.profile(ws, "profilemymodel", [model], inference_config, test_data)
-profile.wait_for_profiling(True)
-profiling_results = profile.get_results()
-print(profiling_results)
-```
-
-此程式碼會顯示類似下列輸出的結果：
-
-```python
-{'cpu': 1.0, 'memoryInGB': 0.5}
-```
-
-模型分析結果會以 `Run` 物件的形式發出。
-
-如需從 CLI 流量分析的詳細資訊，請參閱[az ml model profile](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile)。
-
-如需詳細資訊，請參閱下列檔：
-
-* [ModelProfile](https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py)
-* [profile （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-)
-* [推斷設定檔架構](reference-azure-machine-learning-cli.md#inference-configuration-schema)
 
 ## <a name="deploy-to-target"></a>部署至目標
 
@@ -979,7 +944,7 @@ package.wait_for_creation(show_output=True)
 
 建立封裝之後，您可以使用 `package.pull()` 將映射提取到您的本機 Docker 環境。 此命令的輸出會顯示映射的名稱。 例如： 
 
-`Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338`答案中所述步驟，工作帳戶即會啟用。 
+`Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338`第 1 課：建立 Windows Azure 儲存體物件{2}。 
 
 下載模型之後，請使用 `docker images` 命令來列出本機映射：
 

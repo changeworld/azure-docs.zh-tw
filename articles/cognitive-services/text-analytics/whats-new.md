@@ -8,43 +8,69 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 02/06/2020
 ms.author: aahi
-ms.openlocfilehash: 6fa7d6a93a56cc531df238a8580207ef7a89d5d0
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: e3fbff7a5919d4d43656f3112cb24f2017191348
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732615"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086796"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文字分析 API 有哪些新功能？
 
 文字分析 API 會持續更新。 為了讓您隨時掌握最新的開發，這篇文章為您提供新版本和功能的相關資訊。
 
-## <a name="named-entity-recognition-v3-public-preview---october-2019"></a>命名實體辨識 v3 公開預覽-2019 年10月
+## <a name="named-entity-recognition-v3-public-preview---february-2020"></a>命名實體辨識 v3 公開預覽-2020 年2月
 
-下一版的命名實體辨識（NER）現已開放公開預覽，並提供在文字中找到之實體的展開偵測和分類。 它提供：
+現在已可在「命名實體辨識」（NER） v3 公開預覽服務中使用其他實體類型，因為我們會展開文字中找到的一般和個人資訊實體的偵測。 此更新引進[模型版本](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features)`2020-02-01`，其中包括：
 
-* 識別下列新的實體類型：
-    * 電話號碼
+* 識別下列一般實體類型（僅限英文）：
+    * PersonType
+    * Products
+    * 事件
+    * 地緣政治實體（GPE）作為 [位置] 底下的子類型
+    * 技能
+
+* 識別下列個人資訊實體類型（僅限英文）：
+    * 個人
+    * 組織
+    * 年齡為 [Quantity] 底下的子類型
+    * Date 做為 DateTime 底下的子類型
+    * 電子郵件 
+    * 電話號碼（僅限美國）
+    * URL
     * IP 位址
-
-* 識別個人資訊實體類型的[新端點](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionPii)（僅限英文版）
-* [實體](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral)辨識和[實體連結](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesLinking)的個別端點。
-
-實體連結支援英文和西班牙文。 NER 語言支援會因實體類型而異。 
 
 > [!div class="nextstepaction"]
 > [深入瞭解命名實體辨識 v3](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features)
 
-## <a name="sentiment-analysis-v3-public-preview---october-2019"></a>情感分析 v3 公開預覽-2019 年10月
+### <a name="october-2019"></a>2019 年 10 月
 
-[下一版的情感分析](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment)現已開放公開預覽，並大幅改善了 API 文字分類和計分的精確度和詳細資料。 它還提供：
+#### <a name="named-entity-recognition-ner"></a>具名實體辨識 (NER)
 
-* 自動標記文字中的不同情緒。
-* 在檔和句子層級上情感分析和輸出。 
+* 識別個人資訊實體類型的[新端點](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionPii)（僅限英文版）
 
-它支援英文（`en`）、日文（`ja`）、簡體中文（`zh-Hans`）、繁體中文（`zh-Hant`）、法文（`fr`）、義大利文（`it`）、西班牙文（`es`）、荷蘭文（`nl`）、葡萄牙文（`pt`）和德文（`de`），並可在下欄區域中取得： `Australia East`、`Central Canada`、`Central US`、`East Asia`、`East US`、`East US 2`、`North Europe`和 `Southeast Asia`。 
+* [實體](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral)辨識和[實體連結](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesLinking)的個別端點。
+
+* [模型版本](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features)`2019-10-01`，其中包括：
+    * 已展開文字中找到的實體偵測和分類。 
+    * 識別下列新的實體類型：
+        * 電話號碼
+        * IP 位址
+
+實體連結支援英文和西班牙文。 NER 語言支援會因實體類型而異。
+
+#### <a name="sentiment-analysis-v3-public-preview"></a>情感分析 V3 公開預覽
+
+* 用於分析情感的[新端點](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment)。
+* [模型版本](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)`2019-10-01`，其中包括：
+
+    * 應用程式開發介面文字分類和計分的精確度和詳細資料大幅改進。
+    * 自動標記文字中的不同情緒。
+    * 在檔和句子層級上情感分析和輸出。 
+
+它支援英文（`en`）、日文（`ja`）、簡體中文（`zh-Hans`）、繁體中文（`zh-Hant`）、法文（`fr`）、義大利文（`it`）、西班牙文（`es`）、荷蘭文（`nl`）、葡萄牙文（`pt`）和德文（`de`），並可在下欄區域中取得： `Australia East`、`Central Canada`、`Central US`、`East Asia`、`East US`、`East US 2`、`North Europe`和 `Southeast Asia`。`South Central US``UK South``West Europe``West US 2` 
 
 > [!div class="nextstepaction"]
 > [深入瞭解情感分析 v3](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)

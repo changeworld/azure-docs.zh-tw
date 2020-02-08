@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/10/2020
+ms.date: 02/05/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 8cf1f8ecb68e31f93c19d93d6ebc4f8ef37724e7
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 09558a8d1e4e2dc68cefd2c870f54e008d10b97b
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028448"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083563"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>建立支援資料表和佇列之客戶管理金鑰的帳戶
 
@@ -35,41 +35,93 @@ Azure 儲存體會加密待用儲存體帳戶中的所有資料。 根據預設�
 
 ### <a name="register-to-use-the-account-encryption-key"></a>註冊以使用帳戶加密金鑰
 
+若要註冊以使用帳戶加密金鑰搭配佇列或表格儲存體，請使用 PowerShell 或 Azure CLI。
+
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+
+若要向 PowerShell 註冊，請呼叫[AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature)命令。
+
+```powershell
+Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
+    -FeatureName AllowAccountEncryptionKeyForQueues
+Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
+    -FeatureName AllowAccountEncryptionKeyForTables
+```
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 若要向 Azure CLI 註冊，請呼叫[az feature register](/cli/azure/feature#az-feature-register)命令。
 
-若要註冊以搭配佇列儲存體使用帳戶加密金鑰：
-
 ```azurecli
-az feature register --namespace Microsoft.Storage --name AllowAccountEncryptionKeyForQueues
+az feature register --namespace Microsoft.Storage \
+    --name AllowAccountEncryptionKeyForQueues
+az feature register --namespace Microsoft.Storage \
+    --name AllowAccountEncryptionKeyForTables
 ```
 
-若要註冊以搭配使用帳戶加密金鑰與資料表儲存體：
+# <a name="templatetabtemplate"></a>[範本](#tab/template)
 
-```azurecli
-az feature register --namespace Microsoft.Storage --name AllowAccountEncryptionKeyForTables
-```
+N/A
+
+---
 
 ### <a name="check-the-status-of-your-registration"></a>檢查註冊的狀態
 
-若要檢查佇列儲存體註冊的狀態：
+若要檢查佇列或資料表儲存體的註冊狀態，請使用 PowerShell 或 Azure CLI。
 
-```azurecli
-az feature show --namespace Microsoft.Storage --name AllowAccountEncryptionKeyForQueues
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+
+若要使用 PowerShell 檢查註冊的狀態，請呼叫[AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature)命令。
+
+```powershell
+Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
+    -FeatureName AllowAccountEncryptionKeyForQueues
+Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
+    -FeatureName AllowAccountEncryptionKeyForTables
 ```
 
-若要檢查資料表儲存體的註冊狀態：
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+若要使用 Azure CLI 檢查註冊的狀態，請呼叫[az feature](/cli/azure/feature#az-feature-show)命令。
 
 ```azurecli
-az feature show --namespace Microsoft.Storage --name AllowAccountEncryptionKeyForTables
+az feature show --namespace Microsoft.Storage \
+    --name AllowAccountEncryptionKeyForQueues
+az feature show --namespace Microsoft.Storage \
+    --name AllowAccountEncryptionKeyForTables
 ```
+
+# <a name="templatetabtemplate"></a>[範本](#tab/template)
+
+N/A
+
+---
 
 ### <a name="re-register-the-azure-storage-resource-provider"></a>重新註冊 Azure 儲存體資源提供者
 
-在您的註冊核准之後，您必須重新註冊 Azure 儲存體資源提供者。 呼叫[az provider register](/cli/azure/provider#az-provider-register)命令：
+在您的註冊核准之後，您必須重新註冊 Azure 儲存體資源提供者。 使用 PowerShell 或 Azure CLI 重新註冊資源提供者。
+
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+
+若要使用 PowerShell 重新註冊資源提供者，請呼叫[register-azresourceprovider](/powershell/module/az.resources/register-azresourceprovider)命令。
+
+```powershell
+Register-AzResourceProvider -ProviderNamespace 'Microsoft.Storage'
+```
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+若要使用 Azure CLI 重新註冊資源提供者，請呼叫[az provider register](/cli/azure/provider#az-provider-register)命令。
 
 ```azurecli
 az provider register --namespace 'Microsoft.Storage'
 ```
+
+# <a name="templatetabtemplate"></a>[範本](#tab/template)
+
+N/A
+
+---
 
 ## <a name="create-an-account-that-uses-the-account-encryption-key"></a>建立使用帳戶加密金鑰的帳戶
 
@@ -80,7 +132,28 @@ az provider register --namespace 'Microsoft.Storage'
 > [!NOTE]
 > 只有在建立儲存體帳戶時，才可以選擇性地將佇列和資料表儲存體設定為使用帳戶加密金鑰來加密資料。 Blob 儲存體和 Azure 檔案儲存體一律使用帳戶加密金鑰來加密資料。
 
-### <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+
+若要使用 PowerShell 來建立依賴帳戶加密金鑰的儲存體帳戶，請確定您已安裝 Azure PowerShell 模組（3.4.0 或更新版本）。 如需詳細資訊，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。
+
+接下來，使用適當的參數呼叫[new-azstorageaccount](/powershell/module/az.storage/new-azstorageaccount)命令，以建立一般用途 v2 儲存體帳戶：
+
+- 包含 `-EncryptionKeyTypeForQueue` 選項，並將其值設定為 `Account`，以使用帳戶加密金鑰來加密佇列儲存體中的資料。
+- 包含 `-EncryptionKeyTypeForTable` 選項，並將其值設定為 `Account`，以使用帳戶加密金鑰來加密資料表儲存體中的資料。
+
+下列範例示範如何建立一般用途 v2 儲存體帳戶，其設定為讀取權限異地多餘儲存體（RA-GRS），並使用帳戶加密金鑰來加密佇列和資料表儲存體的資料。 請記得以您自己的值取代括弧中的預留位置值：
+
+```powershell
+New-AzStorageAccount -ResourceGroupName <resource_group> `
+    -AccountName <storage-account> `
+    -Location <location> `
+    -SkuName "Standard_RAGRS" `
+    -Kind StorageV2 `
+    -EncryptionKeyTypeForTable Account `
+    -EncryptionKeyTypeForQueue Account
+```
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 若要使用 Azure CLI 來建立依賴帳戶加密金鑰的儲存體帳戶，請確定您已安裝 Azure CLI 版2.0.80 或更新版本。 如需詳細資訊，請參閱 [安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
@@ -89,22 +162,22 @@ az provider register --namespace 'Microsoft.Storage'
 - 包含 `--encryption-key-type-for-queue` 選項，並將其值設定為 `Account`，以使用帳戶加密金鑰來加密佇列儲存體中的資料。
 - 包含 `--encryption-key-type-for-table` 選項，並將其值設定為 `Account`，以使用帳戶加密金鑰來加密資料表儲存體中的資料。
 
-下列範例示範如何建立 LRS 的一般用途 v2 儲存體帳戶，並使用帳戶加密金鑰來加密佇列和資料表儲存體的資料。 請記得以您自己的值取代括弧中的預留位置值：
+下列範例示範如何建立一般用途 v2 儲存體帳戶，其設定為讀取權限異地多餘儲存體（RA-GRS），並使用帳戶加密金鑰來加密佇列和資料表儲存體的資料。 請記得以您自己的值取代括弧中的預留位置值：
 
 ```azurecli
 az storage account create \
     --name <storage-account> \
     --resource-group <resource-group> \
     --location <location> \
-    --sku Standard_LRS \
+    --sku Standard_RAGRS \
     --kind StorageV2 \
     --encryption-key-type-for-table Account \
     --encryption-key-type-for-queue Account
 ```
 
-### <a name="templatetabtemplate"></a>[範本](#tab/template)
+# <a name="templatetabtemplate"></a>[範本](#tab/template)
 
-下列 JSON 範例會建立 LRS 的一般用途 v2 儲存體帳戶，並使用帳戶加密金鑰來加密佇列和資料表儲存體的資料。 請記得以您自己的值取代角括弧中的預留位置值：
+下列 JSON 範例會建立一般用途 v2 儲存體帳戶，其設定為讀取權限異地多餘儲存體（RA-GRS），並使用帳戶加密金鑰來加密佇列和資料表儲存體的資料。 請記得以您自己的值取代角括弧中的預留位置值：
 
 ```json
 "resources": [
@@ -116,7 +189,7 @@ az storage account create \
         "dependsOn": [],
         "tags": {},
         "sku": {
-            "name": "[parameters('Standard_LRS')]"
+            "name": "[parameters('Standard_RAGRS')]"
         },
         "kind": "[parameters('StorageV2')]",
         "properties": {
@@ -151,11 +224,32 @@ az storage account create \
 
 若要確認儲存體帳戶中的服務是否使用帳戶加密金鑰，請呼叫 Azure CLI [az storage account](/cli/azure/storage/account#az-storage-account-show)命令。 此命令會傳回一組儲存體帳戶屬性和其值。 在 [加密] 屬性中尋找每個服務的 [`keyType`] 欄位，並確認它已設定為 [`Account`]。
 
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+
+若要確認儲存體帳戶中的服務是否使用帳戶加密金鑰，請呼叫[new-azstorageaccount](/powershell/module/az.storage/get-azstorageaccount)命令。 此命令會傳回一組儲存體帳戶屬性和其值。 尋找 [`Encryption`] 屬性中每個服務的 [`KeyType`] 欄位，並確認它已設定為 [`Account`]。
+
+```powershell
+$account = Get-AzStorageAccount -ResourceGroupName <resource-group> `
+    -StorageAccountName <storage-account>
+$account.Encryption.Services.Queue
+$account.Encryption.Services.Table
+```
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+若要確認儲存體帳戶中的服務是否使用帳戶加密金鑰，請呼叫[az storage account](/cli/azure/storage/account#az-storage-account-show)命令。 此命令會傳回一組儲存體帳戶屬性和其值。 在 [加密] 屬性中尋找每個服務的 [`keyType`] 欄位，並確認它已設定為 [`Account`]。
+
 ```azurecli
 az storage account show /
     --name <storage-account> /
     --resource-group <resource-group>
 ```
+
+# <a name="templatetabtemplate"></a>[範本](#tab/template)
+
+N/A
+
+---
 
 ## <a name="next-steps"></a>後續步驟
 

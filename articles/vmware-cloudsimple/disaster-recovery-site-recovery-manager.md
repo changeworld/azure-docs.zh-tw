@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0bbd8a12820432ce2f131dda29af6740a2f04e18
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: ccdf385d2581923e1fad4fa5c42f351c4f0947ca
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024716"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083146"
 ---
 # <a name="set-up-avs-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>使用 VMware Site Recovery Manager 將 AVS 私用雲端設定為嚴重損壞修復目標
 
@@ -101,7 +101,7 @@ AVS 解決方案會要求您執行下列動作：
 
 若要在您的 AVS 私人雲端中為您的工作負載提供 IP 位址查閱、IP 位址管理和名稱解析服務，請依照在[您的 Avs 私人雲端中設定 DNS 和 DHCP 應用程式和工作負載](dns-dhcp-setup.md)中所述，設定 DHCP 和 DNS 伺服器。
 
-您的 AVS 私人雲端中的管理 Vm 和主機會使用 *. avs.io 網域。 若要解決此網域的要求，請在 DNS 伺服器上設定 DNS 轉送，如[建立條件](on-premises-dns-setup.md#create-a-conditional-forwarder)轉寄站中所述。
+您的 AVS 私人雲端中的管理 Vm 和主機會使用 *. cloudsimple.io 網域。 若要解決此網域的要求，請在 DNS 伺服器上設定 DNS 轉送，如[建立條件](on-premises-dns-setup.md#create-a-conditional-forwarder)轉寄站中所述。
 
 ### <a name="install-vsphere-replication-appliance-in-your-on-premises-environment"></a>在您的內部部署環境中安裝 vSphere 複寫應用裝置
 
@@ -133,7 +133,7 @@ AVS 要求您不要使用預設的 ' cloudowner ' 使用者來安裝 vRA 和 SRM
 安裝包含下列高階步驟：
 
 1. [提升許可權](escalate-private-cloud-privileges.md)。
-2. 在您的 AVS 私人雲端中建立使用者，以進行 vSphere 複寫和 SRM 安裝。 以下在[VCENTER UI 中說明：在適用于 vRA & SRM 安裝的 AVS 私人雲端中建立使用者](#vcenter-ui-create-a-user-in-the-avs-private-cloud-for-vra-and-srm-installation)。
+2. 在您的 AVS 私人雲端中建立使用者，以進行 vSphere 複寫和 SRM 安裝。 以下在[VCENTER UI 中說明：在適用于 vRA &AMP; SRM 安裝的 AVS 私人雲端中建立使用者](#vcenter-ui-create-a-user-in-the-avs-private-cloud-for-vra-and-srm-installation)。
 3. 準備您的 AVS 私用雲端環境，以進行 vRA 安裝。
 4. 使用 vmware.com 的 VR ISO 中的 OVF，在您的 AVS 私人雲端中部署 vRA。 針對 vRA 6.5，[此 VMware blog](https://blogs.vmware.com/virtualblocks/2017/01/20/vr-65-ovf-choices)包含相關資訊。
 5. 設定 vRA 的防火牆規則。 以下在[AVS 入口網站中說明：設定 vRA 的防火牆規則](#avs-portal-configure-firewall-rules-for-vra)。

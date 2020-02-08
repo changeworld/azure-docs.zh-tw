@@ -4,14 +4,14 @@ description: 提供通用的 Azure 訂用帳戶和服務限制、配額和條件
 tags: billing
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: c5714dd30be4d557086667a74fff2ff8117e2a2b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: b209bc3e60f50ac363d3426d6c87f206b016d711
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901407"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087444"
 ---
-# <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 訂閱和服務的限制、配額和條件
+# <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 訂用帳戶和服務限制、配額與限制
 
 本文件列出一些最常見的 Microsoft Azure 限制，有時也稱為配額。 本文件目前未涵蓋所有 Azure 服務。 經過一段時間，清單就會展開並更新，以涵蓋更多服務。
 
@@ -71,6 +71,7 @@ ms.locfileid: "76901407"
 * [Data Factory](#data-factory-limits)
 * [Data Lake Analytics](#data-lake-analytics-limits)
 * [Data Lake Store](#data-lake-store-limits)
+* [資料共用](#data-share-limits)
 * [Database Migration Service](#database-migration-service-limits)
 * [Event Grid](#event-grid-limits)
 * [事件中樞](#event-hubs-limits)
@@ -193,7 +194,7 @@ ms.locfileid: "76901407"
 
 [!INCLUDE [network-watcher-limits](../../../includes/network-watcher-limits.md)]
 
-#### <a name="private-link-limits"></a>私用連結限制
+#### <a name="private-link-limits"></a>Private Link 限制
 
 [!INCLUDE [private-link-limits](../../../includes/private-link-limits.md)]
 
@@ -405,6 +406,10 @@ ms.locfileid: "76901407"
 
 [!INCLUDE [azure-data-lake-store-limits](../../../includes/azure-data-lake-store-limits.md)]
 
+### <a name="data-share-limits"></a>資料共用限制
+
+[!INCLUDE [azure-data-share-limits](../../../includes/azure-data-share-limits.md)]
+
 ### <a name="database-migration-service-limits"></a>Database Migration Service 限制
 
 [!INCLUDE [database-migration-service-limits](../../../includes/database-migration-service-limits.md)]
@@ -481,7 +486,7 @@ ms.locfileid: "76901407"
 
 如 SQL 資料倉儲限制，請參閱[SQL 資料倉儲資源限制](../../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [瞭解 Azure 限制和增加](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 * [Azure 的虛擬機器和雲端服務大小](../../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

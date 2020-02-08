@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: 109ac20d8a3d3dc87b4a83165c0e6c24808c1340
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 6342e6a75c8397712e028874b4d727bf3d6f5ff4
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529638"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087117"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>使用指令碼動作在 Azure HDInsight 上安全地管理 Python 環境
 
@@ -22,7 +22,7 @@ ms.locfileid: "75529638"
 
 HDInsight 在 Spark 叢集中有兩個內建的 Python 安裝，Anaconda Python 2.7 和 Python 3.5。 在某些情況下，客戶必須自訂 Python 環境，例如安裝外部 Python 套件或其他 Python 版本。 在本文中，我們會示範在 HDInsight 上安全地管理[Apache Spark](https://spark.apache.org/)叢集之 Python 環境的最佳作法。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 
@@ -43,7 +43,7 @@ HDInsight 服務中有兩種類型的開放原始碼元件可用：
 > [!IMPORTANT]
 > 對隨 HDInsight 叢集提供的元件會有完整支援。 Microsoft 支援服務可協助隔離和解決這些元件的相關問題。
 >
-> 自訂元件則獲得商務上合理的支援，協助您進一步疑難排解問題。 Microsoft 支援服務可能可以解決問題，也可能要求您利用可用的開放原始碼技術管道，找到該技術的深度專業知識。 例如，有許多社群網站可供使用，例如：[MSDN 的 HDInsight 論壇](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight) \(英文\)、[https://stackoverflow.com](https://stackoverflow.com) \(英文\)。 此外，Apache 專案在[https://apache.org](https://apache.org)上也有專案網站，例如[Hadoop](https://hadoop.apache.org/)。
+> 自訂元件則獲得商務上合理的支援，協助您進一步疑難排解問題。 Microsoft 支援服務可能可以解決問題，也可能要求您利用可用的開放原始碼技術管道，找到該技術的深度專業知識。 例如，有許多社群網站可供使用，例如：[MSDN 的 HDInsight 論壇](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight) \(英文\)、[https://stackoverflow.com](https://stackoverflow.com) \(英文\)。 此外，Apache 專案在 [https://apache.org](https://apache.org) 上也有專案網站，例如 [Hadoop](https://hadoop.apache.org/)。
 
 ## <a name="understand-default-python-installation"></a>瞭解預設的 Python 安裝
 
@@ -122,7 +122,7 @@ HDInsight 叢集取決於內建的 Python 環境，也就是 Python 2.7 和 Pyth
 
 ## <a name="known-issue"></a>已知問題
 
-Anaconda 版本的4.7.11 和4.7.12 有已知的錯誤。 如果您看到您的腳本動作在 `"Collecting package metadata (repodata.json): ...working..."`，且發生 `"Python script has been killed due to timeout after waiting 3600 secs"`失敗，則為。 您可以下載[此腳本](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh)，並將它當做所有節點上的腳本動作執行，以修正此問題。
+Anaconda 版本4.7.11、4.7.12 和4.8.0 有已知的錯誤。 如果您看到您的腳本動作在 `"Collecting package metadata (repodata.json): ...working..."`，且發生 `"Python script has been killed due to timeout after waiting 3600 secs"`失敗，則為。 您可以下載[此腳本](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh)，並將它當做所有節點上的腳本動作執行，以修正此問題。
 
 若要檢查您的 Anaconda 版本，您可以透過 SSH 連線到叢集標頭節點，然後執行 `/usr/bin/anaconda/bin/conda --v`。
 

@@ -7,33 +7,34 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: f6ba5c240a9ad74d9a2fab41496ce519f25fc4dc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 02/06/2020
+ms.openlocfilehash: 2e5ae90cf6ee8bccc9919c88bc695bf944f58a67
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812066"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069433"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>合作夥伴中心的商業 Marketplace 入口網站總覽
 
 歡迎使用 Microsoft 合作夥伴中心的商業 Marketplace 入口網站。 [商用 Marketplace 入口網站](https://partner.microsoft.com/dashboard/commercial-marketplace/)的設計可協助您銷售您的產品和服務、觸及客戶，並拓展您的業務。
 
-在本檔中，我們將探討建立和使用您的合作夥伴中心帳戶、建立新的軟體即服務（SaaS）供應專案的基本概念，這些供應專案可列于[Azure Marketplace](https://azuremarketplace.microsoft.com/)或[AppSource](https://appsource.microsoft.com/)、管理現有的 SaaS 供應專案，以及提供協助您解決問題的資源，並收集您的意見反應。 
+在本檔中，我們將討論建立和使用您的合作夥伴中心帳戶、建立新的軟體即服務（SaaS）供應專案（可在[Azure Marketplace](https://azuremarketplace.microsoft.com/)或[AppSource](https://appsource.microsoft.com/)上列出）、管理現有的 SaaS 供應專案，以及提供資源以協助您解決問題並收集您的意見反應的基本概念。 
 
 ## <a name="about-microsofts-commercial-marketplace"></a>關於 Microsoft 的商業 Marketplace
 
-各種規模的企業、政府和組織都能透過[Azure Marketplace](https://azuremarketplace.microsoft.com/)和[AppSource](https://appsource.microsoft.com/) web 商店， [Azure 入口網站的產品內體驗](https://portal.azure.com)，尋找商務解決方案、創新技術和啟用服務，[雲端解決方案提供者](https://partner.microsoft.com/cloud-solution-provider)和 Microsoft 銷售小組。 
+各種規模的企業、政府和組織都能透過[Azure Marketplace](https://azuremarketplace.microsoft.com/)和[AppSource](https://appsource.microsoft.com/) web 商店、 [Azure 入口網站產品內體驗](https://portal.azure.com)、[雲端解決方案提供者](https://partner.microsoft.com/cloud-solution-provider)和 Microsoft 銷售小組，尋找商務解決方案、創新技術和啟用服務。 
 
 合作夥伴中心是 Microsoft 合作夥伴體驗的中樞。 對於與 Microsoft 合作並利用 marketplace 的組織而言，合作夥伴中心是發行者建立和管理供應專案的入口網站，提供試用產品示範，並查看供應專案效能的分析。 
 
 ## <a name="migration-from-cloud-partner-portal"></a>從 Cloud Partner 入口網站遷移
 
-合作夥伴中心不斷演進，以更緊密地整合 Microsoft 與軟體發行者的關係。 在此演進過程中，我們會將[Cloud Partner 入口網站](https://cloudpartner.azure.com/)的功能遷移至合作夥伴中心。 
+合作夥伴中心不斷演進，以更緊密地整合 Microsoft 與軟體發行者的關係。 在此演進過程中，我們會將[Cloud Partner 入口網站](https://cloudpartner.azure.com/)的功能遷移至合作夥伴中心。
 
-**目前，合作夥伴中心只支援建立和管理軟體即服務（SaaS）供應專案。**
+>[!NOTE]
+>目前，合作夥伴中心支援建立和管理軟體即服務（SaaS）供應專案、Azure 應用程式供應專案、Dynamics 365 for Customer 優惠、Engagement & PowerApps 優惠、Dynamics 365 for Operations 優惠和 Dynamics 365 for商務核心服務。 很快就會支援更多優惠。
 
-現有的 marketplace 發行者會透過直覺化的介面，尋找熟悉但改良的使用者體驗。 入口網站中的通知和透過電子郵件，將會通知發行者該遷移。 使用者會順暢地導向至適當的位置。 客戶不會受到此合作夥伴體驗升級的影響。 
+現有的 marketplace 發行者會透過直覺化的介面，尋找熟悉但改良的使用者體驗。 入口網站中的通知和透過電子郵件，將會通知發行者該遷移。 使用者會順暢地導向至適當的位置。 客戶不會受到此合作夥伴體驗升級的影響。
 
 ### <a name="improvements-on-user-experience-and-billing"></a>改善使用者體驗和計費
 

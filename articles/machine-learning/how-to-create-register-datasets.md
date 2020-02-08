@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: b9060823c997391d02eae61911f8aa748f191657
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 99f4d8d854334b047caf36406f21890cde7eda16
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260849"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77082947"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>建立 Azure Machine Learning 資料集
 
@@ -32,7 +32,7 @@ ms.locfileid: "76260849"
 
 * 共用資料並與其他使用者共同作業。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要建立及使用資料集，您需要：
 
@@ -109,11 +109,11 @@ titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path, set_column_type
 titanic_ds.take(3).to_pandas_dataframe()
 ```
 
-| |PassengerId|存活的|Pclass|名稱|性別|年齡|SibSp|Parch|Ticket|費用|插槽|著手
+| |PassengerId|式|Pclass|名稱|性別|Age|SibSp|Parch|Ticket|費用|插槽|著手
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
-0|1|否|3|Braund，Mr. Owen Harris|male|22.0|1|0|A/5 21171|7.2500||S
-1|2|是|1|Cumings，Mrs John Bradley （Florence Briggs Th 。|female|38.0|1|0|電腦17599|71.2833|C85|C
-2|3|是|3|Heikkinen，錯過。 Laina|female|26.0|0|0|STON/O2。 3101282|7.9250||S
+0|1|False|3|Braund，Mr. Owen Harris|male|22.0|1|0|A/5 21171|7.2500||S
+1|2|True|1|Cumings，Mrs John Bradley （Florence Briggs Th 。|female|38.0|1|0|電腦17599|71.2833|C85|C
+2|3|True|3|Heikkinen，錯過。 Laina|female|26.0|0|0|STON/O2。 3101282|7.9250||S
 
 使用 `TabularDatasetFactory` 類別上的[`from_sql_query()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-sql-query-query--validate-true--set-column-types-none-)方法來讀取 Azure SQL Database：
 
@@ -162,13 +162,13 @@ web_paths = ['https://azureopendatastorage.blob.core.windows.net/mnist/train-ima
 mnist_ds = Dataset.File.from_files(path=web_paths)
 ```
 
-#### <a name="on-the-web"></a>在網路上 
-下列步驟和動畫示範如何在 Azure Machine Learning studio 中建立資料集， https://ml.azure.com 。
+#### <a name="on-the-web"></a>在 web 上 
+下列步驟和動畫示範如何在 Azure Machine Learning studio 中建立資料集， https://ml.azure.com。
 
 ![使用 UI 建立資料集](./media/how-to-create-register-datasets/create-dataset-ui.gif)
 
 若要在 studio 中建立資料集：
-1. 在 https://ml.azure.com 登入。
+1. 在 https://ml.azure.com登入。
 1. 在左窗格的 [**資產**] 區段中，選取 [**資料集**]。 
 1. 選取 [**建立資料集**] 以選擇資料集的來源。 此來源可以是本機檔案、資料存放區或公用 Url。
 1. 選取 [表格式 **] 或 [** 檔案] 做為資料集類型。
@@ -177,7 +177,7 @@ mnist_ds = Dataset.File.from_files(path=web_paths)
 
 ## <a name="register-datasets"></a>註冊資料集
 
-若要完成建立程式，請向工作區註冊您的資料集。 使用[`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--visible-true--exist-ok-false--update-if-exist-false-)方法向您的工作區註冊資料集，以便與其他人共用並在各種不同的實驗中重複使用：
+若要完成建立程式，請向工作區註冊您的資料集。 使用[`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--create-new-version-false-)方法向您的工作區註冊資料集，以便與其他人共用並在各種不同的實驗中重複使用：
 
 ```Python
 titanic_ds = titanic_ds.register(workspace=workspace,

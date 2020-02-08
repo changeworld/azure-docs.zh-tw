@@ -3,19 +3,19 @@ author: cynthn
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
-ms.author: cynthn
-ms.openlocfilehash: dc871b29cdafa57d337f9be6cf01e76212f31b67
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.author: tanmaygore
+ms.openlocfilehash: 215057640dd08d9ea524d8f6b3bed8b03a8b5b8c
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67173955"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068409"
 ---
 ## <a name="migrate-iaas-resources-from-the-classic-deployment-model-to-azure-resource-manager"></a>將 IaaS 資源從傳統部署模型移轉至 Azure Resource Manager
 首先，務必了解基礎結構即服務 (IaaS) 資源上資料平面與管理平面作業之間的差異。
 
-* 「管理/控制平面」  說明進入管理/控制平面或 API 以便修改資源的呼叫。 例如，建立 VM、重新啟動 VM 以及將虛擬網路更新成使用新子網路等作業皆可管理執行中的資源。 它們並不直接影響對 VM 的連線。
-*  「資料平面」(應用程式) 說明應用程式本身的執行階段，並牽涉到與不通過 Azure API 的執行個體進行互動。 例如，不論是存取您的網站，還是從執行中的 SQL Server 或 MongoDB 伺服器提取資料，都會被視為資料平面或應用程式互動。 其他範例包含從儲存體帳戶複製 Blob，以及存取公用 IP 位址，以使用遠端桌面通訊協定 (RDP) 或安全殼層 (SSH) 進入虛擬機器。 這些作業會讓應用程式繼續跨計算、網路和儲存體執行。
+* 「管理/控制平面」說明進入管理/控制平面或 API 以便修改資源的呼叫。 例如，建立 VM、重新啟動 VM 以及將虛擬網路更新成使用新子網路等作業皆可管理執行中的資源。 它們並不直接影響對 VM 的連線。
+* 「資料平面」(應用程式) 說明應用程式本身的執行階段，並牽涉到與不通過 Azure API 的執行個體進行互動。 例如，不論是存取您的網站，還是從執行中的 SQL Server 或 MongoDB 伺服器提取資料，都會被視為資料平面或應用程式互動。 其他範例包含從儲存體帳戶複製 Blob，以及存取公用 IP 位址，以使用遠端桌面通訊協定 (RDP) 或安全殼層 (SSH) 進入虛擬機器。 這些作業會讓應用程式繼續跨計算、網路和儲存體執行。
 
 傳統部署模型與 Resource Manager 堆疊之間的資料平面相同。 差異在於移轉過程中，Microsoft 會將資源的表示法從傳統部署模型轉譯為 Resource Manager 堆疊中的表示法。 因此，您必須使用新的工具、API 和 SDK 來管理 Resource Manager 堆疊中資源。
 
@@ -45,7 +45,7 @@ ms.locfileid: "67173955"
 >
 >
 
-### <a name="validate"></a>驗證
+### <a name="validate"></a>Validate
 驗證作業是移轉程序的第一個步驟。 此步驟的目標是要分析您希望在傳統部署模型中移轉之資源的狀態。 此作業會評估資源是否能夠移轉 (成功或失敗)。
 
 您可選取要進行移轉驗證的虛擬網路或雲端服務 (如果不在虛擬網路中)。 如果資源不能夠移轉，Azure 會列出其原因。
@@ -117,11 +117,11 @@ ms.locfileid: "67173955"
 > 在您觸發認可作業之後，就無法完成此作業。     
 >
 
-### <a name="commit"></a>認可
+### <a name="commit"></a>Commit
 完成驗證之後，您便可以認可移轉。 資源不會再出現於傳統部署模型中，而只有在 Resource Manager 部署模型中才能使用這些資源。 只能在新入口網站中管理已移轉的資源。
 
 > [!NOTE]
-> 這是一種等冪作業。 如果失敗，請重試此作業。 如果持續發生失敗，請建立支援票證，或是在我們的 [VM 論壇](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesforWindows)上建立一篇標籤為 "ClassicIaaSMigration" 的論壇文章。
+> 這是一種等冪作業。 如果失敗，請重試此作業。 如果持續失敗，請建立支援票證，或在 Microsoft Q 上建立論壇[& a](https://docs.microsoft.com/answers/index.html)
 >
 >
 
@@ -161,7 +161,7 @@ ms.locfileid: "67173955"
 | VM 上的內部 DNS 名稱 |NIC 上的內部 DNS 名稱 |在移轉期間，VM 的內部 DNS 尾碼會移轉至 NIC 上名為 "InternalDomainNameSuffix" 的唯讀屬性。 尾碼在移轉後保持不變，VM 解析應該會像之前一樣繼續運作。 |
 | 虛擬網路閘道 |虛擬網路閘道 |不變更虛擬網路閘道內容下進行移轉。 與閘道相關聯的 VIP 也不會變更。 |
 | 區域網路網站 |區域網路閘道 |不變更區域網路網站的內容下移轉到稱為本機網路閘道的新資源。 這表示內部部署位址首碼與遠端閘道的 IP。 |
-| 連線參考 |連線 |閘道與網路組態中的區域網路網站之間的連線參考會以稱為連線的新資源表示。 網路組態檔中連線參考的所有屬性都會在不變更下複製到連線資源。 傳統部署模型中虛擬網路之間連線能力的實現方式為建立兩個區域網路網站的 IPsec 通道以代表虛擬網路。 這會在 Resource Manager 模型中轉換為虛擬網路對虛擬網路連線類型，而不需要區域網路閘道。 |
+| 連線參考 |Connection |閘道與網路組態中的區域網路網站之間的連線參考會以稱為連線的新資源表示。 網路組態檔中連線參考的所有屬性都會在不變更下複製到連線資源。 傳統部署模型中虛擬網路之間連線能力的實現方式為建立兩個區域網路網站的 IPsec 通道以代表虛擬網路。 這會在 Resource Manager 模型中轉換為虛擬網路對虛擬網路連線類型，而不需要區域網路閘道。 |
 
 ## <a name="changes-to-your-automation-and-tooling-after-migration"></a>移轉之後對自動化及工具的變更
 在將資源從「傳統」部署模型移轉至 Resource Manager 部署模型的過程中，您必須更新現有的自動化或工具，以確保它在移轉之後仍可繼續運作。

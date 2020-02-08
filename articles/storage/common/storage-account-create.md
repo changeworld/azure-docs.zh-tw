@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/17/2020
+ms.date: 02/07/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 2ef90e1cb883a2d22b355ff4105ae0ce3c73ad6d
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 86aaebe652968a2ea33fd8e15f9de9c1dff31a30
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759839"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086958"
 ---
 # <a name="create-an-azure-storage-account"></a>建立 Azure 儲存體帳戶
 
@@ -24,7 +24,7 @@ Azure 儲存體帳戶包含您所有的 Azure 儲存體資料物件：Blob、檔
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -34,7 +34,15 @@ Azure 儲存體帳戶包含您所有的 Azure 儲存體資料物件：Blob、檔
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-本操作說明文章需要 Azure PowerShell 模組 Az 0.7 版或更新版本。 執行 `Get-Module -ListAvailable Az` 來尋找您目前的版本。 如果您需要安裝或升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。
+若要使用 PowerShell 建立 Azure 儲存體帳戶，請確定您已安裝 Azure PowerShell 模組 Az 0.7 版或更新版本。 如需詳細資訊，請參閱[Azure PowerShell Az 模組簡介](/powershell/azure/new-azureps-module-az)。
+
+若要尋找您目前的版本，請執行下列命令：
+
+```powershell
+Get-InstalledModule -Name "Az"
+```
+
+若要安裝或升級 Azure PowerShell，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -83,7 +91,7 @@ Connect-AzAccount
 
 若要登入您的本機安裝 CLI，請執行[az login](/cli/azure/reference-index#az-login)命令：
 
-```cli
+```azurecli-interactive
 az login
 ```
 
@@ -113,6 +121,7 @@ N/A
 # put resource group in a variable so you can use the same group name going forward,
 # without hard-coding it repeatedly
 $resourceGroup = "storage-resource-group"
+$location = "westus"
 New-AzResourceGroup -Name $resourceGroup -Location $location
 ```
 
@@ -120,7 +129,6 @@ New-AzResourceGroup -Name $resourceGroup -Location $location
 
 ```powershell
 Get-AzLocation | select Location
-$location = "westus"
 ```
 
 接下來，使用[new-azstorageaccount](/powershell/module/az.storage/New-azStorageAccount)命令，建立具有讀取權限異地多餘儲存體（RA-GRS）的一般用途 v2 儲存體帳戶。 請記住，您的儲存體帳戶名稱在 Azure 中必須是唯一的，因此請將括弧中的預留位置值取代為您自己的唯一值：
@@ -134,7 +142,7 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup `
 ```
 
 > [!IMPORTANT]
-> 如果您打算使用[Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)，請在此參數清單中包含 `-EnableHierarchicalNamespace $True`。 
+> 如果您打算使用[Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)，請在此參數清單中包含 `-EnableHierarchicalNamespace $True`。
 
 若要使用不同的複寫選項來建立一般用途 v2 儲存體帳戶，請將下表中所需的值取代為**SkuName**參數。
 

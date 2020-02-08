@@ -3,27 +3,27 @@ title: 初始化 MSAL 的用戶端應用程式 |Azure
 titleSuffix: Microsoft identity platform
 description: 瞭解如何使用適用于 JavaScript 的 Microsoft 驗證程式庫（MSAL）初始化用戶端應用程式。
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 04/12/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: e350f4fc3d40b45a1308e1edd9331dc7f71399c5
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: a0a2c5fc971c3f1f3283d95c5617bdf1e88a6a58
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696124"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084035"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>使用 MSAL 初始化用戶端應用程式
 本文說明如何將 Microsoft Authentication Library for JavaScript （MSAL）與使用者代理程式應用程式的實例進行初始化。 使用者代理程式應用程式是一種公用用戶端應用程式，其中用戶端程式代碼會在使用者代理程式（例如網頁瀏覽器）中執行。 這些用戶端不會儲存秘密，因為瀏覽器內容可公開存取。 若要深入瞭解用戶端應用程式類型和應用程式設定選項，請參閱[總覽](msal-client-applications.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 在初始化應用程式之前，您必須先向[Azure 入口網站註冊](scenario-spa-app-registration.md)，讓您的應用程式可以與 Microsoft 身分識別平臺整合。 註冊之後，您可能需要下列資訊（可在 Azure 入口網站中找到）：
 
 - 用戶端識別碼（代表應用程式 GUID 的字串）
@@ -141,4 +141,4 @@ export type Configuration = {
 這些僅適用于從 MSAL 角包裝函式程式庫傳遞：
 - **unprotectedResources**：選擇性。  未受保護資源的 Uri 陣列。 MSAL 不會將權杖附加至具有這些 URI 的連出要求。 預設為 `null`。
 
-- **protectedResourceMap**：選擇性。  這是將資源對應到 MSAL 用來在 Web API 呼叫中自動附加存取權杖的範圍。 會取得資源的單一存取權杖。 因此, 您可以將特定的資源路徑對應如下: "https://graph.microsoft.com/v1.0/me" {"", ["user. read"]}, 或資源的應用程式 URL, 如下所示: {"https://graph.microsoft.com/", ["user. read", "mail. send"]}。 這是 CORS 呼叫的必要參數。 預設為 `null`。
+- **protectedResourceMap**：選擇性。  這是將資源對應到 MSAL 用來在 Web API 呼叫中自動附加存取權杖的範圍。 會取得資源的單一存取權杖。 因此，您可以如下所示對應特定的資源路徑： {"https://graph.microsoft.com/v1.0/me"，["user. read"]}，或資源的應用程式 URL： {"https://graph.microsoft.com/"，["user. read"，"mail. send"]}。 這是 CORS 呼叫的必要參數。 預設為 `null`。

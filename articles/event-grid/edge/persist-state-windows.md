@@ -9,12 +9,12 @@ ms.date: 10/06/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 42f7b5315cecd75e2aaf67145c57982872f43550
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c2bae3bd268dba8efdf23ae314671b17a2c89420
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844610"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086620"
 ---
 # <a name="persist-state-in-windows"></a>在 Windows 中保存狀態
 
@@ -212,13 +212,13 @@ ms.locfileid: "76844610"
     ```
 ## <a name="persist-events"></a>保存事件
 
-若要啟用事件持續性，您必須先使用上述各節，透過磁片區掛接或主機目錄掛接來啟用中繼資料持續性。
+若要啟用事件持續性，您必須先使用上述各節，透過磁片區掛接或主機目錄掛接來啟用事件持續性。
 
 保存事件的重要注意事項：
 
 * 保存事件是根據每個事件訂用帳戶來啟用，並且會在裝載磁片區或目錄後加入宣告。
 * 事件持續性會在建立時于事件訂用帳戶上設定，而且在建立事件訂閱之後就無法修改。 若要切換事件持續性，您必須刪除並重新建立事件訂閱。
-* 保存事件幾乎總是比記憶體中的作業慢，不過速度的差異會高度依賴磁片磁碟機的特性。 速度和可靠性之間的取捨是所有訊息系統固有的，但只會成為大規模的 noticible。
+* 保存事件幾乎總是比記憶體中的作業慢，不過速度的差異會高度依賴磁片磁碟機的特性。 速度和可靠性之間的取捨是所有訊息系統固有的，但只有大規模才會明顯。
 
 若要在事件訂用帳戶上啟用事件持續性，請將 `persistencePolicy` 設定為 `true`：
 

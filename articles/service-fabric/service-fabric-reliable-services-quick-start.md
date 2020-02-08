@@ -1,27 +1,26 @@
 ---
 title: 在中建立您的第一個 Service Fabric 應用程式C#
 description: 概述使用無狀態與具狀態服務來建立 Microsoft Azure Service Fabric 應用程式。
-author: vturecek
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: vturecek
-ms.openlocfilehash: e7c5c30dc7cbfa0a3f5a8dc76899c5c8bad6e6ea
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: sfrev
+ms.openlocfilehash: 15dd9bf6ac19bdac7bc8b50fc70e0b3b0a4e9a83
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462809"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083749"
 ---
-# <a name="get-started-with-reliable-services"></a>開始使用可靠的服務
+# <a name="get-started-with-reliable-services"></a>開始使用 Reliable Service
+
 > [!div class="op_single_selector"]
 > * [Windows 上的 C# ](service-fabric-reliable-services-quick-start.md)
 > * [在 Linux 上使用 Java](service-fabric-reliable-services-quick-start-java.md)
-> 
-> 
 
 Azure Service Fabric 應用程式包含一個或多個執行您的程式碼的服務。 本指南說明如何透過 [Reliable Services](service-fabric-reliable-services-introduction.md)同時建立無狀態與具狀態的 Service Fabric 應用程式。  
 
 ## <a name="basic-concepts"></a>基本概念
+
 若要開始使用 Reliable Services，您只需要了解幾個基本概念：
 
 * **服務類型**：這是您的服務實作。 它是由您撰寫的類別定義，它會擴充 `StatelessService` 與其中使用的任何其他程式碼或相依性，以及名稱與版本號碼。
@@ -30,6 +29,7 @@ Azure Service Fabric 應用程式包含一個或多個執行您的程式碼的�
 * **服務註冊**：註冊可將所有項目結合在一起。 服務類型必須在服務主機的 Service Fabric 執行階段中註冊，以允許 Service Fabric 建立其執行個體來執行。  
 
 ## <a name="create-a-stateless-service"></a>建立無狀態服務
+
 無狀態服務是目前在雲端應用程式中做為基準的服務類型。 服務會視為無狀態，因為服務本身不包含需要可靠地儲存或設為高度可用的資料。 如果無狀態服務的執行個體關閉，其所有內部狀態都會遺失。 在此類型的服務中，狀態必須保存到外部存放區，例如 Azure 資料表或 SQL 資料庫中，才能成為高度可用且可靠。
 
 以系統管理員身分啟動 Visual Studio 2017 或 Visual Studio 2019，並建立名為*HelloWorld*的新 Service Fabric 應用程式專案：
@@ -46,6 +46,7 @@ Azure Service Fabric 應用程式包含一個或多個執行您的程式碼的�
 * *HelloWorldStateless*。 這是服務專案。 它包含無狀態服務實作。
 
 ## <a name="implement-the-service"></a>實作服務
+
 在服務專案中開啟 **HelloWorldStateless.cs** 檔案。 在 Service Fabric 中，服務可以執行任何商務邏輯。 服務 API 為您的程式碼提供兩個進入點：
 
 * 開放式的進入點方法，稱為 *RunAsync*，您可以在這裡開始執行任何工作負載，包括長時間執行的計算工作負載。
@@ -70,11 +71,10 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 專案範本包括 `RunAsync()` 的實作範例，它會遞增一個循環計數。
 
 > [!NOTE]
-> 如需有關如何使用通訊堆疊的詳細資訊，請參閱 [Service Fabric Web API 服務與 OWIN 自我裝載](service-fabric-reliable-services-communication-webapi.md)
-> 
-> 
+> 如需如何使用通訊堆疊的詳細資訊，請參閱[服務與 ASP.NET Core 的通訊](service-fabric-reliable-services-communication-aspnetcore.md)
 
 ### <a name="runasync"></a>RunAsync
+
 ```csharp
 protected override async Task RunAsync(CancellationToken cancellationToken)
 {
@@ -110,6 +110,7 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 在這個無狀態服務範例中，計數會儲存在本機變數。 但是，因為這是無狀態服務，所儲存的值只針對其服務執行個體的目前生命週期而存在。 當服務移動或重新啟動時，值將會遺失。
 
 ## <a name="create-a-stateful-service"></a>建立具狀態服務
+
 Service Fabric 導入了一種可設定狀態的新服務。 具狀態服務能夠可靠地在服務本身維持狀態，和使用它的程式碼共置。 狀態是由 Service Fabric 設為高度可用，而不需要將狀態保存到外部存放區。
 
 若要將計數器值從無狀態轉換成高度可用且持續，即使服務移動或重新啟動亦然，您需要具狀態服務。
@@ -159,9 +160,11 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 ```
 
 ### <a name="runasync"></a>RunAsync
+
 `RunAsync()` 在具狀態和無狀態服務中的運作方式類似。 只不過在具狀態服務中，平台會代替您執行額外的工作，然後才執行 `RunAsync()`。 這項工作包含確保可靠狀態管理員和可靠的集合可以使用。
 
 ### <a name="reliable-collections-and-the-reliable-state-manager"></a>可靠的集合與可靠狀態管理員
+
 ```csharp
 var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, long>>("myDictionary");
 ```
@@ -178,6 +181,7 @@ var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<str
 可靠狀態管理員會為您管理可靠的集合。 在您的服務中隨時隨地，您只需要以名稱向可靠狀態管理員要求可靠的集合。 可靠狀態管理員會確保您取回參考。 不建議您將可靠集合執行個體的參考儲存在類別成員變數或屬性中。 請特別小心以確保在服務生命週期中隨時將參考設定為執行個體。 可靠狀態管理員會為您處理這項工作，並且針對重複造訪最佳化。
 
 ### <a name="transactional-and-asynchronous-operations"></a>交易式和非同步作業
+
 ```csharp
 using (ITransaction tx = this.StateManager.CreateTransaction())
 {
@@ -189,7 +193,7 @@ using (ITransaction tx = this.StateManager.CreateTransaction())
 }
 ```
 
-可靠的集合與其 `System.Collections.Generic` 和 `System.Collections.Concurrent` 對應項目具有許多相同的作業 (LINQ 除外)。 可靠的集合上的作業是非同步的。 這是因為具備可靠集合的寫入作業執行 I/O 作業以將資料複寫並保存至磁碟。
+除了語言整合式查詢（LINQ）之外，可靠的集合具有 `System.Collections.Generic` 和 `System.Collections.Concurrent` 對應項的許多相同作業。 可靠的集合上的作業是非同步的。 這是因為具備可靠集合的寫入作業執行 I/O 作業以將資料複寫並保存至磁碟。
 
 可靠的集合作業為「交易式」作業，因此您可以在多個可靠的集合和作業之間維持狀態的一致。 比方說，您可能會從可靠佇列取出一個工作項目、對它執行作業，然後將結果儲存在可靠字典中，全都在單一交易中完成。 這會被視為不可部分完成的作業，而且它可保證整個作業都會成功，或整個作業都會回復。 如果您從佇列取消項目之後，但在您儲存結果之前發生錯誤，那麼會回復整個交易，且項目會保持在佇列中進行處理。
 

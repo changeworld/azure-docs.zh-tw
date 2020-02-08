@@ -6,12 +6,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: mlearned
-ms.openlocfilehash: 58b372e1f80386c4e02339f67f4c5aeaa686a662
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: c2103952503a0a184fb970cd8d2326cc2764a223
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549218"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086482"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 的常見問題集
 
@@ -66,7 +66,7 @@ AKS 建基於一些 Azure 基礎結構資源，包括虛擬機器擴展集、虛
 
 ## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>我可以為 AKS 節點資源群組提供自己的名稱嗎？
 
-可以。 根據預設，AKS 會將節點資源群組命名為*MC_resourcegroupname_clustername_location*，但您也可以提供您自己的名稱。
+是。 根據預設，AKS 會將節點資源群組命名為*MC_resourcegroupname_clustername_location*，但您也可以提供您自己的名稱。
 
 若要指定您自己的資源組名，請安裝[aks-preview][aks-preview-cli] Azure CLI 延伸模組版本*0.3.2*或更新版本。 當您使用[az AKS create][az-aks-create]命令建立 AKS 叢集時，請使用 *--node--群組*參數並指定資源群組的名稱。 如果您[使用 Azure Resource Manager 範本][aks-rm-template]來部署 AKS 叢集，您可以使用*nodeResourceGroup*屬性來定義資源組名。
 
@@ -97,8 +97,6 @@ AKS 支援下列[許可控制器][admission-controllers]：
 - *MutatingAdmissionWebhook*
 - *ValidatingAdmissionWebhook*
 - *ResourceQuota*
-- *DenyEscalatingExec*
-- *AlwaysPullImages*
 
 目前，您無法修改 AKS 中的許可控制器清單。
 
@@ -122,7 +120,7 @@ AKS 目前不會與 Azure Key Vault 整合。 不過，[適用于 Kubernetes 專
 
 在 AKS 中，您可以在建立叢集時，使用 Azure CLI 和 Azure Resource Manager 範本來設定 `maxPods` 值。 不過，Kubenet 和 Azure CNI 都需要*最小值*（在建立時進行驗證）：
 
-| 網路 | 最小值 | 最大值 |
+| 網路功能 | 最小值 | 最大值 |
 | -- | :--: | :--: |
 | Azure CNI | 30 | 250 |
 | Kubenet | 30 | 110 |

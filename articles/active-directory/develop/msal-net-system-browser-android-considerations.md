@@ -3,22 +3,22 @@ title: Xamarin Android 系統瀏覽器考慮（MSAL.NET） |Azure
 titleSuffix: Microsoft identity platform
 description: 瞭解在 Xamarin Android 上使用系統瀏覽器搭配適用于 .NET 的 Microsoft 驗證程式庫（MSAL.NET）時的特定考慮。
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/30/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 9346a4d5eaabb2af490afc13d5785a8f8233e53f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: c144c6dd090669ca16c03050cbb8b59ff0cc224f
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695039"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084583"
 ---
 #  <a name="xamarin-android-system-browser-considerations-with-msalnet"></a>MSAL.NET 的 Xamarin Android 系統瀏覽器考慮
 
@@ -30,7 +30,7 @@ ms.locfileid: "76695039"
 
 | 具有自訂索引標籤支援的瀏覽器 | 封裝名稱 |
 |------| ------- |
-|Chrome | com.android.chrome|
+|Chrome | .com. chrome|
 |Microsoft Edge | emmx|
 |Firefox | 組織 mozilla. firefox|
 |Ecosia | ecosia android|

@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: 5d828ab59f790bab1003f0ad73fc7be1b77410bb
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 05a466d52d89fa021235c10e7187900c350b5e50
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76044882"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086925"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>使用自訂的 Docker 基底映射部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -41,14 +41,14 @@ Azure Machine Learning 提供預設的 Docker 基底映射，因此您不必擔�
 * 建立自訂基底映射：提供系統管理員和 DevOps 的資訊，以建立自訂映射，並使用 Azure CLI 和 Machine Learning CLI 設定 Azure Container Registry 的驗證。
 * 使用自訂基底映射部署模型：在從 Python SDK 或 ML CLI 部署定型的模型時，為數據科學家和 DevOps/ML 工程師提供有關使用自訂映射的資訊。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure Machine Learning workgroup。 如需詳細資訊，請參閱[建立工作區](how-to-manage-workspace.md)文章。
 * [AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 * [Azure Machine Learning 的 CLI 擴充](reference-azure-machine-learning-cli.md)功能。
 * 可在網際網路上存取的[Azure Container Registry](/azure/container-registry)或其他 Docker Registry。
-* 本檔中的步驟假設您已熟悉建立和使用__推斷__設定物件做為模型部署的一部分。 如需詳細資訊，請參閱[部署位置和方式](how-to-deploy-and-where.md#prepare-to-deploy)的「準備部署」一節。
+* 本檔中的步驟假設您已熟悉建立和使用__推斷__設定物件做為模型部署的一部分。 如需詳細資訊，請參閱[部署位置和方式](how-to-deploy-and-where.md#prepare-deployment-artifacts)的「準備部署」一節。
 
 ## <a name="create-a-custom-base-image"></a>建立自訂基底映射
 
@@ -181,7 +181,7 @@ Azure Machine Learning 提供預設的 Docker 基底映射，因此您不必擔�
 
 Microsoft 會在可公開存取的儲存機制上提供數個 docker 映射，此存放庫可以與本節中的步驟搭配使用：
 
-| 影像 | 說明 |
+| 影像 | 描述 |
 | ----- | ----- |
 | `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Azure Machine Learning 的基本映射 |
 | `mcr.microsoft.com/azureml/onnxruntime:latest` | 包含 CPU 推斷的 ONNX 執行時間 |
@@ -239,7 +239,7 @@ conda_dep.add_pip_package("azureml-defaults")
 myenv.python.conda_dependencies=conda_dep
 ```
 
-您必須將 > = 1.0.45 版本的 azureml 預設值新增為 pip 相依性。 此套件包含將模型裝載為 web 服務所需的功能。 您也必須將環境上的 inferencing_stack_version 屬性設定為 [最新]，這將會安裝 web 服務所需的特定 apt 套件。 
+您必須將 > = 1.0.45 版本的 azureml 預設值新增為 pip 相依性。 此套件包含將模型裝載為 Web 服務所需的功能。 您也必須將環境上的 inferencing_stack_version 屬性設定為 [最新]，這將會安裝 web 服務所需的特定 apt 套件。 
 
 定義環境之後，請將它與[InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py)物件搭配使用，以定義將在其中執行模型和 web 服務的推斷環境。
 
@@ -291,7 +291,7 @@ print(service.state)
 az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json --ct akscomputetarget
 ```
 
-如需使用 ML CLI 部署模型的詳細資訊，請參閱[Azure Machine Learning 的 CLI 延伸](reference-azure-machine-learning-cli.md#model-registration-profiling-deployment)模組的
+如需使用 ML CLI 部署模型的詳細資訊，請參閱[Azure Machine Learning 的 CLI 延伸](reference-azure-machine-learning-cli.md#model-registration-profiling-deployment)模組的 < 模型註冊、分析和部署一節。
 
 ## <a name="next-steps"></a>後續步驟
 

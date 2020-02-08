@@ -3,16 +3,17 @@ title: 在 Azure Kubernetes Service 中使用可用性區域（AKS）
 description: 瞭解如何建立可在 Azure Kubernetes Service （AKS）中的可用性區域間散發節點的叢集
 services: container-service
 author: mlearned
+ms.custom: fasttrack-edit
 ms.service: container-service
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: mlearned
-ms.openlocfilehash: 3790511bf3f71cdeb01853e4051a013719502d9f
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: b73cb09f95fa2b23fb23fb719fe57143e1731ceb
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605097"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086516"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>建立使用可用性區域的 Azure Kubernetes Service （AKS）叢集
 
@@ -60,7 +61,7 @@ Azure Kubernetes Service （AKS）叢集會將資源（例如節點和儲存體�
 
 ## <a name="overview-of-availability-zones-for-aks-clusters"></a>AKS 叢集的可用性區域總覽
 
-「可用性區域」是高可用性供應項目，可保護您的應用程式和資料不受資料中心故障影響。 區域是 Azure 區域內的唯一實體位置。 每個區域皆由一或多個配備獨立電力、冷卻系統及網路的資料中心所組成。 若要確保復原能力，在所有已啟用的地區中都至少要有三個個別的區域。 地區內「可用性區域」的實體區隔可保護應用程式和資料不受資料中心故障影響。 區域備援服務會將應用程式和資料複寫至所有「可用性區域」，以防出現單一失敗點。
+可用性區域是高可用性供應專案，可保護您的應用程式和資料不受資料中心失敗的影響。 區域是 Azure 區域內的唯一實體位置。 每個區域皆由一或多個配備獨立電力、冷卻系統及網路的資料中心所組成。 若要確保復原能力，在所有已啟用的地區中都至少要有三個個別的區域。 某個地區內可用性區域的實體區隔可保護應用程式和資料不受資料中心故障影響。 區域冗余服務會跨可用性區域複寫您的應用程式和資料，以防止單一失敗點。
 
 如需詳細資訊，請參閱[什麼是 Azure 中的可用性區域？][az-overview]。
 
@@ -122,6 +123,53 @@ Name:       aks-nodepool1-28993262-vmss000002
 
 當您將其他節點新增至代理程式組件區時，Azure 平臺會自動將基礎 Vm 分散到指定的可用性區域。
 
+請注意，在較新的 Kubernetes 版本（1.17.0 或和更新版本）中，除了已淘汰的 `failure-domain.beta.kubernetes.io/zone`之外，AKS 還會使用較新的標籤 `topology.kubernetes.io/zone`。
+
+## <a name="verify-pod-distribution-across-zones"></a>確認跨區域的 pod 散發
+
+如已知的[標籤、注釋和污點][kubectl-well_known_labels]中所述，Kubernetes 會使用 `failure-domain.beta.kubernetes.io/zone` 標籤，在不同的可用區域間自動散發複寫控制器或服務中的 pod。 若要進行測試，您可以從3個節點相應增加叢集，以確認正確的 pod 散佈：
+
+```azurecli-interactive
+az aks scale \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --node-count 5
+```
+
+當調整作業在幾分鐘後完成後，命令 `kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"` 應該會提供類似此範例的輸出：
+
+```console
+Name:       aks-nodepool1-28993262-vmss000000
+            failure-domain.beta.kubernetes.io/zone=eastus2-1
+Name:       aks-nodepool1-28993262-vmss000001
+            failure-domain.beta.kubernetes.io/zone=eastus2-2
+Name:       aks-nodepool1-28993262-vmss000002
+            failure-domain.beta.kubernetes.io/zone=eastus2-3
+Name:       aks-nodepool1-28993262-vmss000003
+            failure-domain.beta.kubernetes.io/zone=eastus2-1
+Name:       aks-nodepool1-28993262-vmss000004
+            failure-domain.beta.kubernetes.io/zone=eastus2-2
+```
+
+如您所見，我們現在在區域1和2中有兩個額外的節點。 您可以部署由三個複本組成的應用程式。 我們將使用 NGINX，例如：
+
+```console
+kubectl run nginx --image=nginx --replicas=3
+```
+
+如果您確認 pod 執行所在的節點，您會看到 pod 在對應至三個不同可用性區域的 pod 上執行。 例如，使用命令 `kubectl describe pod | grep -e "^Name:" -e "^Node:"` 您會得到類似下面的輸出：
+
+```console
+Name:         nginx-6db489d4b7-ktdwg
+Node:         aks-nodepool1-28993262-vmss000000/10.240.0.4
+Name:         nginx-6db489d4b7-v7zvj
+Node:         aks-nodepool1-28993262-vmss000002/10.240.0.6
+Name:         nginx-6db489d4b7-xz6wj
+Node:         aks-nodepool1-28993262-vmss000004/10.240.0.8
+```
+
+如您在先前的輸出中所見，第一個 pod 會在節點0上執行，此位置位於可用性區域 `eastus2-1`。 第二個 pod 在節點2上執行，其對應至 `eastus2-3`，而節點4中的第三個則 `eastus2-2`。 如果沒有任何額外的設定，Kubernetes 會在所有三個可用性區域中正確分配 pod。
+
 ## <a name="next-steps"></a>後續步驟
 
 本文詳細說明如何建立使用可用性區域的 AKS 叢集。 如需高可用性叢集的詳細考慮，請參閱[AKS 中商務持續性和嚴重損壞修復的最佳做法][best-practices-bc-dr]。
@@ -144,3 +192,4 @@ Name:       aks-nodepool1-28993262-vmss000002
 
 <!-- LINKS - external -->
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
+[kubectl-well_known_labels]: https://kubernetes.io/docs/reference/kubernetes-api/labels-annotations-taints/

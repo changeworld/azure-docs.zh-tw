@@ -3,7 +3,7 @@ title: 適用于 Android 裝置的共用裝置模式 |Azure
 description: 瞭解共用裝置模式，讓第一線背景工作角色可以共用 Android 裝置
 services: active-directory
 documentationcenter: dev-center-name
-author: tylermsft
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 1/15/2020
-ms.author: twhitney
+ms.author: marsma
 ms.reviwer: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 53fa82cf6eaaba09353ba21a12ae9677b9264b1a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 9928b64d286cc5072f28f7cc17e4af3e95662cd0
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701462"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085626"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>適用於 Android 裝置的共用裝置模式
 
@@ -86,8 +86,8 @@ private IPublicClientApplication mApplication;
 |  | 共用模式裝置  | 個人裝置 |
 |---------|---------|---------|
 | **帳戶**     | 單一帳戶 | 多個帳戶 |
-| **登入** | 全球 | 全球 |
-| **登出** | 全球 | 每個應用程式都可以控制登出應用程式的本機或應用程式系列。 |
+| **登入** | 全域 | 全域 |
+| **登出** | 全域 | 每個應用程式都可以控制登出應用程式的本機或應用程式系列。 |
 | **支援的帳戶類型** | 僅限工作帳戶 | 支援個人和公司帳戶  |
 
 ## <a name="why-you-may-want-to-only-support-single-account-mode"></a>為什麼您可能只想要支援單一帳戶模式
