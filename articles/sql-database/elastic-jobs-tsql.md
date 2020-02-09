@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
-ms.date: 01/25/2019
-ms.openlocfilehash: 6b70eb1a6e51c98311ae51648b1a9618f9c3349d
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 02/07/2020
+ms.openlocfilehash: c228f3d6591cd72845101c00188f3fc4a55be644
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861331"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087357"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>使用 Transact-SQL (T-SQL) 建立及管理彈性資料庫作業
 
@@ -189,10 +189,13 @@ CREATE TABLE [dbo].[Test]([TestId] [int] NOT NULL);',
 
 下列範例會建立從多個資料庫收集效能資料的新作業。
 
-根據預設，作業代理程式會建立資料表將傳回的結果儲存於其中。 因此，與用於輸出認證相關聯的登入必須要有足夠的權限能執行此作業。 如果您想要事先手動建立資料表，則必須具有下列屬性：
+根據預設，作業代理程式會建立輸出資料表來儲存傳回的結果。 因此，與輸出認證相關聯的資料庫主體至少必須具有下列許可權：資料庫上的 `CREATE TABLE`、`ALTER`、`SELECT`、`INSERT`、輸出資料表或其架構上的 `DELETE`，以及[sys.databases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql)目錄檢視的 `SELECT`。
+
+如果您想要事先手動建立資料表，則必須具有下列屬性：
 1. 結果集使用正確名稱和資料類型的資料行。
 2. internal_execution_id 的其他資料行 (資料類型為 uniqueidentifier)。
 3. Internal_execution_id 資料行上名為 `IX_<TableName>_Internal_Execution_ID` 的非叢集索引。
+4. 上面列出的擁有權限，除了資料庫的 `CREATE TABLE` 許可權之外。
 
 連線至[*作業資料庫*](sql-database-job-automation-overview.md#job-database)，然後執行下列命令：
 
@@ -405,7 +408,7 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
 
 
 
-|預存程序  |說明  |
+|預存程序  |描述  |
 |---------|---------|
 |[sp_add_job](#sp_add_job)     |     新增作業。    |
 |[sp_update_job](#sp_update_job)    |      更新現有作業。   |
@@ -484,7 +487,7 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
 sp_add_job 必須從建立作業代理程式時所指定的作業代理程式資料庫執行。
 在執行 sp_add_job 以新增作業後，可以使用 sp_add_jobstep 新增相關步驟，以執行作業的活動。 作業的初始版本號碼為 0，而其後會在新增第一個步驟時累加為 1。
 
-#### <a name="permissions"></a>使用權限
+#### <a name="permissions"></a>權限
 根據預設，系統管理員固定伺服器角色的成員可執行此預存程序。 他們會將使用者限定為只能監視作業，而您可以為使用者授與權限，使其在建立作業代理程式時所指定的作業代理程式資料庫中成為下列資料庫角色的一部分：
 
 - jobs_reader
@@ -546,7 +549,7 @@ sp_add_job 必須從建立作業代理程式時所指定的作業代理程式資
 #### <a name="remarks"></a>備註
 在執行 sp_add_job 以新增作業後，可以使用 sp_add_jobstep 新增相關步驟，以執行作業的活動。 作業的初始版本號碼為 0，而其後會在新增第一個步驟時累加為 1。
 
-#### <a name="permissions"></a>使用權限
+#### <a name="permissions"></a>權限
 根據預設，系統管理員固定伺服器角色的成員可執行此預存程序。 他們會將使用者限定為只能監視作業，而您可以為使用者授與權限，使其在建立作業代理程式時所指定的作業代理程式資料庫中成為下列資料庫角色的一部分：
 - jobs_reader
 
@@ -578,7 +581,7 @@ sp_add_job 必須從建立作業代理程式時所指定的作業代理程式資
 #### <a name="remarks"></a>備註
 作業歷程記錄會在作業刪除時自動刪除。
 
-#### <a name="permissions"></a>使用權限
+#### <a name="permissions"></a>權限
 根據預設，系統管理員固定伺服器角色的成員可執行此預存程序。 他們會將使用者限定為只能監視作業，而您可以為使用者授與權限，使其在建立作業代理程式時所指定的作業代理程式資料庫中成為下列資料庫角色的一部分：
 - jobs_reader
 
@@ -703,7 +706,7 @@ command 必須是有效的 T-SQL 指令碼，且後續會由此作業步驟執�
 #### <a name="remarks"></a>備註
 當 sp_add_jobstep 成功時，作業目前的版本號碼將會累加。 在下次執行作業時，將會使用新版本。 如果作業目前正在執行，該執行將不會包含新的步驟。
 
-#### <a name="permissions"></a>使用權限
+#### <a name="permissions"></a>權限
 根據預設，系統管理員固定伺服器角色的成員可執行此預存程序。 他們會將使用者限定為只能監視作業，而您可以為使用者授與權限，使其在建立作業代理程式時所指定的作業代理程式資料庫中成為下列資料庫角色的一部分：  
 
 - jobs_reader
@@ -827,7 +830,7 @@ command 必須是有效的 T-SQL 指令碼，且後續會由此作業步驟執�
 #### <a name="remarks"></a>備註
 任何執行中的作業都不會受到影響。 當 sp_update_jobstep 成功時，作業的版本號碼將會累加。 在下次執行作業時，將會使用新版本。
 
-#### <a name="permissions"></a>使用權限
+#### <a name="permissions"></a>權限
 根據預設，系統管理員固定伺服器角色的成員可執行此預存程序。 他們會將使用者限定為只能監視作業，而您可以為使用者授與權限，使其在建立作業代理程式時所指定的作業代理程式資料庫中成為下列資料庫角色的一部分：
 
 - jobs_reader
@@ -872,7 +875,7 @@ command 必須是有效的 T-SQL 指令碼，且後續會由此作業步驟執�
 
 其他作業步驟將會自動重新編碼，以填補已刪除的作業步驟所留下的空號。
  
-#### <a name="permissions"></a>使用權限
+#### <a name="permissions"></a>權限
 根據預設，系統管理員固定伺服器角色的成員可執行此預存程序。 他們會將使用者限定為只能監視作業，而您可以為使用者授與權限，使其在建立作業代理程式時所指定的作業代理程式資料庫中成為下列資料庫角色的一部分：
 - jobs_reader
 
@@ -908,7 +911,7 @@ command 必須是有效的 T-SQL 指令碼，且後續會由此作業步驟執�
 #### <a name="remarks"></a>備註
 無。
  
-#### <a name="permissions"></a>使用權限
+#### <a name="permissions"></a>權限
 根據預設，系統管理員固定伺服器角色的成員可執行此預存程序。 他們會將使用者限定為只能監視作業，而您可以為使用者授與權限，使其在建立作業代理程式時所指定的作業代理程式資料庫中成為下列資料庫角色的一部分：
 - jobs_reader
 
@@ -936,7 +939,7 @@ command 必須是有效的 T-SQL 指令碼，且後續會由此作業步驟執�
 #### <a name="remarks"></a>備註
 無。
  
-#### <a name="permissions"></a>使用權限
+#### <a name="permissions"></a>權限
 根據預設，系統管理員固定伺服器角色的成員可執行此預存程序。 他們會將使用者限定為只能監視作業，而您可以為使用者授與權限，使其在建立作業代理程式時所指定的作業代理程式資料庫中成為下列資料庫角色的一部分：
 - jobs_reader
 
@@ -968,7 +971,7 @@ command 必須是有效的 T-SQL 指令碼，且後續會由此作業步驟執�
 #### <a name="remarks"></a>備註
 目標群組可讓您輕鬆地設定資料庫集合的作業。
 
-#### <a name="permissions"></a>使用權限
+#### <a name="permissions"></a>權限
 根據預設，系統管理員固定伺服器角色的成員可執行此預存程序。 他們會將使用者限定為只能監視作業，而您可以為使用者授與權限，使其在建立作業代理程式時所指定的作業代理程式資料庫中成為下列資料庫角色的一部分：
 - jobs_reader
 
@@ -996,7 +999,7 @@ command 必須是有效的 T-SQL 指令碼，且後續會由此作業步驟執�
 #### <a name="remarks"></a>備註
 無。
 
-#### <a name="permissions"></a>使用權限
+#### <a name="permissions"></a>權限
 根據預設，系統管理員固定伺服器角色的成員可執行此預存程序。 他們會將使用者限定為只能監視作業，而您可以為使用者授與權限，使其在建立作業代理程式時所指定的作業代理程式資料庫中成為下列資料庫角色的一部分：
 - jobs_reader
 
@@ -1052,7 +1055,7 @@ SQL Database 伺服器的名稱。 refresh_credential_name 是 nvarchar(128)，�
 #### <a name="remarks"></a>備註
 當目標群組中包含 SQL Database 伺服器或彈性集區時，在執行期間會對 SQL Database 伺服器或彈性集區內的所有單一資料庫執行作業。
 
-#### <a name="permissions"></a>使用權限
+#### <a name="permissions"></a>權限
 根據預設，系統管理員固定伺服器角色的成員可執行此預存程序。 他們會將使用者限定為只能監視作業，而您可以為使用者授與權限，使其在建立作業代理程式時所指定的作業代理程式資料庫中成為下列資料庫角色的一部分：
 - jobs_reader
 
@@ -1117,7 +1120,7 @@ Arguments [ @target_group_name = ] 'target_group_name'
 #### <a name="remarks"></a>備註
 目標群組可讓您輕鬆地設定資料庫集合的作業。
 
-#### <a name="permissions"></a>使用權限
+#### <a name="permissions"></a>權限
 根據預設，系統管理員固定伺服器角色的成員可執行此預存程序。 他們會將使用者限定為只能監視作業，而您可以為使用者授與權限，使其在建立作業代理程式時所指定的作業代理程式資料庫中成為下列資料庫角色的一部分：
 - jobs_reader
 
@@ -1168,7 +1171,7 @@ GO
 #### <a name="return-code-values"></a>傳回碼值
 0 (成功) 或 1 (失敗) 備註：目標群組可讓您輕鬆地設定資料庫集合的作業。
 
-#### <a name="permissions"></a>使用權限
+#### <a name="permissions"></a>權限
 根據預設，系統管理員固定伺服器角色的成員可執行此預存程序。 他們會將使用者限定為只能監視作業，而您可以為使用者授與權限，使其在建立作業代理程式時所指定的作業代理程式資料庫中成為下列資料庫角色的一部分：
 - jobs_reader
 
@@ -1192,7 +1195,7 @@ GO
 [作業資料庫](sql-database-job-automation-overview.md#job-database)中提供下列檢視。
 
 
-|檢視  |說明  |
+|檢視  |描述  |
 |---------|---------|
 |[job_executions](#job_executions-view)     |  顯示作業執行歷程記錄。      |
 |[jobs](#jobs-view)     |   顯示所有作業。      |
@@ -1210,7 +1213,7 @@ GO
 顯示作業執行歷程記錄。
 
 
-|資料行名稱|   Data type   |說明|
+|資料行名稱|   資料類型   |描述|
 |---------|---------|---------|
 |**job_execution_id**   |UNIQUEIDENTIFIER|  作業執行的執行個體唯一識別碼。
 |**job_name**   |nvarchar(128)  |作業的名稱。
@@ -1238,7 +1241,7 @@ GO
 
 顯示所有作業。
 
-|資料行名稱|   Data type|  說明|
+|資料行名稱|   資料類型|  描述|
 |------|------|-------|
 |**job_name**|  nvarchar(128)   |作業的名稱。|
 |**job_id**|    UNIQUEIDENTIFIER    |作業的唯一識別碼。|
@@ -1256,7 +1259,7 @@ GO
 
 顯示所有作業版本。
 
-|資料行名稱|   Data type|  說明|
+|資料行名稱|   資料類型|  描述|
 |------|------|-------|
 |**job_name**|  nvarchar(128)   |作業的名稱。|
 |**job_id**|    UNIQUEIDENTIFIER    |作業的唯一識別碼。|
@@ -1269,7 +1272,7 @@ GO
 
 顯示每項作業的目前版本中包含的所有步驟。
 
-|資料行名稱    |Data type| 說明|
+|資料行名稱    |資料類型| 描述|
 |------|------|-------|
 |**job_name**   |nvarchar(128)| 作業的名稱。|
 |**job_id** |UNIQUEIDENTIFIER   |作業的唯一識別碼。|
@@ -1310,7 +1313,7 @@ GO
 
 列出所有目標群組。
 
-|資料行名稱|Data type| 說明|
+|資料行名稱|資料類型| 描述|
 |-----|-----|-----|
 |**target_group_name**| nvarchar(128)   |要刪除的目標群組 (資料庫集合) 的名稱。 
 |**target_group_id**    |UNIQUEIDENTIFIER   |目標群組的唯一識別碼。
@@ -1321,7 +1324,7 @@ GO
 
 顯示所有目標群組的所有成員。
 
-|資料行名稱|Data type| 說明|
+|資料行名稱|資料類型| 描述|
 |-----|-----|-----|
 |**target_group_name**  |nvarchar(128|要刪除的目標群組 (資料庫集合) 的名稱。 |
 |**target_group_id**    |UNIQUEIDENTIFIER   |目標群組的唯一識別碼。|
@@ -1339,7 +1342,7 @@ GO
 
 ## <a name="resources"></a>資源
 
- - ![主題連結圖示](https://docs.microsoft.com/sql/database-engine/configure-windows/media/topic-link.gif "主題連結圖示") [transact-sql 語法慣例](https://docs.microsoft.com/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)  
+ - ![主題連結圖示](https://docs.microsoft.com/sql/database-engine/configure-windows/media/topic-link.gif "主題連結圖示") [Transact-SQL 語法慣例](https://docs.microsoft.com/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)  
 
 
 ## <a name="next-steps"></a>後續步驟
