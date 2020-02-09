@@ -4,8 +4,6 @@
   items:
     - name: Azure 監視器是什麼？
       href: overview.md
-    - name: 術語變更
-      href: terminology.md
     - name: 常見問題集
       href: faq.md
     - name: 新功能
@@ -1141,6 +1139,8 @@
       items:
         - name: 結構描述
           href: platform/diagnostics-extension-schema-1dot3.md
+    - name: 術語變更
+      href: terminology.md
     - name: Application Insights
       items:
         - name: 相依性自動收集
