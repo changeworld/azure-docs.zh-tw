@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: e1559dbab2503ded957b17c0cc6a61a06c53fffc
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 694697be85b61ad2d59a0a4be1ced3581873cb77
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110738"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111748"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>使用 MQTT 通訊協定來與 IoT 中樞通訊
 
@@ -44,7 +44,7 @@ IoT 中樞不是功能完整的 MQTT 訊息代理程式，而且不支援 MQTT v
 
 下表包含每個支援語言之程式碼範例的連結，並指定使用 MQTT 或 MQTT over Web 通訊端通訊協定，來建立 IoT 中樞連接的參數。
 
-| Language | MQTT 通訊協定參數 | 透過 Web 通訊端通訊協定參數的 MQTT
+| 語言 | MQTT 通訊協定參數 | 透過 Web 通訊端通訊協定參數的 MQTT
 | --- | --- | --- |
 | [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) | azure-iot-裝置-mqtt。Mqtt | azure-iot-裝置-mqtt。MqttWs |
 | [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |[IotHubClientProtocol](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.iothubclientprotocol?view=azure-java-stable)。MQTT | IotHubClientProtocol。 MQTT_WS |
@@ -71,7 +71,7 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
 為了確保用戶端/IoT 中樞連線保持運作，服務和用戶端會定期傳送*keep-alive ping。* 使用 IoT SDK 的用戶端會在下表所定義的間隔傳送 keep-alive：
 
-|Language  |預設保持連線間隔  |可設定  |
+|語言  |預設保持連線間隔  |可設定  |
 |---------|---------|---------|
 |Node.js     |   180秒      |     否    |
 |Java     |    230秒     |     否    |
@@ -175,7 +175,7 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
 • LinuxConsoleVS2019：包含相同的程式碼，但位於以 WSL 為目標的 VS2019 專案中（Windows Linux 子系統系統）。 此專案可讓您從 Visual Studio，在 Linux 上逐步調試執行的程式碼。
 
-**針對 mosquito_pub：**
+**針對 mosquitto_pub：**
 
 •此資料夾包含兩個範例命令，用於 Mosquitto.org 所提供的 mosquitto_pub 公用程式工具。
 
@@ -287,7 +287,7 @@ client.connect(iot_hub_name+".azure-devices.net", port=8883)
 
 ## <a name="sending-device-to-cloud-messages"></a>傳送裝置到雲端訊息
 
-成功連線之後，裝置可以使用 `devices/{device_id}/messages/events/` 或 `devices/{device_id}/messages/events/{property_bag}` 作為**主題名稱**，將訊息傳送至 IoT 中樞。 `{property_bag}` 項目可讓裝置以 URL 編碼格式傳送具有其他屬性的訊息。 例如：
+成功連線之後，裝置可以使用 `devices/{device_id}/messages/events/` 或 `devices/{device_id}/messages/events/{property_bag}` 作為**主題名稱**，將訊息傳送至 IoT 中樞。 `{property_bag}` 項目可讓裝置以 URL 編碼格式傳送具有其他屬性的訊息。 例如，
 
 ```text
 RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-encoded(<PropertyName2>)=RFC 2396-encoded(<PropertyValue2>)…
@@ -360,7 +360,7 @@ IoT 中樞會在有訊息屬性時，傳遞**主題名稱**`devices/{device_id}/
 
 3. 服務接著會傳送回應訊息，其中包含`$iothub/twin/res/{status}/?$rid={request id}` 主題上報告之屬性集合的新 ETag 值。 這個回應訊息使用和要求相同的**要求 ID**。
 
-要求訊息本文會包含 JSON 文件，其包含已報告屬性的新值。 JSON 文件中的每個成員會在裝置對應項的文件中更新或新增對應的成員。 設定為 `null` 的成員會從包含的物件中刪除成員。 例如：
+要求訊息本文會包含 JSON 文件，其包含已報告屬性的新值。 JSON 文件中的每個成員會在裝置對應項的文件中更新或新增對應的成員。 設定為 `null` 的成員會從包含的物件中刪除成員。 例如，
 
 ```json
 {
@@ -373,7 +373,7 @@ IoT 中樞會在有訊息屬性時，傳遞**主題名稱**`devices/{device_id}/
 
 |狀態 | 描述 |
 | ----- | ----------- |
-| 200 | Success |
+| 200 | 成功 |
 | 400 | 不正確的要求。 JSON 格式錯誤 |
 | 429 | 太多要求（節流），依據[IoT 中樞節流](iot-hub-devguide-quotas-throttling.md) |
 | 5** | 伺服器錯誤 |
@@ -398,7 +398,7 @@ client.publish("$iothub/twin/PATCH/properties/reported/?$rid=" +
 
 ## <a name="receiving-desired-properties-update-notifications"></a>接收所需屬性更新通知
 
-當連接裝置時，IoT 中樞傳送通知給主題 `$iothub/twin/PATCH/properties/desired/?$version={new version}`，其中包含解決方案後端所執行的更新內容。 例如：
+當連接裝置時，IoT 中樞傳送通知給主題 `$iothub/twin/PATCH/properties/desired/?$version={new version}`，其中包含解決方案後端所執行的更新內容。 例如，
 
 ```json
 {

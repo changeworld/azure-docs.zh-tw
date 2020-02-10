@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/08/2019
-ms.openlocfilehash: b026ef7dbbe850f0d2d1cb67ec8ca93b14ef879a
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 96d0124941f9f2daa1e1b2d1d254b0b767ffb395
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76044902"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111560"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 中的 Office 365 管理解決方案 (預覽)
 
@@ -21,7 +21,7 @@ ms.locfileid: "76044902"
 
 > [!IMPORTANT]
 > ## <a name="solution-update"></a>解決方案更新
-> 此解決方案已由[Azure Sentinel](../../sentinel/overview.md)中的[Office 365](../../sentinel/connect-office-365.md)一般可用性解決方案和[Azure AD 的報告和監視解決方案](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)所取代。 它們一起提供舊版 Azure 監視器 Office 365 解決方案的更新版本，並具有改良的設定體驗。 您可以繼續使用現有的解決方案，直到2020年3月30日為止。
+> 此解決方案已由[Azure Sentinel](../../sentinel/overview.md)中的[Office 365](../../sentinel/connect-office-365.md)一般可用性解決方案和[Azure AD 的報告和監視解決方案](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)所取代。 它們一起提供舊版 Azure 監視器 Office 365 解決方案的更新版本，並具有改良的設定體驗。 您可以繼續使用現有的解決方案，直到2020年4月30日為止。
 > 
 > Azure Sentinel 是雲端原生安全性資訊和事件管理解決方案，可內嵌記錄並提供額外的 SIEM 功能，包括偵測、調查、搜尋及機器學習導向的深入解析。 使用 Azure Sentinel 現在會提供您內嵌 Office 365 SharePoint 活動和 Exchange 記錄管理檔。
 > 
@@ -37,8 +37,8 @@ ms.locfileid: "76044902"
 >
 > ## <a name="frequently-asked-questions"></a>常見問題集
 > 
-> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-march-30th"></a>問：是否可以在現在和3月30日前的 Office 365 Azure 監視器解決方案上線？
-> 否，已無法再使用 Azure 監視器 Office 365 解決方案上架腳本。 解決方案將于3月30日移除。
+> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-april-30th"></a>問：在現在和4月30日之間，Office 365 Azure 監視器解決方案是否可以上線？
+> 否，已無法再使用 Azure 監視器 Office 365 解決方案上架腳本。 解決方案將于4月30日移除。
 > 
 > ### <a name="q-will-the-tables-and-schemas-be-changed"></a>問：資料表和架構是否會變更？
 > **OfficeActivity**資料表名稱和架構將維持與目前方案中的相同。 您可以繼續在新的方案中使用相同的查詢，但不包括參考 Azure AD 資料的查詢。
@@ -104,14 +104,14 @@ ms.locfileid: "76044902"
 > ### <a name="q-does-azure-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>問： Azure Sentinel 是否會在解決方案中提供其他連接器？
 > 是，請參閱[Azure Sentinel 連接資料來源](../../sentinel/connect-data-sources.md)。
 > 
-> ###   <a name="q-what-will-happen-on-march-30-do-i-need-to-offboard-beforehand"></a>問：3月30日會發生什麼事？ 我是否需要事先下架？
+> ###   <a name="q-what-will-happen-on-april-30-do-i-need-to-offboard-beforehand"></a>問：4月30日會發生什麼事？ 我是否需要事先下架？
 > 
 > - 您將無法從**Office365**解決方案接收資料。 解決方案將不再于 Marketplace 中提供
 > - 針對 Azure Sentinel 客戶，Log Analytics 工作區解決方案**Office365**將包含在 Azure Sentinel **SecurityInsights**解決方案中。
-> - 如果您未手動下架解決方案，您的資料將會在3月30日自動中斷連線。
+> - 如果您未手動下架解決方案，您的資料將會在4月30日自動中斷連線。
 > 
 > ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>問：我的資料是否會傳送到新的解決方案？
-> 可以。 當您從工作區中移除**Office 365**解決方案時，其資料將會暫時無法使用，因為已移除架構。 當您在 Sentinel 中啟用新的**Office 365**連接器時，架構會還原至工作區，而且任何已收集的資料都將會變成可用。 
+> 是的。 當您從工作區中移除**Office 365**解決方案時，其資料將會暫時無法使用，因為已移除架構。 當您在 Sentinel 中啟用新的**Office 365**連接器時，架構會還原至工作區，而且任何已收集的資料都將會變成可用。 
  
 
 Office 365 管理解決方案可讓您監視 Azure 監視器中的 Office 365 環境。
@@ -245,9 +245,9 @@ Office 365 管理解決方案可讓您監視 Azure 監視器中的 Office 365 �
 
 此儀表板包含下表中的資料行。 每個資料行依計數列出前十個警示，這幾個警示符合該資料行中指定範圍和時間範圍的準則。 您可以按一下資料行底部的 [查看全部]，或按一下資料行標頭，以執行記錄搜尋來提供完整清單。
 
-| Column | 說明 |
+| 資料行 | 描述 |
 |:--|:--|
-| Dynamics 365 | 提供所有受監視 Office 365 訂閱中之作用中使用者的相關資訊。 您也可以查看一段時間內發生的活動數。
+| 作業 | 提供所有受監視 Office 365 訂閱中之作用中使用者的相關資訊。 您也可以查看一段時間內發生的活動數。
 | Exchange | 顯示 Exchange Server 活動細目，例如 Add-Mailbox 權限或 Set-Mailbox。 |
 | SharePoint | 顯示使用者最常對 SharePoint 文件執行的活動。 當您從此圖格向下鑽研時，搜尋頁面會顯示這些活動的詳細資料，例如此活動的目標文件與位置。 例如，針對「已存取檔案」事件，您可以查看所存取的文件、其相關帳戶名稱，以及 IP 位址。 |
 | Azure Active Directory | 包含熱門使用者活動，例如「重設使用者密碼」和「登入嘗試」。 向下鑽研時，您可以像「結果狀態」一般地查看這些活動的詳細資料。 如果您想要監視 Azure Active Directory 上的可疑活動，這會很有幫助。 |
@@ -263,7 +263,7 @@ Office 365 管理解決方案可讓您監視 Azure 監視器中的 Office 365 �
 
 以下是所有 Office 365 記錄通用的屬性。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | 類型 | *OfficeActivity* |
 | ClientIP | 記錄活動時所使用之裝置的 IP 位址。 IP 位址會以 IPv4 或 IPv6 位址格式顯示。 |
@@ -274,14 +274,14 @@ Office 365 管理解決方案可讓您監視 Azure 監視器中的 Office 365 �
 | ResultStatus | 指出 (Operation 屬性中指定的) 動作是否成功。 可能的值為 Succeeded、PartiallySucceeded 或 Failed。 對於 Exchange 管理員活動，這個值將會是 True 或 False。 |
 | UserId | 執行動作導致記下該記錄之使用者的 UPN (使用者主體名稱)，例如 my_name@my_domain_name。 請注意，由系統帳戶 (例如 SHAREPOINT\system 或 NTAUTHORITY\SYSTEM) 所執行之活動的記錄也會包含在內。 | 
 | UserKey | UserId 屬性所識別之使用者的替代識別碼。  例如，針對由使用者在 SharePoint、商務用 OneDrive 及 Exchange 中所執行的事件，此屬性都會填入 Passport 唯一識別碼 (PUID)。 針對在其他服務中所發生的事件，以及由系統帳戶所執行的事件，此屬性也可能會將相同的值指定為 UserID 屬性|
-| UserType | 執行作業的使用者類型。<br><br>管理<br>應用程式<br>DcAdmin<br>Regular<br>保留<br>ServicePrincipal<br>系統 |
+| UserType | 執行作業的使用者類型。<br><br>管理<br>應用程式<br>DcAdmin<br>Regular<br>Reserved<br>ServicePrincipal<br>System |
 
 
 ### <a name="azure-active-directory-base"></a>Azure Active Directory 基底
 
 以下是所有 Azure Active Directory 記錄通用的屬性。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
@@ -293,7 +293,7 @@ Office 365 管理解決方案可讓您監視 Azure 監視器中的 Office 365 �
 
 這些記錄會在 Active Directory 使用者嘗試登入時建立。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | `OfficeWorkload` | AzureActiveDirectory |
 | `RecordType`     | AzureActiveDirectoryAccountLogon |
@@ -307,7 +307,7 @@ Office 365 管理解決方案可讓您監視 Azure 監視器中的 Office 365 �
 
 這些記錄會在針對 Azure Active Directory 物件進行變更或新增時建立。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
@@ -325,7 +325,7 @@ Office 365 管理解決方案可讓您監視 Azure 監視器中的 Office 365 �
 
 這些記錄是從資料中心安全性稽核資料所建立。  
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | EffectiveOrganization | 提高權限/Cmdlet 的目標租用戶名稱。 |
 | ElevationApprovedTime | 核准提高權限時的時間戳記。 |
@@ -341,7 +341,7 @@ Office 365 管理解決方案可讓您監視 Azure 監視器中的 Office 365 �
 
 這些記錄會在對 Exchange 設定做出變更時建立。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeAdmin |
@@ -356,7 +356,7 @@ Office 365 管理解決方案可讓您監視 Azure 監視器中的 Office 365 �
 
 這些記錄會在針對 Exchange 信箱做出變更或新增時建立。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
@@ -365,7 +365,7 @@ Office 365 管理解決方案可讓您監視 Azure 監視器中的 Office 365 �
 | ClientMachineName | 裝載 Outlook 用戶端的機器名稱。 |
 | ClientProcessName | 用來存取信箱的電子郵件用戶端。 |
 | ClientVersion | 電子郵件用戶端的版本。 |
-| InternalLogonType | 保留供內部使用。 |
+| InternalLogonType | 保留為內部使用。 |
 | Logon_Type | 指出存取信箱並執行所記錄之作業的使用者類型。 |
 | LogonUserDisplayName |    執行作業之使用者的使用者易記名稱。 |
 | LogonUserSid | 執行作業之使用者的 SID。 |
@@ -379,7 +379,7 @@ Office 365 管理解決方案可讓您監視 Azure 監視器中的 Office 365 �
 
 這些記錄會在建立信箱稽核項目時建立。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
@@ -394,7 +394,7 @@ Office 365 管理解決方案可讓您監視 Azure 監視器中的 Office 365 �
 
 這些記錄會在針對 Exchange 群組做出變更或新增時建立。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | OfficeWorkload | ExchangeItemGroup |
@@ -405,7 +405,7 @@ Office 365 管理解決方案可讓您監視 Azure 監視器中的 Office 365 �
 | DestMailboxOwnerSid | 只有在 CrossMailboxOperations 參數為 True 時才會設定。 指定目標信箱的 SID。 |
 | DestMailboxOwnerUPN | 只有在 CrossMailboxOperations 參數為 True 時才會設定。 指定目標信箱之擁有者的 UPN。 |
 | DestFolder | 針對移動等作業的目的地資料夾。 |
-| 資料夾 | 項目群組所在的資料夾。 |
+| Folder | 項目群組所在的資料夾。 |
 | 資料夾 |     涉及作業之來源資料夾的相關資訊，例如，在選取資料夾後將它加以刪除。 |
 
 
@@ -413,7 +413,7 @@ Office 365 管理解決方案可讓您監視 Azure 監視器中的 Office 365 �
 
 這些是所有 SharePoint 記錄通用的屬性。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
@@ -430,7 +430,7 @@ Office 365 管理解決方案可讓您監視 Azure 監視器中的 Office 365 �
 
 這些記錄會在針對 SharePoint 做出設定變更時建立。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
@@ -443,7 +443,7 @@ Office 365 管理解決方案可讓您監視 Azure 監視器中的 Office 365 �
 
 這些記錄是為了回應 SharePoint 中的檔案作業而建立。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePointFileOperation |
@@ -464,7 +464,7 @@ Office 365 管理解決方案可讓您監視 Azure 監視器中的 Office 365 �
 
 下表提供此解決方案所收集之更新記錄的記錄查詢範例。
 
-| 查詢 | 說明 |
+| 查詢 | 描述 |
 | --- | --- |
 |Office 365 訂閱上所有作業的計數 |OfficeActivity &#124; summarize count() by Operation |
 |SharePoint 網站的使用情況|OfficeActivity &#124; where OfficeWorkload = ~ "sharepoint" &#124;摘要 Count （） by SiteUrl \| 排序依據計數 asc|

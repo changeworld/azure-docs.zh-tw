@@ -16,18 +16,18 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9faa1fffde5553168c8b76ea40cebc001c1e27b2
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: bc96c94152b39cc70cfc4553690faaa5b9cb8d20
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275515"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111583"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>使用 Azure AD 應用程式 Proxy 啟用 Power BI 行動版的遠端存取
 
 本文討論如何使用 Azure AD 應用程式 Proxy，讓 Power BI 行動應用程式連接到 Power BI 報表伺服器（PBIRS）和 SQL Server Reporting Services （SSRS）2016和更新版本。 透過這項整合，離開公司網路的使用者可以從 Power BI 的行動應用程式存取其 Power BI 報告，並受到 Azure AD 驗證的保護。 這種保護包括條件式存取和多重要素驗證等[安全性優點](application-proxy-security.md#security-benefits)。  
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 本文假設您已部署報表服務並[啟用應用程式 Proxy](application-proxy-add-on-premises-application.md)。
 
@@ -93,13 +93,13 @@ SPN 是使用 Kerberos 驗證之服務的唯一識別碼。 您必須確定您�
 
    a. 在入口網站的應用程式頁面上，選取 [單一登入]。
 
-   b.這是另一個 C# 主控台應用程式。 針對 [**單一登入模式]** ，選取 [**整合式 Windows 驗證**]。
+   b. 針對 [**單一登入模式]** ，選取 [**整合式 Windows 驗證**]。
 
    c. 將**內部應用程式 SPN** 設定為您先前設定的值。  
 
    d. 針對要代表使用者使用的連接器選擇 [委派的登入身分識別]。 如需詳細資訊，請參閱[使用不同的內部部署和雲端](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities)身分識別。
 
-   e. 按一下 [確定] 儲存變更。
+   e. 按一下 [儲存] 以儲存您的變更。
 
 若要完成應用程式的設定，請移至 **[使用者和群組**] 區段，並指派使用者以存取此應用程式。
 
@@ -133,14 +133,11 @@ SPN 是使用 Kerberos 驗證之服務的唯一識別碼。 您必須確定您�
 
    ![Power BI 具有外部 URL 的行動應用程式](media/application-proxy-integrate-with-power-bi/app-proxy-power-bi-mobile-app.png)
 
-2. 選取 [ **連接**]。 系統會將您導向至 Azure Active Directory 登入 頁面。
+2. 選取 [連接]。 系統會將您導向至 Azure Active Directory 登入 頁面。
 
 3. 為您的使用者輸入有效的認證，然後選取 [登**入**]。 您會看到 Reporting Services 伺服器中的元素。
 
 ## <a name="step-5-configure-intune-policy-for-managed-devices-optional"></a>步驟5：設定受管理裝置的 Intune 原則（選擇性）
-
-> [!NOTE]
-> 此功能目前僅適用于 iOS。
 
 您可以使用 Microsoft Intune 來管理公司員工使用的用戶端應用程式。 Intune 可讓您使用資料加密和其他存取需求之類的功能。 若要深入瞭解透過 Intune 管理應用程式，請參閱 Intune 應用程式管理。 若要讓 Power BI 行動應用程式使用 Intune 原則，請使用下列步驟。
 

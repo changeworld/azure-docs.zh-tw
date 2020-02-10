@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9fa84b5e87581fad4a7ada5fda074429409d2f8f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: bbc9048452c5361306dd05e712090543bb1066ce
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850341"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111522"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-azure-monitor-logs"></a>將 Azure 自動化狀態設定報告資料轉送至 Azure 監視器記錄
 
@@ -60,7 +60,7 @@ Azure 自動化狀態設定會保留節點狀態資料30天。
    Get-AzResource -ResourceType 'Microsoft.OperationalInsights/workspaces'
    ```
 
-1. 執行下列 PowerShell 命令，以前述各步驟的 _ResourceId_ 值取代 `<AutomationResourceId>` 和 `<WorkspaceResourceId>`：
+1. 執行下列 PowerShell 命令，以前述各步驟的 `<AutomationResourceId>`ResourceId`<WorkspaceResourceId>` 值取代 _和_：
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $true -Category 'DscNodeStatus'
@@ -74,21 +74,24 @@ Set-AzDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <Workspa
 
 ## <a name="view-the-state-configuration-logs"></a>檢視 State Configuration 記錄
 
-在您設定與自動化狀態設定資料的 Azure 監視器記錄整合之後，[**記錄搜尋**] 按鈕會出現在自動化帳戶的 [ **DSC 節點**] 分頁上。 按一下 [記錄搜尋] 按鈕以檢視 DSC 節點資料的記錄。
+在您設定與自動化狀態設定資料的 Azure 監視器記錄整合之後，您可以在 [狀態設定（DSC）] 頁面左窗格的 [**監視**] 區段中選取 [**記錄**] 來查看它們。  
 
-![記錄搜尋按鈕](media/automation-dsc-diagnostics/log-search-button.png)
+![記錄檔](media/automation-dsc-diagnostics/automation-dsc-logs-toc-item.png)
 
-[記錄搜尋] 刀鋒視窗隨即開啟，而且您會在套用到該節點的節點組態中，看到每個 State Configuration 節點呼叫 **DscNodeStatusData** 作業，和每個 [DSC 資源](/powershell/scripting/dsc/resources/resources)呼叫 **DscResourceStatusData** 作業。
+[記錄搜尋] 刀鋒視窗隨即開啟，而且您會在套用到該節點的節點組態中，看到每個 State Configuration 節點呼叫 **DscNodeStatusData** 作業，和每個 **DSC 資源**呼叫 [DscResourceStatusData](/powershell/scripting/dsc/resources/resources) 作業。
 
 **DscResourceStatusData** 作業包含所有失敗 DSC 資源的錯誤資訊。
 
 按一下清單中的每項作業可查看該作業的資料。
 
-您也可以藉由搜尋 Azure 監視器記錄來查看記錄。
-請參閱[使用記錄搜尋尋找資料](../log-analytics/log-analytics-log-searches.md)。
-鍵入下列查詢來尋找 State Configuration 記錄：`Type=AzureDiagnostics ResourceProvider='MICROSOFT.AUTOMATION' Category='DscNodeStatus'`
+您也可以藉由搜尋 Azure 監視器記錄來查看記錄。 請參閱[使用記錄搜尋尋找資料](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)。 輸入下列查詢以尋找您的狀態設定記錄。
 
-您也可以依作業名稱縮小查詢範圍。 例如：`Type=AzureDiagnostics ResourceProvider='MICROSOFT.AUTOMATION' Category='DscNodeStatus' OperationName='DscNodeStatusData'`
+```
+AzureDiagnostics
+| where Category == 'DscNodeStatus' 
+| where OperationName contains 'DSCNodeStatusData'
+| where ResultType != 'Compliant'
+```
 
 ### <a name="send-an-email-when-a-state-configuration-compliance-check-fails"></a>State Configuration 合規性檢查失敗時傳送電子郵件
 
@@ -134,7 +137,7 @@ Set-AzDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <Workspa
 | NodeName_s |受控節點名稱。 |
 | NodeComplianceStatus_s |節點是否符合規範。 |
 | DscReportStatus |合規性檢查是否已順利執行。 |
-| ConfigurationMode | 設定如何套用至節點。 可能的值為 __"ApplyOnly"__ 、 __"ApplyandMonitior"__ 和 __"ApplyandAutoCorrect"__ 。 <ul><li>__ApplyOnly__：DSC 會套用設定但不執行任何進一步的動作，除非有新的設定發送到目標節點，或從伺服器提取新的設定時。 初始套用新的設定之後，DSC 不會檢查先前設定的狀態是否漂移。 DSC 在 __ApplyOnly__ 生效之前會一直嘗試套用設定，直到成功為止。 </li><li> __ApplyAndMonitor__：這是預設值。 LCM 會套用任何新的設定。 初始套用新設定之後，如果目標節點從所需狀態漂移，DSC 會在記錄中報告差異。 DSC 在 __ApplyAndMonitor__ 生效之前會一直嘗試套用設定，直到成功為止。</li><li>__ApplyAndAutoCorrect__：DSC 會套用任何新的設定。 初始套用新設定之後，如果目標節點從所需狀態漂移，DSC 會在記錄中報告差異，然後重新套用目前的設定。</li></ul> |
+| ConfigurationMode | 設定如何套用至節點。 可能的值為 __"ApplyOnly"__ 、 __"ApplyandMonitior"__ 和 __"ApplyandAutoCorrect"__ 。 <ul><li>__ApplyOnly__：DSC 會套用設定但不執行任何進一步的動作，除非有新的設定發送到目標節點，或從伺服器提取新的設定時。 第一次套用新設定之後，DSC 不會檢查與先前設定狀態的偏離。 DSC 在 __ApplyOnly__ 生效之前會一直嘗試套用設定，直到成功為止。 </li><li> __ApplyAndMonitor__：這是預設值。 LCM 適用於任何新的設定。 初始套用新設定之後，如果目標節點從所需狀態漂移，DSC 會在記錄中報告差異。 DSC 在 __ApplyAndMonitor__ 生效之前會一直嘗試套用設定，直到成功為止。</li><li>__ApplyAndAutoCorrect__：DSC 會套用任何新的設定。 初始套用新設定之後，如果目標節點從所需狀態漂移，DSC 會在記錄中報告差異，然後重新套用目前的設定。</li></ul> |
 | HostName_s | 受控節點名稱。 |
 | IPAddress | 受控節點的 IPv4 位址。 |
 | 類別 | DscNodeStatus |
@@ -149,11 +152,11 @@ Set-AzDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <Workspa
 | SourceSystem | Azure 監視器記錄檔收集資料的方式。 針對 Azure 診斷，一律為 Azure 。 |
 | ResourceId |指定 Azure 自動化帳戶。 |
 | ResultDescription | 此作業的描述。 |
-| SubscriptionId | 自動化帳戶的 Azure 訂用帳戶識別碼 (GUID)。 |
+| SubscriptionId | 自動化帳戶的 Azure 訂用帳戶識別碼（GUID）。 |
 | ResourceGroup | 自動化帳戶的資源群組名稱。 |
 | ResourceProvider | MICROSOFT.AUTOMATION |
 | ResourceType | AUTOMATIONACCOUNTS |
-| CorrelationId |為更新狀態報告之相互關聯識別碼的 GUID。 |
+| CorrelationId |符合性報告之相互關聯識別碼的 GUID。 |
 
 ### <a name="dscresourcestatusdata"></a>DscResourceStatusData
 
@@ -180,13 +183,13 @@ Set-AzDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <Workspa
 | SourceSystem | Azure 監視器記錄檔收集資料的方式。 針對 Azure 診斷，一律為 Azure 。 |
 | ResourceId |指定 Azure 自動化帳戶。 |
 | ResultDescription | 此作業的描述。 |
-| SubscriptionId | 自動化帳戶的 Azure 訂用帳戶識別碼 (GUID)。 |
+| SubscriptionId | 自動化帳戶的 Azure 訂用帳戶識別碼（GUID）。 |
 | ResourceGroup | 自動化帳戶的資源群組名稱。 |
 | ResourceProvider | MICROSOFT.AUTOMATION |
 | ResourceType | AUTOMATIONACCOUNTS |
-| CorrelationId |為更新狀態報告之相互關聯識別碼的 GUID。 |
+| CorrelationId |符合性報告之相互關聯識別碼的 GUID。 |
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
 藉由將您的自動化狀態設定資料傳送至 Azure 監視器記錄，您可以藉由下列方式，更深入瞭解自動化狀態設定節點的狀態：
 

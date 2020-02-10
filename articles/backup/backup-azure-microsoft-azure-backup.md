@@ -3,12 +3,12 @@ title: 使用 Azure 備份伺服器備份工作負載
 description: 在本文中，您將瞭解如何準備您的環境，以使用 Microsoft Azure 備份 Server （MABS）來保護和備份工作負載。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: db2bac3464939edc5dec2ee2947faf7a05ad6812
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ff5df19d3e2d42af9a45fbc1b71980cee1cdb8a0
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979871"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111590"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>安裝及升級 Azure 備份伺服器
 
@@ -62,10 +62,12 @@ Azure 備份伺服器承襲了 Data Protection Manager (DPM) 的大部分工作�
 > Azure 備份伺服器的設計目的是在專用、單一用途的伺服器上執行。 您無法在下列位置安裝 Azure 備份伺服器︰
 >
 > * 執行為網域控制站的電腦
-> * 安裝應用程式伺服器角色所在的電腦
+> * 已安裝應用程式伺服器角色的電腦
 > * 本身是 System Center Operations Manager 管理群組的電腦
-> * Exchange Server 執行所在的電腦
-> * 本身是叢集節點的電腦
+> * 執行 Exchange Server 的電腦
+> * 做為叢集節點的電腦
+>
+> Windows Server Core 或 Microsoft Hyper-v Server 不支援安裝 Azure 備份伺服器。
 
 Azure 備份伺服器一律加入網域。 如果您打算將伺服器移到不同的網域，請先安裝 Azure 備份伺服器，然後將伺服器加入新網域。 若在部署後將現有的 Azure 備份伺服器機器移至新網域，該動作將「不受支援」。
 
@@ -75,7 +77,7 @@ Azure 備份伺服器一律加入網域。 如果您打算將伺服器移到不�
 
 ### <a name="set-storage-replication"></a>設定儲存體複寫
 
-儲存體複寫選項有異地備援儲存體和本地備援儲存體可供您選擇。 根據預設，復原服務保存庫會使用異地備援儲存體。 如果這個保存庫是您的主要保存庫，儲存體選項請保持設定為異地備援儲存體。 如果您想要更便宜但不持久的選項，請選擇本地備援儲存體。 在 [Azure 儲存體複寫概觀](../storage/common/storage-redundancy.md)中，深入了解[異地備援](../storage/common/storage-redundancy-grs.md)和[本地備援](../storage/common/storage-redundancy-lrs.md)儲存體選項。
+儲存體複寫選項有異地備援儲存體和本地備援儲存體可供您選擇。 根據預設，復原服務保存庫會使用異地備援儲存體。 如果這個保存庫是您的主要保存庫，儲存體選項請保持設定為異地備援儲存體。 如果您想要更便宜但不持久的選項，請選擇本地備援儲存體。 在 [Azure 儲存體複寫概觀](../storage/common/storage-redundancy-grs.md)中，深入了解[異地備援](../storage/common/storage-redundancy-lrs.md)和[本地備援](../storage/common/storage-redundancy.md)儲存體選項。
 
 若要編輯儲存體複寫設定︰
 
@@ -86,7 +88,7 @@ Azure 備份伺服器一律加入網域。 如果您打算將伺服器移到不�
 
      ![為新保存庫設定儲存體組態](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
 
-## <a name="software-package"></a>軟體封裝
+## <a name="software-package"></a>軟體套件
 
 ### <a name="downloading-the-software-package"></a>下載軟體封裝
 
@@ -283,7 +285,7 @@ Azure 備份伺服器需要連線至 Azure 備份服務，產品才能順利運�
 
 在您了解 Azure 連線和 Azure 訂用帳戶的狀態後，您可以使用下表來確認提供的備份/還原功能會受到哪些影響。
 
-| 連線狀態 | Azure 訂用帳戶 | 備份至 Azure | 備份到磁碟 | 從 Azure 還原 | 從磁碟還原 |
+| 連線狀態 | Azure 訂閱 | 備份至 Azure | 備份到磁碟 | 從 Azure 還原 | 從磁碟還原 |
 | --- | --- | --- | --- | --- | --- |
 | 連線 |Active |允許 |允許 |允許 |允許 |
 | 連線 |已過期 |已停止 |已停止 |允許 |允許 |
@@ -339,7 +341,7 @@ Azure 備份伺服器需要連線至 Azure 備份服務，產品才能順利運�
 
 3. 在受保護的伺服器上更新保護代理程式。
 4. 備份應會繼續，而不需重新啟動您的生產伺服器。
-5. 您現在可以開始保護您的資料。 如果您要升級到新式備份儲存體，同時提供保護，您也可選擇您要儲存備份的磁碟區，以及檢查佈建不足的空間。 [深入了解](backup-mabs-add-storage.md)。
+5. 您現在可以開始保護您的資料。 如果您要升級到新式備份儲存體，同時提供保護，您也可選擇您要儲存備份的磁碟區，以及檢查佈建不足的空間。 [詳細資訊](backup-mabs-add-storage.md)。
 
 ## <a name="troubleshooting"></a>疑難排解
 

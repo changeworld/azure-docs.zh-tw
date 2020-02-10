@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/06/2020
+ms.date: 02/10/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2f7bf9fea1b1e15d1ca24686a84e272dd60ceaf5
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 9d8d13ec955867eb574b5f0d782727d6ff8d063a
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77061585"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111555"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則來設定多租用戶 Azure Active Directory 的登入
 
@@ -50,6 +50,19 @@ ms.locfileid: "77061585"
 1. 選取 [**憑證 & 密碼**]，然後選取 [**新增用戶端密碼**]。
 1. 輸入密碼的**描述**，選取到期日，然後選取 [**新增**]。 記錄密碼的**值**，以便在稍後的步驟中使用。
 
+## <a name="configuring-optional-claims"></a>設定選擇性宣告
+
+如果您想要從 Azure AD 取得 `family_name` 和 `given_name` 宣告，您可以在 Azure 入口網站 UI 或應用程式資訊清單中設定應用程式的選擇性宣告。 如需詳細資訊，請參閱[如何提供選擇性宣告給您的 Azure AD 應用程式](../active-directory/develop/active-directory-optional-claims.md)。
+
+1. 登入 [Azure 入口網站](https://portal.azure.com)。 搜尋並選取 [Azure Active Directory]。
+1. 從 [**管理**] 區段中，選取 [**應用程式註冊**]。
+1. 在清單中選取您想要為其設定選擇性宣告的應用程式。
+1. 從 [**管理**] 區段中，選取 [**權杖設定（預覽）** ]。
+1. 選取 [**新增選擇性**宣告]。
+1. 選取您想要設定的權杖類型。
+1. 選取要新增的選擇性宣告。
+1. 按一下 [加入]。
+
 ## <a name="create-a-policy-key"></a>建立原則金鑰
 
 您必須將所建立的應用程式金鑰儲存在 Azure AD B2C 租用戶中。
@@ -63,19 +76,6 @@ ms.locfileid: "77061585"
 1. 在 [**秘密**] 中，輸入您先前記錄的用戶端密碼。
 1. 針對 [金鑰使用方法]，選取 `Signature`。
 1. 選取 [建立]。
-
-## <a name="configuring-optional-claims"></a>設定選擇性宣告
-
-如果您想要從 Azure AD 取得 `family_name` 和 `given_name` 宣告，您可以在 Azure 入口網站 UI 或應用程式資訊清單中設定應用程式的選擇性宣告。 如需詳細資訊，請參閱[如何提供選擇性宣告給您的 Azure AD 應用程式](../active-directory/develop/active-directory-optional-claims.md)。
-
-1. 登入 [Azure 入口網站](https://portal.azure.com)。 搜尋並選取 [Azure Active Directory]。
-1. 從 [**管理**] 區段中，選取 [**應用程式註冊**]。
-1. 在清單中選取您想要為其設定選擇性宣告的應用程式。
-1. 從 [**管理**] 區段中，選取 [**權杖設定（預覽）** ]。
-1. 選取 [**新增選擇性**宣告]。
-1. 選取您想要設定的權杖類型。
-1. 選取要新增的選擇性宣告。
-1. 按一下 [加入]。
 
 ## <a name="add-a-claims-provider"></a>新增宣告提供者
 

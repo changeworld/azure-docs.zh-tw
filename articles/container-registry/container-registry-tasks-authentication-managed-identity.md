@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 01/14/2020
 ms.author: danlep
-ms.openlocfilehash: b2f5a9bacf96eb098e307a6a8df3e13cb9d04bd0
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: f3294698f6973437a23fab798e8daf5642cc9b49
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513411"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111776"
 ---
 # <a name="use-an-azure-managed-identity-in-acr-tasks"></a>在 ACR 工作中使用受 Azure 管理的身分識別 
 
@@ -84,19 +84,19 @@ az acr task create \
 
 ### <a name="3-grant-the-identity-permissions-to-access-other-azure-resources"></a>3. 授與身分識別許可權以存取其他 Azure 資源
 
-視您工作的需求而定，授與身分識別許可權以存取其他 Azure 資源。 例如：
+視您工作的需求而定，授與身分識別許可權以存取其他 Azure 資源。 範例包括：
 
 * 使用提取、推送和提取，或 Azure 中目標容器登錄的其他許可權，將角色指派給受控識別。 如需登錄角色的完整清單，請參閱[Azure Container Registry 角色和許可權](container-registry-roles.md)。 
 * 將角色指派給受控識別，以讀取 Azure 金鑰保存庫中的秘密。
 
 使用[Azure CLI](../role-based-access-control/role-assignments-cli.md)或其他 Azure 工具來管理資源的角色型存取。 例如，執行[az role 指派 create][az-role-assignment-create]命令，將角色指派給資源的身分識別。 
 
-下列範例會將許可權指派給受控識別，以從容器登錄中提取。 命令會指定身分識別的*服務主體識別碼*和目標登錄的*資源識別碼*。
+下列範例會將許可權指派給受控識別，以從容器登錄中提取。 命令會指定工作身分識別的*主體識別碼*，以及目標登錄的*資源識別碼*。
 
 
 ```azurecli
 az role assignment create \
-  --assignee <servicePrincipalID> \
+  --assignee <principalID> \
   --scope <registryID> \
   --role acrpull
 ```
@@ -115,7 +115,7 @@ az acr task credential add \
     --use-identity [system]
 ```
 
-若要為使用者指派的身分識別新增認證，以向登錄*targetregistry*進行驗證，請傳遞 `use-identity`，並提供識別的*用戶端識別碼*的值。 例如：
+若要為使用者指派的身分識別新增認證，以向登錄*targetregistry*進行驗證，請傳遞 `use-identity`，並提供識別的*用戶端識別碼*的值。 例如，
 
 ```azurecli
 az acr task credential add \
