@@ -9,18 +9,18 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: 8747111921df494b8d5618dc8d6ece99fa821e47
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: db3da5ff2d7e8b6fa493f5338fac93df0d1a7fe2
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147638"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110905"
 ---
-# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-nodejs"></a>使用 IoT 中樞 (node.js) 將檔案從裝置上傳至雲端
+# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-nodejs"></a>使用 IoT 中樞（node.js）將檔案從裝置上傳至雲端
 
 [!INCLUDE [iot-hub-file-upload-language-selector](../../includes/iot-hub-file-upload-language-selector.md)]
 
-本教學課程是以[IoT 中樞的傳送雲端到裝置訊息](iot-hub-node-node-c2d.md)教學課程中的程式碼為基礎, 說明如何使用 IoT 中樞的檔案[上傳功能](iot-hub-devguide-file-upload.md), 將檔案上傳到[Azure blob 儲存體](../storage/index.yml)。 本教學課程說明如何：
+本教學課程是以[IoT 中樞的傳送雲端到裝置訊息](iot-hub-node-node-c2d.md)教學課程中的程式碼為基礎，說明如何使用 IoT 中樞的檔案[上傳功能](iot-hub-devguide-file-upload.md)，將檔案上傳到[Azure blob 儲存體](../storage/index.yml)。 本教學課程說明如何：
 
 * 安全地將 Azure Blob URI 提供給裝置，以便上傳檔案。
 
@@ -42,13 +42,15 @@ ms.locfileid: "70147638"
 * **ReadFileUploadNotification.js**，它會接收來自 IoT 中樞的檔案上傳通知。
 
 > [!NOTE]
-> IoT 中樞透過 Azure IoT 裝置 SDK 來支援許多裝置平台和語言 (包括 C、.NET、Javascript、Python 和 Java)。 如需如何將您的裝置連線至 Azure IoT 中樞的逐步指示, 請參閱 [Azure IoT 開發人員中心]。
+> IoT 中樞透過 Azure IoT 裝置 SDK 來支援許多裝置平台和語言 (包括 C、.NET、Javascript、Python 和 Java)。 如需如何將您的裝置連線至 Azure IoT 中樞的逐步指示，請參閱 [Azure IoT 開發人員中心]。
 
 ## <a name="prerequisites"></a>必要條件
 
 * Node.js 10.0. x 版或更新版本。 [準備您的開發環境](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md)說明如何在 Windows 或 Linux 上安裝本教學課程的 node.js。
 
 * 使用中的 Azure 帳戶。 (如果您沒有帳戶，只需要幾分鐘的時間就可以建立[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。)
+
+* 請確定您的防火牆已開啟埠8883。 本文中的裝置範例使用 MQTT 通訊協定，它會透過埠8883進行通訊。 在某些公司和教育網路環境中，可能會封鎖此埠。 如需有關此問題的詳細資訊和解決方法，請參閱[連接到 IoT 中樞（MQTT）](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
@@ -119,7 +121,7 @@ ms.locfileid: "70147638"
 
 ## <a name="get-the-iot-hub-connection-string"></a>取得 IoT 中樞連接字串
 
-在本文中, 您會建立後端服務, 從您在[將遙測從裝置傳送至 iot 中樞](quickstart-send-telemetry-node.md)中建立的 IoT 中樞接收檔案上傳通知訊息。 若要接收檔案上傳通知訊息, 您的服務需要**服務連接**許可權。 根據預設, 每個 IoT 中樞都會使用名為**服務**的共用存取原則來建立, 以授與此許可權。
+在本文中，您會建立後端服務，從您在[將遙測從裝置傳送至 iot 中樞](quickstart-send-telemetry-node.md)中建立的 IoT 中樞接收檔案上傳通知訊息。 若要接收檔案上傳通知訊息，您的服務需要**服務連接**許可權。 根據預設，每個 IoT 中樞都會使用名為**服務**的共用存取原則來建立，以授與此許可權。
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
@@ -151,7 +153,7 @@ ms.locfileid: "70147638"
     var Client = require('azure-iothub').Client;
     ```
 
-5. 新增 `iothubconnectionstring` 變數，並用它來建立**用戶端**執行個體。  將預留位置值取代為您先前在[取得 iot 中樞連接字串](#get-the-iot-hub-connection-string)中複製的 IoT 中樞連接字串: `{iothubconnectionstring}`
+5. 新增 `iothubconnectionstring` 變數，並用它來建立**用戶端**執行個體。  使用您先前在[取得 iot 中樞連接字串](#get-the-iot-hub-connection-string)中複製的 IoT 中樞連接字串來取代 `{iothubconnectionstring}` 的預留位置值：
 
     ```javascript
     var connectionString = '{iothubconnectionstring}';

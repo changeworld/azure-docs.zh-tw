@@ -3,12 +3,12 @@ title: Azure 服務的資源提供者
 description: 列出 Azure Resource Manager 的所有資源提供者命名空間，並顯示該命名空間的 Azure 服務。
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: d16c5fe148f8b6c907c897963e72cb84bc9ae2d5
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 64c1d3c6f30a4f817abbea5001852df3eeeb9327
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984365"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109360"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure 服務的資源提供者
 
@@ -19,18 +19,18 @@ ms.locfileid: "76984365"
 | 資源提供者命名空間 | Azure 服務 |
 | --------------------------- | ------------- |
 | Microsoft.AAD | [Azure Active Directory Domain Services](../../active-directory-domain-services/index.yml) |
-| Microsoft.Addons | 核心 |
+| Microsoft.Addons | core |
 | Microsoft.ADHybridHealthService | [Azure Active Directory](/azure/active-directory/) |
 | Microsoft.Advisor | [Azure Advisor](../../advisor/index.yml) |
 | Microsoft.AlertsManagement | [Azure 監視器](../../azure-monitor/index.yml) |
 | Microsoft.AnalysisServices | [Azure Analysis Services](/azure/analysis-services/) |
 | Microsoft.ApiManagement | [API 管理](../../api-management/index.yml) |
-| AppConfiguration | 核心 |
+| AppConfiguration | core |
 | Microsoft.Attestation | Azure 證明服務 |
 | Microsoft.Authorization | [Azure Resource Manager](../index.yml) |
 | Microsoft.Automation | [自動化](../../automation/index.yml) |
 | Microsoft.AzureActiveDirectory | [Azure Active Directory B2C](../../active-directory-b2c/index.yml) |
-| Microsoft.AzureStack | 核心 |
+| Microsoft.AzureStack | core |
 | Microsoft.Batch | [Batch](../../batch/index.yml) |
 | Microsoft.Billing | [成本管理和計費](/azure/billing/) |
 | Microsoft.BingMaps | [Bing 地圖](https://docs.microsoft.com/BingMaps/#pivot=main&panel=BingMapsAPI) |
@@ -38,7 +38,7 @@ ms.locfileid: "76984365"
 | Microsoft.Blueprint | [Azure 藍圖](/azure/governance/blueprints/) |
 | Microsoft.BotService | [Azure Bot 服務](/azure/bot-service/) |
 | Microsoft.Cache | [Azure Cache for Redis](/azure/azure-cache-for-redis/) |
-| Microsoft.Capacity | 核心 |
+| Microsoft.Capacity | core |
 | Microsoft.Cdn | [內容傳遞網路](../../cdn/index.yml) |
 | Microsoft.CertificateRegistration | [App Service 憑證](../../app-service/configure-ssl-certificate.md#import-an-app-service-certificate) |
 | ChangeAnalysis | [Azure 監視器](../../azure-monitor/index.yml) |
@@ -48,7 +48,7 @@ ms.locfileid: "76984365"
 | Microsoft.ClassicStorage | 傳統部署模型儲存體 |
 | ClassicSubscription | 傳統部署模型 |
 | Microsoft.CognitiveServices | [認知服務](/azure/cognitive-services/) |
-| Microsoft.Commerce | 核心 |
+| Microsoft.Commerce | core |
 | Microsoft.Compute | [虛擬機器](/azure/virtual-machines/)<br />[虛擬機器擴展集](/azure/virtual-machine-scale-sets/) |
 | Microsoft.Consumption | [成本管理](/azure/cost-management/) |
 | Microsoft.ContainerInstance | [容器實例](/azure/container-instances/) |
@@ -104,9 +104,9 @@ ms.locfileid: "76984365"
 | ManagedServices | [Azure Lighthouse](/azure/lighthouse/) |
 | Microsoft.Management | [管理群組](/azure/governance/management-groups/) |
 | Microsoft.Maps | [Azure 地圖服務](../../azure-maps/index.yml) |
-| Microsoft.Marketplace | 核心 |
-| Microsoft.MarketplaceApps | 核心 |
-| Microsoft.MarketplaceOrdering | 核心 |
+| Microsoft.Marketplace | core |
+| Microsoft.MarketplaceApps | core |
+| Microsoft.MarketplaceOrdering | core |
 | Microsoft.Media | [媒體服務](../../media-services/index.yml) |
 | Microsoft.Migrate | [Azure Migrate](../../migrate/migrate-overview.md) |
 | MixedReality | [Azure Spatial Anchors](/azure/spatial-anchors/) |
@@ -124,9 +124,9 @@ ms.locfileid: "76984365"
 | Microsoft.RecoveryServices | [站台復原](../../site-recovery/index.yml) |
 | Microsoft.Relay | [Azure 轉送](../../service-bus-relay/relay-what-is-it.md) |
 | Microsoft.ResourceGraph | [Azure Resource Graph](/azure/governance/resource-graph/) |
-| Microsoft.ResourceHealth | 核心 |
+| Microsoft.ResourceHealth | [Azure 服務健康狀態](../../service-health/index.yml)|
 | Microsoft.Resources | [Azure Resource Manager](../index.yml) |
-| Microsoft.SaaS | 核心 |
+| Microsoft.SaaS | core |
 | Microsoft.Scheduler | [排程器](/azure/scheduler/) |
 | Microsoft.Search | [Azure 搜尋服務](../../search/index.yml) |
 | Microsoft.Security | [資訊安全中心](../../security-center/index.yml) |
@@ -145,8 +145,8 @@ ms.locfileid: "76984365"
 | Microsoft.StorageSync | [Storage](../../storage/index.yml) |
 | Microsoft.StorSimple | [StorSimple](/azure/storsimple/) |
 | Microsoft.StreamAnalytics | [串流分析](../../stream-analytics/index.yml) |
-| Microsoft.Subscription | 核心 |
-| microsoft.support | 核心 |
+| Microsoft.Subscription | core |
+| microsoft.support | core |
 | Microsoft.TimeSeriesInsights | [時間序列深入解析](../../time-series-insights/index.yml) |
 | Microsoft.VirtualMachineImages | [Azure 映射產生器](../../virtual-machines/linux/image-builder-overview.md) |
 | microsoft.visualstudio | [Azure DevOps](/azure/devops/?view=azure-devops) |

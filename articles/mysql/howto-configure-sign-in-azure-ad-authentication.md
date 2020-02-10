@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: 10dae81bf0ca8958f7c10aebef501fc604c4839c
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: bb3a8c94b377fb9c9150945ec4cf5980e006dd34
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76706046"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110619"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>使用 Azure Active Directory 來向 MySQL 進行驗證
 
@@ -40,42 +40,7 @@ ms.locfileid: "76706046"
 
 在未來版本中，我們將支援指定 Azure AD 群組，而不是個別使用者擁有多個系統管理員，但目前尚不支援此功能。
 
-## <a name="creating-azure-ad-users-in-azure-database-for-mysql"></a>在適用於 MySQL 的 Azure 資料庫中建立 Azure AD 使用者
-
-若要將 Azure AD 使用者新增至您的適用於 MySQL 的 Azure 資料庫資料庫，請在連線之後執行下列步驟（請參閱稍後的如何連接的章節）：
-
-1. 請先確定 Azure AD 使用者 `<user>@yourtenant.onmicrosoft.com` 是 Azure AD 租使用者中的有效使用者。
-2. 以 Azure AD 系統管理員使用者身分登入您的適用於 MySQL 的 Azure 資料庫實例。
-3. 在適用於 MySQL 的 Azure 資料庫中建立使用者 `<user>@yourtenant.onmicrosoft.com`。
-
-**範例︰**
-
-```sql
-CREATE AADUSER 'user1@yourtenant.onmicrosoft.com';
-```
-
-對於超過32個字元的使用者名稱，建議您改為使用別名，以便在連接時使用： 
-
-範例：
-
-```sql
-CREATE AADUSER 'userWithLongName@yourtenant.onmicrosoft.com' as 'userDefinedShortName'; 
-```
-
-> [!NOTE]
-> 透過 Azure AD 驗證使用者不會提供使用者任何許可權來存取適用於 MySQL 的 Azure 資料庫資料庫內的物件。 您必須手動授與使用者必要的許可權。
-
-## <a name="creating-azure-ad-groups-in-azure-database-for-mysql"></a>在適用於 MySQL 的 Azure 資料庫中建立 Azure AD 群組
-
-若要啟用 Azure AD 群組來存取您的資料庫，請使用與使用者相同的機制，但改為指定組名：
-
-**範例︰**
-
-```sql
-CREATE AADUSER 'Prod_DB_Readonly';
-```
-
-登入時，群組的成員會使用其個人存取權杖，但會以指定為使用者名稱的組名簽署。
+設定系統管理員之後，您現在可以登入：
 
 ## <a name="connecting-to-azure-database-for-mysql-using-azure-ad"></a>使用 Azure AD 連接到適用於 MySQL 的 Azure 資料庫
 
@@ -156,12 +121,53 @@ Token 是基底64字串，會將所有已驗證使用者的相關資訊編碼，
 使用 CLI 時，您可以使用這個簡短的來連接： 
 
 **範例（Linux/macOS）：**
-
-mysql-h mydb.mysql.database.azure.com \--user user@tenant.onmicrosoft.com@mydb \--enable-純文字-外掛程式 \--password =`az account get-access-token --resource-type oss-rdbms --output tsv --query accessToken`  
+```
+mysql -h mydb.mysql.database.azure.com \ 
+  --user user@tenant.onmicrosoft.com@mydb \ 
+  --enable-cleartext-plugin \ 
+  --password=`az account get-access-token --resource-type oss-rdbms --output tsv --query accessToken`
+```
 
 請注意 [啟用-純文字-外掛程式] 設定–您必須搭配其他用戶端使用類似的設定，以確保權杖會傳送至伺服器，而不會進行雜湊處理。
 
 您現在已使用 Azure AD authentication 向 MySQL 伺服器進行驗證。
+
+## <a name="creating-azure-ad-users-in-azure-database-for-mysql"></a>在適用於 MySQL 的 Azure 資料庫中建立 Azure AD 使用者
+
+若要將 Azure AD 使用者新增至您的適用於 MySQL 的 Azure 資料庫資料庫，請在連線之後執行下列步驟（請參閱稍後的如何連接的章節）：
+
+1. 請先確定 Azure AD 使用者 `<user>@yourtenant.onmicrosoft.com` 是 Azure AD 租使用者中的有效使用者。
+2. 以 Azure AD 系統管理員使用者身分登入您的適用於 MySQL 的 Azure 資料庫實例。
+3. 在適用於 MySQL 的 Azure 資料庫中建立使用者 `<user>@yourtenant.onmicrosoft.com`。
+
+**範例︰**
+
+```sql
+CREATE AADUSER 'user1@yourtenant.onmicrosoft.com';
+```
+
+對於超過32個字元的使用者名稱，建議您改為使用別名，以便在連接時使用： 
+
+範例：
+
+```sql
+CREATE AADUSER 'userWithLongName@yourtenant.onmicrosoft.com' as 'userDefinedShortName'; 
+```
+
+> [!NOTE]
+> 透過 Azure AD 驗證使用者不會提供使用者任何許可權來存取適用於 MySQL 的 Azure 資料庫資料庫內的物件。 您必須手動授與使用者必要的許可權。
+
+## <a name="creating-azure-ad-groups-in-azure-database-for-mysql"></a>在適用於 MySQL 的 Azure 資料庫中建立 Azure AD 群組
+
+若要啟用 Azure AD 群組來存取您的資料庫，請使用與使用者相同的機制，但改為指定組名：
+
+**範例︰**
+
+```sql
+CREATE AADUSER 'Prod_DB_Readonly';
+```
+
+登入時，群組的成員會使用其個人存取權杖，但會以指定為使用者名稱的組名簽署。
 
 ## <a name="token-validation"></a>權杖驗證
 
@@ -183,7 +189,7 @@ mysql-h mydb.mysql.database.azure.com \--user user@tenant.onmicrosoft.com@mydb \
   * Connector/J （mysql-連接器-java）：支援，必須使用 `useSSL` 設定
 * Python
   * 連接器/Python：支援
-* 拼音
+* Ruby
   * mysql2：支援
 * .NET
   * mysql-connector-net：支援，需要為 mysql_clear_password 新增外掛程式

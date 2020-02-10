@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 02/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6084eca4f7d2d6040eb3f32a9b28cfc50922d200
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 3db5cf0ddfec231a313df58e551061cbd5f9bef5
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896105"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110438"
 ---
 # <a name="about-point-to-site-vpn"></a>關於點對站 VPN
 
@@ -45,7 +45,7 @@ ms.locfileid: "75896105"
 
 ### <a name="authenticate-using-native-azure-active-directory-authentication"></a>使用原生 Azure Active Directory 驗證進行驗證
 
-Azure AD authentication 可讓使用者使用其 Azure Active Directory 認證連線到 Azure。 僅支援 OpenVPN 通訊協定和 Windows 10 的原生 Azure AD 驗證，而且需要使用[AZURE VPN 用戶端（預覽）](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)。
+Azure AD authentication 可讓使用者使用其 Azure Active Directory 認證連線到 Azure。 僅支援 OpenVPN 通訊協定和 Windows 10 的原生 Azure AD 驗證，而且需要使用[AZURE VPN 用戶端](https://go.microsoft.com/fwlink/?linkid=2117554)。
 
 使用原生 Azure AD 驗證，您可以利用 Azure AD 的條件式存取，以及適用于 VPN 的多重要素驗證（MFA）功能。
 
@@ -55,7 +55,7 @@ Azure AD authentication 可讓使用者使用其 Azure Active Directory 認證�
 
 2. [在閘道上啟用 Azure AD 驗證](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant#enable-authentication)
 
-3. [下載並設定 Azure VPN 用戶端（預覽）](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)
+3. [下載並設定 Azure VPN 用戶端](https://go.microsoft.com/fwlink/?linkid=2117554)
 
 
 ### <a name="authenticate-using-active-directory-ad-domain-server"></a>使用 Azure Active Directory (AD) 網域伺服器進行驗證

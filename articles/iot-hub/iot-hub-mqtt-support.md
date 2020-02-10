@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 150927ac05cba058d1d152ce568d7a462043d076
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: e1559dbab2503ded957b17c0cc6a61a06c53fffc
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76937752"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110738"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>使用 MQTT 通訊協定來與 IoT 中樞通訊
 
@@ -34,27 +34,44 @@ IoT 中樞不是功能完整的 MQTT 訊息代理程式，而且不支援 MQTT v
 * [Azure IoT sdk](https://github.com/Azure/azure-iot-sdks)中的程式庫。
 * 直接 MQTT 通訊協定。
 
+在許多公司和教育網路環境中，會封鎖 MQTT 埠（8883）。 如果您無法在防火牆中開啟埠8883，建議您透過 Web 通訊端使用 MQTT。 透過 Web 通訊端的 MQTT 會透過埠443進行通訊，這幾乎一律會在網路環境中開啟。 若要瞭解如何在使用 Azure IoT Sdk 時，透過 Web 通訊端通訊協定指定 MQTT 和 MQTT，請參閱[使用裝置 sdk](#using-the-device-sdks)。
+
 ## <a name="using-the-device-sdks"></a>使用裝置 SDK
 
-支援 MQTT 通訊協定的[裝置 sdk](https://github.com/Azure/azure-iot-sdks)適用于 JAVA、Node.js、C、 C#和 Python。 裝置 SDK 會使用標準的 IoT 中樞連接字串來連接到 IoT 中樞。 若要使用 MQTT 通訊協定，用戶端通訊協定參數必須設定為 **MQTT**。 根據預設，裝置 SDK 會連接到 **CleanSession** 旗標設為 **0** 的 IoT 中樞，並使用 **QoS 1** 來與 IoT 中樞交換訊息。
+支援 MQTT 通訊協定的[裝置 sdk](https://github.com/Azure/azure-iot-sdks)適用于 JAVA、Node.js、C、 C#和 Python。 裝置 SDK 會使用標準的 IoT 中樞連接字串來連接到 IoT 中樞。 若要使用 MQTT 通訊協定，用戶端通訊協定參數必須設定為 **MQTT**。 您也可以在用戶端通訊協定參數中，透過 Web 通訊端指定 MQTT。 根據預設，裝置 SDK 會連接到 **CleanSession** 旗標設為 **0** 的 IoT 中樞，並使用 **QoS 1** 來與 IoT 中樞交換訊息。
 
 當裝置連線到 IoT 中樞時，裝置 SDK 會提供方法讓裝置使用 IoT 中樞交換訊息。
 
-下表包含每一種支援語言的程式碼範例連結，並指出要用來以 MQTT 通訊協定連接到 IoT 中樞的參數。
+下表包含每個支援語言之程式碼範例的連結，並指定使用 MQTT 或 MQTT over Web 通訊端通訊協定，來建立 IoT 中樞連接的參數。
 
-| 語言 | 通訊協定參數 |
-| --- | --- |
-| [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) |azure-iot-device-mqtt |
-| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |IotHubClientProtocol.MQTT |
-| [C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) |MQTT_Protocol |
-| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) |TransportType.Mqtt |
-| [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) |一律預設支援 MQTT |
+| Language | MQTT 通訊協定參數 | 透過 Web 通訊端通訊協定參數的 MQTT
+| --- | --- | --- |
+| [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) | azure-iot-裝置-mqtt。Mqtt | azure-iot-裝置-mqtt。MqttWs |
+| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |[IotHubClientProtocol](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.iothubclientprotocol?view=azure-java-stable)。MQTT | IotHubClientProtocol。 MQTT_WS |
+| [C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) | [MQTT_Protocol](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-h/mqtt-protocol) | [MQTT_WebSocket_Protocol](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-websockets-h/mqtt-websocket-protocol) |
+| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) | [TransportType](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.transporttype?view=azure-dotnet)。Mqtt | TransportType，Mqtt 會在 MQTT 失敗時，透過 Web 通訊端切換回 MQTT。 若只要透過 Web 通訊端指定 MQTT，請使用 TransportType。 Mqtt_WebSocket_Only |
+| [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) | 預設支援 MQTT | 在建立用戶端的呼叫中新增 `websockets=True` |
 
-### <a name="default-keep-alive-timeout"></a>預設 keep-alive timeout 
+下列片段示範如何在使用 Azure IoT node.js SDK 時，透過 Web 通訊端通訊協定指定 MQTT：
+
+```javascript
+var Client = require('azure-iot-device').Client;
+var Protocol = require('azure-iot-device-mqtt').MqttWs;
+var client = Client.fromConnectionString(deviceConnectionString, Protocol);
+```
+
+下列片段示範如何在使用 Azure IoT Python SDK 時，透過 Web 通訊端通訊協定指定 MQTT：
+
+```python
+from azure.iot.device.aio import IoTHubDeviceClient
+device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectionString, websockets=True)
+```
+
+### <a name="default-keep-alive-timeout"></a>預設 keep-alive timeout
 
 為了確保用戶端/IoT 中樞連線保持運作，服務和用戶端會定期傳送*keep-alive ping。* 使用 IoT SDK 的用戶端會在下表所定義的間隔傳送 keep-alive：
 
-|語言  |預設保持連線間隔  |可設定  |
+|Language  |預設保持連線間隔  |可設定  |
 |---------|---------|---------|
 |Node.js     |   180秒      |     否    |
 |Java     |    230秒     |     否    |
@@ -301,7 +318,7 @@ IoT 中樞會在有訊息屬性時，傳遞**主題名稱**`devices/{device_id}/
 
 ## <a name="retrieving-a-device-twins-properties"></a>擷取裝置對應項屬性
 
-首先，裝置會訂閱 `$iothub/twin/res/#`，以接收作業的回應。 然後，它會傳送空白訊息給主題 `$iothub/twin/GET/?$rid={request id}`，其中已填入**要求 ID** 的值。 服務接著會使用和要求相同的**要求 ID**，傳送內含關於 `$iothub/twin/res/{status}/?$rid={request id}` 主題之裝置對應項資料的回應訊息。
+首先，裝置會訂閱 `$iothub/twin/res/#`，以接收作業的回應。 然後，它會傳送空白訊息給主題 `$iothub/twin/GET/?$rid={request id}`，其中已填入**要求 ID** 的值。 服務接著會使用和要求相同的`$iothub/twin/res/{status}/?$rid={request id}`要求 ID **，傳送內含關於**  主題之裝置對應項資料的回應訊息。
 
 [要求識別碼] 可以是訊息屬性值的任何有效值（根據[IoT 中樞訊息開發人員指南](iot-hub-devguide-messaging.md)），而狀態會驗證為整數。
 
@@ -323,7 +340,7 @@ IoT 中樞會在有訊息屬性時，傳遞**主題名稱**`devices/{device_id}/
 
 可能的狀態碼如下︰
 
-|狀態 | 說明 |
+|狀態 | 描述 |
 | ----- | ----------- |
 | 204 | 成功 (不會傳回任何內容) |
 | 429 | 太多要求（節流），依據[IoT 中樞節流](iot-hub-devguide-quotas-throttling.md) |
@@ -354,7 +371,7 @@ IoT 中樞會在有訊息屬性時，傳遞**主題名稱**`devices/{device_id}/
 
 可能的狀態碼如下︰
 
-|狀態 | 說明 |
+|狀態 | 描述 |
 | ----- | ----------- |
 | 200 | Success |
 | 400 | 不正確的要求。 JSON 格式錯誤 |

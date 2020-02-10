@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 4dd026377d5824853dd713a59a86ed742990bade
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: a206ef6eb529fc396ec4ecb82d468c19f9e54b8a
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898841"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108251"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API 管理開發人員入口網站總覽
 
@@ -39,7 +39,7 @@ ms.locfileid: "76898841"
 您可以透過兩種方式來建立開發人員入口網站：
 
 - **受控版本**-藉由編輯和自訂入口網站（內建于您的 API 管理實例中），並可透過 `<your-api-management-instance-name>.developer.azure-api.net`的 URL 存取。 請參閱[此檔文章](api-management-howto-developer-portal-customize.md)，以瞭解如何存取和自訂受管理的入口網站。
-- **自我裝載版本**-藉由在 API 管理實例外部部署和自我裝載您的入口網站。 這種方法可讓您編輯入口網站的程式碼基底，並擴充提供的核心功能。 您也需要自行將入口網站升級至最新版本。 如需詳細資訊和指示，請參閱[GitHub 存放庫，其中包含入口網站的原始程式碼][1]和[執行 widget 的教學][4]課程。 [受控版本的教學](api-management-howto-developer-portal-customize.md)課程會逐步解說入口網站的系統管理面板，此功能也會在自我裝載版本中提供。
+- **自我裝載版本**-藉由在 API 管理實例外部部署和自我裝載您的入口網站。 這種方法可讓您編輯入口網站的程式碼基底，並擴充提供的核心功能。 您也需要自行將入口網站升級至最新版本。 如需詳細資訊和指示，請參閱[GitHub 存放庫，其中包含入口網站的原始程式碼][1]和[執行 widget 的教學][3]課程。 [受控版本的教學](api-management-howto-developer-portal-customize.md)課程會逐步解說入口網站的系統管理面板，此功能也會在自我裝載版本中提供。
 
 ## <a name="portal-architectural-concepts"></a>入口網站架構概念
 
@@ -98,13 +98,13 @@ ms.locfileid: "76898841"
 
 ### <a name="has-the-old-portal-been-deprecated"></a>舊的入口網站已被取代嗎？
 
-舊的開發人員和發行者入口網站現在是*舊版*的功能-他們只會接收安全性更新。 新功能將僅會在新的開發人員入口網站中實作。
+舊的開發人員和發行者入口網站現在是*舊版*的功能-他們只會接收安全性更新。 新功能只會在新的開發人員入口網站中執行。
 
 舊版入口網站的淘汰將會分開宣告。 如果您有任何疑問、疑慮或意見，請[在專屬的 GitHub 問題中](https://github.com/Azure/api-management-developer-portal/issues/121)提出。
 
 ### <a name="functionality-i-need-isnt-supported-in-the-portal"></a>入口網站不支援我所需的功能
 
-使用自我裝載版本，並[執行您自己的 widget][4]。
+使用自我裝載版本，並[執行您自己的 widget][3]。
 
 ### <a name="how-can-i-automate-portal-deployments"></a>如何自動進行入口網站部署？
 
@@ -114,7 +114,7 @@ ms.locfileid: "76898841"
 
 ### <a name="does-the-portal-support-azure-resource-manager-templates-andor-is-it-compatible-with-api-management-devops-resource-kit"></a>入口網站是否支援 Azure Resource Manager 範本和（或）是否與 API 管理 DevOps 資源套件相容？
 
-不會。
+否。
 
 ### <a name="do-i-need-to-enable-additional-vnet-connectivity-for-the-new-managed-portal-dependencies"></a>我是否需要針對新的受管理的入口網站相依性啟用額外的 VNet 連線？
 
@@ -216,7 +216,7 @@ New-AzRoleAssignment -SignInName "user1@contoso.com" -RoleDefinitionName "APIM N
 
 ### <a name="whats-the-browser-support-for-the-portal"></a>入口網站的瀏覽器支援為何？
 
-| 瀏覽器                     | 支援的       |
+| 瀏覽器                     | 支援       |
 |-----------------------------|-----------------|
 | Apple Safari                | 是<sup>1</sup> |
 | Google Chrome               | 是<sup>1</sup> |
@@ -232,14 +232,12 @@ New-AzRoleAssignment -SignInName "user1@contoso.com" -RoleDefinitionName "APIM N
 
 - [存取和自訂受管理的開發人員入口網站](api-management-howto-developer-portal-customize.md)
 - [設定入口網站的自我裝載版本][2]
-- [執行您自己的小工具][4]
+- [執行您自己的小工具][3]
 
 流覽其他資源：
 
 - [具有原始程式碼的 GitHub 存放庫][1]
-- [專案的公開藍圖][3]
 
 [1]: https://aka.ms/apimdevportal
 [2]: https://github.com/Azure/api-management-developer-portal/wiki
-[3]: https://github.com/Azure/api-management-developer-portal/projects
-[4]: https://aka.ms/apimdevportal/extend
+[3]: https://aka.ms/apimdevportal/extend

@@ -8,14 +8,14 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: elioda
-ms.openlocfilehash: 02ff65b27e03db9e9a48910e23d8ebf46de905a5
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 55dc7f73a3e5bbff2e6e331ba0bd7d4088a86536
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70060722"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110841"
 ---
-# <a name="get-started-with-device-twins-nodejs"></a>開始使用裝置 twins (node.js)
+# <a name="get-started-with-device-twins-nodejs"></a>開始使用裝置 twins （node.js）
 
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
 
@@ -29,13 +29,15 @@ ms.locfileid: "70060722"
 > [Azure IoT SDK](iot-hub-devguide-sdks.md) 一文提供可用來建置裝置和後端應用程式之 Azure IoT SDK 的相關資訊。
 >
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，您需要：
 
 * Node.js 10.0. x 版或更新版本。
 
 * 使用中的 Azure 帳戶。 (如果您沒有帳戶，只需要幾分鐘的時間就可以建立[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。)
+
+* 請確定您的防火牆已開啟埠8883。 本文中的裝置範例使用 MQTT 通訊協定，它會透過埠8883進行通訊。 在某些公司和教育網路環境中，可能會封鎖此埠。 如需有關此問題的詳細資訊和解決方法，請參閱[連接到 IoT 中樞（MQTT）](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 ## <a name="create-an-iot-hub"></a>建立 IoT 中樞
 
@@ -55,7 +57,7 @@ ms.locfileid: "70060722"
 
 在本節中，您將建立一個 Node.js 主控台應用程式，此應用程式會將位置中繼資料新增至與 **myDeviceId** 相關聯的裝置對應項。 接著，它會選取位於美國的裝置來查詢儲存在 IoT 中樞的裝置對應項，再查詢會報告行動電話連線的對應項。
 
-1. 建立稱為 **addtagsandqueryapp** 的新空白資料夾。 在 **addtagsandqueryapp** 資料夾中，於命令提示字元使用下列命令建立新的 package.json 檔案。 `--yes`參數會接受所有預設值。
+1. 建立稱為 **addtagsandqueryapp** 的新空白資料夾。 在 **addtagsandqueryapp** 資料夾中，於命令提示字元使用下列命令建立新的 package.json 檔案。 `--yes` 參數會接受所有預設值。
 
     ```cmd/sh
     npm init --yes
@@ -69,7 +71,7 @@ ms.locfileid: "70060722"
 
 3. 使用文字編輯器，在 **addtagsandqueryapp** 資料夾中建立新的 **AddTagsAndQuery.js** 檔案。
 
-4. 將下列程式碼新增至**addtagsandquery.js**檔案。 將`{iot hub connection string}`取代為您在[取得 IoT 中樞連接字串](#get-the-iot-hub-connection-string)中複製的 IoT 中樞連接字串。
+4. 將下列程式碼新增至**addtagsandquery.js**檔案。 將 `{iot hub connection string}` 取代為您在[取得 IoT 中樞連接字串](#get-the-iot-hub-connection-string)中複製的 IoT 中樞連接字串。
 
    ``` javascript
         'use strict';
@@ -132,7 +134,7 @@ ms.locfileid: "70060722"
 
     先前的程式碼會執行兩個查詢︰第一個只選取位於 **Redmond43** 工廠的裝置的裝置對應項，第二個會修改查詢，只選取也透過行動電話網路來連接的裝置。
 
-    當程式碼建立**查詢**物件時, 它會指定第二個參數中傳回的檔數目上限。 **query** 物件包含 **hasMoreResults** 布林值屬性，可用來多次叫用 **nextAsTwin** 方法以擷取所有結果。 有一個稱為**next**的方法適用于不是裝置 twins 的結果, 例如匯總查詢的結果。
+    當程式碼建立**查詢**物件時，它會指定第二個參數中傳回的檔數目上限。 **query** 物件包含 **hasMoreResults** 布林值屬性，可用來多次叫用 **nextAsTwin** 方法以擷取所有結果。 有一個稱為**next**的方法適用于不是裝置 twins 的結果，例如匯總查詢的結果。
 
 6. 使用下列命令執行應用程式：
 
@@ -150,13 +152,13 @@ ms.locfileid: "70060722"
 
 在本節中，您將建立一個 Node.js 主控台應用程式，此應用程式會以 **myDeviceId** 來連接到您的中樞，然後更新其裝置對應項所報告的屬性，以包含資訊來指出目前使用行動電話網路來連線。
 
-1. 建立稱為 **reportconnectivity** 的新空白資料夾。 在 **reportconnectivity** 資料夾中，於命令提示字元使用下列命令建立新的 package.json 檔案。 `--yes`參數會接受所有預設值。
+1. 建立稱為 **reportconnectivity** 的新空白資料夾。 在 **reportconnectivity** 資料夾中，於命令提示字元使用下列命令建立新的 package.json 檔案。 `--yes` 參數會接受所有預設值。
 
     ```cmd/sh
     npm init --yes
     ```
 
-2. 在**reportconnectivity**資料夾的命令提示字元中, 執行下列命令來安裝**azure iot 裝置**和**azure iot 裝置 mqtt**套件:
+2. 在**reportconnectivity**資料夾的命令提示字元中，執行下列命令來安裝**azure iot 裝置**和**azure iot 裝置 mqtt**套件：
 
     ```cmd/sh
     npm install azure-iot-device azure-iot-device-mqtt --save
@@ -164,7 +166,7 @@ ms.locfileid: "70060722"
 
 3. 使用文字編輯器，在 **reportconnectivity** 資料夾中建立新的 **ReportConnectivity.js** 檔案。
 
-4. 將下列程式碼新增至**ReportConnectivity**檔案。 將`{device connection string}`取代為在[IoT 中樞註冊新裝置](#register-a-new-device-in-the-iot-hub)時, 您在建立**myDeviceId**裝置身分識別時所複製的裝置連接字串。
+4. 將下列程式碼新增至**ReportConnectivity**檔案。 以您在在[IoT 中樞註冊新裝置](#register-a-new-device-in-the-iot-hub)中建立**myDeviceId**裝置身分識別時所複製的裝置連接字串取代 `{device connection string}`。
 
     ```javascript
         'use strict';
@@ -230,8 +232,8 @@ ms.locfileid: "70060722"
 
 使用下列資源來了解如何：
 
-* 使用[開始使用 IoT 中樞](quickstart-send-telemetry-node.md)教學課程, 從裝置傳送遙測資料,
+* 使用[開始使用 IoT 中樞](quickstart-send-telemetry-node.md)教學課程，從裝置傳送遙測資料，
 
 * 使用裝置對應項所需的屬性來設定裝置，請參閱[使用所需的屬性來設定裝置](tutorial-device-twins.md)教學課程，
 
-* 以互動方式控制裝置 (例如, 從使用者控制的應用程式開啟風扇),[使用直接方法](quickstart-control-device-node.md)教學課程。
+* 以互動方式控制裝置（例如，從使用者控制的應用程式開啟風扇），[使用直接方法](quickstart-control-device-node.md)教學課程。

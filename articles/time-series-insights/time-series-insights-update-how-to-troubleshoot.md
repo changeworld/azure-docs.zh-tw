@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/13/2019
+ms.date: 02/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1fc3aa6caa6266d2cd42e4783e8e39d5cc92c220
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: a306707f0ed47fba8fd854d820554bc1bd80e8bc
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861569"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110291"
 ---
 # <a name="diagnose-and-troubleshoot-a-preview-environment"></a>針對預覽環境進行診斷和疑難排解
 
@@ -80,7 +80,7 @@ ms.locfileid: "75861569"
 * 時間戳記屬性名稱區分大小寫。
 * 來自事件來源的時間戳記屬性值為 JSON 字串，其格式為 `yyyy-MM-ddTHH:mm:ss.FFFFFFFK`。 此類型字串的其中一個範例為 `“2008-04-12T12:53Z”`。
 
-若要確保您已擷取時間戳記屬性名稱且正常運作，最簡單方式是使用時間序列深入解析預覽總管。 在時間序列深入解析預覽總管中，當您輸入時間戳記屬性名稱之後，使用圖表選取一段時間。 以滑鼠右鍵按一下選取範圍，然後選取 [探索事件] 選項。 第一個資料行標頭就是您的時間戳記屬性名稱。 它的字組 `Timestamp` 旁邊應該有 `($ts)`，而非：
+若要確保您已擷取時間戳記屬性名稱且正常運作，最簡單方式是使用時間序列深入解析預覽總管。 在時間序列深入解析預覽總管中，當您輸入時間戳記屬性名稱之後，使用圖表選取一段時間。 以滑鼠右鍵按一下選取範圍，然後選取 [探索事件] 選項。 第一個資料行標頭就是您的時間戳記屬性名稱。 它的字組 `($ts)` 旁邊應該有 `Timestamp`，而非：
 
 * `(abc)`，這表示時間序列深入解析將資料值讀取為字串。
 * 行事**曆**圖示，表示時間序列深入解析會將資料值讀取為 datetime。

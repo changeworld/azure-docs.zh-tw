@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 01/24/2019
+ms.date: 02/07/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 8f22e575b609b0dcd56bf9a1f49fffd41f14e898
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: b5f2b42728fd6f3d61695b4f88cc416015dd97cb
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77062195"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108269"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>使用 Microsoft Authenticator 應用程式登入帳戶
 
@@ -31,7 +31,7 @@ ms.locfileid: "77062195"
   >[!Important]
   >此手機登入方法僅適用於您的公司或學校以及您的個人 Microsoft 帳戶。 您的帳戶和非 Microsoft 帳戶會要求您使用標準的雙因素驗證程序。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 使用 Microsoft Authenticator 應用程式之前，您必須：
 
@@ -109,14 +109,14 @@ ms.locfileid: "77062195"
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 
-| 問題 | 解決方案 |
+| 問題 | 解決方法 |
 | -------- | -------- |
 | 使用我的電話登入會如何比輸入密碼更安全？ | 現今大部分的人會使用使用者名稱和密碼登入網站或應用程式。 不幸的是，密碼可能會遺失、遭竊或被駭客猜到。<br><br>設定 Microsoft Authenticator 應用程式之後，它會在您的手機上設定一個金鑰，來將您受到手機 PIN 或生物識別鎖定所保護的帳戶解除鎖定。 這個金鑰接著會在登入時用來證明您的身分識別。<br><br>**重要**<br>您的資料只會用來在本機保護您的金鑰。 絕對不會將它傳送到雲端或儲存在雲端。 |
 | 手機登入是否會取代雙步驟驗證？ 應該將它關機嗎？ | 手機登入是一種雙步驟驗證，其中兩個步驟會行動裝置上同時進行。 您應該將雙步驟驗證保持在開啟狀態，以協助為您的帳戶提供額外的安全性。 |
-| 如果我為帳戶開啟雙步驟驗證，是否必須核准兩個通知？ | No。 使用手機登入您的 Microsoft 帳戶，也會被視為雙步驟驗證，因此不需要第二個核准。 |
+| 如果我為帳戶開啟雙步驟驗證，是否必須核准兩個通知？ | 否。 使用手機登入您的 Microsoft 帳戶，也會被視為雙步驟驗證，因此不需要第二個核准。 |
 | 如果我遺失手機或沒有我的電話，該怎麼辦？ 如何? 存取我的帳戶嗎？ | 您隨時都可按一下登入頁面上的 [改為使用密碼] 連結，切換回使用您的密碼。 不過，如果您使用雙步驟驗證，您仍需要使用第二個方法來驗證您的身分識別。<br><br>**重要**<br>強烈建議您確定有多個與您帳戶相關聯的最新驗證方法。<br><br>您可以從[安全性設定](https://account.live.com/proofs/manage)頁面來管理個人帳戶的驗證方法。 針對公司或學校帳戶，如果您的系統管理員已開啟安全性資訊，您就可以移至組織的[其他安全性驗證](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1)頁面或**保護您的帳戶安全**頁面。 如需安全性資訊的詳細資訊，請參閱[安全性資訊（預覽）總覽](user-help-security-info-overview.md)。<br><br>如果您無法管理驗證方法，就必須連絡您的系統管理員。 |
 | 如何? 停止使用這項功能，並返回使用我的密碼？ | 對於個人帳戶，在登入期間選取 [改為使用密碼] 連結。 系統會記住您最近的選擇，並在您下次登入時依預設提供該選擇。 如果您想要改回使用手機登入，請在登入期間選取 [改為使用應用程式] 連結。<br><br>針對公司或學校帳戶，您必須從 Microsoft Authenticator 應用程式的 [**設定**] 頁面取消註冊裝置，或從設定檔的 [**裝置 & 活動**] 區域中停用裝置。 如需從設定檔停用裝置的詳細資訊，請參閱[從我的應用程式入口網站更新您的設定檔和帳戶資訊](my-apps-portal-end-user-update-profile.md#view-your-organization-related-profile-information)。 |
-| 為什麼我無法使用一個以上的工作或學校帳戶來進行手機登入？ | 一支手機必須向單一公司或學校帳戶進行註冊。 如果您想要針對不同的公司或學校帳戶開啟手機登入，您必須先透過 [設定] 頁面取消註冊舊的裝置。 |
+| 為什麼我無法使用一個以上的工作或學校帳戶來進行手機登入？ | 一支手機必須向單一公司或學校帳戶進行註冊。 如果您想要針對不同的公司或學校帳戶開啟手機登入，您必須透過 [**設定**] 頁面，將您的帳戶從這個裝置取消註冊。 |
 | 我可以使用我的電話登入我的電腦嗎？ | 針對您的電腦，我們建議使用 Windows 10 上的 Windows Hello 來登入。 Windows Hello 可讓您使用臉部、指紋或 PIN 來登入。 |
 
 ## <a name="next-steps"></a>後續步驟

@@ -2,22 +2,20 @@
 title: 鎖定資源以防止變更
 description: 透過將鎖定套用到所有使用者和角色，防止使用者更新或刪除重要的 Azure 資源。
 ms.topic: conceptual
-ms.date: 05/14/2019
-ms.openlocfilehash: b7c6c7980f12e7f9015f4504f461733100b14ea8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 02/07/2020
+ms.openlocfilehash: 70fb189adb634b7ac24afe7cc8b94738117da5ef
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644336"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109533"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>鎖定資源以防止非預期的變更
 
 身為系統管理員，您可能需要鎖定訂用帳戶、資源群組或資源，以防止組織中的其他使用者不小心刪除或修改重要資源。 您可以將鎖定層級設定為 **CanNotDelete** 或 **ReadOnly**。 在入口網站中，鎖定分別名為 [刪除] 和 [唯讀]。
 
 * **CanNotDelete** 表示經過授權的使用者仍然可以讀取和修改資源，但無法刪除資源。 
-* **ReadOnly** 表示經過授權的使用者可以讀取資源，但無法刪除或更新資源。 套用這個鎖定類似於限制所有經過授權使用者的權限是由「讀取者」角色所授與。 
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+* **ReadOnly** 表示經過授權的使用者可以讀取資源，但無法刪除或更新資源。 套用這個鎖定類似於限制所有經過授權使用者的權限是由「讀取者」角色所授與。
 
 ## <a name="how-locks-are-applied"></a>如何套用鎖定
 
@@ -36,6 +34,7 @@ Resource Manager 鎖定只會套用於管理平面發生的作業，亦即要傳
 * 包含虛擬機器之資源群組上的**唯讀**鎖定，可防止所有使用者啟動或重新開機虛擬機器。 這些作業需要 POST 要求。
 
 ## <a name="who-can-create-or-delete-locks"></a>誰可以建立或刪除鎖定
+
 若要建立或刪除管理鎖定，您必須擁有 `Microsoft.Authorization/*` 或 `Microsoft.Authorization/locks/*` 動作的存取權。 在內建角色中，只有 **擁有者** 和 **使用者存取管理員** 被授與這些動作的存取權。
 
 ## <a name="managed-applications-and-locks"></a>受控應用程式和鎖定
@@ -58,10 +57,15 @@ Resource Manager 鎖定只會套用於管理平面發生的作業，亦即要傳
 
 ![刪除服務](./media/lock-resources/delete-service.png)
 
+## <a name="azure-backups-and-locks"></a>Azure 備份和鎖定
+
+如果您鎖定 Azure 備份服務所建立的資源群組，備份將會開始失敗。 服務最多支援18個還原點。 使用**CanNotDelete**鎖定時，備份服務無法清除還原點。 如需詳細資訊，請參閱[常見問題-備份 Azure vm](../../backup/backup-azure-vm-backup-faq.md)。
+
 ## <a name="portal"></a>入口網站
+
 [!INCLUDE [resource-manager-lock-resources](../../../includes/resource-manager-lock-resources.md)]
 
-## <a name="template"></a>範本
+## <a name="template"></a>[範本]
 
 使用 Resource Manager 範本部署鎖定時，您可以根據鎖定的範圍，使用不同的名稱和類型值。
 

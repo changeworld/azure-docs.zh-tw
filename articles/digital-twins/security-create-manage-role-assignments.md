@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 02/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7eeaadc80a97a96e6effdfc9e5cc76c201998f3f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1c83ca0abfd17db873bec62f0a0d052703862a45
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438052"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110415"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>在 Azure Digital Twins 中建立及管理角色指派
 
@@ -36,7 +36,7 @@ Azure Digital Twins 會使用角色型存取控制 ([RBAC](./security-role-based
 
 下表描述每個屬性：
 
-| 屬性 | 名稱 | 必要項 | 類型 | 說明 |
+| 屬性 | 名稱 | 必要 | 類型 | 描述 |
 | --- | --- | --- | --- | --- |
 | roleId | 角色定義識別碼 | 是 | String | 所需角色指派的唯一識別碼。 藉由查詢系統 API 或檢閱下表，來尋找角色定義及其識別碼。 |
 | objectId | 物件識別碼 | 是 | String | Azure Active Directory 識別碼、服務主體物件識別碼或網域名稱。 角色指派的指派內容以及指派給誰。 角色指派必須根據其相關聯的類型進行格式化。 對於 `DomainName` objectIdType，objectId 必須以 `“@”` 字元開頭。 |
@@ -94,7 +94,7 @@ Get-AzADServicePrincipal -ApplicationId <ApplicationId>
 
 然後，具有**管理員**角色的使用者可以透過對 URL 提出驗證的 HTTP POST 要求，將「空間管理員」角色指派給使用者：
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments
 ```
 
@@ -116,7 +116,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments
 
 若要列出所有可用的角色 (角色定義)，請對下列事項提出驗證的 HTTP GET 要求：
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/system/roles
 ```
 
@@ -157,16 +157,16 @@ YOUR_MANAGEMENT_API_URL/system/roles
 
 若要檢查特定的角色指派，請對下列項目提出驗證的 HTTP GET 要求：
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH&accessType=YOUR_ACCESS_TYPE&resourceType=YOUR_RESOURCE_TYPE
 ```
 
 | **參數值** | **必要** |  **型別** |  **說明** |
 | --- | --- | --- | --- |
-| YOUR_USER_ID |  是 | String |   UserId objectIdType 的 objectId。 |
-| YOUR_PATH | 是 | String |   用來檢查存取權的選擇路徑。 |
-| YOUR_ACCESS_TYPE |  是 | String |   *讀取*、*建立*、*更新*或*刪除* |
-| YOUR_RESOURCE_TYPE | 是 | String |  *Device*、 *DeviceBlobMetadata*、 *DeviceExtendedProperty*、 *ExtendedPropertyKey*、 *ExtendedType*、 *Endpoint*、*金鑰*存放區、*比對器*、*本體*、 *Report*、 *RoleDefinition*、*感應器*、 *SensorExtendedProperty*、 *Space*、 *SpaceBlobMetadata*、 *SpaceExtendedProperty*、 *SpaceResource*、 *SpaceRoleAssignment*、 *System*、 *UerDefinedFunction*、 *User*、 *UserBlobMetadata*或*UserExtendedProperty* |
+| YOUR_USER_ID |  True | String |   UserId objectIdType 的 objectId。 |
+| YOUR_PATH | True | String |   用來檢查存取權的選擇路徑。 |
+| YOUR_ACCESS_TYPE |  True | String |   *讀取*、*建立*、*更新*或*刪除* |
+| YOUR_RESOURCE_TYPE | True | String |  *Device*、 *DeviceBlobMetadata*、 *DeviceExtendedProperty*、 *ExtendedPropertyKey*、 *ExtendedType*、 *Endpoint*、*金鑰*存放區、*比對器*、*本體*、 *Report*、 *RoleDefinition*、*感應器*、 *SensorExtendedProperty*、 *Space*、 *SpaceBlobMetadata*、 *SpaceExtendedProperty*、 *SpaceResource*、 *SpaceRoleAssignment*、 *System*、 *UerDefinedFunction*、 *User*、 *UserBlobMetadata*或*UserExtendedProperty* |
 
 成功的要求會傳回布林值 `true` 或 `false`，指示是否已為指定的路徑和資源，指派存取權類型給使用者。
 
@@ -174,7 +174,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH
 
 若要取得路徑的角色指派，請對下列項目提出驗證的 HTTP GET 要求：
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
 ```
 
@@ -200,7 +200,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
 
 若要撤銷收件者的許可權，請藉由提出已驗證的 HTTP DELETE 要求來刪除角色指派：
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments/YOUR_ROLE_ASSIGNMENT_ID
 ```
 
@@ -214,7 +214,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments/YOUR_ROLE_ASSIGNMENT_ID
 
 若要建立角色指派，請對 URL 提出驗證的 HTTP POST 要求：
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments
 ```
 
@@ -236,7 +236,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments
 "d92c7823-6e65-41d4-aaaa-f5b32e3f01b9"
 ```
 
-## <a name="configuration-examples"></a>設定範例
+## <a name="configuration-examples"></a>組態範例
 
 以下範例示範如何在幾個常見的角色指派案例中設定 JSON 主體。
 

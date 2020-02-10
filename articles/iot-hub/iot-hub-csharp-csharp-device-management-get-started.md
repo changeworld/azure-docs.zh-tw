@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 79e65671613364f5cc05153d90cfdcd5959a279f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 3b37d7e049e7daabbbb4fe1a7b49feb654e8accc
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76939316"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110253"
 ---
 # <a name="get-started-with-device-management-net"></a>開始使用裝置管理（.NET）
 
@@ -34,11 +34,13 @@ ms.locfileid: "76939316"
 
 * **TriggerReboot**。 此應用程式會在模擬裝置應用程式中呼叫直接方法、顯示回應，並顯示更新的報告屬性。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Visual Studio。
 
 * 使用中的 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立 [免費帳戶](https://azure.microsoft.com/pricing/free-trial/) 。
+
+* 請確定您的防火牆已開啟埠8883。 本文中的裝置範例使用 MQTT 通訊協定，它會透過埠8883進行通訊。 在某些公司和教育網路環境中，可能會封鎖此埠。 如需有關此問題的詳細資訊和解決方法，請參閱[連接到 IoT 中樞（MQTT）](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 ## <a name="create-an-iot-hub"></a>建立 IoT 中樞
 
@@ -74,7 +76,7 @@ ms.locfileid: "76939316"
 
    此步驟會下載及安裝 [Azure IoT 服務 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet 套件與其相依性，並加入對它的參考。
 
-1. 在 **Program.cs** 檔案開頭處新增下列 `using` 陳述式：
+1. 在 `using`Program.cs**檔案開頭處新增下列** 陳述式：
 
    ```csharp
    using Microsoft.Azure.Devices;
@@ -157,7 +159,7 @@ ms.locfileid: "76939316"
 
    此步驟會下載及安裝[Azure IoT 裝置 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet 套件及其相依專案，並新增對它的參考。
 
-1. 在 **Program.cs** 檔案開頭處新增下列 `using` 陳述式：
+1. 在 `using`Program.cs**檔案開頭處新增下列** 陳述式：
 
     ```csharp
     using Microsoft.Azure.Devices.Client;

@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: robinsh
-ms.openlocfilehash: 6dfbcc7a3e76842546326742d801c913451855f3
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: f1c0c046c40ff8edbc33c5e93e4207d9fe2fc67a
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001130"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110741"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>使用 IoT 中樞（Python）將檔案從裝置上傳至雲端
 
@@ -39,9 +39,11 @@ ms.locfileid: "71001130"
 > [!NOTE]
 > 本指南使用已淘汰的 V1 Python SDK，因為尚未在新的 V2 SDK 中執行檔案上傳功能。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
+
+* 請確定您的防火牆已開啟埠8883。 本文中的裝置範例使用 MQTT 通訊協定，它會透過埠8883進行通訊。 在某些公司和教育網路環境中，可能會封鎖此埠。 如需有關此問題的詳細資訊和解決方法，請參閱[連接到 IoT 中樞（MQTT）](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
@@ -62,7 +64,7 @@ ms.locfileid: "71001130"
 
 3. 使用文字編輯器，在工作資料夾中建立 **FileUpload.py** 檔案。
 
-4. 在 **FileUpload.py** 檔案開頭處新增下列 `import` 陳述式和變數。 
+4. 在 `import`FileUpload.py**檔案開頭處新增下列** 陳述式和變數。 
 
     ```python
     import time
