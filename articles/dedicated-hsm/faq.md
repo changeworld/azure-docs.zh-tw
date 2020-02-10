@@ -76,13 +76,13 @@ Azure 專用硬體安全模組 (HSM) 服務使用 SafeNet Luna Network HSM 7 (�
 * 印度南部
 * 日本東部
 * 日本西部
-* 北歐
+* 歐洲北部
 * 西歐
 * 英國南部
 * 英國西部
 * 加拿大中部
 * 加拿大東部
-* 澳洲東部
+* 澳大利亞東部
 * 澳大利亞東南部
 
 ## <a name="interoperability"></a>互通性

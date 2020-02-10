@@ -141,6 +141,8 @@
           href: applications-dont-support-TLS-1-2.md
         - name: 回收雲端服務角色的常見原因
           href: cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md
+        - name: 應用程式不支援 TLS 1.2
+          href: applications-dont-support-tls-1-2.md
         - name: 預設 TEMP 資料夾大小對角色而言太小
           href: cloud-services-troubleshoot-default-temp-folder-size-too-small-web-worker-role.md
         - name: 常見部署問題

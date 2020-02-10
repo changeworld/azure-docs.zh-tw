@@ -14,10 +14,10 @@ ms.date: 01/17/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d2bbfd7f4ddc5fc34c0bec3612783dfef5074d83
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "76270862"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>將 Azure 訂用帳戶的帳單擁有權轉移給另一個帳戶
@@ -32,13 +32,13 @@ ms.locfileid: "76270862"
 
 1. 以計費帳戶 (具有您要轉移的訂用帳戶) 的管理員身分登入 [Azure 入口網站](https://portal.azure.com)。 若要找出您是否為管理員，請參閱[常見問題集](#faq)。
 
-1. 針對 [成本管理 + 帳單] 進行搜尋。
+1. 針對 [成本管理 + 帳單]  進行搜尋。
 
    ![顯示 Azure 入口網站搜尋的螢幕擷取畫面](./media/billing-subscription-transfer/billing-search-cost-management-billing.png)
 
-1. 從左側窗格中選取 [訂用帳戶]。 視存取權而定，您可能需要選取計費範圍，然後選取 [訂用帳戶] 或 [Azure 訂用帳戶]。
+1. 從左側窗格中選取 [訂用帳戶]  。 視存取權而定，您可能需要選取計費範圍，然後選取 [訂用帳戶]  或 [Azure 訂用帳戶]  。
 
-1. 針對您要轉移的訂用帳戶選取 [轉移帳單擁有權]。
+1. 針對您要轉移的訂用帳戶選取 [轉移帳單擁有權]  。
 
    ![選取要轉移的訂用帳戶](./media/billing-subscription-transfer/billing-select-subscription-to-transfer.png)
 
@@ -52,7 +52,7 @@ ms.locfileid: "76270862"
 
     ![傳送轉移頁面](./media/billing-subscription-transfer/billing-send-transfer-request.PNG)
 
-1. 選取 [傳送轉移要求]。
+1. 選取 [傳送轉移要求]  。
 
 1. 使用者會收到一封電子郵件，內含用來檢閱轉移要求的指示。
 
@@ -86,7 +86,7 @@ Visual Studio 和 Microsoft 合作夥伴網路訂用帳戶都有相關聯的每�
 
 ## <a name="transfer-billing-ownership-of-enterprise-agreement-ea-subscriptions"></a>轉移 Enterprise 合約 (EA) 訂用帳戶的帳單擁有權
 
-企業系統管理員可以在註冊內的帳戶之間轉移訂用帳戶的擁有權。 如需詳細資訊，請參閱 EA 入口網站中的[變更帳戶擁有](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-get-started#change-account-owner)者。
+企業系統管理員可以在註冊內的帳戶之間轉移訂用帳戶的擁有權。 如需詳細資訊，請參閱 EA 入口網站中的[變更帳戶擁有者](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-get-started#change-account-owner)。
 
 ## <a name="next-steps-after-accepting-billing-ownership"></a>接受帳單擁有權後的後續步驟
 
@@ -134,14 +134,14 @@ Azure 入口網站中的訂用帳戶轉移適用於以下所列的訂用帳戶�
 若要識別您身為計費管理員的帳戶，請使用下列步驟：
 
 1. 瀏覽 [Azure 入口網站中的 [成本管理 + 帳單] 頁面](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/Overview)。
-1. 從左側窗格中選取 [所有計費範圍]。
+1. 從左側窗格中選取 [所有計費範圍]  。
 1. [訂用帳戶] 頁面會列出您是計費管理員的所有訂用帳戶。
 
 如果您不確定誰是訂用帳戶的帳戶管理員，請使用下列步驟來找出帳戶管理員。
 
 1. 瀏覽 [Azure 入口網站中的 [訂用帳戶] 頁面](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)。
-1. 選取您想要檢查的訂用帳戶，然後查看 [設定]。
-1. 選取 [屬性]。 該訂用帳戶的帳戶管理員會顯示在 [帳戶管理員] 方塊中。
+1. 選取您想要檢查的訂用帳戶，然後查看 [設定]  。
+1. 選取 [屬性]  。 該訂用帳戶的帳戶管理員會顯示在 [帳戶管理員]  方塊中。
 
 ### <a name="does-everything-transfer-including-resource-groups-vms-disks-and-other-running-services"></a>所有項目都會移轉嗎？ 包括資源群組、VM、磁碟和其他執行中的服務？
 
@@ -176,11 +176,11 @@ VM、磁碟和網站等所有資源都會轉移給新的帳戶。 不過，如�
 
 ### <a name="if-i-take-over-billing-ownership-of-a-subscription-from-another-account-do-users-in-that-account-continue-to-have-access-to-my-resources"></a>如果我從另一個帳戶接收訂用帳戶的帳單擁有權，該帳戶中的使用者是否能繼續存取我的資源？
 
-可以。 不過，如果您的帳戶位於與訂用帳戶租用戶不同的 Azure AD 租用戶中，且傳送轉移要求的使用者將訂用帳戶移至您帳戶的租用戶，則會移除所有 [管理員角色](add-change-subscription-administrator.md)和[角色型存取控制 (RBAC)](../../role-based-access-control/role-assignments-portal.md) 指派。 若要檢視具有[角色型存取 (RBAC) ](../../role-based-access-control/overview.md)存取權以管理訂用帳戶中資源的使用者，請使用下列步驟：
+是。 不過，如果您的帳戶位於與訂用帳戶租用戶不同的 Azure AD 租用戶中，且傳送轉移要求的使用者將訂用帳戶移至您帳戶的租用戶，則會移除所有 [管理員角色](add-change-subscription-administrator.md)和[角色型存取控制 (RBAC)](../../role-based-access-control/role-assignments-portal.md) 指派。 若要檢視具有[角色型存取 (RBAC) ](../../role-based-access-control/overview.md)存取權以管理訂用帳戶中資源的使用者，請使用下列步驟：
 
 1. 瀏覽 [Azure 入口網站中的 [訂用帳戶] 頁面](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)。
-1. 選取要查看的訂用帳戶，然後從左側窗格中選取 [存取控制 (IAM)]。
-1. 在頁面頂端選取 [角色指派]。 [角色指派] 頁面會列出在訂用帳戶上具有 RBAC 存取權的所有使用者。
+1. 選取要查看的訂用帳戶，然後從左側窗格中選取 [存取控制 (IAM)]  。
+1. 在頁面頂端選取 [角色指派]  。 [角色指派] 頁面會列出在訂用帳戶上具有 RBAC 存取權的所有使用者。
 
 即使在轉移期間移除[角色型存取控制 (RBAC)](../../role-based-access-control/role-assignments-portal.md) 指派，原始擁有者帳戶中的使用者仍可透過一些安全性機制存取訂用帳戶，包括：
 
@@ -191,9 +191,9 @@ VM、磁碟和網站等所有資源都會轉移給新的帳戶。 不過，如�
 如果接受者需要限制對其資源的存取權，則應考慮更新所有與服務相關聯的密碼。 您可以使用下列步驟來更新大部分的資源：
 
   1. 登入 [Azure 入口網站](https://portal.azure.com)。
-  2. 在 [中樞] 功能表中，選取 [所有資源]。
+  2. 在 [中樞] 功能表中，選取 [所有資源]  。
   3. 選取資源。
-  4. 在資源頁面中，按一下 [設定]。 您可以在這裡檢視並更新現有的密碼。
+  4. 在資源頁面中，按一下 [設定]  。 您可以在這裡檢視並更新現有的密碼。
 
 ### <a name="if-i-take-over-the-billing-ownership-of-a-subscription-in-the-middle-of-the-billing-cycle-do-i-have-to-pay-for-the-entire-billing-cycle"></a>如果我在計費週期中接收訂用帳戶的帳單擁有權，我是否需要支付整個計費週期的費用？
 
@@ -201,7 +201,7 @@ VM、磁碟和網站等所有資源都會轉移給新的帳戶。 不過，如�
 
 ### <a name="can-i-use-a-different-payment-method"></a>我可以使用不同的付款方式嗎？
 
-可以。 接受轉移要求時，您可以選取連結至您帳戶的現有付款方式，或新增付款方式。
+是。 接受轉移要求時，您可以選取連結至您帳戶的現有付款方式，或新增付款方式。
 
 ### <a name="how-can-i-transfer-ownership-of-my-enterprise-agreement-ea-subscription-account-ownership-if-the-original-account-owner-is-no-longer-with-the-organization"></a>如果原始帳戶擁有者已離開組織，如何才能轉移 Enterprise 合約 (EA) 訂用帳戶擁有權？
 
@@ -222,7 +222,7 @@ VM、磁碟和網站等所有資源都會轉移給新的帳戶。 不過，如�
 如果您嘗試轉移 Microsoft Azure 方案訂用帳戶，但沒有必要的權限，您就會看到此錯誤。 若要轉移 Microsoft Azure 方案訂用帳戶，您在訂用帳戶計費的發票區段上必須是擁有者或參與者。 如需詳細資訊，請參閱[管理發票區段的訂用帳戶](understand-mca-roles.md#manage-subscriptions-for-invoice-section)。
 
 
-## <a name="need-help-contact-us"></a>需要協助嗎？ 連絡我們。
+## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡。
 
 如有問題或需要協助，請[建立支援要求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 

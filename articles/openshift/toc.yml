@@ -47,6 +47,8 @@
             - name: 停用適用於容器的 Azure 監視器
               href: ../azure-monitor/insights/container-insights-optout-openshift.md
               maintainContext: true
+    - name: 在 Azure Red Hat OpenShift 叢集中執行具特殊權限的容器
+      href: howto-run-privileged-containers.md
 - name: 參考
   items:
     - name: Azure Red Hat OpenShift CLI

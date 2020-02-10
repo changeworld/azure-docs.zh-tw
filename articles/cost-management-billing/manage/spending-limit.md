@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: banders
 ms.openlocfilehash: 5dbf885848d9866a184caee1da6b9000a26f83a9
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "76314114"
 ---
 # <a name="azure-spending-limit"></a>Azure 消費限制
@@ -40,20 +40,20 @@ Azure 消費限制可避免您的花費超過您的點數額度。 根據預設�
 
 只要您的 Azure 訂用帳戶所關聯的付款方式有效，您就可以隨時移除消費限制。 對於具有多月點數的訂用帳戶類型 (例如 Visual Studio Enterprise 和 Visual Studio Professional)，您也可以在下一個計費週期開始時啟用消費限制。
 
-若要移除您的消費限制，請遵循下列步驟：
+若要移除您的消費限制，請依照下列步驟操作：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)。
-1. 流覽至 **[** 訂用帳戶]。
-1. 選取您的訂用帳戶。 例如， *Visual Studio Enterprise*。
-1. 在頁面頂端，選取 [**管理**]。 系統會將您重新導向至 https://account.azure.com/ 。 在頁面右側，選取 [**移除消費限制**]。  
-  顯示移除消費限制的 ![範例](./media/spending-limit/account-azure-com-spending-limit.png)
-1. 系統會將您重新導向回到 Azure 入口網站。 選取適合您的選項，然後選取付款方法。 選取 [完成]。  
+1. 瀏覽至 [訂用帳戶]  。
+1. 選取您的訂用帳戶。 例如，Visual Studio Enterprise  。
+1. 在頁面頂端，選取 [管理]  。 系統會將您重新導向至 https://account.azure.com/ 。 在頁面右側選取 [移除消費限制]  。  
+  ![顯示移除消費限制的範例](./media/spending-limit/account-azure-com-spending-limit.png)
+1. 系統會將您重新導向回到 Azure 入口網站。 選取適合您的選項，然後選取付款方式。 選取 [完成]  。  
   ![選取一個選項來移除消費限制](./media/spending-limit/remove-spending-limit.png)
 
-| 選項 | 影響 |
+| 選項 | 效果 |
 | --- | --- |
-| 無限期移除消費限制 | 移除消費限制，使其不在下一個計費週期開始時自動重新開啟。 |
-| 移除目前計費週期的消費限制 | 移除消費限制，使其在下一個計費週期開始時自動重新開啟。 |
+| 無限期移除消費限制 | 移除消費限制，不在下一個計費週期開始時自動開啟。 |
+| 移除目前計費週期的消費限制 | 移除消費限制，讓它在下一個計費週期開始時自動開啟。 |
 
 ## <a name="why-you-might-want-to-remove-the-spending-limit"></a>您為何要移除消費限制
 
@@ -61,15 +61,15 @@ Azure 消費限制可避免您的花費超過您的點數額度。 根據預設�
 
 -  您打算部署第一方映像 (例如 Oracle) 或服務 (例如 Azure DevOps Services)。 此情況會讓您幾乎立即達到消費限制，而導致訂用帳戶遭停用。
 - 您有不想要中斷的服務。 當您達到消費限制時，您部署的 Azure 資源會從生產環境中移除，而 Azure 虛擬機器則會停止並解除配置。 如果您有不想中斷的服務，則必須移除消費限制。
-- 您的服務及資源有虛擬 IP 位址等您不想遺失的設定。 這些設定會在達到消費限制且服務和資源解除配置時遺失。
+- 您的服務及資源有您不想遺失的設定 (例如虛擬 IP 位址)。 這些設定會在達到消費限制且服務和資源解除配置時遺失。
 
 ## <a name="turn-on-the-spending-limit-after-removing"></a>在移除消費限制之後再將其開啟
 
 這項功能僅適用於針對包含多月點數的訂用帳戶類型無限期地移除消費限制時。 您可以使用這項功能，在下一個計費週期開始時自動開啟您的消費限制。
 
 1. 登入[帳戶中心](https://account.windowsazure.com/Subscriptions)。
-1. 選取黃色橫幅以變更 [消費限制] 選項。
-1. 選擇 [在下一個計費週期 \<計費週期開始日期\> 啟用消費限制]
+1. 選取黃色橫幅以變更消費限制選項。
+1. 選擇 [在下一個計費週期 \<計費週期開始日期\> 啟用消費限制] 
 
 ## <a name="custom-spending-limit"></a>自訂消費限制
 
@@ -81,7 +81,7 @@ Azure 消費限制可避免您的花費超過您的點數額度。 根據預設�
 
 ![Marketplace 購買警告](./media/spending-limit/marketplace-warning01.png)
 
-## <a name="need-help-contact-us"></a>需要協助嗎？ 連絡我們。
+## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡。
 
 如有問題或需要協助，請[建立支援要求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 

@@ -11,10 +11,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 9ebc418327d8c73198d43d3c40e14d48c73ad209
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "76290235"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Azure 保留折扣如何套用至虛擬機器
@@ -37,9 +37,9 @@ ms.locfileid: "76290235"
 
 ## <a name="how-reservation-discount-is-applied"></a>保留折扣的套用方式
 
-保留折扣採「不用則作廢」的原則。 因此，如果您有任何一小時沒有相符的資源，就會失去該小時的保留數量。 您無法遞轉未使用的保留時數。
+保留折扣採「不用則作廢」  的原則。 因此，如果您有任何一小時沒有相符的資源，就會失去該小時的保留數量。 您無法遞轉未使用的保留時數。
 
-當您關閉資源時，保留折扣會自動套用至指定範圍中另一個相符的資源。 如果在指定的範圍內找不到相符的資源，則會「失去」保留時數。
+當您關閉資源時，保留折扣會自動套用至指定範圍中另一個相符的資源。 如果在指定的範圍內找不到相符的資源，則會「失去」  保留時數。
 
 ## <a name="reservation-discount-for-non-windows-vms"></a>非 Windows VM 的保留折扣
 
@@ -47,7 +47,7 @@ ms.locfileid: "76290235"
 
 ![一個套用的保留執和兩個對應的 VM 執行個體的螢幕擷取畫面](./media/understand-vm-reservation-charges/billing-reserved-vm-instance-application.png)
 
-1. 任何超過保留線的使用量，都會依一般隨用隨付費率收費。 您不需支付保留線底下的任何使用量費用，因為它已在保留購買的過程中付費。
+1. 任何超過保留線的使用量，都會依一般隨用隨付費率收費。 您不用支付低於保留線的使用費用，因為此費用已涵蓋於所購買的保留內。
 2. 在第一個 1 小時內，執行個體 1 執行了 0.75 個小時，而執行個體 2 執行了 0.5 小時。 第一個 1 小時的使用量總計為 1.25 小時。 您必須為剩餘的 0.25 小時支付隨用隨付費率的費用。
 3. 針對第 2 小時和第 3 小時，兩個執行個體各執行 1 小時。 一個執行個體涵蓋在保留內，而另一個執行個體須依隨用隨付的費率計費。
 4. 針對第 4 個小時，執行個體 1 執行了 0.5 個小時，而執行個體 2 執行了 1 小時。 保留可完全涵蓋執行個體 1，並涵蓋了執行個體 2 的 0.5 個小時。 您必須為剩餘的 0.5 小時支付隨用隨付費率的費用。
@@ -60,7 +60,7 @@ ms.locfileid: "76290235"
 
 ## <a name="discount-can-apply-to-different-sizes"></a>折扣可套用於不同的大小
 
-當您購買保留的 VM 執行個體時，如果選取 [最佳化對象]：[執行個體大小彈性]，折扣涵蓋範圍就會依據您選取的 VM 大小。 此保留可適用於相同大小系列群組中的虛擬機器 (VM) 大小。 如需詳細資訊，請參閱[利用保留的 VM 執行個體獲得虛擬機器大小彈性](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)。
+當您購買保留的 VM 執行個體時，如果選取 [最佳化對象]  ：[執行個體大小彈性]  ，折扣涵蓋範圍就會依據您選取的 VM 大小。 此保留可適用於相同大小系列群組中的虛擬機器 (VM) 大小。 如需詳細資訊，請參閱[利用保留的 VM 執行個體獲得虛擬機器大小彈性](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)。
 
 ## <a name="discount-applies-to-matching-servicetype-only"></a>折扣只會套用至相符的 ServiceType
 
@@ -74,7 +74,7 @@ ms.locfileid: "76290235"
 
 執行個體大小彈性設定會決定哪些服務可取得保留執行個體折扣。
 
-無論是開啟或關閉設定，保留折扣都會在 *ConsumedService* 為 `Microsoft.Compute` 時，自動套用至任何相符的 VM 使用量。 因此，請檢查您的使用量資料是否有 ConsumedService 值。 部分範例包括：
+無論是開啟或關閉設定，保留折扣都會在 *ConsumedService* 為 `Microsoft.Compute` 時，自動套用至任何相符的 VM 使用量。 因此，請檢查您的使用量資料是否有 ConsumedService  值。 部分範例包括：
 
 - 虛擬機器
 - 虛擬機器擴展集
@@ -91,12 +91,12 @@ ms.locfileid: "76290235"
 - Microsoft.MachineLearningServices
 - Microsoft.Kusto
 
-檢查使用量資料中的 ConsumedService 值，以判斷使用量是否符合保留折扣的資格。
+檢查使用量資料中的 ConsumedService  值，以判斷使用量是否符合保留折扣的資格。
 
 如需執行個體大小彈性的詳細資訊，請參閱[利用保留的 VM 執行個體獲得虛擬機器大小彈性](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)。
 
 
-## <a name="need-help-contact-us"></a>需要協助嗎？ 連絡我們
+## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡
 
 如有問題或需要協助，請[建立支援要求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 

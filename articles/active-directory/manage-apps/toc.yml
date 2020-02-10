@@ -72,6 +72,8 @@
               href: howto-saml-token-encryption.md
             - name: 使用者入口網站
               href: end-user-experiences.md
+    - name: 雲端應用程式的可見性和控制
+      href: cloud-app-security.md
     - name: 適用於內部部屬應用程式的 Application Proxy
       items:
         - name: 應用程式 Proxy

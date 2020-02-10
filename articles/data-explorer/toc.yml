@@ -98,7 +98,7 @@
           href: ingest-data-kafka.md
         - name: Logstash
           href: ingest-data-logstash.md
-        - name: jason 格式化的資料
+        - name: JSON 格式化的資料
           href: ingest-json-formats.md
     - name: 查詢資料
       items:
@@ -126,7 +126,7 @@
       items:
         - name: Power BI
           items:
-            - name: 最佳作法
+            - name: 最佳做法
               href: power-bi-best-practices.md
             - name: 連接器
               href: power-bi-connector.md

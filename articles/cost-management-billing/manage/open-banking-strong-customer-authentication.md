@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: banders
 ms.openlocfilehash: aff5e1e707980c9a63988c22653fa5fba0fc236b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75996036"
 ---
 # <a name="open-banking-psd2-and-strong-customer-authentication-sca-for-azure-customers"></a>適用於 Azure 客戶的開放銀行 (PSD2) 和強大客戶驗證 (SCA)
@@ -36,31 +36,31 @@ ms.locfileid: "75996036"
 
 您可以遵循下列步驟，變更 Azure 帳戶的有效付款方式：
 
-1. 以帳戶管理員身分登入 [Azure 入口網站](https://portal.azure.com)，然後瀏覽至 [成本管理 + 帳單]。
-2. 在 [概觀] 頁面中，從 [我的訂用帳戶] 方格中選取對應的訂用帳戶。
-3. 在 [帳單] 下方選取 [付款方式]。 您可以新增信用卡，或將現有卡片設為訂用帳戶的有效付款方式。 如果您的銀行需要多重要素驗證，系統會提示您在處理過程中完成驗證挑戰。
+1. 以帳戶管理員身分登入 [Azure 入口網站](https://portal.azure.com)，然後瀏覽至 [成本管理 + 帳單]  。
+2. 在 [概觀]  頁面中，從 [我的訂用帳戶]  方格中選取對應的訂用帳戶。
+3. 在 [帳單] 下方選取 [付款方式]  。 您可以新增信用卡，或將現有卡片設為訂用帳戶的有效付款方式。 如果您的銀行需要多重要素驗證，系統會提示您在處理過程中完成驗證挑戰。
 
 如需詳細資訊，請參閱[新增、更新或移除用於 Azure 的信用卡](change-credit-card.md)。
 
 ### <a name="settle-outstanding-charges-for-azure-services"></a>結清 Azure 服務的未付費用
 
-如果您的銀行拒絕費用，則您的 Azure 帳戶狀態將會在 Azure 入口網站中變成 [逾期]。 您可以遵循下列步驟來檢查您的帳戶狀態：
+如果您的銀行拒絕費用，則您的 Azure 帳戶狀態將會在 Azure 入口網站中變成 [逾期]  。 您可以遵循下列步驟來檢查您的帳戶狀態：
 
 1. 以帳戶管理員身分登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 針對 [成本管理 + 帳單] 進行搜尋。
-3. 在 [**成本管理 + 帳單** **總覽**] 頁面上，檢查 [我的**訂閱**] 方格中的 [狀態] 資料行。
-4. 如果您的訂用帳戶標示為 [逾期]，請按一下 [結清餘額]。 系統會提示您在處理過程中完成多重要素驗證。
+2. 針對 [成本管理 + 帳單]  進行搜尋。
+3. 在 [成本管理 + 帳單]  的 [概觀]  頁面上，檢閱 [我的訂用帳戶]  方格中的 [狀態] 資料行。
+4. 如果您的訂用帳戶標示為 [逾期]  ，請按一下 [結清餘額]  。 系統會提示您在處理過程中完成多重要素驗證。
 
 ### <a name="settle-outstanding-charges-for-marketplace-and-reservation-purchases"></a>結清 Marketplace 和保留購買的未付費用
 
-Marketplace 和保留購買會與 Azure 服務分開計費。 如果您的銀行拒絕 Marketplace 或保留費用，則您的發票狀態會在 Azure 入口網站中顯示為 [逾期]。 您可以遵循下列步驟來檢查 Marketplace 和保留發票的狀態：
+Marketplace 和保留購買會與 Azure 服務分開計費。 如果您的銀行拒絕 Marketplace 或保留費用，則您的發票狀態會在 Azure 入口網站中顯示為 [逾期]  。 您可以遵循下列步驟來檢查 Marketplace 和保留發票的狀態：
 
 1. 以帳戶管理員身分登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 針對 [成本管理 + 帳單] 進行搜尋。
-3. 在 [帳單] 底下，選取 [發票]。
-4. 按一下右邊的 [Azure Marketplace 與保留] 索引標籤。
+2. 針對 [成本管理 + 帳單]  進行搜尋。
+3. 在 [帳單] 底下，選取 [發票]  。
+4. 按一下右邊的 [Azure Marketplace 與保留]  索引標籤。
 5. 選取對應的訂用帳戶。
-6. 在 [發票] 方格中，檢閱 [狀態] 資料行。 如果發票 [到期] 或 [逾期] ，請按一下 [立即支付]。 系統會提示您在處理過程中完成多重要素驗證。
+6. 在 [發票] 方格中，檢閱 [狀態] 資料行。 如果發票 [到期] 或 [逾期]，請按一下 [立即支付]。    系統會提示您在處理過程中完成多重要素驗證。
 
 ## <a name="next-steps"></a>後續步驟
 - 如果您需要支付 Azure 帳單，請參閱[處理 Azure 訂用帳戶的逾期未付帳款](resolve-past-due-balance.md)。

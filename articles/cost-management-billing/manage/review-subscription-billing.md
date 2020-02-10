@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 4dc7771862bc922702c5cc321fb3c566212d799a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75990563"
 ---
 # <a name="review-subscription-billing-using-rest-apis"></a>使用 REST API 檢閱訂用帳戶計費
@@ -45,10 +45,10 @@ Authorization: Bearer
 
 以下是必要標頭：
 
-|要求標頭|說明|
+|要求標頭|描述|
 |--------------------|-----------------|
 |*Content-Type:*|必要。 設定為 `application/json`。|
-|*Authorization:*|必要。 設定為有效的 `Bearer`[存取權杖](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)。 |
+|*Authorization:*|必要。 設定為有效的 `Bearer` [存取權杖](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)。 |
 
 ## <a name="response"></a>回應
 
@@ -79,9 +79,9 @@ Authorization: Bearer
 }
 ```
 
-[值] 中的每個項目代表與使用服務相關的詳細資料：
+[值]  中的每個項目代表與使用服務相關的詳細資料：
 
-|回應屬性|說明|
+|回應屬性|描述|
 |----------------|----------|
 |**subscriptionGuid** | 訂用帳戶的全域唯一識別碼。 |
 |**startDate** | 開始使用的日期。 |

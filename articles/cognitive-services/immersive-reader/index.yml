@@ -12,12 +12,12 @@ metadata:
   author: IEvangelist
   ms.author: dapine
   ms.date: 01/23/2020
-  ms.openlocfilehash: 4832f81a7891e360b0e8a195214930ddc2c2eb03
-  ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+  ms.openlocfilehash: 2ba262c7adf778099e47e636a9106f74314c2254
+  ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 01/24/2020
-  ms.locfileid: "76716789"
+  ms.lasthandoff: 02/09/2020
+  ms.locfileid: "77108699"
 landingContent:
 - title: 關於沈浸式閱讀程式
   linkLists:
@@ -25,6 +25,10 @@ landingContent:
     links:
     - text: 什麼是沈浸式閱讀程式？
       url: overview.md
+  - linkListType: video
+    links:
+    - text: 快速入門 - 短期工程影片
+      url: https://aka.ms/ImmersiveReaderSDKVideos
 - title: 開始使用
   linkLists:
   - linkListType: quickstart

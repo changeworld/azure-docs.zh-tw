@@ -15,10 +15,10 @@ ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: e183a622910c7690b566537311661789253efbfb
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992721"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>使用 Azure 預算來管理成本
@@ -44,27 +44,27 @@ ms.locfileid: "75992721"
 ### <a name="create-an-azure-automation-account"></a>建立 Azure 自動化帳戶
 
 1. 使用您的 Azure 帳戶認證登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 按一下 Azure 左上角的 [建立資源] 按鈕。
-3. 選取 [管理工具] > [自動化]。
+2. 按一下 Azure 左上角的 [建立資源]  按鈕。
+3. 選取 [管理工具]   > [自動化]  。
    > [!NOTE]
    > 如果您沒有 Azure 帳戶，可以建立一個[免費帳戶](https://azure.microsoft.com/free/)。
-4. 輸入您的帳戶資訊。 針對 [建立 Azure 執行身分帳戶]，選擇 [是] 以自動啟用相關設定來簡化 Azure 驗證。
-5. 完成後，按一下 [建立] 可啟動自動化帳戶部署。
+4. 輸入您的帳戶資訊。 針對 [建立 Azure 執行身分帳戶]  ，選擇 [是]  以自動啟用相關設定來簡化 Azure 驗證。
+5. 完成後，按一下 [建立]  可啟動自動化帳戶部署。
 
 ### <a name="import-the-stop-azure-v2-vms-runbook"></a>匯入 Stop Azure V2 VM Runbook
 
 透過使用 [Azure 自動化 Runbook](https://docs.microsoft.com/azure/automation/automation-runbook-types)，從資源庫匯入 [Stop Azure V2 VM](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) \(英文\) 圖形化 Runbook。
 
 1.  使用您的 Azure 帳戶認證登入 [Azure 入口網站](https://portal.azure.com/)。
-2.  選取 [所有服務] > [自動化帳戶] 來開啟您的自動化帳戶。 然後選取您的自動化帳戶。
-3.  按一下 [程序自動化] 區段中的 [Runbook 資源庫]。
-4.  將 [資源庫來源] 設定為 [指令碼中心]，然後選取 [確定]。
+2.  選取 [所有服務]   > [自動化帳戶]  來開啟您的自動化帳戶。 然後選取您的自動化帳戶。
+3.  按一下 [程序自動化]  區段中的 [Runbook 資源庫]  。
+4.  將 [資源庫來源]  設定為 [指令碼中心]  ，然後選取 [確定]  。
 5.  在 Azure 入口網站內找出並選取 [Stop Azure V2 VM](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) \(英文\) 資源庫項目。
-6.  按一下 [匯入] 按鈕來顯示 [匯入] 刀鋒視窗，然後選取 [確定]。 Runbook 概觀刀鋒視窗隨即顯示。
-7.  Runbook 完成匯入過程之後，請選取 [編輯] 以顯示圖形化 Runbook 編輯器和發佈選項。
+6.  按一下 [匯入]  按鈕來顯示 [匯入]  刀鋒視窗，然後選取 [確定]  。 Runbook 概觀刀鋒視窗隨即顯示。
+7.  Runbook 完成匯入過程之後，請選取 [編輯]  以顯示圖形化 Runbook 編輯器和發佈選項。
 
     ![Azure - [編輯圖形化 Runbook]](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-01.png)
-8.  按一下 [發佈] 按鈕來發佈 Runbook，然後在系統提示時選取 [是]。 當您發佈 Runbook 時，您會以草稿版本覆寫任何現有的已發佈版本。 在本範例的情況中，因為您剛剛才建立 Runbook，所以還沒有已發佈的版本。
+8.  按一下 [發佈]  按鈕來發佈 Runbook，然後在系統提示時選取 [是]  。 當您發佈 Runbook 時，您會以草稿版本覆寫任何現有的已發佈版本。 在本範例的情況中，因為您剛剛才建立 Runbook，所以還沒有已發佈的版本。
 
     如需發佈 Runbook 的詳細資訊，請參閱[建立圖形化 Runbook](https://docs.microsoft.com/azure/automation/automation-first-runbook-graphical)。
 
@@ -72,18 +72,18 @@ ms.locfileid: "75992721"
 
 透過使用 [Stop Azure V2 VM](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) \(英文\) 圖形化 Runbook，您將會建立兩個 Webhook，以透過單一 HTTP 要求在 Azure 自動化中啟動 Runbook。 當達到 80% 預算閾值的時候，第一個 Webhook 將會以資源群組名稱作為參數來呼叫 Runbook，以允許系統停止選擇性的 VM。 然後，第二個 Webhook 會在不搭配任何參數 (於 100%) 的情況下叫用 Runbook，這會停止所有剩下的 VM 執行個體。
 
-1. 從 [Azure 入口網站](https://portal.azure.com/)中的 [Runbook] 頁面，按一下會顯示 Runbook 概觀刀鋒視窗的 [StopAzureV2Vm] Runbook。
-2. 按一下頁面頂端的 [Webhook] 來開啟 [新增 Webhook] 刀鋒視窗。
-3. 按一下 [建立新的 Webhook] 來開啟 [建立新的 Webhook ] 刀鋒視窗。
-4. 將 Webhook 的 [名稱] 設定成 **Optional**。 [Enabled] 屬性必須為 [Yes]。 [Expires] 值不需要變更。 如需 Webhook 屬性的詳細資訊，請參閱 [Webhook 的詳細資料](https://docs.microsoft.com/azure/automation/automation-webhooks#details-of-a-webhook)。
+1. 從 [Azure 入口網站](https://portal.azure.com/)中的 [Runbook]  頁面，按一下會顯示 Runbook 概觀刀鋒視窗的 [StopAzureV2Vm]  Runbook。
+2. 按一下頁面頂端的 [Webhook]  來開啟 [新增 Webhook]  刀鋒視窗。
+3. 按一下 [建立新的 Webhook]  來開啟 [建立新的 Webhook ]  刀鋒視窗。
+4. 將 Webhook 的 [名稱]  設定成 **Optional**。 [Enabled]  屬性必須為 [Yes]  。 [Expires]  值不需要變更。 如需 Webhook 屬性的詳細資訊，請參閱 [Webhook 的詳細資料](https://docs.microsoft.com/azure/automation/automation-webhooks#details-of-a-webhook)。
 5. 在 URL 值的旁邊，按一下複製圖示來複製 Webhook 的 URL。
    > [!IMPORTANT]
    > 將名為 **Optional** 之 Webhook 的 URL 保存在安全的地方。 您稍後會在本教學課程中使用這個 URL。 為了安全起見，當您建立 Webhook 之後，就無法再次查看或擷取該 URL。
-6. 按一下 [確定] 以建立新的 Webhook。
-7. 按一下 [設定參數與回合設定] 以檢視 Runbook 的參數值。
+6. 按一下 [確定]  以建立新的 Webhook。
+7. 按一下 [設定參數與回合設定]  以檢視 Runbook 的參數值。
    > [!NOTE]
    > 如果 Runbook 有強制參數，除非提供值，否則您無法建立 Webhook。
-8. 按一下 [確定] 以接受 Webhook 參數值。
+8. 按一下 [確定]  以接受 Webhook 參數值。
 9. 按一下 [ **建立** ] 來建立 Webhook。
 10. 接下來，請依照上述步驟建立名為 **Complete** 的第二個 Webhook。
     > [!IMPORTANT]
@@ -115,31 +115,31 @@ ms.locfileid: "75992721"
 
 建立將執行上述步驟的邏輯應用程式，必須執行下列步驟：
 
-1.  在 [Azure 入口網站](https://portal.azure.com/)中，選取 [建立資源] > [整合] > [邏輯應用程式]。
+1.  在 [Azure 入口網站](https://portal.azure.com/)中，選取 [建立資源]   > [整合]   > [邏輯應用程式]  。
 
     ![Azure - 選取 [邏輯應用程式] 資源](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-03.png)
-2.  在 [建立邏輯應用程式] 刀鋒視窗中，提供建立邏輯應用程式所需的詳細資料，選取 [釘選到儀表板]，然後按一下 [建立]。
+2.  在 [建立邏輯應用程式]  刀鋒視窗中，提供建立邏輯應用程式所需的詳細資料，選取 [釘選到儀表板]  ，然後按一下 [建立]  。
 
     ![Azure - 建立邏輯應用程式](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-03a.png)
 
-在 Azure 部署您的邏輯應用程式之後，[Logic Apps 設計工具] 隨即開啟，並顯示含有簡介影片和常用觸發程序的刀鋒視窗。
+在 Azure 部署您的邏輯應用程式之後，[Logic Apps 設計工具]  隨即開啟，並顯示含有簡介影片和常用觸發程序的刀鋒視窗。
 
 ### <a name="add-a-trigger"></a>新增觸發程序
 
 每個邏輯應用程式都必須使用觸發程序啟動，而該觸發程序會在特定事件發生或符合特定條件時引發。 每次引發觸發程序時，Logic Apps 引擎會建立邏輯應用程式執行個體，啟動並執行您的工作流程。 「動作」是指在觸發程序之後發生的所有步驟。
 
-1.  在 [Logic Apps 設計工具] 刀鋒視窗的 [範本] 中，選擇 [空白邏輯應用程式]。
-2.  在 [Logic Apps 設計工具] 搜尋方塊中輸入「http 要求」來新增[觸發程序](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts)，以尋找並選取名為 [要求 – 接收到 HTTP 要求時] 的觸發程序。
+1.  在 [Logic Apps 設計工具]  刀鋒視窗的 [範本]  中，選擇 [空白邏輯應用程式]  。
+2.  在 [Logic Apps 設計工具]  搜尋方塊中輸入「http 要求」來新增[觸發程序](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts)，以尋找並選取名為 [要求 – 接收到 HTTP 要求時]  的觸發程序。
 
     ![Azure - 邏輯應用程式 - Http 觸發程序](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-04.png)
-3.  選取 [新增步驟] > [新增動作]。
+3.  選取 [新增步驟]   > [新增動作]  。
 
     ![Azure - [新增步驟] - [新增動作]](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-05.png)
-4.  在 [ **Logic Apps 設計**工具] 搜尋方塊中搜尋「剖析 json」，以尋找並選取 [**資料作業-剖析 json** ][動作](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts)。
+4.  在 [Logic Apps 設計工具]  搜尋方塊中搜尋「剖析 JSON」，以尋找並選取 [資料作業 - 剖析 JSON]  [動作](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts)。
 
     ![Azure - 邏輯應用程式 - 新增剖析 JSON 動作](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-06.png)
-5.  輸入 "Payload" 作為剖析 JSON 承載的 [內容] 名稱或使用動態內容中的 "Body" 標籤。
-6.  選取 [剖析 JSON] 方塊中的 [請使用範例承載產生結構描述] 選項。
+5.  輸入 "Payload" 作為剖析 JSON 承載的 [內容]  名稱或使用動態內容中的 "Body" 標籤。
+6.  選取 [剖析 JSON]  方塊中的 [請使用範例承載產生結構描述]  選項。
 
     ![Azure - 邏輯應用程式 - 使用範例 JSON 資料來產生結構描述](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-07.png)
 7.  將下列 JSON 範例承載貼到文字方塊中：`{"schemaId":"AIP Budget Notification","data":{"SubscriptionName":"CCM - Microsoft Azure Enterprise - 1","SubscriptionId":"<GUID>","SpendingAmount":"100","BudgetStartDate":"6/1/2018","Budget":"50","Unit":"USD","BudgetCreator":"email@contoso.com","BudgetName":"BudgetName","BudgetType":"Cost","ResourceGroup":"","NotificationThresholdAmount":"0.8"}}`
@@ -147,69 +147,69 @@ ms.locfileid: "75992721"
     文字方塊看起來應如下所示：
 
     ![Azure - 邏輯應用程式 - 範例 JSON 承載](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-08.png)
-8.  按一下 [完成]。
+8.  按一下 [完成]  。
 
 ### <a name="add-the-first-conditional-action"></a>新增第一個條件式動作
 
 使用條件式陳述式來檢查閾值額度是否已達到預算範圍的 80% 或更高，但沒有超過或等於 100%。 如果已達到這個閾值額度，便使用名為 **Optional** 的 Webhook 來傳送 HTTP POST。 這個動作將關閉 **Optional** 群組中的 VM。
 
-1.  選取 [新增步驟] > [新增條件]。
+1.  選取 [新增步驟]   > [新增條件]  。
 
     ![Azure - 邏輯應用程式 - [新增條件]](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-09.png)
-2.  在 [條件] 方塊中，按一下包含 [選擇值] 的文字方塊，以顯示可用值的清單。
+2.  在 [條件]  方塊中，按一下包含 [選擇值]  的文字方塊，以顯示可用值的清單。
 
     ![Azure - 邏輯應用程式 - [條件] 方塊](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-10.png)
 
-3.  按一下清單頂端的 [運算式]，然後在運算式編輯器中輸入下列運算式：`float()`
+3.  按一下清單頂端的 [運算式]  ，然後在運算式編輯器中輸入下列運算式：`float()`
 
     ![Azure - 邏輯應用程式 - 浮點運算式](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-11.png)
 
-4.  選取 [動態內容]，將游標放在括號 () 裡面，然後從清單中選取 [NotificationThresholdAmount] 來填入完整的運算式。
+4.  選取 [動態內容]  ，將游標放在括號 () 裡面，然後從清單中選取 [NotificationThresholdAmount]  來填入完整的運算式。
 
     運算式會是下列之一：<br>
     `float(body('Parse_JSON')?['data']?['NotificationThresholdAmount'])`
 
-5.  選取 [確定] 來設定運算式。
-6.  在 [條件] 下拉式方塊中，選取 [大於或等於]。
-7.  在條件的 [選擇值] 方塊中，輸入 `.8`。
+5.  選取 [確定]  來設定運算式。
+6.  在 [條件]  下拉式方塊中，選取 [大於或等於]  。
+7.  在條件的 [選擇值]  方塊中，輸入 `.8`。
 
     ![Azure - 邏輯應用程式 - 具有值的浮點運算式](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-12.png)
 
-8.  按一下 [條件] 方塊內的 [新增] > [新增資料列] 來新增條件的額外部分。
-9.  在 [條件] 方塊中，按一下包含 [選擇值] 的文字方塊。
-10. 按一下清單頂端的 [運算式]，然後在運算式編輯器中輸入下列運算式：`float()`
-11. 選取 [動態內容]，將游標放在括號 () 裡面，然後從清單中選取 [NotificationThresholdAmount] 來填入完整的運算式。
-12. 選取 [確定] 來設定運算式。
-13. 在 [條件] 的下拉式方塊中，選取 [小於]。
-14. 在條件的 [選擇值] 方塊中，輸入 `1`。
+8.  按一下 [條件] 方塊內的 [新增]   > [新增資料列]  來新增條件的額外部分。
+9.  在 [條件]  方塊中，按一下包含 [選擇值]  的文字方塊。
+10. 按一下清單頂端的 [運算式]  ，然後在運算式編輯器中輸入下列運算式：`float()`
+11. 選取 [動態內容]  ，將游標放在括號 () 裡面，然後從清單中選取 [NotificationThresholdAmount]  來填入完整的運算式。
+12. 選取 [確定]  來設定運算式。
+13. 在 [條件]  的下拉式方塊中，選取 [小於]  。
+14. 在條件的 [選擇值]  方塊中，輸入 `1`。
 
     ![Azure - 邏輯應用程式 - 具有值的浮點運算式](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-13.png)
 
-15. 在 [若為 true] 方塊中，選取 [新增動作]。 您將新增一個會關閉選擇性 VM 的 HTTP POST 動作。
+15. 在 [若為 true]  方塊中，選取 [新增動作]  。 您將新增一個會關閉選擇性 VM 的 HTTP POST 動作。
 
     ![Azure - 邏輯應用程式 - [新增動作]](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-14.png)
 
-16. 輸入 **HTTP** 來搜尋該 HTTP 動作，然後選取 [HTTP – HTTP] 動作。
+16. 輸入 **HTTP** 來搜尋該 HTTP 動作，然後選取 [HTTP – HTTP]  動作。
 
     ![Azure - 邏輯應用程式 - 新增 HTTP 動作](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-15.png)
 
-17. 選取 [Post] 作為 [方法] 值。
-18. 輸入您稍早於本教學課程中所建立之 **Optional** Webhook 的 URL，作為 [Uri] 值。
+17. 選取 [Post]  作為 [方法]  值。
+18. 輸入您稍早於本教學課程中所建立之 **Optional** Webhook 的 URL，作為 [Uri]  值。
 
     ![Azure - 邏輯應用程式 - HTTP 動作 URI](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-16.png)
 
-19. 在 [若為 true] 方塊中，選取 [新增動作]。 您將新增電子郵件動作來傳送電子郵件，以通知收件者選擇性 VM 已被關閉。
+19. 在 [若為 true]  方塊中，選取 [新增動作]  。 您將新增電子郵件動作來傳送電子郵件，以通知收件者選擇性 VM 已被關閉。
 20. 搜尋「傳送電子郵件」，然後根據您所使用的電子郵件服務，選取其中一個*傳送電子郵件*動作。
 
     ![Azure -邏輯應用程式 - 傳送電子郵件動作](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-17.png)
 
-    對於個人 Microsoft 帳戶，選取 [Outlook.com]。 對於 Azure 工作或學校帳戶，選取 [Office 365 Outlook]。 如果您還沒有連線，系統會要求您登入您的電子郵件帳戶。 Logic Apps 會建立與電子郵件帳戶的連線。
+    對於個人 Microsoft 帳戶，選取 [Outlook.com]  。 對於 Azure 工作或學校帳戶，選取 [Office 365 Outlook]  。 如果您還沒有連線，系統會要求您登入您的電子郵件帳戶。 Logic Apps 會建立與電子郵件帳戶的連線。
 
     您必須允許邏輯應用程式存取您的電子郵件資訊。
 
     ![Azure - 邏輯應用程式 - 存取通知](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-18.png)
 
-21. 為通知收件者選擇性 VM 已被關閉的電子郵件，新增 [收件者]、[主旨] 和 [本文]。 使用 **BudgetName** 和 **NotificationThresholdAmount** 動態內容來填入主旨和本文欄位。
+21. 為通知收件者選擇性 VM 已被關閉的電子郵件，新增 [收件者]  、[主旨]  和 [本文]  。 使用 **BudgetName** 和 **NotificationThresholdAmount** 動態內容來填入主旨和本文欄位。
 
     ![Azure - 邏輯應用程式 - 電子郵件詳細資料](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-19.png)
 
@@ -217,44 +217,44 @@ ms.locfileid: "75992721"
 
 使用條件陳述式來檢查閾值額度是否已達到或超過預算值的 100%。 如果已達到這個閾值額度，便使用名為 **Complete** 的 Webhook 來傳送 HTTP POST。 這個動作將關閉所有剩下的 VM。
 
-1.  選取 [新增步驟] > [新增條件]。
+1.  選取 [新增步驟]   > [新增條件]  。
 
     ![Azure - 邏輯應用程式 - 新增動作](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-20.png)
 
-2.  在 [條件] 方塊中，按一下包含 [選擇值] 的文字方塊，以顯示可用值的清單。
-3.  按一下清單頂端的 [運算式]，然後在運算式編輯器中輸入下列運算式：`float()`
-4.  選取 [動態內容]，將游標放在括號 () 裡面，然後從清單中選取 [NotificationThresholdAmount] 來填入完整的運算式。
+2.  在 [條件]  方塊中，按一下包含 [選擇值]  的文字方塊，以顯示可用值的清單。
+3.  按一下清單頂端的 [運算式]  ，然後在運算式編輯器中輸入下列運算式：`float()`
+4.  選取 [動態內容]  ，將游標放在括號 () 裡面，然後從清單中選取 [NotificationThresholdAmount]  來填入完整的運算式。
 
     運算式會是下列之一：<br>
     `float(body('Parse_JSON')?['data']?['NotificationThresholdAmount'])`
 
-5.  選取 [確定] 來設定運算式。
-6.  在 [條件] 下拉式方塊中，選取 [大於或等於]。
-7.  在 [條件] 的 [選擇值] 方塊中，輸入 `1`。
+5.  選取 [確定]  來設定運算式。
+6.  在 [條件]  下拉式方塊中，選取 [大於或等於]  。
+7.  在條件的 [選擇值]  方塊中，輸入 `1`。
 
     ![Azure - 邏輯應用程式 - 設定條件值](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-21.png)
 
-8.  在 [若為 true] 方塊中，選取 [新增動作]。 您將新增一個會關閉所有剩下 VM 的 HTTP POST 動作。
+8.  在 [若為 true]  方塊中，選取 [新增動作]  。 您將新增一個會關閉所有剩下 VM 的 HTTP POST 動作。
 
     ![Azure - 邏輯應用程式 - [新增動作]](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-22.png)
 
-9.  輸入 **HTTP** 來搜尋該 HTTP 動作，然後選取 [HTTP – HTTP] 動作。
-10. 選取 [Post] 作為 [方法] 值。
-11. 輸入您稍早於本教學課程中所建立之 **Complete** Webhook 的 URL，作為 [Uri] 值。
+9.  輸入 **HTTP** 來搜尋該 HTTP 動作，然後選取 [HTTP – HTTP]  動作。
+10. 選取 [Post]  作為 [方法]  值。
+11. 輸入您稍早於本教學課程中所建立之 **Complete** Webhook 的 URL，作為 [Uri]  值。
 
     ![Azure - 邏輯應用程式 - [新增動作]](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-23.png)
 
-12. 在 [若為 true] 方塊中，選取 [新增動作]。 您將新增電子郵件動作來傳送電子郵件，以通知收件者剩下的 VM 已被關閉。
+12. 在 [若為 true]  方塊中，選取 [新增動作]  。 您將新增電子郵件動作來傳送電子郵件，以通知收件者剩下的 VM 已被關閉。
 13. 搜尋「傳送電子郵件」，然後根據您所使用的電子郵件服務，選取其中一個*傳送電子郵件*動作。
-14. 為通知收件者選擇性 VM 已被關閉的電子郵件，新增 [收件者]、[主旨] 和 [本文]。 使用 **BudgetName** 和 **NotificationThresholdAmount** 動態內容來填入主旨和本文欄位。
+14. 為通知收件者選擇性 VM 已被關閉的電子郵件，新增 [收件者]  、[主旨]  和 [本文]  。 使用 **BudgetName** 和 **NotificationThresholdAmount** 動態內容來填入主旨和本文欄位。
 
     ![Azure -邏輯應用程式 - 傳送電子郵件詳細資料](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-24.png)
 
-15. 按一下 [Logic Apps 設計工具] 刀鋒視窗上方的 [儲存]。
+15. 按一下 [Logic Apps 設計工具]  刀鋒視窗上方的 [儲存]  。
 
 ### <a name="logic-app-summary"></a>邏輯應用程式摘要
 
-當您完成時，邏輯應用程式看起來應該如下所示。 在不需要任何以閾值為基礎之協調流程的最基本案例中，您可以從 [監視器] 直接呼叫自動化指令碼，並略過 [邏輯應用程式] 步驟。
+當您完成時，邏輯應用程式看起來應該如下所示。 在不需要任何以閾值為基礎之協調流程的最基本案例中，您可以從 [監視器]  直接呼叫自動化指令碼，並略過 [邏輯應用程式]  步驟。
 
    ![Azure - 邏輯應用程式 - 完整檢視](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-25.png)
 
@@ -270,19 +270,19 @@ ms.locfileid: "75992721"
 
 當您建立動作群組時，您會指向您稍早於本教學課程中建立的邏輯應用程式。
 
-1.  如果您尚未登入 [Azure 入口網站](https://portal.azure.com/)，請登入並選取 [所有服務] > [監視]。
-2.  選取 [警示]，然後選取 [管理動作]。
-3.  從 [動作群組] 刀鋒視窗中，選取 [新增動作群組]。
+1.  如果您尚未登入 [Azure 入口網站](https://portal.azure.com/)，請登入並選取 [所有服務]   > [監視]  。
+2.  選取 [警示]  ，然後選取 [管理動作]  。
+3.  從 [動作群組]  刀鋒視窗中，選取 [新增動作群組]  。
 4.  新增並確認下列項目：
     - 動作群組名稱
     - 簡短名稱
-    - 訂閱
+    - 訂用帳戶
     - 資源群組
 
     ![Azure - 邏輯應用程式 - [新增動作群組]](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-26.png)
 
-5.  在 [新增動作群組] 窗格內，新增 LogicApp 動作。 將該動作命名為 **Budget-BudgetLA**。 在 [邏輯應用程式] 窗格中，選取 [訂用帳戶] 及 [資源群組]。 然後，選取您稍早於本教學課程中建立的**邏輯應用程式**。
-6.  按一下 [確定] 來設定邏輯應用程式。 然後，選取 [新增動作群組] 窗格中的 [確定]以建立動作群組。
+5.  在 [新增動作群組]  窗格內，新增 LogicApp 動作。 將該動作命名為 **Budget-BudgetLA**。 在 [邏輯應用程式]  窗格中，選取 [訂用帳戶]  及 [資源群組]  。 然後，選取您稍早於本教學課程中建立的**邏輯應用程式**。
+6.  按一下 [確定]  來設定邏輯應用程式。 然後，選取 [新增動作群組]  窗格中的 [確定]  以建立動作群組。
 
 您已完成有效協調預算所需的所有支援元件。 現在您只需要建立預算，並將它設定為使用您所建立的動作群組。
 
@@ -322,11 +322,11 @@ ms.locfileid: "75992721"
 
 4.  將要求從 `Get` 變更至 `Put` 動作。
 5.  將以下 URL 的 `{subscriptionId}` 取代為您於本教學課程上一節中所使用的**訂用帳戶識別碼**。 此外，修改 URL 來包含 "SampleBudget" 作為 `{budgetName}` 的值：`https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Consumption/budgets/{budgetName}?api-version=2018-03-31`
-6.  選取 Postman 內的 [Headers] \(標頭\) 索引標籤。
-7.  新增名為 "Authorization" 的新 [Key] \(金鑰\)。
-8.  將 [Value] \(值\) 設定成於上一節結尾利用 ArmClient 所建立的權杖。
-9.  選取 Postman 內的 [Body] \(本文\) 索引標籤。
-10. 選取 [raw] \(原始\) 按鈕選項。
+6.  選取 Postman 內的 [Headers]  \(標頭\) 索引標籤。
+7.  新增名為 "Authorization" 的新 [Key]  \(金鑰\)。
+8.  將 [Value]  \(值\) 設定成於上一節結尾利用 ArmClient 所建立的權杖。
+9.  選取 Postman 內的 [Body]  \(本文\) 索引標籤。
+10. 選取 [raw]  \(原始\) 按鈕選項。
 11. 在文字方塊中，貼上下列範例預算定義，不過您必須將 **subscriptionid**、**budgetname** 和 **actiongroupname** 參數取代為您的訂用帳戶識別碼、您預算的唯一名稱，以及您在 URL 和要求本文中建立的動作群組名稱：
 
     ```
@@ -364,7 +364,7 @@ ms.locfileid: "75992721"
             }
         }
     ```
-12. 按 [Send] \(傳送\) 來傳送要求。
+12. 按 [Send]  \(傳送\) 來傳送要求。
 
 現在，呼叫[預算 API](https://docs.microsoft.com/rest/api/consumption/budgets)\(英文\) 的所有元件皆已準備完畢。 預算 API 參考針對特定要求有提供其他詳細資料，包括下列項目：
     - **budgetName** - 支援多個預算。  預算名稱必須是唯一的。

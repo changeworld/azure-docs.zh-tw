@@ -1,5 +1,5 @@
 ---
-title: Azure 保留的自助式交換和退費
+title: Azure 保留的自助式交換和退款
 description: 了解如何進行 Azure 保留的交換或退款。
 author: yashesvi
 manager: yashesvi
@@ -8,18 +8,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/21/2020
+ms.date: 01/24/2020
 ms.author: banders
-ms.openlocfilehash: ea545919436201524a1c77b27e9b187f3b1c3b64
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
-ms.translationtype: MT
+ms.openlocfilehash: 5f0c0c50ffd639109fdbb90c76e4ec036a8bc975
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314040"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76773889"
 ---
-# <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure 保留的自助式交換和退費
+# <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure 保留的自助式交換和退款
 
-Azure 保留可提供彈性，以協助您滿足不斷演變的需求。 您可以用保留來交換相同類型的其他保留。 您也可以退還不再需要的保留，每年最多 50,000 美元。 退款的最大限制適用于您與 Microsoft 合約範圍內的所有保留。
+Azure 保留可提供彈性，以協助您滿足不斷演變的需求。 您可以用保留來交換相同類型的其他保留。 您也可以退還不再需要的保留，每年最多 50,000 美元。 退款的上限適用於您與 Microsoft 的合約範圍內所有的保留。
 
 自助式交換和取消功能不適用於美國政府 Enterprise 合約客戶。 可支援其他美國政府訂用帳戶類型，包括隨用隨付和 CSP。
 
@@ -29,14 +29,14 @@ Azure 保留可提供彈性，以協助您滿足不斷演變的需求。 您可�
 
 您可以在 [Azure 入口網站](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)中快速進行三個步驟來交換保留。
 
-1. 選取要退款的保留，然後按一下 [交換]。  
+1. 選取要退款的保留，然後選取 [交換]  。  
     ![範例影像：顯示要退還的保留](./media/exchange-and-refund-azure-reservations/exchange-refund-return.png)
 2. 選取您要購買的 VM 產品，並輸入數量。 請確定新購買的金額總計高於退還的金額總計。 [購買之前請確認大小正確](../../virtual-machines/windows/prepay-reserved-vm-instances.md#determine-the-right-vm-size-before-you-buy)。  
     ![範例影像：顯示要透過交換來購買的 VM 產品](./media/exchange-and-refund-azure-reservations/exchange-refund-select-purchase.png)
 3. 檢閱並完成交易。  
     ![範例影像：顯示要透過交換來購買的 VM 產品，並完成退貨](./media/exchange-and-refund-azure-reservations/exchange-refund-confirm-exchange.png)
 
-若要退還保留，請移至 [保留詳細資料]，然後按一下 [退款]。
+若要退還保留，請移至 [保留詳細資料]  ，然後選取 [退款]  。
 
 ## <a name="how-transactions-are-processed"></a>交易的處理方式
 
@@ -66,14 +66,14 @@ Azure 有下列取消、交換和退款原則。
 - 只有保留擁有者可以處理交換。 [了解如何新增或變更可以管理保留的使用者](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)。
 - 交換會以退款和重新購買的形式來處理；針對取消和新的購買會產生不同的交易。 針對您折抵的保留，系統會按比例計算保留的退款金額。 新的購買則會收取完整費用。 按比例計算的保留金額是所退還保留的按日、按比例計算殘值。
 - 即使用來購買保留的 Enterprise 合約已到期並更新為新合約，您還是可以交換或退還保留。
-- 您可以透過交換來變更任何保留屬性，例如大小、區域、數量和期限。
+- 您可以透過交換來變更保留屬性，例如系列、版本、SKU、區域、數量和期間。
 - 新的購買總計應該等於或大於退還的金額。
 - 在交換時所購買的新保留會有新的期限 (從交換時起算)。
 - 交換沒有任何懲罰或年度限制。
 
 **退款原則**
 - 如果您取消保留，可能會有 12% 的提前解約金。
-- 您收到的取消退款是按比例計算的餘額扣除 12% 提前解約金的金額。 若要取消，請移至 Azure 入口網站中的保留，然後選取 [退款]。
+- 您收到的取消退款是按比例計算的餘額扣除 12% 提前解約金的金額。 若要取消，請移至 Azure 入口網站中的保留，然後選取 [退款]  。
 - 您的總退款金額在 12 個月的滾動時段內不得超過 50,000 美元。
 - 退款會根據您購買價格或目前保留價格的最低價格來計算。
 - 只有保留擁有者可以處理退款。 [了解如何新增或變更可以管理保留的使用者](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)。
@@ -81,9 +81,9 @@ Azure 有下列取消、交換和退款原則。
 
 ## <a name="exchange-non-premium-storage-for-premium-storage"></a>Exchange 非進階儲存體換成進階儲存體
 
-針對不支援進階儲存體的 VM 大小，您可以將所購買的保留換成可支援進階儲存體的對應 VM 大小。 例如，將 F1 換成 F1s。 若要進行交換，請移至 [保留詳細資料]，然後按一下 [交換]。 交換並不會重設保留執行個體的期限，也不會產生新的交易。
+針對不支援進階儲存體的 VM 大小，您可以將所購買的保留換成可支援進階儲存體的對應 VM 大小。 例如，將 F1  換成 F1s  。 若要進行交換，請移至 [保留詳細資料]，然後選取 [交換]  。 交換並不會重設保留執行個體的期限，也不會產生新的交易。
 
-## <a name="need-help-contact-us"></a>需要協助嗎？ 連絡我們。
+## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡。
 
 如果您有問題或需要協助，請[建立支援要求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
 

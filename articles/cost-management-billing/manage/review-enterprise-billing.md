@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 222b0358f027e0a6687ca0710e3cf5b80f292c4e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75993462"
 ---
 # <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>使用 REST API 檢閱 Enterprise 註冊計費
@@ -41,7 +41,7 @@ Authorization: Bearer
 
 以下是必要標頭： 
 
-|要求標頭|說明|  
+|要求標頭|描述|  
 |--------------------|-----------------|  
 |*Content-Type:*|必要。 設定為 `application/json`。|  
 |*Authorization:*|必要。 設定為有效的 `Bearer` [API 金鑰](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)。 |  
@@ -94,7 +94,7 @@ Authorization: Bearer
 
 以下是必要標頭： 
 
-|要求標頭|說明|  
+|要求標頭|描述|  
 |--------------------|-----------------|  
 |*Content-Type:*|必要。 設定為 `application/json`。|  
 |*Authorization:*|必要。 設定為有效的 `Bearer` [API 金鑰](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)。 |  
@@ -150,7 +150,7 @@ Authorization: Bearer
 
 以下是必要標頭： 
 
-|要求標頭|說明|  
+|要求標頭|描述|  
 |--------------------|-----------------|  
 |*Content-Type:*|必要。 設定為 `application/json`。|  
 |*Authorization:*|必要。 設定為有效的 `Bearer` [API 金鑰](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)。 |  

@@ -64,7 +64,7 @@
           href: set-up-customize-master-image.md
         - name: 在主要 VHD 映像上安裝 Office
           href: install-office-on-wvd-master-image.md
-    - name: 動態調整工作階段主機
+    - name: 自動調整工作階段主機
       href: set-up-scaling-script.md
     - name: 自訂摘要
       href: customize-feed-for-virtual-desktop-users.md

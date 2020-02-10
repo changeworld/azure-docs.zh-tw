@@ -11,10 +11,10 @@ ms.service: cost-management-billing
 manager: alavital
 ms.custom: ''
 ms.openlocfilehash: 4be484cdff2014f11c872da9a246ef8406447712
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75988496"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>使用成本警示監視使用量和支出
@@ -35,11 +35,11 @@ ms.locfileid: "75988496"
 
 當部門支出到達固定的配額臨界值時，部門支出配額警示就會通知您。 支出配額會設定於 EA 入口網站中。 每當符合臨界值時，它就會產生一封電子郵件給部門擁有者，並顯示於成本警示中。 例如，配額的 50% 或 75%。
 
-## <a name="supported-alert-features-by-offer-categories"></a>依供應項目類別支援的警示功能
+## <a name="supported-alert-features-by-offer-categories"></a>不同供應項目類別支援的警示功能
 
-警示類型的支援取決於您擁有的 Azure 帳戶類型 (Microsoft 供應項目)。 下表顯示各種 Microsoft 供應項目所支援的警示功能。 您可以在[瞭解成本管理資料](understand-cost-mgt-data.md)中查看 Microsoft 供應專案的完整清單。
+警示類型的支援取決於您所擁有的 Azure 帳戶類型 (Microsoft 供應項目)。 下表顯示各種 Microsoft 供應項目支援的警示功能。 您可以在[了解成本管理資料](understand-cost-mgt-data.md)中檢視 Microsoft 供應項目的完整清單。
 
-| 警示類型 | Enterprise 合約 | Microsoft 客戶合約 | Web direct/隨用隨付 |
+| 警示類型 | Enterprise 合約 | Microsoft 客戶合約 | Web Direct/隨用隨付 |
 |---|---|---|---|
 | 預算 | ✔ | ✔ | ✔ |
 | 功勞 | ✔ |✘ | ✘ |
@@ -49,7 +49,7 @@ ms.locfileid: "75988496"
 
 ## <a name="view-cost-alerts"></a>檢視成本警示
 
-若要檢視預算警示，請在 Azure 入口網站中開啟所需的範圍，然後選取功能表中的 [預算]。 使用 [範圍] 膠囊切換到不同的範圍。 選取功能表中的 [成本警示]。 如需有關範圍的詳細資訊，請參閱[了解並使用範圍](understand-work-scopes.md)。
+若要檢視成本警示，請在 Azure 入口網站中開啟所需的範圍，然後在功能表中選取 [預算]  。 使用 [範圍]  框切換至不同的範圍。 在功能表中選取 [成本警示]  。 如需有關範圍的詳細資訊，請參閱[了解並使用範圍](understand-work-scopes.md)。
 
 ![在成本管理中顯示的警示範例影像](./media/cost-mgt-alerts-monitor-usage-spending/budget-alerts-fullscreen.png)
 
@@ -67,6 +67,6 @@ ms.locfileid: "75988496"
 
 ![顯示關閉並重新啟動選項的範例影像](./media/cost-mgt-alerts-monitor-usage-spending/Dismiss-reactivate-options.png)
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - 如果您尚未建立預算或設定預算的警示條件，請完成[建立和管理預算](tutorial-acm-create-budgets.md)教學課程。

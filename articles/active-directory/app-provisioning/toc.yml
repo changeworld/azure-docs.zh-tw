@@ -1,0 +1,107 @@
+- name: 應用程式和 HR 佈建文件
+  href: index.yml
+- name: 概觀
+  expanded: true
+  items:
+    - name: 什麼是應用程式佈建？
+      href: user-provisioning.md
+- name: 教學課程
+  items:
+    - name: G Suite
+      href: /azure/active-directory/saas-apps/google-apps-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - name: ServiceNow
+      href: /azure/active-directory/saas-apps/servicenow-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - name: Amazon Web Services (AWS) - 角色佈建
+      href: '/azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-azure-ad-single-sign-ont?context=azure/active-directory/app-provisioning/context/app-provisioning-context'
+    - name: Workday
+      href: /azure/active-directory/saas-apps/workday-inbound-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - name: SAP SuccessFactors
+      href: /azure/active-directory/saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - name: 所有整合式資源庫應用程式
+      href: /azure/active-directory/saas-apps
+- name: 概念
+  expanded: true
+  items:
+    - name: 應用程式佈建的運作方式
+      href: how-provisioning-works.md
+    - name: 規劃應用程式佈建部署
+      href: plan-auto-user-provisioning.md
+    - name: 規劃雲端 HR 佈建部署
+      href: plan-cloud-hr-provision.md
+- name: 操作指南
+  expanded: true
+  items:
+    - name: 設定資源庫應用程式的佈建
+      href: configure-automatic-user-provisioning-portal.md
+    - name: 編輯屬性對應
+      items:
+        - name: 自訂屬性對應
+          href: customize-application-attributes.md
+        - name: 撰寫屬性對應的運算式
+          href: functions-for-customizing-application-data.md
+    - name: 包含或排除範圍中的使用者和群組
+      items:
+        - name: 設定要佈建的使用者或群組範圍
+          href: define-conditional-rules-for-provisioning-user-accounts.md
+        - name: 跳過且不刪除範圍外使用者
+          href: skip-out-of-scope-deletions.md
+    - name: 監視和報告佈建
+      items:
+        - name: 監視佈建狀態和效能
+          href: application-provisioning-when-will-provisioning-finish-specific-user.md
+        - name: 應用程式佈建報告
+          href: check-status-user-account-provisioning.md
+        - name: 匯出及匯入您的組態
+          href: export-import-provisioning-configuration.md
+    - name: 對應用程式佈建進行疑難排解
+      items:
+        - name: T應用程式佈建疑難排解
+          href: application-provisioning-config-problem.md
+        - name: 隔離狀態
+          href: application-provisioning-quarantine-status.md
+        - name: 授權問題 (無法儲存管理員認證)
+          href: application-provisioning-config-problem-storage-limit.md
+        - name: 未佈建使用者
+          href: application-provisioning-config-problem-no-users-provisioned.md
+        - name: 佈建錯誤的使用者
+          href: application-provisioning-config-problem-wrong-users-provisioned.md
+        - name: 遺漏來源屬性
+          href: user-provisioning-sync-attributes-for-mapping.md
+        - name: 佈建作業緩慢
+          href: application-provisioning-when-will-provisioning-finish.md
+        - name: 佈建記錄
+          href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - name: 建立 SCIM 端點和設定佈建
+      href: use-scim-to-provision-users-and-groups.md
+    - name: 使用 MS Graph 將組態自動化
+      href: application-provisioning-configure-api.md
+- name: 參考
+  items:
+    - name: 選擇佈建方法
+      href: isv-automatic-provisioning-multi-tenant-apps.md
+    - name: 雲端 HR 佈建
+      items:
+        - name: SuccessFactors 屬性參考
+          href: sap-successfactors-attribute-reference.md
+        - name: Workday 索引屬性参考
+          href: workday-attribute-reference.md
+    - name: Azure AD Connect 佈建代理程式
+      items:
+        - name: 佈建代理程式版本記錄
+          href: provisioning-agent-release-version-history.md
+- name: 資源
+  items:
+    - name: 開發人員的支援和協助選項
+      href: /azure/active-directory/develop/developer-support-help-options
+    - name: Azure 意見反應論壇
+      href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+    - name: MSDN 論壇
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
+    - name: 定價
+      href: 'https://azure.microsoft.com/pricing/details/active-directory'
+    - name: 服務更新
+      href: 'https://azure.microsoft.com/updates/?product=active-directory'
+    - name: 堆疊溢位
+      href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
+    - name: 影片
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

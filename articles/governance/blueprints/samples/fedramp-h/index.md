@@ -1,14 +1,14 @@
 ---
-title: 範例 - FedRAMP 高等級藍圖 - 概觀
+title: FedRAMP 高等級藍圖樣本概觀
 description: FedRAMP 高等級藍圖範例概觀。 此藍圖範例可協助客戶評定特定 FedRAMP 高等級控制措施。
 ms.date: 01/31/2020
 ms.topic: sample
-ms.openlocfilehash: 9a9d16967495f4785ebffabc968856edab382e75
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: dede255b73a2a052acf1e8b95ad5171a1ace6ae5
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76941292"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087287"
 ---
 # <a name="overview-of-the-fedramp-high-blueprint-sample"></a>FedRAMP 高等級藍圖範例概觀
 
