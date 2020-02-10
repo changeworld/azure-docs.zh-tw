@@ -144,8 +144,8 @@ LUIS 會利用由 LUIS 模型建立者精挑細選的語句來建置有效的模
 
 |語句|
 |--|
-|What kind of county fairs are happening in the Seattle area this summer?|
-|Is the current rating for the Seattle review fair?|
+|今年夏天西雅圖地區正在舉辦什麼類型的博覽會?|
+|對於 Seattle Review 目前的評分是否公平？|
 
 如果您想要讓事件實體尋找所有事件資料，請標記第一個語句中的 `fair` 一字，但不要標記第二個語句中的該字。
 
