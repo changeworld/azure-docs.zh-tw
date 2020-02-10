@@ -122,12 +122,12 @@ Azure 串流分析查詢建構的相關資訊可在 MSDN 上的 [串流分析查
 
 類似於 [Azure 串流分析](#azure-stream-analytics-1)查詢，[Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 指令碼對於內送資料格式具有隱含知識，因此必須根據您的資料格式進行變更。
 
-#### <a name="aggregateflightinfopipeline"></a><bpt id="p1">*</bpt>AggregateFlightInfoPipeline<ept id="p1">*</ept>
+#### <a name="aggregateflightinfopipeline"></a>*AggregateFlightInfoPipeline*
 這個[管線](../../data-factory/concepts-pipelines-activities.md)包含單一活動 - 使用 [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) 的 [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) 活動，會在 [Azure 串流分析](https://azure.microsoft.com/services/stream-analytics/)作業期間，執行 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 指令碼來分割放在 [Azure 儲存體](https://azure.microsoft.com/services/storage/)中的資料。
 
 此資料分割工作的 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 指令碼為 ***AggregateFlightInfo.hql***
 
-#### <a name="mlscoringpipeline"></a><bpt id="p1">*</bpt>MLScoringPipeline<ept id="p1">*</ept>
+#### <a name="mlscoringpipeline"></a>*MLScoringPipeline*
 這個[管線](../../data-factory/concepts-pipelines-activities.md)包含數個活動，而其最終結果為來自與這個解決方案範本相關聯的 [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) 實驗評分的預測。
 
 包含的活動為：
@@ -137,7 +137,7 @@ Azure 串流分析查詢建構的相關資訊可在 MSDN 上的 [串流分析查
 * [複製](https://msdn.microsoft.com/library/azure/dn835035.aspx)活動，它會將來自 [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) 活動的結果移至 [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) 活動所存取的單一 [Azure 儲存體](https://azure.microsoft.com/services/storage/) Blob。
 * 呼叫 [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) 實驗的 [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) 活動，會導致將結果放入單一 [Azure 儲存體](https://azure.microsoft.com/services/storage/) Blob。
 
-#### <a name="copyscoredresultpipeline"></a><bpt id="p1">*</bpt>CopyScoredResultPipeline<ept id="p1">*</ept>
+#### <a name="copyscoredresultpipeline"></a>*CopyScoredResultPipeline*
 這個[管線](../../data-factory/concepts-pipelines-activities.md)包含單一活動 - [複製](https://msdn.microsoft.com/library/azure/dn835035.aspx)活動，會將 [Azure Machine Learning](#azure-machine-learning) 實驗的結果從 ***MLScoringPipeline*** 移至隨解決方案範本安裝佈建的 [Azure SQL Database](https://azure.microsoft.com/services/sql-database/)。
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
