@@ -2,19 +2,21 @@
 title: 範本語法和運算式
 description: 描述 Azure Resource Manager 範本的宣告式 JSON 語法。
 ms.topic: conceptual
-ms.date: 09/03/2019
-ms.openlocfilehash: b7682ba10c30290e5935bc2dd17e2a83852d92f4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/10/2020
+ms.openlocfilehash: 42649d4b04b03de32b82335fce68401192de75a3
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484190"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120592"
 ---
 # <a name="syntax-and-expressions-in-azure-resource-manager-templates"></a>Azure Resource Manager 範本中的語法和運算式
 
-範本的基本語法是 JSON。 不過，您可以使用運算式來擴充範本內可用的 JSON 值。  運算式開頭和結尾括號分別是 `[` 和 `]`。 部署範本時，會評估運算式的值。 運算式可以傳回字串、整數、布林值、陣列或物件。
+範本的基本語法是 JSON。 不過，您可以使用運算式來擴充範本內可用的 JSON 值。  運算式的開頭和結尾都是方括弧：分別是 `[` 和 `]`。 部署範本時，會評估運算式的值。 運算式可以傳回字串、整數、布林值、陣列或物件。
 
 範本運算式不能超過24576個字元。
+
+運算式支援 json （' null '）和屬性支援 null 的常值。 在這兩種情況下，Resource Manager 範本都會將其視為屬性不存在。
 
 ## <a name="use-functions"></a>使用函式
 
@@ -39,7 +41,7 @@ ms.locfileid: "75484190"
 "name": "[concat('storage', uniqueString(resourceGroup().id))]"
 ```
 
-## <a name="escape-characters"></a>逸出字元
+## <a name="escape-characters"></a>Escape 字元
 
 若要讓常值字串開頭為左括弧 `[` 並以右方括弧 `]`結尾，但不會將它轉譯為運算式，請加入額外的括弧以使用 `[[`來啟動字串。 例如，變數：
 

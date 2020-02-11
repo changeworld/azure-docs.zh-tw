@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24e82abd2c95bcbfdde843a6636a809bb3aeb70c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5895ed256fa5f0337b74d9dbe14c4074dad4b522
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422633"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120249"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中建立和管理資原始目錄
 
@@ -51,6 +51,10 @@ ms.locfileid: "75422633"
 
 1. 按一下 [**建立**] 以建立類別目錄。
 
+### <a name="creating-a-catalog-programmatically"></a>以程式設計方式建立目錄
+
+您也可以使用 Microsoft Graph 建立目錄。  具有具有委派 `EntitlementManagement.ReadWrite.All` 許可權之應用程式的適當角色使用者，可以呼叫 API 來[建立 accessPackageCatalog](https://docs.microsoft.com/graph/api/accesspackagecatalog-post?view=graph-rest-beta)。
+
 ## <a name="add-resources-to-a-catalog"></a>將資源新增至目錄
 
 若要在存取封裝中包含資源，資源必須存在於目錄中。 您可以新增的資源類型包括 [群組]、[應用程式] 和 [SharePoint Online 網站]。 這些群組可以是雲端建立的 Office 365 群組或雲端建立的 Azure AD 安全性群組。 應用程式可以 Azure AD 企業應用程式，包括 SaaS 應用程式和您自己的應用程式（與 Azure AD 聯盟）。 網站可以是 SharePoint Online 網站或 SharePoint Online 網站集合。
@@ -76,6 +80,10 @@ ms.locfileid: "75422633"
 1. 完成後，按一下 [**新增**]。
 
     這些資源現在可以包含在目錄內的存取封裝中。
+
+### <a name="adding-a-resource-to-a-catalog-programmatically"></a>以程式設計方式將資源新增至目錄
+
+您也可以使用 Microsoft Graph 將資源新增至目錄。  具有適當角色或目錄和資源擁有者的使用者，以及具有委派 `EntitlementManagement.ReadWrite.All` 許可權的應用程式，都可以呼叫 API 來[建立 accessPackageResourceRequest](https://docs.microsoft.com/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta)。
 
 ## <a name="remove-resources-from-a-catalog"></a>從目錄中移除資源
 
@@ -129,7 +137,7 @@ ms.locfileid: "75422633"
 
     ![編輯目錄設定](./media/entitlement-management-shared/catalog-edit.png)
 
-1. 按一下 [檔案]。
+1. Haga clic en **Guardar**.
 
 ## <a name="delete-a-catalog"></a>刪除目錄
 
@@ -144,6 +152,10 @@ ms.locfileid: "75422633"
 1. 在目錄的**總覽**中，按一下 [**刪除**]。
 
 1. 在出現的訊息方塊中，按一下 [確定]。
+
+### <a name="deleting-a-catalog-programmatically"></a>以程式設計方式刪除目錄
+
+您也可以使用 Microsoft Graph 刪除目錄。  具有具有委派 `EntitlementManagement.ReadWrite.All` 許可權之應用程式的適當角色使用者，可以呼叫 API 來[刪除 accessPackageCatalog](https://docs.microsoft.com/graph/api/accesspackagecatalog-delete?view=graph-rest-beta)。
 
 ## <a name="next-steps"></a>後續步驟
 

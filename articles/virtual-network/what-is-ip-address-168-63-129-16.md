@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/15/2019
 ms.author: genli
-ms.openlocfilehash: e061d503254ba7aa7735a97a060fc63f96b3fb61
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 287f881fb17dd84357f540ee562e21c66c11ab95
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196659"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114354"
 ---
 # <a name="what-is-ip-address-1686312916"></a>IP 位址 168.63.129.16 是什麼？
 
@@ -34,10 +34,11 @@ IP 位址 168.63.129.16 是虛擬公用 IP 位址，有助於建構 Azure 平台
 
 ## <a name="scope-of-ip-address-1686312916"></a>IP 位址 168.63.129.16 的範圍
 
-公用 IP 位址168.63.129.16 用於所有區域和所有國家雲端。 這個特殊的公用 IP 位址是由 Microsoft 所擁有，不會變更。 預設網路安全性群組規則允許此位址。 我們建議您在輸入和輸出方向的任何本機防火牆原則中允許此 IP 位址。 此特殊 IP 位址與資源之間的通訊是安全的，因為只有內部 Azure 平台才可獲得來自此 IP 位址的訊息。 如果此位址遭到封鎖，可能在各種情況下發生非預期的行為。
-至少必須開啟下列埠，才能允許與 WireServer：80、443和32526的通訊。
+公用 IP 位址168.63.129.16 用於所有區域和所有國家雲端。 這個特殊的公用 IP 位址是由 Microsoft 所擁有，不會變更。 建議您在任何本機（在 VM 中）防火牆原則（輸出方向）中允許此 IP 位址。 此特殊 IP 位址與資源之間的通訊是安全的，因為只有內部 Azure 平台才可獲得來自此 IP 位址的訊息。 如果此位址遭到封鎖，可能在各種情況下發生非預期的行為。 168.63.129.16 是[主機節點的虛擬 IP](../virtual-network/security-overview.md#azure-platform-considerations) ，因此不受限於使用者定義的路由。
 
-[Azure Load Balancer 健康情況探查](../load-balancer/load-balancer-custom-probe-overview.md)源自于此 IP 位址。 如果您封鎖此 IP 位址，您的探查將會失敗。
+- VM 代理程式需要透過埠80、443、32526 with WireServer （168.63.129.16）的輸出通訊。 這些應該在 VM 上的本機防火牆中開啟。 這些埠上與168.63.129.16 的通訊不受所設定的網路安全性群組所依賴。
+- 168.63.129.16 可以提供 DNS 服務給 VM。 如果不想要這樣做，您可以在 VM 上的本機防火牆封鎖此流量。 根據預設，DNS 通訊不會受限於已設定的網路安全性群組，除非特別以[AzurePlatformDNS](../virtual-network/service-tags-overview.md#available-service-tags)服務標記為目標。
+- 當 VM 屬於負載平衡器後端集區的一部分時，[健康情況探查](../load-balancer/load-balancer-custom-probe-overview.md)通訊應允許來自168.63.129.16。 預設的網路安全性群組設定具有允許這種通訊的規則。 此規則會利用[AzureLoadBalancer](../virtual-network/service-tags-overview.md#available-service-tags)服務標記。 如果想要的話，可以藉由設定網路安全性群組來封鎖此流量，但這會導致探查失敗。
 
 在非虛擬網路案例（傳統）中，健康情況探查來自私人 IP，而不會使用168.63.129.16。
 

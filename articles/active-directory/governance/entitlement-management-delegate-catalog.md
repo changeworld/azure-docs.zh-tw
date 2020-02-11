@@ -16,16 +16,18 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f71007b886d3cc25a7cf9dc23d784144ed4e1fbd
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 51e37ad006da5042291614c773f242b5a1f3be97
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174373"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120188"
 ---
 # <a name="delegate-access-governance-to-catalog-creators-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中將存取管理委派給目錄建立者
 
-若要委派給不是系統管理員的使用者，讓他們可以建立自己的目錄，您可以將這些使用者新增至 Azure AD 權利管理定義的目錄建立者角色。 您可以新增個別使用者，也可以新增群組，其成員接著可以建立目錄。
+目錄是資源和存取封裝的容器。 當您想要將相關的資源和存取封裝分組時，請建立類別目錄。 根據預設，全域管理員或使用者系統管理員可以[建立目錄](entitlement-management-catalog-create.md)，也可以將其他使用者新增為目錄擁有者。
+
+若要委派給不是系統管理員的使用者，讓他們可以建立自己的目錄，您可以將這些使用者新增至 Azure AD 權利管理定義的目錄建立者角色。 您可以新增個別使用者，也可以新增群組，其成員接著可以建立目錄。  建立類別目錄之後，他們就可以將自己擁有的資源新增至其目錄。
 
 ## <a name="as-an-it-administrator-delegate-to-a-catalog-creator"></a>身為 IT 系統管理員，委派給目錄建立者
 
@@ -37,7 +39,7 @@ ms.locfileid: "73174373"
 
 1. 在左側功能表的 [**權利管理**] 區段中，按一下 [**設定**]。
 
-1. 按一下 [編輯]。
+1. 按一下 **[編輯]** 。
 
     ![新增目錄建立者的設定](./media/entitlement-management-delegate-catalog/settings-delegate.png)
 
@@ -45,7 +47,7 @@ ms.locfileid: "73174373"
 
 1. 按一下 [選取]。
 
-1. 按一下 [儲存]。
+1. Haga clic en **Guardar**.
 
 ## <a name="allow-delegated-roles-to-access-the-azure-portal"></a>允許委派的角色存取 Azure 入口網站
 

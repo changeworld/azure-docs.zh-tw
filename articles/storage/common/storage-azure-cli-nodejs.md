@@ -9,16 +9,16 @@ ms.date: 01/30/2017
 ms.author: tamram
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: 88f713c5695e2453edc58d072899aa417f0514af
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6554385a879b054153dcb808c3dff4b60c136458
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65147050"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120852"
 ---
 # <a name="using-the-azure-classic-cli-with-azure-storage"></a>搭配 Azure 儲存體使用 Azure 傳統 CLI
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 Azure 傳統 CLI 為您提供一組開放式原始碼的跨平台命令集合，供您運用在 Azure 平台上。 它提供許多與 [Azure 入口網站](https://portal.azure.com) 相同的功能，以及豐富的資料存取功能。
 
@@ -27,7 +27,7 @@ Azure 傳統 CLI 為您提供一組開放式原始碼的跨平台命令集合，
 本指南假設您已了解 Azure 儲存體的基本概念。 此指南提供許多指令碼示範如何搭配 Azure 儲存體使用 Azure CLI。 在執行每個指令碼之前，請務必先根據您的組態更新指令碼變數。
 
 > [!NOTE]
-> 此指南提供傳統儲存體帳戶的 Azure 傳統 CLI 命令與指令碼範例。 如需適用於 Resource Manager 儲存體帳戶的 Azure 傳統 CLI 命令，請參閱 [使用適用於 Mac、Linux 與 Windows 的 Azure CLI 搭配 Azure 資源管理](../../virtual-machines/azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects)。
+> 此指南提供傳統儲存體帳戶的 Azure 傳統 CLI 命令與指令碼範例。 如需適用於 Resource Manager 儲存體帳戶的 Azure 傳統 CLI 命令，請參閱 [使用適用於 Mac、Linux 與 Windows 的 Azure CLI 搭配 Azure 資源管理](../../virtual-machines/azure-cli-arm-commands.md#storage-objects)。
 >
 >
 
@@ -194,7 +194,7 @@ azure storage share create myshare
 azure storage directory create myshare myDir
 ```
 
-請注意，目錄路徑可包含多個層級，例如  **a/b**。 不過，您必須確定所有父目錄都存在。 例如，如果路徑是 **a/b**，您必須先建立目錄 **a**，然後再建立目錄 **b**。
+請注意，目錄路徑可包含多個層級，例如**a/b**。 不過，您必須確定所有父目錄都存在。 例如，如果路徑是 **a/b**，您必須先建立目錄 **a**，然後再建立目錄 **b**。
 
 ### <a name="upload-a-local-file-to-directory"></a>上傳本機檔案至目錄
 下列範例將從 **~/temp/samplefile.txt** 上傳檔案至 **myDir** 目錄。 編輯檔案路徑，以指向本機機器上的有效檔案：
@@ -233,7 +233,7 @@ azure storage file copy start --source-container srcctn --source-blob hello2.txt
 
 您可以在下列網頁找到可與「儲存體」資源搭配運作的傳統 CLI 命令參考資料：
 
-* [Resource Manager 模式中的 Azure 傳統 CLI 命令](../../virtual-machines/azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects)
+* [Resource Manager 模式中的 Azure 傳統 CLI 命令](../../virtual-machines/azure-cli-arm-commands.md#storage-objects)
 * [Azure 服務管理模式中的 Azure 傳統 CLI 命令](../../cli-install-nodejs.md)
 
 您或許也會想要試試使用最新版的 [Azure CLI](../storage-azure-cli.md) 來搭配 Resource Manager 部署模型。

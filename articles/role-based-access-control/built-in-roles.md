@@ -15,12 +15,12 @@ ms.date: 01/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: b2a49528ca3c2b55c02f3bda89b3722ee8fef535
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 04a3af7c85a361878e37cf3ee210e8a5c9f3cd30
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264249"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121969"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>適用於 Azure 資源的內建角色
 
@@ -34,7 +34,7 @@ ms.locfileid: "76264249"
 
 
 > [!div class="mx-tableFixed"]
-> | 內建角色 | 說明 | Id |
+> | 內建角色 | 描述 | Id |
 > | --- | --- | --- |
 > | [擁有者](#owner) | 可讓您管理一切，包括對資源的存取。 | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
 > | [參與者](#contributor) | 除了授與資源的存取權之外，還可讓您管理所有專案。 | b24988ac-6180-42a0-ab88-20f7382dd24c |
@@ -152,9 +152,9 @@ ms.locfileid: "76264249"
 > | [儲存體 Blob 資料擁有者](#storage-blob-data-owner) | 提供 Azure 儲存體 blob 容器和資料的完整存取權，包括指派 POSIX 存取控制。 若要瞭解特定資料作業所需的動作，請參閱[呼叫 blob 和佇列資料作業的許可權](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
 > | [儲存體 Blob 資料讀者](#storage-blob-data-reader) | 讀取並列出 Azure 儲存體的容器和 blob。 若要瞭解特定資料作業所需的動作，請參閱[呼叫 blob 和佇列資料作業的許可權](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
 > | [儲存體 Blob Delegator](#storage-blob-delegator) | 取得使用者委派金鑰，然後可以用來為使用 Azure AD 認證簽署的容器或 blob 建立共用存取簽章。 如需詳細資訊，請參閱[建立使用者委派 SAS](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas)。 | db58b8e5-c6ad-4a2a-8342-4190687cbf4a |
-> | [儲存體檔案資料 SMB 共用參與者](#storage-file-data-smb-share-contributor) | 允許透過 SMB 在 Azure 儲存體檔案共用中進行讀取、寫入和刪除存取 | 0c867c2a-1d8c-454a-a3db-ab2ea1bdc8bb |
-> | [儲存體檔案資料 SMB 共用提高許可權參與者](#storage-file-data-smb-share-elevated-contributor) | 允許透過 SMB 在 Azure 儲存體檔案共用中進行讀取、寫入、刪除及修改 NTFS 許可權存取 | a7264617-510b-434b-a828-9731dc254ea7 |
-> | [儲存體檔案資料 SMB 共用讀取器](#storage-file-data-smb-share-reader) | 允許透過 SMB 讀取對 Azure 檔案共用的存取 | aba4ae5f-2193-4029-9191-0cb91df5e314 |
+> | [儲存體檔案資料 SMB 共用參與者](#storage-file-data-smb-share-contributor) | 允許讀取、寫入及刪除 Azure 檔案共用中檔案/目錄的存取權。 此角色在 Windows 檔案伺服器上沒有任何內建的對等用法。 | 0c867c2a-1d8c-454a-a3db-ab2ea1bdc8bb |
+> | [儲存體檔案資料 SMB 共用提高許可權參與者](#storage-file-data-smb-share-elevated-contributor) | 允許讀取、寫入、刪除和修改 Azure 檔案共用中檔案/目錄的 Acl。 這個角色相當於 Windows 檔案伺服器上的檔案共用 ACL 變更。 | a7264617-510b-434b-a828-9731dc254ea7 |
+> | [儲存體檔案資料 SMB 共用讀取器](#storage-file-data-smb-share-reader) | 允許對 Azure 檔案共用中的檔案/目錄進行讀取存取。 這個角色相當於 Windows 檔案伺服器上的 [讀取] 檔案共用 ACL。 | aba4ae5f-2193-4029-9191-0cb91df5e314 |
 > | [儲存體佇列資料參與者](#storage-queue-data-contributor) | 讀取、寫入和刪除 Azure 儲存體的佇列和佇列訊息。 若要瞭解特定資料作業所需的動作，請參閱[呼叫 blob 和佇列資料作業的許可權](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | 974c5e8b-45b9-4653-ba55-5f855dd0fb88 |
 > | [儲存體佇列資料訊息處理器](#storage-queue-data-message-processor) | 查看、取出和刪除 Azure 儲存體佇列中的訊息。 若要瞭解特定資料作業所需的動作，請參閱[呼叫 blob 和佇列資料作業的許可權](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | 8a0f0c08-91a1-4084-bc3d-661d67233fed |
 > | [儲存體佇列資料訊息寄件者](#storage-queue-data-message-sender) | 將訊息新增至 Azure 儲存體的佇列。 若要瞭解特定資料作業所需的動作，請參閱[呼叫 blob 和佇列資料作業的許可權](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | c6a89b2d-59bc-44d0-9896-0f6e12d7b80a |
@@ -184,7 +184,7 @@ ms.locfileid: "76264249"
 > | **NotDataActions** |  |
 > | 無 |  |
 
-## <a name="contributor"></a>參與者
+## <a name="contributor"></a>Contributor
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -2915,7 +2915,7 @@ ms.locfileid: "76264249"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **說明** | 允許透過 SMB 在 Azure 儲存體檔案共用中進行讀取、寫入和刪除存取 |
+> | **說明** | 允許讀取、寫入及刪除 Azure 檔案共用中檔案/目錄的存取權。 此角色在 Windows 檔案伺服器上沒有任何內建的對等用法。 |
 > | **Id** | 0c867c2a-1d8c-454a-a3db-ab2ea1bdc8bb |
 > | **動作** |  |
 > | 無 |  |
@@ -2932,7 +2932,7 @@ ms.locfileid: "76264249"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **說明** | 允許透過 SMB 在 Azure 儲存體檔案共用中進行讀取、寫入、刪除及修改 NTFS 許可權存取 |
+> | **說明** | 允許讀取、寫入、刪除和修改 Azure 檔案共用中檔案/目錄的 Acl。 這個角色相當於 Windows 檔案伺服器上的檔案共用 ACL 變更。 |
 > | **Id** | a7264617-510b-434b-a828-9731dc254ea7 |
 > | **動作** |  |
 > | 無 |  |
@@ -2950,7 +2950,7 @@ ms.locfileid: "76264249"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **說明** | 允許透過 SMB 讀取對 Azure 檔案共用的存取 |
+> | **說明** | 允許對 Azure 檔案共用中的檔案/目錄進行讀取存取。 這個角色相當於 Windows 檔案伺服器上的 [讀取] 檔案共用 ACL。 |
 > | **Id** | aba4ae5f-2193-4029-9191-0cb91df5e314 |
 > | **動作** |  |
 > | 無 |  |

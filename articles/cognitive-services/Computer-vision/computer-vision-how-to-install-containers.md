@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: dapine
+ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 51c60c8cd13c8ad7cef123f2001fcd0ec61f38ba
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 383abc674674fc024052b2c04d3c538838b83856
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770793"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120216"
 ---
 # <a name="install-and-run-read-containers-preview"></a>安裝和執行讀取容器（預覽）
 
@@ -46,6 +46,16 @@ ms.locfileid: "75770793"
 
 [!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
 
+### <a name="advanced-vector-extension-support"></a>Advanced Vector Extension 支援
+
+**主**電腦是執行 docker 容器的電腦。 主機*必須支援*「[先進向量延伸](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2)」（AVX2）。 您可以使用下列命令來檢查 Linux 主機上的 AVX2 支援：
+
+```console
+grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detected
+```
+> [!WARNING]
+> *必須*要有主機電腦，才能支援 AVX2。 如果沒有 AVX2 支援，容器*將無法*正確運作。
+
 ### <a name="container-requirements-and-recommendations"></a>容器的需求和建議
 
 [!INCLUDE [Container requirements and recommendations](includes/container-requirements-and-recommendations.md)]
@@ -72,14 +82,14 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-read:latest
 
 容器位於[主機電腦](#the-host-computer)上時，請透過下列程序來使用容器。
 
-1. 使用所需的計費設定[執行容器](#run-the-container-with-docker-run)。 `docker run` 命令有相關[範例](computer-vision-resource-container-config.md)可供參考。 
+1. 使用所需的計費設定[執行容器](#run-the-container-with-docker-run)。 [ 命令有相關](computer-vision-resource-container-config.md)範例`docker run`可供參考。 
 1. [查詢容器的預測端點](#query-the-containers-prediction-endpoint)。 
 
 ## <a name="run-the-container-with-docker-run"></a>透過 `docker run` 執行容器
 
 將 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令執行容器。 如需如何取得 `{ENDPOINT_URI}` 和 `{API_KEY}` 值的詳細資訊，請參閱[收集必要的參數](#gathering-required-parameters)。
 
-命令的[範例](computer-vision-resource-container-config.md#example-docker-run-commands)可供使用。`docker run`
+`docker run` 命令的[範例](computer-vision-resource-container-config.md#example-docker-run-commands)可供使用。
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
@@ -96,7 +106,7 @@ ApiKey={API_KEY}
 * 公開 TCP 埠5000，並為容器配置虛擬 TTY。
 * 在容器結束之後自動將其移除。 容器映像仍可在主機電腦上使用。
 
-`docker run` 命令有相關[範例](./computer-vision-resource-container-config.md#example-docker-run-commands)可供參考。 
+[ 命令有相關](./computer-vision-resource-container-config.md#example-docker-run-commands)範例`docker run`可供參考。 
 
 > [!IMPORTANT]
 > 必須指定 `Eula`、`Billing` 及 `ApiKey` 選項以執行容器，否則容器將不會啟動。  如需詳細資訊，請參閱[帳單](#billing)。

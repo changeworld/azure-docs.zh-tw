@@ -10,12 +10,12 @@ ms.author: vaidyas
 author: vaidyas
 ms.reviewer: larryfr
 ms.date: 11/22/2019
-ms.openlocfilehash: 00a62e970e27d689eb639a62938376f73410c270
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 321f985bd375e6fa4337e060bb15d318ea306ab4
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76024903"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116745"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>將機器學習模型部署到 Azure Functions （預覽）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -42,7 +42,7 @@ ms.locfileid: "76024903"
     >
     > 如需有關設定這些變數的詳細資訊，請參閱[使用 Azure Machine Learning 部署模型](how-to-deploy-and-where.md)。
 
-## <a name="prepare-for-deployment"></a>準備部署
+## <a name="prepare-for-deployment"></a>準備開始部署
 
 在部署之前，您必須定義以 web 服務的形式執行模型所需的內容。 下列清單描述部署所需的基本專案：
 
@@ -58,10 +58,10 @@ ms.locfileid: "76024903"
 
 * 執行專案腳本或模型所**需的相依性，例如**helper 腳本或 Python/Conda 套件
 
-這些實體會封裝成__推斷__設定。 推斷設定會參考輸入指令碼和其他相依性。
+這些實體會封裝成__推斷__設定。 推斷設定會參考專案腳本和其他相依性。
 
 > [!IMPORTANT]
-> 建立要與 Azure Functions 搭配使用的推斷設定時，您必須使用[環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py)物件。 請注意，如果您要定義自訂環境，您必須將 > = 1.0.45 版本的 azureml 預設值新增為 pip 相依性。 此套件包含將模型裝載為 web 服務所需的功能。 下列範例示範如何建立環境物件，並將它與推斷設定搭配使用：
+> 建立要與 Azure Functions 搭配使用的推斷設定時，您必須使用[環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py)物件。 請注意，如果您要定義自訂環境，您必須將 > = 1.0.45 版本的 azureml 預設值新增為 pip 相依性。 此套件包含將模型裝載為 Web 服務所需的功能。 下列範例示範如何建立環境物件，並將它與推斷設定搭配使用：
 >
 > ```python
 > from azureml.core.environment import Environment
@@ -118,7 +118,7 @@ print(blob.location)
 
 ## <a name="deploy-image-as-a-web-app"></a>將映射部署為 web 應用程式
 
-1. 使用下列命令來取得包含映射之 Azure Container Registry 的登入認證。 將 `<acrinstance>` 取代為先前從 `package.location`傳回的值： 
+1. 使用下列命令來取得包含映射之 Azure Container Registry 的登入認證。 將 `<myacr>` 取代為先前從 `package.location`傳回的值： 
 
     ```azurecli-interactive
     az acr credential show --name <myacr>
@@ -177,7 +177,7 @@ print(blob.location)
 1. 建立要用於 blob 觸發程式儲存體的儲存體帳戶，並取得其連接字串。 以您要使用的名稱取代 `<triggerStorage>`。
 
     ```azurecli-interactive
-    az storage account create --name triggerStorage --location westeurope --resource-group myresourcegroup --sku Standard_LRS
+    az storage account create --name <triggerStorage> --location westeurope --resource-group myresourcegroup --sku Standard_LRS
     ```
     ```azurecli-interactive
     az storage account show-connection-string --resource-group myresourcegroup --name <triggerStorage> --query connectionString --output tsv

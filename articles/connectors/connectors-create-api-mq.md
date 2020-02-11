@@ -3,18 +3,18 @@ title: 連接到 IBM MQ server
 description: 使用 Azure 或內部部署的 IBM MQ server 和 Azure Logic Apps 來傳送和取出訊息
 services: logic-apps
 ms.suite: integration
-author: valrobb
-ms.author: valthom
-ms.reviewer: chrishou, logicappspm
+author: ChristopherHouser
+ms.author: chrishou
+ms.reviewer: valthom, logicappspm
 ms.topic: article
 ms.date: 06/19/2019
 tags: connectors
-ms.openlocfilehash: ef9e91b526055ece58ce283572deb98cff951653
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 489f53a4f4c1c0d5bd782f42a9daf73217234793
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789584"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118044"
 ---
 # <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>從 Azure Logic Apps 連接到 IBM MQ server
 
@@ -66,7 +66,7 @@ IBM MQ connector 包含這些動作，但不提供任何觸發程式：
    
       您的連線如下列範例所示：
 
-      ![Connection Properties](media/connectors-create-api-mq/Connection_Properties.png)
+      ![連接屬性](media/connectors-create-api-mq/Connection_Properties.png)
 
 1. 設定動作的屬性：
 

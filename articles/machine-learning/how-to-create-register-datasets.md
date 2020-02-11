@@ -10,13 +10,13 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
-ms.openlocfilehash: 99f4d8d854334b047caf36406f21890cde7eda16
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.date: 02/10/2020
+ms.openlocfilehash: 0bfaef72be23f148c01e02e910b11128cec1659e
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77082947"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116698"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>建立 Azure Machine Learning 資料集
 
@@ -32,7 +32,7 @@ ms.locfileid: "77082947"
 
 * 共用資料並與其他使用者共同作業。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要建立及使用資料集，您需要：
 
@@ -109,7 +109,7 @@ titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path, set_column_type
 titanic_ds.take(3).to_pandas_dataframe()
 ```
 
-| |PassengerId|式|Pclass|名稱|性別|Age|SibSp|Parch|Ticket|費用|插槽|著手
+| |PassengerId|式|Pclass|名稱|性別|天數|SibSp|Parch|Ticket|費用|插槽|著手
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
 0|1|False|3|Braund，Mr. Owen Harris|male|22.0|1|0|A/5 21171|7.2500||S
 1|2|True|1|Cumings，Mrs John Bradley （Florence Briggs Th 。|female|38.0|1|0|電腦17599|71.2833|C85|C
@@ -172,7 +172,9 @@ mnist_ds = Dataset.File.from_files(path=web_paths)
 1. 在左窗格的 [**資產**] 區段中，選取 [**資料集**]。 
 1. 選取 [**建立資料集**] 以選擇資料集的來源。 此來源可以是本機檔案、資料存放區或公用 Url。
 1. 選取 [表格式 **] 或 [** 檔案] 做為資料集類型。
-1. 選取 **[下一步]** 以查看**設定和預覽**、**架構**和**確認詳細資料**表單;它們會根據檔案類型以智慧方式填入。 使用這些表單來檢查您的選擇，並在建立之前進一步設定您的資料集。  
+1. 選取 **[下一步]** 以開啟資料存放區**和檔案選擇**表單。 在此表單上，您可以選取要在建立資料集之後保留的位置，以及選取要用於資料集的資料檔案。 
+1. 選取 **[下一步]** 以填入**設定和預覽**和**架構**表單;它們會根據檔案類型以智慧方式填入，您可以在建立這些表單之前進一步設定您的資料集。 
+1. 選取 **[下一步]** 以查看 [**確認詳細資料**] 表單。 檢查您的選擇，並為您的資料集建立選擇性的資料設定檔。 深入了解[資料分析](how-to-create-portal-experiments.md#profile)。 
 1. 選取 [**建立**] 以完成建立資料集。
 
 ## <a name="register-datasets"></a>註冊資料集

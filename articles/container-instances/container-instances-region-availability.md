@@ -2,18 +2,18 @@
 title: 依區域的資源可用性
 description: Azure 容器執行個體服務的計算和記憶體資源在不同 Azure 區域中的可用性。
 ms.topic: article
-ms.date: 12/17/2019
+ms.date: 01/31/2020
 ms.author: danlep
-ms.openlocfilehash: 9de5b08eed3aa10015813cbb4724ef4e947005fb
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 3f64a13331658c1360c9d54f6f57a68c2c91fc6f
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888000"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117804"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure 容器執行個體在 Azure 區域中的資源可用性
 
-本文詳細說明 Azure 容器執行個體的計算和記憶體資源在 Azure 區域中的可用性。 
+本文詳細說明 azure 容器實例的計算、記憶體和儲存體資源在 Azure 區域中的可用性，以及目標作業系統。 
 
 顯示的值為每個[容器群組](container-instances-container-groups.md)部署可用的最大資源。 以下是本文章發行時的值。 
 
@@ -26,23 +26,23 @@ ms.locfileid: "75888000"
 
 下列區域和資源可供包含 Linux 和[支援的](container-instances-faq.md#what-windows-base-os-images-are-supported) Windows Server 2016 容器的容器群組使用。
 
-| 地區 | OS | 最大 CPU | 最大記憶體（GB） |
-| -------- | -- | :---: | :-----------: |
-| 巴西南部、加拿大中部、印度中部、美國中部、東亞、美國東部、美國東部2、歐洲北部、美國中南部、東南亞、印度南部、英國南部、西歐、美國西部、美國西部2 | Linux | 4 | 16 |
-| 澳大利亞東部、日本東部 | Linux | 2 | 8 |
-| 美國中北部 | Linux | 2 | 3.5 |
-| 巴西南部、日本東部、西歐 | Windows | 4 | 16 |
-| 美國東部、美國西部 | Windows | 4 | 14 |
-| 澳大利亞東部、加拿大中部、印度中部、美國中部、東亞、美國東部2、美國中北部、北歐、美國中南部、東南亞、印度南部、英國南部、美國西部2 | Windows | 2 | 3.5 |
+| 區域 | OS | 最大 CPU | 最大記憶體（GB） | 儲存體 (GB) |
+| -------- | -- | :---: | :-----------: | :---: |
+| 巴西南部、加拿大中部、印度中部、美國中部、東亞、美國東部、美國東部2、歐洲北部、美國中南部、東南亞、印度南部、英國南部、西歐、美國西部、美國西部2 | Linux | 4 | 16 | 50 |
+| 澳大利亞東部、日本東部 | Linux | 2 | 8 | 50 |
+| 美國中北部 | Linux | 2 | 3.5 | 50 |
+| 巴西南部、日本東部、西歐 | Windows | 4 | 16 | 20 |
+| 美國東部、美國西部 | Windows | 4 | 14 | 20 |
+| 澳大利亞東部、加拿大中部、印度中部、美國中部、東亞、美國東部2、美國中北部、北歐、美國中南部、東南亞、印度南部、英國南部、美國西部2 | Windows | 2 | 3.5 | 20 |
 
 ## <a name="availability---windows-server-2019-ltsc-1809-deployments-preview"></a>可用性 - Windows Server 2019 LTSC，1809年部署 (預覽)
 
 下列區域和資源可供包含 Windows Server 2019 容器 (預覽) 的容器群組使用。
 
-| 地區 | OS | 最大 CPU | 最大記憶體（GB） |
-| -------- | -- | :---: | :-----------: |
-| 澳大利亞東部、巴西南部、加拿大中部、印度中部、美國中部、東亞、美國東部、日本東部、美國中北部、北歐、美國中南部、東南亞、印度南部、英國南部、西歐 | Windows | 4 | 16 |
-| 美國東部2、美國西部2 | Windows | 2 | 3.5 |
+| 區域 | OS | 最大 CPU | 最大記憶體（GB） | 儲存體 (GB) |
+| -------- | -- | :---: | :-----------: | :---: |
+| 澳大利亞東部、巴西南部、加拿大中部、印度中部、美國中部、東亞、美國東部、日本東部、美國中北部、北歐、美國中南部、東南亞、印度南部、英國南部、西歐 | Windows | 4 | 16 | 20 |
+| 美國東部2、美國西部2 | Windows | 2 | 3.5 | 20 |
 
 
 ## <a name="availability---virtual-network-deployment"></a>可用性-虛擬網路部署

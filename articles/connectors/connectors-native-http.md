@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/05/2019
 tags: connectors
-ms.openlocfilehash: 232b17852e89ebdfa6f81b5aadcdbcd9c83d4055
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 9c1b2af8d06c9466ed6c82308de941b43510238a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888136"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118001"
 ---
 # <a name="send-outgoing-calls-to-http-or-https-endpoints-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 將撥出電話傳送至 HTTP 或 HTTPS 端點
 
@@ -50,9 +50,12 @@ ms.locfileid: "75888136"
 
 1. 提供您想要包含在目標端點呼叫中的[HTTP 觸發程式參數](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger)值。 針對您想要讓觸發程式檢查目標端點的頻率，設定週期。
 
-   如果您選取 [**無**] 以外的驗證類型，驗證設定會根據您的選擇而有所不同。 如需詳細資訊，請參閱[將驗證新增至輸出呼叫](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。
-
    ![輸入 HTTP 觸發程序參數](./media/connectors-native-http/http-trigger-parameters.png)
+
+   如果您選取 [**無**] 以外的驗證類型，驗證設定會根據您的選擇而有所不同。 如需適用于 HTTP 的驗證類型的詳細資訊，請參閱下列主題：
+
+   * [將驗證新增至輸出呼叫](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
+   * [使用受控識別來驗證資源的存取權](../logic-apps/create-managed-service-identity.md)
 
 1. 若要加入其他可用的參數，請開啟 [**加入新的參數**] 清單，然後選取您想要的參數。
 
@@ -80,9 +83,12 @@ ms.locfileid: "75888136"
 
 1. 提供您想要包含在目標端點呼叫中的[HTTP 動作參數](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)值。
 
-   如果您選取 [**無**] 以外的驗證類型，驗證設定會根據您的選擇而有所不同。 如需詳細資訊，請參閱[將驗證新增至輸出呼叫](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。
-
    ![輸入 HTTP 動作參數](./media/connectors-native-http/http-action-parameters.png)
+
+   如果您選取 [**無**] 以外的驗證類型，驗證設定會根據您的選擇而有所不同。 如需適用于 HTTP 的驗證類型的詳細資訊，請參閱下列主題：
+
+   * [將驗證新增至輸出呼叫](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
+   * [使用受控識別來驗證資源的存取權](../logic-apps/create-managed-service-identity.md)
 
 1. 若要加入其他可用的參數，請開啟 [**加入新的參數**] 清單，然後選取您想要的參數。
 
@@ -145,20 +151,20 @@ ms.locfileid: "75888136"
 
 以下是 HTTP 觸發程式或動作輸出的詳細資訊，會傳回下列資訊：
 
-| 屬性名稱 | 類型 | 說明 |
+| 屬性名稱 | 類型 | 描述 |
 |---------------|------|-------------|
-| headers | object | 要求的標頭 |
+| 頁首 | object | 要求的標頭 |
 | body | object | JSON 物件 | 具有來自要求之本文內容的物件 |
 | 狀態碼 | int | 來自要求的狀態碼 |
 |||
 
-| 狀態碼 | 說明 |
+| 狀態碼 | 描述 |
 |-------------|-------------|
 | 200 | 確定 |
 | 202 | 已接受 |
 | 400 | 不正確的要求 |
-| 401 | 未經授權 |
-| 403 | 禁止 |
+| 401 | Unauthorized |
+| 403 | 已禁止 |
 | 404 | 找不到 |
 | 500 | 內部伺服器錯誤。 發生未知錯誤。 |
 |||

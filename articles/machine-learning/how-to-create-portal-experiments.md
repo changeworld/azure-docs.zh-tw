@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/04/2020
-ms.openlocfilehash: 620aab2d2104c9e08de6e7ea47511ff45a482ec4
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: a2bf15c8778a6ff549284b1053cf0978d182b802
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77046104"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116896"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>使用 Azure Machine Learning studio 建立、探索及部署自動化的機器學習實驗
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "77046104"
 
  如果您偏好更以程式碼為基礎的經驗，您也可以使用[AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)，[在 Python 中設定自動化機器學習實驗](how-to-configure-auto-train.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前先建立一個免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
@@ -60,15 +60,15 @@ ms.locfileid: "77046104"
 
     1. 為您的資料集提供唯一名稱，並提供選擇性的描述。 
 
-    1. 選取 **[下一步]** ，將其上傳至自動使用您的工作區建立的預設儲存體容器，或選擇您要用於實驗的儲存體容器。 
+    1. 選取 **[下一步]** 以開啟資料存放區**和檔案選擇表單**。 在此表單上，您可以選取要將資料集上傳至何處。自動使用您的工作區建立的預設儲存體容器，或選擇您要用於實驗的儲存體容器。 
 
     1. 檢查**設定和預覽**表單的正確性。 表單會根據檔案類型以智慧方式填入。 
 
         欄位| 描述
         ----|----
         檔案格式| 定義檔案中所儲存資料的版面配置和類型。
-        分隔符號| 一或多個字元，用於指定純文字或其他資料流程中個別獨立區域之間的界限。
-        編碼| 識別要用來讀取資料集之字元結構描述資料表的位元。
+        Delimiter| 一或多個字元，用於指定純文字或其他資料流程中個別獨立區域之間的界限。
+        Encoding| 識別要用來讀取資料集之字元結構描述資料表的位元。
         資料行標題| 指出資料集標題 (如果有的話) 的處理方式。
         Skip rows (略過資料列) | 指出資料集內略過多少資料列 (如果有的話)。
     
@@ -78,7 +78,7 @@ ms.locfileid: "77046104"
             
         選取 **[下一步]。**
 
-    1. [**確認詳細資料**] 表單是先前在 [**基本資訊**] 和 [**設定] 和 [預覽**] 表單中填入之資訊的摘要。 您也可以選擇使用啟用分析的計算來分析您的資料集。 深入了解[資料分析](#profile)。
+    1. [**確認詳細資料**] 表單是先前在 [**基本資訊**] 和 [**設定] 和 [預覽**] 表單中填入之資訊的摘要。 您也可以選擇使用已啟用程式碼剖析的計算，為您的資料集建立資料設定檔。 深入了解[資料分析](#profile)。
 
         選取 [下一步]。
 1. 在新建立的資料集出現之後，加以選取。 您也可以查看資料集的預覽和範例統計資料。 
@@ -136,18 +136,18 @@ ms.locfileid: "77046104"
 >[!NOTE]
 > 具有無關類型的功能會顯示空白專案。
 
-統計資料|描述
+Statistic|描述
 ------|------
 功能| 摘要資料行的名稱。
 設定檔| 以推斷的型別為基礎的內嵌視覺效果。 例如，字串、布林值和日期會有數值計數，而小數（數值）則具有近似長條圖。 這可讓您快速瞭解資料的散發。
 類型散發| 資料行內類型的內建數值計數。 Null 是其本身的類型，因此此視覺效果適用于偵測奇數或遺漏值。
 類型|推斷的資料行類型。 可能的值包括：字串、布林值、日期和小數。
-最小值| 資料行的最小值。 如果功能的類型沒有固有的順序（例如布林值），則會出現空白專案。
-最大值| 資料行的最大值。 
-Count| 資料行中遺漏和不遺失的專案總數。
+Min| 資料行的最小值。 如果功能的類型沒有固有的順序（例如布林值），則會出現空白專案。
+Max| 資料行的最大值。 
+[計數]| 資料行中遺漏和不遺失的專案總數。
 未遺漏計數| 資料行中未遺漏的專案數。 空字串和錯誤會被視為值，因此它們不會參與「未遺漏計數」。
 Quantiles| 每個分量的近似值可讓您瞭解資料的分佈。
-平均值| 資料行的算術平均值或平均值。
+平均數| 資料行的算術平均值或平均值。
 標準差| 此資料行資料的散佈或變化量的測量單位。
 Variance| 量值分佈在此資料行中的值是來自其平均值。 
 偏度| 測量此資料行的資料與一般散發的不同之處。
@@ -190,13 +190,13 @@ Guardrail|狀態|&nbsp;觸發程式的條件&nbsp;
 
 ## <a name="run-experiment-and-view-results"></a>執行實驗並查看結果
 
-選取 **[完成]** 以執行您的實驗。 實驗準備程式可能需要10分鐘的時間。 定型作業可能需要額外2-3 分鐘的時間，每個管線才會完成執行。
+選取 **[完成]** 以執行您的實驗。 實驗準備流程最多需要 10 分鐘。 訓練作業可能需要額外 2-3 分鐘不等，才能讓每個管線完成執行。
 
 ### <a name="view-experiment-details"></a>檢視實驗詳細資料
 
 [**執行詳細資料**] 畫面會開啟至 [**詳細**資料] 索引標籤。此畫面會顯示實驗執行的摘要，包括執行編號旁邊的狀態列。 
 
-[**模型**] 索引標籤包含依據度量分數所建立的模型清單。 根據預設，以所選計量為最高分數的模型會在清單頂端。 當定型作業嘗試多個模型時，會將它們加入清單中。 使用此來快速比較目前為止所產生之模型的計量。
+[模型] 索引標籤包含依計量分數所建立的模型清單。 依預設，根據所選計量評分最高的模型會出現在清單頂端。 如果訓練作業嘗試多個模型，系統會將所有結果新增到清單中。 使用此方式快速比較到目前為止所產生的各個模型計量。
 
 [![執行詳細資料儀表板](media/how-to-create-portal-experiments/run-details.png)](media/how-to-create-portal-experiments/run-details-expanded.png#lightbox)
 

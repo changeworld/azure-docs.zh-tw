@@ -4,23 +4,23 @@ description: 包含檔案
 services: digital-twins
 ms.service: digital-twins
 ms.topic: include
-ms.date: 02/03/2020
+ms.date: 02/07/2020
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.custom: include file
-ms.openlocfilehash: 8537db1e5703abd8df92a2950455bee556731d08
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 7bc6938523a6d66a2bc20b37c659568fc5ca494d
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "77013841"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77123214"
 ---
 ### <a name="general-availability-and-preview-comparison"></a>一般可用性和預覽比較
 
 下表摘要說明 Azure 時間序列深入解析公開上市（GA）和預覽實例之間的幾個主要差異。
 
-| | 正式上市 | 預覽 |
+| | GA | 預覽 |
 | --- | --- | ---|
 | 第一級公民 | 以事件為中心 | 以時間為中心的 |
 | 語義推理 | 低層級（參考資料） | 高階（模型） |
@@ -50,7 +50,7 @@ ms.locfileid: "77013841"
 * 瞭解如何[新增事件中樞來源](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub)。
 * 設定[IoT 中樞來源](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub)。
 
-根據預設，[預覽環境支援](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-storage-ingress)每個環境每**秒最多 1 mb （MB/s）** 的輸入速率。 如有需要，客戶可以將其預覽環境調整為最多**16 MB/秒**的輸送量。 此外，每個分割區的限制為**0.5 MB/秒**。 
+根據預設，[預覽環境支援](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-storage-ingress#ingress-scale-and-preview-limitations)每個環境每**秒最多 1 mb （MB/s）** 的輸入速率。 如有需要，客戶可以將其預覽環境調整為最多**16 MB/秒**的輸送量。 此外，每個分割區的限制為**0.5 MB/秒**。 
 
 ### <a name="api-limits"></a>API 限制
 

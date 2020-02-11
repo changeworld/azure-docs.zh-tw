@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 1/05/2020
-ms.openlocfilehash: 9b838edea4b5f47fe57305c593944ef5fa93a63c
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 2/10/2020
+ms.openlocfilehash: 6d87d3373711d12df3f2cced26ef35ae951ad41e
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76768669"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116185"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自動容錯移轉群組可以啟用多個資料庫透明且協調的容錯移轉
 
@@ -132,7 +132,7 @@ ms.locfileid: "76768669"
   > [!NOTE]
   > 受控執行個體不支援多個容錯移轉群組。
   
-## <a name="permissions"></a>使用權限
+## <a name="permissions"></a>權限
 
 容錯移轉群組的許可權是透過[角色型存取控制（RBAC）](../role-based-access-control/overview.md)來管理。 [ [SQL Server 參與者](../role-based-access-control/built-in-roles.md#sql-server-contributor)] 角色具有管理容錯移轉群組的所有必要許可權。
 
@@ -242,7 +242,7 @@ ms.locfileid: "76768669"
 您可以在兩個不同的訂用帳戶中，于受控實例之間建立容錯移轉群組。 使用 PowerShell API 時，您可以指定次要實例的 `PartnerSubscriptionId` 參數來執行此動作。 使用 REST API 時，`properties.managedInstancePairs` 參數中所包含的每個實例識別碼都可以有自己的 subscriptionID。
   
 > [!IMPORTANT]
-> Azure 入口網站不支援跨不同訂用帳戶的容錯移轉群組。
+> Azure 入口網站不支援跨不同的訂用帳戶建立容錯移轉群組。 此外，針對不同訂用帳戶和/或資源群組的現有容錯移轉群組，無法透過入口網站從主要實例手動起始容錯移轉。 改為從地理位置次要實例起始它。
 
 ### <a name="managing-failover-to-secondary-instance"></a>管理容錯移轉至次要實例
 
@@ -394,7 +394,7 @@ ms.locfileid: "76768669"
 
 ### <a name="manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>使用單一資料庫與彈性集區管理 SQL 資料庫容錯移轉
 
-| Cmdlet | 說明 |
+| Cmdlet | 描述 |
 | --- | --- |
 | [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) |此命令會建立容錯移轉群組，並同時在主要和次要伺服器上註冊|
 | [移除-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | 從伺服器移除容錯移轉群組 |
@@ -405,7 +405,7 @@ ms.locfileid: "76768669"
 
 ### <a name="manage-sql-database-failover-groups-with-managed-instances"></a>使用受控實例管理 SQL database 容錯移轉群組
 
-| Cmdlet | 說明 |
+| Cmdlet | 描述 |
 | --- | --- |
 | [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup) |此命令會建立容錯移轉群組，並同時在主要和次要實例上註冊|
 | [設定-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |修改容錯移轉群組的設定|
@@ -417,7 +417,7 @@ ms.locfileid: "76768669"
 
 ### <a name="manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>使用單一資料庫與彈性集區管理 SQL 資料庫容錯移轉
 
-| Command | 說明 |
+| 命令 | 描述 |
 | --- | --- |
 | [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |此命令會建立容錯移轉群組，並同時在主要和次要伺服器上註冊|
 | [az sql 容錯移轉-群組刪除](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | 從伺服器移除容錯移轉群組 |
@@ -427,7 +427,7 @@ ms.locfileid: "76768669"
 
 ### <a name="manage-sql-database-failover-groups-with-managed-instances"></a>使用受控實例管理 SQL database 容錯移轉群組
 
-| Command | 說明 |
+| 命令 | 描述 |
 | --- | --- |
 | [az sql 實例-容錯移轉-群組建立](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-create) | 此命令會建立容錯移轉群組，並同時在主要和次要實例上註冊 |
 | [az sql 實例-容錯移轉-群組更新](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-update) | 修改容錯移轉群組的設定|
@@ -442,7 +442,7 @@ ms.locfileid: "76768669"
 
 ### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>REST API：使用單一和集區資料庫管理 SQL database 容錯移轉群組
 
-| API | 說明 |
+| API | 描述 |
 | --- | --- |
 | [建立或更新容錯移轉群組](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | 建立或更新容錯移轉群組 |
 | [刪除容錯移轉群組](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | 從伺服器移除容錯移轉群組 |
@@ -454,7 +454,7 @@ ms.locfileid: "76768669"
 
 ### <a name="rest-api-manage-failover-groups-with-managed-instances"></a>REST API：使用受控實例管理容錯移轉群組
 
-| API | 說明 |
+| API | 描述 |
 | --- | --- |
 | [建立或更新容錯移轉群組](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | 建立或更新容錯移轉群組的設定 |
 | [刪除容錯移轉群組](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | 從實例中移除容錯移轉群組 |

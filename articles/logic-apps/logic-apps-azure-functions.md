@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
-ms.openlocfilehash: 2525ca681d805a3b6f086335531a4beaeb9c4e51
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 68975f21ab810398da969384db4d3bddd22f1bd9
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453460"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116914"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>從 Azure Logic Apps 呼叫 Azure 函式
 
@@ -83,13 +83,13 @@ function convertToDateString(request, response){
 
 以下是此函式內部的運作情形：
 
-1. 函式會建立 `data` 變數，並將 `request` 物件內的 `body` 物件指派給該變數。 此函式會使用點 (.) 運算子來參考 `request` 物件內的 `body` 物件：
+1. 函式會建立 `data` 變數，並將 `body` 物件內的 `request` 物件指派給該變數。 此函式會使用點 (.) 運算子來參考 `body` 物件內的 `request` 物件：
 
    ```javascript
    var data = request.body;
    ```
 
-1. 此函式現在可以透過 `data` 變數存取 `date` 屬性，並藉由呼叫 `ToDateString()` 函式將該屬性值從 DateTime 類型轉換為 DateString 類型。 此函式也會透過函式回應中的 `body` 屬性傳回結果：
+1. 此函式現在可以透過 `date` 變數存取 `data` 屬性，並藉由呼叫 `ToDateString()` 函式將該屬性值從 DateTime 類型轉換為 DateString 類型。 此函式也會透過函式回應中的 `body` 屬性傳回結果：
 
    ```javascript
    body: data.date.ToDateString();
@@ -125,15 +125,15 @@ function convertToDateString(request, response){
 
    1. 在 [程式**代碼**] 方塊中，將您的程式碼新增至函式範本，包括您想要在函式完成執行後傳回給邏輯應用程式的回應和承載。 當您完成時，選取 [建立]。
 
-   例如：
+   例如，
 
    ![定義函式](./media/logic-apps-azure-functions/add-code-function-definition.png)
 
-   在範本的程式碼中，`context` 物件代表邏輯應用程式透過**要求本文** (位於後面的步驟中) 欄位傳送的訊息。 若要從您的函式內存取 `context` 物件的屬性，請使用此語法：
+   在範本的程式碼中， *物件`context`* 代表邏輯應用程式透過**要求本文** (位於後面的步驟中) 欄位傳送的訊息。 若要從您的函式內存取 `context` 物件的屬性，請使用此語法：
 
    `context.body.<property-name>`
 
-   例如，若要參考 `context` 物件內的 `content` 屬性，請使用此語法：
+   例如，若要參考 `content` 物件內的 `context` 屬性，請使用此語法：
 
    `context.body.content`
 
@@ -200,11 +200,11 @@ function convertToDateString(request, response){
 
 若要驗證對其他 Azure Active Directory （Azure AD）租使用者中資源的存取權，而不需要登入並提供認證或密碼，您的邏輯應用程式可以使用[受控識別](../active-directory/managed-identities-azure-resources/overview.md)（先前稱為受控服務識別或 MSI）。 Azure 會為您管理此身分識別，並協助保護您的認證，因為您不需要提供或輪替使用祕密。 深入瞭解[支援受控識別以進行 Azure AD 驗證的 Azure 服務](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。
 
-如果您將邏輯應用程式設定為使用系統指派的受控識別，則邏輯應用程式中的 Azure 函式也可以使用相同的身分識別來進行驗證。 如需在邏輯應用程式中對 Azure 函式進行驗證支援的詳細資訊，請參閱[將驗證新增至輸出呼叫](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。
+如果您將邏輯應用程式設定為使用系統指派的身分識別，或手動建立的使用者指派身分識別，則邏輯應用程式中的 Azure 函式也可以使用相同的身分識別進行驗證。 如需在邏輯應用程式中對 Azure 函式進行驗證支援的詳細資訊，請參閱[將驗證新增至輸出呼叫](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。
 
-若要設定及使用系統指派的身分識別與您的函式，請遵循下列步驟：
+若要設定和使用受控識別搭配您的函式，請遵循下列步驟：
 
-1. 在您的邏輯應用程式上啟用系統指派的身分識別，並設定該身分識別對目標資源的存取權。 請參閱[使用 Azure Logic Apps 中的受控識別來驗證對 Azure 資源的存取](../logic-apps/create-managed-service-identity.md)。
+1. 在您的邏輯應用程式上啟用受控識別，並設定該身分識別對目標資源的存取權。 請參閱[使用 Azure Logic Apps 中的受控識別來驗證對 Azure 資源的存取](../logic-apps/create-managed-service-identity.md)。
 
 1. 遵循下列步驟，在您的 Azure 函式和函式應用程式中啟用驗證：
 
@@ -215,7 +215,7 @@ function convertToDateString(request, response){
 
 ### <a name="set-up-anonymous-authentication-in-your-function"></a>在您的函式中設定匿名驗證
 
-若要在您的 Azure 函式中使用邏輯應用程式系統指派的身分識別，您已將函數的驗證層級設為匿名。 否則，您的邏輯應用程式會擲回「BadRequest」錯誤。
+若要在您的 Azure 函式中使用邏輯應用程式的受控識別，您已將函式的驗證層級設為匿名。 否則，您的邏輯應用程式會擲回「BadRequest」錯誤。
 
 1. 在  [Azure 入口網站](https://portal.azure.com)中，尋找並選取您的函數應用程式。 這些步驟會使用 "FabrikamFunctionApp" 作為範例函數應用程式。
 

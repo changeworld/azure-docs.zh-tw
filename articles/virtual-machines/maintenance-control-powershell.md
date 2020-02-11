@@ -1,20 +1,18 @@
 ---
 title: 使用 PowerShell 進行 Azure 虛擬機器的維護控制
 description: 瞭解如何使用維護控制和 PowerShell，控制何時將維護套用至您的 Azure Vm。
-services: virtual-machines-linux
 author: cynthn
 ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: fc9cebd24b67e2991e89384e93479beafa889a7a
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 58bdbdfcb82806dfa0b2779967bddf1242a8b702
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964850"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77115710"
 ---
 # <a name="preview-control-updates-with-maintenance-control-and-azure-powershell"></a>預覽：使用維護控制和 Azure PowerShell 控制更新
 

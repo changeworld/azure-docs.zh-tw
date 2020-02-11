@@ -4,20 +4,24 @@ description: 有關如何跨 Azure 訂用帳戶和資源群組移動復原服務
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.openlocfilehash: 7d0a6c47fa08774161d3a2b7507cdfecaf8c7197
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: fed42c578da2e4f27f42e11d5ac67d698bbcd939
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172880"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120720"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>跨 Azure 訂用帳戶和資源群組移動復原服務保存庫
 
 本文說明如何跨 Azure 訂用帳戶或往相同訂用帳戶中的另一個資源群組移動為 Azure 備份所設定的復原服務保存庫。 您可以使用 Azure 入口網站或 PowerShell 來移動復原服務保存庫。
 
-## <a name="supported-regions"></a>支援的區域
+## <a name="supported-regions"></a>支援區域
 
 澳大利亞東部、澳大利亞東南部、加拿大中部、加拿大東部、南部東亞、東亞、美國中部、美國中北部、美國東部、東部美國2、美國中南部、美國中西部、西歐美國2、美國西部，都支援復原服務保存庫的資源移動印度中部、印度南部、日本東部、日本西部、韓國中部、南韓南部、歐洲北部、西歐、南非北部、南非西部、英國南部和英國西部。
+
+## <a name="unsupported-regions"></a>不支援的區域
+
+法國中部、法國南部、德國東北部、德國中部、US Gov 愛荷華州、中國北部、中國北部2、中國東部、中國東部2
 
 ## <a name="prerequisites-for-moving-recovery-services-vault"></a>移動復原服務保存庫的必要條件
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c83aa6e476bbd898999fb6efe490c7847a809ff
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 0d770336099611d69fa9e44d04fff4dd37696707
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382162"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120121"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Identity Protection 通知
 
@@ -26,6 +26,9 @@ Azure AD Identity Protection 會傳送兩種類型的自動化通知電子郵件
 - 每週精選文章電子郵件
 
 本文同時提供您這兩種通知電子郵件的概觀。
+
+>[!NOTE]
+>電子郵件通知僅適用于公用雲端，目前無法在美國政府雲端中使用。
 
 ## <a name="users-at-risk-detected-email"></a>「偵測到具有風險的使用者」電子郵件
 

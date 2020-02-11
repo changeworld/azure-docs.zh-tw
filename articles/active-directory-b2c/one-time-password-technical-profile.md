@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/03/2020
+ms.date: 02/10/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: dab35fbcd221af9f4eb587b8c98a8ff85aeef59f
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 9becb91cfffd4553b2b8aa1a2d616963eae92ab0
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982784"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114048"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>在 Azure AD B2C 自訂原則中定義一次性密碼技術設定檔
 
@@ -51,9 +51,9 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 
 **InputClaims**元素包含要傳送給一次性密碼通訊協定提供者所需的宣告清單。 您也可以將宣告的名稱對應到下面定義的名稱。
 
-| ClaimReferenceId | 必要項 | 說明 |
+| ClaimReferenceId | 必要項 | 描述 |
 | --------- | -------- | ----------- |
-| 識別碼 (identifier) | 是 | 識別稍後需要驗證程式代碼之使用者的識別碼。 它通常用來做為程式碼傳遞目標目的地的識別碼，例如電子郵件地址或電話號碼。 |
+| 識別項 | 是 | 識別稍後需要驗證程式代碼之使用者的識別碼。 它通常用來做為程式碼傳遞目標目的地的識別碼，例如電子郵件地址或電話號碼。 |
 
 **InputClaimsTransformations**元素可能包含**InputClaimsTransformation**元素的集合，這些專案是用來修改輸入宣告，或在傳送至一次性密碼通訊協定提供者之前產生新的宣告。
 
@@ -61,7 +61,7 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 
 **OutputClaims**元素包含一次性密碼通訊協定提供者所產生的宣告清單。 您也可以將宣告的名稱對應到下面定義的名稱。
 
-| ClaimReferenceId | 必要項 | 說明 |
+| ClaimReferenceId | 必要項 | 描述 |
 | --------- | -------- | ----------- |
 | otpGenerated | 是 | 產生的程式碼，其會話由 Azure AD B2C 管理。 |
 
@@ -71,7 +71,7 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 
 下列設定可用於設定程式碼產生和維護：
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要項 | 描述 |
 | --------- | -------- | ----------- |
 | CodeExpirationInSeconds | 否 | 程式碼到期前的時間，以秒為單位。 最小值： `60`;最大值： `1200`;預設值： `600`。 |
 | CodeLength | 否 | 程式碼的長度。 預設值是 `6`。 |
@@ -117,9 +117,9 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 
 **InputClaims**元素包含要傳送給一次性密碼通訊協定提供者所需的宣告清單。 您也可以將宣告的名稱對應到下面定義的名稱。
 
-| ClaimReferenceId | 必要項 | 說明 |
+| ClaimReferenceId | 必要項 | 描述 |
 | --------- | -------- | ----------- |
-| 識別碼 (identifier) | 是 | 識別先前已產生程式碼之使用者的識別碼。 它通常用來做為程式碼傳遞目標目的地的識別碼，例如電子郵件地址或電話號碼。 |
+| 識別項 | 是 | 識別先前已產生程式碼之使用者的識別碼。 它通常用來做為程式碼傳遞目標目的地的識別碼，例如電子郵件地址或電話號碼。 |
 | otpToVerify | 是 | 使用者所提供的驗證碼。 |
 
 **InputClaimsTransformations**元素可能包含**InputClaimsTransformation**元素的集合，這些專案是用來修改輸入宣告，或在傳送至一次性密碼通訊協定提供者之前產生新的宣告。
@@ -134,7 +134,7 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 
 下列設定可用於設定程式碼驗證失敗時所顯示的錯誤訊息：
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要項 | 描述 |
 | --------- | -------- | ----------- |
 | UserMessageIfSessionDoesNotExist | 否 | 如果程式碼驗證會話已過期，要向使用者顯示的訊息。 這可能是程式碼已過期，或從未針對指定的識別碼產生程式碼。 |
 | UserMessageIfMaxRetryAttempted | 否 | 當使用者已超過允許的驗證嘗試次數上限時，要對其顯示的訊息。 |
@@ -168,3 +168,10 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
     </InputClaims>
 </TechnicalProfile>
 ```
+
+## <a name="next-steps"></a>後續步驟
+
+如需搭配自訂電子郵件驗證使用單次密碼技術設定檔的範例，請參閱下列文章：
+
+- [Azure Active Directory B2C 中的自訂電子郵件驗證](custom-email.md)
+

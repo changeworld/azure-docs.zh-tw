@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 12/13/2019
+ms.date: 02/03/2020
 ms.author: juliako
-ms.openlocfilehash: b3d5e1f814a8eb083ab01623051f1b5b3723a9f1
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: e5bf99e2ea84f41054ff57d08882bfa8ab4d6be5
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049635"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114217"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒體服務 v3 版本資訊
 
@@ -35,14 +35,33 @@ ms.locfileid: "77049635"
 > 目前您無法使用 Azure 入口網站管理 v3 資源。 請使用 [REST API](https://aka.ms/ams-v3-rest-sdk)、CLI 或其中一個支援的 SDK。
 
 如需詳細資訊，請參閱[從媒體服務 v2 移至 v3 的移轉指導](migrate-from-v2-to-v3.md#known-issues)。
-
+ 
 ## <a name="january-2020"></a>2020 年 1 月
 
 ### <a name="improvements-in-media-processors"></a>媒體處理器的改良功能
 
 - 改善影片分析中交錯式來源的支援–這類內容現在已正確地解除交錯，然後才傳送到推斷引擎。
 - 當產生具有「最佳」模式的縮圖時，編碼器現在會搜尋超過30秒，以選取未單色的畫面格。
- 
+
+### <a name="azure-government-cloud-updates"></a>Azure Government 雲端更新
+
+媒體服務下列 Azure Government 區域中的 Batchai： *USGov 亞利桑那*州和*USGov 德克薩斯州*。
+
+## <a name="december-2019"></a>2019 年 12 月
+
+已新增*來源的 CDN 支援-協助預先提取*標頭用於即時和影片隨選串流;適用于具有 Akamai CDN 直接合約的客戶。 原始-協助 CDN 預先提取功能牽涉到 Akamai CDN 與 Azure 媒體服務來源之間的下列 HTTP 標頭交換：
+
+|HTTP 標頭|值|傳送者|接收器|目的|
+| ---- | ---- | ---- | ---- | ----- |
+|CDN-來源-協助-預先啟用 | 1（預設值）或0 |CDN|起源|表示 CDN 已啟用預先提取|
+|CDN-來源-協助-預先提取路徑| 範例： <br/>片段（影片 = 1400000000，格式 = mpd-時間-cmaf）|起源|CDN|提供 CDN 的預先提取路徑|
+|CDN-來源-協助預先提取-要求|1（預先提取要求）或0（一般要求）|CDN|起源|若要指出來自 CDN 的要求是預先提取|
+
+若要查看作用中的部分標頭交換，您可以嘗試下列步驟：
+
+1. 使用 Postman 或捲曲來發出要求，以媒體服務來源的音訊或影片區段或片段。 請務必在要求中新增標頭 CDN-原始協助工具：1。
+2. 在回應中，您應該會看到標頭的「CDN-來源-協助-預先提取路徑」，其值為相對路徑。
+
 ## <a name="november-2019"></a>2019 年 11 月
 
 ### <a name="live-transcription-preview"></a>即時轉譯預覽

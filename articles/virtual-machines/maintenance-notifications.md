@@ -1,22 +1,18 @@
 ---
-title: Azure Vm 的維護通知 |Microsoft Docs
+title: 維修通知
 description: 針對在 Azure 中執行的虛擬機器進行維護通知的總覽。
-services: virtual-machines
-documentationcenter: ''
 author: shants123
-editor: ''
-tags: azure-service-management,azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: 83a1f3921272f5ec15ae4d1f4220652f56679c96
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 68159577cb31145be5063bb19af6db71ca1727bd
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903206"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77115692"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>處理預定的維護通知
 
@@ -29,7 +25,7 @@ ms.locfileid: "75903206"
 
 預定進行的維護作業若需要重新開機，會排定在不同波段。 每一波段有不同的範圍 (區域)。
 
-- 波段開始時會傳送通知給客戶。 根據預設，通知會傳送給服務系統管理員身分和共同管理員。 您可以使用[活動記錄警示](../service-health/alerts-activity-log-service-notifications.md)，新增更多收件者和訊息選項，例如電子郵件、SMS 和 webhook。  
+- 波段開始時會傳送通知給客戶。 根據預設，通知會傳送給服務管理員和共同管理員。 您可以使用[活動記錄警示](../service-health/alerts-activity-log-service-notifications.md)，新增更多收件者和訊息選項，例如電子郵件、SMS 和 webhook。  
 - 一旦通知出現，就會提供*自助服務視窗*。 在此視窗中，您可以查詢哪些虛擬機器受到影響，並根據您自己的排程需求開始維護。 自助服務視窗通常大約是35天。
 - 在自助期間之後，「排定維護期間」隨即開始。 在此期間的某個時間點，Azure 會排定並將必要的維護套用於您的虛擬機器。 
 

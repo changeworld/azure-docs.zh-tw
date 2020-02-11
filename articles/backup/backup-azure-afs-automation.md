@@ -3,12 +3,12 @@ title: 使用 PowerShell 備份 Azure 檔案儲存體
 description: 在本文中，您將瞭解如何使用 Azure 備份服務和 PowerShell 來備份 Azure 檔案儲存體。
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: a80589fb45937949b3612e12139ab1615bc1620d
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: f85451e0da6458de34aea936836b46781f4c4a21
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086952"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120512"
 ---
 # <a name="back-up-azure-files-with-powershell"></a>使用 PowerShell 備份 Azure 檔案儲存體
 
@@ -250,12 +250,12 @@ testAzureFS       ConfigureBackup      Completed            11/12/2018 2:15:26 P
 
 ## <a name="important-notice---backup-item-identification-for-afs-backups"></a>重要通知-AFS 備份的備份專案識別
 
-本節概述從預覽到 GA 的 AFS 備份的備份專案抓取變更。
+本節概述在準備 GA 時，AFS 備份中的重要變更。
 
-啟用 AFS 的備份時，使用者會提供客戶易記的檔案共用名稱作為機構名稱，並建立備份專案。 備份專案的 ' name ' 是 Azure 備份服務所建立的唯一識別碼。 識別碼通常牽涉到使用者易記名稱。 但 Azure 服務在內部唯一識別 azure 檔案共用的方式有了變更。 這表示 AFS 備份的備份專案唯一名稱會是 GUID，而且不會與客戶易記名稱有任何關聯。 若要知道每個專案的唯一名稱，只要以 backupManagementType 和 WorkloadType 的相關篩選準則執行 ```Get-AzRecoveryServicesBackupItem``` 命令，即可取得所有相關的專案，然後觀察傳回的 PS 物件/回應中的名稱欄位。 一律建議您列出專案，然後從 [名稱] 欄位取得回應中的唯一名稱。 使用此值來篩選具有 ' Name ' 參數的專案。 否則，請使用 FriendlyName 參數來抓取具有客戶易記名稱/識別碼的專案。
+啟用 AFS 的備份時，使用者會提供客戶易記的檔案共用名稱作為機構名稱，並建立備份專案。 備份專案的 ' name ' 是 Azure 備份服務所建立的唯一識別碼。 識別碼通常牽涉到使用者易記名稱。 但是，若要處理虛刪除的重要案例，其中可以刪除檔案共用，並使用相同的名稱建立另一個檔案共用，Azure 檔案共用的唯一識別現在會是識別碼，而不是客戶易記名稱。 若要知道每個專案的唯一識別/名稱，只要以 backupManagementType 和 WorkloadType 的相關篩選準則執行 ```Get-AzRecoveryServicesBackupItem``` 命令，即可取得所有相關的專案，然後觀察傳回的 PS 物件/回應中的名稱欄位。 一律建議您列出專案，然後從 [名稱] 欄位取得回應中的唯一名稱。 使用此值來篩選具有 ' Name ' 參數的專案。 否則，請使用 FriendlyName 參數來抓取具有客戶易記名稱/識別碼的專案。
 
 > [!WARNING]
-> 請確定 PS 版本已升級為 AFS 備份的 ' Az. Azurerm.recoveryservices 2.6.0 ' 的最低版本。 使用此版本時，[friendlyName] 篩選準則適用于 ```Get-AzRecoveryServicesBackupItem``` 命令。 將 azure 檔案共用名稱傳遞給 friendlyName 參數。 如果您將 azure 檔案共用名稱傳遞給 ' Name ' 參數，此版本會擲回警告，將此易記名稱傳遞給易記名稱參數。 若未安裝此最低版本，可能會導致現有的腳本失敗。 使用下列命令安裝 PS 的最低版本。
+> 請確定 PS 版本已升級為 AFS 備份的 ' Az. Azurerm.recoveryservices 2.6.0 ' 的最低版本。 使用此版本時，[friendlyName] 篩選準則適用于 ```Get-AzRecoveryServicesBackupItem``` 命令。 將 Azure 檔案共用名稱傳遞給 friendlyName 參數。 如果您將 Azure 檔案共用名稱傳遞給 ' Name ' 參數，此版本會擲回警告，將此易記名稱傳遞給易記名稱參數。 若未安裝此最低版本，可能會導致現有的腳本失敗。 使用下列命令安裝 PS 的最低版本。
 
 ```powershell
 Install-module -Name Az.RecoveryServices -RequiredVersion 2.6.0

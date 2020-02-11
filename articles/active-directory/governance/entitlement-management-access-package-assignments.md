@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0501da153567f3b95804d8a8a6576d8cf199762c
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: d5a2107974cd63c0d02aaeb555430453c39990bd
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554009"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120422"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中查看、新增和移除存取套件的指派
 
@@ -48,6 +48,10 @@ ms.locfileid: "74554009"
 1. 若要查看過期的指派，請按一下篩選狀態，然後選取 [已**過期**]。
 
 1. 若要下載已篩選清單的 CSV 檔案，請按一下 [**下載**]。
+
+### <a name="viewing-assignments-programmatically"></a>以程式設計方式查看指派
+
+您也可以使用 Microsoft Graph 來抓取存取套件中的指派。  具有具有委派 `EntitlementManagement.ReadWrite.All` 許可權之應用程式的適當角色使用者，可以呼叫 API 來[列出 accessPackageAssignments](https://docs.microsoft.com/graph/api/accesspackageassignment-list?view=graph-rest-beta)。
 
 ## <a name="directly-assign-a-user"></a>直接指派使用者
 
@@ -76,6 +80,10 @@ ms.locfileid: "74554009"
 1. 按一下 [**新增**]，將選取的使用者直接指派給存取封裝。
 
     幾分鐘後 **，按一下 [** 重新整理] 以查看 [指派] 清單中的使用者。
+
+### <a name="directly-assigning-users-programmatically"></a>以程式設計方式直接指派使用者
+
+您也可以使用 Microsoft Graph 直接將使用者指派給存取封裝。  具有具有委派 `EntitlementManagement.ReadWrite.All` 許可權之應用程式的適當角色使用者，可以呼叫 API 來[建立 accessPackageAssignmentRequest](https://docs.microsoft.com/graph/api/accesspackageassignmentrequest-post?view=graph-rest-beta)。
 
 ## <a name="remove-an-assignment"></a>移除指派
 

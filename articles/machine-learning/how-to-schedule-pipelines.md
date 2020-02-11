@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/12/2019
-ms.openlocfilehash: 1766b536043d8c404addb1877aa3ef9b57344ef4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: fed411ea171274513308ec3efa68da80e4d25f8a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722249"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116754"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>使用適用于 Python 的 Azure Machine Learning SDK 來排程機器學習管線
 
 在本文中，您將瞭解如何以程式設計方式排程管線以在 Azure 上執行。 您可以選擇根據經過時間或檔案系統變更來建立排程。 以時間為基礎的排程可以用來處理例行的工作，例如監視資料漂移。 以變更為基礎的排程可用於回應異常或無法預期的變更，例如上傳的新資料或正在編輯的舊資料。 學習如何建立排程之後，您將瞭解如何取出和停用排程。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://aka.ms/AMLFree)。
 
@@ -55,6 +55,13 @@ pipeline_id = "aaaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
 ## <a name="create-a-schedule"></a>建立排程
 
 若要定期執行管線，您必須建立排程。 `Schedule` 會使管線、實驗和觸發程式產生關聯。 觸發程式可以是描述執行之間等待的`ScheduleRecurrence` 或資料存放區路徑，以指定要監看是否有變更的目錄。 不論是哪一種情況，您都需要管線識別碼和用來建立排程的實驗名稱。
+
+在 python 檔案的頂端，匯入 `Schedule` 和 `ScheduleRecurrence` 類別：
+
+```python
+
+from azureml.pipeline.core.schedule import ScheduleRecurrence, Schedule
+```
 
 ### <a name="create-a-time-based-schedule"></a>建立以時間為基礎的排程
 
@@ -141,3 +148,4 @@ stop_by_schedule_id(ws, schedule_id)
 
 * 深入瞭解[管線](concept-ml-pipelines.md)
 * 深入瞭解[使用 Jupyter 探索 Azure Machine Learning](samples-notebooks.md)
+

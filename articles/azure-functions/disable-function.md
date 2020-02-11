@@ -3,18 +3,21 @@ title: 如何停用 Azure Functions 中的函式
 description: 瞭解如何在 Azure Functions 中停用和啟用函數。
 ms.topic: conceptual
 ms.date: 12/05/2019
-ms.openlocfilehash: bffb3136c77074ecd50e839fd7c73144ad910967
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: fb8edf635856078655b8640ba0e1723fdd5e8a5a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74970970"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116139"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>如何停用 Azure Functions 中的函式
 
 本文說明如何停用 Azure Functions 中的函式。 「停用」函式表示讓執行階段忽略為此函式定義的自動觸發程序。 這可讓您防止特定函式執行，而不需要停止整個函數應用程式。
 
 停用函式的建議方式是使用 `AzureWebJobs.<FUNCTION_NAME>.Disabled`格式的應用程式設定。 您可以透過數種方式來建立和修改此應用程式設定，包括使用 [ [Azure CLI](/cli/azure/) ]，並從[Azure 入口網站](https://portal.azure.com)中的函式 [**管理**] 索引標籤。 
+
+> [!NOTE]  
+> 當您使用本文所述的方法來停用 HTTP 觸發的函式時，端點在本機電腦上執行時仍可能是可存取的。  
 
 ## <a name="use-the-azure-cli"></a>使用 Azure CLI
 

@@ -2,13 +2,13 @@
 title: 將資源部署至訂用帳戶
 description: 描述如何在 Azure Resource Manager 範本中建立資源群組。 此外也會說明如何將資源部署到 Azure 訂用帳戶範圍。
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: b11668466fe3954dc5bc90435d5dfd016ca9791c
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.date: 02/10/2020
+ms.openlocfilehash: c53d274303a203a427a36f8f729f6b43cee44e40
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086727"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120624"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>在訂用帳戶層級建立資源群組和資源
 
@@ -29,7 +29,7 @@ ms.locfileid: "77086727"
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
 * [roleDefinitions](/azure/templates/microsoft.authorization/roledefinitions)
 
-### <a name="schema"></a>結構描述
+### <a name="schema"></a>Schema
 
 您用於訂用帳戶層級部署的架構與資源群組部署的架構不同。
 
@@ -86,8 +86,22 @@ New-AzDeployment `
 針對訂用帳戶層級部署，使用範本函式時有一些重要考量：
 
 * [不](template-functions-resource.md#resourcegroup)支援 **resourceGroup()** 函式。
-* 支援 [resourceId()](template-functions-resource.md#resourceid) 函式。 您可以使用它針對用於訂用帳戶層級部署的資源取得資源識別碼。 例如，使用 `resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))`取得原則定義的資源識別碼。 或者，使用[subscriptionResourceId （）](template-functions-resource.md#subscriptionresourceid)函數來取得訂用帳戶層級資源的資源識別碼。
 * 支援 [reference()](template-functions-resource.md#reference) 和 [list()](template-functions-resource.md#list) 函式。
+* 支援 [resourceId()](template-functions-resource.md#resourceid) 函式。 您可以使用它針對用於訂用帳戶層級部署的資源取得資源識別碼。 請勿提供資源群組參數的值。
+
+  例如，若要取得原則定義的資源識別碼，請使用：
+  
+  ```json
+  resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))
+  ```
+  
+  傳回的資源識別碼具有下列格式：
+
+  ```json
+  /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  ```
+
+  或者，使用[subscriptionResourceId （）](template-functions-resource.md#subscriptionresourceid)函數來取得訂用帳戶層級資源的資源識別碼。
 
 ## <a name="create-resource-groups"></a>建立資源群組
 
@@ -98,7 +112,7 @@ New-AzDeployment `
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.1",
+  "contentVersion": "1.0.0.0",
   "parameters": {
     "rgName": {
       "type": "string"
@@ -126,7 +140,7 @@ New-AzDeployment `
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.1",
+  "contentVersion": "1.0.0.0",
   "parameters": {
     "rgNamePrefix": {
       "type": "string"
@@ -167,7 +181,7 @@ New-AzDeployment `
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.1",
+  "contentVersion": "1.0.0.0",
   "parameters": {
     "rgName": {
       "type": "string"

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: cd1b5f120952752e956c957df9daa124a06d7b63
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 5a0e5846dd541e4997c271aee180b3790efa16e9
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847624"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114032"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中開始使用自訂原則
 
@@ -73,7 +73,7 @@ Azure AD B2C 要求您註冊兩個應用程式，以用來註冊和登入具有�
 
 ### <a name="register-the-identityexperienceframework-application"></a>註冊 IdentityExperienceFramework 應用程式
 
-若要在您的 Azure AD B2C 租用戶中註冊應用程式，您可以使用目前的**應用程式**體驗，或使用新整合的**應用程式註冊 (預覽)** 體驗。 [深入了解新的體驗](https://aka.ms/b2cappregintro)。
+若要在您的 Azure AD B2C 租使用者中註冊應用程式，您可以使用**應用程式註冊（舊版）** 體驗，或我們新的統一**應用程式註冊（預覽）** 體驗。 [深入了解新的體驗](https://aka.ms/b2cappregintro)。
 
 #### <a name="applicationstabapplications"></a>[應用程式](#tab/applications/)
 

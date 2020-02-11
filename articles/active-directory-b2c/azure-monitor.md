@@ -10,13 +10,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.author: marsma
 ms.subservice: B2C
-ms.date: 02/05/2020
-ms.openlocfilehash: b701449e8cfb7a379522ee6ccb93f5569bd703d8
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.date: 02/10/2020
+ms.openlocfilehash: 6f7f0252a6377397ccaccdc44c9c8561da7c9d29
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77045993"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121390"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>使用 Azure 監視器監視 Azure AD B2C
 
@@ -24,13 +24,13 @@ ms.locfileid: "77045993"
 
 您可以將記錄事件路由至：
 
-* 一個 Azure 儲存體帳戶。
-* Azure 事件中樞（並與您的 Splunk 和 Sumo 邏輯實例整合）。
-* Azure Log Analytics 工作區（用來分析資料、建立儀表板，以及針對特定事件發出警示）。
+* Azure[儲存體帳戶](../storage/blobs/storage-blobs-introduction.md)。
+* Azure[事件中樞](../event-hubs/event-hubs-about.md)（並與您的 Splunk 和 Sumo 邏輯實例整合）。
+* [Log Analytics 工作區](../azure-monitor/platform/resource-logs-collect-workspace.md)（用來分析資料、建立儀表板，以及針對特定事件發出警示）。
 
 ![Azure 監視器](./media/azure-monitor/azure-monitor-flow.png)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本文中的步驟，請使用 Azure PowerShell 模組來部署 Azure Resource Manager 範本。
 
@@ -42,15 +42,15 @@ ms.locfileid: "77045993"
 
 Azure AD B2C 利用[Azure Active Directory 監視](../active-directory/reports-monitoring/overview-monitoring.md)。 若要在 Azure AD B2C 租使用者內的 Azure Active Directory 中啟用*診斷設定*，請使用[委派的資源管理](../lighthouse/concepts/azure-delegated-resource-management.md)。
 
-您在 Azure AD B2C 目錄（**服務提供者**）中授權使用者，以在包含您 Azure 訂用帳戶（**客戶**）的租使用者內設定 Azure 監視器實例。 若要建立授權，請將[Azure Resource Manager](../azure-resource-manager/index.yml)範本部署至包含訂用帳戶的 Azure AD 租使用者。 下列各節將逐步引導您完成此程式。
+您在 Azure AD B2C 目錄（**服務提供者**）中授權使用者或群組，以在包含您 Azure 訂用帳戶（**客戶**）的租使用者內設定 Azure 監視器實例。 若要建立授權，請將[Azure Resource Manager](../azure-resource-manager/index.yml)範本部署至包含訂用帳戶的 Azure AD 租使用者。 下列各節將逐步引導您完成此程式。
 
-## <a name="create-a-resource-group"></a>建立資源群組
+## <a name="create-or-choose-resource-group"></a>建立或選擇資源群組
 
-在包含您的 Azure 訂用帳戶的 Azure Active Directory （Azure AD）租使用者中（*而不*是包含 Azure AD B2C 租使用者的目錄），[建立資源群組](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups)。 輸入下列值：
+這是包含目的地 Azure 儲存體帳戶、事件中樞或 Log Analytics 工作區的資源群組，用來接收來自 Azure 監視器的資料。 當您部署 Azure Resource Manager 範本時，您可以指定資源組名。
 
-* **訂用帳戶**：選取您的 Azure 訂用帳戶。
-* **資源群組**：輸入資源群組的名稱。 例如， *azure-ad-b2c-監視*。
-* **區域**：選取 Azure 位置。 例如，*美國中部*。
+[建立資源群組](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups)，或在包含您的 Azure 訂用帳戶的 Azure Active Directory （Azure AD）租使用者中選擇現有的資源群組，*而不*是包含 Azure AD B2C 租使用者的目錄。
+
+此範例會在*美國中部*區域使用名為*azure ad b2c-監視*的資源群組。
 
 ## <a name="delegate-resource-management"></a>委派資源管理
 
@@ -209,7 +209,17 @@ Parameters              :
 
 ## <a name="configure-diagnostic-settings"></a>設定診斷設定
 
-委派資源管理並選取您的訂用帳戶之後，您就可以在 Azure 入口網站中[建立診斷設定](../active-directory/reports-monitoring/overview-monitoring.md)。
+診斷設定會定義應將資源的記錄和計量傳送至何處。 可能的目的地包括：
+
+- [Azure 儲存體帳戶](../azure-monitor/platform/resource-logs-collect-storage.md)
+- [事件中樞](../azure-monitor/platform/resource-logs-stream-event-hubs.md)解決方案。
+- [Log Analytics 工作區](../azure-monitor/platform/resource-logs-collect-workspace.md)
+
+如果您還沒有這麼做，請在您于[Azure Resource Manager 範本](#create-an-azure-resource-manager-template)中指定的資源群組中，建立所選目的地類型的實例。
+
+### <a name="create-diagnostic-settings"></a>建立診斷設定
+
+您已經準備好在 Azure 入口網站中[建立診斷設定](../active-directory/reports-monitoring/overview-monitoring.md)。
 
 若要設定 Azure AD B2C 活動記錄的監視設定：
 
@@ -217,12 +227,24 @@ Parameters              :
 1. 在入口網站工具列中選取 [**目錄 + 訂**用帳戶] 圖示，然後選取包含您 Azure AD B2C 租使用者的目錄。
 1. 選取**Azure Active Directory**
 1. 在 [監視] 下方，選取 [診斷設定]。
-1. 選取 [ **+ 新增診斷設定**]。
+1. 如果資源上有現有的設定，您會看到已設定的設定清單。 請選取 [新增**診斷設定**] 以新增設定，或按一下 [**編輯**設定] 來編輯現有的設定。 每個設定都不能有一個以上的目的地類型。
 
     ![Azure 入口網站中的 [診斷設定] 窗格](./media/azure-monitor/azure-monitor-portal-05-diagnostic-settings-pane-enabled.png)
 
+1. 如果您的設定還沒有名稱，請將其命名為。
+1. 勾選每個目的地的方塊以傳送記錄。 選取 [**設定**] 以指定其設定，如下表所述。
+
+    | 設定 | 描述 |
+    |:---|:---|
+    | 封存至儲存體帳戶 | 儲存體帳戶的名稱。 |
+    | 串流至事件中樞 | 建立事件中樞的命名空間（如果這是您第一次串流記錄），或串流處理至（如果已經有資源正在將該記錄類別串流至這個命名空間）。
+    | 傳送至 Log Analytics | 工作區的名稱。 |
+
+1. 選取 [ **AuditLogs**和**SignInLogs**]。
+1. 選取 [儲存]。
+
 ## <a name="next-steps"></a>後續步驟
 
-如需在 Azure 監視器中新增和設定診斷設定的詳細資訊，請參閱 Azure 監視器檔中的此教學課程：
+如需在 Azure 監視器中新增和設定診斷設定的詳細資訊，請參閱[教學課程：從 Azure 資源收集和分析資源記錄](../azure-monitor/insights/monitor-azure-resource.md)。
 
-[教學課程：從 Azure 資源收集和分析資源記錄](/azure-monitor/learn/tutorial-resource-logs.md)
+如需將 Azure AD 記錄串流至事件中樞的詳細資訊，請參閱[教學課程：將 Azure Active Directory 記錄串流至 Azure 事件中樞](../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)。

@@ -15,12 +15,12 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b24ad492f622fa9a3e494c7ead724fb3980f6668
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 1c3c0aea6ecaccc972702a8c87e4d127c71c75d6
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77066846"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121361"
 ---
 # <a name="how-provisioning-works"></a>佈建運作方式
 
@@ -86,6 +86,8 @@ Azure AD 使用者物件和每個 SaaS 應用程式的使用者物件之間，�
 ### <a name="b2b-guest-users"></a>B2B （來賓）使用者
 
 您可以使用 Azure AD 的使用者布建服務，在 Azure AD SaaS 應用程式中布建 B2B （或來賓）使用者。 不過，若要讓 B2B 使用者使用 Azure AD 登入 SaaS 應用程式，SaaS 應用程式必須以特定方式設定其 SAML 型單一登入功能。 若想進一步了解如何設定 SaaS 應用程式以支援 B2B 使用者的登入，請參閱[設定適用於 B2B 共同作業的 SaaS 應用程式](../b2b/configure-saas-apps.md)。
+
+請注意，來賓使用者的 userPrincipalName 通常會儲存為 "alias # EXT #@domain.com"。 當您的屬性對應中包含 userPrincipalName 做為來源屬性時，會從 userPrincipalName 中移除 #EXT #。 如果您需要 #EXT #，請將 userPrincipalName 取代為來源屬性的 originalUserPrincipalName。 
 
 ## <a name="provisioning-cycles-initial-and-incremental"></a>布建週期：初始和增量
 

@@ -1,20 +1,18 @@
 ---
-title: 使用入口網站來進行 Azure Vm 的維護通知
+title: 使用入口網站進行維護通知
 description: 查看在 Azure 中執行之虛擬機器的維護通知，並使用入口網站啟動自助維護。
-services: virtual-machines
 author: shants123
-tags: azure-service-management,azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: 759fbc5ba3c5eaa78fec1045bcf41969108d39b1
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 46fcc825ac49f0181ac74e9c3e2deaea577f3329
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535817"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77115733"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-portal"></a>使用入口網站處理預定的維護通知
 
@@ -34,9 +32,9 @@ ms.locfileid: "74535817"
 
    **維護狀態**：顯示 VM 的維護狀態。 以下是可能值：
       
-      | Value | 描述 |
+      | 值 | 描述 |
       |-------|-------------|
-      | 立即開始使用 | VM 處於自助式維護期間，可讓您在這裡自行起始維護。 請參閱下述，以了解如何在您的 VM 上開始維護。 | 
+      | 立即開始 | VM 處於自助式維護期間，可讓您在這裡自行起始維護。 請參閱下述，以了解如何在您的 VM 上開始維護。 | 
       | 已排程 | 已排定 VM 進行維護，沒有選項供您起始維護。 您可以在此檢視中選取 [維護 - 排程] 期間或按一下虛擬機器，來了解維護維護期間。 | 
       | 已更新 | 已更新您的 VM，此時不需要採取任何進一步的動作。 | 
       | 稍後重試 | 您已啟動維護，但是沒有成功。 您可以在稍後使用自助式維護選項。 | 

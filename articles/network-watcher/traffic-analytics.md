@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: 6cec7c813b0723ac770da6ebd04f4d2cf26a1409
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: eaa95906e20072e2914d1486568d7a6ebeb64f2c
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840582"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114405"
 ---
 # <a name="traffic-analytics"></a>流量分析
 
@@ -124,7 +124,7 @@ Log Analytics 工作區必須存在於下列區域：
 |部署模型   | 角色                   |
 |---------          |---------               |
 |Resource Manager   | 擁有者                  |
-|                   | 參與者            |
+|                   | Contributor            |
 |                   | 讀取者                 |
 |                   | 網路參與者    |
 
@@ -151,7 +151,7 @@ Log Analytics 工作區必須存在於下列區域：
 
 啟用 NSG 流量記錄之前，您必須具有要記錄流量的網路安全性群組。 如果您沒有網路安全性群組，請參閱[建立網路安全性群組](../virtual-network/manage-network-security-group.md#create-a-network-security-group)，以建立此群組。
 
-在 Azure 入口網站左半部，依序選取 [監視器]、[網路監看員] 和 [NSG 流量記錄]。 選取要啟用 NSG 流量記錄的網路安全性群組，如下圖所示：
+在 Azure 入口網站中，移至 [**網路**監看員]，然後選取 [ **NSG 流量記錄**]。 選取要啟用 NSG 流量記錄的網路安全性群組，如下圖所示：
 
 ![選取需要啟用 NSG 流量記錄的 NSG](./media/traffic-analytics/selection-of-nsgs-that-require-enablement-of-nsg-flow-logging.png)
 
@@ -210,7 +210,7 @@ New-AzStorageAccount `
 
 此儀表板第一次可能需要 30 分鐘才會出現，因為流量分析必須先彙總足夠的資料以衍生有意義的深入資訊，才能夠產生任何報告。
 
-## <a name="usage-scenarios"></a>使用方法案例
+## <a name="usage-scenarios"></a>使用方式情節
 
 您在流量分析完整設定後可能想要取得的深入資訊如下：
 

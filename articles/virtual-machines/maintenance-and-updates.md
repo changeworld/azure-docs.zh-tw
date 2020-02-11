@@ -1,22 +1,18 @@
 ---
-title: Azure 中 Vm 的維護和更新 |Microsoft Docs
+title: 維護和更新
 description: 針對在 Azure 中執行的虛擬機器進行維護和更新的總覽。
-services: virtual-machines
-documentationcenter: ''
 author: shants123
-editor: ''
-tags: azure-resource-manager,azure-service-management
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: shants
-ms.openlocfilehash: 45dba8de8ef735bdb9df102ac367e6a1653bf481
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: eaf7616b3bd69828829342b4dca9247c009d3475
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807080"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121854"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Azure 中虛擬機器進行的維修
 
@@ -53,7 +49,7 @@ Azure 會定期更新其平臺，以改善虛擬機器主機基礎結構的可�
 「即時移轉」是一種不需要重新開機的作業，而且會保留 VM 的記憶體。 它會造成暫停或凍結，通常不會超過5秒。 除了 G、M、N 和 H 系列以外，所有基礎結構即服務（IaaS） Vm 都符合即時移轉的資格。 合格的 Vm 代表已部署至 Azure 車隊的 IaaS Vm 90% 以上。 
 
 Azure 平臺會在下列案例中開始進行即時移轉：
-- 規劃的維修
+- 預定的維修
 - 硬體失敗
 - 配置優化
 

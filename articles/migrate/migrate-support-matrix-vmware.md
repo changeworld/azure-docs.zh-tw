@@ -3,12 +3,12 @@ title: Azure Migrate 中的 VMware 評估支援
 description: 深入瞭解 Azure Migrate 中的 VMware 評估支援。
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 1b3e81653ba934b209755391f08e60ef603e645a
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 19ed506228bac425ad05edee1586740e6c33f69e
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086771"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121333"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware 評估的支援矩陣 
 
@@ -42,7 +42,7 @@ ms.locfileid: "77086771"
 **電腦作業系統** | 所有的 Windows 和 Linux 版本。
 **vCenter 認證** | 具有唯讀存取權的 vCenter Server 帳戶，以及為虛擬機器 > 來賓作業啟用的許可權。
 **VM 認證** | 目前支援所有 Windows 伺服器使用一個認證，而所有 Linux 伺服器都有一個認證。<br/><br/> 您會建立 Windows Vm 的來賓使用者帳戶，以及所有 Linux Vm 的一般/一般使用者帳戶（非 sudo 存取權）。
-**VMware 工具** | VMware 工具必須安裝在您想要探索的 Vm 上並加以執行。
+**VMware 工具** | VMware 工具必須安裝在您想要探索的 Vm 上並加以執行。 <br/> 如果您的 VMware 工具版本介於 9.10-10.2.0 之間，請務必將它升級至超過10.2.0。
 **埠存取** | 在執行您要探索之 Vm 的 ESXi 主機上，Azure Migrate 設備必須能夠連線到 TCP 通訊埠443。
 **限制** | 針對應用程式探索，您最多可以探索每個設備10000。 
 
@@ -88,7 +88,7 @@ ESXi 主機 | **僅針對[應用程式探索](https://docs.microsoft.com/azure/m
 
 ## <a name="agentless-dependency-visualization"></a>無代理程式的相依性視覺效果
 
-這個選項目前為預覽狀態。 [詳細資訊](how-to-create-group-machine-dependencies-agentless.md)。 下表摘要說明需求。
+此選項目前為預先審查狀態。 [詳細資訊](how-to-create-group-machine-dependencies-agentless.md)。 下表摘要說明需求。
 
 **需求** | **詳細資料**
 --- | ---

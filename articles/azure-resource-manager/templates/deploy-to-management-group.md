@@ -2,13 +2,13 @@
 title: 將資源部署至管理群組
 description: 說明如何在 Azure Resource Manager 範本的管理群組範圍中部署資源。
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: 4ba4f4d2e95c0b878e9f402fa84139ac5b351e3c
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.date: 02/10/2020
+ms.openlocfilehash: 0419f3daca6845c6809c9f66e870fdf884a7193f
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121908"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117050"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>在管理群組層級建立資源
 
@@ -27,7 +27,7 @@ ms.locfileid: "76121908"
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
 * [roleDefinitions](/azure/templates/microsoft.authorization/roledefinitions)
 
-### <a name="schema"></a>結構描述
+### <a name="schema"></a>Schema
 
 您用於管理群組部署的架構與資源群組部署的架構不同。
 
@@ -61,10 +61,22 @@ https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeployment
 
 針對管理群組部署，使用範本函式時有一些重要的考慮：
 
-* **不**支援 [resourceGroup()](template-functions-resource.md#resourcegroup) 函式。
+* [不](template-functions-resource.md#resourcegroup)支援 **resourceGroup()** 函式。
 * **不**支援[訂閱（）](template-functions-resource.md#subscription)函數。
-* 支援 [resourceId()](template-functions-resource.md#resourceid) 函式。 使用它來取得用於管理群組層級部署之資源的資源識別碼。 例如，使用 `resourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))`取得原則定義的資源識別碼。 它會傳回 `/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}`格式的資源識別碼。
 * 支援 [reference()](template-functions-resource.md#reference) 和 [list()](template-functions-resource.md#list) 函式。
+* 支援 [resourceId()](template-functions-resource.md#resourceid) 函式。 使用它來取得用於管理群組層級部署之資源的資源識別碼。 請勿提供資源群組參數的值。
+
+  例如，若要取得原則定義的資源識別碼，請使用：
+  
+  ```json
+  resourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))
+  ```
+  
+  傳回的資源識別碼具有下列格式：
+  
+  ```json
+  /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  ```
 
 ## <a name="create-policies"></a>建立原則
 
@@ -136,9 +148,13 @@ https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeployment
 }
 ```
 
+## <a name="template-sample"></a>範本範例
+
+* 建立資源群組、原則和原則指派。  請參閱 [這裡](https://github.com/Azure/azure-docs-json-samples/blob/master/management-level-deployment/azuredeploy.json)。
+
 ## <a name="next-steps"></a>後續步驟
 
 * 若要瞭解如何指派角色，請參閱[使用 RBAC 和 Azure Resource Manager 範本來管理 Azure 資源的存取權](../../role-based-access-control/role-assignments-template.md)。
 * 如需針對 Azure 資訊安全中心部署工作區設定的範例，請參閱 [deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json)。
-* 若要了解如何建立 Azure 資源管理員範本，請參閱 [撰寫範本](template-syntax.md)。 
+* 若要了解如何建立 Azure 資源管理員範本，請參閱 [撰寫範本](template-syntax.md)。
 * 如需在範本中可用函式的清單，請參閱 [範本函式](template-functions.md)。

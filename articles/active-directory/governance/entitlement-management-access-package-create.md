@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68d34046a16787ca1c6790880592fb30667ff2dc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7c858a17d4574e6e45283df7c1276cd303f25297
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422686"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120479"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中建立新的存取套件
 
@@ -131,7 +131,18 @@ ms.locfileid: "75422686"
 
     新的存取套件會出現在存取套件清單中。
 
+## <a name="creating-an-access-package-programmatically"></a>以程式設計方式建立存取封裝
+
+您也可以使用 Microsoft Graph 建立存取封裝。  具有具有委派 `EntitlementManagement.ReadWrite.All` 許可權之應用程式的適當角色中的使用者，可以呼叫 API
+
+1. [列出目錄中的 accessPackageResources](https://docs.microsoft.com/graph/api/accesspackagecatalog-list-accesspackageresources?view=graph-rest-beta) ，並為尚未在目錄中的任何資源[建立 accessPackageResourceRequest](https://docs.microsoft.com/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta) 。
+1. [列出](https://docs.microsoft.com/graph/api/accesspackagecatalog-list-accesspackageresourceroles?view=graph-rest-beta)accessPackageCatalog 中每個 AccessPackageResource 的 accessPackageResourceRoles。 接著，在建立 accessPackageResourceRoleScope 時，會使用此角色清單來選取角色。
+1. [建立 accessPackage](https://docs.microsoft.com/graph/api/accesspackage-post?view=graph-rest-beta)。
+1. [建立 accessPackageAssignmentPolicy](https://docs.microsoft.com/graph/api/accesspackageassignmentpolicy-post?view=graph-rest-beta)。
+1. 為存取套件中所需的每個資源角色[建立 accessPackageResourceRoleScope](https://docs.microsoft.com/graph/api/accesspackage-post-accesspackageresourcerolescopes?view=graph-rest-beta) 。
+
 ## <a name="next-steps"></a>後續步驟
 
 - [共用連結以要求存取套件](entitlement-management-access-package-settings.md)
 - [變更存取套件的資源角色](entitlement-management-access-package-resources.md)
+- [直接將使用者指派給存取套件](entitlement-management-access-package-assignments.md)

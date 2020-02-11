@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
-ms.openlocfilehash: c5543470f790d00158297cb7c3f0c06c5fc05e14
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 64ef4dfe81e6415f1285a74962e2123507715119
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75866988"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120679"
 ---
 # <a name="configure-azure-files-in-a-windows-container-on-app-service"></a>在 App Service 上的 Windows 容器中設定 Azure 檔案儲存體
 
@@ -38,6 +38,7 @@ ms.locfileid: "75866988"
 - Windows 容器中的 Azure 儲存體目前**不支援**在 windows App Service 方案上攜帶您自己的程式碼案例。
 - 由於基礎結構的限制，Windows 容器中的 Azure 儲存體**不支援**使用**存放裝置防火牆**設定。
 - Windows 容器中的 Azure 儲存體可讓您指定每個應用程式**最多五個**掛接點。
+- 無法透過 App Service 的 FTP/FTPs 端點存取裝載至應用程式的 Azure 儲存體。 使用[Azure 儲存體 explorer](https://azure.microsoft.com/features/storage-explorer/)。
 - Azure 儲存體會獨立計費，而且**不會包含**在您的 web 應用程式中。 深入瞭解[Azure 儲存體定價](https://azure.microsoft.com/pricing/details/storage)。
 
 ## <a name="link-storage-to-your-web-app-preview"></a>將儲存體連結到您的 Web 應用程式 (預覽)

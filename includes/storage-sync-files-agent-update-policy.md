@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 12/11/2018
 ms.author: rogarana
-ms.openlocfilehash: 02e9553b9704c96794e0c1113ab3e06458f0f7c8
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: aeb15fbb8da44a203789e06a359cb664998602ab
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72391583"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77123243"
 ---
 Azure 檔案同步代理程式會定期更新，以新增功能和解決問題。 建議您設定 Microsoft Update，以取得 Azure 檔案同步代理程式的最新更新。
 
@@ -40,7 +40,7 @@ Azure 檔案同步代理程式會定期更新，以新增功能和解決問題�
 開啟 PowerShell 主控台，並流覽至您安裝同步代理程式的目錄，然後匯入伺服器 Cmdlet。 根據預設，這會看起來像這樣：
 ```powershell
 cd 'C:\Program Files\Azure\StorageSyncAgent'
-Import-Module -Name \StorageSync.Management.ServerCmdlets.dll
+Import-Module -Name .\StorageSync.Management.ServerCmdlets.dll
 ```
 
 您可以執行 `Get-StorageSyncAgentAutoUpdatePolicy` 來檢查目前的原則設定，並判斷是否要變更它。

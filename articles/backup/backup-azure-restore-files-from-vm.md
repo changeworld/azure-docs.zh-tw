@@ -3,12 +3,12 @@ title: 從 Azure VM 備份復原檔案和資料夾
 description: 在本文中，您將瞭解如何從 Azure 虛擬機器復原點復原檔案和資料夾。
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 86a46e606e9425cf4951817ca3afa23fe57dae52
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 4565929b5475e2348685fbec77b596b65ed73fd6
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294077"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114333"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>從 Azure 虛擬機器備份復原檔案
 
@@ -56,6 +56,8 @@ Azure 備份可從 Azure 虛擬機器 (VM) 備份 (又稱復原點) 還原 [Azur
 7. 於下載位置中 (通常是 [下載] 資料夾)，在可執行檔或指令碼上按一下滑鼠右鍵，並以系統管理員認證來執行。 出現提示時，輸入密碼或將密碼貼到記憶體中，然後按**enter**。 輸入有效的密碼後，指令碼會連線至復原點。
 
     ![[檔案復原] 功能表](./media/backup-azure-restore-files-from-vm/executable-output.png)
+
+8. 針對 Linux 機器，會產生 python 腳本。 其中一個需要下載腳本，並將它複製到相關/相容的 Linux 伺服器。 您可能必須修改許可權以 ```chmod +x <python file name>```執行。 然後，使用 ```./<python file name>```執行 python 檔案。
 
 請參閱[存取需求](#access-requirements)一節，以確定腳本已順利執行。
 
@@ -159,7 +161,7 @@ mount [RAID Disk Path] [/mountpath]
 
 下表顯示伺服器和電腦作業系統之間的相容性。 復原檔案時，無法將檔案還原至之前或之後的作業系統版本。 例如，您無法將 Windows Server 2016 虛擬機器的檔案還原至 Windows Server 2012 或 Windows 8 電腦。 您可以將 VM 的檔案還原至相同的伺服器作業系統，或相容的用戶端作業系統。
 
-|伺服器作業系統 | 相容的用戶端作業系統  |
+|伺服器 OS | 相容的用戶端作業系統  |
 | --------------- | ---- |
 | Windows Server 2019    | Windows 10 |
 | Windows Server 2016    | Windows 10 |
@@ -190,7 +192,7 @@ mount [RAID Disk Path] [/mountpath]
 
 |元件 | 版本  |
 | --------------- | ---- |
-| Bash | 4 和更新版本 |
+| 反斜線 | 4 和更新版本 |
 | python | 2.6.6 和更新版本  |
 | TLS | 應支援 1.2  |
 
@@ -251,7 +253,7 @@ mount [RAID Disk Path] [/mountpath]
 
 如果您從虛擬機器復原檔案時遇到問題，請檢查下表中的其他資訊。
 
-| 錯誤訊息 / 案例 | 可能的原因 | 建議動作 |
+| 錯誤訊息 / 案例 | 可能的原因 | 建議的動作 |
 | ------------------------ | -------------- | ------------------ |
 | Exe 輸出：*連接到目標時發生例外*狀況 | 腳本無法存取復原點    | 檢查機器是否滿足先前的[存取需求](#access-requirements)。 |  
 | Exe 輸出︰目標已透過 iSCSI 工作階段登入。 | 指令碼已在相同電腦上執行，並已附加磁碟機 | 復原點磁碟區已連接。 它們可能未使用原始 VM 的相同磁碟機代號裝載。 流覽檔案瀏覽器中所有可用的磁片區，以尋找您的檔案。 |

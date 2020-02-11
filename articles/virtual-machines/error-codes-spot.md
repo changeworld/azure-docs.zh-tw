@@ -1,20 +1,19 @@
 ---
 title: 適用于 Azure 點 Vm 和擴展集實例的錯誤碼
 description: 深入瞭解使用點 Vm 和擴展集實例時可能會看到的錯誤代碼。
-services: virtual-machines-windows
 author: cynthn
 manager: gwallace
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/20/2019
 ms.author: cynthn
-ms.openlocfilehash: 97e68f4d0d671ffa0f697c484c502b9070a3f20f
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 1863c510967dcf80044d768aee1a37643a068ce4
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74781939"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77115865"
 ---
 # <a name="preview-error-messages-for-spot-vms-and-scale-sets"></a>預覽：適用于點 Vm 和擴展集的錯誤訊息
 
@@ -27,7 +26,7 @@ ms.locfileid: "74781939"
 以下是您在使用「點 Vm」和「擴展集」時可能會收到的一些可能的錯誤代碼。
 
 
-| 索引鍵 | 訊息 | 描述 |
+| Key | 訊息 | 描述 |
 |-----|---------|-------------|
 | SkuNotAvailable | 在訂用帳戶 '\<subscriptionID\>' 的位置 '\<位置\>' 中，資源 '\<資源\>' 的要求層目前無法使用。 請嘗試另一層，或部署到不同的位置。 | 此位置中沒有足夠的 Azure 點容量可建立您的 VM 或擴展集實例。 |
 | EvictionPolicyCanBeSetOnlyOnAzureSpotVirtualMachines  |  只能在 Azure 點虛擬機器上設定收回原則。 | 此 VM 不是點 VM，因此您無法設定收回原則。 |

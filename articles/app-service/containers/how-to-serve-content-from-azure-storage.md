@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: msangapu
-ms.openlocfilehash: 752c9dfd1ae67397713cdffce9ba530ad6a2c159
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: b2be84625035bb368784f3f423d63121c29255ad
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930018"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121409"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>從 Azure 儲存體在 Linux 上的 App Service 中提供內容
 
@@ -34,6 +34,7 @@ ms.locfileid: "75930018"
 - 具有 App Service 的 Azure 儲存體支援裝載**Azure 檔案儲存體容器**（讀取/寫入）和**Azure Blob 容器**（唯讀）
 - App Service 的 Azure 儲存體**不支援**使用**儲存體防火牆**設定，因為基礎結構的限制。
 - App Service 的 Azure 儲存體可讓您為每個應用程式指定**最多五個**掛接點。
+- 無法透過 App Service 的 FTP/FTPs 端點存取裝載至應用程式的 Azure 儲存體。 使用[Azure 儲存體 explorer](https://azure.microsoft.com/features/storage-explorer/)。
 - Azure 儲存體**不會包含**在您的 web 應用程式中，而且會分開計費。 深入瞭解[Azure 儲存體定價](https://azure.microsoft.com/pricing/details/storage)。
 
 > [!WARNING]
@@ -69,7 +70,7 @@ az webapp config storage-account list --resource-group <resource_group> --name <
 
 Azure 儲存體可以透過使用自訂識別碼的多容器應用程式來裝載。若要查看自訂識別碼名稱，請執行[`az webapp config storage-account list --name <app_name> --resource-group <resource_group>`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list)。
 
-在您的*docker-compose.dev.debug.yml. yml*檔案中，將 `volumes` 選項對應到 `custom-id`。 例如：
+在您的*docker-compose.dev.debug.yml. yml*檔案中，將 `volumes` 選項對應到 `custom-id`。 例如，
 
 ```yaml
 wordpress:

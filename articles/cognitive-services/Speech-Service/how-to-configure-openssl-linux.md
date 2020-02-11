@@ -1,5 +1,5 @@
 ---
-title: 如何設定適用于 Linux 的 OpenSSL
+title: 如何設定適用於 Linux 的 OpenSSL
 titleSuffix: Azure Cognitive Services
 description: 瞭解如何設定適用于 Linux 的 OpenSSL。
 services: cognitive-services
@@ -10,26 +10,46 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: jhakulin
-ms.openlocfilehash: cadf31dede8ee81323076013d00b9431f597bda6
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: ff8772f7c3c3213c010b0bdbd0d0aa8897404bac
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156483"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119991"
 ---
-# <a name="configure-openssl-for-linux"></a>設定適用于 Linux 的 OpenSSL
+# <a name="configure-openssl-for-linux"></a>設定適用於 Linux 的 OpenSSL
 
 在1.9.0 之前使用任何語音 SDK 版本時， [OpenSSL](https://www.openssl.org)會以動態方式設定為主機系統版本。 在較新版本的語音 SDK 中，OpenSSL （版本[1.1.1 b](https://mta.openssl.org/pipermail/openssl-announce/2019-February/000147.html)）會以靜態方式連結至語音 sdk 的核心程式庫。
 
-## <a name="troubleshoot-connectivity"></a>針對連線問題進行疑難排解
-
-如果使用1.9.0 版本的語音 SDK 時發生連線失敗，請確定 `ssl/certs` 目錄存在於 `/usr/lib` directory 中，也就是在 Linux 檔案系統中找到。 如果 `ssl/certs` 目錄*不存在*，請使用下列命令來檢查您系統中安裝 OpenSSL 的位置：
-
+若要確保連線能力，請確認您的系統中已安裝 OpenSSL 憑證。 執行命令：
 ```bash
-which openssl
+openssl version -d
 ```
 
-然後，找出 OpenSSL `certs` 目錄，並將該目錄的內容複寫到 `/usr/lib/ssl/certs` 目錄。 接下來，再試一次，查看連線問題是否已解決。
+以 Ubuntu/Debian 為基礎的系統上的輸出應該是：
+```
+OPENSSLDIR: "/usr/lib/ssl"
+```
+
+檢查 OPENSSLDIR 下是否有 `certs` 子目錄。 在上述範例中，它會是 `/usr/lib/ssl/certs`。
+
+* 如果有 `/usr/lib/ssl/certs`，而且它包含許多個別的憑證檔案（具有 `.crt` 或 `.pem` 延伸模組），則不需要進一步的動作。
+
+* 如果 OPENSSLDIR 不是 `/usr/lib/ssl` 和/或有單一憑證組合檔案，而不是多個個別檔案，您就必須設定適當的 SSL 環境變數，以指出可以找到憑證的位置。
+
+## <a name="examples"></a>範例
+
+- OPENSSLDIR 為 `/opt/ssl`。 有 `certs` 子目錄具有許多 `.crt` 或 `.pem` 檔案。
+在執行使用語音 SDK 的程式之前，請將環境變數 `SSL_CERT_DIR` 設定為指向 `/opt/ssl/certs`。 例如，
+```bash
+SSL_CERT_DIR=/opt/ssl/certs ./helloworld
+```
+
+- OPENSSLDIR 為 `/etc/pki/tls`。 有一個憑證配套檔案，例如 `ca-bundle.pem` 或 `ca-bundle.crt`。
+在執行使用語音 SDK 的程式之前，請將環境變數 `SSL_CERT_FILE` 設定為指向 `/etc/pki/tls/ca-bundle.pem`。 例如，
+```bash
+SSL_CERT_FILE=/etc/pki/tls/ca-bundle.pem ./helloworld
+```
 
 ## <a name="next-steps"></a>後續步驟
 

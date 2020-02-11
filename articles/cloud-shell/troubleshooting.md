@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: db1e2d09c1a75401a8ca24859e9b2d5da9f54b72
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 1d244d7b62fcfefeec6f628f473274ae982bf4d8
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024274"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120223"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 的疑難排解和限制
 
@@ -28,6 +28,11 @@ ms.locfileid: "77024274"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="general-troubleshooting"></a>一般疑難排解
+
+### <a name="error-running-azuread-cmdlets-in-powershell"></a>在 PowerShell 中執行 AzureAD Cmdlet 時發生錯誤
+
+- **詳細資料**：當您在 Cloud Shell 中執行 AzureAD Cmdlet （如 `Get-AzureADUser`）時，可能會看到錯誤： `You must call the Connect-AzureAD cmdlet before calling any other cmdlets`。 
+- **解決**方式：執行 `Connect-AzureAD` Cmdlet。 之前，Cloud Shell 會在 PowerShell 啟動期間自動執行此 Cmdlet。 為了加速開始時間，Cmdlet 不會再自動執行。 您可以選擇在 PowerShell 中將 `Connect-AzureAD` 新增至 $PROFILE 檔案，以還原先前的行為。
 
 ### <a name="early-timeouts-in-firefox"></a>在 FireFox 中提前逾時
 
@@ -113,11 +118,11 @@ Cloud Shell 支援下列最新版的瀏覽器：
 - Apple Safari
   - 不支援 Safari 私密瀏覽模式。
 
-### <a name="copy-and-paste"></a>複製和貼上
+### <a name="copy-and-paste"></a>複製並貼上
 
 [!INCLUDE [copy-paste](../../includes/cloud-shell-copy-paste.md)]
 
-### <a name="usage-limits"></a>使用方式限制
+### <a name="usage-limits"></a>使用限制
 
 Cloud Shell 主要用於互動式的使用案例。 因此，任何長時間執行而沒有互動的工作階段會在不發出警告的情況下結束。
 
@@ -163,7 +168,7 @@ Azure Cloud Shell 會謹慎處理您的個人資料，Azure Cloud Shell 服務�
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-### <a name="export"></a>匯出
+### <a name="export"></a>Export
 若要匯出 Cloud Shell 為您儲存的使用者設定 (例如慣用殼層、字型大小和字型)，請執行下列命令。
 
 1. [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)

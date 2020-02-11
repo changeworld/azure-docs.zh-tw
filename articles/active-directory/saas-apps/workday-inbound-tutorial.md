@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7e5dc9c177dbddda8bf229ec7949f53b70e616c
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: acc458c59858196ea110d0ff2030ccd7f7b6fc58
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064301"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121734"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>教學課程︰設定 Workday 來自動佈建使用者
 
@@ -572,7 +572,7 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 | **Fax**      | facsimileTelephoneNumber     |     |    建立 + 更新 |
 | **Mobile**  |    mobile       |     |       建立 + 更新 |
 | **LocalReference** |  preferredLanguage  |     |  建立 + 更新 |                                               
-| **Switch(\[Municipality\], "OU=Standard Users,OU=Users,OU=Default,OU=Locations,DC=contoso,DC=com", "Dallas", "OU=Standard Users,OU=Users,OU=Dallas,OU=Locations,DC=contoso,DC=com", "Austin", "OU=Standard Users,OU=Users,OU=Austin,OU=Locations,DC=contoso,DC=com", "Seattle", "OU=Standard Users,OU=Users,OU=Seattle,OU=Locations,DC=contoso,DC=com", “London", "OU=Standard Users,OU=Users,OU=London,OU=Locations,DC=contoso,DC=com")**  | parentDistinguishedName     |     |  建立 + 更新 |
+| **Switch （\[Municipality\]，"OU = Standard Users，OU = Users，OU = Default，OU = 位置，DC = contoso，DC = com"，"達拉斯"，"OU = Standard Users，OU = Users，OU = 達拉斯，OU = 位置，DC = contoso，DC = com"，"奧斯丁"，"OU = Standard Users，OU = Users，OU = 奧斯丁，OU = 位置，DC = contoso，DC = com"，"西雅圖"，"OU = Standard Users，OU = Users，OU = 西雅圖，OU = 位置，DC = contoso，DC = com"，"倫敦"，"OU = Standard Users，OU = Users，OU = 倫敦，OU = 位置，DC = contoso，DC = com"）**  | parentDistinguishedName     |     |  建立 + 更新 |
 
 完成屬性對應設定之後，您現在便可以[啟用及啟動使用者佈建服務](#enable-and-launch-user-provisioning)。
 

@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解如何使用 Azure 備份來備份 Azure
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 10f55bb4c5c488975f075aa0382296f808a9a5b1
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 7a6bae3a850b5e67af8da80a06b862e7e2e7561d
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029566"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120841"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>備份 Azure VM 中的 SQL Server 資料庫
 
@@ -17,7 +17,7 @@ SQL Server 資料庫是需要低復原點目標（RPO）和長期保留的重要
 
 本文說明如何將在 Azure VM 上執行的 SQL Server 資料庫備份至 Azure 備份復原服務保存庫。
 
-在本文中，您將了解如何：
+在本文中，您將學會如何：
 
 > [!div class="checklist"]
 >
@@ -87,7 +87,7 @@ SQL Server 資料庫是需要低復原點目標（RPO）和長期保留的重要
 
 **允許使用 Azure 防火牆標籤來存取**。 如果您使用的是 Azure 防火牆，請使用 AzureBackup [FQDN 標籤](https://docs.microsoft.com/azure/firewall/fqdn-tags)來建立應用程式規則。 這會允許針對 Azure 備份進行輸出存取。
 
-**部署 HTTP Proxy 伺服器以路由流量**。 當您備份 Azure VM 上的 SQL Server 資料庫時，VM 上的備份擴充功能會使用 HTTPS Api 將管理命令傳送至 Azure 備份和資料以 Azure 儲存體。 備份延伸模組也會使用 Azure AD 進行驗證。 透過 HTTP Proxy 路由傳送這三項服務的備份延伸模組流量。 延伸模組是唯一為了要存取公用網際網路而設定的元件。
+**部署 HTTP Proxy 伺服器以路由流量**。 當您備份 Azure VM 上的 SQL Server 資料庫時，VM 上的備份擴充功能會使用 HTTPS Api 將管理命令傳送至 Azure 備份和資料以 Azure 儲存體。 備份延伸模組也會使用 Azure AD 進行驗證。 透過 HTTP Proxy 路由傳送這三項服務的備份延伸模組流量。 沒有萬用字元網域與 Azure 備份搭配使用，以新增至您的 proxy 規則允許清單。 您必須將公用 IP 範圍用於 Azure 所提供的這些服務。 延伸模組是唯一為了要存取公用網際網路而設定的元件。
 
 連線能力選項包含下列優缺點：
 
@@ -96,7 +96,7 @@ SQL Server 資料庫是需要低復原點目標（RPO）和長期保留的重要
 允許 IP 範圍 | 沒有額外的成本 | 由於 IP 位址範圍會隨著時間改變，因此難以管理 <br/><br/> 提供整個 Azure 的存取權，而不只是 Azure 儲存體的存取權
 使用 NSG 服務標籤 | 會自動合併範圍變更，因此更容易管理 <br/><br/> 沒有額外的成本 <br/><br/> | 只能搭配 NSG 使用 <br/><br/> 提供整個服務的存取權
 使用 Azure 防火牆 FQDN 標籤 | 會自動管理所需的 FQDN，因此更容易管理 | 只能搭配 Azure 防火牆使用
-使用 HTTP Proxy | 允許在 Proxy 中精確控制儲存體 URL <br/><br/> VM 的單一網際網路存取點 <br/><br/> 不會隨著 Azure IP 位址變更 | 使用 Proxy 軟體執行 VM 時的額外成本
+使用 HTTP Proxy | VM 的單一網際網路存取點 <br/> | 使用 Proxy 軟體執行 VM 時的額外成本 <br/> 沒有已發佈的 FQDN 位址，允許規則將受限於 Azure IP 位址變更
 
 ### <a name="database-naming-guidelines-for-azure-backup"></a>Azure 備份的資料庫命名方針
 

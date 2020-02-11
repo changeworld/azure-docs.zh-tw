@@ -4,12 +4,12 @@ description: 在 Azure 中自動調整 Web 應用程式、虛擬機器擴展集�
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: d9f04e0af4349f6b149619f13dac8ca2f59b560e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a05cf87e660cc6c388ea2055bb174c47b99da4a3
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75396989"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117123"
 ---
 # <a name="best-practices-for-autoscale"></a>自動調整規模的最佳做法
 Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[雲端服務](https://azure.microsoft.com/services/cloud-services/)、[App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/) 與 [API 管理服務](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)。
@@ -113,7 +113,7 @@ Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.mic
 
 ### <a name="considerations-for-scaling-when-multiple-rules-are-configured-in-a-profile"></a>當設定檔中設有多項規則時的調整注意事項
 
-有些情況可能需要您在設定檔中設定多項規則。 當設定多個規則時，服務會使用下列自動調整規則。
+有些情況可能需要您在設定檔中設定多項規則。 當設定多個規則時，自動調整引擎會使用下列自動調整規則。
 
 在相應放大時，自動*調整*會在符合任何規則時執行。
 對於「相應縮小」，自動調整會要求必須符合所有規則。
@@ -133,13 +133,13 @@ Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.mic
 反之，當 CPU 為 25%，記憶體為 51% 時，自動調整「不會」相應縮小。 若要相應縮小，CPU 必須達到 29%，而記憶體必須達到 49%。
 
 ### <a name="always-select-a-safe-default-instance-count"></a>請一律選取安全的預設執行個體計數
-預設執行個體計數十分重要，在沒有度量可用時，自動調整會依據其計數調整服務。 因此，請選取對您工作負載而言最安全的預設執行個體計數。
+預設實例計數很重要，因為當計量無法使用時，自動調整會將您的服務調整為該計數。 因此，請選取對您工作負載而言最安全的預設執行個體計數。
 
 ### <a name="configure-autoscale-notifications"></a>設定自動調整通知
 如果發生任何下列條件，自動調整規模將會張貼到活動記錄中：
 
-* 自動調整規模發出調整規模作業
-* 自動調整規模服務成功完成調整規模動作
+* 自動調整規模會發出延展作業。
+* 自動調整服務已成功完成調整規模動作。
 * 自動調整規模服務無法採取調整規模動作。
 * 自動調整服務無法使用度量決定規模。
 * 度量恢復使用 (復原)，可用以決定規模。
