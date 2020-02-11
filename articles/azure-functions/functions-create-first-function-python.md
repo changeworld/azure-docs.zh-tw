@@ -269,7 +269,7 @@ Functions in msdocs-azurefunctions-qs:
 
 由於您的函式會使用 HTTP 觸發程序，因此您在叫用函式時，可以在瀏覽器中對其 URL 提出 HTTP 要求，或使用 curl 之類的工具。 無論採用何種方式，`code` URL 參數都會是您向函式端點授與叫用權限的唯一函式金鑰。
 
-# <a name="browsertabbrowser"></a>[[瀏覽器]](#tab/browser)
+# <a name="browsertabbrowser"></a>[瀏覽器](#tab/browser)
 
 將發佈命令的輸出中顯示的完整**叫用 URL** 複製到瀏覽器網址列中 (請附加查詢參數 `&name=Azure`)。 瀏覽器應該會顯示與您在本機執行函式時類似的輸出。
 

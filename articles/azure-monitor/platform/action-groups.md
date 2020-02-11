@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 8/19/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: cc01145423d2961e32bf17313a2873633399d21a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
-ms.translationtype: HT
+ms.openlocfilehash: 01d3edb3de9e57fa7fa8db2ede863c2aa3e100ed
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901483"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030739"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 入口網站中建立和管理動作群組
 動作群組是 Azure 訂用帳戶擁有者定義的通知喜好設定集合。 Azure 監視器和服務健康狀態警示使用動作群組來通知使用者警示已被觸發。 根據使用者的需求而定，不同的警示可能使用相同的動作群組或不同的動作群組。 一個訂用帳戶中最多可設定 2,000 個動作群組。
@@ -30,7 +30,7 @@ ms.locfileid: "76901483"
 
 ## <a name="create-an-action-group-by-using-the-azure-portal"></a>使用 Azure 入口網站建立動作群組
 
-1. 在  [Azure 入口網站](https://portal.azure.com)中，搜尋並選取 **監視**]。 [**監視**] 窗格會將您所有的監視設定和資料合併成一個視圖。
+1. 在  [Azure 入口網站](https://portal.azure.com)中，搜尋並選取 **監視**。 [**監視**] 窗格會將您所有的監視設定和資料合併成一個視圖。
 
 1. 選取 [警示]，然後選取 [管理動作]。
 
@@ -62,7 +62,7 @@ ms.locfileid: "76901483"
 
 ## <a name="manage-your-action-groups"></a>管理您的動作群組
 
-建立動作群組之後，它會顯示在 [**監視**] 窗格的 [**動作群組**] 區段中。 選取您要管理的動作群組：
+建立動作群組之後，您可以從 [**監視**] 窗格中的 [**警示**] 登陸頁面選取 [**管理動作**]，以查看**動作**群組。 選取您要管理的動作群組：
 
 * 新增、編輯或移除動作。
 * 刪除動作群組。
@@ -103,7 +103,7 @@ ITSM 動作需要 ITSM 連線。 了解如何建立 [ITSM 連線](../../azure-mo
 
 您在動作群組中可能會有有限數目的 ITSM 動作。 
 
-### <a name="logic-app"></a>Logic 應用程式
+### <a name="logic-app"></a>邏輯應用程式
 動作群組中的邏輯應用程式動作數目可能有限。
 
 ### <a name="secure-webhook"></a>安全 Webhook
@@ -111,7 +111,7 @@ ITSM 動作需要 ITSM 連線。 了解如何建立 [ITSM 連線](../../azure-mo
 
 [動作群組] [Webhook] 動作可讓您利用 Azure Active Directory 來保護您的動作群組與受保護 Web API （Webhook 端點）之間的連線。 下面將說明利用這項功能的整體工作流程。 如需 Azure AD 應用程式和服務主體的總覽，請參閱[Microsoft 身分識別平臺（v2.0）總覽](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)。
 
-1. 為受保護的 Web API 建立 Azure AD 應用程式。 請參閱 https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview 。
+1. 為受保護的 Web API 建立 Azure AD 應用程式。 請參閱＜ https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview＞。
     - 將受保護的 API 設定為可由背景程式應用程式呼叫。
     
 1. 啟用 [動作群組] 以使用您的 Azure AD 應用程式。
@@ -197,7 +197,7 @@ Write-Host "My Azure AD Application's Roles"
 Write-Host $myApp.AppRoles
 ```
 
-### <a name="sms"></a>簡訊
+### <a name="sms"></a>sms
 如需其他重要資訊，請參閱[速率限制資訊](./../../azure-monitor/platform/alerts-rate-limiting.md)和[SMS 警示行為](../../azure-monitor/platform/alerts-sms-behavior.md)。
 
 動作群組中的 SMS 動作數目可能有限。  
