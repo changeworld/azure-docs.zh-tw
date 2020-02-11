@@ -38,5 +38,8 @@
     - name: 針對 Azure FarmBeats 進行疑難排解
       href: troubleshoot-azure-farmbeats.md
 - name: 參考
-  items: null
-  href: references-for-azure-farmbeats.md
+  items:
+    - name: 參考
+      href: references-for-azure-farmbeats.md
+    - name: REST API
+      href: rest-api-in-azure-farmbeats.md
