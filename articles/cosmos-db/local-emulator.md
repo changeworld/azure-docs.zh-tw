@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 07/26/2019
-ms.openlocfilehash: 3e51db98403b507c1c34ee455cfe218ea52c529b
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: ea4abada259c929f387b1477c127824ac6269319
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760567"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939149"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>使用 Azure Cosmos 模擬器進行本機開發和測試
 
@@ -236,7 +236,7 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 
 若要檢視選項清單，請在命令提示字元輸入 `Microsoft.Azure.Cosmos.Emulator.exe /?` 。
 
-|**選項** | **說明** | **命令**| **引數**|
+|**選項** | **描述** | **命令**| **引數**|
 |---|---|---|---|
 |[無引數] | 使用預設設定來啟動 Azure Cosmos 模擬器。 |Microsoft.Azure.Cosmos.Emulator.exe| |
 |[說明] |顯示支援的命令列引數清單。|Microsoft.Azure.Cosmos.Emulator.exe /? | |
@@ -291,7 +291,7 @@ ActivityId：12345678-1234-1234-1234-123456789abc」
 2. 刪除此資料夾 `%LOCALAPPDATA%\CosmosDBEmulator` 中的所有模擬器資料。
 3. 結束所有開啟的執行個體，方法是以滑鼠右鍵按一下系統匣上的 [Azure Cosmos DB 模擬器]  圖示，然後按一下 [結束]  。 結束所有執行個體可能需要數分鐘的時間。
 4. 安裝最新版的 [Azure Cosmos 模擬器](https://aka.ms/cosmosdb-emulator)。
-5. 啟動具有 PartitionCount 旗標的模擬器，方法是設定值 <= 250。 例如：`C:\Program Files\Azure Cosmos DB Emulator> Microsoft.Azure.Cosmos.Emulator.exe /PartitionCount=100` 。
+5. 啟動具有 PartitionCount 旗標的模擬器，方法是設定值 <= 250。 例如： `C:\Program Files\Azure Cosmos DB Emulator> Microsoft.Azure.Cosmos.Emulator.exe /PartitionCount=100` 。
 
 ## <a name="controlling-the-emulator"></a>控制模擬器
 
@@ -419,23 +419,7 @@ cd $env:LOCALAPPDATA\CosmosDBEmulator\bind-mount
 
     https://<emulator endpoint provided in response>/_explorer/index.html
 
-如果您在 Linux Docker 容器上執行 .NET 用戶端應用程式，並且在主機機器上執行 Azure Cosmos 模擬器，在此情況下，您無法從模擬器連線到 Azure Cosmos 帳戶。 因為應用程式不是在主機機器上執行，所以無法新增在 Linux 容器上註冊且符合模擬器端點的憑證。 
-
-因應措施是藉由傳遞 `HttpClientHandler` 執行個體，從用戶端應用程式停用伺服器的 SSL 憑證驗證，如下列 .Net 程式碼範例所示。 只有當您使用 `Microsoft.Azure.DocumentDB` Nuget 套件時，才適用此因應措施，`Microsoft.Azure.Cosmos` Nuget 套件不支援此方法：
- 
- ```csharp
-var httpHandler = new HttpClientHandler()
-{
-    ServerCertificateCustomValidationCallback = (req,cert,chain,errors) => true
-};
- 
-using (DocumentClient client = new DocumentClient(new Uri(strEndpoint), strKey, httpHandler))
-{
-    RunDatabaseDemo(client).GetAwaiter().GetResult();
-}
-```
-
-除了停用 SSL 憑證驗證之外，請務必使用 `/allownetworkaccess` 選項啟動模擬器，讓模擬器的端點可以從主機 IP 位址存取，而不是 `host.docker.internal` DNS。
+如果您在 Linux Docker 容器上執行 .NET 用戶端應用程式，並且在主機電腦上執行 Azure Cosmos 模擬器，請依照下一節中關於 Linux 的指示，將憑證匯入 Linux Docker 容器中。
 
 ## 在 Mac 或 Linux 上執行<a id="mac"></a>
 
@@ -447,47 +431,59 @@ using (DocumentClient client = new DocumentClient(new Uri(strEndpoint), strKey, 
 ipconfig.exe
 ```
 
-您需要在應用程式內變更 DocumentClient 物件的 URI，以使用 `ipconfig.exe` 所傳回的 IPv4 位址。 下一個步驟是在建構 DocumentClient 物件時，處理 CA 驗證。 為此您需要提供 HttpClientHandler 給 DocumentClient 建構函式，其中包含 ServerCertificateCustomValidationCallback 本身的實作。
+您必須在應用程式內變更作為端點的 URI，以使用 `ipconfig.exe` (而非 `localhost`) 所傳回的 IPv4 位址。
 
-以下是程式碼外觀的範例。
-
-```csharp
-using System;
-using Microsoft.Azure.Documents;
-using Microsoft.Azure.Documents.Client;
-using System.Net.Http;
-
-namespace emulator
-{
-    class Program
-    {
-        static async void Main(string[] args)
-        {
-            string strEndpoint = "https://10.135.16.197:8081/";  //IPv4 address from ipconfig.exe
-            string strKey = "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==";
-
-            //Work around the CA validation
-            var httpHandler = new HttpClientHandler()
-            {
-                ServerCertificateCustomValidationCallback = (req,cert,chain,errors) => true
-            };
-
-            //Pass http handler to document client
-            using (DocumentClient client = new DocumentClient(new Uri(strEndpoint), strKey, httpHandler))
-            {
-                Database database = await client.CreateDatabaseIfNotExistsAsync(new Database { Id = "myDatabase" });
-                Console.WriteLine($"Created Database: id - {database.Id} and selfLink - {database.SelfLink}");
-            }
-        }
-    }
-}
-```
-
-最後，在 Windows VM 內，使用下列選項從命令列啟動 Cosmos 模擬器。
+然後，在 Windows VM 內，使用下列選項從命令列啟動 Cosmos 模擬器。
 
 ```cmd
 Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
 ```
+
+最後，我們必須將模擬器 CA 憑證匯入 Linux 或 Mac 環境中。
+
+### <a name="linux"></a>Linux
+
+如果您使用 Linux，則 .NET 會在 OpenSSL 上轉送以執行驗證：
+
+1. [以 PFX 格式匯出憑證](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-ssl-certificate) (選擇匯出私密金鑰時，可以使用 PFX)。 
+
+1. 將該 PFX 檔案複製到您的 Linux 環境中。
+
+1. 將 PFX 檔案轉換為 CRT 檔案
+
+   ```bash
+   openssl pkcs12 -in YourPFX.pfx -clcerts -nokeys -out YourCTR.crt
+   ```
+
+1. 將 CRT 檔案複製到您的 Linux 發行版本中包含自訂憑證的資料夾。 其位置通常是在 Debian 發行版本的 `/usr/local/share/ca-certificates/` 上。
+
+   ```bash
+   cp YourCTR.crt /usr/local/share/ca-certificates/
+   ```
+
+1. 更新 CA 憑證，這會更新 `/etc/ssl/certs/` 資料夾。
+
+   ```bash
+   update-ca-certificates
+   ```
+
+### <a name="mac-os"></a>Mac OS
+
+如果您使用的是 Mac，請執行下列步驟：
+
+1. [以 PFX 格式匯出憑證](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-ssl-certificate) (選擇匯出私密金鑰時，可以使用 PFX)。
+
+1. 將該 PFX 檔案複製到您的 Mac 環境中。
+
+1. 開啟*金鑰鏈存取*應用程式，並匯入 PFX 檔案。
+
+1. 開啟憑證的清單，並找出名稱為 `localhost` 的憑證。
+
+1. 開啟該特定項目的捷徑功能表，選取 [取得項目]  ，然後在 [信任]   > [使用此憑證時]  選項底下，選取 [永遠信任]  。 
+
+   ![開啟該特定項目的捷徑功能表，選取 [取得項目]，然後在 [信任 - 使用此憑證時] 選項底下，選取 [永遠信任]](./media/local-emulator/mac-trust-certificate.png)
+
+執行這些步驟後，您的環境在連線至 `/AllowNetworkAccess` 所公開的 IP 位址時，將會信任模擬器所使用的憑證。
 
 ## <a name="troubleshooting"></a>疑難排解
 

@@ -46,7 +46,7 @@ Azure Pipelines 提供了一組完整且功能齊全的 CI/CD 自動化工具，
 
 以下是逐步解說。 
 1. 登入 Azure 入口網站並瀏覽至虛擬機器。 
-2. 在 VM 的左窗格中，瀏覽至 [持續傳遞] ****   功能表。 然後按一下 [設定] **** 。 
+2. 在 VM 的左窗格中，瀏覽至 [ **持續傳遞**]  功能表。 然後按一下 [ **設定**]。 
    ![AzDevOps_configure](media/tutorial-devops-azure-pipelines-classic/azdevops-configure.png) 
 3. 在 [設定] 面板中，按一下 [Azure DevOps 組織] 以選取現有帳戶，或建立一個新帳戶。 然後選取要在其下設定管線的專案。  
    ![AzDevOps_project](media/tutorial-devops-azure-pipelines-classic/azdevops-project.png) 

@@ -98,7 +98,7 @@ ms.locfileid: "75560458"
     > [!NOTE] 
     > [回覆 URL] 不是真實的值。 請使用實際的「回覆 URL」來更新此值。 請連絡 [Convene 用戶端支援小組](mailto:support@convene.me.uk)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
-1. Convene 應用程式需要特定格式的 SAML 判斷提示，您需要將自訂屬性對應加入您的 SAML 權杖屬性組態。 下列螢幕擷取畫面顯示預設屬性清單，其中的 **nameidentifier** 與 **user.userprincipalname** 相對應。 Convene 應用程式要求 **nameidentifier** 需與 **user.mail** 相對應，因此您必須按一下 [編輯] ****  圖示以編輯屬性對應，並變更屬性對應。
+1. Convene 應用程式需要特定格式的 SAML 判斷提示，您需要將自訂屬性對應加入您的 SAML 權杖屬性組態。 下列螢幕擷取畫面顯示預設屬性清單，其中的 **nameidentifier** 與 **user.userprincipalname** 相對應。 Convene 應用程式要求 **nameidentifier** 需與 **user.mail** 相對應，因此您必須按一下 [ **編輯**] 圖示以編輯屬性對應，並變更屬性對應。
 
     ![image](common/edit-attribute.png)
 

@@ -26,4 +26,4 @@ ms.locfileid: "76837556"
 | 符合保留資格 | 否  | 否  | 否  | 否  | 否  | 否  | 否  | 否  | 是，最多一年 | 是，最多一年 | 是，最多一年 | 是，最多一年 | 是，最多一年 | 是，最多一年 |
 
 \*表示目前處於預覽中的磁碟大小，如需區域可用性的資訊，請參閱[新磁碟大小：受控和非受控](https://docs.microsoft.com/azure/virtual-machines/linux/faq-for-disks#new-disk-sizes-managed-and-unmanaged)。  
-\*\**表示目前處於預覽狀態的功能，如需詳細資訊，請參閱[磁碟高載](https://docs.microsoft.com/azure/virtual-machines/linux/disk-bursting#regional-availability)。
+\*\*表示目前處於預覽狀態的功能，如需詳細資訊，請參閱[磁碟高載](https://docs.microsoft.com/azure/virtual-machines/linux/disk-bursting#regional-availability)。
