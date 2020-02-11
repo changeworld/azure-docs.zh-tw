@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: 46764fdae89d5af4c9dedf4037d07dc48d1cda83
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 5e969ed4f525d0b3d17339b9f9a6111ad81b0125
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703685"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931625"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance-with-advanced-configuration-options"></a>教學課程：建立並設定包含進階設定選項的 Azure Active Directory Domain Services 執行個體
 
@@ -32,7 +32,7 @@ Azure Active Directory Domain Services (Azure AD DS) 提供受控網域服務，
 
 如果您沒有 Azure 訂用帳戶，請先[建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)再開始。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成此教學課程，您需要下列資源和權限：
 
@@ -94,6 +94,9 @@ Azure Active Directory Domain Services (Azure AD DS) 提供受控網域服務，
 
     您不需要針對要跨區域分散的 Azure AD DS 進行設定。 Azure 平台會自動處理在區域之間分散資源。 如需詳細資訊及查看區域可用性，請參閱[什麼是 Azure 中的可用性區域？][availability-zones]
 
+1. **SKU** 將決定效能、備份頻率，以及您可以建立的樹系信任數目上限。 如果您的商務需求或要求條件有所變更，您可以在受控網域建立後變更 SKU。 如需詳細資訊，請參閱 [Azure AD DS SKU 概念][concepts-sku]。
+
+    在本教學課程中，請選取*標準* SKU。
 1. *樹系*是 Active Directory Domain Services 用來將一或多個網域分組的邏輯建構。 根據預設，Azure AD DS 受控網域會建立為*使用者*樹系。 這種類型的樹系會同步 Azure AD 中的所有物件，包括在內部部署 AD DS 環境中建立的任何使用者帳戶。 *資源*樹系只會同步直接在 Azure AD 中建立的使用者和群組。 資源樹系目前為預覽狀態。 如需*資源*樹系的詳細資訊，包括您使用某一樹系的原因，以及如何建立與內部部署 AD DS 網域之間的樹系信任，請參閱 [Azure AD DS 資源樹系概觀][resource-forests]。
 
     在本教學課程中，請選擇建立*使用者*樹系。
@@ -102,9 +105,9 @@ Azure Active Directory Domain Services (Azure AD DS) 提供受控網域服務，
 
 1. 若要手動設定其他選項，請選擇 [下一步 - 網路]  。 否則，請選取 [檢閱 + 建立]  以接受預設的設定選項，然後跳到[部署您受控網域](#deploy-the-managed-domain)的區段。 當您選擇此建立選項時，系統會設定下列預設值：
 
-* 建立使用 10.0.1.0/24  IP 位址範圍且名為 aadds-vnet  的虛擬網路。
-* 建立使用 10.0.1.0/24  IP 位址範圍且名為 aadds-subnet  的子網路。
-* 將 Azure AD 中的「所有」  使用者同步到 Azure AD DS 受控網域。
+    * 建立使用 10.0.1.0/24  IP 位址範圍且名為 aadds-vnet  的虛擬網路。
+    * 建立使用 10.0.1.0/24  IP 位址範圍且名為 aadds-subnet  的子網路。
+    * 將 Azure AD 中的「所有」  使用者同步到 Azure AD DS 受控網域。
 
 ## <a name="create-and-configure-the-virtual-network"></a>建立和設定虛擬網路
 
@@ -125,7 +128,7 @@ Azure Active Directory Domain Services (Azure AD DS) 提供受控網域服務，
     1. 如果您選擇建立虛擬網路，請輸入虛擬網路的名稱 (例如 myVnet  )，然後提供位址範圍，例如 10.0.1.0/24  。
     1. 建立具有明確名稱的專用子網路，例如 DomainServices  。 提供位址範圍，例如 10.0.1.0/24  。
 
-    ![建立要與 Azure AD Domain Services 搭配使用的虛擬網路及子網路](./media/tutorial-create-instance-advanced/create-vnet.png)
+    [![](./media/tutorial-create-instance-advanced/create-vnet.png "Create a virtual network and subnet for use with Azure AD Domain Services")](./media/tutorial-create-instance-advanced/create-vnet-expanded.png#lightbox)
 
     請務必挑選私人 IP 位址範圍內的位址範圍。 不是您所擁有的 IP 位址範圍位於公用位址空間中會導致 Azure AD DS 內發生錯誤。
 
@@ -248,5 +251,6 @@ Azure AD 租用戶必須先[設定為可進行自助式密碼重設][configure-s
 [password-hash-sync-process]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md#password-hash-sync-process-for-azure-ad-domain-services
 [resource-forests]: concepts-resource-forest.md
 [availability-zones]: ../availability-zones/az-overview.md
+[concepts-sku]: administration-concepts.md#azure-ad-ds-skus
 
 <!-- EXTERNAL LINKS -->

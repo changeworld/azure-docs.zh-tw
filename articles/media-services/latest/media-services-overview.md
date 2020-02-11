@@ -14,15 +14,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 09/17/2019
+ms.date: 02/03/2020
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: c17f1094e562960e851204b40281f5b04c1d40ce
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 559050d11b6b85a9842c679b94e0e5b2fd5dd0f8
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186067"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987708"
 ---
 # <a name="azure-media-services-v3-overview"></a>Azure 媒體服務 v3 概觀
 
@@ -32,6 +32,14 @@ Azure 媒體服務是雲端式平台，可讓您建置的解決方案擁有廣�
 
 > [!NOTE]
 > 目前您無法使用 Azure 入口網站管理 v3 資源。 請使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或其中一個支援的 [SDK](media-services-apis-overview.md#sdks)。
+
+## <a name="compliance-privacy-and-security"></a>合規性、隱私權和安全性
+ 
+重要提醒是，在使用 Azure 媒體服務時，您必須遵守所有適用的法律，且您不得以違反他人權利或可能會對他人有害的方式使用 Azure 媒體服務或任何其他 Azure 服務。 
+
+將任何影片/影像 (包括任何生物特徵辨識資料) 上傳至媒體服務以進行處理和儲存之前，您必須 (1) 擁有影片/影像的所有適當權限；(2) 向影片中的個人徵得所有必要的同意，允許在媒體服務中使用和儲存其生物特徵辨識資料。 
+
+如需了解合規性、隱私權，以及 Microsoft 如何保護您在 Azure 媒體服務中的資料，請造訪 Azure [信任中心](https://www.microsoft.com/trust-center/?rtc=1)。 如需 Microsoft 的隱私權義務和您的資料處理方式，請參閱 Microsoft 的 [隱私權聲明](https://privacy.microsoft.com/PrivacyStatement)、[線上服務條款](https://www.microsoft.com/licensing/product-licensing/products) ("OST") 和 [資料處理增補](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA")。 客戶資料保留和刪除的相關資訊可在 DPA 中取得。 一旦使用 Azure 媒體服務，即表示您同意受到 OST、DPA 和隱私權聲明的規範。
 
 ## <a name="what-can-i-do-with-media-services"></a>我可以如何運用媒體服務？
 
@@ -80,7 +88,7 @@ Azure 媒體服務是雲端式平台，可讓您建置的解決方案擁有廣�
 
 使用[此範例瀏覽器](https://docs.microsoft.com/samples/browse/?products=azure-media-services)瀏覽 Azure 媒體服務程式碼範例。
 
-### <a name="how-to-guides"></a>使用說明指南
+### <a name="how-to-guides"></a>操作指南
 
 操作指南中包含示範如何完成工作的程式碼範例。 在本節中，您會發現許多範例。 以下提供其中一些範例：
 

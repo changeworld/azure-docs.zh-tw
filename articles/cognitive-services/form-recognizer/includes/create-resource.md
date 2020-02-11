@@ -5,14 +5,14 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/12/2019
 ms.author: pafarley
-ms.openlocfilehash: 14740e780f6143f19f843891c16b25df761d0b4f
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0a4faad8bfe92a5389e0ee440aa3ccc404535955
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931263"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118081"
 ---
-當您獲得使用表單辨識器的存取權時，您將會收到「歡迎使用」電子郵件，內含數個連結和資源。 請使用該訊息中的 [Azure 入口網站] 連結開啟 Azure 入口網站，並建立表單辨識器資源。 在 [建立]  窗格中，提供下列資訊：
+移至 Azure 入口網站，並[建立新的表單辨識器資源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer)。 在 [建立]  窗格中，提供下列資訊：
 
 |    |    |
 |--|--|

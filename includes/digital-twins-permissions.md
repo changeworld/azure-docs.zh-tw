@@ -7,14 +7,14 @@ author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 01/23/2020
+ms.date: 02/03/2020
 ms.custom: include file
-ms.openlocfilehash: a1576e4a97af5de0b936c662de636aae542a19b5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: cfe3eb4c0ac1378b7c519b3b34094945612d8508
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76748788"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029060"
 ---
 >[!NOTE]
 >本節提供 [Azure AD 應用程式註冊](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)的指示。
@@ -27,24 +27,40 @@ ms.locfileid: "76748788"
 
     [![選取 [新增註冊] 按鈕](./media/digital-twins-permissions/aad-app-register.png)](./media/digital-twins-permissions/aad-app-register.png#lightbox)
 
-1. 在 [名稱]  方塊中為此應用程式註冊提供易記的名稱。 在 [重新導向 URI \(選擇性\)]  區段下方，選擇左側下拉式清單中的 [公用用戶端/原生 \(行動和桌面\)]  ，然後在右側的文字方塊中輸入 `https://microsoft.com`。 選取 [註冊]  。
+1. 在 [名稱]  方塊中為此應用程式註冊提供易記的名稱。 
+
+    1. 在 [重新導向 URI (選擇性)]  區段底下的文字方塊中，輸入 `https://microsoft.com`。     
+
+    1. 確認 Azure Active Directory 應用程式支援哪些帳戶和租用戶。
+
+    1. 選取 [註冊]  。
 
     [![建立窗格](./media/digital-twins-permissions/aad-app-reg-create.png)](./media/digital-twins-permissions/aad-app-reg-create.png#lightbox)
 
-1. 若要確定[應用程式註冊為**公用應用程式**](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration)，請開啟應用程式註冊的 [驗證]  窗格，並在該窗格中向下捲動。 在 [預設用戶端類型]  區段中，針對 [將應用程式視為公用用戶端]  選擇 [是]  ，然後點擊 [儲存]  。
+1. [驗證]  刀鋒視窗會指定重要的驗證組態設定。 
+
+    1. 選取 [+ 新增平台]  ，以新增 [重新導向 URI]  並設定 [存取權杖]  。
+
+    1. 選取 [是]  ，將應用程式指定為**公用用戶端**。
+
+    1. 確認 Azure Active Directory 應用程式支援哪些帳戶和租用戶。
+
+    [![公用用戶端組態設定](./media/digital-twins-permissions/aad-configure-public-client.png)](./media/digital-twins-permissions/aad-configure-public-client.png#lightbox)
+
+1. 選取適當的平台後，在使用者介面右側的側邊面板中，設定您的 [重新導向 URI]  和 [存取權杖]  。
 
     1. [重新導向 URI]  必須符合驗證要求所提供的位址：
 
-        * 對於裝載在本機開發環境中的應用程式，請選取 [公用用戶端 (行動和傳統型)]  。 請務必將 [預設用戶端類型]  設定為 [是]。
+        * 對於裝載在本機開發環境中的應用程式，請選取 [公用用戶端 (行動和傳統型)]  。 請務必將 [公用用戶端]  設定為 [是]  。
         * 對於裝載在 Azure App Service 上的單頁應用程式，請選取 [Web]  。
 
-        選取 [公開用戶端 (行動裝置及桌上型電腦)]  並輸入 `http://localhost:8080/`。
+    1. 判斷 [登出 URL]  是否適當。
 
-        [![設定重新導向 URI](./media/digital-twins-permissions/aad-app-configure-redirect-uris.png)](./media/digital-twins-permissions/aad-app-configure-redirect-uris.png#lightbox)
+    1. 勾選 [存取權杖]  或 [識別碼權杖]  ，以啟用隱含授與流程。
+                
+    [![設定重新導向 URI](./media/digital-twins-permissions/aad-app-configure-redirect-uris.png)](./media/digital-twins-permissions/aad-app-configure-redirect-uris.png#lightbox)
 
-    1. 檢查 [存取權杖]  ，以在您資源的 [資訊清單]  JSON 中將 **oauth2AllowImplicitFlow** 設定為 `true`。
-
-        [![公用用戶端組態設定](./media/digital-twins-permissions/aad-configure-public-client.png)](./media/digital-twins-permissions/aad-configure-public-client.png#lightbox)
+    按一下 [設定]  ，然後按 [儲存]  。
 
 1.  開啟已註冊應用程式的 [概觀]  窗格，並將下列實體的值複製到暫存檔。 您會使用這些值來設定後續章節的應用程式範例。
 

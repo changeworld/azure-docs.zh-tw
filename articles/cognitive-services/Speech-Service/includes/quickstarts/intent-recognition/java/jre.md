@@ -1,28 +1,24 @@
 ---
-title: 快速入門：辨識語音、意圖和實體，Java - 語音服務
-titleSuffix: Azure Cognitive Services
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.date: 01/02/2020
+ms.date: 01/27/2020
 ms.topic: include
-ms.author: erhopf
+ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: c5d70bba32df5940d929482e37317d40bd496676
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: a6bf8bb558e82fefbbe6ff306f628a4b449a4e83
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76761395"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900394"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
 開始之前：
 
-* 如果這是您的第一個 Java (JRE) 專案，請使用本指南<a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md?tabs=jre" target="_blank">建立空的範例專案</a>。
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=jre" target="_blank">為您的開發環境安裝語音 SDK</a>。
+* 如果這是您的第一個 Java (JRE) 專案，請使用本指南<a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md?tabs=jre" target="_blank">建立空的範例專案<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=jre" target="_blank">為您的開發環境安裝語音 SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>建立意圖辨識的 LUIS 應用程式
 
@@ -96,7 +92,7 @@ ms.locfileid: "76761395"
 
 ## <a name="check-your-code"></a>檢查您的程式碼
 
-此時，您的程式碼應會如下所示：  
+此時，您的程式碼應會如下所示：
 
 > [!NOTE]
 > 我們已在此版本中新增一些註解。
@@ -105,7 +101,7 @@ ms.locfileid: "76761395"
 
 ## <a name="build-and-run-your-app"></a>建置並執行您的應用程式
 
-按 F11 鍵，或選取 [執行]   > [偵錯]  。
+按 <kbd>F11</kbd> 鍵，或選取 [執行]   > [偵錯]  。
 系統將會辨識接下來 15 秒來自您麥克風的語音輸入，並記錄在主控台視窗中。
 
 ## <a name="next-steps"></a>後續步驟

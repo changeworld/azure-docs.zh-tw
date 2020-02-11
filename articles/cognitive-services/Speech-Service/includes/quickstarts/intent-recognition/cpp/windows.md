@@ -1,28 +1,24 @@
 ---
-title: 快速入門：辨識語音、意圖和實體，C++ - 語音服務
-titleSuffix: Azure Cognitive Services
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.date: 01/02/2020
+ms.date: 01/27/2020
 ms.topic: include
-ms.author: erhopf
+ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: b141fcdb2aacc8654999d023c4174c7eb9bc177f
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: a7245d97c4043a5e4b4e1555e899d3301fc36f3c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76761446"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900329"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
 開始之前：
 
-* 如果這是您的第一個 C++ 專案，請使用本指南<a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md?tabs=windows" target="_blank">建立空的範例專案</a>。
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=windows" target="_blank">為您的開發環境安裝語音 SDK</a>。
+* 如果這是您的第一個 C++ 專案，請使用本指南<a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md?tabs=windows" target="_blank">建立空的範例專案<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=windows" target="_blank">為您的開發環境安裝語音 SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>建立意圖辨識的 LUIS 應用程式
 
@@ -97,7 +93,7 @@ ms.locfileid: "76761446"
 
 ## <a name="check-your-code"></a>檢查您的程式碼
 
-此時，您的程式碼應會如下所示：  
+此時，您的程式碼應會如下所示：
 
 > [!NOTE]
 > 我們已在此版本中新增一些註解。
@@ -109,7 +105,7 @@ ms.locfileid: "76761446"
 現在您已準備好使用語音服務來建立應用程式，並測試我們的語音辨識。
 
 1. **編譯程式碼** - 從 Visual Studio 的功能表列中，選擇 [建置]   > [建置解決方案]  。
-2. **啟動應用程式** - 從功能表列中，選擇 [偵錯]   > [開始偵錯]  ，或按 **F5**。
+2. **啟動應用程式** - 從功能表列中，選擇 [偵錯]   > [開始偵錯]  ，或按 <kbd>F5</kbd>。
 3. **開始辨識** - 它會提示您說英文片語。 您的語音會傳送至語音服務、轉譯為文字，並在主控台中轉譯。
 
 ## <a name="next-steps"></a>後續步驟

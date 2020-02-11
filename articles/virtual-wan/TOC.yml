@@ -42,9 +42,9 @@
       href: openvpn-azure-ad-tenant.md
     - name: 啟用使用者 VPM 的 Multi-Factor Authentication (MFA)
       href: openvpn-azure-ad-mfa.md
-    - name: 設定適用於使用者 VPN 的 Azure AD 驗證 (預覽)
+    - name: 設定適用於使用者 VPN 的 Azure AD 驗證
       href: virtual-wan-point-to-site-azure-ad.md
-    - name: 設定適用於使用者 VPN 的多應用程式 Azure AD 驗證 (預覽)
+    - name: 設定適用於使用者 VPN 的多應用程式 Azure AD 驗證
       href: openvpn-azure-ad-tenant-multi-app.md
     - name: 設定自動化 (虛擬 WAN 夥伴)
       href: virtual-wan-configure-automation-providers.md

@@ -54,7 +54,7 @@
               href: virtual-machines-windows-sql-automated-patching.md
             - name: 設定 Azure Key Vault 整合
               href: virtual-machines-windows-ps-sql-keyvault.md
-- name: 使用說明指南
+- name: 操作指南
   items:
     - name: 建立 SQL VM
       items:
@@ -79,7 +79,7 @@
           href: virtual-machines-windows-sql-change-edition.md
         - name: 備份和還原的 Azure 儲存體
           href: virtual-machines-windows-use-storage-sql-server-backup-restore.md
-    - name: 移轉
+    - name: 遷移
       items:
         - name: SQL Server 資料庫到 VM
           href: virtual-machines-windows-migrate-sql.md
@@ -97,9 +97,11 @@
               href: virtual-machines-windows-sql-availability-group-quickstart-template.md
             - name: 多個區域
               href: virtual-machines-windows-portal-sql-availability-group-dr.md
+            - name: 網域獨立 (工作群組)
+              href: virtual-machines-windows-sql-workgroup-availability-group.md
             - name: 手動設定
               items:
-                - name: 必要條件
+                - name: Prerequisites
                   href: virtual-machines-windows-portal-sql-availability-group-prereq.md
                 - name: 教學課程
                   href: virtual-machines-windows-portal-sql-availability-group-tutorial.md
@@ -129,9 +131,9 @@
   items:
     - name: 常見問題集
       href: virtual-machines-windows-sql-server-iaas-faq.md
-    - name: 價格
+    - name: 定價
       href: virtual-machines-windows-sql-server-pricing-guidance.md
-    - name: SQL Server 資料工具 (SSDT)
+    - name: SQL Server Data Tools (SSDT)
       href: 'https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt'
     - name: SQL Server Management Studio (SSMS)
       href: 'https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms'

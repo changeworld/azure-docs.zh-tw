@@ -3,18 +3,18 @@ title: 教學課程：尋找前往位置的路線 | Microsoft Azure 地圖服務
 description: 本教學課程會示範如何使用 Microsoft Azure 地圖服務的路線服務，在地圖上呈現如何前往某個位置 (景點) 的路線。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 11/12/2019
+ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 7f13e5342e880a9ed5e2cb35ebaf558a1641618b
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 3fedb045773cb975d37e2d866862e7863a6232e3
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910844"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989632"
 ---
 # <a name="tutorial-route-to-a-point-of-interest-using-azure-maps"></a>教學課程：使用 Azure 地圖服務的景點路線
 
@@ -27,7 +27,7 @@ ms.locfileid: "75910844"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-在繼續作業之前，請依照[建立帳戶](quick-demo-map-app.md#create-an-account-with-azure-maps)中的指示，建立使用 S1 定價層的 Azure 地圖服務帳戶訂用帳戶，並依照[取得主要金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步驟取得適用於您的帳戶的主要金鑰。 如需 Azure 地圖服務中驗證的詳細資訊，請參閱[管理 Azure 地圖服務中的驗證](how-to-manage-authentication.md)。
+在繼續作業之前，依照[建立帳戶](quick-demo-map-app.md#create-an-account-with-azure-maps)中的指示，您需要 S1 定價層的訂用帳戶。 請依照[取得主要金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步驟取得帳戶的主要金鑰。 如需 Azure 地圖服務中驗證的詳細資訊，請參閱[管理 Azure 地圖服務中的驗證](how-to-manage-authentication.md)。
 
 <a id="getcoordinates"></a>
 
@@ -139,7 +139,7 @@ ms.locfileid: "75910844"
     });
     ```
     
-    在地圖 `ready` 事件處理常式中，會建立資料來源以儲存路線以及起點和終點。 系統會建立線條圖層並將其附加至資料來源，以定義呈現路線的方式。 路線將呈現為寬度為 5 像素的鮮明藍色，並採用圓角的線條聯合和線蓋。 將圖層新增至地圖時，會傳入值為 `'labels'` 的第二個參數，而指定要將此圖層呈現在地圖標籤下方。 這樣可以確保路線不會遮住道路標籤。 系統會建立符號圖層，並將其附加至資料來源。 此圖層會指定起點和終點的呈現方式，而此案例中已新增運算式，用以從每個點物件的屬性中擷取圖示影像和文字標籤資訊。 
+    在地圖 `ready` 事件處理常式中，會建立資料來源以儲存路線以及起點和終點。 系統會建立線條圖層並將其附加至資料來源，以定義呈現路線的方式。 路線會呈現鮮明的藍色。 其寬度為五個像素，並採用圓角的線條聯結和線蓋。 將圖層新增至地圖時，會傳入值為 `'labels'` 的第二個參數，而指定要將此圖層呈現在地圖標籤下方。 這樣可以確保路線不會遮住道路標籤。 系統會建立符號圖層，並將其附加至資料來源。 此圖層會指定起點和終點的呈現方式。 此案例中已新增運算式，用以從每個點物件的屬性中擷取圖示影像和文字標籤資訊。 
     
 2. 在此教學課程中，將起點設在 Microsoft，並將終點設在西雅圖的加油站。 在地圖 `ready` 事件處理常式中，新增下列程式碼。
 
@@ -164,7 +164,7 @@ ms.locfileid: "75910844"
     });
     ```
 
-    此程式碼會建立兩個 [GeoJSON 點物件](https://en.wikipedia.org/wiki/GeoJSON)以代表路線的起點和終點，且會為資料來源加上點。 `title` 和 `icon` 屬性會新增至每個點。 最後一個區塊會使用起點和終點的經緯度資訊，以地圖 [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) 屬性設定相機檢視。
+    此程式碼會建立兩個 [GeoJSON 點物件](https://en.wikipedia.org/wiki/GeoJSON)以代表路線的起點和終點，且會為資料來源加上點。 `title` 和 `icon` 屬性會新增至每個點。 最後一個區塊會使用起點和終點的經緯度，以地圖 [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) 屬性設定相機檢視。
 
 3. 儲存 **MapRoute.html** 檔案並重新整理瀏覽器。 現在地圖會以西雅圖作為中心，而且您會看到以藍色圖釘標示的起點，和以圓形藍色圖釘標示的終點。
 
@@ -174,9 +174,9 @@ ms.locfileid: "75910844"
 
 ## <a name="get-directions"></a>取得指示
 
-本節說明如何使用 Azure 地圖服務的路線規劃服務 API，尋找從給定起點到終點的路線。 路線規劃服務會提供 API 來規劃兩個位置之間「最快速」  、「最短」  、「最環保」  或「驚心動魄」  的路線。 它也可讓使用者使用 Azure 廣泛的歷史路況資料庫，並預測任何日期和時間的路線時間，以規劃日後的路線。 如需詳細資訊，請參閱[取得路線指示](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)。 以下所有功能都應該新增至**地圖備妥 eventListener 內**，以確保它們會在地圖資源可供存取之後載入。
+本節說明如何使用 Azure 地圖服務的路線規劃服務 API。 路線規劃服務 API 會尋找從給定起點到終點的路線。 此服務中有相關 API 可用來規劃兩個位置之間「最快速」  、「最短」  、「最環保」  或「驚心動魄」  的路線。 此服務也可讓使用者使用 Azure 廣泛的歷史路況資料庫來規劃日後的路線。 使用者可以查看任何所選日期和時間的路線時間預測。 如需詳細資訊，請參閱[取得路線指示](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)。 以下所有功能都應該新增至**地圖備妥 eventListener 內**，以確保它們會在地圖資源可供存取之後載入。
 
-1. 在 GetMap 函式中，將下列內容新增至 Javascript 程式碼。
+1. 在 GetMap 函式中，將下列內容新增至 JavaScript 程式碼。
 
     ```JavaScript
     // Use SubscriptionKeyCredential with a subscription key

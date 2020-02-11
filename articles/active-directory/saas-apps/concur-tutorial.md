@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0cfe569fde8f290c9272520630c2e903e770f223
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 6828db6bcb4c7e68d508acc249d9a82024083a00
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293703"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983579"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-concur"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Concur 整合
 
@@ -90,7 +90,7 @@ ms.locfileid: "76293703"
     > [!NOTE]
     > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [Concur 用戶端支援小組](https://www.concur.co.in/contact)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
-4. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 [同盟中繼資料 XML]  ，然後選取 [下載]  來下載憑證，並將其儲存在電腦上。
+4. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 [同盟中繼資料 XML]  ，然後選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -156,5 +156,3 @@ ms.locfileid: "76293703"
 - [嘗試 Concur 搭配 Azure AD](https://aad.portal.azure.com)
 
 - [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [如何使用進階可見性和控制項保護 Concur](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

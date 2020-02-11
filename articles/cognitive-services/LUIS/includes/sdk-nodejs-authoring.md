@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 01/23/2020
 ms.author: diberry
-ms.openlocfilehash: 58ee74f7b01738e67f9fddd39eb4eee59cdb65b6
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: e4bba00d6506684a3baf345806bdaa340f6970ca
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774200"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76909161"
 ---
 使用適用於 Node.js 的 Language Understanding (LUIS) 撰寫用戶端程式庫可以：
 
@@ -189,7 +189,7 @@ LUIS 應用程式模型中的主要物件為意圖。 意圖會與使用者語�
 
 ## <a name="delete-a-language-understanding-app"></a>刪除 Language Understanding 應用程式
 
-使用 [app.deleteMethod](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/apps?view=azure-node-latest#deletemethod-string--models-appsdeletemethodoptionalparams-) 方法來發佈 LUIS 應用程式。 這會刪除目前的應用程式。
+使用 [app.deleteMethod](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/apps?view=azure-node-latest#deletemethod-string--models-appsdeletemethodoptionalparams-) 方法來刪除 LUIS 應用程式。 這會刪除目前的應用程式。
 
 [!code-javascript[Publish LUIS client app](~/cognitive-services-quickstart-code/javascript/LUIS/luis_authoring_quickstart.js?name=AuthoringDeleteApp&highlight=2)]
 

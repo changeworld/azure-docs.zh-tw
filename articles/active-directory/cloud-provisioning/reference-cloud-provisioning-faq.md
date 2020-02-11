@@ -11,12 +11,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc3c4a943f24ba1f987aa1daf513b9e05ada65a7
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: e2067bea25dae05c496c81929ae65d00565bf4f1
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76309994"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77020755"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect 常見問題集
 
@@ -31,6 +31,10 @@ ms.locfileid: "76309994"
 **問：第一次執行時發生密碼雜湊同步失敗的狀況。原因為何？**
 
 這是預期行為。 失敗的原因是使用者物件不存在於 Azure AD 中。 使用者佈建到 Azure AD 後，應該會接著執行密碼雜湊的佈建。 請等候幾次執行，並確認密碼雜湊同步作業不再發生錯誤。
+
+**問：如果 Active Directory 執行個體具有雲端佈建不支援的屬性 (例如目錄延伸模組)，會發生什麼事？**
+
+雲端佈建將會執行及佈建支援的屬性。 不支援的屬性將不會佈建到 Azure AD。 請參閱 Active Directory 中的目錄延伸模組，並確定您不需要讓這些屬性流向 Azure AD。 如果需要一個或多個屬性，請考慮使用 Azure AD Connect 同步，或將所需的資訊移至其中一個支援的屬性 (例如，延伸模組屬性 1-15)。
 
 **問：Azure AD Connect 同步與雲端佈建之間有何差異？**
 

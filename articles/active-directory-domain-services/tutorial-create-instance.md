@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 01/15/2020
 ms.author: iainfou
-ms.openlocfilehash: ef203eec1398e9f23fb162845b9d570316083ecf
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 8905f2a0a306ec4c9c6e19479c6adb96a6ed39ca
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703701"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931285"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>教學課程：建立並設定 Azure Active Directory Domain Services 執行個體
 
@@ -31,7 +31,7 @@ Azure Active Directory Domain Services (Azure AD DS) 提供受控網域服務，
 
 如果您沒有 Azure 訂用帳戶，請先[建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)再開始。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成此教學課程，您需要下列資源和權限：
 
@@ -93,6 +93,9 @@ Azure Active Directory Domain Services (Azure AD DS) 提供受控網域服務，
 
     您不需要針對要跨區域分散的 Azure AD DS 進行設定。 Azure 平台會自動處理在區域之間分散資源。 如需詳細資訊及查看區域可用性，請參閱[什麼是 Azure 中的可用性區域？][availability-zones]
 
+1. **SKU** 將決定效能、備份頻率，以及您可以建立的樹系信任數目上限。 如果您的商務需求或要求條件有所變更，您可以在受控網域建立後變更 SKU。 如需詳細資訊，請參閱 [Azure AD DS SKU 概念][concepts-sku]。
+
+    在本教學課程中，請選取*標準* SKU。
 1. *樹系*是 Active Directory Domain Services 用來將一或多個網域分組的邏輯建構。 根據預設，Azure AD DS 受控網域會建立為*使用者*樹系。 這種類型的樹系會同步 Azure AD 中的所有物件，包括在內部部署 AD DS 環境中建立的任何使用者帳戶。 *資源*樹系只會同步直接在 Azure AD 中建立的使用者和群組。 資源樹系目前為預覽狀態。 如需*資源*樹系的詳細資訊，包括您使用某一樹系的原因，以及如何建立與內部部署 AD DS 網域之間的樹系信任，請參閱 [Azure AD DS 資源樹系概觀][resource-forests]。
 
     在本教學課程中，請選擇建立*使用者*樹系。
@@ -105,7 +108,7 @@ Azure Active Directory Domain Services (Azure AD DS) 提供受控網域服務，
 * 建立使用 10.0.1.0/24  IP 位址範圍且名為 aadds-subnet  的子網路。
 * 將 Azure AD 中的「所有」  使用者同步到 Azure AD DS 受控網域。
 
-1. 選取 [檢閱 + 建立]  以接受這些預設的設定選項。
+選取 [檢閱 + 建立]  以接受這些預設的設定選項。
 
 ## <a name="deploy-the-managed-domain"></a>部署受控網域
 
@@ -200,6 +203,7 @@ Azure AD 租用戶必須先[設定為可進行自助式密碼重設][configure-s
 [skus]: overview.md
 [resource-forests]: concepts-resource-forest.md
 [availability-zones]: ../availability-zones/az-overview.md
+[concepts-sku]: administration-concepts.md#azure-ad-ds-skus
 
 <!-- EXTERNAL LINKS -->
 [naming-prefix]: /windows-server/identity/ad-ds/plan/selecting-the-forest-root-domain#selecting-a-prefix

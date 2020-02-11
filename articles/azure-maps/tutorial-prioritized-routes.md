@@ -3,22 +3,22 @@ title: 教學課程：依行進模式尋找多條路線 | Microsoft Azure 地圖
 description: 在本教學課程中，您將了解如何使用 Microsoft Azure 地圖服務尋找不同行進模式的路線。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 11/12/2019
+ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 258572d4451be6d9a1090c032467e85889148d14
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 73cc2ff49653c91d635d52b79a92d1974bfd895b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910857"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989649"
 ---
 # <a name="tutorial-find-routes-for-different-modes-of-travel-using-azure-maps"></a>教學課程：使用 Azure 地圖服務尋找不同行進模式的路線
 
-本教學課程說明如何使用 Azure 地圖服務帳戶和路線規劃服務來尋找景點路線 (依行進模式設定優先順序)。 您會在地圖上顯示兩條不同的路線，一條是汽車專用，一條則是可能會因為載送貨物的高度、重量或危險性而導致路線受限的卡車專用。 在本教學課程中，您會了解如何：
+本教學課程說明如何使用 Azure 地圖服務帳戶和路線規劃服務。 路線規劃服務可尋找景點的路線 (依行進模式設定優先順序)。 您可以在地圖上顯示兩個不同的路線，一個用於車輛，另一個用於卡車。 由於車輛的高度和重量，或車輛可能運送有危險性的貨物，路線規劃服務會考慮相關限制。 在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 使用地圖控制項 API 建立新的網頁
@@ -27,7 +27,7 @@ ms.locfileid: "75910857"
 > * 在地圖上顯示多條路線
 
 ## <a name="prerequisites"></a>Prerequisites
-在繼續作業之前，請依照[建立帳戶](quick-demo-map-app.md#create-an-account-with-azure-maps)中的指示，建立使用 S1 定價層的 Azure 地圖服務帳戶訂用帳戶，並依照[取得主要金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步驟取得適用於您的帳戶的主要金鑰。 如需 Azure 地圖服務中驗證的詳細資訊，請參閱[管理 Azure 地圖服務中的驗證](how-to-manage-authentication.md)。
+在繼續作業之前，請依照[建立帳戶](quick-demo-map-app.md#create-an-account-with-azure-maps)中的指示選取 S1 定價層。 請依照[取得主要金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步驟取得帳戶的主要金鑰。 如需 Azure 地圖服務中驗證的詳細資訊，請參閱[管理 Azure 地圖服務中的驗證](how-to-manage-authentication.md)。
 
 ## <a name="create-a-new-map"></a>建立新的地圖
 
@@ -158,7 +158,7 @@ ms.locfileid: "75910857"
     });
     ```
     
-    在地圖 `ready` 事件處理常式中，會建立資料來源以儲存路線以及起點和終點。 系統會建立線條圖層並將其附加至資料來源，以定義呈現路線的方式。 此外也會使用運算式，從路線特性的屬性中擷取線條的寬度和色彩。 將圖層新增至地圖時，會傳入值為 `'labels'` 的第二個參數，而指定要將此圖層呈現在地圖標籤下方。 這樣可以確保路線不會遮住道路標籤。 系統會建立符號圖層，並將其附加至資料來源。 此圖層會指定起點和終點的呈現方式，而此案例中已新增運算式，用以從每個點物件的屬性中擷取圖示影像和文字標籤資訊。 
+    在地圖 `ready` 事件處理常式中，會建立資料來源以儲存路線以及起點和終點。 系統會建立線條圖層並將其附加至資料來源，以定義呈現路線的方式。 此外也會使用運算式，從路線特性的屬性中擷取線條的寬度和色彩。 將圖層新增至地圖時，會傳入值為 `'labels'` 的第二個參數，而指定要將此圖層呈現在地圖標籤下方。 這樣可以確保路線不會遮住道路標籤。 系統會建立符號圖層，並將其附加至資料來源。 此圖層會指定起點和終點的呈現方式。 此案例中已新增運算式，用以從每個點物件的屬性中擷取圖示影像和文字標籤資訊。 
     
 2. 在此教學課程中，將起點設在西雅圖的一家虛構公司 Fabrikam，並將終點設在 Microsoft 辦公室。 在地圖 `ready` 事件處理常式中，新增下列程式碼。
 
@@ -192,7 +192,7 @@ ms.locfileid: "75910857"
 
     起點和終點會新增至資料來源。 系統會使用 `atlas.data.BoundingBox.fromData` 函式計算起點和終點的週框方塊。 此週框方塊會用來透過 `map.setCamera` 函式設定整個路線的地圖相機檢視。 系統會加入邊框間距，以補償符號圖示的像素維度。
 
-4. 儲存檔案並重新整理瀏覽器，以查看地圖上顯示的圖釘。 現在地圖會以西雅圖作為中心，而且您會看到以圓形藍色圖釘標示的起點，和以藍色圖釘標示的終點。
+4. 儲存檔案並重新整理瀏覽器，以查看地圖上顯示的圖釘。 現在地圖會以西雅圖作為中心。 您會看到以圓形藍色圖釘標示的起點，和以藍色圖釘標示的終點。
 
    ![檢視有起點和終點的地圖](./media/tutorial-prioritized-routes/pins-map.png)
 
@@ -244,7 +244,7 @@ ms.locfileid: "75910857"
     });
     ```
 
-    上方的程式碼片段會透過 [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest) 方法來查詢 Azure 地圖服務的路線規劃服務。 接著，系統會從回應中的 GeoJSON 特性集合擷取路線；這些特性是使用 `geojson.getFeatures()` 方法擷取的。 路線隨後會新增至資料來源。 此路線也會加上指數 0，以確保它會在資料來源中的任何其他路線之前先呈現。 之所以這麼做，是因為卡車路線計算的速度通常比汽車路線計算慢，若卡車路線在汽車路線之後新增至資料來源，則會呈現於汽車路線之上。 系統會將兩個屬性新增至卡車路線，一個呈現為鮮明藍色的筆觸色彩，和一個寬度為九個像素的筆觸。
+    上方的程式碼片段會透過 [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest) 方法來查詢 Azure 地圖服務的路線規劃服務。 接著，系統會從回應中的 GeoJSON 特性集合擷取路線；這些特性是使用 `geojson.getFeatures()` 方法擷取的。 路線隨後會新增至資料來源。 指數 0 可確保該路線會在資料來源中的任何其他路線之前先呈現。 之所以這麼做，是因為卡車路線計算的速度通常比汽車路線計算慢，若卡車路線在汽車路線之後新增至資料來源，則會呈現於汽車路線之上。 系統會將兩個屬性新增至卡車路線，一個呈現為鮮明藍色的筆觸色彩，和一個寬度為九個像素的筆觸。
 
 3. 新增下列 JavaScript 程式碼以建構行車路線，並顯示結果。
 

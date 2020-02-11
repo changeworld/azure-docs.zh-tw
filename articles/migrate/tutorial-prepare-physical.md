@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: f81f47349610cd72489df305ccf544c8346cb9b3
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 42eb603be0152b9e8cfb36d02e8f0602c40afe54
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028664"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031198"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>準備評估實體伺服器並將其移轉至 Azure
 
@@ -41,10 +41,10 @@ ms.locfileid: "76028664"
 
 您需要 Azure Migrate 部署的設定權限。
 
-- 讓 Azure 帳戶可建立 Azure Migrate 專案的權限。
-- 讓帳戶可註冊 Azure Migrate 設備的權限。 用於 Hyper-V 探索和移轉的設備。 在註冊設備期間，Azure Migrate 會建立兩個可唯一識別設備的 Azure Active Directory (Azure AD) 應用程式：
-    - 第一個應用程式會與 Azure Migrate 服務端點進行通訊。
-    - 第二個應用程式會存取在註冊期間建立的 Azure Key Vault，以儲存 Azure AD 的應用程式資訊和設備組態設定。
+**Task** | **權限**
+--- | ---
+**建立 Azure Migrate 專案** | 您的 Azure 帳戶需要可建立專案的權限。
+**註冊 Azure Migrate 設備** | Azure Migrate 會使用輕量的 Azure Migrate 設備搭配 Azure Migrate 伺服器評量，來探索和評估實體伺服器。 此設備會探索伺服器，並將伺服器的中繼資料和效能資料傳送至 Azure Migrate。<br/><br/>在設備註冊期間，下列資源提供者會使用設備中選擇的訂用帳戶進行註冊 - Microsoft.OffAzure、Microsoft.Migrate 和 Microsoft.KeyVault。 註冊資源提供者可將您的訂用帳戶設定為可搭配資源提供者使用。 若要註冊資源提供者，您必須具有訂用帳戶的「參與者」或「擁有者」角色。<br/><br/> 在上線期間，Azure Migrate 會建立一個 Azure Active Directory (Azure AD) 應用程式：<br/> AAD 應用程式可供在設備上執行的代理程式與其在 Azure 上執行的各項服務之間進行通訊 (驗證和授權)。 此應用程式沒有在任何資源上進行 ARM 呼叫或 RBAC 存取的權限。
 
 
 
@@ -66,10 +66,9 @@ ms.locfileid: "76028664"
 - 租用戶/全域管理員可將權限授與租用戶中的使用者，以建立及註冊 Azure AD 應用程式。
 - 租用戶/全域管理員可為帳戶指派應用程式開發人員角色 (具有權限)。
 
-值得注意的是：
-
-- 除了前述權限外，應用程式在訂用帳戶上沒有任何其他存取權限。
-- 只有當您註冊新的設備時，才需要這些權限。 完成設備的設定後，您可以移除權限。
+> [!NOTE]
+> - 除了前述權限外，應用程式在訂用帳戶上沒有任何其他存取權限。
+> - 只有當您註冊新的設備時，才需要這些權限。 完成設備的設定後，您可以移除權限。
 
 
 #### <a name="grant-account-permissions"></a>授與帳戶權限

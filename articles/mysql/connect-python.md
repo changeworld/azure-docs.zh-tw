@@ -8,24 +8,26 @@ ms.custom: seo-python-october2019
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/09/2020
-ms.openlocfilehash: 1550d8748d6c7c0e35796d2950d02d774fe52822
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 96296a4ecea8dd1d546adf2292291746bd37507d
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896261"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938924"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-with-azure-database-for-mysql"></a>快速入門：使用 Python 連線適用於 MySQL 的 Azure 資料庫並查詢資料
-本快速入門示範如何使用 [Python](https://python.org) 連線至 Azure Database for MySQL。 您可以使用 SQL 陳述式查詢、插入、更新和刪除 Mac OS、Ubuntu Linux 和 Windows 平台的資料庫中的資料。 
 
-本文假設您已熟悉使用 Python 進行開發，但不熟悉適用於 MySQL 的 Azure 資料庫。
+在本快速入門中，您將使用 Python 連線至適用於 MySQL 的 Azure 資料庫。 接著，您可以使用 SQL 陳述式來查詢、插入、更新和刪除 Mac、Ubuntu Linux 和 Windows 平台中的資料庫所含的資料。 
 
-## <a name="create-an-azure-database-for-mysql"></a>建立適用於 MySQL 的 Azure 資料庫 
-依照下列指示，建立「適用於 MySQL 的 Azure 資料庫」伺服器和資料庫： 
-- [使用 Azure 入口網站建立適用於 MySQL 的 Azure 資料庫伺服器](quickstart-create-mysql-server-database-using-azure-portal.md)，或 
-- [使用 Azure CLI 建立適用於 MySQL 的 Azure 資料庫伺服器](quickstart-create-mysql-server-database-using-azure-cli.md) 
+此主題假設您熟悉如何使用 Python 進行開發，但是初次接觸適用於 MySQL 的 Azure 資料庫。
+
+## <a name="prerequisites"></a>Prerequisites
+
+- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- 適用於 MySQL 的 Azure 資料庫伺服器。 [使用 Azure 入口網站建立適用於 MySQL 的 Azure 資料庫伺服器](quickstart-create-mysql-server-database-using-azure-portal.md)或[使用 Azure CLI 建立適用於 MySQL 的 Azure 資料庫伺服器](quickstart-create-mysql-server-database-using-azure-cli.md)。
 
 ## <a name="install-python-and-the-mysql-connector"></a>安裝 Python 和 MySQL 連接器
+
 使用下列步驟，在您的電腦上安裝 Python 和適用於 Python 的 MySQL 連接器： 
 
 > [!NOTE]
@@ -48,6 +50,7 @@ ms.locfileid: "75896261"
    您也可以從 [mysql.com](https://dev.mysql.com/downloads/connector/python/) 安裝 MySQL 的 Python 連接器。 若要深入了解 Python 的 MySQL 連接器，請參閱 [MySQL 連接器/Python 開發人員指南](https://dev.mysql.com/doc/connector-python/en/)。 
 
 ## <a name="get-connection-information"></a>取得連線資訊
+
 從 Azure 入口網站取得連線至適用於 MySQL 的 Azure 資料庫所需的連線資訊。 您需要伺服器名稱、資料庫名稱和登入認證。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
@@ -61,6 +64,7 @@ ms.locfileid: "75896261"
    ![Azure Database for MySQL 伺服器名稱](./media/connect-python/azure-database-for-mysql-server-overview-name-login.png)
 
 ## <a name="run-the-python-examples"></a>執行 Python 範例
+
 針對本文中的每個程式碼範例：
 
 1. 在文字編輯器中建立新的檔案。
@@ -72,9 +76,10 @@ ms.locfileid: "75896261"
    > 在 Windows 上，如果找不到 *python.exe*，您可能需要將 Python 路徑新增至 PATH 環境變數中，或提供 *python.exe* 的完整路徑，例如 `C:\python27\python.exe createtable.py`。
 
 ## <a name="create-a-table-and-insert-data"></a>建立資料表及插入資料
+
 使用下列程式碼搭配 **INSERT** SQL 陳述式連線至伺服器和資料庫、建立資料表，以並載入資料。 
 
-程式碼會匯入 mysql.connector 程式庫，並使用 [connect()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) 函式搭配 config 集合中的[引數](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html)連線至適用於 MySQL 的 Azure 資料庫。 此程式碼使用連線上的資料指標，而 [cursor.execute()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) 方法會對 MySQL 資料庫執行 SQL 查詢。 
+此程式碼會匯入 mysql.connector 程式庫，並使用 [connect()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) 函式搭配 config 集合中的[引數](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html)連線至適用於 MySQL 的 Azure 資料庫。 此程式碼使用連線上的資料指標，而 [cursor.execute()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) 方法會對 MySQL 資料庫執行 SQL 查詢。 
 
 ```python
 import mysql.connector
@@ -126,6 +131,7 @@ else:
 ```
 
 ## <a name="read-data"></a>讀取資料
+
 使用下列程式碼搭配 **SELECT** SQL 陳述式來連線和讀取資料。 
 
 此程式碼會匯入 mysql.connector 程式庫，並使用 [connect()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) 函式搭配 config 集合中的[引數](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html)連線至適用於 MySQL 的 Azure 資料庫。 此程式碼使用連線上的資料指標，而 [cursor.execute()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) 方法會對 MySQL 資料庫執行 SQL 查詢。 
@@ -175,6 +181,7 @@ else:
 ```
 
 ## <a name="update-data"></a>更新資料
+
 使用下列程式碼搭配 **UPDATE** SQL 陳述式來連線和更新資料。 
 
 此程式碼會匯入 mysql.connector 程式庫，並使用 [connect()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) 函式搭配 config 集合中的[引數](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html)連線至適用於 MySQL 的 Azure 資料庫。 此程式碼使用連線上的資料指標，而 [cursor.execute()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) 方法會對 MySQL 資料庫執行 SQL 查詢。 
@@ -217,6 +224,7 @@ else:
 ```
 
 ## <a name="delete-data"></a>刪除資料
+
 使用下列程式碼搭配 **DELETE** SQL 陳述式來連線和移除資料。 
 
 此程式碼會匯入 mysql.connector 程式庫，並使用 [connect()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) 函式搭配 config 集合中的[引數](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html)連線至適用於 MySQL 的 Azure 資料庫。 此程式碼使用連線上的資料指標，而 [cursor.execute()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) 方法會對 MySQL 資料庫執行 SQL 查詢。 
@@ -259,5 +267,6 @@ else:
 ```
 
 ## <a name="next-steps"></a>後續步驟
+
 > [!div class="nextstepaction"]
 > [使用匯出和匯入來移轉資料庫](./concepts-migrate-import-export.md)

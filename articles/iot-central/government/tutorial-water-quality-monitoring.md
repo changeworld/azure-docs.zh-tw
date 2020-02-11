@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 7014882e7da9eb7ab7df65cd20403982a46018a3
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: d738868e0e4ca7599f4aaf8d6e09d22f26a8db92
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112616"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016369"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>教學課程：在 Azure IoT Central 中建立水質監視應用程式
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 本教學課程會引導您在 Azure IoT Central 中建立水質監視應用程式。 您可以從 Azure IoT Central 的**水質監視**應用程式範本中建立應用程式。
 
@@ -32,7 +32,7 @@ ms.locfileid: "74112616"
 > * 設定作業。
 > * 使用白標自訂應用程式商標。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 我們建議您使用 Azure 訂用帳戶來完成本教學課程。 如果您沒有 Azure 訂用帳戶，則可以在 [Azure 註冊頁面](https://aka.ms/createazuresubscription)上建立一個。
 
@@ -63,6 +63,8 @@ ms.locfileid: "74112616"
 1. 選取頁面左下角的 [建立]  按鈕。
 
     ![Azure IoT Central 的新增應用程式頁面](./media/tutorial-waterqualitymonitoring/new-application-waterqualitymonitoring1.png)
+
+    ![Azure IoT Central 的新增應用程式計費資訊](./media/tutorial-waterqualitymonitoring/new-application-waterqualitymonitoring1-billinginfo.png)
 
 您現在已使用 Azure IoT Central 的**水質監視**範本建立水質監視應用程式。
 

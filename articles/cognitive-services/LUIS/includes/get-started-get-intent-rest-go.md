@@ -6,34 +6,47 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 11/20/2019
+ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: 5054ee9a23458944257a8010aaab6268d25042a7
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 02cb7738e20df6aba8690c9fe2ee718144bad114
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74414471"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987754"
 ---
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* [Go](https://golang.org/) (英文) 程式設計語言  
+* [Go](https://golang.org/) (英文) 程式設計語言
 * [Visual Studio Code](https://code.visualstudio.com/)
 * 公用應用程式識別碼：`df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
-## <a name="get-luis-key"></a>取得 LUIS 金鑰
+## <a name="create-luis-runtime-key-for-predictions"></a>建立預測的 LUIS 執行階段金鑰
 
-[!INCLUDE [Use authoring key for endpoint](../includes/get-key-quickstart.md)]
+1. 登入 [Azure 入口網站](https://portal.azure.com)
+1. 按一下[建立 **Language Understanding**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
+1. 輸入**執行階段**金鑰的所有必要設定：
+
+    |設定|值|
+    |--|--|
+    |名稱|所需的名稱 (2-64 個字元)|
+    |訂用帳戶|選取適當的訂用帳戶|
+    |Location|選取任何附近和可用的位置|
+    |定價層|`F0` - 最低定價層|
+    |資源群組|選取可用的資源群組|
+
+1. 按一下 [建立]  ，並等待系統建立資源。 資源建立後，請瀏覽至 [資源] 頁面。
+1. 收集已設定的 `endpoint` 和 `key`。
 
 ## <a name="get-intent-programmatically"></a>以程式設計方式取得意圖
 
 使用 Go 查詢[預測端點](https://aka.ms/luis-apim-v3-prediction)並取得預測結果。
 
 1. 建立名為 `predict.go` 的新檔案。 新增下列程式碼：
-    
+
     ```go
     package main
-    
+
     /* Do dependencies */
     import (
         "fmt"
@@ -43,65 +56,67 @@ ms.locfileid: "74414471"
         "log"
     )
     func main() {
-        
+
         // public app
         var appID = "df67dcdb-c37d-46af-88e1-8b97951ca1c2"
-        
+
         // utterance for public app
         var utterance = "turn on all lights"
-        
-        // YOUR-KEY - your starter or prediction key
+
+        // YOUR-KEY - your **Runtime** key
         var endpointKey = "YOUR-KEY"
-        
-        // YOUR-ENDPOINT - example is westus2.api.cognitive.microsoft.com
+
+        // YOUR-ENDPOINT - example is your-resource-name.api.cognitive.microsoft.com
         var endpoint = "YOUR-ENDPOINT"
-    
+
         endpointPrediction(appID, endpointKey, endpoint, utterance)
     }
     func endpointPrediction(appID string, endpointKey string, endpoint string, utterance string) {
-    
+
         var endpointUrl = fmt.Sprintf("https://%s/luis/prediction/v3.0/apps/%s/slots/production/predict?subscription-key=%s&verbose=true&show-all-intents=true&query=%s", endpoint, appID, endpointKey, url.QueryEscape(utterance))
-        
+
         response, err := http.Get(endpointUrl)
-    
+
         if err!=nil {
             // handle error
             fmt.Println("error from Get")
             log.Fatal(err)
         }
-        
+
         response2, err2 := ioutil.ReadAll(response.Body)
-    
+
         if err2!=nil {
             // handle error
             fmt.Println("error from ReadAll")
             log.Fatal(err2)
         }
-    
+
         fmt.Println("response")
         fmt.Println(string(response2))
     }
     ```
 
-1. 取代下列值：
+1. 將 `YOUR-KEY` 和 `YOUR-ENDPOINT` 值取代為您自己的預測**執行階段**金鑰和端點。
 
-    * `YOUR-KEY` 取代為您的入門金鑰。
-    * `YOUR-ENDPOINT` 取代為您的端點。 例如： `westus2.api.cognitive.microsoft.com` 。
+    |資訊|目的|
+    |--|--|
+    |`YOUR-KEY`|您的 32 字元預測**執行階段**金鑰。|
+    |`YOUR-ENDPOINT`| 您的預測 URL 端點。 例如： `replace-with-your-resource-name.api.cognitive.microsoft.com` 。|
 
 1. 在您建立檔案所在的相同目錄中使用命令提示字元，輸入下列命令以編譯 Go 檔案：
 
     ```console
     go build predict.go
-    ```  
+    ```
 
-1. 藉由在命令提示字元中輸入下列文字，從命令列執行 Go 應用程式： 
+1. 藉由在命令提示字元中輸入下列文字，從命令列執行 Go 應用程式：
 
     ```console
     go run predict.go
     ```
-    
-    命令提示字元回應為： 
-    
+
+    命令提示字元回應為：
+
     ```console
     appID has value df67dcdb-c37d-46af-88e1-8b97951ca1c2
     endpointKey has value a7b206911f714e71a1ddae36928a61cc
@@ -155,13 +170,9 @@ ms.locfileid: "74414471"
     ```
 
 
-## <a name="luis-keys"></a>LUIS 金鑰
-
-[!INCLUDE [Use authoring key for endpoint](../includes/starter-key-explanation.md)]
-
 ## <a name="clean-up-resources"></a>清除資源
 
-您完成本快速入門時，請從檔案系統中刪除該檔案。 
+您完成本快速入門時，請從檔案系統中刪除該檔案。
 
 ## <a name="next-steps"></a>後續步驟
 

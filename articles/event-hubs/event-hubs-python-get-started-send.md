@@ -1,33 +1,32 @@
 ---
-title: 快速入門：使用 Python 來傳送和接收事件 - Azure 事件中樞
-description: 快速入門：此逐步解說會說明如何建立及執行 Python 指令碼，以將事件傳送至 Azure 事件中樞或從中接收事件。
+title: 使用 Python 從 Azure 事件中樞傳送或接收事件 (舊版)
+description: 此逐步解說將說明如何建立及執行 Python 指令碼，以使用舊有的 azure-eventhub 第 1 版套件將事件傳送至 Azure 事件中樞或從中接收事件。
 services: event-hubs
-author: ShubhaVijayasarathy
+author: spelluru
 manager: femila
 ms.service: event-hubs
 ms.workload: core
 ms.topic: quickstart
-ms.date: 01/08/2020
-ms.author: shvija
-ms.openlocfilehash: c4fa9e6038f4007246552610f537825f9def92a8
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.date: 01/15/2020
+ms.author: spelluru
+ms.openlocfilehash: 654ccd6352dc0b671cc3becdafd2f1e1102dd39e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75939960"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76902948"
 ---
-# <a name="quickstart-send-and-receive-events-with-event-hubs-using-python"></a>快速入門：使用 Python 以事件中樞傳送和接收事件
+# <a name="quickstart-send-and-receive-events-with-event-hubs-using-python-azure-eventhub-version-1"></a>快速入門：使用 Python 以事件中樞傳送和接收事件 (azure-eventhub 第 1 版)
 
 Azure 事件中樞是巨量資料串流平台和事件擷取服務，每秒可接收和處理數百萬個事件。 事件中樞可處理及儲存來自分散式軟體和裝置的事件、資料或遙測資料。 傳送至事件中樞的資料可以透過任何即時分析提供者或批次/儲存體配接器來轉換和儲存。 如需事件中樞的詳細資訊，請參閱 [Azure 事件中樞](event-hubs-about.md)和[Azure 事件中樞的功能與術語](event-hubs-features.md)。
 
 本快速入門會說明如何建立 Python 應用程式，以將事件傳送至事件中樞或從中接收事件。 
 
-> [!IMPORTANT]
-> 本快速入門使用第 1 版的 Azure 事件中樞 Python SDK。 如果您不熟悉 Azure 事件中樞，請使用第 5 版的 Python SDK。 如需使用第 5 版 Python SDK 的快速入門，請參閱[這篇文章](get-started-python-send-v2.md)。 若要將現有的程式碼從第 1 版遷移至第 5 版，請參閱[移轉指南](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md)。
+> [!WARNING]
+> 本快速入門適用於第 1 版的 Azure 事件中樞 Python SDK。 建議您將程式碼[遷移](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md)至 [Python SDK 第 5 版](get-started-python-send-v2.md)。
 
-
-> [!NOTE]
-> 除了逐步執行快速入門以外，您也可以從 GitHub 下載並執行[範例應用程式](https://github.com/Azure/azure-event-hubs-python/tree/master/examples)。 請將 `EventHubConnectionString` 和 `EventHubName` 字串取代為您的事件中樞值。 
+ 
+ 
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -40,15 +39,16 @@ Azure 事件中樞是巨量資料串流平台和事件擷取服務，每秒可�
 - 事件中樞的 Python 套件。 若要安裝此套件，請在路徑中有 Python 的命令提示字元中執行下列命令︰ 
   
   ```cmd
-  pip install azure-eventhub
+  pip install azure-eventhub==1.3.*
   ```
-  
-  > [!NOTE]
-  > 本快速入門中的程式碼會使用事件中樞 SDK 目前的穩定版本 1.3.1。 如需使用預覽版 SDK 的範例程式碼，請參閱 [https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhubs/examples](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhubs/examples)。
+
 
 ## <a name="send-events"></a>傳送事件
 
 若要建立可將事件傳送至事件中樞的 Python 應用程式：
+
+> [!NOTE]
+> 除了逐步執行快速入門以外，您也可以從 GitHub 下載並執行[範例應用程式](https://github.com/Azure/azure-event-hubs-python/tree/master/examples)。 請將 `EventHubConnectionString` 和 `EventHubName` 字串取代為您的事件中樞值。
 
 1. 開啟您慣用的 Python 編輯器，例如 [Visual Studio Code](https://code.visualstudio.com/)
 2. 建立名為 *send.py* 的新檔案。 此指令碼會將 100 個事件傳送到事件中樞。

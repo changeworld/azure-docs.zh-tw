@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b07c6d6317d8ca284008d271f507b965414bfbc1
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: d19a7cc8d81f9e6e913f147b24c5cce03ff82027
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257507"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986728"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-server"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Tableau Server 整合
 
@@ -33,7 +32,7 @@ ms.locfileid: "71257507"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -45,6 +44,7 @@ ms.locfileid: "71257507"
 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
 
 * Tableau Server 支援由 **SP** 起始的 SSO
+* 設定 Tableau Server 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-tableau-server-from-the-gallery"></a>從資源庫新增 Tableau Server
 
@@ -75,7 +75,7 @@ ms.locfileid: "71257507"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Tableau Server]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [選取單一登入方法]  頁面上，選取 [SAML]  。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -184,3 +184,5 @@ ms.locfileid: "71257507"
 - [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [嘗試搭配 Azure AD 使用 Tableau Server](https://aad.portal.azure.com/)
+
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

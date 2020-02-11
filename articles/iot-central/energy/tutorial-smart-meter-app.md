@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: a73f4d75811a384eb822d1f8594a22506509d560
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 9e954e9c1a7efa43a19849b1c5b40284ec84eeed
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112546"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77015995"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>教學課程：建立和逐步執行智慧型電表監視應用程式範本 
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 本教學課程會引導您完成建立智慧型電表監視應用程式的過程，而且應用程式會包含具有模擬資料的範例裝置模型。 在本教學課程中，您將了解：
 
@@ -29,7 +29,7 @@ ms.locfileid: "74112546"
 
 如果您沒有訂用帳戶，[請建立免費試用帳戶](https://azure.microsoft.com/free)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 - None
 - 建議您使用 Azure 訂用帳戶，但您不一定要這麼做
 
@@ -50,9 +50,11 @@ ms.locfileid: "74112546"
     * **URL**：選擇 IoT Central URL，平台將會驗證其唯一性。
     * **7 天免費試用期**：如果您已經有 Azure 訂用帳戶，建議您使用預設設定。 如果您沒有 Azure 訂用帳戶，請先從免費試用開始。
     * **帳單資訊**：應用程式本身是免費的。 但您需要目錄、Azure 訂用帳戶和區域詳細資料來為您的應用程式佈建資源。
-    * 按一下頁面底部的 [建立]  按鈕，您的應用程式將會在一分鐘內建立完成。     
-        > [!div class="mx-imgBorder"]
-        > ![新增應用程式表單](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app.png)
+    * 按一下頁面底部的 [建立]  按鈕，您的應用程式將會在一分鐘內建立完成。
+
+        ![新增應用程式表單](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app.png)
+
+        ![新增應用程式表單計費資訊](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app-billinginfo.png)
 
 
 ### <a name="verify-the-application-and-simulated-data"></a>驗證應用程式和模擬的資料

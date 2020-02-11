@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 08566283181a4bb15f77016834c4dc0dffc184b7
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: d9b873a058410219bc55abc4f575823b519a646b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910878"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989107"
 ---
 # <a name="migrate-a-web-app-from-google-maps"></a>從 Google Maps 遷移 Web 應用程式
 
-使用 Google Maps 的 Web 應用程式大多使用 Google Maps V3 JavaScript SDK。 Azure 地圖服務 Web SDK 是適合作為遷移目的地的 Azure 型 SDK。 Azure 地圖服務 Web SDK 可讓您以自己的內容和圖像，自訂顯示在 Web 或行動應用程式中的互動式地圖。 此控制項使用 WebGL，可讓您以高效能轉譯大型資料集。 您可以使用 JavaScript 或 TypeScript 以此 SDK 進行開發。
+使用 Google Maps 的 Web 應用程式大多使用 Google Maps V3 JavaScript SDK。 Azure 地圖服務 Web SDK 是適合作為遷移目的地的 Azure 型 SDK。 Azure 地圖服務 Web SDK 可讓您以自己的內容和圖像自訂互動式地圖。 您可以在 Web 或行動應用程式上執行應用程式。 此控制項使用 WebGL，可讓您以高效能轉譯大型資料集。 您可以使用 JavaScript 或 TypeScript 以此 SDK 進行開發。
 
-如果要遷移現有的 Web 應用程式，請檢查其是否使用開放原始碼地圖控制項程式庫，例如 Cesium、Leaflet 和 OpenLayers。 如果是，而且您不想使用 Azure 地圖服務 Web SDK，則另一個可供您遷移應用程式的選項是繼續使用開放原始碼地圖控制項，並將其連線至 Azure 地圖服務地圖底圖服務 ([道路地圖底圖](https://docs.microsoft.com/rest/api/maps/render/getmaptile) \| [衛星地圖底圖](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile))。 以下會詳細說明如何在某些常用的開放原始碼地圖控制項程式庫中使用 Azure 地圖服務。
+如果要遷移現有的 Web 應用程式，請檢查其是否使用開放原始碼地圖控制項程式庫。 開放原始碼地圖控制項程式庫的範例如下：Cesium、Leaflet 和 OpenLayers。 如果是，而且您不想使用 Azure 地圖服務 Web SDK，則另一個可供您遷移應用程式的選項是繼續使用開放原始碼地圖控制項，並將其連線至 Azure 地圖服務地圖底圖服務 ([道路地圖底圖](https://docs.microsoft.com/rest/api/maps/render/getmaptile) \| [衛星地圖底圖](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile))。 以下幾點會詳細說明如何在某些常用的開放原始碼地圖控制項程式庫中使用 Azure 地圖服務。
 
 - Cesium - 適用於 Web 的3D 地圖控制項。 [程式碼範例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [文件](https://cesiumjs.org/)
 - Leaflet – 適用於 Web 的輕量型 2D 地圖控制項。 [程式碼範例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [文件](https://leafletjs.com/)
@@ -28,9 +28,9 @@ ms.locfileid: "75910878"
 
 ## <a name="key-features-support"></a>主要功能支援
 
-下表列出 Google Maps V3 JavaScript SDK 中的主要 API 功能，以及類似 API 在 Azure 地圖服務 Web SDK 中的支援。
+下表列出 Google Maps V3 JavaScript SDK 中的主要 API 功能，以及在 Azure 地圖服務 Web SDK 中的支援 API 功能。
 
-| Google Maps 功能     | Azure 地圖服務 Web SDK 支援 |
+| Google 地圖功能     | Azure 地圖服務 Web SDK 支援 |
 |-------------------------|:--------------------------:|
 | 標記                 | ✓                          |
 | 標記群集       | ✓                          |
@@ -50,19 +50,19 @@ ms.locfileid: "75910878"
 
 以下是 Google Maps 與 Azure 地圖服務 Web SDK 之間需要注意的一些主要差異：
 
-- 除了提供主控端點以供存取 Azure 地圖服務 Web SDK 外，如果您想要的話，也可使用 NPM 套件來將 Web SDK 內嵌至應用程式。 如需詳細資訊，請參閱這份[文件](how-to-use-map-control.md)。 此套件也包含 TypeScript 定義。
-- 在 Azure 地圖服務中建立 Map 類別的執行個體之後，您的程式碼應該先等待地圖的 `ready` 或 `load` 事件引發，然後再與地圖互動。 這會確保所有地圖資源都已載入，並可供存取。
+- 除了提供主控端點以供存取 Azure 地圖服務 Web SDK 外，如果您想要的話，也可使用 NPM 套件來將 Web SDK 內嵌至應用程式。 如需詳細資訊，請參閱[這份文件](how-to-use-map-control.md)。 此套件也包含 TypeScript 定義。
+- 在 Azure 地圖服務中建立 Map 類別的執行個體之後，您的程式碼應該先等待地圖的 `ready` 或 `load` 事件引發，然後再與地圖互動。 此順序可確保所有地圖資源都已載入，並可供存取。
 - 這兩種平台都會針對基底地圖使用類似的地圖底圖系統，不過，Google Maps 中的地圖底圖維度是 256 像素，而 Azure 地圖服務中的地圖底圖維度則是 512 像素。 因此，若要在 Azure 地圖服務中獲得和 Google Maps 相同的地圖檢視，則 Google Maps 中所使用的縮放層級，在 Azure 地圖服務中就必須減一。
-- Google Maps 中的座標稱為「緯度,經度」，而 Azure 地圖服務則使用「經度,緯度」。 這與大多數 GIS 平台所遵循的標準 `[x, y]` 相符。
-- Azure 地圖服務 Web SDK 中的圖形依據的是 GeoJSON 結構描述。 協助程式類別則會透過 [*atlas.data* namespace](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data?view=azure-iot-typescript-latest) 來公開。 另外還有 [*atlas.Shape*](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape) 類別可用來包裝 GeoJSON 物件，這可讓您以資料可繫結的方式來更新和維護這些物件。
-- Azure 地圖服務中的座標會定義為 Position 物件，並可指定為 `[longitude, latitude]` 格式的簡單數字陣列或新的 atlas.data.Position(longitude, latitude)。
+- Google Maps 中的座標稱為「緯度,經度」，而 Azure 地圖服務則使用「經度,緯度」。 此 Azure 地圖服務格式與大多數 GIS 平台所遵循的標準 `[x, y]` 相符。
+- Azure 地圖服務 Web SDK 中的圖形依據的是 GeoJSON 結構描述。 協助程式類別則會透過 [*atlas.data* namespace](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data?view=azure-iot-typescript-latest) 來公開。 另外還有 [*atlas.Shape*](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape) 類別。 此類別可用來包裝 GeoJSON 物件，這可讓您以資料可繫結的方式來更新和維護這些物件。
+- Azure 地圖服務中的座標會定義為位置物件。 座標會以 `[longitude, latitude]` 的格式指定為數字陣列，或使用新的 atlas.data.Position(經度, 緯度) 來指定。
     > [!TIP]
     > Position 類別具有靜態協助程式方法，可用於匯入「緯度,經度」格式的座標。 [atlas.data.Position.fromLatLng](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.position?view=azure-iot-typescript-latest) 方法通常會取代 Google Maps 程式碼中的 `new google.maps.LatLng` 方法。
-- Azure 地圖服務並不會在每個新增至地圖的圖形上指定樣式資訊，而是會將樣式與資料分開。 資料會儲存在資料來源中，並連結至 Azure 地圖服務程式碼用來呈現資料的呈現圖層。 這種方法可提供增強的效能優勢。 此外，許多圖層都支援資料驅動的樣式，也就是可將商務邏輯新增至圖層樣式選項，以根據圖形中定義的屬性來變更圖層內個別圖形的呈現方式。
+- Azure 地圖服務並不會在每個新增至地圖的圖形上指定樣式資訊，而是會將樣式與資料分開。 資料會儲存在資料來源中，並連線到呈現圖層。 Azure 地圖服務程式碼會使用資料來源來呈現資料。 這種方法可提供增強的效能優勢。 此外，許多圖層都支援可將商務邏輯加入圖層樣式選項的資料驅動樣式。 這項支援根據圖形中定義的屬性，變更了個別圖形在圖層中呈現的方式。
 
 ## <a name="web-sdk-side-by-side-examples"></a>Web SDK 對照範例
 
-以下是每個平台的程式碼範例集合，集合內涵蓋了常見的使用案例，可協助您將 Web 應用程式從 Google Maps V3 JavaScript SDK 遷移至 Azure 地圖服務 Web SDK。 與 Web 應用程式相關的程式碼範例會以 JavaScript 提供；不過，Azure 地圖服務也會透過 [NPM 模組](how-to-use-map-control.md)來提供 TypeScript 定義作為額外的選項。
+下列集合具有適用於每個平台的程式碼範例，且每個範例都包含了常見的使用案例。 其目的是協助您將 Web 應用程式從 Google Maps V3 JavaScript SDK 遷移至 Azure 地圖服務 Web SDK。 與 Web 應用程式相關的程式碼範例會以 JavaScript 提供。 不過，Azure 地圖服務也會透過 [NPM 模組](how-to-use-map-control.md)，將 TypeScript 定義提供為額外的選項。
 
 ### <a name="load-a-map"></a>載入地圖
 
@@ -75,13 +75,13 @@ ms.locfileid: "75910878"
 
 **一些主要差異**
 
-- Google Maps 需要在 API 的指令碼參考中指定帳戶金鑰。 Azure 地圖服務的驗證認證會指定為 Map 類別的選項。 這可以是訂用帳戶金鑰或 Azure Active Directory 資訊。
+- Google Maps 需要在 API 的指令碼參考中指定帳戶金鑰。 Azure 地圖服務的驗證認證會指定為 Map 類別的選項。 此認證可以是訂用帳戶金鑰或 Azure Active Directory 資訊。
 - Google Maps 會在 API 的指令碼參考中採用回呼函式，以便用來呼叫初始化函式以載入地圖。 在使用 Azure 地圖服務時，則應該使用頁面的 onload 事件。
 - 在參考將於其中呈現地圖的 `div` 元素時，Azure 地圖服務中的 `Map` 類別只需要 `id` 值，而 Google Maps 則需要 `HTMLElement` 物件。
 - Azure 地圖服務中的座標會定義為 Position 物件，並可指定為 `[longitude, latitude]` 格式的簡單數字陣列。
-- Azure 地圖服務的縮放層級比 Google Maps 範例低一層，其原因是這兩種平台的地圖底圖系統有差異。
-- 根據預設，Azure 地圖服務不會將任何導覽控制項新增至地圖畫布，例如縮放按鈕和地圖樣式按鈕。 不過，會有控制項可用來新增地圖樣式選擇器、縮放按鈕、羅盤或旋轉控制項，以及傾斜角度控制項。
-- Azure 地圖服務中會新增事件處理常式，以監視地圖執行個體的 `ready` 事件。 當地圖所需的 WebGL 內容和所有資源載入完成時，就會引發此事件。 您可以在此事件處理常式中新增任何後續載入程式碼。
+- Azure 地圖服務中的縮放層級比 Google Maps 中的縮放層級低一層級。 這項差異是因為兩個平台的圖格系統大小不同。
+- Azure 地圖服務不會將任何導覽控制項新增至地圖畫布。 因此，根據預設，地圖不會有 [縮放] 按鈕和 [地圖樣式] 按鈕。 不過，會有控制項可用來新增地圖樣式選擇器、縮放按鈕、羅盤或旋轉控制項，以及傾斜角度控制項。
+- Azure 地圖服務中會新增事件處理常式，以監視地圖執行個體的 `ready` 事件。 當地圖完成載入 WebGL 內容和所有需要的資源時，就會引發此事件。 在地圖完成載入之後，將您要執行的任何程式碼新增至此事件處理常式。
 
 下列範例示範如何載入基本地圖，該地圖的中心位於紐約，座標為 (經度：-73.985、緯度：40.747)，在 Google Maps 中的縮放層級為 12。
 
@@ -244,14 +244,14 @@ map = new atlas.Map('myMap', {
 
 ### <a name="setting-the-map-view"></a>設定地圖檢視
 
-您可以透過在 JavaScript 中呼叫適當的函式，以程式設計方式將 Azure 地圖服務和 Google Maps 中的動態地圖移至新的地理位置。 下列範例示範如何讓地圖顯示衛星空照圖影像，並將地圖置中於某個位置，其座標為 (經度：-111.0225、緯度：35.0272)，並在 Google Maps 中將縮放層級變更為 15。
+您可以透過程式設計方式將 Azure 地圖服務和 Google Maps 中的動態地圖移至新的地理位置。 若要這麼做，請在 JavaScript 中呼叫適當的函式。 範例將說明如何讓地圖顯示衛星空照圖影像，將地圖置中於某個位置，以及在 Google Maps 中將縮放層級變更為 15。 使用的位置座標如下：經度：-111.0225 和緯度：35.0272。
 
 > [!NOTE]
 > Google Maps 所使用的地圖底圖維度為 256 像素，而 Azure 地圖服務則使用較大的 512 像素地圖底圖。 在載入和 Google Maps 相同的地圖區域時，這種設定會讓 Azure 地圖服務減少所需的網路要求數目。 不過，由於地圖底圖金字塔在地圖控制項中的運作方式所致，如果在 Azure 地圖服務中使用較大的地圖底圖，則表示若要達到與 Google Maps 地圖相同的可檢視區域，您就必須在使用 Azure 地圖服務時，將 Google Maps 中所用的縮放層級減一。
 
-**之前：Google Maps**
+**之前：Google 地圖**
 
-您可以使用 `setOptions` 方法來以程式設計方式移動 Google Maps 地圖控制項，這種方法可讓您指定地圖的中心點和縮放層級。
+您可以使用 `setOptions` 方法，以程式設計方式移動 Google Maps 的地圖控制項。 此方法可讓您指定地圖的中心和縮放層級。
 
 ```javascript
 map.setOptions({
@@ -263,11 +263,11 @@ map.setOptions({
 
 <center>
 
-![Google Maps 所設定的檢視](media/migrate-google-maps-web-app/google-maps-set-view.png)</center>
+![Google 地圖設定的檢視](media/migrate-google-maps-web-app/google-maps-set-view.png)</center>
 
 **之後：Azure 地圖服務**
 
-在 Azure 地圖服務中，您可以使用地圖的 `setCamera` 方法來以程式設計方式變更地圖位置，以及使用 `setStyle` 方法來變更地圖樣式。 請注意，Azure 地圖服務中的座標採用「經度,緯度」格式，而且縮放層級值會減一。
+在 Azure 地圖服務中，您可以使用地圖的 `setCamera` 方法來以程式設計方式變更地圖位置，以及使用 `setStyle` 方法來變更地圖樣式。 Azure 地圖服務中的座標採用「經度,緯度」格式，而且縮放層級值會減一。
 
 ```javascript
 map.setCamera({
@@ -297,7 +297,7 @@ Azure 地圖服務有多種方式可在地圖上呈現位置點資料：
 - **符號圖層** – 會在 WebGL 內容中以圖示和/或文字呈現位置點。
 - **泡泡圖層** – 在地圖上以圓圈呈現位置點。 圓圈半徑可根據資料中的屬性來縮放。
 
-符號和泡泡圖層都會在 WebGL 內容中呈現，而且能在地圖上呈現非常大的一組位置點。 這些圖層會要求將資料儲存在資料來源中。 在 `ready` 事件引發之後，就應該將資料來源和呈現圖層新增至地圖中。 HTML 標記會在頁面中呈現為 DOM 元素，而且不會使用資料來源。 頁面所擁有的 DOM 元素越多，頁面就會變得越慢。 如果要在地圖上呈現超過幾百個位置點，建議您改用其中一個呈現圖層。
+符號和泡泡圖層都會在 WebGL 內容中呈現。 這兩圖層都能夠在地圖上呈現大型的位置點集合。 這些圖層會要求將資料儲存在資料來源中。 在 `ready` 事件引發之後，就應該將資料來源和呈現圖層新增至地圖中。 HTML 標記會在頁面中呈現為 DOM 元素，而且不會使用資料來源。 頁面所擁有的 DOM 元素越多，頁面就會變得越慢。 如果要在地圖上呈現超過幾百個位置點，建議您改用其中一個呈現圖層。
 
 下列範例會將標記新增至地圖中，其位置為 (經度：-0.2、緯度：51.5)，並以數字 10 覆蓋為標籤。
 
@@ -320,7 +320,7 @@ var marker = new google.maps.Marker({
 
 **之後：使用 HTML 標記的 Azure 地圖服務**
 
-在 Azure 地圖服務中，HTML 標記可用來顯示地圖上的某個位置點，且建議用於只需要在地圖上顯示少量位置點的應用程式。 若要使用 HTML 標記，請直接建立 `atlas.HtmlMarker` 類別的執行個體、設定文字和位置選項，然後使用 `map.markers.add` 方法將標記新增至地圖。
+在 Azure 地圖服務中，HTML 標記可用來顯示地圖上的位置點。 建議您將 HTML 標記用於只需要在地圖上顯示少量位置點的應用程式。 若要使用 HTML 標記，請建立 `atlas.HtmlMarker` 類別的執行個體、設定文字和位置選項，然後使用 `map.markers.add` 方法將標記新增至地圖。
 
 ```javascript
 //Create a HTML marker and add it to the map.
@@ -336,7 +336,7 @@ map.markers.add(new atlas.HtmlMarker({
 
 **之後：使用符號圖層的 Azure 地圖服務**
 
-在使用符號圖層時，您必須將資料新增至資料來源，並將資料來源連結至圖層。 此外，還應該在 `ready` 事件引發之後，將資料來源和圖層新增至地圖中。 若要在符號上方呈現唯一文字值，文字資訊必須儲存為資料點的屬性，而且必須在圖層的 `textField` 選項中參考該屬性。 相較於使用 HTML 標記，這種方式的工作量較多，但可提供諸多效能優勢。
+在使用符號圖層時，您必須將資料新增至資料來源，並將資料來源連結至圖層。 此外，還應該在 `ready` 事件引發之後，將資料來源和圖層新增至地圖中。 若要在符號上方呈現唯一文字值，文字資訊必須儲存為資料點的屬性，而且必須在圖層的 `textField` 選項中參考該屬性。 相較於使用 HTML 標記，這種方式的工作量較多，但具有效能優勢。
 
 ```html
 <!DOCTYPE html>
@@ -415,7 +415,7 @@ map.markers.add(new atlas.HtmlMarker({
 
 ### <a name="adding-a-custom-marker"></a>新增自訂標記
 
-自訂影像可用來代表地圖上的位置點。 下列範例中使用的影像會使用自訂影像在地圖上顯示某個位置點 (緯度：51.5、經度：-0.2) 並位移標記位置，讓圖釘圖示的尖端對準地圖上的正確位置。
+自訂影像可用來代表地圖上的位置點。 下列地圖影像會使用自訂影像在地圖上顯示位置點。 點顯示在緯度：51.5、經度：-0.2 上。 錨點會位移標記位置，讓圖釘圖示的尖端對準地圖上的正確位置。
 
 <center>
 
@@ -424,7 +424,7 @@ ylw\_pushpin.png</center>
 
 **之前：Google Maps**
 
-在 Google Maps 中，可藉由指定包含影像 `url` 的 `Icon` 物件來建立自訂標記，這是用來將圖釘影像的尖端對準地圖座標的 `anchor` 點。 Google Maps 中的 anchor 值會相對於影像的左上角。
+在 Google Maps 中，可藉由指定包含影像 `url` 的 `Icon` 物件來建立自訂標記，這是用來將圖釘影像的尖端對準地圖座標的 `anchor` 點。 Google Maps 中的錨點值會相對於影像左上角。
 
 ```javascript
 var marker = new google.maps.Marker({
@@ -439,11 +439,11 @@ var marker = new google.maps.Marker({
 
 <center>
 
-![Google Maps 的自訂標記](media/migrate-google-maps-web-app/google-maps-custom-marker.png)</center>
+![Google 地圖的自訂標記](media/migrate-google-maps-web-app/google-maps-custom-marker.png)</center>
 
 **之後：使用 HTML 標記的 Azure 地圖服務**
 
-若要在 Azure 地圖服務中自訂 HTML 標記，可將 HTML `string` 或 `HTMLElement` 傳遞至標記的 `htmlContent` 選項。 在 Azure 地圖服務中，`anchor` 選項可用來指定標記的相對位置，作為其相對依據的是使用九個已定義參考點之一的位置座標：中心、頂端、底部、左側、右側、左上角、右上角、左下角、右下角。 根據預設，內容會錨定到 html 內容的底部中心點。 為了讓您更輕鬆地從 Google Maps 遷移程式碼，請將 `anchor` 設定為 [左上角]，然後搭配使用 `pixelOffset` 選項與 Google Maps 中使用的相同位移。 Azure 地圖服務中的位移會以和 Google Maps 相反的方向移動，因此請將位移乘上負一。
+若要在 Azure 地圖服務中自訂 HTML 標記，可將 HTML `string` 或 `HTMLElement` 傳遞至標記的 `htmlContent` 選項。 在 Azure 地圖服務中，`anchor` 選項可用來指定標記的相對位置，作為其相對依據的是使用九個已定義參考點之一的位置座標。 定義的參考點包括：「中心」、「頂端」、「底部」、「左側」、「右側」、「左上角」、「右上角」、「左下角」、「右下角」。 根據預設，內容會錨定到 html 內容的底部中心點。 為了讓您更輕鬆地從 Google Maps 遷移程式碼，請將 `anchor` 設定為 [左上角]，然後搭配使用 `pixelOffset` 選項與 Google Maps 中使用的相同位移。 Azure 地圖服務中的位移會以和 Google Maps 相反的方向移動，因此請將位移乘上負一。
 
 > [!TIP]
 > 將 `pointer-events:none` 新增為 html 內容上的樣式，以在 Microsoft Edge 中停用會顯示不必要圖示的預設拖曳行為。
@@ -463,7 +463,7 @@ map.markers.add(new atlas.HtmlMarker({
 
 **之後：使用符號圖層的 Azure 地圖服務**
 
-Azure 地圖服務中的符號圖層也支援自訂影像，但影像必須先載入至地圖資源，並獲派唯一識別碼。 符號圖層接著便可以參考此識別碼。 您可以使用圖示 `offset` 選項來位移符號，使其對齊影像上的正確位置點。 在 Azure 地圖服務中，`anchor` 選項可用來指定符號的相對位置，作為其相對依據的是使用九個已定義參考點之一的位置座標：中心、頂端、底部、左側、右側、左上角、右上角、左下角、右下角。 根據預設，內容會錨定到 html 內容的底部中心點。 為了讓您更輕鬆地從 Google Maps 遷移程式碼，請將 `anchor` 設定為 [左上角]，然後搭配使用 `offset` 選項與 Google Maps 中使用的相同位移。 Azure 地圖服務中的位移會以和 Google Maps 相反的方向移動，因此請將位移乘上負一。
+Azure 地圖服務中的符號圖層也支援自訂影像，但影像必須先載入至地圖資源，並獲派唯一識別碼。 符號圖層接著便可以參考此識別碼。 您可以使用圖示 `offset` 選項來位移符號，使其對齊影像上的正確位置點。 在 Azure 地圖服務中，`anchor` 選項可用來指定符號的相對位置，作為其相對依據的是使用九個已定義參考點之一的位置座標。 定義的位置座標包括：「中心」、「頂端」、「底部」、「左側」、「右側」、「左上角」、「右上角」、「左下角」、「右下角」。 根據預設，內容會錨定到 html 內容的底部中心點。 為了讓您更輕鬆地從 Google Maps 遷移程式碼，請將 `anchor` 設定為 [左上角]，然後搭配使用 `offset` 選項與 Google Maps 中使用的相同位移。 Azure 地圖服務中的位移會以和 Google Maps 相反的方向移動，因此請將位移乘上負一。
 
 ```html
 <!DOCTYPE html>
@@ -529,7 +529,7 @@ Azure 地圖服務中的符號圖層也支援自訂影像，但影像必須先�
 ![Azure 地圖服務的自訂圖示符號圖層](media/migrate-google-maps-web-app/azure-maps-custom-icon-symbol-layer.png)</center>
 
 > [!TIP]
-> 若要為位置點建立進階的自訂呈現條件，請一起使用多個呈現圖層。 例如，如果您想要擁有多個圖釘，並讓這些圖釘在不同顏色的圓上具有相同的圖示，則不必為每個顏色建立一堆影像，而是可以在泡泡圖層上方覆蓋符號圖層，並讓這些圖釘參考相同的資料來源。 這會比建立地圖並讓地圖保有一堆不同影像來得有效率。
+> 若要為位置點建立進階的自訂呈現條件，請一起使用多個呈現圖層。 例如，假設您想要在不同顏色的圓圈上放置多個圖示相同的圖釘。 您不必為每個顏色重疊建立一堆影像，而是可以在泡泡圖層上方加入符號圖層，並讓這些圖釘參考相同的資料來源。 此方法會比建立及維護一堆不同影像來得有效率。
 
 **其他資源：**
 
@@ -544,7 +544,7 @@ Azure 地圖服務中的符號圖層也支援自訂影像，但影像必須先�
 
 ### <a name="adding-a-polyline"></a>新增聚合線條
 
-聚合線條可用來代表地圖上的一條線或路徑。 下列範例會示範如何在地圖上建立虛線聚合線條。
+聚合線條可用來代表地圖上的一條線或路徑。 下列範例說明如何在地圖上建立虛線聚合線條。
 
 **之前：Google Maps**
 
@@ -588,7 +588,7 @@ line.setMap(map);
 
 **之後：Azure 地圖服務**
 
-在 Azure 地圖服務中，聚合線條稱為 LineString 或 MultiLineString 物件。 這些物件可新增至資料來源，並使用線條圖層來加以呈現。
+在 Azure 地圖服務中，聚合線條稱為 `LineString` 或 `MultiLineString` 物件。 這些物件可新增至資料來源，並使用線條圖層來加以呈現。
 
 ```javascript
 //Get the center of the map.
@@ -625,7 +625,7 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 
 ### <a name="adding-a-polygon"></a>新增多邊形
 
-多邊形可用來代表地圖上的區域。 Azure 地圖服務和 Google Maps 針對多邊形提供了非常類似的支援。 下列範例示範如何根據地圖的中心座標，建立會形成三角形的多邊形。
+多邊形可用來代表地圖上的區域。 Azure 地圖服務和 Google Maps 針對多邊形提供了類似的支援。 下列範例說明如何根據地圖的中心座標，建立會形成三角形的多邊形。
 
 **之前：Google Maps**
 
@@ -658,7 +658,7 @@ polygon.setMap(map);
 
 **之後：Azure 地圖服務**
 
-在 Azure 地圖服務中，MultiPolygon 物件可新增至資料來源，並使用圖層在地圖上加以呈現。 多邊形的區域可在多邊形圖層中呈現。 多邊形的外框則可使用線條圖層來呈現。
+在 Azure 地圖服務中，`Polygon` 和 `MultiPolygon` 物件可新增至資料來源，並使用圖層在地圖上加以呈現。 多邊形的區域可在多邊形圖層中呈現。 多邊形的外框則可使用線條圖層來呈現。
 
 ```javascript
 //Get the center of the map.
@@ -702,7 +702,7 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 
 ### <a name="display-an-info-window"></a>顯示資訊視窗
 
-在 Google Maps 中，實體的其他資訊可在地圖上以 `google.maps.InfoWindow` 類別顯示，在 Azure 地圖服務中，則可以使用 `atlas.Popup` 類別來實現。 下列範例會將標記新增至地圖，然後點按標記便可顯示資訊視窗/快顯。
+在 Google Maps 中，實體的其他資訊可在地圖上以 `google.maps.InfoWindow` 類別顯示。 在 Azure 地圖服務中，此功能則可以使用 `atlas.Popup` 類別來實現。 下列範例會將標記新增至地圖，然後點按標記便可顯示資訊視窗/快顯。
 
 **之前：Google Maps**
 
@@ -732,7 +732,7 @@ marker.addListener('click', function () {
 
 **之後：Azure 地圖服務**
 
-在 Azure 地圖服務中，可使用快顯視窗來顯示某個位置的其他資訊。 HTML 的 `string` 或 `HTMLElement` 物件可以傳遞至快顯視窗的 `content` 選項。 如有需要，快顯視窗可獨立於任何圖形之外來顯示，但也因此必須指定 `position` 值。 若要顯示快顯視窗，請呼叫 `open` 方法，並傳入要在其中顯示快顯視窗的 `map`。
+在 Azure 地圖服務中，可使用快顯視窗來顯示某個位置的其他資訊。 HTML 的 `string` 或 `HTMLElement` 物件可以傳遞至快顯視窗的 `content` 選項。 如有需要，快顯視窗可獨立於任何圖形之外來顯示。 因此，快顯視窗需要指定 `position` 值。 若要顯示快顯視窗，請呼叫 `open` 方法，並傳入要在其中顯示快顯視窗的 `map`。
 
 ```javascript
 //Add a marker to the map in which to display a popup for.
@@ -775,13 +775,13 @@ map.events.add('click', marker, function () {
 
 ### <a name="import-a-geojson-file"></a>匯入 GeoJSON 檔案
 
-Google Maps 支援透過 `google.maps.Data` 類別來載入 GeoJSON 資料和動態設定其樣式。 這個類別的功能會更加貼齊 Azure 地圖服務的資料驅動樣式。 其中一個主要差異在於，使用 Google Maps 時，您可以指定回呼函式和商務邏輯來設定其在 UI 執行緒中個別處理的每項功能會有什麼樣式。 在 Azure 地圖服務中，圖層則支援將資料驅動運算式指定為樣式選項。 這些運算式會在呈現時於個別執行緒上進行處理，並提供更高的呈現效能，可讓更大的資料集以更快的速度呈現。
+Google Maps 支援透過 `google.maps.Data` 類別來載入 GeoJSON 資料和動態設定其樣式。 這個類別的功能會更加貼齊 Azure 地圖服務的資料驅動樣式。 其中一個主要差異在於，使用 Google Maps 時，您可以指定回呼函式。 商務邏輯可用來為 UI 執行緒中個別處理的每項功能設定樣式。 在 Azure 地圖服務中，圖層則支援將資料驅動運算式指定為樣式選項。 這些運算式會在呈現時於個別執行緒上進行處理。 因此，此方式可提供更高的呈現效能。 顯而易見的優勢是，這可讓更大的資料集以更快的速度呈現。
 
-下列範例會從 USGS 載入過去七天內所有地震的 GeoJSON 摘要，並在地圖上以經過縮放的圓形來呈現。 每個圓形的顏色和縮放大小取決於每個地震的規模，而規模的資料則會儲存在資料集內每項功能的 `"mag"` 屬性中。 如果規模大於或等於五，圓形會是紅色，如果大於或等於三但小於五，圓形會是橘色，如果小於三，則圓形會是綠色。 每個圓形的半徑會是規模的指數乘以 0.1。
+下列範例會從 USGS 載入過去七天內所有地震的 GeoJSON 摘要。 並在地圖上以經過縮放的圓形來呈現。 每個圓形的顏色和縮放大小取決於每個地震的規模，而規模的資料則會儲存在資料集內每項功能的 `"mag"` 屬性中。 如果規模大於或等於 5，則圓形會是紅色。 如果大於或等於 3，但小於5，則圓形會是橘色。 如果小於 3，則圓形會是綠色。 每個圓形的半徑會是規模的指數乘以 0.1。
 
-**之前：Google Maps**
+**之前：Google 地圖**
 
-在 Google Maps 中，可以在 `map.data.setStyle` 方法中指定單一回呼函式，以供用來透過 `map.data.loadGeoJson` 方法，將商務邏輯套用至從 GeoJSON 摘要載入的每項功能。
+在 Google Maps 中，您可以在 `map.data.setStyle` 方法中指定單一回呼函式。 此方法將用來透過 `map.data.loadGeoJson` 方法，將商務邏輯套用至從 GeoJSON 摘要載入的每項功能。
 
 ```html
 <!DOCTYPE html>
@@ -854,7 +854,7 @@ Google Maps 支援透過 `google.maps.Data` 類別來載入 GeoJSON 資料和動
 
 **之後：Azure 地圖服務**
 
-GeoJSON 是 Azure 地圖服務中的基本資料類型，而且可使用 `datasource.importFromUrl` 方法輕鬆地匯入到資料來源中。 泡泡圖層會提供根據資料來源中的功能屬性呈現已縮放圓形的功能。 商務邏輯不會使用回呼函數，而是會轉換成運算式，並傳遞至樣式選項。 運算式會定義商務邏輯的運作方式，以便將其傳遞至另一個執行緒，並根據功能資料進行評估。 您可以將多個資料來源和圖層新增至 Azure 地圖服務，並讓其各自擁有不同的商務邏輯，進而讓多個資料集在地圖上以不同的方式呈現。
+GeoJSON 是 Azure 地圖服務中的基本資料類型，而且可使用 `datasource.importFromUrl` 方法輕鬆地匯入到資料來源中。 泡泡圖層會提供根據資料來源中的功能屬性呈現已縮放圓形的功能。 商務邏輯不會使用回呼函數，而是會轉換成運算式，並傳遞至樣式選項。 運算式會定義商務邏輯的運作方式。 運算式可傳遞至另一個執行緒，並根據功能資料進行評估。 可以將多個資料來源和層級新增至 Azure 地圖服務，每個都有不同的商務邏輯。 這項功能可讓您以不同的方式在地圖上呈現多個資料集。
 
 ```html
 <!DOCTYPE html>
@@ -944,14 +944,14 @@ GeoJSON 是 Azure 地圖服務中的基本資料類型，而且可使用 `dataso
 
 在地圖上視覺化許多資料點時，資料點會彼此覆蓋，而讓地圖看起來很雜亂，並變得難以看清楚和使用。 位置點資料的群集功能可用來改善此使用者體驗，並改善效能。 群集位置點資料的程序會結合彼此接近的位置點資料，並在地圖上以單一群集資料點的方式加以表示。 當使用者放大地圖時，群集便會分解成個別的資料點。
 
-下列範例會載入過去一週地震資料的 GeoJSON 摘要，並將其新增至地圖。 群集則會根據所包含的位置點數目，以經過縮放且有顏色的圓形來呈現。
+在下列範例中，程式碼會載入過去一週地震資料的 GeoJSON 摘要，並將其新增至地圖。 群集則會根據所包含的位置點數目，以經過縮放且有顏色的圓形來呈現。
 
 > [!NOTE]
 > 有數種不同的演算法可用於標記群集。 Google Maps 和 Azure 地圖服務使用的演算法稍有不同。 因此，群集內的位置點分佈有時可能會不同。
 
 **之前：Google Maps**
 
-在 Google Maps 中，可藉由在 MarkerClusterer 程式庫中載入來群集標記。 群集圖示僅限於成為影像，以一到五的數字作為名稱，並裝載於相同目錄中。
+在 Google Maps 中，可藉由在 MarkerClusterer 程式庫中載入來群集標記。 群集圖示僅限於影像，以一到五的數字作為名稱，並裝載於相同目錄中。
 
 ```html
 <!DOCTYPE html>
@@ -1036,7 +1036,7 @@ GeoJSON 是 Azure 地圖服務中的基本資料類型，而且可使用 `dataso
 | `getClusterExpansionZoom(clusterId: number)` | Promise&lt;number&gt; | 計算群集將開始擴大或分解的臨界縮放層級。 |
 | `getClusterLeaves(clusterId: number, limit: number, offset: number)` | Promise&lt;Array&lt;Feature&lt;Geometry, any&gt; \| Shape&gt;&gt; | 擷取群集中的所有位置點。 設定 `limit` 可傳回位置點的子集，使用 `offset` 則可逐頁查看位置點。 |
 
-在地圖上呈現已群集的資料時，最簡單的方式往往是使用兩個以上的圖層。 下列範例會使用三個圖層，泡泡圖層會根據群集大小繪製經過縮放的彩色圓形、符號圖層會以文字呈現群集大小，第二個符號圖層則用來呈現未群集的位置點。 [群集位置點資料](clustering-point-data-web-sdk.md)文件中會重點指出其他許多可在 Azure 地圖服務中呈現已群集資料的方式。
+在地圖上呈現已群集的資料時，最簡單的方式往往是使用兩個以上的圖層。 下列範例會使用三個圖層。 泡泡圖層會根據群集大小繪製經過縮放的彩色圓形。 符號圖層會以文字呈現群集大小。 此外，其會使用第二個符號圖層來呈現未群集的位置點。 還有許多其他方式可呈現群集資料。 如需詳細資訊，請參閱[群集位置點資料](clustering-point-data-web-sdk.md)文件。
 
 您可以在 `DataSource` 類別上使用 `importDataFromUrl` 函式，於 Azure 地圖服務中直接匯入 GeoJSON 資料。
 
@@ -1147,13 +1147,13 @@ GeoJSON 是 Azure 地圖服務中的基本資料類型，而且可使用 `dataso
 
 ### <a name="add-a-heat-map"></a>新增熱度圖
 
-熱度圖 (也稱為點密度圖) 是一種資料視覺效果，用來以色彩範圍表示資料密度。 這些圖通常用來顯示地圖上的資料「作用點」，而且十分適合用來轉譯大型的點資料集。
+熱度圖 (也稱為點密度圖) 是一種資料視覺效果。 其用來以色彩範圍表示資料密度。 而且這些圖通常用來顯示地圖上的資料「作用點」。 熱度圖十分適合用來呈現大型的位置點資料集。
 
 下列範例會從 USGS 載入過去一個月所有地震的 GeoJSON 摘要，並以經過加權的熱度圖來呈現 (會以 `"mag"` 屬性作為權數)。
 
 **之前：Google Maps**
 
-若要在 Google Maps 中建立熱度圖，您必須藉由將 `&libraries=visualization` 新增至 API 指令碼 URL 來載入「視覺效果」程式庫。 Google Maps 中的熱度圖圖層未直接支援 GeoJSON 資料，而是必須先下載資料再將資料轉換成經加權資料點的陣列。
+若要在 Google Maps 中建立熱度圖，您必須藉由將 `&libraries=visualization` 新增至 API 指令碼 URL 來載入「視覺效果」程式庫。 Google Maps 中的熱度圖圖層不會直接支援 GeoJSON 資料。 資料必須先下載並轉換成加權資料點的陣列。
 
 ```html
 <!DOCTYPE html>
@@ -1295,7 +1295,7 @@ GeoJSON 是 Azure 地圖服務中的基本資料類型，而且可使用 `dataso
 
 ### <a name="overlay-a-tile-layer"></a>覆蓋地圖底圖圖層
 
-地圖底圖圖層 (在 Google Maps 中也稱為影像覆蓋) 可讓您將已分解成較小地圖底圖影像、並與地圖底圖系統契合的大型影像覆蓋在一起。 在覆蓋大型影像或非常大型的資料集時，常會使用這種方式。
+地圖底圖圖層在 Google Maps 中也稱為影像覆蓋。 地圖底圖圖層可讓您將已分解成較小地圖底圖影像、並與地圖底圖系統契合的大型影像覆蓋在一起。 這種方式通常用來覆蓋大型影像或大型資料集。
 
 下列範例會覆蓋來自愛荷華州立大學 Iowa Environmental Mesonet 的氣象雷達地圖底圖圖層。
 
@@ -1348,9 +1348,9 @@ map.layers.add(new atlas.layer.TileLayer({
 
 ### <a name="show-traffic"></a>顯示流量
 
-Azure 地圖服務和 Google Maps 都可以覆蓋交通資料。
+Azure 地圖服務和 Google 地圖都可以覆蓋交通資料。
 
-**之前：Google Maps**
+**之前：Google 地圖**
 
 在 Google Maps 中，交通資料可使用交通圖層來覆蓋在地圖上。
 
@@ -1361,7 +1361,7 @@ trafficLayer.setMap(map);
 
 <center>
 
-![Google Maps 的交通](media/migrate-google-maps-web-app/google-maps-traffic.png)</center>
+![Google 地圖的交通](media/migrate-google-maps-web-app/google-maps-traffic.png)</center>
 
 **之後：Azure 地圖服務**
 
@@ -1393,7 +1393,7 @@ map.setTraffic({
 
 Azure 地圖服務和 Google Maps 都支援在地圖上覆蓋有地理參考的影像，因此影像可在您平移和縮放地圖時隨之移動和縮放。 在 Google Maps 中，這些項目稱為地面覆蓋，而在 Azure 地圖服務中則稱為影像圖層。 這些項目非常適合用來建置樓層平面圖、覆蓋舊地圖或來自無人機的影像。
 
-**之前：Google Maps**
+**之前：Google 地圖**
 
 在 Google Maps 中建立地面覆蓋時，您需要指定所要覆蓋影像的 URL，以及地圖上要用來作為影像系繫結目標的週框方塊。 這個範例會在地圖上覆蓋 [1922 年紐澤西紐瓦克](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg)的地圖影像。
 
@@ -1531,7 +1531,7 @@ Azure 地圖服務和 Google Maps 都支援在地圖上覆蓋有地理參考的�
 
 ## <a name="google-maps-v3-to-azure-maps-web-sdk-class-mapping"></a>Google Maps V3 與 Azure 地圖服務 Web SDK 類別的對應
 
-下列附錄會提供 Google Maps V3 中最常用的類別與其 Azure 地圖服務 Web SDK 對等項目的交互參照對應。
+下列附錄會提供 Google Maps V3 中常用類別和 Azure 地圖服務 Web SDK 對等項目的交互參照。
 
 ### <a name="core-classes"></a>核心類別
 
@@ -1562,7 +1562,7 @@ Azure 地圖服務和 Google Maps 都支援在地圖上覆蓋有地理參考的�
 
 ## <a name="service-classes"></a>服務類別
 
-Azure 地圖服務 Web SDK 包含可以個別載入的[服務模組](how-to-use-services-module.md)。 此模組會使用 Web API 來包裝 Azure 地圖服務 REST 服務，並可在 JavaScript、TypeScript 和 Node.js 應用程式中使用。
+Azure 地圖服務 Web SDK 包含可以個別載入的服務模組。 此模組會使用 Web API 來包裝 Azure 地圖服務 REST 服務，並可在 JavaScript、TypeScript 和 Node.js 應用程式中使用。
 
 | Google Maps | Azure 地圖服務  |
 |-------------|-------------|

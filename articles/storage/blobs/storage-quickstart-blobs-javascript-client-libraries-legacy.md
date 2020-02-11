@@ -6,29 +6,29 @@ author: mhopkins-msft
 ms.custom: mvc
 ms.service: storage
 ms.author: mhopkins
-ms.date: 08/29/2019
+ms.date: 01/24/2020
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: 7d481b115650c72df95f7516bb3b39411201bf83
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 257af309ebdb9080c3cd60b8b89a2c992ecf5145
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75865099"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906581"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
-# <a name="quickstart-upload-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascripthtml-in-the-browser"></a>快速入門：在瀏覽器中使用適用於 JavaScript/HTML 的 Azure 儲存體 v10 SDK 上傳、列出及刪除 Blob
+# <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-browser"></a>快速入門：使用瀏覽器中的 JavaScript v10 SDK 來管理 Blob
 
-在本快速入門中，您將學習如何使用[適用於 JavaScript 的 Azure 儲存體 SDK V10 - Blob](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob#readme) 程式庫，從完全在瀏覽器中執行的 JavaScript 程式碼管理 Blob。 這裡使用的方法會說明如何使用必要安全措施，來確保 Blob 儲存體帳戶的存取會受到保護。
+在本快速入門中，您將了解如何使用完全在瀏覽器中執行的 JavaScript 程式碼來管理 Blob。 Blob 是可保存大量文字或二進位資料的物件，包括影像、文件、串流媒體和封存資料。 您將使用必要的安全措施來確保對 Blob 儲存體帳戶的存取會受到保護。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
-
-Azure 儲存體 JavaScript 用戶端程式庫無法直接從檔案系統運作，而必須由 Web 伺服器提供服務。 本主題會使用 [Node.js](https://nodejs.org) 來啟動基本伺服器。 如果您不想安裝 Node，您可以使用任何其他執行本機 Web 伺服器的方法。
-
-若要遵循偵錯步驟，您將需要 [Visual Studio Code](https://code.visualstudio.com) 和 [Chrome 偵錯工具](vscode:extension/msjsdiag.debugger-for-chrome)或 [Microsoft Edge 偵錯工具](vscode:extension/msjsdiag.debugger-for-edge)擴充功能。
+- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- Azure 儲存體帳戶。 [建立儲存體帳戶](../common/storage-account-create.md)。
+- 本機 Web 伺服器。 本文使用 [Node.js](https://nodejs.org) 來開啟基本伺服器。
+- [Visual Studio Code](https://code.visualstudio.com) \(英文\)。
+- 用於瀏覽器偵錯的 VS Code 延伸模組，例如 [Chrome 偵錯工具](vscode:extension/msjsdiag.debugger-for-chrome)或 [Microsoft Edge 偵錯工具](vscode:extension/msjsdiag.debugger-for-edge)。
 
 ## <a name="setting-up-storage-account-cors-rules"></a>設定儲存體帳戶 CORS 規則
 

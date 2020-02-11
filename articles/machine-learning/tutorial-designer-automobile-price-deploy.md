@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 470e633b2c64283db9b6a5b1cd777a6a054dad16
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 6fc6479ccda77bff84319d3244b2bd4a0599dc47
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719784"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934018"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>教學課程：透過設計工具部署機器學習模型 (預覽)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -38,6 +38,8 @@ ms.locfileid: "76719784"
 ### <a name="create-a-real-time-inference-pipeline"></a>建立即時推斷管線
 
 1. 在管線畫布上方，選取 [建立推斷管線]   > [即時推斷管線]  。
+
+    ![顯示要在哪裡尋找建立管線按鈕的螢幕擷取畫面](./media/tutorial-designer-automobile-price-deploy/create-inference-pipeline.png)
 
     您的管線此時應會顯示如下： 
 

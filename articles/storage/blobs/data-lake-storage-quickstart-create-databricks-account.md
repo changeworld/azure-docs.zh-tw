@@ -6,39 +6,29 @@ ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
-ms.date: 02/15/2019
+ms.date: 01/28/2020
 ms.reviewer: jeking
-ms.openlocfilehash: 193fe96d3e98b2917d9228784b93a9335406283f
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 2a303070b7240bddfd4803ed3d4d796fa52fdef5
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771746"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906635"
 ---
-# <a name="quickstart-analyze-data-in-azure-data-lake-storage-gen2-by-using-azure-databricks"></a>快速入門：使用 Azure Databricks 分析 Azure Data Lake Storage Gen2 中的資料
+# <a name="quickstart-analyze-data-with-databricks"></a>快速入門：以 Databricks 分析資料
 
-本快速入門說明如何使用 Azure Databricks 執行 Apache Spark 作業，以對已啟用 Azure Data Lake Storage Gen2 的儲存體帳戶所儲存的資料執行分析。
-
-在 Spark 作業中，您將分析電台頻道訂用帳戶資料，以根據人口統計資料深入了解免費/付費的使用情形。
-
-如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
+在本快速入門中，您將使用 Azure Databricks 執行 Apache Spark 作業，以對儲存體帳戶中儲存的資料執行分析。 在 Spark 作業中，您將分析電台頻道訂用帳戶資料，以根據人口統計資料深入了解免費/付費的使用情形。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* 建立 Data Lake Gen2 儲存體帳戶。 請參閱[快速入門：建立 Azure Data Lake Storage Gen2 儲存體帳戶](data-lake-storage-quickstart-create-account.md)
+* 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-  將儲存體帳戶的名稱貼到文字檔中。 您很快就會用到此名稱。
+* 您的 Azure Data Lake Gen2 儲存體帳戶的名稱。 [建立 Azure Data Lake Storage Gen2 儲存體帳戶](data-lake-storage-quickstart-create-account.md)。
 
-* 建立服務主體。 請參閱[如何：使用入口網站來建立可存取資源的 Azure AD 應用程式和服務主體](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
-
-  在執行該文章中的步驟時，您必須執行幾個特定動作。
-
-  :heavy_check_mark:在執行該文章的[將應用程式指派給角色](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)一節中的步驟時，請確實將 [儲存體 Blob 資料參與者]  角色指派給服務主體。
+* 已被指派**儲存體 Blob 資料參與者**角色之 Azure 服務主體的租用戶識別碼、應用程式識別碼和密碼。 [建立服務主體](../../active-directory/develop/howto-create-service-principal-portal.md)。
 
   > [!IMPORTANT]
-  > 請務必在 Data Lake Storage Gen2 儲存體帳戶的範圍中指派該角色。 您可以將角色指派給父資源群組或訂用帳戶，但在這些角色指派傳播至儲存體帳戶之前，您將會收到與權限有關的錯誤。
-
-  :heavy_check_mark:在執行該文章的[取得值以便登入](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)一節中的步驟時，請將租用戶識別碼、應用程式識別碼和密碼值貼到文字檔中。 您很快就會用到這些資料。
+  > 在 Data Lake Storage Gen2 儲存體帳戶的範圍中指派該角色。 您可以將角色指派給父資源群組或訂用帳戶，但在這些角色指派傳播至儲存體帳戶之前，您將會收到與權限有關的錯誤。
 
 ## <a name="create-an-azure-databricks-workspace"></a>建立 Azure Databricks 工作區
 

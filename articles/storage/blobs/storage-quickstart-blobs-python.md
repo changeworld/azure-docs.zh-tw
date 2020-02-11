@@ -3,41 +3,33 @@ title: 快速入門：Azure Blob 儲存體程式庫 v12 - Python
 description: 在本快速入門中，您將了解如何使用適用於 Python 的 Azure Blob 儲存體用戶端程式庫 12 版，在 Blob (物件) 儲存體中建立容器與 Blob。 接下來，您要了解如何將 Blob 下載到本機電腦，以及如何列出容器中的所有 Blob。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 11/05/2019
+ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: faa73874d7e662eb23e85d46ecaf21a11d10ce73
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 03f298b49e6a1eba84e8adf5ca6039df0bfe1abd
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443744"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906424"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v12-for-python"></a>快速入門：適用於 Python 的 Azure Blob 儲存體用戶端程式庫 v12
+# <a name="quickstart-manage-blobs-with-python-v12-sdk"></a>快速入門：使用 Python v12 SDK 來管理 Blob
 
-開始使用適用於 Python 的 Azure Blob 儲存體用戶端程式庫 v12。 Azure Blob 儲存體是 Microsoft 針對雲端推出的物件儲存體解決方案。 請依照下列步驟來安裝套件，並試用基本工作的範例程式碼。 Blob 儲存體經過最佳化，已能妥善儲存大量的非結構化資料。
-
-> [!NOTE]
-> 若要開始使用舊版 SDK，請參閱[快速入門：適用於 Python 的 Azure Blob 儲存體用戶端程式庫](storage-quickstart-blobs-python-legacy.md)。
-
-使用 Azure Blob 儲存體用戶端程式庫：
-
-* 建立容器
-* 將 Blob 上傳至 Azure 儲存體
-* 列出容器中的所有 Blob
-* 將 Blob 下載到本機電腦
-* 刪除容器
+在本快速入門中，您將了解如何使用 Python 來管理 Blob。 Blob 是可保存大量文字或二進位資料的物件，包括影像、文件、串流媒體和封存資料。 您將上傳、下載及列出 Blob，且將建立和刪除容器。
 
 [API 參考文件](/python/api/azure-storage-blob) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob) | [套件 (Python Package Index)](https://pypi.org/project/azure-storage-blob/) | [範例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
 
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
-
 ## <a name="prerequisites"></a>Prerequisites
 
-* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
-* Azure 儲存體帳戶 - [建立儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* 適用於您作業系統的 [Python](https://www.python.org/downloads/) - 2.7、3.5 或更新版本
+- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- Azure 儲存體帳戶。 [建立儲存體帳戶](../common/storage-account-create.md)。
+- [Python](https://www.python.org/downloads/) 2.7、3.5 或更新版本。
+
+> [!NOTE]
+> 若要開始使用舊版 SDK，請參閱[快速入門：使用 Python v2.1 SDK 來管理 Blob](storage-quickstart-blobs-python-legacy.md)。
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="setting-up"></a>設定
 
@@ -81,7 +73,7 @@ pip install azure-storage-blob
 
 1. 在程式碼編輯器中開啟新的文字檔
 1. 加入 `import` 陳述式
-1. 建立程式的結構，包括非常基本的例外狀況處理
+1. 建立程式的結構，包括基本例外狀況處理
 
     此程式碼如下：
 
@@ -234,7 +226,7 @@ with open(download_file_path, "wb") as download_file:
 
 下列程式碼會使用 [delete_container](/python/api/azure-storage-blob/azure.storage.blob.containerclient#delete-container---kwargs-) 方法移除整個容器，以清除應用程式所建立的資源。 您也可以視需要刪除本機檔案。
 
-應用程式會在刪除 Blob、容器和本機檔案之前呼叫 `input()`，藉以暫停使用者輸入。 這是很好的機會，可以在刪除資源之前，先確認實際上已正確地建立這些資源。
+應用程式會在刪除 Blob、容器和本機檔案之前呼叫 `input()`，藉以暫停使用者輸入。 您可以利用這個機會，在刪除資源之前先確認這些資源已正確建立。
 
 將此程式碼加入到 `try` 區塊的結尾處：
 

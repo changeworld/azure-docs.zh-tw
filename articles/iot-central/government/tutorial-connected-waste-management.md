@@ -7,22 +7,23 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 38da444779a56f39d4119f3797ddb5bd2f31aeae
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 6b8458ce41a1bdacddc4102e8282bbc638d4c01c
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112635"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016488"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>教學課程：在 IoT Central 中建立聯網廢棄物管理應用程式
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 本教學課程會引導您從 IoT Central **聯網廢棄物管理**應用程式範本，建立 Azure IoT Central 聯網廢棄物管理應用程式。 
 
-本教學課程將說明如何： 
+在本教學課程中，您將學會如何： 
 
 > [!div class="checklist"]
+
 > * 使用 Azure IoT Central **聯網廢棄物管理**範本來建立聯網廢棄物管理應用程式
 > * 探索和自訂操作員儀表板 
 > * 探索聯網垃圾桶裝置範本
@@ -31,14 +32,14 @@ ms.locfileid: "74112635"
 > * 設定工作
 > * 使用白標自訂您的應用程式商標
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，您需要：
 -  建議要有 Azure 訂用帳戶。 您可以選擇使用免費的 7 天試用版。 如果您沒有 Azure 訂用帳戶，則可以在 [Azure 註冊頁面](https://aka.ms/createazuresubscription)上建立一個。
 
 ## <a name="create-connected-waste-management-app-in-iot-central"></a>在 IoT Central 中建立聯網廢棄物管理應用程式
 
-在本節中，我們會使用 Azure IoT Central **聯網廢棄物管理**範本，在 IoT Central 中建立聯網廢棄物管理管理應用程式
+在本節中，您會使用 Azure IoT Central **聯網廢棄物管理**範本，在 IoT Central 中建立聯網廢棄物管理管理應用程式。
 
 若要建立新的 Azure IoT Central 聯網廢棄物管理應用程式：  
 
@@ -59,12 +60,15 @@ ms.locfileid: "74112635"
     * **URL** - 您可以選擇性地選擇想要的 URL。 您也可以在之後變更 URL。 
     * 如果您有 Azure 訂用帳戶，請輸入您的 [目錄]、[Azure 訂用帳戶] 和 [區域]  。 如果您沒有訂用帳戶，則可以啟用 [7 天免費試用]  並填妥必要的連絡人資訊。  
 
-    如需關於目錄和訂用帳戶的詳細資訊，請參閱[建立應用程式快速入門](../preview/quick-deploy-iot-central.md)。
+    如需關於目錄和訂用帳戶的詳細資訊，請參閱[建立應用程式快速入門](../core/quick-deploy-iot-central.md)。
 
 5. 按一下頁面底部的 [建立]  按鈕。 
 
     ![Azure IoT Central 建立聯網廢棄物應用程式頁面](./media/tutorial-connectedwastemanagement/new-application-connectedwastemanagement.png)
+    
+    ![Azure IoT Central 建立聯網計費資訊](./media/tutorial-connectedwastemanagement/new-application-connectedwastemanagement-billinginfo.png)
 
+ 
 6. 現在您已使用 Azure IoT Central **聯網廢棄物管理範本**建立聯網廢棄物管理應用程式。 
 
 恭喜！ 新建立的應用程式會隨附以下預先設定項目：
@@ -131,7 +135,7 @@ Azure IoT Central 中的裝置範本會定義裝置的功能，例如遙測、�
 
 2. 在裝置範本清單中，您會看到 [聯網垃圾桶]  。 按一下名稱來開啟。
 
-3. 熟悉裝置範本功能。 您可以看到它定義感應器，例如「填滿層級」  、「氣味計量」  、「重量」  、「位置」  等等。
+3. 熟悉裝置範本功能。 您可以看到其定義感應器，例如「填滿層級」  、「氣味計量」  、「重量」  、「位置」  等等。
 
    ![裝置範本](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-connectedbin.png)
 
@@ -149,7 +153,7 @@ Azure IoT Central 中的裝置範本會定義裝置的功能，例如遙測、�
 ### <a name="add-a-cloud-property"></a>新增雲端屬性 
 
 1. 在裝置範本功能表中，瀏覽至 [雲端屬性] 
-2. 按一下 [+ 新增雲端屬性]  來新增雲端屬性。 在 IoT Central 中，您可以新增與裝置相關但不會由裝置傳送的屬性。 例如，雲端屬性可能是專屬於安裝區域、資產資訊或維護資訊等項目的警示閾值。 
+2. 按一下 [+ 新增雲端屬性]  來新增雲端屬性。 在 IoT Central 中，您可以新增與裝置相關但不會由裝置傳送的屬性。 例如，雲端屬性可能是專屬於安裝區域、資產資訊或維護資訊等資訊的警示閾值。 
 3. **儲存**任何變更 
  
 ### <a name="views"></a>檢視 

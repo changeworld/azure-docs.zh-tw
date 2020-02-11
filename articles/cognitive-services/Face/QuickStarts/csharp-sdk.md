@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: e305a5634aa0c065342e1873c413039eb734b972
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: a9fb77ea30aa101653d50e7833876dbec6362093
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76165877"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76930153"
 ---
 # <a name="quickstart-face-client-library-for-net"></a>快速入門：適用於 .NET 的臉部用戶端程式庫
 
@@ -22,7 +22,6 @@ ms.locfileid: "76165877"
 
 使用適用於 .NET 的臉部用戶端程式庫來：
 
-* [驗證用戶端](#authenticate-the-client)
 * [偵測影像中的臉部](#detect-faces-in-an-image)
 * [尋找類似臉部](#find-similar-faces)
 * [建立並訓練人員群組](#create-and-train-a-person-group)
@@ -122,7 +121,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.5.0
 > [!NOTE]
 > 本快速入門假設您已針對名為 `FACE_SUBSCRIPTION_KEY` 和 `FACE_ENDPOINT` 的臉部金鑰和端點[建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。
 
-在新方法中，使用端點和金鑰來具現化用戶端。 使用金鑰建立 [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) 物件，並使用該物件與您的端點建立 [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) 物件。
+在新方法中，使用端點和金鑰來具現化用戶端。 使用您的金鑰建立 **[ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.apikeyserviceclientcredentials?view=azure-dotnet)** 物件，並使用該物件與您的端點建立 **[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** 物件。
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_auth)]
 
@@ -140,19 +139,19 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.5.0
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_models)]
 
-最後的偵測作業可接受 [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) 物件、影像 URL 和辨識模型。
+最終的偵測作業會採用 **[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** 物件、影像 URL 和辨識模型。
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_call)]
 
 ### <a name="get-detected-face-objects"></a>取得偵測到的臉部物件
 
-在下一個程式碼區塊中，`DetectFaceExtract` 方法會偵測指定 URL 上三個影像中的臉部，並在程式記憶體中建立 [DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet) 物件的清單。 [FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) 值的清單會指定要擷取的特徵。 
+在下一個程式碼區塊中，`DetectFaceExtract` 方法會偵測指定 URL 上三個影像中的臉部，並在程式記憶體中建立 **[DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet)** 物件的清單。 **[FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)** 值的清單會指定要擷取的特徵。 
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect)]
 
 ### <a name="display-detected-face-data"></a>顯示偵測到的臉部資料
 
-`DetectFaceExtract` 方法的其餘部分會剖析每個偵測到的臉部，並列印屬性資料。 每個屬性都必須在原始的臉部偵測 API 呼叫中分別指定 (在 [FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) 清單中)。 下列程式碼會處理每個屬性，但您可能只需要使用一個或幾個屬性。
+`DetectFaceExtract` 方法的其餘部分會剖析每個偵測到的臉部，並列印屬性資料。 每個屬性必須在原始的臉部偵測 API 呼叫中個別指定 (在 **[FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)** 清單中)。 下列程式碼會處理每個屬性，但您可能只需要使用一個或幾個屬性。
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_parse)]
 

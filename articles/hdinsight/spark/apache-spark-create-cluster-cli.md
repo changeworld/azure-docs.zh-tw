@@ -2,17 +2,17 @@
 title: 快速入門：Apache Spark 叢集搭配 Azure CLI - Azure HDInsight
 description: 本快速入門顯示如何使用 Azure CLI 在 Azure HDInsight 中建立 Apache Spark 叢集。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
-ms.date: 06/12/2019
-ms.author: hrasheed
-ms.openlocfilehash: 71b5e9f0ece79633673b183ca7288852f42ca3c0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 02/03/2020
+ms.openlocfilehash: ac937519ca3fa9381fe4970f2e4336fe4a0a9227
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494715"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989112"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-cli"></a>快速入門：使用 Azure CLI 在 Azure HDInsight 中建立 Apache Spark 叢集
 
@@ -20,7 +20,7 @@ ms.locfileid: "73494715"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 Azure CLI。 如果您尚未安裝 Azure CLI，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 以取得相關步驟。
 
@@ -28,7 +28,7 @@ Azure CLI。 如果您尚未安裝 Azure CLI，請參閱[安裝 Azure CLI](https
 
 ## <a name="create-an-apache-spark-cluster"></a>建立 Apache Spark 叢集
 
-1. 登入您的 Azure 訂用帳戶。 如果您打算使用 Azure Cloud Shell，可直接選取程式碼區塊右上角的 [試試看]  。 或者，請輸入以下命令：
+1. 登入您的 Azure 訂用帳戶。 如果您打算使用 Azure Cloud Shell，請選取程式碼區塊右上角的 [試試看]  。 或者，請輸入以下命令：
 
     ```azurecli-interactive
     az login
@@ -103,18 +103,18 @@ Azure CLI。 如果您尚未安裝 Azure CLI，請參閱[安裝 Azure CLI](https
         --http-password $httpCredential \
         --http-user admin \
         --location $location \
-        --size $clusterSizeInNodes \
+        --workernode-count $clusterSizeInNodes \
         --ssh-password $sshCredentials \
         --ssh-user sshuser \
         --storage-account $AZURE_STORAGE_ACCOUNT \
         --storage-account-key $AZURE_STORAGE_KEY \
-        --storage-default-container $AZURE_STORAGE_CONTAINER \
+        --storage-container $AZURE_STORAGE_CONTAINER \
         --version $clusterVersion
     ```
 
 ## <a name="clean-up-resources"></a>清除資源
 
-完成此快速入門之後，您可以刪除叢集。 利用 HDInsight，您的資料會儲存在 Azure 儲存體中，以便您在未使用叢集時安全地進行刪除。 您也需支付 HDInsight 叢集的費用 (即使未使用)。 由於叢集費用是儲存體費用的許多倍，所以刪除未使用的叢集符合經濟效益。
+完成此快速入門之後，您可以刪除叢集。 利用 HDInsight，您的資料會儲存在 Azure 儲存體中，以便您在未使用叢集時安全地刪除該叢集。 您也需支付 HDInsight 叢集的費用 (即使未使用該叢集)。 由於叢集費用是儲存體費用的許多倍，所以刪除未使用的叢集符合經濟效益。
 
 輸入所有或部分的下列命令來移除資源：
 

@@ -8,16 +8,16 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: bff6731e767fccb0800c30dfe3e75a800f54c59d
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 171f06ad238f862adbd7071ee10d81133d7a6855
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773059"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022132"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>使用 Azure IoT Central 建置零售解決方案
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 Azure IoT Central 是一個 IoT 應用程式平台，可降低與開發、管理及維護企業級 IoT 解決方案相關的負擔和成本。 選擇使用 Azure IoT Central 進行建置，可讓您有機會將時間、金錢和心力專注在 IoT 資料的企業轉型上，而不只是維護和更新複雜且不斷演進的 IoT 基礎結構。
 
@@ -78,7 +78,7 @@ IoT 攝影機解決方案可以啟用數位回饋迴圈，藉此帶來轉型優�
 
 對許多零售商而言，商店內部的環境條件都是他們能否優於競爭對手的重要區隔。 零售商想要在其商店內保有怡人的條件，以確保其客戶的權益。  
 
-身為解決方案建置者，您可以使用 IoT Central 的店內分析條件監視應用程式範本，來建置端對端解決方案。 應用程式範本可供您使用各種感應器裝置，以數位方式連接並監視零售商店環境。 這些感應器裝置會產生遙測資料，而您可以將其轉換成商業深入解析，以協助零售商降低營運成本，並且為其客戶創造絕佳的體驗。
+身為解決方案建置者，您可以使用 IoT Central 的店內分析條件監視應用程式範本，來建置端對端解決方案。 應用程式範本可供您使用不同感應器裝置，以數位方式連線並監視零售商店環境。 這些感應器裝置會產生遙測資料，而您可以將其轉換成商業深入解析，以協助零售商降低營運成本，並且為其客戶創造絕佳的體驗。
 
 使用應用程式範本可以：
 
@@ -149,7 +149,7 @@ IoT Central 的微型物流中心應用程式範本可讓解決方案建置者�
 
 應用程式範本可讓您： 
 
-- 將各種 IoT 感應器 (例如機器人或條件監視感應器) 緊密連線至 IoT Central 應用程式執行個體。
+- 將不同 IoT 感應器 (例如機器人或條件監視感應器) 緊密連線至 IoT Central 應用程式執行個體。
 - 監視和管理環境中的感應器網路和任何閘道裝置的健康情況。
 - 建立根據物流中心內的環境條件觸發適當警示的自訂規則。
 - 將物流中心內部環境條件轉換為零售倉儲團隊可以運用的深入解析。

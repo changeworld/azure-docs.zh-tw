@@ -3,42 +3,34 @@ title: 快速入門：Azure Blob 儲存體程式庫 v12 - Java
 description: 在本快速入門中，您將了解如何使用適用於 Java 的 Azure Blob 儲存體用戶端程式庫 12 版，在 Blob (物件) 儲存體中建立容器與 Blob。 接下來，您要了解如何將 Blob 下載到本機電腦，以及如何列出容器中的所有 Blob。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 11/05/2019
+ms.date: 01/27/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: ffd91bbcc33ef313d496e793c8263126db81b685
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: a76b1c8688a6458dc55a106525c77c5979e2e011
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863939"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906516"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v12-for-java"></a>快速入門：適用於 Java 的 Azure Blob 儲存體用戶端程式庫 v12
+# <a name="quickstart-manage-blobs-with-java-v12-sdk"></a>快速入門：使用 Java v12 SDK 來管理 Blob
 
-開始使用適用於 Java 的 Azure Blob 儲存體用戶端程式庫 v12。 Azure Blob 儲存體是 Microsoft 針對雲端推出的物件儲存體解決方案。 請依照下列步驟來安裝套件，並試用基本工作的範例程式碼。 Blob 儲存體經過最佳化，已能妥善儲存大量的非結構化資料。
-
-> [!NOTE]
-> 若要開始使用舊版 SDK，請參閱[快速入門：適用於 Java 的 Azure Blob 儲存體用戶端程式庫](storage-quickstart-blobs-java-legacy.md)。
-
-使用適用於 Java 的 Azure Blob 儲存體用戶端程式庫 v12：
-
-* 建立容器
-* 將 Blob 上傳至 Azure 儲存體
-* 列出容器中的所有 Blob
-* 將 Blob 下載到本機電腦
-* 刪除容器
+在本快速入門中，您將了解如何使用 Java 來管理 Blob。 Blob 是可保存大量文字或二進位資料的物件，包括影像、文件、串流媒體和封存資料。 您將上傳、下載及列出 Blob，且將建立和刪除容器。
 
 [API 參考文件](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob) | [套件 (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob?repo=jcenter) | [範例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)
 
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
-
 ## <a name="prerequisites"></a>Prerequisites
 
-* [Java 開發套件 (JDK)](/java/azure/jdk/?view=azure-java-stable) 8 版或更新版本
-* [Apache Maven](https://maven.apache.org/download.cgi)
-* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
-* Azure 儲存體帳戶 - [建立儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- Azure 儲存體帳戶。 [建立儲存體帳戶](../common/storage-account-create.md)。
+- [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable) 第 8 版或更新版本。
+- [Apache Maven](https://maven.apache.org/download.cgi)。
+
+> [!NOTE]
+> 若要開始使用舊版 SDK，請參閱[快速入門：使用 Java v8 SDK 來管理 Blob](storage-quickstart-blobs-java-legacy.md)。
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="setting-up"></a>設定
 
@@ -48,7 +40,7 @@ ms.locfileid: "75863939"
 
 建立名為 *blob-quickstart-v12* 的 Java 應用程式。
 
-1. 在主控台視窗中 (例如 cmd、PowerShell 或 Bash)，使用 Maven 建立名為 *blob-quickstart-v12* 的新主控台應用程式。 鍵入下列 **mvn** 命令，以建立簡單的 "Hello world!" Java 專案。
+1. 在主控台視窗中 (例如 cmd、PowerShell 或 Bash)，使用 Maven 建立名為 *blob-quickstart-v12* 的新主控台應用程式。 鍵入下列 **mvn** 命令，以建立 "Hello world!" Java 專案。
 
    ```console
    mvn archetype:generate -DgroupId=com.blobs.quickstart \
@@ -287,7 +279,7 @@ blobClient.downloadToFile(localPath + downloadFileName);
 
 下列程式碼會使用 [delete](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#delete--) 方法移除整個容器，以清除應用程式所建立的資源。 它也會刪除應用程式所建立的本機檔案。
 
-應用程式會在刪除 Blob、容器和本機檔案之前呼叫 `System.console().readLine()`，藉以暫停使用者輸入。 這是很好的機會，可以在刪除資源之前，先確認實際上已正確地建立這些資源。
+應用程式會在刪除 Blob、容器和本機檔案之前呼叫 `System.console().readLine()`，藉以暫停使用者輸入。 您可以利用這個機會，在刪除資源之前先確認這些資源已正確建立。
 
 將此程式碼加入到 `Main` 方法的結尾處：
 

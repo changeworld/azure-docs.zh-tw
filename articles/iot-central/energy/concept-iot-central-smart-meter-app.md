@@ -8,16 +8,16 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: cab593990369bb8a4135e82534a2eb409b574e96
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 8f3772c1d65780337c421cfaaa7b70d7ac7186cf
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582754"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024308"
 ---
 # <a name="azure-iot-central---smart-meter-app-architecture"></a>Azure IoT Central - 智慧型電表應用程式架構
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 此文章提供智慧型電表監視應用程式範本架構的概觀。 下圖顯示在 Azure 上使用 IoT Central 平台之智慧型電表應用程式的常用架構。
 
@@ -28,7 +28,7 @@ ms.locfileid: "73582754"
 
 ## <a name="smart-meters-and-connectivity"></a>智慧型電表與連線能力 
 
-智慧型電表是所有能源資產中最重要的裝置之一。 它會記錄能源耗用量資料並將其傳遞到公用程式，以進行監視並用於其他使用案例，例如計費和需求回應。 根據電表類型，它可以透過閘道或透過其他中繼裝置或系統 (例如邊緣裝置和前端系統) 連線到 IoT Central。 建置 IoT Central 裝置橋接器來連線無法直接連線的裝置。 IoT Central 裝置橋接器是一個開放原始碼解決方案，您可以[在這裡](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge) \(部分機器翻譯\) 找到完整詳細資料。 
+智慧型電表是所有能源資產中最重要的裝置之一。 它會記錄能源耗用量資料並將其傳遞到公用程式，以進行監視並用於其他使用案例，例如計費和需求回應。 根據電表類型，其可以使用閘道或其他中繼裝置或系統 (例如邊緣裝置和前端系統) 連線到 IoT Central。 建置 IoT Central 裝置橋接器來連線無法直接連線的裝置。 IoT Central 裝置橋接器是一個開放原始碼解決方案，您可以[在這裡](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge) \(部分機器翻譯\) 找到完整詳細資料。 
 
 
 ## <a name="iot-central-platform"></a>IoT Central 平台

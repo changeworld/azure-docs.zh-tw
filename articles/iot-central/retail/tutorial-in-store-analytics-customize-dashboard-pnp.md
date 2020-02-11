@@ -11,18 +11,17 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: f9624f516d5f38f1db02c6a103c40d01f8dc26ca
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: fea3440dd7c017b85d6fffa2ec0fe5d26cd98b97
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702695"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022166"
 ---
 # <a name="tutorial--customize-the-operator-dashboard-and-manage-devices-in-azure-iot-central"></a>教學課程：在 Azure IoT Central 中自訂操作員儀表板及管理裝置
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-此教學課程為建置者說明如何在 Azure IoT Central 店內分析應用程式中自訂操作員儀表板。 應用程式操作員可以使用自訂儀表板來執行應用程式及管理已連結的裝置。
+在此教學課程中，建置者必須了解如何在 Azure IoT Central 店內分析應用程式中自訂操作員儀表板。 應用程式操作員可以使用自訂儀表板來執行應用程式及管理已連結的裝置。
 
 在本教學課程中，您會了解如何：
 > [!div class="checklist"]
@@ -33,14 +32,14 @@ ms.locfileid: "74702695"
 > * 新增屬性圖格以顯示裝置詳細資料
 > * 新增命令圖格以執行命令
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-在您開始此教學課程之前，建置者應完成第一個教學課程，以建立 Azure IoT Central 應用程式並新增裝置：
+建置者應完成教學課程，以建立 Azure IoT Central 應用程式並新增裝置：
 
 * [在 Azure IoT Central 中建立店內分析應用程式](./tutorial-in-store-analytics-create-app-pnp.md) (必要)
 
 ## <a name="change-the-dashboard-name"></a>變更儀表板名稱
-若要自訂操作員儀表板，您可以編輯應用程式中的預設儀表板。 您也可以選擇建立額外的新儀表板。 在您應用程式中自訂儀表板的第一個步驟是變更名稱。
+若要自訂操作員儀表板，您必須編輯應用程式中的預設儀表板。 您也可以選擇建立額外的新儀表板。 在您應用程式中自訂儀表板的第一個步驟是變更名稱。
 
 1. 瀏覽至 [Azure IoT Central 的應用程式管理員](https://aka.ms/iotcentral)網站。
 
@@ -54,7 +53,7 @@ ms.locfileid: "74702695"
 
 1. 在 [儀表板名稱]  中，為您的儀表板輸入易記名稱。 此教學課程使用名為 Contoso 的虛構公司，而範例儀表板名稱為「Contoso 儀表板」  。 
 
-1. 選取 [儲存]  。 這會儲存您對儀表板的變更並停用編輯模式。
+1. 選取 [儲存]  。 您的變更便會儲存到儀表板，並停用編輯模式。
 
     ![Azure IoT Central 變更儀表板名稱](./media/tutorial-in-store-analytics-customize-dashboard-pnp/dashboard-change-name.png)
 

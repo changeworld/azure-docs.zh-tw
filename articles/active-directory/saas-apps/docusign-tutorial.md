@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3022303f319ba7955f80ae0b52783fa9b5d411f2
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 01f969c3bc6f546025b3bbe5826181efdfa69be0
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290065"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983607"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 DocuSign 整合
 
@@ -238,8 +238,6 @@ ms.locfileid: "76290065"
 - [嘗試搭配 Azure AD 使用 DocuSign](https://aad.portal.azure.com/)
 
 - [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [如何使用進階可見性和控制項保護 DocuSign](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 <!--Image references-->
 

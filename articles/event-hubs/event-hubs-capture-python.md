@@ -13,23 +13,23 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 01/08/2020
+ms.date: 01/15/2020
 ms.author: shvija
-ms.openlocfilehash: e81871e27c04f8a43f678110d7f44cc9c3be149c
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: c6c27a269abfd6fbf29ec7bbb0980d764abaa242
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940748"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904497"
 ---
-# <a name="quickstart-event-hubs-capture-walkthrough-python"></a>快速入門：事件中樞擷取逐步解說︰Python
+# <a name="quickstart-event-hubs-capture-walkthrough-python-azure-eventhub-version-1"></a>快速入門：事件中樞擷取逐步解說︰Python (azure-eventhub 第 1 版)
 
 擷取是 Azure 事件中樞的功能。 您可以使用「擷取」，將事件中樞內的串流資料自動傳遞至您選擇的 Azure Blob 儲存體帳戶。 此功能可讓您輕鬆地對即時串流資料執行批次處理。 本文說明如何搭配使用事件中樞擷取與 Python。 如需事件中樞擷取的詳細資訊，請參閱[透過 Azure 事件中樞擷取事件][Overview of Event Hubs Capture]。
 
 此逐步解說使用 [Azure Python SDK](https://azure.microsoft.com/develop/python/) 來示範「擷取」功能。 *sender.py* 程式會以 JSON 格式將模擬的環境遙測傳送至事件中樞。 事件中樞會使用擷取功能，將此資料分批寫入至 Blob 儲存體。 *capturereader.py* 應用程式會讀取這些 Blob、為每個裝置建立附加檔案，並將資料寫入至每個裝置上的 *.csv* 檔案。
 
-> [!IMPORTANT]
-> 本快速入門使用第 1 版的 Azure 事件中樞 Python SDK。 如果您不熟悉 Azure 事件中樞，請使用第 5 版的 Python SDK。 如需使用第 5 版 Python SDK 的快速入門，請參閱[這篇文章](get-started-capture-python-v2.md)。 如果您需要將現有的程式碼從第 1 版遷移至第 5 版，請參閱[移轉指南](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md)。
+> [!WARNING]
+> 本快速入門適用於第 1 版的 Azure 事件中樞 Python SDK。 建議您將程式碼[遷移](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md)至 [Python SDK 第 5 版](get-started-capture-python-v2.md)。
 
 在本逐步解說中，您將： 
 

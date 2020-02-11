@@ -11,26 +11,26 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
-ms.openlocfilehash: b85dd8d899a7e5d7d9f9d41ad7e2872249ee29c5
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 9dcb185ab8375d46c75a12e6adaeeae2358c13ac
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702007"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022081"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>教學課程：從 Azure IoT Central 匯出資料並以視覺化方式呈現 Power BI 中的見解
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 在先前的兩個教學課程中，您使用**店內分析 - 結帳**應用程式範本建立和自訂 IoT Central 應用程式。 在本教學課程中，您將設定 IoT Central 應用程式以匯出從裝置收集的遙測資料。 您接著將使用 Power BI 為商店經理建立自訂儀表板，以視覺化方式呈現從遙測得到的見解。
 
-在本教學課程中，您會了解如何：
+在本教學課程中，您將學會如何：
 > [!div class="checklist"]
 > * 設定 IoT Central 應用程式，以便將遙測資料匯出至事件中樞。
 > * 使用 Logic Apps 從事件中樞將資料傳送到 Power BI 串流資料集。
 > * 建立 Power BI 儀表板，以視覺化方式呈現串流資料集中的資料。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，您需要：
 
@@ -57,7 +57,7 @@ ms.locfileid: "74702007"
 在設定零售監視應用程式匯出遙測資料之前，您需要先建立事件中樞來接收匯出的資料。 下列步驟顯示如何建立事件中樞：
 
 1. 在 Azure 入口網站中，選取畫面左上方的 [建立資源]  。
-1. 在**搜尋 Marketplace** 中，輸入_事件中樞_，然後按 **Enter**。
+1. 在 [搜尋 Marketplace]  中，輸入_事件中樞_，然後按 **Enter**。
 1. 在 [事件中樞]  頁面上，選取 [建立]  。
 1. 在 [建立命名空間]  頁面上，採取下列步驟：
     * 輸入命名空間的唯一名稱，例如_您的名稱-retail-store-analysis_。 系統會檢查此名稱是否可用。
@@ -110,7 +110,7 @@ ms.locfileid: "74702007"
 
     | 值名稱  | 值類型 |
     | ----------- | ---------- |
-    | Timestamp   | Datetime   |
+    | 時間戳記   | Datetime   |
     | 溼度    | Number     |
     | 溫度 | Number     |
 
@@ -133,7 +133,7 @@ ms.locfileid: "74702007"
 
     | 值名稱     | 值類型 |
     | -------------- | ---------- |
-    | Timestamp      | Datetime   |
+    | 時間戳記      | Datetime   |
     | 佇列長度 1 | Number     |
     | 佇列長度 2 | Number     |
     | 停留時間 1   | Number     |
@@ -440,12 +440,12 @@ ms.locfileid: "74702007"
 
 | 設定 | 圖表 #1 | 圖表 #2 | 圖表 #3 | 圖表 #4 |
 | ------- | -------- | -------- | -------- | -------- |
-| Dataset | 區域 1 感應器 | 區域 1 感應器 | 區域 2 感應器 | 區域 2 感應器 |
+| 資料集 | 區域 1 感應器 | 區域 1 感應器 | 區域 2 感應器 | 區域 2 感應器 |
 | 視覺效果類型 | 折線圖 | 折線圖 | 折線圖 | 折線圖 |
-| 軸 | Timestamp | Timestamp | Timestamp | Timestamp |
+| 軸 | 時間戳記 | 時間戳記 | 時間戳記 | 時間戳記 |
 | 值 | 溫度 | 溼度 | 溫度 | 溼度 |
 | 時間範圍 | 60 Minuten | 60 Minuten | 60 Minuten | 60 Minuten |
-| 標題 | 溫度 (1 小時) | 濕度 (1 小時) | 溫度 (1 小時) | 濕度 (1 小時) |
+| Title | 溫度 (1 小時) | 濕度 (1 小時) | 溫度 (1 小時) | 濕度 (1 小時) |
 | 副標題 | 區域 1 | 區域 1 | 區域 2 | 區域 2 |
 
 下列螢幕擷取畫面顯示第一個圖表的設定：
@@ -458,10 +458,10 @@ ms.locfileid: "74702007"
 
 | 設定 | 卡片 #1 | 卡片 #2 | 卡片 #3 | 卡片 #4 |
 | ------- | ------- | ------- | ------- | ------- |
-| Dataset | 區域 1 感應器 | 區域 1 感應器 | 區域 2 感應器 | 區域 2 感應器 |
+| 資料集 | 區域 1 感應器 | 區域 1 感應器 | 區域 2 感應器 | 區域 2 感應器 |
 | 視覺效果類型 | 卡片 | 卡片 | 卡片 | 卡片 |
 | 欄位 | 溫度 | 溼度 | 溫度 | 溼度 |
-| 標題 | 溫度 (F) | 濕度 (%) | 溫度 (F) | 濕度 (%) |
+| Title | 溫度 (F) | 濕度 (%) | 溫度 (F) | 濕度 (%) |
 | 副標題 | 區域 1 | 區域 1 | 區域 2 | 區域 2 |
 
 下列螢幕擷取畫面顯示第一張卡的設定：
@@ -474,12 +474,12 @@ ms.locfileid: "74702007"
 
 | 設定 | 卡片 #1 | 卡片 #2 | 卡片 #3 | 卡片 #4 |
 | ------- | ------- | ------- | ------- | ------- |
-| Dataset | 佔用量感應器 | 佔用量感應器 | 佔用量感應器 | 佔用量感應器 |
+| 資料集 | 佔用量感應器 | 佔用量感應器 | 佔用量感應器 | 佔用量感應器 |
 | 視覺效果類型 | 群組直條圖 | 群組直條圖 | 量測計 | 量測計 |
-| 軸    | Timestamp | Timestamp | N/A | N/A |
+| 軸    | 時間戳記 | 時間戳記 | N/A | N/A |
 | 值 | 停留時間 1 | 停留時間 2 | 佇列長度 1 | 佇列長度 2 |
 | 時間範圍 | 60 Minuten | 60 Minuten |  N/A | N/A |
-| 標題 | 停留時間 | 停留時間 | 佇列長度 | 佇列長度 |
+| Title | 停留時間 | 停留時間 | 佇列長度 | 佇列長度 |
 | 副標題 | 結帳 1 | 結帳 2 | 結帳 1 | 結帳 2 |
 
 調整儀表板上的圖格大小並重新排列圖格，如下列螢幕擷取畫面所示：

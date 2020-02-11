@@ -12,12 +12,12 @@ ms.custom: mvc
 ms.date: 09/12/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 01adebbab1e39e2de5603be4c95335a5fe40ef06
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f36b705d590f34a79aefe14355f25f7639562d2a
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841406"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76908967"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-desktop-app-using-azure-active-directory-b2c"></a>快速入門：設定使用 Azure Active Directory B2C 登入傳統型應用程式
 
@@ -29,7 +29,7 @@ Azure Active Directory B2C (Azure AD B2C) 提供雲端身分識別管理，使�
 
 - [Visual Studio 2019](https://www.visualstudio.com/downloads/)，其中包含 **ASP.NET 和 Web 部署**工作負載。
 - Facebook、Google 或 Microsoft 社交帳戶。
-- [下載 zip 檔案](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop/archive/master.zip)，或從 GitHub 複製範例 Web 應用程式。
+- [下載 zip 檔案](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop/archive/msalv3.zip)，或從 GitHub 複製 [Azure-Samples/active-directory-b2c-dotnet-desktop](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop) 存放庫。
 
     ```
     git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop.git

@@ -10,14 +10,14 @@ ms.workload: identity
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: ajburnle
-ms.custom: it-pro, seodec18
+ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ef577f5d086b22779392cd6d8b5d43a340f7329
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: de205beaf9800c2061cc41343b4153bd0e2b5dc7
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423107"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024597"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>快速入門：在 Azure Active Directory 中建立新的租用戶
 您可以使用 Azure Active Directory (Azure AD) 入口網站執行所有的系統管理工作，包括為您的組織建立新的租用戶。 
@@ -31,7 +31,7 @@ ms.locfileid: "75423107"
 
 ### <a name="to-create-a-new-tenant"></a>建立新的租用戶
 
-1. 使用全域系統管理員帳戶登入組織的 [Azure 入口網站](https://portal.azure.com/)。
+1. 登入組織的 [Azure 入口網站](https://portal.azure.com/)。
 
 1. 從 Azure 入口網站功能表選取 [建立資源]  。  
 
@@ -58,6 +58,7 @@ ms.locfileid: "75423107"
 ## <a name="clean-up-resources"></a>清除資源
 如果您不打算繼續使用此應用程式，可以使用下列步驟刪除租用戶：
 
+- 請確定您已透過 Azure 入口網站中的 [目錄 + 訂用帳戶]  篩選器登入您要刪除的目錄，並視需要切換至目標目錄。
 - 選取 [Azure Active Directory]  ，然後在 [Contoso - 概觀]  頁面上，選取 [刪除目錄]  。
 
     這將刪除租用戶與其相關聯的資訊。

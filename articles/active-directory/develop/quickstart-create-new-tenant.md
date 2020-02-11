@@ -12,13 +12,13 @@ ms.topic: quickstart
 ms.date: 02/05/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 860577938eab0f7561e9b66d0f58c9fc0d077b26
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.custom: fasttrack-edit
+ms.openlocfilehash: e4a4e9d8d1d100fe2e8c35053cea31c55b0f030d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704148"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023152"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>快速入門：設定租用戶
 
@@ -57,7 +57,7 @@ Microsoft 身分識別平台可讓開發人員建置以各種自訂 Microsoft 36
 
 ### <a name="create-a-new-azure-ad-tenant"></a>建立新的 Azure AD 租用戶
 
-如果您還沒有 Azure AD 租用戶，或是想要針對開發目的建立一個新的租用戶，請依照[目錄建立經驗](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory)中所述的步驟執行。 您必須提供下列資訊才能建立新的租用戶：
+如果您還沒有 Azure AD 租用戶，或是想要針對開發目的建立一個新的租用戶，請參閱[快速入門](../fundamentals/active-directory-access-create-new-tenant.md)，或直接依照[目錄建立經驗](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory)中的指示操作。 您必須提供下列資訊才能建立新的租用戶：
 
 - **組織名稱**
 - **初始網域** - 這會是 *.onmicrosoft.com 的一部分。 您可以稍後自訂更多網域設定。

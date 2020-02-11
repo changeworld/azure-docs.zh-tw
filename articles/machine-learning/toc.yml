@@ -53,6 +53,9 @@
             - name: 批次評分分類模型
               displayName: pipelines
               href: tutorial-pipeline-batch-scoring-classification.md
+        - name: 從實驗到生產
+          displayName: 'mlops, mlopspython, production'
+          href: tutorial-convert-ml-experiment-to-production.md
     - name: R SDK
       items:
         - name: 建立第一個 ML 實驗 (R)
@@ -125,6 +128,8 @@
               href: how-to-enable-virtual-network.md
             - name: 使用 SSL 保護 Web 服務
               href: how-to-secure-web-service.md
+            - name: 在 AKS 部署中使用 Azure AD 身分識別
+              href: how-to-use-azure-ad-identity.md
             - name: 重新產生儲存體存取金鑰
               href: how-to-change-storage-access-key.md
         - name: 設定驗證
@@ -348,6 +353,8 @@
           href: how-to-create-your-first-pipeline.md
         - name: 排程管線 (Python)
           href: how-to-schedule-pipelines.md
+        - name: 觸發管線
+          href: how-to-trigger-published-pipeline.md
         - name: 管線偵錯與疑難排解
           href: how-to-debug-pipelines.md
         - name: 對 Application Insights 中的管線進行偵錯

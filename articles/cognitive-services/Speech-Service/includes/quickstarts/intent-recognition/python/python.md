@@ -1,28 +1,24 @@
 ---
-title: 快速入門：辨識語音、意圖和實體，Python - 語音服務
-titleSuffix: Azure Cognitive Services
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.date: 01/02/2020
+ms.date: 01/27/2020
 ms.topic: include
-ms.author: erhopf
+ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: f2a46b8a0868aaa1097dd7f1ae738a2a3e06e3b8
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9bc514c32d97958d8ab154dc2c5533747f380e86
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772932"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900500"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
 開始之前：
 
-* 如果這是您的第一個 Python 專案，請使用本指南<a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md" target="_blank">建立空的範例專案</a>。
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md" target="_blank">為您的開發環境安裝語音 SDK</a>。
+* 如果這是您的第一個 Python 專案，請使用本指南<a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md" target="_blank">建立空的範例專案<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md" target="_blank">為您的開發環境安裝語音 SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>建立意圖辨識的 LUIS 應用程式
 
@@ -65,7 +61,7 @@ ms.locfileid: "75772932"
 
 ## <a name="add-a-languageunderstandingmodel-and-intents"></a>新增 LanguageUnderstandingModel 和意圖
 
-您必須將 `LanguageUnderstandingModel` 與意圖辨識器建立關聯，並新增您要辨識的意圖。 我們將使用預先建置之網域中的意圖來進行家庭自動化。 
+您必須將 `LanguageUnderstandingModel` 與意圖辨識器建立關聯，並新增您要辨識的意圖。 我們將使用預先建置之網域中的意圖來進行家庭自動化。
 
 在 `IntentRecognizer` 下方插入此程式碼。 請務必將 `"YourLanguageUnderstandingAppId"` 取代為您的 LUIS 應用程式識別碼。 
 
@@ -90,7 +86,7 @@ ms.locfileid: "75772932"
 
 ## <a name="check-your-code"></a>檢查您的程式碼
 
-此時，您的程式碼應會如下所示：  
+此時，您的程式碼應會如下所示：
 
 > [!NOTE]
 > 我們已在此版本中新增一些註解。

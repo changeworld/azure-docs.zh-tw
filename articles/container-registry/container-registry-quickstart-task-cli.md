@@ -1,14 +1,14 @@
 ---
 title: 快速入門 - 建置和執行容器映像
-description: 使用 Azure Container Registry 快速執行工作，在雲端中建置和部署隨選的容器映像。
+description: 使用 Azure Container Registry 快速執行工作，在雲端中建置和部署隨選的 Docker 容器映像。
 ms.topic: quickstart
-ms.date: 04/02/2019
-ms.openlocfilehash: f0b510607a4d0acf12e0b9caa43835c1cfe6a83d
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.date: 01/31/2020
+ms.openlocfilehash: f08f10dd170acaa8594ad5a47f5ef58e27288b10
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454940"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986269"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>快速入門：使用 Azure Container Registry 工作建置和執行容器映像
 
@@ -44,7 +44,7 @@ az acr create --resource-group myResourceGroup --name myContainerRegistry008 --s
 
 ## <a name="build-an-image-from-a-dockerfile"></a>從 Dockerfile 建置映像
 
-現在，請使用 Azure Container Registry 建置映像。 首先請建立工作目錄，然後使用下列內容建立名為 *Dockerfile* 的 Dockerfile。 這是建置 Linux 容器映像的簡單範例，但您可以自行建立標準 Dockerfile，並建置適用於其他平台的映像。
+現在，請使用 Azure Container Registry 建置映像。 首先請建立工作目錄，然後使用下列內容建立名為 *Dockerfile* 的 Dockerfile。 這是建置 Linux 容器映像的簡單範例，但您可以自行建立標準 Dockerfile，並建置適用於其他平台的映像。 本文中的命令範例會針對 Bash 殼層進行格式化。
 
 ```bash
 echo FROM hello-world > Dockerfile
@@ -53,7 +53,9 @@ echo FROM hello-world > Dockerfile
 執行 [az acr build][az-acr-build] 命令以建置映像。 成功建置後，映像會推送至您的登錄。 下列範例會推送 `sample/hello-world:v1` 映像。 命令結尾處的 `.` 會設定 Dockerfile 的位置，在此案例中為目前的目錄。
 
 ```azurecli-interactive
-az acr build --image sample/hello-world:v1 --registry myContainerRegistry008 --file Dockerfile . 
+az acr build --image sample/hello-world:v1 \
+  --registry myContainerRegistry008 \
+  --file Dockerfile . 
 ```
 
 成功的建置會產生如下的輸出並推送：
@@ -110,22 +112,16 @@ Run ID: ca8 was successful after 10s
 
 ## <a name="run-the-image"></a>執行映像
 
-現在，請快速執行您已建置並推送至登錄的映像。 在容器開發工作流程中，這可能是您部署映像之前的驗證步驟。
+現在，請快速執行您已建置並推送至登錄的映像。 在此，您會使用 [az acr run][az-acr-run] 執行容器命令。 在容器開發工作流程中，這可以作為您部署映像之前的驗證步驟，或者，您可以將命令納入[多步驟 YAML 檔案][container-registry-tasks-multi-step]中。 
 
-在本機工作目錄中使用下列內容建立 *quickrun.yaml* 檔案，以進行單一步驟。 請將 *\<acrLoginServer\>* 取代為您登錄的登入伺服器名稱。 登入伺服器名稱的格式為 *\<registry-name\>.azurecr.io* (全部小寫)，例如 *mycontainerregistry008.azurecr.io*。 此範例假設您已在上一節中建置並推送 `sample/hello-world:v1` 映像：
-
-```yml
-steps:
-  - cmd: <acrLoginServer>/sample/hello-world:v1
-```
-
-在此範例中的 `cmd` 步驟會執行其預設組態中的容器，但 `cmd` 支援其他 `docker run` 參數甚或其他 `docker` 命令。
-
-使用下列命令執行容器：
+下列範例會使用 `$Registry` 來指定命令執行所在的登錄：
 
 ```azurecli-interactive
-az acr run --registry myContainerRegistry008 --file quickrun.yaml .
+az acr run --registry myContainerRegistry008 \
+  --cmd '$Registry/sample/hello-world:v1' /dev/null
 ```
+
+在此範例中的 `cmd` 參數會執行其預設組態中的容器，但 `cmd` 支援其他 `docker run` 參數甚或其他 `docker` 命令。
 
 輸出大致如下：
 
@@ -182,10 +178,10 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>後續步驟
 
-在此快速入門中，您已使用 ACR 工作的功能，以原生方式在 Azure 中快速建置、推送及執行 Docker 容器映像。 請繼續進行 Azure Container Registry 教學課程，以了解如何使用 ACR 工作將映像建置和更新自動化。
+在此快速入門中，您已使用 ACR 工作的功能，以原生方式在 Azure 中快速建置、推送及執行 Docker 容器映像，而未安裝本機 Docker。 請繼續進行 Azure Container Registry 工作教學課程，以了解如何使用 ACR 工作將映像建置和更新自動化。
 
 > [!div class="nextstepaction"]
-> [Azure Container Registry 教學課程][container-registry-tutorial-quick-task]
+> [Azure Container Registry 工作教學課程][container-registry-tutorial-quick-task]
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms
@@ -201,10 +197,12 @@ az group delete --name myResourceGroup
 <!-- LINKS - internal -->
 [az-acr-create]: /cli/azure/acr#az-acr-create
 [az-acr-build]: /cli/azure/acr#az-acr-build
+[az-acr-run]: /cli/azure/acr#az-acr-run
 [az-group-create]: /cli/azure/group#az-group-create
 [az-group-delete]: /cli/azure/group#az-group-delete
 [azure-cli]: /cli/azure/install-azure-cli
 [container-registry-tasks-overview]: container-registry-tasks-overview.md
+[container-registry-tasks-multi-step]: container-registry-tasks-multi-step.md
 [container-registry-tutorial-quick-task]: container-registry-tutorial-quick-task.md
 [container-registry-skus]: container-registry-skus.md
 [azure-cli-install]: /cli/azure/install-azure-cli

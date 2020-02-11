@@ -6,23 +6,23 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.openlocfilehash: 8749f7dee2ceeb09e37cc97d4e5bfe76c52e2da6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 64c5d80b5a2660164b21e71f06e847d5b11e40da
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438746"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964411"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>教學課程：使用 Azure Data Share 共用資料  
 
 在本教學課程中，您會了解如何設定新的 Azure Data Share，並開始與 Azure 組織外的客戶及合作夥伴共用資料。 
 
-在本教學課程中，您將了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 建立 Data Share。
 > * 將資料集新增至 Data Share。
-> * 為 Data Share 啟用同步處理排程。 
+> * 為 Data Share 啟用快照集排程。 
 > * 將收件者新增至 Data Share。 
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -33,25 +33,36 @@ ms.locfileid: "75438746"
 ### <a name="share-from-a-storage-account"></a>從儲存體帳戶共用：
 
 * Azure 儲存體帳戶：如果您還沒有此帳戶，則可以建立 [Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* 將角色指派新增至儲存體帳戶的權限，其存在於 Microsoft.Authorization/role assignments/write  權限中。 此權限存在於擁有者角色中。 
+* 寫入儲存體帳戶的權限，存在於 Microsoft.Storage/storageAccounts/write  中。 此權限存在於參與者角色中。
+* 將角色指派新增至儲存體帳戶的權限，存在於 Microsoft.Authorization/role assignments/write  中。 此權限存在於擁有者角色中。 
+
 
 ### <a name="share-from-a-sql-based-source"></a>從 SQL 型來源共用：
 
-* Azure SQL Database 或 Azure SQL 資料倉儲，具有您想要共用的資料表和檢視。
+* Azure SQL Database 或 Azure Synapse Analytics (先前稱為 Azure SQL 資料倉儲)，具有您要共用的資料表和檢視。
+* 對 SQL Server 上的資料庫進行寫入的權限，存在於 Microsoft.Sql/servers/databases/write  中。 此權限存在於參與者角色中。
 * 存取資料倉儲的資料共用權限。 這可以透過下列步驟完成： 
-    1. 將自己設定為伺服器的 Azure Active Directory 系統管理員。
+    1. 將您自己設定為 SQL Server 的 Azure Active Directory 系統管理員。
     1. 使用 Azure Active Directory 連線到 Azure SQL Database/資料倉儲。
-    1. 使用查詢編輯器 (預覽) 來執行下列指令碼，將 Data Share MSI 新增為 db_owner。 您必須使用 Active Directory 連線，而不是使用 SQL Server 驗證。 
+    1. 使用查詢編輯器 (預覽) 執行下列指令碼，將 Data Share 資源受控識別新增為 db_datareader。 您必須使用 Active Directory 連線，而不是使用 SQL Server 驗證。 
     
-```sql
-    create user <share_acct_name> from external provider;     
-    exec sp_addrolemember db_owner, <share_acct_name>; 
-```                   
-請注意， *<share_acc_name>* 是您 Data Share 帳戶的名稱。 如果您尚未建立 Data Share 帳戶，您可以稍後再回到此先決條件。  
+        ```sql
+        create user "<share_acct_name>" from external provider;     
+        exec sp_addrolemember db_datareader, "<share_acct_name>"; 
+        ```                   
+       請注意， *<share_acc_name>* 是您 Data Share 資源的名稱。 如果您尚未建立 Data Share 資源，您可以稍後再回到此先決條件。  
 
-* 具有 [`db_owner` 存取權](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins#non-administrator-users)的 Azure SQL Database 使用者，可瀏覽並選取您想共用的資料表和/或檢視。 
+* 具有 'db_datareader' 存取權的 Azure SQL Database 使用者，可瀏覽並選取您想共用的資料表和/或檢視。 
 
-* 用戶端 IP SQL Server 防火牆存取：這可以透過下列步驟完成：1. 瀏覽至 [防火牆與虛擬網路]  。 按一下 [開啟]  切換開關，以允許存取 Azure 服務。 
+* 用戶端 IP SQL Server 防火牆存取。 這可以透過下列步驟完成： 
+    1. 在 Azure 入口網站的 SQL Server 中，瀏覽至 [防火牆和虛擬網路] 
+    1. 按一下 [開啟]  切換開關，以允許存取 Azure 服務。
+    1. 按一下 [+ 新增用戶端 IP]  ，然後按一下 [儲存]  。 用戶端 IP 位址可能會有所變更。 您也可以新增 IP 範圍。 
+
+### <a name="share-from-azure-data-explorer"></a>從 Azure 資料總管共用
+* Azure 資料總管叢集，其中包含您想要共用的資料庫。
+* 寫入 Azure 資料總管叢集的權限，存在於 Microsoft.Kusto/clusters/write  中。 此權限存在於參與者角色中。
+* 將角色指派新增至 Azure 資料總管叢集的權限，存在於 Microsoft.Authorization/role assignments/write  中。 此權限存在於擁有者角色中。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
@@ -91,7 +102,7 @@ ms.locfileid: "75438746"
 
 1. 選取 [建立]  。   
 
-1. 填寫 Data Share 的詳細資料。 指定名稱、共用內容的說明和使用規定 (選擇性)。 
+1. 填寫 Data Share 的詳細資料。 指定名稱、共用類型、共用內容的說明和使用規定 (選擇性)。 
 
     ![EnterShareDetails](./media/enter-share-details.png "輸入共用詳細資料") 
 
@@ -101,7 +112,7 @@ ms.locfileid: "75438746"
 
     ![資料集](./media/datasets.png "資料集")
 
-1. 選取您想要新增的資料集類型。 如果從 Azure SQL Database 或 Azure SQL 資料倉儲共用，系統會提示您提供一些 SQL 認證。 使用您建立為必要條件的使用者進行驗證。
+1. 選取您想要新增的資料集類型。 根據您在先前的步驟中選取的共用類型 (快照集或就地)，您將看到不同的資料集類型清單。 如果從 Azure SQL Database 或 Azure SQL 資料倉儲共用，系統將會提示您提供某些 SQL 認證。 使用您建立為必要條件的使用者進行驗證。
 
     ![AddDatasets](./media/add-datasets.png "新增資料集")    
 
@@ -115,7 +126,7 @@ ms.locfileid: "75438746"
 
 1. 選取 [繼續] 
 
-1. 如果您想要讓資料取用者能夠取得資料的累加更新，請啟用快照集排程。 
+1. 如果您已選取快照集共用類型，則可以設定快照集排程，將資料的更新提供給資料取用者。 
 
     ![EnableSnapshots](./media/enable-snapshots.png "啟用快照集") 
 

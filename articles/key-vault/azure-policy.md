@@ -1,17 +1,17 @@
 ---
 title: 整合 Azure Key Vault 與 Azure 原則
-description: 了解如何使用 .NET 用戶端程式庫 (v4)，從 Azure Key Vault 建立、擷取和刪除秘密
+description: 了解如何整合 Azure Key Vault 與 Azure 原則
 author: msmbaldwin
 ms.author: mbaldwin
-ms.date: 11/12/2019
+ms.date: 01/28/2020
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: b59b367d38f95bafe7d3e1320d1365f708dc75dd
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: c32d2fb45bbd4f4a9b4845bb4ef27a439d536677
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077207"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905863"
 ---
 # <a name="integrate-azure-key-vault-with-azure-policy"></a>整合 Azure Key Vault 與 Azure 原則
 

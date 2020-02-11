@@ -9,20 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 12/11/2019
+ms.date: 01/28/2020
 ms.author: diberry
-ms.openlocfilehash: 0ddce3e4112dfb14309878927493abb3cb6b451a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a9afef07af1332910cc9e25f9d66db5930df3bd4
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447375"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901669"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v4"></a>教學課程：使用 Azure Bot 服務 v4 建立 QnA Bot
 
 從 [發佈]  頁面建立現有知識庫的 QnA 聊天 Bot。 此 Bot 使用 Bot Framework SDK v4。 您不需要撰寫任何程式碼來建置 Bot，所有程式碼都已備妥。
 
-**在本教學課程中，您將了解如何：**
+**在本教學課程中，您會了解如何：**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
@@ -41,7 +41,7 @@ ms.locfileid: "75447375"
 
 1. 在 QnA Maker 入口網站中，移至 [發佈]  頁面，並發佈您的知識庫。 選取 [建立 Bot]  。
 
-    ![在 QnA Maker 入口網站中，移至 [發佈] 頁面，並發佈您的知識庫。 選取 [建立 Bot]。](../media/qnamaker-tutorials-create-bot/create-bot-from-published-knowledge-base-page.png)
+    [![在 QnA Maker 入口網站中，移至 [發佈] 頁面，並發佈您的知識庫。選取 [建立 Bot]。](../media/qnamaker-tutorials-create-bot/create-bot-from-published-knowledge-base-page.png)](../media/qnamaker-tutorials-create-bot/create-bot-from-published-knowledge-base-page.png#lightbox)
 
     Azure 入口網站隨即開啟，並顯示 Bot 建立組態。
 
@@ -101,8 +101,6 @@ ms.locfileid: "75447375"
 
 ## <a name="related-to-qna-maker-bots"></a>QnA Maker Bot 相關資訊
 
-* QnA Maker 說明 Bot 用於 QnA Maker 入口網站中，可當作 [Bot 範例](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-support)使用。
-    ![QnA Maker 說明 Bot 圖示是紅色的機器人](../media/qnamaker-tutorials-create-bot/answer-bot-icon.PNG)
 * [醫療保健 Bot](https://docs.microsoft.com/HealthBot/qna_model_howto) 使用 QnA Maker 作為其[語言模型](https://docs.microsoft.com/HealthBot/qna_model_howto)之一。
 
 

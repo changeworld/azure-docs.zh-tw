@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 02/08/2018
 ms.author: kumud
 ms.custom: include file
-ms.openlocfilehash: 4b419bd8c19cffaf84582cb4fa9e46592746da3f
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 4219df03f74f737c5f2435f9bc0842189dc1fd49
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75752222"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76909154"
 ---
 | | 標準 SKU | 基本 SKU |
 | --- | --- | --- |
-| 後端集區大小 | 支援最多 1000 個執行個體。 | 支援最多 100 個執行個體。 |
+| 後端集區大小 | 支援最多 1000 個執行個體。 | 支援最多 300 個執行個體。 |
 | 後端集區端點 | 在單一虛擬網路中的任何虛擬機器，包括混合虛擬機器、可用性設定組和虛擬機器擴展集。 | 在單一可用性設定組或虛擬機器擴展集中的虛擬機器。 |
 | [健康情況探查](../articles/load-balancer/load-balancer-custom-probe-overview.md#types) | TCP, HTTP, HTTPS | TCP, HTTP |
 | [健康狀態探查關閉行為](../articles/load-balancer/load-balancer-custom-probe-overview.md#probedown) | 執行個體探查關閉__和__所有探查關閉時，TCP 連線保持作用中。 | 執行個體探查關閉時，TCP 連線保持作用中。 所有探查關閉時，所有 TCP 連線都會終止。 |
@@ -31,5 +31,5 @@ ms.locfileid: "75752222"
 | [多個前端](../articles/load-balancer/load-balancer-multivip-overview.md) | 輸入和[輸出](../articles/load-balancer/load-balancer-outbound-connections.md) | 僅輸入 |
 | 管理作業 | 大部分的作業 < 30 秒 | 通常是 60-90+ 秒 |
 | SLA | 99.99% (當資料路徑具有兩個狀況良好的虛擬機器時)。 | 不適用 | 
-| 價格 | 根據規則數目、與資源相關聯的輸入和輸出所處理的資料來計費。 | 不收費 |
+| 定價 | 根據規則數目、與資源相關聯的輸入和輸出所處理的資料來計費。 | 不收費 |
 |  |  |  |

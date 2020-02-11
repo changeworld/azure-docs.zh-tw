@@ -8,16 +8,16 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 8c7d2481fe3ef361386bacc652d87744c1c790bb
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 13b626945743c17bad8df58fba77e1c960e90ef3
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581511"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016557"
 ---
 # <a name="build-energy-solutions-with-iot-central"></a>使用 IoT Central 建置能源解決方案 
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 
 智慧型電表和太陽能板在能源產業轉型中扮演著重要角色。 智慧型電表提供更多控制，並且能夠即時深入解析能源耗用量，而太陽能板的演進有助於在可再生能源產生領域中產生突破性進展。 智慧型電表和太陽能板監視應用程式即為可顯示各種不同功能的範例範本。 夥伴可以利用這些範本，透過 IoT Central 來建置能源解決方案，以滿足其特定需求。 部署和使用這些應用程式不需要任何新的編碼和任何額外成本。 深入了解能源應用程式範本及其功能。

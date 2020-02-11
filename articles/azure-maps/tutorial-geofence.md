@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: a88f03adab3beaea75ec2fa9a1c6f59b09739025
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 932dfb9624177c299997c4f9f184dc5c973d0fa0
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76153123"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899207"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>教學課程：使用 Azure 地圖服務設定地理柵欄
 
@@ -194,7 +194,7 @@ ms.locfileid: "76153123"
 
 ## <a name="create-an-azure-maps-events-subscription"></a>建立 Azure 地圖服務事件訂用帳戶
 
-Azure 地圖服務支援三種事件類型。 您可以在 [這裡](https://docs.microsoft.com/azure/event-grid/event-schema-azure-maps 查看 Azure 地圖服務支援的事件類型。 我們需要兩個不同的事件訂用帳戶，一個用於進入事件，另一個用於退出事件。
+Azure 地圖服務支援三種事件類型。 您可以在[這裡](https://docs.microsoft.com/azure/event-grid/event-schema-azure-maps)查看 Azure 地圖服務支援的事件類型。 我們需要兩個不同的事件訂用帳戶，一個用於進入事件，另一個用於退出事件。
 
 請依照下列步驟，建立地理柵欄進入事件的事件訂用帳戶。 您可以用類似的方式訂閱地理柵欄退出事件。
 

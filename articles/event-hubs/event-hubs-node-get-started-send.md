@@ -1,33 +1,30 @@
 ---
-title: 快速入門：使用 Node.js 來傳送和接收事件 - Azure 事件中樞
-description: 快速入門：本文將逐步解說如何建立一個會從「Azure 事件中樞」傳送事件的 Node.js 應用程式。
+title: 使用 Node.js 從 Azure 事件中樞傳送或接收事件 (舊版)
+description: 本文將逐步解說如何建立 Node.js 應用程式，以使用舊有的 azure/event-hubs 第 2 版套件對 Azure 事件中樞傳送事件或接收事件。
 services: event-hubs
 author: spelluru
-manager: kamalb
 ms.service: event-hubs
 ms.workload: core
 ms.topic: quickstart
-ms.custom: seodec18
-ms.date: 01/08/2020
+ms.date: 01/15/2020
 ms.author: spelluru
-ms.openlocfilehash: 39087b189c424866fffcc3ea8723c712883f288c
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 9aa2418657c2d3bcab9ef8883e5bd57422ce5e29
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940717"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899886"
 ---
-# <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-nodejs"></a>快速入門：使用 Node.js 將事件傳送至 Azure 事件中樞或從中接收事件
+# <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-nodejs-azureevent-hubs-version-2"></a>快速入門：使用 Node.js 將事件傳送至 Azure 事件中樞或從中接收事件 (@azure/event-hubs 第 2 版)
 
 Azure 事件中樞是巨量資料串流平台和事件擷取服務，每秒可接收和處理數百萬個事件。 事件中樞可以處理及儲存分散式軟體和裝置所產生的事件、資料或遙測。 傳送至事件中樞的資料可以透過任何即時分析提供者或批次/儲存體配接器來轉換和儲存。 如需事件中樞的詳細概觀，請參閱[事件中樞概觀](event-hubs-about.md)和[事件中樞功能](event-hubs-features.md)。
 
 本教學課程說明如何建立 Node.js 應用程式，以將事件傳送至事件中樞或從中接收事件。
 
-> [!IMPORTANT]
-> 本快速入門使用第 2 版的 Azure 事件中樞 Java 指令碼 SDK。 如果您不熟悉 Azure 事件中樞，請使用第 5 版的 Java 指令碼 SDK。 如需使用第 5 版 Java Script SDK 的快速入門，請參閱[這篇文章](get-started-node-send-v2.md)。 如果您需要將現有的程式碼從第 2 版遷移至第 5 版，請參閱[移轉指南](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md)。
+> [!WARNING]
+> 本快速入門適用於第 2 版的 Azure 事件中樞 Java Script SDK。 建議您將程式碼[遷移](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md)至 [Java Script SDK 第 5 版](get-started-node-send-v2.md)。 
 
-> [!NOTE]
-> 您可以從 [GitHub](https://github.com/Azure/azure-event-hubs-node/tree/master/client) 下載此快速入門來作為範例，並以您事件中樞的值取代 `EventHubConnectionString` 和 `EventHubName` 字串，然後執行。 或者，您可以遵循本教學課程中的步驟，來建立自己的解決方案。
+
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -55,6 +52,9 @@ npm install @azure/event-processor-host
 ## <a name="send-events"></a>傳送事件
 
 本節說明如何建立可將事件傳送至事件中樞的 Node.js 應用程式。 
+
+> [!NOTE]
+> 您可以從 [GitHub](https://github.com/Azure/azure-event-hubs-node/tree/master/client) 下載此快速入門來作為範例，並以您事件中樞的值取代 `EventHubConnectionString` 和 `EventHubName` 字串，然後執行。 或者，您可以遵循本教學課程中的步驟，來建立自己的解決方案。
 
 1. 開啟您慣用的編輯器，例如 [Visual Studio Code](https://code.visualstudio.com)。 
 2. 建立名為 `send.js` 的檔案，並在其中貼上下列程式碼。 遵循以下文章中的指示，取得事件中樞命名空間的連接字串：[取得連接字串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 

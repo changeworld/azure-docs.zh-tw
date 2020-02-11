@@ -7,24 +7,24 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 879e1911c715688c2fed4044e23f437b3bbef7b2
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 93a77d73b5cc249c39609f98f055a7b1927dd6ed
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890666"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025481"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>教學課程：部署及逐步執行數位配送中心應用程式範本
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 此教學課程示範如何透過部署 IoT Central **數位配送中心**應用程式範本來開始。 您將了解如何部署範本、現成可用的項目，以及您接下來可能想要執行的動作。
 
-在此教學課程中，您將了解如何： 
+在此教學課程中，您會了解如何： 
 * 建立數位配送中心應用程式 
 * 逐步執行應用程式 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 * 部署此應用程式不需要特定的先決條件
 * 建議具備 Azure 訂用帳戶，但您甚至不需訂用帳戶就能試用
 
@@ -34,19 +34,22 @@ ms.locfileid: "73890666"
 
 1. 瀏覽至 Azure IoT Central 應用程式管理員網站。 從左側導覽列選取 [建置]  ，然後按一下 [零售]  索引標籤。
 
-> [!div class="mx-imgBorder"]
-> ![數位配送中心](./media/tutorial-iot-central-ddc/iotc-retail-homepage.png)
+    > [!div class="mx-imgBorder"]
+    > ![數位配送中心](./media/tutorial-iot-central-ddc/iotc-retail-homepage.png)
 
-2. 選取 [零售]  索引標籤，並選取 [數位配送中心應用程式] 下的 [建立應用程式] 
+2. 選取 [零售]  索引標籤，並選取 [數位配送中心應用程式]  下的 [建立應用程式] 
 
 3. [建立應用程式]  將開啟 [新增應用程式] 表單，並填寫要求的詳細資料，如下所示。
    **應用程式名稱**：您可以使用建議的預設名稱，或輸入易記應用程式名稱。
-   **URL**：您可以使用建議的預設 URL，或輸入易記的獨特 URL。 接下來，若您已經有 Azure 訂用帳戶，將建議預設設定。 否則，您可以開始使用七天免費試用版，而且可以在免費試用到期之前隨時轉換為隨用隨付。
+   **URL**：您可以使用建議的預設 URL，或輸入易記且獨特的 URL。 接下來，若您已經有 Azure 訂用帳戶，將建議預設設定。 您可以從 7 天免費試用定價方案開始，並隨時在免費試用到期之前選擇轉換成標準定價方案。
    **帳單資訊**：您需要目錄、Azure 訂用帳戶和區域詳細資料，才能佈建資源。
    **建立**：選取頁面底部的 [建立]，以部署您的應用程式。
 
-> [!div class="mx-imgBorder"]
-> ![數位配送中心](./media/tutorial-iot-central-ddc/ddc-create.png)
+    > [!div class="mx-imgBorder"]
+    > ![數位配送中心](./media/tutorial-iot-central-ddc/ddc-create.png)
+
+    > [!div class="mx-imgBorder"]
+    > ![數位配送計費資訊](./media/tutorial-iot-central-ddc/ddc-create-billinginfo.png)
 
 ## <a name="walk-through-the-application-dashboard"></a>逐步執行應用程式儀表板 
 
@@ -113,4 +116,4 @@ ms.locfileid: "73890666"
 ## <a name="next-steps"></a>後續步驟
 * 深入了解數位配送中心解決方案架構[數位配送中心概念](./architecture-digital-distribution-center-pnp.md)
 * 深入了解其他 [IoT Central 零售範本](./overview-iot-central-retail-pnp.md)
-* 若要深入了解 IoT Central，請參閱 [IoT Central 概觀](../preview/overview-iot-central.md)
+* 若要深入了解 IoT Central，請參閱 [IoT Central 概觀](../core/overview-iot-central.md)

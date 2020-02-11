@@ -5,15 +5,15 @@ services: notification-hubs
 author: sethmanheim
 ms.service: notification-hubs
 ms.topic: include
-ms.date: 11/21/2019
+ms.date: 02/10/2020
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: b9f434f2d3c06d3db0bfda7c5853cc835ff64035
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: bf2596f5a8e287799285f97f3d1be9f3fe10f644
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77047755"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77123133"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>產生憑證簽署要求檔案
 
@@ -26,10 +26,9 @@ Apple Push Notification Service (APNs) 使用憑證來驗證您的通知服務�
 1. 選取 [金鑰鏈存取]  ，並展開 [憑證助理]  ，然後選取 [從憑證授權單位要求憑證]  。
 
     ![使用金鑰鏈存取要求新憑證](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-request-cert-from-ca.png)
-    
-> [!NOTE]
-> OS X 依預設會選取您在金鑰鏈存取工具中選取的類別中的第一個項目。 如果您位於 [憑證]  區段中，而 **Apple Worldwide Developer Relations 憑證授權單位***並非*清單中的第一個項目，則可能因此而產生問題。 要求憑證之前，請確定您位於 [憑證]  區段中，然後選取 [Apple Worldwide Developer Relations 憑證授權單位]  。
 
+   > [!NOTE]
+   > 依預設，Keychain 存取會選取清單中的第一個項目。 如果您位於 [憑證]  類別中，而 **Apple Worldwide Developer Relations 憑證授權單位**不是清單中的第一個項目，則可能因此而產生問題。 在產生 CSR (憑證簽署要求) 之前，請確定您擁有非金鑰項目，或已選取 **Apple Worldwide Developer Relations 憑證授權單位**金鑰。
 
 1. 選取您的**使用者電子郵件地址**，輸入**一般名稱**值，並確定您已指定 [儲存至磁碟]  ，然後選取 [繼續]  。 請將 [CA 電子郵件地址]  留空，因為這不是必要資訊。
 

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f71a27ea4da6bce5832287e948e0731672280196
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: e3154b9635da889ed7f0484fc04c565c27e9241b
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699495"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031504"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>教學課程：使用 Azure 檔案同步擴充 Windows 檔案伺服器
 
@@ -26,7 +26,7 @@ ms.locfileid: "68699495"
 > * 建立同步群組和雲端端點
 > * 建立伺服器端點
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -136,7 +136,7 @@ ms.locfileid: "68699495"
 
 針對 Windows Server 2016 Datacenter 伺服器，請停用 [Internet Explorer 增強式安全性設定]。 此步驟只需要在初始伺服器註冊時執行。 您可以在註冊伺服器後重新啟用它。
 
-在 Windows Server 2016 Datacenter VM 中，伺服器管理員會自動開啟。  如果伺服器管理員未依預設開啟，請在檔案總管中加以搜尋。
+在 Windows Server 2016 Datacenter VM 中，伺服器管理員會自動開啟。  如果伺服器管理員未依預設開啟，請在「開始功能表」中加以搜尋。
 
 1. 在 [伺服器管理員]  中，選取 [本機伺服器]  。
 
@@ -217,7 +217,7 @@ ms.locfileid: "68699495"
 
    在開啟的窗格中，輸入下列資訊：
 
-   | 值 | 說明 |
+   | 值 | 描述 |
    | ----- | ----- |
    | **名稱** | 儲存體同步服務的唯一名稱 (每一訂用帳戶)。<br><br>在本教學課程中，請使用 afssyncservice02  。 |
    | **訂用帳戶** | 您在本教學課程中使用的 Azure 訂用帳戶。 |
@@ -263,7 +263,7 @@ Azure 檔案同步代理程式是可下載的套件，可讓 Windows Server 能�
 
    | | |
    | ----- | ----- |
-   | 值 | 說明 |
+   | 值 | 描述 |
    | **Azure 訂用帳戶** | 包含本教學課程所用儲存體同步服務的訂用帳戶。 |
    | **資源群組** | 包含儲存體同步服務的資源群組。 在本教學課程中，請使用 afsresgroup101918  。 |
    | **儲存體同步服務** | 儲存體同步服務的名稱。 在本教學課程中，請使用 afssyncservice02  。 |
@@ -282,7 +282,7 @@ Azure 檔案同步代理程式是可下載的套件，可讓 Windows Server 能�
 
 1. 輸入下列資訊，以建立具有雲端端點的同步群組：
 
-   | 值 | 說明 |
+   | 值 | 描述 |
    | ----- | ----- |
    | **同步群組名稱** | 此名稱在儲存體同步服務中必須是唯一的，但可以是任何對您而言合理的名稱。 在本教學課程中，請使用 afssyncgroup  。|
    | **訂用帳戶** | 本教學課程的儲存體同步服務部署所在的訂用帳戶。 |
@@ -305,7 +305,7 @@ Azure 檔案同步代理程式是可下載的套件，可讓 Windows Server 能�
 
    | | |
    | ----- | ----- |
-   | 值 | 說明 |
+   | 值 | 描述 |
    | **已註冊的伺服器** | 您先前建立的伺服器名稱。 在本教學課程中，請使用 afsvm101918  。 |
    | **路徑** | 您先前建立之磁碟機的 Windows Server 路徑。 在本教學課程中，請使用 f:\filestosync  。 |
    | **雲端階層處理** | 在本教學課程中保持停用。 |

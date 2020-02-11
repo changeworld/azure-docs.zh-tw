@@ -3,24 +3,26 @@ title: 快速入門：適用於 JavaScript 的 Azure Blob 儲存體用戶端程�
 description: 使用適用於 JavaScript 的 Azure 儲存體用戶端程式庫 v10，在 Node.js 中建立、上傳及刪除 Blob 和容器
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 09/24/2019
+ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: dd59dec65f75a17c35750140349101c600a92636
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 6a530c96c99a9f22f1943a5b874656bcabd9594b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75862844"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906466"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v10-for-javascript"></a>快速入門：適用於 JavaScript 的 Azure Blob 儲存體用戶端程式庫 v10
+# <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-nodejs"></a>快速入門：使用 Node.js 中的 JavaScript v10 SDK 來管理 Blob
 
-在本快速入門中，您將了解如何在 Node.js 中，使用[適用於 JavaScript 的 Azure 儲存體 v10 SDK](https://github.com/Azure/azure-sdk-for-js) \(英文\)，來上傳、下載、列出及刪除 Blob，以及管理容器。
+在本快速入門中，您將了解如何使用 Node.js 來管理 Blob。 Blob 是可保存大量文字或二進位資料的物件，包括影像、文件、串流媒體和封存資料。 您將上傳、下載、列出及刪除 Blob，並且管理容器。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
+- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- Azure 儲存體帳戶。 [建立儲存體帳戶](../common/storage-account-create.md)。
+- [Node.js](https://nodejs.org/en/download/).
 
 ## <a name="download-the-sample-application"></a>下載範例應用程式
 

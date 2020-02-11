@@ -7,44 +7,51 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 17d429444b81746a5c5082b8310c5208bc35f3d2
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: d7050cfdae2c726a3a5bd44b4399792a400572a3
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889032"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025515"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-connected-logistics-application-template"></a>教學課程：部署並逐步執行聯網物流應用程式範本
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 此教學課程示範如何開始部署 IoT Central **聯網物流**應用程式範本。 您將了解如何部署範本、現成可用的項目，以及您接下來可能想要執行的動作。
 
-在此教學課程中，您將了解如何： 
-* 建立聯網物流應用程式 
+在本教學課程中，您將學會如何：
+
+* 建立聯網物流應用程式
 * 逐步執行應用程式 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
+
 * 部署此應用程式不需要特定的先決條件
 * 建議具備 Azure 訂用帳戶，但您甚至不需訂用帳戶就能試用
 
 ## <a name="create-connected-logistics-application-template"></a>建立聯網物流應用程式範本
+
 您可以使用下列步驟來建立應用程式
+
 1. 瀏覽至 Azure IoT Central 應用程式管理員網站。 從左側導覽列選取 [建置]  ，然後按一下 [零售]  索引標籤。
 
-> [!div class="mx-imgBorder"]
-> ![聯網物流儀表板](./media/tutorial-iot-central-connected-logistics/iotc-retail-homepage.png)
+    > [!div class="mx-imgBorder"]
+    > ![聯網物流儀表板](./media/tutorial-iot-central-connected-logistics/iotc-retail-homepage.png)
 
 2. 在 [聯網物流應用程式]  底下，選取 [建立應用程式]  。
 
 3. [建立應用程式]  將開啟 [新增應用程式] 表單，並填寫要求的詳細資料，如下所示。
-   * **應用程式名稱**：您可以使用建議的預設名稱，或輸入易記的應用程式名稱。
-   * **URL**：您可以使用建議的預設 URL，或輸入易記且獨特的 URL。 接著，如果您已經有 Azure 訂用帳戶，建議使用預設設定。否則，您可以從七天免費試用版開始，並選擇在免費試用到期之前的任何時間轉換為隨用隨付。
+   * **應用程式名稱**：您可以使用建議的預設名稱，或輸入易記應用程式名稱。
+   * **URL**：您可以使用建議的預設 URL，或輸入易記且獨特的 URL。 接下來，若您已經有 Azure 訂用帳戶，將建議預設設定。 您可以從 7 天免費試用定價方案開始，並隨時在免費試用到期之前選擇轉換成標準定價方案。
    * **帳單資訊**：您需要目錄、Azure 訂用帳戶和區域詳細資料，才能佈建資源。
    * **建立**：選取頁面底部的 [建立]，以部署您的應用程式。
 
-> [!div class="mx-imgBorder"]
-> ![聯網物流儀表板](./media/tutorial-iot-central-connected-logistics/connected-logistics-app-create.png)
+    > [!div class="mx-imgBorder"]
+    > ![聯網物流儀表板](./media/tutorial-iot-central-connected-logistics/connected-logistics-app-create.png)
+
+    > [!div class="mx-imgBorder"]
+    > ![聯網物流計費資訊](./media/tutorial-iot-central-connected-logistics/connected-logistics-app-create-billinginfo.png)
 
 ## <a name="walk-through-the-application"></a>逐步執行應用程式 
 
@@ -95,7 +102,7 @@ ms.locfileid: "73889032"
 > [!div class="mx-imgBorder"]
 > ![聯網物流儀表板](./media/tutorial-iot-central-connected-logistics/connected-logistics-jobs.png)
 
-您可以利用作業功能來執行整個解決方案的操作。 這裡的作業會使用裝置命令和對應項功能來執行工作，例如，停用所有閘道上的特定感應器，或根據出貨模式和路線修改感應器閾值。 
+您可以使用作業功能來執行整個解決方案的操作。 這裡的作業會使用裝置命令和對應項功能來執行工作，例如，停用所有閘道上的特定感應器，或根據出貨模式和路線修改感應器閾值。 
    * 這是一項標準操作，可在海運期間停用震動感應器以節省電池，或在冷鏈運輸過程中降低溫度閾值。 
  
    * 作業可讓您執行全系統操作，例如，更新閘道上的韌體，或更新服務合約以保持最新的維修活動。
@@ -109,4 +116,4 @@ ms.locfileid: "73889032"
 ## <a name="next-steps"></a>後續步驟
 * 深入了解[聯網物流概念](./architecture-connected-logistics-pnp.md)
 * 深入了解其他 [IoT Central 零售範本](./overview-iot-central-retail-pnp.md)
-* 深入了解 [IoT Central 概觀](../preview/overview-iot-central.md)
+* 深入了解 [IoT Central 概觀](../core/overview-iot-central.md)

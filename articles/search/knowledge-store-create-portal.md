@@ -7,13 +7,13 @@ ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 12/30/2019
-ms.openlocfilehash: cffd94459e3a18567f2ff2f6b8fca35598cb5eed
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.date: 01/29/2020
+ms.openlocfilehash: b75b760704511627c74301ae3fff82c24a262e17
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563444"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904897"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中建立 Azure 認知搜尋知識存放區
 
@@ -81,7 +81,7 @@ ms.locfileid: "75563444"
 在此精靈步驟中，您將建立具有認知技能擴充的技能集。 來源資料是由數種語言的客戶評論所組成。 與此資料集相關的技能包括關鍵片語擷取、情感偵測和文字翻譯。 在後續步驟中，這些擴充將「投射」到知識存放區中作為 Azure 資料表。
 
 1. 展開 [連結認知服務]  。 預設會選取 [免費 (有限的擴充)]  。 您可以使用此資源，因為 HotelReviews-Free.csv 中的記錄筆數是 19，而此免費資源一天最多允許 20 筆交易。
-1. 展開 [新增認知技能]  。
+1. 展開 [新增擴充]  。
 1. 針對 [技能集名稱]  輸入 `hotel-reviews-ss`。
 1. 針對 [來源資料欄位]  ，選取 **reviews_text**。
 1. 針對 [擴充細微性層級]  ，選取 [頁面 (5000 個字元區塊)]  。
@@ -93,11 +93,11 @@ ms.locfileid: "75563444"
       ![建立技能集](media/knowledge-store-create-portal/hotel-reviews-ss.png "建立技能集")
 
 1. 展開 [將擴充儲存到知識存放區]  。
-1. 輸入您在上一個步驟中儲存的 [儲存體帳戶連接字串]  。
 1. 選取下列 [Azure 資料表投影]  ：
     + **文件**
     + **頁面**
     + **關鍵片語**
+1. 輸入您在上一個步驟中儲存的 [儲存體帳戶連接字串]  。
 
     ![設定知識存放區](media/knowledge-store-create-portal/hotel-reviews-ks.png "設定知識存放區")
 

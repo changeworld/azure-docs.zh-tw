@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: edb543a85779fb083b6990a58dc5ec0b8ef3eb9c
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: c58ff181ec144dcd0b1089b0e53f868f241be73f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291408"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985249"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Workplace by Facebook 整合
 
@@ -248,4 +248,3 @@ ms.locfileid: "76291408"
 
 - [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [如何使用進階可見性和控制項保護 Workplace by Facebook](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

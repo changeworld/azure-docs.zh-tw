@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: tutorial
 ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: ec6c1ef31b6cf92629be600b3b139bb2e1a0d3ce
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 1acc17f9c2fbeb53b992891174866433d14f128d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977245"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986656"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>教學課程：使用 Bing Web 搜尋 API 建立單頁應用程式
 
@@ -32,7 +32,7 @@ ms.locfileid: "74977245"
 
 若要使用此應用程式，需要具備 [Azure 認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)及 Bing 搜尋 API。 如果您還沒有帳戶，可以使用[免費試用](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)來取得訂用帳戶金鑰。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 以下是數個您執行應用程式所需的項目：
 
@@ -82,7 +82,7 @@ npm install
 
 HTML 表單包含對應到 [Bing Web 搜尋 API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters) \(英文\) 中查詢參數的選項。 下表提供使用者如何使用範例應用程式來篩選搜尋結果的明細：
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 |-----------|-------------|
 | `query` | 可輸入查詢字串的文字欄位。 |
 | `where` | 可選取市場 (位置和語言) 的下拉式選單。 |
@@ -105,7 +105,7 @@ function bingSearchOptions(form) {
     // Where option.
     options.push("mkt=" + form.where.value);
     // SafeSearch option.
-    options.push("SafeSearch=" + (form.safe.checked ? "strict" : "off"));
+    options.push("SafeSearch=" + (form.safe.checked ? "strict" : "moderate"));
     // Freshness option.
     if (form.when.value.length) options.push("freshness=" + form.when.value);
     var what = [];
@@ -128,7 +128,7 @@ function bingSearchOptions(form) {
 }
 ```
 
-您可以使用 `moderate` (此為 Bing Web 搜尋的預設設定)，將 `SafeSearch` 設定為 `strict`、`moderate` 或 `off`。 此表單使用具備兩種狀態的核取方塊。 在此程式碼片段中，會將 SafeSearch 設定為 `strict` 或 `off`，但不使用 `moderate`。
+您可以使用 `moderate` (此為 Bing Web 搜尋的預設設定)，將 `SafeSearch` 設定為 `strict`、`moderate` 或 `off`。 此表單使用具備兩種狀態的核取方塊：`strict` 或 `moderate`。
 
 如果選取了任何 [升階]  核取方塊，即會將 `answerCount` 參數加入至查詢。 如果使用 `promote` 參數，則必須使用 `answerCount`。 在此程式碼片段中，會將值設定為 `9`，以傳回所有可用的結果類型。
 > [!NOTE]
@@ -386,7 +386,7 @@ searchItemRenderers = {
 
 內容引數包括：
 
-| 參數  | 說明 |
+| 參數  | 描述 |
 |------------|-------------|
 | `section` | 顯示項目的結果區段 (`pole`、`mainline` 或 `sidebar`)。 |
 | `index`<br>`count` | 如果 `RankingResponse` 項目指定要顯示給定集合中的所有結果，則可供使用，否則會使用 `undefined`。 其集合內的項目索引，以及該集合中的項目總數。 您可以使用此資訊來為結果編號，以便為第一個或最後一個結果 (或其他結果) 產生不同的 HTML。 |

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83e5790a036a93c947a79bc2848e7be6febf30b6
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 1aa2d58a40c623cc451ca30aaa9d75a4a6b3d4c0
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122029"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983855"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-azure-ad-saml-toolkit"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Azure AD SAML Toolkit 整合
 
@@ -33,7 +33,7 @@ ms.locfileid: "71122029"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -75,18 +75,18 @@ ms.locfileid: "71122029"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Azure AD SAML Toolkit]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [選取單一登入方法]  頁面上，選取 [SAML]  。
-1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。 您可以使用 [SAML 工具組 SAML 組態] 頁面來擷取設定。 
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
 1. 在 [基本 SAML 設定]  頁面上，輸入下列欄位的值：
 
-    a. 在 [登入 URL]  文字方塊中，輸入 URL：`https://samltoolkit.azurewebsites.net/`
+    a. 在 [登入 URL]  文字方塊中，輸入 URL：`https://samltoolkit.azurewebsites.net/SAML/Login/<3digitnumber>`
 
     b. 在 [識別碼 (實體識別碼)]  文字方塊中，輸入 URL：`https://samltoolkit.azurewebsites.net`
 
-    c. 在 [回覆 URL]  文字方塊中，鍵入 URL：`https://samltoolkit.azurewebsites.net/SAML/Consume`
+    c. 在 [回覆 URL]  文字方塊中，鍵入 URL：`https://samltoolkit.azurewebsites.net/SAML/Consume/<3digitnumber>`
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (原始)]  並選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 

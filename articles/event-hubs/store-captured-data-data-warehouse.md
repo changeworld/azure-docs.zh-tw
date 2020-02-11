@@ -6,15 +6,15 @@ author: ShubhaVijayasarathy
 manager: ''
 ms.author: shvija
 ms.custom: seodec18
-ms.date: 11/05/2019
+ms.date: 01/15/2020
 ms.topic: tutorial
 ms.service: event-hubs
-ms.openlocfilehash: 92c414afbb8121eb03353c79dfe3a51e0cfa7ec0
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: a83d65e497688fa97fbb2bdb5a4a72c6d29d81ae
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718880"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905683"
 ---
 # <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>教學課程：使用事件方格和 Azure Functions 將擷取的事件中樞資料遷移至 SQL 資料倉儲
 
@@ -24,7 +24,7 @@ ms.locfileid: "73718880"
 
 *   首先，您應建立已啟用**擷取**功能的事件中樞，並 Azure Blob 儲存體設定為目的地。 WindTurbineGenerator 所產生的資料會串流至事件中樞，並以 Avro 檔案的形式自動擷取到 Azure 儲存體中。 
 *   接下來，您應建立以事件中樞命名空間作為來源，並以 Azure 函式端點作為目的地的 Azure 事件格線訂用帳戶。
-*   每當事件中樞擷取功能將新的 Avro 檔案傳遞至 Azure 儲存體 Blob 時，事件格線即會以 Blob URI 告知 Azure 函式，。 接著，此函式會將資料從 Blob 移轉至 SQL 資料倉儲。
+*   每當事件中樞擷取功能將新的 Avro 檔案傳遞至 Azure 儲存體 Blob 時，事件格線即會以 Blob URI 告知 Azure 函式。 接著，此函式會將資料從 Blob 移轉至 SQL 資料倉儲。
 
 在本教學課程中，您會執行下列動作： 
 
@@ -35,14 +35,16 @@ ms.locfileid: "73718880"
 > * 將範例資料串流至事件中樞。 
 > * 確認 SQL 資料倉儲中已擷取的資料
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 - [Visual Studio 2019](https://www.visualstudio.com/vs/)。 在安裝時，請確實安裝下列工作負載：.NET 桌面開發、Azure 開發、ASP.NET 和 Web 開發、Node.js 開發和 Python 開發
-- 下載 [Git 範例](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)。 範例解決方案包含下列元件：
+- 下載 [Git 範例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/EventHubsCaptureEventGridDemo)。範例解決方案包含下列元件：
     - *WindTurbineDataGenerator* – 一個簡單的發行者，會將範例風力發電機資料傳送至已啟用擷取功能的事件中樞
     - *FunctionDWDumper* – 一個 Azure 函式，會在 Avro 檔案擷取至 Azure 儲存體 Blob 時收到事件格線通知。 它會接收 Blob 的 URI 路徑、讀取其內容，並將這項資料推送至 SQL 資料倉儲。
+
+    此範例使用最新的 Azure.Messaging.EventHubs 套件。 您可以在[這裡](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)找到使用 Microsoft.Azure.EventHubs 套件的舊範例。 
 
 ### <a name="deploy-the-infrastructure"></a>部署基礎結構
 使用 Azure PowerShell 或 Azure CLI，利用此 [Azure Resource Manager 範本](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json)部署本教學課程所需要的基礎結構。 此範本會建立下列資源：
@@ -139,7 +141,7 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 
 1. 選取 [新增事件方格訂用帳戶]  。
 
-   ![加入訂閱](./media/store-captured-data-data-warehouse/add-event-grid-subscription.png)
+   ![新增訂用帳戶](./media/store-captured-data-data-warehouse/add-event-grid-subscription.png)
 
 1. 為事件方格訂用帳戶指定名稱。 使用 [事件中樞命名空間]  作為事件類型。 提供值以選取您的事件中樞命名空間執行個體。 將訂閱者端點保留為提供的值。 選取 [建立]  。
 

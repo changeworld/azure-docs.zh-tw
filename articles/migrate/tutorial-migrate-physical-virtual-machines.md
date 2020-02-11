@@ -1,27 +1,23 @@
 ---
-title: 使用 Azure Migrate 伺服器移轉將內部部署實體機器或虛擬化機器遷移至 Azure | Microsoft Docs
-description: 本文說明如何使用 Azure Migrate 伺服器移轉將內部部署實體機器或虛擬化機器遷移至 Azure。
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
+title: 使用 Azure Migrate 將機器視為實體伺服器遷移至 Azure。
+description: 本文說明如何使用 Azure Migrate 將實體機器遷移至 Azure。
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.author: raynew
+ms.date: 02/03/2020
 ms.custom: MVC
-ms.openlocfilehash: 4a6e33770f93c365d5ccd034803c7c7f247d528a
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 6cdd107cb761aab3a85b73067fd646a36fe97d63
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028795"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989751"
 ---
-# <a name="migrate-physical-or-virtualized-servers-to-azure"></a>將實體或虛擬化伺服器遷移至 Azure 
+# <a name="migrate-machines-as-physical-servers-to-azure"></a>將機器視為實體伺服器遷移至 Azure
 
-本文說明如何將實體或虛擬化伺服器遷移至 Azure。 Azure Migrate 伺服器移轉工具可讓您使用代理程式型複寫來移轉實體和虛擬化伺服器。 利用此工具，您可將各種不同的機器遷移至 Azure：
+本文說明如何使用 Azure Migrate：伺服器移轉工具，將機器視為實體伺服器遷移至 Azure。 在許多情況下，將機器視為實體伺服器進行遷移，都有其效用：
 
 - 遷移內部部署實體伺服器。
 - 遷移由 Xen、KVM 之類的平台虛擬化的 VM。
-- 遷移 Hyper-V 或 VMware VM。 如果您因故無法使用「Azure Migrate 伺服器移轉」為 [Hyper-V](tutorial-migrate-hyper-v.md)、[VMware 無代理程式](tutorial-migrate-vmware.md)移轉或 [VMware 代理程式型](tutorial-migrate-vmware-agent.md)移轉提供的標準移轉流程，此作業將有其效用。
+- 遷移 Hyper-V 或 VMware VM (如果您因故無法使用標準移轉程序進行 [Hyper-V](tutorial-migrate-hyper-v.md) 或 [VMware](server-migrate-overview.md) 的移轉)。
 - 遷移在私人雲端中執行的 VM。
 - 遷移在公用雲端中執行的 VM，例如 Amazon Web Services (AWS) 或 Google Cloud Platform (GCP)。
 
@@ -159,7 +155,7 @@ ms.locfileid: "76028795"
     **地理位置** | **區域**
     --- | ---
     Asia | 東南亞
-    歐洲 | 北歐或西歐
+    歐洲 | 歐洲北部或歐洲西部
     美國 | 美國東部或美國中西部
 
     針對專案所指定的地理位置，僅會用於儲存從內部部署虛擬機器收集的中繼資料。 您可以選取任何目標區域以進行實際移轉。
@@ -175,7 +171,7 @@ ms.locfileid: "76028795"
 
 ### <a name="download-the-replication-appliance-installer"></a>下載複寫設備安裝程式
 
-1. 在 [Azure Migrate 專案] > [伺服器]  的 ***[Azure Migrate：伺服器移轉]** 中，按一下 [探索]  。
+1. 在 [Azure Migrate 專案] > [伺服器]  的 **[Azure Migrate：伺服器移轉]** 中，按一下 [探索]  。
 
     ![探索 VM](./media/tutorial-migrate-physical-virtual-machines/migrate-discover.png)
 
@@ -266,8 +262,7 @@ ms.locfileid: "76028795"
 
 2. 在 [複寫]  > [來源設定]  [您的電腦虛擬化了嗎] >   中，選取 [未虛擬化/其他]  。
 3. 在 [內部部署設備]  中，選取您設定的 Azure Migrate 設備的名稱。
-4. 在 **vCenter Server** 中指定管理 VM 的 vCenter Server 名稱，或裝載 VM 的 vSphere Server 名稱。
-5. 在 [處理序伺服器]  中，選取複寫設備的名稱。
+4. 在 [處理序伺服器]  中，選取複寫設備的名稱。
 6. 在 [來賓認證]  中，您可以指定行動服務的推送安裝所將使用的 VM 管理員帳戶。 在本教學課程中，我們將手動安裝行動服務，因此您可以新增任何虛擬帳戶。 然後按 [下一步：**虛擬機器]** 。
 
     ![複寫 VM](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)

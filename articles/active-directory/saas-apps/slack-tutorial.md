@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 12/23/2019
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f67a5b5513ad5d8a07551b2a9f5605fc32a9bf6
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 6c80963976783321d05fc6f32bb24daed36fa105
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561842"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985528"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Slack 整合
 
@@ -46,6 +46,7 @@ ms.locfileid: "75561842"
 * Slack 支援 **SP** 起始的 SSO
 * Slack 支援 **Just In Time** 使用者佈建
 * Slack 支援[**自動**使用者佈建](https://docs.microsoft.com/azure/active-directory/saas-apps/slack-provisioning-tutorial)
+* 設定 Slack 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 > [!NOTE]
 > 此應用程式的識別碼是固定的字串值，因此一個租用戶中只能設定一個執行個體。
@@ -193,3 +194,5 @@ ms.locfileid: "75561842"
 - [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [嘗試搭配 Azure AD 使用 Slack](https://aad.portal.azure.com/)
+
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b83f634e9f5954e7a465761b117b6ee32f843aa2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 47806fe9c5c97c1f5a9c26d4ca38fb46bdf4057c
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425088"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931394"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>針對現有的同步 AD 樹系進行雲端佈建試驗 
 
@@ -68,6 +68,7 @@ Azure AD Connect 同步會使用排程器來同步處理您內部部署目錄中
 
     **名稱：** 為規則指定有意義的名稱<br>
     **說明：** 新增有意義的描述<br> 
+    
     **連線系統：** 選擇您要為其撰寫自訂同步處理規則的 AD 連接器<br>
     **連線系統物件類型：** User<br>
     **Metaverse 物件類型：** 個人<br>

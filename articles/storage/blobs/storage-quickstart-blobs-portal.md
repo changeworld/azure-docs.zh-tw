@@ -9,18 +9,18 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 7336260d7565697b0559419ae502848bcff9424c
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 1e5ccc9d427755ea4274e836e81e3e324fffa39d
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892850"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937796"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-the-azure-portal"></a>快速入門：使用 Azure 入口網站上傳、下載及列出 Blob
 
 在本快速入門中，您會了解如何使用 [Azure 入口網站](https://portal.azure.com/)在 Azure 儲存體中建立容器，並且在該容器中上傳和下載區塊 blob。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -45,13 +45,14 @@ ms.locfileid: "74892850"
 
 1. 在 Azure 入口網站中，瀏覽至您在上一節中建立的容器。
 2. 選取容器以顯示它所包含的 Blob 清單。 此容器是新的，因此尚未包含任何 Blob。
-3. 選取 [上傳]  按鈕，以將 Blob 上傳至容器。
-4. 瀏覽您本機檔案系統以找出要上傳為區塊 Blob 的檔案，然後選取 [上傳]  。
+3. 選取 [上傳]  按鈕以開啟 [上傳] 刀鋒視窗
+4. 瀏覽您本機檔案系統，以找出要上傳為區塊 Blob 的檔案
      
     ![顯示如何從本機磁碟機上傳 Blob 的螢幕擷取畫面](media/storage-quickstart-blobs-portal/upload-blob.png)
 
-5. 選取 [驗證類型]  。 預設值為 **SAS**。
-6. 用這種方式上傳任意數量的 Blob。 您會看到新的 Blob 現在列在容器內。
+5. (選擇性) 展開 [進階] 區段以定義其他設定，例如驗證類型、存取層或虛擬資料夾路徑。
+6. 選取 [上傳]  按鈕以認可上傳
+7. 用這種方式上傳任意數量的 Blob。 您會看到新的 Blob 現在列在容器內。
 
 ## <a name="download-a-block-blob"></a>下載區塊 Blob
 

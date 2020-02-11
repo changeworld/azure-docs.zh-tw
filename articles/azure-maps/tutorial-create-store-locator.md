@@ -3,18 +3,18 @@ title: 教學課程：使用 Azure 地圖服務建立商店定位器應用程式
 description: 在本教學課程中，您將了解如何使用 Microsoft Azure 地圖服務 Web SDK 來建立商店定位器 Web 應用程式。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 11/12/2019
+ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 830641ae1421b799ab8e7d8b47a1c1a6e38419cf
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 063f085de875272a7b1ba4f52aeceb8f36114cca
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910957"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987000"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>教學課程：使用 Azure 地圖服務建立商店定位器
 
@@ -51,7 +51,7 @@ ms.locfileid: "75910957"
 
 ![Contoso Coffee 商店定位器應用程式在行動裝置上的框線](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
 
-框線可直觀地顯示應用程式。 應用程式具有搜尋方塊、鄰近商店清單、附有一些標記 (符號) 的地圖，和一個在使用者選取標記時顯示相關資訊的快顯視窗。 以下詳細列出我們在本教學課程中建置到此商店定位器的功能：
+框線可直觀地顯示應用程式。 應用程式具有搜尋方塊、鄰近商店清單，和具有一些標記 (例如符號) 的地圖。 此外也有一個快顯視窗，會在使用者選取標記時顯示額外的資訊。 以下詳細列出我們在本教學課程中建置到此商店定位器的功能：
 
 * 從匯入的 Tab 鍵分隔資料檔案匯入的所有位置，都會載入至地圖上。
 * 使用者可以移動瀏覽和縮放地圖、執行搜尋，以及選取 [我的位置 GPS] 按鈕。
@@ -81,12 +81,12 @@ ms.locfileid: "75910957"
     
 * 位置資訊可使用 **AddressLine**、**City**、**Municipality** (國家/地區)、**AdminDivision** (縣/市)、**PostCode** (郵遞區號) 和 **Country** 等資料行來儲存。  
 * **Latitude** 和 **Longitude** 資料行包含每個 Contoso Coffee 咖啡廳所在位置的座標。 如果您沒有座標資訊，您可以使用 Azure 地圖服務中的搜尋服務來決定位置座標。
-* 此外還有一些包含咖啡廳相關中繼資料的資料行：電話號碼、Wi-Fi 熱點和殘障人士協助工具的布林資料行，以及 24 小時格式的開店和關店時間。 您可以建立的資料行，並納入與您的位置資料更為相關的中繼資料。
+* 此外還有一些包含咖啡廳相關中繼資料的資料行：電話號碼、布林值資料行，以及 24 小時格式的開店和關店時間。 布林值資料行用於 Wi-Fi 和殘障人士協助工具。 您可以建立的資料行，並納入與您的位置資料更為相關的中繼資料。
 
 > [!Note]
 > Azure 地圖服務會以球面麥卡托投影 "EPSG:3857" 呈現資料，但是會讀取 "EPSG:4325" 中採用 WGS84 數據的資料。 
 
-有許多方式可將資料集公開給應用程式。 其中一個方法是將資料載入至資料庫，然後公開會查詢資料並將結果傳送至使用者瀏覽器的 Web 服務。 此選項非常適用於大型資料集或經常更新的資料集。 不過，此選項需要遠高於一般的開發工作，且成本較高。 
+有許多方式可將資料集公開給應用程式。 其中一個方法是將資料載入至資料庫，然後公開會查詢資料的 Web 服務。 然後，您可以將結果傳送至使用者的瀏覽器。 此選項非常適用於大型資料集或經常更新的資料集。 不過，此選項需要高於一般的開發工作，且成本較高。 
 
 另一種方法是將此資料集轉換成瀏覽器可輕易地剖析的一般文字檔案。 檔案本身可隨著應用程式的其餘部分而裝載。 此選項較為單純，但僅適用於較小的資料集，因為使用者會下載所有資料。 我們將為此資料集使用一般文字檔案，因為其資料檔案大小不到 1 MB。  
 
@@ -105,7 +105,7 @@ ms.locfileid: "75910957"
 
 ## <a name="set-up-the-project"></a>設定專案
 
-若要建立專案，您可以使用 [Visual Studio](https://visualstudio.microsoft.com) 或您選擇的程式碼編輯器。 請在您的專案資料夾中建立三個檔案：*index.html*、*index.css* 和 *index.js*。 這些檔案會定義應用程式的版面配置、樣式和邏輯。 建立名為 *data* 的資料夾，並將 *ContosoCoffee.txt* 新增至該資料夾。 建立名為 *images* 的另一個資料夾。 我們在此應用程式中使用十個影像來表示地圖上的圖示、按鈕和標記。 您可以[下載這些影像](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data)。 您的專案資料夾此時會如下圖所示︰
+若要建立專案，您可以使用 [Visual Studio](https://visualstudio.microsoft.com) 或您選擇的程式碼編輯器。 請在您的專案資料夾中建立三個檔案：*index.html*、*index.css* 和 *index.js*。 這些檔案會定義應用程式的版面配置、樣式和邏輯。 建立名為 *data* 的資料夾，並將 *ContosoCoffee.txt* 新增至該資料夾。 建立名為 *images* 的另一個資料夾。 我們在此應用程式中使用 10 個影像來表示地圖上的圖示、按鈕和標記。 您可以[下載這些影像](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data)。 您的專案資料夾此時會如下圖所示︰
 
 <center>
 
@@ -115,7 +115,7 @@ ms.locfileid: "75910957"
 
 若要建立使用者介面，請將程式碼新增至 *index.html*：
 
-1. 將下列 `meta` 標記新增至 *index.html* 的 `head`。 這些標記會定義字元集 (UTF-8)、指示 Internet Explorer 與 Microsoft Edge 使用的最新的瀏覽器版本，並指定適用於回應式配置的檢視區。
+1. 將下列 `meta` 標記新增至 *index.html* 的 `head`。 `charset` 標籤會定義字元集 (UTF-8)。 `http-equiv` 的值會向 Internet Explorer 和 Microsoft Edge 指出應使用最新的瀏覽器版本。 此外，最後一個 `meta` 標籤會指定一個適用於回應式配置的檢視區。
 
     ```HTML
     <meta charset="utf-8">
@@ -375,13 +375,13 @@ ms.locfileid: "75910957"
     }
    ```
 
-如果您此時執行應用程式，您將會看到標頭、搜尋方塊和搜尋按鈕，但不會看到地圖，因為它尚未載入。 如果您嘗試執行搜尋，將不會有任何動作。 我們必須設定下一節所說明的 JavaScript 邏輯，才能存取商店定位器的所有功能。
+立即執行應用程式，您會看到標頭、搜尋方塊和搜尋按鈕。 但地圖尚未載入，因此不會顯示。 如果您嘗試執行搜尋，將不會有任何動作。 我們必須設定下一節所說明的 JavaScript 邏輯。 此邏輯會存取商店定位器的所有功能。
 
 ## <a name="wire-the-application-with-javascript"></a>將應用程式與 JavaScript 連線
 
-此時，使用者介面中的一切設定皆已完成。 現在，我們必須新增 JavaScript 以載入及剖析資料，然後將資料呈現在地圖上。 為此，請先開啟 *index.js* 並為其新增程式碼，如下列步驟所說明。
+此時，使用者介面中的一切設定皆已完成。 我們還需要新增 JavaScript 以載入和剖析資料，然後在地圖上轉譯資料。 為此，請先開啟 *index.js* 並為其新增程式碼，如下列步驟所說明。
 
-1. 新增全域選項以便更新設定。 此外，請定義地圖的變數、快顯視窗、資料來源、圖示圖層、顯示搜尋區域中心點的 HTML 標記，以及 Azure 地圖服務搜尋服務用戶端的執行個體。
+1. 新增全域選項以便更新設定。 請定義地圖的變數、快顯視窗、資料來源、圖示圖層、顯示搜尋區域中心點的 HTML 標記，以及 Azure 地圖服務搜尋服務用戶端的執行個體。
 
     ```JavaScript
     //The maximum zoom level to cluster data point data on the map.
@@ -395,7 +395,7 @@ ms.locfileid: "75910957"
     var map, popup, datasource, iconLayer, centerMarker, searchURL;
     ```
 
-1. 將程式碼新增至 *index.js*。 下列程式碼會初始化地圖、新增等候頁面完成載入的[事件接聽程式](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)、連接事件以監視地圖載入的情形，並啟用搜尋按鈕和 [我的位置] 按鈕。
+1. 將程式碼新增至 *index.js*。 下列程式碼會初始化地圖。 我們已新增[事件接聽程式](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)，以等待頁面載入完成。 然後，我們會連結事件以監視地圖的載入，並將功能提供給搜尋按鈕和「我的位置」按鈕。
 
    當使用者選取搜尋按鈕時，或是當使用者在搜尋方塊中輸入位置之後按下 Enter 鍵時，就會起始對使用者查詢的模糊搜尋。 將國家/地區 ISO 2 值的陣列傳入 `countrySet` 選項，可將搜尋結果限制在這些國家/地區。 限制要搜尋的國家/地區，有助於提高傳回結果的精確度。 
   
@@ -544,7 +544,7 @@ ms.locfileid: "75910957"
 
 1. 將資料集載入至地圖的 `ready` 事件接聽程式之後，請定義一組用來呈現資料的圖層。 泡泡圖層用來呈現叢集的資料點。 符號圖層用來呈現泡泡圖層之上每個叢集中的點數。 第二個符號圖層會呈現地圖上個別位置的自訂圖示。
 
-   將 `mouseover` 和 `mouseout` 事件新增至泡泡和圖示圖層，可變更使用者將滑鼠停留在地圖上的叢集或圖示上方時的滑鼠游標。 將 `click` 事件新增至叢集泡泡圖層。 此 `click` 事件會在使用者選取任何叢集時將地圖縮放兩個層級，並以該叢集作為地圖的中心點。 將 `click` 事件新增至圖示圖層。 此 `click` 事件會在使用者選取個別位置圖示時顯示快顯視窗，以呈現咖啡廳的詳細資料。 在地圖上新增用來監視地圖何時完成移動的事件。 此事件引發時，請更新清單面板中的項目。  
+   將 `mouseover` 和 `mouseout` 事件新增至泡泡和圖示圖層，可變更使用者將滑鼠停留在地圖上的叢集或圖示上方時的滑鼠游標。 將 `click` 事件新增至叢集泡泡圖層。 此 `click` 事件會在使用者選取任何叢集時將地圖放大兩個層級，並以該叢集作為地圖的中心點。 將 `click` 事件新增至圖示圖層。 此 `click` 事件會在使用者選取個別位置圖示時顯示快顯視窗，以呈現咖啡廳的詳細資料。 在地圖上新增用來監視地圖何時完成移動的事件。 此事件引發時，請更新清單面板中的項目。  
 
     ```JavaScript
     //Create a bubble layer to render clustered data points.
@@ -686,7 +686,7 @@ ms.locfileid: "75910957"
     }
     ```
 
-1. 清單面板更新時，系統會計算從地圖中心點到目前地圖檢視中各個資料點功能的距離。 隨後，這些功能會依距離排序。 系統會產生 HTML 以顯示清單面板中的每個位置。
+1. 當清單面板更新時，會計算距離。 這從地圖中心點到目前地圖檢視中各個資料點特徵的距離。 隨後，這些功能會依距離排序。 系統會產生 HTML 以顯示清單面板中的每個位置。
 
     ```JavaScript
     var listItemTemplate = '<div class="listItem" onclick="itemSelected(\'{id}\')"><div class="listItem-title">{title}</div>{city}<br />Open until {closes}<br />{distance} miles away</div>';

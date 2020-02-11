@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 5560cb31e31f7cf33ac8ae71d649e88be3dbb6e6
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: d5ea3d3420cb598693ccaede7ee10d2f8c4fd839
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112498"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025770"
 ---
 # <a name="tutorial-create-and-walk-through-the-solar-panel-monitoring-app-template"></a>教學課程：建立和逐步執行太陽能板監視應用程式範本 
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 本教學課程會引導您完成建立太陽能板監視應用程式的程序，且應用程式會包含具有模擬資料的範例裝置模型。 在本教學課程中，您將了解：
 
@@ -30,7 +30,7 @@ ms.locfileid: "74112498"
 
 如果您沒有訂用帳戶，[請建立免費試用帳戶](https://azure.microsoft.com/free)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 - None
 - 建議您使用 Azure 訂用帳戶，但您不一定要這麼做
 
@@ -52,8 +52,9 @@ ms.locfileid: "74112498"
     * **7 天免費試用期**：如果您已經有 Azure 訂用帳戶，建議您使用預設設定。 如果您沒有 Azure 訂用帳戶，請先從免費試用開始。
     * **帳單資訊**：應用程式本身是免費的。 但您需要目錄、Azure 訂用帳戶和區域詳細資料來為您的應用程式佈建資源。
     * 按一下頁面底部的 [建立]  按鈕，您的應用程式將會在一分鐘內建立完成。
-        > [!div class="mx-imgBorder"]
-        > ![新增應用程式表單](media/tutorial-iot-central-solar-panel/solar-panel-create-app.png)
+        ![新增應用程式表單](media/tutorial-iot-central-solar-panel/solar-panel-create-app.png)
+        
+        ![新增應用程式表單計費資訊](media/tutorial-iot-central-solar-panel/solar-panel-create-app-billinginfo.png)
 
 
 ### <a name="verify-the-application-and-simulated-data"></a>驗證應用程式和模擬的資料

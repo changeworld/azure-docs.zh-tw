@@ -8,13 +8,13 @@ ms.author: shvija
 ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
-ms.date: 12/20/2019
-ms.openlocfilehash: 1fc791519fd32b35bdbe3a69caec3c64e3ce3178
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/15/2020
+ms.openlocfilehash: 8fa123772ae380cd000c414c63bdf3908d279751
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437154"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906396"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>教學課程：將傳送給 Azure 事件中樞之即時事件中的資料異常視覺化
 
@@ -156,14 +156,14 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
 ## <a name="run-app-to-produce-test-event-data"></a>執行應用程式以產生測試用的事件資料
 
-[GitHub 上的事件中樞範例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet)包括為您產生測試資料的[異常偵測器應用程式](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/AnomalyDetector)。 其藉由將信用卡交易寫入事件中樞來模擬信用卡的使用，包括偶爾在多個地點對相同信用卡寫入數個交易，使其標記為異常。 若要執行此應用程式，請遵循下列步驟： 
+[GitHub 上的事件中樞範例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet)包含為您產生測試資料的異常偵測器應用程式。 其藉由將信用卡交易寫入事件中樞來模擬信用卡的使用，包括偶爾在多個地點對相同信用卡寫入數個交易，使其標記為異常。 若要執行此應用程式，請遵循下列步驟： 
 
 1. 從 GitHub 下載 [Azure 事件中樞範例](https://github.com/Azure/azure-event-hubs/archive/master.zip)，並將它解壓縮到本機。
+2. 瀏覽至 **\azure-event-hubs-master\samples\DotNet\\** 資料夾。 
+3. 切換至 **Azure.Messaging.EventHubs\AnomalyDetector\\** 資料夾，並按兩下 **AnomalyDetector.sln**，以在 Visual Studio 中開啟解決方案。 
 
-2. 移至 \azure-event-hubs-master\samples\DotNet\AnomalyDetector\ and double-click on AnomalyDetector.sln 資料夾，以在 Visual Studio 中開啟解決方案。 
-
+    若要使用採用舊版 Microsoft.Azure.EventHubs 套件的舊版範例，請從 **Microsoft.Azure.EventHubs\AnomalyDetector** 資料夾中開啟解決方案。 
 3. 開啟 Program.cs，並以執行指令碼時儲存的連接字串取代**事件中樞連接字串**。 
-
 4. 以您的事件中樞名稱取代**事件中樞名稱**。 按 F5 鍵執行應用程式。 它會開始將事件傳送至事件中樞，並持續到傳送 1000 個事件為止。 有幾個執行個體中必須執行該應用程式，以便您擷取資料。 若有需要，這些情況將在下列指示中指出。
 
 ## <a name="set-up-azure-stream-analytics"></a>設定 Azure 串流分析
@@ -182,7 +182,7 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
    **資源群組**：使用事件中樞所用的相同資源群組 (**ContosoResourcesEH**)。
 
-   **位置**：使用安裝指令碼中所用的相同位置 (**West US**)。
+   **位置**：使用安裝指令碼中所用的相同位置 (**美國西部**)。
 
    ![顯示如何建立新 Azure 串流分析作業的螢幕擷取畫面。](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-add-job.png)
 

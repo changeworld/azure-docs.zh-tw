@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: d8a5f4756f3a6799c7f1b08973e0a84603cb4571
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 73402420bdfee7fecbd7901deefe7f4314a76d51
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703640"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931591"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>教學課程：建立管理 VM 來設定及管理 Azure Active Directory Domain Services 受控網域
 
@@ -31,7 +31,7 @@ Azure Active Directory Domain Services (AD DS) 提供受控網域服務，例如
 
 如果您沒有 Azure 訂用帳戶，請先[建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)再開始。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成此教學課程，您需要下列資源和權限：
 
@@ -40,9 +40,9 @@ Azure Active Directory Domain Services (AD DS) 提供受控網域服務，例如
 * 與您的訂用帳戶相關聯的 Azure Active Directory 租用戶，可與內部部署目錄或僅限雲端的目錄同步。
     * 如果需要，請[建立 Azure Active Directory 租用戶][create-azure-ad-tenant]或[將 Azure 訂用帳戶與您的帳戶建立關聯][associate-azure-ad-tenant]。
 * 已在您的 Azure AD 租用戶中啟用並設定 Azure Active Directory Domain Services 受控網域。
-    * 如有需要，第一個教學課程會引導您[建立並設定 Azure Active Directory Domain Services 執行個體][create-azure-ad-ds-instance]。
+    * 如有需要，請參閱第一個教學課程，以[建立並設定 Azure Active Directory Domain Services 執行個體][create-azure-ad-ds-instance]。
 * 已加入 Azure AD DS 受控網域的 Windows Server VM。
-    * 如有需要，先前的教學課程會引導您[建立 Windows Server VM 並將其加入受控網域][create-join-windows-vm]。
+    * 如有需要，請參閱先前的教學課程，以[建立 Windows Server VM 並將其加入受控網域][create-join-windows-vm]。
 * 屬於您 Azure AD 租用戶中 Azure AD DC 系統管理員  群組成員的使用者帳戶。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站

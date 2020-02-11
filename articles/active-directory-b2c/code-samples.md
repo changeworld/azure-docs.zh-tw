@@ -5,17 +5,17 @@ services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.author: marsma
-ms.date: 01/23/2018
+ms.date: 01/29/2020
 ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 5db3b978193ab51fc60f1bcb97d83b4d24037b54
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 69e6b7beecb95c0e89b60640353155fc7802a881
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66511393"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982937"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C 程式碼範例
 
@@ -23,7 +23,7 @@ ms.locfileid: "66511393"
 
 ## <a name="mobile-and-desktop-apps"></a>行動和傳統型應用程式
 
-| 範例 | 說明 |
+| 範例 | 描述 |
 |--------| ----------- |
 | [ios-swift-native-msal](https://github.com/Azure-Samples/active-directory-b2c-ios-swift-native-msal) | 以 Swift 撰寫的 iOS 範例，其使用 OAuth 2.0 驗證 Azure AD B2C 使用者和呼叫 API |
 | [android-native-msal](https://github.com/Azure-Samples/active-directory-b2c-android-native-msal) | 簡單的 Android 應用程式，其展示如何透過 Azure Active Directory B2C 使用 MSAL 來驗證使用者，以及使用所產生的權杖 MSAL 來存取 Web API。 |
@@ -34,17 +34,18 @@ ms.locfileid: "66511393"
 
 ## <a name="web-apps-and-apis"></a>Web Apps 和 API
 
-| 範例 | 說明 |
+| 範例 | 描述 |
 |--------| ----------- |
 | [dotnet-webapp-and-webapi](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi) | .NET Web 應用程式的合併範例，該應用程式會呼叫 .NET Web API (兩者均使用 Azure AD B2C 保護)。 |
 | [dotnetcore-webapp](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapp) | ASP.NET Core Web 應用程式，該應用程式可以使用 Azure AD B2C 登入使用者、使用 MSAL.NET 取得存取權杖，以及呼叫 API。 |
 | [openidconnect-nodejs](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS) | Node.js 應用程式，該應用程式可供輕鬆快速地使用 OpenID Connect 設定 Web 應用程式與 Express。 |
 | [javascript-nodejs-webapp](https://github.com/AzureADQuickStarts/active-directory-b2c-javascript-nodejs-webapp) | Node.js 伺服器，該伺服器可供輕鬆快速地使用 OAuth2 通訊協定設定 REST API 服務。 |
 | [javascript-nodejs-webapi](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi) | 適用於 Azure AD B2C 的小型 Node.js Web API，示範如何使用 passport.js 保護您的 Web API 並接受 B2C 存取權杖。 |
+| [ms-identity-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/master/README_B2C.md) | 示範如何整合 Microsoft 身分識別平台的 B2C 與 Python Web 應用程式。  |
 
 ## <a name="single-page-apps"></a>單一頁面應用程式
 
-| 範例 | 說明 |
+| 範例 | 描述 |
 |--------| ----------- |
 | [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | 呼叫 Web API 的單頁應用程式 (SPA)。 運用 MSAL.js 向 Azure AD B2C 進行驗證。 | 
 | [javascript-hellojs-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-hellojs-singlepageapp) | 使用 ASP.NET Web API 後端實作的單頁應用程式，該應用程式會使用 Azure AD B2C 來註冊及登入使用者，以及使用 OAuth 2.0 存取權杖來呼叫 Web API。 |

@@ -8,20 +8,20 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 0b100e0bebc7c5b26449e396650da5434334075d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 1bad4ab6320e757ac766776a95b8dbe6ebaa3259
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112631"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016420"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-in-iot-central"></a>教學課程：在 IoT Central 中建立用水量監視應用程式
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 本教學課程會引導您從 IoT Central 用水量監視應用程式範本中，建立 Azure IoT Central 用水量監視應用程式。 
 
-本教學課程將說明如何： 
+在本教學課程中，您將學會如何： 
 
 > [!div class="checklist"]
 > * 使用 Azure IoT Central **用水量監視**範本來建立您的用水量監視應用程式
@@ -32,18 +32,18 @@ ms.locfileid: "74112631"
 > * 設定工作
 > * 使用白標自訂您的應用程式商標
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，您需要：
 -  建議要有 Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，則可以在 [Azure 註冊頁面](https://aka.ms/createazuresubscription)上建立一個。
 
 ## <a name="create-water-consumption-monitoring-app-in-iot-central"></a>在 IoT Central 中建立用水量監視應用程式
 
-在本節中，我們將使用 Azure IoT Central **用水量監視範本**，在 IoT Central 中建立您的用水量監視應用程式。
+在本節中，您將使用 Azure IoT Central **用水量監視範本**，在 IoT Central 中建立您的用水量監視應用程式。
 
 若要建立新的 Azure IoT Central 用水量監視應用程式：  
 
-1. 瀏覽至 [Azure IoT Central 首頁](https://aka.ms/iotcentral)的網站。
+1. 瀏覽至 [Azure IoT Central 首頁](https://aka.ms/iotcentral)網站。
 
     如果您有 Azure 訂用帳戶，請使用您存取時所用的認證來登入，否則請使用 Microsoft 帳戶來登入：
 
@@ -56,15 +56,17 @@ ms.locfileid: "74112631"
 1. 選取 [用水量監視]  應用程式範本。 此範本包含用水量裝置範本範例、模擬裝置、操作員儀表板，以及預先設定的監視規則。    
 
 2. 按一下 [建立應用程式]  將會開啟 [新增應用程式]  的建立表單，其中包含下列欄位：
-    * **應用程式名稱**：根據預設，應用程式會使用 Water consumption monitoring  加上 IoT Central 產生的唯一識別碼字串。 您可以選擇使用自訂的應用程式名稱。 您也可以在之後變更應用程式名稱。
+    * **應用程式名稱**：根據預設，應用程式會使用 Water consumption monitoring  加上 IoT Central 產生的唯一識別碼字串。 (選擇性) 選擇易記的應用程式名稱。 您也可以在之後變更應用程式名稱。
     * **URL**：IoT Central 會根據應用程式名稱，自動為您產生 URL。 您可以根據自己的喜好來更新 URL。 您也可以在之後變更 URL。 
     * 如果您有 Azure 訂用帳戶，請輸入您的 [目錄]、[Azure 訂用帳戶] 和 [區域]  。 如果您沒有訂用帳戶，則可以啟用 [7 天免費試用]  並填妥必要的連絡人資訊。  
 
-    如需關於目錄和訂用帳戶的詳細資訊，請參閱[建立應用程式快速入門](../preview/quick-deploy-iot-central.md)。
+    如需關於目錄和訂用帳戶的詳細資訊，請參閱[建立應用程式快速入門](../core/quick-deploy-iot-central.md)。
 
 5. 按一下頁面底部的 [建立]  按鈕。 
 
     ![Azure IoT Central 的建立應用程式頁面](./media/tutorial-waterconsumptionmonitoring/new-application-waterconsumptionmonitoring.png)
+
+    ![Azure IoT Central 的建立應用程式計費資訊](./media/tutorial-waterconsumptionmonitoring/new-application-waterconsumptionmonitoring-billinginfo.png)
 
 6. 您現在已使用 Azure IoT Central **用水量監視**範本建立了用水量監視應用程式。
 
@@ -93,7 +95,7 @@ ms.locfileid: "74112631"
 
 * **平均水流量 KPI 磚**：KPI 磚已設定為顯示「過去30分鐘內的平均值」  範例。 您可以自訂 KPI 磚，並設定不同的類型和時間範圍。
 
-* 然後，儀表板的 [裝置命令]  磚有**關閉閥門**、**開啟閥門**或**設定閥門位置**的權限。 按一下命令，系統就會帶您前往模擬裝置的裝置命令頁面。 在 IoT Central 中，「命令」  就是「裝置功能」  的類型，我們稍後會在本教學課程的 [裝置範本]  一節中進行探索。
+* 然後，儀表板的 [裝置命令]  磚有**關閉閥門**、**開啟閥門**或**設定閥門位置**的權限。 按一下命令，系統就會帶您前往模擬裝置的命令頁面。 在 IoT Central 中，「命令」  就是「裝置功能」  的類型，您稍後可以在本教學課程的**裝置範本**一節中進行探索。
 
 *  **水資源分佈區域地圖**：地圖使用的是 Azure 地圖服務，您可以直接在 Azure IoT Central 中進行設定。 地圖底圖顯示的是裝置位置。 嘗試將滑鼠停留在地圖上，並試用地圖上的控制項，例如 [放大]  、[縮小]  或 [展開]  。 
 
@@ -105,7 +107,7 @@ ms.locfileid: "74112631"
 
 * **重設警示閾值內容磚**：您可以加入內嵌動作頁面連結的召喚動作內容磚。 在此案例中，[重設警示閾值] 會將您帶到應用程式的**作業**，您可以在其中執行裝置屬性的更新，我們稍後會在本教學課程的 [設定作業]  一節中進行探索。
 
-* **屬性磚**：儀表板會顯示**閥門操作資訊**、**流量警示閾值**和**維護資訊**，這些都是裝置屬性。  
+* **屬性磚**：儀表板會顯示**閥門操作資訊**、**流量警示閾值**和**維護資訊**。 
 
 
 ### <a name="customize-dashboard"></a>自訂儀表板 
@@ -139,18 +141,18 @@ Azure IoT Central 中的裝置範本會定義裝置的功能，例如遙測、�
 嘗試自訂下列項目：
 1. 在裝置範本功能表中，瀏覽至 [自訂] 
 2. 尋找 `Temperature` 遙測類型
-3. 將 `Temperature`的 [顯示名稱]  更新為 `Reported temperature`。
+3. 將 `Temperature` 的 [顯示名稱]  更新為 `Reported temperature`。
 4. 更新測量單位，或設定 [最小值]  和 [最大值] 
 5. **儲存**任何變更 
 
 ### <a name="add-a-cloud-property"></a>新增雲端屬性 
 1. 在裝置範本功能表中，瀏覽至 [雲端屬性] 
 2. 按一下 [+ 新增雲端屬性]  來新增雲端屬性。 
-    在 IoT Central 中，您可以新增與裝置相關的屬性。 例如，雲端屬性可能是專屬於安裝區域、資產資訊或維護資訊等項目的警示閾值。 
+    在 IoT Central 中，您可以新增與裝置相關的屬性。 例如，雲端屬性可能是專屬於安裝區域、資產資訊或其他維護資訊的警示閾值。 
 3. **儲存**任何變更 
  
 ### <a name="views"></a>檢視 
-「用水量監視器」裝置範本附有預先定義的檢視。 流覽這些檢視，然後進行更新。 這些檢視會定義操作員如何查看裝置資料，同時也會輸入雲端屬性。 
+「用水量監視器」裝置範本附有預先定義的檢視。 探索這些檢視，您可以進行更新。 這些檢視會定義操作員如何查看裝置資料，同時也會輸入雲端屬性。 
 
   ![裝置範本檢視](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-devicetemplate-views.png)
 
@@ -196,7 +198,7 @@ Azure IoT Central 中的裝置範本會定義裝置的功能，例如遙測、�
 
      ![高 pH 值警示](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-highflowalert.png)
 
-    `High flow alert` 規則會設定為檢查 `Acidity (pH)` 條件是否 `greater than` `Max flow threshold`。 「最大流量閾值」是「智慧型閥門」  裝置範本中定義的雲端屬性。 `Max flow threshold` 的值是針對每個裝置執行個體所設定。 
+    `High flow alert` 規則會設定為檢查 `Acidity (pH)` 條件是否 `greater than``Max flow threshold`。 「最大流量閾值」是「智慧型閥門」  裝置範本中定義的雲端屬性。 `Max flow threshold` 的值是針對每個裝置執行個體所設定。 
 
 現在，我們來建立電子郵件動作。
 
@@ -221,7 +223,7 @@ Azure IoT Central 中的裝置範本會定義裝置的功能，例如遙測、�
 
 在 IoT Central 中，作業可讓您在多個裝置上觸發裝置或雲端屬性更新。 除了屬性之外，您也可以使用作業來觸發多個裝置上的裝置命令。 IoT Central 會自動為您執行工作流程。 
 
-1. 從左側導覽窗格中瀏覽至 [作業]  。 
+1. 從左側導覽窗格中移至 [作業]  。 
 2. 按一下 [+新增]  並設定一個或多個作業。 
 
 

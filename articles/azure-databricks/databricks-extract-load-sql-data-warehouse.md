@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 06/20/2019
-ms.openlocfilehash: 5ada5db0d9f3ea72eab93796d20023d89b7dd1ed
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 01/29/2020
+ms.openlocfilehash: a505145eeba47eda9950c5a4c8221e4c9ae4b3a4
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889257"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024070"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>教學課程：使用 Azure Databrick 擷取、轉換和載入資料
 
@@ -63,7 +63,7 @@ ms.locfileid: "75889257"
 
       如果您想要使用存取控制清單 (ACL) 將服務主體與特定檔案或目錄產生關聯，請參考 [Azure Data Lake Storage Gen2 中的存取控制](../storage/blobs/data-lake-storage-access-control.md)。
 
-   * 在執行該文章的[取得值以便登入](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)一節中的步驟時，請將租用戶識別碼、應用程式識別碼和密碼值貼到文字檔中。 您很快就會用到這些資料。
+   * 在執行該文章的[取得值以便登入](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)一節中的步驟時，請將租用戶識別碼、應用程式識別碼和秘密值貼到文字檔中。 您很快就會用到這些資料。
 
 * 登入 [Azure 入口網站](https://portal.azure.com/)。
 
@@ -171,23 +171,23 @@ ms.locfileid: "75889257"
    ```scala
    val storageAccountName = "<storage-account-name>"
    val appID = "<app-id>"
-   val password = "<password>"
+   val secret = "<secret>"
    val fileSystemName = "<file-system-name>"
    val tenantID = "<tenant-id>"
 
    spark.conf.set("fs.azure.account.auth.type." + storageAccountName + ".dfs.core.windows.net", "OAuth")
    spark.conf.set("fs.azure.account.oauth.provider.type." + storageAccountName + ".dfs.core.windows.net", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
    spark.conf.set("fs.azure.account.oauth2.client.id." + storageAccountName + ".dfs.core.windows.net", "" + appID + "")
-   spark.conf.set("fs.azure.account.oauth2.client.secret." + storageAccountName + ".dfs.core.windows.net", "" + password + "")
+   spark.conf.set("fs.azure.account.oauth2.client.secret." + storageAccountName + ".dfs.core.windows.net", "" + secret + "")
    spark.conf.set("fs.azure.account.oauth2.client.endpoint." + storageAccountName + ".dfs.core.windows.net", "https://login.microsoftonline.com/" + tenantID + "/oauth2/token")
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
    dbutils.fs.ls("abfss://" + fileSystemName  + "@" + storageAccountName + ".dfs.core.windows.net/")
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
    ```
 
-6. 在此程式碼區塊中，請將此程式碼區塊中的 `<app-id>`、`<password>`、`<tenant-id>` 和 `<storage-account-name>` 預留位置值取代為您在執行本教學課程的必要條件時所收集到的值。 請將 `<file-system-name>` 預留位置值取代為您要為檔案系統指定的任何名稱。
+6. 在此程式碼區塊中，請將此程式碼區塊中的 `<app-id>`、`<secret>`、`<tenant-id>` 和 `<storage-account-name>` 預留位置值取代為您在執行本教學課程的必要條件時所收集到的值。 請將 `<file-system-name>` 預留位置值取代為您要為檔案系統指定的任何名稱。
 
-   * `<app-id>` 和 `<password>` 來自於您在建立服務主體時向 Active Directory 註冊的應用程式。
+   * `<app-id>` 和 `<secret>` 來自於您在建立服務主體時向 Active Directory 註冊的應用程式。
 
    * `<tenant-id>` 來自於您的訂用帳戶。
 
@@ -216,7 +216,7 @@ ms.locfileid: "75889257"
 1. 您現在可以將 json 檔案範例以資料框架的形式載入 Azure Databricks。 在新的資料格中貼上下列程式碼。 請將括號內顯示的預留位置取代為您自己的值。
 
    ```scala
-   val df = spark.read.json("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/small_radio_json.json")
+   val df = spark.read.json("abfss://" + fileSystemName + "@" + storageAccountName + ".dfs.core.windows.net/small_radio_json.json")
    ```
 2. 按 **SHIFT + ENTER** 鍵以執行此區塊中的程式碼。
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: tutorial
-ms.date: 12/09/2019
+ms.date: 02/03/2020
 ms.author: aahi
-ms.openlocfilehash: 7c8485a5521709452217fb4ab1832b6a42cce9ce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fb989825ed27cc83c14c36e6394e37ae2db2c12a
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75382458"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988255"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>教學課程：單頁影片搜尋應用程式
 Bing 影片搜尋 API 可讓您搜尋網頁，並取得與搜尋查詢相關的影片結果。 在本教學課程中，我們會建置單頁 Web 應用程式，以使用 Bing 影片搜尋 API 在頁面中顯示搜尋結果。 該應用程式包含 HTML、CSS 和 JavaScript 元件。
@@ -120,7 +120,7 @@ function bingSearchOptions(form) {
 
     var options = [];
     options.push("mkt=" + form.where.value);
-    options.push("SafeSearch=" + (form.safe.checked ? "strict" : "off"));
+    options.push("SafeSearch=" + (form.safe.checked ? "strict" : "moderate"));
 
     if (form.when.value.length) options.push("freshness=" + form.when.value);
     var what = [];
@@ -138,7 +138,7 @@ function bingSearchOptions(form) {
 }
 ```
 
-例如，實際 API 呼叫中的 `SafeSearch` 參數可以是 `strict`、`moderate` 或 `off`，預設值為 `moderate`。 不過，我們的表單使用只有兩種狀態的核取方塊。 JavaScript 程式碼會將此設定轉換成 `strict` 或 `off` (不會使用 `moderate`)。
+例如，實際 API 呼叫中的 `SafeSearch` 參數可以是 `strict` 或 `moderate`，預設值為 `moderate`。
 
 ## <a name="performing-the-request"></a>執行要求
 假設有查詢、選項字串和 API 金鑰，`BingWebSearch` 函式會使用 `XMLHttpRequest` 物件向 Bing 搜尋端點提出要求。 您可以使用下方的全域端點，也可以使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../cognitive-services/cognitive-services-custom-subdomains.md)端點。

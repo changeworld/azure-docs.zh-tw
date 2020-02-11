@@ -3,22 +3,22 @@ title: 教學課程：使用 Azure Notebooks (Python) 來聯結感應器資料�
 description: 本教學課程說明如何使用 Azure Notebooks (Python) 來聯結感應器資料與得自 Microsoft Azure 地圖服務氣象服務的氣象預報資料。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 12/09/2019
+ms.date: 01/29/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 1a1493033717b18bef5d80b28d06004c901ffb29
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 6d49a305a9b2e02d9e9d743ff8f076f453a08fcb
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910786"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989615"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>教學課程：使用 Azure Notebooks (Python) 來聯結感應器資料與氣象預報資料
 
-風力發電可替代化石燃料來作為能源來源，以對抗氣候變遷。 由於風力本質上並不穩定，因此，風力發電營運商必須建置 ML (機器學習) 模型來預測風力發電容量，從而滿足電力需求並確保電網的穩定。 在本教學課程中，我們將逐步解說如何將 Azure 地圖服務的氣象預報資料，與感應器位置的示範資料集和天候數據結合在一起。 藉由呼叫 Azure 地圖服務的氣象服務，即可要求氣象預報資料。
+風力發電可替代化石燃料來作為能源來源，以對抗氣候變遷。 由於風本身並不是固定的，因此，風力發電操作員必須建立機器學習 (ML) 模型來預測風力。 此預測是符合電力需求及確保電網穩定性所必需的。 在本教學課程中，我們將逐步解說如何將 Azure 地圖服務的氣象預報資料與天候數據的示範資料結合在一起。 藉由呼叫 Azure 地圖服務的氣象服務，即可要求氣象預報資料。
 
 在本教學課程中，您將：
 
@@ -51,15 +51,16 @@ ms.locfileid: "75910786"
 若要載入所有必要的模組和架構，請執行下列指令碼：
 
 ```python
-import aiohttp
 import pandas as pd
 import datetime
 from IPython.display import Image, display
+!pip install aiohttp
+import aiohttp
 ```
 
 ## <a name="import-weather-data"></a>匯入天氣資料
 
-為了進行本教學課程，我們將利用安裝在四個不同風力發電機組上的感應器所傳來的天氣資料數據。 資料範例內包含 30 天的天候數據，這些數據是從每個風力發電機組所在位置附近的天氣資料中心收集而來。 示範資料包含溫度、風速和風向的資料數據。 您可以從[這裡](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/tree/master/AzureMapsJupyterSamples/Tutorials/Analyze%20Weather%20Data/data)下載示範資料。 下列指令碼會將示範資料匯入到 Azure Notebook。
+為了進行本教學課程，我們將利用安裝在四個不同風力發電機組上的感應器所傳來的天氣資料數據。 範例資料包含 30 天的天氣數據。 這些數據是從每個發電機組位置附近的天氣資料中心收集而來。 示範資料包含溫度、風速和風向的資料數據。 您可以從[這裡](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/tree/master/AzureMapsJupyterSamples/Tutorials/Analyze%20Weather%20Data/data)下載示範資料。 下列指令碼會將示範資料匯入到 Azure Notebook。
 
 ```python
 df = pd.read_csv("./data/weather_dataset_demo.csv")
@@ -67,7 +68,7 @@ df = pd.read_csv("./data/weather_dataset_demo.csv")
 
 ## <a name="request-daily-forecast-data"></a>要求每日預報資料
 
-在我們的範例案例中，我們會要求每個感應器位置的每日預報。 下列指令碼會呼叫 Azure 地圖服務氣象服務的[每日預報 API](https://aka.ms/AzureMapsWeatherDailyForecast)，以取得每個風力發電機組的每日氣象預報，預報範圍是當日起的往後 15 天。
+在我們的案例中，我們會要求每個感應器位置的每日預報。 下列指令碼會呼叫 Azure 地圖服務氣象服務的[每日預報 API](https://aka.ms/AzureMapsWeatherDailyForecast)，以取得每個風力發電機組的每日氣象預報，預報範圍是當日起的往後 15 天。
 
 
 ```python
@@ -128,7 +129,7 @@ display(Image(poi_range_map))
 ![發電機組的所在位置](./media/weather-service-tutorial/location-map.png)
 
 
-為了使用預報資料來擴充示範資料，我們會根據天氣資料中心的基地識別碼，使用示範資料來將預報資料分組。
+我們會根據天氣資料中心工作站的識別碼，將示範資料分組成預測資料。 此分組動作會使用預測資料來擴充示範資料。 
 
 ```python
 # Group forecasted data for all locations
@@ -156,7 +157,7 @@ grouped_weather_data.get_group(station_ids[0]).reset_index()
 
 ## <a name="plot-forecast-data"></a>繪製預報資料
 
-為了了解往後 15 天內的風速和風向變化，我們會針對預報日期來繪製預報值。
+我們會根據預測日期，將預測值繪製成圖。 此圖可讓我們在接下來的 15 天內查看風的速度和方向變更。
 
 ```python
 # Plot wind speed
@@ -175,7 +176,7 @@ windsPlot.set_xlabel("Date")
 windsPlot.set_ylabel("Wind direction")
 ```
 
-下圖會以視覺方式呈現預報資料，以顯示要求資料當日起往後 15 天的風速 (左圖) 和風向 (右圖) 變化。
+下圖將預測資料視覺化。 針對風速的變更，請參閱左側圖表。 針對風向的變更，請參閱右側圖表。 這些資料是資料索取當天後 15 天的預測。
 
 <center>
 
@@ -184,7 +185,7 @@ windsPlot.set_ylabel("Wind direction")
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已了解如何呼叫 Azure 地圖服務 REST API 來取得氣象預報資料，並以視覺方式在地圖上呈現資料。
+在本教學課程中，您已了解如何呼叫 Azure 地圖服務 REST API 來取得氣象預報資料。 您也了解如何將圖表上的資料視覺化。
 
 若要深入了解如何在 Azure Notebooks 內呼叫 Azure 地圖服務 REST API，請參閱[使用 Azure Notebooks 的 EV 路由](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing)。
 

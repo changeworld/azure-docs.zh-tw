@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cf5f8d79c2f416ea0c00064fecc8fd6008ae047
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 15509866980cdf85f54fc03cb77eed36f83c982f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71119835"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983362"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-linkedin-learning"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 LinkedIn Learning 整合
 
@@ -33,7 +32,7 @@ ms.locfileid: "71119835"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -46,6 +45,7 @@ ms.locfileid: "71119835"
 
 * LinkedIn Learning 支援 **SP 和 IDP** 起始的 SSO
 * LinkedIn Learning 支援 **Just In Time** 使用者佈建
+* 設定 LinkedIn Learning 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-linkedin-learning-from-the-gallery"></a>從資源庫新增 LinkedIn Learning
 
@@ -77,7 +77,7 @@ ms.locfileid: "71119835"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [LinkedIn Learning]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [選取單一登入方法]  頁面上，選取 [SAML]  。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -181,3 +181,4 @@ LinkedIn Learning 應用程式支援及時使用者佈建，且在驗證後會�
 
 - [嘗試搭配 Azure AD 使用 LinkedIn Learning](https://aad.portal.azure.com/)
 
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

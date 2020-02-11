@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 12c2f1bd2a3185d26eae02b5cd756392b5b87c16
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: e7717cdeec33a32f926cb5ef4c1f6d28c25f9d93
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533233"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989074"
 ---
 ## <a name="create-a-self-hosted-integration-runtime"></a>建立自我裝載整合執行階段
 
@@ -83,7 +83,8 @@ ms.locfileid: "72533233"
 
 5. 複製其中一個金鑰 (不含雙引號)，該金鑰用來註冊您在下列步驟中安裝於電腦上的自我裝載整合執行階段。  
 
-## <a name="install-the-integration-runtime"></a>安裝整合執行階段
+## <a name="install-the-integration-runtime-tool"></a>安裝整合執行階段工具
+
 1. 如果您的機器上已經有整合執行階段，請使用 [新增或移除程式]  將其解除安裝。 
 
 2. 在本機 Windows 電腦上[下載](https://www.microsoft.com/download/details.aspx?id=39717)自我裝載的整合執行階段。 執行安裝。
@@ -135,5 +136,4 @@ ms.locfileid: "72533233"
     h. 請選取 [測試]  ，以確認整合執行階段可以連線到 SQL Server。 如果連線成功，您會看到綠色的核取記號。 如果連線不成功，您會看到一則錯誤訊息。 修正所有問題，並確定整合執行階段可連線到 SQL Server。    
 
     > [!NOTE]
-    > 請記下驗證類型、伺服器、資料庫、使用者和密碼的值。 您稍後會在本教學課程中用到。 
-    
+    > 請記下驗證類型、伺服器、資料庫、使用者和密碼的值。 您稍後會在本教學課程中用到。

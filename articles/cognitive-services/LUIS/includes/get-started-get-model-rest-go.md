@@ -6,38 +6,34 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/18/2019
+ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: ec61abca19579426818e227687e08e66b73969cb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a153416a247ec3a38ec29e95b83fa919e765942b
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73500710"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76966965"
 ---
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* 入門金鑰。
+* Azure Language Understanding - 撰寫資源的 32 字元金鑰和撰寫端點 URL。 使用 [Azure 入口網站](../luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal)或 [Azure CLI](../luis-how-to-azure-subscription.md#create-resources-in-azure-cli) 建立。
 * 匯入來自 cognitive-services-language-understanding GitHub 存放庫的 [TravelAgent](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/change-model/TravelAgent.json) 應用程式。
 * 已匯入 TravelAgent 應用程式的 LUIS 應用程式識別碼。 應用程式識別碼會顯示在應用程式儀表板中。
 * 應用程式中用來接收表達的版本識別碼。 預設識別碼為 "0.1"。
-* [Go](https://golang.org/) (英文) 程式設計語言  
+* [Go](https://golang.org/) (英文) 程式設計語言
 * [Visual Studio Code](https://code.visualstudio.com/)
 
 ## <a name="example-utterances-json-file"></a>範例語句 JSON 檔案
 
 [!INCLUDE [Quickstart explanation of example utterance JSON file](get-started-get-model-json-example-utterances.md)]
 
-## <a name="get-luis-key"></a>取得 LUIS 金鑰
-
-[!INCLUDE [Use authoring key for endpoint](../includes/get-key-quickstart.md)]
-
 ## <a name="change-model-programmatically"></a>以程式設計方式變更模型
 
-使用 Go 將機器學習的實體 [API](https://aka.ms/luis-apim-v3-authoring) 新增至應用程式。 
+使用 GO 將機器學習的實體 [API](https://aka.ms/luis-apim-v3-authoring) 新增至應用程式。
 
 1. 建立名為 `predict.go` 的新檔案。 新增下列程式碼：
-    
+
     ```go
     // dependencies
     package main
@@ -48,21 +44,21 @@ ms.locfileid: "73500710"
         "log"
         "strings"
     )
-    
+
     // main function
     func main() {
-    
+
         // NOTE: change to your app ID
         var appID = "YOUR-APP-ID"
-    
-        // NOTE: change to your starter key
+
+        // NOTE: change to your authoring key
         var authoringKey = "YOUR-KEY"
-    
-        // NOTE: change to your starter key's endpoint, for example, westus.api.cognitive.microsoft.com
-        var endpoint = "YOUR-ENDPOINT"  
-    
+
+        // NOTE: change to your authoring key's endpoint, for example, your-resource-name.api.cognitive.microsoft.com
+        var endpoint = "YOUR-ENDPOINT"
+
         var version = "0.1"
-    
+
         var exampleUtterances = `
         [
             {
@@ -83,50 +79,50 @@ ms.locfileid: "73500710"
             }
           ]
         `
-    
+
         fmt.Println("add example utterances requested")
         addUtterance(authoringKey, appID, version, exampleUtterances, endpoint)
-    
+
         fmt.Println("training selected")
         requestTraining(authoringKey, appID, version, endpoint)
-    
+
         fmt.Println("training status selected")
         getTrainingStatus(authoringKey, appID, version, endpoint)
     }
-    
+
     // get utterances from file and add to model
     func addUtterance(authoringKey string, appID string,  version string, labeledExampleUtterances string, endpoint string){
-    
+
         var authoringUrl = fmt.Sprintf("https://%s/luis/authoring/v3.0-preview/apps/%s/versions/%s/examples", endpoint, appID, version)
-    
+
         httpRequest("POST", authoringUrl, authoringKey, labeledExampleUtterances)
     }
     func requestTraining(authoringKey string, appID string,  version string, endpoint string){
-    
+
         trainApp("POST", authoringKey, appID, version, endpoint)
     }
     func trainApp(httpVerb string, authoringKey string, appID string,  version string, endpoint string){
-    
+
         var authoringUrl = fmt.Sprintf("https://%s/luis/authoring/v3.0-preview/apps/%s/versions/%s/train", endpoint, appID, version)
-    
+
         httpRequest(httpVerb,authoringUrl, authoringKey, "")
     }
     func getTrainingStatus(authoringKey string, appID string, version string, endpoint string){
-    
+
         trainApp("GET", authoringKey, appID, version, endpoint)
     }
     // generic HTTP request
     // includes setting header with authoring key
     func httpRequest(httpVerb string, url string, authoringKey string, body string){
-    
+
         client := &http.Client{}
-    
+
         request, err := http.NewRequest(httpVerb, url, strings.NewReader(body))
         request.Header.Add("Ocp-Apim-Subscription-Key", authoringKey)
-    
+
         fmt.Println("body")
         fmt.Println(body)
-    
+
         response, err := client.Do(request)
         if err != nil {
             log.Fatal(err)
@@ -139,34 +135,34 @@ ms.locfileid: "73500710"
             fmt.Println("   ", response.StatusCode)
             fmt.Println(string(contents))
         }
-    }    
+    }
     ```
 
-1. 取代下列值：
+1. 使用您自己的值取代以 `YOUR-` 開頭的值。
 
-    * `YOUR-KEY` 使用您的入門金鑰
-    * `YOUR-ENDPOINT` 使用您的端點，例如 `westus2.api.cognitive.microsoft.com`
-    * `YOUR-APP-ID` 使用您的應用程式識別碼
+    |資訊|目的|
+    |--|--|
+    |`YOUR-KEY`|您的 32 字元撰寫金鑰。|
+    |`YOUR-ENDPOINT`| 您的撰寫 URL 端點。 例如： `replace-with-your-resource-name.api.cognitive.microsoft.com` 。 您已在建立資源時設定資源名稱。|
+    |`YOUR-APP-ID`| 您的 LUIS 應用程式識別碼。 |
+
+    在 LUIS 入口網站中，您可以在 [Azure 資源]  頁面上的 [管理] 區段中看到指派的金鑰和端點。 在相同的 [管理] 區段中，您可以在 [應用程式設定]  頁面上取得應用程式識別碼。
 
 1. 在您建立檔案所在的相同目錄中使用命令提示字元，輸入下列命令以編譯 Go 檔案：
 
     ```console
     go build model.go
-    ```  
+    ```
 
-1. 藉由在命令提示字元中輸入下列文字，從命令列執行 Go 應用程式： 
+1. 藉由在命令提示字元中輸入下列文字，從命令列執行 Go 應用程式：
 
     ```console
     go run model.go
     ```
 
-## <a name="luis-keys"></a>LUIS 金鑰
-
-[!INCLUDE [Use authoring key for endpoint](../includes/starter-key-explanation.md)]
-
 ## <a name="clean-up-resources"></a>清除資源
 
-您完成本快速入門時，請從檔案系統中刪除該檔案。 
+您完成本快速入門時，請從檔案系統中刪除該檔案。
 
 ## <a name="next-steps"></a>後續步驟
 

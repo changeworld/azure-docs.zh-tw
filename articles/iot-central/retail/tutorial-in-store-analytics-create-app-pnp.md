@@ -11,16 +11,16 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 145aa87841c6334f7fa12535103b5e97db9c6918
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 6b89b667855d827acfb7c181da014cd0d0b4bfc4
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702033"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022098"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>教學課程：在 Azure IoT Central 中建立店內分析應用程式
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 本教學課程會說明解決方案建置者該如何建立 Azure IoT Central 店內分析應用程式。 此應用程式範例適用於零售商店。 這個解決方案可滿足常見的商務需求，讓企業得以監視和適應佔用量與環境狀況。
 
@@ -42,7 +42,7 @@ ms.locfileid: "74702033"
 > * 將裝置連線到應用程式
 > * 新增規則和動作來監視狀況
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程系列，您需要：
 * 建議要有 Azure 訂用帳戶。 您可以選擇使用免費的 7 天試用版。 如果您沒有 Azure 訂用帳戶，則可以在 [Azure 註冊頁面](https://aka.ms/createazuresubscription)上建立一個。
@@ -64,7 +64,7 @@ ms.locfileid: "74702033"
 
 1. 選取 [零售]  。  [零售] 頁面會顯示數個零售應用程式範本。
 
-若要建立新的店內分析結帳應用程式，並讓其使用預覽功能：  
+若要建立新的店內分析結帳應用程式：  
 
 1. 選取 [店內分析 - 結帳]  應用程式範本。 針對本教學課程中所用的所有裝置 (RuuviTag 感應器除外)，其裝置範本皆包含在此範本中。 此範本也會提供操作員儀表板，以便用來監視結帳和環境狀況與裝置狀態。 
 
@@ -75,13 +75,16 @@ ms.locfileid: "74702033"
 
 1. 如果您有 Azure 訂用帳戶，請輸入您的 [目錄]、[Azure 訂用帳戶] 和 [區域]  。 如果您沒有訂用帳戶，則可以啟用 [7 天免費試用]  並填妥必要的連絡人資訊。  
 
-    如需關於目錄和訂用帳戶的詳細資訊，請參閱[建立應用程式快速入門](../preview/quick-deploy-iot-central.md)。
+    如需關於目錄和訂用帳戶的詳細資訊，請參閱[建立應用程式快速入門](../core/quick-deploy-iot-central.md)。
 
 1. 選取 [建立]  。
 
     ![Azure IoT Central 的建立應用程式頁面](./media/tutorial-in-store-analytics-create-app-pnp/preview-application-template.png)
 
+    ![Azure IoT Central 的建立應用程式計費資訊](./media/tutorial-in-store-analytics-create-app-pnp/preview-application-template-billinginfo.png)
+
 ## <a name="customize-application-settings"></a>自訂應用程式設定
+
 身為建置者，您可以變更數個設定，以自訂應用程式的使用者體驗。 在本節中，您將選取預先定義的應用程式主題。 (選擇性) 您會了解如何建立自訂主題，並更新應用程式影像。 自訂主題可讓您設定應用程式瀏覽器色彩、瀏覽器圖示，以及在刊頭中出現的應用程式標誌。
 
 若要選取預先定義的應用程式主題：
@@ -160,7 +163,7 @@ ms.locfileid: "74702033"
 
 第三，您可以藉由建置自訂檢視來自訂裝置範本。 檢視讓操作員有辦法以視覺方式呈現裝置的遙測資料和中繼資料，例如裝置的計量和健康情況。
 
-在這裡，您會使用前兩種方式來自訂 RuuviTag 感應器的裝置範本。 如需如何為感應器建立檢視的相關資訊，請參閱[將模擬裝置新增至 IoT Central 應用程式](../preview/quick-create-pnp-device.md)快速入門。
+在這裡，您會使用前兩種方式來自訂 RuuviTag 感應器的裝置範本。 如需如何為感應器建立檢視的相關資訊，請參閱[將模擬裝置新增至 IoT Central 應用程式](../core/quick-create-pnp-device.md)快速入門。
 
 若要自訂 RuuviTag 裝置範本的內建介面：
 
@@ -227,8 +230,8 @@ ms.locfileid: "74702033"
 
 完成下列兩篇文章中的步驟，與實際的 Rigado 閘道和 RuuviTag 感應器連線。 完成之後，請返回本教學課程。 因為您已經在本教學課程中建立好裝置範本，所以不需要在下列這組指示中再次建立。
 
-- 若要與 Rigado 閘道連線，請參閱[將 Rigado Cascade 500 連線到 Azure IoT Central 應用程式](../preview/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json)。
-- 若要與 RuuviTag 感應器連線，請參閱[將 RuuviTag 感應器連線到 Azure IoT Central 應用程式](../preview/howto-connect-ruuvi.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json)。 如有需要，您也可以使用這兩個指示來建立兩個模擬感應器。
+- 若要與 Rigado 閘道連線，請參閱[將 Rigado Cascade 500 連線到 Azure IoT Central 應用程式](../core/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json)。
+- 若要與 RuuviTag 感應器連線，請參閱[將 RuuviTag 感應器連線到 Azure IoT Central 應用程式](../core/howto-connect-ruuvi.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json)。 如有需要，您也可以使用這兩個指示來建立兩個模擬感應器。
 
 ## <a name="add-rules-and-actions"></a>新增規則和動作
 在使用 Azure IoT Central 應用程式中的感應器來監視狀況的過程中，您可以建立規則以在符合特定狀況時執行動作。 規則會與裝置範本以及一或多個裝置相關聯，並包含根據裝置的遙測資料或事件所必須符合的狀況。 規則也會有一或多個相關聯的動作。 這些動作可能包括傳送電子郵件通知，或觸發 Webhook 動作以將資料傳送到其他服務。 **店內分析 - 結帳**應用程式範本包含應用程式裝置的一些預先定義規則。

@@ -5,29 +5,29 @@ author: normesta
 ms.service: storage
 ms.subservice: blobs
 ms.topic: tutorial
-ms.date: 10/22/2019
+ms.date: 1/22/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: cd3db902d713910de5a8199df85089d62569f9d7
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 97679ec48ee9120005118b6cacaf37e45657db08
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757559"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906623"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
 
 # <a name="tutorial-host-a-static-website-on-blob-storage"></a>教學課程：將靜態網站裝載於 Blob 儲存體上
 
-本教學課程是一個系列的第一部分。 在本教學課程中，您會了解如何建置靜態網站並將其部署至「Azure 儲存體」。 完成時，您將擁有一個可供使用者公開存取的靜態網站。 
+在本教學課程中，您將了解如何建置靜態網站並將其部署至 Azure 儲存體。 完成時，您將擁有一個可供使用者公開存取的靜態網站。 
 
-在系列的第一部分中，您將了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 設定靜態網站代管
 > * 部署 Hello World 網站
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -99,9 +99,9 @@ Visual Studio Code 現在會將您的檔案上傳到 Web 端點，然後顯示�
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程的第一部分中，您已了解如何設定用於靜態網站代管的「Azure 儲存體」帳戶，以及如何建立靜態網站並將其部署至 Azure 端點。
+在本教學課程中，您已了解如何設定用於靜態網站裝載的 Azure 儲存體帳戶，以及如何建立靜態網站並將其部署至 Azure 端點。
 
-現在，請前進到第二部分，您將此部分使用 Azure CDN 為靜態網站設定與 SSL 搭配運作的自訂網域。
+接下來，請了解如何設定靜態網站的自訂網域。
 
 > [!div class="nextstepaction"]
-> [使用 Azure CDN 為靜態網站啟用與 SSL 搭配運作的自訂網域](storage-blob-static-website-custom-domain.md)
+> [將自訂網域對應至 Azure Blob 儲存體端點](storage-custom-domain-name.md)

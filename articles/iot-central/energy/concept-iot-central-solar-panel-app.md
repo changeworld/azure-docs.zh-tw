@@ -8,16 +8,16 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: b2b0fff225eee52f8ffe308317f06793728e5d1f
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 44171a08e69cfa058e0a9e75e3220fb996b7789d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585333"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018001"
 ---
 # <a name="azure-iot-central---solar-panel-app-architecture"></a>Azure IoT Central - 太陽能板應用程式架構
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 
 此文章提供太陽能板監視應用程式範本架構的概觀。 下圖顯示在 Azure 上使用 IoT Central 平台之太陽能板應用程式的常用架構。
@@ -29,7 +29,7 @@ ms.locfileid: "73585333"
 
 ## <a name="solar-panels-and-connectivity"></a>太陽能板與連線能力 
 
-太陽能板是可再生能源的重要來源之一。 根據太陽能板類型和設定而定，您可以透過閘道或透過其他中繼裝置和專屬系統來與它連線。 您可能需要建置 IoT Central 裝置橋接器，來連線無法直接連線的裝置。 IoT Central 裝置橋接器是一個開放原始碼解決方案，您可以[在這裡](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge) \(部分機器翻譯\) 找到完整詳細資料。 
+太陽能板是可再生能源的重要來源之一。 根據太陽能板類型和設定而定，您可以使用閘道或其他中繼裝置和專屬系統來與其連線。 您可能需要建置 IoT Central 裝置橋接器，來連線無法直接連線的裝置。 IoT Central 裝置橋接器是一個開放原始碼解決方案，您可以[在這裡](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge) \(部分機器翻譯\) 找到完整詳細資料。 
 
 
 
@@ -38,7 +38,7 @@ Azure IoT Central 是一個平台，能簡化 IoT 解決方案的建置，有助
 
 
 ## <a name="extensibility-options-to-build-with-iot-central"></a>透過 IoT Central 建置的擴充性選項
-IoT Central 平台提供兩個擴充性選項：連續資料匯出 (CDE) 和 API。 客戶和夥伴可以在這些選項之間進行選擇，以根據特定需求自訂解決方案。 例如，我們的其中一個夥伴使用 Azure Data Lake Storage (ADLS) 設定了 CDE。 他們使用 ADLS 來進行長期資料保留和其他冷路徑儲存案例，例如批次處理、稽核和報告用途。 
+IoT Central 平台提供兩個擴充性選項：連續資料匯出 (CDE) 和 API。 客戶與夥伴可以在這些選項之間進行選擇，以根據特定需求自訂解決方案。 例如，我們的其中一個夥伴使用 Azure Data Lake Storage (ADLS) 設定了 CDE。 他們使用 ADLS 來進行長期資料保留和其他冷路徑儲存案例，例如批次處理、稽核和報告用途。 
 
 ## <a name="next-steps"></a>後續步驟
 

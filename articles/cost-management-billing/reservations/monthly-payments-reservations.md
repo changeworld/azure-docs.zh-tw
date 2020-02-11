@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 11/01/2019
 ms.author: banders
-ms.openlocfilehash: cf9bb7f3b9661d5957ad569fce7112fe16659761
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 89ae15bb82db1e9e06ac2cb52146137161dac47d
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75995945"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031334"
 ---
 # <a name="purchase-reservations-with-monthly-payments"></a>購買或每月付款的 Azure 保留
 
@@ -29,6 +29,11 @@ ms.locfileid: "75995945"
 - SQL 資料倉儲
 - Cosmos DB
 - App Service 戳記費用
+- 受控磁碟
+- Azure 資料總管
+- 適用於 MariaDB、MySQL 與 PostgreSQL 的 Azure 資料庫
+- 由 CloudSimple 提供的 Azure VMware 解決方案
+
 
 在 [Azure 入口網站](https://portal.azure.com/?Microsoft_Azure_Reservations_EnableMultiCart=true&amp;paymentPlan=true#blade/Microsoft_Azure_Reservations/CreateBlade)中購買 Azure 保留。
 

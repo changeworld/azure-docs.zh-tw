@@ -10,15 +10,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
-ms.date: 06/19/2019
+ms.date: 02/02/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: f803bcafb1966e32e894b4caeaa8fafb5f73e8e7
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: abd4a3a3a3e8494ea325e65a78eea7fb56b78f94
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186275"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988357"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3"></a>教學課程：透過媒體服務 v3 分析影片
 
@@ -38,7 +38,11 @@ ms.locfileid: "74186275"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="compliance-privacy-and-security"></a>合規性、隱私權和安全性
+ 
+重要提醒是，在使用影片索引子時，您必須遵守所有適用的法律，且您不得以違反他人權利或可能會對他人有害的方式使用影片索引子或任何其他 Azure 服務。 將任何影片 (包括任何生物特徵辨識資料) 上傳至影片索引子服務以進行處理和儲存之前，您必須擁有所有適當的權限，包括向影片中的個人徵得所有必要的同意。 若要了解影片索引子中的合規性、隱私權和安全性，請參閱 Microsoft [認知服務條款](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)。 如需 Microsoft 的隱私權義務和您的資料處理方式，請參閱 Microsoft 的 [隱私權聲明](https://privacy.microsoft.com/PrivacyStatement)、[線上服務條款](https://www.microsoft.com/licensing/product-licensing/products) ("OST") 和 [資料處理增補](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA")。 其他隱私權資訊 (包括資料保留、刪除/銷毀) 可在 OST 中和[這裡](../video-indexer/faq.md)取得。 一旦使用影片索引子，即表示您同意受到認知服務條款、OST、DPA 和隱私權聲明的規範。
+
+## <a name="prerequisites"></a>Prerequisites
 
 - 如果您未安裝 Visual Studio，請取得 [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)。
 - [建立媒體服務帳戶](create-account-cli-how-to.md)。<br/>請務必記住您用於資源群組名稱和「媒體服務」帳戶名稱的值。
@@ -132,7 +136,7 @@ ms.locfileid: "74186275"
 
 ### <a name="job-error-codes"></a>作業錯誤碼
 
-請參閱[錯誤碼](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)。
+請參閱[錯誤碼](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode) \(英文\)。
 
 ### <a name="download-the-result-of-the-job"></a>下載作業結果
 

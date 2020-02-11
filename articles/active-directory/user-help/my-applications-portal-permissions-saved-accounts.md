@@ -1,27 +1,27 @@
 ---
-title: 從我的應用程式 (預覽) 入口網站管理應用程式權限 - Azure Active Directory | Microsoft Docs
-description: 了解如何從 [我的應用程式] (預覽) 入口網站管理組織雲端式應用程式的應用程式權限。
+title: 從我的應用程式入口網站管理應用程式權限 - Azure Active Directory | Microsoft Docs
+description: 了解如何從我的應用程式入口網站管理組織雲端式應用程式的應用程式權限。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: kasimpso
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 10/30/2019
-ms.author: lizross
+ms.date: 02/03/2020
+ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: 36abbee0bf25550425f4e476e6a4e7b75df815a6
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: bac33386371b13950163727497cabd0f262df135
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705049"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022404"
 ---
-# <a name="edit-or-revoke-application-permissions-in-the-my-apps-preview-portal"></a>在我的應用程式 (預覽) 入口網站中編輯或撤銷應用程式權限
+# <a name="edit-or-revoke-application-permissions-in-the-my-apps-portal"></a>在我的應用程式入口網站中編輯或撤銷應用程式權限
 
-當您在 [我的應用程式]  (預覽) 入口網站中使用組織應用程式時，通常會授與權限並儲存帳戶資訊。 為了保護您的資料安全，您可能想要檢閱和撤銷權限或清除已儲存的帳戶認證。 移除權限或帳戶可能會中斷部分應用程式功能。 如果您在移除權限或帳戶之後遇到問題，請洽詢組織的技術服務人員以取得其他協助。
+當您在**我的應用程式**入口網站中使用組織應用程式時，通常會授與權限並儲存帳戶資訊。 為了保護您的資料安全，您可能想要檢閱和撤銷權限或清除已儲存的帳戶認證。 移除權限或帳戶可能會中斷部分應用程式功能。 如果您在移除權限或帳戶之後遇到問題，請洽詢組織的技術服務人員以取得其他協助。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-and-workspaces.md)]
 
@@ -46,11 +46,11 @@ ms.locfileid: "76705049"
 
 在 [我的應用程式]  入口網站中管理應用程式權限和儲存的帳戶之後，您可以：
 
-- 將應用程式組織為貴組織所建立和提供的各種類別。 如需詳細資訊，請參閱[在我的應用程式 (預覽) 入口網站上存取和使用工作區](my-applications-portal-workspaces.md)。
+- 將應用程式組織為貴組織所建立和提供的各種類別。 如需詳細資訊，請參閱[在我的應用程式入口網站上存取和使用集合](my-applications-portal-workspaces.md)。
 
 ## <a name="related-articles"></a>相關文章
 
-- [更新您的設定檔和帳戶資訊](my-account-portal-overview.md)。 相關指示，說明如何更新您在 [我的設定檔]  (預覽) 入口網站上顯示的個人資訊。
+- [更新您的設定檔和帳戶資訊](my-account-portal-overview.md)。 相關指示，說明如何更新您在 [我的設定檔]  入口網站上顯示的個人資訊。
 
 - [管理您的組織](my-account-portal-organizations-page.md)。 相關指示，說明如何在 [我的設定檔]  入口網站的 [組織]  頁面上檢視及管理組織相關資訊。
 

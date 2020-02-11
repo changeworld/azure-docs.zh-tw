@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/25/2019
-ms.openlocfilehash: 84fa6b1d7f48ac7aea44e693a7df8945ba180d29
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 125cde85d3caa6fd1a33045e85c5383f83a669bf
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658639"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982529"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>教學課程：使用 Python SDK 開始建立您的第一個 ML 實驗
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -101,7 +101,7 @@ Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機
 如果您有自訂小工具，或是您偏好使用 Jupyter/JupyterLab，請選取最右側的 [Jupyter]  下拉式清單，然後選取 [Jupyter]  或 [JupyterLab]  。 新的瀏覽器視窗隨即開啟。
 
 > [!NOTE]
-> 計算執行個體 (預覽) 目前僅適用於區域為 [美國中北部]  或 [英國南部]  的工作區，其他區域的支援將於近期推出。
+> 計算執行個體 (預覽) 目前僅適用於區域為 [美國中北部]  、[美國東部 2]  、[歐洲北部]  或 [英國南部]  的工作區，其他區域的支援將於近期推出。
 >如果您的工作區位於任何其他區域，您可繼續建立並使用 [Notebook VM](concept-compute-instance.md#notebookvm)。  您可使用 Notebook VM 或計算執行個體來執行您的筆記本。 若您未停止 VM，VM 將持續執行並產生成本。 您可以從 Studio 中的 [計算]  索引標籤手動加以停止，或參閱相關[部落格文章](https://techcommunity.microsoft.com/t5/educator-developer-blog/azure-virtual-machine-auto-shutdown/ba-p/379342)以了解如何啟用 Azure VM 的排程自動關機。
 
 ## <a name="next-steps"></a>後續步驟

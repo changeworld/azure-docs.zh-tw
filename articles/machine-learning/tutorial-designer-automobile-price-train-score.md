@@ -8,20 +8,20 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 639a61cddde27b0d989e5a3dd4c599c353182a73
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 01/30/2020
+ms.openlocfilehash: de9ed700363bd6578ac49f0add0c48dc33356692
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720150"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982584"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>教學課程：使用設計工具預測汽車價格 (預覽)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-在這個分成兩部分的教學課程中，您將了解如何使用 Azure Machine Learning 設計工具來開發及部署預測性分析解決方案，以預測任何汽車的價格。
+在這個分成兩部分的教學課程中，您將了解如何使用 Azure Machine Learning 設計工具來訓練及部署預測可預測任何汽車價格的機器學習模型。 設計工具是一項拖放工具，可讓您建立機器學習模型，而且不需要任何一行程式碼。
 
-在教學課程的第一部分中，您將了解如何：
+在教學課程的第一部分中，您會了解如何：
 
 > [!div class="checklist"]
 > * 建立新管線。
@@ -45,13 +45,15 @@ Azure Machine Learning 管線會將多個機器學習和資料處理步驟組織
 
 ### <a name="create-a-new-workspace"></a>建立新的工作區
 
+若要使用設計工具，您首先需要 Azure Machine Learning 工作區。 工作區是 Azure Machine Learning 的最上層資源，其提供一個集中位置來處理您在 Azure Machine Learning 中建立的所有成品。
+
 如果您有企業版 Azure Machine Learning 工作區，請[跳至下一節](#create-the-pipeline)。
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal-enterprise.md)]
 
 ### <a name="create-the-pipeline"></a>建立管線
 
-1. 登入 [ml.azure.com](https://ml.azure.com)，並選取您要使用的工作區。
+1. 登入 <a href="https://ml.azure.com?tabs=jre" target="_blank">ml.azure.com</a>，並選取您要使用的工作區。
 
 1. 選取 [設計工具]  。
 
@@ -60,6 +62,30 @@ Azure Machine Learning 管線會將多個機器學習和資料處理步驟組織
 1. 選取 [易於使用的預建模組]  。
 
 1. 在畫布頂端選取預設管線名稱 **Pipeline-Created-on**。 請將其重新命名為*汽車價格預測*。 此名稱不必是唯一的。
+
+## <a name="set-the-default-compute-target"></a>設定預設計算目標
+
+對計算目標執行管線，此目標為連結至工作區的計算資源。 建立計算目標之後，您可以將其重複用於未來的執行。
+
+您可以為整個管線設定**預設計算目標**，這將會告訴每個模組依預設使用相同的計算目標。 不過，您也可以針對每個模組指定計算目標。
+
+1. 在管線名稱旁邊，選取畫布頂端的 **齒輪圖示** ![齒輪圖示螢幕擷取畫面](./media/tutorial-designer-automobile-price-train-score/gear-icon.png)，即可開啟 [設定]  窗格。
+
+1. 在畫布右側的 [設定]  窗格中，選取 [選取計算目標]  。
+
+    如果您已經有可用的計算目標，您可以選取該目標來執行此管線。
+
+    > [!NOTE]
+    > 設計工具只能對 Azure Machine Learning Compute 目標執行實驗。 其他計算目標將不會顯示。
+
+1. 輸入計算資源的名稱。
+
+1. 選取 [儲存]  。
+
+    > [!NOTE]
+    > 建立計算資源大約需要五分鐘。 資源建立後，您可以在未來執行時加以重複使用，而略過這段等候時間。
+    >
+    > 計算資源在閒置時會自動調整為零個節點，以節省成本。 當您在一段時間後再次加以使用時，它在相應增加時可能又會再出現約五分鐘的等候時間。
 
 ## <a name="import-data"></a>匯入資料
 
@@ -77,7 +103,7 @@ Azure Machine Learning 管線會將多個機器學習和資料處理步驟組織
 
 1. 選取 [汽車價格資料 (原始)]  模組。
 
-1. 在畫布右側的 [屬性] 窗格中，選取 [輸出]  。
+1. 在畫布右側的 [模組詳細資料] 窗格中，選取 [輸出]  。
 
 1. 選取圖形圖示以將資料視覺化。
 
@@ -95,7 +121,7 @@ Azure Machine Learning 管線會將多個機器學習和資料處理步驟組織
 
 當您定型模型時，您必須對遺漏的資料採取某些動作。 在此資料集中，**自負虧損**資料行遺漏了許多值，因此您會將該資料行完全排除於模型外。
 
-1. 在選擇區頂端的搜尋方塊中輸入**選取**，以尋找**選取資料集中的資料行**模組。
+1. 在畫布左側的模組選擇區中，展開 [資料轉換]  區段，然後尋找 [選取資料集中的資料行]  模組。
 
 1. 將**選取資料集中的資料行**模組拖曳到畫布上。 將模組放在資料集模組下。
 
@@ -109,7 +135,9 @@ Azure Machine Learning 管線會將多個機器學習和資料處理步驟組織
 
 1. 選取**選取資料集中的資料行**模組。
 
-1. 在畫布右側的 [屬性] 窗格中，選取 [所有資料行]  。
+1. 在畫布右側的 [模組詳細資料] 窗格中，選取 [編輯資料行]  。
+
+1. 展開 [包含]  旁邊的 [資料行名稱]  下拉式清單，然後選取 [所有資料行]  。
 
 1. 選取 **+** 以新增規則。
 
@@ -123,7 +151,7 @@ Azure Machine Learning 管線會將多個機器學習和資料處理步驟組織
 
 1. 選取**選取資料集中的資料行**模組。 
 
-1. 在 [屬性] 窗格中選取 [註解]  文字方塊，然後輸入*排除自負虧損*。
+1. 在畫布右側的 [模組詳細資料] 窗格中，選取 [註解]  文字方塊，然後輸入「排除自負虧損」  。
 
     圖形上會出現註解，以協助您組織管線。
 
@@ -134,13 +162,15 @@ Azure Machine Learning 管線會將多個機器學習和資料處理步驟組織
 > [!TIP]
 > 在使用設計工具中大部分的模組時，都必須從輸入資料中清除遺漏值。
 
-1. 在搜尋方塊中輸入**清除**，以尋找**清除遺漏的資料**模組。
+1. 在畫布左側的模組選擇區中，展開 [資料轉換]  區段，然後尋找 [清除遺漏資料]  模組。
 
 1. 將**清除遺漏的資料**模組拖曳至管線畫布上。 將其連線至**選取資料集中的資料行**模組。 
 
-1. 在 [屬性] 窗格中，選取 [清除模式]  下方的 [移除整個資料列]  。
+1. 選取 [清除遺漏資料]  模組。
 
-1. 在 [屬性] 窗格的 [註解]  方塊中，輸入「移除遺漏的值資料列」  。 
+1. 在畫布右邊的 [模組詳細資料] 窗格中，選取 [清除模式]  底下的 [整個資料列]  。
+
+1. 在畫布右側的 [模組詳細資料] 窗格中，選取 [註解]  方塊，然後輸入「移除遺漏值資料列」  。 
 
     您的管線此時應會顯示如下：
     
@@ -156,26 +186,28 @@ Azure Machine Learning 管線會將多個機器學習和資料處理步驟組織
 
 分割資料是機器學習服務中常見的工作。 您會將資料分割成兩個不同的資料集。 一個資料集會定型模型，另一個則會測試模型的執行效果。
 
-1. 在搜尋方塊中輸入**分割資料**，以尋找**分割資料**模組。 將**清除遺漏的資料**模組左側的連接埠連線至**分割資料**模組。
+1. 在模組選擇區中展開 [資料轉換]  區段，然後尋找 [分割資料]  模組。
+
+1. 將 [分割資料]  模組拖曳到管線畫布上。
+
+1. 將**清除遺漏的資料**模組左側的連接埠連線至**分割資料**模組。
 
     > [!IMPORTANT]
     > 請確實將**清除遺漏的資料**的左側輸出連接埠連線至**分割資料**。 左側連接埠包含已清除的資料。 右側連接埠包含已捨棄的資料。
 
 1. 選取**分割資料**模組。
 
-1. 在 [屬性] 窗格中，將**第一個輸出資料集中的資料列比例**設為 0.7。
+1. 在畫布右側的 [模組詳細資料] 窗格中，將 [第一個輸出資料集中的資料列比例]  設定為 0.7。
 
     此選項會分割 70% 的資料來定型模型，而 30% 供測試之用。 70% 的資料集將透過左側輸出連接埠來存取。 其餘資料可透過右側輸出連接埠取得。
 
-1. 在 [屬性] 的 [註解]  方塊中，輸入「將資料集分割為訓練集 (0.7) 和測試集 (0.3)」  。
+1. 在畫布右側的 [模組詳細資料] 窗格中，選取 [註解]  方塊，然後輸入「將資料集分割成訓練集 (0.7) 與測試集 (0.3)」  。
 
 ### <a name="train-the-model"></a>將模型定型
 
 藉由提供一個包含價格的資料集，將模型定型。 此演算法會建立一個模型，用以說明定型資料所呈現的特性與價格之間的關聯性。
 
-1. 若要選取學習演算法，請清除您的模組選擇區搜尋方塊。
-
-1. 展開**機器學習演算法**。
+1. 在模組選擇區中，展開 [機器學習演算法]  。
     
     此選項會顯示數個可用來初始化學習演算法的模組類別。
 
@@ -192,9 +224,11 @@ Azure Machine Learning 管線會將多個機器學習和資料處理步驟組織
 
     ![此螢幕擷取畫面顯示「訓練模型」模組的正確組態。 「線性迴歸」模組連線至「訓練模型」模組的左側連接埠，「分割資料」模組連線至「訓練模型」的右側連接埠](./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png)
 
+1. 在模組選擇區中，展開 [模組訓練]  區段，然後將 [訓練模型]  模組拖曳至畫布。
+
 1. 選取 **訓練模型** 模組。
 
-1. 在 [屬性] 窗格中，選取 [編輯資料行]  選取器。
+1. 在畫布右側的 [模組詳細資料] 窗格中，選取 [編輯資料行]  選取器。
 
 1. 在 [標籤資料行]  對話方塊中，展開下拉式功能表，然後選取 [資料行名稱]  。 
 
@@ -204,7 +238,7 @@ Azure Machine Learning 管線會將多個機器學習和資料處理步驟組織
 
     ![此螢幕擷取畫面顯示管線在新增「訓練模型」模組之後的正確組態。](./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png)
 
-## <a name="score-a-machine-learning-model"></a>為機器學習模型評分
+### <a name="add-the-score-model-module"></a>新增評分模型模組
 
 使用 70% 的資料來定型模型後，您即可將該模型用來為其他 30% 的資料評分，以了解模型的運作是否理想。
 
@@ -212,7 +246,7 @@ Azure Machine Learning 管線會將多個機器學習和資料處理步驟組織
 
 1. 將**訓練模型**模組的輸出連線至**評分模型**的左側輸入連接埠。 將**分割資料**模組的測試資料輸出 (右側連接埠) 連線至**評分模型**的右側輸入連接埠。
 
-## <a name="evaluate-a-machine-learning-model"></a>評估機器學習模型
+### <a name="add-the-evaluate-model-module"></a>新增評估模型模組
 
 使用**評估模型**模組，評估您的模型在測試資料集下的評分。
 
@@ -226,7 +260,20 @@ Azure Machine Learning 管線會將多個機器學習和資料處理步驟組織
 
 ## <a name="run-the-pipeline"></a>執行管道
 
-[!INCLUDE [aml-ui-create-training-compute](../../includes/aml-ui-create-training-compute.md)]
+現在您的管線已全部設定完成，您可以提交管線執行。
+
+1. 在畫布頂端，選取 [執行]  。
+
+1. 在 [設定管線執行]  對話方塊中，針對 [實驗]  選取 [+ 新增實驗]  。
+
+    > [!NOTE]
+    > 實驗群組的類似管線會一起執行。 如果您多次執行某個管線，您可以選取相同的實驗進行後續執行。
+
+    1. 輸入**實驗名稱**的描述性名稱。
+
+    1. 選取 [執行]  。
+    
+    您可以在畫布右上方檢視執行狀態和詳細資料。
 
 ### <a name="view-scored-labels"></a>檢視評分標籤
 
@@ -234,7 +281,7 @@ Azure Machine Learning 管線會將多個機器學習和資料處理步驟組織
 
 1. 選取 [評分模型]  模組以檢視其輸入。
 
-1. 在 [屬性] 窗格中選取 [輸出]  > 圖形圖示 ![視覺化圖示](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png)，以檢視結果。
+1. 在畫布右側的 [模組詳細資料] 窗格中，選取 [輸出]  > 圖表圖示 ![視覺化圖示](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png)以查看結果。
 
     您可以在這裡看到測試資料中的預測價格和實際價格。
 
@@ -246,7 +293,7 @@ Azure Machine Learning 管線會將多個機器學習和資料處理步驟組織
 
 1. 選取 [評估模型]  模組以檢視其輸入。
 
-1. 在 [屬性] 窗格中選取 [輸出]  > 圖形圖示 ![視覺化圖示](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png)，以檢視結果。
+1. 在畫布右側的 [模組詳細資料] 窗格中，選取 [輸出]  > 圖表圖示 ![視覺化圖示](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png)以查看結果。
 
 您的模型會顯示下列統計資料：
 
@@ -260,16 +307,11 @@ Azure Machine Learning 管線會將多個機器學習和資料處理步驟組織
 
 ## <a name="clean-up-resources"></a>清除資源
 
+如果您想要繼續進行本教學課程的第2部分：[部署模型](tutorial-designer-automobile-price-deploy.md)，請略過本節。
+
 [!INCLUDE [aml-ui-cleanup](../../includes/aml-ui-cleanup.md)]
 
 ## <a name="next-steps"></a>後續步驟
-
-在本教學課程的第一部分中，您已完成下列工作：
-
-* 建立管線
-* 準備資料
-* 將模型定型
-* 對模型進行評分和評估
 
 在第二部分中，您將了解如何將模型部署為即時端點。
 
