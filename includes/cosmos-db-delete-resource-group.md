@@ -2,25 +2,25 @@
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: include
-ms.date: 03/23/2019
+ms.date: 01/22/2020
 ms.author: sngun
 ms.custom: seo-java-september2019
-ms.openlocfilehash: d5a0e8412b928aea83670ad9f7c99a892a058c70
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: caefb11e3d691cea940bae5103bf918d3d31cc96
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71210170"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134410"
 ---
-完成您的 Web 應用程式和 Azure Cosmos DB 帳戶之後，您可以將建立的 Azure 資源刪除，以免產生更多費用。 若要刪除資源：
+完成您的應用程式和 Azure Cosmos DB 帳戶之後，您可以將建立的 Azure 資源刪除，以免產生更多費用。 若要刪除資源：
 
-1. 在 Azure 入口網站中，選取最左邊的 [資源群組]  。 若已摺疊左側功能表，請選取![展開按鈕](./media/cosmos-db-delete-resource-group/expand.png)加以展開。
+1. 在 Azure 入口網站的 [搜尋] 列中，搜尋並選取 [資源群組]  。
 
-2. 選取您在本快速入門中建立的資源群組。  
+2. 在該清單中，選取您在本快速入門中建立的資源群組。  
 
    ![選取要刪除的資源群組](./media/cosmos-db-delete-resource-group/delete-resources-select.png)
 
-2. 在新視窗中，選取 [刪除資源群組]  。
+2. 在 [資源群組] 的 [概觀]  頁面中，選取 [刪除資源群組]  。
 
    ![刪除資源群組](./media/cosmos-db-delete-resource-group/delete-resources.png)   
 
