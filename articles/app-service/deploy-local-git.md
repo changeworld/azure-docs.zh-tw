@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 2ae8b71a7d48949cd82765112752192aba54521f
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: efe4c07a6231e0b2c95b049db056a4e5d055db98
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680948"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152987"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>本機 Git 部署至 Azure App Service
 
@@ -50,6 +50,9 @@ ms.locfileid: "75680948"
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app-name> --resource-group <group-name>
 ```
+> [!NOTE]
+> 如果您使用 linux 應用程式服務方案，則需要新增此參數：--runtime python | 3。7
+
 
 或者，若要建立已啟用 Git 的新應用程式，請使用 `--deployment-local-git` 參數在 Cloud Shell 中執行[`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) 。 以新的 Git 應用程式、其 Azure 資源群組及其 \<方案的名稱取代 \<應用程式名稱 >、\<組名 > 和 > 計畫名稱 Azure App Service。
 
@@ -97,7 +100,7 @@ az webapp deployment list-publishing-credentials --name <app-name> --resource-gr
 
 若要使用 Azure Pipelines （預覽）為您的應用程式啟用本機 Git 部署：
 
-1. 在  [Azure 入口網站](https://portal.azure.com)中，搜尋並選取 **應用程式服務**]。 
+1. 在  [Azure 入口網站](https://portal.azure.com)中，搜尋並選取 **應用程式服務**。 
 
 1. 選取您的 Azure App Service 應用程式，然後選取左側功能表中的 [**部署中心**]。
    
@@ -142,10 +145,10 @@ az webapp deployment list-publishing-credentials --name <app-name> --resource-gr
 
 當您使用 Git 來發佈至 Azure 中的 App Service 應用程式時，您可能會看到下列常見的錯誤訊息：
 
-|訊息|原因|解析度
+|訊息|原因|解決方案
 ---|---|---|
 |`Unable to access '[siteURL]': Failed to connect to [scmAddress]`|應用程式未啟動且正在執行。|在 Azure 入口網站中啟動應用程式。 當 web 應用程式停止時，無法使用 Git 部署。|
-|`Couldn't resolve host 'hostname'`|' Azure ' 遠端的位址資訊不正確。|使用 `git remote -v` 命令來列出所有遠端，以及相關聯的 URL。 驗證 'azure' 遠端的 URL 是否正確。 如有需要，移除此遠端並使用正確的 URL 重新建立。|
+|`Couldn't resolve host 'hostname'`|' Azure ' 遠端的位址資訊不正確。|使用 `git remote -v` 命令，列出所有遠端以及相關聯的 URL。 驗證 'azure' 遠端的 URL 是否正確。 如有需要，移除此遠端並使用正確的 URL 重新建立。|
 |`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'master'.`|您未在 `git push`期間指定分支，或未在 `.gitconfig`中設定 `push.default` 值。|再次執行 `git push`，並指定主要分支： `git push azure master`。|
 |`src refspec [branchname] does not match any.`|您嘗試在 ' azure ' 遠端上推送至 master 以外的分支。|再次執行 `git push`，並指定主要分支： `git push azure master`。|
 |`RPC failed; result=22, HTTP code = 5xx.`|如果您嘗試透過 HTTPS 推送大型 Git 存放庫，就會發生這個錯誤。|變更本機電腦上的 git 設定，讓 `postBuffer` 變得更大。 例如： `git config --global http.postBuffer 524288000` 。|

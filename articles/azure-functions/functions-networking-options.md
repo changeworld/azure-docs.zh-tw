@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 79c27d252136281249c217f51019e53987922334
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7b47e7b0672716141f62e3f7df4b0d3ed95c663d
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846448"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114289"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions 網路功能選項
 
@@ -64,11 +64,11 @@ ms.locfileid: "76846448"
 虛擬網路整合有兩種形式：
 
 + **區域虛擬網路整合（預覽）** ：啟用與相同區域中的虛擬網路整合。 這種類型的整合需要在相同區域中的虛擬網路中有子網。 這項功能仍處於預覽狀態，但可支援在 Windows 上執行的函式應用程式，並包含下列問題/解決方案資料表之後所述的注意事項。
-+ **閘道所需的虛擬網路整合**：啟用與遠端區域中的虛擬網路，或與傳統虛擬網路的整合。 這種類型的整合需要將虛擬網路閘道部署到您的 VNet。 這是點對站 VPN 功能，僅支援在 Windows 上執行的函式應用程式。
++ **閘道所需的虛擬網路整合**：啟用與遠端區域或傳統虛擬網路中的虛擬網路整合。 這種類型的整合需要將虛擬網路閘道部署到您的 VNet。 這是點對站 VPN 功能，僅支援在 Windows 上執行的函式應用程式。
 
 應用程式一次只能使用一種類型的虛擬網路整合功能。 雖然這兩種方法在許多情況下都很有用，但下表指出每個應該使用的位置：
 
-| 問題  | 解決方案 |
+| 問題  | 方案 |
 |----------|----------|
 | 想要在相同的區域中達到 RFC 1918 位址（10.0.0.0/8、172.16.0.0/12、192.168.0.0/16） | 區域虛擬網路整合 |
 | 想要連線至傳統虛擬網路或另一個區域中的虛擬網路中的資源 | 閘道所需的虛擬網路整合 |
@@ -111,7 +111,7 @@ Azure Functions 中的虛擬網路整合使用共用的基礎結構搭配 App Se
 
 ### <a name="restricting-your-storage-account-to-a-virtual-network"></a>將您的儲存體帳戶限制為虛擬網路
 
-當您建立函數應用程式時，您必須建立或連結至支援 Blob、佇列和資料表儲存體的一般用途 Azure 儲存體帳戶。 您目前無法在此帳戶上使用任何虛擬網路限制。 如果您在用來處理函式應用程式的儲存體帳戶上設定虛擬網路服務端點，將會中斷您的應用程式。
+當您建立函數應用程式時，您必須建立或連結至支援 Blob、佇列和資料表儲存體的一般用途 Azure 儲存體帳戶。 您目前無法在此帳戶上使用任何虛擬網路限制。 如果您在用來處理函式應用程式的儲存體帳戶上設定虛擬網路服務端點，將會中斷您的應用程式。此功能目前可使用 Premium 方案和虛擬網路整合。
 
 [深入瞭解儲存體帳戶需求。](./functions-create-function-app-portal.md#storage-account-requirements)
 
@@ -141,7 +141,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 函數執行時間的2.x 版和更新版本支援虛擬網路觸發程式。 支援下列非 HTTP 觸發程式類型。
 
-| 尾碼 | 最低版本 |
+| 分機 | 最低版本 |
 |-----------|---------| 
 |[Microsoft Azure Webjob。儲存空間](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/) | 3.0.10 或更高版本 |
 |[EventHubs （副檔名為）](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs)| 4.1.0 或更高版本|
@@ -158,7 +158,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 例如，假設您想要將 Azure Cosmos DB 設定為只接受來自虛擬網路的流量。 在此情況下，您必須在提供虛擬網路與該虛擬網路整合的 App Service 計畫中部署函數應用程式。 這可讓該 Azure Cosmos DB 資源觸發函式。 
 
-## <a name="hybrid-connections"></a>混合式連接
+## <a name="hybrid-connections"></a>混合式連線
 
 「[混合](../service-bus-relay/relay-hybrid-connections-protocol.md)式連線」是 Azure 轉送的一項功能，可讓您用來存取其他網路中的應用程式資源。 它可讓您從應用程式存取應用程式端點。 您無法使用它來存取您的應用程式。 混合式連接可用於在 Windows 上執行的函式，除了取用方案以外。
 
