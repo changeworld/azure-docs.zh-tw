@@ -8,18 +8,18 @@ ms.author: pmorgan
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 823ce8d523a231875705d7c4d3f46cfd8fd24994
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: MT
+ms.openlocfilehash: 6149fa631633d05399568bd1ec797c5ee47d29a4
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74270591"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152596"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Azure 空間錨點的驗證和授權
 
 在本節中，我們將討論您可以從您的應用程式或 web 服務向 Azure 空間錨點進行驗證的各種方式，以及您可以在 Azure 目錄（Azure AD）中使用角色型存取控制以控制對空間錨點帳戶之存取的方式。
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概觀
 
 ![Azure 空間錨點的驗證總覽](./media/spatial-anchors-authentication-overview.png)
 
@@ -96,6 +96,13 @@ configuration.AccountKey(LR"(MyAccountKey)");
 
 1. Azure 入口網站中的設定
     1.  在 Azure AD 中，將您的應用程式註冊為**原生應用**程式。 在註冊過程中，您必須判斷您的應用程式是否應為多租使用者，並提供應用程式允許的重新導向 Url。
+        1.  切換至 [ **API 許可權**] 索引標籤
+        2.  選取 [**新增許可權**]
+            1.  在 [**我的組織使用**] 索引標籤下選取 [**混合現實資源提供者**]
+            2.  選取**委派的許可權**
+            3.  核取 [ **mixedreality** ] 下的 [ **mixedreality** ] 核取方塊
+            4.  選取 [**新增許可權**]
+        3.  選取 **[授與系統管理員同意**]
     2.  授與您的應用程式或使用者對您資源的存取權：
         1.  流覽至您在 Azure 入口網站中的空間錨點資源
         2.  切換至 [**存取控制（IAM）** ] 索引標籤

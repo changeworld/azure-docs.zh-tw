@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 14fe7fff85c7aecd3f98843794f5057cf26fc88d
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: f3cb583a3594b14266249ef80f8c49633c1df1de
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548436"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152188"
 ---
 # <a name="linear-regression-module"></a>線性回歸模組
 本文說明 Azure Machine Learning 設計工具（預覽）中的模組。

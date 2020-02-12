@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 9263f9741a1921550a2ed683dbed441552d6cce0
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: c87673fef0079ff1b04b0840da0434b090cda67c
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546328"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153650"
 ---
 # <a name="two-class-neural-network-module"></a>雙類別類神經網路模組
 
@@ -54,7 +54,7 @@ ms.locfileid: "76546328"
   
         -   輸入層中的節點數目等於定型資料中的特徵數目。
   
-        -   隱藏層中的節點數目是由使用者設定。 預設值是 100。
+        -   隱藏層中的節點數目是由使用者設定。 預設值為 100。
   
         -   節點數目等於類別數目。 針對兩個類別的類神經網路，這表示所有輸入都必須對應到輸出層中的兩個節點之一。
 

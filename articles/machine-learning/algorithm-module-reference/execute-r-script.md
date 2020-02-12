@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: peterlu
+author: likebupt
+ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: 0be7e1ac0f505f227c46e63a80a954a5dd176d66
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 4991fe9fb06d0a49da3e0404f0362c85f15571af
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312272"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152290"
 ---
 # <a name="execute-r-script"></a>執行 R 指令碼
 
-本文說明如何使用 [**執行 r 腳本**] 模組，在您的 Azure Machine Learning 設計工具管線中執行 r 程式碼。
+本文說明如何使用 [**執行 r 腳本**] 模組，在您的 Azure Machine Learning designer （預覽）管線中執行 r 程式碼。
 
 使用 R，您可以執行現有模組目前不支援的工作，例如： 
 - 建立自訂資料轉換
@@ -219,7 +219,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 ### <a name="pass-r-objects-between-execute-r-script-modules"></a>在執行 R 腳本模組之間傳遞 R 物件
 
-您可以使用內部序列化機制，在**執行 r 腳本**模組的實例之間傳遞 R 物件。 這個範例假設您想要在兩個**執行 r 腳本**模組之間移動名為 `A` 的 R 物件。
+您可以使用內部序列化機制，在 [執行 R 指令碼] 模組的執行個體之間傳遞 R 物件。 這個範例假設您想要在兩個**執行 r 腳本**模組之間移動名為 `A` 的 R 物件。
 
 1. 將第一個 [**執行 R 腳本**] 模組加入您的管線，然後在 [ **R 腳本**] 文字方塊中輸入下列程式碼，以建立序列化物件 `A` 做為模組輸出資料表中的資料行：  
   
@@ -256,32 +256,32 @@ azureml_main <- function(dataframe1, dataframe2){
 
 |              |            | 
 |--------------|------------| 
-| Package      | 版本    | 
+| 套件      | 版本    | 
 | askpass      | 1.1        | 
 | assertthat   | 0.2.1      | 
-| backports    | 1.1.4      | 
+| 反向移植    | 1.1.4      | 
 | base         | 3.5.1      | 
 | base64enc    | 0.1-3      | 
 | BH           | 1.69.0-1   | 
 | bindr        | 0.1.1      | 
 | bindrcpp     | 0.2.2      | 
 | bitops       | 1.0-6      | 
-| boot         | 1.3-22     | 
-| broom        | 0.5.2      | 
+| 開機         | 1.3-22     | 
+| 掃帚        | 0.5.2      | 
 | callr        | 3.2.0      | 
-| caret        | 6.0-84     | 
+| 插入號        | 6.0-84     | 
 | caTools      | 1.17.1.2   | 
 | cellranger   | 1.1.0      | 
 | class        | 7.3-15     | 
 | cli          | 1.1.0      | 
 | clipr        | 0.6.0      | 
-| 叢集      | 2.0.7-1    | 
+| 群集      | 2.0.7-1    | 
 | codetools    | 0.2-16     | 
 | colorspace   | 1.4-1      | 
-| compiler     | 3.5.1      | 
-| crayon       | 1.3.4      | 
-| curl         | 3.3        | 
-| data.table   | 1.12.2     | 
+| 編譯器     | 3.5.1      | 
+| 起來       | 1.3.4      | 
+| 彎曲         | 3.3        | 
+| 資料。資料表   | 1.12.2     | 
 | 資料集     | 3.5.1      | 
 | DBI          | 1.0.0      | 
 | dbplyr       | 1.4.1      | 
@@ -292,18 +292,18 @@ azureml_main <- function(dataframe1, dataframe2){
 | fansi        | 0.4.0      | 
 | forcats      | 0.3.0      | 
 | foreach      | 1.4.4      | 
-| 國家/地區      | 0.8-71     | 
+| 外部的      | 0.8-71     | 
 | fs           | 1.3.1      | 
 | gdata        | 2.18.0     | 
 | 泛型     | 0.0.2      | 
 | ggplot2      | 3.2.0      | 
 | glmnet       | 2.0-18     | 
-| glue         | 1.3.1      | 
+| 黏附         | 1.3.1      | 
 | gower        | 0.2.1      | 
 | gplots       | 3.0.1.1    | 
 | 圖形     | 3.5.1      | 
 | grDevices    | 3.5.1      | 
-| 方格 (grid)         | 3.5.1      | 
+| 格線         | 3.5.1      | 
 | gtable       | 0.3.0      | 
 | gtools       | 3.8.1：      | 
 | haven        | 2.1.0      | 
@@ -323,7 +323,7 @@ azureml_main <- function(dataframe1, dataframe2){
 | lubridate    | avro-mapred-1.7.4-hadoop2.jar      | 
 | magrittr     | 1.5        | 
 | markdown     | 1          | 
-| MASS         | 7.3-51。4   | 
+| 大規模         | 7.3-51。4   | 
 | 矩陣       | 1.2-17     | 
 | 方法      | 3.5.1      | 
 | mgcv         | 1.8-28     | 
@@ -336,7 +336,7 @@ azureml_main <- function(dataframe1, dataframe2){
 | numDeriv     | 2016.8-1。1 | 
 | openssl      | 1.4        | 
 | parallel     | 3.5.1      | 
-| pillar       | 1.4.1      | 
+| 要件       | 1.4.1      | 
 | pkgconfig    | 2.0.2      | 
 | plogr        | 0.2.0      | 
 | plyr         | 1.8.4      | 
@@ -355,7 +355,7 @@ azureml_main <- function(dataframe1, dataframe2){
 | RcppRoll     | 0.3.0      | 
 | readr        | 1.3.1      | 
 | readxl       | 1.3.1      | 
-| 食譜      | 0.1.5      | 
+| 等      | 0.1.5      | 
 | rematch      | 1.0.1      | 
 | reprex       | 0.3.0      | 
 | reshape2     | 1.4.3      | 
@@ -367,7 +367,7 @@ azureml_main <- function(dataframe1, dataframe2){
 | rstudioapi   | 0.1        | 
 | rvest        | 0.3.4      | 
 | 縮放比例       | 1.0.0      | 
-| selectr      | 0.4-1      | 
+| 選取      | 0.4-1      | 
 | 空間      | 7.3-11     | 
 | 曲線      | 3.5.1      | 
 | SQUAREM      | 2017.10-1  | 
@@ -375,23 +375,23 @@ azureml_main <- function(dataframe1, dataframe2){
 | stats4       | 3.5.1      | 
 | stringi      | 1.4.3      | 
 | stringr      | 1.3.1      | 
-| survival     | 2.44 秒內-1。1   | 
+| 至關重要     | 2.44 秒內-1。1   | 
 | sys          | 3.2        | 
 | tcltk        | 3.5.1      | 
 | tibble       | 2.1.3      | 
 | tidyr        | 0.8.3      | 
 | tidyselect   | 0.2.5      | 
 | tidyverse    | 1.2.1      | 
-| timeDate     | 3043.102   | 
+| Timedate 時間     | 3043.102   | 
 | tinytex      | 0.13       | 
 | 工具        | 3.5.1      | 
 | tseries      | 0.10-47    | 
 | TTR          | lsscsi-0.23-2.el6.x86 64.rpm-4     | 
 | utf8         | 1.1.4      | 
-| 公用程式        | 3.5.1      | 
+| utils        | 3.5.1      | 
 | vctrs        | 0.1.0      | 
 | viridisLite  | 0.3.0      | 
-| whisker      | 0.3-2      | 
+| 須值      | 0.3-2      | 
 | withr        | 2.1.2      | 
 | xfun         | 0.8        | 
 | xml2         | 1.2.0      | 

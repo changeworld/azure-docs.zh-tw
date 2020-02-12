@@ -7,17 +7,17 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: yushwang
-ms.openlocfilehash: 733add5aa86ebd7faaaab78bb301ba9469433fdd
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: b914afaa6725920078da309981bcda5bb765e155
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75778017"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148327"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>合作夥伴 VPN 裝置設定的概觀
 本文提供設定連線到 Azure VPN 閘道之內部部署 VPN 裝置的概觀。 範例 Azure 虛擬網路和 VPN 閘道安裝程式是用來以相同參數連線到不同的內部部署 VPN 裝置設定。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 ## <a name="device-requirements"></a>裝置需求
 Azure VPN 閘道會針對站對站 (S2S) VPN 通道使用標準的 IPsec/IKE 通訊協定組合。 如需 IPsec/IKE 參數的清單，以及 Azure VPN 閘道的密碼編譯演算法，請參閱[關於 VPN 裝置](vpn-gateway-about-vpn-devices.md)。 您也可以針對特定連線指定確切的演算法和金鑰長度，如[關於密碼編譯需求](vpn-gateway-about-compliance-crypto.md)中所述。

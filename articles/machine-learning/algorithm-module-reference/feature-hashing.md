@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 09/01/2019
-ms.openlocfilehash: 60a9c6b237423337abb520b335c98d3c8c7549be
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 4340ee4ed1edda8590726151e07eec45c0751ed6
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312187"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152256"
 ---
 # <a name="feature-hashing-module-reference"></a>特徵雜湊模組參考
 
-本文說明 Azure Machine Learning 設計工具中所包含的模組。
+本文說明 Azure Machine Learning 設計工具（預覽）中所包含的模組。
 
 使用「特徵雜湊」模組，將英文文字的資料流程轉換成一組整數特徵。 接著，您可以將此雜湊功能集傳遞至機器學習演算法，以將文字分析模型定型。
 
@@ -30,7 +30,7 @@ ms.locfileid: "76312187"
 
 例如，採用一組像這些的簡單句子，後面接著情感分數。 假設您想要使用此文字來建立模型。
 
-|使用者文字|人氣|
+|使用者文字|情感|
 |--------------|---------------|
 |我喜歡這本書|3|
 |我恨透了臺本書|1|
@@ -59,7 +59,7 @@ ms.locfileid: "76312187"
 
 例如，在雜湊之後，功能資料行看起來可能像這樣：
 
-|評等|雜湊特徵 1|雜湊功能2|雜湊功能3|
+|Rating|雜湊特徵 1|雜湊功能2|雜湊功能3|
 |-----|-----|-----|-----|
 |4|1|1|0|
 |5|0|0|0|
@@ -111,7 +111,7 @@ ms.locfileid: "76312187"
 
 建立已轉換的資料集之後，您可以使用它做為「定型模型」模組的輸入。
  
-### <a name="best-practices"></a>最佳做法
+### <a name="best-practices"></a>最佳作法
 
 下列最佳作法可協助您充分運用功能雜湊模組：
 
@@ -121,7 +121,7 @@ ms.locfileid: "76312187"
     
 * 請考慮使用這些文字前置處理選項，以簡化結果並改善正確性：
 
-    * 斷字
+    * 斷詞
     * 停止移除文字
     * 大小寫正規化
     * 移除標點符號和特殊字元

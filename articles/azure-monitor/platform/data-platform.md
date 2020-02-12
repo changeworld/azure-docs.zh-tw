@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: b5d35fc14d69da2246c0ef5d4ef6d19a9e0c8462
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 74ede523c9747de4746fe1854bd1e352eba2f7e3
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750994"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148890"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure 監視器資料平臺
 
@@ -33,16 +33,16 @@ ms.locfileid: "75750994"
 Azure 資源會產生大量的監視資料。 Azure 監視器會合並此資料，並將資料從其他來源監視到計量或記錄平臺。 每個都會針對特定的監視案例進行優化，而且每個實例都支援 Azure 監視器中的不同功能。 資料分析、視覺效果或警示之類的功能都需要您瞭解差異，如此您才能以最有效率且符合成本效益的方式來執行所需的案例。 [Application Insights](../app/app-insights-overview.md)或[適用於 VM 的 Azure 監視器](../insights/vminsights-overview.md)等 Azure 監視器中的深入解析具有分析工具，可讓您專注于特定的監視案例，而不需要瞭解這兩種資料類型之間的差異。 
 
 
-### <a name="metrics"></a>計量
+### <a name="metrics"></a>度量
 [計量](data-platform-metrics.md)為數值，可描述系統在特定時間點的某個方面。 它們會定期收集，並以時間戳記、名稱、值，以及一或多個定義標籤來識別。 您可以使用各種演算法來匯總計量（相較于其他計量），並分析一段時間的趨勢。 
 
 Azure 監視器中的計量儲存在時間序列資料庫中，已針對分析時間戳記的資料進行優化。 這可讓計量特別適用于警示和快速偵測問題。 它們可以告訴您系統的執行方式，但通常需要與記錄結合，以識別問題的根本原因。
 
-計量可供在 Azure 入口網站中使用[計量瀏覽器](../app/metrics-explorer.md)進行互動分析。 您可以將它們新增至[Azure 儀表板](../learn/tutorial-app-dashboards.md)，以與其他資料結合使用，並用於近乎即時的[警示](alerts-metric.md)。
+計量可供在 Azure 入口網站中使用[Azure 計量瀏覽器](../platform/metrics-getting-started.md)進行互動分析。 您可以將它們新增至[Azure 儀表板](../learn/tutorial-app-dashboards.md)，以與其他資料結合使用，並用於近乎即時的[警示](alerts-metric.md)。
 
 深入瞭解 Azure 監視器計量，包括其在[Azure 監視器的計量中](data-platform-metrics.md)的資料來源。
 
-### <a name="logs"></a>記錄
+### <a name="logs"></a>記錄檔
 [記錄](data-platform-logs.md)是系統內發生的事件。 它們可以包含不同種類的資料，而且可以是具有時間戳記的結構化或自由格式文字。 這些事件可能會在環境中產生記錄專案時偶爾建立，而負載過重的系統通常會產生更多的記錄磁片區。
 
 Azure 監視器中的記錄會儲存在以[Azure 資料總管](/azure/data-explorer/)為基礎的 Log Analytics 工作區中，這會提供強大的分析引擎和[豐富的查詢語言](/azure/kusto/query/)。 記錄通常會提供足夠的資訊，以提供所識別之問題的完整內容，而且對於識別問題的根本案例很有説明。
@@ -67,10 +67,10 @@ Azure 監視器中的分散式追蹤是透過[APPLICATION INSIGHTS SDK](../app/d
 
 下表比較 Azure 監視器中的計量和記錄。
 
-| 屬性  | 計量 | 記錄 |
+| 屬性  | 度量 | 記錄檔 |
 |:---|:---|:---|
-| 優勢 | 輕量且能夠近乎即時的案例，例如警示。 適用于快速偵測問題。 | 使用豐富的查詢語言進行分析。 適用于深層分析和識別根本原因。 |
-| 資料 | 僅限數值 | 文字或數值資料 |
+| 優點 | 輕量且能夠近乎即時的案例，例如警示。 適用于快速偵測問題。 | 使用豐富的查詢語言進行分析。 適用于深層分析和識別根本原因。 |
+| Data | 僅限數值 | 文字或數值資料 |
 | 結構 | 一組標準的屬性，包括取樣時間、受監視的資源、數值。 某些計量包含多個維度以供進一步定義。 | 一組唯一的屬性，視記錄類型而定。 |
 | 集合 | 以固定間隔收集。 | 可能會因為事件觸發要建立的記錄而偶爾收集。 |
 | 在 Azure 入口網站中檢視 | 計量瀏覽器 | Log Analytics |

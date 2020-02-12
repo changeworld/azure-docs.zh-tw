@@ -102,8 +102,8 @@ ms.locfileid: "75435464"
 | &nbsp; | 美國東部 | EastUS |
 | &nbsp; | 美國西部 | WestUS |
 | 日本 | 日本東部 | JapanEast |
-| 歐洲 | 歐洲北部 | NorthEurope |
-| &nbsp; | 歐洲西部| WestEurope |
+| 歐洲 | 北歐 | NorthEurope |
+| &nbsp; | 西歐| WestEurope |
 | 亞洲 | 東亞 | EastAsia |
 | &nbsp; | 東南亞 | SoutheastAsia |
 | 澳洲 | 澳大利亞東部 | AustraliaEast |

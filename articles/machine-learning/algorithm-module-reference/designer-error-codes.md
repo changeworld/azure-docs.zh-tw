@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 12/03/2019
-ms.openlocfilehash: a6aeb4022ee7cbce465f88a246303f80acfb883b
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: cf343773695275bc5600ab59e1cd719374d65700
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311660"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152358"
 ---
-# <a name="exceptions-and-error-codes-for-the-designer"></a>設計工具的例外狀況和錯誤碼
+# <a name="exceptions-and-error-codes-for-the-designer-preview"></a>設計工具的例外狀況和錯誤碼（預覽）
 
-本文說明 Azure Machine Learning 設計工具中的錯誤訊息和例外狀況代碼，以協助您針對機器學習管線進行疑難排解。
+本文說明 Azure Machine Learning 設計工具（預覽）中的錯誤訊息和例外狀況代碼，以協助您針對機器學習管線進行疑難排解。
 
 有兩種方式可取得設計工具中錯誤訊息的完整文字：  
 
@@ -348,7 +348,7 @@ Azure Machine Learning 不支援某些較新的帳戶類型。 例如，新的�
 ## <a name="error-0018"></a>錯誤 0018  
  如果輸入資料集無效，就會發生例外狀況。  
 
-**解決方式：** Azure Machine Learning 中的這個錯誤可能會出現在許多內容中，因此不會有單一解析。 一般而言，此錯誤表示提供給模組輸入的資料具有錯誤的資料行數目，或資料類型不符合模組的需求。 例如：  
+**解決方式：** Azure Machine Learning 中的這個錯誤可能會出現在許多內容中，因此不會有單一解析。 一般而言，此錯誤表示提供給模組輸入的資料具有錯誤的資料行數目，或資料類型不符合模組的需求。 例如，  
 
 -   模組需要標籤資料行，但未將資料行標示為標籤，或您尚未選取標籤資料行。  
   
@@ -356,7 +356,7 @@ Azure Machine Learning 不支援某些較新的帳戶類型。 例如，新的�
 
 <!---   The module requires a specific data type. For example, ratings provided to [Train Matchbox Recommender](train-matchbox-recommender.md) can be either numeric or categorical, but cannot be floating point numbers.  -->
 
--   資料採用錯誤的格式。  
+-   資料的格式錯誤。  
   
 -   匯入的資料包含不正確字元、錯誤的值或超出範圍的值。  
 -   資料行是空的或包含太多遺漏值。  
@@ -427,7 +427,7 @@ Azure Machine Learning 不支援某些較新的帳戶類型。 例如，新的�
 ## <a name="error-0022"></a>錯誤 0022  
  如果輸入資料集中選取的資料行數目不等於預期的數目，就會發生例外狀況。  
 
- 當下游模組或作業需要特定數目的資料行或輸入，而且您提供了太少或太多的資料行或輸入時，就會發生 Azure Machine Learning 中的這個錯誤。 例如：  
+ 當下游模組或作業需要特定數目的資料行或輸入，而且您提供了太少或太多的資料行或輸入時，就會發生 Azure Machine Learning 中的這個錯誤。 例如，  
 
 -   您指定單一標籤資料行或索引鍵資料行，但不小心選取了多個資料行。  
   
@@ -1376,7 +1376,7 @@ Hive 的錯誤訊息通常會回報在錯誤記錄檔中，讓您可以根據特
 
 當先前的作業變更資料集時，可能會發生此錯誤，使得下游作業可以使用不足的資料列。 例如，假設您在資料**分割和範例**模組中使用運算式，以根據值來分割資料集。 如果找不到運算式的相符專案，分割區所產生的其中一個資料集就會是空的。
 
-解決方案： 
+解決方式： 
 
  如果您在資料行選取範圍中包含標籤資料行，但無法辨識它，請使用 [[編輯中繼資料](edit-metadata.md)] 模組，將它標示為標籤資料行。
 
@@ -1474,5 +1474,5 @@ Hive 的錯誤訊息通常會回報在錯誤記錄檔中，讓您可以根據特
 |------------------------|
 |程式庫例外狀況。|
 |程式庫例外狀況： {0}。|
-|不明的程式庫例外狀況： {0}。 {1}答案中所述步驟，工作帳戶即會啟用。|
+|不明的程式庫例外狀況： {0}。 {1}第 1 課：建立 Windows Azure 儲存體物件{2}。|
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 01/14/2020
+ms.date: 02/11/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbb6170aa54c286a5a2d8353c1dd951859fdf8a0
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 023a52f373844e026de0e588e9cd46323abdcf34
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024580"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149825"
 ---
 # <a name="what-are-security-defaults"></a>什麼是安全性預設值？
 
@@ -48,7 +48,7 @@ Microsoft 將安全性預設值提供給所有人。 目標是要確保所有組
 完成多重要素驗證的註冊之後，下列九個 Azure AD 系統管理員角色將需要在每次登入時執行額外的驗證：
 
 - 全域管理員
-- SharePoint 管理員
+- SharePoint 系統管理員
 - Exchange 系統管理員
 - 條件式存取系統管理員
 - 安全性系統管理員
@@ -74,7 +74,7 @@ Microsoft 將安全性預設值提供給所有人。 目標是要確保所有組
 
 現今，大部分的登入嘗試都會來自舊版驗證。 舊版驗證不支援多重要素驗證。 即使您已在目錄上啟用多重要素驗證原則，攻擊者仍可使用較舊的通訊協定進行驗證，並略過多重要素驗證。 
 
-在您的租使用者中啟用安全性預設值之後，較舊的通訊協定所發出的所有驗證要求將會遭到封鎖。 安全性預設值不會封鎖 Exchange ActiveSync。
+在您的租使用者中啟用安全性預設值之後，較舊的通訊協定所發出的所有驗證要求將會遭到封鎖。 安全性預設值會封鎖 Exchange Active Sync 基本驗證。
 
 > [!WARNING]
 > 啟用安全性預設值之前，請確定您的系統管理員未使用舊版驗證通訊協定。 如需詳細資訊，請參閱[如何從舊版驗證移開](concept-fundamentals-block-legacy-authentication.md)。
@@ -83,7 +83,7 @@ Microsoft 將安全性預設值提供給所有人。 目標是要確保所有組
 
 組織會使用透過 Azure Resource Manager API 管理的各種 Azure 服務，包括：
 
-- Azure Portal 
+- Azure 入口網站 
 - Azure PowerShell 
 - Azure CLI
 

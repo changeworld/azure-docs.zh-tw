@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18, previous-title='Dedicated capacity for batch execution service jobs - Azure Machine Learning Studio (classic) | Microsoft Docs'
 ms.date: 04/19/2017
-ms.openlocfilehash: ad3ae99b04d5386172c9598f35cbe7d64fddcd36
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: c1a7f44539d07761814f5cb3d7074c9428423154
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837697"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153531"
 ---
 # <a name="azure-batch-service-for-azure-machine-learning-studio-classic-jobs"></a>Azure Machine Learning Studio （傳統）作業的 Azure Batch 服務
 
@@ -111,4 +111,4 @@ https://ussouthcentral.services.azureml.net/subscriptions/80c77c7674ba4c8c82294c
 
 | **使用批次集區處理的時機**    | **使用傳統批次處理的時機**  |
 |---|---|
-|您需要執行大量的作業<br>或<br/>您需要知道您的作業將立即執行<br/>或<br/>您需要保證的輸送量。 例如，您需要在指定的時間範圍內執行多項作業，而且想要相應放大計算資源以符合您的需求。    | 您正在執行一些作業<br/>和<br/> 您不需要立即執行作業 |
+|您需要執行大量的作業<br>Or<br/>您需要知道您的作業將立即執行<br/>Or<br/>您需要保證的輸送量。 例如，您需要在指定的時間範圍內執行多項作業，而且想要相應放大計算資源以符合您的需求。    | 您正在執行一些作業<br/>And<br/> 您不需要立即執行作業 |

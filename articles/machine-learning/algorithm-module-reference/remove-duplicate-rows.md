@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 6e5c1a1bfc82460ad7e53cc8444a4bb42aa4ef19
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 429ddd62cccb8657aa18ec844968cc12df778f55
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548385"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153786"
 ---
 # <a name="remove-duplicate-rows-module"></a>移除重複的資料列模組
 
@@ -24,7 +24,7 @@ ms.locfileid: "76548385"
 
 例如，假設您的資料看起來如下所示，並代表病人的多筆記錄。 
 
-| PatientID | Initials| 性別|年齡|住院|
+| PatientID | 縮寫| 性別|天數|住院|
 |----|----|----|----|----|
 |1|F.M.| M| 53| 一月|
 |2| F.A.M.| M| 53| 一月|

@@ -91,7 +91,7 @@ ms.locfileid: "75982267"
 |    KoreaCentral          |    南韓中部                            |
 |    KoreaSouth            |    韓國南部                              |
 |    northcentralus        |    美國中北部                      |
-|    northeurope           |    歐洲北部                          |
+|    northeurope           |    北歐                          |
 |    southcentralus        |    美國中南部                      |
 |    southeastasia         |    東南亞                        |
 |    SouthIndia            |    印度南部                              |
@@ -106,7 +106,7 @@ ms.locfileid: "75982267"
 |    USGovTexas            |    美國政府德克薩斯州                           |
 |    usgovvirginia         |    美國政府維吉尼亞州                        |
 |    westcentralus         |    美國中西部                       |
-|    westeurope            |    歐洲西部                           |
+|    westeurope            |    西歐                           |
 |    WestIndia             |    印度西部                               |
 |    westus                |    美國西部                               |
 |    westus2               |    美國西部 2                             |

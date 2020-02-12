@@ -53,7 +53,7 @@ A. 資料箱擁有 100 TB 的原始容量，而可用容量則為 80 TB。 您�
 A.  如需哪些國家/地區提供資料箱的資訊，請移至[區域可用性](data-box-overview.md#region-availability)。  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box"></a>Q. 在哪些區域中可以使用資料箱來儲存資料？
-A. 美國、歐洲西部、歐洲北部、法國、英國、日本、澳大利亞和加拿大內的所有區域都支援資料箱。 如需詳細資訊，請移至[區域可用性](data-box-overview.md#region-availability)。
+A. 美國、西歐、北歐、法國、英國、日本、澳大利亞和加拿大內的所有區域都支援資料箱。 如需詳細資訊，請移至[區域可用性](data-box-overview.md#region-availability)。
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues-with-data-box"></a>Q. 如果遇到任何資料箱方面的問題，該與誰連絡？
 A. 如果您遇到任何資料箱方面的問題，請連絡 [Microsoft 支援服務](data-box-disk-contact-microsoft-support.md)。

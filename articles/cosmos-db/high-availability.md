@@ -87,7 +87,7 @@ Azure Cosmos DB 會以透明方式，在與 Cosmos 帳戶相關聯的所有 Azur
 
 - 美國中部
 
-- 歐洲西部
+- 西歐
 
 - 美國西部 2
 

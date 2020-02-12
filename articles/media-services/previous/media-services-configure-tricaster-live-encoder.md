@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: 11ee8f52a8fd4db2d052eeaeef1387b011d23050
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
-ms.translationtype: HT
+ms.openlocfilehash: 7909fbb958a66d00616d4ed1b844d02bb47d997e
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77131559"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152494"
 ---
 # <a name="use-the-newtek-tricaster-encoder-to-send-a-single-bitrate-live-stream"></a>使用 NewTek TriCaster 編碼器來傳送單一位元速率的即時串流  
 > [!div class="op_single_selector"]
@@ -34,12 +34,12 @@ ms.locfileid: "77131559"
 
 本教學課程示範如何使用 Azure 媒體服務總管 (AMSE) 工具管理 Azure 媒體服務 (AMS)。 此工具只會在 Windows 電腦上執行。 如果您是用 Mac 或 Linux，請使用 Azure 入口網站建立[通道](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel)和[程式](media-services-portal-creating-live-encoder-enabled-channel.md)。
 
-> [!NOTE]
-> 使用 Tricaster 將分佈摘要傳送到針對即時編碼啟用的 AMS 通道時，如果您使用 Tricaster 的某些功能 (例如，在摘要之間快速切割或切換靜態圖像)，您的即時事件可能會出現視訊/音訊干擾。 AMS 小組正著手於修正這些問題，在解決之前，不建議使用這些功能。
->
->
+使用 Tricaster 將分佈摘要傳送到針對即時編碼啟用的 AMS 通道時，如果您使用 Tricaster 的某些功能 (例如，在摘要之間快速切割或切換靜態圖像)，您的即時事件可能會出現視訊/音訊干擾。 AMS 小組正著手於修正這些問題，在解決之前，不建議使用這些功能。
 
-## <a name="prerequisites"></a>Prerequisites
+> [!NOTE]
+>  請考慮移至 TLS 1.2，也就是 prefferred TLS 版本。
+
+## <a name="prerequisites"></a>必要條件
 
 * [建立 Azure 媒體服務帳戶](media-services-portal-create-account.md)
 * 確定有執行中的「串流端點」。 如需詳細資訊，請參閱 [在媒體服務帳戶中管理串流端點](media-services-portal-manage-streaming-endpoints.md)

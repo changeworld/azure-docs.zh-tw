@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 81e232e37e437c4fa9d23a49a720b88511423905
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3972fb3c0717069f84b177c54e8fc002ec52f469
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427568"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152868"
 ---
 # <a name="getting-started-with-the-r-programming-language-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio 中的 R 程式設計語言入門（傳統）
 
@@ -224,7 +224,7 @@ load("src/yourData.rdata") # Reads a zipped R data file
 ```
 
 > [!NOTE]
-> Azure Machine Learning Studio （傳統）會將 zip 中的檔案視為在 src/目錄中，因此您必須在檔案名前面加上此目錄名稱。 例如，如果 Zip 在其根目錄中包含檔案 `yourfile.R` 和 `yourData.rdata`，使用 `source` 和 `load` 時，您會將這些處理為 `src/yourfile.R` 和 `src/yourData.rdata`。
+> Azure Machine Learning Studio （傳統）會將 zip 中的檔案視為在 src/目錄中，因此您必須在檔案名前面加上此目錄名稱。 例如，如果 Zip 在其根目錄中包含檔案 `yourfile.R` 和 `yourData.rdata`，使用 `src/yourfile.R` 和 `src/yourData.rdata` 時，您會將這些處理為 `source` 和 `load`。
 
 我們已經在[載入資料集](#loading)中討論載入資料集。 在您建立並測試上一節中所示的 R 指令碼之後，請執行下列作業：
 
@@ -468,7 +468,7 @@ R 資料框架支援強大的篩選功能。 藉由在資料列或資料行使�
 有一些篩選是我們應該在資料集上執行的。 如果您看一下 cadariydata 資料框架中的資料行，您會看到兩個不必要的資料行。 第一個資料行只存放了資料列編號，這不是很有用。 第二個資料行 Year.Month 包含重複的資訊。 我們可以使用下列 R 程式碼輕鬆地排除這些資料行。
 
 > [!NOTE]
-> 從現在開始，我只會在 [[執行 R 腳本][execute-r-script]] 模組中顯示我新增的其他程式碼。 我會在 `str()` 函式**之前**新增每個新程式碼行。 我使用這個函數來驗證 Azure Machine Learning Studio （傳統）中的結果。
+> 從現在開始，我只會在 [[執行 R 腳本][execute-r-script]] 模組中顯示我新增的其他程式碼。 我會在  **函式**之前`str()`新增每個新程式碼行。 我使用這個函數來驗證 Azure Machine Learning Studio （傳統）中的結果。
 
 我在[執行 r 腳本][execute-r-script]模組的 r 程式碼中加入下面這一行。
 
@@ -813,7 +813,7 @@ pairs(~ Cotagecheese.Prod + Icecream.Prod + Milk.Prod + N.CA.Fat.Price, data = d
 
 請注意，用於去除趨勢的線性迴歸是時間序列迴歸。 預測工具變數是時間序列物件。  
 
-定義 `ts.detrend()` 之後，我們會將它套用到資料框架中感興趣的變數。 我們必須使用 `as.data.frame()` 將 `lapply()` 所建立的結果清單強制轉換成資料框架。 由於 `ts.detrend()`的防禦性層面緣故，因此即使無法處理其中一個變數，也不會導致無法處理其他變數。  
+定義 `ts.detrend()` 之後，我們會將它套用到資料框架中感興趣的變數。 我們必須使用 `lapply()` 將 `as.data.frame()` 所建立的結果清單強制轉換成資料框架。 由於 `ts.detrend()`的防禦性層面緣故，因此即使無法處理其中一個變數，也不會導致無法處理其他變數。  
 
 最後一行程式碼會建立成對的散佈圖。 執行 R 程式碼之後，散佈圖的結果會如圖 17 所示。
 
@@ -931,7 +931,7 @@ outframe
 第一行程式碼是需要一點技巧，一些說明可以幫助您了解它。 由內而外可分為下列項目：
 
 1. 含有引數 '**1**' 的 ' **[[** ' 運算子會從 ccf 物件清單的第一個元素選取各段延隔時間的相互關聯向量。
-2. `do.call()` 函式會在 `lapply()` 所傳回之清單的項目上套用 `rbind()` 函式。
+2. `do.call()` 函式會在 `rbind()` 所傳回之清單的項目上套用 `lapply()` 函式。
 3. `data.frame()` 函式會強制將 `do.call()` 產生的結果轉換成資料框架。
 
 請注意，資料列名稱會在資料框架的資料行中。 這麼做會在從[執行 R 腳本][execute-r-script]輸出時，保留資料列名稱。
@@ -1321,7 +1321,7 @@ RStudio 已經過妥善記載。 以下是 RStudio 檔中重要章節的一些�
 * Paul Teetor 的**R 操作手冊**提供使用 R 的問題和解決方案方法。  
 * Robert Kabacoff 的**R**運作方式是另一個有用的簡介書。 隨附的[快速 R 網站](https://www.statmethods.net/)是有用的資源。
 * 以多人**Inferno 的 R** ，這是一項驚人的幽默書籍，負責處理在 R 中進行程式設計時可能會遇到的一些棘手且困難的主題。本書免費提供[R Inferno](https://www.burns-stat.com/documents/books/the-r-inferno/)。
-* 如果您想要深入探討 R 中的「高級」主題，請參閱 **Advanced R** By Hadley wickham 針對一書。 您可以在[http://adv-r.had.co.nz/](http://adv-r.had.co.nz/)免費取得這本書的線上版本。
+* 如果您想要深入探討 R 中的「高級」主題，請參閱 < **Advanced R** By Hadley wickham 針對一書。 您可以在[http://adv-r.had.co.nz/](http://adv-r.had.co.nz/)免費取得這本書的線上版本。
 
 您可以在[CRAN 工作視圖：時間序列分析](https://cran.r-project.org/web/views/TimeSeries.html)中找到 R 時間序列套件的目錄。 如需特定時間序列物件封裝的資訊，您應該參考該封裝的相關文件。
 

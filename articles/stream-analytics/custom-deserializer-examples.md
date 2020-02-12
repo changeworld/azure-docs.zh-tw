@@ -226,11 +226,11 @@ namespace ExampleCustomCode.Serialization
 這項功能會在下欄區域內上市：
 
 * 美國中西部
-* 歐洲北部
+* 北歐
 * 美國東部
 * 美國西部
 * 美國東部 2
-* 歐洲西部
+* 西歐
 
 您可以[要求](https://aka.ms/ccodereqregion)其他區域的支援。
 

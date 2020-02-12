@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: 1b9a836491e989b676663d13b8eebb994c5145d8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 37968e968a0f9a1098dd5e90d463879bfa95ce1f
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454795"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153582"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>部署 Azure Machine Learning Studio （傳統） web 服務
 
@@ -25,8 +25,8 @@ Machine Learning Studio （傳統） web 服務會在應用程式和 Machine Lea
 
 Azure Machine Learning Studio （傳統）有兩種類型的 web 服務：
 
-* 要求-回應服務（RR）：一種低延遲、高擴充性的服務，可對單一資料記錄進行評分。
-* 批次執行服務（BE）：為一批資料記錄評分的非同步服務。
+* 要求回應服務 (RRS)：單一資料記錄的低延遲、高擴充性服務。
+* 批次執行服務 (BES)：一種非同步的服務，可為一批資料記錄進行計分。
 
 BES 的輸入就像 RRS 使用的資料輸入。 主要差異在於，BES 會從各種來源讀取記錄區塊，例如 Azure Blob 儲存體、Azure 表格儲存體、Azure SQL Database、HDInsight (Hive 查詢) 和 HTTP 來源。
 

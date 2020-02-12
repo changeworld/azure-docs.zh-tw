@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 492f6ed2775004c6fb013c6a9ead602cb3d2cea0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5049bdfdc84df16c4b8070decf47fd2d726d7777
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427547"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153021"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>共用及探索 Azure AI 資源庫中的資源
 
@@ -24,7 +24,7 @@ ms.locfileid: "75427547"
 
 ## <a name="what-can-i-find-in-the-gallery"></a>我可以在資源庫中找到什麼？
 
-Azure AI 資源庫包含一些由 Microsoft 和資料科學社群成員所發表的不同資源。 這些區域包括：
+Azure AI 資源庫包含一些由 Microsoft 和資料科學社群成員所發表的不同資源。 其中包括：
 
 * **實驗**-資源庫包含各種已在 Azure Machine Learning Studio （傳統）中開發的實驗。 小至示範特定機器學習服務技術的快速概念證明實驗，大至用於解決複雜機器學習服務問題的完整開發解決方案，都在這些實驗的涵蓋範圍內。
 * **教學課程**：此資源中提供了許多教學課程來引導您了解機器學習服務的技術和概念，或說明用來解決各種機器學習服務問題的進階方法。
@@ -120,7 +120,7 @@ Azure AI 資源庫包含一些由 Microsoft 和資料科學社群成員所發表
 
 * 實驗名稱
 * 摘要或描述
-* 標籤
+* Tags
 * 影像
 * 可視性設定 ([公開] 或 [未公開])
 
@@ -149,9 +149,9 @@ Azure AI 資源庫包含一些由 Microsoft 和資料科學社群成員所發表
 
 1. 選取 [新增項目]。
 
-1. 在 [描述] 頁面上，針對 [項目類型]，選取 [教學課程] 或 [集合]。 輸入名稱、摘要、詳細的描述，以及有助於其他使用者找到發表項目的任何標記。 然後按一下 [下一步]。
+1. 在 [描述] 頁面上，針對 [項目類型]，選取 [教學課程] 或 [集合]。 輸入名稱、摘要、詳細的描述，以及有助於其他使用者找到發表項目的任何標記。 然後按 **[下一步]** 。
 
-1. 在 [映像選取] 頁面上，選取與發表項目一起顯示的映像。 您可以上傳您自己的映像檔，也可以選取內建映像。 選擇可能有助於使用者識別發表項目內容與用途的映像。 然後按一下 [下一步]。
+1. 在 [映像選取] 頁面上，選取與發表項目一起顯示的映像。 您可以上傳您自己的映像檔，也可以選取內建映像。 選擇可能有助於使用者識別發表項目內容與用途的映像。 然後按 **[下一步]** 。
 
 1. 在 [設定] 頁面上，針對 [可見性]，選取您的發表項目為 [公開] \(任何人都可以檢視) 或 [未公開] \(僅限有直接連結的人員可以檢視)。
 
@@ -195,7 +195,7 @@ Azure AI 資源庫包含一些由 Microsoft 和資料科學社群成員所發表
 
 輸入標記之後若要輸入另一個標記，請按 Tab 鍵。
 
-## <a name="we-want-to-hear-from-you"></a>希望能聽聽您的意見！
+## <a name="we-want-to-hear-from-you"></a>歡迎您提供相關資訊！
 
 我們希望資源庫是由我們的使用者驅使，並且適合我們的使用者。 使用右側的笑臉符號告訴我們您喜歡或不喜歡資源庫。  
 

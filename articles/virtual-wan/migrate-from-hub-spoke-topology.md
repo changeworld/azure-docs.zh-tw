@@ -223,7 +223,7 @@ Azure 虛擬 WAN 也會提供遠端網站的網際網路連線能力。 透過�
 
 - 膝上型電腦和行動裝置使用者會使用 OpenVPN 用戶端，以透明的方式連線到西歐的 P2S VPN 閘道。
 
-- 歐洲西部虛擬 WAN 中樞會在本地將流量路由傳送到連線的 VNet。
+- 西歐虛擬 WAN 中樞會在本地將流量路由傳送到連線的 VNet。
 
 ![流程 5](./media/migrate-from-hub-spoke-topology/flow5.png)
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e972228923654ca73063aad370d087e550138dbf
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: fb396429c95dbed090283752c5a0d9ff5cc176af
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76043365"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148193"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>條件式存取：系統管理員需要 MFA
 
@@ -24,14 +24,14 @@ ms.locfileid: "76043365"
 
 Microsoft 建議您至少要求下列角色的 MFA：
 
-* 全域管理員
-* SharePoint 管理員
-* Exchange 系統管理員
+* 計費管理員
 * 條件式存取系統管理員
-* 安全性系統管理員
+* Exchange 系統管理員
+* 全域管理員
 * 技術服務人員（密碼）系統管理員
 * 密碼管理員
-* 計費管理員
+* 安全性系統管理員
+* SharePoint 系統管理員
 * 使用者管理員
 
 組織可以選擇包含或排除角色（如其所示）。
@@ -43,26 +43,26 @@ Microsoft 建議您至少要求下列角色的 MFA：
 * **緊急存取**或**中斷玻璃**帳戶，以避免整個租使用者帳戶鎖定。 在不太可能發生的情況下，所有系統管理員都會被鎖定在您的租使用者中，您的緊急存取系統管理帳戶可以用來登入租使用者，採取復原存取的步驟。
    * 如需詳細資訊，請參閱[Azure AD 中的管理緊急存取帳戶](../users-groups-roles/directory-emergency-access.md)一文。
 * **服務帳戶**和**服務主體**，例如 Azure AD Connect 同步帳戶。 服務帳戶是不會與任何特定使用者系結的非互動式帳戶。 後端服務通常會使用它們，並允許以程式設計方式存取應用程式。 應該排除服務帳戶，因為無法以程式設計方式完成 MFA。
-   * 如果您的組織在指令碼或程式碼中使用這些帳戶，請考慮將它們取代為[受管理的身分識別](../managed-identities-azure-resources/overview.md)。 暫時的因應措施是，您可以從基準原則中排除這些特定帳戶。
+   * 如果您的組織在腳本或程式碼中使用這些帳戶，請考慮將它們取代為[受控](../managed-identities-azure-resources/overview.md)識別。 暫時的因應措施是，您可以從基準原則中排除這些特定帳戶。
 
 ## <a name="create-a-conditional-access-policy"></a>建立條件式存取原則
 
 下列步驟將協助建立條件式存取原則，要求這些指派的系統管理角色執行多重要素驗證。
 
 1. 以全域管理員、安全性系統管理員或條件式存取系統管理員的身分登入**Azure 入口網站**。
-1. 流覽至**Azure Active Directory** > **安全性** > **條件式存取**。
+1. 瀏覽至 [Azure Active Directory] > [安全性] > [條件式存取]。
 1. 選取 [新增原則]。
 1. 提供您的原則名稱。 我們建議組織針對其原則的名稱建立有意義的標準。
 1. 在 [**指派**] 底下，選取 [**使用者和群組**]
    1. 在 [**包含**] 底下，選取 [**目錄角色（預覽）** ]，然後至少選擇下列角色：
-      * 全域管理員
-      * SharePoint 管理員
-      * Exchange 系統管理員
+      * 計費管理員
       * 條件式存取系統管理員
-      * 安全性系統管理員
+      * Exchange 系統管理員
+      * 全域管理員
       * 服務台管理員
       * 密碼管理員
-      * 計費管理員
+      * 安全性系統管理員
+      * SharePoint 系統管理員
       * 使用者管理員
    1. 在 [**排除**] 底下，選取 [**使用者和群組**]，然後選擇貴組織的 [緊急存取] 或 [中斷玻璃帳戶]。 
    1. 選取 [完成]。

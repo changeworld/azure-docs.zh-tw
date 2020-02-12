@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 02/03/2020
+ms.date: 02/11/2020
 ms.custom: seodec18
-ms.openlocfilehash: b9d64c347881f78e832a39bca8404fdad98cbf17
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: c3c7f59ecb3a06d80012917e2da4425a899859d7
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76981101"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152511"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>使用事件中樞將事件傳送至時間序列深入解析環境
 
@@ -73,12 +73,18 @@ ms.locfileid: "76981101"
 
     [![複製主要金鑰連接字串的值](media/send-events/configure-sample-code-connection-string.png)](media/send-events/configure-sample-code-connection-string.png#lightbox)
 
-1. 移至 https://tsiclientsample.azurewebsites.net/windFarmGen.html 。 此 URL 會執行模擬風車裝置。
+1. 移至 https://tsiclientsample.azurewebsites.net/windFarmGen.html。 URL 會建立並執行模擬的風車裝置。
 1. 在網頁的 [**事件中樞連接字串**] 方塊中，貼上您在 [[風車輸入] 欄位](#push-events-to-windmills-sample)中複製的連接字串。
   
     [![將主鍵連接字串貼到 [事件中樞連接字串] 方塊中](media/send-events/configure-wind-mill-sim.png)](media/send-events/configure-wind-mill-sim.png#lightbox)
 
-1. 選取 [按一下即可啟動]。 模擬器會產生您可以直接使用的執行個體 JSON。
+1. 選取 [按一下即可啟動]。 
+
+    > [!TIP]
+    > 風車模擬器也會建立 JSON，供您用來做為[時間序列深入解析 GA 查詢 api](https://docs.microsoft.com/rest/api/time-series-insights/ga-query)的承載。
+
+    > [!NOTE]
+    > 模擬器會繼續傳送資料，直到 [瀏覽器] 索引標籤關閉為止。
 
 1. 回到 Azure 入口網站中的事件中樞。 在 [**總覽**] 頁面上，會顯示事件中樞所接收的新事件。
 
@@ -149,7 +155,7 @@ ms.locfileid: "76981101"
 
 * **輸出**：兩個事件。 系統會將屬性**位置**複製到每個事件。
 
-    |location|events.id|events.timestamp|
+    |位置|events.id|events.timestamp|
     |--------|---------------|----------------------|
     |WestUs|device1|2016-01-08T01:08:00Z|
     |WestUs|device2|2016-01-08T01:17:00Z|
@@ -190,7 +196,7 @@ ms.locfileid: "76981101"
 
 * **輸出**：兩個事件。
 
-    |location|manufacturer.name|manufacturer.location|events.id|events.timestamp|events.data.type|events.data.units|events.data.value|
+    |位置|manufacturer.name|manufacturer.location|events.id|events.timestamp|events.data.type|events.data.units|events.data.value|
     |---|---|---|---|---|---|---|---|
     |WestUs|manufacturer1|EastUs|device1|2016-01-08T01:08:00Z|pressure|psi|108.09|
     |WestUs|manufacturer1|EastUs|device2|2016-01-08T01:17:00Z|vibration|abs G|217.09|

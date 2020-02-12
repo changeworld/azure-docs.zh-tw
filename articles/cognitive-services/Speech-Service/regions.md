@@ -48,8 +48,8 @@ ms.locfileid: "74816658"
 | 南韓中部    | `koreacentral`       | https://koreacentral.cris.ai   |
 | 澳大利亞東部   | `australiaeast`      | https://australiaeast.cris.ai  |
 | 加拿大中部   | `canadacentral`      | https://canadacentral.cris.ai  |
-| 歐洲北部     | `northeurope`        | https://northeurope.cris.ai    |
-| 歐洲西部      | `westeurope`         | https://westeurope.cris.ai     |
+| 北歐     | `northeurope`        | https://northeurope.cris.ai    |
+| 西歐      | `westeurope`         | https://westeurope.cris.ai     |
 | 英國南部         | `uksouth`            | https://uksouth.cris.ai        |
 | 法國中部   | `francecentral`      | https://francecentral.cris.ai  |
 
@@ -62,8 +62,8 @@ ms.locfileid: "74816658"
 | 亞洲          | 東亞        | `eastasia`           |
 | 亞洲          | 東南亞   | `southeastasia`      |
 | 澳洲     | 澳大利亞東部   | `australiaeast`      |
-| 歐洲        | 歐洲北部     | `northeurope`        |
-| 歐洲        | 歐洲西部      | `westeurope`         |
+| 歐洲        | 北歐     | `northeurope`        |
+| 歐洲        | 西歐      | `westeurope`         |
 | 北美洲 | 美國東部          | `eastus`             |
 | 北美洲 | 美國東部 2        | `eastus2`            |
 | 北美洲 | 美國中南部 | `southcentralus`     |
@@ -84,8 +84,8 @@ ms.locfileid: "74816658"
 | 美國西部 2      | `westus2`            |
 | 美國東部        | `eastus`             |
 | 美國東部 2      | `eastus2`            |
-| 歐洲西部    | `westeurope`         |
-| 歐洲北部   | `northeurope`        |
+| 西歐    | `westeurope`         |
+| 北歐   | `northeurope`        |
 | 東南亞 | `southeastasia`      |
 
 ## <a name="rest-apis"></a>REST API

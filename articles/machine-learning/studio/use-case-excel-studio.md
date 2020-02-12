@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: e440d9d882d0459d04a15b8f39ea6877707ea096
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6976f0bb671b94f71b71287483c2ab88d0959899
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427454"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152766"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio-classic"></a>將分析從 Excel 遷移至 Azure Machine Learning Studio （傳統）
 
@@ -73,7 +73,7 @@ ms.locfileid: "75427454"
 | --- |:---:|:---:|:---:|
 | 加上標籤的值 |實際值 (數值) |相同 |相同 |
 | 學習模組 |Excel -> 資料分析 -> 迴歸 |線性迴歸。 |線性迴歸 |
-| 學習模組選項 |N/A |Defaults |普通最小平方<br />L2 = 0.005 |
+| 學習模組選項 |N/A |預設值 |普通最小平方<br />L2 = 0.005 |
 | 資料集 |26 個資料列，3 個功能，1 個標籤。 全部數值。 |相同 |相同 |
 | 分割：訓練 |Excel 會在前 18 個資料列上訓練，在最後 8 個資料列上測試。 |相同 |相同 |
 | 分割：測試 |Excel 迴歸公式會套用至最後 8 個資料列 |相同 |相同 |
@@ -115,7 +115,7 @@ ms.locfileid: "75427454"
 
 如果您想要實驗迴歸，「能量效益迴歸」範例資料集即是可用來嘗試的良好的資料集，其中包含多個數值屬性。 資料集是以 Studio （傳統）中的範例資料集的一部分提供。 您可以使用各種不同的學習模組，來預測加熱負載或冷卻負載。 下列圖表是針對目標變數冷卻負載預測的能源效率資料集所學習不同的迴歸的效能比較： 
 
-| 型號 | 平均絕對誤差 | 均方根誤差 | 相對絕對誤差 | 相對平方誤差 | 決定係數 |
+| 模型 | 平均絕對誤差 | 均方根誤差 | 相對絕對誤差 | 相對平方誤差 | 決定係數 |
 | --- | --- | --- | --- | --- | --- |
 | 推進式決策樹 |0.930113 |1.4239 |0.106647 |0.021662 |0.978338 |
 | 線性迴歸 (梯度下降) |2.035693 |2.98006 |0.233414 |0.094881 |0.905119 |

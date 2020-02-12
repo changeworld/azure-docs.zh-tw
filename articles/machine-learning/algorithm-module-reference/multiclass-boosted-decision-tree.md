@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: 73a832d98d0b17f59a98e2d57cf801818c7ed1da
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 0bcca16bd89781428773eda168e6ee3c2f5784ef
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311932"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152171"
 ---
 # <a name="multiclass-boosted-decision-tree"></a>多元促進式決策樹
 
-本文說明 Azure Machine Learning 設計工具中的模組。
+本文說明 Azure Machine Learning 設計工具（預覽）中的模組。
 
 使用此模組來建立以促進式決策樹演算法為基礎的機器學習模型。
 

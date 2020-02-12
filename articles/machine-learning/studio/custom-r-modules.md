@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: fdd91b62355b11ba99aafcda04f86282ce5a4f71
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 76b2f2ae9774fe5951779912e679fa84350878c5
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454748"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153565"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>定義 Azure Machine Learning Studio 的自訂 R 模組（傳統）
 
@@ -92,7 +92,7 @@ ms.locfileid: "75454748"
 
 這一點很重要，請注意 XML 檔案中之 **Input** 和 **Arg** 元素的 **id** 屬性值必須完全符合在 CustomAddRows.R 檔案中 R 程式碼的函式參數名稱 (在本例中為 *dataset1*、*dataset2* 和 *swap*)。 同樣地，**Language** 元素的 **entryPoint** 屬性值必須完全符合 R 指令碼中的函式名稱 (在本例中為 *CustomAddRows*)。 
 
-相反地，**Output** 元素的 **id** 屬性不會對應至 R 指令碼中的任何變數。 如果需要多個輸入，請直接從 R 函式傳回清單，其中包含的結果會依照 **Output** 元素在 XML 檔案中宣告的*相同順序*來排列。
+相反地，**Output** 元素的 **id** 屬性不會對應至 R 指令碼中的任何變數。 如果需要多個輸入，請直接從 R 函式傳回清單，其中包含的結果會依照 *Output* 元素在 XML 檔案中宣告的**相同順序**來排列。
 
 ### <a name="package-and-register-the-module"></a>封裝並註冊模組
 將這兩個檔案另存為 *CustomAddRows.R* 和 *CustomAddRows.xml*，然後一起壓縮成 *CustomAddRows.zip* 檔案。
@@ -283,14 +283,14 @@ XML 定義檔中的 **Language** 元素可用來指定自訂模組的語言。 �
   
   * **allowedTypes** - 篩選您可以從中挑選的資料行類型。 有效值包括： 
     
-    * 數值
+    * 數字
     * Boolean
     * 類別
     * String
     * 標籤
     * 功能
-    * 分數
-    * 所有
+    * Score
+    * 全部
   * **default** - 資料行選擇器的有效預設選取項目包括： 
     
     * 無
@@ -313,7 +313,7 @@ XML 定義檔中的 **Language** 元素可用來指定自訂模組的語言。 �
     * AllLabel
     * AllFeature
     * AllScore
-    * 所有
+    * 全部
 
 **DropDown**：使用者指定的列舉 (下拉式) 清單。 下拉式清單項目是在 **Properties** 元素中透過 **Item** 元素所指定。 每個 **Item** 的 **id** 必須是唯一且有效的 R 變數。 **Item** 的 **name** 的值可以同時做為您看到的文字以及傳遞至 R 函式的值。
 

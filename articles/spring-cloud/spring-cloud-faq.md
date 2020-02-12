@@ -50,7 +50,7 @@ OpenJDK 和 Spring Cloud 執行階段的重大安全性修補，都會盡快套�
 
 ### <a name="in-which-regions-is-azure-spring-cloud-available"></a>Azure 春季雲端有哪些區域可供使用？
 
-美國東部、美國西部 2、歐洲西部和東南亞。
+美國東部、美國西部 2、西歐和東南亞。
 
 ### <a name="what-are-the-known-limitations-of-azure-spring-cloud"></a>Azure 春季雲端的已知限制為何？
 

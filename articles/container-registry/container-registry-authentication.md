@@ -3,12 +3,12 @@ title: 登錄驗證選項
 description: 私人 Azure container registry 的驗證選項，包括以 Azure Active Directory 身分識別登入、使用服務主體，以及使用選擇性的系統管理認證。
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: 384f401a986c58dc6ce63384ce3e2a43b8db27fa
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 5459ac29c1264b18404cb2863b9d4209907ac029
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029872"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152938"
 ---
 # <a name="authenticate-with-an-azure-container-registry"></a>向 Azure Container Registry 進行驗證 | Microsoft Docs
 
@@ -23,7 +23,7 @@ ms.locfileid: "77029872"
 | 方法                               | 如何驗證                                           | 案例                                                            | RBAC                             | 限制                                |
 |---------------------------------------|-------------------------------------------------------|---------------------------------------------------------------------|----------------------------------|--------------------------------------------|
 | [個別 AD 身分識別](#individual-login-with-azure-ad)                | Azure CLI 中的 `az acr login`                              | 開發人員、測試人員的互動式推播/提取                                    | 是                              | AD 權杖每3小時必須更新一次     |
-| [AD 服務主體](#service-principal)                  | `docker login`<br/><br/>Azure CLI 中的 `az acr login`<br/><br/> Api 或工具中的登錄登入設定<br/><br/> Kubernetes 提取密碼                                           | 從 CI/CD 管線自動推送<br/><br/> 自動提取至 Azure 或外部服務  | 是                              | SP 密碼預設到期日為1年       |                                                           
+| [AD 服務主體](#service-principal)                  | `docker login`<br/><br/>Azure CLI 中的 `az acr login`<br/><br/> Api 或工具中的登錄登入設定<br/><br/> [Kubernetes 提取密碼](container-registry-auth-kubernetes.md)                                           | 從 CI/CD 管線自動推送<br/><br/> 自動提取至 Azure 或外部服務  | 是                              | SP 密碼預設到期日為1年       |                                                           
 | [與 AKS  整合](../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json)                   | 在建立或更新 AKS 叢集時附加登錄  | 自動提取至 AKS 叢集                                                  | 否，僅限提取存取             | 僅適用于 AKS 叢集            |
 | [適用于 Azure 資源的受控識別](container-registry-authentication-managed-identity.md)  | `docker login`<br/><br/>Azure CLI 中的  `az acr login`                                        | 從 Azure CI/CD 管線自動推送<br/><br/> 自動提取至 Azure 服務<br/><br/>   | 是                              | 僅從[支援 azure 資源受控](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources)識別的 azure 服務使用              |
 | [管理使用者](#admin-account)                            | `docker login`                                          | 個別開發人員或測試人員的互動式推播/提取                           | 否，一律提取和推送存取  | 單一帳戶的每個登錄，不建議用於多個使用者         |

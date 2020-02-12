@@ -77,7 +77,7 @@ Azure 平臺會在下列案例中開始進行即時移轉：
 
 #### <a name="paired-regions"></a>配對的區域
 
-每個 Azure 區域都會與相同地理位置內的另一個區域配對。 兩者一起建立一個區域配對。 在排定的維護階段期間，Azure 只會更新區域配對中單一區域的 Vm。 例如，在美國中北部更新 VM 時，Azure 不會同時更新美國中南部的任何 VM。 不過，像是歐洲北部等其他區域可以和美國東部一同進行維護。 了解區域配對的運作方式可協助您將 VM 更妥善地分散於各區域。 如需詳細資訊，請參閱 [Azure 區域配對](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。
+每個 Azure 區域都會與相同地理位置內的另一個區域配對。 兩者一起建立一個區域配對。 在排定的維護階段期間，Azure 只會更新區域配對中單一區域的 Vm。 例如，在美國中北部更新 VM 時，Azure 不會同時更新美國中南部的任何 VM。 不過，像是北歐等其他區域可以和美國東部一同進行維護。 了解區域配對的運作方式可協助您將 VM 更妥善地分散於各區域。 如需詳細資訊，請參閱 [Azure 區域配對](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。
 
 #### <a name="availability-sets-and-scale-sets"></a>可用性設定組和擴展集
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: c937a07133dc38d2d9e1e1ef2cc324b4c8bb360e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7d32043ca73e9cf810b3eab5e65cb4b42b599d18
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845074"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152919"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>使用 Azure 網路監看員進行封包檢查
 
@@ -29,7 +29,7 @@ ms.locfileid: "76845074"
 
 本案例假設您已經在虛擬機器上執行封包擷取。 若要了解如何建立封包擷取，請造訪[使用入口網站管理封包擷取](network-watcher-packet-capture-manage-portal.md)，或使用 REST 則請造訪[使用 REST API 管理封包擷取](network-watcher-packet-capture-manage-rest.md)。
 
-## <a name="scenario"></a>案例
+## <a name="scenario"></a>狀況
 
 在此案例中，您將會：
 
@@ -39,7 +39,7 @@ ms.locfileid: "76845074"
 
 在此案例中，我們會說明如何檢視兩個端點之間發生的傳輸控制通訊協定 (TCP) 對話的初始來回時間 (RTT)。
 
-建立 TCP 連線時，連線中傳送的前三個封包會遵循通常稱為三向交握的模式。 藉由檢查此交握期間傳送的前兩個封包 (來自用戶端的初始要求和來自伺服器的回應)，我們可以計算建立此連線的延遲。 此延遲是指來回時間 (RTT)。 如需有關 TCP 通訊協定和三向交握的資訊，請參閱下列資源。 https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip
+建立 TCP 連線時，連線中傳送的前三個封包會遵循通常稱為三向交握的模式。 藉由檢查此交握期間傳送的前兩個封包 (來自用戶端的初始要求和來自伺服器的回應)，我們可以計算建立此連線的延遲。 此延遲是指來回時間 (RTT)。 如需有關 TCP 通訊協定和三向交握的資訊，請參閱下列資源。 [https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip](https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip)
 
 ### <a name="step-1"></a>步驟 1
 

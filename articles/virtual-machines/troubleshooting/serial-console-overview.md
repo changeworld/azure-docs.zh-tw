@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 8eea568217dc5f47c45433e5fdd755682e322b2f
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
-ms.translationtype: HT
+ms.openlocfilehash: 779bb88d15ea6c52f4399f17223b89916e22653d
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134058"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153854"
 ---
 # <a name="azure-serial-console"></a>Azure 序列主控台
 
@@ -66,37 +66,6 @@ Vm 的序列主控台非常簡單，只要在 Azure 入口網站的 [**支援 + 
   1. 從 [**支援 + 疑難排解**] 區段中，選取 [**序列主控台**]。 這會開啟含有序列主控台的新窗格，並開始連線。
 
      ![Linux 虛擬機器擴展集序列主控台](./media/virtual-machines-serial-console/vmss-start-console.gif)
-
-## <a name="serial-console-rbac-role"></a>序列主控台 RBAC 角色
-如先前所述，序列主控台需要 VM 參與者或更高的 VM 或虛擬機器擴展集存取權。 如果您不想將 VM 參與者授與使用者，但仍想要讓使用者存取序列主控台，您可以使用下列角色來執行此動作：
-
-```
-{
-  "Name": "Serial Console Role",
-  "IsCustom": true,
-  "Description": "Role for Serial Console Users that provides significantly reduced access than VM Contributor",
-  "Actions": [
-      "Microsoft.Compute/virtualMachines/*/write",
-      "Microsoft.Compute/virtualMachines/*/read",
-      "Microsoft.Storage/storageAccounts/*"
-  ],
-  "NotActions": [],
-  "DataActions": [],
-  "NotDataActions": [],
-  "AssignableScopes": [
-    "/subscriptions/<subscriptionId>"
-  ]
-}
-```
-
-### <a name="to-create-and-use-the-role"></a>若要建立和使用角色：
-*   在已知位置（例如 `~/serialconsolerole.json`）儲存 JSON。
-*   使用下列 Az CLI 命令來建立角色定義： `az role definition create --role-definition serialconsolerole.json -o=json`
-*   如果您需要更新角色，請使用下列命令： `az role definition update --role-definition serialconsolerole.json -o=json`
-*   角色會顯示在入口網站的存取控制（IAM）中（可能需要幾分鐘的時間才能傳播）
-*   您可以將使用者新增至 VM，以及具有自訂角色角色的開機診斷儲存體帳戶
-    *   請注意，使用者必須被授與 VM 上的自訂角色*和*開機診斷儲存體帳戶
-
 
 ## <a name="advanced-uses-for-serial-console"></a>序列主控台的 Advanced 使用
 除了對 VM 的主控台存取，您也可以使用 Azure 序列主控台來進行下列動作：

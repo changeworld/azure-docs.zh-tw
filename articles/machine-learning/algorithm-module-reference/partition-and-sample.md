@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: ce232fc9216166e94520203bb4afbf4c152aaf6f
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 772c16dc292d8bce4b927c9c2ce3ff6ee0ed399d
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314924"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152120"
 ---
 # <a name="partition-and-sample-module"></a>資料分割和範例模組
 
-本文說明 Azure Machine Learning 設計工具中的模組。
+本文說明 Azure Machine Learning 設計工具（預覽）中的模組。
 
 使用此模組來執行資料集的取樣，或從您的資料集建立分割區。
 
@@ -51,7 +51,7 @@ ms.locfileid: "76314924"
 
 ### <a name="get-top-n-rows-from-a-dataset"></a>從資料集取得前 N 個數據列
 
-使用此模式只取得前*n*個數據列。 如果您想要在少數幾個資料列上測試管線，而不需要以任何方式平衡或取樣資料，這個選項就很有用。
+使用此模式可取得的第一個*n*資料列。 如果您想要在少數幾個資料列上測試管線，而不需要以任何方式平衡或取樣資料，這個選項就很有用。
 
 1. 將**分割區和範例**模組加入至您在介面中的管線，並串連資料組。  
 

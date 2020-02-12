@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: Zhchia
-ms.openlocfilehash: ba7afb506a21df7fc2fe4cc4b7194549b6efde83
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 0602757fad0eb4424e10fb0c1cf0272826ed0024
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77050560"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150692"
 ---
 # <a name="tutorial-configure-teamviewer-for-automatic-user-provisioning"></a>教學課程：設定自動使用者布建的 TeamViewer
 
@@ -34,13 +34,14 @@ ms.locfileid: "77050560"
 > * 在 Azure AD 和 TeamViewer 之間保持使用者屬性同步
 > * [單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/teamviewer-tutorial)至 TeamViewer （建議選項）
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
 * [Azure AD 租使用者](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
 * Azure AD 中的使用者帳戶，具有設定布建的[許可權](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)（例如，應用程式系統管理員、雲端應用程式系統管理員、應用程式擁有者或全域管理員）。 
-* 具有系統管理員許可權的 TeamViewer 帳戶。
+* 適用于 TeamViewer 的有效[張量授權](https://www.teamviewer.com/de/teamviewer-tensor/)。
+* 可用的[單一登入](https://community.teamviewer.com/t5/Knowledge-Base/Single-Sign-On-with-Azure-Active-Directory/ta-p/60209#toc-hId--473669723)設定中的有效自訂識別碼。
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>步驟 1： 規劃您的布建部署
 1. 深入瞭解布建[服務的運作方式](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。
@@ -49,7 +50,7 @@ ms.locfileid: "77050560"
 
 ## <a name="step-2-configure-teamviewer-to-support-provisioning-with-azure-ad"></a>步驟 2： 設定 TeamViewer 以支援以 Azure AD 進行布建
 
-1. 登入 TeamViewer 應用程式的管理主控台。 流覽至 [**編輯設定檔**]。
+1. 登入[TeamViewer 管理主控台](https://login.teamviewer.com)。 流覽至 [**編輯設定檔**]。
 
     ![TeamViewer 管理主控台](./media/teamviewer-provisioning-tutorial/admin.png)
 

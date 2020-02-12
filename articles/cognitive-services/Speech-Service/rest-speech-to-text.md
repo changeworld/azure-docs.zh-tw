@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: ea37dc9ee6c9249aa9d18f7ee7ab1fdbe1230930
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f5d1fff7d1343ad569fa015ebdb65d0152f04376
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975834"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153208"
 ---
 # <a name="speech-to-text-rest-api"></a>語音轉換文字 REST API
 
@@ -38,13 +38,13 @@ ms.locfileid: "74975834"
 
 ## <a name="query-parameters"></a>查詢參數
 
-REST 要求的查詢字串中可能包含這些參數。
+REST 要求的查詢字串中可能包括這些參數。
 
 | 參數 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
 | `language` | 識別正在辨識的口說語言。 請參閱[支援的語言](language-support.md#speech-to-text)。 | 必要項 |
-| `format` | 指定結果格式。 接受的值為 `simple` 和 `detailed`。 簡單的結果包含 `RecognitionStatus`、`DisplayText`、`Offset` 和 `Duration`。 詳細的回應包含多個具有信賴值的結果和四個不同的表示法。 預設設定為 `simple`。 | 選用 |
-| `profanity` | 指定如何處理辨識結果中的不雅內容。 接受的值為 `masked`，會以星號取代不雅內容，`removed`，這會移除結果中的所有不雅內容，或 `raw`，其中包含結果中的不雅內容。 預設設定為 `masked`。 | 選用 |
+| `format` | 指定結果格式。 接受的值為 `simple` 和 `detailed`。 簡單的結果包含 `RecognitionStatus`、`DisplayText`、`Offset` 和 `Duration`。 詳細的回應包含多個具有信賴值的結果和四個不同的表示法。 預設值是 `simple`。 | 選擇性 |
+| `profanity` | 指定如何處理辨識結果中的不雅內容。 接受的值為 `masked`，會以星號取代不雅內容，`removed`，這會移除結果中的所有不雅內容，或 `raw`，其中包含結果中的不雅內容。 預設值是 `masked`。 | 選擇性 |
 
 ## <a name="request-headers"></a>要求標頭
 
@@ -55,7 +55,7 @@ REST 要求的查詢字串中可能包含這些參數。
 | `Ocp-Apim-Subscription-Key` | 您的語音服務訂用帳戶金鑰。 | 必須有此標頭或 `Authorization`。 |
 | `Authorization` | 前面加入 `Bearer` 這個字的授權權杖。 如需詳細資訊，請參閱[驗證](#authentication)。 | 必須有此標頭或 `Ocp-Apim-Subscription-Key`。 |
 | `Content-type` | 描述所提供音訊資料的格式和轉碼器。 接受的值為 `audio/wav; codecs=audio/pcm; samplerate=16000` 和 `audio/ogg; codecs=opus`。 | 必要項 |
-| `Transfer-Encoding` | 指定正在傳送的音訊資料區塊，而不是單一檔案。 只有在以區塊處理音訊資料時，才能使用此標頭。 | 選用 |
+| `Transfer-Encoding` | 指定正在傳送的音訊資料區塊，而不是單一檔案。 只有在以區塊處理音訊資料時，才能使用此標頭。 | 選擇性 |
 | `Expect` | 如果使用區塊傳輸，請傳送 `Expect: 100-continue`。 語音服務會確認初始要求並等候其他資料。| 如果傳送的是音訊資料區塊，則為必要。 |
 | `Accept` | 如果提供，則必須是 `application/json`。 語音服務會以 JSON 提供結果。 某些要求架構會提供不相容的預設值。 最佳做法是一律包含 `Accept`。 | 此為選用步驟，但建議執行。 |
 
@@ -63,13 +63,13 @@ REST 要求的查詢字串中可能包含這些參數。
 
 音訊是在 HTTP `POST` 要求的主體中傳送。 它必須是此表格中的格式之一：
 
-| 格式 | 轉碼器 | Bitrate | 採樣速率 |
+| [格式] | 轉碼器 | Bitrate | 取樣率 |
 |--------|-------|---------|-------------|
 | WAV | PCM | 16 位元 | 16 kHz，單聲道 |
 | OGG | OPUS | 16 位元 | 16 kHz，單聲道 |
 
 >[!NOTE]
->您可以透過語音服務中的 REST API 和 WebSocket 來支援上述格式。 [語音 SDK](speech-sdk.md) 目前僅支援具備 PCM 轉碼器的 WAV 格式。
+>您可以透過語音服務中的 REST API 和 WebSocket 來支援上述格式。 [語音 SDK](speech-sdk.md)目前支援具有 PCM 編解碼器和[其他格式](how-to-use-codec-compressed-audio-input-streams.md)的 WAV 格式。
 
 ## <a name="sample-request"></a>範例要求
 
@@ -94,8 +94,8 @@ Expect: 100-continue
 | 100 | 繼續 | 已接受初始要求。 繼續傳送其餘的資料。 (搭配區塊傳輸使用。) |
 | 200 | 確定 | 要求成功；回應主體是 JSON 物件。 |
 | 400 | 不正確的要求 | 未提供語言代碼，而不是支援的語言、不正確音訊檔案等。 |
-| 401 | 未經授權 | 訂用帳戶金鑰或授權權杖在指定的區域中無效，或是無效的端點。 |
-| 403 | 禁止 | 遺漏訂用帳戶金鑰或授權權杖。 |
+| 401 | Unauthorized | 訂用帳戶金鑰或授權權杖在指定的區域中無效，或是無效的端點。 |
+| 403 | 已禁止 | 遺漏訂用帳戶金鑰或授權權杖。 |
 
 ## <a name="chunked-transfer"></a>區塊傳輸
 
@@ -164,7 +164,7 @@ using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 > [!NOTE]
 > 如果音訊只包含不雅內容，而且 `profanity` 查詢參數設為 `remove`，則服務不會傳回語音結果。
 
-`detailed` 格式包含與 `simple` 格式相同的資料，以及 `NBest`，也就是相同辨識結果的替代解釋清單。 這些結果的排名是從最可能到最低的。 第一個項目與主要辨識結果相同。  使用 `detailed` 格式時，系統會提供 `DisplayText` 作為 `NBest` 清單中每個結果的 `Display`。
+`detailed` 格式包含與 `simple` 格式相同的資料，以及 `NBest`，也就是相同辨識結果的替代解釋清單。 這些結果的排名是從最可能到最低的。 第一個項目與主要辨識結果相同。  使用 `detailed` 格式時，系統會提供 `DisplayText` 作為 `Display` 清單中每個結果的 `NBest`。
 
 `NBest` 清單中的每個物件包括：
 
@@ -174,7 +174,7 @@ using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 | `Lexical` | 已辨識文字的語彙形式：已辨識的實際文字。 |
 | `ITN` | 已辨識文字的反向文字正規化 (「標準」) 形式，包含電話號碼、數字、縮寫 ("doctor smith" 縮短為 "dr smith")，以及其他已套件的轉換。 |
 | `MaskedITN` | 如果要求，已套用不雅內容遮罩的 ITN 形式。 |
-| `Display` | 已辨識文字的顯示形式，已新增標點符號和大寫。 此參數與當格式設定為 `simple` 時，所提供的 `DisplayText` 相同。 |
+| `Display` | 已辨識文字的顯示形式，已新增標點符號和大寫。 此參數與當格式設定為 `DisplayText` 時，所提供的 `simple` 相同。 |
 
 ## <a name="sample-responses"></a>回應範例
 
@@ -217,6 +217,6 @@ using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 
 ## <a name="next-steps"></a>後續步驟
 
-- [取得語音試用訂用帳戶](https://azure.microsoft.com/try/cognitive-services/)
+- [試用認知服務](https://azure.microsoft.com/try/cognitive-services/)
 - [自訂原音模型](how-to-customize-acoustic-models.md)
 - [自訂語言模型](how-to-customize-language-model.md)

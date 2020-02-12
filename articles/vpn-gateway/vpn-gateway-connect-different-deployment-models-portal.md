@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: c26c4c47cb17acf88bc545af3a1fc979138d56b1
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 5e64cb2db2bd16a881334779a1c6f1ef19296da2
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951729"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152018"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>使用入口網站從不同的部署模型連接虛擬網路
 
@@ -30,7 +30,7 @@ ms.locfileid: "74951729"
 
 ### <a name="before"></a>開始之前
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 * 這些步驟假設已建立兩個 VNet。 如果您使用這篇文章作為練習且沒有 VNet，步驟中有連結可以協助您建立它們。
 * 確認 VNet 的位址範圍不會彼此重疊，或與閘道可能連線的任何其他連線範圍重疊。
@@ -75,7 +75,7 @@ SKU = VpnGw1 <br>
 
 下表顯示範例，示範如何定義範例 VNet 和本機網站︰
 
-| 虛擬網路 | 位址空間 | 地區 | 連接至區域網路站台 |
+| 虛擬網路 | 位址空間 | 區域 | 連接至區域網路站台 |
 |:--- |:--- |:--- |:--- |
 | ClassicVNet |(10.0.0.0/24) |美國西部 | RMVNetLocal (192.168.0.0/16) |
 | RMVNet | (192.168.0.0/16) |美國東部 |ClassicVNetLocal (10.0.0.0/24) |
@@ -100,7 +100,7 @@ SKU = VpnGw1 <br>
 
 1. 瀏覽至 [所有資源]，並且在清單中找出 **ClassicVNet**。
 2. 在功能表的 [**設定**] 區段中，按一下 [**閘道**]，然後按一下橫幅以建立閘道。
-  ![設定 VPN 閘道](./media/vpn-gateway-connect-different-deployment-models-portal/gatewaygraphic.png "C設定 o) VPN 閘道」)
+  ![設定 VPN 閘道](./media/vpn-gateway-connect-different-deployment-models-portal/gatewaygraphic.png "設定 VPN 閘道")
 3. 在 [新增 VPN 連線] 頁面上，針對 [連線類型] 選取 [站對站]。
 4. 針對 [本機站台]，按一下 [設定必要設定]。 這會開啟 [本機網站] 頁面。
 5. 在 [本機網站] 頁面上，建立用來參照 Resource Manager VNet 的名稱。 例如，'RMVNetLocal'。
@@ -170,7 +170,7 @@ SKU = VpnGw1 <br>
 
 **範例值：** 區域網路閘道 = ClassicVNetLocal
 
-| 虛擬網路 | 位址空間 | 地區 | 連接至區域網路站台 |閘道公用 IP 位址|
+| 虛擬網路 | 位址空間 | 區域 | 連接至區域網路站台 |閘道公用 IP 位址|
 |:--- |:--- |:--- |:--- |:--- |
 | ClassicVNet |(10.0.0.0/24) |美國西部 | RMVNetLocal (192.168.0.0/16) |指派給 ClassicVNet 閘道的公用 IP 位址|
 | RMVNet | (192.168.0.0/16) |美國東部 |ClassicVNetLocal (10.0.0.0/24) |指派給 RMVNet 閘道的公用 IP 位址。|
@@ -273,7 +273,7 @@ Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 
 ### <a name="3-create-the-connection"></a>3. 建立連接
 
-設定共用金鑰，並且建立從傳統 VNet 到 Resource Manager VNet 的連線。 您無法使用入口網站來設定共用金鑰。 若已使用傳統 PowerShell Cmdlet 版本登入，請務必執行這些步驟。 若要這樣做，請使用 **Add-azureaccount**。 否則，您將無法設定 '-AzureVNetGatewayKey'。
+設定共用金鑰，並且建立從傳統 VNet 到 Resource Manager VNet 的連線。 您無法使用入口網站來設定共用金鑰。 若已使用傳統 PowerShell Cmdlet 版本登入，請務必執行這些步驟。 若要這麼做，請使用 **Add-azureaccount**。 否則，您將無法設定 '-AzureVNetGatewayKey'。
 
 - 在此範例中， **-VNetName** 是在網路組態檔中找到的傳統 VNet 名稱。 
 - **-LocalNetworkSiteName** 是您為網路組態檔中找到之本機網站指定的名稱。

@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 30d1ba89f6a18ed3400868e6d9a5d17ceef5de04
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 8206a88695c89d04eabe89e79a5aff8469cc6862
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546804"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152426"
 ---
 # <a name="convert-to-csv-module"></a>轉換成 CSV 模組
 
@@ -26,7 +26,7 @@ ms.locfileid: "76546804"
 
 CSV 格式（代表「逗號分隔值」）是許多外部機器學習工具所使用的檔案格式。 CSV 是使用開放原始碼語言（例如 R 或 Python）時的通用交換格式。
 
-即使您在 Azure Machine Learning 中執行大部分的工作，有時可能會發現將資料集轉換成 CSV 以用於外部工具是很方便的。 例如：
+即使您在 Azure Machine Learning 中執行大部分的工作，有時可能會發現將資料集轉換成 CSV 以用於外部工具是很方便的。 例如，
 
 + 下載 CSV 檔案，以使用 Excel 開啟檔案，或將它匯入關係資料庫。  
 + 將 CSV 檔案儲存至雲端存放裝置，並從 Power BI 連接到該檔案，以建立視覺效果。  

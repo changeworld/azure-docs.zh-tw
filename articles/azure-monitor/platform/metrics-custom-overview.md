@@ -179,8 +179,8 @@ Azure 監視器會儲存一分鐘資料粒度間隔內的所有計量。 我們�
 |加拿大中部 | HTTPs：\//canadacentral.monitoring.azure.comc
 |美國東部| HTTPs：\//eastus.monitoring.azure.com/ |
 | **歐洲** | |
-|歐洲北部    | HTTPs：\//northeurope.monitoring.azure.com/ |
-|歐洲西部     | HTTPs：\//westeurope.monitoring.azure.com/ |
+|北歐    | HTTPs：\//northeurope.monitoring.azure.com/ |
+|西歐     | HTTPs：\//westeurope.monitoring.azure.com/ |
 |英國南部 | HTTPs：\//uksouth.monitoring.azure.com
 |法國中部 | HTTPs：\//francecentral.monitoring.azure.com |
 | **非洲** | |

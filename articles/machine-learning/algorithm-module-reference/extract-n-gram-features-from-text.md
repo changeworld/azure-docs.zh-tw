@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 09/01/2019
-ms.openlocfilehash: 4f64ac9b276c71a037f96766b38a2574b89441c8
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: cae128505c61e7c640819041c6ffdae10a4947e7
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312221"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152273"
 ---
 # <a name="extract-n-gram-features-from-text-module-reference"></a>從文字模塊參考中解壓縮 N 語法功能
 
-本文說明 Azure Machine Learning 設計工具中的模組。 使用 [從文字中解壓縮 N 語法特徵] 模組來為非結構化文字資料提供*特徵*。 
+本文說明 Azure Machine Learning 設計工具（預覽）中的模組。 使用 [從文字中解壓縮 N 語法特徵] 模組來為非結構化文字資料提供*特徵*。 
 
 ## <a name="configuration-of-the-extract-n-gram-features-from-text-module"></a>設定從文字模塊解壓縮 N 語法功能
 
@@ -125,7 +125,7 @@ ms.locfileid: "76312221"
 + **DF**：原始主體中 n-克的詞彙頻率分數。
 + **IDF**：原始主體中 n-克的反向檔頻率分數。
 
-您可以手動更新此資料集，但可能會導致錯誤。 例如：
+您可以手動更新此資料集，但可能會導致錯誤。 例如，
 
 * 如果模組在輸入詞彙中找到具有相同索引鍵的重復資料列，就會引發錯誤。 請確定詞彙中沒有任何兩個數據列具有相同的單字。
 * 詞彙資料集的輸入架構必須完全相符，包括資料行名稱和資料行類型。 

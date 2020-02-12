@@ -7,25 +7,25 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: cc7ce8a8725e3cbc5c4f0d4db8bfcc3f1b1d657b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 903e3f3dcbcc72289fc82ec59dec0305b6adbc17
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427692"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150913"
 ---
 # <a name="analyze-customer-churn-using-azure-machine-learning-studio-classic"></a>使用 Azure Machine Learning Studio （傳統）分析客戶流失
 ## <a name="overview"></a>概觀
 本文提供使用 Azure Machine Learning Studio （傳統）建立的客戶流失分析專案的參考實。 在本文中將討論關聯的一般模型，可全面性地解決產業客戶流失的問題。 對於以機器學習建立的模型，我們也衡量其正確性，同時評定進一步開發的方向。  
 
-### <a name="acknowledgements"></a>通知
+### <a name="acknowledgements"></a>致謝
 這項實驗是由 Serge Berger、Microsoft 的主要資料科學家及 Roger Barga （先前為 Microsoft Azure Machine Learning Studio （傳統）的產品經理）所開發和測試。 Azure 文件小組高度認可其專業知識，並感謝他們分享這份白皮書。
 
 > [!NOTE]
-> 這項實驗中使用的資料無法公開使用。 如需如何建置客戶流失分析的機器學習模型範例，請參閱︰[Azure AI 資源庫](https://gallery.azure.ai/)中的[售業客戶流失模型範本](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1)
+> 這項實驗中使用的資料無法公開使用。 如需如何建置客戶流失分析的機器學習模型範例，請參閱︰[Azure AI 資源庫](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1)中的[售業客戶流失模型範本](https://gallery.azure.ai/)
 > 
 > 
 
@@ -178,7 +178,7 @@ AUC 用來判斷不同演算法 (或不同系統) 是否有用處，因為它可
 
 *表 1.演算法的整體表現 (正確性)*
 
-| LR | BT | 亞太地區 | SVM |
+| LR | BT | AP | SVM |
 | --- | --- | --- | --- |
 | 平均模型 |最佳模型 |表現不佳 |平均模型 |
 
@@ -219,7 +219,7 @@ Azure Machine Learning Studio （傳統）推出的另一項令人興奮的功�
 
 [4] [巨量資料行銷：更有效地吸引您的客戶和促進價值](https://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
 
-[5] [Azure AI 資源庫](https://gallery.azure.ai/)中的[電信公司客戶流失模型範本](https://gallery.azure.ai/Experiment/Telco-Customer-Churn-5) 
+[5] [Azure AI 資源庫](https://gallery.azure.ai/Experiment/Telco-Customer-Churn-5)中的[電信公司客戶流失模型範本](https://gallery.azure.ai/) 
  
 
 ## <a name="appendix"></a>附錄

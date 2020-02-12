@@ -1,5 +1,5 @@
 ---
-title: 解譯模型結果
+title: 解讀模型結果
 titleSuffix: ML Studio (classic) - Azure
 description: 如何針對使用和視覺化評分模型輸出的演算法選擇最佳的參數設定。
 services: machine-learning
@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: 3fc369c59626faae4c97f896650269820626b1ae
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 19ae6e8fd8e8a3118343ed8734abb67bc817c3d5
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454710"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153463"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>在 Azure Machine Learning Studio 中解讀模型結果（傳統）
 本主題說明如何在 Azure Machine Learning Studio （傳統）中將預測結果視覺化並加以解讀。 在您訓練好模型並完成其預測 (「模型評分」) 之後，您必須了解和解譯預測結果。
@@ -66,7 +66,7 @@ Azure Machine Learning Studio （傳統）有不同的模組來處理這類分�
 
 ![鳶尾花雙類別分類實驗的結果](./media/interpret-model-results/2.png)
 
-圖 2。 視覺化雙類別分類中的評分模型結果
+圖 2. 視覺化雙類別分類中的評分模型結果
 
 **結果解譯**
 
@@ -78,13 +78,13 @@ Azure Machine Learning Studio （傳統）有不同的模組來處理這類分�
 
 ![評分實驗的螢幕擷取畫面](./media/interpret-model-results/3.png)
 
-圖 3。 鳶尾花雙類別分類問題實驗評分
+圖 3. 鳶尾花雙類別分類問題實驗評分
 
 您現在必須設定 Web 服務的輸入和輸出。 輸入是[評分模型][score-model]的右側輸入埠，也就是鳶尾花花的特徵輸入。 輸出的選擇取決於您是對於預測類別 (評分標籤)、評分機率或兩者感到興趣。 此範例假設您對兩者都感到興趣。 若要選取所需的輸出資料行，請使用 [[選取資料集中的資料行][select-columns]] 模組。 按一下 [選取資料集中的欄位][select-columns]]，按一下 [**啟動資料行選取器**]，然後選取 [**評分標籤**] 和 [**評分**機率 在設定 [[選取資料集中的資料行][select-columns]] 的輸出埠並再次執行之後，您應該準備好透過按一下 [**發佈 web 服務**]，將評分實驗發佈為 web 服務。 最終實驗如「圖 4」所示。
 
 ![鳶尾花雙類別分類實驗](./media/interpret-model-results/4.png)
 
-圖 4。 鳶尾花雙類別分類問題的最終評分實驗
+圖 4. 鳶尾花雙類別分類問題的最終評分實驗
 
 執行 Web 服務並且輸入測試執行個體的一些特徵值之後，結果會傳回兩個數字。 第一個數字是評分標籤，而第二個數字是評分機率。 此花卉預測為類別 1，其機率為 0.9655。
 
@@ -92,7 +92,7 @@ Azure Machine Learning Studio （傳統）有不同的模組來處理這類分�
 
 ![測試結果評分](./media/interpret-model-results/5.png)
 
-圖 5。 鳶尾花雙類別分類的 Web 服務結果
+圖 5. 鳶尾花雙類別分類的 Web 服務結果
 
 ### <a name="multi-class-classification"></a>多類別分類
 **範例實驗**
@@ -105,13 +105,13 @@ Azure Machine Learning Studio （傳統）有不同的模組來處理這類分�
 
 ![字母辨識多類別分類實驗](./media/interpret-model-results/6.png)
 
-圖 6。 字母辨識多類別分類問題實驗
+圖 6. 字母辨識多類別分類問題實驗
 
 藉由按一下 [[評分模型][score-model]] 模組的輸出埠，然後按一下 [**視覺化**]，您應該會看到如 [圖 7] 所示的內容，以將[評分模型][score-model]模組的結果視覺化。
 
 ![評分模型模組](./media/interpret-model-results/7.png)
 
-圖 7。 視覺化多類別分類中的評分模型結果
+圖 7. 視覺化多類別分類中的評分模型結果
 
 **結果解譯**
 
@@ -123,11 +123,11 @@ Azure Machine Learning Studio （傳統）有不同的模組來處理這類分�
 
 ![R 程式碼範例](./media/interpret-model-results/8.png)
 
-圖 8。 R 程式碼，用以擷取評分標籤和標籤的相關聯機率
+圖 8. R 程式碼，用以擷取評分標籤和標籤的相關聯機率
 
 ![實驗結果](./media/interpret-model-results/9.png)
 
-圖 9。 字母辨識多類別分類問題的最終評分實驗
+圖 9. 字母辨識多類別分類問題的最終評分實驗
 
 發佈及執行 Web 服務並輸入一些輸入特徵值之後，傳回的結果如圖 10 所示。 此手寫字母具有其擷取的 16 個特徵，預測為 “T” 的機率是 0.9715。
 
@@ -135,7 +135,7 @@ Azure Machine Learning Studio （傳統）有不同的模組來處理這類分�
 
 ![測試結果](./media/interpret-model-results/10.png)
 
-圖 10。 多類別分類的 Web 服務結果
+圖 10. 多類別分類的 Web 服務結果
 
 ## <a name="regression"></a>迴歸
 迴歸問題與分類問題不同。 在分類問題中，您會嘗試預測離散案例，例如鳶尾花屬於哪個類別。 但如以下迴歸問題範例所示，您會嘗試預測連續變數，例如汽車的價格。
@@ -146,7 +146,7 @@ Azure Machine Learning Studio （傳統）有不同的模組來處理這類分�
 
 ![汽車價格迴歸實驗](./media/interpret-model-results/11.png)
 
-圖 11。 汽車價格迴歸問題實驗
+圖 11. 汽車價格迴歸問題實驗
 
 視覺化[評分模型][score-model]模組，結果如 [圖 12] 所示。
 

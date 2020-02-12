@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2b4f198d596ddcb475e123c355c38ada784d21d3
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: b023b49955f642f1cafcb5f26ae67e657718bcd6
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70884007"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148227"
 ---
 # <a name="authentication-requests-and-responses"></a>驗證、要求和回應
 
@@ -51,7 +51,7 @@ Azure Key Vault 支援 JSON 格式化要求和回應。 搭配使用 HTTPS 與�
 
  除非作業描述中另有說明，否則 Accept 要求標頭必須包含 application/json 媒體類型。  
 
-## <a name="response-body"></a>回應本文  
+## <a name="response-body"></a>回應主體  
  除非作業描述中另有說明，否則成功和失敗作業的回應本文內容類型將會是 application/json，並且包含詳細錯誤資訊。  
 
 ## <a name="using-http-post"></a>使用 HTTP POST  
@@ -64,7 +64,7 @@ Azure Key Vault 支援 JSON 格式化要求和回應。 搭配使用 HTTPS 與�
 
 - 3xx – 重新導向：可能會傳回 304「未修改」，以滿足條件式 GET。 未來可能會使用其他 3xx 代碼指出 DNS 和路徑變更。  
 
-- 4xx – 用戶端錯誤：用於不正確的要求、遺漏金鑰、語法錯誤、無效參數、驗證錯誤等等。回應本文將會包含詳細錯誤說明。  
+- 4xx –用戶端錯誤：用於不正確的要求、遺漏金鑰、語法錯誤、無效參數、驗證錯誤等等。回應主體會包含詳細的錯誤說明。  
 
 - 5xx – 伺服器錯誤：用於內部伺服器錯誤。 回應本文將會包含摘要錯誤資訊。  
 
@@ -112,7 +112,7 @@ WWW-Authenticate: Bearer authorization="…", resource="…"
 
 -   authorization：可能用來取得要求存取權杖之 OAuth2 授權服務的位址。  
 
--   resource：要在授權要求中使用的資源名稱。  
+-   資源：要在授權要求中使用的資源名稱（ https://vault.azure.net)。  
 
 ## <a name="see-also"></a>另請參閱  
  [關於金鑰、密碼與憑證](about-keys-secrets-and-certificates.md)

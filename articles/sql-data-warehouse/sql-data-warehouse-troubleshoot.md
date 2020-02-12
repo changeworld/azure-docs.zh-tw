@@ -11,17 +11,17 @@ ms.date: 11/25/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: ce57c48e568e840f3a651a5530f3fba6c0be60b7
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 4eec340a04b9cdbc85a2c8712a11d31132766206
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721042"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153361"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>針對 Azure SQL 資料倉儲問題進行疑難排解
 本文列出常見的疑難排解問題。
 
-## <a name="connecting"></a>Connecting
+## <a name="connecting"></a>連線中
 | 問題                                                        | 解決方案                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | 使用者 'NT AUTHORITY\ANONYMOUS LOGON' 登入失敗。 (Microsoft SQL Server，錯誤：18456) | 當 AAD 使用者嘗試連線到主要資料庫，但主要資料庫中沒有使用者時，就會發生此錯誤。  若要修正此問題，請在連線時間指定您需要連線的 SQL 資料倉儲，或將使用者新增到 master 資料庫。  如需詳細資訊，請參閱 [安全性概觀](sql-data-warehouse-overview-manage-security.md) 一文。 |
@@ -53,7 +53,7 @@ ms.locfileid: "76721042"
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | 訊息 40847：無法執行這項作業，因為伺服器可能會超過允許的資料庫交易單位配額 45000。 | 請減少您嘗試建立的資料庫[DWU](what-is-a-data-warehouse-unit-dwu-cdwu.md) ，或[要求增加配額](sql-data-warehouse-get-started-create-support-ticket.md)。 |
 | 調查空間使用量                              | 請參閱 [資料表大小]( ../sql-data-warehouse/sql-data-warehouse-tables-overview.md#table-size-queries) ，以了解您系統的空間使用量。 |
-| 協助管理資料表                                    | 請參閱 [資料表總覽] [總覽] 一文，以取得管理資料表的協助。  本文也包含更詳細主題的連結，例如[資料表資料類型](sql-data-warehouse-tables-data-types.md)、散發[資料表](sql-data-warehouse-tables-distribute.md)、編制資料表的[索引](sql-data-warehouse-tables-index.md)、[分割資料表](sql-data-warehouse-tables-partition.md)、[維護資料表統計資料](sql-data-warehouse-tables-statistics.md)和[臨時表](sql-data-warehouse-tables-temporary.md)。 |
+| 協助管理資料表                                    | 請參閱[資料表總覽](../sql-data-warehouse/sql-data-warehouse-tables-overview.md)一文，以取得管理資料表的協助。  本文也包含更詳細主題的連結，例如[資料表資料類型](sql-data-warehouse-tables-data-types.md)、散發[資料表](sql-data-warehouse-tables-distribute.md)、編制資料表的[索引](sql-data-warehouse-tables-index.md)、[分割資料表](sql-data-warehouse-tables-partition.md)、[維護資料表統計資料](sql-data-warehouse-tables-statistics.md)和[臨時表](sql-data-warehouse-tables-temporary.md)。 |
 | 透明資料加密（TDE）進度列未在 Azure 入口網站中更新 | 您可以透過 [PowerShell (英文)](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption) 檢視 TDE 的狀態。 |
 
 

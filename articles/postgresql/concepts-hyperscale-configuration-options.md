@@ -42,9 +42,9 @@ ms.locfileid: "74975630"
     * 澳大利亞東部 *
     * 東南亞
 * 歐洲
-    * 歐洲北部
+    * 北歐
     * 英國南部
-    * 歐洲西部
+    * 西歐
 
 具有星號（\*）的區域尚未支援[高可用性](concepts-hyperscale-high-availability.md)。
 

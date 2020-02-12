@@ -1,6 +1,6 @@
 ---
 title: 保護資料庫
-description: 保護 Azure SQL 資料倉儲中的資料庫以便開發解決方案的秘訣。
+description: 在 SQL 分析的 SQL 集區資源中保護資料庫和開發解決方案的秘訣。
 services: sql-data-warehouse
 author: julieMSFT
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5eeb1c25264c36909774ec689b7410765881c8e2
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 26cdbb1fc2899d1b03fea6199074467623706c63
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064728"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153276"
 ---
 # <a name="secure-a-database-in-sql-data-warehouse"></a>保護 SQL 資料倉儲中的資料庫
 > [!div class="op_single_selector"]
@@ -27,21 +27,21 @@ ms.locfileid: "77064728"
 > 
 > 
 
-本文逐步解說保護 Azure SQL 資料倉儲資料庫的基本概念。 本文尤其著重於協助您開始利用資源，以在資料庫上限制存取、保護資料，以及監視活動。
+本文將逐步引導您瞭解在 SQL 分析中保護 SQL 集區的基本概念。 特別是，本文可讓您開始使用資源來限制存取、保護資料，以及監視使用 SQL 集區布建之資料庫上的活動。
 
 ## <a name="connection-security"></a>連接安全性
 「連線安全性」是指如何使用防火牆規則和連線加密，限制和保護資料庫的連線。
 
 伺服器和資料庫都使用防火牆規則，拒絕來自尚未明確列入允許清單之 IP 位址的連線嘗試。 若要允許來自應用程式或用戶端機器之公用 IP 位址的連線，您必須先使用 Azure 入口網站、REST API 或 PowerShell 建立伺服器層級的防火牆規則。 
 
-最好的作法是，您應該盡可能限制允許穿透您伺服器防火牆的 IP 位址範圍。  若要從您的本機電腦存取 Azure SQL 資料倉儲，請確定您的網路和本機電腦上的防火牆允許 TCP 連接埠 1433 上的傳出通訊。  
+最好的作法是，您應該盡可能限制允許穿透您伺服器防火牆的 IP 位址範圍。  若要從您的本機電腦存取 SQL 集區，請確定網路和本機電腦上的防火牆允許 TCP 埠1433上的連出通訊。  
 
-Azure Synapse 會使用伺服器層級 IP 防火牆規則。 它不支援資料庫層級 IP 防火牆規則。 如需詳細資訊，請參閱[Azure SQL Database 防火牆規則](../sql-database/sql-database-firewall-configure.md)
+Azure Synapse 分析會使用伺服器層級 IP 防火牆規則。 它不支援資料庫層級 IP 防火牆規則。 如需詳細資訊，請參閱[Azure SQL Database 防火牆規則](../sql-database/sql-database-firewall-configure.md)
 
-預設會加密與 SQL 資料倉儲的連線。  停用加密的修改連線設定會被忽略。
+根據預設，您的 SQL 集區連接會進行加密。  停用加密的修改連線設定會被忽略。
 
 ## <a name="authentication"></a>驗證
-「驗證」是指連線到資料庫時如何證明身分識別。 SQL 資料倉儲目前支援採用使用者名稱和密碼，以及 Azure Active Directory 的 SQL Server 驗證。 
+「驗證」是指連線到資料庫時如何證明身分識別。 SQL 集區目前支援使用使用者名稱和密碼 SQL Server 驗證，並具有 Azure Active Directory。 
 
 當您為資料庫建立邏輯伺服器時，採取使用者名稱和密碼指定了「伺服器管理員」登入。 使用這些認證，您就可以透過 SQL Server 驗證，使用資料庫擁有者或 "dbo" 的身分驗證該伺服器上的任何資料庫。
 
@@ -55,7 +55,7 @@ CREATE LOGIN ApplicationLogin WITH PASSWORD = 'Str0ng_password';
 CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 ```
 
-然後，使用您的伺服器管理員登入連線到 **SQL 資料倉儲資料庫** ，並根據您所建立的伺服器登入建立資料庫使用者。
+然後，使用您的伺服器系統管理員登入連接到您的**SQL 集區資料庫**，並根據您建立的伺服器登入建立資料庫使用者。
 
 ```sql
 -- Connect to SQL DW database and create a database user
@@ -98,4 +98,4 @@ GRANT SELECT ON SCHEMA::Test to ApplicationUser
 您可以使用[Azure 入口網站](sql-data-warehouse-encryption-tde.md)或[t-sql](sql-data-warehouse-encryption-tde-tsql.md)來加密您的資料庫。
 
 ## <a name="next-steps"></a>後續步驟
-如需使用不同通訊協定連接到您的倉儲的詳細資訊和範例，請參閱[連接到 SQL 資料倉儲](sql-data-warehouse-connect-overview.md)。
+如需使用不同通訊協定連接到您的倉儲的詳細資訊和範例，請參閱[連接到 SQL 集](sql-data-warehouse-connect-overview.md)區。

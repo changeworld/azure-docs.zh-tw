@@ -1,6 +1,6 @@
 ---
 title: 管理性與監視-總覽
-description: Azure SQL 資料倉儲中的資源使用率、記錄和查詢活動、建議和資料保護（備份與還原）的監視和管理性總覽。
+description: SQL 集區的資源使用率、記錄和查詢活動、建議和資料保護（備份與還原）的監視和管理性總覽。
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 08/27/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 54dbf7bcac92f7536d4e4579045c474914264935
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 31a12a60fc6f02a935ff98278e69d1ed2dd68ce5
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760737"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153259"
 ---
-# <a name="manageability-and-monitoring-with-azure-sql-data-warehouse"></a>Azure SQL 資料倉儲的管理和監視
+# <a name="manageability-and-monitoring-with-sql-pool"></a>SQL 集區的管理能力和監視
 
-了解哪些功能可協助您管理和監視 Azure SQL 資料倉儲。 下列文章特別說明如何將資料倉儲的效能和使用方式最佳化。
+SQL 分析可讓您透過 SQL 集區布建資料倉儲。 下列文章將協助您管理及監視您的資料倉儲。 您也將瞭解如何將資料倉儲的使用方式和效能優化。
 
 ## <a name="overview"></a>概觀
 
@@ -33,4 +33,4 @@ ms.locfileid: "76760737"
 
 
 ## <a name="next-steps"></a>後續步驟
-如需做法指南，請參閱[監視及調整資料倉儲](sql-data-warehouse-manage-monitor.md)。
+如需作法指南，請參閱[監視及調整您的 SQL 集](sql-data-warehouse-manage-monitor.md)區。

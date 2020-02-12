@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 6e78cbdd9cd921db2340a92c46a9337ac0fc98eb
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 714148815fa4ff543ecbf86ab21e8d51fe775543
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311847"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153769"
 ---
 # <a name="select-columns-in-dataset-module"></a>選取資料集中的資料行模組
 
-本文說明 Azure Machine Learning 設計工具中的模組。
+本文說明 Azure Machine Learning 設計工具（預覽）中的模組。
 
 使用此模組可選擇要在下游作業中使用的資料行子集。 此模組不會實際移除源資料集的資料行;相反地，它會建立資料行的子集，非常類似資料庫*視圖*或*投射*。
 
@@ -26,7 +26,7 @@ ms.locfileid: "76311847"
 
 資料集內的資料行與原始資料中的輸出順序相同，即使您以不同的順序指定它們也一樣。
 
-## <a name="how-to-use"></a>使用方式
+## <a name="how-to-use"></a>如何使用
 
 此模組沒有任何參數。 您可以使用資料行選取器來選擇要包含或排除的資料行。
 

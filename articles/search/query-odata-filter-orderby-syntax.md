@@ -7,7 +7,7 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 02/10/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: e0db41098287ff011416932a0d44a1cb9f76127d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: f3a1be435e297ab4a9ba7f8bfbd5f3ce3451d8a8
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786168"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153871"
 ---
 # <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>Azure 認知搜尋中 `$filter`、`$orderby`和 `$select` 的 OData 語言總覽
 
@@ -96,10 +96,10 @@ identifier ::= [a-zA-Z_][a-zA-Z_0-9]*
 | [建立](https://docs.microsoft.com/rest/api/searchservice/create-index)或[更新](https://docs.microsoft.com/rest/api/searchservice/update-index)索引 | `suggesters/sourceFields` | 無 |
 | [建立](https://docs.microsoft.com/rest/api/searchservice/create-index)或[更新](https://docs.microsoft.com/rest/api/searchservice/update-index)索引 | `scoringProfiles/text/weights` | 只能**參考可搜尋的欄位** |
 | [建立](https://docs.microsoft.com/rest/api/searchservice/create-index)或[更新](https://docs.microsoft.com/rest/api/searchservice/update-index)索引 | `scoringProfiles/functions/fieldName` | 只能參考可**篩選**的欄位 |
-| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `queryType` `full` 時 `search` | 只能**參考可搜尋的欄位** |
-| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `facet` | 只能參考**facetable**欄位 |
-| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `highlight` | 只能**參考可搜尋的欄位** |
-| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `searchFields` | 只能**參考可搜尋的欄位** |
+| [搜尋](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `queryType` `full` 時 `search` | 只能**參考可搜尋的欄位** |
+| [搜尋](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `facet` | 只能參考**facetable**欄位 |
+| [搜尋](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `highlight` | 只能**參考可搜尋的欄位** |
+| [搜尋](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `searchFields` | 只能**參考可搜尋的欄位** |
 | [建議](https://docs.microsoft.com/rest/api/searchservice/suggestions)與[自動完成](https://docs.microsoft.com/rest/api/searchservice/autocomplete) | `searchFields` | 只能參考屬於[建議工具](index-add-suggesters.md)的欄位 |
 | [搜尋](https://docs.microsoft.com/rest/api/searchservice/search-documents)、[建議](https://docs.microsoft.com/rest/api/searchservice/suggestions)和[自動完成](https://docs.microsoft.com/rest/api/searchservice/autocomplete) | `$filter` | 只能參考可**篩選**的欄位 |
 | [搜尋](https://docs.microsoft.com/rest/api/searchservice/search-documents)和[建議](https://docs.microsoft.com/rest/api/searchservice/suggestions) | `$orderby` | 只能參考可**排序**欄位 |
@@ -113,14 +113,25 @@ OData 中的常數是指定[實體資料模型](https://docs.microsoft.com/dotne
 
 | 資料類型 | 範例常數 |
 | --- | --- |
-| `Edm.Boolean` | `true`、`false` |
+| `Edm.Boolean` | `true`, `false` |
 | `Edm.DateTimeOffset` | `2019-05-06T12:30:05.451Z` |
-| `Edm.Double` | `3.14159`、`-1.2e7`、`NaN`、`INF`、`-INF` |
+| `Edm.Double` | `3.14159`, `-1.2e7`, `NaN`, `INF`, `-INF` |
 | `Edm.GeographyPoint` | `geography'POINT(-122.131577 47.678581)'` |
 | `Edm.GeographyPolygon` | `geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'` |
-| `Edm.Int32` | `123`、`-456` |
+| `Edm.Int32` | `123`, `-456` |
 | `Edm.Int64` | `283032927235` |
 | `Edm.String` | `'hello'` |
+
+### <a name="escaping-special-characters-in-string-constants"></a>在字串常數中，將特殊字元轉義
+
+OData 中的字串常數是以單引號分隔。 如果您需要使用可能本身包含單引號的字串常數來建立查詢，您可以將內嵌引號加倍來加以轉義。
+
+例如，具有未格式化的撇號（例如 "Alice ' car"）的片語會在 OData 中表示為字串常數 `'Alice''s car'`。
+
+> [!IMPORTANT]
+> 以程式設計方式建立篩選器時，請務必記得要將來自使用者輸入的字串常數加以轉義。 這是為了降低[插入式攻擊](https://wikipedia.org/wiki/SQL_injection)的可能性，特別是在使用篩選器來執行[安全性](search-security-trimming-for-azure-search.md)調整時。
+
+### <a name="constants-syntax"></a>常數語法
 
 下列 EBNF （[Extended 巴克斯-Backus-naur 表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）定義上表所示大部分常數的文法。 地理空間類型的文法可以在[Azure 認知搜尋的 OData 地理空間函式](search-query-odata-geo-spatial-functions.md)中找到。
 
