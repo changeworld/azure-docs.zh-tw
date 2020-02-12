@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/05/2018
-ms.openlocfilehash: e5ff88b9a677fa53a70a28dbefc5d84cae2d1041
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dfbca6514328897afe0c0eda5ce7d5a6d2ff92a7
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427499"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152834"
 ---
 # <a name="create-azure-machine-learning-studio-classic-experiments-from-working-examples-in-azure-ai-gallery"></a>從 Azure AI 資源庫中的工作範例建立 Azure Machine Learning Studio （傳統）實驗
 
@@ -23,7 +23,7 @@ ms.locfileid: "75427499"
 
 資源庫有 Microsoft Azure Machine Learning Studio （傳統）小組的範例實驗，以及 Machine Learning 的社區共用的範例。 您也可以提出有關實驗的問題或張貼意見。
 
-若要查看如何使用資源庫，請觀看[初學者的資料科學](data-science-for-beginners-the-5-questions-data-science-answers.md)系列中的 3 分鐘影片[複製其他人的工作來進行資料科學](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)。
+若要查看如何使用資源庫，請觀看[初學者的資料科學](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)系列中的 3 分鐘影片[複製其他人的工作來進行資料科學](data-science-for-beginners-the-5-questions-data-science-answers.md)。
 
 
 

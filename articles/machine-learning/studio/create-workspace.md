@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: 91ba4d1f7d32071cce0de1de528abf02982ce7be
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 419fbd987c1deb95a7c903d85105958443d06b01
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427625"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153599"
 ---
 # <a name="create-and-share-an-azure-machine-learning-studio-classic-workspace"></a>建立和共用 Azure Machine Learning Studio （傳統）工作區
 
@@ -41,7 +41,7 @@ ms.locfileid: "75427625"
 
      ![建立新的 Studio （傳統）工作區](./media/create-workspace/create-new-workspace.png)
 
-5. 按一下頁面底部的 [新增]。
+5. 按一下 [建立]。
 
 > [!NOTE]
 > Machine Learning Studio （傳統）依賴您提供的 Azure 儲存體帳戶，以在執行工作流程時儲存中繼資料。 建立工作區之後，如果儲存體帳戶遭到刪除，或存取金鑰變更，工作區會停止運作，並且該工作區中的所有實驗將會失敗。
@@ -86,7 +86,7 @@ ms.locfileid: "75427625"
 
     ![Studio 設定](./media/create-workspace/settings.png)
 
-5. 輸入一或多個電子郵件地址。 使用者需要有效的 Microsoft 帳戶或組織帳戶 (來自 Azure Active Directory)。
+5. 輸入一個或多個電子郵件地址。 使用者需要有效的 Microsoft 帳戶或組織帳戶 (來自 Azure Active Directory)。
 
 6. 選取您是否想要將使用者新增為擁有者或使用者。
 

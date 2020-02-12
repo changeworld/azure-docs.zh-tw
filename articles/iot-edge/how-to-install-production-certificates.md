@@ -4,16 +4,16 @@ description: 建立測試憑證，並瞭解如何將它們安裝在 Azure IoT Ed
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 12/03/2019
+ms.date: 02/11/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: cf073572cd5b371ec484c99f14cbefb4cba75ce7
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: fe46e968aa2dcebaa483cd38fd2e050ccfe43054
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509898"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149893"
 ---
 # <a name="install-production-certificates-on-an-iot-edge-device"></a>在 IoT Edge 裝置上安裝生產憑證
 
@@ -68,7 +68,7 @@ ms.locfileid: "76509898"
    * Windows：`C:\ProgramData\iotedge\config.yaml`
    * Linux：`/etc/iotedge/config.yaml`
 
-3. 將 yaml 檔案中的**憑證**屬性，設定為 IoT Edge 裝置上憑證和金鑰檔的檔案 URI。 移除憑證屬性之前的 `#` 字元，以取消批註四行。 請確定 [**憑證：** ] 行沒有前面的空白字元，且已將該嵌套專案縮排為兩個空格。 例如：
+3. 將 yaml 檔案中的**憑證**屬性，設定為 IoT Edge 裝置上憑證和金鑰檔的檔案 URI。 移除憑證屬性之前的 `#` 字元，以取消批註四行。 請確定 [**憑證：** ] 行沒有前面的空白字元，且已將該嵌套專案縮排為兩個空格。 例如，
 
    * Windows：
 
@@ -89,6 +89,12 @@ ms.locfileid: "76509898"
       ```
 
 4. 在 Linux 裝置上，請確定使用者**iotedge**具有保存憑證之目錄的 [讀取] 許可權。
+
+5. 如果您之前已在裝置上使用任何其他憑證來進行 IoT Edge，請先刪除下列兩個目錄中的檔案，然後再啟動或重新開機 IoT Edge：
+
+   * Windows： `C:\ProgramData\iotedge\hsm\certs` 和 `C:\ProgramData\iotedge\hsm\cert_keys`
+
+   * Linux： `/var/lib/iotedge/hsm/certs` 和 `/var/lib/iotedge/hsm/cert_keys`
 
 ## <a name="next-steps"></a>後續步驟
 

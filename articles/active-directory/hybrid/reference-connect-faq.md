@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9dbc7f8068ed84f42ec41ebd969e0aa91ffbb264
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e5aa30bc819531ee8cc9cd337648a6cbc661bb29
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473319"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149808"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect 常見問題集
 
@@ -32,7 +32,7 @@ Microsoft 建議強化您的 Azure AD Connect 伺服器，以降低 IT 環境重
 
 * 在加入網域的伺服器上部署 Azure AD Connect，並將系統管理存取許可權制為網域系統管理員或其他嚴格控制的安全性群組
 
-若要深入了解，請參閱： 
+若要了解詳細資訊，請參閱： 
 
 * [保護系統管理員群組](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
 
@@ -52,7 +52,7 @@ Microsoft 建議強化您的 Azure AD Connect 伺服器，以降低 IT 環境重
 從 2016 年 2 月的組建開始，系統已可支援此情況。
 
 **問：Azure Active Directory Domain Services (Azure AD DS) 的健康情況代理程式可在伺服器核心上運作嗎？**  
-是。 安裝代理程式之後，您可以使用下列 PowerShell Cmdlet 來完成註冊程序︰ 
+是的。 安裝代理程式之後，您可以使用下列 PowerShell Cmdlet 來完成註冊程序︰ 
 
 `Register-AzureADConnectHealthADDSAgent -Credentials $cred`
 
@@ -113,11 +113,11 @@ Microsoft 建議強化您的 Azure AD Connect 伺服器，以降低 IT 環境重
 - 預備伺服器不一定是高可用性解決方案，但您可以有多部預備伺服器
 - 引進「延遲」暫存伺服器可能會在發生錯誤時降低部分可能的停機時間
 - 先測試並驗證預備伺服器上的所有升級
-- 一律先驗證匯出，再切換到預備伺服器以進行完整匯入和完整同步處理，以減少業務影響
+- 在切換至預備伺服器之前，一律先驗證匯出。  利用預備伺服器進行完整匯入和完整同步處理，以減少業務影響
 - 盡可能保持 Azure AD Connect 伺服器之間的版本一致性 
 
 **問：我可以允許 Azure AD Connect 在工作組機器上建立 Azure AD 連接器帳戶嗎？**
-號  為了讓 Azure AD Connect 自動建立 Azure AD 連接器帳戶，電腦必須已加入網域。  
+No。  為了讓 Azure AD Connect 自動建立 Azure AD 連接器帳戶，電腦必須已加入網域。  
 
 ## <a name="network"></a>網路
 **問：我有防火牆、網路裝置或其他專案，它會限制連線在我的網路上保持開啟的時間。當我使用 Azure AD Connect 時，用戶端的超時閾值應該為何？**  
@@ -138,19 +138,19 @@ Microsoft 建議強化您的 Azure AD Connect 伺服器，以降低 IT 環境重
 **問 . 我具有多樹系環境，而這兩個樹系之間的網路使用 NAT （網路位址轉譯）。是否支援在這兩個樹系之間使用 Azure AD Connect？**</br>
 否，不支援透過 NAT 使用 Azure AD Connect。 
 
-## <a name="federation"></a>同盟
+## <a name="federation"></a>聯合
 **問：如果我收到一封電子郵件，要求我更新我的 Office 365 憑證，該怎麼辦？**  
 如需有關更新憑證的指引，請參閱[更新憑證](how-to-connect-fed-o365-certs.md)。
 
 **問：我已為 Office 365 信賴憑證者設定「自動更新信賴憑證者」。當我的權杖簽署憑證自動換用時，需要採取任何動作嗎？**  
 請參考[更新憑證](how-to-connect-fed-o365-certs.md)一文中概述的指導方針。
 
-## <a name="environment"></a>Environment
+## <a name="environment"></a>環境
 **問：安裝 Azure AD Connect 之後，是否支援重新命名伺服器？**  
-號 變更伺服器名稱會使同步引擎無法連線到 SQL 資料庫執行個體，並且無法啟動此服務。
+No。 變更伺服器名稱會使同步引擎無法連線到 SQL 資料庫執行個體，並且無法啟動此服務。
 
 **問：啟用 FIPS 的電腦是否支援下一代密碼編譯（NGC）同步處理規則？**  
-號  不支援它們。
+No。  不支援上述項目。
 
 **問：如果我停用 Azure 入口網站中已同步處理的裝置（例如，HAADJ），為什麼它會重新啟用？**<br>
 同步的裝置可能會在內部部署中撰寫或主控。 如果內部部署已啟用同步處理的裝置，則即使系統管理員先前已停用，也可能會在 Azure 入口網站中重新啟用。 若要停用已同步的裝置，請使用內部部署 Active Directory 來停用電腦帳戶。
@@ -178,7 +178,7 @@ Microsoft 建議強化您的 Azure AD Connect 伺服器，以降低 IT 環境重
 除了記載於本網站上的 Cmdlet，在 Azure AD Connect 中找到的其他 PowerShell Cmdlet 不支援客戶使用。
 
 **問：我是否可以使用在 Synchronization Service Manager 中找到的「伺服器匯出/伺服器匯入」選項，在伺服器之間移動組態？**  
-號 此選項不會擷取所有組態設定，因此不應使用。 應改用精靈在第二部伺服器上建立基底組態，並使用同步處理規則編輯器產生 PowerShell 指令碼，以在伺服器之間移動任何自訂規則。 如需詳細資訊，請參閱[變換移轉](how-to-upgrade-previous-version.md#swing-migration)。
+No。 此選項不會擷取所有組態設定，因此不應使用。 應改用精靈在第二部伺服器上建立基底組態，並使用同步處理規則編輯器產生 PowerShell 指令碼，以在伺服器之間移動任何自訂規則。 如需詳細資訊，請參閱[變換移轉](how-to-upgrade-previous-version.md#swing-migration)。
 
 **問︰是否可針對 Azure 登入頁面進行密碼快取，而且是否可以因為此快取包含自動完成 ="false"屬性的密碼輸入元素而避免此快取？**  
 目前不支援修改**密碼**欄位的 HTML 屬性，包括自動完成標記。 我們目前正在開發適用於自訂 JavaScript 的功能，可讓您將任何屬性新增至 [密碼] 欄位。
@@ -187,7 +187,7 @@ Microsoft 建議強化您的 Azure AD Connect 伺服器，以降低 IT 環境重
 目前不支援修改**密碼**輸入欄位的 HTML 屬性，包括自動完成標記。 我們目前正在開發適用於自訂 JavaScript 的功能，可讓您將任何屬性新增至 [密碼] 欄位。
 
 **問︰是否辦法避免並行的工作階段？**  
-號
+No。
 
 ## <a name="auto-upgrade"></a>自動升級
 

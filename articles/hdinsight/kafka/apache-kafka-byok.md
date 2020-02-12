@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 72fd23e4283925b91d749fef0afac4e87e93405c
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: cba8a4fd64b948d7a3e443426ca1f779af68a3fe
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841631"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048994"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>在 Azure HDInsight 上攜帶您自己的 Apache Kafka 金鑰
 
@@ -95,9 +95,13 @@ HDInsight 僅支援 Azure Key Vault。 如果您有自己的金鑰保存庫，�
 
 ## <a name="create-hdinsight-cluster"></a>建立 HDInsight 叢集
 
-您現在可以開始建立新的 HDInsight 叢集。 BYOK 只能在叢集建立期間套用至新的叢集。 您無法從 BYOK 叢集移除加密，也無法將 BYOK 新增到現有叢集。
+您現在可以開始建立新的 HDInsight 叢集。 從 [**基本**] 索引標籤中，選取 [ **Kafka** ] 作為 [叢集**類型**]。
 
-![Azure 入口網站中的 Kafka 磁碟加密](./media/apache-kafka-byok/azure-portal-cluster-security-networking-kafka.png)
+![Azure 入口網站選取 Kafka 類型](./media/apache-kafka-byok/azure-portal-cluster-basics-type-kafka.png)
+
+BYOK 只能在叢集建立期間套用至新的叢集。 您無法從 BYOK 叢集移除加密，也無法將 BYOK 新增到現有叢集。
+
+![Azure 入口網站中的 Kafka 磁碟加密](./media/apache-kafka-byok/azure-portal-cluster-security-networking-kafka-byok.png)
 
 叢集建立期間，請提供完整的金鑰 URL，包括金鑰版本。 例如： `https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4` 。 您也需要將受控識別指派給叢集，並提供金鑰 URI。 如需完整的叢集建立詳細資料，請參閱[使用 Azure 入口網站建立 Apache Hadoop](./apache-kafka-get-started.md)叢集
 
@@ -131,19 +135,19 @@ BYOK 加密僅適用於 Kafka 1.1 和更新版本的叢集。
 
 **如果金鑰已刪除，要如何復原叢集？**
 
-因為只支援「虛刪除」啟用的金鑰，所以如果金鑰保存庫中的金鑰已復原，叢集應該會重新取得金鑰的存取權。 若要復原 Azure Key Vault 金鑰，請參閱 [復原-AzKeyVaultKeyRemova](/powershell/module/az.keyvault/Undo-AzKeyVaultKeyRemoval)l或[az-keyvault-Key-recover](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-recover)。
+因為只支援「虛刪除」啟用的金鑰，所以如果金鑰保存庫中的金鑰已復原，叢集應該會重新取得金鑰的存取權。 若要復原 Azure Key Vault 金鑰，請參閱 [復原-AzKeyVaultKeyRemoval](/powershell/module/az.keyvault/Undo-AzKeyVaultKeyRemoval)或[az-keyvault-Key-recover](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-recover)。
 
 **是否可以讓生產者/消費者應用程式同時與 BYOK 叢集和非 BYOK 叢集搭配運作？**
 
-可以。 生產者/消費者應用程式並不知道您有使用 BYOK。 加密會在 OS 層進行。 您不必對現有的生產者/消費者 Kafka 應用程式進行任何變更。
+是。 生產者/消費者應用程式並不知道您有使用 BYOK。 加密會在 OS 層進行。 您不必對現有的生產者/消費者 Kafka 應用程式進行任何變更。
 
 **是否也會加密 OS 磁碟/資源磁碟？**
 
-不會。 作業系統磁片和資源磁片不會加密。
+否。 作業系統磁片和資源磁片不會加密。
 
 **如果將叢集相應增加，新的訊息代理程式是否也會順暢地支援 BYOK？**
 
-可以。 叢集在相應增加期間需要存取金鑰保存庫中的金鑰。 叢集中的所有受控磁碟會使用同一個金鑰來加密。
+是。 叢集在相應增加期間需要存取金鑰保存庫中的金鑰。 叢集中的所有受控磁碟會使用同一個金鑰來加密。
 
 **我所在的位置是否可以使用 BYOK？**
 

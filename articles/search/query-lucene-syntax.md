@@ -7,7 +7,7 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 02/10/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,16 +19,19 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 0bb8474b30c05e21a62ded1fa2cb8a6df8e4e321
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: d35c96657f48905f37c9ebe246d81ebb9545cf27
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112180"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149876"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Azure 認知搜尋中的 Lucene 查詢語法
 
 您可以根據特殊化查詢格式的豐富[Lucene 查詢](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)剖析器語法，針對 Azure 認知搜尋撰寫查詢：萬用字元、模糊搜尋、鄰近搜尋、正則運算式是一些範例。 大部分的 Lucene 查詢剖析器語法會[在 Azure 認知搜尋中原封不動地執行](search-lucene-query-architecture.md)，但*範圍搜尋*除外，會在 azure 認知搜尋中透過 `$filter` 運算式來進行。 
+
+> [!NOTE]
+> 完整 Lucene 語法會用於在[搜尋檔](https://docs.microsoft.com/rest/api/searchservice/search-documents)API 的**搜尋**參數中傳遞的查詢運算式，而不會與用於該 api 之[$filter](search-filters.md)參數的[OData 語法](query-odata-filter-orderby-syntax.md)混淆。 這些不同的語法有自己的規則，可用於建立查詢、逸出字元串等等。
 
 ## <a name="how-to-invoke-full-parsing"></a>如何叫用完整剖析
 
@@ -123,7 +126,7 @@ NOT 運算子是驚歎號或負號。 例如：`wifi !luxury` 會搜尋含有 "w
  Azure 認知搜尋會使用以頻率為基礎的評分（[TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)）來查詢文字。 不過，針對字詞範圍可能很廣泛的萬用字元和 regex 查詢，則會忽略頻率因素，以防止罕見字詞的相符項目誤獲較高的排名。 系統對於萬用字元和 regex 搜尋的所有相符項目，會同等視之。
 
 ##  <a name="bkmk_fields"></a>回復搜尋  
-您可以使用 `fieldName:searchExpression` 語法來定義回復搜尋作業，其中搜尋運算式可以是單一單字或片語，或是以括弧括住的更複雜運算式（選擇性地使用布林運算子）。 某些範例包括以下內容：  
+您可以使用 `fieldName:searchExpression` 語法來定義回復搜尋作業，其中搜尋運算式可以是單一單字或片語，或是以括弧括住的更複雜運算式（選擇性地使用布林運算子）。 部分範例如下：  
 
 - genre:jazz NOT history  
 

@@ -3,15 +3,16 @@ title: 規劃和管理 Azure Cosmos DB 的成本
 description: 瞭解如何使用 Azure 入口網站中的成本分析來規劃和管理 Azure Cosmos DB 的成本。
 author: SnehaGunda
 ms.author: sngun
+ms.custom: subject-cost-optimization
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/02/2020
-ms.openlocfilehash: 96cb22a0153b3506835df93b50785ad7870929ce
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
-ms.translationtype: HT
+ms.openlocfilehash: cf259dfa0b00393cf0fee259b199527569ba1792
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77135755"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152579"
 ---
 # <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>規劃和管理 Azure Cosmos DB 的成本
 
@@ -19,7 +20,7 @@ ms.locfileid: "77135755"
 
 瞭解 Azure Cosmos DB 的成本只是 Azure 帳單中每月成本的一部分。 如果您使用其他 Azure 服務，則會向您收取 Azure 訂用帳戶中所使用的所有 Azure 服務和資源的費用，包括協力廠商服務。 本文說明如何規劃和管理 Azure Cosmos DB 的成本。 在您熟悉如何管理 Azure Cosmos DB 的成本之後，您可以套用類似的方法來管理您的訂用帳戶中所使用之所有 Azure 服務的成本。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 成本分析支援不同的 Azure 帳戶類型。 若要檢視所支援帳戶類型的完整清單，請參閱[了解成本管理資料](../cost-management-billing/costs/understand-cost-mgt-data.md)。 若要檢視成本資料，您至少需要 Azure 帳戶的讀取存取。 如需 Azure 成本管理資料的存取權指派相關資訊，請參閱[指派資料的存取權](../cost-management-billing/costs/assign-access-acm-data.md)。
 

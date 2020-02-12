@@ -64,7 +64,7 @@ Azure 上的 Fpga 支援：
 Fpga 可在下列 Azure 區域中使用：
   - 美國東部
   - 東南亞
-  - 歐洲西部
+  - 西歐
   - 美國西部 2
 
 > [!IMPORTANT]

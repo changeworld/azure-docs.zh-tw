@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 789af25cc37183e9eeae253e1e8529615abdd308
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 4a117e7f69647af3ad82f9013bfa40556ccc0dbd
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849797"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152885"
 ---
 # <a name="durable-functions-versions-overview"></a>Durable Functions 版本總覽
 
@@ -59,6 +59,10 @@ Durable Functions 2.x 使用新的 host. json 架構。 1\. x 的主要變更包
 * 事件方格通知設定的 `"notifications"` （和 `"eventGrid"` 子區段）。
 
 如需詳細資訊，請參閱[Durable Functions host. json 參考檔](durable-functions-bindings.md#durable-functions-2-0-host-json)。
+
+#### <a name="default-taskhub-name-changes"></a>預設的 taskhub 名稱變更
+
+在1.x 版中，如果未在 host. json 中指定工作中樞名稱，則預設為 "DurableFunctionsHub"。 在2.x 版中，預設的工作中樞名稱現在是衍生自函式應用程式的名稱。 因此，如果您在升級至2.x 時未指定工作中樞名稱，則您的程式碼將會使用新的「工作中樞」，而且所有進行中的協調流程都不會再處理它們。 若要解決此情況，您可以將工作中樞名稱明確設定為 "DurableFunctionsHub" 的 v1. x 預設值，或者您可以遵循我們的[零停機部署指引](durable-functions-zero-downtime-deployment.md)，取得如何處理進行中協調流程的重大變更的詳細資料。
 
 #### <a name="public-interface-changes-net-only"></a>公用介面變更（僅限 .NET）
 

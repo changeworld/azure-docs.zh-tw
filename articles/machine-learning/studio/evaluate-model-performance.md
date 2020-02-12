@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 2b9293e3c1ce280117ea40c43715f4dcd98de66d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: baf2352c8842a07691288c9296438624d53d3990
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427632"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153480"
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>如何在 Azure Machine Learning Studio 中評估模型效能（傳統）
 
@@ -67,20 +67,20 @@ Azure Machine Learning Studio （傳統）支援透過兩個主要機器學習�
 
 ![線性迴歸評估度量](./media/evaluate-model-performance/2.png)
 
-圖 2。 線性迴歸評估度量。
+圖 2. 線性迴歸評估度量。
 
 ### <a name="using-cross-validation"></a>使用交叉驗證
 如先前所述，您可以使用[交叉驗證模型][cross-validate-model]模組，自動執行重複的訓練、評分和評估。 在此情況下，您只需要一個資料集、一個非定型模型，以及一個[交叉驗證模型][cross-validate-model]模組（請參閱下圖）。 您必須在[交叉驗證模型][cross-validate-model]模組的屬性中，將 [標籤] 資料行設定為 [*價格*]。
 
 ![交叉驗證迴歸模型](./media/evaluate-model-performance/3.png)
 
-圖 3。 交叉驗證迴歸模型。
+圖 3. 交叉驗證迴歸模型。
 
 執行實驗之後，您可以按一下[交叉驗證模型][cross-validate-model]模組的右側輸出埠來檢查評估結果。 這將為每個反覆項目 (交疊) 提供度量的詳細檢視，以及每個度量的平均結果 (圖 4)。
 
 ![迴歸模型的交叉驗證結果](./media/evaluate-model-performance/4.png)
 
-圖 4。 迴歸模型的交叉驗證結果。
+圖 4. 迴歸模型的交叉驗證結果。
 
 ## <a name="evaluating-a-binary-classification-model"></a>評估二進位分類模型
 例如，在二元分類的情況下，目標變數只有兩個可能的結果：{0, 1} 或 {false, true}, {negative, positive}。 假設您有一個成人員工的資料集，其中包含一些人口統計和就業變數，而且您必須預測收入層級，也就是包含值 {“<=50 K”, “>50 K”} 的二元變數。 換句話說，負數類別表示年收入低於或等於 5 萬元的員工，而正數類別則表示其他所有員工。 如同在迴歸情況下，我們會訓練模型、為某些資料評分，並評估結果。 此處的主要差異在於計量 Azure Machine Learning Studio （傳統）計算和輸出的選擇。 為了說明收入層級預測案例，我們將使用[成人](https://archive.ics.uci.edu/ml/datasets/Adult)資料集來建立 Studio （傳統）實驗，並評估雙類別羅吉斯回歸模型的效能，這是常用的二進位分類器。
@@ -98,7 +98,7 @@ Azure Machine Learning Studio （傳統）支援透過兩個主要機器學習�
 
 ![評估二進位分類模型](./media/evaluate-model-performance/5.png)
 
-圖 5。 評估二進位分類模型。
+圖 5. 評估二進位分類模型。
 
 ### <a name="inspecting-the-evaluation-results"></a>檢查評估結果
 執行實驗之後，您可以按一下 [[評估模型][evaluate-model]] 模組的輸出埠，然後選取 [*視覺化*] 以查看評估結果（圖7）。 可用於二元分類模型的評估度量包括：「正確性」、「精確度」、「回收」、「F1 分數」和 AUC。 此外，這個模組會輸出一個混淆矩陣，其中顯示真肯定、誤否定、誤肯定、真否定，以及 ROC、「精確度/回收和「升力」曲線的數目。
@@ -109,13 +109,13 @@ Azure Machine Learning Studio （傳統）支援透過兩個主要機器學習�
 
 ![二元分類混淆矩陣](./media/evaluate-model-performance/6a.png)
 
-圖 6。 二進位分類混淆矩陣。
+圖 6. 二進位分類混淆矩陣。
 
 回到收入分類問題，我們會想要提出幾個評估問題，幫助我們了解所使用的分類器的效能。 自然的問題是：「模型預測要賺取的個人 > 50 K （TP + FP），有多少分類正確（TP）？」 」 透過查看模型的 **精確度** ，也就是正確分類的正數比例，可以回答這個問題：TP/(TP+FP)。 另一個常見問題是：「在收入高於 5 萬元 (TP+FN) 的高收入員工中，分類器正確分類的員工有多少 (TP)？ 」實際上，這是 **回收**，或真肯定比率：分類器的 TP/(TP+FN)。 您可能會注意到在精確度與回收之間有明顯的取捨。 例如，假設是相當對稱資料集，預測大部分是正案例的分類器會有高回收，但是因為許多負案例分類錯誤造成的精確度低會導致大量的誤肯定。 若要查看這兩個度量如何變化的繪圖，您可以按一下 [評估結果輸出] 頁面中的**精確度/回收**曲線 (圖 7 的左側部分)。
 
 ![二元分類評估結果](./media/evaluate-model-performance/7.png)
 
-圖 7。 二進位分類評估結果。
+圖 7. 二進位分類評估結果。
 
 常用的另一個相關度量是 **F1 分數**，這會將精確度和回收同時列入考量。 這是這兩個計量的調和平均值，其計算方式如下： F1 = 2 （精確度 x 召回率）/（精確度 + 召回率）。 F1 分數是總結單一數字評估很好的方式，但同時查看精確度與回收，以便更加了解分類器運作方式永遠是一個不錯的做法。
 
@@ -126,11 +126,11 @@ Azure Machine Learning Studio （傳統）支援透過兩個主要機器學習�
 
 ![交叉驗證二元分類模型](./media/evaluate-model-performance/8.png)
 
-圖 8。 交叉驗證二進位分類模型。
+圖 8. 交叉驗證二進位分類模型。
 
 ![二元分類器的交叉驗證結果](./media/evaluate-model-performance/9.png)
 
-圖 9。 二進位分類器的交叉驗證結果。
+圖 9. 二進位分類器的交叉驗證結果。
 
 ## <a name="evaluating-a-multiclass-classification-model"></a>評估多元分類模型
 在此實驗中，我們將使用熱門的[鳶尾花](https://archive.ics.uci.edu/ml/datasets/Iris "鳶尾花")資料集，其中包含鳶尾花工廠的三種不同類型（類別）的實例。 每個實例都有四個功能值（萼片長度/寬度和花瓣長度/寬度）。 在先前的實驗中，我們使用相同的資料集來定型和測試模型。 在這裡，我們將使用[分割資料][split]模組來建立兩個數據子集、先進行定型，然後在第二個分數和評估。 鳶尾花資料集可在[UCI Machine Learning 存放庫](https://archive.ics.uci.edu/ml/index.html)中公開取得，而且可以使用匯[入資料][import-data]模組來下載。
@@ -149,20 +149,20 @@ Azure Machine Learning Studio （傳統）支援透過兩個主要機器學習�
 
 將 [[訓練模型][train-model]] 模組的 [標籤] 資料行索引設定為5。 此資料集沒有標頭資料列，但是我們知道類別標籤位於第五個資料行中。
 
-按一下 [匯[入資料][import-data]] 模組，並將 [*資料來源*] 屬性設為 [透過*HTTP 的 Web URL*]，並將 [ *url* ] 設定為 http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data 。
+按一下 [匯[入資料][import-data]] 模組，並將 [*資料來源*] 屬性設為 [透過*HTTP 的 Web URL*]，並將 [ *url* ] 設定為 http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data。
 
 設定要在[分割資料][split]模組中用於定型的實例的分數（例如0.7）。
 
 ![評估多元分類器](./media/evaluate-model-performance/10.png)
 
-圖 10。 評估多元分類器
+圖 10. 評估多元分類器
 
 ### <a name="inspecting-the-evaluation-results"></a>檢查評估結果
 執行實驗，然後按一下 [[評估模型][evaluate-model]] 的輸出埠。 在此案例中，評估結果會以混淆矩陣的形式呈現。 矩陣會顯示所有三個類別的實際與預測實例。
 
 ![多元分類評估結果](./media/evaluate-model-performance/11.png)
 
-圖 11。 多元分類評估結果。
+圖 11. 多元分類評估結果。
 
 ### <a name="using-cross-validation"></a>使用交叉驗證
 如先前所述，您可以使用[交叉驗證模型][cross-validate-model]模組，自動執行重複的訓練、評分和評估。 您需要一個資料集、一個非定型模型，以及一個[交叉驗證模型][cross-validate-model]模組（請參閱下圖）。 同樣地，您必須設定[交叉驗證模型][cross-validate-model]模組的標籤資料行（在此案例中為數據行索引5）。 執行實驗並按一下[交叉驗證模型][cross-validate-model]的右側輸出埠之後，您可以檢查每個折迭的度量值，以及平均值和標準差。 在此顯示的度量類似於在二進位分類案例中討論的度量。 不過，在多元分類中，計算真肯定/否定和誤報/否定是藉由計算每個類別的方式來完成，因為沒有整體的正或負類別。 例如，運算 ‘Iris-setosa’ 類別的精確度或回收時，假設這是正類別，其他所有類別則是負類別。
