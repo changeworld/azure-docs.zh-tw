@@ -581,8 +581,6 @@
               href: disks-benchmarks.md
         - name: 尋找未連接的磁碟
           href: find-unattached-disks.md
-        - name: 使用檔案儲存體
-          href: ../../storage/files/storage-files-quick-create-use-windows.md
         - name: 磁碟常見問題
           href: faq-for-disks.md
     - name: 管理網路服務

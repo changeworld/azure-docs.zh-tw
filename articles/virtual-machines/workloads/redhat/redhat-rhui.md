@@ -9,14 +9,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 12/18/2019
+ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 1a63b388725823695c41339ae173c8d8e34839ef
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 2d6b6c03d7726a5a40a2eb1e6cf60c0342791c46
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941400"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133781"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>適用於 Azure 中隨選 Red Hat Enterprise Linux VM 的 Red Hat Update Infrastructure
  [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) 允許雲端提供者 (例如 Azure) 鏡像 Red Hat 代管的存放庫內容、建立具有 Azure 特定內容的自訂存放庫，以及讓它可供使用者 VM 使用。
@@ -137,7 +137,7 @@ RedHat:RHEL:7.6:7.6.2019062116
 
 ## <a name="the-ips-for-the-rhui-content-delivery-servers"></a>RHUI 內容傳遞伺服器的 IP
 
-在所有可使用 RHEL 隨選映像的地區，皆可使用 RHUI。 目前包含 [Azure 狀態儀表板](https://azure.microsoft.com/status/)頁面上所列的所有公用區域、Azure 美國政府和 Microsoft Azure 德國區域。
+在所有可使用 RHEL 隨選映像的地區，皆可使用 RHUI。 目前包含 [Azure 狀態儀表板](https://azure.microsoft.com/status/)頁面上所列的所有公用區域、Azure US Gov 和 Microsoft Azure 德國區域。
 
 如果您使用網路組態來進一步限制來自 RHEL PAYG VM 的存取，請確定已允許下列 IP，如此 `yum update` 才能依據您所在的環境運作：
 
@@ -184,7 +184,7 @@ sudo yum makecache
 
 1. 檢查 Azure RHUI 端點的 VM 組態：
 
-    1. 檢查 `/etc/yum.repos.d/rh-cloud.repo` 檔案 `[rhui-microsoft-azure-rhel*]` 區段的 `baseurl` 中是否包含對 `rhui-[1-3].microsoft.com` 的參考。 如果有此參考，您使用的便是新版 Azure RHUI。
+    1. 檢查 `/etc/yum.repos.d/rh-cloud.repo` 檔案 `rhui-[1-3].microsoft.com` 區段的 `baseurl` 中是否包含對 `[rhui-microsoft-azure-rhel*]` 的參考。 如果有此參考，您使用的便是新版 Azure RHUI。
 
     1. 如果它指向具有 `mirrorlist.*cds[1-4].cloudapp.net` 模式的位置，則需要進行組態更新。 您正在使用舊版 VM 快照集，請更新它以指向新版 Azure RHUI。
 

@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: 27838aae1d829598bed44a6c16f7a1d38a95b727
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: c06d1268abe8afdeb03668131c3c61cfbafa44cd
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314091"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138182"
 ---
 # <a name="score-model-module"></a>Score Model module
 
-本文說明 Azure Machine Learning 設計工具中的模組。
+本文說明 Azure Machine Learning 設計工具（預覽）中的模組。
 
 使用此模組可使用定型的分類或回歸模型來產生預測。
 
@@ -44,7 +44,7 @@ ms.locfileid: "76314091"
 
 - 針對分類模型，[計分模型](./score-model.md)會輸出類別的預測值，以及預測值的機率。
 - 針對回歸模型，[計分模型](./score-model.md)只會產生預測的數值。
-- 就影像分類模型而言，分數可以是影像中的物件類別，或是指出是否找到特定特徵的布林值。
+
 
 ## <a name="publish-scores-as-a-web-service"></a>將分數發佈為 web 服務
 

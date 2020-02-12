@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: d56504c96c5e039f2563a1bfee577fe9b15e8563
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 9364c344c58d17f9f6e6404dd8aa850af032cee9
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715573"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138360"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>從感應器合作夥伴取得感應器資料
 
@@ -40,27 +40,32 @@ Azure FarmBeats 可協助您將 IoT 裝置和感應器的串流資料帶入 Data
 您可以遵循下列步驟來產生上述資訊：（請注意，您必須在 Azure 上執行這些步驟，才能存取部署 FarmBeats 的 Azure 訂用帳戶）
 
 1. 下載[zip](https://aka.ms/farmbeatspartnerscriptv2)檔案，並將它解壓縮到您的本機磁片磁碟機。 Zip 檔案中將會有一個檔案。
-2. 登入 https://portal.azure.com/ 並移至 Azure Active Directory > 應用程式註冊
 
-3. 按一下在 FarmBeats 部署過程中建立的應用程式註冊。 它的名稱會與您的 FarmBeats 資料中樞相同。
+2. 登入 https://portal.azure.com/。
 
-4. 按一下 [公開 API]-> 按一下 [新增用戶端應用程式] 並輸入**04b07795-8ddb-461a-bbee-02f9e1bf7b46** ，然後選取 [授權範圍]。 這會授與 Azure CLI （Cloud Shell）的存取權，以執行下列步驟。
+3. **如果您是在 FarmBeats version 1.2.7 或更新版本，請略過步驟3a、3b 和3c，然後移至步驟4。** 您可以按一下 FarmBeats UI 右上方的 [設定] 圖示來檢查 FarmBeats 版本。
 
-5. 開啟 Cloud Shell。 此選項可在 Azure 入口網站右上角的工具列上取得。
+3a. 移至 Azure Active Directory > 應用程式註冊
+
+3b. 按一下在 FarmBeats 部署過程中建立的應用程式註冊。 它的名稱會與您的 FarmBeats 資料中樞相同。
+
+3c. 按一下 [公開 API]-> 按一下 [新增用戶端應用程式] 並輸入**04b07795-8ddb-461a-bbee-02f9e1bf7b46** ，然後選取 [授權範圍]。 這會授與 Azure CLI （Cloud Shell）的存取權，以執行下列步驟。
+
+4. 開啟 Cloud Shell。 此選項可在 Azure 入口網站右上角的工具列上取得。
 
     ![Azure 入口網站工具列](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-6. 請確定環境已設定為**PowerShell**。 根據預設，它會設定為 Bash。
+5. 請確定環境已設定為**PowerShell**。 根據預設，它會設定為 Bash。
 
     ![PowerShell 工具列設定](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
-7. 上傳 Cloud Shell 實例中步驟1的檔案。
+6. 上傳 Cloud Shell 實例中步驟1的檔案。
 
     ![上傳工具列按鈕](./media/get-sensor-data-from-sensor-partner/power-shell-two-1.png)
 
-8. 移至上傳檔案的目錄。 根據預設，檔案會上傳至使用者名稱底下的主目錄。
+7. 移至上傳檔案的目錄。 根據預設，檔案會上傳至使用者名稱底下的主目錄。
 
-9. 執行下列指令碼。 腳本會要求提供可從 Azure Active Directory > 總覽頁面取得的租使用者識別碼。
+8. 執行下列指令碼。 腳本會要求提供可從 Azure Active Directory > 總覽頁面取得的租使用者識別碼。
 
     ```azurepowershell-interactive 
 
@@ -68,7 +73,7 @@ Azure FarmBeats 可協助您將 IoT 裝置和感應器的串流資料帶入 Data
 
     ```
 
-10. 依照畫面上的指示來捕獲**API 端點**、租使用者**識別碼**、**用戶端識別碼**、**用戶端密碼**和**EventHub 連接字串**的值。
+9. 依照畫面上的指示來捕獲**API 端點**、租使用者**識別碼**、**用戶端識別碼**、**用戶端密碼**和**EventHub 連接字串**的值。
 
 ### <a name="integrate-device-data-by-using-the-generated-credentials"></a>使用產生的認證來整合裝置資料
 

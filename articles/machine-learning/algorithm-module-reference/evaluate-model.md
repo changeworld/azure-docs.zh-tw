@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 11/19/2019
-ms.openlocfilehash: a906e5f354f332cebb0656c6fc40b17c8a5016a2
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: 5951c6ec63478b4b266f22eaf8bf3162e0a45df0
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546685"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137538"
 ---
 # <a name="evaluate-model-module"></a>評估模型模組
 
@@ -76,14 +76,14 @@ ms.locfileid: "76546685"
 
 因為這是叢集模型，所以評估結果不同于您比較兩個回歸模型的分數，或比較兩個分類模型。 不過，整體的呈現方式相同。 
 
-## <a name="metrics"></a>計量
+## <a name="metrics"></a>度量
 
 本節說明針對支援搭配**評估模型**使用之特定模型類型所傳回的計量：
 
-+ [分類模型](#bkmk_classification)
-+ [回歸模型](#bkmk_regression)
++ [分類模型](#metrics-for-classification-models)
++ [回歸模型](#metrics-for-regression-models)
 
-###  <a name="bkmk_classification"></a>分類模型的計量
+### <a name="metrics-for-classification-models"></a>分類模型的計量
 
 評估分類模型時，會報告下列計量。 如果您比較模型，則會依照您選取進行評估的計量排序。  
   
@@ -101,7 +101,7 @@ ms.locfileid: "76546685"
   
 - **定型記錄遺失**是單一分數，代表透過隨機預測的分類器的優勢。 記錄遺失會藉由比較輸出的機率與標籤中的已知值（真）來測量模型的不確定性。 您想要將整個模型的記錄遺失降至最低。
 
-##  <a name="bkmk_regression"></a>回歸模型的度量
+### <a name="metrics-for-regression-models"></a>回歸模型的度量
  
 針對回歸模型傳回的計量是設計來估計錯誤量。  如果觀察到和預測值之間的差異很小，則會將模型視為適合資料的程度。 不過，查看殘差的模式（任何一個預測點和其對應的實際值之間的差異），可以告訴您有關模型中潛在偏差的許多資訊。  
   
@@ -115,7 +115,7 @@ ms.locfileid: "76546685"
   
 - **相對平方誤差（RSE）** 同樣地，會將預測值的總平方誤差除以實際值的總平方誤差。  
   
-- **Mean 零1錯誤（MZOE）** 指出預測是否正確。  換句話說： `x!=y`時 `ZeroOneLoss(x,y) = 1`;否則 `0`。
+
   
 - **決定係數**（通常稱為 R<sup>2</sup>）表示模型的預測能力是介於0和1之間的值。 零表示模型是隨機的（不會說明任何內容）;1表示有完美的調整。 不過，請小心解釋 R<sup>2</sup>值，因為低值可能完全正常，且高值可能會有疑問。
   

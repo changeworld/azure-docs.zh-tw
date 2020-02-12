@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3243aa4c68e1cd6030986dc44cca47a555dc5356
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 40749a80d99782a1ea84b27e68376ea2870e8eb7
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087146"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138011"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>已知問題和疑難排解 Azure Machine Learning
 
@@ -312,3 +312,8 @@ Azure ML 維護的 docker 映射及其內容可以在[AzureML 容器](https://gi
 您可以使用[實驗.](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#archive--)封存方法，或從 Azure Machine Learning studio 用戶端中的實驗索引標籤視圖來封存實驗。 此動作會隱藏來自清單查詢和 views 的實驗，但不會將其刪除。
 
 目前不支援永久刪除個別實驗或執行。 如需刪除工作區資產的詳細資訊，請參閱[匯出或刪除您的 Machine Learning 服務工作區資料](how-to-export-delete-data.md)。
+
+## <a name="moving-the-workspace"></a>移動工作區
+
+> [!WARNING]
+> 不支援將您的 Azure Machine Learning 工作區移至不同的訂用帳戶，或將擁有的訂用帳戶移至新的租使用者。 這麼做可能會導致錯誤。

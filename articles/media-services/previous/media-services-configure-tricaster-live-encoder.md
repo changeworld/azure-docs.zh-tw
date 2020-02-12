@@ -15,19 +15,18 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: 0e793a5aa7d619b0bb7a1d3efcdf665ea400c555
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
-ms.translationtype: MT
+ms.openlocfilehash: 11ee8f52a8fd4db2d052eeaeef1387b011d23050
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "69016746"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77131559"
 ---
 # <a name="use-the-newtek-tricaster-encoder-to-send-a-single-bitrate-live-stream"></a>使用 NewTek TriCaster 編碼器來傳送單一位元速率的即時串流  
 > [!div class="op_single_selector"]
 > * [Tricaster](media-services-configure-tricaster-live-encoder.md)
 > * [Elemental Live](media-services-configure-elemental-live-encoder.md)
 > * [Wirecast](media-services-configure-wirecast-live-encoder.md)
-> * [FMLE](media-services-configure-fmle-live-encoder.md)
 >
 >
 
@@ -40,26 +39,26 @@ ms.locfileid: "69016746"
 >
 >
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * [建立 Azure 媒體服務帳戶](media-services-portal-create-account.md)
 * 確定有執行中的「串流端點」。 如需詳細資訊，請參閱 [在媒體服務帳戶中管理串流端點](media-services-portal-manage-streaming-endpoints.md)
 * 安裝最新版的 [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) 工具。
 * 啟動工具並連接到您的 AMS 帳戶。
 
-## <a name="tips"></a>秘訣
+## <a name="tips"></a>提示
 
 * 請盡可能使用實體的有線網際網路連線。
 * 判斷頻寬需求的一項法則是將串流位元速率加倍。 雖然這不是強制性需求，卻有助於減輕網路阻塞的影響。
 * 使用軟體型編碼器時，請關閉任何不必要的程式。
 
-## <a name="create-a-channel"></a>建立頻道
+## <a name="create-a-channel"></a>建立通道
 
 1. 在 AMSE 工具中，瀏覽至 [Live] 索引標籤，然後在通道區域內按一下滑鼠右鍵。 從功能表選取 [建立通道...] 。
 
     ![Tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster1.png)
 
-2. 指定通道名稱，描述欄位為選填。 在 [頻道設定] 下方，針對 [即時編碼] 選項選取 [標準]，並將 [輸入通訊協定] 設定為 [RTMP]。 您可以將所有其他設定保留現狀。
+2. 指定通道名稱，描述欄位是選擇性的。 在 [頻道設定] 下方，針對 [即時編碼] 選項選取 [標準]，並將 [輸入通訊協定] 設定為 [RTMP]。 您可以將所有其他設定保留現狀。
 
     請確認已選取 [ **立即啟動新頻道** ]。
 
@@ -95,7 +94,7 @@ ms.locfileid: "69016746"
 
 * 轉碼器：AAC (LC)
 * 位元速率：192 kbps
-* 採樣速率：44.1 kHz
+* 取樣速率：44.1 kHz
 
 ### <a name="configuration-steps"></a>組態步驟
 

@@ -15,42 +15,44 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: cenkdin;anilmur
-ms.openlocfilehash: be3c75680599c07a3cebe3dcf0436884958e1706
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 1d9d63aa6b3da1b8d8389722bd5af0eeed585d03
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69016673"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134966"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>使用 Wirecast 編碼器來傳送單一位元速率的即時串流 
 > [!div class="op_single_selector"]
 > * [Wirecast](media-services-configure-wirecast-live-encoder.md)
 > * [Tricaster](media-services-configure-tricaster-live-encoder.md)
-> * [FMLE](media-services-configure-fmle-live-encoder.md)
 >
 >
 
-本文示範如何設定 [Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) 即時編碼器，藉此將單一位元速率的即時串流傳送到已啟用即時編碼的 AMS 通道。  如需詳細資訊，請參閱 [使用啟用的通道以 Azure 媒體服務執行即時編碼](media-services-manage-live-encoder-enabled-channels.md)。
+本文示範如何設定 [Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) 即時編碼器，藉此將單一位元速率的即時串流傳送到已啟用即時編碼的 AMS 通道。 如需詳細資訊，請參閱 [使用啟用的通道以 Azure 媒體服務執行即時編碼](media-services-manage-live-encoder-enabled-channels.md)。
 
 本教學課程示範如何使用 Azure 媒體服務總管 (AMSE) 工具管理 Azure 媒體服務 (AMS)。 此工具只會在 Windows 電腦上執行。 如果您是用 Mac 或 Linux，請使用 Azure 入口網站建立[通道](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel)和[程式](media-services-portal-creating-live-encoder-enabled-channel.md)。
 
-## <a name="prerequisites"></a>先決條件
+> [!NOTE]
+> 使用 RTMPS 通訊協定時，編碼器必須支援 TLS 1.2。 基於 TLS 1.2 需求，請使用 Wirecast 13.0.2 或更高版本。
+
+## <a name="prerequisites"></a>Prerequisites
 * [建立 Azure 媒體服務帳戶](media-services-portal-create-account.md)
 * 確定有執行中的「串流端點」。 如需詳細資訊，請參閱 [在媒體服務帳戶中管理串流端點](media-services-portal-manage-streaming-endpoints.md)
 * 安裝最新版的 [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) 工具。
 * 啟動工具並連接到您的 AMS 帳戶。
 
-## <a name="tips"></a>秘訣
+## <a name="tips"></a>提示
 * 請盡可能使用實體的有線網際網路連線。
 * 判斷頻寬需求的一項法則是將串流位元速率加倍。 雖然這不是強制性需求，卻有助於減輕網路阻塞的影響。
 * 使用軟體型編碼器時，請關閉任何不必要的程式。
 
-## <a name="create-a-channel"></a>建立頻道
+## <a name="create-a-channel"></a>建立通道
 1. 在 AMSE 工具中，瀏覽至 [Live] 索引標籤，然後在通道區域內按一下滑鼠右鍵。 從功能表選取 [建立通道...] 。
 
     ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast1.png)
 
-2. 指定通道名稱，描述欄位為選填。 在 [頻道設定] 下方，針對 [即時編碼] 選項選取 [標準]，並將 [輸入通訊協定] 設定為 [RTMP]。 您可以將所有其他設定保留現狀。
+2. 指定通道名稱，描述欄位是選擇性的。 在 [頻道設定] 下方，針對 [即時編碼] 選項選取 [標準]，並將 [輸入通訊協定] 設定為 [RTMP]。 您可以將所有其他設定保留現狀。
 
     請確認已選取 [ **立即啟動新頻道** ]。
 
@@ -85,7 +87,7 @@ ms.locfileid: "69016673"
 
 * 轉碼器：AAC (LC)
 * 位元速率：192 kbps
-* 採樣速率：44.1 kHz
+* 取樣速率：44.1 kHz
 
 ### <a name="configuration-steps"></a>組態步驟
 1. 在使用的機器上開啟 Telestream Wirecast 應用程式，並設定 RTMP 串流。
@@ -106,14 +108,14 @@ ms.locfileid: "69016673"
 
    * 編碼器：MainConcept H.264
    * 每秒畫面格數：30
-   * 平均位元速率：5000 kbits/秒 (可視網路限制加以調整)
+   * 平均位元速率：5000 kbit/秒 (可視網路限制加以調整)
    * 設定檔：主要
    * 畫面間隔：60 個畫面
 
      **音訊**
 
    * 目標位元速率：192 kbit/秒
-   * 採樣速率：44.100 kHz
+   * 取樣速率：44.100 kHz
 
      ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast4.png)
 6. 按下 [儲存]。

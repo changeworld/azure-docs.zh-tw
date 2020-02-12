@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 01/27/2019
+ms.date: 02/10/2020
 ms.author: aahi
-ms.openlocfilehash: 9aa00898c6a567d495ed0c66bcf7bd475067fa0d
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 607b65d6a6893901ce23cd48c277c14209128866
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774147"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137978"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>如何在文字分析中使用已命名的實體識別
 
@@ -44,46 +44,8 @@ ms.locfileid: "76774147"
 
 如需相關資訊，請參閱[語言支援](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition)。
 
-#### <a name="version-2tabversion-2"></a>[第 2 版](#tab/version-2)
 
-### <a name="entity-types"></a>實體類型
-
-> [!NOTE]
-> 命名實體識別（NER）第2版僅支援下列實體。 NER v3 處於公開預覽狀態，可大幅擴充文字中辨識之實體的數目和深度。   
-
-| 類型  | 子類型 | 範例 |
-|:-----------   |:------------- |:---------|
-| 人物        | N/A\*         | "Jeff"、"Bill Gates"     |
-| 位置      | N/A\*         | 「華盛頓州雷德蒙德」、「巴黎」  |
-| 組織  | N/A\*         | Microsoft   |
-| 數量      | 數字        | 「6」、「六」     |
-| 數量      | 百分比    | 「50%」、「百分之五十」|
-| 數量      | 序號       | 「第 2」、「第二」     |
-| 數量      | 年齡           | "90 day old"、"30 years old"    |
-| 數量      | 貨幣      | 「美金 $10.99 元」     |
-| 數量      | 維度     | 「10 英哩」、「40 公分」     |
-| 數量      | 溫度   | 「32 度」    |
-| 日期時間      | N/A\*         | 「2012 年 2 月 4 日下午 6:30」      |
-| 日期時間      | 日期          | 「2017 年 5 月 2 日」、「05/02/2017」   |
-| 日期時間      | 時間          | "8am"、"8:00"  |
-| 日期時間      | 日期範圍     | 「5 月 2 日到 5 月 5 日」    |
-| 日期時間      | 時間範圍     | 「下午 6 點到下午 7 點」     |
-| 日期時間      | 課程時間      | 「1 分鐘又 45 秒」   |
-| 日期時間      | 設定           | 「每個星期二」     |
-| URL           | N/A\*         | "HTTPs：\//www.bing.com"    |
-| 電子郵件         | N/A\*         | "support@contoso.com" |
-| 美國電話號碼  | N/A\*         | （僅限美國電話號碼）"（312） 555-0176" |
-| IP 位址    | N/A\*         | 10.0.0.100 |
-
-\* 依輸入和擷取的實體而定，某些實體可能會省略 `SubType`。  列出的所有支援實體類型僅適用于英文、簡體中文、法文、德文和西班牙文等語言。
-
-### <a name="request-endpoints"></a>要求端點
-
-命名實體辨識 v2 會針對 NER 和實體連結要求使用單一端點：
-
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
-
-#### <a name="version-3-public-previewtabversion-3"></a>[第 3 版 (公開預覽版)](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[版本 3.0-preview](#tab/version-3)
 
 ### <a name="entity-types"></a>實體類型
 
@@ -110,6 +72,45 @@ NER
 
 [!INCLUDE [v3-model-versioning](../includes/model-versioning.md)]
 
+#### <a name="version-21tabversion-2"></a>[版本2。1](#tab/version-2)
+
+### <a name="entity-types"></a>實體類型
+
+> [!NOTE]
+> 命名實體識別（NER）第2版僅支援下列實體。 NER v3 處於公開預覽狀態，可大幅擴充文字中辨識之實體的數目和深度。   
+
+| 類型  | 子類型 | 範例 |
+|:-----------   |:------------- |:---------|
+| 個人        | N/A\*         | "Jeff"、"Bill Gates"     |
+| Location      | N/A\*         | "Redmond, Washington"、"Paris"  |
+| 組織  | N/A\*         | "Microsoft"   |
+| 數量      | Number        | "6"、"six"     |
+| 數量      | 百分比    | "50%"、"fifty percent"|
+| 數量      | Ordinal       | "2nd"、"second"     |
+| 數量      | Age           | "90 day old"、"30 years old"    |
+| 數量      | 貨幣      | "$10.99"     |
+| 數量      | 維度     | "10 miles"、"40 cm"     |
+| 數量      | 溫度   | "32 degrees"    |
+| Datetime      | N/A\*         | "6:30PM February 4, 2012"      |
+| Datetime      | Date          | "May 2nd, 2017"、"05/02/2017"   |
+| Datetime      | Time          | "8am"、"8:00"  |
+| Datetime      | 日期範圍     | "May 2nd to May 5th"    |
+| Datetime      | 時間範圍     | "6pm to 7pm"     |
+| Datetime      | Duration      | "1 minute and 45 seconds"   |
+| Datetime      | Set           | "every Tuesday"     |
+| URL           | N/A\*         | "HTTPs：\//www.bing.com"    |
+| 電子郵件         | N/A\*         | "support@contoso.com" |
+| 美國電話號碼  | N/A\*         | （僅限美國電話號碼）"（312） 555-0176" |
+| IP 位址    | N/A\*         | 10.0.0.100 |
+
+\* 依輸入和擷取的實體而定，某些實體可能會省略 `SubType`。  列出的所有支援實體類型僅適用于英文、簡體中文、法文、德文和西班牙文等語言。
+
+### <a name="request-endpoints"></a>要求端點
+
+命名實體辨識 v2 會針對 NER 和實體連結要求使用單一端點：
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
+
 ---
 
 ## <a name="sending-a-rest-api-request"></a>傳送 REST API 要求
@@ -124,17 +125,10 @@ NER
 
 建立 POST 要求。 您可以[使用](text-analytics-how-to-call-api.md)下列連結中的 Postman 或**API 測試主控台**，快速地結構並傳送一個。 
 
-[!INCLUDE [text-analytics-find-resource-information](../includes/find-azure-resource-info.md)]
+> [!NOTE]
+> 您可以在 azure 入口網站上找到您的文字分析資源的金鑰和端點。 您可以在 [資源管理] 下的資源 [快速啟動] 頁面中找到。 
 
-#### <a name="version-2tabversion-2"></a>[第 2 版](#tab/version-2)
-
-[命名實體識別（NER） v2 參考](https://eastus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
-
-第2版會針對實體連結和 NER 要求使用下列端點： 
-
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
-
-#### <a name="version-3tabversion-3"></a>[第 3 版](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[版本 3.0-preview](#tab/version-3)
 
 [命名實體辨識 v3 參考](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral)
 
@@ -147,6 +141,14 @@ NER
 
 實體連結
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/linking`
+
+#### <a name="version-21tabversion-2"></a>[版本2。1](#tab/version-2)
+
+[命名實體識別（NER） v2 參考](https://eastus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
+
+第2版會針對實體連結和 NER 要求使用下列端點： 
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
 
 ---
 
@@ -180,44 +182,8 @@ NER
 
 輸出會立即傳回。 您可以將結果串流處理到可接受 JSON 的應用程式，或將輸出儲存到本機系統上的檔案，然後將它匯入能讓您排序、搜尋和操作資料的應用程式。
 
-#### <a name="version-2tabversion-2"></a>[第 2 版](#tab/version-2)
 
-### <a name="example-ner-v2-response"></a>範例 NER v2 回應
-```json
-{
-  "documents": [{
-    "id": "1",
-    "entities": [{
-      "name": "Seattle",
-      "matches": [{
-        "wikipediaScore": 0.15046201222847677,
-        "entityTypeScore": 0.80624294281005859,
-        "text": "Seattle",
-        "offset": 26,
-        "length": 7
-      }],
-      "wikipediaLanguage": "en",
-      "wikipediaId": "Seattle",
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Seattle",
-      "bingId": "5fbba6b8-85e1-4d41-9444-d9055436e473",
-      "type": "Location"
-    }, {
-      "name": "last week",
-      "matches": [{
-        "entityTypeScore": 0.8,
-        "text": "last week",
-        "offset": 34,
-        "length": 9
-      }],
-      "type": "DateTime",
-      "subType": "DateRange"
-    }]
-  }],
-  "errors": []
-}
-```
-
-#### <a name="version-3-public-previewtabversion-3"></a>[第 3 版 (公開預覽版)](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[版本 3.0-preview）](#tab/version-3)
 
 ### <a name="example-v3-responses"></a>範例 v3 回應
 
@@ -271,6 +237,43 @@ NER
   }],
   "errors": [],
   "modelVersion": "2019-10-01"
+}
+```
+
+#### <a name="version-21tabversion-2"></a>[版本2。1](#tab/version-2)
+
+### <a name="example-ner-v2-response"></a>範例 NER v2 回應
+```json
+{
+  "documents": [{
+    "id": "1",
+    "entities": [{
+      "name": "Seattle",
+      "matches": [{
+        "wikipediaScore": 0.15046201222847677,
+        "entityTypeScore": 0.80624294281005859,
+        "text": "Seattle",
+        "offset": 26,
+        "length": 7
+      }],
+      "wikipediaLanguage": "en",
+      "wikipediaId": "Seattle",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Seattle",
+      "bingId": "5fbba6b8-85e1-4d41-9444-d9055436e473",
+      "type": "Location"
+    }, {
+      "name": "last week",
+      "matches": [{
+        "entityTypeScore": 0.8,
+        "text": "last week",
+        "offset": 34,
+        "length": 9
+      }],
+      "type": "DateTime",
+      "subType": "DateRange"
+    }]
+  }],
+  "errors": []
 }
 ```
 

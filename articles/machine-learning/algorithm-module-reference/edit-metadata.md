@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: 173e483710c3fa96ae542f7941f0912ed07ea2ca
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: 57a211c6ffab9a960c013008410f4b52b909d360
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312189"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137515"
 ---
 # <a name="edit-metadata-module"></a>編輯中繼資料模組
 
-本文說明 Azure Machine Learning 設計工具中所包含的模組。
+本文說明 Azure Machine Learning 設計工具（預覽）中所包含的模組。
 
 使用 [編輯資料] 模組來變更與資料集內之資料行相關聯的中繼資料。 使用 [編輯中繼資料] 模組之後，資料集的值和資料類型將會變更。
 
@@ -40,9 +40,9 @@ ms.locfileid: "76312189"
   
 ## <a name="configure-edit-metadata"></a>設定編輯中繼資料
   
-1. 在 Azure Machine Learning 中，將 [編輯中繼資料] 模組新增至您的管線，並連接您想要更新的資料集。 您可以在 [**操作**] 分類中的 [**資料轉換**] 下找到資料集。
+1. 在 Azure Machine Learning 設計工具中，將 [編輯中繼資料] 模組新增至您的管線，並連接您想要更新的資料集。 您可以在 [**資料轉換**] 分類中找到此模組。
   
-1. 選取 [**啟動資料行選取器**]，然後選擇要使用的一或多個資料行。 您可以依名稱或索引來個別選擇資料行，也可以依類型選擇一組資料行。  
+1. 按一下模組右側面板中的 [**編輯資料行**]，然後選擇要使用的一或多個資料行集合。 您可以依名稱或索引來個別選擇資料行，也可以依類型選擇一組資料行。  
   
 1. 如果您需要將不同的資料類型指派給選取的資料行，請選取 [**資料類型**] 選項。 您可能需要變更某些作業的資料類型。 例如，如果您的源資料集有當做文字處理的數位，則在使用數學運算之前，您必須將它們變更為數值資料類型。
 

@@ -5,24 +5,24 @@ services: azure-portal
 keywords: 設定，超時
 author: mgblythe
 ms.author: mblythe
-ms.date: 12/19/2019
+ms.date: 02/10/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 87de67eec9171825a1ebff9ab60782fea8836039
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 950580048f0496fd8436901938a5b6768c61bab6
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310793"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132082"
 ---
 # <a name="set-directory-level-inactivity-timeout"></a>設定目錄層級的非啟用時間
 
-如果使用者忘記保護其工作站，無活動超時設定有助於保護您的資源免于未經授權的存取。 當使用者閒置一段時間時，系統會自動登出他們的 Azure 入口網站會話。系統管理員可以在會話登出之前，強制執行最大閒置時間。無活動超時設定適用于目錄層級。 如需目錄的詳細資訊，請參閱[Active Directory Domain Services 總覽](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)。
+如果使用者忘記保護其工作站，無活動超時設定有助於保護您的資源免于未經授權的存取。 當使用者閒置一段時間時，系統會自動登出他們的 Azure 入口網站會話。[全域管理員角色](../active-directory/users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)中的系統管理員可以在會話登出之前，強制執行最大閒置時間。無活動超時設定適用于目錄層級。 如需目錄的詳細資訊，請參閱[Active Directory Domain Services 總覽](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)。
 
 ## <a name="configure-the-inactive-timeout-setting"></a>設定非使用中的超時設定
 
-如果您是系統管理員，而且想要針對 Azure 入口網站的所有使用者強制執行閒置的超時設定，請遵循下列步驟：
+如果您是全域系統管理員，而且想要針對 Azure 入口網站的所有使用者強制執行閒置的超時設定，請遵循下列步驟：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 從全域頁面標頭中選取 [**設定**]。

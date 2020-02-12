@@ -9,18 +9,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: d8e96ffc3e2b4756a4184a9a023133f14b326ed3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 42ab32e80ef0a1a7f3c02d8a8eedbb8ab13c4b88
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979934"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132259"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>啟用 Azure Active Directory Domain Services 的安全性審核
 
-Azure Active Directory Domain Services （Azure AD DS）安全性審核可讓 Azure 將安全性事件串流至目標資源。 這些資源包括 Azure 儲存體、Azure Log Analytics 工作區或 Azure 事件中樞。 啟用安全性 audit 事件之後，Azure AD DS 會將所選類別的所有已審核事件傳送至目標資源。 您可以使用 Azure 事件中樞將事件封存至 Azure 儲存體，並將事件串流至安全性資訊和事件管理（SIEM）軟體（或對等專案），或執行您自己的分析，並從 Azure 入口網站使用 Azure Log Analytics 工作區。
+Azure Active Directory Domain Services （Azure AD DS）安全性審核可讓 Azure 將安全性事件串流至目標資源。 這些資源包括 Azure 儲存體、Azure Log Analytics 工作區或 Azure 事件中樞。 啟用安全性 audit 事件之後，Azure AD DS 會將所選類別的所有已審核事件傳送至目標資源。
+
+您可以使用 Azure 事件中樞將事件封存至 Azure 儲存體，並將事件串流至安全性資訊和事件管理（SIEM）軟體（或對等專案），或執行您自己的分析，並從 Azure 入口網站使用 Azure Log Analytics 工作區。
 
 > [!IMPORTANT]
 > Azure AD DS 安全性審核僅適用于 Azure Resource Manager 為基礎的實例。 如需有關如何遷移的詳細資訊，請參閱[從傳統虛擬網路模型將 AZURE AD DS 遷移至 Resource Manager][migrate-azure-adds]。
@@ -31,7 +33,7 @@ Azure AD DS 安全性審核與傳統 AD DS 網域控制站的傳統審核一致�
 
 下列是可用的 audit 事件類別：
 
-| 審核類別名稱 | 說明 |
+| 審核類別名稱 | 描述 |
 |:---|:---|
 | 帳戶登入|審核會嘗試驗證網域控制站或本機安全性帳戶管理員（SAM）上的帳戶資料。</p>登入和登出原則設定和事件會追蹤存取特定電腦的嘗試。 此類別中的設定和事件著重于所使用的帳戶資料庫。 此類別包括下列子類別：<ul><li>[Audit 認證驗證](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-credential-validation)</li><li>[審核 Kerberos 驗證服務](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-authentication-service)</li><li>[審核 Kerberos 服務票證作業](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-service-ticket-operations)</li><li>[審核其他登入/登出事件](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-logonlogoff-events)</li></ul>|
 | 帳戶管理|會對使用者和電腦帳戶和群組進行審核。 此類別包括下列子類別：<ul><li>[審核應用程式群組管理](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-application-group-management)</li><li>[審核電腦帳戶管理](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-computer-account-management)</li><li>[審核通訊群組管理](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-distribution-group-management)</li><li>[審核其他帳戶管理](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-account-management-events)</li><li>[審核安全性群組管理](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-group-management)</li><li>[審核使用者帳戶管理](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-user-account-management)</li></ul>|
@@ -51,35 +53,35 @@ Azure AD DS 安全性審核與傳統 AD DS 網域控制站的傳統審核一致�
 |:---|:---|
 |帳戶登入安全性|4767、4774、4775、4776、4777|
 |帳戶管理安全性|4720，4722，4723，4724，4725，4726，4727，4728，4729，4730，4731，4732，4733，4734，4735，4737，4738，4740，4741，4742，4743，4754，4755，4756，4757，4758，4764，4765，4766，4780，4781，4782，4793，4798，4799，5376|
-|詳細資料追蹤安全性|無|
+|詳細資料追蹤安全性|None|
 |DS 存取安全性|5136、5137、5138、5139、5141|
 |登入登出安全性|4624、4625、4634、4647、4648、4672、4675、4964|
-|物件存取安全性|無|
+|物件存取安全性|None|
 |原則變更安全性|4670，4703，4704，4705，4706，4707，4713，4715，4716，4717，4718，4719，4739，4864，4865，4866，4867，4904，4906，4911，4912|
 |許可權使用安全性|4985|
 |系統安全性|4612、4621|
 
 ## <a name="security-audit-destinations"></a>安全性審查目的地
 
-您可以使用任何 Azure 儲存體、Azure 事件中樞或 Azure Log Analytics 工作區的組合，做為 Azure AD DS 安全性審核的目標資源。 您可以使用 Azure 儲存體來封存安全性 audit 事件，但 Azure Log Analytics 工作區可讓您在短期內分析和報告資訊。
+您可以使用 Azure 儲存體、Azure 事件中樞或 Azure Log Analytics 工作區，做為 Azure AD DS 安全性審核的目標資源。 這些目的地可以合併。 例如，您可以使用 Azure 儲存體來封存安全性 audit 事件，但 Azure Log Analytics 工作區可讓您在短期內分析和報告資訊。
 
 下表概述每個目的地資源類型的案例。
 
 > [!IMPORTANT]
-> 您必須先建立目標資源，才能啟用 Azure AD Domain Services 的安全性審核。 您可以使用 Azure 入口網站、Azure PowerShell 或 Azure CLI 來建立這些資源。
+> 您必須先建立目標資源，才能啟用 Azure AD DS 安全性的審核。 您可以使用 Azure 入口網站、Azure PowerShell 或 Azure CLI 來建立這些資源。
 
-| 目標資源 | 案例 |
+| 目標資源 | 狀況 |
 |:---|:---|
-|Azure 儲存體| 當您的主要需求是儲存安全性 audit 事件以供封存之用時，應該使用此目標。 其他目標可以用於封存用途，不過這些目標提供的功能超出主要的封存需求。 啟用 Azure AD DS 安全性 audit 事件之前，請先[建立 Azure 儲存體帳戶](../storage/common/storage-account-create.md)。|
-|Azure 事件中樞| 當您的主要需求是與其他軟體（例如資料分析軟體或 & 事件管理（SIEM）軟體的安全性資訊）共用安全性 audit 事件時，應該使用此目標。 啟用 Azure AD DS 安全性審核事件之前，請先[使用 Azure 入口網站建立事件中樞](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)|
-|Azure Log Analytics 工作區| 當您的主要需求是直接分析並查看來自 Azure 入口網站的安全審核時，應該使用此目標。 啟用 Azure AD DS 安全性審核事件之前，請先[在 Azure 入口網站中建立 Log Analytics 工作區。](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)|
+|Azure 儲存體| 當您的主要需求是儲存安全性 audit 事件以供封存之用時，應該使用此目標。 其他目標可以用於封存用途，不過這些目標提供的功能超出主要的封存需求。 <br /><br />啟用 Azure AD DS 安全性 audit 事件之前，請先[建立 Azure 儲存體帳戶](../storage/common/storage-account-create.md)。|
+|Azure 事件中心| 當您的主要需求是與其他軟體（例如資料分析軟體或 & 事件管理（SIEM）軟體的安全性資訊）共用安全性 audit 事件時，應該使用此目標。<br /><br />啟用 Azure AD DS 安全性審核事件之前，請先[使用 Azure 入口網站建立事件中樞](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)|
+|Azure Log Analytics 工作區| 當您的主要需求是直接分析並查看來自 Azure 入口網站的安全審核時，應該使用此目標。<br /><br />啟用 Azure AD DS 安全性審核事件之前，請先[在 Azure 入口網站中建立 Log Analytics 工作區。](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)|
 
 ## <a name="enable-security-audit-events-using-the-azure-portal"></a>使用 Azure 入口網站啟用安全性 audit 事件
 
 若要使用 Azure 入口網站啟用 Azure AD DS 安全性 audit 事件，請完成下列步驟。
 
 > [!IMPORTANT]
-> Azure AD DS 安全性審核不會追溯。 您無法從過去取得事件，也無法從過去的重新執行事件。 Azure AD DS 只能傳送啟用後所發生的事件。
+> Azure AD DS 安全性審核不會追溯。 您無法捕獲或重新執行過去的事件。 Azure AD DS 只能傳送在啟用安全性審核之後發生的事件。
 
 1. 在 https://portal.azure.com 登入 Azure 入口網站。
 1. 在 Azure 入口網站頂端，搜尋並選取 [ **Azure AD Domain Services**]。 選擇您的受控網域，例如 aadds.contoso.com。
@@ -116,7 +118,7 @@ Azure AD DS 安全性審核與傳統 AD DS 網域控制站的傳統審核一致�
 若要使用 Azure PowerShell 啟用 Azure AD DS 安全性 audit 事件，請完成下列步驟。 如有需要，請先[安裝 Azure PowerShell 模組，並連接到您的 Azure 訂](/powershell/azure/install-az-ps)用帳戶。
 
 > [!IMPORTANT]
-> Azure AD DS 安全性審核不會追溯。 您無法從過去取得事件，也無法從過去的重新執行事件。 Azure AD DS 只能傳送啟用後所發生的事件。
+> Azure AD DS 安全性審核不會追溯。 您無法捕獲或重新執行過去的事件。 Azure AD DS 只能傳送在啟用安全性審核之後發生的事件。
 
 1. 使用[disconnect-azaccount](/powershell/module/Az.Accounts/Connect-AzAccount) Cmdlet 向您的 Azure 訂用帳戶進行驗證。 出現提示時，請輸入您的帳號憑證。
 
@@ -173,8 +175,8 @@ Azure AD DS 安全性審核與傳統 AD DS 網域控制站的傳統審核一致�
 記錄分析工作區可讓您使用 Azure 監視器和 Kusto 查詢語言，來查看和分析安全性 audit 事件。 這種查詢語言是專為使用容易閱讀的語法提供強大分析功能的唯讀用途所設計。 如需開始使用 Kusto 查詢語言的詳細資訊，請參閱下列文章：
 
 * [Azure 監視器文件](https://docs.microsoft.com/azure/azure-monitor/)
-* [開始使用 Azure 監視器 Log Analytics](../azure-monitor/log-query/get-started-portal.md)
-* [開始使用 Azure 監視器中的記錄查詢](../azure-monitor/log-query/get-started-queries.md)
+* [在 Azure 監視器中開始使用 Log Analytics](../azure-monitor/log-query/get-started-portal.md)
+* [開始使用 Azure 監視器中的查詢](../azure-monitor/log-query/get-started-queries.md)
 * [建立和共用 Log Analytics 資料的儀表板](../azure-monitor/learn/tutorial-logs-dashboards.md)
 
 下列查詢範例可用於開始分析來自 Azure AD DS 的安全性 audit 事件。
@@ -191,11 +193,11 @@ AADDomainServicesAccountManagement
 
 ### <a name="sample-query-2"></a>範例查詢2
 
-在2019年6月26日上午9點，查看所有帳戶鎖定事件（*4740*） 2019年7月1日午夜，以日期和時間遞增排序：
+在2020年2月3日上午9點，查看所有帳戶鎖定事件（*4740*） 2019年2月10日午夜，以日期和時間遞增排序：
 
 ```Kusto
 AADDomainServicesAccountManagement
-| where TimeGenerated >= datetime(2019-06-26 09:00) and TimeGenerated <= datetime(2019-07-01)
+| where TimeGenerated >= datetime(2020-02-03 09:00) and TimeGenerated <= datetime(2020-02-10)
 | where OperationName has "4740"
 | sort by TimeGenerated asc
 ```

@@ -4,20 +4,20 @@ description: 了解如何搭配 Azure Spring Cloud 使用藍色-綠色部署
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 4adeb5593f86bdf3f8a4ea5f844c31a8314e0f15
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 5612a514ed89f73453f3751b34263b0beeea1c59
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276910"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138133"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>在 Azure 春季雲端中設定預備環境
 
-本文討論如何使用 Azure 春季雲端中的藍綠部署模式來設定預備環境部署。 它也會示範如何將該預備環境部署放到生產環境中，而不需要直接變更生產部署。
+本文討論如何使用 Azure 春季雲端中的藍綠部署模式來設定預備環境部署。 藍/綠部署是 Azure DevOps 的持續傳遞模式，此模式仰賴在部署新版本 (綠色) 時，仍讓現有版本 (藍色) 持續運作的方式。 本文說明如何將該預備環境部署放到生產環境中，而不需要直接變更生產部署。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本文假設您已從我們的教學課程中部署 PiggyMetrics 應用程式，以[瞭解如何啟動 Azure 春季雲端應用程式](spring-cloud-quickstart-launch-app-portal.md)。 PiggyMetrics 包含三個應用程式：「閘道」、「帳戶服務」和「驗證服務」。  
 

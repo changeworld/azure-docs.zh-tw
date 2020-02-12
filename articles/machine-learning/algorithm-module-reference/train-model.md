@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: c9d02490a5627ead502429ead06608b4fb621058
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: 3141795ed9ccfdabc9fd462a1cd09a74690f9c5b
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548402"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137928"
 ---
 # <a name="train-model-module"></a>訓練模組
 
@@ -39,7 +39,7 @@ ms.locfileid: "76548402"
 
 3. 定型完成之後，使用其中一個[評分模組](./score-model.md)的定型模型，對新資料進行預測。
 
-## <a name="how-to-use-train-model"></a>如何使用**定型模型**  
+## <a name="how-to-use-train-model"></a>如何使用定型模型 
   
 1.  在 Azure Machine Learning 中，設定分類模型或回歸模型。
     
@@ -49,7 +49,7 @@ ms.locfileid: "76548402"
 
     訓練資料集必須包含標籤資料行。 不含標籤的任何資料列都會被忽略。
   
-4.  針對 [**標籤資料行**]，按一下 [**啟動資料行選取器**]，然後選擇包含模型可用於定型之結果的單一資料行。
+4.  針對 [**標籤資料行**]，按一下模組右側面板中的 [**編輯資料行**]，然後選擇包含模型可用於定型之結果的單一資料行。
   
     - 針對分類問題，標籤資料行必須包含**類別**值或**離散**值。 某些範例可能是「是/否」分級、疾病分類代碼或名稱，或「收入群組」。  如果您選擇非類別資料行，此模組將會在定型期間傳回錯誤。
   

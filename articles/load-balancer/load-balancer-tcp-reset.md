@@ -13,21 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2019
 ms.author: allensu
-ms.openlocfilehash: b37253f37043d902d33504b99401781eb1c761c5
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: eac7dc3b7188131685ef630c0dc01d248e1d6a6a
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075925"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134789"
 ---
-# <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>具有閒置 TCP 重設的負載平衡器 (公開預覽)
+# <a name="load-balancer-with-tcp-reset-on-idle"></a>在閒置時使用 TCP 重設 Load Balancer
 
 您可以使用 [Standard Load Balancer](load-balancer-standard-overview.md)，藉由對某個指定規則啟用「閒置時重設 TCP」，來為您的案例建立更容易預測的應用程式行為。 Load Balancer 的預設行為是在達到流程的閒置逾時時，以無訊息模式卸除流程。  啟用此功能會讓 Load Balancer 在閒置逾時的時候，傳送雙向的 TCP 重設 (TCP RST 封包)。  這會讓您的應用程式端點知道，連線已逾時且無法再供使用。  如有需要，端點可以立即建立新的連線。
 
 ![負載平衡器 TCP 重設](media/load-balancer-tcp-reset/load-balancer-tcp-reset.png)
-
->[!NOTE] 
->具有閒置超時功能的 TCP 重設的 Load Balancer 目前可供公開預覽。 此預覽版是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽專用的補充使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
  
 您變更此預設行為，以及對輸入 NAT 規則、負載平衡規則和[輸出規則](https://aka.ms/lboutboundrules)啟用傳送閒置逾時 TCP 重設。  根據規則啟用時，Load Balancer 會在達到所有相符流程的閒置逾時時，將雙向 TCP 重設 (TCP RST 封包) 傳送至用戶端和伺服器端點。
 
@@ -73,7 +70,6 @@ ms.locfileid: "74075925"
 
 ## <a name="limitations"></a>限制
 
-- 入口網站無法用來設定或檢視 TCP 重設。  請改為使用範本、REST API、Az CLI 2.0 或 PowerShell。
 - TCP RST 只會在已建立狀態的 TCP 連線期間傳送。
 
 ## <a name="next-steps"></a>後續步驟

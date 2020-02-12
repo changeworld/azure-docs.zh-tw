@@ -9,8 +9,8 @@
   items:
     - name: 啟用自助式密碼重設
       href: tutorial-enable-sspr.md
-    - name: 為應用程式啟用 MFA
-      href: tutorial-mfa-applications.md
+    - name: 啟用 Azure Multi-Factor Authentication
+      href: tutorial-enable-azure-mfa.md
     - name: 啟用 SSPR 內部部署整合
       href: tutorial-enable-writeback.md
     - name: 整合 Azure Identity Protection

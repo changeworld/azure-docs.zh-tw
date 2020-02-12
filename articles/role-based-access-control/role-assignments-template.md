@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure RBAC 和 Azure Resource Manager 範本新增角色指派
+title: 使用 RBAC 和 Azure Resource Manager 範本新增角色指派
 description: 瞭解如何使用 Azure 角色型存取控制（RBAC）和 Azure Resource Manager 範本，為使用者、群組、服務主體或受控識別授與 Azure 資源的存取權。
 services: active-directory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: aeb4bfbc40196575e2cb812738a9ab5de991d2aa
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 9f817880f938f5d03024e3aacd9b84817a5ac721
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981026"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138293"
 ---
 # <a name="add-role-assignments-using-azure-rbac-and-azure-resource-manager-templates"></a>使用 Azure RBAC 和 Azure Resource Manager 範本新增角色指派
 
@@ -52,7 +52,7 @@ $objectid = (Get-AzADGroup -DisplayName "{name}").id
 objectid=$(az ad group show --group "{name}" --query objectId --output tsv)
 ```
 
-### <a name="application"></a>應用程式
+### <a name="application"></a>Application
 
 若要取得服務主體（應用程式所使用的身分識別）的識別碼，您可以使用[new-azadserviceprincipal](/powershell/module/az.resources/get-azadserviceprincipal)或[az ad sp list](/cli/azure/ad/sp#az-ad-sp-list)命令。 針對服務主體，請使用物件識別碼，而**不**是應用程式識別碼。
 

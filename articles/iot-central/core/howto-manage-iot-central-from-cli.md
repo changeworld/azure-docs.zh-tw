@@ -5,15 +5,15 @@ services: iot-central
 ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/23/2019
+ms.date: 02/11/2020
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 8526eb50faf300892c66ac186eac25adecf62231
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: cf0414531d363ab5401e8c9574943a40ecf2d449
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77019021"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137826"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>從 Azure CLI 管理 IoT Central
 
@@ -21,7 +21,7 @@ ms.locfileid: "77019021"
 
 您可以使用[Azure CLI](/cli/azure/)來管理應用程式，而不是在[Azure IoT Central 應用程式管理員](https://aka.ms/iotcentral)網站上建立和管理 IoT Central 應用程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -44,39 +44,23 @@ az group create --location "East US" \
 az iotcentral app create \
   --resource-group "MyIoTCentralResourceGroup" \
   --name "myiotcentralapp" --subdomain "mysubdomain" \
-  --sku ST1 --template "iotc-demo@1.0.0" \
+  --sku ST1 --template "iotc-pnp-preview@1.0.0" \
   --display-name "My Custom Display Name"
 ```
 
 這些命令會先在「美國東部」區域中為應用程式建立資源群組。 下表描述搭配**az iotcentral app create**命令使用的參數：
 
-| 參數         | 說明 |
+| 參數         | 描述 |
 | ----------------- | ----------- |
 | resource-group    | 包含應用程式的資源群組。 此資源群組必須已經存在於您的訂用帳戶中。 |
-| location          | 根據預設，此命令會使用來自資源群組的位置。 目前，您可以在「**美國東部**」、「**美國西部** **」、「北歐」** 或「**西歐」區域中**，或在「**澳大利亞**」或「**亞太地區**地理位置」中建立 IoT Central 應用程式。 |
+| location          | 根據預設，此命令會使用來自資源群組的位置。 目前，您可以在**澳大利亞**、**亞太地區**、**歐洲**或**美國**地區建立 IoT Central 應用程式。 |
 | NAME              | 應用程式在 Azure 入口網站中的名稱。 |
-| 子域         | 應用程式 URL 中的子網域。 在範例中，應用程式 URL 是 https://mysubdomain.azureiotcentral.com 。 |
+| 子域         | 應用程式 URL 中的子網域。 在範例中，應用程式 URL 是 https://mysubdomain.azureiotcentral.com。 |
 | sku               | 目前，您可以使用**ST1**或**ST2**。 請參閱 [Azure IoT Central 價格](https://azure.microsoft.com/pricing/details/iot-central/)。 |
-| template          | 要使用的應用程式範本。 如需詳細資訊，請參閱下列表格： |
+| template          | 要使用的應用程式範本。 如需詳細資訊，請參閱下列表格。 |
 | display-name      | 在 UI 中顯示的應用程式名稱。 |
 
-**應用程式範本**
-
-| 範本名稱            | 說明 |
-| ------------------------ | ----------- |
-| iotc-default@1.0.0       | 為您建立空的應用程式，以填入您自己的裝置範本和裝置。
-| iotc-pnp-preview@1.0.0   | 建立空的隨插即用（預覽）應用程式，讓您填入自己的裝置範本和裝置。 |
-| iotc-condition@1.0.0     | 建立具有存放區內分析-條件監視範本的應用程式。 使用此範本來連接和監視存放區環境。 |
-| iotc-consumption@1.0.0   | 建立具有水耗用量監視範本的應用程式。 使用此範本來監視和控制水流程。 |
-| iotc-distribution@1.0.0  | 建立具有數位散發範本的應用程式。 使用此範本來 digitalizing 主要資產和動作，以改善倉儲輸出效率。 |
-| iotc-inventory@1.0.0     | 使用智慧清查管理範本建立應用程式。 使用此範本可將接收、產品移動、迴圈計數和感應器追蹤自動化。 |
-| iotc-logistics@1.0.0     | 使用已連線的物流範本建立應用程式。 使用此範本，透過位置和條件監視，在空中、水和土地之間即時追蹤您的出貨。 |
-| iotc-meter@1.0.0         | 使用智慧計量監視範本建立應用程式。 使用此範本來監視能源消耗、網路狀態，以及識別趨勢，以改善客戶支援和智慧計量管理。  |
-| iotc-patient@1.0.0       | 建立具有持續患者監視範本的應用程式。 使用此範本來擴充病人護理、重新許可及管理疾病。 |
-| iotc-power@1.0.0         | 使用「日光面板監視」範本建立應用程式。 使用此範本來監視日光面板狀態、能源產生趨勢。 |
-| iotc-quality@1.0.0       | 建立具有水品質監控範本的應用程式。 使用此範本以數位方式監視水品質。|
-| iotc-store@1.0.0         | 建立具有存放區內分析-結帳範本的應用程式。 使用此範本來監視和管理您的存放區內的簽出流程。 |
-| iotc-waste@1.0.0         | 建立具有連線垃圾管理範本的應用程式。 使用此範本來監視浪費區間和分派欄位運算子。 |
+[!INCLUDE [iot-central-template-list](../../../includes/iot-central-template-list.md)]
 
 ## <a name="view-your-applications"></a>檢視您的應用程式
 

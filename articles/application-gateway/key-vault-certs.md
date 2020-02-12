@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: victorh
-ms.openlocfilehash: 76807c8ed10e30c554b6aa06ec096c830a86e36e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 5633dd7b72f4de22cd34b7d093e8ec4d9cb411f1
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571985"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137691"
 ---
 # <a name="ssl-termination-with-key-vault-certificates"></a>Key Vault 憑證的 SSL 終止
 
@@ -33,6 +33,9 @@ Key Vault 整合提供兩個用於 SSL 終止的模型：
 - 支援儲存在金鑰保存庫中的憑證自動更新。
 
 應用程式閘道目前僅支援軟體驗證的憑證。 硬體安全模組（HSM）驗證的憑證不受支援。 在應用程式閘道設定為使用 Key Vault 憑證之後，其實例會從 Key Vault 抓取憑證，並將其安裝在本機，以供 SSL 終止。 實例也會依24小時間隔輪詢 Key Vault，以取得憑證的更新版本（如果有的話）。 如果找到更新的憑證，則會自動旋轉目前與 HTTPS 接聽程式相關聯的 SSL 憑證。
+
+> [!NOTE]
+> Azure 入口網站只支援 KeyVault 憑證，而非密碼。 應用程式閘道仍然支援從 KeyVault 參考秘密，但只能透過非入口網站資源（例如 PowerShell、CLI、API、ARM 範本等等）。 
 
 ## <a name="how-integration-works"></a>整合的運作方式
 

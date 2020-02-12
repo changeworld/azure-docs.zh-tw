@@ -5,12 +5,12 @@ author: usha-rathnavel
 ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
-ms.openlocfilehash: 7d3c70695000ae62f374bc558d4b408733968b83
-ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
+ms.openlocfilehash: b7d99c3bf61de17f9cebba834234cc8ea52f30d6
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77069280"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77131871"
 ---
 # <a name="install-azure-farmbeats"></a>安裝 Azure FarmBeats
 
@@ -31,7 +31,7 @@ Azure FarmBeats 是可在 Azure Marketplace 中取得的企業對企業供應項
 | 已安裝 Azure 資源  | Azure FarmBeats 元件  |
 |---------|---------|
 | Application Insights   |      Datahub & 加速器      |
-| App Service     |     Datahub & 加速器     |
+| App Service 方案     |     Datahub & 加速器     |
 | App Service 方案   | Datahub & 加速器  |
 | API 連線    |  Datahub       |
 | Azure Cache for Redis       | Datahub      |
@@ -71,7 +71,7 @@ Azure FarmBeats 的成本是基礎 Azure 服務成本的匯總。 您可以使�
 
 Azure FarmBeats 的整個設定（包括準備和安裝）將會花費不到一小時的時間。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 您必須先完成下列步驟，才能開始實際安裝 Azure FarmBeats：
 
@@ -134,7 +134,7 @@ Azure FarmBeats 需要 Azure Active Directory 應用程式的建立和註冊。 
 
 您的註冊程式已完成。 當驗證也完成之後，請記下您的**Sentinel 使用者名稱**和**sentinel 密碼**。
 
-## <a name="install"></a>Install
+## <a name="install"></a>安裝
 
 您現在已準備好安裝 FarmBeats。 請遵循下列步驟來開始安裝：
 
@@ -171,7 +171,7 @@ Azure FarmBeats 需要 Azure Active Directory 應用程式的建立和註冊。 
 1. 下載[升級腳本](https://aka.ms/FarmBeatsUpgradeScript)
 
     ```azurepowershell-interactive
-        wget –q https://aka.ms/FarmBeatsUpgradeScript -O ./update-farmbeats.ps1
+        wget –q https://aka.ms/FarmBeatsUpgradeScript -O ./upgrade-farmbeats.ps1
     ```
 
 2. 根據預設，檔案會下載到您的主目錄。 流覽至目錄。

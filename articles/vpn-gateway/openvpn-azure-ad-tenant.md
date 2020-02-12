@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/03/2020
 ms.author: alzam
-ms.openlocfilehash: 6357fb2d69a9c0ded430c17b77e854f63fc8f5c6
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 6b0b6707f6851ef674d0045c7cf1686af13ea856
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747367"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137828"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>建立 P2S OpenVPN 通訊協定連接的 Azure Active Directory 租使用者
 
@@ -27,7 +27,7 @@ ms.locfileid: "75747367"
 使用[建立新的租](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)使用者文章中的步驟，建立 Azure AD 租使用者：
 
 * 組織名稱
-* 初始網域名稱
+* 初始功能變數名稱
 
 範例：
 
@@ -54,13 +54,13 @@ ms.locfileid: "75747367"
 
 4. 接下來，請授與系統管理員同意。 在瀏覽器的網址列中，複製並貼上您部署位置的相關 URL：
 
-    公用
+    公開
 
     ```
     https://login.microsoftonline.com/common/oauth2/authorize?client_id=41b23e61-6c1e-4545-b367-cd054e0ed4b4&response_type=code&redirect_uri=https://portal.azure.com&nonce=1234&prompt=admin_consent
     ````
 
-    Azure 政府機構
+    Azure Government
 
     ```
     https://login-us.microsoftonline.com/common/oauth2/authorize?client_id=51bb15d4-3a4f-4ebf-9dca-40096fe32426&response_type=code&redirect_uri=https://portal.azure.us&nonce=1234&prompt=admin_consent
@@ -75,7 +75,7 @@ ms.locfileid: "75747367"
     Azure China 21Vianet
 
     ```
-    https://https://login.chinacloudapi.cn/common/oauth2/authorize?client_id=49f817b6-84ae-4cc0-928c-73f27289b3aa&response_type=code&redirect_uri=https://portal.azure.cn&nonce=1234&prompt=admin_consent
+    https://login.chinacloudapi.cn/common/oauth2/authorize?client_id=49f817b6-84ae-4cc0-928c-73f27289b3aa&response_type=code&redirect_uri=https://portal.azure.cn&nonce=1234&prompt=admin_consent
     ```
 
 5. 若出現提示，請選取**全域管理員**帳戶。

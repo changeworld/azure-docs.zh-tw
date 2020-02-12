@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
-ms.openlocfilehash: 5bf54b6975475810650aeaee4b477e60255757bf
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 695b87540178fb5c1012a095c2a86937a189ef24
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75530675"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133756"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>設定實驗室以使用 Python 和 Jupyter 筆記本來教授資料科學
 
@@ -30,7 +30,7 @@ ms.locfileid: "75530675"
 
 ### <a name="lab-account-settings"></a>實驗室帳戶設定
 
-針對實驗室帳戶啟用下表所述的設定。 如需如何啟用 marketplace 映射的詳細資訊，請參閱[指定可供實驗室建立者使用的 marketplace 映射](tutorial-setup-lab-account.md#specify-marketplace-images-available-to-lab-creators)。
+針對實驗室帳戶啟用下表所述的設定。 如需如何啟用 marketplace 映射的詳細資訊，請參閱[指定可供實驗室建立者使用的 marketplace 映射](how-to-configure-lab-accounts.md#specify-marketplace-images-available-to-lab-creators)。
 
 | 實驗室帳戶設定 | Instructions |
 | ------------------- | ------------ |
@@ -46,7 +46,7 @@ ms.locfileid: "75530675"
 | 實驗室設定 | 值/指示 |
 | ------------ | ------------------ |
 |虛擬機器大小| 小型 GPU （計算）。 此大小最適合用於計算密集型和網路密集型應用程式，例如人工智慧和深度學習。 |
-|虛擬機器映射| 資料科學虛擬機器 - Windows 2016|
+|虛擬機器映射| 資料科學虛擬機器-Windows 2016|
 
 ## <a name="template-machine"></a>範本機器
 
@@ -54,7 +54,7 @@ ms.locfileid: "75530675"
 
 設定類別的其餘工作是提供本機筆記本。  如需如何使用 Azure Machine Learning 範例的指示，請參閱[如何設定具有 Jupyter 筆記本的環境](../../machine-learning/how-to-configure-environment.md#jupyter)。  您也可以在範本機器上提供自己的筆記本。  發佈範本時，會將筆記本複製到所有學生電腦。
 
-## <a name="cost-estimate"></a>成本預估值
+## <a name="cost-estimate"></a>成本預估
 
 讓我們來討論這個類別的可能成本預估。  我們將使用25名學生的課程。  已排程的類別時間有20小時。  此外，每個學生在排程的類別時間以外，會取得家庭或指派10小時的配額。  我們選擇的虛擬機器大小為小型 gpu （計算），也就是139實驗室單位。
 

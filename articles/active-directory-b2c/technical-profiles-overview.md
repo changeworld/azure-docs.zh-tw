@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/02/2020
+ms.date: 02/11/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 69582291ca1da95003e26a6922899defd7d5e477
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: f3a9265c1f9a5c6c63931798718e4d0679cd126b
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982393"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77136241"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>關於 Azure Active Directory B2C 自訂原則中的技術設定檔
 
@@ -44,25 +44,29 @@ ms.locfileid: "76982393"
 
 ## <a name="technical-profile-flow"></a>技術設定檔流程
 
-所有類型的技術設定檔都共用相同的概念。 您傳送輸入宣告、執行宣告轉換，然後與已設定的對象 (例如識別提供者、REST API 或 Azure AD 目錄服務) 進行通訊。 在程序完成之後，技術設定檔會傳回輸出宣告，並可能執行輸出宣告轉換。 下圖說明技術設定檔中所參考轉換和對應的處理方式。 不論技術設定檔的互動對象是誰，在執行任何宣告轉換之後，技術設定檔的輸出宣告都會立即儲存在宣告包中。
+所有類型的技術設定檔都共用相同的概念。 您傳送輸入宣告、執行宣告轉換，然後與已設定的對象 (例如識別提供者、REST API 或 Azure AD 目錄服務) 進行通訊。 完成此程式之後，技術設定檔會傳回輸出宣告，而且可能會執行輸出宣告轉換。 下圖說明技術設定檔中所參考轉換和對應的處理方式。 不論技術設定檔的互動對象是誰，在執行任何宣告轉換之後，技術設定檔的輸出宣告都會立即儲存在宣告包中。
 
 ![說明技術設定檔流程的圖表](./media/technical-profiles-overview/technical-profile-idp-saml-flow.png)
  
-1. **InputClaimsTransformation** - 系統會從宣告包中挑選每個輸入[宣告轉換](claimstransformations.md)的輸入宣告，執行之後，輸出宣告會被放回宣告包中。 輸入宣告轉換的輸出宣告可以作為後續輸入宣告轉換的輸入宣告。
-2. **InputClaims** - 系統會從宣告包中挑選宣告並用於技術設定檔。 例如，[自我判斷技術設定檔](self-asserted-technical-profile.md)會使用輸入宣告來預先填入使用者所提供的輸出宣告。 REST API 技術設定檔會使用輸入宣告將輸入參數傳送給 REST API 端點。 Azure Active Directory 會使用輸入宣告作為唯一識別碼來讀取、更新或刪除帳戶。
-3. **技術設定檔執行** - 技術設定檔會與已設定的對象交換宣告。 例如：
+1. **單一登入（SSO）會話管理**-使用[SSO 會話管理](custom-policy-reference-sso.md)來還原技術設定檔的會話狀態。 
+1. **輸入宣告轉換**-每個輸入[宣告轉換](claimstransformations.md)的輸入宣告都會從宣告包中挑選。  輸入宣告轉換的輸出宣告可以作為後續輸入宣告轉換的輸入宣告。
+1. **輸入宣告**-從宣告包中挑選宣告，並用於技術設定檔。 例如，[自我判斷技術設定檔](self-asserted-technical-profile.md)會使用輸入宣告來預先填入使用者所提供的輸出宣告。 REST API 技術設定檔會使用輸入宣告將輸入參數傳送給 REST API 端點。 Azure Active Directory 會使用輸入宣告作為唯一識別碼來讀取、更新或刪除帳戶。
+1. **技術設定檔執行** - 技術設定檔會與已設定的對象交換宣告。 例如：
     - 將使用者重新導向到識別提供者來完成登入。 成功登入之後，使用者會返回，而技術設定檔則會繼續執行。
     - 呼叫 REST API，並傳送參數作為 InputClaims 及取回資訊作為 OutputClaims。
     - 建立或更新使用者帳戶。
     - 傳送並驗證 MFA 文字訊息。
-4. **ValidationTechnicalProfiles** - 針對[自我判斷技術設定檔](self-asserted-technical-profile.md)，您可以呼叫輸入[驗證技術設定檔](validation-technical-profile.md)。 驗證技術設定檔會驗證使用者所分析的資料，並傳回錯誤訊息或良好，其中會包含或不含輸出宣告。 例如，在 Azure AD B2C 建立新帳戶之前，它會檢查目錄服務中是否已經有該使用者存在。 您可以呼叫 REST API 技術設定檔來新增自己的商務邏輯。<p>驗證技術設定檔的輸出宣告範圍僅限於叫用驗證技術設定檔的技術設定檔，以及在相同技術設定檔下的其他驗證技術設定檔。 如果您想要在下一個協調流程步驟中使用輸出宣告，就必須將輸出宣告新增至叫用驗證技術設定檔的技術設定檔。
-5. **OutputClaims** - 系統會將宣告交還給宣告包。 您可以在下一個協調流程步驟或輸出宣告轉換中使用這些宣告。
-6. **OutputClaimsTransformations** - 系統會從宣告包中挑選每個輸出[宣告轉換](claimstransformations.md)的輸入宣告。 先前步驟的技術設定檔輸出宣告可以作為輸出宣告轉換的輸入宣告。 執行之後，輸出宣告會被放回宣告包中。 輸出宣告轉換的輸出宣告也可以作為後續輸出宣告轉換的輸入宣告。
-7. **單一登入 (SSO) 工作階段管理** - [SSO 工作階段管理](custom-policy-reference-sso.md)可在使用者已通過驗證後，控制與該使用者的互動。 例如，系統管理員可以控制是否顯示選取的身分識別提供者，或是否需要再輸入一次本機帳戶詳細資料。
+1. **驗證技術配置**檔-[自我判斷技術設定檔](self-asserted-technical-profile.md)可以呼叫[驗證技術](validation-technical-profile.md)設定檔。 驗證技術設定檔會驗證使用者所分析的資料，並傳回錯誤訊息或良好，其中會包含或不含輸出宣告。 例如，在 Azure AD B2C 建立新帳戶之前，它會檢查目錄服務中是否已經有該使用者存在。 您可以呼叫 REST API 技術設定檔來新增自己的商務邏輯。<p>驗證技術設定檔的輸出宣告範圍僅限於叫用驗證技術設定檔的技術設定檔。 和其他驗證技術設定檔位於相同的技術設定檔下。 如果您想要在下一個協調流程步驟中使用輸出宣告，就必須將輸出宣告新增至叫用驗證技術設定檔的技術設定檔。
+1. **輸出宣告**-宣告會傳回給宣告包。 您可以在下一個協調流程步驟或輸出宣告轉換中使用這些宣告。
+1. **輸出宣告轉換**-每個輸出[宣告轉換](claimstransformations.md)的輸入宣告都會從宣告包中挑選。 先前步驟的技術設定檔輸出宣告可以作為輸出宣告轉換的輸入宣告。 執行之後，輸出宣告會被放回宣告包中。 輸出宣告轉換的輸出宣告也可以作為後續輸出宣告轉換的輸入宣告。
+1. **單一登入（SSO）會話管理**-使用[SSO 會話管理](custom-policy-reference-sso.md)，將技術設定檔的資料保存到會話。
 
-一個技術設定檔可以繼承自另一個技術設定檔，以變更設定或新增新功能。  **IncludeTechnicalProfile** 元素是對技術設定檔之來源基底技術設定檔的參考。
 
-例如，**AAD-UserReadUsingAlternativeSecurityId-NoError** 技術設定檔包含 **AAD-UserReadUsingAlternativeSecurityId**。 此技術設定檔會將 **RaiseErrorIfClaimsPrincipalDoesNotExist** 中繼資料項目設定為 `true`，並且在目錄中沒有社交帳戶時會引發錯誤。 **AAD-UserReadUsingAlternativeSecurityId-NoError** 會覆寫此行為，並且在使用者不存在時會停用錯誤訊息。
+## <a name="technical-profile-inclusion"></a>包含技術設定檔
+
+技術設定檔可以包含另一個技術設定檔，以變更設定或新增功能。  `IncludeTechnicalProfile` 專案是基礎技術設定檔的參考，其中衍生技術設定檔。 在層數上並無限制。 
+
+例如，**AAD-UserReadUsingAlternativeSecurityId-NoError** 技術設定檔包含 **AAD-UserReadUsingAlternativeSecurityId**。 此技術設定檔會將 `RaiseErrorIfClaimsPrincipalDoesNotExist` 中繼資料專案設定為 `true`，而且如果社交帳戶不存在於目錄中，則會引發錯誤。 **AAD-aad-userreadusingalternativesecurityid-noerror-aad-userreadusingalternativesecurityid-noerror**會覆寫此行為，並停用該錯誤訊息。
 
 ```XML
 <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId-NoError">
@@ -97,7 +101,7 @@ ms.locfileid: "76982393"
 </TechnicalProfile>
 ```
 
-**AAD-UserReadUsingAlternativeSecurityId-NoError** 和 **AAD-UserReadUsingAlternativeSecurityId** 都未指定必要的 **Protocol** 元素，因為 **AAD-Common** 技術設定檔中會指定該元素。
+**Aad-aad-userreadusingalternativesecurityid-noerror-aad-userreadusingalternativesecurityid-noerror**和**aad aad-userreadusingalternativesecurityid-noerror**不會指定所需的**通訊協定**元素，因為它是在**AAD 通用**技術設定檔中指定。
 
 ```XML
 <TechnicalProfile Id="AAD-Common">
@@ -106,16 +110,3 @@ ms.locfileid: "76982393"
   ...
 </TechnicalProfile>
 ```
-
-技術設定檔可以包含或繼承另一個技術設定檔，而此技術設定檔又可包含另一個技術設定檔。 在層數上並無限制。 視業務需求而定，您的使用者旅程圖可以呼叫會在使用者社交帳戶不存在時引發錯誤的 **AAD-UserReadUsingAlternativeSecurityId**，或不會引發錯誤的 **AAD-UserReadUsingAlternativeSecurityId-NoError**。
-
-
-
-
-
-
-
-
-
-
-

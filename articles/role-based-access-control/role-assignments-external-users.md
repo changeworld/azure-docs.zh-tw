@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure RBAC 和 Azure 入口網站新增或移除外部來賓使用者的角色指派
+title: 新增或移除具有 RBAC 和 Azure 入口網站之外部使用者的角色指派
 description: 瞭解如何使用 Azure 角色型存取控制（RBAC），為組織外部的使用者授與 Azure 資源的存取權。
 services: active-directory
 documentationcenter: ''
@@ -16,18 +16,18 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: db43a3cce27da5f40986968b6573bfd58a1d3cb7
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 1c440b85f792ac5bb1336f4d20f930aafc38ad7d
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707873"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138387"
 ---
 # <a name="add-or-remove-role-assignments-for-external-guest-users-using-azure-rbac-and-the-azure-portal"></a>使用 Azure RBAC 和 Azure 入口網站新增或移除外部來賓使用者的角色指派
 
 [Azure 角色型存取控制（RBAC）](overview.md)可讓大型組織以及適用于外部共同作業者、廠商或需要存取您環境中特定資源，但不一定是整個基礎結構或任何計費相關範圍的小型和中型企業，進行更好的安全性管理。 您可以使用[AZURE ACTIVE DIRECTORY B2B](../active-directory/b2b/what-is-b2b.md)中的功能，與外部來賓使用者共同作業，而且您可以使用 RBAC 僅授與來賓使用者在您的環境中所需的許可權。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要新增或移除角色指派，您必須具有：
 
@@ -155,7 +155,7 @@ ms.locfileid: "74707873"
 
    ![移除角色指派](./media/role-assignments-external-users/remove-role-assignment-select.png)
 
-1. 按一下 [移除]。
+1. 按一下 **[移除]** 。
 
    ![移除角色指派訊息](./media/role-assignments-external-users/remove-role-assignment.png)
 
@@ -165,7 +165,7 @@ ms.locfileid: "74707873"
 
 1. 按一下您要移除的來賓使用者。
 
-1. 按一下 [刪除]。
+1. 按一下 **[刪除]** 。
 
    ![刪除來賓使用者](./media/role-assignments-external-users/delete-guest-user.png)
 

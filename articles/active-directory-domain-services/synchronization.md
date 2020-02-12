@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: a0c9a654d0ee49dc2bdb6efb7370a3ad2b199e10
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: b2a1bcedcc459a21bbc8a461ba9c8d9a8d65aebe
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481308"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132195"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>如何在 Azure AD Domain Services 受控網域中同步處理物件和認證
 
@@ -38,7 +38,7 @@ Azure Active Directory Domain Services （AD DS）受控網域中的物件和認
 
 下表列出一些常見的屬性，以及它們如何同步處理至 Azure AD DS。
 
-| Azure AD DS 中的屬性 | 來源 | 注意事項 |
+| Azure AD DS 中的屬性 | 來源 | 注意 |
 |:--- |:--- |:--- |
 | UPN | Azure AD 租使用者中的使用者*UPN*屬性 | Azure AD 租使用者的 UPN 屬性會依相同方式同步處理，以 Azure AD DS。 最可靠的登入 Azure AD DS 受控網域的方式是使用 UPN。 |
 | SAMAccountName | Azure AD 租使用者中的使用者*mailNickname*屬性或自動產生 | *SAMAccountName*屬性是源自 Azure AD 租使用者中的*mailNickname*屬性。 如果有多個使用者帳戶具有相同的*mailNickname*屬性，則會自動產生*SAMAccountName* 。 如果使用者的*mailNickname*或*UPN*前置詞超過20個字元，則會自動產生*samaccountname*以符合*samaccountname*屬性的20個字元限制。 |
@@ -97,10 +97,10 @@ Azure Active Directory Domain Services （AD DS）受控網域中的物件和認
 
 ## <a name="synchronization-from-on-premises-ad-ds-to-azure-ad-and-azure-ad-ds"></a>從內部部署 AD DS 同步處理至 Azure AD 和 Azure AD DS
 
-Azure AD Connect 可用來將使用者帳戶、群組成員資格及認證雜湊從內部部署 AD DS 環境同步處理至 Azure AD。 使用者帳戶的屬性（例如 UPN 和內部部署安全識別碼（SID））會進行同步處理。 若要使用 Azure AD Domain Services 登入，NTLM 和 Kerberos 驗證所需的舊版密碼雜湊也會同步處理至 Azure AD。
+Azure AD Connect 可用來將使用者帳戶、群組成員資格及認證雜湊從內部部署 AD DS 環境同步處理至 Azure AD。 使用者帳戶的屬性（例如 UPN 和內部部署安全識別碼（SID））會進行同步處理。 若要使用 Azure AD DS 登入，NTLM 和 Kerberos 驗證所需的舊版密碼雜湊也會同步處理至 Azure AD。
 
 > [!IMPORTANT]
-> Azure AD Connect 應該只安裝並設定為與內部部署 AD DS 環境同步處理。 不支援在 Azure AD DS 受控網域中安裝 Azure AD Connect，以將物件同步處理回 Azure AD。
+> Azure AD Connect 應該只會為了與內部部署 AD DS 環境同步處理而安裝和設定。 不支援在 Azure AD DS 受控網域中安裝 Azure AD Connect，以將物件同步處理回 Azure AD。
 
 如果您設定回寫，Azure AD 的變更會同步處理回內部部署 AD DS 環境。 例如，如果使用者使用 Azure AD 自助式密碼管理來變更其密碼，則會在內部部署 AD DS 環境中更新密碼。
 
@@ -113,7 +113,7 @@ Azure AD Connect 可用來將使用者帳戶、群組成員資格及認證雜湊
 
 Azure AD 具有更簡單和一般的命名空間。 若要讓使用者可靠地存取受 Azure AD 保護的應用程式，請解決不同樹系中各個使用者帳戶之間的 UPN 衝突。 Azure AD DS 受控網域會使用類似于 Azure AD 的平面 OU 結構。 即使您已在內部部署環境中設定階層式 OU 結構，所有使用者帳戶和群組都會儲存在*AADDC Users*容器中（儘管已從不同的內部部署網域或樹系進行同步處理）。 Azure AD DS 受控網域會將任何階層式 OU 結構壓平合併。
 
-如先前所述，不會從 Azure AD DS 回到 Azure AD 的同步處理。 您可以在 Azure AD DS 中[建立自訂群組織單位（OU）](create-ou.md) ，然後在這些自訂 ou 內建立使用者、群組或服務帳戶。 在自訂 Ou 中建立的任何物件都不會同步處理回 Azure AD。 這些物件只能在 Azure AD DS 受控網域內使用，而且不能使用 Azure AD PowerShell Cmdlet、Azure AD 圖形 API 或使用 Azure AD 管理 UI 來顯示。
+如先前所述，不會從 Azure AD DS 回到 Azure AD 的同步處理。 您可以在 Azure AD DS 中[建立自訂群組織單位（OU）](create-ou.md) ，然後在這些自訂 ou 內建立使用者、群組或服務帳戶。 在自訂 Ou 中建立的任何物件都不會同步處理回 Azure AD。 這些物件只能在 Azure AD DS 受控網域內使用，而且不能使用 Azure AD PowerShell Cmdlet、Microsoft Graph API，或使用 Azure AD 管理 UI 來顯示。
 
 ## <a name="what-isnt-synchronized-to-azure-ad-ds"></a>什麼不會同步處理至 Azure AD DS
 
@@ -128,9 +128,13 @@ Azure AD 具有更簡單和一般的命名空間。 若要讓使用者可靠地�
 
 ## <a name="password-hash-synchronization-and-security-considerations"></a>密碼雜湊同步處理和安全性考量
 
-當您啟用 Azure AD DS 時，必須要有 NTLM + Kerberos 驗證的舊版密碼雜湊。 Azure AD 不會儲存純文字密碼，因此無法為現有的使用者帳戶自動產生這些雜湊。 一旦產生並儲存，NTLM 和 Kerberos 相容的密碼雜湊一律會以加密的方式儲存在 Azure AD 中。 加密金鑰對每個 Azure AD 租使用者而言是唯一的。 這些雜湊會進行加密，因此只有 Azure AD DS 可以存取解密金鑰。 Azure AD 中沒有任何其他服務或元件具有解密金鑰的存取權。 然後，舊版密碼雜湊會從 Azure AD 同步處理到 Azure AD DS 受控網域的網域控制站。 Azure AD DS 中這些受管理網域控制站的磁片會進行待用加密。 這些密碼雜湊會儲存在這些網域控制站上並受到保護，類似于在內部部署 AD DS 環境中儲存和保護密碼的方式。
+當您啟用 Azure AD DS 時，必須要有 NTLM + Kerberos 驗證的舊版密碼雜湊。 Azure AD 不會儲存純文字密碼，因此無法為現有的使用者帳戶自動產生這些雜湊。 一旦產生並儲存，NTLM 和 Kerberos 相容的密碼雜湊一律會以加密的方式儲存在 Azure AD 中。
 
-對於僅限雲端的 Azure AD 環境，[使用者必須重設/變更其密碼](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)，才能產生必要的密碼雜湊，並將其儲存在 Azure AD 中。 針對在啟用 Azure AD Domain Services 之後於 Azure AD 中建立的任何雲端使用者帳戶，以 NTLM 和 Kerberos 相容的格式產生並儲存密碼雜湊。 這些新帳戶不需要重設/變更其密碼，就會產生舊版密碼雜湊。
+加密金鑰對每個 Azure AD 租使用者而言是唯一的。 這些雜湊會進行加密，因此只有 Azure AD DS 可以存取解密金鑰。 Azure AD 中沒有任何其他服務或元件具有解密金鑰的存取權。
+
+然後，舊版密碼雜湊會從 Azure AD 同步處理到 Azure AD DS 受控網域的網域控制站。 Azure AD DS 中這些受管理網域控制站的磁片會進行待用加密。 這些密碼雜湊會儲存在這些網域控制站上並受到保護，類似于在內部部署 AD DS 環境中儲存和保護密碼的方式。
+
+對於僅限雲端的 Azure AD 環境，[使用者必須重設/變更其密碼](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)，才能產生必要的密碼雜湊，並將其儲存在 Azure AD 中。 針對在啟用 Azure AD Domain Services 之後於 Azure AD 中建立的任何雲端使用者帳戶，以 NTLM 和 Kerberos 相容的格式產生並儲存密碼雜湊。 這些新帳戶不需要重設或變更其密碼，就會產生舊版密碼雜湊。
 
 針對使用 Azure AD Connect 從內部部署 AD DS 環境同步的混合式使用者帳戶，您必須[將 Azure AD Connect 設定為以 NTLM 和 Kerberos 相容的格式同步處理密碼雜湊](tutorial-configure-password-hash-sync.md)。
 

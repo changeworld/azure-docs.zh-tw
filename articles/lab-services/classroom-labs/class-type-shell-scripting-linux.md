@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 9502a81149df11ffa378bf8ffc2c377f4bb22d7f
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 226c9ae1c42c85db57dab3fd1911943e167a6288
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177109"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133687"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>設定實驗室來教 Linux 上的 shell 腳本
 本文說明如何設定實驗室來教您在 Linux 上的 shell 腳本。 指令碼是系統管理中很有用的部分，可讓管理員避免重複的工作。 在此範例案例中，課程涵蓋了傳統的 Bash 指令碼和增強型指令碼。 增強型指令碼是結合了 Bash 命令與 Ruby 的指令碼。 這種方法可讓 Ruby 傳遞資料，以及讓 Bash 命令與殼層互動。 
@@ -30,17 +30,17 @@ ms.locfileid: "73177109"
 
 建立實驗室帳戶之後，請啟用實驗室帳戶中的下列設定： 
 
-| 實驗室帳戶設定 | 範例的指示 |
+| 實驗室帳戶設定 | Instructions |
 | ----------- | ------------ |  
-| Marketplace 映射 | 啟用[Ubuntu Server 18.04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic)映射，以便在您的實驗室帳戶中使用。 如需詳細資訊，請參閱[指定可供實驗室建立者使用的 Marketplace 映射](tutorial-setup-lab-account.md#specify-marketplace-images-available-to-lab-creators) | 
+| Marketplace 映射 | 啟用[Ubuntu Server 18.04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic)映射，以便在您的實驗室帳戶中使用。 如需詳細資訊，請參閱[指定可供實驗室建立者使用的 Marketplace 映射](how-to-configure-lab-accounts.md#specify-marketplace-images-available-to-lab-creators) | 
 
 遵循[此教學](tutorial-setup-classroom-lab.md)課程來建立新的實驗室，並套用下列設定：
 
 | 實驗室設定 | 值/指示 | 
 | ------------ | ------------------ |
-| 虛擬機器（VM）大小 | 小  |
+| 虛擬機器（VM）大小 | 小型  |
 | VM 映射 | [Ubuntu Server 18.04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) |
-| 啟用遠端桌面連線 | 啟用. <p>啟用此設定可讓教師和學生使用遠端桌面（RDP）連接到其 Vm。 如需詳細資訊，請參閱[在 Azure 實驗室服務中的實驗室中啟用 Linux 虛擬機器的遠端桌面](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm)。 </p>|
+| 啟用遠端桌面連線 | [啟用]。 <p>啟用此設定可讓教師和學生使用遠端桌面（RDP）連接到其 Vm。 如需詳細資訊，請參閱[在 Azure 實驗室服務中的實驗室中啟用 Linux 虛擬機器的遠端桌面](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm)。 </p>|
 
 
 ## <a name="install-desktop-and-xrdp"></a>安裝 desktop 和 xrdp

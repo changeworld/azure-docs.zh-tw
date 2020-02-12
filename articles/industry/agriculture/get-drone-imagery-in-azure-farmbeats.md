@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: a64627028ea4ecc732924d0c9fca196204f7951d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3e452cd548738e5f211899d3a6a676f883d800ce
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75482552"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132040"
 ---
 # <a name="get-drone-imagery-from-drone-partners"></a>從無人機合作夥伴取得無人機影像
 
@@ -38,7 +38,7 @@ ms.locfileid: "75482552"
 請遵循下列步驟。
 
 1. 下載此[腳本](https://aka.ms/farmbeatspartnerscript)，並將它解壓縮至您的本機磁片磁碟機。 Zip 檔案中有兩個檔案。
-2. 登入 [Azure 入口網站](https://portal.azure.com/)並開啟 Azure Cloud Shell。 在入口網站右上角的工具列上，可以使用此選項。
+2. 登入[Azure 入口網站](https://portal.azure.com/)並開啟 Azure Cloud Shell。 在入口網站右上角的工具列上，可以使用此選項。
 
     ![在入口網站的右上方列上開啟 Azure Cloud Shell](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
@@ -91,4 +91,4 @@ ms.locfileid: "75482552"
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解如何使用 FarmBeats Datahub [api](references-for-azure-farmbeats.md#rest-api)來取得您的無人機影像。
+瞭解如何使用 FarmBeats Datahub [api](rest-api-in-azure-farmbeats.md)來取得您的無人機影像。

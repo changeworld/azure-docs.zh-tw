@@ -9,14 +9,14 @@ ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 01/16/2020
-ms.openlocfilehash: 5df00d68b7114cc489b0708f5c2e401c87d0be15
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: d41b0499df1a62440e8c1991e29f7963224a50d6
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314023"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138158"
 ---
-# <a name="import-your-data-into-azure-machine-learning-designer"></a>將資料匯入 Azure Machine Learning 設計工具
+# <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>將資料匯入 Azure Machine Learning 設計工具（預覽）
 
 在本文中，您將瞭解如何在設計工具中匯入您自己的資料，以建立自訂的解決方案。 有兩種方式可以將資料匯入設計工具中： 
 
@@ -45,7 +45,7 @@ ms.locfileid: "76314023"
 
 ![顯示設計工具選擇區中已儲存資料集位置的螢幕擷取畫面](media/how-to-designer-import-data/use-datasets-designer.png)
 
-向您的機器學習服務工作區註冊的任何檔案[資料集](how-to-create-register-datasets.md#dataset-types)都會出現在模組調色板中。 您不一定要使用在設計工具中建立的資料集。
+
 
 > [!NOTE]
 > 設計工具目前僅支援處理[表格式資料集](how-to-create-register-datasets.md#dataset-types)。 如果您想要使用檔案[資料集](how-to-create-register-datasets.md#dataset-types)，請使用適用于 Python 和 R 的 Azure Machine Learning SDK。
@@ -80,7 +80,7 @@ ms.locfileid: "76314023"
 * 整數
 * Decimal
 * Boolean
-* 日期
+* Date
 
 設計工具會使用內部資料類型，在模組之間傳遞資料。 您可以使用 [[轉換成資料集](algorithm-module-reference/convert-to-dataset.md)] 模組，將您的資料明確轉換成資料表格式。 接受內部格式以外之格式的任何模組，將會以無訊息模式轉換資料，然後再將其傳遞至下一個模組。
 

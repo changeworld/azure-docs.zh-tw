@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: spelluru
-ms.openlocfilehash: b6f51dee948d9e4d9e3f8594f9f7e60fb11b7057
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 29816d158cf1428727b7ff17bcc2c347f402dedf
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647334"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134537"
 ---
 # <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中指定實驗室虛擬機器的資源群組
 
@@ -31,7 +31,7 @@ ms.locfileid: "75647334"
 透過這項功能，您可以使用腳本，在您的 Azure 訂用帳戶內為您所有的實驗室 Vm 指定新的或現有的資源群組。 目前，Azure DevTest Labs 透過 API 支援這項功能。
 
 > [!NOTE]
-> 當您在 DevTest Labs 中建立實驗室時，適用所有訂用帳戶限制。 將實驗室視為您訂用帳戶中的任何其他資源。 在資源群組的情況下，限制為[每個訂用帳戶980個資源群組](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager)。 
+> 當您在 DevTest Labs 中建立實驗室時，適用所有訂用帳戶限制。 將實驗室視為您訂用帳戶中的任何其他資源。 在資源群組的情況下，限制為[每個訂用帳戶980個資源群組](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits)。 
 
 ## <a name="use-azure-portal"></a>使用 Azure 入口網站
 請遵循下列步驟，為在實驗室中建立的所有 Vm 指定資源群組。 

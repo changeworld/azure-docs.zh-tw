@@ -1,21 +1,19 @@
 ---
-title: 使用 Windows Vm 的鄰近放置群組
-description: 瞭解如何在 Azure 中建立和使用 Windows 虛擬機器的鄰近放置群組。
-services: virtual-machines-windows
-author: cynthn
-manager: gwallace
-ms.service: virtual-machines-windows
+title: PowerShell：使用鄰近放置群組
+description: 瞭解如何使用 Azure PowerShell 來建立和使用鄰近放置群組。
+services: virtual-machines
+ms.service: virtual-machines
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/30/2019
+ms.date: 01/27/2020
 ms.author: cynthn
-ms.openlocfilehash: 6d0c35737151b060dcffba8944f4a1361d36dc14
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: c1c144ac9db040bfac45ecc7838401ae09c9e2c4
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73171216"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137995"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-powershell"></a>使用 PowerShell 將 Vm 部署至鄰近放置群組
 
@@ -71,12 +69,107 @@ Get-AzProximityPlacementGroup -ResourceId $ppg.Id |
     Format-Table -Property VirtualMachines -Wrap
 ```
 
+### <a name="move-an-existing-vm-into-a-proximity-placement-group"></a>將現有的 VM 移到鄰近位置群組
+
+您也可以將現有的 VM 新增至鄰近放置群組。 您必須先 stop\deallocate VM，然後更新 VM 並重新啟動。
+
+```azurepowershell-interactive
+$ppg = Get-AzProximityPlacementGroup -ResourceGroupName myPPGResourceGroup -Name myPPG
+$vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
+Stop-AzVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName
+Update-AzVM -VM $vm -ResourceGroupName $vm.ResourceGroupName -ProximityPlacementGroupId $ppg.Id
+Restart-AzVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName
+```
+
+### <a name="move-an-existing-vm-out-of-a-proximity-placement-group"></a>將現有的 VM 移出近接位置群組
+
+若要從鄰近放置群組移除 VM，您必須先 stop\deallocate VM，然後更新 VM 並重新啟動。
+
+```azurepowershell-interactive
+$ppg = Get-AzProximityPlacementGroup -ResourceGroupName myPPGResourceGroup -Name myPPG
+$vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
+Stop-AzVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName
+$vm.ProximityPlacementGroupId = ""
+Update-AzVM -VM $vm -ResourceGroupName $vm.ResourceGroupName 
+Restart-AzVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName
+```
+
+
 ## <a name="availability-sets"></a>可用性設定組 (Availability Sets)
 您也可以在鄰近放置群組中建立可用性設定組。 使用與[new-azavailabilityset 組](/powershell/module/az.compute/new-azavailabilityset)指令程式相同的 `-ProximityPlacementGroup` 參數來建立可用性設定組，而且在可用性設定組中建立的所有 vm 也會在相同的鄰近放置群組中建立。
+
+若要在鄰近放置群組中新增或移除現有的可用性設定組，您必須先停止可用性設定組中的所有 Vm。 
+
+### <a name="move-an-existing-availability-set-into-a-proximity-placement-group"></a>將現有的可用性設定組移至鄰近位置群組
+
+```azurepowershell-interactive
+$resourceGroup = "myResourceGroup"
+$avSetName = "myAvailabilitySet"
+$avSet = Get-AzAvailabilitySet -ResourceGroupName $resourceGroup -Name $avSetName
+$vmIds = $avSet.VirtualMachinesReferences
+foreach ($vmId in $vmIDs){
+    $string = $vmID.Id.Split("/")
+    $vmName = $string[8]
+    Stop-AzVM -ResourceGroupName $resourceGroup -Name $vmName -Force
+    } 
+
+$ppg = Get-AzProximityPlacementGroup -ResourceGroupName myPPG -Name myPPG
+Update-AzAvailabilitySet -AvailabilitySet $avSet -ProximityPlacementGroupId $ppg.Id
+foreach ($vmId in $vmIDs){
+    $string = $vmID.Id.Split("/")
+    $vmName = $string[8]
+    Start-AzVM -ResourceGroupName $resourceGroup -Name $vmName 
+    } 
+```
+
+### <a name="move-an-existing-availability-set-out-of-a-proximity-placement-group"></a>將現有的可用性設定組移出鄰近位置群組
+
+```azurepowershell-interactive
+$resourceGroup = "myResourceGroup"
+$avSetName = "myAvailabilitySet"
+$avSet = Get-AzAvailabilitySet -ResourceGroupName $resourceGroup -Name $avSetName
+$vmIds = $avSet.VirtualMachinesReferences
+foreach ($vmId in $vmIDs){
+    $string = $vmID.Id.Split("/")
+    $vmName = $string[8]
+    Stop-AzVM -ResourceGroupName $resourceGroup -Name $vmName -Force
+    } 
+
+$avSet.ProximityPlacementGroup = ""
+Update-AzAvailabilitySet -AvailabilitySet $avSet 
+foreach ($vmId in $vmIDs){
+    $string = $vmID.Id.Split("/")
+    $vmName = $string[8]
+    Start-AzVM -ResourceGroupName $resourceGroup -Name $vmName 
+    } 
+```
 
 ## <a name="scale-sets"></a>擴展集
 
 您也可以在鄰近放置群組中建立擴展集。 使用與[get-azvmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss)相同的 `-ProximityPlacementGroup` 參數來建立擴展集，而且所有實例將會在相同的鄰近放置群組中建立。
+
+
+若要在鄰近放置群組中新增或移除現有的擴展集，您必須先停止擴展集。 
+
+### <a name="move-an-existing-scale-set-into-a-proximity-placement-group"></a>將現有的擴展集移至鄰近位置群組
+
+```azurepowershell-interactive
+$ppg = Get-AzProximityPlacementGroup -ResourceGroupName myPPG -Name myPPG
+$vmss = Get-AzVmss -ResourceGroupName myVMSSResourceGroup -VMScaleSetName myScaleSet
+Stop-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupName
+Update-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupName -ProximityPlacementGroupId $ppg.Id
+Restart-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupName
+```
+
+### <a name="move-an-existing-scale-set-out-of-a-proximity-placement-group"></a>將現有的擴展集移出近接位置群組
+
+```azurepowershell-interactive
+$vmss = Get-AzVmss -ResourceGroupName myVMSSResourceGroup -VMScaleSetName myScaleSet
+Stop-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupName
+$vmss.ProximityPlacementGroup = ""
+Update-AzVmss -VirtualMachineScaleSet $vmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupName  
+Restart-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupName
+```
 
 ## <a name="next-steps"></a>後續步驟
 

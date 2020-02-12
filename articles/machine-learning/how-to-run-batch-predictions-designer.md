@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Machine Learning 設計工具執行批次預測
+title: 使用 Azure Machine Learning 設計工具執行批次預測 (預覽)
 titleSuffix: Azure Machine Learning
 description: 了解如何使用設計工具來定型模型和設定批次預測管線。 將管線部署為可從任何 HTTP 程式庫觸發的參數化 Web 服務。
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 01/13/2020
 ms.custom: Ignite2019
-ms.openlocfilehash: d2653699a69cb468e8490c2cba579b73e526d1ed
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 95a3c1b892cacd802f359fdc03de74fa60a1e118
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311881"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138113"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>使用 Azure Machine Learning 設計工具執行批次預測
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "76311881"
 
 若要瞭解如何使用 SDK 設定批次評分服務，請參閱隨附的操作[說明](how-to-run-batch-predictions.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本操作說明假設您已經有訓練管線。 如需設計工具的引導式簡介，請完成設計工具教學課程的[第一個部分](tutorial-designer-automobile-price-train-score.md)。 
 
@@ -41,7 +41,7 @@ ms.locfileid: "76311881"
 
 1. 移至工作區中的 [**設計**工具] 索引標籤。
 
-1. 選取定型管線，以訓練模型要用來進行預測。
+1. 選取訓練管線，以訓練您要用來進行預測的模型。
 
 1. **執行**管線。
 

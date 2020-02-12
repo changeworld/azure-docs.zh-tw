@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 05/01/2019
+ms.date: 10/02/2019
 ms.author: juliako
-ms.openlocfilehash: 5b5956094da497cfbb72608587b2e0389ceec8fc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3520b7d6b0fd67fdbff3e1dd78d038f36ad5f0af
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427136"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133427"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>從媒體服務 v2 移動至 v3 的移轉指導
 
@@ -103,7 +103,7 @@ v3 API 與 v2 API 具有下列功能差距。 縮小差距是刻不容緩的工�
 
 下表顯示 v2 和 v3 常見案例的程式碼差異。
 
-|案例|V2 API|V3 API|
+|狀況|V2 API|V3 API|
 |---|---|---|
 |建立資產並上傳檔案 |[v2 .NET 範例](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[v3 .NET 範例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
 |提交作業|[v2 .NET 範例](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[v3 .NET 範例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>示範如何先建立 Transform，然後再提交 Job。|
@@ -115,7 +115,7 @@ v3 API 與 v2 API 具有下列功能差距。 縮小差距是刻不容緩的工�
 * 目前您無法使用 Azure 入口網站管理 v3 資源。 請使用 [REST API](https://aka.ms/ams-v3-rest-sdk)、CLI 或其中一個支援的 SDK。
 * 您需要在您的帳戶中佈建媒體保留單位 (MRU)，才能控制作業的並行和效能，尤其是與視訊或音訊分析相關的作業。 如需詳細資訊，請參閱[調整媒體處理](../previous/media-services-scale-media-processing-overview.md)。 您可以使用[適用於媒體服務 v3 的 CLI 2.0](media-reserved-units-cli-how-to.md)、使用 [Azure 入口網站](../previous/media-services-portal-scale-media-processing.md)，或使用 [v2 API](../previous/media-services-dotnet-encoding-units.md)。 不論您是使用媒體服務 v2 或 v3 API，都需要佈建 MRU。
 * 使用 v3 API 建立的媒體服務實體無法由 v2 API 管理。  
-* 不建議透過 v3 API 管理使用 v2 API 建立的實體。 以下是讓兩個版本的實體不相容的差異範例：   
+* 並非 V2 API 中的所有實體都會自動顯示在 V3 API 中。  以下是兩個版本中不相容的實體範例：  
     * 在 v2 中建立的 Job 和 Task 不會出現在 v3 中，因為它們與 Transform 沒有關聯。 建議是切換至 v3 Transform 和 Job。 在轉換期間將會有一段相當短的時間需要監視傳遞 v2 Job。
     * 使用 v2 建立的通道和程式 (這會對應到 v3 中的即時事件和即時輸出) 無法繼續使用 v3 管理。 建議在方便的通道停止時，切換至 v3 即時事件和即時輸出。<br/>目前您無法移轉持續執行的通道。  
 

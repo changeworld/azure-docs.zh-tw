@@ -14,21 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 8bd0014518dc93abb952114a1728f8fc1d3fb4a5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 71a31228602ef161158eaa05c80d50f65de98a50
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64708072"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133274"
 ---
 # <a name="how-to-configure-on-premises-encoders-when-using-azure-media-services-to-create-multi-bitrate-streams"></a>使用 Azure 媒體服務時如何設定內部部署編碼器來建立多位元速率串流
 本主題列出的內部部署即時編碼器可用來擷取即時事件，並傳送單一位元速率即時串流到 AMS 通道 (啟用即時編碼) 以供進一步處理。 本主題也列出示範如何設定列出之編碼器的教學課程連結。
 
 > [!NOTE]
 > 透過 RTMP 串流處理時，請檢查防火牆和/或 Proxy 設定，確認輸出 TCP 連接埠 1935 和 1936 已開啟。
-
-## <a name="flash-media-live-encoder"></a>Flash Media Live Encoder
-如需有關如何設定 [Flash Media Live Encoder](https://www.adobe.com/products/flash-media-encoder.html) (FMLE) 編碼器以將單一位元速率即時串流傳送到 AMS 通道的詳細資訊，請參閱[設定 FMLE](media-services-configure-fmle-live-encoder.md)。
 
 ## <a name="haivision-kb-encoder"></a>Haivision KB 編碼器
 如需有關如何設定 [Haivision KB Encoder](https://www.haivision.com/products/kb-series/) 編碼器以將單一位元速率即時串流傳送到 AMS 通道的詳細資訊，請參閱[設定 Haivision KB 編碼器](media-services-configure-kb-live-encoder.md)。

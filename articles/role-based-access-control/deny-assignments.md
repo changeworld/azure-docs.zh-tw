@@ -1,5 +1,5 @@
 ---
-title: 了解 Azure 資源的拒絕指派 | Microsoft Docs
+title: 了解 Azure 資源的拒絕指派
 description: 了解 Azure 資源之角色型存取控制 (RBAC) 中的拒絕指派。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 2c663b587d2e9ee278fc774c2841899b060ccbcf
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 7ab811635ca50c3a28ecd8bdf6d0f18fad4c384f
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74479365"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137384"
 ---
 # <a name="understand-deny-assignments-for-azure-resources"></a>了解 Azure 資源的拒絕指派
 
@@ -54,21 +54,21 @@ ms.locfileid: "74479365"
  拒絕指派有下列屬性：
 
 > [!div class="mx-tableFixed"]
-> | 屬性 | 必要 | 在系統提示您進行確認時，輸入 | 描述 |
+> | 屬性 | 必要 | 類型 | 描述 |
 > | --- | --- | --- | --- |
-> | `DenyAssignmentName` | yes | 字串 | 拒絕指派的顯示名稱。 名稱在指定範圍內必須是唯一的。 |
-> | `Description` | 否 | 字串 | 拒絕指派的描述。 |
+> | `DenyAssignmentName` | 是 | String | 拒絕指派的顯示名稱。 名稱在指定範圍內必須是唯一的。 |
+> | `Description` | 否 | String | 拒絕指派的描述。 |
 > | `Permissions.Actions` | 至少一個 Actions 或一個 DataActions | String[] | 一個字串陣列，指定拒絕指派要封鎖存取權的管理作業。 |
 > | `Permissions.NotActions` | 否 | String[] | 一個字串陣列，指定要從拒絕指派排除的管理作業。 |
 > | `Permissions.DataActions` | 至少一個 Actions 或一個 DataActions | String[] | 一個字串陣列，指定拒絕指派要封鎖存取權的資料作業。 |
 > | `Permissions.NotDataActions` | 否 | String[] | 一個字串陣列，指定要從拒絕指派排除的資料作業。 |
-> | `Scope` | 否 | 字串 | 一個字串， 指定拒絕指派要套用的範圍。 |
-> | `DoNotApplyToChildScopes` | 否 | 布林值 | 指定拒絕指派是否要套用到子範圍。 預設值為 false。 |
-> | `Principals[i].Id` | yes | String[] | 要套用拒絕指派的 Azure AD 主體物件識別碼 (使用者、群組、服務主體或受控識別) 陣列。 設定為空 GUID `00000000-0000-0000-0000-000000000000` 以代表所有主體。 |
+> | `Scope` | 否 | String | 一個字串， 指定拒絕指派要套用的範圍。 |
+> | `DoNotApplyToChildScopes` | 否 | Boolean | 指定拒絕指派是否要套用到子範圍。 預設值為 false。 |
+> | `Principals[i].Id` | 是 | String[] | 要套用拒絕指派的 Azure AD 主體物件識別碼 (使用者、群組、服務主體或受控識別) 陣列。 設定為空 GUID `00000000-0000-0000-0000-000000000000` 以代表所有主體。 |
 > | `Principals[i].Type` | 否 | String[] | 由主體 [i]. Id 所代表的物件類型陣列。設定為 `SystemDefined` 表示所有主體。 |
 > | `ExcludePrincipals[i].Id` | 否 | String[] | 不套用拒絕指派的 Azure AD 主體物件識別碼 (使用者、群組、服務主體或受控識別) 陣列。 |
 > | `ExcludePrincipals[i].Type` | 否 | String[] | 由 ExcludePrincipals[i].Id 代表的物件類型陣列。 |
-> | `IsSystemProtected` | 否 | 布林值 | 指定此拒絕指派是否由 Azure 建立且無法編輯或刪除。 目前，所有拒絕指派都受系統保護。 |
+> | `IsSystemProtected` | 否 | Boolean | 指定此拒絕指派是否由 Azure 建立且無法編輯或刪除。 目前，所有拒絕指派都受系統保護。 |
 
 ## <a name="the-all-principals-principal"></a>所有主體主體
 

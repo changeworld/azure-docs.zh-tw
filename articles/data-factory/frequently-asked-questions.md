@@ -8,13 +8,13 @@ ms.author: daperlov
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/27/2018
-ms.openlocfilehash: 8238f2ea8395fc53044703db619d768918cb1834
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 02/10/2020
+ms.openlocfilehash: 2e50d226282536fa4e8c044d2ee3d91df4cfd1ee
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644693"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77131477"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory 常見問題集
 本文提供 Azure Data Factory 常見問題集的解答。  
@@ -168,13 +168,13 @@ Data Factory 中的連結服務，有兩個用途：
 是，參數是 Data Factory 中的第一級最上層概念。 您可定義管線層級的參數並傳遞引數，同時依需求或使用觸發程序來執行管線執行。  
 
 ### <a name="can-i-define-default-values-for-the-pipeline-parameters"></a>可以定義管線參數的預設值嗎？ 
-可以。 您可以定義管線中參數的預設值。 
+是。 您可以定義管線中參數的預設值。 
 
 ### <a name="can-an-activity-in-a-pipeline-consume-arguments-that-are-passed-to-a-pipeline-run"></a>管線中的活動可否取用傳遞給管線執行的引數？ 
-可以。 管線內的每個活動皆可使用 `@parameter` 建構，來取用傳遞給管線執行的參數值。 
+是。 管線內的每個活動皆可使用 `@parameter` 建構，來取用傳遞給管線執行的參數值。 
 
 ### <a name="can-an-activity-output-property-be-consumed-in-another-activity"></a>可以在另一個活動中取用活動輸出屬性？ 
-可以。 可以使用 `@activity` 建構在後續活動中取用活動輸出。
+是。 可以使用 `@activity` 建構在後續活動中取用活動輸出。
  
 ### <a name="how-do-i-gracefully-handle-null-values-in-an-activity-output"></a>如何正常處理活動輸出中的 Null 值？ 
 您可以在運算式中使用 `@coalesce` 建構來正常處理 Null 值。 
@@ -194,6 +194,9 @@ Data Factory 中的連結服務，有兩個用途：
 ### <a name="is-the-self-hosted-integration-runtime-available-for-data-flows"></a>自我裝載整合執行時間是否適用于資料流程？
 
 自我裝載 IR 是一種 ADF 管線結構，您可以搭配使用複製活動，從內部內部部署或以 VM 為基礎的資料來源和接收，取得或移動資料。 請先使用複本來暫存資料，然後再以轉換的資料流程作為後續的複本，如果您需要將轉換後的資料移回內部部署存放區。
+
+### <a name="does-the-data-flow-compute-engine-serve-multiple-tenants"></a>資料流程計算引擎是否為多個租使用者提供服務？
+永遠不會共用叢集。 我們保證在生產執行中執行的每個作業都能隔離。 在 debug 案例中，一個人會取得一個叢集，而所有的偵錯工具都會移至該使用者起始的該叢集。
 
 ## <a name="wrangling-data-flows"></a>整頓資料流程
 

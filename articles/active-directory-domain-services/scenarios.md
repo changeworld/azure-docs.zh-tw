@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 489f4a527a5afaf1bab5e2065137a5011d45baa6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5d0035e7c87806012d13117ae5335b7de5f3c99d
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474435"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132290"
 ---
 # <a name="common-use-cases-and-scenarios-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 的常見使用案例和情節
 
@@ -65,7 +65,7 @@ Contoso 想要將此應用程式遷移至 Azure。 應用程式應該會繼續�
 
 就像先前的範例案例一樣，假設 Contoso 具有內部部署的企業營運（LOB）應用程式，這幾乎是十年前開發的。 此應用程式是目錄感知，其設計目的是要使用 LDAP 從 AD DS 讀取使用者的相關資訊/屬性。 應用程式不會修改屬性，或以其他方式寫入目錄。
 
-Contoso 想要將此應用程式遷移至 Azure，並淘汰目前裝載此應用程式的過時內部部署硬體。 應用程式無法重寫以使用新式目錄 Api，例如以 REST 為基礎的 Azure AD 圖形 API。 您可以使用隨即轉移選項，將應用程式遷移至雲端執行，而不需要修改程式碼或重寫應用程式。
+Contoso 想要將此應用程式遷移至 Azure，並淘汰目前裝載此應用程式的過時內部部署硬體。 應用程式無法重寫以使用新式目錄 Api，例如以 REST 為基礎的 Microsoft Graph API。 您可以使用隨即轉移選項，將應用程式遷移至雲端執行，而不需要修改程式碼或重寫應用程式。
 
 為協助進行此案例，Azure AD DS 可讓應用程式對受控網域執行 LDAP 讀取，以取得所需的屬性資訊。 應用程式不需要重新撰寫，因此，隨即轉移至 Azure 可讓使用者繼續使用應用程式，而不會發現執行的位置有變更。
 
@@ -90,7 +90,7 @@ Contoso 想要將此應用程式遷移至 Azure，並淘汰目前裝載此應用
 
 下列部署考慮適用于此範例使用案例：
 
-* 請確定應用程式使用使用者名稱 + 密碼進行驗證。 Azure AD DS 不支援憑證或以智慧卡為基礎的驗證。
+* 請確定應用程式使用使用者名稱和密碼進行驗證。 Azure AD DS 不支援憑證或以智慧卡為基礎的驗證。
 * 您不能直接針對 Azure AD DS 受控網域變更密碼。 一般使用者可以使用 Azure AD 的自助密碼變更機制或對內部部署目錄變更其密碼。 這些變更會自動同步處理，並可在 Azure AD DS 受控網域中使用。
 
 ## <a name="windows-server-remote-desktop-services-deployments-in-azure"></a>Azure 中的 Windows Server 遠端桌面服務部署

@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 32eb8e71cfb978fac5b4d6d05af4da4fdc9f67b5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 0d220d1d88d9d761d9f0eba6187abefb372681be
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715515"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77131890"
 ---
 # <a name="ingest-historical-telemetry-data"></a>內嵌歷程記錄遙測資料
 
@@ -422,4 +422,4 @@ write_client.stop()
 
 ## <a name="next-steps"></a>後續步驟
 
-如需以 REST API 為基礎的整合詳細資料的詳細資訊，請參閱[REST API](references-for-azure-farmbeats.md#rest-api)。
+如需以 REST API 為基礎的整合詳細資料的詳細資訊，請參閱[REST API](rest-api-in-azure-farmbeats.md)。

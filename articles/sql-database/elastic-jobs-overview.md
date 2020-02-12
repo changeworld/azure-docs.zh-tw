@@ -11,12 +11,12 @@ author: srinia
 ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 283b4004f34372104eb083496400772884f5965e
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 633c3ffc8e266087c88116a15c43469727a9a50d
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420373"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133639"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>建立、設定及管理彈性作業
 
@@ -57,7 +57,7 @@ ms.locfileid: "74420373"
 
 ![彈性作業認證](media/elastic-jobs-overview/job-credentials.png)
 
-## <a name="security-best-practices"></a>安全性最佳作法
+## <a name="security-best-practices"></a>安全性最佳做法
 
 處理彈性作業有幾個最佳做法考量：
 
@@ -88,7 +88,7 @@ ms.locfileid: "74420373"
 
 
 ```sql
-IF NOT EXIST (some_object)
+IF NOT EXISTS (some_object)
     -- Create the object
     -- If it exists, drop the object before recreating it.
 ```

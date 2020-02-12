@@ -5,15 +5,15 @@ services: iot-central
 ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/02/2019
+ms.date: 02/11/2020
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 90bccf76b4c98c732cb926bb4252654d20478412
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 27517c375265b552d2e1dec4d8c167d1bc86549d
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77018970"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137675"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>從 Azure 入口網站管理 IoT Central
 
@@ -23,19 +23,17 @@ ms.locfileid: "77018970"
 
 ## <a name="create-iot-central-applications"></a>建立 IoT Central 應用程式
 
-若要建立應用程式，請流覽至[Azure 入口網站](https://ms.portal.azure.com)並選取左側主窗格中的 [**建立資源**]。
+若要建立應用程式，請流覽至[Azure 入口網站](https://ms.portal.azure.com)並選取 [**建立資源**]。
 
-![管理入口網站：導覽功能表](media/howto-manage-iot-central-from-portal/image0.png)
-
-在搜尋列中輸入 **IoT Central**。
+在 **[搜尋 Marketplace** ] 列中，輸入*IoT Central*：
 
 ![管理入口網站：搜尋](media/howto-manage-iot-central-from-portal/image0a1.png)
 
-在搜尋結果中選取 [ **IoT Central 應用程式**行] 專案。
+在搜尋結果中選取 [ **IoT Central 應用程式**] 磚：
 
 ![管理入口網站：搜尋結果](media/howto-manage-iot-central-from-portal/image0b1.png)
 
-現在，選取 [建立]。
+現在，選取 [**建立**]：
 
 ![管理入口網站：IoT Central 資源](media/howto-manage-iot-central-from-portal/image0c1.png)
 
@@ -55,19 +53,17 @@ ms.locfileid: "77018970"
 > [!NOTE]
 > 您看不到在 Azure 入口網站的免費定價方案上建立的應用程式，因為它們並未與您的訂用帳戶相關聯。
 
-若要開始使用，請選取左側主窗格中的 [**所有資源**]。 使用搜尋方塊鍵入您應用程式的名稱，以在您的資源清單中找到該名稱。 然後選取您想要管理的 IoT Central 應用程式。
+若要開始使用，請在入口網站中選取 [**所有資源**]。 選取 [**顯示隱藏的類型**]，然後開始在 [**依名稱篩選**] 中輸入應用程式的名稱來尋找它。 然後選取您想要管理的 IoT Central 應用程式。
 
-![管理入口網站：資源管理](media/howto-manage-iot-central-from-portal/image2a.png)
-
-若要流覽至應用程式，請選取 [IoT Central 應用程式 URL]。
+若要流覽至應用程式，請選取  **IoT Central 應用程式 URL**：
 
 ![管理入口網站：資源管理](media/howto-manage-iot-central-from-portal/image3.png)
 
-若要將應用程式移至不同的資源群組，請選取資源群組旁的 [**變更**]。 在 [移動資源] 頁面上，挑選要將此應用程式遷移至的資源群組。
+若要將應用程式移至不同的資源群組，請選取資源群組旁的 [**變更**]。 在 [**移動資源**] 頁面上，選擇您想要將此應用程式移至其中的資源群組：
 
 ![管理入口網站：資源管理](media/howto-manage-iot-central-from-portal/image4a.png)
 
-若要將應用程式移至不同的訂用帳戶，請選取訂用帳戶旁邊的**變更**連結。 在出現的對話方塊中，選擇要將此應用程式遷移至的訂用帳戶。
+若要將應用程式移至不同的訂用帳戶，請選取訂用帳戶旁邊的**變更**。 在 [**移動資源**] 頁面上，選擇您想要將此應用程式移至其中的訂用帳戶：
 
 ![管理入口網站：資源管理](media/howto-manage-iot-central-from-portal/image5a.png)
 

@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure Cosmos DB 時針對查詢問題進行疑難排解
 description: 瞭解如何識別、診斷和疑難排解 Azure Cosmos DB SQL 查詢問題。
-author: ginamr
+author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 01/14/2020
-ms.author: girobins
+ms.date: 02/10/2020
+ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: f016902f6cf7e0238dadb97d816f4590caec112e
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 34f5de01df72b48d275448e028ab0f8cb71e51f8
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77109337"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132072"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>使用 Azure Cosmos DB 時針對查詢問題進行疑難排解
 
@@ -198,7 +198,7 @@ SELECT * FROM c WHERE c.description = "Malabar spinach, cooked"
 查詢：
 
 ```sql
-SELECT * FROM c WHERE c.foodGroup = “Soups, Sauces, and Gravies” ORDER BY c._ts ASC
+SELECT * FROM c WHERE c.foodGroup = "Soups, Sauces, and Gravies" ORDER BY c._ts ASC
 ```
 
 編制索引原則：
@@ -308,7 +308,7 @@ Azure Cosmos DB 會使用[分割](partitioning-overview.md)區來調整個別容
 
 ```sql
 SELECT * FROM c
-WHERE c.foodGroup = “Soups, Sauces, and Gravies” and c.description = "Mushroom, oyster, raw"
+WHERE c.foodGroup = "Soups, Sauces, and Gravies" and c.description = "Mushroom, oyster, raw"
 ```
 
 這些查詢也會藉由在查詢中包含分割區索引鍵來進行優化：
@@ -327,7 +327,7 @@ WHERE c.description = "Mushroom, oyster, raw"
 
 ```sql
 SELECT * FROM c
-WHERE c.foodGroup > “Soups, Sauces, and Gravies” and c.description = "Mushroom, oyster, raw"
+WHERE c.foodGroup > "Soups, Sauces, and Gravies" and c.description = "Mushroom, oyster, raw"
 ```
 
 ## <a name="filters-on-multiple-properties"></a>多個屬性的篩選

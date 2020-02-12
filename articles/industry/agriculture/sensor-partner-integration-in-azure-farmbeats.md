@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: ef84c5f1d1c3f3b9e7cd76d7fab327426ea6e313
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: e4b2e7c40295d134fe24def0f140bc8097c21250
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530641"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132837"
 ---
 # <a name="sensor-partner-integration"></a>感應器合作夥伴整合
 
@@ -133,16 +133,16 @@ FarmBeats 資料中樞具有下列 Api，可讓裝置合作夥伴建立和管理
   ProductCode  | 裝置產品代碼或型號名稱或數位。 例如，EnviroMonitor # 6800。 |
   連接埠  | 埠名稱和類型，也就是數位或類比。  |
   名稱  | 用來識別資源的名稱。 例如，[模型名稱] 或 [產品名稱]。 |
-  說明  | 提供模型的有意義描述。 |
+  描述  | 提供模型的有意義描述。 |
   屬性  | 製造商提供的其他屬性。 |
   **裝置** |  |
   DeviceModelId  |相關聯裝置型號的識別碼。 |
   HardwareId   |裝置的唯一識別碼，例如 MAC 位址。  |
   ReportingInterval |報告間隔（以秒為單位）。 |
-  位置    |裝置緯度（-90 到 + 90）、經度（-180 到180）和提高許可權（以計量計）。 |
+  Location    |裝置緯度（-90 到 + 90）、經度（-180 到180）和提高許可權（以計量計）。 |
   ParentDeviceId | 此裝置所連接之父裝置的識別碼。 例如，如果節點連線至閘道，節點就會將 parentDeviceID 為閘道。 |
   名稱  | 用來識別資源的名稱。 裝置合作夥伴必須傳送與裝置合作夥伴端上的裝置名稱一致的名稱。 如果裝置名稱是裝置合作夥伴端上的使用者定義，則相同的使用者定義名稱應傳播至 FarmBeats。  |
-  說明  | 提供有意義的描述。  |
+  描述  | 提供有意義的描述。  |
   屬性  |製造商提供的其他屬性。  |
   **SensorModel** |  |
   類型（類比、數位）  |提及類比或數位感應器。|
@@ -156,16 +156,16 @@ FarmBeats 資料中樞具有下列 Api，可讓裝置合作夥伴建立和管理
   SensorMeasures > 深度  | 感應器的深度（以釐米為單位）。 例如，地面下的濕度 10 cm 測量。
   SensorMeasures > 描述  | 提供測量的有意義描述。
   名稱  | 用來識別資源的名稱。 例如，模型名稱或產品名稱。
-  說明  | 提供模型的有意義描述。
+  描述  | 提供模型的有意義描述。
   屬性  | 製造商提供的其他屬性。
   **感應器**  |  |
   HardwareId  | 製造商所設定之感應器的唯一識別碼。
   SensorModelId  | 相關聯感應器型號的識別碼。
-  位置  | 感應器緯度（-90 到 + 90）、經度（-180 到180）和提高許可權（以計量計）。
+  Location  | 感應器緯度（-90 到 + 90）、經度（-180 到180）和提高許可權（以計量計）。
   埠 > 名稱  |裝置上感應器連線的埠名稱和類型。 這必須與裝置模型中所定義的名稱相同。
   deviceId  | 感應器所連接之裝置的識別碼。
   名稱  | 用來識別資源的名稱。 例如，感應器名稱或產品名稱，以及型號或產品代碼。
-  說明  | 提供有意義的描述。
+  描述  | 提供有意義的描述。
   屬性  | 製造商提供的其他屬性。
 
  如需每個物件及其屬性的詳細資訊，請參閱[Swagger](https://aka.ms/FarmBeatsDatahubSwagger)。
@@ -345,4 +345,4 @@ write_client.stop()
 
 ## <a name="next-steps"></a>後續步驟
 
-如需 REST API 的詳細資訊，請參閱[REST API](references-for-azure-farmbeats.md#rest-api)。
+如需 REST API 的詳細資訊，請參閱[REST API](rest-api-in-azure-farmbeats.md)。

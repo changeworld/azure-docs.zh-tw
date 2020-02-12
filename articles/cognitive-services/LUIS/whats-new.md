@@ -1,34 +1,28 @@
 ---
 title: 新功能-Language Understanding （LUIS）
-titleSuffix: Azure Cognitive Services
 description: 本文會定期更新 Azure 認知服務 Language Understanding API 的相關新聞。
-author: diberry
-manager: nitinme
-ms.custom: experiment-luis-0519
-services: cognitive-services
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.author: diberry
-ms.openlocfilehash: e03c7489268f3ad7076481de4498c5e202f654b6
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.date: 02/11/2020
+ms.openlocfilehash: 716860b54e7d8e75984c0365cac61d14153c09ff
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280286"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137797"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding 的新功能
 
-了解該服務的新功能。 這些專案包括版本資訊、影片、blog 文章和其他類型的資訊。 將此頁面加入書簽，以掌握服務的最新狀態。  
+了解該服務的新功能。 這些專案包括版本資訊、影片、blog 文章和其他類型的資訊。 將此頁面加入書簽，以掌握服務的最新狀態。
 
-## <a name="release-notes"></a>版本資訊 
+## <a name="release-notes"></a>版本資訊
 
 ### <a name="november-4-2019---ignite"></a>2019年11月4日-Ignite
 
+* 影片-[使用 LUIS 和 Azure 認知服務進行的天然自然 Language Understanding （NLU）模型 |BRK2188](https://www.youtube.com/watch?v=JdJEV2jV0_Y)
+
 * 提升開發人員生產力
-    * 正式推出的[預測端點 V3](luis-migration-api-v3.md)。 
-    * 能夠以 lu （[LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)）格式匯入和匯出應用程式。 這鋪路了有效 CI/CD 程式的方式。 
+    * 正式推出的[預測端點 V3](luis-migration-api-v3.md)。
+    * 能夠以 lu （[LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)）格式匯入和匯出應用程式。 這鋪路了有效 CI/CD 程式的方式。
 * 語言擴充
     * [阿拉伯文和印度](luis-language-support.md)文（公開預覽）。
 * 預先建置的模型
@@ -37,8 +31,8 @@ ms.locfileid: "74280286"
     * 義大利[建實體](luis-reference-prebuilt-entities.md#italian-entity-support)-從 V2 變更的年齡、貨幣、維度、數位和百分比解析。
 * [Preview.luis.ai 入口網站](https://preview.luis.ai)中增強的使用者體驗-改頭換面標記體驗，以啟用建立和調試複雜模型。 試用預覽入口網站教學課程：
     * [僅意圖](tutorial-intents-only.md)
-    * [分解機器學習的實體](tutorial-machine-learned-entity.md) 
-* 預先語言理解功能-以較少的方式[建立複雜的語言模型](luis-concept-entity-types.md)。 
+    * [分解機器學習的實體](tutorial-machine-learned-entity.md)
+* 預先語言理解功能-以較少的方式[建立複雜的語言模型](luis-concept-entity-types.md)。
 * 在模型層級定義機器學習功能，並讓模型用來做為其他模型的信號，例如使用實體做為意圖和其他實體的功能。
 * 新的擴充[限制](luis-boundaries.md)-片語清單的最大上限和片語總計、新模型做為功能限制
 * 以深層階層結構的格式從文字中解壓縮資訊，讓對話應用程式更強大。
@@ -74,7 +68,7 @@ ms.locfileid: "74280286"
 
 * [V3 API 遷移指南的預覽](luis-migration-api-v3.md)
 * [改良的分析儀表板](luis-how-to-use-dashboard.md)
-* [改良的預建網域](luis-reference-prebuilt-domains.md) 
+* [改良的預建網域](luis-reference-prebuilt-domains.md)
 * [動態清單實體](luis-migration-api-v3.md#dynamic-lists-passed-in-at-prediction-time)
 * [外部實體](luis-migration-api-v3.md#external-entities-passed-in-at-prediction-time)
 
@@ -83,6 +77,10 @@ ms.locfileid: "74280286"
 [Bot Framework](https://blog.botframework.com/)
 
 ## <a name="videos"></a>影片
+
+### <a name="2019-ignite-videos"></a>2019 Ignite 影片
+
+[使用 LUIS 和 Azure 認知服務的 Advanced 天然 Language Understanding （NLU）模型 |BRK2188](https://www.youtube.com/watch?v=JdJEV2jV0_Y)
 
 ### <a name="2019-build-videos"></a>2019組建影片
 

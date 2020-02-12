@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 02/11/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1802c3a92ed18dec5cba974c54c92f01324245eb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 64934dd5bc591415c0bad6ac3dc6a4a2d98dd005
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847611"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77136297"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則來設定以 Azure Active Directory 帳戶進行登入
 
@@ -24,7 +24,7 @@ ms.locfileid: "76847611"
 
 本文說明如何使用 Azure Active Directory B2C （Azure AD B2C）中的[自訂原則](custom-policy-overview.md)，讓來自 Azure Active Directory （Azure AD）組織的使用者登入。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 完成在 [Azure Active Directory B2C 中開始使用自訂原則](custom-policy-get-started.md)中的步驟。
 
@@ -50,6 +50,19 @@ ms.locfileid: "76847611"
 1. 選取 [**憑證 & 密碼**]，然後選取 [**新增用戶端密碼**]。
 1. 輸入密碼的**描述**，選取到期日，然後選取 [**新增**]。 記錄密碼的**值**，以便在稍後的步驟中使用。
 
+## <a name="configuring-optional-claims"></a>設定選擇性宣告
+
+如果您想要從 Azure AD 取得 `family_name` 和 `given_name` 宣告，您可以在 Azure 入口網站 UI 或應用程式資訊清單中設定應用程式的選擇性宣告。 如需詳細資訊，請參閱[如何提供選擇性宣告給您的 Azure AD 應用程式](../active-directory/develop/active-directory-optional-claims.md)。
+
+1. 登入 [Azure 入口網站](https://portal.azure.com)。 搜尋並選取 [Azure Active Directory]。
+1. 從 [**管理**] 區段中，選取 [**應用程式註冊**]。
+1. 在清單中選取您想要為其設定選擇性宣告的應用程式。
+1. 從 [**管理**] 區段中，選取 [**權杖設定（預覽）** ]。
+1. 選取 [**新增選擇性**宣告]。
+1. 選取您想要設定的權杖類型。
+1. 選取要新增的選擇性宣告。
+1. 按一下 [新增]。
+
 ## <a name="create-a-policy-key"></a>建立原則金鑰
 
 您必須將所建立的應用程式金鑰儲存在 Azure AD B2C 租用戶中。
@@ -73,23 +86,20 @@ ms.locfileid: "76847611"
 1. 開啟 *TrustFrameworkExtensions.xml* 檔案。
 2. 尋找 **ClaimsProviders** 元素。 如果不存在，請在根元素下新增。
 3. 新增新的 **ClaimsProvider**，如下所示：
-
-    ```XML
+    ```xml
     <ClaimsProvider>
       <Domain>Contoso</Domain>
       <DisplayName>Login using Contoso</DisplayName>
       <TechnicalProfiles>
-        <TechnicalProfile Id="ContosoProfile">
+        <TechnicalProfile Id="OIDC-Contoso">
           <DisplayName>Contoso Employee</DisplayName>
           <Description>Login with your Contoso account</Description>
           <Protocol Name="OpenIdConnect"/>
           <Metadata>
-            <Item Key="METADATA">https://login.windows.net/your-AD-tenant-name.onmicrosoft.com/.well-known/openid-configuration</Item>
-            <Item Key="ProviderName">https://sts.windows.net/00000000-0000-0000-0000-000000000000/</Item>
-            <!-- Update the Client ID below to the Application ID -->
+            <Item Key="METADATA">https://login.microsoftonline.com/tenant-name.onmicrosoft.com/v2.0/.well-known/openid-configuration</Item>
             <Item Key="client_id">00000000-0000-0000-0000-000000000000</Item>
             <Item Key="response_types">code</Item>
-            <Item Key="scope">openid</Item>
+            <Item Key="scope">openid profile</Item>
             <Item Key="response_mode">form_post</Item>
             <Item Key="HttpBinding">POST</Item>
             <Item Key="UsePolicyInRedirectUri">false</Item>
@@ -125,12 +135,11 @@ ms.locfileid: "76847611"
 
 若要從 Azure AD 端點取得權杖，您需要定義 Azure AD B2C 應該用來與 Azure AD 進行通訊的通訊協定。 此作業可在 **ClaimsProvider** 的 **TechnicalProfile** 元素內完成。
 
-1. 更新 **TechnicalProfile** 元素的識別碼。 此識別碼可讓原則的其他部分參考此技術設定檔。
+1. 更新 **TechnicalProfile** 元素的識別碼。 此識別碼是用來從原則的其他部分參考此技術設定檔，例如 `OIDC-Contoso`。
 1. 更新 **DisplayName** 的值。 這個值會顯示在登入畫面的登入按鈕上。
 1. 更新 [描述] 的值。
 1. Azure AD 使用 OpenID Connect 通訊協定，因此請確定 [通訊協定] 的值為 `OpenIdConnect`。
-1. 將 **METADATA** 的值設定為 `https://login.windows.net/your-AD-tenant-name.onmicrosoft.com/.well-known/openid-configuration`，其中 `your-AD-tenant-name` 是您的 Azure AD 租用戶名稱。 例如， `https://login.windows.net/fabrikam.onmicrosoft.com/.well-known/openid-configuration`
-1. 開啟瀏覽器並移至您剛才更新的**中繼資料**URL，尋找**簽發者**物件，然後將值複製並貼到 XML 檔案中的**ProviderName**值。
+1. 將 **METADATA** 的值設定為 `https://login.microsoftonline.com/tenant-name.onmicrosoft.com/v2.0/.well-known/openid-configuration`，其中 `tenant-name` 是您的 Azure AD 租用戶名稱。 例如， `https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration`
 1. 將 **client_id** 設定為來自應用程式註冊的應用程式識別碼。
 1. 在 [ **CryptographicKeys**] 底下，將 [ **StorageReferenceId** ] 的值更新為您稍早建立之原則金鑰的名稱。 例如： `B2C_1A_ContosoAppSecret` 。
 
@@ -147,7 +156,7 @@ ms.locfileid: "76847611"
 此時，識別提供者已設定完成，但尚未在任何註冊/登入頁面中提供。 若要讓它可供使用，請建立現有範本使用者旅程圖的複本，然後修改它，讓它也具有 Azure AD 身分識別提供者：
 
 1. 從 Starter Pack 開啟 TrustFrameworkBase.xml 檔案。
-1. 尋找並複製包含 `Id="SignUpOrSignIn"` 之 **UserJourney** 元素的整個內容。
+1. 尋找並複製包含 **之**UserJourney`Id="SignUpOrSignIn"` 元素的整個內容。
 1. 開啟 *TrustFrameworkExtensions.xml*，並尋找 **UserJourneys** 元素。 如果此元素不存在，請新增。
 1. 貼上您複製的整個 **UserJourney** 元素內容作為 **UserJourneys** 元素的子系。
 1. 重新命名使用者旅程圖的識別碼。 例如： `SignUpSignInContoso` 。
@@ -167,14 +176,14 @@ ms.locfileid: "76847611"
 
 現在已備妥按鈕，您需要將它連結至動作。 在此案例中，動作是讓 Azure AD B2C 與 Azure AD 通訊以接收權杖。 藉由連結 Azure AD 宣告提供者的技術設定檔，將按鈕連結至動作：
 
-1. 在使用者旅程圖中，尋找包含 `Order="2"` 的 **OrchestrationStep**。
+1. 在使用者旅程圖中，尋找包含 **的**OrchestrationStep`Order="2"`。
 1. 新增下列 **ClaimsExchange** 元素，請確定用於 **Id** 的值與用於 **TargetClaimsExchangeId** 的值相同：
 
     ```XML
-    <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="ContosoProfile" />
+    <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="OIDC-Contoso" />
     ```
 
-    將 **TechnicalProfileReferenceId** 的值更新成您稍早所建立技術設定檔的 **Id**。 例如： `ContosoProfile` 。
+    將 **TechnicalProfileReferenceId** 的值更新成您稍早所建立技術設定檔的 **Id**。 例如： `OIDC-Contoso` 。
 
 1. 儲存 TrustFrameworkExtensions.xml 檔案，並再次上傳它以供驗證。
 

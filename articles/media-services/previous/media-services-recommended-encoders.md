@@ -9,22 +9,31 @@ ms.author: johndeu
 ms.date: 03/20/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 4a0af9d040c801c125d04a5af72b2ea53322ccdb
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 89b01a3fb066f181f5ec54b481b71feaa7a6ae08
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74886566"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77131394"
 ---
 # <a name="recommended-on-premises-encoders"></a>建議的內部部署編碼器
+
 使用 Azure 媒體服務進行即時串流時，您可以指定想讓通道接收輸入資料流的方式。 如果您選擇使用內部部署編碼器搭配即時編碼通道，您的編碼器應該將高品質的單一位元速率串流推送為輸出。 如果您選擇透過通道使用內部部署編碼器，您的編碼器應該將多位元率串流推送為輸出，並具有所有所需的輸出品質。 如需詳細資訊，請參閱[使用內部部署編碼器進行即時串流](media-services-live-streaming-with-onprem-encoders.md)。
 
+## <a name="encoder-requirements"></a>編碼器需求
+
+使用 HTTPS 或 RTMPS 通訊協定時，編碼器必須支援 TLS 1.2。
+
+## <a name="live-encoders-that-output-rtmp"></a>輸出 RTMP 的即時編碼器 
+
 Azure 媒體服務建議使用下列其中一種具有 RTMP 作為輸出的即時編碼器：
+
 - Adobe Flash Media Live Encoder 3.2
 - Haivision Makito X HEVC
 - Haivision KB
-- Telestream Wirecast 8.1+
-- Telestream Wirecast S
+- Telestream Wirecast （因為 TLS 1.2 需求，版本為13.0.2 或更高）
+
+  使用 RTMPS 通訊協定時，編碼器必須支援 TLS 1.2。
 - Teradek Slice 756
 - TriCaster 8000
 - Tricaster Mini HD-4
@@ -33,11 +42,16 @@ Azure 媒體服務建議使用下列其中一種具有 RTMP 作為輸出的即�
 - xStream
 - Switcher Studio (iOS)
 
+## <a name="live-encoders-that-output-fragmented-mp4"></a>輸出分散式 MP4 的即時編碼器 
+
 Azure 媒體服務建議使用下列其中一種具有多位元速率分散式 MP4 (Smooth Streaming) 作為輸出的即時編碼器：
+
 - Media Excel Hero Live 和 Hero 4K (UHD/HEVC)
 - Ateme TITAN Live
 - Cisco Digital Media Encoder 2200
-- Elemental Live
+- Elemental Live （因為 TLS 1.2 需求，版本2.14.15 和更高版本）
+
+  使用 HTTPS 通訊協定時，編碼器必須支援 TLS 1.2。
 - Envivio 4Caster C4 Gen III
 - Imagine Communications Selenio MCP3
 
@@ -45,6 +59,7 @@ Azure 媒體服務建議使用下列其中一種具有多位元速率分散式 M
 > 即時編碼器可傳送單一位元速率資料流至傳遞通道，但不建議使用此設定，因為它不允序針對用戶端使用彈性位元速率串流。
 
 ## <a name="how-to-become-an-on-premises-encoder-partner"></a>如何成為內部部署編碼器合作夥伴
+
 身為 Azure 媒體服務內部部署編碼器合作夥伴，媒體服務向企業客戶建議您的編碼器，以提升您的產品。 若要成為內部部署編碼器合作夥伴，您必須確認內部部署編碼器與媒體服務的相容性。 若要這樣做，請完成下列驗證：
 
 傳遞通道驗證

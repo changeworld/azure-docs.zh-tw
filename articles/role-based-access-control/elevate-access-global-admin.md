@@ -1,5 +1,5 @@
 ---
-title: 提高存取權以管理所有 Azure 訂用帳戶和管理群組 | Microsoft Docs
+title: 提高存取權以管理所有 Azure 訂用帳戶和管理群組
 description: 描述如何使用 Azure 入口網站或 REST API 提高 Azure Active Directory 中全域管理員的存取權，以管理所有訂用帳戶和管理群組。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/03/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 8b27a97d95f224513dd03293b9bd0082c5ed6d1b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 1731c630cb98ac542ebcdc7aedf07f7bb63eaec0
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772256"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137468"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>提高存取權以管理所有 Azure 訂用帳戶和管理群組
 
@@ -41,13 +41,13 @@ ms.locfileid: "75772256"
 
 Azure AD 和 Azure 資源會獨立地受到保護。 也就是說，Azure AD 角色指派不會將存取權授與 Azure 資源，而 Azure 角色指派不會將存取權授與 Azure AD。 不過，如果您是Azure AD 中的[全域管理員](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions)，您可以藉由指派存取權給自己，來存取您目錄中的所有 Azure 訂用帳戶與管理群組。 如果您沒有 Azure 訂用帳戶資源 (例如虛擬機器或儲存體帳戶) 的存取權，而且想要使用全域管理員權限來取得這些資源的存取權，您可以使用這項功能來達成。
 
-當您提高存取權時，您會在根範圍上 (`/`) 獲派 Azure 中的[使用者存取管理員](built-in-roles.md#user-access-administrator)角色。 這可讓您查看所有資源，並在目錄中的任何訂用帳戶或管理群組中指派存取權。 使用者存取系統管理員角色指派可以使用 Azure PowerShell、Azure CLI 或 REST API 來移除。
+當您提高存取權時，您會在根範圍上 ([) 獲派 Azure 中的](built-in-roles.md#user-access-administrator)使用者存取管理員`/`角色。 這可讓您查看所有資源，並在目錄中的任何訂用帳戶或管理群組中指派存取權。 使用者存取系統管理員角色指派可以使用 Azure PowerShell、Azure CLI 或 REST API 來移除。
 
 一旦您在根範圍上進行所需的變更後，您應該移除此提高的存取權。
 
 ![提高存取權](./media/elevate-access-global-admin/elevate-access.png)
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Azure 入口網站
 
 ### <a name="elevate-access-for-a-global-administrator"></a>提高全域系統管理員的存取權
 

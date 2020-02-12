@@ -3,13 +3,13 @@ title: Azure 訂用帳戶限制與配額
 description: 提供通用的 Azure 訂用帳戶和服務限制、配額和條件約束的清單。 本文包含如何增加限制和最大值的資訊。
 tags: billing
 ms.topic: conceptual
-ms.date: 01/30/2020
-ms.openlocfilehash: b209bc3e60f50ac363d3426d6c87f206b016d711
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
-ms.translationtype: MT
+ms.date: 02/10/2020
+ms.openlocfilehash: 0891a18c782d4d60970ccba8efa7c9bfc98f19df
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087444"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133722"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 訂用帳戶和服務限制、配額與限制
 
@@ -28,8 +28,6 @@ ms.locfileid: "77087444"
 ## <a name="limits-and-azure-resource-manager"></a>限制和 Azure Resource Manager
 
 您可以將多個 Azure 資源結合成一個 Azure 資源群組。 當您使用資源群組時，限制為 [全域] 會在具有 Azure Resource Manager 的地區層級進行管理。 如需 Azure 資源群組的詳細資訊，請參閱[Azure Resource Manager 總覽](overview.md)。
-
-在下列限制清單中，當您使用 Azure Resource Manager 時，新的資料表會反映任何限制的差異。 例如，有一個訂用帳戶**限制**資料表和訂用帳戶**限制 Azure Resource Manager**資料表。 當限制適用于這兩種情況時，它只會顯示在第一個資料表中。 除非另有說明，限制在所有區域中全域適用。
 
 > [!NOTE]
 > Azure 資源群組中資源的配額是您的訂用帳戶可存取的每個區域，而不是每個訂用帳戶，因為服務管理配額為。 讓我們以 vCPU 配額為例。 若要要求增加對個 vcpu 支援的配額，您必須決定要在哪些區域中使用多少個 vcpu。 然後，針對您想要的數量和區域，對 Azure 資源群組 vCPU 配額提出特定要求。 如果您需要在西歐使用30個 vcpu 來執行應用程式，您會在西歐特別要求30個 vcpu。 您的 vCPU 配額不會在任何其他區域中增加，只有西歐具有 30 vCPU 的配額。
@@ -115,13 +113,7 @@ ms.locfileid: "77087444"
 
 ### <a name="subscription-limits"></a>訂用帳戶限制
 
-#### <a name="subscription-limits---azure-service-management-classic-deployment-model"></a>訂用帳戶限制-Azure 服務管理（傳統部署模型）
-
-[!INCLUDE [azure-subscription-limits](../../../includes/azure-subscription-limits.md)]
-
-#### <a name="subscription-limits---azure-resource-manager"></a>訂用帳戶限制 - Azure Resource Manager
-
-當您使用 Azure Resource Manager 和 Azure 資源群組時，適用下列限制。 未在 Azure Resource Manager 中變更的限制不會列出。 請參閱上表以瞭解這些限制。
+當您使用 Azure Resource Manager 和 Azure 資源群組時，適用下列限制。
 
 如需 Resource Manager API 讀取和寫入限制的相關資訊，請參閱[對 Resource Manager 要求進行節流](request-limits-and-throttling.md)。
 
@@ -485,6 +477,12 @@ ms.locfileid: "77087444"
 ### <a name="sql-data-warehouse-limits"></a>SQL 資料倉儲限制
 
 如 SQL 資料倉儲限制，請參閱[SQL 資料倉儲資源限制](../../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)。
+
+### <a name="classic-deployment-model-limits"></a>傳統部署模型限制
+
+如果您使用傳統部署模型，而不是 Azure Resource Manager 部署模型，則適用下列限制。
+
+[!INCLUDE [azure-subscription-limits](../../../includes/azure-subscription-limits.md)]
 
 ## <a name="see-also"></a>另請參閱
 

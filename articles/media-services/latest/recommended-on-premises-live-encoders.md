@@ -6,21 +6,21 @@ keywords: encoding;encoders;media;編碼;編碼器;媒體
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 11/18/2019
+ms.date: 02/04/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 32ff975aa200e51e6a555f892a53b0ab9c73a84e
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
-ms.translationtype: MT
+ms.openlocfilehash: bccdb49c22bce983fe8cb2aba1387c4b1645b62c
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186027"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132715"
 ---
 # <a name="recommended-live-streaming-encoders"></a>建議使用即時串流編碼器
 
 在 Azure 媒體服務中，[即時事件](https://docs.microsoft.com/rest/api/media/liveevents) (通道) 代表處理即時串流內容的管線。 即時事件會以兩種方式之一收到即時輸入資料流。
 
-* 內部部署即時編碼器會將多位元速率 RTMP 或 Smooth Streaming (分散式 MP4) 串流傳送到未啟用執行媒體服務即時編碼的即時事件。 內嵌的資料流會通過即時事件，而不需任何進一步處理。 此方法稱為 **傳遞**。 即時編碼器可以將單一位元速率資料流傳送到傳遞通道。 我們不建議此設定，因為它不允許自適性串流至用戶端。
+* 內部部署即時編碼器會將多位元速率 RTMP 或 Smooth Streaming (分散式 MP4) 串流傳送到未啟用執行媒體服務即時編碼的即時事件。 內嵌的資料流會通過即時事件，而不需任何進一步處理。 此方法稱為 **傳遞**。 建議將即時編碼器傳送多位元率串流，而不是將單一位元速率串流傳送至傳遞即時事件，以允許彈性位元速率串流至用戶端。
 
   > [!NOTE]
   > 使用傳遞方法是進行即時串流的最經濟實惠方式。
@@ -29,21 +29,28 @@ ms.locfileid: "74186027"
 
 如需媒體服務即時編碼的詳細資訊，請參閱[使用媒體服務 v3 進行即時串流](live-streaming-overview.md)。
 
+## <a name="encoder-requirements"></a>編碼器需求
+
+使用 HTTPS 或 RTMPS 通訊協定時，編碼器必須支援 TLS 1.2。
+
 ## <a name="live-encoders-that-output-rtmp"></a>輸出 RTMP 的即時編碼器
 
 媒體服務建議使用下列其中一種具有 RTMP 作為輸出的即時編碼器。 支援的 URL 配置是 `rtmp://` 或 `rtmps://`。
 
+透過 RTMP 串流處理時，請檢查防火牆和/或 Proxy 設定，確認輸出 TCP 連接埠 1935 和 1936 已開啟。<br/><br/>
+透過 RTMPS 串流處理時，請檢查防火牆和/或 Proxy 設定，確認輸出 TCP 連接埠 2935 和 2936 已開啟。
+
 > [!NOTE]
-> 透過 RTMP 串流處理時，請檢查防火牆和/或 Proxy 設定，確認輸出 TCP 連接埠 1935 和 1936 已開啟。
+> 使用 RTMPS 通訊協定時，編碼器必須支援 TLS 1.2。
 
 - Adobe Flash Media Live Encoder 3.2
 - [Cambria Live 4。3](https://www.capellasystems.net/products/cambria-live/)
+- Elemental Live （版本2.14.15 和更新版本）
 - Haivision KB
 - Haivision Makito X HEVC
 - OBS Studio
 - Switcher Studio (iOS)
-- Telestream Wirecast 8.1+
-- Telestream Wirecast S
+- Telestream Wirecast （因為 TLS 1.2 需求，版本為13.0.2 或更高）
 - Teradek Slice 756
 - TriCaster 8000
 - Tricaster Mini HD-4
@@ -57,17 +64,19 @@ ms.locfileid: "74186027"
 
 媒體服務建議使用下列其中一種具有多位元速率 Smooth Streaming (分散式 MP4) 做為輸出的即時編碼器。 支援的 URL 配置是 `http://` 或 `https://`。
 
+> [!NOTE]
+> 使用 HTTPS 通訊協定時，編碼器必須支援 TLS 1.2。
+
 - Ateme TITAN Live
 - Cisco Digital Media Encoder 2200
-- Elemental Live
-- Envivio 4Caster C4 Gen III
+- Elemental Live （因為 TLS 1.2 需求，版本2.14.15 和更高版本）
+- Envivio 4Caster C4 Gen III 
 - Imagine Communications Selenio MCP3
 - Media Excel Hero Live 和 Hero 4K (UHD/HEVC)
 - [Ffmpeg](https://www.ffmpeg.org)
 
 > [!TIP]
 >  如果您要以多種語言（例如，一個英文音訊軌和一個西班牙文音訊播放軌）串流處理實況活動，您可以使用已設定的 Media Excel live 編碼器來完成這項工作，以將即時摘要傳送至傳遞實況活動。
-
 
 ## <a name="configuring-on-premises-live-encoder-settings"></a>設定內部部署即時編碼器設定
 

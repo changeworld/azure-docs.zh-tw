@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure RBAC 和 Azure PowerShell 新增或移除角色指派
+title: 使用 RBAC 和 Azure PowerShell 新增或移除角色指派
 description: 瞭解如何使用 Azure 角色型存取控制（RBAC）和 Azure PowerShell，為使用者、群組、服務主體或受控識別授與 Azure 資源的存取權。
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 0ee996e39950d38b10f8df78fe47f7087c4a2ed1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 68a73f622dc69b70870ddc1db16edcf406b63800
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981053"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138330"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-azure-powershell"></a>使用 Azure RBAC 和 Azure PowerShell 新增或移除角色指派
 
@@ -27,7 +27,7 @@ ms.locfileid: "75981053"
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要新增或移除角色指派，您必須具有：
 
@@ -56,7 +56,7 @@ Get-AzADGroup -SearchString <group_name_in_quotes>
 (Get-AzADGroup -DisplayName <group_name_in_quotes>).id
 ```
 
-### <a name="application"></a>應用程式
+### <a name="application"></a>Application
 
 若要取得 Azure AD 服務主體（應用程式所使用的身分識別）的物件識別碼，您可以使用[new-azadserviceprincipal](/powershell/module/az.resources/get-azadserviceprincipal)。 針對服務主體，請使用物件識別碼，而**不**是應用程式識別碼。
 

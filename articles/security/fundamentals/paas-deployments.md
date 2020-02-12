@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: ddcf5a1df31b4b36e25b2522ada21deab19fe032
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 8fd5a063683d09cb94b45205426871d880119cc2
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159868"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138025"
 ---
 # <a name="securing-paas-deployments"></a>保護 PaaS 部署
 
@@ -36,7 +36,7 @@ ms.locfileid: "73159868"
 ## <a name="cloud-security-advantages"></a>雲端安全性優點
 請務必瞭解您與 Microsoft 之間的[責任劃分](shared-responsibility.md)。 在內部部署環境中，您擁有整個堆疊，但是當您移到雲端時，部分責任就會轉移給 Microsoft。
 
-[在雲端中有一些安全性優勢](shared-responsibility.md#cloud security advantages)。 在內部部署環境中，組織可能責任重大但可投資在安全性上的資源卻相當有限，導致創造出一種攻擊者能夠利用所有層級弱點的環境。
+[在雲端中有一些安全性優勢](shared-responsibility.md#cloud-security-advantages)。 在內部部署環境中，組織可能責任重大但可投資在安全性上的資源卻相當有限，導致創造出一種攻擊者能夠利用所有層級弱點的環境。
 
 組織能夠藉由使用提供者的雲端型安全性功能和雲端智慧，改進其威脅偵測和回應時間。  藉由將責任轉移給雲端提供者，組織便可擴大安全性涵蓋範圍，而能夠將安全性資源和預算重新配置給其他業務優先順序項目。
 
@@ -105,7 +105,7 @@ Microsoft [安全性開發週期](https://www.microsoft.com/en-us/sdl)指定小�
 | 否認性 | 不可否認性 | 啟用 Azure [監視和診斷](/azure/architecture/best-practices/monitoring)。 |
 | 資訊洩漏 | 保密 | 使用[服務憑證](/rest/api/appservice/certificates)將待用的敏感性資料加密。 |
 | Denial of service (拒絕服務) | 可用性 | 監視潛在拒絕服務狀況的效能計量。 實作 IP 連線篩選。 |
-| 權限提高 | 授權 | 使用[具特殊權限身分識別管理](/azure/active-directory/privileged-identity-management/subscription-requirements)。 |
+| 提高權限 | 授權 | 使用[具特殊權限身分識別管理](/azure/active-directory/privileged-identity-management/subscription-requirements)。 |
 
 ## <a name="develop-on-azure-app-service"></a>在 Azure App Service 上開發
 [Azure App Service](/azure/app-service/overview) 是一個 PaaS 供應項目，可讓您為任何平台或裝置建立 Web 與行動應用程式，以及連線到雲端或內部部署環境中任何位置的資料。 App Service 包含先前以 Azure 網站和 Azure 行動服務形式個別提供的 Web 和行動功能。 此外，它也包含可用來自動執行商務程序及裝載雲端 API 的新功能。 App Service 會以單一整合式服務形式，為 Web、行動及整合案例提供一組豐富的功能。
@@ -153,7 +153,7 @@ Application Insights 具有廣泛的工具，能與它所收集的資料進行�
 ## <a name="next-steps"></a>後續步驟
 在此文章中，我們是將焦點放在 Azure PaaS 部署的安全性優點和雲端應用程式的安全性最佳做法。 接下來，請了解使用特定 Azure 服務保護 PaaS Web 和行動解決方案的建議做法。 我們將從 Azure App Service、Azure SQL Database、Azure SQL 資料倉儲及 Azure 儲存體開始著手。 當有適用於其他 Azure 服務的建議做法文章推出時，就會在以下清單中提供連結：
 
-- [](paas-applications-using-app-services.md)
+- [Azure App Service](paas-applications-using-app-services.md)
 - [Azure SQL Database 和 Azure SQL Data Warehouse](paas-applications-using-sql.md)
 - [Azure 儲存體](paas-applications-using-storage.md)
 - Azure Cache for Redis

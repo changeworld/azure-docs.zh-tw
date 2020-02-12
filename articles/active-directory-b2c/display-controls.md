@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5b039221f3a25bddf7953cbe8d517275f76d6f37
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7cbd088ed7b4f6ae242cce2067e52def2dad61c9
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75479055"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77136348"
 ---
 # <a name="display-controls"></a>顯示控制項
 
@@ -30,7 +30,7 @@ ms.locfileid: "75479055"
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
  在[自我判斷技術設定檔](self-asserted-technical-profile.md)的[中繼資料](self-asserted-technical-profile.md#metadata)區段中，參考的[ContentDefinition](contentdefinitions.md)必須將 `DataUri` 設定為頁面合約版本2.0.0 或更高版本。 例如：
 
@@ -46,14 +46,14 @@ ms.locfileid: "75479055"
 
 [ **DisplayControl** ] 元素包含下列屬性：
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | Id | 是 | 用於顯示控制項的識別碼。 它可以被[參考](#referencing-display-controls)。 |
 | UserInterfaceControlType | 是 | 顯示控制項的類型。 目前支援[VerificationControl](display-control-verification.md) |
 
 [ **DisplayControl** ] 元素包含下列元素：
 
-| 元素 | 發生次數 | 說明 |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | InputClaims | 0:1 | **InputClaims**是用來預先填入要從使用者收集的宣告值。 |
 | DisplayClaims | 0:1 | **DisplayClaims**是用來代表要從使用者收集的宣告。 |
@@ -90,7 +90,7 @@ ms.locfileid: "75479055"
 
 顯示控制項的**輸出宣告**不會傳送到下一個協調流程步驟。 它們只會暫時儲存在目前的顯示控制會話中。 這些暫存宣告可以在相同顯示控制項的不同動作之間共用。
 
-若要將宣告的輸出向上反升到下一個協調流程步驟，請使用參考此顯示控制項之實際自我判斷技術設定檔的**OutputClaims** 。
+若要將輸出宣告反升到下一個協調流程步驟，請使用參考此顯示控制項之實際自我判斷技術設定檔的**OutputClaims** 。
 
 ### <a name="display-control-actions"></a>顯示控制項動作
 

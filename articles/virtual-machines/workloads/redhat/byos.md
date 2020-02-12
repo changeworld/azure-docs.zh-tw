@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 1/14/2020
+ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: afda502bcd89423ecdd008c0297c85dd8a5b61fb
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: b0ef6030b1b460d118a255ede3c46719616fe3b0
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989836"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133826"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux 在 Azure 中攜帶自己的訂用帳戶黃金映射
 
@@ -177,7 +177,7 @@ Red Hat Enterprise Linux 自備訂用帳戶的金級映射可透過使用[Azure 
 
 [Red Hat 自訂映射](/linux/redhat-create-upload-vhd)不支援 Azure 磁碟加密。 其他 ADE 需求和必要條件記載于[Linux vm 的 Azure 磁碟加密](../../linux/disk-encryption-overview.md#additional-vm-requirements)。
 
-在 Linux Vm 和相關文章的[Azure 磁碟加密案例](../../linux/disk-encryption-linux.md)中，可以使用套用 Azure 磁碟加密的步驟。  
+在 Linux Vm 和相關文章的[Azure 磁碟加密案例](../../linux/disk-encryption-linux.md)中，可以使用套用 Azure 磁碟加密的步驟。
 
 ## <a name="additional-information"></a>其他資訊
 
@@ -186,7 +186,7 @@ Red Hat Enterprise Linux 自備訂用帳戶的金級映射可透過使用[Azure 
     ```
     "Offer with PublisherId: redhat, OfferId: rhel-byos, PlanId: rhel-lvm75 is private and can not be purchased by subscriptionId: GUID"
     ```
-    
+
     在此情況下，請聯絡 Microsoft 或 Red Hat 以啟用您的訂用帳戶。
 
 - 如果您從 RHEL BYOS 映射修改快照，並嘗試將該自訂映射發佈到[共用映射資源庫](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries)，則必須提供符合快照集原始來源的計畫資訊。 例如，命令看起來可能像這樣：

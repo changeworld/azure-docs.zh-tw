@@ -1,6 +1,7 @@
 ---
-title: 將行動裝置應用程式呼叫 web Api 移至生產環境-Microsoft 身分識別平臺 |Azure
-description: 瞭解如何建立會呼叫 web Api 的行動應用程式（移至生產環境）
+title: 準備行動應用程式-針對生產環境呼叫 web Api |Azure
+titleSuffix: Microsoft identity platform
+description: 瞭解如何建立會呼叫 web Api 的行動應用程式。 （準備適用于生產環境的應用程式）。
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,36 +16,39 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviwer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 1a82fc7dc1b18fa21657170af29f7de7e84d7c1f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 1ea19b8b76f4eb4a2c984f0e39eb0fd373c8b83c
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702023"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132379"
 ---
-# <a name="mobile-app-that-calls-web-apis---move-to-production"></a>呼叫 web Api 的行動應用程式-移至生產環境
+# <a name="prepare-mobile-apps-for-production"></a>準備用於生產的行動應用程式
 
-本文提供如何在將應用程式移至生產環境之前，先改善其品質和可靠性的詳細資料。
+本文提供有關如何改善行動應用程式的品質和可靠性，再將其移至生產環境的詳細資料。
 
-## <a name="handling-errors-in-mobile-applications"></a>處理行動應用程式中的錯誤
+## <a name="handle-errors"></a>處理錯誤
 
-此時，您的應用程式可能會發生一些錯誤狀況。 要處理的主要案例是無訊息失敗，並會回到互動。 您應該考慮用於生產環境的其他條件包括：無網路狀況、服務中斷、系統管理員同意需求，以及其他案例特定的情況。
+當您準備用於生產的行動應用程式時，可能會發生數個錯誤狀況。 您將處理的主要案例是無訊息失敗，並會回到互動。 您應該考慮的其他條件包括：無網路狀況、服務中斷、系統管理員同意需求，以及其他案例特定的情況。
 
-每個 MSAL 程式庫都有範例程式碼和 wiki 內容，說明如何處理這些條件：
+針對每個「Microsoft 驗證程式庫」（MSAL）類型，您可以找到說明如何處理錯誤狀況的範例程式碼和 wiki 內容：
 
-- [MSAL Android Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-android)
-- [MSAL iOS Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-objc/wiki)
-- [MSAL.NET Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki)
+- [MSAL Android wiki](https://github.com/AzureAD/microsoft-authentication-library-for-android)
+- [MSAL iOS wiki](https://github.com/AzureAD/microsoft-authentication-library-for-objc/wiki)
+- [MSAL.NET wiki](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki)
 
-## <a name="mitigating-and-investigating-issues"></a>緩和和調查問題
+## <a name="mitigate-and-investigate-issues"></a>緩和和調查問題
 
-若要診斷應用程式中的問題，它有助於收集資料。 如需您可以收集之資料類型的相關資訊，請參閱 MSAL platform wiki。
+若要更有效地診斷應用程式中的問題，請收集資料。 如需您可以收集之資料類型的相關資訊，請參閱[MSAL 應用程式中的記錄](https://docs.microsoft.com/azure/active-directory/develop/msal-logging)。
 
-- 當使用者遇到問題時，可能會要求您提供協助。 最佳做法是捕捉並暫時儲存記錄，並提供可讓使用者上傳的位置。 MSAL 提供記錄延伸模組來捕獲有關驗證的詳細資訊。
-- 如果可用，請透過 MSAL 啟用遙測，以收集使用者如何登入您的應用程式的相關資料。
+以下是資料收集的一些建議：
+
+- 當使用者遇到問題時，可能會要求您提供協助。 最佳做法是捕捉並暫時儲存記錄。 提供使用者可上傳記錄的位置。 MSAL 提供記錄延伸模組來捕獲有關驗證的詳細資訊。
+
+- 如果有可用的遙測，請透過 MSAL 加以啟用，以收集使用者如何登入您的應用程式的相關資料。
 
 ## <a name="next-steps"></a>後續步驟
 
-[!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
+[!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
 
-試用範例中提供的其他範例[|桌面和行動裝置公用用戶端應用程式](sample-v2-code.md#desktop-and-mobile-public-client-apps)
+若要嘗試其他範例，請參閱[桌面和行動裝置公用用戶端應用程式](sample-v2-code.md#desktop-and-mobile-public-client-apps)。
