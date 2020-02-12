@@ -494,6 +494,8 @@
           href: javascript-query-api.md
     - name: 最佳化您的 Azure Cosmos DB 成本
       items:
+        - name: 規劃和管理成本
+          href: plan-manage-costs.md
         - name: 定價模式
           href: how-pricing-works.md
         - name: 擁有權總成本 (TCO)

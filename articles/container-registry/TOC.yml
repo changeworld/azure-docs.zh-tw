@@ -47,7 +47,7 @@
           href: container-registry-geo-replication.md
         - name: 登錄最佳做法
           href: container-registry-best-practices.md
-    - name: 使用說明指南
+    - name: 操作指南
       expanded: false
       items:
         - name: 登錄作業
@@ -80,16 +80,18 @@
               href: container-registry-vnet.md
             - name: 在防火牆外存取
               href: container-registry-firewall-access-rules.md
-            - name: Authentication
+            - name: 驗證
               items:
                 - name: 驗證概觀
                   href: container-registry-authentication.md
-                - name: 服務主體驗證
+                - name: 使用服務主體進行驗證
                   href: container-registry-auth-service-principal.md
-                - name: 受控識別驗證
+                - name: 使用受控識別進行驗證
                   href: container-registry-authentication-managed-identity.md
                 - name: 從 Azure 容器執行個體進行驗證
                   href: container-registry-auth-aci.md
+                - name: 使用提取密碼從 Kubernetes 進行驗證
+                  href: container-registry-auth-kubernetes.md
                 - name: 從 Azure Kubernetes Service (AKS) 進行驗證
                   href: ../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
             - name: 角色型存取控制
@@ -158,7 +160,7 @@
       items:
         - name: 多步驟工作
           href: container-registry-tasks-multi-step.md
-    - name: 使用說明指南
+    - name: 操作指南
       expanded: false
       items:
         - name: 使用受控識別存取受保護的資源
@@ -203,7 +205,7 @@
   items:
     - name: 區域可用性
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/container-registry/'
     - name: 藍圖
       href: 'https://aka.ms/acr/roadmap'

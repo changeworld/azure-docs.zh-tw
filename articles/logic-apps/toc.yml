@@ -135,7 +135,7 @@
           href: logic-apps-enterprise-integration-certificates.md
         - name: 構件中繼資料
           href: logic-apps-enterprise-integration-metadata.md
-        - name: 接收 B2B 訊息
+        - name: 接收和傳送 B2B 訊息
           href: logic-apps-enterprise-integration-b2b.md
         - name: 交換 AS2 訊息
           href: logic-apps-enterprise-integration-as2.md

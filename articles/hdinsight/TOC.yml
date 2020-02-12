@@ -130,7 +130,7 @@
               href: ./hadoop/apache-hadoop-on-premises-migration-best-practices-architecture.md
             - name: 最佳做法 - 基礎結構
               href: ./hadoop/apache-hadoop-on-premises-migration-best-practices-infrastructure.md
-            - name: 最佳做法 - 儲存體
+            - name: 最佳作法 - 儲存體
               href: ./hadoop/apache-hadoop-on-premises-migration-best-practices-storage.md
             - name: 最佳做法 -資料移轉
               href: ./hadoop/apache-hadoop-on-premises-migration-best-practices-data-migration.md
@@ -346,6 +346,8 @@
               href: ./spark/apache-azure-spark-history-server.md
             - name: 使用 IO 快取啟用快取
               href: ./spark/apache-spark-improve-performance-iocache.md
+            - name: 管理 Jar 相依性
+              href: ./spark/manage-jar-dependency.md
             - name: 透過 Apache Spark 使用 Notebook
               items:
                 - name: 使用本機 Jupyter Notebook
@@ -447,9 +449,9 @@
                   href: ./hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md
                 - name: 開發 Java MapReduce 程式
                   href: ./hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
-            - name: 使用 Apache Hive 為擷取、轉換和載入 (ETL) 工具
+            - name: 使用 Apache Hive 為擷取、 轉換和載入 (ETL) 工具
               href: ./hadoop/apache-hadoop-using-apache-hive-as-an-etl-tool.md
-            - name: 大規模擷取、轉換和載入
+            - name: 大規模擷取、 轉換和載入
               href: ./hadoop/apache-hadoop-etl-at-scale.md
             - name: 建立非互動式驗證 .NET HDInsight 應用程式
               href: ./hdinsight-create-non-interactive-authentication-dotnet-applications.md

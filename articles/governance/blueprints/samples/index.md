@@ -1,14 +1,14 @@
 ---
 title: 藍圖範例索引
 description: 使用 Azure 藍圖部署環境、原則和雲端採用架構基礎的合規性和標準範例索引。
-ms.date: 01/10/2020
+ms.date: 02/11/2020
 ms.topic: sample
-ms.openlocfilehash: fa5f02af6a0e59359d6bc3c2d24515fea535a0fa
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 88dde10efefd8153eff9aa6ad2ea47a1e00e2c87
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938300"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150454"
 ---
 # <a name="azure-blueprints-samples"></a>Azure 藍圖範例
 
@@ -20,6 +20,7 @@ ms.locfileid: "76938300"
 |---------|---------|
 | [加拿大聯邦 PBMM](./canada-federal-pbmm/index.md) | 提供符合加拿大聯邦受保護分類 B、中度完整性、中度可用性之保護機制 (PBMM)。 |
 | [CIS Microsoft Azure 基礎基準測試](./cis-azure-1.1.0/index.md)| 提供一組原則，以協助您遵循 CIS Microsoft Azure 基礎的基準測試建議。 |
+| [DoD 影響等級 4](./dod-impact-level-4/index.md) | 提供一組原則，以協助符合 DoD 影響等級 4 的規範。 |
 | [FedRAMP 適中等級](./fedramp-m/index.md) | 提供一組原則，以協助符合 FedRAMP 適中等級的規範。 |
 | [FedRAMP 高等級](./fedramp-h/index.md) | 提供一組原則，以協助符合 FedRAMP 高等級的規範。 |
 | [HIPAA HITRUST](./HIPAA-HITRUST/index.md) | 提供一組原則，以協助符合 HIPAA HITRUST。 |

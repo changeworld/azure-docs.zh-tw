@@ -52,6 +52,17 @@
         - name: 部署步驟
           displayName: 'standards, cis'
           href: ./samples/cis-azure-1.1.0/deploy.md
+    - name: DoD 影響等級 4
+      items:
+        - name: 概觀
+          displayName: 'standards, DoD, IL4'
+          href: ./samples/dod-impact-level-4/index.md
+        - name: 控制項對應
+          displayName: 'standards, DoD, IL4'
+          href: ./samples/dod-impact-level-4/control-mapping.md
+        - name: 部署步驟
+          displayName: 'standards, DoD, IL4'
+          href: ./samples/dod-impact-level-4/deploy.md
     - name: FedRAMP Moderate
       items:
         - name: 概觀

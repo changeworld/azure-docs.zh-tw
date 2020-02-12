@@ -3,7 +3,7 @@ title: Language Understanding (LUIS) 文件
 summary: 了解 Language Understanding 如何讓應用程式了解人在文字中所表達的意思。
 metadata:
   ms.topic: landing-page
-  ms.date: 11/22/2019
+  ms.date: 02/11/2020
   ms.author: nitinme
   author: nitinme
   ms.service: cognitive-services
@@ -12,12 +12,12 @@ metadata:
   title: Language Understanding (LUIS) 文件
   titleSuffix: Azure Cognitive Services
   description: Language Understanding (LUIS) 服務可讓應用程式了解人在文字中所表達的意思。 LUIS 使用機器學習，讓開發人員建置應用程式，來可接收使用者的自然語言輸入，並從其中擷取意義。
-  ms.openlocfilehash: f45461b49b51d6d25464ffa7d2084b1bbb1f9e0e
-  ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+  ms.openlocfilehash: 1d9b17bcf6817d3c94d191d54be26ce0ff1f14c2
+  ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 01/17/2020
-  ms.locfileid: "76169666"
+  ms.lasthandoff: 02/11/2020
+  ms.locfileid: "77137341"
 landingContent:
 - title: 關於 Language Understanding (LUIS)
   linkLists:
@@ -39,8 +39,8 @@ landingContent:
       url: whats-new.md
   - linkListType: video
     links:
-    - text: AI 巡迴研討會：LUIS
-      url: https://azure.microsoft.com/resources/videos/whats-new-with-language-understanding-service-luis
+    - text: Ignite 2019：使用 LUIS 的進階自然語言理解 (NLU) 模型
+      url: https://www.youtube.com/watch?v=JdJEV2jV0_Y
 - title: 建立意圖、實體和功能
   linkLists:
   - linkListType: concept

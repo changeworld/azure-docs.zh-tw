@@ -152,9 +152,6 @@
     - name: Container Registry
       tocHref: /azure/container-registry/
       topicHref: /azure/container-registry/
-    - name: 成本管理
-      tocHref: /azure/cost-management/
-      topicHref: /azure/cost-management/
     - name: 函式
       tocHref: /azure/azure-functions/
       topicHref: /azure/azure-functions/
@@ -261,9 +258,6 @@
     - name: Batch AI
       tocHref: /azure/batch-ai/
       topicHref: /azure/batch-ai/
-    - name: 計費 + 成本管理
-      tocHref: /azure/billing/
-      topicHref: /azure/billing/
     - name: BizTalk 服務
       tocHref: /azure/biztalk-services/
       topicHref: /azure/biztalk-services/
@@ -798,3 +792,19 @@
     - name: Windows 虛擬桌面
       tocHref: /azure/virtual-desktop/
       topicHref: /azure/virtual-desktop/
+    - name: 成本管理和計費
+      tocHref: /azure/cost-management-billing/
+      topicHref: /azure/cost-management-billing/
+      items:
+        - name: 開始使用
+          tocHref: /azure/cost-management-billing/understand/
+          topicHref: /azure/cost-management-billing/understand/
+        - name: 管理成本和使用量
+          tocHref: /azure/cost-management-billing/costs/
+          topicHref: /azure/cost-management-billing/costs/
+        - name: 管理帳戶和訂用帳戶
+          tocHref: /azure/cost-management-billing/manage/
+          topicHref: /azure/cost-management-billing/manage/
+        - name: Reservations
+          tocHref: /azure/cost-management-billing/reservations/
+          topicHref: /azure/cost-management-billing/reservations/
