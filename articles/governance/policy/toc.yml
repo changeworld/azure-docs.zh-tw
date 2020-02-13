@@ -37,218 +37,30 @@
 - name: 範例
   items:
     - name: 索引
-      displayName: 'list, examples'
+      displayName: 'list, builtins'
       href: ./samples/index.md
-    - name: 一般
+    - name: 內建原則
+      href: ./samples/built-in-policies.md
+    - name: 內建計畫
+      href: ./samples/built-in-initiatives.md
+    - name: 使用模式
       items:
-        - name: 命名
-          items:
-            - name: 允許多個名稱模式
-              displayName: 'deny, indexed'
-              href: samples/allow-multiple-name-patterns.md
-            - name: 需要類似模式
-              displayName: 'deny, indexed'
-              href: samples/enforce-like-pattern.md
-            - name: 需要比對模式
-              displayName: 'deny, indexed'
-              href: samples/enforce-match-pattern.md
-            - name: 需要標籤比對模式
-              displayName: 'deny, all'
-              href: samples/enforce-tag-match-pattern.md
-        - name: Tags
-          items:
-            - name: 套用標籤及其預設值
-              displayName: 'append, builtin, concat'
-              href: samples/apply-tag-default-value.md
-            - name: 計費標籤原則計畫
-              href: samples/billing-tags-policy-initiative.md
-            - name: 強制執行標籤和其值
-              displayName: 'deny, concat, builtin'
-              href: samples/enforce-tag-value.md
-            - name: 對資源群組強制執行標籤及其值
-              displayName: 'deny, concat'
-              href: samples/enforce-tag-on-resource-groups.md
-        - name: 位置
-          items:
-            - name: 允許的位置
-              displayName: 'deny, builtin, location'
-              href: samples/allowed-locations.md
-        - name: 資源類型
-          items:
-            - name: 允許的資源類型
-              displayName: 'deny, builtin, resourceTypes'
-              href: samples/allowed-resource-types.md
-            - name: 不允許的資源類型
-              displayName: 'deny, builtin, resourceTypes'
-              href: samples/not-allowed-resource-types.md
-    - name: 計算
-      items:
-        - name: 虛擬機器
-          items:
-            - name: 允許來自某個資源群組的自訂 VM 映像
-              displayName: 'deny, concat, ExistingResourceGroups'
-              href: samples/allow-custom-vm-image.md
-            - name: 允許的儲存體帳戶和虛擬機器 SKU
-              displayName: 'initiative, vmSKUs, storageSKUs'
-              href: samples/allowed-skus-storage.md
-            - name: 已核准的 VM 映像
-              displayName: deny
-              href: samples/allowed-custom-images.md
-            - name: 稽核擴充功能是否不存在
-              displayName: auditIfNotExists
-              href: samples/audit-extension-not-exist.md
-            - name: 不允許的 VM 擴充功能
-              displayName: deny
-              href: samples/not-allowed-vm-extension.md
-        - name: 虛擬機器擴展集
-          items:
-            - name: 在 VM 不使用受控磁碟時稽核
-              displayName: audit
-              href: samples/create-vm-managed-disk.md
-            - name: 使用受控磁碟來建立 VM
-              displayName: deny
-              href: samples/use-managed-disk-vm.md
-            - name: 拒絕 Hybrid Use Benefit
-              displayName: deny
-              href: samples/deny-hybrid-use.md
-            - name: 只允許特定的 VM 平台映像
-              displayName: deny
-              href: samples/allow-certain-vm-image.md
-    - name: 資料湖
-      items:
-        - name: 強制使用 Data Lake Store 加密
-          displayName: deny
-          href: samples/enforce-data-lake-store-encryption.md
-    - name: 來賓組態
-      items:
-        - name: 稽核 Linux 上未安裝的應用程式
-          displayName: 'audit, vm'
-          href: samples/guest-configuration-applications-installed-linux.md
-    - name: 金鑰保存庫
-      items:
-        - name: 稽核無虛擬網路端點的保存庫
-          displayName: 'audit, KeyVault, indexed'
-          href: samples/keyvault-no-vnet-rules.md
-    - name: 監視
-      items:
-        - name: 稽核診斷設定
-          displayName: 'auditIfNotExists, resourceTypes'
-          href: samples/audit-diagnostic-setting.md
-    - name: 網路
-      items:
-        - name: 網路介面
-          items:
-            - name: 對每個 NIC 使用 NSG X
-              displayName: deny
-              href: samples/nsg-on-nic.md
-            - name: 針對 VM 網路介面使用已核准的子網路
-              displayName: deny
-              href: samples/use-approved-subnet-vm-nics.md
-            - name: 針對 VM 網路介面使用已核准的 vNet
-              displayName: 'deny, concat'
-              href: samples/use-approved-vnet-vm-nics.md
-        - name: 虛擬網路
-          items:
-            - name: 允許的應用程式閘道 SKU
-              displayName: deny
-              href: samples/allowed-app-gateway-sku.md
-            - name: 允許的 vNet 閘道 SKU
-              displayName: deny
-              href: samples/allowed-vnet-gateway-sku.md
-            - name: 允許的負載平衡器 SKU
-              displayName: deny
-              href: samples/allowed-load-balancer-skus.md
-            - name: 禁止對 ER 網路進行網路對等互連
-              displayName: 'deny, all, concat, ExistingResourceGroups'
-              href: samples/no-peering-express-route-network.md
-            - name: 禁止使用者定義的路由表
-              displayName: 'deny, all'
-              href: samples/no-user-defined-route-table.md
-            - name: 對每個子網路使用 NSG X
-              displayName: 'deny, all'
-              href: samples/nsg-on-subnet.md
-            - name: 針對 VM 網路介面使用已核准的子網路
-              displayName: deny
-              href: samples/use-approved-subnet-vm-nics.md
-            - name: 針對 VM 網路介面使用已核准的 vNet
-              displayName: deny
-              href: samples/use-approved-vnet-vm-nics.md
-        - name: 網路安全性群組
-          items:
-            - name: 對每個 NIC 使用 NSG X
-              displayName: deny
-              href: samples/nsg-on-nic.md
-            - name: 對每個子網路使用 NSG X
-              displayName: 'deny, all'
-              href: samples/nsg-on-subnet.md
-        - name: ExpressRoute
-          items:
-            - name: 允許的 ExpressRoute 頻寬
-              displayName: deny
-              href: samples/allowed-express-route-bandwidth.md
-            - name: 允許的 ExpressRoute SKU
-              displayName: deny
-              href: samples/allowed-express-route-skus.md
-            - name: 允許的 ExpressRoute 對等互連位置
-              displayName: 'deny, Location'
-              href: samples/allowed-express-route-peering.md
-        - name: 網路監看員
-          items:
-            - name: 稽核是否未針對區域啟用網路監看員
-              displayName: 'auditIfNotExists, Location'
-              href: samples/network-watcher-not-enabled.md
-        - name: 應用程式閘道
-          items:
-            - name: 允許的應用程式閘道 SKU
-              displayName: deny
-              href: samples/allowed-app-gateway-sku.md
-    - name: SQL
-      items:
-        - name: SQL Server
-          items:
-            - name: 在沒有 Azure Active Directory 系統管理員時稽核
-              displayName: auditIfNotExists
-              href: samples/audit-no-aad-admin.md
-            - name: 稽核伺服器層級威脅偵測設定
-              displayName: auditIfNotExists
-              href: samples/audit-sql-server-threat-detection-setting.md
-            - name: 稽核 SQL Server 稽核設定
-              displayName: 'auditIfNotExists, builtin'
-              href: samples/sql-server-audit.md
-            - name: 稽核 SQL Server 層級稽核設定
-              displayName: auditIfNotExists
-              href: samples/audit-sql-server-audit-setting.md
-        - name: SQL Database
-          items:
-            - name: 允許的 SQL DB SKU
-              displayName: deny
-              href: samples/allowed-sql-db-skus.md
-            - name: 稽核 SQL DB 層級威脅偵測設定
-              displayName: auditIfNotExists
-              href: samples/audit-db-threat-detection-setting.md
-            - name: 稽核 SQL DB 加密
-              displayName: 'auditIfNotExists, disabled, indexed, builtin'
-              href: samples/sql-database-encryption-audit.md
-            - name: 稽核 SQL DB 層級稽核設定
-              displayName: auditIfNotExists
-              href: samples/audit-sql-db-audit-setting.md
-    - name: 儲存體
-      items:
-        - name: 儲存體帳戶和 VM 允許的 SKU
-          displayName: 'initiative, vmSKUs, storageSKUs'
-          href: samples/allowed-skus-storage.md
-        - name: 允許的儲存體帳戶 SKU
-          displayName: 'deny, builtin, storageSKUs'
-          href: samples/allowed-storage-account-skus.md
-        - name: 針對儲存體帳戶拒絕使用非經常性存取層處理
-          displayName: 'deny, all'
-          href: samples/deny-cool-access-tiering.md
-        - name: 針對儲存體帳戶確保只允許 HTTPS 流量
-          displayName: 'deny, all'
-          href: samples/ensure-https-storage-account.md
-        - name: 確保儲存體檔案加密
-          displayName: 'deny, all'
-          href: samples/ensure-storage-file-encryption.md
+        - name: 邏輯運算子
+          href: ./samples/pattern-logical-operators.md
+        - name: 欄位
+          href: ./samples/pattern-fields.md
+        - name: 參數
+          href: ./samples/pattern-parameters.md
+        - name: 效果詳細資料
+          href: ./samples/pattern-effect-details.md
+        - name: 值運算子
+          href: ./samples/pattern-value-operator.md
+        - name: Count 運算子
+          href: ./samples/pattern-count-operator.md
+        - name: 歸納入計畫
+          href: ./samples/pattern-group-with-initiative.md
+        - name: 部署資源
+          href: ./samples/pattern-deploy-resources.md
 - name: 概念
   items:
     - name: Azure 原則定義結構

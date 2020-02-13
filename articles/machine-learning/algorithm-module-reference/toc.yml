@@ -26,6 +26,8 @@
       href: convert-to-csv.md
     - name: 轉換為資料集
       href: convert-to-dataset.md
+    - name: 轉換為指標值
+      href: convert-to-indicator-values.md
     - name: 清除遺漏的資料
       href: clean-missing-data.md
     - name: 編輯中繼資料

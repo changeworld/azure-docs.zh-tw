@@ -907,22 +907,6 @@
           href: platform/rest-api-walkthrough.md
     - name: 顯現資料
       items:
-        - name: 檢視
-          items:
-            - name: 檢視設計工具
-              href: platform/view-designer.md
-            - name: 圖格參考
-              href: platform/view-designer-tiles.md
-            - name: 視覺效果組件參考
-              href: platform/view-designer-parts.md
-            - name: 篩選器
-              href: platform/view-designer-filters.md
-        - name: Power BI
-          items:
-            - name: 匯出記錄檔資料
-              href: platform/powerbi.md
-            - name: 匯出應用程式資料
-              href: app/export-power-bi.md
         - name: 活頁簿
           items:
             - name: 概觀
@@ -949,6 +933,36 @@
                       href: platform/workbooks-time.md
                     - name: 文字參數
                       href: platform/workbooks-text.md
+        - name: 檢視
+          items:
+            - name: 將檢視轉換為活頁簿
+              items:
+                - name: 轉換概觀
+                  href: platform/view-designer-conversion-overview.md
+                - name: 轉換選項
+                  href: platform/view-designer-conversion-options.md
+                - name: 概觀和存取
+                  href: platform/view-designer-conversion-access.md
+                - name: 常見工作
+                  href: platform/view-designer-conversion-tasks.md
+                - name: 圖格轉換
+                  href: platform/view-designer-conversion-tiles.md
+                - name: 範例
+                  href: platform/view-designer-conversion-examples.md
+            - name: 檢視設計工具
+              href: platform/view-designer.md
+            - name: 圖格參考
+              href: platform/view-designer-tiles.md
+            - name: 視覺效果組件參考
+              href: platform/view-designer-parts.md
+            - name: 篩選器
+              href: platform/view-designer-filters.md
+        - name: Power BI
+          items:
+            - name: 匯出記錄檔資料
+              href: platform/powerbi.md
+            - name: 匯出應用程式資料
+              href: app/export-power-bi.md
         - name: 儀表板
           items:
             - name: 使用記錄資料的儀表板

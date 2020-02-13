@@ -32,7 +32,7 @@
           href: get-started-java-send-v2.md
         - name: Python (azure-eventhub 第 5 版)
           href: get-started-python-send-v2.md
-        - name: Node.js (azure/event-hubs 第 5 版)
+        - name: JavaScript (azure/event-hubs 第 5 版)
           href: get-started-node-send-v2.md
         - name: Go
           href: event-hubs-go-get-started-send.md
@@ -40,14 +40,28 @@
           href: event-hubs-c-getstarted-send.md
         - name: Apache Storm (僅接受)
           href: event-hubs-storm-getstarted-receive.md
+    - name: 傳送和接收事件 (舊版/套件)
+      items:
+        - name: .NET Core (Microsoft.Azure.EventHubs)
+          href: event-hubs-dotnet-standard-getstarted-send.md
+        - name: Java (azure-eventhubs)
+          href: event-hubs-java-get-started-send.md
+        - name: Python (azure-eventhub 第 1 版)
+          href: event-hubs-python-get-started-send.md
+        - name: JavaScript (azure/event-hubs 第 2 版)
+          href: event-hubs-node-get-started-send.md
+        - name: .NET Framework (Microsoft.Azure.EventHubs)
+          href: event-hubs-dotnet-framework-getstarted-send.md
     - name: 擷取事件
       items:
         - name: 使用 Azure 入口網站啟用事件中樞擷取
           href: event-hubs-capture-enable-through-portal.md
         - name: 使用 Resource Manager 範本啟用事件中樞擷取
           href: event-hubs-resource-manager-namespace-event-hub-enable-capture.md
-        - name: 使用 Python 擷取事件中樞資料 (azure-eventhub 第 5 版)
+        - name: 使用 Python 讀取擷取的資料 (azure-eventhub 第 5 版)
           href: get-started-capture-python-v2.md
+        - name: 使用 Python 讀取擷取的資料 (azure-eventhub 第 1 版)
+          href: event-hubs-capture-python.md
     - name: 串流至適用於 Apache Kafka 的事件中樞
       href: event-hubs-quickstart-kafka-enabled-event-hubs.md
     - name: 建立專用叢集
@@ -126,20 +140,6 @@
               href: 'https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/README.md'
             - name: .NET (Microsoft.Azure.EventHubs)
               href: event-hubs-programming-guide.md
-        - name: 使用 Python 讀取擷取的資料 (azure-eventhub 第 1 版)
-          href: event-hubs-capture-python.md
-        - name: 傳送和接收事件 (舊版/套件)
-          items:
-            - name: .NET Core (Microsoft.Azure.EventHubs)
-              href: event-hubs-dotnet-standard-getstarted-send.md
-            - name: Java (azure-eventhubs)
-              href: event-hubs-java-get-started-send.md
-            - name: Python (azure-eventhub 第 1 版)
-              href: event-hubs-python-get-started-send.md
-            - name: Node.js (azure/event-hubs 第 2 版)
-              href: event-hubs-node-get-started-send.md
-            - name: .NET Framework (Microsoft.Azure.EventHubs)
-              href: event-hubs-dotnet-framework-getstarted-send.md
     - name: 處理資料
       items:
         - name: 使用 Azure 串流分析處理資料
@@ -234,7 +234,7 @@
               href: /python/api/azure-eventhub/?view=azure-python
         - name: 管理程式庫
           href: /python/api/overview/azure/event-hub?view=azure-python
-    - name: Node.js
+    - name: JavaScript
       items:
         - name: 從 azure/eventhubs 第 2 版遷移至第 5 版
           href: 'https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md'

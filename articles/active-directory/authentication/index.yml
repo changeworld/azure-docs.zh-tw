@@ -10,14 +10,14 @@ metadata:
   ms.topic: landing-page
   author: iainfoulds
   ms.author: iainfou
-  ms.date: 08/20/2019
+  ms.date: 02/11/2020
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: 01e1fe5ed73275078fc37dbec9a0857a8c4a8619
-  ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+  ms.openlocfilehash: 3c431b81c0da54045e9b9b020de5275912b394c6
+  ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 12/05/2019
-  ms.locfileid: "74847146"
+  ms.lasthandoff: 02/12/2020
+  ms.locfileid: "77166426"
 landingContent:
 - title: 關於驗證
   linkLists:
@@ -39,16 +39,16 @@ landingContent:
       url: concept-sspr-howitworks.md
     - text: 密碼回寫
       url: concept-sspr-writeback.md
-  - linkListType: quickstart
+  - linkListType: tutorial
     links:
-    - text: 自助式密碼重設快速入門
-      url: quickstart-sspr.md
+    - text: 啟用自助式密碼重設
+      url: tutorial-enable-sspr.md
+    - text: 啟用將密碼回寫至內部部署
+      url: tutorial-enable-writeback.md
   - linkListType: deploy
     links:
-    - text: 部署 Azure AD 自助式密碼重設
+    - text: 自助式密碼重設的部署指南
       url: howto-sspr-deployment.md
-    - text: 啟用密碼回寫
-      url: howto-sspr-writeback.md
     - text: 從 Windows 登入畫面啟用密碼重設
       url: howto-sspr-windows.md
 - title: 啟用 Azure Multi-Factor Authentication
@@ -59,13 +59,13 @@ landingContent:
       url: concept-mfa-howitworks.md
   - linkListType: tutorial
     links:
-    - text: 針對特定應用程式試驗 Azure MFA
-      url: tutorial-mfa-applications.md
-    - text: 使用風險偵測觸發 Multi-Factor Authentication 和密碼變更
+    - text: 啟用 Azure Multi-Factor Authentication
+      url: tutorial-enable-azure-mfa.md
+    - text: 啟用風險型 Azure Multi-Factor Authentication
       url: tutorial-risk-based-sspr-mfa.md
   - linkListType: deploy
     links:
-    - text: 部署 Azure Multi-Factor Authentication
+    - text: Azure Multi-Factor Authentication 的部署指南
       url: howto-mfa-getstarted.md
     - text: 使用 NPS 擴充功能來整合內部部署應用程式
       url: howto-mfa-nps-extension.md

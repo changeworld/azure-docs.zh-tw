@@ -12,12 +12,12 @@ metadata:
   ms.author: mtillman
   manager: daveba
   ms.date: 07/27/2019
-  ms.openlocfilehash: d212a7223eea2ccbaaddeb9c45db85e13c7ff9c8
-  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+  ms.openlocfilehash: 1ce670f2783eb12db307eac42974667dd809de9d
+  ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 12/25/2019
-  ms.locfileid: "75443467"
+  ms.lasthandoff: 02/12/2020
+  ms.locfileid: "77159296"
 highlightedContent:
   items:
   - title: 什麼是 Azure AD？
@@ -53,6 +53,20 @@ conceptualContent:
       text: 適用於內部部屬應用程式的 Application Proxy
     footerLink:
       url: ./manage-apps/index.yml
+      text: 查看更多
+  - title: 應用程式和 HR 佈建
+    links:
+    - url: ./app-provisioning/user-provisioning.md
+      itemType: overview
+      text: 什麼是應用程式佈建？
+    - url: ./app-provisioning/how-provisioning-works.md
+      itemType: concept
+      text: 應用程式佈建的運作方式
+    - url: ./app-provisioning/plan-cloud-hr-provision.md
+      itemType: how-to-guide
+      text: 規劃雲端 HR 佈建部署
+    footerLink:
+      url: ./app-provisioning/index.yml
       text: 查看更多
   - title: 驗證
     links:

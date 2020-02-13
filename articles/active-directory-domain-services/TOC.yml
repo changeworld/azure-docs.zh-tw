@@ -77,7 +77,7 @@
           href: notifications.md
         - name: 刪除受控網域
           href: delete-aadds.md
-        - name: 從傳統部署進行遷移 (預覽)
+        - name: 從傳統部署移轉
           href: migrate-from-classic-vnet.md
         - name: 變更 SKU
           href: change-sku.md

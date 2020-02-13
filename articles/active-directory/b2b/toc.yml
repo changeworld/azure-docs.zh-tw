@@ -15,7 +15,9 @@
           href: b2b-quickstart-invite-powershell.md
     - name: 教學課程
       items:
-        - name: 大量邀請 B2B 來賓使用者
+        - name: 透過 PowerShell 大量邀請
+          href: bulk-invite-powershell.md
+        - name: 透過入口網站大量邀請 (預覽)
           href: tutorial-bulk-invite.md
         - name: 強制執行 Multi-Factor Authentication
           href: b2b-tutorial-require-mfa.md
@@ -113,7 +115,7 @@
           href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
         - name: MSDN 論壇
           href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
-        - name: 價格
+        - name: 定價
           href: 'https://azure.microsoft.com/pricing/details/active-directory/'
         - name: 定價計算機
           href: 'https://azure.microsoft.com/pricing/calculator/'
