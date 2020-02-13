@@ -176,6 +176,8 @@
   items:
     - name: 詞彙
       href: ../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: 影片
+      href: videos.md
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
     - name: Azure AD 部落格

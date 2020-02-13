@@ -14,12 +14,12 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 7a4a58943b251628780694c001ca441a14e9c09a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 52779b7ffea0f33676426f145a700c7181cf0bf1
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698674"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161251"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>如何：針對企業應用程式自訂 SAML 權杖中發出的宣告
 
@@ -55,7 +55,7 @@ ms.locfileid: "76698674"
 
 從 [**選擇名稱識別碼格式**] 下拉式清單中，您可以選取下列其中一個選項。
 
-| NameID 格式 | 說明 |
+| NameID 格式 | 描述 |
 |---------------|-------------|
 | **預設值** | Azure AD 將會使用預設的來源格式。 |
 | **持續** | Azure AD 將使用持續性作為 NameID 格式。 |
@@ -69,7 +69,7 @@ ms.locfileid: "76698674"
 
 選取 `NameIdentifier` (或 NameID) 宣告的所需來源。 您可以從下列選項選取。
 
-| 名稱 | 說明 |
+| 名稱 | 描述 |
 |------|-------------|
 | 電子郵件 | 使用者的電子郵件地址 |
 | userprincipalName | 使用者的使用者主體名稱（UPN） |
@@ -83,7 +83,7 @@ ms.locfileid: "76698674"
 
 您也可以將任何常數（靜態）值指派給您在 Azure AD 中定義的任何宣告。 請遵循下列步驟來指派常數值：
 
-1. 在  [Azure 入口網站](https://portal.azure.com/)的 **使用者屬性 & 宣告**] 區段上，按一下 [**編輯** 圖示來編輯宣告。
+1. 在  [Azure 入口網站](https://portal.azure.com/)的 **使用者屬性 & 宣告** 區段上，按一下 [**編輯**] 圖示來編輯宣告。
 
 1. 按一下您要修改的必要宣告。
 
@@ -99,7 +99,7 @@ ms.locfileid: "76698674"
 
 您也可以使用宣告轉換函式。
 
-| 函式 | 說明 |
+| 函式 | 描述 |
 |----------|-------------|
 | **ExtractMailPrefix()** | 從電子郵件地址或使用者主體名稱中移除網域尾碼。 這只會擷取使用者名稱的第一個部分 (例如，"joe_smith" 而不是 joe_smith@contoso.com)。 |
 | **Join （）** | 加入具有已驗證網域的屬性。 如果選取的使用者識別碼值具有網域，它會擷取使用者名稱以附加所選的已驗證網域。 例如，如果您選取電子郵件 (joe_smith@contoso.com) 作為使用者識別碼值，並選取 contoso.onmicrosoft.com 作為已驗證的網域，這樣會產生 joe_smith@contoso.onmicrosoft.com。 |
@@ -126,7 +126,7 @@ ms.locfileid: "76698674"
 
 您可以使用下列函數來轉換宣告。
 
-| 函式 | 說明 |
+| 函式 | 描述 |
 |----------|-------------|
 | **ExtractMailPrefix()** | 從電子郵件地址或使用者主體名稱中移除網域尾碼。 這只會擷取使用者名稱的第一個部分 (例如，"joe_smith" 而不是 joe_smith@contoso.com)。 |
 | **Join （）** | 藉由聯結兩個屬性來建立新的值。 （選擇性）您可以在這兩個屬性之間使用分隔符號。 針對 NameID 宣告轉換，聯結僅限於已驗證的網域。 如果選取的使用者識別碼值具有網域，它會擷取使用者名稱以附加所選的已驗證網域。 例如，如果您選取電子郵件 (joe_smith@contoso.com) 作為使用者識別碼值，並選取 contoso.onmicrosoft.com 作為已驗證的網域，這樣會產生 joe_smith@contoso.onmicrosoft.com。 |
@@ -180,4 +180,4 @@ ms.locfileid: "76698674"
 
 * [Azure AD 中的應用程式管理](../manage-apps/what-is-application-management.md)
 * [對不存在於 Azure AD 應用程式庫的應用程式設定單一登入](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
-* [針對 SAML 型單一登入進行疑難排解](howto-v1-debug-saml-sso-issues.md)
+* [針對 SAML 型單一登入進行疑難排解](../azuread-dev/howto-v1-debug-saml-sso-issues.md)

@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 56d6e8642ffd127f0982485902c466b76cbaaeed
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 32db7b19b7ec63135c3359f9685dd767dd0921f5
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986507"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169851"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>設定 Azure Machine Learning 的開發環境
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -39,7 +39,7 @@ ms.locfileid: "76986507"
 
 * [Visual Studio Code](#vscode)：如果您使用 Visual Studio Code， [Azure Machine Learning 延伸](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai)模組包含 Python 的廣泛語言支援，以及可讓您更方便且更有效率地使用 Azure Machine Learning 的功能。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 Azure Machine Learning 工作區。 若要建立工作區，請參閱[建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。 您只需要工作區，就能開始使用自己的[雲端式筆記本伺服器](#compute-instance)、 [DSVM](#dsvm)或[Azure Databricks](#aml-databricks)。
 
@@ -57,10 +57,6 @@ Azure Machine Learning 工作區。 若要建立工作區，請參閱[建立 Azu
 ## <a id="compute-instance"></a>您自己的雲端式計算實例
 
 Azure Machine Learning[計算實例（預覽）](concept-compute-instance.md)是安全的雲端式 Azure 工作站，可為數據科學家提供 Jupyter 筆記本伺服器、JupyterLab 和完整備妥的 ML 環境。
-
-> [!NOTE]
-> 計算實例僅適用于區域為**美國中北部**、**美國東部 2**、**北歐**或**英國南部**的工作區，並支援其他即將推出的區域。
->如果您的工作區位於任何其他區域，您可繼續建立並使用 [Notebook VM](concept-compute-instance.md#notebookvm)。
 
 不需要為計算實例安裝或設定任何內容。  從您的 Azure Machine Learning 工作區中隨時建立一個。 只提供名稱，並指定 Azure VM 類型。 請在本教學課程中立即試用[：設定環境和工作區](tutorial-1st-experiment-sdk-setup.md)。
 
@@ -300,7 +296,7 @@ Azure Databricks 如何與 Azure Machine Learning 搭配運作：
 | Python 版本 |always| 3 |
 | 背景工作角色 |always| 2 個以上 |
 | 背景工作節點 VM 類型 <br>（判斷並行反覆運算的最大數目） |自動化 ML<br>向| 建議使用已記憶體最佳化的 VM |
-| 啟用自動調整功能 |自動化 ML<br>向| 取消選取 |
+| 啟用自動調整 |自動化 ML<br>向| 取消選取 |
 
 請靜候至叢集運作，再繼續操作。
 
@@ -373,7 +369,7 @@ SDK for Databricks 搭配自動化機器學習服務 ![**sdk，並**在 Databric
 
 * **下載檔案**：在[Azure 入口網站](https://ms.portal.azure.com)中，從工作區的 [**總覽**] 區段中選取 [**下載 config.xml** ]。
 
-     ![Azure Portal](./media/how-to-configure-environment/configure.png)
+     ![Azure 入口網站](./media/how-to-configure-environment/configure.png)
 
 * **以程式設計方式建立**檔案：在下列程式碼片段中，您可以藉由提供訂用帳戶識別碼、資源群組和工作區名稱來連接到工作區。 接著，它會將工作區組態儲存至檔案：
 
@@ -397,5 +393,5 @@ SDK for Databricks 搭配自動化機器學習服務 ![**sdk，並**在 Databric
 
 ## <a name="next-steps"></a>後續步驟
 
-- 在 Azure Machine Learning 使用 MNIST 資料集[定型模型](tutorial-train-models-with-aml.md)] \(英文\)
+- 在 Azure Machine Learning 使用 MNIST 資料集[定型模型](tutorial-train-models-with-aml.md) \(英文\)
 - 檢視[適用於 Python 的 Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) \(英文\) 參考

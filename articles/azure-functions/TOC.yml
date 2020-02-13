@@ -327,7 +327,15 @@
     - name: 觸發和繫結
       items:
         - name: Blob 儲存體
-          href: functions-bindings-storage-blob.md
+          items:
+            - name: 概觀
+              href: functions-bindings-storage-blob.md
+            - name: 觸發程序
+              href: functions-bindings-storage-blob-trigger.md
+            - name: 輸入
+              href: functions-bindings-storage-blob-input.md
+            - name: 輸出
+              href: functions-bindings-storage-blob-output.md
         - name: Azure Cosmos DB
           items:
             - name: Functions 1.x
