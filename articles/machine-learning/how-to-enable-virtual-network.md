@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 01/13/2020
-ms.openlocfilehash: 3dfdbc56456ea67c830d0e1e9785b9d0032bf2cc
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: fd358801b5fe84aac754b5a975234688a707e544
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988207"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169955"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>在 Azure 虛擬網路中保護 Azure ML 實驗和推斷作業
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ Azure Machine Learning 依賴其他 Azure 服務來計算資源。 計算資源�
 > [!WARNING]
 > Microsoft 不支援使用 Azure Machine Learning 設計工具或自動化機器學習（從 studio）與虛擬網路內的資源。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 + Azure Machine Learning[工作區](how-to-manage-workspace.md)。
 
@@ -124,10 +124,6 @@ Azure Machine Learning 會使用與工作區相關聯的金鑰保存庫實例來
 <a id="amlcompute"></a>
 
 ## <a name="compute-instance"></a>使用 Machine Learning Compute
-
-> [!NOTE]
-> 計算執行個體 (預覽) 目前僅適用於區域為 [美國中北部] 或 [英國南部] 的工作區，其他區域的支援將於近期推出。
-> 使用其中一個區域來建立可新增至虛擬網路的計算實例。
 
 若要在虛擬網路中使用 Azure Machine Learning 計算實例或計算叢集，必須符合下列網路需求：
 
@@ -261,7 +257,7 @@ Machine Learning Compute 目前使用 Azure Batch 服務將 VM 佈建在指定�
 
    ![Machine Learning Compute 的虛擬網路設定](./media/how-to-enable-virtual-network/amlcompute-virtual-network-screen.png)
 
-您也可以透過使用 Azure Machine Learning SDK 建立 Machine Learning Compute 叢集。 下列程式碼會在名為 `mynetwork` 的虛擬網路其 `default` 子網路中建立新的 Machine Learning Compute 叢集：
+您也可以透過使用 Azure Machine Learning SDK 建立 Machine Learning Compute 叢集。 下列程式碼會在名為 `default` 的虛擬網路其 `mynetwork` 子網路中建立新的 Machine Learning Compute 叢集：
 
 ```python
 from azureml.core.compute import ComputeTarget, AmlCompute

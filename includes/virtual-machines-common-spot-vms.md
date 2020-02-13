@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/23/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: a6c333da0e88af25e3907af23f792a210002477f
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 7cfa6e9810057493cc3007eec7fd1668a70c727e
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75901574"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77179021"
 ---
 使用「點 Vm」可讓您以可觀的成本節約，利用我們未使用的容量。 Azure 基礎結構會在任何時間點回復，以找出虛擬機器的功能。 因此，針對可處理中斷的工作負載（例如批次處理作業、開發/測試環境、大型計算工作負載等），找出 Vm 很棒。
 
@@ -23,7 +23,6 @@ ms.locfileid: "75901574"
 > 點實例目前處於公開預覽狀態。
 > 此預覽版本不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 >
-> 在公開預覽的早期部分，點實例會有固定的價格，因此不會有任何以價格為基礎的收回。
 
 ## <a name="eviction-policy"></a>收回原則
 
@@ -31,11 +30,8 @@ Vm 可以根據容量或您設定的最大價格來收回。 針對虛擬機器�
 
 使用者可以選擇透過[Azure Scheduled Events](../articles/virtual-machines/linux/scheduled-events.md)接收 VM 內通知。 這會在您的 Vm 被收回時通知您，而且您將有30秒的時間完成任何作業，並在收回前執行關閉工作。 
 
-> [!IMPORTANT]
-> 在公開預覽的早期部分，您可以設定最大價格，但它會被忽略。 找出 Vm 會有固定的價格，因此不會有任何以價格為基礎的收回。
 
-
-| 選項 | 成果 |
+| 選項 | 結果 |
 |--------|---------|
 | [最大價格] 設定為 > = 目前的價格。 | 如果有可用的容量和配額，則會部署 VM。 |
 | 最大價格設定為 < 目前的價格。 | 未部署 VM。 您會收到一則錯誤訊息，指出最大價格必須 > = 目前的價格。 |
@@ -54,9 +50,9 @@ Vm 可以根據容量或您設定的最大價格來收回。 針對虛擬機器�
 
 找出 Vm 目前無法使用暫時的 OS 磁片。
 
-找出 Vm 可以部署到任何區域，但在 Azure Government 區域中 Microsoft Azure 中國世紀和國防部（DoD）除外。
+找出 Vm 可以部署到任何區域，但 Microsoft Azure 中國的世紀除外。
 
-## <a name="pricing"></a>定價
+## <a name="pricing"></a>價格
 
 點 Vm 的定價是以區域和 SKU 為依據的變數。 如需詳細資訊，請參閱[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)和[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)的 VM 定價。 
 
@@ -97,8 +93,8 @@ Vm 可以根據容量或您設定的最大價格來收回。 針對虛擬機器�
 | Enterprise 合約         | 是                               |
 | 隨用隨付                | 是                               |
 | 雲端服務提供者 (CSP) | [聯絡您的合作夥伴](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
-| 優勢                     | 無法使用                     |
-| 協辦                    | 無法使用                     |
+| 優點                     | 無法使用                     |
+| 商                    | 無法使用                     |
 | 免費試用                   | 無法使用                     |
 
 

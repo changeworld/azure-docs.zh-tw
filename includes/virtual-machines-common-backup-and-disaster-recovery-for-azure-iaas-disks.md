@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: cd10bd2a04bfb2a3e3316d86e64a98c75c12e36d
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: aa7ddb75017a532b436b9a5cfc71d1a7c2832cb6
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76530946"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77179101"
 ---
 本文說明如何在 Azure 中規劃 IaaS 虛擬機器 (VM) 和磁碟的備份和災害復原 (DR)。 本文件涵蓋受控磁碟和非受控磁碟。
 
@@ -103,26 +103,26 @@ IaaS 應用程式資料問題是另一種可能性。 請考慮一個可計算�
 針對非受控磁碟，您可以針對 IaaS 磁碟使用本地備援儲存體類型，但請確定 Azure 備份已啟用復原服務保存庫的異地備援儲存體選項。
 
 > [!NOTE]
-> 如果您針對非受控磁碟使用[異地備援儲存體](../articles/storage/common/storage-redundancy-grs.md)或[具有讀取權限的異地備援儲存體](../articles/storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)選項，您仍然需要一致性快照集才能進行備份和 DR。 請使用 [Azure 備份](https://azure.microsoft.com/services/backup/)或[一致性快照集](#alternative-solution-consistent-snapshots)。
+> 如果您針對非受控磁碟使用[異地備援儲存體](../articles/storage/common/storage-redundancy-grs.md)或[具有讀取權限的異地備援儲存體](../articles/storage/common/storage-redundancy.md)選項，您仍然需要一致性快照集才能進行備份和 DR。 請使用 [Azure 備份](https://azure.microsoft.com/services/backup/)或[一致性快照集](#alternative-solution-consistent-snapshots)。
 
  下表是 DR 可用解決方案的摘要。
 
-| 案例 | 自動複寫 | DR 解決方案 |
+| 狀況 | 自動複寫 | DR 解決方案 |
 | --- | --- | --- |
 | 進階 SSD 磁碟 | 本機 ([本地備援儲存體](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure 備份](https://azure.microsoft.com/services/backup/) |
 | 受控磁碟 | 本機 ([本地備援儲存體](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure 備份](https://azure.microsoft.com/services/backup/) |
 | 非受控本地備援儲存體磁碟 | 本機 ([本地備援儲存體](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure 備份](https://azure.microsoft.com/services/backup/) |
 | 非受控異地備援儲存體磁碟 | 跨區域 ([異地備援儲存體](../articles/storage/common/storage-redundancy-grs.md)) | [Azure 備份](https://azure.microsoft.com/services/backup/)<br/>[一致性快照](#alternative-solution-consistent-snapshots) |
-| 非受控具有讀取權限的異地備援儲存體磁碟 | 跨區域 ([具有讀取權限的異地備援儲存體](../articles/storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)) | [Azure 備份](https://azure.microsoft.com/services/backup/)<br/>[一致性快照](#alternative-solution-consistent-snapshots) |
+| 非受控具有讀取權限的異地備援儲存體磁碟 | 跨區域 ([具有讀取權限的異地備援儲存體](../articles/storage/common/storage-redundancy.md)) | [Azure 備份](https://azure.microsoft.com/services/backup/)<br/>[一致性快照](#alternative-solution-consistent-snapshots) |
 
 使用可用性設定組中的受控磁碟及 Azure 備份，即可達到最佳的高可用性。 如果您使用非受控磁碟，您仍然可以使用 Azure 備份進行 DR。 如果您無法使用 Azure 備份，替代的備份和 DR 解決方案是擷取[一致性快照](#alternative-solution-consistent-snapshots) (如稍後章節所述)。
 
 應用程式或基礎結構層級的高可用性、備份和 DR 選項如下所示：
 
-| 層級 |   高可用性   | 備份或 DR |
+| Level |   高可用性   | 備份或 DR |
 | --- | --- | --- |
-| 應用程式 | SQL Server AlwaysOn | Azure 備份 |
-| 基礎結構    | 可用性設定組  | 使用一致性快照的異地備援儲存體 |
+| Application | SQL Server AlwaysOn | Azure 備份 |
+| 基礎架構    | 可用性設定組  | 使用一致性快照的異地備援儲存體 |
 
 ### <a name="using-azure-backup"></a>使用 Azure 備份 
 

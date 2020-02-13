@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 6976f0bb671b94f71b71287483c2ab88d0959899
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: HT
+ms.openlocfilehash: 5831f83d8cd38cc07c64fdc398405c3a70935485
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152766"
+ms.locfileid: "77169081"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio-classic"></a>將分析從 Excel 遷移至 Azure Machine Learning Studio （傳統）
 
@@ -73,7 +73,7 @@ ms.locfileid: "77152766"
 | --- |:---:|:---:|:---:|
 | 加上標籤的值 |實際值 (數值) |相同 |相同 |
 | 學習模組 |Excel -> 資料分析 -> 迴歸 |線性迴歸。 |線性迴歸 |
-| 學習模組選項 |N/A |預設值 |普通最小平方<br />L2 = 0.005 |
+| 學習模組選項 |N/A |Defaults |普通最小平方<br />L2 = 0.005 |
 | 資料集 |26 個資料列，3 個功能，1 個標籤。 全部數值。 |相同 |相同 |
 | 分割：訓練 |Excel 會在前 18 個資料列上訓練，在最後 8 個資料列上測試。 |相同 |相同 |
 | 分割：測試 |Excel 迴歸公式會套用至最後 8 個資料列 |相同 |相同 |

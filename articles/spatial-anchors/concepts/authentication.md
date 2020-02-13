@@ -8,12 +8,12 @@ ms.author: pmorgan
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 6149fa631633d05399568bd1ec797c5ee47d29a4
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: HT
+ms.openlocfilehash: 3de84e2d814acfca67bc722243a90fa41f6536e1
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152596"
+ms.locfileid: "77161676"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Azure 空間錨點的驗證和授權
 
@@ -92,7 +92,7 @@ configuration.AccountKey(LR"(MyAccountKey)");
 
 ## <a name="azure-ad-user-authentication"></a>Azure AD 使用者驗證
 
-對於以 Azure Active Directory 使用者為目標的應用程式，建議的方法是使用使用者的 Azure AD 權杖，您可以使用 ADAL 程式庫來取得，如下列檔所述： [https://docs.microsoft.com/azure/active-directory/develop/v1-overview](../../active-directory/develop/v1-overview.md);您應遵循 [快速入門] 底下所列的步驟，其中包括：
+針對以 Azure Active Directory 使用者為目標的應用程式，建議的方法是使用使用者的 Azure AD token，您可以使用 MSAL 連結[庫](../../active-directory/develop/msal-overview.md)取得該權杖。 您應遵循[註冊應用程式快速入門](../../active-directory/develop/quickstart-register-app.md)中列出的步驟，其中包括：
 
 1. Azure 入口網站中的設定
     1.  在 Azure AD 中，將您的應用程式註冊為**原生應用**程式。 在註冊過程中，您必須判斷您的應用程式是否應為多租使用者，並提供應用程式允許的重新導向 Url。
@@ -118,7 +118,7 @@ configuration.AccountKey(LR"(MyAccountKey)");
         3.  如果您的應用程式支援**所有 Microsoft 帳戶使用者**，請將此值取代為**Common**
     3.  在您的權杖要求上，將**資源**設定為「 https://sts.mixedreality.azure.com」。 此「資源」會指出 Azure AD 您的應用程式要求 Azure 空間錨點服務的權杖。
 
-如此一來，您的應用程式應該能夠從 ADAL 取得 Azure AD token;您可以將該 Azure AD token 設定為雲端會話設定物件上的**authenticationToken** 。
+如此一來，您的應用程式應該能夠從 MSAL Azure AD token 取得;您可以將該 Azure AD token 設定為雲端會話設定物件上的**authenticationToken** 。
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -168,7 +168,7 @@ configuration.AuthenticationToken(LR"(MyAuthenticationToken)");
 
 在此，我們假設您的應用程式使用自己的機制（例如： Microsoft 帳戶、PlayFab、Facebook、Google ID、自訂使用者名稱/密碼等）來驗證其後端服務。 當您的使用者通過後端服務的驗證之後，該服務就可以抓取 Azure AD 權杖，將其與 Azure 空間錨點的存取權杖交換，然後傳回給用戶端應用程式。
 
-會使用 ADAL 程式庫來抓取 Azure AD 存取權杖，如下列檔所述： [https://docs.microsoft.com/azure/active-directory/develop/v1-overview](../../active-directory/develop/v1-overview.md);您應遵循 [快速入門] 底下所列的步驟，其中包括：
+Azure AD 存取權杖會使用[MSAL 程式庫](../../active-directory/develop/msal-overview.md)來抓取。 您應遵循[註冊應用程式快速入門](../../active-directory/develop/quickstart-register-app.md)中列出的步驟，其中包括：
 
 1.  Azure 入口網站中的設定：
     1.  在 Azure AD 中註冊您的應用程式：

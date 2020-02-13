@@ -9,12 +9,12 @@ ms.date: 02/11/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 2bac51a86c8acdba0f6c2f03e5a24ab2b133aa8e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7529cfbd0ab75d0113e5cea666bc04aa1b15d30b
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520999"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157698"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>起始儲存體帳戶容錯移轉 (預覽)
 
@@ -27,20 +27,20 @@ ms.locfileid: "73520999"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 您必須先確實執行下列步驟，才可開始對儲存體帳戶執行帳戶容錯移轉：
 
 - 註冊帳戶容錯移轉預覽版。 如需註冊方式的相關資訊，請參閱[關於預覽版](storage-disaster-recovery-guidance.md#about-the-preview)。
-- 確定您的儲存體帳戶已設定為使用異地備援儲存體 (GRS) 或讀取權限異地備援儲存體 (RA-GRS)。 如需有關異地多餘儲存體的詳細資訊，請參閱[異地多餘儲存體（GRS）： Azure 儲存體的跨區域](storage-redundancy-grs.md)複寫。 
+- 確定您的儲存體帳戶已設定為使用異地備援儲存體 (GRS) 或讀取權限異地備援儲存體 (RA-GRS)。 如需有關異地多餘儲存體的詳細資訊，請參閱[Azure 儲存體冗余](storage-redundancy.md)。
 
 ## <a name="important-implications-of-account-failover"></a>帳戶容錯移轉的重要影響
 
 當您為儲存體帳戶起始帳戶容錯移轉時，次要端點的 DNS 記錄將會更新，使次要端點成為主要端點。 在起始容錯移轉之前，請確實了解儲存體帳戶可能會受到的影響。
 
-若要在起始容錯移轉之前評估可能的資料遺失程度，請使用 **PowerShell Cmdlet 並搭配** 參數，以查看 [上次同步時間]`Get-AzStorageAccount``-IncludeGeoReplicationStats` 屬性。 然後，查看帳戶的 `GeoReplicationStats` 屬性。 
+若要在起始容錯移轉之前評估可能的資料遺失程度，請使用 **PowerShell Cmdlet 並搭配** 參數，以查看 [上次同步時間]`Get-AzStorageAccount``-IncludeGeoReplicationStats` 屬性。 然後，查看帳戶的 `GeoReplicationStats` 屬性。 \
 
-容錯移轉之後，您的儲存體帳戶類型在新的主要區域中會自動轉換為本地備援儲存體 (LRS)。 您可以為帳戶重新啟用異地備援儲存體 (GRS) 或讀取權限異地備援儲存體 (RA-GRS)。 請注意，從 LRS 轉換為 GRS 或 RA-GRS 時，會產生額外的費用。 如需詳細資訊，請參閱[頻寬定價詳細資料](https://azure.microsoft.com/pricing/details/bandwidth/)。 
+容錯移轉之後，您的儲存體帳戶類型在新的主要區域中會自動轉換為本地備援儲存體 (LRS)。 您可以為帳戶重新啟用異地備援儲存體 (GRS) 或讀取權限異地備援儲存體 (RA-GRS)。 請注意，從 LRS 轉換為 GRS 或 RA-GRS 時，會產生額外的費用。 如需詳細資訊，請參閱[頻寬定價詳細資料](https://azure.microsoft.com/pricing/details/bandwidth/)。
 
 為您的儲存體帳戶重新啟用 GRS 之後，Microsoft 會開始將您帳戶中的資料複寫到新的次要區域。 複寫時間取決於複寫的資料量。  
 

@@ -17,16 +17,14 @@ ms.date: 11/19/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 4d06e5a2bfe05a530fe369f70880ea04f0bc3dd3
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: b45ba0c0b417be9cf308fedbb7fad2f6ad5fceaf
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700510"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159726"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft 身分識別平臺和 OAuth 2.0 裝置授權授與流程
-
-[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
 Microsoft 身分識別平臺支援「[裝置授權授](https://tools.ietf.org/html/rfc8628)與」，可讓使用者登入受輸入限制的裝置，例如智慧型電視、IoT 裝置或印表機。  若要啟用此流程，裝置會讓使用者在其他裝置的瀏覽器中瀏覽網頁，以執行登入程序。  使用者登入後，裝置可取得所需的存取權杖和重新整理權杖。  
 
@@ -60,7 +58,7 @@ scope=user.read%20openid%20profile
 
 ```
 
-| 參數 | 條件 | 說明 |
+| 參數 | 條件 | 描述 |
 | --- | --- | --- |
 | `tenant` | 必要項 | 可以是/common、/consumers 或/organizations。  它也可以是您想要以 GUID 或易記名稱格式來要求許可權的目錄租使用者。  |
 | `client_id` | 必要項 | **應用程式（用戶端）識別碼**， [Azure 入口網站](https://go.microsoft.com/fwlink/?linkid=2083908)指派給您應用程式的應用程式註冊體驗。 |
@@ -70,14 +68,14 @@ scope=user.read%20openid%20profile
 
 成功的回應會是一個 JSON 物件，其中包含允許使用者登入的所需資訊。  
 
-| 參數 | [格式] | 說明 |
+| 參數 | [格式] | 描述 |
 | ---              | --- | --- |
 |`device_code`     | String | 長字串，可用於驗證用戶端與授權伺服器之間的工作階段。 用戶端會使用此參數來向授權伺服器要求存取權杖。 |
 |`user_code`       | String | 向使用者顯示的簡短字串，用來識別次要裝置上的會話。|
 |`verification_uri`| URI | 為了執行登入程序，使用者應使用 `user_code` 查看的 URI。 |
 |`expires_in`      | int | `device_code` 和 `user_code` 到期之前的秒數。 |
 |`interval`        | int | 用戶端在輪詢要求之間應等待的秒數。 |
-| `message`        | String | 人類看得懂的字串，包含使用者說明。 在 `?mkt=xx-XX` 形式的要求中加入  **查詢參數**、填寫適當的語言文化代碼，即可進行當地語系化。 |
+| `message`        | String | 人類看得懂的字串，包含使用者說明。 在 **形式的要求中加入** 查詢參數`?mkt=xx-XX`、填寫適當的語言文化代碼，即可進行當地語系化。 |
 
 > [!NOTE]
 > 此時不會包含或支援 [`verification_uri_complete` 回應] 欄位。  我們提過這是因為如果您閱讀[標準](https://tools.ietf.org/html/rfc8628)，就會看到 `verification_uri_complete` 列為裝置程式碼流程標準的選擇性部分。
@@ -88,7 +86,7 @@ scope=user.read%20openid%20profile
 
 如果使用者使用個人帳戶（在/common 或/consumers 上）進行驗證，系統會要求他們重新登入，以便將驗證狀態傳送至裝置。  系統也會要求他們提供同意，以確保他們知道所授與的許可權。  這不適用於用於驗證的公司或學校帳戶。 
 
-使用者在 `verification_uri`進行驗證時，用戶端應使用 `device_code` 輪詢 `/token` 端點，以取得要求的權杖。
+使用者在 `verification_uri`進行驗證時，用戶端應使用 `/token` 輪詢 `device_code` 端點，以取得要求的權杖。
 
 ``` 
 POST https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
@@ -99,7 +97,7 @@ client_id: 6731de76-14a6-49ae-97bc-6eba6914391e
 device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 ```
 
-| 參數 | 必要項 | 說明|
+| 參數 | 必要項 | 描述|
 | -------- | -------- | ---------- |
 | `tenant`  | 必要項 | 初始要求中使用的相同租使用者或租使用者別名。 | 
 | `grant_type` | 必要項 | 必須是 `urn:ietf:params:oauth:grant-type:device_code`|
@@ -110,7 +108,7 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 
 裝置程式碼流程是一種輪詢通訊協定，因此您的用戶端在使用者完成驗證之前，必須預期會收到錯誤。  
 
-| 錯誤 | 說明 | 用戶端動作 |
+| 錯誤 | 描述 | 用戶端動作 |
 | ------ | ----------- | -------------|
 | `authorization_pending` | 使用者尚未完成驗證，但尚未取消流程。 | 經過至少 `interval` 秒後，重複要求流程。 |
 | `authorization_declined` | 終端使用者拒絕了授權要求。| 停止輪詢，並還原到未驗證的狀態。  |
@@ -132,7 +130,7 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 }
 ```
 
-| 參數 | [格式] | 說明 |
+| 參數 | [格式] | 描述 |
 | --------- | ------ | ----------- |
 | `token_type` | String| 一律是「Bearer」。 |
 | `scope` | 空格分隔的字串 | 如果傳回了存取權杖，則會列出存取權杖的有效範圍。 |

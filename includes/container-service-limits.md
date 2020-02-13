@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 11/22/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 0695416c65eed2bbf0a19d5ed1ea0c53a7ece332
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: ac928d9087ba5db312540b8ec542d7a2a29e2a99
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74485444"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77179103"
 ---
 | 資源 | 預設限制 |
 | --- | :--- |
 | 每個訂用帳戶的群集上限 | 100 |
 | 具有虛擬機器可用性設定組和基本 Load Balancer SKU 之每個叢集的節點數目上限  | 100 |
-| 每個叢集的節點數目上限，虛擬機器擴展集和[STANDARD LOAD BALANCER SKU][standard-load-balancer] | 800（每個[節點集][node-pool]區100個節點） |
+| 每個叢集的節點數目上限，虛擬機器擴展集和[STANDARD LOAD BALANCER SKU][standard-load-balancer] | 1000（每個[節點集][node-pool]區100個節點） |
 | 每個節點的最大 pod 數：使用 Kubenet 的[基本網路][basic-networking]功能 | 110 |
 | 每個節點的最大 pod 數：使用 Azure 容器網路介面的[Advanced 網路][advanced-networking] | Azure CLI 部署：30<sup>1</sup><br />Azure Resource Manager 範本： 30<sup>1</sup><br />入口網站部署：30 |
 

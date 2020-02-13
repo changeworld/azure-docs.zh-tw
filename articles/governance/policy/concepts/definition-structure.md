@@ -3,12 +3,12 @@ title: 原則定義結構的詳細資料
 description: 說明如何使用原則定義來建立組織中 Azure 資源的慣例。
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: ba974228d63c542027ea5191d2c5877e7288b331
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: b98702161753a996cd8a6751670308a78dc36b7c
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77050026"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169776"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure 原則定義結構
 
@@ -255,7 +255,7 @@ Azure 原則會建立資源的慣例。 原則定義會描述資源合規性[條
 使用 **like** 和 **notLike** 條件時，您可以在值中提供 `*` 萬用字元。
 值不應包含多個 `*` 萬用字元。
 
-當使用**match**和**notMatch**條件時，請提供 `#` 來比對數位、為字母 `?`、`.` 比對任何字元，以及任何其他字元以符合該實際字元。 While、 **match**和**notMatch**區分大小寫，所有其他評估_stringValue_的條件都不區分大小寫。 不會區分大小寫的替代項目，可在 **matchInsensitively** 和 **notMatchInsensitively** 中取得。 如需範例，請參閱[允許數個名稱模式](../samples/allow-multiple-name-patterns.md)。
+當使用**match**和**notMatch**條件時，請提供 `#` 來比對數位、為字母 `?`、`.` 比對任何字元，以及任何其他字元以符合該實際字元。 While、 **match**和**notMatch**區分大小寫，所有其他評估_stringValue_的條件都不區分大小寫。 不會區分大小寫的替代項目，可在 **matchInsensitively** 和 **notMatchInsensitively** 中取得。
 
 在 **\[\*\] 別名**陣列域值時，陣列中的每個元素都會以邏輯**和**之間的元素來個別評估。 如需詳細資訊，請參閱[評估 \[\*\] 別名](../how-to/author-policies-for-arrays.md#evaluating-the--alias)。
 
@@ -271,7 +271,7 @@ Azure 原則會建立資源的慣例。 原則定義會描述資源合規性[條
 - `kind`
 - `type`
 - `location`
-  - 針對不受特定位置限制的資源，請使用 **global**。 如需範例，請參閱[範例 - 允許的位置](../samples/allowed-locations.md)。
+  - 針對不受特定位置限制的資源，請使用 **global**。
 - `identity.type`
   - 傳回資源上所啟用[受控識別](../../../active-directory/managed-identities-azure-resources/overview.md)的類型。
 - `tags`
@@ -663,7 +663,7 @@ Azure 原則支援下列類型的效果：
 
 ### <a name="understanding-the--alias"></a>了解 [*] 別名
 
-其中有幾個可用的別名，其版本會顯示為「一般」名稱，另一個則會附加 **\[\*\]** 。 例如：
+其中有幾個可用的別名，其版本會顯示為「一般」名稱，另一個則會附加 **\[\*\]** 。 例如，
 
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`

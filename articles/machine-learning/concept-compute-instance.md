@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: f6d2da49e2659cfa69d25e3fe71351547706fd42
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: b65b7a9fd38b690729fafd86fe213ff56760a1bb
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984841"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169843"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>什麼是 Azure Machine Learning 計算實例？
 
@@ -26,9 +26,6 @@ Azure Machine Learning 計算實例（預覽）是適用于資料科學家的完
 
 計算實例通常用來做為開發環境。  它們也可以當做用於開發和測試之定型和推斷的計算目標。  針對大型工作，具有多重節點調整功能的[Azure Machine Learning 計算](how-to-set-up-training-targets.md#amlcompute)叢集是較佳的計算目標選擇。
 
-> [!NOTE]
-> 計算實例目前僅適用于區域為**美國中北部**、**美國東部 2**、**北歐**或**英國南部**的工作區，並支援其他即將推出的區域。
->如果您的工作區位於任何其他區域，您可繼續建立並使用 [Notebook VM](concept-compute-instance.md#notebookvm)。 
 
 ## <a name="why-use-a-compute-instance"></a>為何要使用計算實例？
 
@@ -58,7 +55,7 @@ Azure Machine Learning 計算實例可讓您在工作區中以完全整合的筆
 |Docker||
 |Nginx||
 |NCCL 2。0 ||
-|protobuf|| 
+|Protobuf|| 
 
 |**R**工具 & 環境|詳細資料|
 |----|:----:|
@@ -124,7 +121,7 @@ Python 套件全都安裝在**python 3.6-AzureML**環境中。
 
 針對工作區中的每個計算實例，您可以：
 
-* 存取計算實例上的 Jupyter、JupyterLab、RStudio VS Code Uri
+* 存取計算實例上的 Jupyter、JupyterLab、RStudio
 * 透過 SSH 連線到計算實例。 預設會停用 SSH 存取，但可在計算實例建立時啟用。 SSH 存取是透過公開/私用金鑰機制。 此索引標籤會提供 SSH 連線的詳細資料，例如 IP 位址、使用者名稱和埠號碼。
 * 取得特定計算實例的詳細資料，例如 IP 位址和區域。
 

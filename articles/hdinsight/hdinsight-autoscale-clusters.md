@@ -8,17 +8,17 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/11/2020
-ms.openlocfilehash: 1073b9014c83ae5d52d0b1a740819c48c9622936
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: HT
+ms.openlocfilehash: 172753f6bbcc47ed8ae9061b71ca3291e95b7a33
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152715"
+ms.locfileid: "77162849"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>自動調整 Azure HDInsight 叢集規模
 
 > [!Important]
-> 自動調整功能僅適用于5月 8 2019 之後建立的 Apache Spark、Hive、LLAP 和 Apache HBase 叢集。
+> 自動調整功能僅適用于5月 8 2019 之後建立的 Apache Spark、Hive、LLAP 和 Apache HBase 叢集。 LLAP 和 HBase 的自動調整為預覽狀態。
 
 Azure HDInsight 的叢集自動調整功能會自動相應增加和減少叢集中的背景工作節點數目。 目前無法調整叢集中的其他節點類型。  在建立新的 HDInsight 叢集時，可以設定最小和最大的背景工作節點數目。 自動調整會監視分析負載的資源需求，並相應增加或減少背景工作角色節點的數目。 這項功能不需額外付費。
 
@@ -45,7 +45,7 @@ Azure HDInsight 的叢集自動調整功能會自動相應增加和減少叢集�
 
 自動調整會持續監視叢集，並收集下列計量：
 
-|公制|描述|
+|計量|描述|
 |---|---|
 |擱置中的 CPU 總計|開始執行所有擱置中容器時所需的核心總數。|
 |擱置中的記憶體總計|開始執行所有擱置中容器時所需的記憶體總計 (MB)。|
@@ -247,7 +247,7 @@ Azure 入口網站中所列的叢集狀態可協助您監視自動調整活動�
 
 | 叢集狀態 | 描述 |
 |---|---|
-| 正在執行 | 叢集正常運作。 所有先前的自動調整活動都已順利完成。 |
+| 執行中 | 叢集正常運作。 所有先前的自動調整活動都已順利完成。 |
 | 更新  | 正在更新叢集自動調整設定。  |
 | HDInsight 設定  | 叢集擴充或相應減少作業進行中。  |
 | 更新錯誤  | HDInsight 在自動調整設定更新期間發生問題。 客戶可以選擇重試更新或停用自動調整。  |

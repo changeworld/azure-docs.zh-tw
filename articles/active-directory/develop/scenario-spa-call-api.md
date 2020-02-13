@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 05/06/2019
 ms.author: ryanwi
 ms.custom: aaddev
-ms.openlocfilehash: f3cafb4d2df4d1944f583a99ca2014f3841827d0
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: ccece6c840033913ec6d96b446dcb98c4befb32f
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701853"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159993"
 ---
 # <a name="single-page-application-call-a-web-api"></a>單一頁面應用程式：呼叫 Web API
 
@@ -27,9 +27,9 @@ ms.locfileid: "76701853"
 
 ## <a name="call-a-web-api"></a>呼叫 Web API
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-使用取得的存取權杖做為 HTTP 要求中的持有人，以呼叫任何 Web API，例如 Microsoft Graph API。 例如：
+使用取得的存取權杖做為 HTTP 要求中的持有人，以呼叫任何 Web API，例如 Microsoft Graph API。 例如，
 
 ```javascript
     var headers = new Headers();
@@ -47,9 +47,11 @@ ms.locfileid: "76701853"
         }
 ```
 
-### <a name="angular"></a>Angular
+# <a name="angulartabangular"></a>[Angular](#tab/angular)
 
 MSAL 角度包裝函式會利用 HTTP 攔截器，以無訊息方式自動取得存取權杖，並將它們附加至 Api 的 HTTP 要求。 如需詳細資訊，請參閱[取得權杖以呼叫 API](scenario-spa-acquire-token.md)。
+
+---
 
 ## <a name="next-steps"></a>後續步驟
 

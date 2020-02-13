@@ -17,12 +17,12 @@ ms.date: 07/25/2019
 ms.author: negoe
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: b347357bca1a7c1057a480b4afdef59d08718310
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 09d0def2ebd012670b9502f6f9b02ad18a02922d
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76703060"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160401"
 ---
 # <a name="microsoft-identity-platform-authentication-libraries"></a>Microsoft 身分識別平臺驗證程式庫
 
@@ -31,7 +31,7 @@ ms.locfileid: "76703060"
 建議您使用遵循安全性開發週期（SDL）方法的通訊協定網域專家所撰寫的程式庫。 這類方法包括[Microsoft 遵循的方式][Microsoft-SDL]。 如果您手動撰寫通訊協定的程式碼，您應該遵循 Microsoft SDL 之類的方法。 請密切注意每個通訊協定的標準規格中的安全性考慮。
 
 > [!NOTE]
-> 您正在尋找 Azure Active Directory Authentication Library （ADAL）嗎？ 請參閱[ADAL 程式庫指南](active-directory-authentication-libraries.md)。
+> 您正在尋找 Azure Active Directory Authentication Library （ADAL）嗎？ 請參閱[ADAL 程式庫指南](../azuread-dev/active-directory-authentication-libraries.md)。
 
 ## <a name="types-of-libraries"></a>程式庫類型
 
@@ -91,7 +91,7 @@ Microsoft 身分識別平臺端點適用于兩種類型的程式庫：
 
 ## <a name="compatible-client-libraries"></a>相容的用戶端程式庫
 
-| 平台 | 程式庫名稱 | 測試的版本 | 原始程式碼 | 範例 |
+| 平台 | 媒體櫃名稱 | 測試的版本 | 原始程式碼 | 範例 |
 |:---:|:---:|:---:|:---:|:---:|
 |![JavaScript](media/sample-v2-code/logo_js.png)|[Hello.js](https://adodson.com/hello.js/) | 版本1.13。5 |[Hello.js](https://github.com/MrSwitch/hello.js) |[SPA](https://github.com/Azure-Samples/active-directory-javascript-graphapi-web-v2) |
 | ![Java](media/sample-v2-code/logo_java.png) | [Scribe Java](https://github.com/scribejava/scribejava) | [3.2.0 版](https://github.com/scribejava/scribejava/releases/tag/scribejava-3.2.0) | [ScribeJava](https://github.com/scribejava/scribejava/) | |
@@ -99,7 +99,7 @@ Microsoft 身分識別平臺端點適用于兩種類型的程式庫：
 | ![Python](media/sample-v2-code/logo_python.png) | [要求-OAuthlib](https://github.com/requests/requests-oauthlib) | [版本 1.2.0](https://github.com/requests/requests-oauthlib/releases/tag/v1.2.0) | [要求-OAuthlib](https://github.com/requests/requests-oauthlib) | |
 | ![Node.js](media/sample-v2-code/logo_nodejs.png) | [openid-用戶端](https://github.com/panva/node-openid-client) | [版本2.4。5](https://github.com/panva/node-openid-client/releases/tag/v2.4.5) | [openid-用戶端](https://github.com/panva/node-openid-client) | |
 | ![PHP](media/sample-v2-code/logo_php.png) | [PHP League oauth2-client](https://github.com/thephpleague/oauth2-client) | [1.4.2 版](https://github.com/thephpleague/oauth2-client/releases/tag/1.4.2) | [oauth2-client](https://github.com/thephpleague/oauth2-client/) | |
-| ![拼音](media/sample-v2-code/logo_ruby.png) |[OmniAuth](https://github.com/omniauth/omniauth/wiki) |omniauth：1.3。1<br />omniauth-oauth2：1.4。0 |[OmniAuth](https://github.com/omniauth/omniauth)<br />[OmniAuth OAuth2](https://github.com/intridea/omniauth-oauth2) |  |
+| ![Ruby](media/sample-v2-code/logo_ruby.png) |[OmniAuth](https://github.com/omniauth/omniauth/wiki) |omniauth：1.3。1<br />omniauth-oauth2：1.4。0 |[OmniAuth](https://github.com/omniauth/omniauth)<br />[OmniAuth OAuth2](https://github.com/intridea/omniauth-oauth2) |  |
 | iOS、macOS、& Android  | [React Native 應用程式驗證](https://github.com/FormidableLabs/react-native-app-auth) | [版本4.2。0](https://github.com/FormidableLabs/react-native-app-auth/releases/tag/v4.2.0) | [React Native 應用程式驗證](https://github.com/FormidableLabs/react-native-app-auth) | |
 
 針對任何符合標準的程式庫，您可以使用 Microsoft 身分識別平臺端點。 請務必瞭解支援的位置：

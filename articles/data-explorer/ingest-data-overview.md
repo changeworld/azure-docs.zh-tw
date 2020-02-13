@@ -7,18 +7,18 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 90387a033a43c627be4ce69a93ee37c5b959732d
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
-ms.translationtype: MT
+ms.openlocfilehash: 54401d4fd8a911fc9cf5bc67d4324e84005fa752
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091789"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157239"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Azure 資料總管資料擷取
 
 資料擷取是從一個或多個來源載入資料記錄所使用的程序，以建立或更新 Azure 資料總管中的資料表。 一旦擷取之後，資料就會變成可供查詢。 下圖顯示在 Azure 資料總管中工作的端對端流程，包括資料擷取。
 
-![資料流](media/ingest-data-overview/data-flow.png)
+![設計師中](media/ingest-data-overview/data-flow.png)
 
 Azure 資料總管資料管理服務負責資料擷取，並提供下列功能：
 
@@ -118,7 +118,7 @@ Kusto 提供的用戶端 SDK 可用來搭配下列項目內嵌及查詢資料：
 ## <a name="supported-data-formats"></a>支援的資料格式
 
 對於從查詢內嵌以外的所有擷取方法，請設定資料格式，Azure 資料總管才能剖析它。 
-* 支援的資料格式包括： TXT、CSV、TSV、TSVE、PSV、SCSV、SOH、JSON （以行分隔、多行）、Avro 和 Parquet。 
+* 支援的資料格式包括： TXT、CSV、TSV、TSVE、PSV、SCSV、SOH、JSON （以行分隔、多行）、Avro、Orc 和 Parquet。 
 * 支援 ZIP 和 GZIP 壓縮。
 
 > [!NOTE]

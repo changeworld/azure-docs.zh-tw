@@ -14,12 +14,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 01/10/2020
 ms.author: shvija
-ms.openlocfilehash: 7533c2a4d5ef2bb3e6f66e116d3ff3937ddd77b3
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 414179d62970315a7575be0411bf1cb152349fdc
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899980"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162288"
 ---
 # <a name="event-processor-host"></a>事件處理器主機
 > [!NOTE]
@@ -123,8 +123,8 @@ EPH 執行個體 (或取用者) 的分割區擁有權可透過 Azure 儲存體�
 | $Default | 0 | Consumer\_VM3 | 2018-04-15T01:23:45 | 156 |
 | $Default | 1 | Consumer\_VM4 | 2018-04-15T01:22:13 | 734 |
 | $Default | 2 | Consumer\_VM0 | 2018-04-15T01:22:56 | 122 |
-| ： |   |   |   |   |
-| ： |   |   |   |   |
+| 所解碼的字元： |   |   |   |   |
+| 所解碼的字元： |   |   |   |   |
 | $Default | 15 | Consumer\_VM3 | 2018-04-15T01:22:56 | 976 |
 
 在這裡，每一部主機都會在特定時間 (租用期間) 內擁有分割區的擁有權。 如果主機失敗 (VM 關機)，則租用就會到期。 其他主機會嘗試取得此分割區的擁有權，而其中一部主機會成功。 此程序會對具有新擁有者的分割區重設租用。 如此一來，每一次就只有一個讀取器可讀取取用者群組內的任何指定分割區。
@@ -135,7 +135,7 @@ EPH 執行個體 (或取用者) 的分割區擁有權可透過 Azure 儲存體�
 
 建議您快速完成事情；也就是處理的作業愈少愈好。 若不是，請使用取用者群組。 如果您需要寫入儲存體並進行某些路由，最好使用兩個取用者群組，並分別執行兩個[IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor)的執行。
 
-在處理期間的某個時間點，您可能會想追蹤已讀取並完成的事項。 如果您必須重新啟動讀取作業，追蹤就很重要，這可讓您不用回到串流的開頭。 [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) 會使用「檢查點」來簡化此追蹤。 檢查點是指定取用者群組中指定分割區的一個位置或位移，而且您確信您已處理該點上的訊息。 在 **EventProcessorHost** 中標記檢查點會透過 [PartitionContext](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext) 物件上的 [CheckpointAsync](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext.checkpointasync) 方法來完成。 這項作業通常會在 [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) 方法內完成，但也可以在 [CloseAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.closeasync) 中完成。
+在處理期間的某個時間點，您可能會想追蹤已讀取並完成的事項。 如果您必須重新啟動讀取作業，追蹤就很重要，這可讓您不用回到串流的開頭。 [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) 會使用「檢查點」來簡化此追蹤。 檢查點是指定取用者群組中指定分割區的一個位置或位移，而且您確信您已處理該點上的訊息。 在 **EventProcessorHost** 中標記檢查點會透過 [PartitionContext](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext.checkpointasync) 物件上的 [CheckpointAsync](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext) 方法來完成。 這項作業通常會在 [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) 方法內完成，但也可以在 [CloseAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.closeasync) 中完成。
 
 ## <a name="checkpointing"></a>檢查點
 
@@ -145,7 +145,7 @@ EPH 執行個體 (或取用者) 的分割區擁有權可透過 Azure 儲存體�
 
 ## <a name="thread-safety-and-processor-instances"></a>執行緒安全性和處理器執行個體
 
-根據預設，[EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) 為安全執行緒，並且會以同步方式進行與 [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) 執行個體相關的動作。 當事件抵達分割區時，**IEventProcessor** 執行個體上會針對該分割區呼叫 [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync)，並且針對此分割區封鎖對 **ProcessEventsAsync** 的進一步呼叫。 後續訊息和對 **ProcessEventsAsync** 的呼叫會在幕後排入佇列，因為在背景中，訊息幫浦會繼續在其他執行緒上執行。 此執行緒安全性不需要安全執行緒集合，並可大幅提升效能。
+根據預設，[EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) 為安全執行緒，並且會以同步方式進行與 [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) 執行個體相關的動作。 當事件抵達分割區時，[IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) 執行個體上會針對該分割區呼叫 **ProcessEventsAsync**，並且針對此分割區封鎖對 **ProcessEventsAsync** 的進一步呼叫。 後續訊息和對 **ProcessEventsAsync** 的呼叫會在幕後排入佇列，因為在背景中，訊息幫浦會繼續在其他執行緒上執行。 此執行緒安全性不需要安全執行緒集合，並可大幅提升效能。
 
 ## <a name="shut-down-gracefully"></a>正常關機
 
@@ -186,7 +186,7 @@ Epoch 功能可讓使用者在任何時間點，確保取用者群組上只有�
 
 在某些情況下，串流處理中的使用者會想要在單一取用者群組上建立多個接收者。 為了支援這類案例，我們確實能夠建立不含 epoch 的接收者，在此情況下，我們允許取用者群組最多5個並行接收者。
 
-### <a name="mixed-mode"></a>混合模式
+### <a name="mixed-mode"></a>混合模式 (Mixed Mode)
 我們不建議您在使用 epoch 建立接收器的情況下使用應用程式，然後在同一個取用者群組上切換為 [無 epoch] 或 [反之亦然]。 不過，當此行為發生時，服務會使用下列規則來處理它：
 
 - 如果已經使用 epoch e1 建立接收器，並主動接收事件，而且建立了新的接收者，但沒有 epoch，則建立新的接收者將會失敗。 Epoch 接收器一律會優先于系統中。
@@ -202,7 +202,11 @@ Epoch 功能可讓使用者在任何時間點，確保取用者群組上只有�
 
 現在您已熟悉事件處理器主機，請參閱下列文章以深入了解事件中樞：
 
-* 開始使用[事件中樞教學課程](event-hubs-dotnet-standard-getstarted-send.md)
+- 開始使用事件中心
+    - [.NET Core](get-started-dotnet-standard-send-v2.md)
+    - [Java](get-started-java-send-v2.md)
+    - [Python](get-started-python-send-v2.md)
+    - [JavaScript](get-started-java-send-v2.md)
 * [事件中樞程式設計指南](event-hubs-programming-guide.md)
 * [事件中樞的可用性和一致性](event-hubs-availability-and-consistency.md)
 * [事件中樞常見問題集](event-hubs-faq.md)

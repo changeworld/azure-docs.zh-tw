@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: 20b667ae345e468bcd3db25d85b7c9de561af4bc
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.openlocfilehash: 447e8a67cedbb8f78e4db9602f603fefd382693c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77111471"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162934"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>使用在 Azure 資料總管中的資料，來連接資料庫
 
@@ -26,7 +26,7 @@ ms.locfileid: "77111471"
 * 單一叢集可以遵循來自多個領導者叢集的資料庫。 
 * 叢集可以同時包含進行中的資料庫和領導者資料庫
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 1. 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 1. 為領導者和進行中[建立叢集和資料庫](/azure/data-explorer/create-cluster-database-portal)。
@@ -206,12 +206,12 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
 
 |**設定**  |**說明**  |
 |---------|---------|
-|進行中的叢集名稱     |  進行中的叢集名稱。 這是將部署此範本的叢集。  |
-|附加的資料庫設定名稱    |    附加的資料庫設定物件的名稱。 名稱可以是任何字串，只要它在叢集層級是唯一的。     |
+|進行中的叢集名稱     |  進行中的叢集名稱;將部署範本的位置。  |
+|附加的資料庫設定名稱    |    附加的資料庫設定物件的名稱。 此名稱可以是在叢集層級上唯一的任何字串。     |
 |資料庫名稱     |      要遵循的資料庫名稱。 如果您想要追蹤所有領導者的資料庫，請使用 ' * '。   |
 |領導者叢集資源識別碼    |   領導者叢集的資源識別碼。      |
 |預設主體修改種類    |   預設的主體修改種類。 可以是 `Union`、`Replace` 或 `None`。 如需預設主體修改種類的詳細資訊，請參閱[principal 修改種類控制命令](/azure/kusto/management/cluster-follower?branch=master#alter-follower-database-principals-modification-kind)。      |
-|位置   |   所有資源的位置。 領導人和進行者必須位於相同的位置。       |
+|Location   |   所有資源的位置。 領導人和進行者必須位於相同的位置。       |
  
 ### <a name="verify-that-the-database-was-successfully-attached"></a>確認資料庫已成功附加
 
@@ -371,7 +371,7 @@ poller = kusto_management_client.clusters.detach_follower_databases(resource_gro
 
 如需使用控制命令來設定授權主體的詳細資訊，請參閱[控制管理使用](/azure/kusto/management/cluster-follower)中叢集的命令。
 
-### <a name="manage-permissions"></a>管理使用權限
+### <a name="manage-permissions"></a>管理權限
 
 管理唯讀資料庫許可權與所有資料庫類型相同。 請參閱[管理 Azure 入口網站中的許可權](/azure/data-explorer/manage-database-permissions#manage-permissions-in-the-azure-portal)。
 

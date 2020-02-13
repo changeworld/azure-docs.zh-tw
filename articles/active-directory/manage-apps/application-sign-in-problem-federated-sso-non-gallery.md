@@ -16,19 +16,19 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b8aac627936aef2cfa79bbd92d6163fe40b4d32
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 70a85a81996766b862cd6fbc3b605636385e0fda
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274862"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159177"
 ---
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>登入針對同盟單一登入設定之非資源庫應用程式的問題
 
 若要疑難排解以下的登入問題，建議您遵循這些建議，以取得更佳的診斷並自動解決步驟：
 
 - 安裝[我的應用程式安全瀏覽器擴充](access-panel-extension-problem-installing.md)功能，以協助 Azure Active Directory （Azure AD）在使用 Azure 入口網站中的測試體驗時，提供更佳的診斷和解決方式。
-- 使用 Azure 入口網站的 [應用程式設定] 頁面中的測試體驗，重現錯誤。 深入瞭解如何以[SAML 為基礎的單一登入應用程式](../develop/howto-v1-debug-saml-sso-issues.md)
+- 使用 Azure 入口網站的 [應用程式設定] 頁面中的測試體驗，重現錯誤。 深入瞭解如何以[SAML 為基礎的單一登入應用程式](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
 
 ## <a name="application-not-found-in-directory"></a>在目錄中找不到應用程式
 
@@ -40,23 +40,23 @@ ms.locfileid: "74274862"
 
 **解決方案**
 
-請確定 SAML 要求中的 `Issuer` 屬性符合 Azure AD 中設定的識別碼值。 如果您在 Azure 入口網站中使用具有我的應用程式安全瀏覽器擴充功能的[測試經驗](../develop/howto-v1-debug-saml-sso-issues.md)，則不需要手動執行這些步驟。
+請確定 SAML 要求中的 `Issuer` 屬性符合 Azure AD 中設定的識別碼值。 如果您在 Azure 入口網站中使用具有我的應用程式安全瀏覽器擴充功能的[測試經驗](../azuread-dev/howto-v1-debug-saml-sso-issues.md)，則不需要手動執行這些步驟。
 
 1. 開啟 [Azure 入口網站](https://portal.azure.com/)，然後以**全域管理員**或**共同管理員**身分登入。
 
-2. 按一下左邊主瀏覽功能表底部的 [所有服務]，以開啟 [Azure Active Directory 擴充功能]。
+2. 按一下左側主導覽功能表底部的 [所有服務]，以開啟 [Azure Active Directory 延伸模組]。
 
 3. 在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory] 項目。
 
 4. 在 Azure Active Directory 左側導覽功能表中，按一下 [企業應用程式]。
 
-5. 按一下 [所有應用程式] 以檢視所有應用程式的清單。
+5. 按一下 [所有應用程式]，以檢視所有應用程式的清單。
 
-   * 若在這裡沒看到您要的應用程式，請使用 [所有應用程式清單] 頂端的 [篩選] 控制項，並將 [顯示] 選項設定為 [所有應用程式]。
+   * 若在這裡沒看到您要顯示的應用程式，請使用 [所有應用程式清單] 頂端的 [篩選] 控制項，並將 [顯示] 選項設定為 [所有應用程式]。
 
 6. 選取您要設定單一登入的應用程式。
 
-7. 應用程式載入後，按一下應用程式的左側瀏覽功能表中的 [單一登入]。
+7. 應用程式載入後，按一下應用程式的左側導覽功能表中的 [單一登入]。
 
 8. 在應用程式載入後，開啟 [基本 SAML 組態]。 確認 [識別碼] 文字方塊中的值符合錯誤中所顯示之識別碼值的值。
 
@@ -70,23 +70,23 @@ SAML 要求中的 AssertionConsumerServiceURL 值不符合在 Azure AD 中設定
 
 **解決方案** 
 
-請確定 SAML 要求中的 `Issuer` 屬性符合 Azure AD 中設定的識別碼值。 如果您在 Azure 入口網站中使用具有我的應用程式安全瀏覽器擴充功能的[測試經驗](../develop/howto-v1-debug-saml-sso-issues.md)，則不需要手動執行這些步驟。
+請確定 SAML 要求中的 `Issuer` 屬性符合 Azure AD 中設定的識別碼值。 如果您在 Azure 入口網站中使用具有我的應用程式安全瀏覽器擴充功能的[測試經驗](../azuread-dev/howto-v1-debug-saml-sso-issues.md)，則不需要手動執行這些步驟。
  
 1. 開啟 [Azure 入口網站](https://portal.azure.com/)，然後以**全域管理員**或**共同管理員**身分登入。 
 
-2. 按一下左邊主瀏覽功能表底部的 [所有服務]，以開啟 [Azure Active Directory 擴充功能]。 
+2. 按一下左側主導覽功能表底部的 [所有服務]，以開啟 [Azure Active Directory 延伸模組]。 
 
 3. 在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory] 項目。 
 
 4. 在 Azure Active Directory 左側導覽功能表中，按一下 [企業應用程式]。 
 
-5. 按一下 [所有應用程式] 以檢視所有應用程式的清單。 
+5. 按一下 [所有應用程式]，以檢視所有應用程式的清單。 
 
    * 若在這裡沒看到您要顯示的應用程式，請使用 [所有應用程式清單] 頂端的 [篩選] 控制項，並將 [顯示] 選項設定為 [所有應用程式]。
   
 6. 選取您要設定單一登入的應用程式
 
-7. 應用程式載入後，按一下應用程式的左側瀏覽功能表中的 [單一登入]。
+7. 應用程式載入後，按一下應用程式的左側導覽功能表中的 [單一登入]。
 
 8. 在應用程式載入後，開啟 [基本 SAML 組態]。 確認或更新 [回復 URL] 文字方塊中的值，以符合 SAML 要求中的 `AssertionConsumerServiceURL` 值。    
     
@@ -102,19 +102,19 @@ SAML 要求中的 AssertionConsumerServiceURL 值不符合在 Azure AD 中設定
 
 **解決方案**
 
-若要直接將一或多個使用者指派給應用程式，請遵循下列步驟。 如果您在 Azure 入口網站中使用具有我的應用程式安全瀏覽器擴充功能的[測試經驗](../develop/howto-v1-debug-saml-sso-issues.md)，則不需要手動執行這些步驟。
+若要直接將一或多個使用者指派給應用程式，請遵循下列步驟。 如果您在 Azure 入口網站中使用具有我的應用程式安全瀏覽器擴充功能的[測試經驗](../azuread-dev/howto-v1-debug-saml-sso-issues.md)，則不需要手動執行這些步驟。
 
 1. 開啟 [Azure 入口網站](https://portal.azure.com/)，以**全域管理員**身分登入。
 
-2. 按一下左邊主瀏覽功能表底部的 [所有服務]，以開啟 [Azure Active Directory 擴充功能]。
+2. 按一下左側主導覽功能表底部的 [所有服務]，以開啟 [Azure Active Directory 延伸模組]。
 
 3. 在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory] 項目。
 
 4. 在 Azure Active Directory 左側導覽功能表中，按一下 [企業應用程式]。
 
-5. 按一下 [所有應用程式] 以檢視所有應用程式的清單。
+5. 按一下 [所有應用程式]，以檢視所有應用程式的清單。
 
-   * 若在這裡沒看到您要的應用程式，請使用 [所有應用程式清單] 頂端的 [篩選] 控制項，並將 [顯示] 選項設定為 [所有應用程式]。
+   * 若在這裡沒看到您要顯示的應用程式，請使用 [所有應用程式清單] 頂端的 [篩選] 控制項，並將 [顯示] 選項設定為 [所有應用程式]。
 
 6. 從清單中選取您想要指派使用者的應用程式。
 
@@ -134,7 +134,7 @@ SAML 要求中的 AssertionConsumerServiceURL 值不符合在 Azure AD 中設定
 
 14. **選擇性︰** 按一下 [新增指派] 窗格中的 [選取角色] 選取器，以選取要指派給您已選取之使用者的角色。
 
-15. 按一下 [指派] 按鈕，將應用程式指派至選取的使用者。
+15. 按一下 [指派] 按鈕，將應用程式指派給選取的使用者。
 
 稍待片刻，您已選取的使用者就能夠使用解決方案描述一節所述的方法，啟動這些應用程式。
 
@@ -172,7 +172,7 @@ Azure AD 不支援應用程式為單一登入傳送的 SAML 要求。 以下為�
 
 **解決方案**
 
-請確定 SAML 要求中的 `Issuer` 屬性符合 Azure AD 中設定的識別碼值。 如果您在 Azure 入口網站中使用具有我的應用程式安全瀏覽器擴充功能的[測試經驗](../develop/howto-v1-debug-saml-sso-issues.md)，則不需要手動執行下列步驟：
+請確定 SAML 要求中的 `Issuer` 屬性符合 Azure AD 中設定的識別碼值。 如果您在 Azure 入口網站中使用具有我的應用程式安全瀏覽器擴充功能的[測試經驗](../azuread-dev/howto-v1-debug-saml-sso-issues.md)，則不需要手動執行下列步驟：
 
 1.  開啟 [Azure 入口網站](https://portal.azure.com/)，然後以**全域管理員**或**共同管理員**身分登入。
 
@@ -204,19 +204,19 @@ Azure AD 不支援應用程式為單一登入傳送的 SAML 要求。 以下為�
 
 1. 開啟 [Azure 入口網站](https://portal.azure.com/)，然後以**全域管理員**或**共同管理員**身分登入。
 
-2. 按一下左邊主瀏覽功能表底部的 [所有服務]，以開啟 [Azure Active Directory 擴充功能]。
+2. 按一下左側主導覽功能表底部的 [所有服務]，以開啟 [Azure Active Directory 延伸模組]。
 
 3. 在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory] 項目。
 
 4. 在 Azure Active Directory 左側導覽功能表中，按一下 [企業應用程式]。
 
-5. 按一下 [所有應用程式] 以檢視所有應用程式的清單。
+5. 按一下 [所有應用程式]，以檢視所有應用程式的清單。
 
-   * 若在這裡沒看到您要的應用程式，請使用 [所有應用程式清單] 頂端的 [篩選] 控制項，並將 [顯示] 選項設定為 [所有應用程式]。
+   * 若在這裡沒看到您要顯示的應用程式，請使用 [所有應用程式清單] 頂端的 [篩選] 控制項，並將 [顯示] 選項設定為 [所有應用程式]。
 
 6. 選取您要設定單一登入的應用程式。
 
-7. 應用程式載入後，按一下應用程式的左側瀏覽功能表中的 [單一登入]。
+7. 應用程式載入後，按一下應用程式的左側導覽功能表中的 [單一登入]。
 
 8. 在 [SAML 簽署憑證] 區段下方，按一下 [建立新憑證]。
 
@@ -264,7 +264,7 @@ Azure AD 無法識別 HTTP 要求中 URL 參數內的 SAML 要求。 如果在�
 
 6.  選取您要設為單一登入的應用程式。
 
-7.  在應用程式載入後，開啟 [基本 SAML 組態]。 在 [**回復 URL （判斷提示取用者服務 URL）** ] 中，刪除系統所建立的未使用或預設回復 url。 例如， `https://127.0.0.1:444/applications/default.aspx`。
+7.  在應用程式載入後，開啟 [基本 SAML 組態]。 在 [**回復 URL （判斷提示取用者服務 URL）** ] 中，刪除系統所建立的未使用或預設回復 url。 例如： `https://127.0.0.1:444/applications/default.aspx` 。
 
 
 

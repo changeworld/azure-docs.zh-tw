@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/06/2019
+ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 8124aea96ab00e7f09782531702dcb5cfa4ccdf2
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: eb75aa53051e7e3c424ffe131cda61324fe86b1a
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701819"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159959"
 ---
 # <a name="single-page-application-sign-in-and-sign-out"></a>單一頁面應用程式：登入和登出
 
@@ -47,7 +47,7 @@ ms.locfileid: "76701819"
 
 ## <a name="sign-in-with-a-pop-up-window"></a>使用快顯視窗登入
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const loginRequest = {
@@ -63,7 +63,7 @@ userAgentApplication.loginPopup(loginRequest).then(function (loginResponse) {
 });
 ```
 
-### <a name="angular"></a>Angular
+# <a name="angulartabangular"></a>[Angular](#tab/angular)
 
 MSAL 角度包裝函式可讓您藉由將 `MsalGuard` 新增至路由定義來保護應用程式中的特定路由。 此防護會叫用方法，以在存取該路由時登入。
 
@@ -89,10 +89,11 @@ MSAL 角度包裝函式可讓您藉由將 `MsalGuard` 新增至路由定義來�
             })]
          })
 ```
+---
 
 ## <a name="sign-in-with-redirect"></a>使用重新導向登入
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 重新導向方法不會傳回承諾，因為會離開主要應用程式。 若要處理和存取傳回的權杖，您必須先註冊成功和錯誤回呼，再呼叫重新導向方法。
 
@@ -110,12 +111,14 @@ const loginRequest = {
 userAgentApplication.loginRedirect(loginRequest);
 ```
 
-### <a name="angular"></a>Angular
+# <a name="angulartabangular"></a>[Angular](#tab/angular)
 
 此處的程式碼與先前有關使用快顯視窗登入一節中所述的相同。 預設流程為 [重新導向]。
 
 > [!NOTE]
 > 識別碼權杖不包含同意的範圍，而且只代表已驗證的使用者。 同意的範圍會在存取權杖中傳回，您將在下一個步驟中取得。
+
+---
 
 ## <a name="sign-out"></a>登出
 
@@ -123,7 +126,7 @@ MSAL 程式庫提供 `logout` 方法，可清除瀏覽器儲存體中的快取�
 
 您可以設定 `postLogoutRedirectUri`，以在登出後將其重新導向的 URI 設定為。 此 URI 也應該在您的應用程式註冊中註冊為登出 URI。
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const config = {
@@ -140,7 +143,7 @@ userAgentApplication.logout();
 
 ```
 
-### <a name="angular"></a>Angular
+# <a name="angulartabangular"></a>[Angular](#tab/angular)
 
 ```javascript
 //In app.module.ts
@@ -154,6 +157,8 @@ userAgentApplication.logout();
 // In app.component.ts
 this.authService.logout();
 ```
+
+---
 
 ## <a name="next-steps"></a>後續步驟
 

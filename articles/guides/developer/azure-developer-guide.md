@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 67fe048c5afb07c65dcddc797e3a1d8461b1893f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: fa8013722376a4864ba955783dbde1f73c0d9e8a
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965962"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77163104"
 ---
-# <a name="get-started-guide-for-azure-developers"></a>適用於 Azure 開發人員的使用者入門指南
+# <a name="get-started-guide-for-azure-developers"></a>Azure 開發人員開始使用指南
 
 ## <a name="what-is-azure"></a>何謂 Azure？
 
@@ -31,7 +31,7 @@ Azure 是一個完整的雲端平臺，可以裝載您現有的應用程式，�
 
 本指南是適用於應用程式開發人員的 Azure 平台簡介。 它會提供下列作業所需的指引和指示：開始在 Azure 中建置新應用程式，或將現有應用程式移轉至 Azure。
 
-## <a name="where-do-i-start"></a>我該從哪裡開始？
+## <a name="where-do-i-start"></a>我要從哪裡開始？
 
 有了 Azure 提供的所有服務，它可以是恐嚇的工作，以找出支援您的解決方案架構所需的服務。 本節著重於開發人員常用的 Azure 服務。 如需所有 Azure 服務的清單，請參閱 [Azure 文件](../../index.md)。
 
@@ -96,7 +96,7 @@ Azure Service Fabric 是分散式系統平臺。 此平臺可讓您輕鬆地建�
 * 正在部署
 * 監視
 * 升級/修補
-* 正在刪除
+* 刪除中
 
 在共用電腦集區上執行的應用程式可以從小規模著手，然後視需要調整為成千上萬部電腦。
 
@@ -171,7 +171,7 @@ Azure 提供數種方式，以在應用程式中使用容器。
 
   > **使用時機**：當您想要提供 SSO 體驗時，請使用 Graph 資料，或驗證網域使用者。
   >
-  > **開始使用**：若要深入了解，請參閱 [Azure Active Directory 開發人員指南](../../active-directory/develop/v1-overview.md)。
+  > **開始使用**：若要深入了解，請參閱 [Azure Active Directory 開發人員指南](../../active-directory/develop/v2-overview.md)。
 
 - **App Service 驗證**：當您選擇 App Service 裝載應用程式時，也會取得 Azure AD 的內建驗證支援，以及社交身分識別提供者，包括 Facebook、Google、Microsoft 和 Twitter。
 
@@ -210,7 +210,7 @@ Azure 提供數種方式，以在應用程式中使用容器。
 > **立即試用：** [試用數個 DevOps](https://azure.microsoft.com/try/devops/)整合。
 
 
-## <a name="azure-regions"></a>Azure 地區
+## <a name="azure-regions"></a>Azure 區域
 
 Azure 是在全球各地許多地區正式推出的全域雲端平台。 當您在 Azure 中布建服務、應用程式或 VM 時，系統會要求您選取區域。 此區域代表您的應用程式執行所在的特定資料中心，或儲存資料的位置。 這些區域對應到在 [Azure 區域](https://azure.microsoft.com/regions/)頁面上發佈的特定位置。
 
@@ -238,7 +238,7 @@ Azure 提供兩種方式，從命令列管理您的應用程式和服務。 您�
 
 -   [Azure PowerShell](../../powershell-install-configure.md)：提供一組含 Cmdlet 的模組，可讓您使用 Windows PowerShell 來管理 Azure 資源。
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure 入口網站
 
 [Azure 入口網站](https://portal.azure.com)是 web 應用程式。 您可以使用 Azure 入口網站來建立、管理和移除 Azure 資源和服務。 其中包括：
 
@@ -288,7 +288,7 @@ Azure 是以支援 Azure 入口網站 UI 的一組 REST API 所建置。 也支�
 
 除了定義個別的 Azure 帳戶身分識別（也稱為「*使用者*」），您還可以在 Azure AD 中定義*群組*。 建立使用者群組是使用角色型存取控制 (RBAC) 管理訂用帳戶中資源存取權的好方法。 若要了解如何建立群組，請參閱[在 Azure Active Directory Preview 中建立群組](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。 您也可以[使用 PowerShell](../../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md) 建立和管理群組。
 
-### <a name="manage-your-subscriptions"></a>管理您的訂用帳戶
+### <a name="manage-your-subscriptions"></a>管理訂用帳戶
 
 訂用帳戶是連結至 Azure 帳戶之 Azure 服務的邏輯分組。 單一 Azure 帳戶可以包含多個訂用帳戶。 Azure 服務是根據訂用帳戶計費。 如需依類型的可用訂用帳戶供應項目清單，請參閱 [Microsoft Azure 供應項目詳細資料](https://azure.microsoft.com/support/legal/offer-details/)。 Azure 訂用帳戶擁有可完全控制訂閱的帳戶管理員。 他們也有服務系統管理員，可以控制訂用帳戶中的所有服務。 如需有關傳統訂用帳戶管理員的資訊，請參閱[新增或變更 Azure 訂用帳戶管理員](../../cost-management-billing/manage/add-change-subscription-administrator.md)。 您可以使用[角色型存取控制（RBAC）](../../role-based-access-control/overview.md)，將個別帳戶授與 Azure 資源的詳細控制。
 
@@ -312,7 +312,7 @@ Azure 資源總管是很棒的工具，可用來以視覺化方式檢視您已�
 
   > **使用時機**：當您以程式設計方式管理 Azure 資源或授與應用程式存取權時。 如需詳細資訊，請參閱[建立 Active Directory 應用程式和服務主體](../../active-directory/develop/howto-create-service-principal-portal.md)。
 
-#### <a name="tags"></a>標籤
+#### <a name="tags"></a>Tags
 
 Azure Resource Manager 可讓您將自訂標記指派給個別資源。 當您需要組織資源以進行計費或監視時，標記 (即鍵值組) 可能特別有用。 標記提供一種方法來追蹤多個資源群組的資源。 您可以透過下列方式指派標籤：
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: erhopf
-ms.openlocfilehash: e39056d6ed1ced85e3f953bcbd7f04dd6311942c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: a87bdd7a55036e8b70f0bc5816d2b587c1569202
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111653"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168129"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>語音裝置 SDK 麥克風陣列建議
 
@@ -47,7 +47,7 @@ ms.locfileid: "74111653"
 | 波幅比對 | ± 1 dB @ 1 kHz |
 | 階段對應 | ±2° @ 1 kHz |
 | 聲場超載點（AOP） | \>= 120 dBSPL （THD = 10%） |
-| 位元速率 | 最小24位 |
+| 位元速度 | 最小24位 |
 | 取樣率 | 最小 16 kHz\* |
 | 頻率回應 | ± 3 dB，200-8000 Hz 浮動遮罩\* |
 | 可靠性 | 儲存溫度範圍-40 ° C 至70° C<br />操作溫度範圍-20 ° C 到55° C |
@@ -98,7 +98,7 @@ _高品質通訊（VoIP）應用程式可能需要 \*\*「更寬」頻率範圍_
 | 記錄功能   | 裝置必須能夠同時記錄個別通道的原始資料流程 |
 | USB                 | 所有 USB 音訊輸入裝置都必須根據[USB 音訊裝置 Rev3 規格](https://www.usb.org/document-library/usb-audio-devices-rev-30-and-adopters-agreement)設定描述項 |
 | 麥克風幾何 | 驅動程式必須正確地執行[麥克風陣列幾何描述](https://docs.microsoft.com/windows-hardware/drivers/audio/ksproperty-audio-mic-array-geometry)項 |
-| 發掘     | 裝置不得將任何 & 或無法控制硬體、固件或以協力廠商軟體為基礎的非線性音訊處理演算法提供給裝置 |
+| 發現性     | 裝置不得將任何 & 或無法控制硬體、固件或以協力廠商軟體為基礎的非線性音訊處理演算法提供給裝置 |
 | Capture 格式      | 捕捉格式必須使用 16 kHz 的最低取樣率和建議的24位深度 |
 
 ## <a name="electrical-architecture-considerations"></a>電力架構考慮

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5a9e5e014740302c439036bd3889761f4750344f
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 203bf584711fbfcfd0baeee8f5e4c7f70d96823b
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77062858"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157207"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>規劃 Azure 檔案服務部署
 
@@ -93,7 +93,7 @@ Azure 備份適用于 premium 檔案共用，Azure Kubernetes Service 支援1.13
 目前，您無法直接在標準檔案共用和 premium 檔案共用之間轉換。 如果您想要切換至任一層，您必須在該階層中建立新的檔案共用，並手動將資料從原始共用複製到您建立的新共用。 您可以使用任何 Azure 檔案儲存體支援的複製工具（例如 Robocopy 或 AzCopy）來執行這項操作。
 
 > [!IMPORTANT]
-> 在大部分區域中，提供儲存體帳戶和 ZRS 的高階檔案共用在較小的區域子集中，可供 LRS 使用。 若要找出您的區域目前是否有 premium 檔案共用，請參閱 Azure 的[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/?products=storage)頁面。 若要瞭解哪些區域支援 ZRS，請參閱[支援涵蓋範圍和區域可用性](../common/storage-redundancy-zrs.md#support-coverage-and-regional-availability)。
+> 在大部分區域中，提供儲存體帳戶和 ZRS 的高階檔案共用在較小的區域子集中，可供 LRS 使用。 若要找出您的區域目前是否有 premium 檔案共用，請參閱 Azure 的[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/?products=storage)頁面。 如需有關支援 ZRS 之區域的詳細資訊，請參閱[Azure 儲存體冗余](../common/storage-redundancy.md)。
 >
 > 為協助我們設定新區域和進階層功能的優先順序，請填寫這[份問卷](https://aka.ms/pfsfeedback)。
 
@@ -155,41 +155,14 @@ Azure 備份適用于 premium 檔案共用，Azure Kubernetes Service 支援1.13
 
 ## <a name="file-share-redundancy"></a>檔案共用備援
 
-Azure 檔案儲存體標準共用支援四個數據冗余選項：本機冗余儲存體（LRS）、區域冗余儲存體（ZRS）、異地多餘儲存體（GRS）和異地區域冗余儲存體（切換）（預覽）。
+[!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
 
-Azure 檔案儲存體 premium 共用同時支援 LRS 和 ZRS，但 ZRS 目前可用於較小的區域子集。
-
-下列各節說明不同備援選項之間的差異：
-
-### <a name="locally-redundant-storage"></a>本地備援儲存體
-
-[!INCLUDE [storage-common-redundancy-LRS](../../../includes/storage-common-redundancy-LRS.md)]
-
-### <a name="zone-redundant-storage"></a>區域備援儲存體
-
-[!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-ZRS.md)]
-
-### <a name="geo-redundant-storage"></a>異地備援儲存體
+如果您選擇讀取權限異地多餘儲存體（RA-GRS），您應該知道 Azure 檔案目前不支援任何區域中的讀取權限異地多餘儲存體（RA-GRS）。 GRS 儲存體帳戶中的檔案共用的工作方式與在 GRS 帳戶中一樣，而且會以 GRS 價格收費。
 
 > [!Warning]  
 > 若您使用 Azure 檔案共用作為 GRS 儲存體帳戶中的雲端端點，您不應該啟動儲存體帳戶的容錯移轉。 這麼做將導致同步停止運作，且可能會在新分層的檔案中產生未預期的資料遺失。 若發生 Azure 區域遺失，Microsoft 將會觸發與 Azure 檔案同步相容的儲存體帳戶容錯移轉。
 
-異地備援儲存體 (GRS) 設計為將您的資料複寫到與主要區域相隔數百英哩遠的次要區域，以在指定年份為物件提供至少 99.99999999999999% (16 9's) 的持久性。 如果您的儲存體帳戶已啟用 GRS，即使主要區域發生全區中斷或災害而無法復原的情況，您的資料仍會是永久性。
-
-如果您選擇讀取權限異地多餘儲存體（RA-GRS），您應該知道 Azure 檔案目前不支援任何區域中的讀取權限異地多餘儲存體（RA-GRS）。 GRS 儲存體帳戶中的檔案共用的工作方式與在 GRS 帳戶中一樣，而且會以 GRS 價格收費。
-
-GRS 會將您的資料複寫到次要區域中的另一個資料中心，但如果 Microsoft 起始從主要到次要區域的容錯移轉，該資料則為唯讀。
-
-若儲存體帳戶已啟用 GRS，則會先使用本機多餘的儲存體（LRS）複寫所有資料。 更新會先認可到主要位置，並使用 LRS 進行複寫。 接著會使用 GRS，以非同步的方式將更新複寫到次要區域。 當資料寫入次要位置時，也會使用 LRS 在該位置中複寫。
-
-主要和次要區域會管理分散在儲存體縮放單位內不同容錯網域和升級網域之間的複本。 儲存體縮放單位是資料中心內的基本複寫單位。 這個層級的複寫是由 LRS 提供；如需詳細資訊，請參閱[本地備援儲存體 (LRS)：適用於 Azure 儲存體的低成本資料備援](../common/storage-redundancy-lrs.md)。
-
-當您決定要使用的複寫選項時，請記住下列幾點：
-
-* 異地區域冗余儲存體（切換）（預覽）會以同步方式將資料複寫到三個 Azure 可用性區域，並以非同步方式將資料複寫到次要區域，藉此提供高可用性和最大耐久性。 您也可以啟用次要區域的讀取權限。 切換的設計目的是要在指定的一年內提供至少99.99999999999999% （16個9）的物件持久性。 如需切換的詳細資訊，請參閱[高可用性和最大持久性（預覽）的異地區域冗余儲存體](../common/storage-redundancy-gzrs.md)。
-* 區域冗余儲存體（ZRS）提供同步複寫的高可用性，而且在某些情況下可能是比 GRS 更好的選擇。 如需有關 ZRS 的詳細資訊，請參閱 [ZRS](../common/storage-redundancy-zrs.md)。
-* 非同步複寫會涉及從將資料寫入主要區域，到將資料複寫至次要區域這段時間的延遲。 當發生區域性災害時，如果無法從主要區域復原尚未複寫到次要區域的變更，則這些變更可能會遺失。
-* 使用 GRS 時，複本不提供讀取或寫入存取，除非 Microsoft 起始對次要區域的容錯移轉。 在容錯移轉的情況下，當容錯移轉完成時，您會有該資料的讀取和寫入存取權。 如需詳細資訊，請參閱[災害復原指導方針](../common/storage-disaster-recovery-guidance.md)。
+Azure 檔案儲存體 premium 共用同時支援 LRS 和 ZRS，但 ZRS 目前可用於較小的區域子集。
 
 ## <a name="onboard-to-larger-file-shares-standard-tier"></a>上架至較大的檔案共用（標準層）
 

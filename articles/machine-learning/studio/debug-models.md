@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/14/2017
-ms.openlocfilehash: 320eba16511036df77dcdbb7ddb628eaa34b2450
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 6c672e57c0c1c0b62b79afbacec3f842770e3d61
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153548"
+ms.locfileid: "77169240"
 ---
 # <a name="debug-your-model-in-azure-machine-learning-studio-classic"></a>以 Azure Machine Learning Studio （傳統）來對模型進行 Debug
 

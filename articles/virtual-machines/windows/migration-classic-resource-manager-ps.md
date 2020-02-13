@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 802d97e2c9b64fd9d8caeaf479af3f4aec356607
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: HT
+ms.openlocfilehash: 109bffe7b5ab9bb322c4ddb2f7b8ec4ac87a54cc
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153123"
+ms.locfileid: "77168344"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>使用 PowerShell 將 IaaS 資源從傳統遷移至 Azure Resource Manager
 以下步驟說明如何使用 Azure PowerShell 命令，將基礎結構即服務 (IaaS) 資源從傳統部署模型移轉至 Azure Resource Manager 部署模型。
@@ -52,8 +52,6 @@ ms.locfileid: "77153123"
 Azure PowerShell 的主要安裝選項有兩個：[PowerShell 資源庫](https://www.powershellgallery.com/profiles/azure-sdk/)或 [Web Platform Installer (WebPI)](https://aka.ms/webpi-azps)。 WebPI 接收每月更新。 PowerShell 資源庫則是持續接收更新。 本文是以 Azure PowerShell 2.1.0 為基礎。
 
 如需安裝指示，請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/overview)。
-
-<br>
 
 ## <a name="step-3-ensure-that-youre-an-administrator-for-the-subscription"></a>步驟3：確定您是訂用帳戶的系統管理員
 若要執行此遷移，您必須在[Azure 入口網站](https://portal.azure.com)中，將您新增為訂用帳戶的共同管理員。
@@ -104,6 +102,14 @@ Azure PowerShell 的主要安裝選項有兩個：[PowerShell 資源庫](https:/
 
 請先確定 RegistrationState 是 `Registered` ，再繼續進行。
 
+切換至傳統部署模型之前，請確定您在目前部署或虛擬網路的 Azure 區域中有足夠的 Azure Resource Manager 虛擬機器個 vcpu。 您可以使用下列 PowerShell 命令來檢查您目前在 Azure Resource Manager 中擁有的 vCPU 數目。 若要深入了解 vCPU 配額，請參閱[限制和 Azure Resource Manager](../../azure-resource-manager/management/azure-subscription-service-limits.md#managing-limits)。
+
+此範例會檢查**美國西部**區域的可用性。 將範例區域名稱取代為您自己的名稱。
+
+```powershell
+    Get-AzVMUsage -Location "West US"
+```
+
 現在，登入您的帳戶以取得傳統部署模型。
 
 ```powershell
@@ -122,27 +128,17 @@ Azure PowerShell 的主要安裝選項有兩個：[PowerShell 資源庫](https:/
     Select-AzureSubscription –SubscriptionName "My Azure Subscription"
 ```
 
-<br>
 
-## <a name="step-5-have-enough-resource-manager-vm-vcpus"></a>步驟5：有足夠的 Resource Manager VM 個 vcpu
-請確定您目前的部署或虛擬網路的 Azure 區域中有足夠的 Azure Resource Manager 虛擬機器個 vcpu。 您可以使用下列 PowerShell 命令來檢查您目前在 Azure Resource Manager 中擁有的 vCPU 數目。 若要深入了解 vCPU 配額，請參閱[限制和 Azure Resource Manager](../../azure-resource-manager/management/azure-subscription-service-limits.md#managing-limits)。
-
-此範例會檢查**美國西部**區域的可用性。 將範例區域名稱取代為您自己的名稱。
-
-```powershell
-Get-AzVMUsage -Location "West US"
-```
-
-## <a name="step-6-run-commands-to-migrate-your-iaas-resources"></a>步驟 6︰執行命令來移轉 IaaS 資源
-* [遷移雲端服務中的 Vm （不在虛擬網路中）](#step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network)
-* [移轉虛擬網路中的 VM](#step-61-option-2---migrate-virtual-machines-in-a-virtual-network)
-* [遷移儲存體帳戶](#step-62-migrate-a-storage-account)
+## <a name="step-5-run-commands-to-migrate-your-iaas-resources"></a>步驟 5︰執行命令來移轉 IaaS 資源
+* [遷移雲端服務中的 Vm （不在虛擬網路中）](#step-51-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network)
+* [移轉虛擬網路中的 VM](#step-51-option-2---migrate-virtual-machines-in-a-virtual-network)
+* [遷移儲存體帳戶](#step-52-migrate-a-storage-account)
 
 > [!NOTE]
 > 下述所有作業都是等冪的。 如果您有不支援的功能或組態錯誤以外的任何問題，建議您重新嘗試準備、中止或認可作業。 平台將會重新嘗試該動作。
 
 
-### <a name="step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network"></a>步驟 6.1：選項 1 - 移轉雲端服務中的虛擬機器 (不在虛擬網路中)
+### <a name="step-51-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network"></a>步驟5.1：選項 1-遷移雲端服務中的虛擬機器（不在虛擬網路中）
 使用下列命令取得雲端服務的清單。 然後挑選您想要遷移的雲端服務。 如果雲端服務中的 VM 是在虛擬網路中，或是具有 Web 角色或背景工作角色，命令就會傳回錯誤訊息。
 
 ```powershell
@@ -223,7 +219,7 @@ Get-AzVMUsage -Location "West US"
     Move-AzureService -Commit -ServiceName $serviceName -DeploymentName $deploymentName
 ```
 
-### <a name="step-61-option-2---migrate-virtual-machines-in-a-virtual-network"></a>步驟 6.1：選項 2 - 移轉虛擬網路中的虛擬機器
+### <a name="step-51-option-2---migrate-virtual-machines-in-a-virtual-network"></a>步驟5.1：選項 2-遷移虛擬網路中的虛擬機器
 
 若要移轉虛擬網路中的虛擬機器，您將需要移轉虛擬網路。 虛擬機器會自動隨著虛擬網路移轉。 選取您想要移轉的虛擬網路。
 > [!NOTE]
@@ -266,7 +262,7 @@ Get-AzVMUsage -Location "West US"
     Move-AzureVirtualNetwork -Commit -VirtualNetworkName $vnetName
 ```
 
-### <a name="step-62-migrate-a-storage-account"></a>步驟6.2：遷移儲存體帳戶
+### <a name="step-52-migrate-a-storage-account"></a>步驟5.2：遷移儲存體帳戶
 在您完成虛擬機器的遷移之後，請先執行下列必要條件檢查，再遷移儲存體帳戶。
 
 > [!NOTE]

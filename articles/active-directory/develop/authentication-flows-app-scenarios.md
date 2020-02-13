@@ -7,17 +7,17 @@ manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: quickstart
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 09/27/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 2c13956fa84b0bdb1ff694878ff2994bee4b64c9
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
-ms.translationtype: HT
+ms.openlocfilehash: bdcc93fe84d2fded914f21dfa2a29d9e2a2ab449
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698283"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161353"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>驗證流程和應用程式情節
 
@@ -40,19 +40,19 @@ Microsoft 身分識別平台 (v2.0) 端點支援各種新式應用程式架構�
 
 應用程式的分類如下列清單所示：
 
-- [受保護的資源與用戶端應用程式](#protected-resources-vs-client-applications)：有些案例是關於保護資源 (例如 Web 應用程式或 Web API)。 其他案例則是關於取得安全性權杖來呼叫受保護的 Web API。
-- [有使用者或沒有使用者](#with-users-or-without-users)：有些案例牽涉到已登入的使用者，而其他案例則不牽涉到使用者 (精靈案例)。
-- [單頁、公用用戶端和機密用戶端應用程式](#single-page-public-client-and-confidential-client-applications)：以下是三種大型的應用程式類型類別。 每種都會搭配不同的程式庫和物件使用。
-- [登入對象](v2-supported-account-types.md#certain-authentication-flows-dont-support-all-the-account-types)：可用的驗證流程會根據登入對象而有所不同。 有些流程僅適用於公司或學校帳戶。 而有些則同時適用於公司或學校帳戶以及個人 Microsoft 帳戶。 允許的對象取決於驗證流程。
-- [支援的 OAuth 2.0 流程](#scenarios-and-supported-authentication-flows)：驗證流程是用來實作要求權杖的應用程式案例。 應用程式案例與驗證流程之間不會有一對一的對應。
-- [支援的平台](#scenarios-and-supported-platforms-and-languages)：並非所有應用程式情節都適用於每個平台。
+- [受保護的資源與用戶端應用程式](#protected-resources-vs-client-applications)：某些案例是關於保護資源（例如 web 應用程式或 web api）。 其他案例則是關於取得安全性權杖來呼叫受保護的 Web API。
+- [使用者或不使用使用者](#with-users-or-without-users)：某些案例牽涉到登入的使用者，但其他的情況則不含使用者。
+- [單一頁面、公用用戶端和機密用戶端應用程式](#single-page-public-client-and-confidential-client-applications)：這些是三個大型類別的應用程式類型。 每種都會搭配不同的程式庫和物件使用。
+- 登[入物件](v2-supported-account-types.md#certain-authentication-flows-dont-support-all-the-account-types)：可用的驗證流程會根據登入物件而有所不同。 有些流程僅適用於公司或學校帳戶。 而有些則同時適用於公司或學校帳戶以及個人 Microsoft 帳戶。 允許的對象取決於驗證流程。
+- [支援的 OAuth 2.0 流程](#scenarios-and-supported-authentication-flows)：驗證流程是用來執行要求權杖的應用程式案例。 應用程式案例與驗證流程之間不會有一對一的對應。
+- [支援的平臺](#scenarios-and-supported-platforms-and-languages)：並非所有應用程式案例都適用于每個平臺。
 
 ### <a name="protected-resources-vs-client-applications"></a>受保護的資源與用戶端應用程式
 
 驗證情節牽涉到兩個活動：
 
-- **針對受保護的 Web API 取得安全性權杖**：Microsoft 建議您使用[驗證程式庫](reference-v2-libraries.md#microsoft-supported-client-libraries)來取得權杖，特別是 Microsoft 驗證程式庫 (MSAL) 系列。
-- **保護 Web API 或 Web 應用程式**：保護 Web API 或 Web 應用程式資源的一大挑戰，就是驗證安全性權杖。 在某些平台上，Microsoft 提供會[中介軟體程式庫](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries)。
+- 取得**受保護 Web API 的安全性權杖**： microsoft 建議您使用[驗證程式庫](reference-v2-libraries.md#microsoft-supported-client-libraries)來取得權杖，特別是 microsoft 驗證程式庫（MSAL）系列。
+- **保護 Web API 或 web 應用程式**：保護 Web API 或 web 應用程式資源的一項挑戰是驗證安全性權杖。 在某些平台上，Microsoft 提供會[中介軟體程式庫](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries)。
 
 ### <a name="with-users-or-without-users"></a>有使用者或沒有使用者
 
@@ -68,7 +68,7 @@ Microsoft 身分識別平台 (v2.0) 端點支援各種新式應用程式架構�
 
 您可以從多種應用程式類型取得安全性權杖。 這些應用程式通常分成三種類別：
 
-- **單頁應用程式**：也稱為 SPA，這些都是 Web 應用程式，其中的權杖是從在瀏覽器中執行的 JavaScript 或 TypeScript 應用程式取得。 許多新式應用程式都有一個單頁應用程式前端，主要是以 JavaScript 撰寫。 此應用程式通常使用 Angular、React 或 Vue 之類的架構。 MSAL.js 是唯一支援單頁應用程式的 Microsoft 驗證程式庫。
+- **單頁應用程式**（也稱為 spa），這些都是 web 應用程式，其中會從在瀏覽器中執行的 JavaScript 或 TypeScript 應用程式取得權杖。 許多新式應用程式都有一個單頁應用程式前端，主要是以 JavaScript 撰寫。 此應用程式通常使用 Angular、React 或 Vue 之類的架構。 MSAL.js 是唯一支援單頁應用程式的 Microsoft 驗證程式庫。
 
 - **公用用戶端應用程式**：這些應用程式一律會登入使用者：
   - 代表已登入使用者呼叫 Web API 的傳統型應用程式
@@ -154,7 +154,7 @@ Microsoft 身分識別平台端點支援各種應用程式架構的驗證：
 
 ![呼叫 Web API 的行動應用程式](media/scenarios/mobile-app.svg)
 
-MSAL iOS 和 MSAL Android 預設會使用系統網頁瀏覽器。 不過，您也可以指示它們使用內嵌的網頁檢視。 視行動平台而定，會有一些特例：通用 Windows 平台 (UWP)、iOS 或 Android。
+MSAL iOS 和 MSAL Android 預設會使用系統網頁瀏覽器。 不過，您也可以指示它們使用內嵌的網頁檢視。 Specificities 相依于行動平臺：通用 Windows 平臺（UWP）、iOS 或 Android。
 
 某些案例 (像是涉及與裝置識別碼或裝置註冊相關之條件式存取的案例) 會要求您在裝置上安裝[訊息代理程式](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/leveraging-brokers-on-Android-and-iOS)。 訊息代理程式的範例包括 Android 上的 Microsoft 公司入口網站以及 Android 與 iOS 上的 Microsoft Authenticator。 此外，MSAL 現在可以與訊息代理程式互動。
 

@@ -6,22 +6,22 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: 903e3f3dcbcc72289fc82ec59dec0305b6adbc17
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: HT
+ms.openlocfilehash: 79a7b157d5daf8940aba454808c65ed433cfe29c
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77150913"
+ms.locfileid: "77169002"
 ---
 # <a name="analyze-customer-churn-using-azure-machine-learning-studio-classic"></a>使用 Azure Machine Learning Studio （傳統）分析客戶流失
 ## <a name="overview"></a>概觀
 本文提供使用 Azure Machine Learning Studio （傳統）建立的客戶流失分析專案的參考實。 在本文中將討論關聯的一般模型，可全面性地解決產業客戶流失的問題。 對於以機器學習建立的模型，我們也衡量其正確性，同時評定進一步開發的方向。  
 
-### <a name="acknowledgements"></a>致謝
+### <a name="acknowledgements"></a>通知
 這項實驗是由 Serge Berger、Microsoft 的主要資料科學家及 Roger Barga （先前為 Microsoft Azure Machine Learning Studio （傳統）的產品經理）所開發和測試。 Azure 文件小組高度認可其專業知識，並感謝他們分享這份白皮書。
 
 > [!NOTE]

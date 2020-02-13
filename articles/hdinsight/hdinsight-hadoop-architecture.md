@@ -5,15 +5,15 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/28/2019
-ms.openlocfilehash: 2da9e41323a308782dad509c628a3677ab0cd21f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.custom: hdinsightactive
+ms.date: 02/07/2020
+ms.openlocfilehash: 3feacd94558ba275c81469827993aef106ae633c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162890"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162203"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>HDInsight 上的 Apache Hadoop 架構
 
@@ -46,6 +46,27 @@ NodeManagers 會執行組成應用程式的各項工作，然後將其進度和�
 所有的 HDInsight 叢集類型皆會部署 YARN。 ResourceManager 的部署是為了達到高可用性，有主要和次要執行個體，其分別在叢集內的第一個和第二個前端節點上執行。 一次只會有一個 ResourceManager 執行個體處於使用中狀態。 NodeManager 執行個體會在叢集中可用的背景工作節點上執行。
 
 ![Azure HDInsight 上的 Apache YARN](./media/hdinsight-hadoop-architecture/apache-yarn-on-hdinsight.png)
+
+## <a name="soft-delete"></a>虛刪除
+
+若要從您的儲存體帳戶刪除檔案，請參閱：
+
+### <a name="azure-storage"></a>Azure 儲存體
+
+* [Azure 儲存體 Blob 的虛刪除](../storage/blobs/storage-blob-soft-delete.md)
+* [刪除 Blob](https://docs.microsoft.com/rest/api/storageservices/undelete-blob)
+
+### <a name="azure-data-lake-storage-gen-1"></a>Azure Data Lake Storage Gen 1
+
+[還原-AzDataLakeStoreDeletedItem](https://docs.microsoft.com/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem)
+
+### <a name="azure-data-lake-storage-gen-2"></a>Azure Data Lake Storage Gen 2
+
+[Azure Data Lake Storage Gen2 的已知問題](../storage/blobs/data-lake-storage-known-issues.md)
+
+## <a name="trash-purging"></a>垃圾桶清除
+
+來自**HDFS** > **Advanced core-site**的 `fs.trash.interval` 屬性應維持預設值 `0`，因為您不應該將任何資料儲存在本機檔案系統上。 此值不會影響遠端儲存體帳戶（WASB、ADLS GEN1、ABFS）
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/10/2020
+ms.date: 02/11/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 724736bedd81ea45d7472a615fa22cde6916f21c
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: HT
+ms.openlocfilehash: 3e5fb1ebb763cc5ecd7dfe8724347c03a487bc13
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77148856"
+ms.locfileid: "77157868"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -84,11 +84,11 @@ ms.locfileid: "77148856"
 | `globalexception` | 發生例外狀況或錯誤時，會顯示錯誤頁面。 |
 | `providerselection` | 列出使用者可以在登入期間選擇的識別提供者。 |
 | `unifiedssp` | 顯示一份表單，可供以電子郵件地址或使用者名稱為基礎的本機帳戶進行登入。 此值也提供 [讓我保持登入功能] 和 [忘記密碼？] 連結。 |
-| `unifiedssp` | 顯示一份表單，可供以電子郵件地址或使用者名稱為基礎的本機帳戶進行登入。 |
+| `unifiedssd` | 顯示一份表單，可供以電子郵件地址或使用者名稱為基礎的本機帳戶進行登入。 |
 | `multifactor` | 在註冊或登入期間，藉由使用簡訊或語音，驗證電話號碼。 |
 | `selfasserted` | 顯示一份表單，可供使用者建立或更新其設定檔。 |
 
-## <a name="select-a-page-layout"></a>選取頁面配置
+### <a name="select-a-page-layout"></a>選取頁面配置
 
 您可以在 `elements` 與頁面類型之間插入 `contract`，以啟用[JavaScript 用戶端程式代碼](javascript-samples.md)。 例如： `urn:com:microsoft:aad:b2c:elements:contract:page-name:version` 。
 
@@ -126,6 +126,29 @@ ms.locfileid: "77148856"
 | `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
 | `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
 
+
+### <a name="metadata"></a>中繼資料
+
+**Metadata** 元素包含下列元素：
+
+| 元素 | 發生次數 | 描述 |
+| ------- | ----------- | ----------- |
+| Item | 0:n | 與內容定義相關的中繼資料。 |
+
+**Metadata** 元素的 **Item** 元素包含下列屬性：
+
+| 屬性 | 必要項 | 描述 |
+| --------- | -------- | ----------- |
+| Key | 是 | 中繼資料索引鍵。  |
+
+#### <a name="metadata-keys"></a>中繼資料索引鍵
+
+內容定義支援下列中繼資料專案： 
+
+| Key | 必要項 | 描述 |
+| --------- | -------- | ----------- |
+| DisplayName | 否 | 包含內容定義名稱的字串。 |
+
 ### <a name="localizedresourcesreferences"></a>LocalizedResourcesReferences
 
 **LocalizedResourcesReferences** 元素包含下列元素：
@@ -134,7 +157,7 @@ ms.locfileid: "77148856"
 | ------- | ----------- | ----------- |
 | LocalizedResourcesReference | 1:n | 內容定義的當地語系化資源參考清單。 |
 
-**LocalizedResourcesReferences** 元素包含下列屬性：
+**LocalizedResourcesReference**元素包含下列屬性：
 
 | 屬性 | 必要項 | 描述 |
 | --------- | -------- | ----------- |

@@ -6,18 +6,19 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 06/22/2018
-ms.openlocfilehash: 05d849aa0edf5892e568c4078ca619490cfcd98e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/10/2019
+ms.openlocfilehash: e5d707200d1e1eab9becbb30181649525f3a5a7b
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363195"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77166468"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>在 Azure 監視器中使用 View Designer 建立自訂視圖
 藉由在 Azure 監視器中使用 View Designer，您可以在 Azure 入口網站中建立各種自訂視圖，以協助您將 Log Analytics 工作區中的資料視覺化。 本文提供檢視設計工具的概觀以及建立和編輯自訂檢視的程序。
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+> [!IMPORTANT]
+> Azure 監視器中的 Views 會被淘汰，並取代為提供額外功能的活頁[簿](workbooks-overview.md)。 如需將現有的視圖轉換為活頁簿的詳細資訊，請參閱[Azure 監視器 view designer to 活頁簿轉換指南](view-designer-conversion-overview.md)。
 
 如需檢視設計工具的詳細資訊，請參閱：
 
@@ -32,7 +33,7 @@ Views 會顯示在 Azure 入口網站的 [Azure 監視器**總覽**] 頁面中�
 
 下表說明您使用檢視設計工具所建立檢視的元素：
 
-| 部分 | 說明 |
+| 部分 | 描述 |
 |:--- |:--- |
 | 圖格 | 會顯示在您的 Azure 監視器 **[總覽**] 頁面上。 每個圖格會顯示它所呈現自訂檢視的視覺化摘要。 每個圖格類型提供記錄的不同的視覺效果。 您可以選取圖格來顯示自訂檢視。 |
 | 自訂檢視 | 當您選取圖格時顯示。 每個檢視包含一或多個視覺效果組件。 |
@@ -49,9 +50,9 @@ Views 會顯示在 Azure 入口網站的 [Azure 監視器**總覽**] 頁面中�
 
 下表說明這些選項：
 
-| 選項 | 說明 |
+| 選項 | 描述 |
 |:--|:--|
-| 重新整理   | 使用最新資料重新整理檢視。 | 
+| Refresh   | 使用最新資料重新整理檢視。 | 
 | 記錄      | 開啟[Log Analytics](../log-query/portals.md)以記錄查詢來分析資料。 |
 | 編輯       | 在檢視表設計工具中開啟檢視以編輯其內容和設定。  |
 | 複製      | 建立新的檢視並且在檢視表設計工具中開啟。 新檢視的名稱與原始檢視的名稱相同，只是再附加*複製*字樣。 |
@@ -73,7 +74,7 @@ Views 會顯示在 Azure 入口網站的 [Azure 監視器**總覽**] 頁面中�
 * **控制項**：包含您新增至**設計**窗格的圖格和組件。 
 * **屬性**：顯示圖格或所選組件的屬性。
 
-![檢視表設計工具](media/view-designer/view-designer-screenshot.png)
+![檢視設計工具](media/view-designer/view-designer-screenshot.png)
 
 ### <a name="configure-the-view-tile"></a>設定檢視圖格
 自訂檢視可以只有單一圖格。 若要檢視目前圖格或選取另一個圖格，請選取 [控制] 窗格中的 [圖格] 索引標籤。 [屬性] 窗格會顯示目前圖格的屬性。 
@@ -95,7 +96,7 @@ Views 會顯示在 Azure 入口網站的 [Azure 監視器**總覽**] 頁面中�
 
 ![編輯功能表](media/view-designer/edit-menu.png)
 
-| 選項 | 說明 |
+| 選項 | 描述 |
 |:--|:--|
 | 儲存        | 儲存變更並關閉檢視。 |
 | 取消      | 捨棄變更並關閉檢視。 |

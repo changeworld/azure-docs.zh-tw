@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.openlocfilehash: 800b51c8f900d2ea99900ea147b33010452348f5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 2604d5b357feacce3493b4a4ded971144262611d
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639866"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161931"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Azure Databricks 叢集的區域性災害復原
 
@@ -21,7 +21,7 @@ ms.locfileid: "75639866"
 
 ## <a name="azure-databricks-architecture"></a>Azure Databricks 架構
 
-概括而言，當您從 Azure 入口網站建立 Azure Databricks 工作區時，[受控設備](../azure-resource-manager/managed-applications/overview.md)會在所選的 Azure 區域 (例如，美國西部) 部署為您訂用帳戶中的 Azure 資源。 此設備會部署在具有[網路安全性群組](../virtual-network/manage-network-security-group.md)和 Azure 儲存體帳戶的 [Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)中 (適用於的您訂用帳戶)。 虛擬網路會提供周邊層級安全性給 Databricks 工作區，而且透過網路安全性群組保護。 在工作區內，提供背景工作角色和驅動程式 VM 類型及 Databricks 執行階段版本，即可建立 Databricks 叢集。 保存的資料可在您的儲存體帳戶中取得，而您可以 Azure Blob 儲存體或 Azure Data Lake Storage。 建立叢集之後，將 Notebook、REST API、ODBC/JDBC 端點附加到特定叢集，即可透過這些端點執行作業。
+概括而言，當您從 Azure 入口網站建立 Azure Databricks 工作區時，[受控設備](../azure-resource-manager/managed-applications/overview.md)會在所選的 Azure 區域 (例如，美國西部) 部署為您訂用帳戶中的 Azure 資源。 此設備會部署在具有[網路安全性群組](../virtual-network/virtual-networks-overview.md)和 Azure 儲存體帳戶的 [Azure 虛擬網路](../virtual-network/manage-network-security-group.md)中 (適用於的您訂用帳戶)。 虛擬網路會提供周邊層級安全性給 Databricks 工作區，而且透過網路安全性群組保護。 在工作區內，提供背景工作角色和驅動程式 VM 類型及 Databricks 執行階段版本，即可建立 Databricks 叢集。 保存的資料可在您的儲存體帳戶中取得，而您可以 Azure Blob 儲存體或 Azure Data Lake Storage。 建立叢集之後，將 Notebook、REST API、ODBC/JDBC 端點附加到特定叢集，即可透過這些端點執行作業。
 
 Databricks 控制平面可管理和監視 Databricks 工作區環境。 從控制平面可起始任何管理作業，例如建立叢集。 所有中繼資料 (例如排定工作) 都會利用異地複寫儲存在 Azure 資料庫中，以便容錯移轉。
 
@@ -37,7 +37,7 @@ Databricks 控制平面可管理和監視 Databricks 工作區環境。 從控�
 
    1. 在個別的 Azure 區域中佈建多個 Azure Databricks 工作區。 例如，在美國東部 2 中建立主要 Azure Databricks 工作區。 在不同區域 (例如美國西部) 中建立次要災害復原 Azure Databricks 工作區。
 
-   2. 使用[異地備援儲存體](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)。 根據預設，與 Azure Databrick 相關聯的資料會儲存在 Azure 儲存體中。 Databricks 作業的結果也會儲存在 Azure Blob 儲存體中，因此在終止叢集之後，處理過的資料仍具有耐久性且維持高可用性。 儲存體與 Databricks 叢集會共置，因此您必須使用異地備援儲存體，以便在主要區域不再可供存取時，可以在次要區域中存取資料。
+   2. 使用[異地多餘的儲存體](../storage/common/storage-redundancy.md)。 根據預設，與 Azure Databrick 相關聯的資料會儲存在 Azure 儲存體中。 Databricks 作業的結果也會儲存在 Azure Blob 儲存體中，因此在終止叢集之後，處理過的資料仍具有耐久性且維持高可用性。 儲存體與 Databricks 叢集會共置，因此您必須使用異地備援儲存體，以便在主要區域不再可供存取時，可以在次要區域中存取資料。
 
    3. 建立次要地區之後，您必須遷移使用者、使用者資料夾、Notebook、叢集組態、作業組態、程式庫、儲存體、init 指令碼，以及重新設定存取控制。 下一節會概述其他詳細資料。
 

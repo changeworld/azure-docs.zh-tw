@@ -6,21 +6,21 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 3f68ae9665b6235d44411835299721b835745252
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 1d4153ac5e02d28d054034f33859332158d5a555
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048328"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162356"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>使用客戶管理的金鑰適用於 MySQL 的 Azure 資料庫資料加密
 
 > [!NOTE]
 > 此時，您必須要求存取權才能使用這項功能。 若要這麼做，請聯絡 AskAzureDBforMySQL@service.microsoft.com。
 
-使用客戶管理的金鑰適用於 MySQL 的 Azure 資料庫資料加密，可讓您攜帶您自己的金鑰（BYOK）以進行待用資料保護。 它也可讓組織在金鑰和資料的管理中，執行責任分離。 使用客戶管理的加密，您必須負責、完全控制金鑰的生命週期、金鑰使用許可權，以及對金鑰進行作業的審核。
+適用於 MySQL 的 Azure 資料庫使用客戶管理的金鑰進行資料加密，可讓您將 qwn 金鑰（BYOK）帶入待用資料保護。 它也可讓組織在金鑰和資料的管理中，執行責任分離。 有了客戶管理的加密，您就必須負責並完全掌控金鑰的生命週期、金鑰使用許可權，以及對金鑰進行作業的審核。
 
-針對適用於 MySQL 的 Azure 資料庫，您可以在伺服器層級設定資料加密。 使用這種形式的資料加密，您可以在加密資料加密金鑰（DEK）時使用金鑰。 DEK 是客戶管理的非對稱金鑰，儲存在客戶擁有和客戶管理的[Azure Key Vault](../key-vault/key-Vault-secure-your-key-Vault.md)實例中。 本文稍後會更詳細地說明 DEK。
+針對適用於 MySQL 的 Azure 資料庫以客戶管理的金鑰進行資料加密，是在伺服器層級設定。 針對指定的伺服器，稱為「金鑰加密金鑰」（KEK）的客戶管理金鑰會用來加密服務所使用的資料加密金鑰（DEK）。 KEK 是儲存在客戶擁有和客戶管理[Azure Key Vault](../key-vault/key-Vault-secure-your-key-Vault.md)實例中的非對稱金鑰。 金鑰加密金鑰（KEK）和資料加密金鑰（DEK）稍後會在本文中詳細說明。
 
 Key Vault 是以雲端為基礎的外部金鑰管理系統。 它具有高可用性，並為 RSA 密碼編譯金鑰提供可擴充且安全的儲存體，並選擇性地由 FIPS 140-2 Level 2 驗證的硬體安全性模組（Hsm）支援。 它不允許直接存取預存金鑰，但會提供加密和解密的服務給已授權的實體。 Key Vault 可以產生金鑰、將其匯入，或[將它從內部部署 HSM 裝置進行傳輸](../key-vault/key-Vault-hsm-protected-keys.md)。
 
@@ -31,11 +31,11 @@ Key Vault 是以雲端為基礎的外部金鑰管理系統。 它具有高可用
 
 適用於 MySQL 的 Azure 資料庫的資料加密提供下列優點：
 
-* 增加加密金鑰的透明度、細微控制和管理。
-* 集中管理和金鑰組織，方法是將它們裝載在 Azure Key Vault 中。
-* 能夠在組織內的金鑰和資料的管理中，執行責任區隔的區分。
-* 能夠將金鑰管理與組織內的資料管理分開，讓 Key Vault 的系統管理員可以撤銷金鑰存取權限，讓加密的資料庫無法存取。
-* 與您的終端使用者的信任較大，因為 Microsoft 無法在 Key Vault 中看到或解壓縮加密金鑰。
+* 資料存取是由您完全控制，您可以移除索引鍵並使資料庫無法存取 
+* 完整控制金鑰生命週期，包括輪替金鑰以配合公司原則
+* 集中管理和 Azure Key Vault 中的金鑰組織
+* 能夠在安全人員與 DBA 和系統管理員之間實施責任分隔
+
 
 ## <a name="terminology-and-description"></a>術語和描述
 

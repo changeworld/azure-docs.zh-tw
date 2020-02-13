@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: 3d6439424f2a39bf5b5477cebd5fadb23a6370b0
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: ec2d9152bf8d3d7c60f00e902f155212ee1b81cc
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984807"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169823"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning 中的計算目標是什麼？ 
 
@@ -50,16 +50,12 @@ Azure Machine Learning 在不同的計算資源上有不同的支援。  您也�
 
 您可以在中建立 Azure Machine Learning 計算實例（預覽）或計算叢集：
 
-| | Azure Machine Learning Studio | Azure Portal | SDK | Resource Manager 範本 | CLI |
+| | Azure Machine Learning Studio | Azure 入口網站 | SDK | Resource Manager 範本 | CLI |
 |---| ----- | ----- | ----- | ----- | ----- |
 | 計算執行個體 | 是 | 是 | 是 | 是 |  |
 | 計算叢集 | 是 | 是 | 是 | 是 | 是 |
 
 建立這些計算資源時，會自動成為您工作區的一部分，而不像其他類型的計算目標。
-
-> [!NOTE]
-> 計算實例僅適用于區域為**美國中北部**、**美國東部 2**、**北歐**或**英國南部**的工作區，並支援其他即將推出的區域。
->如果您的工作區位於任何其他區域，您可繼續建立並使用 [Notebook VM](concept-compute-instance.md#notebookvm)。 
 
 ### <a name="compute-clusters"></a>計算叢集
 

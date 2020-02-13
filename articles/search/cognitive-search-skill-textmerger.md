@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c44f37c37bff2ddeb0fbba83d170054bf21129a6
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 98ea416305f080850d85498f74693eb2d45b0944
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791848"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162339"
 ---
 #   <a name="text-merge-cognitive-skill"></a>文字合併認知技能
 
@@ -31,8 +31,8 @@ Microsoft.Skills.Text.MergeSkill
 
 | 參數名稱     | 描述 |
 |--------------------|-------------|
-| insertPreTag  | 要在每次插入之前包含的字串。 預設值為 `" "`。 若要省略空間，請將值設定為 `""`。  |
-| insertPostTag | 要在每次插入之後包含的字串。 預設值為 `" "`。 若要省略空間，請將值設定為 `""`。  |
+| insertPreTag  | 要在每次插入之前包含的字串。 預設值是 `" "`。 若要省略空間，請將值設定為 `""`。  |
+| insertPostTag | 要在每次插入之後包含的字串。 預設值是 `" "`。 若要省略空間，請將值設定為 `""`。  |
 
 
 ##  <a name="sample-input"></a>範例輸入
@@ -47,7 +47,7 @@ Microsoft.Skills.Text.MergeSkill
       {
         "text": "The brown fox jumps over the dog",
         "itemsToInsert": ["quick", "lazy"],
-        "offsets": [3, 28],
+        "offsets": [3, 28]
       }
     }
   ]
@@ -140,8 +140,8 @@ Microsoft.Skills.Text.MergeSkill
 }
 ```
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 + [內建技能](cognitive-search-predefined-skills.md)
-+ [如何定義技能集](cognitive-search-defining-skillset.md)
++ [如何定義技能集](cognitive-search-defining-skillset.md) (英文)
 + [建立索引子 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

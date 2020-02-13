@@ -6,22 +6,22 @@ ms.service: event-hubs
 documentationcenter: ''
 author: spelluru
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 02/12/2020
 ms.author: spelluru
-ms.openlocfilehash: 0d8d1b37e7f5ebb6eef1c76e4324041c48ab8986
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 021d00b9fb02f2f5ea2560038741efec11b8cbc0
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70995734"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169194"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>使用 Azure Active Directory 授權事件中樞資源的存取權
 Azure 事件中樞支援使用 Azure Active Directory （Azure AD）來授權事件中樞資源的要求。 使用 Azure AD，您可以使用角色型存取控制（RBAC），將許可權授與安全性主體，這可能是使用者或應用程式服務主體。 若要深入瞭解角色和角色指派，請參閱[瞭解不同的角色](../role-based-access-control/overview.md)。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 當安全性主體（使用者或應用程式）嘗試存取事件中樞資源時，要求必須獲得授權。 有了 Azure AD，對資源的存取是兩個步驟的程式。 
 
- 1. 首先，安全性主體的身分識別已通過驗證，並傳回 OAuth 2.0 權杖。 要求權杖的資源名稱是`https://eventhubs.azure.net/`。
+ 1. 首先，安全性主體的身分識別已通過驗證，並傳回 OAuth 2.0 權杖。 要求權杖的資源名稱是 `https://eventhubs.azure.net/`。
  1. 接下來，權杖會當做要求的一部分傳遞給事件中樞服務，以授權存取指定的資源。
 
 驗證步驟要求應用程式要求在執行時間包含 OAuth 2.0 存取權杖。 如果應用程式是在 azure 實體（例如 Azure VM、虛擬機器擴展集或 Azure 函式應用程式）內執行，它可以使用受控識別來存取資源。 若要瞭解如何驗證受控識別對事件中樞服務所提出的要求，請參閱[使用 Azure 資源的 Azure Active Directory 和受控識別來驗證 Azure 事件中樞資源的存取權](authenticate-managed-identity.md)。 
@@ -38,25 +38,33 @@ Azure Active Directory (Azure AD) 會透過[角色型存取控制 (RBAC)](../rol
 ## <a name="built-in-rbac-roles-for-azure-event-hubs"></a>Azure 事件中樞的內建 RBAC 角色
 Azure 提供下列內建 RBAC 角色，以使用 Azure AD 和 OAuth 來授權事件中樞資料的存取：
 
-- [Azure 事件中樞資料擁有](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner)者：使用此角色來提供事件中樞資源的完整存取權。
-- [Azure 事件中樞資料寄件者](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver)：使用此角色可授與事件中樞資源的傳送存取權。
-- [Azure 事件中樞資料接收器](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender)：使用此角色可讓取用/接收事件中樞資源的存取權。
+- [Azure 事件中樞資料擁有](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner)者：使用此角色可提供完整的事件中樞資源存取權。
+- [Azure 事件中樞資料](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver)傳送者：使用此角色可授與事件中樞資源的存取權。
+- [Azure 事件中樞資料接收器](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender)：使用此角色可提供事件中樞資源的取用/接收存取權。
 
 ## <a name="resource-scope"></a>資源範圍 
 將 RBAC 角色指派給安全性主體之前，請先決定安全性主體應該具備的存取範圍。 最佳做法規定，最好只授與最少的可能範圍。
 
 下列清單說明您可以將存取範圍限定為事件中樞資源的層級，從最窄的範圍開始：
 
-- **取用者群組**：在此範圍中，角色指派只會套用至此實體。 目前，Azure 入口網站不支援將 RBAC 角色指派給此層級的安全性主體。 
+- 取用**者群組**：在此範圍中，角色指派只會套用至此實體。 目前，Azure 入口網站不支援將 RBAC 角色指派給此層級的安全性主體。 
 - **事件中樞**：角色指派會套用到事件中樞實體和其下的取用者群組。
 - **命名空間**：角色指派會跨越命名空間下的整個事件中樞拓撲，以及與其相關聯的取用者群組。
-- **资源组**：角色指派會套用至資源群組下的所有事件中樞資源。
-- 訂用帳戶：角色指派會套用至訂用帳戶中所有資源群組內的所有事件中樞資源。
+- **資源群組**：角色指派會套用至資源群組下的所有事件中樞資源。
+- **訂**用帳戶：角色指派會套用至訂用帳戶中所有資源群組內的所有事件中樞資源。
 
 > [!NOTE]
 > 請記住，RBAC 角色指派最多可能需要五分鐘的時間來傳播。 
 
 如需如何定義內建角色的詳細資訊，請參閱[瞭解角色定義](../role-based-access-control/role-definitions.md#management-and-data-operations)。 如需建立自訂 RBAC 角色的詳細資訊，請參閱[建立 Azure 角色型存取控制的自訂角色](../role-based-access-control/custom-roles.md)。
+
+## <a name="samples"></a>範例
+- [EventHubs 範例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac)。 
+    
+    這些範例會使用舊的**EventHubs**程式庫，但您可以使用最新的**EventHubs**程式庫輕鬆地將其更新為。 若要將範例從使用舊的程式庫移至新的程式庫，請參閱[從 EventHubs 遷移至 EventHubs 的指南](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md)。
+- [EventHubs 範例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
+
+    此範例已更新為使用最新的**EventHubs**程式庫。
 
 ## <a name="next-steps"></a>後續步驟
 - 瞭解如何將內建 RBAC 角色指派給安全性主體，請參閱[使用 Azure Active Directory 來驗證事件中樞資源的存取權](authenticate-application.md)。

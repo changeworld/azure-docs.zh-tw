@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a9e55edcb7c107a3dfa91f61aaa1fea64bc62f21
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 71b437f57f9d9e6e18af88d6413269cac6f66c47
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848872"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161659"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C：使用 Azure AD 圖形 API
 
@@ -26,11 +26,11 @@ Azure Active Directory B2C （Azure AD B2C）租使用者可以有數千或數�
 對於 B2C 租使用者，有兩種主要模式與圖形 API 通訊：
 
 * 若為**互動式**的執行一次工作，當您執行這些工作時，您應該以 B2C 租使用者中的系統管理員帳戶的身分進行作業。 此模式需要系統管理員先使用認證登入，系統管理員才能對圖形 API進行任何呼叫。
-* 針對**自動**、連續的工作，您應該使用您以必要許可權提供的某種服務帳戶來執行管理工作。 在 Azure AD 中，作法上您可以註冊應用程式並向 Azure AD 驗證。 使用採用 *OAuth 2.0 用戶端認證授與* 的 [應用程式識別碼](../active-directory/develop/service-to-service.md)即可完成。 在此情況下，應用程式會以本身 (而非使用者的身分) 呼叫圖形 API。
+* 針對**自動**、連續的工作，您應該使用您以必要許可權提供的某種服務帳戶來執行管理工作。 在 Azure AD 中，作法上您可以註冊應用程式並向 Azure AD 驗證。 使用採用 *OAuth 2.0 用戶端認證授與* 的 [應用程式識別碼](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)即可完成。 在此情況下，應用程式會以本身 (而非使用者的身分) 呼叫圖形 API。
 
 在本文中，您將瞭解如何執行自動化使用案例。 您將建置 .NET 4.5 `B2CGraphClient` 來執行使用者建立、讀取、更新和刪除 (CRUD) 作業。 用戶端會有 Windows 命令列介面讓您叫用各種方法。 不過，程式碼是以非互動式、自動化的方式來撰寫的行為。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 您需要有 Azure AD B2C 租用戶，才能建立應用程式或使用者。 如果您還沒有帳戶，請[建立一個 Azure Active Directory B2C 的租](tutorial-create-tenant.md)使用者。
 
@@ -73,7 +73,7 @@ Azure Active Directory B2C （Azure AD B2C）租使用者可以有數千或數�
 
 ## <a name="get-the-sample-code"></a>取得範例程式碼
 
-此程式碼範例是一個 .NET 主控台應用程式，它會使用[Active Directory 驗證程式庫（ADAL）](../active-directory/develop/active-directory-authentication-libraries.md)與 Azure AD 圖形 API 進行互動。 其程式碼示範如何呼叫 API，以程式設計方式管理 Azure AD B2C 租使用者中的使用者。
+此程式碼範例是一個 .NET 主控台應用程式，它會使用[Active Directory 驗證程式庫（ADAL）](../active-directory/azuread-dev/active-directory-authentication-libraries.md)與 Azure AD 圖形 API 進行互動。 其程式碼示範如何呼叫 API，以程式設計方式管理 Azure AD B2C 租使用者中的使用者。
 
 您可以[下載範例](https://github.com/AzureADQuickStarts/B2C-GraphAPI-DotNet/archive/master.zip)封存（\*.zip）或複製 GitHub 存放庫：
 
@@ -288,7 +288,7 @@ B2C Get-User <user-object-id>
 B2C Get-User <filter-query-expression>
 ```
 
-例如：
+例如，
 
 ```cmd
 B2C Get-User 2bcf1067-90b6-4253-9991-7f16449c2d91
@@ -330,7 +330,7 @@ B2C Get-B2C-Application
 B2C Get-Extension-Attribute <object-id-in-the-output-of-the-above-command>
 ```
 
-輸出會顯示每個自訂屬性的詳細資料。 例如：
+輸出會顯示每個自訂屬性的詳細資料。 例如，
 
 ```json
 {

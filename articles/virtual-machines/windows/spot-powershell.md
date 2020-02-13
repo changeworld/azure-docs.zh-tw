@@ -7,14 +7,14 @@ manager: gwallace
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 10/14/2019
+ms.date: 02/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 8752522e4b5a7b91778d6eb2cd8e4ba3bac95da0
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 17186d1d7b50ea872dc47eca8c2c4491787d2a38
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74782121"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77158939"
 ---
 # <a name="preview-deploy-spot-vms-using-azure-powershell"></a>預覽：使用 Azure PowerShell 部署點 Vm
 
@@ -29,7 +29,7 @@ ms.locfileid: "74782121"
 > 點實例目前處於公開預覽狀態。
 > 此預覽版本不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 >
-> 在公開預覽的早期部分，點實例會有固定的價格，因此不會有任何以價格為基礎的收回。
+
 
 
 ## <a name="create-the-vm"></a>建立 VM
@@ -37,9 +37,6 @@ ms.locfileid: "74782121"
 使用[new-azvmconfig](/powershell/module/az.compute/new-azvmconfig)建立 spotVM 來建立設定。 包含 `-Priority Spot`，並將 `-MaxPrice` 設定為下列其中一項：
 - `-1`，因此不會根據價格來收回 VM。
 - 美元金額，最多5位數。 例如，`-MaxPrice .98765` 表示一旦 spotVM 的價格大約每小時98765，就會將 VM 解除配置。
-
-> [!IMPORTANT]
-> 在公開預覽的早期部分，您可以設定最大價格，但它會被忽略。 找出 Vm 會有固定的價格，因此不會有任何以價格為基礎的收回。
 
 
 此範例會建立不會根據定價解除配置的 spotVM （只有在 Azure 需要此容量時才會這麼做）。

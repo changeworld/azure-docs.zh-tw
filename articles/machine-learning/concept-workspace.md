@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
-ms.openlocfilehash: ba3e677b98406a5f126649aafc2f89fb9d20c895
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 82ae0cab2d3dd7c65371e7a5bfec506e484fcdd2
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137620"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169780"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>什麼是 Azure Machine Learning 工作區？
 
@@ -70,20 +70,13 @@ ms.locfileid: "77137620"
 
 您也可以執行下列工作區管理作業：
 
-| 工作區管理工作   | 入口網站              | Studio | Python SDK/R SDK       | CLI        |
+| 工作區管理工作   | Portal              | Studio | Python SDK/R SDK       | CLI        |
 |---------------------------|---------|---------|------------|------------|
 | 建立工作區        | **&check;**     | | **&check;** | **&check;** |
 | 管理工作區存取    | **&check;**   || |  **&check;**    |
 | 升級至 Enterprise edition    | **&check;** | **&check;**  | |     |
 | 建立和管理計算資源    | **&check;**   | **&check;** | **&check;** |  **&check;**   |
 | 建立筆記本 VM |   | **&check;** | |     |
-
-> [!NOTE]
-> 計算實例僅適用于區域為**美國中北部**、**美國東部 2**、**北歐**或**英國南部**的工作區，並支援其他即將推出的區域。
->如果您的工作區位於任何其他區域，您可繼續建立並使用 [Notebook VM](concept-compute-instance.md#notebookvm)。
-
-> [!WARNING]
-> 不支援將您的 Azure Machine Learning 工作區移至不同的訂用帳戶，或將擁有的訂用帳戶移至新的租使用者。 這麼做可能會導致錯誤。
 
 ## <a name='create-workspace'></a>建立工作區
 

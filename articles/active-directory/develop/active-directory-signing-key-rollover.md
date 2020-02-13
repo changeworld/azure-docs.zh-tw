@@ -12,18 +12,18 @@ ms.date: 10/20/2018
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: d3994b56b55a7aac0ba3ab64d53b6436bc19c45b
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: f3585cfa7ea6f0d8afc61e899f9641d415a2e354
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698538"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161183"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Azure Active Directory 中的簽署金鑰變換
 本文討論 Azure Active Directory (Azure AD) 中用來簽署安全性權杖的公開金鑰須知事項。 請務必注意，這些金鑰會定期變換，且在緊急情況下可以立即變換。 所有使用 Azure AD 的應用程式都應該能夠以程式設計方式處理金鑰變換程序或建立定期手動變換程序。 請繼續閱讀以了解金鑰的運作方式、如何評估變換對應用程式的影響，以及必要時如何更新應用程式或建立定期手動變換程序來處理金鑰變換。
 
 ## <a name="overview-of-signing-keys-in-azure-ad"></a>Azure AD 中簽署金鑰的概觀
-Azure AD 會使用根據業界標準所建置的公開金鑰加密技術，建立 Azure AD 本身和使用 Azure AD 的應用程式之間的信任。 實際上，其運作方式如下：Azure AD 使用由公開和私密金鑰組所組成的簽署金鑰。 當使用者登入使用 Azure AD 來進行驗證的應用程式時，Azure AD 會建立包含使用者相關資訊的安全性權杖。 此權杖會先由 Azure AD 使用其私密金鑰進行簽署，再傳送回到應用程式。 若要確認該權杖有效且來自 Azure AD，應用程式必須使用由 Azure AD 公開且包含在租用戶的 [OpenID Connect 探索文件](https://openid.net/specs/openid-connect-discovery-1_0.html) \(英文\) 或 SAML/WS-Fed [同盟中繼資料文件](azure-ad-federation-metadata.md)中的公開金鑰來驗證權杖的簽章。
+Azure AD 會使用根據業界標準所建置的公開金鑰加密技術，建立 Azure AD 本身和使用 Azure AD 的應用程式之間的信任。 實際上，其運作方式如下：Azure AD 使用由公開和私密金鑰組所組成的簽署金鑰。 當使用者登入使用 Azure AD 來進行驗證的應用程式時，Azure AD 會建立包含使用者相關資訊的安全性權杖。 此權杖會先由 Azure AD 使用其私密金鑰進行簽署，再傳送回到應用程式。 若要確認該權杖有效且來自 Azure AD，應用程式必須使用由 Azure AD 公開且包含在租用戶的 [OpenID Connect 探索文件](https://openid.net/specs/openid-connect-discovery-1_0.html) \(英文\) 或 SAML/WS-Fed [同盟中繼資料文件](../azuread-dev/azure-ad-federation-metadata.md)中的公開金鑰來驗證權杖的簽章。
 
 基於安全考量，Azure AD 的簽署金鑰會定期變換，且在緊急情況下可以立即變換。 任何與 Azure AD 整合的應用程式均應準備好處理金鑰變換事件，不論其可能發生頻率為何。 如果沒有，應用程式又嘗試使用過期的金鑰來驗證權杖上的簽章，登入要求便會失敗。
 
@@ -139,12 +139,12 @@ passport.use(new OIDCStrategy({
 2. 依序展開 [資料連線]、[DefaultConnection]、[資料表]。 找出 [IssuingAuthorityKeys] 資料表並以滑鼠右鍵按一下，然後按一下 [顯示資料表資料]。
 3. [IssuingAuthorityKeys] 資料表中會有至少一個對應至金鑰指紋值的資料列。 刪除資料表中的任何資料列。
 4. 在 [租用戶] 資料表上按一下滑鼠右鍵，然後按一下 [顯示資料表資料]。
-5. [租用戶] 資料表中會有至少一個對應至唯一目錄租用戶識別碼的資料列。 刪除資料表中的任何資料列。 如果您未刪除 [租用戶] 資料表和 [IssuingAuthorityKeys] 資料表中的資料列，您就會在執行階段收到錯誤。
+5. 在 [租用戶] 資料表中，至少會有一列與唯一的目錄租用戶識別碼相對應。 刪除資料表中的任何資料列。 如果您未刪除 [租用戶] 資料表和 [IssuingAuthorityKeys] 資料表中的資料列，您就會在執行階段收到錯誤。
 6. 建置並執行應用程式。 在登入帳戶之後，即可停止應用程式。
-7. 返回 [伺服器總管]，然後查看 [IssuingAuthorityKeys] 和 [租用戶] 資料表中的值。 您將會發現，它們已自動重新填入同盟中繼資料文件中的適當資訊。
+7. 回到 [伺服器總管] 並查看 **IssuingAuthorityKeys** 和 [租用戶] 資料表中的值。 您將會發現，它們已自動重新填入同盟中繼資料文件中的適當資訊。
 
 ### <a name="vs2013"></a>保護資源且使用 Visual Studio 2013 建立的 Web API
-如果您使用 Web API 範本在 Visual Studio 2013 中建置了 Web API 應用程式，然後從 [變更驗證] 功能表中選取了 [組織帳戶]，則應用程式已經具有所需的邏輯。
+如果您使用 Web API 範本在 Visual Studio 2013 中建立 Web API 應用程式，接著選取 [變更驗證] 功能表中的 [組織帳戶]，那麼應用程式已具有所需的邏輯。
 
 如果您以手動方式設定了驗證，請依照下列指示來了解如何設定 Web API 以自動更新其金鑰資訊。
 
@@ -243,7 +243,7 @@ namespace JWTValidation
 
 如果您是使用 Microsoft 所提供的任何程式碼範例或逐步解說文件建立應用程式，則專案中已含有金鑰變換邏輯。 您會發現專案中已存在下列程式碼。 如果應用程式還沒有此邏輯，請遵循下列步驟，以新增此邏輯並確認它能正常運作。
 
-1. 在 [方案總管] 中，針對適當的專案新增對 **System.IdentityModel** 組件的參考。
+1. 在 [方案總管] 中，針對適當的專案，新增 **System.IdentityModel** 組件的參考。
 2. 開啟 **Global.asax.cs** 檔案，並新增下列 using 指示詞：
    ```
    using System.Configuration;
@@ -259,7 +259,7 @@ namespace JWTValidation
     ValidatingIssuerNameRegistry.WriteToConfig(metadataAddress, configPath);
    }
    ```
-4. 在 **Global.asax.cs** 的 **Application_Start()** 方法中，叫用 **RefreshValidationSettings()** 方法，如下所示︰
+4. 叫用 **Global.asax.cs** 中的 **Application_Start()** 方法的 **RefreshValidationSettings()** 方法，如下所示：
    ```
    protected void Application_Start()
    {

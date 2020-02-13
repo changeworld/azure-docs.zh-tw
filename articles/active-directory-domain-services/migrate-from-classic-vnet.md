@@ -9,20 +9,20 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: 5c50e3c17fe09b735aa4f4104615c4833164d94d
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: bd20bb008c52b7d99416aed7a0599a6e78d2acf2
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544152"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161642"
 ---
-# <a name="preview---migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>預覽-將 Azure AD Domain Services 從傳統虛擬網路模型遷移至 Resource Manager
+# <a name="migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>將 Azure AD Domain Services 從傳統虛擬網路模型遷移至 Resource Manager
 
 Azure Active Directory Domain Services （AD DS）針對目前使用傳統虛擬網路模型的客戶，支援一次移動至 Resource Manager 虛擬網路模型。 使用 Resource Manager 部署模型 Azure AD DS 受控網域提供額外的功能，例如更細緻的密碼原則、audit 記錄和帳戶鎖定保護。
 
-本文概述遷移的優點和考慮，然後是成功遷移現有 Azure AD DS 實例的必要步驟。 這項遷移功能目前為預覽狀態。
+本文概述遷移的優點和考慮，然後是成功遷移現有 Azure AD DS 實例的必要步驟。
 
-## <a name="overview-of-the-migration-process"></a>移轉程序概觀
+## <a name="overview-of-the-migration-process"></a>遷移程式的總覽
 
 遷移程式會採用在傳統虛擬網路中執行的現有 Azure AD DS 實例，並將其移至現有的 Resource Manager 虛擬網路。 遷移是使用 PowerShell 來執行，而且有兩個主要階段的執行*準備*和*遷移*。
 
@@ -153,7 +153,7 @@ Azure AD DS 通常會使用位址範圍中前兩個可用的 IP 位址，但這�
 
 | 步驟    | 執行  | 預估時間  | 停機  | 要復原/還原嗎？ |
 |---------|--------------------|-----------------|-----------|-------------------|
-| [步驟 1-更新並尋找新的虛擬網路](#update-and-verify-virtual-network-settings) | Azure Portal | 15 分鐘 | 不需要停機 | N/A |
+| [步驟 1-更新並尋找新的虛擬網路](#update-and-verify-virtual-network-settings) | Azure 入口網站 | 15 分鐘 | 不需要停機 | N/A |
 | [步驟 2-準備要進行 Azure AD DS 受控網域以進行遷移](#prepare-the-managed-domain-for-migration) | PowerShell | 平均 15-30 分鐘 | 完成此命令之後，Azure AD DS 的停機時間就會啟動。 | 復原和還原可用。 |
 | [步驟 3-將 Azure AD DS 受控網域移至現有的虛擬網路](#migrate-the-managed-domain) | PowerShell | 平均 1-3 小時 | 當此命令完成後，就會有一個網域控制站可供使用，停機時間結束。 | 失敗時，可以使用復原（自助式）和還原。 |
 | [步驟 4-測試並等候複本網域控制站](#test-and-verify-connectivity-after-the-migration)| PowerShell 和 Azure 入口網站 | 1小時以上，視測試數目而定 | 這兩個網域控制站都可以使用，而且應該正常運作。 | N/A。 成功遷移第一個 VM 之後，就不會有復原或還原的選項。 |

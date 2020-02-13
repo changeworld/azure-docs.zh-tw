@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5406d301f6487753bc13b291db6d22eaedbf67b7
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: cf1515bcf2223ae730a47f7105d51206ba638cd7
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77066807"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161608"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>在 Azure Active Directory 中自訂 SaaS 應用程式的使用者布建屬性對應
 
@@ -143,7 +143,7 @@ SCIM RFC 會定義核心使用者和群組架構，同時允許架構的延伸�
    4. 選取 [**編輯 AppName 的屬性清單**]。
    5. 在 [屬性] 清單的底部，在提供的欄位中輸入自訂屬性的相關資訊。 然後選取 [**新增屬性**]。
 
-針對 SCIM 應用程式，屬性名稱必須遵循以下範例所示的模式。 您可以根據應用程式的需求自訂 "CustomExtensionName" 和 "System.reflection.customattribute.isdefined"，例如： urn： ietf： params： scim：架構： extension：2.0： CustomExtensionName： System.reflection.customattribute.isdefined
+針對 SCIM 應用程式，屬性名稱必須遵循以下範例所示的模式。 「CustomExtensionName」和「System.reflection.customattribute.isdefined」可以根據您的應用程式需求自訂，例如： urn： ietf： params： scim：架構： extension：2.0： CustomExtensionName： System.reflection.customattribute.isdefined 或 urn： ietf： params： scim：架構：延伸模組：CustomExtensionName：2.0： User. CustomAttributeName： value
 
 這些指示僅適用于啟用 SCIM 的應用程式。 ServiceNow 和 Salesforce 等應用程式不會與使用 SCIM 的 Azure AD 整合，因此在新增自訂屬性時，不需要這個特定的命名空間。
 

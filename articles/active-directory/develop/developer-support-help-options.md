@@ -13,12 +13,12 @@ ms.date: 05/23/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: e85a768d8e4f11ca3637bc8f0b394cfb1ea9744a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 89bf49fb44d8575b251a0b33698bc4ce8425cc2b
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697467"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160962"
 ---
 # <a name="support-and-help-options-for-developers"></a>開發人員的支援和協助選項
 
@@ -47,7 +47,7 @@ ms.locfileid: "76697467"
 
 ## <a name="use-the-development-support-tools"></a>使用開發支援工具
 
-| 工具  | 說明  |
+| 工具  | 描述  |
 |---------|---------|
 | [jwt.ms](https://jwt.ms) | 貼上識別碼或存取權杖以將宣告名稱和值解碼。 |
 | [Microsoft Graph 總管](https://developer.microsoft.com/graph/graph-explorer)| 此工具可讓您針對 Microsoft Graph API 提出要求並查看回應。 |
@@ -58,7 +58,7 @@ Stack Overflow 是適用於開發相關問題的慣用管道。 開發人員社�
 
 若無法透過搜尋找到問題的解答，請將新問題提交至 Stack Overflow。 在提出問題時使用下列其中一個標記，以協助社群更快速地識別和回答您的問題：
 
-|元件/區域  | 標籤 |
+|元件/區域  | Tags |
 |---------|---------|
 | ADAL 程式庫 | [[adal]](https://stackoverflow.com/questions/tagged/adal) |
 | MSAL 程式庫     | [[msal]](https://stackoverflow.com/questions/tagged/msal) |
@@ -79,8 +79,8 @@ Stack Overflow 的下列貼文包含如何提出問題以及如何新增原始�
 
 如需程式庫及其 GitHub 存放庫的清單，請參閱下列各項：
 
-* [ADAL](active-directory-authentication-libraries.md) 程式庫以及 GitHub 存放庫
-* [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) [MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs/README.md)、 [MSAL。Android](https://github.com/AzureAD/microsoft-authentication-library-for-android)和[MSAL obj_c](https://github.com/AzureAD/microsoft-authentication-library-for-objc)程式庫和 GitHub 存放庫
+* [Azure Active Directory Authentication Library （ADAL）](../azuread-dev/active-directory-authentication-libraries.md)程式庫和 GitHub 存放庫
+* [Microsoft 驗證程式庫（MSAL）](reference-v2-libraries.md)程式庫和 GitHub 存放庫
 
 ## <a name="open-a-support-request"></a>開啟支援要求
 
