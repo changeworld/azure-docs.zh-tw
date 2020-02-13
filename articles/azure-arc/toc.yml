@@ -9,9 +9,9 @@
   expanded: true
   items:
     - name: 從 Azure 入口網站將機器連線到 Azure Arc
-      href: ./servers/quickstart-onboard-portal.md
+      href: ./servers/onboard-portal.md
     - name: 使用服務主體大規模地連線機器
-      href: ./servers/quickstart-onboard-powershell.md
+      href: ./servers/onboard-service-principal.md
 - name: 參考
   items:
     - name: Azure 連線的機器代理程式 CLI 介面

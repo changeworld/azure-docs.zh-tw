@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f4f625999ff9cbdad6aeefb662e39a6b30a1881
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 7ab2dc71f39164988e0d229fc994548a00447986
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291527"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185623"
 ---
 # <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-contractsafe-saml2-sso"></a>教學課程：整合 Azure Active Directory 單一登入 (SSO) 與 ContractSafe Saml2 SSO
 
@@ -85,7 +85,7 @@ ms.locfileid: "76291527"
     b. 在 [回覆 URL]  文字方塊中，以下列格式輸入 URL：`https://app.contractsafe.com/saml2_auth/<UNIQUEID>/acs/`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的識別碼和回覆 URL 來更新這些值。 請連絡 [ContractSafe Saml2 SSO 用戶端支援小組](mailto:donne@contractsafe.com)以取得這些值。 您也可以參考 Azure 入口網站中 [基本 SAML 組態]  區段所示的格式。
+    > 這些都不是真正的值。 請使用實際的識別碼和回覆 URL 來更新這些值。 請連絡 [ContractSafe Saml2 SSO 用戶端支援小組](mailto:support@contractsafe.com)以取得這些值。 您也可以參考 Azure 入口網站中 [基本 SAML 組態]  區段所示的格式。
 
 1. ContractSafe Saml2 SSO 會預期要有特定格式的 SAML 判斷提示，這會要求您在 SAML 權杖屬性設定中新增自訂的屬性對應。 以下螢幕擷取畫面顯示預設屬性清單。
 
@@ -138,11 +138,11 @@ ms.locfileid: "76291527"
 
 ## <a name="configure-contractsafe-saml2-sso"></a>設定 ContractSafe Saml2 SSO
 
-若要在 **ContractSafe Saml2 SSO** 端設定 SSO，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML]  和所複製的適當 URL 傳送給 [ContractSafe Saml2 SSO 支援小組](mailto:donne@contractsafe.com)。 小組會負責在兩端正確地設定 SAML SSO 連線。
+若要在 **ContractSafe Saml2 SSO** 端設定 SSO，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML]  和所複製的適當 URL 傳送給 [ContractSafe Saml2 SSO 支援小組](mailto:support@contractsafe.com)。 小組會負責在兩端正確地設定 SAML SSO 連線。
 
 ## <a name="create-a-contractsafe-saml2-sso-test-user"></a>建立 ContractSafe Saml2 SSO 測試使用者
 
-在 ContractSafe Saml2 SSO 中建立名為 B.Simon 的使用者。 請與[ContractSafe Saml2 SSO 支援小組合作](mailto:donne@contractsafe.com)，在 ContractSafe Saml2 SSO 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用 SSO。
+在 ContractSafe Saml2 SSO 中建立名為 B.Simon 的使用者。 請與[ContractSafe Saml2 SSO 支援小組合作](mailto:support@contractsafe.com)，在 ContractSafe Saml2 SSO 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用 SSO。
 
 ## <a name="test-sso"></a>測試 SSO
 

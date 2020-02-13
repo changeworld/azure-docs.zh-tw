@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: 7f997865ba33a51c3e3aa7a4c7e990037be9e534
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: df4092ecc3f7d075f1a2821854cdb668ee2cebe5
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69637344"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191212"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>教學課程：編碼以 URL 為基礎的遠端檔案及串流處理影片 - .NET
 
@@ -31,7 +31,7 @@ ms.locfileid: "69637344"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 如果沒有安裝 Visual Studio，您可以取得 [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)。
 - [建立媒體服務帳戶](create-account-cli-how-to.md)。<br/>請務必記住您用於資源群組名稱和「媒體服務」帳戶名稱的值。
@@ -65,7 +65,7 @@ ms.locfileid: "69637344"
 
 當您執行應用程式時，會顯示可以使用其他不同通訊協定播放該影片的 URL。 
 
-1. 按下 Ctrl+F5 來執行 *EncodeAndStreamFiles* 應用程式。
+1. 按下 Ctrl+F5 來執行 EncodeAndStreamFiles  應用程式。
 2. 選擇 Apple 的 **HLS** 通訊協定 (結尾是 *manifest(format=m3u8-aapl)* ) 並從主控台複製串流 URL。
 
 ![輸出](./media/stream-files-tutorial-with-api/output.png)
@@ -105,7 +105,7 @@ az group delete --name amsResourceGroup
 
 ### <a name="job-error-codes"></a>作業錯誤碼
 
-請參閱[錯誤碼](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)。
+請參閱[錯誤碼](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode) \(英文\)。
 
 ## <a name="multithreading"></a>多執行緒
 

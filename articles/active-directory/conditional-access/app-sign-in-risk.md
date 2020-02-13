@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9338c1a42737180ec5395f30060b4eed35ce5eda
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: be447b001b0b2e14999aac98ba2125f8cbfe9853
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381062"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186602"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>快速入門：當 Azure Active Directory 條件式存取偵測到工作階段風險時封鎖存取  
 
-為了維護您環境的安全，您可以封鎖可疑使用者，不讓他們登入。 [Azure Active Directory (Azure AD) Identity Protection](../active-directory-identityprotection.md)會分析每一次登入，並且計算非由使用者帳戶合法擁有者嘗試執行登入的可能性。 可能性 (低、中、高) 是以稱為[登入風險等級](conditions.md#sign-in-risk)的計算值形式表示。 藉由設定登入風險條件，您可以設定條件式存取原則來回應特定的登入風險等級。
+為了維護您環境的安全，您可以封鎖可疑使用者，不讓他們登入。 [Azure Active Directory (Azure AD) Identity Protection](../active-directory-identityprotection.md)會分析每一次登入，並且計算非由使用者帳戶合法擁有者嘗試執行登入的可能性。 可能性 (低、中、高) 是以稱為[登入風險等級](concept-conditional-access-conditions.md#sign-in-risk)的計算值形式表示。 藉由設定登入風險條件，您可以設定條件式存取原則來回應特定的登入風險等級。
 
 本快速入門示範如何設定[條件式存取原則](../active-directory-conditional-access-azure-portal.md)，該原則會在偵測到已設定的登入風險等級時封鎖登入。
 
@@ -28,7 +28,7 @@ ms.locfileid: "74381062"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程中的案例，您需要：
 
@@ -89,7 +89,7 @@ ms.locfileid: "74381062"
    ![條件式存取](./media/app-sign-in-risk/107.png)
 
    1. 按一下 [選取使用者和群組]  ，然後選取 [群組設定]  。
-   1. 按一下 [選取]  。
+   1. 按一下 [選取]。 
    1. 在 [選取]  頁面上，選取 **Alain Charon**，然後按一下 [選取]  。
    1. 在 [使用者和群組]  頁面上，按一下 [完成]  。
 1. 按一下 [雲端應用程式]  。
@@ -113,7 +113,7 @@ ms.locfileid: "74381062"
    1. 按一下 [登入風險]  。
    1. 針對 [設定]  ，按一下 [是]  。
    1. 針對登入風險等級，選取 [中]  。
-   1. 按一下 [選取]  。
+   1. 按一下 [選取]。 
    1. 在 [條件]  頁面上，按一下 [完成]  。
 1. 在 [存取控制]  區段中，按一下 [授與]  。
 
@@ -124,7 +124,7 @@ ms.locfileid: "74381062"
    ![條件式存取](./media/app-sign-in-risk/105.png)
 
    1. 選取 [封鎖存取]  。
-   1. 按一下 [選取]  。
+   1. 按一下 [選取]。 
 1. 在 [啟用原則]  區段中，按一下 [開啟]  。
 
    ![啟用原則](./media/app-sign-in-risk/18.png)
@@ -137,7 +137,7 @@ ms.locfileid: "74381062"
 
 當您針對此案例執行 **What If 原則工具**時，**封鎖中等風險等級的存取**應該會列在 [要套用的原則]  底下。
 
-![使用者](./media/app-sign-in-risk/117.png)
+![User](./media/app-sign-in-risk/117.png)
 
 **若要評估條件式存取原則：**
 
@@ -147,11 +147,11 @@ ms.locfileid: "74381062"
 
 1. 按一下 [使用者]  ，在 [使用者]  頁面上選取 **Alan Charon**，然後按一下 [選取]  。
 
-   ![使用者](./media/app-sign-in-risk/116.png)
+   ![User](./media/app-sign-in-risk/116.png)
 
 1. 針對 [登入風險]  選取 [中]  。
 
-   ![使用者](./media/app-sign-in-risk/119.png)
+   ![User](./media/app-sign-in-risk/119.png)
 
 1. 按一下 [What If]  。
 

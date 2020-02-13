@@ -9,20 +9,33 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/27/2020
+ms.date: 01/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2bdd11c3b53b650e636d53942fcb94142de556b2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: cf5f89197798f95dced5bfd8817f1df050297048
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772833"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76961994"
 ---
 # <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-using-c"></a>使用管理 Azure 時間序列深入解析環境的 GA 參考資料C#
 
 本文示範如何合併C#、 [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)和 Azure Active Directory，以對 Azure 時間序列深入解析 GA[參考資料管理 api](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)提出程式設計 api 要求。
 
-## <a name="prerequisites"></a>必要條件
+> [!TIP]
+> 在[https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)C#查看 GA 程式代碼範例。
+
+## <a name="summary"></a>總結
+
+下面的範例程式碼示範下列功能：
+
+* 使用[MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) **PublicClientApplication**取得存取權杖。
+* 針對 GA[參考資料管理 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)的順序建立、讀取、更新和刪除作業。
+* 常見的回應碼，包括[一般錯誤碼](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api#validation-and-error-handling)。
+    
+    參考資料管理 API 會個別處理每個專案，而有一個專案的錯誤則無法防止其他人成功完成。 例如，如果您的要求有100個專案，而其中一個專案發生錯誤，則會寫入99個專案，而其中一個會遭到拒絕。
+
+## <a name="prerequisites-and-setup"></a>必要條件和設定
 
 編譯及執行範例程式碼之前，您必須先完成下列步驟：
 
@@ -42,9 +55,6 @@ ms.locfileid: "76772833"
 1. 以適當的環境識別碼取代每個 **#PLACEHOLDER #** ，以編輯下面的範例程式碼。
 
 1. 在專案的根目錄中執行 `dotnet run`。 出現提示時，請使用您的使用者設定檔來登入 Azure。 
-
-> [!TIP]
-> * 在 https://github.com/Azure-Samples/Azure-Time-Series-Insights 查看C#其他 GA 程式[代碼範例](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)。
 
 ## <a name="project-dependencies"></a>專案相依性
 
@@ -296,16 +306,6 @@ namespace CsharpTsiMsalGaSample
     }
 }
 ```
-
-## <a name="summary"></a>摘要
-
-上述範例程式碼示範下列功能：
-
-* 使用[MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) **PublicClientApplication**取得存取權杖。
-* 針對 GA[參考資料管理 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)的順序建立、讀取、更新和刪除作業。
-* 常見的回應碼，包括[一般錯誤碼](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api#validation-and-error-handling)。
-    
-    參考資料管理 API 會個別處理每個專案，而有一個專案的錯誤則無法防止其他人成功完成。 例如，如果您的要求有100個專案，而其中一個專案發生錯誤，則會寫入99個專案，而其中一個會遭到拒絕。
 
 ## <a name="next-steps"></a>後續步驟
 
