@@ -2,7 +2,7 @@
 title: 什麼是「我的帳戶」入口網站？ - Azure AD
 description: 如何取得我的帳戶入口網站及其功能，包括設定及管理您的安全性資訊、裝置、密碼、組織、隱私權和我的登入。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: jpettere
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
 ms.date: 01/15/2020
-ms.author: lizross
-ms.openlocfilehash: 4e165bad33e46b91a63fc1be72a57bf192b59789
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: 4c9d421fd9ac8305c27dfa798f2869e59a04f9fb
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705066"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062450"
 ---
 # <a name="what-is-the-my-account-portal"></a>什麼是「我的帳戶」入口網站？
 

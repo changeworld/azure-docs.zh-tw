@@ -3,17 +3,17 @@ title: 關於使用 Facet 協助導覽的 C# 教學課程
 titleSuffix: Azure Cognitive Search
 description: 此教學課程以「搜尋結果分頁 - Azure 認知搜尋」專案作為建置基礎，以新增 Facet 導覽。 了解如何使用 Facet 輕鬆地縮小搜尋範圍。
 manager: nitinme
-author: PeterTurcan
-ms.author: v-pettur
+author: tchristiani
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 9f0d716e9077b2d9702f26b1afe92d9e4faf4a77
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 02/10/2020
+ms.openlocfilehash: d88a9d7efdabd493fd31b961748bb6ad3bd8d738
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794120"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121562"
 ---
 # <a name="c-tutorial-use-facets-to-aid-navigation---azure-cognitive-search"></a>C# 教學課程：使用 Facet 協助導覽 - Azure 認知搜尋
 
@@ -26,7 +26,7 @@ ms.locfileid: "72794120"
 > * 將模型屬性設定為 _IsFacetable_
 > * 在應用程式中新增 Facet 導覽
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，您需要：
 

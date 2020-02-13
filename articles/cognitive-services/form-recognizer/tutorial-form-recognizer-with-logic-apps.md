@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 01/27/2020
 ms.author: nitinme
-ms.openlocfilehash: 0de0c83b0c459d29c304dbf51eaa44a62e895760
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: d71d9c7e6570e562fe4c692ede1d07b70c923cb6
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773089"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118277"
 ---
 # <a name="tutorial-use-form-recognizer-with-azure-logic-apps-to-analyze-invoices"></a>教學課程：搭配使用表單辨識器和 Azure Logic Apps 來分析發票
 
@@ -34,10 +34,6 @@ ms.locfileid: "76773089"
 ## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)。
-
-## <a name="request-access-for-form-recognizer"></a>要求表單辨識器的存取權
-
-表單辨識器是以有限存取預覽版的形式提供。 若要存取此預覽服務，請先填寫並提交[表單辨識器存取要求](https://aka.ms/FormRecognizerRequestAccess)表單。 在 Azure 認知服務小組核准要求後，您會收到一封電子郵件，裡面會指示您如何存取該服務。
 
 ## <a name="understand-the-invoice-to-be-analyzed"></a>了解要分析的發票
 

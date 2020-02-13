@@ -2,20 +2,20 @@
 title: 什麼是額外驗證頁面？ - Azure AD
 description: 如何進入 [其他安全性驗證] 頁面以進行雙因素驗證。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: overview
 ms.date: 01/15/2020
-ms.author: lizross
-ms.openlocfilehash: d7ec884cb55d876edd93f9fe1c5cc59f5ee13295
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: 5a7f0e10b23bf1a541fe83c3112962c38f7e1331
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705287"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062552"
 ---
 # <a name="what-is-the-additional-verification-page"></a>什麼是額外驗證頁面？
 

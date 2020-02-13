@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 171f06ad238f862adbd7071ee10d81133d7a6855
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 808a17fcf303c6eb72f11f5379fa172302dc782a
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022132"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77059842"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>使用 Azure IoT Central 建置零售解決方案
 
@@ -160,7 +160,7 @@ IoT Central 的微型物流中心應用程式範本可讓解決方案建置者�
 > [!div class="mx-imgBorder"]
 > ![微型物流中心](./media/overview-iot-central-retail/MFC-Dashboard.png)
 
-若要深入了解，請參閱[部署並逐步執行微型物流中心應用程式範本](./tutorial-iot-central-smart-inventory-management-pnp.md)教學課程。
+若要深入了解，請參閱[部署並逐步執行微型物流中心應用程式範本](./tutorial-micro-fulfillment-center-pnp.md)教學課程。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -170,5 +170,5 @@ IoT Central 的微型物流中心應用程式範本可讓解決方案建置者�
 * [部署並逐步執行聯網物流應用程式範本](./tutorial-iot-central-connected-logistics-pnp.md)。
 * [部署並逐步執行數位配送中心應用程式範本](./tutorial-iot-central-digital-distribution-center-pnp.md)。
 * [部署並逐步執行智慧庫存管理應用程式範本](./tutorial-iot-central-smart-inventory-management-pnp.md)。
-* [部署並逐步執行微型物流中心應用程式範本](./tutorial-iot-central-smart-inventory-management-pnp.md)。
+* [部署並逐步執行微型物流中心應用程式範本](./tutorial-micro-fulfillment-center-pnp.md)。
 * 參閱 [IoT Central 概觀](../preview/overview-iot-central.md)以深入了解 IoT Central。

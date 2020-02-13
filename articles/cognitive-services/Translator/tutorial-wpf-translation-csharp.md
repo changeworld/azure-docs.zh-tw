@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
-ms.date: 12/09/2019
+ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 25c51067f713b5d713684e5d267c133c21b17c93
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ecb42d200eb8808f6bfa4cfb91e98909e350038b
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978521"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118614"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>教學課程：使用 WPF 建立翻譯應用程式
 
@@ -37,14 +37,14 @@ ms.locfileid: "74978521"
 
 此清單包含本教學課程中使用的認知服務。 請依照下列連結瀏覽每項功能的 API 參考。
 
-| 服務 | 功能 | 說明 |
+| 服務 | 功能 | 描述 |
 |---------|---------|-------------|
 | 翻譯文字 | [取得語言](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) | 擷取文字翻譯完整的支援語言清單。 |
 | 翻譯文字 | [翻譯](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | 將文字翻譯為 60 多種語言。 |
 | 翻譯文字 | [偵測](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | 偵測輸入文字的語言。 包含偵測的信賴分數。 |
 | Bing 拼字檢查 | [拼字檢查](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | 更正拼字錯誤以改善翻譯的正確性。 |
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 繼續操作之前，您將需要下列項目：
 
@@ -114,10 +114,10 @@ ms.locfileid: "74978521"
 
 使用者介面包含下列元件：
 
-| 名稱 | 類型 | 說明 |
+| 名稱 | 類型 | 描述 |
 |------|------|-------------|
-| `FromLanguageComboBox` | 下拉式方塊 | 顯示 Microsoft Translator 支援的文字翻譯語言清單。 使用者會選取其來源翻譯語言。 |
-| `ToLanguageComboBox` | 下拉式方塊 | 顯示與 `FromComboBox` 相同的語言清單，但會用來選取使用者的目標翻譯語言。 |
+| `FromLanguageComboBox` | ComboBox | 顯示 Microsoft Translator 支援的文字翻譯語言清單。 使用者會選取其來源翻譯語言。 |
+| `ToLanguageComboBox` | ComboBox | 顯示與 `FromComboBox` 相同的語言清單，但會用來選取使用者的目標翻譯語言。 |
 | `TextToTranslate` | TextBox | 可讓使用者輸入要翻譯的文字。 |
 | `TranslateButton` | 按鈕 | 使用此按鈕可翻譯文字。 |
 | `TranslatedTextLabel` | 標籤 | 顯示翻譯。 |
@@ -250,7 +250,7 @@ ms.locfileid: "74978521"
 
 在此程式碼區塊中，我們宣告了兩個成員變數，其中包含可用翻譯語言的相關資訊：
 
-| 變數 | 類型 | 說明 |
+| 變數 | 類型 | 描述 |
 |----------|------|-------------|
 |`languageCodes` | 字串的陣列 |快取語言代碼。 Translator 服務使用短代碼 (例如 `en` 代表英文) 來識別語言。 |
 |`languageCodesAndTitles` | 已排序的字典 | 將使用者介面中的「易記」名稱往回對應至 API 中所使用的短代碼。 依字母順序排序，而不考慮大小寫。 |

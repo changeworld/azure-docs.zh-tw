@@ -4,7 +4,7 @@ titleSuffix: Microsoft identity platform
 description: 了解適用於 ObjectiveC 的 Microsoft 驗證程式庫 (適用於 iOS 和 macOS 的 MSAL) 與適用於 ObjectiveC 的 Azure AD 驗證程式庫 (ADAL.ObjC) 之間的差異，以及如何在兩者之間遷移。
 services: active-directory
 documentationcenter: dev-center-name
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -14,15 +14,15 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/28/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: jak
 ms.custom: aaddev
-ms.openlocfilehash: b7fe65938b6f96a649a5a2a9ec1d1b921a95dd49
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: c36c6b1b1b08de6d2db9a7f7f9ebd3b162c02383
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76703077"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085636"
 ---
 # <a name="using-redirect-uris-with-the-microsoft-authentication-library-for-ios-and-macos"></a>使用重新導向 URI 搭配適用於 iOS 和 macOS 的 Microsoft 驗證程式庫
 

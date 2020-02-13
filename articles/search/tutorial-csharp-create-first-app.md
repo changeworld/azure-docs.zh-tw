@@ -3,17 +3,17 @@ title: 建立第一個應用程式的 C# 教學課程
 titleSuffix: Azure Cognitive Search
 description: 了解如何逐步建置您的第一個 C# 搜尋應用程式。 此教學課程同時提供 GitHub 上可操作之應用程式的連結，以及從頭開始建置應用程式的完整程序。 了解 Azure 認知搜尋的基本元件。
 manager: nitinme
-author: PeterTurcan
-ms.author: v-pettur
+author: tchristiani
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: fc3d9d52ca6eb3d35138323908c73eb0d09cf519
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 02/10/2020
+ms.openlocfilehash: 2b4f67fc448d98239947fd764d4926f1d590c5e2
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112241"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121583"
 ---
 # <a name="c-tutorial-create-your-first-app---azure-cognitive-search"></a>C# 教學課程：建立第一個您的應用程式 - Azure 認知搜尋
 
@@ -44,7 +44,7 @@ DocumentSearchResult<Hotel> results  = await _indexClient.Documents.SearchAsync<
 ![搜尋 "pool"](./media/tutorial-csharp-create-first-app/azure-search-pool.png)
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，您需要：
 

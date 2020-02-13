@@ -8,12 +8,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
-ms.openlocfilehash: 749e5eae64aa0d33c90ef8694da9a093647b8a8b
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 4bdfc950cc1277809811dc2c548a57cc2138a8e4
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76937931"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149944"
 ---
 # <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>教學課程：使用流量管理員設定別名記錄以支援頂點網域名稱 
 
@@ -40,7 +40,7 @@ ms.locfileid: "76937931"
 
 ## <a name="create-the-network-infrastructure"></a>建立網路基礎結構
 首先，請建立一個可供放置 Web 伺服器的虛擬網路和子網域。
-1. 在 https://portal.azure.com 登入 Azure 入口網站。
+1. 登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
 2. 在入口網站的左上方，選取 [建立資源]  。 在搜尋方塊中輸入資源群組  ，然後建立名為 **RG-DNS-Alias-TM** 的資源群組。
 3. 選取 [建立資源]   > [網路]   > [虛擬網路]  。
 4. 建立名為 **VNet-Servers** 的虛擬網路。 將它放在 **RG-DNS-Alias-TM** 資源群組中，然後將子網路命名為 **SN-Web**。

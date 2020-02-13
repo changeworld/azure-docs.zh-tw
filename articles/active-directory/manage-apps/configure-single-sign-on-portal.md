@@ -13,12 +13,12 @@ ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
 ROBOTS: NOINDEX
-ms.openlocfilehash: c5e8ed4a78fccce4f3a5c631a99a8729114e5722
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: a415ac749d0d322bc2f71f64d4bec6e32ad1f12e
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422595"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063487"
 ---
 # <a name="how-to-configure-saml-based-single-sign-on"></a>如何設定 SAML 型單一登入
 
@@ -34,15 +34,15 @@ ms.locfileid: "68422595"
 - 如果尚未將應用程式新增至您的 Azure AD 租用戶，請參閱[新增資源庫應用程式](add-gallery-app.md)或[新增非資源庫應用程式](add-non-gallery-app.md)。
 - 與您的應用程式廠商連絡，以取得下列設定的正確資訊：
 
-    | 基本 SAML 組態設定 | SP 起始 | idP 起始 | 說明 |
+    | 基本 SAML 組態設定 | SP 起始 | idP 起始 | 描述 |
     |:--|:--|:--|:--|
     | 識別碼 (實體識別碼) | 某些應用程式需要 | 某些應用程式需要 | 可唯一識別要設定單一登入的應用程式。 Azure AD 會將識別碼傳送給應用程式作為 SAML 權杖的 Audience 參數。 應用程式應該會對其進行驗證。 在應用程式中提供的任何 SAML 中繼資料中，此值也會顯示為實體識別碼。 *您可在應用程式傳送的 **AuthRequest** (SAML 要求) 中的**簽發者**元素找到這個值。* |
     | 回覆 URL | 選用 | 必要 | 指定應用程式預期要接收 SAML 權杖的位置。 此回覆 URL 也稱為判斷提示取用者服務 (ACS) URL。 |
     | 登入 URL | 必要 | 請勿指定 | 當使用者開啟此 URL 時，服務提供者會重新導向至 Azure AD 以進行驗證，並將使用者登入。 Azure AD 會使用此 URL 從 Office 365 和 Azure AD「存取面板」中啟動應用程式。 如果空白，當使用者啟動應用程式時，Azure AD 會倚賴識別提供者來開始單一登入。|
-    | 轉送狀態 | 選用 | 選用 | 對應用程式指定在驗證完成後應將使用者重新導向到的位置。 此值通常是應用程式有效的 URL。 不過，有些應用程式會以不同的方式使用此欄位。 如需詳細資訊，請詢問應用程式廠商。
+    | 轉送狀態 | 選用 | 選用 | 對應用程式指定在驗證完成後應將使用者重新導向到的位置。 此值通常是對應用程式而言有效的 URL。 不過，有些應用程式會以不同的方式使用此欄位。 如需詳細資訊，請詢問應用程式廠商。
     | 登出 URL | 選用 | 選用 | 用於將 SAML 登出回應傳回應用程式。
 
-## <a name="step-1-edit-the-basic-saml-configuration"></a>步驟 1. 編輯基本 SAML 組態
+## <a name="step-1-edit-the-basic-saml-configuration"></a>步驟 1： 編輯基本 SAML 組態
 
 1. 以雲端應用程式系統管理員或 Azure AD 租用戶的應用程式系統管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
 
@@ -62,7 +62,7 @@ ms.locfileid: "68422595"
 
 1. 在頁面上方選取 [儲存]  。
 
-## <a name="step-2-configure-user-attributes-and-claims"></a>步驟 2. 設定使用者屬性和宣告 
+## <a name="step-2-configure-user-attributes-and-claims"></a>步驟 2： 設定使用者屬性和宣告 
 
 應用程式可能會要求 SAML 權杖中必須要有它在使用者登入時從 Azure AD 收到的特定使用者屬性或宣告。 例如，應用程式可能需要特定的宣告 URI 或宣告值，或**名稱**可能不得為儲存在 Microsoft 身分識別平台中的使用者名稱。 資源庫應用程式的需求會在[應用程式特定的教學課程](../saas-apps/tutorial-list.md)中說明，或者您可以詢問應用程式廠商。 設定使用者屬性和宣告的一般步驟如下所述。
 
@@ -76,7 +76,7 @@ ms.locfileid: "68422595"
 
 3. 若要新增宣告，請選取頁面頂端的 [新增宣告]  。 輸入 [名稱]  並選取適當的來源。 如果您選取 [屬性]  來源，則必須選擇您要使用的 [來源屬性]  。 如果您選取 [翻譯]  來源，則必須選擇您要使用的 [轉換]  和 [參數 1]  。 如需詳細資訊，請參閱[新增應用程式特定宣告](https://docs.microsoft.com/azure/active-directory//develop/active-directory-saml-claims-customization#adding-application-specific-claims)。 在完成時儲存變更。 
 
-4. 選取 [ **儲存**]。 新的宣告會出現在資料表中。
+4. 選取 [儲存]  。 新的宣告會出現在資料表中。
 
    > [!NOTE]
    > 若想了解還有哪些方式可自訂從 Azure AD 到應用程式的 SAML 權杖，請參閱下列資源。
@@ -85,7 +85,7 @@ ms.locfileid: "68422595"
    >- 若要修改應用程式資訊清單以設定應用程式的選擇性宣告，請參閱[設定選擇性宣告](../develop/active-directory-optional-claims.md)。
    >- 若要為重新整理權杖、存取權杖、工作階段權杖及識別碼權杖設定權杖存留期原則，請參閱[設定權杖存留期](../develop/active-directory-configurable-token-lifetimes.md)。 或者，若要透過 Azure AD 條件式存取來限制驗證工作階段，請參閱[驗證工作階段管理功能](https://go.microsoft.com/fwlink/?linkid=2083106)。
 
-## <a name="step-3-manage-the-saml-signing-certificate"></a>步驟 3. 管理 SAML 簽署憑證
+## <a name="step-3-manage-the-saml-signing-certificate"></a>步驟 3： 管理 SAML 簽署憑證
 
 Azure AD 會使用憑證來簽署它傳送至應用程式的 SAML 權杖。 在 [以 SAML 設定單一登入]  頁面上，您可以檢視或下載使用中的憑證。 您也可以更新、建立或匯入憑證。 針對資源庫應用程式，您可以在應用程式的 SAML 文件中取得關於憑證格式的詳細資料 (請參閱[應用程式特定的教學課程](../saas-apps/tutorial-list.md))。 
 
@@ -102,7 +102,7 @@ Azure AD 會使用憑證來簽署它傳送至應用程式的 SAML 權杖。 在 
 
 1. 選取 [SAML 簽署憑證]  區段頂端的 [儲存]  。 
 
-## <a name="step-4-set-up-the-application-to-use-azure-ad"></a>步驟 4. 將應用程式設定為使用 Azure AD
+## <a name="step-4-set-up-the-application-to-use-azure-ad"></a>步驟 4： 將應用程式設定為使用 Azure AD
 
 [設定 \<applicationName>]  區段會列出必須在應用程式中設定而使其以 Azure AD 作為 SAML 識別提供者的值。 必要的值會根據應用程式而有所不同。 如需詳細資訊，請參閱應用程式的 SAML 文件。
 
@@ -135,4 +135,4 @@ Azure AD 會使用憑證來簽署它傳送至應用程式的 SAML 權杖。 在 
 ## <a name="next-steps"></a>後續步驟
 
 - [將使用者或群組指派給應用程式](methods-for-assigning-users-and-groups.md)
-- [設定使用者帳戶自動佈建](configure-automatic-user-provisioning-portal.md)
+- [設定使用者帳戶自動佈建](../app-provisioning/configure-automatic-user-provisioning-portal.md)

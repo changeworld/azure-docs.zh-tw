@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
 ms.date: 01/15/2020
-ms.openlocfilehash: 8fa123772ae380cd000c414c63bdf3908d279751
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f71d8e9f88dad32818ed25d4a0719a1528656f96
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906396"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77163172"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>教學課程：將傳送給 Azure 事件中樞之即時事件中的資料異常視覺化
 
@@ -384,6 +384,6 @@ Remove-AzResourceGroup -Name $resourceGroup
 請前往下一篇文章，以深入了解 Azure 事件中樞。
 
 > [!div class="nextstepaction"]
-> [開始在 .NET Standard 中傳送訊息至 Azure 事件中樞](event-hubs-dotnet-standard-getstarted-send.md)
+> [開始在 .NET Standard 中傳送訊息至 Azure 事件中樞](get-started-dotnet-standard-send-v2.md)
 
 [建立免費帳戶]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 33e1037a0fe261f9fb0d06a9ebb0b3b323fe8d5f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 5657a2d2c348b371f81aed74c92e52b5199cdc61
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701258"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159875"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>登入使用者並從 JavaScript 單頁應用程式 (SPA) 呼叫 Microsoft 圖形 API
 
@@ -50,8 +50,8 @@ ms.locfileid: "76701258"
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Microsoft Authentication Library for JavaScript 預覽|
 
 > [!NOTE]
-> Msal.js  的目標是「Microsoft 身分識別平台」端點，其可讓個人帳戶、學校及公司帳戶登入和取得權杖。 Microsoft 身分識別平台端點有[一些限制](azure-ad-endpoint-comparison.md#limitations)。
-> 若要了解 v1.0 與 v2.0 端點之間的差異，請參閱[端點比較指南](azure-ad-endpoint-comparison.md)。
+> Msal.js  的目標是「Microsoft 身分識別平台」端點，其可讓個人帳戶、學校及公司帳戶登入和取得權杖。 Microsoft 身分識別平台端點有[一些限制](../azuread-dev/azure-ad-endpoint-comparison.md#limitations)。
+> 若要了解 v1.0 與 v2.0 端點之間的差異，請參閱[端點比較指南](../azuread-dev/azure-ad-endpoint-comparison.md)。
 
 <!--end-collapse-->
 

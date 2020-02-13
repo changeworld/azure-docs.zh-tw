@@ -3,19 +3,19 @@ title: 快速入門：自訂語音助理，C# (UWP) - 語音服務
 titleSuffix: Azure Cognitive Services
 description: 在本文中，您會使用認知服務語音軟體開發套件 (SDK) 來建立 C# 通用 Windows 平台 (UWP) 應用程式。 您會將用戶端應用程式連線到先前建立的 Bot Framework Bot，該 Bot 設定為使用 Direct Line Speech 頻道。 應用程式是使用語音 SDK NuGet 套件與 Microsoft Visual Studio 2019 所建置的。
 services: cognitive-services
-author: trrwilson
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 11/05/2019
-ms.author: travisw
-ms.openlocfilehash: 25d74b640f1bf567792c317626da0178ead7e34f
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: af9395b8f75a9097d4449571fd54be6259a7b9f3
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816237"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119760"
 ---
 # <a name="quickstart-create-a-voice-assistant-with-the-speech-sdk-uwp"></a>快速入門：使用語音 SDK 建立語音助理 (UWP)
 
@@ -26,7 +26,7 @@ ms.locfileid: "74816237"
 > [!NOTE]
 > 通用 Windows 平台可讓您開發應用程式，以在任何支援 Windows 10 的裝置 (包括 PC、Xbox、Surface Hub 與其他裝置) 上執行。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本快速入門需要：
 
@@ -37,7 +37,7 @@ ms.locfileid: "74816237"
   > [!NOTE]
   > 請參閱[語音助理支援的區域清單](regions.md#voice-assistants)，並確定您的資源已部署於其中一個區域。
 
-## <a name="optional-get-started-fast"></a>選用：快速開始使用
+## <a name="optional-get-started-fast"></a>選擇性：快速開始使用
 
 本快速入門會逐步說明如何製作用戶端應用程式以連線到您具備語音功能的 Bot。 如果您想要深入了解，可以在[語音 SDK 範例](https://aka.ms/csspeech/samples)的 `quickstart` 資料夾之下取得本快速入門中使用的完整、可立即編譯的原始程式碼。
 
@@ -117,7 +117,7 @@ ms.locfileid: "74816237"
 
 若要新增程式碼後置來源，請遵循下列步驟：
 
-1. 在 [方案總管]  中，開啟程式代碼後置來源檔案 `MainPage.xaml.cs`。 (它分組在 `MainPage.xaml` 底下)。
+1. 在 [方案總管]  中，開啟程式碼後置原始檔 `MainPage.xaml.cs`。 (它分組在 `MainPage.xaml` 底下。)
 
 1. 將檔案的內容取代為下列程式碼片段：
 
@@ -400,7 +400,7 @@ ms.locfileid: "74816237"
 
 現在，您可以開始建置和測試應用程式。
 
-1. 從功能表列中，選擇 [建置]   > [建置方案]  來建置應用程式。 現在會編譯程式碼，而且不會出現任何錯誤。
+1. 從功能表列中，選擇 [建置]   > [建置方案]  來建置應用程式。 程式碼現在應該可以編譯，而且不會出現任何錯誤。
 
 1. 選擇 [偵錯]   > [開始偵錯]  (或按 **F5**) 以啟動應用程式。 **helloworld** 視窗會出現。
 

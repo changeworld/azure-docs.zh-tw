@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: secdec18
-ms.openlocfilehash: aa5fc1dddec6931b5eff1e34cf6c12b218bdf2fd
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: ec6c68d209f867ab3547e855f3cf754bc27d53c5
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76769965"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117619"
 ---
 # <a name="configure-storage-accounts-for-cloudyn"></a>為 Cloudyn 設定儲存體帳戶
 
@@ -34,12 +34,12 @@ ms.locfileid: "76769965"
 
 設定 Azure 儲存體以供 Cloudyn 使用相當簡單。 請收集儲存體帳戶的相關詳細資料，然後將它們複製到 Cloudyn 入口網站中。
 
-1. 在 https://portal.azure.com 登入 Azure 入口網站。
+1. 登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
 2. 按一下 [所有服務]  ，選取 [儲存體帳戶]  ，捲動至您想要使用的儲存體帳戶，然後選取該帳戶。
 3. 在儲存體帳戶頁面上的 [設定]  底下，按一下 [存取金鑰]  。
 4. 複製您的 [儲存體帳戶名稱]  和 key1 底下的 [連接字串]  。  
    ![複製儲存體帳戶名稱與連接字串](./media/storage-accounts/azure-storage-access-keys.png)  
-5. 從 Azure 入口網站中開啟 Cloudyn 入口網站，或瀏覽至 https://azure.cloudyn.com 並登入。
+5. 從 Azure 入口網站中開啟 Cloudyn 入口網站，或瀏覽至 [https://azure.cloudyn.com](https://azure.cloudyn.com) 並登入。
 6. 按一下齒輪符號，然後選取 [Reports Storage Management] \(報表儲存體管理\)  。
 7. 按一下 [Add new +] \(新增 +\)  ，然後確認已選取 [Microsoft Azure]。 將您的 Azure 儲存體帳戶名稱貼到 [Name] \(名稱\)  區域中。 將您的**連接字串**貼到對應的區域中。 輸入容器名稱，然後按一下 [Save] \(儲存\)  。  
    ![在 [Add a new report storage] \(新增報表儲存體\)方塊中貼上 Azure 儲存體帳戶名稱與連接字串](./media/storage-accounts/azure-cloudyn-storage.png)
@@ -147,7 +147,7 @@ Cloudyn 會使用現有的 AWS 認證：使用者或角色，以將報表儲存�
 
 ### <a name="add-aws-report-storage-to-cloudyn"></a>將 AWS 報表儲存體新增至 Cloudyn
 
-1. 從 Azure 入口網站中開啟 Cloudyn 入口網站，或瀏覽至 https://azure.cloudyn.com 並登入。
+1. 從 Azure 入口網站中開啟 Cloudyn 入口網站，或瀏覽至 [https://azure.cloudyn.com](https://azure.cloudyn.com) 並登入。
 2. 按一下齒輪符號，然後選取 [Reports Storage Management] \(報表儲存體管理\)  。
 3. 按一下 [Add new +] \(新增 +\)  ，然後確認已選取 [AWS]。
 4. 選取帳戶和儲存體貯體。 系統會自動填入 AWS 儲存體貯體。  

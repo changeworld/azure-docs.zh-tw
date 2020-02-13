@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/23/2018
 ms.author: rohink
-ms.openlocfilehash: 9027b1574144e2addbc84fceb16deba9014826fe
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: f7778b60a5e84f5d8900b8e37bfa655a7915d403
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938401"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77136394"
 ---
 # <a name="tutorial-improve-website-response-using-traffic-manager"></a>教學課程：使用流量管理員來改善網站回應
 
@@ -38,23 +38,23 @@ ms.locfileid: "76938401"
 
 若要查看流量管理員的運作，本教學課程會要求您部署下列項目：
 
-- 在不同 Azure 區域中執行的兩個基本網站執行個體 - **美國東部**和**歐洲西部**。
-- 用於測試流量管理員的兩個測試 VM - 一個 VM 位於**美國東部**，另一個 VM 位於**歐洲西部**。 測試 VM 用來說明流量管理員如何將使用者流量路由傳送至在相同區域中執行的網站，因為該網站可提供最低延遲。
+- 在不同 Azure 區域中執行的兩個基本網站執行個體 - **美國東部**和**西歐**。
+- 用於測試流量管理員的兩個測試 VM - 一個 VM 位於**美國東部**，另一個 VM 位於**西歐**。 測試 VM 用來說明流量管理員如何將使用者流量路由傳送至在相同區域中執行的網站，因為該網站可提供最低延遲。
 
 ### <a name="sign-in-to-azure"></a>登入 Azure
 
-在 https://portal.azure.com 登入 Azure 入口網站。
+登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
 
 ### <a name="create-websites"></a>建立網站
 
 在本節中，您會建立兩個網站執行個體，這兩個執行個體可在兩個 Azure 區域中為流量管理員設定檔提供兩個服務端點。 請執行下列步驟來建立這兩個網站：
 
-1. 建立兩個 VM 來執行基本網站 - 一個位於**美國東部**，另一個位於**歐洲西部**。
+1. 建立兩個 VM 來執行基本網站 - 一個位於**美國東部**，另一個位於**西歐**。
 2. 在每個 VM 上安裝 IIS 伺服器並更新預設網站頁面，該頁面描述使用者在造訪網站時所連線的 VM 名稱。
 
 #### <a name="create-vms-for-running-websites"></a>建立 VM 以供執行網站
 
-在本節中，您會在**美國東部**和**歐洲西部**的 Azure 區域中建立兩個 VM (myIISVMEastUS  和 myIISVMWestEurope  )。
+在本節中，您會在**美國東部**和**西歐**的 Azure 區域中建立兩個 VM (myIISVMEastUS  和 myIISVMWestEurope  )。
 
 1. 在 Azure 入口網站的左上角，選取 [建立資源]   > [計算]   > [Windows Server 2019 Datacenter]  。
 2. 在 [建立虛擬機器]  中，輸入或選取 [基本資訊]  索引標籤中的下列值：
@@ -70,7 +70,7 @@ ms.locfileid: "76938401"
 3. 選取 [管理]  索引標籤，或選取 **[下一步：磁碟]** ，然後選取 **[下一步：網路功能]** ，然後選取 **[下一步：管理]** 。 在 [監視]  下，將 [開機診斷]  設定為 [關閉]  。
 4. 選取 [檢閱 + 建立]  。
 5. 檢閱設定，然後按一下 [建立]  。  
-6. 請依照步驟來建立名為 myIISVMWestEurope  的第二個 VM，並將 [資源群組]  命名為 myResourceGroupTM2  、將 [地區]  設定為 [歐洲西部]  ，然後將其他設定設成跟 myIISVMEastUS  一樣。
+6. 請依照步驟來建立名為 myIISVMWestEurope  的第二個 VM，並將 [資源群組]  命名為 myResourceGroupTM2  、將 [地區]  設定為 [西歐]  ，然後將其他設定設成跟 myIISVMEastUS  一樣。
 7. 可能需要數分鐘才會建立虛擬機器。 請等到這兩個虛擬機器都已建立，再繼續進行其餘步驟。
 
    ![建立 VM](./media/tutorial-traffic-manager-improve-website-response/createVM.png)
@@ -113,7 +113,7 @@ ms.locfileid: "76938401"
 
 ### <a name="create-test-vms"></a>建立測試 VM
 
-在本節中，您會在每個 Azure 區域 (**美國東部**和**歐洲西部**) 中建立 VM (myVMEastUS  和 myVMWestEurope  )。 當您瀏覽至網站時，您將使用這些 VM 來測試流量管理員如何將流量路由至最接近的 IIS 伺服器。
+在本節中，您會在每個 Azure 區域 (**美國東部**和**西歐**) 中建立 VM (myVMEastUS  和 myVMWestEurope  )。 當您瀏覽至網站時，您將使用這些 VM 來測試流量管理員如何將流量路由至最接近的 IIS 伺服器。
 
 1. 在 Azure 入口網站的左上角，選取 [建立資源]   > [計算]   > [Windows Server 2019 Datacenter]  。
 2. 在 [建立虛擬機器]  中，輸入或選取 [基本資訊]  索引標籤中的下列值：
@@ -129,7 +129,7 @@ ms.locfileid: "76938401"
 3. 選取 [管理]  索引標籤，或選取 **[下一步：磁碟]** ，然後選取 **[下一步：網路功能]** ，然後選取 **[下一步：管理]** 。 在 [監視]  下，將 [開機診斷]  設定為 [關閉]  。
 4. 選取 [檢閱 + 建立]  。
 5. 檢閱設定，然後按一下 [建立]  。  
-6. 請依照步驟來建立名為 myVMWestEurope  的第二個 VM，並將 [資源群組]  命名為 myResourceGroupTM2  、將 [地區]  設定為 [歐洲西部]  ，然後將其他設定設成跟 myVMEastUS  一樣。
+6. 請依照步驟來建立名為 myVMWestEurope  的第二個 VM，並將 [資源群組]  命名為 myResourceGroupTM2  、將 [地區]  設定為 [西歐]  ，然後將其他設定設成跟 myVMEastUS  一樣。
 7. 可能需要數分鐘才會建立虛擬機器。 請等到這兩個虛擬機器都已建立，再繼續進行其餘步驟。
 
 ## <a name="create-a-traffic-manager-profile"></a>建立流量管理員設定檔
@@ -178,7 +178,7 @@ ms.locfileid: "76938401"
 1. 決定流量管理員設定檔的 DNS 名稱。
 2. 檢視流量管理員的運作，如下所示：
     - 從位於**美國東部**區域的測試 VM (*myVMEastUS*)，在網頁瀏覽器中瀏覽至您流量管理員設定檔的 DNS 名稱。
-    - 從位於**歐洲西部**區域的測試 VM (myVMWestEurope  )，在網頁瀏覽器中瀏覽至您流量管理員設定檔的 DNS 名稱。
+    - 從位於**西歐**區域的測試 VM (myVMWestEurope  )，在網頁瀏覽器中瀏覽至您流量管理員設定檔的 DNS 名稱。
 
 ### <a name="determine-dns-name-of-traffic-manager-profile"></a>決定流量管理員設定檔的 DNS 名稱
 
@@ -205,7 +205,7 @@ ms.locfileid: "76938401"
 
    ![測試流量管理員設定檔](./media/tutorial-traffic-manager-improve-website-response/eastus-traffic-manager-test.png)
 
-2. 接下來，使用步驟 1-5 來連線到位於**歐洲西部**的 VM *myVMWestEurope*，並從這個 VM 瀏覽到流量管理員設定檔網域名稱。 VM 位於**歐洲西部**，所以您現在會路由至在最接近 IIS 伺服器 *myIISVMWestEurope* (位於**歐洲西部**) 上裝載的網站。
+2. 接下來，使用步驟 1-5 來連線到位於**西歐**的 VM *myVMWestEurope*，並從這個 VM 瀏覽到流量管理員設定檔網域名稱。 VM 位於**西歐**，所以您現在會路由至在最接近 IIS 伺服器 *myIISVMWestEurope* (位於**西歐**) 上裝載的網站。
 
    ![測試流量管理員設定檔](./media/tutorial-traffic-manager-improve-website-response/westeurope-traffic-manager-test.png)
 

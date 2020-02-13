@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 01/10/2020
-ms.openlocfilehash: bf07a165b6ea933719eb06b6625a91033030a120
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 16e4a7e2f06d2630c970f8daa4428e7a184a79df
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895492"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77163036"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>教學課程：部署 Azure Digital Twins 預覽版及設定空間圖形
 
@@ -52,7 +52,7 @@ ms.locfileid: "75895492"
 
 ## <a name="grant-permissions-to-your-app"></a>將權限授與應用程式
 
-Digital Twins 會使用 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) 來控制服務的[讀取/寫入權限](../active-directory/develop/v1-permissions-and-consent.md)。 任何需要與 Digital Twins 執行個體連線的應用程式，都必須向 Azure AD 註冊。 本節中的步驟示範如何註冊範例應用程式。
+Digital Twins 會使用 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) 來控制服務的[讀取/寫入權限](../active-directory/develop/v2-permissions-and-consent.md)。 任何需要與 Digital Twins 執行個體連線的應用程式，都必須向 Azure AD 註冊。 本節中的步驟示範如何註冊範例應用程式。
 
 如果您已經有一個應用程式註冊，您可以將它重複使用於您的範例。 不過，請瀏覽本節內容，以確定您的應用程式註冊設定正確。
 

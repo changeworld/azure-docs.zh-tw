@@ -3,18 +3,18 @@ title: 快速入門：使用 .NET在 C# 中建立搜尋索引
 titleSuffix: Azure Cognitive Search
 description: 在此 C# 快速入門中，了解如何使用 Azure 認知搜尋 .NET SDK 來建立索引、載入資料以及執行查詢。
 manager: nitinme
-author: HeidiSteen
-ms.author: heidist
+author: tchristiani
+ms.author: terrychr
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 11/04/2019
-ms.openlocfilehash: 1d8eaea4a6eded769542921851fb0c74a3c9d58b
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.date: 02/10/2020
+ms.openlocfilehash: e9f43f729fc9e08054cd160b82945ee4bcd5821c
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406765"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121656"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-c-using-the-net-sdk"></a>快速入門：在 C# 中使用 .NET SDK 建立 Azure 認知搜尋索引
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "74406765"
 > [!NOTE]
 > 為了方便說明，本此文章中的範例程式碼使用 Azure 認知搜尋 .NET SDK 的同步方法。 不過，針對生產案例，我們建議您在您自己的應用程式中使用非同步方法，讓應用程式保有可擴充性且回應靈敏。 例如，您可以使用 `CreateAsync` 與 `DeleteAsync`，而非 `Create` 與 `Delete`。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 此快速入門需要下列服務和工具。
 
@@ -56,7 +56,7 @@ ms.locfileid: "74406765"
 
 所有要求均都需要在傳送至您服務上的每個要求上使用 API 金鑰。 擁有有效的金鑰就能為每個要求在傳送要求之應用程式與處理要求之服務間建立信任。
 
-## <a name="set-up-your-environment"></a>設定環境
+## <a name="set-up-your-environment"></a>設定您的環境
 
 一開始請開啟 Visual Studio，並建立可在 .NET Core 上執行的新主控台應用程式專案。
 
@@ -68,7 +68,7 @@ ms.locfileid: "74406765"
 
 1. 在 [工具]   > [NuGet 套件管理員]  中，選取 [管理解決方案的 NuGet 套件]  中。 
 
-1. 按一下 [瀏覽]  。
+1. 按一下 **[瀏覽]** 。
 
 1. 搜尋 `Microsoft.Azure.Search` 並選取 9.0.1 版或更新版本。
 

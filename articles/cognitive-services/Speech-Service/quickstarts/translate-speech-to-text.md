@@ -3,20 +3,20 @@ title: 快速入門：翻譯語音轉換文字 - 語音服務
 titleSuffix: Azure Cognitive Services
 description: 在此快速入門中，您會使用語音 SDK，以互動方式將某一種語言的語音翻譯成另一種語言的語音。
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 11/04/2019
-ms.author: erhopf
+ms.date: 02/10/2020
+ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 619e70e75a3d6af6f087c4c8fb2ad586e32bfe98
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 4ee1950011fe608b796ff4c92520321e562c5654
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816829"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119150"
 ---
 # <a name="quickstart-translate-speech-to-text"></a>快速入門：翻譯語音轉換文字
 

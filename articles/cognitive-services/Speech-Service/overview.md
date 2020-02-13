@@ -3,19 +3,19 @@ title: 什麼是語音服務？
 titleSuffix: Azure Cognitive Services
 description: 語音服務會將語音轉文字、文字轉語音及語音翻譯整合至單一 Azure 訂用帳戶。 使用語音 SDK、語音裝置 SDK 或 REST API 將語音新增至您的應用程式、工具和裝置。
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
-ms.date: 11/05/2019
-ms.author: erhopf
-ms.openlocfilehash: df0ce5efefe86ed3b7e2e8ccf5a2bd9011e168e6
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: 7ddfae430e6aa4ec9549e40c937e5edcfd927f6d
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76261427"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119919"
 ---
 # <a name="what-is-the-speech-service"></a>什麼是語音服務？
 
@@ -37,24 +37,6 @@ ms.locfileid: "76261427"
 | | [建立自訂語音](#customize-your-speech-experience) | 建立您品牌或產品專有的自訂聲音音調。 | 否 | [是](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | [語音翻譯](speech-translation.md) | 語音翻譯 | 語音翻譯可讓您在應用程式、工具和裝置上使用即時且多語言的語音翻譯。 此服務可用於語音轉語音及語音轉文字翻譯。 | [是](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | 否 |
 | [語音助理](voice-assistants.md) | 語音助理 | 使用語音服務的語音助理能賦予開發人員建立自然、擬人的對話介面，供其應用程式和體驗之用。 語音助理服務能在裝置和助理實作之間提供迅速且可靠的互動；該助理實作會使用 Bot Framework 的 Direct Line 語音頻道，或是整合的自訂命令 (預覽) 服務來完成工作。 | [是](voice-assistants.md) | 否 |
-
-## <a name="news-and-updates"></a>新功能和更新
-
-了解語音服務的新功能。
-
-- 2019 年 11 月
-  - 針對 `en-US-JessaNeural` 語音新增兩種新的說話風格：[`newscast`](speech-synthesis-markup.md#adjust-speaking-styles) 和 [`customerservice`](speech-synthesis-markup.md#adjust-speaking-styles)。
-- 2019 年 9 月
-  - 發行的語音 SDK 1.7.0。 如需更新、增強功能和已知問題的完整清單，請參閱[版本資訊](releasenotes.md)。
-- 2019 年 8 月
-  - **新教學課程**：[使用語音 SDK 和 C# 透過聲音啟用 Bot](tutorial-voice-enable-your-bot-speech-sdk.md)
-  - 針對 `en-US-JessaNeural` 語音新增說話風格 [`chat`](speech-synthesis-markup.md#adjust-speaking-styles)。
-- 2019 年 6 月
-  - 發行的語音 SDK 1.6.0。 如需更新、增強功能和已知問題的完整清單，請參閱[版本資訊](releasenotes.md)。
-- 2019 年 5 月 - [對話轉譯](conversation-transcription-service.md)、[話務中心轉譯](call-center-transcription.md)和[語音助理](voice-assistants.md)的文件現已可供使用。
-- 2019 年 5 月
-  - 發行的語音 SDK 1.5.1。 如需更新、增強功能和已知問題的完整清單，請參閱[版本資訊](releasenotes.md)。
-  - 發行的語音 SDK 1.5.0。 如需更新、增強功能和已知問題的完整清單，請參閱[版本資訊](releasenotes.md)。
 
 ## <a name="try-the-speech-service"></a>試用語音服務
 

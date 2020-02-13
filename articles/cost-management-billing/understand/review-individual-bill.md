@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/20/2019
 ms.author: banders
-ms.openlocfilehash: 1249758e5dd5b7e823c11890e57549195da22529
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 969fbc3fe0aa614d4284e1442f507f263d48b499
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75984123"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117145"
 ---
 # <a name="tutorial-review-your-individual-azure-bill"></a>教學課程：檢閱個別 Azure 帳單
 
@@ -40,7 +40,7 @@ ms.locfileid: "75984123"
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
-- 在 https://portal.azure.com 登入 Azure 入口網站。
+- 登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
 
 ## <a name="compare-invoiced-charges-with-usage-file"></a>比較發票費用與使用量檔案
 

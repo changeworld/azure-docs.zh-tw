@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
-ms.openlocfilehash: d601d19a786613f674f7b941becc5e97d84e6fce
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: d4517314742f3ec8e9968d20745ffb697d96f324
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76939268"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149927"
 ---
 # <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>教學課程：設定別名記錄以參照 Azure 公用 IP 位址 
 
@@ -36,7 +36,7 @@ ms.locfileid: "76939268"
 
 ## <a name="create-the-network-infrastructure"></a>建立網路基礎結構
 首先，請建立一個可供放置 Web 伺服器的虛擬網路和子網域。
-1. 在 https://portal.azure.com 登入 Azure 入口網站。
+1. 登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
 2. 在入口網站的左上方，選取 [建立資源]  。 在搜尋方塊中輸入資源群組  ，然後建立名為 **RG-DNS-Alias-pip** 的資源群組。
 3. 選取 [建立資源]   > [網路]   > [虛擬網路]  。
 4. 建立名為 **VNet-Server** 的虛擬網路。 將它放在 **RG-DNS-Alias-pip** 資源群組中，然後將子網路命名為 **SN-Web**。

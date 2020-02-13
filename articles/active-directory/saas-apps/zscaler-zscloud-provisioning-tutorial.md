@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 34d3a7fb299ba143eee01b6b7184f1c566d41aba
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: af9d4aa15a4ff2784d2e1ca1334d9c24a8d12251
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515449"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062671"
 ---
 # <a name="tutorial-configure-zscaler-zscloud-for-automatic-user-provisioning"></a>教學課程：設定 Zscaler ZSCloud 來自動佈建使用者
 
@@ -30,7 +30,7 @@ ms.locfileid: "68515449"
 > 此教學課程會描述建置在 Azure AD 使用者佈建服務之上的連接器。 如需此服務的用途、運作方式和常見問題答案等重要詳細資訊，請參閱[使用 Azure Active Directory 自動對 SaaS 應用程式進行和取消使用者的佈建](../active-directory-saas-app-provisioning.md)。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成此教學課程中概述的步驟，您需要下列項目：
 
@@ -116,7 +116,7 @@ Azure AD 使用者必須先獲得所選應用程式的存取權，才能使用�
 
     ![設定通知電子郵件](./media/zscaler-zscloud-provisioning-tutorial/Notification.png)
 
-9. 選取 [ **儲存**]。
+9. 選取 [儲存]  。
 
 10. 在 [對應]  區段中，選取 [將 Azure Active Directory 使用者同步至 Zscaler ZSCloud]  ：
 
@@ -154,7 +154,7 @@ Azure AD 使用者必須先獲得所選應用程式的存取權，才能使用�
 
 ## <a name="additional-resources"></a>其他資源
 
-* [管理企業應用程式的使用者帳戶佈建](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [管理企業應用程式的使用者帳戶佈建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>後續步驟

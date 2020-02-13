@@ -1,6 +1,6 @@
 ---
 title: 教學課程：以 Azure Active Directory 設定 Zscaler Three 來自動佈建使用者 | Microsoft Docs
-description: 在本教學課程中，您將了解如何設定 Azure Active Directory 來對 Zscaler Three 自動佈建及取消佈建使用者帳戶。
+description: 在本教學課程中，您將了解如何透過設定，來使 Azure Active Directory 自動對 Zscaler Three 進行或取消使用者帳戶的佈建。
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -15,21 +15,21 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 43ae028e57578634c34c69357a264fdb180b8a1f
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 177bc34162c2b5e4dadc54e1166c5f6061068bae
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515369"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064099"
 ---
 # <a name="tutorial-configure-zscaler-three-for-automatic-user-provisioning"></a>教學課程：設定 Zscaler Three 來自動佈建使用者
 
-在本教學課程中，您將了解如何設定 Azure Active Directory (Azure AD) 來對 Zscaler Three 自動佈建及取消佈建使用者和/或群組。
+在本教學課程中，您將了解如何透過設定，來使 Azure Active Directory (Azure AD) 自動對 Zscaler Three 進行和取消使用者和/或群組的佈建。
 
 > [!NOTE]
-> 本教學課程會說明建置在 Azure AD 使用者佈建服務之上的連接器。 如需此服務的用途、運作方式和常見問題答案等重要詳細資訊，請參閱[使用 Azure Active Directory 自動對 SaaS 應用程式進行和取消使用者的佈建](../active-directory-saas-app-provisioning.md)。
+> 此教學課程會描述建置在 Azure AD 使用者佈建服務之上的連接器。 如需此服務的用途、運作方式和常見問題答案等重要詳細資訊，請參閱[使用 Azure Active Directory 自動對 SaaS 應用程式進行和取消使用者的佈建](../active-directory-saas-app-provisioning.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成此教學課程中概述的步驟，您需要下列項目：
 
@@ -44,7 +44,7 @@ ms.locfileid: "68515369"
 
 將 Zscaler Three 設定為可使用 Azure AD 自動佈建使用者之前，您必須將 Zscaler Three 從 Azure AD 應用程式庫新增至您的受控 SaaS 應用程式清單。
 
-在 [Azure 入口網站](https://portal.azure.com)的左側窗格中，選取 [Azure Active Directory]  ：
+在 [Azure 入口網站](https://portal.azure.com)的左窗格中，選取 [Azure Active Directory]  ：
 
 ![選取 Azure Active Directory](common/select-azuread.png)
 
@@ -105,7 +105,7 @@ Azure AD 使用者必須先獲得所選應用程式的存取權，才能使用�
 
     ![[設定 SAML] 視窗](./media/zscaler-three-provisioning-tutorial/secret-token-2.png)
 
-    選取 [啟用 SCIM 型佈建]  並複製 [基底 URL]  和 [持有人權杖]  ，然後儲存設定。 在 Azure 入口網站中，將 [基底 URL]  貼到 [租用戶 URL]  方塊中，以及將 [持有人權杖]  貼到 [祕密權杖]  方塊中。
+    選取 [啟用 SCIM 型佈建]  並複製 [基底 URL]  和 [持有人權杖]  ，然後儲存設定。 在 Azure 入口網站中，將 [基底 URL]  貼上到 [租用戶 URL]  方塊中，以及將 [持有人權杖]  貼到 [祕密權杖]  方塊中。
 
 7. 在 [租用戶 URL]  和 [祕密權杖]  方塊中輸入值之後，請選取 [測試連線]  以確定 Azure AD 可以連線到 Zscaler Three。 如果連線失敗，請確定您的 Zscaler Three 帳戶具有系統管理員權限並再試一次。
 
@@ -115,7 +115,7 @@ Azure AD 使用者必須先獲得所選應用程式的存取權，才能使用�
 
     ![設定通知電子郵件](./media/zscaler-three-provisioning-tutorial/notification.png)
 
-9. 選取 [ **儲存**]。
+9. 選取 [儲存]  。
 
 10. 在 [對應]  區段中，選取 [將 Azure Active Directory 使用者同步至 ZscalerThree]  ：
 
@@ -153,7 +153,7 @@ Azure AD 使用者必須先獲得所選應用程式的存取權，才能使用�
 
 ## <a name="additional-resources"></a>其他資源
 
-* [管理企業應用程式的使用者帳戶佈建](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [管理企業應用程式的使用者帳戶佈建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>後續步驟

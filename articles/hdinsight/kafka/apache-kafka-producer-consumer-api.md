@@ -1,19 +1,19 @@
 ---
 title: 教學課程：Apache Kafka Producer 和 Consumer API - Azure HDInsight
 description: 了解如何搭配 HDInsight 上的 Kafka 使用 Apache Kafka Producer 和 Consumer API。 在本教學課程中，您將了解如何從 Java 應用程式將這些 API 用於 HDInsight 上的 Kafka。
-author: dhgoelmsft
-ms.author: dhgoel
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 10/08/2019
-ms.openlocfilehash: ad810ac2f8751554aaf0afcd2b15e1da83f38fe1
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 65fc3259b0bc5fce61ccd1ceb8df30f1bba49b19
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242003"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161710"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>教學課程：使用 Apache Kafka Producer 和 Consumer API
 
@@ -24,14 +24,14 @@ Kafka Producer API 可讓應用程式將資料流傳送至 Kafka 叢集。 Kafka
 在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
-> * 必要條件
+> * Prerequisites
 > * 了解程式碼
 > * 建置並部署應用程式
 > * 在叢集上執行應用程式
 
 如需 API 的詳細資訊，請參閱 [Producer API](https://kafka.apache.org/documentation/#producerapi) 和 [Consumer API](https://kafka.apache.org/documentation/#consumerapi) 的 Apache 說明文件。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * HDInsight 3.6 上的 Apache Kafka。 若要深入了解如何建立 HDInsight 上的 Apache Kafka 叢集，請參閱[開始使用 HDInsight 上的 Apache Kafka](apache-kafka-get-started.md)。
 
@@ -45,10 +45,10 @@ Kafka Producer API 可讓應用程式將資料流傳送至 Kafka 叢集。 Kafka
 
 範例應用程式位於 [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) 的 `Producer-Consumer` 子目錄中。 該應用程式主要包含四個檔案：
 
-* `pom.xml`：此檔案會定義專案相依性、Java 版本和封裝方法。
-* `Producer.java`：此檔案會使用 Producer API 將隨機句子傳送至 Kafka。
-* `Consumer.java`：此檔案會使用 Consumer API 從 Kafka 讀取資料並將其發送至 STDOUT。
-* `Run.java`：用來執行產生者和取用者程式碼的命令列介面。
+* `pom.xml`:此檔案會定義專案相依性、Java 版本和封裝方法。
+* `Producer.java`:此檔案會使用 Producer API 將隨機句子傳送至 Kafka。
+* `Consumer.java`:此檔案會使用 Consumer API 從 Kafka 讀取資料並將其發送至 STDOUT。
+* `Run.java`:用來執行產生者和取用者程式碼的命令列介面。
 
 ### <a name="pomxml"></a>Pom.xml
 
@@ -69,8 +69,8 @@ Kafka Producer API 可讓應用程式將資料流傳送至 Kafka 叢集。 Kafka
 
 * 外掛程式：Maven 外掛程式可提供多種功能。 在此專案中，會使用下列外掛程式：
 
-    * `maven-compiler-plugin`：用來將專案所使用的 Java 版本設為 8。 這是HDInsight 3.6 所使用的 Java 版本。
-    * `maven-shade-plugin`：用來產生包含此應用程式以及任何相依性的 uber jar。 它也可用來設定應用程式的進入點，如此您即可直接執行 Jar 檔案，而不需要指定主要類別。
+    * `maven-compiler-plugin`:用來將專案所使用的 Java 版本設為 8。 這是HDInsight 3.6 所使用的 Java 版本。
+    * `maven-shade-plugin`:用來產生包含此應用程式以及任何相依性的 uber jar。 它也可用來設定應用程式的進入點，如此您即可直接執行 Jar 檔案，而不需要指定主要類別。
 
 ### <a name="producerjava"></a>Producer.java
 

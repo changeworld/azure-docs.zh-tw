@@ -3,17 +3,17 @@ title: 自動完成和建議的 C# 教學課程
 titleSuffix: Azure Cognitive Search
 description: 本教學課程示範自動完成和建議，作為向使用下拉式清單的使用者收集搜尋字詞輸入的方法。 它是以現有的飯店專案為基礎而建置的。
 manager: nitinme
-author: PeterTurcan
-ms.author: v-pettur
+author: tchristiani
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: b542476ac1c9b6d4368d97eb4db76518eb2dba03
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 02/10/2020
+ms.openlocfilehash: 8f244d64fe33a1529cf66314515bbe16e05ccffb
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114556"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121542"
 ---
 # <a name="c-tutorial-add-autocompletion-and-suggestions---azure-cognitive-search"></a>C# 教學課程：新增自動完成和建議 - Azure 認知搜尋
 
@@ -26,7 +26,7 @@ ms.locfileid: "74114556"
 > * 新增自動完成
 > * 結合自動完成和建議
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，您需要：
 

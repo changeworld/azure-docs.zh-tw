@@ -3,17 +3,17 @@ title: 排序結果的 C# 教學課程
 titleSuffix: Azure Cognitive Search
 description: 本教學課程會示範如何排序搜尋結果。 它是以先前的飯店專案為基礎所建置，依主要屬性、次要屬性進行排序，並包含評分設定檔來新增提升準則。
 manager: nitinme
-author: PeterTurcan
-ms.author: v-pettur
+author: tchristiani
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 9230e555f9ea56ca4cda3fcabe1f9719e36a8f62
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 02/10/2020
+ms.openlocfilehash: 812085a5a4b3e8d1233f19c947d2fd5e433f6ab7
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112677"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121556"
 ---
 # <a name="c-tutorial-order-the-results---azure-cognitive-search"></a>C# 教學課程：排序結果 - Azure 認知搜尋
 
@@ -28,7 +28,7 @@ ms.locfileid: "74112677"
 > * 根據與地理點的距離篩選結果
 > * 根據評分設定檔排序結果
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，您需要：
 
@@ -114,7 +114,7 @@ ms.locfileid: "74112677"
     ```
 
     >[!Tip]
-    >瀏覽器通常會快取 CSS 檔案，這可能導致使用舊的 CSS 檔案，而忽略您的編輯。 解決此問題的好方法是在連結新增包含版本參數的查詢字串。 例如︰
+    >瀏覽器通常會快取 CSS 檔案，這可能導致使用舊的 CSS 檔案，而忽略您的編輯。 解決此問題的好方法是在連結新增包含版本參數的查詢字串。 例如：
     >
     >```html
     >   <link rel="stylesheet" href="~/css/hotels.css?v1.1" />

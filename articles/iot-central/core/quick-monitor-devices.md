@@ -3,18 +3,18 @@ title: 快速入門 - 在 Azure IoT Central 中監視您的裝置
 description: 以操作員的身分，了解如何使用 Azure IoT Central 應用程式監視您的裝置。
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/09/2019
+ms.date: 02/12/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: e5185d78b0ffc17e861f49d294af65ddcd200d07
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: e56b733a567c706c2a15f2c30ed93a47c244db11
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026161"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168698"
 ---
 # <a name="quickstart-use-azure-iot-central-to-monitor-your-devices"></a>快速入門：使用 Azure IoT Central 監視您的裝置
 
@@ -41,8 +41,6 @@ Azure IoT Central 會以電子郵件訊息傳送關於裝置的通知。 建置�
 ## <a name="investigate-an-issue"></a>調查問題
 
 身為操作員，您可以在 [概觀]  、[關於]  和 [命令]  檢視上檢視裝置的相關資訊。 建置者建立了 [管理裝置]  檢視，可供您編輯裝置資訊及設定裝置屬性。
-
-選擇 [概觀]  檢視以查看裝置的相關資訊。
 
 儀表板上的圖表會顯示裝置溫度的繪圖。 您判定裝置溫度過高。
 

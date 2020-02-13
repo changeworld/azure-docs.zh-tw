@@ -2,20 +2,20 @@
 title: 將行動裝置設定為雙因素驗證方法 - Azure Active Directory | Microsoft Docs
 description: 了解如何將行動裝置設定為您的雙因素驗證方法。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: overview
 ms.date: 08/12/2019
-ms.author: lizross
-ms.openlocfilehash: c01a7a9c5adb050d98840938260c8486ecdeb199
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: b0bfaa87c77ba9fff9f6605c1989e48ffbc3fb35
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705185"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062501"
 ---
 # <a name="set-up-a-mobile-device-as-your-two-factor-verification-method"></a>將行動裝置設定為您的雙因素驗證方法
 

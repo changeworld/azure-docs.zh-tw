@@ -6,23 +6,23 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: tutorial
-ms.date: 12/04/2019
+ms.date: 02/10/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 55846c76f2c3ef1c5d884af39af85db3abe38aad
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 0eabd918b5f8f52049792ceb28ef8055945d6475
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892901"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162169"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>教學課程：建置採用 Blob 儲存體的高可用性應用程式
 
 本教學課程是一個系列的第一部分。 在其中，您可了解如何讓應用程式資料在 Azure 中具有高可用性。
 
-當您完成本教學課程時，就會擁有主控台應用程式，可從[讀取權限異地備援](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) 儲存體帳戶上傳及擷取 Blob。
+當您完成本教學課程時，就會擁有主控台應用程式，可從[讀取權限異地備援](../common/storage-redundancy.md) (RA-GRS) 儲存體帳戶上傳及擷取 Blob。
 
 RA-GRS 的運作方式是將交易從主要區域複寫到次要區域。 此複寫程序可保證次要區域中的資料是最終一致的。 該應用程式會使用[斷路器](/azure/architecture/patterns/circuit-breaker)模式來決定要連線到哪一個端點，並且在模擬失敗和復原時自動在端點間切換。
 
@@ -35,7 +35,7 @@ RA-GRS 的運作方式是將交易從主要區域複寫到次要區域。 此複
 > * 設定連接字串
 > * 執行主控台應用程式
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程：
 
@@ -71,7 +71,7 @@ RA-GRS 的運作方式是將交易從主要區域複寫到次要區域。 此複
 3. 在 [精選]  之下選取 [儲存體帳戶 - blob、檔案、資料表、佇列]  。
 4. 在儲存體帳戶表單中填寫下列資訊 (如下圖所示)，然後選取 [建立]  ：
 
-   | 設定       | 建議的值 | 說明 |
+   | 設定       | 建議的值 | 描述 |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **名稱** | mystorageaccount | 用於儲存體帳戶的唯一值 |
    | **部署模型** | Resource Manager  | Resource Manager 含有最新的功能。|

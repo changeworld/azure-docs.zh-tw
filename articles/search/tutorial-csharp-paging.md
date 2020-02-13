@@ -3,17 +3,17 @@ title: 關於搜尋結果分頁的 C# 教學課程
 titleSuffix: Azure Cognitive Search
 description: 本教學課程示範搜尋結果的分頁。 它是以現有的飯店專案為基礎而建置的，並依第一頁、下一頁、上一頁、最後一頁和編號按鈕分頁。 第二個分頁系統會使用無止盡捲動 (透過將垂直捲軸移至其下限來觸發)。
 manager: nitinme
-author: PeterTurcan
-ms.author: v-pettur
+author: tchristiani
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 04f8229a86fbd8fbd5404997926412e760e74973
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 02/10/2020
+ms.openlocfilehash: 9abfeb54be6e22885b8e973034a6d89df8272146
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113761"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121515"
 ---
 # <a name="c-tutorial-search-results-pagination---azure-cognitive-search"></a>C# 教學課程：搜尋結果分頁 - Azure 認知搜尋
 
@@ -24,7 +24,7 @@ ms.locfileid: "74113761"
 > * 使用已編號的分頁擴充您的應用程式
 > * 使用無止盡捲動擴充您的應用程式
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，您需要：
 

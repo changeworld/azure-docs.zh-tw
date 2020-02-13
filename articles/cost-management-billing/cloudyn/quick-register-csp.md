@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: seodec18
 ms.service: cost-management-billing
 ms.reviewer: benshy
-ms.openlocfilehash: 169a188e842fac667091aacd3c7e8b762a32ecf8
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: ea156e8efabcb73b324f0a102945b227558cece9
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76774063"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117786"
 ---
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>註冊 CSP 合作夥伴計劃並檢視成本資料
 
@@ -34,7 +34,7 @@ ms.locfileid: "76774063"
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
-- 在 https://portal.azure.com 登入 Azure 入口網站。
+- 登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
 
 ## <a name="register-with-cloudyn"></a>向 Cloudyn 註冊
 
