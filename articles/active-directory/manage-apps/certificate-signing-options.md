@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 614a90fcc0daef3eb77c43e6b56848c34d160ed5
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: dc911ff06208b1fd0af7651c8274a45c958bf0cd
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274749"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159194"
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>在 Azure Active Directory 中，針對資源庫應用程式使用 SAML 權杖中的進階憑證簽署選項
 
@@ -76,4 +76,4 @@ Azure AD 支援兩種簽署演算法，或用來簽署 SAML 回應的安全雜�
 ## <a name="next-steps"></a>後續步驟
 
 * [設定對不在 Azure Active Directory 應用程式庫中的應用程式的單一登入](configure-federated-single-sign-on-non-gallery-applications.md)
-* [針對 SAML 型單一登入進行疑難排解](../develop/howto-v1-debug-saml-sso-issues.md)
+* [針對 SAML 型單一登入進行疑難排解](../azuread-dev/howto-v1-debug-saml-sso-issues.md)

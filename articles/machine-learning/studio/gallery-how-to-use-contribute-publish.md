@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 5049bdfdc84df16c4b8070decf47fd2d726d7777
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: HT
+ms.openlocfilehash: 6a82c4d6eecec3a3a9ef690536988c8402444ffc
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153021"
+ms.locfileid: "77168537"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>共用及探索 Azure AI 資源庫中的資源
 
@@ -149,9 +149,9 @@ Azure AI 資源庫包含一些由 Microsoft 和資料科學社群成員所發表
 
 1. 選取 [新增項目]。
 
-1. 在 [描述] 頁面上，針對 [項目類型]，選取 [教學課程] 或 [集合]。 輸入名稱、摘要、詳細的描述，以及有助於其他使用者找到發表項目的任何標記。 然後按 **[下一步]** 。
+1. 在 [描述] 頁面上，針對 [項目類型]，選取 [教學課程] 或 [集合]。 輸入名稱、摘要、詳細的描述，以及有助於其他使用者找到發表項目的任何標記。 然後按一下 [下一步]。
 
-1. 在 [映像選取] 頁面上，選取與發表項目一起顯示的映像。 您可以上傳您自己的映像檔，也可以選取內建映像。 選擇可能有助於使用者識別發表項目內容與用途的映像。 然後按 **[下一步]** 。
+1. 在 [映像選取] 頁面上，選取與發表項目一起顯示的映像。 您可以上傳您自己的映像檔，也可以選取內建映像。 選擇可能有助於使用者識別發表項目內容與用途的映像。 然後按一下 [下一步]。
 
 1. 在 [設定] 頁面上，針對 [可見性]，選取您的發表項目為 [公開] \(任何人都可以檢視) 或 [未公開] \(僅限有直接連結的人員可以檢視)。
 

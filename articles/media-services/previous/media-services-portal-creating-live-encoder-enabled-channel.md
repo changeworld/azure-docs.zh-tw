@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 媒體服務執行即時串流, 以使用 Azure 入口網站建立多位元率串流 |Microsoft Docs
+title: 使用 Azure 媒體服務執行即時串流，以使用 Azure 入口網站建立多位元率串流 |Microsoft Docs
 description: 本教學課程將逐步引導您使用 Azure 入口網站建立通道，以接收單一位元速率即時串流，並將其編碼為多位元速率串流。
 services: media-services
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 3217a2d5ba3d45a069eacdb67a8d69e9abc674b8
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 7d2e4274e6feaebac6536eed2f8a99d251cd5ceb
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "69015215"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162560"
 ---
-# <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>使用媒體服務執行即時串流, 以使用 Azure 入口網站建立多位元率串流  
+# <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>使用媒體服務執行即時串流，以使用 Azure 入口網站建立多位元率串流  
 > [!div class="op_single_selector"]
 > * [入口網站](media-services-portal-creating-live-encoder-enabled-channel.md)
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
@@ -43,8 +43,8 @@ ms.locfileid: "69015215"
 
 1. 將攝影機連接到電腦。 <br/>如需了解裝備，請參閱[簡單的可攜式活動視訊器材裝備]( https://link.medium.com/KNTtiN6IeT) \(英文\)。
 
-    如果您沒有攝影機的存取權, 就可以使用像是[Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm)的工具, 從影片檔案產生即時摘要。
-1. 啟動和設定可使用下列其中一種通訊協定輸出單一位元速率串流的內部部署即時編碼器：RTMP 或 Smooth Streaming。 如需詳細資訊，請參閱 [Azure 媒體服務 RTMP 支援和即時編碼器](https://go.microsoft.com/fwlink/?LinkId=532824)。 <br/>此外，也請參閱這個部落格：[使用 OBS 來產生即時串流](https://link.medium.com/ttuwHpaJeT) \(英文\)。
+    如果您沒有攝影機的存取權，就可以使用像是[Telestream Wirecast](media-services-configure-wirecast-live-encoder.md)的工具，從影片檔案產生即時摘要。
+1. 啟動和設定可使用下列其中一種通訊協定輸出單一位元速率串流的內部部署即時編碼器：RTMP 或 Smooth Streaming。 如需詳細資訊，請參閱 [Azure 媒體服務 RTMP 支援和即時編碼器](https://go.microsoft.com/fwlink/?LinkId=532824)。 <br/>此外，請參閱此 blog：[使用 OBS 的即時串流生產](https://link.medium.com/ttuwHpaJeT)。
 
     此步驟也可以在您建立通道之後執行。
 1. 建立並啟動通道。 
@@ -61,22 +61,22 @@ ms.locfileid: "69015215"
 1. 每當您想要停止串流處理和封存事件時，請停止事件。
 1. 刪除事件 (並選擇性地刪除資產)。   
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 需要有下列項目，才能完成教學課程。
 
 * 若要完成此教學課程，您需要 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 
-  如需詳細資訊，請參閱 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+  如需詳細資料，請參閱 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 * 媒體服務帳戶。 若要建立媒體服務帳戶，請參閱 [建立帳戶](media-services-portal-create-account.md)。
 * 網路攝影機以及可以傳送單一位元速率即時串流的編碼器。
 
-## <a name="create-a-channel"></a>建立頻道
+## <a name="create-a-channel"></a>建立通道
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，選取 [媒體服務]，然後按一下媒體服務帳戶名稱。
 2. 選取 [即時串流]。
 3. 選取 [自訂建立]。 此選項可讓您建立通道，而啟用通道即可進行即時編碼。
 
-    ![建立頻道](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-channel.png)
+    ![建立通道](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-channel.png)
 4. 按一下 [設定]。
 
    1. 選擇 [即時編碼] 通道類型。 此類型指定您想要建立通道，而啟用通道即可進行即時編碼。 這表示內送單一位元速率串流會傳送至通道，並編碼為使用所指定即時編碼器設定的多位元速率串流。 如需詳細資訊，請參閱 [使用 Azure 媒體服務的即時串流，以建立多位元速率串流](media-services-manage-live-encoder-enabled-channels.md)。 按一下 [確定]。
@@ -118,10 +118,10 @@ ms.locfileid: "69015215"
 
 ## <a name="create-and-manage-events"></a>建立和管理事件
 
-### <a name="overview"></a>總覽
+### <a name="overview"></a>概觀
 通道是與事件/程式相關聯，而程式可讓您控制即時串流中區段的發佈和儲存。 通道會管理事件/程式。 通道和程式的關聯性非常類似於傳統媒體，此處的通道有常數內容資料流，而程式的範圍是該通道上的某些計時事件。
 
-設定 [封存時間範圍] 長度，即可指定您想要保留事件之錄製內容的時數。 此值可以設為最少 5 分鐘到最多 25 個小時。 封存時間範圍長度也會指出用戶端可以從目前即時位置及時往回搜尋的最大時間量。 事件在超過指定的時間量後還是可以執行，但是會持續捨棄落後時間範圍長度的內容。 此屬性的這個值也會決定用戶端資訊清單可以成長為多長的時間。
+設定 [封存時間範圍] 長度，即可指定您想要保留事件之錄製內容的時數。 此值最小可以設定為 5 分鐘，最大可以設定為 25 個小時。 封存時間範圍長度也會指出用戶端可以從目前即時位置及時往回搜尋的最大時間量。 事件在超過指定的時間量後還是可以執行，但是會持續捨棄落後時間範圍長度的內容。 此屬性的這個值也會決定用戶端資訊清單可以成長為多長的時間。
 
 每個事件都是與資產相關聯。 若要發佈事件，您必須建立相關聯資產的 OnDemand 定位器。 擁有此定位器，可讓您建置可提供給用戶端的串流 URL。
 
@@ -183,7 +183,7 @@ ms.locfileid: "69015215"
 
 若要管理您的資產，請選取 [設定]，然後按一下 [資產]。
 
-![資產](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-assets.png)
+![Assets](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-assets.png)
 
 ## <a name="considerations"></a>考量
 * 目前，即時事件的最大建議持續時間是 8 小時。 如果您需要較長的時間來執行通道，請連絡 amshelp@microsoft.com。

@@ -17,16 +17,15 @@ ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 92e4376108de02b912c05459411adfacf926c448
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 37ce80c94478d2250eae321f7a42bda64d441dea
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700459"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159637"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft 身分識別平臺和 OAuth 2.0 代理者流程
 
-[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
 OAuth2.0 代理者流程 (OBO) 的使用案例，是應用程式叫用服務/Web API，而後者又需要呼叫另一個服務/Web API。 其概念是透過要求鏈傳播委派的使用者身分識別和權限。 若要讓仲介層服務向下游服務提出已驗證的要求，它需要代表使用者保護來自 Microsoft 身分識別平臺的存取權杖。
 
@@ -68,18 +67,18 @@ https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
 
 使用共用密碼時，服務對服務存取權杖要求包含下列參數：
 
-| 參數 |  | 說明 |
+| 參數 |  | 描述 |
 | --- | --- | --- |
-| `grant_type` | 必要項 | 權杖要求的類型。 對於使用 JWT 的要求，值必須是 `urn:ietf:params:oauth:grant-type:jwt-bearer`。 |
-| `client_id` | 必要項 | [Azure 入口網站應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面已指派給您應用程式的應用程式（用戶端）識別碼。 |
-| `client_secret` | 必要項 | 您在 [Azure 入口網站應用程式註冊] 頁面中為應用程式產生的用戶端密碼。 |
-| `assertion` | 必要項 | 要求中使用的權杖值。  此權杖必須具有應用程式的物件，以進行此 OBO 要求（以 `client-id` 欄位表示的應用程式）。 |
-| `scope` | 必要項 | 權杖要求範圍的清單，各項目之間以空格分隔。 如需詳細資訊，請參閱[範圍](v2-permissions-and-consent.md)。 |
-| `requested_token_use` | 必要項 | 指定應該如何處理要求。 在 OBO 流程中，此值必須設定為 `on_behalf_of`。 |
+| `grant_type` | 必要 | 權杖要求的類型。 對於使用 JWT 的要求，值必須是 `urn:ietf:params:oauth:grant-type:jwt-bearer`。 |
+| `client_id` | 必要 | [Azure 入口網站應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面已指派給您應用程式的應用程式（用戶端）識別碼。 |
+| `client_secret` | 必要 | 您在 [Azure 入口網站應用程式註冊] 頁面中為應用程式產生的用戶端密碼。 |
+| `assertion` | 必要 | 要求中使用的權杖值。  此權杖必須具有應用程式的物件，以進行此 OBO 要求（以 `client-id` 欄位表示的應用程式）。 |
+| `scope` | 必要 | 權杖要求範圍的清單，各項目之間以空格分隔。 如需詳細資訊，請參閱[範圍](v2-permissions-and-consent.md)。 |
+| `requested_token_use` | 必要 | 指定應該如何處理要求。 在 OBO 流程中，此值必須設定為 `on_behalf_of`。 |
 
 #### <a name="example"></a>範例
 
-下列 HTTP POST 會要求 https://graph.microsoft.com Web API 之 `user.read` 範圍的存取權杖與重新整理權杖。
+下列 HTTP POST 會要求 `user.read` Web API 之 https://graph.microsoft.com 範圍的存取權杖與重新整理權杖。
 
 ```
 //line breaks for legibility only
@@ -100,21 +99,21 @@ grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 
 使用憑證的服務對服務存取權杖要求包含下列參數：
 
-| 參數 |  | 說明 |
+| 參數 |  | 描述 |
 | --- | --- | --- |
-| `grant_type` | 必要項 | 權杖要求的類型。 對於使用 JWT 的要求，值必須是 `urn:ietf:params:oauth:grant-type:jwt-bearer`。 |
-| `client_id` | 必要項 |  [Azure 入口網站應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面已指派給您應用程式的應用程式（用戶端）識別碼。 |
-| `client_assertion_type` | 必要項 | 值必須是 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`。 |
-| `client_assertion` | 必要項 | 您必須建立判斷提示 (JSON Web 權杖)，並使用註冊的憑證來簽署，以作為應用程式的認證。 若要深入了解如何註冊您的憑證與判斷提示的格式，請參閱[憑證認證](active-directory-certificate-credentials.md)。 |
-| `assertion` | 必要項 | 要求中使用的權杖值。 |
-| `requested_token_use` | 必要項 | 指定應該如何處理要求。 在 OBO 流程中，此值必須設定為 `on_behalf_of`。 |
-| `scope` | 必要項 | 權杖要求範圍的清單，各項目之間以空格分隔。 如需詳細資訊，請參閱[範圍](v2-permissions-and-consent.md)。|
+| `grant_type` | 必要 | 權杖要求的類型。 對於使用 JWT 的要求，值必須是 `urn:ietf:params:oauth:grant-type:jwt-bearer`。 |
+| `client_id` | 必要 |  [Azure 入口網站應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面已指派給您應用程式的應用程式（用戶端）識別碼。 |
+| `client_assertion_type` | 必要 | 值必須是 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`。 |
+| `client_assertion` | 必要 | 您必須建立判斷提示 (JSON Web 權杖)，並使用註冊的憑證來簽署，以作為應用程式的認證。 若要深入了解如何註冊您的憑證與判斷提示的格式，請參閱[憑證認證](active-directory-certificate-credentials.md)。 |
+| `assertion` | 必要 | 要求中使用的權杖值。 |
+| `requested_token_use` | 必要 | 指定應該如何處理要求。 在 OBO 流程中，此值必須設定為 `on_behalf_of`。 |
+| `scope` | 必要 | 權杖要求範圍的清單，各項目之間以空格分隔。 如需詳細資訊，請參閱[範圍](v2-permissions-and-consent.md)。|
 
 請注意，在透過共用密碼要求的情況中，參數幾乎相同，不同之處在於使用下列兩個參數來取代 `client_secret` 參數：`client_assertion_type` 和 `client_assertion`。
 
 #### <a name="example"></a>範例
 
-下列 HTTP POST 會使用憑證要求 https://graph.microsoft.com Web API 之 `user.read` 範圍的存取權杖。
+下列 HTTP POST 會使用憑證要求 `user.read` Web API 之 https://graph.microsoft.com 範圍的存取權杖。
 
 ```
 // line breaks for legibility only
@@ -136,7 +135,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 成功的回應是 JSON OAuth 2.0 回應，包含下列參數。
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 | --- | --- |
 | `token_type` | 表示權杖類型值。 Microsoft 身分識別平臺唯一支援的類型是 `Bearer`。 如需有關持有人權杖的詳細資訊，請參閱[OAuth 2.0 授權架構：持有人權杖使用方式（RFC 6750）](https://www.rfc-editor.org/rfc/rfc6750.txt)。 |
 | `scope` | 在權杖中授與的存取範圍。 |

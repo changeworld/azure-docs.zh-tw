@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/20/2019
+ms.date: 01/16/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 4725329ace12a2bfb285253c52249f242da31619
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ddd4f45e88c0bcc63fb62cc816fae4dbad255841
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970202"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157579"
 ---
 # <a name="introduction-to-azure-storage"></a>Azure 儲存體簡介
 
@@ -78,7 +78,7 @@ Azure 佇列服務用來儲存及擷取訊息。 佇列訊息的大小上限為 
 
 如需 Azure 佇列的詳細資訊，請參閱[佇列簡介](../queues/storage-queues-introduction.md)。
 
-## <a name="table-storage"></a>資料表儲存體
+## <a name="table-storage"></a>表格儲存體
 
 Azure 資料表儲存體現在屬於 Azure Cosmos DB。 若要查看 Azure 資料表儲存體文件，請參閱 [Azure 資料表儲存體概觀](../tables/table-storage-overview.md)。 除了現有的 Azure 資料表儲存體服務，有新的 Azure Cosmos DB 資料表 API 供應項目，可提供輸送量最佳化的資料表、全域發佈，以及自動次要索引。 若要深入了解並試用新的進階體驗，請查看 [Azure Cosmos DB 資料表 API](https://aka.ms/premiumtables)。
 
@@ -118,19 +118,17 @@ Azure 儲存體加密可保護您的資料，以符合您組織的安全性和�
 
 Azure 儲存體用戶端程式庫會提供方法，以在透過網路傳送資料並將回應解密之前，從用戶端程式庫加密資料。 透過用戶端加密加密的資料也會在待用時 Azure 儲存體進行加密。 如需用戶端加密的詳細資訊，請參閱[使用 .net 進行 Azure 儲存體的用戶端加密](storage-client-side-encryption.md)。
 
-## <a name="redundancy"></a>備援
+## <a name="redundancy"></a>備援性
 
-為了確保資料的持久性，Azure 儲存體會為您複寫多個資料複本。 當您設定儲存體帳戶時，您可選取備援選項。
+為了確保您的資料持久，Azure 儲存體會儲存資料的多個複本。 當您設定儲存體帳戶時，您可選取備援選項。
 
 [!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
-
-如需災害復原的詳細資訊，請參閱 [Azure 儲存體的災害復原和儲存體帳戶容錯移轉 (預覽)](storage-disaster-recovery-guidance.md)。
 
 ## <a name="transferring-data-to-and-from-azure-storage"></a>從 Azure 儲存體來回傳輸資料
 
 您可以透過數個選項將資料移入或移出 Azure 儲存體。 應選擇哪個選項，取決於您的資料集大小和網路頻寬。 如需詳細資訊，請參閱[選擇適合資料轉送的 Azure 解決方案](storage-choose-data-transfer-solution.md)。
 
-## <a name="pricing"></a>定價
+## <a name="pricing"></a>價格
 
 如需 Azure 儲存體價格的詳細資訊，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 

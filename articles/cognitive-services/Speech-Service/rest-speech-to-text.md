@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: f5d1fff7d1343ad569fa015ebdb65d0152f04376
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: HT
+ms.openlocfilehash: 26fe995f45a97a5863bfc20fd1564df89124ed88
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153208"
+ms.locfileid: "77168328"
 ---
 # <a name="speech-to-text-rest-api"></a>語音轉換文字 REST API
 
@@ -32,9 +32,18 @@ ms.locfileid: "77153208"
 
 ## <a name="regions-and-endpoints"></a>區域與端點
 
-支援使用 REST API 對以下區域進行語音轉文字的文字轉錄。 請確定選取的是符合您訂用帳戶區域的端點。
+REST API 的端點具有下列格式：
 
-[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)] 
+```
+https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1
+```
+
+將 `<REGION_IDENTIFIER>` 取代為符合此資料表中訂用帳戶區域的識別碼：
+
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
+
+> [!NOTE]
+> 必須將語言參數附加到 URL 後方，以避免收到 4xx HTTP 錯誤。 例如，使用美國西部端點設定為美式英文的語言是：`https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US`。
 
 ## <a name="query-parameters"></a>查詢參數
 
@@ -42,20 +51,20 @@ REST 要求的查詢字串中可能包括這些參數。
 
 | 參數 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
-| `language` | 識別正在辨識的口說語言。 請參閱[支援的語言](language-support.md#speech-to-text)。 | 必要項 |
-| `format` | 指定結果格式。 接受的值為 `simple` 和 `detailed`。 簡單的結果包含 `RecognitionStatus`、`DisplayText`、`Offset` 和 `Duration`。 詳細的回應包含多個具有信賴值的結果和四個不同的表示法。 預設值是 `simple`。 | 選擇性 |
-| `profanity` | 指定如何處理辨識結果中的不雅內容。 接受的值為 `masked`，會以星號取代不雅內容，`removed`，這會移除結果中的所有不雅內容，或 `raw`，其中包含結果中的不雅內容。 預設值是 `masked`。 | 選擇性 |
+| `language` | 識別正在辨識的口說語言。 請參閱[支援的語言](language-support.md#speech-to-text)。 | 必要 |
+| `format` | 指定結果格式。 接受的值為 `simple` 和 `detailed`。 簡單的結果包含 `RecognitionStatus`、`DisplayText`、`Offset` 和 `Duration`。 詳細的回應包含多個具有信賴值的結果和四個不同的表示法。 預設值是 `simple`。 | 選用 |
+| `profanity` | 指定如何處理辨識結果中的不雅內容。 接受的值為 `masked`，會以星號取代不雅內容，`removed`，這會移除結果中的所有不雅內容，或 `raw`，其中包含結果中的不雅內容。 預設值是 `masked`。 | 選用 |
 
 ## <a name="request-headers"></a>要求標頭
 
 下表列出了語音轉文字要求的必要標頭和選用標頭。
 
-|標頭| 描述 | 必要/選用 |
+|頁首| 描述 | 必要/選用 |
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | 您的語音服務訂用帳戶金鑰。 | 必須有此標頭或 `Authorization`。 |
 | `Authorization` | 前面加入 `Bearer` 這個字的授權權杖。 如需詳細資訊，請參閱[驗證](#authentication)。 | 必須有此標頭或 `Ocp-Apim-Subscription-Key`。 |
-| `Content-type` | 描述所提供音訊資料的格式和轉碼器。 接受的值為 `audio/wav; codecs=audio/pcm; samplerate=16000` 和 `audio/ogg; codecs=opus`。 | 必要項 |
-| `Transfer-Encoding` | 指定正在傳送的音訊資料區塊，而不是單一檔案。 只有在以區塊處理音訊資料時，才能使用此標頭。 | 選擇性 |
+| `Content-type` | 描述所提供音訊資料的格式和轉碼器。 接受的值為 `audio/wav; codecs=audio/pcm; samplerate=16000` 和 `audio/ogg; codecs=opus`。 | 必要 |
+| `Transfer-Encoding` | 指定正在傳送的音訊資料區塊，而不是單一檔案。 只有在以區塊處理音訊資料時，才能使用此標頭。 | 選用 |
 | `Expect` | 如果使用區塊傳輸，請傳送 `Expect: 100-continue`。 語音服務會確認初始要求並等候其他資料。| 如果傳送的是音訊資料區塊，則為必要。 |
 | `Accept` | 如果提供，則必須是 `application/json`。 語音服務會以 JSON 提供結果。 某些要求架構會提供不相容的預設值。 最佳做法是一律包含 `Accept`。 | 此為選用步驟，但建議執行。 |
 
@@ -63,7 +72,7 @@ REST 要求的查詢字串中可能包括這些參數。
 
 音訊是在 HTTP `POST` 要求的主體中傳送。 它必須是此表格中的格式之一：
 
-| [格式] | 轉碼器 | Bitrate | 取樣率 |
+| [格式] | 轉碼器 | Bitrate | 採樣速率 |
 |--------|-------|---------|-------------|
 | WAV | PCM | 16 位元 | 16 kHz，單聲道 |
 | OGG | OPUS | 16 位元 | 16 kHz，單聲道 |
@@ -91,11 +100,11 @@ Expect: 100-continue
 
 | HTTP 狀態碼 | 描述 | 可能的原因 |
 |------------------|-------------|-----------------|
-| 100 | 繼續 | 已接受初始要求。 繼續傳送其餘的資料。 (搭配區塊傳輸使用。) |
-| 200 | 確定 | 要求成功；回應主體是 JSON 物件。 |
+| 100 | Continue | 已接受初始要求。 繼續傳送其餘的資料。 (搭配區塊傳輸使用。) |
+| 200 | [確定] | 要求成功；回應主體是 JSON 物件。 |
 | 400 | 不正確的要求 | 未提供語言代碼，而不是支援的語言、不正確音訊檔案等。 |
-| 401 | Unauthorized | 訂用帳戶金鑰或授權權杖在指定的區域中無效，或是無效的端點。 |
-| 403 | 已禁止 | 遺漏訂用帳戶金鑰或授權權杖。 |
+| 401 | 未經授權 | 訂用帳戶金鑰或授權權杖在指定的區域中無效，或是無效的端點。 |
+| 403 | 禁止 | 遺漏訂用帳戶金鑰或授權權杖。 |
 
 ## <a name="chunked-transfer"></a>區塊傳輸
 

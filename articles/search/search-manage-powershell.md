@@ -8,13 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: fdb558267d823657f6a735d8b96efde33cdb8383
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 02/11/2020
+ms.openlocfilehash: b6147e45ca686328b1702faa5a8d50d9a75e50d6
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466527"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157834"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>使用 PowerShell 管理您的 Azure 認知搜尋服務
 > [!div class="op_single_selector"]
@@ -24,23 +24,19 @@ ms.locfileid: "73466527"
 > * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
 > * [Python (英文)](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
-您可以在 Windows、Linux 或[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)中執行 PowerShell Cmdlet 和腳本，以建立及設定 Azure 認知搜尋。 **Az. Search**模組會將 Azure PowerShell] 延伸到[Azure 認知搜尋管理 REST api](https://docs.microsoft.com/rest/api/searchmanagement)的完整同位。 使用 Azure PowerShell 和**Az. Search**，您可以執行下列工作：
+您可以在 Windows、Linux 或[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)中執行 PowerShell Cmdlet 和腳本，以建立及設定 Azure 認知搜尋。 **Az. Search**模組會將[Azure PowerShell](https://docs.microsoft.com/powershell/)與[搜尋管理 REST api](https://docs.microsoft.com/rest/api/searchmanagement)的完整同位延伸，以及執行下列工作的能力：
 
 > [!div class="checklist"]
-> * [列出您訂用帳戶中的所有搜尋服務](#list-search-services)
-> * [取得特定搜尋服務的相關資訊](#get-search-service-information)
+> * [列出訂用帳戶中的搜尋服務](#list-search-services)
+> * [傳回服務資訊](#get-search-service-information)
 > * [建立或刪除服務](#create-or-delete-a-service)
 > * [重新產生管理 API 金鑰](#regenerate-admin-keys)
 > * [建立或刪除查詢 api 金鑰](#create-or-delete-query-keys)
-> * [藉由增加或減少複本和分割區來調整服務](#scale-replicas-and-partitions)
+> * [使用複本和分割區相應增加或相應減少](#scale-replicas-and-partitions)
 
-PowerShell 無法用來變更服務的名稱、區域或層級。 建立服務時，會配置專用資源。 變更基礎硬體（位置或節點類型）需要新的服務。 沒有任何工具或 Api 可將內容從某個服務傳送至另一個服務。 所有的內容管理都是透過[REST](https://docs.microsoft.com/rest/api/searchservice/)或[.net](https://docs.microsoft.com/dotnet/api/?term=microsoft.azure.search) api，如果您想要移動索引，則必須在新的服務上重新建立並重載它們。 
+有時候，系統會詢問問題，*而不*是上述清單中的工作。 目前，您無法使用**Az. Search**模組或管理 REST API 來變更伺服器名稱、區域或層級。 建立服務時，會配置專用資源。 因此，變更基礎硬體（位置或節點類型）需要新的服務。 同樣地，沒有任何工具或 Api 可將內容（例如索引）從某個服務傳送至另一個服務。
 
-雖然沒有任何專用的 PowerShell 命令可進行內容管理，但是您可以撰寫呼叫 REST 或 .NET 的 PowerShell 腳本來建立和載入索引。 **Az. Search**模組本身不會提供這些作業。
-
-其他不支援透過 PowerShell 或任何其他 API （僅限入口網站）的工作包括：
-+ [附加認知服務資源](cognitive-search-attach-cognitive-services.md)，以進行 AI 擴充的[索引編制](cognitive-search-concept-intro.md)。 認知服務會附加至技能集，而不是訂用帳戶或服務。
-+ 用於監視 Azure 認知搜尋的[附加元件監視解決方案](search-monitor-usage.md#add-on-monitoring-solutions)。
+在服務內，建立和管理內容是透過[搜尋服務 REST API](https://docs.microsoft.com/rest/api/searchservice/)或[.net SDK](https://docs.microsoft.com/dotnet/api/?term=microsoft.azure.search)。 雖然沒有適用于內容的專用 PowerShell 命令，但是您可以撰寫呼叫 REST 或 .NET Api 的 PowerShell 腳本來建立和載入索引。
 
 <a name="check-versions-and-load"></a>
 
@@ -78,7 +74,7 @@ Import-Module -Name Az
 Connect-AzAccount
 ```
 
-如果您擁有多個 Azure 訂用帳戶，請設定您的 Azure 訂用帳戶。 如果想查看目前的訂閱帳戶清單，請執行這個命令。
+如果您擁有多個 Azure 訂用帳戶，請設定您的 Azure 訂用帳戶。 如果想查看目前的訂用帳戶清單，請執行這個命令。
 
 ```azurepowershell-interactive
 Get-AzSubscription | sort SubscriptionName | Select SubscriptionName
@@ -92,7 +88,7 @@ Select-AzSubscription -SubscriptionName ContosoSubscription
 
 <a name="list-search-services"></a>
 
-## <a name="list-all-azure-cognitive-search-services-in-your-subscription"></a>列出您訂用帳戶中的所有 Azure 認知搜尋服務
+## <a name="list-services-in-a-subscription"></a>列出訂用帳戶中的服務
 
 下列命令來自[**Az. Resources**](https://docs.microsoft.com/powershell/module/az.resources/?view=azps-1.4.0#resources)，傳回您的訂用帳戶中已布建的現有資源和服務的相關資訊。 如果您不知道已經建立多少搜尋服務，這些命令會傳回該資訊，讓您能為您節省入口網站的旅程。
 

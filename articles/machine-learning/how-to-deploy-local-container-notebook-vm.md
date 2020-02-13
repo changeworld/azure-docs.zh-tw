@@ -10,20 +10,16 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 10/25/2019
-ms.openlocfilehash: c07e880ea9b3c382d3c6ecde51dfe8f4ab5c24fc
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 28d176289a0b6cfe659f390feb441158c57f6533
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988408"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169945"
 ---
 # <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>將模型部署到 Azure Machine Learning 計算實例
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
-
-> [!NOTE]
-> 計算實例（預覽）僅適用于區域為**美國中北部**、**美國東部 2**、**北歐**或**英國南部**的工作區，並支援其他即將推出的區域。
->如果您的工作區位於任何其他區域，您可繼續建立並使用 [Notebook VM](concept-compute-instance.md#notebookvm)。  您可以使用這篇文章中的步驟，將模型部署到計算實例或筆記本 VM。
 
 瞭解如何使用 Azure Machine Learning 在 Azure Machine Learning 計算實例上將模型部署為 web 服務。 如果下列其中一個條件成立，請使用計算實例：
 
@@ -33,7 +29,7 @@ ms.locfileid: "76988408"
 > [!TIP]
 > 將模型從計算實例上的 Jupyter Notebook 部署到相同 VM 上的 web 服務是_本機部署_。 在此情況下，「本機」電腦就是計算實例。 如需部署的詳細資訊，請參閱[使用 Azure Machine Learning 部署模型](how-to-deploy-and-where.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 執行的計算實例 Azure Machine Learning 工作區。 如需詳細資訊，請參閱[設定環境和工作區](tutorial-1st-experiment-sdk-setup.md)。
 

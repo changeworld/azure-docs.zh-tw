@@ -3,21 +3,19 @@ title: 在您的 Azure IoT Central 應用程式中使用裝置群組 |Microsoft 
 description: 身為操作員，請瞭解如何使用裝置群組來分析 Azure IoT Central 應用程式中來自裝置的遙測資料。
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/09/2019
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: 4fd05631e7f54b6258978f70fdd5dfb9705f989b
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 758ac037fcd224d02f62239b3408b41b50390147
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026961"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77167253"
 ---
 # <a name="tutorial-use-device-groups-to-analyze-device-telemetry"></a>教學課程：使用裝置群組來分析裝置遙測
-
-
 
 本文說明如何以操作員的身分，使用裝置群組來分析 Azure IoT Central 應用程式中的裝置遙測。
 
@@ -29,17 +27,17 @@ ms.locfileid: "77026961"
 > * 建立裝置群組
 > * 使用裝置群組來分析裝置遙測
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-開始之前，請先完成[建立 Azure IoT Central 應用程式](./quick-deploy-iot-central.md) (英文) 和[將模擬裝置新增至 IoT Central 應用程式](./quick-create-pnp-device.md) (英文) 的快速入門，以便建立要使用的**環境感應器**裝置範本。
+開始之前，您應該先完成[建立 Azure IoT Central 應用程式](./quick-deploy-iot-central.md)，並[將模擬裝置新增至您的 IoT Central 應用程式](./quick-create-pnp-device.md)快速入門，以建立要使用的**MXChip IoT DevKit**裝置範本。
 
 ## <a name="create-simulated-devices"></a>建立模擬的裝置
 
-建立裝置群組之前，請先從**環境感應器**裝置範本新增至少五個模擬裝置，以在本教學課程中使用：
+建立裝置群組之前，請先從**MXChip IoT DevKit**裝置範本新增至少五個模擬裝置，以在本教學課程中使用：
 
-![五個模擬的環境感應器裝置](./media/tutorial-use-device-groups/simulated-devices.png)
+![五個模擬感應器裝置](./media/tutorial-use-device-groups/simulated-devices.png)
 
-對於四個環境感應器裝置，請使用**環境感應器屬性**視圖將客戶名稱設定為**Contoso**：
+若為四個模擬感應器裝置，請使用 [**管理裝置**] 視圖將客戶名稱設定為*Contoso*：
 
 ![將客戶名稱設定為 Contoso](./media/tutorial-use-device-groups/customer-name.png)
 
@@ -49,17 +47,17 @@ ms.locfileid: "77026961"
 
 1. 選擇左窗格中的 [**裝置群組**]。
 
-1. 選取 [+ 新增]。
+1. 選取  **+** ：
 
     ![新增裝置群組](media/tutorial-use-device-groups/image1.png)
 
-1. 為您的裝置群組提供一個名稱，例如**Contoso 裝置**。 您也可以新增描述。 裝置群組只能包含來自單一裝置範本的裝置。 選擇要用於此群組的**環境感應器**裝置範本。
+1. 為您的裝置群組命名為 [ *Contoso 裝置*]。 您也可以新增描述。 裝置群組只能包含來自單一裝置範本的裝置。 選擇要用於此群組的**MXChip IoT DevKit**裝置範本。
 
-1. 藉由選取 [ **Customer Name** ] 屬性、[ **Equals** ] 比較運算子和 [ **contoso** ] 做為值，建立查詢以識別屬於**Contoso**的裝置群組裝置。 您可以新增多個查詢，且符合**所有**條件的裝置會放在裝置群組中。 可存取應用程式的任何人都能存取您所建立的裝置群組，因此任何人都可以查看、修改或刪除裝置群組。
+1. 若要自訂裝置群組，僅包含屬於**Contoso**的裝置，請選取 [ **+ 篩選**]。 選取 [ **Customer Name** ] 屬性、[ **Equals** ] 比較運算子和 [ **Contoso** ] 做為值。 您可以新增多個篩選器，並將符合**所有**篩選準則的裝置放在裝置群組中。 可存取應用程式的任何人都能存取您所建立的裝置群組，讓任何人都可以查看、修改或刪除裝置群組：
 
     ![裝置群組查詢](media/tutorial-use-device-groups/image2.png)
 
-    > [!NOTE]
+    > [!TIP]
     > 裝置群組是動態查詢。 您每次檢視裝置清單時所看到的裝置可能會不同。 清單內容取決於哪些裝置目前符合查詢準則。
 
 1. 選擇 [儲存]。

@@ -10,12 +10,12 @@ ms.date: 01/14/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: bab95f6494fad86c9fdfc0b8fb044c22a7c5a628
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 592be1710893791e80dfe4b20e1323e789b33e69
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945441"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157087"
 ---
 # <a name="designing-highly-available-applications-using-read-access-geo-redundant-storage"></a>使用讀取權限異地多餘儲存體設計高可用性應用程式
 
@@ -23,8 +23,8 @@ ms.locfileid: "75945441"
 
 針對異地複寫複寫所設定的儲存體帳戶會在主要區域中同步複寫，然後以非同步方式複寫到數百英里外的次要區域。 Azure 儲存體提供兩種類型的異地冗余複寫：
 
-* [異地區域冗余儲存體（切換）（預覽）](storage-redundancy-gzrs.md)會針對同時需要高可用性和最大持久性的案例提供複寫。 資料會在主要區域中的三個 Azure 可用性區域之間，使用區域冗余儲存體（ZRS）同步複寫，然後以非同步方式複寫到次要區域。 如需次要區域中資料的讀取權限，請啟用讀取權限異地區域-多餘儲存體（RA-切換）。
-* [異地冗余儲存體（GRS）](storage-redundancy-grs.md)提供跨區域複寫，以防止區域性中斷。 資料會在主要區域中使用本機多餘的儲存體（LRS）同步複寫三次，然後以非同步方式複寫到次要區域。 如需次要區域中資料的讀取權限，請啟用讀取權限異地多餘儲存體（RA-GRS）。
+* [異地區域冗余儲存體（切換）（預覽）](storage-redundancy.md)會針對同時需要高可用性和最大持久性的案例提供複寫。 資料會在主要區域中的三個 Azure 可用性區域之間，使用區域冗余儲存體（ZRS）同步複寫，然後以非同步方式複寫到次要區域。 如需次要區域中資料的讀取權限，請啟用讀取權限異地區域-多餘儲存體（RA-切換）。
+* [異地冗余儲存體（GRS）](storage-redundancy.md)提供跨區域複寫，以防止區域性中斷。 資料會在主要區域中使用本機多餘的儲存體（LRS）同步複寫三次，然後以非同步方式複寫到次要區域。 如需次要區域中資料的讀取權限，請啟用讀取權限異地多餘儲存體（RA-GRS）。
 
 本文說明如何設計您的應用程式來處理主要區域中的中斷。 如果主要區域變得無法使用，您的應用程式可以調整，改為對次要地區執行讀取作業。 在開始之前，請確定您的儲存體帳戶已設定為使用 GRS 或 RA-切換。
 
@@ -149,7 +149,7 @@ Azure 儲存體用戶端程式庫可協助您判斷哪些錯誤可以重試。 �
 
 您有三個主要選項可用來監視主要區域中的重試頻率，以判斷何時要切換到次要區域，並將應用程式變更為在唯讀模式中執行。
 
-* 針對您傳遞到儲存體要求的 [**OperationContext**](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.context.operationcontext) 物件上的 [**Retrying**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.operationcontext.retrying) 事件新增處理常式 - 這是本文所示的方法，並會在隨附的範例中使用。 每當用戶端重試要求時，這些事件即會觸發，讓您能夠追蹤用戶端在主要端點上發生可重試錯誤的頻率。
+* 針對您傳遞到儲存體要求的 [**OperationContext**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.operationcontext.retrying) 物件上的 [**Retrying**](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.context.operationcontext) 事件新增處理常式 - 這是本文所示的方法，並會在隨附的範例中使用。 每當用戶端重試要求時，這些事件即會觸發，讓您能夠追蹤用戶端在主要端點上發生可重試錯誤的頻率。
 
     ```csharp
     operationContext.Retrying += (sender, arguments) =>
@@ -212,40 +212,9 @@ Azure 儲存體用戶端程式庫可協助您判斷哪些錯誤可以重試。 �
 
 在此範例中，假設用戶端會在 T5 從次要區域切換到讀取。 它可以在此時順利讀取**系統管理員角色**實體，但實體包含的系統管理員計數值與**員工**實體數目不一致，後者在此時標示為次要區域中的系統管理員。 您的用戶端可能只會顯示此值，存有資訊不一致的風險。 或者，用戶端可能嘗試判斷**系統管理員角色**處於可能不一致的狀態，因為更新並未按順序進行，然後通知使用者此一事實。
 
-若要辨識其中可能含有不一致的資料，用戶端可以使用「上次同步處理時間」的值，你可以隨時查詢儲存體服務來取得此值。 這會告訴您次要區域中的資料上次保持一致的時間，以及在此時間點之前服務套用所有交易的時間。 在上述範例中，當服務在次要區域中插入**員工**實體之後，就會將上次同步處理時間設為 *T1*。 它會保持在 *T1*，直到將其設為 *T6* 之後，服務更新次要區域中的**員工**實體為止。 如果用戶端會在其讀取 *T5* 上的實體時擷取上次同步處理時間，就能與實體上的時間戳記進行比較。 如果實體上的時間戳記晚於上次同步處理時間，則該實體可能會處於不一致狀態，而您就能針對應用程式採取適當的動作。 您必須知道上次對主要區域完成更新的時間，才能使用此欄位。
+若要辨識其中可能含有不一致的資料，用戶端可以使用「上次同步處理時間」的值，你可以隨時查詢儲存體服務來取得此值。 這會告訴您次要區域中的資料上次保持一致的時間，以及在此時間點之前服務套用所有交易的時間。 在上述範例中，當服務在次要區域中插入**員工**實體之後，就會將上次同步處理時間設為 *T1*。 它會保持在 *T1*，直到將其設為 **T6** 之後，服務更新次要區域中的*員工*實體為止。 如果用戶端會在其讀取 *T5* 上的實體時擷取上次同步處理時間，就能與實體上的時間戳記進行比較。 如果實體上的時間戳記晚於上次同步處理時間，則該實體可能會處於不一致狀態，而您就能針對應用程式採取適當的動作。 您必須知道上次對主要區域完成更新的時間，才能使用此欄位。
 
-## <a name="getting-the-last-sync-time"></a>取得上次同步處理時間
-
-您可以使用 PowerShell 或 Azure CLI 來抓取上次同步處理時間，以判斷資料上次何時寫入次要複本。
-
-### <a name="powershell"></a>PowerShell
-
-若要使用 PowerShell 取得儲存體帳戶的上次同步處理時間，請安裝支援取得異地複寫統計資料的 Azure 儲存體預覽模組。例如：
-
-```powershell
-Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.1.1-preview –AllowPrerelease –AllowClobber –Force
-```
-
-然後檢查儲存體帳戶的**GeoReplicationStats. LastSyncTime**屬性。 請記得使用您自己的值來取代預留位置值：
-
-```powershell
-$lastSyncTime = $(Get-AzStorageAccount -ResourceGroupName <resource-group> `
-    -Name <storage-account> `
-    -IncludeGeoReplicationStats).GeoReplicationStats.LastSyncTime
-```
-
-### <a name="azure-cli"></a>Azure CLI
-
-若要使用 Azure CLI 來取得儲存體帳戶的上次同步處理時間，請檢查儲存體帳戶的**geoReplicationStats. lastSyncTime**屬性。 請使用 `--expand` 參數來傳回**geoReplicationStats**下所嵌套屬性的值。 請記得使用您自己的值來取代預留位置值：
-
-```azurecli
-$lastSyncTime=$(az storage account show \
-    --name <storage-account> \
-    --resource-group <resource-group> \
-    --expand geoReplicationStats \
-    --query geoReplicationStats.lastSyncTime \
-    --output tsv)
-```
+若要瞭解如何檢查上次同步處理時間，請參閱[檢查儲存體帳戶的上次同步處理時間屬性](last-sync-time-get.md)。
 
 ## <a name="testing"></a>測試
 

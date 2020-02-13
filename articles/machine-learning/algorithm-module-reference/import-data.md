@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 930ff1abf77c4e28d377daf12174ff3fbb60cf23
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: HT
+ms.openlocfilehash: e7aa19c1d189eb19237ea85aae1ad2441d7e98b9
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152239"
+ms.locfileid: "77163189"
 ---
 # <a name="import-data-module"></a>匯入資料模組
 
@@ -42,7 +42,7 @@ ms.locfileid: "77152239"
 
 定義您想要的資料並連接到來源之後，匯 **[入資料](./import-data.md)** 會根據其包含的值來推斷每個資料行的資料類型，並將資料載入您的設計工具管線。 匯**入資料**的輸出是可以搭配任何設計工具管線使用的資料集。
 
-如果您的來源資料變更，您可以重新執行匯[入資料](./import-data.md)來重新整理資料集，並加入新的資料。 不過，如果您不想要在每次執行管線時從來源重新讀取，請將 [使用快取的**結果**] 選項設定為 [TRUE]。 選取此選項時，模組會檢查管線先前是否已使用相同的來源和相同的輸入選項來執行。 如果找到先前的執行，則會使用快取中的資料，而不是從來源重載資料。
+如果您的來源資料變更，您可以重新執行匯[入資料](./import-data.md)來重新整理資料集，並加入新的資料。
 
 ## <a name="how-to-configure-import-data"></a>如何設定匯入資料
 
@@ -60,11 +60,7 @@ ms.locfileid: "77152239"
 
     ![匯入-資料-預覽](media/module/import-data.png)
 
-1. 如果您想要快取資料集以在後續執行時重複使用，請選取 [使用快取的**結果**] 選項。
 
-    假設模組參數沒有其他變更，則管線只會在第一次執行模組時載入資料，之後再使用資料集的快取版本。
-
-    如果您需要在每次執行管線時重載資料，請取消選取此選項。
 
 1. 執行管道。
 

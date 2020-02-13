@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: 211a2a83d2668c3240daca11e9063b31d42655ae
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: HT
+ms.openlocfilehash: e3668718e27a3dcb545428637b34de51ec621c60
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152749"
+ms.locfileid: "77169061"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>使用 Azure Machine Learning Studio 中的範例資料集（傳統）
 [top]: #machine-learning-sample-datasets
@@ -397,7 +397,7 @@ RCV1-V2 路透社新聞資料集中新聞文章的主題指派。 一篇新聞�
 <tr>
   <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a></td>
   <td>
-此資料來自 KDD Cup 2010 學員績效評估挑戰 (<a href="https://www.kdd.org/kdd-cup/view/kdd-cup-2010-student-performance-evaluation">student performance evaluation</a>)。 使用的資料為 Algebra_2008_2009 訓練集 (Stamper, J.、Niculescu-Mizil, A.、Ritter, S.、Gordon, G.J.、& Koedinger, K.R. (2010). Algebra I 2008-2009。 KDD Cup 2010 教育資料探勘挑戰中的的挑戰資料集。 請在 <a href="https://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a> 尋找。
+此資料來自 KDD Cup 2010 學員績效評估挑戰 (<a href="https://www.kdd.org/kdd-cup/view/kdd-cup-2010-student-performance-evaluation">student performance evaluation</a>)。 使用的資料為 Algebra_2008_2009 訓練集 (Stamper, J.、Niculescu-Mizil, A.、Ritter, S.、Gordon, G.J.、& Koedinger, K.R. (2010)。 Algebra I 2008-2009。 KDD Cup 2010 教育資料探勘挑戰中的的挑戰資料集。 請在 <a href="https://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a> 尋找。
 <p></p>
 此資料集已下載並儲存在 Azure Blob 儲存體 (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a>) 中並包含來自學員教學系統的記錄檔。 提供的特性包括問題識別碼及其簡短說明、學員識別碼、時間戳記，以及學員以正確方式解出問題之間的嘗試次數。 原始資料集有 8.9M 的記錄，此資料集已縮減為前 100K 個資料列。 此資料集有 23 個以 Tab 字元分隔的各種資料行：數值、類別和時間戳記。
   </td>

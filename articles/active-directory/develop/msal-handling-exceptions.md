@@ -15,12 +15,12 @@ ms.date: 11/22/2019
 ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 75893a85f975d5d1454f1b93535a1df7a45e8731
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 018d0c3bc009f6063de75b9a479be650b2c06e7c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77084028"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160839"
 ---
 # <a name="handle-msal-exceptions-and-errors"></a>處理 MSAL 的例外狀況和錯誤
 
@@ -506,7 +506,7 @@ IOS 和 macOS 錯誤的 MSAL 完整清單列在[MSALError 列舉](https://github
 
 ## <a name="conditional-access-and-claims-challenges"></a>條件式存取和宣告挑戰
 
-以無訊息方式取得權杖時，您的應用程式可能會在您嘗試存取的 API 需要[條件式存取宣告挑戰](conditional-access-dev-guide.md)（例如 MFA 原則）時收到錯誤。
+以無訊息方式取得權杖時，您的應用程式可能會在您嘗試存取的 API 需要[條件式存取宣告挑戰](../azuread-dev/conditional-access-dev-guide.md)（例如 MFA 原則）時收到錯誤。
 
 處理此錯誤的模式是使用 MSAL 以互動方式取得權杖。 以互動方式取得權杖時，系統會對使用者發出提示，讓他們有機會符合所需的條件式存取原則。
 
@@ -520,7 +520,7 @@ IOS 和 macOS 錯誤的 MSAL 完整清單列在[MSALError 列舉](https://github
 
 ### <a name="javascript"></a>JavaScript
 
-使用 MSAL 以無訊息方式取得權杖（使用 `acquireTokenSilent`）時，您的應用程式可能會在您嘗試存取的 API 需要[條件式存取宣告挑戰](conditional-access-dev-guide.md)（例如 MFA 原則）時收到錯誤。
+使用 MSAL 以無訊息方式取得權杖（使用 `acquireTokenSilent`）時，您的應用程式可能會在您嘗試存取的 API 需要[條件式存取宣告挑戰](../azuread-dev/conditional-access-dev-guide.md)（例如 MFA 原則）時收到錯誤。
 
 處理此錯誤的模式，是發出在 MSAL.js 中取得權杖的互動式呼叫 (例如 `acquireTokenPopup` 或 `acquireTokenRedirect`)，如下列範例所示：
 

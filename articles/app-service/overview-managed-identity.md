@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/30/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 4e2a76e40206e1562d565571dbe22e5d9d0e930e
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 3e414e40cb92f5c7e8c2e1d083419d57e06a0995
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834156"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161914"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>如何使用 App Service 和 Azure Functions 的受控身分識別
 
@@ -251,7 +251,7 @@ ms.locfileid: "75834156"
 
 **MSI_ENDPOINT** 是應用程式要求權杖的來源本機 URL。 若要取得資源的權杖，請向該端點提出包含以下參數的 HTTP GET 要求：
 
-> |參數名稱|在|說明|
+> |參數名稱|在|描述|
 > |-----|-----|-----|
 > |resource|查詢|資源的 AAD 資源 URI，也就是要取得權杖的目標資源。 這可能是其中一個[支援 Azure AD 驗證的 Azure 服務](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)，或任何其他資源 URI。|
 > |api-version|查詢|要使用的權杖 API 版本。 目前唯一支援的版本為 "2017-09-01"。|
@@ -263,14 +263,14 @@ ms.locfileid: "75834156"
 
 成功的 200 OK 回應包括含以下屬性的 JSON 本文：
 
-> |屬性名稱|說明|
+> |屬性名稱|描述|
 > |-------------|----------|
 > |access_token|所要求的存取權杖。 呼叫端 Web 服務可以使用此權杖來向接收端 Web 服務進行驗證。|
 > |expires_on|存取權杖的到期時間。 日期會表示為從 1970-01-01T0:0:0Z UTC 至到期時間的秒數。 這個值用來判斷快取權杖的存留期。|
 > |resource|接收端 Web 服務的應用程式識別碼 URI。|
 > |token_type|表示權杖類型值。 Azure AD 唯一支援的類型是 Bearer。 如需持有人權杖的詳細資訊，請參閱 [OAuth 2.0 授權架構︰持有人權杖用法 (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)。|
 
-該回應與 [AAD 服務對服務存取權杖要求的回應](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response)。
+該回應與 [AAD 服務對服務存取權杖要求的回應](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md#get-a-token)。
 
 > [!NOTE]
 > 環境變數會在程序初次啟動時進行設定，因此您在應用程式上啟用受控身分識別前，可能需要重新啟動應用程式或重新部署其程式碼，才可讓您的程式碼使用 `MSI_ENDPOINT` 和 `MSI_SECRET`。

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
-ms.openlocfilehash: b0fec44a59bd70c6f1d0236861d93e81aaba033c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 68f42aa13288c2416257f3ba6c0b6072c1572977
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74969423"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162985"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>使用 Azure 媒體服務設計具有存取控制的內容保護系統 
 
@@ -215,10 +215,10 @@ DRM 子系統可能包含下列元件：
 
     | **DRM** | **[瀏覽器]** | **有權限使用者的結果** | **無權限使用者的結果** |
     | --- | --- | --- | --- |
-    | **PlayReady** |Windows 10 的 Microsoft Edge 或 Internet Explorer 11 |成功 |不合格 |
-    | **Widevine** |Chrome、Firefox、Opera |成功 |不合格 |
-    | **FairPlay** |macOS 上的 Safari      |成功 |不合格 |
-    | **AES-128** |大部分的新式瀏覽器  |成功 |不合格 |
+    | **PlayReady** |Windows 10 的 Microsoft Edge 或 Internet Explorer 11 |成功 |失敗 |
+    | **Widevine** |Chrome、Firefox、Opera |成功 |失敗 |
+    | **FairPlay** |macOS 上的 Safari      |成功 |失敗 |
+    | **AES-128** |大部分的新式瀏覽器  |成功 |失敗 |
 
 如需如何針對 ASP.NET MVC 播放器應用程式設定 Azure AD 的相關資訊，請參閱[整合 Azure 媒體服務 OWIN MVC 型應用程式與 Azure Active Directory 並根據 JWT 宣告限制內容金鑰傳遞](http://gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)。
 
@@ -226,7 +226,7 @@ DRM 子系統可能包含下列元件：
 
 如需 Azure AD 的資訊：
 
-* 您可以在 [Azure Active Directory 開發人員指南](../../active-directory/develop/v1-overview.md)中找到開發人員的資訊。
+* 您可以在 [Azure Active Directory 開發人員指南](../../active-directory/azuread-dev/v1-overview.md)中找到開發人員的資訊。
 * 您可以在 [管理 Azure AD 租用戶目錄](../../active-directory/fundamentals/active-directory-administer.md)中找到系統管理員的資訊。
 
 ### <a name="some-issues-in-implementation"></a>實作中的一些問題
@@ -243,7 +243,7 @@ DRM 子系統可能包含下列元件：
 
 * 將權限新增至應用程式的 Azure AD 中 (在應用程式的 [設定] 索引標籤)。 每個應用程式皆需要權限 (本機和已部署版本)。
 
-    ![使用權限](./media/media-services-cenc-with-multidrm-access-control/media-services-perms-to-other-apps.png)
+    ![權限](./media/media-services-cenc-with-multidrm-access-control/media-services-perms-to-other-apps.png)
 
 * 當您設定動態 CENC 保護時，請使用正確的簽發者。
 
@@ -313,9 +313,9 @@ DRM 授權傳遞服務一律會檢查來自 Azure AD 的目前/有效公開金�
 因為金鑰隨時可能會變換，同盟中繼資料文件中一律會有一個以上的有效公開金鑰可用。 媒體服務授權傳遞可使用文件中指定的任何金鑰。 因為一個金鑰可能很快就會變換，另一個金鑰可能會加以取代，以此類推。
 
 ### <a name="where-is-the-access-token"></a>存取權杖在哪裡？
-如果您在[採用 OAuth 2.0 用戶端認證授與的應用程式識別](../../active-directory/develop/web-api.md)一節中查看 Web 應用程式如何呼叫 API 應用程式，驗證流程如下：
+如果您在[採用 OAuth 2.0 用戶端認證授與的應用程式識別](../../active-directory/azuread-dev/web-api.md)一節中查看 Web 應用程式如何呼叫 API 應用程式，驗證流程如下：
 
-* 使用者在 Web 應用程式中登入 Azure AD。 如需詳細資訊，請參閱 [Web 瀏覽器到 Web 應用程式](../../active-directory/develop/web-app.md)。
+* 使用者在 Web 應用程式中登入 Azure AD。 如需詳細資訊，請參閱 [Web 瀏覽器到 Web 應用程式](../../active-directory/azuread-dev/web-app.md)。
 * Azure AD 授權端點會將使用者代理程式重新導向回到具有授權碼的用戶端應用程式。 使用者代理程式會將授權碼傳回用戶端應用程式的重新導向 URI。
 * Web 應用程式需要取得存取權杖，才能向 Web API 驗證和擷取所需的資源。 它會向 Azure AD 的權杖端點提出要求，並提供認證、用戶端識別碼和 Web API 的應用程式識別碼 URI。 它會呈現授權碼以證明使用者已同意。
 * Azure AD 驗證應用程式，並傳回用來呼叫 Web API 的 JWT 存取權杖。
@@ -462,7 +462,7 @@ Widevine 不會防止您對受保護的視訊進行螢幕擷取。
 
 在上述兩個案例中，使用者驗證會保持相同。 它會透過 Azure AD 進行。 唯一的差別在於，JWT 是由自訂 STS 發出，而不是 Azure AD。 設定動態 CENC 保護時，授權傳遞服務限制會指定 JWT 的類型 (對稱或非對稱金鑰)。
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
 本文件討論了透過權杖驗證的 CENC 與多重原生 DRM 和存取控制，它的設計，以及使用 Azure、媒體服務和 Azure 媒體播放器進行實作。
 
@@ -472,7 +472,7 @@ Widevine 不會防止您對受保護的視訊進行螢幕擷取。
 
 ## <a name="additional-notes"></a>其他注意事項
 
-* Widevine 是 Google Inc. 所提供的服務，並受到 Google，Inc. 的服務條款和隱私權原則所約束。
+* Widevine 是 Google Inc. 所提供的服務，並受到 Google Inc. 的服務條款和隱私權原則所約束。
 
 ## <a name="media-services-learning-paths"></a>媒體服務學習路徑
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

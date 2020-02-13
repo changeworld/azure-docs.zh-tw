@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 76b2f2ae9774fe5951779912e679fa84350878c5
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: HT
+ms.openlocfilehash: 35046d33a85eaed913454f188f2a4526715526a9
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153565"
+ms.locfileid: "77168790"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>定義 Azure Machine Learning Studio 的自訂 R 模組（傳統）
 
@@ -283,7 +283,7 @@ XML 定義檔中的 **Language** 元素可用來指定自訂模組的語言。 �
   
   * **allowedTypes** - 篩選您可以從中挑選的資料行類型。 有效值包括： 
     
-    * 數字
+    * 數值
     * Boolean
     * 類別
     * String
@@ -293,7 +293,7 @@ XML 定義檔中的 **Language** 元素可用來指定自訂模組的語言。 �
     * 全部
   * **default** - 資料行選擇器的有效預設選取項目包括： 
     
-    * 無
+    * None
     * NumericFeature
     * NumericLabel
     * NumericScore

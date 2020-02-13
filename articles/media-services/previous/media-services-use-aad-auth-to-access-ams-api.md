@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: d80a58f1886ecc1ca2a735881fc5822f2fc0c53b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8b38b38789edfd5a0a30fdd589849bfa345eaac9
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60826105"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157851"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>使用 Azure AD 驗證存取 Azure 媒體服務 API  
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，請參閱[從 v2 至 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 到 v3 的遷移指引](../latest/migrate-from-v2-to-v3.md)
 
 Azure 媒體服務 API 是一種 RESTful API。 您可以使用 REST API 或使用可用的用戶端 SDK 來執行媒體資源的作業。 Azure 媒體服務提供適用於 Microsoft .NET 的媒體服務用戶端 SDK。 在獲得存取媒體服務資源和媒體服務 API 的授權之前，您必須先進行驗證。 
 
@@ -32,13 +32,13 @@ Azure 媒體服務 API 是一種 RESTful API。 您可以使用 REST API 或使�
 本文件提供如何使用 REST 或 .NET API 來存取媒體服務 API 的概觀。
 
 > [!NOTE]
-> 存取控制授權已在 2018 年 6 月 1 日被取代。
+> 存取控制授權已于2018年6月1日淘汰。
 
 ## <a name="access-control"></a>存取控制
 
 Azure 媒體 REST 要求若要成功，呼叫的使用者必須擁有嘗試存取之媒體服務帳戶的「參與者」或「擁有者」角色。  
 只有具備「擁有者」角色的使用者，可以授與媒體資源 (帳戶) 的存取權給新的使用者或應用程式。 「參與者」角色只能存取媒體資源。
-未經授權的要求會失敗，狀態碼為 401。 如果您看到此錯誤碼，請確認您的使用者是否具有針對該使用者的媒體服務帳戶指派的「參與者」或「擁有者」角色。 您可以在 Azure 入口網站查看。 搜尋您的媒體帳戶，然後按一下 [Access control] \(存取控制\)  索引標籤。 
+未經授權的要求會失敗，狀態碼為 401。 如果您看到此錯誤碼，請確認您的使用者是否具有針對該使用者的媒體服務帳戶指派的「參與者」或「擁有者」角色。 您可以在 Azure 入口網站查看。 搜尋您的媒體帳戶，然後按一下 [Access control] \(存取控制\) 索引標籤。 
 
 ![[Access control] \(存取控制\) 索引標籤](./media/media-services-use-aad-auth-to-access-ams-api/media-services-access-control.png)
 
@@ -79,13 +79,13 @@ Azure 媒體 REST 要求若要成功，呼叫的使用者必須擁有嘗試存�
        租用戶資訊可從 Azure 入口網站擷取。 將游標放在右上角登入的使用者名稱上方。
    * 媒體服務資源 URI。 
 
-       同一 Azure 環境中的媒體服務帳戶的這個 URI 都相同 (例如， https://rest.media.azure.net) 。
+       同一 Azure 環境中的媒體服務帳戶的這個 URI 都相同 (例如， https://rest.media.azure.net)。
 
    * 媒體服務 (原生) 應用程式用戶端識別碼。
    * 媒體服務 (原生) 應用程式重新導向 URI。
    * REST 媒體服務的資源 URI。
         
-       URI 表示 REST API 端點 (例如 https://test03.restv2.westus.media.azure.net/api/) 。
+       URI 表示 REST API 端點 (例如 https://test03.restv2.westus.media.azure.net/api/)。
 
      若要取得這些參數的值，請參閱[使用 Azure 入口網站存取 Azure AD 驗證設定](media-services-portal-get-started-with-aad.md) (使用使用者驗證選項)。
 
@@ -95,7 +95,7 @@ Azure 媒體 REST 要求若要成功，呼叫的使用者必須擁有嘗試存�
 
 如需如何使用媒體服務 .NET 用戶端 SDK 以利用 Azure AD 驗證和 REST 要求通訊的資訊，請參閱[使用 Azure AD 驗證搭配 .NET 存取媒體服務 API](media-services-dotnet-get-started-with-aad.md)。 
 
-如果您不是使用媒體服務 .NET 用戶端 SDK，您必須使用步驟 2 中描述的參數手動建立 Azure AD 存取權杖要求。 如需詳細資訊，請參閱[如何使用 Azure AD 驗證程式庫取得 Azure AD 權杖](../../active-directory/develop/active-directory-authentication-libraries.md)。
+如果您不是使用媒體服務 .NET 用戶端 SDK，您必須使用步驟 2 中描述的參數手動建立 Azure AD 存取權杖要求。 如需詳細資訊，請參閱[如何使用 Azure AD 驗證程式庫取得 Azure AD 權杖](../../active-directory/azuread-dev/active-directory-authentication-libraries.md)。
 
 ### <a name="service-principal-authentication"></a>服務主體驗證
 
@@ -121,11 +121,11 @@ Azure 媒體 REST 要求若要成功，呼叫的使用者必須擁有嘗試存�
        租用戶資訊可從 Azure 入口網站擷取。 將游標放在右上角登入的使用者名稱上方。
    * 媒體服務資源 URI。 
 
-       位於同一 Azure 環境中的媒體服務帳戶的這個 URI 都相同 (例如， https://rest.media.azure.net) 。
+       位於同一 Azure 環境中的媒體服務帳戶的這個 URI 都相同 (例如， https://rest.media.azure.net)。
 
    * REST 媒體服務的資源 URI。
 
-       URI 表示 REST API 端點 (例如 https://test03.restv2.westus.media.azure.net/api/) 。
+       URI 表示 REST API 端點 (例如 https://test03.restv2.westus.media.azure.net/api/)。
 
    * Azure AD 應用程式的值：用戶端識別碼和用戶端祕密。
     
@@ -137,7 +137,7 @@ Azure 媒體 REST 要求若要成功，呼叫的使用者必須擁有嘗試存�
 
 如需如何使用媒體服務 .NET 用戶端 SDK 以利用 Azure AD 驗證和 REST 要求通訊的詳細資訊，請參閱[使用 Azure AD 驗證搭配 .NET 存取 Azure 媒體服務 API](media-services-dotnet-get-started-with-aad.md)。 
 
-如果您不是使用媒體服務 .NET 用戶端 SDK，您必須使用步驟 1 中描述的參數手動建立 Azure AD 權杖要求。 如需詳細資訊，請參閱[如何使用 Azure AD 驗證程式庫取得 Azure AD 權杖](../../active-directory/develop/active-directory-authentication-libraries.md)。
+如果您不是使用媒體服務 .NET 用戶端 SDK，您必須使用步驟 1 中描述的參數手動建立 Azure AD 權杖要求。 如需詳細資訊，請參閱[如何使用 Azure AD 驗證程式庫取得 Azure AD 權杖](../../active-directory/azuread-dev/active-directory-authentication-libraries.md)。
 
 ## <a name="troubleshooting"></a>疑難排解
 

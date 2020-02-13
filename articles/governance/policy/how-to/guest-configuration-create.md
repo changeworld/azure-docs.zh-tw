@@ -3,12 +3,12 @@ title: 如何建立來賓設定原則
 description: 瞭解如何使用 Azure PowerShell 為 Windows 或 Linux Vm 建立 Azure 原則來賓設定原則。
 ms.date: 12/16/2019
 ms.topic: how-to
-ms.openlocfilehash: 7a6c6bb68302d41cd750c59062432a40cf01e8bd
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 8bd769b61ed87c9ded45ceca11586cfe105740c9
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278463"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77167177"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>如何建立來賓設定原則
 
@@ -269,7 +269,7 @@ New-GuestConfigurationPolicy
     -Verbose
 ```
 
-針對 Linux 原則，請在您的設定中包含屬性**AttributesYmlContent** ，並視需要覆寫這些值。 來賓設定代理程式會自動建立 InSpec 用來儲存屬性的 YAML 檔案。 請看下方範例。
+針對 Linux 原則，請在您的設定中包含屬性**AttributesYmlContent** ，並視需要覆寫這些值。 來賓設定代理程式會自動建立 InSpec 用來儲存屬性的 YAML 檔案。 請參閱下方的範例。
 
 ```powershell
 Configuration FirewalldEnabled {
@@ -374,7 +374,7 @@ $Cert | Export-Certificate -FilePath "$env:temp\DscPublicKey.cer" -Force
 
 建立 GPG 金鑰以搭配 Linux 機器使用的良好參考，是由 GitHub 上的文章所提供，[產生新的 GPG 金鑰](https://help.github.com/en/articles/generating-a-new-gpg-key)。
 
-發佈內容之後，請將名稱為 `GuestConfigPolicyCertificateValidation` 的標籤和值 `enabled` 附加至需要程式碼簽署的所有虛擬機器。 您可以使用 Azure 原則，大規模地傳遞這個標記。 請參閱[Apply 標記及其預設值](../samples/apply-tag-default-value.md)範例。 一旦此標記備妥，使用 `New-GuestConfigurationPolicy` Cmdlet 產生的原則定義就會透過來賓設定延伸模組來啟用需求。
+發佈內容之後，請將名稱為 `GuestConfigPolicyCertificateValidation` 的標籤和值 `enabled` 附加至需要程式碼簽署的所有虛擬機器。 如需如何使用 Azure 原則大規模傳遞標記的詳細說明，請參閱[標記範例](../samples/built-in-policies.md#tags)。 一旦此標記備妥，使用 `New-GuestConfigurationPolicy` Cmdlet 產生的原則定義就會透過來賓設定延伸模組來啟用需求。
 
 ## <a name="troubleshooting-guest-configuration-policy-assignments-preview"></a>針對來賓設定原則指派進行疑難排解（預覽）
 

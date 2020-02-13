@@ -3,12 +3,12 @@ title: 瞭解如何審核虛擬機器的內容
 description: 瞭解 Azure 原則如何使用來賓設定代理程式來審查虛擬機器內的設定。
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 205aa5a9292d0f70fed8247a8af1fe575ad3614e
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: 128baa0df1d3e555fe9629005529710202e1bbf6
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830491"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169535"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure 原則的來賓設定
 
@@ -72,7 +72,7 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 
 下表顯示 Azure 映像上的支援作業系統清單：
 
-|發佈者|名稱|版本|
+|發行者|名稱|版本|
 |-|-|-|
 |Canonical|Ubuntu Server|14.04、16.04、18.04|
 |Credativ|Debian|8、9|
@@ -183,10 +183,10 @@ egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCM
 
 ## <a name="guest-configuration-samples"></a>來賓設定範例
 
-下列位置提供原則來賓設定的範例：
+原則來賓設定內建計畫的來源可在下列位置取得：
 
-- [範例索引-來賓設定](../samples/index.md#guest-configuration)
-- [Azure 原則 GitHub 存放庫範例](https://github.com/Azure/azure-policy/tree/master/samples/GuestConfiguration)
+- [內建計畫-來賓設定](../samples/built-in-initiatives.md#guest-configuration)
+- [Azure 原則 GitHub 存放庫範例](https://github.com/Azure/azure-policy/tree/master/built-in-policies/policySetDefinitions/Guest Configuration)
 
 ## <a name="next-steps"></a>後續步驟
 

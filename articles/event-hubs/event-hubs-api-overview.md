@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2018
 ms.author: shvija
-ms.openlocfilehash: c852bdeb30efe6acf626ae67028ec1ccb9e0b6db
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 08e10996f633d35ffbf946b61937a0e9a76f7227
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310963"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162220"
 ---
 # <a name="available-event-hubs-apis"></a>可用的事件中樞 API
 
@@ -47,7 +47,7 @@ ms.locfileid: "76310963"
 
 #### <a name="node"></a>節點
 
-[Node.js 程式庫](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs)目前為預覽版，並且由 Microsoft 員工和外部參與者以業餘專案的形式維護。 我們非常歡迎所有的參與，包括原始程式碼，而且都會加以檢閱。
+[JavaScript 程式庫](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs)目前為預覽狀態，並由 Microsoft 員工和外部參與者以專案的形式加以維護。 我們非常歡迎所有的參與，包括原始程式碼，而且都會加以檢閱。
 
 ## <a name="management-apis"></a>管理 API
 

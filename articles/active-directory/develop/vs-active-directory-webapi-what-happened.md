@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: 9858fdb7da80fe03498392ea93bf3c83b8a7e4dd
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 595a89ca58e970a9c886d0b6c2dd05aecd1411ef
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76699864"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159381"
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>我的 WebAPI 專案 (Visual Studio Azure Active Directory 連線服務) 發生什麼狀況
 
@@ -68,7 +68,7 @@ ms.locfileid: "76699864"
 ## <a name="project-file-changes"></a>專案檔變更
 
 - 將屬性 `IISExpressSSLPort` 設為相異數字。
-- 如果您選取了 [讀取目錄資料] 選項，請將屬性 `WebProject_DirectoryAccessLevelKey` 設為 0。
+- 如果您選取了 [讀取目錄資料]`WebProject_DirectoryAccessLevelKey`**選項，請將屬性** 設為 0。
 - 將 `IISUrl` 設為 `https://localhost:<port>/`，其中，`<port>` 符合 `IISExpressSSLPort` 值。
 
 ## <a name="webconfig-or-appconfig-changes"></a>web.config 或 app.config 的變更
@@ -89,7 +89,7 @@ ms.locfileid: "76699864"
     <add key="ida:MetadataAddress" value="<domain URL + /federationmetadata/2007-06/federationmetadata.xml>" />
     ```
 
-- 已在 `System.IdentityModel.Tokens.Jwt` 的 `<runtime><assemblyBinding>` 節點下新增 `<dependentAssembly>` 元素。
+- 已在 `<dependentAssembly>` 的 `<runtime><assemblyBinding>` 節點下新增 `System.IdentityModel.Tokens.Jwt` 元素。
 
 - 如果您選取了 [讀取目錄資料] 選項，則會在 `<appSettings>` 下新增下列組態項目：
 
@@ -129,4 +129,4 @@ ms.locfileid: "76699864"
 ## <a name="next-steps"></a>後續步驟
 
 - [Azure Active Directory 的驗證案例](authentication-scenarios.md)
-- [將「使用 Microsoft 登入」新增至 ASP.NET Web 應用程式](quickstart-v1-aspnet-webapp.md)
+- [將「使用 Microsoft 登入」新增至 ASP.NET Web 應用程式](quickstart-v2-aspnet-webapp.md)

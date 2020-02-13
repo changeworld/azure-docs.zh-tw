@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 08/22/2019
-ms.openlocfilehash: 8f82f0539432418f967d51f00e659ce92d1fa9b6
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 02/11/2020
+ms.openlocfilehash: 7011bf068a96fe9da035ec08a1f6ef7f80a0b240
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719801"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161948"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>開始使用 SQL Database 稽核
 
@@ -27,9 +27,6 @@ Azure [SQL Database](sql-database-technical-overview.md)和[SQL 資料倉儲](..
 
 > [!NOTE] 
 > 本主題適用於 Azure SQL 伺服器，以及在 Azure SQL Server 上建立的 SQL Database 和 SQL 資料倉儲資料庫。 為了簡單起見，參考 SQL Database 和 SQL 資料倉儲時都會使用 SQL Database。
-
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
-
 
 ## <a id="subheading-1"></a>Azure SQL 資料庫稽核概觀
 
@@ -44,11 +41,11 @@ Azure [SQL Database](sql-database-technical-overview.md)和[SQL 資料倉儲](..
 >
 > - 支援所有的儲存體類型 (v1、v2、Blob)。
 > - 支援所有儲存體複寫設定。
+> - 支援虛擬網路和防火牆後方的儲存體。
 > - **不支援** **進階儲存體**。
-> - 目前**不支援** **VNet 中的儲存體**。
-> - 目前**不支援** **在防火牆後方儲存**。
 > - 目前**不支援** **Azure Data Lake Storage Gen2 儲存體帳戶**的**階層命名空間**。
-
+> - 不支援在已暫停的**Azure SQL 資料倉儲**上啟用審核。 若要啟用審核，請繼續資料倉儲。
+   
 ## <a id="subheading-8"></a>定義伺服器層級與資料庫層級的稽核原則
 
 您可以針對特定資料庫定義稽核原則，或將稽核原則定義為預設伺服器原則：
@@ -66,60 +63,51 @@ Azure [SQL Database](sql-database-technical-overview.md)和[SQL 資料倉儲](..
    >
    > 否則，建議只啟用伺服器層級 Blob 稽核，並讓所有資料庫的資料庫層級稽核保留在停用狀態。
 
-## <a id="subheading-2"></a>設定資料庫的稽核
+## <a id="subheading-2"></a>設定伺服器的審核
 
 下節描述使用 Azure 入口網站進行稽核的設定。
 
+  > [!NOTE]
+   >您現在有多個選項可設定寫入 audit 記錄檔的位置。 您可以將記錄寫入至 Azure 儲存體帳戶、Log Analytics 工作區，以透過 Azure 監視器記錄來取用，或使用事件中樞來取用事件中樞以供取用。 您可以設定這些選項的任何組合，並將稽核記錄寫入至每個組合。
+
 1. 移至 [Azure 入口網站](https://portal.azure.com)。
 2. 瀏覽至 SQL 資料庫/伺服器窗格中 [安全性] 標題下的 [稽核]。
-
-    <a id="auditing-screenshot"></a>![流覽窗格][1]
-
 3. 如果您想要設定伺服器稽核原則，可以選取資料庫稽核頁面上的 [檢視伺服器設定] 連結。 然後，您可以檢視或修改伺服器稽核設定。 伺服器稽核原則會套用至此伺服器上所有現有和新建立的資料庫。
 
     ![瀏覽窗格][2]
 
-4. 如果您偏向在資料庫層級啟用稽核，請將 [稽核] 切換到 [開啟]。
-
-    如果已啟用伺服器稽核，資料庫設定的稽核將會與伺服器稽核並存。
+4. 如果您偏向在資料庫層級啟用稽核，請將 [稽核] 切換到 [開啟]。 如果已啟用伺服器稽核，資料庫設定的稽核將會與伺服器稽核並存。
 
     ![瀏覽窗格][3]
 
-5. **新增** - 您現在有多個選項可設定要寫入稽核記錄的位置。 您可以將記錄寫入至 Azure 儲存體帳戶、Log Analytics 工作區，以透過 Azure 監視器記錄來取用，或使用事件中樞來取用事件中樞以供取用。 您可以設定這些選項的任何組合，並將稽核記錄寫入至每個組合。
-  
-  > [!NOTE]
-   >若客戶想要為其伺服器或資料庫層級的 audit 事件設定不可變的記錄存放區，則應遵循[Azure 儲存體所提供的指示](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage#enabling-allow-protected-append-blobs-writes)。
-  
-  > [!WARNING]
-   > 啟用 Log Analytics 的審核會根據內嵌速率產生成本。 請留意使用此[選項](https://azure.microsoft.com/pricing/details/monitor/)的相關成本，或考慮將 audit 記錄儲存在 Azure 儲存體帳戶中。
+### <a id="audit-storage-destination">對儲存體目的地的審核</a>
 
-    ![儲存體選項](./media/sql-database-auditing-get-started/auditing-select-destination.png)
-
-6. 若要設定將稽核記錄寫入至儲存體帳戶，請選取 [儲存體]，然後開啟 [儲存體詳細資料]。 選取將儲存記錄的 Azure 儲存體帳戶，然後選取保留期間。 舊的記錄將被刪除。 然後按一下 [確定]。
+若要設定將稽核記錄寫入至儲存體帳戶，請選取 [儲存體]，然後開啟 [儲存體詳細資料]。 選取將儲存記錄的 Azure 儲存體帳戶，然後選取保留期間。 然後按一下 [確定]。 早于保留期限的記錄會遭到刪除。
 
    > [!IMPORTANT]
    > - [保留週期] 的預設值為0（無限制保留）。 您可以變更此值，方法是在設定儲存體帳戶以進行審核時，將 [**保留（天數）** ] 滑杆移至 [**儲存體設定**]。
    > - 如果您將保留期間從0（無限制的保留）變更為任何其他值，請注意保留期只會套用至保留值變更後寫入的記錄（保留設定為無限制的期間內寫入的記錄，即使在保留已啟用）
 
-    ![storage account](./media/sql-database-auditing-get-started/auditing_select_storage.png)
+   ![storage account](./media/sql-database-auditing-get-started/auditing_select_storage.png)
 
-7. 若要設定將稽核記錄寫入至 Log Analytics 工作區，請選取 [Log Analytics (預覽)]，然後開啟 [Log Analytics 詳細資料]。 選取或建立將寫入記錄的 Log Analytics 工作區，然後按一下 [確定]。
+若要在虛擬網路或防火牆下設定儲存體帳戶，您需要伺服器上的[Active Directory 系統管理員](/sql-database-aad-authentication-configure.md?tabs=azure-powershell#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)，啟用 [允許信任的 Microsoft 服務在儲存體帳戶上**存取此儲存體帳戶**]。 此外，您必須擁有所選儲存體帳戶的「Microsoft 授權/roleAssignments/寫入」許可權。
 
-    ![Log Analytics 工作區](./media/sql-database-auditing-get-started/auditing_select_oms.png)
+我們建議您必須是「[使用者存取系統管理員](../role-based-access-control/built-in-roles.md#user-access-administrator)」，才能將「儲存體 blob 資料參與者」角色授與受控識別。 若要深入瞭解許可權和以角色為基礎的存取控制，請參閱[什麼是適用于 azure 資源的角色型存取控制（RBAC）？](../role-based-access-control/overview.md)和[使用 Azure RBAC 新增或移除角色指派和 Azure 入口網站](../role-based-access-control/role-assignments-portal.md)
 
-8. 若要設定將稽核記錄寫入至事件中樞，請選取 [事件中樞 (預覽)]，然後開啟 [事件中樞詳細資料]。 選取要寫入記錄的事件中樞，然後按一下 [確定]。 請確定事件中樞與您的資料庫和伺服器位於相同的區域。
+### <a id="audit-log-analytics-destination">對 Log Analytics 目的地的審核</a>
+  
+若要設定將稽核記錄寫入至 Log Analytics 工作區，請選取 [Log Analytics (預覽)]，然後開啟 [Log Analytics 詳細資料]。 選取或建立將寫入記錄的 Log Analytics 工作區，然後按一下 [確定]。
 
-    ![事件中樞](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
+   ![LogAnalyticsworkspace](./media/sql-database-auditing-get-started/auditing_select_oms.png)
+    
+  > [!WARNING]
+   > 啟用 Log Analytics 的審核會根據內嵌速率產生成本。 請留意使用此[選項](https://azure.microsoft.com/pricing/details/monitor/)的相關成本，或考慮將 audit 記錄儲存在 Azure 儲存體帳戶中。
 
-9. 按一下 [檔案]。
-10. 如果您想要自訂稽核的事件，您可以透過 [PowerShell Cmdlet](#subheading-7) 或 [REST API](#subheading-9) 來自訂。
-11. 設定您的稽核設定之後，您可以開啟新的威脅偵測功能，並設定電子郵件以接收安全性警示。 使用威脅偵測時，您會接收與指示潛在安全性威脅的異常資料庫活動相關的主動式警示。 如需詳細資訊，請參閱[開始使用威脅偵測](sql-database-threat-detection-get-started.md)。
+### <a id="audit-event-hub-destination">審核至事件中樞目的地</a>
 
-> [!IMPORTANT]
-> 不可能在暫停的 Azure SQL 資料倉儲上啟用審核。 若要啟用它，請取消暫停資料倉儲。
+若要設定將稽核記錄寫入至事件中樞，請選取 [事件中樞 (預覽)]，然後開啟 [事件中樞詳細資料]。 選取要寫入記錄的事件中樞，然後按一下 [確定]。 請確定事件中樞與您的資料庫和伺服器位於相同的區域。
 
-> [!WARNING]
-> 在具有 Azure SQL 資料倉儲的伺服器上啟用審核 **，會導致資料倉儲再次繼續，並再次重新暫停，** 這可能會在計費費用中產生。
+   ![Eventhub](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
 
 ## <a id="subheading-3"></a>分析稽核記錄和報告
 
@@ -171,7 +159,7 @@ Azure [SQL Database](sql-database-technical-overview.md)和[SQL 資料倉儲](..
 
        ![瀏覽窗格][8]
 
-- 使用系統函數 **sys.fn_get_audit_file** (T-SQL) 以表格格式傳回稽核記錄資料。 如需使用此函式的詳細資訊，請參閱 [sys.fn_get_audit_file](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql)。
+- 使用系統函數 **sys.fn_get_audit_file** (T-SQL) 以表格格式傳回稽核記錄資料。 如需使用此函式的詳細資訊，請參閱 [sys.fn_get_audit_file](/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql)。
 
 - 使用 SQL Server Management Studio (SSMS 17 或更新版本) 中的 [合併稽核檔案]：
     1. 從 SSMS 功能表選取 [檔案] > [開啟] > [合併稽核檔案]。
@@ -226,6 +214,9 @@ Azure [SQL Database](sql-database-technical-overview.md)和[SQL 資料倉儲](..
 
 ## <a name="additional-information"></a>其他資訊
 
+- 如果您想要自訂稽核的事件，您可以透過 [PowerShell Cmdlet](#subheading-7) 或 [REST API](#subheading-9) 來自訂。
+
+- 設定您的稽核設定之後，您可以開啟新的威脅偵測功能，並設定電子郵件以接收安全性警示。 使用威脅偵測時，您會接收與指示潛在安全性威脅的異常資料庫活動相關的主動式警示。 如需詳細資訊，請參閱[開始使用威脅偵測](sql-database-threat-detection-get-started.md)。
 - 如需有關記錄格式、儲存體資料夾階層和命名慣例的詳細資訊，請參閱 [Blob 稽核記錄格式參考](https://go.microsoft.com/fwlink/?linkid=829599)。
 
     > [!IMPORTANT]
@@ -233,7 +224,6 @@ Azure [SQL Database](sql-database-technical-overview.md)和[SQL 資料倉儲](..
 
 - 系統會將稽核記錄寫入 Azure 訂用帳戶中 Azure Blob 儲存體的**附加 Blob**：
   - 附加 Blob 目前**不支援** **進階儲存體**。
-  - 目前**不支援** **VNet 中的儲存體**。
 
 - 預設稽核原則包含所有動作和下列一組動作群組，這會稽核對資料庫執行的所有查詢和預存程序，以及成功和失敗的登入：
 
@@ -247,7 +237,7 @@ Azure [SQL Database](sql-database-technical-overview.md)和[SQL 資料倉儲](..
 
 - Azure SQL Database 的審核已針對可用性 & 效能進行優化。 在非常高的活動期間，Azure SQL Database 允許作業繼續執行，而不會記錄某些已審核的事件。
 
-- 如需在儲存體帳戶上設定不可變的審核，請參閱[允許受保護的附加 blob 寫入](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage#allow-protected-append-blobs-writes)。 請注意，用於審核的容器名稱是**sqldbauditlogs**。
+- 如需在儲存體帳戶上設定不可變的審核，請參閱[允許受保護的附加 blob 寫入](../storage/blobs/storage-blob-immutable-storage.md#allow-protected-append-blobs-writes)。 請注意，用於審核的容器名稱是**sqldbauditlogs**。
 
     > [!IMPORTANT]
     > [以時間為基礎的保留] 下的 [允許受保護的附加 blob 寫入] 設定目前可供使用，只有下欄區域才會顯示：
@@ -260,12 +250,12 @@ Azure [SQL Database](sql-database-technical-overview.md)和[SQL 資料倉儲](..
 
 **PowerShell Cmdlet (包含其他篩選的 WHERE 子句支援)** ：
 
-- [建立或更新資料庫稽核原則（設定-AzSqlDatabaseAudit）](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseaudit)
-- [建立或補救伺服器稽核原則（設定-AzSqlServerAudit）](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserveraudit)
-- [取得資料庫稽核原則（AzSqlDatabaseAudit）](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseaudit)
-- [取得伺服器稽核原則（AzSqlServerAudit）](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserveraudit)
-- [移除資料庫稽核原則（移除-AzSqlDatabaseAudit）](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabaseaudit)
-- [移除伺服器稽核原則（移除-AzSqlServerAudit）](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlserveraudit)
+- [建立或更新資料庫稽核原則（設定-AzSqlDatabaseAudit）](/powershell/module/az.sql/set-azsqldatabaseaudit)
+- [建立或補救伺服器稽核原則（設定-AzSqlServerAudit）](/powershell/module/az.sql/set-azsqlserveraudit)
+- [取得資料庫稽核原則（AzSqlDatabaseAudit）](/powershell/module/az.sql/get-azsqldatabaseaudit)
+- [取得伺服器稽核原則（AzSqlServerAudit）](/powershell/module/az.sql/get-azsqlserveraudit)
+- [移除資料庫稽核原則（移除-AzSqlDatabaseAudit）](/powershell/module/az.sql/remove-azsqldatabaseaudit)
+- [移除伺服器稽核原則（移除-AzSqlServerAudit）](/powershell/module/az.sql/remove-azsqlserveraudit)
 
 如需指令碼範例，請參閱[使用 PowerShell 設定稽核與威脅偵測](scripts/sql-database-auditing-and-threat-detection-powershell.md)。
 
@@ -273,21 +263,21 @@ Azure [SQL Database](sql-database-technical-overview.md)和[SQL 資料倉儲](..
 
 **REST API**：
 
-- [建立或更新資料庫稽核原則](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/createorupdate)
-- [建立或更新伺服器稽核原則](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
-- [取得資料庫稽核原則](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/get)
-- [取得伺服器稽核原則](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
+- [建立或更新資料庫稽核原則](/rest/api/sql/database%20auditing%20settings/createorupdate)
+- [建立或更新伺服器稽核原則](/rest/api/sql/server%20auditing%20settings/createorupdate)
+- [取得資料庫稽核原則](/rest/api/sql/database%20auditing%20settings/get)
+- [取得伺服器稽核原則](/rest/api/sql/server%20auditing%20settings/get)
 
 具有 WHERE 子句而可支援其他篩選的擴充原則：
 
-- [建立或更新資料庫*延伸*的稽核原則](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
-- [建立或補救伺服器*擴充*的稽核原則](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
-- [取得資料庫*延伸*的稽核原則](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
-- [取得伺服器*擴充*的稽核原則](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
+- [建立或更新資料庫*延伸*的稽核原則](/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
+- [建立或補救伺服器*擴充*的稽核原則](/rest/api/sql/server%20auditing%20settings/createorupdate)
+- [取得資料庫*延伸*的稽核原則](/rest/api/sql/database%20extended%20auditing%20settings/get)
+- [取得伺服器*擴充*的稽核原則](/rest/api/sql/server%20auditing%20settings/get)
 
 ## <a id="subheading-9"></a>使用 Azure Resource Manager 範本來管理 Azure SQL Server 和資料庫審核
 
-您可以使用 [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) 範本來管 Azure SQL 資料庫，如下列範例所示：
+您可以使用 [Azure Resource Manager](../azure-resource-manager/management/overview.md) 範本來管 Azure SQL 資料庫，如下列範例所示：
 
 - [部署啟用稽核的 Azure SQL Server 以將稽核記錄寫入至 Azure Blob 儲存體帳戶](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-blob-storage) \(英文\)
 - [部署啟用稽核的 Azure SQL Server 以將稽核記錄寫入 Log Analytics](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-oms)
@@ -316,4 +306,4 @@ Azure [SQL Database](sql-database-technical-overview.md)和[SQL 資料倉儲](..
 [7]: ./media/sql-database-auditing-get-started/7_auditing_get_started_blob_view_audit_logs.png
 [8]: ./media/sql-database-auditing-get-started/8_auditing_get_started_blob_audit_records.png
 [9]: ./media/sql-database-auditing-get-started/9_auditing_get_started_ssms_1.png
-[10]: ./media/sql-database-auditing-get-started/10_auditing_get_started_ssms_2.png
+[10]: ./media/sql-database-auditing-get-started/10_auditing_get_started_ssms_2.png 

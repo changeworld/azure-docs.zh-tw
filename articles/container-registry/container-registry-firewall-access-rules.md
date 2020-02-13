@@ -2,13 +2,13 @@
 title: 防火牆存取規則
 description: 設定規則以從防火牆後方存取 Azure container registry，方法是允許存取（"允許清單"） REST API 和儲存體端點功能變數名稱或服務特定的 IP 位址範圍。
 ms.topic: article
-ms.date: 07/17/2019
-ms.openlocfilehash: 4d3c4ff4ca19d8b563c185e5c314011823081df1
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 02/11/2020
+ms.openlocfilehash: 06fedea2adf5e73929f5752279f2bd7e7227e570
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75745194"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168009"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>設定規則以存取防火牆後方的 Azure container registry
 
@@ -115,6 +115,10 @@ ms.locfileid: "75745194"
 在 Azure 虛擬網路中，使用網路安全性規則來篩選來自資源（例如虛擬機器）至容器登錄的流量。 若要簡化 Azure 網路規則的建立，請使用**AzureContainerRegistry** [服務標記](../virtual-network/security-overview.md#service-tags)。 服務標籤代表一組 IP 位址首碼，可存取全域或每個 Azure 區域的 Azure 服務。 當地址變更時，會自動更新標記。 
 
 例如，建立具有目的地**AzureContainerRegistry**的輸出網路安全性群組規則，以允許 Azure container registry 的流量。 若只要在特定區域中允許存取服務標記，請以下列格式指定區域： **AzureContainerRegistry**。[*區功能變數名稱稱*]。
+
+## <a name="configure-client-firewall-rules-for-mcr"></a>設定 MCR 的用戶端防火牆規則
+
+如果您需要從防火牆後方存取 Microsoft Container Registry （MCR），請參閱設定[MCR 用戶端防火牆規則](https://github.com/microsoft/containerregistry/blob/master/client-firewall-rules.md)的指引。 MCR 是所有 Microsoft 發佈的 docker 映射（例如 Windows Server 映射）的主要登錄。
 
 ## <a name="next-steps"></a>後續步驟
 

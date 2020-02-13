@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: bc7c8a059e1e17b7b280a7061206b10ed6c530aa
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 11c6da0b79f169b250dc0178f76dcd885ce91668
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "69015829"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162866"
 ---
 # <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a>如何使用 .NET 透過內部部署編碼器執行即時視訊串流
 > [!div class="op_single_selector"]
@@ -33,14 +33,14 @@ ms.locfileid: "69015829"
 
 本教學課程將逐步引導您使用 Azure 媒體服務 .NET SDK，建立針對即時通行傳遞設定的 **通道** 。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 需要有下列項目，才能完成教學課程：
 
 * 一個 Azure 帳戶。
 * 媒體服務帳戶。 若要建立媒體服務帳戶，請參閱[如何建立媒體服務帳戶](media-services-portal-create-account.md)。
 * 確定您想要串流內容的串流端點已處於 [執行中] 狀態。 
 * 設定開發環境。 如需詳細資訊，請參閱 [設定環境](media-services-set-up-computer.md)。
-* 網路攝影機。 例如， [Telestream Wirecast 編碼器](https://www.telestream.net/wirecast/overview.htm)。
+* 網路攝影機。 例如， [Telestream Wirecast 編碼器](media-services-configure-wirecast-live-encoder.md)。
 
 建議您先檢閱下列文章：
 
@@ -56,7 +56,7 @@ ms.locfileid: "69015829"
 下列程式碼範例示範如何完成下列工作：
 
 * 連線到媒體服務
-* 建立頻道
+* 建立通道
 * 更新通道
 * 擷取通道的輸入端點。 輸入端點應該提供給內部部署即時編碼器。 即時編碼器會將相機的訊號轉換為傳送到通道之輸入 (內嵌) 端點的資料流。
 * 擷取通道的預覽端點
@@ -399,7 +399,7 @@ namespace AMSLiveTest
 }
 ```
 
-## <a name="next-step"></a>下一個步驟
+## <a name="next-step"></a>後續步驟
 檢閱媒體服務學習路徑
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

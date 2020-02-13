@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b5ac2e899de33614fa30b1f4baf0e85efec26bb
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: b142d3561e7d05b9afaeab9768b6b50a33ef28ce
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898851"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77158157"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的系統管理員角色權限
 
@@ -179,7 +179,7 @@ ms.locfileid: "76898851"
 
 ### <a name="device-administratordevice-administrators-permissions"></a>[裝置系統管理員](#device-administrators-permissions)
 
-此角色僅供指派為[裝置設定](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/)中的其他本機系統管理員。 具有此角色的使用者，會在已加入 Azure Active Directory 的所有 Windows 10 裝置上，成為本機電腦系統管理員。 它們並沒有在 Azure Active Directory 中管理裝置物件的能力。
+此角色是只能指派為[裝置設定](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/)中的其他本機系統管理員。 具有此角色的使用者，會在已加入 Azure Active Directory 的所有 Windows 10 裝置上，成為本機電腦系統管理員。 它們並沒有在 Azure Active Directory 中管理裝置物件的能力。
 
 ### <a name="directory-readersdirectory-readers-permissions"></a>[目錄讀取器](#directory-readers-permissions)
 
@@ -194,7 +194,7 @@ ms.locfileid: "76898851"
 
 ### <a name="directory-writersdirectory-writers-permissions"></a>[目錄寫入器](#directory-writers-permissions)
 
-這是舊版角色，可指派給不支援[同意架構](../develop/quickstart-register-app.md)的應用程式。 不應將它指派給任何使用者。
+這是舊版角色，用來指派給不支援[同意架構](../develop/quickstart-register-app.md)的應用程式。 不應將它指派給任何使用者。
 
 ### <a name="dynamics-365-administrator--crm-administratorcrm-service-administrator-permissions"></a>[Dynamics 365 管理員/CRM 管理員](#crm-service-administrator-permissions)
 
@@ -219,7 +219,7 @@ ms.locfileid: "76898851"
 
 ### <a name="global-administrator--company-administratorcompany-administrator-permissions"></a>[全域管理員/公司系統管理員](#company-administrator-permissions)
 
-具有此角色的使用者可以存取 Azure Active Directory 中所有的系統管理功能，以及使用 Azure Active Directory 身分識別的服務，例如 Microsoft 365 資訊安全中心、Microsoft 365 合規性中心、Exchange Online、SharePoint Online 和商務用 Skype Online。 註冊 Azure Active Directory 租用戶的人員會變成全域管理員。 只有全域管理員才能指派其他系統管理員角色。 您的公司可以有多位全域管理員。 全域系統管理員可以為任何使用者和所有其他系統管理員重設密碼。
+具有此角色的使用者可以存取 Azure Active Directory 中所有的系統管理功能，以及使用 Azure Active Directory 身分識別的服務，例如 Microsoft 365 資訊安全中心、Microsoft 365 合規性中心、Exchange Online、SharePoint Online 和商務用 Skype Online。 註冊 Azure Active Directory 租用戶的人員會變成全域管理員。 您的公司可以有多位全域管理員。 全域系統管理員可以為任何使用者和所有其他系統管理員重設密碼。
 
 > [!NOTE]
 > 在 Microsoft Graph API、Azure AD Graph API 及 Azure AD PowerShell 中，是將此角色識別為「公司系統管理員」。 它是 [Azure 入口網站](https://portal.azure.com)中的「全域管理員」。
@@ -252,7 +252,7 @@ ms.locfileid: "76898851"
 
 ### <a name="guest-inviterguest-inviter-permissions"></a>[來賓邀請者](#guest-inviter-permissions)
 
-當 [**成員可以邀請**] 使用者設定設為 [否] 時，此角色中的使用者可以管理 Azure Active Directory B2B 來賓使用者邀請。 在[關於 Azure AD B2B 共同作業](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)中查看 B2B 共同作業的詳細資訊。 這不包含任何其他權限。
+當 [成員可邀請] 使用者設定為 [否] 時，此角色中的使用者可以管理 Azure Active Directory B2B 來賓使用者的邀請 在[關於 Azure AD B2B 共同作業](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)中查看 B2B 共同作業的詳細資訊。 這不包含任何其他權限。
 
 ### <a name="helpdesk-administratorhelpdesk-administrator-permissions"></a>[技術服務管理員](#helpdesk-administrator-permissions)
 
@@ -300,7 +300,7 @@ ms.locfileid: "76898851"
 
 ### <a name="message-center-readermessage-center-reader-permissions"></a>[訊息中心讀者](#message-center-reader-permissions)
 
-此角色中的使用者可以在已設定的服務（例如 Exchange、Intune 和 Microsoft 小組）上，監視[Office 365 訊息中心](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093)內的通知和諮詢健康情況更新。 訊息中心讀者每週會收到貼文的電子郵件摘要和更新，並且可以在 Office 365 中分享訊息中心的貼文。 在 Azure AD 中，指派至此角色的使用者只會有 Azure AD 服務的唯讀存取權，與使用者和群組一樣。 這個角色沒有檢視、建立或管理支援票證的存取權。
+此角色中的使用者可以在 [Office 365 訊息中心](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093)內，為他們的組織監視所設服務 (例如 Exchange、Intune 和 Microsoft Teams) 的通知和諮詢健康情況更新。 訊息中心讀者每週會收到貼文的電子郵件摘要和更新，並且可以在 Office 365 中分享訊息中心的貼文。 在 Azure AD 中，指派至此角色的使用者只會有 Azure AD 服務的唯讀存取權，與使用者和群組一樣。 這個角色沒有檢視、建立或管理支援票證的存取權。
 
 ### <a name="office-apps-administratoroffice-apps-administrator-permissions"></a>[Office 應用程式系統管理員](#office-apps-administrator-permissions)
 

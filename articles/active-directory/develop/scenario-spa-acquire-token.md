@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 08/20/2019
 ms.author: negoe
 ms.custom: aaddev
-ms.openlocfilehash: 290b0073ea6736141bca035f82f7aa37bdf364ef
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d5d48a2fc7aca184cf8b6e7761584a8800ca5151
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701921"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160061"
 ---
 # <a name="single-page-application-acquire-a-token-to-call-an-api"></a>單一頁面應用程式：取得權杖以呼叫 API
 
@@ -42,7 +42,7 @@ Azure AD 的無訊息 token 要求可能會因為 Azure AD 會話或密碼變更
 
 ## <a name="acquire-a-token-with-a-pop-up-window"></a>取得具有快顯視窗的權杖
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 下列程式碼結合了先前所述的模式與快顯體驗的方法：
 
@@ -69,7 +69,7 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 });
 ```
 
-### <a name="angular"></a>Angular
+# <a name="angulartabangular"></a>[Angular](#tab/angular)
 
 MSAL 角度包裝函式會提供 HTTP 攔截器，這會自動以無訊息方式取得存取權杖，並將其附加至 Api 的 HTTP 要求。
 
@@ -111,9 +111,11 @@ ngOnDestroy() {
 
 或者，您可以使用 MSAL core 程式庫中所述的取得權杖方法來明確取得權杖。
 
+---
+
 ## <a name="acquire-a-token-with-a-redirect"></a>使用重新導向取得權杖
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 下列模式如先前所述，但使用重新導向方法來以互動方式取得權杖。 您必須註冊先前所述的重新導向回呼。
 
@@ -142,6 +144,7 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 ```
 
 ## <a name="request-optional-claims"></a>要求選擇性宣告
+
 您可以針對下列目的使用選擇性宣告：
 
 - 在應用程式的權杖中包含額外的宣告。
@@ -150,7 +153,6 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 
 若要在 `IdToken`中要求選擇性宣告，您可以將 stringified 宣告物件傳送至 `AuthenticationParameters.ts` 類別的 `claimsRequest` 欄位。
 
-### <a name="javascript"></a>JavaScript
 ```javascript
 "optionalClaims":  
    {
@@ -168,12 +170,14 @@ var request = {
 
 myMSALObj.acquireTokenPopup(request);
 ```
+
 若要深入瞭解，請參閱[選擇性宣告](active-directory-optional-claims.md)。
 
-
-### <a name="angular"></a>Angular
+# <a name="angulartabangular"></a>[Angular](#tab/angular)
 
 這段程式碼與先前所述的相同。
+
+---
 
 ## <a name="next-steps"></a>後續步驟
 

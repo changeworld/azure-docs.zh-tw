@@ -13,12 +13,12 @@ ms.date: 04/08/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: c5b8c506398af27ced284405dd75e48fb19a17af
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: dbbe501b27bf7ae4d4cb4bc00501aeb1fb06819e
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698844"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161217"
 ---
 # <a name="integrating-with-azure-active-directory"></a>與 Azure Active Directory 整合
 
@@ -32,7 +32,7 @@ ms.locfileid: "76698844"
 
 ### <a name="support-azure-ad-as-a-way-to-sign-in-to-your-application"></a>支援 Azure AD 做為登入應用程式的方式
 
-**減少登入的不便，並降低支援成本。** 透過使用 Azure AD 來登入您的應用程式，您的使用者會少一個要記住的名稱和密碼。 身為開發人員，您會少一個要儲存及保護的密碼。 單單無需處理忘記密碼重設就可以省下大量時間與金錢。 Azure AD 支援部分世界上最受歡迎雲端應用程式 (包括 Office 365 和 Microsoft Azure) 的登入。 有來自數百萬個組織的數百萬名使用者，可能是您的使用者已經登入 Azure AD。 深入了解[新增 Azure AD 登入支援](v1-authentication-scenarios.md)。
+**減少登入的不便，並降低支援成本。** 透過使用 Azure AD 來登入您的應用程式，您的使用者會少一個要記住的名稱和密碼。 身為開發人員，您會少一個要儲存及保護的密碼。 單單無需處理忘記密碼重設就可以省下大量時間與金錢。 Azure AD 支援部分世界上最受歡迎雲端應用程式 (包括 Office 365 和 Microsoft Azure) 的登入。 有來自數百萬個組織的數百萬名使用者，可能是您的使用者已經登入 Azure AD。 深入了解[新增 Azure AD 登入支援](authentication-scenarios.md)。
 
 **簡化應用程式的註冊程序。**  註冊應用程式的過程中，Azure AD 會寄出使用者的基本資訊，讓您可以預先填入註冊表單，或者完全不需要用到。 使用者可以透過類似社交媒體和行動應用程式所使用的常見同意程序，使用其 Azure AD 帳戶來註冊應用程式。 任何使用者都可以註冊並登入已與 Azure AD 整合的應用程式，而無需 IT 人員的介入。 深入了解[註冊應用程式以進行 Azure AD 帳戶登入](../../app-service/configure-authentication-provider-aad.md)。
 
@@ -70,7 +70,7 @@ ms.locfileid: "76698844"
 
 **Azure AD 將 Active Directory 延伸到雲端，讓您的應用程式可以與 AD 整合。**  世界各地許多組織使用 Active Directory 作為其主要登入和身分識別管理系統，並要求他們的應用程式使用 AD。 與 Azure AD 整合即可將 Active Directory 和您的應用程式整合。
 
-### <a name="advanced-security-features"></a>進階安全性功能
+### <a name="advanced-security-features"></a>Advanced security 功能
 
 **多因素驗證。**  Azure AD 提供原生多因素驗證。 IT 系統管理員可以要求多因素驗證才能存取應用程式，因此您無需自行撰寫這項支援的程式碼。 深入了解 [多因素驗證](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)。
 
@@ -92,5 +92,5 @@ ms.locfileid: "76698844"
 
 [開始撰寫程式碼](v2-overview.md#getting-started)
 
-[使用 Microsoft 身分識別平臺將使用者登入](v1-authentication-scenarios.md)
+[使用 Microsoft 身分識別平臺將使用者登入](authentication-scenarios.md)
 

@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: ec3a7b6420144278df66f693d9fd9933449b3d80
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: a31dc1c6d1a7f4dce6e7baae5a0e0e8f3d6d3d34
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76748806"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77179000"
 ---
 ## <a name="trigger"></a>觸發程序
 
@@ -28,9 +28,9 @@ ms.locfileid: "76748806"
 
 * **不需要新的**函式實例： `Function_0` 能夠在函數調整邏輯生效之前處理所有1000事件。 在此情況下，所有1000訊息都會由 `Function_0`處理。
 
-* **加入額外的函式實例**：如果函式調整邏輯判斷 `Function_0` 的訊息數目超過它可以處理的數量，則會建立新的函式應用程式實例（`Function_1`）。 這個新函數也有相關聯的[EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor)實例。 當基礎事件中樞偵測到新的主控制項實例正在嘗試讀取訊息時，它會在主控制項實例之間進行分割區的負載平衡。 例如，分割區 0-4 可能會指派給 `Function_0`，分割區 5-9 則指派給 `Function_1`。
+* **再新增 1 個函式執行個體**：如果函式調整邏輯判斷 `Function_0` 的訊息數目超過它可以處理的數量，則會建立新的函式應用程式實例（`Function_1`）。 這個新函數也有相關聯的[EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor)實例。 當基礎事件中樞偵測到新的主控制項實例正在嘗試讀取訊息時，它會在主控制項實例之間進行分割區的負載平衡。 例如，分割區 0-4 可能會指派給 `Function_0`，分割區 5-9 則指派給 `Function_1`。
 
-* **新增多個**函式實例：如果函式調整邏輯判斷 `Function_0` 和 `Function_1` 的訊息數目超過其處理能力，則會建立新的 `Functions_N` 函數應用程式實例。  應用程式會建立到 `N` 大於事件中樞分割區數目的點。 在本例中，事件中樞同樣會將分割區負載平衡，在此案例中，會跨執行個體 `Function_0`...`Functions_9` 來進行。
+* **再新增 N 個函式執行個體**：如果函式調整邏輯判斷 `Function_0` 和 `Function_1` 的訊息數目超過其處理能力，則會建立新的 `Functions_N` 函數應用程式實例。  應用程式會建立到 `N` 大於事件中樞分割區數目的點。 在本例中，事件中樞同樣會將分割區負載平衡，在此案例中，會跨執行個體 `Function_0`...`Functions_9` 來進行。
 
 進行調整時，`N` 實例是大於事件中樞分割區數目的數位。 此模式是用來確保[EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor)實例可用來取得資料分割的鎖定，因為它們可以從其他實例使用。 您只需針對函式實例執行時所使用的資源付費。 換句話說，您不需支付此過度布建費用。
 
@@ -289,17 +289,7 @@ def main(event: func.EventHubEvent):
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-下列範例顯示函式*json*檔案中的事件中樞觸發程式系結，以及使用此系結的[JAVA](../articles/azure-functions/functions-reference-java.md)函式。 此函式會記錄事件中樞觸發程序的訊息本文。
-
-```json
-{
-  "type": "eventHubTrigger",
-  "name": "msg",
-  "direction": "in",
-  "eventHubName": "myeventhubname",
-  "connection": "myEventHubReadConnectionAppSetting"
-}
-```
+下列範例顯示事件中樞觸發程式系結，它會記錄事件中樞觸發程式的訊息本文。
 
 ```java
 @FunctionName("ehprocessor")
@@ -357,7 +347,7 @@ Python 不支援屬性。
 
 下表說明您在 *function.json* 檔案中設定的繫結設定屬性內容和 `EventHubTrigger` 屬性。
 
-|function.json 屬性 | 屬性內容 |說明|
+|function.json 屬性 | 屬性內容 |描述|
 |---------|---------|----------------------|
 |**type** | n/a | 必須設為 `eventHubTrigger`。 當您在 Azure 入口網站中建立觸發程序時，會自動設定此屬性。|
 |**direction** | n/a | 必須設為 `in`。 當您在 Azure 入口網站中建立觸發程序時，會自動設定此屬性。 |
@@ -374,7 +364,7 @@ Python 不支援屬性。
 
 事件中樞觸發程序提供數個[中繼資料屬性](../articles/azure-functions/./functions-bindings-expressions-patterns.md)。 中繼資料屬性可作為其他系結中系結運算式的一部分，或當做程式碼中的參數使用。 屬性來自于[EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata)類別。
 
-|屬性|類型|說明|
+|屬性|類型|描述|
 |--------|----|-----------|
 |`PartitionContext`|[PartitionContext](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.partitioncontext)|`PartitionContext` 執行個體。|
 |`EnqueuedTimeUtc`|`DateTime`|加入佇列的時間 (UTC)。|
@@ -392,7 +382,7 @@ Python 不支援屬性。
 
 [!INCLUDE [functions-host-json-event-hubs](../articles/azure-functions/../../includes/functions-host-json-event-hubs.md)]
 
-## <a name="output"></a>輸出
+## <a name="output"></a>Output
 
 使用事件中樞輸出繫結將事件寫入事件串流。 您必須具備事件中樞的傳送權限，才能將事件寫入其中。
 
@@ -624,7 +614,7 @@ Python 不支援屬性。
 
 下表說明您在 *function.json* 檔案中設定的繫結設定屬性內容和 `EventHub` 屬性。
 
-|function.json 屬性 | 屬性內容 |說明|
+|function.json 屬性 | 屬性內容 |描述|
 |---------|---------|----------------------|
 |**type** | n/a | 必須設定為 "eventHub"。 |
 |**direction** | n/a | 必須設定為 "out"。 當您在 Azure 入口網站中建立繫結時，會自動設定此參數。 |
@@ -655,13 +645,13 @@ Python 不支援屬性。
 
 - 傳回**值**：將*函數. json*中的 `name` 屬性設定為 `$return`。 使用此設定時，函式的傳回值會保存為事件中樞訊息。
 
-- **命令式**：將值傳遞給宣告為[Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python)類型之參數的[set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none)方法。 傳遞至 `set` 的值會保存為事件中樞訊息。
+- **命令式**：將值傳遞至宣告為[Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python)類型之參數的[set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none)方法。 傳遞至 `set` 的值會保存為事件中樞訊息。
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
 有兩個選項可從函式使用[EventHubOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhuboutput)批註輸出事件中樞訊息：
 
-- 傳回**值**：藉由將注釋套用至函式本身，函式的傳回值會保存為事件中樞訊息。
+- 傳回**值**：藉由將注釋套用至函式本身，函數的傳回值會保存為事件中樞訊息。
 
 - **命令式**：若要明確設定訊息值，請將注釋套用至類型[`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding)的特定參數，其中 `T` 是 POJO 或任何原生 JAVA 類型。 使用此設定時，將值傳遞至 `setValue` 方法會將值保存為事件中樞訊息。
 
@@ -671,7 +661,7 @@ Python 不支援屬性。
 
 | 繫結 | 參考 |
 |---|---|
-| Event Hub | [操作指南](https://docs.microsoft.com/rest/api/eventhub/publisher-policy-operations) \(英文\) |
+| 事件中樞 | [操作指南](https://docs.microsoft.com/rest/api/eventhub/publisher-policy-operations) \(英文\) |
 
 <a name="host-json"></a>  
 
@@ -697,7 +687,7 @@ Python 不支援屬性。
 }  
 ```
 
-|屬性  |預設 | 說明 |
+|屬性  |預設 | 描述 |
 |---------|---------|---------|
 |`maxBatchSize`|10|每個接收迴圈接收到的事件計數上限。|
 |`prefetchCount`|300|基礎 `EventProcessorHost`所使用的預設預先提取計數。|

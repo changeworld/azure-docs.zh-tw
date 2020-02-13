@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.author: celested
+ms.date: 02/12/2020
+ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: b741f42bb215df59903fed7ed84094b7d037ce65
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: ecd5d8bae22d67f8d9f5b99d5c94eecf54a4a1f3
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063024"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77165995"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>使用 Azure AD 應用程式 Proxy 來保護內部部署 Api 的存取
 
@@ -24,7 +24,7 @@ ms.locfileid: "73063024"
 
 本文會逐步引導您設定 Azure AD 應用程式 Proxy 解決方案，以裝載原生應用程式可以存取的 Web API 服務。 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 下圖顯示發行內部部署 Api 的傳統方式。 這種方法需要開啟連入埠80和443。
 
@@ -38,7 +38,7 @@ Azure AD 應用程式 Proxy 會形成解決方案的骨幹、做為 API 存取�
 
 由於 Azure AD 的應用程式 Proxy 驗證和授權是建置於 Azure AD 之上，因此您可以使用 Azure AD 條件式存取，以確保只有受信任的裝置可以存取透過應用程式 Proxy 發佈的 Api。 針對桌上型電腦使用 Azure AD 加入或 Azure AD 混合式聯結，以及針對裝置管理 Intune。 您也可以利用 azure 多因素驗證等 Azure Active Directory Premium 功能，以及[Azure Identity Protection](/azure/active-directory/active-directory-identityprotection)的機器學習支援安全性。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要遵循此逐步解說，您需要：
 
@@ -53,19 +53,19 @@ Azure AD 應用程式 Proxy 會形成解決方案的骨幹、做為 API 存取�
 
 1. 在您的本機電腦或內部網路上建立範例 SecretAPI 專案，並將其發佈為 ASP.NET web 應用程式。 請確定您可以在本機存取 web 應用程式。 
    
-1. 在  [Azure 入口網站](https://portal.azure.com)中，選取左側導覽中的  **Azure Active Directory** ]。 然後，在 [**總覽**] 頁面上，選取 [**企業應用程式**]。
+1. 在 [[Azure 入口網站]](https://portal.azure.com) 中，選取 **[Azure Active Directory]** 。 然後選取 [**企業應用程式**]。
    
 1. 在 [**企業應用程式-所有應用程式**] 頁面的頂端，選取 [**新增應用程式**]。
    
-1. 在 [**流覽 Azure AD 資源庫]** 頁面的 [**內部部署應用**程式] 底下，選取 [**新增內部部署應用程式**]。 [**新增您自己的內部部署應用程式**] 頁面隨即出現。
+1. 在 [**新增應用程式**] 頁面上，選取 [**內部部署應用程式**]。 [**新增您自己的內部部署應用程式**] 頁面隨即出現。
    
 1. 如果您沒有安裝應用程式 Proxy 連接器，系統會提示您安裝它。 選取 [**下載應用程式 Proxy 連接器**] 以下載並安裝連接器。 
    
 1. 安裝應用程式 Proxy 連接器之後，請在 [**新增您自己的內部部署應用程式**] 頁面上：
    
-   1. 在 [**名稱**] 旁輸入*SecretAPI* 。
+   1. 在 [**名稱**] 旁，輸入*SecretAPI*。
       
-   1. 在 [**內部 URL**] 旁，輸入您用來存取 API 的 URL。 
+   1. 在 [**內部 Url**] 旁，輸入您用來從內部網路存取 API 的 Url。
       
    1. 請確定 [**預先驗證**] 設定為 [ **Azure Active Directory**]。 
       
@@ -169,7 +169,7 @@ Azure AD 應用程式 Proxy 會形成解決方案的骨幹、做為 API 存取�
 
 設定參數之後，請建立並執行原生應用程式。 當您選取 [登**入**] 按鈕時，應用程式可讓您登入，然後顯示成功畫面，確認它已成功連線到 SecretAPI。
 
-![成功](./media/application-proxy-secure-api-access/success.png)
+![Success](./media/application-proxy-secure-api-access/success.png)
 
 ## <a name="next-steps"></a>後續步驟
 

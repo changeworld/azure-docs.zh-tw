@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: 83717f9a78d80923f020ab699be9ddabbbcc12ef
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 0f426e7a87204acd4be6529f7dd11a954f23491a
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700000"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159466"
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>我的 MVC 專案 (Visual Studio Azure Active Directory 已連線服務) 發生什麼事？
 
@@ -70,7 +70,7 @@ ms.locfileid: "76700000"
 ## <a name="project-file-changes"></a>專案檔變更
 
 - 將屬性 `IISExpressSSLPort` 設為相異數字。
-- 如果您選取了 [讀取目錄資料] 選項，請將屬性 `WebProject_DirectoryAccessLevelKey` 設為 0。
+- 如果您選取了 [讀取目錄資料]`WebProject_DirectoryAccessLevelKey`**選項，請將屬性** 設為 0。
 - 將 `IISUrl` 設為 `https://localhost:<port>/`，其中，`<port>` 符合 `IISExpressSSLPort` 值。
 
 ## <a name="webconfig-or-appconfig-changes"></a>web.config 或 app.config 的變更
@@ -87,7 +87,7 @@ ms.locfileid: "76700000"
     </appSettings>
     ```
 
-- 已在 `System.IdentityModel.Tokens.Jwt` 和 `Microsoft.IdentityModel.Protocol.Extensions` 的 `<runtime><assemblyBinding>` 節點下新增 `<dependentAssembly>` 元素。
+- 已在 `<dependentAssembly>` 和 `<runtime><assemblyBinding>` 的 `System.IdentityModel.Tokens.Jwt` 節點下新增 `Microsoft.IdentityModel.Protocol.Extensions` 元素。
 
 您選取了 [讀取目錄資料] 選項時的其他變更：
 
@@ -121,7 +121,7 @@ ms.locfileid: "76700000"
     </entityFramework>
     ```
 
-- 已在 `Microsoft.Data.Services.Client`、`Microsoft.Data.Edm` 和 `Microsoft.Data.OData` 的 `<runtime><assemblyBinding>` 節點下新增 `<dependentAssembly>` 元素。
+- 已在 `<dependentAssembly>`、`<runtime><assemblyBinding>` 和 `Microsoft.Data.Services.Client` 的 `Microsoft.Data.Edm` 節點下新增 `Microsoft.Data.OData` 元素。
 
 ## <a name="code-changes-and-additions"></a>程式碼變更和新增
 
@@ -164,4 +164,4 @@ ms.locfileid: "76700000"
 ## <a name="next-steps"></a>後續步驟
 
 - [Azure Active Directory 的驗證案例](authentication-scenarios.md)
-- [將「使用 Microsoft 登入」新增至 ASP.NET Web 應用程式](quickstart-v1-aspnet-webapp.md)
+- [將「使用 Microsoft 登入」新增至 ASP.NET Web 應用程式](quickstart-v2-aspnet-webapp.md)

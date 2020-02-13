@@ -13,16 +13,16 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 912287200097906af7a8a9d6d12eb1421f3edadc
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 1efd027edb85cabcfdc2a170771ef19182b5c9f8
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696753"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160945"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft 身分識別平臺識別碼權杖
 
-`id_tokens` 會在 [OpenID Connect](v1-protocols-openid-connect-code.md) 流程中傳送至用戶端應用程式。 這些權杖可以一併傳送或代替存取權杖，並由用戶端用來驗證使用者。
+`id_tokens` 會在 [OpenID Connect](v2-protocols-oidc.md) 流程中傳送至用戶端應用程式。 這些權杖可以一併傳送或代替存取權杖，並由用戶端用來驗證使用者。
 
 ## <a name="using-the-id_token"></a>使用 id_token
 
@@ -50,7 +50,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 
 ### <a name="header-claims"></a>標頭宣告
 
-|宣告 | [格式] | 說明 |
+|宣告 | [格式] | 描述 |
 |-----|--------|-------------|
 |`typ` | 字串 - 一律為 "JWT" | 表示權杖是 JWT。|
 |`alg` | String | 指出用來簽署權杖的演算法。 範例："RS256" |
@@ -61,7 +61,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 
 此清單會顯示預設為最 id_tokens 的宣告（除非另有注明）。  不過，您的應用程式可以使用[選擇性宣告](active-directory-optional-claims.md)來要求 id_token 中的其他宣告。  這些可以從 `groups` 宣告範圍，到使用者名稱的相關資訊。
 
-|宣告 | [格式] | 說明 |
+|宣告 | [格式] | 描述 |
 |-----|--------|-------------|
 |`aud` |  字串，應用程式識別碼 URI | 識別權杖的預定接收者。 在 `id_tokens` 中，對象是在 Azure 入口網站中指派給應用程式的應用程式識別碼。 您的應用程式應驗證此值，並拒絕值不相符的權杖。 |
 |`iss` |  字串，STS URI | 識別建構並傳回權杖的 Security Token Service (STS)，以及在其中驗證使用者的 Azure AD 租用戶。 如果是由 v2.0 端點發出的權杖，URI 的結尾會是 `/v2.0`。  指出使用者是來自 Microsoft 帳戶之取用者使用者的 GUID 是 `9188040d-6c67-4c5b-b112-36a304b66dad`。 您的應用程式應該使用宣告的 GUID 部分來限制可登入應用程式的租用戶集合 (如果有的話)。 |

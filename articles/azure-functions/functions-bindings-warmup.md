@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/08/2019
 ms.author: alkarche
-ms.openlocfilehash: 108294e3f125da9fb009eb0a85585dab026c8d01
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: c3ed780bc50b690b2f5c3285024695ec6426b9b3
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933325"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77167318"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Functions 準備觸發程式
 
@@ -171,25 +171,9 @@ def main(warmupContext: func.Context) -> None:
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-下列範例顯示在函式 json 檔案中的準備觸發程式，以及在每個新實例上新增至您的應用程式時，將會在其中執行的[JAVA](functions-reference-java.md)函式 *。*
+下列範例顯示在每個新的實例新增至您的應用程式時，所執行的準備觸發程式。
 
-您的函式必須命名為 ```warmup``` （不區分大小寫），而且每個應用程式只能有一個準備函數。
-
-以下是 *function.json* 檔案：
-
-```json
-{
-    "bindings": [
-        {
-            "type": "warmupTrigger",
-            "direction": "in",
-            "name": "warmupContext"
-        }
-    ]
-}
-```
-
-以下是 Java 程式碼：
+您的函式必須命名為 `warmup` （不區分大小寫），而且每個應用程式只能有一個準備函數。
 
 ```java
 @FunctionName("Warmup")
@@ -243,7 +227,7 @@ JAVA 中不支援準備觸發程式做為屬性。
 
 下表說明您在 *function.json* 檔案中設定的繫結設定屬性內容和 `WarmupTrigger` 屬性。
 
-|function.json 屬性 | 屬性內容 |說明|
+|function.json 屬性 | 屬性內容 |描述|
 |---------|---------|----------------------|
 | **type** | n/a| 必要項目 - 必須設定為 `warmupTrigger`。 |
 | **direction** | n/a| 必要項目 - 必須設定為 `in`。 |

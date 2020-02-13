@@ -16,12 +16,12 @@ ms.date: 12/18/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 03f88b0b1369020d0ba5e8cb1e1b416059def21d
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 7798cb86606c206f027a1014802770a74aba909a
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76703043"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160372"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 驗證和授權錯誤碼
 
@@ -39,7 +39,7 @@ ms.locfileid: "76703043"
 
 ## <a name="aadsts-error-codes"></a>AADSTS 錯誤碼
 
-| 錯誤 | 說明 |
+| 錯誤 | 描述 |
 |---|---|
 | AADSTS16000 | SelectUserAccount - 這是 Azure AD 所擲回的插斷，會導致 UI 允許使用者從多個有效的 SSO 工作階段進行選取。 此錯誤很常見，如果指定 `prompt=none`，則可能會傳回給應用程式。 |
 | AADSTS16001 | UserAccountSelectionInvalid - 如果使用者按一下工作階段選取邏輯已遭拒絕的圖格，則會看到此錯誤。 若已觸發，此錯誤可讓使用者藉由從已更新的圖格/工作階段清單進行挑選，或選擇另一個帳戶來復原。 此錯誤可能因為程式碼缺失或競爭條件而發生。 |
@@ -152,7 +152,7 @@ ms.locfileid: "76703043"
 | AADSTS67003 | ActorNotValidServiceIdentity |
 | AADSTS70000 | InvalidGrant - 驗證失敗。 重新整理權杖無效。 錯誤原因如下：<ul><li>權杖繫結標頭是空的</li><li>權杖繫結雜湊不相符</li></ul> |
 | AADSTS70001 | UnauthorizedClient - 應用程式已停用。 |
-| AADSTS70002 | InvalidClient - 驗證認證時發生錯誤。 指定的 client_secret 與此用戶端預期的值不符。 請修正 client_secret，然後再試一次。 如需詳細資訊，請參閱[使用授權碼來要求存取權杖](v1-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token)。 |
+| AADSTS70002 | InvalidClient - 驗證認證時發生錯誤。 指定的 client_secret 與此用戶端預期的值不符。 請修正 client_secret，然後再試一次。 如需詳細資訊，請參閱[使用授權碼來要求存取權杖](v2-oauth2-auth-code-flow.md#request-an-access-token)。 |
 | AADSTS70003 | UnsupportedGrantType - 應用程式傳回的授與類型不受支援。 |
 | AADSTS70004 | InvalidRedirectUri - 應用程式傳回的重新導向 URI 無效。 用戶端所指定的重新導向位址，與已設定的位址或 OIDC 核准清單上的位址全都不符。 |
 | AADSTS70005 | UnsupportedResponseType - 應用程式傳回的回應類型不受支援，原因如下：<ul><li>未對應用程式啟用 'token' 回應類型</li><li>'id_token' 回應類型需要 'OpenID' 範圍 - 在編碼的 wctx 中包含不受支援的 OAuth 參數值</li></ul> |

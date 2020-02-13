@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/14/2019
+ms.date: 02/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 2e94c48188d0eed22b338d0d7238c0d27a5d1862
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 457f1008b75fe0605c0d2934f2de09937fac8d21
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74782199"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162441"
 ---
 # <a name="deploy-spot-vms-using-a-resource-manager-template"></a>使用 Resource Manager 範本部署點 Vm
 
@@ -33,7 +33,7 @@ ms.locfileid: "74782199"
 > 點實例目前處於公開預覽狀態。
 > 此預覽版本不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 >
-> 在公開預覽的早期部分，點實例會有固定的價格，因此不會有任何以價格為基礎的收回。
+
 
 
 ## <a name="use-a-template"></a>使用範本 
@@ -48,9 +48,6 @@ ms.locfileid: "74782199"
                 }
 ```
 
-
-> [!IMPORTANT]
-> 在公開預覽的早期部分，您可以設定最大價格，但它會被忽略。 找出 Vm 會有固定的價格，因此不會有任何以價格為基礎的收回。
 
 
 以下是一個範例範本，其中包含適用于點 VM 的已新增屬性。 以您自己的資源名稱取代，並 `<password>` 為 VM 上的本機系統管理員帳戶的密碼。

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
-ms.openlocfilehash: 6fe7dfaccc3cf1c3fbe4a9ea42578c56f910ea36
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 71afbf09d563a43469689132dfce071b40d694b6
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435761"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162662"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>將內部部署 Apache Hadoop 叢集遷移至 Azure HDInsight
 
@@ -33,7 +33,7 @@ Azure 儲存體可以進行異地複寫。 雖然異地複寫可提供地理位�
 
 您可以使用下列其中一種格式來存取儲存在 Azure 儲存體中的資料：
 
-|資料存取格式 |說明 |
+|資料存取格式 |描述 |
 |---|---|
 |`wasb:///`|使用未加密通訊存取預設儲存體。|
 |`wasbs:///`|使用加密通訊存取預設儲存體。|
@@ -74,7 +74,7 @@ keytool -list -v -keystore /path/to/jre/lib/security/cacerts
 
 - [搭配 Azure HDInsight 叢集使用 Azure 儲存體](../hdinsight-hadoop-use-blob-storage.md)
 - [標準儲存體帳戶的擴充性目標](../../storage/common/scalability-targets-standard-account.md)
-- [Blob 儲存體的擴充性和效能目標](../../storage/blobs/scalability-targets.md)
+- [Blob 儲存體的延展性和效能目標](../../storage/blobs/scalability-targets.md)
 - [Microsoft Azure 儲存體效能與延展性檢查清單](../../storage/common/storage-performance-checklist.md)
 - [監視、診斷與疑難排解 Microsoft Azure 儲存體](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md)
 - [在 Azure 入口網站中監視儲存體帳戶](../../storage/common/storage-monitor-storage-account.md)
@@ -155,7 +155,7 @@ hadoop distcp -D hadoop.security.credential.provider.path=jceks://hdfs@headnode
 
 1. 開啟 [SASToken.py](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature/blob/master/Python/SASToken.py) 檔案並變更下列值：
 
-    |權杖屬性|說明|
+    |權杖屬性|描述|
     |---|---|
     |policy_name|要建立的預存原則所要使用的名稱。|
     |storage_account_name|儲存體帳戶的名稱。|
@@ -198,7 +198,7 @@ hadoop distcp -D hadoop.security.credential.provider.path=jceks://hdfs@headnode
 - [本地備援儲存體 (LRS)](../../storage/common/storage-redundancy-lrs.md)
 - [區域備援儲存體 (ZRS)](../../storage/common/storage-redundancy-zrs.md)
 - [異地備援儲存體 (GRS)](../../storage/common/storage-redundancy-grs.md)
-- [讀取權限異地備援儲存體 (RA-GRS)](../../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)
+- [讀取權限異地備援儲存體 (RA-GRS)](../../storage/common/storage-redundancy.md)
 
 Azure Data Lake Storage 提供本地備援儲存體 (LRS)，但您也應以符合災害復原計畫需求的頻率，將重要資料複製到位於其他區域的另一個 Data Lake Storage 帳戶。 有不同的方法可以複製資料，包括 [ADLCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md)、 [DistCp](https://hadoop.apache.org/docs/current/hadoop-distcp/DistCp.html)、 [Azure PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md)或 [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md)。 也建議對 Data Lake Storage 帳戶強制執行存取原則，以防止意外刪除。
 

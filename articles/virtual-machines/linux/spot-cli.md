@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/20/2019
+ms.date: 02/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 0635be14937a3688792f65208dcb9d482b9e6d44
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 110e935671ab1d640b2ff3dc26c203b262e999fe
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74781991"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77163087"
 ---
 # <a name="preview-deploy-spot-vms-using-the-azure-cli"></a>預覽：使用 Azure CLI 部署點 Vm
 
@@ -35,7 +35,7 @@ ms.locfileid: "74781991"
 > 點實例目前處於公開預覽狀態。
 > 此預覽版本不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 >
-> 在公開預覽的早期部分，點實例會有固定的價格，因此不會有任何以價格為基礎的收回。
+
 
 
 ## <a name="install-azure-cli"></a>安裝 Azure CLI

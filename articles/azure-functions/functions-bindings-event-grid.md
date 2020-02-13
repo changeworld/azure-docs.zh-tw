@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: 8062428ae63a572b81a5432c8b29910fe8422e24
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 812875be47cabdd23e6307403bb95d8d6ff174ec
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547450"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77167514"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Azure Functions 的 Event Grid 觸發程序
 
@@ -44,7 +44,7 @@ Event Grid 是一項 Azure 服務，會傳送 HTTP 要求通知您「發行者�
 
 ### <a name="c-2x-and-higher"></a>C#（2.x 和更新版本）
 
-下列範例顯示繫結至 `EventGridEvent` 的 [C# 函式](functions-dotnet-class-library.md)：
+下列範例顯示繫結至 [ 的 ](functions-dotnet-class-library.md)C# 函式`EventGridEvent`：
 
 ```cs
 using Microsoft.Azure.EventGrid.Models;
@@ -70,7 +70,7 @@ namespace Company.Function
 
 ### <a name="version-1x"></a>1\.x 版
 
-下列範例顯示繫結至 `JObject` 的 Functions 1.x [C# 函式](functions-dotnet-class-library.md)：
+下列範例顯示繫結至 [ 的 Functions 1.x ](functions-dotnet-class-library.md)C# 函式`JObject`：
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -224,19 +224,7 @@ def main(event: func.EventGridEvent):
 * [事件格線觸發程序，字串參數](#event-grid-trigger-string-parameter)
 * [事件格線觸發程序，POJO 參數](#event-grid-trigger-pojo-parameter)
 
-下列範例會在 *function.json* 檔案中顯示觸發程序繫結，以及使用該繫結並印出事件的 [Java 函式](functions-reference-java.md)，其會將第一次接收事件當作 ```String```，並將第二次當作 POJO。
-
-```json
-{
-  "bindings": [
-    {
-      "type": "eventGridTrigger",
-      "name": "eventGridEvent",
-      "direction": "in"
-    }
-  ]
-}
-```
+下列範例顯示使用系結並印出事件的[JAVA](functions-reference-java.md)觸發程式系結，第一次以 `String` 和第二個 POJO 的方式接收事件。
 
 ### <a name="event-grid-trigger-string-parameter"></a>事件方格觸發程式，字串參數
 
@@ -336,13 +324,13 @@ Python 不支援屬性。
 
 下表說明您在 function.json 檔案中設定的繫結設定屬性。 沒有要在 `EventGridTrigger` 屬性中設定的建構函式參數或屬性。
 
-|function.json 屬性 |說明|
+|function.json 屬性 |描述|
 |---------|---------|
 | **type** | 必要項目 - 必須設定為 `eventGridTrigger`。 |
 | **direction** | 必要項目 - 必須設定為 `in`。 |
 | **name** | 必要項目 - 函式程式碼中用於接收事件資料之參數的變數名稱。 |
 
-## <a name="usage"></a>用量
+## <a name="usage"></a>使用量
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -428,7 +416,7 @@ Python 不支援屬性。
 
 若要開始接收 Event Grid HTTP 要求，請建立會指定端點 URL 以叫用函式的 Event Grid 訂用帳戶。
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure 入口網站
 
 對於您在 Azure 入口網站中使用 Event Grid 觸發程序開發的函式，選取**新增 Event Grid 訂用帳戶**。
 

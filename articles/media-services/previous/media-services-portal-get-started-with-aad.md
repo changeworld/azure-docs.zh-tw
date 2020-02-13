@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: b7962f42b4244121a67b88ef3bf789ce40f7b1e5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4428187c985c1004c88f2ac20b0e5811803cce2a
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64719614"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162764"
 ---
 # <a name="get-started-with-azure-ad-authentication-by-using-the-azure-portal"></a>利用 Azure 入口網站開始使用 Azure AD 驗證
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，請參閱[從 v2 至 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 到 v3 的遷移指引](../latest/migrate-from-v2-to-v3.md)
 
 了解如何使用 Azure 入口網站存取 Azure Active Directory (Azure AD) 驗證，以存取 Azure 媒體服務 API。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 一個 Azure 帳戶。 如果您沒有帳戶，請先從 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)開始。 
 - 媒體服務帳戶。 如需詳細資訊，請參閱[使用 Azure 入口網站建立 Azure 媒體服務帳戶](media-services-portal-create-account.md)。
@@ -64,7 +64,7 @@ ms.locfileid: "64719614"
 
 如果您使用媒體服務的 Microsoft .NET SDK 連線到媒體服務 API，此 SDK 會提供您所需的值。 如需詳細資訊，請參閱[使用 Azure AD 驗證搭配 .NET 存取 Azure 媒體服務 API](media-services-dotnet-get-started-with-aad.md)。
 
-如果您不是使用媒體服務 .NET 用戶端 SDK，您必須使用先前討論的參數手動建立 Azure AD 權杖要求。 如需詳細資訊，請參閱[如何使用 Azure AD 驗證程式庫取得 Azure AD 權杖](../../active-directory/develop/active-directory-authentication-libraries.md)。
+如果您不是使用媒體服務 .NET 用戶端 SDK，您必須使用先前討論的參數手動建立 Azure AD 權杖要求。 如需詳細資訊，請參閱[如何使用 Azure AD 驗證程式庫取得 Azure AD 權杖](../../active-directory/azuread-dev/active-directory-authentication-libraries.md)。
 
 ## <a name="service-principal-authentication"></a>服務主體驗證
 
@@ -79,7 +79,7 @@ ms.locfileid: "64719614"
 
 ![使用服務主體連線的頁面](./media/media-services-portal-get-started-with-aad/media-services-portal-get-started04.png)
 
-當服務主體的  刀鋒視窗開啟時，會選取符合下列準則的第一個 Azure AD 應用程式：
+當服務主體的刀鋒視窗開啟時，會選取符合下列準則的第一個 Azure AD 應用程式：
 
 - 它是已註冊的 Azure AD 應用程式。
 - 它對帳戶具有參與者或擁有者角色型存取控制權限。
@@ -90,7 +90,7 @@ ms.locfileid: "64719614"
 
 如果您使用媒體服務 .NET SDK 連線到媒體服務 API，請參閱[使用 Azure AD 驗證搭配 .NET 存取 Azure 媒體服務 API](media-services-dotnet-get-started-with-aad.md)。
 
-如果您不是使用媒體服務 .NET 用戶端 SDK，您必須使用先前討論的參數手動建立 Azure AD 權杖要求。 如需詳細資訊，請參閱[如何使用 Azure AD 驗證程式庫取得 Azure AD 權杖](../../active-directory/develop/active-directory-authentication-libraries.md)。
+如果您不是使用媒體服務 .NET 用戶端 SDK，您必須使用先前討論的參數手動建立 Azure AD 權杖要求。 如需詳細資訊，請參閱[如何使用 Azure AD 驗證程式庫取得 Azure AD 權杖](../../active-directory/azuread-dev/active-directory-authentication-libraries.md)。
 
 ### <a name="get-the-client-id-and-client-secret"></a>取得用戶端識別碼和用戶端祕密
 
@@ -98,17 +98,17 @@ ms.locfileid: "64719614"
 
 ![[Manage permissions] \(管理權限\) 和 [Manage application] \(管理應用程式\) 按鈕](./media/media-services-portal-get-started-with-aad/media-services-portal-manage.png)
 
-若要開啟 Azure AD 應用程式刀鋒視窗，請按一下 [Manage application] \(管理應用程式\)  。 在 [Manage application] \(管理應用程式\)  刀鋒視窗中，您可以取得應用程式的用戶端識別碼 (應用程式識別碼)。 若要產生用戶端祕密 (金鑰)，請選取 [金鑰]  。
+若要開啟 Azure AD 應用程式刀鋒視窗，請按一下 [Manage application] \(管理應用程式\)。 在 [Manage application] \(管理應用程式\) 刀鋒視窗中，您可以取得應用程式的用戶端識別碼 (應用程式識別碼)。 若要產生用戶端祕密 (金鑰)，請選取 [金鑰]。
 
 ![管理應用程式刀鋒視窗的 [Keys] \(金鑰\) 選項](./media/media-services-portal-get-started-with-aad/media-services-portal-get-started06.png) 
 
 ### <a name="manage-permissions-and-the-application"></a>管理權限和應用程式
 
-選取 Azure AD 應用程式之後，您可以管理應用程式和權限。 若要設定您的 Azure AD 應用程式以存取其他應用程式，請按一下 [Manage permissions] \(管理權限\)  。 對於管理工作，例如變更金鑰和回覆 URL，或編輯應用程式的資訊清單，請按一下 [Manage application] \(管理應用程式\)  。
+選取 Azure AD 應用程式之後，您可以管理應用程式和權限。 若要設定您的 Azure AD 應用程式以存取其他應用程式，請按一下 [Manage permissions] \(管理權限\)。 對於管理工作，例如變更金鑰和回覆 URL，或編輯應用程式的資訊清單，請按一下 [Manage application] \(管理應用程式\)。
 
 ### <a name="edit-the-apps-settings-or-manifest"></a>編輯應用程式的設定或資訊清單
 
-若要編輯應用程式的設定或資訊清單，請按一下 [Manage application] \(管理應用程式\)  。
+若要編輯應用程式的設定或資訊清單，請按一下 [Manage application] \(管理應用程式\)。
 
 ![管理應用程式頁面](./media/media-services-portal-get-started-with-aad/media-services-portal-get-started05.png)
 

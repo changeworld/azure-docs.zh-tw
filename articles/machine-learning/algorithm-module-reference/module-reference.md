@@ -9,12 +9,12 @@ ms.topic: reference
 author: peterclu
 ms.author: peterlu
 ms.date: 12/17/2019
-ms.openlocfilehash: 7f2d282541e8a5a3752a0784a3f00a48ad2fb303
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: d3feb62c0c7fa24dd998add08d17ebd1d4e9ee6c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76769164"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162577"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer"></a>Azure Machine Learning 設計工具的演算法 & 模組參考
 
@@ -32,16 +32,16 @@ ms.locfileid: "76769164"
 ## <a name="data-preparation-modules"></a>資料準備模組
 
 
-| 功能 | 說明 | 模組 |
+| 功能 | 描述 | 模組 |
 | --- |--- | --- |
 | 資料輸入和輸出 | 將資料從雲端來源移至您的管線。 在執行管線時，將您的結果或中繼資料寫入 Azure 儲存體、SQL 資料庫或 Hive，或使用雲端儲存體在管線之間交換資料。  | [手動輸入資料](enter-data-manually.md) <br/> [匯出資料](export-data.md) <br/> [匯入資料](import-data.md) |
-| 資料轉換 | 機器學習服務特有資料的作業，例如正規化或分類收納資料、維度縮減，以及在各種不同的檔案格式之間轉換資料。| [新增資料行](add-columns.md) <br/> [加入資料列](add-rows.md) <br/> [套用數學運算](apply-math-operation.md) <br/> [套用 SQL 轉換](apply-sql-transformation.md) <br/> [清除遺漏的資料](clean-missing-data.md) <br/> [剪輯值](clip-values.md) <br/> [轉換成 CSV](convert-to-csv.md) <br/> [轉換成資料集](convert-to-dataset.md) <br/> [編輯中繼資料](edit-metadata.md) <br/> [聯結資料](join-data.md) <br/> [標準化資料](normalize-data.md) <br/> [資料分割和範例](partition-and-sample.md)  <br/> [移除重複的資料列](remove-duplicate-rows.md) <br/> [SMOTE](smote.md) <br/> [選取資料行轉換](select-columns-transform.md) <br/> [選取資料集中的資料行](select-columns-in-dataset.md) <br/> [資料分割](split-data.md) |
+| 資料轉換 | 機器學習服務特有資料的作業，例如正規化或分類收納資料、維度縮減，以及在各種不同的檔案格式之間轉換資料。| [新增資料行](add-columns.md) <br/> [加入資料列](add-rows.md) <br/> [套用數學運算](apply-math-operation.md) <br/> [套用 SQL 轉換](apply-sql-transformation.md) <br/> [清除遺漏的資料](clean-missing-data.md) <br/> [剪輯值](clip-values.md) <br/> [轉換成 CSV](convert-to-csv.md) <br/> [轉換成資料集](convert-to-dataset.md) <br/> [轉換成指標值](convert-to-indicator-values.md) <br/> [編輯中繼資料](edit-metadata.md) <br/> [聯結資料](join-data.md) <br/> [標準化資料](normalize-data.md) <br/> [資料分割和範例](partition-and-sample.md)  <br/> [移除重複的資料列](remove-duplicate-rows.md) <br/> [SMOTE](smote.md) <br/> [選取資料行轉換](select-columns-transform.md) <br/> [選取資料集中的資料行](select-columns-in-dataset.md) <br/> [資料分割](split-data.md) |
 | 特徵選取 | 選取相關、有用的功能子集，以用於建立分析模型。 | [以篩選器為基礎的特徵選取](filter-based-feature-selection.md) <br/> [排列功能重要性](permutation-feature-importance.md) |
 | 統計函數 | 提供各種與資料科學相關的統計方法。 | [摘要資料](summarize-data.md)|
 
 ## <a name="machine-learning-algorithms"></a>機器學習演算法
 
-| 功能 | 說明 | 模組 |
+| 功能 | 描述 | 模組 |
 | --- |--- | --- |
 | 迴歸 | 預測值。 | [促進式決策樹回歸](boosted-decision-tree-regression.md) <br/> [決策樹系回歸](decision-forest-regression.md) <br/> [線性回歸](linear-regression.md)  <br/> [類神經網路回歸](neural-network-regression.md)  <br/> |
 | 叢集 | 將資料群組在一起。| [K-表示群集](k-means-clustering.md)
@@ -49,7 +49,7 @@ ms.locfileid: "76769164"
 
 ## <a name="modules-for-building-and-evaluating-models"></a>用於建立和評估模型的模組
 
-| 功能 | 說明 | 模組 |
+| 功能 | 描述 | 模組 |
 | --- |--- | --- |
 | 模型訓練 | 透過演算法執行資料。 |  [定型群集模型](train-clustering-model.md) <br/> [訓練模型](train-model.md)  <br/> [微調模型超參數](tune-model-hyperparameters.md) |
 | 模型評分和評估 | 測量定型模型的精確度。 | [套用轉換](apply-transformation.md) <br/> [將資料指派給群集](assign-data-to-clusters.md) <br/> [交叉驗證模型](cross-validate-model.md) <br/> [評估模型](evaluate-model.md) <br/> [評分模型](score-model.md) |

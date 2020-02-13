@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67737aed3bd9961a37dc761fddf608d9bcfe3ffe
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f1fa447312ad6a1f92eaed1164020cb6ee95606e
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847247"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161591"
 ---
 # <a name="how-to-configure-password-writeback"></a>如何：設定密碼回寫
 
@@ -35,7 +35,7 @@ ms.locfileid: "74847247"
 如需了解有關密碼回寫的常見疑難排解工作，請參閱我們疑難排解文章中的[針對密碼回寫問題進行疑難排解](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback)一節。
 
 > [!WARNING]
-> 在 [Azure 存取控制服務 (ACS) 於 2018 年 11 月 7 日淘汰](../develop/active-directory-acs-migration.md)後，使用 Azure AD Connect 1.0.8641.0 版和更舊版本的使用者將無法進行密碼回寫。 屆時，Azure AD Connect 1.0.8641.0 版和更舊版本將不再允許進行密碼回寫，因為它們倚賴 ACS 來進行該功能。
+> 在 [Azure 存取控制服務 (ACS) 於 2018 年 11 月 7 日淘汰](../azuread-dev/active-directory-acs-migration.md)後，使用 Azure AD Connect 1.0.8641.0 版和更舊版本的使用者將無法進行密碼回寫。 屆時，Azure AD Connect 1.0.8641.0 版和更舊版本將不再允許進行密碼回寫，因為它們倚賴 ACS 來進行該功能。
 >
 > 若要避免服務中斷，請從舊版 Azure AD Connect 升級至新版，請參閱 [Azure AD Connect：從舊版升級到最新版本](../hybrid/how-to-upgrade-previous-version.md)
 >
@@ -65,8 +65,8 @@ ms.locfileid: "74847247"
 
 * **重設密碼** 
 * **變更密碼** 
-* `lockoutTime` 的**寫入權限**
-* `pwdLastSet` 的**寫入權限**
+* **的**寫入權限`lockoutTime`
+* **的**寫入權限`pwdLastSet`
 * 下列其中一項的**延伸權限**：
    * 該樹系中「每個網域」的根物件
    * 要在 SSPR 範圍中的使用者組織單位 (OU)

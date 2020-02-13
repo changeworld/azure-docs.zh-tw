@@ -12,22 +12,22 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 12/13/2019
-ms.openlocfilehash: 6b880696b4922c68c73ce4ff59f72a62ce5a5a30
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f460bc3e4809b8a1cbabe1161c888255a7a484db
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75348950"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157494"
 ---
 # <a name="automated-backups"></a>自動備份
 
-SQL Database 會自動建立在設定的保留期間內保留的資料庫備份，並使用 Azure[讀取權限異地多餘儲存體（RA-GRS）](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)來確保即使資料中心無法使用，也會保留它們。 這些備份會自動建立。 資料庫備份可保護資料免於意外損毀或刪除，是商務持續性和災害復原策略中不可或缺的一部分。 如果您的安全性規則需要備份可供使用一段時間（最多10年），您可以在單一資料庫和彈性集區上設定[長期保留](sql-database-long-term-retention.md)。
+SQL Database 會自動建立在設定的保留期間內保留的資料庫備份，並使用 Azure[讀取權限異地多餘儲存體（RA-GRS）](../storage/common/storage-redundancy.md)來確保即使資料中心無法使用，也會保留它們。 這些備份會自動建立。 資料庫備份可保護資料免於意外損毀或刪除，是商務持續性和災害復原策略中不可或缺的一部分。 如果您的安全性規則需要備份可供使用一段時間（最多10年），您可以在單一資料庫和彈性集區上設定[長期保留](sql-database-long-term-retention.md)。
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="what-is-a-sql-database-backup"></a>什麼是 SQL Database 備份
 
-SQL Database 使用 SQL Server 的技術，每週建立[完整備份](https://docs.microsoft.com/sql/relational-databases/backup-restore/full-database-backups-sql-server)、每12小時進行[差異備份](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server)，以及每5-10 分鐘建立一次[交易記錄備份](https://docs.microsoft.com/sql/relational-databases/backup-restore/transaction-log-backups-sql-server)。 這些備份會儲存在[GRS 儲存體 blob](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)中，並複寫到配對的[資料中心](../best-practices-availability-paired-regions.md)，以防止資料中心中斷。 在您還原資料庫時，服務會判斷需要還原的完整、差異及交易記錄備份。
+SQL Database 使用 SQL Server 的技術，每週建立[完整備份](https://docs.microsoft.com/sql/relational-databases/backup-restore/full-database-backups-sql-server)、每12小時進行[差異備份](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server)，以及每5-10 分鐘建立一次[交易記錄備份](https://docs.microsoft.com/sql/relational-databases/backup-restore/transaction-log-backups-sql-server)。 這些備份會儲存在[GRS 儲存體 blob](../storage/common/storage-redundancy.md)中，並複寫到配對的[資料中心](../best-practices-availability-paired-regions.md)，以防止資料中心中斷。 在您還原資料庫時，服務會判斷需要還原的完整、差異及交易記錄備份。
 
 您可以使用這些備份︰
 
@@ -55,9 +55,9 @@ SQL Database 使用 SQL Server 的技術，每週建立[完整備份](https://do
 
 ### <a name="point-in-time-restore"></a>時間點還原
 
-SQL Database 透過自動建立完整備份、差異備份和交易記錄備份，以支援自助式時間點還原 (PITR)。 根據計算大小和資料庫活動量的頻率，完整資料庫備份會每週建立，差異資料庫備份通常每隔 12 小時建立，而交易記錄備份通常每隔 5-10 分鐘建立。 建立資料庫之後，會立即排程第一次完整備份。 通常會在 30 分鐘內完成，但如果資料庫很大，則時間可能更久。 比方說，在還原的資料庫或資料庫複本上，初始備份可能需要較長的時間。 第一次完整備份之後，將會自動排程進一步的備份，並在背景中以無訊息方式管理。 資料庫備份的確切時間，依 SQL Database 服務整體系統工作負載維持平衡而決定。 您無法變更或停用備份作業。 
+SQL Database 透過自動建立完整備份、差異備份和交易記錄備份，以支援自助式時間點還原 (PITR)。 根據計算大小和資料庫活動量的頻率，完整資料庫備份會每週建立，差異資料庫備份通常每隔 12 小時建立，而交易記錄備份通常每隔 5-10 分鐘建立。 建立資料庫之後，會立即排程第一次完整備份。 通常會在 30 分鐘內完成，但如果資料庫很大，則時間可能更久。 比方說，在還原的資料庫或資料庫複本上，初始備份可能需要較長的時間。 第一次完整備份之後，將會自動排程進一步的備份，並在背景中以無訊息方式管理。 資料庫備份的確切時間，依 SQL Database 服務整體系統工作負載維持平衡而決定。 您無法變更或停用備份作業。
 
-PITR 備份為異地備援，並受到 [Azure 儲存體跨區域複寫](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)保護
+PITR 備份會受到異地多餘儲存體的保護。 如需詳細資訊，請參閱[Azure 儲存體冗余](../storage/common/storage-redundancy.md)。
 
 如需詳細資訊，請參閱[還原時間點](sql-database-recovery-using-backups.md#point-in-time-restore)
 
@@ -65,17 +65,17 @@ PITR 備份為異地備援，並受到 [Azure 儲存體跨區域複寫](../stora
 
 單一和集區資料庫提供選項讓您在 Azure Blob 儲存體中設定完整備份的長期保留 (LTR)，最長可達 10 年。 如果啟用 LTR 原則，則會將每週完整備份自動複製到不同的 RA-GRS 儲存體容器。 為了符合不同的合規性需求，您可以針對每週、每月和/或每年備份選取不同的保留期限。 儲存體耗用量取決於選取的備份頻率和保留期間。 您可以使用 [LTR 定價計算機](https://azure.microsoft.com/pricing/calculator/?service=sql-database)來估算 LTR 儲存體的成本。
 
-與 PITR 類似，LTR 備份為異地備援，並受到 [Azure 儲存體跨區域複寫](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)保護。
+就像 PITR，LTR 備份會以異地多餘儲存體來保護。 如需詳細資訊，請參閱[Azure 儲存體冗余](../storage/common/storage-redundancy.md)。
 
 如需詳細資訊，請參閱[長期備份保留](sql-database-long-term-retention.md)。
 
 ## <a name="backup-storage-consumption"></a>備份儲存體耗用量 
 
 針對單一資料庫，備份儲存體使用量總計的計算方式如下：   
-`Total backup storage size = (size of full backups + size of differential backups + size of log backups) – database size`答案中所述步驟，工作帳戶即會啟用。
+`Total backup storage size = (size of full backups + size of differential backups + size of log backups) – database size`第 1 課：建立 Windows Azure 儲存體物件{2}。
 
 針對彈性集區，備份儲存體大小總計會匯總在集區層級，計算方式如下：   
-`Total backup storage size = (total size of all full backups + total size of all differential backups + total size of all log backups) - allocated pool data storage`答案中所述步驟，工作帳戶即會啟用。 
+`Total backup storage size = (total size of all full backups + total size of all differential backups + total size of all log backups) - allocated pool data storage`第 1 課：建立 Windows Azure 儲存體物件{2}。 
 
 比保留週期舊的備份會根據其時間戳記自動清除。 由於差異備份和記錄備份需要較舊的完整備份，因此它們會在每週的區塊中一起清除。 
 

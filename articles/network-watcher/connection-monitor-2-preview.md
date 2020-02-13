@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 5dc705fbd17a12ee001e1e8de15b49e841f08b81
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 43c49cce1dd53edd5c2b13b01a31f94752579dff
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049349"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169325"
 ---
 # <a name="unified-connectivity-monitoring-with-connection-monitor-preview"></a>使用連線監視器進行整合連線監視（預覽）
 
@@ -403,7 +403,7 @@ armclient PUT $ARM/$SUB/$NW/connectionMonitors/$connectionMonitorName/?api-versi
 
       ![新增目的地2](./media/connection-monitor-2-preview/add-azure-dests2.png)
 
-   2. 按一下 [端點] 索引標籤，選取 [Azure Vm] 作為 [目的地]。 端點清單將會填入 O365 和 D365 移轉測試 Url，並依名稱分組。  您也可以在相同的連線監視器中選擇在其他測試群組中建立的端點。 若要新增端點，請按一下螢幕右上角的 [+ 端點]，並提供端點 URL/IP/FQDN 和名稱
+   2. 按一下 [端點] 索引標籤，選取 [端點] 作為 [目的地]。 端點清單將會填入 O365 和 D365 移轉測試 Url，並依名稱分組。  您也可以在相同的連線監視器中選擇在其他測試群組中建立的端點。 若要新增端點，請按一下螢幕右上角的 [+ 端點]，並提供端點 URL/IP/FQDN 和名稱
 
       ![新增端點](./media/connection-monitor-2-preview/add-endpoints.png)
 

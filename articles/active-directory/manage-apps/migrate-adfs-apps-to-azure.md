@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 03/02/2018
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3c3eb715c3e371d7e2985f233df584fb83a9870
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: ec825a562b57f081305af20ee6a6ce078d5c0505
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063450"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159007"
 ---
 # <a name="move-applications-from-ad-fs-to-azure-ad"></a>從 AD FS 將應用程式移至 Azure AD 
 
@@ -138,7 +138,7 @@ AD FS 與 Azure AD 的運作方式相似，所以設定信任、登入及登出 
 |IdP </br>登出 </br>URL|以應用程式觀點看待的 IdP 登出 URL (使用者選擇登出應用程式時會被重新導向)。|在 AD FS 中，登出 URL 與登入 URL 相同，或是附加 “wa=wsignout1.0” 的相同 URL。 例如：https&#58;//fs.contoso.com/adfs/ls/?wa=wsignout1.0|Azure AD 的對應值取決於應用程式是否支援 SAML 2.0 登出。</br></br>如果應用程式支援 SAML 登出，此值會遵循此模式，其中 {tenant-id} 會取代為租用戶識別碼。 此項目即為 Azure 入口網站中 [Azure Active Directory] > [屬性] 下的 [目錄識別碼]：https&#58;//login.microsoftonline.com/{tenant-id}/saml2</br></br>如果應用程式不支援 SAML 登出：https&#58;//login.microsoftonline.com/common/wsfederation?wa=wsignout1.0|
 |Token </br>簽署 </br>憑證 (certificate)|IdP 使用其私密金鑰來簽署已發行權杖的憑證。 它會驗證權杖是否來自應用程式設定要信任的相同 IdP。|在 AD FS 管理的 [憑證] 之下可找到 AD FS 權杖簽署憑證。|在 Azure AD 中，您可以在 Azure 入口網站內應用程式的 [單一登入] 屬性中 [SAML 簽署憑證] 標頭之下找到權杖簽署憑證。 您可以在該處下載憑證以便上傳至應用程式。</br></br> 如果應用程式有多個憑證，您可以在同盟中繼資料 XML 檔案中找到所有的憑證。|
 |識別碼/</br>「簽發者」|以應用程式觀點看待的 IdP 識別碼 (有時稱為「簽發者識別碼」)。</br></br>在 SAML 權杖中，此值會顯示為 [簽發者] 元素。|AD FS 的識別碼通常是 AD FS 管理中 [服務] > [編輯同盟服務屬性] 之下的同盟服務識別碼。 例如：http&#58;//fs.contoso.com/adfs/services/trust|Azure AD 的對應值會遵循此模式，其中 {tenant-id} 的值會取代為租用戶識別碼。 此項目即為 Azure 入口網站中 [Azure Active Directory] > [屬性] 下的 [目錄識別碼]：https&#58;//sts.windows.net/{tenant-id}/|
-|IdP </br>同盟 </br>中繼資料|IdP 的公開可用同盟中繼資料位置。 (有些應用程式會使用同盟中繼資料，作為系統管理員個別設定 URL、識別碼和權杖簽署憑證的替代方式)。|在 AD FS 管理的 [服務] > [端點] > [中繼資料] > [類型: 同盟中繼資料] 之下尋找 AD FS 同盟中繼資料 URL。 例如：https&#58;//fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml|Azure AD 的對應值會遵循此模式 https&#58;//login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml。 {TenantDomainName} 的值會取代為您的租用戶名稱 (格式為 “contoso.onmicrosoft.com”)。 </br></br>如需詳細資訊，請參閱[同盟中繼資料](../develop/azure-ad-federation-metadata.md)。
+|IdP </br>同盟 </br>中繼資料|IdP 的公開可用同盟中繼資料位置。 (有些應用程式會使用同盟中繼資料，作為系統管理員個別設定 URL、識別碼和權杖簽署憑證的替代方式)。|在 AD FS 管理的 [服務] > [端點] > [中繼資料] > [類型: 同盟中繼資料] 之下尋找 AD FS 同盟中繼資料 URL。 例如：https&#58;//fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml|Azure AD 的對應值會遵循此模式 https&#58;//login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml。 {TenantDomainName} 的值會取代為您的租用戶名稱 (格式為 “contoso.onmicrosoft.com”)。 </br></br>如需詳細資訊，請參閱[同盟中繼資料](../azuread-dev/azure-ad-federation-metadata.md)。
 
 ## <a name="moving-saas-apps"></a>移動 SaaS 應用程式
 

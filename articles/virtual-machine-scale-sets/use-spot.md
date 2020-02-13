@@ -6,14 +6,14 @@ tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 02/11/2020
 ms.author: cynthn
-ms.openlocfilehash: a7afb80276147c1562a5963a3ae9a319a8b73264
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 37e914fe6bafe9587be525faf3e01c897cdd8230
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544780"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162679"
 ---
 # <a name="preview-azure-spot-vms-for-virtual-machine-scale-sets"></a>預覽：適用于虛擬機器擴展集的 Azure 位置 Vm 
 
@@ -25,9 +25,8 @@ ms.locfileid: "76544780"
 > 點實例目前處於公開預覽狀態。
 > 此預覽版本不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 >
-> 在公開預覽的早期部分，點實例會有固定的價格，因此不會有任何以價格為基礎的收回。
 
-## <a name="pricing"></a>定價
+## <a name="pricing"></a>價格
 
 「點」實例的定價是以區域和 SKU 為依據的變數。 如需詳細資訊，請參閱[Linux](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/)和[Windows](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/)的定價。 
 
@@ -89,7 +88,7 @@ $vmssConfig = New-AzVmssConfig `
     --max-price -1
 ```
 
-## <a name="resource-manager-templates"></a>資源管理員範本
+## <a name="resource-manager-templates"></a>Resource Manager 範本
 
 建立使用點 Vm 之擴展集的程式，與適用于[Linux](quick-create-template-linux.md)或[Windows](quick-create-template-windows.md)的使用者入門文章中所述的流程相同。 
 
@@ -163,8 +162,8 @@ $vmssConfig = New-AzVmssConfig `
 | Enterprise 合約         | 是                               |
 | 隨用隨付                | 是                               |
 | 雲端服務提供者 (CSP) | [聯絡您的合作夥伴](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
-| 優勢                     | 無法使用                     |
-| 協辦                    | 無法使用                     |
+| 優點                     | 無法使用                     |
+| 商                    | 無法使用                     |
 | 免費試用                   | 無法使用                     |
 
 

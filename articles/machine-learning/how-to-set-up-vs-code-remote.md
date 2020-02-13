@@ -9,19 +9,16 @@ ms.topic: conceptual
 ms.author: jmartens
 author: j-martens
 ms.date: 12/09/2019
-ms.openlocfilehash: f5607c5d41a028a20a4658a67a7ce487a75f0d7c
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 1999d29db21f820fbcdbca08f2258b657673be3e
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990346"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169744"
 ---
 # <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote"></a>以互動方式在具有 VS Code 遠端的 Azure Machine Learning 計算實例上進行偵錯工具
 
 在本文中，您將瞭解如何在 Azure Machine Learning 計算實例上設定 Visual Studio Code 遠端，讓您可以從 VS Code**以互動方式進行程式碼的偵錯工具**。 
-
-> [!NOTE]
-> 計算實例僅適用于區域為**美國中北部**、**美國東部 2**、**北歐**或**英國南部**的工作區，並支援其他即將推出的區域。
 
 + [Azure Machine Learning 計算實例](concept-compute-instance.md)是一種完全受控的雲端式工作站，適用于資料科學家，並為 IT 系統管理員提供管理和企業就緒功能。 
 
@@ -37,7 +34,7 @@ ms.locfileid: "76990346"
 
 ## <a name="get-ip-and-ssh-port"></a>取得 IP 和 SSH 埠 
 
-1. 前往 https://ml.azure.com/ 的 Azure Machine Learning studio。
+1. 前往 https://ml.azure.com/的 Azure Machine Learning studio。
 
 2. 選取您的[工作區](concept-workspace.md)。
 1. 按一下 [**計算實例**] 索引標籤。
@@ -89,11 +86,11 @@ Host azmlci1
 
 以下是欄位的一些詳細資料： 
 
-|欄位|說明|
+|欄位|描述|
 |----|---------|
-|主機|針對計算實例使用您喜歡的任何縮寫 |
+|Host|針對計算實例使用您喜歡的任何縮寫 |
 |HostName|這是計算實例的 IP 位址 |
-|Port|這是上述 SSH 對話方塊上顯示的埠 |
+|連接埠|這是上述 SSH 對話方塊上顯示的埠 |
 |User|這必須 `azureuser` |
 |IdentityFile|應該指向您儲存私密金鑰的檔案 |
 

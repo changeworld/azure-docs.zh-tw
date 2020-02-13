@@ -17,12 +17,12 @@ ms.date: 1/24/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 15293f6cf5ceafda2dd5727ad85804b432bae54a
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
-ms.translationtype: MT
+ms.openlocfilehash: 9cb13ea56c39f365ddb888a5d4e94228b1881fc4
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76758745"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160355"
 ---
 # <a name="whats-new-for-authentication"></a>驗證有什麼新功能？ 
 
@@ -48,9 +48,9 @@ ms.locfileid: "76758745"
 
 **生效日期**：2020年2月8日
 
-**受影響的端點**：v1.0 和 v2.0
+**受影響的端點**：1.0 和 2.0 版
 
-**受影響的通訊協定**：使用 response_type = 查詢的 OAUTH 和 OIDC 流程-這涵蓋了在某些情況下的[授權碼流程](v2-oauth2-auth-code-flow.md)，以及[隱含流程](v2-oauth2-implicit-grant-flow.md)。 
+**受影響的通訊協定**：使用 response_type = 查詢的 OAuth 和 OIDC 流程-這涵蓋了在某些情況下的[授權碼流程](v2-oauth2-auth-code-flow.md)，以及[隱含流程](v2-oauth2-implicit-grant-flow.md)。 
 
 當驗證回應透過 HTTP 重新導向從 login.microsoftonline.com 傳送至應用程式時，服務會將空的片段附加至回復 URL。  這可確保瀏覽器抹除驗證要求中任何現有的片段，藉此防止重新導向攻擊的類別。  沒有任何應用程式應該依賴此行為。 
 
@@ -61,9 +61,9 @@ ms.locfileid: "76758745"
 
 **生效日期**：2019年9月2日
 
-**受影響的端點**：v1.0 和 v2.0
+**受影響的端點**：1.0 和 2.0 版
 
-**受影響的通訊協定**：使用隨處 POST （[用戶端認證](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)、[授權碼兌換](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow)、 [ROPC](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc)、 [OBO](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)和重新整理[權杖兌換](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow#refresh-the-access-token)）
+**受影響的通訊協定**：使用隨處張貼（[用戶端認證](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)、[授權碼兌換](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow)、 [ROPC](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc)、 [OBO](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)，以及重新整理[權杖兌換](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow#refresh-the-access-token)）
 
 從9/2 開始，使用 POST 方法的驗證要求將會使用更嚴格的 HTTP 標準進行驗證。  具體而言，不會再從要求表單值中移除空格和雙引號（"）。 這些變更不應該中斷任何現有的用戶端，而且會確保每次都能可靠地處理傳送至 Azure AD 的要求。 在未來（請參閱上文）中，我們打算另外拒絕重複的參數，並忽略要求內的 BOM。 
 
@@ -78,7 +78,7 @@ ms.locfileid: "76758745"
 
 **生效日期**：2019年7月26日
 
-**受影響**的端點 ： [v1.0](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow) 和 [v2.0](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)
+**受影響的端點**：[1.0](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)和 [v2.0](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow) 兩者
 
 **受影響的通訊協定**：[用戶端認證（僅限應用程式權杖）](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)
 
@@ -98,9 +98,9 @@ ms.locfileid: "76758745"
 
 ### <a name="redirect-uris-can-now-contain-query-string-parameters"></a>重新導向 Uri 現在可以包含查詢字串參數
 
-**生效日期**：2019年7月22日
+**生效日期**：2019 年 7 月 22 日
 
-**受影響的端點**：v1.0 和 v2.0
+**受影響的端點**：1.0 和 2.0 版
 
 **受影響的通訊協定**：所有流程
 
@@ -117,7 +117,7 @@ ms.locfileid: "76758745"
 
 **生效日期**：2019年3月25日
 
-**受影響的端點**：v1.0 和 v2.0
+**受影響的端點**：1.0 和 2.0 版
 
 **受影響的通訊協定**：所有流程
 
@@ -148,15 +148,15 @@ ms.locfileid: "76758745"
 
 **生效日期**：2018 年 11 月 15 日
 
-**受影響的端點**：v1.0 和 v2.0
+**受影響的端點**：1.0 和 2.0 版
 
-**受影響的通訊協定**：[碼流程](v2-oauth2-auth-code-flow.md)
+**受影響的通訊協定**：[程式碼流程](v2-oauth2-auth-code-flow.md)
 
 從 2018 年 11 月 15 日起，Azure AD 將不再接受將先前使用的驗證碼用於應用程式。 這項安全性變更有助於讓 Azure AD 與 OAuth 規格一致，且將會對 v1 和 v2 端點強制執行。
 
 如果您的應用程式重複使用授權碼取得多個資源的權杖，建議您先使用授權碼取得重新整理權杖，再使用該重新整理權杖取得其他資源的額外權杖。 授權碼只能使用一次，但重新整理權杖可跨多個資源多次使用。 在 OAuth 程式碼流程期間嘗試重複使用驗證碼的任何新應用程式，會收到 invalid_grant 錯誤。
 
-如需關於重新整理權杖的詳細資訊，請參閱[重新整理存取權杖](v1-protocols-oauth-code.md#refreshing-the-access-tokens)。  使用使用 ADAL 或 MSAL，會由程式庫為您處理此操作 - 將 'AcquireTokenByAuthorizationCodeAsync' 的執行個體取代為 'AcquireTokenSilentAsync'。 
+如需關於重新整理權杖的詳細資訊，請參閱[重新整理存取權杖](v2-oauth2-auth-code-flow.md#refresh-the-access-token)。  使用使用 ADAL 或 MSAL，會由程式庫為您處理此操作 - 將 'AcquireTokenByAuthorizationCodeAsync' 的執行個體取代為 'AcquireTokenSilentAsync'。 
 
 ## <a name="may-2018"></a>2018 年 5 月
 
@@ -164,9 +164,9 @@ ms.locfileid: "76758745"
 
 **日期**：2018 年 5 月 1 日
 
-**受影響的端點**：v1.0 和 v2.0
+**受影響的端點**：1.0 和 2.0 版
 
-**受影響的通訊協定**：隱含流程和 [OBO 流程](v1-oauth2-on-behalf-of-flow.md)
+**受影響的通訊協定**：隱含流程和代理者[流程](v2-oauth2-on-behalf-of-flow.md)
 
 在 2018 年 5 月 1 日以後，id_tokens 無法用來作為新應用程式 OBO 流程中的判斷提示。 應該改為使用存取權杖來保護 API，即使是在相同應用程式的用戶層與中介層之間也是一樣。 在 2018 年 5 月 1 日以前註冊的應用程式會持續運作，並且可以用 id_tokens 交換存取權杖；不過，此模式並不是最佳做法。
 

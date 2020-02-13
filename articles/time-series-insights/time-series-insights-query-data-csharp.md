@@ -9,34 +9,73 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 01/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3729bedf7591ffecc558b88660486f7e336fa717
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
-ms.translationtype: MT
+ms.openlocfilehash: c1c4f139dedc9be11a5f19730221ccec77139200
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705901"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76962011"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-ga-environment-using-c"></a>使用從 Azure 時間序列深入解析 GA 環境查詢資料C#
 
-這個C#範例示範如何從 Azure 時間序列深入解析 GA 環境查詢資料。
+這個C#範例示範如何使用[ga 查詢 api](https://docs.microsoft.com/rest/api/time-series-insights/ga-query)來查詢 Azure 時間序列深入解析 ga 環境中的資料。
 
-範例會顯示查詢 API 使用方式的數個基本範例︰
+> [!TIP]
+> 在[https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)C#查看 GA 程式代碼範例。
 
-1. 在準備步驟中，透過 Azure Active Directory API 取得存取權杖。 在每個「查詢」API 要求的 `Authorization` 標頭中傳遞此權杖。 若要了解如何設定非互動式應用程式，請參閱[驗證與授權](time-series-insights-authentication-and-authorization.md)。 此外，請務必正確設定在此範例開頭定義的所有常數。
-1. 取得使用者可存取的環境清單。 挑選其中一個環境作為使用環境，並針對此環境查詢進一步資料。
-1. 在 HTTPS 要求的範例中，要求感興趣環境的可用性資料。
-1. 在 Web 通訊端要求的範例中，要求感興趣環境的事件彙總資料。 要求整個可用性時間範圍內的資料。
+## <a name="summary"></a>總結
 
-> [!NOTE]
-> 您可以在[https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)取得範例程式碼。
+下面的範例程式碼示範下列功能：
+
+* 如何使用[microsoft.identitymodel](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)透過 Azure Active Directory 取得存取權杖。
+
+* 如何在後續查詢 API 要求的 `Authorization` 標頭中傳遞該取得的存取權杖。 
+
+* 此範例會呼叫每個 GA 查詢 Api，以示範如何對進行 HTTP 要求：
+    * [取得環境 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environments-api)以傳回使用者可存取的環境
+    * [取得環境可用性 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-availability-api)
+    * [取得環境中繼資料 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-metadata-api)以取出環境中繼資料
+    * [取得環境事件 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api)
+    * [取得環境匯總 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api)
+    
+* 如何使用 WSS 與 GA 查詢 Api 互動，以訊息：
+
+   * [取得環境事件資料流程 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-streamed-api)
+   * [取得環境匯總資料流程 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-streamed-api)
+
+## <a name="prerequisites-and-setup"></a>必要條件和設定
+
+編譯及執行範例程式碼之前，您必須先完成下列步驟：
+
+1. 布建[GA Azure 時間序列深入解析](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started)環境。
+
+1. 如[驗證和授權](time-series-insights-authentication-and-authorization.md)中所述，設定您的 Azure 時間序列深入解析環境以進行 Azure Active Directory。 
+
+1. 安裝必要的專案相依性。
+
+1. 以適當的環境識別碼取代每個 **#DUMMY #** ，以編輯下面的範例程式碼。
+
+1. 在 Visual Studio 內執行程式碼。
 
 ## <a name="project-dependencies"></a>專案相依性
 
-新增 `Microsoft.IdentityModel.Clients.ActiveDirectory` 和 `Newtonsoft.Json`的 NuGet 套件。
+建議使用最新版本的 Visual Studio：
 
-## <a name="c-example"></a>C# 範例
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) -版本 16.4.2 +
+
+範例程式碼有兩個必要的相依性：
+
+* [Microsoft.identitymodel.](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) 3.13.9 套件。
+* [Newtonsoft. Json](https://www.nuget.org/packages/Newtonsoft.Json) -9.0.1 封裝。
+
+使用[NuGet 2.12](https://www.nuget.org/)新增封裝 +：
+
+* `dotnet add package Newtonsoft.Json --version 9.0.1`
+* `dotnet add package Microsoft.IdentityModel.Clients.ActiveDirectory --version 3.13.9`
+
+## <a name="c-sample-code"></a>C# 範例程式碼
 
 [!code-csharp[csharpquery-example](~/samples-tsi/csharp-tsi-ga-sample/Program.cs)]
 

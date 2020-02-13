@@ -14,12 +14,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: cf36c233df9f8aaf76333b0add8b1ffce869156b
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 40db6e9f429569bc19641aa5f0f371f287db7b18
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773239"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77158021"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure 事件中樞 - 異地災害復原 
 
@@ -44,18 +44,18 @@ Azure 事件中樞的地理災害復原功能就是一個災害復原解決方�
 
 本文中使用下列術語：
 
--  *別名*：您所設定的災害復原設定的名稱。 別名提供單一穩定完整網域名稱 (FQDN) 連接字串。 應用程式會使用這個別名連接字串連接到命名空間。 
+-  別名：所設定之災害復原設定的名稱。 別名提供單一穩定完整網域名稱 (FQDN) 連接字串。 應用程式會使用這個別名連接字串連接到命名空間。 
 
--  *主要/次要命名空間*：對應到別名的命名空間。 主要命名空間是「主動」並且會接收訊息 (這可以是現有或新的命名空間)。 次要命名空間是「被動」，並不會收到訊息。 這兩者間的中繼資料會進行同步處理，因此，這兩者均能順暢地接受訊息，而不需進行任何應用程式程式碼或連接字串變更。 若要確保只有主動命名空間會接收訊息，您必須使用別名。 
+-  主要/次要命名空間：對應到別名的命名空間。 主要命名空間是「主動」並且會接收訊息 (這可以是現有或新的命名空間)。 次要命名空間是「被動」，並不會收到訊息。 這兩者間的中繼資料會進行同步處理，因此，這兩者均能順暢地接受訊息，而不需進行任何應用程式程式碼或連接字串變更。 若要確保只有主動命名空間會接收訊息，您必須使用別名。 
 
--  *中繼資料*：實體 (例如事件中樞和取用者群組)；以及與命名空間相關聯之服務的屬性。 請注意，只有實體及其設定會自動複寫。 不會複寫訊息和事件。 
+-  中繼資料：實體 (例如事件中樞和取用者群組)；以及與命名空間相關聯之服務的屬性。 請注意，只有實體及其設定會自動複寫。 不會複寫訊息和事件。 
 
--  *容錯移轉*：啟用次要命名空間的程序。
+-  容錯移轉：啟用次要命名空間的程序。
 
 ## <a name="supported-namespace-pairs"></a>支援的命名空間配對
 以下是支援的主要和次要命名空間組合：  
 
-| 主要命名空間 | 次要命名空間 | Suppported | 
+| 主要命名空間 | 次要命名空間 | 支援 | 
 | ----------------- | -------------------- | ---------- |
 | 標準 | 標準 | 是 | 
 | 標準 | 專用 | 是 | 
@@ -94,7 +94,7 @@ Azure 事件中樞的地理災害復原功能就是一個災害復原解決方�
 
 ![2][]
 
-## <a name="management"></a>管理
+## <a name="management"></a>管理性
 
 如果您發生錯誤；例如，您在初始化安裝期間配對錯誤的區域，您可以隨時中斷兩個命名空間的配對。 如果您想要使用配對的命名空間作為一般命名空間，請刪除別名。
 
@@ -142,7 +142,11 @@ Azure 事件中樞的地理災害復原功能就是一個災害復原解決方�
 
 如需事件中樞的詳細資訊，請造訪下列連結：
 
-* 開始使用[事件中樞教學課程](event-hubs-dotnet-standard-getstarted-send.md)
+- 開始使用事件中心
+    - [.NET Core](get-started-dotnet-standard-send-v2.md)
+    - [Java](get-started-java-send-v2.md)
+    - [Python](get-started-python-send-v2.md)
+    - [JavaScript](get-started-java-send-v2.md)
 * [事件中樞常見問題集](event-hubs-faq.md)
 * [使用事件中樞的完整範例應用程式](https://github.com/Azure/azure-event-hubs/tree/master/samples)
 

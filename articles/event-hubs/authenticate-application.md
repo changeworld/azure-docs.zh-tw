@@ -6,17 +6,17 @@ ms.service: event-hubs
 documentationcenter: ''
 author: spelluru
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 02/12/2020
 ms.author: spelluru
-ms.openlocfilehash: cce96039ca3883e0ea5ea0b738e0f6e2e079262d
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 4256cebe44b732b190ef1666d0438d17e058b820
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996205"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169300"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>使用 Azure Active Directory 來驗證應用程式，以存取事件中樞資源
-Microsoft Azure 針對以 Azure Active Directory (Azure AD) 為基礎的資源和應用程式提供了整合式的存取控制管理功能。 搭配 Azure 事件中樞使用 Azure AD 的主要優點是您不再需要將認證儲存在程式碼中。 相反地，您可以從 Microsoft 身分識別平臺要求 OAuth 2.0 存取權杖。 要求權杖的資源名稱是`https://eventhubs.azure.net/`。 Azure AD 會驗證執行應用程式的安全性主體 (使用者、群組或服務主體)。 如果驗證成功，Azure AD 會將存取權杖傳回給應用程式，然後應用程式就可以使用存取權杖來授權 Azure 事件中樞資源的要求。
+Microsoft Azure 針對以 Azure Active Directory (Azure AD) 為基礎的資源和應用程式提供了整合式的存取控制管理功能。 搭配 Azure 事件中樞使用 Azure AD 的主要優點是您不再需要將認證儲存在程式碼中。 相反地，您可以從 Microsoft 身分識別平臺要求 OAuth 2.0 存取權杖。 要求權杖的資源名稱是 `https://eventhubs.azure.net/`。 Azure AD 會驗證執行應用程式的安全性主體（使用者、群組或服務主體）。 如果驗證成功，Azure AD 會將存取權杖傳回給應用程式，然後應用程式就可以使用存取權杖來授權 Azure 事件中樞資源的要求。
 
 將角色指派給 Azure AD 的安全性主體時，Azure 會為該安全性主體授與這些資源的存取權。 存取權的範圍可以是訂用帳戶層級、資源群組、事件中樞命名空間，或其底下的任何資源。 Azure AD 安全性可以將角色指派給使用者、群組、應用程式服務主體或[Azure 資源的受控識別](../active-directory/managed-identities-azure-resources/overview.md)。 
 
@@ -26,9 +26,9 @@ Microsoft Azure 針對以 Azure Active Directory (Azure AD) 為基礎的資源�
 ## <a name="built-in-roles-for-azure-event-hubs"></a>Azure 事件中樞的內建角色
 Azure 提供下列內建 RBAC 角色，以使用 Azure AD 和 OAuth 來授權事件中樞資料的存取：
 
-- [Azure 事件中樞資料擁有](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner)者：使用此角色來提供事件中樞資源的完整存取權。
-- [Azure 事件中樞資料寄件者](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender)：使用此角色可將存取權授與事件中樞資源。
-- [Azure 事件中樞資料接收器](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver)：使用此角色可授與接收事件中樞資源的存取權。   
+- [Azure 事件中樞資料擁有](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner)者：使用此角色可提供完整的事件中樞資源存取權。
+- [Azure 事件中樞的資料](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender)傳送者：使用此角色可將存取權授與事件中樞資源。
+- [Azure 事件中樞資料接收器](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver)：使用此角色可授與事件中樞資源的接收存取權。   
 
 > [!IMPORTANT]
 > 我們的預覽版本支援將事件中樞資料存取權限新增至擁有者或參與者角色。 不過，「擁有者」和「參與者」角色的資料存取權限已不再遵守。 如果您使用的是「擁有者」或「參與者」角色，請切換到使用 Azure 事件中樞資料擁有者角色。
@@ -65,7 +65,7 @@ Azure 提供下列內建 RBAC 角色，以使用 Azure AD 和 OAuth 來授權事
 ## <a name="authenticate-from-an-application"></a>從應用程式進行驗證
 搭配事件中樞使用 Azure AD 的主要優點是您的認證不再需要儲存在您的程式碼中。 相反地，您可以向 Microsoft 身分識別平臺要求 OAuth 2.0 存取權杖。 Azure AD 會驗證執行應用程式的安全性主體（使用者、群組或服務主體）。 如果驗證成功，Azure AD 會將存取權杖傳回給應用程式，然後應用程式就可以使用存取權杖來授權 Azure 事件中樞的要求。
 
-下列各節說明如何設定原生應用程式或 web 應用程式，以使用 Microsoft 身分識別平臺2.0 進行驗證。 如需 Microsoft 身分識別平臺2.0 的詳細資訊, 請參閱[microsoft 身分識別平臺 (v2.0) 總覽](../active-directory/develop/v2-overview.md)。
+下列各節說明如何設定原生應用程式或 web 應用程式，以使用 Microsoft 身分識別平臺2.0 進行驗證。 如需 Microsoft 身分識別平臺2.0 的詳細資訊，請參閱[microsoft 身分識別平臺（v2.0）總覽](../active-directory/develop/v2-overview.md)。
 
 如需 OAuth 2.0 程式碼授與流程的概觀，請參閱[使用 OAuth 2.0 授權碼授與流程，授權存取 Azure Active Directory Web 應用程式](../active-directory/develop/v2-oauth2-auth-code-flow.md)。
 
@@ -77,7 +77,7 @@ Azure 提供下列內建 RBAC 角色，以使用 Azure AD 和 OAuth 來授權事
 ![註冊應用程式](./media/authenticate-application/app-registrations-register.png)
 
 > [!Note]
-> 如果您將應用程式註冊為原生應用程式，您可以為重新導向 URI 指定任何有效的 URI。 對於原生應用程式, 這個值不一定是真正的 URL。 對於 web 應用程式, 重新導向 URI 必須是有效的 URI, 因為它會指定提供權杖的 URL。
+> 如果您將應用程式註冊為原生應用程式，您可以為重新導向 URI 指定任何有效的 URI。 對於原生應用程式，這個值不一定是真正的 URL。 對於 web 應用程式，重新導向 URI 必須是有效的 URI，因為它會指定提供權杖的 URL。
 
 註冊應用程式之後，您會在 [**設定**] 底下看到**應用程式（用戶端）識別碼**：
 
@@ -87,9 +87,9 @@ Azure 提供下列內建 RBAC 角色，以使用 Azure AD 和 OAuth 來授權事
 
 
 ### <a name="create-a-client-secret"></a>建立用戶端密碼   
-應用程式需要用戶端密碼, 才能在要求權杖時證明其身分識別。 若要新增用戶端密碼，請遵循下列步驟。
+應用程式需要用戶端密碼，才能在要求權杖時證明其身分識別。 若要新增用戶端密碼，請遵循下列步驟。
 
-1. 在 Azure 入口網站中, 流覽至您的應用程式註冊。
+1. 在 Azure 入口網站中，流覽至您的應用程式註冊。
 1. 選取 [**憑證 & 密碼**] 設定。
 1. 在 [**用戶端密碼**] 底下，選取 [**新增用戶端密碼**] 以建立新的密碼。
 1. 提供密碼的描述，然後選擇想要的到期間隔。
@@ -101,8 +101,15 @@ Azure 提供下列內建 RBAC 角色，以使用 Azure AD 和 OAuth 來授權事
 ### <a name="client-libraries-for-token-acquisition"></a>取得權杖的用戶端程式庫  
 註冊應用程式並授與在 Azure 事件中樞中傳送/接收資料的許可權之後，您就可以將程式碼新增至應用程式，以驗證安全性主體並取得 OAuth 2.0 權杖。 若要驗證並取得權杖，您可以使用其中一個 Microsoft 身分[識別平臺驗證程式庫](../active-directory/develop/reference-v2-libraries.md)，或另一個支援 OpenID 或 connect 1.0 的開放原始碼程式庫。 然後，您的應用程式就可以使用存取權杖來授權對 Azure 事件中樞的要求。
 
-如需支援取得權杖的案例清單, 請參閱適用于 .NET GitHub 存放庫的[Microsoft 驗證程式庫 (MSAL)](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)的[案例](https://aka.ms/msal-net-scenarios)一節。
+如需支援取得權杖的案例清單，請參閱適用于 .NET GitHub 存放庫的[Microsoft 驗證程式庫（MSAL）](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)的[案例](https://aka.ms/msal-net-scenarios)一節。
 
+## <a name="samples"></a>範例
+- [EventHubs 範例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac)。 
+    
+    這些範例會使用舊的**EventHubs**程式庫，但您可以使用最新的**EventHubs**程式庫輕鬆地將其更新為。 若要將範例從使用舊的程式庫移至新的程式庫，請參閱[從 EventHubs 遷移至 EventHubs 的指南](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md)。
+- [EventHubs 範例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
+
+    此範例已更新為使用最新的**EventHubs**程式庫。
 
 ## <a name="next-steps"></a>後續步驟
 - 若要深入瞭解 RBAC，請參閱[什麼是角色型存取控制（RBAC）](../role-based-access-control/overview.md)？

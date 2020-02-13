@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 9123e1d8e63382c6b89c86f99935dd288bb1bf16
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: HT
+ms.openlocfilehash: d0e9fff56949125c5fa797e0e4ef7e1183448dd0
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153412"
+ms.locfileid: "77168578"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>使用 API 管理來管理 Azure Machine Learning Studio （傳統） web 服務
 ## <a name="overview"></a>概觀
@@ -24,7 +24,7 @@ ms.locfileid: "77153412"
 ## <a name="what-is-azure-api-management"></a>什麼是 Azure API 管理？
 Azure API 管理是一項 Azure 服務，可讓您藉由定義使用者存取、使用節流設定和儀表板監視，來管理 REST API 端點。 如需詳細資訊，請參閱[AZURE API 管理網站](https://azure.microsoft.com/services/api-management/)。 若要開始使用 Azure API 管理，請參閱匯[入和發佈指南](/azure/api-management/import-and-publish)。 這是本指南所依據的另一份指南，涵蓋更多主題，包括通知組態、定價層、回應處理、使用者驗證、建立產品、開發人員訂用帳戶和使用量儀表板。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 若要完成本指南，您需要：
 
 * 一個 Azure 帳戶。
@@ -38,12 +38,12 @@ Azure API 管理是一項 Azure 服務，可讓您藉由定義使用者存取、
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 選取 [+ 建立資源]。
 3. 在搜尋方塊中，輸入 [API 管理]，然後選取 [API 管理] 資源。
-4. 按一下 [建立]。
+4. 按一下 **[建立]** 。
 5. [名稱] 值將用來建立唯一的 URL (此範例使用 "demoazureml")。
 6. 針對您的服務執行個體，選取 [訂用帳戶]、[資源群組] 和 [位置]。
 7. 指定 [組織名稱] 的值 (此範例使用 "demoazureml")。
 8. 輸入您的 [系統管理員電子郵件] - 此電子郵件將用於自 API 管理系統傳送通知。
-9. 按一下 [建立]。
+9. 按一下 **[建立]** 。
 
 新服務建立作業最多可能需要花費 30 分鐘的時間。
 
@@ -66,7 +66,7 @@ Azure API 管理是一項 Azure 服務，可讓您藉由定義使用者存取、
 4. 輸入 [Web API URL 尾碼]。 此尾碼會成為 URL 的結尾，客戶將使用該 URL 將要求傳送至服務執行個體 (此範例使用 "azureml-demo")。
 5. 對於 [Web API URL 配置]，選取 [HTTPS]。
 6. 對於 [產品]，選取 [入門]。
-7. Haga clic en **Guardar**.
+7. 按一下 [檔案]。
 
 
 ## <a name="add-the-operations"></a>加入作業
@@ -103,7 +103,7 @@ Azure API 管理是一項 Azure 服務，可讓您藉由定義使用者存取、
 3. 對於 [URL 範本]，輸入 "`/workspaces/{workspace}/services/{service}/jobs?api-version={apiversion}`"。
 4. 輸入 [顯示名稱] \(此範例使用「BES 提交」)。
 5. 按一下左側的 [回應] > [新增]，然後選取 [200 確定]。
-6. Haga clic en **Guardar**.
+6. 按一下 [檔案]。
 
 ### <a name="start-a-batch-execution-job"></a>啟動批次執行工作
 
@@ -112,7 +112,7 @@ Azure API 管理是一項 Azure 服務，可讓您藉由定義使用者存取、
 3. 對於 [HTTP 指令動詞] 中，輸入 "`/workspaces/{workspace}/services/{service}/jobs/{jobid}/start?api-version={apiversion}`"。
 4. 輸入 [顯示名稱] \(此範例使用「BES 啟動」)。
 6. 按一下左側的 [回應] > [新增]，然後選取 [200 確定]。
-7. Haga clic en **Guardar**.
+7. 按一下 [檔案]。
 
 ### <a name="get-the-status-or-result-of-a-batch-execution-job"></a>取得批次執行工作的狀態或結果
 
@@ -121,7 +121,7 @@ Azure API 管理是一項 Azure 服務，可讓您藉由定義使用者存取、
 3. 對於 [URL 範本]，輸入 "`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`"。
 4. 輸入 [顯示名稱] \(此範例使用「BES 狀態」)。
 6. 按一下左側的 [回應] > [新增]，然後選取 [200 確定]。
-7. Haga clic en **Guardar**.
+7. 按一下 [檔案]。
 
 ### <a name="delete-a-batch-execution-job"></a>刪除批次執行工作
 
@@ -130,7 +130,7 @@ Azure API 管理是一項 Azure 服務，可讓您藉由定義使用者存取、
 3. 對於 [URL 範本]，輸入 "`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`"。
 4. 輸入 [顯示名稱] \(此範例使用「BES 刪除」)。
 5. 按一下左側的 [回應] > [新增]，然後選取 [200 確定]。
-6. Haga clic en **Guardar**.
+6. 按一下 [檔案]。
 
 ## <a name="call-an-operation-from-the-developer-portal"></a>從開發人員入口網站呼叫作業
 
@@ -156,7 +156,7 @@ Azure API 管理是一項 Azure 服務，可讓您藉由定義使用者存取、
 
    ![AzureML 示範 API](./media/manage-web-service-endpoints-using-api-management/azureml-demo-api.png)
 
-5. 按一下 [傳送]。
+5. 按一下 [ **傳送**]。
 
    ![傳送](./media/manage-web-service-endpoints-using-api-management/send.png)
 
@@ -166,7 +166,7 @@ Azure API 管理是一項 Azure 服務，可讓您藉由定義使用者存取、
 
 ## <a name="appendix-a---creating-and-testing-a-simple-azureml-web-service"></a>附錄 A - 建立及測試簡單的 AzureML Web 服務
 ### <a name="creating-the-experiment"></a>建立實驗
-以下步驟可讓您建立簡單的 AzureML 實驗並將其部署為 Web 服務。 Web 服務接受任意文字的資料行做為輸入，並傳回一組以整數來表示的特徵。 例如，
+以下步驟可讓您建立簡單的 AzureML 實驗並將其部署為 Web 服務。 Web 服務接受任意文字的資料行做為輸入，並傳回一組以整數來表示的特徵。 例如：
 
 | Text | 雜湊的文字 |
 | --- | --- |
@@ -198,7 +198,7 @@ Azure API 管理是一項 Azure 服務，可讓您藉由定義使用者存取、
 
 此時，您可能想要按一下 [執行] ，以測試實驗。
 
-![run](./media/manage-web-service-endpoints-using-api-management/run.png)
+![執行](./media/manage-web-service-endpoints-using-api-management/run.png)
 
 ### <a name="create-a-web-service"></a>建立 Web 服務
 現在建立 Web 服務。 展開 [Web 服務]，將 [輸入] 拖曳到您的實驗。 將 [輸入] 連接到 [特徵雜湊]。 另將 [輸出] 拖曳到您的實驗。 將 [輸出] 連接到 [特徵雜湊]。
@@ -225,10 +225,10 @@ AzureML Web 服務是由 RSS (要求/回應服務) 和 BES (批次執行服務) 
 ![尋找 API 金鑰](./media/manage-web-service-endpoints-using-api-management/find-api-key.png)
 
 #### <a name="test-rrs-endpoint"></a>測試 RRS 端點
-##### <a name="test-button"></a>[測試] 按鈕
+##### <a name="test-button"></a>測試按鈕
 測試 RRS 端點的一個簡單方式，是在 Web 服務儀表板上，按一下 [測試] 。
 
-![測試](./media/manage-web-service-endpoints-using-api-management/test.png)
+![test](./media/manage-web-service-endpoints-using-api-management/test.png)
 
 在 [col2] 中，輸入**這是美好的一天**。 按一下核取記號。
 

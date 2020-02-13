@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: efc070491ca1ea84dc8ef095a2144df9d0bf1bcb
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: fbc6d6fa8f9a3b424eaec1f04a61b5ca24fe14fc
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311898"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161778"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>設計具有存取控制的多重 DRM 內容保護系統 
 
@@ -213,7 +213,7 @@ DRM 子系統可能包含下列元件：
 
 如需 Azure AD 的資訊：
 
-* 您可以在 [Azure Active Directory 開發人員指南](../../active-directory/develop/v1-overview.md)中找到開發人員的資訊。
+* 您可以在 [Azure Active Directory 開發人員指南](../../active-directory/develop/v2-overview.md)中找到開發人員的資訊。
 * 您可以在 [管理 Azure AD 租用戶目錄](../../active-directory/fundamentals/active-directory-administer.md)中找到系統管理員的資訊。
 
 ### <a name="some-issues-in-implementation"></a>實作中的一些問題
@@ -231,7 +231,7 @@ DRM 子系統可能包含下列元件：
 
 * 將權限新增至應用程式的 Azure AD 中 (在應用程式的 [設定] 索引標籤)。 每個應用程式皆需要權限 (本機和已部署版本)。
 
-    ![使用權限](./media/design-multi-drm-system-with-access-control/media-services-perms-to-other-apps.png)
+    ![權限](./media/design-multi-drm-system-with-access-control/media-services-perms-to-other-apps.png)
 
 * 當您設定動態 CENC 保護時，請使用正確的簽發者。
 

@@ -17,12 +17,12 @@ ms.date: 07/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 3c77b74eb97f03b1234cb2735b4a680b030d2073
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 0282336cb5df7d010571a15e9d1f9d93b82d461e
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77108190"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160316"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft 身分識別平臺程式碼範例（v2.0 端點）
 
@@ -34,7 +34,7 @@ ms.locfileid: "77108190"
 本文簡要說明並提供 Microsoft 身分識別平臺端點的範例連結。 這些範例會示範其完成方式，並提供可在應用程式中使用的程式碼片段。 在 [程式碼範例] 頁面上，您可以找到詳細的讀我檔案主題，協助您進行需求、安裝和設定。 程式碼中的批註可協助您瞭解重要區段。
 
 > [!NOTE]
-> 如果您對 v1.0 範例感興趣，請參閱[Azure AD 程式碼範例（v1.0 端點）](sample-v1-code.md)。
+> 如果您對 v1.0 範例感興趣，請參閱[Azure AD 程式碼範例（v1.0 端點）](../azuread-dev/sample-v1-code.md)。
 
 若要瞭解每個範例類型的基本案例，請參閱[Microsoft 身分識別平臺端點的應用程式類型](v2-app-types.md)。
 
@@ -132,6 +132,6 @@ ms.locfileid: "77108190"
 
 ## <a name="see-also"></a>另請參閱
 
-- [Azure Active Directory （v1.0）開發人員指南](v1-overview.md)
+- [Azure Active Directory （v1.0）開發人員指南](../azuread-dev/v1-overview.md)
 - [Azure AD 圖形 API 的概念和參考](https://msdn.microsoft.com/library/azure/hh974476.aspx)
 - [Azure AD Graph API 協助程式程式庫](https://www.nuget.org/packages/Microsoft.Azure.ActiveDirectory.GraphClient)

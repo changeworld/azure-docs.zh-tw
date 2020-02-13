@@ -1,6 +1,6 @@
 ---
 title: 發佈原生用戶端應用程式 - Azure AD | Microsoft Docs
-description: 涵蓋如何啟用原生用戶端應用程式，以與 Azure AD 應用程式 Proxy 連接器通訊，為內部部署的應用程式提供安全的遠端存取。
+description: 涵蓋如何讓原生用戶端應用程式與 Azure AD 應用程式 Proxy 連接器通訊，為內部部署的應用程式提供安全的遠端存取。
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cbee6bfcca3ddb356abe9dceab2fca07c152b07
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 3d2a2bb9dd543da7455a276075a829ef06032edb
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961799"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159279"
 ---
 # <a name="how-to-enable-native-client-applications-to-interact-with-proxy-applications"></a>如何讓原生用戶端應用程式與 proxy 應用程式互動
 
@@ -31,7 +31,7 @@ ms.locfileid: "73961799"
 
 ![終端使用者、Azure AD 和已發佈應用程式之間的關聯性](./media/application-proxy-configure-native-client-application/richclientflow.png)
 
-若要發佈原生應用程式，請使用 Azure AD 驗證程式庫，它會負責驗證並支援許多用戶端環境。 應用程式 Proxy 融入 [原生應用程式到 Web API 案例](../develop/native-app.md)。
+若要發佈原生應用程式，請使用 Azure AD 驗證程式庫，它會負責驗證並支援許多用戶端環境。 應用程式 Proxy 融入 [原生應用程式到 Web API 案例](../azuread-dev/native-app.md)。
 
 本文引導您完成使用應用程式 Proxy 和 Azure AD 驗證程式庫發佈原生應用程式的四個步驟。
 
@@ -60,7 +60,7 @@ ms.locfileid: "73961799"
 1. 在 [重新**導向 uri** ] 標題中，選取 [**公用用戶端（行動 & 桌面）** ]，然後輸入應用程式的重新導向 URI。
 1. 選取並閱讀**Microsoft 平臺原則**，然後選取 [**註冊**]。 隨即會建立並顯示新應用程式註冊的 [總覽] 頁面。
 
-如需建立新應用程式註冊的詳細資訊，請參閱[整合應用程式與 Azure Active Directory](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)。
+如需建立新應用程式註冊的詳細資訊，請參閱[整合應用程式與 Azure Active Directory](../develop/quickstart-register-app.md)。
 
 ## <a name="step-3-grant-access-to-your-proxy-application"></a>步驟3：授與 proxy 應用程式的存取權
 
@@ -105,6 +105,6 @@ HttpResponseMessage response = await httpClient.GetAsync("< Proxy App API Url >"
 
 ## <a name="next-steps"></a>後續步驟
 
-如需原生應用程式流程的詳細資訊，請參閱[Azure Active Directory 中的原生應用](../develop/native-app.md)程式。
+如需原生應用程式流程的詳細資訊，請參閱[Azure Active Directory 中的原生應用](../azuread-dev/native-app.md)程式。
 
 瞭解如何[在 Azure Active Directory 中設定應用程式的單一登入](what-is-single-sign-on.md#choosing-a-single-sign-on-method)。

@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: ryanwi
 ms.reviewer: sureshja
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f32d9832f0bad81ca29ab7553d956b593531d1bd
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 9fd5fa943468924c289587285fe7986a73c21dba
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698929"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161336"
 ---
 # <a name="how-to-use-the-azure-ad-graph-api"></a>操作說明：使用 Azure AD Graph API
 
@@ -33,7 +33,7 @@ Azure AD 圖形 API 可透過 OData REST API 端點，以程式設計方式存�
 
 在 Graph API 中，若要存取您想要對其執行 CRUD 作業的目錄資料和物件 (亦即，資源或實體)，您可使用以「開放式資料 (OData) 通訊協定」為基礎的 URL。 Graph API 中使用的 URL 是由下列四個主要部分所組成：服務根目錄、租用戶識別碼、資源路徑和查詢字串選項： `https://graph.windows.net/{tenant-identifier}/{resource-path}?[query-parameters]`。 在下列 URL 中取得範例： `https://graph.windows.net/contoso.com/groups?api-version=1.6`。
 
-* **服務根目錄**：在 Azure AD Graph API 中，服務根目錄一律為 https://graph.windows.net 。
+* **服務根目錄**：在 Azure AD Graph API 中，服務根目錄一律為 https://graph.windows.net。
 * **租用戶識別碼**：此區段可以是已驗證 (已註冊) 的網域名稱，在上述範例中為 contoso.com。 它也可以是租用戶物件識別碼，或是 “myorganization” 或 “me” 別名。 如需詳細資訊，請參閱[在 Azure AD 圖形 API 中定址實體和作業](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-operations-overview)。
 * **資源路徑**： URL 的這個區段會識別要互動的資源（使用者、群組、特定的使用者或特定的群組等）。在上述範例中，它是用來處理該資源集的最上層「群組」。 您也可以為特定的實體定址，例如，“users/{objectId}” 或 “users/userPrincipalName”。
 * **查詢參數**：問號 (?) 可區隔資源路徑區段和查詢參數區段。 在 Azure AD Graph API 中，所有要求上都需要 “api-version” 查詢參數。 Azure AD Graph API 也支援下列 OData 查詢選項： **$filter**、 **$orderby**、 **$expand**、 **$top**及 **$format**。 目前不支援下列查詢選項： **$count**、 **$inlinecount** 和 **$skip**。 如需詳細資訊，請參閱 [Azure AD Graph API 中支援的查詢、篩選和分頁選項](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-supported-queries-filters-and-paging-options)。
@@ -81,7 +81,7 @@ Azure AD 圖形 API 可透過 OData REST API 端點，以程式設計方式存�
 
 在下列範例中，您將使用「Fiddler Web 偵錯工具」，在 Azure AD 目錄中建立新的安全性群組 ‘MyTestGroup’。
 
-**取得存取權杖**：若要存取 Azure AD Graph，用戶端必須先順利通過 Azure AD 的驗證。 如需詳細資訊，請參閱[Azure AD 的驗證案例](v1-authentication-scenarios.md)。
+**取得存取權杖**：若要存取 Azure AD Graph，用戶端必須先順利通過 Azure AD 的驗證。 如需詳細資訊，請參閱[Azure AD 的驗證案例](authentication-scenarios.md)。
 
 **撰寫和執行查詢**：請完成下列步驟：
 

@@ -13,12 +13,12 @@ ms.date: 10/05/2018
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: 372eac63b2ab9ea7dea540a088d61a5144886686
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: dc7771f29fb5d00aedfe5162a98f5f0c14544a7b
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698589"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161166"
 ---
 # <a name="how-azure-ad-uses-the-saml-protocol"></a>Azure AD 如何使用 SAML 通訊協定
 
@@ -36,4 +36,4 @@ Azure Active Directory 會公開租用戶專屬和一般 (租用戶獨立) 單�
 
 * 租用戶獨立端點位於 `https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml`。 在此端點位址中會出現 **common**，而不是租用戶網域名稱或識別碼。
 
-如需 Azure AD 所發佈同盟中繼資料文件的相關資訊，請參閱[同盟中繼資料](azure-ad-federation-metadata.md)。
+如需 Azure AD 所發佈同盟中繼資料文件的相關資訊，請參閱[同盟中繼資料](../azuread-dev/azure-ad-federation-metadata.md)。

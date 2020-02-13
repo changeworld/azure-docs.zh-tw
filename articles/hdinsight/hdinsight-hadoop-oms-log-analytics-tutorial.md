@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/06/2020
-ms.openlocfilehash: 980569edf8322c6c22a4357a5b946ded85f0ebe4
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: e4b33e132e660fba7d06ff33c7db06c7727dd26c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063727"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162781"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>使用 Azure 監視器記錄來監視 HDInsight 叢集
 
@@ -39,7 +39,7 @@ ms.locfileid: "77063727"
 
   如需如何建立 HDInsight 叢集的指示，請參閱[開始使用 Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)。  
 
-* Azure PowerShell Az 模組。  請參閱[新的 Azure PowerShell Az 模組簡介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)。
+* Azure PowerShell Az 模組。  請參閱[新的 Azure PowerShell Az 模組簡介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)。 請確定您有最新版本。 如有必要，請執行 `Update-Module -Name Az`。
 
 > [!NOTE]  
 > 建議您將 HDInsight 叢集和 Log Analytics 工作區放在相同的區域中，以提升效能。 在所有 Azure 區域中都無法使用 Azure 監視器記錄。
@@ -62,7 +62,7 @@ ms.locfileid: "77063727"
 
 ## <a name="enable-azure-monitor-logs-by-using-azure-powershell"></a>使用 Azure PowerShell 啟用 Azure 監視器記錄
 
-您可以使用 Azure PowerShell Az module [AzHDInsightOperationsManagementSuite](https://docs.microsoft.com/powershell/module/az.hdinsight/enable-azhdinsightoperationsmanagementsuite) Cmdlet 來啟用 Azure 監視器記錄。
+您可以使用 Azure PowerShell Az module [AzHDInsightMonitoring](https://docs.microsoft.com/powershell/module/az.hdinsight/enable-azhdinsightmonitoring) Cmdlet 來啟用 Azure 監視器記錄。
 
 ```powershell
 # Enter user information
@@ -72,19 +72,32 @@ $LAW = "<your-Log-Analytics-workspace>"
 # End of user input
 
 # obtain workspace id for defined Log Analytics workspace
-$WorkspaceId = (Get-AzOperationalInsightsWorkspace -ResourceGroupName $resourceGroup -Name $LAW).CustomerId
+$WorkspaceId = (Get-AzOperationalInsightsWorkspace `
+                    -ResourceGroupName $resourceGroup `
+                    -Name $LAW).CustomerId
 
 # obtain primary key for defined Log Analytics workspace
-$PrimaryKey = (Get-AzOperationalInsightsWorkspace -ResourceGroupName $resourceGroup -Name $LAW | Get-AzOperationalInsightsWorkspaceSharedKeys).PrimarySharedKey
+$PrimaryKey = (Get-AzOperationalInsightsWorkspace `
+                    -ResourceGroupName $resourceGroup `
+                    -Name $LAW | Get-AzOperationalInsightsWorkspaceSharedKeys).PrimarySharedKey
 
-# Enables Operations Management Suite
-Enable-AzHDInsightOperationsManagementSuite -ResourceGroupName $resourceGroup -Name $cluster -WorkspaceId $WorkspaceId -PrimaryKey $PrimaryKey
+# Enables monitoring and relevant logs will be sent to the specified workspace.
+Enable-AzHDInsightMonitoring `
+    -ResourceGroupName $resourceGroup `
+    -Name $cluster `
+    -WorkspaceId $WorkspaceId `
+    -PrimaryKey $PrimaryKey
+
+# Gets the status of monitoring installation on the cluster.
+Get-AzHDInsightMonitoring `
+    -ResourceGroupName $resourceGroup `
+    -Name $cluster
 ```
 
-若要停用，請使用[AzHDInsightOperationsManagementSuite](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightoperationsmanagementsuite) Cmdlet：
+若要停用，請使用[AzHDInsightMonitoring](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightmonitoring) Cmdlet：
 
 ```powershell
-Disable-AzHDInsightOperationsManagementSuite -Name "<your-cluster>"
+Disable-AzHDInsightMonitoring -Name "<your-cluster>"
 ```
 
 ## <a name="install-hdinsight-cluster-management-solutions"></a>安裝 HDInsight 叢集管理解決方案

@@ -17,16 +17,14 @@ ms.date: 01/31/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 031890b389e78c4ca01e6d6ae52430db865ede2f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 8a847afa2253223ebe9450d350cd18f5f659e0e3
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931067"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159772"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft 身分識別平臺和 OAuth 2.0 授權碼流程
-
-[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
 OAuth 2.0 授權碼授與可用於裝置上所安裝的應用程式中，以存取受保護的資源，例如 Web API。 使用 OAuth 2.0 的 Microsoft 身分識別平臺執行，您可以將登入及 API 存取新增至您的行動和桌面應用程式。 本指南不限於特定語言，其中說明如何在不使用任何 [Azure 開放原始碼驗證程式庫](reference-v2-libraries.md)的情況下，傳送和接收 HTTP 訊息。
 
@@ -60,10 +58,10 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 
 > [!TIP]
-> 按一下下面的連結以執行此要求！ 登入之後，您的瀏覽器應重新導向至在位址列中有 `code` 的 `https://localhost/myapp/`。
+> 按一下下面的連結以執行此要求！ 登入之後，您的瀏覽器應重新導向至在位址列中有 `https://localhost/myapp/` 的 `code`。
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&state=12345" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 
-| 參數    | 必要/選用 | 說明 |
+| 參數    | 必要/選用 | 描述 |
 |--------------|-------------|--------------|
 | `tenant`    | required    | 要求路徑中的 `{tenant}` 值可用來控制可登入應用程式的人員。 允許的值為 `common`、`organizations`、`consumers` 及租用戶識別碼。 如需更多詳細資訊，請參閱 [通訊協定基本概念](active-directory-v2-protocols.md#endpoints)。  |
 | `client_id`   | required    | **應用程式（用戶端）識別碼**， [Azure 入口網站](https://go.microsoft.com/fwlink/?linkid=2083908)指派給您應用程式的應用程式註冊體驗。  |
@@ -75,7 +73,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `prompt`  | 選用    | 表示需要的使用者互動類型。 此時唯有 `login`、`none` 及 `consent` 是有效值。<br/><br/>- `prompt=login` 會強制使用者在該要求上輸入認證，否定單一登入。<br/>- `prompt=none` 相反，它會確保使用者不會看到任何互動式提示。 如果要求無法透過單一登入以無訊息方式完成，Microsoft 身分識別平臺端點會傳回 `interaction_required` 錯誤。<br/>- `prompt=consent` 會在使用者登入之後觸發 OAuth 同意對話方塊，詢問使用者是否要授與權限給應用程式。 |
 | `login_hint`  | 選用    | 如果您事先知道其使用者名稱，可用來預先填入使用者登入頁面的使用者名稱/電子郵件地址欄位。 通常應用程式會在重新驗證期間使用此參數，已經使用 `preferred_username` 宣告從上一個登入擷取使用者名稱。   |
 | `domain_hint`  | 選用    | 可以是 `consumers` 或 `organizations` 其中一個。<br/><br/>如果包含，它會略過使用者在登入頁面上經歷的以電子郵件為基礎的探索程式，以更有效率的方式提供更流暢的使用者體驗。 通常應用程式會在重新驗證 (擷取上一次登入的 `tid` ) 期間使用此參數。 如果 `tid` 宣告值是 `9188040d-6c67-4c5b-b112-36a304b66dad`，您應該使用 `domain_hint=consumers`。 否則，使用 `domain_hint=organizations`。  |
-| `code_challenge_method` | 選用    | 用來為 `code_challenge` 參數編碼 `code_verifier` 的方法。 可以是下列其中一個值：<br/><br/>- `plain` <br/>- `S256`<br/><br/>如果排除，則當包含 `code_challenge` 時，會假設 `code_challenge` 是純文字。 Microsoft 身分識別平臺同時支援 `plain` 和 `S256`。 如需詳細資訊，請參閱 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 |
+| `code_challenge_method` | 選用    | 用來為 `code_verifier` 參數編碼 `code_challenge` 的方法。 可以是下列其中一個值：<br/><br/>- `plain` <br/>- `S256`<br/><br/>如果排除，則當包含 `code_challenge` 時，會假設 `code_challenge` 是純文字。 Microsoft 身分識別平臺同時支援 `plain` 和 `S256`。 如需詳細資訊，請參閱 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 |
 | `code_challenge`  | 選用 | 用來透過來自原生用戶端的「代碼交換的證明金鑰」(PKCE) 保護授權碼授與。 如果包含 `code_challenge_method`，則為必要參數。 如需詳細資訊，請參閱 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 |
 
 此時，會要求使用者輸入其認證並完成驗證。 Microsoft 身分識別平臺端點也會確保使用者已同意 `scope` 查詢參數中指出的許可權。 如果使用者未曾同意這些權限的任何一項，就會要求使用者同意要求的權限。 [這裡提供權限、同意與多租用戶應用程式](v2-permissions-and-consent.md)的詳細資料。
@@ -92,7 +90,7 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
 &state=12345
 ```
 
-| 參數 | 說明  |
+| 參數 | 描述  |
 |-----------|--------------|
 | `code` | 應用程式要求的 authorization_code。 應用程式可以使用授權碼要求目標資源的存取權杖。 Authorization_codes 是短期的，通常會在大約10分鐘後到期。 |
 | `state` | 如果要求中包含狀態參數，回應中就應該出現相同的值。 應用程式應該確認要求和回應中的狀態值完全相同。 |
@@ -107,7 +105,7 @@ error=access_denied
 &error_description=the+user+canceled+the+authentication
 ```
 
-| 參數 | 說明  |
+| 參數 | 描述  |
 |----------|------------------|
 | `error`  | 用以分類發生的錯誤類型與回應錯誤的錯誤碼字串。 |
 | `error_description` | 協助開發人員識別驗證錯誤根本原因的特定錯誤訊息。 |
@@ -116,7 +114,7 @@ error=access_denied
 
 下表說明各種可能在錯誤回應的 `error` 參數中傳回的錯誤碼。
 
-| 錯誤碼  | 說明    | 用戶端動作   |
+| 錯誤碼  | 描述    | 用戶端動作   |
 |-------------|----------------|-----------------|
 | `invalid_request` | 通訊協定錯誤，例如遺漏必要的參數。 | 修正並重新提交要求。 這是通常會在初始測試期間擷取到的開發錯誤。 |
 | `unauthorized_client` | 不允許用戶端應用程式要求授權碼。 | 當用戶端應用程式未在 Azure AD 中註冊，或未新增至使用者的 Azure AD 租使用者時，通常會發生此錯誤。 應用程式可以對使用者提示關於安裝應用程式，並將它加入至 Azure AD 的指示。 |
@@ -130,7 +128,7 @@ error=access_denied
 
 ## <a name="request-an-access-token"></a>要求存取權杖
 
-取得 authorization_code 並獲得使用者授權之後，現在即可兌換所需資源之 `access_token` 的 `code`。 做法是將 `POST` 要求傳送給 `/token` 端點：
+取得 authorization_code 並獲得使用者授權之後，現在即可兌換所需資源之 `code` 的 `access_token`。 做法是將 `POST` 要求傳送給 `/token` 端點：
 
 ```
 // Line breaks for legibility only
@@ -150,7 +148,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > [!TIP]
 > 嘗試在 Postman 中執行這項要求！ （別忘了取代 `code`）[![嘗試在 Postman 中執行此要求](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
-| 參數  | 必要/選用 | 說明     |
+| 參數  | 必要/選用 | 描述     |
 |------------|-------------------|----------------|
 | `tenant`   | required   | 要求路徑中的 `{tenant}` 值可用來控制可登入應用程式的人員。 允許的值為 `common`、`organizations`、`consumers` 及租用戶識別碼。 如需更多詳細資訊，請參閱 [通訊協定基本概念](active-directory-v2-protocols.md#endpoints)。  |
 | `client_id` | required  | Azure 入口網站的應用程式（用戶端）識別碼，[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面指派給您的應用程式。 |
@@ -176,7 +174,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 }
 ```
 
-| 參數     | 說明   |
+| 參數     | 描述   |
 |---------------|------------------------------|
 | `access_token`  | 所要求的存取權杖。 應用程式可以使用這個權杖驗證受保護的資源，例如 Web API。  |
 | `token_type`    | 表示權杖類型值。 Azure AD 唯一支援的類型是 Bearer。 |
@@ -202,7 +200,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 }
 ```
 
-| 參數         | 說明    |
+| 參數         | 描述    |
 |-------------------|----------------|
 | `error`       | 用以分類發生的錯誤類型與回應錯誤的錯誤碼字串。 |
 | `error_description` | 協助開發人員識別驗證錯誤根本原因的特定錯誤訊息。 |
@@ -213,7 +211,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 ### <a name="error-codes-for-token-endpoint-errors"></a>權杖端點錯誤的錯誤碼
 
-| 錯誤碼         | 說明        | 用戶端動作    |
+| 錯誤碼         | 描述        | 用戶端動作    |
 |--------------------|--------------------|------------------|
 | `invalid_request`  | 通訊協定錯誤，例如遺漏必要的參數。 | 修正並重新提交要求   |
 | `invalid_grant`    | 授權碼或 PKCE 代碼驗證器無效或已過期。 | 嘗試向 `/authorize` 端點提出新的要求，並確認 code_verifier 參數正確。  |
@@ -239,7 +237,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 
 ## <a name="refresh-the-access-token"></a>重新整理存取權杖
 
-Access_token 有效期很短，且您必須在其到期後重新整理，才能繼續存取資源。 方法是：向 `/token` 端點送出另一個 `POST` 要求，這次提供 `refresh_token`，而不提供 `code`。  重新整理權杖對用戶端已同意的所有權限都有效，因此，對 `scope=mail.read` 要求所發出的重新整理權杖可用於向 `scope=api://contoso.com/api/UseResource` 要求新的存取權杖。  
+Access_token 有效期很短，且您必須在其到期後重新整理，才能繼續存取資源。 方法是：向 `POST` 端點送出另一個 `/token` 要求，這次提供 `refresh_token`，而不提供 `code`。  重新整理權杖對用戶端已同意的所有權限都有效，因此，對 `scope=mail.read` 要求所發出的重新整理權杖可用於向 `scope=api://contoso.com/api/UseResource` 要求新的存取權杖。  
 
 重新整理權杖並沒有指定的存留期。 一般而言，重新整理權杖的存留期相當長。 不過，在某些情況下，重新整理權杖會過期、遭到撤銷或對要執行的動作缺乏足夠的權限。 應用程式必須預期並正確處理[權杖發行端點所傳回的錯誤](#error-codes-for-token-endpoint-errors)。 
 
@@ -263,7 +261,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > 嘗試在 Postman 中執行這項要求！ （別忘了取代 `refresh_token`）[![嘗試在 Postman 中執行此要求](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 > 
 
-| 參數     |                | 說明        |
+| 參數     |                | 描述        |
 |---------------|----------------|--------------------|
 | `tenant`        | required     | 要求路徑中的 `{tenant}` 值可用來控制可登入應用程式的人員。 允許的值為 `common`、`organizations`、`consumers` 及租用戶識別碼。 如需更多詳細資訊，請參閱 [通訊協定基本概念](active-directory-v2-protocols.md#endpoints)。   |
 | `client_id`     | required    | **應用程式（用戶端）識別碼**， [Azure 入口網站](https://go.microsoft.com/fwlink/?linkid=2083908)指派給您應用程式的應用程式註冊體驗。 |
@@ -286,7 +284,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
     "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctOD...",
 }
 ```
-| 參數     | 說明         |
+| 參數     | 描述         |
 |---------------|-------------------------------------------------------------|
 | `access_token`  | 所要求的存取權杖。 應用程式可以使用這個權杖驗證受保護的資源，例如 Web API。 |
 | `token_type`    | 表示權杖類型值。 Azure AD 唯一支援的類型是 Bearer。 |
@@ -310,7 +308,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 }
 ```
 
-| 參數         | 說明                                                                                        |
+| 參數         | 描述                                                                                        |
 |-------------------|----------------------------------------------------------------------------------------------------|
 | `error`           | 用以分類發生的錯誤類型與回應錯誤的錯誤碼字串。 |
 | `error_description` | 協助開發人員識別驗證錯誤根本原因的特定錯誤訊息。           |

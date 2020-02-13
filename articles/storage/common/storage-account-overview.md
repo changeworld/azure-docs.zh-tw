@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5034aaaee335bbd87e7ea42b448e4e8fbf6aacca
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 11fdaa0d547e588daa9d264c2393606705554a17
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274551"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157258"
 ---
 # <a name="storage-account-overview"></a>儲存體帳戶概觀
 
@@ -115,11 +115,9 @@ Azure 儲存體提供不同的選項，以便根據使用量模式來存取區�
 > [!IMPORTANT]
 > 變更現有儲存體帳戶或 Blob 的存取層可能會導致額外的費用。 如需詳細資訊，請參閱[儲存體帳戶計費](#storage-account-billing)小節。
 
-## <a name="replication"></a>複寫
+## <a name="redundancy"></a>備援性
 
 [!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
-
-如需儲存體複寫的詳細資訊，請參閱 [Azure 儲存體複寫](storage-redundancy.md)。
 
 ## <a name="encryption"></a>加密
 

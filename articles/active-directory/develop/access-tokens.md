@@ -12,12 +12,12 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: bacac67ddd7f379d679a149fe9574676ae0c7567
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7d596292a823b4d912204f5cfbe8623ab7429fa3
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76834413"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161387"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft 身分識別平臺存取權杖
 
@@ -63,14 +63,14 @@ JWT 分成三個部分：
 
 各部分會以句點分隔 (`.`)，並各別以 Base64 編碼。
 
-如果有值可填入宣告時，宣告才會存在。 因此，您的應用程式不應該相依于目前存在的宣告。 例如 `pwd_exp` (不是每個租用戶都需要讓密碼到期) 或 `family_name` ([用戶端認證](v1-oauth2-client-creds-grant-flow.md)流程會代表應用程式，而這並沒有名稱)。 用於驗證存取權杖的宣告一律會存在。
+如果有值可填入宣告時，宣告才會存在。 因此，您的應用程式不應該相依于目前存在的宣告。 範例包括 `pwd_exp` （並非每個租使用者都需要密碼過期）或 `family_name` （用戶端認證（[v1.0、v2.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md) [）流程](v2-oauth2-client-creds-grant-flow.md)代表不含名稱的應用程式。 用於驗證存取權杖的宣告一律會存在。
 
 > [!NOTE]
 > 如果要重複使用權杖，某些宣告會用來協助 Azure AD 保護權杖。 這些宣告會在「不透明」描述中標示為不公開使用。 這些宣告可能會或可能不會出現在權杖中，而且可能會在沒有通知的情況下新增宣告。
 
 ### <a name="header-claims"></a>標頭宣告
 
-|宣告 | [格式] | 說明 |
+|宣告 | [格式] | 描述 |
 |--------|--------|-------------|
 | `typ` | 字串 - 一律為 "JWT" | 表示權杖是 JWT。|
 | `nonce` | String | 唯一識別碼，用來防範權杖重新執行攻擊。 您的資源可以記錄此值，以防止重新執行。 |
@@ -80,7 +80,7 @@ JWT 分成三個部分：
 
 ### <a name="payload-claims"></a>承載宣告
 
-| 宣告 | [格式] | 說明 |
+| 宣告 | [格式] | 描述 |
 |-----|--------|-------------|
 | `aud` | 字串，應用程式識別碼 URI | 識別權杖的預定接收者。 在 [識別碼權杖] 中，物件是您的應用程式識別碼，指派給您在 Azure 入口網站中的應用程式。 您的應用程式應驗證此值，並拒絕值不相符的權杖。 |
 | `iss` | 字串，STS URI | 識別建構並傳回權杖的 Security Token Service (STS)，以及在其中驗證使用者的 Azure AD 租用戶。 如果發出的權杖是 v2.0 權杖 (請參閱`ver`宣告)，URI 的結尾會是 `/v2.0`。 指出使用者是來自 Microsoft 帳戶之取用者使用者的 GUID 是 `9188040d-6c67-4c5b-b112-36a304b66dad`。 您的應用程式應該使用宣告的 GUID 部分來限制可登入應用程式的租用戶集合 (如果有的話)。 |
@@ -98,11 +98,11 @@ JWT 分成三個部分：
 | `preferred_username` | String | 代表使用者的主要使用者名稱。 它可以是電子郵件地址、電話號碼或未指定格式的一般使用者名稱。 其值是可變動的，並且可能隨著時間改變。 因為此值會變動，請勿用在授權決策。  但可以將它用於使用者名稱提示。 需要 `profile` 範圍才能接收此宣告。 |
 | `name` | String | 提供人類看得懂的值，用以識別權杖的主體。 此值不保證是唯一值，它是可變動的，並且在設計上僅用於顯示。 需要 `profile` 範圍才能接收此宣告。 |
 | `scp` | 字串，範圍的空格分隔清單 | 由您應用程式公開的範圍集合，用戶端應用程式已針對此集合要求 (和接收) 同意。 您的應用程式應確認這些範圍是由應用程式公開的有效範圍，並根據這些範圍的值做出授權決策。 僅包含於[使用者權杖](#user-and-application-tokens)中。 |
-| `roles` | 字串陣列，許可權清單 | 您的應用程式所公開的一組許可權，要求的應用程式或使用者已獲得呼叫的許可權。 針對[應用程式權杖](#user-and-application-tokens)，這會在[用戶端認證](v1-oauth2-client-creds-grant-flow.md)流程中用來取代使用者範圍。  對於[使用者權杖](#user-and-application-tokens)，這會填入使用者指派給目標應用程式的角色。 |
+| `roles` | 字串陣列，許可權清單 | 您的應用程式所公開的一組許可權，要求的應用程式或使用者已獲得呼叫的許可權。 針對[應用程式權杖](#user-and-application-tokens)，這會在用戶端認證[流程（v1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md) [、v2.0](v2-oauth2-client-creds-grant-flow.md)）中用來取代使用者範圍。  對於[使用者權杖](#user-and-application-tokens)，這會填入使用者指派給目標應用程式的角色。 |
 | `wids` | [RoleTemplateID](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids) guid 的陣列 | 代表指派給此使用者的租使用者範圍角色，從[[管理員角色] 頁面](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids)中的角色區段。  此宣告是透過[應用程式資訊清單](reference-app-manifest.md)的 `groupMembershipClaims` 屬性，以每個應用程式為基礎進行設定。  必須將它設定為 "All" 或 "DirectoryRole"。  可能不會出現在因權杖長度考慮而透過隱含流程取得的權杖中。 |
-| `groups` | GUID 的 JSON 陣列 | 提供代表主體群組成員資格的物件識別碼。 這些值都是唯一的 (請參閱「物件識別碼」)，而且可安全地用來管理存取權，例如強制授權以存取資源。 群組宣告中包含的群組會透過[應用程式資訊清單](reference-app-manifest.md)的 `groupMembershipClaims` 屬性，針對每個應用程式進行設定。 Null 值將會排除所有群組，"SecurityGroup" 值只會包含 Active Directory 安全性群組成員資格，而 "All" 值將會包含安全性群組和 Office 365 通訊群組清單。 <br><br>請參閱下面的 `hasgroups` 宣告，以取得使用 `groups` 宣告搭配隱含授與的詳細資訊。 <br>對於其他流程，如果使用者所屬的群組數目超過限制（SAML 為150，JWT 為200），則會將超額宣告新增至指向 AAD Graph 端點的宣告來源，其中包含使用者的群組清單。 |
+| `groups` | GUID 的 JSON 陣列 | 提供代表主體群組成員資格的物件識別碼。 這些值都是唯一的 (請參閱「物件識別碼」)，而且可安全地用來管理存取權，例如強制授權以存取資源。 群組宣告中包含的群組會透過`groupMembershipClaims`應用程式資訊清單[的 ](reference-app-manifest.md) 屬性，針對每個應用程式進行設定。 Null 值將會排除所有群組，"SecurityGroup" 值只會包含 Active Directory 安全性群組成員資格，而 "All" 值將會包含安全性群組和 Office 365 通訊群組清單。 <br><br>請參閱下面的 `hasgroups` 宣告，以取得使用 `groups` 宣告搭配隱含授與的詳細資訊。 <br>對於其他流程，如果使用者所屬的群組數目超過限制（SAML 為150，JWT 為200），則會將超額宣告新增至指向 AAD Graph 端點的宣告來源，其中包含使用者的群組清單。 |
 | `hasgroups` | Boolean | 如果有的話，一律為 `true`，表示使用者在至少一個群組中。 如果完整 groups 宣告會將 URI 片段延伸超出 URL 長度限制 (目前為 6 個或更多群組)，則使用於取代隱含授與流程中 JWT 的 `groups` 宣告。 表示用戶端應該使用 Graph 來判斷使用者的群組 (`https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects`)。 |
-| `groups:src1` | JSON 物件 | 若為沒有長度限制 (請參閱上面的 `hasgroups`) 但是對權杖而言仍然太大的權杖要求，則會包含使用者的完整 groups 清單連結。 在 JWT 中以分散式宣告形式取代 `groups` 宣告，在 SAML 中則以新宣告形式取代。 <br><br>**範例 JWT 值**： <br> `"groups":"src1"` <br> `"_claim_sources`：`"src1" : { "endpoint" : "https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects" }` |
+| `groups:src1` | JSON 物件 | 若為沒有長度限制 (請參閱上面的 `hasgroups`) 但是對權杖而言仍然太大的權杖要求，則會包含使用者的完整 groups 清單連結。 在 JWT 中以分散式宣告形式取代 `groups` 宣告，在 SAML 中則以新宣告形式取代。 <br><br>**範例 JWT 值**： <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects" }` |
 | `sub` | 字串，GUID | 權杖判斷提示其相關資訊的主體，例如應用程式的使用者。 這個值不可變，而且無法重新指派或重複使用。 它可用來安全地執行授權檢查 (例如當權杖用於存取資源時)，並可做為資料庫資料表中的索引鍵。 由於主體一律是存在於 Azure AD 所簽發的權杖中，因此建議您在一般用途的授權系統中使用此值。 不過，主體是成對識別碼，對於特定應用程式識別碼來說，主體是唯一的。 因此，如果單一使用者使用兩個不同的用戶端識別碼登入兩個不同的應用程式，這些應用程式會收到兩個不同的主體宣告值。 視您的架構和隱私權需求而定，這不一定是您想要的。 另請參閱 `oid` 宣告（這在租使用者內的應用程式中保持不變）。 |
 | `oid` | 字串，GUID | 物件在 Microsoft 身分識別平台中的不可變識別碼，在此案例為使用者帳戶。 它也可用來安全地執行授權檢查，以及做為資料庫資料表中的索引鍵。 此識別碼可跨應用程式唯一識別使用者，同一位使用者登入兩個不同的應用程式會在 `oid` 宣告中收到相同的值。 因此，在對 Microsoft 線上服務 (例如 Microsoft Graph) 進行查詢時可使用 `oid`。 Microsoft Graph 會傳回此識別碼做為指定[使用者帳戶](/graph/api/resources/user)的 `id` 屬性。 因為 `oid` 可讓多個應用程式相互關聯使用者，因此需要 `profile` 範圍才能接收此宣告。 請注意，如果單一使用者存在於多個租用戶，使用者將會在每個租用戶中包含不同的物件識別碼，它們會被視為不同帳戶，即使使用者使用相同認證來登入各個帳戶也是如此。 |
 | `tid` | 字串，GUID | 代表使用者是來自哪個 Azure AD 租用戶。 就工作和學校帳戶而言，GUID 是使用者所屬組織的不可變租用戶識別碼。 就個人帳戶而言，此值會是 `9188040d-6c67-4c5b-b112-36a304b66dad`。 需要 `profile` 範圍才能接收此宣告。 |
@@ -138,7 +138,7 @@ JWT 分成三個部分：
 
 下列宣告將會包含在 v1.0 權杖中（如果適用的話），但預設不會包含在 v2.0 權杖中。 如果您使用 v2.0，並且需要這些宣告的其中一個，請使用[選擇性宣告](active-directory-optional-claims.md)來要求它們。
 
-| 宣告 | [格式] | 說明 |
+| 宣告 | [格式] | 描述 |
 |-----|--------|-------------|
 | `ipaddr`| String | 從中進行使用者驗證的 IP 位址。 |
 | `onprem_sid`| 字串，採 [SID 格式](https://docs.microsoft.com/windows/desktop/SecAuthZ/sid-components) | 如果使用者具有內部部署驗證，此宣告會提供其 SID。 您可以使用 `onprem_sid` 取得繼承應用程式中的授權。|
@@ -154,7 +154,7 @@ JWT 分成三個部分：
 
 Microsoft 身分識別可透過不同的方式進行驗證，這可能與您的應用程式相關。 `amr` 宣告為陣列，其中可包含多個項目，例如 `["mfa", "rsa", "pwd"]`，適用於同時使用密碼和驗證器應用程式的驗證。
 
-| 值 | 說明 |
+| 值 | 描述 |
 |-----|-------------|
 | `pwd` | 密碼驗證，可以是使用者的 Microsoft 密碼或應用程式的用戶端祕密。 |
 | `rsa` | 驗證會以 RSA 金鑰證明為基礎，例如使用 [Microsoft Authenticator 應用程式](https://aka.ms/AA2kvvu)。 這包括驗證是否由具有服務擁有之 X509 憑證的自我簽署 JWT 完成。 |
@@ -172,7 +172,7 @@ Microsoft 身分識別可透過不同的方式進行驗證，這可能與您的�
 
 Azure AD 中介軟體已內建驗證存取權杖的功能，您可以瀏覽我們的[範例](https://docs.microsoft.com/azure/active-directory/active-directory-code-samples)，以找到您所選擇語言的範例。 如需如何明確地驗證 JWT 權杖的詳細資訊，請參閱[手動 JWT 驗證範例 (manual JWT validation sample)](https://github.com/Azure-Samples/active-directory-dotnet-webapi-manual-jwt-validation)。
 
-我們提供示範如何輕鬆處理權杖驗證的程式庫和程式碼範例。 下列資訊專門提供給想要了解基礎程序的人。 另外還有數個協力廠商開放原始碼程式庫可用於 JWT 驗證-幾乎每個平臺和語言都有至少一個選項。 如需有關 Azure AD 驗證程式庫和程式碼範例的詳細資訊，請參閱 [v1.0 驗證程式庫](active-directory-authentication-libraries.md)和 [v2.0 驗證程式庫](reference-v2-libraries.md)。
+我們提供示範如何輕鬆處理權杖驗證的程式庫和程式碼範例。 下列資訊專門提供給想要了解基礎程序的人。 另外還有數個協力廠商開放原始碼程式庫可用於 JWT 驗證-幾乎每個平臺和語言都有至少一個選項。 如需有關 Azure AD 驗證程式庫和程式碼範例的詳細資訊，請參閱 [v1.0 驗證程式庫](../azuread-dev/active-directory-authentication-libraries.md)和 [v2.0 驗證程式庫](reference-v2-libraries.md)。
 
 ### <a name="validating-the-signature"></a>驗證簽章
 
@@ -229,9 +229,9 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 
 ## <a name="user-and-application-tokens"></a>使用者和應用程式權杖
 
-您的應用程式可能會代表使用者接收權杖 (一般流程)，或直接從應用程式接收權杖 (透過[用戶端認證流程](v1-oauth2-client-creds-grant-flow.md))。 這些應用程式專用的權杖表示此呼叫來自應用程式，而且沒有使用者的支援。 這些權杖的處理大部分都相同，但其間有些差異：
+您的應用程式可能會代表使用者（一般[流程）或](v2-oauth2-client-creds-grant-flow.md)直接從應用程式（透過用戶端認證流程（[v1.0、v2.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md)））接收權杖。 這些應用程式專用的權杖表示此呼叫來自應用程式，而且沒有使用者的支援。 這些權杖的處理大部分都相同，但其間有些差異：
 
-* 僅限應用程式的權杖不會有 `scp` 宣告，而可能會有 `roles` 宣告。 這是會記錄應用程式權限 (而不是委派的權限) 的位置。 如需委派權限和應用程式權限的詳細資訊，請在 [v1.0](v1-permissions-and-consent.md) 和 [v2.0](v2-permissions-and-consent.md) 中參閱權限和同意。
+* 僅限應用程式的權杖不會有 `scp` 宣告，而可能會有 `roles` 宣告。 這是會記錄應用程式權限 (而不是委派的權限) 的位置。 如需委派和應用程式許可權的詳細資訊，請參閱許可權和[同意（v1.0](../azuread-dev/v1-permissions-consent.md) [、v2.0](v2-permissions-and-consent.md)）。
 * 許多人為特定的宣告都將遺失，例如 `name` 或 `upn`。
 * `sub` 和 `oid` 宣告會相同。 
 
@@ -257,7 +257,7 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 | 管理員重設密碼 | 已撤銷 | 已撤銷 | 保持運作 | 保持運作 | 保持運作 |
 | 使用者[透過 PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureadsignedinuserallrefreshtoken) \(英文\) 撤銷他們的重新整理權杖 | 已撤銷 | 已撤銷 | 已撤銷 | 已撤銷 | 已撤銷 |
 | 管理員[透過 PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken) \(英文\) 撤銷租用戶的所有重新整理權杖 | 已撤銷 | 已撤銷 |已撤銷 | 已撤銷 | 已撤銷 |
-| Web 上的[單一登出](v1-protocols-openid-connect-code.md#single-sign-out) | 已撤銷 | 保持運作 | 已撤銷 | 保持運作 | 保持運作 |
+| Web 上的單一登出[（v1.0](../azuread-dev/v1-protocols-openid-connect-code.md#single-sign-out)、 [v2.0](v2-protocols-oidc.md#single-sign-out) ） | 已撤銷 | 保持運作 | 已撤銷 | 保持運作 | 保持運作 |
 
 > [!NOTE]
 > 「非密碼型」登入是讓使用者不需輸入密碼就能取得它的方式。 例如，使用您的臉部搭配 Windows Hello、FIDO2 金鑰或 PIN。
@@ -269,4 +269,4 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 ## <a name="next-steps"></a>後續步驟
 
 * 深入了解 [Azure AD 中的 `id_tokens`](id-tokens.md)。
-* 了解 [v1.0](v1-permissions-and-consent.md)和 [v2.0](v2-permissions-and-consent.md) 中的權限與同意。
+* 瞭解許可權和[同意（v1.0](../azuread-dev/v1-permissions-consent.md) [、v2.0](v2-permissions-and-consent.md)）。

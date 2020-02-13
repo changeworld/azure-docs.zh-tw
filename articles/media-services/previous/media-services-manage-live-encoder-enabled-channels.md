@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: ec34ed723e9b0743a9a5fbbe6413659dd63b0e8a
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: a32624c37cd8ca7fbef9e38ca61de9369791dd25
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134917"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162526"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>使用 Azure 媒體服務執行即時串流，以建立多位元速率串流
 
@@ -31,7 +31,7 @@ ms.locfileid: "77134917"
 在 Azure 媒體服務 (AMS) 中， **通道** 代表一個管線，負責處理即時資料流內容。 **通道** 會以兩種方式之一收到即時輸入串流：
 
 * 內部部署即時編碼器會將單一位元速率串流傳送至通道，可以使用下列格式之一，以媒體服務執行即時編碼：RTMP 或 Smooth Streaming (分散的 MP4)。 通道接著會執行即時編碼，將連入的單一位元速率串流編碼成多位元速率 (自動調整) 視訊串流。 接到要求時，媒體服務會傳遞串流給客戶。
-* 內部部署即時編碼器會將多位元速率 **RTMP** 或 **Smooth Streaming** (分散式 MP4) 傳送到未啟用執行 AMS 即時編碼的通道。 內嵌的串流會通過 **通道**，而不需任何進一步處理。 此方法稱為 **傳遞**。 您可以使用下列輸出多位元速率 Smooth Streaming 的即時編碼器：MediaExcel、Ateme、Imagine Communications、Envivio、Cisco 和 Elemental。 下列即時編碼器會輸出 RTMP： Telestream Wirecast、Haivision、Teradek 和 Tricaster 編碼器。  即時編碼器也會將單一位元速率串流傳送至無法用於即時編碼的通道，但是不建議您使用此方法。 接到要求時，媒體服務會傳遞串流給客戶。
+* 內部部署即時編碼器會將多位元速率 **RTMP** 或 **Smooth Streaming** (分散式 MP4) 傳送到未啟用執行 AMS 即時編碼的通道。 內嵌的串流會通過 **通道**，而不需任何進一步處理。 此方法稱為 **傳遞**。 您可以使用下列輸出多位元速率 Smooth Streaming 的即時編碼器：MediaExcel、Ateme、Imagine Communications、Envivio、Cisco 和 Elemental。 下列即時編碼器會輸出 RTMP： [Telestream Wirecast](media-services-configure-wirecast-live-encoder.md)、Haivision、Teradek 和 Tricaster 編碼器。  即時編碼器也會將單一位元速率串流傳送至無法用於即時編碼的通道，但是不建議您使用此方法。 接到要求時，媒體服務會傳遞串流給客戶。
 
   > [!NOTE]
   > 使用傳遞方法是進行即時串流的最經濟實惠方式。
@@ -146,7 +146,7 @@ ms.locfileid: "77134917"
 * 44.1 kHz 範例速率
 * MPEG-2 樣式 ADTS 封裝
 * 建議的編碼器包括：
-* Telestream Wirecast
+* [Telestream Wirecast](media-services-configure-wirecast-live-encoder.md)
 * Flash Media Live Encoder
 
 #### <a name="single-bitrate-fragmented-mp4-smooth-streaming"></a>單一位元速率的分散 MP4 (Smooth Streaming)

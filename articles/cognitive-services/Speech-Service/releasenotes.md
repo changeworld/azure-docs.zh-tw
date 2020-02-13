@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 15a118dc72ae9ffc4b6c99b0e0b527a252d3ded8
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 235d8788b47355925d93cb3e3835d32e25c1b51f
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293584"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168152"
 ---
 # <a name="release-notes"></a>版本資訊
 
@@ -45,7 +45,7 @@ ms.locfileid: "76293584"
 
 - 請參閱上述重大變更底下的 `OpenSSL` 更新。 我們已修正 Linux 和 JAVA 中間歇性損毀和效能問題（在高負載下鎖定爭用）。 
 - JAVA：改善高並行處理案例中的物件關閉。
-- 已重構我們的 Nuget 套件。 我們已移除 lib 資料夾底下的三個 `Microsoft.CognitiveServices.Speech.core.dll` 和 `Microsoft.CognitiveServices.Speech.extension.kws.dll` 複本，讓 Nuget 套件的下載變得更小且更快速，而且我們已新增C++編譯一些原生應用程式所需的標頭。
+- 已重構我們的 NuGet 套件。 我們已移除 lib 資料夾底下的三個 `Microsoft.CognitiveServices.Speech.core.dll` 和 `Microsoft.CognitiveServices.Speech.extension.kws.dll` 複本，讓 NuGet 套件的下載變得更小且更快速，而且我們已新增C++編譯一些原生應用程式所需的標頭。
 - 已修正[這裡](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp)的快速入門範例。 這些會結束，而不會顯示 Linux、MacOS、Windows 上的「找不到麥克風」例外狀況。
 - 修正了具有長語音辨識的 SDK 損毀，會導致特定程式碼路徑（如[此範例](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/csharp/uwp/speechtotext-uwp)）。
 - 已修正 Azure Web 應用程式環境中的 SDK 部署錯誤，以解決[此客戶問題](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/396)。
@@ -75,7 +75,7 @@ ms.locfileid: "76293584"
 - 已新增 `FromHost()` API，以輕鬆搭配內部內部部署的容器和主權雲端使用。
 - 已新增語音辨識的自動來源語言偵測（以 JAVA C++和）
 - 已新增語音辨識的 `SourceLanguageConfig` 物件，用來指定預期的來來源語言（以C++JAVA 和）
-- 已透過 Nuget 和 Unity 套件，在 Windows （UWP）、Android 和 iOS 上新增 `KeywordRecognizer` 支援
+- 已透過 NuGet 和 Unity 套件，在 Windows （UWP）、Android 和 iOS 上新增 `KeywordRecognizer` 支援
 - 已新增遠端對話 JAVA API，以在非同步批次中執行對話轉譯。
 
 **重大變更**
@@ -467,7 +467,7 @@ ms.locfileid: "76293584"
 
 **重大變更**
 
-- 在 C# 中已從 `SpeechRecognitionResult.RecognizedText` 變更為 `SpeechRecognitionResult.Text`。
+- 在 C# 中已從 `SpeechRecognitionResult.Text` 變更為 `SpeechRecognitionResult.RecognizedText`。
 
 **錯誤修正**
 

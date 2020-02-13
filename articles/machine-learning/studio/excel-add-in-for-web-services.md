@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: f7b5ca7112a6fb79586dc66b385e8015fe10e0b0
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: cb91d51770c15914ff23e839cef8e7626ffd241f
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153446"
+ms.locfileid: "77168626"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>適用于 Azure Machine Learning Studio （傳統） web 服務的 Excel 增益集
 Excel 可以讓您直接輕鬆呼叫 Web 服務，而不需要撰寫任何程式碼。
@@ -74,7 +74,7 @@ Excel 可以讓您直接輕鬆呼叫 Web 服務，而不需要撰寫任何程式
 5. 按一下 [新增 Web 服務]。
 6. 將 URL 貼到標示為 [URL]的 Excel 增益集文字方塊中。
 7. 將 API/主要金鑰貼到標示為 [API 金鑰]的文字方塊中。
-8. 按一下 [加入]。
+8. 按一下 [新增]。
    
     ![傳統 Web 服務的 URL 和 API 金鑰。](./media/excel-add-in-for-web-services/image6.png)
 9. 若要使用 Web 服務，請遵循前述「使用現有 Web 服務的步驟」的指示。
