@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/06/2019
-ms.openlocfilehash: 179bb5c9d718a556b829af8f860cb284597835aa
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 34f102b43de669b5ea03324db47ac4dfcb554133
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821899"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190750"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Azure SQL Database 中的自動調整
 
@@ -78,6 +78,13 @@ Azure SQL Database 中可用的自動調整選項有：
 如果您要透過 T-sql 套用微調建議，則無法使用自動效能驗證和反轉機制。 以這種方式套用的建議將維持作用中狀態，並顯示于24-48 小時的微調建議清單中。 系統自動將其收回之前。 如果您想要更快移除建議，可以將它從 Azure 入口網站中捨棄。
 
 自動微調選項可以針對每個資料庫個別地啟用或停用，或可以在 SQL Database 伺服器上設定，並在從伺服器繼承設定的每個資料庫上套用。 SQL Database 伺服器可以繼承 Azure 的自動調整設定預設值。 Azure 預設值此時會設為已啟用 FORCE_LAST_GOOD_PLAN 和 CREATE_INDEX，且已停用 DROP_INDEX。
+
+> [!IMPORTANT]
+> 從3月起2020，自動調整的 Azure 預設值變更將會生效，如下所示：
+> - 新的 Azure 預設值將會 FORCE_LAST_GOOD_PLAN = 已啟用，CREATE_INDEX = 已停用，且 DROP_INDEX = 已停用。
+> - 未設定自動調整喜好設定的現有伺服器會自動以新的 Azure 預設值進行設定。 這適用于目前在未定義狀態下自動調整的所有客戶。
+> - 新建立的伺服器會自動使用新的 Azure 預設值來設定（不同于先前在建立新伺服器時，自動調整設定處於未定義狀態）。
+>
 
 在伺服器上設定自動調整選項，並繼承屬於父代伺服器的資料庫設定，是設定自動調整的建議方法，因為這可簡化大量資料庫的自動調整選項管理。
 

@@ -14,20 +14,21 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 00262b48b8fa2fd1292554155e8ec8e933d886e6
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 502d1fe599accb29ccc99c9e527f8d1c8e1d52b8
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690899"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201812"
 ---
 # <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>變更 Azure 中 SQL Server 虛擬機器的授權模型
 本文說明如何使用新的 SQL VM 資源提供者**microsoft.sqlvirtualmachine**，在 Azure 中變更 SQL Server 虛擬機器（VM）的授權模型。
 
-裝載 SQL Server 的 VM 有兩種授權模式：隨用隨付和 Azure Hybrid Benefit。 您可以使用 Azure 入口網站、Azure CLI 或 PowerShell 來修改 SQL Server VM 的授權模型。 
+裝載 SQL Server 的 VM 有三種授權模式：隨用隨付、Azure Hybrid Benefit 和嚴重損壞修復（DR）。 您可以使用 Azure 入口網站、Azure CLI 或 PowerShell 來修改 SQL Server VM 的授權模型。 
 
-隨用隨付模型表示執行 Azure VM 的每秒成本，包括 SQL Server 授權的成本。
-[Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)可讓您將自己的 SQL Server 授權與執行 SQL SERVER 的 VM 搭配使用。 
+- **隨用隨付**模型表示執行 Azure VM 的每秒成本，包括 SQL Server 授權的成本。
+- [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)可讓您將自己的 SQL Server 授權與執行 SQL SERVER 的 VM 搭配使用。 
+- 「嚴重損壞**修復**授權類型」用於 Azure 中的[免費 DR 複本](virtual-machines-windows-sql-high-availability-dr.md#free-dr-replica-in-azure)。 
 
 Azure Hybrid Benefit 允許在 Azure 虛擬機器上使用具有軟體保證（「合格授權」）的 SQL Server 授權。 使用 Azure Hybrid Benefit，客戶不需支付在 VM 上使用 SQL Server 授權的費用。 但它們仍然必須支付基礎雲端計算成本（也就是基本費率）、儲存體和備份的費用。 他們也必須支付與服務使用相關聯的 i/o （如適用）。
 
@@ -50,7 +51,7 @@ Azure Hybrid Benefit 允許在 Azure 虛擬機器上使用具有軟體保證（�
 - [軟體保證](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default)是使用[Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)的需求。 
 
 
-## <a name="change-the-license-for-vms-already-registered-with-the-resource-provider"></a>變更已向資源提供者註冊之 Vm 的授權 
+## <a name="vms-already-registered-with-the-resource-provider"></a>已向資源提供者註冊的 Vm 
 
 # <a name="portaltabazure-portal"></a>[入口網站](#tab/azure-portal)
 
@@ -70,7 +71,8 @@ Azure Hybrid Benefit 允許在 Azure 虛擬機器上使用具有軟體保證（�
 
 您可以使用 Azure CLI 來變更您的授權模型。  
 
-下列程式碼片段會將您的隨用隨付授權模型切換為自備授權（或使用 Azure Hybrid Benefit）：
+
+**Azure 混合式權益**
 
 ```azurecli-interactive
 # Switch your SQL Server VM license from pay-as-you-go to bring-your-own
@@ -79,7 +81,7 @@ Azure Hybrid Benefit 允許在 Azure 虛擬機器上使用具有軟體保證（�
 az sql vm update -n <VMName> -g <ResourceGroupName> --license-type AHUB
 ```
 
-下列程式碼片段會將您的自備授權模型切換成隨用隨付： 
+**隨用隨付**： 
 
 ```azurecli-interactive
 # Switch your SQL Server VM license from bring-your-own to pay-as-you-go
@@ -88,28 +90,45 @@ az sql vm update -n <VMName> -g <ResourceGroupName> --license-type AHUB
 az sql vm update -n <VMName> -g <ResourceGroupName> --license-type PAYG
 ```
 
+**嚴重損壞修復（DR）**
+
+```azurecli-interactive
+# Switch your SQL Server VM license from bring-your-own to pay-as-you-go
+# example: az sql vm update -n AHBTest -g AHBTest --license-type DR
+
+az sql vm update -n <VMName> -g <ResourceGroupName> --license-type DR
+```
+
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
 您可以使用 PowerShell 來變更您的授權模型。
 
-下列程式碼片段會將您的隨用隨付授權模型切換為自備授權（或使用 Azure Hybrid Benefit）：
+**Azure Hybrid Benefit**
 
 ```powershell-interactive
 # Switch your SQL Server VM license from pay-as-you-go to bring-your-own
 Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -LicenseType AHUB
 ```
 
-下列程式碼片段會將您的自備授權模型切換成隨用隨付：
+**隨用隨付**
 
 ```powershell-interactive
 # Switch your SQL Server VM license from bring-your-own to pay-as-you-go
 Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -LicenseType PAYG
 ```
 
+**災害復原** 
+
+```powershell-interactive
+# Switch your SQL Server VM license from bring-your-own to pay-as-you-go
+Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -LicenseType DR
+```
+
 ---
 
-## <a name="change-the-license-for-vms-not-registered-with-the-resource-provider"></a>變更未向資源提供者註冊之 Vm 的授權
+## <a name="vms-not-registered-with-the-resource-provider"></a>未向資源提供者註冊的 Vm
 
-如果您從隨用隨付 Azure Marketplace 映射布建 SQL Server VM，則 SQL Server 授權類型將會是隨用隨付。 如果您使用來自 Azure Marketplace 的自備授權映射來布建 SQL Server VM，授權類型將會是 AHUB。 從預設布建的所有 SQL Server Vm （隨用隨付）或自備授權 Azure Marketplace 映射都會自動向 SQL VM 資源提供者註冊，因此他們可以變更[授權類型](#change-the-license-for-vms-already-registered-with-the-resource-provider)。
+如果您從隨用隨付 Azure Marketplace 映射布建 SQL Server VM，則 SQL Server 授權類型將會是隨用隨付。 如果您使用來自 Azure Marketplace 的自備授權映射來布建 SQL Server VM，授權類型將會是 AHUB。 從預設布建的所有 SQL Server Vm （隨用隨付）或自備授權 Azure Marketplace 映射都會自動向 SQL VM 資源提供者註冊，因此他們可以變更[授權類型](#vms-already-registered-with-the-resource-provider)。
 
 您僅有資格透過 Azure Hybrid Benefit 在 Azure VM 上自行安裝 SQL Server。 您應將 SQL Server 授權設定為 Azure Hybrid Benefit，以向[SQL VM 資源提供者註冊這些 vm](virtual-machines-windows-sql-register-with-resource-provider.md) ，以根據 Microsoft 產品條款指出 Azure Hybrid Benefit 的使用方式。
 

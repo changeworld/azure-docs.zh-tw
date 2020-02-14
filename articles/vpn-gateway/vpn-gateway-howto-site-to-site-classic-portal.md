@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 02/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: 298d720d3848f27b18aa24897357dfaa47a12a70
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: e386e5fc9c4d62266e0ca23869bf30ccaffeb91d
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863718"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201555"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>使用 Azure 入口網站建立站對站連線 (傳統)
 
@@ -39,7 +39,7 @@ ms.locfileid: "75863718"
 * 確定您有相容的 VPN 裝置以及能夠對其進行設定的人員。 如需相容 VPN 裝置和裝置組態的詳細資訊，請參閱[關於 VPN 裝置](vpn-gateway-about-vpn-devices.md)。
 * 確認您的 VPN 裝置有對外開放的公用 IPv4 位址。
 * 如果您不熟悉位於內部部署網路組態的 IP 位址範圍，您需要與能夠提供那些詳細資料的人協調。 當您建立此組態時，您必須指定 IP 位址範圍的首碼，以供 Azure 路由傳送至您的內部部署位置。 內部部署網路的子網路皆不得與您所要連線的虛擬網路子網路重疊。
-* 目前需要 PowerShell，才能指定共用金鑰及建立 VPN 閘道連線。 安裝最新版的 Azure 服務管理 (SM) PowerShell Cmdlet。 若要安裝 Cmdlet，請參閱[服務管理](/powershell/azure/servicemanagement/install-azure-ps)。 如需 PowerShell 一般安裝的詳細資訊，請參閱[如何安裝和設定 Azure PowerShell](/powershell/azure/overview)。 使用 PowerShell 進行這項設定時，請確定您是以系統管理員身分執行。
+* 需要 PowerShell，才能指定共用金鑰及建立 VPN 閘道連線。 [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
 ### <a name="values"></a>此練習的範例組態值
 
@@ -72,7 +72,7 @@ ms.locfileid: "75863718"
 1. 透過瀏覽器瀏覽至 [Azure 入口網站](https://portal.azure.com) ，並視需要使用您的 Azure 帳戶登入。
 2. 按一下 [ *+ 建立資源*]。 在 [搜尋 Marketplace] 欄位中，輸入「虛擬網路」。 在傳回的清單中找到 [虛擬網路]，並按一下以開啟 [虛擬網路] 頁面。
 3. 按一下 **[（變更為傳統）** ]，然後按一下 [**建立**]。
-4. 在 [建立虛擬網路 (傳統)] 頁面上進行 VNet 設定。 在此頁面上，您會新增您的第一個位址空間和單一子網路位址範圍。 完成 VNet 建立之後，您可以返回並新增其他子網路和位址空間。
+4. 在 [建立虛擬網路 (傳統)] 頁面上進行 VNet 設定。 在此頁面上，您會新增您的第一個位址空間和單一子網路位址範圍。 建立 VNet 之後，您可以返回並新增額外的子網和位址空間。
 
    ![[建立虛擬網路] 頁面](./media/vpn-gateway-howto-site-to-site-classic-portal/createvnet.png "建立虛擬網路頁面")
 5. 確認 [訂用帳戶] 正確無誤。 您可以使用下拉式清單變更訂用帳戶。
@@ -159,23 +159,24 @@ DNS 設定不是 S2S 組態的必要部分，但如果您想要名稱解析，�
 
 ### <a name="step-1-connect-to-your-azure-account"></a>步驟 1： 連線至您的 Azure 帳戶
 
-您必須使用 PowerShell 服務管理模組，在本機執行這些命令。 若要切換至服務管理，請使用下列命令：
+您必須使用 PowerShell 服務管理模組，在本機執行這些命令。 
 
-```powershell
-azure config mode asm
-```
+1. 以更高的許可權開啟 PowerShell 主控台。 若要切換至服務管理，請使用下列命令：
 
-1. 以提高的權限開啟 PowerShell 主控台並連接到您的帳戶。 使用下列範例來協助您連接：
+   ```powershell
+   azure config mode asm
+   ```
+2. 連線至您的帳戶。 使用下列範例來協助您連接：
 
    ```powershell
    Add-AzureAccount
    ```
-2. 檢查帳戶的訂用帳戶。
+3. 檢查帳戶的訂用帳戶。
 
    ```powershell
    Get-AzureSubscription
    ```
-3. 如果您有多個訂用帳戶，請選取您要使用的訂用帳戶。
+4. 如果您有多個訂用帳戶，請選取您要使用的訂用帳戶。
 
    ```powershell
    Select-AzureSubscription -SubscriptionId "Replace_with_your_subscription_ID"

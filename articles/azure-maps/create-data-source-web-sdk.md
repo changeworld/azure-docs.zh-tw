@@ -9,35 +9,35 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen
-ms.openlocfilehash: 74b45d3f7fa7d0e13b8767d4a887d8a22cad3a30
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 1675d63fd3a65beda46042f4a78535bb4e066e62
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911722"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190239"
 ---
 # <a name="create-a-data-source"></a>建立資料來源
 
-Azure 地圖服務 Web SDK 會將資料儲存在資料來源中，以將資料優化以進行查詢和呈現。 目前有兩種類型的資料來源：
+Azure 地圖服務 Web SDK 會將資料儲存在資料來源中。 使用資料來源可將資料作業優化以進行查詢和呈現。 目前有兩種類型的資料來源：
 
 **GeoJSON 資料來源**
 
-以 GeoJSON 為基礎的資料來源可以使用 `DataSource` 類別，在本機載入及儲存資料。 您可以使用 GeoJSON 資料，以[資料](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data)命名空間中的 helper 類別手動建立或建立。 `DataSource` 類別提供匯入本機或遠端 GeoJSON 檔案的功能。 遠端 GeoJSON 檔必須裝載在啟用 CORs 的端點上。 `DataSource` 類別提供群集點資料的功能。 您可以使用 `DataSource` 類別，輕鬆地新增、移除和更新資料。
+以 GeoJSON 為基礎的資料來源會使用 `DataSource` 類別，在本機載入及儲存資料。 您可以使用 GeoJSON 資料，以[資料](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data)命名空間中的 helper 類別手動建立或建立。 `DataSource` 類別提供匯入本機或遠端 GeoJSON 檔案的功能。 遠端 GeoJSON 檔必須裝載在啟用 CORs 的端點上。 `DataSource` 類別提供群集點資料的功能。 而且，您可以使用 `DataSource` 類別，輕鬆地新增、移除和更新資料。
 
 
 > [!TIP]
-> 如果您想要覆寫 `DataSource`中的所有資料，當您呼叫 `clear` 然後 `add` 函式時，對應會嘗試重新轉譯兩次，這可能會造成延遲。 請改用 `setShapes` 函式，此函式會移除並取代資料來源中的所有資料，而且只會觸發地圖的單一重新呈現。
+> 讓我們假設您想要覆寫 `DataSource`中的所有資料。 如果您對 `clear` 進行呼叫，然後 `add` 函式，則對應可能會重新轉譯兩次，這可能會造成一些延遲。 改為使用 `setShapes` 函式，這將會移除並取代資料來源中的所有資料，而且只會觸發地圖的單一重新呈現。
 
 **向量圖格來源**
 
-向量圖格來源說明如何存取向量圖格圖層，並可使用[VectorTileSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.vectortilesource)類別來建立。 Azure 地圖服務與[Mapbox 向量磚規格](https://github.com/mapbox/vector-tile-spec)一致，這是一種開放標準。 向量圖格圖層與磚圖層相似，而不是每個磚都是點陣影像，而是包含向量地圖資料的壓縮檔案（PBF 格式），以及一或多個圖層，可以根據每個圖層的樣式在用戶端上呈現和設定樣式。 [向量] 磚中的資料會以點、線條和多邊形的形式包含地理特徵。 向量圖格圖層的幾個優點是透過點陣磚圖層;
+向量圖格來源會說明如何存取向量磚圖層。 使用[VectorTileSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.vectortilesource)類別來具現化向量圖格來源。 向量圖格圖層與磚圖層相似，但它們並不相同。 圖格圖層是一個點陣影像。 向量圖格圖層是壓縮檔案，格式為 PBF。 此壓縮檔案包含向量對應資料，以及一或多個圖層。 檔案可以根據每個圖層的樣式，在用戶端上呈現和樣式化。 [向量] 磚中的資料會以點、線條和多邊形的形式包含地理特徵。 使用向量圖格圖層，而不是點陣磚圖層有數個優點：
 
- - [向量] 磚的檔案大小通常會比對等的 [點陣] 磚小很多。 因此，會使用較少的頻寬，這表示延遲較低，而且對應速度更快。 這會產生更佳的使用者體驗。
- - 由於向量圖格會在用戶端上轉譯，因此可以適應其顯示所在裝置的解析度。 這可讓呈現的對應更妥善地定義，並具有 crystal clear 標籤。 
- - 變更向量對應中的資料樣式並不需要再次下載資料，因為新的樣式可以套用至用戶端。 相反地，變更點陣磚圖層的樣式通常需要從已套用新樣式的伺服器載入磚。
- - 由於資料是以向量形式傳遞，因此需要較少的伺服器端處理來準備資料，這表示較新的資料可以更快速地提供。
+ - [向量] 磚的檔案大小通常會比對等的 [點陣] 磚小很多。 因此，會使用較少的頻寬。 這表示較低的延遲、更快速的對應，以及更佳的使用者體驗。
+ - 由於向量圖格會在用戶端上呈現，因此會根據其顯示的裝置解析度進行調整。 如此一來，呈現的對應會以 crystal clear 標籤的方式更妥善定義。
+ - 變更向量對應中的資料樣式不需要再次下載資料，因為新的樣式可以套用至用戶端。 相反地，變更點陣磚圖層的樣式通常需要從伺服器載入磚，然後套用新的樣式。
+ - 因為資料是以向量形式傳遞，所以準備資料需要較少的伺服器端處理。 因此，較新的資料可以更快速地提供。
 
-使用向量來源的所有圖層都必須指定 `sourceLayer` 值。 
+使用向量來源的所有圖層都必須指定 `sourceLayer` 值。
 
 建立之後，您可以透過 `map.sources` 屬性（ [SourceManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.sourcemanager)）將資料來源加入至對應。 下列程式碼示範如何建立 `DataSource`，並將它新增至地圖。
 
@@ -47,17 +47,19 @@ var dataSource = new atlas.source.DataSource();
 map.sources.add(dataSource);
 ```
 
+Azure 地圖服務遵守[Mapbox Vector 磚規格](https://github.com/mapbox/vector-tile-spec)，這是一種開放標準。
+
 ## <a name="connecting-a-data-source-to-a-layer"></a>將資料來源連接至圖層
 
-資料會使用呈現層在地圖上轉譯。 單一資料來源可由一或多個呈現層參考。 下列轉譯圖層要求資料來源必須具備強大的電源：
+資料會使用呈現層在地圖上轉譯。 單一資料來源可由一或多個呈現層參考。 下列呈現層需要資料來源：
 
 - 反升[層](map-add-bubble-layer.md)-將點資料轉譯為地圖上的縮放圓形。
-- [符號圖層](map-add-pin.md)-以圖示和（或）文字呈現點資料。
+- [符號圖層](map-add-pin.md)-以圖示或文字呈現點資料。
 - [熱度圖圖層](map-add-heat-map-layer.md)-以密度熱度圖呈現點資料。
-- [線條圖層](map-add-shape.md)-可以用來呈現線條和多邊形的外框。 
+- [線條圖層](map-add-shape.md)-呈現線條和或呈現多邊形的外框。 
 - [多邊形圖層](map-add-shape.md)-以純色或影像模式填滿多邊形的區域。
 
-下列程式碼示範如何建立資料來源、將它加入至地圖，並將它連接到反升圖層，然後將 GeoJSON 點資料從遠端位置匯入其中。 
+下列程式碼會示範如何建立資料來源、將它加入至地圖，並將它連接到反升圖層。 然後，將 GeoJSON 點資料從遠端位置匯入資料來源。 
 
 ```javascript
 //Create a data source and add it to the map.
@@ -71,20 +73,20 @@ map.layers.add(new atlas.layer.BubbleLayer(datasource));
 datasource.importDataFromUrl('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson');
 ```
 
-還有其他轉譯層不會連接到這些資料來源，而是會載入它們直接呈現的資料。 
+還有其他轉譯層不會連接到這些資料來源，但它們會直接載入資料以進行呈現。 
 
 - [影像圖層](map-add-image-layer.md)-在地圖上將單一影像重迭，並將其角落系結至一組指定的座標。
 - 圖格[圖層](map-add-tile-layer.md)-在地圖上方 superimposes 點陣磚圖層。
 
 ## <a name="one-data-source-with-multiple-layers"></a>一個具有多個層級的資料來源
 
-多個層級可以連接到單一資料來源。 這聽起來可能會很奇怪，但有許多不同的案例會變得非常有用。 例如，建立多邊形繪圖體驗的案例。 當使用者繪製多邊形時，我們應該在使用者將點加入地圖時，轉譯填滿多邊形區域。 加入概述多邊形的樣式線，可讓您更輕鬆地查看繪製多邊形的邊緣。 最後，在多邊形中的每個位置上方加入某種控制碼，例如釘選或標記，可讓您更輕鬆地編輯每個個別位置。 以下是示範此案例的影像。
+多個層級可以連接到單一資料來源。 在許多不同的案例中，此選項很有用。 例如，請考慮使用者繪製多邊形的案例。 當使用者將點新增至地圖時，應該呈現並填滿多邊形區域。 加入樣式的線條以勾勒出多邊形，可讓您在使用者繪製時，更輕鬆地看到多邊形的邊緣。 為了方便編輯多邊形中的個別位置，我們可以在每個位置上方加入一個控點，例如釘選或標記。
 
 ![顯示從單一資料來源轉譯資料之多個圖層的地圖](media/create-data-source-web-sdk/multiple-layers-one-datasource.png)
 
-若要在大部分的對應平臺中完成這個案例，您必須為多邊形中的每個位置建立多邊形物件、線條物件和釘選。 當多邊形已修改時，您必須手動更新線條和 pin，這可能很快就會變得複雜。
+在大部分的對應平臺中，您需要多邊形物件、線條物件，以及多邊形中每個位置的釘選。 修改多邊形時，您必須手動更新線條和 pin，這可能很快就會變得複雜。
 
-有了 Azure 地圖服務，您只需要資料來源中的單一多邊形，如下列程式碼所示。
+使用 Azure 地圖服務，您只需要資料來源中的單一多邊形，如下列程式碼所示。
 
 ```javascript
 //Create a data source and add it to the map.

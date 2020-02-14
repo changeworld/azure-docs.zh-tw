@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
-ms.openlocfilehash: c0aa33cce8dc163722557b1ef868cf0de8bea8fe
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1c2db107302e4851641ef430db61ec9b29ee151f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928739"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187469"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>針對 SSIS 整合執行時間中的封裝執行進行疑難排解
 
@@ -142,7 +142,7 @@ ms.locfileid: "74928739"
 
 ### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-the-requested-ole-db-provider--is-not-registered-if-the-64-bit-driver-is-not-installed-run-the-package-in-32-bit-mode"></a>錯誤訊息：「臨時工作錯誤： ErrorCode：2906，ErrorMessage：封裝執行失敗。，輸出： {"OperationErrorMessages"： "錯誤：要求的 OLE DB 提供者 .。。未註冊。 如果未安裝64位驅動程式，請以32位模式執行套件 ...」
 
-請確定您的套件中 OLE DB 連接器所使用的對應提供者已正確安裝在自我裝載整合執行時間電腦上。 如需更多詳細資料，請參閱[設定自我裝載 IR 作為 AZURE SSIS IR 在 ADF 中的 proxy](self-hosted-integration-runtime-proxy-ssis.md#prepare-self-hosted-ir)
+請確定您的套件中 OLE DB 連接器所使用的對應提供者已正確安裝在自我裝載整合執行時間電腦上。 如需更多詳細資料，請參閱[設定自我裝載 IR 作為 AZURE SSIS IR 在 ADF 中的 proxy](self-hosted-integration-runtime-proxy-ssis.md#prepare-the-self-hosted-ir)
 
 ### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-systemiofileloadexception-could-not-load-file-or-assembly-microsoftwindowsazurestorage-version-cultureneutral-publickeytoken31bf3856ad364e35-or-one-of-its-dependencies-the-located-assemblys-manifest-definition-does-not-match-the-assembly-reference"></a>錯誤訊息：「暫存工作錯誤： ErrorCode：2906，ErrorMessage：封裝執行失敗。，輸出： {"OperationErrorMessages"： "錯誤： FileLoadException：無法載入檔案或元件 ' Windowsazure.storage。儲存體，版本 = ...，Culture = 中性，PublicKeyToken = 31bf3856ad364e35 ' 或其相依性的其中之一。 找不到元件的資訊清單定義與元件參考不符。」..."
 
@@ -157,7 +157,7 @@ ms.locfileid: "74928739"
 
 ### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>錯誤訊息：「暫存工作狀態：失敗。 暫存工作錯誤： ErrorCode：2906，ErrorMessage：封裝執行失敗。，輸出： {"OperationErrorMessages"： "SSIS 執行程式結束代碼：-1. \ n"，"LogLocation"： "...\\SSISTelemetry\\ExecutionLog\\..."，"effectiveIntegrationRuntime"： "..."，"executionDuration"： ...，"durationInQueue"： {"integrationRuntimeQueue"： ...}} "
 
-請確定 Visual C++ runtime 已安裝在自我裝載整合執行時間電腦上。 如需更多詳細資料，請參閱[設定自我裝載 IR 作為 AZURE SSIS IR 在 ADF 中的 proxy](self-hosted-integration-runtime-proxy-ssis.md#prepare-self-hosted-ir)
+請確定 Visual C++ runtime 已安裝在自我裝載整合執行時間電腦上。 如需更多詳細資料，請參閱[設定自我裝載 IR 作為 AZURE SSIS IR 在 ADF 中的 proxy](self-hosted-integration-runtime-proxy-ssis.md#prepare-the-self-hosted-ir)
 
 ### <a name="multiple-package-executions-are-triggered-unexpectedly"></a>未預期地觸發多個封裝執行
 

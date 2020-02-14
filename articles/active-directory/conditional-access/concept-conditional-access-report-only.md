@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 02/11/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4289f4870ca03657afabec07049b3333412f3899
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 75880f4c533a503852d62ff940e53d4bcc30d218
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180325"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186109"
 ---
 # <a name="what-is-conditional-access-report-only-mode"></a>什麼是條件式存取報告專用模式？
 
@@ -25,7 +25,8 @@ ms.locfileid: "73180325"
 僅限報告模式是新的條件式存取原則狀態，可讓系統管理員在其環境中啟用條件式存取原則之前，先評估其影響。  使用僅限報表模式的版本：
 
 - 條件式存取原則可以在僅限報表模式中啟用。
-- 在登入期間，會評估僅限報表模式中的原則，但不會強制執行。 結果會記錄在登入記錄詳細資料的 [**條件式存取**] 和 [**僅報告（預覽）** ] 索引標籤中。
+- 在登入期間，會評估僅限報表模式中的原則，但不會強制執行。
+- 結果會記錄在登入記錄詳細資料的 [**條件式存取**] 和 [**僅報告（預覽）** ] 索引標籤中。
 - 具有 Azure 監視器訂用帳戶的客戶可以使用條件式存取深入解析活頁簿，來監視其條件式存取原則的影響。
 
 > [!WARNING]

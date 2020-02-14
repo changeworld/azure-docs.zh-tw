@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: 1c3fc4ebaffe2347a9c46b626b94042d1c9cfe11
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: df4ec6ddbba029eb29d2440717697968f8c79302
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031851"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191058"
 ---
-# <a name="troubleshoot-private-endpoint-connectivity-problems"></a>針對私用端點連線問題進行疑難排解
+# <a name="troubleshoot-private-endpoint-connectivity-problems"></a>針對私人端點連線問題進行疑難排解
 
 本指南提供逐步指引，以驗證及診斷您的私人端點連線設定。 
 
@@ -100,7 +100,7 @@ Azure 私用端點是一種網路介面，可讓您私下且安全地連接到�
        ![NSG 輸出規則](./media/private-endpoint-tsg/nsg-outbound-rules.png)
 
 5. 如果連接已驗證結果，連線問題可能與應用層上的秘密、權杖、密碼等其他層面相關。
-   - 在此情況下，請檢查與私人端點相關聯之私人連結資源的設定。 請參閱[私用連結疑難排解指南](https://docs.microsoft.com/azure/private-link/private-link-connectivity-troubleshooting)。 
+   - 在此情況下，請檢查與私人端點相關聯之私人連結資源的設定。 請參閱[私用連結疑難排解指南](troubleshoot-private-link-connectivity.md)。 
 
 6. 如果您的問題仍然無法解決，且連線問題仍然存在，請聯絡[Azure 支援](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)小組。 
 
@@ -108,4 +108,4 @@ Azure 私用端點是一種網路介面，可讓您私下且安全地連接到�
 
  * [在更新的子網上建立私用端點（Azure 入口網站）](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal)
 
- * [私人連結疑難排解指南](https://docs.microsoft.com/azure/private-link/private-link-connectivity-troubleshooting)
+ * [私人連結疑難排解指南](troubleshoot-private-link-connectivity.md)

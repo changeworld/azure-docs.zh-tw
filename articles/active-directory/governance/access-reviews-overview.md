@@ -16,12 +16,12 @@ ms.date: 01/10/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e77f507f2a3bd89069f25bf984cf4059009faa6
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 5499c8808c3916842071df1f03a865efd98719f6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932649"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185737"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>什麼是 Azure AD 存取權檢閱？
 
@@ -58,13 +58,13 @@ Azure AD 可讓您在組織內部以及與外部組織 (例如，合作夥伴) �
 | --- | --- | --- | --- |
 | 安全性群組成員</br>Office 群組成員 | 指定的檢閱者</br>群組擁有者</br>自我審查 | Azure AD 存取權檢閱</br>Azure AD 群組 | 存取面板 |
 | 指派給已連線的應用程式 | 指定的檢閱者</br>自我審查 | Azure AD 存取權檢閱</br>Azure AD 企業應用程式 (預覽版) | 存取面板 |
-| Azure AD 角色 | 指定的檢閱者</br>自我審查 | [Azure AD PIM](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure Portal |
-| Azure 資源角色 | 指定的檢閱者</br>自我審查 | [Azure AD PIM](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure Portal |
+| Azure AD 角色 | 指定的檢閱者</br>自我審查 | [Azure AD PIM](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure 入口網站 |
+| Azure 資源角色 | 指定的檢閱者</br>自我審查 | [Azure AD PIM](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure 入口網站 |
 
 
-## <a name="onboard-access-reviews"></a>上架存取權檢閱
+## <a name="create-access-reviews"></a>建立存取權審查
 
-若要上架存取權審查，請遵循下列步驟。
+若要建立存取權審查，請遵循下列步驟：
 
 1. 移至 [ [Azure 入口網站](https://portal.azure.com)] 以全域管理員或使用者系統管理員身分，管理存取審查並登入。
 
@@ -74,13 +74,9 @@ Azure AD 可讓您在組織內部以及與外部組織 (例如，合作夥伴) �
 
 1. 選取 [身分**識別管理**]。
 
-1. 按一下 [**存取評論**]。
- 
-    ![存取審查起始頁](./media/access-reviews-overview/access-reviews-overview-onboard.png)
+1. 在 [開始使用] 頁面上，按一下 [**建立存取權審查**] 按鈕。
 
-1. 在頁面上，按一下 [**立即上架**] 按鈕。
-    
-      ![存取上架的評論](./media/access-reviews-overview/access-reviews-overview-select-onboard.png)
+   ![存取審查起始頁](./media/access-reviews-overview/access-reviews-overview-create-access-reviews.png) 
 
 
 ## <a name="learn-about-access-reviews"></a>瞭解存取權審查
@@ -118,7 +114,7 @@ Azure AD 可讓您在組織內部以及與外部組織 (例如，合作夥伴) �
 
 以下是一些範例授權案例，可協助您判斷您必須擁有的授權數目。
 
-| 案例 | 計算 | 授權數目 |
+| 狀況 | 計算 | 授權數目 |
 | --- | --- | --- |
 | 系統管理員會建立群組 A 的存取權審查，其中包含75位使用者和1個群組擁有者，並將群組擁有者指派為審查員。 | 1群組擁有者的授權做為審查員 | 1 |
 | 系統管理員會建立群組 B 的存取權審查，其中包含500位使用者和3個群組擁有者，並將3個群組擁有者指派為審查員。 | 3每個群組擁有者的授權 | 3 |

@@ -1,23 +1,23 @@
 ---
-title: IoT Edge 上的 Azure 串流分析
+title: Azure IoT Edge 串流分析
 description: 在 Azure 串流分析中建立 Edge 作業，並將其部署至執行 Azure IoT Edge 的裝置。
 ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 02/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: ff2a7e571c771a73c46959f35e341d861533bb55
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7e4a1cf43931b56cfdb3c31ffe870a07dbaa75af
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426323"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201750"
 ---
-# <a name="azure-stream-analytics-on-iot-edge"></a>IoT Edge 上的 Azure 串流分析
+# <a name="azure-stream-analytics-on-iot-edge"></a>Azure IoT Edge 串流分析
  
-Azure IoT Edge 串流分析讓開發人員能夠在更接近 IoT 裝置的地方部署近乎即時的分析智慧，從而使裝置產生的資料充分發揮價值。 Azure 串流分析的設計著眼於低延遲、具復原能力、有效率地使用頻寬和合規性。 企業現在可以部署接近產業作業的控制邏輯，並補充在雲端中完成的巨量資料分析。  
+IoT Edge 上的 Azure 串流分析 (ASA) 讓開發人員能夠在更接近 IoT 裝置的地方部署近乎即時的分析智慧，從而使裝置產生的資料充分發揮價值。 Azure 串流分析的設計著眼於低延遲、具復原能力、有效率地使用頻寬和合規性。 企業現在可以部署接近產業作業的控制邏輯，並補充在雲端中完成的巨量資料分析。  
 
 IoT Edge 上的 Azure 串流分析是在 [Azure IoT Edge](https://azure.microsoft.com/campaigns/iot-edge/) 架構內執行。 在 ASA 中建立作業之後，您可以使用 IoT 中樞來部署及管理它。
 
@@ -44,7 +44,7 @@ ASA 會使用 IoT 中樞將 Edge 作業部署到裝置。 關於 [IoT Edge 部�
 ### <a name="installation-instructions"></a>安裝指示
 下表說明高階步驟。 後面幾節提供詳細資訊。
 
-|      |步驟   | 注意   |
+|      |步驟   | 注意事項   |
 | ---   | ---   |  ---      |
 | 1   | **建立儲存體容器**   | 儲存體容器是用來儲存您的作業定義，您的 IoT 裝置可在其中加以存取。 <br>  您可以重複使用任何現有的儲存體容器。     |
 | 2   | **建立 ASA Edge 作業**   |  建立新作業，請選取 **Edge** 作為**裝載環境**。 <br> 這些作業會從雲端建立/管理，並在您自己的 IoT Edge 裝置上執行。     |
@@ -141,7 +141,7 @@ ASA 作業中建立的輸入和輸出名稱可用來作為路由的端點。
 - 所有 **ASA** 模組的輸出都會傳送至 **tempSensor** 的**控制項**端點。
 
 
-## <a name="technical-information"></a>技術資訊
+## <a name="technical-information"></a>Technical information
 ### <a name="current-limitations-for-iot-edge-jobs-compared-to-cloud-jobs"></a>相較於雲端作業，IoT Edge 作業的目前限制
 目標是在 IoT Edge 與業和雲端作業之間進行同位檢查。 支援大部分的 SQL 查詢語言功能，讓能夠在雲端和 IoT Edge 上執行相同的邏輯。
 不過，Edge 作業尚未支援下列功能：
@@ -206,19 +206,19 @@ IoT Edge 上的參考資料更新會由部署觸發。 觸發之後，ASA 模組
 
 此版本資訊上次更新日期為2019-06-27：
 
-- 影像：`asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-linux-amd64`
+- 映射： `mcr.microsoft.com/azure-stream-analytics/azureiotedge:1.0.5-linux-amd64`
    - 基底映射： microsoft/dotnet： 2.1.6-runtime-alpine 3。7
    - platform.object
       - 架構： amd64
       - 作業系統： linux
   
-- 影像：`asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-linux-arm32v7`
+- 映射： `mcr.microsoft.com/azure-stream-analytics/azureiotedge:1.0.5-linux-arm32v7`
    - 基底映射： microsoft/dotnet： 2.1.6-runtime-bionic-arm32v7
    - platform.object
       - 架構： arm
       - 作業系統： linux
   
-- 影像：`asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-windows-amd64`
+- 映射： `mcr.microsoft.com/azure-stream-analytics/azureiotedge:1.0.5-windows-amd64`
    - 基底映射： microsoft/dotnet： 2.1.6-runtime-nanoserver-1809
    - platform.object
       - 架構： amd64

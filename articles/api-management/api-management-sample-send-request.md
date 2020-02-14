@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 2c4e5d0117f046343b140ef2b2c46c074c835075
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1c86570850894a47f57a2d3587811411cc9a76eb
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60557906"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190003"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>使用來自 Azure API 管理服務的外部服務
 Azure API 管理服務中可用的原則可純粹根據傳入的要求、傳出的回應及基本組態資訊來進行各式各樣的有用工作。 不過，能夠與來自 API 管理原則的外部服務進行互動，可開啟更多的機會。
@@ -74,7 +74,7 @@ API 管理的主要功能是保護後端資源。 如果您的 API 所使用的�
 過去一直沒有標準化的方式可使用授權伺服器來驗證參考權杖。 不過，IETF 最近發佈的提議標準 [RFC 7662](https://tools.ietf.org/html/rfc7662) 定義了資源伺服器如何驗證權杖的有效性。
 
 ### <a name="extracting-the-token"></a>擷取權杖
-第一個步驟是從授權標頭擷取權杖。 根據 [RFC 6750](https://tools.ietf.org/html/rfc6750#section-2.1)，標頭值應依序使用 `Bearer` 授權配置、單一空格和授權權杖進行格式化。 不過，有一些情況需要省略授權配置。 在剖析時為了因應這一點，API 管理會使用空格來分割標頭值，並從字串的傳回陣列中選取最後一個字串。 這樣可為格式錯誤的授權標頭提供因應措施。
+第一個步驟是從授權標頭擷取權杖。 根據 `Bearer`RFC 6750[，標頭值應依序使用 ](https://tools.ietf.org/html/rfc6750#section-2.1) 授權配置、單一空格和授權權杖進行格式化。 不過，有一些情況需要省略授權配置。 在剖析時為了因應這一點，API 管理會使用空格來分割標頭值，並從字串的傳回陣列中選取最後一個字串。 這樣可為格式錯誤的授權標頭提供因應措施。
 
 ```xml
 <set-variable name="token" value="@(context.Request.Headers.GetValueOrDefault("Authorization","scheme param").Split(' ').Last())" />
@@ -102,6 +102,10 @@ API 管理的主要功能是保護後端資源。 如果您的 API 所使用的�
 
 從回應物件中，您可以擷取主體，而 RFC 7622 向 API 管理指出回應必須是 JSON 物件，而且必須包含至少一個稱為 `active` 的屬性 (此為布林值)。 當 `active` 為 true，則權杖會被視為有效。
 
+或者，如果授權伺服器未包含 [作用中] 欄位來指示權杖是否有效，請使用 Postman 之類的工具來判斷哪些屬性是在有效的權杖中設定。 例如，如果有效的權杖回應包含名為 "expires_in" 的屬性，請以這種方式檢查授權伺服器回應中是否有此屬性名稱：
+
+當 condition = "@ （（IResponse） coNtext 時 <。變數 ["tokenstate"]）。Body.As<JObject>（）。Property （"expires_in"） = = null） ">
+
 ### <a name="reporting-failure"></a>報告失敗
 您可以使用 `<choose>` 原則來偵測權杖是否無效，如果無效，則會傳回 401 回應。
 
@@ -118,7 +122,7 @@ API 管理的主要功能是保護後端資源。 如果您的 API 所使用的�
 </choose>
 ```
 
-根據說明應如何使用 `bearer` 權杖的 [RFC 6750](https://tools.ietf.org/html/rfc6750#section-3)，API 管理也會傳回 `WWW-Authenticate` 標頭以及 401 回應。 WWW 驗證的目的是指示用戶端如何建構適當授權的要求。 由於有各式各樣可能具備 OAuth2 架構的處理方法，因此很難傳達所有必要的資訊。 幸好我們仍持續努力來協助 [用戶端探索如何適當地將要求授權給資源伺服器](https://tools.ietf.org/html/draft-jones-oauth-discovery-00)。
+根據說明應如何使用 [ 權杖的 ](https://tools.ietf.org/html/rfc6750#section-3)RFC 6750`bearer`，API 管理也會傳回 `WWW-Authenticate` 標頭以及 401 回應。 WWW 驗證的目的是指示用戶端如何建構適當授權的要求。 由於有各式各樣可能具備 OAuth2 架構的處理方法，因此很難傳達所有必要的資訊。 幸好我們仍持續努力來協助 [用戶端探索如何適當地將要求授權給資源伺服器](https://tools.ietf.org/html/draft-jones-oauth-discovery-00)。
 
 ### <a name="final-solution"></a>最終解決方案
 最後，您會取得下列原則：
@@ -281,6 +285,6 @@ API 管理的主要功能是保護後端資源。 如果您的 API 所使用的�
 
 在預留位置作業的組態中，您可以設定要快取儀表板資源至少一小時。 
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 Azure API 管理服務提供彈性的原則，可以選擇性地套用到 HTTP 流量，並且能夠組合後端服務。 不論您是否想要使用警示功能、確認、驗證功能或根據多個後端服務建立新的複合資源來增強您的 API 閘道器， `send-request` 及相關原則都會開啟各種可能性。
 

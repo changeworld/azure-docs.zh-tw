@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/04/2019
-ms.openlocfilehash: 4cf979c99c596abff075eb38f3358c6389a6b07e
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.custom: hdinsightactive
+ms.date: 02/12/2020
+ms.openlocfilehash: d030e44f59d41c32c9a76c0b89c0bce1c8c54a69
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264282"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186846"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 入口網站管理 HDInsight 中的 Apache Hadoop 叢集
 
@@ -35,7 +35,7 @@ HDInsight 中現有的 Apache Hadoop 叢集。  請參閱 [使用 Azure 入口�
 1. 從左側功能表中選取 [所有服務]。
 2. 在 [分析] 底下，選取 [HDInsight 叢集]。
 
-## <a name="homePage"></a> 叢集首頁 
+## <a name="homePage"></a> 叢集首頁
 
 從 [ [**HDInsight**](#showClusters)叢集] 頁面選取您的叢集名稱。  這將會開啟 [概觀] 檢視，它看起來類似下圖：
 
@@ -46,7 +46,7 @@ HDInsight 中現有的 Apache Hadoop 叢集。  請參閱 [使用 Azure 入口�
 | Item| 描述 |
 |---|---|
 |移動|將叢集移至另一個資源群組或另一個訂用帳戶。|
-|DELETE|刪除叢集。 |
+|刪除|刪除叢集。 |
 |重新整理|重新整理檢視。|
 
 **左側功能表**：  
@@ -58,7 +58,7 @@ HDInsight 中現有的 Apache Hadoop 叢集。  請參閱 [使用 Azure 入口�
     |總覽|提供您叢集的一般資訊。|
     |活動記錄檔|顯示和查詢活動記錄。|
     |存取控制 (IAM)|使用角色指派。  請參閱[使用角色指派來管理 Azure 訂用帳戶資源的存取權](../role-based-access-control/role-assignments-portal.md)。|
-    |Tags|可讓您設定索引鍵/值組，以定義自訂的雲端服務分類法。 例如，您可建立名為 **project**的索引鍵，然後使用與特定專案相關聯之所有服務的通用值。|
+    |標籤|可讓您設定索引鍵/值組，以定義自訂的雲端服務分類法。 例如，您可建立名為 **project**的索引鍵，然後使用與特定專案相關聯之所有服務的通用值。|
     |診斷並解決問題|顯示疑難排解資訊。|
     |快速入門|顯示可協助您開始使用 HDInsight 的資訊。|
     |工具|HDInsight 相關工具的說明資訊。|
@@ -72,9 +72,9 @@ HDInsight 中現有的 Apache Hadoop 叢集。  請參閱 [使用 Azure 入口�
     |SSH + 叢集登入|顯示使用安全殼層 (SSH) 連線連接到叢集的指示。 如需詳細資訊，請參閱[搭配 HDInsight 使用 SSH](hdinsight-hadoop-linux-use-ssh-unix.md)。|
     |Data Lake Storage Gen1|設定存取 Data Lake Storage Gen1。  請參閱[快速入門：在 HDInsight 中設定叢集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)。|
     |儲存體帳戶|檢視儲存體帳戶和金鑰。 儲存體帳戶是在進行叢集建立程序時設定。|
-    |[應用程式]|新增/移除 HDInsight 應用程式。  請參閱[安裝自訂 HDInsight 應用程式](hdinsight-apps-install-custom-applications.md)。|
+    |應用程式|新增/移除 HDInsight 應用程式。  請參閱[安裝自訂 HDInsight 應用程式](hdinsight-apps-install-custom-applications.md)。|
     |指令碼動作|在叢集上執行 Bash 指令碼。 請參閱 [使用指令碼動作自訂 Linux 型 HDInsight 叢集](hdinsight-hadoop-customize-cluster-linux.md)。|
-    |外部中繼存放區|檢視 [Apache Hive](https://hive.apache.org/) \(英文\) 和 [Apache Oozie](https://oozie.apache.org/) \(英文\) 中繼存放區。 中繼存放區只可以在叢集建立程序期間進行設定。|
+    |外部中繼存放區|檢視 [Apache Hive](https://oozie.apache.org/) \(英文\) 和 Apache Oozie \(英文\) 中繼存放區。 中繼存放區只可以在叢集建立程序期間進行設定。|
     |HDInsight 合作夥伴|新增/移除目前的 HDInsight 夥伴。|
     |屬性|檢視[叢集屬性](#properties)。|
     |鎖定|新增鎖定以防止叢集遭到修改或刪除。|
@@ -106,13 +106,14 @@ HDInsight 中現有的 Apache Hadoop 叢集。  請參閱 [使用 Azure 入口�
 |叢集 URL|Ambari Web 介面的 URL。|
 |私人端點|叢集的私用端點。|
 |Secure shell （SSH）|透過 SSH 存取叢集時使用的使用者名稱和主機名稱。|
-|狀態|以下其中之一：Aborted、Accepted、ClusterStorageProvisioned、AzureVMConfiguration、HDInsightConfiguration、Operational、Running、Error、Deleting、Deleted、Timedout、DeleteQueued、DeleteTimedout、DeleteError、PatchQueued、CertRolloverQueued、ResizeQueued 或 ClusterCustomization。|
+|狀態|值為下列其中之一：Aborted、Accepted、ClusterStorageProvisioned、AzureVMConfiguration、HDInsightConfiguration、Operational、Running、Error、Deleting、Deleted、Timedout、DeleteQueued、DeleteTimedout、DeleteError、PatchQueued、CertRolloverQueued、ResizeQueued 或 ClusterCustomization。|
 |地區|Azure 位置。 如需支援的 Azure 位置清單，請參閱 [HDInsight 定價](https://azure.microsoft.com/pricing/details/hdinsight/)上的 [區域] 下拉式清單方塊。|
-|建立日期|叢集部署的日期。|
-|作業系統|**Windows** 或 **Linux**。|
+|已建立資料|叢集部署的日期。|
+|作業系統|**Windows** 或 Linux。|
 |類型|Hadoop、HBase、Storm、Spark。|
-|Version|請參閱 [HDInsight 版本](hdinsight-component-versioning.md)。|
-|預定|訂用帳戶名稱。|
+|版本|請參閱 [HDInsight 版本](hdinsight-component-versioning.md)。|
+|最低 TLS 版本|TLS 版本。|
+|訂閱|訂用帳戶名稱。|
 |預設資料來源|預設叢集檔案系統。|
 |背景工作節點大小|背景工作節點的選取 VM 大小。|
 |前端節點大小|前端節點的選取 VM 大小。|
@@ -151,8 +152,8 @@ HDInsight 中現有的 Apache Hadoop 叢集。  請參閱 [使用 Azure 入口�
 
 ## <a name="pauseshut-down-clusters"></a>暫停/關閉叢集
 
-大部分 Hadoop 工作是只會偶爾執行的批次工作。 對於大部分的 Hadoop 叢集而言，叢集無法用於處理的時間很長。 使用 HDInsight 時，您的資料會儲存在 Azure 儲存體中，因此您可以放心地刪除未使用的叢集。
-即使 HDInsight 叢集不在使用中，您也必須支付該叢集的費用。 由於叢集的費用比儲存體費用多倍，因此在叢集不在使用中時，刪除叢集會變得經濟合理。
+大部分 Hadoop 工作是只會偶爾執行的批次工作。 對於大部分的 Hadoop 叢集而言，叢集無法用於處理的時間很長。 利用 HDInsight，您的資料會儲存在 Azure 儲存體中，以便您在未使用叢集時安全地刪除該叢集。
+您也需支付 HDInsight 叢集的費用 (即使未使用該叢集)。 由於叢集費用是儲存體費用的許多倍，所以刪除未使用的叢集符合經濟效益。
 
 有許多方法可以設計程序：
 
@@ -195,7 +196,7 @@ HDInsight 叢集可以有兩個使用者帳戶。 HDInsight 叢集使用者帳�
 1. 在 [設定] 底下，選取 [SSH + 叢集登入]。
 2. 選取 [重設認證]。
 3. 在文字方塊中輸入新密碼並加以確認。
-4. 選取 [確定]。
+4. 選取 **\[確定\]** 。
 
 系統會在叢集中的所有節點上變更密碼。
 
@@ -221,9 +222,9 @@ HDInsight 叢集可以有兩個使用者帳戶。 HDInsight 叢集使用者帳�
    | 欄位 | 值 |
    | --- | --- |
    | 指令碼類型 | 從下拉式清單中選取 [- 自訂]。|
-   | Name |「變更 SSH 密碼」 |
+   | 名字 |「變更 SSH 密碼」 |
    | Bash 指令碼 URI |changepassword.sh 檔案的 URI |
-   | 節點類型：(前端、背景工作、Nimbus、監督員、Zookeeper 等) |✓ 針對列出的所有節點類型 |
+   | 節點類型：（Head、Worker、Nimbus、監督員或 Zookeeper）。 |✓ 針對列出的所有節點類型 |
    | 參數 |輸入 SSH 使用者名稱，然後輸入密碼。 使用者名稱和密碼之間應該有一個空格。 |
    | 保存這個指令碼動作... |不選取此欄位。 |
 
@@ -271,7 +272,7 @@ HDInsight 叢集會使用 Azure 儲存體帳戶或 Azure Data Lake Storage 來�
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您已瞭解一些基本的系統管理功能。 若要深入了解，請參閱下列文章：
+在本文中，您已瞭解一些基本的系統管理功能。 如需詳細資訊，請參閱下列文章：
 
 - [使用 Azure PowerShell 管理 HDInsight](hdinsight-administer-use-powershell.md)
 - [使用 Azure CLI 管理 HDInsight](hdinsight-administer-use-command-line.md)

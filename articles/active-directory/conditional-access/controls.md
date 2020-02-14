@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 342ec46aabafec975d780aa03fe75d7e3cf50497
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2ad8894078a15bf37a5383cdff3721f4bf7be910
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424977"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186218"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>什麼是 Azure Active Directory 條件式存取中的存取控制？
 
 透過[Azure Active Directory （Azure AD）條件式存取](../active-directory-conditional-access-azure-portal.md)，您可以控制授權使用者如何存取您的雲端應用程式。 在條件式存取原則中，您可以將回應（「執行此動作」）定義為觸發原則的原因（「發生此情況時」）。
 
-![控制](./media/controls/10.png)
+![控制項](./media/controls/10.png)
 
 在條件式存取的內容中，
 
@@ -31,7 +31,7 @@ ms.locfileid: "75424977"
 
 條件陳述式與您的控制項的組合代表條件式存取原則。
 
-![控制](./media/controls/61.png)
+![控制項](./media/controls/61.png)
 
 每種控制項都是必須由登入之使用者或系統履行的要求，或是規範使用者在登入後之行為的限制。
 
@@ -49,9 +49,9 @@ ms.locfileid: "75424977"
 - 滿足所有選取的控制項 (*AND*)
 - 滿足一項選取的控制項 (*OR*)
 
-![控制](./media/controls/18.png)
+![控制項](./media/controls/18.png)
 
-### <a name="multi-factor-authentication"></a>多因素驗證
+### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
 您可以使用這個控制項來要求使用者通過 Multi-Factor Authentication 後，才能存取指定的雲端應用程式。 這個控制項支援以下多重要素提供者：
 
@@ -85,18 +85,18 @@ ms.locfileid: "75424977"
 由於員工使用行動裝置來處理個人和工作事務，因此即使您不負責管理公司資料，可能也會想要在員工使用裝置存取公司資料時保護資料。
 您可以使用 [Intune 應用程式保護原則](https://docs.microsoft.com/intune/app-protection-policy)來保護公司的資料，並且不受任何行動裝置管理 (MDM) 解決方案影響。
 
-藉由核准的用戶端應用程式，您可以要求嘗試存取雲端應用程式的用戶端應用程式支援 [Intune 應用程式保護原則](https://docs.microsoft.com/intune/app-protection-policy)。 例如，您可以限制唯有 Outlook 應用程式能存取 Exchange Online。 需要核准的用戶端應用程式的條件式存取原則，也稱為以[應用程式為基礎的條件式存取原則](app-based-conditional-access.md)。 如需支援的核准用戶端應用程式清單，請參閱[核准的用戶端應用程式需求](technical-reference.md#approved-client-app-requirement)。
+藉由核准的用戶端應用程式，您可以要求嘗試存取雲端應用程式的用戶端應用程式支援 [Intune 應用程式保護原則](https://docs.microsoft.com/intune/app-protection-policy)。 例如，您可以限制唯有 Outlook 應用程式能存取 Exchange Online。 需要核准的用戶端應用程式的條件式存取原則，也稱為以[應用程式為基礎的條件式存取原則](app-based-conditional-access.md)。 如需支援的核准用戶端應用程式清單，請參閱[核准的用戶端應用程式需求](concept-conditional-access-grant.md#require-approved-client-app)。
 
 ### <a name="app-protection-policy-preview"></a>應用程式保護原則（預覽）
 
 由於員工使用行動裝置來處理個人和工作事務，因此即使您不負責管理公司資料，可能也會想要在員工使用裝置存取公司資料時保護資料。
 您可以使用 [Intune 應用程式保護原則](https://docs.microsoft.com/intune/app-protection-policy)來保護公司的資料，並且不受任何行動裝置管理 (MDM) 解決方案影響。
 
-使用應用程式保護原則，您可以限制已回報為 Azure AD 已收到[Intune 應用程式保護原則](https://docs.microsoft.com/intune/app-protection-policy)的用戶端應用程式存取權。 例如，您可以將 Exchange Online 的存取限制為具有 Intune 應用程式保護原則的 Outlook 應用程式。 需要應用程式保護原則的條件式存取原則，也稱為以[應用程式保護為基礎的條件式存取原則](app-protection-based-conditional-access.md)。 
+使用應用程式保護原則，您可以限制已回報為 Azure AD 已收到[Intune 應用程式保護原則](https://docs.microsoft.com/intune/app-protection-policy)的用戶端應用程式存取權。 例如，您可以將 Exchange Online 的存取限制為具有 Intune 應用程式保護原則的 Outlook 應用程式。 需要應用程式保護原則的條件式存取原則，也稱為以[應用程式保護為基礎的條件式存取原則](concept-conditional-access-session.md#application-enforced-restrictions)。 
 
 您的裝置必須註冊為 Azure AD，應用程式才能標示為受原則保護。
 
-如需受支援原則保護的用戶端應用程式清單，請參閱[應用程式保護原則需求](technical-reference.md#app-protection-policy-requirement)。
+如需受支援原則保護的用戶端應用程式清單，請參閱[應用程式保護原則需求](concept-conditional-access-session.md#application-enforced-restrictions)。
 
 ### <a name="terms-of-use"></a>使用規定
 
@@ -133,11 +133,11 @@ ms.locfileid: "75424977"
 
 建立自訂控制項的選項位於 [**條件式存取**] 頁面的 [**管理**] 區段中。
 
-![控制](./media/controls/82.png)
+![控制項](./media/controls/82.png)
 
 按一下 [新增自訂控制項] 隨即會開啟刀鋒視窗，裡面有文字方塊可供輸入控制項的 JSON 資料。  
 
-![控制](./media/controls/81.png)
+![控制項](./media/controls/81.png)
 
 ### <a name="deleting-custom-controls"></a>刪除自訂控制項
 
@@ -155,13 +155,13 @@ ms.locfileid: "75424977"
 
 工作階段控制項可讓您限制雲端應用程式內的體驗。 工作階段控制項是由雲端應用程式強制執行，並依賴 Azure AD 對應用程式提供有關工作階段的其他資訊。
 
-![控制](./media/controls/31.png)
+![控制項](./media/controls/31.png)
 
 ### <a name="use-app-enforced-restrictions"></a>使用應用程式強制執行限制
 
 您可以使用這個控制項，要求 Azure AD 將裝置資訊傳遞至所選的雲端應用程式。 裝置資訊可讓雲端應用程式知道連線是否從符合規範或已加入網域的裝置起始。 此控制項僅支援 SharePoint Online 和 Exchange Online 作為選取的雲端應用程式。 選取後，雲端應用程式會使用裝置資訊來提供使用者有限或完整的體驗 (視裝置狀態而定)。
 
-若要深入了解，請參閱：
+若要了解詳細資訊，請參閱：
 
 - [啟用 SharePoint Online 的有限存取](https://aka.ms/spolimitedaccessdocs)
 - [啟用 Exchange Online 的有限存取](https://aka.ms/owalimitedaccess)

@@ -10,18 +10,31 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: aahi
-ms.openlocfilehash: e3fbff7a5919d4d43656f3112cb24f2017191348
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 162e60ac8d33dc5d1951a58b0a9643b668608d7b
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086796"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188810"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文字分析 API 有哪些新功能？
 
 文字分析 API 會持續更新。 為了讓您隨時掌握最新的開發，這篇文章為您提供新版本和功能的相關資訊。
 
-## <a name="named-entity-recognition-v3-public-preview---february-2020"></a>命名實體辨識 v3 公開預覽-2020 年2月
+## <a name="february-2020"></a>2020年2月
+
+### <a name="sdk-support-for-text-analytics-api-v3-public-preview"></a>文字分析 API v3 公開預覽版本的 SDK 支援
+
+作為[整合 AZURE SDK 版本](https://techcommunity.microsoft.com/t5/azure-sdk/january-2020-unified-azure-sdk-release/ba-p/1097290)的一部分，文字分析 API v3 SDK 現在可作為下列程式設計語言的公開預覽：
+   * [C#](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-csharp)
+   * [Python](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-python)
+   * [JavaScript （node.js）](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-javascript)
+   * [Java](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-java)
+
+> [!div class="nextstepaction"]
+> [深入瞭解文字分析 API v3 SDK](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3)
+
+### <a name="named-entity-recognition-v3-public-preview"></a>命名實體辨識 v3 公開預覽
 
 現在已可在「命名實體辨識」（NER） v3 公開預覽服務中使用其他實體類型，因為我們會展開文字中找到的一般和個人資訊實體的偵測。 此更新引進[模型版本](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features)`2020-02-01`，其中包括：
 
@@ -33,7 +46,7 @@ ms.locfileid: "77086796"
     * 技能
 
 * 識別下列個人資訊實體類型（僅限英文）：
-    * 個人
+    * 人員
     * 組織
     * 年齡為 [Quantity] 底下的子類型
     * Date 做為 DateTime 底下的子類型

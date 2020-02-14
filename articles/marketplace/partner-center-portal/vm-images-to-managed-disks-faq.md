@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: d85f6ba9d50b7d30930322ca34cb15edb30e1472
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 683b35661a41325cfd5baa877acdb0e37529bb94
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775004"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198729"
 ---
 # <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>我們正在將 Azure Marketplace 的虛擬機器（VM）映射移至受控磁片儲存體
 
@@ -25,7 +25,7 @@ ms.locfileid: "76775004"
 
 如有任何疑問，請[洽詢我們](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff)。
 
-## <a name="faqs"></a>常見問題集
+## <a name="faqs"></a>FAQ
 
 ### <a name="would-the-users-of-my-vm-images-experience-an-outage"></a>VM 映射的使用者是否會遇到中斷的情況？
 
@@ -39,11 +39,11 @@ VM 映射的使用者將不會遇到中斷的情況。
 
 ### <a name="do-i-need-to-take-any-action"></a>我需要採取任何動作嗎？
 
-不會。 發行者或取用者不需要採取任何動作。
+No。 發行者或取用者不需要採取任何動作。
 
 ### <a name="do-i-have-to-update-my-system-to-call-the-cloud-portal-apis-in-a-different-way-after-they-are-moved-to-managed-disk-storage"></a>我是否必須在將系統移至受控磁片儲存體之後，以不同的方式來更新我的系統以呼叫雲端入口網站 Api？
 
-不會。 您現有的 API 呼叫將會繼續作用。
+No。 您現有的 API 呼叫將會繼續作用。
 
 ### <a name="would-all-my-vm-images-be-moved-to-managed-disk-at-the-same-time"></a>我的所有 VM 映射會同時移至受控磁片嗎？
 
@@ -61,6 +61,6 @@ VM 映射的使用者將不會遇到中斷的情況。
 
 否，發佈程式會維持不變。 
 
-## <a name="next-steps"></a>後續步驟
+### <a name="can-the-publisher-move-their-offers-to-managed-disk"></a>發行者可以將其供應專案移至受控磁片嗎？
 
-請造訪[虛擬機器供應專案發行者指南](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines)頁面。
+否，發行者無法將其供應專案移至受控磁片。 他們必須等待，其影像才會自動移動。 我們會先將通知傳送至發行者，再進行任何變更。

@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: chlound
-ms.openlocfilehash: 9ca2ea6a45bdf37f15f2ab4fd9c685f11f6d7f64
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 09051ad3633ddc720cb34d3d145ccf649fa9cb08
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031487"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200107"
 ---
 # <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>在管線活動中使用 Azure Key Vault 祕密
 
@@ -53,7 +53,7 @@ ms.locfileid: "77031487"
     |URL     |[您的秘密 URI 值]？ api-版本 = 7。0         |
     |方法     |GET         |
     |驗證     |MSI         |
-    |Resource        |https://vault.azure.net       |
+    |資源        |https://vault.azure.net       |
 
     ![Web 活動](media/how-to-use-azure-key-vault-secrets-pipeline-activities/webactivity.png)
 
@@ -63,7 +63,7 @@ ms.locfileid: "77031487"
     > [!CAUTION]
     > 將 [安全輸出] 選項設定為 [true]，以防止以純文字記錄秘密值。  任何進一步使用此值的活動都應該將其 Secure 輸入選項設定為 true。
 
-5. 若要在另一個活動中使用此值，請使用下列程式碼運算式 **@activity（"web"）。輸出值**。
+5. 若要在另一個活動中使用此值，請使用下列程式碼運算式 **@activity（' Web1 '）。輸出。值**。
 
     ![程式碼運算式](media/how-to-use-azure-key-vault-secrets-pipeline-activities/usewebactivity.png)
 

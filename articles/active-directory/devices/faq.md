@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a27c9ae1b75b9517bd3af92486df96434c5b34fb
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: cebb59d30dd717e54321ab138f6580947a545961
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74207395"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185852"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory 裝置管理常見問題集
 
@@ -55,9 +55,9 @@ ms.locfileid: "74207395"
 
 ---
 
-### <a name="q-why-do-my-users-see-an-error-message-saying-your-organization-has-deleted-the-device-or-your-organization-has-disabled-the-device-on-their-windows-10-devices-"></a>問：為什麼我的使用者會看到一則錯誤訊息，指出「您的組織已刪除裝置」或其 Windows 10 裝置上的「您的組織已停用裝置」？
+### <a name="q-why-do-my-users-see-an-error-message-saying-your-organization-has-deleted-the-device-or-your-organization-has-disabled-the-device-on-their-windows-10-devices"></a>問：為什麼我的使用者會看到一則錯誤訊息，指出「您的組織已刪除裝置」或其 Windows 10 裝置上的「您的組織已停用裝置」？
 
-**答：** 在已加入或向 Azure AD 註冊的 Windows 10 裝置上，系統會發出可啟用單一登入的主要重新整理[權杖（PRT）](concept-primary-refresh-token.md) 。 PRT 的有效性是以裝置本身的 validaity 為基礎。 如果裝置在 Azure AD 中遭到刪除或停用，則使用者會看到此訊息，而不需從裝置本身起始動作。 在下列其中一個案例中，您可以刪除或停用裝置 Azure AD： 
+**答：** 在已加入或向 Azure AD 註冊的 Windows 10 裝置上，系統會發出可啟用單一登入的主要重新整理[權杖（PRT）](concept-primary-refresh-token.md) 。 PRT 的有效性是以裝置本身的有效性為基礎。 如果裝置在 Azure AD 中遭到刪除或停用，則使用者會看到此訊息，而不需從裝置本身起始動作。 在下列其中一個案例中，您可以刪除或停用裝置 Azure AD： 
 
 - 使用者從我的應用程式入口網站停用裝置。 
 - 系統管理員（或使用者）在 Azure 入口網站中或使用 PowerShell 來刪除或停用裝置
@@ -69,7 +69,7 @@ ms.locfileid: "74207395"
 
 ---
 
-### <a name="q-i-disabled-or-deleted-my-device-in-the-azure-portal-or-by-using-windows-powershell-but-the-local-state-on-the-device-says-its-still-registered-what-should-i-do"></a>問：我已在 Azure 入口網站中停用或刪除我的裝置，或使用 Windows PowerShell。 但是裝置上的本機狀態會顯示為 [已註冊]。 我該怎麼辦？
+### <a name="q-i-disabled-or-deleted-my-device-in-the-azure-portal-or-by-using-windows-powershell-but-the-local-state-on-the-device-says-its-still-registered-what-should-i-do"></a>問：我已在 Azure 入口網站中停用或刪除我的裝置，或使用 Windows PowerShell。 但是裝置上的本機狀態會顯示為 [已註冊]。 我該怎麼做？
 
 **答：** 這項作業是依設計進行。 在此情況下，裝置無法存取雲端中的資源。 系統管理員可以針對過時、遺失或遭竊的裝置執行此動作，以防止未經授權的存取。 如果不小心執行此動作，您必須重新啟用或重新註冊裝置，如下所述
 
@@ -119,7 +119,7 @@ ms.locfileid: "74207395"
 
 ### <a name="q-does-windows-10-device-registration-in-azure-ad-support-tpms-in-fips-mode"></a>問： Windows 10 裝置是否會在 Azure AD 支援 FIPS 模式中進行 Tpm？
 
-**答：** 只有符合 FIPS 規範的 TPM 2.0 才支援 Windows 10 裝置註冊，TPM 1.2 則不支援。 如果您的裝置具有 FIPS 相容的 TPM 1.2，您必須先停用它們，再繼續進行 Azure AD 聯結或混合式 Azure AD 聯結。 請注意，Microsoft 不會提供任何工具來停用 Tpm 的 FIPS 模式，因為它相依于 TPM 製造商。 請洽詢您的硬體 OEM 以取得支援。 
+**答：** 只有符合 FIPS 規範的 TPM 2.0 才支援 Windows 10 裝置註冊，TPM 1.2 則不支援。 如果您的裝置具有 FIPS 相容的 TPM 1.2，您必須先停用它們，再繼續進行 Azure AD 聯結或混合式 Azure AD 聯結。 Microsoft 不會提供任何工具來停用 Tpm 的 FIPS 模式，因為它相依于 TPM 製造商。 請洽詢您的硬體 OEM 以取得支援。 
 
 ---
 
@@ -288,12 +288,12 @@ ms.locfileid: "74207395"
 **答：** 
 - 若為 Windows 10 Azure AD 註冊的裝置，請移至 [**設定**] [ > **帳戶**] > [**存取公司或學校**]。 選取您的帳戶，然後選取 [中斷連線]。 裝置註冊是 Windows 10 上的每個使用者設定檔。
 - 針對 iOS 和 Android，您可以使用 Microsoft Authenticator 應用程式**設定** > **裝置註冊**，然後選取 **取消註冊裝置**。
-- 針對 macOS，您可以使用 Microsoft Intune 公司入口網站應用程式從管理中取消註冊裝置，並移除任何註冊。 
+- 針對 macOS，您可以使用 Microsoft Intune 公司入口網站應用程式，將裝置從管理中取消註冊，並移除任何註冊。 
 
 ---
 ### <a name="q-how-can-i-block-users-from-adding-additional-work-accounts-azure-ad-registered-on-my-corporate-windows-10-devices"></a>問：如何防止使用者在我的公司 Windows 10 裝置上新增額外的工作帳戶（Azure AD 註冊）？
 
-**答：** 啟用下列登錄，以防止使用者將其他工作帳戶新增到已加入公司網域、Azure AD 加入或混合式 Azure AD 加入的 Windows 10 裝置。 此原則也可以用來封鎖已加入網域的電腦不小心取得使用相同使用者帳戶註冊 Azure AD。 
+**答：** 啟用下列登錄來封鎖使用者，將其他工作帳戶新增到已加入公司網域、Azure AD 加入，或加入混合式 Azure AD Windows 10 裝置。 此原則也可以用來封鎖已加入網域的電腦不小心取得使用相同使用者帳戶註冊 Azure AD。 
 
 `HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin"=dword:00000001`
 
@@ -312,7 +312,7 @@ ms.locfileid: "74207395"
 
 **備註：**
 
-- 條件式存取原則中包含的使用者需要[支援的 Office 版本 macOS](../conditional-access/technical-reference.md#client-apps-condition) ，才能存取資源。 
+- 條件式存取原則中包含的使用者需要[支援的 Office 版本 macOS](../conditional-access/concept-conditional-access-conditions.md) ，才能存取資源。 
 - 在第一次嘗試存取時，系統會提示使用者使用公司入口網站來註冊裝置。
 
 ---

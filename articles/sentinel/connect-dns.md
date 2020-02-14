@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: c5e58f496176ec0f1b8317c8b862a8ef2ffa434d
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 96515d81668bf172325f88e3e5bac8d8cccfa999
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262721"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190867"
 ---
 # <a name="connect-your-domain-name-server"></a>連接您的功能變數名稱伺服器
 
@@ -41,7 +41,7 @@ ms.locfileid: "71262721"
 
 下表描述此方案支援的連線來源：
 
-| **連線的來源** | **支援** | **描述** |
+| **連線的來源** | **支援** | **說明** |
 | --- | --- | --- |
 | [Windows 代理程式](../azure-monitor/platform/agent-windows.md) | 是 | 此解決方案會收集來自 Windows 代理程式的 DNS 資訊。 |
 | [Linux 代理程式](../azure-monitor/learn/quick-collect-linux-computer.md) | 否 | 此解決方案不會收集來自直接 Linux 代理程式的 DNS 資訊。 |
@@ -69,11 +69,21 @@ ms.locfileid: "71262721"
 
 3. 若要在 Log Analytics 中使用 DNS 記錄的相關架構，請搜尋**DnsEvents**。
 
-## <a name="validate"></a>驗證 
+## <a name="validate"></a>Validate 
 
 在 Log Analytics 中，搜尋架構**DnsEvents** ，並確認有事件。
 
+## <a name="troubleshooting"></a>疑難排解
+
+如果查閱查詢未顯示在 Azure Sentinel 中，請遵循下列步驟，以便正確地顯示查詢：
+1. 開啟伺服器上的[DNS 分析記錄](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn800669(v=ws.11))檔。
+2. 請確定 DNSEvents 出現在 Log Analytics 集合清單中。
+3. 開啟[Azure DNS 分析](../azure-monitor/insights/dns-analytics.md)。
+4. 在 Azure DNS 分析 的 設定 下，變更任何**設定、儲存**，然後視需要將它變更為 重新儲存。
+5. 請檢查 Azure DNS 分析，以確保現在會顯示查詢。
+
 ## <a name="next-steps"></a>後續步驟
+
 在本檔中，您已瞭解如何將 DNS 內部部署應用裝置連線到 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
-- 瞭解如何[查看您的資料和潛在威脅](quickstart-get-visibility.md)。
+- 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
 - 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats-built-in.md)。

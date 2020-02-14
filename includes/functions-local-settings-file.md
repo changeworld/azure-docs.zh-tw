@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 04/14/2019
 ms.author: glenga
-ms.openlocfilehash: c505909599b6b69719de1cb9224db52d2f524b2b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1c2196f1f834002b76dbea555b54a5162655ec1c
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74935797"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77205738"
 ---
 ## <a name="local-settings-file"></a>本機設定檔
 
@@ -40,7 +40,7 @@ ms.locfileid: "74935797"
 | 設定      | 描述                            |
 | ------------ | -------------------------------------- |
 | **`IsEncrypted`** | 當此設定設為 [`true`] 時，所有的值都會以本機電腦金鑰加密。 需搭配 `func settings` 命令使用。 預設值為 `false`。 |
-| **`Values`** | 當專案在本機執行時所使用的應用程式設定和連接字串的陣列。 這些索引鍵/值（字串字串）組會對應至 Azure 中函數應用程式中的應用程式設定，例如[`AzureWebJobsStorage`]。 許多觸發程式和系結都有參考連接字串應用程式設定的屬性，例如[Blob 儲存體觸發](../articles/azure-functions/functions-bindings-storage-blob.md#trigger---configuration)程式的 `Connection`。 針對這些屬性，您需要 `Values` 陣列中定義的應用程式設定。 <br/>[`AzureWebJobsStorage`]是 HTTP 以外的觸發程式所需的應用程式設定。 <br/>2\.x 版和更新版本的函式執行時間需要 [`FUNCTIONS_WORKER_RUNTIME`] 設定，這是由核心工具針對您的專案所產生的。 <br/> 當您已在本機安裝[Azure 儲存體模擬器](../articles/storage/common/storage-use-emulator.md)，並將[`AzureWebJobsStorage`]設定為 `UseDevelopmentStorage=true`時，Core Tools 會使用模擬器。 模擬器在開發期間很有用，但您應該在部署之前使用實際的儲存體連接進行測試。<br/> 值必須是字串，而不是 JSON 物件或陣列。 設定名稱不能包含冒號（`:`）或雙底線（`__`）。 這些字元是由執行時間所保留。  |
+| **`Values`** | 當專案在本機執行時所使用的應用程式設定和連接字串的陣列。 這些索引鍵/值（字串字串）組會對應至 Azure 中函數應用程式中的應用程式設定，例如[`AzureWebJobsStorage`]。 許多觸發程式和系結都有參考連接字串應用程式設定的屬性，例如[Blob 儲存體觸發](../articles/azure-functions/functions-bindings-storage-blob-trigger.md#configuration)程式的 `Connection`。 針對這些屬性，您需要 `Values` 陣列中定義的應用程式設定。 <br/>[`AzureWebJobsStorage`]是 HTTP 以外的觸發程式所需的應用程式設定。 <br/>2\.x 版和更新版本的函式執行時間需要 [`FUNCTIONS_WORKER_RUNTIME`] 設定，這是由核心工具針對您的專案所產生的。 <br/> 當您已在本機安裝[Azure 儲存體模擬器](../articles/storage/common/storage-use-emulator.md)，並將[`AzureWebJobsStorage`]設定為 `UseDevelopmentStorage=true`時，Core Tools 會使用模擬器。 模擬器在開發期間很有用，但您應該在部署之前使用實際的儲存體連接進行測試。<br/> 值必須是字串，而不是 JSON 物件或陣列。 設定名稱不能包含冒號（`:`）或雙底線（`__`）。 這些字元是由執行時間所保留。  |
 | **`Host`** | 當您在本機執行專案時，此區段中的設定會自訂函式主機進程。 這些設定與主機. json 設定不同，這也適用于您在 Azure 中執行專案時。 |
 | **`LocalHttpPort`** | 設定於執行本機 Functions 主機 (`func host start` 和 `func run`) 時所使用的預設連接埠。 `--port` 命令列選項的優先順序高於此設定。 |
 | **`CORS`** | 定義針對[跨來源資源共享 (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) 所允許的來源。 來源是以不含空格的逗號分隔清單提供。 支援萬用字元值 (\*)，它允許來自任何來源的要求。 |

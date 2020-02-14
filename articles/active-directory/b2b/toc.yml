@@ -23,8 +23,6 @@
           href: b2b-tutorial-require-mfa.md
     - name: 範例
       items:
-        - name: 自助入口網站註冊範例
-          href: self-service-portal.md
         - name: 程式碼和 Azure PowerShell 範例
           href: code-samples.md
     - name: 概念
@@ -50,6 +48,8 @@
           href: conditional-access.md
         - name: 適用於混合式組織的 B2B
           href: hybrid-organizations.md
+        - name: 自助式註冊
+          href: self-service-portal.md
         - name: 目前的限制
           href: current-limitations.md
     - name: 操作指南

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f4ce3cd0db20f76aa6169f15254cf36ee64151a5
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 03333e853a2ab7606ebe60cc3f68bcb5facfbdb4
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406753"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191009"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Azure 認知搜尋中的篩選 
 
@@ -51,7 +51,7 @@ ms.locfileid: "74406753"
 
 + `$select` 參數可用來指定要包含在結果集中的欄位，先有效地調整回應，然後將它傳送至呼叫應用程式。 此參數不會縮小查詢範圍或減少檔集合，但如果您的目標是較小的回應，則此參數是要考慮的選項。 
 
-如需其中任一個參數的詳細資訊，請參閱[搜尋文件 > 要求 > 查詢參數](https://docs.microsoft.com/rest/api/searchservice/search-documents#request) \(英文\)。
+如需其中任一個參數的詳細資訊，請參閱[搜尋文件 > 要求 > 查詢參數](/rest/api/searchservice/search-documents#query-parameters) \(英文\)。
 
 
 ## <a name="how-filters-are-executed"></a>如何執行篩選
@@ -197,7 +197,7 @@ search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=
 
 ## <a name="see-also"></a>另請參閱
 
-+ [全文檢索搜尋在 Azure 認知搜尋中的運作方式](search-lucene-query-architecture.md)
++ [全文檢索搜尋如何在 Azure 認知搜尋中運作](search-lucene-query-architecture.md)
 + [搜尋文件 REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
 + [簡單查詢語法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
 + [Lucene 查詢語法](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)

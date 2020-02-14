@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 01/30/2020
+ms.date: 02/13/2020
 ms.author: helohr
-ms.openlocfilehash: b7c7c21f14eddf29c3dda1f420d7748a4c23e53d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f75e404e37ff45eb7d9f540cf6acba71fa83349f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906898"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201776"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows 虛擬桌面合作夥伴整合
 
@@ -46,6 +46,8 @@ Microsoft Azure 的 VMware 範圍雲端可讓組織將自己的 Microsoft Azure 
 10ZiG 技術（具有最尖端的瘦和零用戶端硬體和軟體）是與 Microsoft 以及專用 Microsoft Azure 和 Windows 虛擬桌面合作夥伴的長期以來非常合作夥伴。 10ZiG Windows 10 以 IoT 為基礎的瘦用戶端是功能強大、可靠且價格實惠的端點，適用于所有的 Windows 虛擬桌面多使用者。 10ZiG Manager 軟體提供卓越的管理和部署，不需要任何額外的費用。 10ZiG 技術小組、先進的擔保計畫和不麻煩的示範，都是雲端中的一次性 Windows 虛擬桌面多會話支援解決方案。
 
 10ZiG's 世界-瘦和零用戶端端點裝置的市場領導地位，以及虛擬桌面的管理軟體，都是以其客戶的工作方式一例。 其瘦用戶端硬體隨附 thoughtfully 結構化的權益功能和選項，其設計目的是為了確保客戶根據其需求接收正確的用戶端裝置。 10ZiG 會自訂其裝置，以配合客戶環境使用 Windows 型和 Linux 型用戶端，以在雲端內部和外部虛擬桌面提供最佳效能。
+
+- [前往合作夥伴網站](https://www.10zig.com/)。
 
 ## <a name="cloudhouse"></a>Cloudhouse
 
@@ -149,6 +151,8 @@ Liquit 應用程式匯總與傳遞軟體可讓企業和服務提供者與所有�
 
 身為認證的整合合作夥伴，Liquit 有助於加速轉換至雲端，而不需要進行 rip 和取代延遲。 Windows 虛擬桌面可以輕鬆地連接到現有的環境、建立工作區，以及提供桌面。 然後您可以將時間從舊平臺移出，並在後端進行變更，而不需要您的使用者注意到。 無論應用程式位於何處，都能獲得一致的使用者體驗、彈性的基礎結構，以及維持其控制。
 
+- [前往合作夥伴網站](https://www.liquit.com/wvd/)。
+
 ## <a name="login-vsi"></a>登入 .VSI
 
 ![登入 .VSI 標誌](./media/partners/loginvsi.png)
@@ -250,7 +254,7 @@ Tricerat 為 Windows 虛擬桌面和其他桌面平臺提供了絕佳的列印�
 
 - [前往合作夥伴網站](https://www.tricerat.com/microsoft-printing)。
 
-## <a name="workspot"></a>Workspot
+## <a name="workspot"></a>Workspot control
 
 ![Workspot control 標誌](./media/partners/workspot.png)
 

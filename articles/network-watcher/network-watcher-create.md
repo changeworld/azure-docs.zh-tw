@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: b091c501fb565fb267c40f686dc037e41f3c90ee
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 77812a3765a027152c957f6dbb7c9b3811a2278f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845133"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191185"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>建立 Azure 網路監看員執行個體
 
@@ -107,7 +107,7 @@ armclient put "https://management.azure.com/subscriptions/${subscriptionId}/reso
 
 如果您還沒有的話，請選取 [總覽] 索引標籤。 使用下拉式清單來選取您想要在其中停用網路監看員的訂用帳戶。
 按一下箭號，以展開所選訂用帳戶的區域清單。 針對任何指定的，請使用右邊的3個點來存取內容功能表。
-按一下 [停用網路監看員] 以開始停用。 系統會要求您確認此步驟。 按一下 [是] 繼續進行。
+按一下 [停用網路監看員] 以開始停用。 系統會要求您確認此步驟。 按一下 [是] 繼續。
 在入口網站上，您必須針對每個訂用帳戶中的每個區域個別執行此動作。
 
 
@@ -132,5 +132,3 @@ Remove-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup Networ
 * [安全性群組檢視](network-watcher-security-group-view-overview.md)
 * [NSG 流量記錄](network-watcher-nsg-flow-logging-overview.md)
 * [虛擬網路閘道疑難排解](network-watcher-troubleshoot-overview.md)
-
-一旦有網路監看員執行個體後，您可以啟用虛擬機器內的封包擷取。 若要了解做法，請參閱[建立警示觸發的封包擷取](network-watcher-alert-triggered-packet-capture.md)

@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: f7dcf342a1b9b2107138044dfc207d6dbcb42e9e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4259868ff3b3c9ca9f9818532acd7e865e0300d7
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74260675"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77205704"
 ---
 若要以一致的方式大規模建立並管理 Azure 虛擬機器 (VM)，通常需要某種形式的自動化。 有許多工具和解決方案可讓您將完整的 Azure 基礎結構部署及管理生命週期自動化。 本文介紹的一些基礎結構自動化工具可供您在 Azure 中使用。 這些工具通常符合下列其中一種方法：
 
@@ -29,9 +29,9 @@ ms.locfileid: "74260675"
 
 了解如何：
 
-- [在 Linux 上安裝及設定 Ansible 來與 Azure 搭配使用](../articles/virtual-machines/linux/ansible-install-configure.md)。
-- [建立 Linux 虛擬機器](../articles/virtual-machines/linux/ansible-create-vm.md)。
-- [管理 Linux 虛擬機器](../articles/virtual-machines/linux/ansible-manage-linux-vm.md)。
+- [在 Linux 上安裝及設定 Ansible 來與 Azure 搭配使用](../articles/ansible/ansible-install-configure.md)。
+- [建立 Linux 虛擬機器](../articles/ansible/ansible-create-vm.md)。
+- [管理 Linux 虛擬機器](../articles/ansible/ansible-manage-linux-vm.md)。
 
 
 ## <a name="chef"></a>Chef
@@ -52,7 +52,7 @@ ms.locfileid: "74260675"
 
 
 ## <a name="cloud-init"></a>Cloud-init
-[Cloud-init (英文)](https://cloudinit.readthedocs.io) 是在 Linux VM 初次開機時，廣泛用來自訂它們的方法。 您可以使用 cloud-init 來安裝封裝和寫入檔案，或者設定使用者和安全性。 因為在初次開機程序期間時會呼叫 Cloud-init，不需要使用任何額外的步驟或必要的代理程式來套用您的組態。  如需如何正確地設定 `#cloud-config` 檔案格式的詳細資訊，請參閱 [cloud-init 文件網站](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data) \(英文\)。  `#cloud-config` 檔案是以 base64 編碼的文字檔。
+[Cloud-init (英文)](https://cloudinit.readthedocs.io) 是在 Linux VM 初次開機時，廣泛用來自訂它們的方法。 您可以使用 cloud-init 來安裝封裝和寫入檔案，或者設定使用者和安全性。 因為在初次開機程序期間時會呼叫 Cloud-init，因此不需要使用任何額外的步驟或必要的代理程式，就可以套用您的設定。  如需如何正確地設定 `#cloud-config` 檔案格式的詳細資訊，請參閱 [cloud-init 文件網站](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data) \(英文\)。  `#cloud-config` 檔案是以 base64 編碼的文字檔。
 
 Cloud-init 也適用於散發套件。 例如，您不使用 **apt-get install** 或 **yum install** 來安裝套件。 您可以改為定義要安裝的套件清單。 Cloud-init 會針對您選取的散發套件自動使用原生的套件管理工具。
 

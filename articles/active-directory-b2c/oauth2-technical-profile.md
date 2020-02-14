@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 53190eda66347c23b981c5d6e0631630e9989deb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: d0fc5e6b5cafa22da6707a8f34675dcbdf5af8cc
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840361"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198015"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自訂原則中定義 OAuth2 技術設定檔
 
@@ -77,7 +77,7 @@ Azure Active Directory B2C （Azure AD B2C）提供 OAuth2 通訊協定識別提
 
 ## <a name="metadata"></a>中繼資料
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要項 | 描述 |
 | --------- | -------- | ----------- |
 | client_id | 是 | 識別提供者的應用程式識別碼。 |
 | IdTokenAudience | 否 | id_token 的對象。 如果已指定，Azure AD B2C 會檢查權杖是否在識別提供者傳回的宣告中，以及是否等於指定的宣告。 |
@@ -87,21 +87,22 @@ Azure Active Directory B2C （Azure AD B2C）提供 OAuth2 通訊協定識別提
 | AccessTokenResponseFormat | 否 | 存取權杖端點呼叫的格式。 例如，Facebook 需要 HTTP GET 方法，但存取權杖回應採用 JSON 格式。 |
 | AdditionalRequestQueryParameters | 否 | 其他要求查詢參數。 例如，您可以將其他參數傳送給識別提供者。 您可以使用逗號分隔符號包含多個參數。 |
 | ClaimsEndpointAccessTokenName | 否 | 存取權杖查詢字串參數的名稱。 某些識別提供者的宣告端點支援 GET HTTP 要求。 在此情況下，會使用查詢字串參數來傳送持有人權杖，而不使用授權標頭。 |
-| ClaimsEndpointFormatName | 否 | 格式查詢字串參數的名稱。 例如，您可以在 LinkedIn 宣告端點 `https://api.linkedin.com/v1/people/~?format=json` 中將名稱設定為 `format`。 |
-| ClaimsEndpointFormat | 否 | 格式查詢字串參數的值。 例如，您可以在 LinkedIn 宣告端點 `https://api.linkedin.com/v1/people/~?format=json` 中將值設定為 `json`。 |
+| ClaimsEndpointFormatName | 否 | 格式查詢字串參數的名稱。 例如，您可以在 LinkedIn 宣告端點 `format` 中將名稱設定為 `https://api.linkedin.com/v1/people/~?format=json`。 |
+| ClaimsEndpointFormat | 否 | 格式查詢字串參數的值。 例如，您可以在 LinkedIn 宣告端點 `json` 中將值設定為 `https://api.linkedin.com/v1/people/~?format=json`。 |
 | ProviderName | 否 | 識別提供者的名稱。 |
 | response_mode | 否 | 識別提供者用來將結果傳送回 Azure AD B2C 的方法。 可能的值：`query`、`form_post` (預設值) 或 `fragment`。 |
-| scope | 否 | 根據 OAuth2 識別提供者規格定義之要求的範圍。 例如，`openid`、`profile` 和 `email`。 |
+| 範圍 | 否 | 根據 OAuth2 識別提供者規格定義之要求的範圍。 例如，`openid`、`profile` 和 `email`。 |
 | HttpBinding | 否 | 繫結至存取權杖和宣告權杖端點的預期 HTTP。 可能的值：`GET` 或 `POST`。  |
 | ResponseErrorCodeParamName | 否 | 包含透過 HTTP 200 (Ok) 傳回之錯誤訊息的參數名稱。 |
 | ExtraParamsInAccessTokenEndpointResponse | 否 | 包含可在某些識別提供者的 **AccessTokenEndpoint** 回應中傳回的額外參數。 例如，**AccessTokenEndpoint** 的回應中包含 `openid` 之類的額外參數，這是 **ClaimsEndpoint** 要求查詢字串中除了 access_token 以外的必要參數。 多個參數名稱應逸出，並以逗號 ',' 分隔。 |
 | ExtraParamsInClaimsEndpointRequest | 否 | 包含可在某些識別提供者的 **ClaimsEndpoint** 要求中傳回的額外參數。 多個參數名稱應逸出，並以逗號 ',' 分隔。 |
+| IncludeClaimResolvingInClaimsHandling  | 否 | 針對輸入和輸出宣告，指定技術設定檔中是否包含[宣告解析](claim-resolver-overview.md)。 可能的值： `true`或 `false` （預設）。 如果您想要在技術設定檔中使用宣告解析程式，請將此設定為 [`true`]。 |
 
 ## <a name="cryptographic-keys"></a>密碼編譯金鑰
 
 **CryptographicKeys** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要項 | 描述 |
 | --------- | -------- | ----------- |
 | client_secret | 是 | 識別提供者應用程式的用戶端密碼。 只有在 **response_types** 中繼資料設為 `code` 時，才需要密碼編譯金鑰。 在此情況下，Azure AD B2C 會進行另一次呼叫，以交換存取權杖的授權碼。 如果中繼資料設定為 `id_token`，您可以省略密碼編譯金鑰。 |
 

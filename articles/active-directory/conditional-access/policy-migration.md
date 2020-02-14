@@ -1,5 +1,5 @@
 ---
-title: 遷移條件式存取原則-Azure Active Directory
+title: 遷移條件式存取原則 - Azure Active Directory
 description: 了解如何在 Azure 入口網站中移轉傳統原則中。
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16c6ce46af8fb9a9ab4be5fcc63ccd4909374e4f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 33b1f76dd1489e00115d0f805add8d754038df84
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74846161"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185917"
 ---
 # <a name="conditional-access-classic-policy-migration"></a>條件式存取傳統原則遷移
 
@@ -89,7 +89,7 @@ ms.locfileid: "74846161"
 
 ![條件式存取條件](./media/policy-migration/16.png)
  
-Office 365 Exchange Online [以應用程式為基礎](technical-reference.md#approved-client-app-requirement)並將 **Exchange Active Sync** 納入為用戶端應用程式條件的傳統原則可允許**支援**和**不支援**[的裝置平台](technical-reference.md#device-platform-condition)。 雖然您無法在相關的新原則中設定個別裝置平台，但您可以讓支援僅限於[支援的裝置平台](technical-reference.md#device-platform-condition)。 
+Office 365 Exchange Online 的應用程式型傳統原則，其中包含做為用戶端應用程式條件的**Exchange Active Sync** ，可允許**支援**和**不支援**的裝置平臺。 雖然您無法在相關的新原則中設定個別裝置平台，但您可以讓支援僅限於[支援的裝置平台](concept-conditional-access-conditions.md#device-platforms)。 
 
 ![條件式存取選取 Exchange ActiveSync](./media/policy-migration/65.png)
 
@@ -109,9 +109,9 @@ Office 365 Exchange Online [以應用程式為基礎](technical-reference.md#app
 
 ### <a name="device-platforms"></a>裝置平台
 
-具有[以應用程式為基礎的控制項](technical-reference.md#approved-client-app-requirement)的傳統原則會將 iOS 和 Android 預先設定為[裝置平台條件](technical-reference.md#device-platform-condition)。 
+以應用程式為基礎的控制項的傳統原則會預先設定為 iOS 和 Android，做為裝置平臺條件。 
 
-在新的原則中，您必須選取想要個別支援的[裝置平台](technical-reference.md#device-platform-condition)。
+在新的原則中，您必須選取想要個別支援的[裝置平台](concept-conditional-access-conditions.md#device-platforms)。
 
 ![條件式存取裝置平臺選擇](./media/policy-migration/41.png)
 

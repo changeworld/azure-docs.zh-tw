@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: f8aa7c689379b73187349c3e6ee2a4658064ed7d
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: HT
+ms.openlocfilehash: 1f042e12c0069e68d9008c3e520331766a92e7dd
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163138"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186974"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作夥伴和對等互連位置
 
@@ -85,7 +85,7 @@ ExpressRoute 位置（有時稱為「對等位置」或「符合我的位置」�
 | **斧山** | [LG CNS](https://www.lgcns.com/datacenter) | 2 | 南韓南部 | n/a | LG CNS |
 | **坎培拉** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | 1 | 澳大利亞中部 | 10G、100G | CDC |
 | **坎培拉2** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | 1 | 澳大利亞中部 2| 10G、100G | CDC |
-| **開普敦** | [Teraco CT1](https://www.teraco.co.za/data-centre-locations/cape-town/) | 3 | 南非西部 | 10G | Internet Solutions - Cloud Connect、Liquid Telecom、Teraco |
+| **開普敦** | [Teraco CT1](https://www.teraco.co.za/data-centre-locations/cape-town/) | 3 | 南非西部 | 10G | BCX，網際網路解決方案-雲端連接，液體電信，Teraco |
 | **辰內** | Tata Communications | 2 | 印度南部 | 10G | Global CloudXchange (GCX)、SIFY、Tata Communications |
 | **辰內2** | Airtel | 2 | 印度南部 | n/a | Airtel |
 | **芝加哥** | [Equinix CH1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/chicago-data-centers/ch1/) | 1 | 美國中北部 | 10G、100G | Aryaka networks 網路，位於 & T NetBond、CenturyLink Cloud Connect、Cologix、Colt、Comcast、Coresite、Equinix、InterCloud、Internet2、Level 3 通訊、Megaport、PacketFabric、PCCW GLOBAL LIMITED Global 有限、短期衝刺、Telia 運輸公司、Verizon、Zayo |
@@ -168,7 +168,7 @@ Azure 國家/地區雲端彼此隔離，而不是全球商業 Azure。 一個 Az
 
 若要深入了解，請參閱 [ExpressRoute (中國)](http://www.windowsazure.cn/home/features/expressroute/)
 
-### <a name="germany"></a>德國
+### <a name="germany"></a>Germany
 | **位置** | **服務提供者** |
 | --- | --- |
 | **柏林** |e-shelter、Megaport+、T-Systems |

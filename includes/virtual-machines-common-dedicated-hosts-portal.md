@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 01/09/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 77eb54f5d7194f3006ce463fc5f905165bdfc659
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 2d440db3e55638fcf2e3d3f3fe76f82ac4d25948
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75833944"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77192835"
 ---
 ## <a name="limitations"></a>限制
 
 - 專用主機目前不支援虛擬機器擴展集。
-- 初始版本支援下列 VM 系列： DSv3 和 ESv3。 
+- 初始版本支援下列 VM 系列： DSv3、ESv3 和 Fsv2。 
 
 ## <a name="create-a-host-group"></a>建立主機群組
 
@@ -54,7 +54,7 @@ ms.locfileid: "75833944"
 
 ## <a name="create-a-dedicated-host"></a>建立專用主機
 
-現在，在主機群組中建立專用主機。 除了主機的名稱之外，您還必須提供主機的 SKU。 主機 SKU 會捕捉支援的 VM 系列，以及專用主機的硬體世代。 支援下列主機 SKU 值： DSv3_Type1 和 ESv3_Type1。
+現在，在主機群組中建立專用主機。 除了主機的名稱之外，您還必須提供主機的 SKU。 主機 SKU 會捕捉支援的 VM 系列，以及專用主機的硬體世代。
 
 如需主機 Sku 和定價的詳細資訊，請參閱[Azure 專用主機定價](https://aka.ms/ADHPricing)。
 

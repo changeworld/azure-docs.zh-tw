@@ -13,12 +13,12 @@ ms.date: 10/10/2018
 ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: d29168f154c80eb2c66d0316f773375325ded67f
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 2484de4e554d16ba049d206981a44654ede28a3f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77062178"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190034"
 ---
 # <a name="possible-fixes-for-the-you-cant-get-there-from-here-error-message"></a>可能的修正程式「您無法從這裡取得」錯誤訊息
 
@@ -29,7 +29,7 @@ ms.locfileid: "77062178"
 
 ![與瀏覽器支援相關的錯誤訊息](media/user-help-device-remediation/browser-version.png)
 
-若要修正此問題，您必須根據您的作業系統，安裝並執行支援的瀏覽器。 如果您使用 Windows 10，支援的瀏覽器包括 Microsoft Edge、Internet Explorer 和 Google Chrome。 如果您使用不同的作業系統，可以檢查[支援的瀏覽器](../conditional-access/technical-reference.md#supported-browsers)的完整清單。
+若要修正此問題，您必須根據您的作業系統，安裝並執行支援的瀏覽器。 如果您使用 Windows 10，支援的瀏覽器包括 Microsoft Edge、Internet Explorer 和 Google Chrome。 如果您使用不同的作業系統，可以檢查[支援的瀏覽器](../conditional-access/concept-conditional-access-conditions.md#supported-browsers)的完整清單。
 
 ## <a name="make-sure-youre-using-a-supported-operating-system"></a>請確定您使用支援的作業系統
 請確定您執行支援版本的作業系統，包括：

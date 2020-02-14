@@ -9,12 +9,12 @@ tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 657cded5e16897f9581bbcf365bacc2d2f1a821a
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 2edd62825de08becf22f2f953a63a7f89f55e0a6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754365"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191004"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中建立複雜資料類型的模型
 
@@ -125,7 +125,7 @@ Azure 認知搜尋原本就支援複雜的類型和集合。 這些類型可讓�
 
 ## <a name="filter-facet-and-sort-complex-fields"></a>篩選、facet 和排序複雜欄位
 
-用於篩選和回復搜尋的相同[OData 路徑語法](query-odata-filter-orderby-syntax.md)也可以用於 facet、排序，以及選取搜尋要求中的欄位。 針對複雜型別，適用的規則會控制哪些子欄位可以標記為可排序或 facetable。 如需這些規則的詳細資訊，請參閱[建立索引 API 參考](https://docs.microsoft.com/rest/api/searchservice/create-index#request)。
+用於篩選和回復搜尋的相同[OData 路徑語法](query-odata-filter-orderby-syntax.md)也可以用於 facet、排序，以及選取搜尋要求中的欄位。 針對複雜型別，適用的規則會控制哪些子欄位可以標記為可排序或 facetable。 如需這些規則的詳細資訊，請參閱[建立索引 API 參考](/rest/api/searchservice/create-index)。
 
 ### <a name="faceting-sub-fields"></a>Facet 子欄位
 
@@ -149,7 +149,7 @@ Azure 認知搜尋原本就支援複雜的類型和集合。 這些類型可讓�
 
     $filter=Rooms/any(room: room/Type eq 'Deluxe Room') and Rooms/all(room: not room/SmokingAllowed)
 
-和最上層的簡單欄位一樣，只有在索引定義中將可**篩選**的屬性設定為 `true`，複雜欄位的簡單子欄位才會包含在篩選準則中。 如需詳細資訊，請參閱[建立索引 API 參考](https://docs.microsoft.com/rest/api/searchservice/create-index#request)。
+和最上層的簡單欄位一樣，只有在索引定義中將可**篩選**的屬性設定為 `true`，複雜欄位的簡單子欄位才會包含在篩選準則中。 如需詳細資訊，請參閱[建立索引 API 參考](/rest/api/searchservice/create-index)。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0637e160454897af774c3bac48fc02866cb71835
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 8b45840215092281c7fbc8d499e26b095b374dd6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760788"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191035"
 ---
 # <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Azure 認知搜尋中的技能集概念和組合
 
@@ -47,18 +47,18 @@ ms.locfileid: "76760788"
 |SQL|/document/{column1}<br>/document/{column2}<br>…|N/A |
 |Cosmos DB|/document/{key1}<br>/document/{key2}<br>…|N/A|
 
- 當技能執行時，他們會將新節點新增至擴充樹狀結構。 然後，這些新節點可以做為下游技能的輸入、投射到知識存放區，或對應至索引欄位。 擴充不是可變動的：一旦建立之後，就無法編輯節點。 當您的技能集變得更複雜時，您的擴充樹狀結構，但擴充樹狀結構中的所有節點都不需要將它設為索引或知識存放區。 您可以選擇性地只將擴充的子集保存至索引或知識存放區。
+ 當技能執行時，他們會將新節點新增至擴充樹狀結構。 然後，這些新節點可以做為下游技能的輸入、投射到知識存放區，或對應至索引欄位。 擴充不是可變動的：一旦建立之後，就無法編輯節點。 當您的技能集變得更複雜時，您的擴充樹狀結構，但擴充樹狀結構中的所有節點都不需要將它設為索引或知識存放區。 
 
 您可以選擇性地只將擴充的子集保存至索引或知識存放區。
 本檔的其餘部分，我們假設我們使用[飯店評論範例](https://docs.microsoft.com/azure/search/knowledge-store-connect-powerbi)，但相同的概念也適用于從其他所有資料來源充實檔。
 
-### <a name="context"></a>Context
+### <a name="context"></a>內容
 每項技能都需要一個內容。 內容會決定：
 +   根據選取的節點，技能執行的次數。 對於類型為 collection 的內容值，在結尾加入 ```/*``` 將會導致在集合中的每個實例叫用一次技能。 
 +   在擴充樹狀結構中，新增技能輸出的位置。 輸出一律會當做內容節點的子系加入樹狀目錄中。 
 +   輸入的形狀。 針對多層集合，將內容設定為父集合會影響技能輸入的形狀。 例如，如果您的擴充樹狀目錄中有一個國家/地區清單，每個都有一份包含 zipcodes 清單的狀態清單。
 
-|Context|輸入|輸入的形狀|技能調用|
+|內容|輸入|輸入的形狀|技能調用|
 |---|---|---|---|
 |```/document/countries/*``` |```/document/countries/*/states/*/zipcodes/*``` |國家/地區中所有 zipcodes 的清單 |每個國家/地區 |
 |```/document/countries/*/states/*``` |```/document/countries/*/states/*/zipcodes/*``` |狀態中的 zipcodes 清單 | 每個國家/地區與州的組合一次|

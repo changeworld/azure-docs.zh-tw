@@ -8,21 +8,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/25/2019
+ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bc8dbfd315702f666d6b811e855d6bcd99df938e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e3a80628e5729813e1d405e58ecb623925b63076
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76836043"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193374"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>關於 Azure Active Directory B2C 自訂原則中的宣告解析程式
 
 Azure Active Directory B2C （Azure AD B2C）[自訂原則](custom-policy-overview.md)中的宣告解析程式會提供有關授權要求的內容資訊，例如原則名稱、要求相互關聯識別碼、使用者介面語言等等。
 
-若要在輸入或輸出宣告中使用宣告解析程式，您必須在 [ClaimsSchema](claimsschema.md) 元素下方定義字串 **ClaimType**，然後在輸入或輸出宣告元素中設定宣告解析程式的 **DefaultValue**。 Azure AD B2C 會讀取宣告解析程式的值，並在技術設定檔中使用該值。
+若要在輸入或輸出宣告中使用宣告解析程式，您必須在 **ClaimsSchema** 元素下方定義字串 [ClaimType](claimsschema.md)，然後在輸入或輸出宣告元素中設定宣告解析程式的 **DefaultValue**。 Azure AD B2C 會讀取宣告解析程式的值，並在技術設定檔中使用該值。
 
 在下列範例中，會定義名為 `correlationId`、**DataType** 為 `string` 的宣告類型。
 
@@ -46,16 +46,16 @@ Azure Active Directory B2C （Azure AD B2C）[自訂原則](custom-policy-overvi
 
 ### <a name="culture"></a>文化特性
 
-| 宣告 | 說明 | 範例 |
+| 宣告 | 描述 | 範例 |
 | ----- | ----------- | --------|
 | {Culture:LanguageName} | 語言的雙字母 ISO 代碼。 | en |
 | {Culture:LCID}   | 語言代碼的 LCID。 | 1033 |
-| {Culture:RegionName} | 區域的雙字母 ISO 代碼。 | 美國 |
+| {Culture:RegionName} | 區域的雙字母 ISO 代碼。 | 美式英文 |
 | {Culture:RFC5646} | RFC5646 語言代碼。 | zh-TW |
 
-### <a name="policy"></a>原則
+### <a name="policy"></a>Policy(Windows Intune 說明：原則)
 
-| 宣告 | 說明 | 範例 |
+| 宣告 | 描述 | 範例 |
 | ----- | ----------- | --------|
 | {Policy:PolicyId} | 信賴憑證者原則名稱。 | B2C_1A_signup_signin |
 | {Policy:RelyingPartyTenantId} | 信賴憑證者原則的租用戶識別碼。 | your-tenant.onmicrosoft.com |
@@ -64,7 +64,7 @@ Azure Active Directory B2C （Azure AD B2C）[自訂原則](custom-policy-overvi
 
 ### <a name="openid-connect"></a>OpenID Connect
 
-| 宣告 | 說明 | 範例 |
+| 宣告 | 描述 | 範例 |
 | ----- | ----------- | --------|
 | {OIDC:AuthenticationContextReferences} |`acr_values` 查詢字串參數。 | N/A |
 | {OIDC:ClientId} |`client_id` 查詢字串參數。 | 00000000-0000-0000-0000-000000000000 |
@@ -76,14 +76,14 @@ Azure Active Directory B2C （Azure AD B2C）[自訂原則](custom-policy-overvi
 | {OIDC:Resource} |`resource` 查詢字串參數。 | N/A |
 | {OIDC:scope} |`scope` 查詢字串參數。 | openid |
 
-### <a name="context"></a>Context
+### <a name="context"></a>內容
 
-| 宣告 | 說明 | 範例 |
+| 宣告 | 描述 | 範例 |
 | ----- | ----------- | --------|
 | {Context:BuildNumber} | 身分識別體驗架構版本 (組建編號)。  | 1.0.507.0 |
 | {Context:CorrelationId} | 相互關連識別碼。  | 00000000-0000-0000-0000-000000000000 |
 | {Context:DateTimeInUtc} |日期時間 (UTC)。  | 10/10/2018 12:00:00 PM |
-| {Context:DeploymentMode} |原則部署模式。  | 生產環境 |
+| {Context:DeploymentMode} |原則部署模式。  | 生產 |
 | {Context:IPAddress} | 使用者 IP 位址。 | 11.111.111.11 |
 
 
@@ -91,7 +91,7 @@ Azure Active Directory B2C （Azure AD B2C）[自訂原則](custom-policy-overvi
 
 OIDC 或 OAuth2 要求中所包含的任何參數名稱均可對應至使用者旅程圖中的宣告。 例如，來自應用程式的要求可能包含名稱為 `app_session`、`loyalty_number` 或任何自訂查詢字串的查詢字串參數。
 
-| 宣告 | 說明 | 範例 |
+| 宣告 | 描述 | 範例 |
 | ----- | ----------------------- | --------|
 | {OAUTH-KV:campaignId} | 查詢字串參數。 | hawaii |
 | {OAUTH-KV:app_session} | 查詢字串參數。 | A3C5R |
@@ -100,9 +100,31 @@ OIDC 或 OAuth2 要求中所包含的任何參數名稱均可對應至使用者�
 
 ### <a name="oauth2"></a>OAuth2
 
-| 宣告 | 說明 | 範例 |
+| 宣告 | 描述 | 範例 |
 | ----- | ----------------------- | --------|
-| {oauth2:access_token} | 存取權杖。 | N/A |
+| {oauth2:access_token} | 存取語彙基元。 | N/A |
+
+## <a name="using-claim-resolvers"></a>使用宣告解析程式 
+
+您可以使用宣告解析程式搭配下列元素： 
+
+| 項目 | 元素 | 設定 |
+| ----- | ----------------------- | --------|
+|Application Insights 技術設定檔 |`InputClaim` | |
+|[Azure Active Directory](active-directory-technical-profile.md)技術設定檔| `InputClaim`, `OutputClaim`| 1, 2|
+|[OAuth2](oauth2-technical-profile.md)技術設定檔| `InputClaim`, `OutputClaim`| 1, 2|
+|[OpenID connect](openid-connect-technical-profile.md)技術設定檔| `InputClaim`, `OutputClaim`| 1, 2|
+|[宣告轉換](claims-transformation-technical-profile.md)技術設定檔| `InputClaim`, `OutputClaim`| 1, 2|
+|[RESTful 提供者](restful-technical-profile.md)技術設定檔| `InputClaim`| 1, 2|
+|[SAML2](saml-technical-profile.md)技術設定檔| `OutputClaim`| 1, 2|
+|[自我](self-asserted-technical-profile.md)判斷技術設定檔| `InputClaim`, `OutputClaim`| 1, 2|
+|[ContentDefinition](contentdefinitions.md)| `LoadUri`| |
+|[ContentDefinitionParameters](relyingparty.md#contentdefinitionparameters)| `Parameter` | |
+|[RelyingParty](relyingparty.md#technicalprofile)技術設定檔| `OutputClaim`| 2 |
+
+設定： 
+1. `IncludeClaimResolvingInClaimsHandling` 的中繼資料必須設定為 `true`
+1. `AlwaysUseDefaultValue` 的輸入或輸出宣告屬性必須設定為 `true`
 
 ## <a name="how-to-use-claim-resolvers"></a>如何使用宣告解析程式
 

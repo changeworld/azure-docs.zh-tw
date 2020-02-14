@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: f32980b736232449d24de8721f354d9ca5dd03ab
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 7a13e50e6b5357264e7096fa58e34a4bcaf6ad8b
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064422"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190903"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>針對 Azure Active Directory 混合式身分識別解決方案選擇正確的驗證方法
 
@@ -185,7 +185,7 @@ Azure AD 針對混合式身分識別解決方案支援下列驗證方法。
 |多重要素驗證選項有哪些？|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[具有條件式存取的自訂控制項 *](../../active-directory/conditional-access/controls.md)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[具有條件式存取的自訂控制項 *](../../active-directory/conditional-access/controls.md)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Azure MFA Server](../../active-directory/authentication/howto-mfaserver-deploy.md)<br><br>[第三方 MFA](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)<br><br>[具有條件式存取的自訂控制項 *](../../active-directory/conditional-access/controls.md)|
 |支援哪些使用者帳戶狀態？|停用帳戶<br>(最多 30 分鐘的延遲)|停用帳戶<br><br>帳戶鎖定<br><br>帳戶已過期<br><br>密碼過期<br><br>登入時數|停用帳戶<br><br>帳戶鎖定<br><br>帳戶已過期<br><br>密碼過期<br><br>登入時數|
 |條件式存取選項有哪些？|[使用 Azure AD Premium Azure AD 條件式存取](../../active-directory/conditional-access/overview.md)|[使用 Azure AD Premium Azure AD 條件式存取](../../active-directory/conditional-access/overview.md)|[使用 Azure AD Premium Azure AD 條件式存取](../../active-directory/conditional-access/overview.md)<br><br>[AD FS 宣告規則](https://adfshelp.microsoft.com/AadTrustClaims/ClaimsGenerator)|
-|是否支援封鎖舊版通訊協定？|[是](../../active-directory/conditional-access/conditions.md)|[是](../../active-directory/conditional-access/conditions.md)|[是](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
+|是否支援封鎖舊版通訊協定？|[是](../../active-directory/conditional-access/overview.md)|[是](../../active-directory/conditional-access/overview.md)|[是](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
 |您是否可以自訂登入頁面上的標誌、影像和說明？|[是，使用 Azure AD Premium](../../active-directory/fundamentals/customize-branding.md)|[是，使用 Azure AD Premium](../../active-directory/fundamentals/customize-branding.md)|[是](../../active-directory/hybrid/how-to-connect-fed-management.md)|
 |支援哪些進階案例？|[智慧型密碼鎖定](../../active-directory/authentication/howto-password-smart-lockout.md)<br><br>[認證外洩報表，使用 Azure AD Premium P2](../../active-directory/reports-monitoring/concept-risk-events.md)|[智慧型密碼鎖定](../../active-directory/authentication/howto-password-smart-lockout.md)|多網站低延遲驗證系統<br><br>[AD FS 外部網路鎖定](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)<br><br>[與第三方身分識別系統整合](../../active-directory/hybrid/how-to-connect-fed-compatibility.md)|
 

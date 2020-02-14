@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/26/2019
 ms.reviewer: sngun
-ms.openlocfilehash: c504e2f574970142942945de5a0a9fb409bb166b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5407c38f33d167ff5114cd55878e3470e7248d71
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498312"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188726"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Azure Cosmos DB 中的存留時間（TTL） 
 
@@ -44,9 +44,7 @@ ms.locfileid: "73498312"
 
 * 如果未設定容器的 TTL，則此容器中項目的存留時間沒有任何作用。 
 
-* 如果容器的 TTL 設定為 -1，則此容器中存留時間設為 n 的項目會在 n 秒後過期，而其餘的項目則不會過期。 
-
-刪除以 TTL 為基礎的項目是免費的。 因為 TTL 過期而刪除項目時，沒有任何額外的成本 (也就是不會使用任何額外的 RU)。
+* 如果容器的 TTL 設定為 -1，則此容器中存留時間設為 n 的項目會在 n 秒後過期，而其餘的項目則不會過期。
 
 ## <a name="examples"></a>範例
 

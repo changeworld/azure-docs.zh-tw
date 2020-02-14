@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: ea213921c736bc3b6bf88c0bdd81a96656ecbe5b
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 33bdf718e74011dbd7adedd766ebc90923fffb83
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547280"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189848"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure 佇列儲存體繫結
 
@@ -33,7 +33,7 @@ ms.locfileid: "76547280"
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
-## <a name="encoding"></a>編碼
+## <a name="encoding"></a>Encoding
 Functions 預期有 base64 編碼的字串。 任何對於編碼類型的調整 (以便準備資料作為 base64 編碼的字串) 都必須在呼叫服務中實作。
 
 ## <a name="trigger"></a>觸發程序
@@ -314,7 +314,7 @@ public class QueueTriggerDemo {
 }
 ```
 
-| 屬性    | 說明 |
+| 屬性    | 描述 |
 |-------------|-----------------------------|
 |`name`       | 宣告函式簽章中的參數名稱。 觸發函式時，這個參數的值會有佇列訊息的內容。 |
 |`queueName`  | 宣告儲存體帳戶中的佇列名稱。 |
@@ -326,7 +326,7 @@ public class QueueTriggerDemo {
 
 下表說明您在 *function.json* 檔案中設定的繫結設定屬性內容和 `QueueTrigger` 屬性。
 
-|function.json 屬性 | 屬性內容 |說明|
+|function.json 屬性 | 屬性內容 |描述|
 |---------|---------|----------------------|
 |**type** | n/a| 必須設為 `queueTrigger`。 當您在 Azure 入口網站中建立觸發程序時，會自動設定此屬性。|
 |**direction**| n/a | 僅限在 *function.json* 檔案中。 必須設為 `in`。 當您在 Azure 入口網站中建立觸發程序時，會自動設定此屬性。 |
@@ -378,7 +378,7 @@ public class QueueTriggerDemo {
 
 佇列觸發程序提供數個[中繼資料屬性](./functions-bindings-expressions-patterns.md#trigger-metadata)。 這些屬性可作為其他繫結中繫結運算式的一部分或程式碼中的參數使用。 這些是 [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) 類別的屬性。
 
-|屬性|類型|說明|
+|屬性|類型|描述|
 |--------|----|-----------|
 |`QueueTrigger`|`string`|佇列承載 (如果為有效字串)。 如果佇列訊息承載是字串，`QueueTrigger` 的值與*函數. json*中 `name` 屬性所命名的變數相同。|
 |`DequeueCount`|`int`|此訊息已從佇列清除的次數。|
@@ -403,7 +403,7 @@ public class QueueTriggerDemo {
 - 當找到訊息時，執行時間會等待兩秒，然後檢查是否有另一個訊息
 - 當找不到任何訊息時，它會等候大約四秒，然後再試一次。
 - 連續嘗試取得佇列訊息失敗後，等候時間會持續增加，直到它到達等待時間上限 (預設值為一分鐘)。
-- 可透過 [host.json 檔案](functions-host-json.md#queues)中的 `maxPollingInterval` 屬性來設定最長等待時間。
+- 可透過 `maxPollingInterval`host.json 檔案[中的 ](functions-host-json.md#queues) 屬性來設定最長等待時間。
 
 針對本機開發，輪詢間隔的最大值預設為2秒。
 
@@ -641,7 +641,7 @@ def main(req: func.HttpRequest, msg: func.Out[typing.List[str]]) -> func.HttpRes
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-在 [C# 類別庫](functions-dotnet-class-library.md)中，使用 [QueueAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs)。
+在 [C# 類別庫](functions-dotnet-class-library.md)中，使用 [QueueAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues/QueueAttribute.cs)。
 
 該屬性會套用至 `out` 參數或函式的傳回值。 該屬性的建構函式會採用佇列名稱，如下列範例所示：
 
@@ -704,7 +704,7 @@ public class HttpTriggerQueueOutput {
 }
 ```
 
-| 屬性    | 說明 |
+| 屬性    | 描述 |
 |-------------|-----------------------------|
 |`name`       | 宣告函式簽章中的參數名稱。 觸發函式時，這個參數的值會有佇列訊息的內容。 |
 |`queueName`  | 宣告儲存體帳戶中的佇列名稱。 |
@@ -718,7 +718,7 @@ public class HttpTriggerQueueOutput {
 
 下表說明您在 *function.json* 檔案中設定的繫結設定屬性內容和 `Queue` 屬性。
 
-|function.json 屬性 | 屬性內容 |說明|
+|function.json 屬性 | 屬性內容 |描述|
 |---------|---------|----------------------|
 |**type** | n/a | 必須設為 `queue`。 當您在 Azure 入口網站中建立觸發程序時，會自動設定此屬性。|
 |**direction** | n/a | 必須設為 `out`。 當您在 Azure 入口網站中建立觸發程序時，會自動設定此屬性。 |
@@ -816,7 +816,7 @@ public class HttpTriggerQueueOutput {
 }
 ```
 
-|屬性  |預設 | 說明 |
+|屬性  |預設 | 描述 |
 |---------|---------|---------|
 |maxPollingInterval|00:00:01|佇列輪詢之間的間隔上限。 最小值為00：00：00.100 （100毫秒），而遞增至00:01:00 （1分鐘）。  在1.x 中，資料類型是毫秒，而在2.x 和更高的版本中，它是 TimeSpan。|
 |visibilityTimeout|00:00:00|處理訊息失敗時，重試之間的時間間隔。 |

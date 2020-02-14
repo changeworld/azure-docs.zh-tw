@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 8c3e377faef4e18bff01fd7001751d1f1e347b8d
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 085933f9a74ee37779ce63ce499d89ea53a9f7d6
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030860"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198934"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>HDInsight 中 Apache Hadoop 叢集的可用性和可靠性
 
@@ -27,7 +27,7 @@ Hadoop 藉由在叢集中的多個節點間複寫服務和資料，以達到高�
 使用 Azure 虛擬機器在 HDInsight 叢集中的節點實作。 下列各節會討論個別的節點類型所搭配使用的 HDInsight。
 
 > [!NOTE]  
-> 並非所有的節點類型都可用於某個叢集類型。 例如，Hadoop 叢集類型就不會有任何 Nimbus 節點。 如需 HDInsight 叢集類型所使用的節點詳細資訊，請參閱[在 HDInsight 建立以 Linux 為基礎的 Hadoop 叢集](hdinsight-hadoop-provision-linux-clusters.md#cluster-types)文件的＜叢集類型＞一節。
+> 並非所有的節點類型都可用於某個叢集類型。 例如，Hadoop 叢集類型就不會有任何 Nimbus 節點。 如需 HDInsight 叢集類型所使用的節點詳細資訊，請參閱[在 HDInsight 建立以 Linux 為基礎的 Hadoop 叢集](hdinsight-hadoop-provision-linux-clusters.md#cluster-type)文件的＜叢集類型＞一節。
 
 ### <a name="head-nodes"></a>前端節點
 

@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 12/12/2017
 ms.author: cshoe
-ms.openlocfilehash: 13e16fef2ae66851909e03dddab293e9c7955acb
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 76af1f51c83e9554a51e6c17266fac739e6bd6b1
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978776"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198355"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# 指令碼 (.csx) 開發人員參考
 
@@ -55,7 +55,7 @@ FunctionsProject
 
 ## <a name="binding-to-arguments"></a>繫結至引數
 
-會透過 function.json 設定檔中的 `name` 屬性，將輸入或輸出資料繫結至 C# 指令碼函式參數。 下列範例示範佇列觸發之函式的 function.json 檔案和 run.csx 檔案。 接收來自佇列訊息之資料的參數命名為 `myQueueItem`，因為這是 `name` 屬性的值。
+會透過 function.json`name`*設定檔中的* 屬性，將輸入或輸出資料繫結至 C# 指令碼函式參數。 下列範例示範佇列觸發之函式的 function.json 檔案和 run.csx 檔案。 接收來自佇列訊息之資料的參數命名為 `myQueueItem`，因為這是 `name` 屬性的值。
 
 ```json
 {
@@ -85,11 +85,11 @@ public static void Run(CloudQueueMessage myQueueItem, ILogger log)
 }
 ```
 
-[稍後在本文中](#referencing-external-assemblies)會說明 `#r` 陳述式。
+`#r`稍後在本文中[會說明 ](#referencing-external-assemblies) 陳述式。
 
 ## <a name="supported-types-for-bindings"></a>支援的繫結類型
 
-每個繫結都有自己支援的類型；例如，Blob 觸發程序可以與字串參數、POCO 參數、`CloudBlockBlob` 參數或任何數個其他支援的類型搭配使用。 [Blob 繫結的繫結參考文章](functions-bindings-storage-blob.md#trigger---usage)會列出 Blob 觸發程序支援的所有參數類型。 如需詳細資訊，請參閱[觸發程序和繫結](functions-triggers-bindings.md)以及[每個繫結類型的繫結參考文件](functions-triggers-bindings.md#next-steps)。
+每個繫結都有自己支援的類型；例如，Blob 觸發程序可以與字串參數、POCO 參數、`CloudBlockBlob` 參數或任何數個其他支援的類型搭配使用。 [Blob 繫結的繫結參考文章](functions-bindings-storage-blob-trigger.md#usage)會列出 Blob 觸發程序支援的所有參數類型。 如需詳細資訊，請參閱[觸發程序和繫結](functions-triggers-bindings.md)以及[每個繫結類型的繫結參考文件](functions-triggers-bindings.md#next-steps)。
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
@@ -116,7 +116,7 @@ POCO 類別的每個屬性都必須定義 getter 和 setter。
 
 ## <a name="reusing-csx-code"></a>重複使用 .csx 程式碼
 
-您可以在您的 *run.csx* 檔案中使用其他 *.csx* 檔案中定義的類別和方法。 若要這樣做，請在您的 *run.csx* 檔案中使用 `#load` 指示詞。 在下列範例中，名為 `MyLogger` 的記錄常式已在 *myLogger.csx* 中共用，並使用 `#load` 指示詞載入至 *run.csx*︰
+您可以在您的 *run.csx* 檔案中使用其他 *.csx* 檔案中定義的類別和方法。 若要這樣做，請在您的 `#load`run.csx*檔案中使用* 指示詞。 在下列範例中，名為 `MyLogger` 的記錄常式已在 *myLogger.csx* 中共用，並使用 *指示詞載入至*run.csx`#load`︰
 
 範例 run.csx：
 
@@ -218,7 +218,7 @@ public class Order
 
 ## <a name="binding-to-method-return-value"></a>繫結至方法傳回值
 
-您可以使用 *function.json* 中的名稱 `$return`，使用輸出繫結的方法傳回值。 如需範例，請參閱[觸發程序和繫結](./functions-bindings-return-value.md)。
+您可以使用 `$return`function.json*中的名稱*，使用輸出繫結的方法傳回值。 如需範例，請參閱[觸發程序和繫結](./functions-bindings-return-value.md)。
 
 唯有成功的函式執行一律導致傳回值傳遞至輸出繫結時，才使用此傳回值。 否則，使用 `ICollector` 或 `IAsyncCollector`，如下一節所示。
 
@@ -248,9 +248,9 @@ public static void Run(string myBlob, ILogger log)
 ```
 
 > [!NOTE]
-> 如需您可使用之較新記錄架構 (而非 `TraceWriter`) 的資訊，請參閱**監視 Azure Functions** 一文中的[在 C# 函式中寫入記錄](functions-monitoring.md#write-logs-in-c-functions)。
+> 如需您可使用之較新記錄架構 (而非 `TraceWriter`) 的資訊，請參閱[監視 Azure Functions](functions-monitoring.md#write-logs-in-c-functions) 一文中的**在 C# 函式中寫入記錄**。
 
-## <a name="async"></a>非同步處理
+## <a name="async"></a>Async
 
 若要讓函式變成[非同步](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)，請使用 `async` 關鍵字並傳回 `Task` 物件。
 
@@ -359,7 +359,7 @@ simple-name 可能會參考下列組件 (例如，`#r "AssemblyName"`)：
 
 若要參考自訂組件，您可以使用「共用」組件或「私人」組件：
 
-* 共用組件會共用於函式應用程式內的所有函式。 若要參考自訂組件，請將組件上傳至[函式應用程式根資料夾](functions-reference.md#folder-structure) (wwwroot) 中名為 `bin` 的資料夾。
+* 共用組件會共用於函式應用程式內的所有函式。 若要參考自訂組件，請將組件上傳至`bin`函式應用程式根資料夾[ (wwwroot) 中名為 ](functions-reference.md#folder-structure) 的資料夾。
 
 * 私人組件屬於所指定函式的內容，而且支援不同版本的側載。 應該在函式目錄的 `bin` 資料夾中上傳私人組件。 使用檔案名稱 (例如 `#r "MyAssembly.dll"`) 參考組件。
 
@@ -367,7 +367,7 @@ simple-name 可能會參考下列組件 (例如，`#r "AssemblyName"`)：
 
 ### <a name="watched-directories"></a>監看的目錄
 
-系統會自動監看包含函式指令碼檔案之目錄中的組件變更。 若要監看其他目錄中的組件變更，請將它們新增至 [host.json](functions-host-json.md) 中的 `watchDirectories` 清單。
+系統會自動監看包含函式指令碼檔案之目錄中的組件變更。 若要監看其他目錄中的組件變更，請將它們新增至 `watchDirectories`host.json[ 中的 ](functions-host-json.md) 清單。
 
 ## <a name="using-nuget-packages"></a>使用 NuGet 套件
 若要在2.x 和更新版本C#的函式中使用 NuGet 套件，請將*函數 proj*檔案上傳至函式應用程式檔案系統中的函式資料夾。 以下是範例 *function.proj* 檔案，該檔案會加入對 *Microsoft.ProjectOxford.Face* *1.1.0* 版的參考：
@@ -444,7 +444,7 @@ public static string GetEnvironmentVariable(string name)
 
 ## <a name="binding-at-runtime"></a>執行階段的繫結
 
-在 C# 和其他 .NET 語言中，您可以使用相對於 *function.json* 中[*宣告式*](https://en.wikipedia.org/wiki/Declarative_programming)繫結的[命令式](https://en.wikipedia.org/wiki/Imperative_programming)繫結模式。 當繫結參數需要在執行階段而不是設計階段中計算時，命令式繫結非常有用。 利用此模式，您可以快速在您的函式程式碼中繫結至支援的輸入和輸出繫結。
+在 C# 和其他 .NET 語言中，您可以使用相對於 [function.json](https://en.wikipedia.org/wiki/Imperative_programming) 中[*宣告式*](https://en.wikipedia.org/wiki/Declarative_programming)繫結的*命令式*繫結模式。 當繫結參數需要在執行階段而不是設計階段中計算時，命令式繫結非常有用。 利用此模式，您可以快速在您的函式程式碼中繫結至支援的輸入和輸出繫結。
 
 定義命令式繫結，如下所示︰
 
@@ -463,7 +463,7 @@ using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
 
 ### <a name="single-attribute-example"></a>單一屬性範例
 
-下列範例程式碼會使用在執行階段定義的 blob 路徑來建立[儲存體 blob 輸出繫結](functions-bindings-storage-blob.md#output)，然後將字串寫入 blob。
+下列範例程式碼會使用在執行階段定義的 blob 路徑來建立[儲存體 blob 輸出繫結](functions-bindings-storage-blob-output.md)，然後將字串寫入 blob。
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -482,7 +482,7 @@ public static async Task Run(string input, Binder binder)
 
 ### <a name="multiple-attribute-example"></a>多個屬性範例
 
-先前的範例會取得函數應用程式主要儲存體帳戶連接字串的應用程式設定 (也就是 `AzureWebJobsStorage`)。 您可以指定要用於儲存體帳戶的自訂應用程式設定，方法是新增 [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) 並將屬性陣列傳遞至 `BindAsync<T>()`。 使用 `Binder` 參數，而不是 `IBinder`。  例如：
+先前的範例會取得函數應用程式主要儲存體帳戶連接字串的應用程式設定 (也就是 `AzureWebJobsStorage`)。 您可以指定要用於儲存體帳戶的自訂應用程式設定，方法是新增 [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) 並將屬性陣列傳遞至 `BindAsync<T>()`。 使用 `Binder` 參數，而不是 `IBinder`。  例如，
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -509,8 +509,8 @@ public static async Task Run(string input, Binder binder)
 > | 繫結 | 屬性 | 新增參考 |
 > |------|------|------|
 > | Cosmos DB | [`Microsoft.Azure.WebJobs.DocumentDBAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.CosmosDB"` |
-> | 事件中樞 | [`Microsoft.Azure.WebJobs.ServiceBus.EventHubAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/v2.x/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs) | `#r "Microsoft.Azure.Jobs.ServiceBus"` |
-> | Mobile Apps & Mobile Services | [`Microsoft.Azure.WebJobs.MobileTableAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.MobileApps"` |
+> | 事件中心 | [`Microsoft.Azure.WebJobs.ServiceBus.EventHubAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/v2.x/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs) | `#r "Microsoft.Azure.Jobs.ServiceBus"` |
+> | Mobile Apps | [`Microsoft.Azure.WebJobs.MobileTableAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.MobileApps"` |
 > | 通知中樞 | [`Microsoft.Azure.WebJobs.NotificationHubAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.NotificationHubs/NotificationHubAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.NotificationHubs"` |
 > | 服務匯流排 | [`Microsoft.Azure.WebJobs.ServiceBusAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAttribute.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs) | `#r "Microsoft.Azure.WebJobs.ServiceBus"` |
 > | 儲存體佇列 | [`Microsoft.Azure.WebJobs.QueueAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |

@@ -9,14 +9,14 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: tarcher
 ms.subservice: common
-ms.openlocfilehash: f8cdd7b950a11045f795ac93d4a0904f2dc526fa
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a89439f49dd53f09d5cd40be0bf2e4981e9235d4
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970184"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201380"
 ---
-# <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>搭配使用 Azure 儲存體和 Hudson 連續整合解決方案
+# <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>使用 Azure 儲存體與 Hudson 連續整合解決方案
 ## <a name="overview"></a>概觀
 下列資訊說明如何使用 Blob 儲存體，做為 Hudson 連續整合 (CI) 解決方案所建立的組建構件儲存機制，或做為在組建程序中要使用之可下載檔案的來源。 您會發現這很實用的其中一種情況就是，當您在敏捷式開發環境中編寫程式碼 (使用 Java 或其他語言) 時，組建是根據連續整合來執行，而您需要一個存放庫來存放組建成品，以便能夠將這些成品分享給其他組織成員或客戶，或是維護封存等等。  另一種情況是當組建工作本身需要其他檔案時，例如，要隨組建輸入一起下載的相依性項目。
 
@@ -42,7 +42,7 @@ Hudson 提供軟體專案的連續整合，方法是允許開發人員輕易整�
   
     如果您目前沒有 Hudson CI 解決方案，您可以使用下列技巧來執行 Hudson CI 解決方案：
   
-  1. 在已啟用 Java 的機器上，從 <http://hudson-ci.org/> 下載 Hudson WAR。
+  1. 在已啟用 JAVA 的機器上，[下載 HUDSON WAR](https://www.eclipse.org/hudson/download.php)檔案。
   2. 在命令提示字元中，會開啟至包含 Hudson WAR 的資料夾，並執行 Hudson WAR。 例如，如果您已下載 3.1.2 版：
      
       `java -jar hudson-3.1.2.war`
@@ -53,7 +53,7 @@ Hudson 提供軟體專案的連續整合，方法是允許開發人員輕易整�
      
       雖然典型的 Hudson CI 解決方案可設定作為服務執行，但在本教學課程中，您可以直接在命令列中執行 Hudson war。
 * 一個 Azure 帳戶。 您可以在 <https://www.azure.com> 註冊 Azure 帳戶。
-* 一個 Azure 儲存體帳戶。 如果您還沒有儲存體帳戶，可以使用 [建立儲存體帳戶](../common/storage-account-create.md)中的步驟建立一個帳戶。
+* Azure 儲存體帳戶。 如果您還沒有儲存體帳戶，可以使用 [建立儲存體帳戶](../common/storage-account-create.md)中的步驟建立一個帳戶。
 * 建議學習 Hudson CI 解決方案，但這不是必須的，因為下列內容會使用基本範例來說明使用 Blob 服務作為 Hudson CI 組建成品的儲存機制時的所需步驟。
 
 ## <a name="how-to-use-the-blob-service-with-hudson-ci"></a>如何使用 Blob 服務與 Hudson CI
@@ -65,7 +65,7 @@ Hudson 提供軟體專案的連續整合，方法是允許開發人員輕易整�
 3. 按一下 [Available] 索引標籤。
 4. 按一下 [其他]。
 5. 在 [構件上傳程式] 區段中，選取 [Microsoft Azure 儲存體外掛程式]。
-6. 按一下 [Install]。
+6. 按一下 **[安裝]** 。
 7. 在安裝完成後，請重新啟動 Hudson。
 
 ## <a name="how-to-configure-the-azure-storage-plugin-to-use-your-storage-account"></a>如何設定 Azure 儲存體外掛程式來使用您的儲存體帳戶

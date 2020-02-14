@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: d90739fbdc862d67dc2ce0f1dfdf5af5f4089a44
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 45dcd2374fc5be40f86d403f8daccf4a6f1d6997
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899664"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189431"
 ---
 # <a name="application-insights-agent-api-set-applicationinsightsmonitoringconfig"></a>Application Insights 代理程式 API： ApplicationInsightsMonitoringConfig
 
@@ -40,20 +40,18 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 在此範例中：
 - `MachineFilter` 會使用 `'.*'` 萬用字元來符合目前的電腦。
 - `AppFilter='WebAppExclude'` 提供 `null` 的檢測金鑰。 將不會檢測指定的應用程式。
-- `AppFilter='WebAppOne'` 會為指定的應用程式指派唯一的檢測金鑰。
-- `AppFilter='WebAppTwo'` 會為指定的應用程式指派唯一的檢測金鑰。
+- `AppFilter='WebAppOne'` 為指定的應用程式指派唯一的檢測金鑰。
+- `AppFilter='WebAppTwo'` 為指定的應用程式指派唯一的檢測金鑰。
 - 最後，`AppFilter` 也會使用 `'.*'` 萬用字元來比對先前規則不符合的所有 web 應用程式，並指派預設的檢測金鑰。
 - 為了方便閱讀，會加入空格。
 
 ```powershell
-PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap 
-    @(@{MachineFilter='.*';AppFilter='WebAppExclude'},
-      @{MachineFilter='.*';AppFilter='WebAppOne';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx1'},
-      @{MachineFilter='.*';AppFilter='WebAppTwo';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx2'},
-      @{MachineFilter='.*';AppFilter='.*';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxdefault'})
-
+Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap `
+       @(@{MachineFilter='.*';AppFilter='WebAppExclude'},
+          @{MachineFilter='.*';AppFilter='WebAppOne';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx1'}},
+          @{MachineFilter='.*';AppFilter='WebAppTwo';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx2'}},
+          @{MachineFilter='.*';AppFilter='.*';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxdefault'}})
 ```
-
 
 ## <a name="parameters"></a>參數
 
@@ -67,7 +65,7 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 > [!IMPORTANT]
 > 應用程式會依照規則的提供順序來比對規則。 因此，您應該先指定最特定的規則，最後是最常見的規則。
 
-#### <a name="schema"></a>結構描述
+#### <a name="schema"></a>Schema
 `@(@{MachineFilter='.*';AppFilter='.*';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'})`
 
 - **MachineFilter**是電腦或C# VM 名稱的必要 RegEx。

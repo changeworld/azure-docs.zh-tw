@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: d3afc784688a14e4d5d2fc6ae9dc5c1a9e45c4a0
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: cafa9d6100e03d8315bf5dd19d863ca90aadd4bb
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77057204"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190897"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>可保護身分識別基礎結構的五個步驟
 
@@ -107,7 +107,7 @@ Microsoft 建議採用下列根據 [NIST 指導方針](https://pages.nist.gov/80
 
 1. 封鎖[舊式驗證 (如果您使用 AD FS)](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)。
 2. 將 [SharePoint Online 和 Exchange Online 設定為使用新式驗證](../../active-directory/conditional-access/conditional-access-for-exo-and-spo.md)。
-3. 如果您有 Azure AD Premium，請使用[條件式存取原則](../../active-directory/conditional-access/conditions.md)來封鎖舊版驗證，否則請使用[Azure AD 安全性預設值](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md)。
+3. 如果您有 Azure AD Premium，請使用[條件式存取原則](../../active-directory/conditional-access/overview.md)來封鎖舊版驗證，否則請使用[Azure AD 安全性預設值](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md)。
 
 ### <a name="block-invalid-authentication-entry-points"></a>封鎖無效的驗證進入點
 

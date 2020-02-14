@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 60ff148e044df81e64b54fc48c1cb6f67aee14df
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 2af20a1ddf4239b7eec6cceabf2ff9711959c128
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76275666"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189089"
 ---
 # <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>(已淘汰) Azure Container Service DC/OS 叢集上具備 Vamp 的 Canary 版本微服務
 
@@ -91,7 +91,7 @@ Vamp 需要 Elasticsearch 來進行計量收集和彙總。 您可以使用 [mag
    ```
   
 
-3. 按一下 [ **部署**]。
+3. 按一下[部署]。
 
    DC/OS 會部署 Elasticsearch 容器。 您可以在 [服務] 頁面上追蹤進度。  
 
@@ -127,13 +127,13 @@ Vamp 需要 Elasticsearch 來進行計量收集和彙總。 您可以使用 [mag
 
 現在該 Vamp 已啟動並且執行中，請從藍圖部署服務。 
 
-簡單來說，[Vamp 藍圖](https://vamp.io/documentation/using-vamp/blueprints/)會描述要部署的端點 (閘道)、叢集和服務。 Vamp 會使用叢集，將相同服務的不同變化群組為邏輯群組，以供 Canary 版本或 A/B 進行測試。  
+簡單來說，[Vamp 藍圖](https://docs.vamp.io/how-vamp-works/vamp-and-kubernetes#vamp-deployments)會描述要部署的端點 (閘道)、叢集和服務。 Vamp 會使用叢集，將相同服務的不同變化群組為邏輯群組，以供 Canary 版本或 A/B 進行測試。  
 
 此案例中使用的範例整合型應用程式稱為 [**sava**](https://github.com/magneticio/sava)，為 1.0 版。 整合是封裝在一個 Docker 容器中，位於 magneticio/sava:1.0.0 下的 Docker 中樞。 應用程式通常會在連接埠 8080 上執行，但在此情況下，您需要在連接埠 9050 下將它公開。 使用簡單的藍圖，透過 Vamp 將應用程式進行部署。
 
 1. 前往**部署**。
 
-2. 按一下 [新增]。
+2. 按一下 [加入]。
 
 3. 貼入下列藍圖 YAML。 此藍圖所包含的一個叢集只有一個服務變化，我們將在稍後步驟中進行變更︰
 
@@ -151,7 +151,7 @@ Vamp 需要 Elasticsearch 來進行計量收集和彙總。 您可以使用 [mag
               webport: 8080/http # cluster endpoint, used for canary releasing
    ```
 
-4. 按一下 [檔案]。 Vamp 會起始部署。
+4. Haga clic en **Guardar**. Vamp 會起始部署。
 
 部署會列在 [部署] 頁面上。 按一下 [部署] 可監視其狀態。
 
@@ -211,7 +211,7 @@ Vamp 已在 DC/OS 代理程式節點上部署 sava 服務，在連接埠 9050 �
               webport: 8080/http # cluster endpoint to update
    ```
   
-3. 按一下 [檔案]。 藍圖會儲存在 [藍圖] 頁面上並加以列出。
+3. Haga clic en **Guardar**. 藍圖會儲存在 [藍圖] 頁面上並加以列出。
 
 4. 將 sava:1.1 藍圖上的 [動作] 功能表開啟，然後按一下 [合併至]。
 
@@ -233,7 +233,7 @@ Vamp 會部署藍圖中所述的新 sava:1.1.0 服務變化，連同執行中部
 
 將兩個版本的 sava 部署在相同叢集中，移動**權數**滑桿來調整這兩者間的流量散發。
 
-1. 按一下 [權數] 旁的 [Vamp UI - 編輯]![](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png)。
+1. 按一下 [權數]![](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) 旁的 [Vamp UI - 編輯]。
 
 2. 將權數散發設定為 50%/50%，然後按一下 [儲存]。
 
@@ -270,7 +270,7 @@ Vamp 會使用**條件**來篩選閘道路由之間的流量。 流量會以套�
 
    ![Vamp UI - 將條件套用至閘道](./media/container-service-dcos-vamp-canary-release/26_apply_condition.png)
 
-5. 最後，調整閘道加權，將所有其他流量 (所有非 Firefox 使用者) 傳送至新的 sava:1.1.0。 按一下 [權數] 旁的 [Vamp UI - 編輯]![](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) 並設定權數散發，讓 100% 導向路由 sava/sava_cluster/sava:1.1.0/webport。
+5. 最後，調整閘道加權，將所有其他流量 (所有非 Firefox 使用者) 傳送至新的 sava:1.1.0。 按一下 [權數]![](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) 旁的 [Vamp UI - 編輯] 並設定權數散發，讓 100% 導向路由 sava/sava_cluster/sava:1.1.0/webport。
 
    非經條件篩選的所有流量現在都會導向至新的 sava:1.1.0。
 
@@ -287,9 +287,9 @@ Vamp 會使用**條件**來篩選閘道路由之間的流量。 流量會以套�
 
 ## <a name="next-steps"></a>後續步驟
 
-* 了解如何透過 [Vamp REST API](https://vamp.io/documentation/api/api-reference/) 來管理 Vamp 動作。
+* 了解如何透過 [Vamp REST API](https://docs.vamp.io/how-vamp-works/events-and-metrics#events) 來管理 Vamp 動作。
 
-* 在 Node.js 中建置 Vamp 自動化指令碼，並以 [Vamp 工作流程](https://vamp.io/documentation/using-vamp/v1.0.0/workflows/#create-a-workflow)來執行這些指令碼。
+* 在 Node.js 中建置 Vamp 自動化指令碼，並以 [Vamp 工作流程](https://docs.vamp.io/how-vamp-works/concepts-and-components#workflows)來執行這些指令碼。
 
-* 請參閱其他 [VAMP 教學課程](https://vamp.io/documentation/tutorials/)。
+* 請參閱其他 [VAMP 教學課程](https://docs.vamp.io/tutorials/)。
 

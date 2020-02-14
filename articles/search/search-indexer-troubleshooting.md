@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 5f646b4cef782b569910bdf881208c9984194589
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 1e3692920c35a6965a23c0305aeeebfc80505d85
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931112"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190921"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-cognitive-search"></a>針對 Azure 認知搜尋中的常見索引子問題進行疑難排解
 
@@ -112,6 +112,6 @@ api-key: [admin key]
 
 * 尚未為文件建立索引。 檢查入口網站以了解成功的索引子執行。
 * 文件已在索引子執行後更新。 若您的索引子是根據[排程](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-schedule)執行，它最後將重新執行並擷取文件。
-* 資料來源中指定的[查詢](https://docs.microsoft.com/rest/api/searchservice/create-data-source#request-body-syntax)排除了文件。 若文件並非資料來源的一部分，索引子將無法為文件建立索引。
+* 資料來源中指定的[查詢](/rest/api/searchservice/create-data-source)排除了文件。 若文件並非資料來源的一部分，索引子將無法為文件建立索引。
 * [欄位](https://docs.microsoft.com/rest/api/searchservice/create-indexer#fieldmappings)對應或[AI 擴充](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro)已變更檔，看起來與您所預期的不同。
 * 請使用[查閱文件 API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) 來尋找您的文件。

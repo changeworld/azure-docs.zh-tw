@@ -5,12 +5,12 @@ author: sebastianburckhardt
 ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 750ccbfa885b4679dfa61240b49ea9ec86a46d51
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 01e07eaee705634b03cc4462c4058e290daa8bc2
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76120636"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198491"
 ---
 # <a name="developers-guide-to-durable-entities-in-net"></a>.NET 中的持久性實體開發人員指南
 
@@ -203,7 +203,7 @@ public class Counter : ICounter
 
 ### <a name="example-client-signals-entity-through-interface"></a>範例：用戶端透過介面的信號實體
 
-用戶端程式代碼可以使用 `SignalEntityAsync<TEntityInterface>`，將信號傳送給實 `TEntityInterface`的實體。 例如：
+用戶端程式代碼可以使用 `SignalEntityAsync<TEntityInterface>`，將信號傳送給實 `TEntityInterface`的實體。 例如，
 
 ```csharp
 [FunctionName("DeleteCounter")]
@@ -371,7 +371,7 @@ public static Task Run([EntityTrigger] IDurableEntityContext ctx)
 
 與一般函式不同的是，實體類別方法無法直接存取輸入和輸出系結。 相反地，其必須在進入點函式宣告中擷取繫結資料，然後再傳遞至 `DispatchAsync<T>` 方法。 任何傳遞至 `DispatchAsync<T>` 的物件都會自動以引數的形式傳遞至實體類別建構函式。
 
-下列範例會說明如何讓以類別為基礎的實體可以使用來自 [Blob 輸入繫結](../functions-bindings-storage-blob.md#input)的 `CloudBlobContainer` 參考。
+下列範例會說明如何讓以類別為基礎的實體可以使用來自 `CloudBlobContainer`Blob 輸入繫結[的 ](../functions-bindings-storage-blob-input.md) 參考。
 
 ```csharp
 public class BlobBackedEntity

@@ -1,5 +1,5 @@
 ---
-title: 使用 Resource Manager 範本建立計量警示
+title: 使用 Resource Manager 範本建立度量警示
 description: 了解如何使用 Resource Manager 範本建立計量警示。
 author: harelbr
 services: azure-monitor
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 1/14/2020
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: bfa5d240ba4905f79274941568933daf1425bf8b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 463a389116cd58e50839d717b700b604f545e5f2
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969422"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190109"
 ---
-# <a name="create-a-metric-alert-with-a-resource-manager-template"></a>使用 Resource Manager 範本建立計量警示
+# <a name="create-a-metric-alert-with-a-resource-manager-template"></a>使用 Resource Manager 範本建立度量警示
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -107,8 +107,8 @@ ms.locfileid: "75969422"
             }
         },
         "threshold": {
-            "type": "string",
-            "defaultValue": "0",
+            "type": "double",
+            "defaultValue": 0,
             "metadata": {
                 "description": "The threshold value at which the alert is activated."
             }
@@ -1657,8 +1657,8 @@ az group deployment create \
             }
         },
         "threshold": {
-            "type": "string",
-            "defaultValue": "0",
+            "type": "double",
+            "defaultValue": 0,
             "metadata": {
                 "description": "The threshold value at which the alert is activated."
             }
@@ -2304,8 +2304,8 @@ az group deployment create \
             }
         },
         "threshold": {
-            "type": "string",
-            "defaultValue": "0",
+            "type": "double",
+            "defaultValue": 0,
             "metadata": {
                 "description": "The threshold value at which the alert is activated."
             }
@@ -2946,8 +2946,8 @@ az group deployment create \
             }
         },
         "threshold": {
-            "type": "string",
-            "defaultValue": "0",
+            "type": "double",
+            "defaultValue": 0,
             "metadata": {
                 "description": "The threshold value at which the alert is activated."
             }

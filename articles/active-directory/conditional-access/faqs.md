@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2cc562f155fe3b84e5d28b2e0e22d50238d480c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: baa44481c4641f69ead5335298316c837062d2c0
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73816220"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186056"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Azure Active Directory 條件式存取常見問題
 
 ## <a name="which-applications-work-with-conditional-access-policies"></a>哪些應用程式會使用條件式存取原則？
 
-如需使用條件式存取原則之應用程式的相關資訊，請參閱[在 Azure Active Directory 中使用條件式存取規則的應用程式和瀏覽器](technical-reference.md)。
+如需使用條件式存取原則之應用程式的相關資訊，請參閱[在 Azure Active Directory 中使用條件式存取規則的應用程式和瀏覽器](concept-conditional-access-cloud-apps.md)。
 
 ## <a name="are-conditional-access-policies-enforced-for-b2b-collaboration-and-guest-users"></a>條件式存取原則是否會針對 B2B 共同作業和來賓使用者強制執行？
 
@@ -30,7 +30,7 @@ ms.locfileid: "73816220"
 
 ## <a name="does-a-sharepoint-online-policy-also-apply-to-onedrive-for-business"></a>SharePoint Online 原則也適用於商務用 OneDrive 嗎？
 
-是。 SharePoint Online 原則也會套用至商務用 OneDrive。
+是的。 SharePoint Online 原則也會套用至商務用 OneDrive。
 
 ## <a name="why-cant-i-set-a-policy-directly-on-client-apps-like-word-or-outlook"></a>為什麼我無法直接在用戶端應用程式（例如 Word 或 Outlook）上設定原則？
 

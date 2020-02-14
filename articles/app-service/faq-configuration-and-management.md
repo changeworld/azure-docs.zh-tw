@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 047579550172995378d92327ecf22d63712bf407
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 598fdd5e3682226253ef8f2611ede2bbeba596f7
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967126"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190431"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure 中 Web 應用程式的設定和管理常見問題集
 
@@ -141,7 +141,7 @@ PCI DSS 3.1 版憑證需要停用傳輸層安全性 (TLS) 1.0。 目前，停用
 Exception: System.Data.Entity.Core.EntityException: The underlying provider failed on Open. —> System.OverflowException: Arithmetic operation resulted in an overflow. or (64 bit Web app) System.OverflowException: Array dimensions exceeded supported range, at System.Data.SqlClient.TdsParser.ConsumePreLoginHandshake
 ```
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 例外狀況是「混合式連線管理員」問題所造成的，該問題在那之後已修正。 請務必[更新混合式連線管理員](https://go.microsoft.com/fwlink/?LinkID=841308)以解決此問題。
 
@@ -314,4 +314,4 @@ Invoke-AzResourceAction -ResourceGroupName "<App Service Certificate Resource Gr
 
 ## <a name="how-do-i-migrate-from-an-on-premises-environment-to-app-service"></a>如何從內部部署環境移轉至 App Service？
 
-若要將網站從 Windows 和 Linux 網頁伺服器移轉至 App Service，您可以使用 Azure App Service 移轉小幫手。 移轉工具會視需要在 Azure 中建立 Web 應用程式和資料庫，然後發佈內容。 如需詳細資訊，請參閱 [Azure App Service 移轉小幫手](https://www.migratetoazure.net/)。
+若要將網站從 Windows 和 Linux 網頁伺服器移轉至 App Service，您可以使用 Azure App Service 移轉小幫手。 移轉工具會視需要在 Azure 中建立 Web 應用程式和資料庫，然後發佈內容。 如需詳細資訊，請參閱 [Azure App Service 移轉小幫手](https://appmigration.microsoft.com/)。

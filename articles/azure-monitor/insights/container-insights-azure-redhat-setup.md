@@ -2,13 +2,13 @@
 title: 使用適用于容器的 Azure 監視器來設定 Azure Red Hat OpenShift 叢集 |Microsoft Docs
 description: 本文說明如何使用裝載于 Azure Red Hat OpenShift 的 Azure 監視器來設定監視 Kubernetes 叢集。
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: 0d5ed362d6eb76e2fa04b88e9e45c890118a53eb
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 02/12/2020
+ms.openlocfilehash: 215835c04a1877ccdb6454c4c3902332b9dc1ab2
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979781"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190083"
 ---
 # <a name="configure-azure-red-hat-openshift-clusters-with-azure-monitor-for-containers"></a>使用適用于容器的 Azure 監視器來設定 Azure Red Hat OpenShift 叢集
 
@@ -20,8 +20,8 @@ ms.locfileid: "75979781"
 
 您可以使用下列支援的方法，針對新的或 Azure Red Hat OpenShift 的一或多個現有部署啟用容器的 Azure 監視器：
 
-- 針對 Azure 入口網站的現有叢集，或使用 Azure Resource Manager 範本
-- 針對使用 Azure Resource Manager 範本的新叢集
+- 適用于 Azure 入口網站的現有叢集，或使用 Azure Resource Manager 範本。
+- 針對使用 Azure Resource Manager 範本的新叢集，或使用[Azure CLI](https://docs.microsoft.com/cli/azure/openshift?view=azure-cli-latest#az-openshift-create)建立新的叢集。
 
 ## <a name="supported-and-unsupported-features"></a>支援和不支援的功能
 
@@ -111,7 +111,7 @@ ms.locfileid: "75979781"
     az group deployment create --resource-group <ClusterResourceGroupName> --template-file ./newClusterWithMonitoring.json --parameters @./newClusterWithMonitoringParam.json
     ```
 
-    輸出結果類似下面：
+    輸出看起來像下面這樣：
 
     ```azurecli
     provisioningState       : Succeeded
@@ -195,7 +195,7 @@ ms.locfileid: "75979781"
     az group deployment create --resource-group <ClusterResourceGroupName> --template-file ./ExistingClusterOnboarding.json --parameters @./existingClusterParam.json
     ```
 
-    輸出結果類似下面：
+    輸出看起來像下面這樣：
 
     ```azurecli
     provisioningState       : Succeeded

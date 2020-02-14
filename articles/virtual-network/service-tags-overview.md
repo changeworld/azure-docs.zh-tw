@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 26906f2a7343dbaf09f3107d2598e81a42c65091
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 270b3f0fe7c654d2bf059784e872b7dbe97a6068
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064643"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190482"
 ---
 # <a name="virtual-network-service-tags"></a>虛擬網路服務標籤 
 <a name="network-service-tags"></a>
@@ -42,7 +42,7 @@ ms.locfileid: "77064643"
 
 | Tag | 目的 | 可以使用輸入或輸出嗎？ | 可以是地區嗎？ | 可以與 Azure 防火牆搭配使用嗎？ |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **ApiManagement** | Azure API 管理-專用部署的管理流量。 | 兩者 | 否 | 是 |
+| **ApiManagement** | Azure API 管理-專用部署的管理流量。 <br/><br/>*注意：* 此標記代表每個區域之控制平面的 Azure API 管理服務端點。 這可讓客戶在 API 管理服務上設定的 Api、作業、原則、NamedValues 上執行管理作業。  | 輸入 | 是 | 是 |
 | **ApplicationInsightsAvailability** | Application Insights 可用性。 | 輸入 | 否 | 否 |
 | **AppService**    | Azure App Service。 對 web 應用程式前端的輸出安全性規則，建議使用此標記。 | 輸出 | 是 | 是 |
 | **AppServiceManagement** | 專用於 App Service 環境之部署的管理流量。 | 兩者 | 否 | 是 |
@@ -124,7 +124,7 @@ ms.locfileid: "77064643"
 您可以下載 JSON 檔案，其中包含目前的服務標籤清單，以及 IP 位址範圍詳細資料。 這些清單會每週更新併發布。 每個雲端的位置如下：
 
 - [Azure 公用](https://www.microsoft.com/download/details.aspx?id=56519)
-- [Azure 美國政府](https://www.microsoft.com/download/details.aspx?id=57063)  
+- [Azure US Gov](https://www.microsoft.com/download/details.aspx?id=57063)  
 - [Azure China](https://www.microsoft.com/download/details.aspx?id=57062) 
 - [Azure Germany](https://www.microsoft.com/download/details.aspx?id=57064)   
 

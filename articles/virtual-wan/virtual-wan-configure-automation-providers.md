@@ -1,20 +1,20 @@
 ---
-title: Azure 虛擬 WAN 夥伴 | Microsoft Docs
+title: Azure 虛擬 WAN 合作夥伴自動化指導方針 |Microsoft Docs
 description: 本文可協助夥伴設定 Azure 虛擬 WAN 自動化。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 02/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6f95107960cf11ab15cb5a8294a5432498956a7a
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 7848dda09b39f446dd218b7ce1eb2a07664bcaa6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775308"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190425"
 ---
-# <a name="virtual-wan-partners"></a>虛擬 WAN 夥伴
+# <a name="automation-guidelines-for-virtual-wan-partners"></a>虛擬 WAN 合作夥伴的自動化指導方針
 
 本文協助您了解如何設定自動化環境，以連線和設定適用於 Azure 虛擬 WAN 的分支裝置 (客戶內部部署 VPN 裝置或 SDWAN CPE)。 如果您是提供透過 IPsec/IKEv2 或 IPsec/IKEv1 使用 VPN 連線的分支裝置提供者，則適合閱讀本文。
 
@@ -27,7 +27,7 @@ ms.locfileid: "76775308"
 * 測試 Azure 虛擬 WAN 的入口網站體驗。
 * 然後，決定要自動化哪些建立連線的步驟。 至少，我們建議自動化以下項目：
 
-  * Access Control
+  * 存取控制
   * 將分支裝置資訊上傳到 Azure 虛擬 WAN
   * 下載 Azure 設定，並設定從分支裝置到 Azure 虛擬 WAN 的連線
 

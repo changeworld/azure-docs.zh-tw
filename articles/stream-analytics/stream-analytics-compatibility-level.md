@@ -5,13 +5,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/03/2020
-ms.openlocfilehash: e1eb852b7cf7aea887dea429e19b0a3b1ac5805a
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.date: 02/14/2020
+ms.openlocfilehash: 14b04f7d6068863c79c7060d29b58232be1f40cb
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989853"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201793"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure 串流分析作業的相容性層級
 
@@ -49,9 +49,13 @@ Azure 串流分析目前支援三種相容性層級：
 
 當您更新相容性層級時，T 編譯器會以對應至所選相容性層級的語法來驗證作業。
 
-## <a name="compatibility-level-12"></a>相容性層級 1.2
+## <a name="compatibility-level-12"></a>相容性層級1。2
 
 相容性層級1.2 引進下列主要變更：
+
+###  <a name="amqp-messaging-protocol"></a>AMQP 訊息通訊協定
+
+**1.2 層級**： Azure 串流分析使用[先進的訊息佇列通訊協定（AMQP）](../service-bus-messaging/service-bus-amqp-overview.md)訊息通訊協定來寫入服務匯流排的佇列和主題。 透過開放式標準通訊協定，AMQP 可讓您打造一個跨平台的混合式應用程式。
 
 ### <a name="geospatial-functions"></a>GeoSpatial 函式
 
@@ -119,7 +123,7 @@ Upsert 行為是*insert 或 replace*。
 
 ### <a name="service-bus-xml-format"></a>服務匯流排 XML 格式
 
-**1.0 層級：** Azure 串流分析使用 DataContractSerializer，因此訊息內容包含 XML 標記。 例如：
+**1.0 層級：** Azure 串流分析使用 DataContractSerializer，因此訊息內容包含 XML 標記。 例如，
 
 `@\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId":"1", "Temperature":64\}\u0001`
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 53fd02856a805f8bb5d7261cc9e6e32861b2b4fd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 84e60b0a942bad94d8e36eb20b5be8e3f55af80a
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426996"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190949"
 ---
 # <a name="implement-search-traffic-analytics-in-azure-cognitive-search"></a>在 Azure 認知搜尋中執行搜尋流量分析
 
@@ -106,7 +106,7 @@ ms.locfileid: "75426996"
 **SearchServiceName**：（字串）搜尋服務名稱**SearchId**：（guid）搜尋查詢的唯一識別碼（出現在搜尋回應中） **IndexName**：（字串）搜尋要查詢的服務索引**QueryTerms**：（字串）使用者**ResultCount**：（int）所輸入的檔數目（出現在搜尋回應中） **ScoringProfile**：（字串）所使用評分設定檔的名稱（如果有的話）
 
 > [!NOTE]
-> 將 $count=true 新增至搜尋查詢，要求使用者所產生查詢的計數。 請在[這裡](https://docs.microsoft.com/rest/api/searchservice/search-documents#request)參閱詳細資訊
+> 將 $count=true 新增至搜尋查詢，要求使用者所產生查詢的計數。 請參閱[這裡](/rest/api/searchservice/search-documents#counttrue--false)的詳細資訊。
 >
 
 > [!NOTE]
@@ -179,7 +179,7 @@ ms.locfileid: "75426996"
 
 3. 報表會在 Power BI Desktop 中開啟，而且系統會提示您連接到 Application Insights 並提供認證。 您可以在 Application Insights 資源的 [Azure 入口網站] 頁面中找到連接資訊。 針對 [認證]，提供您用來登入入口網站的相同使用者名稱和密碼。
 
-   ![連接到 Application Insights](./media/search-traffic-analytics/connect-to-app-insights.png "連線至 Application Insights")
+   ![連接到 Application Insights](./media/search-traffic-analytics/connect-to-app-insights.png "連接到 Application Insights")
 
 4. 按一下 [載入]。
 

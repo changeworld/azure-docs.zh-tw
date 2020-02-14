@@ -1,31 +1,31 @@
 ---
-title: 條件式存取原則中的用戶端應用程式-Azure Active Directory
-description: ''
+title: 條件式存取原則中的雲端應用程式或動作-Azure Active Directory
+description: 什麼是 Azure AD 條件式存取原則中的雲端應用程式或動作
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 02/11/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9afc25c906ecd3b7807e6bf3e0763ac1673ebd99
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: a9d2780e09c099d76aa2ef4ec2638a410793481d
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544050"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186394"
 ---
-# <a name="conditional-access-cloud-apps-and-actions"></a>條件式存取：雲端應用程式和動作
+# <a name="conditional-access-cloud-apps-or-actions"></a>條件式存取：雲端應用程式或動作
 
-雲端應用程式或動作是條件式存取原則的重要部分。 條件式存取原則可讓系統管理員將控制項指派給特定的應用程式或動作。 
+雲端應用程式或動作是條件式存取原則中的關鍵信號。 條件式存取原則可讓系統管理員將控制項指派給特定的應用程式或動作。
 
 - 系統管理員可以從包含內建 Microsoft 應用程式的應用程式清單，以及任何[Azure AD 整合式應用](../manage-apps/what-is-application-management.md)程式（包括資源庫、非資源庫和透過[應用程式 Proxy](../manage-apps/what-is-application-proxy.md)發佈的應用程式）中進行選擇。
 - 系統管理員可以選擇根據雲端應用程式，但在使用者動作上定義原則。 唯一支援的動作是 [註冊安全性資訊（預覽）]，可讓條件式存取強制執行[結合安全性資訊註冊體驗](../authentication/howto-registration-mfa-sspr-combined.md)的控制項。
 
-![定義條件式存取原則並指定雲端應用程式](./media/concept-conditional-access-cloud-apps/conditional-access-define-policy-specify-cloud-apps.png)
+![定義條件式存取原則並指定雲端應用程式](./media/concept-conditional-access-cloud-apps/conditional-access-cloud-apps-or-actions.png)
 
 ## <a name="microsoft-cloud-applications"></a>Microsoft 雲端應用程式
 
@@ -98,7 +98,7 @@ Office 365 （預覽）用戶端應用程式中所包含的主要應用程式：
 
 Microsoft Azure 管理應用程式包含多個基礎服務。 
 
-   - Azure Portal
+   - Azure 入口網站
    - Azure Resource Manager 提供者
    - 傳統部署模型 Api
    - Azure PowerShell
@@ -124,6 +124,7 @@ Microsoft Azure 管理應用程式包含多個基礎服務。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [條件式存取原則元件](concept-conditional-access-policies.md)
+- [條件式存取：條件](concept-conditional-access-conditions.md)
+
+- [條件式存取的一般原則](concept-conditional-access-policy-common.md)
 - [用戶端應用程式相依性](service-dependencies.md)
-- [Microsoft Intune：需要 MFA 才能註冊裝置](https://docs.microsoft.com/intune/enrollment/multi-factor-authentication)

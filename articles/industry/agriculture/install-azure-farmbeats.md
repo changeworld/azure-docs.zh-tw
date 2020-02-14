@@ -5,12 +5,12 @@ author: usha-rathnavel
 ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
-ms.openlocfilehash: b7d99c3bf61de17f9cebba834234cc8ea52f30d6
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 701e42caba5325df34bdbb2381389708b9b5a03f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77131871"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198849"
 ---
 # <a name="install-azure-farmbeats"></a>安裝 Azure FarmBeats
 
@@ -62,8 +62,8 @@ Azure FarmBeats 的成本是基礎 Azure 服務成本的匯總。 您可以使�
 - 美國東部 2
 - 美國西部
 - 美國西部 2
-- 北歐
-- 西歐
+- 歐洲北部
+- 歐洲西部
 - 東亞
 - 東南亞
 
@@ -71,7 +71,7 @@ Azure FarmBeats 的成本是基礎 Azure 服務成本的匯總。 您可以使�
 
 Azure FarmBeats 的整個設定（包括準備和安裝）將會花費不到一小時的時間。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 您必須先完成下列步驟，才能開始實際安裝 Azure FarmBeats：
 
@@ -83,7 +83,9 @@ Azure FarmBeats 的整個設定（包括準備和安裝）將會花費不到一�
 - 訂用帳戶-擁有者
 - 要在其中安裝 FarmBeats 的資源群組-擁有者
 
-[建立 AAD 應用程式](#create-an-aad-application)步驟所需的前兩個許可權。 如有需要，您可以取得具有適當許可權的人員，以建立 AAD 應用程式。 安裝 FarmBeats 的人員必須是要安裝 FarmBeats 之資源群組的擁有者。
+[建立 AAD 應用程式](#create-an-aad-application)步驟所需的前兩個許可權。 如有需要，您可以取得具有適當許可權的人員，以建立 AAD 應用程式。
+
+執行 FarmBeats 從 marketplace 安裝的人員必須是要安裝 FarmBeats 之資源群組的擁有者。 針對訂用帳戶擁有者，這會在建立資源群組時自動發生。 對於其他人，請預先建立資源群組，並要求訂用帳戶擁有者將您設為資源群組的擁有者。
 
 您可以遵循[角色型存取控制](https://docs.microsoft.com/azure/role-based-access-control/check-access)中的指示，確認 Azure 入口網站中的存取權限。
 
@@ -120,7 +122,15 @@ Azure FarmBeats 需要 Azure Active Directory 應用程式的建立和註冊。 
         ./create_aad_script.ps1
     ```
 
-4. AAD 腳本需要大約2分鐘的時間來執行，並將畫面上的值以及相同目錄中的 json 檔案輸出。 如果您有其他人執行此腳本，請要求他們與您共用此輸出。
+4. 腳本會要求下列三個輸入：
+
+    - FarmBeats 網站名稱：這是 FarmBeats web 應用程式的唯一 URL 前置詞。 如果前置詞已被採用，腳本會發生錯誤。安裝之後，您的 FarmBeats 部署將可從 HTTPs://存取，\<FarmBeats-網站名稱 >。 azurewebsites 和 swagger Api 將位於 HTTPs://\<FarmBeats-網站名稱 >-api.azurewebsites.net
+
+    - Azure 登入識別碼：針對您想要新增為 FarmBeats 系統管理員的使用者，提供 Azure 登入識別碼。 然後，此使用者可以將 access FarmBeats web 應用程式的存取權授與其他使用者。 登入識別碼的格式通常是 john.doe@domain.com。 也支援 Azure UPN。
+
+    - 訂用帳戶識別碼：這是您要在其中安裝 Azure FarmBeats 的訂用帳戶識別碼
+
+5. AAD 腳本需要大約2分鐘的時間來執行，並將畫面上的值以及相同目錄中的 json 檔案輸出。 如果您有其他人執行此腳本，請要求他們與您共用此輸出。
 
 ### <a name="create-sentinel-account"></a>建立 Sentinel 帳戶
 
@@ -134,7 +144,7 @@ Azure FarmBeats 需要 Azure Active Directory 應用程式的建立和註冊。 
 
 您的註冊程式已完成。 當驗證也完成之後，請記下您的**Sentinel 使用者名稱**和**sentinel 密碼**。
 
-## <a name="install"></a>安裝
+## <a name="install"></a>Install
 
 您現在已準備好安裝 FarmBeats。 請遵循下列步驟來開始安裝：
 

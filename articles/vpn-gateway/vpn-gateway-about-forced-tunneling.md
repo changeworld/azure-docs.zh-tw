@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: cherylmc
-ms.openlocfilehash: 6b31555215f4f2efc63d0e1df0a7b4bf13a43924
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: fe06257127ff352f68fb27d3507cee0229e31498
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834593"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201572"
 ---
 # <a name="configure-forced-tunneling-using-the-classic-deployment-model"></a>使用傳統部署模型設定強制通道
 
@@ -39,7 +39,7 @@ Azure 中的強制通道會透過虛擬網路使用者定義路由 (UDR) 進行�
 * 隨著使用者定義路由的發行，您可以建立路由表以新增預設路由，然後建立路由表與 VNet 子網路的關聯，以啟用那些子網路上的強制通道處理。
 * 您需要在連接到虛擬網路的內部部署本機網站間設定「預設網站」。
 * 強制通道必須與具有動態路由 VPN 閘道 (非靜態閘道) 的 VNet 相關聯。
-* ExpressRoute 強制通道不會透過這項機制進行設定，相反地，將由透過 ExpressRoute BGP 對等互連工作階段的廣告預設路由進行啟用。 請參閱 [ExpressRoute 文件](https://azure.microsoft.com/documentation/services/expressroute/)以取得詳細資訊。
+* ExpressRoute 強制通道不會透過這項機制進行設定，相反地，將由透過 ExpressRoute BGP 對等互連工作階段的廣告預設路由進行啟用。 如需詳細資訊，請參閱[ExpressRoute 檔](https://azure.microsoft.com/documentation/services/expressroute/)。
 
 ## <a name="configuration-overview"></a>組態概觀
 在上述範例中，前端子網路不會使用強制通道。 前端子網路中的工作負載可以直接從網際網路繼續接受並回應客戶要求。 中間層和後端的子網路會使用強制通道。 任何從這兩個子網路到網際網路的輸出連接會強制或重新導向回 S2S VPN 通道的其中一個內部部署網站。
@@ -49,11 +49,24 @@ Azure 中的強制通道會透過虛擬網路使用者定義路由 (UDR) 進行�
 ![強制通道](./media/vpn-gateway-about-forced-tunneling/forced-tunnel.png)
 
 ## <a name="before-you-begin"></a>開始之前
-在開始設定之前，請確認您具備下列項目。
+在開始設定之前，請確認您具備下列項目：
 
 * Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，則可以啟用 [MSDN 訂戶權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或註冊[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
 * 已設定的虛擬網路。 
-* 最新版的 Azure PowerShell Cmdlet。 如需如何安裝 PowerShell Cmdlet 的詳細資訊，請參閱[如何安裝和設定 Azure PowerShell](/powershell/azure/overview)。
+* [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
+
+### <a name="to-sign-in"></a>登入
+
+1. 以更高的許可權開啟 PowerShell 主控台。 若要切換至服務管理，請使用下列命令：
+
+   ```powershell
+   azure config mode asm
+   ```
+2. 連線至您的帳戶。 使用下列範例來協助您連接：
+
+   ```powershell
+   Add-AzureAccount
+   ```
 
 ## <a name="configure-forced-tunneling"></a>設定強制通道
 下列程序將協助您指定虛擬網路的強制通道。 設定步驟會對應至 Vnet 網路組態檔。

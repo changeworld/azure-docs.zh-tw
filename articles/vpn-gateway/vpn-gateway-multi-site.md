@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 02/11/2020
 ms.author: yushwang
-ms.openlocfilehash: 5bedf5bd6d061d74201dbac3f1f99ed0d4c381aa
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: a95cd6ea85a16b0e0bf5f67f5dfc20d57f11463b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902429"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198085"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>將站對站連線新增至具有現有 VPN 閘道連線的 VNet (傳統)
 
@@ -55,10 +55,13 @@ ms.locfileid: "75902429"
 
 * 每個內部部署位置都有相容的 VPN 硬體。 查看 [關於虛擬網路連線的 VPN 裝置](vpn-gateway-about-vpn-devices.md) ，確認您想要使用的裝置是否為已知相容的項目。
 * 每個 VPN 裝置都有對外的公用 IPv4 IP 位址。 此 IP 位址不能位於 NAT 後方。 這是必要條件。
-* 您必須安裝最新版的 Azure PowerShell Cmdlet。 請確定除了 Resource Manager 版本之外，也安裝「服務管理」(SM) 版本。 如需詳細資訊，請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/overview) 。
 * 熟悉如何設定 VPN 硬體的人員。 您將必須非常了解如何設定 VPN 裝置，或是與了解的人員一起進行。
 * 您想要用於虛擬網路的 IP 位址範圍 (如果尚未建立的話)。
 * 您要連線之每個區域網路網站的 IP 位址範圍。 您必須確定您要連線之每個區域網路網站的 IP 位址範圍沒有重疊。 否則，入口網站或 REST API 將會拒絕所要上傳的組態。<br>例如，如果您有兩個區域網路網站都包含 IP 位址範圍 10.2.3.0/24，而您有一個目的地位址為 10.2.3.3 的封裝，Azure 就會不知道您想要將封裝傳送到哪個網站，因為位址範圍重疊了。 為了防止路由問題，Azure 不允許您上傳具有重疊範圍的組態檔。
+
+### <a name="working-with-azure-powershell"></a>使用 Azure PowerShell
+
+[!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
 ## <a name="1-create-a-site-to-site-vpn"></a>1. 建立站對站 VPN
 如已有動態路由閘道的站對站 VPN，太棒了！ 您可以繼續 [匯出虛擬網路組態設定](#export)。 如果沒有，請執行下列動作：
@@ -72,6 +75,19 @@ ms.locfileid: "75902429"
 2. 使用下列指示設定動態路由閘道： [設定 VPN 閘道](vpn-gateway-configure-vpn-gateway-mp.md)。 閘道類型務必選取 [動態路由] 。
 
 ## <a name="export"></a>2. 匯出網路設定檔
+
+以更高的許可權開啟 PowerShell 主控台。 若要切換至服務管理，請使用下列命令：
+
+```powershell
+azure config mode asm
+```
+
+連線至您的帳戶。 使用下列範例來協助您連接：
+
+```powershell
+Add-AzureAccount
+```
+
 執行下列命令以匯出 Azure 網路組態檔。 您可以視需要變更此檔案的位置，以匯出至不同的位置。
 
 ```powershell
@@ -156,7 +172,7 @@ Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 ## <a name="6-download-keys"></a>6. 下載金鑰
 新增您的新通道之後，請使用 PowerShell Cmdlet 'Get-AzureVNetGatewayKey'，以取得每個通道的 IPsec/IKE 預先共用金鑰。
 
-例如：
+例如，
 
 ```powershell
 Get-AzureVNetGatewayKey –VNetName "VNet1" –LocalNetworkSiteName "Site1"

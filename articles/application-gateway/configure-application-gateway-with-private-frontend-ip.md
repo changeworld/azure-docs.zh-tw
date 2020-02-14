@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 01/30/2020
 ms.author: victorh
-ms.openlocfilehash: c49c37ced4a5d5cc7cdde0737b889aad3b538f7f
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f56929e14aef34f675139782328ed5c559df12c7
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898965"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198593"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>設定具有內部負載平衡器（ILB）端點的應用程式閘道
 
@@ -27,7 +27,7 @@ Azure 應用程式閘道可以設定為使用網際網路對向 VIP，或使用�
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
-在 <https://portal.azure.com>Kv 登入 Azure 入口網站
+在 <https://portal.azure.com> 登入 Azure 入口網站
 
 ## <a name="create-an-application-gateway"></a>建立應用程式閘道
 

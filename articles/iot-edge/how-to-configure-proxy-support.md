@@ -7,12 +7,12 @@ ms.date: 11/19/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 12aa78d0ba7c9300fc012958660e2282e91568aa
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: a8ee1e07dafac46467aa26f89b609cd499346974
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76510816"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186570"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>設定 IoT Edge 裝置以透過 Proxy 伺服器進行通訊
 
@@ -22,7 +22,7 @@ IoT Edge 裝置會傳送 HTTPS 要求以和 IoT 中樞通訊。 如果您的裝�
 
 1. **在您的裝置上安裝 IoT Edge 執行時間。**
 
-   IoT Edge 安裝腳本會從網際網路提取套件和檔案，因此您的裝置必須透過 proxy 伺服器進行通訊，才能提出這些要求。 如需詳細步驟，請參閱本文的[透過 Proxy 安裝運行](#install-the-runtime-through-a-proxy)時間一節。 針對 Windows 裝置，安裝腳本也會提供[離線安裝](how-to-install-iot-edge-windows.md#offline-installation)選項。
+   IoT Edge 安裝腳本會從網際網路提取套件和檔案，因此您的裝置必須透過 proxy 伺服器進行通訊，才能提出這些要求。 如需詳細步驟，請參閱本文的[透過 Proxy 安裝運行](#install-the-runtime-through-a-proxy)時間一節。 針對 Windows 裝置，安裝腳本也會提供[離線安裝](how-to-install-iot-edge-windows.md#offline-or-specific-version-installation)選項。
 
    此步驟是您第一次設定時，在 IoT Edge 裝置上執行的一次性程式。 當您更新 IoT Edge 執行時間時，也需要相同的連接。
 
@@ -82,7 +82,7 @@ Proxy URL 採用下列格式：**protocol**://**proxy_host**:**proxy_port**。
    . {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; Initialize-IoTEdge
    ```
 
-如果您的 Proxy 伺服器有複雜的認證而無法包含在 URL 中，請在 `-InvokeWebRequestParameters` 中使用 `-ProxyCredential` 參數。 例如，
+如果您的 Proxy 伺服器有複雜的認證而無法包含在 URL 中，請在 `-ProxyCredential` 中使用 `-InvokeWebRequestParameters` 參數。 例如：
 
 ```powershell
 $proxyCredential = (Get-Credential).GetNetworkCredential()
@@ -208,7 +208,7 @@ IoT Edge 代理程式是在任何 IoT Edge 裝置上皆應第一個啟動的模�
 
 此步驟會在 IoT Edge 裝置的整個生命週期中進行。
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure 入口網站
 
 當您使用 [設定模組] 精靈來針對 IoT Edge 裝置建立部署時，每個模組都會有 [環境變數] 區段可供您用來設定 Proxy 伺服器連線。
 

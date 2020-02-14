@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: d5e78c3ab08e791a5f484e45d487c3a85dc95de7
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: f4fdf25fa1403b8429e7ad7e7fc644d0355b1324
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613086"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189827"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Functions 的計時器觸發程序 
 
@@ -215,7 +215,7 @@ public void keepAlive(
 
 下表說明您在 *function.json* 檔案中設定的繫結設定屬性內容和 `TimerTrigger` 屬性。
 
-|function.json 屬性 | 屬性內容 |說明|
+|function.json 屬性 | 屬性內容 |描述|
 |---------|---------|----------------------|
 |**type** | n/a | 必須設定為 "timerTrigger"。 當您在 Azure 入口網站中建立觸發程序時，會自動設定此屬性。|
 |**direction** | n/a | 必須設定為 "in"。 當您在 Azure 入口網站中建立觸發程序時，會自動設定此屬性。 |
@@ -229,7 +229,7 @@ public void keepAlive(
 > [!CAUTION]
 > 建議不要在生產環境中將 **runOnStartup** 設定為 `true`。 使用此設定會在極度無法預期的情況下執行程式碼。 在特定的生產環境設定中，對於取用量方案中託管的應用程式，這些額外的執行會導致成本大幅增加。 例如，啟用**runOnStartup**時，每當調整您的函數應用程式時，就會叫用觸發程式。 請確定在生產環境中啟用 **runOnStartup** 之前，您完全了解函式的實際執行行為。   
 
-## <a name="usage"></a>用量
+## <a name="usage"></a>使用方式
 
 叫用計時器觸發程式函式時，計時器物件會傳遞至函式。 下列 JSON 是計時器物件的範例表示法。
 
@@ -262,7 +262,7 @@ Azure Functions 使用[NCronTab](https://github.com/atifaziz/NCrontab)程式庫�
 |所有值 (`*`)|<nobr>"0 * 5 * * *"</nobr>|於每天 5:mm:00，其中 mm 是小時中的每一分鐘 (一天 60 次)|
 |範圍 (`-` 運算子)|<nobr>"5-7 * * * * *"</nobr>|於 hh:mm:05、hh:mm:06 和 hh:mm:07，其中 hh: mm 是每小時的每一分鐘 (一分鐘 3 次)|
 |一組值 (`,` 運算子)|<nobr>"5,8,10 * * * * *"</nobr>|於 hh:mm:05、hh:mm:08 和 hh:mm:10，其中 hh: mm 是每小時的每一分鐘 (一分鐘 3 次)|
-|間隔值 (`/` 運算子)|<nobr>"0 */5 * * * *"</nobr>|於 hh:05:00、hh:10:00、hh:15:00 以此類推，直到 hh:55:00，其中 hh 是每小時 (一小時 12 次)|
+|間隔值 (`/` 運算子)|<nobr>"0 */5 * * * *"</nobr>|在 hh：00：00、hh：05：00、hh：10：00，依此類推到 hh：55：00，其中 hh 是每小時（一小時12次）|
 
 [!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 
@@ -310,7 +310,7 @@ CRON 運算式使用的預設時區是國際標準時間 (UTC)。 若要讓 CRON
 
 不同於 CRON 運算式，`TimeSpan` 值會指定每個函式引動過程之間的時間間隔。 如果函式在執行時間超過指定時間間隔之後完成，計時器會立即再次叫用函式。
 
-以字串表示，當 `hh` 低於 24 時，`TimeSpan` 格式為 `hh:mm:ss`。 當前兩個數字為 24 或更高時，格式為 `dd:hh:mm`。 以下是一些範例：
+以字串表示，當 `TimeSpan` 低於 24 時，`hh:mm:ss` 格式為 `hh`。 當前兩個數字為 24 或更高時，格式為 `dd:hh:mm`。 以下是一些範例：
 
 |範例 |觸發時間  |
 |---------|---------|

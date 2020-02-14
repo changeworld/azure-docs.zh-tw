@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: panosper
-ms.openlocfilehash: 8a53f1cfbde2f518848e7ef1104bf41ba4996961
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: dc473c814cdd69204cddd976bc77f19b5db567b1
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76936397"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200073"
 ---
 # <a name="how-to-use-batch-transcription"></a>如何使用批次轉譯
 
@@ -28,7 +28,7 @@ ms.locfileid: "76936397"
 - 下載轉譯結果
 - 從服務中刪除轉譯資訊
 
-詳細的 API 可於 `Custom Speech transcriptions` 標題底下的 [Swagger 文件](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A)中取得。
+詳細的 API 可於 [ 標題底下的 ](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A)Swagger 文件`Custom Speech transcriptions`中取得。
 
 批次轉譯作業是以最大的方式排定。 目前不會估計作業何時會變更為「執行中」狀態。 在一般系統負載下，應該會在幾分鐘內發生。 一旦處於 [執行中] 狀態，實際轉譯的處理速度會比音訊即時長。
 
@@ -38,7 +38,7 @@ ms.locfileid: "76936397"
 
 ### <a name="subscription-key"></a>訂用帳戶金鑰
 
-如同語音服務的所有功能，您可以依照我們的[快速入門指南](get-started.md)從 [Azure 入口網站](https://portal.azure.com)建立訂用帳戶金鑰。
+如同語音服務的所有功能，您可以依照我們的[快速入門指南](https://portal.azure.com)從 [Azure 入口網站](get-started.md)建立訂用帳戶金鑰。
 
 >[!NOTE]
 > 需要「語音服務」的標準訂用帳戶（S0）才能使用批次轉譯。 免費訂用帳戶金鑰 (F0) 將無法運作。 如需詳細資訊，請參閱[定價和限制](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
@@ -53,7 +53,7 @@ ms.locfileid: "76936397"
 
 Batch 轉譯 API 支援下列格式：
 
-| [格式] | 轉碼器 | Bitrate | 採樣速率 |
+| [格式] | 轉碼器 | Bitrate | 取樣率 |
 |--------|-------|---------|-------------|
 | WAV | PCM | 16 位元 | 8 kHz 或 16 kHz、單聲道或身歷聲 |
 | MP3 | PCM | 16 位元 | 8 kHz 或 16 kHz、單聲道或身歷聲 |
@@ -87,7 +87,7 @@ Batch 轉譯 API 支援下列格式：
 
 使用這些選擇性屬性來設定轉譯：
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 |-----------|-------------|
 | `ProfanityFilterMode` | 指定如何處理辨識結果中的不雅內容。 接受的值為 `None` (會停用不雅內容過濾)、`Masked` (為以星號取代不雅內容)、`Removed` (會移除結果中的所有不雅內容) 或 `Tags` (會新增「不雅內容」標記)。 預設值是 `Masked`。 |
 | `PunctuationMode` | 指定如何處理辨識結果中的標點符號。 接受的值為`None` (會停用標點符號)、`Dictated` (暗示明確的標點符號)、`Automatic` (會讓解碼器處理標點符號) 或 `DictatedAndAutomatic` (暗示口述的標點符號或自動)。 |
@@ -129,8 +129,8 @@ Batch 轉譯 API 支援下列格式：
                                                              speakerId as a string if
                                                              diarization requested for
                                                              mono audio file'
-          "Offset": number                                  'time in milliseconds'
-          "Duration": number                                'time in milliseconds'
+          "Offset": number                                  'time in ticks (1 tick is 100 nanosec)'
+          "Duration": number                                'time in ticks (1 tick is 100 nanosec)'
           "OffsetInSeconds" : number                        'Real number. Two decimal places'
           "DurationInSeconds" : number                      'Real number. Two decimal places'
           "NBest": [
@@ -150,8 +150,8 @@ Batch 轉譯 API 支援下列格式：
               "Words": [
                 {
                   "Word": string
-                  "Offset": number                          'time in milliseconds'
-                  "Duration": number                        'time in milliseconds'
+                  "Offset": number                          'time in ticks (1 tick is 100 nanosec)'
+                  "Duration": number                        'time in ticks (1 tick is 100 nanosec)'
                   "OffsetInSeconds": number                 'Real number. Two decimal places'
                   "DurationInSeconds": number               'Real number. Two decimal places'
                   "Confidence": number                      'between 0 and 1'
@@ -199,7 +199,7 @@ Diarization 是在一段音訊中分隔喇叭的程式。 我們的批次管線�
 
 字層級時間戳記也必須「開啟」，因為上述要求中的參數表示。
 
-## <a name="sentiment-analysis"></a>情緒分析
+## <a name="sentiment-analysis"></a>情感分析
 
 情感功能會估計以音訊表示的情感。 情感是以介於0和1之間的值表示，用於 `Negative`、`Neutral`和 `Positive` 情感。 例如，情感分析可用於撥接中心案例中：
 
@@ -247,7 +247,7 @@ JSON 輸出範例如下所示：
 }
 ```
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳作法
 
 轉譯服務可以處理大量的已提交轉譯。 您可以透過[轉譯方法](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/GetTranscriptions)上的 `GET` 來查詢轉譯的狀態。 藉由指定 `take` 參數（數百個），讓資訊傳回合理的大小。 一旦您取得結果之後，請定期從服務[刪除轉譯](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/DeleteTranscription)。 這可確保快速回復轉譯管理呼叫。
 
@@ -263,7 +263,7 @@ JSON 輸出範例如下所示：
 
 [!code-csharp[Code to check batch transcription status](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#batchstatus)]
 
-如需上述呼叫的完整詳細資訊，請參閱我們的 [Swagger 文件](https://westus.cris.ai/swagger/ui/index)。 如需此處所顯示的完整範例，請前往 `samples/batch` 子目錄中的 [GitHub](https://aka.ms/csspeech/samples)。
+如需上述呼叫的完整詳細資訊，請參閱我們的 [Swagger 文件](https://westus.cris.ai/swagger/ui/index)。 如需此處所顯示的完整範例，請前往 [ 子目錄中的 ](https://aka.ms/csspeech/samples)GitHub`samples/batch`。
 
 請留意張貼音訊和接收轉譯狀態的非同步設定。 您建立的用戶端是 .NET HTTP 用戶端。 `PostTranscriptions` 方法可傳送音訊檔案詳細資料，而 `GetTranscriptions` 方法可接收結果。 `PostTranscriptions` 會傳回控制代碼，然後 `GetTranscriptions` 使用它來取得轉譯狀態。
 
@@ -274,7 +274,7 @@ JSON 輸出範例如下所示：
 
 ## <a name="download-the-sample"></a>下載範例
 
-您可以在 [GitHub 範例存放庫](https://aka.ms/csspeech/samples)中的 `samples/batch` 目錄找到範例。
+您可以在 `samples/batch`GitHub 範例存放庫[中的 ](https://aka.ms/csspeech/samples) 目錄找到範例。
 
 ## <a name="next-steps"></a>後續步驟
 

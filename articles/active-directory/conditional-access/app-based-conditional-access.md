@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c173d0e17166911e28fea3d1c5820879d17af4a8
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 1a8832234978a2c8b2db25d88b5dd6c211b634b7
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381128"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186462"
 ---
 # <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>如何：透過條件式存取要求使用已核准的用戶端應用程式存取雲端應用程式 
 
-您的員工使用行動裝置來處理個人和工作事務。 在維護員工的生產力時，您也希望能預防資料遺失。 透過 Azure Active Directory （Azure AD）條件式存取，您可以將雲端應用程式的存取限制為可保護公司資料的已核准用戶端應用程式。  
+您的員工使用行動裝置處理公私事務。 在維護員工的生產力時，您也希望能預防資料遺失。 透過 Azure Active Directory （Azure AD）條件式存取，您可以將雲端應用程式的存取限制為可保護公司資料的已核准用戶端應用程式。  
 
 本主題說明如何設定需要已核准用戶端應用程式的條件式存取原則。
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概觀
 
 透過[Azure AD 條件式存取](overview.md)，您可以微調授權使用者如何存取您的資源。 例如，您可以將雲端應用程式的存取限制為受信任的裝置。
 
@@ -36,7 +36,7 @@ Azure Active Directory 條件式存取可讓您將雲端應用程式的存取限
 
 ![條件式存取](./media/app-based-conditional-access/05.png)
 
-如需核准的用戶端應用程式清單，請參閱[核准的用戶端應用程式需求](technical-reference.md#approved-client-app-requirement)。
+如需核准的用戶端應用程式清單，請參閱[核准的用戶端應用程式需求](concept-conditional-access-grant.md)。
 
 您可以將以應用程式為基礎的條件式存取原則與其他原則（例如[裝置型條件式存取原則](require-managed-devices.md)）結合，以提供如何保護個人和公司裝置資料的彈性。
 
@@ -44,12 +44,12 @@ Azure Active Directory 條件式存取可讓您將雲端應用程式的存取限
 
 本主題假設您已熟悉：
 
-- [核准的用戶端應用程式需求](technical-reference.md#approved-client-app-requirement)技術參考。
+- [已核准的用戶端應用程式需求](concept-conditional-access-grant.md)。
 - [Azure Active Directory 中條件式存取](overview.md)的基本概念。
 - 如何[設定條件式存取原則](app-based-mfa.md)。
 - [條件式存取原則的遷移](best-practices.md#policy-migration)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要建立以應用程式為基礎的條件式存取原則，您必須擁有 Enterprise Mobility + Security 或 Azure Active Directory premium 訂用帳戶，而且使用者必須獲得 EMS 或 Azure AD 的授權。 
 

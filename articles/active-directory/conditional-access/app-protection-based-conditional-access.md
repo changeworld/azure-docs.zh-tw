@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbbe882acda532a54333ca8013693121d5b677b7
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 3c853ef3a5a40381aba4e1c13eaf9ad7d8653170
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964084"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186626"
 ---
 # <a name="require-app-protection-policy-for-cloud-app-access-with-conditional-access-preview"></a>需要使用條件式存取的應用程式保護原則進行雲端應用程式存取（預覽）
 
-您的員工使用行動裝置來處理個人和工作事務。 在維護員工的生產力時，您也希望能預防資料遺失。 透過 Azure Active Directory （Azure AD）條件式存取，您可以藉由限制對雲端應用程式的存取，來保護您的公司資料。 請先使用具有應用程式保護原則的用戶端應用程式。
+您的員工使用行動裝置處理公私事務。 在維護員工的生產力時，您也希望能預防資料遺失。 透過 Azure Active Directory （Azure AD）條件式存取，您可以藉由限制對雲端應用程式的存取，來保護您的公司資料。 請先使用具有應用程式保護原則的用戶端應用程式。
 
 本文說明如何設定條件式存取原則，在授與資料存取權之前，可以要求應用程式保護原則。
 
@@ -36,7 +36,7 @@ Azure Active Directory 條件式存取會將雲端應用程式的存取限制為
 
 ![條件式存取](./media/app-protection-based-conditional-access/05.png)
 
-如需受原則保護的用戶端應用程式清單，請參閱[應用程式保護原則需求](technical-reference.md#approved-client-app-requirement)。
+如需受原則保護的用戶端應用程式清單，請參閱[應用程式保護原則需求](concept-conditional-access-grant.md)。
 
 您可以結合以應用程式保護為基礎的條件式存取原則與其他原則，例如[裝置型條件式存取原則](require-managed-devices.md)。 如此一來，您就可以在保護個人和公司裝置的資料時，提供彈性。
 
@@ -55,8 +55,8 @@ Azure Active Directory 條件式存取會將雲端應用程式的存取限制為
 
 本文假設您已熟悉以下各項：
 
-- [應用程式保護原則需求](technical-reference.md#app-protection-policy-requirement)的技術參考。
-- [核准的用戶端應用程式需求](technical-reference.md#approved-client-app-requirement)技術參考。
+- [應用程式保護原則需求](concept-conditional-access-grant.md)。
+- [已核准的用戶端應用程式需求](concept-conditional-access-grant.md)。
 - [Azure Active Directory 中條件式存取](overview.md)的基本概念。
 - 如何[設定條件式存取原則](app-based-mfa.md)。
 

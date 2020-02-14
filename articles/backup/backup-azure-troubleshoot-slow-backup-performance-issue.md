@@ -4,12 +4,12 @@ description: 提供疑難排解指導方針，以協助您診斷 Azure 備份效
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 2b7b8903da0d8dd83591b260bacb496b0c253ae3
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 01fff1d970a76d0d4d38c2536b41d58a4db301c8
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172573"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198606"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>疑難排解 Azure 備份的檔案和資料夾備份速度緩慢問題
 
@@ -26,6 +26,18 @@ ms.locfileid: "74172573"
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
+## <a name="cause-backup-job-running-in-unoptimized-mode"></a>原因：以未優化模式執行的備份作業
+
+* MARS 代理程式可以藉由掃描整個磁片區，藉由檢查目錄或檔案中的變更，以**優化模式**執行備份作業（更新序號）變更日誌或未**優化模式**。
+* 未優化的模式會變慢，因為代理程式必須掃描磁片區上的每個檔案，並與中繼資料進行比較，以判斷變更的檔案。
+* 若要確認這一點，請從 MARS 代理程式主控台開啟 [**作業詳細**資料]，並檢查狀態以查看其是否為 [**傳送資料] （未優化，可能需要較長的時間）** ，如下所示：
+
+    ![以未優化模式執行](./media/backup-azure-troubleshoot-slow-backup-performance-issue/unoptimized-mode.png)
+
+* 下列情況可能會導致備份作業以未優化的模式執行：
+  * 第一次備份（也稱為初始複寫）一律會以未優化的模式執行
+  * 如果先前的備份作業失敗，則下一個排定的備份工作將會以未優化的方式執行。
+
 <a id="cause1"></a>
 
 ## <a name="cause-performance-bottlenecks-on-the-computer"></a>原因：電腦的效能瓶頸
@@ -36,7 +48,7 @@ Windows 提供了稱為 [效能監視器](https://technet.microsoft.com/magazine
 
 以下是能幫助您診斷最佳化備份瓶頸的一些效能計數器和範圍。
 
-| 計數器 | Status |
+| 計數器 | 狀態 |
 | --- | --- |
 | 邏輯磁碟 (實體磁碟)--% 閒置 |• 100% 閒置至 50% 閒置 = 狀況良好</br>• 49% 閒置至 20% 閒置 = 警告或監視</br>• 19% 閒置至 0% 閒置 = 重大或超出規範 |
 | 邏輯磁片（實體磁片）--% Avg. Disk Sec （讀取或寫入） |• 0.001 毫秒到 0.015 毫秒 = 狀況良好</br>• 0.015 毫秒到 0.025 毫秒 = 警告或監視</br>• 0.026 毫秒或更長 = 嚴重或超出規範 |

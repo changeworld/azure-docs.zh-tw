@@ -15,12 +15,12 @@ ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4f9686be08de2589cddadf741dadf243d0e7895
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 1ddce8d4d7ca1f03c0a57d0f0c8c41ac122973e0
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174445"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185548"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory 傳遞驗證安全性深入探討
 
@@ -42,10 +42,10 @@ ms.locfileid: "72174445"
 - 只有標準連接埠 (80 和 443) 會用於驗證代理程式至 Azure AD 的輸出通訊。 您不需要在防火牆上開放輸入連接埠。 
   - 連接埠 443 會用於所有經過驗證的輸出通訊。
   - 連接埠 80 僅用於下載憑證撤銷清單 (CRL)，以確保此功能所使用的任何憑證都沒有被撤銷。
-  - 如需網路需求的完整清單，請參閱 [Azure Active Directory 傳遞驗證：快速入門](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites)。
+  - 如需網路需求的完整清單，請參閱[Azure Active Directory 傳遞驗證：快速入門](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites)。
 - 使用者在登入期間所提供的密碼在雲端會經過加密，內部部署驗證代理程式才會接受密碼，對 Active Directory 進行驗證。
 - Azure AD 和內部部署驗證代理程式之間的 HTTPS 通道可使用相互驗證受到保護。
-- 與 [Azure AD 條件式存取原則](../active-directory-conditional-access-azure-portal.md) (包括 Multi-Factor Authentication (MFA)) 緊密配合、[封鎖舊版驗證](../conditional-access/conditions.md)，並[篩除暴力密碼破解攻擊](../authentication/howto-password-smart-lockout.md)，藉此保護您的使用者帳戶。
+- 與 [Azure AD 條件式存取原則](../active-directory-conditional-access-azure-portal.md) (包括 Multi-Factor Authentication (MFA)) 緊密配合、[封鎖舊版驗證](../conditional-access/concept-conditional-access-conditions.md)，並[篩除暴力密碼破解攻擊](../authentication/howto-password-smart-lockout.md)，藉此保護您的使用者帳戶。
 
 ## <a name="components-involved"></a>涉及的元件
 
@@ -53,8 +53,8 @@ ms.locfileid: "72174445"
 - **Azure AD STS**：無狀態的 Security Token Service (STS)，用以處理登入要求，並在需要時，將安全性權杖核發給使用者的瀏覽器、用戶端或服務。
 - **Azure 服務匯流排**：可為企業傳訊及轉送通訊提供雲端通訊的能力，讓您可以連接內部部署解決方案與雲端。
 - **Azure AD Connect 驗證代理程式**：接聽並回應密碼驗證要求的內部部署元件。
-- **Azure SQL Database**：持有租用戶之驗證代理程式的相關資訊，包括其中繼資料和加密金鑰。
-- **Active Directory**：內部部署 Active Directory，其中儲存您的使用者帳戶及其密碼。
+- **Azure SQL Database**：保存租用戶之驗證代理程式的相關資訊，包括其中繼資料和加密金鑰。
+- **Active Directory**：您的內部部署 Active Directory，其中儲存您的使用者帳戶及其密碼。
 
 ## <a name="installation-and-registration-of-the-authentication-agents"></a>驗證代理程式的安裝和註冊
 
@@ -217,6 +217,6 @@ Azure AD 會將新版的軟體當作已簽署的 **Windows Installer 套件 (MSI
 - [從 AD FS 遷移到傳遞驗證](https://aka.ms/adfstoptadpdownload) \(英文\) - 從 AD FS (或其他同盟技術) 遷移到傳遞驗證的詳細指南。
 - [智慧鎖定](../authentication/howto-password-smart-lockout.md)：在租用戶中設定智慧鎖定功能以保護使用者帳戶。
 - [運作方式](how-to-connect-pta-how-it-works.md)：了解 Azure AD 傳遞驗證運作方式的基本概念。
-- [常見問題集](how-to-connect-pta-faq.md)：取得常見問題的解答。
+- [常見問題集](how-to-connect-pta-faq.md)：常見問題集的答案。
 - [疑難排解](tshoot-connect-pass-through-authentication.md)：了解如何解決傳遞驗證功能的常見問題。
 - [Azure AD 無縫 SSO](how-to-connect-sso.md)：深入了解此互補功能。

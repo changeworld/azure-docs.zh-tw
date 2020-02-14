@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a9b545d71f21138c0374cf199ce10dc2dc246afb
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: d94237d2cfeb814b2e15d43c9f8863a76c0bcd11
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732139"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190680"
 ---
 # <a name="enable-and-create-large-file-shares"></a>啟用並建立大型檔案共用
 
-原本，標準檔案共用最多隻能相應增加至5個 TiB。 現在，使用大型檔案共用時，可以相應增加至 100 TiB。 您可以針對現有的檔案共用，在現有的儲存體帳戶上啟用此調整。 Premium 檔案共用預設會相應增加至 100 TiB。
+當您在儲存體帳戶上啟用大型檔案共用時，您的檔案共用可以相應增加至 100 TiB。 您可以針對現有的檔案共用，在現有的儲存體帳戶上啟用此調整。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -26,12 +26,12 @@ ms.locfileid: "75732139"
 
 ## <a name="restrictions"></a>限制
 
-目前，您只能在已啟用大型檔案共用的帳戶上使用 LRS 或 ZRS。 您不能使用切換、GRS 或 RA-GRS。
+目前，您只能在已啟用大型檔案共用的帳戶上使用本機-多餘儲存體（LRS）或區域冗余儲存體（ZRS）。 您不能使用異地區域冗余儲存體（切換）、異地多餘儲存體（GRS）或讀取權限異地多餘儲存體（RA-GRS）。
 在帳戶上啟用大型檔案共用是無法復原的程式。 啟用之後，您將無法將帳戶轉換成切換、GRS 或 RA-GRS。
 
 ## <a name="create-a-new-storage-account"></a>建立新的儲存體帳戶
 
-### <a name="portal"></a>入口網站
+### <a name="portal"></a>Portal
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 在 Azure 入口網站中，選取 [所有服務]。 
@@ -50,9 +50,9 @@ ms.locfileid: "75732139"
    |欄位  |值  |
    |---------|---------|
    |部署模型     |Resource Manager         |
-   |效能     |Standard         |
+   |效能     |標準         |
    |帳戶類型     |StorageV2 (一般用途 v2)         |
-   |存取層     |經常性存取         |
+   |存取層     |熱         |
 
 1. 選取 [ **Advanced**]，然後選取 [**大型檔案共用**] 右邊的 [**已啟用**] 選項按鈕。
 1. 選取 [檢閱 + 建立]，以檢閱您的儲存體帳戶設定並建立帳戶。
@@ -87,7 +87,7 @@ New-AzStorageAccount -ResourceGroupName <yourResourceGroup> -Name <yourStorageAc
 
 您也可以在現有的帳戶上啟用大型檔案共用。 如果您啟用大型檔案共用，您將無法轉換成切換、GRS 或 RA-GRS。 在此儲存體帳戶上啟用大型檔案共用無法復原。
 
-### <a name="portal"></a>入口網站
+### <a name="portal"></a>Portal
 
 1. 開啟 [ [Azure 入口網站](https://portal.azure.com)]，然後移至您要啟用大型檔案共用的儲存體帳戶。
 1. 開啟儲存體帳戶，**然後選取 [** 設定]。
@@ -120,7 +120,7 @@ Set-AzStorageAccount -ResourceGroupName <yourResourceGroup> -Name <yourStorageAc
 
 在您的儲存體帳戶上啟用大型檔案共用之後，您可以在具有較高配額的帳戶中建立檔案共用。 
 
-### <a name="portal"></a>入口網站
+### <a name="portal"></a>Portal
 
 建立大型檔案共用幾乎等同于建立標準檔案共用。 主要差異在於您可以將配額設定為最多 100 TiB。
 
@@ -155,7 +155,7 @@ New-AzStorageShare -Name $shareName -Context $ctx
 
 在您的儲存體帳戶上啟用大型檔案共用之後，您也可以將該帳戶中的現有檔案共用擴充為較高的配額。 
 
-### <a name="portal"></a>入口網站
+### <a name="portal"></a>Portal
 
 1. 從您的儲存體帳戶中，選取 [檔案**共用**]。
 1. 以滑鼠右鍵按一下您的檔案共用，然後選取 [**配額**]。

@@ -1,16 +1,16 @@
 ---
 title: 以程式設計方式建立 Azure 訂用帳戶
 description: 瞭解如何以程式設計方式建立額外的 Azure 訂用帳戶。
-author: amberb
+author: amberbhargava
 ms.topic: conceptual
 ms.date: 04/10/2019
 ms.author: banders
-ms.openlocfilehash: 2fad9d727e78b470635c91a1bf9aaac11e57f4c7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 47d4454c47967d07898492176438e547b1e561b6
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981232"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198678"
 ---
 # <a name="programmatically-create-azure-subscriptions-preview"></a>以程式設計方式建立 Azure 訂用帳戶（預覽）
 
@@ -128,7 +128,7 @@ Azure 會以您可以存取的註冊帳戶清單來回應：
 
 ### <a name="resttabrest"></a>[REST](#tab/rest)
 
-提出下列要求，並以從第一個步驟複製的 `name` 取代 `<enrollmentAccountObjectId>` (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```)。 如果您想要指定擁有者，請瞭解[如何取得使用者物件識別碼](grant-access-to-create-subscription.md#userObjectId)。
+提出下列要求，並以從第一個步驟複製的 `<enrollmentAccountObjectId>` 取代 `name` (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```)。 如果您想要指定擁有者，請瞭解[如何取得使用者物件識別碼](grant-access-to-create-subscription.md#userObjectId)。
 
 ```json
 POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>/providers/Microsoft.Subscription/createSubscription?api-version=2018-03-01-preview
@@ -147,7 +147,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 }
 ```
 
-| 元素名稱  | 必要項 | 類型   | 說明                                                                                               |
+| 元素名稱  | 必要項 | 類型   | 描述                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | 否      | String | 訂用帳戶的顯示名稱。 如果未指定，會設定為供應項目的名稱，例如「Microsoft Azure 企業版」。                                 |
 | `offerType`   | 是      | String | 訂用帳戶的供應項目方案。 EA 的兩個選項為 [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (生產環境使用) 和 [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (開發/測試環境使用，必須[使用 EA 入口網站來開啟](https://ea.azure.com/helpdocs/DevOrTestOffer))。                |
@@ -165,7 +165,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -EnrollmentAccountObjectId <enrollmentAccountObjectId> -OwnerObjectId <userObjectId1>,<servicePrincipalObjectId>
 ```
 
-| 元素名稱  | 必要項 | 類型   | 說明                                                                                               |
+| 元素名稱  | 必要項 | 類型   | 描述                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `Name` | 否      | String | 訂用帳戶的顯示名稱。 如果未指定，會設定為供應項目的名稱，例如「Microsoft Azure 企業版」。                                 |
 | `OfferType`   | 是      | String | 訂用帳戶的供應項目方案。 EA 的兩個選項為 [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (生產環境使用) 和 [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (開發/測試環境使用，必須[使用 EA 入口網站來開啟](https://ea.azure.com/helpdocs/DevOrTestOffer))。                |
@@ -186,7 +186,7 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscription" --enrollment-account-object-id "<enrollmentAccountObjectId>" --owner-object-id "<userObjectId>","<servicePrincipalObjectId>"
 ```
 
-| 元素名稱  | 必要項 | 類型   | 說明                                                                                               |
+| 元素名稱  | 必要項 | 類型   | 描述                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `display-name` | 否      | String | 訂用帳戶的顯示名稱。 如果未指定，會設定為供應項目的名稱，例如「Microsoft Azure 企業版」。                                 |
 | `offer-type`   | 是      | String | 訂用帳戶的供應項目方案。 EA 的兩個選項為 [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (生產環境使用) 和 [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (開發/測試環境使用，必須[使用 EA 入口網站來開啟](https://ea.azure.com/helpdocs/DevOrTestOffer))。                |
@@ -265,7 +265,7 @@ API 回應會列出您有權存取的帳單帳戶。
 
 您的訂用帳戶費用會出現在帳單設定檔發票的區段上。 使用下列 API 來取得您有權建立 Azure 訂用帳戶的發票區段和帳單配置檔案清單。
 
-提出下列要求，並以從第一個步驟複製的 `name` 取代 `<billingAccountName>` (```5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx```)。
+提出下列要求，並以從第一個步驟複製的 `<billingAccountName>` 取代 `name` (```5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx```)。
 
 ```json
 POST https://management.azure.com/providers/Microsoft.Billing/billingAccounts/<billingAccountName>/listInvoiceSectionsWithCreateSubscriptionPermission?api-version=2019-10-01-preview
@@ -337,7 +337,7 @@ POST https://management.azure.com<invoiceSectionId>/providers/Microsoft.Subscrip
 
 ```
 
-| 元素名稱  | 必要項 | 類型   | 說明                                                                                               |
+| 元素名稱  | 必要項 | 類型   | 描述                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | 是      | String | 訂用帳戶的顯示名稱。|
 | `billingProfileId`   | 是      | String | 計費設定檔的識別碼，將依訂用帳戶的費用計費。  |
@@ -502,7 +502,7 @@ POST https://management.azure.com<customerId>/providers/Microsoft.Subscription/c
 }'
 ```
 
-| 元素名稱  | 必要項 | 類型   | 說明                                                                                               |
+| 元素名稱  | 必要項 | 類型   | 描述                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | 是      | String | 訂用帳戶的顯示名稱。|
 | `skuId` | 是      | String | Azure 方案的 sku 識別碼。 為 Microsoft Azure 方案類型的訂閱使用*0001* |

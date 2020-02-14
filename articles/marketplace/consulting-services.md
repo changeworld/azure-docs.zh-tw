@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: d56b83c8bd9a71ac30112f9e77a97ed8ab61a137
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: cd90ae2b751a97c18dc8b6be4b8eb565a17df7a2
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825980"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191136"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Azure Marketplace 和 AppSource 的諮詢服務
 Azure Marketplace 和 AppSource 中的諮詢服務會為 Microsoft 合作夥伴提供一個目標，希望以服務連結客戶，支援並擴大客戶對 Azure 的使用和商務目標。 
@@ -74,11 +74,11 @@ Azure Marketplace 和 AppSource 支援從 Microsoft 的系統整合者（SI）�
 
 |合格國家/地區 |   |   |   |
 |---------|----------|----------|----------|
-|澳大利亞 |法國  |     墨西哥          |西班牙       |
-|比利時   |德國 |     荷蘭     |瑞典       |
+|澳洲 |France  |     墨西哥          |西班牙       |
+|比利時   |Germany |     荷蘭     |瑞典       |
 |加拿大    |印度   |     紐西蘭     |英國  |
 |丹麥   |義大利   |     挪威          |美國 |
-|芬蘭   |日本   |     波蘭          
+|芬蘭   |Japan   |     波蘭          
 
 
 ## <a name="how-to-register-for-consulting-services-in-azure-marketplace-and-appsource"></a>如何使用 Azure Marketplace 和 AppSource 註冊諮詢服務
@@ -151,7 +151,7 @@ Azure Marketplace 和 AppSource 支援從 Microsoft 的系統整合者（SI）�
 
 檢閱供應項目描述和供應項目摘要時，小組會套用下列準則：
 
-|供應項目類型  |必要 |建議  |
+|供應項目類型  |必要項 |建議  |
 |---------|---------|---------|
 |**評量**    |   包含多天或多週評量的詳細議程，並且清楚表達客戶可以預期有什麼交付成果      |    使用您的熱門搜尋引擎最佳化關鍵字來最佳化供應項目摘要     |
 |**簡報**    |   清楚表達客戶可以預期有什麼交付成果。 請記住，簡報必須親赴現場提供。 如果您提供虛擬服務，請選擇不同的供應項目類型    |  使用您的熱門搜尋引擎最佳化關鍵字來最佳化供應項目摘要       |
@@ -159,7 +159,7 @@ Azure Marketplace 和 AppSource 支援從 Microsoft 的系統整合者（SI）�
 |**概念證明**    |    清楚表達客戶可以預期參與後會有哪些工程變更、技術成品或其他成品     | 使用您的熱門搜尋引擎最佳化關鍵字來最佳化供應項目摘要        |
 |**研討會**    |   包含每日、每週或每月的詳細議程，依據您選擇的供應項目持續時間而定。 清楚表達工作坊的學習目標或其他交付成果     |   使用您的熱門搜尋引擎最佳化關鍵字來最佳化供應項目摘要      |
 
-在 Cloud Partner 入口網站內，您可以藉由使用 [Markdown](https://docs.microsoft.com/contribute/how-to-write-use-markdown) 將格式新增至您的清單。 這是輕量型設計語言，可協助讓您的清單更完善。 
+在 Cloud Partner 入口網站內，您可以藉由使用 [Markdown](/contribute/markdown-reference) 將格式新增至您的清單。 這是輕量型設計語言，可協助讓您的清單更完善。 
 
 **範例 Markdown 附註**
 * 在複本區塊的開頭和結尾加上 * - 不使用空格以建立斜體 (例如：*內容*)

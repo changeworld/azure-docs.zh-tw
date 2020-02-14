@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: d270d38bce45c45f9323a971ad69dc2b931a9169
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dd7579c97e2166e2822ee5674bbcd5a8ad64d2c7
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369842"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201487"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>了解及調整串流單位
 
@@ -59,6 +59,8 @@ SU % 使用率計量介於 0% 到 100% 的範圍間，可說明工作負載的�
 請注意，具有複雜查詢邏輯的作業即使在非連續接收輸入事件時，也可能具有較高的 SU% 使用率。 此情況可能發生在輸入和輸出事件突然激增之後。 如果查詢很複雜，作業可能會繼續維持在記憶體中的狀態。
 
 SU% 使用率可能會突然降到 0，但不久後便回到預期的層級。 這是因為暫時性錯誤或系統啟動的升級造成的。 如果您的查詢不是[完全平行](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization)，增加作業的串流單位數目可能不會降低 SU% 使用率。
+
+在比較一段時間的使用率時，請使用[事件速率計量](stream-analytics-monitoring.md)。 InputEvents 和 OutputEvents 計量會顯示已讀取和處理的事件數目。 也有指出錯誤事件數目的計量，例如還原序列化錯誤。 當每次單位的事件數增加時，SU% 會在大部分情況下增加。
 
 ## <a name="stateful-query-logicin-temporal-elements"></a>時態性元素中的具狀態查詢邏輯
 Azure 串流分析作業的其中一個獨特功能是執行具狀態的處理工作，如視窗型彙總、時態性聯結及時態性分析函式。 每個運算子都會保留狀態資訊。 這些查詢元素的視窗大小上限為7天。 

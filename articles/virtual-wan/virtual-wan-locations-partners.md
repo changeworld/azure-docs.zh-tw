@@ -1,19 +1,19 @@
 ---
-title: Azure 虛擬 WAN 夥伴位置 | Microsoft Docs
+title: Azure 虛擬 WAN 合作夥伴和位置 |Microsoft Docs
 description: 本文包含 Azure 虛擬 WAN 合作夥伴和中樞位置的清單。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 11/11/2019
+ms.date: 02/12/2020
 ms.author: cherylmc
-Customer intent: As someone with a networking background, I want to connect find a Virtual WAN partner
-ms.openlocfilehash: afa808c95c88184fb531e858fbfe6d102a6f1f08
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: HT
+Customer intent: As someone with a networking background, I want to find a Virtual WAN partner
+ms.openlocfilehash: 68379fd2334e517df4011c05bb32543f7ce4a173
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157154"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190394"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>虛擬 WAN 夥伴與虛擬中樞位置
 
@@ -34,7 +34,7 @@ Azure 虛擬 WAN 是一種網路服務，透過 Azure 提供最佳且自動化�
 * 自動下載 Azure 的連線資訊
 * 內部部署分支裝置的設定 
 
-有些連線夥伴可能會擴充自動化功能以包括建立 Azure 虛擬中樞 VNet 與 VPN 閘道的能力。 如果您想要深入了解自動化，請參閱[設定自動化 – WAN 夥伴](virtual-wan-configure-automation-providers.md)。
+有些連線夥伴可能會擴充自動化功能以包括建立 Azure 虛擬中樞 VNet 與 VPN 閘道的能力。 如果您想要深入瞭解自動化，請參閱[虛擬 WAN 合作夥伴的自動化指導方針](virtual-wan-configure-automation-providers.md)。
 
 ## <a name="partners"></a>透過合作夥伴的連線能力
 
@@ -50,4 +50,4 @@ Azure 虛擬 WAN 是一種網路服務，透過 Azure 提供最佳且自動化�
 
 * 如需有關虛擬 WAN 的詳細資訊，請參閱[虛擬 WAN 常見問題集](virtual-wan-faq.md)。
 
-* 如需如何自動化連線到 Azure 虛擬 WAN 的詳細資訊，請參閱[虛擬 WAN 夥伴 - 如何自動化](virtual-wan-configure-automation-providers.md)。
+* 如需如何自動連線到 Azure 虛擬 WAN 的詳細資訊，請參閱[虛擬 wan 合作夥伴的自動化指導方針](virtual-wan-configure-automation-providers.md)。

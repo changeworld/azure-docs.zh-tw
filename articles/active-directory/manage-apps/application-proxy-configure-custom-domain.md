@@ -16,16 +16,16 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 189b8666adde0eedcb451655657a4a82dc5e4fec
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 6f1656d730d55d4c5ab7fb963e49a8057ad88c9f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73062542"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185546"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>使用 Azure AD 應用程式 Proxy 設定自訂網域
 
-當您透過 Azure Active Directory 應用程式 Proxy 發行應用程式時，會為您的使用者建立外部 URL。 此 URL 會取得預設網域 *yourtenant.msappproxy.net*。 例如，如果您在名為*Contoso*的租使用者中發佈名為「*費用*」的應用程式，則外部 URL 會是*HTTPs： \//expenses-contoso.msappproxy.net*。 如果您想要使用您自己的功能變數名稱，而不是*msappproxy.net*，可以為您的應用程式設定自訂網域。 
+當您透過 Azure Active Directory 應用程式 Proxy 發行應用程式時，會為您的使用者建立外部 URL。 此 URL 會取得預設網域 *yourtenant.msappproxy.net*。 例如，如果您在名為*Contoso*的租使用者中發佈名為「*費用*」的應用程式，則外部 URL 會是*HTTPs：\//expenses-contoso.msappproxy.net*。 如果您想要使用您自己的功能變數名稱，而不是*msappproxy.net*，可以為您的應用程式設定自訂網域。 
 
 ## <a name="benefits-of-custom-domains"></a>自訂網域的優點
 
@@ -49,7 +49,7 @@ ms.locfileid: "73062542"
 
 如果您不想要讓內部使用者通過應用程式 Proxy，您可以設定*分割大腦的 DNS*。 分割 DNS 基礎結構會將內部主機導向內部功能變數名稱伺服器，以及外部主機到外部功能變數名稱伺服器，以進行名稱解析。 
 
-![分裂式 DNS](./media/application-proxy-configure-custom-domain/split-brain-dns.png)
+![拆分式 DNS](./media/application-proxy-configure-custom-domain/split-brain-dns.png)
 
 ### <a name="different-internal-and-external-urls"></a>不同的內部和外部 Url 
 
@@ -77,7 +77,7 @@ ms.locfileid: "73062542"
 
 若要透過具有自訂網域的應用程式 Proxy 發佈您的應用程式：
 
-1. 針對新的應用程式，請在 Azure Active Directory 中，選取左側導覽中的 **企業應用程式**。 選取 [新增應用程式]。 在 [**內部部署應用程式**] 區段中，選取 [**新增內部部署應用程式**]。 
+1. 針對新的應用程式，請在 Azure Active Directory 中，選取左側導覽中的 **企業應用程式**。 選取 [新增應用程式]。 在 [內部部署應用程式] 區段中，選取 [新增內部部署應用程式]。 
    
    針對已在**企業應用程式**中的應用程式，請從清單中選取它，然後在左側導覽中選取 [**應用程式 proxy** ]。 
 
@@ -128,7 +128,7 @@ ms.locfileid: "73062542"
 
 憑證簽章方法沒有任何限制。 支援橢圓曲線密碼編譯（ECC）、主體別名（SAN）和其他常見的憑證類型。 
 
-只要萬用字元符合外部 URL，您就可以使用萬用字元憑證。 [萬用字元應用程式](application-proxy-wildcard.md)必須使用萬用字元憑證。 如果您想要使用憑證來同時存取子域，您必須在相同的憑證中新增子域萬用字元做為主體的替代名稱。 例如， *\** 的憑證 \* 將無法用於 *\*. apps.adventure-works.com* ，除非您新增*apps.adventure-works.com*做為主體的替代名稱。 
+只要萬用字元符合外部 URL，您就可以使用萬用字元憑證。 [萬用字元應用程式](application-proxy-wildcard.md)必須使用萬用字元憑證。 如果您想要使用憑證來同時存取子域，您必須在相同的憑證中新增子域萬用字元做為主體的替代名稱。 例如， *\** 的憑證\*將無法用於 *\*. apps.adventure-works.com* ，除非您新增*apps.adventure-works.com*做為主體的替代名稱。 
 
 如果您的用戶端裝置上已安裝憑證鏈，您可以使用自己的公開金鑰基礎結構（PKI）所發行的憑證。 Intune 可以將這些憑證部署至受管理的裝置。 對於不受管理的裝置，您必須手動安裝這些憑證。
 
@@ -144,5 +144,5 @@ ms.locfileid: "73062542"
 
 ## <a name="next-steps"></a>後續步驟
 * [啟用單一登入](application-proxy-configure-single-sign-on-with-kcd.md)以登入您使用 Azure AD 驗證發佈的應用程式。
-* [啟用](../conditional-access/technical-reference.md#cloud-apps-assignments)已發佈應用程式的條件式存取。
+* [啟用](../conditional-access/overview.md)已發佈應用程式的條件式存取。
 

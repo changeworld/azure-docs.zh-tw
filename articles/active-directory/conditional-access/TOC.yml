@@ -19,20 +19,30 @@
       href: concept-conditional-access-policy-common.md
     - name: 條件式存取原則元件
       href: concept-conditional-access-policies.md
-    - name: 雲端應用程式和動作
-      href: concept-conditional-access-cloud-apps.md
-    - name: 條件
-      href: conditions.md
-    - name: 位置條件
-      href: location-condition.md
-    - name: 控制
-      href: controls.md
+    - name: 指派
+      items:
+        - name: 使用者和群組
+          href: concept-conditional-access-users-groups.md
+        - name: 雲端應用程式或動作
+          href: concept-conditional-access-cloud-apps.md
+        - name: 條件
+          href: concept-conditional-access-conditions.md
+    - name: 存取控制
+      items:
+        - name: 授與
+          href: concept-conditional-access-grant.md
+        - name: 工作階段
+          href: concept-conditional-access-session.md
     - name: 僅限報告模式
       href: concept-conditional-access-report-only.md
     - name: 服務相依性
       href: service-dependencies.md
+    - name: 位置條件
+      href: location-condition.md
     - name: 假設工具
       href: what-if-tool.md
+    - name: 控制
+      href: controls.md
     - name: 傳統原則移轉
       href: policy-migration.md
     - name: 基準保護原則
@@ -84,10 +94,6 @@
       items:
         - name: 使用 What If 工具進行疑難排解
           href: troubleshoot-conditional-access-what-if.md
-- name: 參考
-  items:
-    - name: 技術參考
-      href: technical-reference.md
 - name: 資源
   items:
     - name: Azure 意見反應論壇

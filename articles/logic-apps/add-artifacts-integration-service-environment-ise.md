@@ -1,17 +1,17 @@
 ---
-title: 將構件新增至整合服務環境
-description: 將邏輯應用程式、整合帳戶和自訂連接器新增至您的整合服務環境（ISE），以存取 Azure 虛擬網路（Vnet）
+title: 將成品新增到整合服務環境
+description: 將邏輯應用程式、整合帳戶、自訂連接器和受控連接器新增至您的整合服務環境（ISE）
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 01/08/2020
-ms.openlocfilehash: c597bc4430e4390f0e29e4fe8ae4014521e1ae74
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.date: 02/10/2020
+ms.openlocfilehash: e2505d8ee8b8539f158c0a549bedfcd69a954e24
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732202"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191706"
 ---
 # <a name="add-artifacts-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>在 Azure Logic Apps 中將成品新增至您的整合服務環境（ISE）
 
@@ -33,18 +33,19 @@ ms.locfileid: "75732202"
 
    ![將新的邏輯應用程式新增至 ISE](./media/add-artifacts-integration-service-environment-ise/add-logic-app-to-ise.png)
 
-   -或-
+1. 提供您想要建立之邏輯應用程式的相關資訊，例如：
 
-   在主要 Azure 功能表中，選取 [建立資源] > [整合] > [邏輯應用程式]。
+   ![選取整合服務環境](./media/add-artifacts-integration-service-environment-ise/create-logic-app-integration-service-environment.png)
 
-1. 提供用於邏輯應用程式的名稱、Azure 訂用帳戶和 Azure 資源群組（新的或現有的）。
+   | 屬性 | 必要項 | 描述 |
+   |----------|----------|-------------|
+   | **名稱** | 是 | 要建立之邏輯應用程式的名稱 |
+   | **訂用帳戶** | 是 | 要使用的 Azure 訂用帳戶的名稱 |
+   | **資源群組** | 是 | 要使用的 Azure 資源群組（新的或現有的）名稱 |
+   | **位置** | 是 | 在 [**整合服務環境**] 底下，選取要使用的 ISE （如果尚未選取）。 <p><p> **重要**：若要將邏輯應用程式與整合帳戶搭配使用，兩者都必須使用相同的 ISE。 |
+   ||||
 
-1. 從 [**位置**] 清單的 [**整合服務環境**] 區段底下，選取您的 ISE，例如：
-
-   ![選取整合服務環境](./media/add-artifacts-integration-service-environment-ise/create-logic-app-with-integration-service-environment.png)
-
-   > [!IMPORTANT]
-   > 如果您想要將邏輯應用程式與整合帳戶搭配使用，則這些邏輯應用程式和整合帳戶必須使用相同的 ISE。
+1. 當您完成時，選取 [建立]。
 
 1. 繼續[以一般方式建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
@@ -64,15 +65,20 @@ ms.locfileid: "75732202"
 
    ![將新的整合帳戶新增至 ISE](./media/add-artifacts-integration-service-environment-ise/add-integration-account-to-ise.png)
 
-   -或-
+1. 提供您想要建立之邏輯應用程式的相關資訊，例如：
 
-   從主要 Azure 功能表中，選取 [**建立資源**] [ > **整合**] [ > **整合帳戶**]。
+   ![選取整合服務環境](./media/add-artifacts-integration-service-environment-ise/create-integration-account-integration-service-environment.png)
 
-1. 提供您整合帳戶的名稱、Azure 訂用帳戶、Azure 資源群組（新的或現有的）和定價層。
+   | 屬性 | 必要項 | 描述 |
+   |----------|----------|-------------|
+   | **名稱** | 是 | 您想要建立之整合帳戶的名稱 |
+   | **訂用帳戶** | 是 | 您想要使用之 Azure 訂用帳戶的名稱 |
+   | **資源群組** | 是 | 要使用的 Azure 資源群組（新的或現有的）名稱 |
+   | **定價層** | 是 | 要用於整合帳戶的定價層 |
+   | **位置** | 是 | 在 [**整合服務環境**] 底下，選取您的邏輯應用程式所使用的相同 ISE （如果尚未選取）。 <p><p> **重要**：若要將整合帳戶與邏輯應用程式搭配使用，兩者都必須使用相同的 ISE。 |
+   ||||
 
-1. 從 [**位置**] 清單的 [**整合服務環境**] 區段底下，選取您的邏輯應用程式所使用的相同 ISE，例如：
-
-   ![選取整合服務環境](./media/add-artifacts-integration-service-environment-ise/create-integration-account-with-integration-service-environment.png)
+1. 當您完成時，選取 [建立]。
 
 1. [以一般方式將邏輯應用程式連結到您的整合帳戶](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account)。
 
@@ -110,7 +116,7 @@ ms.locfileid: "75732202"
 
 1. 從 [**位置**] 清單的 [**整合服務環境**] 區段底下，選取您的邏輯應用程式所使用的相同 ISE，然後選取 [**建立**]，例如：
 
-   ![選取整合服務環境](./media/add-artifacts-integration-service-environment-ise/create-custom-connector-with-integration-service-environment.png)
+   ![選取整合服務環境](./media/add-artifacts-integration-service-environment-ise/create-custom-connector-integration-service-environment.png)
 
 1. 選取新的自訂連接器，然後選取 [**編輯**]，例如：
 

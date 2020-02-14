@@ -8,12 +8,12 @@ author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 2cf3c784c711977a6fe758bb9017e1f0dc404c33
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 8febe1fd749842a6db0cd1c9991f4002eb7cf2ad
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76992062"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190102"
 ---
 # <a name="connection-strings"></a>連接字串
 
@@ -49,7 +49,7 @@ ms.locfileid: "76992062"
 
 ![總覽分頁上的連接字串](media/overview-dashboard/overview-connection-string.png)
 
-### <a name="schema"></a>結構描述
+### <a name="schema"></a>Schema
 
 #### <a name="max-length"></a>最大長度
 
@@ -140,10 +140,10 @@ ms.locfileid: "76992062"
 - 授權配置預設為 "ikey" 
 - 檢測金鑰：00000000-0000-0000-0000-000000000000
 - 區域服務 Uri 是以明確覆寫值為基礎： 
-   - 內嵌： https://custom.com:111/
-   - 即時計量： https://custom.com:222/
-   - Profiler： https://custom.com:333/ 
-   - 偵錯工具： https://custom.com:444/   
+   - 內嵌： HTTPs：\//custom.com:111/
+   - 即時計量： HTTPs：\//custom.com:222/
+   - Profiler： HTTPs：\//custom.com:333/ 
+   - 偵錯工具： HTTPs：\//custom.com:444/   
 
 
 ## <a name="how-to-set-a-connection-string"></a>如何設定連接字串

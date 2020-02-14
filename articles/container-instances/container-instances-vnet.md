@@ -4,12 +4,12 @@ description: 了解如何將容器群組部署至新的或現有的 Azure 虛擬
 ms.topic: article
 ms.date: 01/06/2020
 ms.author: danlep
-ms.openlocfilehash: 40f312ce8bc08c9b59e7c47f05b6a5d3dc94a994
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 318576e9b5c5b32bbc993ea16494c938b74bd2f4
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901858"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200056"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>將容器執行個體部署至 Azure 虛擬網路
 
@@ -51,7 +51,7 @@ ms.locfileid: "76901858"
 * **公用 ip 或 DNS 標籤**-部署至虛擬網路的容器群組目前不支援使用公用 IP 位址或完整功能變數名稱將容器直接公開到網際網路
 * **內部名稱解析**-不支援透過內部 Azure DNS 在虛擬網路中的 Azure 資源名稱解析
 
-當您將容器群組部署至虛擬網路後，便需要[其他步驟](#delete-network-resources)來**刪除網路資源**。
+當您將容器群組部署至虛擬網路後，便需要**其他步驟**來[刪除網路資源](#delete-network-resources)。
 
 ## <a name="required-network-resources"></a>必要的網路資源
 
@@ -260,7 +260,7 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 
 ### <a name="delete-network-resources"></a>刪除網路資源
 
-這項功能目前需要數個額外的命令來刪除您稍早建立的網路資源。 如果您使用了本文前幾節的範例命令來建立虛擬網路及子網路，您可以使用下列指令碼來刪除這些網路資源。
+這項功能目前需要數個額外的命令來刪除您稍早建立的網路資源。 如果您使用了本文前幾節的範例命令來建立虛擬網路及子網路，您可以使用下列指令碼來刪除這些網路資源。 此腳本假設您的資源群組包含具有單一網路設定檔的單一虛擬網路。
 
 在執行指令碼之前，請將變數 `RES_GROUP` 設定為包含應刪除虛擬網路及子網路的資源群組名稱。 如果您未使用稍早建議的 `aci-vnet` 名稱，請更新虛擬網路的名稱。 此指令碼會針對 Bash 殼層加以格式化。 如果您慣用其他殼層，例如 PowerShell 或是命令提示字元，您需要相應調整變數指派及存取子。
 
@@ -269,9 +269,11 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 
 ```azurecli
 # Replace <my-resource-group> with the name of your resource group
+# Assumes one virtual network in resource group
 RES_GROUP=<my-resource-group>
 
 # Get network profile ID
+# Assumes one profile in virtual network
 NETWORK_PROFILE_ID=$(az network profile list --resource-group $RES_GROUP --query [0].id --output tsv)
 
 # Delete the network profile

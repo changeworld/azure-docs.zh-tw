@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b6c70e1a5c7e5b81157c09a794ff75e276a20d1f
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: a16fb1184de5b545b3ef527b1a66ffb7b68d1ef4
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982733"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77197913"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自訂原則中定義自我判斷技術設定檔
 
@@ -187,7 +187,7 @@ ms.locfileid: "76982733"
 
 ## <a name="metadata"></a>中繼資料
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要項 | 描述 |
 | --------- | -------- | ----------- |
 | setting.operatingMode | 否 | 對於登入頁面，此屬性會控制使用者名稱欄位的行為，例如輸入驗證和錯誤訊息。 預期的值：`Username` 或 `Email`。 |
 | AllowGenerationOfClaimsWithNullValues| 否| [允許] 產生具有 null 值的宣告。 例如，在案例中，使用者不會選取核取方塊。|
@@ -199,6 +199,8 @@ ms.locfileid: "76982733"
 | setting.showContinueButton | 否 | 顯示繼續按鈕。 可能的值：`true` (預設) 或 `false` |
 | setting.showSignupLink | 否 | 顯示註冊按鈕。 可能的值：`true` (預設) 或 `false` |
 | 設定. forgotPasswordLinkLocation| 否| 顯示 [忘記密碼] 連結。 可能的值： `AfterInput` （預設）此連結會顯示在頁面底部，`None` 則會移除 [忘記密碼] 連結。| 
+| IncludeClaimResolvingInClaimsHandling  | 否 | 針對輸入和輸出宣告，指定技術設定檔中是否包含[宣告解析](claim-resolver-overview.md)。 可能的值： `true`或 `false` （預設）。 如果您想要在技術設定檔中使用宣告解析程式，請將此設定為 [`true`]。 |
+
 ## <a name="cryptographic-keys"></a>密碼編譯金鑰
 
 不使用 **CryptographicKeys** 元素。

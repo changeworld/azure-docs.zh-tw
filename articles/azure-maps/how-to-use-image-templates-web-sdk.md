@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: cb182a5db77a517b11fb1863665f8c54d58b254a
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: f3b1141ea3c3c8e33b8a2ae12c22b6962a90d32b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911563"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198219"
 ---
 # <a name="how-to-use-image-templates"></a>如何使用映像範本
 
@@ -24,7 +24,7 @@ ms.locfileid: "75911563"
  - 您可以使用填滿模式影像來轉譯多邊形圖層。 
  - HTML 標籤可以使用影像和其他 HTML 專案來呈現點。
 
-為了確保階層的效能良好，這些映射必須先載入地圖影像 sprite 資源，然後才呈現。 根據預設，SymbolLayer 的[IconOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions)會將數個色彩中的幾個標記影像預先載入地圖影像 sprite。 這些相同的標記影像和更多功能都以 SVG 範本的形式提供，可以用來建立具有自訂縮放比例的影像，以及客戶主要和次要色彩。 總共提供42個影像範本;27符號圖示和15個多邊形填滿模式。
+為了確保層級有良好的效能，請先將影像載入地圖影像 sprite 資源，再進行轉譯。 SymbolLayer 的[IconOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions)預設會將幾個色彩中的數個標記影像預先載入地圖影像 sprite。 這些標記影像和更多功能可作為 SVG 範本。 它們可用來建立具有自訂縮放比例的影像，或當做客戶主要和次要色彩使用。 總共提供42個影像範本：27個符號圖示和15個多邊形填滿模式。
 
 您可以使用 `map.imageSprite.createFromTemplate` 函式，將影像範本新增至地圖影像 sprite 資源。 此函式最多允許傳入五個參數;
 
@@ -32,9 +32,9 @@ ms.locfileid: "75911563"
 createFromTemplate(id: string, templateName: string, color?: string, secondaryColor?: string, scale?: number): Promise<void>
 ```
 
-其中 `id` 是您建立的唯一識別碼，會在新增至地圖影像 sprite 時指派給映射。 在圖層中使用此識別碼來指定要呈現的影像資源。 `templateName` 指定要使用的映射範本。 [`color`] 選項會設定影像的主要色彩，而 [`secondaryColor`] 選項會設定影像的次要色彩。 `scale` 選項會先調整影像範本，再將它套用至映射 sprite。 當影像套用至影像 sprite 時，它會轉換成 PNG。 為了確保呈現清晰，最好先將影像範本相應增加，再將它加入至 sprite，而不是在圖層中相應增加。
+`id` 是您所建立的唯一識別碼。 將 `id` 新增至地圖影像 sprite 時，會指派給該影像。 在圖層中使用此識別碼來指定要呈現的影像資源。 `templateName` 指定要使用的映射範本。 [`color`] 選項會設定影像的主要色彩，而 [`secondaryColor`] 選項會設定影像的次要色彩。 `scale` 選項會先調整影像範本，再將它套用至映射 sprite。 當影像套用至影像 sprite 時，它會轉換成 PNG。 為了確保呈現清晰，最好先相應增加影像範本，再將它加入至 sprite，而不是在圖層中相應增加。
 
-此函式會以非同步方式將影像載入影像 sprite，因此會傳回您可以等候此函式完成的承諾。
+此函式會以非同步方式將影像載入影像 sprite。 因此，它會傳回您可以等候此函數完成的承諾。
 
 下列程式碼示範如何從其中一個內建範本建立影像，並將其與符號層搭配使用。
 
@@ -106,9 +106,9 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 
 ## <a name="create-custom-reusable-templates"></a>建立自訂可重複使用的範本
 
-如果您的應用程式使用具有不同圖示的相同圖示，或如果您要建立可新增其他影像範本的模組，您可以使用 `atlas` 命名空間上的下列靜態函式，輕鬆地從 Azure 地圖服務 web SDK 新增和取出這些圖示。
+如果您的應用程式使用不同圖示的相同圖示，或如果您要建立可新增其他影像範本的模組，您可以從 Azure 地圖服務 web SDK 輕鬆地新增和取出這些圖示。 在 `atlas` 命名空間上使用下列靜態函式。
 
-| 名稱 | 傳回類型 | 說明 | 
+| 名稱 | 傳回類型 | 描述 | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | 將自訂 SVG 影像範本新增至 [阿特拉斯] 命名空間。 |
 |  `getImageTemplate(templateName: string, scale?: number)`| string | 依名稱捕獲 SVG 範本。 |
@@ -116,7 +116,7 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 
 SVG 影像範本支援下列預留位置值：
 
-| 預留位置 | 說明 |
+| 預留位置 | 描述 |
 |-|-|
 | `{color}` | 主要色彩。 | 
 | `{secondaryColor}` | 次要色彩。 | 
@@ -133,7 +133,7 @@ SVG 影像範本支援下列預留位置值：
 
 ## <a name="list-of-image-templates"></a>影像範本清單
 
-下表列出 Azure 地圖服務 web SDK 中所有目前可用的映射範本，其範本名稱位於每個影像的上方。 根據預設，主要色彩是藍色，而次要色彩是白色。 為了讓次要色彩在白色背景上更容易看到，下列影像的次要色彩會設定為黑色。
+下表列出 Azure 地圖服務 web SDK 中目前可用的所有映射範本。 範本名稱位於每個影像的上方。 根據預設，主要色彩是藍色，而次要色彩是白色。 為了讓次要色彩在白色背景上更容易看到，下列影像的次要色彩會設定為黑色。
 
 **符號圖示範本**
 
@@ -148,13 +148,13 @@ SVG 影像範本支援下列預留位置值：
 | 標記-方形圓角 | 標記-方形-進位-叢集 | 旗標 | 旗標-三角形 |
 | ![標記-方形圓角圖示](./media/image-templates/marker-square-rounded.png) | ![標記-方形-進位-叢集圖示](./media/image-templates/marker-square-rounded-cluster.png) | ![旗標圖示](./media/image-templates/flag.png) | ![旗標-三角形圖示](./media/image-templates/flag-triangle.png) |
 ||||
-| 三角形 | 三角形-粗 | 三角形-向上箭號 | 三角形-箭號-左 |
+| 標識 | 三角形-粗 | 三角形-向上箭號 | 三角形-箭號-左 |
 | ![三角形圖示](./media/image-templates/triangle.png) | ![三角形-粗圖示](./media/image-templates/triangle-thick.png) | ![三角形-向上箭號圖示](./media/image-templates/triangle-arrow-up.png) | ![三角形-箭號左圖示](./media/image-templates/triangle-arrow-left.png) |
 ||||
 | 六邊形 | 六邊形-粗 | 六邊形-圓角 | 六邊形-進位-粗 |
 | ![六邊形圖示](./media/image-templates/hexagon.png) | ![六邊形-粗圖示](./media/image-templates/hexagon-thick.png) | ![六邊形-圓角圖示](./media/image-templates/hexagon-rounded.png) | ![六邊形-進位-粗圖示](./media/image-templates/hexagon-rounded-thick.png) |
 ||||
-| 固定 | 圖釘-round | 圓角-正方形 | 進位-正方形-粗 |
+| pin | 圖釘-round | 圓角-正方形 | 進位-正方形-粗 |
 | ![釘選圖示](./media/image-templates/pin.png) | ![圖釘-round 圖示](./media/image-templates/pin-round.png) | ![圓角-正方形圖示](./media/image-templates/rounded-square.png) | ![圓角-方形-粗圖示](./media/image-templates/rounded-square-thick.png) |
 ||||
 | 向上箭號 | 向上箭號-細 | 汽車 ||

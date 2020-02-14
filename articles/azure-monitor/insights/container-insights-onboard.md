@@ -3,12 +3,12 @@ title: 如何啟用容器的 Azure 監視器 |Microsoft Docs
 description: 本文說明如何啟用和設定容器的 Azure 監視器，讓您可以瞭解容器的執行方式，以及已識別出哪些效能相關問題。
 ms.topic: conceptual
 ms.date: 11/18/2019
-ms.openlocfilehash: fce2699c18f0fe426b85c165656100c097e69598
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7aad7e7dd5ec2569377f9276c2e4793c7afd631a
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75404330"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198066"
 ---
 # <a name="how-to-enable-azure-monitor-for-containers"></a>如何啟用容器的 Azure 監視器
 
@@ -16,7 +16,9 @@ ms.locfileid: "75404330"
 
 - [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/) （AKS）
 
-- 在內部部署[Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)或 Kubernetes 上的 AKS 引擎。
+- 使用[AKS 引擎](https://github.com/Azure/aks-engine)在 Azure 上託管的自我管理 Kubernetes 叢集。
+
+- 使用 AKS 引擎在[Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910)或內部部署上託管的自我管理 Kubernetes 叢集。
 
 - [Azure Red Hat OpenShift](../../openshift/intro-openshift.md)
 
@@ -63,13 +65,13 @@ ms.locfileid: "75404330"
 | *.oms.opinsights.azure.com | 443 | 
 | *.blob.core.windows.net | 443 |
 | dc.services.visualstudio.com | 443 |
-| *.microsoftonline.com | 443 |
+| \* microsoftonline.com | 443 |
 | *. monitoring.azure.com | 443 |
 | login.microsoftonline.com | 443 |
 
 下表中的資訊列出 Azure 中國的 proxy 和防火牆設定資訊。
 
-|代理程式資源|連接埠 |說明 | 
+|代理程式資源|連接埠 |描述 | 
 |--------------|------|-------------|
 | *. ods.opinsights.azure.cn | 443 | 資料擷取 |
 | *. oms.opinsights.azure.cn | 443 | OMS 上線 |
@@ -79,7 +81,7 @@ ms.locfileid: "75404330"
 
 下表中的資訊列出 Azure 美國政府的 proxy 和防火牆設定資訊。
 
-|代理程式資源|連接埠 |說明 | 
+|代理程式資源|連接埠 |描述 | 
 |--------------|------|-------------|
 | *.ods.opinsights.azure.us | 443 | 資料擷取 |
 | *.oms.opinsights.azure.us | 443 | OMS 上線 |
@@ -87,7 +89,7 @@ ms.locfileid: "75404330"
 | microsoft.com | 80 | 用於網路連接。 只有在代理程式映射版本為 ciprod09262019 或更早版本時，才需要此參數。 |
 | dc.services.visualstudio.com | 443 | 針對使用 Azure 公用雲端 Application Insights 的代理程式遙測。 |
 
-## <a name="components"></a>元件
+## <a name="components"></a>Components
 
 您監視效能的能力取決於專為容器的 Azure 監視器而開發之適用于 Linux 的容器化 Log Analytics 代理程式。 這個特製化的代理程式會收集叢集中所有節點的效能和事件資料，且會自動部署並在部署期間向指定的 Log Analytics 工作區進行註冊。 代理程式版本是 microsoft/oms:ciprod04202018 或更新版本，且會以下列格式的日期呈現：*mmddyyyy*。
 
@@ -103,12 +105,13 @@ ms.locfileid: "75404330"
 
 您可以使用下表所述的下列其中一種方法來啟用容器的 Azure 監視器。
 
-| 部署狀態 | 方法 | 說明 |
+| 部署狀態 | 方法 | 描述 |
 |------------------|--------|-------------|
-| 新增 Kubernetes 叢集 | [使用 Azure CLI 建立 AKS 叢集](../../aks/kubernetes-walkthrough.md#create-aks-cluster)| 您可以啟用使用 Azure CLI 建立的新 AKS 叢集的監視。 |
+| 新增 AKS Kubernetes 叢集 | [使用 Azure CLI 建立 AKS 叢集](../../aks/kubernetes-walkthrough.md#create-aks-cluster)| 您可以啟用使用 Azure CLI 建立的新 AKS 叢集的監視。 |
 | | [使用 Terraform 建立 AKS 叢集](container-insights-enable-new-cluster.md#enable-using-terraform)| 您可以使用開放原始碼工具 Terraform，啟用您所建立之新 AKS 叢集的監視。 |
 | | [使用 Azure Resource Manager 範本建立 OpenShift 叢集](container-insights-azure-redhat-setup.md#enable-for-a-new-cluster-using-an-azure-resource-manager-template) | 您可以啟用以預先設定的 Azure Resource Manager 範本來建立新 OpenShift 叢集的監視。 |
-| 現有的 Kubernetes 叢集 | [使用 Azure CLI 啟用 AKS 叢集](container-insights-enable-existing-clusters.md#enable-using-azure-cli) | 您可以使用 Azure CLI 來啟用已部署之 AKS 叢集的監視。 |
+| | [使用 Azure CLI 建立 OpenShift 叢集](https://docs.microsoft.com/cli/azure/openshift?view=azure-cli-latest#az-openshift-create) | 使用 Azure CLI 部署新的 OpenShift 叢集時，您可以啟用監視。 |
+| 現有的 AKS Kubernetes 叢集 | [使用 Azure CLI 啟用 AKS 叢集](container-insights-enable-existing-clusters.md#enable-using-azure-cli) | 您可以使用 Azure CLI 來啟用已部署之 AKS 叢集的監視。 |
 | |[使用 Terraform 啟用 AKS 叢集](container-insights-enable-existing-clusters.md#enable-using-terraform) | 您可以使用開放原始碼工具 Terraform，啟用已部署之 AKS 叢集的監視。 |
 | | [從 Azure 監視器啟用 AKS 叢集](container-insights-enable-existing-clusters.md#enable-from-azure-monitor-in-the-portal)| 您可以從 Azure 監視器中的多個叢集頁面，啟用已部署的一或多個 AKS 叢集的監視。 |
 | | [從 AKS 叢集啟用](container-insights-enable-existing-clusters.md#enable-directly-from-aks-cluster-in-the-portal)| 您可以直接從 Azure 入口網站中的 AKS 叢集啟用監視。 |

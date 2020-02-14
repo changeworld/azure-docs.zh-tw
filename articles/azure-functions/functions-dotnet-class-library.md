@@ -3,12 +3,12 @@ title: Azure Functions C# 開發人員參考
 description: 了解如何使用 C# 開發 Azure Functions。
 ms.topic: reference
 ms.date: 09/12/2018
-ms.openlocfilehash: 89b3ae927b14454ac3f58fb510626e315842240f
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: cfa53fe2defca768196af595c1d088d41bc60f71
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921037"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198372"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# 開發人員參考
 
@@ -86,8 +86,8 @@ public static class SimpleExample
 方法簽章可包含非用於觸發程序屬性的參數。 以下是幾個可以包含在其中的額外參數：
 
 * 以屬性修飾來加以標示的[輸入與輸出繫結](functions-triggers-bindings.md)。  
-* 適用於[記錄](#logging)的 `ILogger` 或 `TraceWriter` ([僅限 1.x 版](functions-versions.md#creating-1x-apps)) 參數。
-* 用於[正常關機](#cancellation-tokens)的 `CancellationToken` 參數。
+* 適用於`ILogger`記錄`TraceWriter`的 [ 或 ](functions-versions.md#creating-1x-apps) ([僅限 1.x 版](#logging)) 參數。
+* 用於`CancellationToken`正常關機[的 ](#cancellation-tokens) 參數。
 * 取得觸發程序中繼資料的[繫結運算式](./functions-bindings-expressions-patterns.md)參數。
 
 函式簽章中的參數順序不重要。 例如，您可以將觸發程序參數放在其他繫結之前或之後，且可以將記錄器參數放在觸發程序或繫結參數之前或之後。
@@ -204,7 +204,7 @@ Visual Studio 會使用 [Azure Functions Core Tools](functions-run-local.md#inst
 
 ## <a name="supported-types-for-bindings"></a>支援的繫結類型
 
-每個繫結都有自己支援的類型；例如，Blob 觸發程序屬性可套用至字串參數、POCO 參數、`CloudBlockBlob` 參數或任何數個其他支援的類型。 [Blob 繫結的繫結參考文章](functions-bindings-storage-blob.md#trigger---usage)會列出所有支援的參數類型。 如需詳細資訊，請參閱[觸發程序和繫結](functions-triggers-bindings.md)以及[每個繫結類型的繫結參考文件](functions-triggers-bindings.md#next-steps)。
+每個繫結都有自己支援的類型；例如，Blob 觸發程序屬性可套用至字串參數、POCO 參數、`CloudBlockBlob` 參數或任何數個其他支援的類型。 [Blob 繫結的繫結參考文章](functions-bindings-storage-blob-trigger.md#usage)會列出所有支援的參數類型。 如需詳細資訊，請參閱[觸發程序和繫結](functions-triggers-bindings.md)以及[每個繫結類型的繫結參考文件](functions-triggers-bindings.md#next-steps)。
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
@@ -253,9 +253,9 @@ public static class SimpleExample
 } 
 ```
 
-避免在 Azure Functions 中使用 `Console.Write`。 如需詳細資訊，請參閱**監視 Azure Functions** 文章中的在 [C# 函式中寫入記錄](functions-monitoring.md#write-logs-in-c-functions)。
+避免在 Azure Functions 中使用 `Console.Write`。 如需詳細資訊，請參閱[監視 Azure Functions](functions-monitoring.md#write-logs-in-c-functions) 文章中的在 **C# 函式中寫入記錄**。
 
-## <a name="async"></a>非同步處理
+## <a name="async"></a>Async
 
 若要讓函式變成[非同步](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)，請使用 `async` 關鍵字並傳回 `Task` 物件。
 
@@ -328,13 +328,13 @@ public static class EnvironmentVariablesExample
 }
 ```
 
-本機開發以及於 Azure 執行時，均可從環境變數讀取應用程式設定。 在本機開發時，應用程式設定來自 *local.settings.json* 檔案中的 `Values` 集合。 在本機和 Azure 這兩個環境中，`GetEnvironmentVariable("<app setting name>")` 會擷取具名應用程式設定的值。 例如在本機執行時，如果您的 *local.settings.json* 檔案包含 `{ "Values": { "WEBSITE_SITE_NAME": "My Site Name" } }`，則會傳回 "My Site Name"。
+本機開發以及於 Azure 執行時，均可從環境變數讀取應用程式設定。 在本機開發時，應用程式設定來自 `Values`local.settings.json*檔案中的* 集合。 在本機和 Azure 這兩個環境中，`GetEnvironmentVariable("<app setting name>")` 會擷取具名應用程式設定的值。 例如在本機執行時，如果您的 *local.settings.json* 檔案包含 `{ "Values": { "WEBSITE_SITE_NAME": "My Site Name" } }`，則會傳回 "My Site Name"。
 
 [System.Configuration.ConfigurationManager.AppSettings](https://docs.microsoft.com/dotnet/api/system.configuration.configurationmanager.appsettings) 屬性是用於取得應用程式設定值的替代 API，但建議您使用 `GetEnvironmentVariable`，如下所示。
 
 ## <a name="binding-at-runtime"></a>執行階段的繫結
 
-在 C# 和其他 .NET 語言中，您可以使用相對於屬性中[宣告式](https://en.wikipedia.org/wiki/Declarative_programming)繫結的[命令式](https://en.wikipedia.org/wiki/Imperative_programming)繫結模式。 當繫結參數需要在執行階段而不是設計階段中計算時，命令式繫結非常有用。 利用此模式，您可以快速在您的函式程式碼中繫結至支援的輸入和輸出繫結。
+在 C# 和其他 .NET 語言中，您可以使用相對於屬性中[宣告式](https://en.wikipedia.org/wiki/Imperative_programming)[*繫結的*命令式](https://en.wikipedia.org/wiki/Declarative_programming)繫結模式。 當繫結參數需要在執行階段而不是設計階段中計算時，命令式繫結非常有用。 利用此模式，您可以快速在您的函式程式碼中繫結至支援的輸入和輸出繫結。
 
 定義命令式繫結，如下所示︰
 
@@ -353,7 +353,7 @@ public static class EnvironmentVariablesExample
 
 ### <a name="single-attribute-example"></a>單一屬性範例
 
-下列範例程式碼會使用在執行階段定義的 blob 路徑來建立[儲存體 blob 輸出繫結](functions-bindings-storage-blob.md#output)，然後將字串寫入 blob。
+下列範例程式碼會使用在執行階段定義的 blob 路徑來建立[儲存體 blob 輸出繫結](functions-bindings-storage-blob-output.md)，然後將字串寫入 blob。
 
 ```cs
 public static class IBinderExample
@@ -378,7 +378,7 @@ public static class IBinderExample
 
 ### <a name="multiple-attribute-example"></a>多個屬性範例
 
-先前的範例會取得函數應用程式主要儲存體帳戶連接字串的應用程式設定 (也就是 `AzureWebJobsStorage`)。 您可以指定要用於儲存體帳戶的自訂應用程式設定，方法是新增 [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) 並將屬性陣列傳遞至 `BindAsync<T>()`。 使用 `Binder` 參數，而不是 `IBinder`。  例如：
+先前的範例會取得函數應用程式主要儲存體帳戶連接字串的應用程式設定 (也就是 `AzureWebJobsStorage`)。 您可以指定要用於儲存體帳戶的自訂應用程式設定，方法是新增 [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) 並將屬性陣列傳遞至 `BindAsync<T>()`。 使用 `Binder` 參數，而不是 `IBinder`。  例如，
 
 ```cs
 public static class IBinderExampleMultipleAttributes

@@ -5,16 +5,16 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/19/2019
+ms.date: 02/07/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f31dec1d654124f9071c01c0e5d033db4b65a1d3
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 4a7c27beeb7208efcf6687e49193c8d3b68f5300
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509660"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186518"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>更新 IoT Edge 安全性精靈和執行階段
 
@@ -32,14 +32,19 @@ IoT Edge 安全性精靈是一項原生元件，必須在 IoT Edge 裝置上使�
 
 ### <a name="linux-devices"></a>Linux 裝置
 
-在 Linux x64 裝置上，請使用 apt 取得或適當的套件管理員來更新安全性守護程式。
+在 Linux x64 裝置上，請使用 apt 取得或適當的套件管理員，將安全性守護程式更新為最新版本。
 
 ```bash
 apt-get update
 apt-get install libiothsm iotedge
 ```
 
-在 Linux ARM32 裝置上，請使用在[linux 上安裝 Azure IoT Edge 執行時間（ARM32v7/armhf）](how-to-install-iot-edge-linux-arm.md)中的步驟來安裝最新版的安全性守護程式。
+如果您想要更新至特定版本的安全性守護程式，請從[IoT Edge](https://github.com/Azure/azure-iotedge/releases)版本中尋找您要設為目標的版本。 在該版本中，為您的裝置尋找適當的**libiothsm-std**和**iotedge**檔案。 針對每個檔案，在檔案連結上按一下滑鼠右鍵，並複製連結位址。 使用連結位址來安裝這些元件的特定版本：
+
+```bash
+curl -L <libiothsm-std link> -o libiothsm-std.deb && sudo dpkg -i ./libiothsm-std.deb
+curl -L <iotedge link> -o iotedge.deb && sudo dpkg -i ./iotedge.deb
+```
 
 ### <a name="windows-devices"></a>Windows 裝置
 
@@ -51,7 +56,16 @@ apt-get install libiothsm iotedge
 
 執行 IoTEdge 命令會從您的裝置移除和更新安全性背景工作，以及兩個執行時間容器映射。 Yaml 檔案會保留在裝置上，以及來自 Moby 容器引擎（如果您使用的是 Windows 容器）的資料。 保留設定資訊表示您不需要在更新程式期間，再次提供裝置的連接字串或裝置布建服務資訊。
 
-如果您想要安裝特定版本的安全性守護程式，請從[IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)下載適當的 Microsoft-Azure-IoTEdge .cab 檔案。 然後，使用 `-OfflineInstallationPath` 參數指向該檔案位置。 如需詳細資訊，請參閱[離線指南](how-to-install-iot-edge-windows.md#offline-installation)。
+如果您想要更新至特定版本的安全性守護程式，請從[IoT Edge](https://github.com/Azure/azure-iotedge/releases)版本中尋找您要設為目標的版本。 在該版本中，下載**Microsoft-Azure-IoTEdge .cab**檔案。 然後，使用 `-OfflineInstallationPath` 參數指向本機檔案位置。 例如，
+
+```powershell
+. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge -ContainerOs <Windows or Linux> -OfflineInstallationPath <absolute path to directory>
+```
+
+>[!NOTE]
+>`-OfflineInstallationPath` 參數會在提供的目錄中尋找名為**Microsoft-Azure-IoTEdge**的檔案。 從 IoT Edge 版本 1.0.9-rc4 開始，有兩個 .cab 檔案可供使用，一個用於 AMD64 裝置，另一個用於 ARM32。 請為您的裝置下載正確的檔案，然後將檔案重新命名，以移除架構尾碼。
+
+如需更新選項的詳細資訊，請使用命令 `Get-Help Update-IoTEdge -full` 或參考[所有安裝參數](how-to-install-iot-edge-windows.md#all-installation-parameters)。
 
 ## <a name="update-the-runtime-containers"></a>更新執行階段容器
 
@@ -108,14 +122,27 @@ IoT Edge 服務將會提取執行階段映像的最新版本，並自動在您�
 
 ## <a name="update-to-a-release-candidate-version"></a>更新為發行候選版本
 
-Azure IoT Edge 定期發行 IoT Edge 服務的新版本。 在每個穩定版本之前，都有一或多個候選版（RC）版本。 RC 版本包含發行的所有規劃功能，但仍在進行穩定版本所需的測試和驗證程式。 如果您想要及早測試新功能，您可以安裝 RC 版本，並透過 GitHub 提供意見反應。
+Azure IoT Edge 定期發行 IoT Edge 服務的新版本。 在每個穩定版本之前，都有一或多個候選版（RC）版本。 RC 版本包含發行的所有規劃功能，但仍在進行測試和驗證。 如果您想要及早測試新功能，您可以安裝 RC 版本，並透過 GitHub 提供意見反應。
 
 發行候選版本遵循相同的版本編號慣例，但具有 **-rc**加上結尾附加的遞增編號。 您可以在與穩定版本相同的[Azure IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)清單中看到發行候選版本。 例如，尋找**1.0.7 rc1**和**1.0.7-rc2**，這是**1.0.7**之前的兩個候選版本。 您也可以看到 RC 版本是以**發行前**標籤標示。
 
-做為預覽，發行候選版本不會包含為一般安裝程式目標的最新版本。 相反地，您需要手動將您想要測試的 RC 版本資產設為目標。 根據您 IoT Edge 的裝置作業系統，請使用下列各節將 IoT Edge 更新為特定版本：
+IoT Edge 代理程式和中樞模組具有以相同慣例標記的 RC 版本。 例如， **mcr.microsoft.com/azureiotedge-hub:1.0.7-rc2**。
+
+做為預覽，發行候選版本不會包含為一般安裝程式目標的最新版本。 相反地，您需要手動將您想要測試的 RC 版本資產設為目標。 在大部分的情況下，安裝或更新至 RC 版本與目標其他特定版本的 IoT Edge 相同，除了 Windows 裝置的一項差異。 
+
+在候選版中，可讓您在 Windows 裝置上安裝和管理 IoT Edge 安全性守護程式的 PowerShell 腳本，可能會有與最新正式推出版本不同的功能。 除了下載 RC 的 IoT Edge .cab 檔案之外，也請下載**IotEdgeSecurityDaemon**腳本。 使用[點來源](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing)在目前的來源中執行下載的腳本。 例如， 
+
+```powershell
+. <path>\IoTEdgeSecurityDaemon.ps1
+Update-IoTEdge -OfflineInstallationPath <path>
+```
+
+使用本文中的各節，瞭解如何將 IoT Edge 裝置更新為特定版本的安全性背景程式或執行時間模組。
+
+如果您要在新電腦上安裝 IoT Edge，請使用下列連結來瞭解如何根據您的裝置作業系統來安裝特定版本：
 
 * [Linux](how-to-install-iot-edge-linux.md#install-a-specific-runtime-version)
-* [Windows](how-to-install-iot-edge-windows.md#offline-installation)
+* [Windows](how-to-install-iot-edge-windows.md#offline-or-specific-version-installation)
 
 ## <a name="next-steps"></a>後續步驟
 

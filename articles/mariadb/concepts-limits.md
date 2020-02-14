@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 1f5824f349650e340e395221785266096da16d6f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: df44cbefaec943a2df483f4804650b939c796cb5
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74969542"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191142"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>適用於 MariaDB 的 Azure 資料庫相關限制
 下列各節說明資料庫服務中的容量、儲存引擎支援、權限支援、資料操作陳述式支援，以及功能限制。
@@ -21,8 +21,8 @@ ms.locfileid: "74969542"
 
 |定價層|**vCore(s)**| **連線數目上限**|
 |---|---|---|
-|基本| 1| 50|
-|基本| 2| 100|
+|Basic| 1| 50|
+|Basic| 2| 100|
 |一般用途| 2| 600|
 |一般用途| 4| 1250|
 |一般用途| 8| 2500|
@@ -38,9 +38,14 @@ ms.locfileid: "74969542"
 當連線超過限制時，則可能會收到下列錯誤：
 > 錯誤 1040 (08004)：太多的連接
 
+> [!IMPORTANT]
+> 為了獲得最佳體驗，建議您使用連線共用器（例如 ProxySQL）來有效率地管理連接。
+
+建立適用于 mariadb 的新用戶端連線需要一段時間，而且在建立之後，這些連接會佔用資料庫資源，即使閒置時也一樣。 大部分的應用程式會要求許多短期連線，這會將這種情況下。 結果會減少實際工作負載的可用資源，因而導致效能降低。 會減少閒置連線並重複使用現有連接的連接共用器有助於避免這種情況。 若要瞭解如何設定 ProxySQL，請造訪我們的[blog 文章](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042)。
+
 ## <a name="storage-engine-support"></a>儲存引擎支援
 
-### <a name="supported"></a>支援的
+### <a name="supported"></a>支援
 - [InnoDB](https://mariadb.com/kb/en/library/xtradb-and-innodb/) \(英文\)
 - [MEMORY](https://mariadb.com/kb/en/library/memory-storage-engine/) \(英文\)
 
@@ -54,11 +59,11 @@ ms.locfileid: "74969542"
 ### <a name="unsupported"></a>不支援
 - DBA 角色：許多伺服器參數與設定可能會在無意中造成伺服器效能降級，或是取消 DBMS 的 ACID 屬性。 因此，為了維護產品層級的服務完整性與 SLA，此服務並不會公開 DBA 角色。 在建立新資料庫行個體時所建構的預設使用者帳戶，可讓使用者在受管理的資料庫執行個體中執行大部分的 DDL 與 DML 陳述式。
 - SUPER 權限：同樣地，[SUPER 權限](https://mariadb.com/kb/en/library/grant/#global-privileges)也受到限制。
-- DEFINER：需要有超級許可權才能建立且受到限制。 如果使用備份匯入資料，執行 mysqldump 時以手動方式或使用 `--skip-definer` 命令移除 `CREATE DEFINER` 命令。
+- DEFINER：需要有超級許可權才能建立且受到限制。 如果使用備份匯入資料，執行 mysqldump 時以手動方式或使用 `CREATE DEFINER` 命令移除 `--skip-definer` 命令。
 
 ## <a name="data-manipulation-statement-support"></a>資料操作陳述式支援
 
-### <a name="supported"></a>支援的
+### <a name="supported"></a>支援
 - 支援 `LOAD DATA INFILE`，但必須指定 `[LOCAL]` 參數並導向至 UNC 路徑 (透過 SMB 掛接的 Azure 儲存體)。
 
 ### <a name="unsupported"></a>不支援
@@ -81,7 +86,7 @@ ms.locfileid: "74969542"
 - 目前不支援跨訂用帳戶和資源群組動態移動預先建立的伺服器。
 
 ### <a name="vnet-service-endpoints"></a>VNet 服務端點
-- VNet 服務端點的支援僅適用於一般用途和記憶體最佳化伺服器。
+- VNet 服務端點的支援僅適用於一般用途伺服器和記憶體最佳化伺服器。
 
 ### <a name="storage-size"></a>儲存體大小
 - 如需每個定價層的儲存體大小限制，請參閱[定價層](concepts-pricing-tiers.md)。

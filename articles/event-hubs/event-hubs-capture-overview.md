@@ -13,25 +13,26 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2018
+ms.date: 02/12/2020
 ms.author: shvija
-ms.openlocfilehash: 17906a7d0953d8b320301d74cda81d14c9ad340f
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 324425662622201bb50261d396d3eef1f531ba37
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123441"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187304"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>透過 Azure 事件中樞在 Azure Blob 儲存體或 Azure Data Lake Storage 中擷取事件
-Azure 事件中樞可讓您自動將事件中樞的串流資料擷取至您選擇的 [Azure Blob 儲存體](https://azure.microsoft.com/services/storage/blobs/)或 [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/) 帳戶，並另外增加了可指定時間或大小間隔的彈性。 設定擷取的作業很快，因此執行時不需要系統管理成本，而且它可以針對事件中樞的[輸送量單位](event-hubs-scalability.md#throughput-units)自動進行調整。 事件中樞擷取是將串流資料載入至 Azure 的最簡單方式，並可讓您專注於處理資料而非擷取資料。
+Azure 事件中樞可讓您在[Azure Blob 儲存體](https://azure.microsoft.com/services/storage/blobs/)中事件中樞，或您選擇的[Azure Data Lake Storage Gen 1 或 gen 2](https://azure.microsoft.com/services/data-lake-store/)帳戶中，自動捕捉串流資料，並增加了指定時間或大小間隔的彈性。 設定擷取的作業很快，因此執行時不需要系統管理成本，而且它可以針對事件中樞的[輸送量單位](event-hubs-scalability.md#throughput-units)自動進行調整。 事件中樞擷取是將串流資料載入至 Azure 的最簡單方式，並可讓您專注於處理資料而非擷取資料。
 
 事件中樞擷取可讓您在相同資料流上處理即時和批次型的管線。 這表示您可以建置會隨時間配合需求成長的解決方案。 不論您現在是要建置著眼於未來即時處理的批次型系統，或想要為現有即時解決方案新增有效率的冷路徑，事件中樞擷取都可以讓使用串流資料變得更簡單。
+
 
 ## <a name="how-event-hubs-capture-works"></a>事件中樞擷取的運作方式
 
 事件中樞是用於輸入遙測的時間保留持久緩衝區，類似於分散式記錄。 在事件中樞調整大小的關鍵是 [資料分割取用者模型](event-hubs-scalability.md#partitions)。 每個資料分割都是獨立的資料區段，可獨立取用。 根據可設定的保留期限，此資料會隨時間而過時。 因此，給定的事件中樞永遠不會「太滿」。
 
-事件中樞擷取可讓您指定自己的 Azure Blob 儲存體帳戶和容器，或是 Azure Data Lake Store 帳戶，可用來儲存擷取的資料。 這些帳戶可以和事件中樞位於相同區域，也可以位於另一個區域，從而新增至事件中樞擷取功能的彈性。
+事件中樞 Capture 可讓您指定自己的 Azure Blob 儲存體帳戶和容器，或是用來儲存已捕獲資料的 Azure Data Lake Storage 帳戶。 這些帳戶可以和事件中樞位於相同區域，也可以位於另一個區域，從而新增至事件中樞擷取功能的彈性。
 
 已捕獲的資料會以[Apache Avro][Apache Avro]格式寫入：精簡、快速、二進位格式，可提供具有內嵌架構的豐富資料結構。 此格式廣泛運用在 Hadoop 生態系統、串流分析和 Azure Data Factory。 關於使用 Avro 的詳細資訊可在本文稍後看到。
 
@@ -59,7 +60,7 @@ https://mystorageaccount.blob.core.windows.net/mycontainer/mynamespace/myeventhu
 
 ## <a name="setting-up-event-hubs-capture"></a>設定事件中樞擷取
 
-您可以使用 [Azure 入口網站](https://portal.azure.com)或使用 Azure Resource Manager 範本，在建立事件中樞時設定擷取功能。 如需詳細資訊，請參閱下列文章。
+您可以使用 [Azure 入口網站](https://portal.azure.com)或使用 Azure Resource Manager 範本，在建立事件中樞時設定擷取功能。 如需詳細資訊，請參閱下列文章：
 
 - [使用 Azure 入口網站啟用事件中樞擷取功能](event-hubs-capture-enable-through-portal.md)
 - [使用 Azure Resource Manager 範本建立含有一個事件中樞的事件中樞命名空間並啟用擷取](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)
@@ -142,13 +143,13 @@ Apache Avro 已完成適用于[JAVA][Java]和[Python][Python]的消費者入門�
 您可以使用事件中樞命名空間作為其來源，建立 Azure 事件格線訂用帳戶。 下列教學課程會示範如何使用事件中樞作為來源、Azure Functions 應用程式作為接收，建立事件格線訂用帳戶：[使用事件格線和 Azure Functions 將擷取的事件中樞資料處理並移轉至 SQL 資料倉儲](store-captured-data-data-warehouse.md)。
 
 ## <a name="next-steps"></a>後續步驟
-
 事件中樞擷取是將資料載入 Azure 中最簡單的方式。 使用 Azure Data Lake、Azure Data Factory 和 Azure HDInsight，即可使用您選擇的工具和平台，以您需要的規模執行批次處理和其他分析。
 
-您可以造訪下列連結以深入了解事件中樞︰
+瞭解如何使用 Azure 入口網站和 Azure Resource Manager 範本來啟用這項功能：
 
-* [開始傳送和接收事件](event-hubs-dotnet-framework-getstarted-send.md)
-* [事件中心概觀][Event Hubs overview]
+- [使用 Azure 入口網站啟事件中樞擷取](event-hubs-capture-enable-through-portal.md)
+- [使用 Azure Resource Manager 範本來啟用事件中樞 Capture](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)
+
 
 [Apache Avro]: https://avro.apache.org/
 [Apache Drill]: https://drill.apache.org/

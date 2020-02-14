@@ -1,5 +1,5 @@
 ---
-title: 建立 Azure 虛擬網路對等互連 - Resource Manager，不同訂用帳戶
+title: 建立 VNet 對等互連-不同的訂用帳戶
 titlesuffix: Azure Virtual Network
 description: 了解如何在透過 Resource Manager 建立且存在於不同 Azure 訂用帳戶中的虛擬網路之間，建立虛擬網路對等互連。
 services: virtual-network
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: anavin
-ms.openlocfilehash: da85d8904fcd44788d6a87a22ea14d683982e333
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: d085279167b498b13cfb79b97703cfdff7d6dd8a
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77020007"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201742"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>建立虛擬網路對等互連 - Resource Manager，不同訂用帳戶
 
@@ -45,7 +45,7 @@ ms.locfileid: "77020007"
 
 下列步驟針對每個訂用帳戶使用不同的帳戶。 如果您使用對兩個訂用帳戶都有權限的帳戶，便可以使用該相同帳戶來進行所有步驟、略過登出入口網站的步驟，以及略過指派另一位使用者權限給虛擬網路的步驟。
 
-1. 以 *UserA* 身分登入 [Azure 入口網站](https://portal.azure.com)。 您登入時使用的帳戶必須擁有必要的權限，才能建立虛擬網路對等互連。 如需權限清單，請參閱[虛擬網路對等互連權限](virtual-network-manage-peering.md#permissions)。
+1. 以 [UserA](https://portal.azure.com) 身分登入 *Azure 入口網站*。 您登入時使用的帳戶必須擁有必要的權限，才能建立虛擬網路對等互連。 如需權限清單，請參閱[虛擬網路對等互連權限](virtual-network-manage-peering.md#permissions)。
 2. 選取 [+建立資源]，選取 [網絡]，然後選取 [虛擬網路]。
 3. 選取或輸入下列設定的下列範例值，然後選取 [建立]：
     - **名稱**：*myVnetA*

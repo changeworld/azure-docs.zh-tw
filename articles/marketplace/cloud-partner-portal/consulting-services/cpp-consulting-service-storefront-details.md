@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: 3d741361cdeb25d6fc063f95da7bc301178f31fc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 557cfeb66301650e932e5ce271080e9fc8a256d6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818086"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191159"
 ---
 # <a name="storefront-details-tab"></a>電子店面詳細資料索引標籤
 
@@ -71,7 +71,7 @@ ms.locfileid: "73818086"
 
 請勿在您的供應項目描述中包含您的電子郵件地址或電話號碼。 您的供應項目隨附 [與我連絡] 按鈕，可將潛在客戶上傳到您針對供應項目所識別的潛在客戶管理目標。
 
-以 Markdown 格式輸入供應項目描述。 如果您不熟悉如何使用 Markdown 或 HTML 格式，請參閱[如何使用 Markdown 來撰寫 Docs](https://docs.microsoft.com/contribute/how-to-write-use-markdown)。
+以 Markdown 格式輸入供應項目描述。 如果您不熟悉如何使用 Markdown 或 HTML 格式，請參閱[如何使用 Markdown 來撰寫 Docs](/contribute/markdown-reference)。
 
 使用這些格式以確保客戶能輕鬆地閱讀您的供應項目。
 
@@ -170,7 +170,7 @@ Microsoft 僅著重於固定範圍、固定期間、估計或固定價格 (或�
 
 選擇您的諮詢服務供應項目最適用的產業。
 
-**Duration**
+**有效期間**
 
 在 [持續時間] 底下選取數字 (如 3 或 4)，然後選取 [小時]、[天]、或 [週]。
 

@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 54401d4fd8a911fc9cf5bc67d4324e84005fa752
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: HT
+ms.openlocfilehash: 4846a19c403cce16bed704ed4e7c70499f3b5d13
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157239"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187985"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Azure 資料總管資料擷取
 
@@ -88,7 +88,7 @@ Kusto 提供的用戶端 SDK 可用來搭配下列項目內嵌及查詢資料：
 
 **不同方法的延遲**：
 
-| 方法 | Latency |
+| 方法 | 延遲 |
 | --- | --- |
 | **內嵌擷取** | 立即 |
 | **從查詢擷取** | 查詢時間 + 處理時間 |
@@ -133,8 +133,8 @@ Kusto 提供的用戶端 SDK 可用來搭配下列項目內嵌及查詢資料：
 
 結構描述對應可協助將來源資料欄位繫結至目的地資料表資料行。
 
-* [CSV 對應](/azure/kusto/management/mappings?branch=master#csv-mapping) (選擇性) 適用於所有序數型格式。 可以使用內嵌命令參數來執行，或是[在資料表上預先建立](/azure/kusto/management/tables?branch=master#create-ingestion-mapping)，並從擷取命令參數參考。
-* 可以使用內嵌命令參數執行 [JSON 對應](/azure/kusto/management/mappings?branch=master#json-mapping) (必要) 和 [Avro 對應](/azure/kusto/management/mappings?branch=master#avro-mapping) (必要)。 它們也可以[在資料表上預先建立](/azure/kusto/management/tables#create-ingestion-mapping)並從內嵌命令參數參考。
+* [CSV 對應](/azure/kusto/management/mappings?branch=master#csv-mapping) (選擇性) 適用於所有序數型格式。 可以使用內嵌命令參數來執行，或是[在資料表上預先建立](/azure/kusto/management/create-ingestion-mapping-command)，並從擷取命令參數參考。
+* 可以使用內嵌命令參數執行 [JSON 對應](/azure/kusto/management/mappings?branch=master#json-mapping) (必要) 和 [Avro 對應](/azure/kusto/management/mappings?branch=master#avro-mapping) (必要)。 它們也可以[在資料表上預先建立](/azure/kusto/management/create-ingestion-mapping-command)並從內嵌命令參數參考。
 
 ## <a name="next-steps"></a>後續步驟
 

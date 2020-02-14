@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/24/2019
+ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8bda1d3bcce37cbb7b5306d460bddd4652349fe9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: fde27c468b6b5285e9e98f10a5fd04ee53c3c775
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840344"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77197998"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自訂原則中定義 OpenID Connect 技術設定檔
 
@@ -74,7 +74,7 @@ Azure Active Directory B2C （Azure AD B2C）提供[OpenID connect](https://open
 
 ## <a name="metadata"></a>中繼資料
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要項 | 描述 |
 | --------- | -------- | ----------- |
 | client_id | 是 | 識別提供者的應用程式識別碼。 |
 | IdTokenAudience | 否 | id_token 的對象。 如果已指定，Azure AD B2C 會檢查權杖是否在識別提供者傳回的宣告中，以及是否等於指定的宣告。 |
@@ -82,22 +82,23 @@ Azure Active Directory B2C （Azure AD B2C）提供[OpenID connect](https://open
 | ProviderName | 否 | 識別提供者的名稱。 |
 | response_types | 否 | 根據 OpenID Connect Core 1.0 規格的回應類型。 可能的值：`id_token`、`code` 或 `token`。 |
 | response_mode | 否 | 識別提供者用來將結果傳送回 Azure AD B2C 的方法。 可能的值：`query`、`form_post` (預設值) 或 `fragment`。 |
-| scope | 否 | 根據 OpenID Connect Core 1.0 規格定義的要求範圍。 例如，`openid`、`profile` 和 `email`。 |
+| 範圍 | 否 | 根據 OpenID Connect Core 1.0 規格定義的要求範圍。 例如，`openid`、`profile` 和 `email`。 |
 | HttpBinding | 否 | 繫結至存取權杖和宣告權杖端點的預期 HTTP。 可能的值：`GET` 或 `POST`。  |
 | ValidTokenIssuerPrefixes | 否 | 此金鑰可在使用多租戶識別提供者 (例如 Azure Active Directory) 時，用於登入每個租用戶。 |
 | UsePolicyInRedirectUri | 否 | 表明在建構重新導向 URI 時，是否使用原則。 在設定識別提供者中的應用程式時，需要指定重新導向 URI。 重新導向 URI 會指向 Azure AD B2C，`https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp`。  如果指定 `false`，則需要為每個使用的原則新增重新導向 URI。 例如： `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/{policy-name}/oauth2/authresp` 。 |
 | MarkAsFailureOnStatusCode5xx | 否 | 表明如果 Http 狀態碼在 5xx 範圍內，是否應該將外部服務的要求標記為失敗。 預設值為 `false`。 |
 | DiscoverMetadataByTokenIssuer | 否 | 表明是否應該使用 JWT 權杖中的簽發者探索 OIDC 中繼資料。 |
+| IncludeClaimResolvingInClaimsHandling  | 否 | 針對輸入和輸出宣告，指定技術設定檔中是否包含[宣告解析](claim-resolver-overview.md)。 可能的值： `true`或 `false` （預設）。 如果您想要在技術設定檔中使用宣告解析程式，請將此設定為 [`true`]。 |
 
 ## <a name="cryptographic-keys"></a>密碼編譯金鑰
 
 **CryptographicKeys** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要項 | 描述 |
 | --------- | -------- | ----------- |
 | client_secret | 是 | 識別提供者應用程式的用戶端密碼。 只有在 **response_types** 中繼資料設為 `code` 時，才需要密碼編譯金鑰。 在此情況下，Azure AD B2C 會進行另一次呼叫，以交換存取權杖的授權碼。 如果中繼資料設為 `id_token`，則可以省略密碼編譯金鑰。  |
 
-## <a name="redirect-uri"></a>重新導向 Uri
+## <a name="redirect-uri"></a>重新導向 URI
 
 在設定識別提供者的重新導向 URI 時，請輸入 `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp`。 請務必以您的租使用者名稱取代 `{your-tenant-name}`。 重新導向 URI 必須全部小寫。
 

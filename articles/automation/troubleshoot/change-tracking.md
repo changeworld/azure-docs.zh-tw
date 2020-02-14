@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 51a9dbf8be6538534c05a4b8b6fcd913ef8c6ae3
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 6cadaea1a20743071acbe8860df02ca7bbdde954
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769926"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198525"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory"></a>針對變更追蹤和清查進行疑難排解
 
@@ -24,31 +24,20 @@ ms.locfileid: "75769926"
 
 #### <a name="issue"></a>問題
 
-對於加入變更追蹤的 Windows 機器，您看不到任何清查或變更追蹤結果。
+針對變更追蹤上架的 Windows 機器，您看不到任何變更追蹤或清查結果。
 
 #### <a name="cause"></a>原因
 
-這個錯誤可能是下列原因所造成：
+此錯誤可能有下列原因：
 
-1. **Microsoft Monitoring Agent** 未執行
-2. 正在封鎖連回自動化帳戶的通訊。
-3. 無法下載變更追蹤的管理組件。
-4. 所要上線的 VM 可能來自一部已安裝 Microsoft Monitoring Agent 但未執行過 sysprep 的所複製機器。
+* Microsoft Monitoring Agent 不在執行中。
+* 已封鎖送回自動化帳戶的通訊。
+* 變更追蹤的管理元件不會下載。
+* 所上架的 VM 可能來自未與安裝 Microsoft Monitoring Agent 執行過 sysprep 的複製電腦。
 
-#### <a name="resolution"></a>解析度
+#### <a name="resolution"></a>解決方案
 
-1. 確認 **Microsoft Monitoring Agent** (HealthService.exe) 是否正在機器上執行。
-1. 請檢查機器上的**事件檢視器**，並尋找其中有 `changetracking` 字組的任何事件。
-1. 請瀏覽[網路規劃](../automation-hybrid-runbook-worker.md#network-planning)，了解必須允許哪些位址和連接埠，變更追蹤才能運作。
-1. 請確認下列變更追蹤和清查管理組件存在於本機：
-    * Microsoft.IntelligencePacks.ChangeTrackingDirectAgent.*
-    * Microsoft.IntelligencePacks.InventoryChangeTracking.*
-    * Microsoft.IntelligencePacks.SingletonInventoryCollection.*
-1. 如果使用複製的映像，請先對映像執行 sysprep，然後再安裝 Microsoft Monitoring Agent 代理程式。
-
-如果這些解決方案都不能解決您的問題，而且您連絡了支援服務，則可執行下列命令以在代理程式上收集診斷
-
-在代理程式電腦上，瀏覽至 `C:\Program Files\Microsoft Monitoring Agent\Agent\Tools` 並執行下列命令：
+下面所述的解決方案可能有助於解決您的問題。 如果您仍然需要協助，您可以收集診斷資訊和連絡人支援。 在代理程式電腦上，流覽至 C:\Program Files\Microsoft Monitoring Agent\Agent\Tools，然後執行下列命令：
 
 ```cmd
 net stop healthservice
@@ -58,12 +47,73 @@ net start healthservice
 ```
 
 > [!NOTE]
-> 預設會啟用錯誤追蹤，如果您想要啟用如上述範例的詳細錯誤訊息，請使用 `VER` 參數。 對於資訊追蹤，請在叫用 `StartTracing.cmd` 時使用 `INF`。
+> 根據預設，會啟用錯誤追蹤。 若要啟用上述範例中的詳細資訊錯誤訊息，請使用*VER*參數。 如需資訊追蹤，請在叫用**starttracing.cmd**時使用*INF* 。
+
+##### <a name="microsoft-monitoring-agent-not-running"></a>Microsoft Monitoring Agent 未執行
+
+確認 Microsoft Monitoring Agent （HealthService .exe）正在電腦上執行。
+
+##### <a name="communication-to-automation-account-blocked"></a>已封鎖與自動化帳戶的通訊
+
+檢查電腦上的事件檢視器，並尋找其中有 "變更追蹤" 這個字的任何事件。
+
+請參閱[使用混合式 Runbook 背景工作角色將資料中心或雲端中的資源自動化](../automation-hybrid-runbook-worker.md#network-planning)，以瞭解必須允許變更追蹤工作的位址和埠。
+
+##### <a name="management-packs-not-downloaded"></a>未下載管理元件
+
+確認下列變更追蹤和清查管理元件已安裝在本機：
+
+* Microsoft.IntelligencePacks.ChangeTrackingDirectAgent.*
+* Microsoft.IntelligencePacks.InventoryChangeTracking.*
+* Microsoft.IntelligencePacks.SingletonInventoryCollection.*
+
+##### <a name="vm-from-cloned-machine-that-has-not-been-sysprepped"></a>尚未執行過 sysprep 的已複製電腦上的 VM
+
+如果使用複製的映射，請先對映射進行 sysprep，然後再安裝 Microsoft Monitoring Agent。
+
+## <a name="linux"></a>Linux
+
+### <a name="scenario-no-change-tracking-or-inventory-results-on-linux-machines"></a>案例： Linux 機器上沒有變更追蹤或清查結果
+
+#### <a name="issue"></a>問題
+
+針對變更追蹤上架的 Linux 機器，您看不到任何清查或變更追蹤結果。 
+
+#### <a name="cause"></a>原因
+以下是此問題特定的可能原因：
+* 適用于 Linux 的 Log Analytics 代理程式未執行。
+* 適用于 Linux 的 Log Analytics 代理程式未正確設定。
+* 有檔案完整性監視（FIM）衝突。
+
+#### <a name="resolution"></a>解決方案 
+
+##### <a name="log-analytics-agent-for-linux-not-running"></a>適用于 Linux 的 Log Analytics 代理程式未執行
+
+確認適用于 Linux 的 Log Analytics 代理程式（omsagent）的 daemon 正在您的電腦上執行。 在與您的自動化帳戶連結的 Log Analytics 工作區中，執行下列查詢。
+
+```loganalytics Copy
+Heartbeat
+| summarize by Computer, Solutions
+```
+
+如果您在查詢結果中看不到您的電腦，它最近未簽入。 可能是本機設定問題，您應該重新安裝代理程式。 如需安裝和設定的相關資訊，請參閱[使用 Log Analytics 代理程式收集記錄資料](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)。 
+
+如果您的電腦顯示在查詢結果中，請確認範圍設定。 請參閱[Azure 監視器中的目標監視解決方案](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting)。
+
+如需此問題的詳細疑難排解，請參閱[問題：您沒有看到任何 Linux 資料](https://docs.microsoft.com/azure/azure-monitor/platform/agent-linux-troubleshoot#issue-you-are-not-seeing-any-linux-data)。
+
+##### <a name="log-analytics-agent-for-linux-not-configured-correctly"></a>適用于 Linux 的 Log Analytics 代理程式未正確設定
+
+適用于 Linux 的 Log Analytics 代理程式可能未正確設定，無法使用 OMS 記錄收集器工具進行記錄檔和命令列輸出收集。 請參閱[使用變更追蹤解決方案追蹤環境中的變更](../change-tracking.md)。
+
+##### <a name="fim-conflicts"></a>FIM 衝突
+
+Azure 資訊安全中心的 FIM 功能可能不正確地驗證您 Linux 檔案的完整性。 確認 FIM 運作正常且已正確設定，以進行 Linux 檔案監視。 請參閱[使用變更追蹤解決方案追蹤環境中的變更](../change-tracking.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您沒有看到您的問題，或無法解決您的問題，請瀏覽下列其中一個管道以取得更多支援：
+如果您看不到問題或無法解決問題，請使用下列其中一個通道以取得更多支援。
 
-* 透過 [Azure 論壇](https://azure.microsoft.com/support/forums/)獲得由 Azure 專家所提供的解答
+* 透過[Azure 論壇](https://azure.microsoft.com/support/forums/)取得 azure 專家的解答。
 * 與 [@AzureSupport](https://twitter.com/azuresupport) 連繫－專為改善客戶體驗而設的官方 Microsoft Azure 帳戶，協助 Azure 社群連接至適當的資源，像是解答、支援及專家等。
 * 如果需要更多協助，您可以提出 Azure 支援事件。 請移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。

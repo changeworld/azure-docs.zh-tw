@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bf06fe7d4e529eb04b156a2d61011198a6fe0978
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: fbc1d59ac401adedcf897d0c16edb6904c89acc3
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949418"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193426"
 ---
 # <a name="define-a-claims-transformation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定義 Azure Active Directory B2C 自訂原則中的宣告轉換技術設定檔
 
@@ -100,9 +100,15 @@ TransformationClaimType="collection" />
 </UserJourney>
 ```
 
+## <a name="metadata"></a>中繼資料
+
+| 屬性 | 必要項 | 描述 |
+| --------- | -------- | ----------- |
+| IncludeClaimResolvingInClaimsHandling  | 否 | 針對輸入和輸出宣告，指定技術設定檔中是否包含[宣告解析](claim-resolver-overview.md)。 可能的值： `true`或 `false` （預設）。 如果您想要在技術設定檔中使用宣告解析程式，請將此設定為 [`true`]。 |
+
 ## <a name="use-a-validation-technical-profile"></a>使用驗證技術設定檔
 
-宣告轉換技術設定檔可用來驗證資訊。 在下列範例中，名稱為 **LocalAccountSignUpWithLogonEmail** 的[自我判斷技術設定檔](self-asserted-technical-profile.md)會要求使用者輸入兩次電子郵件，然後呼叫名稱為 **Validate-Email** 的[驗證技術設定檔](validation-technical-profile.md)，以驗證電子郵件。 **Validate-Email** 技術設定檔會呼叫宣告轉換 **AssertEmailAreEqual**，以比較兩個宣告 **email** 和 **emailRepeat**，如果根據指定的比較不相等，則會擲回例外狀況。
+宣告轉換技術設定檔可用來驗證資訊。 在下列範例中，名稱為 [LocalAccountSignUpWithLogonEmail](self-asserted-technical-profile.md) 的**自我判斷技術設定檔**會要求使用者輸入兩次電子郵件，然後呼叫名稱為 [Validate-Email](validation-technical-profile.md) 的**驗證技術設定檔**，以驗證電子郵件。 **Validate-Email** 技術設定檔會呼叫宣告轉換 **AssertEmailAreEqual**，以比較兩個宣告 **email** 和 **emailRepeat**，如果根據指定的比較不相等，則會擲回例外狀況。
 
 ```XML
 <ClaimsTransformations>

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 797475bfe0f1ec077ad39c6fce1f0facdf679802
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: eb094d04a7210d76a98f3e47af750e49b617e493
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483467"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77195057"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>使用條件式存取來設定驗證會話管理
 
@@ -50,6 +50,23 @@ ms.locfileid: "74483467"
 - 小組 web 用戶端
 - Dynamics CRM Online
 - Azure 入口網站
+
+### <a name="user-sign-in-frequency-and-device-identities"></a>使用者登入頻率和裝置身分識別
+
+如果您已加入 Azure AD、混合式 Azure AD 加入，或 Azure AD 註冊的裝置，當使用者解除鎖定其裝置或以互動方式登入時，此事件也會符合「登入頻率」原則。 在下列2個範例中，使用者登入頻率設定為1小時：
+
+範例 1：
+
+- 在00:00，使用者登入其 Windows 10 Azure AD 加入的裝置，並開始處理儲存在 SharePoint Online 上的檔。
+- 使用者會在其裝置上繼續使用相同的檔一小時。
+- 在01:00，系統會根據系統管理員所設定的條件式存取原則中的登入頻率需求，提示使用者重新登入。
+
+範例 2：
+
+- 在00:00，使用者登入其 Windows 10 Azure AD 加入的裝置，並開始處理儲存在 SharePoint Online 上的檔。
+- 在00:30，使用者會啟動，並中斷鎖定其裝置。
+- 在00:45，使用者會從其中斷傳回並解除鎖定裝置。
+- 在01:45 時，系統會根據系統管理員所設定的條件式存取原則中的登入頻率需求，提示使用者重新登入，因為上次登入于00:45 為止。
 
 ## <a name="persistence-of-browsing-sessions"></a>流覽會話的持續性
 

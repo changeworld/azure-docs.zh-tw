@@ -10,13 +10,13 @@ ms.author: daperlov
 ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
-ms.date: 08/14/2019
-ms.openlocfilehash: f1b15688004d23e8a568695b565b5b34d7b466d6
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.date: 02/12/2020
+ms.openlocfilehash: 7c9f22d27351b0f57c5a0158821f347073ae60b4
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110181"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187819"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory 中的持續整合與傳遞
 
@@ -139,6 +139,9 @@ ms.locfileid: "77110181"
 
    ![選取 [建立發行]](media/continuous-integration-deployment/continuous-integration-image10.png)
 
+> [!IMPORTANT]
+> 在 CI/CD 案例中，不同環境中的整合執行時間（IR）類型必須相同。 例如，如果您在開發環境中有自我裝載的 IR，相同的 IR 也必須屬於其他環境中的自我裝載類型，例如測試和生產。 同樣地，如果您要跨多個階段共用整合執行時間，則必須在所有環境中將整合執行時間設定為連結的自我裝載，例如開發、測試和生產。
+
 ### <a name="get-secrets-from-azure-key-vault"></a>從 Azure Key Vault 取得秘密
 
 如果您有要傳入 Azure Resource Manager 範本的密碼，建議您在 Azure Pipelines 版本中使用 Azure Key Vault。
@@ -184,11 +187,11 @@ ms.locfileid: "77110181"
 
 如果您嘗試更新使用中的觸發程序，部署可能會失敗。 若要更新作用中的觸發程式，您需要手動停止它們，然後在部署之後重新開機它們。 您可以使用 Azure PowerShell 工作來執行這項作業：
 
-1.  在發行**的 [工作]** 索引標籤上，加入**Azure PowerShell**工作。
+1.  在發行**的 [工作]** 索引標籤上，加入**Azure PowerShell**工作。 選擇 [工作版本 4. *]。 
 
-1.  選取 [ **Azure Resource Manager** ] 作為 [連線類型]，然後選取您的訂用帳戶。
+1.  選取您的 factory 所在的訂用帳戶。
 
-1.  選取 [**內嵌腳本**] 作為腳本類型，然後提供您的程式碼。 下列程式碼會停止觸發程式：
+1.  選取 [**指令檔路徑**] 作為腳本類型。 這會要求您將 PowerShell 腳本儲存在存放庫中。 下列 PowerShell 腳本可以用來停止觸發程式：
 
     ```powershell
     $triggersADF = Get-AzDataFactoryV2Trigger -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
@@ -196,21 +199,28 @@ ms.locfileid: "77110181"
     $triggersADF | ForEach-Object { Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.name -Force }
     ```
 
-    ![Azure PowerShell 工作](media/continuous-integration-deployment/continuous-integration-image11.png)
-
 您可以完成類似的步驟（使用 `Start-AzDataFactoryV2Trigger` 函式），以在部署之後重新開機觸發程式。
 
-> [!IMPORTANT]
-> 在 CI/CD 案例中，不同環境中的整合執行時間（IR）類型必須相同。 例如，如果您在開發環境中有自我裝載的 IR，相同的 IR 也必須屬於其他環境中的自我裝載類型，例如測試和生產。 同樣地，如果您要跨多個階段共用整合執行時間，則必須在所有環境中將整合執行時間設定為連結的自我裝載，例如開發、測試和生產。
+### <a name="sample-pre--and-post-deployment-script"></a>範例部署前和部署後腳本
 
-#### <a name="sample-pre--and-post-deployment-script"></a>範例部署前和部署後腳本
+下列範例腳本可用來在部署之前停止觸發程式，並于之後重新開機。 此指令碼也包含可將已移除的資源刪除的程式碼。 將腳本儲存在 Azure DevOps git 存放庫中，並透過使用第4版的 Azure PowerShell 工作加以參考。
 
-下列範例腳本示範如何在部署之前停止觸發程式，並在之後重新開機它們。 此指令碼也包含可將已移除的資源刪除的程式碼。 若要安裝最新版的 Azure PowerShell，請參閱[使用 PowerShellGet 在 Windows 上安裝 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+執行預先部署腳本時，您必須在 [**腳本引數**] 欄位中指定下列參數的變化。
+
+`-armTemplate "$(System.DefaultWorkingDirectory)/<your-arm-template-location>" -ResourceGroupName <your-resource-group-name> -DataFactoryName <your-data-factory-name>  -predeployment $true -deleteDeployment $false`
+
+
+執行部署後腳本時，您必須在 [**腳本引數**] 欄位中指定下列參數的變化。
+
+`-armTemplate "$(System.DefaultWorkingDirectory)/<your-arm-template-location>" -ResourceGroupName <your-resource-group-name> -DataFactoryName <your-data-factory-name>  -predeployment $false -deleteDeployment $true`
+
+    ![Azure PowerShell task](media/continuous-integration-deployment/continuous-integration-image11.png)
+
+以下是可用於預先部署和部署後的腳本。 其適用于已刪除資源和資源參考的帳戶。
 
 ```powershell
 param
 (
-    [parameter(Mandatory = $false)] [String] $rootFolder,
     [parameter(Mandatory = $false)] [String] $armTemplate,
     [parameter(Mandatory = $false)] [String] $ResourceGroupName,
     [parameter(Mandatory = $false)] [String] $DataFactoryName,

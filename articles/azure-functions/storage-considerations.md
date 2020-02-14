@@ -3,12 +3,12 @@ title: Azure Functions 的儲存體考慮
 description: 瞭解 Azure Functions 的儲存體需求，以及如何加密儲存的資料。
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 353fdd3bf7775e3bc7a9d017a9e8dd8238b09830
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: f094996ca44ec36d46330e54eac56b28794ef22e
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964978"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190292"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Azure Functions 的儲存體考慮
 
@@ -17,7 +17,7 @@ ms.locfileid: "76964978"
 
 |儲存體服務  | 函數使用方式  |
 |---------|---------|
-| [Azure Blob 儲存體](/storage/blobs/storage-blobs-overview.md)     | 維護系結狀態和功能金鑰。  <br/>[Durable Functions 中](durable/durable-functions-task-hubs.md)的工作中樞也會使用此功能。 |
+| [Azure Blob 儲存體](../storage/blobs/storage-blobs-introduction.md)     | 維護系結狀態和功能金鑰。  <br/>[Durable Functions 中](durable/durable-functions-task-hubs.md)的工作中樞也會使用此功能。 |
 | [Azure 檔案](../storage/files/storage-files-introduction.md)  | 用來在取用[方案](functions-scale.md#consumption-plan)中儲存和執行函式應用程式程式碼的檔案共用。 |
 | [Azure 佇列儲存體](../storage/queues/storage-queues-introduction.md)     | 由[Durable Functions 中](durable/durable-functions-task-hubs.md)的工作中樞使用。   |
 | [Azure 資料表儲存體](../storage/tables/table-storage-overview.md)  |  由[Durable Functions 中](durable/durable-functions-task-hubs.md)的工作中樞使用。       |

@@ -1,5 +1,5 @@
 ---
-title: Azure CLI 腳本範例-設定 IPv6 虛擬網路端點-Standard Load Balancer (預覽)
+title: Azure CLI 腳本範例-設定 IPv6 前端-Standard Load Balancer
 titlesuffix: Azure Virtual Network
 description: 使用 Azure 虛擬網路中的 Azure CLI 啟用 IPv6 端點
 services: virtual-network
@@ -12,29 +12,29 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: afeb0c83c6e9afca16d0f0b21adafac4b7f3f2c2
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 86c8acedb230989fa7a7f28690bd4be9c51ead9e
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68269711"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201334"
 ---
-# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-using-standard-load-balancerpreview"></a>使用 Standard Load Balancer 在虛擬網路中設定 IPv6 端點腳本範例 (預覽)
+# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-using-standard-load-balancerpreview"></a>使用 Standard Load Balancer 在虛擬網路中設定 IPv6 端點腳本範例（預覽）
 
-本文說明如何在 Azure 中部署雙重堆疊 (IPv4 + IPv6) 應用程式, 其中包含具有雙重堆疊子網的雙重堆疊虛擬網路、具有雙重 (IPv4 + IPv6) 前端設定的 Standard Load Balancer、具有雙 IP 的 Nic 的 Vm設定、雙重網路安全性群組規則和雙重公用 Ip。
+本文說明如何在 Azure 中部署雙重堆疊（IPv4 + IPv6）應用程式，其中包含具有雙重堆疊子網的雙重堆疊虛擬網路、具有雙重（IPv4 + IPv6）前端設定的 Standard Load Balancer、具有雙 IP 的 Nic 的 Vm設定、雙重網路安全性群組規則和雙重公用 Ip。
 
 您可以從 Azure [Cloud Shell](https://shell.azure.com/bash) 或從本機的 Azure CLI 安裝來執行指令碼。 如果是在本機使用 CLI，需要執行 2.0.28 版或更新版本，方可使用該指令碼。 若要尋找已安裝的版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 如果您在本機執行 CLI，則也需要執行 `az login` 以建立與 Azure 的連線。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>先決條件
-若要使用 IPv6 for Azure 虛擬網路功能, 您必須只設定訂用帳戶一次, 如下所示:
+## <a name="prerequisites"></a>必要條件
+若要使用 IPv6 for Azure 虛擬網路功能，您必須只設定訂用帳戶一次，如下所示：
 
 ```azurecli
 az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
 az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
-需要 30 分鐘才能完成功能註冊。 您可以執行下列 Azure CLI 命令來檢查註冊狀態:
+需要 30 分鐘才能完成功能註冊。 您可以執行下列 Azure CLI 命令來檢查註冊狀態：
 
 ```azurelci
 az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
@@ -280,9 +280,9 @@ az vm create \
 --image MicrosoftWindowsServer:WindowsServer:2019-Datacenter:latest 
 ```
 ## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>在 Azure 入口網站中查看 IPv6 雙重堆疊虛擬網路
-您可以在 Azure 入口網站中查看 IPv6 雙重堆疊虛擬網路, 如下所示:
-1. 在入口網站的搜尋列中, 輸入*dsVnet*。
-2. 當搜尋結果中出現 **myVirtualNetwork** 時加以選取。 這會啟動名為*dsVnet*的雙重堆疊虛擬網路的 [**總覽**] 頁面。 雙重堆疊虛擬網路會顯示兩個 Nic, 其中 IPv4 和 IPv6 設定都位於名為*dsSubnet*的雙重堆疊子網中。 
+您可以在 Azure 入口網站中查看 IPv6 雙重堆疊虛擬網路，如下所示：
+1. 在入口網站的搜尋列中，輸入*dsVnet*。
+2. 當搜尋結果中出現 **myVirtualNetwork** 時加以選取。 這會啟動名為*dsVnet*的雙重堆疊虛擬網路的 [**總覽**] 頁面。 雙重堆疊虛擬網路會顯示兩個 Nic，其中 IPv4 和 IPv6 設定都位於名為*dsSubnet*的雙重堆疊子網中。 
 
 > [!NOTE]
 > Azure 虛擬網路的 IPv6 適用于此預覽版本的唯讀 Azure 入口網站。
@@ -299,7 +299,7 @@ az group delete --name <resourcegroupname> --yes
 
 此指令碼使用下列命令來建立資源群組、虛擬機器、可用性設定組、負載平衡器和所有相關資源。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| 命令 | 注意事項 |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | 建立用來存放所有資源的資源群組。 |
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#az-network-vnet-create) | 建立 Azure 虛擬網路和子網路。 |

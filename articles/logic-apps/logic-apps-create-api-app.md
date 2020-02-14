@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, jehollan, logicappspm
 ms.topic: article
 ms.date: 05/26/2017
-ms.openlocfilehash: e4200d09a02da1fd95f9bf5051b7f9d5fca5aa98
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: bb6c99ea12e5b53631d42a04b36b7bfef2337e42
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793218"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191437"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>建立您可以從 Azure Logic Apps 呼叫的自訂 API
 
@@ -25,7 +25,7 @@ ms.locfileid: "74793218"
 
 若要讓自訂 API 與 Logic Apps 搭配使用，您的 API 可以提供[*動作*](./logic-apps-overview.md#logic-app-concepts)，能在邏輯應用程式工作流程中執行特定的工作。 您的 API 也可作為[*觸發程序*](./logic-apps-overview.md#logic-app-concepts)，當新資料或事件符合指定的條件時，能啟動邏輯應用程式工作流程。 本主題描述常見的模式，以您想要 API 提供的行為作為基礎，加以遵循即可在您的 API 中建置動作和觸發程序。
 
-您可以將您的 API 裝載在 [Azure App Service](../app-service/overview.md) 上，這是一個平台即服務 (PaaS) 供應項目，提供擴充性高且簡便的 API 裝載服務。
+您可以將 API 裝載在 [Azure App Service](../app-service/overview.md) 上，這是一個平台即服務 (PaaS) 供應項目，提供擴充性高且簡便的 API 裝載服務。
 
 > [!TIP] 
 > 雖然您可以將 API 部署成 Web 應用程式，但請考慮將您的 API 部署成 API 應用程式，如此一來，當您在雲端和內部部署環境中建置、裝載及取用 API 時，將可讓您的作業更輕鬆。 您不需要在 API 中變更任何程式碼 -- 只需將您的程式碼部署至 API 應用程式。 例如，了解如何使用下列語言來建置 API 應用程式： 
@@ -146,7 +146,7 @@ ms.locfileid: "74793218"
 
 ## <a name="trigger-patterns"></a>觸發程序模式
 
-您的自訂 API 可作為[*觸發程序*](./logic-apps-overview.md#logic-app-concepts)，當新資料或事件符合指定的條件時，能啟動邏輯應用程式。 這個觸發程序可以定期檢查，或是等候並接聽您服務端點上的新資料或事件。 如果新的資料或事件符合指定的條件，觸發程序就會引發，並啟動邏輯應用程式，用來接聽該觸發程序。 若要用這種方式啟動 Logic Apps，您的 API 可以遵循[*輪詢觸發程序*](#polling-triggers)或 [ *webhook 觸發程序*](#webhook-triggers)模式。 這些模式會與其[輪詢動作](#async-pattern)和 [webhook 動作](#webhook-actions)的對應類似。 此外，深入了解[觸發程序的使用量計量](logic-apps-pricing.md)。
+您的自訂 API 可作為[*觸發程序*](./logic-apps-overview.md#logic-app-concepts)，當新資料或事件符合指定的條件時，能啟動邏輯應用程式。 這個觸發程序可以定期檢查，或是等候並接聽您服務端點上的新資料或事件。 如果新的資料或事件符合指定的條件，觸發程序就會引發，並啟動邏輯應用程式，用來接聽該觸發程序。 若要用這種方式啟動 Logic Apps，您的 API 可以遵循[*輪詢觸發程序*](#polling-triggers)或 [*webhook 觸發程序*](#webhook-triggers)模式。 這些模式會與其[輪詢動作](#async-pattern)和 [webhook 動作](#webhook-actions)的對應類似。 此外，深入了解[觸發程序的使用量計量](logic-apps-pricing.md)。
 
 <a name="polling-triggers"></a>
 
@@ -164,7 +164,7 @@ ms.locfileid: "74793218"
 | 找到新資料或事件了嗎？  | API 回應 | 
 | ------------------------- | ------------ |
 | 已找到 | 傳回包含回應承載的 HTTP `200 OK` 狀態 (下一個步驟的輸入)。 <br/>此回應會建立邏輯應用程式執行個體，並啟動工作流程。 | 
-| 找不到 | 傳回包含 `location` 標頭和 `retry-after` 標頭的 HTTP`202 ACCEPTED` 狀態。 <br/>針對觸發程序，`location` 標頭也應該包含 `triggerState` 查詢參數，通常是「時間戳記」。 您的 API 可以利用這個識別碼，來追蹤邏輯應用程式所觸發的最後時間。 | 
+| 找不到 | 傳回包含 `202 ACCEPTED` 標頭和 `location` 標頭的 HTTP`retry-after` 狀態。 <br/>針對觸發程序，`location` 標頭也應該包含 `triggerState` 查詢參數，通常是「時間戳記」。 您的 API 可以利用這個識別碼，來追蹤邏輯應用程式所觸發的最後時間。 | 
 ||| 
 
 例如，定期檢查您的服務是否有新檔案，您可能會建立具有這些行為的輪詢觸發程序：
@@ -172,7 +172,7 @@ ms.locfileid: "74793218"
 | 要求是否包含 `triggerState`？ | API 回應 | 
 | -------------------------------- | -------------| 
 | 否 | 傳回 HTTP `202 ACCEPTED` 狀態與 `location` 標頭，並將 `triggerState` 設為目前的時間，且 `retry-after` 間隔設為 15 秒。 | 
-| 是 | 請檢查您的服務是否有 `triggerState` 的 `DateTime` 之後新增的檔案。 | 
+| 是 | 請檢查您的服務是否有 `DateTime` 的 `triggerState` 之後新增的檔案。 | 
 ||| 
 
 | 找到的檔案數 | API 回應 | 
@@ -206,9 +206,9 @@ Webhook 觸發程序作用很像本主題之前所述的 [webhook 動作](#webho
 > [!TIP]
 > 如需範例 webhook 模式，請檢閱此 [GitHub 中的 webhook 觸發程序控制器範例](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)。
 
-## <a name="secure-calls-to-your-apis-from-logic-apps"></a>保護從邏輯應用程式對 API 發出的呼叫
+## <a name="improve-security-for-calls-to-your-apis-from-logic-apps"></a>針對從邏輯應用程式對 Api 的呼叫提升安全性
 
-建立您的自訂 API 之後，請為 API 設定驗證，以便可以從邏輯應用程式安全地呼叫它們。 了解[如何保護從邏輯應用程式對自訂 API 發出的呼叫](../logic-apps/logic-apps-custom-api-authentication.md)。
+建立您的自訂 API 之後，請為 API 設定驗證，以便可以從邏輯應用程式安全地呼叫它們。 瞭解[如何從邏輯應用程式提升對自訂 api 呼叫的安全性](../logic-apps/logic-apps-custom-api-authentication.md)。
 
 ## <a name="deploy-and-call-your-apis"></a>部署和呼叫您的 API
 

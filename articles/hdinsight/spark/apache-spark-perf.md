@@ -7,17 +7,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/01/2019
-ms.openlocfilehash: 0d8890eeba7fcb53517d6ee653c8dd09866805ef
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.date: 02/12/2020
+ms.openlocfilehash: 3d8f4a28961be7e0ece517e00026d9711d8f67e9
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177376"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198866"
 ---
 # <a name="optimize-apache-spark-jobs-in-hdinsight"></a>將 HDInsight 中的 Apache Spark 作業優化
 
-了解如何特定工作負載最佳化 [Apache Spark](https://spark.apache.org/) 叢集設定。  最常見的挑戰是記憶體壓力，因為不正確的設定（尤其是錯誤大小的執行程式）、長時間執行的作業，以及導致笛卡兒作業的工作。 您可以使用適當的快取，並允許[資料扭曲](#optimize-joins-and-shuffles)，以便作業加速執行。 為了達到最佳效能，必須監視和檢閱長時間執行而且耗用資源的 Spark 作業執行。
+了解如何特定工作負載最佳化 [Apache Spark](https://spark.apache.org/) 叢集設定。  最常見的挑戰是記憶體壓力，因為不正確的設定（尤其是錯誤大小的執行程式）、長時間執行的作業，以及導致笛卡兒作業的工作。 您可以使用適當的快取，並允許[資料扭曲](#optimize-joins-and-shuffles)，以便作業加速執行。 為了達到最佳效能，必須監視和檢閱長時間執行而且耗用資源的 Spark 作業執行。 如需在 HDInsight 上開始使用 Apache Spark 的詳細資訊，請參閱[使用 Azure 入口網站建立 Apache Spark](apache-spark-jupyter-spark-sql-use-portal.md)叢集。
 
 下列各節描述常見的 Spark 作業最佳化和建議。
 
@@ -57,13 +57,15 @@ Spark 支援許多格式，例如 csv、json、xml、parquet、orc 和 avro。 S
 
 當您建立新的 Spark 叢集時，您可以選取 Azure Blob 儲存體或 Azure Data Lake Storage 作為叢集的預設儲存體。 這兩個選項都提供暫時性叢集的長期儲存優勢，因此當您刪除叢集時，不會自動刪除您的資料。 您可以重新建立暫時性叢集，而且仍然可以存取您的資料。
 
-| 存放區類型 | 檔案系統 | 速度 | 暫時性 | 使用案例 |
+| 存放類型 | 檔案系統 | 速度 | 暫時性 | 使用案例 |
 | --- | --- | --- | --- | --- |
-| Azure Blob 儲存體 | **wasb:** //url/ | **標準** | 是 | 暫時性叢集 |
-| Azure Blob 儲存體（安全） | **wasbs：** //url/ | **標準** | 是 | 暫時性叢集 |
+| Azure Blob 儲存體 | **wasb:** //url/ | **Standard** | 是 | 暫時性叢集 |
+| Azure Blob 儲存體（安全） | **wasbs：** //url/ | **Standard** | 是 | 暫時性叢集 |
 | Azure Data Lake Storage Gen 2| **abfs：** //url/ | **更快** | 是 | 暫時性叢集 |
 | Azure Data Lake Storage Gen 1| **adl:** //url/ | **更快** | 是 | 暫時性叢集 |
 | 本機 HDFS | **hdfs:** //url/ | **最快** | 否 | 互動式全天候叢集 |
+
+如需適用于 HDInsight 叢集之儲存體選項的完整描述，請參閱[比較與 Azure HDInsight 叢集搭配使用的儲存體選項](../hdinsight-hadoop-compare-storage-options.md)。
 
 ## <a name="use-the-cache"></a>使用快取
 
@@ -74,7 +76,7 @@ Spark 提供本身的原生快取機制，可透過 `.persist()`、`.cache()` �
     * 無法使用資料分割，這在未來的 Spark 版本中可能會變更。
 
 * 儲存層級快取 (建議使用)
-    * 可以使用 [Alluxio](https://www.alluxio.io/) 實作。
+    * 可以在 HDInsight 上使用[IO](apache-spark-improve-performance-iocache.md)快取功能來執行。
     * 使用記憶體內和 SSD 快取。
 
 * 本機 HDFS (建議)
@@ -102,10 +104,12 @@ Spark 的運作方式是將資料放入記憶體，因此管理記憶體資源�
 若要處理「記憶體不足」訊息，請嘗試：
 
 * 檢閱 DAG 管理重組。 以對應端減少、預先分割 (或貯體分類) 來源資料加以減少、最大化單一重組，並減少傳送的資料量。
-* 偏好固定記憶體限制為 `GroupByKey` 的 `ReduceByKey`，這會提供彙總、視窗化和其他功能，但是有無限制的記憶體限制。
+* 偏好固定記憶體限制為 `ReduceByKey` 的 `GroupByKey`，這會提供彙總、視窗化和其他功能，但是有無限制的記憶體限制。
 * 偏好對於執行程式或資料分割進行較多作業的 `TreeReduce`，而不偏好對於驅動程式進行所有作業的 `Reduce`。
 * 運用資料框架，而非運用較低層級 RDD 物件。
 * 建立封裝動作的 ComplexTypes，例如「前 N 項」、各種彙總或視窗化作業。
+
+如需其他疑難排解步驟，請參閱[Azure HDInsight 中 Apache Spark 的 OutOfMemoryError 例外](apache-spark-troubleshoot-outofmemory.md)狀況。
 
 ## <a name="optimize-data-serialization"></a>最佳化資料序列化
 
@@ -193,7 +197,11 @@ sql("SELECT col1, col2 FROM V_JOIN")
 3. 分散平行應用程式的查詢。
 4. 根據試用版和前述因素（例如 GC 額外負荷）來修改大小。
 
-藉由查看時間軸檢視、SQL 圖形、作業的統計資料等等，監視極端值的查詢效能或其他效能問題。 有時一或數個執行程式比其他執行程式慢，而且工作花較長的執行時間。 較大的叢集 (> 30 個節點) 通常會發生這種情況。 在此情況下，將工作分割為較多的工作，讓排程程式彌補緩慢的工作。 例如，應用程式中的核心數目至少是工作數目的兩倍。 您也可以使用 `conf: spark.speculation = true` 啟用工作的推測性執行。
+如需使用 Ambari 設定執行程式的詳細資訊，請參閱[Apache Spark 設定-Spark 執行程式](apache-spark-settings.md#configuring-spark-executors)。
+
+藉由查看時間軸檢視、SQL 圖形、作業的統計資料等等，監視極端值的查詢效能或其他效能問題。 如需有關使用 YARN 和 Spark 歷程記錄伺服器來偵測 Spark 作業的詳細資訊，請參閱[Azure HDInsight 上執行的 Debug Apache Spark 作業](apache-spark-job-debugging.md)。 如需使用 YARN 時間軸伺服器的秘訣，請參閱[存取 Apache HADOOP YARN 應用程式記錄](../hdinsight-hadoop-access-yarn-app-logs-linux.md)檔。
+
+有時一或數個執行程式比其他執行程式慢，而且工作花較長的執行時間。 較大的叢集 (> 30 個節點) 通常會發生這種情況。 在此情況下，將工作分割為較多的工作，讓排程程式彌補緩慢的工作。 例如，應用程式中的核心數目至少是工作數目的兩倍。 您也可以使用 `conf: spark.speculation = true` 啟用工作的推測性執行。
 
 ## <a name="optimize-job-execution"></a>最佳化作業執行
 

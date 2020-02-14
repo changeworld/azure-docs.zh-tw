@@ -1,22 +1,22 @@
 ---
 title: 使用 Azure 資料總管 .NET Standard SDK 內嵌資料 (預覽)
-description: 在本文中，您會學習如何 （負載） 資料內嵌至使用.NET 標準 SDK 的 Azure 資料總管。
+description: 在本文中，您將瞭解如何使用 .NET Standard SDK，將資料內嵌（載入）至 Azure 資料總管。
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 53cf055a0900a25923fe67b961755c1f4367e1fb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1fb1301ae7e0cdff36f3771a44769c8bf9cc9c62
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66496881"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187923"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>使用 Azure 資料總管 .NET Standard SDK 內嵌資料 (預覽)
 
-Azure 資料總管 (ADX) 是一項快速又可高度調整的資料探索服務，可用於處理記錄和遙測資料。 ADX 提供兩個適用於 .NET Standard 的用戶端程式庫：[內嵌程式庫](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest.NETStandard)和[資料程式庫](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard)。 這些程式庫可讓您將資料內嵌 (載入) 至叢集，並從您的程式碼查詢資料。 在本文中，您先建立資料表並在測試叢集中的資料對應。 然後，您將叢集的擷取排入佇列並驗證結果。
+Azure 資料總管 (ADX) 是一項快速又可高度調整的資料探索服務，可用於處理記錄和遙測資料。 ADX 提供兩個適用於 .NET Standard 的用戶端程式庫：[內嵌程式庫](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest.NETStandard)和[資料程式庫](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard)。 這些程式庫可讓您將資料內嵌 (載入) 至叢集，並從您的程式碼查詢資料。 在本文中，您會先在測試叢集中建立資料表和資料對應。 然後，您將叢集的擷取排入佇列並驗證結果。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -123,7 +123,7 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 ## <a name="define-ingestion-mapping"></a>定義擷取對應
 
 將傳入的 CSV 資料對應到建立資料表時使用的資料行名稱。
-在該資料表上佈建 [CSV 資料行對應物件](/azure/kusto/management/tables#create-ingestion-mapping)
+在該資料表上佈建 [CSV 資料行對應物件](/azure/kusto/management/create-ingestion-mapping-command)
 
 ```csharp
 var tableMapping = "StormEvents_CSV_Mapping";
@@ -226,7 +226,7 @@ using (var cslQueryProvider = KustoClientFactory.CreateCslQueryProvider(kustoCon
 
 ## <a name="clean-up-resources"></a>清除資源
 
-如果您打算遵循我們的其他文章，讓您建立的資源。 否則，請在資料庫中執行下列命令，來清除 `StormEvents` 資料表。
+如果您打算遵循其他文章，請保留您建立的資源。 否則，請在資料庫中執行下列命令，來清除 `StormEvents` 資料表。
 
 ```Kusto
 .drop table StormEvents

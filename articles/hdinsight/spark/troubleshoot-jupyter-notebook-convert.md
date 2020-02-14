@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/11/2020
-ms.openlocfilehash: 03b23d86bca10077ede43f3b4e5a6c5fa6f5dd28
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: HT
+ms.openlocfilehash: 61e7cd8d37108b8f4eea88c4f6b6b2a8cdbfd605
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77165458"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186790"
 ---
 # <a name="unable-to-create-jupyter-notebook-in-azure-hdinsight"></a>無法在 Azure HDInsight 中建立 Jupyter 筆記本
 
@@ -52,9 +52,9 @@ Cannot convert notebook to v5 because that version doesn't exist
 
     輸入**Ctrl + X**、 **Y**、 **Enter**以儲存變更。
 
-1. 從網頁瀏覽器流覽至 `https://CLUSTERNAME.azurehdinsight.net`，其中 `CLUSTERNAME` 是叢集的名稱。
+1. 從網頁瀏覽器流覽至 `https://CLUSTERNAME.azurehdinsight.net/#/main/services/JUPYTER`，其中 `CLUSTERNAME` 是叢集的名稱。
 
-1. 選取 [ **Jupyter** ]，然後重新開機服務。
+1. 重新開機 Jupyter 服務。
 
 ## <a name="next-steps"></a>後續步驟
 

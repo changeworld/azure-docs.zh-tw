@@ -160,6 +160,8 @@
           href: disk-scalability-targets.md
         - name: 磁碟備份和災害復原
           href: backup-and-disaster-recovery-for-azure-iaas-disks.md
+        - name: 共用磁碟
+          href: disks-shared.md
         - name: 暫時性 OS 磁碟
           href: ephemeral-os-disks.md
     - name: 網路功能
@@ -553,6 +555,8 @@
         - name: 透過範本部署磁碟
           displayName: 'Azure Resource Manager, ARM'
           href: using-managed-disks-template-deployments.md
+        - name: 啟用共用磁碟
+          href: disks-shared-enable.md
         - name: 將 VHD 上傳到磁碟 - CLI
           href: disks-upload-vhd-to-managed-disk-cli.md
         - name: 調整磁碟大小

@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 54fcd1fb936b5dd41715798408b604106a24bcf9
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: b31a4e40c1e9095499faf265673ab4213ad6bde0
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112587"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190978"
 ---
 # <a name="how-to-use-azure-cognitive-search-from-a-net-application"></a>如何從 .NET 應用程式使用 Azure 認知搜尋
 
@@ -61,7 +61,7 @@ Azure 認知搜尋 .NET SDK 支援以 .NET Framework 4.5.2 和更新版本，以
 
 下列範例程式碼說明每個案例。 歡迎在您的應用程式中使用這些程式碼片段。
 
-### <a name="overview"></a>Overview
+### <a name="overview"></a>概觀
 我們將探索的範例應用程式，會建立名為 "hotels" 的新索引，並透過一些文件填入索引，然後執行一些搜尋查詢。 以下是主要程式，該程式顯示了整體流程：
 
 ```csharp
@@ -462,7 +462,7 @@ public partial class Hotel
 > 
 > 
 
-第二個要注意的是，每個屬性都會以屬性裝飾，例如 `IsFilterable`、`IsSearchable`、`Key`和 `Analyzer`。 這些屬性會直接對應至[Azure 認知搜尋索引中的對應欄位屬性](https://docs.microsoft.com/rest/api/searchservice/create-index#request)。 `FieldBuilder` 類別會使用這些屬性來建立索引的欄位定義。
+第二個要注意的是，每個屬性都會以屬性裝飾，例如 `IsFilterable`、`IsSearchable`、`Key`和 `Analyzer`。 這些屬性會直接對應至[Azure 認知搜尋索引中的對應欄位屬性](/rest/api/searchservice/create-index)。 `FieldBuilder` 類別會使用這些屬性來建立索引的欄位定義。
 
 `Hotel` 類別的第三個重要事項是公用屬性的資料類型。 這些屬性的 .NET 類型會對應至索引定義中，與其相當的欄位類型。 例如，`Category` 字串屬性會對應至 `category` 欄位 (此欄位屬於 `Edm.String` 類型)。 `bool?`、`Edm.Boolean`、`DateTimeOffset?`和 `Edm.DateTimeOffset` 之間有類似的類型對應，依此類推。 類型對應的特定規則會與[Azure 認知搜尋 .NET SDK 參考](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get)中的 `Documents.Get` 方法一起記載。 `FieldBuilder` 類別會為您處理這項對應，但它仍有助您了解您需要對任何序列化問題進行疑難排解的情況。
 
@@ -678,7 +678,7 @@ results = indexClient.Documents.Search<Hotel>("motel", parameters);
 WriteDocuments(results);
 ```
 
-在此情況下，我們會在任何可搜尋的欄位中搜尋 "motel" 一字的完整索引，而我們只想要抓取飯店名稱，如 `Select` 參數所指定。 結果如下︰
+在此情況下，我們會在任何可搜尋的欄位中搜尋 "motel" 一字的完整索引，而我們只想要抓取飯店名稱，如 `Select` 參數所指定。 以下是結果：
 
     Name: Secret Point Motel
 
@@ -727,7 +727,7 @@ WriteDocuments(results);
 
 在此情況下，我們再次使用 OData 語法，將 `OrderBy` 參數指定為 `lastRenovationDate desc`。 我們也會將 `Top` 設定為 2，以確保只取得前兩份文件。 如同前面，我們會設定 `Select` 來指定應傳回哪些欄位。
 
-結果如下︰
+以下是結果：
 
     Name: Fancy Stay        Last renovated on: 6/27/2010 12:00:00 AM +00:00
     Name: Roach Motel       Last renovated on: 4/28/1982 12:00:00 AM +00:00

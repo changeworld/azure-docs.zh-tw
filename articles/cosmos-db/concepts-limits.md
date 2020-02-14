@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 2cce9cbe20121376ad77692773df1d58fcf5257f
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: d250cc3c74f27079d633fa24c49eb11b94135ead
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759767"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200039"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服務配額
 
@@ -30,7 +30,7 @@ ms.locfileid: "76759767"
 | 相異（邏輯）分割區索引鍵的最大數目 | 無限制 |
 | 每個容器的儲存體上限 | 無限制 |
 | 每個資料庫的儲存體上限 | 無限制 |
-| 每個帳戶的附件大小上限（附件功能正在進行折舊） | 2GB |
+| 每個帳戶的附件大小上限（附件功能正在進行折舊） | 2 GB |
 | 每 1 GB 所需的最小 ru 數 | 10 RU/秒 |
 
 > [!NOTE]
@@ -77,7 +77,7 @@ Cosmos DB 會自動定期備份您的資料。 如需備份保留間隔和 windo
 | 資源 | 預設限制 |
 | --- | --- |
 | 資料庫的最大數目 | 無限制 |
-| 每個資料庫（或帳戶）的容器數目上限 | 無限制 |
+| 可以在具有共用輸送量的資料庫中布建的容器數目上限 |25 |
 | 區域數目上限 | 無限制（所有 Azure 區域） |
 
 ## <a name="per-container-limits"></a>每個容器的限制

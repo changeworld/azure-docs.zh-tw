@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e27288f95f07c481ab98a112ed9f02a34046600a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 9f00bebfbab7b3726930e212893ae9dd2f5c17c8
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76835788"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193434"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定義 Azure Active Directory B2C 自訂原則中的 Azure Active Directory 技術設定檔
 
@@ -253,7 +253,7 @@ Azure Active Directory B2C （Azure AD B2C）提供 Azure Active Directory 使�
 ```
 ## <a name="metadata"></a>中繼資料
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要項 | 描述 |
 | --------- | -------- | ----------- |
 | 作業 | 是 | 要執行的作業。 可能的值：`Read`、`Write`、`DeleteClaims` 或 `DeleteClaimsPrincipal`。 |
 | RaiseErrorIfClaimsPrincipalDoesNotExist | 否 | 如果使用者物件不存在目錄中，會發生錯誤。 可能的值：`true` 或 `false`。 |
@@ -262,6 +262,7 @@ Azure Active Directory B2C （Azure AD B2C）提供 Azure Active Directory 使�
 | UserMessageIfClaimsPrincipalAlreadyExists | 否 | 如果會引發錯誤 (請參閱 RaiseErrorIfClaimsPrincipalAlreadyExists 屬性說明)，請指定當使用者物件存在時，要向使用者顯示的訊息。 此值可進行[當地語系化](localization.md)。|
 | ApplicationObjectId | 否 | 擴充屬性的應用程式物件識別碼。 值：應用程式的 ObjectId。 如需詳細資訊，請參閱[在自訂設定檔編輯原則中使用自訂屬性](custom-policy-custom-attributes.md)。 |
 | ClientId | 否 | 以協力廠商身分存取租用戶的用戶端識別碼。 如需詳細資訊，請參閱[在自訂設定檔編輯原則中使用自訂屬性](custom-policy-custom-attributes.md) |
+| IncludeClaimResolvingInClaimsHandling  | 否 | 針對輸入和輸出宣告，指定技術設定檔中是否包含[宣告解析](claim-resolver-overview.md)。 可能的值： `true`或 `false` （預設）。 如果您想要在技術設定檔中使用宣告解析程式，請將此設定為 [`true`]。 |
 
 
 

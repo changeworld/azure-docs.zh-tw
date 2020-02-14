@@ -10,14 +10,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 07/11/2019
+ms.date: 02/11/2020
 ms.author: juliako
-ms.openlocfilehash: c8901dccb67e91c608e999f823cf7d2e757da08b
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 14fee047e1f62ae7f7d3484d89779e1512e4bab7
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186006"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198712"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure 媒體服務中的串流端點（原點）
 
@@ -41,15 +41,15 @@ ms.locfileid: "74186006"
 * 串流端點名稱的最大值為24個字元。
 * 名稱應遵循此[RegEx](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference)模式： `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$`。
 
-## <a name="types"></a>類型
+## <a name="types"></a>型別
 
 **串流端點**類型有兩種：**標準**（預覽）和**Premium**。 類型會根據您為串流端點配置的縮放單位數 (`scaleUnits`) 來定義。
 
 類型描述如下表所示：
 
-|在系統提示您進行確認時，輸入|縮放單位|描述|
+|類型|縮放單位|描述|
 |--------|--------|--------|  
-|**標準**|0|預設串流端點是**標準**類型，可以藉由調整 `scaleUnits`來將其變更為 Premium 類型。|
+|**Standard**|0|預設串流端點是**標準**類型，可以藉由調整 `scaleUnits`來將其變更為 Premium 類型。|
 |**高級**|>0|**Premium**串流端點適用于先進的工作負載，並提供專用且可調整的頻寬容量。 您可以藉由調整 `scaleUnits` （串流單位）移至**Premium**類型。 `scaleUnits` 提供您專用的輸出容量，您可以透過每次增量 200 Mbps 的方式來購買。 使用**Premium**類型時，每個啟用的單位會為應用程式提供額外的頻寬容量。 |
 
 > [!NOTE]
@@ -63,17 +63,17 @@ ms.locfileid: "74186006"
 ---|---|---
 Throughput |在使用 CDN 時，最高可達 600 Mbps，並可提供更高的有效輸送量。|每個串流單位 (SU) 200 Mbps。 使用 CDN 時，可以提供更高的有效輸送量。
 CDN|Azure CDN、協力廠商 CDN 或沒有 CDN。|Azure CDN、協力廠商 CDN 或沒有 CDN。
-按比例計費| 每日|每日
-動態加密|yes|yes
-動態封裝|yes|yes
-調整|自動相應增加至目標輸送量。|其他 su
-IP 篩選/G20/自訂主機<sup>1</sup>|yes|yes
-漸進式下載|yes|yes
+按比例計費| 每天|每天
+動態加密|是|是
+動態封裝|是|是
+縮放|自動相應增加至目標輸送量。|其他 su
+IP 篩選/G20/自訂主機<sup>1</sup>|是|是
+漸進式下載|是|是
 建議用法 |建議用於絕大多數的串流案例。|專業用法。
 
 <sup>1</sup>只有在未在端點上啟用 CDN 時，才直接用於串流端點。<br/>
 
-## <a name="properties"></a>properties
+## <a name="properties"></a>屬性
 
 本節提供一些串流端點屬性的詳細資料。 如需如何建立新串流端點的範例及所有屬性的說明，請參閱[串流端點](https://docs.microsoft.com/rest/api/media/streamingendpoints/create)。
 
@@ -83,7 +83,7 @@ IP 篩選/G20/自訂主機<sup>1</sup>|yes|yes
 
     並非所有資料中心都支援 Azure CDN 整合。 若要檢查您的資料中心是否有可用的 Azure CDN 整合，請執行下列步驟：
 
-  - 嘗試將 [`cdnEnabled`] 設定為 [true]。
+  - 嘗試設定`cdnEnabled`設為 true。
   - 檢查傳回的 `HTTP Error Code 412` （PreconditionFailed）結果，訊息為「串流端點 CdnEnabled 屬性無法設定為 true，因為目前的區域中無法使用 CDN 功能」。
 
     如果您收到此錯誤，資料中心不會支援它。 嘗試另一個資料中心。
@@ -134,7 +134,7 @@ IP 篩選/G20/自訂主機<sup>1</sup>|yes|yes
 
 您應該在大部分情況下啟用 CDN。 不過，如果您預期的最大平行存取低於500的檢視器，建議您停用 CDN，因為 CDN 會以並行方式調整最佳規模。
 
-### <a name="considerations"></a>注意事項
+### <a name="considerations"></a>考量
 
 * 無論您是否啟用 CDN，串流端點 `hostname` 和串流 URL 都保持不變。
 * 如果您需要能夠在不使用 CDN 的情況下測試內容，請建立另一個未啟用 CDN 的串流端點。
@@ -155,8 +155,10 @@ IP 篩選/G20/自訂主機<sup>1</sup>|yes|yes
 
 中國和聯邦政府區域除外，其他所有 Azure 資料中心都啟用 CDN 整合。
 
+如果是標準串流端點，Azure 媒體服務與 Azure CDN 的整合是在**來自 Verizon 的 Azure CDN** 上實作。 您可以使用所有 **Azure CDN 定價層和提供者**來設定進階串流端點。 
+
 > [!IMPORTANT]
-> 如果是標準串流端點，Azure 媒體服務與 Azure CDN 的整合是在**來自 Verizon 的 Azure CDN** 上實作。 您可以使用所有 **Azure CDN 定價層和提供者**來設定進階串流端點。 如需 Azure CDN 功能的詳細資訊，請參閱 [CDN 概觀](../../cdn/cdn-overview.md)。
+> 如需 Azure CDN 的詳細資訊，請參閱[CDN 總覽](../../cdn/cdn-overview.md)。
 
 ### <a name="determine-if-dns-change-was-made"></a>判斷是否已進行 DNS 變更
 
@@ -165,6 +167,10 @@ IP 篩選/G20/自訂主機<sup>1</sup>|yes|yes
 ## <a name="ask-questions-give-feedback-get-updates"></a>提出問題、提供意見反應、取得更新
 
 請參閱 [Azure 媒體服務社群](media-services-community.md)文章，以了解詢問問題、提供意見反應及取得媒體服務相關更新的不同方式。
+
+## <a name="see-also"></a>另請參閱
+
+[CDN 總覽](../../cdn/cdn-overview.md)
 
 ## <a name="next-steps"></a>後續步驟
 

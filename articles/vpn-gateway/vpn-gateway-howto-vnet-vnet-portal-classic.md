@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/09/2020
+ms.date: 02/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: ddcc7fcc14c7958e8c0d012c2395ad2b6c422f4f
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 63c6329ad62289cd127902c1438073b28fc8683e
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157902"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201844"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>設定 VNet 對 VNet 連線 (傳統)
 
@@ -61,9 +61,9 @@ ms.locfileid: "77157902"
 
 如需 VNet 對 VNet 連接的詳細資訊，請參閱本文結尾處的 [VNet 對 VNet 的考量](#faq)。
 
-### <a name="before-you-begin"></a>開始之前
+### <a name="powershell"></a>使用 Azure PowerShell
 
-開始本練習之前，請下載並安裝最新版的 Azure 服務管理 (SM) PowerShell Cmdlet。 如需詳細資訊，請參閱 [如何安裝及設定 Azure PowerShell](/powershell/azure/overview)。 我們使用入口網站來執行大部分的步驟，但是您必須使用 PowerShell 來建立 Vnet 之間的連線。 您無法使用 Azure 入口網站建立連線。
+我們使用入口網站來執行大部分的步驟，但是您必須使用 PowerShell 來建立 Vnet 之間的連線。 您無法使用 Azure 入口網站建立連線。 [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
 ## <a name="plan"></a>步驟 1 - 規劃 IP 位址範圍
 
@@ -149,7 +149,7 @@ Azure 會使用每個區域網路站台中指定的設定，來決定如何路�
 5. 針對 [VPN 閘道 IP 位址]，只要是有效的格式，您可以使用您想要的任何 IP 位址。 一般而言，您會將實際的外部 IP 位址用於 VPN 裝置。 但是針對傳統 VNet 對 VNet 組態，您需使用指派給您 VNet 閘道的公用 IP 位址。 由於您尚未建立虛擬網路閘道，因此您可以指定任何有效的公用 IP 位址作為預留位置。<br>請勿將此欄位留白 - 這不是此組態的選擇性欄位。 在稍後的步驟中，您將在 Azure 產生閘道之後，回到這些設定，並使用對應的虛擬網路閘道 IP 位址來進行設定。
 6. 針對 [用戶端位址空間]，使用其他 VNet 的位址空間。 請參閱您的計劃範例。 按一下 [確定] 來儲存設定，並且返回 [新增 VPN 連線] 頁面。
 
-    ![本機網站](./media/vpn-gateway-howto-vnet-vnet-portal-classic/localsite.png)
+    ![本機站台](./media/vpn-gateway-howto-vnet-vnet-portal-classic/localsite.png)
 
 ## <a name="gw"></a>步驟 4 - 建立虛擬網路閘道
 
@@ -209,37 +209,34 @@ Azure 會使用每個區域網路站台中指定的設定，來決定如何路�
 
 在下列步驟中，您將會連線到您的 Azure 帳戶，並且下載及檢視網路組態檔，以取得連線的必要值。
 
-1. 下載並安裝最新版的 Azure 服務管理 (SM) PowerShell Cmdlet。 如需詳細資訊，請參閱 [如何安裝及設定 Azure PowerShell](/powershell/azure/overview)。
+1. 下載並安裝最新版的 Azure 服務管理 (SM) PowerShell Cmdlet。 如需詳細資訊，請參閱[使用 Azure PowerShell](#powershell)。
 
-2. 以提高的權限開啟 PowerShell 主控台並連接到您的帳戶。 使用下列範例來協助您連接：
-
-   ```powershell
-   Connect-AzAccount
-   ```
-
-   檢查帳戶的訂用帳戶。
+2. 以更高的許可權開啟 PowerShell 主控台。 使用下列範例可協助您連接。 您必須使用 PowerShell 服務管理模組，在本機執行這些命令。 若要切換至服務管理，請使用下列命令：
 
    ```powershell
-   Get-AzSubscription
+   azure config mode asm
    ```
-
-   如果您有多個訂用帳戶，請選取您要使用的訂用帳戶。
-
-   ```powershell
-   Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
-   ```
-
-   接下來，使用下列 Cmdlet，將您的 Azure 訂用帳戶新增到 PowerShell，以供傳統部署模型使用。
+3. 連線至您的帳戶。 使用下列範例來協助您連接：
 
    ```powershell
    Add-AzureAccount
    ```
-3. 匯出並檢視網路組態檔。 在您的電腦上建立目錄，然後將網路組態檔匯出到該目錄。 在此範例中，會將網路組態檔匯出到 **C:\AzureNet**。
+4. 檢查帳戶的訂用帳戶。
+
+   ```powershell
+   Get-AzureSubscription
+   ```
+5. 如果您有多個訂用帳戶，請選取您要使用的訂用帳戶。
+
+   ```powershell
+   Select-AzureSubscription -SubscriptionId "Replace_with_your_subscription_ID"
+   ```
+6. 匯出並檢視網路組態檔。 在您的電腦上建立目錄，然後將網路組態檔匯出到該目錄。 在此範例中，會將網路組態檔匯出到 **C:\AzureNet**。
 
    ```powershell
    Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
    ```
-4. 使用文字編輯器開啟檔案，並且檢視 VNet 和網站的名稱。 這些名稱是您建立連線時使用的名稱。<br>VNet 名稱會列為 **VirtualNetworkSite name =**<br>網站名稱會列為 **LocalNetworkSiteRef name =**
+7. 使用文字編輯器開啟檔案，並且檢視 VNet 和網站的名稱。 這些名稱會是您在建立連線時所使用的名稱。<br>VNet 名稱會列為 **VirtualNetworkSite name =**<br>網站名稱會列為 **LocalNetworkSiteRef name =**
 
 ## <a name="createconnections"></a>步驟 8 - 建立 VPN 閘道連線
 
@@ -273,7 +270,7 @@ Azure 會使用每個區域網路站台中指定的設定，來決定如何路�
 ## <a name="faq"></a>傳統 VNet 的 VNet 對 VNet 考量
 * 虛擬網路可位於相同或不同的訂用帳戶。
 * 虛擬網路可位於相同或不同的 Azure 區域 (位置)。
-* 即使虛擬網路連接在一起，雲端服務或負載平衡端點也無法跨虛擬網路。
+* 雲端服務或負載平衡端點不能跨越虛擬網路，即使它們已連接在一起。
 * 將多個虛擬網路連接在一起並不需要任何 VPN 裝置。
 * VNet 對 VNet 支援連接 Azure 虛擬網路。 它不支援連接未部署到虛擬網路中的虛擬機器或雲端服務。
 * VNet 對 VNet 需要動態路由閘道。 不支援 Azure 靜態路由閘道。

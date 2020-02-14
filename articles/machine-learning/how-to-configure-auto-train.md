@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 00ab3e9c7902e253d39a38eb0e98ee166244bca2
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: b7f837c56214d2d01d0f119e0107a095bcfd782b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048573"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198764"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>在 Python 中設定自動化 ML 實驗
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -173,6 +173,8 @@ automl_config = AutoMLConfig(task = "classification")
     ```
 
 三個不同的 `task` 參數值（第三個工作類型為 `forecasting`，並使用類似的演算法集區做為 `regression` 工作）來決定要套用的模型清單。 使用 `whitelist` 或 `blacklist` 參數來進一步修改反復專案，以及要包含或排除的可用模型。 支援的模型清單可以在的[SupportedModels 類別](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels)（[分類](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.classification)、[預測](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.forecasting)和[回歸](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.regression)）中找到。
+
+自動化 ML 的驗證功能會要求將 `experiment_timeout_minutes` 設定為15分鐘的最小超時，以協助避免實驗超時失敗。
 
 ### <a name="primary-metric"></a>主要計量
 主要度量會決定要在模型定型期間使用的計量，以進行優化。 您可以選取的可用計量取決於您選擇的工作類型，下表顯示每種工作類型的有效主要度量。
@@ -355,7 +357,7 @@ best_run, fitted_model = automl_run.get_output()
 
 + API 1： `get_engineered_feature_names()` 傳回工程功能名稱的清單。
 
-  Usage :
+  用法：
   ```python
   fitted_model.named_steps['timeseriestransformer']. get_engineered_feature_names ()
   ```
@@ -371,7 +373,7 @@ best_run, fitted_model = automl_run.get_output()
 
 + API 2： `get_featurization_summary()` 會傳回所有輸入功能的特徵化摘要。
 
-  Usage :
+  用法：
   ```python
   fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
   ```

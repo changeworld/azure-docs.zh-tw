@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: bb9dc16eabbd6065e05d26258c1421aa7a46dbd7
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: fbb81764262d98a401a26cd089e53ad37007050c
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911403"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198185"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Azure 地圖服務 Android SDK 入門
 
@@ -26,7 +26,7 @@ Azure 地圖服務 Android SDK 是適用于 Android 的向量地圖程式庫。 
 
 若要完成本文中的程式，您必須先在 S1 定價層中[建立 Azure 地圖服務帳戶](quick-demo-map-app.md#create-an-account-with-azure-maps)，並取得帳戶的[主要金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)。
 
-如需 Azure 地圖服務中驗證的詳細資訊，請參閱[Azure 地圖服務中的管理驗證](./how-to-manage-authentication.md)。
+如需 Azure 地圖服務中驗證的詳細資訊，請參閱[管理 Azure 地圖服務中的驗證](./how-to-manage-authentication.md)。
 
 ### <a name="download-android-studio"></a>下載 Android Studio
 
@@ -57,7 +57,7 @@ Android Studio 可讓您在電腦上設定虛擬 Android 裝置。 這麼做可�
 
 建立應用程式的下一步是安裝 Azure 地圖服務 Android SDK。 完成下列步驟以安裝 SDK：
 
-1. 開啟頂層**gradle**檔案，並將下列程式碼新增至 [**所有專案**]、[**存放庫**區塊] 區段：
+1. 開啟頂層 **build.gradle** 檔案，並將下列程式碼新增至 [所有專案]、[存放庫區塊] 區段：
 
     ```
     maven {
@@ -65,9 +65,9 @@ Android Studio 可讓您在電腦上設定虛擬 Android 裝置。 這麼做可�
     }
     ```
 
-2. 更新您的**app/gradle** ，並在其中新增下列程式碼：
+2. 更新 **app/build.gradle**，並於其中新增下列程式碼：
     
-    1. 請確定您專案的**minSdkVersion**是在 API 21 或更新版本。
+    1. 確定專案的 **minSdkVersion** 是 API 21 或更新版本。
 
     2. 將下列程式碼新增至 Android 區段：
 
@@ -77,14 +77,14 @@ Android Studio 可讓您在電腦上設定虛擬 Android 裝置。 這麼做可�
             targetCompatibility JavaVersion.VERSION_1_8
         }
         ```
-    3. 更新您的相依性區塊，並針對最新的 Azure 地圖服務 Android SDK 加入新的執行相依性程式程式碼：
+    3. 更新您的相依性區塊，並且為最新的 Azure 地圖服務 Android SDK 新增實作相依性程式行：
 
         ```
         implementation "com.microsoft.azure.maps:mapcontrol:0.2"
         ```
     
-    4. 移至**工具列中的**[檔案]，然後按一下 [**同步處理專案與 Gradle**檔案]。
-3. 將地圖片段新增至主要活動（res \> 版面配置 \> 活動\_main）：
+    4. 移至工具列中 [檔案]，然後按一下 [同步處理專案與 Gradle 檔案]。
+3. 將地圖片段新增至主要活動 (res \> layout \> activity\_main.xml)：
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -103,15 +103,15 @@ Android Studio 可讓您在電腦上設定虛擬 Android 裝置。 這麼做可�
     </FrameLayout>
     ```
 
-4. 在**MainActivity**檔案中，您將需要：
+4. 在**MainActivity**檔案中，您必須：
     
     * 新增 Azure 地圖服務 SDK 的匯入
     * 設定您的 Azure 地圖服務驗證資訊
-    * 取得**onCreate**方法中的地圖控制項實例
+    * 在 **onCreate** 方法中取得地圖控制項執行個體
 
     使用 `setSubscriptionKey` 或 `setAadProperties` 方法，全域設定 `AzureMaps` 類別的驗證資訊，讓您不需要在每個視圖上新增驗證資訊。 
 
-    地圖控制項包含自己的生命週期方法來管理 Android 的 OpenGL 生命週期，必須直接從包含活動呼叫。 為了讓您的應用程式正確地呼叫地圖控制項的生命週期方法，您必須覆寫活動中包含地圖控制項的下列生命週期方法，並呼叫個別的地圖控制項方法。 
+    地圖控制項包含自己的生命週期方法，用於管理 Android 的 OpenGL 生命週期。 這些生命週期方法必須直接從包含活動呼叫。 若要讓您的應用程式正確地呼叫地圖控制項的生命週期方法，您必須覆寫活動中包含地圖控制項的下列生命週期方法。 而且，您必須呼叫個別的地圖控制方法。 
 
     * onCreate （配套） 
     * onStart （） 
@@ -122,7 +122,7 @@ Android Studio 可讓您在電腦上設定虛擬 Android 裝置。 這麼做可�
     * onSaveInstanceState （配套） 
     * onLowMemory() 
 
-    編輯**MainActivity** ，如下所示：
+    編輯 **MainActivity.java** 檔案，如下所示：
     
     ```java
     package com.example.myapplication;
@@ -219,7 +219,7 @@ Android Studio 需要幾秒鐘的時間來建立應用程式。 組建完成之�
 
 Android 應用程式中的 ![Azure 地圖服務](./media/how-to-use-android-map-control-library/android-map.png)</center>
 
-## <a name="localizing-the-map"></a>當地語系化對應
+## <a name="localizing-the-map"></a>將地圖當地語系化
 
 Azure 地圖服務 Android SDK 提供三種不同的方式來設定地圖的語言和地區視圖。 下列程式碼示範如何將語言設定為法文（"fr-fr"）和地區視圖，以「自動」的方式顯示。 
 
@@ -238,7 +238,7 @@ static {
 }
 ```
 
-第二個選項是將語言和視圖資訊傳遞至地圖控制項 XML。
+第二個選項是將語言和檢視資訊傳入地圖控制項 XML 中。
 
 ```XML
 <com.microsoft.azure.maps.mapcontrol.MapControl
@@ -250,7 +250,7 @@ static {
     />
 ```
 
-第三個選項是使用 maps `setStyle` 方法，以程式設計方式設定地圖的語言和地區視圖。 這可以隨時執行，以變更地圖的語言和地區視圖。
+第三個選項是使用地圖 `setStyle` 方法，以程式設計方式設定地圖的語言和區域檢視。 此方法可隨時執行，以變更地圖的語言和區域檢視。
 
 ```Java
 mapControl.onReady(map -> {
@@ -266,7 +266,7 @@ mapControl.onReady(map -> {
 ![Azure 地圖服務，以法文](./media/how-to-use-android-map-control-library/android-localization.png)
 顯示標籤的地圖影像 </center>
 
-支援的語言和區域觀點的完整清單記載于[此處](supported-languages.md)。
+如需支援的語言和區域檢視的完整清單，請參閱[這裡](supported-languages.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5846934a8ad8455ca375b4bc54fc46d45aba1cd
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: aeb2e98ad9bbd35f3ec507e36e958c5ce6ad2198
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379983"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185872"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>在條件式存取中使用 What If 工具進行疑難排解
 
@@ -24,7 +24,7 @@ ms.locfileid: "74379983"
 
 本文說明如何使用此工具來測試您的條件式存取原則。
 
-## <a name="what-it-is"></a>內容
+## <a name="what-it-is"></a>說明
 
 **條件式存取 What If 原則工具**可讓您瞭解條件式存取原則對環境的影響。 這個工具並非要讓您以手動方式執行多個登入來測試原則，而是要讓您評估使用者的模擬登入。 該模擬可評估此登入對原則所造成的影響，並產生模擬報告。 此報告不只會列出已套用的條件式存取原則，還有[傳統原則](policy-migration.md#classic-policies)（如果有的話）。    
 
@@ -48,7 +48,7 @@ ms.locfileid: "74379983"
 
 若要啟動工具，請在原則清單頂端的工具列中，按一下 [ **What If**]。
 
-![What If](./media/what-if-tool/01.png)
+![如果](./media/what-if-tool/01.png)
 
 您必須先進行設定，才能執行評估。
 
@@ -56,7 +56,7 @@ ms.locfileid: "74379983"
 
 本節為您提供模擬執行設定的相關資訊。
 
-![What If](./media/what-if-tool/02.png)
+![如果](./media/what-if-tool/02.png)
 
 ### <a name="user"></a>使用者
 
@@ -72,11 +72,11 @@ IP 位址是用來模擬[位置條件](location-condition.md)的單一 IPv4 位�
 
 ### <a name="device-platforms"></a>裝置平台
 
-這項設定會模擬[裝置平台條件](conditions.md#device-platforms)，並代表**所有平台 (包括不支援平台)** 的同等項目。 
+這項設定會模擬[裝置平台條件](concept-conditional-access-conditions.md#device-platforms)，並代表**所有平台 (包括不支援平台)** 的同等項目。 
 
 ### <a name="client-apps"></a>用戶端應用程式
 
-這項設定會模擬[用戶端應用程式條件](conditions.md#client-apps)。
+這項設定會模擬[用戶端應用程式條件](concept-conditional-access-conditions.md#client-apps-preview)。
 根據預設，此設定會導致系統評估已選取 [瀏覽器] 和 (或) [行動裝置應用程式和桌面用戶端] 的所有原則。 此外，還會偵測強制執行 **Exchange ActiveSync (EAS)** 的原則。 您可以選取下列選項來縮小此設定的範圍：
 
 - **瀏覽器**：可評估所有至少已選取 [瀏覽器] 的原則。 
@@ -84,13 +84,13 @@ IP 位址是用來模擬[位置條件](location-condition.md)的單一 IPv4 位�
 
 ### <a name="sign-in-risk"></a>登入風險
 
-這項設定會模擬[登入風險條件](conditions.md#sign-in-risk)。   
+這項設定會模擬[登入風險條件](concept-conditional-access-conditions.md#sign-in-risk)。   
 
 ## <a name="evaluation"></a>評估 
 
 您可以按一下 [ **What If**] 開始評估。 評估結果所提供的報告中會包含： 
 
-![What If](./media/what-if-tool/03.png)
+![如果](./media/what-if-tool/03.png)
 
 - 環境中是否存在傳統原則的指標
 - 套用至使用者的原則

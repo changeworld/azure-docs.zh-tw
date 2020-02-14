@@ -3,51 +3,50 @@ title: 驗證方法 |Microsoft Azure 對應
 description: 在本文中，您將瞭解 Azure Active Directory （Azure AD）和共用金鑰驗證。 這兩者都用於 Microsoft Azure Maps 服務。 瞭解如何取得 Azure 地圖服務訂用帳戶金鑰。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 01/28/2020
+ms.date: 02/11/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 2bcc2d4c92e903b723bffa8461a8a1a10534d3e4
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 73c0d9f76ad92d0ef7ed0f518de5ab1f8b174c9d
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025617"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189804"
 ---
 # <a name="authentication-with-azure-maps"></a>向 Azure 地圖服務驗證
 
-Azure 地圖服務支援兩種驗證要求的方式：共用金鑰驗證和 Azure Active Directory 驗證。 本文說明這些驗證方法，協助指導您的實作。
+Azure 地圖服務支援兩種驗證要求的方式：共用金鑰驗證和 Azure Active Directory 驗證。 本文說明這些驗證方法，以協助引導您執行 Azure 地圖服務服務。
 
 ## <a name="shared-key-authentication"></a>共用金鑰驗證
 
-共用金鑰驗證會將 Azure 地圖服務帳戶所產生的金鑰連同每個要求傳送給 Azure 地圖服務。 對於 Azure 地圖服務服務的每個要求，必須將訂用帳戶*金鑰*新增為 URL 的參數。 建立 Azure 地圖服務帳戶之後，會產生主要和次要金鑰。 當您使用共用金鑰驗證呼叫 Azure 地圖服務時，建議您使用主要金鑰做為訂用帳戶金鑰。 次要金鑰可用於輪流金鑰變更之類的案例中。  
+ 建立 Azure 地圖服務帳戶之後，會產生主要和次要金鑰。 當您使用共用金鑰驗證呼叫 Azure 地圖服務時，建議您使用主要金鑰做為訂用帳戶金鑰。 共用金鑰驗證會將 Azure 地圖服務帳戶所產生的金鑰傳遞給 Azure 地圖服務服務。 針對每個 Azure 地圖服務服務的要求，將*訂*用帳戶金鑰新增為 URL 的參數。 次要金鑰可用於輪流金鑰變更之類的案例中。  
 
 如需在 Azure 入口網站中查看金鑰的詳細資訊，請參閱[管理驗證](https://aka.ms/amauthdetails)。
 
 > [!Tip]
-> 建議您定期重新產生金鑰。 系統會提供您兩個金鑰，以便您在重新產生另一個金鑰時維持連線。 當您重新產生金鑰時，您必須使用新的金鑰來更新任何存取您帳戶的應用程式。
-
-
+> 建議您定期重新產生金鑰。 系統會提供您兩個金鑰，以便您在重新產生另一個金鑰時維持連線。 當您重新產生金鑰時，您需要使用新的金鑰來更新任何存取您帳戶的應用程式。
 
 ## <a name="authentication-with-azure-active-directory-preview"></a>使用 Azure Active Directory 進行驗證 (預覽)
 
-Azure 地圖服務現在會使用[Azure Active Directory （Azure AD）](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)提供 Azure 地圖服務服務的要求驗證。 Azure AD 提供以身分識別為基礎的驗證，包括以[角色為基礎的存取控制（RBAC）](https://docs.microsoft.com/azure/role-based-access-control/overview)。 RBAC 是用來授與使用者層級、群組層級或應用層級的 Azure 地圖服務資源存取權。 下一節可協助您瞭解 Azure 地圖服務與 Azure AD 整合的概念和元件。
+Azure 地圖服務現在會使用[Azure Active Directory （Azure AD）](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)提供 Azure 地圖服務服務的要求驗證。 Azure AD 提供以身分識別為基礎的驗證，包括以[角色為基礎的存取控制（RBAC）](https://docs.microsoft.com/azure/role-based-access-control/overview)。 RBAC 是用來授與使用者層級、群組層級或應用層級的 Azure 地圖服務資源存取權。 下一節將討論 Azure 地圖服務與 Azure AD 整合的概念和元件。
+
 ## <a name="authentication-with-oauth-access-tokens"></a>使用 OAuth 存取權杖進行驗證
 
-針對與包含 Azure 地圖服務帳戶的 Azure 訂用帳戶相關聯的 Azure AD 租用戶，Azure 地圖服務可接受 **OAuth 2.0** 存取權杖。 Azure 地圖服務可接受下列項目的權杖：
+針對與包含 Azure 地圖服務帳戶的 Azure 訂用帳戶相關聯的 Azure AD 租用戶，Azure 地圖服務可接受 **OAuth 2.0** 存取權杖。 Azure 地圖服務也會接受的權杖：
 
 * Azure AD 使用者
 * 使用使用者所委派許可權的合作夥伴應用程式
 * 適用於 Azure 資源的受控識別
 
-Azure 地圖服務會為每個 Azure 地圖服務帳戶產生「唯一識別碼 (用戶端識別碼)」。 當您將此用戶端識別碼與其他參數結合時，您可以從 Azure AD 要求權杖。 若要要求權杖，您必須根據您的 Azure 環境指定下表中的值。
+Azure 地圖服務會為每個 Azure 地圖服務帳戶產生「唯一識別碼 (用戶端識別碼)」。 當您將此用戶端識別碼與其他參數結合時，您可以從 Azure AD 要求權杖。 若要要求權杖，請根據您的 Azure 環境，指定下表中的值。
 
 | Azure 環境   | Azure AD token 端點 |
 | --------------------|-------------------------|
 | Azure 公用        | https://login.microsoftonline.com |
-| Azure 政府機構    | https://login.microsoftonline.us |
+| Azure Government    | https://login.microsoftonline.us |
 
 
 如需如何為 Azure 地圖服務設定 Azure AD 和要求權杖的詳細資訊，請參閱[管理 Azure 地圖服務中的驗證](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)。
@@ -56,7 +55,7 @@ Azure 地圖服務會為每個 Azure 地圖服務帳戶產生「唯一識別碼 
 
 ## <a name="request-azure-map-resources-with-oauth-tokens"></a>使用 OAuth 權杖要求 Azure 地圖服務資源
 
-從 Azure AD 接收到權杖之後，會將要求傳送至具有下列必要要求標頭集的 Azure 地圖服務：
+Azure AD 收到權杖之後，Azure 地圖服務會傳送具有下列必要要求標頭集合的要求：
 
 | 要求標頭    |    值    |
 |:------------------|:------------|
@@ -79,7 +78,7 @@ Authorization: Bearer eyJ0e….HNIVN
 
 ## <a name="control-access-with-rbac"></a>使用 RBAC 控制存取權
 
-在 Azure AD 中，使用 RBAC 來控制受保護資源的存取權。 設定您的 Azure 地圖服務帳戶，並註冊您的 Azure 地圖服務 Azure AD 租使用者。 Azure 地圖服務可透過 Azure 資源的受控識別，支援個別 Azure AD 使用者、群組、應用程式、Azure 資源和 Azure 服務的讀取存取控制。 在 [Azure 地圖服務入口網站] 頁面上，您可以設定所需角色的 RBAC。
+在 Azure AD 中，使用 RBAC 來控制受保護資源的存取權。 設定您的 Azure 地圖服務帳戶，並註冊您的 Azure 地圖服務 Azure AD 租使用者。 Azure 地圖服務可透過 Azure 資源的受控識別，支援個別 Azure AD 使用者、群組、應用程式、Azure 資源和 Azure 服務的讀取存取控制。 在 [Azure 地圖服務入口網站] 頁面上，您可以設定所選角色的 RBAC。
 
 ![Azure 地圖服務資料讀者 (預覽)](./media/azure-maps-authentication/concept.png)
 

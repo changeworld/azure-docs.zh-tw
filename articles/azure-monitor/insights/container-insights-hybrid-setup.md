@@ -3,16 +3,16 @@ title: 使用適用于容器的 Azure 監視器來設定混合式 Kubernetes 叢
 description: 本文說明如何設定容器的 Azure 監視器，以監視 Azure Stack 或其他環境上裝載的 Kubernetes 叢集。
 ms.topic: conceptual
 ms.date: 01/24/2020
-ms.openlocfilehash: 7796cc7300f34a7a412495754c083b112ba05041
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 6d03716b988b1139e01d41120f48ea9a9bf34be1
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759887"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198049"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>使用適用于容器的 Azure 監視器來設定混合式 Kubernetes 叢集
 
-適用于容器的 Azure 監視器可針對裝載于 Azure 中的 Azure Kubernetes Service （AKS）和 AKS 引擎叢集，提供豐富的監視體驗。 本文說明如何啟用在 Azure 外部裝載的 Kubernetes 叢集監視，並達成類似的監視體驗。
+適用于容器的 Azure 監視器會針對 Azure 上的 Azure Kubernetes Service （AKS）和[AKS 引擎](https://github.com/Azure/aks-engine)提供豐富的監視體驗，這是裝載于 azure 上的自我管理 Kubernetes 叢集。 本文說明如何啟用在 Azure 外部裝載的 Kubernetes 叢集監視，並達成類似的監視體驗。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -89,7 +89,7 @@ ms.locfileid: "76759887"
     az account list --all -o table
     ```
 
-    輸出看起來會像下面這樣：
+    輸出看起來會向下面這樣：
 
     ```azurecli
     Name                                  CloudName    SubscriptionId                        State    IsDefault

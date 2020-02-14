@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 213e5523c0c99309c3244e19a406a7b82297188f
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: HT
+ms.openlocfilehash: 8b396b782c1254b3229aeeb8e51b61cc744d6318
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161795"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190371"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>使用 OAuth 2.0 搭配 Azure Active Directory 與 API 管理來保護 API
 
@@ -27,7 +27,7 @@ ms.locfileid: "77161795"
 > [!NOTE]
 > 這項功能適用于 API 管理的**開發人員**、**標準** **和高階**層次。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 若要依照本文中的步驟進行，您必須有：
 * API 管理執行個體
 * 正在使用 API 管理執行個體發佈的 API
@@ -71,7 +71,7 @@ ms.locfileid: "77161795"
 
 每個呼叫 API 的用戶端應用程式也必須在 Azure AD 中註冊為應用程式。 在此範例中，用戶端應用程式是 API 管理開發人員入口網站中的開發人員主控台。 以下說明如何在 Azure AD 中註冊另一個應用程式，來代表開發人員主控台。
 
-1. 移至 [ [Azure 入口網站](https://portal.azure.com)] 以註冊您的應用程式。 搜尋並選取 [ **API 註冊**]。
+1. 移至 [ [Azure 入口網站](https://portal.azure.com)] 以註冊您的應用程式。 搜尋並選取 [**應用程式註冊**]。
 
 1. 選取 [新增註冊]。
 
@@ -97,7 +97,7 @@ ms.locfileid: "77161795"
 
 現在您已註冊兩個應用程式來代表 API 和開發人員主控台，您需要授與權限，允許用戶端應用程式呼叫後端應用程式。  
 
-1. 請移至[Azure 入口網站](https://portal.azure.com)，將許可權授與您的用戶端應用程式。 搜尋並選取 [ **API 註冊**]。
+1. 請移至[Azure 入口網站](https://portal.azure.com)，將許可權授與您的用戶端應用程式。 搜尋並選取 [**應用程式註冊**]。
 
 1. 選擇您的用戶端應用程式。 然後在應用程式的頁面清單中，選取 [ **API 許可權**]。
 
@@ -202,7 +202,7 @@ ms.locfileid: "77161795"
     <openid-config url="https://login.microsoftonline.com/{aad-tenant}/.well-known/openid-configuration" />
     <required-claims>
         <claim name="aud">
-            <value>{Application ID URI of backend-app}</value>
+            <value>{Application ID of backend-app}</value>
         </claim>
     </required-claims>
 </validate-jwt>

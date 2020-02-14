@@ -16,12 +16,12 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf8a2cf6c50e05a0fecff387f2e125c50931b95f
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: bf7e4837aaf65b0df28ea4a07fb485948309bc7c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608715"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185567"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中管理外部使用者的存取權
 
@@ -91,7 +91,7 @@ Azure AD 權利管理利用[Azure AD 的企業對企業（B2B）](../b2b/what-is
 
 ### <a name="review-your-conditional-access-policies"></a>檢查您的條件式存取原則
 
-- 請務必從新的來賓使用者無法符合的任何條件式存取原則中排除來賓，因為這會封鎖他們無法登入您的目錄。 例如，來賓可能沒有已註冊的裝置、不在已知的位置，也不想重新註冊多重要素驗證（MFA），因此在條件式存取原則中新增這些需求將會封鎖來賓使用權利元件. 如需詳細資訊，請參閱[Azure Active Directory 條件式存取中的條件為何？](../conditional-access/conditions.md)。
+- 請務必從新的來賓使用者無法符合的任何條件式存取原則中排除來賓，因為這會封鎖他們無法登入您的目錄。 例如，來賓可能沒有已註冊的裝置、不在已知的位置，也不想重新註冊多重要素驗證（MFA），因此在條件式存取原則中新增這些需求將會封鎖來賓使用權利元件. 如需詳細資訊，請參閱[Azure Active Directory 條件式存取中的條件為何？](../conditional-access/concept-conditional-access-conditions.md)。
 
     ![Azure AD 條件式存取原則排除設定](./media/entitlement-management-external-users/conditional-access-exclude.png)
 
@@ -143,7 +143,7 @@ Azure AD 權利管理利用[Azure AD 的企業對企業（B2B）](../b2b/what-is
 
 1. 如果您想要移除此目錄中的來賓使用者帳戶，您可以設定移除之前的天數。 如果您想要在來賓使用者帳戶失去對任何存取套件的最後一次指派時將其移除，請設定 [**從這個目錄移除外部使用者到0之前的天數**]。
 
-1. 按一下 [檔案]。
+1. Haga clic en **Guardar**.
 
 ## <a name="next-steps"></a>後續步驟
 

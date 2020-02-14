@@ -1,6 +1,6 @@
 ---
 title: 使用憑證保護 B2B 訊息
-description: 使用企業整合套件在 Azure Logic Apps 中新增憑證以保護 B2B 訊息
+description: 使用企業整合套件新增憑證以協助保護 Azure Logic Apps 中的 B2B 訊息
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,19 +8,19 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/17/2018
-ms.openlocfilehash: 6c5de6eba000c9052c7eb7b31d75804b9f454607
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: c1b48ae8191e2e5313d9037c791eca73c8a55691
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790683"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191391"
 ---
-# <a name="secure-b2b-messages-with-certificates"></a>使用憑證保護 B2B 訊息
+# <a name="improve-security-for-b2b-messages-by-using-certificates"></a>使用憑證來改善 B2B 訊息的安全性
 
-如果您需要將 B2B 通訊保密，您可以藉由將憑證新增至整合帳戶，來保護企業整合應用程式 (特別是邏輯應用程式) 的 B2B 通訊。 憑證是數位文件，可檢查電子通訊參與者的身分識別，還能協助您透過下列方式保護通訊：
+當您需要保持 B2B 通訊機密時，您可以藉由將憑證新增至您的整合帳戶，來提高企業整合應用程式（特別是邏輯應用程式）中 B2B 通訊的安全性。 憑證是數位文件，可檢查電子通訊參與者的身分識別，還能協助您透過下列方式保護通訊：
 
 * 將訊息內容加密。
-* 以數位方式簽署訊息。 
+* 以數位方式簽署訊息。
 
 您可以在企業整合應用程式中使用這些憑證：
 
@@ -44,11 +44,11 @@ ms.locfileid: "74790683"
 
 3. 在 [憑證] 之下，選擇 [新增]。 在 [新增憑證] 之下，提供憑證的以下詳細資料。 完成時，選擇 [確定]。
 
-   | 屬性 | Value | 描述 | 
+   | 屬性 | 值 | 描述 | 
    |----------|-------|-------------|
    | **名稱** | <*certificate-name*> | 您的憑證名稱，在本例中為 "publicCert" | 
    | **憑證類型** | 公用 | 您的憑證類型 |
-   | **憑證** | <*certificate-file-name*> | 若要尋找及選取要上傳的憑證檔案，請選擇 [憑證] 方塊旁的資料夾圖示。 |
+   | **[MSSQLSERVER 的通訊協定內容]** | <*certificate-file-name*> | 若要尋找及選取要上傳的憑證檔案，請選擇 [憑證] 方塊旁的資料夾圖示。 |
    ||||
 
    ![選擇 [新增]，並提供憑證的詳細資料](media/logic-apps-enterprise-integration-certificates/public-certificate-details.png)
@@ -64,7 +64,7 @@ ms.locfileid: "74790683"
 當您在自己建立的[合約](logic-apps-enterprise-integration-agreements.md)中定義屬性之後，就能使用憑證來幫助您保護 B2B 訊息。
 
 > [!NOTE]
-> 對於私人憑證，務必要新增對應的公開憑證，讓其出現在 [AS2 合約](logic-apps-enterprise-integration-as2.md)的**傳送和接收**設定以用於簽署和加密訊息。
+> 對於私人憑證，請確定您新增的對應公開憑證會出現在[AS2 合約的](logic-apps-enterprise-integration-as2.md)[**傳送] 和 [接收**] 設定中，以便簽署和加密訊息。
 
 1. [將私密金鑰新增至 Key Vault](../key-vault/certificate-scenarios.md#import-a-certificate) 並提供 [金鑰名稱]。
    
@@ -83,11 +83,11 @@ ms.locfileid: "74790683"
 
 5. 在 [憑證] 之下，選擇 [新增]。 在 [新增憑證] 之下，提供憑證的以下詳細資料。 完成時，選擇 [確定]。
 
-   | 屬性 | Value | 描述 | 
+   | 屬性 | 值 | 描述 | 
    |----------|-------|-------------|
    | **名稱** | <*certificate-name*> | 您的憑證名稱，在本例中為 "privateCert" | 
    | **憑證類型** | 私人 | 您的憑證類型 |
-   | **憑證** | <*certificate-file-name*> | 若要尋找及選取要上傳的憑證檔案，請選擇 [憑證] 方塊旁的資料夾圖示。 使用金鑰保存庫作為私密金鑰時，上傳的檔案將會是公開憑證。 | 
+   | **[MSSQLSERVER 的通訊協定內容]** | <*certificate-file-name*> | 若要尋找及選取要上傳的憑證檔案，請選擇 [憑證] 方塊旁的資料夾圖示。 使用金鑰保存庫作為私密金鑰時，上傳的檔案將會是公開憑證。 | 
    | **資源群組** | <*integration-account-resource-group*> | 整合帳戶的資源群組，在本例中為 "MyResourceGroup" | 
    | **金鑰保存庫** | <*key-vault-name*> | Azure 金鑰保存庫的名稱 |
    | **金鑰名稱** | <*key-name*> | 金鑰名稱 |

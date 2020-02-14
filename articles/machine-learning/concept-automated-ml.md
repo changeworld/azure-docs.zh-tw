@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 11/04/2019
-ms.openlocfilehash: 012300c95fd1edd135b97f52ed3702ce3e7ef0bd
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: f7a2e78ed2b1de770f7a60f1312e069dc1757cb6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048961"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191197"
 ---
 # <a name="what-is-automated-machine-learning"></a>什麼是自動化機器學習服務？
 
@@ -217,9 +217,9 @@ ms.locfileid: "77048961"
 
 |整合|描述|
 |------------|-----------|
-|[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|使用 Visual Studio 和 Visual Studio Code 搭配 ML.NET 自動化 ML （預覽），在 .NET 應用程式中自動選取和定型模型。|
+|[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|使用 Visual Studio 和 Visual Studio Code 搭配 ML.NET 自動化 ML，在 .NET 應用程式中自動選取和定型模型。|
 |[HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|以平行方式在 HDInsight 叢集中的 Spark 上相應放大您的自動化 ML 訓練作業。|
-|[Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|直接在 Power BI （預覽）中叫用機器學習模型。|
+|[Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|直接在 Power BI 中叫用機器學習模型。|
 |[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)|在 SQL Server 2019 big data 叢集內，透過您的資料建立新的機器學習模型。|
 
 ## <a name="next-steps"></a>後續步驟

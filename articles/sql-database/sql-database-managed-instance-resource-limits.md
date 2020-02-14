@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 11/27/2019
-ms.openlocfilehash: 90f39a5edd32225b7fed259ca48dcf4802d0ced3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: eed0ed96efdc84697797c50578e11eee37d4d495
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443820"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201725"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL Database 受控實例資源限制的總覽
 
@@ -38,8 +38,8 @@ ms.locfileid: "75443820"
 | 實例保留的最大儲存體 |  一般用途： 8 TB<br/>業務關鍵： 1 TB | 一般用途： 8 TB<br/> 商務關鍵性 1 TB、2 TB 或 4 TB，視核心數目而定 |
 
 > [!IMPORTANT]
-> - 第4代硬體即將推出。建議您在第5代硬體上部署新的受控實例。
-> - 第4代硬體目前僅適用于下欄區域：北歐、西歐、美國東部、美國中南部、美國中北部、美國西部2、美國中部、加拿大中部、印度南部、東南亞和韓國中部。
+> - 第4代硬體即將推出，而不再適用于新的部署。 所有新的受控實例都必須部署在第5代硬體上。
+> - 請考慮將[您的受控實例移至 Gen 5](sql-database-service-tiers-vcore.md)硬體，以體驗更廣泛的 vCore 和存放裝置擴充性、加速網路、最佳 IO 效能，以及最少的延遲。
 
 ### <a name="in-memory-oltp-available-space"></a>記憶體內部 OLTP 可用空間 
 
@@ -47,9 +47,9 @@ ms.locfileid: "75443820"
 
 | 記憶體內部 OLTP 空間  | **Gen5** | **Gen4** |
 | --- | --- | --- |
-| 4 個 V 核心  | 3.14 GB | |   
-| 8 個 V 核心  | 6.28 GB | 8 GB |
-| 16虛擬核心 | 15.77 GB | 20GB |
+| 4虛擬核心  | 3.14 GB | |   
+| 8虛擬核心  | 6.28 GB | 8 GB |
+| 16虛擬核心 | 15.77 GB | 20 GB |
 | 24虛擬核心 | 25.25 GB | 36 GB |
 | 32虛擬核心 | 37.94 GB | |
 | 40虛擬核心 | 52.23 GB | |
@@ -153,7 +153,7 @@ ms.locfileid: "75443820"
 
 1. 開啟 [說明 + 支援]，然後按一下 [新增支援要求]。
 
-   ![說明與支援](media/sql-database-managed-instance-resource-limits/help-and-support.png)
+   ![協助和支援](media/sql-database-managed-instance-resource-limits/help-and-support.png)
 2. 在新支援要求的 [基本] 索引標籤上：
    - 針對 [問題類型]，選取 [服務與訂用帳戶限制 (配額)]。
    - 在 [訂用帳戶] 中，選取您的訂用帳戶。
@@ -178,7 +178,7 @@ ms.locfileid: "75443820"
 
 5. 按 [下一步]。
 6. 在新支援要求的 [連絡資訊] 索引標籤上，輸入慣用的連絡方法 (電子郵件或電話) 和連絡人詳細資料。
-7. 按一下頁面底部的 [新增]。
+7. 按一下 [建立]。
 
 ## <a name="next-steps"></a>後續步驟
 

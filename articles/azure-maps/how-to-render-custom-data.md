@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: f036847a9d46231d65d150cd4e0a76471d1ad612
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 049762382bb1a67da21f5b95fdf28319672bfca6
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766049"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198202"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>在點陣地圖上轉譯自訂資料
 
-本文說明如何使用[靜態映射服務](https://docs.microsoft.com/rest/api/maps/render/getmapimage)搭配影像組合功能，以允許在點陣地圖上進行重迭。 影像組合包括以自訂圖釘、標籤和幾何重迭等其他資料來取得點陣磚的功能。
+本文說明如何使用[靜態映射服務](https://docs.microsoft.com/rest/api/maps/render/getmapimage)（含影像組合功能），以允許在點陣地圖上進行重迭。 影像組合包括以自訂圖釘、標籤和幾何重迭等其他資料來取得點陣磚的功能。
 
 若要呈現自訂圖釘、標籤和幾何重迭，您可以使用 Postman 應用程式。 您可以使用 Azure 地圖服務[資料服務 api](https://docs.microsoft.com/rest/api/maps/data)來儲存和呈現重迭。
 
@@ -43,7 +43,7 @@ Azure 地圖服務帳戶 S0 層僅支援 `pins` 參數的單一實例。 它可�
 
 1. 建立要在其中儲存要求的集合。 在 Postman 應用程式中，選取 [**新增**]。 在 [**建立新**視窗] 中，選取 [**集合**]。 將集合命名為，然後選取 [**建立**] 按鈕。 
 
-2. 若要建立要求，請再次選取 [**新增**]。 在 [**建立新**視窗] 中，選取 [**要求**]。 輸入圖釘的 [**要求名稱**]。 選取您在上一個步驟中建立的集合做為儲存要求的位置，然後選取 [**儲存**]。
+2. 若要建立要求，請再次選取 [**新增**]。 在 [**建立新**視窗] 中，選取 [**要求**]。 輸入圖釘的 [**要求名稱**]。 選取您在上一個步驟中建立的集合，做為儲存要求的位置。 然後選取 [儲存]。
     
     ![在 Postman 中建立要求](./media/how-to-render-custom-data/postman-new.png)
 
@@ -148,7 +148,7 @@ Azure 地圖服務帳戶 S0 層僅支援 `pins` 參數的單一實例。 它可�
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
    ```
 
-6. 若要取得 udId，請在 Postman 應用程式中開啟新的索引標籤，然後選取 [建立器] 索引標籤上的 [取得 HTTP 方法]，並在狀態 URI 提出 GET 要求。 如果您的資料上傳成功，您將會在回應本文中收到 udId。 複製 udId。
+6. 若要取得 udId，請在 Postman 應用程式中開啟新的索引標籤。 在 [建立器] 索引標籤上選取 [取得 HTTP 方法]。在狀態 URI 提出 GET 要求。 如果您的資料上傳成功，您將會在回應主體中收到 udId。 複製 udId。
 
    ```JSON
    {

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/03/2020
-ms.openlocfilehash: 6ed0742a214b001ab773e33e851abfb94495984b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: aeb86823ddb25bbe0340630b55360806faef59e9
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75767665"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186891"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>搭配 Azure HDInsight 叢集使用 Data Lake Storage Gen2
 
@@ -39,9 +39,9 @@ Data Lake Storage Gen2 可做為幾乎所有 Azure HDInsight 叢集類型的儲�
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 在左上方按一下 [**建立資源**]。
 1. 在搜尋方塊中，輸入 [**使用者指派**]，然後按一下 [**使用者指派的受控識別**]。
-1. 按一下頁面底部的 [新增]。
+1. 按一下 [建立]。
 1. 輸入受控識別的 [名稱]，選取正確的訂用帳戶、資源群組和位置。
-1. 按一下頁面底部的 [新增]。
+1. 按一下 [建立]。
 
 如需如何在 Azure HDInsight 中使用受控識別的詳細資訊，請參閱[Azure HDInsight 中的受控](hdinsight-managed-identities.md)識別。
 
@@ -54,10 +54,10 @@ Data Lake Storage Gen2 可做為幾乎所有 Azure HDInsight 叢集類型的儲�
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 在左上方按一下 [**建立資源**]。
 1. 在搜尋方塊中，輸入**儲存體**，然後按一下 [**儲存體帳戶**]。
-1. 按一下頁面底部的 [新增]。
+1. 按一下 [建立]。
 1. 在 [**建立儲存體帳戶**] 畫面上：
     1. 選取正確的訂用帳戶和資源群組。
-    1. 輸入 Data Lake Storage Gen2 帳戶的名稱。 如需儲存體帳戶命名慣例的詳細資訊，請參閱[Azure 資源的命名慣例](/azure/architecture/best-practices/resource-naming#storage)。
+    1. 輸入 Data Lake Storage Gen2 帳戶的名稱。 如需儲存體帳戶命名慣例的詳細資訊，請參閱[Azure 資源的命名慣例](/azure/azure-resource-manager/management/resource-name-rules#microsoftstorage)。
     1. 按一下 [ **Advanced** ] 索引標籤。
     1. 按一下 [ **Data Lake Storage Gen2**] 底下 [**階層命名空間**] 旁的 [**已啟用**]。
     1. 按一下 [檢閱 + 建立]。
@@ -102,7 +102,7 @@ Data Lake Storage Gen2 可做為幾乎所有 Azure HDInsight 叢集類型的儲�
 
 您可以[下載範例範本](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/hdinsight-adls-gen2-template.json)檔案，並[下載範例參數](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/parameters.json)檔案。 使用範本和以下的 Azure CLI 程式碼片段之前，請將下列預留位置取代為正確的值：
 
-| 預留位置 | 說明 |
+| 預留位置 | 描述 |
 |---|---|
 | `<SUBSCRIPTION_ID>` | 您 Azure 訂用帳戶的識別碼 |
 | `<RESOURCEGROUPNAME>` | 您想要在其中建立新叢集和儲存體帳戶的資源群組。 |

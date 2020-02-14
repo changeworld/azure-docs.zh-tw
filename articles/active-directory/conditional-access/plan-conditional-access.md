@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 894530aa9624af18f2f33a061d5cde683e9f01be
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 266fa2403ef96e808a0c1f1eb46b4f7065c06252
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72880266"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185894"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>如何：在 Azure Active Directory 中規劃條件式存取部署
 
@@ -53,7 +53,7 @@ Azure Active Directory 條件式存取可讓您將雲端應用程式的保護帶
 |嘗試存取下列項目：<br>- 雲端應用程式<br>- 來自使用者和群組<br>使用：<br>- 條件 1 (例如在公司網路之外)<br>- 條件 2 (例如裝置平台)|授與存取權 (滿足所有需求)：<br>- 需求 1 (例如 MFA)<br>- 需求 2 (例如裝置合規性)|
 |嘗試存取下列項目：<br>- 雲端應用程式<br>- 來自使用者和群組<br>使用：<br>- 條件 1 (例如在公司網路之外)<br>- 條件 2 (例如裝置平台)|授與存取權 (滿足需求之一)：<br>- 需求 1 (例如 MFA)<br>- 需求 2 (例如裝置合規性)|
 
-**發生此情況時**至少要定義嘗試存取雲端應用程式 (**目標**) 的主體 (**人員**)。 如果有必要，您也可以包含執行存取嘗試的**方法**。 在條件式存取中，定義誰、what 和如何所謂條件的元素。 如需詳細資訊，請參閱[Azure Active Directory 條件式存取中的條件為何？](conditions.md) 
+**發生此情況時**至少要定義嘗試存取雲端應用程式 (**目標**) 的主體 (**人員**)。 如果有必要，您也可以包含執行存取嘗試的**方法**。 在條件式存取中，定義誰、what 和如何所謂條件的元素。 如需詳細資訊，請參閱[Azure Active Directory 條件式存取中的條件為何？](concept-conditional-access-conditions.md) 
 
 透過**則執行此動作**，您要定義原則對於存取條件的回應。 在您的回應中，您可以搭配其他需求 (例如多重要素驗證 (MFA)) 來封鎖或授與存取權。 如需完整的總覽，請參閱[什麼是 Azure Active Directory 條件式存取中的存取控制？](controls.md)  
 
@@ -116,7 +116,7 @@ Azure Active Directory 條件式存取可讓您將雲端應用程式的保護帶
 
 使用條件式存取原則，您可以從可能遭盜用的身分識別，對登入執行自動回應。 帳戶遭到盜用的可能性會以風險層級的形式來表示。 Identity Protection 會計算兩種風險層級：登入風險和使用者風險。 若要實作登入風險回應，您有兩個選項：
 
-- 條件式存取原則中[的登入風險條件](conditions.md#sign-in-risk)
+- 條件式存取原則中[的登入風險條件](concept-conditional-access-conditions.md#sign-in-risk)
 - Identity Protection 中的 [登入風險原則](../identity-protection/howto-sign-in-risk-policy.md) 
 
 將登入風險作為條件是慣用的方法，因為它可提供您更多自訂選項。
@@ -146,7 +146,7 @@ Azure AD 支援數個最常用的驗證和授權通訊協定，包括舊式驗�
 1. 設定原則
 1. 評估模擬的登入狀況
 1. 測試您的原則
-1. 清除
+1. 清理
 
 ### <a name="create-test-users"></a>建立測試使用者
 
@@ -158,7 +158,7 @@ Azure AD 支援數個最常用的驗證和授權通訊協定，包括舊式驗�
 
 測試計畫非常重要，它可用來比較預期結果和實際結果。 您應該一律先做出預期，然後再測試某些項目。 下表概述範例測試案例。 根據您 CA 原則設定的方式，調整案例和預期的結果。
 
-|原則 |案例 |預期的結果 | 結果 |
+|原則 |狀況 |預期的結果 | 結果 |
 |---|---|---|---|
 |[不在公司時要求 MFA](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|已授權的使用者在信任的位置/公司登入應用程式|不會提示使用者進行 MFA| |
 |[不在公司時要求 MFA](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|已授權的使用者不是在信任的位置/公司登入應用程式|提示使用者進行 MFA 且成功登入| |
@@ -192,7 +192,7 @@ Azure AD 支援數個最常用的驗證和授權通訊協定，包括舊式驗�
 
 請務必確定您會測試原則的排除準則。 例如，您可能會從原則排除需要 MFA 的使用者或群組。 測試是否會提示已排除的使用者進行 MFA，因為其他原則的組合可能需要針對這些使用者進行 MFA。
 
-### <a name="cleanup"></a>清除
+### <a name="cleanup"></a>清理
 
 清除程序由下列步驟組成：
 

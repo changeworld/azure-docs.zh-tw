@@ -6,12 +6,12 @@ ms.workload: integration
 ms.reviewer: klam, jehollan, logicappspm
 ms.topic: article
 ms.date: 11/04/2019
-ms.openlocfilehash: dbb91106ad00e1a82e2e6e9c470e61764a4ad4c4
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: d5b5a69c7927d07c0ae6b3b56ec97b6551e5d46b
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792026"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191340"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-http-endpoints-in-azure-logic-apps"></a>在 Azure Logic Apps 中使用 HTTP 端點呼叫、觸發或嵌套邏輯應用程式
 
@@ -279,7 +279,7 @@ ms.locfileid: "74792026"
 |--------------------|-----------------|-------------|
 | **狀態碼** | `statusCode` | 要在傳入要求的回應中使用的 HTTP 狀態碼。 此代碼可以是任何以 2xx、4xx 或 5xx 開頭的有效狀態碼。 但是，不允許 3xx 狀態碼。 |
 | **標頭** | `headers` | 要包含在回應中的一個或多個標頭 |
-| **內文** | `body` | Body 物件，可以是字串、JSON 物件，甚至是上一個步驟所參考的二進位內容。 |
+| **本文** | `body` | Body 物件，可以是字串、JSON 物件，甚至是上一個步驟所參考的二進位內容。 |
 ||||
 
 若要查看回應動作的 JSON 定義和邏輯應用程式的完整 JSON 定義，請在邏輯應用程式設計工具工具列上選取 [程式**代碼視圖**]。
@@ -302,17 +302,17 @@ ms.locfileid: "74792026"
 }
 ```
 
-## <a name="q--a"></a>問與答
+## <a name="q--a"></a>問答集
 
 #### <a name="q-what-about-url-security"></a>問︰URL 安全性如何？
 
 **答**： Azure 會使用[共用存取簽章（SAS）](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature)安全地產生邏輯應用程式回呼 url。 此簽章會傳遞做為查詢參數，而且必須在邏輯應用程式可以執行之前進行驗證。 Azure 會使用每個邏輯應用程式、觸發程序名稱以及要執行作業之秘密金鑰的唯一組合來產生簽章。 因此，除非某人具有邏輯應用程式秘密金鑰的存取權，否則他們無法產生有效的簽章。
 
 > [!IMPORTANT]
-> 針對生產和安全系統，我們強烈建議您不要直接從瀏覽器呼叫邏輯應用程式，原因如下：
+> 對於生產和較高的安全性系統，我們強烈建議您不要直接從瀏覽器呼叫邏輯應用程式，原因如下：
 >
 > * URL 中出現共用存取金鑰。
-> * 您無法管理安全的內容原則，因為跨 Azure Logic Apps 客戶的共用網域。
+> * 因為跨 Azure Logic Apps 客戶的共用網域，所以無法管理安全性內容原則。
 
 #### <a name="q-can-i-configure-http-endpoints-further"></a>問︰我可以進一步設定 HTTP 端點嗎？
 

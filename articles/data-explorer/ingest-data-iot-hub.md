@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 93c0b3e27156655acee24d424cd890b48bb8e4e7
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 78455c90bab694b77a5e4a56d0b40518867d8d8c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064983"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188355"
 ---
 # <a name="ingest-data-from-iot-hub-into-azure-data-explorer"></a>將資料從 IoT 中樞內嵌到 Azure 資料總管 
 
@@ -83,7 +83,7 @@ Azure 資料總管是一項快速又可高度調整的資料探索服務，可�
     | IoT 中樞 | IoT 中樞名稱 |
     | 共用存取原則 | 共用存取原則的名稱。 必須擁有讀取權限 |
     | 取用者群組 |  在 IoT 中樞內建端點中定義的取用者群組 |
-    | 事件系統屬性 | [IoT 中樞事件系統屬性](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages)。 加入系統屬性時，[建立](/azure/kusto/management/tables#create-table)或[更新](/azure/kusto/management/tables#alter-table-and-alter-merge-table)資料表架構和[對應](/azure/kusto/management/mappings)以包含選取的屬性。 | | | 
+    | 事件系統屬性 | [IoT 中樞事件系統屬性](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages)。 加入系統屬性時，[建立](/azure/kusto/management/create-table-command)或[更新](/azure/kusto/management/alter-table-command)資料表架構和[對應](/azure/kusto/management/mappings)以包含選取的屬性。 | | | 
 
     > [!NOTE]
     > 在[手動容錯移轉](/azure/iot-hub/iot-hub-ha-dr#manual-failover)的情況下，您必須重新建立資料連線。

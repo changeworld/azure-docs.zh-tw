@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 02/11/2020
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 944f5008cff8d982ef15a1b129e2cd41d7df5cb4
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 1598451ce184db5a25cac28870b70a446aef123c
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137709"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198815"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>從 Azure PowerShell 管理 IoT Central
 
@@ -21,13 +21,16 @@ ms.locfileid: "77137709"
 
 您可以使用[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)來管理應用程式，而不是在[Azure IoT Central 應用程式管理員](https://aka.ms/iotcentral)網站上建立和管理 IoT Central 應用程式。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 如果您偏好在本機電腦上執行 Azure PowerShell，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps) \(英文\)。 當您在本機上執行 Azure PowerShell 時，在嘗試本文中所述的 Cmdlet 之前，請先使用 **Connect-AzAccount** Cmdlet 來登入 Azure。
+
+> [!TIP]
+> 如果您需要在不同的 Azure 訂用帳戶中執行 PowerShell 命令，請參閱[變更有效的訂](/powershell/azure/manage-subscriptions-azureps?view=azps-3.4.0#change-the-active-subscription)用帳戶。
 
 ## <a name="install-the-iot-central-module"></a>安裝 IoT Central 模組
 
@@ -45,7 +48,7 @@ Install-Module Az.IotCentral
 
 ## <a name="create-an-application"></a>建立應用程式
 
-使用 [New-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/New-AzIotCentralApp) \(英文\) Cmdlet 來在您的 Azure 訂用帳戶中建立 IoT Central 應用程式。 例如：
+使用 [New-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/New-AzIotCentralApp) \(英文\) Cmdlet 來在您的 Azure 訂用帳戶中建立 IoT Central 應用程式。 例如，
 
 ```powershell
 # Create a resource group for the IoT Central application
@@ -66,11 +69,11 @@ New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
 |參數         |描述 |
 |------------------|------------|
 |resourceGroupName |包含應用程式的資源群組。 此資源群組必須已經存在於您的訂用帳戶中。 |
-|Location |根據預設，此 Cmdlet 會使用來自資源群組的位置。 目前，您可以在**澳大利亞**、**亞太地區**、**歐洲**或**美國**地區建立 IoT Central 應用程式。  |
+|位置 |根據預設，此 Cmdlet 會使用來自資源群組的位置。 目前，您可以在**澳大利亞**、**亞太地區**、**歐洲**或**美國**地區建立 IoT Central 應用程式。  |
 |名稱              |應用程式在 Azure 入口網站中的名稱。 |
-|子網域         |應用程式 URL 中的子網域。 在範例中，應用程式 URL 是 https://mysubdomain.azureiotcentral.com。 |
-|SKU               |目前，您可以使用**ST1**或**ST2**。 請參閱 [Azure IoT Central 價格](https://azure.microsoft.com/pricing/details/iot-central/)。 |
-|[範本]          | 要使用的應用程式範本。 如需詳細資訊，請參閱下列表格。 |
+|子領域         |應用程式 URL 中的子網域。 在範例中，應用程式 URL 是 https://mysubdomain.azureiotcentral.com。 |
+|Sku               |目前，您可以使用**ST1**或**ST2**。 請參閱 [Azure IoT Central 價格](https://azure.microsoft.com/pricing/details/iot-central/)。 |
+|範本          | 要使用的應用程式範本。 如需詳細資訊，請參閱下列表格。 |
 |DisplayName       |在 UI 中顯示的應用程式名稱。 |
 
 [!INCLUDE [iot-central-template-list](../../../includes/iot-central-template-list.md)]
@@ -91,7 +94,7 @@ Set-AzIotCentralApp -Name "myiotcentralapp" `
 
 ## <a name="remove-an-application"></a>移除應用程式
 
-使用 [Remove-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/Remove-AzIotCentralApp) \(英文\) Cmdlet 來刪除 IoT Central 應用程式。 例如：
+使用 [Remove-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/Remove-AzIotCentralApp) \(英文\) Cmdlet 來刪除 IoT Central 應用程式。 例如，
 
 ```powershell
 Remove-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `

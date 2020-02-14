@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 01/21/2020
-ms.openlocfilehash: d28eb6c4ee4fadf8a090a17121f6910eb34135e3
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: b9fdd1b25e53e1cdc8aa76564304a61adaa8d804
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935214"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201589"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>什麼是 Azure SQL Database 受控實例？
 
@@ -53,14 +53,14 @@ ms.locfileid: "76935214"
 
 下表顯示受控執行個體的主要功能：
 
-|功能 | 說明|
+|功能 | 描述|
 |---|---|
 | SQL Server 版本/組建 | SQL Server 資料庫引擎 (最新穩定版) |
 | 受控自動化備份 | 是 |
 | 內建執行個體和資料庫的監視與計量 | 是 |
 | 自動軟體修補 | 是 |
 | 最新的資料庫引擎功能 | 是 |
-| 每個資料庫的資料檔案 (ROWS) 數目 | 多個 |
+| 每個資料庫的資料檔案 (ROWS) 數目 | 選擇性顯示 |
 | 每個資料庫的記錄檔 (LOG) 數目 | 1 |
 | VNet - Azure Resource Manager 部署 | 是 |
 | VNet - 傳統部署模型 | 否 |
@@ -81,9 +81,6 @@ ms.locfileid: "76935214"
 
 在[受控執行個體資源限制](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics)中尋找關於硬體世代之間差異的詳細資訊。
 
-> [!IMPORTANT]
-> 澳大利亞東部或巴西南部區域不再支援新的第4代資料庫。
-
 ## <a name="managed-instance-service-tiers"></a>受控執行個體服務層級
 
 有兩個服務層級可使用受控執行個體：
@@ -99,7 +96,7 @@ ms.locfileid: "76935214"
 
 - 專為大多數有標準效能需求的商務應用程式所設計
 - 高效能的 Azure Blob 儲存體 (8 TB)
-- 根據可靠的 Azure Blob 儲存體和 [Azure Service Fabric](../service-fabric/service-fabric-overview.md) 內建的[高可用性](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability)
+- 根據可靠的 Azure Blob 儲存體和 [Azure Service Fabric](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) 內建的[高可用性](../service-fabric/service-fabric-overview.md)
 
 如需詳細資訊，請參閱[一般用途層中的儲存體層](https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c)和[受控執行個體 (一般用途) 的儲存體效能最佳做法和考量](https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose/) \(英文\)。
 
@@ -113,7 +110,7 @@ ms.locfileid: "76935214"
 
 - 專為具有極高效能和 HA 需求的商務應用程式所設計
 - 提供超級快速的本機 SSD 儲存體 (在 Gen4 上可達 1 TB，而在 Gen5 上可達 4 TB)
-- 根據 [Always On 可用性群組](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)和 [Azure Service Fabric](../service-fabric/service-fabric-overview.md) 內建的[高可用性](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability)。
+- 根據 [Always On 可用性群組](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability)和 [Azure Service Fabric](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) 內建的[高可用性](../service-fabric/service-fabric-overview.md)。
 - 可用於報告和其他唯讀工作負載的其他內建[唯讀資料庫複本](sql-database-read-scale-out.md)
 - [記憶體內部 OLTP](sql-database-in-memory.md)，可用於具有高效能需求的工作負載  
 
@@ -147,7 +144,7 @@ Azure SQL Database 提供管理作業，可讓您在不再需要時，用來自�
 
 下表摘要說明作業和一般的整體持續時間：
 
-|類別  |作業  |長時間執行的區段  |預估持續時間  |
+|類別  |作業  |長時間執行的區段  |預估持續期間  |
 |---------|---------|---------|---------|
 |**部署** |空白子網中的第一個實例|建立虛擬叢集|90% 的作業在4小時內完成|
 |部署 |非空白子網中另一個硬體世代的第一個實例（例如，第一個 Gen 5 實例，位於具有 Gen 4 實例的子網中）|虛擬叢集建立 *|90% 的作業在4小時內完成|
@@ -277,7 +274,7 @@ Azure SQL Database 提供一組可用來保護資料的進階安全性功能。
 
 受控執行個體部署選項鎖定的是透過將大量資料庫從內部部署或 IaaS 資料庫實作移轉的使用者案例。 受控執行個體支援數個資料庫移轉選項：
 
-### <a name="back-up-and-restore"></a>備份和還原  
+### <a name="back-up-and-restore"></a>備份及還原  
 
 移轉方法會利用 SQL 備份到 Azure Blob 儲存體。 透過 [T-SQL RESTORE 命令](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql?view=azuresqldb-mi-current)，儲存在 Azure 儲存體 Blob 的備份可以直接用來還原到受控執行個體。
 
@@ -328,7 +325,7 @@ Azure 資料庫移轉服務是一個完全受控的服務，能夠從多個資�
 |`@@VERSION`|Microsoft SQL Azure (RTM) - 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|此值與 SQL Database 中的相同。 這**不**表示 SQL 引擎第12版（SQL Server 2014）。 受控實例一律會執行最新的穩定 SQL 引擎版本，其等於或高於 SQL Server 的最新可用 RTM 版本。  |
 |`SERVERPROPERTY ('Edition')`|SQL Azure|此值與 SQL Database 中的相同。|
 |`SERVERPROPERTY('EngineEdition')`|8|此值只會識別出受控執行個體。|
-|`@@SERVERNAME`，`SERVERPROPERTY ('ServerName')`|下列格式的完整執行個體 DNS 名稱：`<instanceName>`.`<dnsPrefix>`.database.windows.net，其中 `<instanceName>` 是客戶提供的名稱，而 `<dnsPrefix>` 是自動產生的部分名稱，確保全域 DNS 名稱是唯一的 (例如，"wcus17662feb9ce98")|範例：my-managed-instance.wcus17662feb9ce98.database.windows.net|
+|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|下列格式的完整執行個體 DNS 名稱：`<instanceName>`.`<dnsPrefix>`.database.windows.net，其中 `<instanceName>` 是客戶提供的名稱，而 `<dnsPrefix>` 是自動產生的部分名稱，確保全域 DNS 名稱是唯一的 (例如，"wcus17662feb9ce98")|範例：my-managed-instance.wcus17662feb9ce98.database.windows.net|
 
 ## <a name="next-steps"></a>後續步驟
 

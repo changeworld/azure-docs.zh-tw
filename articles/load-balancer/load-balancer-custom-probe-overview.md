@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 5517b6434d8d654e8aa7e28bec8f6d2a3d9ca73b
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 46d566dc7527097d36b72886ada1f8c94f727535
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77056677"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198746"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer 健康情況探查
 
-搭配 Azure Load Balancer 使用負載平衡規則時，您需要指定健康情況探查，以允許 Load Balancer 偵測後端端點狀態。  健康情況探查和探查回應的設定會決定哪些後端集區實例會接收新的流程。 您可以使用健康情況探查來偵測後端端點上的應用程式失敗。 您也可以對健康情況探查產生自訂回應，並運用健康情況探查來控制流量，藉此管理負載或排定的停機時間。 當健康情況探查失敗時，Load Balancer 將會停止將新流量傳送至個別狀況不良的實例。 輸出連線不會受到影響，只會影響輸入連線能力。
+搭配 Azure Load Balancer 使用負載平衡規則時，您必須指定健全狀況探查，以允許 Load Balancer 偵測後端端點狀態。  健康情況探查和探查回應的設定會決定哪些後端集區實例會接收新的流程。 您可以使用健康情況探查來偵測後端端點上的應用程式失敗。 您也可以對健康情況探查產生自訂回應，並運用健康情況探查來控制流量，藉此管理負載或排定的停機時間。 當健康情況探查失敗時，Load Balancer 將會停止將新流量傳送至個別狀況不良的實例。 輸出連線不會受到影響，只會影響輸入連線能力。
 
 健康情況探查支援多個通訊協定。 特定健康情況探查通訊協定的可用性會因 Load Balancer SKU 而有所不同。  此外，服務的行為會因 Load Balancer SKU 而有所不同，如下表所示：
 

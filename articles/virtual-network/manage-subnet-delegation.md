@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: kumud
-ms.openlocfilehash: d7fbb4c6f30754569b0aeea60f10d4a10e792ba7
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 6f767abdf8673e3adffc6c4e3748733054ba723d
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933929"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201861"
 ---
 # <a name="add-or-remove-a-subnet-delegation"></a>新增或移除子網委派
 
 子網路委派提供明確的權限給服務以在部署服務時使用唯一識別碼在子網路中建立服務特定資源。 本文說明如何為 Azure 服務新增或移除委派的子網。
 
-## <a name="portal"></a>入口網站
+## <a name="portal"></a>Portal
 
 ### <a name="sign-in-to-azure"></a>登入 Azure
 
@@ -40,7 +40,7 @@ ms.locfileid: "76933929"
     | ------- | ----- |
     | 名稱 | 輸入 MyVirtualNetwork。 |
     | 位址空間 | 輸入 *10.0.0.0/16*。 |
-    | 訂閱 | 選取您的訂用帳戶。|
+    | 訂用帳戶 | 選取您的訂用帳戶。|
     | 資源群組 | 選取 [新建]，輸入 *myResourceGroup*，然後選取 [確定]。 |
     | 位置 | 選取 [ **EastUS**]。|
     | 子網路 - 名稱 | 輸入 mySubnet。 |
@@ -48,7 +48,7 @@ ms.locfileid: "76933929"
     |||
 1. 將其餘部分保留為預設值，然後選取 [**建立**]。
 
-### <a name="permissions"></a>使用權限
+### <a name="permissions"></a>權限
 
 如果您未建立想要委派給 Azure 服務的子網，您需要下列許可權： `Microsoft.Network/virtualNetworks/subnets/write`。
 
@@ -90,7 +90,7 @@ ms.locfileid: "76933929"
 ```
 
 ### <a name="create-a-virtual-network"></a>建立虛擬網路
-使用 [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet)，在 **myResourceGroup** 中建立名為 **myVNet**、具有子網路 **mySubnet** 的虛擬網路。
+使用 **az network vnet create**，在 **myResourceGroup** 中建立名為 **myVNet**、具有子網路 [mySubnet](https://docs.microsoft.com/cli/azure/network/vnet) 的虛擬網路。
 
 ```azurecli-interactive
   az network vnet create \
@@ -101,7 +101,7 @@ ms.locfileid: "76933929"
     --subnet-name mySubnet \
     --subnet-prefix 10.0.0.0/24
 ```
-### <a name="permissions"></a>使用權限
+### <a name="permissions"></a>權限
 
 如果您未建立想要委派給 Azure 服務的子網，您需要下列許可權： `Microsoft.Network/virtualNetworks/subnets/write`。
 
@@ -162,7 +162,7 @@ ms.locfileid: "76933929"
 若要確認已移除委派，請使用[az network vnet subnet show](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-show)。 確認服務已從屬性**serviceName**的子網中移除：
 
 ```azurecli-interactive
-  az network vnet show \
+  az network vnet subnet show \
   --resource-group myResourceGroup \
   --name mySubnet \
   --vnet-name myVnet \
@@ -200,7 +200,7 @@ ms.locfileid: "76933929"
 
   New-AzVirtualNetwork -Name myVnet -ResourceGroupName myResourceGroup -Location eastus -AddressPrefix "10.0.0.0/16" -Subnet $subnet
 ```
-### <a name="permissions"></a>使用權限
+### <a name="permissions"></a>權限
 
 如果您未建立想要委派給 Azure 服務的子網，您需要下列許可權： `Microsoft.Network/virtualNetworks/subnets/write`。
 

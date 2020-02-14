@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: 47b9c0f89cb3db1610b8e3d98f408283c6ff9980
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 3a7fc8028348ae20403df62cd03c76a266edf07c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116923"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191326"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>保護 Azure Logic Apps 中的存取和資料
 
@@ -29,7 +29,7 @@ ms.locfileid: "77116923"
 
 如果您的邏輯應用程式使用以要求為基礎的觸發程式，例如[要求](../connectors/connectors-native-reqres.md)或[Webhook](../connectors/connectors-native-webhook.md)觸發程式，則您可以限制存取權，讓只有經過授權的用戶端可以呼叫您的邏輯應用程式。 邏輯應用程式收到的所有要求，都會使用安全通訊端層 (SSL) 通訊協定加密並保護。
 
-以下是您可以保護此觸發程式類型之存取的方式：
+以下選項可協助您保護此觸發程式類型的存取：
 
 * [產生共用存取簽章](#sas)
 * [限制輸入 IP 位址](#restrict-inbound-ip-addresses)
@@ -62,7 +62,7 @@ ms.locfileid: "77116923"
 
 #### <a name="regenerate-access-keys"></a>重新產生存取金鑰
 
-若要隨時產生新的安全存取金鑰，請使用 Azure REST API 或 Azure 入口網站。 所有先前產生的使用舊金鑰的 Url 都會失效，且不再有觸發邏輯應用程式的授權。 您在重新產生之後取得的 Url 會使用新的存取金鑰進行簽署。
+若要隨時產生新的安全性存取金鑰，請使用 Azure REST API 或 Azure 入口網站。 所有先前產生的使用舊金鑰的 Url 都會失效，且不再有觸發邏輯應用程式的授權。 您在重新產生之後取得的 Url 會使用新的存取金鑰進行簽署。
 
 1. 在  [Azure 入口網站](https://portal.azure.com)中，開啟具有您想要重新產生之金鑰的邏輯應用程式。
 
@@ -92,7 +92,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.Logic/workflows/<workflow-name>/triggers/<trigger-name>/listCallbackUrl?api-version=2016-06-01
 ```
 
-在本文中，將屬性 `KeyType` 包含為 `Primary` 或 `Secondary`。 此屬性會傳回使用指定安全金鑰簽署的 URL。
+在本文中，將屬性 `KeyType` 包含為 `Primary` 或 `Secondary`。 這個屬性會傳回由指定的安全性金鑰所簽署的 URL。
 
 <a name="restrict-inbound-ip"></a>
 
@@ -188,7 +188,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 * [依 IP 位址範圍限制存取](#restrict-ip)。
 
-  此選項可讓您根據特定 IP 位址範圍的要求來保護對執行歷程記錄的存取。
+  此選項可協助您根據特定 IP 位址範圍的要求來保護執行歷程記錄的存取。
 
 * [使用混淆來隱藏執行歷程記錄中的資料](#obfuscate)。
 
@@ -257,21 +257,21 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 ### <a name="hide-data-from-run-history-by-using-obfuscation"></a>使用混淆來隱藏執行歷程記錄中的資料
 
-許多觸發程式和動作都具有從邏輯應用程式的執行歷程記錄中隱藏輸入、輸出或兩者的設定。 當您使用這些設定來保護這項資料時，以下是一些[要審查的考慮事項](#obfuscation-considerations)。
+許多觸發程式和動作都具有從邏輯應用程式的執行歷程記錄中隱藏輸入、輸出或兩者的設定。 當您使用這些設定來協助保護這項資料時，以下是一些要[審查的考慮事項](#obfuscation-considerations)。
 
-#### <a name="secure-inputs-and-outputs-in-the-designer"></a>在設計工具中保護輸入和輸出
+#### <a name="hide-inputs-and-outputs-in-the-designer"></a>在設計工具中隱藏輸入和輸出
 
 1. 在 [Azure 入口網站](https://portal.azure.com)的邏輯應用程式設計工具中，開啟邏輯應用程式。
 
    ![在邏輯應用程式設計工具中開啟邏輯應用程式](./media/logic-apps-securing-a-logic-app/open-sample-logic-app-in-designer.png)
 
-1. 在您要保護資料的觸發程式或動作上，選取省略號（ **...** ）按鈕，然後選取 [**設定**]。
+1. 在您要隱藏敏感性資料的觸發程式或動作上，選取省略號（ **...** ）按鈕，然後選取 [**設定**]。
 
    ![開啟觸發程式或動作設定](./media/logic-apps-securing-a-logic-app/open-action-trigger-settings.png)
 
 1. 開啟**安全輸入**、**保護輸出**或兩者。 完成之後，選取 [完成]。
 
-   ![開啟安全的輸入或輸出](./media/logic-apps-securing-a-logic-app/turn-on-secure-inputs-outputs.png)
+   ![開啟「安全輸入」或「安全輸出」](./media/logic-apps-securing-a-logic-app/turn-on-secure-inputs-outputs.png)
 
    動作或觸發程式現在會在標題列中顯示鎖定圖示。
 
@@ -287,20 +287,20 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
    1. 在 [**邏輯應用程式執行**] 窗格中，展開您想要檢查的動作。
 
-      如果您選擇保護輸入和輸出，那些值現在會顯示為隱藏。
+      如果您選擇隱匿輸入和輸出，那些值現在會顯示為隱藏。
 
       ![執行歷程記錄中隱藏的輸入和輸出](./media/logic-apps-securing-a-logic-app/hidden-data-run-history.png)
 
 <a name="secure-data-code-view"></a>
 
-#### <a name="secure-inputs-and-outputs-in-code-view"></a>在程式碼視圖中保護輸入和輸出
+#### <a name="hide-inputs-and-outputs-in-code-view"></a>在程式碼視圖中隱藏輸入和輸出
 
 在基礎觸發程式或動作定義中，使用下列其中一個或兩個值來新增或更新 `runtimeConfiguration.secureData.properties` 陣列：
 
 * `"inputs"`：保護執行歷程記錄中的輸入。
 * `"outputs"`：保護執行歷程記錄中的輸出。
 
-當您使用這些設定來保護這項資料時，以下是一些[要審查的考慮事項](#obfuscation-considerations)。
+當您使用這些設定來協助保護這項資料時，以下是一些要[審查的考慮事項](#obfuscation-considerations)。
 
 ```json
 "<trigger-or-action-name>": {
@@ -324,13 +324,13 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 #### <a name="considerations-when-hiding-inputs-and-outputs"></a>隱藏輸入和輸出時的考慮
 
-* 當您保護觸發程式或動作的輸入或輸出時，Logic Apps 不會將受保護的資料傳送至 Azure Log Analytics。 此外，您也無法將[追蹤的屬性](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data)新增至該觸發程式或動作以進行監視。
+* 當您遮蔽觸發程式或動作的輸入或輸出時，Logic Apps 不會將受保護的資料傳送至 Azure Log Analytics。 此外，您也無法將[追蹤的屬性](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data)新增至該觸發程式或動作以進行監視。
 
 * [用於處理工作流程歷程記錄的 LOGIC APPS API](https://docs.microsoft.com/rest/api/logic/)不會傳回安全的輸出。
 
-* 若要保護來自保護輸入或明確使用安全輸出之動作的輸出，請手動開啟該動作中的**安全輸出**。
+* 若要隱藏不會遮蔽輸入或明確遮蔽輸出之動作的輸出，請手動開啟該動作中的**安全輸出**。
 
-* 請確定您在下游動作中開啟**安全輸入**或**安全輸出**，其中您預期執行歷程記錄會保護該資料。
+* 請確定您在下游動作中開啟**安全輸入**或**安全輸出**，而您預期執行歷程記錄會遮蔽該資料。
 
   **安全輸出設定**
 
@@ -358,7 +358,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 如果您在不同的環境之間部署，請考慮將工作流程定義中的值參數化，這會根據這些環境而有所不同。 如此一來，您可以藉由使用[Azure Resource Manager 範本](../azure-resource-manager/templates/overview.md)來部署邏輯應用程式、藉由定義安全的參數來保護機密資料，以及使用[參數](../azure-resource-manager/templates/parameter-files.md)檔案，透過[範本的參數](../azure-resource-manager/templates/template-parameters.md)將該資料當做個別輸入傳遞，以避免硬式編碼的資料。
 
-例如，如果您使用[Azure Active Directory OAuth](#azure-active-directory-oauth-authentication)來驗證 HTTP 動作，您可以定義並保護接受用於驗證之用戶端識別碼和用戶端密碼的參數。 若要在邏輯應用程式中定義這些參數，請使用邏輯應用程式的工作流程定義中的 `parameters` 區段，並 Resource Manager 範本進行部署。 若要隱藏編輯邏輯應用程式或查看執行歷程記錄時不想顯示的參數值，請使用 `securestring` 或 `secureobject` 類型來定義參數，並視需要使用編碼方式。 具有此類型的參數不會隨資源定義一起傳回，而且在部署之後查看資源時無法存取。 若要在執行時間期間存取這些參數值，請使用工作流程定義內的 `@parameters('<parameter-name>')` 運算式。 此運算式只會在執行時間評估，並由[工作流程定義語言](../logic-apps/logic-apps-workflow-definition-language.md)所描述。
+例如，如果您使用[Azure Active Directory OAuth](#azure-active-directory-oauth-authentication)來驗證 HTTP 動作，您可以定義並遮蔽接受用於驗證之用戶端識別碼和用戶端密碼的參數。 若要在邏輯應用程式中定義這些參數，請使用邏輯應用程式的工作流程定義中的 `parameters` 區段，並 Resource Manager 範本進行部署。 若要隱藏編輯邏輯應用程式或查看執行歷程記錄時不想顯示的參數值，請使用 `securestring` 或 `secureobject` 類型來定義參數，並視需要使用編碼方式。 具有此類型的參數不會隨資源定義一起傳回，而且在部署之後查看資源時無法存取。 若要在執行時間期間存取這些參數值，請使用工作流程定義內的 `@parameters('<parameter-name>')` 運算式。 此運算式只會在執行時間評估，並由[工作流程定義語言](../logic-apps/logic-apps-workflow-definition-language.md)所描述。
 
 > [!NOTE]
 > 如果您在要求標頭或本文中使用參數，當您查看邏輯應用程式的執行歷程記錄和傳出 HTTP 要求時，可能會顯示該參數。 請確定您也會據以設定您的內容存取原則。 您也可以使用[混淆](#obfuscate)來隱藏執行歷程記錄中的輸入和輸出。 授權標頭絕對不會透過輸入或輸出來顯示。 如此一來如果該處有使用密碼，就無法擷取密碼。
@@ -566,7 +566,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 ## <a name="access-to-services-and-systems-called-from-logic-apps"></a>存取從邏輯應用程式呼叫的服務和系統
 
-以下是您可以保護接收來自邏輯應用程式之呼叫或要求之端點的一些方法：
+以下提供一些方法，可協助保護接收來自邏輯應用程式之呼叫或要求的端點：
 
 * 將驗證新增至輸出要求。
 
@@ -586,13 +586,13 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
   從邏輯應用程式對端點的所有呼叫，都是源自以您的邏輯應用程式區域為基礎的特定指定 IP 位址。 您可以新增篩選，以只接受來自那些 IP 位址的要求。 若要取得這些 IP 位址，請參閱[Azure Logic Apps 的限制和](logic-apps-limits-and-config.md#configuration)設定。
 
-* 保護內部部署系統的連接。
+* 提升內部部署系統連接的安全性。
 
-  Azure Logic Apps 提供與下列服務的整合，以提供安全可靠的內部部署通訊。
+  Azure Logic Apps 提供與這些服務的整合，以協助提供更安全且更可靠的內部部署通訊。
 
   * 內部部署資料閘道
 
-    Azure Logic Apps 中的許多受控連接器都會提供與內部部署系統（例如檔案系統、SQL、SharePoint 和 DB2）的安全連線。 閘道會在加密通道上經過 Azure 服務匯流排傳送來自內部部署來源的資料。 源自閘道代理程式的所有流量都是安全輸出流量。 了解[內部部署資料閘道的運作方式](logic-apps-gateway-install.md#gateway-cloud-service)。
+    中的許多受控連接器 Azure Logic Apps 有助於保護內部部署系統（例如檔案系統、SQL、SharePoint 和 DB2）的連接。 閘道會在加密通道上經過 Azure 服務匯流排傳送來自內部部署來源的資料。 所有流量都是來自閘道代理程式的安全輸出流量。 了解[內部部署資料閘道的運作方式](logic-apps-gateway-install.md#gateway-cloud-service)。
 
   * 透過 Azure API 管理連接
 
@@ -680,9 +680,9 @@ HTTP 和 HTTPS 端點支援各種類型的驗證。 根據您用來進行輸出�
 
 如需使用用戶端憑證驗證來保護服務安全的詳細資訊，請參閱下列主題：
 
-* [在 Azure API 管理中使用用戶端憑證驗證保護 Api](../api-management/api-management-howto-mutual-certificates-for-clients.md)
-* [在 Azure API 管理中使用用戶端憑證驗證來保護後端服務](../api-management/api-management-howto-mutual-certificates.md)
-* [使用用戶端憑證保護您的 RESTfuL 服務](../active-directory-b2c/secure-rest-api-dotnet-certificate-auth.md)
+* [在 Azure API 管理中使用用戶端憑證驗證來改善 Api 的安全性](../api-management/api-management-howto-mutual-certificates-for-clients.md)
+* [在 Azure API 管理中使用用戶端憑證驗證來改善後端服務的安全性](../api-management/api-management-howto-mutual-certificates.md)
+* [使用用戶端憑證來改善 RESTfuL 服務的安全性](../active-directory-b2c/secure-rest-api-dotnet-certificate-auth.md)
 * [應用程式驗證的憑證認證](../active-directory/develop/active-directory-certificate-credentials.md)
 * [在 Azure App Service 中的應用程式程式碼中使用 SSL 憑證](../app-service/configure-ssl-certificate-in-code.md)
 

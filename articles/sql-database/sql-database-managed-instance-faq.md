@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 81f776428303ad5e6486ba52c1acdf70d051563e
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 1c1995b4daf3b76abf7663d8d6c1f4cb7b1d6e2b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75835005"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201674"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL Database 受控實例的常見問題（FAQ）
 
@@ -82,21 +82,11 @@ ms.locfileid: "75835005"
 
 如果您的資料庫小於 100 GB，則這是建議的方法。 如果資料庫中的所有資料表都有主鍵，則可以使用異動複寫。
 
-## <a name="gen-4-vs-gen-5"></a>Gen 4 與 Gen 5 
-
-**如何? 在受控實例的 Gen 4 和 Gen 5 硬體世代之間做選擇嗎？**
-
-這取決於您的工作負載，因為某些硬體世代較適合特定類型的工作負載（而非另一種）。 雖然效能的主旨並不是複雜的，但會影響工作負載效能的硬體世代之間的下列差異：
-- Gen 4 提供更好的計算支援，因為它是以實體處理器為基礎，而是以 vCore 處理器為基礎的 Gen 5。 對於計算密集型工作負載而言，這可能更有利。
-- 第5代支援加速網路，進而提高遠端存放的 IO 頻寬。 對於一般用途服務層級的 IO 密集型工作負載而言，這可能很有利。 第5代使用更快速的 SSD 本機磁片，相較于第4代。 對於業務關鍵服務層級的 IO 密集型工作負載而言，這可能很有利。
-
-強烈建議您先測試適用于生產環境的實際工作負載效能，再進行上線，以判斷哪一種硬體世代在特定案例中會有更好的運作。
-
 ## <a name="switch-hardware-generation"></a>交換器硬體世代 
 
 **我可以在第4代和第5代連線之間切換受控實例的硬體世代嗎？**
 
-如果您的受控實例布建所在的區域中有兩個硬體世代可供使用，則可以在硬體世代之間進行自動線上切換。 在此情況下，您可以使用[來自 blog 文章的腳本](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Change-hardware-generation-on-Managed-Instance/ba-p/699824)，說明如何在硬體層代之間切換。
+如果您的受控實例布建所在的區域中有兩個硬體世代可供使用，則可以在硬體世代之間進行自動線上切換。 在此情況下，您可以查看[vCore 模型總覽頁面](sql-database-service-tiers-vcore.md)，說明如何在硬體世代之間切換。
 
 這是長時間執行的作業，因為新的受控實例將會在背景中布建，且資料庫會在程式結束時，自動在舊實例和新實例之間傳輸，並進行快速容錯移轉。 
 
@@ -108,8 +98,6 @@ ms.locfileid: "75835005"
 **如何? 調整受控實例的效能？**
 
 一般用途受控實例會使用遠端存放，因為資料和記錄檔的大小對效能很重要。 如需詳細資訊，請參閱[一般用途的記錄檔大小影響受控執行個體效能](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e)。
-
-對於 IO 密集型工作負載，請考慮使用 Gen 5 硬體，而不是針對計算密集型工作負載使用 Gen 4。 如需詳細資訊，請參閱[如何? 在 gen 4 和 gen 5 之間選擇](#gen-4-vs-gen-5)。
 
 如果您的工作負載包含許多小型交易，請考慮將連線類型從 proxy 切換到重新導向模式。
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/11/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: d89240467d5ea5172d04c8eb187fe85d1b702723
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c73a62b2d5feeae42a5ea35c88073dd5fcc0d78c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74980600"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77192543"
 ---
 ## <a name="for-users-in-your-directory"></a>適用于您目錄中的使用者
 
@@ -198,7 +198,7 @@ ms.locfileid: "74980600"
 
 ## <a name="enable-requests"></a>啟用要求
 
-1. 如果您想要讓存取套件立即提供給要求原則中的使用者要求，請按一下 **[是]** 啟用。
+1. 如果您想要讓存取套件立即提供給要求原則中的使用者要求，請將 [啟用] 切換為 **[是]** 。
 
     在您完成建立存取套件之後，隨時都可以在未來啟用它。
 
@@ -206,4 +206,4 @@ ms.locfileid: "74980600"
 
     ![存取套件-原則-啟用原則設定](./media/active-directory-entitlement-management-request-policy/enable-requests.png)
 
-1. 按一下 [下一步]。
+1. 按 [下一步]。

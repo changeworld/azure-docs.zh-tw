@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/11/2019
-ms.openlocfilehash: 62a66f180fd6e89329fe17a96115ecc4ca914107
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3ca9cbf2e282e3f67af3c5da470a3d81e6055f98
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407240"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189578"
 ---
 # <a name="monitor-azure-app-service-performance"></a>監視 Azure App Service 效能
 
@@ -173,7 +173,7 @@ ms.locfileid: "75407240"
 |ApplicationInsightsAgent_EXTENSION_VERSION | 主要延伸模組，控制執行時間監視。 | `~2` |
 |XDT_MicrosoftApplicationInsights_Mode |  只有在預設模式下，才會啟用基本功能，以確保最佳效能。 | `default` 或 `recommended`。 |
 |InstrumentationEngine_EXTENSION_VERSION | 控制二進位重寫引擎是否 `InstrumentationEngine` 將會開啟。 此設定會影響效能，並會影響冷啟動/啟動時間。 | `~1` |
-|XDT_MicrosoftApplicationInsights_BaseExtensions | 控制 SQL & Azure 資料表文字是否會隨著相依性呼叫一起捕捉。 效能警告：此設定需要 `InstrumentationEngine`。 | `~1` |
+|XDT_MicrosoftApplicationInsights_BaseExtensions | 控制 SQL & Azure 資料表文字是否會隨著相依性呼叫一起捕捉。 效能警告：應用程式冷啟動時間將會受到影響。 此設定需要 `InstrumentationEngine`。 | `~1` |
 
 ### <a name="app-service-application-settings-with-azure-resource-manager"></a>使用 Azure Resource Manager App Service 應用程式設定
 
@@ -229,6 +229,10 @@ App service 的應用程式設定 JSON 基本結構如下：
                         {
                             "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
                             "value": "[reference('microsoft.insights/components/AppMonitoredSite', '2015-05-01').InstrumentationKey]"
+                        },
+                        {
+                            "name": "APPLICATIONINSIGHTS_CONNECTION_STRING",
+                            "value": "[reference('microsoft.insights/components/AppMonitoredSite', '2015-05-01').ConnectionString]"
                         },
                         {
                             "name": "ApplicationInsightsAgent_EXTENSION_VERSION",
@@ -308,9 +312,6 @@ App service 的應用程式設定 JSON 基本結構如下：
 }
 ```
 
-> [!NOTE]
-> 範本會以「預設」模式產生應用程式設定。 此模式會優化效能，不過您可以修改範本來啟動您偏好的任何功能。
-
 ### <a name="enabling-through-powershell"></a>透過 PowerShell 啟用
 
 若要透過 PowerShell 啟用應用程式監視，只需要變更基礎應用程式設定。 以下範例會啟用資源群組 "AppMonitoredRG" 中名為 "AppMonitoredSite" 之網站的應用程式監視，並設定要傳送至 "012345678-abcd-ef01-2345-6789abcd" 檢測金鑰的資料。
@@ -320,8 +321,9 @@ App service 的應用程式設定 JSON 基本結構如下：
 ```powershell
 $app = Get-AzWebApp -ResourceGroupName "AppMonitoredRG" -Name "AppMonitoredSite" -ErrorAction Stop
 $newAppSettings = @{} # case-insensitive hash map
-$app.SiteConfig.AppSettings | %{$newAppSettings[$_.Name] = $_.Value} #preserve non Application Insights Application settings.
-$newAppSettings["APPINSIGHTS_INSTRUMENTATIONKEY"] = "012345678-abcd-ef01-2345-6789abcd"; # enable the ApplicationInsightsAgent
+$app.SiteConfig.AppSettings | %{$newAppSettings[$_.Name] = $_.Value} # preserve non Application Insights application settings.
+$newAppSettings["APPINSIGHTS_INSTRUMENTATIONKEY"] = "012345678-abcd-ef01-2345-6789abcd"; # set the Application Insights instrumentation key
+$newAppSettings["APPLICATIONINSIGHTS_CONNECTION_STRING"] = "InstrumentationKey=012345678-abcd-ef01-2345-6789abcd"; # set the Application Insights connection string
 $newAppSettings["ApplicationInsightsAgent_EXTENSION_VERSION"] = "~2"; # enable the ApplicationInsightsAgent
 $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.ResourceGroup -Name $app.Name -ErrorAction Stop
 ```
@@ -359,7 +361,7 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 1. 檢查是否已透過 `ApplicationInsightsAgent`監視應用程式。
     * 檢查 `ApplicationInsightsAgent_EXTENSION_VERSION` 應用程式設定是否設定為 "~ 2" 的值。
 2. 請確定應用程式符合要監視的需求。
-    * 瀏覽至 `https://yoursitename.scm.azurewebsites.net/ApplicationInsights`。
+    * 流覽至 `https://yoursitename.scm.azurewebsites.net/ApplicationInsights`
 
     ![https://yoursitename.scm.azurewebsites/applicationinsights [結果] 頁面的螢幕擷取畫面](./media/azure-web-apps/app-insights-sdk-status.png)
 
@@ -370,7 +372,7 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
         * 如果沒有類似的值，則表示應用程式目前不在執行中或不受支援。 若要確保應用程式正在執行，請嘗試手動流覽應用程式 url/應用程式端點，這將允許執行時間資訊變成可用。
 
     * 確認 `IKeyExists` 為 `true`
-        * 如果為 false，請將 ' APPINSIGHTS_INSTRUMENTATIONKEY 加上 ikey guid 新增至您的應用程式設定。
+        * 如果 `false`，請使用您的 ikey guid 將 `APPINSIGHTS_INSTRUMENTATIONKEY` 和 `APPLICATIONINSIGHTS_CONNECTION_STRING` 新增至您的應用程式設定。
 
     * 確認沒有 `AppAlreadyInstrumented`、`AppContainsDiagnosticSourceAssembly`和 `AppContainsAspNetTelemetryCorrelationAssembly`的專案。
         * 如果其中有任何專案存在，請從您的應用程式移除下列套件： `Microsoft.ApplicationInsights`、`System.Diagnostics.DiagnosticSource`和 `Microsoft.AspNet.TelemetryCorrelation`。

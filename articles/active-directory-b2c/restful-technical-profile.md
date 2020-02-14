@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8a562345caf47540321528560a5ee0b4854c42a9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: edad748bc2192f98b9674b80dada5b03aa9ee2d1
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840276"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77197969"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定義 Azure Active Directory B2C 自訂原則中的 RESTful 技術設定檔
 
@@ -110,7 +110,7 @@ REST API 技術設定檔可讓您將複雜的 JSON 承載傳送至端點。
 
 技術設定檔也會傳回識別提供者未傳回的宣告：
 
-- 預設值已設為 `true` 的 **loyaltyNumberIsNew** 宣告。
+- 預設值已設為 **的**loyaltyNumberIsNew`true` 宣告。
 
 ```xml
 <OutputClaims>
@@ -121,7 +121,7 @@ REST API 技術設定檔可讓您將複雜的 JSON 承載傳送至端點。
 
 ## <a name="metadata"></a>中繼資料
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要項 | 描述 |
 | --------- | -------- | ----------- |
 | ServiceUrl | 是 | REST API 端點的 URL。 |
 | AuthenticationType | 是 | RESTful 宣告提供者正在執行的驗證類型。 可能的值：`None`、`Basic`、`Bearer` 或 `ClientCertificate`。 `None` 值表示 REST API 並非匿名。 `Basic` 值表示 REST API 受到 HTTP 基本驗證保護。 只有經過驗證的使用者 (包括 Azure AD B2C) 才能存取您的 API。 `ClientCertificate` （建議）值表示 REST API 會使用用戶端憑證驗證來限制存取。 只有具有適當憑證（例如 Azure AD B2C）的服務才能存取您的 API。 `Bearer` 值表示 REST API 會使用用戶端 OAuth2 持有人權杖來限制存取。 |
@@ -129,6 +129,7 @@ REST API 技術設定檔可讓您將複雜的 JSON 承載傳送至端點。
 | ClaimsFormat | 否 | 指定輸出宣告的格式。 可能的值：`Body` (預設)、`Form`、`Header` 或 `QueryString`。 `Body` 值是以 JSON 格式在要求本文中傳送的輸出宣告。 `Form` 值是以符號「&」的分隔索引碼值格式在要求本文中傳送的輸出宣告。 `Header` 值是在要求標題中傳送的輸出宣告。 `QueryString` 值是在要求查詢字串中傳送的輸出宣告。 |
 | ClaimUsedForRequestPayload| 否 | 字串宣告的名稱，其中包含要傳送至 REST API 的承載。 |
 | DebugMode | 否 | 在偵錯模式中執行技術設定檔。 可能的值： `true`或 `false` （預設）。 在偵錯模式中，REST API 可以傳回更多資訊。 請參閱傳回[錯誤訊息](#returning-error-message)一節。 |
+| IncludeClaimResolvingInClaimsHandling  | 否 | 針對輸入和輸出宣告，指定技術設定檔中是否包含[宣告解析](claim-resolver-overview.md)。 可能的值： `true`或 `false` （預設）。 如果您想要在技術設定檔中使用宣告解析程式，請將此設定為 [`true`]。 |
 
 ## <a name="cryptographic-keys"></a>密碼編譯金鑰
 
@@ -148,7 +149,7 @@ REST API 技術設定檔可讓您將複雜的 JSON 承載傳送至端點。
 
 如果驗證類型設為 `Basic`，則 **CryptographicKeys** 元素會包含下列屬性：
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要項 | 描述 |
 | --------- | -------- | ----------- |
 | BasicAuthenticationUsername | 是 | 用來驗證的使用者名稱。 |
 | BasicAuthenticationPassword | 是 | 用來驗證的密碼。 |
@@ -173,7 +174,7 @@ REST API 技術設定檔可讓您將複雜的 JSON 承載傳送至端點。
 
 如果驗證類型設為 `ClientCertificate`，則 **CryptographicKeys** 元素會包含下列屬性：
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要項 | 描述 |
 | --------- | -------- | ----------- |
 | ClientCertificate | 是 | 用來驗證的 X509 憑證 (RSA 金鑰組)。 |
 
@@ -194,7 +195,7 @@ REST API 技術設定檔可讓您將複雜的 JSON 承載傳送至端點。
 
 如果驗證類型設為 `Bearer`，則 **CryptographicKeys** 元素會包含下列屬性：
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要項 | 描述 |
 | --------- | -------- | ----------- |
 | BearerAuthenticationToken | 否 | OAuth 2.0 持有人權杖。 |
 
@@ -217,9 +218,9 @@ REST API 技術設定檔可讓您將複雜的 JSON 承載傳送至端點。
 
 您的 REST API 可能需要傳回錯誤訊息，例如「CRM 系統中找不到使用者」。 如果發生錯誤，REST API 應該會傳回 HTTP 409 錯誤訊息（衝突回應狀態碼）與下列屬性：
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要項 | 描述 |
 | --------- | -------- | ----------- |
-| version | 是 | 1.0.0 |
+| 版本 | 是 | 1.0.0 |
 | status | 是 | 409 |
 | 代碼 | 否 | RESTful 端點提供者的錯誤代碼，在啟用 `DebugMode` 時顯示。 |
 | requestId | 否 | RESTful 端點提供者的要求識別碼，在啟用 `DebugMode` 時顯示。 |

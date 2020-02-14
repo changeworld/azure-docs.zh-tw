@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 148ded0eba61221a2bdf0b8a50392da47a4c5f20
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 01e683e31905281d25fdcf976bc58397c052a6c3
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122484"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201623"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>在 Azure 中使用 SQL VM 資源提供者註冊 SQL Server 虛擬機器
 
@@ -126,7 +126,9 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
 ### <a name="lightweight-management-mode"></a>輕量管理模式
 
-如果 VM 上未安裝[SQL Server IaaS 代理程式擴充](virtual-machines-windows-sql-server-agent-extension.md)功能，則建議使用輕量模式向 SQL VM 資源提供者註冊。 這會以[輕量模式](#management-modes)安裝 SQL IaaS 擴充功能，並防止 SQL Server 服務重新開機。 然後，您可以隨時升級至完整模式，但是這麼做會重新開機 SQL Server 服務，因此建議您等到排程的維護時段。 您必須提供 SQL Server 授權的類型做為隨用隨付（`PAYG`）以依據使用量付費，或 Azure Hybrid Benefit （`AHUB`）來使用您自己的授權。
+如果 VM 上未安裝[SQL Server IaaS 代理程式擴充](virtual-machines-windows-sql-server-agent-extension.md)功能，則建議使用輕量模式向 SQL VM 資源提供者註冊。 這會以[輕量模式](#management-modes)安裝 SQL IaaS 擴充功能，並防止 SQL Server 服務重新開機。 然後，您可以隨時升級至完整模式，但是這麼做會重新開機 SQL Server 服務，因此建議您等到排程的維護時段。 
+
+提供 SQL Server 授權類型做為隨用隨付（`PAYG`）以依據使用量付費，Azure Hybrid Benefit （`AHUB`）使用您自己的授權，或使用嚴重損壞修復（`DR`）來啟動免費的[DR 複本授權](virtual-machines-windows-sql-high-availability-dr.md#free-dr-replica-in-azure)。
 
 容錯移轉叢集實例和多重實例部署只能以輕量模式向 SQL VM 資源提供者註冊。 
 
@@ -176,7 +178,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
 安裝在 Windows Server 2008 （_不是 R2_）上的 SQL Server 2008 和 2008 R2 可以在[NoAgent 模式](#management-modes)中向 SQL VM 資源提供者註冊。 此選項可確保合規性，並允許在功能有限的 Azure 入口網站中監視 SQL Server 的 VM。
 
-指定 `AHUB` 或 `PAYG` 做為**sqlLicenseType**，並 `SQL2008-WS2008` 或 `SQL2008R2-WS2008` 做為**sqlImageOffer**。 
+指定 [`AHUB`]、[`PAYG`] 或 [`DR`] 做為**sqlLicenseType**，以及 [`SQL2008-WS2008`] 或 [`SQL2008R2-WS2008`] 做為**sqlImageOffer**。 
 
 若要在 Windows Server 2008 實例上註冊您的 SQL Server 2008 或 2008 R2 實例，請使用下列 Az CLI 或 PowerShell 程式碼片段： 
 

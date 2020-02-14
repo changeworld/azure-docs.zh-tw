@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/17/2019
+ms.date: 02/12/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c43e3386886456eed0c58fefd0fb1212795db66c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 38763f414b1e5373af79d2501850a44e8e813451
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480160"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185464"
 ---
 # <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>在 Azure AD B2C 中定義電話號碼宣告轉換
 
@@ -30,10 +30,10 @@ ms.locfileid: "75480160"
 
 此宣告會驗證電話號碼的格式。 如果它是有效的格式，請將它變更為 Azure AD B2C 所使用的標準格式。 如果所提供的電話號碼格式不正確，則會傳回錯誤訊息。
 
-| 項目 | TransformationClaimType | 資料類型 | 注意 |
+| 項目 | TransformationClaimType | 資料型別 | 注意事項 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | string | 從轉換的字串類型宣告。 |
-| OutputClaim | outputClaim | string | 此宣告轉換的結果。 |
+| OutputClaim | outputClaim | phoneNumber | 此宣告轉換的結果。 |
 
 **ConvertStringToPhoneNumberClaim**宣告轉換一律會從[自我判斷技術配置](self-asserted-technical-profile.md)檔或[顯示控制項](display-controls.md)所呼叫的[驗證技術設定檔](validation-technical-profile.md)執行。 **UserMessageIfClaimsTransformationInvalidPhoneNumber**自我判斷技術設定檔中繼資料會控制呈現給使用者的錯誤訊息。
 
@@ -74,7 +74,7 @@ ms.locfileid: "75480160"
 
 這會從輸入宣告中解壓縮國家/地區代碼和國家/地區號碼，並在提供的電話號碼無效時選擇性地擲回例外狀況。
 
-| 項目 | TransformationClaimType | 資料類型 | 注意 |
+| 項目 | TransformationClaimType | 資料型別 | 注意事項 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | phoneNumber | string | 電話號碼的字串宣告。 電話號碼必須是國際格式，並以前置的「+」和「國家/地區代碼」完成。 |
 | InputParameter | throwExceptionOnFailure | boolean | 選擇性參數，指出當電話號碼無效時，是否擲回例外狀況。 預設值為 false。 |

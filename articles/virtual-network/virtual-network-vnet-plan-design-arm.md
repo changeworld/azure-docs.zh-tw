@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: kumud
-ms.openlocfilehash: dfa7681b43bd18e15ee929156ab9a45bb9790c5b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 6e066d28afc4b0959b15284378cde682fbc05615
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845581"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190469"
 ---
 # <a name="plan-virtual-networks"></a>規劃虛擬網路
 
@@ -27,9 +27,9 @@ ms.locfileid: "76845581"
 
 ## <a name="naming"></a>命名
 
-所有 Azure 資源都有名稱。 名稱在範圍內必須是唯一的，而範圍可能會依每個資源類型而有所不同。 例如，虛擬網路的名稱在[資源群組](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)內必須是唯一的，但在[訂用帳戶](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)或 Azure [區域](https://azure.microsoft.com/regions/#services)內則可以重複。 在隨時間管理數個網路資源的情況下，定義可讓您在命名資源時一致地使用的命名慣例將會很有幫助。 如需建議，請參閱[命名慣例](/azure/architecture/best-practices/resource-naming#networking)。
+所有 Azure 資源都有名稱。 名稱在範圍內必須是唯一的，而範圍可能會依每個資源類型而有所不同。 例如，虛擬網路的名稱在[資源群組](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)內必須是唯一的，但在[訂用帳戶](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)或 Azure [區域](https://azure.microsoft.com/regions/#services)內則可以重複。 在隨時間管理數個網路資源的情況下，定義可讓您在命名資源時一致地使用的命名慣例將會很有幫助。 如需建議，請參閱[命名慣例](../azure-resource-manager/management/resource-name-rules.md#microsoftnetwork)。
 
-## <a name="regions"></a>地區
+## <a name="regions"></a>區域
 
 所有的 Azure 資源都是建立於 Azure 區域和訂用帳戶中。 只有當虛擬網路位於與資源相同的區域和訂用帳戶時，才能在虛擬網路中建立資源。 不過，您可以連線存在於不同訂用帳戶和區域中的虛擬網路。 如需詳細資訊，請參閱[連線能力](#connectivity)。 決定要將資源部署在哪些區域時，請考慮資源的取用者實際位於何處：
 
@@ -105,11 +105,11 @@ Azure 會針對來自子網路的輸出流量建立數個預設路由。 您可�
 
 單一虛擬網路中的資源無法使用 Azure 的[內建 DNS](virtual-networks-name-resolution-for-vms-and-role-instances.md) 來解析對等互連虛擬網路中的資源名稱。 若要解析對等互連虛擬網路中的名稱，請[部署您自己的 DNS 伺服器](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)，或使用 Azure DNS [私人網域](../dns/private-dns-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 若要解析虛擬網路和內部部署網路中資源間的名稱，也需要您部署自己的 DNS 伺服器。
 
-## <a name="permissions"></a>使用權限
+## <a name="permissions"></a>權限
 
 Azure 會針對資源使用[角色型存取控制](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (RBAC)。 許可權會指派給下列階層中的[範圍](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope)：管理群組、訂用帳戶、資源群組和個別資源。 若要深入了解階層，請參閱[組織您的資源](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 若要使用 Azure 虛擬網路和其所有相關功能，例如對等互連、網路安全性群組、服務端點和路由表，您可以將組織的成員指派為內建的[擁有者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner)、[參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor)或[網路參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色，再將該角色指派到適當的範圍。 如果您想要針對一組虛擬網路功能指派特定權限，請建立[自訂角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，並針對該角色指派[虛擬網路](manage-virtual-network.md#permissions)、[子網路和服務端點](virtual-network-manage-subnet.md#permissions)、[網路介面](virtual-network-network-interface.md#permissions)、[對等互連](virtual-network-manage-peering.md#permissions)、[網路和應用程式安全性群組](manage-network-security-group.md#permissions)或[路由表](manage-route-table.md#permissions)所需的特定權限。
 
-## <a name="policy"></a>原則
+## <a name="policy"></a>Policy(Windows Intune 說明：原則)
 
 Azure 原則可讓您建立、指派和管理原則定義。 原則定義會對您的資源強制執行不同的規則，讓資源能持續符合組織標準和服務等級協定的規範。 Azure 原則會針對資源執行評估，掃描出不符合您所擁有原則定義規範的資源。 例如，您可以定義並套用一個原則，以允許只在特定資源群組或區域中建立虛擬網路。 另一個原則可能會要求每個子網路都要有相關聯的網路安全性群組。 接著，在建立和更新資源時，系統就會評估這些原則。
 

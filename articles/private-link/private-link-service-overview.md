@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: f8d49a62ae9006e65ef86db1ae90cd5a5e9f1c6d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: d2313bfc47026ed9655d0ca25f0a0fdf3f86d8a5
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647368"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191073"
 ---
 # <a name="what-is-azure-private-link-service"></a>什麼是 Azure 私人連結服務？
 
@@ -55,6 +55,7 @@ Azure 私人連結服務是由 Azure 私用連結所支援的專屬服務參考�
 |Load Balancer 前端 IP 設定（loadBalancerFrontendIpConfigurations）    |    私人連結服務會系結至 Standard Load Balancer 的前端 IP 位址。 所有以服務為目標的流量都會到達 SLB 的前端。 您可以設定 SLB 規則，將此流量導向您的應用程式執行所在的適當後端集區。 負載平衡器前端 IP 設定與 NAT IP 設定不同。      |
 |NAT IP 設定（Ipconfiguration）    |    此屬性會參考私人連結服務的 NAT （網路位址轉譯） IP 設定。 您可以從服務提供者之虛擬網路中的任何子網選擇 NAT IP。 私用連結服務會在私人連結流量上執行目的地端 NAT。 這可確保來源（消費者端）和目的地（服務提供者）位址空間之間沒有 IP 衝突。 在目的地端（服務提供者端）上，NAT IP 位址會顯示為服務所接收之所有封包的來源 IP，以及您的服務所傳送之所有封包的目的地 IP。       |
 |私人端點連接（privateEndpointConnections）     |  此屬性會列出連接到私人連結服務的私人端點。 多個私人端點可以連接到相同的私用連結服務，而服務提供者可以控制個別私人端點的狀態。        |
+|TCP Proxy V2 （EnableProxyProtocol）     |  這個屬性可讓服務提供者使用 tcp proxy v2 來抓取關於服務取用者的連線資訊。 服務提供者負責設定接收者配置，使其能夠剖析 proxy 通訊協定 v2 標頭。        |
 |||
 
 
@@ -95,14 +96,28 @@ Azure 私人連結服務是由 Azure 私用連結所支援的專屬服務參考�
 
 您可以使用私人連結服務上的自動核准屬性，將核准連接的動作自動化。 自動核准是讓服務提供者 preapprove 一組訂用帳戶以自動存取其服務的功能。 客戶必須離線共用其訂閱，服務提供者才能新增至自動核准清單。 自動核准是可見度陣列的子集。 可見度可控制公開設定，而自動核准則會控制您服務的核准設定。 如果客戶從自動核准清單中的訂用帳戶要求連線，則會自動核准連線，並建立連接。 服務提供者不需要再手動核准該要求。 另一方面，如果客戶要求可見度陣列中的訂用帳戶連線，而不是自動核准陣列中的連接，則要求會到達服務提供者，但服務提供者必須手動核准連線。
 
+## <a name="getting-connection-information-using-tcp-proxy-v2"></a>使用 TCP Proxy v2 取得連接資訊
+
+使用私用連結服務時，來自私人端點之封包的來源 IP 位址是服務提供者端的網路位址轉譯（NAT），其使用從提供者的虛擬網路配置的 NAT IP。 因此，應用程式會接收配置的 NAT IP 位址，而不是服務取用者的實際來源 IP 位址。 如果您的應用程式需要取用者端的實際來源 IP 位址，您可以在您的服務上啟用 Proxy 通訊協定，並從 proxy 通訊協定標頭抓取資訊。 除了來源 IP 位址之外，proxy 通訊協定標頭也會攜帶私用端點的 LinkID。 來源 IP 位址和 LinkID 的組合可協助服務提供者唯一識別其取用者。 如需 Proxy 通訊協定的詳細資訊，請造訪這裡。 
+
+此資訊會使用自訂的類型長度值（TLV）向量進行編碼，如下所示：
+
+自訂的 TLV 詳細資料：
+
+|欄位 |長度（八位）  |描述  |
+|---------|---------|----------|
+|類型  |1        |PP2_TYPE_AZURE （0xEE）|
+|Length  |2      |值的長度|
+|值  |1     |PP2_SUBTYPE_AZURE_PRI加值稅EENDPOINT_LINKID （0x01）|
+|  |4        |UINT32 （4個位元組），代表私用端點的 LINKID。 以小 endian 格式編碼。|
+
+
 ## <a name="limitations"></a>限制
 
 以下是使用私用連結服務時的已知限制：
 - 僅在 Standard Load Balancer 上支援 
 - 僅支援 IPv4 流量
 - 僅支援 TCP 流量
-- 不支援從 Azure 入口網站建立及管理體驗
-- 服務提供者無法使用 proxy 通訊協定的用戶端連接資訊
 
 ## <a name="next-steps"></a>後續步驟
 - [使用 Azure PowerShell 建立私人連結服務](create-private-link-service-powershell.md)

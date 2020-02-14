@@ -1,20 +1,19 @@
 ---
 title: Apache Hadoop 元件和版本 - Azure HDInsight
 description: 瞭解 Azure HDInsight 中的 Apache Hadoop 元件和版本。
-keywords: hadoop 版本, hadoop 生態系統元件, hadoop 元件, 如何檢查 hadoop 版本
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 11/21/2019
-ms.openlocfilehash: ed4175d55d3c462c75dad7305f95e2ec4f84baf9
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 02/02/2020
+ms.openlocfilehash: 13c064701a5ecae2090a99980249f5daaa8d5395
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76764459"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198951"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>可以搭配 HDInsight 使用的 Apache Hadoop 元件和版本有哪些？
 
@@ -37,7 +36,7 @@ Azure HDInsight 支援多個可隨時部署的 Hadoop 叢集版本。 從2017年
 | Apache Hive            | 3.1.0         | 2.1.0，1.2。1                |
 | Apache Tez Hive2       | -             | 0.8.4                       |
 | Apache Ranger          | 1.1.0         | 0.7.0                       |
-| Apache HBase           | 2.0.2         | 1.1.2                       |
+| Apache HBase (英文)           | 2.0.2         | 1.1.2                       |
 | Apache Sqoop           | 1.4.7         | 1.4.6                       |
 | Apache Oozie           | 4.3.1         | 4.2.0                       |
 | Apache Zookeeper       | 3.4.6         | 3.4.6                       |
@@ -78,7 +77,7 @@ Azure HDInsight 支援多個可隨時部署的 Hadoop 叢集版本。 從2017年
 Spark 2.1、2.2 & Kafka 1.0 支援將于2020年6月30日到期。
 
 > [!NOTE]  
-> 當版本的支援到期之後，可能就無法透過 Microsoft Azure 入口網站取得它。 不過，您可透過 Windows PowerShell [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) 命令中的 `Version` 參數和 .NET SDK 持續取得叢集版本，直到版本停用日期為止。
+> 當版本的支援到期之後，可能就無法透過 Microsoft Azure 入口網站取得它。 不過，您可透過 Windows PowerShell `Version`New-AzHDInsightCluster[ 命令中的 ](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) 參數和 .NET SDK 持續取得叢集版本，直到版本停用日期為止。
 
 ### <a name="retired-versions"></a>已淘汰的版本
 
@@ -107,7 +106,7 @@ Spark 2.1、2.2 & Kafka 1.0 支援將于2020年6月30日到期。
 
     在過去，您只能使用本機系統管理員使用者和本機 SSH 使用者來建立 HDInsight 叢集。 本機系統管理員使用者可以存取所有的檔案、資料夾、資料表和資料行。  您可以利用企業安全性套件來啟用角色型存取控制，方法是將 HDInsight 叢集與您自己的 Active Directory 整合，叢集中會包含 IaaS 虛擬機器上的內部部署 Active Directory、Azure Active Directory Domain Services 或 Active Directory。 叢集上的網域系統管理員可以授與使用者使用自己公司 (網域) 的使用者名稱和密碼來存取叢集。
 
-    如需詳細資訊，請參閱：
+    如需詳細資訊，請參閱
 
     - [已加入網域之 HDInsight 叢集的 Apache Hadoop 安全性簡介](./domain-joined/hdinsight-security-overview.md)
     - [規劃 HDInsight 中已加入網域的 Azure Apache Hadoop 叢集](./domain-joined/apache-domain-joined-architecture.md)
@@ -119,7 +118,7 @@ Spark 2.1、2.2 & Kafka 1.0 支援將于2020年6月30日到期。
   - 與 Apache Ranger 整合可取得 Hive、Spark SQL 和 Yarn 佇列的授權。
   - 您可以設定檔案和資料夾的存取控制。
 
-    如需詳細資訊，請參閱：
+    如需詳細資訊，請參閱
 
   - [在已加入網域的 HDInsight 中設定 Apache Hive 原則](./domain-joined/apache-domain-joined-run-hive.md)
 
@@ -131,6 +130,8 @@ Spark 2.1、2.2 & Kafka 1.0 支援將于2020年6月30日到期。
 
 - Hadoop (僅限 HDInsight 3.6)
 - Spark
+- Kafka
+- hbase
 - 互動式查詢
 
 ### <a name="support-for-azure-data-lake-storage"></a>支援 Azure Data Lake Storage
@@ -148,10 +149,7 @@ Spark 2.1、2.2 & Kafka 1.0 支援將于2020年6月30日到期。
 - 公式 1：將 HDInsight 叢集版本 X 的發行日期加上 180 天。
 - 公式 2：將 Azure 入口網站中推出 HDInsight 叢集版本 X+1 的日期加上 90 天。
 
-「停用日期」是在此日期之後便無法在 HDInsight 上建立叢集版本。 從 2017 年 7 月 31 日開始，您就無法在 HDInsight 叢集的停用日期之後調整叢集。
-
-> [!NOTE]  
-> HDInsight Windows 叢集 (包括版本 2.1、3.0、3.1、3.2 和 3.3) 均可在 Azure 客體 OS 系列第 4 版上執行，此系列使用 64 位元版的 Windows Server 2012 R2。 Azure 客體 OS 系列第 4 版支援 .NET Framework 版本 4.0、4.5、4.5.1 和 4.5.2。
+_停用日期_是無法在 HDInsight 上建立叢集版本之後的日期。 從2017年7月31日開始，您無法在 HDInsight 叢集淘汰日期之後調整其大小。
 
 ## <a name="hortonworks-release-notes-associated-with-hdinsight-versions"></a>與 HDInsight 版本相關聯的 Hortonworks 版本資訊
 

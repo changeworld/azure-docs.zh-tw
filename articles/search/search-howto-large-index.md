@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: b4b6c57b08de07cae431f015c8d8f53cdf3a50a4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4ad5e961e390b60784355ff3bc72aca4a2f73e11
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460736"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190970"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中為大型資料集編制索引
 
@@ -55,7 +55,7 @@ ms.locfileid: "75460736"
 
 根據設計，排程的索引編製會在特定間隔啟動，且作業通常會在繼續執行下一個排程的間隔之前完成。 不過，如果處理未在間隔內完成，索引子就會停止 (因為其時間已用盡)。 在下一個間隔中，將會從上次中斷之處繼續進行處理，而系統會追蹤該發生點。 
 
-實際上，對於跨數天的索引負載，您可以將索引子安排在 24 小時的排程上。 繼續在下一個 24 小時的週期內進行索引編製時，作業會從最後一個已知的正常文件重新開始。 如此，索引子將可順利在數天內處理待處理項目，直到所有未處理的文件都完成處理為止。 如需此方法的詳細資訊，請參閱[在 Azure Blob 儲存體中為大型資料集編製索引](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)。 如需有關設定一般排程的詳細資訊，請參閱[建立索引子 REST API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer#request-syntax)或參閱[如何排程 Azure 認知搜尋的索引子](search-howto-schedule-indexers.md)。
+實際上，對於跨數天的索引負載，您可以將索引子安排在 24 小時的排程上。 繼續在下一個 24 小時的週期內進行索引編製時，作業會從最後一個已知的正常文件重新開始。 如此，索引子將可順利在數天內處理待處理項目，直到所有未處理的文件都完成處理為止。 如需此方法的詳細資訊，請參閱[在 Azure Blob 儲存體中為大型資料集編製索引](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)。 如需有關設定一般排程的詳細資訊，請參閱[建立索引子 REST API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer)或參閱[如何排程 Azure 認知搜尋的索引子](search-howto-schedule-indexers.md)。
 
 <a name="parallel-indexing"></a>
 
@@ -99,7 +99,7 @@ ms.locfileid: "75460736"
 > [!Note]
 > 增加複本時，如果預計索引大小會大幅增加，請考慮增加分割區計數。 分割區會儲存配量的索引內容；您的分割區愈多，每個分割區所須儲存的配量就愈少。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 + [索引子概觀](search-indexer-overview.md)
 + [在入口網站中編製索引](search-import-data-portal.md)

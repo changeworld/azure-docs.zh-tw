@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: kgremban
-ms.openlocfilehash: 38e688528d7445b16141d9f1ecc0318faf07e140
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: e3f55f9be28a8b53f012e111e43ba1f495b1d585
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76510000"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186476"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>在 Windows 上安裝 Azure IoT Edge 執行階段
 
@@ -133,25 +133,35 @@ PowerShell 指令碼會下載並安裝 Azure IoT Edge 安全性精靈。 接著�
 
 如需這些安裝選項的詳細資訊，請繼續閱讀本文，或跳過以了解[所有安裝參數](#all-installation-parameters)。
 
-## <a name="offline-installation"></a>離線安裝
+## <a name="offline-or-specific-version-installation"></a>離線或特定版本安裝
 
 在安裝期間，會下載兩個檔案：
 
 * Microsoft Azure IoT Edge cab，其中包含 IoT Edge security daemon （iot）、Moby 容器引擎和 Moby CLI。
-* Visual C++ 可轉散發套件 (VC 執行階段) msi
+* Visual C++可轉散發套件（VC RUNTIME） MSI
 
-您可以提早將其中一或兩個檔案下載到裝置，然後將安裝腳本指向包含檔案的目錄。 安裝程式會先檢查目錄，然後僅下載找不到的元件。 如果所有檔案都可離線使用，您可以在沒有網際網路連線的情況下安裝。 您也可以使用這項功能來安裝特定版本的元件。  
+如果您的裝置在安裝期間將會離線，或如果您想要安裝特定版本的 IoT Edge，您可以提早將其中一或兩個檔案下載到裝置。 當您安裝時，請將安裝腳本指向包含下載檔案的目錄。 安裝程式會先檢查該目錄，然後才會下載找不到的元件。 如果所有檔案都可離線使用，您可以在沒有網際網路連線的情況下安裝。
 
 如需最新的 IoT Edge 安裝檔案和舊版，請參閱[Azure IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)。
 
-若要使用離線元件安裝，請使用 `-OfflineInstallationPath` 參數做為 IoTEdge 命令的一部分，並提供檔案目錄的絕對路徑。 例如，
+若要使用離線元件安裝，請使用 `-OfflineInstallationPath` 參數做為 IoTEdge 命令的一部分，並提供檔案目錄的絕對路徑。 例如：
 
 ```powershell
 . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
 Deploy-IoTEdge -OfflineInstallationPath C:\Downloads\iotedgeoffline
 ```
 
-您也可以使用離線安裝路徑參數搭配 IoTEdge 命令，這會在本文稍後介紹。
+>[!NOTE]
+>`-OfflineInstallationPath` 參數會在提供的目錄中尋找名為**Microsoft-Azure-IoTEdge**的檔案。 從 IoT Edge 版本 1.0.9-rc4 開始，有兩個 .cab 檔案可供使用，一個用於 AMD64 裝置，另一個用於 ARM32。 請為您的裝置下載正確的檔案，然後將檔案重新命名，以移除架構尾碼。
+
+`Deploy-IoTEdge` 命令會安裝 IoT Edge 元件，然後您需要繼續進行 `Initialize-IoTEdge` 命令，以使用其 IoT 中樞裝置識別碼和連線來布建裝置。 請直接執行命令，並從 IoT 中樞提供連接字串，或使用上一節中的其中一個連結來瞭解如何自動布建裝置與裝置布建服務。
+
+```powershell
+. {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
+Initialize-IoTEdge
+```
+
+您也可以使用離線安裝路徑參數搭配 IoTEdge 命令。
 
 ## <a name="verify-successful-installation"></a>確認安裝成功
 
@@ -204,29 +214,6 @@ docker -H npipe:////./pipe/iotedge_moby_engine images
 ![yaml 中的 moby_runtime uri](./media/how-to-install-iot-edge-windows/moby-runtime-uri.png)
 
 如需有關您可以用來與裝置上執行的容器和映射進行互動之命令的詳細資訊，請參閱[Docker 命令列介面](https://docs.docker.com/engine/reference/commandline/docker/)。
-
-## <a name="update-an-existing-installation"></a>更新現有的安裝
-
-如果您之前已在裝置上安裝 IoT Edge 執行時間，並使用來自 IoT 中樞的身分識別進行布建，則您可以更新執行時間，而不需要重新輸入您的裝置資訊。
-
-如需更多資訊，請參閱[更新 IoT Edge 安全性精靈和執行階段](how-to-update-iot-edge.md)。
-
-此範例顯示指向現有組態檔的安裝，並使用 Windows 容器：
-
-```powershell
-. {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-Update-IoTEdge
-```
-
-當您更新 IoT Edge 時，可以使用其他參數來修改更新，包括：
-
-* 直接流量通過 proxy 伺服器，或
-* 將安裝程式指向離線目錄
-* 必要時重新開機而不提示
-
-您無法使用腳本參數宣告 IoT Edge 代理程式容器映射，因為先前安裝的設定檔中已設定該資訊。 如果您想要修改代理程式容器映像，請在 config.yaml 檔案中執行此操作。
-
-如需這些更新選項的詳細資訊，請使用命令 `Get-Help Update-IoTEdge -full` 或參考[所有安裝參數](#all-installation-parameters)。
 
 ## <a name="uninstall-iot-edge"></a>解除安裝 IoT Edge
 

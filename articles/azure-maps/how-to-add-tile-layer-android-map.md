@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e54eeaa6dafd60e5fc481f2f4b45929edda77c44
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 4113f632e70bf1008c688066b51a27f1bc3c6345
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911519"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198253"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>使用 Azure 地圖服務 Android SDK 將磚圖層新增至地圖
 
 本文說明如何使用 Azure 地圖服務 Android SDK，在地圖上轉譯磚圖層。 圖格圖層可讓您在 Azure 地圖服務的地圖底圖上覆蓋影像。 您可以在[縮放層級和圖格格線](zoom-levels-and-tile-grid.md)文件中找到有關 Azure 地圖服務圖格顯示系統的詳細資訊。
 
-磚圖層會從伺服器載入磚。 這些影像可以像伺服器上其他影像一樣，使用圖格圖層了解的命名慣例來預先轉譯及儲存，或是作為可動態產生影像的動態服務。 Azure 地圖服務 TileLayer 類別支援三種不同的磚服務命名慣例; 
+磚圖層會從伺服器載入磚。 您可以使用圖格圖層所瞭解的命名慣例，預先轉譯和儲存這些映射，就像伺服器上的任何其他影像一樣。 或者，您可以使用動態服務來呈現這些映射，以近乎即時的方式產生影像。 Azure 地圖服務 TileLayer 類別支援三種不同的磚服務命名慣例：
 
 * X、Y、縮放標記法 - 以縮放層級為基礎，在圖格格線中的圖格上，x 是資料行位置，而 y 是資料列位置。
 * Quadkey 標記法 - 將 x、y、縮放資訊結合成單一字串值，以作為圖格的唯一識別碼。
@@ -35,7 +35,7 @@ ms.locfileid: "75911519"
 * `{z}` 圖格的縮放層級。 也需要 `{x}` 和 `{y}`。
 * `{quadkey}` -圖格 quadkey 識別碼，以 Bing Maps 圖格系統的命名慣例為基礎。
 * `{bbox-epsg-3857}` - 使用 `{west},{south},{east},{north}` 格式的週框方塊字串，位在 EPSG 3857 空間參考系統中。
-* `{subdomain}` - 用來加入子網域值 (如果有指定) 的預留位置。
+* `{subdomain}`-如果指定子域值，則為子域值的預留位置。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -44,7 +44,7 @@ ms.locfileid: "75911519"
 
 ## <a name="add-a-tile-layer-to-the-map"></a>將圖格圖層新增至地圖
 
- 此範例示範如何建立圖格圖層，而此圖格圖層會指向一組使用 x、y、縮放圖格系統的圖格。 此圖格圖層的來源是天氣雷達覆疊圖，資料來源：[愛荷華州立大學的愛荷華州環境氣象網 (Iowa Environmental Mesonet of Iowa State University)](https://mesonet.agron.iastate.edu/ogc/)。 
+ 這個範例會示範如何建立指向一組磚的磚圖層。 這些磚使用「x，y，zoom」並排顯示系統。 此圖格圖層的來源是天氣雷達覆疊圖，資料來源：[愛荷華州立大學的愛荷華州環境氣象網 (Iowa Environmental Mesonet of Iowa State University)](https://mesonet.agron.iastate.edu/ogc/)。 
 
 您可以遵循下列步驟，將圖格圖層新增至地圖。
 

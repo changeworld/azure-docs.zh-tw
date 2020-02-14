@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 02/06/2019
+ms.date: 02/12/2020
 ms.author: shvija
-ms.openlocfilehash: a71751ba8dde2152a00a1455a51d13a3dedb792a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 51b69e8b7f6c980fd851cdf3e60ecfe0ade29e71
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437166"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187334"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>使用範本來建立含有事件中樞的命名空間並啟用擷取
 
@@ -235,7 +235,7 @@ ms.locfileid: "75437166"
 }
 ```
 
-如果您選擇 Azure Data Lake Store 作為目的地，請使用下列參數。 您必須在您想要擷取事件的 Data Lake Store 路徑上設定權限。 若要設定權限，請參閱[本文](event-hubs-capture-enable-through-portal.md#capture-data-to-an-azure-data-lake-store-account)。
+如果您選擇 Azure Data Lake 將 Gen 1 儲存為目的地，請使用下列參數。 您必須在您想要擷取事件的 Data Lake Store 路徑上設定權限。 若要設定許可權，請參閱[Capture data to Azure Data Lake Storage Gen 1](event-hubs-capture-enable-through-portal.md#capture-data-to-azure-data-lake-storage-gen-1)。
 
 ### <a name="subscriptionid"></a>subscriptionId
 

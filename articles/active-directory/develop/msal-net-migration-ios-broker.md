@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 17c7949f2bbd6d75343bb2e6825be36b56a20967
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: de259daa7fd27cc4f138c294a7f347502ca482a4
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695325"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185836"
 ---
 # <a name="migrate-ios-applications-that-use-microsoft-authenticator-from-adalnet-to-msalnet"></a>將使用 Microsoft Authenticator 從 ADAL.NET 到 MSAL.NET 的 iOS 應用程式遷移
 
@@ -37,7 +37,7 @@ ms.locfileid: "76695325"
 它們會啟用：
 
 - 單一登入。
-- 某些[條件式存取原則](../conditional-access/overview.md)所需的裝置識別。 如需詳細資訊，請參閱[裝置管理](../conditional-access/conditions.md#device-platforms)。
+- 某些[條件式存取原則](../conditional-access/overview.md)所需的裝置識別。 如需詳細資訊，請參閱[裝置管理](../conditional-access/concept-conditional-access-conditions.md#device-platforms)。
 - 應用程式識別驗證，在某些企業案例中也是必要的。 如需詳細資訊，請參閱[Intune 行動應用程式管理（MAM）](https://docs.microsoft.com/intune/mam-faq)。
 
 ## <a name="migrate-from-adal-to-msal"></a>從 ADAL 遷移至 MSAL
@@ -151,7 +151,7 @@ ADAL.NET 和 MSAL.NET 會使用 Url 叫用訊息代理程式，並將 broker 回
 <tr><td>
 URL 配置對您的應用程式而言是唯一的。
 </td><td>
-此 
+該 
 
 `CFBundleURLSchemes` 名稱必須包含 
 
@@ -189,7 +189,7 @@ ADAL.NET 和 MSAL.NET 都使用 `-canOpenURL:` 來檢查訊息代理程式是否
 <table>
 <tr><td>目前的 ADAL 程式碼：</td><td>MSAL 對應：</td></tr>
 <tr><td>
-使用方法 
+使用 
 
 `msauth`
 
@@ -201,7 +201,7 @@ ADAL.NET 和 MSAL.NET 都使用 `-canOpenURL:` 來檢查訊息代理程式是否
 </array>
 ```
 </td><td>
-使用方法 
+使用 
 
 `msauthv2`
 

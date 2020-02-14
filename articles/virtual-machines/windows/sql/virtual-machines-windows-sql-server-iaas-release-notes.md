@@ -12,19 +12,19 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/06/2020
-ms.openlocfilehash: b9d2b3916e4509e5ce3aa8a9ddd66f1cf14a8827
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 27682863a96e2f190a0dafe6e4d783029e987453
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690881"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201640"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Azure 虛擬機器上 SQL Server 的檔變更
 
 Azure 可讓您使用內建 SQL Server 映射來部署虛擬機器（VM）。 本文摘要說明與[Azure 虛擬機器上 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)最新版本中的新功能和改進相關的檔變更。 
 
 
-## <a name="january-2020"></a>2020年1月
+## <a name="january-2020"></a>2020 年 1 月
 
 | 變更 | 詳細資料 |
 | --- | --- |
@@ -50,7 +50,7 @@ Azure 可讓您使用內建 SQL Server 映射來部署虛擬機器（VM）。 �
 | **自訂映射可支援性** | 您現在可以將[SQL Server IaaS 延伸](virtual-machines-windows-sql-server-agent-extension.md#installation)模組安裝到自訂作業系統和 SQL 映射，以提供[彈性授權](virtual-machines-windows-sql-ahb.md)的有限功能。 當您向 SQL 資源提供者註冊您的自訂映射時，請將授權類型指定為 "AHUB"。 否則，註冊將會失敗。 | 
 | **命名實例可支援性** | 如果預設實例已正確卸載，您現在可以搭配使用[SQL Server IaaS 擴充](virtual-machines-windows-sql-server-agent-extension.md#installation)功能與已命名的實例。 | 
 | **入口網站增強功能** | 已改頭換面部署 SQL Server VM 的 Azure 入口網站體驗，以改善可用性。 如需詳細資訊，請參閱簡單的[快速入門](quickstart-sql-vm-create-portal.md)和更完整的作法[指南](virtual-machines-windows-portal-sql-server-provision.md)，以部署 SQL Server 的 VM。|
-|  **入口網站改進** | 現在可以使用[Azure 入口網站](virtual-machines-windows-sql-ahb.md#change-the-license-for-vms-already-registered-with-the-resource-provider)，將 SQL Server VM 的授權模型從 [隨用隨付] 變更為 [自備授權]。|
+| **入口網站改進** | 現在可以使用[Azure 入口網站](virtual-machines-windows-sql-ahb.md#vms-already-registered-with-the-resource-provider)，將 SQL Server VM 的授權模型從 [隨用隨付] 變更為 [自備授權]。|
 | **使用 Azure SQL Server VM CLI 簡化可用性群組部署** | 現在您可以比以往更輕鬆地將可用性群組部署至 Azure 中的 SQL Server VM。 您可以使用[Azure CLI](/cli/azure/sql/vm?view=azure-cli-2018-03-01-hybrid) ，從命令列建立 Windows 容錯移轉叢集、內部負載平衡器，以及可用性群組接聽程式。 如需詳細資訊，請參閱[使用 azure SQL SERVER VM CLI 在 AZURE vm 上設定 SQL Server 的 Always On 可用性群組](virtual-machines-windows-sql-availability-group-cli.md)。 | 
 | &nbsp; | &nbsp; |
 

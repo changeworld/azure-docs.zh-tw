@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 4f9804ed0e7d6c83a4f6fc732f836fcecce1c2e7
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: cc152460be777c30d79f783b9acfa846a4c73a72
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74548347"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188029"
 ---
 # <a name="streaming-ingestion-preview"></a>串流內嵌（預覽）
 
@@ -23,7 +23,7 @@ ms.locfileid: "74548347"
 > [!NOTE]
 > 串流內嵌不支援下列功能：
 > * [資料庫資料指標](/azure/kusto/management/databasecursor)。
-> * [資料對應](/azure/kusto/management/mappings)。 僅支援[預先建立的](/azure/kusto/management/tables#create-ingestion-mapping)資料對應。 
+> * [資料對應](/azure/kusto/management/mappings)。 僅支援[預先建立的](/azure/kusto/management/create-ingestion-mapping-command)資料對應。 
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -54,7 +54,7 @@ ms.locfileid: "74548347"
 
 ### <a name="choose-the-appropriate-streaming-ingestion-type"></a>選擇適當的串流內嵌類型
 
-|   |Event Hub  |自訂內嵌  |
+|   |事件中樞  |自訂內嵌  |
 |---------|---------|---------|
 |內嵌初始化與可供查詢的資料之間的資料延遲   |    較長延遲     |   延遲較短      |
 |開發額外負荷    |   快速且輕鬆的設定，無需任何開發負擔    |   應用程式的高開發額外負荷，可處理錯誤並確保資料一致性     |
