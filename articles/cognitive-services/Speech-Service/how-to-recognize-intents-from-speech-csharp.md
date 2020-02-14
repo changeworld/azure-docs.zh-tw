@@ -3,19 +3,19 @@ title: 如何使用語音 SDK 從語音辨識意圖C#
 titleSuffix: Azure Cognitive Services
 description: 在本指南中，您將瞭解如何使用適用C#于的語音 SDK 從語音辨識意圖。
 services: cognitive-services
-author: wolfma61
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/28/2019
-ms.author: wolfma
-ms.openlocfilehash: 554a7cbd79dbb6e1306686600474f727c99defed
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: 5d3c77c307739f9014010a592aa496a1cc83b333
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805887"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120035"
 ---
 # <a name="how-to-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>如何使用適用于的語音 SDK 從語音辨識意圖C#
 
@@ -91,12 +91,15 @@ LUIS 會使用三種金鑰：
 
    [!code-csharp[Top-level declarations](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#toplevel)]
 
-1. 在所提供的 `Main()` 方法內，新增下列程式碼：
+1. 以下列非同步對應項取代提供的 `Main()` 方法：
 
    ```csharp
-   RecognizeIntentAsync().Wait();
-   Console.WriteLine("Please press Enter to continue.");
-   Console.ReadLine();
+   public static async Task Main()
+   {
+       await RecognizeIntentAsync();
+       Console.WriteLine("Please press Enter to continue.");
+       Console.ReadLine();
+   }
    ```
 
 1. 建立空白的非同步方法 `RecognizeIntentAsync()`，如下所示：
@@ -113,7 +116,7 @@ LUIS 會使用三種金鑰：
 
 1. 將這個方法中的預留位置更換為 LUIS 訂用帳戶金鑰、區域和應用程式 (app) 識別碼，如下所示。
 
-   | Placeholder | 更換為 |
+   | 預留位置 | 更換為 |
    | ----------- | ------------ |
    | `YourLanguageUnderstandingSubscriptionKey` | LUIS 端點金鑰。 同樣地，您必須從 Azure 儀表板取得此項目，而不是「入門金鑰」。 此金鑰可在 [LUIS 入口網站](https://www.luis.ai/home)中應用程式的 [金鑰和端點] 頁面 (在 [管理] 底下) 中找到。 |
    | `YourLanguageUnderstandingServiceRegion` | LUIS 訂用帳戶所在區域的簡短識別碼，例如美國西部是 `westus`。 請參閱[區域](regions.md)。 |
@@ -173,7 +176,7 @@ result.Properties.GetProperty(PropertyId.LanguageUnderstandingServiceResponse_Js
 
 ## <a name="specify-recognition-language"></a>指定辨識語言
 
-根據預設，LUIS 會辨識美式英文 (`en-us`) 的意圖。 藉由對語音設定的 `SpeechRecognitionLanguage` 屬性指派地區設定代碼，即可辨識其他語言的意圖。 例如，在我們的應用程式中新增 `config.SpeechRecognitionLanguage = "de-de";`，然後再建立辨識器來辨識德文中的意圖。 如需詳細資訊，請參閱[支援的語言](language-support.md#speech-to-text)。
+根據預設，LUIS 會辨識美式英文 (`en-us`) 的意圖。 藉由對語音設定的 `SpeechRecognitionLanguage` 屬性指派地區設定代碼，即可辨識其他語言的意圖。 例如，在我們的應用程式中新增 `config.SpeechRecognitionLanguage = "de-de";`，然後再建立辨識器來辨識德文中的意圖。 如需詳細資訊，請參閱[LUIS language support](../LUIS/luis-language-support.md#languages-supported)。
 
 ## <a name="continuous-recognition-from-a-file"></a>從檔案進行連續辨識
 

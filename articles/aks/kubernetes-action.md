@@ -7,20 +7,16 @@ ms.service: container-service
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: atulmal
-ms.openlocfilehash: cc2d6df952b2e0aa9b9f4d4e1dcb4859a5bb3790
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 62fcdf01250728cf84726db7e9b39452a4d4e5ff
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74130524"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046354"
 ---
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>部署至 Kubernetes 服務的 GitHub 動作
 
 [GitHub 動作](https://help.github.com/en/articles/about-github-actions)可讓您彈性地建立自動化軟體發展生命週期工作流程。 Kubernetes 動作[azure/aks-set-context@v1](https://github.com/Azure/aks-set-context)有助於 Azure Kubernetes Service 叢集的部署。 動作會設定目標 AKS 叢集內容，其可供其他動作使用，例如[azure/k8s-deploy](https://github.com/Azure/k8s-deploy/tree/master)、 [azure/k8s-create-secret](https://github.com/Azure/k8s-create-secret/tree/master)等，或執行任何 kubectl 命令。
-
-> [!IMPORTANT]
-> GitHub 動作目前為搶鮮版（Beta）。 您必須先[註冊，才能](https://github.com/features/actions)使用您的 GitHub 帳戶加入預覽版。
-> 
 
 工作流程是由存放庫中 `/.github/workflows/` 路徑中的 YAML （. yml）檔案所定義。 此定義包含組成工作流程的各種步驟和參數。
 
@@ -59,11 +55,11 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
 請遵循下列步驟來設定密碼：
 
-1. 在[GitHub](https://github.com/)中，流覽至您的存放庫，選取 [設定] [ **> 秘密 > 新增密碼**。
+1. 在[GitHub](https://github.com/)中，流覽至您的存放庫，選取 [設定] **> 秘密 > 新增密碼**。
 
     ![密碼](media/kubernetes-action/secrets.png)
 
-2. 將上述 `az cli` 命令的內容貼入 [秘密變數] 的值。 例如， `AZURE_CREDENTIALS`。
+2. 將上述 `az cli` 命令的內容貼入 [秘密變數] 的值。 例如： `AZURE_CREDENTIALS` 。
 
 3. 同樣地，針對容器登錄認證定義下列額外的秘密，並在 Docker 登入動作中加以設定。 
 

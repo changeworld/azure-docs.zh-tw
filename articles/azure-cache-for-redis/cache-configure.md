@@ -39,7 +39,7 @@ ms.locfileid: "76714629"
     * [存取金鑰](#access-keys)
     * [進階設定](#advanced-settings)
     * [Azure Redis 快取建議程式](#azure-cache-for-redis-advisor)
-    * [調整](#scale)
+    * [縮放](#scale)
     * [叢集大小](#cluster-size)
     * [資料持續性](#redis-data-persistence)
     * [排程更新](#schedule-updates)
@@ -62,11 +62,11 @@ ms.locfileid: "76714629"
     * [新的支援要求](#new-support-request)
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 **概觀**提供您快取的基本資訊，例如名稱、連接埠、定價層，以及選取的快取度量。
 
-### <a name="activity-log"></a>活動記錄
+### <a name="activity-log"></a>活動記錄檔
 
 按一下 [活動記錄] ，以檢視在快取上執行的動作。 您也可以使用篩選，來展開此檢視以包含其他資源。 如需使用稽核記錄的詳細資訊，請參閱[使用 Resource Manager 來稽核作業](../azure-resource-manager/management/view-activity-logs.md)。 如需有關監視「Azure Redis 快取」事件的詳細資訊，請參閱[作業和警示](cache-how-to-monitor.md#operations-and-alerts)。
 
@@ -91,7 +91,7 @@ ms.locfileid: "76714629"
 * [存取金鑰](#access-keys)
 * [進階設定](#advanced-settings)
 * [Azure Redis 快取建議程式](#azure-cache-for-redis-advisor)
-* [調整](#scale)
+* [縮放](#scale)
 * [叢集大小](#cluster-size)
 * [資料持續性](#redis-data-persistence)
 * [排程更新](#schedule-updates)
@@ -193,7 +193,7 @@ Redis Keyspace 通知是在 [進階設定] 刀鋒視窗上進行設定。 Keyspa
 若要升級快取，按一下 [立即升級] 以變更定價層及[調整](#scale)您的快取。 如需有關選擇定價層的詳細資訊，請參閱[應該使用哪個 Azure Redis 快取供應項目和大小？](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
 
 
-### <a name="scale"></a>擴展性
+### <a name="scale"></a>調整
 按一下 [調整] 以檢視或變更快取的定價層。 如需有關調整規模的詳細資訊，請參閱 [如何調整 Azure Redis 快取的規模](cache-how-to-scale.md)。
 
 ![Azure Redis 快取定價層](./media/cache-configure/pricing-tier.png)
@@ -224,7 +224,7 @@ Redis Keyspace 通知是在 [進階設定] 刀鋒視窗上進行設定。 Keyspa
 >
 >
 
-### <a name="schedule-updates"></a>排程更新
+### <a name="schedule-updates"></a>更新排程
 [排程更新] 刀鋒視窗可讓您指定適用於快取的 Redis 伺服器更新維護期間。
 
 > [!IMPORTANT]
@@ -232,7 +232,7 @@ Redis Keyspace 通知是在 [進階設定] 刀鋒視窗上進行設定。 Keyspa
 >
 >
 
-![排程更新](./media/cache-configure/redis-schedule-updates.png)
+![更新排程](./media/cache-configure/redis-schedule-updates.png)
 
 若要指定維護期間，請檢查所需的天數，並指定每一天的維護期間開始小時，然後按一下 [確定]。 維護時間範圍的時間是採用 UTC。
 
@@ -295,7 +295,7 @@ Redis Keyspace 通知是在 [進階設定] 刀鋒視窗上進行設定。 Keyspa
 * [重新啟動](#reboot)
 
 
-### <a name="importexport"></a>Import/Export
+### <a name="importexport"></a>匯入/匯出
 「匯入/匯出」是「Azure Redis 快取」的資料管理作業，可讓您從進階快取將「Azure Redis 快取資料庫」(RDB) 快照集匯入和匯出至「Azure 儲存體帳戶」中的分頁 Blob，來匯入和匯出快取中的資料。 「匯入/匯出」可讓您在不同的 Azure Cache for Redis 執行個體之間移轉，或在使用前將資料填入快取。
 
 匯入可以用來從任何雲端或環境中執行的 Redis 伺服器 (包含在 Linux、Windows 上執行的 Redis，或任何雲端提供者，例如 Amazon Web Services 等) 引入 Redis 相容 RDB 檔案。 匯入資料是使用預先填入資料建立快取的輕鬆方式。 在進行匯入程序的期間，「Azure Redis 快取」會從 Azure 儲存體將 RDB 檔案載入記憶體，然後將金鑰插入快取。
@@ -307,14 +307,14 @@ Redis Keyspace 通知是在 [進階設定] 刀鋒視窗上進行設定。 Keyspa
 >
 >
 
-### <a name="reboot"></a>重新啟動
+### <a name="reboot"></a>重新開機
 [重新啟動] 刀鋒視窗可讓您重新啟動快取的節點。 這個重新啟動的能力可讓您測試應用程式在快取節點失敗時的恢復功能。
 
-![重新啟動](./media/cache-configure/redis-cache-reboot.png)
+![重新開機](./media/cache-configure/redis-cache-reboot.png)
 
 如果您的進階快取已啟用叢集，您可以選取要重新啟動的快取分區。
 
-![重新啟動](./media/cache-configure/redis-cache-reboot-cluster.png)
+![重新開機](./media/cache-configure/redis-cache-reboot-cluster.png)
 
 若要重新啟動快取的一或多個節點，選取所需的節點，然後按一下 [重新啟動]。 如果您的進階快取已啟用叢集，選取要重新啟動的分區，然後按一下 [重新啟動]。 稍候幾分鐘之後，選取的節點會重新啟動，並在幾分鐘之後重新上線。
 
@@ -329,7 +329,7 @@ Redis Keyspace 通知是在 [進階設定] 刀鋒視窗上進行設定。 Keyspa
 [監視] 區段可讓您設定「Azure Redis 快取」的診斷和監視。
 如需有關「Azure Redis 快取」監視和診斷的詳細資訊，請參閱[如何監視 Azure Redis 快取](cache-how-to-monitor.md)。
 
-![診斷程式](./media/cache-configure/redis-cache-diagnostics.png)
+![診斷](./media/cache-configure/redis-cache-diagnostics.png)
 
 * [Redis 度量](#redis-metrics)
 * [警示規則](#alert-rules)
@@ -342,7 +342,7 @@ Redis Keyspace 通知是在 [進階設定] 刀鋒視窗上進行設定。 Keyspa
 
 按一下 [警示規則] 以根據「Azure Redis 快取」計量設定警示。 如需詳細資訊，請參閱 [警示](cache-how-to-monitor.md#alerts)。
 
-### <a name="diagnostics"></a>診斷程式
+### <a name="diagnostics"></a>診斷
 
 根據預設，Azure 監視器中的快取計量會[儲存 30 天](../azure-monitor/platform/data-platform-metrics.md)，而後刪除。 若要保存您的快取計量超過 30 天，按一下 [診斷] 以[設定用來儲存快取診斷的儲存體帳戶](cache-how-to-monitor.md#export-cache-metrics)。
 
@@ -359,7 +359,7 @@ Redis Keyspace 通知是在 [進階設定] 刀鋒視窗上進行設定。 Keyspa
 * [資源健康情況](#resource-health)
 * [新的支援要求](#new-support-request)
 
-### <a name="resource-health"></a>資源健康狀態
+### <a name="resource-health"></a>資源健康情況
 **資源健康狀態** 會監看您的資源，並告知您資源是否正如預期般執行。 如需 Azure 資源健康狀態服務的詳細資訊，請參閱 [Azure 資源健康狀態概觀](../resource-health/resource-health-overview.md)。
 
 > [!NOTE]
@@ -386,7 +386,7 @@ Redis Keyspace 通知是在 [進階設定] 刀鋒視窗上進行設定。 Keyspa
 >
 >
 
-| 設定 | 預設值 | 說明 |
+| 設定 | 預設值 | 描述 |
 | --- | --- | --- |
 | `databases` |16 |資料庫的預設數目為 16，但是您可以根據定價層設定不同的數字。<sup>1</sup> 預設資料庫為 DB 0，您可以根據每個連線使用 `connection.GetDatabase(dbid)` 選取一個不同的資料庫，其中 `dbid` 是介於 `0` 與 `databases - 1` 之間的數字。 |
 | `maxclients` |取決於定價層<sup>2</sup> |此值是允許同時連線的用戶端數目上限。 一旦達到限制，Redis 會關閉所有新的連線，並傳送「達到用戶端的數目上限」錯誤。 |

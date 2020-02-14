@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/29/2019
 ms.author: Zhchia
-ms.openlocfilehash: 9d00024351c18789e26120cc2af006b9aac4232d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 518d86fff04a23f1c1e63c44c53485b99f30637d
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75767835"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057805"
 ---
 # <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>教學課程：設定自動使用者布建的控制
 
 在本文中，您將瞭解如何設定 Azure Active Directory （Azure AD），以自動布建和取消布建使用者或群組以進行控管。
 
 > [!NOTE]
-> 本文說明建立在 Azure AD 使用者布建服務之上的連接器。 如需這項服務的重要資訊和常見問題的解答，請參閱[使用 Azure Active Directory 自動化 SaaS 應用程式的使用者](../manage-apps/user-provisioning.md)布建和解除布建。
+> 本文說明建立在 Azure AD 使用者布建服務之上的連接器。 如需這項服務的重要資訊和常見問題的解答，請參閱[使用 Azure Active Directory 自動化 SaaS 應用程式的使用者](../app-provisioning/user-provisioning.md)布建和解除布建。
 >
 > 此連接器目前為預覽版。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
@@ -53,7 +53,7 @@ Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使�
 
 ## <a name="set-up-harness-for-provisioning"></a>設定控管以進行布建
 
-1. 登入您的控管[管理主控台](https://app.harness.io/#/login)，然後移至 [**持續安全性**] > **存取管理**]。
+1. 登入您的控管[管理主控台](https://app.harness.io/#/login)，然後移至 [**持續安全性**] > **存取管理**。
 
     ![控制管理主控台](media/harness-provisioning-tutorial/admin.png)
 
@@ -110,7 +110,7 @@ Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使�
 
 若要在 Azure AD 中設定控管的自動使用者布建，請執行下列動作：
 
-1. 在  [Azure 入口網站](https://portal.azure.com)中，選取 **企業應用程式**] > [**所有應用程式**]。
+1. 在  [Azure 入口網站](https://portal.azure.com)中，選取 **企業應用程式** > **所有應用程式**。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
@@ -156,7 +156,7 @@ Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使�
 
     ![控制群組「屬性對應」窗格](media/harness-provisioning-tutorial/groupattributes.png)
 
-1. 若要設定範圍篩選準則，請參閱[使用範圍篩選器進行以屬性為基礎的應用程式提供](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)。
+1. 若要設定範圍篩選準則，請參閱[使用範圍篩選器進行以屬性為基礎的應用程式提供](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)。
 
 1. 在 [**設定**] 下，若要啟用用於控管的 Azure AD 布建服務，請將布建**狀態**切換切換為**開啟**。
 
@@ -172,13 +172,13 @@ Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使�
 
 這項作業會啟動您要布建之使用者或群組的初始同步處理。 初始同步處理所花費的時間比更新版本更長。 只要有執行中的 Azure AD 布建服務，同步處理大約每40分鐘一次。 若要監視進度，請移至 [**同步處理詳細資料**] 區段。 您也可以遵循「布建活動報告」的連結，其中說明控管上的 Azure AD 布建服務所執行的所有動作。
 
-如需如何讀取 Azure AD 布建記錄的詳細資訊，請參閱[關於自動使用者帳戶](../manage-apps/check-status-user-account-provisioning.md)布建的報告。
+如需如何讀取 Azure AD 布建記錄的詳細資訊，請參閱[關於自動使用者帳戶](../app-provisioning/check-status-user-account-provisioning.md)布建的報告。
 
 ## <a name="additional-resources"></a>其他資源
 
-* [管理企業應用程式的使用者帳戶佈建](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [管理企業應用程式的使用者帳戶佈建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>後續步驟
 
-* [瞭解如何針對佈建活動檢閱記錄和取得報告](../manage-apps/check-status-user-account-provisioning.md)
+* [瞭解如何針對佈建活動檢閱記錄和取得報告](../app-provisioning/check-status-user-account-provisioning.md)

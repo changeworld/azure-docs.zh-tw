@@ -7,6 +7,7 @@
     - name: Microsoft 身分識別平台的演化
       href: about-microsoft-identity-platform.md
 - name: 快速入門
+  expanded: true
   items:
     - name: 設定租用戶
       href: quickstart-create-new-tenant.md
@@ -90,6 +91,7 @@
 - name: 範例
   href: sample-v2-code.md
 - name: 概念
+  expanded: true
   items:
     - name: 驗證基本概念
       href: authentication-scenarios.md

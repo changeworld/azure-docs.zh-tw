@@ -2,13 +2,13 @@
 title: 範本函式-資源
 description: 描述 Azure Resource Manager 範本中用來擷取資源相關值的函式。
 ms.topic: conceptual
-ms.date: 01/20/2020
-ms.openlocfilehash: cfcc9ff3af33fe9de813d8a31b7d102f00725ce4
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
-ms.translationtype: MT
+ms.date: 02/10/2020
+ms.openlocfilehash: cc8976b714549f7442e22b341b34e81d717c8742
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048791"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120535"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager 範本的資源函式
 
@@ -752,14 +752,14 @@ resourceGroup 函式的常見用法是在和資源群組相同的位置中建立
 resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2], ...)
 ```
 
-傳回資源的唯一識別碼。 如果資源名稱不確定或未佈建在相同的範本內，請使用此函數。
+傳回資源的唯一識別碼。 如果資源名稱不確定或未佈建在相同的範本內，請使用此函數。 傳回的識別碼格式會根據部署是否發生在資源群組、訂用帳戶、管理群組或租使用者的範圍而有所不同。
 
 ### <a name="parameters"></a>參數
 
 | 參數 | 必要項 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |否 |字串 (GUID 格式) |預設值為目前的訂用帳戶。 需要擷取另一個訂用帳戶中的資源群組時，請指定此值。 |
-| resourceGroupName |否 |string |預設值為目前資源群組。 需要擷取另一個訂用帳戶中的資源群組時，請指定此值。 |
+| resourceGroupName |否 |string |預設值為目前資源群組。 需要擷取另一個訂用帳戶中的資源群組時，請指定此值。 只有在部署于資源群組的範圍時，才提供此值。 |
 | resourceType |是 |string |資源的類型 (包括資源提供者命名空間)。 |
 | resourceName1 |是 |string |資源的名稱。 |
 | resourceName2 |否 |string |下一個資源名稱區段（如有需要）。 |
@@ -768,7 +768,7 @@ resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [
 
 ### <a name="return-value"></a>傳回值
 
-資源識別碼會以下列格式傳回：
+當範本部署在資源群組的範圍時，資源識別碼會以下列格式傳回：
 
 ```json
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -778,6 +778,12 @@ resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [
 
 ```json
 /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+```
+
+用於[管理群組層級部署](deploy-to-management-group.md)或租使用者層級部署時，資源識別碼會以下列格式傳回：
+
+```json
+/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
 若要取得其他格式的識別碼，請參閱：

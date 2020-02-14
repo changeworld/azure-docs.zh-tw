@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 97ecf3ea324f43753030f415c8a5e254b87595e5
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 2195056ec66550063aba5ce5e2b977b51a6dc5e3
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170079"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057801"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>教學課程：設定 Foodee 來自動布建使用者
 
 本文說明如何在 Foodee 和 Azure AD 中設定 Azure Active Directory （Azure AD），以將使用者或群組自動布建或取消布建至 Foodee。
 
 > [!NOTE]
-> 本文說明建立在 Azure AD 使用者布建服務之上的連接器。 若要瞭解此服務的功能及其運作方式，以及取得常見問題的解答，請參閱[使用 Azure Active Directory 自動化 SaaS 應用程式的使用者](../manage-apps/user-provisioning.md)布建和取消布建。
+> 本文說明建立在 Azure AD 使用者布建服務之上的連接器。 若要瞭解此服務的功能及其運作方式，以及取得常見問題的解答，請參閱[使用 Azure Active Directory 自動化 SaaS 應用程式的使用者](../app-provisioning/user-provisioning.md)布建和取消布建。
 >
 > 此連接器目前為預覽版。 如需預覽功能的 Azure 使用規定功能的詳細資訊，請移至[Microsoft Azure 預覽的補充使用](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)規定。
 
@@ -100,7 +100,7 @@ Azure AD 使用稱為「*指派*」的概念，來判斷哪些使用者應接收
 
 執行下列動作，在 Azure AD 中設定自動使用者布建 Foodee：
 
-1. 在 [Azure 入口網站](https://portal.azure.com)中，選取 [**企業應用程式** > ] [**所有應用程式**]。
+1. 在  [Azure 入口網站](https://portal.azure.com)中，選取 **企業應用程式** > **所有應用程式**。
 
     ![企業應用程式窗格](common/enterprise-applications.png)
 
@@ -118,7 +118,7 @@ Azure AD 使用稱為「*指派*」的概念，來判斷哪些使用者應接收
 
 1. 在 [**管理員認證**] 下，執行下列動作：
 
-   a. 在 [**租使用者 URL** ] 方塊中，輸入您稍早取得的**HTTPs： \//指引/scim/v2**值。
+   a. 在 [**租使用者 URL** ] 方塊中，輸入您稍早取得的**HTTPs：\//concierge.food.ee/scim/v2**值。
 
    b. 在 [**秘密權杖**] 方塊中，輸入您稍早取得的**API 權杖**值。
    
@@ -150,7 +150,7 @@ Azure AD 使用稱為「*指派*」的概念，來判斷哪些使用者應接收
     ![Foodee 使用者對應](media/Foodee-provisioning-tutorial/groupattribute.png)
 
 1. 若要認可您的變更，請選取 [**儲存**]。
-1. 設定範圍篩選器。 若要瞭解作法，請參閱[範圍篩選器教學](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)課程中的指示。
+1. 設定範圍篩選器。 若要瞭解作法，請參閱[範圍篩選器教學](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)課程中的指示。
 
 1. 若要啟用 Foodee 的 Azure AD 布建服務，請在 [**設定**] 區段中，將 [布建**狀態**] 變更為 [**開啟**]。
 
@@ -164,15 +164,15 @@ Azure AD 使用稱為「*指派*」的概念，來判斷哪些使用者應接收
 
     ![[布建設定] [儲存] 按鈕](common/provisioning-configuration-save.png)
 
-上述作業會針對您在 [**範圍**] 下拉式清單中定義的使用者或群組，啟動首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行。 如需詳細資訊，請參閱布建[使用者需要多久時間？](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)。
+上述作業會針對您在 [**範圍**] 下拉式清單中定義的使用者或群組，啟動首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行。 如需詳細資訊，請參閱布建[使用者需要多久時間？](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)。
 
-您可以使用 [**目前狀態**] 區段來監視進度，並遵循 [布建活動報告] 的連結。 此報告會描述 Foodee 上的 Azure AD 布建服務所執行的所有動作。 如需詳細資訊，請參閱[檢查使用者](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md)布建的狀態。 若要讀取 Azure AD 布建記錄，請參閱[關於自動使用者帳戶](../manage-apps/check-status-user-account-provisioning.md)布建的報告。
+您可以使用 [**目前狀態**] 區段來監視進度，並遵循 [布建活動報告] 的連結。 此報告會描述 Foodee 上的 Azure AD 布建服務所執行的所有動作。 如需詳細資訊，請參閱[檢查使用者](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)布建的狀態。 若要讀取 Azure AD 布建記錄，請參閱[關於自動使用者帳戶](../app-provisioning/check-status-user-account-provisioning.md)布建的報告。
 
 ## <a name="additional-resources"></a>其他資源
 
-* [管理企業應用程式的使用者帳戶佈建](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [管理企業應用程式的使用者帳戶佈建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>後續步驟
 
-* [瞭解如何針對佈建活動檢閱記錄和取得報告](../manage-apps/check-status-user-account-provisioning.md)
+* [瞭解如何針對佈建活動檢閱記錄和取得報告](../app-provisioning/check-status-user-account-provisioning.md)

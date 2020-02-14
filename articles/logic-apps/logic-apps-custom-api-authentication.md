@@ -1,25 +1,25 @@
 ---
 title: 新增驗證以保護自訂 Api 的呼叫
-description: 如何設定驗證以從 Azure Logic Apps 保護自訂 Api 的呼叫
+description: 如何設定驗證以改善從 Azure Logic Apps 呼叫自訂 Api 的安全性
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: 2f8b1cc002fe3f340ff6d5329329507316577885
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 110a684cf6ad21c13411d3bc2ada84750744f00e
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666885"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191398"
 ---
-# <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>保護從 Azure Logic Apps 對自訂 API 發出的呼叫
+# <a name="increase-security-for-calls-to-custom-apis-from-azure-logic-apps"></a>從 Azure Logic Apps 增加自訂 Api 呼叫的安全性
 
-若要保護對 API 發出的呼叫，您可以透過 Azure 入口網站設定 Azure Active Directory (Azure AD) 驗證，如此便不需要更新您的程式碼。 或者，您可以透過您的 API 程式碼要求並強制執行驗證。
+若要改善對您 Api 呼叫的安全性，您可以透過 Azure 入口網站設定 Azure Active Directory （Azure AD）驗證，讓您不需要更新程式碼。 或者，您可以透過您的 API 程式碼要求並強制執行驗證。
 
 ## <a name="authentication-options-for-your-api"></a>您 API 的驗證選項
 
-您可以以下列方式保護對自訂 API 的呼叫：
+您可以透過下列方式，為您的自訂 API 呼叫提升安全性：
 
 * [無程式碼變更](#no-code)：透過 Azure 入口網站使用 [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) 來保護您的 API，因此您不需要更新程式碼或重新部署您的 API。
 
@@ -152,7 +152,7 @@ ms.locfileid: "75666885"
 
 您仍然需要為 web 應用程式或 API 應用程式建立一個與邏輯應用程式的應用程式識別碼不同的 Azure AD 應用程式識別碼。 若要建立應用程式識別碼，請遵循第 2 部分中 Azure 入口網站的先前步驟。 
 
-您也可以遵循第 1 部分中的步驟，但請務必使用您的 web 應用程式或 API 應用程式適用於**登入 URL** 和**應用程式識別碼 URI** 的實際 `https://{URL}`。 在這些步驟中，您必須儲存用戶端識別碼和租用戶識別碼，以在您應用程式的部署範本以及用於第 3 部分中使用。
+您也可以遵循第 1 部分中的步驟，但請務必使用您的 web 應用程式或 API 應用程式適用於`https://{URL}`登入 URL **和**應用程式識別碼 URI**的實際**。 在這些步驟中，您必須儲存用戶端識別碼和租用戶識別碼，以在您應用程式的部署範本以及用於第 3 部分中使用。
 
 > [!NOTE]
 > 當您建立 Web 應用程式或 API 應用程式的 Azure AD 應用程式身分識別時，必須使用 Azure 入口網站，而不是 PowerShell。 PowerShell commandlet 不會設定使用者登入網站的必要權限。
@@ -197,16 +197,16 @@ ms.locfileid: "75666885"
 }
 ```
 
-| 屬性 | 必要項 | 說明 | 
+| 屬性 | 必要項 | 描述 | 
 | -------- | -------- | ----------- | 
 | tenant | 是 | Azure AD 租用戶的 GUID | 
 | audience | 是 | 您想要存取之目標資源的 GUID - 這是來自您 Web 應用程式或 API 應用程式之應用程式識別碼的用戶端識別碼 | 
 | clientId | 是 | 要求存取權之用戶端的 GUID - 這是來自您邏輯應用程式之應用程式識別碼的用戶端識別碼 | 
 | secret | 是 | 來自要求存取權杖的用戶端之應用程式識別碼的金鑰或密碼 | 
-| type | 是 | 驗證類型。 若為 ActiveDirectoryOAuth 驗證，值為 `ActiveDirectoryOAuth`。 | 
+| 類型 | 是 | 驗證類型。 若為 ActiveDirectoryOAuth 驗證，值為 `ActiveDirectoryOAuth`。 | 
 |||| 
 
-例如：
+例如，
 
 ``` json
 {
@@ -248,7 +248,7 @@ ms.locfileid: "75666885"
 } 
 ```
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要項 | 描述 |
 | -------- | -------- | ----------- |
 | `type` | 是 | 驗證類型。 若為 SSL 用戶端憑證，值必須是 `ClientCertificate`。 |
 | `password` | 否 | 用以存取用戶端憑證的密碼 (PFX 檔案) |
@@ -271,9 +271,9 @@ ms.locfileid: "75666885"
 }
 ```
 
-| 屬性 | 必要項 | 說明 | 
+| 屬性 | 必要項 | 描述 | 
 | -------- | -------- | ----------- | 
-| type | 是 | 您想要使用的驗證類型。 若為基本驗證，值必須是 `Basic`。 | 
+| 類型 | 是 | 您想要使用的驗證類型。 若為基本驗證，值必須是 `Basic`。 | 
 | username | 是 | 您想要用來進行驗證的使用者名稱 | 
 | 密碼 | 是 | 您想要用來進行驗證的密碼 | 
 |||| 

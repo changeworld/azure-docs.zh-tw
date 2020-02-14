@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a0c6fab0c9e26630bd54830044da56dba20564b3
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 3723631609a04f6d12abcaac1f9d7733bf3caa01
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025891"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048641"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>使用 Azure 入口網站建立 Batch 帳戶
 
@@ -27,7 +27,7 @@ ms.locfileid: "77025891"
 
 如需 Batch 帳戶和案例的相關背景，請參閱[功能概觀](batch-api-basics.md)。
 
-## <a name="create-a-batch-account"></a>建立 Batch 帳戶
+## <a name="create-a-batch-account"></a>建立批次帳戶：
 
 [!INCLUDE [batch-account-mode-include](../../includes/batch-account-mode-include.md)]
 
@@ -39,7 +39,7 @@ ms.locfileid: "77025891"
 
 1. 輸入 [新增 Batch 帳戶] 設定。 請參閱下列詳細資料。
 
-    ![建立 Batch 帳戶][account_portal]
+    ![建立批次帳戶：][account_portal]
 
     a. **訂用帳戶**：要在其中建立 Batch 帳戶的訂用帳戶。 如果您只有一個訂用帳戶，則預設會選取此項目。
 
@@ -53,7 +53,7 @@ ms.locfileid: "77025891"
 
       ![建立儲存體帳戶][storage_account]
 
-    f. **集區配置模式**：在 [**高級**設定] 索引標籤中，您可以將集區配置模式指定為**Batch 服務**或**使用者訂**用帳戶。 在大部分的情況下，請接受預設的**Batch 服務**。
+    f. **集區配置模式**：在 [**高級**設定] 索引標籤中，您可以將集區配置模式指定為**Batch 服務**或**使用者訂**用帳戶。 針對大多數情況，請接受預設的 [Batch 服務]。
 
       ![Batch 集區配置模式][pool_allocation]
 
@@ -117,6 +117,14 @@ ms.locfileid: "77025891"
 如果您想要手動授與金鑰保存庫的存取權，請移至金鑰保存庫的 [**存取原則**] 區段，然後選取 [**新增存取原則**]，並搜尋**Microsoft Azure Batch**。 選取之後，您將需要使用下拉式功能表來設定**秘密許可權**。 Azure Batch 必須獲得最少的**Get**、 **List**、 **Set**和**Delete**許可權。
 
 ![Azure Batch 的秘密許可權](./media/batch-account-create-portal/secret-permissions.png)
+
+
+> [!NOTE]
+> 請確定已在連結的**Key Vault**資源的 [**存取原則**] 底下選取 [用於**部署的 Azure 虛擬機器**和**範本部署的 Azure Resource Manager** ] 核取方塊。
+> 
+> ![強制的 Key Vault 存取原則](./media/batch-account-create-portal/key-vault-access-policy.png) 在 Azure 入口網站中建立 Batch 帳戶時，這不是必要的。 預設會選取此選項。
+
+
 
 ### <a name="configure-subscription-quotas"></a>設定訂用帳戶配額
 

@@ -29,7 +29,7 @@ Azure Cosmos DB 是無結構描述的資料庫，可以快速開發應用程式�
 
 讓我們開始使用 ODBC 驅動程式。
 
-## <a id="install"></a>步驟 1︰安裝 Azure Cosmos DB ODBC 驅動程式
+## <a id="install"></a>步驟 1：安裝 Azure Cosmos DB ODBC 驅動程式
 
 1. 下載適用於您的環境的驅動程式：
 
@@ -48,7 +48,7 @@ Azure Cosmos DB 是無結構描述的資料庫，可以快速開發應用程式�
 
     ![Azure Cosmos DB ODBC 資料來源管理員](./media/odbc-driver/odbc-driver.png)
 
-## <a id="connect"></a>步驟2：連接到您的 Azure Cosmos 資料庫
+## <a id="connect"></a>步驟 2：連接到您的 Azure Cosmos 資料庫
 
 1. [安裝 Azure Cosmos DB ODBC 驅動程式](#install)之後，在 [ODBC 資料來源管理員] 視窗中，按一下 [新增]。 您可以建立「使用者 DSN」或「系統 DSN」。 在此範例中，您會建立「使用者 DSN」。
 
@@ -70,16 +70,16 @@ Azure Cosmos DB 是無結構描述的資料庫，可以快速開發應用程式�
     *  **REST API 版本**：選取作業的[REST API 版本](https://docs.microsoft.com/rest/api/cosmos-db/)。 預設值2015-12-16。 如果您有具有[大型分割](large-partition-keys.md)區索引鍵的容器，而且需要 REST API 版本2018-12-31：
         - 針對 REST API 版本輸入**2018-12-31**
         - 在 [**開始**] 功能表中，輸入 "regedit" 以尋找並開啟 [**登錄編輯程式**] 應用程式。
-        - 在 [登錄編輯程式] 中，流覽至路徑： **Computer \ HKEY_LOCAL_MACHINE \software\odbc\odbc。INI**
+        - 在 [登錄編輯程式] 中，流覽至路徑：**Computer \ HKEY_LOCAL_MACHINE \SOFTWARE\ODBC\ODBC.INI**
         - 使用與您的 DSN 相同的名稱建立新的子機碼，例如「Contoso 帳戶 ODBC DSN」。
         - 流覽至「Contoso 帳戶 ODBC DSN」子機碼。
         - 以滑鼠右鍵按一下以加入新的**字串**值：
-            - 值名稱： **IgnoreSessionToken**
-            - 數值資料： **1**
+            - Value Name:**IgnoreSessionToken**
+            - 值資料：**1**
             ![登錄編輯程式設定](./media/odbc-driver/cosmos-odbc-edit-registry.png)
     - **查詢一致性**︰選取適用於您的作業的[一致性層級](consistency-levels.md)。 預設為 [工作階段]。
     - **重試次數**：輸入初始要求因為服務速率限制而未完成時，重試作業的次數。
-    - **結構描述檔案**：您在這裡有一些選項。
+    - **結構描述檔案**：這裡您有許多選項。
         - 根據預設，將此專案保留為 [是] （空白），驅動程式會掃描所有容器的第一頁數據，以判斷每個容器的架構。 這就是所謂的容器對應。 如果沒有定義結構描述檔案，驅動程式就必須掃描每一個驅動程式工作階段，而可能導致使用 DSN 的應用程式啟動時間過長。 建議您一律將結構描述檔案與 DSN 產生關連。
         - 如果您已經有結構描述檔案 (可能是您使用 [結構描述編輯器] 建立的)，您可以按一下 [瀏覽] 並瀏覽至您的檔案，按一下 [儲存]，然後按一下 [確定]。
         - 如果您想要建立新的結構描述，請按一下 [確定]，然後按一下主視窗中的 [結構描述編輯器]。 然後繼續處理 [結構描述編輯器] 資訊。 建立新的結構描述檔案之後，請記得返回 [進階選項] 視窗來納入新建立的結構描述檔案。
@@ -88,7 +88,7 @@ Azure Cosmos DB 是無結構描述的資料庫，可以快速開發應用程式�
 
     ![[使用者 DSN] 索引標籤上的新 Azure Cosmos DB ODBC DSN](./media/odbc-driver/odbc-driver-user-dsn.png)
 
-## <a id="#container-mapping"></a>步驟3：使用容器對應方法建立架構定義
+## <a id="#container-mapping"></a>步驟 3：使用容器對應方法建立架構定義
 
 您可以使用兩種類型的取樣方法：**容器對應**或**資料表分隔符號**。 取樣會話可以同時利用這兩種取樣方法，但每個容器只能使用特定的取樣方法。 下列步驟會使用容器對應方法，為一或多個容器中的資料建立架構。 這個取樣方法會抓取容器頁面中的資料，以判斷資料的結構。 它會將容器轉型為 ODBC 端上的資料表。 當容器中的資料為同質時，此取樣方法會有效率且快速。 如果容器包含異類類型的資料，建議您使用[資料表分隔符號對應方法](#table-mapping)，因為它會提供更健全的取樣方法，以判斷容器中的資料結構。 
 
@@ -124,7 +124,7 @@ Azure Cosmos DB 是無結構描述的資料庫，可以快速開發應用程式�
 
     a. 在 [屬性] 方塊中，輸入分隔符號屬性的名稱。 這是您在文件中希望設定取樣範圍的屬性 (例如「City」)，然後按一下 Enter 鍵。 
 
-    b. 如果您只想將取樣範圍設定為您上方輸入的特定屬性值，請在選取方塊中選取該屬性，在 [值] 方塊中輸入值 (例如「Seattle」)，然後按一下 Enter 鍵。 您可以繼續加入多個屬性的值。 只要確定您輸入值時，已選取正確的屬性。
+    b。 如果您只想將取樣範圍設定為您上方輸入的特定屬性值，請在選取方塊中選取該屬性，在 [值] 方塊中輸入值 (例如「Seattle」)，然後按一下 Enter 鍵。 您可以繼續加入多個屬性的值。 只要確定您輸入值時，已選取正確的屬性。
 
     例如，如果您包含「City」的**屬性**值，而您想要限制資料表只包含含有「New York」和「Dubai」之城市值的資料列，可在 [屬性] 方塊中輸入「City」，而在 [值] 方塊中輸入「New York」和「Dubai」。
 
@@ -241,7 +241,7 @@ Invalid use of schema or catalog for OLE DB provider "MSDASQL" for linked server
 
 ## <a name="troubleshooting"></a>疑難排解
 
-如果您收到下列錯誤，請確定您在[步驟 2](#connect) 於 Azure 入口網站複製的「主機」與「存取金鑰」值正確，然後再試一次。 使用 Azure 入口網站中「主機」與「存取金鑰」值右側的 [複製] 按鈕來複製正確的值。
+如果您收到下列錯誤，請確定您在 **[步驟 2](#connect)** 於 Azure 入口網站複製的「主機」與「存取金鑰」值正確，然後再試一次。 使用 Azure 入口網站中「主機」與「存取金鑰」值右側的 [複製] 按鈕來複製正確的值。
 
     [HY000]: [Microsoft][Azure Cosmos DB] (401) HTTP 401 Authentication Error: {"code":"Unauthorized","message":"The input authorization token can't serve the request. Please check that the expected payload is built as per the protocol, and check the key being used. Server used the following payload to sign: 'get\ndbs\n\nfri, 20 jan 2017 03:43:55 gmt\n\n'\r\nActivityId: 9acb3c0d-cb31-4b78-ac0a-413c8d33e373"}`
 

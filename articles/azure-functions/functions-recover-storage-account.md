@@ -1,92 +1,94 @@
 ---
-title: 如何針對無法連線至 Azure Functions 執行階段的情形進行疑難排解。
+title: 疑難排解錯誤：無法連線 Azure Functions 執行階段
 description: 了解如何針對無效的儲存體帳戶進行疑難排解。
 author: alexkarcher-msft
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: 910b582cb40b9f8aff6a553621b4677d6b019826
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 8fcd0661e2c7cab505121cf0d4d7b4c1d29017f8
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963881"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063776"
 ---
-# <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>如何針對「無法連線至函式執行階段」的情形進行疑難排解
+# <a name="troubleshoot-error-azure-functions-runtime-is-unreachable"></a>疑難排解錯誤：「無法連線到 Azure Functions 執行階段」
 
-本文的目的是要在 Azure 入口網站中顯示「函式執行時間無法連線」錯誤訊息時進行疑難排解。 發生此錯誤時，您會看到下列錯誤字串顯示在入口網站中。
+本文可協助您疑難排解出現在 Azure 入口網站中的下列錯誤字串：
 
-`Error: Azure Functions Runtime is unreachable. Click here for details on storage configuration`
+> 「錯誤：無法連線到 Azure Functions 執行階段。 如需存放裝置設定的詳細資訊，請按一下這裡。」
 
-當 Azure Functions 執行階段無法啟動時，就會發生這種情況。 之所以會發生這個錯誤，最常見的原因是函式應用程式無法存取其儲存體帳戶。 若要深入瞭解，請參閱[儲存體帳戶需求](storage-considerations.md#storage-account-requirements)。
+當 Azure Functions 執行階段無法啟動時，就會發生此問題。 問題的最常見原因是函式應用程式已失去其儲存體帳戶的存取權。 如需詳細資訊，請參閱[儲存體帳戶需求](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements)。
 
 本文的其餘部分可協助您針對此錯誤的下列原因進行疑難排解，包括如何識別和解決每個案例。
 
-+ [儲存體帳戶已刪除](#storage-account-deleted)
-+ [儲存體帳戶的應用程式設定已刪除](#storage-account-application-settings-deleted)
-+ [儲存體帳戶的認證無效](#storage-account-credentials-invalid)
-+ [無法存取儲存體帳戶](#storage-account-inaccessible)
-+ [超過每日執行配額](#daily-execution-quota-full)
-+ [您的應用程式位於防火牆後方](#app-is-behind-a-firewall)
+## <a name="storage-account-was-deleted"></a>儲存體帳戶已刪除
 
+每個函式應用程式都需要有儲存體帳戶才能運作。 如果刪除該帳戶，您的函式將無法運作。
 
-## <a name="storage-account-deleted"></a>儲存體帳戶已刪除
+首先，在應用程式設定中查閱您的儲存體帳戶名稱。 `AzureWebJobsStorage` 或 `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` 包含連接字串中所包裝之儲存體帳戶的名稱。 如需詳細資訊，請參閱[Azure Functions 的應用程式設定參考](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)。
 
-每個函式應用程式都需要有儲存體帳戶才能運作。 如果該帳戶已刪除，函式就不會運作。
+在 Azure 入口網站中搜尋您的儲存體帳戶，以查看它是否仍然存在。 如果已刪除，請重新建立儲存體帳戶，並取代您的儲存體連接字串。 您的函式程式碼會遺失，而且您需要重新部署它。
 
-### <a name="how-to-find-your-storage-account"></a>如何尋找儲存體帳戶
+## <a name="storage-account-application-settings-were-deleted"></a>儲存體帳戶應用程式設定已刪除
 
-藉由在應用程式設定中查閱儲存體帳戶名稱來開始。 `AzureWebJobsStorage` 或 `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` 會包含包裝在連接字串中的儲存體帳戶名稱。 如需詳細資訊，請參閱[這裡的應用程式設定參考](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)。
-
-在 Azure 入口網站中搜尋儲存體帳戶，以了解其是否仍存在。 如果已遭刪除，您就必須重新建立儲存體帳戶，並取代儲存體連接字串。 函式程式碼將會遺失，所以您必須重新部署一次。
-
-## <a name="storage-account-application-settings-deleted"></a>儲存體帳戶的應用程式設定已刪除
-
-在上一個步驟中，如果您沒有儲存體帳戶連接字串，可能會遭到刪除或覆寫。 使用部署位置或 Azure Resource Manager 指令碼來設定應用程式設定時，最常會刪除應用程式設定。
+在上一個步驟中，如果您找不到儲存體帳戶連接字串，可能會遭到刪除或覆寫。 當您使用部署位置或 Azure Resource Manager 腳本來設定應用程式設定時，最常發生的是刪除應用程式設定。
 
 ### <a name="required-application-settings"></a>必要的應用程式設定
 
-* 必要項
+* 必要：
     * [`AzureWebJobsStorage`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)
-* 取用方案函式所必備
+* 耗用量方案函式的必要事項：
     * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
     * [`WEBSITE_CONTENTSHARE`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
 
-請[在這裡閱讀這些應用程式設定的相關資訊](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)。
+如需詳細資訊，請參閱[Azure Functions 的應用程式設定參考](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)。
 
-### <a name="guidance"></a>指導方針
+### <a name="guidance"></a>指引
 
-* 請不要核取任何這些設定的 [位置設定]。 當您交換部署位置時，函數應用程式會中斷。
+* 請不要核取任何這些設定的 [位置設定]。 如果您交換部署位置，函數應用程式會中斷。
 * 請勿在自動部署過程中修改這些設定。
 * 在建立時，必須提供這些設定，且設定必須有效。 不包含這些設定的自動化部署會導致不會執行的函式應用程式，即使稍後再新增設定也是如此。
 
-## <a name="storage-account-credentials-invalid"></a>儲存體帳戶的認證無效
+## <a name="storage-account-credentials-are-invalid"></a>儲存體帳號憑證無效
 
-如果您重新產生儲存體金鑰，則必須更新上述儲存體帳戶連接字串。 [在這裡閱讀更多關於儲存體金鑰管理的資訊](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)。
+如果您重新產生儲存體金鑰，則必須更新先前討論的儲存體帳戶連接字串。 如需儲存體金鑰管理的詳細資訊，請參閱[建立 Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)。
 
-## <a name="storage-account-inaccessible"></a>無法存取儲存體帳戶
+## <a name="storage-account-is-inaccessible"></a>無法存取儲存體帳戶
 
-您的函數應用程式必須能夠存取儲存體帳戶。 導致函式無法存取儲存體帳戶的常見問題包括：
+您的函數應用程式必須能夠存取儲存體帳戶。 封鎖函式應用程式對儲存體帳戶的存取的常見問題如下：
 
-+ 部署到 App Service 環境（ASE）的函式應用程式，沒有正確的網路規則，以允許進出儲存體帳戶的流量。
+* 函式應用程式會部署到您的 App Service 環境，而不會有正確的網路規則，以允許進出儲存體帳戶的流量。
 
-+ 儲存體帳戶防火牆已啟用，且未設定為允許進出功能的流量。 若要深入了解，請參閱[設定 Azure 儲存體防火牆和虛擬網路](../storage/common/storage-network-security.md)。
+* 儲存體帳戶防火牆已啟用，且未設定為允許進出功能的流量。 如需詳細資訊，請參閱[設定 Azure 儲存體防火牆和虛擬網路](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
-## <a name="daily-execution-quota-full"></a>每日執行配額已滿
+## <a name="daily-execution-quota-is-full"></a>每日執行配額已滿
 
 如果您已設定每日執行配額，則會暫時停用您的函式應用程式，這會導致許多入口網站控制項變得無法使用。 
 
-+ 若要在[Azure 入口網站](https://portal.azure.com)中確認，請在函式應用程式中開啟 [**平臺功能**] > **函數應用程式設定**。 當您超過設定的**每日使用量配額**時，您會看到下列訊息：
+若要確認[Azure 入口網站](https://portal.azure.com)中的配額，請在函式應用程式中選取 [**平臺功能**] > **函數應用程式設定**。 如果您超過所設定的**每日使用量配額**，則會顯示下列訊息：
 
-    `The function app has reached daily usage quota and has been stopped until the next 24 hours time frame.`
+  > 「函數應用程式已達到每日使用量配額，並已停止直到下24小時的時間範圍為止」。
 
-+ 若要解決此問題，請移除或增加每日配額，然後重新開機您的應用程式。 否則，應用程式的執行會在隔天后遭到封鎖。
+若要解決此問題，請移除或增加每日配額，然後重新開機您的應用程式。 否則，應用程式的執行會在隔天后遭到封鎖。
 
 ## <a name="app-is-behind-a-firewall"></a>應用程式位於防火牆後方
 
-如果您的函式應用程式[裝載于內部負載平衡的 App Service 環境](../app-service/environment/create-ilb-ase.md)中，而且設定為封鎖輸入網際網路流量，或設定了[輸入 IP 限制](functions-networking-options.md#inbound-ip-restrictions)以封鎖網際網路存取，則無法連線到您的函式執行時間。 Azure 入口網站會直接呼叫執行中的應用程式來提取函式清單，也會對 KUDU 端點進行 HTTP 呼叫。 [`Platform Features`] 索引標籤下的平台層級設定仍然可以使用。
+您的函數執行時間可能因下列其中一個原因而無法連線：
 
-若要驗證您的 ASE 設定，請流覽至 ASE 所在子網的 NSG，並驗證輸入規則，以允許來自您正在存取應用程式之電腦的公用 IP 流量。 您也可以從連線至執行應用程式之虛擬網路的電腦，或在虛擬網路中執行的虛擬機器，使用入口網站。 [如需輸入規則設定的詳細資訊，請參閱這裡](../app-service/environment/network-info.md#network-security-groups)
+* 您的函式應用程式[裝載于內部負載平衡 App Service 環境](../app-service/environment/create-ilb-ase.md)中，並設定為封鎖輸入網際網路流量。
+
+* 您的函數應用程式具有設定為封鎖網際網路存取的[輸入 IP 限制](functions-networking-options.md#inbound-ip-restrictions)。 
+
+Azure 入口網站會直接呼叫執行中的應用程式來提取函式清單，並對 Kudu 端點進行 HTTP 呼叫。 [**平臺功能**] 索引標籤下的平台層級設定仍然可以使用。
+
+若要確認您的 App Service 環境設定：
+1. 移至 App Service 環境所在子網的網路安全性群組（NSG）。
+1. 驗證輸入規則，以允許來自您正在存取應用程式之電腦的公用 IP 流量。 
+   
+您也可以從連線至執行應用程式之虛擬網路的電腦，或在虛擬網路中執行的虛擬機器，使用入口網站。 
+
+如需輸入規則設定的詳細資訊，請參閱[App Service 環境的網路功能考慮](https://docs.microsoft.com/azure/app-service/environment/network-info#network-security-groups)的「網路安全性群組」一節。
 
 ## <a name="next-steps"></a>後續步驟
 

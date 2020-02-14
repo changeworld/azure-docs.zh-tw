@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 12/16/2019
-ms.openlocfilehash: b2b07882afb6c89c6920726db3c313dbb6a6dfc4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/10/2020
+ms.openlocfilehash: 619c68b84291bc35b8216194ac4534393fde454c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453490"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191542"
 ---
 # <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>在 Azure Logic Apps 中設定一或多個整合服務環境的單一 IP 位址
 
@@ -49,7 +49,7 @@ ms.locfileid: "75453490"
 
    ![設定規則以引導輸出流量](./media/connect-virtual-network-vnet-set-up-single-ip-address/add-rule-to-route-table.png)
 
-   | 屬性 | 值 | 說明 |
+   | 屬性 | 值 | 描述 |
    |----------|-------|-------------|
    | **路由名稱** | <*唯一的路由名稱*> | 路由表中路由的唯一名稱 |
    | **位址前置詞** | <*目的地位址*> | 您想要流量前往的目的地系統位址。 請確定您針對此位址使用無[類別網域間路由（CIDR）標記法](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)。 |
@@ -71,7 +71,7 @@ ms.locfileid: "75453490"
 
    **網路規則集合屬性**
 
-   | 屬性 | 值 | 說明 |
+   | 屬性 | 值 | 描述 |
    |----------|-------|-------------|
    | **名稱** | <*網路-規則-集合-名稱*> | 網路規則集合的名稱 |
    | **優先順序** | <*優先權層級*> | 要用來執行規則集合的優先順序順序。 如需詳細資訊，請參閱[什麼是 Azure 防火牆的概念](../firewall/firewall-faq.md#what-are-some-azure-firewall-concepts)？ |
@@ -80,7 +80,7 @@ ms.locfileid: "75453490"
 
    **網路規則屬性**
 
-   | 屬性 | 值 | 說明 |
+   | 屬性 | 值 | 描述 |
    |----------|-------|-------------|
    | **名稱** | <*的網路-規則-名稱*> | 網路規則的名稱 |
    | **通訊協定** | <*連接-通訊協定*> | 要使用的連接通訊協定。 例如，如果您使用 NSG 規則，請同時選取 [ **tcp** ] 和 [ **UDP**]，而不是 [ **tcp**]。 |
