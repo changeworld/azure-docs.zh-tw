@@ -52,6 +52,8 @@
           href: how-to-manage-lab-accounts.md
         - name: 設定實驗室帳戶
           href: how-to-configure-lab-accounts.md
+        - name: 允許實驗室建立者挑選實驗室位置
+          href: allow-lab-creator-pick-lab-location.md
         - name: 將實驗室連線至對等虛擬網路
           href: how-to-connect-peer-virtual-network.md
         - name: 附加或中斷連結共用映像資源庫

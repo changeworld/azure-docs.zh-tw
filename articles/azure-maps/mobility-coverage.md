@@ -10,7 +10,7 @@ services: azure-maps
 manager: philmea
 ms.openlocfilehash: 8dcbfe7a47dba5a1783d6010d41e33073bc0bb20
 ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 02/06/2020
 ms.locfileid: "77048909"
@@ -54,7 +54,7 @@ Azure 地圖服務對於所有城市和國家/地區沒有相同層級的資訊�
 
 | 國家/區域 |  城市（Metro 區域） |
 |--------|---------|
-| 澳大利亞      | <p>阿德萊德、Alice、Bowen、布里斯班、Bundaberg QLD、Burnie、Cairns、坎培拉、達爾文、Gladstone、霍巴特、Innisfail、Launceston、Mercer-mackay、磁性島、Maryborough-Hervey Bay、墨爾本、新的南威爾士、通過、RockHampton、東南亞昆士蘭、悉尼、Toowoomba、Townsville、維多利亞、Warwick、Yeppoon</p> |
+| 澳大利亞      | <p>阿德萊德、Alice、Bowen、布里斯班、Bundaberg QLD、Burnie、Cairns、坎培拉、達爾文、Gladstone、霍巴特、Innisfail、Launceston、Mercer-mackay、磁性島、Maryborough-Hervey Bay、墨爾本、新的南威爾士、伯斯、RockHampton、東南亞昆士蘭、雪梨、Toowoomba、Townsville、維多利亞、Warwick、Yeppoon</p> |
 | 中國 | <p> Changchun、Changsha、Chengdu、重慶、Dalian、Datong、Dongguan、杭州、Jiangyin、Jinan、南京、Nantong、Ningbo、Pingdingshan、Qingdao、Shenyang、Suzhou、Tangshan、Tianjin、Weifang、Wuhan、Wuxi、Yantai、Yixing、Zhuhai、上海、北京廣州，Shenzhen，Zhengzhou</P>| 
 | 香港特別行政區 | 香港特別行政區 *|
 | 澳門特別行政區 | 澳門特別行政區 *|

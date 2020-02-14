@@ -78,9 +78,9 @@ ms.locfileid: "77185464"
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | phoneNumber | string | 電話號碼的字串宣告。 電話號碼必須是國際格式，並以前置的「+」和「國家/地區代碼」完成。 |
 | InputParameter | throwExceptionOnFailure | boolean | 選擇性參數，指出當電話號碼無效時，是否擲回例外狀況。 預設值為 false。 |
-| InputParameter | countryCodeType | string | 選擇性參數，指出輸出宣告中的國家（地區）代碼類型。 可用的值為**CallingCode** （國家/地區的國際電話程式碼，例如 + 1）或**ISO3166** （兩個字母的 ISO-3166 國家/地區代碼）。 |
+| InputParameter | countryCodeType | string | 選擇性參數，指出輸出宣告中的國家/地區代碼類型。 可用的值為**CallingCode** （國家/地區的國際電話程式碼，例如 + 1）或**ISO3166** （兩個字母的 ISO-3166 國家/地區代碼）。 |
 | OutputClaim | nationalNumber | string | 電話號碼國家/地區號碼的字串宣告。 |
-| OutputClaim | countryCode | string | 電話號碼的國家（地區）代碼的字串宣告。 |
+| OutputClaim | countryCode | string | 電話號碼的國家/地區代碼的字串宣告。 |
 
 
 如果**GetNationalNumberAndCountryCodeFromPhoneNumberString**宣告轉換是從[自我判斷技術配置](self-asserted-technical-profile.md)檔或[顯示控制項動作](display-controls.md#display-control-actions)所呼叫的[驗證技術設定檔](validation-technical-profile.md)執行，則**UserMessageIfPhoneNumberParseFailure**自我判斷技術設定檔中繼資料會控制呈現給使用者的錯誤訊息。

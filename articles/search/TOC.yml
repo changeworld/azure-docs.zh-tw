@@ -313,14 +313,20 @@
           href: search-pagination-page-layout.md
         - name: 評分調整 (評分設定檔)
           href: index-add-scoring-profiles.md
-    - name: 管理和監視
+    - name: 管理服務
       items:
-        - name: 入口網站系統管理員
+        - name: 入口網站
           href: search-manage.md
-        - name: PowerShell 系統管理員
+        - name: PowerShell
           href: search-manage-powershell.md
-        - name: 監視活動和記錄
+    - name: 監視和記錄
+      items:
+        - name: 基礎
           href: search-monitor-usage.md
+        - name: 監視查詢活動
+          href: search-monitor-queries.md
+        - name: 診斷記錄
+          href: search-monitor-logs.md
         - name: 搜尋流量分析
           href: search-traffic-analytics.md
     - name: 疑難排解
