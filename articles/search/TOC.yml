@@ -105,9 +105,9 @@
           href: search-sku-tier.md
         - name: 服務限制
           href: search-limits-quotas-capacity.md
-        - name: 調整分割區和複本
+        - name: 調整容量
           href: search-capacity-planning.md
-        - name: 部署策略與最佳做法
+        - name: 效能級別
           href: search-performance-optimization.md
         - name: 多租用戶架構
           href: search-modeling-multitenant-saas-applications.md
