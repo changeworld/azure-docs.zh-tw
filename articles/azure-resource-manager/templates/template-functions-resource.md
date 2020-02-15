@@ -3,12 +3,12 @@ title: 範本函式-資源
 description: 描述 Azure Resource Manager 範本中用來擷取資源相關值的函式。
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: cc8976b714549f7442e22b341b34e81d717c8742
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
-ms.translationtype: HT
+ms.openlocfilehash: 10476f5a29c12d7437beb9a9f707feda815d7ba1
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120535"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207003"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager 範本的資源函式
 
@@ -124,7 +124,7 @@ list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)
 
 ### <a name="valid-uses"></a>有效用法
 
-清單函數只能用於資源定義的屬性和範本或部署的 [輸出] 區段。 搭配[屬性反復](create-multiple-instances.md#property-iteration)專案使用時，您可以使用 list 函數進行 `input`，因為運算式已指派給資源屬性。 您無法將它們與 `count` 搭配使用，因為必須在解析清單函數之前判斷計數。
+清單函數只能用於資源定義的屬性和範本或部署的 [輸出] 區段。 搭配[屬性反復](copy-properties.md)專案使用時，您可以使用 list 函數進行 `input`，因為運算式已指派給資源屬性。 您無法將它們與 `count` 搭配使用，因為必須在解析清單函數之前判斷計數。
 
 ### <a name="implementations"></a>實作
 
@@ -496,7 +496,7 @@ reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])
 
 ### <a name="valid-uses"></a>有效用法
 
-參考函式只能用在資源定義的屬性中，以及範本或部署的輸出區段中。 搭配[屬性反復](create-multiple-instances.md#property-iteration)專案使用時，您可以使用 `input` 的 reference 函式，因為運算式會指派給資源屬性。 您無法將它與 `count` 搭配使用，因為必須在解析參考函數之前判斷計數。
+參考函式只能用在資源定義的屬性中，以及範本或部署的輸出區段中。 搭配[屬性反復](copy-properties.md)專案使用時，您可以使用 `input` 的 reference 函式，因為運算式會指派給資源屬性。 您無法將它與 `count` 搭配使用，因為必須在解析參考函數之前判斷計數。
 
 您無法在[嵌套範本](linked-templates.md#nested-template)的輸出中使用 reference 函式，以傳回已在嵌套範本中部署的資源。 相反地，請使用[連結的範本](linked-templates.md#linked-template)。
 
@@ -758,7 +758,7 @@ resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [
 
 | 參數 | 必要項 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| subscriptionId |否 |字串 (GUID 格式) |預設值為目前的訂用帳戶。 需要擷取另一個訂用帳戶中的資源群組時，請指定此值。 |
+| subscriptionId |否 |字串 (GUID 格式) |預設值為目前的訂用帳戶。 需要擷取另一個訂用帳戶中的資源群組時，請指定此值。 在資源群組或訂用帳戶的範圍內部署時，只提供此值。 |
 | resourceGroupName |否 |string |預設值為目前資源群組。 需要擷取另一個訂用帳戶中的資源群組時，請指定此值。 只有在部署于資源群組的範圍時，才提供此值。 |
 | resourceType |是 |string |資源的類型 (包括資源提供者命名空間)。 |
 | resourceName1 |是 |string |資源的名稱。 |
@@ -1064,6 +1064,6 @@ tenantResourceId(resourceType, resourceName1, [resourceName2], ...)
 
 * 如需有關 Azure Resource Manager 範本中各區段的說明，請參閱[編寫 Azure Resource Manager 範本](template-syntax.md)。
 * 若要合併多個範本，請參閱[透過 Azure Resource Manager 使用連結的範本](linked-templates.md)。
-* 若要依指定的次數重複建立資源類型，請參閱 [在 Azure 資源管理員中建立資源的多個執行個體](create-multiple-instances.md)。
+* 若要依指定的次數重複建立資源類型，請參閱 [在 Azure 資源管理員中建立資源的多個執行個體](copy-resources.md)。
 * 若要了解如何部署已建立的範本，請參閱[使用 Azure Resource Manager 範本部署應用程式](deploy-powershell.md)。
 

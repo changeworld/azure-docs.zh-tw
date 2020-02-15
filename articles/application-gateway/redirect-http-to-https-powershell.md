@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 480ceb4e13843ebeedf155f31aedacc5439a38de
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: ca742483bc8977327003ee18e9716ef9c43ebfe3
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74047429"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251714"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-azure-powershell"></a>使用 Azure PowerShell 以建立具有 HTTP 到 HTTPS 重新導向功能的應用程式閘道
 
@@ -27,11 +27,11 @@ ms.locfileid: "74047429"
 > * 新增接聽程式和重新導向規則
 > * 建立包含預設後端集區的虛擬機器擴展集
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-本教學課程需要 Azure PowerShell 模組 1.0.0 版或更新版本。 執行 `Get-Module -ListAvailable Az` 找出版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。 若要在本教學課程中執行命令，則也需要執行 `Login-AzAccount` 以建立與 Azure 的連線。
+本教學課程需要 Azure PowerShell 模組 1.0.0 版或更新版本。 執行 `Get-Module -ListAvailable Az` 以尋找版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。 若要在本教學課程中執行命令，則也需要執行 `Login-AzAccount` 以建立與 Azure 的連線。
 
 ## <a name="create-a-self-signed-certificate"></a>建立自我簽署憑證
 
@@ -73,7 +73,7 @@ New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 
 ## <a name="create-network-resources"></a>建立網路資源
 
-使用 *New-AzVirtualNetworkSubnetConfig* 來建立 *myBackendSubnet* 和 [myAGSubnet](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 的子網路設定。 使用 *New-AzVirtualNetwork* 搭配子網路組態來建立名為 myVNet[](/powershell/module/az.network/new-azvirtualnetwork) 的虛擬網路。 最後，使用 *New-AzPublicIpAddress* 來建立名為 [myAGPublicIPAddress](/powershell/module/az.network/new-azpublicipaddress) 的公用 IP 位址。 這些資源可用來為應用程式閘道及其相關聯的資源提供網路連線。
+使用 [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 來建立 *myBackendSubnet* 和 *myAGSubnet* 的子網路設定。 使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 搭配子網路設定來建立名為 *myVNet* 的虛擬網路。 最後，使用 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) 來建立名為 *myAGPublicIPAddress* 的公用 IP 位址。 這些資源可用來為應用程式閘道及其相關聯的資源提供網路連線。
 
 ```powershell
 $backendSubnetConfig = New-AzVirtualNetworkSubnetConfig `
@@ -99,7 +99,7 @@ $pip = New-AzPublicIpAddress `
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>建立 IP 設定與前端連接埠
 
-使用 *New-AzApplicationGatewayIPConfiguration*，讓先前建立的 [myAGSubnet](/powershell/module/az.network/new-azapplicationgatewayipconfiguration) 與應用程式閘道產生關聯。 使用 *New-AzApplicationGatewayFrontendIPConfig*，將 [myAGPublicIPAddress](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig) 指派給應用程式閘道。 接著，您可以使用[add-azapplicationgatewayfrontendport 來](/powershell/module/az.network/new-azapplicationgatewayfrontendport)建立 HTTPS 埠。
+使用 [New-AzApplicationGatewayIPConfiguration](/powershell/module/az.network/new-azapplicationgatewayipconfiguration)，讓先前建立的 *myAGSubnet* 與應用程式閘道產生關聯。 使用 [New-AzApplicationGatewayFrontendIPConfig](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig)，將 *myAGPublicIPAddress* 指派給應用程式閘道。 接著，您可以使用[add-azapplicationgatewayfrontendport 來](/powershell/module/az.network/new-azapplicationgatewayfrontendport)建立 HTTPS 埠。
 
 ```powershell
 $vnet = Get-AzVirtualNetwork `
@@ -119,7 +119,7 @@ $frontendPort = New-AzApplicationGatewayFrontendPort `
 
 ### <a name="create-the-backend-pool-and-settings"></a>建立後端集區和設定
 
-使用 *New-AzApplicationGatewayBackendAddressPool*，為應用程式閘道建立名為 appGatewayBackendPool[](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool) 的後端集區。 使用 [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting) 設定後端集區的設定。
+使用 [New-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool)，為應用程式閘道建立名為 *appGatewayBackendPool* 的後端集區。 使用 [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting) 來設定後端集區的設定。
 
 ```powershell
 $defaultPool = New-AzApplicationGatewayBackendAddressPool `
@@ -136,7 +136,7 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 需要接聽程式才能讓應用程式閘道將流量適當地路由到後端集區。 在此範例中，您會建立基本接聽程式，接聽根 URL 的 HTTPS 流量。 
 
-使用[AzApplicationGatewaySslCertificate](/powershell/module/az.network/new-azapplicationgatewaysslcertificate)建立憑證物件，然後使用[new-azapplicationgatewayHTTPlistener](/powershell/module/az.network/new-azapplicationgatewayhttplistener)與您先前建立的前端設定、前端埠和憑證，建立名為*appGatewayHttpListener*的接聽程式。 接聽程式需要規則以便知道要針對連入流量使用哪個後端集區。 使用 *New-AzApplicationGatewayRequestRoutingRule* 建立名為 rule1[](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) 的基本規則。
+使用[AzApplicationGatewaySslCertificate](/powershell/module/az.network/new-azapplicationgatewaysslcertificate)建立憑證物件，然後使用[new-azapplicationgatewayHTTPlistener](/powershell/module/az.network/new-azapplicationgatewayhttplistener)與您先前建立的前端設定、前端埠和憑證，建立名為*appGatewayHttpListener*的接聽程式。 接聽程式需要規則以便知道要針對連入流量使用哪個後端集區。 使用 [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) 來建立名為 *rule1* 的基本規則。
 
 ```powershell
 $pwd = ConvertTo-SecureString `
@@ -163,7 +163,7 @@ $frontendRule = New-AzApplicationGatewayRequestRoutingRule `
 
 ### <a name="create-the-application-gateway"></a>建立應用程式閘道
 
-現在您已建立必要的支援資源，請使用 *New-AzApplicationGatewaySku* 為名為 myAppGateway[](/powershell/module/az.network/new-azapplicationgatewaysku) 的應用程式閘道指定參數，然後使用 [New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway) 搭配憑證加以建立。
+現在您已建立必要的支援資源，請使用 [New-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku) 為名為 myAppGateway 的應用程式閘道指定參數，然後使用 [New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway) 搭配憑證加以建立。
 
 ```powershell
 $sku = New-AzApplicationGatewaySku `
@@ -283,7 +283,7 @@ Set-AzVmssStorageProfile $vmssConfig `
   -ImageReferencePublisher MicrosoftWindowsServer `
   -ImageReferenceOffer WindowsServer `
   -ImageReferenceSku 2016-Datacenter `
-  -ImageReferenceVersion latest
+  -ImageReferenceVersion latest `
   -OsDiskCreateOption FromImage
 Set-AzVmssOsProfile $vmssConfig `
   -AdminUsername azureuser `
@@ -334,7 +334,7 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已了解如何：
+在本教學課程中，您將了解如何：
 
 > [!div class="checklist"]
 > * 建立自我簽署憑證

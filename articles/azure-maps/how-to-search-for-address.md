@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure 地圖服務搜尋服務來搜尋位置 |Microsoft Azure 對應
 description: 在本文中，您將瞭解如何使用 [地理編碼] 和 [反向地理編碼] 的 [Microsoft Azure 對應] 搜尋服務來搜尋位置。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/15/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 3b5da7eab9cff5c5e051fc4d5ab7ff582a95c20d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 40066f24fec00610a1efd10b2cb874b1100acdee
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899238"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209880"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>使用 Azure 地圖服務搜尋服務搜尋位置
 
@@ -55,11 +55,11 @@ Azure 地圖服務[搜尋服務](https://docs.microsoft.com/rest/api/maps/search
 
 ![地址搜尋](./media/how-to-search-for-address/address_search_params.png) 
 
-| 索引鍵 | 值 | 
+| Key | 值 | 
 |------------------|-------------------------| 
 | api-version | 1.0 | 
 | subscription-key | \<您的 Azure 地圖服務金鑰\> | 
-| 查詢 | 400 Broad St, Seattle, WA 98109 | 
+| query | 400 Broad St, Seattle, WA 98109 | 
 
 4. 按一下 [傳送]，然後檢視回應本文。 
 
@@ -73,7 +73,7 @@ Azure 地圖服務[搜尋服務](https://docs.microsoft.com/rest/api/maps/search
 
 6. 將下列機碼值組加入 **Params** 區段並按一下 [傳送]： 
 
-| 索引鍵 | 值 | 
+| Key | 值 | 
 |-----|------------| 
 | typeahead | true | 
 
@@ -105,11 +105,11 @@ Azure 地圖服務[搜尋服務](https://docs.microsoft.com/rest/api/maps/search
 
     ![模糊搜尋](./media/how-to-search-for-address/fuzzy_search_params.png)
 
-    | 索引鍵 | 值 |
+    | Key | 值 |
     |------------------|-------------------------|
     | api-version | 1.0 |
     | subscription-key | \<您的 Azure 地圖服務金鑰\> |
-    | 查詢 | 披薩 |
+    | query | 披薩 |
 
 4. 按一下 [傳送]，然後檢視回應本文。
 
@@ -119,9 +119,9 @@ Azure 地圖服務[搜尋服務](https://docs.microsoft.com/rest/api/maps/search
 
 5. 將下列機碼值組加入 **Params** 區段並按一下 [傳送]：
 
-    | 索引鍵 | 值 |
+    | Key | 值 |
     |------------------|-------------------------|
-    | countrySet | 美國 |
+    | countrySet | US |
   
     結果現在會依國家/地區程式碼繫結，此查詢會傳回美國境內的披薩餐廳。
   
@@ -131,7 +131,7 @@ Azure 地圖服務[搜尋服務](https://docs.microsoft.com/rest/api/maps/search
 
     ![模糊搜尋](./media/how-to-search-for-address/fuzzy_search_latlon.png)
   
-    | 索引鍵 | 值 |
+    | Key | 值 |
     |-----|------------|
     | lat | 47.620525 |
     | lon | -122.349274 |
@@ -139,7 +139,7 @@ Azure 地圖服務[搜尋服務](https://docs.microsoft.com/rest/api/maps/search
 
 ## <a name="search-for-a-street-address-using-reverse-address-search"></a>使用反向地址搜尋來搜尋街道地址
 
-Azure 地圖服務[取得搜尋位址反向 API]( https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)可協助將座標（範例：37.786505、-122.3862）轉譯為人類易懂的街道位址。 最常見的情況是追蹤應用程式，您會從裝置或資產接收 GPS 摘要，並想要知道座標所在的位址。
+Azure 地圖服務[取得搜尋位址反向 API]( https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)有助於轉譯座標（範例：37.786505、-122.3862）成為人類易懂的街道位址。 最常見的情況是追蹤應用程式，您會從裝置或資產接收 GPS 摘要，並想要知道座標所在的位址。
 如果您有一組要反向地理編碼的座標位置，您可以在單一 API 呼叫中使用[Post 搜尋位址反向批次 API](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressreversebatch)來傳送查詢批次。
 
 
@@ -159,11 +159,11 @@ Azure 地圖服務[取得搜尋位址反向 API]( https://docs.microsoft.com/res
   
     ![反向位址搜尋參數](./media/how-to-search-for-address/reverse_address_search_params.png)
   
-    | 索引鍵 | 值 |
+    | Key | 值 |
     |------------------|-------------------------|
     | api-version | 1.0 |
     | subscription-key | \<您的 Azure 地圖服務金鑰\> |
-    | 查詢 | 47.591180,-122.332700 |
+    | query | 47.591180,-122.332700 |
   
 4. 按一下 [傳送]，然後檢視回應本文。
 
@@ -171,7 +171,7 @@ Azure 地圖服務[取得搜尋位址反向 API]( https://docs.microsoft.com/res
   
 5. 將下列機碼值組加入 **Params** 區段並按一下 [傳送]：
 
-    | 索引鍵 | 值 |
+    | Key | 值 |
     |-----|------------|
     | number | true |
 
@@ -179,7 +179,7 @@ Azure 地圖服務[取得搜尋位址反向 API]( https://docs.microsoft.com/res
   
 6. 將下列機碼值組加入 **Params** 區段並按一下 [傳送]：
 
-    | 索引鍵 | 值 |
+    | Key | 值 |
     |-----|------------|
     | returnSpeedLimit | true |
   
@@ -187,7 +187,7 @@ Azure 地圖服務[取得搜尋位址反向 API]( https://docs.microsoft.com/res
 
 7. 將下列機碼值組加入 **Params** 區段並按一下 [傳送]：
 
-    | 索引鍵 | 值 |
+    | Key | 值 |
     |-----|------------|
     | returnRoadUse | true |
 
@@ -195,7 +195,7 @@ Azure 地圖服務[取得搜尋位址反向 API]( https://docs.microsoft.com/res
 
 8. 將下列機碼值組加入 **Params** 區段並按一下 [傳送]：
 
-    | 索引鍵 | 值 |
+    | Key | 值 |
     |-----|------------|
     | roadUse | true |
 
@@ -217,11 +217,11 @@ Azure 地圖服務[取得搜尋位址反向 API]( https://docs.microsoft.com/res
   
 3. 按一下 [Params]，然後輸入下列金鑰 / 值組來作為要求 URL 中的查詢或路徑參數：
   
-    | 索引鍵 | 值 |
+    | Key | 值 |
     |------------------|-------------------------|
     | api-version | 1.0 |
     | subscription-key | \<您的 Azure 地圖服務金鑰\> |
-    | 查詢 | 47.591180,-122.332700 |
+    | query | 47.591180,-122.332700 |
   
 4. 按一下 [傳送]，然後檢視回應本文。
 
