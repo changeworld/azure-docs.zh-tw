@@ -1,25 +1,25 @@
 ---
 title: 行動性（傳輸）涵蓋範圍 |Microsoft Azure 對應
 description: 在本文中，您將瞭解 Microsoft Azure 對應中的行動性涵蓋範圍
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 06/05/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8dcbfe7a47dba5a1783d6010d41e33073bc0bb20
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
-ms.translationtype: HT
+ms.openlocfilehash: 04804f28b2b0b5c45ed8f523d2f465f81b6ab151
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048909"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208245"
 ---
 # <a name="azure-maps-mobility-coverage"></a>Azure 地圖服務行動性涵蓋範圍
 
-Azure 地圖服務提供[行動服務](https://aka.ms/AzureMapsMobilityService)。 行動服務可改善應用程式的開發時間，以公開傳輸、自行車共用和機車分享功能。 它提供了一種選項，可讓您透過多種階段規劃選項來進行路由。 公用傳輸的功能包括搜尋附近的工作站、搜尋停止、搜尋運輸線、取得排程資訊、取得即時公開傳輸抵達，以及列出停止和路線指南。 服務會將即時和靜態可用性資訊傳回給共用車輛，例如汽車、自行車和 scooters。 此 API 會傳回詳細和多重架構的逐步路線和服務警示。
+Azure 地圖服務提供[行動服務](https://aka.ms/AzureMapsMobilityService)。 行動服務可改善應用程式的開發時間，以公開傳輸、自行車共用和機車分享功能。 公用傳輸的功能包括搜尋附近的工作站、搜尋停止、搜尋運輸線、取得排程資訊、取得即時公開傳輸抵達、清單停止和列出路線指南。 服務會將即時和靜態可用性資訊傳回給共用車輛，例如汽車、自行車和 scooters。 此外，行動服務會提供具有限時行程規劃選項的路由功能。 多模行程規劃結合了腳踏車、hailing 和運輸選項，全都是一趟旅程。 使用者凸輪會存取詳細和多重架構的逐步路線和服務警示。
 
-Azure 地圖服務對於所有城市和國家/地區沒有相同層級的資訊和精確度。 呼叫傳輸資料的能力取決於城市。 資料可能不包含所有服務城市的公開運輸選項和機構。
+Azure 地圖服務對於所有城市和國家/地區沒有相同層級的資訊和精確度。 呼叫傳輸資料的能力取決於城市。 而且，資料可能不包含所有服務城市的公開運輸選項和機關。
 
 下表提供 Azure 地圖服務行動服務的涵蓋範圍資訊。
 
@@ -54,7 +54,7 @@ Azure 地圖服務對於所有城市和國家/地區沒有相同層級的資訊�
 
 | 國家/區域 |  城市（Metro 區域） |
 |--------|---------|
-| 澳大利亞      | <p>阿德萊德、Alice、Bowen、布里斯班、Bundaberg QLD、Burnie、Cairns、坎培拉、達爾文、Gladstone、霍巴特、Innisfail、Launceston、Mercer-mackay、磁性島、Maryborough-Hervey Bay、墨爾本、新的南威爾士、伯斯、RockHampton、東南亞昆士蘭、雪梨、Toowoomba、Townsville、維多利亞、Warwick、Yeppoon</p> |
+| 澳大利亞      | <p>阿德萊德、Alice、Bowen、布里斯班、Bundaberg QLD、Burnie、Cairns、坎培拉、達爾文、Gladstone、霍巴特、Innisfail、Launceston、Mercer-mackay、磁性島、Maryborough-Hervey Bay、墨爾本、新的南威爾士、通過、RockHampton、東南亞昆士蘭、悉尼、Toowoomba、Townsville、維多利亞、Warwick、Yeppoon</p> |
 | 中國 | <p> Changchun、Changsha、Chengdu、重慶、Dalian、Datong、Dongguan、杭州、Jiangyin、Jinan、南京、Nantong、Ningbo、Pingdingshan、Qingdao、Shenyang、Suzhou、Tangshan、Tianjin、Weifang、Wuhan、Wuxi、Yantai、Yixing、Zhuhai、上海、北京廣州，Shenzhen，Zhengzhou</P>| 
 | 香港特別行政區 | 香港特別行政區 *|
 | 澳門特別行政區 | 澳門特別行政區 *|

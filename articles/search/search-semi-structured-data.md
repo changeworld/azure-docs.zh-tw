@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: d8d3204c8a5ace17ae47a17d4c4ffec2ec7977f2
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 02/14/2020
+ms.openlocfilehash: 0603ad1fbecf33e5880fd7f18d35af51795f8e39
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112244"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251986"
 ---
 # <a name="rest-tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-cognitive-search"></a>REST 教學課程：在 Azure 認知搜尋中編制索引和搜尋半結構化資料（JSON blob）
 
@@ -27,7 +27,7 @@ Azure 認知搜尋可以在 Azure Blob 儲存體中，使用[索引子](search-i
 > * 設定並執行索引子以讀取容器，並從 Azure Blob 儲存體擷取可搜尋的內容
 > * 搜尋剛剛建立的索引
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 本快速入門會使用下列服務、工具和資料。 
 
@@ -45,7 +45,7 @@ REST 呼叫需要服務 URL 和每個要求的存取金鑰。 建立搜尋服務
 
 1. [登入 Azure 入口網站](https://portal.azure.com/)，並在搜尋服務的 [概觀] 頁面上取得 URL。 範例端點看起來會像是 `https://mydemo.search.windows.net`。
 
-1. 在 [設定]  >  [金鑰] 中，取得服務上完整權限的管理金鑰。 可互換的管理金鑰有兩個，可在您需要變換金鑰時提供商務持續性。 您可以在新增、修改及刪除物件的要求上使用主要或次要金鑰。
+1. 在 [設定] >  [金鑰] 中，取得服務上完整權限的管理金鑰。 可互換的管理金鑰有兩個，可在您需要變換金鑰時提供商務持續性。 您可以在新增、修改及刪除物件的要求上使用主要或次要金鑰。
 
 ![取得 HTTP 端點和存取金鑰](media/search-get-started-postman/get-url-key.png "取得 HTTP 端點和存取金鑰")
 
@@ -83,7 +83,7 @@ REST 呼叫需要服務 URL 和每個要求的存取金鑰。 建立搜尋服務
 
 ## <a name="create-a-data-source"></a>建立資料來源
 
-[建立資料來源 API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) 會建立一個 Azure 認知搜尋物件，以指定要編製索引的資料。
+[建立資料來源 API](https://docs.microsoft.com/rest/api/searchservice/create-data-source)會建立 Azure 認知搜尋物件，以指定要編制索引的資料。
 
 此呼叫的端點為 `https://[service name].search.windows.net/datasources?api-version=2019-05-06`。 使用您的搜尋服務名稱來取代 `[service name]`。 
 
@@ -126,7 +126,7 @@ REST 呼叫需要服務 URL 和每個要求的存取金鑰。 建立搜尋服務
 
 ## <a name="create-an-index"></a>建立索引
     
-第二個呼叫為[建立索引 API](https://docs.microsoft.com/rest/api/searchservice/create-indexer)，進而建立可儲存所有可搜尋資料的 Azure 認知搜尋索引。 索引會指定所有參數及其屬性。
+第二個呼叫為[建立索引 API](https://docs.microsoft.com/rest/api/searchservice/create-index)，進而建立可儲存所有可搜尋資料的 Azure 認知搜尋索引。 索引會指定所有參數及其屬性。
 
 此呼叫的 URL 是 `https://[service name].search.windows.net/indexes?api-version=2019-05-06`。 使用您的搜尋服務名稱來取代 `[service name]`。
 
@@ -265,7 +265,7 @@ REST 呼叫需要服務 URL 和每個要求的存取金鑰。 建立搜尋服務
 
 請務必選擇您剛才建立的索引。 
 
-  ![未結構化搜尋](media/search-semi-structured-data/indexespane.png)
+  ![非結構化搜尋](media/search-semi-structured-data/indexespane.png)
 
 ### <a name="user-defined-metadata-search"></a>使用者定義的中繼資料搜尋
 

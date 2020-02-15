@@ -3,12 +3,12 @@ title: 連結部署的範本
 description: 描述如何在「Azure 資源管理員」範本中使用連結的範本，以建立模組化範本方案。 示範如何傳遞參數值、指定參數檔案，以及動態建立 URL。
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 5d278ba05fd8230a3573983a631e4e347ff31e4f
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: c6a5dced0f8607e760422bebd114a08ca0a238e3
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76119824"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207599"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 資源時使用連結和巢狀的範本
 
@@ -160,7 +160,7 @@ ms.locfileid: "76119824"
 
 變數的值會根據範圍而變更。 下表顯示這兩個範圍的結果。
 
-| 範圍 | 輸出 |
+| 影響範圍 | 輸出 |
 | ----- | ------ |
 | inner | 從嵌套的範本 |
 | 外部（或預設值） | 從父範本 |
@@ -766,7 +766,7 @@ az group deployment create --resource-group ExampleGroup --template-uri $url?$to
 
 下列範例顯示連結範本的一般用途。
 
-|主要的範本  |連結的範本 |說明  |
+|主要的範本  |連結的範本 |描述  |
 |---------|---------| ---------|
 |[Hello World](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[連結的範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | 從連結的範本傳回字串。 |
 |[使用公用 IP 位址的負載平衡器](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[連結的範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |從連結的範本傳回公用 IP 位址，並且在負載平衡器中設定該值。 |
@@ -776,5 +776,5 @@ az group deployment create --resource-group ExampleGroup --template-uri $url?$to
 
 * 若要完成教學課程，請參閱[建立連結的 Azure Resource Manager 範本](template-tutorial-create-linked-templates.md)。
 * 若要了解如何定義您資源的部署順序，請參閱 [定義 Azure Resource Manager 範本中的相依性](define-resource-dependency.md)。
-* 若要了解如何定義一個資源，但建立它的多個執行個體，請參閱 [在 Azure Resource Manager 中建立資源的多個執行個體](create-multiple-instances.md)。
+* 若要了解如何定義一個資源，但建立它的多個執行個體，請參閱 [在 Azure Resource Manager 中建立資源的多個執行個體](copy-resources.md)。
 * 如需在儲存體帳戶中設定範本並產生 SAS Token 的步驟，請參閱[使用 Resource Manager 範本與 Azure PowerShell 部署資源](deploy-powershell.md)或 [Deploy resources with Resource Manager templates and Azure CLI (使用 Resource Manager 範本和 Azure CLI 部署資源)](deploy-cli.md)。

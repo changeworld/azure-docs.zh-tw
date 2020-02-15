@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: juliako
-ms.openlocfilehash: e457fbe5b8dd23c93110fb8ccc7d8857128de82c
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: b0a4f390a3a897d14adc2944195b0c51148de495
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169366"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209268"
 ---
 # <a name="upload-and-index-your-videos"></a>上傳影片及編製影片索引  
 
@@ -47,7 +47,7 @@ ms.locfileid: "76169366"
 
     如果它是私人 URL，必須在要求中提供存取權杖。
 - URL 必須指向有效的媒體檔案，而不是網頁，例如 [`www.youtube.com`] 頁面的連結。
-- 每分鐘最多可以上傳60電影。
+- 在付費帳戶中，每分鐘最多可以上傳50個電影，而且在試用帳戶中，每分鐘最多可有5個電影。
 
 > [!Tip]
 > 建議使用 .NET Framework 4.6.2 版。 或更高版本，因為舊版 .NET Framework 不會預設使用 TLS 1.2。
@@ -93,7 +93,7 @@ ms.locfileid: "76169366"
 - 索引狀態變更： 
     - 屬性：    
     
-        |名稱|說明|
+        |名稱|描述|
         |---|---|
         |id|影片識別碼|
         |state|影片狀態|  
@@ -101,7 +101,7 @@ ms.locfileid: "76169366"
 - 在影片中識別到的人員：
   - 屬性
     
-      |名稱|說明|
+      |名稱|描述|
       |---|---|
       |id| 影片識別碼|
       |faceId|影片索引中出現的臉部識別碼|
@@ -344,10 +344,11 @@ public class AccountContractSlim
 
 下表列出上傳作業可能會傳回的狀態碼。
 
-|狀態碼|ErrorType (在回應本文中)|說明|
+|狀態碼|ErrorType (在回應本文中)|描述|
 |---|---|---|
 |409|VIDEO_INDEXING_IN_PROGRESS|指定帳戶中已有正在處理的相同影片。|
 |400|VIDEO_ALREADY_FAILED|不到 2 小時前，指定帳戶中有相同的影片處理失敗。 API 用戶端應該等待至少 2 小時，才能重新上傳影片。|
+|429||每分鐘允許試用帳戶5次上傳。 付費帳戶允許50每分鐘上傳一次。|
 
 ## <a name="next-steps"></a>後續步驟
 

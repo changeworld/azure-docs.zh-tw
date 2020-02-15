@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/07/2019
-ms.openlocfilehash: 9d55d91dbb2e62e87c34dc8ea8a23fb375eb9a53
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: f2602dbee12f82c32ab3a3c2ec0566d8dfbeaa83
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665352"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77211822"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>在 Azure 監視器中使用應用程式變更分析（預覽）
 
@@ -31,7 +31,7 @@ ms.locfileid: "74665352"
 
 ![變更分析如何取得變更資料，並將其提供給用戶端工具的架構圖](./media/change-analysis/overview.png)
 
-目前已將變更分析整合到 App Service web 應用程式中的**診斷和解決問題**體驗，並可在 Azure 入口網站中以獨立的分頁形式提供。
+目前已將變更分析整合到 App Service web 應用程式中的**診斷和解決問題**體驗，以及在 Azure 入口網站中以獨立索引標籤的形式提供。
 請參閱本文稍後的在 Web 應用程式入口網站中使用 [變更分析] 分頁和 [ *Web Apps 功能的變更分析*] 區段中的 [*查看所有資源*的變更] 區段。
 
 ### <a name="azure-resource-manager-tracked-properties-changes"></a>Azure Resource Manager 追蹤的屬性變更
@@ -55,9 +55,10 @@ ms.locfileid: "74665352"
 - Azure 儲存體
 - Azure SQL
 
-### <a name="enablement"></a>支援
-"ChangeAnalysis" 資源提供者必須向訂用帳戶註冊，才能使用 Azure Resource Manager 追蹤的屬性，而 proxy 設定會將資料變更為可供使用。 當您輸入 Web 應用程式診斷並解決問題，或啟動 [變更分析] [獨立] 分頁時，此資源提供者會自動註冊。 您的訂用帳戶沒有任何效能和成本的實現。
-若是 web 應用程式的來賓變更，在 web 應用程式中掃描程式碼檔案時，需要個別的啟用。 如需詳細資訊，請參閱本文稍後*的診斷和解決問題工具一節中的啟用變更分析*。
+### <a name="enablement"></a>啟用
+"ChangeAnalysis" 資源提供者必須向訂用帳戶註冊，才能使用 Azure Resource Manager 追蹤的屬性，而 proxy 設定會將資料變更為可供使用。 當您輸入 Web 應用程式 [診斷並解決問題] 工具或顯示 [變更分析] [獨立] 索引標籤時，此資源提供者會自動註冊。 您的訂用帳戶沒有任何效能和成本的實現。 當您啟用 web 應用程式的變更分析（或在 [診斷並解決問題] 工具中啟用）時，它對 web 應用程式的效能影響會不明顯，而且不會產生任何費用。
+若是 web 應用程式的來賓變更，在 web 應用程式中掃描程式碼檔案時，需要個別的啟用。 如需詳細資訊，請參閱本文稍後[的診斷和解決問題工具一節中的啟用變更分析](https://docs.microsoft.com/azure/azure-monitor/app/change-analysis#enable-change-analysis-in-the-diagnose-and-solve-problems-tool)。
+
 
 ## <a name="viewing-changes-for-all-resources-in-azure"></a>在 Azure 中查看所有資源的變更
 在 Azure 監視器中，有一個獨立的分頁，可供變更分析用來以深入解析和應用程式相依性資源來查看所有變更。

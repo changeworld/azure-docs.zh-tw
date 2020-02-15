@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b142d3561e7d05b9afaeab9768b6b50a33ef28ce
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 7595ef1b8742c2ba18a262d5afc5eea1b4d7a15c
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77158157"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251612"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的系統管理員角色權限
 
@@ -246,7 +246,7 @@ ms.locfileid: "77158157"
 > 這些功能目前正在開發中。
 >
 
-### <a name="group-administratorgroup-administrator-permissions"></a>[群組管理員](#group-administrator-permissions)
+### <a name="groups-administratorgroups-administrator-permissions"></a>[群組管理員](#groups-administrator-permissions)
 
 此角色中的使用者可以建立/管理群組及其設定（例如命名和到期原則）。 請務必瞭解，將使用者指派給這個角色，讓他們能夠在除了 Outlook 以外的各種工作負載（例如小組、SharePoint、Yammer）上管理租使用者中的所有群組。 此外，使用者也可以在各種不同的系統管理入口網站（例如 Microsoft 系統管理中心、Azure 入口網站，以及小組和 SharePoint 系統管理中心之類的工作負載）中管理各種群組設定。
 
@@ -1081,7 +1081,7 @@ Windows Defender ATP 和 EDR | 查看和調查警示。 當您在 Windows Defend
 | microsoft.office365.usageReports/allEntities/read | 讀取 Office 365 使用量報告。 |
 | office365. Microsoft.office365.webportal/allEntities/standard/read   | 讀取 office365. Microsoft.office365.webportal 中所有資源的標準屬性。 |
 
-### <a name="group-administrator-permissions"></a>群組系統管理員許可權
+### <a name="groups-administrator-permissions"></a>群組系統管理員許可權
 可以管理群組和群組設定（例如命名和到期原則）的所有層面。
 
 | **動作** | **說明** |

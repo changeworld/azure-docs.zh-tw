@@ -1,19 +1,19 @@
 ---
 title: 地圖樣式功能 |Microsoft Azure 對應
 description: 在本文中，您將瞭解 Microsoft Azure Maps web SDK 中可用的樣式相關功能。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: cabf39f017afe440c883a63db57643c5c5367128
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: b793a0fc977d3da4b4b6753877e838441e70e800
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77189731"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210084"
 ---
 # <a name="choose-a-map-style-in-azure-maps"></a>選擇 Azure 地圖服務中的地圖樣式
 

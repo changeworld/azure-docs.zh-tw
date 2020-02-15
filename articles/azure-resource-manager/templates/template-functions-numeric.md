@@ -3,12 +3,12 @@ title: 範本函式-數值
 description: 描述 Azure Resource Manager 範本中用來使用數值的函式。
 ms.topic: conceptual
 ms.date: 11/08/2017
-ms.openlocfilehash: 1a611277bb473d605c76d131a18f9ccb550fab29
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 91aa637701acb278e81b7eb86aa3ae2db15acc28
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483943"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207229"
 ---
 # <a name="numeric-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager 範本的數值函式
 
@@ -36,7 +36,7 @@ ms.locfileid: "75483943"
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- | 
 |operand1 |是 |int |要新增的第一個數字。 |
 |operand2 |是 |int |要新增的第二個數字。 |
@@ -107,9 +107,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
-| loopName | 否 | string | 用來取得反覆項目的迴圈名稱。 |
+| loopName | 否 | 字串 | 用來取得反覆項目的迴圈名稱。 |
 | Offset |否 |int |要加入到以零為起始之反覆項目值的數字。 |
 
 ### <a name="remarks"></a>備註
@@ -118,7 +118,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 **LoopName** 屬性可讓您指定 copyIndex 要參考資源的反覆項目還是屬性的反覆項目。 如果未提供任何 **loopName** 的值，就會使用目前的資源類型反覆項目。 逐一查看屬性時，請提供 **loopName** 的值。 
  
-如需如何使用 **copyIndex**的完整範例，請參閱 [在 Azure Resource Manager 中建立資源的多個執行個體](create-multiple-instances.md)。
+如需如何使用 **copyIndex**的完整範例，請參閱 [在 Azure Resource Manager 中建立資源的多個執行個體](copy-resources.md)。
 
 如需使用 **copyIndex** 的範例，請參閱[變數](template-syntax.md#variables)。
 
@@ -153,7 +153,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | operand1 |是 |int |被除數。 |
 | operand2 |是 |int |除數。 不能為 0。 |
@@ -224,7 +224,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |字串或整數 |要轉換為浮點數的值。 |
 
@@ -258,7 +258,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | valueToConvert |是 |字串或整數 |要轉換成整數的值。 |
 
@@ -318,7 +318,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |整數的陣列，或以逗號分隔的整數清單 |要用來取得最大值的集合。 |
 
@@ -375,14 +375,14 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="min" />
 
-## <a name="min"></a>分
+## <a name="min"></a>Min
 `min (arg1)`
 
 傳回整數陣列的最小值，或以逗號分隔的整數清單。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |整數的陣列，或以逗號分隔的整數清單 |要用來取得最小值的集合。 |
 
@@ -446,7 +446,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | operand1 |是 |int |被除數。 |
 | operand2 |是 |int |除數，不能為 0。 |
@@ -516,7 +516,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | operand1 |是 |int |要相乘的第一個數字。 |
 | operand2 |是 |int |要相乘的第二個數字。 |
@@ -587,7 +587,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | operand1 |是 |int |減數。 |
 | operand2 |是 |int |被減數。 |
@@ -651,6 +651,6 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ## <a name="next-steps"></a>後續步驟
 * 如需有關 Azure Resource Manager 範本中各區段的說明，請參閱[編寫 Azure Resource Manager 範本](template-syntax.md)。
 * 若要合併多個範本，請參閱[透過 Azure Resource Manager 使用連結的範本](linked-templates.md)。
-* 若要依指定的次數重複建立資源類型，請參閱 [在 Azure 資源管理員中建立資源的多個執行個體](create-multiple-instances.md)。
+* 若要依指定的次數重複建立資源類型，請參閱 [在 Azure 資源管理員中建立資源的多個執行個體](copy-resources.md)。
 * 若要了解如何部署已建立的範本，請參閱[使用 Azure Resource Manager 範本部署應用程式](deploy-powershell.md)。
 

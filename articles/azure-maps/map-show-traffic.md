@@ -9,19 +9,19 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 8370b71bfa980dbd099ade59a3a19633dfd5dc72
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 8107b16a3db76fb0e248f1681463b73cc4ee21cf
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910883"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208415"
 ---
 # <a name="show-traffic-on-the-map"></a>在地圖上顯示路況
 
 Azure 地圖服務可用的流量資料類型有兩種：
 
 - 事件資料-包含以點和行為基礎的資料，用於結構、後端和事故等事物。
-- 流量資料-提供有關道路流量的計量。 流量資料通常是用來根據相對於速度限制或某個其他計量的流量，使流量變慢的程度來為道路上色。 Azure 地圖服務中的流量資料有三種不同的度量計量：
+- 流量資料-提供有關道路流量的計量。 通常，流量資料會用來為道路上色。 這些色彩是以相對於速度限制或另一個計量的流量緩慢程度為基礎。 Azure 地圖服務中的流量資料有三種不同的度量計量：
     - `relative`-相對於道路的免費流程速度。
     - `absolute`-是途中所有車輛的絕對速度。
     - `relative-delay`-顯示比平均預期延遲慢的區域。
@@ -40,7 +40,7 @@ map.setTraffic({
 
 <br/>
 
-<iframe height='500' scrolling='no' title='在地圖上顯示路況' src='//codepen.io/azuremaps/embed/WMLRPw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>在 <a href='https://codepen.io'>CodePen</a> 上查看 Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 製作的<a href='https://codepen.io/azuremaps/pen/WMLRPw/'>在地圖上顯示路況</a>Pen。
+<iframe height='500' scrolling='no' title='在地圖上顯示路況' src='//codepen.io/azuremaps/embed/WMLRPw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>在 <a href='https://codepen.io/azuremaps/pen/WMLRPw/'>CodePen</a> 上查看 Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 製作的<a href='https://codepen.io'>在地圖上顯示路況</a>Pen。
 </iframe>
 
 ## <a name="traffic-overlay-options"></a>流量重迭選項

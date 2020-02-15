@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 597bbfdc35c556b5c75968084c01ac222fc468f4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 37a657093fd55ce752095417fe744f83946962db
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76718096"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210565"
 ---
 # <a name="configure-lab-accounts-in-azure-lab-services"></a>在 Azure 實驗室服務中設定實驗室帳戶 
 在 Azure 實驗室服務中，實驗室帳戶是適用于受控實驗室類型的容器，例如教室實驗室。 系統管理員會使用 Azure 實驗室服務來設定實驗室帳戶，並向可以在帳戶中建立實驗室的實驗室擁有者提供存取權。 本文說明如何建立實驗室帳戶、檢視所有實驗室帳戶，或刪除實驗室帳戶。
@@ -37,18 +37,6 @@ ms.locfileid: "76718096"
 在此帳戶中建立的實驗室會連線到選取的虛擬網路。 他們可以存取所選虛擬網路中的資源。 如需詳細資訊，請參閱[將您的實驗室網路與 Azure 實驗室服務中的對等虛擬網路](how-to-connect-peer-virtual-network.md)連線。
 
 當您選取虛擬網路作為 [**對等虛擬網路**] 欄位時，會停用 [**允許實驗室建立者選擇實驗室位置**] 選項。 這是因為實驗室帳戶中的實驗室必須與實驗室帳戶位在相同的區域中，才能與對等虛擬網路中的資源連線。 
-
-## <a name="allow-lab-creator-to-pick-location-for-the-lab"></a>允許實驗室建立者挑選實驗室的位置
-您可以遵循下列步驟，讓實驗室建立者在與實驗室帳戶位置不同的位置中建立實驗室： 
-
-1. 在 [**實驗室帳戶**] 頁面上，選取左側功能表上的 [**實驗室**設定]。
-2. 針對 [**允許實驗室建立者選擇實驗室位置**]，如果您希望實驗室建立者能夠選取實驗室的位置，請選取 [**已啟用**]。 如果已停用，則會在實驗室帳戶所在的相同位置自動建立實驗室。 
-    
-    當您選取虛擬網路作為 [**對等虛擬網路**] 欄位時，會停用此欄位。 這是因為實驗室帳戶中的實驗室必須與實驗室帳戶位在相同的區域中，才能存取對等虛擬網路中的資源。 
-1. 在工具列上選取 [儲存]。 
-
-    ![設定實驗室位置設定](../media/how-to-manage-lab-accounts/labs-configuration-page-lab-location.png)
-
 
 ## <a name="specify-an-address-range-for-vms-in-the-lab"></a>為實驗室中的 Vm 指定位址範圍
 下列程式中的步驟可為實驗室中的 Vm 指定位址範圍。 如果您更新您先前指定的範圍，修改過的位址範圍僅適用于在進行變更之後所建立的 Vm。 

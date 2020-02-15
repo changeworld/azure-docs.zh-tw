@@ -3,12 +3,12 @@ title: 範本中的子資源
 description: 描述如何在 Azure Resource Manager 範本中設定子資源的名稱和類型。
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 7d8a7a39bab3340b6f5c9e66d54b7398fa70ee3e
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 6de2b476fe19a057a62e4a54963dd8fde0d11579
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122010"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207888"
 ---
 # <a name="set-name-and-type-for-child-resources"></a>設定子資源的名稱和類型
 
@@ -27,7 +27,7 @@ ms.locfileid: "76122010"
 ]
 ```
 
-下一個範例顯示父資源外部的子資源。 如果父資源並未部署在相同範本中，或者想要使用 [[複製](create-multiple-instances.md)] 來建立多個子資源，您可以使用此方法。
+下一個範例顯示父資源外部的子資源。 如果父資源並未部署在相同範本中，或者想要使用 [[複製](copy-resources.md)] 來建立多個子資源，您可以使用此方法。
 
 ```json
 "resources": [

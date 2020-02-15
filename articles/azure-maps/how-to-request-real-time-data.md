@@ -1,20 +1,20 @@
 ---
 title: 要求即時傳輸資料 |Microsoft Azure 對應
 description: 使用 Microsoft Azure Maps 行動服務來要求即時資料。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 09/06/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 053e6c84f69e8b3d3fed0a90a8b632aa4eb311cb
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 9710366bdb7d8e86c8abb54b29b8dde3cc315692
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198151"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209897"
 ---
 # <a name="request-real-time-data-using-the-azure-maps-mobility-service"></a>使用 Azure 地圖服務行動服務來要求即時資料
 
@@ -27,7 +27,7 @@ ms.locfileid: "77198151"
  * 要求指定自行車銜接站的即時資訊。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 您必須先擁有 Azure 地圖服務帳戶和訂用帳戶金鑰，才能對 Azure 地圖服務公用傳輸 Api 進行任何呼叫。 如需相關資訊，請遵循[建立帳戶](quick-demo-map-app.md#create-an-account-with-azure-maps)中的指示來建立 Azure 地圖服務帳戶。 請依照[取得主要金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步驟來取得您帳戶的主要金鑰。 如需 Azure 地圖服務中驗證的詳細資訊，請參閱[管理 Azure 地圖服務中的驗證](./how-to-manage-authentication.md)。
 

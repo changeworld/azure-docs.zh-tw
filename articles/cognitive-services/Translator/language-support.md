@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: ec5c1295f883bb37ad5f016bc3346c134863e6bd
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: a4f9833e8dd14dc7c8ec5849cb809bf2089a5dae
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118823"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77206118"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>翻譯工具文字 API 支援的語言和區域
 
@@ -23,7 +23,7 @@ ms.locfileid: "77118823"
 
 [深入了解機器翻譯的運作方式](https://www.microsoft.com/translator/mt.aspx)
 
-## <a name="translation"></a>轉譯
+## <a name="translation"></a>翻譯
 
 **V2 Translator API**
 
@@ -40,7 +40,7 @@ ms.locfileid: "77118823"
 > [!NOTE]
 > 目前，類神經語言的子集可在自訂翻譯中使用，我們會逐漸新增其他類神經語言。 [觀看自訂翻譯中目前可用的語言](#customization)。
 
-|語言|  語言代碼|  V3 API|
+|Language|  語言代碼|  V3 API|
 |:-----|:-----:|:-----|
 |南非荷蘭文| `af`|   類神經|
 |阿拉伯文|    `ar`    |   類神經|
@@ -120,7 +120,7 @@ ms.locfileid: "77118823"
 
 轉換方法支援以下語言。 在「至/自」列中，「<-->」表示該語言後方所列的兩種文字可相互轉換。 「-->」表示該語言只能從某種文字轉寫成另一種文字。
 
-| 語言    | 語言代碼 | 指令檔 | 至/自 | 指令檔|
+| Language    | 語言代碼 | 指令碼 | 至/自 | 指令碼|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | 阿拉伯文 | `ar` | 阿拉伯文 `Arab` | <--> | 拉丁文 `Latn` |
 |孟加拉文  | `bn` | 孟加拉文 `Beng` | <--> | 拉丁文 `Latn` |
@@ -141,13 +141,13 @@ ms.locfileid: "77118823"
 | 塞爾維亞文 (拉丁) | `sr-Latn` | 拉丁文 `Latn` | --> | 斯拉夫文 `Cyrl`|
 | 坦米爾文 | `ta` | 坦米爾文 `Taml` | --> | 拉丁文 `Latn` |
 | 泰盧固文 | `te` | 泰盧固文 `Telu` | --> | 拉丁文 `Latn` |
-| 泰文 | `th` | 泰文 `Thai` | <--> | 拉丁文 `Latn` |
+| 泰文 | `th` | 泰文 `Thai` | --> | 拉丁文 `Latn` |
 
 ## <a name="dictionary"></a>字典
 
 字典支援使用查閱與範例方法來查詢下列語言的英文譯文，或英文的下列語言譯文。
 
-| 語言    | 語言代碼 |
+| Language    | 語言代碼 |
 |:----------- |:-------------:|
 | 南非荷蘭文      | `af`          |
 | 阿拉伯文       | `ar`          |
@@ -215,7 +215,7 @@ ms.locfileid: "77118823"
 
 下列語言可使用[自訂翻譯](https://aka.ms/CustomTranslator)自訂或英文。
 
-| 語言    | 語言代碼 |
+| Language    | 語言代碼 |
 |:----------- |:-------------:|
 | 阿拉伯文       | `ar`          |
 | 孟加拉文      | `bn`          |

@@ -1,20 +1,20 @@
 ---
 title: 提供 Azure 地圖服務的資料意見反應 |Microsoft Azure 對應
 description: 使用 Microsoft Azure Maps 意見反應工具來提供資料意見反應。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 08/19/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: fda65e900b7faf0ff77d533e8dbfd2e7369ad602
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 4c4eb8932dda32ae6773e76dc7102f5afc6bc655
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198134"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209829"
 ---
 # <a name="provide-data-feedback-to-azure-maps"></a>提供資料意見反應給 Azure 地圖服務
 

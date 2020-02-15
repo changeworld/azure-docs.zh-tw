@@ -1,19 +1,19 @@
 ---
 title: 流量涵蓋範圍 |Microsoft Azure 對應
 description: 在本文中，您將瞭解 Microsoft Azure 對應中的流量涵蓋範圍。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 09/22/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 083f659f9392faff8f381e1552db23c291ffa8ca
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 02d57f39f2a911864ebe16d05456409d0119b495
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988140"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209523"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Azure 地圖服務交通涵蓋範圍
 
@@ -23,15 +23,15 @@ Azure 地圖服務會以交通**流量**和**事件**的形式提供豐富的交
 
 ## <a name="americas"></a>美洲
 
-|國家/地區  |事故  |流程  |
+|國家/區域  |事故  |Flow  |
 |---------|:---------:|:---------:|
 |阿根廷      |✓         |✓         |
 |巴西     |✓         |✓         |
-|加拿大     |✓         |✓         |
+|Canada     |✓         |✓         |
 |智利     |✓         |✓         |
 |哥倫比亞      |✓         |✓         |
 |墨西哥     |✓         |✓         |
-|秘魯       |✓         |✓         | 
+|祕魯       |✓         |✓         | 
 |美國     |✓         |✓        |
 |+波多黎各     |✓         |✓         |
 |烏拉圭 |✓         |✓         |
@@ -39,9 +39,9 @@ Azure 地圖服務會以交通**流量**和**事件**的形式提供豐富的交
 
 ## <a name="asia-pacific"></a>亞太地區
 
-|國家/地區   |事故  |流程  |
+|國家/區域   |事故  |Flow  |
 |---------|:---------:|:---------:|
-|澳洲     |✓         |✓        |
+|澳大利亞     |✓         |✓        |
 |汶萊   |✓         |✓        |
 |香港特別行政區     |✓         |✓         |
 |印度   |✓         |✓         |
@@ -59,7 +59,7 @@ Azure 地圖服務會以交通**流量**和**事件**的形式提供豐富的交
 
 ## <a name="europe"></a>歐洲
 
-|國家/地區   |事故  |流程  |
+|國家/區域   |事故  |Flow  |
 |---------|:---------:|:---------:|
 |安道爾   |✓         |✓         |
 |奧地利     |✓         |✓         |
@@ -108,7 +108,7 @@ Azure 地圖服務會以交通**流量**和**事件**的形式提供豐富的交
 |瑞士     |✓         |✓        |
 |土耳其     |✓         |✓         |
 |烏克蘭     |✓         |✓         |
-|英國     |✓         |✓         |
+|United Kingdom     |✓         |✓         |
 |+直布羅陀     |✓         |✓         |
 |\+ 根息島 & Jersey     |✓         |✓         |
 |\+ Isle 的 Man     |✓         |✓         |
@@ -117,7 +117,7 @@ Azure 地圖服務會以交通**流量**和**事件**的形式提供豐富的交
 
 ## <a name="middle-east-and-africa"></a>中東與非洲
 
-|國家/地區 |事故  |流程  |
+|國家/區域 |事故  |Flow  |
 |---------|:---------:|:---------:|
 |巴林     |✓         |✓         |
 |埃及     |✓         |✓         |

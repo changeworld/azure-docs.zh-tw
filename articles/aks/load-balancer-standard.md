@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 03daafd383810a5e6cf086ca8e546981b06fa6eb
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: b15c60d5436feada8558c83cb14efd7e21a22493
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025702"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212420"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service 中使用標準 SKU 負載平衡器（AKS）
 
@@ -57,7 +57,10 @@ Azure Load Balancer 有兩種 SKU -「基本」和「標準」。 根據預設�
 
 ## <a name="use-the-standard-sku-load-balancer"></a>使用*標準*SKU 負載平衡器
 
-當您建立 AKS 叢集時，根據預設，當您在該叢集中執行服務時，會使用*標準*SKU 負載平衡器。 例如，[使用 Azure CLI 的快速入門][aks-quickstart-cli]會部署使用*標準*SKU 負載平衡器的範例應用程式。 
+當您建立 AKS 叢集時，根據預設，當您在該叢集中執行服務時，會使用*標準*SKU 負載平衡器。 例如，[使用 Azure CLI 的快速入門][aks-quickstart-cli]會部署使用*標準*SKU 負載平衡器的範例應用程式。
+
+> [!IMPORTANT]
+> 藉由自訂使用者定義的路由（UDR），可以避免公用 IP 位址。 將 AKS 叢集的輸出類型指定為 UDR，可以略過 AKS 所建立 Azure 負載平衡器的 IP 布建和後端集區設定。 請參閱[將叢集的 `outboundType` 設定為 ' userDefinedRouting '](egress-outboundtype.md)。
 
 ## <a name="configure-the-load-balancer-to-be-internal"></a>將負載平衡器設定為內部
 

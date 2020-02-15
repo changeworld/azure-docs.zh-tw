@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: b65b7a9fd38b690729fafd86fe213ff56760a1bb
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 280851b2fea0b8100a7d0f8ec8105109a41c8c83
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169843"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252071"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>什麼是 Azure Machine Learning 計算實例？
 
@@ -141,11 +141,11 @@ Python 套件全都安裝在**python 3.6-AzureML**環境中。
 
 ## <a name="notebookvm"></a>筆記本 VM 發生什麼事？
 
-計算實例會取代筆記本 VM。  在尚未提供計算實例的區域中，您可以繼續使用具有完整功能的筆記本 Vm，並建立新的筆記本 Vm。
+計算實例會取代筆記本 VM。  
 
 儲存在工作區檔案共用中的任何筆記本檔案和工作空間資料存放區中的資料，都可從計算實例存取。 不過，先前安裝在筆記本 VM 上的任何自訂套件，都必須重新安裝在計算實例上。 適用于計算叢集建立的配額限制也適用于計算實例建立。 
 
-在可用計算實例的區域中，無法建立新的筆記本 Vm。 不過，您仍然可以存取和使用您所建立的筆記本 Vm，並提供完整的功能。 計算實例可以建立在與現有筆記本 Vm 相同的工作區中。 
+無法建立新的筆記本 Vm。 不過，您仍然可以存取和使用您所建立的筆記本 Vm，並提供完整的功能。 計算實例可以建立在與現有筆記本 Vm 相同的工作區中。 
 
 
 ## <a name="next-steps"></a>後續步驟

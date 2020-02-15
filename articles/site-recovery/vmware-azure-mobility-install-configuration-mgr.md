@@ -3,14 +3,14 @@ title: 將行動服務自動化，以在 Azure Site Recovery 中進行安裝的�
 description: 如何使用 Azure Site Recovery 自動安裝適用于 VMware/physical server 嚴重損壞修復的行動服務。
 author: Rajeswari-Mamilla
 ms.topic: how-to
-ms.date: 12/22/2019
+ms.date: 2/5/2020
 ms.author: ramamill
-ms.openlocfilehash: 235b96cfd2da0c097bc576c63f5bd1c8ed224781
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f24d321e882024d324435498adf11694037547f7
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76896022"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252222"
 ---
 # <a name="automate-mobility-service-installation"></a>自動安裝行動服務
 
@@ -20,7 +20,7 @@ ms.locfileid: "76896022"
 
 - **推入安裝**：當您為 Azure 入口網站中的機器啟用複寫時，讓 Site Recovery 安裝行動服務代理程式。
 - **手動安裝**：在每部電腦上手動安裝行動服務。 [深入瞭解](vmware-physical-mobility-service-overview.md)推送和手動安裝。
-- **自動化部署**：使用軟體部署工具（例如 Microsoft Endpoint Configuration Manager）或協力廠商工具（例如 Intigua JetPatch）來自動化安裝。
+- **自動化部署**：使用軟體部署工具（例如 Microsoft Endpoint Configuration Manager）或協力廠商工具（例如 JetPatch）來自動化安裝。
 
 自動安裝和更新提供下列解決方案：
 
@@ -31,7 +31,7 @@ ms.locfileid: "76896022"
 - 您需要同時將代理程式安裝調整到許多伺服器。
 - 您想要在規劃的維護時段排程安裝和升級。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要自動安裝，您需要下列專案：
 
@@ -374,7 +374,7 @@ cd /tmp
 
    ![Configuration Manager 主控台的螢幕擷取畫面](./media/vmware-azure-mobility-install-configuration-mgr/sccm_distribute.png)
 
-1. 選取應將套件複製到其中的發佈點。 [深入了解](/sccm/core/servers/deploy/configure/install-and-configure-distribution-points)。
+1. 選取應將套件複製到其中的發佈點。 [詳細資訊](/sccm/core/servers/deploy/configure/install-and-configure-distribution-points)。
 1. 完成精靈。 套件便會開始複寫至指定的發佈點。
 1. 封裝散發完成後，以滑鼠右鍵按一下封裝 >**部署**。
 
@@ -386,7 +386,7 @@ cd /tmp
 
    ![部署軟體精靈的螢幕擷取畫面](./media/vmware-azure-mobility-install-configuration-mgr/sccm-deploy-select-purpose.png)
 
-1. 在 [**指定此部署的排程**] 中，設定排程。 [深入了解](/sccm/apps/deploy-use/deploy-applications#bkmk_deploy-sched)。
+1. 在 [**指定此部署的排程**] 中，設定排程。 [詳細資訊](/sccm/apps/deploy-use/deploy-applications#bkmk_deploy-sched)。
 
    - 行動服務會根據您指定的排程安裝。
    - 為了避免不必要的重新開機，請排定在每月維護期間或軟體更新期間安裝套件。

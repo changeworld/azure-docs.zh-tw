@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: cfdf7dfd4c16f70065e338f8983d2124d3f6f0ef
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 69bf41f9d88081b9a416b9bee91e8650a84f12c7
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933205"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209710"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>在地圖中新增影像圖層
 
-本文說明如何在地圖上將影像重迭成一組固定的座標。 以下是一些影像類型的範例，通常會在地圖上重迭：
+本文說明如何將影像重迭成一組固定的座標。 以下是幾個可在地圖上重迭之不同影像類型的範例：
 
 * 從無人機所捕獲的映射
 * 建立 floorplans
@@ -62,9 +62,9 @@ map.layers.add(new atlas.layer.ImageLayer({
 
 ## <a name="import-a-kml-file-as-ground-overlay"></a>匯入 KML 檔案作為基礎重迭
 
-下一個範例示範如何將 KML 地面重迭資訊覆迭為地圖上的影像圖層。 KML 地面重迭提供北、南、東和西座標和逆時針旋轉，而影像圖層則需要影像每個角落的座標。 此範例中的 KML 地面重迭是 Chartres cathedral，來自[Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml)。
+這個範例會示範如何將 KML 地面重迭資訊新增為地圖上的影像圖層。 KML 地面重迭提供北、南、東和西座標，以及逆時針旋轉。 但是，影像圖層預期影像的每個角落都會有座標。 此範例中的 KML 基礎重迭適用于 Chartres cathedral，其來自[Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml)。
 
-下列程式碼會使用[ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)類別的靜態 `getCoordinatesFromEdges` 函式。 它會從北部、南、東和 west 計算影像的四個角落，以及從 KML 地面重迭的旋轉資訊。
+程式碼會使用[ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)類別中的靜態 `getCoordinatesFromEdges` 函式。 它會使用 KML 地面重迭的北部、南部、東、west 和旋轉資訊來計算影像的四個角落。
 
 <br/>
 

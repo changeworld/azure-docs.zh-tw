@@ -4,22 +4,21 @@ description: 瞭解如何透過伺服器訊息區（SMB）啟用以身分識別�
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 01/06/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 489cb9e652d571b5322a1bd92663ca089e28b8cd
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 06ff14b23057755a643e5a57fbaf711798cca00e
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980783"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210477"
 ---
-# <a name="enable-azure-active-directory-domain-services-authentication-over-smb-for-azure-files"></a>針對 Azure 檔案儲存體啟用透過 SMB 的 Azure Active Directory Domain Services 驗證
+# <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>啟用 Azure 檔案儲存體上的 Azure Active Directory Domain Services 驗證
 
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
 
-如需 Azure 檔案儲存體的 SMB Azure AD 驗證的總覽，請參閱[Azure 檔案儲存體的透過 smb 進行 Azure Active Directory 驗證的總覽](storage-files-active-directory-overview.md)。
-
+如需 Azure 檔案儲存體上支援之身分識別型驗證的總覽，請參閱[Azure 檔案儲存體的 SMB Azure Active Directory 驗證的總覽](storage-files-active-directory-overview.md)。 本文著重于如何使用 Azure 檔案儲存體上的 Azure Active Directory Domain Services （Azure AD DS）來啟用驗證。 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="overview-of-the-workflow"></a>工作流程概觀
@@ -37,7 +36,7 @@ ms.locfileid: "75980783"
 
 ![此圖顯示針對 Azure 檔案使用「透過 SMB 進行 Azure AD 驗證」的工作流程](media/storage-files-active-directory-enable/azure-active-directory-over-smb-workflow.png)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 針對 Azure 檔案服務啟用透過 SMB 進行 Azure AD 驗證之前，請確定您已完成下列必要條件：
 
@@ -71,11 +70,11 @@ ms.locfileid: "75980783"
 
 ## <a name="enable-azure-ad-ds-authentication-for-your-account"></a>為您的帳戶啟用 Azure AD DS 驗證
 
-若要啟用透過 SMB 進行 Azure AD DS 驗證以進行 Azure 檔案儲存體，您可以在2018年9月24日之後建立的儲存體帳戶上設定屬性，方法是使用 [Azure 入口網站]、[Azure PowerShell] 或 [Azure CLI]。 設定此屬性會向相關聯的 Azure AD DS 部署註冊儲存體帳戶。 接著，會針對儲存體帳戶中的所有新的和現有檔案共用，啟用透過 SMB 進行的 DS 驗證 Azure AD。
+若要啟用透過 SMB 進行 Azure AD DS 驗證以進行 Azure 檔案儲存體，您可以使用 Azure 入口網站、Azure PowerShell 或 Azure CLI，在儲存體帳戶上設定屬性。 以隱含方式將此屬性設定為 [網域加入] 具有相關聯 Azure AD DS 部署的儲存體帳戶。 接著，會針對儲存體帳戶中的所有新的和現有檔案共用，啟用透過 SMB 進行的 DS 驗證 Azure AD。
 
 請記住，只有在您成功將 Azure AD DS 部署至 Azure AD 租使用者之後，才可以啟用透過 SMB 進行 Azure AD DS 驗證。 如需詳細資訊，請參閱[必要條件](#prerequisites)。
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure 入口網站
 
 若要使用[Azure 入口網站](https://portal.azure.com)啟用透過 SMB 進行 Azure AD DS 驗證，請遵循下列步驟：
 
@@ -147,7 +146,7 @@ az storage account update -n <storage-account-name> -g <resource-group-name> --e
 
 您可以使用 Azure 入口網站、PowerShell 或 Azure CLI，將內建角色指派給使用者的 Azure AD 身分識別，以授與共享層級許可權。
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>Azure 入口網站
 若要使用[Azure 入口網站](https://portal.azure.com)將 RBAC 角色指派給 Azure AD 身分識別，請依照下列步驟執行：
 
 1. 在 Azure 入口網站中，移至您的檔案共用，或[在 Azure 檔案儲存體中建立檔案共用](storage-how-to-create-file-share.md)。

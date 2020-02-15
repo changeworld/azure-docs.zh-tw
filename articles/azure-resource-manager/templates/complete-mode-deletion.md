@@ -2,13 +2,13 @@
 title: 完整模式刪除
 description: 顯示資源類型如何處理 Azure Resource Manager 範本中的完整模式刪除。
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.openlocfilehash: b24bf2d8076dbaa1975f5444d597647156a31f4f
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 02/13/2020
+ms.openlocfilehash: 80d2ee356e3bc15a178862c453bf7f1ab8d66c77
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715586"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207803"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>完整模式部署的 Azure 資源刪除
 
@@ -121,6 +121,7 @@ ms.locfileid: "76715586"
 > - [Microsoft。遷移](#microsoftmigrate)
 > - [MixedReality](#microsoftmixedreality)
 > - [Microsoft NetApp](#microsoftnetapp)
+> - [Microsoft 筆記本](#microsoftnotebooks)
 > - [Microsoft 網路](#microsoftnetwork)
 > - [Microsoft.NotificationHubs](#microsoftnotificationhubs)
 > - [Objectstore 會](#microsoftobjectstore)
@@ -153,6 +154,7 @@ ms.locfileid: "76715586"
 > - [Azurerm.siterecovery](#microsoftsiterecovery)
 > - [SoftwarePlan](#microsoftsoftwareplan)
 > - [Microsoft 解決方案](#microsoftsolutions)
+> - [SpoolService](#microsoftspoolservice)
 > - [Microsoft .SQL](#microsoftsql)
 > - [Microsoft.sqlvirtualmachine](#microsoftsqlvirtualmachine)
 > - [Microsoft.Storage](#microsoftstorage)
@@ -372,6 +374,7 @@ ms.locfileid: "76715586"
 > | billingAccounts/billingProfiles/指示 | 否 |
 > | billingAccounts/billingProfiles/發票 | 否 |
 > | billingAccounts/billingProfiles/發票/pricesheet | 否 |
+> | billingAccounts/billingProfiles/發票/交易 | 否 |
 > | billingAccounts / billingProfiles / invoiceSections | 否 |
 > | billingAccounts / billingProfiles / invoiceSections / billingPermissions | 否 |
 > | billingAccounts / billingProfiles / invoiceSections / billingRoleAssignments | 否 |
@@ -489,7 +492,6 @@ ms.locfileid: "76715586"
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
 > | Redis | 是 |
-> | RedisConfigDefinition | 否 |
 
 ## <a name="microsoftcapacity"></a>Microsoft.Capacity
 
@@ -712,6 +714,9 @@ ms.locfileid: "76715586"
 > | 登錄/getBuildSourceUploadUrl | 否 |
 > | 登錄/GetCredentials | 否 |
 > | 登錄/importImage | 否 |
+> | 登錄/privateEndpointConnectionProxies | 否 |
+> | 登錄/privateEndpointConnectionProxies/驗證 | 否 |
+> | 登錄/privateLinkResources | 否 |
 > | 登錄/queueBuild | 否 |
 > | 登錄/regenerateCredential | 否 |
 > | 登錄/regenerateCredentials | 否 |
@@ -1397,6 +1402,13 @@ ms.locfileid: "76715586"
 > | netAppAccounts/capacityPools/磁片區 | 是 |
 > | netAppAccounts/capacityPools/磁片區/mountTargets | 是 |
 > | netAppAccounts/capacityPools/磁片區/快照集 | 是 |
+
+## <a name="microsoftnotebooks"></a>Microsoft 筆記本
+
+> [!div class="mx-tableFixed"]
+> | 資源類型 | 完整模式刪除 |
+> | ------------- | ----------- |
+> | NotebookProxies | 否 |
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tableFixed"]
@@ -1512,7 +1524,6 @@ ms.locfileid: "76715586"
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
 > | clusters | 是 |
-> | devices | 否 |
 > | linkTargets | 否 |
 > | storageInsightConfigs | 否 |
 > | workspaces | 是 |
@@ -1523,6 +1534,7 @@ ms.locfileid: "76715586"
 > | 工作區/privateEndpointConnections | 否 |
 > | 工作區/privateLinkResources | 否 |
 > | 工作區/查詢 | 否 |
+> | 工作區/scopedPrivateLinkProxies | 否 |
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 
@@ -1745,8 +1757,10 @@ ms.locfileid: "76715586"
 > | 書籤 | 否 |
 > | 案例 | 否 |
 > | dataConnectors | 否 |
+> | dataConnectorsCheckRequirements | 否 |
 > | 實體 | 否 |
 > | entityQueries | 否 |
+> | 次數 | 否 |
 > | officeConsents | 否 |
 > | settings | 否 |
 
@@ -1780,6 +1794,8 @@ ms.locfileid: "76715586"
 > | containerGroupSets | 是 |
 > | edgeclusters | 是 |
 > | edgeclusters/應用程式 | 否 |
+> | managedclusters | 是 |
+> | managedclusters/nodetypes | 否 |
 > | networks | 是 |
 > | secretstores | 是 |
 > | secretstores/憑證 | 否 |
@@ -1837,6 +1853,14 @@ ms.locfileid: "76715586"
 > | applicationDefinitions | 是 |
 > | 應用程式所需 | 是 |
 > | jitRequests | 是 |
+
+## <a name="microsoftspoolservice"></a>SpoolService
+
+> [!div class="mx-tableFixed"]
+> | 資源類型 | 完整模式刪除 |
+> | ------------- | ----------- |
+> | registeredSubscriptions | 否 |
+> | 白天 | 是 |
 
 ## <a name="microsoftsql"></a>Microsoft.SQL
 
@@ -1993,6 +2017,7 @@ ms.locfileid: "76715586"
 > | devices | 是 |
 > | 廠商 | 否 |
 > | 廠商/sku | 否 |
+> | 廠商/vnfs | 否 |
 > | vnfs | 是 |
 
 ## <a name="microsoftweb"></a>Microsoft.Web

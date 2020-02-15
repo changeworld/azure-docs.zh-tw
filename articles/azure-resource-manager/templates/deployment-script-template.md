@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 01/24/2020
 ms.author: jgao
-ms.openlocfilehash: f18c9c6efb17f84446b9fee3d2df2c0977bed0c4
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: a67f360aa08f306d6462342d96f59e06a4d3b501
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76757298"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251850"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>在範本中使用部署腳本（預覽）
 
@@ -30,7 +30,7 @@ ms.locfileid: "76757298"
 
 - 容易編寫程式碼、使用和 debug。 您可以在慣用的開發環境中開發部署腳本。 這些腳本可以內嵌在範本或外部腳本檔案中。
 - 您可以指定指令碼語言和平臺。 目前僅支援 Linux 環境上的 Azure PowerShell 部署腳本。
-- 允許指定用來執行腳本的身分識別。 目前僅支援[Azure 使用者指派的受控識別](../../active-directory/managed-identities-azure-resources/overview.md)。
+- 允許指定用來執行腳本的身分識別。 目前僅支援[Azure 使用者指派的受控識別](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)。
 - 允許將命令列引數傳遞至腳本。
 - 可以指定腳本輸出，並將它們傳回至部署。
 
@@ -40,7 +40,7 @@ ms.locfileid: "76757298"
 > [!IMPORTANT]
 > 系統會在相同的資源群組中建立兩個部署指令碼資源 (儲存體帳戶和容器執行個體)，用以執行指令碼和疑難排解。 當部署腳本在終端機狀態中執行時，腳本服務通常會刪除這些資源。 在資源刪除之前，您需支付資源費用。 若要深入瞭解，請參閱[清理部署腳本資源](#clean-up-deployment-script-resources)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - **使用者指派的受控識別，且在訂用帳戶層級上具有參與者角色**。 此身分識別會用來執行部署指令碼。 若要建立一個，請參閱使用 Azure 入口網站或[使用 Azure CLI](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)[建立使用者指派的受控識別](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)，或使用[Azure PowerShell](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)。 您在部署範本時將需要身分識別的識別碼。 此身分識別的格式為：
 
@@ -59,7 +59,7 @@ ms.locfileid: "76757298"
 
 - **Azure PowerShell 版本2.7.0、2.8.0 或 3.0.0**。 您不需要這些版本來部署範本。 但在本機測試部署腳本需要這些版本。 請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。 您可以使用預先設定的 Docker 映射。  請參閱[設定開發環境](#configure-development-environment)。
 
-## <a name="resource-schema"></a>資源架構
+## <a name="sample-template"></a>範例範本
 
 下列 json 是一個範例。  您可以在[這裡](/azure/templates/microsoft.resources/deploymentscripts)找到最新的範本架構。
 
@@ -87,7 +87,7 @@ ms.locfileid: "76757298"
       $DeploymentScriptOutputs = @{}
       $DeploymentScriptOutputs['text'] = $output
     ",
-    "primaryScriptUri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.json",
+    "primaryScriptUri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
     "supportingScriptUris":[],
     "timeout": "PT30M",
     "cleanupPreference": "OnSuccess",
@@ -122,7 +122,7 @@ ms.locfileid: "76757298"
 > [!NOTE]
 > 因為內嵌部署腳本是以雙引號括住，所以部署腳本內的字串必須以單引號括住。 PowerShell 的逸出字元是 **&#92;** 。 您也可以考慮使用字串替代，如先前的 JSON 範例所示。 請參閱 name 參數的預設值。
 
-腳本接受一個參數，並輸出參數值。 **DeploymentScriptOutputs**是用來儲存輸出。  在 [輸出] 區段中，[**值**] 行會顯示如何存取儲存的值。 `Write-Output` 用於偵錯工具的用途。 若要瞭解如何存取輸出檔，請參閱[調試腳本](#debug-deployment-scripts)。  如需屬性描述，請參閱[資源架構](#resource-schema)。
+腳本接受一個參數，並輸出參數值。 **DeploymentScriptOutputs**是用來儲存輸出。  在 [輸出] 區段中，[**值**] 行會顯示如何存取儲存的值。 `Write-Output` 用於偵錯工具的用途。 若要瞭解如何存取輸出檔，請參閱[調試腳本](#debug-deployment-scripts)。  如需屬性描述，請參閱[範例範本](#sample-template)。
 
 若要執行腳本，請選取 [**試試看**] 以開啟 Cloud shell，然後將下列程式碼貼入 [shell] 窗格中。
 

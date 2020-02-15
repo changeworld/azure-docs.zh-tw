@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 0b1ab7b2c233eb1e6e231b0ae7935b6c24363948
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 1a6b3b4665e6141fb4c95508a8d8405268de6d19
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988527"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208517"
 ---
 # <a name="get-information-from-a-coordinate"></a>從座標取得資訊
 
 本文會示範如何進行反向位址搜尋，顯示已按下的快顯位置本身的位址。
 
-有兩種方式可以進行反向位址搜尋。 第一個方式是透過服務模組查詢 [Azure 地圖反向地址搜尋 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)。 另一種方式是利用[FETCH API](https://fetch.spec.whatwg.org/)向[Azure 地圖服務的反向位址搜尋 api](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)提出要求，以尋找位址。 以下簡要說明這兩種方式。
+有兩種方式可以進行反向位址搜尋。 第一個方式是透過服務模組查詢 [Azure 地圖反向地址搜尋 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)。 另一種方式是使用[FETCH API](https://fetch.spec.whatwg.org/)向[Azure 地圖服務的反向位址搜尋 api](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)提出要求，以尋找位址。 以下簡要說明這兩種方式。
 
 ## <a name="make-a-reverse-search-request-via-service-module"></a>透過服務模組提出反向搜尋要求
 
@@ -37,7 +37,7 @@ ms.locfileid: "76988527"
 
 第五個程式碼區塊會設定 HTML 快顯視窗內容，以顯示已按下座標位置的回應位址。
 
-游標的變更、快顯物件和 click 事件都會在地圖的[載入事件](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)接聽程式中建立，以確保在抓取座標資訊之前，完全載入對應。
+游標、快顯物件和 click 事件的變更都是在地圖的[載入事件](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)接聽程式中建立。 在抓取座標資訊之前，此程式碼結構可確保對應完全載入。
 
 ## <a name="make-a-reverse-search-request-via-fetch-api"></a>透過 Fetch API 提出反向搜尋要求
 
@@ -52,7 +52,7 @@ ms.locfileid: "76988527"
 
 第三個程式碼區塊會新增滑鼠點選的事件接聽程式。 按一下滑鼠後，它會使用[FETCH API](https://fetch.spec.whatwg.org/)來查詢 Azure 地圖服務的[反向位址搜尋 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) ，以取得所按下的座標位址。 針對成功的回應，它會收集所按下位置的位址。 它會使用 popup 類別的[setOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setoptions-popupoptions-)函式來定義快顯內容和位置。
 
-游標的變更、快顯物件和 click 事件都會在地圖的[載入事件](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)接聽程式中建立，以確保在取得座標資訊之前，會完整地載入對應。
+游標、快顯物件和 click 事件的變更都是在地圖的[載入事件](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)接聽程式中建立。 這個程式碼結構可確保對應在抓取座標資訊之前完全載入。
 
 ## <a name="next-steps"></a>後續步驟
 

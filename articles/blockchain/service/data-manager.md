@@ -2,14 +2,14 @@
 title: 什麼是適用於 Azure 區塊鏈服務的區塊鏈資料管理員
 description: 區塊鏈資料管理員用於將區塊鏈資料擷取、轉換和傳遞至事件方格主題。
 ms.date: 11/04/2019
-ms.topic: overview
+ms.topic: conceptual
 ms.reviewer: chroyal
-ms.openlocfilehash: 6583a99ef6efaefa732178d0228708cea82365b1
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
-ms.translationtype: HT
+ms.openlocfilehash: 78c93880007259267b26cf53e93de722be1c7323
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326205"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209438"
 ---
 # <a name="what-is-blockchain-data-manager-for-azure-blockchain-service"></a>什麼是適用於 Azure 區塊鏈服務的區塊鏈資料管理員？
 
@@ -33,7 +33,7 @@ ms.locfileid: "74326205"
 
 區塊鏈資料管理員會針對任何指定的區塊鏈資料管理員執行個體，支援多個事件方格主題輸出連線。 您可將區塊鏈資料傳送至單一目的地，或將區塊鏈資料傳送至多個目的地。 使用區塊鏈資料管理員，即可為任何區塊鏈部署建立可擴充的事件型資料發佈解決方案。
 
-## <a name="configuration-options"></a>組態選項
+## <a name="configuration-options"></a>設定選項
 
 您可以設定區塊鏈資料管理員，以符合解決方案的需求。 例如，您可以：
 

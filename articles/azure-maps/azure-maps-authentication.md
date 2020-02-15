@@ -1,20 +1,20 @@
 ---
 title: 驗證方法 |Microsoft Azure 對應
 description: 在本文中，您將瞭解 Azure Active Directory （Azure AD）和共用金鑰驗證。 這兩者都用於 Microsoft Azure Maps 服務。 瞭解如何取得 Azure 地圖服務訂用帳戶金鑰。
-author: walsehgal
-ms.author: v-musehg
-ms.date: 02/11/2020
+author: farah-alyasari
+ms.author: v-faalya
+ms.date: 01/28/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 73c0d9f76ad92d0ef7ed0f518de5ab1f8b174c9d
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: ee8b166077c64ae5e0f2cce18ee0bc77e8c996f4
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77189804"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210118"
 ---
 # <a name="authentication-with-azure-maps"></a>向 Azure 地圖服務驗證
 

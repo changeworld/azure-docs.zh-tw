@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf1515bcf2223ae730a47f7105d51206ba638cd7
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 842e5c4771fcac0b8011dda1df11c646bf8f070c
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161608"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207191"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>在 Azure Active Directory 中自訂 SaaS 應用程式的使用者布建屬性對應
 
@@ -111,7 +111,7 @@ Azure AD 布建服務可以部署在「greenfield」案例中（使用者不會�
 
 - Salesforce
 - ServiceNow
-- 工作日
+- Workday
 - Azure Active Directory (支援 [Azure AD Graph API 預設屬性](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity)和自訂目錄擴充功能)
 - 支援 [SCIM 2.0](https://tools.ietf.org/html/rfc7643) 的應用程式，定義於[核心結構描述](https://tools.ietf.org/html/rfc7643)中的屬性必須新增至此處
 
@@ -300,7 +300,7 @@ SCIM RFC 會定義核心使用者和群組架構，同時允許架構的延伸�
 
 ## <a name="restoring-the-default-attributes-and-attribute-mappings"></a>還原預設屬性和屬性對應
 
-如果您需要重新開機，並將現有的對應重設回其預設狀態，您可以選取 [**還原預設**對應] 核取方塊，並儲存設定。 這麼做會設定所有對應，如同應用程式剛從應用程式庫新增至您的 Azure AD 租使用者一樣。
+如果您需要重新開機，並將現有的對應重設回其預設狀態，您可以選取 [**還原預設**對應] 核取方塊，並儲存設定。 這麼做會設定所有對應和範圍篩選器，如同應用程式剛從應用程式庫新增至您的 Azure AD 租使用者一樣。
 
 選取此選項將會在布建服務執行時，有效地強制重新同步處理所有使用者。
 

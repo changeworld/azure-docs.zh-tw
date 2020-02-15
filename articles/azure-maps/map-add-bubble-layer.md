@@ -9,23 +9,23 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 462d820824ad6c53ad4b93ad5c88c66128619467
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 7ae11734eb804715f3eb1b5edcb02fc328dafec8
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933656"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208551"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>將泡泡圖層新增至地圖
 
-本文說明如何將資料來源中的點資料轉譯為地圖上的氣泡圖層。 泡泡圖層會將點轉譯為地圖上像素半徑固定的圓圈。 
+本文說明如何將資料來源中的點資料轉譯為地圖上的氣泡圖層。 反升層會將點轉譯為地圖上具有固定圖元半徑的圓形。 
 
 > [!TIP]
 > 根據預設，泡泡圖層會轉譯資料來源中所有幾何圖形的座標。 若要限制圖層，使其只轉譯點幾何特徵，請將圖層的 [`filter`] 屬性設為 [`['==', ['geometry-type'], 'Point']`] 或 [`['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]`] （如果您也想要包含 MultiPoint 功能）。
 
 ## <a name="add-a-bubble-layer"></a>新增泡泡圖層
 
-下列程式碼會將點陣列載入至資料來源。 然後，資料點會連接到反升[圖層](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)。 反升層會以五個圖元呈現每個氣泡的半徑、白色的填滿色彩、藍色的筆觸色彩，以及六個圖元的筆觸寬度。 
+下列程式碼會將點陣列載入至資料來源。 然後，它會將資料點連接到反升[圖層](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)。 反升層會以五個圖元和白色的填滿色彩，呈現每個氣泡的半徑。 而且是藍色的筆觸色彩和六個圖元的筆觸寬度。 
 
 ```javascript
 //Add point locations.
@@ -62,7 +62,7 @@ map.layers.add(new atlas.layer.BubbleLayer(dataSource, null, {
 
 ## <a name="show-labels-with-a-bubble-layer"></a>顯示標籤與泡泡圖層
 
-下列程式碼會示範如何使用反升層來轉譯地圖上的點，以及用來呈現標籤的符號圖層。 若要隱藏符號圖層的圖示，請將圖示選項的 [`image`] 屬性設定為 [`'none'`]。
+這段程式碼示範如何使用反升層來呈現地圖上的點。 以及如何使用符號圖層來轉譯標籤。 若要隱藏符號圖層的圖示，請將圖示選項的 [`image`] 屬性設定為 [`'none'`]。
 
 <br/>
 
@@ -75,7 +75,7 @@ map.layers.add(new atlas.layer.BubbleLayer(dataSource, null, {
 
 <br/>
 
-<iframe height='700' scrolling='no' title='泡泡圖層選項' src='//codepen.io/azuremaps/embed/eQxbGm/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>請參閱 <a href='https://codepen.io'>CodePen</a> 上由 Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 建立的 Pen：<a href='https://codepen.io/azuremaps/pen/eQxbGm/'>泡泡圖層選項</a>。
+<iframe height='700' scrolling='no' title='泡泡圖層選項' src='//codepen.io/azuremaps/embed/eQxbGm/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>請參閱 <a href='https://codepen.io/azuremaps/pen/eQxbGm/'>CodePen</a> 上由 Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 建立的 Pen：<a href='https://codepen.io'>泡泡圖層選項</a>。
 </iframe>
 
 ## <a name="next-steps"></a>後續步驟

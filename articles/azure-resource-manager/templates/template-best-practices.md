@@ -3,12 +3,12 @@ title: 範本的最佳做法
 description: 說明用於製作 Azure Resource Manager 範本的建議方法。 提供建議來避免使用範本時的常見問題。
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: b87f66f194b9e1daf8fa6a546c02aa4e86caabc3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f623255a64404f0e041173fd29488ded24cd03b3
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484242"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207480"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Azure Resource Manager 範本最佳做法
 
@@ -95,7 +95,7 @@ ms.locfileid: "75484242"
 
 * 請謹慎使用 `allowedValues`。 只有當您必須確保允許的選項中不會包含某些值時才可使用。 如果您使用的 `allowedValues` 太廣泛，您可能會因為不讓清單保持最新狀態而封鎖有效的部署。
 
-* 當範本中的參數名稱與 PowerShell 部署命令中的參數相符時，Resource Manager 會在範本參數加上後置詞 **FromTemplate** 以避免命名衝突。 例如，如果您在範本中包含名為 **ResourceGroupName** 的參數，它會與 [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) Cmdlet 中的 **ResourceGroupName** 參數發生衝突。 部署期間，系統會提示您為 **ResourceGroupNameFromTemplate** 提供值。
+* 當範本中的參數名稱與 PowerShell 部署命令中的參數相符時，Resource Manager 會在範本參數加上後置詞 **FromTemplate** 以避免命名衝突。 例如，如果您在範本中包含名為 **ResourceGroupName** 的參數，它會與 **New-AzResourceGroupDeployment** Cmdlet 中的 [ResourceGroupName](/powershell/module/az.resources/new-azresourcegroupdeployment) 參數發生衝突。 部署期間，系統會提示您為 **ResourceGroupNameFromTemplate** 提供值。
 
 ### <a name="security-recommendations-for-parameters"></a>參數的安全性建議
 
@@ -152,11 +152,11 @@ ms.locfileid: "75484242"
 
 * 針對資源上的 `apiVersion`，請勿使用變數。 API 版本會決定資源的結構描述。 變更版本往往就必須變更資源的屬性。
 
-* 您不能在範本的 **variables** 區段使用 [reference](template-functions-resource.md#reference) 函式。 **reference** 函式的值是從資源的執行階段狀態所衍生。 不過，將範本初始剖析時，會將變數加以解析。 請直接在範本的 **resources** 或 **outputs** 區段中，建構需要 **reference** 函式的值。
+* 您不能在範本的 [variables](template-functions-resource.md#reference) 區段使用 **reference** 函式。 **reference** 函式的值是從資源的執行階段狀態所衍生。 不過，將範本初始剖析時，會將變數加以解析。 請直接在範本的 **resources** 或 **outputs** 區段中，建構需要 **reference** 函式的值。
 
 * 包含變數以用於必須是唯一的資源名稱。
 
-* 請[在變數中使用複製迴圈](create-multiple-instances.md#variable-iteration)來建立重複的 JSON 物件模式。
+* 請[在變數中使用複製迴圈](copy-variables.md)來建立重複的 JSON 物件模式。
 
 * 請移除未使用的變數。
 

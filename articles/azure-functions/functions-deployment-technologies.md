@@ -6,12 +6,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gwallace
-ms.openlocfilehash: 7b95fae3c7b713a9f97c31578a3bb24a9062fa2e
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: bfb7d3ad6f918d91061fa226ae2dbfcd7f27852d
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029855"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210152"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Functions 中的部署技術
 
@@ -51,7 +51,7 @@ Azure Functions 支援跨平臺本機開發和 Windows 和 Linux 上的裝載。
 當您變更任何觸發程式時，函數基礎結構必須知道這些變更。 同步處理會針對許多部署技術自動進行。 不過，在某些情況下，您必須手動同步處理您的觸發程式。 當您藉由參考外部套件 URL、本機 Git、雲端同步或 FTP 來部署更新時，您必須手動同步處理您的觸發程式。 您可以透過下列三種方式之一來同步觸發程式：
 
 * 在 Azure 入口網站中重新開機函數應用程式
-* 使用[主要金鑰](functions-bindings-http-webhook.md#authorization-keys)將 HTTP POST 要求傳送至 `https://{functionappname}.azurewebsites.net/admin/host/synctriggers?code=<API_KEY>`。
+* 使用[主要金鑰](functions-bindings-http-webhook-trigger.md#authorization-keys)將 HTTP POST 要求傳送至 `https://{functionappname}.azurewebsites.net/admin/host/synctriggers?code=<API_KEY>`。
 * 將 HTTP POST 要求傳送至 `https://management.azure.com/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP_NAME>/providers/Microsoft.Web/sites/<FUNCTION_APP_NAME>/syncfunctiontriggers?api-version=2016-08-01`。 將預留位置取代為您的訂用帳戶識別碼、資源組名和函式應用程式的名稱。
 
 ### <a name="remote-build"></a>遠端組建
@@ -114,7 +114,7 @@ Azure Functions 提供下列部署方法。
 
 您可以部署包含函數應用程式的 Linux 容器映射。
 
->__使用方式：__ 在 Premium 或專屬方案中建立 Linux 函數應用程式，並指定要執行的容器映射。 執行這項作業的方法有兩種：
+>__使用方式：__ 在 Premium 或專屬方案中建立 Linux 函數應用程式，並指定要執行的容器映射。 您可以使用兩種方式執行此動作：
 >
 >* 在 Azure 入口網站中的 Azure App Service 方案上建立 Linux 函數應用程式。 針對 [**發佈**]，選取 [ **Docker 映射**]，然後設定容器。 輸入裝載映射的位置。
 >* 使用 Azure CLI，在 App Service 方案上建立 Linux 函數應用程式。 若要瞭解作法，請參閱[使用自訂映射在 Linux 上建立](functions-create-function-linux-custom-image.md#create-supporting-azure-resources-for-your-function)函式。

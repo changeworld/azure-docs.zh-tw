@@ -1,19 +1,19 @@
 ---
 title: 將圖格圖層新增至 Android 地圖 |Microsoft Azure 對應
 description: 在本文中，您將瞭解如何使用 Microsoft Azure Maps Android SDK，在地圖上轉譯磚圖層。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4113f632e70bf1008c688066b51a27f1bc3c6345
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 8e1a77ae83783b2841a2600654a9775e9ceb6ada
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198253"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209931"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>使用 Azure 地圖服務 Android SDK 將磚圖層新增至地圖
 
@@ -37,7 +37,7 @@ ms.locfileid: "77198253"
 * `{bbox-epsg-3857}` - 使用 `{west},{south},{east},{north}` 格式的週框方塊字串，位在 EPSG 3857 空間參考系統中。
 * `{subdomain}`-如果指定子域值，則為子域值的預留位置。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本文中的程式，您必須安裝[Azure 地圖服務 Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library)以載入對應。
 

@@ -8,12 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: e298aad6dc43f85f5b6c344eec56f5d8b37980d4
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 2ae84b59cd70a5b27ad3e501db6cfae110d90fbd
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933309"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209778"
 ---
 # <a name="building-an-accessible-application"></a>建置無障礙應用程式
 
@@ -61,13 +61,13 @@ Azure 地圖服務的 Web SDK 已預先建立，其中包含許多協助工具�
 - 在地圖專注的情況下，使用 shift 鍵加上向上或向下鍵。 
 - 使用 [音調] 控制項搭配滑鼠、觸控或鍵盤索引標籤/enter 鍵。
 
-**變更地圖樣式**並非所有開發人員都想要在其應用程式中提供所有可能的地圖樣式。 開發人員可以視需要以程式設計方式設定和變更地圖樣式。 如果開發人員顯示地圖樣式選擇器控制項，則使用者可以使用 tab/enter 鍵，透過滑鼠、觸控或鍵盤來變更地圖樣式。 開發人員可以指定他們想要在地圖樣式選擇器控制項中使用的地圖樣式。 
+**變更地圖樣式**並非所有開發人員都想要在其應用程式中提供所有可能的地圖樣式。 開發人員可以透過程式設計方式設定和變更地圖樣式。 如果開發人員顯示地圖的 [樣式選擇器] 控制項，則使用者可以使用滑鼠、觸控或鍵盤（使用 tab 或 enter 鍵）來變更地圖樣式。 開發人員可以指定他們想要在地圖樣式選擇器控制項中使用的地圖樣式。 
 
 ## <a name="keyboard-shortcuts"></a>鍵盤快速鍵
 
 地圖中有多個內建的鍵盤快速鍵，可讓您更輕鬆地使用對應。 當地圖具有焦點時，這些鍵盤快速鍵會正常執行。
 
-| 索引鍵      | 行動                            |
+| Key      | 動作                            |
 |----------|-----------------------------------|
 | `Tab` | 流覽地圖中的各個控制項和快顯功能表。 |
 | `ESC` | 將焦點從地圖中的任何元素移至最上層的地圖元素。 |
@@ -94,13 +94,13 @@ Azure 地圖服務的 Web SDK 已預先建立，其中包含許多協助工具�
 
 ## <a name="make-popups-keyboard-accessible"></a>使快顯功能表可供存取
 
-標記或符號通常用來代表地圖上的位置。 當使用者與標記互動時，此位置的其他資訊通常會顯示在快顯視窗中。 在大部分的應用程式中，當使用者按一下或按下標記時，會出現快顯視窗，不過，此事件需要使用者使用滑鼠或觸控式螢幕。 最佳做法是在使用鍵盤時讓快顯視窗可供存取。 這項功能可以藉由建立每個資料點的快顯，並將其新增至對應來達到。 
+標記或符號通常用來代表地圖上的位置。 當使用者與標記互動時，此位置的其他資訊通常會顯示在快顯視窗中。 在大部分的應用程式中，當使用者按一下或按下標記時，會出現快顯視窗。 不過，按一下和按下需要使用者分別使用滑鼠和觸控螢幕。 最佳做法是在使用鍵盤時讓快顯視窗可供存取。 這項功能可以藉由建立每個資料點的快顯，並將其新增至對應來達到。 
 
 下列範例會使用符號圖層，在地圖上載入感興趣的點，並針對每個感興趣的點新增一個快顯至地圖。 每個快顯的參考會儲存在每個資料點的屬性中。 您也可以針對標記來抓取它，例如按一下標記時。 當焦點在地圖上時，按 tab 鍵可讓使用者逐步執行地圖上的每個快顯。
 
 <br/>
 
-<iframe height='500' scrolling='no' title='製作無障礙應用程式' src='//codepen.io/azuremaps/embed/ZoVyZQ/?height=504&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>請參閱 <a href='https://codepen.io'>CodePen</a> 上由 Azure 地圖服務所提供的 Pen <a href='https://codepen.io/azuremaps/pen/ZoVyZQ/'>製作無障礙應用程式</a> ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> )。 </iframe>
+<iframe height='500' scrolling='no' title='製作無障礙應用程式' src='//codepen.io/azuremaps/embed/ZoVyZQ/?height=504&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>請參閱 <a href='https://codepen.io/azuremaps/pen/ZoVyZQ/'>CodePen</a> 上由 Azure 地圖服務所提供的 Pen <a href='https://codepen.io/azuremaps'>製作無障礙應用程式@azuremaps ( </a><a href='https://codepen.io'></a> )。 </iframe>
 
 <br/>
 
@@ -116,12 +116,12 @@ Azure 地圖服務的 Web SDK 已預先建立，其中包含許多協助工具�
     - 每隔幾秒就會將更新節流處理一次。 
     - 以邏輯方式將訊息結合在一起。 
 - 避免使用色彩做為傳達資訊的唯一方法。 使用文字、圖示或模式來補充或取代色彩。 一些考量事項如下：
-    - 如果使用「反升圖層」來顯示資料點之間的相對值，請考慮調整每個反升的半徑，加上或做為著色它們的替代方法。 
+    - 如果使用反升圖層來顯示資料點之間的相對值，請考慮調整每個反升的半徑、為氣泡著色，或兩者。 
     - 請考慮針對不同的計量類別使用具有不同圖示的符號圖層，例如三角形、星星和正方形。 符號圖層也支援調整圖示的大小。 也可以顯示文字標籤。
     - 如果顯示行資料，則寬度可以用來代表權數或大小。 虛線陣列模式可以用來代表不同的行類別。 符號圖層可以與線條組合使用，以沿著線條迭迭圖示。 使用箭號圖示有助於顯示線條的流程或方向。
     - 如果顯示多邊形資料，則可以使用模式（例如條紋）做為色彩的替代方式。 
 - 視覺受損的使用者無法存取某些視覺效果，例如熱度圖、磚圖層和影像圖層。 一些考量事項如下：
-    - 讓螢幕閱讀程式描述圖層新增至地圖時所顯示的內容。 例如，如果顯示氣象雷達圖圖層，則螢幕閱讀程式會說出「地圖上已重迭的氣象雷達圖資料」之類的內容。
+    - 讓螢幕閱讀程式描述圖層新增至地圖時所顯示的內容。 例如，如果顯示氣象雷達圖圖層，則會讓螢幕閱讀程式指出地圖上的 [氣象雷達圖資料已重迭]。
 - 限制需要滑鼠停留的功能數量。 使用鍵盤或觸控裝置來與您的應用程式互動的使用者將無法存取這些功能。 請注意，具有動態內容的暫留樣式（例如可按的圖示、連結和按鈕）仍是很好的作法。
 - 嘗試使用鍵盤流覽您的應用程式。 請確定索引標籤順序為 [邏輯]。
 - 如果要建立鍵盤快速鍵，請嘗試將它限制為兩個或更少的索引鍵。 

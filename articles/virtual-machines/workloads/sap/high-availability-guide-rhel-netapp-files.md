@@ -1,5 +1,5 @@
 ---
-title: Azure 虛擬機器高可用性，適用于 Red Hat Enterprise Linux 上的 SAP NetWeaver 與 Azure NetApp Files |Microsoft Docs
+title: 使用 Azure NetApp Files 在 RHEL 上進行 SAP NW 的 Azure Vm 高可用性 |Microsoft Docs
 description: SAP NetWeaver on Red Hat Enterprise Linux 的 Azure 虛擬機器高可用性
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/10/2020
+ms.date: 02/13/2020
 ms.author: radeltch
-ms.openlocfilehash: 8acb4819c6ef7a1969a85a056dfdde1fd021a5e6
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: ed18928237d19e9fad2548ee502f9a24266f12c0
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894645"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212884"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>Azure 虛擬機器高可用性，適用于 Red Hat Enterprise Linux 上的 SAP NetWeaver，以及適用于 SAP 應用程式的 Azure NetApp Files
 
@@ -295,7 +295,7 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
     echo "options nfs nfs4_disable_idmapping=Y" >> /etc/modprobe.d/nfs.conf
     </code></pre>
 
-   如需如何變更 `nfs4_disable_idmapping` 參數的詳細資訊，請參閱 https://access.redhat.com/solutions/1749883 。
+   如需如何變更 `nfs4_disable_idmapping` 參數的詳細資訊，請參閱 https://access.redhat.com/solutions/1749883。
 
 ### <a name="create-pacemaker-cluster"></a>建立 Pacemaker 叢集
 
@@ -462,12 +462,14 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
    sudo pcs node standby anftstsapcl2
    # If using NFSv3
    sudo pcs resource create fs_QAS_ASCS Filesystem device='192.168.24.5:/sapQAS/usrsapQASascs' \
-     directory='/usr/sap/QAS/ASCS00' fstype='nfs' \
+     directory='/usr/sap/QAS/ASCS00' fstype='nfs' force_unmount=safe \
+     op start interval=0 timeout=60 op stop interval=0 timeout=120 op monitor interval=200 timeout=40 \
      --group g-QAS_ASCS
    
    # If using NFSv4.1
    sudo pcs resource create fs_QAS_ASCS Filesystem device='192.168.24.5:/sapQAS/usrsapQASascs' \
-     directory='/usr/sap/QAS/ASCS00' fstype='nfs' options='sec=sys,vers=4.1' \
+     directory='/usr/sap/QAS/ASCS00' fstype='nfs' force_unmount=safe options='sec=sys,vers=4.1' \
+     op start interval=0 timeout=60 op stop interval=0 timeout=120 op monitor interval=200 timeout=40 \
      --group g-QAS_ASCS
    
    sudo pcs resource create vip_QAS_ASCS IPaddr2 \
@@ -523,12 +525,14 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
    
    # If using NFSv3
    sudo pcs resource create fs_QAS_AERS Filesystem device='192.168.24.5:/sapQAS/usrsapQASers' \
-     directory='/usr/sap/QAS/ERS01' fstype='nfs' \
+     directory='/usr/sap/QAS/ERS01' fstype='nfs' force_unmount=safe \
+     op start interval=0 timeout=60 op stop interval=0 timeout=120 op monitor interval=200 timeout=40 \
     --group g-QAS_AERS
    
    # If using NFSv4.1
    sudo pcs resource create fs_QAS_AERS Filesystem device='192.168.24.5:/sapQAS/usrsapQASers' \
-     directory='/usr/sap/QAS/ERS01' fstype='nfs' options='sec=sys,vers=4.1' \
+     directory='/usr/sap/QAS/ERS01' fstype='nfs' force_unmount=safe options='sec=sys,vers=4.1' \
+     op start interval=0 timeout=60 op stop interval=0 timeout=120 op monitor interval=200 timeout=40 \
     --group g-QAS_AERS
    
    sudo pcs resource create vip_QAS_AERS IPaddr2 \
@@ -644,12 +648,15 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
     sudo pcs resource create rsc_sap_QAS_ASCS00 SAPInstance \
     InstanceName=QAS_ASCS00_anftstsapvh START_PROFILE="/sapmnt/QAS/profile/QAS_ASCS00_anftstsapvh" \
     AUTOMATIC_RECOVER=false \
-    meta resource-stickiness=5000 migration-threshold=1 \
+    meta resource-stickiness=5000 migration-threshold=1 failure-timeout=60 \
+    op monitor interval=20 on-fail=restart timeout=60 \
+    op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-QAS_ASCS
    
     sudo pcs resource create rsc_sap_QAS_ERS01 SAPInstance \
     InstanceName=QAS_ERS01_anftstsapers START_PROFILE="/sapmnt/QAS/profile/QAS_ERS01_anftstsapers" \
     AUTOMATIC_RECOVER=false IS_ERS=true \
+    op monitor interval=20 on-fail=restart timeout=60 op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-QAS_AERS
       
     sudo pcs constraint colocation add g-QAS_AERS with g-QAS_ASCS -5000
@@ -669,12 +676,15 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
     sudo pcs resource create rsc_sap_QAS_ASCS00 SAPInstance \
     InstanceName=QAS_ASCS00_anftstsapvh START_PROFILE="/sapmnt/QAS/profile/QAS_ASCS00_anftstsapvh" \
     AUTOMATIC_RECOVER=false \
-    meta resource-stickiness=5000 \
+    meta resource-stickiness=5000 migration-threshold=1 failure-timeout=60 \
+    op monitor interval=20 on-fail=restart timeout=60 \
+    op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-QAS_ASCS
    
     sudo pcs resource create rsc_sap_QAS_ERS01 SAPInstance \
     InstanceName=QAS_ERS01_anftstsapers START_PROFILE="/sapmnt/QAS/profile/QAS_ERS01_anftstsapers" \
     AUTOMATIC_RECOVER=false IS_ERS=true \
+    op monitor interval=20 on-fail=restart timeout=60 op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-QAS_AERS
       
     sudo pcs constraint colocation add g-QAS_AERS with g-QAS_ASCS -5000
@@ -685,6 +695,9 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
     ```
 
    如果您要從舊版升級並切換至排入佇列伺服器2，請參閱 SAP 附注[2641322](https://launchpad.support.sap.com/#/notes/2641322)。 
+
+   > [!NOTE]
+   > 上述設定中的超時只是範例，可能需要針對特定的 SAP 設定進行調整。 
 
    請確定叢集狀態正常，且所有資源皆已啟動。 資源在哪一個節點上執行並不重要。
 

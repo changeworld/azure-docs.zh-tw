@@ -1,18 +1,18 @@
 ---
-title: Azure Functions 進階方案
+title: Azure Functions Premium 方案
 description: Azure Functions Premium 方案的詳細資料和設定選項（VNet，無冷啟動、無限制的執行持續時間）。
 author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: b373691a6b9649a43d68c9da93b49fd20536c42b
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 81db0889294360f74cb42d388e5d875de91c1019
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024631"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212464"
 ---
-# <a name="azure-functions-premium-plan"></a>Azure Functions 進階方案
+# <a name="azure-functions-premium-plan"></a>Azure Functions Premium 方案
 
 Azure Functions Premium 方案（有時稱為彈性高階方案）是函數應用程式的裝載選項。 Premium 方案提供 VNet 連線能力、無冷啟動和 Premium 硬體等功能。  多個函數應用程式可以部署到相同的高階方案，而方案則可讓您設定計算實例大小、基本方案大小和最大方案大小。  如需高階計畫和其他計畫和裝載類型的比較，請參閱[函數級別和裝載選項](functions-scale.md)。
 
@@ -31,7 +31,7 @@ az functionapp plan create --resource-group <RESOURCE_GROUP> --name <PLAN_NAME> 
 
 建立計畫之後，您可以使用[az functionapp create](/cli/azure/functionapp#az-functionapp-create)來建立函數應用程式。 在入口網站中，會同時建立方案和應用程式。 如需完整 Azure CLI 腳本的範例，請參閱[在 Premium 方案中建立函數應用程式](scripts/functions-cli-create-premium-plan.md)。
 
-## <a name="features"></a>功能
+## <a name="features"></a>特性
 
 下列功能可供部署至 Premium 方案的函數應用程式使用。
 
@@ -90,15 +90,20 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 |SKU|核心|記憶體|儲存體|
 |--|--|--|--|
-|EP1|1|3.5 GB|250 GB|
-|EP2|2|7 GB|250 GB|
-|EP3|4|14 GB|250 GB|
+|EP1|1|3.5 GB|250GB|
+|EP2|2|7 GB|250GB|
+|EP3|4|14 GB|250GB|
 
-## <a name="regions"></a>地區
+### <a name="memory-utilization-considerations"></a>記憶體使用量考慮
+在具有更多記憶體的電腦上執行，並不一定表示您的函式應用程式會使用所有可用的記憶體。
+
+例如，JavaScript 函數應用程式受限於 node.js 中的預設記憶體限制。 若要增加此固定記憶體限制，請將應用程式設定 `languageWorkers:node:arguments` 加上 `--max-old-space-size=<max memory in MB>`的值。
+
+## <a name="regions"></a>區域
 
 以下是每個 OS 目前支援的區域。
 
-|地區| Windows | Linux |
+|區域| Windows | Linux |
 |--| -- | -- |
 |澳大利亞中部| ✔<sup>1</sup> | |
 |澳大利亞中部 2| ✔<sup>1</sup> | |
@@ -116,13 +121,13 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 |日本西部| ✔ | |
 |南韓中部| ✔ |  |
 |美國中北部| ✔ |  |
-|北歐| ✔ | ✔<sup>1</sup> |
+|歐洲北部| ✔ | ✔<sup>1</sup> |
 |美國中南部| ✔ | ✔<sup>1</sup> |
 |印度南部 | ✔ | |
 |東南亞| ✔ | ✔<sup>1</sup> |
 |英國南部| ✔ | |
 |英國西部| ✔ |  |
-|西歐| ✔ | ✔<sup>1</sup> |
+|歐洲西部| ✔ | ✔<sup>1</sup> |
 |印度西部| ✔ |  |
 |美國西部| ✔ | ✔<sup>1</sup> |
 |美國西部 2| ✔ |  |

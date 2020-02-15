@@ -6,19 +6,19 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 1d4153ac5e02d28d054034f33859332158d5a555
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 552c6b5176babfc1a66f74f1bb6daa9370744b8f
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162356"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210426"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>使用客戶管理的金鑰適用於 MySQL 的 Azure 資料庫資料加密
 
 > [!NOTE]
 > 此時，您必須要求存取權才能使用這項功能。 若要這麼做，請聯絡 AskAzureDBforMySQL@service.microsoft.com。
 
-適用於 MySQL 的 Azure 資料庫使用客戶管理的金鑰進行資料加密，可讓您將 qwn 金鑰（BYOK）帶入待用資料保護。 它也可讓組織在金鑰和資料的管理中，執行責任分離。 有了客戶管理的加密，您就必須負責並完全掌控金鑰的生命週期、金鑰使用許可權，以及對金鑰進行作業的審核。
+適用於 MySQL 的 Azure 資料庫使用客戶管理的金鑰進行資料加密，可讓您攜帶自己的金鑰（BYOK）來保護待用資料。 它也可讓組織在金鑰和資料的管理中，執行責任分離。 有了客戶管理的加密，您就必須負責並完全掌控金鑰的生命週期、金鑰使用許可權，以及對金鑰進行作業的審核。
 
 針對適用於 MySQL 的 Azure 資料庫以客戶管理的金鑰進行資料加密，是在伺服器層級設定。 針對指定的伺服器，稱為「金鑰加密金鑰」（KEK）的客戶管理金鑰會用來加密服務所使用的資料加密金鑰（DEK）。 KEK 是儲存在客戶擁有和客戶管理[Azure Key Vault](../key-vault/key-Vault-secure-your-key-Vault.md)實例中的非對稱金鑰。 金鑰加密金鑰（KEK）和資料加密金鑰（DEK）稍後會在本文中詳細說明。
 

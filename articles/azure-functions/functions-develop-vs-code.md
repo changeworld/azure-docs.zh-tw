@@ -3,12 +3,12 @@ title: 使用 Visual Studio Code 開發 Azure Functions
 description: 瞭解如何使用適用于 Visual Studio Code 的 Azure Functions 延伸模組來開發和測試 Azure Functions。
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 7e533d5826d429a716ad1592d75159782ed43fa7
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 3bc8c9aa5d31f757a34350d9605fdecbe42b8be7
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964003"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210237"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>使用 Visual Studio Code 開發 Azure Functions
 
@@ -38,9 +38,9 @@ Azure Functions 延伸模組提供下列優點：
 > [!IMPORTANT]
 > 請勿混用單一函式應用程式的本機開發與入口網站開發。 當您從本機專案發佈至函式應用程式時，部署程序將會覆寫您在入口網站開發的任何函式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-在您安裝並執行 Visual Studio Code 的[Azure Functions 延伸模組][適用於 visual studio code 的 azure functions 擴充功能]模組之前，您必須符合下列需求：
+在您安裝並執行 Visual Studio Code 的[Azure Functions 延伸]模組[Azure Functions 延伸]模組之前，您必須符合下列需求：
 
 * [Visual Studio Code](https://code.visualstudio.com/)安裝在其中一個[支援的平臺](https://code.visualstudio.com/docs/supporting/requirements#_platforms)上。
 
@@ -71,7 +71,7 @@ Azure Functions 延伸模組提供下列優點：
 
     ![選擇 HTTP 觸發程序範本](./media/functions-develop-vs-code/create-function-choose-template.png)
 
-1. 在 [函式名稱] 中輸入**HttpExample** ，然後選取 Enter，再選取 [**函數**授權]。 當您呼叫函式端點時，此授權層級會要求您提供[函數金鑰](functions-bindings-http-webhook.md#authorization-keys)。
+1. 在 [函式名稱] 中輸入**HttpExample** ，然後選取 Enter，再選取 [**函數**授權]。 當您呼叫函式端點時，此授權層級會要求您提供[函數金鑰](functions-bindings-http-webhook-trigger.md#authorization-keys)。
 
     ![選取函數授權](./media/functions-develop-vs-code/create-function-auth.png)
 
@@ -184,7 +184,7 @@ Visual Studio Code 可讓您遵循一組方便的提示，將系結新增至您�
 
 以下是定義新儲存體輸出系結的範例提示：
 
-| Prompt | 值 | 說明 |
+| Prompt | 值 | 描述 |
 | -------- | ----- | ----------- |
 | **選取繫結方向** | `out` | 此繫結為輸出繫結。 |
 | **選取具有方向的系結** | `Azure Queue Storage` | 此繫結是 Azure 儲存體佇列繫結。 |
@@ -248,11 +248,11 @@ Visual Studio Code 可讓您將函式專案直接發行至 Azure。 在這過程
 
 1. 依照提示進行，提供下列資訊：
 
-    | Prompt | 值 | 說明 |
+    | Prompt | 值 | 描述 |
     | ------ | ----- | ----------- |
     | 選取 Azure 中的函數應用程式 | 在 Azure 中建立新的函數應用程式 | 在下一個提示中，輸入可識別新函數應用程式的全域唯一名稱，然後選取 Enter。 函式應用程式名稱的有效字元為 `a-z`、`0-9` 和 `-`。 |
     | 選取作業系統 | Windows | 函數應用程式會在 Windows 上執行。 |
-    | 選取主控方案 | 使用量方案 | 使用「無伺服器取用[方案」裝載](functions-scale.md#consumption-plan)。 |
+    | 選取主控方案 | 取用方案 | 使用「無伺服器取用[方案」裝載](functions-scale.md#consumption-plan)。 |
     | 為新的應用程式選取執行時間 | 您的專案語言 | 執行時間必須符合您要發行的專案。 |
     | 為新資源選取資源群組 | 建立新的資源群組 | 在下一個提示中，輸入資源組名（例如 `myResourceGroup`），然後選取 enter。 您也可以選取現有的資源群組。 |
     | 選取儲存體帳戶 | 建立新的儲存體帳戶 | 在下一個提示中，輸入函數應用程式所使用之新儲存體帳戶的全域唯一名稱，然後選取 Enter 鍵。 儲存體帳戶名稱的長度必須介於3到24個字元之間，而且只能包含數位和小寫字母。 您也可以選取現有的帳戶。 |
@@ -277,7 +277,7 @@ Visual Studio Code 可讓您將函式專案直接發行至 Azure。 在這過程
 
 ## <a name="get-the-url-of-the-deployed-function"></a>取得已部署函式的 URL
 
-若要呼叫 HTTP 觸發的函式，您需要函式部署至函數應用程式的 URL。 此 URL 包含任何必要的[功能鍵](functions-bindings-http-webhook.md#authorization-keys)。 您可以使用擴充功能來取得已部署函式的這些 Url。
+若要呼叫 HTTP 觸發的函式，您需要函式部署至函數應用程式的 URL。 此 URL 包含任何必要的[功能鍵](functions-bindings-http-webhook-trigger.md#authorization-keys)。 您可以使用擴充功能來取得已部署函式的這些 Url。
 
 1. 選取 F1 以開啟命令選擇區，然後搜尋並執行命令**Azure Functions： Copy FUNCTION URL**。
 
@@ -297,7 +297,7 @@ Azure Functions 擴充功能可讓您在本機開發電腦上執行函式專案�
 
 * 安裝所選語言的特定需求：
 
-    | 語言 | 需求 |
+    | Language | 需求 |
     | -------- | --------- |
     | **C#** | [C# 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)<br/>[.NET Core CLI 工具](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x)   |
     | **Java** | [JAVA 擴充功能的偵錯工具](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3 或更新版本](https://maven.apache.org/) |
@@ -413,7 +413,7 @@ HTTP 觸發程式的要求 URL 會顯示在終端機的輸出中。 當專案在
 
 Azure Functions 延伸模組會在區域中提供有用的圖形化介面，以便與 Azure 中的函數應用程式互動。 相同的功能也可以在命令選擇區（F1）中做為命令。 這些 Azure Functions 命令可供使用：
 
-|Azure Functions 命令  | 說明  |
+|Azure Functions 命令  | 描述  |
 |---------|---------|
 |**加入新的設定**  |  在 Azure 中建立新的應用程式設定。 若要深入瞭解，請參閱[發行應用程式設定](#publish-application-settings)。 您可能也需要將[此設定下載到本機設定](#download-settings-from-azure)。 |
 | **設定部署來源** | 將 Azure 中的函數應用程式連接至本機 Git 存放庫。 若要深入瞭解，請參閱[Azure Functions 的持續部署](functions-continuous-deployment.md)。 |

@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure 地圖服務搜尋服務有效率地搜尋 |Microsoft Azure 對應
 description: 瞭解如何使用 Microsoft Azure 對應來套用搜尋服務的最佳做法。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/23/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e29b3d70c576955637424208aeb0f980669b67bb
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 82e0339e02fa2fb27e7b2ca24f65934e3ce4fe23
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899165"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209795"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Azure 地圖服務搜尋服務的最佳做法
 
@@ -26,7 +26,7 @@ Azure 地圖服務[搜尋服務](https://docs.microsoft.com/rest/api/maps/search
 * 瞭解結果類型之間的差異。
 * 讀取位址搜尋-回應結構。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要對 Azure 地圖服務服務 Api 進行呼叫，您需要 Azure 地圖服務帳戶和金鑰。 如需詳細資訊，請參閱[建立帳戶](quick-demo-map-app.md#create-an-account-with-azure-maps)並[取得主要金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)。 
 

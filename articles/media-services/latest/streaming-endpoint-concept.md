@@ -10,14 +10,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/11/2020
+ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: 14fee047e1f62ae7f7d3484d89779e1512e4bab7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: c1e9be605a6f01695f2472ae76a9e5a786388aa0
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198712"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77206101"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure 媒體服務中的串流端點（原點）
 
@@ -41,7 +41,7 @@ ms.locfileid: "77198712"
 * 串流端點名稱的最大值為24個字元。
 * 名稱應遵循此[RegEx](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference)模式： `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$`。
 
-## <a name="types"></a>型別
+## <a name="types"></a>類型
 
 **串流端點**類型有兩種：**標準**（預覽）和**Premium**。 類型會根據您為串流端點配置的縮放單位數 (`scaleUnits`) 來定義。
 
@@ -59,14 +59,14 @@ ms.locfileid: "77198712"
 
 ## <a name="comparing-streaming-types"></a>比較串流類型
 
-功能|標準|高階
+功能|標準|Premium
 ---|---|---
 Throughput |在使用 CDN 時，最高可達 600 Mbps，並可提供更高的有效輸送量。|每個串流單位 (SU) 200 Mbps。 使用 CDN 時，可以提供更高的有效輸送量。
 CDN|Azure CDN、協力廠商 CDN 或沒有 CDN。|Azure CDN、協力廠商 CDN 或沒有 CDN。
-按比例計費| 每天|每天
+按比例計費| 每日|每日
 動態加密|是|是
 動態封裝|是|是
-縮放|自動相應增加至目標輸送量。|其他 su
+調整|自動相應增加至目標輸送量。|其他 su
 IP 篩選/G20/自訂主機<sup>1</sup>|是|是
 漸進式下載|是|是
 建議用法 |建議用於絕大多數的串流案例。|專業用法。
@@ -147,17 +147,20 @@ IP 篩選/G20/自訂主機<sup>1</sup>|是|是
 
 ### <a name="enable-azure-cdn-integration"></a>啟用 Azure CDN 整合
 
+> [!IMPORTANT]
+> 您無法為試用版或學生版 Azure 帳戶啟用 CDN。
+>
+> 除了美國聯邦政府和中國地區以外，所有 Azure 資料中心都會啟用 CDN 整合。
+
 在布建啟用 CDN 的串流端點之後，在完成 DNS 更新以將串流端點對應至 CDN 端點之前，媒體服務已定義等待時間。
 
 如果您稍後想要停用/啟用 CDN，串流端點必須處於**已停止**狀態。 可能需要將近 2 小時，Azure CDN 整合才會啟用，變更也才會遍及所有 CDN POP。 不過，您可以啟動串流端點和串流，而不會從串流端點中斷，一旦整合完成後，就會從 CDN 傳遞串流。 在布建期間，您的串流端點會處於 [**啟動**中] 狀態，而您可能會發現效能降低。
 
 建立標準串流端點時，預設會使用標準 Verizon 來設定它。 您可以使用 REST Api 來設定 Premium Verizon 或 Standard Akamai 提供者。
 
-中國和聯邦政府區域除外，其他所有 Azure 資料中心都啟用 CDN 整合。
-
 如果是標準串流端點，Azure 媒體服務與 Azure CDN 的整合是在**來自 Verizon 的 Azure CDN** 上實作。 您可以使用所有 **Azure CDN 定價層和提供者**來設定進階串流端點。 
 
-> [!IMPORTANT]
+> [!NOTE]
 > 如需 Azure CDN 的詳細資訊，請參閱[CDN 總覽](../../cdn/cdn-overview.md)。
 
 ### <a name="determine-if-dns-change-was-made"></a>判斷是否已進行 DNS 變更

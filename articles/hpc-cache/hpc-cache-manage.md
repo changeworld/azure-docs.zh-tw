@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 1/29/2020
 ms.author: rohogue
-ms.openlocfilehash: 9ad6348e15c8a25f721a89be7eab3e17c58ae17c
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: da260074fc69fac9e98d3698bb2d40fdf80d7118
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988831"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252037"
 ---
 # <a name="manage-your-cache-from-the-azure-portal"></a>從 Azure 入口網站管理您的快取
 
@@ -73,6 +73,8 @@ Azure 入口網站中的 快取總覽 頁面會顯示您快取的專案詳細資
 軟體更新可能需要數小時的時間。 以較高的輸送量設定的快取所需的升級時間比具有較低尖峰輸送量值的快取記憶體長。
 
 當軟體升級可供使用時，您將會有一周的時間，或以手動方式套用。 [結束日期] 會列在 [升級] 訊息中。 如果您在這段時間內未升級，Azure 會自動將更新套用至您的快取。 自動升級的時間無法設定。 如果您擔心快取效能的影響，您應該在時間週期到期之前自行升級軟體。
+
+如果您的快取在結束日期通過時停止，則快取會在下一次啟動時自動升級軟體。 （更新可能不會立即啟動，但會在第一個小時內啟動）。
 
 按一下 [**升級**] 按鈕以開始軟體更新。 快取狀態會變更為 [**升級**]，直到作業完成為止。
 

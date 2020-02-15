@@ -3,12 +3,12 @@ title: 設定資源的部署順序
 description: 說明如何在部署期間，將某個資源設定為相依於另一個資源，確保以正確的順序部署資源。
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.openlocfilehash: 44cf793859d2817695a58bd1159e2f4465c1f9c2
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: ffd6d6c65a1cbe9578b5f9162d29f3238e27ea71
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121959"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207684"
 ---
 # <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>定義 Azure Resource Manager 範本中部署資源的順序
 
@@ -40,7 +40,7 @@ ms.locfileid: "76121959"
 }
 ```
 
-在上述範例中，相依性是包含在透過名為 **storageLoop**複製迴圈所建立的資源上。 例如，請參閱 [在 Azure 資源管理員中建立多個資源的執行個體](create-multiple-instances.md)。
+在上述範例中，相依性是包含在透過名為 **storageLoop**複製迴圈所建立的資源上。 例如，請參閱 [在 Azure 資源管理員中建立多個資源的執行個體](copy-resources.md)。
 
 當定義相依性時，您可以包含資源提供者命名空間和資源類型，以避免模稜兩可。 比方說，若要釐清可能有和其他資源名稱相同的負載平衡器和虛擬網路，請使用下列格式：
 

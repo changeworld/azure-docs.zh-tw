@@ -3,12 +3,12 @@ title: 範本函式-邏輯
 description: 描述 Azure Resource Manager 範本中用來決定邏輯值的函式。
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 48c6a05c5a449626c66f9d75c8578b217906d8e0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: aef520a26124a85f414c4f4aa1a3e307d383c29b
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483956"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207208"
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager 範本的邏輯函式
 
@@ -20,7 +20,7 @@ Resource Manager 提供了幾個用來在範本中進行比較的函式。
 * [not](#not)
 * [or](#or)
 
-## <a name="and"></a>與
+## <a name="and"></a>和
 
 `and(arg1, arg2, ...)`
 
@@ -28,7 +28,7 @@ Resource Manager 提供了幾個用來在範本中進行比較的函式。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |boolean |要檢查是否為 true 的第一個值。 |
 | arg2 |是 |boolean |要檢查是否為 true 的第二個值。 |
@@ -68,9 +68,9 @@ Resource Manager 提供了幾個用來在範本中進行比較的函式。
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| andExampleOutput | Bool | 否 |
-| orExampleOutput | Bool | 是 |
-| notExampleOutput | Bool | 否 |
+| andExampleOutput | Bool | False |
+| orExampleOutput | Bool | True |
+| notExampleOutput | Bool | False |
 
 ## <a name="bool"></a>bool
 
@@ -80,7 +80,7 @@ Resource Manager 提供了幾個用來在範本中進行比較的函式。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |字串或整數 |要轉換為布林值的值。 |
 
@@ -121,10 +121,10 @@ Resource Manager 提供了幾個用來在範本中進行比較的函式。
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| trueString | Bool | 是 |
-| falseString | Bool | 否 |
-| trueInt | Bool | 是 |
-| falseInt | Bool | 否 |
+| trueString | Bool | True |
+| falseString | Bool | False |
+| trueInt | Bool | True |
+| falseInt | Bool | False |
 
 ## <a name="if"></a>if
 
@@ -134,7 +134,7 @@ Resource Manager 提供了幾個用來在範本中進行比較的函式。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | condition (條件) |是 |boolean |要檢查其是否為 true 或 false 的值。 |
 | trueValue |是 | 字串、int、物件或陣列 |條件為 true 時，傳回的值。 |
@@ -181,7 +181,7 @@ Resource Manager 提供了幾個用來在範本中進行比較的函式。
 | ---- | ---- | ----- |
 | yesOutput | String | 是 |
 | noOutput | String | 否 |
-| objectOutput | 物件 | { "test": "value1" } |
+| objectOutput | Object | { "test": "value1" } |
 
 下列[範例範本](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/conditionWithReference.json)顯示如何使用此函式搭配僅有條件地有效的運算式。
 
@@ -239,7 +239,7 @@ Resource Manager 提供了幾個用來在範本中進行比較的函式。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |boolean |要轉換的值。 |
 
@@ -277,9 +277,9 @@ Resource Manager 提供了幾個用來在範本中進行比較的函式。
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| andExampleOutput | Bool | 否 |
-| orExampleOutput | Bool | 是 |
-| notExampleOutput | Bool | 否 |
+| andExampleOutput | Bool | False |
+| orExampleOutput | Bool | True |
+| notExampleOutput | Bool | False |
 
 下列[範例範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json)使用 **not** 搭配 [equals](template-functions-comparison.md#equals)。
 
@@ -301,7 +301,7 @@ Resource Manager 提供了幾個用來在範本中進行比較的函式。
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| checkNotEquals | Bool | 是 |
+| checkNotEquals | Bool | True |
 
 ## <a name="or"></a>或
 
@@ -311,7 +311,7 @@ Resource Manager 提供了幾個用來在範本中進行比較的函式。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |boolean |要檢查是否為 true 的第一個值。 |
 | arg2 |是 |boolean |要檢查是否為 true 的第二個值。 |
@@ -351,14 +351,14 @@ Resource Manager 提供了幾個用來在範本中進行比較的函式。
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| andExampleOutput | Bool | 否 |
-| orExampleOutput | Bool | 是 |
-| notExampleOutput | Bool | 否 |
+| andExampleOutput | Bool | False |
+| orExampleOutput | Bool | True |
+| notExampleOutput | Bool | False |
 
 ## <a name="next-steps"></a>後續步驟
 
 * 如需有關 Azure Resource Manager 範本中各區段的說明，請參閱[編寫 Azure Resource Manager 範本](template-syntax.md)。
 * 若要合併多個範本，請參閱[透過 Azure Resource Manager 使用連結的範本](linked-templates.md)。
-* 若要依指定的次數重複建立資源類型，請參閱 [在 Azure 資源管理員中建立資源的多個執行個體](create-multiple-instances.md)。
+* 若要依指定的次數重複建立資源類型，請參閱 [在 Azure 資源管理員中建立資源的多個執行個體](copy-resources.md)。
 * 若要了解如何部署已建立的範本，請參閱[使用 Azure Resource Manager 範本部署應用程式](deploy-powershell.md)。
 

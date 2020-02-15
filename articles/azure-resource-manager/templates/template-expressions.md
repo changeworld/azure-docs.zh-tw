@@ -2,13 +2,13 @@
 title: 範本語法和運算式
 description: 描述 Azure Resource Manager 範本的宣告式 JSON 語法。
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: 42649d4b04b03de32b82335fce68401192de75a3
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.date: 02/13/2020
+ms.openlocfilehash: 7bca3125f80225d2180734f483194a63e39d9cf5
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120592"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207395"
 ---
 # <a name="syntax-and-expressions-in-azure-resource-manager-templates"></a>Azure Resource Manager 範本中的語法和運算式
 
@@ -16,11 +16,9 @@ ms.locfileid: "77120592"
 
 範本運算式不能超過24576個字元。
 
-運算式支援 json （' null '）和屬性支援 null 的常值。 在這兩種情況下，Resource Manager 範本都會將其視為屬性不存在。
-
 ## <a name="use-functions"></a>使用函式
 
-下列範例會顯示參數預設值中的運算式：
+Azure Resource Manager 提供[可](template-functions.md)在範本中使用的函式。 下列範例顯示在參數的預設值中使用函數的運算式：
 
 ```json
 "parameters": {
@@ -40,6 +38,12 @@ ms.locfileid: "77120592"
 ```json
 "name": "[concat('storage', uniqueString(resourceGroup().id))]"
 ```
+
+無論部署至資源群組、訂用帳戶、管理群組或租使用者，大部分函式的運作方式都相同。 下列函式具有以範圍為基礎的限制：
+
+* [resourceGroup](template-functions-resource.md#resourcegroup) -只能用在資源群組的部署中。
+* [resourceId](template-functions-resource.md#resourceid) -可以用於任何範圍，但有效的參數會根據範圍而變更。
+* [訂](template-functions-resource.md#subscription)用帳戶-只能用在資源群組或訂用帳戶的部署中。
 
 ## <a name="escape-characters"></a>Escape 字元
 
@@ -65,6 +69,15 @@ ms.locfileid: "77120592"
 "tags": {
     "CostCenter": "{\"Dept\":\"Finance\",\"Environment\":\"Production\"}"
 },
+```
+
+## <a name="null-values"></a>Null 值
+
+若要將屬性設定為 null，您可以使用**null**或 **[json （' null '）]** 。 當您提供 `null` 做為參數時， [json 函數](template-functions-array.md#json)會傳回空的物件。 在這兩種情況下，Resource Manager 範本都會將其視為屬性不存在。
+
+```json
+"stringValue": null,
+"objectValue": "[json('null')]"
 ```
 
 ## <a name="next-steps"></a>後續步驟

@@ -1,20 +1,20 @@
 ---
 title: 在點陣地圖上轉譯自訂資料 |Microsoft Azure 對應
 description: 在本文中，您將瞭解如何使用 Microsoft Azure 地圖靜態影像服務，在點陣地圖上轉譯自訂資料。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/23/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 049762382bb1a67da21f5b95fdf28319672bfca6
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 78068a8deda68434daaeb18cc994099d74d9ccdf
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198202"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209948"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>在點陣地圖上轉譯自訂資料
 
@@ -25,7 +25,7 @@ ms.locfileid: "77198202"
 > [!Tip]
 > 使用 Azure 地圖服務 Web SDK 在網頁上顯示簡單的地圖，而不是使用靜態映射服務，通常會更符合成本效益。 Web SDK 會使用地圖底圖，除非使用者移動並縮放地圖，否則通常只會針對每個地圖負載產生一小部分的交易。 請注意，Azure 地圖服務 web SDK 有選項可停用移動流覽和縮放。 此外，Azure 地圖服務 web SDK 提供比靜態地圖 web 服務更豐富的資料視覺效果選項組。  
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 ### <a name="create-an-azure-maps-account"></a>建立 Azure 地圖服務帳戶
 

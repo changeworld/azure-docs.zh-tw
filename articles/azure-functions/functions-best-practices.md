@@ -5,12 +5,12 @@ ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f808ff2a88a86df25b555f94257168e2d176e7f8
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: fd52c4cc5cd9d4c01ddb355bdfb28d0952e65759
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963646"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210254"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>將 Azure Functions 效能和可靠性最佳化
 
@@ -104,15 +104,15 @@ FUNCTIONS_WORKER_PROCESS_COUNT 適用于在相應放大應用程式以符合需�
 
 ### <a name="receive-messages-in-batch-whenever-possible"></a>儘可能分批接收訊息
 
-某些觸發程序 (如事件中樞) 能夠在單一引動過程中接收一批訊息。  分批處理訊息的效能比較好。  如 [host.json 參考文件](functions-host-json.md)所述，您可以在 `host.json` 檔案中設定批次大小上限。
+某些觸發程序 (如事件中樞) 能夠在單一引動過程中接收一批訊息。  分批處理訊息的效能比較好。  如 `host.json`host.json 參考文件[所述，您可以在 ](functions-host-json.md) 檔案中設定批次大小上限。
 
-針對C#函式，您可以將型別變更為強型別陣列。  例如，方法簽章可能是 `EventData[] sensorEvent`，而不是 `EventData sensorEvent`。  針對其他語言，您必須將 `function.json` 中的 [基數] 屬性明確設定為 [`many`]，才能啟用批次處理，[如下所示](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10)。
+針對C#函式，您可以將型別變更為強型別陣列。  例如，方法簽章可能是 `EventData sensorEvent`，而不是 `EventData[] sensorEvent`。  針對其他語言，您必須將 `function.json` 中的 [基數] 屬性明確設定為 [`many`]，才能啟用批次處理，[如下所示](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10)。
 
 ### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>設定主機的行為，更妥善處理並行作業
 
 函式應用程式中的 `host.json` 檔案能夠設定主機執行階段和觸發程序行為。  除了批次處理行為，您可以管理數個觸發程序的並行作業。 經常調整這些選項中的值，可協助每個執行個體針對所叫用函式的需求進行適當調整。
 
-Host. json 檔案中的設定會套用至單一函式*實例*中應用程式內的所有函式。 例如，如果您的函式應用程式有兩個 HTTP 函式，且[`maxConcurrentRequests`](functions-bindings-http-webhook.md#hostjson-settings)要求設定為25，則 HTTP 觸發程式的要求會算在共用的25個並行要求。  當該函式應用程式調整為10個實例時，這兩個函式可有效地允許250個並行要求（每個實例10個實例 * 25 個並行要求）。 
+Host. json 檔案中的設定會套用至單一函式*實例*中應用程式內的所有函式。 例如，如果您的函式應用程式有兩個 HTTP 函式，且[`maxConcurrentRequests`](functions-bindings-http-webhook-output.md#hostjson-settings)要求設定為25，則 HTTP 觸發程式的要求會算在共用的25個並行要求。  當該函式應用程式調整為10個實例時，這兩個函式可有效地允許250個並行要求（每個實例10個實例 * 25 個並行要求）。 
 
 如有其他主機設定選項，請參閱[host. json](functions-host-json.md)設定一文。
 

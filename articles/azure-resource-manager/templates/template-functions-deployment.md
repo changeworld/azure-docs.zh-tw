@@ -3,12 +3,12 @@ title: 範本函式-部署
 description: 描述 Azure Resource Manager 範本中用來擷取部署資訊的函式。
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.openlocfilehash: f2939efc9481255233fbdda29f4fa30adcd24b7f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b241aaf43ee3204c9960d0099ce3c61d4c1a80ee
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484034"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207276"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager 範本的部署函式 
 
@@ -239,9 +239,9 @@ Resource Manager 提供下列函數來取得與目前部署相關的值：
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
-| parameterName |是 |string |要傳回的參數名稱。 |
+| parameterName |是 |字串 |要傳回的參數名稱。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -330,7 +330,7 @@ Resource Manager 提供下列函數來取得與目前部署相關的值：
 | ---- | ---- | ----- |
 | stringOutput | String | 選項 1 |
 | intOutput | Int | 1 |
-| objectOutput | 物件 | {"one": "a", "two": "b"} |
+| objectOutput | Object | {"one": "a", "two": "b"} |
 | arrayOutput | Array | [1, 2, 3] |
 | crossOutput | String | 選項 1 |
 
@@ -344,7 +344,7 @@ Resource Manager 提供下列函數來取得與目前部署相關的值：
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | variableName |是 |String |要傳回的變數名稱。 |
 
@@ -423,13 +423,13 @@ Resource Manager 提供下列函數來取得與目前部署相關的值：
 | exampleOutput1 | String | myVariable |
 | exampleOutput2 | Array | [1, 2, 3, 4] |
 | exampleOutput3 | String | myVariable |
-| exampleOutput4 |  物件 | {"property1": "value1", "property2": "value2"} |
+| exampleOutput4 |  Object | {"property1": "value1", "property2": "value2"} |
 
 如需使用變數的詳細資訊，請參閱[Azure Resource Manager 範本中的變數](template-variables.md)。
 
 ## <a name="next-steps"></a>後續步驟
 * 如需有關 Azure Resource Manager 範本中各區段的說明，請參閱[編寫 Azure Resource Manager 範本](template-syntax.md)。
 * 若要合併數個範本，請參閱[透過 Azure Resource Manager 使用連結的範本](linked-templates.md)。
-* 若要依指定的次數重複建立資源類型，請參閱 [在 Azure 資源管理員中建立資源的多個執行個體](create-multiple-instances.md)。
+* 若要依指定的次數重複建立資源類型，請參閱 [在 Azure 資源管理員中建立資源的多個執行個體](copy-resources.md)。
 * 若要了解如何部署已建立的範本，請參閱[使用 Azure Resource Manager 範本部署應用程式](deploy-powershell.md)。
 

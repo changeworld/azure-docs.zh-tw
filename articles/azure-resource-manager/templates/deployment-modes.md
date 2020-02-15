@@ -3,12 +3,12 @@ title: 部署模式
 description: 說明如何指定是否要透過 Azure Resource Manager 使用完整或累加部署模式。
 ms.topic: conceptual
 ms.date: 01/17/2020
-ms.openlocfilehash: e53b8c58bf0919e64079e62c687b76ada1db7ff0
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 9cc0e8eb20a0375a98906524d4d598ccb473d2a8
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76261019"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207582"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager 部署模式
 
@@ -24,7 +24,7 @@ ms.locfileid: "76261019"
 
 如果您的範本包含未部署的資源，因為[條件](conditional-resource-deployment.md)評估為 false，則結果會取決於您用來部署範本的 REST API 版本。 如果您使用早于2019-05-10 的版本，則**不會刪除**資源。 使用2019-05-10 或更新版本時，**會刪除**資源。 Azure PowerShell 和 Azure CLI 的最新版本會刪除資源。
 
-請小心使用完整模式搭配[複製迴圈](create-multiple-instances.md)。 在解析複製迴圈之後，未在範本中指定的任何資源都會被刪除。
+請小心使用完整模式搭配[複製迴圈](copy-resources.md)。 在解析複製迴圈之後，未在範本中指定的任何資源都會被刪除。
 
 如果您[在範本中部署到一個以上的資源群組](cross-resource-group-deployment.md)，部署作業中指定的資源群組中的資源就有資格刪除。 不會刪除次要資源群組中的資源。
 

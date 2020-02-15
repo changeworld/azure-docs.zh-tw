@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: bb0f2e3fc3b84f5e1f9fe999b31fffadaa5915d4
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: c2dc98d683d822628dc9ea1b4ead02279ea10ea5
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687604"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251799"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux 上的 Azure App Service 常見問題集
 
@@ -30,13 +30,13 @@ ms.locfileid: "74687604"
 
 **設定執行階段堆疊時，在 [啟動檔案] 區段應該使用哪些值？**
 
-| 協定           | 預期的值                                                                         |
+| Stack           | 預期的值                                                                         |
 |-----------------|----------------------------------------------------------------------------------------|
-| Java SE         | 用來啟動 JAR 應用程式的命令（例如，`java -jar my-app.jar --server.port=80`） |
+| Java SE         | 用來啟動 JAR 應用程式的命令（例如，`java -jar /home/site/wwwroot/app.jar --server.port=80`） |
 | Tomcat、Wildfly | 執行任何必要設定的腳本位置（例如，`/home/site/deployments/tools/startup_script.sh`）          |
 | Node.js         | PM2 設定檔或您的腳本檔案                                |
 | .Net Core       | 已編譯的 DLL 名稱，做為 `dotnet <myapp>.dll`                                 |
-| 拼音            | 您想要用來初始化應用程式的 Ruby 腳本                     |
+| Ruby            | 您想要用來初始化應用程式的 Ruby 腳本                     |
 
 這些命令或腳本會在內建的 Docker 容器啟動後，但在您的應用程式程式碼啟動之前執行。
 
@@ -66,7 +66,7 @@ ms.locfileid: "74687604"
 
 **是否支援預備環境？**
 
-可以。
+是。
 
 **我可以使用 *WebDeploy/MSDeploy* 來部署我的 Web 應用程式嗎？**
 
@@ -84,7 +84,7 @@ ms.locfileid: "74687604"
    curl -X POST -u <user> --data-binary @<zipfile> https://{your-sitename}.scm.azurewebsites.net/api/zipdeploy
    ```
 
-   如果您收到錯誤：找不到 `curl` 命令，請確定您在執行先前的 `curl` 命令之前，使用 `apt-get install curl` 來安裝 curl。
+   如果您收到錯誤：找不到 `curl` 命令，請確定您在執行先前的 `apt-get install curl` 命令之前，使用 `curl` 來安裝 curl。
 
 ## <a name="language-support"></a>語言支援
 
@@ -100,7 +100,7 @@ const io = require('socket.io')(server,{
 
 **是否支援未編譯的 .NET Core 應用程式？**
 
-可以。
+是。
 
 **您是否支援以 Composer 做為 PHP 應用程式的相依性管理程式？**
 
@@ -173,7 +173,7 @@ image: <server-name>.azurecr.io/<image-name>:<tag>
 - 第一個容器定義連接埠 80 或 8080
 - 如果上述任一項皆不為 true，那麼檔案中定義的第一個容器將是可存取的 (公開)
 
-## <a name="pricing-and-sla"></a>定價和 SLA
+## <a name="pricing-and-sla"></a>價格和 SLA
 
 **既然服務已正式推出，服務的定價為何？**
 

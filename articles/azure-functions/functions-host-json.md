@@ -3,12 +3,12 @@ title: 適用於 Azure Functions 2.x 的 host.json 參考
 description: Azure Functions host.json 檔案與 v2 執行階段的參考文件。
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 3ad3682e301eb98d48372c3955c6ff049422c517
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: cc982d3f810c944a5273cbf0cf9778076d119692
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024665"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208819"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 和更新版本的 host. json 參考 
 
@@ -143,7 +143,7 @@ ms.locfileid: "77024665"
 > [!NOTE]
 > 記錄取樣可能會造成一些執行不會顯示在 Application Insights 監視器刀鋒視窗。 若要避免記錄取樣，請將 `samplingExcludedTypes: "Request"` 新增至 `applicationInsights` 值。
 
-| 屬性 | 預設 | 說明 |
+| 屬性 | 預設 | 描述 |
 | --------- | --------- | --------- | 
 | samplingSettings | n/a | 請參閱[applicationInsights. samplingSettings](#applicationinsightssamplingsettings)。 |
 | samplingExcludedTypes | null | 您不想要取樣的類型清單（以分號分隔）。 可辨識的類型為：相依性、事件、例外狀況、頁面檢視、要求、追蹤。 系統會傳送指定類型的所有實例;未指定的類型會進行取樣。 |
@@ -157,7 +157,7 @@ ms.locfileid: "77024665"
 
 ### <a name="applicationinsightssamplingsettings"></a>applicationInsights. samplingSettings
 
-|屬性 | 預設 | 說明 |
+|屬性 | 預設 | 描述 |
 | --------- | --------- | --------- | 
 | isEnabled | true | 啟用或停用取樣。 | 
 | maxTelemetryItemsPerSecond | 20 | 每部伺服器主機上每秒記錄的遙測專案目標數目。 如果您的應用程式在多部主機上執行，請減少此值以維持在整體目標流量的速率。 | 
@@ -171,7 +171,7 @@ ms.locfileid: "77024665"
 
 ### <a name="applicationinsightshttpautocollectionoptions"></a>applicationInsights. HTTPAutoCollectionOptions
 
-|屬性 | 預設 | 說明 |
+|屬性 | 預設 | 描述 |
 | --------- | --------- | --------- | 
 | enableHttpTriggerExtendedInfoCollection | true | 啟用或停用 HTTP 觸發程式的擴充 HTTP 要求資訊：連入要求相互關聯標頭、多檢測金鑰支援、HTTP 方法、路徑和回應。 |
 | enableW3CDistributedTracing | true | 啟用或停用 W3C 分散式追蹤通訊協定的支援（並開啟舊版相互關聯架構）。 如果 `enableHttpTriggerExtendedInfoCollection` 為 true，則預設為啟用。 如果 `enableHttpTriggerExtendedInfoCollection` 為 false，則此旗標僅適用于連出要求，而不會套用到連入要求。 |
@@ -181,7 +181,7 @@ ms.locfileid: "77024665"
 
 如需有關快照集的詳細資訊，請參閱[.net 應用程式中的例外](/azure/azure-monitor/app/snapshot-debugger)狀況的 Debug 錯快照集和[疑難排解啟用 Application Insights 快照偵錯工具或查看快照](/azure/azure-monitor/app/snapshot-debugger-troubleshoot)集的問題。
 
-|屬性 | 預設 | 說明 |
+|屬性 | 預設 | 描述 |
 | --------- | --------- | --------- | 
 | agentEndpoint | null | 用來連接到 Application Insights 快照偵錯工具服務的端點。 如果是 null，則會使用預設端點。 |
 | captureSnapshotMemoryWeight | 0.5 | 檢查是否有足夠的記憶體來製作快照集時，指定給目前進程記憶體大小的權數。 預期的值為大於0的適當分數（0 < CaptureSnapshotMemoryWeight < 1）。 |
@@ -268,7 +268,7 @@ ms.locfileid: "77024665"
 }
 ```
 
-|屬性  |預設 | 說明 |
+|屬性  |預設 | 描述 |
 |---------|---------|---------| 
 |已啟用|true|指定是否已啟用此功能。 | 
 |healthCheckInterval|10 秒|定期背景健康情況檢查之間的時間間隔。 | 
@@ -278,7 +278,7 @@ ms.locfileid: "77024665"
 
 ## <a name="http"></a>http
 
-可在 [HTTP 觸發程序和繫結](functions-bindings-http-webhook.md#hostjson-settings)中找到組態設定。
+可在 [HTTP 觸發程序和繫結](functions-bindings-http-webhook-output.md#hostjson-settings)中找到組態設定。
 
 ## <a name="logging"></a>logging
 
@@ -300,7 +300,7 @@ ms.locfileid: "77024665"
 }
 ```
 
-|屬性  |預設 | 說明 |
+|屬性  |預設 | 描述 |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|定義已啟用何種檔案記錄層級。  選項為 `never`、`always`、`debugOnly`。 |
 |logLevel|n/a|為應用程式中的函式定義記錄類別篩選的物件。 2\.x 版和更新版本會遵循記錄類別篩選的 ASP.NET Core 版面配置。 此設定可讓您篩選特定功能的記錄。 如需詳細資訊，請參閱 ASP.NET Core 文件中的[記錄篩選](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)。 |
@@ -323,7 +323,7 @@ ms.locfileid: "77024665"
 }
 ```
 
-|屬性  |預設 | 說明 |
+|屬性  |預設 | 描述 |
 |---------|---------|---------| 
 |isEnabled|false|啟用或停用主控台記錄。| 
 
@@ -367,7 +367,7 @@ Singleton 鎖定行為的組態設定。 如需詳細資訊，請參閱[單一�
 }
 ```
 
-|屬性  |預設 | 說明 |
+|屬性  |預設 | 描述 |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|取得函式層級鎖定的期間。 鎖定會自動更新。| 
 |listenerLockPeriod|00:01:00|接聽程式鎖定所需的期間。| 

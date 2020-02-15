@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/13/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 1bdb4e40d7e173dcb2368f2f0cf645581647f6ee
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 09e5a6c5eee21e5432c4cf96a63fd2337307954a
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77202199"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77211431"
 ---
 Azure 共用磁片（預覽）是 Azure 受控磁片的新功能，可同時將 Azure 受控磁片連接到多部虛擬機器（Vm）。 將受控磁片連結至多個 Vm，可讓您將新的叢集應用程式部署至 Azure 或將其遷移至 Azure。
 
@@ -55,7 +55,7 @@ Linux 叢集可以利用叢集管理員，例如[Pacemaker](https://wiki.cluster
 
 下圖說明一個範例2節點的叢集資料庫應用程式，它利用 SCSI PR 來啟用從一個節點容錯移轉到另一個節點。
 
-![shared-disk-updated-two-node-cluster-diagram .png](media/virtual-machines-disks-shared-disks/shared-disk-updated-two-node-cluster-diagram.png)
+![兩個節點的叢集。 在叢集上執行的應用程式正在處理磁片的存取](media/virtual-machines-disks-shared-disks/shared-disk-updated-two-node-cluster-diagram.png)
 
 流程如下︰
 
@@ -68,7 +68,7 @@ Linux 叢集可以利用叢集管理員，例如[Pacemaker](https://wiki.cluster
 
 下圖說明另一個常見的叢集工作負載，其中包含多個從磁片讀取資料以執行平行處理的節點，例如機器學習模型的定型。
 
-![shared-disk-updated-machine-learning-trainer-model .png](media/virtual-machines-disks-shared-disks/shared-disk-updated-machine-learning-trainer-model.png)
+![四個節點的 VM 叢集，每個節點會註冊意圖以進行寫入，應用程式會採用獨佔保留來適當地處理寫入結果](media/virtual-machines-disks-shared-disks/shared-disk-updated-machine-learning-trainer-model.png)
 
 流程如下︰
 

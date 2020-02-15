@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/06/2020
 ms.author: aahi
-ms.openlocfilehash: f95d7613926cf332a498cca84563dbc0ebcbbe9b
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: ba516a548fc8385ca86526a7f2dd082b27e53208
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086871"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77211412"
 ---
 ## <a name="general-entity-types"></a>一般實體類型：
 
@@ -22,7 +22,7 @@ ms.locfileid: "77086871"
 辨識文字中的人員名稱。
 
 語言：
-* 公開預覽： `English`
+* 公開預覽： `Arabic`、`Czech`、`Chinese-Simplified`、`Danish`、`Dutch`、`English`、`Finnish`、`French`、`German`、`Hungarian`、`Italian`、`Japanese`、`Korean`、`Norwegian (Bokmål)`、`Polish`、`Portuguese (Portugal)`、`Portuguese (Brazil)`、`Russian`、`Spanish`、`Swedish` 和 `Turkish`
 
 | 子類型名稱 | 描述                                                      | 從模型版本開始提供 |
 |--------------|------------------------------------------------------------------|---------------------------------------|
@@ -44,12 +44,12 @@ ms.locfileid: "77086871"
 
 語言：
 
-* 公開預覽： `English`
+* 公開預覽： `Arabic`、`Czech`、`Chinese-Simplified`、`Danish`、`Dutch`、`English`、`Finnish`、`French`、`German`、`Hungarian`、`Italian`、`Japanese`、`Korean`、`Norwegian (Bokmål)`、`Polish`、`Portuguese (Portugal)`、`Portuguese (Brazil)`、`Russian`、`Spanish`、`Swedish` 和 `Turkish`
 
 | 子類型名稱              | 描述                                                                              | 從模型版本開始提供 |
 |---------------------------|------------------------------------------------------------------------------------------|----------------------------------------|
 | N/A                       | 位置，例如 `Atlantic Ocean`、`library`、`Eiffel Tower`、`Statue of Liberty`  | `2019-10-01`                           |
-| 地緣政治實體（GPE） | 城市、國家/地區、狀態，例如 `Seattle`、`Pennsylvania`、`South Africa`、`Tokyo` | `2020-02-01`                           |
+| 地緣政治實體（GPE）-僅限英文| 城市、國家/地區、狀態，例如 `Seattle`、`Pennsylvania`、`South Africa`、`Tokyo` | `2020-02-01`                           |
 
 ### <a name="organization"></a>組織  
 
@@ -57,7 +57,7 @@ ms.locfileid: "77086871"
 
 語言： 
 
-* 公開預覽： `English`
+* 公開預覽： `Arabic`、`Czech`、`Chinese-Simplified`、`Danish`、`Dutch`、`English`、`Finnish`、`French`、`German`、`Hungarian`、`Italian`、`Japanese`、`Korean`、`Norwegian (Bokmål)`、`Polish`、`Portuguese (Portugal)`、`Portuguese (Brazil)`、`Russian`、`Spanish`、`Swedish` 和 `Turkish`
 
 | 子類型名稱 | 描述                                                                                             | 從模型版本開始提供 |
 |--------------|---------------------------------------------------------------------------------------------------------|----------------------------------------|
@@ -156,7 +156,7 @@ ms.locfileid: "77086871"
 
 語言：
 
-* 公開預覽： `English`
+* 公開預覽： `Chinese-Simplified`、`English`、`French`、`German` 和 `Spanish`
 
 | 子類型名稱    | 範例                     |
 |-------------|------------------------------|
@@ -176,7 +176,7 @@ ms.locfileid: "77086871"
 
 語言：
 
-* 公開預覽： `English`
+* 公開預覽： `Chinese-Simplified`、`English`、`French`、`German` 和 `Spanish`
 
 | 子類型名稱    | 範例                     |
 |-------------|------------------------------|

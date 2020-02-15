@@ -9,12 +9,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/11/2020
-ms.openlocfilehash: 7011bf068a96fe9da035ec08a1f6ef7f80a0b240
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 686e426ef0b7706eff168e42ffc67417b2c5c743
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161948"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212891"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>開始使用 SQL Database 稽核
 
@@ -90,7 +90,7 @@ Azure [SQL Database](sql-database-technical-overview.md)和[SQL 資料倉儲](..
 
    ![storage account](./media/sql-database-auditing-get-started/auditing_select_storage.png)
 
-若要在虛擬網路或防火牆下設定儲存體帳戶，您需要伺服器上的[Active Directory 系統管理員](/sql-database-aad-authentication-configure.md?tabs=azure-powershell#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)，啟用 [允許信任的 Microsoft 服務在儲存體帳戶上**存取此儲存體帳戶**]。 此外，您必須擁有所選儲存體帳戶的「Microsoft 授權/roleAssignments/寫入」許可權。
+若要在虛擬網路或防火牆下設定儲存體帳戶，您需要伺服器上的[Active Directory 系統管理員](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#provision-an-azure-active-directory-administrator-for-your-managed-instance)，啟用 [允許信任的 Microsoft 服務在儲存體帳戶上**存取此儲存體帳戶**]。 此外，您必須擁有所選儲存體帳戶的「Microsoft 授權/roleAssignments/寫入」許可權。
 
 我們建議您必須是「[使用者存取系統管理員](../role-based-access-control/built-in-roles.md#user-access-administrator)」，才能將「儲存體 blob 資料參與者」角色授與受控識別。 若要深入瞭解許可權和以角色為基礎的存取控制，請參閱[什麼是適用于 azure 資源的角色型存取控制（RBAC）？](../role-based-access-control/overview.md)和[使用 Azure RBAC 新增或移除角色指派和 Azure 入口網站](../role-based-access-control/role-assignments-portal.md)
 

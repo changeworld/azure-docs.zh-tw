@@ -3,12 +3,12 @@ title: 使用範本的條件式部署
 description: 描述如何有條件地在 Azure Resource Manager 範本中部署資源。
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.openlocfilehash: b4ee733e81f3a923f268f33f5826387059923bcb
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 83aa22ba57e0111d060665778922437723481c69
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121993"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207786"
 ---
 # <a name="conditional-deployment-in-resource-manager-templates"></a>Resource Manager 範本中的條件式部署
 
@@ -88,4 +88,4 @@ ms.locfileid: "76121993"
 ## <a name="next-steps"></a>後續步驟
 
 * 如需建立範本的建議，請參閱 [Azure Resource Manager 範本最佳做法](template-best-practices.md)。
-* 若要建立資源的多個實例，請參閱[Azure Resource Manager 範本中的資源、屬性或變數反復](create-multiple-instances.md)專案。
+* 若要建立資源的多個實例，請參閱[Azure Resource Manager 範本中的資源反復](copy-resources.md)專案。

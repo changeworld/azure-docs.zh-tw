@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: d52d808813078c2aca7de59aa626e83f96221720
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 4a853871ef5f66881235e5a6ffec0886b81f5a92
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986235"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208534"
 ---
 # <a name="add-a-heat-map-layer"></a>新增熱度圖層
 
@@ -60,7 +60,7 @@ map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
 
 <br/>
 
-<iframe height='500' scrolling='no' title='簡易熱度圖層' src='//codepen.io/azuremaps/embed/gQqdQB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>請參閱 <a href='https://codepen.io'>CodePen</a> 上由 Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 建立的 Pen：<a href='https://codepen.io/azuremaps/pen/gQqdQB/'>簡易熱度圖層</a>。
+<iframe height='500' scrolling='no' title='簡易熱度圖層' src='//codepen.io/azuremaps/embed/gQqdQB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>請參閱 <a href='https://codepen.io/azuremaps/pen/gQqdQB/'>CodePen</a> 上由 Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 建立的 Pen：<a href='https://codepen.io'>簡易熱度圖層</a>。
 </iframe>
 
 ## <a name="customize-the-heat-map-layer"></a>自訂熱度圖層
@@ -79,17 +79,17 @@ map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
   | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;'interpolate',<br/>&nbsp;&nbsp;&nbsp;&nbsp;\['linear'\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;\['heatmap-density'\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;0, 'transparent',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.01, 'purple',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.5, '#fb00fb',<br/>&nbsp;&nbsp;&nbsp;&nbsp;1, '#00c3ff'<br/>\] | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;'step',<br/>&nbsp;&nbsp;&nbsp;&nbsp;\['heatmap-density'\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;'transparent',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.01, 'navy',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.25、「綠色」、<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.50、「黃色」、<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.75，' red '<br/>\] |   
 
 - `opacity`：指定熱度圖層的不透明或透明程度。
-- `intensity`：將乘數套用到每個資料點的權數，以增加熱度圖的整體濃度。 這有助於讓資料點的權數有所差異，讓您更輕鬆地將其視覺化。
+- `intensity`：將乘數套用到每個資料點的權數，以增加熱度圖的整體濃度。 這會造成資料點的權數差異，讓您更輕鬆地將其視覺化。
 - `weight`：根據預設，所有資料點的權數為1，且加權為相同。 權數選項會當做乘數，您可以將它設定為數字或運算式。 如果將某個數位設定為權數，這就是將每個資料點放在地圖上兩次的等價。 例如，如果權數為2，則密度會加倍。 將加權選項設定為數字所呈現的熱度圖，與使用強度選項呈現的熱度圖相似。 
 
-  不過，如果您使用運算式，每個資料點的權數可以根據每個資料點的屬性。 例如，假設每個資料點都代表地震。 重要的度量每個地震資料點都是一個量值。 地震會一直發生，但大部分的情況下都很低，而且也不會注意到。 藉由使用運算式中的 [量值] 來指派權數給每個資料點，您可以在熱度圖中獲得更佳的地震意義標記法。
+  不過，如果您使用運算式，每個資料點的權數可以根據每個資料點的屬性。 例如，假設每個資料點都代表地震。 「大小」值對於每個地震資料點而言是重要的度量。 地震會一直發生，但大部分的情況下都很低，而且也不會注意到。 使用運算式中的 [大小] 值，將權數指派給每個資料點。 藉由使用 [量值] 來指派權數，您可以在熱度圖中獲得更佳的地震意義標記法。
 - `source` 和 `source-layer`：可讓您更新資料來源。
 
 以下是用來測試不同熱度圖層選項的工具。
 
 <br/>
 
-<iframe height='700' scrolling='no' title='熱度圖層選項' src='//codepen.io/azuremaps/embed/WYPaXr/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>請參閱 <a href='https://codepen.io'>CodePen</a> 上由 Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 建立的 Pen：<a href='https://codepen.io/azuremaps/pen/WYPaXr/'>熱度圖層選項</a>。
+<iframe height='700' scrolling='no' title='熱度圖層選項' src='//codepen.io/azuremaps/embed/WYPaXr/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>請參閱 <a href='https://codepen.io/azuremaps/pen/WYPaXr/'>CodePen</a> 上由 Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 建立的 Pen：<a href='https://codepen.io'>熱度圖層選項</a>。
 </iframe>
 
 ## <a name="consistent-zoomable-heat-map"></a>一致的可縮放熱度圖

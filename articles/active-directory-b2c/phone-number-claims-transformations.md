@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 02/14/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 38763f414b1e5373af79d2501850a44e8e813451
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: c5beef98f03c52ca022a7ab8047d3b392755c0bf
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185464"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212195"
 ---
 # <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>在 Azure AD B2C 中定義電話號碼宣告轉換
 
@@ -30,9 +30,10 @@ ms.locfileid: "77185464"
 
 此宣告會驗證電話號碼的格式。 如果它是有效的格式，請將它變更為 Azure AD B2C 所使用的標準格式。 如果所提供的電話號碼格式不正確，則會傳回錯誤訊息。
 
-| 項目 | TransformationClaimType | 資料型別 | 注意事項 |
+| Item | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim | string | 從轉換的字串類型宣告。 |
+| InputClaim | phoneNumberString | 字串 |  電話號碼的字串宣告。 電話號碼必須是國際格式，並以前置的「+」和「國家/地區代碼」完成。 如果提供輸入宣告 `country`，則電話號碼會是本機格式（不含國家/地區代碼）。 |
+| InputClaim | country | 字串 | 選擇性電話號碼的國家/地區代碼的字串宣告（採用 ISO3166 格式）（兩個字母的 ISO-3166 國家/地區代碼）。 |
 | OutputClaim | outputClaim | phoneNumber | 此宣告轉換的結果。 |
 
 **ConvertStringToPhoneNumberClaim**宣告轉換一律會從[自我判斷技術配置](self-asserted-technical-profile.md)檔或[顯示控制項](display-controls.md)所呼叫的[驗證技術設定檔](validation-technical-profile.md)執行。 **UserMessageIfClaimsTransformationInvalidPhoneNumber**自我判斷技術設定檔中繼資料會控制呈現給使用者的錯誤訊息。
@@ -44,7 +45,8 @@ ms.locfileid: "77185464"
 ```XML
 <ClaimsTransformation Id="ConvertStringToPhoneNumber" TransformationMethod="ConvertStringToPhoneNumberClaim">
   <InputClaims>
-    <InputClaim ClaimTypeReferenceId="phoneString" TransformationClaimType="inputClaim" />
+    <InputClaim ClaimTypeReferenceId="phoneString" TransformationClaimType="phoneNumberString" />
+    <InputClaim ClaimTypeReferenceId="countryCode" TransformationClaimType="country" />
   </InputClaims>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="outputClaim" />
@@ -63,24 +65,32 @@ ms.locfileid: "77185464"
 </TechnicalProfile>
 ```
 
-### <a name="example"></a>範例
+### <a name="example-1"></a>範例 1
 
 - 輸入宣告：
-  - **inputClaim**： + 1 （123）456-7890
+  - **phoneNumberString**： 045 456-7890
+  - **國家/地區**：深色
 - 輸出宣告：
+  - **outputClaim**： + 450546148120
+
+### <a name="example-2"></a>範例 2
+
+- 輸入宣告：
+  - **phoneNumberString**： + 1 （123）456-7890
+- 輸出宣告： 
   - **outputClaim**： + 11234567890
 
 ## <a name="getnationalnumberandcountrycodefromphonenumberstring"></a>GetNationalNumberAndCountryCodeFromPhoneNumberString
 
 這會從輸入宣告中解壓縮國家/地區代碼和國家/地區號碼，並在提供的電話號碼無效時選擇性地擲回例外狀況。
 
-| 項目 | TransformationClaimType | 資料型別 | 注意事項 |
+| Item | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | phoneNumber | string | 電話號碼的字串宣告。 電話號碼必須是國際格式，並以前置的「+」和「國家/地區代碼」完成。 |
+| InputClaim | phoneNumber | 字串 | 電話號碼的字串宣告。 電話號碼必須是國際格式，並以前置的「+」和「國家/地區代碼」完成。 |
 | InputParameter | throwExceptionOnFailure | boolean | 選擇性參數，指出當電話號碼無效時，是否擲回例外狀況。 預設值為 false。 |
-| InputParameter | countryCodeType | string | 選擇性參數，指出輸出宣告中的國家/地區代碼類型。 可用的值為**CallingCode** （國家/地區的國際電話程式碼，例如 + 1）或**ISO3166** （兩個字母的 ISO-3166 國家/地區代碼）。 |
-| OutputClaim | nationalNumber | string | 電話號碼國家/地區號碼的字串宣告。 |
-| OutputClaim | countryCode | string | 電話號碼的國家/地區代碼的字串宣告。 |
+| InputParameter | countryCodeType | 字串 | 選擇性參數，指出輸出宣告中的國家（地區）代碼類型。 可用的值為**CallingCode** （國家/地區的國際電話程式碼，例如 + 1）或**ISO3166** （兩個字母的 ISO-3166 國家/地區代碼）。 |
+| OutputClaim | nationalNumber | 字串 | 電話號碼國家/地區號碼的字串宣告。 |
+| OutputClaim | countryCode | 字串 | 電話號碼的國家（地區）代碼的字串宣告。 |
 
 
 如果**GetNationalNumberAndCountryCodeFromPhoneNumberString**宣告轉換是從[自我判斷技術配置](self-asserted-technical-profile.md)檔或[顯示控制項動作](display-controls.md#display-control-actions)所呼叫的[驗證技術設定檔](validation-technical-profile.md)執行，則**UserMessageIfPhoneNumberParseFailure**自我判斷技術設定檔中繼資料會控制呈現給使用者的錯誤訊息。

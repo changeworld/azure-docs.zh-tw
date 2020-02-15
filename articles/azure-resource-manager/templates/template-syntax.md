@@ -3,12 +3,12 @@ title: 範本結構和語法
 description: 使用宣告式 JSON 語法描述 Azure Resource Manager 範本的結構和屬性。
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 7f9b964212d7b8056895aa1c6826766315af2ec2
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 9cd602644ecf803e97254189cfc157d60713cc6c
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122061"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209455"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>了解 Azure Resource Manager 範本的結構和語法
 
@@ -33,7 +33,7 @@ ms.locfileid: "76122061"
 }
 ```
 
-| 元素名稱 | 必要項 | 說明 |
+| 元素名稱 | 必要 | 描述 |
 |:--- |:--- |:--- |
 | $schema |是 |JSON 結構描述檔案的位置，說明範本語言的版本。<br><br> 針對資源群組部署，使用：`https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>針對訂用帳戶部署，使用：`https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#` |
 | contentVersion |是 |範本版本 (例如 1.0.0.0)。 您可以為此元素提供任何值。 使用此值在範本中記載重大變更。 使用範本部署資源時，這個值可用來確定使用的是正確的範本。 |
@@ -69,7 +69,7 @@ ms.locfileid: "76122061"
 }
 ```
 
-| 元素名稱 | 必要項 | 說明 |
+| 元素名稱 | 必要 | 描述 |
 |:--- |:--- |:--- |
 | 參數-名稱 |是 |參數的名稱。 必須是有效的 JavaScript 識別碼。 |
 | type |是 |參數值類型。 允許的類型和值為 **string**、**securestring**、**int**、**bool**、**object**、**secureObject**，以及 **array**。 請參閱[資料類型](#data-types)。 |
@@ -126,11 +126,11 @@ ms.locfileid: "76122061"
 }
 ```
 
-如需使用 `copy` 為變數建立數個值的詳細資訊，請參閱[變數反復](create-multiple-instances.md#variable-iteration)專案。
+如需使用 `copy` 為變數建立數個值的詳細資訊，請參閱[變數反復](copy-variables.md)專案。
 
 如需如何使用變數的範例，請參閱[Azure Resource Manager 範本中的變數](template-variables.md)。
 
-## <a name="functions"></a>函式
+## <a name="functions"></a>Functions
 
 在您的範本內，您可以建立自己的函式。 這些函式可供您在範本中使用。 通常，您會定義不想要在整個範本中重複的複雜運算式。 您會從範本中支援的運算式和[函式](template-functions.md)建立使用者定義的函式。
 
@@ -164,7 +164,7 @@ ms.locfileid: "76122061"
 ],
 ```
 
-| 元素名稱 | 必要項 | 說明 |
+| 元素名稱 | 必要 | 描述 |
 |:--- |:--- |:--- |
 | 命名空間 |是 |自訂函式的命名空間。 使用來避免與範本函式的命名衝突。 |
 | 函數名稱 |是 |自訂函式的名稱。 呼叫函式時，請將函式名稱與命名空間結合。 例如，若要在 contoso 命名空間中呼叫名為 uniqueName 的函式，請使用 `"[contoso.uniqueName()]"`。 |
@@ -235,7 +235,7 @@ ms.locfileid: "76122061"
 ]
 ```
 
-| 元素名稱 | 必要項 | 說明 |
+| 元素名稱 | 必要 | 描述 |
 |:--- |:--- |:--- |
 | condition (條件) | 否 | 布林值，指出是否會在此部署期間佈建資源。 若為 `true`，就會在部署期間建立資源。 若為 `false`，則會略過此部署的資源。 請參閱[條件](conditional-resource-deployment.md)。 |
 | type |是 |資源類型。 這個值是資源提供者的命名空間與資源類型的組合 (例如 **Microsoft.Storage/storageAccounts**)。 若要判斷可用的值，請參閱[範本參考](/azure/templates/)。 對於子資源，類型的格式取決於它是內嵌在父資源內，還是在父資源外部定義。 請參閱[設定子資源的名稱和類型](child-resource-name-type.md)。 |
@@ -247,7 +247,7 @@ ms.locfileid: "76122061"
 | tags |否 |與資源相關聯的標記。 套用標籤，既可以邏輯方式組織訂用帳戶中的資源。 |
 | sku | 否 | 某些資源允許以值定義要部署的 SKU。 例如，您可以指定儲存體帳戶的備援類型。 |
 | kind | 否 | 某些資源允許以值定義您所部署的資源類型。 例如，您可以指定要建立的 Cosmos DB 類型。 |
-| copy |否 |如果需要多個執行個體，要建立的資源數目。 預設模式為平行。 如果您不想要同時部署所有或某些資源，請指定序列模式。 如需詳細資訊，請參閱[在 Azure Resource Manager 中建立資源的數個執行個體](create-multiple-instances.md)。 |
+| copy |否 |如果需要多個執行個體，要建立的資源數目。 預設模式為平行。 如果您不想要同時部署所有或某些資源，請指定序列模式。 如需詳細資訊，請參閱[在 Azure Resource Manager 中建立資源的數個執行個體](copy-resources.md)。 |
 | 計劃 | 否 | 某些資源允許以值定義要部署的計劃。 例如，您可以指定虛擬機器的 Marketplace 映像。 |
 | properties |否 |資源特定的組態設定。 屬性的值和您在 REST API 作業 (PUT 方法) 要求主體中提供來建立資源的值是一樣的。 您也可以指定複本陣列，以建立屬性的數個執行個體。 若要判斷可用的值，請參閱[範本參考](/azure/templates/)。 |
 | resources |否 |與正在定義的資源相依的下層資源。 只提供父資源的結構描述允許的資源類型。 沒有隱含父資源的相依性。 您必須明確定義該相依性。 請參閱[設定子資源的名稱和類型](child-resource-name-type.md)。 |
@@ -268,7 +268,7 @@ ms.locfileid: "76122061"
 }
 ```
 
-| 元素名稱 | 必要項 | 說明 |
+| 元素名稱 | 必要 | 描述 |
 |:--- |:--- |:--- |
 | 輸出-名稱 |是 |輸出值的名稱。 必須是有效的 JavaScript 識別碼。 |
 | condition (條件) |否 | 布林值，指出是否傳回此輸出值。 當為 `true` 時，該值會包含在部署的輸出中。 若為 `false`，則會略過此部署的輸出值。 未指定時，預設值為 `true`。 |
@@ -320,7 +320,7 @@ ms.locfileid: "76122061"
   },
 ```
 
-對於**參數**，新增 `description` 屬性的 `metadata` 物件。
+對於**參數**，新增 `metadata` 屬性的 `description` 物件。
 
 ```json
 "parameters": {

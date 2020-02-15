@@ -11,13 +11,13 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 02/01/2020
-ms.openlocfilehash: c4502cc4a808b4a44f70c1f96fe38fd0ddeebdee
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.date: 02/14/2020
+ms.openlocfilehash: 9c084564fec3faf59317fe9e05f3e850a38454d6
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187718"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251969"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>自訂 Azure SSIS Integration Runtime 的設定
 
@@ -46,7 +46,7 @@ Azure SQL Server Integration Services Integration Runtime （Azure SSIS IR）的
 
 - Azure SSIS IR 不支援 IBM iSeries Access ODBC 驅動程式。 您可能會在自訂安裝期間看到安裝錯誤。 如果您這樣做，請聯絡 IBM 支援以尋求協助。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -121,8 +121,12 @@ Azure SQL Server Integration Services Integration Runtime （Azure SSIS IR）的
 
      * 如果您選取 [ **oh22's] HEDDA。IO**元件，您可以安裝[HEDDA。](https://hedda.io/ssis-component/)購買服務之後，AZURE SSIS IR 上 oh22 的 IO 資料品質/清理元件。 目前的整合版本是**1.0.13**。
 
-      * 如果您選取**oh22's SQLPhonetics.NET**元件，您可以從 AZURE SSIS IR 上的 oh22 安裝[SQLPhonetics.NET](https://sqlphonetics.oh22.is/sqlphonetics-net-for-microsoft-ssis/)資料品質/比對元件，方法是輸入您在 [**授權金鑰**] 方塊中購買的產品授權金鑰。 目前的整合版本是**1.0.43**。
-   
+     * 如果您選取**oh22's SQLPhonetics.NET**元件，您可以從 AZURE SSIS IR 上的 oh22 安裝[SQLPhonetics.NET](https://sqlphonetics.oh22.is/sqlphonetics-net-for-microsoft-ssis/)資料品質/比對元件，方法是輸入您在 [**授權金鑰**] 方塊中購買的產品授權金鑰。 目前的整合版本是**1.0.43**。
+
+     * 如果您選取**KingswaySoft 的 SSIS 整合工具**組元件，則可以在 [**授權金鑰**] 方塊中輸入您購買的產品授權金鑰，以從您的 Azure Ssis IR 上的 KingswaySoft，安裝適用于 CRM/ERP/行銷/共同作業應用程式的[ssis 整合工具](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365)組連接器（例如 Microsoft Dynamics/SharePoint/Project Server、Oracle/Salesforce marketing Cloud 等等）。 目前的整合版本為**2019.2**。
+
+     * 如果您選取**KingswaySoft 的 SSIS 生產力**套件元件，您可以在 [**授權金鑰**] 方塊中輸入您購買的產品授權金鑰，從 KingswaySoft 在您的 Azure ssis IR 上安裝元件的[SSIS](https://www.kingswaysoft.com/products/ssis-productivity-pack)產能套件組合。 目前的整合版本為**10.0**。
+
    您新增的快速自訂設定將會出現在 [ **Advanced Settings** ] 區段中。 若要移除它們，請選取其核取方塊，然後選取 [**刪除**]。
 
    ![使用自訂設定的 Advanced settings](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-custom.png)

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: codepen
-ms.openlocfilehash: 359f2b42ca6f56087be53a5aeb328fe43a478d63
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 63f7eac52a555be1877f235bd2f7f1d9315d53d5
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988273"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208500"
 ---
 # <a name="show-directions-from-a-to-b"></a>顯示從甲地到乙地的指示
 
@@ -43,7 +43,7 @@ ms.locfileid: "76988273"
 
 程式碼的最後一個區塊會使用地圖的[setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-)屬性來設定地圖的界限。
 
-路由查詢、資料來源、符號、線條圖層和相機界限會建立並設定于地圖的[事件](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)接聽程式內。 此程式碼結構可確保只有在對應完全載入之後，才會顯示結果。
+路由查詢、資料來源、符號、線條圖層和相機界限會建立在[事件](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)接聽程式內。 這個程式碼結構可確保只有在對應完全載入之後，才會顯示結果。
 
 ## <a name="query-the-route-via-fetch-api"></a>透過 Fetch API 查詢路由
 
@@ -54,7 +54,7 @@ ms.locfileid: "76988273"
 
 第二個程式碼區塊會建立 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 物件並將其新增至地圖。
 
-第三個程式碼區塊會建立路線的起點和目的地點，並將它們新增至資料來源。 如需使用 [addPins](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) 的指示，您可以查看[在地圖上新增圖釘](map-add-pin.md)。
+第三個程式碼區塊會建立路由的起點和目的地點。 然後，它會將它們加入至資料來源。 如需使用 [addPins](map-add-pin.md) 的指示，您可以查看[在地圖上新增圖釘](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)。
 
 [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) 會將 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中包裝的線條物件轉譯為地圖上的線條。 第四個程式碼區塊會建立線條圖層，並將其新增至地圖。 請在 [LineLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest) 查看線條圖層的屬性。
 
@@ -64,7 +64,7 @@ ms.locfileid: "76988273"
 
 程式碼的最後一個區塊會使用[FETCH api](https://fetch.spec.whatwg.org/)向[AZURE 地圖服務的路由 api](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)提出搜尋要求。 然後會剖析回應。 如果回應成功，就會使用緯度和經度資訊，藉由連接這些點來建立一條陣列。 然後，將程式程式碼資料新增至資料來源，以轉譯地圖上的路線。 如需相關指示，您可以查看[在地圖上新增線條](map-add-line-layer.md)。
 
-路由查詢、資料來源、符號、線條圖層和相機界限會建立並設定于地圖的[事件](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)接聽程式內。 同樣地，我們想要確保在地圖完全載入後顯示結果。
+路由查詢、資料來源、符號、線條圖層和相機界限會建立在[事件](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)接聽程式內。 同樣地，我們想要確保在地圖完全載入後顯示結果。
 
 ## <a name="next-steps"></a>後續步驟
 

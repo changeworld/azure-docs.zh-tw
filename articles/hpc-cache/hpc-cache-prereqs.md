@@ -4,14 +4,14 @@ description: 使用 Azure HPC 快取的必要條件
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 02/12/2020
 ms.author: rohogue
-ms.openlocfilehash: 90b84d936bda4e3a974e60934e82ac6c3389d85a
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 135c231f84d95ea2418fab4647d715473378e41c
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645764"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251952"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC 快取的必要條件
 
@@ -54,7 +54,7 @@ Azure HPC 快取需要具有下列品質的專用子網：
 
 [針對 azure 虛擬網路中的資源](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances)，深入瞭解 azure 虛擬網路和 DNS 伺服器設定的名稱解析。
 
-## <a name="permissions"></a>使用權限
+## <a name="permissions"></a>權限
 
 開始建立快取之前，請先檢查這些許可權相關的必要條件。
 
@@ -69,12 +69,6 @@ Azure HPC 快取需要具有下列品質的專用子網：
 快取支援 Azure Blob 容器或 NFS 硬體儲存體匯出。 建立快取之後，新增儲存體目標。
 
 每種儲存體類型都有特定的必要條件。
-
-### <a name="nfs-storage-requirements"></a>NFS 儲存體需求
-
-如果使用內部部署硬體儲存體，快取必須具有從其子網到資料中心的高頻寬網路存取權。 建議使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/)或類似的存取權。
-
-NFS 後端存放裝置必須是相容的硬體/軟體平臺。 如需詳細資訊，請洽詢 Azure HPC 快取小組。
 
 ### <a name="blob-storage-requirements"></a>Blob 儲存體需求
 
@@ -93,6 +87,52 @@ NFS 後端存放裝置必須是相容的硬體/軟體平臺。 如需詳細資�
 <!-- clarify location - same region or same resource group or same virtual network? -->
 
 您也必須授與快取應用程式對您 Azure 儲存體帳戶的存取權，如上面的[許可權](#permissions)中所述。 依照[新增儲存體目標](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)中的程式，為快取提供必要的存取角色。 如果您不是儲存體帳戶擁有者，請讓擁有者執行此步驟。
+
+### <a name="nfs-storage-requirements"></a>NFS 儲存體需求
+
+如果使用 NFS 儲存體系統（例如，內部部署硬體 NAS 系統），請確定它符合這些需求。 您可能需要與您的儲存系統（或資料中心）的網路系統管理員或防火牆管理員合作，以確認這些設定。
+
+> [!NOTE]
+> 如果快取沒有足夠的 NFS 儲存體系統存取權，儲存體目標的建立將會失敗。
+
+* **網路連線能力：** 在快取子網與 NFS 系統的資料中心之間，Azure HPC Cache 需要高頻寬的網路存取。 建議使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/)或類似的存取權。 如果使用 VPN，您可能需要將它設定為將 TCP MSS 固定在1350，以確保不會封鎖大型封包。
+
+* **埠存取：** 快取需要存取儲存系統上的特定 TCP/UDP 埠。 不同類型的存放裝置有不同的埠需求。
+
+  若要檢查您的儲存系統設定，請遵循此程式。
+
+  * 發出 `rpcinfo` 命令給您的儲存系統，以檢查所需的埠。 下列命令會列出埠，並將相關的結果格式化為資料表。 （使用您系統的 IP 位址來取代 *< storage_IP >* 期限）。
+
+    您可以從已安裝 NFS 基礎結構的任何 Linux 用戶端發出此命令。 如果您使用叢集子網內的用戶端，它也可以協助驗證子網與儲存體系統之間的連線能力。
+
+    ```bash
+    rpcinfo -p <storage_IP> |egrep "100000\s+4\s+tcp|100005\s+3\s+tcp|100003\s+3\s+tcp|100024\s+1\s+tcp|100021\s+4\s+tcp"| awk '{print $4 "/" $3 " " $5}'|column -t
+    ```
+
+  * 除了 `rpcinfo` 命令所傳回的埠之外，請確定這些常用的埠可允許輸入和輸出流量：
+
+    | 通訊協定 | 連接埠  | 服務  |
+    |----------|-------|----------|
+    | TCP/UDP  | 111   | rpcbind  |
+    | TCP/UDP  | 2049  | NFS      |
+    | TCP/UDP  | 4045  | nlockmgr |
+    | TCP/UDP  | 4046  | mountd   |
+    | TCP/UDP  | 4047  | status   |
+
+  * 檢查防火牆設定，確定它們允許所有這些必要端口上的流量。 請務必檢查 Azure 中所使用的防火牆，以及您資料中心內的內部部署防火牆。
+
+* **目錄存取：** 在儲存系統上啟用 [`showmount`] 命令。 Azure HPC 快取會使用此命令來檢查您的儲存體目標設定是否指向有效的匯出，同時確保多個掛接不會存取相同的子目錄（這會導致風險檔案衝突）。
+
+  > [!NOTE]
+  > 如果您的 NFS 儲存體系統使用 NetApp 的 ONTAP 9.2 作業系統，**請勿啟用 `showmount`** 。 [請洽詢 Microsoft 服務和支援](hpc-cache-support-ticket.md)以取得協助。
+
+* **根存取：** 快取會以使用者識別碼0的形式連線到後端系統。 在您的儲存系統上檢查這些設定：
+  
+  * 啟用 `no_root_squash`。 此選項可確保遠端根使用者可以存取 root 所擁有的檔案。
+
+  * 核取 [匯出原則]，確保它們不包含從快取子網的根存取限制。
+
+* NFS 後端存放裝置必須是相容的硬體/軟體平臺。 如需詳細資訊，請洽詢 Azure HPC 快取小組。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: 44fcaa0a4292ac86c7371c27f29faf0e7246e9d5
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 16ba90aab52c00f77af590f854217cd989df53b3
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894783"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251901"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL Database 和資料倉儲網路存取控制
 
@@ -113,7 +113,7 @@ Ip 型防火牆是 Azure SQL Server 的一項功能，可防止所有對您資�
 
 **子網路：** 虛擬網路包含**子網路**。 您有的任何 Azure 虛擬機器 (VM) 會指派給子網路。 一個子網路可以包含多個 VM 或其他計算節點。 計算虛擬網路外部的節點無法存取虛擬網路，除非您設定安全性來允許存取。
 
-**虛擬網路服務端點：** [虛擬網路服務端點] [vm-虛擬網路-服務端點-649d] 是一個子網，其屬性值包含一或多個正式的 Azure 服務類型名稱。 本文中我們探討類型名稱 **Microsoft.Sql**，它參考名為 SQL Database 的 Azure 服務。
+**虛擬網路服務端點：** [虛擬網路服務端點](../virtual-network/virtual-network-service-endpoints-overview.md)是一個子網路，其屬性值包含一或多個正式的 Azure 服務類型名稱。 本文中我們探討類型名稱 **Microsoft.Sql**，它參考名為 SQL Database 的 Azure 服務。
 
 **虛擬網路規則：** SQL Database 伺服器的虛擬網路規則是 SQL Database 伺服器的存取控制清單 (ACL) 中所列的子網路。 子網路必須包含 **Microsoft.Sql** 類型名稱，才能列在 SQL Database 的 ACL 中。 虛擬網路規則會指示 SQL Database 伺服器接受來自子網路上每個節點的通訊。
 
@@ -122,7 +122,7 @@ Ip 型防火牆是 Azure SQL Server 的一項功能，可防止所有對您資�
 
 Azure SQL Server 防火牆可讓您指定接受通訊的 IP 位址範圍，以 SQL Database。 此方法對 Azure 私人網路外部的穩定 IP 位址很適合。 不過，Azure 私人網路內的虛擬機器（Vm）會以*動態*IP 位址進行設定。 當您的 VM 重新開機時，動態 IP 位址可能會變更，而又會使以 IP 為基礎的防火牆規則失效。 在生產環境中，請勿在防火牆規則中指定動態 IP 位址。
 
-您可以藉由取得 VM 的*靜態*IP 位址來解決這項限制。 如需詳細資訊，請參閱 [使用 Azure 入口網站設定虛擬機器的私人 IP 位址] [vm-設定-私人-IP 位址--321w] （虛擬機器）。不過，靜態 IP 方法可能會變得很難以管理，而且在大規模完成時成本高昂。 
+您可以藉由取得 VM 的*靜態*IP 位址來解決這項限制。 如需詳細資訊，請參閱[使用 Azure 入口網站設定虛擬機器的私人 IP 位址](../virtual-network/virtual-networks-static-private-ip-arm-pportal.md)。 不過，靜態 IP 方法可能變得難以管理，在大規模使用時成本很高。 
 
 虛擬網路規則可讓您更輕鬆地建立和管理來自包含您 Vm 之特定子網的存取權。
 
@@ -137,7 +137,7 @@ Azure SQL Server 防火牆可讓您指定接受通訊的 IP 位址範圍，以 S
 
 - 如需從開放原始碼或協力廠商應用程式連線到 Azure SQL 資料庫的說明，請參閱[SQL Database 的用戶端快速入門程式碼範例](https://msdn.microsoft.com/library/azure/ee336282.aspx)。
 
-- 如需詳細資訊，請參閱[針對 ADO.NET 4.5 及 SQL Database 的 1433 以外的連接埠](sql-database-develop-direct-route-ports-adonet-v12.md)的〈**SQL Database：外部與內部**〉一節
+- 如需詳細資訊，請參閱**針對 ADO.NET 4.5 及 SQL Database 的 1433 以外的連接埠**的〈[SQL Database：外部與內部](sql-database-develop-direct-route-ports-adonet-v12.md)〉一節
 
 - 如需 Azure SQL Database 連線的總覽，請參閱[AZURE SQL 連線架構](sql-database-connectivity-architecture.md)
 

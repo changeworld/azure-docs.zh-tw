@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: fc861126cd723bbb0f7c43d5d2db4eed1503605a
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: ed477dddeb499023f4803929d9433ed37c302159
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911887"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212492"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>透過分散式追蹤來追蹤 Azure IoT 裝置到雲端的訊息 (預覽)
 
@@ -30,11 +30,11 @@ IoT 中樞是其中一項最先支援分散式追蹤的 Azure 服務。 隨著�
 
 在本文中，您會使用 [適用於 C 的 Azure IoT 裝置 SDK](iot-hub-device-sdk-c-intro.md) 搭配分散式追蹤。 其他 SDK 的分散式追蹤支援仍在進行中。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 分散式追蹤的預覽版目前僅支援在下列區域建立的 IoT 中樞：
 
-  - **北歐**
+  - **歐洲北部**
   - **東南亞**
   - **美國西部 2**
 
@@ -90,7 +90,7 @@ IoT 中樞是其中一項最先支援分散式追蹤的 Azure 服務。 隨著�
 
 1. 安裝適用于 Visual Studio 2019 的「[桌面C++開發」工作負載](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019)。 也支援 Visual Studio 2017 和2015。
 
-1. 安裝 [CMake](https://cmake.org/)。 在命令提示字元中輸入 `cmake -version`，確定它位於您的 `PATH` 中。
+1. 安裝 [CMake](https://cmake.org/)。 在命令提示字元中輸入 `PATH`，確定它位於您的 `cmake -version` 中。
 
 1. 開啟命令提示字元或 Git Bash 殼層。 執行下列命令，以複製最新版本的[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存放庫：
 
@@ -130,13 +130,16 @@ IoT 中樞是其中一項最先支援分散式追蹤的 Azure 服務。 隨著�
 
 ### <a name="edit-the-send-telemetry-sample-to-enable-distributed-tracing"></a>編輯傳送遙測範例以啟用分散式追蹤
 
+> [!div class="button"]
+> <a href="https://github.com/Azure-Samples/azure-iot-distributed-tracing-sample/blob/master/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c" target="_blank">在 Github 上取得範例</a>
+
 1. 使用編輯器來開啟 `azure-iot-sdk-c/iothub_client/samples/iothub_ll_telemetry_sample/iothub_ll_telemetry_sample.c` 來源檔案。
 
 1. 尋找 `connectionString` 常數的宣告：
 
     [!code-c[](~/samples-iot-distributed-tracing/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c?name=snippet_config&highlight=2)]
 
-    使用您在[傳送遙測 C 快速入門](./quickstart-send-telemetry-c.md)的[註冊裝置](./quickstart-send-telemetry-c.md#register-a-device)一節中記下的裝置連接字串，取代 `connectionString` 常數的值。
+    使用您在`connectionString`傳送遙測 C 快速入門[的](./quickstart-send-telemetry-c.md#register-a-device)註冊裝置[一節中記下的裝置連接字串，取代 ](./quickstart-send-telemetry-c.md) 常數的值。
 
 1. 將 `MESSAGE_COUNT` 定義變更為 `5000`：
 
@@ -152,9 +155,9 @@ IoT 中樞是其中一項最先支援分散式追蹤的 Azure 服務。 隨著�
 
     [!code-c[](~/samples-iot-distributed-tracing/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c?name=snippet_sleep&highlight=8)]
 
-### <a name="compile-and-run"></a>編譯及執行
+### <a name="compile-and-run"></a>編譯和執行
 
-1. 從您先前建立的 CMake 目錄 (`azure-iot-sdk-c/cmake`) 瀏覽至 *iothub_ll_telemetry_sample* 專案目錄，然後編譯範例：
+1. 從您先前建立的 CMake 目錄 ( *) 瀏覽至* iothub_ll_telemetry_sample`azure-iot-sdk-c/cmake` 專案目錄，然後編譯範例：
 
     ```cmd
     cd iothub_client/samples/iothub_ll_telemetry_sample
@@ -241,7 +244,7 @@ IoT 中樞是其中一項最先支援分散式追蹤的 Azure 服務。 隨著�
 }
 ```
 
-| 元素名稱 | 必要項 | 類型 | 說明 |
+| 元素名稱 | 必要 | 類型 | 描述 |
 |-----------------|----------|---------|-----------------------------------------------------|
 | `sampling_mode` | 是 | 整數 | 目前支援兩個模式值來開啟和關閉取樣。 `1` 為開啟，而 `2` 為關閉。 |
 | `sampling_rate` | 是 | 整數 | 這個值是百分比。 只允許從 `0` 到 `100` (含) 的值。  |

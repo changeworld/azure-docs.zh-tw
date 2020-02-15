@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1df823776208418eae3e465693dd51e108c5a8bb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: da983f87977de922ec547c3ade2972dfb4d69363
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841024"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77206254"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory 中群組的動態成員資格規則
 
@@ -86,14 +86,14 @@ user.department -eq "Sales"
 
 ### <a name="properties-of-type-boolean"></a>布林型別的屬性
 
-| 屬性 | 允許的值 | 用量 |
+| 屬性 | 允許的值 | 使用量 |
 | --- | --- | --- |
 | accountEnabled |true false |user.accountEnabled -eq true |
 | dirSyncEnabled |true false |user.dirSyncEnabled -eq true |
 
 ### <a name="properties-of-type-string"></a>字串類型的屬性
 
-| 屬性 | 允許的值 | 用量 |
+| 屬性 | 允許的值 | 使用量 |
 | --- | --- | --- |
 | city |任何字串值或 *null* |(user.city -eq "value") |
 | country |任何字串值或 *null* |(user.country -eq "value") |
@@ -124,7 +124,7 @@ user.department -eq "Sales"
 
 ### <a name="properties-of-type-string-collection"></a>字串集合類型的屬性
 
-| 屬性 | 允許的值 | 用量 |
+| 屬性 | 允許的值 | 使用量 |
 | --- | --- | --- |
 | otherMails |任何字串值 |(user.otherMails -contains "alias@domain") |
 | proxyAddresses |SMTP: alias@domain smtp: alias@domain |(user.proxyAddresses -contains "SMTP: alias@domain") |
@@ -138,7 +138,7 @@ user.department -eq "Sales"
 | 運算子 | 語法 |
 | --- | --- |
 | Not Equals |-ne |
-| 等於 |-eq |
+| Equals |-eq |
 | Not Starts With |-notStartsWith |
 | 開頭為 |-startsWith |
 | Not Contains |-notContains |
@@ -249,7 +249,7 @@ David 會評估為 true，Da 則會評估為 false。
 
 多重值屬性是相同類型之物件的集合。 它們可以用來建立使用 -any 和 -all 邏輯運算子的成員資格規則。
 
-| 屬性 | 值 | 用量 |
+| 屬性 | 值 | 使用量 |
 | --- | --- | --- |
 | assignedPlans | 集合中的每個物件都會公開下列字串屬性：capabilityStatus、service、servicePlanId |user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled") |
 | proxyAddresses| SMTP: alias@domain smtp: alias@domain | (user.proxyAddresses -any (\_ -contains "contoso")) |
@@ -341,13 +341,13 @@ device.objectId -ne null
 
 ## <a name="extension-properties-and-custom-extension-properties"></a>擴充屬性和自訂擴充屬性
 
-動態成員資格規則中支援擴充屬性和自訂延伸模組屬性作為字串屬性。 擴充屬性會從內部部署 Windows Server AD 進行同步處理，並採用 "ExtensionAttributeX" 格式，其中 X 等於 1-15。 以下是使用擴充屬性 (attribute) 作為屬性 (property) 的規則範例：
+動態成員資格規則中支援擴充屬性和自訂延伸模組屬性作為字串屬性。 [擴充屬性](https://docs.microsoft.com/graph/api/resources/onpremisesextensionattributes?view=graph-rest-1.0)會從內部部署的 WINDOWS Server AD 進行同步處理，並採用 "ExtensionAttributeX" 的格式，其中 X 等於 1-15。 以下是使用擴充屬性 (attribute) 作為屬性 (property) 的規則範例：
 
 ```
 (user.extensionAttribute15 -eq "Marketing")
 ```
 
-自訂擴充屬性會從內部部署 Windows Server AD 或從連線的 SaaS 應用程式進行同步處理，而且格式為 `user.extension_[GUID]_[Attribute]`，其中：
+[自訂延伸模組屬性](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-directory-extensions)會從內部部署 WINDOWS Server AD 或從連線的 SaaS 應用程式同步處理，且格式為 `user.extension_[GUID]_[Attribute]`，其中：
 
 * 對於在 Azure AD 中建立屬性的應用程式而言，[GUID] 是其在 Azure AD 中的唯一識別碼
 * [Attribute] 是屬性建立時的名稱

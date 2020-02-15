@@ -2,13 +2,13 @@
 title: 限制和界限 - QnA Maker
 description: QnA Maker 知識庫和服務的某些部分有中繼資料的限制。 請務必將您的知識庫保持在這些限制範圍內，以便進行測試及發佈。
 ms.topic: article
-ms.date: 01/23/2020
-ms.openlocfilehash: 32e12d9e983795d2fb403a5b6bc304289ece92c2
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.date: 02/14/2020
+ms.openlocfilehash: 7fdf45a4a22f6d9ffe123f5998592739402be55f
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760227"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252003"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker 知識庫的限制和界限
 
@@ -55,6 +55,8 @@ ms.locfileid: "76760227"
 
 ## <a name="metadata-limits"></a>中繼資料限制
 
+會儲存中繼資料，並以小寫形式進行比較。
+
 ### <a name="by-azure-cognitive-search-pricing-tier"></a>Azure 認知搜尋定價層
 
 每個知識庫的元資料欄位數目上限是以您的 **[Azure 認知搜尋層限制](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)** 為基礎。
@@ -67,7 +69,7 @@ ms.locfileid: "76760227"
 
 中繼資料名稱和值的長度和可接受字元會列在下表中。
 
-|項目|允許的字元|Regex 模式比對|最大字元數|
+|Item|允許的字元|Regex 模式比對|最大字元數|
 |--|--|--|--|
 |名稱|可讓<br>英數位元（字母和數位）<br>`_` （底線）|`^[a-zA-Z0-9_]+$`|100|
 |值|允許以外的所有專案<br>`:` （冒號）<br>`|` （垂直管道）|`^[^:|]+$`|500|

@@ -3,12 +3,12 @@ title: 範本函數-比較
 description: 描述 Azure Resource Manager 範本中用來比較值的函式。
 ms.topic: conceptual
 ms.date: 09/05/2017
-ms.openlocfilehash: 3f21066ae5882f51ef1e01343752eea725fece1d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 67cb1c1f92694ca217e99fb6528fb1d00f2cfcf6
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484047"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207304"
 ---
 # <a name="comparison-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager 範本的比較函式
 
@@ -29,7 +29,7 @@ Resource Manager 提供了幾個用來在範本中進行比較的函式。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |整數、字串、陣列或物件 |要檢查是否相等的第一個值。 |
 | arg2 |是 |整數、字串、陣列或物件 |要檢查是否相等的第二個值。 |
@@ -126,10 +126,10 @@ equals 函式通常會搭配 `condition` 元素，用來測試是否已部署資
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| checkInts | Bool | 是 |
-| checkStrings | Bool | 是 |
-| checkArrays | Bool | 是 |
-| checkObjects | Bool | 是 |
+| checkInts | Bool | True |
+| checkStrings | Bool | True |
+| checkArrays | Bool | True |
+| checkObjects | Bool | True |
 
 若要使用 Azure CLI 部署此範例範本，請使用：
 
@@ -164,7 +164,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| checkNotEquals | Bool | 是 |
+| checkNotEquals | Bool | True |
 
 若要使用 Azure CLI 部署此範例範本，請使用：
 
@@ -185,7 +185,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |整數或字串 |用於大於比較的第一個值。 |
 | arg2 |是 |整數或字串 |用於大於比較的第二個值。 |
@@ -239,8 +239,8 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| checkInts | Bool | 否 |
-| checkStrings | Bool | 是 |
+| checkInts | Bool | False |
+| checkStrings | Bool | True |
 
 若要使用 Azure CLI 部署此範例範本，請使用：
 
@@ -261,7 +261,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |整數或字串 |用於大於或等於比較的第一個值。 |
 | arg2 |是 |整數或字串 |用於大於或等於比較的第二個值。 |
@@ -315,8 +315,8 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| checkInts | Bool | 否 |
-| checkStrings | Bool | 是 |
+| checkInts | Bool | False |
+| checkStrings | Bool | True |
 
 若要使用 Azure CLI 部署此範例範本，請使用：
 
@@ -337,7 +337,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |整數或字串 |用於小於比較的第一個值。 |
 | arg2 |是 |整數或字串 |用於小於比較的第二個值。 |
@@ -391,8 +391,8 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| checkInts | Bool | 是 |
-| checkStrings | Bool | 否 |
+| checkInts | Bool | True |
+| checkStrings | Bool | False |
 
 若要使用 Azure CLI 部署此範例範本，請使用：
 
@@ -413,7 +413,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |整數或字串 |用於小於或等於比較的第一個值。 |
 | arg2 |是 |整數或字串 |用於小於或等於比較的第二個值。 |
@@ -467,8 +467,8 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| checkInts | Bool | 是 |
-| checkStrings | Bool | 否 |
+| checkInts | Bool | True |
+| checkStrings | Bool | False |
 
 若要使用 Azure CLI 部署此範例範本，請使用：
 
@@ -485,6 +485,6 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ## <a name="next-steps"></a>後續步驟
 * 如需有關 Azure Resource Manager 範本中各區段的說明，請參閱[編寫 Azure Resource Manager 範本](template-syntax.md)。
 * 若要合併多個範本，請參閱[透過 Azure Resource Manager 使用連結的範本](linked-templates.md)。
-* 若要依指定的次數重複建立資源類型，請參閱 [在 Azure 資源管理員中建立資源的多個執行個體](create-multiple-instances.md)。
+* 若要依指定的次數重複建立資源類型，請參閱 [在 Azure 資源管理員中建立資源的多個執行個體](copy-resources.md)。
 * 若要了解如何部署已建立的範本，請參閱[使用 Azure Resource Manager 範本部署應用程式](deploy-powershell.md)。
 

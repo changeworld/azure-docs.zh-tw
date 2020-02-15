@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 11/07/2018
-ms.openlocfilehash: 3ae87523e66ae49d17f198a1f70b0f449ca0a713
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 35e10c0f9babca7719ff496e7068ad1564670fee
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080426"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209149"
 ---
 # <a name="upload-files-with-iot-hub"></a>透過 IoT 中樞上傳檔案
 
@@ -95,7 +95,7 @@ IoT 中樞有兩個 REST 端點可以支援檔案上傳，一個用來取得儲�
 
 (選擇性) 當裝置將上傳已完成的狀態通知 IoT 中樞時，IoT 中樞就會產生通知訊息。 此訊息包含檔案的名稱和儲存位置。
 
-如[端點](iot-hub-devguide-endpoints.md)中所述，IoT 中樞會透過面向服務的端點 ( **/messages/servicebound/fileuploadnotifications**) 利用訊息來傳遞檔案上傳通知。 檔案上傳通知的接收語意與雲端到裝置訊息相同，並且具有相同[訊息生命週期](iot-hub-devguide-messages-c2d.md#the-cloud-to-device-message-life-cycle)。 從檔案上傳通知端點擷取的每則訊息是具有下列屬性的 JSON 記錄：
+如[端點](iot-hub-devguide-endpoints.md)中所述，IoT 中樞會透過面向服務的端點 ( **/messages/servicebound/fileuploadnotifications**) 利用訊息來傳遞檔案上傳通知。 檔案上傳通知的接收語義與雲端到裝置訊息相同，而且具有相同的[訊息生命週期](iot-hub-devguide-messages-c2d.md#the-cloud-to-device-message-life-cycle)。 從檔案上傳通知端點擷取的每則訊息是具有下列屬性的 JSON 記錄：
 
 | 屬性 | 描述 |
 | --- | --- |
@@ -126,9 +126,11 @@ IoT 中樞有兩個 REST 端點可以支援檔案上傳，一個用來取得儲�
 | 屬性 | 描述 | 範圍和預設值 |
 | --- | --- | --- |
 | **enableFileUploadNotifications** |控制是否將檔案上傳通知寫入檔案通知端點。 |布林 預設值：True。 |
-| **fileNotifications.ttlAsIso8601** |檔案上傳通知的預設 TTL。 |ISO_8601 間隔高達 48H (最小為 1 分鐘)。 預設值：1 小時。 |
+| **fileNotifications.ttlAsIso8601** |檔案上傳通知的預設 TTL。 |ISO_8601 間隔高達 48H (最小為 1 分鐘)。 預設值︰1 小時。 |
 | **fileNotifications.lockDuration** |檔案上傳通知佇列的鎖定持續時間。 |5 到 300 秒 (最小值 5 秒)。 預設值：60 秒。 |
-| **fileNotifications.maxDeliveryCount** |檔案上傳通知佇列的傳遞計數上限。 |1 到 100。 預設值：100。 |
+| **fileNotifications.maxDeliveryCount** |檔案上傳通知佇列的傳遞計數上限。 |1 到 100。 預設值 = 100。 |
+
+您可以使用 [Azure 入口網站]、[Azure CLI] 或 [PowerShell]，在您的 IoT 中樞上設定這些屬性。 若要瞭解作法，請參閱[設定檔案上傳](iot-hub-configure-file-upload.md)底下的主題。
 
 ## <a name="additional-reference-material"></a>其他參考資料
 

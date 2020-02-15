@@ -1,19 +1,19 @@
 ---
 title: 開始使用 web 地圖控制項 |Microsoft Azure 對應
 description: 瞭解如何使用 Microsoft Azure 地圖的地圖控制項用戶端 JAVAscript 程式庫，將地圖和內嵌的 Azure 地圖服務功能轉譯成您的 web 或行動應用程式。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/15/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 90cd752ddd46999627de538abe3ca6b1926005aa
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 6701d777fb9aa16d3012baba082415bf9858e46f
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264115"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209812"
 ---
 # <a name="use-the-azure-maps-map-control"></a>使用 Azure 地圖服務地圖控制項
 
@@ -66,7 +66,7 @@ b. 使用[Azure 地圖服務控制](https://www.npmjs.com/package/azure-maps-con
     </style>
 ```
 
-4. 在頁面的主體中，新增 `<div>` 元素，並為它提供 **myMap** 的 `id`。
+4. 在頁面的主體中，新增 `<div>` 元素，並為它提供 `id`myMap**的**。
 
 ```HTML
     <body>
@@ -180,7 +180,7 @@ b. 使用[Azure 地圖服務控制](https://www.npmjs.com/package/azure-maps-con
 
 ![顯示呈現結果的地圖影像](./media/how-to-use-map-control/map-of-seattle.png)
 
-## <a name="localizing-the-map"></a>當地語系化對應
+## <a name="localizing-the-map"></a>將地圖當地語系化
 
 Azure 地圖服務提供兩種不同的方式來設定轉譯地圖的語言和地區視圖。 第一個選項是將這項資訊新增至全域 `atlas` 命名空間，這會導致應用程式中的所有地圖控制項實例預設為這些設定。 以下會將語言設定為法文（"fr-fr"），並將地區視圖設為「自動」：
 
@@ -212,7 +212,7 @@ map = new atlas.Map('myMap', {
 
 ![以法文顯示標籤的地圖影像](./media/how-to-use-map-control/websdk-localization.png)
 
-支援的語言和區域觀點的完整清單記載于[此處](supported-languages.md)。
+如需支援的語言和區域檢視的完整清單，請參閱[這裡](supported-languages.md)。
 
 ## <a name="azure-government-cloud-support"></a>Azure Government 雲端支援
 

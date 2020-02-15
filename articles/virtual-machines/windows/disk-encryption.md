@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 0ea9da894b9738fff634937294a07cc4b10624f0
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 73a505ce68ed046eba011d3b36991616f441506e
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048865"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77206291"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure 受控磁片的伺服器端加密
 
@@ -38,7 +38,7 @@ Azure 受控磁片預設會在將資料保存到雲端時，自動將您的資�
 
 下圖顯示受控磁片如何使用 Azure Active Directory 和 Azure Key Vault，以使用客戶管理的金鑰來提出要求：
 
-![受控磁片客戶管理的金鑰工作流程](media/disk-storage-encryption/customer-managed-keys-sse-managed-disks-workflow.png)
+![受控磁片和客戶管理的金鑰工作流程。 系統管理員會建立 Azure Key Vault，然後建立磁片加密集，並設定磁片加密集。 該集合與 VM 相關聯，可讓磁片使用 Azure AD 進行驗證](media/disk-storage-encryption/customer-managed-keys-sse-managed-disks-workflow.png)
 
 
 下列清單更詳細地說明圖表：

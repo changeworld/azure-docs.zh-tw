@@ -1,19 +1,19 @@
 ---
 title: Azure 地圖服務中的行動服務資料結構 |Microsoft Azure 對應
 description: 在本文中，您將瞭解透過 Microsoft Azure Maps 行動服務所傳回的通用欄位和資料結構。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 06/05/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: ceecdcc508e5b43c8775b6a88f9b4e4f0eb23c77
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 685810a6efa46c8eb3ad6cee0c2424299f0347d8
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989003"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209608"
 ---
 # <a name="data-structures-in-azure-maps-mobility-service"></a>Azure 地圖服務行動服務中的資料結構
 

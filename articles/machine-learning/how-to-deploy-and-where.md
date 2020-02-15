@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: bbb0992eaeef7892e5940130131ac139a339b47d
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: fa73cb690fafb67f75abafab1b0dd27ffa0b8e32
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77083247"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210494"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -584,6 +584,20 @@ az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.
 [!INCLUDE [aml-local-deploy-config](../../includes/machine-learning-service-local-deploy-config.md)]
 
 如需詳細資訊，請參閱[az ml model deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy)檔。
+
+### <a name="understanding-service-state"></a>瞭解服務狀態
+
+在模型部署期間，您可能會在完全部署時看到服務狀態變更。
+
+下表描述不同的服務狀態：
+
+| Webservice 狀態 | 描述 | 最終狀態？
+| ----- | ----- | ----- |
+| 正在 | 服務正在進行部署。 | 否 |
+| 狀況不良 | 服務已部署，但目前無法連線。  | 否 |
+| 設無法排程 | 因為缺少資源，所以目前無法部署服務。 | 否 |
+| 失敗 | 因為發生錯誤或損毀，所以服務無法部署。 | 是 |
+| Healthy | 服務狀況良好，且端點可供使用。 | 是 |
 
 ### <a id="notebookvm"></a>計算實例 web 服務（開發/測試）
 

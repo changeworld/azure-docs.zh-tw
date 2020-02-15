@@ -1,20 +1,22 @@
 ---
-title: 範本功能
+title: 範本函式
 description: 描述要在 Azure 資源管理員範本中用來擷取值、搭配字串和數字使用，並擷取部署資訊的函數。
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.openlocfilehash: aef813595df96449d5dd59ad1e95e77c4c198d0f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/13/2020
+ms.openlocfilehash: a9d10ad4899f35acd45069cb3d351a60632fed3a
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483969"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207037"
 ---
 # <a name="azure-resource-manager-template-functions"></a>Azure 資源管理員範本函數
 
 本文描述您可以在Azure Resource Manager 範本中使用的所有函式。 如需在您的範本中使用函式的詳細資訊，請參閱[範本語法](template-expressions.md)。
 
 若要建立自己的函式，請參閱[使用者定義的函式](template-syntax.md#functions)。
+
+在部署至資源群組、訂用帳戶、管理群組或租使用者時，大部分函式的運作方式都相同。 有些函式不能用在所有範圍中。 它們會在下列清單中注明。
 
 <a id="array" aria-hidden="true" />
 <a id="coalesce" aria-hidden="true" />
@@ -35,6 +37,7 @@ ms.locfileid: "75483969"
 <a id="union" aria-hidden="true" />
 
 ## <a name="array-and-object-functions"></a>陣列和物件函式
+
 Resource Manager 提供了幾個用來使用陣列和物件的函式。
 
 * [array](template-functions-array.md#array)
@@ -62,6 +65,7 @@ Resource Manager 提供了幾個用來使用陣列和物件的函式。
 <a id="greaterorequals" aria-hidden="true" />
 
 ## <a name="comparison-functions"></a>比較函式
+
 Resource Manager 提供了幾個用來在範本中進行比較的函式。
 
 * [equals](template-functions-comparison.md#equals)
@@ -75,6 +79,7 @@ Resource Manager 提供了幾個用來在範本中進行比較的函式。
 <a id="variables" aria-hidden="true" />
 
 ## <a name="deployment-value-functions"></a>部署值函式
+
 資源管理員提供下列函式，以從與部署相關的範本和值的區段中取得值：
 
 * [部署](template-functions-deployment.md#deployment)
@@ -89,6 +94,7 @@ Resource Manager 提供了幾個用來在範本中進行比較的函式。
 <a id="or" aria-hidden="true" />
 
 ## <a name="logical-functions"></a>邏輯函式
+
 Resource Manager 提供下列函式以使用邏輯條件：
 
 * [and](template-functions-logical.md#and)
@@ -109,6 +115,7 @@ Resource Manager 提供下列函式以使用邏輯條件：
 <a id="sub" aria-hidden="true" />
 
 ## <a name="numeric-functions"></a>數值函數
+
 資源管理員提供下列函式以使用整數：
 
 * [新增](template-functions-numeric.md#add)
@@ -134,6 +141,7 @@ Resource Manager 提供下列函式以使用邏輯條件：
 <a id="tenantResourceId" aria-hidden="true" />
 
 ## <a name="resource-functions"></a>資源函式
+
 資源管理員提供下列函式以取得資源值：
 
 * [extensionResourceId](template-functions-resource.md#extensionresourceid)
@@ -143,9 +151,9 @@ Resource Manager 提供下列函式以使用邏輯條件：
 * [list*](template-functions-resource.md#list)
 * [提供者](template-functions-resource.md#providers)
 * [reference](template-functions-resource.md#reference)
-* [resourceGroup](template-functions-resource.md#resourcegroup)
-* [resourceId](template-functions-resource.md#resourceid)
-* [訂用帳戶](template-functions-resource.md#subscription)
+* [resourceGroup](template-functions-resource.md#resourcegroup) -只能用在資源群組的部署中。
+* [resourceId](template-functions-resource.md#resourceid) -可以用於任何範圍，但有效的參數會根據範圍而變更。
+* [訂](template-functions-resource.md#subscription)用帳戶-只能用在資源群組或訂用帳戶的部署中。
 * [subscriptionResourceId](template-functions-resource.md#subscriptionresourceid)
 * [tenantResourceId](template-functions-resource.md#tenantresourceid)
 
@@ -181,6 +189,7 @@ Resource Manager 提供下列函式以使用邏輯條件：
 <a id="uricomponenttostring" aria-hidden="true" />
 
 ## <a name="string-functions"></a>字串函數
+
 資源管理員提供下列函式以使用字串：
 
 * [base64](template-functions-string.md#base64)
@@ -221,5 +230,5 @@ Resource Manager 提供下列函式以使用邏輯條件：
 
 * 如需有關 Azure 資源管理員範本中各區段的說明，請參閱 [編寫 Azure 資源管理員範本](template-syntax.md)
 * 若要合併多個範本，請參閱 [透過 Azure 資源管理員使用連結的範本](linked-templates.md)
-* 建立資源類型時若要逐一查看指定的次數，請參閱 [在 Azure Resource Manager 中建立資源的多個執行個體](create-multiple-instances.md)
+* 若要依指定的次數重複建立資源類型，請參閱 [在 Azure 資源管理員中建立資源的多個執行個體](copy-resources.md)。
 * 若要瞭解如何部署您所建立的範本，請參閱[使用 Azure Resource Manager 範本部署應用程式](deploy-powershell.md)

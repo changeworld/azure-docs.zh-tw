@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e3a80628e5729813e1d405e58ecb623925b63076
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 1734b063530f9e8a8f0429111c4c39d628bfad4e
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77193374"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251765"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>關於 Azure Active Directory B2C 自訂原則中的宣告解析程式
 
@@ -50,10 +50,10 @@ Azure Active Directory B2C （Azure AD B2C）[自訂原則](custom-policy-overvi
 | ----- | ----------- | --------|
 | {Culture:LanguageName} | 語言的雙字母 ISO 代碼。 | en |
 | {Culture:LCID}   | 語言代碼的 LCID。 | 1033 |
-| {Culture:RegionName} | 區域的雙字母 ISO 代碼。 | 美式英文 |
+| {Culture:RegionName} | 區域的雙字母 ISO 代碼。 | US |
 | {Culture:RFC5646} | RFC5646 語言代碼。 | zh-TW |
 
-### <a name="policy"></a>Policy(Windows Intune 說明：原則)
+### <a name="policy"></a>原則
 
 | 宣告 | 描述 | 範例 |
 | ----- | ----------- | --------|
@@ -76,14 +76,14 @@ Azure Active Directory B2C （Azure AD B2C）[自訂原則](custom-policy-overvi
 | {OIDC:Resource} |`resource` 查詢字串參數。 | N/A |
 | {OIDC:scope} |`scope` 查詢字串參數。 | openid |
 
-### <a name="context"></a>內容
+### <a name="context"></a>Context
 
 | 宣告 | 描述 | 範例 |
 | ----- | ----------- | --------|
 | {Context:BuildNumber} | 身分識別體驗架構版本 (組建編號)。  | 1.0.507.0 |
 | {Context:CorrelationId} | 相互關連識別碼。  | 00000000-0000-0000-0000-000000000000 |
 | {Context:DateTimeInUtc} |日期時間 (UTC)。  | 10/10/2018 12:00:00 PM |
-| {Context:DeploymentMode} |原則部署模式。  | 生產 |
+| {Context:DeploymentMode} |原則部署模式。  | Production |
 | {Context:IPAddress} | 使用者 IP 位址。 | 11.111.111.11 |
 
 
@@ -102,13 +102,13 @@ OIDC 或 OAuth2 要求中所包含的任何參數名稱均可對應至使用者�
 
 | 宣告 | 描述 | 範例 |
 | ----- | ----------------------- | --------|
-| {oauth2:access_token} | 存取語彙基元。 | N/A |
+| {oauth2:access_token} | 存取權杖。 | N/A |
 
 ## <a name="using-claim-resolvers"></a>使用宣告解析程式 
 
 您可以使用宣告解析程式搭配下列元素： 
 
-| 項目 | 元素 | 設定 |
+| Item | 元素 | 設定 |
 | ----- | ----------------------- | --------|
 |Application Insights 技術設定檔 |`InputClaim` | |
 |[Azure Active Directory](active-directory-technical-profile.md)技術設定檔| `InputClaim`, `OutputClaim`| 1, 2|
@@ -123,16 +123,16 @@ OIDC 或 OAuth2 要求中所包含的任何參數名稱均可對應至使用者�
 |[RelyingParty](relyingparty.md#technicalprofile)技術設定檔| `OutputClaim`| 2 |
 
 設定： 
-1. `IncludeClaimResolvingInClaimsHandling` 的中繼資料必須設定為 `true`
-1. `AlwaysUseDefaultValue` 的輸入或輸出宣告屬性必須設定為 `true`
+1. `IncludeClaimResolvingInClaimsHandling` 中繼資料必須設定為 `true`。
+1. `AlwaysUseDefaultValue` 的輸入或輸出宣告屬性必須設定為 `true`。
 
-## <a name="how-to-use-claim-resolvers"></a>如何使用宣告解析程式
+## <a name="claim-resolvers-samples"></a>宣告解析程式範例
 
 ### <a name="restful-technical-profile"></a>RESTful 技術設定檔
 
 在 [RESTful](restful-technical-profile.md) 技術設定檔中，您可以傳送使用者語言、原則名稱、範圍和用戶端識別碼。 REST API 可根據這些宣告執行自訂商務邏輯，並在必要時引發當地語系化的錯誤訊息。
 
-下列範例顯示的是 RESTful 技術設定檔：
+下列範例顯示 RESTful 技術設定檔與此案例：
 
 ```XML
 <TechnicalProfile Id="REST">
@@ -142,12 +142,13 @@ OIDC 或 OAuth2 要求中所包含的任何參數名稱均可對應至使用者�
     <Item Key="ServiceUrl">https://your-app.azurewebsites.net/api/identity</Item>
     <Item Key="AuthenticationType">None</Item>
     <Item Key="SendClaimsIn">Body</Item>
+    <Item Key="IncludeClaimResolvingInClaimsHandling">true</Item>
   </Metadata>
   <InputClaims>
-    <InputClaim ClaimTypeReferenceId="userLanguage" DefaultValue="{Culture:LCID}" />
-    <InputClaim ClaimTypeReferenceId="policyName" DefaultValue="{Policy:PolicyId}" />
-    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="{OIDC:scope}" />
-    <InputClaim ClaimTypeReferenceId="clientId" DefaultValue="{OIDC:ClientId}" />
+    <InputClaim ClaimTypeReferenceId="userLanguage" DefaultValue="{Culture:LCID}" AlwaysUseDefaultValue="true" />
+    <InputClaim ClaimTypeReferenceId="policyName" DefaultValue="{Policy:PolicyId}" AlwaysUseDefaultValue="true" />
+    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="{OIDC:scope}" AlwaysUseDefaultValue="true" />
+    <InputClaim ClaimTypeReferenceId="clientId" DefaultValue="{OIDC:ClientId}" AlwaysUseDefaultValue="true" />
   </InputClaims>
   <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
 </TechnicalProfile>
@@ -159,9 +160,9 @@ OIDC 或 OAuth2 要求中所包含的任何參數名稱均可對應至使用者�
 
 ### <a name="dynamic-ui-customization"></a>動態 UI 自訂
 
-Azure AD B2C 可讓您將查詢字串參數傳至 HTML 內容定義端點，以便您動態轉譯頁面內容。 例如，您可以根據從 Web 或行動裝置應用程式傳遞的自訂參數，變更 Azure AD B2C 註冊或登入頁面的背景影像。 如需詳細資訊，請參閱[使用 Azure Active Directory B2C 中的自訂原則動態設定 UI](custom-policy-ui-customization-dynamic.md)。 您也可以根據語言參數將 HTML 網頁當地語系化，也可以根據用戶端識別碼來變更內容。
+Azure AD B2C 可讓您將查詢字串參數傳遞至您的 HTML 內容定義端點，以動態呈現頁面內容。 例如，這可讓您根據從 web 或行動應用程式傳遞的自訂參數，修改 Azure AD B2C 註冊或登入頁面上的背景影像。 如需詳細資訊，請參閱[使用 Azure Active Directory B2C 中的自訂原則動態設定 UI](custom-policy-ui-customization-dynamic.md)。 您也可以根據語言參數將 HTML 網頁當地語系化，也可以根據用戶端識別碼來變更內容。
 
-下列範例會在查詢字串中傳入名為 **campaignId** (值為 `hawaii`) 的參數、**語言**代碼 `en-US`，和代表用戶端識別碼的 **app**：
+下列範例會傳入名為**campaignId**的查詢字串參數，其值為 `hawaii`、`en-US`的**語言**代碼，以及代表用戶端識別碼的**應用程式**：
 
 ```XML
 <UserJourneyBehaviors>
@@ -177,6 +178,17 @@ Azure AD B2C 可讓您將查詢字串參數傳至 HTML 內容定義端點，以�
 
 ```
 /selfAsserted.aspx?campaignId=hawaii&language=en-US&app=0239a9cc-309c-4d41-87f1-31288feb2e82
+```
+
+### <a name="content-definition"></a>內容定義
+
+在[ContentDefinition](contentdefinitions.md) `LoadUri`中，您可以根據所使用的參數，傳送宣告解析程式以從不同的位置提取內容。 
+
+```XML
+<ContentDefinition Id="api.signuporsignin">
+  <LoadUri>https://contoso.blob.core.windows.net/{Culture:LanguageName}/myHTML/unified.html</LoadUri>
+  ...
+</ContentDefinition>
 ```
 
 ### <a name="application-insights-technical-profile"></a>Application Insights 技術設定檔
@@ -195,4 +207,29 @@ Azure AD B2C 可讓您將查詢字串參數傳至 HTML 內容定義端點，以�
     <InputClaim ClaimTypeReferenceId="AppId" PartnerClaimType="{property:App}" DefaultValue="{OIDC:ClientId}" />
   </InputClaims>
 </TechnicalProfile>
+```
+
+### <a name="relying-party-policy"></a>信賴憑證者原則
+
+在[信賴](relyingparty.md)憑證者原則的技術設定檔中，您可能會想要將租使用者識別碼或相互關聯識別碼傳送至 JWT 內的信賴憑證者應用程式。 
+
+```XML
+<RelyingParty>
+    <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+    <TechnicalProfile Id="PolicyProfile">
+      <DisplayName>PolicyProfile</DisplayName>
+      <Protocol Name="OpenIdConnect" />
+      <OutputClaims>
+        <OutputClaim ClaimTypeReferenceId="displayName" />
+        <OutputClaim ClaimTypeReferenceId="givenName" />
+        <OutputClaim ClaimTypeReferenceId="surname" />
+        <OutputClaim ClaimTypeReferenceId="email" />
+        <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+        <OutputClaim ClaimTypeReferenceId="identityProvider" />
+        <OutputClaim ClaimTypeReferenceId="tenantId" AlwaysUseDefaultValue="true" DefaultValue="{Policy:TenantObjectId}" />
+        <OutputClaim ClaimTypeReferenceId="correlationId" AlwaysUseDefaultValue="true" DefaultValue="{Context:CorrelationId}" />
+      </OutputClaims>
+      <SubjectNamingInfo ClaimType="sub" />
+    </TechnicalProfile>
+  </RelyingParty>
 ```

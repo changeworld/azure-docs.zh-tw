@@ -7,12 +7,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 11/21/2019
 ms.author: cynthn
-ms.openlocfilehash: cf4c8c57121a06a607770470c5aef69c5edc0c5f
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 58c0964d170f49066802b955f09dab01eaf998a7
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77115630"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252190"
 ---
 # <a name="preview-control-updates-with-maintenance-control-and-the-azure-cli"></a>預覽：使用維護控制和 Azure CLI 控制更新
 
@@ -233,6 +233,18 @@ az maintenance applyupdate create \
 您可以使用 `az maintenance applyupdate get`來檢查更新進度。 
 
 您可以使用 `default` 做為更新名稱，以查看上次更新的結果，或以執行 `az maintenance applyupdate create`時傳回的更新名稱取代 `myUpdateName`。
+
+```text
+Status         : Completed
+ResourceId     : /subscriptions/12ae7457-4a34-465c-94c1-17c058c2bd25/resourcegroups/TestShantS/providers/Microsoft.Comp
+ute/virtualMachines/DXT-test-04-iso
+LastUpdateTime : 1/1/2020 12:00:00 AM
+Id             : /subscriptions/12ae7457-4a34-465c-94c1-17c058c2bd25/resourcegroups/TestShantS/providers/Microsoft.Comp
+ute/virtualMachines/DXT-test-04-iso/providers/Microsoft.Maintenance/applyUpdates/default
+Name           : default
+Type           : Microsoft.Maintenance/applyUpdates
+```
+LastUpdateTime 會是更新完成的時間，可能是由您或平臺在未使用自我維護視窗時所起始。 如果從未透過維護控制套用更新，它將會顯示預設值。
 
 ### <a name="isolated-vm"></a>隔離的 VM
 

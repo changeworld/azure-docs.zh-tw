@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 4eafd0fbaed067a0852edea010408a1d82353392
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: dd36895a34b36bbdf8e796cf629ab031613663cd
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277969"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208877"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -190,7 +190,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 `func init` 支援下列選項 (僅限用於 2.x 版，除非另有指定)：
 
-| 選項     | 說明                            |
+| 選項     | 描述                            |
 | ------------ | -------------------------------------- |
 | **`--csharp`**<br/> **`--dotnet`** | 初始化[ C#類別庫（.cs）專案](functions-dotnet-class-library.md)。 |
 | **`--csx`** | 初始化[ C#腳本（. .csx）專案](functions-reference-csharp.md)。 您必須在後續的命令中指定 `--csx`。 |
@@ -213,7 +213,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 [!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
 
-根據預設，在專案發佈至 Azure 時，這些設定將不會自動移轉。 請在[發佈時](#publish)使用 `--publish-local-settings` 參數，以確保這些設定會新增至 Azure 中的函式應用程式。 請注意，**ConnectionStrings** 中的值一律不會發佈。
+根據預設，在專案發佈至 Azure 時，這些設定將不會自動移轉。 請在`--publish-local-settings`發佈時[使用 ](#publish) 參數，以確保這些設定會新增至 Azure 中的函式應用程式。 請注意，**ConnectionStrings** 中的值一律不會發佈。
 
 這些函數應用程式設定值在您的程式碼中也可以做為環境變數加以讀取。 如需詳細資訊，請參閱這些特定語言參考主題的「環境變數」章節：
 
@@ -291,7 +291,7 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 
 您也可以使用下列引數，在命令中指定這些選項：
 
-| 引數     | 說明                            |
+| 引數     | 描述                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--csx`** | (2.x 版) 產生 1.x 版中和入口網站中所使用的相同 C# 指令碼 (.csx) 範本。 |
 | **`--language`** , **`-l`**| 範本程式語言，例如 C#、F# 或 JavaScript。 這是 1.x 版中的必要選項。 在 2.x 版中請勿使用此選項，或選擇符合背景工作執行階段的語言。 |
@@ -347,7 +347,7 @@ func host start
 
 `func start` 支援下列選項：
 
-| 選項     | 說明                            |
+| 選項     | 描述                            |
 | ------------ | -------------------------------------- |
 | **`--no-build`** | 執行前請勿建置目前的專案。 僅適用於 dotnet 專案。 預設會設定為 false。 僅限 2.x 版。 |
 | **`--cert`** | 包含私密金鑰的 .pfx 檔案路徑。 僅能與 `--useHttps` 搭配使用。 僅限 2.x 版。 |
@@ -358,7 +358,7 @@ func host start
 | **`--password`** | 密碼或包含 .pfx 檔案密碼的檔案。 僅能與 `--cert` 搭配使用。 僅限 2.x 版。 |
 | **`--port`** , **`-p`** | 要接聽的本機連接埠。 預設值：7071。 |
 | **`--pause-on-error`** | 暫停以在結束處理程序之前取得其他輸入。 這僅適用於從整合式開發環境 (IDE) 啟動 Core Tools 時。|
-| **`--script-root`** , **`--prefix`** | 用來為要執行或部署的函式應用程式指定根目錄的路徑。 此選項可用於在子資料夾中產生專案檔的編譯專案。 例如，當您建置 C# 類別庫專案時，將會以類似於 `MyProject/bin/Debug/netstandard2.0` 的路徑在 *root* 子資料夾中產生 host.json、local.settings.json 和 function.json 等檔案。 在此情況下，請將前置詞設為 `--script-root MyProject/bin/Debug/netstandard2.0`。 這是函式應用程式在 Azure 中執行時的根目錄。 |
+| **`--script-root`** , **`--prefix`** | 用來為要執行或部署的函式應用程式指定根目錄的路徑。 此選項可用於在子資料夾中產生專案檔的編譯專案。 例如，當您建置 C# 類別庫專案時，將會以類似於 *的路徑在*root`MyProject/bin/Debug/netstandard2.0` 子資料夾中產生 host.json、local.settings.json 和 function.json 等檔案。 在此情況下，請將前置詞設為 `--script-root MyProject/bin/Debug/netstandard2.0`。 這是函式應用程式在 Azure 中執行時的根目錄。 |
 | **`--timeout`** , **`-t`** | Functions 主機要啟動的逾時 (以秒為單位)。 預設值：20 秒。|
 | **`--useHttps`** | 繫結至 `https://localhost:{port}` 而不是 `http://localhost:{port}` 。 根據預設，此選項會在您的電腦上建立受信任的憑證。|
 
@@ -373,7 +373,7 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 ```
 
 >[!IMPORTANT]
->在本機執行時，不會對 HTTP 端點強制執行授權。 這表示所有的本機 HTTP 要求會作為 `authLevel = "anonymous"` 處理。 如需詳細資訊，請參閱 [HTTP 繫結文章](functions-bindings-http-webhook.md#authorization-keys)。
+>在本機執行時，不會對 HTTP 端點強制執行授權。 這表示所有的本機 HTTP 要求會作為 `authLevel = "anonymous"` 處理。 如需詳細資訊，請參閱 [HTTP 繫結文章](functions-bindings-http-webhook-trigger.md#authorization-keys)。
 
 ### <a name="passing-test-data-to-a-function"></a>將測試資料傳遞至函式
 
@@ -392,7 +392,7 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 
 請務必使用 Functions 主機接聽的相同伺服器名稱和連接埠。 啟動 Function 主機時，您會在產生的輸出中看到下列內容。 您可以使用觸發程序支援的任何 HTTP 方法呼叫此 URL。
 
-下列 cURL 命令從 GET 要求在查詢字串中傳遞 _name_ 參數，觸發 `MyHttpTrigger` 快速入門函式。
+下列 cURL 命令從 GET 要求在查詢字串中傳遞 `MyHttpTrigger`name_參數，觸發_ 快速入門函式。
 
 ```bash
 curl --get http://localhost:7071/api/MyHttpTrigger?name=Azure%20Rocks
@@ -437,7 +437,7 @@ curl --request POST -H "Content-Type:application/json" --data '{"input":"sample 
 
 `func run` 支援下列選項：
 
-| 選項     | 說明                            |
+| 選項     | 描述                            |
 | ------------ | -------------------------------------- |
 | **`--content`** , **`-c`** | 內嵌內容。 |
 | **`--debug`** , **`-d`** | 在執行函式之前，請先將偵錯工具附加到主機處理序。|
@@ -473,14 +473,14 @@ func azure functionapp publish <FunctionAppName>
 
 下列發行選項適用于1.x 和2.x 版：
 
-| 選項     | 說明                            |
+| 選項     | 描述                            |
 | ------------ | -------------------------------------- |
 | **`--publish-local-settings -i`** |  將 local.settings.json 中的設定發佈至 Azure，若設定已經存在，則提示進行覆寫。 如果您使用 Microsoft Azure 儲存體模擬器，請先將應用程式設定變更為[實際的儲存體連接](#get-your-storage-connection-strings)。 |
 | **`--overwrite-settings -y`** | 在使用 `--publish-local-settings -i` 時隱藏覆寫應用程式設定的提示。|
 
 下列發佈選項僅在 2.x 版中受到支援：
 
-| 選項     | 說明                            |
+| 選項     | 描述                            |
 | ------------ | -------------------------------------- |
 | **`--publish-settings-only`** , **`-o`** |  僅發佈設定而略過內容。 預設值為提示。 |
 |**`--list-ignored-files`** | 顯示在發佈期間忽略的檔案清單，以 .funcignore 檔案為準。 |
@@ -504,7 +504,7 @@ func deploy
 
 以下是可用的自訂容器部署選項：
 
-| 選項     | 說明                            |
+| 選項     | 描述                            |
 | ------------ | -------------------------------------- |
 | **`--registry`** | 目前的使用者所登入的 Docker 登錄名稱。 |
 | **`--platform`** | 函式應用程式的裝載平台。 有效選項為 `kubernetes` |

@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: eaa95906e20072e2914d1486568d7a6ebeb64f2c
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.openlocfilehash: a2a65c6fcca4a037408c6b7e780708623aebed2b
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114405"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212240"
 ---
 # <a name="traffic-analytics"></a>流量分析
 
@@ -69,8 +69,8 @@ Azure 虛擬網路具有 NSG 流量記錄，可為您了解透過與個別網路
 * 美國西部
 * 美國西部 2
 * 法國中部
-* 西歐
-* 北歐
+* 歐洲西部
+* 歐洲北部
 * 巴西南部
 * 英國西部
 * 英國南部
@@ -100,8 +100,8 @@ Log Analytics 工作區必須存在於下列區域：
 * 美國西部 2
 * 美國中部
 * 法國中部
-* 西歐
-* 北歐
+* 歐洲西部
+* 歐洲北部
 * 巴西南部
 * 英國西部
 * 英國南部
@@ -115,7 +115,7 @@ Log Analytics 工作區必須存在於下列區域：
 * US Gov 維吉尼亞州
 * 中國東部 2
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 ### <a name="user-access-requirements"></a>使用者存取需求
 
@@ -124,7 +124,7 @@ Log Analytics 工作區必須存在於下列區域：
 |部署模型   | 角色                   |
 |---------          |---------               |
 |Resource Manager   | 擁有者                  |
-|                   | Contributor            |
+|                   | 參與者            |
 |                   | 讀取者                 |
 |                   | 網路參與者    |
 
@@ -182,7 +182,7 @@ New-AzStorageAccount `
 
 1. 針對 [狀態] 選取 [開啟]。
 2. 選取 [*第2版*] 作為 [**流量記錄版本**]。 第 2 版包含流量工作階段統計資料 (位元組和封包)
-3. 選取用來儲存流量記錄的現有儲存體帳戶。 如果您想要永久儲存資料，請將值設為 *0*。 您的儲存體帳戶會產生 Azure 儲存體費用。 請確定您的儲存體未將 [Data Lake Storage Gen2 階層式命名空間] 設定為 [true]。 此外，NSG 流量記錄不能儲存在具有防火牆的儲存體帳戶中。 
+3. 選取用來儲存流量記錄的現有儲存體帳戶。 如果您想要永久儲存資料，請將值設為 *0*。 您的儲存體帳戶會產生 Azure 儲存體費用。 請確定您的儲存體未將 [Data Lake Storage Gen2 階層式命名空間] 設定為 [true]。
 4. 將 [保留] 設為您要儲存資料的天數。
 > [!IMPORTANT]
 > 目前有一個問題是，系統不會根據保留原則設定從 Blob 儲存體自動刪除網路監看員的[網路安全性群組 (NSG) 流量記錄](network-watcher-nsg-flow-logging-overview.md)。 如果您有現有的非零保留原則，建議您定期刪除超過其保留期間的儲存體 Blob 以避免產生任何費用。 如需如何刪除 NSG 流量記錄儲存體 Blob 的詳細資訊，請參閱[刪除 NSG 流量記錄儲存體 Blob](network-watcher-delete-nsg-flow-log-blobs.md)。

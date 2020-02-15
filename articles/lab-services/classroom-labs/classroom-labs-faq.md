@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2020
+ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: 551167cda28a2bb6007e66c1b4b458a0a7b2e396
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: a0361203f4a8a2e57d179b39ba6da2fb62f68720
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76718022"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252054"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Azure 實驗室服務中的教室實驗室-常見問題（FAQ）
 取得一些關於 Azure 實驗室服務中的教室實驗室最常見問題的解答。 
@@ -46,6 +46,12 @@ ms.locfileid: "76718022"
 
 ### <a name="what-public-ip-address-range-should-i-open-on-my-organizations-firewall-settings-to-connect-to-lab-virtual-machines-via-rdpssh"></a>我應該在組織的防火牆設定上開啟哪些公用 IP 位址範圍，以透過 RDP/SSH 連接到實驗室虛擬機器？
 請參閱[AZURE IP 範圍和服務標籤-公用雲端](https://www.microsoft.com/download/details.aspx?id=56519)，其可為 Azure 中的資料中心提供公用 IP 位址範圍。 您可以開啟實驗室帳戶所在區域的 IP 位址。
+
+## <a name="virtual-machine-images"></a>虛擬機器映像
+
+### <a name="as-a-lab-creator-why-cant-i-enable-additional-image-options-in-the-virtual-machine-images-dropdown-when-creating-a-new-lab"></a>身為實驗室建立者，為什麼我在建立新實驗室時，無法在 [虛擬機器映射] 下拉式清單中啟用其他映射選項？
+
+當系統管理員將您新增為實驗室帳戶的實驗室建立者時，您就會獲得建立實驗室的許可權。 但是，您沒有許可權可編輯實驗室帳戶內的任何設定，包括已啟用的虛擬機器映射清單。 若要啟用其他映射，請洽詢您的實驗室帳戶管理員以執行此動作，或要求系統管理員將您新增為實驗室帳戶的參與者角色。 [參與者] 角色會授與您在實驗室帳戶中編輯虛擬機器映射清單的許可權。
 
 ## <a name="users"></a>使用者
 

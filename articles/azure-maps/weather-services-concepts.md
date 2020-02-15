@@ -1,19 +1,19 @@
 ---
 title: 天氣服務概念 |Microsoft Azure 對應
 description: 在本文中，您將瞭解適用于 Microsoft Azure Maps 天氣服務的概念。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: bcf100236d4a2a707a007a24e9e51105cc9ca0ac
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: af7ea5c6e9d09b05b2f9271d6954162c0fd429c6
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76991174"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208721"
 ---
 # <a name="weather-services-in-azure-maps"></a>Azure 地圖服務中的氣象服務
 
@@ -23,11 +23,11 @@ ms.locfileid: "76991174"
 
 某些氣象服務 Api 可讓使用者指定以度量或英制單位傳回資料。 針對這些 Api 傳回的回應包含 Unittype.pixel 表示，以及可用於單元轉譯的數值。 請參閱下表來解讀這些值。
 
-|Unittype.pixel 表示|說明         |
+|Unittype.pixel 表示|描述         |
 |--------|--------------------|
 |0       |英呎                |
 |1       |英吋              |
-|2       |數               |
+|2       |英哩               |
 |3       |毫米          |
 |4       |釐米          |
 |5       |計數器               |
@@ -45,7 +45,7 @@ ms.locfileid: "76991174"
 |17      |攝氏             |
 |18      |華氏          |
 |19      |克式              |
-|20      |率             |
+|20      |percent             |
 |21      |FLOAT               |
 |22      |integer             |
 
@@ -54,7 +54,7 @@ ms.locfileid: "76991174"
 
 某些天氣服務 Api 會在回應中傳回 `iconCode`。 `iconCode` 是用來定義圖示的數位值。 請勿直接從您的應用程式連結到這些映射，Url 可以和將會變更。
 
-| 圖示編號 |圖示| 天 | 日 | 文字 |
+| 圖示編號 |圖示| Day | 日 | Text |
 |-------------|:----:|-----|-------|------|
 | 1           |![](./media/weather-services-concepts/sunny-i.png)                      | 是 |  否    | 晴朗|
 | 2           |![](./media/weather-services-concepts/mostly-sunny.png)                | 是 |  否    | 主要 Sunny|
@@ -71,7 +71,7 @@ ms.locfileid: "76991174"
 | 15           |![](./media/weather-services-concepts/tstorms-i.png)                   | 是 |  是   | Thunderstorms|
 | 16           |![](./media/weather-services-concepts/mostly-cloudy-tstorms.png)       | 是 |  否    | 大部分使用 Thunderstorms 的模糊|
 | 17           |![](./media/weather-services-concepts/partly-sunny-tstorms.png)        | 是 |  否    | 部分 Sunny 與 Thunderstorms|
-| 18           |![](./media/weather-services-concepts/rain-i.png)                      | 是 |  是   | 雨|
+| 18           |![](./media/weather-services-concepts/rain-i.png)                      | 是 |  是   | Rain|
 | 19           |![](./media/weather-services-concepts/flurries-i.png)                  | 是 |  是   | Flurries|
 | 20           |![](./media/weather-services-concepts/mostly-cloudy-flurries.png)      | 是 |  否    | 大部分使用 Flurries 的模糊|
 | 21           |![](./media/weather-services-concepts/partly-sunny-flurries.png)       | 是 |  否    | 部分 Sunny 與 Flurries|
@@ -84,7 +84,7 @@ ms.locfileid: "76991174"
 | 30           |![](./media/weather-services-concepts/hot-i.png)                       | 是 |  是   | 經常性存取|
 | 31           |![](./media/weather-services-concepts/cold-i.png)                      | 是 |  是   | 冷|
 | 32           |![](./media/weather-services-concepts/windy-i.png)                     | 是 |  是   | 風大|
-| 33           |![](./media/weather-services-concepts/clear-night.png)                | 否  |  是   | 清除|
+| 33           |![](./media/weather-services-concepts/clear-night.png)                | 否  |  是   | Clear|
 | 34           |![](./media/weather-services-concepts/mostly-clear-night.png)          | 否  |  是   | 大多清除|
 | 35           |![](./media/weather-services-concepts/partly-cloudy-night.png)         | 否  |  是   | 部分雲|
 | 36           |![](./media/weather-services-concepts/intermittent-clouds-Night.png)   | 否  |  是   | 間歇雲端|

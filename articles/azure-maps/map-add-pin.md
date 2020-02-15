@@ -1,6 +1,6 @@
 ---
 title: 將符號圖層新增至地圖 |Microsoft Azure 對應
-description: 在本文中，您將瞭解如何使用符號圖層，在地圖上使用 Microsoft Azure Maps Web SDK 來自訂和新增符號。
+description: 在本文中，您將瞭解如何使用符號圖層來自訂符號，並使用 Microsoft Azure Maps Web SDK 在地圖上新增符號。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,16 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 8c39c7b57167d65dfa639d41665f5d5b38110183
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: b8d131dcc798fb2fe1d4bb650cd5b0a68903381b
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933132"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209693"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>將符號圖層新增至地圖
 
-連接至資料來源的符號，用來在指定的點呈現圖示和/或文字。 符號圖層會使用 WebGL 來轉譯，並用於轉譯地圖上的大量點集合。 相較于 HTML 標籤，符號圖層會在地圖上呈現大量的點資料，效能較佳。 不過，符號圖層不支援傳統的 CSS 和 HTML 專案來進行樣式設定。  
+將符號連接至資料來源，並使用它在指定的點呈現圖示或文字。 
+
+使用 WebGL 來呈現符號圖層。 使用符號圖層，在地圖上呈現大量的點集合。 相較于 HTML 標籤，符號圖層會在地圖上呈現大量的點資料，效能較佳。 不過，符號圖層不支援傳統的 CSS 和 HTML 專案來進行樣式設定。  
 
 > [!TIP]
 > 根據預設，符號圖層會轉譯資料來源中所有幾何圖形的座標。 若要限制圖層，使其只轉譯點幾何特徵，請將圖層的 `filter` 屬性設定為 `['==', ['geometry-type'], 'Point']` 或 `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` 如有需要，您也可以包含 MultiPoint 功能。
@@ -33,7 +35,9 @@ ms.locfileid: "76933132"
 
 ## <a name="add-a-symbol-layer"></a>新增符號圖層
 
-在您可以將符號圖層新增至地圖之前，您必須執行幾個步驟。 首先，建立資料來源，並將它加入至對應。 接著，您可以在資料來源中建立並傳遞符號層，以從資料來源中取出資料。 最後，您必須將資料加入資料來源中，以便呈現內容。 下列程式碼顯示在載入之後應該加入對應的程式碼。 程式碼會使用符號圖層，在地圖上呈現單一點。 
+在您可以將符號圖層新增至地圖之前，您必須採取幾個步驟。 首先，建立資料來源，並將它加入至對應。 建立符號圖層。 然後，將資料來源傳入符號層，以從資料來源中取出資料。 最後，將資料加入資料來源中，以便呈現內容。 
+
+下列程式碼示範在對應載入之後應新增至地圖的內容。 這個範例會使用符號圖層，在地圖上呈現單一點。 
 
 ```javascript
 //Create a data source and add it to the map.
@@ -61,7 +65,7 @@ dataSource.add(new atlas.data.Point([0, 0]));
 
 <br/>
 
-<iframe height='500' scrolling='no' title='切換釘選位置' src='//codepen.io/azuremaps/embed/ZqJjRP/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>請參閱 <a href='https://codepen.io'>CodePen</a> 上由 Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 建立的 Pen <a href='https://codepen.io/azuremaps/pen/ZqJjRP/'>切換釘選位置</a>。
+<iframe height='500' scrolling='no' title='切換釘選位置' src='//codepen.io/azuremaps/embed/ZqJjRP/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>請參閱 <a href='https://codepen.io/azuremaps/pen/ZqJjRP/'>CodePen</a> 上由 Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 建立的 Pen <a href='https://codepen.io'>切換釘選位置</a>。
 </iframe>
 
 > [!TIP]

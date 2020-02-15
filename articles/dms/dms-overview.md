@@ -9,13 +9,13 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.topic: article
-ms.date: 05/31/2019
-ms.openlocfilehash: 634f949daa4926f2707c0611b819800441e76610
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 06/01/2019
+ms.openlocfilehash: d573378bc5e729eb75b6c3b51d3671492f7f98f1
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438017"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209370"
 ---
 # <a name="what-is-azure-database-migration-service"></a>何謂 Azure 資料庫移轉服務？
 
@@ -32,7 +32,7 @@ Azure 資料庫移轉服務整合了現有工具和服務的某些功能。 它�
 
 如需有關 Azure 資料庫移轉服務區域可用性的最新資訊，請參閱[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/?products=database-migration)。
 
-## <a name="pricing"></a>定價
+## <a name="pricing"></a>價格
 
 如需關於 Azure 資料庫移轉服務定價的最新資訊，請參閱 [Azure 資料庫移轉服務定價](https://azure.microsoft.com/pricing/details/database-migration/)。
 

@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: d7d3182ad00d0ce151c6d327b29584c7e2ff1323
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 67846293257661a4f7a907d76402d2e98c339225
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457857"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251629"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>適用於 Visual Studio Code 的 Service Fabric
 
@@ -21,7 +21,7 @@ ms.locfileid: "75457857"
 > [!IMPORTANT]
 > Service Fabric Java 應用程式可以在 Windows 機器上開發，但是只能部署到 Azure Linux 叢集上。 不支援在 Windows 上針對 Java 應用程式進行偵錯。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 必須在所有環境上安裝下列必要條件。
 
@@ -56,7 +56,7 @@ ms.locfileid: "75457857"
 2. 按一下 VS Code 左側 [活動列] 上的 [擴充功能] 圖示。 搜尋 "Service Fabric"。 針對 Service Fabric Reliable Services 擴充功能按一下 [安裝]。
 
 ## <a name="commands"></a>命令
-適用於 VS Code 的 Service Fabric Reliable Services 擴充功能提供許多命令，可以協助開發人員建立及部署 Service Fabric 專案。 您可以按下 `(Ctrl + Shift + p)`、將命令名稱鍵入到輸入列中，然後從提示清單選取想要的命令，從 [命令選擇區] 中呼叫命令。 
+適用於 VS Code 的 Service Fabric Reliable Services 擴充功能提供許多命令，可以協助開發人員建立及部署 Service Fabric 專案。 您可以按下 **、將命令名稱鍵入到輸入列中，然後從提示清單選取想要的命令，從 [命令選擇區]** `(Ctrl + Shift + p)` 中呼叫命令。 
 
 * Service Fabric: Create Application 
 * Service Fabric: Publish Application 
@@ -69,7 +69,7 @@ ms.locfileid: "75457857"
 
 **Service Fabric: Create Application** 命令會在您目前的工作區中建立全新 Service Fabric 應用程式。 根據開發機器上安裝的是哪個 Yeoman 產生器，您可以建立數種類型的 Service Fabric 應用程式，包括 Java、C#、容器及客體專案。 
 
-1.  選取 **Service Fabric: Add Service** 命令
+1.  選取 [ **Service Fabric：建立應用程式**] 命令
 2.  選取新 Service Fabric 應用程式的類型。 
 3.  輸入您想要建立的應用程式名稱
 3.  選取您想要新增到 Service Fabric 應用程式中的服務類型。 

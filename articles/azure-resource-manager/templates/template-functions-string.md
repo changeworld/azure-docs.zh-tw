@@ -3,12 +3,12 @@ title: 範本函式-字串
 description: 描述 Azure Resource Manager 範本中用來使用字串的函式。
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: 7a55a6108c9bf1e87dba0b3ccbba5d9b0bd217b8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f8d19179461693331a6091ec7a3562f536b959e4
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483995"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207056"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager 範本的字串函式
 
@@ -56,9 +56,9 @@ ms.locfileid: "75483995"
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
-| inputString |是 |string |要以 base64 表示法傳回的值。 |
+| inputString |是 |字串 |要以 base64 表示法傳回的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -111,7 +111,7 @@ ms.locfileid: "75483995"
 | ---- | ---- | ----- |
 | base64Output | String | b25lLCB0d28sIHRocmVl |
 | toStringOutput | String | one, two, three |
-| toJsonOutput | 物件 | {"one": "a", "two": "b"} |
+| toJsonOutput | Object | {"one": "a", "two": "b"} |
 
 ## <a name="base64tojson"></a>base64ToJson
 
@@ -121,9 +121,9 @@ ms.locfileid: "75483995"
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
-| base64Value |是 |string |要轉換為 JSON 物件的 base64 表示法。 |
+| base64Value |是 |字串 |要轉換為 JSON 物件的 base64 表示法。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -176,7 +176,7 @@ JSON 物件。
 | ---- | ---- | ----- |
 | base64Output | String | b25lLCB0d28sIHRocmVl |
 | toStringOutput | String | one, two, three |
-| toJsonOutput | 物件 | {"one": "a", "two": "b"} |
+| toJsonOutput | Object | {"one": "a", "two": "b"} |
 
 ## <a name="base64tostring"></a>base64ToString
 
@@ -186,9 +186,9 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
-| base64Value |是 |string |要轉換為字串的 base64 表示法。 |
+| base64Value |是 |字串 |要轉換為字串的 base64 表示法。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -241,7 +241,7 @@ JSON 物件。
 | ---- | ---- | ----- |
 | base64Output | String | b25lLCB0d28sIHRocmVl |
 | toStringOutput | String | one, two, three |
-| toJsonOutput | 物件 | {"one": "a", "two": "b"} |
+| toJsonOutput | Object | {"one": "a", "two": "b"} |
 
 ## <a name="concat"></a>concat
 
@@ -251,7 +251,7 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |字串或陣列 |要串連的第一個字串或陣列。 |
 | 其他引數 |否 |字串或陣列 |以串連順序排列的其他字串或陣列。 |
@@ -341,7 +341,7 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | 容器 |是 |陣列、物件或字串 |其中包含要尋找之值的值。 |
 | itemToFind |是 |字串或整數 |要尋找的值。 |
@@ -407,12 +407,12 @@ JSON 物件。
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| stringTrue | Bool | 是 |
-| stringFalse | Bool | 否 |
-| objectTrue | Bool | 是 |
-| objectFalse | Bool | 否 |
-| arrayTrue | Bool | 是 |
-| arrayFalse | Bool | 否 |
+| stringTrue | Bool | True |
+| stringFalse | Bool | False |
+| objectTrue | Bool | True |
+| objectFalse | Bool | False |
+| arrayTrue | Bool | True |
+| arrayFalse | Bool | False |
 
 ## <a name="datauri"></a>dataUri
 
@@ -422,9 +422,9 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
-| stringToConvert |是 |string |要轉換為資料 URI 的值。 |
+| stringToConvert |是 |字串 |要轉換為資料 URI 的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -477,9 +477,9 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
-| dataUriToConvert |是 |string |要轉換的資料 URI 值。 |
+| dataUriToConvert |是 |字串 |要轉換的資料 URI 值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -532,7 +532,7 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | itemToTest |是 |陣列、物件或字串 |要檢查其是否為空白的值。 |
 
@@ -585,9 +585,9 @@ JSON 物件。
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| arrayEmpty | Bool | 是 |
-| objectEmpty | Bool | 是 |
-| stringEmpty | Bool | 是 |
+| arrayEmpty | Bool | True |
+| objectEmpty | Bool | True |
+| stringEmpty | Bool | True |
 
 ## <a name="endswith"></a>endsWith
 
@@ -597,10 +597,10 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |是 |string |其中包含要尋找之項目的值。 |
-| stringToFind |是 |string |要尋找的值。 |
+| stringToSearch |是 |字串 |其中包含要尋找之項目的值。 |
+| stringToFind |是 |字串 |要尋找的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -648,12 +648,12 @@ JSON 物件。
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| startsTrue | Bool | 是 |
-| startsCapTrue | Bool | 是 |
-| startsFalse | Bool | 否 |
-| endsTrue | Bool | 是 |
-| endsCapTrue | Bool | 是 |
-| endsFalse | Bool | 否 |
+| startsTrue | Bool | True |
+| startsCapTrue | Bool | True |
+| startsFalse | Bool | False |
+| endsTrue | Bool | True |
+| endsCapTrue | Bool | True |
+| endsFalse | Bool | False |
 
 ## <a name="first"></a>first
 
@@ -663,7 +663,7 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |陣列或字串 |要擷取其第一個元素或字元的值。 |
 
@@ -704,7 +704,7 @@ JSON 物件。
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| arrayOutput | String | 一 |
+| arrayOutput | String | one |
 | stringOutput | String | O |
 
 ## <a name="format"></a>format
@@ -715,9 +715,9 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
-| formatString | 是 | string | 複合格式字串。 |
+| formatString | 是 | 字串 | 複合格式字串。 |
 | arg1 | 是 | 字串、整數或布林值 | 要包含在格式化字串中的值。 |
 | 其他引數 | 否 | 字串、整數或布林值 | 要包含在格式化字串中的其他值。 |
 
@@ -772,10 +772,10 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
-| baseString |是 |string |雜湊函式中用來建立 GUID 的值。 |
-| 視需要，也會使用其他參數 |否 |string |您可以視需要新增多個字串，來建立指定唯一性層級的值。 |
+| baseString |是 |字串 |雜湊函式中用來建立 GUID 的值。 |
+| 視需要，也會使用其他參數 |否 |字串 |您可以視需要新增多個字串，來建立指定唯一性層級的值。 |
 
 ### <a name="remarks"></a>備註
 
@@ -843,10 +843,10 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |是 |string |其中包含要尋找之項目的值。 |
-| stringToFind |是 |string |要尋找的值。 |
+| stringToSearch |是 |字串 |其中包含要尋找之項目的值。 |
+| stringToFind |是 |字串 |要尋找的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -904,7 +904,7 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |陣列或字串 |要擷取其最後一個元素或字元的值。 |
 
@@ -945,7 +945,7 @@ JSON 物件。
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| arrayOutput | String | 三 |
+| arrayOutput | String | three |
 | stringOutput | String | e |
 
 ## <a name="lastindexof"></a>lastIndexOf
@@ -956,10 +956,10 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |是 |string |其中包含要尋找之項目的值。 |
-| stringToFind |是 |string |要尋找的值。 |
+| stringToSearch |是 |字串 |其中包含要尋找之項目的值。 |
+| stringToFind |是 |字串 |要尋找的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -1017,7 +1017,7 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |陣列、字串或物件 |要用來取得元素數目的陣列、用來取得字元數的字串，或用來取得根層級屬性數目的物件。 |
 
@@ -1136,7 +1136,7 @@ NewGuid 函數與[guid](#guid)函數不同，因為它不接受任何參數。 �
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| guidOutput | string | b76a51fc-bd72-4a77-b9a2-3c29e7d2e551 |
+| guidOutput | 字串 | b76a51fc-bd72-4a77-b9a2-3c29e7d2e551 |
 
 下列範例會使用 newGuid 函數來建立儲存體帳戶的唯一名稱。 此範本可能適用于儲存體帳戶存在短時間且未重新部署的測試環境。
 
@@ -1179,7 +1179,7 @@ NewGuid 函數與[guid](#guid)函數不同，因為它不接受任何參數。 �
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| nameOutput | string | storagenziwvyru7uxie |
+| nameOutput | 字串 | storagenziwvyru7uxie |
 
 
 ## <a name="padleft"></a>padLeft
@@ -1190,7 +1190,7 @@ NewGuid 函數與[guid](#guid)函數不同，因為它不接受任何參數。 �
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | valueToPad |是 |字串或整數 |要靠右對齊的值。 |
 | totalLength |是 |int |傳回字串中的字元總數。 |
@@ -1240,11 +1240,11 @@ NewGuid 函數與[guid](#guid)函數不同，因為它不接受任何參數。 �
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
-| originalString |是 |string |具備由另一個字串取代的一個字串之所有執行個體的值。 |
-| oldString |是 |string |要從原始字串中移除的字串。 |
-| newString |是 |string |要新增來取代移除之字串的字串。 |
+| originalString |是 |字串 |具備由另一個字串取代的一個字串之所有執行個體的值。 |
+| oldString |是 |字串 |要從原始字串中移除的字串。 |
+| newString |是 |字串 |要新增來取代移除之字串的字串。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -1293,7 +1293,7 @@ NewGuid 函數與[guid](#guid)函數不同，因為它不接受任何參數。 �
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | originalValue |是 |陣列或字串 |要用於略過的陣列或字串。 |
 | numberToSkip |是 |int |要略過的元素或字元數。 如果此值為 0 或更小的值，則會傳回值內的所有元素或字元。 如果大於陣列或字串的長度，則會傳回空陣列或字串。 |
@@ -1361,9 +1361,9 @@ NewGuid 函數與[guid](#guid)函數不同，因為它不接受任何參數。 �
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
-| inputString |是 |string |要分割的字串。 |
+| inputString |是 |字串 |要分割的字串。 |
 | 分隔符號 |是 |字串或字串陣列 |用於分割字串的分隔符號。 |
 
 ### <a name="return-value"></a>傳回值
@@ -1420,10 +1420,10 @@ NewGuid 函數與[guid](#guid)函數不同，因為它不接受任何參數。 �
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |是 |string |其中包含要尋找之項目的值。 |
-| stringToFind |是 |string |要尋找的值。 |
+| stringToSearch |是 |字串 |其中包含要尋找之項目的值。 |
+| stringToFind |是 |字串 |要尋找的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -1471,14 +1471,14 @@ NewGuid 函數與[guid](#guid)函數不同，因為它不接受任何參數。 �
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| startsTrue | Bool | 是 |
-| startsCapTrue | Bool | 是 |
-| startsFalse | Bool | 否 |
-| endsTrue | Bool | 是 |
-| endsCapTrue | Bool | 是 |
-| endsFalse | Bool | 否 |
+| startsTrue | Bool | True |
+| startsCapTrue | Bool | True |
+| startsFalse | Bool | False |
+| endsTrue | Bool | True |
+| endsCapTrue | Bool | True |
+| endsFalse | Bool | False |
 
-## <a name="string"></a>string
+## <a name="string"></a>字串
 
 `string(valueToConvert)`
 
@@ -1486,7 +1486,7 @@ NewGuid 函數與[guid](#guid)函數不同，因為它不接受任何參數。 �
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | valueToConvert |是 | 任意 |要轉換成字串的值。 任何類型的值均可轉換，包括物件和陣列。 |
 
@@ -1557,9 +1557,9 @@ NewGuid 函數與[guid](#guid)函數不同，因為它不接受任何參數。 �
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
-| stringToParse |是 |string |要用來擷取子字串的原始字串。 |
+| stringToParse |是 |字串 |要用來擷取子字串的原始字串。 |
 | startIndex |否 |int |起始字元位置為零的子字串。 |
 | 長度 |否 |int |子字串的字元數。 必須參考字串內的位置。 必須是零或更大的值。 |
 
@@ -1608,7 +1608,7 @@ NewGuid 函數與[guid](#guid)函數不同，因為它不接受任何參數。 �
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| substringOutput | String | 二 |
+| substringOutput | String | two |
 
 ## <a name="take"></a>take
 
@@ -1618,7 +1618,7 @@ NewGuid 函數與[guid](#guid)函數不同，因為它不接受任何參數。 �
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | originalValue |是 |陣列或字串 |要從其中擷取元素的陣列或字串。 |
 | numberToTake |是 |int |要擷取的元素或字元數。 如果此值為 0 或更小的值，則會傳回空白陣列或字串。 如果大於給定陣列或字串的長度，則會傳回陣列或字串中的所有元素。 |
@@ -1686,9 +1686,9 @@ NewGuid 函數與[guid](#guid)函數不同，因為它不接受任何參數。 �
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
-| stringToChange |是 |string |要轉換成小寫字母的值。 |
+| stringToChange |是 |字串 |要轉換成小寫字母的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -1737,9 +1737,9 @@ NewGuid 函數與[guid](#guid)函數不同，因為它不接受任何參數。 �
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
-| stringToChange |是 |string |要轉換成大寫字母的值。 |
+| stringToChange |是 |字串 |要轉換成大寫字母的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -1788,9 +1788,9 @@ NewGuid 函數與[guid](#guid)函數不同，因為它不接受任何參數。 �
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
-| stringToTrim |是 |string |要修剪的值。 |
+| stringToTrim |是 |字串 |要修剪的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -1834,10 +1834,10 @@ NewGuid 函數與[guid](#guid)函數不同，因為它不接受任何參數。 �
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
-| baseString |是 |string |雜湊函式中用來建立唯一字串的值。 |
-| 視需要，也會使用其他參數 |否 |string |您可以視需要新增多個字串，來建立指定唯一性層級的值。 |
+| baseString |是 |字串 |雜湊函式中用來建立唯一字串的值。 |
+| 視需要，也會使用其他參數 |否 |字串 |您可以視需要新增多個字串，來建立指定唯一性層級的值。 |
 
 ### <a name="remarks"></a>備註
 
@@ -1912,10 +1912,10 @@ NewGuid 函數與[guid](#guid)函數不同，因為它不接受任何參數。 �
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
-| baseUri |是 |string |基底 uri 的字串。 請小心觀察有關處理尾端斜線（'/'）的行為，如下表所述。  |
-| relativeUri |是 |string |要加入至基底 uri 字串的相對 uri 字串。 |
+| baseUri |是 |字串 |基底 uri 的字串。 請小心觀察有關處理尾端斜線（'/'）的行為，如下表所述。  |
+| relativeUri |是 |字串 |要加入至基底 uri 字串的相對 uri 字串。 |
 
 * 如果**baseuri**以尾端斜線結束，則結果只是**baseUri** ，後面接著**relativeUri**。
 
@@ -1992,9 +1992,9 @@ uri('http://contoso.org/firstpath/azuredeploy.json/', 'myscript.sh') -> http://c
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
-| stringToEncode |是 |string |要編碼的值。 |
+| stringToEncode |是 |字串 |要編碼的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -2047,9 +2047,9 @@ URI 編碼值的字串。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
-| uriEncodedString |是 |string |要轉換為字串的 URI 編碼值。 |
+| uriEncodedString |是 |字串 |要轉換為字串的 URI 編碼值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -2102,9 +2102,9 @@ URI 編碼值的解碼字串。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
-| format |否 |string |要轉換為字串的 URI 編碼值。 請使用[標準格式字串](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式字串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 |
+| format |否 |字串 |要轉換為字串的 URI 編碼值。 請使用[標準格式字串](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式字串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 |
 
 ### <a name="remarks"></a>備註
 
@@ -2163,9 +2163,9 @@ URI 編碼值的解碼字串。
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| utcOutput | string | 20190305T175318Z |
-| utcShortOutput | string | 2019 年 3 月 5 日 |
-| utcCustomOutput | string | 3 5 |
+| utcOutput | 字串 | 20190305T175318Z |
+| utcShortOutput | 字串 | 03/05/2019 |
+| utcCustomOutput | 字串 | 3 5 |
 
 下一個範例顯示如何在設定標記值時，使用函式中的值。
 
@@ -2206,6 +2206,6 @@ URI 編碼值的解碼字串。
 ## <a name="next-steps"></a>後續步驟
 * 如需有關 Azure Resource Manager 範本中各區段的說明，請參閱[編寫 Azure Resource Manager 範本](template-syntax.md)。
 * 若要合併多個範本，請參閱[透過 Azure Resource Manager 使用連結的範本](linked-templates.md)。
-* 若要依指定的次數重複建立資源類型，請參閱 [在 Azure 資源管理員中建立資源的多個執行個體](create-multiple-instances.md)。
+* 若要依指定的次數重複建立資源類型，請參閱 [在 Azure 資源管理員中建立資源的多個執行個體](copy-resources.md)。
 * 若要了解如何部署已建立的範本，請參閱[使用 Azure Resource Manager 範本部署應用程式](deploy-powershell.md)。
 

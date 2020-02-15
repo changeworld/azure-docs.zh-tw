@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 09/10/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 2234ae4ce8257559f78d6aa50ecae59ae742ba33
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: e20acb131b1a091fef858dab34705f4a8d3b4c4a
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910015"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251833"
 ---
 # <a name="url-path-based-routing-overview"></a>URL 路徑型路由概觀
 
@@ -27,7 +27,7 @@ URL 路徑型路由可讓您根據要求的 URL 路徑，將流量路由傳送�
 對 http\://contoso.com/video/* 的要求會路由傳送至 VideoServerPool，而 http\://contoso.com/images/* 則會路由傳送至 ImageServerPool。 如果沒有任何路徑模式相符，則會選取 DefaultServerPool。
 
 > [!IMPORTANT]
-> 規則會依照其列在入口網站中的順序進行處理。 強烈建議纖設定多站台接聽程式，再設定基本接聽程式。  這可確保流量路由傳送到右邊後端。 如果先列出了基本接聽程式，且該接聽程式符合傳入的要求，就會由該接聽程式處理。
+> 針對 v1 SKU，規則會依照其在入口網站中列出的順序進行處理。 如果先列出了基本接聽程式，且該接聽程式符合傳入的要求，就會由該接聽程式處理。 針對 v2 SKU，完全相符的優先順序較高。 不過，強烈建議您先設定多網站接聽程式，再設定基本接聽程式。 這可確保流量路由傳送到右邊後端。
 
 ## <a name="urlpathmap-configuration-element"></a>UrlPathMap 組態元素
 

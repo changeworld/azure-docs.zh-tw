@@ -1,19 +1,19 @@
 ---
 title: 當地語系化支援 |Microsoft Azure 對應
 description: 在本文中，您將瞭解 Microsoft Azure 對應中的服務所支援的語言。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: eec8e47e75a6c92be8f893af893761a9ccddc650
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 5de04b4e37e79a47f89bb235aad2b0f9cab69e6a
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025430"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208143"
 ---
 # <a name="localization-support-in-azure-maps"></a>Azure 地圖服務中的當地語系化支援
 
@@ -22,10 +22,10 @@ Azure 地圖服務支援根據國家/地區的各種語言和觀點。 本文提
 
 ## <a name="azure-maps-supported-languages"></a>Azure 地圖服務支援的語言
 
-Azure 地圖服務已經跨服務當地語系化為各種語言。 下表提供每個服務的支援語言代碼。  
+Azure 地圖服務在其服務中已當地語系化成各種語言。 下表提供每個服務的支援語言代碼。  
   
 
-| ID         | 名稱                   |  地圖 | 搜尋 | 路線規劃 | 天氣 | 流量事件 | JS 地圖控制項 |
+| ID         | 名稱                   |  地圖 | 搜尋 | 路由 | Weather | 流量事件 | JS 地圖控制項 |
 |------------|------------------------|:-----:|:------:|:-------:|:--------:|:-----------------:|:--------------:|
 | af-ZA      | 南非荷蘭文              |       |    ✓   |    ✓    |         |                   |                |
 | ar-SA      | 阿拉伯文                 |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
@@ -59,7 +59,7 @@ Azure 地圖服務已經跨服務當地語系化為各種語言。 下表提供�
 | he-IL      | Hebrew                 |       |    ✓   |         |     ✓    |         ✓         |                |
 | hi-IN      | Hindi                  |       |        |         |     ✓    |                   |                |
 | hu-HU      | 匈牙利文              |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
-| 為-是      | 冰島文              |       |       |         |     ✓    |                   |                |
+| is-IS      | 冰島文              |       |       |         |     ✓    |                   |                |
 | id-ID      | 印尼文             |   ✓   |    ✓    |    ✓    |     ✓    |         ✓         |        ✓       |
 | it-IT      | 義大利文                |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
 | ja-JP      | 日文               |       |        |         |     ✓    |                   |                |
@@ -93,7 +93,7 @@ Azure 地圖服務已經跨服務當地語系化為各種語言。 下表提供�
 | th-TH      | 泰文                   |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | tr-TR      | 土耳其文                |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | uk-UA      | 烏克蘭文               |       |    ✓   |         |     ✓    |                   |                |
-| 您的-PK      | 烏都文                 |       |       |         |     ✓    |                   |                |
+| ur-PK      | 烏都文                 |       |       |         |     ✓    |                   |                |
 | uz-Latn-UZ | 烏玆別克文                 |       |       |         |     ✓    |                   |                |
 | vi-VN      | 越南文             |       |    ✓   |         |      ✓    |                  |                |
 
@@ -109,7 +109,7 @@ Azure 地圖服務已經跨服務當地語系化為各種語言。 下表提供�
 >
 > 2019年8月1日之後， **View**參數將會針對上列新區域/國家/地區定義傳回的地圖內容。 Azure 地圖服務**View**參數（也稱為「使用者區域參數」）是兩個字母的 ISO-3166 國家/地區代碼，它會指定要透過 Azure 地圖服務服務傳回哪一組地緣政治性的爭議內容，包括地圖上顯示的框線和標籤。 
 
-請確定您已依照服務所使用的 REST Api 和 Sdk 的需求，設定**View**參數。
+請確定您已針對您的服務所使用的 REST Api 和 Sdk，設定**View**參數。
 >  
 >
 >  **Rest Api：**
@@ -142,12 +142,12 @@ Azure 地圖服務已經跨服務當地語系化為各種語言。 下表提供�
 >    * Azure 地圖服務 Web SDK
 >    * Azure 地圖服務 Android SDK
 
-根據預設，View 參數會設定為 [**統一**]，即使您未在要求中定義它也一樣。 判斷使用者的位置，然後正確地為該位置設定**View**參數。 或者，您可以設定「View = Auto」，這將會根據要求的 IP 位址傳回地圖資料。  Azure 地圖服務中的**View**參數必須與適用的法律相容，包括關於對應的國家/地區，其中對應、影像和其他資料，以及您透過 Azure 地圖服務授權存取的協力廠商內容，皆可供使用。
+根據預設，View 參數會設定為 [**統一**]，即使您未在要求中定義它也一樣。 判斷使用者的位置。 然後，為該位置正確設定**View**參數。 或者，您可以設定「View = Auto」，這將會根據要求的 IP 位址傳回地圖資料。  Azure 地圖服務中的**View**參數必須與適用的法律相容，包括關於對應的國家/地區，其中對應、影像和其他資料，以及您透過 Azure 地圖服務授權存取的協力廠商內容，皆可供使用。
 
 
 下表提供支援的視圖。
 
-| 檢視         | 說明                            |  地圖 | 搜尋 | JS 地圖控制項 |
+| 檢視         | 描述                            |  地圖 | 搜尋 | JS 地圖控制項 |
 |--------------|----------------------------------------|:-----:|:------:|:--------------:|
 | AE           | 阿拉伯酋長國（阿拉伯文 View）    |   ✓   |        |     ✓          |
 | AR           | 阿根廷（Argentinian 視圖）           |   ✓   |    ✓   |     ✓          |

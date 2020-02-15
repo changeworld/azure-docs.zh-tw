@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 7003e5b8574d2caa05bfe66e500b93db0c1cdcfa
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: d45fa08383d9f61776a739093d78fc033ad54a6b
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891628"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212404"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix 設定檔容器和 Azure 檔案
 
@@ -46,17 +46,17 @@ UPD 和 RUP 是遠端桌面工作階段主機（RDSH）和虛擬硬碟（VHD）�
 
 下表顯示先前的使用者設定檔技術的優點與限制。
 
-| Technology | 新式設定 | Win32 設定 | OS 設定 | 使用者資料 | 伺服器 SKU 上支援 | Azure 上的後端儲存體 | 內部部署的後端儲存體 | 版本支援 | 後續登入時間 |注意事項|
+| 技術 | 新式設定 | Win32 設定 | OS 設定 | 使用者資料 | 伺服器 SKU 上支援 | Azure 上的後端儲存體 | 內部部署的後端儲存體 | 版本支援 | 後續登入時間 |注意|
 | ---------- | :-------------: | :------------: | :---------: | --------: | :---------------------: | :-----------------------: | :--------------------------: | :-------------: | :---------------------: |-----|
-| **使用者設定檔磁片（UPD）** | yes | yes | yes | yes | yes | 否 | yes | Win 7 + | yes | |
-| **漫遊使用者設定檔（RUP），維護模式** | 否 | yes | yes | yes | yes| 否 | yes | Win 7 + | 否 | |
-| **企業狀態漫遊（ESR）** | yes | 否 | yes | 否 | 請參閱附註 | yes | 否 | Win 10 | 否 | 伺服器 SKU 上的功能，但不支援使用者介面 |
-| **使用者體驗虛擬化（UE-V）** | yes | yes | yes | 否 | yes | 否 | yes | Win 7 + | 否 |  |
-| **OneDrive 雲端檔案** | 否 | 否 | 否 | yes | 請參閱附註 | 請參閱附註  | 請參閱附注 | Win 10 RS3 | 否 | 未在伺服器 SKU 上測試。 Azure 上的後端儲存體取決於同步處理用戶端。 內部部署上的後端儲存體需要同步用戶端。 |
+| **使用者設定檔磁片（UPD）** | 是 | 是 | 是 | 是 | 是 | 否 | 是 | Win 7 + | 是 | |
+| **漫遊使用者設定檔（RUP），維護模式** | 否 | 是 | 是 | 是 | 是| 否 | 是 | Win 7 + | 否 | |
+| **企業狀態漫遊（ESR）** | 是 | 否 | 是 | 否 | 請參閱附註 | 是 | 否 | Win 10 | 否 | 伺服器 SKU 上的功能，但不支援使用者介面 |
+| **使用者體驗虛擬化（UE-V）** | 是 | 是 | 是 | 否 | 是 | 否 | 是 | Win 7 + | 否 |  |
+| **OneDrive 雲端檔案** | 否 | 否 | 否 | 是 | 請參閱附註 | 請參閱附註  | 請參閱附注 | Win 10 RS3 | 否 | 未在伺服器 SKU 上測試。 Azure 上的後端儲存體取決於同步處理用戶端。 內部部署上的後端儲存體需要同步用戶端。 |
 
 #### <a name="performance"></a>效能
 
-UPD 需要[儲存空間直接存取（S2D）](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment)來處理效能需求。 UPD 會使用伺服器訊息區（SMB）通訊協定。 它會將配置檔案複製到要在其中記錄使用者的 VM。 UPD with S2D 是我們建議 Windows 虛擬桌面的解決方案。  
+UPD 需要[儲存空間直接存取（S2D）](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/)來處理效能需求。 UPD 會使用伺服器訊息區（SMB）通訊協定。 它會將配置檔案複製到要在其中記錄使用者的 VM。 UPD with S2D 是我們建議 Windows 虛擬桌面的解決方案。  
 
 #### <a name="cost"></a>成本
 
@@ -70,15 +70,15 @@ S2D 叢集需要以安全狀態修補、更新及維護的作業系統。 這些
 
 Microsoft 已于2018年11月19日[取得 FSLogix](https://blogs.microsoft.com/blog/2018/11/19/microsoft-acquires-fslogix-to-enhance-the-office-365-virtualization-experience/)。 FSLogix 解決了許多設定檔容器的挑戰。 其中的索引鍵為：
 
-- **效能：** [FSLogix 設定檔容器](https://fslogix.com/products/profile-containers)是高效能，可解決過去已封鎖快取 exchange 模式的效能問題。
-- **OneDrive：** 若沒有 FSLogix 設定檔容器，非持續性 RDSH 或 VDI 環境中不支援商務用 OneDrive。 [商務用 OneDrive 和 FSLogix 的最佳作法](https://fslogix.com/products/technical-faqs/284-onedrive-for-business-and-fslogix-best-practices)說明它們的互動方式。 如需詳細資訊，請參閱在[虛擬桌面電腦上使用同步用戶端](https://docs.microsoft.com/deployoffice/rds-onedrive-business-vdi)。
+- **效能：** [FSLogix 設定檔容器](/fslogix/configure-profile-container-tutorial/)是高效能，可解決過去已封鎖快取 exchange 模式的效能問題。
+- **OneDrive：** 若沒有 FSLogix 設定檔容器，非持續性 RDSH 或 VDI 環境中不支援商務用 OneDrive。 [商務用 OneDrive 和 FSLogix 的最佳作法](/fslogix/overview/)說明它們的互動方式。 如需詳細資訊，請參閱在[虛擬桌面電腦上使用同步用戶端](/deployoffice/rds-onedrive-business-vdi/)。
 - **其他資料夾：** FSLogix 提供擴充使用者設定檔以包含其他資料夾的功能。
 
 自收購以來，Microsoft 已開始使用 FSLogix 設定檔容器取代現有的使用者設定檔解決方案，例如 UPD。
 
 ## <a name="azure-files-integration-with-azure-active-directory-domain-service"></a>Azure 檔案儲存體與 Azure Active Directory 網域服務整合
 
-FSLogix 設定檔容器的效能和功能會利用雲端。 2019年8月7日，Microsoft Azure 檔案已宣佈[使用 Azure Active Directory 網域服務（AD DS） Azure 檔案儲存體驗證](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview)的正式運作。 藉由解決成本和系統管理負擔，Azure AD DS 驗證的 Azure 檔案儲存體是 Windows 虛擬桌面服務中使用者設定檔的 premium 解決方案。
+FSLogix 設定檔容器的效能和功能會利用雲端。 2019年8月7日，Microsoft Azure 檔案已宣佈[使用 Azure Active Directory 網域服務（AD DS） Azure 檔案儲存體驗證](../storage/files/storage-files-active-directory-overview.md)的正式運作。 藉由解決成本和系統管理負擔，Azure AD DS 驗證的 Azure 檔案儲存體是 Windows 虛擬桌面服務中使用者設定檔的 premium 解決方案。
 
 ## <a name="best-practices-for-windows-virtual-desktop"></a>Windows 虛擬桌面的最佳做法
 
@@ -87,7 +87,7 @@ Windows 虛擬桌面提供客戶所使用 Vm 的大小、類型和計數的完�
 若要確保您的 Windows 虛擬桌面環境遵循最佳做法：
 
 - Azure 檔案儲存體儲存體帳戶必須位於與會話主機 Vm 相同的區域中。
-- Azure 檔案儲存體許可權應符合[需求-設定檔容器](https://docs.microsoft.com/fslogix/overview#requirements)中所述的許可權。
+- Azure 檔案儲存體許可權應符合[需求-設定檔容器](/fslogix/overview#requirements/)中所述的許可權。
 - 每個主機集區都必須根據相同的主要映射，建立相同類型和大小的 VM。
 - 每部主機集區 VM 都必須位於相同的資源群組中，以協助管理、調整和更新。
 - 為了達到最佳效能，儲存體解決方案和 FSLogix 設定檔容器應該位於相同的資料中心位置。
@@ -99,7 +99,7 @@ Windows 虛擬桌面提供客戶所使用 Vm 的大小、類型和計數的完�
 
 - 若要開始建立您的桌面虛擬化解決方案，請參閱[在 Windows 虛擬桌面中建立租](tenant-setup-azure-active-directory.md)使用者。
 - 若要在 Windows 虛擬桌面租使用者內建立主機集區，請參閱[使用 Azure Marketplace 建立主機集](create-host-pools-azure-marketplace.md)區。
-- 若要在雲端中設定完全受控的檔案共用，請參閱[設定 Azure 檔案儲存體共用](/azure/storage/files/storage-files-active-directory-enable)。
+- 若要在雲端中設定完全受控的檔案共用，請參閱[設定 Azure 檔案儲存體共用](/azure/storage/files/storage-files-active-directory-enable/)。
 - 若要設定 FSLogix 設定檔容器，請參閱[使用檔案共用建立主機集區的設定檔容器](create-host-pools-user-profile.md)。
 - 若要將使用者指派給主機集區，請參閱[管理 Windows 虛擬桌面的應用程式群組](manage-app-groups.md)。
 - 若要從網頁瀏覽器存取您的 Windows 虛擬桌面資源，請參閱[連接到 Windows 虛擬桌面](connect-web.md)。

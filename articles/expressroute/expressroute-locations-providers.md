@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1f042e12c0069e68d9008c3e520331766a92e7dd
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 6eaa2c038c75243c2b2ad4361c173fe527ebf3b4
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186974"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212320"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作夥伴和對等互連位置
 
@@ -47,7 +47,7 @@ ExpressRoute 位置（有時稱為「對等位置」或「符合我的位置」�
 | **亞洲** | 東亞、東南亞 | 曼谷，香港特別行政區，香港 Kong2，雅加達，吉隆坡，新加坡，新加坡2，臺北 |
 | **印度** | 印度西部、印度中部、印度南部 |辰內、辰內 2、孟買、孟買 2 |
 | **日本** | 日本西部、日本東部 |大阪、東京 |
-| **大洋洲** | 澳大利亞東南部、澳大利亞東部 |奧克蘭、墨爾本、Sydney2、雪梨、 | 
+| **大洋洲** | 澳大利亞東南部、澳大利亞東部 |奧克蘭，墨爾本，Sydney2，悉尼， | 
 | **南韓** | 南韓中部、南韓南部 |釜山、首爾|
 | **阿拉伯聯合大公國** | 阿拉伯聯合大公國中部，阿拉伯聯合大公國北部 | 杜拜、Dubai2 |
 | **南非** | 南非西部，南非北部 |開普敦、約翰尼斯堡 |
@@ -94,7 +94,7 @@ ExpressRoute 位置（有時稱為「對等位置」或「符合我的位置」�
 | **丹佛** | [CoreSite DE1](https://www.coresite.com/data-centers/locations/denver/de1) | 1 | 美國中西部 | n/a | CoreSite、Megaport、Zayo |
 | **杜拜** | [PCCS](https://www.pacificcontrols.net/cloudservices/index.html) | 3 | 阿拉伯聯合大公國北部 | n/a | Etisalat 阿拉伯聯合大公國 |
 | **Dubai2** | [du datamena](http://datamena.com/solutions/data-centre) | 3 | 阿拉伯聯合大公國北部 | n/a | du datamena、Megaport、橙色、Orixcom |
-| **都柏林** | [Equinix DB3](https://www.equinix.com/locations/europe-colocation/ireland-colocation/dublin-data-centers/db3/) | 1 | 歐洲北部 | 10G、100G | Colt、eir、Equinix、Interxion、Megaport |
+| **都柏林** | [Equinix DB3](https://www.equinix.com/locations/europe-colocation/ireland-colocation/dublin-data-centers/db3/) | 1 | 歐洲北部 | 10G、100G | Colt、eir、Equinix、euNetworks、Interxion、Megaport |
 | **法蘭克福** | [Interxion FRA11](https://www.interxion.com/Locations/frankfurt/) | 1 | 德國中西部 | 10G、100G | Colt、CIX、GEANT、Interxion、Megaport、橙色、Telia 電訊廠商 |
 | **Geneva** | [Equinix GV2](https://www.equinix.com/locations/europe-colocation/switzerland-colocation/geneva-data-centers/gv2/) | 1 | 瑞士西部 | 10G、100G | Equinix、Megaport |
 | **香港** | [Equinix HK1](https://www.equinix.com/locations/asia-colocation/hong-kong-colocation/hong-kong-data-center/hk1/) | 2 | 東亞 | n/a | Aryaka networks Networks，英屬電信，CenturyLink Cloud Connect，首席電信，中國電信全球，Equinix，InterCloud，Megaport，NTT 通訊，橙色，PCCW GLOBAL LIMITED 全球有限，Tata 通訊，Telia 電訊，Verizon |
@@ -103,7 +103,7 @@ ExpressRoute 位置（有時稱為「對等位置」或「符合我的位置」�
 | **約翰尼斯堡** | [Teraco JB1](https://www.teraco.co.za/data-centre-locations/johannesburg/#jb1) | 3 | 南非北部 | 10G | 英屬電信，網際網路解決方案-雲端連線，液體電信，橙色，Teraco |
 | **吉隆坡** | [TIME dotCom Menara 的目標](https://www.aims.com.my/co-location/points-of-presence.html) | 2 | n/a | n/a | TIME dotCom |
 | **拉斯維加斯** | [交換器 LV](https://www.switch.com/las-vegas) | 1 | n/a | n/a | CenturyLink Cloud Connect、Megaport |
-| **倫敦** | [Equinix LD5](https://www.equinix.com/locations/europe-colocation/united-kingdom-colocation/london-data-centers/ld5/) | 1 | 英國南部 | 10G、100G | AT&T NetBond、British Telecom、Colt、Equinix、InterCloud、Internet Solutions - Cloud Connect、Interxion、Jisc、Level 3 Communications、Megaport、MTN、NTT Communications、Orange、PCCW Global Limited、Tata Communications、Telehouse - KDDI、Telenor、Telia Carrier、Verizon、Vodafone、Zayo |
+| **倫敦** | [Equinix LD5](https://www.equinix.com/locations/europe-colocation/united-kingdom-colocation/london-data-centers/ld5/) | 1 | 英國南部 | 10G、100G | 在 & T NetBond，英屬電信，Colt，Equinix，euNetworks，InterCloud，網際網路解決方案-雲端連線，Interxion，Jisc，層級3通訊，Megaport，MTN，NTT 通訊，橙色，PCCW GLOBAL LIMITED 全球有限，Tata 通訊，Telehouse-KDDI，Telenor、Telia 承運商、Verizon、Vodafone、Zayo |
 | **London2** | [Telehouse 北部2](https://www.telehouse.net/data-centres/emea/uk-data-centres/london-data-centres/north-two) | 1 | 英國南部 | 10G、100G | CenturyLink Cloud Connect、Colt、IX 觸及、Equinix、Megaport、Telehouse-KDDI |
 | **洛杉磯** | [CoreSite LA1](https://www.coresite.com/data-centers/locations/los-angeles/one-wilshire) | 1 | n/a | n/a | CoreSite、Equinix、Megaport、Neutrona Networks、NTT、Transtelco、Zayo |
 | **馬賽** |[Interxion MRS1](https://www.interxion.com/Locations/marseille/) | 1 | 法國南部 | n/a | CIX、GEANT、Interxion、Jaguar Network |
@@ -168,7 +168,7 @@ Azure 國家/地區雲端彼此隔離，而不是全球商業 Azure。 一個 Az
 
 若要深入了解，請參閱 [ExpressRoute (中國)](http://www.windowsazure.cn/home/features/expressroute/)
 
-### <a name="germany"></a>Germany
+### <a name="germany"></a>德國
 | **位置** | **服務提供者** |
 | --- | --- |
 | **柏林** |e-shelter、Megaport+、T-Systems |

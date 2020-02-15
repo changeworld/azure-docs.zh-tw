@@ -1,19 +1,19 @@
 ---
 title: 支援的地圖樣式 |Microsoft Azure 對應
 description: 在本文中，您將瞭解 Microsoft Azure 對應所支援的不同地圖轉譯樣式。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 05/06/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 92e48486777d82589a56074790dd709c5d525859
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 9cdfd0d029057e36e010203b7c35a5aafee4b574
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910633"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208279"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure 地圖服務支援的地圖樣式
 「Azure 地圖服務」支援數個不同的內建地圖樣式，如下所述。
@@ -31,7 +31,7 @@ ms.locfileid: "75910633"
 
 ## <a name="blank-and-blank_accessible"></a>空白和 blank_accessible
 
-[**空白**] 和 [ **blank_accessible**地圖樣式] 提供了空白畫布，可在其上將資料視覺化。 即使未顯示基底地圖， **blank_accessible**樣式仍會繼續提供具有地圖所在位置詳細資料的螢幕閱讀程式更新。
+[**空白**] 和 [ **blank_accessible**地圖樣式] 提供了空白畫布，可在其上將資料視覺化。 即使未顯示基底地圖， **blank_accessible**樣式仍會繼續提供具有地圖位置詳細資料的螢幕閱讀程式更新。
 
 > [!Note]
 > 在 web SDK 中，您可以藉由設定地圖 DIV 元素的 CSS `background-color` 樣式，來變更地圖的背景色彩。

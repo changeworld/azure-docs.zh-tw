@@ -12,12 +12,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 3c2cc3c280ba0da474898bed93bb8533a42ab07f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 72075d4eff336af625bbf6d62f1276d2997bfed4
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967354"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251188"
 ---
 # <a name="configure-a-custom-domain-name"></a>設定自訂網域名稱
 
@@ -27,9 +27,9 @@ ms.locfileid: "75967354"
 > API 管理只會接受[主機標頭](https://tools.ietf.org/html/rfc2616#section-14.23)值符合預設功能變數名稱或任何已設定自訂功能變數名稱的要求。
 
 > [!WARNING]
-> 想要使用憑證釘選以改善應用程式安全性的客戶，必須使用自訂網域名稱 > 與其所管理的憑證，而非預設憑證。 改為釘選預設憑證的客戶會對其無法控制的憑證屬性進行硬相關性，這不是建議的作法。
+> 若客戶想要使用憑證釘選來改善其應用程式的安全性，則必須使用其所管理的自訂功能變數名稱和憑證，而不是預設憑證。 改為釘選預設憑證的客戶會對其無法控制的憑證屬性進行硬相關性，這不是建議的作法。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要執行本文所述的步驟，您必須具有：
 
@@ -55,7 +55,7 @@ ms.locfileid: "75967354"
     - **SCM** (預設值為：`<apim-service-name>.scm.azure-api.net`)。
 
     > [!NOTE]
-    > 在取用層中，只有中的**閘道**端點可供設定。
+    > 只有**閘道**端點可用於取用層中的設定。
     > 您可以更新所有端點或一部分端點。 客戶通常會更新**閘道**（此 URL 是用來呼叫透過 api 管理公開的 api）和**入口網站**（開發人員入口網站 URL）。
     > **管理**和**SCM**端點僅供「API 管理」實例擁有者在內部使用，因此較不常指派自訂功能變數名稱。
     > 進階層**支援為** **閘道**端點設定多個主機名稱。
@@ -73,7 +73,7 @@ ms.locfileid: "75967354"
     > 我們建議使用 Azure Key Vault 來管理憑證，並將其設定為 autorotate。
     > 如果您使用 Azure Key Vault 來管理自訂網域 SSL 憑證，請確定憑證是以[_憑證_的形式](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate)插入 Key Vault，而不是_秘密_。
     >
-    > 若要提取 SSL 憑證，API 管理必須在包含憑證的 Azure Key Vault 上具有 [取得秘密] 許可權的清單。 使用 Azure 入口網站時，所有必要的設定步驟都會自動完成。 使用命令列工具或管理 API 時，必須以手動方式授與這些許可權。 此作業有兩個階段。 首先，使用 API 管理實例上的 [受控識別] 頁面，以確定受控識別已啟用，並記下該頁面上顯示的主體識別碼。 第二，在包含憑證的 Azure Key Vault 上，授與許可權清單並取得此主體識別碼的秘密許可權。
+    > 若要提取 SSL 憑證，API 管理必須具有包含憑證之 Azure Key Vault 的 [清單] 和 [取得秘密] 許可權。 使用 Azure 入口網站時，所有必要的設定步驟都會自動完成。 使用命令列工具或管理 API 時，必須以手動方式授與這些許可權。 此作業有兩個階段。 首先，使用 API 管理實例上的 [受控識別] 頁面，以確定受控識別已啟用，並記下該頁面上顯示的主體識別碼。 第二，在包含憑證的 Azure Key Vault 上，授與許可權清單並取得此主體識別碼的秘密許可權。
     >
     > 如果憑證設定為 autorotate，則 API 管理會自動取得最新版本，而不會對服務造成任何停機（如果您的 API 管理層有 SLA-----在所有層級中，而開發人員層除外）。
 

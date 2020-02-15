@@ -1,10 +1,10 @@
 ---
-title: SAP NetWeaver on Red Hat Enterprise Linux 的 Azure 虛擬機器高可用性 | Microsoft Docs
+title: RHEL 上 SAP NW 的 Azure Vm 高可用性 |Microsoft Docs
 description: SAP NetWeaver on Red Hat Enterprise Linux 的 Azure 虛擬機器高可用性
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: mssedusch
-manager: timlt
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/07/2019
-ms.author: sedusch
-ms.openlocfilehash: a618a2cb976c90174125e54af645123c6b0a9dcd
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.date: 02/13/2020
+ms.author: radeltch
+ms.openlocfilehash: f3b540fb9122655d0b2c12c90995daa181dd227f
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905023"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212786"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>SAP NetWeaver on Red Hat Enterprise Linux 的 Azure 虛擬機器高可用性
 
@@ -78,7 +78,7 @@ ms.locfileid: "73905023"
   * [RHEL 高可用性叢集的支援原則：以 Microsoft Azure 虛擬機器作為叢集成員](https://access.redhat.com/articles/3131341)
   * [在 Microsoft Azure 上安裝和設定 Red Hat Enterprise Linux 7.4 (和更新版本) 高可用性叢集](https://access.redhat.com/articles/3252491)
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概觀
 
 為了實現高可用性，SAP NetWeaver 需要使用共用儲存體。 GlusterFS 會於獨立的叢集中設定，且可供多個 SAP 系統使用。
 
@@ -154,7 +154,7 @@ Azure Marketplace 包含 Red Hat Enterprise Linux 的映像，您可用來部署
    1. 管理員使用者名稱、管理員密碼或 SSH 金鑰  
       隨即會建立新的使用者，以用來登入電腦。
    1. 子網路識別碼  
-   如果您想要將 VM 部署至現有 VNet，而 VNet 中已定義應指派 VM 的子網路，請提供該特定子網路的識別碼。 識別碼通常如下所示：/subscriptions/ **&lt;訂用帳戶識別碼&gt;** /resourceGroups/ **&lt;資源群組名稱&gt;** /providers/Microsoft.Network/virtualNetworks/ **&lt;虛擬網路名稱&gt;** /subnets/ **&lt;子網路名稱&gt;**
+   如果您想將 VM 部署至現有的 VNet (其中具有定義 VM 應指派的目的子網路)，請說明該特定子網路的 ID。 識別碼通常如下所示：/subscriptions/ **&lt;訂用帳戶識別碼&gt;** /resourceGroups/ **&lt;資源群組名稱&gt;** /providers/Microsoft.Network/virtualNetworks/ **&lt;虛擬網路名稱&gt;** /subnets/ **&lt;子網路名稱&gt;**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>透過 Azure 入口網站手動部署 Linux
 
@@ -166,10 +166,10 @@ Azure Marketplace 包含 Red Hat Enterprise Linux 的映像，您可用來部署
    設定更新網域上限
 1. 建立虛擬機器 1  
    至少使用 RHEL 7，本範例中使用 Red Hat Enterprise Linux 7.4 映像 <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
-   選取稍早建立的可用性設定組  
+   選取稍早建立的「可用性設定組」  
 1. 建立虛擬機器 2  
    至少使用 RHEL 7，本範例中使用 Red Hat Enterprise Linux 7.4 映像 <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
-   選取稍早建立的可用性設定組  
+   選取稍早建立的「可用性設定組」  
 1. 將至少一個資料磁碟新增至兩部虛擬機器  
    資料磁碟用於 /usr/sap/`<SAPSID`> 目錄
 1. 建立負載平衡器（內部、標準）：  
@@ -535,12 +535,15 @@ Azure Marketplace 包含 Red Hat Enterprise Linux 的映像，您可用來部署
    sudo pcs resource create rsc_sap_<b>NW1</b>_ASCS00 SAPInstance \
     InstanceName=<b>NW1</b>_ASCS00_<b>nw1-ascs</b> START_PROFILE="/sapmnt/<b>NW1</b>/profile/<b>NW1</b>_ASCS00_<b>nw1-ascs</b>" \
     AUTOMATIC_RECOVER=false \
-    meta resource-stickiness=5000 migration-threshold=1 \
+    meta resource-stickiness=5000 migration-threshold=1 failure-timeout=60 \
+    op monitor interval=20 on-fail=restart timeout=60 \
+    op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-<b>NW1</b>_ASCS
    
    sudo pcs resource create rsc_sap_<b>NW1</b>_ERS<b>02</b> SAPInstance \
     InstanceName=<b>NW1</b>_ERS02_<b>nw1-aers</b> START_PROFILE="/sapmnt/<b>NW1</b>/profile/<b>NW1</b>_ERS02_<b>nw1-aers</b>" \
     AUTOMATIC_RECOVER=false IS_ERS=true \
+    op monitor interval=20 on-fail=restart timeout=60 op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-<b>NW1</b>_AERS
       
    sudo pcs constraint colocation add g-<b>NW1</b>_AERS with g-<b>NW1</b>_ASCS -5000
@@ -559,12 +562,15 @@ Azure Marketplace 包含 Red Hat Enterprise Linux 的映像，您可用來部署
    sudo pcs resource create rsc_sap_<b>NW1</b>_ASCS00 SAPInstance \
     InstanceName=<b>NW1</b>_ASCS00_<b>nw1-ascs</b> START_PROFILE="/sapmnt/<b>NW1</b>/profile/<b>NW1</b>_ASCS00_<b>nw1-ascs</b>" \
     AUTOMATIC_RECOVER=false \
-    meta resource-stickiness=5000 \
+    meta resource-stickiness=5000 migration-threshold=1 failure-timeout=60 \
+    op monitor interval=20 on-fail=restart timeout=60 \
+    op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-<b>NW1</b>_ASCS
    
    sudo pcs resource create rsc_sap_<b>NW1</b>_ERS<b>02</b> SAPInstance \
     InstanceName=<b>NW1</b>_ERS02_<b>nw1-aers</b> START_PROFILE="/sapmnt/<b>NW1</b>/profile/<b>NW1</b>_ERS02_<b>nw1-aers</b>" \
     AUTOMATIC_RECOVER=false IS_ERS=true \
+    op monitor interval=20 on-fail=restart timeout=60 op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-<b>NW1</b>_AERS
       
    sudo pcs constraint colocation add g-<b>NW1</b>_AERS with g-<b>NW1</b>_ASCS -5000
@@ -575,6 +581,9 @@ Azure Marketplace 包含 Red Hat Enterprise Linux 的映像，您可用來部署
    </code></pre>
 
    如果您要從舊版升級並切換至排入佇列伺服器2，請參閱 SAP 附注[2641322](https://launchpad.support.sap.com/#/notes/2641322)。 
+
+   > [!NOTE]
+   > 上述設定中的超時只是範例，可能需要針對特定的 SAP 設定進行調整。 
 
    請確定叢集狀態正常，且所有資源皆已啟動。 資源在哪一個節點上執行並不重要。
 
@@ -1046,5 +1055,5 @@ Azure Marketplace 包含 Red Hat Enterprise Linux 的映像，您可用來部署
 * [適用于 SAP 的 Azure 虛擬機器規劃和執行][planning-guide]
 * [適用于 SAP 的 Azure 虛擬機器部署][deployment-guide]
 * [適用于 SAP 的 Azure 虛擬機器 DBMS 部署][dbms-guide]
-* 若要了解如何建立高可用性並為 Azure 上的 SAP HANA (大型執行個體) 規劃災害復原，請參閱 [SAP HANA (大型執行個體) 在 Azure 上的高可用性和災害復原](hana-overview-high-availability-disaster-recovery.md)。
+* 若要了解如何建立高可用性並為 Azure 上的 SAP HANA 規劃災害復原，請參閱 [Azure 上的 SAP HANA (大型執行個體) 高可用性和災害復原](hana-overview-high-availability-disaster-recovery.md)。
 * 若要瞭解如何建立高可用性並規劃 Azure Vm 上 SAP Hana 的嚴重損壞修復，請參閱[azure 虛擬機器（vm）上 SAP Hana 的高可用性][sap-hana-ha]
