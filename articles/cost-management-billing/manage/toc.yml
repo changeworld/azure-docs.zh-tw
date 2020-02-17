@@ -119,12 +119,22 @@
       href: ../../azure-portal/supportability/how-to-create-azure-support-request.md
 - name: 範例
   items:
-    - name: 發票 API 程式碼範例
-      href: 'https://github.com/Azure-Samples/billing-dotnet-core-invoice-download'
-    - name: 使用情況 API 程式碼範例
-      href: 'https://github.com/Azure-Samples/billing-dotnet-usage-api'
-    - name: RateCard API 程式碼範例
-      href: 'https://github.com/Azure-Samples/billing-dotnet-ratecard-api'
+    - name: REST API
+      items:
+        - name: 檢閱企業成本
+          href: review-enterprise-billing.md
+        - name: 檢閱訂用帳戶用途
+          href: review-subscription-billing.md
+        - name: 檢閱資源使用量
+          href: review-service-usage-api.md
+    - name: .NET 範例
+      items:
+        - name: 發票 API 程式碼範例
+          href: 'https://github.com/Azure-Samples/billing-dotnet-core-invoice-download'
+        - name: 使用情況 API 程式碼範例
+          href: 'https://github.com/Azure-Samples/billing-dotnet-usage-api'
+        - name: RateCard API 程式碼範例
+          href: 'https://github.com/Azure-Samples/billing-dotnet-ratecard-api'
 - name: 參考
   items:
     - name: 計費自動化案例
