@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/07/2019
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75e7c6809810a78c81348bd4bbeb808e103f453f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: bc6a478bebef0733847ef4744b722ed9e61a6c7f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73805291"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367956"
 ---
 # <a name="whats-new-for-azure-active-directory-in-microsoft-365-government"></a>Microsoft 365 政府中的 Azure Active Directory 新功能
 
@@ -55,7 +55,6 @@ ms.locfileid: "73805291"
 |------|------------------|
 | 入口網站 |Microsoft Azure Government： https://portal.azure.us<p>Microsoft 365 政府– GCC High： https://portal.office365.us<p>Microsoft 365 政府– DoD： https://portal.apps.mil |
 | Azure Active Directory 授權單位端點 | https://login.microsoftonline.us |
-| Azure Active Directory 圖形 API | https://graph.windows.net |
 | 適用于 Microsoft 365 政府的 Microsoft Graph API-GCC High | https://graph.microsoft.us |
 | 適用于 Microsoft 365 政府的 Microsoft Graph API-DoD | https://dod-graph.microsoft.us |
 | Azure Government 服務端點 | 如需詳細資訊，請參閱[Azure Government 開發人員指南](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide) |

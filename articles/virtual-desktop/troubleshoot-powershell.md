@@ -7,16 +7,16 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019
 ms.author: helohr
-ms.openlocfilehash: 4e628657f0c2519595ee0fd3c4f845e2e637f27e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: e20d5a6b21c11930f0e547134479113539a2bc76
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75975571"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367181"
 ---
 # <a name="windows-virtual-desktop-powershell"></a>Windows 虛擬桌面 PowerShell
 
-使用這篇文章來解決搭配 Windows 虛擬桌面使用 PowerShell 時的錯誤和問題。 如需遠端桌面服務 PowerShell 的詳細資訊，請參閱[Windows 虛擬桌面 powershell](https://docs.microsoft.com/powershell/module/windowsvirtualdesktop/)。
+使用這篇文章來解決搭配 Windows 虛擬桌面使用 PowerShell 時的錯誤和問題。 如需遠端桌面服務 PowerShell 的詳細資訊，請參閱[Windows 虛擬桌面 powershell](/powershell/module/windowsvirtualdesktop/)。
 
 ## <a name="provide-feedback"></a>提供意見反應
 

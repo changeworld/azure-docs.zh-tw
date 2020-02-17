@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/26/2019
 ms.author: helohr
-ms.openlocfilehash: 41b0c1ced9e66bd58d73683865b2c40afc16c5d3
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: de875ca9db9716e59c3c6efc0d7fb34e31f0c1d2
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605859"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367537"
 ---
-# <a name="connect-with-the-android-client"></a>連線至 Android 用戶端
+# <a name="connect-with-the-android-client"></a>與 Android 用戶端連線
 
 > 適用于： Android 4.1 和更新版本，使用 ChromeOS 53 和更新版本 Chromebook。
 
@@ -49,4 +49,4 @@ ms.locfileid: "73605859"
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入瞭解如何使用 Android 用戶端，請參閱[開始使用 android 用戶端](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-android)。
+若要深入瞭解如何使用 Android 用戶端，請參閱[開始使用 android 用戶端](/windows-server/remote/remote-desktop-services/clients/remote-desktop-android/)。

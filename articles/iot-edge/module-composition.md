@@ -8,12 +8,12 @@ ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f50b7a53d739073ced7ea590a9a6da2eceb8bda1
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 8eb24fe878638853cd8519c08045552a91f0c190
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548640"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368568"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>了解如何在 IoT Edge 中部署模組及建立路由
 
@@ -141,7 +141,7 @@ IoT Edge 中樞會管理模組、IoT 中樞和任何分葉裝置間的通訊。 
 
 來源屬性可以是下列其中任何一個值：
 
-| 來源 | 說明 |
+| 來源 | 描述 |
 | ------ | ----------- |
 | `/*` | 所有來自任何模組或分葉裝置的裝置到雲端訊息或對應項變更通知 |
 | `/twinChangeNotifications` | 任何來自任何模組或分葉裝置的對應項變更 (報告屬性) |
@@ -177,7 +177,7 @@ FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO $upstream
 
 接收屬性可以是下列其中任何一個值：
 
-| 接收 | 說明 |
+| 接收 | 描述 |
 | ---- | ----------- |
 | `$upstream` | 將訊息傳送到 IoT 中樞 |
 | `BrokeredEndpoint("/modules/<moduleId>/inputs/<input>")` | 將訊息傳送到特定模組的特定輸入 |
@@ -232,7 +232,7 @@ IoT Edge 中樞會將訊息儲存在[IoT Edge 中樞所需屬性](module-edgeage
             "restartPolicy": "always",
             "settings": {
               "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
-              "createOptions": ""
+              "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
             }
           }
         },

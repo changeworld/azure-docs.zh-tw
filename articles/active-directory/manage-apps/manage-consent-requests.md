@@ -12,12 +12,12 @@ ms.date: 12/27/2019
 ms.author: mimart
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 528aff73b931776ef9a6542437db271bb214c7fb
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 0451fe18629a572c9b49f14924bfa50293f42a2b
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290694"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367843"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>管理應用程式的同意及評估同意要求
 
@@ -34,7 +34,7 @@ Microsoft[建議](https://docs.microsoft.com/azure/security/fundamentals/steps-s
     * 更新相關的檔、監視、自動化等等。
     * 將程式變更傳達給所有受影響的使用者、開發人員、支援小組和 IT 系統管理員。
 
-## <a name="auditing-and-monitoring"></a>稽核與監視
+## <a name="auditing-and-monitoring"></a>審核和監視
 
 1. [審核應用程式並授](https://docs.microsoft.com/azure/security/fundamentals/steps-secure-identity#audit-apps-and-consented-permissions)與您組織中的許可權，以確保先前沒有任何預期或可疑的應用程式被授與資料的存取權。
 
@@ -100,7 +100,7 @@ Microsoft[建議](https://docs.microsoft.com/azure/security/fundamentals/steps-s
 
 ### <a name="granting-consent-on-behalf-of-a-specific-user"></a>代表特定使用者授與同意
 
-系統管理員也可以使用[Azure AD 圖形 API](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api) ，代表單一使用者同意委派的許可權，而不是授與整個組織的同意。 若要這麼做，請傳送 `POST` 要求以建立[OAuth2PermissionGrant](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#oauth2permissiongrant-entity)實體，其中 `consentType` 設定為 "Principal"，而 `principalId` 會代表被授與同意的使用者設定為物件識別碼。
+系統管理員也可以使用[Microsft 圖形 API](https://docs.microsoft.com/graph/use-the-api) ，代表單一使用者同意委派的許可權，而不是授與整個組織的同意。 如需詳細資訊，請參閱[代表使用者取得存取權](https://docs.microsoft.com/graph/auth-v2-user)。
 
 ## <a name="limiting-user-access-to-applications"></a>限制使用者對應用程式的存取
 

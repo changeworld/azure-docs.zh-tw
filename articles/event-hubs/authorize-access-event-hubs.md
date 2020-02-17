@@ -6,19 +6,25 @@ ms.service: event-hubs
 documentationcenter: ''
 author: spelluru
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 02/12/2020
 ms.author: spelluru
-ms.openlocfilehash: b5a037eaf310aa28c76d831dc9fe56eefaddbe56
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: d4304abf0ca089fbbea86f12cd03dea836db612e
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123476"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368363"
 ---
 # <a name="authorize-access-to-azure-event-hubs"></a>授與 Azure 事件中樞的存取權
 每次您發佈或使用事件中樞的事件/資料時，您的用戶端都會嘗試存取事件中樞資源。 每個對安全資源的要求都必須經過授權，服務才能確保用戶端具有發佈/取用資料的必要許可權。 
 
 Azure 事件中樞提供下列選項來授權安全資源的存取：
+
+- Azure Active Directory
+- 共用存取簽章
+
+> [!NOTE]
+> 本文適用于事件中樞和[Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md)案例。 
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
 事件中樞資源的 Azure Active Directory （Azure AD）整合提供角色型存取控制（RBAC），以精細控制用戶端對資源的存取。 您可以使用角色型存取控制（RBAC），將許可權授與安全性主體，這可能是使用者、群組或應用程式服務主體。 安全性主體會由 Azure AD 進行驗證，以傳回 OAuth 2.0 權杖。 權杖可以用來授權存取事件中樞資源的要求。
@@ -39,7 +45,7 @@ Azure 事件中樞提供下列選項來授權安全資源的存取：
 
 ## <a name="next-steps"></a>後續步驟
 - 查看 GitHub 存放庫中發佈的[RBAC 範例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac)。 
-- 請參閱下列文章：
+- 查看下列文章：
     - [使用 Azure Active Directory 驗證從應用程式 Azure 事件中樞的要求](authenticate-application.md)
     - [使用 Azure Active Directory 來驗證受控識別，以存取事件中樞資源](authenticate-managed-identity.md)
     - [使用共用存取簽章驗證 Azure 事件中樞的要求](authenticate-shared-access-signature.md)

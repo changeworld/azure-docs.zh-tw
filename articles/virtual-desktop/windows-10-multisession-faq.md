@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: helohr
-ms.openlocfilehash: 6bdac3f06834ccb5454efa0d77bec5a5a6c5b5bf
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 543514683ff96449bfe0e5a21c525834f61f3027
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76515100"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367125"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Windows 10 企業版的多重工作階段常見問題集
 
@@ -28,7 +28,7 @@ Windows 10 企業版的多會話，之前稱為 Windows 10 Enterprise for Virtua
  
 ## <a name="why-does-my-application-report-windows-10-enterprise-multi-session-as-a-server-operating-system"></a>為什麼我的應用程式會將 Windows 10 企業版的多重會話報告成伺服器作業系統？
 
-Windows 10 企業版多會話是 Windows 10 企業版的虛擬版本。 其中一項差異是，此作業系統（OS）將[ProductType](https://docs.microsoft.com/windows/desktop/cimwin32prov/win32-operatingsystem)的值報告為3，其值與 Windows Server 相同。 此屬性可讓 OS 與現有的 RDSH 管理工具、RDSH 多會話感知應用程式，以及針對 RDSH 環境的低層級系統效能優化相容。 某些應用程式安裝程式可以根據偵測到的 ProductType 是否設為 [用戶端]，封鎖 Windows 10 多會話安裝。 如果您的應用程式不會安裝，請洽詢您的應用程式廠商以取得更新的版本。 
+Windows 10 企業版多會話是 Windows 10 企業版的虛擬版本。 其中一項差異是，此作業系統（OS）將[ProductType](/windows/desktop/cimwin32prov/win32-operatingsystem/)的值報告為3，其值與 Windows Server 相同。 此屬性可讓 OS 與現有的 RDSH 管理工具、RDSH 多會話感知應用程式，以及針對 RDSH 環境的低層級系統效能優化相容。 某些應用程式安裝程式可以根據偵測到的 ProductType 是否設為 [用戶端]，封鎖 Windows 10 多會話安裝。 如果您的應用程式不會安裝，請洽詢您的應用程式廠商以取得更新的版本。 
  
 ## <a name="can-i-run-windows-10-enterprise-multi-session-on-premises"></a>我可以在內部部署執行 Windows 10 企業版多會話嗎？
 
@@ -48,7 +48,7 @@ Windows 10 企業版多會話無法在內部部署生產環境中執行，因為
  
 ## <a name="can-windows-10-enterprise-multi-session-be-azure-active-directory-ad-joined"></a>Windows 10 企業版多會話可以 Azure Active Directory （AD）加入嗎？
 
-目前支援將 Windows 10 企業版多會話加入混合式 Azure AD。 Windows 10 企業版多會話加入網域之後，請使用現有的群組原則物件來啟用 Azure AD 註冊。 如需詳細資訊，請參閱[規劃混合式 Azure Active Directory 聯結執行](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)。
+目前支援將 Windows 10 企業版多會話加入混合式 Azure AD。 Windows 10 企業版多會話加入網域之後，請使用現有的群組原則物件來啟用 Azure AD 註冊。 如需詳細資訊，請參閱[規劃混合式 Azure Active Directory 聯結執行](../active-directory/devices/hybrid-azuread-join-plan.md)。
  
 ## <a name="where-can-i-find-the-windows-10-enterprise-multi-session-image"></a>哪裡可以找到 Windows 10 企業版的多重會話映射？
 

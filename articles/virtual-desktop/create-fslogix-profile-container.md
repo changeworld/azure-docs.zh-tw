@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 11/25/2019
 ms.author: helohr
-ms.openlocfilehash: 1e26d61e0b1ec50e7a3831970af1fd8fad7fed99
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 4c5b31c54bf4926caaa1bd793229bdfbb22af2a2
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483651"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368924"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>使用 Azure NetApp Files 建立主機集區的 FSLogix 設定檔容器
 
@@ -32,13 +32,13 @@ ms.locfileid: "74483651"
 >[!NOTE]
 >如果您要尋找 Azure 上不同 FSLogix 設定檔容器儲存體選項的比較資料，請參閱[FSLogix 設定檔容器的儲存體選項](store-fslogix-profile.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 您必須先執行下列動作，才能建立主機集區的 FSLogix 設定檔容器：
 
 - 安裝和設定 Windows 虛擬桌面
 - 布建 Windows 虛擬桌面主機集區
-- [啟用您的 Azure NetApp Files 訂用帳戶](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register)
+- [啟用您的 Azure NetApp Files 訂用帳戶](../azure-netapp-files/azure-netapp-files-register.md)
 
 ## <a name="set-up-your-azure-netapp-files-account"></a>設定 Azure NetApp Files 帳戶
 

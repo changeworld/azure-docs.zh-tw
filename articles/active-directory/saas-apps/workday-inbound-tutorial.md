@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acc458c59858196ea110d0ff2030ccd7f7b6fc58
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: feedce112110b1c944e3cb0af79e76fe1bda4778
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121734"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77365629"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>教學課程︰設定 Workday 來自動佈建使用者
 
@@ -801,7 +801,7 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 
 #### <a name="does-the-solution-support-assigning-on-premises-ad-groups-to-the-user"></a>解決方案是否支援將內部部署 AD 群組指派給使用者？
 
-目前不支援此功能。 建議的因應措施是部署 PowerShell 指令碼來查詢 Azure AD Graph API 端點是否有稽核記錄資料，然後使用該資料來觸發群組指派之類的案例。 此 PowerShell 指令碼可以連結至工作排程器，並部署在執行佈建代理程式的相同主機上。  
+目前不支援此功能。 建議的因應措施是部署 PowerShell 腳本，以查詢適用于[audit 記錄資料](https://docs.microsoft.com/graph/api/resources/azure-ad-auditlog-overview?view=graph-rest-beta)的 Microsoft Graph API 端點，並使用它來觸發群組指派之類的案例。 此 PowerShell 指令碼可以連結至工作排程器，並部署在執行佈建代理程式的相同主機上。  
 
 #### <a name="which-workday-apis-does-the-solution-use-to-query-and-update-workday-worker-profiles"></a>解決方案使用哪些 Workday API 來查詢和更新 Workday 人員設定檔？
 

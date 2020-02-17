@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 01/22/2020
+ms.date: 02/14/2020
 ms.author: mlearned
-ms.openlocfilehash: bbfb65c31bf6fd46cc18c9eee66086afbbff1d5f
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 20cef402a81ef348d4492daf05e6b16a8d9f709f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157969"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77365170"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service （AKS）中建立及管理叢集的多個節點集區
 
@@ -453,6 +453,61 @@ Events:
 
 只有套用此污點的 pod 可以在*gpunodepool*的節點上排程。 任何其他 pod 都會在*nodepool1*節點集區中排程。 如果您建立其他節點集區，您可以使用其他污點和容差來限制可在這些節點資源上排程的 pod。
 
+## <a name="specify-a-tag-for-a-node-pool"></a>指定節點集區的標記
+
+您可以將 Azure 標記套用至 AKS 叢集中的節點集區。 套用至節點集區的標記會套用至節點集區中的每個節點，並透過升級來保存。 標記也會套用至相應放大作業期間新增至節點集區的新節點。 新增標籤可協助進行原則追蹤或成本預估之類的工作。
+
+> [!IMPORTANT]
+> 若要使用節點集區標記，您需要*aks-preview* CLI 擴充功能版本0.4.29 或更高版本。 使用[az extension add][az-extension-add]命令來安裝*aks-preview* Azure CLI 擴充功能，然後使用[az extension update][az-extension-update]命令檢查是否有任何可用的更新：
+> 
+> ```azurecli-interactive
+> # Install the aks-preview extension
+> az extension add --name aks-preview
+> 
+> # Update the extension to make sure you have the latest version installed
+> az extension update --name aks-preview
+> ```
+
+使用[az aks node pool add][az-aks-nodepool-add]建立節點集區。 指定名稱*tagnodepool* ，並使用 `--tag` 參數來指定適用于標記的*部門 = IT*和*costcenter = 9999* 。
+
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name tagnodepool \
+    --node-count 1 \
+    --tags dept=IT costcenter=9999 \
+    --no-wait
+```
+
+> [!NOTE]
+> 使用[az aks nodepool update][az-aks-nodepool-update]命令以及在叢集建立期間，您也可以使用 `--tags` 參數。 在叢集建立期間，`--tags` 參數會將標籤套用至使用叢集建立的初始節點集區。 所有標記名稱都必須遵守[使用標記來組織您的 Azure 資源][tag-limitation]的限制。 以 `--tags` 參數更新節點集區會更新任何現有的標記值，並附加任何新的標記。 例如，如果您的節點集區具有*部門 = it*並*costcenter = 9999*的標籤，且您已使用*team = dev*和*costcenter = 111*來更新標記，則 nodepool 會有*部門 = it*、 *costcenter = 111*和*team = dev* for tags。
+
+下列來自[az aks nodepool list][az-aks-nodepool-list]命令的範例輸出顯示*taggednodepool*正在*建立*具有指定*標記*的節點：
+
+```console
+$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+
+[
+  {
+    ...
+    "count": 1,
+    ...
+    "name": "tagnodepool",
+    "orchestratorVersion": "1.15.7",
+    ...
+    "provisioningState": "Creating",
+    ...
+    "tags": {
+      "dept": "IT",
+      "costcenter": "9999"
+    },
+    ...
+  },
+ ...
+]
+```
+
 ## <a name="manage-node-pools-using-a-resource-manager-template"></a>使用 Resource Manager 範本管理節點集區
 
 當您使用 Azure Resource Manager 範本來建立和管理資源時，您通常可以更新範本中的設定，並重新部署以更新資源。 在 AKS 中使用節點集區時，一旦建立 AKS 叢集之後，就無法更新初始節點集區設定檔。 這個行為表示您無法更新現有的 Resource Manager 範本、對節點集區進行變更，然後重新部署。 相反地，您必須建立個別的 Resource Manager 範本，只更新現有 AKS 叢集的節點集區。
@@ -603,21 +658,25 @@ az group delete --name myResourceGroup --yes --no-wait
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 
 <!-- INTERNAL LINKS -->
-[quotas-skus-regions]: quotas-skus-regions.md
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
-[az-group-create]: /cli/azure/group#az-group-create
-[az-aks-create]: /cli/azure/aks#az-aks-create
-[az-aks-nodepool-add]: /cli/azure/ext/aks-preview/aks/nodepool#ext-aks-preview-az-aks-nodepool-add
-[az-aks-nodepool-list]: /cli/azure/ext/aks-preview/aks/nodepool#ext-aks-preview-az-aks-nodepool-list
-[az-aks-nodepool-upgrade]: /cli/azure/ext/aks-preview/aks/nodepool#ext-aks-preview-az-aks-nodepool-upgrade
-[az-aks-nodepool-scale]: /cli/azure/ext/aks-preview/aks/nodepool#ext-aks-preview-az-aks-nodepool-scale
-[az-aks-nodepool-delete]: /cli/azure/ext/aks-preview/aks/nodepool#ext-aks-preview-az-aks-nodepool-delete
-[vm-sizes]: ../virtual-machines/linux/sizes.md
-[taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
-[gpu-cluster]: gpu-cluster.md
-[az-group-delete]: /cli/azure/group#az-group-delete
-[install-azure-cli]: /cli/azure/install-azure-cli
-[supported-versions]: supported-kubernetes-versions.md
-[operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
 [aks-windows]: windows-container-cli.md
+[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-nodepool-add]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-add
+[az-aks-nodepool-list]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-list
+[az-aks-nodepool-update]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-update
+[az-aks-nodepool-upgrade]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-upgrade
+[az-aks-nodepool-scale]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-scale
+[az-aks-nodepool-delete]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-delete
+[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-extension-update]: /cli/azure/extension#az-extension-update
+[az-group-create]: /cli/azure/group#az-group-create
+[az-group-delete]: /cli/azure/group#az-group-delete
 [az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[gpu-cluster]: gpu-cluster.md
+[install-azure-cli]: /cli/azure/install-azure-cli
+[operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
+[quotas-skus-regions]: quotas-skus-regions.md
+[supported-versions]: supported-kubernetes-versions.md
+[tag-limitation]: ../azure-resource-manager/resource-group-using-tags.md
+[taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
+[vm-sizes]: ../virtual-machines/linux/sizes.md

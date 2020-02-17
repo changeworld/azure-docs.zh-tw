@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/20/2019
+ms.date: 02/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1f560a7aa746ce7c6262dcaddf74c9d573332fa6
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 884244b245be06f1477d27a4828cad18e36eca24
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861382"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368629"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-preview"></a>Azure 時間序列深入解析預覽中的時間序列模型
 
@@ -63,7 +63,7 @@ ms.locfileid: "75861382"
 * 定義父子式關聯性，以啟用導覽、搜尋和參考。
 * 定義與實例相關聯的屬性（定義為*實例欄位*），並使用它們來建立階層。
 
-### <a name="components"></a>元件
+### <a name="components"></a>Components
 
 時間序列模型有三個核心元件：
 
@@ -97,11 +97,11 @@ ms.locfileid: "75861382"
 
 實例是由**timeSeriesId**、 **typeId**、 **name**、 **description**、 **hierarchyIds**和**instancefields 定義**所定義。 每個實例只會對應至一個*類型*，以及一個或多個*階層。*
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 | --- | ---|
 | timeSeriesId | 與實例相關聯之時間序列的 UUID。 |
 | typeId | 與實例相關聯之時間序列模型類型的 UUID。 根據預設，所有探索到的新實例都會與預設類型建立關聯。
-| NAME | **Name**屬性是選擇性的，而且區分大小寫。 如果 [**名稱**] 無法使用，則預設為 [ **timeSeriesId**]。 如果[提供了名稱](time-series-insights-update-explorer.md#4-time-series-well)， **timeSeriesId**仍然可供使用。 |
+| 名稱 | **Name**屬性是選擇性的，而且區分大小寫。 如果 [**名稱**] 無法使用，則預設為 [ **timeSeriesId**]。 如果[提供了名稱](time-series-insights-update-explorer.md#4-time-series-well)， **timeSeriesId**仍然可供使用。 |
 | description | 實例的文字描述。 |
 | hierarchyIds | 定義實例所屬的階層。 |
 | Instancefields 定義 | 實例的屬性，以及定義實例的任何靜態資料。 它們定義階層或非階層的值，同時也支援建立索引以執行搜尋作業。 |
@@ -145,11 +145,11 @@ ms.locfileid: "75861382"
 
 階層是由階層**識別碼**、**名稱**和**來源**所定義。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 | ---| ---|
 | id | 階層的唯一識別碼，例如，當您定義實例時使用。 |
-| NAME | 用來提供階層名稱的字串。 |
-| source | 指定組織階層或路徑，這是使用者想要建立之階層的由上而下的父子式順序。 父子式屬性會對應實例欄位。 |
+| 名稱 | 用來提供階層名稱的字串。 |
+| 來源 | 指定組織階層或路徑，這是使用者想要建立之階層的由上而下的父子式順序。 父子式屬性會對應實例欄位。 |
 
 階層會以 JSON 表示為：
 
@@ -237,12 +237,12 @@ ms.locfileid: "75861382"
 
 時間序列模型類型是由**識別碼**、**名稱**、**描述**和**變數**所定義。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 | ---| ---|
 | id | 類型的 UUID。 |
-| NAME | 用來提供型別名稱的字串。 |
+| 名稱 | 用來提供型別名稱的字串。 |
 | description | 類型的字串描述。 |
-| variables | 指定與類型相關聯的變數。 |
+| 變數 | 指定與類型相關聯的變數。 |
 
 類型符合下列 JSON 範例：
 
@@ -300,7 +300,7 @@ ms.locfileid: "75861382"
 
 #### <a name="numeric-variables"></a>數值變數
 
-| Variable 屬性 | 說明 |
+| Variable 屬性 | 描述 |
 | --- | ---|
 | 變數篩選條件 | 篩選是選擇性的條件子句，可限制要考慮計算的資料列數目。 |
 | 變數值 | 用於計算來自裝置或感應器，或使用時間序列運算式轉換的遙測值。 數數值型別變數必須是*Double*類型。|
@@ -330,7 +330,7 @@ ms.locfileid: "75861382"
 
 #### <a name="categorical-variables"></a>類別變數
 
-| Variable 屬性 | 說明 |
+| Variable 屬性 | 描述 |
 | --- | ---|
 | 變數篩選條件 | 篩選是選擇性的條件子句，可限制要考慮計算的資料列數目。 |
 | 變數值 | 用於計算來自裝置或感應器的遙測值。 類別類型變數必須是*Long*或*String*。 |
@@ -370,7 +370,7 @@ ms.locfileid: "75861382"
 
 #### <a name="aggregate-variables"></a>匯總變數
 
-| Variable 屬性 | 說明 |
+| Variable 屬性 | 描述 |
 | --- | ---|
 | 變數篩選條件 | 篩選是選擇性的條件子句，可限制要考慮計算的資料列數目。 |
 | 變數彙總 | 支援透過*Avg*、 *Min*、 *Max*、 *Sum*、 *Count*、 *First*、 *Last*進行計算。 |

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: 896fd41cff0ab8257da7b91687aaae389a1c81ca
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 37fc089ab68bfb3cd26e1656ba84610fe8a47bc6
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769654"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367260"
 ---
 # <a name="publish-built-in-apps-in-windows-virtual-desktop"></a>在 Windows 虛擬桌面中發佈內建應用程式
 
@@ -23,7 +23,7 @@ ms.locfileid: "74769654"
 若要發佈內建應用程式：
 
 1. 連接到主機集區中的其中一個虛擬機器。
-2. 遵循[本文中的](https://docs.microsoft.com/powershell/module/appx/get-appxpackage?view=win10-ps)指示，取得您想要發佈之應用程式的**PackageFamilyName** 。
+2. 遵循[本文中的](/powershell/module/appx/get-appxpackage?view=win10-ps/)指示，取得您想要發佈之應用程式的**PackageFamilyName** 。
 3. 最後，使用您在上一個步驟中找到的**PackageFamilyName**所取代的 `<PackageFamilyName>` 來執行下列 Cmdlet：
    
    ```powershell

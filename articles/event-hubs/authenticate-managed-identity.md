@@ -9,12 +9,12 @@ manager: ''
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: spelluru
-ms.openlocfilehash: dd95bde74b77686c0971c41a8c3f262f73107b61
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: c5418f8c5e759ad0e5c388e0925fa724fe148797
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169216"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368522"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>使用 Azure Active Directory 來驗證受控識別，以存取事件中樞資源
 Azure 事件中樞支援使用[Azure 資源的受控識別進行](../active-directory/managed-identities-azure-resources/overview.md)Azure Active Directory （Azure AD）驗證。 適用于 Azure 資源的受控識別可以使用在 Azure 虛擬機器（Vm）、函式應用程式、虛擬機器擴展集及其他服務中執行的應用程式 Azure AD 認證，來授權事件中樞資源的存取權。 藉由使用適用于 Azure 資源的受控識別搭配 Azure AD authentication，您可以避免將認證儲存在雲端中執行的應用程式。
@@ -137,13 +137,17 @@ var ehClient = EventHubClient.CreateWithManagedIdentity(new Uri($"sb://{EventHub
 ```
 ---
 
-## <a name="samples"></a>範例
+## <a name="event-hubs-for-kafka"></a>適用於 Kafka 的事件中樞
+您可以使用 Apache Kafka 應用程式，將訊息傳送至使用受控識別 OAuth 的 Azure 事件中樞，並從中接收訊息。 請參閱 GitHub 上的下列範例：[適用于 Kafka 的事件中樞-使用受控識別 OAuth 來傳送和接收訊息](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/managedidentity)。
+
+## <a name="samples"></a>Samples
 - [EventHubs 範例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac)。 
     
     這些範例會使用舊的**EventHubs**程式庫，但您可以使用最新的**EventHubs**程式庫輕鬆地將其更新為。 若要將範例從使用舊的程式庫移至新的程式庫，請參閱[從 EventHubs 遷移至 EventHubs 的指南](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md)。
 - [EventHubs 範例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
 
     此範例已更新為使用最新的**EventHubs**程式庫。
+- [事件中樞 Kafka-使用受控識別 OAuth 來傳送和接收訊息](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/managedidentity)
 
 
 ## <a name="next-steps"></a>後續步驟

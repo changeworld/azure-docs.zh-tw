@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: spelluru
-ms.openlocfilehash: 021d00b9fb02f2f5ea2560038741efec11b8cbc0
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 16d8faa1f20227241d1a582dd4d80e0123f7a31e
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169194"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368484"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>使用 Azure Active Directory 授權事件中樞資源的存取權
 Azure 事件中樞支援使用 Azure Active Directory （Azure AD）來授權事件中樞資源的要求。 使用 Azure AD，您可以使用角色型存取控制（RBAC），將許可權授與安全性主體，這可能是使用者或應用程式服務主體。 若要深入瞭解角色和角色指派，請參閱[瞭解不同的角色](../role-based-access-control/overview.md)。
@@ -54,17 +54,23 @@ Azure 提供下列內建 RBAC 角色，以使用 Azure AD 和 OAuth 來授權事
 - **訂**用帳戶：角色指派會套用至訂用帳戶中所有資源群組內的所有事件中樞資源。
 
 > [!NOTE]
-> 請記住，RBAC 角色指派最多可能需要五分鐘的時間來傳播。 
+> - 請記住，RBAC 角色指派最多可能需要五分鐘的時間來傳播。 
+> - 此內容適用于 Apache Kafka 的事件中樞和事件中樞。 如需 Kafka 支援之事件中樞的詳細資訊，請參閱[Kafka 的事件中樞-安全性和驗證](event-hubs-for-kafka-ecosystem-overview.md#security-and-authentication)。
+
 
 如需如何定義內建角色的詳細資訊，請參閱[瞭解角色定義](../role-based-access-control/role-definitions.md#management-and-data-operations)。 如需建立自訂 RBAC 角色的詳細資訊，請參閱[建立 Azure 角色型存取控制的自訂角色](../role-based-access-control/custom-roles.md)。
 
-## <a name="samples"></a>範例
+
+
+## <a name="samples"></a>Samples
 - [EventHubs 範例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac)。 
     
     這些範例會使用舊的**EventHubs**程式庫，但您可以使用最新的**EventHubs**程式庫輕鬆地將其更新為。 若要將範例從使用舊的程式庫移至新的程式庫，請參閱[從 EventHubs 遷移至 EventHubs 的指南](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md)。
 - [EventHubs 範例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
 
     此範例已更新為使用最新的**EventHubs**程式庫。
+- [Kafka-OAuth 範例的事件中樞](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth)。 
+
 
 ## <a name="next-steps"></a>後續步驟
 - 瞭解如何將內建 RBAC 角色指派給安全性主體，請參閱[使用 Azure Active Directory 來驗證事件中樞資源的存取權](authenticate-application.md)。

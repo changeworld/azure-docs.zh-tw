@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 01/19/2020
-ms.openlocfilehash: 336d2ef471e21e3157c7d8c81b3837bb6a962e2e
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 18e9c9d330ffb8cc4e284fc649cff0840ec2c82c
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191301"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77366224"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Azure Logic Apps 中觸發程式和動作類型的架構參考指南
 
@@ -2304,7 +2304,7 @@ Logic Apps 引擎會檢查是否可存取您想要呼叫的觸發程序，因此
 | <*action-type*> | String | 您要執行的動作類型 | 
 | <*action-inputs*> | 各種類型 | 要執行的動作所使用的輸入 | 
 | <*condition*> | String | 在迴圈中的所有動作都執行完成後所要評估的條件或運算式 | 
-| <*loop-count*> | 整數 | 動作可以執行的迴圈數目上限。 預設 `count` 值為 60。 | 
+| <*loop-count*> | 整數 | 動作可以執行的迴圈數目上限。 如需預設限制和最大限制的詳細資訊，請參閱[Azure Logic Apps 的限制和](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)設定。 | 
 | <*loop-timeout*> | String | 迴圈可執行的時間長度上限。 預設 `timeout` 值為 `PT1H`，這是必要的 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601)。 |
 |||| 
 

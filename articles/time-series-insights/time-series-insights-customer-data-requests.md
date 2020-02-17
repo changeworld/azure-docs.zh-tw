@@ -4,17 +4,17 @@ description: 深入瞭解 Azure 時間序列深入解析中的客戶資料要求
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.date: 12/23/2019
+ms.date: 02/14/2020
 ms.topic: conceptual
 ms.service: time-series-insights
 services: time-series-insights
 ms.custom: seodec18
-ms.openlocfilehash: c33fce5b6999c5b8372fe4c04401bf55898aee8d
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 64660e497bb1765b649e00b07fdb5db8c05910f5
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863439"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368689"
 ---
 # <a name="summary-of-customer-data-request-features"></a>客戶資料要求功能的摘要
 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/14/2019
 ms.author: helohr
-ms.openlocfilehash: 8e8eec8af81832992a27206efcd7b7e7051a83b8
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: f6a8e4b9129018686aa5833a2ac260075e5627f9
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772545"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367623"
 ---
 # <a name="set-up-msix-app-attach"></a>設定 MSIX 應用程式附加
 
@@ -22,7 +22,7 @@ ms.locfileid: "75772545"
 
 本主題將逐步引導您瞭解如何在 Windows 虛擬桌面環境中設定 MSIX 應用程式連接。
 
-## <a name="requirements"></a>要求
+## <a name="requirements"></a>需求
 
 在您開始之前，您必須先設定 MSIX 應用程式附加：
 
@@ -38,7 +38,7 @@ ms.locfileid: "75772545"
 1. 開啟[Windows 測試人員入口網站](https://www.microsoft.com/software-download/windowsinsiderpreviewadvanced?wa=wsignin1.0)並登入。
 
      >[!NOTE]
-     >您必須是 Windows 測試人員程式的成員，才能存取 Windows 測試人員入口網站。 若要深入瞭解 Windows 測試人員程式，請參閱我們的[Windows 測試人員檔](https://docs.microsoft.com/windows-insider/at-home/)。
+     >您必須是 Windows 測試人員程式的成員，才能存取 Windows 測試人員入口網站。 若要深入瞭解 Windows 測試人員程式，請參閱我們的[Windows 測試人員檔](/windows-insider/at-home/)。
 
 2. 向下流覽至 [**選取版本**] 區段，然後選取 [ **Windows 10 Insider PREVIEW Enterprise （FAST）–組建 19035**或更新版本]。
 
@@ -79,7 +79,7 @@ sc config wuauserv start=disabled
 
 ## <a name="prepare-the-application-for-msix-app-attach"></a>準備應用程式以進行 MSIX 應用程式附加 
 
-如果您已經有 MSIX 套件，請直接跳到[設定 Windows 虛擬桌面基礎結構](#configure-windows-virtual-desktop-infrastructure)。 如果您想要測試繼承應用程式，請遵循[從 VM 上的桌面安裝程式建立 MSIX 套件](https://docs.microsoft.com/windows/msix/packaging-tool/create-app-package-msi-vm)中的指示，將繼承應用程式轉換成 MSIX 套件。
+如果您已經有 MSIX 套件，請直接跳到[設定 Windows 虛擬桌面基礎結構](#configure-windows-virtual-desktop-infrastructure)。 如果您想要測試繼承應用程式，請遵循[從 VM 上的桌面安裝程式建立 MSIX 套件](/windows/msix/packaging-tool/create-app-package-msi-vm/)中的指示，將繼承應用程式轉換成 MSIX 套件。
 
 ## <a name="generate-a-vhd-or-vhdx-package-for-msix"></a>為 MSIX 產生 VHD 或 VHDX 套件
 
@@ -149,7 +149,7 @@ sc config wuauserv start=disabled
 
 3. 流覽至掛接的 VHD，並開啟應用程式資料夾，並確認套件內容存在。
 
-4. 取消掛接 VHD。
+4. 卸載 VHD。
 
 ## <a name="configure-windows-virtual-desktop-infrastructure"></a>設定 Windows 虛擬桌面基礎結構
 
@@ -390,7 +390,7 @@ rmdir $packageName -Force -Verbose
 
 ## <a name="set-up-simulation-scripts-for-the-msix-app-attach-agent"></a>設定 MSIX 應用程式附加代理程式的模擬腳本
 
-建立腳本之後，使用者可以手動執行它們，或將它們設定為自動啟動、登入、登出和關機腳本。 若要深入瞭解這些類型的腳本，請參閱[在群組原則中使用啟動、關機、登入和登出腳本](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn789196(v=ws.11))。
+建立腳本之後，使用者可以手動執行它們，或將它們設定為自動啟動、登入、登出和關機腳本。 若要深入瞭解這些類型的腳本，請參閱[在群組原則中使用啟動、關機、登入和登出腳本](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn789196(v=ws.11)/)。
 
 每一個自動腳本都會執行應用程式附加腳本的一個階段：
 
@@ -407,7 +407,7 @@ rmdir $packageName -Force -Verbose
 
 以下說明如何設定離線使用的授權： 
 
-1. 從商務用 Microsoft Store 下載應用程式套件、授權和所需的架構。 您同時需要已編碼和未編碼的授權檔案。 您可以在[這裡](https://docs.microsoft.com/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app)找到詳細的下載指示。
+1. 從商務用 Microsoft Store 下載應用程式套件、授權和所需的架構。 您同時需要已編碼和未編碼的授權檔案。 您可以在[這裡](/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app/)找到詳細的下載指示。
 2. 在步驟3的腳本中更新下列變數：
       1. `$contentID` 是來自未編碼授權檔案（.xml）的 ContentID 值。 您可以在您選擇的文字編輯器中開啟授權檔案。
       2. `$licenseBlob` 是編碼授權檔案（. bin）中授權 blob 的整個字串。 您可以在您選擇的文字編輯器中開啟編碼的授權檔案。 

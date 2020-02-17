@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d94237d2cfeb814b2e15d43c9f8863a76c0bcd11
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 94a376c01229de20e6a1264da3f29532becefa8a
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190680"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368669"
 ---
 # <a name="enable-and-create-large-file-shares"></a>啟用並建立大型檔案共用
 
@@ -43,7 +43,7 @@ ms.locfileid: "77190680"
     ![示範如何在入口網站中建立資源群組的螢幕擷取畫面](media/storage-files-how-to-create-large-file-share/create-large-file-share.png)
 
 1. 接下來，輸入儲存體帳戶的名稱。 此名稱在整個 Azure 中必須是唯一的。 名稱的長度也必須是3到24個字元，而且只能包含數位和小寫字母。
-1. 選取儲存體帳戶的 [位置]，並確定它是[大型檔案共用支援的其中一個區域](storage-files-planning.md#regional-availability)。
+1. 選取儲存體帳戶的 [位置]，並確定它是[大型檔案共用支援的其中一個](storage-files-planning.md#regional-availability)複寫。
 1. 將複寫設定為**本機多餘的儲存體**或**區域多餘的儲存體**。
 1. 將這些欄位保留為預設值：
 

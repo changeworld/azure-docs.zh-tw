@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: b60a00828cfed8ef5d47704de2b2d7ede309ed6d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 5f4eca88614a98f0caf87d04847029328042edd8
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276304"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368730"
 ---
 # <a name="create-and-use-shared-images-for-virtual-machine-scale-sets-with-the-azure-powershell"></a>使用 Azure PowerShell 為虛擬機器擴展集建立及使用共用映像
 
@@ -25,7 +25,7 @@ ms.locfileid: "76276304"
 
 共用映像庫具有多個資源類型。 我們將在這篇文章中使用或建置這些資源類型：
 
-| 資源 | 說明|
+| 資源 | 描述|
 |----------|------------|
 | **受控映像** | 這是基本映像，既可單獨使用，也可用來在映像庫中建立個**映像版本**。 受控映像是從一般化 VM 建立的。 受控映像是一種特殊的 VHD 類型，可用來產生多個 VM，現在可以用來建立共用映像版本。 |
 | **映像庫** | 和 Azure Marketplace 一樣，**映像庫**是用於管理和共用映像的存放庫，但您可以控制哪些使用者能夠存取。 |
@@ -130,7 +130,7 @@ $vmssConfig = New-AzVmssConfig `
 # Reference the image version
 Set-AzVmssStorageProfile $vmssConfig `
   -OsDiskCreateOption "FromImage" `
-  -Id $imageVersion.Id
+  -ImageReferenceId $imageVersion.Id
 
 # Complete the configuration
 Set-AzVmssOsProfile $vmssConfig `

@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d0511f008a3d5bc39a0fb2d9406d33b72dbede6
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 854fb4649f8c1113f20abe5807dd0ce473ba6ee3
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74532953"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368059"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>什麼是 Azure Active Directory 架構？
 
@@ -51,7 +51,7 @@ Azure AD 架構的元件包括主要複本和次要複本。
 
 「主要複本」會接收其所屬資料分割的所有「寫入」。 所有寫入作業會先立即複寫至不同資料中心內的次要複本，然後將成功傳回給呼叫端，因而確保寫入的地理備援持久性。
 
-#### <a name="secondary-replicas"></a>次要複本
+#### <a name="secondary-replicas"></a>您應該
 
 所有目錄*讀取*都是由*次要複本*提供服務，它們位於實際位於不同地理位置的資料中心。 次要複本有許多個，因為資料會以非同步方式複寫。 目錄讀取（例如驗證要求）是由靠近客戶的資料中心提供服務。 次要複本負責提供讀取延展性。
 
@@ -79,7 +79,7 @@ Azure AD 架構的元件包括主要複本和次要複本。
 
 寫入的永久在認可前至少有兩個資料中心。 發生這種情況的方式是先在主要複本上認可寫入，然後立即將寫入複寫到至少一個其他資料中心。 此寫入動作可確保裝載主要複本的資料中心可能會嚴重遺失，而不會導致資料遺失。
 
-Azure AD 會將[復原時間目標 (RTO)](https://en.wikipedia.org/wiki/Recovery_time_objective) 維持為零，因此在容錯移轉時不會遺失資料。 其中包括：
+Azure AD 會將[復原時間目標 (RTO)](https://en.wikipedia.org/wiki/Recovery_time_objective) 維持為零，因此在容錯移轉時不會遺失資料。 這包括：
 
 * 權杖發行和目錄讀取
 * 目錄寫入只允許約 5 分鐘的 RTO
@@ -100,7 +100,7 @@ Azure AD 會在具有下列特性的資料中心之間運作：
 
 Azure AD 會對以次要複本為目標的應用程式提供讀寫一致性，其做法是將其寫入路由傳送至主要複本，並以同步方式將寫入提取回到次要複本。
 
-使用 Azure AD 圖形 API 的應用程式寫入會為了讀寫一致性，而從維護目錄複本同質性中抽取出來。 Azure AD Graph 服務會維護一個邏輯會話，其與用於讀取的次要複本具有相似性;親和性會在「複本權杖」中捕捉，而 graph 服務會使用次要複本資料中心內的分散式快取來進行快取。 此權杖則會接著用於相同邏輯工作階段中的後續作業。 若要繼續使用相同的邏輯會話，後續要求必須路由傳送至相同的 Azure AD 資料中心。 如果目錄用戶端要求路由傳送至多個 Azure AD 資料中心，則無法繼續邏輯會話;如果發生這種情況，用戶端會有多個具有獨立讀寫一致性的邏輯會話。
+使用 Azure AD 的 Microsoft Graph API 進行的應用程式寫入，會從針對讀寫一致性的目錄複本維護相似性而抽象化。 Microsoft Graph API 服務會維護一個邏輯會話，其與用於讀取的次要複本具有相似性;相似性會在「複本權杖」中捕捉，服務會使用次要複本資料中心內的分散式快取來快取。 此權杖則會接著用於相同邏輯工作階段中的後續作業。 若要繼續使用相同的邏輯會話，後續要求必須路由傳送至相同的 Azure AD 資料中心。 如果目錄用戶端要求路由傳送至多個 Azure AD 資料中心，則無法繼續邏輯會話;如果發生這種情況，用戶端會有多個具有獨立讀寫一致性的邏輯會話。
 
  >[!NOTE]
  >寫入會立即複寫到邏輯工作階段的讀取所發行至的次要複本。

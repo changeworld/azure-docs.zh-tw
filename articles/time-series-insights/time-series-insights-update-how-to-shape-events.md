@@ -8,20 +8,20 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/16/2019
+ms.date: 02/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: fd744e6283b00b0dfdd50805cb628f5bc40ab8d6
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e814d9be4a0db2852bd9e21f3d3c1d54a45bd268
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846149"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368639"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>使用 Azure 時間序列深入解析為事件塑形
 
 本文可協助您塑造 JSON 檔案以進行內嵌，並將 Azure 時間序列深入解析預覽查詢的效率發揮到極致。
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳作法
 
 考慮如何將事件傳送至時間序列深入解析 Preview。 也就是說，您應該一律：
 
@@ -148,7 +148,7 @@ ms.locfileid: "76846149"
   "data_flow" : 1.76435072345733643
 }
 ```
-在上述範例中，簡維 `data_flow` 屬性會顯示與 `data_flow` 屬性的命名衝突。 在此情況下，*最新*的屬性值會覆寫較舊的內容。 如果此行為對您的商務案例有挑戰，請洽詢 TSI 小組。
+在上述範例中，簡維 `data_flow` 屬性會顯示與 `data_flow` 屬性的命名衝突。 在此情況下，*最新*的屬性值會覆寫較舊的內容。 如果此行為在您的商務案例中呈現挑戰，請洽詢 TSI 小組。
 
 > [!WARNING] 
 > 如果因為簡維或另一個機制而在相同的事件裝載中出現重複的屬性，則會儲存最新的屬性值，並即可任何先前的值。

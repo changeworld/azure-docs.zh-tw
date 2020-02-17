@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 11/04/2019
-ms.openlocfilehash: f7a2e78ed2b1de770f7a60f1312e069dc1757cb6
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 2869384d4f4072e1e71ab0a69af81edc68e7a5b7
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191197"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77366241"
 ---
 # <a name="what-is-automated-machine-learning"></a>什麼是自動化機器學習服務？
 
@@ -211,22 +211,71 @@ ms.locfileid: "77191197"
 
 使用 Azure Machine Learning，您可以使用自動化 ML 來建立 Python 模型，並將它轉換成 ONNX 格式。 ONNX 執行時間支援C#，因此您可以使用在C#應用程式中自動建立的模型，而不需要任何預先編碼或 REST 端點引進的任何網路延遲。 請[在此 Jupyter 筆記本中](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)嘗試此流程的範例。
 
-## <a name="automated-ml-across-microsoft"></a>跨 Microsoft 的自動化 ML
+## <a name="automated-ml-in-azure-machine-learning"></a>Azure Machine Learning 中的自動化 ML
 
-自動化 ML 也適用于其他 Microsoft 解決方案，例如：
+Azure Machine Learning 提供兩種使用自動化 ML 的體驗
 
-|整合|描述|
-|------------|-----------|
-|[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|使用 Visual Studio 和 Visual Studio Code 搭配 ML.NET 自動化 ML，在 .NET 應用程式中自動選取和定型模型。|
-|[HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|以平行方式在 HDInsight 叢集中的 Spark 上相應放大您的自動化 ML 訓練作業。|
-|[Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|直接在 Power BI 中叫用機器學習模型。|
-|[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)|在 SQL Server 2019 big data 叢集內，透過您的資料建立新的機器學習模型。|
+* 適用于程式碼經驗的客戶， [Azure Machine Learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azureml-sdk/?view=azure-ml-py) 
+
+* 適用于有限/無程式碼體驗客戶，Azure Machine Learning studio [https://ml.azure.com](https://ml.azure.com/)  
+
+以下摘要說明每個體驗中支援的高階自動化 ML 功能。
+
+<a name="parity"></a>
+
+### <a name="experiment-settings"></a>實驗設定 
+
+下列設定可讓您設定自動化 ML 實驗。 
+
+| | Python SDK| studio
+----|:----:|:----:
+將資料分割成定型/驗證集| ✓|✓
+支援 ML 工作：分類、回歸和預測| ✓| ✓
+根據主要度量優化| ✓| ✓
+支援 AML 計算作為計算目標 | ✓|✓
+設定預測水準，目標延遲 & 滾動時間範圍|✓|✓
+設定結束準則 |✓|✓ 
+設定並行反覆運算| ✓|✓
+卸載資料行| ✓|✓
+封鎖演算法|✓|✓
+交叉驗證 |✓|✓
+支援在 Azure Databricks 叢集上進行訓練| ✓|
+查看設計的功能名稱|✓|
+特徵化摘要| ✓|
+假日特徵化|✓|
+記錄檔的詳細資訊層級| ✓|
+
+### <a name="model-settings"></a>模型設定
+
+這些設定可套用至最佳模型，做為自動化 ML 實驗的結果。
+
+||Python SDK|studio
+----|:----:|:----:
+最佳模型註冊| ✓|✓
+最佳模型部署| ✓| ✓
+最佳模型可解釋性| ✓|✓
+啟用投票集團 & stack 集團模型| ✓|✓
+根據非主要度量顯示最佳模型|✓|啟用/停用 ONNX 模型相容性|✓|
+測試模型 | ✓| |
+
+### <a name="run-control-settings"></a>執行控制設定
+
+這些設定可讓您審查及控制您的實驗執行及其子執行。 
+
+||Python SDK| studio
+----|:----:|:----:
+執行摘要資料表| ✓|✓
+取消執行| ✓|✓
+取消子執行| ✓| ✓
+取得護欄| ✓|✓
+暫停執行| ✓| 
+繼續執行| ✓| 
 
 ## <a name="next-steps"></a>後續步驟
 
 請參閱範例，並瞭解如何使用自動化機器學習來建立模型：
 
-+ 遵循[教學課程：使用 Azure 自動化將回歸模型自動定型 Machine Learning](tutorial-auto-train-models.md)
++ 遵循[教學課程：使用 Azure Machine Learning 自動定型回歸模型](tutorial-auto-train-models.md)
 
 + 設定自動訓練實驗的設定：
   + 在 Azure Machine Learning studio 中，請[使用下列步驟](how-to-create-portal-experiments.md)。
@@ -235,3 +284,5 @@ ms.locfileid: "77191197"
 + 若要瞭解如何使用時間序列資料來自動定型，請[使用下列步驟](how-to-auto-train-forecast.md)。
 
 + 試用[自動化機器學習 Jupyter Notebook 範例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)
+
+* 自動化 ML 也適用于其他 Microsoft 解決方案，例如[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)、 [HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md)、 [Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)和[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)

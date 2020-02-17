@@ -15,12 +15,12 @@ ms.date: 04/08/2019
 ms.author: mimart
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1300ecff416962bda4da800c5eff134951658846
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 600cd3f3ad8826b52648b51beb8c66a382766b80
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77159160"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367872"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>使用主領域探索原則為應用程式設定 Azure Active Directory 登入行為
 
@@ -100,9 +100,7 @@ ms.locfileid: "77159160"
 
 任何時候服務主體都只能有一個作用中的 HRD 原則。  
 
-您可直接使用 Microsoft Azure Active Directory 圖形 API 或 Azure Active Directory PowerShell cmdlets 建立及管理 HRD 原則。
-
-管理原則的 Graph API 說明於 MSDN 上的[原則相關作業](https://msdn.microsoft.com/library/azure/ad/graph/api/policy-operations)一文。
+您可以使用 Azure Active Directory PowerShell Cmdlet 來建立和管理 HRD 原則。
 
 以下是範例 HRD 原則定義：
     
@@ -152,7 +150,7 @@ ms.locfileid: "77159160"
 - 列出已設定原則的應用程式。
 
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 在下列範例中，您將建立、更新、連結和刪除 Azure AD 中應用程式服務主體上的原則。
 
 1.  若要開始，請下載最新的 Azure AD PowerShell Cmdlet 預覽版。 
@@ -209,7 +207,7 @@ Get-AzureADPolicy
 #### <a name="step-2-locate-the-service-principal-to-which-to-assign-the-policy"></a>步驟 2：尋找服務主體以對其指派原則  
 您需要原則要指派到之服務主體的 **ObjectID**。 有幾種方式可尋找服務主體的 **ObjectID**。    
 
-您可以使用入口網站，或者您可以查詢 [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity)。 您可以移至 [Graph Explorer 工具](https://developer.microsoft.com/graph/graph-explorer)並登入您的 Azure AD 帳戶，以查看您所有組織的服務主體。 
+您可以使用入口網站，或者您可以查詢 [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta)。 您可以移至 [Graph Explorer 工具](https://developer.microsoft.com/graph/graph-explorer)並登入您的 Azure AD 帳戶，以查看您所有組織的服務主體。 
 
 因為您使用的是 PowerShell，您可以使用下列 Cmdlet 來列出服務主體及其識別碼。
 

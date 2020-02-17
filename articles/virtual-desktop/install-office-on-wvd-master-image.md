@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: helohr
-ms.openlocfilehash: 059748f6f08b1c73d56aa3a127aa785f55eb63ee
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 1637cb7621d6071bbce2af66f3a106770139ad4e
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539141"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368812"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>在主要 VHD 映像上安裝 Office
 
@@ -20,20 +20,20 @@ ms.locfileid: "74539141"
 
 本文假設您已建立虛擬機器（VM）。 如果沒有，請參閱[準備和自訂主要 VHD 映射](set-up-customize-master-image.md#create-a-vm)
 
-本文也假設您已在 VM 上擁有更高的存取權，無論是布建在 Azure 或 Hyper-v 管理員中。 如果沒有，請參閱提高[存取權以管理所有 Azure 訂用帳戶和管理群組](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin)。
+本文也假設您已在 VM 上擁有更高的存取權，無論是布建在 Azure 或 Hyper-v 管理員中。 如果沒有，請參閱提高[存取權以管理所有 Azure 訂用帳戶和管理群組](../role-based-access-control/elevate-access-global-admin.md)。
 
 >[!NOTE]
 >這些指示適用於可搭配您組織現有程序使用的 Windows 虛擬桌面特定設定。
 
 ## <a name="install-office-in-shared-computer-activation-mode"></a>在共用電腦啟用模式中安裝 Office
 
-「共用電腦啟用」可讓您將 Office 365 ProPlus 部署到組織中由多位使用者存取的電腦。 如需有關共用電腦啟用的詳細資訊，請參閱[Office 365 ProPlus 的共用電腦啟用總覽](https://docs.microsoft.com/DeployOffice/overview-of-shared-computer-activation-for-office-365-proplus)。
+「共用電腦啟用」可讓您將 Office 365 ProPlus 部署到組織中由多位使用者存取的電腦。 如需有關共用電腦啟用的詳細資訊，請參閱[Office 365 ProPlus 的共用電腦啟用總覽](/deployoffice/overview-of-shared-computer-activation-for-office-365-proplus/)。
 
 使用[Office 部署工具](https://www.microsoft.com/download/details.aspx?id=49117)來安裝 office。 Windows 10 企業版多會話僅支援下列版本的 Office：
-- Office 365 專業增強版
+- Office 365 ProPlus
 - 隨附于 Microsoft 365 商務版訂用帳戶的 Office 365 商務
 
-Office 部署工具需要設定 XML 檔案。 若要自訂下列範例，請參閱[Office 部署工具](https://docs.microsoft.com/deployoffice/configuration-options-for-the-office-2016-deployment-tool)的設定選項。
+Office 部署工具需要設定 XML 檔案。 若要自訂下列範例，請參閱[Office 部署工具](/deployoffice/configuration-options-for-the-office-2016-deployment-tool/)的設定選項。
 
 我們提供的這個範例設定 XML 會執行下列動作：
 

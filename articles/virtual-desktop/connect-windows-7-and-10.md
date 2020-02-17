@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: helohr
-ms.openlocfilehash: 745b33efe46c82e3b9358c9c5a2ed13292242db1
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 15bda000f0297f6e8e006416672897cb15792b79
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997338"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367491"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>與 Windows 桌面用戶端連線
 
@@ -27,13 +27,13 @@ ms.locfileid: "74997338"
 
 選擇符合您 Windows 版本的用戶端：
 
-- [Windows 64 位元](https://go.microsoft.com/fwlink/?linkid=2068602)
-- [Windows 32 位元](https://go.microsoft.com/fwlink/?linkid=2098960)
+- [Windows 64 位](https://go.microsoft.com/fwlink/?linkid=2068602)
+- [Windows 32 位](https://go.microsoft.com/fwlink/?linkid=2098960)
 - [Windows ARM64](https://go.microsoft.com/fwlink/?linkid=2098961)
 
-您可以為目前使用者安裝用戶端，這不需要系統管理員權限，或者您的系統管理員可以安裝和設定用戶端，讓裝置上的所有使用者都可以存取它。
+您可以為目前的使用者安裝用戶端，這不需要系統管理員許可權，或者您的系統管理員可以安裝和設定用戶端，讓裝置上的所有使用者都可以存取它。
 
-安裝後，您可藉由搜尋**遠端桌面**，從 [開始] 功能表啟動用戶端。
+安裝之後，您可以藉由搜尋**遠端桌面**，從 [開始] 功能表啟動用戶端。
 
 ## <a name="subscribe-to-a-feed"></a>訂閱摘要
 
@@ -57,4 +57,4 @@ ms.locfileid: "74997338"
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入瞭解如何使用 Windows 桌面用戶端，請參閱[開始使用 Windows 桌面用戶端](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/windowsdesktop)。
+若要深入瞭解如何使用 Windows 桌面用戶端，請參閱[開始使用 Windows 桌面用戶端](/windows-server/remote/remote-desktop-services/clients/windowsdesktop/)。

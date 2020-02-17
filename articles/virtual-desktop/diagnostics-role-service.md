@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 0e04b075259ed1d003df4a03686d46b1adf694d3
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 9c907052f10fa7d1cfd1ff79e981fdccef874ee5
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606850"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367333"
 ---
 # <a name="identify-and-diagnose-issues"></a>識別並診斷問題
 
@@ -24,7 +24,7 @@ Windows 虛擬桌面提供診斷功能，可讓系統管理員透過單一介面
   
 因為診斷角色服務本身是 Windows 虛擬桌面的一部分，所以不會在診斷結果中顯示 Windows 虛擬桌面的連接。 當使用者遇到網路連線問題時，可能會發生 Windows 虛擬桌面連接問題。
 
-若要開始，請[下載並匯入 Windows 虛擬桌面 powershell 模組](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)，以在您的 powershell 會話中使用（如果您還沒有這麼做）。 之後，請執行下列 Cmdlet 來登入您的帳戶：
+若要開始，請[下載並匯入 Windows 虛擬桌面 powershell 模組](/powershell/windows-virtual-desktop/overview/)，以在您的 powershell 會話中使用（如果您還沒有這麼做）。 之後，請執行下列 Cmdlet 來登入您的帳戶：
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"

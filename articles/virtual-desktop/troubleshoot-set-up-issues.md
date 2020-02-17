@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 01/08/2020
 ms.author: helohr
-ms.openlocfilehash: 12b5b6ce84ad36d14a393b54745e530779d4ca95
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 438c391febc28a716c681aa81b3f42c155b720eb
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965734"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367224"
 ---
 # <a name="tenant-and-host-pool-creation"></a>建立租用戶和主機集區
 
@@ -53,7 +53,7 @@ ms.locfileid: "75965734"
 
 **原因：** 已登入的使用者未獲指派其 Azure Active Directory 中的 TenantCreator 角色。
 
-**修正：** 依照[將 TenantCreator 應用程式角色指派給 Azure Active Directory 租使用者中的使用者](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory#assign-the-tenantcreator-application-role)中的指示進行。 依照指示進行之後，您將會有已指派給 TenantCreator 角色的使用者。
+**修正：** 依照[將 TenantCreator 應用程式角色指派給 Azure Active Directory 租使用者中的使用者](tenant-setup-azure-active-directory.md#assign-the-tenantcreator-application-role)中的指示進行。 依照指示進行之後，您將會有已指派給 TenantCreator 角色的使用者。
 
 ![已指派 TenantCreator 角色的螢幕擷取畫面。](media/TenantCreatorRoleAssigned.png)
 
@@ -113,9 +113,9 @@ ms.locfileid: "75965734"
 
 請遵循這些指示，針對 Azure Resource Manager 範本和 PowerShell DSC 的不成功部署進行疑難排解。
 
-1. 使用[Azure Resource Manager 的 View 部署作業](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations)，檢查部署中的錯誤。
-2. 如果部署中沒有任何錯誤，請使用 [[查看活動記錄] 來審查資源的動作](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit)，以查看活動記錄中的錯誤。
-3. 一旦識別出錯誤，請使用錯誤訊息和針對[常見 Azure 部署 Azure Resource Manager 錯誤進行疑難排解](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-common-deployment-errors)中的資源，以解決問題。
+1. 使用[Azure Resource Manager 的 View 部署作業](../azure-resource-manager/resource-manager-deployment-operations.md)，檢查部署中的錯誤。
+2. 如果部署中沒有任何錯誤，請使用 [[查看活動記錄] 來審查資源的動作](../azure-resource-manager/resource-group-audit.md)，以查看活動記錄中的錯誤。
+3. 一旦識別出錯誤，請使用錯誤訊息和針對[常見 Azure 部署 Azure Resource Manager 錯誤進行疑難排解](../azure-resource-manager/resource-manager-common-deployment-errors.md)中的資源，以解決問題。
 4. 刪除先前部署期間所建立的任何資源，然後再次嘗試部署範本。
 
 ### <a name="error-your-deployment-failedhostnamejoindomain"></a>錯誤：您的部署失敗 ....\<主機名稱 >/joindomain

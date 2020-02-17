@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: helohr
-ms.openlocfilehash: 2a7d10f41e343f21e16b10f4bf7c79670824ec2c
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: e55641457e1ed27928e6bf380701b646b672cae8
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77115914"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368840"
 ---
 # <a name="deploy-a-management-tool-with-powershell"></a>使用 PowerShell 部署管理工具
 
@@ -36,7 +36,7 @@ ms.locfileid: "77115914"
 部署管理工具之前，您需要 Azure Active Directory (Azure AD) 使用者建立應用程式註冊，並部署管理 UI。 此使用者必須：
 
 - 擁有在您的 Azure 訂用帳戶中建立資源的權限
-- 擁有建立 Azure AD 應用程式的權限。 遵循[必要權限](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions)中的指示，依下列步驟檢查您的使用者是否具有必要的權限。
+- 擁有建立 Azure AD 應用程式的權限。 遵循[必要權限](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)中的指示，依下列步驟檢查您的使用者是否具有必要的權限。
 
 若要成功部署及設定管理工具，您必須先從[RDS 範本 GitHub](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy/scripts)存放庫下載下列 PowerShell 腳本，並將其儲存至本機電腦上的相同資料夾。
 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: helohr
-ms.openlocfilehash: c41a433ee19969546e1db2aa583c72ed166b7ebf
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: eee8fdf515861b43b58d5af111930e2224c9a60a
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607467"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367230"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>診斷遠端桌面的圖形效能問題
 
@@ -69,15 +69,15 @@ ms.locfileid: "73607467"
 
 如果輸出畫面/秒計數器與輸入畫面/秒計數器相符，但您仍發現異常的延遲或停止，則平均編碼時間可能是原因。 編碼是一種同步處理常式，會在單一會話（vGPU）案例中的伺服器上，以及在多會話案例中的 VM 上執行。 平均編碼時間應低於33毫秒。 如果平均編碼時間低於33毫秒，但您仍有效能問題，則您使用的應用程式或作業系統可能會發生問題。
 
-如需診斷應用程式相關問題的詳細資訊，請參閱[使用者輸入延遲效能計數器](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters)。
+如需診斷應用程式相關問題的詳細資訊，請參閱[使用者輸入延遲效能計數器](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/)。
 
-因為 RDP 支援33毫秒的平均編碼時間，所以支援最多每秒30個畫面的輸入畫面播放速率。 請注意，33毫秒是支援的畫面播放速率上限。 在許多情況下，使用者所遇到的畫面播放速率會較低，視來源提供給 RDP 的頻率而定。 例如，觀看影片的工作需要30個框架/秒的完整輸入畫面播放速率，但較少的運算密集工作（例如不常編輯檔）會導致輸入畫面/秒的值變得較低，而且使用者的不會降低體驗品質。
+因為 RDP 支援33毫秒的平均編碼時間，所以支援最多每秒30個畫面的輸入畫面播放速率。 請注意，33毫秒是支援的畫面播放速率上限。 在許多情況下，使用者所遇到的畫面播放速率會較低，視來源提供給 RDP 的頻率而定。 例如，觀看影片的工作需要30個畫面/秒的完整輸入畫面播放速率，但較少的運算密集工作（例如不常編輯檔）會導致輸入畫面/秒的值變得更低，而且使用者體驗品質也不會降低。
 
 ### <a name="addressing-poor-frame-quality"></a>解決不佳的框架品質
 
 使用 [畫面格品質] 計數器來診斷畫面格品質問題。 此計數器會以來源框架品質的百分比表示輸出框架的品質。 品質損失可能是因為 RemoteFX，或可能是圖形來源的固有。 如果 RemoteFX 導致品質遺失，問題可能是缺少網路或伺服器資源來傳送更高精確度的內容。
 
-## <a name="mitigation"></a>緩和
+## <a name="mitigation"></a>降低
 
 如果伺服器資源造成瓶頸，請嘗試下列其中一種方法來改善效能：
 
@@ -101,6 +101,6 @@ ms.locfileid: "73607467"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 若要建立 GPU 優化的 Azure 虛擬機器，請參閱[設定 Windows 虛擬桌面環境的圖形處理單元（GPU）加速](https://docs.microsoft.com/azure/virtual-desktop/configure-vm-gpu)。
-- 如需疑難排解和擴大追蹤的總覽，請參閱[疑難排解總覽、意見反應和支援](https://docs.microsoft.com/azure/virtual-desktop/troubleshoot-set-up-overview)。
-- 若要深入瞭解此服務，請參閱[Windows 桌面環境](https://docs.microsoft.com/azure/virtual-desktop/environment-setup)。
+- 若要建立 GPU 優化的 Azure 虛擬機器，請參閱[設定 Windows 虛擬桌面環境的圖形處理單元（GPU）加速](configure-vm-gpu.md)。
+- 如需疑難排解和擴大追蹤的總覽，請參閱[疑難排解總覽、意見反應和支援](troubleshoot-set-up-overview.md)。
+- 若要深入瞭解此服務，請參閱[Windows 桌面環境](environment-setup.md)。

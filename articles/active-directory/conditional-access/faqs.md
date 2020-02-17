@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: baa44481c4641f69ead5335298316c837062d2c0
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 6842338bd27e4bea3436f0b249380ab773d60de6
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186056"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368080"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Azure Active Directory 條件式存取常見問題
 
@@ -40,7 +40,7 @@ ms.locfileid: "77186056"
 
 條件式存取原則適用于所有使用者帳戶。 這包括作為服務帳戶的使用者帳戶。 通常，自動執行的服務帳戶無法滿足條件式存取原則的需求。 例如，可能需要多重要素驗證。 您可以使用條件式存取原則管理設定，從原則中排除服務帳戶。 
 
-## <a name="are-graph-apis-available-for-configuring-conditional-access-policies"></a>是否有可用來設定條件式存取原則的圖形 Api？
+## <a name="are-microsoft-graph-apis-available-for-configuring-conditional-access-policies"></a>是否有 Microsoft Graph Api 可用來設定條件式存取原則？
 
 目前沒有。 
 

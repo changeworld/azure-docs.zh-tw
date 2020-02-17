@@ -1,6 +1,6 @@
 ---
-title: 開發 SCIM 端點，以從 Azure AD 將使用者布建至應用程式
-description: 跨網域身分識別管理（SCIM）的系統會標準化自動使用者布建。 瞭解如何開發 SCIM 端點、整合您的 SCIM API 與 Azure Active Directory，並開始自動將使用者和群組布建到您的雲端應用程式。
+title: 建立 SCIM 端點，以從 Azure AD 將使用者布建至應用程式
+description: 瞭解如何建立 SCIM 端點、整合您的 SCIM API 與 Azure Active Directory，並開始自動將使用者和群組布建到您的雲端應用程式。
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -11,25 +11,25 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 2/7/2020
+ms.date: 11/15/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5a74e03a5b166af85c809725c2c8b9a13b7e4f4
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: d3d891dfcc2a37489953724ce22e0e0422d512ff
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77085456"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368214"
 ---
-# <a name="develop-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>開發 SCIM 端點，並使用 Azure Active Directory （Azure AD）來設定使用者布建
+# <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>建立 SCIM 端點，並使用 Azure Active Directory （Azure AD）來設定使用者布建
 
 身為應用程式開發人員，您可以使用跨網域身分識別管理（SCIM）使用者管理 API 的系統，在您的應用程式與 Azure AD 之間，自動布建使用者和群組。 本文說明如何建立 SCIM 端點，並與 Azure AD 布建服務整合。 SCIM 規格提供一般使用者架構來進行布建。 搭配 SAML 或 OpenID Connect 等同盟標準使用時，SCIM 會為系統管理員提供端對端且以標準為基礎的存取管理解決方案。
 
 SCIM 是兩個端點的標準化定義：/Users 端點和/Groups 端點。 它會使用一般 REST 動詞來建立、更新和刪除物件，以及針對一般屬性（例如組名、使用者名稱、名字、姓氏和電子郵件）預先定義的架構。 提供 SCIM 2.0 REST API 的應用程式可以減少或消除使用專屬使用者管理 API 的痛苦。 例如，任何符合規範的 SCIM 用戶端都知道如何對/Users 端點進行 JSON 物件的 HTTP POST，以建立新的使用者專案。 符合 SCIM standard 的應用程式不需要稍微不同的 API，而是可以立即利用既有的用戶端、工具和程式碼。 
 
-![使用 SCIM 從 Azure AD 布建至應用程式](./media/use-scim-to-provision-users-and-groups/scim-provisioning-overview.png)
+![使用 SCIM 從 Azure AD 布建至應用程式](media/use-scim-to-provision-users-and-groups/scim-provisioning-overview.png)
 
 SCIM 2.0 （RFC [7642](https://tools.ietf.org/html/rfc7642)， [7643](https://tools.ietf.org/html/rfc7643)， [7644](https://tools.ietf.org/html/rfc7644)）中定義之管理的標準使用者物件架構和 rest api，可讓身分識別提供者和應用程式更輕鬆地彼此整合。 建立 SCIM 端點的應用程式開發人員可以與任何 SCIM 相容的用戶端整合，而不需要執行自訂工作。
 
@@ -45,57 +45,19 @@ SCIM 2.0 （RFC [7642](https://tools.ietf.org/html/rfc7642)， [7643](https://to
 
   * **[步驟5：將您的應用程式發行至 Azure AD 應用程式資源庫。](#step-5-publish-your-application-to-the-azure-ad-application-gallery)** 讓客戶輕鬆探索您的應用程式，並輕鬆地設定布建。 
 
-![整合 SCIM 端點與 Azure AD 的步驟](./media/use-scim-to-provision-users-and-groups/process.png)
+![整合 SCIM 端點與 Azure AD 的步驟](media/use-scim-to-provision-users-and-groups/process.png)
 
 ## <a name="step-1-design-your-user-and-group-schema"></a>步驟1：設計您的使用者和群組架構
 
-每個應用程式都需要不同的屬性來建立使用者或群組。 藉由識別應用程式所需的物件（使用者、群組）和屬性（名稱、管理員、作業標題等）來開始整合。 SCIM standard 定義了用於管理使用者和群組的架構。 核心使用者架構只需要三個屬性：**識別碼**（服務提供者定義的識別碼）、 **externalId** （用戶端定義的識別碼）和**中繼**（由服務提供者維護的唯讀中繼資料）。 所有其他屬性都是選擇性的。 除了核心使用者架構外，SCIM 標準也會定義企業使用者擴充功能，以及擴充使用者架構以符合您應用程式需求的模型。 例如，如果您的應用程式需要使用者的管理員，您可以使用企業使用者架構來收集使用者的管理員和核心架構，以收集使用者的電子郵件。 若要設計您的架構，請遵循下列步驟：
-  1. 列出您的應用程式所需的屬性。 將您的需求細分為驗證所需的屬性（例如 loginName 和電子郵件）、管理使用者的生命週期所需的屬性（例如狀態/作用中），以及特定應用程式工作所需的其他屬性（例如，管理員、標記），會很有説明。
-  2. 檢查是否已在核心使用者架構或企業使用者架構中定義這些屬性。 如果您需要且不涵蓋在核心或企業使用者架構中的任何屬性，您將需要定義涵蓋所需屬性的使用者架構延伸。 在下列範例中，我們已為使用者新增延伸模組，以允許在使用者上布建「標記」。 最好只從核心和企業使用者架構開始著手，然後再展開至其他自訂架構。  
-  3. 將 SCIM 屬性對應至 Azure AD 中的使用者屬性。 如果您在 SCIM 端點中定義的其中一個屬性沒有 Azure AD 使用者架構的明確對應項，則資料很有可能不會儲存在大部分租使用者上的 user 物件上。 請考慮此屬性是否可做為建立使用者的選擇性。 如果屬性對您的應用程式有效，請引導租使用者系統管理員擴充其架構，或使用延伸模組屬性，如下所示的「標記」屬性。
+每個應用程式都需要不同的屬性來建立使用者或群組。 藉由識別應用程式所需的物件（使用者、群組）和屬性（名稱、管理員、作業標題等）來開始整合。 接著，您可以使用下表來瞭解您的應用程式所需的屬性如何對應至 Azure AD 中的屬性和 SCIM RFC。 請注意，您可以[自訂](customize-application-attributes.md)如何在 AZURE AD 與 SCIM 端點之間對應屬性。 
 
-### <a name="table-1-outline-the-attributes-that-you-need"></a>表1：概述您需要的屬性 
-| 步驟1：判斷您的應用程式所需的屬性| 步驟2：將應用程式需求對應至 SCIM standard| 步驟3：將 SCIM 屬性對應至 Azure AD 屬性|
-|--|--|--|
-|loginName|userName|userPrincipalName|
-|firstName|name.givenName|givenName|
-|lastName|姓名 lastName|lastName|
-|workMail|電子郵件 [類型 eq "work"]。值|Mail|
-|manager|manager|manager|
-|tag|urn： ietf： params： scim：架構：擴充功能：2.0： CustomExtension：標記|extensionAttribute1|
-|status|作用中|isSoftDeleted （計算的值未儲存在使用者上）|
+使用者資源是由包含在此通訊協定規格中的架構識別碼（`urn:ietf:params:scim:schemas:extension:enterprise:2.0:User`）所識別： https://tools.ietf.org/html/rfc7643。  [表 1] 提供 Azure AD 中使用者屬性的預設對應至使用者資源的屬性。  
 
-上述定義的架構會使用下列 Json 承載來表示。 請注意，除了應用程式所需的屬性之外，JSON 標記法還包含必要的 "id"、"externalId" 和 "meta" 屬性。
+用結構描述識別碼 `urn:ietf:params:scim:schemas:core:2.0:Group` 識別群組資源。 [表 2] 顯示 Azure AD 中群組屬性的預設對應到群組資源的屬性。
 
-```json
-{
-     "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User",
-      "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
-      "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User"],
-     "userName":"bjensen",
-     "externalId":"bjensen",
-     "name":{
-       "familyName":"Jensen",
-       "givenName":"Barbara"
-     },
-     "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {
-     "Manager": "123456"
-   },
-     "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:CustomAttribute:User": {
-     "tag": "701984",
-   },
-   "meta": {
-     "resourceType": "User",
-     "created": "2010-01-23T04:56:22Z",
-     "lastModified": "2011-05-13T04:42:34Z",
-     "version": "W\/\"3694e05e9dff591\"",
-     "location":
- "https://example.com/v2/Users/2819c223-7f76-453a-919d-413861904646"
-   }
- ```
+請注意，您不需要同時支援使用者和群組或所有屬性，如下所示。 這些參考會說明 Azure AD 中的屬性通常如何對應至 SCIM 通訊協定中的屬性。  
 
-### <a name="table-2-default-user-attribute-mapping"></a>表2：預設使用者屬性對應
-接著，您可以使用下表來瞭解您的應用程式所需的屬性如何對應至 Azure AD 中的屬性和 SCIM RFC。 您可以[自訂](customize-application-attributes.md)AZURE AD 與 SCIM 端點之間的屬性對應方式。 請注意，您不需要同時支援使用者和群組或所有屬性，如下所示。 這些參考會說明 Azure AD 中的屬性通常如何對應至 SCIM 通訊協定中的屬性。 
+### <a name="table-1-default-user-attribute-mapping"></a>表 1：預設使用者屬性對應
 
 | Azure Active Directory 使用者 | "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User" |
 | --- | --- |
@@ -106,7 +68,7 @@ SCIM 2.0 （RFC [7642](https://tools.ietf.org/html/rfc7642)， [7643](https://to
 | Facsimile-TelephoneNumber |phoneNumbers[type eq "fax"].value |
 | givenName |name.givenName |
 | jobTitle |title |
-| mail |emails[type eq "work"].value |
+| 郵件 |emails[type eq "work"].value |
 | mailNickname |externalId |
 | manager |urn： ietf： params： scim：架構：擴充功能： enterprise：2.0： User： manager |
 | mobile |phoneNumbers[type eq "mobile"].value |
@@ -119,29 +81,16 @@ SCIM 2.0 （RFC [7642](https://tools.ietf.org/html/rfc7642)， [7643](https://to
 | user-PrincipalName |userName |
 
 
-### <a name="table-3-default-group-attribute-mapping"></a>表3：預設群組屬性對應
+### <a name="table-2-default-group-attribute-mapping"></a>表 2：預設群組屬性對應
 
 | Azure Active Directory 群組 | urn： ietf： params： scim：架構： core：2.0： Group |
 | --- | --- |
 | displayName |displayName |
-| mail |emails[type eq "work"].value |
+| 郵件 |emails[type eq "work"].value |
 | mailNickname |displayName |
-| members |members |
+| 成員 |成員 |
 | objectId |externalId |
 | proxyAddresses |emails[type eq "other"].Value |
-
-SCIM RFC 中定義了數個端點。 您可以從/User 端點開始著手，然後從該處展開。 當您使用自訂屬性時，或您的架構經常變更時，/Schemas 端點會很有説明。 它可讓用戶端自動取得最新的架構。 /Bulk 端點在支援群組時特別有用。 下表描述 SCIM 標準中定義的各種端點。 當您使用自訂屬性時，或您的架構經常變更時，/Schemas 端點會很有説明。 它可讓用戶端自動取得最新的架構。 /Bulk 端點在支援群組時特別有用。 下表描述 SCIM 標準中定義的各種端點。 
- 
-### <a name="table-4-determine-the-endpoints-that-you-would-like-to-develop"></a>表4：判斷您想要開發的端點
-|端點|DESCRIPTION|
-|--|--|
-|/User|在使用者物件上執行 CRUD 作業。|
-|/Group|對群組物件執行 CRUD 作業。|
-|/ServiceProviderConfig|提供支援之 SCIM 標準功能的詳細資料，例如支援的資源和驗證方法。|
-|/ResourceTypes|指定每個資源的相關中繼資料|
-|/Schemas|每個用戶端和服務提供者所支援的屬性集可能有所不同。 雖然一個服務提供者可能包括「名稱」、「標題」和「電子郵件」，但另一個服務提供者會使用「名稱」、「標題」和「phoneNumbers」。 架構端點可讓您探索支援的屬性。|
-|/Bulk|大量作業可讓您在單一作業中執行大型資源物件集合的作業（例如，更新大型群組的成員資格）。|
-
 
 ## <a name="step-2-understand-the-azure-ad-scim-implementation"></a>步驟2：瞭解 Azure AD SCIM 的執行
 > [!IMPORTANT]
@@ -176,7 +125,7 @@ SCIM RFC 中定義了數個端點。 您可以從/User 端點開始著手，然�
 
 下圖顯示 Azure Active Directory 傳送至 SCIM 服務的訊息，以管理使用者在應用程式身分識別存放區中的生命週期。  
 
-![顯示使用者布建和取消布建的順序](./media/use-scim-to-provision-users-and-groups/scim-figure-4.png)<br/>
+![顯示使用者布建和取消布建的順序](media/use-scim-to-provision-users-and-groups/scim-figure-4.png)<br/>
 *使用者布建和取消布建順序*
 
 ### <a name="group-provisioning-and-deprovisioning"></a>群組布建和取消布建
@@ -186,14 +135,14 @@ SCIM RFC 中定義了數個端點。 您可以從/User 端點開始著手，然�
 * 取得群組的要求指定要從為回應要求所提供的任何資源中排除成員屬性。  
 * 要求判斷參考屬性是否具有特定值，會是有關成員屬性的要求。  
 
-![顯示群組布建和取消布建順序](./media/use-scim-to-provision-users-and-groups/scim-figure-5.png)<br/>
+![顯示群組布建和取消布建順序](media/use-scim-to-provision-users-and-groups/scim-figure-5.png)<br/>
 *群組布建和取消布建順序*
 
 ### <a name="scim-protocol-requests-and-responses"></a>SCIM 通訊協定要求和回應
 本節提供 Azure AD SCIM 用戶端發出的範例 SCIM 要求，以及預期的回應範例。 為了獲得最佳結果，您應該撰寫應用程式的程式碼，以此格式處理這些要求，併發出預期的回應。
 
 > [!IMPORTANT]
-> 若要瞭解 Azure AD 使用者布建服務發出下列作業的方式和時間，請參閱布建迴圈一節：布建的[運作方式](../app-provisioning/how-provisioning-works.md)（[初始和增量](../app-provisioning/how-provisioning-works.md#provisioning-cycles-initial-and-incremental)）。
+> 若要瞭解 Azure AD 使用者布建服務發出下列作業的方式和時間，請參閱布建迴圈一節：布建的[運作方式](how-provisioning-works.md)（[初始和增量](how-provisioning-works.md#provisioning-cycles-initial-and-incremental)）。
 
 [使用者作業](#user-operations)
   - [建立使用者](#create-user)（[要求](#request) / [回應](#response)）
@@ -722,34 +671,6 @@ SCIM RFC 中定義了數個端點。 您可以從/User 端點開始著手，然�
 
 *HTTP/1.1 204 沒有內容*
 
-### <a name="security-requirements"></a>安全性需求
-**TLS 通訊協定版本**
-
-唯一可接受的 TLS 通訊協定版本為 TLS 1.2 和 TLS 1.3。 不允許其他 TLS 版本。 不允許任何版本的 SSL。 
-- RSA 金鑰必須至少有2048位。
-- ECC 金鑰必須至少有256位，並使用已核准的橢圓曲線產生
-
-
-**金鑰長度**
-
-所有服務都必須使用足夠長度的密碼編譯金鑰所產生的 x.509 憑證，亦即：
-
-**加密套件**
-
-所有服務都必須依照以下指定的確切順序，設定為使用下列加密套件。 請注意，如果您只有一個 RSA 憑證，則安裝的 ECDSA 加密套件不會有任何作用。 </br>
-
-TLS 1.2 加密套件最小橫條：
-
-- TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
-- TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
-- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-- TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
-- TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
-- TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
-- TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
-
-
 ## <a name="step-3-build-a-scim-endpoint"></a>步驟3：建立 SCIM 端點
 
 藉由建立與 Azure Active Directory 介面的 SCIM web 服務，您可以為幾乎任何應用程式或身分識別存放區啟用自動使用者布建。
@@ -831,7 +752,7 @@ TLS 1.2 加密套件最小橫條：
 
 * 提供通用語言基礎結構 (CLI) 程式庫，可與以該基礎結構為基礎的語言 (例如 C#) 搭配使用。 其中一個程式庫 Microsoft.systemforcrossdomainidentitymanagement，宣告了 Microsoft.systemforcrossdomainidentitymanagement Microsoft.systemforcrossdomainidentitymanagement.iprovider.startupbehavior，如下圖所示的介面。 使用程式庫的開發人員會對某個類別實作該介面，一般稱為提供者。 程式庫可讓開發人員部署符合 SCIM 規格的 web 服務。 Web 服務可以裝載于 Internet Information Services 或任何可執行檔 CLI 元件中。 要求會轉譯成對提供者的方法呼叫，該呼叫會由開發人員以程式方式設計，以對某些身分識別存放區進行操作。
   
-   ![細目：已將要求轉譯為對提供者的方法的呼叫](./media/use-scim-to-provision-users-and-groups/scim-figure-3.png)
+   ![細目：已將要求轉譯為對提供者的方法的呼叫](media/use-scim-to-provision-users-and-groups/scim-figure-3.png)
   
 * [ExpressRoute 處理常式](https://expressjs.com/guide/routing.html)可剖析代表對 node.js Web 服務發出之呼叫 (如 SCIM 規格所定義) 的 node.js 要求物件。
 
@@ -842,6 +763,10 @@ TLS 1.2 加密套件最小橫條：
 ```csharp
  private static void Main(string[] arguments)
  {
+ // Microsoft.SystemForCrossDomainIdentityManagement.IMonitor, 
+ // Microsoft.SystemForCrossDomainIdentityManagement.IProvider and 
+ // Microsoft.SystemForCrossDomainIdentityManagement.Service are all defined in 
+ // Microsoft.SystemForCrossDomainIdentityManagement.Service.dll.  
 
  Microsoft.SystemForCrossDomainIdentityManagement.IMonitor monitor = 
    new DevelopersMonitor();
@@ -931,6 +856,10 @@ netsh http add sslcert ipport=0.0.0.0:443 certhash=0000000000003ed9cd0c315bbb6dc
 ```csharp
  public class Startup
  {
+ // Microsoft.SystemForCrossDomainIdentityManagement.IWebApplicationStarter, 
+ // Microsoft.SystemForCrossDomainIdentityManagement.IMonitor and  
+ // Microsoft.SystemForCrossDomainIdentityManagement.Service are all defined in 
+ // Microsoft.SystemForCrossDomainIdentityManagement.Service.dll.  
 
  Microsoft.SystemForCrossDomainIdentityManagement.IWebApplicationStarter starter;
 
@@ -956,7 +885,7 @@ netsh http add sslcert ipport=0.0.0.0:443 certhash=0000000000003ed9cd0c315bbb6dc
 
 ### <a name="handling-endpoint-authentication"></a>處理端點驗證
 
-來自 Azure Active Directory 的要求包括 OAuth 2.0 持有人權杖。   接收要求的任何服務都應該驗證簽發者為預期的 Azure Active Directory 租使用者 Azure Active Directory，以存取 Azure Active Directory Graph web 服務。  在權杖中，簽發者是由 iss 宣告所識別，例如 "iss"： "https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/"。  在此範例中，宣告值 https://sts.windows.net的基底位址會將 Azure Active Directory 識別為簽發者，而相對位址區段 cbb1a5ac-f33b-45fa-9bf5-f37db0fed422 則則是發出權杖之 Azure Active Directory 租使用者的唯一識別碼。 權杖的物件將會是資源庫中應用程式的應用程式範本識別碼。 所有自訂應用程式的應用程式範本識別碼都是8adf8e6e-67b2-4cf2-a259-e3dc5476c621。 資源庫中每個應用程式的應用程式範本識別碼會有所不同。 如需有關資源庫應用程式之應用程式範本識別碼的問題，請洽詢 ProvisioningFeedback@microsoft.com。 在單一租使用者中註冊的每個應用程式可能會收到與 SCIM 要求相同的 `iss` 宣告。
+來自 Azure Active Directory 的要求包括 OAuth 2.0 持有人權杖。 接收要求的任何服務都應該驗證簽發者為預期的 Azure Active Directory 租使用者 Azure Active Directory，以存取 Microsoft Graph API 服務。 在權杖中，簽發者是由 iss 宣告所識別，例如 "iss"： "https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/"。  在此範例中，宣告值 https://sts.windows.net的基底位址會將 Azure Active Directory 識別為簽發者，而相對位址區段 cbb1a5ac-f33b-45fa-9bf5-f37db0fed422 則則是發出權杖之 Azure Active Directory 租使用者的唯一識別碼。 權杖的物件將會是資源庫中應用程式的應用程式範本識別碼。 所有自訂應用程式的應用程式範本識別碼都是8adf8e6e-67b2-4cf2-a259-e3dc5476c621。 資源庫中每個應用程式的應用程式範本識別碼會有所不同。 如需有關資源庫應用程式之應用程式範本識別碼的問題，請洽詢 ProvisioningFeedback@microsoft.com。 在單一租使用者中註冊的每個應用程式可能會收到與 SCIM 要求相同的 `iss` 宣告。
 
 使用 Microsoft 為建立 SCIM 服務所提供之 CLI 程式庫的開發人員，可以依照下列步驟，使用 Owin 來驗證來自 Azure Active Directory 的要求： 
 
@@ -978,7 +907,7 @@ netsh http add sslcert ipport=0.0.0.0:443 certhash=0000000000003ed9cd0c315bbb6dc
   }
 ```
 
-接下來，將下列程式碼新增至該方法，以將任何服務端點的任何要求驗證為具有指定租使用者的 Azure Active Directory 所簽發的權杖，以存取 Azure AD Graph web 服務： 
+接下來，將下列程式碼新增至該方法，以將任何服務端點的任何要求驗證為具有指定租使用者的 Azure Active Directory 所簽發的權杖，以存取 Microsoft Graph API 服務： 
 
 ```csharp
   private void OnServiceStartup(
@@ -1386,7 +1315,7 @@ Azure AD 可以設定為將已指派的使用者和群組自動布建至應用�
 洽詢應用程式提供者，或參閱應用程式提供者文件中的相關陳述，以了解是否符合這些需求。
 
 > [!IMPORTANT]
-> Azure AD SCIM 實建置於 Azure AD 的使用者布建服務之上，其設計目的是要讓使用者在 Azure AD 與目標應用程式之間保持同步，並實行一組非常特定的標準作業。 請務必瞭解這些行為，以瞭解 Azure AD SCIM 用戶端的行為。 如需詳細資訊，請參閱布建迴圈一節：布建的[運作方式](../app-provisioning/how-provisioning-works.md)中的[初始和增量](../app-provisioning/how-provisioning-works.md#provisioning-cycles-initial-and-incremental)。
+> Azure AD SCIM 實建置於 Azure AD 的使用者布建服務之上，其設計目的是要讓使用者在 Azure AD 與目標應用程式之間保持同步，並實行一組非常特定的標準作業。 請務必瞭解這些行為，以瞭解 Azure AD SCIM 用戶端的行為。 如需詳細資訊，請參閱布建迴圈一節：布建的[運作方式](how-provisioning-works.md)中的[初始和增量](how-provisioning-works.md#provisioning-cycles-initial-and-incremental)。
 
 ### <a name="getting-started"></a>開始使用
 
@@ -1399,13 +1328,13 @@ Azure AD 可以設定為將已指派的使用者和群組自動布建至應用�
 3. 選取 [ **+ 新增應用程式**] > **所有** > 不在資源**庫的應用程式**中。
 4. 輸入應用程式的 [名稱]，然後選取 [**新增**] 以建立應用程式物件。 新應用程式會新增至企業應用程式清單，並開啟至其 [應用程式管理] 畫面。
 
-   ![螢幕擷取畫面顯示 Azure AD 應用程式資源庫](./media/use-scim-to-provision-users-and-groups/scim-figure-2a.png)<br/>
+   ![螢幕擷取畫面顯示 Azure AD 應用程式資源庫](media/use-scim-to-provision-users-and-groups/scim-figure-2a.png)<br/>
    *Azure AD 應用程式庫*
 
 5. 在 [應用程式管理] 畫面中 **，選取左面板中的 [** 布建]。
 6. 在 [佈建模式] 功能表上，選取 [自動]。
 
-   ![範例： Azure 入口網站中的應用程式布建頁面](./media/use-scim-to-provision-users-and-groups/scim-figure-2b.png)<br/>
+   ![範例： Azure 入口網站中的應用程式布建頁面](media/use-scim-to-provision-users-and-groups/scim-figure-2b.png)<br/>
    *在 Azure 入口網站中設定布建*
 
 7. 在 [租用戶 URL] 欄位中，輸入應用程式 SCIM 端點的 URL。 範例： https://api.contoso.com/scim/
@@ -1441,20 +1370,11 @@ Azure AD 可以設定為將已指派的使用者和群組自動布建至應用�
 ### <a name="authorization-for-provisioning-connectors-in-the-application-gallery"></a>在應用程式資源庫中布建連接器的授權
 SCIM 規格不會定義驗證和授權的 SCIM 特定配置。 它依賴現有的業界標準。 Azure AD 布建用戶端對資源庫中的應用程式支援兩種授權方法。 
 
-|授權方法|優點|缺點|支援|
-|--|--|--|--|
-|使用者名稱和密碼（Azure AD 不建議或支援）|易於執行|不安全-[您的 Pa $ $word 不重要](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/your-pa-word-doesn-t-matter/ba-p/731984)|支援以案例為基礎的資源庫應用程式。 不支援非資源庫應用程式。|
-|長時間存留的持有人權杖（由目前 Azure AD 支援）|長時間執行的權杖不需要使用者存在。 在設定布建時，系統管理員很容易就能使用這些資源。|長時間存留的權杖可能難以與系統管理員共用，而不需要使用不安全的方法，例如電子郵件。 |支援資源庫和非資源庫應用程式。 |
-|OAuth 授權碼授與（目前 Azure AD 支援）|存取權杖的存留期比密碼短，而且具有長期持有人權杖沒有的自動化重新整理機制。  實際的使用者必須存在於初始授權期間，因而增加了一層責任。 |需要使用者存在。 如果使用者離開組織，權杖將會無效，而且必須再次完成授權。|支援資源庫應用程式。 目前正在支援非資源庫應用程式。|
-|OAuth 用戶端認證授與（在我們的藍圖中不支援）|存取權杖的存留期比密碼短，而且具有長期持有人權杖沒有的自動化重新整理機制。 授權碼授與和用戶端認證授與會建立相同類型的存取權杖，因此在這些方法之間的移動對 API 而言是透明的。  布建可以完全自動化，而且可以無訊息的方式要求新的權杖，而不需要使用者介入。 ||不支援資源庫和非資源庫應用程式。 我們的待處理專案中有支援。|
-
 **OAuth 授權碼授與流程：** 布建服務支援[授權碼授](https://tools.ietf.org/html/rfc6749#page-24)與。 提交您在資源庫中發佈應用程式的要求之後，我們的小組會與您一起收集下列資訊：
 *  授權 URL：用戶端用來透過使用者代理程式重新導向取得資源擁有者授權的 URL。 使用者會重新導向至此 URL 以授與存取權。 
 *  權杖交換 URL：用戶端的 URL，用來交換存取權杖的授權授與，通常是透過用戶端驗證。
 *  用戶端識別碼：授權伺服器會向已註冊的用戶端發出用戶端識別碼，這是代表用戶端所提供之註冊資訊的唯一字串。  用戶端識別碼不是秘密;它會公開給資源擁有者，而且**不得**單獨用於用戶端驗證。  
 *  用戶端密碼：用戶端密碼是由授權伺服器產生的秘密。 它應該是只有授權伺服器才知道的唯一值。 
-
-請注意，因為公開用戶端密碼，所以不支援 OAuth v1。 支援 OAuth v2。  
 
 最佳做法（建議使用，但非必要）：
 * 支援多個重新導向 Url。 系統管理員可以從 "portal.azure.com" 和 "aad.portal.azure.com" 設定布建。 支援多個重新導向 Url 可確保使用者可以從任一入口網站授與存取權。
@@ -1472,7 +1392,7 @@ SCIM 規格不會定義驗證和授權的 SCIM 特定配置。 它依賴現有�
 
 * [自動化 SaaS 應用程式的使用者布建和解除布建](user-provisioning.md)
 * [自訂使用者佈建的屬性對應](customize-application-attributes.md)
-* [撰寫屬性對應的運算式](../app-provisioning/functions-for-customizing-application-data.md)
-* [使用者布建的範圍篩選器](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)
+* [撰寫屬性對應的運算式](functions-for-customizing-application-data.md)
+* [使用者布建的範圍篩選器](define-conditional-rules-for-provisioning-user-accounts.md)
 * [帳戶佈建通知](user-provisioning.md)
 * [如何整合 SaaS 應用程式的教學課程清單](../saas-apps/tutorial-list.md)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: Zhchia
-ms.openlocfilehash: 0602757fad0eb4424e10fb0c1cf0272826ed0024
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: dc33cf9249a5b804ef46e75ff1822eaa5c6f9d6a
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77150692"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77366428"
 ---
 # <a name="tutorial-configure-teamviewer-for-automatic-user-provisioning"></a>教學課程：設定自動使用者布建的 TeamViewer
 
@@ -101,7 +101,7 @@ Azure AD 布建服務可讓您根據指派給應用程式的人員，或根據�
 
     ![布建索引標籤](common/provisioning-automatic.png)
 
-5. 在 [**管理員認證**] 區段下，輸入您的 TeamViewer 管理員認證和使用者名稱。 按一下 [**測試連接**] 以確保 Azure AD 可以連接到 TeamViewer。 如果連線失敗，請確定您的 TeamViewer 帳戶具有系統管理員許可權，然後再試一次。
+5. 在 [**管理員認證**] 區段下，于 [ **Tentant URL** ] 欄位中輸入 `ttps://webapi.teamviewer.com/scim/v2`，然後在 [**秘密權杖**] 中輸入稍早建立的腳本標記。 按一下 [**測試連接**] 以確保 Azure AD 可以連接到 TeamViewer。 如果連線失敗，請確定您的 TeamViewer 帳戶具有系統管理員許可權，然後再試一次。
 
     ![佈建](./media/teamViewer-provisioning-tutorial/provisioning.png)
 

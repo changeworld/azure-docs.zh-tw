@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 02/07/2020
 ms.author: helohr
-ms.openlocfilehash: dc4e4e271ac7108f4c29c82646e9849b9a5cd929
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 730d12625b134f411096b4b49641b79efb1a0d26
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110778"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368754"
 ---
 # <a name="troubleshooting-overview-feedback-and-support"></a>疑難排解概觀、意見反應和支援
 
@@ -24,7 +24,7 @@ ms.locfileid: "77110778"
 
 ## <a name="escalation-tracks"></a>呈報追蹤
 
-使用下表來找出並解決使用遠端桌面用戶端設定租使用者環境時可能會遇到的問題。 設定租使用者之後，您就可以使用新的[診斷服務](https://docs.microsoft.com/azure/virtual-desktop/diagnostics-role-service)來識別常見案例的問題。
+使用下表來找出並解決使用遠端桌面用戶端設定租使用者環境時可能會遇到的問題。 設定租使用者之後，您就可以使用新的[診斷服務](diagnostics-role-service.md)來識別常見案例的問題。
 
 >[!NOTE]
 > 我們有一個技術社區論壇，可供您造訪以與產品小組和主動式社區成員討論您的問題。 請造訪[Windows 虛擬桌面技術小組](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)以開始討論。
@@ -38,7 +38,7 @@ ms.locfileid: "77110778"
 | 工作階段主機集區虛擬機器（VM）會在未使用 Windows 虛擬桌面提供的 Azure Resource Manager 範本時建立 | [開啟 Azure 支援要求](https://azure.microsoft.com/support/create-ticket/)，然後為服務選取執行**Windows 的虛擬機器**。 <br> <br> 如需 Windows 虛擬桌面隨附之 Azure Resource Manager 範本的問題，請參閱建立租使用者的 Windows 虛擬桌面租使用者一節[和建立主機集](troubleshoot-set-up-issues.md)區。 |
 | 從 Azure 入口網站管理 Windows 虛擬桌面工作階段主機環境    | [開啟 Azure 支援要求](https://azure.microsoft.com/support/create-ticket/)。 <br> <br> 如需使用遠端桌面服務/Windows 虛擬桌面 PowerShell 時的管理問題，請參閱[Windows 虛擬桌面 powershell](troubleshoot-powershell.md)或[開啟 Azure 支援要求](https://azure.microsoft.com/support/create-ticket/)，選取 [ **Windows 虛擬桌面**服務]，針對問題類型選取 [設定**和管理**]，然後選取 [**使用 PowerShell 設定租**使用者以解決問題子類型問題]。 |
 | 管理系結至主機集區和應用程式群組的 Windows 虛擬桌面設定（應用程式群組）      | 請參閱[Windows 虛擬桌面 PowerShell](troubleshoot-powershell.md)，或[開啟 Azure 支援要求](https://azure.microsoft.com/support/create-ticket/)，選取服務的**Windows 虛擬桌面**，然後選取適當的問題類型。|
-| 部署和管理 FSLogix 設定檔容器 | 請參閱[FSLogix 產品的疑難排解指南](https://docs.microsoft.com/fslogix/fslogix-trouble-shooting-ht)，如果無法解決問題，請[開啟 Azure 支援要求](https://azure.microsoft.com/support/create-ticket/)，選取服務的**Windows 虛擬桌面**，針對問題類型選取 [ **FSLogix** ]，然後選取適當的問題子類型。 |
+| 部署和管理 FSLogix 設定檔容器 | 請參閱[FSLogix 產品的疑難排解指南](/fslogix/fslogix-trouble-shooting-ht/)，如果無法解決問題，請[開啟 Azure 支援要求](https://azure.microsoft.com/support/create-ticket/)，選取服務的**Windows 虛擬桌面**，針對問題類型選取 [ **FSLogix** ]，然後選取適當的問題子類型。 |
 | 遠端桌面用戶端在啟動時無法正常運作                                                 | 請參閱[疑難排解遠端桌面用戶端](troubleshoot-client.md)，如果無法解決問題，請[開啟 Azure 支援要求](https://azure.microsoft.com/support/create-ticket/)，選取服務的**Windows 虛擬桌面**，然後針對問題類型選取 [**遠端桌面用戶端**]。  <br> <br> 如果是網路問題，您的使用者必須聯絡其網路系統管理員。 |
 | 已連線但沒有摘要                                                                 | 疑難排解使用使用者連接，但[Windows 虛擬桌面服務](troubleshoot-service-connection.md)連線[不會顯示任何內容（沒有摘要）](troubleshoot-service-connection.md#user-connects-but-nothing-is-displayed-no-feed)區段。 <br> <br> 如果您的使用者已指派給應用程式群組，請[開啟 Azure 支援要求](https://azure.microsoft.com/support/create-ticket/)，針對服務選取 [ **Windows 虛擬桌面**]，然後針對 [問題類型] 選取 [**遠端桌面用戶端**]。 |
 | 因網路而造成的摘要探索問題                                            | 您的使用者必須聯絡其網路系統管理員。 |

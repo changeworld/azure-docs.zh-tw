@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: f510879e7df967944f5e7a3deac308a430d53d0c
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: f9baaf6c39f85f82b034bee42f01cf3c0dd2a610
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771303"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367447"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>使用 PowerShell 建立主機集區
 
@@ -20,7 +20,7 @@ ms.locfileid: "75771303"
 
 ## <a name="use-your-powershell-client-to-create-a-host-pool"></a>使用您的 PowerShell 用戶端建立主機集區
 
-首先，[下載並匯入 Windows 虛擬桌面的 PowerShell 模組](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)，以在您的 PowerShell 工作階段中使用 (如果您還沒這麼做的話)。
+首先，[下載並匯入 Windows 虛擬桌面的 PowerShell 模組](/powershell/windows-virtual-desktop/overview/)，以在您的 PowerShell 工作階段中使用 (如果您還沒這麼做的話)。
 
 執行下列 Cmdlet 以登入 Windows 虛擬桌面環境
 
@@ -60,9 +60,9 @@ $token = (Export-RdsRegistrationInfo -TenantName <tenantname> -HostPoolName <hos
 
 您可以使用多種方式來建立虛擬機器：
 
-- [從 Azure 資源庫映射建立虛擬機器](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#create-virtual-machine)
-- [從受控映射建立虛擬機器](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-generalized-managed)
-- [從非受控映射建立虛擬機器](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)
+- [從 Azure 資源庫映射建立虛擬機器](../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)
+- [從受控映射建立虛擬機器](../virtual-machines/windows/create-vm-generalized-managed.md)
+- [從非受控映射建立虛擬機器](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image.md)
 
 >[!NOTE]
 >如果您要使用 Windows 7 作為主機 OS 來部署虛擬機器，建立和部署程式將會稍有不同。 如需詳細資訊，請參閱[在 Windows 虛擬桌面上部署 Windows 7 虛擬機器](deploy-windows-7-virtual-machine.md)。
@@ -78,7 +78,7 @@ $token = (Export-RdsRegistrationInfo -TenantName <tenantname> -HostPoolName <hos
 
 若要成功加入網域，請在每部虛擬機器上執行下列操作：
 
-1. 使用您在建立虛擬機器時提供的認證[連接到虛擬機器](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine)。
+1. 使用您在建立虛擬機器時提供的認證[連接到虛擬機器](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine)。
 2. 在虛擬機器上，啟動 [**控制台**]，然後選取 [**系統**]。
 3. 選取 [**電腦名稱稱**]，選取 [**變更設定**]，然後選取 [**變更 ...** ]
 4. 選取 [**網域**]，然後在虛擬網路上輸入 Active Directory 網域。
@@ -93,7 +93,7 @@ $token = (Export-RdsRegistrationInfo -TenantName <tenantname> -HostPoolName <hos
 
 若要註冊 Windows 虛擬桌面代理程式，請在每部虛擬機器上執行下列動作：
 
-1. 使用您在建立虛擬機器時提供的認證[連接到虛擬機器](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine)。
+1. 使用您在建立虛擬機器時提供的認證[連接到虛擬機器](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine)。
 2. 下載並安裝 Windows 虛擬桌面代理程式。
    - 下載[Windows 虛擬桌面代理程式](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrmXv)。
    - 以滑鼠右鍵按一下下載的安裝程式，選取 [**屬性**]，選取 [**解除封鎖**]，然後選取 **[確定]** 。 這可讓您的系統信任安裝程式。
@@ -104,7 +104,7 @@ $token = (Export-RdsRegistrationInfo -TenantName <tenantname> -HostPoolName <hos
    - 執行安裝程式。
 
 >[!IMPORTANT]
->為了保護您在 Azure 中的 Windows 虛擬桌面環境，建議您不要在 VM 上開啟輸入連接埠 3389。 Windows 虛擬桌面不需要開啟輸入連接埠 3389 讓使用者存取主機集區的 VM。 如果您為了要進行疑難排解而必須開啟連接埠 3389，建議您使用 [Just-In-Time VM 存取](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)。
+>為了保護您在 Azure 中的 Windows 虛擬桌面環境，建議您不要在 VM 上開啟輸入連接埠 3389。 Windows 虛擬桌面不需要開啟輸入連接埠 3389 讓使用者存取主機集區的 VM。 如果您為了要進行疑難排解而必須開啟連接埠 3389，建議您使用 [Just-In-Time VM 存取](../security-center/security-center-just-in-time.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

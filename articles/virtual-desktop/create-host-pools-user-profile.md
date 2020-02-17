@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: helohr
-ms.openlocfilehash: 65d800cc6c1b6818369807ffeae9cd350a34066f
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: a6bc8546a4047e921d62953e39eaddf546f38229
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606996"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367435"
 ---
 # <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>使用檔案共用建立主機集區的設定檔容器
 
@@ -27,13 +27,13 @@ Windows 虛擬桌面服務提供 FSLogix 設定檔容器作為建議的使用者
 
 建立虛擬機器時，請務必將它放在與主機集區虛擬機器相同的虛擬網路上，或放置在與主機集區虛擬機器連線的虛擬網路上。 您可以使用多種方式來建立虛擬機器：
 
-- [從 Azure 資源庫映射建立虛擬機器](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#create-virtual-machine)
-- [從受控映射建立虛擬機器](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-generalized-managed)
+- [從 Azure 資源庫映射建立虛擬機器](../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)
+- [從受控映射建立虛擬機器](../virtual-machines/windows/create-vm-generalized-managed.md)
 - [從非受控映射建立虛擬機器](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)
 
 建立虛擬機器之後，請執行下列動作，將它加入網域：
 
-1. 使用您在建立虛擬機器時提供的認證[連接到虛擬機器](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine)。
+1. 使用您在建立虛擬機器時提供的認證[連接到虛擬機器](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine)。
 2. 在虛擬機器上，啟動 [**控制台**]，然後選取 [**系統**]。
 3. 選取 [**電腦名稱稱**]，選取 [**變更設定**]，然後選取 [**變更 ...** ]
 4. 選取 [**網域**]，然後在虛擬網路上輸入 Active Directory 網域。
@@ -43,23 +43,23 @@ Windows 虛擬桌面服務提供 FSLogix 設定檔容器作為建議的使用者
 
 以下是有關如何準備虛擬機器作為使用者設定檔之檔案共用的一般指示：
 
-1. 將 Windows 虛擬桌面 Active Directory 使用者新增至[Active Directory 安全性群組](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-security-groups)。 此安全性群組將用來驗證您剛建立的檔案共用虛擬機器的 Windows 虛擬桌面使用者。
-2. [連接到檔案共用虛擬機器](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine)。
+1. 將 Windows 虛擬桌面 Active Directory 使用者新增至[Active Directory 安全性群組](/windows/security/identity-protection/access-control/active-directory-security-groups/)。 此安全性群組將用來驗證您剛建立的檔案共用虛擬機器的 Windows 虛擬桌面使用者。
+2. [連接到檔案共用虛擬機器](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine)。
 3. 在檔案共用虛擬機器上，于**C 磁片磁碟機**上建立將用來做為設定檔共用的資料夾。
 4. 以滑鼠右鍵按一下新的資料夾，選取 [**屬性**]，選取 [**共用**]，然後選取 [ **Advanced 共用 ...** ]。
 5. 選取 [**共用此資料夾**]，選取 [**許可權 ...** ]，然後選取 [**新增 ...** ]。
 6. 搜尋您新增 Windows 虛擬桌面使用者的安全性群組，然後確定該群組具有 [**完全控制**]。
 7. 新增安全性群組之後，以滑鼠右鍵按一下資料夾 **，選取 [** 內容]，選取 [**共用**]，然後複製**網路路徑**以供稍後使用。
 
-如需許可權的詳細資訊，請參閱[FSLogix 檔](https://docs.microsoft.com/fslogix/fslogix-storage-config-ht)。
+如需許可權的詳細資訊，請參閱[FSLogix 檔](/fslogix/fslogix-storage-config-ht/)。
 
 ## <a name="configure-the-fslogix-profile-container"></a>設定 FSLogix 設定檔容器
 
 若要使用 FSLogix 軟體設定虛擬機器，請在註冊至主機集區的每部機器上執行下列動作：
 
-1. 使用您在建立虛擬機器時提供的認證[連接到虛擬機器](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine)。
+1. 使用您在建立虛擬機器時提供的認證[連接到虛擬機器](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine)。
 2. 啟動網際網路瀏覽器，並流覽[至此連結](https://go.microsoft.com/fwlink/?linkid=2084562)以下載 FSLogix 代理程式。
-3. 流覽至 .zip 檔案中的 \\\\Win32\\版本或 \\\\X64\\版本，然後執行**FSLogixAppsSetup**來安裝 FSLogix 代理程式。  若要深入瞭解如何安裝 FSLogix，請參閱[下載並安裝 FSLogix](https://docs.microsoft.com/fslogix/install-ht)。
+3. 流覽至 .zip 檔案中的 \\\\Win32\\版本或 \\\\X64\\版本，然後執行**FSLogixAppsSetup**來安裝 FSLogix 代理程式。  若要深入瞭解如何安裝 FSLogix，請參閱[下載並安裝 FSLogix](/fslogix/install-ht/)。
 4. 流覽至**Program Files** > **FSLogix** > **應用**程式，以確認代理程式已安裝。
 5. 在 [開始] 功能表中，以系統管理員身分執行**RegEdit** 。 流覽至**電腦\\HKEY_LOCAL_MACHINE\\軟體\\FSLogix**。
 6. 建立名為**Profiles**的金鑰。
@@ -67,7 +67,7 @@ Windows 虛擬桌面服務提供 FSLogix 設定檔容器作為建議的使用者
 
 | 名稱                | 類型               | 資料/值                        |
 |---------------------|--------------------|-----------------------------------|
-| 已啟用             | 值              | 1                                 |
+| 已啟用             | DWORD              | 1                                 |
 | VHDLocations        | 多字串值 | 「檔案共用的網路路徑」     |
 
 >[!IMPORTANT]

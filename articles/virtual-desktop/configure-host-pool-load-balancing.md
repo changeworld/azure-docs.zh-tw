@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 61c11e342f3b4f906b453e0962018a8f8c34acd4
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 1b341732dd844ba172c7e682fb7089c98ca9c165
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605863"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367600"
 ---
 # <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>設定 Windows 虛擬桌面負載平衡方法
 
@@ -25,7 +25,7 @@ ms.locfileid: "73605863"
 
 廣度優先的負載平衡是新的非持續性主機集區的預設設定。 廣度優先的負載平衡會將新的使用者會話分散到主機集區中所有可用的工作階段主機。 設定廣度優先的負載平衡時，您可以在主機集區中，為每個工作階段主機設定最大會話限制。
 
-首先，[下載並匯入 Windows 虛擬桌面的 PowerShell 模組](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)，以在您的 PowerShell 工作階段中使用 (如果您還沒這麼做的話)。 之後，請執行下列 Cmdlet 來登入您的帳戶：
+首先，[下載並匯入 Windows 虛擬桌面的 PowerShell 模組](/powershell/windows-virtual-desktop/overview/)，以在您的 PowerShell 工作階段中使用 (如果您還沒這麼做的話)。 之後，請執行下列 Cmdlet 來登入您的帳戶：
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"

@@ -7,16 +7,16 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: ad8dc610d15742844b8bec630d7bc3e08fb46973
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 849a3b1eb1a4648c2eaae7dd564f14b9c511fdcf
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606890"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367357"
 ---
 # <a name="delegated-access-in-windows-virtual-desktop"></a>Windows 虛擬桌面中委派的存取權
 
-Windows 虛擬桌面具有委派的存取模型，可讓您藉由指派角色給使用者，來定義允許特定使用者擁有的存取權數量。 角色指派有三個元件：安全性主體、角色定義和範圍。 Windows 虛擬桌面委派的存取模型是以 Azure RBAC 模型為基礎。 若要深入瞭解特定角色指派及其元件，請參閱[Azure 角色型存取控制總覽](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles)。
+Windows 虛擬桌面具有委派的存取模型，可讓您藉由指派角色給使用者，來定義允許特定使用者擁有的存取權數量。 角色指派有三個元件：安全性主體、角色定義和範圍。 Windows 虛擬桌面委派的存取模型是以 Azure RBAC 模型為基礎。 若要深入瞭解特定角色指派及其元件，請參閱[Azure 角色型存取控制總覽](../role-based-access-control/built-in-roles.md)。
 
 Windows 虛擬桌面委派存取針對角色指派的每個元素支援下列值：
 
@@ -25,7 +25,7 @@ Windows 虛擬桌面委派存取針對角色指派的每個元素支援下列值
     * 服務主體
 * 角色定義
     * 內建角色
-* Scope
+* 範圍
     * 租使用者群組
     * 租用戶
     * 主機集區

@@ -8,12 +8,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 091cf26a0c18aba0925ad23e61950f8622f6080b
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: b9d2bda1d3f01d2bf4bb152c0f62ade87bb61b4c
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989513"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368278"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>設定 Python 應用程式的 Azure 監視器（預覽）
 
@@ -38,9 +38,9 @@ Azure 監視器透過與[OpenCensus](https://opencensus.io)的整合，支援 Py
 
 1. [設定] 方塊隨即出現。 使用下表來填寫輸入欄位。
 
-   | 設定        | 值           | 說明  |
+   | 設定        | 值           | 描述  |
    | ------------- |:-------------|:-----|
-   | **名稱**      | 全域唯一值 | 識別您要監視之應用程式的名稱 |
+   | **名稱**      | 全域唯一值 | 用來識別您所監視之應用程式的名稱 |
    | **資源群組**     | myResourceGroup      | 要裝載 Application Insights 資料之新資源群組的名稱 |
    | **位置** | 美國東部 | 您附近或接近應用程式裝載位置附近的位置 |
 
@@ -107,7 +107,7 @@ OpenCensus 提供的匯出工具會對應至您將在 Azure 監視器中看到�
     [SpanData(name='test', context=SpanContext(trace_id=8aa41bc469f1a705aed1bdb20c342603, span_id=None, trace_options=TraceOptions(enabled=True), tracestate=None), span_id='f3f9f9ee6db4740a', parent_span_id=None, attributes=BoundedDict({}, maxlen=32), start_time='2019-06-27T18:21:46.157732Z', end_time='2019-06-27T18:21:47.269583Z', child_span_count=0, stack_trace=None, annotations=BoundedList([], maxlen=32), message_events=BoundedList([], maxlen=128), links=BoundedList([], maxlen=32), status=None, same_process_as_parent_span=None, span_kind=0)]
     ```
 
-3. 雖然輸入值對於示範用途很有説明，但我們還是會想要發出 `SpanData` 以 Azure 監視器。 根據下列程式碼範例，修改上一個步驟中的程式碼：
+3. 雖然輸入值對於示範用途很有説明，但我們還是會想要發出 `SpanData` 以 Azure 監視器。 直接將連接字串傳遞至匯出工具，或者您可以在環境變數中指定 `APPLICATIONINSIGHTS_CONNECTION_STRING`。 根據下列程式碼範例，修改上一個步驟中的程式碼：
 
     ```python
     from opencensus.ext.azure.trace_exporter import AzureExporter
@@ -140,7 +140,7 @@ OpenCensus 提供的匯出工具會對應至您將在 Azure 監視器中看到�
 
 6. 如需追蹤資料中遙測相互關聯的詳細資訊，請參閱 OpenCensus[遙測相互關聯](https://docs.microsoft.com/azure/azure-monitor/app/correlation#telemetry-correlation-in-opencensus-python)。
 
-### <a name="metrics"></a>計量
+### <a name="metrics"></a>度量
 
 1. 首先，讓我們來產生一些本機計量資料。 我們將建立一個簡單的計量，以追蹤使用者按下 Enter 的次數。
 
@@ -193,7 +193,7 @@ OpenCensus 提供的匯出工具會對應至您將在 Azure 監視器中看到�
     Point(value=ValueLong(7), timestamp=2019-10-09 20:58:07.138614)
     ```
 
-3. 雖然輸入值有助於示範用途，但最終我們會想要發出計量資料以 Azure 監視器。 根據下列程式碼範例，修改上一個步驟中的程式碼：
+3. 雖然輸入值有助於示範用途，但最終我們會想要發出計量資料以 Azure 監視器。 直接將連接字串傳遞至匯出工具，或者您可以在環境變數中指定 `APPLICATIONINSIGHTS_CONNECTION_STRING`。 根據下列程式碼範例，修改上一個步驟中的程式碼：
 
     ```python
     from datetime import datetime
@@ -243,7 +243,7 @@ OpenCensus 提供的匯出工具會對應至您將在 Azure 監視器中看到�
 
 4. 匯出程式會以固定間隔將計量資料傳送至 Azure 監視器。 預設值為每15秒。 我們會追蹤單一計量，因此此計量資料（包含其內含的任何值和時間戳記）會每隔一段時間傳送。 您可以在 [`customMetrics`] 下找到資料。
 
-### <a name="logs"></a>記錄
+### <a name="logs"></a>記錄檔
 
 1. 首先，讓我們來產生一些本機記錄資料。
 
@@ -277,7 +277,7 @@ OpenCensus 提供的匯出工具會對應至您將在 Azure 監視器中看到�
     90
     ```
 
-3. 雖然輸入值有助於示範用途，但最後我們會想要發出記錄資料以 Azure 監視器。 根據下列程式碼範例，修改上一個步驟中的程式碼：
+3. 雖然輸入值有助於示範用途，但最後我們會想要發出記錄資料以 Azure 監視器。 直接將連接字串傳遞至匯出工具，或者您可以在環境變數中指定 `APPLICATIONINSIGHTS_CONNECTION_STRING`。 根據下列程式碼範例，修改上一個步驟中的程式碼：
 
     ```python
     import logging

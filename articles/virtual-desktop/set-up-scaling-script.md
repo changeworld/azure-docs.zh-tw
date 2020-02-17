@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: helohr
-ms.openlocfilehash: c201df03bb156bac3f63d03cc4ca35215792f65c
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: f38fc45411c89351eb9a50a48f22d22905ee34e6
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77061476"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367244"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>使用 Azure 自動化調整工作階段主機規模
 
@@ -35,7 +35,7 @@ ms.locfileid: "77061476"
 在尖峰使用時間期間，作業會檢查目前會話的數目，以及每個主機集區目前正在執行之工作階段主機的 VM 容量。 它會使用此資訊來計算執行中的工作階段主機 Vm 是否可以根據針對**createazurelogicapp**檔案所定義的*SessionThresholdPerCPU*參數來支援現有會話。 如果工作階段主機 Vm 無法支援現有的會話，此作業會啟動主機集區中的其他工作階段主機 Vm。
 
 >[!NOTE]
->*SessionThresholdPerCPU*不會限制 VM 上的會話數目。 此參數只會決定何時需要啟動新的 Vm，以對連線進行負載平衡。 若要限制會話數目，您必須遵循 RdsHostPool 的指示，以適當地[設定](https://docs.microsoft.com/powershell/module/windowsvirtualdesktop/set-rdshostpool) *MaxSessionLimit*參數。
+>*SessionThresholdPerCPU*不會限制 VM 上的會話數目。 此參數只會決定何時需要啟動新的 Vm，以對連線進行負載平衡。 若要限制會話數目，您必須遵循 RdsHostPool 的指示，以適當地[設定](/powershell/module/windowsvirtualdesktop/set-rdshostpool/) *MaxSessionLimit*參數。
 
 在離峰使用時間期間，作業會根據*MinimumNumberOfRDSH*參數決定應關閉哪些工作階段主機 vm。 作業會將工作階段主機 Vm 設定為清空模式，以防止新會話連接到主機。 如果您將*LimitSecondsToForceLogOffUser*參數設定為非零的正值，腳本會通知任何目前已登入的使用者儲存其工作、等候設定的時間量，然後強制使用者登出。當工作階段主機 VM 上的所有使用者會話都已登出之後，腳本將會關閉 VM。
 
@@ -126,7 +126,7 @@ ms.locfileid: "77061476"
 
 接下來，您必須建立角色指派，讓 AzureRunAsConnection 可以與 Windows 虛擬桌面互動。 請務必使用 PowerShell，以有權建立角色指派的帳戶登入。
 
-首先，下載並匯入[Windows 虛擬桌面 powershell 模組](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)，以在您的 powershell 會話中使用（如果您還沒有這麼做）。 執行下列 PowerShell Cmdlet 以連線至 Windows 虛擬桌面並顯示您的租用戶。
+首先，下載並匯入[Windows 虛擬桌面 powershell 模組](/powershell/windows-virtual-desktop/overview/)，以在您的 powershell 會話中使用（如果您還沒有這麼做）。 執行下列 PowerShell Cmdlet 以連線至 Windows 虛擬桌面並顯示您的租用戶。
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"

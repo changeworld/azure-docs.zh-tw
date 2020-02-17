@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 934fe8271796ed6196c9e50a0eddd5d7de3d8432
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: bc5824fcb62477d4e6dc6c2b7390b1bfa916094f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76511887"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368052"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory 驗證管理操作參考指南
 
@@ -31,7 +31,7 @@ ms.locfileid: "76511887"
 
 管理 Azure Active Directory 需要持續執行重要的作業工作和進程，這可能不是首度發行專案的一部分。 您必須設定這些工作來優化您的環境，這仍然很重要。 主要工作和其建議的擁有者包括：
 
-| Task | 擁有者 |
+| 工作 | 擁有者 |
 | :- | :- |
 | 管理 Azure AD 中單一登入（SSO）設定的生命週期 | IAM 作業小組 |
 | 設計 Azure AD 應用程式的條件式存取原則 | InfoSec 架構團隊 |
@@ -105,7 +105,7 @@ ms.locfileid: "76511887"
 
 ### <a name="programmatic-usage-of-credentials"></a>以程式設計方式使用認證
 
-使用 PowerShell 或使用圖形 API 的應用程式 Azure AD 腳本需要安全驗證。 執行這些腳本和工具的認證管理不佳，會增加認證竊取的風險。 如果您使用的腳本或應用程式依賴硬式編碼的密碼或密碼提示，您應該先複習 config 檔案或原始程式碼中的密碼，然後取代這些相依性，並使用 Azure 受控識別、整合式 Windows 驗證或[憑證](https://docs.microsoft.com/azure/active-directory/reports-monitoring/tutorial-access-api-with-certificates)（如果可能的話）。 針對不可能發生先前解決方案的應用程式，請考慮使用[Azure Key Vault](https://azure.microsoft.com/services/key-vault/)。
+Azure AD 使用 PowerShell 的腳本或使用 Microsoft Graph API 的應用程式，都需要安全驗證。 執行這些腳本和工具的認證管理不佳，會增加認證竊取的風險。 如果您使用的腳本或應用程式依賴硬式編碼的密碼或密碼提示，您應該先複習 config 檔案或原始程式碼中的密碼，然後取代這些相依性，並使用 Azure 受控識別、整合式 Windows 驗證或[憑證](https://docs.microsoft.com/azure/active-directory/reports-monitoring/tutorial-access-api-with-certificates)（如果可能的話）。 針對不可能發生先前解決方案的應用程式，請考慮使用[Azure Key Vault](https://azure.microsoft.com/services/key-vault/)。
 
 如果您判斷有具有密碼認證的服務主體，而且不確定腳本或應用程式如何保護這些密碼認證，請洽詢應用程式的擁有者，以進一步瞭解使用模式。
 
@@ -300,28 +300,27 @@ Microsoft Intune 應用程式管理（MAM）可讓您將資料保護控制項（
 - 具有委派許可權的應用程式可以代表使用者讀取、傳送或管理電子郵件
 - 使用下列許可權授與的應用程式：
 
-| 資源 | 權限 |
+| 資源 | [權限] |
 | :- | :- |
 | Office 365 Exchange Online | 符合.AccessAsUser。 |
 | | EWS.AccessAsUser。 |
 | | Mail. 讀取 |
-| Microsoft Graph | Mail. 讀取 |
+| Microsoft Graph API | Mail. 讀取 |
 | | 郵件. 讀取。共用 |
 | | Mail. ReadWrite |
 
-- 已授與完整使用者模擬登入使用者的應用程式。 例如：
+- 已授與完整使用者模擬登入使用者的應用程式。 例如，
 
-|資源 | 權限 |
+|資源 | [權限] |
 | :- | :- |
-| Azure AD Graph | Directory.AccessAsUser.All |
-| Microsoft Graph | Directory.AccessAsUser.All |
+| Microsoft Graph API| 目錄. AccessAsUser. 全部 |
 | Azure REST API | user_impersonation |
 
 若要避免這種情況，您應該參閱[在 Office 365 中偵測並補救違法的同意](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants)授與，以找出並修正具有非法授與的應用程式，或具有超出所需授權的應用程式。 接下來，[完全移除自助服務](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-user-consent)，並[建立治理程式](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow)。 最後，排程應用程式許可權的定期檢查，並在不需要時予以移除。
 
 #### <a name="consent-grants-recommended-reading"></a>同意授與建議的閱讀
 
-- [Microsoft Graph 權限](https://docs.microsoft.com/graph/permissions-reference)
+- [Microsoft Graph API 許可權](https://docs.microsoft.com/graph/permissions-reference)
 
 ### <a name="user-and-group-settings"></a>使用者和群組設定
 

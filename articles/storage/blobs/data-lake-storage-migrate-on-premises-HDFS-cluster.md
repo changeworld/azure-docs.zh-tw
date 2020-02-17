@@ -3,17 +3,17 @@ title: 使用 Azure 資料箱從內部內部部署 HDFS 存放區遷移至 Azure
 description: 將資料從內部部署的 HDFS 存放區遷移至 Azure 儲存體
 author: normesta
 ms.service: storage
-ms.date: 11/19/2019
+ms.date: 02/14/2019
 ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: e82c325ad5ad91e6b4503949e6534b054023f1f2
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 990b4afa6bdb63e626be0272553aea408afb864f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990958"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368687"
 ---
 # <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>使用 Azure 資料箱從內部內部部署 HDFS 存放區遷移至 Azure 儲存體
 
@@ -25,19 +25,19 @@ ms.locfileid: "76990958"
 > * 準備遷移您的資料。
 > * 將您的資料複製到資料箱或 Data Box Heavy 裝置。
 > * 將裝置寄回給 Microsoft。
-> * 將資料移至 Data Lake Storage Gen2。
+> * 將存取權限套用至檔案和目錄（僅限 Data Lake Storage Gen2）
 
 ## <a name="prerequisites"></a>必要條件
 
 您需要這些專案才能完成遷移。
 
-* 兩個儲存體帳戶;其中一個已啟用階層命名空間，另一個則不是。
+* Azure 儲存體帳戶。
 
 * 包含來源資料的內部部署 Hadoop 叢集。
 
 * [Azure 資料箱裝置](https://azure.microsoft.com/services/storage/databox/)。
 
-  * [訂購您的資料箱](https://docs.microsoft.com/azure/databox/data-box-deploy-ordered)或[Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-ordered)。 訂購您的裝置時，請記得選擇**未**在其上啟用階層命名空間的儲存體帳戶。 這是因為資料箱的裝置尚未支援直接內嵌到 Azure Data Lake Storage Gen2。 您必須將複製到儲存體帳戶，然後在 ADLS Gen2 帳戶中執行第二個複本。 下列步驟提供這項指示。
+  * [訂購您的資料箱](https://docs.microsoft.com/azure/databox/data-box-deploy-ordered)或[Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-ordered)。 
 
   * 將您的[資料箱](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up)或[Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-set-up)連接到內部部署網路，並將其連線。
 
@@ -173,36 +173,14 @@ ms.locfileid: "76990958"
 
     * 如 Data Box Heavy 裝置，請參閱[寄送 Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-picked-up)。
 
-5. 當 Microsoft 收到您的裝置之後，它會連線到資料中心網路，並將資料上傳至您在放置裝置訂單時所指定的儲存體帳戶（已停用階層命名空間）。 針對所有您的資料上傳至 Azure 的 BOM 檔案進行驗證。 您現在可以將此資料移至 Data Lake Storage Gen2 儲存體帳戶。
+5. 當 Microsoft 收到您的裝置之後，它會連線到資料中心網路，並將資料上傳至您在放置裝置訂單時所指定的儲存體帳戶。 針對所有您的資料上傳至 Azure 的 BOM 檔案進行驗證。 
 
-## <a name="move-the-data-into-azure-data-lake-storage-gen2"></a>將資料移至 Azure Data Lake Storage Gen2
+## <a name="apply-access-permissions-to-files-and-directories-data-lake-storage-gen2-only"></a>將存取權限套用至檔案和目錄（僅限 Data Lake Storage Gen2）
 
-您的 Azure 儲存體帳戶中已經有資料。 現在您會將資料複製到您的 Azure Data Lake 儲存體帳戶，並將存取權限套用至檔案和目錄。
+您的 Azure 儲存體帳戶中已經有資料。 現在您會將存取權限套用至檔案和目錄。
 
 > [!NOTE]
-> 如果您使用 Azure Data Lake Storage Gen2 做為資料存放區，則需要此步驟。 如果您只使用沒有階層命名空間的 blob 儲存體帳戶作為資料存放區，則可以略過本節。
-
-### <a name="copy-data-to-the-azure-data-lake-storage-gen-2-account"></a>將資料複製到 Azure Data Lake Storage Gen 2 帳戶
-
-您可以使用 Azure Data Factory 或使用以 Azure 為基礎的 Hadoop 叢集來複製資料。
-
-* 若要使用 Azure Data Factory，請參閱[Azure Data Factory 將資料移至 ADLS Gen2](https://docs.microsoft.com/azure/data-factory/load-azure-data-lake-storage-gen2)。 請務必指定**Azure Blob 儲存體**做為來源。
-
-* 若要使用以 Azure 為基礎的 Hadoop 叢集，請執行此 DistCp 命令：
-
-    ```bash
-    hadoop distcp -Dfs.azure.account.key.<source_account>.dfs.windows.net=<source_account_key> abfs://<source_container> @<source_account>.dfs.windows.net/<source_path> abfs://<dest_container>@<dest_account>.dfs.windows.net/<dest_path>
-    ```
-
-    * 將 `<source_account>` 和 `<dest_account>` 預留位置取代為來源和目的地儲存體帳戶的名稱。
-
-    * 將 `<source_container>` 和 `<dest_container>` 預留位置取代為來源和目的地容器的名稱。
-
-    * 將 `<source_path>` 和 `<dest_path>` 預留位置取代為來源和目的地目錄路徑。
-
-    * 將 `<source_account_key>` 預留位置取代為包含資料之儲存體帳戶的存取金鑰。
-
-    此命令會將資料和中繼資料從您的儲存體帳戶複製到 Data Lake Storage Gen2 儲存體帳戶。
+> 只有當您使用 Azure Data Lake Storage Gen2 做為資料存放區時，才需要執行此步驟。 如果您只使用沒有階層命名空間的 blob 儲存體帳戶作為資料存放區，則可以略過本節。
 
 ### <a name="create-a-service-principal-for-your-azure-data-lake-storage-gen2-account"></a>建立 Azure Data Lake Storage Gen2 帳戶的服務主體
 

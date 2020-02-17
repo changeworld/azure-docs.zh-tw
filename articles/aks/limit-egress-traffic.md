@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/21/2020
 ms.author: mlearned
-ms.openlocfilehash: df8b4d7ea44f885ee0fed0479ba87a4bc9ba1a29
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 1206c20ec4f547dd591ac711d546d1dad0b7a19a
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310164"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251595"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>控制 Azure Kubernetes Service 中叢集節點的輸出流量（AKS）
 
@@ -45,7 +45,7 @@ ms.locfileid: "76310164"
 * 並非所有案例都需要[選擇性的 AKS 叢集建議位址和埠](#optional-recommended-addresses-and-ports-for-aks-clusters)，但是與其他服務（例如 Azure 監視器）的整合將無法正確運作。 請參閱這份選擇性埠和 Fqdn 清單，並授權您的 AKS 叢集中使用的任何服務和元件。
 
 > [!NOTE]
-> 限制輸出流量僅適用于新的 AKS 叢集。 針對現有的叢集，請先使用`az aks upgrade`命令執行[叢集升級作業][aks-upgrade]，再限制輸出流量。
+> 限制輸出流量僅適用于新的 AKS 叢集。 針對現有的叢集，請使用 `az aks upgrade` 命令[執行叢集升級][aks-upgrade]作業，然後才限制輸出流量。
 
 ## <a name="required-ports-and-addresses-for-aks-clusters"></a>AKS 叢集所需的埠和位址
 
@@ -59,14 +59,16 @@ AKS 叢集需要下列輸出埠/網路規則：
 * 如果您有 pod 直接存取 API 伺服器，則也需要適用于 DNS 的 UDP 埠*53* 。
 
 需要下列 FQDN/應用程式規則：
+
+> [!IMPORTANT]
+> * **。 blob.core.windows.net 和 aksrepos.azurecr.io**不再需要用於輸出鎖定的 FQDN 規則。  針對現有的叢集，請使用 `az aks upgrade` 命令來[執行叢集升級][aks-upgrade]作業，以移除這些規則。
+
 - Azure 全域
 
-| FQDN                       | Port      | 使用      |
+| FQDN                       | 連接埠      | 使用      |
 |----------------------------|-----------|----------|
 | *. hcp。\<位置\>. azmk8s.io | HTTPS：443、TCP：22、TCP：9000 | 此位址是 API 伺服器端點。 以部署 AKS 叢集所在的區域取代 *\<位置\>* 。 |
 | *. 執行。\<位置\>. azmk8s.io | HTTPS：443、TCP：22、TCP：9000 | 此位址是 API 伺服器端點。 以部署 AKS 叢集所在的區域取代 *\<位置\>* 。 |
-| aksrepos.azurecr.io        | HTTPS：443 | 需要此位址才能存取 Azure Container Registry （ACR）中的影像。 此登錄包含叢集的升級和調整期間，叢集運作所需的協力廠商映射/圖表（例如計量伺服器、核心 dns 等）|
-| *.blob.core.windows.net    | HTTPS：443 | 此位址是 ACR 中所儲存映射的後端存放區。 |
 | mcr.microsoft.com          | HTTPS：443 | 需要有此位址，才能存取 Microsoft Container Registry （MCR）中的映射。 此登錄包含在叢集的升級和調整期間，叢集運作所需的第一方映射/圖表（例如，moby 等） |
 | *. cdn.mscr.io              | HTTPS：443 | Azure 內容傳遞網路（CDN）支援的 MCR 儲存體需要此位址。 |
 | management.azure.com       | HTTPS：443 | Kubernetes 取得/PUT 作業需要此位址。 |
@@ -74,9 +76,10 @@ AKS 叢集需要下列輸出埠/網路規則：
 | ntp.ubuntu.com             | UDP：123   | 在 Linux 節點上進行 NTP 時間同步處理時，需要此位址。 |
 | packages.microsoft.com     | HTTPS：443 | 此位址是用於*快取 apt-get*作業的 Microsoft 封裝存放庫。  範例套件包括 Moby、PowerShell 和 Azure CLI。 |
 | acs-mirror.azureedge.net   | HTTPS：443 | 此位址適用于安裝必要的二進位檔（例如 kubenet 和 Azure CNI）所需的存放庫。 |
+
 - Azure China 21Vianet
 
-| FQDN                       | Port      | 使用      |
+| FQDN                       | 連接埠      | 使用      |
 |----------------------------|-----------|----------|
 | *. hcp。\<位置\>. cx.prod.service.azk8s.cn | HTTPS：443、TCP：22、TCP：9000 | 此位址是 API 伺服器端點。 以部署 AKS 叢集所在的區域取代 *\<位置\>* 。 |
 | *. 執行。\<位置\>. cx.prod.service.azk8s.cn | HTTPS：443、TCP：22、TCP：9000 | 此位址是 API 伺服器端點。 以部署 AKS 叢集所在的區域取代 *\<位置\>* 。 |
@@ -87,14 +90,13 @@ AKS 叢集需要下列輸出埠/網路規則：
 | login.chinacloudapi.cn  | HTTPS：443 | Azure Active Directory 驗證需要此位址。 |
 | ntp.ubuntu.com             | UDP：123   | 在 Linux 節點上進行 NTP 時間同步處理時，需要此位址。 |
 | packages.microsoft.com     | HTTPS：443 | 此位址是用於*快取 apt-get*作業的 Microsoft 封裝存放庫。  範例套件包括 Moby、PowerShell 和 Azure CLI。 |
-- Azure 政府機構
 
-| FQDN                       | Port      | 使用      |
+- Azure Government
+
+| FQDN                       | 連接埠      | 使用      |
 |----------------------------|-----------|----------|
 | *. hcp。\<位置\>. cx.aks.containerservice.azure.us | HTTPS：443、TCP：22、TCP：9000 | 此位址是 API 伺服器端點。 以部署 AKS 叢集所在的區域取代 *\<位置\>* 。 |
 | *. 執行。\<位置\>. cx.aks.containerservice.azure.us | HTTPS：443、TCP：22、TCP：9000 | 此位址是 API 伺服器端點。 以部署 AKS 叢集所在的區域取代 *\<位置\>* 。 |
-| aksrepos.azurecr.io        | HTTPS：443 | 需要此位址才能存取 Azure Container Registry （ACR）中的影像。 此登錄包含叢集的升級和調整期間，叢集運作所需的協力廠商映射/圖表（例如計量伺服器、核心 dns 等）|
-| *.blob.core.windows.net    | HTTPS：443 | 此位址是 ACR 中所儲存映射的後端存放區。 |
 | mcr.microsoft.com          | HTTPS：443 | 需要有此位址，才能存取 Microsoft Container Registry （MCR）中的映射。 此登錄包含在叢集的升級和調整期間，叢集運作所需的第一方映射/圖表（例如，moby 等） |
 | *. cdn.mscr.io              | HTTPS：443 | Azure 內容傳遞網路（CDN）支援的 MCR 儲存體需要此位址。 |
 | management.usgovcloudapi.net       | HTTPS：443 | Kubernetes 取得/PUT 作業需要此位址。 |
@@ -102,13 +104,14 @@ AKS 叢集需要下列輸出埠/網路規則：
 | ntp.ubuntu.com             | UDP：123   | 在 Linux 節點上進行 NTP 時間同步處理時，需要此位址。 |
 | packages.microsoft.com     | HTTPS：443 | 此位址是用於*快取 apt-get*作業的 Microsoft 封裝存放庫。  範例套件包括 Moby、PowerShell 和 Azure CLI。 |
 | acs-mirror.azureedge.net   | HTTPS：443 | 此位址適用于安裝必要的二進位檔（例如 kubenet 和 Azure CNI）所需的存放庫。 |
+
 ## <a name="optional-recommended-addresses-and-ports-for-aks-clusters"></a>適用于 AKS 叢集的選擇性建議位址和埠
 
 下列輸出埠/網路規則對於 AKS 叢集而言是選擇性的：
 
 建議使用下列 FQDN/應用程式規則，讓 AKS 叢集正常運作：
 
-| FQDN                                    | Port      | 使用      |
+| FQDN                                    | 連接埠      | 使用      |
 |-----------------------------------------|-----------|----------|
 | security.ubuntu.com、azure.archive.ubuntu.com、changelogs.ubuntu.com | HTTP：80   | 此位址可讓 Linux 叢集節點下載所需的安全性修補程式和更新。 |
 
@@ -116,7 +119,7 @@ AKS 叢集需要下列輸出埠/網路規則：
 
 已啟用 GPU 的 AKS 叢集需要下列 FQDN/應用程式規則：
 
-| FQDN                                    | Port      | 使用      |
+| FQDN                                    | 連接埠      | 使用      |
 |-----------------------------------------|-----------|----------|
 | nvidia.github.io | HTTPS：443 | 此位址用於以 GPU 為基礎的節點上進行正確的驅動程式安裝和操作。 |
 | us.download.nvidia.com | HTTPS：443 | 此位址用於以 GPU 為基礎的節點上進行正確的驅動程式安裝和操作。 |
@@ -126,7 +129,7 @@ AKS 叢集需要下列輸出埠/網路規則：
 
 已啟用容器 Azure 監視器的 AKS 叢集需要下列 FQDN/應用程式規則：
 
-| FQDN                                    | Port      | 使用      |
+| FQDN                                    | 連接埠      | 使用      |
 |-----------------------------------------|-----------|----------|
 | dc.services.visualstudio.com | HTTPS：443  | 這適用于使用 Azure 監視器的正確計量和監視遙測。 |
 | *.ods.opinsights.azure.com    | HTTPS：443 | Azure 監視器用於內嵌 log analytics 資料。 |
@@ -138,12 +141,12 @@ AKS 叢集需要下列輸出埠/網路規則：
 
 啟用 Azure Dev Spaces 的 AKS 叢集需要下列 FQDN/應用程式規則：
 
-| FQDN                                    | Port      | 使用      |
+| FQDN                                    | 連接埠      | 使用      |
 |-----------------------------------------|-----------|----------|
 | cloudflare.docker.com | HTTPS：443 | 此位址可用來提取 linux alpine 和其他 Azure Dev Spaces 映射 |
 | gcr.io | HTTP：443 | 此位址可用來提取 helm/tiller 映射 |
 | storage.googleapis.com | HTTP：443 | 此位址可用來提取 helm/tiller 映射 |
-| azds-<guid>。<location>。azds.io | HTTPS：443 | 與您的控制器 Azure Dev Spaces 後端服務進行通訊。 您可以在% USERPROFILE%\.azds\settings.json 的 "dataplaneFqdn" 中找到確切的 FQDN |
+| azds-<guid>.<location>.azds.io | HTTPS：443 | 與您的控制器 Azure Dev Spaces 後端服務進行通訊。 您可以在% USERPROFILE%\.azds\settings.json 的 "dataplaneFqdn" 中找到確切的 FQDN |
 
 ## <a name="required-addresses-and-ports-for-aks-clusters-with-azure-policy-in-public-preview-enabled"></a>已啟用 Azure 原則（處於公開預覽狀態）的 AKS 叢集所需的位址和埠
 
@@ -152,11 +155,11 @@ AKS 叢集需要下列輸出埠/網路規則：
 
 已啟用 Azure 原則的 AKS 叢集需要下列 FQDN/應用程式規則。
 
-| FQDN                                    | Port      | 使用      |
+| FQDN                                    | 連接埠      | 使用      |
 |-----------------------------------------|-----------|----------|
 | gov-prod-policy-data.trafficmanager.net | HTTPS：443 | 此位址會用來進行 Azure 原則的正確操作。 （目前在 AKS 中為預覽狀態） |
 | raw.githubusercontent.com | HTTPS：443 | 此位址是用來從 GitHub 提取內建原則，以確保 Azure 原則的正確操作。 （目前在 AKS 中為預覽狀態） |
-| *. gk.<location>.azmk8s.io | HTTPS：443 | Azure 原則附加元件，會與在主伺服器中執行的閘道管理員 audit 端點交談，以取得審核結果。 |
+| *.gk.<location>.azmk8s.io | HTTPS：443 | Azure 原則附加元件，會與在主伺服器中執行的閘道管理員 audit 端點交談，以取得審核結果。 |
 | dc.services.visualstudio.com | HTTPS：443 | 將遙測資料傳送至 application insights 端點的 Azure 原則附加元件。 |
 
 ## <a name="required-by-windows-server-based-nodes-in-public-preview-enabled"></a>已啟用 Windows Server 架構節點的必要項（公開預覽）
@@ -166,7 +169,7 @@ AKS 叢集需要下列輸出埠/網路規則：
 
 以 Windows Server 為基礎的 AKS 叢集需要下列 FQDN/應用程式規則：
 
-| FQDN                                    | Port      | 使用      |
+| FQDN                                    | 連接埠      | 使用      |
 |-----------------------------------------|-----------|----------|
 | onegetcdn.azureedge.net、winlayers.blob.core.windows.net、winlayers.cdn.mscr.io、go.microsoft.com | HTTPS：443 | 安裝與 windows 相關的二進位檔 |
 | mp.microsoft.com、www<span></span>. msftconnecttest.com、ctldl.windowsupdate.com | HTTP：80 | 安裝與 windows 相關的二進位檔 |

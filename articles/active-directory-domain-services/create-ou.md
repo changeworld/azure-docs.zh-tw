@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: e202eed8e3694245b5b4527578c02cfb518723f4
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 4db6ad83c44e0c811df0a3b91a473861e4e1ab87
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705350"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367151"
 ---
 # <a name="create-an-organizational-unit-ou-in-an-azure-ad-domain-services-managed-domain"></a>在 Azure AD Domain Services 受控網域中建立組織單位（OU）
 
@@ -54,7 +54,7 @@ Azure AD DS 受控網域包含兩個內建的 Ou- *AADDC 電腦*和*AADDC 使用
 * 系統會建立*AADDC 使用者*的預設 OU，其中包含您 Azure AD 租使用者中所有已同步處理的使用者帳戶。
     * 您無法將使用者或群組從*AADDC users* OU 移至您所建立的自訂 ou。 只有在 Azure AD DS 受控網域中建立的使用者帳戶或資源可以移至自訂 Ou。
 * 您在自訂 Ou 底下建立的使用者帳戶、群組、服務帳戶和電腦物件，無法在您的 Azure AD 租使用者中使用。
-    * 這些物件不會使用 Azure AD 圖形 API 或在 Azure AD UI 中顯示;它們僅適用于您的 Azure AD DS 受控網域。
+    * 這些物件不會使用 Microsoft Graph API 或在 Azure AD UI 中顯示;它們僅適用于您的 Azure AD DS 受控網域。
 
 ## <a name="create-a-custom-ou"></a>建立自訂 OU
 

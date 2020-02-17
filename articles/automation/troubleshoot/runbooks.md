@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 65006b8357db44c3e1b8f8d9e819615b5dd9db6e
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 571be831d337c71a084780da18b480cdd1e42d20
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031743"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77365203"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>針對 Runbook 的錯誤進行疑難排解
 
@@ -56,7 +56,7 @@ Run Login-AzureRMAccount to login.
 * 不同版本的 AzureRM 模組。
 * 您正嘗試存取不同訂用帳戶中的資源。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 如果您在更新一個 AzureRM 模組之後收到此錯誤，您應該將所有的 AzureRM 模組更新為相同的版本。
 
@@ -106,7 +106,7 @@ The subscription named <subscription name> cannot be found.
 
 * 未將嘗試取得訂用帳戶詳細資料的 Azure Active Directory 使用者設定為訂用帳戶的管理員。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 採取下列步驟，以判斷您是否已向 Azure 進行驗證並取得您嘗試選取之訂用帳戶的存取權：
 
@@ -140,7 +140,7 @@ Add-AzureAccount: AADSTS50079: Strong authentication enrollment (proof-up) is re
 
 如果您的 Azure 帳戶使用多重要素驗證，您就無法使用 Azure Active Directory 使用者來向 Azure 進行驗證。 相反地，您必須使用憑證或服務主體來向 Azure 驗證。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 若要搭配 Azure 傳統部署模型 Cmdlet 使用憑證，請參閱[建立及新增憑證來管理 azure 服務](https://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx)。 若要使用具有 Azure Resource Manager Cmdlet 的服務主體，請參閱[使用 Azure 入口網站建立服務主體](../../active-directory/develop/howto-create-service-principal-portal.md)和使用[Azure Resource Manager 驗證服務主體](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)。
 
@@ -166,7 +166,7 @@ At line:16 char:1
 
 此錯誤是由於在 Runbook 中使用 AzureRM 和 Az Cmdlet 所致。 您先匯入 `Az` 再匯入 `AzureRM` 時發生了此錯誤。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 Az 和 AzureRM Cmdlet 無法在相同的 runbook 中匯入和使用。 若要深入瞭解 Azure 自動化中的 Az Cmdlet，請參閱[Azure 自動化中的 az 模組支援](../az-modules.md)。
 
@@ -184,11 +184,11 @@ Exception: A task was canceled.
 
 此錯誤可能是因為使用過期的 Azure 模組所造成。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 此錯誤可以透過將 Azure 模組更新至最新版本來解決。
 
-在您的自動化帳戶中，按一下 [模組]，然後按一下 [更新 Azure 模組]。 更新大約需要 15 分鐘，完成之後，請重新執行先前失敗的 Runbook。 若要深入了解如何更新模組，請參閱[更新 Azure 自動化中的 Azure 模組](../automation-update-azure-modules.md)。
+在您的自動化帳戶中，按一下 [**模組**]，然後按一下 [**更新 Azure 模組**]。 更新大約需要 15 分鐘，完成之後，請重新執行先前失敗的 Runbook。 若要深入了解如何更新模組，請參閱[更新 Azure 自動化中的 Azure 模組](../automation-update-azure-modules.md)。
 
 ## <a name="runbook-auth-failure"></a>案例：處理多個訂用帳戶時 Runbook 失敗
 
@@ -200,7 +200,7 @@ Exception: A task was canceled.
 
 Runbook 在執行時未使用正確的內容。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 在使用多個訂用帳戶時，若叫用 Runbook，可能會遺失訂用帳戶內容。 若要確保訂用帳戶的內容會傳遞至 Runbook，請將 `AzureRmContext` 參數新增至 Cmdlet，並將內容傳遞給它。 也建議您使用 `Disable-AzureRmContextAutosave` Cmdlet 搭配**程序**範圍，以確保您使用的認證只會用於目前的 Runbook。
 
@@ -248,13 +248,13 @@ The term 'Connect-AzureRmAccount' is not recognized as the name of a cmdlet, fun
 * 包含 Cmdlet 的模組不會匯入至自動化帳戶。
 * 包含 Cmdlet 的模組已匯入，但已過期。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 藉由完成下列其中一項工作，就可以解決此錯誤：
 
 如果模組是 Azure 模組，請參閱[如何更新 Azure 自動化中的 Azure PowerShell 模組](../automation-update-azure-modules.md)，以瞭解如何在您的自動化帳戶中更新您的模組。
 
-如果是個別模組，則請確定已將該模組匯入到您的「自動化帳戶」中。
+如果它是個別的模組，請確定已匯入您的自動化帳戶中的模組。
 
 ## <a name="job-attempted-3-times"></a>案例：已嘗試啟動 runbook 作業三次，但每次都無法啟動
 
@@ -280,7 +280,7 @@ The job was tried three times but it failed
 
 * 太多例外狀況資料。 您的 runbook 嘗試將太多例外狀況資料寫入輸出資料流程。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 * 記憶體限制，網路通訊端。 在記憶體限制內工作的建議方式是將工作負載分割到多個 runbook，在記憶體中處理較少的資料，避免從 runbook 寫入不必要的輸出，並考慮將多少檢查點寫入您的 PowerShell 工作流程手冊. 使用 clear 方法（例如 `$myVar.clear`）來清除變數，並使用 `[GC]::Collect` 立即執行垃圾收集。 這些動作會減少 Runbook 在執行階段的記憶體使用量。
 
@@ -310,7 +310,7 @@ No certificate was found in the certificate store with thumbprint
 
 如果認證資產名稱無效，就會發生此錯誤。 如果您用來設定自動化認證資產的使用者名稱和密碼無效，可能也會發生此錯誤。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 為了判斷錯誤原因，請執行下列步驟：
 
@@ -365,7 +365,7 @@ Object reference not set to an instance of an object
 
 已知的問題是，如果包含物件，Set-azurermautomationrunbook 就不會正確地處理輸出資料流程。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 若要解決此問題，建議您執行輪詢邏輯，並使用[以及搭配 get-azurermautomationjoboutput 指令程式](/powershell/module/azurerm.automation/get-azurermautomationjoboutput)來取出輸出。 下列範例中定義了此邏輯的範例。
 
@@ -407,7 +407,7 @@ Cannot convert the <ParameterType> value of type Deserialized <ParameterType> to
 
 如果您的 Runbook 是「PowerShell 工作流程」，它會以還原序列化格式儲存複雜物件，以在暫止工作流程時保存 Runbook 狀態。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 下列三個解決方案的任何一個可以修正此問題：
 
@@ -429,7 +429,7 @@ The quota for the monthly total job run time has been reached for this subscript
 
 當作業執行超過您的帳戶的 500 分鐘免費配額時，會發生此錯誤。 這個配額會套用至所有類型的作業執行工作。 這其中部分工作可能會測試作業、從入口網站中啟動作業、使用 Webhook 執行作業，或者使用 Azure 入口網站或您的資料中心排程作業來執行。 若要深入了解自動化的價格，請參閱[自動化價格](https://azure.microsoft.com/pricing/details/automation/)。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 如果您每個月想要使用超過 500 分鐘的處理時間，您必須將您的訂用帳戶從免費層變更為基本層。 您可以採取下列步驟，升級至基本層：
 
@@ -452,12 +452,12 @@ The quota for the monthly total job run time has been reached for this subscript
 
 當 PowerShell 引擎找不到您在 Runbook 中使用的 Cmdlet 時，就會發生此錯誤。 這個錯誤可能是因為帳戶中遺漏了包含該 Cmdlet 的模組、與 Runbook 名稱發生名稱衝突，或該 Cmdlet 也存在於另一個模組中而自動化無法解析名稱。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 下列任何一個解決方案都可以修正此問題：
 
 * 確認您已正確輸入 Cmdlet 名稱。
-* 請確定 Cmdlet 存在於您的自動化帳戶中，而且沒有任何衝突。 如要確認 Cmdlet 是否存在，請以編輯模式開啟 Runbook，然後搜尋您想要在程式庫中尋找的 Cmdlet，或執行 `Get-Command <CommandName>`。 在驗證 Cmdlet 可供帳戶使用，且與其他 Cmdlet 或 Runbook 沒有名稱衝突之後，請將其新增至畫布，並確定您在 Runbook 中使用有效的參數集。
+* 請確定 Cmdlet 存在於您的自動化帳戶中且沒有衝突。 如要確認 Cmdlet 是否存在，請以編輯模式開啟 Runbook，然後搜尋您想要在程式庫中尋找的 Cmdlet，或執行 `Get-Command <CommandName>`。 在驗證 Cmdlet 可供帳戶使用，且與其他 Cmdlet 或 Runbook 沒有名稱衝突之後，請將其新增至畫布，並確定您在 Runbook 中使用有效的參數集。
 * 如果有名稱衝突且 Cmdlet 可在兩個不同的模組中使用，您可以使用 Cmdlet 的完整名稱來解決此問題。 例如，您可以使用 **ModuleName\CmdletName**。
 * 如果您是以混合式背景工作角色群組身分在內部部署環境中執行 Runbook，則請確定模組和 Cmdlet 是安裝在裝載混合式背景工作角色的機器上。
 
@@ -477,7 +477,7 @@ The job was evicted and subsequently reached a Stopped state. The job cannot con
 
 Runbook 會在 Azure 沙箱中的公平共用所允許的3小時限制內執行。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 其中一個建議的解決方案是在[混合式 Runbook 背景工作角色](../automation-hrw-run-runbooks.md)上執行 Runbook。
 
@@ -505,7 +505,7 @@ Runbook 會在 Azure 沙箱中的公平共用所允許的3小時限制內執行�
 
 您嘗試呼叫的 Webhook 已停用或過期。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 如果 Webhook 已停用，您可以透過 Azure 入口網站重新啟用 Webhook。 如果 Webhook 已過期，就必須先刪除 Webhook 再加以重新建立。 如果尚未過期，您只能[更新 Webhook](../automation-webhooks.md#renew-webhook)。
 
@@ -523,7 +523,7 @@ Runbook 會在 Azure 沙箱中的公平共用所允許的3小時限制內執行�
 
 從有許多[詳細資訊資料流](../automation-runbook-output-and-messages.md#verbose-stream)的 Runbook 中擷取作業輸出時，就可能會發生此錯誤。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 有兩種方法可以解決此錯誤：
 
@@ -544,7 +544,7 @@ Exception was thrown - Cannot invoke method. Method invocation is supported only
 
 當您在 Azure 中執行的 runbook 中啟動 PowerShell 工作時，可能會發生此錯誤。 可能會發生此行為，因為在 Azure 沙箱中執行的 runbook 可能無法在[完整語言模式](/powershell/module/microsoft.powershell.core/about/about_language_modes)中執行。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 有兩種方法可以解決此錯誤：
 
@@ -563,59 +563,83 @@ Exception was thrown - Cannot invoke method. Method invocation is supported only
 
 Sudoers 檔案中未正確設定適用于 Linux 的 Log Analytics 代理程式的 nxautomationuser 帳戶。 混合式 Runbook 背景工作角色需要適當的帳戶許可權和其他資料設定，才能在 Linux Runbook Worker 上簽署 runbook。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 * 請確定混合式 Runbook 背景工作角色在機器上具有 GnuPG （GPG）可執行檔。
 
 * 確認 sudoers 檔案中的 nxautomationuser 帳戶設定。 請參閱[在混合式 Runbook 背景工作角色上執行 runbook](../automation-hrw-run-runbooks.md)
 
+## <a name="scenario-cmdlet-failing-in-pnp-powershell-runbook-on-azure-automation"></a>案例：在 Azure 自動化上 PnP PowerShell runbook 中的 Cmdlet 失敗
+
+### <a name="issue"></a>問題
+
+當 runbook 直接將「PnP」 PowerShell 產生的物件寫入 Azure 自動化的輸出時，Cmdlet 輸出將無法串流回到「自動化」。
+
+### <a name="cause"></a>原因
+
+此問題最常見的原因是 Azure 自動化處理會叫用 PnP PowerShell Cmdlet （例如**pnplistitem**）的 runbook，而不會攔截傳回的物件。
+
+### <a name="resolution"></a>解決方案
+
+編輯您的腳本，將任何傳回值指派給變數，讓 Cmdlet 不會嘗試將整個物件寫入標準輸出。 腳本可以將輸出資料流程重新導向至 Cmdlet，如下所示。
+
+```azurecli
+  $null = add-pnplistitem
+```
+如果您的腳本會剖析 Cmdlet 輸出，腳本必須將輸出儲存在變數中，並操作變數，而不是只串流輸出。
+
+```azurecli
+$SomeVariable = add-pnplistitem ....
+if ($SomeVariable.someproperty -eq ....
+```
+
 ## <a name="other"></a>我的問題未列于上方
 
 下列各節列出其他常見錯誤，以及支援的檔，以協助您解決問題。
 
-## <a name="hybrid-runbook-worker-doesnt-run-jobs-or-isnt-responding"></a>混合式 Runbook 背景工作角色沒有執行作業或沒有回應
+### <a name="hybrid-runbook-worker-doesnt-run-jobs-or-isnt-responding"></a>混合式 Runbook 背景工作角色沒有執行作業或沒有回應
 
 如果您使用混合式背景工作角色來執行作業，而不是 Azure 自動化，您可能需要針對混合式背景[工作角色本身進行疑難排解](https://docs.microsoft.com/azure/automation/troubleshoot/hybrid-runbook-worker)。
 
-## <a name="runbook-fails-with-no-permission-or-some-variation"></a>Runbook 因為「沒有權限」或一些變異而失敗
+### <a name="runbook-fails-with-no-permission-or-some-variation"></a>Runbook 因為「沒有權限」或一些變異而失敗
 
 執行身分帳戶可能沒有與您目前帳戶相同的 Azure 資源許可權。 請確定您的執行身分帳戶具有[許可權，可存取](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)腳本中使用的任何資源。
 
-## <a name="runbooks-were-working-but-suddenly-stopped"></a>Runbook 已運作，但突然停止
+### <a name="runbooks-were-working-but-suddenly-stopped"></a>Runbook 已運作，但突然停止
 
 * 如果 runbook 先前已執行但已停止，請確定[執行身分帳戶](https://docs.microsoft.com/azure/automation/manage-runas-account#cert-renewal)尚未過期。
 * 如果您使用 webhook 來啟動 runbook，請確定[webhook](https://docs.microsoft.com/azure/automation/automation-webhooks#renew-webhook)尚未過期。
 
-## <a name="issues-passing-parameters-into-webhooks"></a>將參數傳遞至 webhook 的問題
+### <a name="issues-passing-parameters-into-webhooks"></a>將參數傳遞至 webhook 的問題
 
 如需將參數傳遞至 webhook 的說明，請參閱[從 Webhook 啟動 runbook](https://docs.microsoft.com/azure/automation/automation-webhooks#parameters)。
 
-## <a name="issues-using-az-modules"></a>使用 Az 模組的問題
+### <a name="issues-using-az-modules"></a>使用 Az 模組的問題
 
-不支援在相同的自動化帳戶中，使用 Az 模組和 AzureRM 模組。 如需詳細資訊，請參閱[runbook 中的 Az 模組](https://docs.microsoft.com/azure/automation/az-modules)，以取得更多詳細資料。
+不支援在相同的自動化帳戶中使用 Az 模組和 AzureRM 模組。 如需詳細資訊，請參閱[runbook 中的 Az 模組](https://docs.microsoft.com/azure/automation/az-modules)，以取得更多詳細資料。
 
-## <a name="inconsistent-behavior-in-runbooks"></a>Runbook 中不一致的行為
+### <a name="inconsistent-behavior-in-runbooks"></a>Runbook 中不一致的行為
 
 請遵循[Runbook 執行](https://docs.microsoft.com/azure/automation/automation-runbook-execution#runbook-behavior)中的指導方針，以避免並行作業、資源建立次數，或 runbook 中其他時間緊迫邏輯的問題。
 
-## <a name="runbook-fails-with-the-error-no-permission-forbidden-403-or-some-variation"></a>Runbook 失敗，錯誤為沒有許可權、禁止（403）或某些變化
+### <a name="runbook-fails-with-the-error-no-permission-forbidden-403-or-some-variation"></a>Runbook 失敗，錯誤為沒有許可權、禁止（403）或某些變化
 
 執行身分帳戶可能沒有與您目前帳戶相同的 Azure 資源許可權。 請確定您的執行身分帳戶具有[許可權，可存取](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)腳本中使用的任何資源。
 
-## <a name="runbooks-were-working-but-suddenly-stopped"></a>Runbook 已運作，但突然停止
+### <a name="runbooks-were-working-but-suddenly-stopped"></a>Runbook 已運作，但突然停止
 
 * 如果 runbook 先前已執行但已停止，請確定執行身分帳戶尚未過期。 請參閱[認證更新](https://docs.microsoft.com/azure/automation/manage-runas-account#cert-renewal)。
 * 如果您使用 webhook 來啟動 runbook，請確定 webhook 尚未[過期](https://docs.microsoft.com/azure/automation/automation-webhooks#renew-webhook)。
 
-## <a name="passing-parameters-into-webhooks"></a>將參數傳遞至 Webhook
+### <a name="passing-parameters-into-webhooks"></a>將參數傳遞至 Webhook
 
 如需將參數傳遞至 webhook 的說明，請參閱[從 Webhook 啟動 runbook](https://docs.microsoft.com/azure/automation/automation-webhooks#parameters)。
 
-## <a name="using-az-modules"></a>使用 Az 模組
+### <a name="using-az-modules"></a>使用 Az 模組
 
-不支援在相同的自動化帳戶中，使用 Az 模組和 AzureRM 模組。 請參閱[runbook 中的 Az 模組](https://docs.microsoft.com/azure/automation/az-modules)。
+不支援在相同的自動化帳戶中使用 Az 模組和 AzureRM 模組。 請參閱[runbook 中的 Az 模組](https://docs.microsoft.com/azure/automation/az-modules)。
 
-## <a name="using-self-signed-certificates"></a>使用自我簽署憑證
+### <a name="using-self-signed-certificates"></a>使用自我簽署憑證
 
 若要使用自我簽署憑證，請參閱[建立新的憑證](https://docs.microsoft.com/azure/automation/shared-resources/certificates#creating-a-new-certificate)。
 

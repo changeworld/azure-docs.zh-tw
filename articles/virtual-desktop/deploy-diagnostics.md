@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: helohr
-ms.openlocfilehash: b6b310bf1958671583aab873ab42a70845f93f9a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5eff53119362cd03c9a6497e3133984627e513c1
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452417"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368842"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>部署診斷工具
 
@@ -36,8 +36,8 @@ ms.locfileid: "75452417"
 
 您也必須先安裝這兩個 PowerShell 模組，再開始使用：
 
-- [Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-2.4.0)
-- [Azure AD 模組](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)
+- [Azure PowerShell 模組](/powershell/azure/install-az-ps?view=azps-2.4.0/)
+- [Azure AD 模組](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0/)
 
 當您登入時，請確定您已備妥訂用帳戶識別碼。
 
@@ -253,7 +253,7 @@ ms.locfileid: "75452417"
 
     - 閾值：高於80% 會標示為狀況不良。
 
-- [每個會話的使用者輸入延遲（\*）\\最大輸入延遲](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters)：
+- [每個會話的使用者輸入延遲（\*）\\最大輸入延遲](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/)：
 
     - 閾值：高於2000毫秒會標示為狀況不良。
 

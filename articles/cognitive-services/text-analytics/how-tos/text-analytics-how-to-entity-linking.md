@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/10/2020
 ms.author: aahi
-ms.openlocfilehash: 607b65d6a6893901ce23cd48c277c14209128866
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 0622aca5579c64c6d840761abb151665af559eea
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137978"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367650"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>如何在文字分析中使用已命名的實體識別
 
@@ -28,7 +28,9 @@ ms.locfileid: "77137978"
 
 ### <a name="named-entity-recognition-ner"></a>具名實體辨識 (NER)
 
-命名實體辨識（NER）能夠識別文字中的不同實體，並將其分類為預先定義的類別或類型。 例如：人員、地點和組織。
+命名實體辨識（NER）能夠識別文字中的不同實體，並將其分類為預先定義的類別或類型，例如： person、location、event、product 和組織。  
+
+從第3版開始，文字分析 API 的這項功能也可以識別個人和機密資訊類型，例如：電話號碼、社會保險號碼、電子郵件地址和銀行帳戶號碼。  識別這些實體有助於分類機密檔，並校訂個人資訊。
 
 ## <a name="named-entity-recognition-versions-and-features"></a>命名實體辨識版本和功能
 
@@ -45,7 +47,7 @@ ms.locfileid: "77137978"
 如需相關資訊，請參閱[語言支援](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition)。
 
 
-#### <a name="version-30-previewtabversion-3"></a>[版本 3.0-preview](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[3.0-preview 版](#tab/version-3)
 
 ### <a name="entity-types"></a>實體類型
 
@@ -72,7 +74,7 @@ NER
 
 [!INCLUDE [v3-model-versioning](../includes/model-versioning.md)]
 
-#### <a name="version-21tabversion-2"></a>[版本2。1](#tab/version-2)
+#### <a name="version-21tabversion-2"></a>[2.1 版](#tab/version-2)
 
 ### <a name="entity-types"></a>實體類型
 
@@ -81,22 +83,22 @@ NER
 
 | 類型  | 子類型 | 範例 |
 |:-----------   |:------------- |:---------|
-| 個人        | N/A\*         | "Jeff"、"Bill Gates"     |
-| Location      | N/A\*         | "Redmond, Washington"、"Paris"  |
+| 人員        | N/A\*         | "Jeff"、"Bill Gates"     |
+| 位置      | N/A\*         | "Redmond, Washington"、"Paris"  |
 | 組織  | N/A\*         | "Microsoft"   |
 | 數量      | Number        | "6"、"six"     |
 | 數量      | 百分比    | "50%"、"fifty percent"|
 | 數量      | Ordinal       | "2nd"、"second"     |
-| 數量      | Age           | "90 day old"、"30 years old"    |
+| 數量      | 天數           | "90 day old"、"30 years old"    |
 | 數量      | 貨幣      | "$10.99"     |
 | 數量      | 維度     | "10 miles"、"40 cm"     |
 | 數量      | 溫度   | "32 degrees"    |
 | Datetime      | N/A\*         | "6:30PM February 4, 2012"      |
-| Datetime      | Date          | "May 2nd, 2017"、"05/02/2017"   |
-| Datetime      | Time          | "8am"、"8:00"  |
+| Datetime      | 日期          | "May 2nd, 2017"、"05/02/2017"   |
+| Datetime      | 時間          | "8am"、"8:00"  |
 | Datetime      | 日期範圍     | "May 2nd to May 5th"    |
 | Datetime      | 時間範圍     | "6pm to 7pm"     |
-| Datetime      | Duration      | "1 minute and 45 seconds"   |
+| Datetime      | 持續期間      | "1 minute and 45 seconds"   |
 | Datetime      | Set           | "every Tuesday"     |
 | URL           | N/A\*         | "HTTPs：\//www.bing.com"    |
 | 電子郵件         | N/A\*         | "support@contoso.com" |
@@ -128,7 +130,7 @@ NER
 > [!NOTE]
 > 您可以在 azure 入口網站上找到您的文字分析資源的金鑰和端點。 您可以在 [資源管理] 下的資源 [快速啟動] 頁面中找到。 
 
-#### <a name="version-30-previewtabversion-3"></a>[版本 3.0-preview](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[3.0-preview 版](#tab/version-3)
 
 [命名實體辨識 v3 參考](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral)
 
@@ -142,7 +144,7 @@ NER
 實體連結
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/linking`
 
-#### <a name="version-21tabversion-2"></a>[版本2。1](#tab/version-2)
+#### <a name="version-21tabversion-2"></a>[2.1 版](#tab/version-2)
 
 [命名實體識別（NER） v2 參考](https://eastus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
 
@@ -240,7 +242,7 @@ NER
 }
 ```
 
-#### <a name="version-21tabversion-2"></a>[版本2。1](#tab/version-2)
+#### <a name="version-21tabversion-2"></a>[2.1 版](#tab/version-2)
 
 ### <a name="example-ner-v2-response"></a>範例 NER v2 回應
 ```json

@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec115e0fa76e695809ba140202d5f13a319d33dd
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: f3fb94629262519f8cfa5da72ee343726aa7d1c1
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73062723"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367975"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>使用應用程式 Proxy 與 PingAccess 的單一登入之標頭式驗證
 
@@ -57,7 +57,7 @@ Azure Active Directory （Azure AD）應用程式 Proxy 已與 PingAccess 合作
 
    ![應用程式 proxy 連接器下載](./media/application-proxy-configure-single-sign-on-with-ping-access/application-proxy-connector-download.png)
 
-1. 請遵循安裝指示。
+1. 遵循安裝指示進行。
 
 下載連接器應該會自動啟用您目錄的應用程式 Proxy，但如果沒有，您可以選取 [**啟用應用程式 proxy**]。
 
@@ -130,7 +130,7 @@ Azure Active Directory （Azure AD）應用程式 Proxy 已與 PingAccess 合作
 
 1. 選取 **委派的許可權** > **使用者** > **使用者. 讀取**。
 1. 選取**應用程式 > 應用**程式**的** > 應用程式**許可權**。
-1. 選取 [**新增許可權**]。
+1. 選取 [新增權限]。
 1. 在 [ **API 許可權**] 頁面中，選取 **[授與系統管理員同意] \<您的目錄名稱 >** 。
 
 #### <a name="collect-information-for-the-pingaccess-steps"></a>收集 PingAccess 步驟的資訊
@@ -161,21 +161,7 @@ Azure Active Directory （Azure AD）應用程式 Proxy 已與 PingAccess 合作
 1. 選取 [新增]。 PingAccess 索引鍵會出現在用戶端密碼的資料表中，並在 [**值**] 欄位中會自動填入一個隨機字串。
 1. 在 [PingAccess] 索引鍵的 [**值**] 欄位旁，選取 [**複製到剪貼**簿] 圖示，然後複製並儲存它。 您稍後可以將此值指定為 PingAccess 的用戶端密碼。
 
-### <a name="update-graphapi-to-send-custom-fields-optional"></a>更新 GraphAPI 以傳送自訂欄位（選擇性）
-
-如果您需要在 PingAccess 使用的 access_token 內傳送其他權杖的自訂宣告，請將 `acceptMappedClaims` 應用程式欄位設定為 `True`。 您可以使用 [圖形瀏覽器] 或 Azure AD 入口網站的應用程式資訊清單來進行這種變更。
-
-**這個範例會使用 [圖形瀏覽器]：**
-
-```
-PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_your_application>
-
-{
-  "acceptMappedClaims":true
-}
-```
-
-**這個範例會使用[Azure Active Directory 入口網站](https://aad.portal.azure.com/)來更新 [`acceptMappedClaims`] 欄位：**
+**更新 `acceptMappedClaims` 欄位：**
 
 1. 以應用程式系統管理員身分登入[Azure Active Directory 入口網站](https://aad.portal.azure.com/)。
 1. 選取 [Azure Active Directory] > [應用程式註冊]。 應用程式清單隨即出現。
@@ -213,7 +199,7 @@ AzureAD 中不存在之屬性的[宣告對應原則（預覽）](https://docs.mi
 > [!NOTE]
 > 若要使用自訂宣告，您必須已定義自訂原則且已指派給應用程式。 此原則應包含所有必要的自訂屬性。
 >
-> 您可以透過 PowerShell、Azure AD Graph Explorer 或 Microsoft Graph 來執行原則定義和指派。 如果您是在 PowerShell 中執行，您可能需要先使用 `New-AzureADPolicy`，然後將它指派給具有 `Add-AzureADServicePrincipalPolicy`的應用程式。 如需詳細資訊，請參閱[宣告對應原則指派](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment)。
+> 您可以透過 PowerShell 或 Microsoft Graph 執行原則定義和指派。 如果您是在 PowerShell 中執行，您可能需要先使用 `New-AzureADPolicy`，然後將它指派給具有 `Add-AzureADServicePrincipalPolicy`的應用程式。 如需詳細資訊，請參閱[宣告對應原則指派](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment)。
 
 範例：
 ```powershell

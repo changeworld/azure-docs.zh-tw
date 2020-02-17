@@ -13,12 +13,12 @@ ms.author: mimart
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4e2e25189b35f7d17ef42536aa7cd86ac92ec82
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 5ff7cda6a593b1517ad711a56f73d29a14345baf
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185858"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368012"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>封存 Azure Active Directory 中的新功能？
 
@@ -1698,7 +1698,7 @@ Azure AD 活動記錄現在已可在 Azure 監視器的公開預覽 (Azure 的�
 **服務類別：** 報表  
 **產品功能：** 監視與報告
  
-隨著登入活動記錄中 **Client App** 欄位的導入，客戶現在可看見使用舊版驗證的使用者。 客戶可使用登入 MS Graph API 來存取此資訊，或透過 Azure AD 入口網站中的登入活動記錄使用 **Client App** 控制項來篩選舊版驗證。 如需更多詳細資料，請查看文件。
+隨著登入活動記錄中 **Client App** 欄位的導入，客戶現在可看見使用舊版驗證的使用者。 客戶可以使用登入 Microsoft Graph API，或透過 Azure AD 入口網站中的登入活動記錄來存取這項資訊，您可在其中使用**用戶端應用程式**控制項來篩選舊版驗證。 如需更多詳細資料，請查看文件。
 
 ---
 
@@ -2092,7 +2092,7 @@ Azure AD Premium P2 中現已正式提供群組和應用程式的存取權檢閱
 **服務類別：** 報表  
 **產品功能：** 監視與報告
  
-包含登入與稽核記錄的 Azure AD 活動記錄現已可透過 MS Graph 使用。 我們已公開兩個可透過 MS Graph 來存取這些記錄的端點。 請查看我們的[文件](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal)，了解如何開始以程式設計方式存取 Azure AD 報告 API。 
+Azure AD 活動記錄（包括登入和審核記錄）現在可透過 Microsoft Graph API 取得。 我們已透過 Microsoft Graph API 公開兩個端點來存取這些記錄。 請查看我們的[文件](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal)，了解如何開始以程式設計方式存取 Azure AD 報告 API。 
 
 ---
  
@@ -2596,7 +2596,7 @@ Powershell GA 模組中目前提供應用程式 Proxy Cmdlet 的支援！ 這需
 **服務類別：** 報表  
 **產品功能：** 監視與報告
 
-在對於讓非管理員角色能夠存取 Azure AD 活動記錄的客戶意見反應中，我們已讓具備「報告讀取者」角色的使用者除了能夠使用我們的「圖形 API」之外，也能夠存取 Azure 入口網站內的「登入」和「稽核」活動。 
+為讓非系統管理員角色能夠存取 Azure AD 活動記錄的客戶意見反應，我們為「報告讀取者」角色中的使用者啟用了在 Azure 入口網站記憶體取登入和審核活動的功能，以及使用 Microsoft GraphAPI. 
 
 如需有關如何使用這些報告的詳細資訊，請參閱 [Azure Active Directory 報告](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal)。 
 

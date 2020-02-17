@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/06/2019
-ms.openlocfilehash: 840c5cf061658f3210fec963b82b490185b92a4b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: fd10a3e62bcbe438eb17edfc71a5285ad071e29a
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905726"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77366210"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>什麼是 Azure Machine Learning 管線？
 
 Azure Machine Learning 管線可讓您在機器學習專案中建立工作流程。 這些工作流程有數個優點： 
 
-+ 簡單
++ 簡易
 + 速度
 + 可重複性
 + 彈性
@@ -40,11 +40,12 @@ Azure Machine Learning 管線可讓您在機器學習專案中建立工作流程
 
 Azure 雲端提供數個其他管線，各有不同的用途。 下表列出不同的管線和它們的用途：
 
-| 管線 | 用途 | 標準管道 |
-| ---- | ---- | ---- |
-| Azure Machine Learning 管線 | 定義可重複使用的機器學習服務工作流程，以作為您機器學習服務案例的範本。 | 資料 > 模型 |
-| [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | 將執行工作所需的資料移動、轉換和控制活動群組在一起。  | 資料 > 資料 |
-| [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) | 將應用程式持續整合及傳遞至任何平臺/任何雲端  | 程式碼 > 應用程式/服務 |
+| 狀況 | 主要角色 | Azure 供應專案 | OSS 供應專案 | 標準管道 | 優缺點 | 
+| -------- | --------------- | -------------- | ------------ | -------------- | --------- | 
+| 模型協調流程（機器學習服務） | 資料科學家 | Azure Machine Learning 管線 | Kubeflow 管線 | 資料 > 模型 | 散發，快取，程式碼優先，重複使用 | 
+| 資料協調流程（資料準備） | 資料工程師 | [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | Apache 氣流 | 資料 > 資料 | 強型別移動。 以資料為中心的活動。 |
+| 程式碼 & 應用程式協調流程（CI/CD） | 應用程式開發人員/Ops | [Azure DevOps 管線](https://azure.microsoft.com/services/devops/pipelines/) | Jenkins | Code + 模型-> 應用程式/服務 | 最常開啟和 flexibile 的活動支援、核准佇列、具有管制的階段 | 
+
 
 ## <a name="what-can-azure-ml-pipelines-do"></a>Azure ML 管線有哪些功能？
 
@@ -52,7 +53,7 @@ Azure Machine Learning 管線是一項完整機器學習工作的獨立可執行
 
 + 資料準備，包括匯入、驗證和清除、改寫和轉換、正規化以及暫存
 + 訓練組態，包括參數化引數、檔案路徑，以及記錄/報告組態
-+ 有效率且重複地進行定型和驗證，其中可能包括指定特定的資料子集、不同的硬體計算資源、分散式處理和進度監視
++ 有效率且重複地進行定型和驗證。 效率可能來自指定特定的資料子集、不同的硬體計算資源、分散式處理和進度監視
 + 部署，包括版本控制、調整、佈建和存取控制 
 
 獨立步驟可讓多個資料科學家同時在相同的管線上工作，而不會有過度負擔的計算資源。 個別的步驟也可讓您輕鬆地針對每個步驟使用不同的計算類型/大小。
@@ -69,7 +70,7 @@ Azure Machine Learning 管線是一項完整機器學習工作的獨立可執行
 
 Azure ML 管線會以已排序的步驟順序來執行完整的邏輯工作流程。 每個步驟都是分離的處理動作。 管線會在 Azure Machine Learning[實驗](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py)的內容中執行。
 
-在 ML 專案的初期階段，您可以使用單一 Jupyter 筆記本或 Python 腳本來執行 Azure 工作區和資源設定、資料準備、執行設定、訓練和驗證的所有工作。 但是如同函式和類別很快就會成為單一命令式程式碼的偏好，ML 工作流程很快就會成為整合型筆記本或腳本。 
+在 ML 專案的早期階段中，您可以使用單一 Jupyter 筆記本或 Python 腳本來執行 Azure 工作區和資源設定、資料準備、執行設定、訓練和驗證的所有工作。 但是如同函式和類別很快就會成為單一命令式程式碼的偏好，ML 工作流程很快就會成為整合型筆記本或腳本。 
 
 藉由模組化 ML 工作，管線可支援元件應該「執行（僅）一件事」的電腦科學。 在小組中進行程式設計時，模組化對於專案的成功非常重要，但即使單獨運作，即使是小型 ML 專案也牽涉到不同的工作，每個都有很大的複雜度。 作業包括：工作區設定和資料存取、資料準備、模型定義和設定，以及部署。 當一或多個工作的輸出會形成另一個工作的輸入時，任何一項工作的確切實作為詳細資料，就是下一個工作中的最佳、不相關的分散注意力。 在最糟的情況下，一個工作的計算狀態可能會造成另一個工作的錯誤。 
 
@@ -195,7 +196,7 @@ pipeline_run.wait_for_completion()
 
 針對您的機器學習工作流程使用管線的主要優點如下：
 
-|主要優點|說明|
+|主要優點|描述|
 |:-------:|-----------|
 |**自動&nbsp;執行**|以可靠且自動的方式，以平行或依序執行排程步驟。 資料準備和模型化可以過去數天或數周，而管線可讓您在進程執行時，將焦點放在其他工作上。 |
 |**異構計算**|使用多個在異類和可擴充的計算資源和儲存位置之間可靠地協調的管線。 在不同的計算目標（例如 HDInsight、GPU 資料科學 Vm 和 Databricks）上執行個別的管線步驟，以有效率地使用可用的計算資源。|

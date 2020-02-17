@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: elisol
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2aa6bc856fc7b7de071a45f3aa11c051e36eca4f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4e17e0f1f01e836a7a240100c1c0e1f015da5f00
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480108"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368144"
 ---
 # <a name="azure-active-directory-b2b-best-practices"></a>Azure Active Directory B2B 最佳做法
 本文包含 Azure Active Directory （Azure AD）中的企業對企業（B2B）共同作業的建議和最佳作法。
@@ -33,7 +33,7 @@ ms.locfileid: "75480108"
 | 強制執行多重要素驗證（MFA）的條件式存取原則 | 建議您在想要與合作夥伴 B2B 使用者共用的應用程式上強制執行 MFA 原則。 如此一來，無論合作夥伴組織是否使用 MFA，MFA 都會在租使用者中的應用程式上一致地強制執行。 請參閱 B2B 共同作業[使用者的條件式存取](conditional-access.md)。 |
 | 如果您要強制以裝置為基礎的條件式存取原則，請使用排除清單，以允許存取 B2B 使用者 | 如果您的組織中已啟用以裝置為基礎的條件式存取原則，將會封鎖 B2B 來賓使用者裝置，因為它們不是由您的組織所管理。 您可以建立包含特定合作夥伴使用者的排除清單，以將其從裝置型條件式存取原則中排除。 請參閱 B2B 共同作業[使用者的條件式存取](conditional-access.md)。 |
 | 提供 B2B 來賓使用者的直接連結時，請使用租使用者特定的 URL | 除了邀請電子郵件以外，您還可以為來賓提供應用程式或入口網站的直接連結。 此直接連結必須是租使用者專屬的，這表示它必須包含租使用者識別碼或已驗證的網域，才能在您的租使用者（共用應用程式所在的位置）中驗證來賓。 請參閱「[來賓」使用者的兌換體驗](redemption-experience.md)。 |
-| 開發應用程式時，請使用 UserType 來判斷來賓使用者體驗  | 如果您正在開發應用程式，而且想要為租使用者使用者和來賓使用者提供不同的體驗，請使用 UserType 屬性。 UserType 宣告目前不包含在權杖中。 應用程式應該使用圖形 API 來查詢目錄，讓使用者取得其 UserType。 |
+| 開發應用程式時，請使用 UserType 來判斷來賓使用者體驗  | 如果您正在開發應用程式，而且想要為租使用者使用者和來賓使用者提供不同的體驗，請使用 UserType 屬性。 UserType 宣告目前不包含在權杖中。 應用程式應該使用 Microsoft Graph API 來查詢目錄，讓使用者取得其 UserType。 |
 | 只有在使用者與組織的關聯性變更時，*才*變更 UserType 屬性 | 雖然可以使用 PowerShell 將使用者的 UserType 屬性從成員轉換為來賓（反之亦然），但只有在使用者與組織的關聯性變更時，才應該變更此屬性。 請參閱[B2B 來賓使用者的屬性](user-properties.md)。|
 
 ## <a name="next-steps"></a>後續步驟
