@@ -5,15 +5,15 @@ author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: include
-ms.date: 08/07/2019
+ms.date: 02/13/2020
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: e93ce54262fe6dd38ef2ebc07d676608dae7cfff
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bbdafde85097d0052edd5984b594fd37066dc1e6
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75968893"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77279457"
 ---
 本節將說明如何使用 [Azure 入口網站](https://portal.azure.com)建立 IoT 中樞。
 
@@ -35,7 +35,7 @@ ms.locfileid: "75968893"
 
    [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
 
-   ![在 Azure 入口網站中建立中樞](./media/iot-hub-include-create-hub/iot-hub-create-screen-basics-vs2019.png)
+   ![在 Azure 入口網站中建立中樞](./media/iot-hub-include-create-hub/iot-hub-create-screen-basics.png)
 
 1. 完成時，選取 [下一步:  大小與級別] 繼續建立中樞。
 
@@ -48,10 +48,18 @@ ms.locfileid: "75968893"
     - **IoT 中樞單位**：每天每單位允許的訊息數目取決於您的中樞定價層。 例如，如果您想要中樞支援 700,000 封訊息的輸入，您可以選擇 2 個 S1 層單位。
     如需有關其他層級選項的詳細資料，請參閱[選擇適合的 IoT 中樞層](../articles/iot-hub/iot-hub-scaling.md)。
 
+    - **Azure 資訊安全中心**：開啟此功能可為 IoT 和您的裝置新增額外的威脅防護層。 免費層中的中樞無法使用此功能選項。 如需詳細資訊，請參閱[適用於 IoT 的 Azure 資訊安全中心](https://docs.microsoft.com/azure/asc-for-iot/)。
+
     - **進階設定** > **裝置到雲端的分割區**：此屬性會將裝置到雲端的訊息數與同時閱讀訊息的讀者數產生關聯。 大部分的中樞只需要四個分割區。
 
-1. 在本文中，接受預設選項，然後選取 [檢閱及建立]  來檢閱您的選擇。 您會看到類似這個畫面的內容。
+1. 在本文中，接受預設選項，然後選取 [下一步:  標籤] 以移至下一個畫面。
 
-   ![檢閱有關建立新中樞的資訊](./media/iot-hub-include-create-hub/iot-hub-create-review-vs2019.png)
+    標籤為名稱/值組。 您可以將相同標記指派給多個資源和資源群組，以將資源分類並合併計費。
+
+   ![使用 Azure 入口網站設定新中樞的大小與級別](./media/iot-hub-include-create-hub/iot-hub-create-tabs.png)
+
+    完成時，選取 [下一步:  檢閱 + 建立] 以檢閱您的選擇。 您會看到類似這個畫面的內容。
+
+   ![檢閱有關建立新中樞的資訊](./media/iot-hub-include-create-hub/iot-hub-create-review.png)
 
 1. 選取 [建立]  以建立新的中樞。 建立中樞需要幾分鐘的時間。

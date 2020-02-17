@@ -3,14 +3,15 @@ author: MashaMSFT
 ms.service: sql-database
 ms.subservice: single-database
 ms.topic: include
-ms.date: 11/04/2019
+ms.date: 02/14/2020
 ms.author: mathoma
-ms.openlocfilehash: 0fad326107fa101cbba869311724710bd3f5307b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.reviewer: vanto
+ms.openlocfilehash: 3e2c8a424c9a3744bfb91d03632965c15613a424
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496164"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252098"
 ---
 在此步驟中，您將建立 Azure SQL Database 單一資料庫。 
 
@@ -29,16 +30,16 @@ ms.locfileid: "73496164"
 
    ![建立單一資料庫](../media/sql-database-get-started-portal/create-single-database.png)
 
-3. 在 [基本資料]  索引標籤的 [專案詳細資料]  區段中，輸入或選取下列值：
+4. 在 [基本資料]  索引標籤的 [專案詳細資料]  區段中，輸入或選取下列值：
 
    - 訂用帳戶  ：下拉並選取正確的訂用帳戶 (若未出現)。
    - **資源群組**：選取 [新建]  ，輸入 `myResourceGroup`，然後選取 [確定]  。
 
      ![新的 SQL 資料庫 - 基本資料索引標籤](../media/sql-database-get-started-portal/new-sql-database-basics.png)
 
-4. 在 [資料庫詳細資料]  區段中，輸入或選取下列值：
+5. 在 [資料庫詳細資料]  區段中，輸入或選取下列值：
 
-   - **資料庫名稱**：輸入 `mySampleDatabase` 。
+   - **資料庫名稱**：輸入 `mySampleDatabase`。
    - **伺服器**：選取 [新建]  ，輸入下列值，然後選取 [選取]  。
        - **伺服器名稱**：輸入`mysqlserver`類別；以及一些表示唯一性的數字。
        - **伺服器管理員登入**：輸入 `azureuser`。
@@ -63,18 +64,22 @@ ms.locfileid: "73496164"
      - 您也可以選取 [變更組態]  來變更硬體世代。
    - 選取 [套用]  。
 
-5. 選取 [其他設定]  索引標籤。 
-6. 在 [資料來源]  區段的 [使用現有資料]  下方，選取 `Sample`。
+6. 選取 [網路]  索引標籤，並決定是否要[**允許 Azure 服務和資源存取此伺服器**](../sql-database-networkaccess-overview.md)，或新增[私人端點](../../private-link/private-endpoint-overview.md)。
+
+   ![網路索引標籤](../media/sql-database-get-started-portal/create-database-networking.png)
+
+7. 選取 [其他設定]  索引標籤。 
+8. 在 [資料來源]  區段的 [使用現有資料]  下方，選取 `Sample`。
 
    ![其他 SQL DB 設定](../media/sql-database-get-started-portal/create-sql-database-additional-settings.png)
 
    > [!IMPORTANT]
    > 請務必選取 [範例 (AdventureWorksLT)]  資料，以便依照本快速入門和使用這項資料的其他 Azure SQL Database 快速入門的指示操作。
 
-7. 將其餘的值保留為預設值，然後在表單底部選取 [檢閱 + 建立]  。
-8. 檢閱最終設定，然後選取 [建立]  。
+9. 將其餘的值保留為預設值，然後在表單底部選取 [檢閱 + 建立]  。
+10. 檢閱最終設定，然後選取 [建立]  。
 
-9. 在 [SQL Database]  表單中，選取 [建立]  以部署和佈建資源群組、伺服器和資料庫。
+11. 在 [SQL Database]  表單中，選取 [建立]  以部署和佈建資源群組、伺服器和資料庫。
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -144,7 +149,7 @@ ms.locfileid: "73496164"
 
 本文的這個部分會使用下列 PowerShell Cmdlet：
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 建立用來存放所有資源的資源群組。 |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | 建立裝載單一資料庫和彈性集區的 SQL Database 伺服器。 |
@@ -219,7 +224,7 @@ ms.locfileid: "73496164"
 
 此指令碼會使用下列命令。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [az account set](/cli/azure/account?view=azure-cli-latest#az-account-set) | 將訂用帳戶設定為目前使用中的訂用帳戶。 | 
 | [az group create](/cli/azure/group#az-group-create) | 建立用來存放所有資源的資源群組。 |
