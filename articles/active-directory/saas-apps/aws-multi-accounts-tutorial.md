@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb528d71b94449b282947a487e4fc79b343df778
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: edd54352b1328c95ae2c3e466003b64eaa0fcfde
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195895"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367992"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-multiple-amazon-web-services-aws-accounts"></a>教學課程：Azure Active Directory 與多個 Amazon Web Services (AWS) 帳戶整合
 
@@ -42,7 +42,7 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
 
 **請注意，我們不建議使用此方法，原因如下：**
 
-* 您必須使用 Graph 總管方法來修補應用程式的所有角色。 不建議使用資訊清單檔的方法。
+* 您必須使用 Microsoft Graph Explorer 方法，將所有角色修補至應用程式。 不建議使用資訊清單檔的方法。
 
 * 我們曾見過客戶報告在新增 ~1200 個單一 AWS 應用程式的應用程式角色之後，應用程式上任何作業會開始擲回關於大小的錯誤。 應用程式物件的大小沒有固定限制。
 
@@ -50,7 +50,7 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
 
 * 所有的 AWS 帳戶都將使用相同的同盟中繼資料 XML 檔案，且在憑證變換時，您必須驅動此大規模演練，同時更新所有 AWS 帳戶上的憑證
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要設定 Azure AD 與 Amazon Web Services (AWS) 整合，您需要下列項目：
 
@@ -151,19 +151,19 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
 
     ![image](common/new-attribute-details.png)
 
-    b.這是另一個 C# 主控台應用程式。 在 [名稱] 文字方塊中，輸入該資料列所顯示的屬性名稱。
+    b. 在 [名稱] 文字方塊中，輸入該資料列所顯示的屬性名稱。
 
     c. 在 [命名空間] 文字方塊中，輸入該資料列顯示的命名空間值。
 
     d. 選取 [來源] 作為 [屬性]。
 
-    e. 在 [來源屬性] 清單中，輸入針對該資料列顯示的屬性值。
+    e. 在 [來源屬性] 清單中，輸入該資料列所顯示的屬性值。
 
-    f. 按一下 [確定]。
+    f. 按一下 [確定]
 
-    g. 按一下 [檔案]。
+    g. Haga clic en **Guardar**.
 
-7. 在 [使用 SAML 設定單一登入] 頁面上的 [SAML 簽署憑證] 區段中，按一下 [下載] 以下載**同盟中繼資料 XML** 並將其儲存在您的電腦上。
+7. 在 [以 SAML 設定單一登入] 頁面上的 [SAML 簽署憑證] 區段中，按一下 [下載] 以下載**同盟中繼資料 XML** 並將其儲存在電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -189,7 +189,7 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
 
     a. 針對 [提供者類型]，選取 [SAML]。
 
-    b.這是另一個 C# 主控台應用程式。 在 [提供者名稱] 文字方塊中，鍵入提供者名稱 (例如：WAAD)。
+    b. 在 [提供者名稱] 文字方塊中，鍵入提供者名稱 (例如：WAAD)。
 
     c. 若要上傳從 Azure 入口網站下載的**中繼資料檔案**，請按一下 [選擇檔案]。
 
@@ -209,7 +209,7 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
 
     a. 在 [Select type of trusted entity] \(選取信任的實體類型\) 底下，選取 [SAML 2.0 federation] \(SAML 2.0 同盟\)。
 
-    b.這是另一個 C# 主控台應用程式。 在 [Choose a SAML 2.0 Provider] \(選擇 SAML 2.0 提供者\) 區段底下，選取您先前建立的 [SAML provider] \(SAML 提供者\) (例如：*WAAD*)
+    b. 在 [Choose a SAML 2.0 Provider] \(選擇 SAML 2.0 提供者\) 區段底下，選取您先前建立的 [SAML provider] \(SAML 提供者\) (例如：*WAAD*)
 
     c. 選取 [Allow programmatic and AWS Management Console access] \(允許透過程式設計方式和 AWS 管理主控台存取\)。
   
@@ -225,7 +225,7 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
 
     a. 在 [Role name] \(角色名稱\) 文字方塊中，輸入您的角色名稱。
 
-    b.這是另一個 C# 主控台應用程式。 在 [Role description] \(文字描述\) 文字方塊中，輸入描述。
+    b. 在 [Role description] \(文字描述\) 文字方塊中，輸入描述。
 
     c. 按一下 [建立角色]。
 
@@ -247,11 +247,11 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
 
 16. 對所有帳戶中的所有角色執行上述步驟，並以**角色 ARN,信任實體**的格式將其全部儲存在記事本中。
 
-17. 在另一個視窗中開啟 [Azure AD Graph 總管](https://developer.microsoft.com/graph/graph-explorer)。
+17. 在另一個視窗中開啟[Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) 。
 
     a. 使用您租用戶的全域管理員/共同管理員認證來登入 [Graph 總管] 網站。
 
-    b.這是另一個 C# 主控台應用程式。 您必須有足夠的權限才能建立角色。 按一下 [修改權限] 以取得必要的權限。
+    b. 您必須有足夠的權限才能建立角色。 按一下 [修改權限] 以取得必要的權限。
 
     ![Graph 總管對話方塊](./media/aws-multi-accounts-tutorial/graph-explorer-new9.png)
 
@@ -271,7 +271,7 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
 
     f. 從所擷取的服務主體清單中，取得您需要修改的服務主體。 您也可以使用 Ctrl+F，從所有列出的服務主體中搜尋應用程式。 您可以透過您從 Azure AD 的 [屬性] 頁面複製的**物件識別碼**，使用下列查詢移至各自的「服務主體」。
 
-    `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`。
+    `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`第 1 課：建立 Windows Azure 儲存體物件{2}。
 
     ![Graph 總管對話方塊](./media/aws-multi-accounts-tutorial/graph-explorer-new2.png)
 
@@ -325,9 +325,9 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
     > [!Note]
     > 您只能在修補作業的 **msiam_access** 之後新增角色。 此外，您可以根據組織的需求新增任意數目的角色。 Azure AD 會在 SAML 回應中以宣告值的形式傳送這些角色的**值**。
 
-    j. 返回 Graph 總管，並將方法從 **GET** 變更為 **PATCH**。 藉由將 appRoles 屬性更新為前述範例中的類似屬性，將服務主體物件修補成具有所需的角色。 按一下 [執行查詢] 以執行修補作業。 此時會出現成功訊息，確認 Amazon Web Services 應用程式的角色已建立。
+    j. 返回 Microsoft Graph Explorer，並將方法從**GET**變更為**PATCH**。 藉由將 appRoles 屬性更新為前述範例中的類似屬性，將服務主體物件修補成具有所需的角色。 按一下 [執行查詢] 以執行修補作業。 此時會出現成功訊息，確認 Amazon Web Services 應用程式的角色已建立。
 
-    ![Graph 總管對話方塊](./media/aws-multi-accounts-tutorial/graph-explorer-new11.png)
+    ![Microsoft Graph explorer 對話方塊](./media/aws-multi-accounts-tutorial/graph-explorer-new11.png)
 
 18. 以更多角色修補服務主體之後，您即可將使用者/群組指派給各自的角色。 移至入口網站，然後瀏覽至 Amazon Web Services 應用程式，即可完成此作業。 按一下頂端的 [使用者和群組] 索引標籤。
 
@@ -363,7 +363,7 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
 
 ## <a name="additional-resources"></a>其他資源
 
-* [如何使用 MS Graph Api 設定布建](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-configure-api)
+* [如何使用 Microsoft Graph Api 設定布建](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-configure-api)
 * [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](tutorial-list.md)
 * [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 

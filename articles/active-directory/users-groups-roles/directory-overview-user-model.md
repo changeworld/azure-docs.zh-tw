@@ -14,12 +14,12 @@ ms.workload: identity
 services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a647f4a5f051ec89bb82b6e7f89dcb677c95371
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: a3cc2de5a2f297e8133011905ff2961b44476d6b
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74027729"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046330"
 ---
 # <a name="users-groups-licensing-and-roles-for-large-organizations"></a>大型組織的使用者、群組、授權和角色
 
@@ -31,7 +31,7 @@ ms.locfileid: "74027729"
 
 ## <a name="assign-users-to-groups"></a>將使用者指派給群組
 
-您可以在 Azure AD 中使用群組，將授權指派給大量使用者，或者將使用者存取權指派給已部署的企業應用程式。 您可以在 Azure AD 中使用群組指派系統管理員角色，或者您可以將存取權授與外部資源，例如 SaaS 應用程式或 SharePoint 網站。
+您可以在 Azure AD 中使用群組，將授權指派給大量使用者，或者將使用者存取權指派給已部署的企業應用程式。 您可以在 Azure AD 中使用群組來指派所有管理員角色 (全域管理員除外)，或者您可以將存取權授與外部資源，例如 SaaS 應用程式或 SharePoint 網站。
 
 如需額外彈性及減少管理群組成員資格的工作，您可以使用 Azure AD 中的[動態群組](groups-create-rule.md)來自動擴充及縮減群組成員資格。 屬於一或多個動態群組成員的每個唯一使用者都需要 Azure AD Premium P1 授權。
 

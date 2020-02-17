@@ -7,28 +7,27 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 02/03/2020
-ms.openlocfilehash: ac937519ca3fa9381fe4970f2e4336fe4a0a9227
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: e4679d5a04be7b8c0145fd93818e4187170b4194
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989112"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049689"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-cli"></a>快速入門：使用 Azure CLI 在 Azure HDInsight 中建立 Apache Spark 叢集
 
-在本快速入門中，您會了解如何使用 Azure CLI，在 Azure HDInsight 上建立 Apache Spark 叢集。 Apache Spark 能夠運用記憶體內部處理，使得資料分析及叢集運算更為快速。 [Azure 命令列介面 (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 是用來管理 Azure 資源的 Microsoft 跨平台命令列體驗。
-
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+在本快速入門中，您會了解如何使用 Azure 命令列介面 (CLI)，在 Azure HDInsight 中建立 Apache Spark 叢集。 Azure HDInsight 是供企業使用的受控、全方位的開放原始碼分析服務。 適用於 HDInsight 的 Apache Spark 架構能夠運用記憶體內部處理，使得資料分析及叢集運算更為快速。 Azure CLI 是用來管理 Azure 資源的 Microsoft 跨平台命令列體驗。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-Azure CLI。 如果您尚未安裝 Azure CLI，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 以取得相關步驟。
+- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) (如果您不想使用 Azure Cloud Shell)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-an-apache-spark-cluster"></a>建立 Apache Spark 叢集
 
-1. 登入您的 Azure 訂用帳戶。 如果您打算使用 Azure Cloud Shell，請選取程式碼區塊右上角的 [試試看]  。 或者，請輸入以下命令：
+1. 登入您的 Azure 訂用帳戶。 如果您打算使用 Azure Cloud Shell，請選取以下程式碼區塊右上角的 [試試看]  。 另外，輸入下列命令：
 
     ```azurecli-interactive
     az login
@@ -141,7 +140,7 @@ az group delete \
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您會了解如何使用 Azure CLI，在 Azure HDInsight 中建立 Apache Spark 叢集。  前往下一個教學課程，以了解如何使用 HDInsight Spark 叢集來執行範例資料的互動式查詢。
+在本快速入門中，您會了解如何使用 Azure CLI，在 Azure HDInsight 中建立 Apache Spark 叢集。  前往下一個教學課程，以了解如何使用 HDInsight 叢集來執行範例資料的互動式查詢。
 
 > [!div class="nextstepaction"]
 > [在 Apache Spark 上執行互動式查詢](./apache-spark-load-data-run-query.md)

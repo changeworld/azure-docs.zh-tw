@@ -15,12 +15,12 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c3c0aea6ecaccc972702a8c87e4d127c71c75d6
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: a3b1b38063dcef1c61fbfb6fec529aeeed40a662
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121361"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367785"
 ---
 # <a name="how-provisioning-works"></a>佈建運作方式
 
@@ -91,7 +91,7 @@ Azure AD 使用者物件和每個 SaaS 應用程式的使用者物件之間，�
 
 ## <a name="provisioning-cycles-initial-and-incremental"></a>布建週期：初始和增量
 
-當 Azure AD 是來源系統時，佈建服務會使用 [Azure AD Graph API 的差異查詢功能](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-differential-query) \(英文\) 來監視使用者和群組。 布建服務會對來源系統和目標系統執行初始迴圈，後面接著週期性增量迴圈。
+當 Azure AD 為來源系統時，布建服務會使用 [[使用差異查詢] 來追蹤 Microsoft Graph 資料中的變更](https://docs.microsoft.com/graph/delta-query-overview)，以監視使用者和群組。 布建服務會對來源系統和目標系統執行初始迴圈，後面接著週期性增量迴圈。
 
 ### <a name="initial-cycle"></a>初始迴圈
 
@@ -142,8 +142,8 @@ Azure AD 使用者物件和每個 SaaS 應用程式的使用者物件之間，�
 
 布建服務會依[每個應用程式特定的教學](../saas-apps/tutorial-list.md)課程中所定義的間隔，無限期地繼續執行回送增量迴圈。 增量迴圈會繼續進行，直到發生下列其中一個事件為止：
 
-- 使用 Azure 入口網站或使用適當的「圖形 API」來手動停止服務 
-- 使用 Azure 入口網站中的 [**清除狀態] 和 [重新開機**] 選項，或使用適當的圖形 API 命令來觸發新的初始迴圈。 此動作會清除所有儲存的浮水印，並再次評估所有來源物件。
+- 使用 Azure 入口網站或使用適當的 Microsoft Graph API 命令，手動停止服務。
+- 使用 Azure 入口網站中的 [**清除狀態] 和 [重新開機**] 選項，或使用適當的 Microsoft Graph API 命令來觸發新的初始迴圈。 此動作會清除所有儲存的浮水印，並再次評估所有來源物件。
 - 因為屬性對應或範圍篩選準則變更，所以會觸發新的初始迴圈。 此動作也會清除所有儲存的浮水印，並再次評估所有來源物件。
 - 布建程式會進入隔離狀態（如下所示），因為這是較高的錯誤率，而且會持續隔離超過四周。 在此事件中，將會自動停用服務。
 

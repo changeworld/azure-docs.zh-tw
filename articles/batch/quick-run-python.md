@@ -1,5 +1,5 @@
 ---
-title: 快速入門：執行 Azure Batch 作業 - Python API
+title: 使用 Python API 執行 Azure Batch 作業
 description: 使用 Batch Python 用戶端程式庫快速執行 Azure Batch 範例作業和工作。 了解 Batch 服務的重要概念。
 services: batch
 author: LauraBrenner
@@ -12,30 +12,26 @@ ms.author: labrenne
 ms.custom:
 - seo-python-october2019
 - mvc
-ms.openlocfilehash: 87c08c403a1e5eefd7645572f593b20037a8212b
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 140ae0fc9f9a8daba193aa05e0800d83b7b6b963
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77017100"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086036"
 ---
-# <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>快速入門：使用 Python API 執行您的第一個 Batch 作業
+# <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>快速入門：使用 Python API 執行 Azure Batch 作業
 
-本快速入門會從在 Azure Batch Python API 上建置的應用程式執行 Azure Batch 作業。  完成本快速入門之後，您將了解 Batch 服務的重要概念，並可準備使用更多真實的工作負載來大規模試用 Batch。
+在本快速入門中，您會使用 Python API 從應用程式執行 Azure Batch 作業。 此應用程式會將輸入資料檔案上傳至 Azure 儲存體，然後建立 Batch 計算節點 (虛擬機器) 的「集區」  。 接著會建立可執行「工作」  的「作業」  ，以使用基本命令處理集區中的每個輸入檔案。
 
-此應用程式會將數個輸入資料檔案上傳至 Azure 儲存體，然後建立 Batch 計算節點 (虛擬機器) 的「集區」  。 然後，它會建立可執行「工作」  的「作業」  範例，以使用基本命令處理集區上的每個輸入檔案。
- 
+在此您將了解 Batch 服務的重要概念，並準備使用更多真實的工作負載來大規模試用 Batch。
+
 ![Azure Batch 工作流程的概觀](./media/quick-run-python/overview-of-the-azure-batch-workflow.png)
-
-[!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* [Python 2.7 或 3.3 版或更新版本](https://www.python.org/downloads/)
-
-* [pip](https://pip.pypa.io/en/stable/installing/) 套件管理員
-
-* Azure Batch 帳戶和連結的 Azure 儲存體帳戶。 若要建立這些帳戶，請參閱使用 [Azure 入口網站](quick-create-portal.md)或 [Azure CLI](quick-create-cli.md) 的 Batch 快速入門。 
+- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- [Azure Batch]  帳戶和連結的 [Azure 儲存體]  帳戶。 使用 [Azure 入口網站](quick-create-portal.md)或 [CLI](quick-create-cli.md) 來建立這些帳戶。
+- [Python](https://python.org/downloads) 2.7 或 3.3 或更新版本，包括 [pip](https://pip.pypa.io/en/stable/installing/) 套件管理員
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 

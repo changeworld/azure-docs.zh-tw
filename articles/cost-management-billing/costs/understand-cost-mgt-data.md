@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/29/2020
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 156684676758d777231d3b159ba7bc4749b8582a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: a514dc07da3e4fd5928614099eb86ecef311bbb1
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901771"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188524"
 ---
 # <a name="understand-cost-management-data"></a>了解成本管理資料
 
@@ -27,7 +27,7 @@ Azure 成本管理涵蓋所有使用量和購買，包括保留和 Enterprise �
 
 下列資訊顯示 Azure 成本管理中目前支援的 [Microsoft Azure 供應項目](https://azure.microsoft.com/support/legal/offer-details/)。 Azure 供應項目是您 Azure 訂用帳戶的類型。 Azure 成本管理中提供的資料是從**資料起始日**的日期開始。 如果訂用帳戶變更了供應項目，則無法提供供應項目變更日期之前的成本。
 
-| **類別**  | **供應項目名稱** | **配額識別碼** | **供應項目號碼** | **資料起始日** |
+| **類別目錄**  | **供應項目名稱** | **配額識別碼** | **供應項目號碼** | **資料起始日** |
 | --- | --- | --- | --- | --- |
 | **Azure Government** | Azure Government Enterprise                                                         | EnterpriseAgreement_2014-09-01 | MS-AZR-USGOV-0017P | 2014 年 5 月<sup>1</sup> |
 | **Enterprise 合約 (EA)** | Enterprise 開發/測試                                                        | MSDNDevTest_2014-09-01 | MS-AZR-0148P | 2014 年 5 月<sup>1</sup> |
@@ -85,8 +85,6 @@ _<sup>**4**</sup> 點數型和預付型訂用帳戶的歷程記錄資料可能�
 
 下表顯示「成本管理」中包含或未包含的資料。 產生發票之前的所有成本皆為估計值。 顯示的成本不包括免費和預付的點數。
 
-**成本和使用量資料**
-
 | **包含** | **未包含** |
 | --- | --- |
 | Azure 服務使用量<sup>5</sup>        | 支援費用 - 如需詳細資訊，請參閱[發票條款說明](../understand/understand-invoice.md)。 |
@@ -101,13 +99,42 @@ _<sup>**6**</sup> Marketplace 購買目前不適用於隨用隨付、MSDN 和 Vi
 
 _<sup>**7**</sup> 保留購買目前僅適用於 Enterprise 合約 (EA) 帳戶。_
 
-**中繼資料**
+## <a name="how-tags-are-used-in-cost-and-usage-data"></a>如何在成本和使用量資料中使用標記
 
-| **包含** | **未包含** |
-| --- | --- |
-| 資源標記<sup>8</sup> | 資源群組標記 |
+Azure 成本管理會在個別服務提交的每個使用記錄中接收標記。 這些標記適用下列限制：
 
-_<sup>**8**</sup> 每項服務發出使用量資料時即會套用資源標記，且資源標記套用不會溯及歷史使用量。_
+- 標記必須直接套用至資源，而且不會隱含繼承自父資源群組。
+- 僅部署至資源群組的資源可支援資源標記。
+- 某些已部署的資源可能不支援標記，或是可能無法在使用量資料中包含標記 – 請參閱 [Azure 資源的標記支援](../../azure-resource-manager/tag-support.md)。
+- 資源標記只會在套用標記時，包含在使用量資料中 – 標記不會套用至歷史記錄資料。
+- 只有在重新整理資料後，您才能在成本管理中使用資源標記，請參閱[使用量資料更新頻率不相同](#usage-data-update-frequency-varies)。
+- 資源標記只有在資源為作用中/執行中，以及正在產生使用量記錄時 (例如，未將 VM 解除配置時)，才可在成本管理中使用。
+- 管理標記需要每個資源的參與者存取權。
+- 管理標記原則需要管理群組、訂用帳戶或資源群組的擁有者或原則參與者存取權。
+    
+如果您在成本管理中看不到特定標記，請考量下列事項：
+
+- 標記是否已直接套用至資源？
+- 標記套用的時間是否已超過 24 小時？ 請參閱[使用量資料更新頻率不相同](#usage-data-update-frequency-varies)
+- 該資源類型是否支援標記？ 自 2019 年 12 月 1 日起，下列資源類型不支援在使用量資料中使用標記。 如需支援內容的完整清單，請參閱[適用於 Azure 資源的 標記支援](../../azure-resource-manager/tag-support.md)。
+    - Azure Active Directory B2C 目錄
+    - Azure 防火牆
+    - Azure NetApp Files
+    - Data Factory
+    - Databricks
+    - 負載平衡器
+    - 網路監看員
+    - 通知中樞
+    - 服務匯流排
+    - 時間序列深入解析
+    - VPN 閘道
+    
+以下是使用標記的一些秘訣：
+
+- 請先行規劃並定義標記策略，以便您依據組織、應用程式、環境等項目來細分成本。
+- 使用 Azure 原則將資源群組標記複製到個別資源，並強制執行您的標記策略。
+- 將標記 API 與 Query 或 UsageDetails 搭配使用，以根據目前的標記取得所有成本。
+
 
 **免費試用升級至隨用隨付**
 

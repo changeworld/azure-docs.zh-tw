@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
-ms.openlocfilehash: d097894c841d91d344b5958e7f5e1c10249f8b6e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e564660b502a950021ba4e4754ff5c210dfd477f
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76904883"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77082858"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>使用 Azure IoT 中樞裝置佈建服務來佈建裝置
 Microsoft Azure 提供一組豐富的整合式公用雲端服務，可滿足所有的 IoT 方案需求。 IoT 中樞裝置佈建服務 (DPS) 是 IoT 中樞的一項協助程式服務，可對正確的 IoT 中樞進行自動 Just-in-Time 佈建，完全無須人為介入。 DPS 可讓您以安全且可擴充的方式佈建數百萬個裝置。
@@ -80,8 +80,10 @@ DPS 有許多功能，因此適合用來佈建裝置。
 * **註冊清單**包含可能在某處註冊的完整裝置記錄/裝置群組。 一旦註冊後，註冊清單就會包含裝置所需設定的相關資訊，並可以在任何時間進行更新。
 * **多個配置原則**可控制 DPS 將裝置指派給 IoT 中樞的方式，從而支援您的案例：透過註冊清單控制最低延遲、權重相等的分佈 (預設值) 和靜態設定。 延遲會使用與[流量管理員](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#performance)相同的方法來決定。
 * **監視和診斷記錄**並確定一切運作正常。
-* **多重中樞支援**可讓 DPS 在執行階段將裝置延後繫結至 IoT 中樞。 DPS 可跨多個 Azure 訂用帳戶與中樞通訊。
+* **多重中樞支援**可讓 DPS 將裝置指派給一個以上的 IoT 中樞。 DPS 可跨多個 Azure 訂用帳戶與中樞通訊。
 * **跨區域支援**可讓 DPS 將裝置指派給其他區域的 IoT 中樞。
+* **待用資料加密**允許使用 256 位元的 AES 加密 (可用的最強區塊編碼器之一)，以透明方式加密及解密 DPS 中的資料，而且符合 FIPS 140-2 規範。
+
 
 您可以在[裝置概念](concepts-device.md)、[服務概念](concepts-service.md)和[安全性概念](concepts-security.md)中，深入了解裝置佈建中包含的概念和功能。
 

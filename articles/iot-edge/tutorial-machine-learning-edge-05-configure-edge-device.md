@@ -4,49 +4,47 @@ description: 在本教學課程中，您會將執行 Linux 的 Azure 虛擬機�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/11/2019
+ms.date: 2/5/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a9f9c6ebd55752ea5a3400da8d42b6c6487277df
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: ab3ed567d34c6284959f7875bb121ced4770d65e
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514641"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133329"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>教學課程：設定 IoT Edge 裝置
 
 > [!NOTE]
 > 此文章是關於在 IoT Edge 上使用 Azure Machine Learning 的系列文章之一。 如果您是被直接引導至此文章，我們建議您先從本系列的[第一篇文章](tutorial-machine-learning-edge-01-intro.md)開始，以取得最佳成效。
 
-在此文章中，我們將執行 Linux 的 Azure 虛擬機器設定為作為透明閘道的 Azure IoT Edge 裝置。 透明閘道設定可讓裝置在不知道閘道存在的情況下，透過閘道連線到 Azure IoT 中樞。 同時，與 IoT 中樞中的裝置互動的使用者，不會察覺中繼閘道裝置。 最後，我們會使用透明閘道，藉由向閘道新增 IoT Edge 模組來為我們的系統新增邊緣分析。
+在此文章中，我們將執行 Linux 的 Azure 虛擬機器設定為作為透明閘道的 IoT Edge 裝置。 透明閘道設定可讓裝置在不知道閘道存在的情況下，透過閘道連線到 Azure IoT 中樞。 同時，與 Azure IoT 中樞中的裝置互動的使用者，不會察覺中繼閘道裝置。 最後，我們會藉由向透明閘道新增 IoT Edge 模組來為系統新增邊緣分析。
 
 此文章中的步驟通常是由雲端開發人員執行的。
 
-## <a name="generate-certificates"></a>產生憑證
+## <a name="create-certificates"></a>建立憑證
 
-針對要當作閘道運作的裝置，它必須能夠安全地連線到下游裝置。 Azure IoT Edge 可讓您使用公開金鑰基礎結構 (PKI)，設定這些裝置之間的安全連線。 在此案例中，我們將允許下游裝置連線至作為透明閘道的 IoT Edge 裝置。 為了維持合理的安全性，下游裝置應該確認 IoT Edge 裝置的身分識別。 如需 IoT Edge 裝置如何使用憑證的詳細資訊，請參閱 [Azure IoT Edge 憑證使用方式詳細資料](iot-edge-certs.md)。
+針對要當作閘道運作的裝置，它必須能夠安全地連線到下游裝置。 Azure IoT Edge 可讓您使用公開金鑰基礎結構 (PKI)，設定這些裝置之間的安全連線。 在此案例中，我們將允許下游 IoT 裝置連線至作為透明閘道的 IoT Edge 裝置。 為了維持合理的安全性，下游裝置應該確認 IoT Edge 裝置的身分識別。 如需 IoT Edge 裝置如何使用憑證的詳細資訊，請參閱 [Azure IoT Edge 憑證使用方式詳細資料](iot-edge-certs.md)。
 
-在此節中，我們會使用 Docker 映像建立自我簽署憑證，然後建置並執行它們。 我們選擇使用 Docker 映像來完成此步驟，因為它能大幅降低在 Windows 開發電腦上建立憑證所需的步驟數目。 請參閱[建立示範憑證以測試 IoT Edge 裝置功能](how-to-create-test-certificates.md)，以了解我們使用 Docker 映像自動化的項目。
+在此節中，我們會使用 Docker 映像建立自我簽署憑證，然後建置並執行它們。 我們選擇使用 Docker 映像來完成此步驟，因為其能大幅降低在 Windows 開發電腦上建立憑證所需的步驟數目。 請參閱[建立示範憑證以測試 IoT Edge 裝置功能](how-to-create-test-certificates.md)，以了解我們使用 Docker 映像自動化的項目。
 
-1. 登入您的開發虛擬機器。
+1. 登入開發 VM。
 
-2. 開啟命令提示字元並執行下列命令以在 VM 上建立目錄。
+2. 使用路徑和名稱 `c:\edgeCertificates` 建立新的資料夾。
 
-    ```cmd
-    mkdir c:\edgeCertificates
-    ```
-
-3. 從 Windows [開始] 功能表啟動 [適用於 Windows 的 Docker]  。
+3. 如果尚未執行，請從 Windows 的 [開始] 功能表開始**適用於 Windows 的 Docker**。
 
 4. 開啟 Visual Studio Code。
 
 5. 選取 [檔案]   > [開啟資料夾]  ，然後選擇 [C:\\來源\\IoTEdgeAndMlSample\\CreateCertificates]  。
 
-6. 以滑鼠右鍵按一下 Dockerfile，並選擇 [建置映像]  。
+6. 在 [總管] 窗格中，以滑鼠右鍵按一下 **dockerfile**，然後選擇 [建置映像]  。
 
-7. 在對話方塊中，接受映像名稱和標記的預設值：**createcertificates:latest**。
+7. 在對話方塊中，接受映像名稱和標籤的預設值：**createcertificates: latest**。
+
+    ![在 Visual Studio Code 中建立憑證](media/tutorial-machine-learning-edge-05-configure-edge-device/create-certificates.png)
 
 8. 等待建置完成。
 
@@ -73,7 +71,7 @@ ms.locfileid: "76514641"
 
 ## <a name="upload-certificates-to-azure-key-vault"></a>將憑證上傳至 Azure Key Vault
 
-為安全地儲存我們的憑證，並使其可從多個裝置存取，我們會將憑證上傳至 Azure Key Vault。 從上述清單中可以看出，我們有兩種類型的憑證檔案：PFX 和 PEM。 我們會將 PFX 視為要上傳至 Key Vault 的金鑰保存庫憑證。 PEM 檔案是純文字，我們會將其視為 Key Vault 祕密。 我們將使用與我們透過執行 [Azure Notebooks](tutorial-machine-learning-edge-04-train-model.md#run-azure-notebooks) 建立之 Azure Machine Learning 工作區相關聯的 Key Vault。
+為安全地儲存我們的憑證，並使其可從多個裝置存取，我們會將憑證上傳至 Azure Key Vault。 從上述清單中可以看出，我們有兩種類型的憑證檔案：PFX 和 PEM。 我們會將 PFX 視為要上傳至 Key Vault 的 Key Vault 憑證。 PEM 檔案是純文字，我們會將其視為 Key Vault 祕密。 我們將使用與我們透過執行 [Azure Notebooks](tutorial-machine-learning-edge-04-train-model.md#run-azure-notebooks) 建立之 Azure Machine Learning 工作區相關聯的 Key Vault。
 
 1. 從 [Azure 入口網站](https://portal.azure.com)，瀏覽至您的 Azure Machine Learning 工作區。
 
@@ -95,17 +93,17 @@ ms.locfileid: "76514641"
 
 ## <a name="create-iot-edge-device"></a>建立 IoT Edge 裝置
 
-若要將 Azure IoT Edge 裝置連線到 IoT 中樞，首先我們要在中樞中建立裝置的身分識別。 我們會從雲端中的裝置身分識別取得連接字串，並使用它來設定 IoT Edge 裝置上的執行階段。 一旦設定裝置並連線到中樞，我們就可以部署模組並傳送訊息。 我們還可以透過變更 IoT 中樞中相對應裝置身分識別的設定，來變更實體 IoT Edge 裝置的設定。
+若要將 Azure IoT Edge 裝置連線到 IoT 中樞，首先我們要在中樞中建立裝置的身分識別。 我們會從雲端中的裝置身分識別取得連接字串，並使用它來設定 IoT Edge 裝置上的執行階段。 一旦已設定好的裝置連線到中樞，我們就可以部署模組並傳送訊息。 我們還可以透過變更實體 IoT Edge 裝置在 IoT 中樞中的對應裝置身分識別，來變更其設定。
 
 在此教學課程中，我們會使用 Visual Studio Code 建立新的裝置身分識別。 您也可以使用 [Azure 入口網站](how-to-register-device.md#register-in-the-azure-portal)或 [Azure CLI](how-to-register-device.md#register-with-the-azure-cli) 來完成這些步驟。
 
 1. 在您的開發電腦上，開啟 Visual Studio Code。
 
-2. 從 Visual Studio Code 總管檢視開啟 [Azure IoT 中樞裝置]  框架。
+2. 從 Visual Studio Code 總管檢視展開 [Azure IoT 中樞]  框架。
 
 3. 按一下省略符號，然後選取 [建立 IoT Edge 裝置]  。
 
-4. 指定裝置的名稱。 為了方便起見，我們使用 **aaTurbofanEdgeDevice**，以便它將我們稍早透過裝置控管建立的所有用戶端裝置排序，以傳送測試資料。
+4. 指定裝置的名稱。 為求方便，我們使用名稱 **aaTurbofanEdgeDevice**，以便將其排序到所列出裝置的頂端。
 
 5. 新的裝置會出現在裝置清單中。
 
@@ -125,9 +123,9 @@ ms.locfileid: "76514641"
 
 1. 在搜尋列中，輸入並選取 [Marketplace]  。
 
-1. 在搜尋列中，輸入並選取 [Azure IoT Edge on Ubuntu]  。
+1. 在 Marketplace 搜尋列中，輸入並選取 [Azure IoT Edge on Ubuntu]  。
 
-1. 選取 [想要以程式設計方式部署嗎?  開始使用] 超連結。
+1. 選取 [開始使用]  超連結以便透過程式設計方式進行部署。
 
 1. 選取 [啟用]  按鈕，然後 [儲存]  。
 
@@ -192,7 +190,9 @@ ms.locfileid: "76514641"
 
 ## <a name="download-key-vault-certificates"></a>下載 Key Vault 憑證
 
-稍早在此文章中，我們將憑證上傳到 Key Vault，使其可供於我們的 IoT Edge 裝置和我們的分葉裝置使用，分葉裝置是使用 IoT Edge 裝置作為與 IoT 中樞通訊之閘道的下游裝置。 稍後在此教學課程中，我們將會討論分葉裝置。 在此節中，將憑證下載到 IoT Edge 裝置。
+我們在本文稍早將憑證上傳至 Key Vault，使其可供 IoT Edge 裝置和分葉裝置使用。 分葉裝置是一種下游裝置，會使用 IoT Edge 裝置來作為與 IoT 中樞通訊的閘道。
+
+稍後在此教學課程中，我們將會討論分葉裝置。 在此節中，將憑證下載到 IoT Edge 裝置。
 
 1. 在 Linux 虛擬機器上的 SSH 工作階段中，使用 Azure CLI 登入 Azure。
 
@@ -227,7 +227,7 @@ ms.locfileid: "76514641"
 
 ## <a name="update-the-iot-edge-device-configuration"></a>更新 IoT Edge 裝置設定
 
-IoT Edge 執行階段會使用檔案 /etc/iotedge/config.yaml 來保存其設定。 我們需要更新此檔案中的三個資訊：
+IoT Edge 執行階段會使用檔案 `/etc/iotedge/config.yaml` 來保存其設定。 我們需要更新此檔案中的三個資訊：
 
 * **裝置連接字串**：IoT 中樞中來自此裝置身分識別的連接字串
 * **憑證**：用於與下游裝置進行連線的憑證
@@ -296,7 +296,9 @@ IoT Edge 執行階段會使用檔案 /etc/iotedge/config.yaml 來保存其設定
 
 ## <a name="next-steps"></a>後續步驟
 
-我們剛剛將 Azure VM 設定為 Azure IoT Edge 透明閘道。 我們首先產生測試憑證，然後將其上傳至 Azure 金鑰保存庫。 接下來，我們使用指令碼和 Resource Manager 範本從 Azure Marketplace 部署具有 "Ubuntu Server 16.04 LTS + Azure IoT Edge 執行階段" 映像的 VM。 該指令碼採取了額外的步驟來安裝 Azure CLI ([使用 apt 安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-apt))。 啟動並執行 VM 後，我們透過 SSH 連線、登入 Azure、從 Key Vault 下載憑證，並透過更新 config.yaml 檔案對 IoT Edge 執行階段的設定進行了數個更新。 如需將 IoT Edge 作為閘道使用的詳細資訊，請參閱[如何使用 IoT Edge 裝置作為閘道](iot-edge-as-gateway.md)。 如需有關如何將 IoT Edge 裝置設定為透明閘道的詳細資訊，請參閱[設定 IoT Edge 裝置作為透明閘道](how-to-create-transparent-gateway.md)。
+我們剛剛將 Azure VM 設定為 Azure IoT Edge 透明閘道。 我們首先產生測試憑證，然後將其上傳至 Azure Key Vault。 接下來，我們使用指令碼和 Resource Manager 範本從 Azure Marketplace 部署具有 "Ubuntu Server 16.04 LTS + Azure IoT Edge 執行階段" 映像的 VM。 當我們透過 SSH 所連線的 VM 啟動並執行時，我們便登入到 Azure，並從 Key Vault 下載了憑證。 我們已藉由更新 config.yaml 檔案，對 IoT Edge 執行階段的設定進行了數項更新。
+
+如需詳細資訊，請參閱[如何使用 IoT Edge 裝置作為閘道](iot-edge-as-gateway.md)和[設定 IoT Edge 裝置作為透明閘道](how-to-create-transparent-gateway.md)。
 
 請前往下一篇文章以建置 IoT Edge 模組。
 

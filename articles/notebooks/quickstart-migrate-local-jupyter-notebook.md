@@ -3,24 +3,30 @@ title: 將本機 Jupyter Notebook 遷移至 Azure Notebooks 預覽
 description: 從本機電腦或 Web URL 將 Jupyter Notebook 快速遷移至 Azure Notebooks 預覽，並共用 Notebook 以進行共同作業。
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: 9e5270c59a64f9510f9108bbe4d00b922178888c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: baf05d7adb1340d712ff0fc87436d5bbac51bc8f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647045"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064320"
 ---
 # <a name="quickstart-migrate-a-local-jupyter-notebook-in-azure-notebooks-preview"></a>快速入門：在 Azure Notebooks 預覽中遷移本機 Jupyter Notebook
 
-您在個人電腦本機建立的 Jupyter Notebook，只有您自己可以存取。 您可以透過各種方式共用您的檔案，但其後接收者將會有其本身的本機 Notebook 複本，而您將難以併入他們所做的任何變更。 您也可以將 Notebook 儲存在共用的線上存放庫 (例如 GitHub) 中，但若要這麼做，每個共同作業者仍需在本機安裝其本身的 Jupyter，且必須使用與您相同的組態。
+在本快速入門中，您會將 Jupyter Notebook 從本機電腦或另一個可存取檔案 URL 遷移至 Azure Notebooks。 
 
-藉由將您的本機或以存放庫為基礎的 Notebook 移轉至 Azure Notebooks，您即可將其儲存在能夠立即與共同作業者共用的雲端位置。 這些共同作業者只需瀏覽器即可檢視和執行您的 Notebook，且在[登入](quickstart-sign-in-azure-notebooks.md) Azure Notebooks 後也將能夠進行變更。
+只有您可存取自有電腦上的 Jupyter Notebook。 您可以共用檔案，但收件者接著會有自己的本機 Notebook 複本，且難以併入其變更。 即使您將 Notebook 儲存在 GitHub 等共用線上存放庫中，每個共同作業者都必須像您一樣設定本機 Jupyter 安裝。
 
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+將您的本機或以存放庫為基礎的 Notebook 遷移至 Azure Notebooks，您可立即將其與共同作業者共用，他們只需要瀏覽器即可檢視和執行您的 Notebook。 如果他們登入 Azure Notebooks，也可以進行變更。
 
-本快速入門示範從您的本機電腦或另一個可存取的檔案 URL 移轉 Notebook 的程序。 若要從 GitHub 存放庫移轉 Notebook，請參閱[快速入門：複製 Notebook](quickstart-clone-jupyter-notebook.md)。
+## <a name="prerequisites"></a>Prerequisites
+
+- 本機電腦或另一個可存取檔案 URL 上的 [Jupyter Notebook](https://jupyter-notebook.readthedocs.io)。 
 
 ## <a name="create-a-project-on-azure-notebooks"></a>在 Azure Notebooks 上建立專案
+
+本快速入門示範如何從您的本機電腦或另一個可存取檔案 URL 遷移 Notebook。 若要從 GitHub 存放庫移轉 Notebook，請參閱[快速入門：複製 Notebook](quickstart-clone-jupyter-notebook.md)。
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 1. 前往 [Azure Notebooks](https://notebooks.azure.com) 並登入。 (如需詳細資訊，請參閱[快速入門 - 登入 Azure Notebooks](quickstart-sign-in-azure-notebooks.md))。
 
@@ -28,7 +34,7 @@ ms.locfileid: "75647045"
 
     ![瀏覽器視窗頂端的 [我的專案] 連結](media/quickstarts/my-projects-link.png)
 
-1. 在 [我的專案]  頁面上，選取 [+ 新增專案]  \(鍵盤快速鍵：n\)；瀏覽器視窗很窄時，該按鈕會顯示為 **+** ：
+1. 在 [我的專案]  頁面上，選取 [新增專案]  (鍵盤快速鍵：n)。 如果瀏覽器視窗很窄，按鈕可能只會顯示 **+** ：
 
     ![[我的專案] 頁面上的 [新增專案] 命令](media/quickstarts/new-project-command.png)
 
@@ -40,13 +46,13 @@ ms.locfileid: "75647045"
 
     ![從 URL 或本機電腦上傳 Notebook 的命令](media/quickstarts/upload-from-computer-url-command.png)
 
-   (同樣地，如果您的 Notebook 位於 GitHub 存放庫中，請改為遵循[快速入門：複製 Notebook](quickstart-clone-jupyter-notebook.md) 中的步驟。)
+   同樣地，如果您的 Notebook 位於 GitHub 存放庫中，請改為遵循[快速入門：複製 Notebook](quickstart-clone-jupyter-notebook.md) 中的步驟。
 
-   - 如果您使用 [從電腦]  ，請將 *.ipynb* 檔案拖放到快顯視窗中，或選取 [選擇檔案]  ，然後瀏覽至您要匯入的檔案，並加以選取。 然後選取 [上傳]  。 上傳的檔案會獲得與本機檔案相同的名稱。 (您不需要上傳 *.ipynb_checkpoints* 資料夾的任何內容。)
+   - 如果您使用 [從電腦]  ，請將 *.ipynb* 檔案拖放到快顯視窗中，或選取 [選擇檔案]  ，然後瀏覽至您要匯入的檔案，並加以選取。 然後選取 [上傳]  。 上傳的檔案會獲得與本機檔案相同的名稱。 您不需要上傳 *.ipynb_checkpoints* 資料夾的任何內容。
 
      ![從電腦上傳的快顯視窗](media/quickstarts/upload-from-computer-popup.png)
 
-   - 如果您使用 [從 URL]  ，請在 [檔案 URL]  欄位中輸入來源位址，然後在 [檔案名稱]  欄位中，輸入要指派給專案中 Notebook 的檔案名稱。 然後選取 [上傳]  。 如果您有多個具有不同 URL 的檔案，請使用 **+ 新增檔案**命令來檢查您輸入的第一個 URL，其後快顯視窗將會提供另一個檔案的新欄位。
+   - 如果您使用 [從 URL]  ，請在 [檔案 URL]  欄位中輸入來源位址，然後在 [檔案名稱]  欄位中，輸入要指派給專案中 Notebook 的檔案名稱。 然後選取 [上傳]  。 如果您有多個具有不同 URL 的檔案，請使用 [新增檔案]  命令來檢查您輸入的第一個 URL，其後快顯視窗將會提供另一個檔案的新欄位。
 
      ![從 URL 上傳的快顯視窗](media/quickstarts/upload-from-url-popup.png)
 

@@ -9,19 +9,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 02/03/2020
+ms.date: 02/06/2020
 ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: 49c5566454a93307dedd150a3508b33dbd7506e6
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 1abcd22621d427244f9b0533aaea46cbf1f356ad
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022353"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064031"
 ---
 # <a name="use-collections-in-the-my-apps-portal"></a>在我的應用程式入口網站中使用集合
 
-工作區是您在**我的應用程式**入口網站中看到的各種應用程式檢視。 例如，應用程式可以依部門功能或使用者角色分組到集合。 如果您未看到任何可用的集合或類別，這表示您的系統管理員尚未設定任何集合或類別或將其與您共用。 請洽詢組織的技術服務人員，以取得其他協助或權限來查看共用的集合。
+集合是您在 [我的應用程式]  入口網站中看到的各種應用程式檢視。 例如，應用程式可以依部門功能或使用者角色分組到集合。 如果您未看到任何可用的集合或類別，這表示您的系統管理員尚未設定任何集合或類別或將其與您共用。 請洽詢組織的技術服務人員，以取得其他協助或權限來查看共用的集合。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-and-workspaces.md)]
 

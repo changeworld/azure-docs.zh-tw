@@ -9,13 +9,13 @@ ms.topic: overview
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
-ms.date: 01/25/2019
-ms.openlocfilehash: c2548bb4537d17a3dab94d5476c743e2a70faad0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 02/07/2020
+ms.openlocfilehash: 1ffa17bd0e35e3753cde3e915c0ee70d8000147a
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810096"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083112"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>使用資料庫作業將管理工作自動化
 
@@ -158,7 +158,7 @@ EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
 
 受控執行個體不支援有些適用於 SQL Server 的 SQL Agent 功能：
 - SQL 代理程式設定是唯讀狀態。 受控執行個體中不支援 `sp_set_agent_properties` 程序。
-- 受控執行個體目前不支援啟用/停用 SQL 代理程式。 SQL Agent 一直在執行中。
+- 受控執行個體目前不支援啟用/停用 SQL 代理程式。 SQL 代理程式一律會處於正在執行的狀態。
 - 部分支援通知
   - 不支援呼叫器。
   - 不支援 NetSend。
@@ -202,7 +202,9 @@ EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
 
 對於目前的預覽，需要現有的 Azure SQL 資料庫 (S0 或更高版本) 才能建立彈性作業代理程式。
 
-「作業資料庫」  不一定要是新的，但應該是乾淨、空白、 S0 或更高的服務層級。 「作業資料庫」  的建議服務層級為 S1 或更高版本，但實際上取決於作業的效能需求：作業步驟數、作業的執行次數和頻率。 例如，若為每小時執行少量作業的作業代理程式，S0 資料庫可能就已足夠，但是每分鐘執行一項作業時效能不足，更高的服務層級可能比較適合。
+「作業資料庫」  不一定要是新的，但應該是乾淨、空白、 S0 或更高的服務目標。 「作業資料庫」  的建議服務目標為 S1 或更高，但最佳選擇取決於作業的效能需求：作業步驟數、作業目標數，以及作業的執行頻率。 例如，若為每小時執行少量作業且目標少於 10 個資料庫的作業代理程式，S0 資料庫可能就已足夠，但是每分鐘執行一項作業時，S0 資料庫可能就不夠快，而更高的服務層級可能比較適合。 
+
+如果對作業資料庫執行的作業速度比預期慢，則使用 Azure 入口網站或 [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) DMV 來[監視](sql-database-monitor-tune-overview.md#monitor-database-performance)慢速期間內作業資料庫的資料庫效能和資源使用率。 如果資源的使用率 (例如 CPU、資料 IO 或記錄寫入) 接近 100% 並與慢速期間相互關聯，請考慮以累加方式將資料庫調整為更高的服務目標 (在 [DTU 模型](sql-database-service-tiers-dtu.md) 或 [vCore 模型](sql-database-service-tiers-vcore.md) 中)，直到作業資料庫效能獲得充分改善為止。
 
 
 ##### <a name="job-database-permissions"></a>作業資料庫權限
@@ -250,6 +252,10 @@ EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
 
 **範例 5** 和**範例 6** 顯示進階案例，其中 Azure SQL 伺服器、彈性集區和資料庫都可使用包含及排除規則來結合。<br>
 **範例 7** 顯示分區對應中的分區也可在作業執行階段進行評估。
+
+> [!NOTE]
+> 作業資料庫本身可以是作業的目標。 在此案例中，作業資料庫的處理方式就像任何其他目標資料庫一樣。 您必須在作業資料庫中建立作業使用者並授予足夠的權限，且作業使用者的資料庫範圍認證也必須存在於作業資料庫中，就像任何其他目標資料庫一樣。
+>
 
 #### <a name="job"></a>工作 (Job)
 

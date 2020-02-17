@@ -5,13 +5,13 @@ author: djpmsft
 ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 01/14/2020
-ms.openlocfilehash: dee8c919b815c6f22b171f58be9fc6a38167056a
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.date: 02/06/2020
+ms.openlocfilehash: 00b51c14a24b525d98e9634a4f416177364228cb
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030024"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069574"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>對應資料流程影片教學課程
 
@@ -42,6 +42,8 @@ ms.locfileid: "76030024"
 [衍生的資料行轉換](https://www.youtube.com/watch?v=FFCbU4ujCiY)
 
 [聯結轉換](https://www.youtube.com/watch?v=zukwayEXRtg)
+
+[自我聯結模式](https://www.youtube.com/watch?v=Dx1kANfnvmk&feature=youtu.be&hd=1)
 
 [查閱轉換](https://www.youtube.com/watch?v=9U-0VPU2ZPU)
 
@@ -130,3 +132,7 @@ ms.locfileid: "76030024"
 [邏輯模型與實體模型](http://youtu.be/K5tgzLjEE9Q)
 
 [偵測來源資料變更](http://youtu.be/CaxIlI7oXfI?hd=1)
+
+## <a name="data-flow-expressions"></a>資料流程運算式
+
+[日期/時間運算式](https://www.youtube.com/watch?v=uboyCZ25r_E&feature=youtu.be&hd=1)

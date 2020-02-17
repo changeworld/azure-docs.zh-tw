@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 842e5c4771fcac0b8011dda1df11c646bf8f070c
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: bfc5c24b1ba3d623e148e0da5b38a869d056996a
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207191"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367816"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>在 Azure Active Directory 中自訂 SaaS 應用程式的使用者布建屬性對應
 
@@ -111,8 +111,8 @@ Azure AD 布建服務可以部署在「greenfield」案例中（使用者不會�
 
 - Salesforce
 - ServiceNow
-- Workday
-- Azure Active Directory (支援 [Azure AD Graph API 預設屬性](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity)和自訂目錄擴充功能)
+- 工作日
+- Azure Active Directory （[REST API Microsoft Graph 支援1.0 版參考](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)和自訂目錄延伸模組）
 - 支援 [SCIM 2.0](https://tools.ietf.org/html/rfc7643) 的應用程式，定義於[核心結構描述](https://tools.ietf.org/html/rfc7643)中的屬性必須新增至此處
 
 > [!NOTE]
@@ -133,7 +133,7 @@ Azure AD 布建服務可以部署在「greenfield」案例中（使用者不會�
 - **是多重值嗎？** -屬性是否支援多個值。
 - **大小寫完全相符嗎？** -屬性值是否會以區分大小寫的方式進行評估。
 - **API 運算式**-請勿使用，除非是由特定布建連接器的檔（例如 Workday）指示。
-- 參考的**物件屬性**-如果它是參考型別屬性，則此功能表可讓您選取目標應用程式中的資料表和屬性，其中包含與屬性相關聯的值。 例如，如果您有名為 "Department" 的屬性，且其儲存值參考了個別 "Departments" 資料表中的物件，則您會選取 "Departments.Name"。 指定應用程式支援的參考資料表和主要識別碼欄位已預先設定，而且目前無法使用 Azure 入口網站進行編輯，但可以使用[圖形 API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes)編輯。
+- 參考的**物件屬性**-如果它是參考型別屬性，則此功能表可讓您選取目標應用程式中的資料表和屬性，其中包含與屬性相關聯的值。 例如，如果您有名為 "Department" 的屬性，且其儲存值參考了個別 "Departments" 資料表中的物件，則您會選取 "Departments.Name"。 指定應用程式支援的參考資料表和主要識別碼欄位已預先設定，而且目前無法使用 Azure 入口網站進行編輯，但可以使用[MICROSOFT GRAPH API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes)進行編輯。
 
 #### <a name="provisioning-a-custom-extension-attribute-to-a-scim-compliant-application"></a>將自訂延伸模組屬性布建到符合 SCIM 規範的應用程式
 SCIM RFC 會定義核心使用者和群組架構，同時允許架構的延伸，以符合您應用程式的需求。 若要將自訂屬性新增至 SCIM 應用程式：

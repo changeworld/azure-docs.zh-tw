@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf5b3c79e39e9baef49ce2c14408a15c3686a6a8
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: df7fc366c5087e66c3022c212870397d77e6e34d
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293431"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046750"
 ---
 # <a name="tutorial-integrate-dropbox-for-business-with-azure-active-directory"></a>教學課程：整合 Dropbox for Business 與 Azure Active Directory
 
@@ -197,6 +197,6 @@ ms.locfileid: "76293431"
 
 - [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/cloud-app-security/protect-dropbox)
+- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [如何使用進階可見性和控制項保護 Dropbox](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [如何使用進階可見性和控制項保護 Dropbox](https://docs.microsoft.com/cloud-app-security/protect-dropbox)

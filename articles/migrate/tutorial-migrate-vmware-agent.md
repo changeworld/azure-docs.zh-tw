@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Migrate 執行 VMware VM 的代理程式�
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.custom: MVC
-ms.openlocfilehash: c6e0b65a586bfd629244404933836cde7287ae29
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 49b576770d67ae9d2b98a8a0004f4219ecf0fae4
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028963"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057272"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>將 VMware VM 遷移至 Azure (代理程式型)
 
@@ -402,7 +402,7 @@ Azure Migrate 伺服器移轉需要 VMware 伺服器的存取權，才能執行�
 
 2. 在 [複寫機器]  中，以滑鼠右鍵按一下 VM > [遷移]  。
 3. 在 [遷移]   > [將虛擬機器關機，在沒有資料遺失的情況下執行計劃性移轉]  中，選取 [是]   > [確定]  。
-    - 根據預設，Azure Migrate 會關閉內部部署 VM，並執行隨選複寫，以同步處理上次複寫執行後發生的任何 VM 變更。 這樣可確保不會遺失任何資料。
+    - 根據預設，Azure Migrate 會關閉內部部署 VM，以確保遺失最少資料。 
     - 如果您不想關閉 VM，請選取 [否] 
 4. VM 會啟動移轉作業。 請在 Azure 通知中追蹤該作業。
 5. 作業完成後，您可以從 [虛擬機器]  頁面檢視及管理 VM。

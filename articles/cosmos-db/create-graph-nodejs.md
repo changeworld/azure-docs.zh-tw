@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 06/05/2019
 ms.author: lbosq
-ms.openlocfilehash: 966dfbf0280351c605e6dc20fc65178aee83d099
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 7ab259886409610fc89c35f4c96c9babb977b44d
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68735258"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061773"
 ---
 # <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>快速入門：使用 Azure Cosmos DB Gremlin API 帳戶建置 Node.js 應用程式
 
@@ -26,17 +26,12 @@ ms.locfileid: "68735258"
 > * [PHP](create-graph-php.md)
 >  
 
-Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您可以快速建立及查詢文件、索引鍵/值及圖形資料庫，所有這些都受惠於位於 Azure Cosmos DB 核心的全域散發和水平調整功能。 
+在本快速入門中，您會從 Azure 入口網站建立和管理 Azure Cosmos DB Gremlin (圖形) API 帳戶，並使用從 GitHub 複製的 Node.js 應用程式來新增資料。 Azure Cosmos DB 是多模型的資料庫服務，可讓您快速建立及查詢具有全域散發和水平調整功能的文件、資料表、索引鍵/值及圖形資料庫。
 
-本快速入門示範如何使用 Azure 入口網站建立 Azure Cosmos DB [Gremlin API](graph-introduction.md) 帳戶、資料庫和圖表。 您會接著使用開放原始碼 [Gremlin Node.js](https://www.npmjs.com/package/gremlin) 驅動程式來建置和執行主控台應用程式。
-
-## <a name="prerequisites"></a>必要條件
-
-您必須具備下列必要條件，才能執行此範例：
-* [Node.js](https://nodejs.org/en/) 0.10.29 版或更新版本
-* [Git](https://git-scm.com/)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+## <a name="prerequisites"></a>Prerequisites
+- 具有有效訂用帳戶的 Azure 帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 
+- [Node.js 0.10.29+](https://nodejs.org/)。
+- [Git](https://git-scm.com/downloads)。
 
 ## <a name="create-a-database-account"></a>建立資料庫帳戶
 
@@ -74,7 +69,9 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 此為選用步驟。 若您想要瞭解如何在程式碼中建立資料庫資源，則可檢閱下列程式碼片段。 或者也可以直接跳至[更新您的連接字串](#update-your-connection-string)。 
 
-下列程式碼片段全部取自 app.js 檔案。
+下列程式碼片段全部取自 *app.js* 檔案。
+
+此主控台應用程式會使用開放原始碼的 [Gremlin Node.js](https://www.npmjs.com/package/gremlin) 驅動程式。
 
 * 已建立 Gremlin 用戶端。
 
@@ -97,7 +94,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
     ```
 
-  這些設定都位於我們在[下一節](#update-your-connection-string)要編輯的 `config.js`。
+  這些設定都位於我們在[下一節](#update-your-connection-string)要編輯的 config.js  中。
 
 * 定義了一系列的函式來執行不同的 Gremlin 作業。 這是其中一個：
 
@@ -151,15 +148,15 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 ## <a name="update-your-connection-string"></a>更新您的連接字串
 
-1. 更新 config.js 檔案。 
+1. 開啟 config.xml  檔案。 
 
-2. 在 config.js 中，替 `config.endpoint` 金鑰填入 Azure 入口網站的 [概觀]  頁面中的 [Gremlin URI]  值。 
+2. 在 config.js  中，使用 Azure 入口網站中您 Cosmos DB 帳戶的 [概觀]  頁面中的 [Gremlin 端點]  值填入 `config.endpoint` 金鑰。 
 
     `config.endpoint = "https://<your_Gremlin_account_name>.gremlin.cosmosdb.azure.com:443/";`
 
-    ![在 Azure 入口網站的 [金鑰] 刀鋒視窗中檢視並複製存取金鑰](./media/create-graph-nodejs/gremlin-uri.png)
+    ![在 Azure 入口網站的 [概觀] 頁面中檢視並複製存取金鑰](./media/create-graph-nodejs/gremlin-uri.png)
 
-3. 在 config.js 中，使用 Azure 入口網站 [索引鍵]  頁面中的 [主索引鍵]  值填入 config.primaryKey 值。 
+3. 在 config.js  中，使用 Azure 入口網站中您 Cosmos DB 帳戶的 [金鑰]  頁面中的 [主要金鑰]  值填入 config.primaryKey 值。 
 
     `config.primaryKey = "PRIMARYKEY";`
 
@@ -167,7 +164,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 4. 針對 config.database 和 config.collection 的值，輸入資料庫名稱和圖形 (容器) 名稱。 
 
-您完成的 config.js 檔案範例應如下所示︰
+您完成的 config.js  檔案範例應如下所示︰
 
 ```javascript
 var config = {}
@@ -183,7 +180,7 @@ module.exports = config;
 
 ## <a name="run-the-console-app"></a>執行主控台應用程式
 
-1. 開啟終端機視窗並變更 (透過 `cd` 命令) 至專案內含 package.json 檔案的安裝目錄。
+1. 開啟終端機視窗並變更 (透過 `cd` 命令) 至專案內含 package.json  檔案的安裝目錄。
 
 2. 執行 `npm install` 以安裝必要的 npm 模組，包括 `gremlin`。
 
@@ -209,7 +206,7 @@ module.exports = config;
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文章中，您已了解如何建立 Azure Cosmos DB 帳戶、如何使用 [資料總管] 來建立圖形，以及如何執行應用程式。 您現在可以使用 Gremlin 來建置更複雜的查詢，以及實作強大的圖形周遊邏輯。 
+在本文中，您已了解如何建立 Azure Cosmos DB 帳戶、使用 [資料總管] 建立圖形，以及執行 Node.js 應用程式來將資料新增至圖形。 您現在可以使用 Gremlin 來建置更複雜的查詢，以及實作強大的圖形周遊邏輯。 
 
 > [!div class="nextstepaction"]
 > [使用 Gremlin 進行查詢](tutorial-query-graph.md)

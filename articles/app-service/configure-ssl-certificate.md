@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: acf7fd91eff6a868074c61d557effa076033e799
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 5df8ae89c16a453b008afed9ee9f8881a0ac4750
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845920"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046423"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>在 Azure App Service 中新增 SSL 憑證
 
@@ -37,6 +37,9 @@ ms.locfileid: "76845920"
 - 僅適用於免費憑證：透過 [CNAME 記錄](app-service-web-tutorial-custom-domain.md#map-a-cname-record)將子網域 (例如 `www.contoso.com`) 對應至 App Service。
 
 ## <a name="private-certificate-requirements"></a>私人憑證需求
+
+> [!NOTE]
+> Azure Web Apps **不**支援 AES256，且所有 pfx 檔案都應該使用 TrippleDES 加密。
 
 [免費 App Service 受控憑證](#create-a-free-certificate-preview)或 [App Service 憑證](#import-an-app-service-certificate)已經符合 App Service 的需求。 如果您選擇將私人憑證上傳或匯入至 App Service，您的憑證就必須符合下列需求：
 

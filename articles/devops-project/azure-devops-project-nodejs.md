@@ -16,28 +16,31 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 monikerRange: vsts
-ms.openlocfilehash: 11edeb35119e2c598fd83fd89c65ba4dc4679650
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 35eebeaa393ff75ada11752aaf9f195efddfa12b
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256124"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049777"
 ---
 #  <a name="quickstart-create-a-cicd-pipeline-in-azure-pipelines-for-nodejs-with-azure-devops-projects"></a>快速入門：使用 Azure DevOps Projects 在 Azure Pipelines 中建立適用於 Node.js 的 CI/CD 管線
 
-Azure DevOps Projects 提供簡化的體驗，可建立 Azure 資源，並在 Azure Pipelines 中為您的 Node.js 應用程式設定持續整合 (CI) 與持續傳遞 (CD) 管線。  
+在本快速入門中，您會使用簡化的 Azure DevOps Projects 體驗，在 Azure Pipelines 中為 Node.js 應用程式設定持續整合 (CI) 與持續傳遞 (CD) 管線。 您可以使用 Azure DevOps Projects 來設定您在開發、部署及監控應用程式時所需的一切。 
 
-如果您沒有 Azure 訂用帳戶，可以透過 [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) 取得一個免費的訂用帳戶。
+## <a name="prerequisites"></a>Prerequisites
+
+- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 
+- [Azure DevOps](https://azure.microsoft.com/services/devops/) 帳戶和組織。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
 DevOps Projects 會在 Azure Pipelines 中建立 CI/CD 管線。 您可以建立新的 Azure DevOps 組織或使用現有組織。 DevOps Projects 也會在您選擇的 Azure 訂用帳戶中建立 Azure 資源。
 
-1. 登入 [Microsoft Azure 入口網站](https://portal.azure.com)。
+1. 登入 [Azure 入口網站](https://portal.azure.com)，然後在左窗格中選取 [建立資源]  。 
 
-1. 在左側窗格中選取 [建立資源]  ，然後搜尋 [DevOps Projects]  。 
+   ![在 Azure 入口網站中建立 Azure 資源](_img/azure-devops-project-nodejs/create-azure-resource.png)
 
-    ![建立連續傳遞設定資源](_img/azure-devops-project-nodejs/create-azure-resource.png)
+1. 搜尋並選取 [DevOps Projects]  ，然後選取 [建立]  。
 
 ## <a name="select-a-sample-application-and-azure-service"></a>選取應用程式範例和 Azure 服務
 
@@ -52,16 +55,16 @@ DevOps Projects 會在 Azure Pipelines 中建立 CI/CD 管線。 您可以建立
 ## <a name="configure-azure-devops-and-an-azure-subscription"></a>設定 Azure DevOps 與 Azure 訂用帳戶 
 
 1. 建立新的 Azure DevOps 組織或選擇現有組織。 
+   
+   1. 輸入專案的名稱。
+      
+   1. 選取 Azure 訂用帳戶和位置、輸入應用程式名稱，然後選取 [完成]  。  
+      在幾分鐘後，Azure 入口網站中便會顯示 DevOps Projects 儀表板。 系統會在您 Azure DevOps 組織中的存放庫中設定範例應用程式、執行建置，然後將您的應用程式部署到 Azure。 此儀表板可顯示您的程式碼存放庫、CI/CD 管線，和您在 Azure 中的應用程式。
+   
+1. 選取 [瀏覽]  以檢視執行中應用程式。
+   
+   ![CI/CD 管線的儀表板視圖](_img/azure-devops-project-nodejs/devops-projects-dashboard.png) 
 
-    a. 輸入專案的名稱。
-
-    b. 選取 Azure 訂用帳戶和位置、輸入應用程式名稱，然後選取 [完成]  。  
-    在幾分鐘後，Azure 入口網站中便會顯示 DevOps Projects 儀表板。 系統會在您 Azure DevOps 組織中的存放庫中設定範例應用程式、執行建置，然後將您的應用程式部署到 Azure。 此儀表板可顯示您的程式碼存放庫、CI/CD 管線，和您在 Azure 中的應用程式。
-     
-3. 選取 [瀏覽]  以檢視執行中應用程式。
-
-    ![CI/CD 管線的儀表板視圖](_img/azure-devops-project-nodejs/devops-projects-dashboard.png) 
-    
 DevOps Projects 會自動設定 CI 建置和發行觸發程序。  您現在已準備好利用 CI/CD 程序與小組共同進行 Node.js 應用程式的作業，這個程序會自動將您的最新工作部署到網站上。
 
 ## <a name="commit-code-changes-and-execute-cicd"></a>認可程式碼變更並執行 CI/CD
@@ -115,7 +118,7 @@ DevOps Projects 會在 Azure Repos 或 GitHub 中建立 Git 存放庫。 請採�
 1. 選取 [建置及發行]  ，然後選取 [版本]  。  
  DevOps Projects 會建立發行管線來管理 Azure 的部署。
 
-1. 從左側選取您發行管線旁邊的省略符號 (...)，然後選取 [編輯]  。  
+1. 從左側選取發行管線旁邊的省略符號 (...)，然後選取 [編輯]  。  
 發行管線會定義發行程序。
 
 12. 在 [成品]  下，選取 [置放]  。  

@@ -3,19 +3,19 @@ title: 開始使用自訂語音語音服務
 titleSuffix: Azure Cognitive Services
 description: 「自訂語音」是一組線上工具，可讓您評估及改善應用程式、工具和產品的語音轉換文字準確度。 開始使用是幾個測試音訊檔案。 請遵循下列連結，開始建立自訂的語音轉換文字體驗。
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/06/2019
-ms.author: erhopf
-ms.openlocfilehash: c8c849cb83ecb1db5e972c660d94c795092c458e
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 02/14/2020
+ms.author: dapine
+ms.openlocfilehash: 0788ff84cd5b0d50e0798d0d72ee84b47cb5f0b1
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806006"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368322"
 ---
 # <a name="what-is-custom-speech"></a>什麼是自訂語音？
 
@@ -60,6 +60,9 @@ ms.locfileid: "74806006"
 像是資料、模型、測試和端點等內容，會組織成[自訂語音入口網站](https://speech.microsoft.com/customspeech)中的**專案**。 每個專案都是網域和國家/地區所特有。 例如，您可以針對在美國使用英文的撥接中心建立專案。
 
 若要建立您的第一個專案，請選取 [**語音轉換文字]/[自訂語音**]，然後按一下 [**新增專案**]。 依照 wizard 提供的指示來建立您的專案。 建立專案之後，您應該會看到四個索引標籤： [**資料**]、[**測試**]、[**訓練**] 和 [**部署**]。 使用[後續步驟](#next-steps)中提供的連結，以瞭解如何使用每個索引標籤。
+
+> [!IMPORTANT]
+> [自訂語音入口網站](https://aka.ms/custom-speech)最近已更新！ 如果您使用 CRI 入口網站中的資料、模型、測試和已發佈的端點建立了先前的專案，或使用了 Api，則必須在新的入口網站中建立新的專案，才能連接到這些舊的實體。
 
 ## <a name="next-steps"></a>後續步驟
 

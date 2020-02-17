@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: dapine
-ms.openlocfilehash: ca7e7f7460db82a357ed8aa240467a6894254217
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 5d30693eb13104504d1cf27ffdbfb8d098d4ef9e
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087003"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367746"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>安裝和執行語音服務容器（預覽）
 
@@ -26,7 +26,7 @@ ms.locfileid: "77087003"
 > [!IMPORTANT]
 > 所有語音容器目前都是[公開「閘道」預覽](../cognitive-services-container-support.md#public-gated-preview-container-registry-containerpreviewazurecrio)的一部分。 當語音容器進行公開上市（GA）時，將會發出公告。
 
-| 函式 | 特性 | 最新 |
+| 函數 | 特性 | 最新 |
 |--|--|--|
 | 語音轉文字 | 使用中繼結果，將連續即時語音或批次音訊錄音可將成文字。 | 2.0.0 |
 | 自訂語音轉換文字 | 使用自[定義語音入口網站](https://speech.microsoft.com/customspeech)中的自訂模型，將連續即時語音或批次錄音可將為具有中繼結果的文字。 | 2.0.0 |
@@ -35,11 +35,11 @@ ms.locfileid: "77087003"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 使用語音容器之前的必要條件如下：
 
-| 必要 | 目的 |
+| 必要項 | 目的 |
 |--|--|
 | Docker 引擎 | 您必須在[主機電腦](#the-host-computer)上安裝 Docker 引擎。 Docker 提供可在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上設定 Docker 環境的套件。 如需 Docker 和容器基本概念的入門，請參閱 [Docker 概觀](https://docs.docker.com/engine/docker-overview/) \(英文\)。<br><br> Docker 必須設定為允許容器與 Azure 連線，以及傳送帳單資料至 Azure。 <br><br> **在 Windows 上**，也必須將 Docker 設定為支援 Linux 容器。<br><br> |
 | 熟悉 Docker | 您應具備對 Docker 概念 (例如登錄、存放庫、容器和容器映像等) 的基本了解，以及基本 `docker` 命令的知識。 |
@@ -75,25 +75,25 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 # <a name="speech-to-texttabstt"></a>[語音轉文字](#tab/stt)
 
-| 容器 | 最小值 | 建議 |
+| 容器 | 最低 | 建議 |
 |-----------|---------|-------------|
 | 語音轉文字 | 2核心，2 GB 記憶體 | 4核心，4 GB 記憶體 |
 
 # <a name="custom-speech-to-texttabcstt"></a>[自訂語音轉換文字](#tab/cstt)
 
-| 容器 | 最小值 | 建議 |
+| 容器 | 最低 | 建議 |
 |-----------|---------|-------------|
 | 自訂語音轉換文字 | 2核心，2 GB 記憶體 | 4核心，4 GB 記憶體 |
 
 # <a name="text-to-speechtabtts"></a>[文字轉換語音](#tab/tts)
 
-| 容器 | 最小值 | 建議 |
+| 容器 | 最低 | 建議 |
 |-----------|---------|-------------|
 | 文字轉換語音 | 1核心，2 GB 記憶體 | 2核心，3 GB 記憶體 |
 
 # <a name="custom-text-to-speechtabctts"></a>[自訂文字轉換語音](#tab/ctts)
 
-| 容器 | 最小值 | 建議 |
+| 容器 | 最低 | 建議 |
 |-----------|---------|-------------|
 | 自訂文字轉換語音 | 1核心，2 GB 記憶體 | 2核心，3 GB 記憶體 |
 
@@ -112,25 +112,25 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 # <a name="speech-to-texttabstt"></a>[語音轉文字](#tab/stt)
 
-| 容器 | Repository |
+| 容器 | 儲存機制 |
 |-----------|------------|
 | 語音轉文字 | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text:latest` |
 
 # <a name="custom-speech-to-texttabcstt"></a>[自訂語音轉換文字](#tab/cstt)
 
-| 容器 | Repository |
+| 容器 | 儲存機制 |
 |-----------|------------|
 | 自訂語音轉換文字 | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text:latest` |
 
 # <a name="text-to-speechtabtts"></a>[文字轉換語音](#tab/tts)
 
-| 容器 | Repository |
+| 容器 | 儲存機制 |
 |-----------|------------|
 | 文字轉換語音 | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech:latest` |
 
 # <a name="custom-text-to-speechtabctts"></a>[自訂文字轉換語音](#tab/ctts)
 
-| 容器 | Repository |
+| 容器 | 儲存機制 |
 |-----------|------------|
 | 自訂文字轉換語音 | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech:latest` |
 
@@ -261,7 +261,16 @@ ApiKey={API_KEY}
 
 # <a name="custom-speech-to-texttabcstt"></a>[自訂語音轉換文字](#tab/cstt)
 
-*自訂語音轉換文字*容器會依賴自訂語音模型。 自訂模型必須已經使用[自訂語音入口網站](https://speech.microsoft.com/customspeech)進行[定型](how-to-custom-speech-train-model.md)。 需要有自訂語音**模型識別碼**，才能執行容器。 您可以在自訂語音入口網站的 [**訓練**] 頁面上找到此資訊。 從自訂語音入口網站，流覽至 [**定型**] 頁面，然後選取模型。
+*自訂語音轉換文字*容器會依賴自訂語音模型。 自訂模型必須已經使用[自訂語音入口網站](https://speech.microsoft.com/customspeech)進行[定型](how-to-custom-speech-train-model.md)。
+
+> [!IMPORTANT]
+> 自訂語音模型必須從下列其中一個模型版本進行定型：
+> * **20181201（3.3 版整合）**
+> * **20190520（v 4.14 整合）**
+> * **20190701（v 4.17 整合）**<br>
+> ![自訂語音訓練容器模型](media/custom-speech/custom-speech-train-model-container-scoped.png)
+
+需要有自訂語音**模型識別碼**，才能執行容器。 您可以在自訂語音入口網站的 [**訓練**] 頁面上找到此資訊。 從自訂語音入口網站，流覽至 [**定型**] 頁面，然後選取模型。
 <br>
 
 ![自訂語音訓練頁面](media/custom-speech/custom-speech-model-training.png)

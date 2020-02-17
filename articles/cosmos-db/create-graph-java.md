@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 03/26/2019
 ms.author: lbosq
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 1b37475cfa8df38a00ea6017d47e90677ed457d2
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 9f9b6614c586d9c7c721dfc59da9c4a9c342b57c
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212636"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062031"
 ---
-# <a name="quickstart-build-a-graph-database-with-the-java-sdk-and-the-azure-cosmos-db-table-api"></a>快速入門：使用 Java SDK 和 Azure Cosmos DB 資料表 API 來建置圖形資料庫
+# <a name="quickstart-build-a-graph-database-with-the-java-sdk-and-the-azure-cosmos-db-gremlin-api"></a>快速入門：使用 Java SDK 和 Azure Cosmos DB Gremlin API 來建置圖形資料庫
 
 > [!div class="op_single_selector"]
 > * [Gremlin 主控台](create-graph-gremlin-console.md)
@@ -27,21 +27,13 @@ ms.locfileid: "71212636"
 > * [PHP](create-graph-php.md)
 >  
 
-Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您可使用 Azure Cosmos DB 快速地建立和查詢受控文件、資料表及圖形資料庫。 
+在本快速入門中，您會從 Azure 入口網站建立和管理 Azure Cosmos DB Gremlin (圖形) API 帳戶，並使用從 GitHub 複製的 Java 應用程式來新增資料。 Azure Cosmos DB 是多模型的資料庫服務，可讓您快速建立及查詢具有全域散發和水平調整功能的文件、資料表、索引鍵/值及圖形資料庫。
 
-本快速入門會使用 Azure Cosmos DB 適用的 Azure 入口網站工具，建立簡易的圖形資料庫。 本快速入門也說明如何透過使用 OSS [Apache TinkerPop](https://tinkerpop.apache.org/) 驅動程式的 [Gremlin API](graph-introduction.md) 資料庫，快速建立 Java 主控台應用程式。 本快速入門中的指示可運用在任何足以執行 Java 應用程式的作業系統上。 本快速入門可讓您熟悉如何在 UI 中或以程式設計方式建立和修改圖形 (不論您偏好哪種方式)。 
-
-## <a name="prerequisites"></a>必要條件
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
-此外：
-
-* [JAVA 開發套件 (JDK) 8 版](https://aka.ms/azure-jdks) \(英文\)
-    * 務必設定 JAVA_HOME 環境變數，以指向 JDK 安裝所在的資料夾。
-* [下載](https://maven.apache.org/download.cgi)和[安裝 ](https://maven.apache.org/install.html) [Maven](https://maven.apache.org/) 二進位封存檔
-    * 在 Ubuntu 上，您可以執行 `apt-get install maven` 來安裝 Maven。
-* [Git](https://www.git-scm.com/)
-    * 在 Ubuntu 上，您可以執行 `sudo apt-get install git` 來安裝 Git。
+## <a name="prerequisites"></a>Prerequisites
+- 具有有效訂用帳戶的 Azure 帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 
+- [Java 開發套件 (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk)。 將 `JAVA_HOME` 環境變數指向 JDK 安裝所在的資料夾。
+- [Maven 二進位檔封存](https://maven.apache.org/download.cgi)。 
+- [Git](https://www.git-scm.com/downloads)。 
 
 ## <a name="create-a-database-account"></a>建立資料庫帳戶
 
@@ -79,9 +71,11 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 此為選用步驟。 若您想要瞭解如何在程式碼中建立資料庫資源，則可檢閱下列程式碼片段。 或者也可以直接跳至[更新您的連接字串](#update-your-connection-information)。
 
-下列程式碼片段皆是取自 C:\git-samples\azure-cosmos-db-graph-java-getting-started\src\GetStarted\Program.java 檔案。
+下列程式碼片段皆是取自 C:\git-samples\azure-cosmos-db-graph-java-getting-started\src\GetStarted\Program.java  檔案。
 
-* Gremlin `Client` 已從 C:\git-samples\azure-cosmos-db-graph-java-getting-started\src\remote.yaml 檔案中的組態初始化。
+此 Java 主控台應用程式會使用具有 OSS [Apache TinkerPop](https://tinkerpop.apache.org/) 驅動程式的 [Gremlin API](graph-introduction.md) 資料庫。 
+
+- Gremlin `Client` 會從 C:\git-samples\azure-cosmos-db-graph-java-getting-started\src\remote.yaml  檔案中的組態初始化。
 
     ```java
     cluster = Cluster.build(new File("src/remote.yaml")).create();
@@ -89,7 +83,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
     client = cluster.connect();
     ```
 
-* 已使用 `client.submit` 方法執行一系列的 Gremlin 步驟。
+- 已使用 `client.submit` 方法執行一系列的 Gremlin 步驟。
 
     ```java
     ResultSet results = client.submit(gremlin);
@@ -106,14 +100,14 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 現在，返回 Azure 入口網站以取得連線資訊，並將其複製到應用程式中。 這些設定可讓您的應用程式與託管資料庫進行通訊。
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)中，選取 [金鑰]  。 
+1. 在 [Azure 入口網站](https://portal.azure.com/)您的 Azure Cosmos DB 帳戶中，選取 [金鑰]  。 
 
     複製 URI 值的第一個部分。
 
     ![在 Azure 入口網站的 [金鑰] 頁面中，檢視並複製存取金鑰](./media/create-graph-java/copy-access-key-azure-portal.png)
-2. 開啟 src/remote.yaml 檔案，並將唯一 ID 貼至 `hosts: [$name$.graphs.azure.com]` 中的 `$name$`。
+2. 開啟 src/remote.yaml  檔案，並將唯一識別碼值貼到 `hosts: [$name$.graphs.azure.com]` 中的 `$name$` 上。
 
-    remote.yaml 的行 1 現應如下所示 
+    remote.yaml  的行 1 現應如下所示 
 
     `hosts: [test-graph.graphs.azure.com]`
 
@@ -125,11 +119,11 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 4. 在 Azure 入口網站中，使用複製按鈕複製 PRIMARY KEY，然後將其貼上至 `password: $masterKey$` 中的 `$masterKey$`。
 
-    remote.yaml 的行 4 現應如下所示 
+    remote.yaml  的行 4 現應如下所示 
 
     `password: 2Ggkr662ifxz2Mg==`
 
-5. 變更 remote.yaml 的行 3，從
+5. 變更 remote.yaml  的行 3，從
 
     `username: /dbs/$database$/colls/$collection$`
 
@@ -139,7 +133,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
     如果您已使用範例資料庫或圖形的唯一名稱，請更新為適當值。
 
-6. 儲存 remote.yaml 檔案。
+6. 儲存 remote.yaml  檔案。
 
 ## <a name="run-the-console-app"></a>執行主控台應用程式
 
@@ -172,7 +166,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 您現在可以移回 [資料總管] 並查看已新增到圖行的頂點，然後新增額外的資料點。
 
-1. 選取 [資料總管]  ，展開 **sample-graph**，選取 [圖形]  ，然後再選取 [套用篩選條件]  。 
+1. 在 Azure 入口網站您的 Azure Cosmos DB 帳戶中，選取 [資料總管]  ，展開 **sample-graph**，選取 [圖形]  ，然後選取 [套用篩選條件]  。 
 
    ![在 Azure 入口網站的 [資料總管] 中建立新文件](./media/create-graph-java/azure-cosmosdb-data-explorer-expanded.png)
 
@@ -229,7 +223,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
     ![資料總管中連線的兩個頂點 - Azure CosmosDB](./media/create-graph-java/azure-cosmosdb-graph-explorer.png)
 
-    這會完成本教學課程中的資源建立部分。 您可以繼續將頂點新增至圖形、修改現有的頂點，或是變更查詢。 現在讓我們檢閱 Azure Cosmos DB 提供的計量，然後再清除資源。 
+這會完成本教學課程中的資源建立部分。 您可以繼續將頂點新增至圖形、修改現有的頂點，或是變更查詢。 現在讓我們檢閱 Azure Cosmos DB 提供的計量，然後再清除資源。 
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 入口網站中檢閱 SLA
 
@@ -241,7 +235,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已了解如何建立 Azure Cosmos DB 帳戶、如何使用 [資料總管] 來建立圖形，以及如何執行應用程式。 您現在可以使用 Gremlin 來建置更複雜的查詢和實作強大的圖形周遊邏輯。 
+在本快速入門中，您已了解如何建立 Azure Cosmos DB 帳戶、使用 [資料總管] 建立圖形，以及執行 Java 應用程式來將資料新增至圖形。 您現在可以使用 Gremlin 來建置更複雜的查詢和實作強大的圖形周遊邏輯。 
 
 > [!div class="nextstepaction"]
 > [使用 Gremlin 進行查詢](tutorial-query-graph.md)

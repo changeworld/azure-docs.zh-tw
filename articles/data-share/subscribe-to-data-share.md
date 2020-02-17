@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.openlocfilehash: f2acb89597ef877543a2c4cc46f395aede41034b
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 5b7d9cd7e7d438cf2beac76d5d8bcc78d377a8f4
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964493"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083099"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>教學課程：使用 Azure Data Share 接受和接收資料  
 
@@ -30,7 +30,7 @@ ms.locfileid: "76964493"
 
 * Azure 訂用帳戶：如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 * 資料共用邀請：Microsoft Azure 所送來的邀請，主旨標題為「來自 **<yourdataprovider@domain.com>** 的 Azure Data Share 邀請」。
-* 註冊 Microsoft.DataShare 資源提供者。 請依照[對 Azure Data Share 進行疑難排解](data-share-troubleshoot.md)中的指示，註冊資料共用資源提供者。
+* 在您將建立資料共用資源的 Azure 訂用帳戶及目標 Azure 資料存放區所在的 Azure 訂用帳戶中，註冊 [Microsoft.DataShare 資源提供者](concepts-roles-permissions.md#resource-provider-registration)。
 
 ### <a name="receive-data-into-a-storage-account"></a>將資料接收到儲存體帳戶中： 
 
@@ -57,7 +57,7 @@ ms.locfileid: "76964493"
 * 用戶端 IP SQL Server 防火牆存取。 這可以透過下列步驟完成： 
     1. 在 Azure 入口網站的 SQL Server 中，瀏覽至 [防火牆和虛擬網路] 
     1. 按一下 [開啟]  切換開關，以允許存取 Azure 服務。
-    1. 按一下 [+ 新增用戶端 IP]  ，然後按一下 [儲存]  。 用戶端 IP 位址可能會有所變更。 下次從 Azure 入口網站共用 SQL 資料時，可能需要重複執行此程序。 您也可以新增 IP 範圍。 
+    1. 按一下 [+ 新增用戶端 IP]  ，然後按一下 [儲存]  。 用戶端 IP 位址可能會有所變更。 下次從 Azure 入口網站將資料接收到 SQL 目標時，可能需要重複執行此程序。 您也可以新增 IP 範圍。 
 
 
 ### <a name="receive-data-into-an-azure-data-explorer-cluster"></a>將資料接收到 Azure 資料總管叢集中： 

@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 11/13/2019
+ms.date: 02/05/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 3b33015b3a69372f6783d59b28a111ec279dd860
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 9ac70252ce7c818ccbdecfd996b9970f011aa967
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048481"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77056337"
 ---
 # <a name="about-azure-virtual-wan"></a>關於 Azure 虛擬 WAN
 
@@ -37,6 +37,13 @@ Azure 虛擬 WAN 將許多 Azure 雲端連線服務 (例如站對站 VPN、使�
 
 如需如何升級虛擬 WAN 的步驟，請參閱[將虛擬 WAN 從基本升級至標準](upgrade-virtual-wan.md)。
 
+## <a name="architecture"></a>架構
+
+如需有關虛擬 WAN 架構以及如何遷移至虛擬 WAN 的詳細資訊，請參閱下列文章：
+
+* [虛擬 WAN 架構](migrate-from-hub-spoke-topology.md)
+* [全域傳輸網路架構](virtual-wan-global-transit-network-architecture.md)
+
 ## <a name="resources"></a>虛擬 WAN 資源
 
 若要設定端對端虛擬 WAN，您可以建立下列資源：
@@ -57,7 +64,7 @@ Azure 虛擬 WAN 將許多 Azure 雲端連線服務 (例如站對站 VPN、使�
 
   * **站台：** 此資源僅用於站對站連線。 站台資源為 **vpnsite**。 它代表您的內部部署 VPN 裝置及其設定。 使用虛擬 WAN 合作夥伴，您將擁有內建的解決方案，會將這項資訊自動匯出至 Azure。
 
-## <a name="connectivity"></a>連線能力
+## <a name="connectivity"></a>連線類型
 
 虛擬 WAN 可實現下列類型的連線：站對站 VPN、使用者 VPN (點對站) 和 ExpressRoute。
 

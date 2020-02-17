@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: e1c5504b30c2784e8657ccc0dc4ec18689fe2a68
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: ef5cc0fb561d385a1b1d7b4c14db8c10343508cf
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806808"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133655"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>課程類型概觀 - Azure 實驗室服務
 
@@ -46,9 +46,25 @@ Azure 實驗室服務可讓您在雲端中快速設定教室實驗室環境。 �
 
 如需如何設定此類實驗室的詳細資訊，請參閱[設定實驗室以指導道德入侵課程](class-type-ethical-hacking.md)。
 
+## <a name="database-management"></a>資料庫管理
+資料庫概念是大專院校大部分的電腦科學系所會教授的其中一門入門課程。 您可以在 Azure 實驗室服務中設定適用於基本資料庫管理課程的實驗室。 例如，您可以在具有 [MySQL](https://www.mysql.com/) 資料庫伺服器或 [SQL Server 2019](https://www.microsoft.com/sql-server/sql-server-2019) 伺服器的實驗室中設定虛擬機器範本。
+
+如需如何設定此類型實驗室的詳細資訊，請參閱[設定實驗室來教授關聯式資料庫的資料庫管理](class-type-database-management.md)。
+
+## <a name="python-and-jupyter-notebooks"></a>Python 和 Jupyter 筆記本
+您可以在 Azure 實驗室服務中使用所需工具設定範本機器，以教授學生如何使用 [Jupyter Notebook](http://jupyter-notebook.readthedocs.io)。 Jupyter Notebook 是開放原始碼專案，可讓您輕鬆地在稱為筆記本的單一畫布上結合 RTF 和可執行的 [Python](https://www.python.org/) 原始程式碼。 執行筆記本會產生線性的輸入和輸出記錄。  這些輸出可以包含文字、資訊資料表、散佈圖等等。
+
+如需如何設定此類實驗室的詳細資訊，請參閱[使用 Python 和 Jupyter Notebook 設定實驗室來教授資料科學](class-type-jupyter-notebook.md)。
+
+## <a name="mobile-app-development-with-android-studio"></a>使用 Android Studio 進行行動應用程式開發
+您可以在 Azure 實驗室服務中設定實驗室，以教授入門的行動應用程式開發課程。 此課程著重於可發佈至 [Google Play 商店](https://play.google.com/store/apps)的 Android 行動應用程式。  學生會了解如何使用 [Android Studio](https://developer.android.com/studio) 來建置應用程式。  [Visual Studio 的 Android 模擬器](https://visualstudio.microsoft.com/vs/msft-android-emulator/)可用來在本機測試應用程式。
+
+如需如何設定此類實驗室的詳細資訊，請參閱[使用 Android Studio 設定實驗室來教授行動應用程式開發](class-type-mobile-dev-android-studio.md)。
+
+
 ## <a name="next-steps"></a>後續步驟
 
-請參閱下列文章：
+查看下列文章：
 
 - [使用 Azure 實驗室服務，設定以自然語言處理中的深度學習為焦點的實驗室](class-type-deep-learning-natural-processing.md)
 - [Linux 上的殼層指令碼](class-type-shell-scripting-linux.md)

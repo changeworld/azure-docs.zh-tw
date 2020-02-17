@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/12/2019
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1aa2d58a40c623cc451ca30aaa9d75a4a6b3d4c0
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 7902112c1694bacfeb45b5f20db80d5136642169
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983855"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047940"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-azure-ad-saml-toolkit"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Azure AD SAML Toolkit 整合
 
@@ -45,6 +45,7 @@ ms.locfileid: "76983855"
 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
 
 * Azure AD SAML Toolkit 支援 **SP** 起始的 SSO
+* 設定 Azure AD SAML Toolkit 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-azure-ad-saml-toolkit-from-the-gallery"></a>從資源庫新增 Azure AD SAML Toolkit
 
@@ -76,17 +77,17 @@ ms.locfileid: "76983855"
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Azure AD SAML Toolkit]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
 1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
-1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。 您可以使用 [SAML 工具組 SAML 組態] 頁面來擷取設定。 
+1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
 1. 在 [基本 SAML 設定]  頁面上，輸入下列欄位的值：
 
-    a. 在 [登入 URL]  文字方塊中，輸入 URL：`https://samltoolkit.azurewebsites.net/SAML/Login/<3digitnumber>`
+    a. 在 [登入 URL]  文字方塊中，輸入 URL：`https://samltoolkit.azurewebsites.net/`
 
     b. 在 [識別碼 (實體識別碼)]  文字方塊中，輸入 URL：`https://samltoolkit.azurewebsites.net`
 
-    c. 在 [回覆 URL]  文字方塊中，鍵入 URL：`https://samltoolkit.azurewebsites.net/SAML/Consume/<3digitnumber>`
+    c. 在 [回覆 URL]  文字方塊中，鍵入 URL：`https://samltoolkit.azurewebsites.net/SAML/Consume`
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (原始)]  並選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
@@ -173,3 +174,7 @@ ms.locfileid: "76983855"
 - [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [嘗試搭配 Azure AD 使用 Azure AD SAML Toolkit](https://aad.portal.azure.com/)
+
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [如何使用進階可見性和控制項保護 Azure AD SAML Toolkit](https://docs.microsoft.com/cloud-app-security/protect-azure)

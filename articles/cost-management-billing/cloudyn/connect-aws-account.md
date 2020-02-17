@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: dcb4c30fe485559834791fa567856bc78cff067e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 28229ad71327daefb8e42881cf001b6a3ddd3a53
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76770338"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086836"
 ---
 # <a name="connect-an-amazon-web-services-account"></a>連線 Amazon Web Services 帳戶
 
@@ -41,7 +41,7 @@ ms.locfileid: "76770338"
 
 ### <a name="add-aws-read-only-role-based-access"></a>新增 AWS 唯讀角色型存取
 
-1. 登入 AWS 主控台 (位於 https://console.aws.amazon.com/iam/home )，然後選取 [角色]  。
+1. 登入 AWS 主控台 (位於 [https://console.aws.amazon.com/iam/home](https://console.aws.amazon.com/iam/home))，然後選取 [角色]  。
 2. 按一下 [建立角色]  ，然後選取 [另一個 AWS 帳戶]  。
 3. 在 [帳戶識別碼]  方塊中，貼上 `432263259397`。 這個「帳戶識別碼」是 AWS 指派給 Cloudyn 服務的 Cloudyn 資料收集器帳戶。 使用顯示的確切帳戶識別碼。
 4. 在 [選項]  旁邊，選取 [需要外部識別碼]  。 貼上先前從 Cloudyn 中 [外部識別碼]  欄位複製的唯一值。 然後按 [下一步：**權限]** 。  
@@ -76,7 +76,7 @@ Cloudyn 會開始收集資料並填入報告。 接下來，[啟用詳細 AWS �
 
 ### <a name="add-aws-read-only-user-based-access"></a>新增 AWS 唯讀以使用者為基礎的存取
 
-1. 登入 AWS 主控台 (位於 https://console.aws.amazon.com/iam/home )，然後選取 [使用者]  。
+1. 登入 AWS 主控台 (位於 [https://console.aws.amazon.com/iam/home](https://console.aws.amazon.com/iam/home))，然後選取 [使用者]  。
 2. 按一下 [新增使用者]  。
 3. 在 [使用者名稱]  欄位中，輸入使用者名稱。
 4. 針對 [存取類型]  ，選取 [以程式設計方式存取]  ，然後按 [下一步：**權限]** 。  
@@ -107,7 +107,7 @@ Cloudyn 會開始收集資料並填入報告。 接下來，[啟用詳細 AWS �
 
 使用下列步驟以取得您的 AWS 角色 ARN。 使用角色 ARN 將讀取權限授與帳單貯體。
 
-1. 登入 AWS 主控台 (位於 https://console.aws.amazon.com )，然後選取 [服務]  。
+1. 登入 AWS 主控台 (位於 [https://console.aws.amazon.com](https://console.aws.amazon.com))，然後選取 [服務]  。
 2. 在 [服務搜尋] 方塊中，輸入「IAM」  ，然後選取該選項。
 3. 從左側功能表選取 [角色]  。
 4. 在 [角色] 清單中，選取您為 Cloudyn 存取所建立的角色。
@@ -117,7 +117,7 @@ Cloudyn 會開始收集資料並填入報告。 接下來，[啟用詳細 AWS �
 
 建立 S3 貯體以儲存詳細帳單資訊。
 
-1. 登入 AWS 主控台 (位於 https://console.aws.amazon.com )，然後選取 [服務]  。
+1. 登入 AWS 主控台 (位於 [https://console.aws.amazon.com](https://console.aws.amazon.com))，然後選取 [服務]  。
 2. 在 [服務搜尋] 方塊中，輸入「S3」  ，然後選取 [S3]  。
 3. 在 [Amazon S3] 頁面上，按一下 [建立貯體]  。
 4. 在建立貯體精靈中，選擇貯體名稱和區域，然後按 [下一步]  。  

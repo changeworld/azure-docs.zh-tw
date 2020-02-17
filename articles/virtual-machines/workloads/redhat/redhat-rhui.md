@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: e4213e67d9d752f3fc6450236b41e8bbf61f9957
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: dc4762cbda5ad2877d2d69953d2514dea17c8b46
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169313"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368897"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>適用於 Azure 中隨選 Red Hat Enterprise Linux VM 的 Red Hat Update Infrastructure
  [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) 允許雲端提供者 (例如 Azure) 鏡像 Red Hat 代管的存放庫內容、建立具有 Azure 特定內容的自訂存放庫，以及讓它可供使用者 VM 使用。
@@ -27,6 +27,10 @@ Red Hat Enterprise Linux (RHEL) 隨用隨付 (PAYG) 映像預先設定為存取 
 
 如需所有 RHEL 版本的 Red Hat 支援原則資訊，請參閱 [Red Hat Enterprise Linux 生命週期](https://access.redhat.com/support/policy/updates/errata)頁面。
 
+> [!IMPORTANT]
+> RHUI 僅適用于隨用隨付（PAYGO）影像。 針對自訂和黃金映射（也稱為自備訂用帳戶（BYOS）），系統必須連接到 RHSM 或衛星，才能接收更新。 如需詳細資訊，請參閱[Red Hat 文章](https://access.redhat.com/solutions/253273)。
+
+
 ## <a name="important-information-about-azure-rhui"></a>Azure RHUI 的重要資訊
 
 * Azure RHUI 是更新基礎結構，可支援在 Azure 中建立的所有 RHEL PAYG Vm。 這不會讓您無法使用訂用帳戶管理員或附屬或其他更新來源註冊 PAYG RHEL Vm，但使用 PAYG VM 時，將會產生間接的雙重計費。 請參閱下列重點以取得詳細資料。
@@ -35,6 +39,7 @@ Red Hat Enterprise Linux (RHEL) 隨用隨付 (PAYG) 映像預先設定為存取 
 * Azure 中 RHEL PAYG 映像 (RHEL for SAP、RHEL for SAP HANA 和 RHEL for SAP Business Applications) 會連線至專用 RHUI 通道，以維持在 SAP 認證所需的特定 RHEL 次要版本。
 
 * 只有 [Azure 資料中心 IP 範圍](https://www.microsoft.com/download/details.aspx?id=41653) \(英文\) 中的 VM 能夠存取 Azure 代管的 RHUI。 如果您透過內部部署網路基礎結構為所有 VM 流量設定 Proxy，則可能需要為 RHEL PAYG VM 設定使用者定義的路由，以便存取 Azure RHUI。 如果是這種情況，則需要為_所有_RHUI 的 IP 位址新增使用者定義的路由。
+
 
 ## <a name="image-update-behavior"></a>映射更新行為
 

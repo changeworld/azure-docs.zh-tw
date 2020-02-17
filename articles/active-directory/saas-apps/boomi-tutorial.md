@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 02/07/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2469745edb5b8b3696478603cfe874bcabc8c1ff
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a22a36d5e6c36008c3a574cbcf9be8ec4f52b82b
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231961"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086442"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-boomi"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Boomi 整合
 
@@ -31,9 +30,9 @@ ms.locfileid: "74231961"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Boomi。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -45,6 +44,7 @@ ms.locfileid: "74231961"
 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
 
 * Boomi 支援由 **IDP** 起始的 SSO
+* 設定 Boomi 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-boomi-from-the-gallery"></a>從資源庫新增 Boomi
 
@@ -81,14 +81,22 @@ ms.locfileid: "74231961"
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
-1. 在 [以 SAML 設定單一登入]  頁面上，輸入下列欄位的值：
+1. 在 [基本 SAML 設定]  區段上，如果您有**服務提供者中繼資料檔案**，而想要以 **IDP** 起始模式進行設定，請執行下列步驟：
 
-    a. 在 [識別碼]  文字方塊中，鍵入 URL：`https://platform.boomi.com/`
+    a. 按一下 [上傳中繼資料檔案]  。
 
-    b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://platform.boomi.com/sso/<boomi-tenant>/saml`
+    ![上傳中繼資料檔案](common/upload-metadata.png)
 
-    > [!NOTE]
-    > [回覆 URL] 不是真實的值。 請使用實際的「回覆 URL」來更新此值。 請連絡 [Boomi 用戶端支援小組](https://boomi.com/company/contact/)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    b. 按一下**資料夾圖示**以選取中繼資料檔案，然後按一下 [上傳]  。
+
+    ![選擇中繼資料檔案](common/browse-upload-metadata.png)
+
+    c. 成功上傳中繼資料檔案後，就會在 [基本 SAML 組態] 區段中自動填入 [識別碼]  和 [回覆 URL]  值。
+
+    ![image](common/idp-intiated.png)
+
+    > [!Note]
+    > 您將從 [設定 Boomi SSO]  區段取得 [服務提供者中繼資料檔案]  ，本教學課程稍後會加以說明。 如果 [識別碼]  和 [回覆 URL]  值未自動填入，則請根據您的需求手動填入這些值。
 
 1. Boomi 應用程式需要特定格式的 SAML 判斷提示，需要您將自訂屬性對應新增到您的 SAML 權杖屬性設定。 以下螢幕擷取畫面顯示預設屬性清單。
 
@@ -156,7 +164,9 @@ ms.locfileid: "74231961"
 
     d. 針對 [同盟識別碼位置]  ，選取 [同盟識別碼位於 FEDERATION_ID 屬性元素]  選項按鈕。
 
-    e. 按一下 [儲存]  按鈕。
+    e. 複製 [AtomSphere 中繼資料 URL]  ，透過您所選的瀏覽器移至 [中繼資料 URL]  ，並將輸出儲存至檔案。 在 Azure 入口網站的 [基本 SAML 設定]  區段中上傳 [中繼資料 URL]  。
+
+    f. 按一下 [儲存]  按鈕。
 
 ### <a name="create-boomi-test-user"></a>建立 Boomi 測試使用者
 
@@ -189,7 +199,7 @@ ms.locfileid: "74231961"
     f. 按一下 [確定]  。
 
     > [!NOTE]
-    > 使用者的密碼是透過識別提供者來管理的，因此他們不會收到附上 AtomSphere 帳戶登入密碼的「歡迎使用」通知電子郵件。 您可以使用任何其他的 Boomi 使用者帳戶建立工具或 Boomi 提供的 API，來佈建 Azure AD 使用者帳戶。
+    > 使用者的密碼是透過識別提供者來管理的，因此他們不會收到附上 AtomSphere 帳戶登入密碼的「歡迎使用」通知電子郵件。 您可以使用任何其他的 Boomi 使用者帳戶建立工具或 Boomi 提供的 API 來佈建 AAD 使用者帳戶。
 
 ## <a name="test-sso"></a>測試 SSO
 
@@ -201,8 +211,10 @@ ms.locfileid: "74231961"
 
 - [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 - [嘗試搭配 Azure AD 使用 Boomi](https://aad.portal.azure.com/)

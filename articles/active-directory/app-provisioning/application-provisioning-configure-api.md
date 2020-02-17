@@ -1,6 +1,6 @@
 ---
-title: 使用 MS Graph Api 來設定布建-Azure Active Directory |Microsoft Docs
-description: 需要為應用程式的多個實例設定布建嗎？ 瞭解如何使用 MS Graph Api 來自動化自動布建的設定，以節省時間。
+title: 使用 Microsoft Graph Api 來設定布建 Azure Active Directory |Microsoft Docs
+description: 需要為應用程式的多個實例設定布建嗎？ 瞭解如何使用 Microsoft Graph Api 來自動化自動布建的設定，以節省時間。
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,12 +16,12 @@ ms.date: 11/15/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f19f6e4add9bd677b05e09c627532a7a48354ce
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: f5780227274e8f9574fcdfcd388d75e333cc3d42
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067184"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367835"
 ---
 # <a name="configure-provisioning-using-microsoft-graph-apis"></a>使用 Microsoft Graph Api 設定布建
 

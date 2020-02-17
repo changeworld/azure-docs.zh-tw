@@ -6,18 +6,18 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.openlocfilehash: 64c5d80b5a2660164b21e71f06e847d5b11e40da
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: a8265680f74b2d5679d1ebfbb2873dd096f498a3
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964411"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083059"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>教學課程：使用 Azure Data Share 共用資料  
 
 在本教學課程中，您會了解如何設定新的 Azure Data Share，並開始與 Azure 組織外的客戶及合作夥伴共用資料。 
 
-在本教學課程中，您會了解如何：
+在本教學課程中，您將了解如何：
 
 > [!div class="checklist"]
 > * 建立 Data Share。
@@ -29,6 +29,7 @@ ms.locfileid: "76964411"
 
 * Azure 訂用帳戶：如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 * 您收件者的 Azure 登入電子郵件地址 (不能使用其電子郵件別名)。
+* 如果來源 Azure 資料存放區位於與您將用來建立資料共用資源的不同 Azure 訂用帳戶中，請在 Azure 資料存放區所在的訂用帳戶中註冊 [Microsoft.DataShare 資源提供者](concepts-roles-permissions.md#resource-provider-registration)。 
 
 ### <a name="share-from-a-storage-account"></a>從儲存體帳戶共用：
 
@@ -57,7 +58,7 @@ ms.locfileid: "76964411"
 * 用戶端 IP SQL Server 防火牆存取。 這可以透過下列步驟完成： 
     1. 在 Azure 入口網站的 SQL Server 中，瀏覽至 [防火牆和虛擬網路] 
     1. 按一下 [開啟]  切換開關，以允許存取 Azure 服務。
-    1. 按一下 [+ 新增用戶端 IP]  ，然後按一下 [儲存]  。 用戶端 IP 位址可能會有所變更。 您也可以新增 IP 範圍。 
+    1. 按一下 [+ 新增用戶端 IP]  ，然後按一下 [儲存]  。 用戶端 IP 位址可能會有所變更。 下次從 Azure 入口網站共用 SQL 資料時，可能需要重複執行此程序。 您也可以新增 IP 範圍。 
 
 ### <a name="share-from-azure-data-explorer"></a>從 Azure 資料總管共用
 * Azure 資料總管叢集，其中包含您想要共用的資料庫。

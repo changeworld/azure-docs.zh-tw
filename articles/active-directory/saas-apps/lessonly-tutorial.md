@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa22b46dabcc5c8b2db5997ffc9b2f2480846d6f
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 727d4ec79b142595e59ff63a4afbcbe4a51c2a6d
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074645"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057425"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-lessonly"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Lesson.ly 整合
 
@@ -33,7 +33,7 @@ ms.locfileid: "74074645"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -83,15 +83,17 @@ ms.locfileid: "74074645"
 
 1. 在 [基本 SAML 組態]  區段上，輸入下列欄位的值：
 
-    a. 在 [登入 URL]  文字方塊中，使用下列模式輸入 URL：`https://<companyname>.lessonly.com/signin`
+     a. 在 [登入 URL]  文字方塊中，使用下列模式輸入 URL：`https://<companyname>.lessonly.com/signin`
 
     > [!NOTE]
     > 參考一般名稱時，**companyname** 需要由實際名稱取代。
+    
+     b. 在 [回覆 URL (判斷提示客戶服務 URL)]  文字方塊中，以下列模式輸入 URL：`https://<companyname>.lessonly.com/auth/saml/callback`
 
-    b. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：`https://<companyname>.lessonly.com/auth/saml/metadata`
-
+     c. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：`https://<companyname>.lessonly.com/auth/saml/metadata`
+    
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [Lessonly.com 用戶端支援小組](mailto:support@lessonly.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的 [登入 URL]、[回覆 URL] 和 [識別碼] 來更新這些值。 請連絡 [Lessonly.com 用戶端支援小組](mailto:support@lessonly.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
 1. Lesson.ly 應用程式需要特定格式的 SAML 判斷提示，需要您將自訂屬性對應新增到您的 SAML 權杖屬性設定。 以下螢幕擷取畫面顯示預設屬性清單。
 

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: a0205d57fa68585b1a91b99b19e008eb92e73c0d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a0ffa6e20b42ed8ac145b50c062f5c0a8998add0
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435844"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061636"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>教學課程：使用企業安全性套件在 HDInsight 中設定 Apache Kafka 原則 (預覽)
 
@@ -147,6 +147,8 @@ ms.locfileid: "75435844"
 
 4. 依照**建置並部署範例**底下的步驟 3 進行操作 (在[教學課程：使用 Apache Kafka Producer 和 Consumer API](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example))，以確定 `kafka-producer-consumer.jar` 也可供 **sales_user**使用。
 
+**注意：在本教學課程中，請使用 "DomainJoined-Producer-Consumer" 專案下的 kafka-producer-consumer.jar (不是 Producer-Consumer 專案下的檔案，其適用於未加入網域的案例)。**
+
 5. 藉由執行下列命令，確認 **sales_user1** 可產生至主題 `salesevents`：
 
    ```bash
@@ -194,6 +196,9 @@ ms.locfileid: "75435844"
 1. 在 [服務]  底下，選取 [HDInsight 叢集]  。
 1. 從出現的 HDInsight 叢集清單中，在您為本教學課程建立的叢集旁按一下 [...]  。 
 1. 按一下 **[刪除]** 。 按一下 [是]  。
+
+## <a name="troubleshooting"></a>疑難排解
+如果 kafka-producer-consumer.jar 無法在已加入網域的叢集中運作，請確定您使用的是 "DomainJoined-Producer-Consumer" 專案下的 kafka-producer-consumer.jar (不是 Producer-Consumer 專案下的檔案，其適用於未加入網域的案例)。
 
 ## <a name="next-steps"></a>後續步驟
 

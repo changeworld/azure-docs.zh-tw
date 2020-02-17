@@ -3,24 +3,29 @@ title: 使用 Azure Notebooks 預覽從 GitHub 複製 Jupyter Notebook
 description: 從 GitHub 存放庫中快速複製 Jupyter 筆記本，並在您的 Azure Notebooks 帳戶中執行。
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: 8aa88008ece170a5eed7ab491e3318aed5168923
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: d0f3a12ff04e115074c3821c5e29652484710bca
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647096"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064592"
 ---
 # <a name="quickstart-clone-a-notebook-in-azure-notebooks-preview"></a>快速入門：在 Azure Notebooks 預覽中複製 Notebook
 
-許多資料科學家和開發人員將其筆記本儲存在 [GitHub 存放庫](https://github.com)中，這是一個免費的服務，可為許多不同的專案類型提供儲存體和版本控制。 GitHub 通常當作在本機執行的 Jupyter 筆記本上共同作業的一種方式使用。 在此種情況下，每個共同作業者都會維護一份存放庫的本機複本，並從該複本執行筆記本。
+在本快速入門中，您會將儲存在 GitHub 中的 Jupyter Notebook 複製到 Azure Notebooks 帳戶。 
 
-複製則可在您的 Azure Notebooks 帳戶中建立 GitHub 筆記本的複本。 此複本獨立於其原始的存放庫；變更僅會儲存在您的 Azure Notebooks 帳戶中，因此不會影響正本。 因為您的複本是在雲端，因此您可以與其他不需要任何本機複本，甚至在自己的電腦上有安裝 Jupyter 的共同作業者共用專案。 複製筆記本也可能只是當作您自己專案的起點，或是為了取得資料檔案。
+GitHub 存放庫提供 Jupyter Notebook 的儲存體和版本控制。 共同作業者會維護存放庫的本機複本，並從這些複本執行 Notebook。 將 Jupyter Notebook 從 GitHub 複製到您的 Azure Notebooks 帳戶，可建立獨立的 Notebook 複本。 變更只會儲存在您的 Azure Notebooks 帳戶中，因此不會影響原始 GitHub 存放庫。 
 
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+因為您的 Azure Notebooks 複本位於雲端，因此您可與不需要製作任何本機複本或已在其電腦上安裝 Jupyter 的共同作業者共用該複本。 複製 Notebook 也可能只是當作您自己專案的起點，或是為了取得資料檔案。 
+
+## <a name="prerequisites"></a>Prerequisites
+無。
 
 ## <a name="clone-azure-cognitive-services-notebooks"></a>複製 Azure 認知服務筆記本
 
-1. 前往 [Azure Notebooks](https://notebooks.azure.com) 並登入。 (如需詳細資訊，請參閱[快速入門 - 登入 Azure Notebooks](quickstart-sign-in-azure-notebooks.md))。
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+1. 前往 [Azure Notebooks](https://notebooks.azure.com) 並登入。 如需詳細資訊，請參閱[快速入門 - 登入 Azure Notebooks](quickstart-sign-in-azure-notebooks.md)。
 
 1. 從您的公用設定檔頁面中，選取頁面頂端的 [我的專案]  ：
 

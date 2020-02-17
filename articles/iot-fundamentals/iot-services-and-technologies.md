@@ -1,18 +1,18 @@
 ---
 title: Azure 物聯網 (IoT) 技術與解決方案
 description: 說明可供用來建置 Azure IoT 解決方案的技術和服務集合。
-author: robinsh
+author: dominicbetts
 ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: overview
-ms.date: 10/09/2018
-ms.author: robinsh
-ms.openlocfilehash: cf707a0ddc3d5b46c7be7944a911ee03f00fc064
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/15/2020
+ms.author: dobett
+ms.openlocfilehash: 0b04b5170c13f6f6c3fd74976461f03e4367060a
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457195"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046069"
 ---
 # <a name="azure-technologies-and-services-for-creating-iot-solutions"></a>用來建立 IoT 解決方案的 Azure 技術和服務
 
@@ -83,6 +83,8 @@ Iot Central 使用 Digital Twins 來讓真實世界中的裝置和資料與數�
 ### <a name="data-and-analytics"></a>資料與分析
 
 IoT 裝置通常會產生大量的時間序列資料，例如來自感應器的溫度讀數。 [Azure 時間序列深入解析](../time-series-insights/time-series-insights-overview.md)可以連線到 IoT 中樞、從您的裝置讀取遙測串流、儲存該資料，以及讓您查詢該資料並將其視覺化。
+
+[Azure 地圖服務](/azure/azure-maps)是地理空間服務的集合，採用最新的地圖資料為 Web 和行動裝置應用程式提供準確的地理內容。 您可以使用 REST API、網頁型 JavaScript 控制項或 Android SDK 來建置應用程式。
 
 ## <a name="next-steps"></a>後續步驟
 

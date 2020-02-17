@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d02a9dbc5b89c4156b7ff8b6a49adb7f00fef83
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 465b41aaf3c3b16dcba489d1ea9ba951a3108c8e
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969740"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046591"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eab-navigate-impl"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 EAB Navigate IMPL 整合
 
@@ -33,7 +33,7 @@ ms.locfileid: "72969740"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -78,17 +78,20 @@ ms.locfileid: "72969740"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [EAB Navigate IMPL]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [選取單一登入方法]  頁面上，選取 [SAML]  。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
-1. 在 [基本 SAML 組態]  區段上，輸入下列欄位的值：
-
+1. 在 [基本 SAML 組態]  區段上，輸入下列欄位的值：在 [識別碼 (實體識別碼)]  文字方塊中，確切地輸入下列值：`https://impl.bouncer.eab.com`
+    
+    在 [回覆 URL (判斷提示取用者服務 URL)]  文字方塊中，輸入下列兩個值 (不同列)：`https://impl.bouncer.eab.com/sso/saml2/acs`
+    `https://impl.bouncer.eab.com/sso/saml2/acs/`
+    
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<SUBDOMAIN>.navigate.impl.eab.com/`
 
     > [!NOTE]
-    > 這不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡 [EAB Navigate IMPL 用戶端支援小組](mailto:jmahoney@eab.com)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡 [EAB Navigate IMPL 用戶端支援小組](mailto:EABTechSupport@eab.com)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [複製] 按鈕以複製 [應用程式同盟中繼資料 URL]  ，並將資料儲存在您的電腦上。
 
@@ -126,11 +129,11 @@ ms.locfileid: "72969740"
 
 ## <a name="configure-eab-navigate-impl-sso"></a>設定 EAB Navigate IMPL SSO
 
-若要在 **EAB Navigate IMPL** 端設定單一登入，您必須將 [應用程式同盟中繼資料 URL]  傳送給 [EAB Navigate IMPL 支援小組](mailto:jmahoney@eab.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要在 **EAB Navigate IMPL** 端設定單一登入，您必須將 [應用程式同盟中繼資料 URL]  傳送給 [EAB Navigate IMPL 支援小組](mailto:EABTechSupport@eab.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
 
 ### <a name="create-eab-navigate-impl-test-user"></a>建立 EAB Navigate IMPL 測試使用者
 
-在本節中，您會在 EAB Navigate IMPL 中建立名為 B.Simon 的使用者。 請與  [EAB Navigate IMPL 支援小組](mailto:jmahoney@eab.com)合作，在 EAB Navigate IMPL 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
+在本節中，您會在 EAB Navigate IMPL 中建立名為 B.Simon 的使用者。 請與  [EAB Navigate IMPL 支援小組](mailto:EABTechSupport@eab.com)合作，在 EAB Navigate IMPL 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
 
 ## <a name="test-sso"></a>測試 SSO
 

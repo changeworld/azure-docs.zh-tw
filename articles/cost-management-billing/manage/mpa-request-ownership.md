@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: banders
-ms.openlocfilehash: 65b56511a3b454b192b5adb2a98fb3bb3510bb7e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 6a4b215b2b386754bae2c1bbec171ed4bc558a93
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75988197"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048199"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>將 Azure 訂用帳戶的帳單擁有權交給您的 MPA 帳戶
 
@@ -25,7 +25,7 @@ ms.locfileid: "75988197"
 
 這項功能僅適用於已認證為 [Azure 專家 MSP](https://partner.microsoft.com/membership/azure-expert-msp) 的 CSP 直接帳單合作夥伴。 它受限於 Microsoft 控管和原則，而且可能需要對特定客戶進行審查與核准。
 
-若要要求帳單擁有權，您必須擁有「全域系統管理員」  或「管理員代理人」  角色。 若要深入了解，請參閱[合作夥伴中心 - 指派使用者角色和權限](https://docs.microsoft.com/partner-center/permissions-overview)。
+若要要求帳單擁有權，您必須擁有 [全域管理員]  或 [管理員代理人]  角色。 若要深入了解，請參閱[合作夥伴中心 - 指派使用者角色和權限](https://docs.microsoft.com/partner-center/permissions-overview)。
 
 本文適用於 Microsoft 合作夥伴合約的計費帳戶。 針對雲端解決方案提供者 (CSP) 建立這些帳戶，以便在新的商務體驗中管理其客戶的帳單。 新的體驗僅適用於下列合作夥伴：至少有一個客戶已接受 Microsoft 客戶合約 (MCA) 且具有 Azure 方案。 [檢查您是否有 Microsoft 合作夥伴合約的存取權](#check-access-to-a-microsoft-partner-agreement)。
 
@@ -120,7 +120,7 @@ ms.locfileid: "75988197"
 - [Enterprise 開發/測試](https://azure.microsoft.com/offers/ms-azr-0148p/)\*
 - [Microsoft Enterprise 合約](https://azure.microsoft.com/pricing/enterprise-agreement/) \(英文\)
 
-\* Enterprise DevTest 訂用帳戶會在傳輸時以隨用隨付費率計費，而經由客戶的 EA 而透過 Enterprise DevTest 供應項目所提供的任何折扣將不適用於 CSP 合作夥伴。
+\* 開發/測試訂用帳戶必須先透過支援票證轉換成 EA Enterprise 供應項目。 企業開發/測試訂用帳戶會在移轉後以隨用隨付費率計費。 CSP 合作夥伴將無法使用依據客戶的 EA 透過 Enterprise 開發/測試供應項目所提供的任何折扣。
 
 ## <a name="additional-information"></a>其他資訊
 
