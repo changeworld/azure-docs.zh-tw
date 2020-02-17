@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2020
-ms.openlocfilehash: e4f27e582e6b920e9de068fe2c3270af19ad8a17
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: fc69761a05ea381d39d58d5ebf0046e0d9874961
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122415"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210460"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>範例：使用 Python 建立自訂技能
 
@@ -21,7 +21,7 @@ ms.locfileid: "77122415"
 
 自訂技能的設計很簡單（它會串連兩個字串），因此您可以專注于用於 Python 中自訂技能開發的工具和技術。 當您成功完成簡單的技能之後，您可以使用更複雜的案例來進行分支。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 + 請參閱[自訂技能介面](cognitive-search-custom-skill-interface.md)，以取得自訂技能應實行的輸入/輸出介面簡介。
 
@@ -52,7 +52,7 @@ Visual Studio Code 中的 Azure Functions 專案範本會建立可發佈至 Azur
 1. 選取 Python 版本，（Azure Functions 支援版本3.7.5）
 1. 為您專案的第一個函式選取範本。 選取 [ **HTTP 觸發**程式]，在新的函數應用程式中建立 HTTP 觸發的函式。
 1. 提供函數名稱。 在此情況下，讓我們使用**Concatenator** 
-1. 選取 [**函數**] 做為授權層級。 這表示我們將提供[函數金鑰](../azure-functions/functions-bindings-http-webhook.md#authorization-keys)來呼叫函式的 HTTP 端點。 
+1. 選取 [**函數**] 做為授權層級。 這表示我們將提供[函數金鑰](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)來呼叫函式的 HTTP 端點。 
 1. 選取您想要開啟專案的方式。 在此步驟中，選取 [**新增至工作區**] 以在目前的工作區中建立函數應用程式。
 
 Visual Studio Code 會在新的工作區中建立函式應用程式專案。 此專案包含 [host.json](../azure-functions/functions-host-json.md) 和 [local.settings.json](../azure-functions/functions-run-local.md#local-settings-file) 組態檔，以及任何特定語言的專案檔。 
