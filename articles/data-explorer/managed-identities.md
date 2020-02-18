@@ -7,16 +7,16 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 3b0bb62de4a96a45d607e05b32a87feec692e4d4
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: e76ae2e072bb780ac9788902e9157db871e4f09d
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75725971"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373367"
 ---
 # <a name="configure-managed-identities-for-your-azure-data-explorer-cluster"></a>設定 Azure 資料總管叢集的受控識別
 
-[Azure Active Directory 的受控識別](/azure/active-directory/managed-identities-azure-resources/overview)可讓您的叢集輕鬆地存取其他受 AAD 保護的資源，例如 Azure Key Vault。 身分識別是由 Azure 平臺所管理，而且不需要布建或輪替任何秘密。 本文說明如何為 Azure 資料總管叢集建立受控識別。 
+[Azure Active Directory 的受控識別](/azure/active-directory/managed-identities-azure-resources/overview)可讓您的叢集輕鬆地存取其他受 AAD 保護的資源，例如 Azure Key Vault。 身分識別是由 Azure 平臺所管理，而且不需要布建或輪替任何秘密。 本文說明如何為 Azure 資料總管叢集建立受控識別。 受控識別設定目前僅支援[針對您的叢集啟用客戶管理的金鑰](/azure/data-explorer/security#customer-managed-keys-with-azure-key-vault)。
 
 > [!Note]
 > 如果您的應用程式在訂用帳戶或租使用者之間遷移，Azure 資料總管的受控識別不會如預期般運作。 應用程式必須取得新的身分識別，您可以使用 [[移除身分識別](#remove-an-identity)] 停用並重新啟用功能來完成此作業。 下游資源的存取原則也需要更新，才能使用新的身分識別。

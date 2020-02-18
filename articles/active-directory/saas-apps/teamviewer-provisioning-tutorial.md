@@ -34,7 +34,7 @@ ms.locfileid: "77366428"
 > * 在 Azure AD 和 TeamViewer 之間保持使用者屬性同步
 > * [單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/teamviewer-tutorial)至 TeamViewer （建議選項）
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 

@@ -3,19 +3,19 @@ title: 什麼是自訂語音？ -語音服務
 titleSuffix: Azure Cognitive Services
 description: 「自訂語音」是一組線上工具，可讓您為您的品牌建立可辨識的一種語音。 開始使用是一些音訊檔案和相關聯的轉譯。 請遵循下列連結，開始建立自訂的語音轉換文字體驗。
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.author: erhopf
-ms.openlocfilehash: 0e40ca55a9cd198e1b086362a2559ab2fc0ba95e
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 02/15/2020
+ms.author: dapine
+ms.openlocfilehash: 6edd8f89ed2db2927cce14ea86b589090bdc35ed
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805955"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77371281"
 ---
 # <a name="get-started-with-custom-voice"></a>開始使用自訂語音
 
@@ -29,13 +29,13 @@ ms.locfileid: "74805955"
 
 ![自訂語音架構圖表](media/custom-voice/custom-voice-diagram.png)
 
-1.  [訂閱並建立專案](#set-up-your-azure-account)-建立 Azure 帳戶，並建立語音服務訂用帳戶。 此整合訂閱可讓您存取語音轉換文字、文字轉換語音、語音翻譯和自訂語音入口網站。 然後，使用您的語音服務訂用帳戶，建立您的第一個自訂語音專案。
+1. [訂閱並建立專案](#set-up-your-azure-account)-建立 Azure 帳戶，並建立語音服務訂用帳戶。 此整合訂閱可讓您存取語音轉換文字、文字轉換語音、語音翻譯和自訂語音入口網站。 然後，使用您的語音服務訂用帳戶，建立您的第一個自訂語音專案。
 
-2.  [上傳資料](how-to-custom-voice-create-voice.md#upload-your-datasets)-使用自訂語音入口網站或自訂語音 API 來上傳資料（音訊和文字）。 在入口網站中，您可以調查及評估發音分數和信噪比。 如需詳細資訊，請參閱[如何準備自訂語音的資料](how-to-custom-voice-prepare-data.md)。
+2. [上傳資料](how-to-custom-voice-create-voice.md#upload-your-datasets)-使用自訂語音入口網站或自訂語音 API 來上傳資料（音訊和文字）。 在入口網站中，您可以調查及評估發音分數和信噪比。 如需詳細資訊，請參閱[如何準備自訂語音的資料](how-to-custom-voice-prepare-data.md)。
 
-3.  [定型您的模型](how-to-custom-voice-create-voice.md#build-your-custom-voice-model)–使用您的資料來建立自訂文字轉換語音語音模型。 您可以使用不同的語言來定型模型。 定型之後，請測試您的模型，如果您對結果感到滿意，可以部署模型。
+3. [定型您的模型](how-to-custom-voice-create-voice.md#build-your-custom-voice-model)–使用您的資料來建立自訂文字轉換語音語音模型。 您可以使用不同的語言來定型模型。 定型之後，請測試您的模型，如果您對結果感到滿意，可以部署模型。
 
-4.  [部署您的模型](how-to-custom-voice-create-voice.md#create-and-use-a-custom-voice-endpoint)-為您的文字轉換語音語音模型建立自訂端點，並在您的產品、工具和應用程式中使用它來進行語音合成。
+4. [部署您的模型](how-to-custom-voice-create-voice.md#create-and-use-a-custom-voice-endpoint)-為您的文字轉換語音語音模型建立自訂端點，並在您的產品、工具和應用程式中使用它來進行語音合成。
 
 ## <a name="custom-neural-voices"></a>自訂類神經語音
 
@@ -63,6 +63,9 @@ ms.locfileid: "74805955"
 像是資料、模型、測試和端點等內容，會組織成自訂語音入口網站中的**專案**。 每個專案都適用于國家/地區，以及您想要建立的語音性別。 例如，您可以為撥接中心的聊天機器人建立一個專案，以在美國（en-us）使用英文。
 
 若要建立您的第一個專案，請選取 [**文字轉換語音/自訂語音**] 索引標籤，然後按一下 [**新增專案**]。 依照 wizard 提供的指示來建立您的專案。 建立專案之後，您會看到四個索引標籤：**資料**、**定型**、**測試**和**部署**。 使用[後續步驟](#next-steps)中提供的連結，以瞭解如何使用每個索引標籤。
+
+> [!IMPORTANT]
+> [自訂語音入口網站](https://aka.ms/custom-voice)最近已更新！ 如果您使用 CRI 入口網站中的資料、模型、測試和已發佈的端點建立了先前的專案，或使用了 Api，則必須在新的入口網站中建立新的專案，才能連接到這些舊的實體。
 
 ## <a name="next-steps"></a>後續步驟
 

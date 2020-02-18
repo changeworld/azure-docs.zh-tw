@@ -29,8 +29,8 @@ Windows 虛擬桌面提供 FSLogix 設定檔容器作為建議的使用者設定
 |平臺服務|是，Azure-原生解決方案|是，Azure-原生解決方案|否，自我管理|
 |區域可用性|所有區域|[選取區域](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)|所有區域|
 |備援性|本機多餘/區域-多餘/異地-多餘|本機多餘|本機多餘/區域-多餘/異地-多餘|
-|層級和效能|標準<br>高階<br>每個共用最多10萬 IOPS，每個共用 5 GBps，大約3毫秒延遲|標準<br>高階<br>魏<br>最多每個磁片區 4.5 GBps 的320k （16K） IOPS，大約1毫秒延遲|標準 HDD：每個磁片最多 500 IOPS 的限制<br>標準 SSD：最多 4k IOPS 每個磁片限制<br>進階 SSD：最多 20k IOPS 每一磁片限制<br>我們建議儲存空間直接存取的 Premium 磁片|
-|容量|100每個共用的 TiB|每個磁片區 100 TiB，每個訂用帳戶最多 12.5 PiB|每個磁片最多 32 TiB|
+|層級和效能|標準<br>Premium<br>每個共用最多10萬 IOPS，每個共用 5 GBps，大約3毫秒延遲|標準<br>Premium<br>魏<br>最多每個磁片區 4.5 GBps 的320k （16K） IOPS，大約1毫秒延遲|標準 HDD：每個磁片最多 500 IOPS 的限制<br>標準 SSD：最多 4k IOPS 每個磁片限制<br>進階 SSD：最多 20k IOPS 每一磁片限制<br>我們建議儲存空間直接存取的 Premium 磁片|
+|Capacity|100每個共用的 TiB|每個磁片區 100 TiB，每個訂用帳戶最多 12.5 PiB|每個磁片最多 32 TiB|
 |必要的基礎結構|最小共用大小 1 GiB|容量集區上限 4 TiB，最小磁片區大小 100 GiB|Azure IaaS （+ 雲端見證）上的兩個 Vm，或至少有三個 Vm，但不含磁片費用|
 |通訊協定|SMB 2.1/3。 和 REST|NFSv3，NFSv 4.1 （預覽），SMB 3.x/2。x|NFSv3，NFSv 4.1，SMB 3。1|
 

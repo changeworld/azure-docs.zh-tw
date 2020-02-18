@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 5f3bceb8398f9837f6f8eaa390def41456daf08d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 786950011f10e25d6bcb72061212c1878e79d45a
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271599"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373364"
 ---
 # <a name="secure-azure-data-explorer-clusters-in-azure"></a>在 Azure 中保護 Azure 資料總管叢集
 
@@ -34,10 +34,10 @@ ms.locfileid: "76271599"
 
 根據預設，資料會使用 Microsoft 管理的金鑰進行加密。 若要進一步控制加密金鑰，您可以提供客戶管理的金鑰以用於資料加密。 您可以使用自己的金鑰來管理儲存體層級的資料加密。 客戶管理的金鑰是用來保護及控制根加密金鑰的存取權，用來加密和解密所有資料。 客戶管理的金鑰提供更大的彈性來建立、輪替、停用及撤銷存取控制。 您也可以審核用來保護資料的加密金鑰。
 
-使用 Azure Key Vault 來儲存客戶管理的金鑰。 您可以建立自己的金鑰，並將其儲存在金鑰保存庫中，或者您可以使用 Azure Key Vault API 來產生金鑰。 Azure 資料總管叢集和 Azure Key Vault 必須位於相同的區域，但它們可以位於不同的訂用帳戶中。 如需 Azure Key Vault 的詳細資訊，請參閱[什麼是 Azure Key Vault？](/azure/key-vault/key-vault-overview)。 如需客戶管理之金鑰的詳細說明，請參閱[客戶管理的金鑰與 Azure Key Vault](/azure/storage/common/storage-service-encryption)
+使用 Azure Key Vault 來儲存客戶管理的金鑰。 您可以建立自己的金鑰，並將其儲存在金鑰保存庫中，或者您可以使用 Azure Key Vault API 來產生金鑰。 Azure 資料總管叢集和 Azure Key Vault 必須位於相同的區域，但它們可以位於不同的訂用帳戶中。 如需 Azure Key Vault 的詳細資訊，請參閱[什麼是 Azure Key Vault？](/azure/key-vault/key-vault-overview)。 如需客戶管理之金鑰的詳細說明，請參閱[客戶管理的金鑰與 Azure Key Vault](/azure/storage/common/storage-service-encryption)。 使用[C#](/azure/data-explorer/customer-managed-keys-csharp)或[Azure Resource Manager 範本](/azure/data-explorer/customer-managed-keys-resource-manager)，在您的 Azure 資料總管叢集中設定客戶管理的金鑰
 
 > [!Note]
-> 客戶管理的金鑰依賴 Azure 資源的受控識別，這是一項 Azure Active Directory （Azure AD）的功能。 若要在 Azure 入口網站中設定客戶管理的金鑰，您必須將**SystemAssigned**受控識別設定為您的叢集。
+> 客戶管理的金鑰依賴 Azure 資源的受控識別，這是一項 Azure Active Directory （Azure AD）的功能。 若要在 Azure 入口網站中設定客戶管理的金鑰，您必須依照[設定 Azure 資料總管](/azure/data-explorer/managed-identities)叢集的受控識別中的詳細說明，為您的叢集設定**SystemAssigned**受控識別。
 
 #### <a name="store-customer-managed-keys-in-azure-key-vault"></a>將客戶管理的金鑰儲存在 Azure Key Vault
 
@@ -60,8 +60,8 @@ ms.locfileid: "76271599"
 
 ## <a name="next-steps"></a>後續步驟
 
-* [設定 Azure 資料總管叢集的受控識別](managed-identities.md)
 * 藉由啟用待用加密，[在 Azure 資料總管入口網站中保護您](manage-cluster-security.md)的叢集。
+* [設定 Azure 資料總管叢集的受控識別](managed-identities.md)
 * [使用 Azure Resource Manager 範本設定客戶管理的金鑰](customer-managed-keys-resource-manager.md)
 * [使用設定客戶管理的金鑰C#](customer-managed-keys-csharp.md)
 

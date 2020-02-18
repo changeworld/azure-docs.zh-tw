@@ -31,7 +31,7 @@ ms.locfileid: "77368052"
 
 管理 Azure Active Directory 需要持續執行重要的作業工作和進程，這可能不是首度發行專案的一部分。 您必須設定這些工作來優化您的環境，這仍然很重要。 主要工作和其建議的擁有者包括：
 
-| 工作 | 擁有者 |
+| Task | 擁有者 |
 | :- | :- |
 | 管理 Azure AD 中單一登入（SSO）設定的生命週期 | IAM 作業小組 |
 | 設計 Azure AD 應用程式的條件式存取原則 | InfoSec 架構團隊 |
@@ -300,7 +300,7 @@ Microsoft Intune 應用程式管理（MAM）可讓您將資料保護控制項（
 - 具有委派許可權的應用程式可以代表使用者讀取、傳送或管理電子郵件
 - 使用下列許可權授與的應用程式：
 
-| 資源 | [權限] |
+| 資源 | 權限 |
 | :- | :- |
 | Office 365 Exchange Online | 符合.AccessAsUser。 |
 | | EWS.AccessAsUser。 |
@@ -309,9 +309,9 @@ Microsoft Intune 應用程式管理（MAM）可讓您將資料保護控制項（
 | | 郵件. 讀取。共用 |
 | | Mail. ReadWrite |
 
-- 已授與完整使用者模擬登入使用者的應用程式。 例如，
+- 已授與完整使用者模擬登入使用者的應用程式。 例如：
 
-|資源 | [權限] |
+|資源 | 權限 |
 | :- | :- |
 | Microsoft Graph API| 目錄. AccessAsUser. 全部 |
 | Azure REST API | user_impersonation |

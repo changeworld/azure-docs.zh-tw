@@ -139,7 +139,7 @@ ms.locfileid: "77367907"
 
 ### <a name="can-i-use-azure-ad-application-proxy-as-ad-fs-proxy-like-web-application-proxy"></a>我可以使用 Azure AD 應用程式 Proxy 做為 AD FS Proxy （例如 Web 應用程式 Proxy）嗎？
 
-No。 Azure AD 應用程式 Proxy 是設計用來與 Azure AD 搭配運作，並不符合作為 AD FS Proxy 的需求。
+否。 Azure AD 應用程式 Proxy 是設計用來與 Azure AD 搭配運作，並不符合作為 AD FS Proxy 的需求。
 
 ## <a name="websocket"></a>WebSocket
 
@@ -153,7 +153,7 @@ Windows Admin Center （WAC）或遠端桌面 Web 用戶端中的功能（檢視
 
 ### <a name="does-using-link-translation-affect-performance"></a>使用連結轉譯會影響效能嗎？
 
-是的。 連結轉譯會影響效能。 應用程式 Proxy 服務會掃描應用程式中是否有硬式編碼的連結，並將它們取代為其各自的已發佈外部 Url，然後才呈現給使用者。 
+是。 連結轉譯會影響效能。 應用程式 Proxy 服務會掃描應用程式中是否有硬式編碼的連結，並將它們取代為其各自的已發佈外部 Url，然後才呈現給使用者。 
 
 為了達到最佳效能，我們建議您藉由設定[自訂網域](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-custom-domain)來使用相同的內部和外部 url。 如果無法使用自訂網域，您可以在行動裝置上使用我的應用程式安全登入延伸模組或 Microsoft Edge 瀏覽器來改善連結轉譯效能。 請參閱重新[導向使用 Azure AD 應用程式 Proxy 發佈之應用程式的硬式編碼連結](application-proxy-configure-hard-coded-link-translation.md)。
 

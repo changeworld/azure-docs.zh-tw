@@ -50,7 +50,7 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
 
 * 所有的 AWS 帳戶都將使用相同的同盟中繼資料 XML 檔案，且在憑證變換時，您必須驅動此大規模演練，同時更新所有 AWS 帳戶上的憑證
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 Amazon Web Services (AWS) 整合，您需要下列項目：
 
@@ -159,9 +159,9 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
 
     e. 在 [來源屬性] 清單中，輸入該資料列所顯示的屬性值。
 
-    f. 按一下 [確定]
+    f. 按一下 [確定]。
 
-    g. Haga clic en **Guardar**.
+    g. 按一下 [檔案]。
 
 7. 在 [以 SAML 設定單一登入] 頁面上的 [SAML 簽署憑證] 區段中，按一下 [下載] 以下載**同盟中繼資料 XML** 並將其儲存在電腦上。
 

@@ -18,7 +18,7 @@ ms.locfileid: "77367377"
 
 在 Windows 虛擬桌面上部署 Windows 7 虛擬機器（VM）的程式，與執行較新版本 Windows 的 Vm 略有不同。 本指南將告訴您如何部署 Windows 7。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始之前，請遵循[使用 PowerShell 建立主機集](create-host-pools-powershell.md)區中的指示來建立主機集區。 之後，請依照在 Azure Marketplace 中[建立主機](create-host-pools-azure-marketplace.md#optional-assign-additional-users-to-the-desktop-application-group)集區中的指示，將一或多個使用者指派給桌面應用程式群組。
 

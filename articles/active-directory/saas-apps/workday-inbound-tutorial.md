@@ -62,7 +62,7 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 
 * 使用 Office 365 處理電子郵件的組織
 
-## <a name="solution-architecture"></a>解決方案架構
+## <a name="solution-architecture"></a>方案架構
 
 本節針對常見的混合式環境，說明端對端使用者佈建方案架構。 有兩個相關的流程：
 
@@ -93,7 +93,7 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 * [與多個 Active Directory 網域整合](#integrating-with-multiple-active-directory-domains)
 * [規劃 Workday 至 Active Directory 的使用者屬性對應和轉換](#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 本教學課程中說明的案例假設您已經具有下列項目：
 
@@ -153,8 +153,8 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 
 |   |   |
 | - | - |
-| No。 內部部署環境部署的代理程式數目 | 3 (適用於高可用性和容錯移轉) |
-| No。 Azure 入口網站中設定的「Workday 至 AD 使用者佈建應用程式」數目 | 1 |
+| 否。 內部部署環境部署的代理程式數目 | 3 (適用於高可用性和容錯移轉) |
+| 否。 Azure 入口網站中設定的「Workday 至 AD 使用者佈建應用程式」數目 | 1 |
 
   ![實例 1](./media/workday-inbound-tutorial/dep_scenario1.png)
 
@@ -164,8 +164,8 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 
 |   |   |
 | - | - |
-| No。 內部部署環境部署的代理程式數目 | 3 (適用於高可用性和容錯移轉) |
-| No。 Azure 入口網站中設定的「Workday 至 AD 使用者佈建應用程式」數目 | 每一子網域一個應用程式 |
+| 否。 內部部署環境部署的代理程式數目 | 3 (適用於高可用性和容錯移轉) |
+| 否。 Azure 入口網站中設定的「Workday 至 AD 使用者佈建應用程式」數目 | 每一子網域一個應用程式 |
 
   ![案例 2](./media/workday-inbound-tutorial/dep_scenario2.png)
 
@@ -175,8 +175,8 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 
 |   |   |
 | - | - |
-| No。 內部部署環境部署的代理程式數目 | 每一不相鄰的 AD 樹系 3 個 |
-| No。 Azure 入口網站中設定的「Workday 至 AD 使用者佈建應用程式」數目 | 每一子網域一個應用程式 |
+| 否。 內部部署環境部署的代理程式數目 | 每一不相鄰的 AD 樹系 3 個 |
+| 否。 Azure 入口網站中設定的「Workday 至 AD 使用者佈建應用程式」數目 | 每一子網域一個應用程式 |
 
   ![案例 3](./media/workday-inbound-tutorial/dep_scenario3.png)
 
@@ -255,7 +255,7 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 
 1. 在搜尋方塊中輸入 create security group，然後按一下 [建立安全性群組]連結。
 
-    ![建立安全群組](./media/workday-inbound-tutorial/wd_isu_03.png "CreateSecurity 群組")
+    ![建立安全群組](./media/workday-inbound-tutorial/wd_isu_03.png "建立安全性群組")
 2. 完成**建立安全性群組**工作。 
 
    * Workday 中有兩種類型的安全性群組：
@@ -264,7 +264,7 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
    * 請洽詢您的 Workday 整合合作夥伴，以選取適用於整合的安全性群組類型。
    * 知道群組類型之後，請從 [Type of Tenanted Security Group] \(租用安全性群組類型\) 下拉式清單中選取 [Integration System Security Group (Unconstrained)] \(整合系統安全性群組 (不受限制)\) 或 [Integration System Security Group (Constrained)] \(整合系統安全性群組 (受限制)\)。
 
-     ![建立安全群組](./media/workday-inbound-tutorial/wd_isu_04.png "CreateSecurity 群組")
+     ![建立安全群組](./media/workday-inbound-tutorial/wd_isu_04.png "建立安全性群組")
 
 3. 安全性群組成功建立之後，您會看到可用來將成員指派到安全性群組的頁面。 請將在上個步驟中建立的新整合系統使用者新增到此安全性群組。 如果您使用「受限制」安全性群組，則也需要選取適當的組織範圍。
 
@@ -345,12 +345,12 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 
 1. 在搜尋方塊中輸入 activate，然後按一下 [啟用擱置的安全性原則變更] 連結。
 
-    ![啟用](./media/workday-inbound-tutorial/wd_isu_16.png "啟用")
+    ![啟用](./media/workday-inbound-tutorial/wd_isu_16.png "啟動")
 
 1. 輸入供稽核用的註解並按一下 [確定]按鈕，以開始「啟用擱置的安全性原則變更」工作。
 1. 在下一個畫面核取 [確認] 核取方塊，然後按一下 [確定] 以完成工作。
 
-    ![啟用擱置的安全性](./media/workday-inbound-tutorial/wd_isu_18.png "啟動擱置安全性")  
+    ![啟用擱置的安全性](./media/workday-inbound-tutorial/wd_isu_18.png "啟用擱置的安全性")  
 
 ## <a name="configuring-user-provisioning-from-workday-to-active-directory"></a>設定將使用者從 Workday 佈建至 Active Directory
 
@@ -737,7 +737,7 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 
 1. 在 [佈建] 索引標籤中，將 [佈建狀態] 設定為 [開啟]。
 
-2. Haga clic en **Guardar**.
+2. 按一下 [檔案]。
 
 3. 此作業會啟動初始同步，所需花費的時數會視 Workday 租用戶中的使用者人數而定。 
 
@@ -1257,7 +1257,7 @@ Azure AD 佈建服務支援自訂清單或 Workday 屬性的功能，以包含�
 
     ![Workday Studio](./media/workday-inbound-tutorial/wdstudio2.png)
 
-9. 選取 **[確定]** 。
+9. 選取 [確定]。
 
 10. 在 [Request] \(要求\) 窗格中，貼上以下的 XML 並將 **Employee_ID** 設定為您 Workday 租用戶中真實使用者的員工識別碼。 選取已填入您想擷取之屬性的使用者。
 

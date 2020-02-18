@@ -36,7 +36,7 @@ Event Grid 是一項 Azure 服務，會傳送 HTTP 要求通知您「發行者�
 
 使用觸發程式和系結時，您需要參考適當的套件。 NuGet 套件適用于 .NET 類別庫，延伸模組會將所有其他應用程式類型組合在一起。
 
-| 語言                                        | 加入者 。                                   | 備註 
+| Language                                        | 加入者 。                                   | 備註 
 |-------------------------------------------------|---------------------------------------------|-------------|
 | C#                                              | 安裝[NuGet 套件]3.x 版 | |
 | C#腳本，JAVA，JavaScript，Python，PowerShell | 註冊[延伸]模組配套          | 建議使用[Azure Tools 擴充](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack)功能搭配 Visual Studio Code。 |

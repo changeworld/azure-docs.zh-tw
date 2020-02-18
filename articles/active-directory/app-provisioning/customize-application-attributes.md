@@ -111,7 +111,7 @@ Azure AD 布建服務可以部署在「greenfield」案例中（使用者不會�
 
 - Salesforce
 - ServiceNow
-- 工作日
+- Workday
 - Azure Active Directory （[REST API Microsoft Graph 支援1.0 版參考](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)和自訂目錄延伸模組）
 - 支援 [SCIM 2.0](https://tools.ietf.org/html/rfc7643) 的應用程式，定義於[核心結構描述](https://tools.ietf.org/html/rfc7643)中的屬性必須新增至此處
 

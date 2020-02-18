@@ -18,7 +18,7 @@ ms.locfileid: "77367303"
 
 依照本文中的指示，使用 Azure Resource Manager 範本部署 UI。
 
-## <a name="important-considerations"></a>重要的考量
+## <a name="important-considerations"></a>重要考量︰
 
 因為應用程式需要獲得同意才能與 Windows 虛擬桌面互動，此工具不支援企業對企業 (B2B) 案例。 每個 Azure Active Directory (AAD) 租用戶的訂閱帳戶都需要它自己的獨立管理工具部署。
 

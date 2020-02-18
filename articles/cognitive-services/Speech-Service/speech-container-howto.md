@@ -26,7 +26,7 @@ ms.locfileid: "77367746"
 > [!IMPORTANT]
 > 所有語音容器目前都是[公開「閘道」預覽](../cognitive-services-container-support.md#public-gated-preview-container-registry-containerpreviewazurecrio)的一部分。 當語音容器進行公開上市（GA）時，將會發出公告。
 
-| 函數 | 特性 | 最新 |
+| 函式 | 特性 | 最新 |
 |--|--|--|
 | 語音轉文字 | 使用中繼結果，將連續即時語音或批次音訊錄音可將成文字。 | 2.0.0 |
 | 自訂語音轉換文字 | 使用自[定義語音入口網站](https://speech.microsoft.com/customspeech)中的自訂模型，將連續即時語音或批次錄音可將為具有中繼結果的文字。 | 2.0.0 |
@@ -35,11 +35,11 @@ ms.locfileid: "77367746"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 使用語音容器之前的必要條件如下：
 
-| 必要項 | 目的 |
+| 必要 | 目的 |
 |--|--|
 | Docker 引擎 | 您必須在[主機電腦](#the-host-computer)上安裝 Docker 引擎。 Docker 提供可在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上設定 Docker 環境的套件。 如需 Docker 和容器基本概念的入門，請參閱 [Docker 概觀](https://docs.docker.com/engine/docker-overview/) \(英文\)。<br><br> Docker 必須設定為允許容器與 Azure 連線，以及傳送帳單資料至 Azure。 <br><br> **在 Windows 上**，也必須將 Docker 設定為支援 Linux 容器。<br><br> |
 | 熟悉 Docker | 您應具備對 Docker 概念 (例如登錄、存放庫、容器和容器映像等) 的基本了解，以及基本 `docker` 命令的知識。 |
@@ -75,25 +75,25 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 # <a name="speech-to-texttabstt"></a>[語音轉文字](#tab/stt)
 
-| 容器 | 最低 | 建議 |
+| 容器 | 最小值 | 建議 |
 |-----------|---------|-------------|
 | 語音轉文字 | 2核心，2 GB 記憶體 | 4核心，4 GB 記憶體 |
 
 # <a name="custom-speech-to-texttabcstt"></a>[自訂語音轉換文字](#tab/cstt)
 
-| 容器 | 最低 | 建議 |
+| 容器 | 最小值 | 建議 |
 |-----------|---------|-------------|
 | 自訂語音轉換文字 | 2核心，2 GB 記憶體 | 4核心，4 GB 記憶體 |
 
 # <a name="text-to-speechtabtts"></a>[文字轉換語音](#tab/tts)
 
-| 容器 | 最低 | 建議 |
+| 容器 | 最小值 | 建議 |
 |-----------|---------|-------------|
 | 文字轉換語音 | 1核心，2 GB 記憶體 | 2核心，3 GB 記憶體 |
 
 # <a name="custom-text-to-speechtabctts"></a>[自訂文字轉換語音](#tab/ctts)
 
-| 容器 | 最低 | 建議 |
+| 容器 | 最小值 | 建議 |
 |-----------|---------|-------------|
 | 自訂文字轉換語音 | 1核心，2 GB 記憶體 | 2核心，3 GB 記憶體 |
 
@@ -112,25 +112,25 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 # <a name="speech-to-texttabstt"></a>[語音轉文字](#tab/stt)
 
-| 容器 | 儲存機制 |
+| 容器 | Repository |
 |-----------|------------|
 | 語音轉文字 | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text:latest` |
 
 # <a name="custom-speech-to-texttabcstt"></a>[自訂語音轉換文字](#tab/cstt)
 
-| 容器 | 儲存機制 |
+| 容器 | Repository |
 |-----------|------------|
 | 自訂語音轉換文字 | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text:latest` |
 
 # <a name="text-to-speechtabtts"></a>[文字轉換語音](#tab/tts)
 
-| 容器 | 儲存機制 |
+| 容器 | Repository |
 |-----------|------------|
 | 文字轉換語音 | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech:latest` |
 
 # <a name="custom-text-to-speechtabctts"></a>[自訂文字轉換語音](#tab/ctts)
 
-| 容器 | 儲存機制 |
+| 容器 | Repository |
 |-----------|------------|
 | 自訂文字轉換語音 | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech:latest` |
 

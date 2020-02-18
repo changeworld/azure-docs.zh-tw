@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/02/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7659c8187f7f4763b51b09362c94dad9554ed1c0
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 502b4cef4fc44abcc55c1733b86fb6052e3e43ab
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982835"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77372740"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -23,7 +23,7 @@ ms.locfileid: "76982835"
 
 **RelyingParty**元素會指定要對目前要求強制執行 Azure Active Directory B2C （Azure AD B2C）的使用者旅程圖。 它也會指定信賴憑證者 (RP) 應用程式需要用來作為所發出權杖一部分的宣告清單。 RP 應用程式 (例如 Web、行動或傳統型應用程式) 會呼叫 RP 原則檔。 RP 原則檔會執行特定工作，例如登入、重設密碼或編輯設定檔。 多個應用程式可以使用相同的 RP 原則，而單一應用程式可以使用多個原則。 所有的 RP 應用程式都會透過宣告接收相同的權杖，而使用者會經歷相同的使用者旅程圖。
 
-下列範例顯示 *B2C_1A_signup_signin* 原則檔中的 **RelyingParty** 元素：
+下列範例顯示 **B2C_1A_signup_signin** 原則檔中的 *RelyingParty* 元素：
 
 ```XML
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -74,7 +74,7 @@ ms.locfileid: "76982835"
 
 選擇性的 **RelyingParty** 元素包含下列元素：
 
-| 元素 | 發生次數 | 說明 |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | DefaultUserJourney | 1:1 | RP 應用程式的預設使用者旅程圖。 |
 | UserJourneyBehaviors | 0:1 | 使用者旅程圖行為的範圍。 |
@@ -102,7 +102,7 @@ ms.locfileid: "76982835"
 
 **DefaultUserJourney** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | ReferenceId | 是 | 原則中使用者旅程圖的識別碼。 如需詳細資訊，請參閱[使用者旅程圖](userjourneys.md) |
 
@@ -110,7 +110,7 @@ ms.locfileid: "76982835"
 
 **UserJourneyBehaviors** 元素包含下列元素：
 
-| 元素 | 發生次數 | 說明 |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | SingleSignOn | 0:1 | 使用者旅程圖之單一登入 (SSO) 工作階段行為的範圍。 |
 | SessionExpiryType |0:1 | 工作階段的驗證行為。 可能的值：`Rolling` 或 `Absolute`。 `Rolling` 值 (預設) 表示，只要使用者在應用程式中持續為作用中狀態，該使用者就會保持登入。 `Absolute` 值表示在經過應用程式工作階段存留期所指定的期間之後，就會強制使用者進行重新驗證。 |
@@ -122,9 +122,9 @@ ms.locfileid: "76982835"
 
 **SingleSignOn** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| 範圍 | 是 | 單一登入行為的範圍。 可能的值：`Suppressed`、`Tenant`、`Application` 或 `Policy`。 `Suppressed` 值表示會抑制行為。 例如，在單一登入工作階段的情況下，不會為使用者保留任何工作階段，而且一律會提示使用者選取識別提供者。 `TrustFramework` 值表示會針對信任架構中的所有原則套用行為。 例如，如果使用者瀏覽信任架構的兩個原則旅程圖，系統不會提示該使用者選取識別提供者。 `Tenant` 值表示會將行為套用到租用戶中的所有原則。 例如，如果使用者瀏覽租用戶的兩個原則旅程圖，系統不會提示該使用者選取識別提供者。 `Application` 值表示會將行為套用到適用於提出要求之應用程式的所有原則。 例如，如果使用者瀏覽應用程式的兩個原則旅程圖，系統不會提示該使用者選取識別提供者。 `Policy` 值表示只會將行為套用到某個原則。 例如，如果使用者瀏覽信任架構的兩個原則旅程圖，系統會在該使用者於原則之間進行切換時提示其選取識別提供者。 |
+| 影響範圍 | 是 | 單一登入行為的範圍。 可能的值：`Suppressed`、`Tenant`、`Application` 或 `Policy`。 `Suppressed` 值表示會抑制行為。 例如，在單一登入工作階段的情況下，不會為使用者保留任何工作階段，而且一律會提示使用者選取識別提供者。 `TrustFramework` 值表示會針對信任架構中的所有原則套用行為。 例如，如果使用者瀏覽信任架構的兩個原則旅程圖，系統不會提示該使用者選取識別提供者。 `Tenant` 值表示會將行為套用到租用戶中的所有原則。 例如，如果使用者瀏覽租用戶的兩個原則旅程圖，系統不會提示該使用者選取識別提供者。 `Application` 值表示會將行為套用到適用於提出要求之應用程式的所有原則。 例如，如果使用者瀏覽應用程式的兩個原則旅程圖，系統不會提示該使用者選取識別提供者。 `Policy` 值表示只會將行為套用到某個原則。 例如，如果使用者瀏覽信任架構的兩個原則旅程圖，系統會在該使用者於原則之間進行切換時提示其選取識別提供者。 |
 | KeepAliveInDays | 是 | 會控制使用者保持登入的時間長度。 將值設為 0 會關閉 KMSI 功能。 如需詳細資訊，請參閱[讓我保持登入](custom-policy-keep-me-signed-in.md)。 |
 |EnforceIdTokenHintOnLogout| 否|  強制將先前發行的識別碼權杖傳遞至登出端點，以做為與用戶端目前已驗證的會話相關的提示。 可能的值：`false` (預設) 或 `true`。 如需詳細資訊，請參閱[使用 OpenID connect 的 Web 登入](openid-connect.md)。  |
 
@@ -133,7 +133,7 @@ ms.locfileid: "76982835"
 
 **JourneyInsights** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | TelemetryEngine | 是 | 值必須是 `ApplicationInsights`。 |
 | InstrumentationKey | 是 | 字串，其中包含 Application Insights 元素的檢測金鑰。 |
@@ -154,32 +154,32 @@ ms.locfileid: "76982835"
 
 **ContentDefinitionParameters** 元素包含下列元素：
 
-| 元素 | 發生次數 | 說明 |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | ContentDefinitionParameter | 0:n | 字串，其中包含附加至內容定義負載 URI 查詢字串的金鑰值組。 |
 
 **ContentDefinitionParameter** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | 名稱 | 是 | 金鑰值組的名稱。 |
 
-如需詳細資訊，請參閱[使用自訂原則設定具有動態內容的 UI](custom-policy-ui-customization-dynamic.md)
+如需詳細資訊，請參閱[使用自訂原則設定具有動態內容的 UI](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri)
 
 ## <a name="technicalprofile"></a>TechnicalProfile
 
 **TechnicalProfile** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | Id | 是 | 值必須是 `PolicyProfile`。 |
 
 **TechnicalProfile** 包含下列元素：
 
-| 元素 | 發生次數 | 說明 |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | DisplayName | 1:1 | 包含技術設定檔名稱的字串。 |
-| 說明 | 0:1 | 包含技術設定檔描述的字串。 |
+| 描述 | 0:1 | 包含技術設定檔描述的字串。 |
 | 通訊協定 | 1:1 | 用於同盟的通訊協定。 |
 | 中繼資料 | 0:1 | 金鑰/值組的 *Item* 集合，通訊協定會在交易過程中利用它來與端點進行通訊，以設定信賴憑證者與其他社群參與者之間的互動。 |
 | OutputClaims | 1:1 | 宣告類型清單，可取得來作為技術設定檔中的輸出。 這些元素中的每一個均會參考已經定義於 **ClaimsSchema** 區段中或此原則檔所繼承之原則中的 **ClaimType**。 |
@@ -187,7 +187,7 @@ ms.locfileid: "76982835"
 
 **Protocol** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | 名稱 | 是 | Azure AD B2C 所支援的有效通訊協定名稱，可用來作為技術設定檔的一部分。 可能的值：`OpenIdConnect` 或 `SAML2`。 `OpenIdConnect` 值代表以每個 OpenID 基礎規格為依據的 OpenID Connect 1.0 通訊協定標準。 `SAML2` 代表以每個 OASIS 規格為依據的 SAML 2.0 通訊協定標準。 請勿在生產環境中使用 SAML 權杖。 |
 
@@ -195,13 +195,13 @@ ms.locfileid: "76982835"
 
 **OutputClaims** 元素包含下列元素：
 
-| 元素 | 發生次數 | 說明 |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | OutputClaim | 0:n | 信賴憑證者所訂閱之原則支援清單中預期的宣告類型名稱。 此宣告會用來做為技術設定檔的輸出。 |
 
 **OutputClaim** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | 是 | 對已經定義於原則檔 **ClaimsSchema** 區段中之 **ClaimType** 的參考。 |
 | DefaultValue | 否 | 如果宣告值是空的時可以使用的預設值。 |
@@ -215,7 +215,7 @@ ms.locfileid: "76982835"
 
 **SubjectNamingInfo** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | ClaimType | 是 | 對輸出宣告之 **PartnerClaimType** 的參考。 輸出宣告必須定義於信賴憑證者原則 **OutputClaims** 集合中。 |
 

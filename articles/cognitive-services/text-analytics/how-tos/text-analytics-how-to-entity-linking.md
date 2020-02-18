@@ -83,22 +83,22 @@ NER
 
 | 類型  | 子類型 | 範例 |
 |:-----------   |:------------- |:---------|
-| 人員        | N/A\*         | "Jeff"、"Bill Gates"     |
-| 位置      | N/A\*         | "Redmond, Washington"、"Paris"  |
+| 個人        | N/A\*         | "Jeff"、"Bill Gates"     |
+| Location      | N/A\*         | "Redmond, Washington"、"Paris"  |
 | 組織  | N/A\*         | "Microsoft"   |
 | 數量      | Number        | "6"、"six"     |
 | 數量      | 百分比    | "50%"、"fifty percent"|
 | 數量      | Ordinal       | "2nd"、"second"     |
-| 數量      | 天數           | "90 day old"、"30 years old"    |
+| 數量      | Age           | "90 day old"、"30 years old"    |
 | 數量      | 貨幣      | "$10.99"     |
 | 數量      | 維度     | "10 miles"、"40 cm"     |
 | 數量      | 溫度   | "32 degrees"    |
 | Datetime      | N/A\*         | "6:30PM February 4, 2012"      |
-| Datetime      | 日期          | "May 2nd, 2017"、"05/02/2017"   |
-| Datetime      | 時間          | "8am"、"8:00"  |
+| Datetime      | Date          | "May 2nd, 2017"、"05/02/2017"   |
+| Datetime      | Time          | "8am"、"8:00"  |
 | Datetime      | 日期範圍     | "May 2nd to May 5th"    |
 | Datetime      | 時間範圍     | "6pm to 7pm"     |
-| Datetime      | 持續期間      | "1 minute and 45 seconds"   |
+| Datetime      | Duration      | "1 minute and 45 seconds"   |
 | Datetime      | Set           | "every Tuesday"     |
 | URL           | N/A\*         | "HTTPs：\//www.bing.com"    |
 | 電子郵件         | N/A\*         | "support@contoso.com" |

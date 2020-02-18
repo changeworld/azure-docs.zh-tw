@@ -1,5 +1,5 @@
 ---
-title: Azure 虛擬機器重新開機停滯于重新開機、關閉或停止服務 |Microsoft Docs
+title: Azure 虛擬機器關機停滯于重新開機、關閉或停止服務 |Microsoft Docs
 description: 本文可協助您針對 Azure Windows 虛擬機器中的服務錯誤進行疑難排解。
 services: virtual-machines-windows
 documentationCenter: ''
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/19/2019
 ms.author: tibasham
-ms.openlocfilehash: db7b26402170236843891799738088b9229e4693
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5d6396efc9ab25baa0d32e7c33c7715863516249
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75477404"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77371367"
 ---
-# <a name="azure-windows-vm-restart-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Azure Windows VM 重新開機停滯于 [重新開機]、[正在關閉] 或 [停止服務]
+# <a name="azure-windows-vm-shutdown-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Azure Windows VM 關機停滯于 [重新開機]、[正在關閉] 或 [停止服務]
 
 本文提供解決在 Microsoft Azure 重新開機 Windows 虛擬機器（VM）時，可能會遇到「重新開機」、「正在關閉」或「停止服務」訊息之問題的步驟。
 
@@ -33,7 +33,7 @@ ms.locfileid: "75477404"
 
 Windows 使用關機程式來執行系統維護作業，以及處理更新、角色和功能等變更。 不建議您中斷此重要程式，直到它完成為止。 視更新/變更的數目和 VM 大小而定，此程式可能需要很長的時間。 如果進程已停止，作業系統可能會損毀。 只有在進程耗費時間過長時，才會中斷程式。
 
-## <a name="solution"></a>解決方案
+## <a name="solution"></a>解決方法
 
 ### <a name="collect-a-process-memory-dump"></a>收集處理常式記憶體傾印
 

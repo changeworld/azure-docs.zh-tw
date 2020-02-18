@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: de60b4ea1b09998e84bab4d204e3c8c3bc8779a4
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: fe1260982edc877c049716bd74f1bb3e90d33b0f
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77050443"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370530"
 ---
 # <a name="tutorial-configure-azure-databricks-scim-connector-for-automatic-user-provisioning"></a>教學課程：設定 Azure Databricks SCIM 連接器以進行自動使用者布建
 
@@ -96,7 +96,7 @@ Azure AD 布建服務可讓您根據指派給應用程式的人員，或根據�
 
     ![布建索引標籤](common/provisioning-automatic.png)
 
-5. 在 [**管理員認證**] 區段下，輸入您的 Azure Databricks SCIM 連接器系統管理員認證和使用者名稱。 按一下 [**測試連接**] 以確保 Azure AD 可以連接到 Azure Databricks SCIM 連接器。 如果連線失敗，請確定您的 Azure Databricks SCIM 連接器帳戶具有系統管理員許可權，然後再試一次。
+5. 在 [**管理員認證**] 區段下，于 [租使用者**URL**] 中輸入 SCIM 端點值。 租使用者 URL 的格式應該是 `https://<region>.azuredatabricks.net/api/2.0/preview/scim` 可以在 Azure Databricks 的首頁 URL 中找到該**區域**。 例如，將會 `https://westus.azuredatabricks.net/api/2.0/preview/scim`**westus**區域的 SCIM 端點。 輸入稍早在**秘密權杖**中所取得的 token 值。 按一下 [**測試連接**] 以確保 Azure AD 可以連接到 Azure Databricks SCIM 連接器。 如果連線失敗，請確定您的 Azure Databricks SCIM 連接器帳戶具有系統管理員許可權，然後再試一次。
 
     ![佈建](./media/azure-databricks-scim-provisioning-connector-provisioning-tutorial/provisioning.png)
 

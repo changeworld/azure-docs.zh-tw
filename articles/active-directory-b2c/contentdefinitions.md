@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/11/2020
+ms.date: 02/16/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3e5fb1ebb763cc5ecd7dfe8724347c03a487bc13
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: c759b7f0467ddb961f44f27c2d2f18ed24d2cfca
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157868"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77372789"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -61,7 +61,7 @@ ms.locfileid: "77157868"
 
 **ContentDefinition** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 描述 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | Id | 是 | 內容定義的識別碼。 此值是本頁面後面的**內容定義識別碼**區段中指定的值。 |
 
@@ -82,7 +82,7 @@ ms.locfileid: "77157868"
 | 頁面識別碼 | 描述 |
 | ----- | ----------- |
 | `globalexception` | 發生例外狀況或錯誤時，會顯示錯誤頁面。 |
-| `providerselection` | 列出使用者可以在登入期間選擇的識別提供者。 |
+| `providerselection`, `idpselection` | 列出使用者可以在登入期間選擇的識別提供者。  |
 | `unifiedssp` | 顯示一份表單，可供以電子郵件地址或使用者名稱為基礎的本機帳戶進行登入。 此值也提供 [讓我保持登入功能] 和 [忘記密碼？] 連結。 |
 | `unifiedssd` | 顯示一份表單，可供以電子郵件地址或使用者名稱為基礎的本機帳戶進行登入。 |
 | `multifactor` | 在註冊或登入期間，藉由使用簡訊或語音，驗證電話號碼。 |
@@ -137,7 +137,7 @@ ms.locfileid: "77157868"
 
 **Metadata** 元素的 **Item** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 描述 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | Key | 是 | 中繼資料索引鍵。  |
 
@@ -145,7 +145,7 @@ ms.locfileid: "77157868"
 
 內容定義支援下列中繼資料專案： 
 
-| Key | 必要項 | 描述 |
+| Key | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | DisplayName | 否 | 包含內容定義名稱的字串。 |
 
@@ -159,9 +159,9 @@ ms.locfileid: "77157868"
 
 **LocalizedResourcesReference**元素包含下列屬性：
 
-| 屬性 | 必要項 | 描述 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| 語言 | 是 | 此字串針對每個 RFC 5646 - 標記的原則包含支援的語言，以進行識別語言。 |
+| Language | 是 | 此字串針對每個 RFC 5646 - 標記的原則包含支援的語言，以進行識別語言。 |
 | LocalizedResourcesReferenceId | 是 | **LocalizedResources** 元素的識別碼。 |
 
 下列範例顯示的是註冊或登入內容定義，其參考英文、法文和西班牙文的當地語系化：

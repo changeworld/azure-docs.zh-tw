@@ -3,12 +3,12 @@ title: 瞭解如何審核虛擬機器的內容
 description: 瞭解 Azure 原則如何使用來賓設定代理程式來審查虛擬機器內的設定。
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 128baa0df1d3e555fe9629005529710202e1bbf6
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 73f986774fc13ac8c69cd800c977c909b591a74c
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169535"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77369749"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure 原則的來賓設定
 
@@ -185,8 +185,9 @@ egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCM
 
 原則來賓設定內建計畫的來源可在下列位置取得：
 
+- [內建原則定義-來賓設定](../samples/built-in-policies.md#guest-configuration)
 - [內建計畫-來賓設定](../samples/built-in-initiatives.md#guest-configuration)
-- [Azure 原則 GitHub 存放庫範例](https://github.com/Azure/azure-policy/tree/master/built-in-policies/policySetDefinitions/Guest Configuration)
+- [Azure 原則 GitHub 存放庫範例](https://github.com/Azure/azure-policy/tree/master/built-in-policies/policySetDefinitions/Guest%20Configuration)
 
 ## <a name="next-steps"></a>後續步驟
 

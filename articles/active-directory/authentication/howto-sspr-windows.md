@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be1c0e93a51064870635d4f06bd5b365bbfe517a
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: a1f0e5242d87bc68efd92a52619e8d48cff9ac87
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847281"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370064"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>如何：從 Windows 登入畫面啟用密碼重設
 
@@ -27,7 +27,9 @@ ms.locfileid: "74847281"
 ## <a name="general-limitations"></a>一般限制
 
 - 目前不支援從遠端桌面或 Hyper-v 增強式會話進行密碼重設。
-- 此功能不適用於已部署 802.1x 網路驗證及使用 [在使用者登入後立即執行] 選項的網路。 針對已部署 802.1x 網路驗證的網路，建議您使用機器驗證來啟用此功能。
+- 某些協力廠商認證提供者已知會導致此功能發生問題。
+- 藉由修改 EnableLUA 登錄機[碼](https://docs.microsoft.com/openspecs/windows_protocols/ms-gpsb/958053ae-5397-4f96-977f-b7700ee461ec)來停用 UAC，已知會造成問題。
+- 這項功能不適用於已部署 802.1 x 網路驗證的網路，以及 [使用者登入前立即執行] 選項。 針對已部署 802.1x 網路驗證的網路，建議您使用機器驗證來啟用此功能。
 - 混合式 Azure AD 聯結的機器必須能夠看到網域控制站的網路連線，才能使用新密碼並更新快取的認證。
 - 如果使用映射，在執行 sysprep 之前，請先確定已針對內建的系統管理員清除 web 快取，再執行 CopyProfile 步驟。 如需此步驟的詳細資訊，請參閱[使用自訂預設使用者設定檔時](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile)的支援文章效能不佳。
 - 已知下列設定會影響在 Windows 10 裝置上使用和重設密碼的能力。
@@ -76,8 +78,8 @@ ms.locfileid: "74847281"
       - **OMA URI** 設為 `./Vendor/MSFT/Policy/Config/Authentication/AllowAadPasswordReset`
       - **資料類型** 設為 **整數**
       - **值** 設為 **1**
-      - 按一下 [確定]
-   - 按一下 [確定]
+      - 按一下 [檔案] &gt; [新增] &gt; [專案]
+   - 按一下 [檔案] &gt; [新增] &gt; [專案]
 1. 按一下 [建立]
 1. 此原則可指派給特定的使用者、裝置或群組。 如需詳細資訊，請參閱在[Microsoft Intune 中指派使用者和裝置設定檔](https://docs.microsoft.com/intune/device-profile-assign)一文。
 

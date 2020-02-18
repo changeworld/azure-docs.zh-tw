@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2020
 ms.author: Zhchia
-ms.openlocfilehash: b0b5147faf82fedb6dc3c2eea54dcff1b9343f7a
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 119690b9046821ab538d879e1209c6ef77277370
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087475"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370676"
 ---
 # <a name="tutorial-configure-purecloud-by-genesys-for-automatic-user-provisioning"></a>教學課程：設定 Purecloud by by Genesys 來自動布建使用者
 
@@ -90,7 +90,7 @@ Azure AD 布建服務可讓您根據指派給應用程式的人員，或根據�
 
     ![布建索引標籤](common/provisioning-automatic.png)
 
-5. 在 [**管理員認證**] 區段底下，分別在 [**租使用者 URL** ] 和 [**秘密權杖**] 欄位中輸入您的 Purecloud by By Genesys API url 和 Oauth token。 按一下 [**測試連接**] 以確保 Azure AD 可以透過 Genesys 連線至 purecloud by。 如果連線失敗，請確定您的 Purecloud by by Genesys 帳戶具有系統管理員許可權，然後再試一次。
+5. 在 [**管理員認證**] 區段底下，分別在 [**租使用者 URL** ] 和 [**秘密權杖**] 欄位中輸入您的 Purecloud by By Genesys API url 和 Oauth token。 API URL 將會結構化為 `{{API Url}}/api/v2/scim/v2`，並使用[Purecloud by 開發人員中心](https://developer.mypurecloud.com/api/rest/index.html)的 PURECLOUD BY 區域 api url。 按一下 [**測試連接**] 以確保 Azure AD 可以透過 Genesys 連線至 purecloud by。 如果連線失敗，請確定您的 Purecloud by by Genesys 帳戶具有系統管理員許可權，然後再試一次。
 
     ![佈建](./media/purecloud-by-genesys-provisioning-tutorial/provisioning.png)
 

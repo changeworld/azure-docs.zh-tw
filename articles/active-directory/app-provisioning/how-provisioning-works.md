@@ -62,7 +62,7 @@ Azure AD 使用者物件和每個 SaaS 應用程式的使用者物件之間，�
 
 當您設定佈建到 SaaS 應用程式時，您可以指定的其中一種屬性對應類型是運算式對應。 針對這些對應，您必須撰寫類似腳本的運算式，讓您將使用者的資料轉換成 SaaS 應用程式更容易接受的格式。 如需詳細資訊，請參閱[撰寫屬性對應的運算式](functions-for-customizing-application-data.md)。
 
-## <a name="scoping"></a>範圍設定 
+## <a name="scoping"></a>範圍 
 ### <a name="assignment-based-scoping"></a>以指派為基礎的範圍
 
 針對從 Azure AD 到 SaaS 應用程式的輸出布建，依賴[使用者或群組指派](../manage-apps/assign-user-or-group-access-portal.md)是判斷哪些使用者在布建範圍中最常見的方式。 因為使用者指派也用於啟用單一登入，所以相同的方法也可用來管理存取與布建。 以指派為基礎的範圍不適用於輸入布建案例，例如 Workday 和 Successfactors。

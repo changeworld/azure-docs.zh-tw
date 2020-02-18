@@ -30,7 +30,7 @@ ms.locfileid: "77368080"
 
 ## <a name="does-a-sharepoint-online-policy-also-apply-to-onedrive-for-business"></a>SharePoint Online 原則也適用於商務用 OneDrive 嗎？
 
-是的。 SharePoint Online 原則也會套用至商務用 OneDrive。
+是。 SharePoint Online 原則也會套用至商務用 OneDrive。
 
 ## <a name="why-cant-i-set-a-policy-directly-on-client-apps-like-word-or-outlook"></a>為什麼我無法直接在用戶端應用程式（例如 Word 或 Outlook）上設定原則？
 

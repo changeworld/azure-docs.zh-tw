@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f171d9d71d3e6f8fa57671578502675442293793
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 2dcdc67f884d1f566c794ab9e996a74984ab61a4
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76908921"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373149"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中自訂使用者介面
 
@@ -39,7 +39,7 @@ ms.locfileid: "76908921"
 
 如果您在應用程式中使用[自訂原則](custom-policy-overview.md)來提供註冊或登入、密碼重設或設定檔編輯，請使用[原則檔案來自訂 UI](custom-policy-ui-customization.md)。
 
-如果您需要根據客戶的決策提供動態內容，請使用可根據查詢字串中傳送的參數，[動態變更頁面內容](custom-policy-ui-customization-dynamic.md)的自訂原則。 例如，您可以根據您從 web 或行動裝置應用程式傳遞的參數，在 Azure AD B2C 註冊或登入頁面上變更背景影像。
+如果您需要根據客戶的決策提供動態內容，請使用可根據查詢字串中傳送的參數，[動態變更頁面內容](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri)的自訂原則。 例如，您可以根據您從 web 或行動裝置應用程式傳遞的參數，在 Azure AD B2C 註冊或登入頁面上變更背景影像。
 
 ### <a name="javascript"></a>JavaScript
 
@@ -150,7 +150,7 @@ Azure AD B2C 會使用稱為[跨原始資源分享（CORS）](https://www.w3.org
 | 本機帳戶註冊 | 包含可供使用者根據電子郵件地址或使用者名稱進行本機帳戶註冊的表單。 此表單可以包含不同的輸入控制項，例如文字輸入方塊、密碼輸入方塊、選項按鈕、單選下拉式清單方塊和多選核取方塊。 |
 | 社交帳戶註冊 | 可在使用社交識別提供者 (例如 Facebook 或 Google) 的現有帳戶註冊時顯示。 當您必須使用註冊表單從客戶收集其他資訊時，就會使用它。 |
 | 統一的註冊或登入 | 可處理客戶的註冊和登入，這些客戶可使用社交識別提供者 (例如 Facebook、Google) 或本機帳戶。 |
-| 多因素驗證 | 客戶可以在註冊或登入期間驗證其電話號碼 (使用文字或語音)。 |
+| Multi-Factor Authentication | 客戶可以在註冊或登入期間驗證其電話號碼 (使用文字或語音)。 |
 | 錯誤 | 提供錯誤資訊給客戶。 |
 
 ## <a name="company-branding-preview"></a>公司商標（預覽）

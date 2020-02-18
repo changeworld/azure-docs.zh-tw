@@ -1,22 +1,14 @@
 ---
 title: 最佳做法 - QnA Maker
-titleSuffix: Azure Cognitive Services
 description: 使用下列最佳做法可改善您的知識庫，並為您的應用程式/聊天機器人使用者提供更好的結果。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 01/27/2020
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: 2fd85e43fb2aa53299b4e37eca5163b7da8fc6ec
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 02/15/2020
+ms.openlocfilehash: fb935aeed7b492a3a0c213d6d7166bd5d80144c1
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843798"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370109"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>QnA Maker 知識庫的最佳做法
 
@@ -31,8 +23,6 @@ QnA Maker 服務會持續改進從內容中擷取 QnA 的演算法，並擴充�
 ### <a name="configuring-multi-turn"></a>設定多回合
 
 啟用多回合解壓縮以[建立您的知識庫](../how-to/multiturn-conversation.md#create-a-multi-turn-conversation-from-a-documents-structure)。 如果您的知識庫會執行或應該支援問題階層，則可以從檔解壓縮此階層，或在檔解壓縮之後建立。
-
-<!--is this a global setting that can only be configured at kb creation time? -->
 
 ## <a name="creating-good-questions-and-answers"></a>建立良好的問題與解答
 
@@ -51,7 +41,7 @@ QnA Maker 服務會持續改進從內容中擷取 QnA 的演算法，並擴充�
 
 最佳的答案是簡單的答案，但不太簡單。 請勿使用如 `yes` 和 `no`等答案。 如果您的答案應連結至其他來源，或透過媒體和連結提供豐富的體驗，請使用[元資料標記](../how-to/edit-knowledge-base.md#add-metadata)來區別答案，然後以 `strictFilters` 屬性中的元資料標記[提交查詢](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration)，以取得正確的答案版本。
 
-|答案|Follup 提示|
+|Answer|Follup 提示|
 |--|--|
 |使用鍵盤上的 [電源] 按鈕，關閉 Surface 膝上型電腦的電源。|* 按鍵-結合睡眠、關機和重新開機。<br>* 如何為 Surface 膝上型電腦進行硬開機<br>* 如何變更 Surface 膝上型電腦的 BIOS<br>* 睡眠、關機和重新開機之間的差異|
 |客戶服務可透過電話、Skype 和文字訊息每天24小時取得。|* 銷售的連絡人資訊。<br> * Office 和商店地點和時數，供親自造訪。<br> * Surface 膝上型電腦的配件。|
@@ -66,7 +56,7 @@ QnA Maker 服務會持續改進從內容中擷取 QnA 的演算法，並擴充�
 
 |風格 |QnA Maker 資料集檔案 |
 |---------|-----|
-|專業 |[qna_chitchat_professional tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_professional.tsv) |
+|Professional |[qna_chitchat_professional tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_professional.tsv) |
 |易記 |[qna_chitchat_friendly tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_friendly.tsv) |
 |詼諧 |[qna_chitchat_witty tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_witty.tsv) |
 |管也 |[qna_chitchat_caring tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_caring.tsv) |
@@ -83,7 +73,7 @@ QnA Maker 服務會持續改進從內容中擷取 QnA 的演算法，並擴充�
 * 您可以做什麼？
 * 你幾歲？
 * 誰建立了你？
-* 您好！
+* 您好
 
 ### <a name="adding-custom-chit-chat-with-a-metadata-tag"></a>使用元資料標記新增自訂閒聊-交談
 
@@ -104,7 +94,7 @@ GenerateAnswer API 會使用這兩個問題和答案來搜尋使用者查詢的�
 
 ### <a name="choosing-a-threshold"></a>選擇閾值
 
-用來作為臨界值的預設[信賴分數](confidence-score.md)為50，不過您可以根據需求變更 KB 的[閾值](confidence-score.md#set-threshold)。 每個知識庫各有不同，因此您應該測試並選擇最適合您知識庫的閾值。
+用來作為臨界值的預設[信賴分數](confidence-score.md)為0，不過您可以根據自己的需求[變更 KB 的閾值](confidence-score.md#set-threshold)。 每個知識庫各有不同，因此您應該測試並選擇最適合您知識庫的閾值。
 
 ### <a name="choosing-ranker-type"></a>選擇 Ranker 類型
 根據預設，QnA Maker 會搜尋問題和答案。 如果您只想要搜尋問題，若要產生解答，請使用 GenerateAnswer 要求的 POST 主體中的 `RankerType=QuestionOnly`。
@@ -147,7 +137,7 @@ QnA Maker 可讓使用者對知識庫進行[共同作業](../How-to/collaborate-
 
 
 
-## <a name="active-learning"></a>主動式學習
+## <a name="active-learning"></a>主動學習
 
 [主動式學習](../How-to/improve-knowledge-base.md)具有各種品質和數量的使用者查詢時，其在建議替代問題方面的表現最好。 務必讓用戶端應用程式的使用者查詢參與主動式回饋迴圈，而不需要審查。 在 QnA Maker 入口網站中建議問題之後，您可以 **[依建議進行篩選](../How-To/improve-knowledge-base.md#accept-an-active-learning-suggestion-in-the-knowledge-base)** ，然後複習並接受或拒絕這些建議。
 

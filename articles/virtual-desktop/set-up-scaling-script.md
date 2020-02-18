@@ -51,7 +51,7 @@ ms.locfileid: "77367244"
 >[!NOTE]
 >調整工具可控制要調整之主機集區的負載平衡模式。 它會將其設定為尖峰和離峰時段的廣度優先負載平衡。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始設定調整工具之前，請確定您已備妥下列專案：
 
