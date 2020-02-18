@@ -2,21 +2,21 @@
 title: 適用於 Azure 客戶的開放銀行 (PSD2) 和強大客戶驗證 (SCA)
 description: 本文說明為何某些 Azure 購買需要多重要素驗證，以及如何完成驗證。
 author: bandersmsft
-manager: jureid
+manager: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: aff5e1e707980c9a63988c22653fa5fba0fc236b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 5f9c5f861e238bf38451863fb2d39cbb8af93225
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75996036"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133569"
 ---
 # <a name="open-banking-psd2-and-strong-customer-authentication-sca-for-azure-customers"></a>適用於 Azure 客戶的開放銀行 (PSD2) 和強大客戶驗證 (SCA)
 
@@ -53,14 +53,13 @@ ms.locfileid: "75996036"
 
 ### <a name="settle-outstanding-charges-for-marketplace-and-reservation-purchases"></a>結清 Marketplace 和保留購買的未付費用
 
-Marketplace 和保留購買會與 Azure 服務分開計費。 如果您的銀行拒絕 Marketplace 或保留費用，則您的發票狀態會在 Azure 入口網站中顯示為 [逾期]  。 您可以遵循下列步驟來檢查 Marketplace 和保留發票的狀態：
+Marketplace 和保留購買會與 Azure 服務分開計費。 如果您的銀行拒絕 Marketplace 或保留費用，您的發票將會變成逾期狀態，而您會在 Azure 入口網站中看到 [立即付費]  的選項。 您可以遵循下列步驟，為逾期的 Marketplace 和保留發票付費：
 
 1. 以帳戶管理員身分登入 [Azure 入口網站](https://portal.azure.com/)。
 2. 針對 [成本管理 + 帳單]  進行搜尋。
 3. 在 [帳單] 底下，選取 [發票]  。
-4. 按一下右邊的 [Azure Marketplace 與保留]  索引標籤。
-5. 選取對應的訂用帳戶。
-6. 在 [發票] 方格中，檢閱 [狀態] 資料行。 如果發票 [到期] 或 [逾期]，請按一下 [立即支付]。    系統會提示您在處理過程中完成多重要素驗證。
+5. 在 [訂用帳戶] 下拉式篩選條件中，選取與 Marketplace 或保留購買相關聯的訂用帳戶。
+6. 在 [發票] 方格中，檢閱 [類型] 資料行。 如果類型是 [Azure Marketplace 和保留]  ，則當發票到期或逾期時，您將會看到 [立即付費]  連結。 如果您沒有看到 [立即付費]  ，則表示您的發票已完成付費。 在立即付費期間，系統會提示您完成多重要素驗證。
 
 ## <a name="next-steps"></a>後續步驟
 - 如果您需要支付 Azure 帳單，請參閱[處理 Azure 訂用帳戶的逾期未付帳款](resolve-past-due-balance.md)。

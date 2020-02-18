@@ -1,17 +1,14 @@
 ---
 title: Azure Migrate 中的相依性視覺效果
 description: 概述伺服器評定服務中的評估計算，Azure Migrate
-author: rayne-wiselman
-ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/23/2019
-ms.author: hamusa
-ms.openlocfilehash: 75b2120b9fef904114d532e83d571c08e1a1034d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.date: 02/17/2020
+ms.openlocfilehash: 65a99e230262ae05d34dc8c04e87252c15133fda
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772307"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425675"
 ---
 # <a name="dependency-visualization"></a>相依性視覺效果
 
@@ -33,13 +30,13 @@ ms.locfileid: "75772307"
 有兩個選項可以部署相依性視覺效果：
 
 - **無代理**程式相依性視覺效果：此選項目前為預覽狀態，僅適用于 VMware vm。 您不需要在電腦上安裝任何代理程式。 
-    - 其運作方式是從已啟用它的機器中，捕獲 TCP 連接資料。 [深入了解](how-to-create-group-machine-dependencies-agentless.md)。
+    - 其運作方式是從已啟用它的機器中，捕獲 TCP 連接資料。 [詳細資訊](how-to-create-group-machine-dependencies-agentless.md)。
 相依性探索開始之後，應用裝置會以五分鐘的輪詢間隔從機器收集資料。
     - 收集的資料如下：
         - TCP 連線
         - 具有使用中連接的進程名稱
         - 執行上述進程的已安裝應用程式名稱
-        - 不會。 在每個輪詢間隔偵測到的連線數
+        - 否。 在每個輪詢間隔偵測到的連線數
 - **代理程式型**相依性視覺化：若要使用代理程式型相依性視覺效果，您必須在要分析的每個內部部署機器上，下載並安裝下列代理程式。  
     - 必須在每個機器上安裝 [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)。 [深入瞭解](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-mma)如何安裝 MMA 代理程式。
     - 必須在每個機器上安裝[相依性代理程式](../azure-monitor/platform/agents-overview.md#dependency-agent)。 [深入瞭解](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-dependency-agent)如何安裝 dependency agent。
@@ -54,7 +51,7 @@ ms.locfileid: "75772307"
 [深入瞭解](how-to-assess.md)如何新增工具，以及如何部署[hyper-v](how-to-set-up-appliance-hyper-v.md)、 [VMware](how-to-set-up-appliance-vmware.md)或實體伺服器的應用裝置。
 
 
-### <a name="how-does-it-work"></a>怎麼運作的呢？
+### <a name="how-does-it-work"></a>運作方式
 
 Azure Migrate 使用[Azure 監視器記錄](../log-analytics/log-analytics-overview.md)中的[服務對應](../operations-management-suite/operations-management-suite-service-map.md)解決方案來進行相依性視覺效果。
 

@@ -39,6 +39,12 @@
       href: virtual-network-disaster-recovery-guidance.md
     - name: 連線能力
       items:
+        - name: NAT
+          items:
+            - name: 概觀
+              href: nat-overview.md
+            - name: 資源
+              href: nat-gateway-resource.md
         - name: 後端連線能力互通性
           items:
             - name: 引用和測試設定
@@ -111,6 +117,20 @@
           href: virtual-network-nsg-manage-log.md
     - name: 連線能力
       items:
+        - name: NAT
+          items:
+            - name: 建立 NAT 閘道 - 入口網站
+              href: quickstart-create-nat-gateway-portal.md
+            - name: 建立 NAT 閘道 - PowerShell
+              href: quickstart-create-nat-gateway-powershell.md
+            - name: 建立 NAT 閘道 - CLI
+              href: quickstart-create-nat-gateway-cli.md
+            - name: 建立和驗證 NAT 閘道 - 入口網站
+              href: tutorial-create-validate-nat-gateway-portal.md
+            - name: 建立和驗證 NAT 閘道 - PowerShell
+              href: tutorial-create-validate-nat-gateway-powershell.md
+            - name: 建立和驗證 NAT 閘道 - CLI
+              href: tutorial-create-validate-nat-gateway-cli.md
         - name: 管理 NIC
           href: virtual-network-network-interface.md
         - name: 管理虛擬網路

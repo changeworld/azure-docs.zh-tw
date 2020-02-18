@@ -4,12 +4,12 @@ description: 本文說明如何使用 Azure Migrate 將實體機器遷移至 Azu
 ms.topic: tutorial
 ms.date: 02/03/2020
 ms.custom: MVC
-ms.openlocfilehash: 6cdd107cb761aab3a85b73067fd646a36fe97d63
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 908a5915cbb7f5aeb9f641da18024d5dbf497707
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989751"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134946"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>將機器視為實體伺服器遷移至 Azure
 
@@ -61,9 +61,6 @@ ms.locfileid: "76989751"
 您必須先設定 Azure 權限，才能使用「Azure Migrate 伺服器移轉」來進行遷移。
 
 - **建立專案**：您的 Azure 帳戶必須有建立 Azure Migrate 專案的權限。 
-- **註冊 Azure Migrate 複寫設備**：複寫設備會在您的 Azure 帳戶中建立，並註冊 Azure Active Directory 應用程式。 請委派其權限。
-- **建立金鑰保存庫**：若要遷移 VMware VM，Azure Migrate 會在資源群組中建立 Key Vault，以管理訂用帳戶中的複寫儲存體帳戶的存取金鑰。 若要建立保存庫，您在 Azure Migrate 專案所在的資源群組上必須有角色指派權限。 
-
 
 ### <a name="assign-permissions-to-create-project"></a>指派建立專案的權限
 
@@ -73,43 +70,6 @@ ms.locfileid: "76989751"
     - 如果您剛建立免費的 Azure 帳戶，您就是訂用帳戶的擁有者。
     - 如果您不是訂用帳戶擁有者，請與擁有者合作以指派角色。
 
-### <a name="assign-permissions-to-register-the-replication-appliance"></a>指派註冊複寫設備的權限
-
-針對代理程式型移轉，請委派 Azure Migrate 伺服器移轉的權限，以在您的帳戶中建立並註冊 Azure AD 應用程式。 您可以使用下列其中一種方法來指派權限：
-
-- 租用戶/全域管理員可將權限授與租用戶中的使用者，以建立及註冊 Azure AD 應用程式。
-- 租用戶/全域管理員可為帳戶指派應用程式開發人員角色 (具有權限)。
-
-值得注意的是：
-
-- 除了前述權限外，應用程式在訂用帳戶上沒有任何其他存取權限。
-- 您在註冊新的複寫設備時，才需要這些權限。 完成複寫設備的設定後，您可以移除權限。 
-
-
-#### <a name="grant-account-permissions"></a>授與帳戶權限
-
-租用戶/全域管理員可依照下列方式授與權限
-
-1. 在 Azure AD 中，租用戶/全域管理員應該瀏覽至 [Azure Active Directory]   > [使用者]   > [使用者設定]  。
-2. 管理員應將 [應用程式註冊]  設定為 [是]  。
-
-    ![Azure AD 權限](./media/tutorial-migrate-physical-virtual-machines/aad.png)
-
-> [!NOTE]
-> 這是一個不敏感的預設設定。 [深入了解](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance)。
-
-#### <a name="assign-application-developer-role"></a>指派應用程式開發人員角色 
-
-租用戶/全域管理員可為帳戶指派應用程式開發人員角色。 [深入了解](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)。
-
-## <a name="assign-permissions-to-create-key-vault"></a>指派建立金鑰保存庫的權限
-
-在 Azure Migrate 專案所在的資源群組上指派角色指派權限，如下所示：
-
-1. 在 Azure 入口網站的資源群組中，選取 [存取控制 (IAM)]  。
-2. 在 [檢查存取權]  中，尋找相關的帳戶，然後按一下以查看權限。 您需要**擁有者** (或**參與者**和**使用者存取系統管理員**) 權限。
-3. 如果您沒有必要權限，請向資源群組擁有者提出要求。 
-
 ## <a name="prepare-for-migration"></a>為移轉做準備
 
 ### <a name="check-machine-requirements-for-migration"></a>檢查移轉的機器需求
@@ -117,7 +77,7 @@ ms.locfileid: "76989751"
 確定機器符合移轉至 Azure 的需求。 
 
 > [!NOTE]
-> 使用 Azure Migrate 伺服器移轉的代理程式型移轉，會以 Azure Site Recovery 服務的功能作為基礎。 某些需求可能會連結至 Site Recovery 文件。
+> 使用 Azure Migrate 伺服器移轉來進行的代理程式型移轉，具有與 Azure Site Recovery 服務的代理程式型災害復原功能相同的複寫架構，而所使用的部分元件則共用相同的程式碼基底。 某些需求可能會連結至 Site Recovery 文件。
 
 1. [確認](migrate-support-matrix-physical-migration.md#physical-server-requirements)實體伺服器需求。
 2. 確認 VM 設定。 您複寫到 Azure 的內部部署機器必須符合 [Azure VM 需求](migrate-support-matrix-physical-migration.md#azure-vm-requirements)。
@@ -155,7 +115,7 @@ ms.locfileid: "76989751"
     **地理位置** | **區域**
     --- | ---
     Asia | 東南亞
-    歐洲 | 歐洲北部或歐洲西部
+    歐洲 | 北歐或西歐
     美國 | 美國東部或美國中西部
 
     針對專案所指定的地理位置，僅會用於儲存從內部部署虛擬機器收集的中繼資料。 您可以選取任何目標區域以進行實際移轉。
@@ -194,7 +154,7 @@ ms.locfileid: "76989751"
 
     ![完成註冊](./media/tutorial-migrate-physical-virtual-machines/finalize-registration.png)
 
-完成登錄後最多可能需要 15 分鐘的時間，探索到的機器才會出現在「Azure Migrate 伺服器移轉」中。 探索到 VM 時，[探索到的伺服器]  計數即會上升。
+完成註冊後可能需要一點時間，所探索到的機器才會出現在「Azure Migrate 伺服器移轉」中。 探索到 VM 時，[探索到的伺服器]  計數即會上升。
 
 ![探索到的伺服器](./media/tutorial-migrate-physical-virtual-machines/discovered-servers.png)
 

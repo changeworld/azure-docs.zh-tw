@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 40f779fa5545e0e9c8fd1aa2cc2689b29dffdb82
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 68d39b4f363794d50fd05c2067502fc55d5d0170
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760754"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153242"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>什麼是 Azure Synapse Analytics (先前為 SQL DW)？
 
@@ -34,7 +34,7 @@ Azure Synapse 有四個元件：
 
 ## <a name="sql-analytics-and-sql-pool-in-azure-synapse"></a>Azure Synapse 中的 SQL 分析和 SQL 集區
 
-SQL 分析是可正式搭配 Azure Synapse 使用的企業資料倉儲功能。 
+SQL 分析是已在 Azure Synapse 中正式推出的企業資料倉儲功能。 
 
 SQL 集區代表使用 SQL 分析時所佈建的分析資源集合。 SQL 集區的大小取決於資料倉儲單位 (DWU)。
 

@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 02/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 9e962a0e76cdc0d51a87df3c33927c34db991fc7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6d867ccd8704d4aba4627e7b81638394b7e1e8d3
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927401"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77423774"
 ---
 # <a name="avro-format-in-azure-data-factory"></a>Azure Data Factory 中的 Avro 格式
 
@@ -26,11 +26,11 @@ ms.locfileid: "74927401"
 
 如需可用來定義資料集的區段和屬性完整清單，請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供 Avro 資料集所支援的屬性清單。
 
-| 屬性         | 描述                                                  | 必要項 |
+| 屬性         | 描述                                                  | 必要 |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| 類型             | 資料集的類型屬性必須設定為**Avro**。 | 是      |
+| type             | 資料集的類型屬性必須設定為**Avro**。 | 是      |
 | location         | 檔案的位置設定。 每個以檔案為基礎的連接器在 `location`之下都有自己的位置類型和支援的屬性。 **請參閱連接器文章-> 資料集屬性一節中的詳細資訊**。 | 是      |
-| avroCompressionCodec | 寫入 Avro 檔案時所要使用的壓縮編解碼器。 從 Avro 檔案讀取時，Data Factory 會根據檔案中繼資料自動決定壓縮編解碼器。<br>支援的類型為 "**none**" （預設值）、"**deflate**"、"**snappy**"。 | 否       |
+| avroCompressionCodec | 寫入 Avro 檔案時所要使用的壓縮編解碼器。 從 Avro 檔案讀取時，Data Factory 會根據檔案中繼資料自動決定壓縮編解碼器。<br>支援的類型為 "**none**" （預設值）、"**deflate**"、"**snappy**"。 請注意，當讀取/寫入 Avro 檔案時，複製活動目前不支援 Snappy。 | 否       |
 
 > [!NOTE]
 > Avro 檔案不支援資料行名稱中的空白字元。
@@ -65,20 +65,20 @@ ms.locfileid: "74927401"
 
 ### <a name="avro-as-source"></a>Avro 作為來源
 
-以下支援的屬性將複製活動中 ***\*來源\**** 一節。
+複製活動***\*來源\**** 區段中支援下列屬性。
 
-| 屬性      | 描述                                                  | 必要項 |
+| 屬性      | 描述                                                  | 必要 |
 | ------------- | ------------------------------------------------------------ | -------- |
-| 類型          | 複製活動來源的類型屬性必須設定為**AvroSource**。 | 是      |
+| type          | 複製活動來源的類型屬性必須設定為**AvroSource**。 | 是      |
 | storeSettings | 一組屬性，說明如何從資料存放區讀取資料。 每個以檔案為基礎的連接器在 `storeSettings`之下都有自己支援的讀取設定。 **請參閱連接器中的詳細資料文章-> 複製活動屬性一節**。 | 否       |
 
 ### <a name="avro-as-sink"></a>Avro 作為接收器
 
-以下支援的屬性將複製活動中 ***\*接收器\**** 一節。
+複製活動***\*接收\**** 區段中支援下列屬性。
 
-| 屬性      | 描述                                                  | 必要項 |
+| 屬性      | 描述                                                  | 必要 |
 | ------------- | ------------------------------------------------------------ | -------- |
-| 類型          | 複製活動來源的類型屬性必須設定為**AvroSink**。 | 是      |
+| type          | 複製活動來源的類型屬性必須設定為**AvroSink**。 | 是      |
 | storeSettings | 一組屬性，說明如何將資料寫入資料存放區。 每個以檔案為基礎的連接器在 `storeSettings`之下都有它自己的支援寫入設定。 **請參閱連接器中的詳細資料文章-> 複製活動屬性一節**。 | 否       |
 
 ## <a name="data-type-support"></a>資料類型支援

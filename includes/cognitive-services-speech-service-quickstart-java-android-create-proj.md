@@ -2,14 +2,14 @@
 author: trrwilson
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 5/23/2019
+ms.date: 02/10/2020
 ms.author: travisw
-ms.openlocfilehash: 5c0b6400c6dc346597329c82e82801403a888a4d
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: a7ce6bc2b6fa272c8dd3c4bf95bc06a37d1fe28f
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675595"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119735"
 ---
 1. 啟動 Android Studio，然後在 [歡迎使用]  視窗中選取 [開始新的 Android Studio 專案]  。
 
@@ -27,7 +27,7 @@ Android Studio 需要一些時間來準備您新的 Android 專案。 接著，�
 
 [!INCLUDE [License notice](cognitive-services-speech-service-license-notice.md)]
 
-認知服務語音 SDK 目前的版本為 1.7.0。
+認知服務語音 SDK 目前的版本為 1.9.0。
 
 適用於 Android 的語音 SDK 會封裝成 [AAR (Android 程式庫)](https://developer.android.com/studio/projects/android-library) \(英文\)，其中包含必要的程式庫及所需的 Android 權限。
 它會裝載在位於 https:\//csspeechstorage.blob.core.windows.net/maven/ 的 Maven 存放庫中。
@@ -42,12 +42,12 @@ Android Studio 需要一些時間來準備您新的 Android 專案。 接著，�
 
    ![程式庫相依性的螢幕擷取畫面](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-07-add-module-dependency.png)
 
-1. 在出現的視窗中，輸入適用於 Android 的語音 SDK 名稱和版本：com.microsoft.cognitiveservices.speech:client-sdk:1.7.0  。 然後選取 [確定]  。
+1. 在出現的視窗中，輸入適用於 Android 的語音 SDK 名稱和版本：com.microsoft.cognitiveservices.speech:client-sdk:1.9.0  。 然後選取 [確定]  。
    語音 SDK 現在應該會加入至相依性的清單，如下所示：
 
    ![相依性清單中的語音 SDK 螢幕擷取畫面](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-08-dependency-added-1.0.0.png)
 
-1. 選取 [屬性]  索引標籤。針對 [來源相容性]  和 [目標相容性]  兩者，都選取 [1.8]  。
+1. 選取 [屬性]  索引標籤。針對 [來源相容性]  和 [目標相容性]  兩者，都選取 [1.9]  。
 
    ![來源相容性和目標相容性的螢幕擷取畫面](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-09-dependency-added.png)
 

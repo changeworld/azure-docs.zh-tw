@@ -1,21 +1,20 @@
 ---
 title: 教學課程 - 建立和管理 Azure 預算 | Microsoft Docs
 description: 此教學課程可協助規劃和說明您取用之 Azure 服務的成本。
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/22/2020
+ms.date: 02/10/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: adwise
+ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: bb02c4903348a3b8c1d129f02be64109ec0f48eb
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9900a2f7a41a6b35be75326b9412ec628328e39b
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76769734"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132093"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>教學課程：建立和管理 Azure 預算
 
@@ -34,11 +33,12 @@ ms.locfileid: "76769734"
 
 > [!div class="checklist"]
 > * 在 Azure 入口網站中建立預算
+> * 使用 PowerShell 建立和編輯預算
 > * 編輯預算
 
 ## <a name="prerequisites"></a>Prerequisites
 
-預算功能支援各種不同的 Azure 帳戶類型。 若要檢視所支援帳戶類型的完整清單，請參閱[了解成本管理資料](understand-cost-mgt-data.md)。 若要檢視預算，您至少需要 Azure 帳戶的讀取存取。
+不同的 Azure 帳戶類型均支援預算。 若要檢視所支援帳戶類型的完整清單，請參閱[了解成本管理資料](understand-cost-mgt-data.md)。 若要檢視預算，您至少需要 Azure 帳戶的讀取存取。
 
  針對 Azure EA 訂用帳戶，您必須具備檢視預算的讀取存取權。 若要建立及管理預算，您必須具有參與者權限。 您可以個別為 EA 訂用帳戶和資源群組建立預算。 不過，您無法為 EA 帳單帳戶建立預算。
 
@@ -52,7 +52,7 @@ ms.locfileid: "76769734"
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
-- 登入 Azure 入口網站： https://portal.azure.com 。
+- 在 https://portal.azure.com 登入 Azure 入口網站。
 
 ## <a name="create-a-budget-in-the-azure-portal"></a>在 Azure 入口網站中建立預算
 
@@ -62,7 +62,7 @@ ms.locfileid: "76769734"
 
 建立預算之後，會針對它們顯示您目前費用的簡單檢視。
 
-按一下 [新增]  。
+選取 [新增]  。
 
 ![此範例顯示已建立的預算清單](./media/tutorial-acm-create-budgets/budgets01.png)
 
@@ -78,15 +78,19 @@ ms.locfileid: "76769734"
 
 ![此範例顯示以每月成本資料建立的預算 ](./media/tutorial-acm-create-budgets/monthly-budget01.png)
 
-設定預算金額之後，請按 [下一步]  以設定預算警示。 預算需要至少一個成本閾值 (預算的百分比) 與對應的電子郵件地址。 您可以選擇性地在單一預算中最多包含五個閾值與五個電子郵件地址。 達到預算閾值時，通常會在 20 小時內收到電子郵件通知。 如需有關通知的詳細資訊，請參閱[使用成本警示](../../cost-management/cost-mgt-alerts-monitor-usage-spending.md)。 在下列範例中，達到預算的 90% 時，就會產生電子郵件警示。 如果您使用預算 API 建立預算，您也可以將角色指派給其他人以接收警示。 目前不支援在 Azure 入口網站將角色指派給人員。 如需 Azure 預算 API 的詳細資訊，請參閱[預算 API](/rest/api/consumption/budgets)。
+設定預算金額之後，請選取 [下一步]  以設定預算警示。 預算需要至少一個成本閾值 (預算的百分比) 與對應的電子郵件地址。 您可以選擇性地在單一預算中最多包含五個閾值與五個電子郵件地址。 達到預算閾值時，通常會在 20 小時內收到電子郵件通知。
+
+如果您想要接收電子郵件，請將 azure-noreply@microsoft.com 新增至核准的寄件者清單，讓電子郵件不會進入您的垃圾郵件資料夾。 如需有關通知的詳細資訊，請參閱[使用成本警示](../../cost-management/cost-mgt-alerts-monitor-usage-spending.md)。
+
+在下列範例中，達到預算的 90% 時，就會產生電子郵件警示。 如果您使用預算 API 建立預算，您也可以將角色指派給其他人以接收警示。 目前不支援在 Azure 入口網站將角色指派給人員。 如需 Azure 預算 API 的詳細資訊，請參閱[預算 API](/rest/api/consumption/budgets)。
 
 ![顯示警示條件的範例](./media/tutorial-acm-create-budgets/monthly-budget-alert.png)
 
-建立預算之後，即會在成本分析中顯示它。 當您開始[分析成本和費用](../../cost-management/quick-acm-cost-analysis.md)時，首要步驟之一就是檢視與您費用趨勢相關的預算。
+建立預算之後，即會在成本分析中顯示它。 當您開始[分析成本和費用](../../cost-management/quick-acm-cost-analysis.md)時，首要步驟之一就是針對您的費用趨勢來檢視預算。
 
 ![成本分析中顯示的預算和支出範例](./media/tutorial-acm-create-budgets/cost-analysis.png)
 
-在上述範例中，您已針對訂用帳戶建立預算。 不過，您也可以針對資源群組建立預算。 如果您想要針對資源群組建立預算，請瀏覽至 [成本管理 + 計費]  &gt;[訂用帳戶]  &gt; 選取訂用帳戶 > [資源群組]  > 選取資源群組 > [預算]  > 然後**新增**預算。
+在上述範例中，您已針對訂用帳戶建立預算。 您也可以針對資源群組建立預算。 如果您想要針對資源群組建立預算，請瀏覽至 [成本管理 + 計費]  &gt;[訂用帳戶]  &gt; 選取訂用帳戶 > [資源群組]  > 選取資源群組 > [預算]  > 然後**新增**預算。
 
 ## <a name="costs-in-budget-evaluations"></a>預算中的成本評估
 
@@ -102,16 +106,16 @@ ms.locfileid: "76769734"
 
 ## <a name="trigger-an-action-group"></a>觸發動作群組
 
-當您針對訂用帳戶或資源群組範圍建立或編輯預算時，您可以設定該預算以呼叫動作群組。 動作群組可在達到預算閾值時執行多種不同的動作。 目前僅支援將動作群組用於訂用帳戶和資源群組範圍。 如需動作群組的詳細資訊，請參閱[在 Azure 入口網站中建立和管理動作群組](../../azure-monitor/platform/action-groups.md)。 如需以預算為基礎的自動化與動作群組搭配使用的詳細資訊，請參閱[使用 Azure 預算來管理成本](../manage/cost-management-budget-scenario.md)。
+當您針對訂用帳戶或資源群組範圍建立或編輯預算時，您可以設定該預算以呼叫動作群組。 動作群組可在達到預算閾值時執行各種動作。 目前僅支援將動作群組用於訂用帳戶和資源群組範圍。 如需動作群組的詳細資訊，請參閱[在 Azure 入口網站中建立和管理動作群組](../../azure-monitor/platform/action-groups.md)。 如需以預算為基礎的自動化與動作群組搭配使用的詳細資訊，請參閱[使用 Azure 預算來管理成本](../manage/cost-management-budget-scenario.md)。
 
 
 
-若要建立或更新動作群組，請在建立或編輯預算時按一下 [管理動作群組]  。
+若要建立或更新動作群組，請在建立或編輯預算時選取 [管理動作群組]  。
 
 ![建立預算以顯示管理動作群組的範例](./media/tutorial-acm-create-budgets/manage-action-groups01.png)
 
 
-接著，按一下 [新增動作群組]  ，並建立動作群組。
+接著，選取 [新增動作群組]  ，並建立動作群組。
 
 
 ![新增動作群組方塊的影像](./media/tutorial-acm-create-budgets/manage-action-groups02.png)
@@ -128,12 +132,42 @@ ms.locfileid: "76769734"
 
 預算與動作群組的整合，僅適用於已停用一般警示結構描述的動作群組。 如需停用結構描述的詳細資訊，請參閱[如何啟用一般警示結構描述？](../../azure-monitor/platform/alerts-common-schema.md#how-do-i-enable-the-common-alert-schema)
 
+## <a name="create-and-edit-budgets-with-powershell"></a>使用 PowerShell 建立和編輯預算
+
+EA 客戶可以使用 Azure PowerShell 模組，以程式設計方式建立和編輯預算。  若要下載最新版 Azure PowerShell，請執行下列命令：
+
+```azurepowershell-interactive
+install-module -name AzureRm
+```
+
+下列範例命令會建立預算。
+
+```azurepowershell-interactive
+#Sign into Azure Powershell with your account
+
+Connect-AzureRmAccount
+
+#Select a subscription to to monitor with a budget
+
+select-AzureRmSubscription -Subscription "Your Subscription"
+
+#Create an action group email receiver and corresponding action group
+
+$email1 = New-AzureRmActionGroupReceiver -EmailAddress test@test.com -Name EmailReceiver1
+$ActionGroupId = (Set-AzureRmActionGroup -ResourceGroupName YourResourceGroup -Name TestAG -ShortName TestAG -Receiver $email1).Id
+
+#Create a monthly budget that sends an email and triggers an Action Group to send a second email. Make sure the StartDate for your monthly budget is set to the first day of the current month. Note that Action Groups can also be used to trigger automation such as Azure Functions or Webhooks.
+
+New-AzureRmConsumptionBudget -Amount 100 -Name TestPSBudget -Category Cost -StartDate 2020-02-01 -TimeGrain Monthly -EndDate 2022-12-31 -ContactEmail test@test.com -NotificationKey Key1 -NotificationThreshold 0.8 -NotificationEnabled -ContactGroup $ActionGroupId
+```
+
 ## <a name="next-steps"></a>後續步驟
 
 在本教學課程中，您已了解如何：
 
 > [!div class="checklist"]
 > * 在 Azure 入口網站中建立預算
+> * 使用 PowerShell 建立和編輯預算
 > * 編輯預算
 
 請前進到下一個教學課程，以建立成本管理資料的週期性匯出。

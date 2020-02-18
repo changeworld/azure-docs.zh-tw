@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 76e9526ab39cbccd45a48d2cd24e05867c953774
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 67b045ff0661e8d0f8e20656a012e85d01e83d7b
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280827"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425913"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-preview-using-portal"></a>使用入口網站建立和管理適用於 MariaDB 的 Azure 資料庫（預覽）的私人連結
 
@@ -39,9 +39,9 @@ ms.locfileid: "76280827"
     | ------- | ----- |
     | 名稱 | 輸入 MyVirtualNetwork。 |
     | 位址空間 | 輸入 *10.1.0.0/16*。 |
-    | 訂閱 | 選取您的訂用帳戶。|
+    | 訂用帳戶 | 選取您的訂用帳戶。|
     | 資源群組 | 選取 [新建]，輸入 *myResourceGroup*，然後選取 [確定]。 |
-    | 位置 | 選取 [西歐]。|
+    | Location | 選取 [西歐]。|
     | 子網路 - 名稱 | 輸入 mySubnet。 |
     | 子網路 - 位址範圍 | 輸入 *10.1.0.0/24*。 |
     |||
@@ -56,13 +56,13 @@ ms.locfileid: "76280827"
     | 設定 | 值 |
     | ------- | ----- |
     | **專案詳細資料** | |
-    | 訂閱 | 選取您的訂用帳戶。 |
+    | 訂用帳戶 | 選取您的訂用帳戶。 |
     | 資源群組 | 選取 **myResourceGroup**。 您已在上一節中建立此項目。  |
     | **執行個體詳細資料** |  |
     | 虛擬機器名稱 | 輸入 myVm。 |
-    | 地區 | 選取 [西歐]。 |
+    | 區域 | 選取 [西歐]。 |
     | 可用性選項 | 保留預設值 [不需要基礎結構備援]。 |
-    | 映像 | 選取 [Windows Server 2019 Datacenter]。 |
+    | 影像 | 選取 [Windows Server 2019 Datacenter]。 |
     | 大小 | 保留預設值 [標準 DS1 v2]。 |
     | **系統管理員帳戶** |  |
     | 使用者名稱 | 輸入您選擇的使用者名稱。 |
@@ -106,13 +106,13 @@ ms.locfileid: "76280827"
     | 設定 | 值 |
     | ------- | ----- |
     | **專案詳細資料** | |
-    | 訂閱 | 選取您的訂用帳戶。 |
+    | 訂用帳戶 | 選取您的訂用帳戶。 |
     | 資源群組 | 選取 **myResourceGroup**。 您已在上一節中建立此項目。|
     | **伺服器詳細資料** |  |
     |伺服器名稱  | 輸入 myserver。 如果此名稱已被使用，請建立唯一名稱。|
     | 系統管理員使用者名稱| 輸入您所選擇的系統管理員名稱。 |
     | 密碼 | 輸入您選擇的密碼。 密碼長度至少必須有 8 個字元，而且符合定義的需求。 |
-    | 位置 | 選取您想要適用于 mariadb 伺服器所在的 Azure 區域。 |
+    | Location | 選取您想要適用于 mariadb 伺服器所在的 Azure 區域。 |
     |版本  | 選取所需之適用于 mariadb 伺服器的資料庫版本。|
     | 計算 + 儲存體| 根據工作負載選取伺服器所需的定價層。 |
     |||
@@ -136,11 +136,11 @@ ms.locfileid: "76280827"
     | 設定 | 值 |
     | ------- | ----- |
     | **專案詳細資料** | |
-    | 訂閱 | 選取您的訂用帳戶。 |
+    | 訂用帳戶 | 選取您的訂用帳戶。 |
     | 資源群組 | 選取 **myResourceGroup**。 您已在上一節中建立此項目。|
     | **實例詳細資料** |  |
     | 名稱 | 輸入 myPrivateEndpoint。 如果此名稱已被使用，請建立唯一名稱。 |
-    |地區|選取 [西歐]。|
+    |區域|選取 [西歐]。|
     |||
 5. 選取 **[下一步：資源]** 。
 6. 在 [建立私人端點 - 資源] 中，輸入或選取這項資訊：
@@ -148,7 +148,7 @@ ms.locfileid: "76280827"
     | 設定 | 值 |
     | ------- | ----- |
     |連線方法  | 選取 [連線到我目錄中的 Azure 資源]。|
-    | 訂閱| 選取您的訂用帳戶。 |
+    | 訂用帳戶| 選取您的訂用帳戶。 |
     | 資源類型 | 選取 [ **DBforMariaDB/伺服器**]。 |
     | 資源 |選取 [myServer]|
     |目標子資源 |選取*mariadbServer*|
@@ -210,34 +210,35 @@ ms.locfileid: "76280827"
     Non-authoritative answer:
     Name:    mydemoMariaDBserver.privatelink.mariadb.database.azure.com
     Address:  10.1.3.4
+    ```
 
-3. Test the private link connection for the MariaDB server using any available client. In the example below I have used [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) to do the operation.
+3. 使用任何可用的用戶端來測試適用于 mariadb 伺服器的私人連結連線。 在下列範例中，我使用了[MySQL 工作臺](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html)來執行操作。
 
 
-4. In **New connection**, enter or select this information:
+4. 在 [**新增連接**] 中，輸入或選取這項資訊：
 
-    | Setting | Value |
+    | 設定 | 值 |
     | ------- | ----- |
-    | Server type| Select **MariaDB**.|
-    | Server name| Select *mydemoserver.privatelink.mariadb.database.azure.com* |
-    | User name | Enter username as username@servername which is provided during the MariaDB server creation. |
-    |Password |Enter a password provided during the MariaDB server creation. |
-    |SSL|Select **Required**.|
+    | 伺服器類型| 選取 [**適用于 mariadb**]。|
+    | 伺服器名稱| 選取*mydemoserver.privatelink.mariadb.database.azure.com* |
+    | [使用者名稱] | 輸入使用者名稱，做為適用于 mariadb 伺服器建立期間所提供的 username@servername。 |
+    |密碼 |輸入適用于 mariadb 伺服器建立期間所提供的密碼。 |
+    |SSL|選取 [**必要**]。|
     ||
 
-5. Select **Test Connection** or **OK**.
+5. 選取 [**測試連接** **] 或 [確定]** 。
 
-6. (Optionally) Browse databases from left menu and Create or query information from the MariaDB database
+6. 也從左側功能表流覽資料庫，並從適用于 mariadb 資料庫建立或查詢資訊
 
-7. Close the remote desktop connection to myVm.
+7. 關閉對 myVm 的遠端桌面連線。
 
-## Clean up resources
-When you're done using the private endpoint, MariaDB server, and the VM, delete the resource group and all of the resources it contains:
+## <a name="clean-up-resources"></a>清除資源
+當您使用私用端點、適用于 mariadb 伺服器和 VM 完成時，請刪除資源群組及其包含的所有資源：
 
-1. Enter *myResourceGroup* in the **Search** box at the top of the portal and select *myResourceGroup* from the search results.
-2. Select **Delete resource group**.
-3. Enter myResourceGroup for **TYPE THE RESOURCE GROUP NAME** and select **Delete**.
+1. 在入口網站頂端的 [搜尋] ** 方塊中輸入  myResourceGroup，然後從搜尋結果中選取 [myResourceGroup] **  。
+2. 選取 [刪除資源群組]。
+3. 針對 [輸入資源群組名稱] 輸入 myResourceGroup，然後選取 [刪除]。
 
-## Next steps
+## <a name="next-steps"></a>後續步驟
 
-In this how-to, you created a VM on a virtual network, an Azure Database for MariaDB, and a private endpoint for private access. You connected to one VM from the internet and securely communicated to the MariaDB server using Private Link. To learn more about private endpoints, see [What is Azure private endpoint](https://docs.microsoft.com/azure/private-link/private-endpoint-overview).
+在此操作說明中，您已在虛擬網路上建立 VM、適用於 MariaDB 的 Azure 資料庫和私人端點來進行私用存取。 您已從網際網路連線到一個 VM，並使用私人連結安全地與適用于 mariadb 伺服器通訊。 若要深入瞭解私人端點，請參閱[什麼是 Azure 私用端點](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)。

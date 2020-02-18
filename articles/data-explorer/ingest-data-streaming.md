@@ -7,25 +7,25 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: cc152460be777c30d79f783b9acfa846a4c73a72
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 49129bede62e456cf2807cc879b7fc5e1793b65b
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188029"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77424944"
 ---
 # <a name="streaming-ingestion-preview"></a>串流內嵌（預覽）
 
-串流內嵌的目標是針對不同的磁片區資料，在需要低延遲的情況下，有一段時間小於10秒的案例。 它是用來優化許多資料表的工作處理，在一或多個資料庫中，每個資料表中的資料流程相對較小（每秒少筆記錄），但整體資料內嵌磁片區為高（每秒數千筆記錄）。
+串流內嵌的目標是針對不同的磁片區資料，在需要低延遲的情況下，有一段時間小於10秒的案例。 它可用來在一或多個資料庫中優化許多資料表的工作處理，其中每個資料表中的資料流程相對較小（每秒少筆記錄），但整體資料內嵌磁片區為高（每秒數千筆記錄）。
 
 當資料量成長到每個資料表每秒 1 MB 以上時，請使用傳統（大量）內嵌，而不是串流內嵌。 閱讀[資料內嵌總覽](/azure/data-explorer/ingest-data-overview)，以深入瞭解內嵌的各種方法。
 
 > [!NOTE]
 > 串流內嵌不支援下列功能：
 > * [資料庫資料指標](/azure/kusto/management/databasecursor)。
-> * [資料對應](/azure/kusto/management/mappings)。 僅支援[預先建立的](/azure/kusto/management/create-ingestion-mapping-command)資料對應。 
+> * [資料對應](/azure/kusto/management/mappings)。 僅支援[預先建立的](/azure/kusto/management/tables#create-ingestion-mapping)資料對應。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/)。
 * 登入[WEB UI](https://dataexplorer.azure.com/)。
@@ -64,7 +64,7 @@ ms.locfileid: "77188029"
 > [!WARNING]
 > 停用串流內嵌可能需要幾個小時的時間。
 
-1. 從所有相關的資料表和資料庫中卸載[串流內嵌原則](/azure/kusto/concepts/streamingingestionpolicy)。 串流的內嵌原則移除會觸發從初始儲存體到資料行存放區（範圍或分區）中的永久儲存體的串流內嵌資料移動。 視初始儲存體中的資料量和叢集的 CPU 和記憶體使用量而定，資料移動可以在數秒到幾個小時之間持續。
+1. 從所有相關的資料表和資料庫中卸載[串流內嵌原則](/azure/kusto/concepts/streamingingestionpolicy)。 串流的內嵌原則移除會觸發從初始儲存體到資料行存放區（範圍或分區）中的永久儲存體的串流內嵌資料移動。 視初始儲存體中的資料量，以及叢集使用 CPU 和記憶體的方式而定，資料移動可以在數秒到幾個小時之間持續。
 1. 在 Azure 入口網站中，移至您的 Azure 資料總管叢集。 在 [設定] 中 **，選取 [** **設定**]。 
 1. **在 [設定**] 窗格中，選取 [**關閉**] 以停用**串流**內嵌。
 1. 選取 [儲存]。
@@ -73,10 +73,11 @@ ms.locfileid: "77188029"
 
 ## <a name="limitations"></a>限制
 
-* 透過增加的 VM 和叢集大小，串流處理內嵌的效能和容量規模。 每個核心的並行擷取限制為6個擷取。 例如，針對16核心 Sku （例如 D14 和 L16 也），支援的最大負載為96並行擷取。 對於2個核心 Sku （例如 D11），支援的最大負載為12個並行擷取。
+* 透過增加的 VM 和叢集大小，串流處理內嵌的效能和容量規模。 每個核心的並行擷取限制為六個擷取。 例如，針對16核心 Sku （例如 D14 和 L16 也），支援的最大負載為96並行擷取。 針對兩個核心 Sku （例如 D11），支援的最大負載為12個並行擷取。
 * 每個內嵌要求的資料大小限制為 4 MB。
 * 架構更新（例如建立和修改資料表和內嵌對應）最多可能需要5分鐘的時間來處理串流內嵌服務。
 * 在叢集上啟用串流內嵌，即使資料不是透過串流內嵌，也會使用叢集機器的部分本機 SSD 磁片來串流內嵌資料，並減少用於熱快取的儲存體。
+* 無法在串流內嵌資料上設定[範圍標記](/azure/kusto/management/extents-overview.md#extent-tagging)。
 
 ## <a name="next-steps"></a>後續步驟
 

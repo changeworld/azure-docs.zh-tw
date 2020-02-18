@@ -1,7 +1,7 @@
 ---
-title: 教學課程：您第一個使用 R 的 ML 模型
+title: 教學課程：使用 R 的羅吉斯迴歸模型
 titleSuffix: Azure Machine Learning
-description: 在本教學課程中，您將了解 Azure Machine Learning 中的基本設計模式，並使用 R 套件 azuremlsdk 和插入點來定型羅吉斯迴歸模型，以預測車禍造成傷亡的可能性。
+description: 在本教學課程中，您將使用 R 套件 azuremlsdk 和插入點來建立羅吉斯迴歸模型，以預測因車禍致命的可能性。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,27 +9,28 @@ ms.topic: tutorial
 ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
-ms.date: 11/04/2019
-ms.openlocfilehash: 7ea02fa4544b478e6b041e0b9c342bccdfe6c48c
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 02/07/2020
+ms.openlocfilehash: 37f2f98e594f558a9cd3c3e5994bf17a71ff1899
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75532451"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191261"
 ---
-# <a name="tutorial-train-and-deploy-your-first-model-in-r-with-azure-machine-learning"></a>教學課程：使用 Azure Machine Learning 以 R 定型及部署您的第一個模型
+# <a name="tutorial-create-a-logistic-regression-model-in-r-with-azure-machine-learning"></a>教學課程：使用 R 在 Azure Machine Learning 中建立羅吉斯迴歸模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本教學課程中，您將了解 Azure Machine Learning 中的基本設計模式。  您將定型並部署**插入點**模型，以預測車禍造成傷亡的可能性。 完成本教學課程之後，您將具備 R SDK 的實際知識，進而開發更複雜的實驗和工作流程。
+在本教學課程中，您將使用 R 和 Azure Machine Learning 來建立羅吉斯迴歸模型，以預測因車禍致命的可能性。 完成本教學課程之後，您將具備 Azure Machine Learning R SDK 的實際知識，進而開發更複雜的實驗和工作流程。
 
-在本教學課程中，您會了解下列工作：
-
+在本教學課程中，您會執行下列工作：
 > [!div class="checklist"]
-> * 連線至工作空間
+> * 建立 Azure Machine Learning 工作區
+> * 使用執行本教學課程所需的檔案，將筆記本資料夾複製到您的工作區
+> * 從您的工作區開啟 RStudio
 > * 載入資料並準備進行訓練
 > * 將資料上傳至資料存放區，使其可用於遠端定型
-> * 建立計算資源
-> * 定型插入點模型以預測傷亡的可能性
+> * 建立計算資源，以便從遠端訓練模型
+> * 訓練 `caret` 模型以預測致命的可能性
 > * 部署預測端點
 > * 以 R 測試模型
 
@@ -66,13 +67,11 @@ Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機
 
 1. 開啟其上有版本號碼的資料夾。  此號碼代表 R SDK 的目前版本。
 
-1. 開啟 [vignettes]  資料夾。
-
-1. 選取 [train-and-deploy-to-aci]  資料夾右側的 [...]  ，然後選取 [複製]  。
+1. 選取 **vignettes** 資料夾右側的 **"..."** ，然後選取 [複製]  。
 
     ![複製資料夾](media/tutorial-1st-r-experiment/clone-folder.png)
 
-1. 資料夾清單隨即顯示，其中顯示每位存取工作區的使用者。  選取您的資料夾，以將 [train-and-deploy-to-aci]  資料夾複製到該處。
+1. 資料夾清單隨即顯示，其中顯示每位存取工作區的使用者。  選取您的資料夾，以將 **vignettes** 資料夾複製到該處。
 
 ## <a name="a-nameopenopen-rstudio"></a><a name="open">開啟 RStudio
 
@@ -84,10 +83,11 @@ Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機
 
 1. 計算執行後，請使用 [RStudio]  連結來開啟 RStudio。
 
-1. 在 RStudio 中，您的 [train-and--deploy-to-aci]  資料夾會在 [使用者]  的下面幾層，位於右下方的 [檔案]  區段中。  選取 [train-and-deploy-to-aci]  資料夾，以尋找本教學課程中所需的檔案。
+1. 在 RStudio 中，您的 [vignettes]  資料夾會在 [使用者]  的下面幾層，位於右下方的 [檔案]  區段中。  在 [vignettes]  底下選取 [train-and-deploy-to-aci]  資料夾，以尋找本教學課程中所需的檔案。
 
 > [!Important]
-> 本文的其餘部分會包含您在 **train-and-deploy-to-aci.Rmd** 檔案中看到的相同內容。 如果您曾使用過 RMarkdown，則可以使用該檔案中的程式碼。  或者，您也可以從該處複製/貼上程式碼片段，或從本文複製/貼到 R 指令碼或命令列中。  
+> 本文的其餘部分會包含您在 *train-and-deploy-to-aci.Rmd* 檔案中看到的相同內容。 如果您曾使用過 RMarkdown，則可以使用該檔案中的程式碼。  或者，您也可以從該處複製/貼上程式碼片段，或從本文複製/貼到 R 指令碼或命令列中。  
+
 
 ## <a name="set-up-your-development-environment"></a>設定開發環境
 在本教學課程中，開發工作的設定包含下列動作：
@@ -102,12 +102,6 @@ Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機
 
 ```R
 library(azuremlsdk)
-```
-
-本教學課程會使用 [**DAAG** 套件](https://cran.r-project.org/package=DAAG)中的資料。 如果您沒有該套件，請加以安裝。
-
-```R
-install.packages("DAAG")
 ```
 
 定型和評分指令碼 (`accidents.R` 和 `accident_predict.R`) 有一些額外的相依性。 如果您預計要在本機執行這些指令碼，請確定您也具有這些必要套件。
@@ -147,15 +141,21 @@ wait_for_provisioning_completion(compute_target)
 ```
 
 ## <a name="prepare-data-for-training"></a>準備資料以進行定型
-本教學課程會使用 **DAAG** 套件中的資料。 此資料集包含美國境內超過 25.000 起車禍的資料，以及可供您用來預測傷亡可能性的變數。 首先，請將資料匯入 R 中，並將其轉換成新的資料框架 `accidents` 以進行分析，然後再將其匯出至 `Rdata` 檔案。
+本教學課程使用的資料來自美國[國家公路交通安全管理局](https://cdan.nhtsa.gov/tsftables/tsfar.htm) (特別感謝 [Mary C. Meyer 和 Tremika Finney](https://www.stat.colostate.edu/~meyer/airbags.htm))。
+此資料集包含美國境內超過 25.000 起車禍的資料，以及可供您用來預測傷亡可能性的變數。 首先，請將資料匯入 R 中，並將其轉換成新的資料框架 `accidents` 以進行分析，然後再將其匯出至 `Rdata` 檔案。
 
 ```R
-library(DAAG)
-data(nassCDS)
-
+nassCDS <- read.csv("nassCDS.csv", 
+                     colClasses=c("factor","numeric","factor",
+                                  "factor","factor","numeric",
+                                  "factor","numeric","numeric",
+                                  "numeric","character","character",
+                                  "numeric","numeric","character"))
 accidents <- na.omit(nassCDS[,c("dead","dvcat","seatbelt","frontal","sex","ageOFocc","yearVeh","airbag","occRole")])
 accidents$frontal <- factor(accidents$frontal, labels=c("notfrontal","frontal"))
 accidents$occRole <- factor(accidents$occRole)
+accidents$dvcat <- ordered(accidents$dvcat, 
+                          levels=c("1-9km/h","10-24","25-39","40-54","55+"))
 
 saveRDS(accidents, file="accidents.Rd")
 ```
@@ -394,5 +394,6 @@ delete_compute(compute)
 
 ## <a name="next-steps"></a>後續步驟
 
-現在，您已完成使用 R 的第一個 Azure Machine Learning 實驗，接著請深入了解[適用於 R 的 Azure Machine Learning SDK](https://azure.github.io/azureml-sdk-for-r/index.html)。
+* 現在，您已完成使用 R 的第一個 Azure Machine Learning 實驗，接著請深入了解[適用於 R 的 Azure Machine Learning SDK](https://azure.github.io/azureml-sdk-for-r/index.html)。
 
+* 您可以從其他 vignettes  資料夾中的範例，深入了解使用 R 的 Azure Machine Learning。

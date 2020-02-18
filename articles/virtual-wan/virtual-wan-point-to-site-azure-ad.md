@@ -5,14 +5,14 @@ services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 12/02/2019
+ms.date: 02/07/2019
 ms.author: alzam
-ms.openlocfilehash: 19aa029311584b5a9762691d24ed10c1666a032c
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: b3508c4c8da5b4987fb5f38cf3bf701f2dda1097
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74781725"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122023"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-by-using-azure-virtual-wan"></a>教學課程：使用 Azure 虛擬 WAN 建立使用者 VPN 連線
 
@@ -86,19 +86,17 @@ ms.locfileid: "74781725"
 
 P2S 設定會定義用於連線遠端用戶端的參數。
 
-1. 視需要針對您的環境取代相關值，以設定下列變數。
+1. 在您的虛擬 WAN 底下，選取 [使用者 VPN 設定]  。
 
-   ```powershell
-   $aadAudience = "00000000-abcd-abcd-abcd-999999999999"
-   $aadIssuer = "https://sts.windows.net/00000000-abcd-abcd-abcd-999999999999/"
-   $aadTenant = "https://login.microsoftonline.com/00000000-abcd-abcd-abcd-999999999999"    
-   ```
+   ![新增設定](media/virtual-wan-point-to-site-azure-ad/aadportal1.jpg)
 
-2. 執行以下命令以建立設定：
+2. 按一下 [+ 建立使用者 VPN 設定]  。
 
-   ```powershell
-   $aadConfig = New-AzVpnServerConfiguration -ResourceGroupName <ResourceGroup> -Name newAADConfig -VpnProtocol OpenVPN -VpnAuthenticationType AAD -AadTenant $aadTenant -AadIssuer $aadIssuer -AadAudience $aadAudience -Location westcentralus
-   ```
+   ![新增設定](media/virtual-wan-point-to-site-azure-ad/aadportal2.jpg)
+
+3. 輸入資訊，然後按一下 [建立] 
+
+   ![新增設定](media/virtual-wan-point-to-site-azure-ad/aadportal3.jpg)
 
 ## <a name="hub"></a>編輯中樞指派
 
@@ -125,7 +123,7 @@ P2S 設定會定義用於連線遠端用戶端的參數。
 
 ## <a name="configure-user-vpn-clients"></a>設定使用者 VPN 用戶端
 
-若要連線，您必須下載 Azure VPN Client (預覽)，並匯入在先前的步驟中在要連線至 VNet 的每一部電腦上下載的 VPN 用戶端設定檔。
+若要連線，您必須下載 Azure VPN Client，並匯入在先前的步驟中在要連線至 VNet 的每一部電腦上下載的 VPN 用戶端設定檔。
 
 > [!NOTE]
 > Azure AD 驗證僅支援 OpenVPN® 通訊協定連線。
@@ -133,7 +131,7 @@ P2S 設定會定義用於連線遠端用戶端的參數。
 
 #### <a name="to-download-the-azure-vpn-client"></a>下載 Azure VPN Client
 
-使用此[連結](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)下載 Azure VPN Client (預覽)。
+使用此[連結](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)下載 Azure VPN Client。
 
 #### <a name="import"></a>匯入用戶端設定檔
 

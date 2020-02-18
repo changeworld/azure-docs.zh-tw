@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/17/2019
 ms.author: erhopf
-ms.openlocfilehash: f3b0df9f663866c916a45c85767d49b8701152cd
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 4b8f58fbfa9de929139646ad267a433645e2db35
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75927763"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156121"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -40,7 +40,7 @@ ms.locfileid: "75927763"
 
 ## <a name="create-a-speech-configuration"></a>建立語音設定
 
-您必須先建立使用訂用帳戶金鑰和訂用帳戶區域的設定，才可以初始化 `SpeechRecognizer` 物件。 在 `RecognizeSpeechAsync()` 方法中插入此程式碼。
+您必須先建立使用訂用帳戶金鑰和訂用帳戶區域的設定 (選擇 [語音 SDK 參數]，從 [[區域]](https://aka.ms/speech/sdkregion)，才可以初始化 `SpeechRecognizer` 物件。 在 `RecognizeSpeechAsync()` 方法中插入此程式碼。
 
 > [!NOTE]
 > 此範例會使用 `FromSubscription()` 方法來建置 `SpeechConfig`。 如需可用方法的完整清單，請參閱 [SpeechConfig 類別](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet) \(英文\)。

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/24/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 42785e3ee636f24ca185f57a11d4ee1091db3e98
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: bf37f7b27e3f8923a229cc0617365d912d47aec2
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890419"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110671"
 ---
 # <a name="tutorial-perform-manual-failover-for-an-iot-hub"></a>教學課程：執行手動容錯移轉 IoT 中樞
 
@@ -29,9 +29,11 @@ ms.locfileid: "73890419"
 > * 執行容錯回復以將 IoT 中樞的作業傳回主要位置。 
 > * 確認中樞在正確的位置中正確執行。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-- Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+* 請確定您的防火牆已開啟連接埠 8883。 本教學課程中的裝置範例會使用 MQTT 通訊協定，其會透過連接埠 8883 進行通訊。 某些公司和教育網路環境可能會封鎖此連接埠。 如需此問題的詳細資訊和解決方法，請參閱[連線至 IoT 中樞 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 ## <a name="create-an-iot-hub"></a>建立 IoT 中樞
 
@@ -47,7 +49,7 @@ ms.locfileid: "73890419"
 
     **資源群組**：按一下 [建立新項目]  ，然後在資源群組指定 **ManlFailRG**。
 
-    **區域**：選取您附近的區域。 本教學課程會使用 `West US 2`。 只能在 Azure 異地配對區域之間進行容錯移轉。 與「美國西部 2」異地配對的區域是 WestCentralUS。
+    **區域**：選取您附近的區域。 本教學課程使用 `West US 2`。 只能在 Azure 異地配對區域之間進行容錯移轉。 與「美國西部 2」異地配對的區域是 WestCentralUS。
     
    **IoT 中樞名稱**：指定 IoT 中樞的名稱。 中樞名稱必須是全域唯一的。 
 

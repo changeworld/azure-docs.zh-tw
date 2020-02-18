@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 59c38423f771685dc79a8be12a383cfdec6a0266
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 798c80ec2290a96b6f76116120292720c05c9198
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031521"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426236"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-preview-using-cli"></a>使用 CLI 建立和管理適用於 MySQL 的 Azure 資料庫（預覽）的私用連結
 
@@ -127,7 +127,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 1. 選取 [下載 RDP 檔案]。 Azure 會建立一個「遠端桌面通訊協定」( *.rdp*) 檔案，並下載至您的電腦。
 
-1. 開啟下載的 .rdp* 檔案。
+1. 開啟 *downloaded.rdp* 檔案。
 
     1. 如果出現提示，請選取 [連接]。
 
@@ -155,30 +155,31 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
     Non-authoritative answer:
     Name:    mydemomysqlserver.privatelink.mysql.database.azure.com
     Address:  10.1.3.4
+    ```
 
-3. Test the private link connection for the MySQL server using any available client. In the example below I have used [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) to do the operation.
+3. 使用任何可用的用戶端來測試 MySQL 伺服器的私人連結連線。 在下列範例中，我使用了[MySQL 工作臺](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html)來執行操作。
 
 
-4. In **New connection**, enter or select this information:
+4. 在 [**新增連接**] 中，輸入或選取這項資訊：
 
-    | Setting | Value |
+    | 設定 | 值 |
     | ------- | ----- |
-    | Connection Name| Select the connection name of your choice.|
-    | Hostname | Select *mydemoserver.privatelink.mysql.database.azure.com* |
-    | Username | Enter username as *username@servername* which is provided during the MySQL server creation. |
-    | Password | Enter a password provided during the MySQL server creation. |
+    | 連線名稱| 選取您選擇的 [連接名稱]。|
+    | 主機名稱 | 選取*mydemoserver.privatelink.mysql.database.azure.com* |
+    | 使用者名稱 | 輸入使用者名稱，做為建立 MySQL 伺服器時所提供的 *username@servername* 。 |
+    | 密碼 | 輸入建立 MySQL 伺服器期間所提供的密碼。 |
     ||
 
-5. Select Connect.
+5. 選取 [連線]。
 
-6. Browse databases from left menu.
+6. 瀏覽左側功能表中的資料庫。
 
-7. (Optionally) Create or query information from the MySQL database.
+7. 也從 MySQL 資料庫建立或查詢資訊。
 
-8. Close the remote desktop connection to myVm.
+8. 關閉對 myVm 的遠端桌面連線。
 
-## Clean up resources 
-When no longer needed, you can use az group delete to remove the resource group and all the resources it has: 
+## <a name="clean-up-resources"></a>清除資源 
+您可以使用 az group delete 來移除不再需要的資源群組，以及其所具有的所有資源： 
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes 

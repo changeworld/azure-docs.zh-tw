@@ -9,38 +9,33 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 01/15/2020
 ms.author: spelluru
-ms.openlocfilehash: 654ccd6352dc0b671cc3becdafd2f1e1102dd39e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 22f6b2aba36e560e9bd335baa92925fe9846c670
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76902948"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162594"
 ---
 # <a name="quickstart-send-and-receive-events-with-event-hubs-using-python-azure-eventhub-version-1"></a>快速入門：使用 Python 以事件中樞傳送和接收事件 (azure-eventhub 第 1 版)
-
-Azure 事件中樞是巨量資料串流平台和事件擷取服務，每秒可接收和處理數百萬個事件。 事件中樞可處理及儲存來自分散式軟體和裝置的事件、資料或遙測資料。 傳送至事件中樞的資料可以透過任何即時分析提供者或批次/儲存體配接器來轉換和儲存。 如需事件中樞的詳細資訊，請參閱 [Azure 事件中樞](event-hubs-about.md)和[Azure 事件中樞的功能與術語](event-hubs-features.md)。
-
-本快速入門會說明如何建立 Python 應用程式，以將事件傳送至事件中樞或從中接收事件。 
+本快速入門說明如何使用 **azure-eventhub 第 1 版** Python 套件，來傳送事件至事件中樞和從事件中樞接收事件。 
 
 > [!WARNING]
-> 本快速入門適用於第 1 版的 Azure 事件中樞 Python SDK。 建議您將程式碼[遷移](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md)至 [Python SDK 第 5 版](get-started-python-send-v2.md)。
-
- 
+> 本快速入門會使用舊有的 azure-eventhub 第 1 版套件。 如需如何使用套件最新**第 5 版**的快速入門，請參閱[使用 azure-eventhub 第 5 版傳送和接收事件](get-started-python-send-v2.md)。 若要將應用程式從使用舊套件改為使用新套件，請參閱[從 azure-eventhub 第 1 版遷移至第 5 版的指南](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md)。
  
 
 ## <a name="prerequisites"></a>Prerequisites
+如果您對 Azure 事件中樞並不熟悉，在進行此快速入門之前，請先參閱[事件中樞概述](event-hubs-about.md)。 
 
 若要完成本快速入門，您必須符合下列必要條件：
 
-- Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前[建立免費帳戶](https://azure.microsoft.com/free/)。
-- 作用中的事件中樞命名空間和事件中樞，可依照下列快速入門中的指示建立：[快速入門：使用 Azure 入口網站建立事件中樞](event-hubs-create.md)。 請記下命名空間和事件中樞名稱，以便稍後在此逐步解說中使用。 
-- 您的事件中樞命名空間的共用存取金鑰名稱和主要金鑰值。 請依照[取得連接字串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)中的指示，取得存取金鑰名稱和值。 預設的存取金鑰名稱為 **RootManageSharedAccessKey**。 請複製金鑰名稱和主要金鑰值，以供稍後在此逐步解說中使用。 
+- **Microsoft Azure 訂用帳戶**。 若要使用 Azure 服務 (包括 Azure 事件中樞)，您需要訂用帳戶。  如果您沒有現有的 Azure 帳戶，您可以申請[免費試用](https://azure.microsoft.com/free/)，或是在[建立帳戶](https://azure.microsoft.com)時使用 MSDN 訂閱者權益。
 - Python 3.4 或更新版本，且已安裝並更新 `pip`。
 - 事件中樞的 Python 套件。 若要安裝此套件，請在路徑中有 Python 的命令提示字元中執行下列命令︰ 
   
   ```cmd
   pip install azure-eventhub==1.3.*
   ```
+- **建立事件中樞命名空間和事件中樞**。 第一個步驟是使用 [Azure 入口網站](https://portal.azure.com)來建立「事件中樞」類型的命名空間，然後取得您應用程式與「事件中樞」進行通訊所需的管理認證。 若要建立命名空間和事件中樞，請依照[這篇文章](event-hubs-create.md)中的程序操作。 然後，依照以下文章中的指示，取得事件中樞的存取金鑰值：[取得連接字串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 您可以在於本快速入門稍後撰寫的程式碼中，使用此存取金鑰。 預設的金鑰名稱是：**RootManageSharedAccessKey**。 
 
 
 ## <a name="send-events"></a>傳送事件

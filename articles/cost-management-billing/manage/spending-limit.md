@@ -2,21 +2,21 @@
 title: Azure 消費限制 | Microsoft Docs
 description: 本文說明 Azure 消費限制的運作方式及如何移除此限制。
 author: bandersmsft
-manager: amberb
+manager: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 5dbf885848d9866a184caee1da6b9000a26f83a9
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: bde3c142fa0f4f69948a9ff1df61d77f06d2b430
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76314114"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188319"
 ---
 # <a name="azure-spending-limit"></a>Azure 消費限制
 
@@ -36,30 +36,48 @@ Azure 消費限制可避免您的花費超過您的點數額度。 根據預設�
 
 ## <a name="remove-the-spending-limit-in-azure-portal"></a>在 Azure 入口網站中移除消費限制
 
+只要您的 Azure 訂用帳戶所關聯的付款方式有效，您就可以隨時移除消費限制。 對於具有多個月點數的訂用帳戶類型 (例如 Visual Studio Enterprise 和 Visual Studio Professional)，您可以選擇無限期或僅針對目前計費週期移除消費限制。 如果您選擇目前計費週期，則會在下一個計費週期開始時自動啟用消費限制。
+
+如果您使用 Azure 免費帳戶，請參閱[升級您的 Azure 訂用帳戶](upgrade-azure-subscription.md)來移除消費限制。 若不是的話，請依照下列步驟移除消費限制：
+
 <a id="remove"></a>
 
-只要您的 Azure 訂用帳戶所關聯的付款方式有效，您就可以隨時移除消費限制。 對於具有多月點數的訂用帳戶類型 (例如 Visual Studio Enterprise 和 Visual Studio Professional)，您也可以在下一個計費週期開始時啟用消費限制。
+1. 以帳戶管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
+1. 搜尋 [成本管理 + 帳單]  。
 
-若要移除您的消費限制，請依照下列步驟操作：
+    ![顯示搜尋 [成本管理 + 帳單] 的螢幕擷取畫面 ](./media/spending-limit/search-bar.png)
 
-1. 登入 [Azure 入口網站](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)。
-1. 瀏覽至 [訂用帳戶]  。
-1. 選取您的訂用帳戶。 例如，Visual Studio Enterprise  。
-1. 在頁面頂端，選取 [管理]  。 系統會將您重新導向至 https://account.azure.com/ 。 在頁面右側選取 [移除消費限制]  。  
-  ![顯示移除消費限制的範例](./media/spending-limit/account-azure-com-spending-limit.png)
-1. 系統會將您重新導向回到 Azure 入口網站。 選取適合您的選項，然後選取付款方式。 選取 [完成]  。  
-  ![選取一個選項來移除消費限制](./media/spending-limit/remove-spending-limit.png)
+1. 在 [我的訂用帳戶]  清單中，選取您的訂用帳戶。 例如，Visual Studio Enterprise  。 
 
-| 選項 | 效果 |
-| --- | --- |
-| 無限期移除消費限制 | 移除消費限制，不在下一個計費週期開始時自動開啟。 |
-| 移除目前計費週期的消費限制 | 移除消費限制，讓它在下一個計費週期開始時自動開啟。 |
+   ![在概觀中顯示 [我的訂閱] 方格的螢幕擷取畫面](./media/spending-limit/cost-management-overview-msdn-x.png)
+
+    > [!NOTE]
+    > 如果您在這裡未看到某些 Visual Studio 訂用帳戶，原因可能是您在某個時間點變更了訂用帳戶目錄。 若要看到這些訂用帳戶，您必須將目錄切換到原始目錄 (您最初註冊時所在的目錄)。 然後，重複步驟 2。
+    
+1. 在 [訂用帳戶] 概觀中，按一下橙色橫幅以移除消費限制。
+    
+    ![顯示 [移除消費限制] 橫幅的螢幕擷取畫面](./media/spending-limit/msdn-remove-spending-limit-banner-x.png)
+
+1. 選擇您是否要無限期移除消費限制，或只將其用於目前計費週期。
+    
+      ![顯示 [移除消費限制] 刀鋒視窗的螢幕擷取畫面](./media/spending-limit/remove-spending-limit-blade-x.png)
+    
+      | 選項 | 效果 |
+      | --- | --- |
+      | 無限期移除消費限制 | 消費限制不會在下一個計費週期開始時自動重新開啟。 不過，您可以隨時將其重新開啟。 |
+      | 移除目前計費週期的消費限制 | 消費限制會在下一個計費週期開始時自動開啟。 |
+
+
+1. 按一下 [選取付款方式]  以選擇您訂用帳戶的付款方式。 這將成為您訂用帳戶的使用中付款方式。
+
+1. 按一下 [完成]  。
+
 
 ## <a name="why-you-might-want-to-remove-the-spending-limit"></a>您為何要移除消費限制
 
 消費限制會使您無法部署或使用某些協力廠商和 Microsoft 的服務。 以下是您應該移除訂用帳戶消費限制的情況。
 
--  您打算部署第一方映像 (例如 Oracle) 或服務 (例如 Azure DevOps Services)。 此情況會讓您幾乎立即達到消費限制，而導致訂用帳戶遭停用。
+-  您打算部署第三方映像 (例如 Oracle) 或服務 (例如 Azure DevOps Services)。 此情況會讓您幾乎立即達到消費限制，而導致訂用帳戶遭停用。
 - 您有不想要中斷的服務。 當您達到消費限制時，您部署的 Azure 資源會從生產環境中移除，而 Azure 虛擬機器則會停止並解除配置。 如果您有不想中斷的服務，則必須移除消費限制。
 - 您的服務及資源有您不想遺失的設定 (例如虛擬 IP 位址)。 這些設定會在達到消費限制且服務和資源解除配置時遺失。
 
@@ -67,9 +85,20 @@ Azure 消費限制可避免您的花費超過您的點數額度。 根據預設�
 
 這項功能僅適用於針對包含多月點數的訂用帳戶類型無限期地移除消費限制時。 您可以使用這項功能，在下一個計費週期開始時自動開啟您的消費限制。
 
-1. 登入[帳戶中心](https://account.windowsazure.com/Subscriptions)。
-1. 選取黃色橫幅以變更消費限制選項。
-1. 選擇 [在下一個計費週期 \<計費週期開始日期\> 啟用消費限制] 
+
+1. 以帳戶管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
+1. 搜尋 [成本管理 + 帳單]  。
+
+    ![顯示搜尋 [成本管理 + 帳單] 的螢幕擷取畫面 ](./media/spending-limit/search-bar.png)
+
+1. 在 [我的訂用帳戶]  清單中，選取訂用帳戶。 例如，Visual Studio Enterprise  。 
+
+   ![在概觀中顯示 [我的訂閱] 方格的螢幕擷取畫面](./media/spending-limit/cost-management-overview-msdn-x.png)
+
+    > [!NOTE]
+    > 如果您在這裡未看到某些 Visual Studio 訂用帳戶，原因可能是您在某個時間點變更了訂用帳戶目錄。 若要看到這些訂用帳戶，您必須將目錄切換到原始目錄 (您最初註冊時所在的目錄)。 然後，重複步驟 2。
+    
+1. 在訂用帳戶概觀中，按一下頁面頂端的橫幅，並將消費限制重新開啟。
 
 ## <a name="custom-spending-limit"></a>自訂消費限制
 

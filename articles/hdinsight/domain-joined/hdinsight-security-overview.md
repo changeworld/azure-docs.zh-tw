@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: overview
 ms.date: 09/23/2019
-ms.openlocfilehash: 7fadb17476c2a071de767573994bb1120b476cdf
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 0e7b2db188ef6ee7d6b80ba5da4010112008ad70
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053728"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122120"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Azure HDInsight 中的企業安全性概觀
 
@@ -32,13 +32,13 @@ Azure HDInsight 提供多種方法來滿足您的企業安全性需求。 根據
 
 在 VNET 中部署的所有叢集也會有一個私人端點，該端點會解析為 VNET 內的私人 IP，以便對叢集閘道進行私人 HTTP 存取。
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>驗證
 
 HDInsight 的[企業安全性套件](apache-domain-joined-architecture.md)提供 Active Directory 型驗證、多使用者支援和角色型存取控制。 透過使用 [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md) 即可達成 Active Directory 整合。 利用這些功能，您可以建立已加入受控 Active Directory 網域的 HDInsight 叢集。 接著，您可以設定企業員工清單，指出可驗證及登入叢集的員工。
 
 企業員工可以藉由這項設定，便能使用其網域認證來登入叢集節點。 他們也可以使用其網域認證向其他已核准的端點 (例如 Apache Ambari 檢視、ODBC、JDBC、PowerShell 和 REST API) 進行驗證，以與叢集進行互動。 
 
-### <a name="authorization"></a>Authorization
+### <a name="authorization"></a>授權
 
 大多數企業所依循的最佳做法，就是確保並非每一位員工都能存取所有的企業資源。 同樣地，系統管理員可以針對叢集資源定義角色型存取控制原則。 這僅適用於 ESP 叢集。
 
@@ -74,20 +74,20 @@ Azure 合規性供應項目會以各種類型的保證為基礎，包括由獨�
 
 | 安全性區域 | 可用的解決方案 | 負責方 |
 |---|---|---|
-| 資料存取安全性 | 設定 Azure Data Lake Storage Gen1 和 Gen2 的[存取控制清單 (ACL)](../../storage/blobs/data-lake-storage-access-control.md)  | Customer |
-|  | 在儲存體帳戶上啟用 [[需要安全傳輸]](../../storage/common/storage-require-secure-transfer.md) 屬性。 | Customer |
-|  | 設定 [Azure 儲存體防火牆](../../storage/common/storage-network-security.md)和虛擬網路 | Customer |
-|  | 設定 Cosmos DB 和 [Azure SQL DB](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) 的 [Azure 虛擬網路服務端點](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) | Customer |
-|  | 確定已針對傳輸中的資料啟用 [TLS 加密](../../storage/common/storage-security-tls.md)。 | Customer |
-|  | 設定[客戶管理的金鑰](../../storage/common/storage-encryption-keys-portal.md)以進行 Azure 儲存體加密 | Customer |
-| 應用程式和中介軟體安全性 | 與 AAD-DS 整合並[設定驗證](apache-domain-joined-configure-using-azure-adds.md) | Customer |
-|  | 設定 [Apache Ranger 授權](apache-domain-joined-run-hive.md)原則 | Customer |
-|  | 使用 [Azure 監視器記錄](../hdinsight-hadoop-oms-log-analytics-tutorial.md) | Customer |
-| 作業系統安全性 | 使用最新安全基底映射建立叢集 | Customer |
-|  | 確保定期進行 [OS 修補](../hdinsight-os-patching.md) | Customer |
+| 資料存取安全性 | 設定 Azure Data Lake Storage Gen1 和 Gen2 的[存取控制清單 (ACL)](../../storage/blobs/data-lake-storage-access-control.md)  | 客戶 |
+|  | 在儲存體帳戶上啟用 [[需要安全傳輸]](../../storage/common/storage-require-secure-transfer.md) 屬性。 | 客戶 |
+|  | 設定 [Azure 儲存體防火牆](../../storage/common/storage-network-security.md)和虛擬網路 | 客戶 |
+|  | 設定 Cosmos DB 和 [Azure SQL DB](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) 的 [Azure 虛擬網路服務端點](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) | 客戶 |
+|  | 確定已針對傳輸中的資料啟用 [TLS 加密](../../storage/common/storage-security-tls.md)。 | 客戶 |
+|  | 設定[客戶管理的金鑰](../../storage/common/storage-encryption-keys-portal.md)以進行 Azure 儲存體加密 | 客戶 |
+| 應用程式和中介軟體安全性 | 與 AAD-DS 整合並[設定驗證](apache-domain-joined-configure-using-azure-adds.md) | 客戶 |
+|  | 設定 [Apache Ranger 授權](apache-domain-joined-run-hive.md)原則 | 客戶 |
+|  | 使用 [Azure 監視器記錄](../hdinsight-hadoop-oms-log-analytics-tutorial.md) | 客戶 |
+| 作業系統安全性 | 使用最新安全基底映射建立叢集 | 客戶 |
+|  | 確保定期進行 [OS 修補](../hdinsight-os-patching.md) | 客戶 |
 | 網路安全性 | 設定[虛擬網路](../hdinsight-plan-virtual-network-deployment.md) |
-|  | 設定[輸入網路安全性群組 (NSG) 規則](../hdinsight-plan-virtual-network-deployment.md#networktraffic) | Customer |
-|  | 使用防火牆 (預覽) 設定[輸出流量限制](../hdinsight-restrict-outbound-traffic.md) | Customer |
+|  | 設定[輸入網路安全性群組 (NSG) 規則](../hdinsight-plan-virtual-network-deployment.md#networktraffic) | 客戶 |
+|  | 使用防火牆來設定[輸出流量限制](../hdinsight-restrict-outbound-traffic.md) | 客戶 |
 | 虛擬化基礎結構 | N/A | HDInsight (雲端提供者) |
 | 實體基礎結構安全性 | N/A | HDInsight (雲端提供者) |
 

@@ -8,12 +8,12 @@ ms.date: 02/10/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 34f5de01df72b48d275448e028ab0f8cb71e51f8
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: aae11facd2fea5413b2996b3088cb2edc23f0dc1
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132072"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77424927"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>使用 Azure Cosmos DB 時針對查詢問題進行疑難排解
 
@@ -302,7 +302,7 @@ JOIN (SELECT VALUE s FROM s IN c.servings WHERE s.amount > 1)
 
 Azure Cosmos DB 會使用[分割](partitioning-overview.md)區來調整個別容器，因為要求單位和資料儲存體需求也會隨之增加。 每個實體分割區都有個別且獨立的索引。 如果您的查詢具有符合容器分割區索引鍵的相等篩選準則，您就只需要檢查相關的分割區索引。 此優化會減少查詢所需的 RU 總數。
 
-如果您有大量布建的 RU （超過30000）或儲存大量的資料（超過 ~ 100 GB），您可能會有足夠的容器，以查看查詢 RU 費用的大幅縮減。
+如果您有大量布建的 RU （超過30000）或儲存大量的資料（大約超過 100 GB），您可能會有夠大的容器，以查看查詢 RU 費用的大幅縮減。
 
 例如，如果我們建立具有分割區索引鍵 foodGroup 的容器，下列查詢只需要檢查單一實體分割區：
 
@@ -383,7 +383,7 @@ WHERE c.foodGroup = "Vegetables and Vegetable Products" AND c._ts > 1575503264
 
 ## <a name="increase-provisioned-throughput"></a>增加布建的輸送量
 
-在 Azure Cosmos DB 中，您布建的輸送量會以要求單位（RU）來測量。 假設您有一個使用 5 RU 輸送量的查詢。 例如，如果您布建 1000 RU 的，您就能夠每秒執行該查詢200次。 如果您嘗試在沒有足夠的可用輸送量時執行查詢，Azure Cosmos DB 會傳回 HTTP 429 錯誤。 任何目前的 Core （SQL） API sdk 都會在等候短暫的時間之後自動重試此查詢。 節流的要求需要較長的時間，因此增加布建的輸送量可以改善查詢延遲。 您可以在 Azure 入口網站的 [計量] 分頁中，觀察[要求已節流的要求總數](use-metrics.md#understand-how-many-requests-are-succeeding-or-causing-errors)。
+在 Azure Cosmos DB 中，您布建的輸送量會以要求單位（RU）來測量。 假設您有一個使用 5 RU 輸送量的查詢。 例如，如果您布建 1000 RU 的，您就能夠每秒執行該查詢200次。 如果您嘗試在沒有足夠的可用輸送量時執行查詢，Azure Cosmos DB 會傳回 HTTP 429 錯誤。 任何目前的 Core （SQL） API sdk 都會在等候短暫的時間之後自動重試此查詢。 節流的要求需要較長的時間，因此增加布建的輸送量可以改善查詢延遲。 您可以在 Azure 入口網站的 [計量] 分頁中，觀察[節流要求的總數](use-metrics.md#understand-how-many-requests-are-succeeding-or-causing-errors)。
 
 ## <a name="increase-maxconcurrency"></a>增加 MaxConcurrency
 

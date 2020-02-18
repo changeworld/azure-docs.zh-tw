@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/17/2019
 ms.author: wolfma
-ms.openlocfilehash: e1385dd17e686370508576ec0cb713820f27f6b2
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: cc349c2d5e43946648533d546398e95d4fa98382
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75928107"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156036"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -37,7 +37,7 @@ ms.locfileid: "75928107"
 
 1. 在相同檔案中，以您的訂用帳戶金鑰取代 `YourSubscriptionKey` 字串。
 
-1. 以與您的訂用帳戶 (例如，免費試用訂用帳戶的 `westus`) 相關聯的[區域](~/articles/cognitive-services/Speech-Service/regions.md)取代 `YourServiceRegion` 字串。
+1. 將 `YourServiceRegion` 字串替換成訂用帳戶所關聯[區域](https://aka.ms/speech/sdkregion)中的「語音 SDK 參數」(例如，免費試用訂用帳戶的區域是 `westus`)。
 
 1. 從功能表列中，選擇 [檔案]   > [全部儲存]  。
 

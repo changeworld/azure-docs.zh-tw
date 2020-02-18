@@ -1,6 +1,6 @@
 ---
-title: 使用 Node.js 從 Azure 事件中樞傳送或接收事件 (最新版)
-description: 本文將逐步解說如何建立 Node.js 應用程式，以使用最新的 azure/event-hubs 第 5 版套件對 Azure 事件中樞傳送事件或從中接收事件。
+title: 使用 JavaScript 從 Azure 事件中樞傳送或接收事件 (最新)
+description: 本文將逐步解說如何建立 JavaScript 應用程式，以使用最新的 azure/event-hubs 第 5 版套件對 Azure 事件中樞傳送事件或接收事件。
 services: event-hubs
 author: spelluru
 ms.service: event-hubs
@@ -8,27 +8,25 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 01/30/2020
 ms.author: spelluru
-ms.openlocfilehash: b523e4a7b463564cbfeb407c91b7bb05317f8166
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e296ae36eeeb816d8704ab03824f8cbb80082ea6
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906364"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77163002"
 ---
-# <a name="send-events-to-or-receive-events-from-event-hubs-by-using-nodejs--azureevent-hubs-version-5"></a>使用 Node.js (azure/event-hubs 第 5 版) 將事件傳送至事件中樞或從中接收事件
-
-Azure 事件中樞是巨量資料串流平台和事件擷取服務，每秒可接收和處理數百萬個事件。 事件中樞可以處理及儲存分散式軟體和裝置所產生的事件、資料或遙測。 傳送至事件中樞的資料可以透過任何即時分析提供者或批次/儲存體配接器來轉換和儲存。 如需詳細資訊，請參閱[事件中樞概觀](event-hubs-about.md)及[事件中樞功能](event-hubs-features.md)。
-
-本快速入門說明如何建立可將事件傳送至事件中樞或從中接收事件的 Node.js 應用程式。
+# <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs-version-5"></a>使用 JavaScript (azure/event-hubs 第 5 版) 將事件傳送至事件中樞或從中接收事件
+本快速入門說明如何使用 **azure/event-hubs 第 5 版** JavaScript 套件，來傳送事件至事件中樞和從事件中樞接收事件。 
 
 > [!IMPORTANT]
-> 本快速入門使用第 5 版的 Azure 事件中樞 Java 指令碼 SDK。 如需使用第 2 版 JavaScript SDK 的快速入門，請參閱[這篇文章](event-hubs-node-get-started-send.md)。 
+> 本快速入門會使用最新的 azure/event-hubs 第 5 版套件。 如需如何使用舊有 azure/event-hubs 第 2 版套件的快速入門，請參閱[使用 azure/event-hubs 第 2 版傳送和接收事件](event-hubs-node-get-started-send.md)。 
 
 ## <a name="prerequisites"></a>Prerequisites
+如果您對 Azure 事件中樞並不熟悉，在進行此快速入門之前，請先參閱[事件中樞概述](event-hubs-about.md)。 
 
 若要完成本快速入門，您必須符合下列必要條件：
 
-- Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前[建立免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。  
+- **Microsoft Azure 訂用帳戶**。 若要使用 Azure 服務 (包括 Azure 事件中樞)，您需要訂用帳戶。  如果您沒有現有的 Azure 帳戶，您可以申請[免費試用](https://azure.microsoft.com/free/)，或是在[建立帳戶](https://azure.microsoft.com)時使用 MSDN 訂閱者權益。
 - Node.js 8.x 版或更新版本， 下載最新的[長期支援 (LTS) 版本](https://nodejs.org)。  
 - Visual Studio Code (建議) 或任何其他整合式開發環境 (IDE)。  
 - 作用中的事件中樞命名空間和事件中樞。 若要建立這些項目，請執行下列步驟： 
@@ -37,6 +35,7 @@ Azure 事件中樞是巨量資料串流平台和事件擷取服務，每秒可�
    1. 若要建立命名空間和事件中樞，請遵循[快速入門：使用 Azure 入口網站建立事件中樞](event-hubs-create.md)。
    1. 遵循本快速入門中的指示以繼續。 
    1. 若要取得事件中樞命名空間的連接字串，請依照[取得連接字串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)中的指示進行。 記下連接字串，以便稍後於本快速入門中使用。
+- **建立事件中樞命名空間和事件中樞**。 第一個步驟是使用 [Azure 入口網站](https://portal.azure.com)來建立「事件中樞」類型的命名空間，然後取得您應用程式與「事件中樞」進行通訊所需的管理認證。 若要建立命名空間和事件中樞，請依照[這篇文章](event-hubs-create.md)中的程序操作。 然後，依照下列文章中的指示，取得**事件中樞命名空間的連接字串**：[取得連接字串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 您稍後會在本快速入門中使用連接字串。
 
 ### <a name="install-the-npm-package"></a>安裝 npm 套件
 若要安裝[適用於事件中樞的 Node Package Manager (npm) 套件](https://www.npmjs.com/package/@azure/event-hubs)，請開啟在路徑中有 npm  的命令提示字元，並將目錄切換至您要用來存放範例的資料夾，然後執行下列命令：
@@ -59,7 +58,7 @@ npm install @azure/eventhubs-checkpointstore-blob
 
 ## <a name="send-events"></a>傳送事件
 
-在本節中，您會建立可將事件傳送至事件中樞的 Node.js 應用程式。
+在本節中，您會建立可將事件傳送至事件中樞的 JavaScript 應用程式。
 
 1. 開啟您慣用的編輯器，例如 [Visual Studio Code](https://code.visualstudio.com)。
 1. 建立名為 send.js  的檔案，並將以下程式碼張貼在該檔案內：
@@ -109,7 +108,7 @@ npm install @azure/eventhubs-checkpointstore-blob
 
 
 ## <a name="receive-events"></a>接收事件
-在本節中，您會使用 Node.js 應用程式中的 Azure Blob 儲存體檢查點存放區，從事件中樞接收事件。 其會在 Azure 儲存體 Blob 中，定期對接收的訊息執行中繼資料檢查點檢查。 此方法可在稍後輕鬆地從您離開的地方繼續接收訊息。
+在本節中，您會使用 JavaScript 應用程式中的 Azure Blob 儲存體檢查點存放區，從事件中樞接收事件。 其會在 Azure 儲存體 Blob 中，定期對接收的訊息執行中繼資料檢查點檢查。 此方法可在稍後輕鬆地從您離開的地方繼續接收訊息。
 
 ### <a name="create-an-azure-storage-account-and-a-blob-container"></a>建立 Azure 儲存體帳戶和 Blob 容器
 若要建立 Azure 儲存體帳戶及其中的 Blob 容器，請執行下列動作：

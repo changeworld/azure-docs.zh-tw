@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/16/2020
+ms.date: 02/17/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 37d895e2514d01bdbe73f42e1ba5ea5e4c46bfa1
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.openlocfilehash: 8f2a86f72f16a23b0133601cfe41b9e636d8866d
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/17/2020
-ms.locfileid: "77372872"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425590"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自訂原則中定義自我判斷技術設定檔
 
@@ -55,7 +55,7 @@ ms.locfileid: "77372872"
 
 顯示宣告功能目前為**預覽**狀態。
 
-**DisplayClaims**元素包含要在螢幕上呈現以向使用者收集資料的宣告清單。 若要預先填入輸出宣告的值，請使用先前所述的輸入宣告。 元素可能也包含預設值。
+**DisplayClaims**元素包含要在螢幕上呈現以向使用者收集資料的宣告清單。 若要預先填入顯示宣告的值，請使用先前所述的輸入宣告。 元素可能也包含預設值。
 
 **DisplayClaims**中的宣告順序會指定 Azure AD B2C 在螢幕上呈現宣告的順序。 若要強制使用者提供特定宣告的值，請將**DisplayClaim**元素的**Required**屬性設定為 `true`。
 

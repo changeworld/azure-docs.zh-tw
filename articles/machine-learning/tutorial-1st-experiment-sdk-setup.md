@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 09/25/2019
-ms.openlocfilehash: 125cde85d3caa6fd1a33045e85c5383f83a669bf
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.date: 02/10/2020
+ms.openlocfilehash: a6f977c0cdca670b40ccdc01db64a493962e3dda
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982529"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77165971"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>教學課程：使用 Python SDK 開始建立您的第一個 ML 實驗
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -84,7 +84,7 @@ Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機
     > [!IMPORTANT]
     > 您可以查看 **samples** 資料夾中的 Notebook，但無法從該處執行 Notebook。  若要執行 Notebook，請務必在 [使用者檔案]  區段中開啟複製的 Notebook 版本。
     
-1. 在 **tutorials** 資料夾中選取 **tutorial-1st-experiment-sdk-train.ipynb** 檔案。
+1. 在 tutorials/create-first-ml-experiment  資料夾中選取 tutorial-1st-experiment-sdk-train.ipynb  檔案。
 
 1. 在頂端列上，選取要用來執行筆記本的計算執行個體。 這些 VM 已預先設定[執行 Azure Machine Learning 所需的一切](concept-compute-instance.md#contents)。 您可以選取您工作區的任何使用者所建立的 VM。 
 
@@ -99,10 +99,6 @@ Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機
 1. VM 可供使用後，會顯示在頂端工具列中。  您現在可以使用工具列中的 [全部執行]  來執行 Notebook，或在 Notebook 的程式碼資料格中使用 **Shift+Enter** 來執行。
 
 如果您有自訂小工具，或是您偏好使用 Jupyter/JupyterLab，請選取最右側的 [Jupyter]  下拉式清單，然後選取 [Jupyter]  或 [JupyterLab]  。 新的瀏覽器視窗隨即開啟。
-
-> [!NOTE]
-> 計算執行個體 (預覽) 目前僅適用於區域為 [美國中北部]  、[美國東部 2]  、[歐洲北部]  或 [英國南部]  的工作區，其他區域的支援將於近期推出。
->如果您的工作區位於任何其他區域，您可繼續建立並使用 [Notebook VM](concept-compute-instance.md#notebookvm)。  您可使用 Notebook VM 或計算執行個體來執行您的筆記本。 若您未停止 VM，VM 將持續執行並產生成本。 您可以從 Studio 中的 [計算]  索引標籤手動加以停止，或參閱相關[部落格文章](https://techcommunity.microsoft.com/t5/educator-developer-blog/azure-virtual-machine-auto-shutdown/ba-p/379342)以了解如何啟用 Azure VM 的排程自動關機。
 
 ## <a name="next-steps"></a>後續步驟
 

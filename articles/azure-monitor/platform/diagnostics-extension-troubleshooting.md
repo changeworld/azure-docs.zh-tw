@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/08/2019
-ms.openlocfilehash: facd52ea1fdaa2ad30d6b1544cb1f2d6d5833bfa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1f3dd1fa4b70fcdbec7e62c84bbfc1df14d3502e
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450564"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425080"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure 診斷疑難排解
 本文說明有關使用 Azure 診斷的疑難排解資訊。 如需有關 Azure 診斷的詳細資訊，請參閱 [Azure 診斷概觀](diagnostics-extension-overview.md)。
@@ -51,7 +51,7 @@ ms.locfileid: "75450564"
 | **MonAgentHost 記錄檔** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Configuration\MonAgentHost.<seq_num>.log |
 
 ## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>計量資料沒有出現在 Azure 入口網站中
-Azure 診斷會提供計量資料，這些資料可以在 Azure 入口網站中顯示。 如果您在入口網站中看不到資料，請檢查 Azure 診斷儲存體帳戶中的 WADMetrics\* 表格，以查看是否有對應的計量記錄。
+Azure 診斷會提供計量資料，這些資料可以在 Azure 入口網站中顯示。 如果您在入口網站中看到資料時遇到問題，請檢查 Azure 診斷儲存體帳戶中的 WADMetrics\* 資料表，以查看對應的計量記錄是否存在，並確定已註冊[資源提供者](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)Microsoft Insights。
 
 此處的表格 **PartitionKey** 是資源識別碼、虛擬機器或虛擬機器擴展集。 **RowKey** 是度量的名稱 (也稱為效能計數器名稱)。
 
@@ -90,7 +90,7 @@ Azure 診斷會提供計量資料，這些資料可以在 Azure 入口網站中�
 ```
 DiagnosticsPluginLauncher.exe Information: 0 : [4/16/2016 6:24:15 AM] DiagnosticPlugin exited with code 0
 ```
-如果結束代碼為「負值」，請參閱[參考](#references)一節中的[結束代碼表格](#azure-diagnostics-plugin-exit-codes)。
+如果結束代碼為「負值」，請參閱[參考](#azure-diagnostics-plugin-exit-codes)一節中的[結束代碼表格](#references)。
 
 ## <a name="diagnostics-data-is-not-logged-to-azure-storage"></a>診斷資料未記錄至 Azure 儲存體
 判斷是沒有出現任何資料，或是出現部分的資料。
@@ -206,7 +206,7 @@ Azure 儲存體中保存 ETW 事件的表格使用以下程式碼來命名：
 ```
 此程式碼會產生四個表格：
 
-| 活動 | 資料表名稱 |
+| 事件 | 資料表名稱 |
 | --- | --- |
 | provider = "prov1" &lt;事件識別碼 = "1"/&gt; |WADEvent + MD5 （"prov1"） + "1" |
 | provider = "prov1" &lt;事件識別碼 = "2" eventDestination = "dest1"/&gt; |WADdest1 |
@@ -229,7 +229,7 @@ Azure 儲存體中保存 ETW 事件的表格使用以下程式碼來命名：
 ### <a name="azure-diagnostics-plugin-exit-codes"></a>Azure 診斷外掛程式結束代碼
 外掛程式會傳回下列結束代碼：
 
-| 結束代碼 | 說明 |
+| 結束代碼 | 描述 |
 | --- | --- |
 | 0 |成功。 |
 | -1 |一般錯誤。 |
@@ -257,7 +257,7 @@ Azure 儲存體中保存 ETW 事件的表格使用以下程式碼來命名：
 ```
 <Azure diagnostics extension package>\Monitor\x64\table2csv.exe <relevantLogFile>.tsf
 ```
-在對應的 `.tsf` 檔案所在的相同路徑中，會建立一個名為 `<relevantLogFile>.csv` 的新檔案。
+在對應的 `<relevantLogFile>.csv` 檔案所在的相同路徑中，會建立一個名為 `.tsf` 的新檔案。
 
 >[!NOTE]
 > 您只需要針對主要的 tsf 檔案 (例如 PerformanceCountersTable.tsf) 來執行此公用程式。 系統會自動處理隨附的檔案 (例如，PerformanceCountersTables_\*\*001.tsf、PerformanceCountersTables_\*\*002.tsf 等等)。

@@ -32,6 +32,10 @@
         - name: 資料擷取概觀
           displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
           href: ingest-data-overview.md
+    - name: Kusto 查詢語言
+      items:
+        - name: 快速參考指南
+          href: kql-quick-reference.md
     - name: 資料視覺效果概觀
       href: viz-overview.md
     - name: 安全性概觀
@@ -126,7 +130,7 @@
       items:
         - name: Power BI
           items:
-            - name: 最佳做法
+            - name: 最佳作法
               href: power-bi-best-practices.md
             - name: 連接器
               href: power-bi-connector.md

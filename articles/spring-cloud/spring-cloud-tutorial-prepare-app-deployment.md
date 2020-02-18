@@ -1,21 +1,21 @@
 ---
-title: 教學課程 - 準備 Spring 應用程式以部署至 Azure Spring Cloud
-description: 在本教學課程中，您會準備 Java Spring 應用程式以進行部署。
+title: 教學課程 - 準備 Java Spring 應用程式以部署至 Azure Spring Cloud
+description: 在本教學課程中，您會準備 Java Spring 應用程式來部署至 Azure Spring Cloud。
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: tutorial
-ms.date: 10/06/2019
+ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 9918c7866b21cd2a9e021a355fb43977c91a89cf
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: af3611e4c4d1f5d8ca52b3ceb80d79dcfd7d2061
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277436"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190746"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>準備 Java Spring 應用程式以部署到 Azure Spring Cloud
 
-本快速入門會示範如何準備現有的 Java Spring Cloud 應用程式以部署到 Azure Spring Cloud。 若能夠正確設定，Azure Spring Cloud 將能提供豐富的服務以監視、調整及更新您的 Java Spring Cloud 應用程式。
+本快速入門會示範如何準備現有的 Java Spring 應用程式以部署到 Azure Spring Cloud。 若能夠正確設定，Azure Spring Cloud 將能提供豐富的服務以監視、調整及更新您的 Java Spring Cloud 應用程式。
 
 ## <a name="java-runtime-version"></a>Java 執行階段版本
 
@@ -25,38 +25,14 @@ Azure Spring Cloud 支援 Java 8 和 Java 11。 裝載環境會包含適用於 A
 
 ## <a name="spring-boot-and-spring-cloud-versions"></a>Spring Boot 和 Spring Cloud 版本
 
-Azure Spring Cloud 僅支援 Spring Boot 應用程式。 其支援 Spring Boot 2.0 版和 2.1 版。 下表列出支援的 Spring Boot 和 Spring Cloud 組合：
+Azure Spring Cloud 僅支援 Spring Boot 應用程式。 其支援 Spring Boot 2.1 版和 2.2 版。 下表列出支援的 Spring Boot 和 Spring Cloud 組合：
 
 Spring Boot 版本 | Spring Cloud 版本
 ---|---
-2.0 | Finchley.RELEASE
 2.1 | Greenwich.RELEASE
+2.2 | Hoxton.RELEASE
 
 根據您的 Spring Boot 版本，確認 pom.xml 檔案具有正確的 Spring Boot 和 Spring Cloud 相依性。
-
-### <a name="dependencies-for-spring-boot-version-20"></a>Spring Boot 2.0 版的相依性
-
-```xml
-    <!-- Spring Boot dependencies -->
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.9.RELEASE</version>
-    </parent>
-
-    <!-- Spring Cloud dependencies -->
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Finchley.SR4</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-```
 
 ### <a name="dependencies-for-spring-boot-version-21"></a>Spring Boot 2.1 版的相依性
 
@@ -65,7 +41,7 @@ Spring Boot 版本 | Spring Cloud 版本
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.8.RELEASE</version>
+        <version>2.1.12.RELEASE</version>
     </parent>
 
     <!-- Spring Cloud dependencies -->
@@ -74,7 +50,31 @@ Spring Boot 版本 | Spring Cloud 版本
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Greenwich.SR3</version>
+                <version>Greenwich.SR4</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+```
+
+### <a name="dependencies-for-spring-boot-version-22"></a>Spring Boot 2.2 版的相依性
+
+```xml
+    <!-- Spring Boot dependencies -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.4.RELEASE</version>
+    </parent>
+
+    <!-- Spring Cloud dependencies -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Hoxton.SR1</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -90,20 +90,10 @@ Azure Spring Cloud 會為您裝載和管理 Spring Cloud 元件。 這類元件�
 
 Spring Boot 版本 | Spring Cloud 版本 | Azure Spring Cloud 版本
 ---|---|---
-2.0 | Finchley.RELEASE | 2.0
 2.1 | Greenwich.RELEASE | 2.1
+2.2 | Hoxton.RELEASE | 2.2
 
 請在 pom.xml 檔案中包含下列其中一個相依性。 選取其 Azure Spring Cloud 版本與您所擁有版本相符的相依性。
-
-### <a name="dependency-for-azure-spring-cloud-version-20"></a>Azure Spring Cloud 2.0 版的相依性
-
-```xml
-<dependency>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.0.0</version>
-</dependency>
-```
 
 ### <a name="dependency-for-azure-spring-cloud-version-21"></a>Azure Spring Cloud 2.1 版的相依性
 
@@ -111,7 +101,17 @@ Spring Boot 版本 | Spring Cloud 版本 | Azure Spring Cloud 版本
 <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.1.0</version>
+        <version>2.1.1</version>
+</dependency>
+```
+
+### <a name="dependency-for-azure-spring-cloud-version-22"></a>Azure Spring Cloud 2.2 版的相依性
+
+```xml
+<dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
+        <version>2.2.0</version>
 </dependency>
 ```
 
@@ -183,4 +183,4 @@ Service Registry 伺服器的端點會自動搭配您的應用程式插入為環
 > [!div class="nextstepaction"]
 > [了解如何設定 Config Server 執行個體](spring-cloud-tutorial-config-server.md)
 
-GitHub 上可用的其他範例：[Azure Spring Cloud 範例](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/service-binding-cosmosdb-sql)。
+GitHub 上可用的其他範例：[Azure Spring Cloud 範例](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples)。

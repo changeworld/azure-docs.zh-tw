@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/29/2020
+ms.date: 02/17/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ad6b84323ac49713506bc61bd0051421e0234a94
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 5dc9bc56ac717d355f0fb0ebcc482430662378ca
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982274"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425602"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -75,17 +75,17 @@ ms.locfileid: "76982274"
 
 **TechnicalProfile** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要 | 描述 |
 |---------|---------|---------|
 | Id | 是 | 技術設定檔的唯一識別碼。 可使用此識別碼，從原則設定檔的其他元素參考此技術設定檔。 例如，**OrchestrationSteps** 和 **ValidationTechnicalProfile**。 |
 
 **TechnicalProfile** 包含下列元素：
 
-| 元素 | 發生次數 | 說明 |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | 網域 | 0:1 | 技術設定檔的網域名稱。 例如，如果您的技術設定檔指定 Facebook 識別提供者，則網域名稱為 Facebook.com。 |
 | DisplayName | 1:1 | 可向使用者顯示的技術設定檔名稱。 |
-| 說明 | 0:1 | 可向使用者顯示的技術設定檔描述。 |
+| 描述 | 0:1 | 可向使用者顯示的技術設定檔描述。 |
 | 通訊協定 | 0:1 | 用於與其他合作對象進行通訊的通訊協定。 |
 | 中繼資料 | 0:1 | 通訊協定使用的機碼值組，用於在交易過程中與端點通訊。 |
 | InputTokenFormat | 0:1 | 輸入權杖的格式。 可能的值：`JSON`、`JWT`、`SAML11` 或 `SAML2`。 `JWT` 值代表以 IETF 規格為基礎的 JSON Web 權杖。 `SAML11` 值代表以 OASIS 規格為基礎的 SAML 1.1 安全性權杖。  `SAML2` 值代表以 OASIS 規格為基礎的 SAML 2.0 安全性權杖。 |
@@ -109,40 +109,40 @@ ms.locfileid: "76982274"
 
 **Protocol** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| 名稱 | 是 | Azure AD B2C 所支援的有效通訊協定名稱，可用來作為技術設定檔的一部分。 可能的值： `OAuth1`、`OAuth2`、`SAML2`、`OpenIdConnect`、`Proprietary`、`session management`、`self-asserted`或 `None`。 |
+| 名稱 | 是 | Azure AD B2C 所支援的有效通訊協定名稱，可用來作為技術設定檔的一部分。 可能的值： `OAuth1`、`OAuth2`、`SAML2`、`OpenIdConnect`、`Proprietary`或 `None`。 |
 | 處理常式 | 否 | 當通訊協定名稱設為 `Proprietary` 時，請指定 Azure AD B2C 用於判斷通訊協定處理常式之組件的完整名稱。 |
 
 ## <a name="metadata"></a>中繼資料
 
 **Metadata** 元素包含下列元素：
 
-| 元素 | 發生次數 | 說明 |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
-| 項目 | 0:n | 與技術設定檔相關的中繼資料。 每一種技術設定檔有一組不同的中繼資料項目。 如需詳細資訊，請參閱技術設定檔類型章節。 |
+| Item | 0:n | 與技術設定檔相關的中繼資料。 每一種技術設定檔有一組不同的中繼資料項目。 如需詳細資訊，請參閱技術設定檔類型章節。 |
 
-### <a name="item"></a>項目
+### <a name="item"></a>Item
 
 **Metadata** 元素的 **Item** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| 索引鍵 | 是 | 中繼資料索引鍵。 如需中繼資料項目的清單，請參閱每個技術設定檔類型。 |
+| Key | 是 | 中繼資料索引鍵。 如需中繼資料項目的清單，請參閱每個技術設定檔類型。 |
 
 ## <a name="cryptographickeys"></a>CryptographicKeys
 
 **CryptographicKeys** 元素包含下列元素：
 
-| 元素 | 發生次數 | 說明 |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
-| 索引鍵 | 1:n | 此技術設定檔中使用的密碼編譯金鑰。 |
+| Key | 1:n | 此技術設定檔中使用的密碼編譯金鑰。 |
 
-### <a name="key"></a>索引鍵
+### <a name="key"></a>Key
 
 **Key** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | Id | 否 | 原則檔中的其他元素所參考之特定金鑰組的唯一識別碼。 |
 | StorageReferenceId | 是 | 原則檔中的其他元素所參考之儲存體金鑰容器的識別碼。 |
@@ -151,7 +151,7 @@ ms.locfileid: "76982274"
 
 **InputClaimsTransformations** 元素包含下列元素：
 
-| 元素 | 發生次數 | 說明 |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | InputClaimsTransformation | 1:n | 宣告轉換的識別碼，應在將任何宣告傳送至宣告提供者或信賴憑證者之前執行此轉換。 宣告轉換可用於修改現有的 ClaimsSchema 宣告或產生新的宣告。 |
 
@@ -159,7 +159,7 @@ ms.locfileid: "76982274"
 
 **InputClaimsTransformation** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | ReferenceId | 是 | 已在原則檔或父原則檔中定義之宣告轉換的識別碼。 |
 
@@ -167,7 +167,7 @@ ms.locfileid: "76982274"
 
 **InputClaims** 元素包含下列元素：
 
-| 元素 | 發生次數 | 說明 |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | InputClaim | 1:n | 預期的輸入宣告類型。 |
 
@@ -175,7 +175,7 @@ ms.locfileid: "76982274"
 
 **InputClaim** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | 是 | 已在原則檔或父代原則檔之 ClaimsSchema 區段中定義的宣告類型識別碼。 |
 | DefaultValue | 否 | 當 ClaimTypeReferenceId 指示的宣告不存在時，此預設值可用於建立宣告，以便產生的宣告可由技術設定檔用來作為 InputClaim。 |
@@ -185,7 +185,7 @@ ms.locfileid: "76982274"
 
 **DisplayClaims**元素包含下列元素：
 
-| 元素 | 發生次數 | 說明 |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | DisplayClaim | 1:n | 預期的輸入宣告類型。 |
 
@@ -195,11 +195,11 @@ DislayClaims 功能目前為**預覽**狀態。
 
 **DisplayClaim**元素包含下列屬性：
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | 否 | 已在原則檔或父代原則檔之 ClaimsSchema 區段中定義的宣告類型識別碼。 |
 | DisplayControlReferenceId | 否 | 已在原則檔或父原則檔的 ClaimsSchema 區段中定義的[顯示控制項](display-controls.md)識別碼。 |
-| 必要項 | 否 | 指出是否需要顯示宣告。 |
+| 必要 | 否 | 指出是否需要顯示宣告。 |
 
 **DisplayClaim**會要求您指定 `ClaimTypeReferenceId` 或 `DisplayControlReferenceId`。
 
@@ -207,7 +207,7 @@ DislayClaims 功能目前為**預覽**狀態。
 
 **PersistedClaims** 元素包含下列元素：
 
-| 元素 | 發生次數 | 說明 |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | PersistedClaim | 1:n | 要保存的宣告類型。 |
 
@@ -215,7 +215,7 @@ DislayClaims 功能目前為**預覽**狀態。
 
 **PersistedClaim** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | 是 | 已在原則檔或父代原則檔之 ClaimsSchema 區段中定義的宣告類型識別碼。 |
 | DefaultValue | 否 | 當 ClaimTypeReferenceId 指示的宣告不存在時，此預設值可用於建立宣告，以便產生的宣告可由技術設定檔用來作為 InputClaim。 |
@@ -225,7 +225,7 @@ DislayClaims 功能目前為**預覽**狀態。
 
 **OutputClaims** 元素包含下列元素：
 
-| 元素 | 發生次數 | 說明 |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | OutputClaim | 1:n | 預期的輸出宣告類型。 |
 
@@ -233,7 +233,7 @@ DislayClaims 功能目前為**預覽**狀態。
 
 **OutputClaim** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | 是 | 已在原則檔或父代原則檔之 ClaimsSchema 區段中定義的宣告類型識別碼。 |
 | DefaultValue | 否 | 當 ClaimTypeReferenceId 指示的宣告不存在時，此預設值可用於建立宣告，以便產生的宣告可由技術設定檔用來作為 InputClaim。 |
@@ -244,7 +244,7 @@ DislayClaims 功能目前為**預覽**狀態。
 
 **OutputClaimsTransformations** 元素包含下列元素：
 
-| 元素 | 發生次數 | 說明 |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | OutputClaimsTransformation | 1:n | 宣告轉換的識別碼，應在將任何宣告傳送至宣告提供者或信賴憑證者之前執行這些轉換。 宣告轉換可用於修改現有的 ClaimsSchema 宣告或產生新的宣告。 |
 
@@ -252,7 +252,7 @@ DislayClaims 功能目前為**預覽**狀態。
 
 **OutputClaimsTransformation** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | ReferenceId | 是 | 已在原則檔或父原則檔中定義之宣告轉換的識別碼。 |
 
@@ -260,7 +260,7 @@ DislayClaims 功能目前為**預覽**狀態。
 
 **ValidationTechnicalProfiles** 元素包含下列元素：
 
-| 元素 | 發生次數 | 說明 |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | ValidationTechnicalProfile | 1:n | 使用的技術設定檔識別碼可驗證參考技術設定檔的部分或所有輸出宣告。 參考技術設定檔的所有輸入宣告必須出現在參考技術設定檔的輸出宣告中。 |
 
@@ -268,7 +268,7 @@ DislayClaims 功能目前為**預覽**狀態。
 
 **ValidationTechnicalProfile** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | ReferenceId | 是 | 已在原則檔或父原則檔中定義之技術設定檔的識別碼。 |
 
@@ -276,7 +276,7 @@ DislayClaims 功能目前為**預覽**狀態。
 
 **SubjectNamingInfo** 包含下列屬性：
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | ClaimType | 是 | 已在原則檔之 ClaimsSchema 區段中定義的宣告類型識別碼。 |
 
@@ -284,7 +284,7 @@ DislayClaims 功能目前為**預覽**狀態。
 
 **IncludeTechnicalProfile** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | ReferenceId | 是 | 已在原則檔或父原則檔中定義之技術設定檔的識別碼。 |
 
@@ -292,7 +292,7 @@ DislayClaims 功能目前為**預覽**狀態。
 
 **UseTechnicalProfileForSessionManagement** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | ReferenceId | 是 | 已在原則檔或父原則檔中定義之技術設定檔的識別碼。 |
 

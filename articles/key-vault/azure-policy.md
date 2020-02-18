@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 01/28/2020
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: c32d2fb45bbd4f4a9b4845bb4ef27a439d536677
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9bf33aae5de600d6e5b0ab836c99da1d56935db3
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905863"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169370"
 ---
 # <a name="integrate-azure-key-vault-with-azure-policy"></a>整合 Azure Key Vault 與 Azure 原則
 
@@ -152,5 +152,4 @@ Key Vault 已建立一組原則，您可以在常見案例中指派這些原則�
 ## <a name="next-steps"></a>後續步驟
 
 - 深入了解 [Azure 原則服務](../governance/policy/overview.md)
-- 查看範例：[無虛擬網路端點的 Key Vault 保存庫](../governance/policy/samples/keyvault-no-vnet-rules.md)
-
+- 請參閱 Key Vault 範例：[Key Vault 內建原則定義](../governance/policy/samples/built-in-policies.md#key-vault)

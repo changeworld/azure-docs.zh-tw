@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 91ea2b68828ac54d4128a90550e9c60e065b719d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0d78f3cc4f2b12b2d9f45878a0c1b91263112689
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75379418"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118552"
 ---
 # <a name="what-is-form-recognizer"></a>什麼是表單辨識器？
 
@@ -51,17 +51,9 @@ Azure 表單辨識器是一項認知服務，其使用機器學習技術來識�
 
 表單辨識器也可以使用高畫質的光學字元辨識 (OCR)，擷取文字和資料表結構 (與文字相關聯的資料列和資料行編號)。 
 
-## <a name="where-do-i-start"></a>我該從哪裡開始？
+## <a name="get-started"></a>開始使用
 
-**步驟 1：** 要求存取：
-
-表單辨識器是以有限存取預覽版的形式提供。 若要存取此預覽服務，請先填寫並提交[表單辨識器存取要求](https://aka.ms/FormRecognizerRequestAccess)表單。 該表單會要求您提供您個人、您的公司，以及您會在何種案例中使用表單辨識器的相關資訊。
-
-**步驟 2：** 在 Azure 入口網站中建立表單辨識器資源：
-
-當您獲得使用表單辨識器的存取權時，您將會收到「歡迎使用」電子郵件，內含數個連結和資源。 請使用該訊息中的 [Azure 入口網站] 連結開啟 Azure 入口網站，並建立表單辨識器資源。
-
-**步驟 3：** 從表單中擷取資料：
+遵循快速入門以開始從表單中擷取資料。 當您學習技術時，我們建議您使用免費的服務。 請記住，免費的頁數限制為每個月 500 頁。
 
 * 自訂 - 將模型定型至您的表單
   * 不使用標籤進行定型
@@ -76,9 +68,7 @@ Azure 表單辨識器是一項認知服務，其使用機器學習技術來識�
 * 版面配置 - 從表單中擷取文字和資料表結構
   * [快速入門：使用 Python 擷取版面配置資料](quickstarts/python-layout.md)
 
-當您學習技術時，我們建議您使用免費的服務。 請記住，免費的頁數限制為每個月 500 頁。
-
-**步驟4：** 檢閱 REST API：
+### <a name="review-the-rest-apis"></a>檢閱 REST API
 
 您將使用下列 API 來定型模型及擷取表單中的結構化資料。
 

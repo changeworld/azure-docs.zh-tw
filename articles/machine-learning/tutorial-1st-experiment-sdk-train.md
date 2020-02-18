@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 11/04/2019
-ms.openlocfilehash: c38347a03ddc0ef5f6c1bd3118696062db9a8254
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 02/10/2020
+ms.openlocfilehash: aa90655ecb14abe38ec8fdfc6c18e7d292abbef3
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75532421"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116528"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>教學課程：定型第一個 ML 模型
 
@@ -35,7 +35,7 @@ ms.locfileid: "75532421"
 
 唯一的必要條件是執行本教學課程的第一個部分：[設定環境和工作區](tutorial-1st-experiment-sdk-setup.md)。
 
-在本教學課程的這個部分中，您會在第一個部分結束時開啟的範例 Jupyter Notebook `tutorials/tutorial-1st-experiment-sdk-train.ipynb` 中執行程式碼。 本文會逐步解說此 Notebook 中的相同程式碼。
+在本教學課程的這個部分中，您會執行第一部分結尾處所開啟範例 Jupyter 筆記本 tutorials/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb  中的程式碼。 本文會逐步解說此 Notebook 中的相同程式碼。
 
 ## <a name="open-the-notebook"></a>開啟 Notebook
 
@@ -45,7 +45,7 @@ ms.locfileid: "75532421"
 
 
 > [!Warning]
-> 請**不要**在 Jupyter 介面中建立新的  Notebook！ Notebook `tutorials/tutorial-1st-experiment-sdk-train.ipynb` 包含本教學課程中**所需的所有程式碼和資料**。
+> 請**不要**在 Jupyter 介面中建立新的  Notebook！ 筆記本 tutorials/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb  包含本教學課程**所需的所有程式碼和資料**。
 
 ## <a name="connect-workspace-and-create-experiment"></a>連結工作區並建立實驗
 

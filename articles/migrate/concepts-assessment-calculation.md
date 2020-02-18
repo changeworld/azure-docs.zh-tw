@@ -2,13 +2,13 @@
 title: Azure Migrate 中的評量
 description: 深入瞭解 Azure Migrate 中的評量。
 ms.topic: conceptual
-ms.date: 01/06/2020
-ms.openlocfilehash: 5fc61d9987c9e728a5d83cb3ab3f91b8e8f5f740
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 02/17/2020
+ms.openlocfilehash: 0cf933dd1c8c61edfcea20ea954c5813f3848b28
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76833323"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425692"
 ---
 # <a name="about-assessments-in-azure-migrate"></a>關於 Azure Migrate 中的評量
 
@@ -124,7 +124,7 @@ Azure Migrate 中的評量：使用針對內部部署機器所收集的中繼資
 --- | --- | ---
 **開機類型** | Azure 支援開機類型為 BIOS 而不是 UEFI 的 Vm。 | 有條件地準備開機類型為 UEFI。
 **核心** | 機器的核心數目必須等於或小於 Azure VM 支援的核心數目上限（128）。<br/><br/> 如果有提供效能記錄，則 Azure Migrate 會將已使用的核心納入考量，進行比較。 如果評量設定已指定緩和因數，則會將使用的核心數目乘以緩和因數。<br/><br/> 如果沒有效能歷程記錄，Azure Migrate 會使用已配置的核心，而不套用緩和因數。 | 小於或等於限制便就緒。
-**記憶體** | 機器記憶體大小必須等於或小於 Azure VM 允許之 Azure M 系列 Standard_M128m&nbsp;<sup>2</sup>）的最大記憶體（3892 gb）。 [深入了解](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)。<br/><br/> 如果有提供效能記錄，Azure Migrate 會將已使用的記憶體納入考量，進行比較。 如果已指定緩和因數，則會將使用的記憶體乘以緩和因數。<br/><br/> 如果沒有歷程記錄，則會使用配置的記憶體，而不會套用緩和因數。<br/><br/> | 在限制內便就緒。
+**記憶體** | 機器記憶體大小必須等於或小於 Azure VM 允許之 Azure M 系列 Standard_M128m&nbsp;<sup>2</sup>）的最大記憶體（3892 gb）。 [詳細資訊](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)。<br/><br/> 如果有提供效能記錄，Azure Migrate 會將已使用的記憶體納入考量，進行比較。 如果已指定緩和因數，則會將使用的記憶體乘以緩和因數。<br/><br/> 如果沒有歷程記錄，則會使用配置的記憶體，而不會套用緩和因數。<br/><br/> | 在限制內便就緒。
 **存放磁碟** | 磁片的配置大小必須是 32 TB 或更少。 雖然 Azure 支援具有 Ultra SSD 磁片的 64-TB 磁片，Azure Migrate：伺服器評量目前會檢查 32 TB 是否為磁片大小限制，因為它並不支援 Ultra SSD。 <br/><br/> 連接至電腦的磁片數目必須是65或更少，包括 OS 磁片。 | 在限制內便就緒。
 **網路功能** | 電腦必須連接32或較少的網路介面（Nic）。 | 在限制內便就緒。
 
@@ -149,7 +149,7 @@ Windows Client 7、8 及 10 | Azure [僅對 Visual Studio 訂用帳戶](https://
 Windows 10 專業版桌面 | Azure 對[多租用戶主機權限](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment)提供支援。 | 可有條件地供 Azure 使用
 Windows Vista、XP Professional | 這些作業系統已通過支援的結束日期。 電腦可能會在 Azure 中啟動，但 Azure 不會提供作業系統支援。 | 有條件地準備好 Azure。 我們建議您先升級 OS，再遷移至 Azure。
 Linux | Azure 認同這些 [Linux 作業系統](../virtual-machines/linux/endorsed-distros.md)。 其他 Linux 作業系統可能會在 Azure 中啟動，但我們建議您在遷移至 Azure 之前，先將作業系統升級為背書版本。 | 如果版本受到認同，則可供 Azure 使用。<br/><br/>如果版本未受到認同，則有條件地可供使用。
-其他作業系統<br/><br/> 例如，Oracle Solaris、Apple Mac OS 等、FreeBSD 等。 | Azure 並未認可這些作業系統。 電腦可能會在 Azure 中啟動，但 Azure 不會提供作業系統支援。 | 有條件地準備好 Azure。 我們建議您在遷移至 Azure 之前，先安裝支援的作業系統。  
+其他作業系統<br/><br/> 例如，Oracle Solaris、Apple macOS 等、FreeBSD 等等。 | Azure 並未認可這些作業系統。 電腦可能會在 Azure 中啟動，但 Azure 不會提供作業系統支援。 | 有條件地準備好 Azure。 我們建議您在遷移至 Azure 之前，先安裝支援的作業系統。  
 在 vCenter Server 中作業系統指定為**其他** | Azure Migrate 無法在此情況下識別作業系統。 | 整備程度未知。 請確保 Azure 支援 VM 內執行的作業系統。
 32 位元作業系統 | 電腦可能會在 Azure 中啟動，但 Azure 可能無法提供完整的支援。 | 有條件地準備好 Azure。 在遷移至 Azure 之前，請考慮將電腦的 OS 從32位 OS 升級至64位作業系統。
 

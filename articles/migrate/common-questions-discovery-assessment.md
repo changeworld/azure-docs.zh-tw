@@ -2,21 +2,22 @@
 title: 常見問題-Azure Migrate 中的探索、評估和相依性分析
 description: 取得 Azure Migrate 中探索、評估和相依性分析的常見問題解答。
 ms.topic: conceptual
-ms.date: 12/29/2019
-ms.openlocfilehash: 201d67c38e9583de16cb6075cc1c4bf826c204fd
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.date: 02/17/2020
+ms.openlocfilehash: 2ae534e50cbee3ebd17d703f957aa7200460dbfe
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77059482"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426287"
 ---
 # <a name="common-questions-about-discovery-assessment-and-dependency-analysis"></a>探索、評估和相依性分析的相關常見問題
 
-本文會回答有關 Azure Migrate 中探索、評估和相依性分析的常見問題。 如果您在閱讀本文後有進一步的查詢，請將其張貼在[Azure Migrate 論壇](https://aka.ms/AzureMigrateForum)。 如果您有其他問題，請參閱下列文章：
+本文會回答有關 Azure Migrate 中探索、評估和相依性分析的常見問題。 如果您有其他問題，請參閱下列文章：
 
 - 有關 Azure Migrate 的[一般問題](resources-faq.md)。
 - Azure Migrate 設備的相關[問題](common-questions-appliance.md)。
 - 伺服器遷移的相關[問題](common-questions-server-migration.md)。
+- 在[Azure Migrate 論壇](https://aka.ms/AzureMigrateForum)上張貼問題
 
 
 
@@ -76,7 +77,7 @@ Azure Migrate 設備會持續收集內部部署環境的相關資訊。 但評�
 > Azure Government 無法使用相依性視覺效果。
 
 ## <a name="do-i-pay-for-dependency-visualization"></a>我要支付相依性視覺效果嗎？
-No。 [深入了解](https://azure.microsoft.com/pricing/details/azure-migrate/) Azure Migrate 定價。
+否。 [深入了解](https://azure.microsoft.com/pricing/details/azure-migrate/) Azure Migrate 定價。
 
 ## <a name="what-do-i-install-for-dependency-visualization"></a>針對相依性視覺效果，我要安裝什麼？
 
@@ -110,7 +111,7 @@ No。 [深入了解](https://azure.microsoft.com/pricing/details/azure-migrate/)
 - 查看[MMA 所支援的 Linux 作業系統](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems)清單。
 
 ## <a name="can-i-visualize-dependencies-for-more-than-an-hour"></a>我可以將相依性視覺化超過一小時嗎？
-No。 您最多可以將相依性視覺化一小時。 您可以回到歷程記錄中的特定日期，一開始就是一個月，但視覺效果的最大持續時間為一小時。 例如，您可以使用相依性對應中的持續時間來查看昨天的相依性，但只能查看一個小時範圍內的相依性。 不過，您可以使用 Azure 監視器記錄，在較長的持續期間內查詢相依性[資料](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies)。
+否。 您最多可以將相依性視覺化一小時。 您可以回到歷程記錄中的特定日期，一開始就是一個月，但視覺效果的最大持續時間為一小時。 例如，您可以使用相依性對應中的持續時間來查看昨天的相依性，但只能查看一個小時範圍內的相依性。 不過，您可以使用 Azure 監視器記錄，在較長的持續期間內查詢相依性[資料](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies)。
 
 ## <a name="can-visualize-dependencies-for-groups-of-more-than-10-vms"></a>可以將超過10個 Vm 的群組相依性視覺化嗎？
 您可以將包含最多10個 Vm 的群組的相依性[視覺化](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies)。 如果您的群組具有10部以上的 Vm，建議您將群組分割成較小的群組，然後將相依性視覺化。

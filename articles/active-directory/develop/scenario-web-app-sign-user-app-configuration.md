@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f15006f9c7f2778c986d1977123e1a396c4317f3
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d54103cad8a3550bdc300cba2308397dd1ce3d6c
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701598"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425573"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>登入使用者的 Web 應用程式：程式碼設定
 
@@ -30,7 +30,7 @@ ms.locfileid: "76701598"
 <!-- This section can be in an include for Web App and Web APIs -->
 用來保護 web 應用程式（和 Web API）的程式庫包括：
 
-| 平台 | 程式庫 | 說明 |
+| 平台 | 程式庫 | 描述 |
 |----------|---------|-------------|
 | ![.NET](media/sample-v2-code/logo_net.png) | [適用于 .NET 的識別模型延伸模組](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | 適用于 .NET 的 Microsoft 身分識別模型延伸模組是由 ASP.NET 和 ASP.NET Core 直接使用，它會建議一組在 .NET Framework 和 .NET Core 上執行的 Dll。 從 ASP.NET 或 ASP.NET Core web 應用程式，您可以使用**TokenValidationParameters**類別（特別是在某些合作夥伴案例中）來控制權杖驗證。 |
 | ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL JAVA](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | JAVA web 應用程式的支援 |
@@ -93,7 +93,7 @@ ms.locfileid: "76701598"
     // - "organizations" to sign in users in any work or school account
     // - "common" to sign in users with any work or school account or Microsoft personal account
     // - "consumers" to sign in users with a Microsoft personal account only
-    "TenantId": "[Enter the tenantId here]]",
+    "TenantId": "[Enter the tenantId here]",
 
     // Client ID (application ID) obtained from the Azure portal
     "ClientId": "[Enter the Client Id]",

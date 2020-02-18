@@ -95,8 +95,6 @@
           href: concepts-data-access-security-private-link.md
         - name: 資料加密
           href: concepts-data-encryption-mysql.md
-        - name: 資料加密
-          href: concepts-data-encryption-mysql.md
         - name: Azure AD 驗證
           href: concepts-azure-ad-authentication.md
     - name: 業務持續性
@@ -222,6 +220,8 @@
           href: howto-troubleshoot-query-performance.md
         - name: 如何使用 sys 結構描述中的檢視
           href: howto-troubleshoot-sys-schema.md
+        - name: 將資料加密進行疑難排解
+          href: howto-data-encryption-troubleshoot.md
     - name: 進階威脅防護
       items:
         - name: Azure 入口網站

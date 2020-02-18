@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/16/2020
+ms.date: 02/17/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c759b7f0467ddb961f44f27c2d2f18ed24d2cfca
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.openlocfilehash: fd6a24c768056c949c05b9e2444bd49ef743c0ef
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/17/2020
-ms.locfileid: "77372789"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425624"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -70,7 +70,7 @@ ms.locfileid: "77372789"
 | 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | LoadUri | 1:1 | 此字串包含內容定義之 HTML5 頁面的 URL。 |
-| RecoveryUri | 0:1 | 此字串包含 HTML 頁面的 URL，以顯示與內容定義相關的錯誤。 |
+| RecoveryUri | 1:1 | 此字串包含 HTML 頁面的 URL，以顯示與內容定義相關的錯誤。 |
 | DataUri | 1:1 | 此字串包含 HTML 檔案的相對 URL，該檔案為步驟提供了要叫用的使用者體驗。 |
 | 中繼資料 | 0:1 | 包含內容定義使用之中繼資料的機碼值組的集合。 |
 | LocalizedResourcesReferences | 0:1 | 當地語系化資源參考的集合。 使用此元素以自訂使用者介面的當地語系化與宣告屬性。 |
@@ -86,7 +86,7 @@ ms.locfileid: "77372789"
 | `unifiedssp` | 顯示一份表單，可供以電子郵件地址或使用者名稱為基礎的本機帳戶進行登入。 此值也提供 [讓我保持登入功能] 和 [忘記密碼？] 連結。 |
 | `unifiedssd` | 顯示一份表單，可供以電子郵件地址或使用者名稱為基礎的本機帳戶進行登入。 |
 | `multifactor` | 在註冊或登入期間，藉由使用簡訊或語音，驗證電話號碼。 |
-| `selfasserted` | 顯示一份表單，可供使用者建立或更新其設定檔。 |
+| `selfasserted` | 顯示從使用者收集資料的表單。 例如，可讓使用者建立或更新其設定檔。 |
 
 ### <a name="select-a-page-layout"></a>選取頁面配置
 

@@ -1,17 +1,17 @@
 ---
-title: 在 Azure 中建立 HTTP 觸發的 Python 函式
+title: 在 Azure Functions 中建立適用於 HTTP 要求的無伺服器 Python 函式
 description: 使用 Azure Functions 建立無伺服器 Python 程式碼並部署至雲端。
-ms.date: 01/15/2020
+ms.date: 02/11/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: c665f807d78c699423db457bf57dca2f16109913
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: a781e10cee4cf433de5e837490d901020a875205
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898575"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157885"
 ---
-# <a name="quickstart-create-an-http-triggered-python-function-in-azure"></a>快速入門：在 Azure 中建立 HTTP 觸發的 Python 函式
+# <a name="quickstart-create-a-python-function-in-azure-that-responds-to-http-requests"></a>快速入門：在 Azure 中建立可回應 HTTP 要求的 Python 函式
 
 在本文中，您會使用命令列工具建立可回應 HTTP 要求的 Python 函式。 在本機測試程式碼之後，您可以將其部署到 Azure Functions 的無伺服器環境。 完成本快速入門後，您的 Azure 帳戶中會產生幾美分或更少的少許費用。
 
@@ -107,7 +107,7 @@ py -m venv .venv
 
 如有需要，您可以跳到[在本機執行函式](#run-the-function-locally)，並於稍後再檢查檔案內容。
 
-### <a name="__init__py"></a>\_\_init\_\_.py
+#### <a name="__init__py"></a>\_\_init\_\_.py
 
 *\_\_init\_\_.py* 包含 `main()` Python 函式，此函式會根據 *function.json* 中的設定而觸發。
 
@@ -140,7 +140,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 針對 HTTP 觸發程序，函式會接收變數 `req` 中的要求資料，如 *function.json* 中所定義。 `req` 是 [azure.functions.HttpRequest 類別](/python/api/azure-functions/azure.functions.httprequest)的執行個體。 傳回物件 (在 function.json  中定義為 `$return`)，是 [azure.functions.HttpResponse 類別](/python/api/azure-functions/azure.functions.httpresponse)的執行個體。 若要深入了解，請參閱 [Azure Functions HTTP 觸發程序和繫結](functions-bindings-http-webhook.md)。
 
-### <a name="functionjson"></a>function.json
+#### <a name="functionjson"></a>function.json
 
 *function.json* 是一個組態檔，會定義函式的輸入和輸出 `bindings`，包括觸發程序類型。 如有需要，您可以變更 `scriptFile` 以叫用不同的 Python 檔案。
 
@@ -199,7 +199,7 @@ Http Functions:
 
 ## <a name="create-supporting-azure-resources-for-your-function"></a>為您的函式建立支援的 Azure 資源
 
-若要將您的函式程式碼部署至 Azure，您需要建立三個資源：
+若要將函式程式碼部署至 Azure，您必須先建立三個資源：
 
 - 資源群組，這是相關資源的邏輯容器。
 - Azure 儲存體帳戶，其可維護專案的狀態和其他資訊。

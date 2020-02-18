@@ -9,13 +9,13 @@ ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
-ms.date: 12/25/2019
-ms.openlocfilehash: 6f4fe941cc44211f9f5d5e77b11043257b43a8ea
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.date: 02/11/2020
+ms.openlocfilehash: 58adbc7607b0b32e79123b701c37f55ce7cc1d2e
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963282"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138121"
 ---
 # <a name="use-regression-to-predict-car-prices-with-azure-machine-learning-designer"></a>透過 Azure Machine Learning 設計工具使用迴歸來預測汽車價格
 
@@ -61,7 +61,7 @@ ms.locfileid: "76963282"
 
 機器學習的問題不盡相同。 常見的機器學習工作包括分類、叢集、迴歸和推薦系統，這每一個都可能需要不同的演算法。 您選擇的演算法通常取決於使用案例的需求。 在您挑選演算法之後，您需要調整其參數來訓練更精確的模型。 接著，您必須根據精確度、理解度和效率等計量來評估所有模型。
 
-由於此範例的目標是要預測汽車價格，而且因為標籤資料行 (價格) 包含實數，所以迴歸模型是不錯的選擇。 考慮到特徵的數目相對較小 (小於 100)，而且這些不是稀疏特徵，所以決策界限可能是非線性的。 因此，我們針對此管線使用**決策樹系迴歸**。
+由於此範例的目標是要預測汽車價格，而且因為標籤資料行 (價格) 是連續資料，所以迴歸模型是不錯的選擇。 我們會針對此管線使用**線性迴歸**。
 
 使用**分割資料**模組來隨機分割輸入資料，讓訓練資料集包含 70% 的原始資料，以及讓測試資料集包含 30% 的原始資料。
 

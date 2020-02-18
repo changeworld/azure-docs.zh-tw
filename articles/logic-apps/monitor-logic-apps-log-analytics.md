@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: 1948151dfa07e565a929b4506273e3f88f5408c4
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 3e41f92f9e41f7a05102e8c0e1c2edb81fa50bf3
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76907821"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426321"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-azure-logic-apps"></a>設定 Azure 監視器記錄和收集診斷資料以進行 Azure Logic Apps
 
@@ -21,7 +21,7 @@ ms.locfileid: "76907821"
 
 本文說明如何在您建立邏輯應用程式、如何安裝和設定 Logic Apps 管理解決方案，以及如何設定和建立 Azure 監視器記錄的查詢時，啟用 Log Analytics。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始之前，您需要[Log Analytics 工作區](../azure-monitor/platform/resource-logs-collect-workspace.md)。 如果您沒有工作區，請瞭解[如何建立 Log Analytics 工作區](../azure-monitor/learn/quick-create-workspace.md)。
 
@@ -145,7 +145,7 @@ ms.locfileid: "76907821"
    ![檢視邏輯應用程式的追蹤屬性](./media/monitor-logic-apps-log-analytics/logic-app-tracked-properties.png)
 
    > [!NOTE]
-   > 追蹤的屬性或已完成的事件可能會在您的 Log Analytics 工作區中顯示之前，遇到10-15 分鐘的延遲。
+   > 追蹤的屬性或已完成的事件在出現于 Log Analytics 工作區之前，可能會遇到10-15 分鐘的延遲。
    > 此外，此頁面上的**重新提交**功能目前無法使用。
 
 1. 若要篩選您的結果，您可以執行用戶端和伺服器端的篩選。

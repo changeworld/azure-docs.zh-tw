@@ -1,61 +1,55 @@
 ---
 title: 快速入門：建立、訓練及發佈知識庫 - QnA Maker
-titleSuffix: Azure Cognitive Services
-description: 本快速入門說明如何從自己的內容 (例如常見問題集或產品手冊) 建立 QnA Maker 知識庫 (KB)。 此範例中的 QnA Maker 知識庫是從簡單的常見問題集網頁建立而來，以回答 BitLocker 金鑰復原問題。
-author: diberry
-manager: nitinme
-services: cognitive-services
-ms.service: cognitive-services
-ms.subservice: qna-maker
+description: 您可以從自己的內容 (例如常見問題集或產品手冊) 建立 QnA Maker 知識庫 (KB)。 本文包含從簡單的常見問題集網頁建立 QnA Maker 知識庫的範例，以回答問題 QnA Maker。
 ms.topic: quickstart
-ms.date: 01/29/2020
-ms.author: diberry
-ms.openlocfilehash: a3bdc118be96630ebcf3bf63a2948976dc9b4261
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/08/2020
+ms.openlocfilehash: a4c4d9b2e8f4b816510fb35a75b3c9b8b2afa5e2
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901685"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108722"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>快速入門：建立、訓練及發佈您的 QnA Maker 知識庫
 
-您可以從自己的內容 (例如常見問題集或產品手冊) 建立 QnA Maker 知識庫 (KB)。 本文包含從簡單的常見問題集網頁建立 QnA Maker 知識庫的範例，以回答 BitLocker 金鑰復原問題。
+您可以從自己的內容 (例如常見問題集或產品手冊) 建立 QnA Maker 知識庫 (KB)。 本文包含從簡單的常見問題集網頁建立 QnA Maker 知識庫的範例，以回答問題 QnA Maker。
 
-加入閒聊特質，讓您的知識更貼近您的用戶。
-
-[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
-
-## <a name="prerequisite"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 > [!div class="checklist"]
 > * 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+> * 在 Azure 入口網站中所建立的 QnA Maker [資源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)。 請記住您在建立資源時選取的 Azure Active Directory 識別碼、訂用帳戶、QnA 資源名稱。
 
-## <a name="create-a-new-qna-maker-knowledge-base"></a>建立新的 QnA Maker 知識庫
+## <a name="create-your-first-qna-maker-knowledge-base"></a>建立第一個 QnA Maker 知識庫
 
 1. 利用您的 Azure 認證登入 [QnAMaker.ai](https://QnAMaker.ai) 入口網站。
 
-1. 在 QnA Maker 入口網站上，選取 [建立知識庫]  。
+1. 在 QnA Maker 入口網站中，選取 [建立知識庫]  。
 
-1. 在 [建立]  頁面上，選取 [建立 QnA 服務]  。 系統會將您導向 [Azure 入口網站](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)，以在您的訂用帳戶中設定 QnA Maker 服務。
+1. 如果您已經有 QnA Maker 資源，請在 [建立]  頁面上略過 [步驟 1]  。
 
-1. 在 Azure 入口網站中，建立資源。 請記住您在建立資源時選取的 Azure Active Directory 識別碼、訂用帳戶、QnA 資源名稱。
-1. 返回 QnA Maker 入口網站，重新整理入口網站中的網頁，以繼續建立您的知識庫。 選取現有的租用戶、訂用帳戶和新資源。 選取語言。 這會是此 QnA Maker 服務中所有知識庫所使用的語言。
+    如果您尚未建立資源，則請選取 [建立 QnA 服務]  。 系統會將您導向 [Azure 入口網站](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)，以在您的訂用帳戶中設定 QnA Maker 服務。 請記住您在建立資源時選取的 Azure Active Directory 識別碼、訂用帳戶、QnA 資源名稱。
+
+    當您在 Azure 入口網站中建立好資源時，請回到 QnA Maker 入口網站、重新整理瀏覽器頁面，然後繼續 [步驟 2]  。
+
+1. 在 [步驟 3]  中，選取您的 Active directory、訂用帳戶、服務 (資源)，以及在服務中所建立所有知識庫的語言。
 
    ![選取 QnA Maker 服務知識庫的螢幕擷取畫面](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
 
-1. 將您的知識庫命名為**我的範例 QnA KB**。
+1. 在 [步驟 3]  中，將知識庫命名為**我的範例 QnA KB**。
 
-1. 新增範例 Word 作為 URL：
+1. 在 [步驟 4]  中，使用下表進行設定：
 
-    `https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`
+    |設定|值|
+    |--|--|
+    |**啟用從 URL、.pdf 或 .docx 檔案進行多回合擷取。**|已檢查|
+    |**預設答案文字**| `Quickstart - default answer not found.`|
+    |**+ 新增 URL**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
+    |**閒聊**|選取 [Professional] |
 
-1. 選取 `+ Add URL`。
+1. 在 [步驟 5]  中，選取 [建立知識庫]  。
 
-1. 將「專業」  **閒聊**新增至您的 KB。
-
-1. 選取 [建立您的 KB]  。
-
-    擷取程序需要幾分鐘的時間來讀取文件並找出問題和回答。
+    擷取程序需要一點時間來讀取文件並找出問題和回答。
 
     在 QnA Maker 成功建立知識庫之後，[知識庫]  頁面隨即開啟。 您可以在此頁面上編輯知識庫的內容。
 
@@ -78,7 +72,7 @@ ms.locfileid: "76901685"
 
 ## <a name="save-and-train"></a>儲存並定型
 
-在右上方，選取 [儲存並定型]  來儲存您的編輯內容並將 QnA Maker 模型定型。 除非儲存編輯內容，否則不會保留。
+在右上方，選取 [儲存並定型]  來儲存您的編輯內容並將 QnA Maker 定型。 除非儲存編輯內容，否則不會保留。
 
 ## <a name="test-the-knowledge-base"></a>測試知識庫
 
@@ -145,13 +139,16 @@ ms.locfileid: "76901685"
 
 在發佈知識庫之後，您已建立 Bot 並測試 Bot。
 
-這一切都是在幾分鐘內完成，而不需要撰寫任何程式碼和清除內容。
+這一切都是在幾分鐘內完成，而不需要撰寫任何程式碼或清除內容。
 
 ## <a name="clean-up-resources"></a>清除資源
 
-在 Azure 入口網站中清除 QnA Maker 與 Bot 架構資源。
+如果您不想繼續進行下一個快速入門，請刪除 Azure 入口網站中的 QnA Maker 和 Bot Framework 資源。
 
 ## <a name="next-steps"></a>後續步驟
+
+> [!div class="nextstepaction"]
+> [新增具有中繼資料的問題](add-question-metadata-portal.md)
 
 其他資訊：
 
@@ -159,5 +156,4 @@ ms.locfileid: "76901685"
 * QnA Maker [資料來源](../concepts/knowledge-base.md)。
 * [Bot 資源組態設定](../tutorials/create-qna-bot.md)。
 
-> [!div class="nextstepaction"]
-> [新增具有中繼資料的問題](add-question-metadata-portal.md)
+

@@ -3,18 +3,18 @@ title: 建立 Azure IoT Central 應用程式 | Microsoft Docs
 description: 建立新的 Azure IoT Central 應用程式。 使用免費定價方案或其中一個標準定價方案來建立應用程式。
 author: viv-liu
 ms.author: viviali
-ms.date: 08/02/2019
+ms.date: 02/12/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: 09ff84bf17bbc07ee86e90f3985a949f70d9fe27
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: d69a761df8066b4a84312c0c3ae8be5a79490960
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77018290"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169467"
 ---
 # <a name="create-an-azure-iot-central-application"></a>建立 Azure IoT Central 應用程式
 
@@ -40,7 +40,7 @@ ms.locfileid: "77018290"
 
     ![Azure IoT Central 的建立應用程式頁面](media/quick-deploy-iot-central/iotcentralcreate-custom.png)
 
-    ![Azure IoT Central 計費資訊](media/quick-deploy-iot-central/iotcentralcreate-billinginfo-pnp.png)
+    ![Azure IoT Central 計費資訊](media/quick-deploy-iot-central/iotcentralcreate-billinginfo.png)
 
     > [!NOTE]
     > 如果您在上一頁選擇 [自訂應用程式]  ，就會看到 [應用程式範本]  下拉式清單。 在這裡，您可以在自訂和舊版範本之間進行切換。 您可能也會看到已提供給您的組織的其他範本。
@@ -48,7 +48,7 @@ ms.locfileid: "77018290"
 1. 選擇使用 7 天免費試用定價方案或其中一個標準定價方案來建立此應用程式：
 
     - 使用「免費」  方案建立的應用程式可以免費試用七天，且最多可支援五個裝置。 您可以在到期前，隨時將其轉換為使用標準定價方案。
-    - 您使用「標準」  方案建立的應用程式會根據每個裝置來計費，您可以選擇**標準 1** 或**標準 2** 定價方案，而且前兩個裝置免費。 若要深入了解免費和標準定價方案，請參閱 [Azure IoT Central 定價頁面](https://azure.microsoft.com/pricing/details/iot-central/)。 如果您建立標準版應用程式，則必須選取 [目錄]  、[Azure 訂用帳戶]  和 [位置]  ：
+    - 您使用「標準」  方案建立的應用程式會根據每個裝置來計費，您可以選擇**標準 1** 或**標準 2** 定價方案，而且前兩個裝置免費。 若要深入了解免費和標準定價方案，請參閱 [Azure IoT Central 定價頁面](https://azure.microsoft.com/pricing/details/iot-central/)。 如果您使用標準定價方案來建立應用程式，則必須選取 [目錄]  、[Azure 訂用帳戶]  和 [位置]  ：
         - [目錄]  是您用來建立應用程式的 Azure Active Directory。 Azure Active Directory 包含使用者身分識別、認證和其他組織資訊。 如果您沒有 Azure Active Directory，系統會在您建立 Azure 訂用帳戶時為您建立一個租用戶。
         - *Azure 訂用帳戶*可讓您建立 Azure 服務執行個體。 IoT Central 會在您的訂用帳戶中佈建資源。 如果您沒有 Azure 訂用帳戶，則可以在 [Azure 註冊頁面](https://aka.ms/createazuresubscription)上免費建立一個。 建立 Azure 訂用帳戶之後，請瀏覽回到 [新增應用程式]  頁面。 新的訂用帳戶現在會出現在 [Azure 訂用帳戶]  下拉式清單中。
         - [位置]  是您要在其中建立應用程式的[地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)。 一般而言，您應選擇實際上與您的裝置最接近的位置，以取得最佳效能。 選擇位置後，就無法再將應用程式移到不同的位置。

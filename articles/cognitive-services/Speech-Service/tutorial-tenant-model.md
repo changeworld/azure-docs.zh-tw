@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: tutorial
-ms.date: 10/26/2019
+ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 4fec6b93ad206ae3052df5f7763f3c146b7aa680
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 02ae140568150b0db8ebdea065ee683e4f4eec9c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446793"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189008"
 ---
 # <a name="tutorial-create-a-tenant-model-preview"></a>教學課程：建立租用戶模型 (預覽)
 
@@ -39,11 +39,11 @@ ms.locfileid: "75446793"
 
 1. 登入 [Microsoft 365 系統管理中心](https://admin.microsoft.com)。
 
-1. 在左窗格中，選取 [設定]  ，選取 [應用程式]  ，然後選取 [Azure 語音服務]  。
+1. 在左側窗格中選取 [設定]  ，然後從巢狀功能表中選取 [設定]  ，最後從主視窗中選取 [Azure 語音服務]  。
 
    ![服務與增益集窗格](media/tenant-language-model/tenant-language-model-enrollment.png)
 
-1. 選取 [允許全組織的語言模型]  核取方塊，然後選取 [儲存變更]  。 
+1. 選取 [允許全組織的語言模型]  核取方塊，然後選取 [儲存變更]  。
 
    ![Azure 語音服務窗格](media/tenant-language-model/tenant-language-model-enrollment-2.png)
 
@@ -79,11 +79,11 @@ ms.locfileid: "75446793"
 
    > [!NOTE]
    > 在北美洲的 Office 365 企業客戶有資格建立租用戶模型 (英文)。 如果您是客戶加密箱、客戶金鑰或 Office 365 政府版客戶，則無法使用此功能。 若要判斷您是「客戶加密箱」或「客戶金鑰」客戶，請參閱：
-   > * [客戶加密箱](https://docs.microsoft.com/office365/securitycompliance/controlling-your-data-using-customer-key#FastTrack) \(部分機器翻譯\)
-   > * [客戶金鑰](https://docs.microsoft.com/microsoft-365/compliance/customer-lockbox-requests) \(部分機器翻譯\)
-   > * [Office 365 政府版](https://www.microsoft.com/microsoft-365/government)
+   > * [客戶加密箱](/microsoft-365/compliance/customer-lockbox-requests) \(部分機器翻譯\)
+   > * [客戶金鑰](/microsoft-365/compliance/customer-key-overview) \(部分機器翻譯\)
+   > * [Office 365 政府版](/microsoft-365/government)
 
-1. 選取 [加入]  。 
+1. 選取 [加入]  。
 
    當您的租用戶模型準備就緒時，您會收到確認電子郵件訊息，其中包含進一步的指示。
 

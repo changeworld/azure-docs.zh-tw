@@ -1,14 +1,14 @@
 ---
-title: 範例 - FedRAMP High 藍圖 - 控制項對應
+title: FedRAMP 高等級藍圖範例控制
 description: FedRAMP High 藍圖範例的控制項對應。 每個控制項都會對應至一或多個可協助評量的 Azure 原則。
 ms.date: 01/31/2020
 ms.topic: sample
-ms.openlocfilehash: 4b4d644497eb98ed88f57803e99cf27a419523fe
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: cceca23e4bdc749c553eaf41b5f9599be3c9bf7d
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76941346"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150607"
 ---
 # <a name="control-mapping-of-the-fedramp-high-blueprint-sample"></a>FedRAMP High 藍圖範例的控制項對應
 
@@ -261,7 +261,7 @@ Azure 的分散式阻斷服務 (DDoS) 標準層提供基本服務層以外的額
 
 - 應強化與虛擬機器互動的網際網路網路安全性群組規則
 - 應限制透過網際網路面向端點存取
-- 應在 IaaS 上強化 Web 應用程式的 NSG 規則
+- 在與您 VM 建立關聯的網路安全性群組上應限制 Web 連接埠
 - 稽核不受限制的儲存體帳戶網路存取
 
 ## <a name="sc-7-3-boundary-protection--access-points"></a>SC-7 (3) 界限保護 | 存取點

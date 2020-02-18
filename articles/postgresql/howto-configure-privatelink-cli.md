@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 19dd0051985231a0274baf550755cc61782ce740
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: d982771d5c7ebc864991026e399e9648d333cc8f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281303"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425522"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-preview-using-cli"></a>使用 CLI 建立和管理適用於 PostgreSQL 的 Azure 資料庫單一伺服器（預覽）的私人連結
 
@@ -131,7 +131,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 1. 選取 [下載 RDP 檔案]。 Azure 會建立一個「遠端桌面通訊協定」( *.rdp*) 檔案，並下載至您的電腦。
 
-1. 開啟下載的 .rdp* 檔案。
+1. 開啟 *downloaded.rdp* 檔案。
 
     1. 如果出現提示，請選取 [連接]。
 
@@ -140,7 +140,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
         > [!NOTE]
         > 您可能需要選取 [其他選擇] > [使用不同的帳戶]，以指定您在建立 VM 時輸入的認證。
 
-1. 選取 [確定]。
+1. 選取 **\[確定\]** 。
 
 1. 您可能會在登入過程中收到憑證警告。 如果您收到憑證警告，請選取 [是] 或 [繼續]。
 
@@ -159,30 +159,31 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
     Non-authoritative answer:
     Name:    mydemopostgresserver.privatelink.postgres.database.azure.com
     Address:  10.1.3.4
+    ```
 
-3. Test the private link connection for the PostgreSQL server using any available client. In the example below I have used [Azure Data studio](https://docs.microsoft.com/sql/azure-data-studio/download?view=sql-server-ver15) to do the operation.
+3. 使用任何可用的用戶端來測試于 postgresql 伺服器的私人連結連線。 在下列範例中，我已使用[Azure Data studio](https://docs.microsoft.com/sql/azure-data-studio/download?view=sql-server-ver15)來執行操作。
 
-4. In **New connection**, enter or select this information:
+4. 在 [**新增連接**] 中，輸入或選取這項資訊：
 
-    | Setting | Value |
+    | 設定 | 值 |
     | ------- | ----- |
-    | Server type| Select **PostgreSQL**.|
-    | Server name| Select *mydemopostgresserver.privatelink.postgres.database.azure.com* |
-    | User name | Enter username as username@servername which is provided during the PostgreSQL server creation. |
-    |Password |Enter a password provided during the PostgreSQL server creation. |
-    |SSL|Select **Required**.|
+    | 伺服器類型| 選取 [**于 postgresql**]。|
+    | 伺服器名稱| 選取*mydemopostgresserver.privatelink.postgres.database.azure.com* |
+    | [使用者名稱] | 輸入使用者名稱，做為于 postgresql 伺服器建立期間所提供的 username@servername。 |
+    |密碼 |輸入于 postgresql 伺服器建立期間所提供的密碼。 |
+    |SSL|選取 [**必要**]。|
     ||
 
-5. Select Connect.
+5. 選取 [連線]。
 
-6. Browse databases from left menu.
+6. 瀏覽左側功能表中的資料庫。
 
-7. (Optionally) Create or query information from the postgreSQL server.
+7. 也從于 postgresql 伺服器建立或查詢資訊。
 
-8. Close the remote desktop connection to myVm.
+8. 關閉對 myVm 的遠端桌面連線。
 
-## Clean up resources 
-When no longer needed, you can use az group delete to remove the resource group and all the resources it has: 
+## <a name="clean-up-resources"></a>清除資源 
+您可以使用 az group delete 來移除不再需要的資源群組，以及其所具有的所有資源： 
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes 

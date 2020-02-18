@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 01/17/2020
 ms.author: tagore
-ms.openlocfilehash: c4cbe2a99de97b2938d494e80d410a44c4143629
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 85fb87e23fa11781587572e836d1439dd813170e
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026831"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425029"
 ---
 # <a name="troubleshooting-applications-that-dont-support-tls-12"></a>針對不支援 TLS 1.2 的應用程式進行疑難排解
 本文說明如何啟用舊版的 TLS 通訊協定（TLS 1.0 和1.1），以及套用舊版的加密套件，以支援 Windows Server 2019 雲端服務 web 和背景工作角色上的其他通訊協定。 
@@ -27,7 +27,7 @@ ms.locfileid: "77026831"
 我們瞭解，雖然我們正在採取步驟來取代 TLS 1.0 和 TLS 1.1，但我們的客戶可能需要支援較舊的通訊協定和加密套件，直到他們可以規劃其淘汰為止。  雖然我們不建議您重新啟用這些舊版值，但我們會提供指引來協助客戶。 我們鼓勵客戶在執行本文所述的變更之前，先評估回歸的風險。 
 
 > [!NOTE]
-> 客體作業系統系列6版本藉由停用 1.0/1.0 加密來強制執行 TLS 1.2。 
+> 客體作業系統系列6版本藉由停用 1.0/1.1 加密來強制執行 TLS 1.2。 
 
   
 ## <a name="dropping-support-for-tls-10-tls-11-and-older-cipher-suites"></a>捨棄 TLS 1.0、TLS 1.1 和較舊的加密套件的支援 

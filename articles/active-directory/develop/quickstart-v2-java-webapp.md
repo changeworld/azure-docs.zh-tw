@@ -11,16 +11,14 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: 7534d425a9a7e00c4e57c0d9faea0750d311dcaf
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 3e1369901e259af6722d9e5a14fababac80f1d02
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75549936"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160554"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>快速入門：將「使用 Microsoft 登入」新增至 Java Web 應用程式
-
-[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
 在本快速入門中，您將了解如何整合 Java Web 應用程式與 Microsoft 身分識別平台。 您的應用程式會讓使用者登入、取得存取權杖來呼叫 Microsoft Graph API，以及對 Microsoft Graph API 提出要求。
 
@@ -61,7 +59,7 @@ ms.locfileid: "75549936"
 >    - 目前先將 [重新導向 URI]  留白，然後選取 [註冊]  。
 > 1. 在 [概觀]  頁面上，尋找應用程式的 [應用程式 (用戶端) 識別碼]  和 [目錄 (租用戶) 識別碼]  值。 請複製這些值以供後續使用。
 > 1. 從功能表中選取 [驗證]  ，然後新增下列資訊：
->    - 在 [重新導向 URL]  中新增 `http://localhost:8080/msal4jsample/secure/aad` 和 `http://localhost:8080/msal4jsample/graph/me`。
+>    - 在 [重新導向 URL]  中新增 `https://localhost:8080/msal4jsample/secure/aad` 和 `https://localhost:8080/msal4jsample/graph/me`。
 >    - 選取 [儲存]  。
 > 1. 從功能表中選取 [憑證和秘密]  ，然後在 [用戶端密碼]  區段中，按一下 [新增用戶端密碼]  ：
 >
@@ -75,7 +73,7 @@ ms.locfileid: "75549936"
 >
 > 若要讓本快速入門中的程式碼範例能正常運作，您需要：
 >
-> 1. 將回覆 URL 新增為 `http://localhost:8080/msal4jsamples/secure/aad` 和 `http://localhost:8080/msal4jsamples/graph/me`。
+> 1. 將回覆 URL 新增為 `https://localhost:8080/msal4jsamples/secure/aad` 和 `https://localhost:8080/msal4jsamples/graph/me`。
 > 1. 建立用戶端密碼。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [為我進行這些變更]()
@@ -91,23 +89,36 @@ ms.locfileid: "75549936"
 
  1. 將 ZIP 檔案解壓縮至本機資料夾。
  1. 如果您使用整合式開發環境，請在您慣用的 IDE 中開啟範例 (選用)。
-
  1. 開啟位於 src/main/resources/ 資料夾中的 application.properties 檔案，並將 *aad.clientId*、*aad.authority* 和 *aad.secretKey* 欄位的值分別取代為 [應用程式識別碼]  、[租用戶識別碼]  和 [用戶端密碼]  的值，如下所示：
 
     ```file
     aad.clientId=Enter_the_Application_Id_here
     aad.authority=https://login.microsoftonline.com/Enter_the_Tenant_Info_Here/
     aad.secretKey=Enter_the_Client_Secret_Here
-    aad.redirectUriSignin=http://localhost:8080/msal4jsample/secure/aad
-    aad.redirectUriGraph=http://localhost:8080/msal4jsample/graph/me
+    aad.redirectUriSignin=https://localhost:8080/msal4jsample/secure/aad
+    aad.redirectUriGraph=https://localhost:8080/msal4jsample/graph/me
     ```
 
-> [!div renderon="docs"]
-> 其中：
->
-> - `Enter_the_Application_Id_here` - 是您註冊的應用程式所具備的應用程式識別碼。
-> - `Enter_the_Client_Secret_Here` - 是您在 [憑證與祕密]  中為您所註冊的應用程式建立的 [用戶端密碼]  。
-> - `Enter_the_Tenant_Info_Here` - 是您所註冊之應用程式的 [目錄 (租用戶) 識別碼]  值。
+    > [!div renderon="docs"]
+    > 其中：
+    >
+    > - `Enter_the_Application_Id_here` - 是您註冊的應用程式所具備的應用程式識別碼。
+    > - `Enter_the_Client_Secret_Here` - 是您在 [憑證與祕密]  中為您所註冊的應用程式建立的 [用戶端密碼]  。
+    > - `Enter_the_Tenant_Info_Here` - 是您所註冊之應用程式的 [目錄 (租用戶) 識別碼]  值。
+
+ 1. 若要搭配使用 https 與 localhost，請填入 server.ssl.key 屬性。 若要產生自我簽署憑證，請使用 keytool 公用程式 (隨附於 JRE)。
+
+   ```
+   Example: 
+   keytool -genkeypair -alias testCert -keyalg RSA -storetype PKCS12 -keystore keystore.p12 -storepass password
+
+   server.ssl.key-store-type=PKCS12  
+   server.ssl.key-store=classpath:keystore.p12  
+   server.ssl.key-store-password=password  
+   server.ssl.key-alias=testCert 
+   ```
+
+   將產生的金鑰儲存區檔案放在「資源」資料夾中。
 
 #### <a name="step-4-run-the-code-sample"></a>步驟 4：執行程式碼範例
 
@@ -117,11 +128,11 @@ ms.locfileid: "75549936"
 
 ##### <a name="running-from-ide"></a>從 IDE 執行
 
-如果您從 IDE 執行 Web 應用程式，請按一下 [執行]，然後瀏覽至專案的首頁。 在此範例中，標準首頁 URL 為 http://localhost:8080
+如果您從 IDE 執行 Web 應用程式，請按一下 [執行]，然後瀏覽至專案的首頁。 在此範例中，標準首頁 URL 為 https://localhost:8080 。
 
 1. 在首頁上選取 [登入]  按鈕，以重新導向至 Azure Active Directory，並提示使用者輸入其認證。
 
-1. 使用者通過驗證後，會重新導向至 *http://localhost:8080/msal4jsample/secure/aad* 。 他們現在已登入，且頁面將會顯示登入帳戶的相關資訊。 範例 UI 有下列按鈕：
+1. 使用者通過驗證後，會重新導向至 *https://localhost:8080/msal4jsample/secure/aad* 。 他們現在已登入，且頁面將會顯示登入帳戶的相關資訊。 範例 UI 有下列按鈕：
     - 登出  ：從應用程式登出目前的使用者，並將他們重新導向至首頁。
     - *顯示使用者資訊*：取得 Microsoft Graph 的權杖，並使用包含該權杖的要求呼叫 Microsoft Graph，這會傳回與已登入的使用者有關的基本資訊。
 

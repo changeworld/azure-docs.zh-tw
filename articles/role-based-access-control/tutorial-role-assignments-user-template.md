@@ -1,5 +1,5 @@
 ---
-title: 教學課程 - 使用 RBAC 和 Resource Manager 範本為使用者授與 Azure 資源的存取權
+title: 教學課程：使用 RBAC 和 Resource Manager 範本為使用者授與 Azure 資源的存取權
 description: 在本教學課程中，了解如何使用角色型存取控制 (RBAC) 和 Azure Resource Manager 範本為使用者授與 Azure 資源的存取權。
 services: role-based-access-control,azure-resource-manager
 documentationCenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 05/15/2019
 ms.author: rolyon
-ms.openlocfilehash: ed143f85b4372348baa1d74b4ec7a7447943a74f
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 96ca4f65d2def5f5004388c533410f09cc2a71fa
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74418483"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138208"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-resource-manager-template"></a>教學課程：使用 RBAC 和 Resource Manager 範本為使用者授與 Azure 資源的存取權
 
@@ -34,7 +34,7 @@ ms.locfileid: "74418483"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要新增和移除角色指派，您必須具有：
 

@@ -3,22 +3,22 @@ title: 將您的 Azure 帳戶升級
 description: 說明如何將您的 Azure 帳戶升級。
 keywords: 隨用隨付升級
 author: bandersmsft
-manager: jureid
+manager: sasrin
 tags: billing
 ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/01/2019
+ms.date: 02/10/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3e1e99313454c8352b96b8f11ec35f482521f7b5
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: aa9e4c60222f5dd0f2991f2b0085c00a34d1dd7a
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75989770"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134539"
 ---
 # <a name="upgrade-your-azure-free-account-or-azure-for-students-starter-account"></a>將您的 Azure 免費帳戶或 Azure 學生入門版帳戶升級
 
@@ -30,7 +30,7 @@ ms.locfileid: "75989770"
 
 ## <a name="upgrade-your-azure-free-account"></a>將您的 Azure 免費帳戶升級
 
-當您將 Azure 免費帳戶升級時，您可剩餘的點數保留整整 30 天 (從註冊時算起)。 例如：如果您在 11 月 1 日註冊並於 11 月 5 日升級，則任何未使用的點數都可使用到 11 月 30 日為止。 您也可以在升級後的 12 個月內存取免費服務。
+當您將 Azure 免費帳戶升級時，您可剩餘的點數保留整整 30 天 (從註冊時算起)。 例如：如果您在 11 月 1 日註冊，並在 11 月 5 日升級，則任何未使用的信用額度將可使用到 11 月 30 日為止。 您也可以在升級後的 12 個月內存取免費服務。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)
 1. 尋找**訂用帳戶**。

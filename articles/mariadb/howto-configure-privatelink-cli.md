@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 2d39afcea056c76b6c9672e1963d7529fbfce549
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 19613ab917d303863a8d90133bcce2e1353289c1
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280929"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426202"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-preview-using-cli"></a>使用 CLI 建立和管理適用於 MariaDB 的 Azure 資料庫（預覽）的私用連結
 
@@ -131,7 +131,7 @@ az network private-dns record-set a add-record --record-set-name mydemoserver --
 
 1. 選取 [下載 RDP 檔案]。 Azure 會建立一個「遠端桌面通訊協定」( *.rdp*) 檔案，並下載至您的電腦。
 
-1. 開啟下載的 .rdp* 檔案。
+1. 開啟 *downloaded.rdp* 檔案。
 
     1. 如果出現提示，請選取 [連接]。
 
@@ -140,7 +140,7 @@ az network private-dns record-set a add-record --record-set-name mydemoserver --
         > [!NOTE]
         > 您可能需要選取 [其他選擇] > [使用不同的帳戶]，以指定您在建立 VM 時輸入的認證。
 
-1. 選取 [確定]。
+1. 選取 **\[確定\]** 。
 
 1. 您可能會在登入過程中收到憑證警告。 如果您收到憑證警告，請選取 [是] 或 [繼續]。
 
@@ -159,27 +159,28 @@ az network private-dns record-set a add-record --record-set-name mydemoserver --
     Non-authoritative answer:
     Name:    mydemoserver.privatelink.mariadb.database.azure.com
     Address:  10.1.3.4
+    ```
 
-3. Test the private link connection for the MariaDB server using any available client. In the example below I have used [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) to do the operation.
+3. 使用任何可用的用戶端來測試適用于 mariadb 伺服器的私人連結連線。 在下列範例中，我使用了[MySQL 工作臺](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html)來執行操作。
 
-4. In **New connection**, enter or select this information:
+4. 在 [**新增連接**] 中，輸入或選取這項資訊：
 
-    | Setting | Value |
+    | 設定 | 值 |
     | ------- | ----- |
-    | Connection Name| Select the connection name of your choice.|
-    | Hostname | Select *mydemoserver.privatelink.mariadb.database.azure.com* |
-    | Username | Enter username as *username@servername* which is provided during the MariaDB server creation. |
-    | Password | Enter a password provided during the MariaDB server creation. |
+    | 連線名稱| 選取您選擇的 [連接名稱]。|
+    | 主機名稱 | 選取*mydemoserver.privatelink.mariadb.database.azure.com* |
+    | 使用者名稱 | 輸入使用者名稱，做為適用于 mariadb 伺服器建立期間所提供的 *username@servername* 。 |
+    | 密碼 | 輸入適用于 mariadb 伺服器建立期間所提供的密碼。 |
     ||
 
-5. Select **Test Connection** or **OK**.
+5. 選取 [**測試連接** **] 或 [確定]** 。
 
-6. (Optionally) Browse databases from left menu and Create or query information from the MariaDB database
+6. 也從左側功能表流覽資料庫，並從適用于 mariadb 資料庫建立或查詢資訊
 
-8. Close the remote desktop connection to myVm.
+8. 關閉對 myVm 的遠端桌面連線。
 
-## Clean up resources 
-When no longer needed, you can use az group delete to remove the resource group and all the resources it has: 
+## <a name="clean-up-resources"></a>清除資源 
+您可以使用 az group delete 來移除不再需要的資源群組，以及其所具有的所有資源： 
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes 

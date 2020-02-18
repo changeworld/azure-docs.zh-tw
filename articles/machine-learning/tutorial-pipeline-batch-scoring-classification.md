@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 11/04/2019
-ms.openlocfilehash: 4850a58ae96b9fc5e8293efbac0de447915289ca
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.date: 02/10/2020
+ms.openlocfilehash: 3dc0af3f0d1236e902f6fa845fae95e3f2a500d1
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763346"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116460"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>教學課程：建置 Azure Machine Learning 管線進行批次評分
 
@@ -40,7 +40,7 @@ ms.locfileid: "75763346"
 ## <a name="prerequisites"></a>Prerequisites
 
 * 如果您還沒有 Azure Machine Learning 工作區或 Notebook 虛擬機器，請完成[設定教學課程的第 1 部分](tutorial-1st-experiment-sdk-setup.md)。
-* 完成設定教學課程之後，請使用相同的 Notebook 伺服器開啟 *tutorials/tutorial-pipeline-batch-scoring-classification.ipynb* Notebook。
+* 完成設定教學課程之後，請使用相同的筆記本伺服器開啟 tutorials/machine-learning-pipelines-advanced/tutorial-pipeline-batch-scoring-classification.ipynb  筆記本。
 
 如果您想要在自己的[本機環境](how-to-configure-environment.md#local)中執行設定教學課程，您可以在 [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 上存取教學課程。 執行 `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-pipeline-steps pandas requests` 以取得必要套件。
 

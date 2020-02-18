@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: 6fd9166168a5b21900aa49d42a1dd5b81039dbcd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c2a26f2f40e0312fbfa0962e69ddfd0cfdabad5f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428769"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191288"
 ---
 # <a name="quickstart-create-your-first-workflow-by-using-azure-logic-apps---azure-portal"></a>快速入門：使用 Azure Logic Apps 建立第一個工作流程 - Azure 入口網站
 
@@ -116,7 +116,7 @@ ms.locfileid: "75428769"
 1. 如果您選取的電子郵件連接器提示您驗證您的身分識別，請立即完成該步驟，以建立邏輯應用程式與電子郵件服務之間的連線。
 
    > [!NOTE]
-   > 在這個此特定的範例中，您要手動驗證您的身分識別。 不過，需要驗證的連接器會因其支援的驗證類型而有所不同。 您也可以選擇設定您想要處理驗證的方式。 例如，當您使用 Azure Resource Manager 範本進行部署時，可以將您想要經常或輕鬆變更的輸入 (例如連線資訊) 參數化並保護其安全。 如需詳細資訊，請參閱下列主題：
+   > 在這個此特定的範例中，您要手動驗證您的身分識別。 不過，需要驗證的連接器會因其支援的驗證類型而有所不同。 您也可以選擇設定您想要處理驗證的方式。 例如，當您使用 Azure Resource Manager 範本進行部署時，可以將您想要經常或輕鬆變更的輸入 (例如連線資訊) 參數化並提高輸入資料的安全性。 如需詳細資訊，請參閱下列主題：
    >
    > * [部署的範本參數](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#template-parameters)
    > * [授權 OAuth 連接](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md#authorize-oauth-connections)

@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: a2a65c6fcca4a037408c6b7e780708623aebed2b
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: e53bd3deae5ccd7339c7a6d491dc4ff0da44a277
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212240"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426219"
 ---
 # <a name="traffic-analytics"></a>流量分析
 
@@ -69,8 +69,8 @@ Azure 虛擬網路具有 NSG 流量記錄，可為您了解透過與個別網路
 * 美國西部
 * 美國西部 2
 * 法國中部
-* 歐洲西部
-* 歐洲北部
+* 西歐
+* 北歐
 * 巴西南部
 * 英國西部
 * 英國南部
@@ -100,8 +100,8 @@ Log Analytics 工作區必須存在於下列區域：
 * 美國西部 2
 * 美國中部
 * 法國中部
-* 歐洲西部
-* 歐洲北部
+* 西歐
+* 北歐
 * 巴西南部
 * 英國西部
 * 英國南部
@@ -184,9 +184,6 @@ New-AzStorageAccount `
 2. 選取 [*第2版*] 作為 [**流量記錄版本**]。 第 2 版包含流量工作階段統計資料 (位元組和封包)
 3. 選取用來儲存流量記錄的現有儲存體帳戶。 如果您想要永久儲存資料，請將值設為 *0*。 您的儲存體帳戶會產生 Azure 儲存體費用。 請確定您的儲存體未將 [Data Lake Storage Gen2 階層式命名空間] 設定為 [true]。
 4. 將 [保留] 設為您要儲存資料的天數。
-> [!IMPORTANT]
-> 目前有一個問題是，系統不會根據保留原則設定從 Blob 儲存體自動刪除網路監看員的[網路安全性群組 (NSG) 流量記錄](network-watcher-nsg-flow-logging-overview.md)。 如果您有現有的非零保留原則，建議您定期刪除超過其保留期間的儲存體 Blob 以避免產生任何費用。 如需如何刪除 NSG 流量記錄儲存體 Blob 的詳細資訊，請參閱[刪除 NSG 流量記錄儲存體 Blob](network-watcher-delete-nsg-flow-log-blobs.md)。
-
 5. 針對 [流量分析狀態]，選取 [開啟]。
 6. 選取 [處理間隔]。 根據您的選擇，會從儲存體帳戶收集流量記錄，並由流量分析進行處理。 您可以選擇每隔1小時或每隔10分鐘的處理間隔。 
 7. 選取現有的 Log Analytics (OMS) 工作區，或選取 [建立新的工作區] 以建立新工作區。 流量分析會使用 Log Analytics 工作區來儲存已彙總並編製索引的資料，而這些資料後續將用來產生分析。 如果您選取現有的工作區時，該工作區必須存在於其中一個[支援區域](#supported-regions-log-analytics-workspaces)中，並且已升級至新的查詢語言。 如果您不想要升級現有的工作區，或是沒有支援區域中的工作區，請建立新的工作區。 如需關於查詢語言的詳細資訊，請參閱 [Azure Log Analytics 升級為新的記錄搜尋](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。

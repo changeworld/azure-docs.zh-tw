@@ -7,13 +7,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
-ms.date: 06/12/2019
-ms.openlocfilehash: b04cc3a5e3a5680f7a16e890c39a4a7d83002bd7
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.date: 02/10/2020
+ms.openlocfilehash: a77771880da962298f6e80782e5f3e251f5f4641
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74321666"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122363"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>什麼是 Azure HDInsight 中的 ML 服務
 
@@ -23,7 +23,7 @@ HDInsight 上的 ML 服務所提供的最新功能，適用於幾乎任何大小
 
 叢集的邊緣節點提供便利的地方，以便連線到叢集以及執行 R 指令碼。 有了邊緣節點之後，即可選擇跨邊緣節點伺服器的核心，執行 ScaleR 的平行分散式函數。 您也可以使用 ScaleR 的 Hadoop Map Reduce 或 Apache Spark 計算內容，跨越叢集的節點來執行這些函數。
 
-可以下載分析所產生的模型或預測，以便在內部部署使用。 它們也可以在 Azure 中的其他地方實際運作，特別是透過 [Azure Machine Learning Studio (傳統)](https://studio.azureml.net) [Web 服務](../../machine-learning/studio/deploy-a-machine-learning-web-service.md) \(英文\)。
+可以下載分析所產生的模型或預測，以便在內部部署使用。 其也可以在 Azure 中的其他地方實際運作，特別是透過 [Azure Machine Learning Studio (傳統)](https://studio.azureml.net) [Web 服務](../../machine-learning/studio/deploy-a-machine-learning-web-service.md) \(英文\)。
 
 ## <a name="get-started-with-ml-services-on-hdinsight"></a>開始使用 HDInsight 上的 ML 服務
 
@@ -51,11 +51,14 @@ HDInsight 中的 ML 服務提供下列優點︰
   Individuals embarking on the journey of making their applications intelligent or simply wanting to learn the new world of AI and machine learning, need the right resources to help them get started. In addition to this documentation, Microsoft provides several learning resources and has engaged several training partners to help you ramp up and become productive quickly.
 --->
 
+> [!NOTE]  
+> HDInsight 上的 ML 服務叢集類型僅支援在 HDInsight 3.6 上使用。 HDInsight 3.6 已排定於 2020 年 12 月 31 日淘汰。
+
 ## <a name="key-features-of-ml-services-on-hdinsight"></a>HDInsight 上的 ML 服務主要功能
 
 HDInsight 上的 ML 服務包含下列功能。
 
-| 功能分類 | 說明 |
+| 功能分類 | 描述 |
 |------------------|-------------|
 | 已啟用 R | [R 套件](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference)適用於以 R 撰寫的解決方案、具有 R 的開放原始碼散佈，以及用於執行指令碼的執行階段基礎結構。 |
 | 已啟用 Python | [Python 套件](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference)適用於以 Python 撰寫的解決方案、具有 Python 的開放原始碼散佈，以及用於執行指令碼的執行階段基礎結構。
@@ -134,7 +137,7 @@ HDInsight 叢集的 Linux 邊緣節點，是 R 型分析的登陸區域。 HDIns
 
 此外，透過 SSH 或 PuTTY 連線，您就可以在 Linux 命令提示字元中輸入 **R** 來存取邊緣節點上的 R 主控台。 使用主控台介面時，在另一個視窗中針對 R 指令碼開發執行文字編輯器，並視需要剪下指令碼區段並貼上到 R 主控台中是非常方便的。
 
-## <a name="pricing"></a>價格
+## <a name="pricing"></a>定價
 
 與 ML 服務 HDInsight 叢集相關聯的價格結構，類似於 HDInsight 叢集類型的價格。 以各種名稱、資料和邊緣節點的基礎 VM 大小為基準，再加上彈性工時加費。 如需詳細資訊，請參閱 [HDInsight 定價](https://azure.microsoft.com/pricing/details/hdinsight/)。
 

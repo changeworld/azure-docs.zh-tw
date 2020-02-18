@@ -8,17 +8,20 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 5d6b8ce557cb794b3a56ecb3a938a2fe184156ab
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: a6f71cca2c63591d2d26a7d34ced232eabfbc6bb
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680744"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425146"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>切換記錄警示的 API 喜好設定
 
 > [!NOTE]
 > 僅適用于使用者 Azure 公用雲端，而**不適**用於 Azure Government 或 Azure 中國雲端的內容。  
+
+> [!NOTE]
+> 使用者選擇將喜好設定切換至新的[SCHEDULEDQUERYRULES API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)之後，就無法使用舊版的[舊版 LOG Analytics 警示 API](api-alerts.md)來還原為。
 
 直到最近，您都還是在 Microsoft Operations Management Suite 入口網站中管理警示規則。 新的警示體驗已與 Microsoft Azure 中的各種服務 (包括 Log Analytics) 整合，我們要求[您將警示規則從 OMS 入口網站延伸至 Azure](alerts-extend.md)。 但為了確保能盡可能縮短客戶的中斷時間，此過程並未改變其供使用的程式設計介面 - 以 SavedSearch 為基礎的 [Log Analytics 警示 API](api-alerts.md)。
 
@@ -50,9 +53,6 @@ ms.locfileid: "75680744"
 
 - 變更 API 的喜好設定，以及透過新的 API 存取您的規則。
 - 已修改的警示規則資源 URI，其中包含[舊版 Log Analytics 警示 API](api-alerts.md)中使用的識別碼，而不是此結構中的警示規則名稱 `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>`。 警示規則的顯示名稱會維持不變。
-
-> [!NOTE]
-> 使用者選擇將喜好設定切換至新的[SCHEDULEDQUERYRULES API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)之後，就無法使用舊版的[舊版 LOG Analytics 警示 API](api-alerts.md)來還原為。
 
 任何自願切換至新的 [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)，並停止使用[舊版 Log Analytics 警示 API](api-alerts.md) 的客戶，都可在下列 API 執行 PUT 呼叫，以切換所有與特定 Log Analytics 工作區相關聯的警示規則，而達到此目的。
 

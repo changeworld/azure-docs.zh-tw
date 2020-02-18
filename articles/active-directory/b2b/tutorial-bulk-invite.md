@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: tutorial
-ms.date: 9/19/2019
+ms.date: 2/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c78d2a8b4ccc51bc7afaef82a6c0dd609acdcab9
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c429648adeb0c81799bff2dca1650de965395a60
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76908831"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77166443"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users-preview"></a>教學課程：大量邀請 Azure AD B2B 共同作業使用者 (預覽)
 
@@ -27,7 +27,7 @@ ms.locfileid: "76908831"
 
 > [!NOTE]
 > 從 2019 年 12 月 22 日起，已暫時停用大量邀請使用者 (預覽) 功能。
-> 目前不確知這項功能重新啟用的日期。 
+> 目前不確知這項功能何時會在 Azure 入口網站中重新啟用。 若要使用 PowerShell 大量邀請來賓使用者，請參閱 [B2B 大量邀請教學課程](bulk-invite-powershell.md)或 [B2B 程式碼和 PowerShell 範例](code-samples.md)。
 
 如果您使用 Azure Active Directory (Azure AD) B2B 共同作業來與外部合作夥伴合作，您便可以同時邀請多位來賓使用者存取您的組織資源。 在此教學課程中，您會了解如何使用 Azure 入口網站對外部使用者傳送大量邀請。 具體而言，您會執行下列操作：
 

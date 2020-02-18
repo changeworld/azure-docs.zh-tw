@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 11/13/2019
+ms.date: 02/12/2020
 ms.author: erhopf
-ms.openlocfilehash: c9175f1f592c72e047b02a06a174d3013b0c7ef6
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 8035cce1482c3c441cc956272a7300f0d0ea8194
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815320"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189070"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-linux"></a>快速入門：在 Linux 上執行語音裝置 SDK 範例應用程式
 
@@ -27,7 +27,7 @@ ms.locfileid: "74815320"
 
 [範例應用程式](https://aka.ms/sdsdk-download-JRE)的原始程式碼包含在語音裝置 SDK 中。 您也可以[在 GitHub 上取得](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK)該原始程式碼。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本快速入門需要：
 
@@ -38,7 +38,7 @@ ms.locfileid: "74815320"
 * 適用於語音服務的 Azure 訂用帳戶金鑰。 [免費取得一個金鑰](get-started.md)。
 * 下載適用於 Java 的最新版[語音裝置 SDK](https://aka.ms/sdsdk-download-JRE)，並將 .zip 擷取至您的工作目錄。
    > [!NOTE]
-   > JRE-Sample-Release.zip 檔案包含 JRE 範例應用程式，而本快速入門假設應用程式會解壓縮至 /home/wcaltest/JRE-Sample-Release
+   > 本快速入門會假設應用程式已解壓縮至 /home/wcaltest/JRE-Sample-Release
 
 請先確定已安裝下列相依性，再啟動 Eclipse。
 
@@ -96,7 +96,7 @@ ms.locfileid: "74815320"
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.7.0</version>
+             <version>1.9.0</version>
         </dependency>
     </dependencies>
    ```
@@ -136,7 +136,7 @@ ms.locfileid: "74815320"
     private static final String CTSRegion="<Conversation Transcription Service Region>";// Region may be "centralus" or "eastasia"
     ```
 
-1. 預設關鍵字是「Computer」。 您也可以嘗試其中一個其他提供的關鍵字，例如「Machine」或「Assistant」。 這些替代關鍵字的資源檔位於語音裝置 SDK 的 [keyword] 資料夾中。 例如，`/home/wcaltest/JRE-Sample-Release/keyword/Computer` 包含用於關鍵字「Computer」的檔案。
+1. 預設關鍵字是「Computer」。 您也可以嘗試其中一個其他提供的關鍵字，例如 "Machine" 或 "Assistant"。 這些替代關鍵字的資源檔位於語音裝置 SDK 的 [keyword] 資料夾中。 例如，`/home/wcaltest/JRE-Sample-Release/keyword/Computer` 包含用於關鍵字「Computer」的檔案。
 
    > [!TIP]
    > 您也可以[建立自訂關鍵字](speech-devices-sdk-create-kws.md)。

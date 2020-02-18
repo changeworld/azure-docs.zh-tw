@@ -2,13 +2,13 @@
 title: Azure Migrate 設備
 description: 提供伺服器評估和遷移中所使用的 Azure Migrate 設備的總覽。
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.openlocfilehash: 652fe9d379d6e2ba50e9e282f384905e154368d8
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.date: 02/17/2020
+ms.openlocfilehash: d02227747be4bc7d994e2ea84cd74e7f2fd2531f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031658"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425454"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 設備
 
@@ -55,7 +55,7 @@ Hyper-V VM | Azure Migrate：伺服器評估 | 探索 Hyper-v Vm<br/><br/> 收�
 **雜湊值** | MD5：29a7531f32bcf69f32d964fa5ae950bc<br/><br/> SHA256：37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
 **Hyper-V 主機** | 正在執行 Windows Server 2012 R2 或更新版本。
 **Azure Migrate 專案** | 應用裝置可以與單一專案相關聯。 <br/> 任何數目的設備都可以與單一專案相關聯。<br/> 
-**探索** | 設備可以在 vCenter Server 上探索最多5000個 VMware Vm。<br/> 設備最多可以連線到300的 Hyper-v 主機。
+**探索** | 設備可以探索最多5000部 Hyper-v Vm。<br/> 設備最多可以連線到300的 Hyper-v 主機。
 **設備元件** | 管理應用程式：應用裝置中的 Web 應用程式，可在部署期間進行使用者輸入。<br/> 探索代理程式：收集電腦設定資料。<br/> 評量代理程式：收集效能資料。<br/>  自動更新服務：更新元件（每隔24小時執行一次）。
 
 
@@ -85,7 +85,7 @@ Azure Migrate 設備需要網際網路的連線能力。
 --- | --- |
 *.portal.azure.com  | 瀏覽至 Azure 入口網站。
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com | 登入您的 Azure 訂用帳戶。
-\* microsoftonline.com <br/> *.microsoftonline-p.com | 建立設備 Active Directory 應用程式，以與 Azure Migrate 通訊。
+*.microsoftonline.com <br/> *.microsoftonline-p.com | 建立設備 Active Directory 應用程式，以與 Azure Migrate 通訊。
 management.azure.com | 建立設備 Active Directory 應用程式，以與 Azure Migrate 服務進行通訊。
 dc.services.visualstudio.com | 上傳用於內部監視的應用程式記錄。
 *.vault.azure.net | 管理 Azure Key Vault 中的秘密。
@@ -108,7 +108,7 @@ download.microsoft.com/download | 允許從 Microsoft 下載下載。
 **Data** | **計數器** | **評量影響**
 --- | --- | ---
 CPU 使用率 | cpu.usage.average | 建議的 VM 大小/成本
-記憶體使用率 | mem.usage.average | 建議的 VM 大小/成本
+記憶體使用量 | mem.usage.average | 建議的 VM 大小/成本
 磁片讀取輸送量（每秒 MB） | virtualDisk.read.average | 磁片大小、儲存體成本、VM 大小的計算
 磁片寫入輸送量（每秒 MB） | virtualDisk.write.average | 磁片大小、儲存體成本、VM 大小的計算
 每秒的磁片讀取作業數 | virtualDisk.numberReadAveraged.average | 磁片大小、儲存體成本、VM 大小的計算
@@ -134,13 +134,13 @@ VM 描述 | vm.Summary.Config.Annotation
 授權產品名稱 | vm.Client.ServiceContent.About.LicenseProductName
 作業系統類型 | vm.SummaryConfig.GuestFullName
 開機類型 | vm.Config.Firmware
-核心數 | vm.Config.Hardware.NumCPU
+核心數目 | vm.Config.Hardware.NumCPU
 記憶體 (MB) | vm.Config.Hardware.MemoryMB
-磁碟數目 | vm.Config.Hardware.Device.ToList().FindAll(x => is VirtualDisk).count
+磁碟數量 | vm.Config.Hardware.Device.ToList().FindAll(x => is VirtualDisk).count
 磁碟大小清單 | vm.Config.Hardware.Device.ToList().FindAll(x => is VirtualDisk)
 網路介面卡清單 | vm.Config.Hardware.Device.ToList().FindAll(x => is VirtualEthernet).count
 CPU 使用率 | cpu.usage.average
-記憶體使用率 |mem.usage.average
+記憶體使用量 |mem.usage.average
 **每個磁片詳細資料** | 
 磁碟機碼值 | disk.Key
 Dikunit 號碼 | disk.UnitNumber
@@ -216,9 +216,9 @@ VM 電源狀態 | Msvm_ComputerSystem | EnabledState
 IP 位址（綜合 Nic） | Msvm_GuestNetworkAdapterConfiguration | IPAddresses
 DHCP 已啟用（綜合 Nic） | Msvm_GuestNetworkAdapterConfiguration | DHCPEnabled
 NIC 識別碼（綜合 Nic） | Msvm_SyntheticEthernetPortSettingData | InstanceID
-NIC MAC 位址（綜合 Nic） | Msvm_SyntheticEthernetPortSettingData | 地址
+NIC MAC 位址（綜合 Nic） | Msvm_SyntheticEthernetPortSettingData | 位址
 NIC 識別碼（舊版 Nic） | MsvmEmulatedEthernetPortSetting 資料 | InstanceID
-NIC MAC 識別碼（舊版 Nic） | MsvmEmulatedEthernetPortSetting 資料 | 地址
+NIC MAC 識別碼（舊版 Nic） | MsvmEmulatedEthernetPortSetting 資料 | 位址
 
 
 

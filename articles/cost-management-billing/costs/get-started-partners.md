@@ -1,25 +1,28 @@
 ---
 title: 適用於合作夥伴的 Azure 成本管理入門
 description: 本文說明合作夥伴如何使用 Azure 成本管理功能，以及如何為其客戶啟用成本管理存取權。
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/28/2020
+ms.date: 02/10/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: fc0401ac200ac55de5d812ddc5162d970b8e6d2a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9f35f0ae2b310fba462a3f45038496854077da27
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76842413"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117599"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>適用於合作夥伴的 Azure 成本管理入門
 
-Azure 成本管理依其原生狀態即適用於已將客戶登錄至 Microsoft 客戶合約，並且[已購買 Azure 方案](/partner-center/purchase-azure-plan)的合作夥伴。 本文說明合作夥伴如何使用 [Azure 成本管理](../index.yml)功能檢視 Azure 方案中的訂用帳戶成本。 此外也會說明合作夥伴如何為其客戶啟用成本管理存取。 客戶可在其 CSP 合作夥伴啟用成本管理功能後使用這些功能。
+Azure 成本管理依其原生狀態即適用於已將客戶登錄至 Microsoft 客戶合約，並且[已購買 Azure 方案](/partner-center/purchase-azure-plan)的直接合作夥伴。 本文說明合作夥伴如何使用 [Azure 成本管理](../index.yml)功能檢視 Azure 方案中的訂用帳戶成本。 此外也會說明合作夥伴如何為其客戶啟用成本管理存取。
+
+針對直接合作夥伴和間接提供者，間接提供者的全域管理員和系統管理員代理人可以存取合作夥伴租用戶中的成本管理。 轉銷商和客戶則可存取客戶租用戶中的成本管理，並檢視訂用帳戶的成本，其中成本會以零售費率來計算和顯示。 不過，其必須具有客戶租用戶中訂用帳戶的 RBAC 存取權，才能檢視成本。 客戶租用戶的提供者必須啟用成本可見性原則。
+
+客戶可在其 CSP 合作夥伴啟用成本管理功能後使用這些功能。
 
 CSP 合作夥伴可使用成本管理執行下列動作：
 
@@ -164,7 +167,7 @@ Azure 成本管理需要對您的計費帳戶或訂用帳戶的讀取權限。
 
 下列資料欄位可在使用情況詳細資料檔案和成本管理 API 中找到。 在適用時，會顯示合作夥伴中心的對等資訊。 對於下列以粗體顯示的欄位，合作夥伴可在成本分析中使用篩選和群組依據功能，依多個欄位來分析成本。 粗體欄位僅適用於合作夥伴支援的 Microsoft 客戶合約。
 
-| **欄位名稱** | **描述** | **合作夥伴中心的對等項目** |
+| **欄位名稱** | **說明** | **合作夥伴中心的對等項目** |
 | --- | --- | --- |
 | invoiceId | 針對特定交易顯示在發票上的發票識別碼。 | 顯示交易的發票號碼。 |
 | previousInvoiceID | 原始發票有退款 (負成本) 時的參考。 只有在有退款時才會填入。 | N/A |

@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 01/30/2020
 ms.author: spelluru
-ms.openlocfilehash: 788fcf15ebd68aae525c2895340f437594c9c58c
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 34583ef49b2f919391af3fe5700a558b2dc40700
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906400"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187232"
 ---
 # <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub-version-5"></a>使用 Python 擷取及讀取 Azure 儲存體中的事件中樞資料 (azure-eventhub 第 5 版)
 
-您可以設定事件中樞，以便從 Azure 儲存體帳戶或 Azure Data Lake Storage 擷取傳送到事件中樞的資料。 本文將說明如何撰寫 Python 程式碼來將事件傳送至事件中樞，以及從 Azure Blob 儲存體讀取已擷取的資料。 如需此功能的詳細資訊，請參閱[事件中樞擷取功能概觀](event-hubs-capture-overview.md)。
+您可以設定事件中樞，以便從 Azure 儲存體帳戶或 Azure Data Lake Storage Gen 1 或 Gen 2 擷取傳送到事件中樞的資料。 本文將說明如何撰寫 Python 程式碼來將事件傳送至事件中樞，以及從 **Azure Blob 儲存體**讀取已擷取的資料。 如需此功能的詳細資訊，請參閱[事件中樞擷取功能概觀](event-hubs-capture-overview.md)。
 
 此快速入門使用 [Azure Python SDK](https://azure.microsoft.com/develop/python/) 來示範「擷取」功能。 sender.py  應用程式會以 JSON 格式將模擬的環境遙測傳送至事件中樞。 事件中樞已設定為使用擷取功能，將此資料批次寫入至 Blob 儲存體。 capturereader.py  應用程式會讀取這些 Blob，並為每個裝置建立附加檔案。 此應用程式接著會將資料寫入至 CSV 檔案。
 

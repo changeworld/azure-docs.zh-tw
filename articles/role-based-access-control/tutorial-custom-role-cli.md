@@ -1,5 +1,5 @@
 ---
-title: 教學課程 - 使用 Azure CLI 為 Azure 資源建立自訂角色
+title: 教學課程：使用 Azure CLI 為 Azure 資源建立自訂角色
 description: 在本教學課程中，使用 Azure CLI 開始為 Azure 資源建立自訂角色。
 services: active-directory
 documentationCenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
-ms.openlocfilehash: 29b0bea851466b5173711441a5a7927c796c9926
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: f1a6e72e1444a26b675379d9948217a7773c4a1c
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419593"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138256"
 ---
 # <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-cli"></a>教學課程：使用 Azure CLI 為 Azure 資源建立自訂角色
 
@@ -34,9 +34,9 @@ ms.locfileid: "74419593"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-若要完成本教學課程，您需要：
+若要完成本教學課程，您將會需要：
 
 - 建立自訂角色的權限，例如[擁有者](built-in-roles.md#owner)或[使用者存取管理員](built-in-roles.md#user-access-administrator)
 - [Azure Cloud Shell](../cloud-shell/overview.md) 或 [Azure CLI](/cli/azure/install-azure-cli)
@@ -51,7 +51,7 @@ ms.locfileid: "74419593"
 
 1. 檢閱 [Microsoft.Support 資源提供者](resource-provider-operations.md#microsoftsupport)的作業清單。 最好先了解可用來建立權限的作業。
 
-    | 作業 | 說明 |
+    | 作業 | 描述 |
     | --- | --- |
     | Microsoft.Support/register/action | 支援資源提供者的暫存器 |
     | Microsoft.Support/supportTickets/read | 取得支援票證的詳細資料 (包括狀態、嚴重性、連絡人詳細資料和通訊)，或取得跨訂用帳戶之支援票證的清單。 |

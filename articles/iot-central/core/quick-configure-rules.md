@@ -3,18 +3,18 @@ title: 快速入門 - 在 Azure IoT Central 中設定規則和動作
 description: 本快速入門將為建置者說明如何在 Azure IoT Central 應用程式中設定以遙測為基礎的規則和動作。
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/09/2019
+ms.date: 02/12/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: a63e77fb3c50d4387c27912336d65f9f84d2d5c9
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 4bbf571d6b73a6f43c1c3b1ce261da6963a74183
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026241"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169494"
 ---
 # <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>快速入門：在 Azure IoT Central 中為您的裝置設定規則和動作
 

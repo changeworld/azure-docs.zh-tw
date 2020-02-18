@@ -1,5 +1,5 @@
 ---
-title: 教學課程 - 使用 RBAC 與 Azure PowerShell 為使用者授與 Azure 資源的存取權
+title: 教學課程：使用 RBAC 與 Azure PowerShell 為使用者授與 Azure 資源的存取權
 description: 在本教學課程中，了解如何使用角色型存取控制 (RBAC) 和 Azure PowerShell 為使用者授與 Azure 資源的存取權。
 services: active-directory
 documentationCenter: ''
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: c5570c6b1d2cdd168dbaeb0a91d80a61e171e5d1
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: f4ba56bf79d707200bf361ab4c717bb63d081953
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74418621"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138219"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-azure-powershell"></a>教學課程：使用 RBAC 與 Azure PowerShell 為使用者授與 Azure 資源的存取權
 
-[角色型存取控制 (RBAC)](overview.md) 是您對 Azure 資源存取進行管理的機制。 在本教學課程中，您會使用 Azure PowerShell 為使用者授與在訂用帳戶中檢視任何項目以及管理資源群組中所有項目的存取權。
+[角色型存取控制 (RBAC)](overview.md) 是您管理對 Azure 資源存取的機制。 在本教學課程中，您會使用 Azure PowerShell 為使用者授與在訂用帳戶中檢視任何項目以及管理資源群組中所有項目的存取權。
 
 在本教學課程中，您會了解如何：
 
@@ -35,9 +35,9 @@ ms.locfileid: "74418621"
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-若要完成本教學課程，您需要：
+若要完成本教學課程，您將會需要：
 
 - 在 Azure Active Directory 中建立使用者的權限 (或使用現有的使用者)
 - [Azure Cloud Shell](/azure/cloud-shell/quickstart-powershell)
@@ -48,8 +48,8 @@ ms.locfileid: "74418621"
 
 | 安全性主體 | 角色定義 | 影響範圍 |
 | --- | --- | --- |
-| 使用者<br>(RBAC 教學課程使用者) | [讀取者](built-in-roles.md#reader) | 訂用帳戶 |
-| 使用者<br>(RBAC 教學課程使用者)| [參與者](built-in-roles.md#contributor) | 資源群組<br>(rbac-tutorial-resource-group) |
+| User<br>(RBAC 教學課程使用者) | [讀取者](built-in-roles.md#reader) | 訂用帳戶 |
+| User<br>(RBAC 教學課程使用者)| [參與者](built-in-roles.md#contributor) | 資源群組<br>(rbac-tutorial-resource-group) |
 
    ![使用者的角色指派](./media/tutorial-role-assignments-user-powershell/rbac-role-assignments-user.png)
 

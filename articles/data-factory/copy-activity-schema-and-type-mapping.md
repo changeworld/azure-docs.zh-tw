@@ -9,14 +9,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 02/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 2c637346aae72a238963607f6f5d23910684265c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9ae07e2a471cc417b467092a2616a5a0cdafb1fe
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921987"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77423618"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>複製活動中的結構描述對應
 
@@ -87,18 +87,18 @@ ms.locfileid: "74921987"
 
 使用 `source` 和 `sink`的 `translator` -> `mappings` > 物件下支援下列屬性：
 
-| 屬性 | 描述                                                  | 必要項 |
+| 屬性 | 描述                                                  | 必要 |
 | -------- | ------------------------------------------------------------ | -------- |
-| 名稱     | 來源或接收資料行的名稱。                           | 是      |
+| NAME     | 來源或接收資料行的名稱。                           | 是      |
 | 序數  | 資料行索引。 從1開始。 <br>使用不含標頭行的分隔文字時，請套用和必要。 | 否       |
 | path     | 要解壓縮或對應之每個欄位的 JSON 路徑運算式。 適用于階層式資料，例如 MongoDB/REST。<br>對於根物件下的欄位，JSON 路徑的開頭為 root $;針對 `collectionReference` 屬性所選擇之陣列內的欄位，JSON 路徑會從陣列元素開始。 | 否       |
-| 類型     | 來源或接收資料行的 Data Factory 過渡資料類型。 | 否       |
+| type     | 來源或接收資料行的 Data Factory 過渡資料類型。 | 否       |
 | culture  | 來源或接收資料行的文化特性。 <br>當類型為 `Datetime` 或 `Datetimeoffset`時套用。 預設值為 `en-us`。 | 否       |
 | format   | 當類型為 `Datetime` 或 `Datetimeoffset`時，所要使用的格式字串。 有關如何格式化日期時間的資訊，請參閱[自訂日期和時間格式字串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 | 否       |
 
 除了具有 `source` 和 `sink`的物件之外，`translator` -> `mappings` 下也支援下列屬性：
 
-| 屬性            | 描述                                                  | 必要項 |
+| 屬性            | 描述                                                  | 必要 |
 | ------------------- | ------------------------------------------------------------ | -------- |
 | collectionReference | 只有在階層式資料（例如 MongoDB/REST）為來源時才支援。<br>如果您想要逐一查看**陣列欄位內**相同模式的物件並擷取資料，然後轉換為每個物件一個資料列，則請指定該陣列的 JSON 路徑，以執行交叉套用。 | 否       |
 
@@ -200,10 +200,10 @@ ms.locfileid: "74921987"
 
 您可以指定複製活動-> `translator` -> `schemaMapping` 在階層式資料和表格式資料之間進行對應，例如從 MongoDB/REST 複製到文字檔，然後從 Oracle 複製到 Azure Cosmos DB 適用于 MongoDB 的 API。 複製活動的 `translator` 區段支援下列屬性：
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| 類型 | 複製活動 translator 的 type 屬性必須設定為： **TabularTranslator** | 是 |
-| schemaMapping | 索引鍵/值組的集合，表示**從來源端到接收端**的對應關聯性。<br/>- **Key：** 代表來源。 針對 [**表格式來源**]，指定資料集結構中所定義的資料行名稱;針對 [**階層式來源**]，為每個要解壓縮和對應的欄位指定 JSON 路徑運算式。<br>- **Value：** 代表接收。 若為**表格式接收**，請指定資料集結構中所定義的資料行名稱;針對**階層式接收**，為每個要解壓縮和對應的欄位指定 JSON 路徑運算式。 <br>在階層式資料的情況下，針對根物件下的欄位，JSON 路徑會以根 $ 開頭;針對 `collectionReference` 屬性所選擇之陣列內的欄位，JSON 路徑會從陣列元素開始。  | 是 |
+| type | 複製活動 translator 的 type 屬性必須設定為： **TabularTranslator** | 是 |
+| schemaMapping | 索引鍵/值組的集合，表示**從來源端到接收端**的對應關聯性。<br/>- 機**碼：** 代表來源。 針對 [**表格式來源**]，指定資料集結構中所定義的資料行名稱;針對 [**階層式來源**]，為每個要解壓縮和對應的欄位指定 JSON 路徑運算式。<br>- **值：** 表示接收。 若為**表格式接收**，請指定資料集結構中所定義的資料行名稱;針對**階層式接收**，為每個要解壓縮和對應的欄位指定 JSON 路徑運算式。 <br>在階層式資料的情況下，針對根物件下的欄位，JSON 路徑會以根 $ 開頭;針對 `collectionReference` 屬性所選擇之陣列內的欄位，JSON 路徑會從陣列元素開始。  | 是 |
 | collectionReference | 如果您想要逐一查看**陣列欄位內**相同模式的物件並擷取資料，然後轉換為每個物件一個資料列，則請指定該陣列的 JSON 路徑，以執行交叉套用。 只有在階層式資料是來源時，才支援這個屬性。 | 否 |
 
 **範例：從 MongoDB 複製到 Oracle：**
@@ -259,11 +259,11 @@ ms.locfileid: "74921987"
         "translator": {
             "type": "TabularTranslator",
             "schemaMapping": {
-                "orderNumber": "$.number",
-                "orderDate": "$.date",
-                "order_pd": "prod",
-                "order_price": "price",
-                "city": " $.city[0].name"
+                "$.number": "orderNumber",
+                "$.date": "orderDate",
+                "prod": "order_pd",
+                "price": "order_price",
+                "$.city[0].name": "city"
             },
             "collectionReference":  "$.orders"
         }
@@ -286,11 +286,11 @@ Data Factory 支援下列過渡資料類型：在[資料集結構](concepts-data
 
 * Byte[]
 * Boolean
-* DateTime
+* Datetime
 * Datetimeoffset
 * Decimal
-* DOUBLE
-* GUID
+* Double
+* Guid
 * Int16
 * Int32
 * Int64

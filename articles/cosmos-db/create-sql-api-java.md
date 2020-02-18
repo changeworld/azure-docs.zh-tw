@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/31/2019
 ms.author: sngun
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: a4a8990b3da534acb39ff87c9f7665fb3b08ef06
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 8c2ae82bae8457a1c715f160994c7a0da94193ff
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708174"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134501"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>快速入門：建置 JAVA 應用程式來管理 Azure Cosmos DB SQL API 資料
 
@@ -27,21 +27,14 @@ ms.locfileid: "74708174"
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-本快速入門說明如何使用 Java 應用程式，從您的 Azure Cosmos DB SQL API 帳戶建立和管理文件資料庫。 首先，您必須使用 Azure 入口網站建立 Azure Cosmos DB SQL API 帳戶、使用 SQL Java SDK 建立 Java 應用程式，然後使用 Java 應用程式將資源新增至您的 Cosmos DB 帳戶。 本快速入門中的指示可運用在任何足以執行 Java 應用程式的作業系統上。 完成本快速入門之後，您就會熟悉如何在 UI 中或以程式設計方式建立和修改 Cosmos DB 資料庫和容器 (不論您偏好哪種方式)。
+在本快速入門中，您會從 Azure 入口網站以及藉由使用從 GitHub 複製的 Java 應用程式，來建立和管理 Azure Cosmos DB SQL API 帳戶。 首先，您必須使用 Azure 入口網站建立 Azure Cosmos DB SQL API 帳戶、使用 SQL Java SDK 建立 Java 應用程式，然後使用 Java 應用程式將資源新增至您的 Cosmos DB 帳戶。 Azure Cosmos DB 是多模型的資料庫服務，可讓您快速建立及查詢具有全域散發和水平調整功能的文件、資料表、索引鍵/值及圖形資料庫。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
-[!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
-
-此外： 
-
-* [JAVA 開發套件 (JDK) 8 版](https://aka.ms/azure-jdks) \(英文\)
-    * 務必設定 JAVA_HOME 環境變數，以指向 JDK 安裝所在的資料夾。
-* [下載](https://maven.apache.org/download.cgi)和[安裝 ](https://maven.apache.org/install.html) [Maven](https://maven.apache.org/) 二進位封存檔
-    * 在 Ubuntu 上，您可以執行 `apt-get install maven` 來安裝 Maven。
-* [Git](https://www.git-scm.com/)
-    * 在 Ubuntu 上，您可以執行 `sudo apt-get install git` 來安裝 Git。
+- 具有有效訂用帳戶的 Azure 帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 或[免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) (不需 Azure 訂用帳戶)。 您也可以搭配使用 [Azure Cosmos DB 模擬器](https://aka.ms/cosmosdb-emulator)與 `https://localhost:8081` 的 URI 和金鑰 `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`。
+- [Java 開發套件 (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk) \(英文\)。 將 `JAVA_HOME` 環境變數指向 JDK 安裝所在的資料夾。
+- [Maven 二進位檔封存](https://maven.apache.org/download.cgi)。 在 Ubuntu 上，執行 `apt-get install maven` 來安裝 Maven。
+- [Git](https://www.git-scm.com/downloads)。 在 Ubuntu 上，執行 `sudo apt-get install git` 來安裝 Git。
 
 ## <a name="create-a-database-account"></a>建立資料庫帳戶
 
@@ -66,11 +59,11 @@ ms.locfileid: "74708174"
 
 現在讓我們切換為使用程式碼。 我們將從 GitHub 複製 SQL API 應用程式、設定連接字串，然後加以執行。 您會看到，以程式設計方式來處理資料有多麼的容易。 
 
-1. 執行下列命令來複製範例存放庫。 此命令會在您的電腦上建立範例應用程式副本。
+執行下列命令來複製範例存放庫。 此命令會在您的電腦上建立範例應用程式副本。
 
-    ```bash
-    git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
-    ```
+```bash
+git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
+```
 
 ## <a name="review-the-code"></a>檢閱程式碼
 
@@ -103,7 +96,6 @@ ms.locfileid: "74708174"
 ## <a name="run-the-app"></a>執行應用程式
 
 現在，返回 Azure 入口網站以取得連接字串資訊，然後使用端點資訊啟動應用程式。 這可讓您的應用程式與託管資料庫進行通訊。
-
 
 1. 在 git 終端機視窗中，`cd` 至範例程式碼資料夾。
 
@@ -143,7 +135,7 @@ ms.locfileid: "74708174"
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已了解如何使用 [資料總管] 來建立 Azure Cosmos 帳戶、文件資料庫和容器，以及如何執行應用程式來以程式設計方式執行同樣的作業。 您現可將其他資料匯入至 Azure Cosmos 容器。 
+在本快速入門中，您已了解如何使用 [資料總管] 來建立 Azure Cosmos DB SQL API 帳戶、文件資料庫和容器，以及如何執行 Java 應用程式來以程式設計方式執行同樣的作業。 您現在可以將其他資料匯入 Azure Cosmos DB 帳戶中。 
 
 > [!div class="nextstepaction"]
 > [將資料匯入到 Azure Cosmos DB](import-data.md)

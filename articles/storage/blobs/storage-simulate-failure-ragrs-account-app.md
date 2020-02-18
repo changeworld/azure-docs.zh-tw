@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: artek
-ms.openlocfilehash: 44c5d037797d845aa9c68af2d7b8e5e45bf418fb
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 522ed13681a98535c35552128fc8432782ec1ca2
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892442"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162696"
 ---
 # <a name="tutorial-simulate-a-failure-in-reading-data-from-the-primary-region"></a>教學課程：從主要區域模擬資料讀取失敗
 
-本教學課程是一個系列的第二部分。 在其中，您可藉由模擬失敗來了解[讀取權限異地備援](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) 的優點。
+本教學課程是一個系列的第二部分。 在其中，您可藉由模擬失敗來了解[讀取權限異地備援儲存體](../common/storage-redundancy.md) (RA-GRS) 的優點。
 
-為了模擬失敗，您可使用[靜態路由](#simulate-a-failure-with-an-invalid-static-route)或 [Fiddler](#simulate-a-failure-with-fiddler)。 這兩種方法都會允許您模擬對[讀取權限異地備援](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) 儲存體帳戶的主要端點要求失敗，而導致從次要端點讀取應用程式。
+為了模擬失敗，您可使用[靜態路由](#simulate-a-failure-with-an-invalid-static-route)或 [Fiddler](#simulate-a-failure-with-fiddler)。 這兩種方法都會允許您模擬對[讀取權限異地備援](../common/storage-redundancy.md) (RA-GRS) 儲存體帳戶的主要端點要求失敗，而導致從次要端點讀取應用程式。
 
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -31,7 +31,7 @@ ms.locfileid: "74892442"
 > * 使用[無效的靜態路由](#simulate-a-failure-with-an-invalid-static-route)或 [Fiddler](#simulate-a-failure-with-fiddler) 來模擬失敗
 > * 模擬主要端點還原
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始進行本教學課程之前，請先完成前一個教學課程：[使用 Azure 儲存體讓應用程式資料具有高可用性][previous-tutorial]。
 
@@ -41,7 +41,7 @@ ms.locfileid: "74892442"
 
 ## <a name="simulate-a-failure-with-an-invalid-static-route"></a>使用無效的靜態路由模擬失敗
 
-您可以建立無效的靜態路由，並將其用於所有對您[讀取權限異地備援](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) 儲存體帳戶之主要端點的要求。 在本教學課程中，會使用本機主機作為將要求路由傳送到儲存體帳戶的閘道。 以本機主機作為閘道，會導致所有對儲存體帳戶主要端點的要求在主機內形成迴圈，進而導致失敗。 請遵循下列步驟，以使用無效的靜態路由模擬失敗和主要端點還原。
+您可以建立無效的靜態路由，並將其用於所有對您[讀取權限異地備援](../common/storage-redundancy.md) (RA-GRS) 儲存體帳戶之主要端點的要求。 在本教學課程中，會使用本機主機作為將要求路由傳送到儲存體帳戶的閘道。 以本機主機作為閘道，會導致所有對儲存體帳戶主要端點的要求在主機內形成迴圈，進而導致失敗。 請遵循下列步驟，以使用無效的靜態路由模擬失敗和主要端點還原。
 
 ### <a name="start-and-pause-the-application"></a>啟動和暫停應用程式
 

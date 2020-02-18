@@ -7,16 +7,16 @@ ms.service: container-service
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: saudas
-ms.openlocfilehash: 8c144fb0c9818e21c2ca5bd61525067b485531bb
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 625b44ae3f8a1d5d474d980693d92840b1317f09
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026110"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425760"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 中支援的 Kubernetes 版本
 
-Kubernetes 社群大約每隔三個月就會發行次要版本。 這些版本均包含新功能和增強功能。 修補程式版本會更頻繁地發行 (有時每週)，而且只適用於次要版本中的重要 Bug 修正。 這些修補程式版本包括對於安全性弱點或主要 Bug 的修正，這些安全性弱點或主要 Bug 會影響到根據 Kubernetes 在生產環境中執行的大量客戶和產品。
+Kubernetes 社群大約每隔三個月就會發行次要版本。 這些版本均包含新功能和增強功能。 修補程式版本會更頻繁地發行 (有時每週)，而且僅適用於次要版本中的重要 Bug 修正。 這些修補程式版本包括對於安全性弱點或主要 Bug 的修正，這些安全性弱點或主要 Bug 會影響到根據 Kubernetes 在生產環境中執行的大量客戶和產品。
 
 AKS 的目標是在上游發行的30天內認證併發行新的 Kubernetes 版本，受限於版本的穩定性。
 
@@ -99,7 +99,7 @@ New Supported Version List
   * 客戶從公開通知日期起算**30 天**，以升級至支援的次要版本發行。
 * 針對 Kubernetes 的新**修補程式**版本
   * 系統會通知所有使用者發行的新修補程式版本，並升級至最新的修補程式版本。
-  * 使用者有**30 天**的時間可以升級至較新的受支援修補程式版本。 在移除最舊的之前，使用者有**30 天**的時間可以升級至支援的修補程式版本。
+  * 使用者有**30 天**的時間，可以在移除最舊的更新版本之前，先升級至較新的支援修補程式。
 
 AKS 會將「已發行版本本」定義為正式推出的版本，並在所有 SLO/服務品質測量中啟用，並可在所有區域使用。 AKS 也可以支援已明確加上標籤並受限於預覽條款及條件的預覽版本。
 
@@ -146,7 +146,7 @@ az aks get-versions --location eastus --output table
 
 不支援升級至比支援的*N-2*視窗更舊的版本。 在這種情況下，我們建議客戶建立新的 AKS 叢集，並在支援的視窗中使用版本重新部署其工作負載。
 
-**「不支援」的意義**
+**「在支援外」的平均值**
 
 「不支援」表示您正在執行的版本不在支援的版本清單中，而且在要求支援時，系統會要求您將叢集升級為支援的版本。 此外，AKS 不會對支援的版本清單以外的叢集進行任何執行時間或其他保證。
 
@@ -156,7 +156,7 @@ az aks get-versions --location eastus --output table
 
 **客戶可以永遠停留在某個 Kubernetes 版本嗎？**
 
-可以。 不過，如果叢集不在 AKS 所支援的其中一個版本上，叢集就會超出 AKS 支援原則。 Azure 不會自動升級您的叢集或刪除它。
+是。 不過，如果叢集不在 AKS 所支援的其中一個版本上，叢集就會超出 AKS 支援原則。 Azure 不會自動升級您的叢集或刪除它。
 
 **如果節點集區不在其中一個支援的 AKS 版本中，控制平面支援哪些版本？**
 

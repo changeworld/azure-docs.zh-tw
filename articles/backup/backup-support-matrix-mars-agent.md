@@ -3,12 +3,12 @@ title: MARS 代理程式的支援矩陣
 description: 本文摘要說明當您備份執行 Microsoft Azure 復原服務（MARS）代理程式的電腦時的 Azure 備份支援。
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: a87d778bff5a52f4251d83e401028c9949713e33
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 8f5ce33b5057b11caa33c0ae80cf72e1b13da5d0
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988068"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425012"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>使用 Microsoft Azure 復原服務 (MARS) 代理程式進行備份的支援矩陣
 
@@ -44,7 +44,7 @@ Azure 備份使用 MARS 代理程式，將資料從內部部署機器和 Azure V
 **Cache** | **詳細資料**
 --- | ---
 大小 |  快取資料夾中的可用空間至少應為備份資料整體大小的5% 到10%。
-位置 | 快取資料夾必須存放在要備份的電腦上，而且必須在線上。 快取資料夾不可以在網路共用、卸載式媒體或離線磁片區上。
+Location | 快取資料夾必須存放在要備份的電腦上，而且必須在線上。 快取資料夾不可以在網路共用、卸載式媒體或離線磁片區上。
 資料夾 | 快取資料夾不應在已重復資料刪除的磁片區上，或在已壓縮、稀疏或具有重新分析點的資料夾中進行加密。
 位置變更 | 您可以藉由停止備份引擎（`net stop bengine`），並將快取資料夾複製到新的磁片磁碟機，來變更快取位置。 （請確認新的磁片磁碟機具有足夠的空間。）然後將**HKLM\SOFTWARE\Microsoft\Windows Azure 備份**（**config/ScratchLocation**和**config/CloudBackupProvider/ScratchLocation**）下的兩個登錄專案更新為新位置，然後重新開機引擎。
 
@@ -122,7 +122,7 @@ Windows 7| 1700 GB
 
 **型別** | **支援**
 --- | ---
-加密| 支援。
+已加密| 支援。
 Compressed | 支援。
 疏鬆 | 支援。
 已壓縮和疏鬆 |支援。
@@ -132,6 +132,7 @@ Compressed | 支援。
 壓縮資料流| 不支援。 略.
 疏鬆資料流| 不支援。 略.
 OneDrive （已同步處理的檔案為稀疏資料流程）| 不支援。
+已啟用 DFS 複寫的資料夾 | 不支援。
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>支援備份的磁片磁碟機或磁片區
 
@@ -143,7 +144,7 @@ OneDrive （已同步處理的檔案為稀疏資料流程）| 不支援。
 BitLocker 鎖定的磁片區| 不支援 |必須先解除鎖定磁片區，才能開始備份。
 檔案系統識別| 不支援 |僅支援 NTFS。
 卸除式媒體| 不支援 |所有備份專案來源都必須具有*固定*狀態。
-刪除重複資料的磁碟機 | 支援的 | Azure 備份會將刪除重複資料的資料轉換成一般資料。 它會將資料優化、加密、儲存和傳送至保存庫。
+刪除重複資料的磁碟機 | 支援 | Azure 備份會將刪除重複資料的資料轉換成一般資料。 它會將資料優化、加密、儲存和傳送至保存庫。
 
 ## <a name="support-for-initial-offline-backup"></a>支援初始離線備份
 

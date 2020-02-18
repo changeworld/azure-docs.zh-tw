@@ -245,6 +245,8 @@
           items:
             - name: 針對連線問題進行疑難排解
               href: howto-troubleshoot-common-connection-issues.md
+            - name: 將資料加密進行疑難排解
+              href: howto-data-encryption-troubleshoot.md
         - name: 進階威脅防護
           items:
             - name: Azure 入口網站
@@ -311,7 +313,7 @@
       href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbforpostgresql'
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/?category=databases'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/postgresql/'
     - name: MSDN 論壇
       href: 'https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureDatabaseforPostgreSQL'

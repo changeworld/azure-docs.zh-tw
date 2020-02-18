@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/17/2019
 ms.author: erhopf
-ms.openlocfilehash: 149ec84732171cd57b3f8a9590d5340107536eac
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 894c9d34f3e9874a51f5939021f908ac4ecaaaa9
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75928224"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156602"
 ---
 > [!NOTE]
 > 適用於 Unity 的語音 SDK 支援 Windows Desktop (x86 和 x64) 或通用 Windows 平台 (x86、x64、ARM/ARM64)、Android (x86、ARM32/64) 以及 iOS (x64 模擬器、ARM32 和 ARM64)
@@ -90,7 +90,7 @@ ms.locfileid: "75928224"
 
 1. 尋找字串 `YourSubscriptionKey` 並將其取代為您的語音服務訂用帳戶金鑰。
 
-1. 尋找字串 `YourServiceRegion` 並將其取代為與您的訂用帳戶相關聯的[區域](~/articles/cognitive-services/Speech-Service/regions.md)。 例如，如果您使用的是免費試用版，區域將是 `westus`。
+1. 尋找字串 `YourServiceRegion` 並將其取代為訂用帳戶所關聯[區域](https://aka.ms/speech/sdkregion)中的「語音 SDK 參數」。 例如，如果您使用的是免費試用版，區域將是 `westus`。
 
 1. 儲存指令碼的變更。
 

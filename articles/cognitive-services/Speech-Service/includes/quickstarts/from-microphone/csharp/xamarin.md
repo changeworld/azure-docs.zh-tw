@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 66391f7b9282781902723b0153a5797a5f7ae82b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3f315f29eab107c9e0e145bd25db71a8cb8b2ace
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75467865"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156708"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -48,7 +48,7 @@ ms.locfileid: "75467865"
 1. 在來源檔案的 `OnRecognitionButtonClicked` 處理常式中，尋找字串 `YourSubscriptionKey`，並將其取代為與您的訂用帳戶金鑰相關聯的區域。
 
 
-1. 在 `OnRecognitionButtonClicked` 處理常式中，尋找字串 `YourServiceRegion`，並將它取代為與您的訂用帳戶相關聯的[區域](~/articles/cognitive-services/Speech-Service/regions.md)。 (例如，針對免費試用訂用帳戶使用 `westus`。)
+1. 在 `OnRecognitionButtonClicked` 處理常式中，尋找字串 `YourServiceregion`，並將其取代為訂用帳戶所關聯[區域](https://aka.ms/speech/sdkregion)中的「語音 SDK 參數」。 (例如，針對免費試用訂用帳戶使用 `westus`。)
 
 1. 接下來，您必須建立 [Xamarin 服務](https://docs.microsoft.com/xamarin/android/app-fundamentals/services/creating-a-service/)，以用來查詢不同平台專案 (例如 UWP、Android 和 iOS) 的麥克風權限。 若要這麼做，請在 helloworld 專案下新增名為 Services  的新資料夾，並在其中建立新的 C# 原始程式檔。 您可以用滑鼠右鍵按一下 [Services]  資料夾，然後選取 [新增]   > [新增項目]   > [程式碼檔案]  。 重新命名 `IMicrophoneService.cs` 檔案，並將下列程式碼片段中的所有程式碼放在該檔案中：
 

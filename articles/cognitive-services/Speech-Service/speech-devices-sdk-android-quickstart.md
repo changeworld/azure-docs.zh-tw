@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 02/12/2020
 ms.author: erhopf
-ms.openlocfilehash: 2def0eaa2e1ee22498202228cf62257605d940e5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 657cf0a0648cd53e5692a2cf5333ba29951b77a4
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75380315"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189129"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-android"></a>快速入門：在 Android 上執行語音裝置 SDK 範例應用程式
 
@@ -34,7 +34,7 @@ ms.locfileid: "75380315"
 - 下載最新版的[語音裝置 SDK](https://aka.ms/sdsdk-download)，並將 .zip 擷取至您的工作目錄。
 
   > [!NOTE]
-  > Android-Sample-Release.zip 檔案包含 Android 範例應用程式，而本快速入門假設應用程式會解壓縮至 C:\SDSDK\Android-Sample-Release
+  > 本快速入門會假設應用程式已解壓縮至 C:\SDSDK\Android-Sample-Release
 
 - 取得[適用於語音服務的 Azure 訂用帳戶金鑰](get-started.md)
 
@@ -83,6 +83,29 @@ ms.locfileid: "75380315"
 
 1. 前往 C:\SDSDK\Android-Sample-Release\example。 選取 [OK] \(確定\)  以開啟範例專案。
 
+1. 將 Gradle 設定為參考語音 SDK。 您可以在 Android Studio 中的 **Gradle 指令碼**下找到下列檔案。
+
+    藉由新增 maven 行來更新 **build.gradle(Project:example)** (allprojects 區塊應符合下列內容)。
+
+    ```xml
+    allprojects {
+        repositories {
+            google()
+            jcenter()
+            mavenCentral()
+            maven {
+                url 'https://csspeechstorage.blob.core.windows.net/maven/'
+            }
+        }
+    }
+    ```
+
+    將這一行新增至 [相依性] 區段，以更新 **build.gradle(Module:app)** 。 
+    
+    ```xml
+    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.9.0'
+    ```
+    
 1. 將您的語音訂用帳戶金鑰加入至原始程式碼中。 如果您想要試用意圖辨識，請一併新增您的 [Language Understanding 服務](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/)訂用帳戶金鑰和應用程式識別碼。
 
    若為語音和 LUIS，您的資訊會進入 MainActivity.java：

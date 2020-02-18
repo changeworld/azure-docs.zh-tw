@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 2/5/2019
 ms.author: absha
-ms.openlocfilehash: 1fa9c72f7ca305a03cdc90ea02cefe973932792b
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 838d215cb49e526251aff9267dbeb0feb6d5f8df
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77046309"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425251"
 ---
 # <a name="metrics-for-application-gateway"></a>應用程式閘道的計量
 
@@ -95,10 +95,20 @@ ms.locfileid: "77046309"
 - **目前的連接**
 
    從用戶端到應用程式閘道的並行連線數總計
+   
+- **預估的計費容量單位**
+
+  預估計費所使用的容量單位數。 這會 calcutaed 為*目前容量單位*與*固定可計費容量單位*之間的較大值。  
 
 - **失敗的要求**
 
    應用程式閘道已提供的失敗要求計數。 您可以進一步篩選要求計數，以顯示每個/特定後端集區的計數-HTTP 設定組合。
+   
+- **固定計費容量單位**根據應用程式閘道設定中的*最小縮放單位*設定，保留布建的容量單位數目下限。
+   
+ - **每秒的新連線數**
+
+   從用戶端到應用程式閘道以及從應用程式閘道到後端成員所建立的每秒新 TCP 連線數平均。
 
 
 - **回應狀態**

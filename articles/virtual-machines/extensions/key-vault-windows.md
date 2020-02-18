@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1d2606296ba55c0ef66d118091f6764f7a285137
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: d0491a5178331c53248d9c764d9ff1c6a6970683
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806774"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425777"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>適用於 Windows 的金鑰保存庫虛擬機器擴充功能
 
@@ -29,7 +29,7 @@ Key Vault 的 VM 擴充功能支援下列版本的 Windows：
 
 ## <a name="extension-schema"></a>擴充功能結構描述
 
-下列 JSON 顯示金鑰保存庫 VM 擴充功能的結構描述。 延伸模組不需要受保護的設定，其所有設定都會被視為公開資訊。 延伸模組需要受監視的憑證清單、輪詢頻率和目的地憑證存放區。 具體而言：  
+下列 JSON 顯示金鑰保存庫 VM 擴充功能的結構描述。 延伸模組不需要受保護的設定，其所有設定都會被視為公開資訊。 延伸模組需要受監視的憑證清單、輪詢頻率和目的地憑證存放區。 具體來說：  
 
 ```json
     {
@@ -66,17 +66,17 @@ Key Vault 的 VM 擴充功能支援下列版本的 Windows：
 
 ### <a name="property-values"></a>屬性值
 
-| Name | 值 / 範例 | 資料類型 |
+| 名稱 | 值 / 範例 | 資料類型 |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
-| publisher | Microsoft.Azure.KeyVault | string |
-| 類型 | KeyVaultForWindows | string |
+| publisher | Microsoft.Azure.KeyVault | 字串 |
+| type | KeyVaultForWindows | 字串 |
 | typeHandlerVersion | 1.0 | int |
-| pollingIntervalInS | 3600 | string |
-| certificateStoreName | MY | string |
-| linkOnRenewal | false | 布林值 |
-| certificateStoreLocation  | LocalMachine | string |
-| requiredInitialSync | true | 布林值 |
+| pollingIntervalInS | 3600 | 字串 |
+| certificateStoreName | MY | 字串 |
+| linkOnRenewal | false | boolean |
+| certificateStoreLocation  | LocalMachine | 字串 |
+| requiredInitialSync | true | boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | 字串陣列
 
 
@@ -169,7 +169,7 @@ Azure CLI 可以用來將 Key Vault VM 擴充功能部署到現有的虛擬機�
          az vm extension set -n "KeyVaultForWindows" `
          --publisher Microsoft.Azure.KeyVault `
          -g "<resourcegroup>" `
-         --vmss-name "<vmName>" `
+         --vm-name "<vmName>" `
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\ <observedCerts>\"] }}'
     ```
 

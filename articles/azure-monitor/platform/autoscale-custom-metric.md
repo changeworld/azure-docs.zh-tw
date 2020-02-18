@@ -4,17 +4,18 @@ description: 了解如何在 Azure 中依自訂計量調整資源的規模。
 ms.topic: conceptual
 ms.date: 05/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: f8aaaf8890c3642884b72cc6c8fc2759fec357fa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7758c440c75af5819099110dcbdaf5a86a1d2a04
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364538"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425114"
 ---
 # <a name="get-started-with-auto-scale-by-custom-metric-in-azure"></a>開始在 Azure 中依自訂計量自動調整規模
 本文說明如何在 Azure 入口網站中依自訂計量調整您資源的規模。
 
-Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[雲端服務](https://azure.microsoft.com/services/cloud-services/)、[App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/) 與 [API 管理服務](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)。
+Azure 監視器自動調整僅適用于[虛擬機器擴展集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[雲端服務](https://azure.microsoft.com/services/cloud-services/)、 [App Service Web Apps](https://azure.microsoft.com/services/app-service/web/)、 [Azure 資料總管 Cluster](https://azure.microsoft.com/services/data-explorer/) 、   
+整合服務環境和[API 管理服務](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)。
 
 ## <a name="lets-get-started"></a>開始使用
 本文假設您的 Web 應用程式已設定 Application Insights。 如果您還沒有帳戶，您可以[設定 ASP.NET 網站的 Application Insights][1]

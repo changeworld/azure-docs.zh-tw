@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/31/2020
+ms.date: 02/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: c1c4f139dedc9be11a5f19730221ccec77139200
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
-ms.translationtype: HT
+ms.openlocfilehash: 9f7819974e3548baf5e10f0bf9a2d656d9412beb
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76962011"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987966"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-ga-environment-using-c"></a>使用從 Azure 時間序列深入解析 GA 環境查詢資料C#
 
@@ -50,13 +50,9 @@ ms.locfileid: "76962011"
 編譯及執行範例程式碼之前，您必須先完成下列步驟：
 
 1. 布建[GA Azure 時間序列深入解析](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started)環境。
-
 1. 如[驗證和授權](time-series-insights-authentication-and-authorization.md)中所述，設定您的 Azure 時間序列深入解析環境以進行 Azure Active Directory。 
-
 1. 安裝必要的專案相依性。
-
 1. 以適當的環境識別碼取代每個 **#DUMMY #** ，以編輯下面的範例程式碼。
-
 1. 在 Visual Studio 內執行程式碼。
 
 ## <a name="project-dependencies"></a>專案相依性
@@ -70,7 +66,9 @@ ms.locfileid: "76962011"
 * [Microsoft.identitymodel.](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) 3.13.9 套件。
 * [Newtonsoft. Json](https://www.nuget.org/packages/Newtonsoft.Json) -9.0.1 封裝。
 
-使用[NuGet 2.12](https://www.nuget.org/)新增封裝 +：
+選取 [**組建** > **組建方案**] 選項，以在 Visual Studio 2019 中下載套件。
+
+或者，使用[NuGet 2.12 +](https://www.nuget.org/)新增套件：
 
 * `dotnet add package Newtonsoft.Json --version 9.0.1`
 * `dotnet add package Microsoft.IdentityModel.Clients.ActiveDirectory --version 3.13.9`

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 07/09/2019
-ms.openlocfilehash: e32250102d095f341b2de918037b9ad834adfd33
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 02/17/2020
+ms.openlocfilehash: fe006cebe9aab30a6aaa0bdf2bf3362a494f64d7
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842645"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426267"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>建立和使用主動式異地複寫
 
@@ -113,7 +113,7 @@ ms.locfileid: "76842645"
 
 ## <a name="configuring-secondary-database"></a>正在設定次要資料庫
 
-主要和次要資料庫必須有相同的服務層級。 此外也強烈建議您使用與主要資料庫相同的計算大小 (DTU 或虛擬核心) 來建立次要資料庫。 如果主資料庫遇到大量寫入的工作負載，則計算大小較低的次要複本可能無法跟上。 這會導致次要複本上的重做延遲，而且可能無法用。 落後主要資料庫的次要資料庫也可能在需要強制容錯移轉時，有遺失大量資料的風險。 若要降低這些風險，有效的主動式異地複寫將會節流主要的記錄速率，讓次要複本得以趕上。 不平衡次要設定的另一個結果是，在容錯移轉之後，應用程式的效能會因為新主資料庫的計算容量不足而受到影響。 將需要升級至較高的計算，才能達到所需的層級，直到降低中斷的情況下，才會發生這種情況。 
+主要和次要資料庫必須有相同的服務層級。 此外也強烈建議您使用與主要資料庫相同的計算大小 (DTU 或虛擬核心) 來建立次要資料庫。 如果主資料庫遇到大量寫入的工作負載，則計算大小較低的次要複本可能無法跟上。 這會導致次要複本上的重做延遲，而且可能無法用。 在主要複本上延遲的次要資料庫也會在需要強制容錯移轉時，面臨大量資料遺失的風險。 若要降低這些風險，有效的主動式異地複寫將會節流主要的記錄速率，讓次要複本得以趕上。 不平衡次要設定的另一個結果是，在容錯移轉之後，應用程式的效能會因為新主資料庫的計算容量不足而受到影響。 將需要升級至較高的計算，才能達到所需的層級，直到降低中斷的情況下，才會發生這種情況。 
 
 
 > [!IMPORTANT]
@@ -145,7 +145,7 @@ ms.locfileid: "76842645"
 1. 建立對應的使用者，並將它指派給 dbmanager 角色： 
 
    ```sql
-   create user geodrsetup for login gedrsetup
+   create user geodrsetup for login geodrsetup
    alter role geodrsetup dbmanager add member geodrsetup
    ```
 
@@ -223,12 +223,12 @@ ms.locfileid: "76842645"
 
 ## <a name="monitoring-geo-replication-lag"></a>監視異地複寫延遲
 
-若要監視 RPO 方面的延遲，請使用主資料庫上[dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database)的*replication_lag_sec*資料行。 它會顯示在主資料庫上認可的交易與次要複本之間的延遲（以秒為單位）。 例如： 如果 lag 的值為1秒，則表示主要受到中斷的影響，並起始容錯移轉，而不會儲存最新轉換的1秒。 
+若要監視 RPO 方面的延遲，請使用主資料庫上[dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database)的*replication_lag_sec*資料行。 它會顯示在主資料庫上認可的交易與次要複本之間的延遲（以秒為單位）。 例如 如果 lag 的值為1秒，則表示主要受到中斷的影響，並起始容錯移轉，而不會儲存最新轉換的1秒。 
 
 若要針對已套用至次要資料庫的主資料庫變更來測量 lag （也就是可從次要複本讀取），請將次要資料庫上的*last_commit*時間與主資料庫上的相同值進行比較。
 
 > [!NOTE]
-> 有時主資料庫上的*replication_lag_sec*具有 Null 值，這表示主要複本目前不知道次要複本的距離。   這通常會在進程重新開機之後發生，而且應該是暫時性的狀況。 如果*replication_lag_sec*在一段很長的時間內傳回 Null，請考慮對應用程式發出警示。 它會指出次要資料庫因永久連線失敗而無法與主要複本通訊。 有時候，次要與主資料庫上*last_commit*時間之間的差異也可能會變大。 例如： 如果在一段長時間未變更的情況下，在主要複本上進行認可，則在快速傳回0之前，差異將會跳到較大的值。 當這兩個值之間的差異持續很長時，請將其視為錯誤狀況。
+> 有時主資料庫上的*replication_lag_sec*具有 Null 值，這表示主要複本目前不知道次要複本的距離。   這通常會在進程重新開機之後發生，而且應該是暫時性的狀況。 如果*replication_lag_sec*在一段很長的時間內傳回 Null，請考慮對應用程式發出警示。 它會指出次要資料庫因永久連線失敗而無法與主要複本通訊。 有時候，次要與主資料庫上*last_commit*時間之間的差異也可能會變大。 例如 如果在一段長時間未變更的情況下，在主要複本上進行認可，則在快速傳回0之前，差異將會跳到較大的值。 當這兩個值之間的差異持續很長時，請將其視為錯誤狀況。
 
 
 ## <a name="programmatically-managing-active-geo-replication"></a>以程式設計方式管理主動式異地複寫
@@ -240,7 +240,7 @@ ms.locfileid: "76842645"
 > [!IMPORTANT]
 > 這些 Transact-SQL 命令僅適用於作用中異地複寫，不適用於容錯移轉群組。 因此它們也不適用於受控執行個體，因為受控執行個體僅支援容錯移轉群組。
 
-| Command | 說明 |
+| Command | 描述 |
 | --- | --- |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |使用 ADD SECONDARY ON SERVER 引數，針對現有資料庫建立次要資料庫並開始資料複寫 |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |使用 FAILOVER 或 FORCE_FAILOVER_ALLOW_DATA_LOSS，將次要資料庫切換為主要資料庫以便開始容錯移轉 |
@@ -257,7 +257,7 @@ ms.locfileid: "76842645"
 > [!IMPORTANT]
 > Azure SQL Database 仍然支援 PowerShell Azure Resource Manager 模組，但所有未來的開發都是針對 Az .Sql 模組。 如需這些 Cmdlet，請參閱[AzureRM](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模組和 AzureRm 模組中命令的引數本質上完全相同。
 
-| Cmdlet | 說明 |
+| Cmdlet | 描述 |
 | --- | --- |
 | [Get-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabase) |取得一或多個資料庫。 |
 | [New-AzSqlDatabaseSecondary](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabasesecondary) |針對現有資料庫建立次要資料庫並開始資料複寫。 |
@@ -271,7 +271,7 @@ ms.locfileid: "76842645"
 
 ### <a name="rest-api-manage-failover-of-single-and-pooled-databases"></a>REST API：管理單一和集區資料庫的容錯移轉
 
-| API | 說明 |
+| API | 描述 |
 | --- | --- |
 | [Create or Update Database (createMode=Restore)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |建立、更新或還原主要或次要資料庫。 |
 | [取得建立或更新資料庫狀態](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |在建立作業期間傳回狀態。 |

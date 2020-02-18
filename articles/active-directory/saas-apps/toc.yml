@@ -485,6 +485,8 @@
           href: expensein-tutorial.md
         - name: Expensify
           href: expensify-tutorial.md
+        - name: 體驗雲端
+          href: experience-cloud-tutorial.md
         - name: Explanation-Based Auditing System
           href: explanation-based-auditing-system-tutorial.md
         - name: 到期日提醒
@@ -597,8 +599,6 @@
       items:
         - name: Hackerone
           href: hackerone-tutorial.md
-        - name: Halogen Software
-          href: halogen-software-tutorial.md
         - name: Halosys
           href: halosys-tutorial.md
         - name: HappyFox
@@ -651,6 +651,8 @@
           href: hype-tutorial.md
         - name: HyperAnna
           href: hyperanna-tutorial.md
+        - name: IamIP 專利平台
+          href: iamip-patent-platform-tutorial.md
         - name: IBM Kenexa Survey Enterprise
           href: kenexasurvey-tutorial.md
         - name: IBM OpenPages
@@ -975,6 +977,8 @@
           href: nomadic-tutorial.md
         - name: Novatus
           href: novatus-tutorial.md
+        - name: Azure 的 NS1 SSO
+          href: ns1-sso-azure-tutorial.md
         - name: Nuclino
           href: nuclino-tutorial.md
         - name: 已啟用 O.C. Tanner - AppreciateHub 的人員
@@ -1177,6 +1181,8 @@
           href: runmyprocess-tutorial.md
     - name: S
       items:
+        - name: Saba TalentSpace
+          href: halogen-software-tutorial.md
         - name: SafeConnect
           href: safeconnect-tutorial.md
         - name: SafetyNet
@@ -1297,7 +1303,7 @@
           href: skyhighnetworks-tutorial.md
         - name: SKYSITE
           href: skysite-tutorial.md
-        - name: Skytap
+        - name: Skytap 的單一登入
           href: skytap-tutorial.md
         - name: Skyward Qmlativ
           href: skyward-qmlativ-tutorial.md

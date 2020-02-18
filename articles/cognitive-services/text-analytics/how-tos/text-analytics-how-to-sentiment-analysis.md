@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 12/17/2019
+ms.date: 02/10/2020
 ms.author: aahi
-ms.openlocfilehash: 214c071e0d01908e2d46c932fcf87906de834102
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 84ef01b5e7fc3f628b1cdf7a1f13175604ebcdd4
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644676"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137951"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>如何：使用文字分析 API 來偵測情感
 
@@ -50,14 +50,7 @@ ms.locfileid: "75644676"
 | 情感標籤                        |                       | X                     |
 | 模型版本設定                   |                       | X                     |
 
-#### <a name="version-2tabversion-2"></a>[第 2 版](#tab/version-2)
-
-### <a name="sentiment-scoring"></a>情感評分
-
-情感分析器會將文字明確地分類為正面或負面。 並指派範圍從 0 到 1 的分數。 接近 0.5 的值是中立或不確定的。 0\.5 的分數表示中立。 當無法針對情感分析字串，或字串沒有任何情感時，分數一律為 0.5。 例如，如果您使用英文語言代碼傳入西班牙字串，分數將會是 0.5。
-
-
-#### <a name="version-3-public-previewtabversion-3"></a>[第 3 版 (公開預覽版)](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[3.0-preview 版](#tab/version-3)
 
 ### <a name="sentiment-scoring"></a>情感評分
 
@@ -85,6 +78,13 @@ ms.locfileid: "75644676"
 
 您可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/dotnet/Language/SentimentV3.cs) 上找到呼叫此情感分析版本的範例 C# 應用程式。
 
+
+#### <a name="version-21tabversion-2"></a>[2.1 版](#tab/version-2)
+
+### <a name="sentiment-scoring"></a>情感評分
+
+情感分析器會將文字明確地分類為正面或負面。 並指派範圍從 0 到 1 的分數。 接近 0.5 的值是中立或不確定的。 0\.5 的分數表示中立。 當無法針對情感分析字串，或字串沒有任何情感時，分數一律為 0.5。 例如，如果您使用英文語言代碼傳入西班牙字串，分數將會是 0.5。
+
 ---
 
 ## <a name="sending-a-rest-api-request"></a>傳送 REST API 要求 
@@ -101,27 +101,28 @@ ms.locfileid: "75644676"
 
 建立 POST 要求。 您可以使用下列參考連結中的 [Postman](text-analytics-how-to-call-api.md) 或 **API 測試主控台**，以快速建構及傳送要求。 
 
-#### <a name="version-2tabversion-2"></a>[第 2 版](#tab/version-2)
-
-[情感分析 v2 參考](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
-
-#### <a name="version-3-public-previewtabversion-3"></a>[第 3 版 (公開預覽版)](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[3.0-preview 版](#tab/version-3)
 
 [情感分析 v3 參考](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment)
+
+#### <a name="version-21tabversion-2"></a>[2.1 版](#tab/version-2)
+
+[情感分析 v2 參考](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
 
 ---
 
 使用 Azure 文字分析資源或具現化的[文字分析容器](text-analytics-how-to-install-containers.md)，設定可用來分析情感的 HTTPS 端點。 您必須針對您要使用的版本加上正確的 URL。 例如：
-    
-[!INCLUDE [text-analytics-find-resource-information](../includes/find-azure-resource-info.md)]
 
-#### <a name="version-2tabversion-2"></a>[第 2 版](#tab/version-2)
+> [!NOTE]
+> 您可以在 Azure 入口網站上找到適用於文字分析資源的金鑰和端點。 您可以在 [資源管理]  下的資源 [快速啟動]  頁面中找到。 
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`
-
-#### <a name="version-3-public-previewtabversion-3"></a>[第 3 版 (公開預覽版)](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[3.0-preview 版](#tab/version-3)
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/sentiment`
+
+#### <a name="version-21tabversion-2"></a>[2.1 版](#tab/version-2)
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`
 
 ---
 
@@ -161,26 +162,7 @@ ms.locfileid: "75644676"
 
 輸出會立即傳回。 您可以將結果串流至接受 JSON 的應用程式，或將輸出儲存到本機系統上的檔案。 然後，將輸出匯入應用程式，以便用來排序、搜尋和操作資料。
 
-#### <a name="version-2tabversion-2"></a>[第 2 版](#tab/version-2)
-
-### <a name="sentiment-analysis-v2-example-response"></a>情感分析 v2 範例回應
-
-情感分析 v2 的回應會包含每個已傳送文件的情感分數。
-
-```json
-{
-  "documents": [{
-    "id": "1",
-    "score": 0.98690706491470337
-  }, {
-    "id": "2",
-    "score": 0.95202046632766724
-  }],
-  "errors": []
-}
-```
-
-#### <a name="version-3-public-previewtabversion-3"></a>[第 3 版 (公開預覽版)](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[3.0-preview 版](#tab/version-3)
 
 ### <a name="sentiment-analysis-v3-example-response"></a>情感分析 V3 的回應範例
 
@@ -255,6 +237,26 @@ ms.locfileid: "75644676"
     "errors": []
 }
 ```
+
+#### <a name="version-21tabversion-2"></a>[2.1 版](#tab/version-2)
+
+### <a name="sentiment-analysis-v2-example-response"></a>情感分析 v2 範例回應
+
+情感分析 v2 的回應會包含每個已傳送文件的情感分數。
+
+```json
+{
+  "documents": [{
+    "id": "1",
+    "score": 0.98690706491470337
+  }, {
+    "id": "2",
+    "score": 0.95202046632766724
+  }],
+  "errors": []
+}
+```
+
 ---
 
 ## <a name="summary"></a>摘要

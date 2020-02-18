@@ -4,15 +4,15 @@ description: 瞭解 Azure 監視器的一般警示架構定義
 ms.service: azure-monitor
 ms.subservice: alerts
 ms.topic: conceptual
-author: anantr
+author: ofirmanor
 ms.author: robb
 ms.date: 03/14/2019
-ms.openlocfilehash: fb8c2c7e25f94c66c8cc8f7768071d508da8d3b5
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: efa6a8807b3db14649a2b4ad38c575cf98aba113
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765666"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425165"
 ---
 # <a name="common-alert-schema-definitions"></a>常見的警示結構描述定義
 
@@ -71,13 +71,13 @@ ms.locfileid: "76765666"
 }
 ```
 
-## <a name="essentials"></a>Essentials
+## <a name="essentials"></a>基本資訊
 
-| 欄位 | 說明|
+| 欄位 | 描述|
 |:---|:---|
 | alertId | 唯一識別警示實例的 GUID。 |
 | alertRule | 產生警示實例之警示規則的名稱。 |
-| 嚴重性 | 警示的嚴重性。 可能的值： Sev0、Sev1、Sev2、Sev3 或 Sev4。 |
+| Severity | 警示的嚴重性。 可能的值： Sev0、Sev1、Sev2、Sev3 或 Sev4。 |
 | signalType | 識別已定義警示規則的信號。 可能的值： [計量]、[記錄] 或 [活動記錄]。 |
 | monitorCondition | 當警示引發時，警示的監視條件會設定為 [已**引發**]。 當引發警示的基礎條件清除時，監視條件會設定為 [**已解決**]。   |
 | monitoringService | 產生警示的監視服務或解決方案。 警示內容的欄位是由監視服務所決定。 |
@@ -151,7 +151,7 @@ ms.locfileid: "76765666"
 ### <a name="log-alerts"></a>記錄警示
 
 > [!NOTE]
-> 針對已定義自訂電子郵件主旨和/或 JSON 內容的記錄警示，啟用通用架構會將電子郵件主旨和（或）承載架構還原成如下所述的內容。 啟用通用架構的警示，其大小上限為每個警示 256 KB。 如果搜尋結果導致警示大小超過此閾值，則不會內嵌在記錄警示承載中。 您可以藉由檢查旗標 `IncludedSearchResults`來判斷這一點。 如果未包含搜尋結果，您應該搭配使用搜尋查詢與[Log ANALYTICS API](https://docs.microsoft.com/rest/api/loganalytics/query/get)。 
+> 針對已定義自訂電子郵件主旨和/或 JSON 內容的記錄警示，啟用通用架構會將電子郵件主旨和（或）承載架構還原成如下所述的內容。 啟用通用架構的警示，其大小上限為每個警示 256 KB。 如果搜尋結果導致警示大小超過此閾值，則不會內嵌在記錄警示承載中。 您可以藉由檢查旗標 `IncludeSearchResults`來判斷這一點。 如果未包含搜尋結果，您應該搭配使用搜尋查詢與[Log ANALYTICS API](https://docs.microsoft.com/rest/api/loganalytics/query/get)。 
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 
@@ -214,7 +214,7 @@ ms.locfileid: "76765666"
         }
       ]
     },
-    "IncludedSearchResults": "True",
+    "IncludeSearchResults": "True",
     "AlertType": "Number of results"
   }
 }
@@ -277,7 +277,7 @@ ms.locfileid: "76765666"
         }
       ]
     },
-    "IncludedSearchResults": "True",
+    "IncludeSearchResults": "True",
     "AlertType": "Number of results"
   }
 }

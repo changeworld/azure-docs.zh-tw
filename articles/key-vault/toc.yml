@@ -112,6 +112,14 @@
           href: managed-identity.md
         - name: 使用存取控制原則
           href: key-vault-group-permissions-for-apps.md
+        - name: 匯入受 HSM 保護的金鑰
+          items:
+            - name: 概觀
+              href: key-vault-hsm-protected-keys.md
+            - name: 將受 HSM 保護金鑰匯入 Key Vault (預覽)
+              href: hsm-protected-keys-vendor-agnostic-byok.md
+            - name: 將受 HSM 保護金鑰匯入 Key Vault (舊版)
+              href: hsm-protected-keys-legacy.md
     - name: 使用事件方格路由金鑰保存庫通知
       href: event-grid-tutorial.md
     - name: 透過事件方格和 Logic Apps 接收通知
@@ -170,8 +178,6 @@
       items:
         - name: 開發人員的指南
           href: key-vault-developers-guide.md
-        - name: 受 HSM 保護的金鑰
-          href: key-vault-hsm-protected-keys.md
         - name: 遷移到 .NET 2.0
           href: key-vault-dotnet2api-release-notes.md
         - name: 儲存 Web 應用程式祕密

@@ -2,28 +2,28 @@
 title: 按發票支付 Azure 訂閱費
 description: 描述如何按發票支付 Azure 訂用帳戶。
 author: bandersmsft
-manager: jureid
+manager: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/23/2019
+ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: a0f012145788d2d1d4935e10691859e5aaf71255
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: a471e859261dc735e92bfff743eb3a8e13dd9a35
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75994333"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133632"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>按發票支付 Azure 訂閱費
 
 如果您切換為按發票付款，這表示您會在發票日期的 30 天內使用支票/電匯支付帳單費用。 若要符合按發票支付 Azure 訂用帳戶費用的資格，請將要求提交給 Azure 支援。 一旦您的要求獲得核准，您就可以在 [Azure 入口網站](https://portal.azure.com)中切換為發票付款 (支票/電匯)。
 
 > [!IMPORTANT]
-> * 發票付款 (支票/電匯) 只適用於商務帳戶。
+> * 發票付款 (支票/電匯) 僅適用於代表公司使用 Azure 的客戶。
 > * 在切換為發票付款之前，請支付所有未付費用。
 > * 目前，中國的全球 Azure 不支援發票付款。
 

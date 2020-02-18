@@ -3,12 +3,12 @@ title: FedRAMP Moderate 藍圖範例控制項
 description: FedRAMP Moderate 藍圖範例的控制項對應。 每個控制項都會對應至一或多個可協助評量的 Azure 原則。
 ms.date: 10/31/2019
 ms.topic: sample
-ms.openlocfilehash: 0ecf5430f643ee795f81759f3d07a062e433f5b6
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 3fd6762f4f0a76b560a37dd1ed4f727aa76385fd
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74544561"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150473"
 ---
 # <a name="control-mapping-of-the-fedramp-moderate-blueprint-sample"></a>FedRAMP Moderate 藍圖範例的控制項對應
 
@@ -102,19 +102,19 @@ Just-In-Time (JIT) 虛擬機器存取可鎖定 Azure 虛擬機器的連入流量
 
 ## <a name="cm-7-2-least-functionality--prevent-program-execution"></a>CM-7 (2) 最少的功能 | 防止程式執行
 
-「Azure 資訊安全中心」的自適性應用程式控制是智慧型的自動化端對端應用程式系統清單解決方案，可封鎖或防止在虛擬機器上執行特定軟體。 應用程式控制能以強制模式執行，禁止執行未經核准的應用程式。 此藍圖指派一個 Azure 原則定義，協助您監視已建議但尚未設定允許清單解決方案的虛擬機器。
+「Azure 資訊安全中心」的自適性應用程式控制是智慧型的自動化端對端應用程式允許清單解決方案，可封鎖或防止在虛擬機器上執行特定軟體。 應用程式控制能以強制模式執行，禁止執行未經核准的應用程式。 此藍圖指派一個 Azure 原則定義，協助您監視已建議但尚未設定允許清單解決方案的虛擬機器。
 
 - 應在虛擬機器上啟用自適性應用程式控制
 
-## <a name="cm-7-5-least-functionality--authorized-software--whitelisting"></a>CM-7 (5) 最少的功能 | 已授權的軟體 / 加入系統清單
+## <a name="cm-7-5-least-functionality--authorized-software--whitelisting"></a>CM-7 (5) 最少的功能 | 已授權的軟體 / 加入允許清單
 
-「Azure 資訊安全中心」的自適性應用程式控制是智慧型的自動化端對端應用程式系統清單解決方案，可封鎖或防止在虛擬機器上執行特定軟體。 應用程式控制可協助您建立虛擬機器的已核准應用程式清單。 此藍圖指派一個 [Azure 原則](../../../policy/overview.md)定義，協助您監視已建議但尚未設定允許清單解決方案的虛擬機器。
+「Azure 資訊安全中心」的自適性應用程式控制是智慧型的自動化端對端應用程式允許清單解決方案，可封鎖或防止在虛擬機器上執行特定軟體。 應用程式控制可協助您建立虛擬機器的已核准應用程式清單。 此藍圖指派一個 [Azure 原則](../../../policy/overview.md)定義，協助您監視已建議但尚未設定允許清單解決方案的虛擬機器。
 
 - 應在虛擬機器上啟用自適性應用程式控制
 
 ## <a name="cm-11-user-installed-software"></a>CM-11 使用者安裝的軟體
 
-「Azure 資訊安全中心」的自適性應用程式控制是智慧型的自動化端對端應用程式系統清單解決方案，可封鎖或防止在虛擬機器上執行特定軟體。 應用程式控制可協助您強制執行軟體限制原則，並監視其合規性。 此藍圖指派一個 [Azure 原則](../../../policy/overview.md)定義，協助您監視已建議但尚未設定允許清單解決方案的虛擬機器。
+「Azure 資訊安全中心」的自適性應用程式控制是智慧型的自動化端對端應用程式允許清單解決方案，可封鎖或防止在虛擬機器上執行特定軟體。 應用程式控制可協助您強制執行軟體限制原則，並監視其合規性。 此藍圖指派一個 [Azure 原則](../../../policy/overview.md)定義，協助您監視已建議但尚未設定允許清單解決方案的虛擬機器。
 
 - 應在虛擬機器上啟用自適性應用程式控制
 
@@ -190,7 +190,7 @@ Azure 的分散式阻斷服務 (DDoS) 標準層提供基本服務層以外的額
 
 - 應強化與虛擬機器互動的網際網路網路安全性群組規則
 - 應限制透過網際網路面向端點存取
-- 應在 IaaS 上強化 Web 應用程式的 NSG 規則
+- 在與您 VM 建立關聯的網路安全性群組上應限制 Web 連接埠
 - 稽核不受限制的儲存體帳戶網路存取
 
 ## <a name="sc-7-3-boundary-protection--access-points"></a>SC-7 (3) 界限保護 | 存取點

@@ -7,15 +7,14 @@ ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
 keywords: azure 自動化, DSC, powershell, Desired State Configuration, 更新管理, 變更追蹤, 清查, Runbook, python, 圖形, 混合式
-ms.date: 01/29/2020
-ms.custom: mvc
+ms.date: 02/12/2020
 ms.topic: overview
-ms.openlocfilehash: b0f1d235391c4c4e3804a6dccc8174e946035b6a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 33681d5c9e296d7c292dabbd64560e3d95c45af2
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899192"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190313"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>什麼是適用於伺服器的 Azure Arc (預覽)
 
@@ -42,6 +41,8 @@ ms.locfileid: "76899192"
 - WestEurope
 - WestAsia
 
+在大部分情況下，您在建立安裝指令碼時所選取的位置，應該是地理位置最接近機器位置的 Azure 區域。 待用資料會儲存在包含您所指定區域的 Azure 地理位置中，如果您有資料落地需求，這可能也會影響選擇的區域。 如果您的機器所連線的 Azure 區域受到中斷影響，連線的機器不會受到影響，但使用 Azure 的管理作業可能無法完成。 在發生區域性中斷的情況下，如果您有多個位置可提供異地備援服務，最好將每個位置中的機器連線到不同的 Azure 區域。
+
 ## <a name="prerequisites"></a>Prerequisites
 
 ### <a name="supported-operating-systems"></a>支援的作業系統
@@ -55,9 +56,15 @@ Azure Connected Machine 代理程式可正式支援下列 Windows 和 Linux 作�
 >此適用於 Windows 的 Connected Machine 代理程式預覽版本僅支援設定為使用英文語言的 Windows Server。
 >
 
+### <a name="required-permissions"></a>所需的權限
+
+- 若要使電腦上線，您必須是 **Azure Connected Machine 上線**角色的成員。
+
+- 若要讀取、修改、重新上線和刪除機器，您必須是 **Azure Connected Machine 資源管理員**角色的成員。 
+
 ### <a name="azure-subscription-and-service-limits"></a>Azure 訂用帳戶與服務限制
 
-使用適用於伺服器的 Azure Arc (預覽) 設定您的電腦之前，您應先檢查 Azure Resource Manager 的[訂用帳戶限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager)和[資源群組限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits)，以規劃要連線的機器數目。
+使用適用於伺服器的 Azure Arc (預覽) 設定您的電腦之前，您應先檢查 Azure Resource Manager 的[訂用帳戶限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits)和[資源群組限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits)，以規劃要連線的機器數目。
 
 ### <a name="networking-configuration"></a>網路設定
 
@@ -129,10 +136,10 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 
 | 方法 | 描述 |
 |--------|-------------|
-| 以互動方式 | 若要在一部或少數機器上手動安裝代理程式，請遵循[從 Azure 入口網站連線機器](quickstart-onboard-portal.md)中的步驟。<br> 您可以在 Azure 入口網站中產生指令碼並在機器上執行該指令碼，以自動化代理程式的安裝和設定步驟。|
-| 大規模 | 若要為多部機器安裝及設定代理程式，請遵循[使用服務主體連線機器](quickstart-onboard-powershell.md)。<br> 此方法會建立服務主體，以透過非互動的方式與機器連線。|
+| 以互動方式 | 若要在一部或少數機器上手動安裝代理程式，請遵循[從 Azure 入口網站連線機器](onboard-portal.md)中的步驟。<br> 您可以在 Azure 入口網站中產生指令碼並在機器上執行該指令碼，以自動化代理程式的安裝和設定步驟。|
+| 大規模 | 若要為多部機器安裝及設定代理程式，請遵循[使用服務主體連線機器](onboard-service-principal.md)。<br> 此方法會建立服務主體，以透過非互動的方式與機器連線。|
 
 
 ## <a name="next-steps"></a>後續步驟
 
-- 若要開始評估適用於伺服器的 Azure Arc (預覽)，請遵循[從 Azure 入口網站將混合式機器連線到 Azure](quickstart-onboard-portal.md) 一文。 
+- 若要開始評估適用於伺服器的 Azure Arc (預覽)，請遵循[從 Azure 入口網站將混合式機器連線到 Azure](onboard-portal.md) 一文。 

@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/14/2020
+ms.date: 02/17/2020
 ms.author: jingwang
-ms.openlocfilehash: 3d3a1704b75de53bf65012329fba5f8522adff3a
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 22ecac12e049e58e533cdde0078f4a25f6bb2aa6
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941757"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77423822"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 DB2 複製資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -46,7 +46,10 @@ ms.locfileid: "75941757"
 * IBM DB2 for LUW 10.5
 * IBM DB2 for LUW 10.1
 
-## <a name="prerequisites"></a>必要條件
+>[!TIP]
+>DB2 連接器是以 Microsoft OLE DB Provider for DB2 為基礎。 若要針對 DB2 連接器錯誤進行疑難排解，請參閱[Data Provider 錯誤碼](https://docs.microsoft.com/host-integration-server/db2oledbv/data-provider-error-codes#drda-protocol-errors)。
+
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -62,11 +65,11 @@ ms.locfileid: "75941757"
 
 以下是針對 DB2 連結服務支援的屬性：
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 類型屬性必須設為：**DB2** | 是 |
 | 伺服器 |DB2 伺服器的名稱。 您可以指定在伺服器名稱後面加上以冒號隔開的連接埠號碼，例如 `server:port`。 |是 |
-| 資料庫 |DB2 資料庫的名稱。 |是 |
+| [資料庫] |DB2 資料庫的名稱。 |是 |
 | authenticationType |用來連接到 DB2 資料庫的驗證類型。<br/>允許的值為**基本**。 |是 |
 | username |指定要連線到 DB2 資料庫的使用者名稱。 |是 |
 | 密碼 |指定您為使用者名稱所指定之使用者帳戶的密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 |是 |
@@ -108,7 +111,7 @@ ms.locfileid: "75941757"
 
 若要從 DB2 複製資料，支援下列屬性：
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 資料集的類型屬性必須設定為： **Db2Table** | 是 |
 | 結構描述 | 結構描述的名稱。 |否 (如果已指定活動來源中的「查詢」)  |
@@ -143,7 +146,7 @@ ms.locfileid: "75941757"
 
 若要從 DB2 複製資料，複製活動的 [**來源**] 區段中支援下列屬性：
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的類型屬性必須設定為： **Db2Source** | 是 |
 | 查詢 | 使用自訂 SQL 查詢來讀取資料。 例如： `"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""` 。 | 否 (如果已指定資料集中的 "tableName") |
@@ -193,7 +196,7 @@ ms.locfileid: "75941757"
 | Blob |Byte[] |
 | Char |String |
 | Clob |String |
-| 日期 |Datetime |
+| Date |Datetime |
 | DB2DynArray |String |
 | DbClob |String |
 | Decimal |Decimal |
@@ -206,10 +209,10 @@ ms.locfileid: "75941757"
 | LongVarChar |String |
 | LongVarGraphic |String |
 | 數值 |Decimal |
-| Real |單一 |
+| Real |Single |
 | SmallInt |Int16 |
-| 時間 |TimeSpan |
-| 時間戳記 |日期時間 |
+| Time |TimeSpan |
+| 時間戳記 |Datetime |
 | VarBinary |Byte[] |
 | VarChar |String |
 | VarGraphic |String |

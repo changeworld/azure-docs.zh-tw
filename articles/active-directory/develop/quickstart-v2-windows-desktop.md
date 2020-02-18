@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: be4646631a63a82458a975683f949a2a00398aaf
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 745d7335f70fb082ced16341742e3eb77a34f563
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76703230"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120460"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>快速入門：取得權杖，並從 Windows 傳統型應用程式呼叫 Microsoft Graph API
 
@@ -49,7 +49,7 @@ ms.locfileid: "76703230"
 >      - 在 [支援的帳戶類型]  區段中，選取 [任何組織目錄中的帳戶及個人的 Microsoft 帳戶]  ，例如 Skype、Xbox、Outlook.com。
 >      - 選取 [註冊]  以建立應用程式。
 > 1. 在應用程式頁面清單中，選取 [驗證]  。
-> 1. 在 [重新導向 URI]   | [公用用戶端 (行動、傳統型) 的建議重新導向 URI]  區段，然後核取 **https://login.microsoftonline.com/common/oauth2/nativeclient** 。
+> 1. 在 [重新導向 URI]   | [公用用戶端 (行動、傳統型) 的建議重新導向 URI]  區段，然後使用 **https://login.microsoftonline.com/common/oauth2/nativeclient** 。
 > 1. 選取 [儲存]  。
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -113,6 +113,7 @@ using Microsoft.Identity.Client;
 ```csharp
 public static IPublicClientApplication PublicClientApp;
 PublicClientApplicationBuilder.Create(ClientId)
+                .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
                 .WithAuthority(AzureCloudInstance.AzurePublic, Tenant)
                 .Build();
 ```

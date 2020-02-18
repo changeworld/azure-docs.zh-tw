@@ -1,40 +1,38 @@
 ---
 title: Azure Migrate Server 遷移中以代理程式為基礎的遷移
-description: 提供以 Azure Migrate 伺服器遷移進行代理程式型 VMware VM 遷移的總覽。
+description: 提供 Azure Migrate 中以代理程式為基礎之 VMware VM 遷移的總覽。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 02/17/2020
 ms.author: raynew
-ms.openlocfilehash: a8477b4c10ccbc76f36eed4d64ac12e8bb648a28
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: d345d707cbf58f48466c3bd830d93250d13397c6
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186095"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425847"
 ---
 # <a name="agent-based-migration-architecture"></a>代理程式移轉架構
 
-本文概述使用 Azure Migrate Server 遷移工具，以代理程式為基礎的複寫所用的架構和進程。
+本文概要說明使用[Azure Migrate： Server 遷移](migrate-services-overview.md#azure-migrate-server-assessment-tool)工具，以代理程式為基礎的 VMware vm 複寫所用的架構和進程。
 
-[Azure Migrate](migrate-services-overview.md)提供中央中樞，以追蹤內部部署應用程式和工作負載的探索、評估和遷移，以及 AWS/GCP VM 實例到 Azure。 該中樞能提供 Azure Migrate 工具以進行評量和移轉，也提供協力廠商獨立軟體廠商 (ISV) 的供應項目。
+使用 Azure Migrate：伺服器遷移，您可以使用幾個選項來複寫 VMware Vm：
 
-## <a name="agent-based-replication"></a>以代理程式為基礎的複寫
+- 使用以代理程式為基礎的複寫來遷移 Vm，如這篇文章中所述。
+- 使用無代理程式複寫來遷移 VMware Vm。 這會遷移 Vm，而不需要在其上安裝任何專案。
 
-Azure Migrate Server 複寫工具中以代理程式為基礎的複寫是用來將內部部署 VMware Vm 和實體伺服器遷移至 Azure。 它也可以用來遷移其他內部部署虛擬化伺服器，以及私人和公用雲端 Vm，包括 AWS 實例和 GCP Vm。
+深入瞭解如何[選取和比較](server-migrate-overview.md)VMware vm 的遷移方法。 
 
-針對 VMware 遷移，Azure Migrate Server 遷移工具提供幾個選項：
 
-- 使用以代理程式為基礎的複寫進行遷移，如本文中所述。
-- 無代理程式複寫可遷移 Vm，而不需要在其上安裝任何專案。
+## <a name="agent-based-migration"></a>以代理程式為基礎的遷移
 
-深入瞭解如何[選取 VMware 的遷移方法](server-migrate-overview.md)。
+以代理程式為基礎的遷移是用來將內部部署 VMware Vm 和實體伺服器遷移至 Azure。 它也可以用來遷移其他內部部署虛擬化伺服器，以及私人和公用雲端 Vm，包括 AWS 實例和 GCP Vm。 Azure Migrate 中以代理程式為基礎的遷移會使用來自[Azure Site Recovery](../site-recovery/site-recovery-overview.md)服務的一些後端功能。
 
-## <a name="server-migration-and-azure-site-recovery"></a>伺服器遷移和 Azure Site Recovery
-
-Azure Migrate Server 遷移工具可將內部部署和公用雲端工作負載遷移至 Azure。 它已針對遷移優化。 Site Recovery 是一種嚴重損壞修復工具。 Azure 伺服器遷移和 Site Recovery 共用一些用於資料複寫的常見技術元件，但有不同的用途。
 
 ## <a name="architectural-components"></a>架構元件
+
+此圖說明以代理程式為基礎的遷移所牽涉到的元件。
 
 ![架構](./media/agent-based-replication-architecture/architecture.png)
 
@@ -42,10 +40,10 @@ Azure Migrate Server 遷移工具可將內部部署和公用雲端工作負載�
 
 **元件** | **詳細資料** | **安裝**
 --- | --- | ---
-**複寫設備** | 複寫設備（設定伺服器）是內部部署機器，可做為內部部署環境與 Azure Migrate Server 遷移工具之間的橋樑。 設備會探索內部部署 VM 清查，讓 Azure 伺服器遷移可以協調複寫和遷移。 設備有兩個元件：<br/><br/> 設定**伺服器**：連線至 Azure Migrate 伺服器遷移及協調複寫。<br/> **進程伺服器**：處理資料複寫。 它會接收 VM 資料、將其壓縮並加密，然後傳送至 Azure 訂用帳戶。 在那裡，伺服器遷移會將資料寫入受控磁片。 | 根據預設，進程伺服器會與複寫應用裝置上的設定伺服器一起安裝。
-**行動服務** | 行動服務是在您想要複寫和遷移的每部機器上安裝的代理程式。 它會從電腦將複寫資料傳送至進程伺服器。 有許多不同的行動服務代理程式可供使用。 | 行動服務的安裝檔案位於複寫設備上。 根據您想要複寫之電腦的作業系統和版本，您可以下載並安裝所需的代理程式。
+**複寫設備** | 複寫設備（設定伺服器/進程伺服器）是內部部署機器，可作為內部部署環境與伺服器遷移之間的橋樑。 設備會探索內部部署機器清查，讓伺服器遷移可以協調複寫和遷移。 設備有兩個元件：<br/><br/> 設定**伺服器**：連接到伺服器遷移並協調複寫。<br/> **進程伺服器**：處理資料複寫。 進程伺服器會接收電腦資料、將其壓縮並加密，然後傳送至 Azure。 在 Azure 中，伺服器遷移會將資料寫入受控磁片。 | 根據預設，進程伺服器會與複寫應用裝置上的設定伺服器一起安裝。
+**行動服務** | 行動服務是在您想要複寫和遷移的每部機器上安裝的代理程式。 它會從電腦將複寫資料傳送至進程伺服器。 | 不同版本行動服務的安裝檔案位於複寫設備上。 根據您想要複寫之電腦的作業系統和版本，您可以下載並安裝所需的代理程式。
 
-### <a name="mobility-service-installation"></a>行動服務安裝
+## <a name="mobility-service-installation"></a>行動服務安裝
 
 您可以使用下列方法來部署「行動服務」︰
 
@@ -66,46 +64,46 @@ Azure Migrate Server 遷移工具可將內部部署和公用雲端工作負載�
 
 ## <a name="replication-process"></a>複寫程序
 
-1. 當您啟用 VM 的複寫時，會開始對 Azure 的初始複寫。
+1. 當您啟用機器的複寫時，會開始對 Azure 的初始複寫。
 2. 在初始複寫期間，行動服務會從電腦磁片讀取資料，並將其傳送至進程伺服器。
 3. 這項資料是用來植入您 Azure 訂用帳戶中的磁片複本。 
 4. 初始複寫完成之後，就會開始將差異變更複寫到 Azure。 複寫是區塊層級和近乎連續的。
-4. 行動服務會藉由與作業系統的儲存子系統整合，來攔截對 VM 磁片記憶體的寫入。 這個方法可避免複寫電腦上的磁片 i/o 作業進行增量複寫。 
-5. 機器的追蹤變更會傳送至埠 HTTPS 9443 傳入的進程伺服器。 您可以修改此連接埠。 進程伺服器會將它壓縮並加密，然後將它傳送至 Azure。 
+4. 行動服務會藉由與作業系統的儲存子系統進行整合，來攔截寫入磁片記憶體的作業。 這個方法可避免複寫電腦上的磁片 i/o 作業，以進行增量複寫。 
+5. 機器的追蹤變更會傳送到輸入埠 HTTPS 9443 上的進程伺服器。 您可以修改此連接埠。 進程伺服器會將它壓縮並加密，然後將它傳送至 Azure。 
 
 ## <a name="ports"></a>連接埠
 
-**裝置** | **連接**
+**裝置** | **[連接]**
 --- | --- 
-VM | 在 Vm 上執行的行動服務會與埠 HTTPS 443 輸入上的內部部署複寫設備進行通訊，以進行複寫管理。<br/><br/> Vm 會將複寫資料傳送至埠 HTTPS 9443 傳入的進程伺服器（預設會在複寫應用裝置上執行）。 您可以修改此連接埠。
-複寫設備 | 複寫設備會透過埠 HTTPS 443 輸出來協調與 Azure 的複寫。
-處理序伺服器 | 處理伺服器會透過輸出連接埠 443 接收複寫資料、將其最佳化並加密，然後傳送至 Azure 儲存體。
+**複寫機器** | 在 Vm 上執行的行動服務會與埠 HTTPS 443 輸入上的內部部署複寫設備進行通訊，以進行複寫管理。<br/><br/> 機器會將複寫資料傳送至埠 HTTPS 9443 輸入上的進程伺服器。 您可以修改此連接埠。
+**複寫設備** | 複寫設備會透過埠 HTTPS 443 輸出來協調與 Azure 的複寫。
+**處理序伺服器** | 處理伺服器會透過輸出連接埠 443 接收複寫資料、將其最佳化並加密，然後傳送至 Azure 儲存體。
 
 
 ## <a name="performance-and-scaling"></a>效能及延展性
 
 根據預設，您會部署同時執行設定伺服器和進程伺服器的單一複寫應用裝置。 如果您只是要複寫幾部機器，此部署就已足夠。 不過，如果您要複寫和遷移數百部機器，單一進程伺服器可能無法處理所有的複寫流量。 在此情況下，您可以部署額外的相應放大進程伺服器。
 
-### <a name="site-recovery-deployment-planner-for-vmware"></a>適用于 VMware 的 Site Recovery 部署規劃工具
+### <a name="plan-vmware-deployment"></a>規劃 VMware 部署
 
-如果您要複寫 VMware Vm，您可以使用 VMware 的[Site Recovery 部署規劃工具](../site-recovery/site-recovery-deployment-planner.md)來協助判斷效能需求，包括每日資料變更率，以及所需的進程伺服器。
+如果您要複寫 VMware Vm，您可以使用[vmware 的 Site Recovery 部署規劃工具](../site-recovery/site-recovery-deployment-planner.md)，以協助判斷效能需求，包括每日資料變更率，以及所需的進程伺服器。
 
 ### <a name="replication-appliance-capacity"></a>複寫設備容量
 
-此資料表中的值可用來找出您的部署中是否需要額外的進程伺服器。
+使用此表中的值，來找出您的部署中是否需要額外的進程伺服器。
 
 - 如果您的每日變更率（流失率）超過 2 TB，請部署額外的進程伺服器。
 - 如果您要複寫200以上的機器，請部署額外的複寫設備。
 
-**CPU** | **記憶體** | **資料快取的可用空間** | **變換率** | **複寫限制**
+**CPU** | **記憶體** | **可用空間-資料快取** | **變換率** | **複寫限制**
 --- | --- | --- | --- | ---
 8 個 vCPU (2 個插槽 * 4 核心 \@ 2.5GHz) | 16 GB | 300 GB | 500 GB 或更少 | < 100 部機器 
 12 個 vCPU (2 個插槽 * 6 核心 \@ 2.5GHz) | 18 GB | 600 GB | 501 GB 至 1 TB | 100-150 部機器。
 16 個 vCPU (2 個插槽 * 8 核心 \@ 2.5GHz) | 32 G1 |  1 TB | 1 TB 至 2 TB | 151-200 部機器。
 
-### <a name="scale-out-process-server-sizing"></a>相應放大進程伺服器大小
+### <a name="sizing-scale-out-process-servers"></a>調整相應放大進程伺服器大小
 
-如果您需要部署相應放大進程伺服器，此資料表可協助您找出伺服器大小調整。
+如果您需要部署相應放大進程伺服器，請使用此資料表來找出伺服器大小調整。
 
 **處理序伺服器** | **資料快取的可用空間** | **變換率** | **複寫限制**
 --- | --- | --- | --- 
@@ -113,10 +111,9 @@ VM | 在 Vm 上執行的行動服務會與埠 HTTPS 443 輸入上的內部部署
 8 個 vCPU (2 個插槽 * 4 核心 \@ 2.5 GHz)，12 GB 記憶體 | 600 GB | 251 GB 至 1 TB    | 86-150 部機器。
 12個 vcpu （2個通訊端 * 6 核心 \@ 2.5 GHz），24 GB 記憶體 | 1 TB | 1-2 TB | 151-225 部機器。
 
-## <a name="control-upload-throughput"></a>控制上傳輸送量
+## <a name="throttle-upload-bandwidth"></a>節流上傳頻寬。
 
-
- 複寫至 Azure 的 VMware 流量會經過特定的處理序伺服器。 您可以藉由在當做進程伺服器執行的電腦上，節流頻寬來限制上傳輸送量。 您可以使用下列登錄機碼來影響頻寬：
+複寫至 Azure 的 VMware 流量會經過特定的處理序伺服器。 您可以藉由在當做進程伺服器執行的電腦上，節流頻寬來限制上傳輸送量。 您可以使用下列登錄機碼來影響頻寬：
 
 - HKEY_LOCAL_MACHINE \Software\microsoft\windows server\ Azure Backup\Replication\UploadThreadsPerVM 登錄值可指定用於磁片資料傳輸（初始或差異複寫）的執行緒數目。 較高的值可增加用於複寫的網路頻寬。 預設值為四。 最大值為32。 監視流量，將此值最佳化。
 - 此外，您可以在進程伺服器電腦上節流頻寬，如下所示：
@@ -128,4 +125,4 @@ VM | 在 Vm 上執行的行動服務會與埠 HTTPS 443 輸入上的內部部署
 
 ## <a name="next-steps"></a>後續步驟
 
-使用 Azure Migrate Server 遷移來試用以代理程式為基礎的[VMWARE VM 遷移](tutorial-migrate-vmware-agent.md)。
+針對[VMware](tutorial-migrate-vmware-agent.md)或[實體伺服器](tutorial-migrate-physical-virtual-machines.md)試用以[代理程式為基礎的遷移](tutorial-migrate-vmware-agent.md)。

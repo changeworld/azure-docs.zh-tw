@@ -1,5 +1,5 @@
 ---
-title: 傳統訂用帳戶管理員角色、Azure RBAC 角色和 Azure AD 管理員角色 | Microsoft Docs
+title: 傳統訂用帳戶管理員角色、Azure RBAC 角色和 Azure AD 角色
 description: 描述 Azure 中不同的角色 - 傳統訂用帳戶管理員角色、Azure 角色型存取控制 (RBAC) 角色及 Azure Active Directory (Azure AD) 管理員角色
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.date: 10/01/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 1d0966737964c44fc4a6778cdb811a4ecc732ffc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 08c14135ba17df4de446de5625352c8cffdc60a1
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979299"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138066"
 ---
 # <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>傳統訂用帳戶管理員角色、Azure RBAC 角色和 Azure AD 管理員角色
 

@@ -1,5 +1,5 @@
 ---
-title: 教學課程 - 使用 Azure PowerShell 為 Azure 資源建立自訂角色
+title: 教學課程：使用 Azure PowerShell 為 Azure 資源建立自訂角色
 description: 在本教學課程中，使用 Azure PowerShell 開始為 Azure 資源建立自訂角色。
 services: active-directory
 documentationCenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
-ms.openlocfilehash: 176e465163d92156308eda64c4187467cc10ee15
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: d337e31f554c0aabbb94771aa7bfca4afb19a431
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419742"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138270"
 ---
 # <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-powershell"></a>教學課程：使用 Azure PowerShell 為 Azure 資源建立自訂角色
 
@@ -36,9 +36,9 @@ ms.locfileid: "74419742"
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-若要完成本教學課程，您需要：
+若要完成本教學課程，您將會需要：
 
 - 建立自訂角色的權限，例如[擁有者](built-in-roles.md#owner)或[使用者存取管理員](built-in-roles.md#user-access-administrator)
 - [Azure Cloud Shell](../cloud-shell/overview.md) 或 [Azure PowerShell](/powershell/azure/install-az-ps)
@@ -103,7 +103,7 @@ ms.locfileid: "74419742"
 
 1. 在 `AssignableScopes` 中，新增格式如下的訂用帳戶識別碼：`"/subscriptions/00000000-0000-0000-0000-000000000000"`
 
-    您必須新增明確的訂用帳戶識別碼，否則不允許您將角色匯入您的訂用帳戶。
+    您必須新增明確的訂用帳戶識別碼，否則無法將角色匯入您的訂用帳戶。
 
 1. 刪除 `Id` 屬性行並將 `IsCustom` 屬性變更為 `true`。
 

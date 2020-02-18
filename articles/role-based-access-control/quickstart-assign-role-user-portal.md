@@ -1,5 +1,5 @@
 ---
-title: 教學課程 - 使用 RBAC 與 Azure 入口網站為使用者授與 Azure 資源的存取權
+title: '教學課程：使用 RBAC 與 Azure 入口網站為使用者授與 Azure 資源的存取權 '
 description: 在本教學課程中，了解如何在 Azure 入口網站中使用角色型存取控制 (RBAC) 為使用者授與 Azure 資源的存取權。
 services: role-based-access-control
 documentationCenter: ''
@@ -13,24 +13,24 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/22/2019
 ms.author: rolyon
-ms.openlocfilehash: f4dd3995df2a068824c4aa6bccca5606d250a165
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 6281c9a1818a3b46ac4f7a62f8ae76668db56887
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419658"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138082"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>教學課程：使用 RBAC 與 Azure 入口網站為使用者授與 Azure 資源的存取權
 
-[角色型存取控制 (RBAC)](overview.md) 是您對 Azure 資源存取進行管理的機制。 在本教學課程中，您可以對使用者授與存取權，讓其在資源群組中建立和管理虛擬機器。
+[角色型存取控制 (RBAC)](overview.md) 是您管理對 Azure 資源存取的機制。 在本教學課程中，您可以對使用者授與存取權，讓其在資源群組中建立和管理虛擬機器。
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 對使用者授與資源群組範圍的存取權
 > * 移除存取
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
@@ -92,7 +92,7 @@ ms.locfileid: "74419658"
 
 1. 在 [角色指派] 清單中，在具有「虛擬機器參與者」角色的使用者旁邊新增核取記號。
 
-1. 按一下 [移除]  。
+1. 按一下 **[移除]** 。
 
    ![移除角色指派訊息](./media/quickstart-assign-role-user-portal/remove-role-assignment.png)
 

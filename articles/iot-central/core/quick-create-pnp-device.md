@@ -3,17 +3,17 @@ title: 快速入門 - 將模擬裝置新增至 Azure IoT Central
 description: 本快速入門說明如何建立裝置範本，並將模擬裝置新增至 IoT Central 應用程式。
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/10/2019
+ms.date: 02/12/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: cb8f0c806435a6c623d14e50263844db7aac61bb
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 489bf81388c1bb889756d54957e791282054f0f7
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026181"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169661"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application"></a>快速入門：將模擬裝置新增至 IoT Central 應用程式
 

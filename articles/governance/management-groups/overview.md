@@ -4,12 +4,12 @@ description: 了解管理群組及權限如何運作，以及如何使用。
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
 ms.date: 12/18/2019
 ms.topic: overview
-ms.openlocfilehash: 507f4575e6d8daa16a1ed7db3d429d2810a63a7c
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 319f48d4d0f8ce8501fecb74282760340b597188
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750245"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186992"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>使用 Azure 管理群組來組織資源
 
@@ -23,7 +23,7 @@ ms.locfileid: "75750245"
 
 ![管理群組階層樹狀結構範例](./media/tree.png)
 
-您可以建立套用原則的階層，例如將名為「生產」群組中的 VM 位置限制為美國西部區域。 此原則將會繼承管理群組底下的所有 EA 訂用帳戶，並套用至那些訂用帳戶底下的所有 VM。 此安全性原則無法由資源或訂用帳戶擁有者改變，並能進一步提升治理能力。
+您可以建立套用原則的階層，例如將名為「生產」群組中的 VM 位置限制為美國西部區域。 此原則將會繼承管理群組底下的所有 Enterprise 合約 (EA) 訂用帳戶，並套用至那些訂用帳戶底下的所有 VM。 此安全性原則無法由資源或訂用帳戶擁有者改變，並能進一步提升治理能力。
 
 另一個案例是使用管理群組來向使用者提供多個訂用帳戶的存取權。 將多個訂用帳戶移至該管理群組底下，讓您能在管理群組上建立[角色型存取控制](../../role-based-access-control/overview.md) (RBAC) 指派；如此一來，所有訂用帳戶均能繼承該存取權。
 只需要單獨對管理群組進行指派，使用者便能存取其所需要的所有內容，無需透過指令碼將 RBAC 指派給多個訂用帳戶。
@@ -102,7 +102,7 @@ Azure 管理群組支援對所有的資源存取和角色定義使用 [Azure 角
 
 ## <a name="custom-rbac-role-definition-and-assignment"></a>自訂 RBAC 角色定義和指派
 
-目前支援管理群組的自訂 RBAC 角色支援，但有一些 [限制](#limitations)。  您可以在角色定義的可指派範圍中定義管理群組範圍。  接著，該自訂 RBAC 角色即可在該管理群組，以及任何管理群組、訂用帳戶、資源群組或其下的資源上指派。 這個自訂角色會繼承階層，就像任何內建角色一樣。    
+管理群組的自訂 RBAC 角色支援目前為預覽版，但有一些 [限制](#limitations)。  您可以在角色定義的可指派範圍中定義管理群組範圍。  接著，該自訂 RBAC 角色即可在該管理群組，以及任何管理群組、訂用帳戶、資源群組或其下的資源上指派。 這個自訂角色會繼承階層，就像任何內建角色一樣。    
 
 ### <a name="example-definition"></a>範例定義
 [定義和建立自訂角色](../../role-based-access-control/custom-roles.md)並不會隨著管理群組的納入而變更。 使用完整路徑來定義管理群組 **/providers/Microsoft.Management/managementgroups/{groupId}** 。 

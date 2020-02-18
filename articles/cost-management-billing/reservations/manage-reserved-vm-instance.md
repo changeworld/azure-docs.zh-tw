@@ -3,19 +3,17 @@ title: 管理 Azure 保留
 description: 了解如何管理 Azure 保留。
 ms.service: cost-management-billing
 author: bandersmsft
-manager: yashesvi
+ms.reviewer: yashesvi
 ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/06/2019
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: cc24c176b5b61210d68d2dcb244d63f15402928b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 82bf250a7902cfe4b905991809fd4bbe5dea102a
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75994047"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188511"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>管理 Azure 資源的保留
 
@@ -128,7 +126,7 @@ ms.locfileid: "75994047"
 
 ## <a name="optimize-reservation-use"></a>將保留使用最佳化
 
-只有持續使用資源，才可節省 Azure 保留。 當您購買保留時，您必須針對基本上 100% 可能的資源使用，支付一或三年期的預付成本。 嘗試充分利用您的保留，盡可能省下更多成本。 下列各節說明如何監視保留並將其使用最佳化。
+只有持續使用資源，才可節省 Azure 保留。 當您購買保留時，必須針對基本上 100% 可能的資源使用，支付一或三年期的費用。 嘗試充分利用您的保留，盡可能省下更多成本。 下列各節說明如何監視保留並將其使用最佳化。
 
 ### <a name="view-reservation-use-in-the-azure-portal"></a>在 Azure 入口網站中檢視保留
 

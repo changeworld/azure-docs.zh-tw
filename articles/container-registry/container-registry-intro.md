@@ -3,15 +3,15 @@ title: 受控容器登錄
 description: Azure 容器登錄庫服務的簡介，此服務提供雲端式管理的私人 Docker Registry。
 author: stevelas
 ms.topic: overview
-ms.date: 12/03/2019
+ms.date: 02/10/2020
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 863b93497505443b79f41f580150a4dbf790a6f2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1992a2a63d16a955d136459f5dbaece7df815c71
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445722"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132037"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Azure 中的私人 Docker 容器登錄的簡介
 
@@ -41,7 +41,7 @@ Azure 會提供工具 (例如 Azure 命令列介面、Azure 入口網站和 API 
 * **安全性和存取權** - 使用 Azure CLI 或標準 `docker login` 命令登入登錄。 Azure Container Registry 會透過 HTTPS 傳輸容器映像並支援 TLS 以保護用戶端連線。 
 
   > [!IMPORTANT]
-  > 從 2020 年 1 月 13 日開始，Azure Container Registry 將要求所有安全連線來自伺服器和應用程式，才能使用 TLS 1.2。 將會淘汰 TLS 1.0 和1.1 的支援。
+  > 從 2020 年 1 月 13 日開始，Azure Container Registry 將要求所有安全連線來自伺服器和應用程式，才能使用 TLS 1.2。 使用任何最近的 docker 用戶端 (18.03.0 版或更新版本) 來啟用 TLS 1.2。 TLS 1.0 和 1.1 的支援將會淘汰。 
 
   您可以使用採用 Azure Active Directory 的[服務主體](../active-directory/develop/app-objects-and-service-principals.md)或提供的管理員帳戶，對容器登錄進行[存取控制](container-registry-authentication.md)。 使用角色型存取控制 (RBAC)，將使用者或系統的細微權限指派給登錄。
 

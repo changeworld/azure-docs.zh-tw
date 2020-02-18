@@ -3,12 +3,12 @@ title: 適用於 Azure Functions 2.x 的 host.json 參考
 description: Azure Functions host.json 檔案與 v2 執行階段的參考文件。
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: cc982d3f810c944a5273cbf0cf9778076d119692
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 9b0d078a8c6df21e8000930e72856e92e2d40af7
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208819"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425199"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 和更新版本的 host. json 參考 
 
@@ -21,9 +21,9 @@ ms.locfileid: "77208819"
 > [!NOTE]
 > 本文適用于 Azure Functions 2.x 和更新版本。  有關 Functions 1.x 中 host.json 的參考，請參閱[適用於 Azure Functions 1.x 的 host.json 參考](functions-host-json-v1.md)。
 
-其他函數應用程式設定選項的管理是在[應用程式設定](functions-app-settings.md)中進行。
+其他函數應用程式設定選項會在您的[應用程式設定](functions-app-settings.md)中管理（適用于已部署的應用程式）或您的[本機. 設定 json](functions-run-local.md#local-settings-file)檔案（用於本機開發）。
 
-有些 host.json 設定只有在本機執行時，才會在 [local.settings.json](functions-run-local.md#local-settings-file) 檔案中使用。
+與系結相關的 json 設定會平均套用至函數應用程式中的每個函式。 
 
 ## <a name="sample-hostjson-file"></a>範例 host.json 檔案
 
@@ -69,11 +69,11 @@ ms.locfileid: "77208819"
               "isEnabled": true,
               "maxTelemetryItemsPerSecond" : 20,
               "evaluationInterval": "01:00:00",
-              "initialSamplingPercentage": 1.0, 
+              "initialSamplingPercentage": 100.0, 
               "samplingPercentageIncreaseTimeout" : "00:00:01",
               "samplingPercentageDecreaseTimeout" : "00:00:01",
               "minSamplingPercentage": 0.1,
-              "maxSamplingPercentage": 0.1,
+              "maxSamplingPercentage": 100.0,
               "movingAverageRatio": 1.0,
               "excludedTypes" : "Dependency;Event",
               "includedTypes" : "PageView;Trace"

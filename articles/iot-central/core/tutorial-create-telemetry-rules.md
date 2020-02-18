@@ -3,29 +3,27 @@ title: 教學課程 - 在 Azure IoT Central 應用程式中建立和管理規則
 description: 本教學課程說明 Azure IoT Central 規則如何讓您近乎即時地監視裝置，以及在觸發規則時自動叫用動作，例如傳送電子郵件。
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/09/2019
+ms.date: 02/12/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 96514a224960240f2187164aac7c79c1659880e6
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: f61a41fa89c7006341db928472f6b20d272bc550
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026351"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77167464"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>教學課程：在 Azure IoT Central 應用程式中建立規則和設定通知
 
 *本文適用於操作員、建置員及系統管理員。*
 
-
-
 您可以使用 Azure IoT Central 來遠端監視連線的裝置。 Azure IoT Central 規則可讓您近乎即時地監視裝置，以及自動叫用動作，例如傳送電子郵件。 只要按幾下，就可以定義條件來監視裝置的遙測資料以及設定對應的動作。 本文將說明如何建立規則來監視裝置所傳送的遙測。
 
 裝置可以使用遙測資料，從裝置傳送數值資料。 當所選裝置的遙測資料超出指定閾值時，便會觸發規則。
 
-在本教學課程中，您會建立在環境感應器裝置溫度超過 70&deg; F 時傳送電子郵件的規則。
+在本教學課程中，您會建立在模擬環境感應器裝置溫度超過 70&deg; F 時傳送電子郵件的規則。
 
 在本教學課程中，您會了解如何：
 
@@ -36,7 +34,7 @@ ms.locfileid: "77026351"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-開始之前，請先完成[建立 Azure IoT Central 應用程式](./quick-deploy-iot-central.md) (英文) 和[將模擬裝置新增至 IoT Central 應用程式](./quick-create-pnp-device.md) (英文) 的快速入門，以便建立要使用的**環境感應器**裝置範本。
+開始之前，請先完成[建立 Azure IoT Central 應用程式](./quick-deploy-iot-central.md) (英文) 和[將模擬裝置新增至 IoT Central 應用程式](./quick-create-pnp-device.md) (英文) 的快速入門，以便建立要使用的 **MXChip IoT DevKit** 裝置範本。
 
 ## <a name="create-a-rule"></a>建立規則
 
@@ -50,9 +48,9 @@ ms.locfileid: "77026351"
 
 1. 選取 **+** 即可新增規則。
 
-1. 輸入「溫度監視器」  作為用以識別規則的名稱，並按下 Enter。
+1. 輸入「溫度監視器」  作為用以識別規則的的名稱，並按下 Enter。
 
-1. 選取 [環境感應器]  裝置範本。 此規則預設會自動套用到與裝置範本建立關聯的所有裝置。 若要篩選裝置的子集，請選取 [+ 篩選]  並利用裝置屬性來識別裝置。 若要停用規則，請切換規則標頭中的 [啟用/停用]  按鈕：
+1. 選取 [MXChip IoT DevKit]  裝置範本。 此規則預設會自動套用到與裝置範本建立關聯的所有裝置。 若要篩選裝置的子集，請選取 [+ 篩選]  並利用裝置屬性來識別裝置。 若要停用規則，請切換規則標頭中的 [啟用/停用]  按鈕：
 
     ![篩選和啟用](media/tutorial-create-telemetry-rules/device-filters.png)
 
@@ -77,7 +75,7 @@ ms.locfileid: "77026351"
 
 ### <a name="configure-actions"></a>設定動作
 
-定義條件之後，您可以設定規則引發時所要採取的動作。 當規則中指定的所有條件都評估為 True 時，即會叫用動作。 目前，電子郵件是唯一可用的動作。
+定義條件之後，您可以設定規則引發時所要採取的動作。 當規則中指定的所有條件都評估為 True 時，即會叫用動作。
 
 1. 在 [動作]  區段中，選取 [+ 電子郵件]  。
 

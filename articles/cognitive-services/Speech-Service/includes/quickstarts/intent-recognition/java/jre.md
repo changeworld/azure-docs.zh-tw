@@ -6,12 +6,12 @@ ms.date: 01/27/2020
 ms.topic: include
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: a6bf8bb558e82fefbbe6ff306f628a4b449a4e83
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 6bd276f07f75ecad21ffb0bf19150f6158eb7b7c
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76900394"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156422"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -42,7 +42,7 @@ ms.locfileid: "76900394"
 將此程式碼插入 `main()` 的 Try / Catch 區塊中。 請務必更新這些值：
 
 * 將 `"YourLanguageUnderstandingSubscriptionKey"` 取代為您的 LUIS 預測金鑰。
-* 將 `"YourLanguageUnderstandingServiceRegion"` 取代為您的 LUIS 位置。
+* 將 `"YourLanguageUnderstandingServiceRegion"` 取代為您的 LUIS 位置。 使用[區域](https://aka.ms/speech/sdkregion)中的「語音 SDK 參數」
 
 >[!TIP]
 > 如果您在尋找這些值時需要協助，請參閱[建立意圖辨識的 LUIS 應用程式](#create-a-luis-app-for-intent-recognition)。

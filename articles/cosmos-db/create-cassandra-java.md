@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 1f9151ab174a9a1f9e492bd068b5285772f6a546
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5a21f36136c6f1d77a2e9cb9108f539c9fb39334
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442051"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134880"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data"></a>快速入門：建置 JAVA 應用程式來管理 Azure Cosmos DB Cassandra API 資料
 
@@ -25,22 +25,14 @@ ms.locfileid: "75442051"
 > * [Python](create-cassandra-python.md)
 >  
 
-本快速入門示範如何使用 JAVA 與 Azure Cosmos DB [Cassandra API](cassandra-introduction.md)，以藉由從 GitHub 複製範例來建置設定檔應用程式。 此快速入門也會示範如何使用 Web 型 Azure 入口網站來建立 Azure Cosmos DB 帳戶。
-
-Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您可以快速建立及查詢文件、資料表、索引鍵/值及圖形資料庫，所有這些都受惠於位於 Azure Cosmos DB 核心的全域散發和水平調整功能。 
+在本快速入門中，您會建立 Azure Cosmos DB Cassandra API 帳戶，並使用從 GitHub 複製得到的 Cassandra Java 應用程式來建立 Cassandra 資料庫和容器。 Azure Cosmos DB 是多模型的資料庫服務，可讓您快速建立及查詢具有全域散發和水平調整功能的文件、資料表、索引鍵/值及圖形資料庫。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]或者，您可以[免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，無須 Azure 訂用帳戶，也無須任何費用和約定付款。
-
-此外，您需要：
-
-* [JAVA 開發套件 (JDK) 8 版](https://aka.ms/azure-jdks) \(英文\)
-    * 務必設定 JAVA_HOME 環境變數，以指向 JDK 安裝所在的資料夾。
-* [下載](https://maven.apache.org/download.cgi)和[安裝 ](https://maven.apache.org/install.html)[Maven](https://maven.apache.org/) 二進位封存檔
-    * 在 Ubuntu 上，您可以執行 `apt-get install maven` 來安裝 Maven。
-* [Git](https://www.git-scm.com/)
-    * 在 Ubuntu 上，您可以執行 `sudo apt-get install git` 來安裝 Git。
+- 具有有效訂用帳戶的 Azure 帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 或[免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) (不需 Azure 訂用帳戶)。
+- [Java 開發套件 (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk) \(英文\)。 將 `JAVA_HOME` 環境變數指向 JDK 安裝所在的資料夾。
+- [Maven 二進位檔封存](https://maven.apache.org/download.cgi)。 在 Ubuntu 上，執行 `apt-get install maven` 來安裝 Maven。
+- [Git](https://www.git-scm.com/downloads)。 在 Ubuntu 上，執行 `sudo apt-get install git` 來安裝 Git。
 
 ## <a name="create-a-database-account"></a>建立資料庫帳戶
 
@@ -150,29 +142,29 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 現在，返回 Azure 入口網站以取得連接字串資訊，並將它複製到應用程式中。 連接字串詳細資料可讓您的應用程式與託管資料庫進行通訊。
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)中，選取 [連接字串]  。 
+1. 在 [Azure 入口網站](https://portal.azure.com/)中的 Azure Cosmos DB 帳戶中，選取 [連接字串]  。 
 
     ![從 Azure 入口網站 [連接字串] 頁面檢視及複製使用者名稱](./media/create-cassandra-java/copy-username-connection-string-azure-portal.png)
 
 2. 使用 ![[複製] 按鈕](./media/create-cassandra-java/copy-button-azure-portal.png) 來複製 [連絡點] 值。
 
-3. 開啟 `C:\git-samples\azure-cosmosdb-cassandra-java-getting-started\java-examples\src\main\resources` 資料夾中的 `config.properties` 檔案。 
+3. 從 C:\git-samples\azure-cosmosdb-cassandra-java-getting-started\java-examples\src\main\resources  資料夾開啟 config.properties  檔案。 
 
 3. 從入口網站將 [連絡點] 值貼到 `<Cassandra endpoint host>` 的行 2。
 
-    config.properties 的第 2 行現在看起來應該類似於 
+    config.properties  的第 2 行現在看起來應該類似於 
 
     `cassandra_host=cosmos-db-quickstart.cassandra.cosmosdb.azure.com`
 
 3. 返回入口網站，並複製 [使用者名稱] 值。 從入口網站將 [使用者名稱] 值貼到 `<cassandra endpoint username>` 的行 4。
 
-    config.properties 的第 4 行現在看起來應該類似於 
+    config.properties  的第 4 行現在看起來應該類似於 
 
     `cassandra_username=cosmos-db-quickstart`
 
 4. 返回入口網站，並複製 [密碼] 值。 從入口網站將 [密碼] 值貼到 `<cassandra endpoint password>` 的行 5。
 
-    config.properties 的第 5 行現在看起來應該類似於 
+    config.properties  的第 5 行現在看起來應該類似於 
 
     `cassandra_password=2Ggkr662ifxz2Mg...==`
 
@@ -180,7 +172,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 6. 如果您變更行 6 為使用特定的 SSL 憑證，請更新行 7 以使用該憑證的密碼。 
 
-7. 儲存 `config.properties` 檔案。
+7. 儲存 config.properties  檔案。
 
 ## <a name="run-the-java-app"></a>執行 Java 應用程式
 
@@ -204,7 +196,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
     終端機視窗會顯示 keyspace 和資料表已建立的通知。 它會接著選取並傳回資料表中的所有使用者並顯示輸出，然後依識別碼選取資料列並顯示值。  
 
-    選取 **CTRL + C** 來停止執行程式，並關閉主控台視窗。
+    按 Ctrl+C 來停止執行程式，並關閉主控台視窗。
 
 4. 在 Azure 入口網站中，開啟 [資料總管]  以查詢、修改及使用這個新資料。 
 
@@ -220,7 +212,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已了解如何使用 [資料總管] 來建立 Azure Cosmos DB 帳戶、Cassandra 資料庫和容器，以及如何執行應用程式來以程式設計方式執行同樣的作業。 您現可將其他資料匯入至 Azure Cosmos 容器。 
+在本快速入門中，您已了解如何使用 Cassandra API 建立 Azure Cosmos DB 帳戶，並已執行可建立 Cassandra 資料庫和容器的 Cassandra Java 應用程式。 您現在可以將其他資料匯入 Azure Cosmos DB 帳戶中。 
 
 > [!div class="nextstepaction"]
 > [將 Cassandra 資料匯入到 Azure Cosmos DB](cassandra-import-data.md)

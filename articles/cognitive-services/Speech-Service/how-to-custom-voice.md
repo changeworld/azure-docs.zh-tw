@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/15/2020
+ms.date: 02/17/2020
 ms.author: dapine
-ms.openlocfilehash: 6edd8f89ed2db2927cce14ea86b589090bdc35ed
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: 15d15ce2d4dfc55a51bf21ba005512606cc4997a
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77371281"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77424961"
 ---
 # <a name="get-started-with-custom-voice"></a>開始使用自訂語音
 
@@ -65,7 +65,7 @@ ms.locfileid: "77371281"
 若要建立您的第一個專案，請選取 [**文字轉換語音/自訂語音**] 索引標籤，然後按一下 [**新增專案**]。 依照 wizard 提供的指示來建立您的專案。 建立專案之後，您會看到四個索引標籤：**資料**、**定型**、**測試**和**部署**。 使用[後續步驟](#next-steps)中提供的連結，以瞭解如何使用每個索引標籤。
 
 > [!IMPORTANT]
-> [自訂語音入口網站](https://aka.ms/custom-voice)最近已更新！ 如果您使用 CRI 入口網站中的資料、模型、測試和已發佈的端點建立了先前的專案，或使用了 Api，則必須在新的入口網站中建立新的專案，才能連接到這些舊的實體。
+> [自訂語音入口網站](https://aka.ms/custom-voice)最近已更新！ 如果您已在 CRIS.ai 入口網站中或透過 Api 建立先前的資料、模型、測試和已發佈的端點，您必須在新的入口網站中建立新的專案，才能連接到這些舊的實體。
 
 ## <a name="next-steps"></a>後續步驟
 

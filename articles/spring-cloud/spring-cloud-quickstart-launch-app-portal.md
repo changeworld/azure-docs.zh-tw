@@ -1,23 +1,23 @@
 ---
-title: 快速入門 - 使用 Azure 入口網站來啟動 Azure Spring Cloud 應用程式
-description: 在本快速入門中，您將使用 Azure 入口網站，將範例應用程式部署至 Azure Spring Cloud。
+title: 快速入門 - 使用 Azure 入口網站來啟動現有的 Azure Spring Cloud 應用程式
+description: 在本快速入門中，您將使用 Azure 入口網站，將 Spring Cloud 應用程式部署至 Azure Spring Cloud。
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 11/4/2019
+ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: f88319319b366ec8b726d5cf6cce540008497b57
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 67ad112021c2fadb5ea93ffefcf5e58e9404e92a
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278914"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137746"
 ---
-# <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站來啟動 Azure Spring Cloud 應用程式
+# <a name="quickstart-launch-an-existing-azure-spring-cloud-application-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站來啟動現有的 Azure Spring Cloud 應用程式
 
-Azure Spring Cloud 可讓您輕鬆地在 Azure 上執行以 Spring Cloud 為基礎的微服務應用程式。
+本快速入門會示範如何將現有的 Spring Cloud 應用程式部署到 Azure。 Azure Spring Cloud 可讓您輕鬆地在 Azure 上執行以 Spring Cloud 為基礎的微服務應用程式。 
 
-本快速入門會示範如何將現有的 Spring Cloud 應用程式部署到 Azure。  您可以在我們的 [GitHub 範例存放庫](https://github.com/Azure-Samples/PiggyMetrics)中找到本教學課程中使用的範例應用程式程式碼。 當您完成時，所提供的範例應用程式將可在線上存取，並可透過 Azure 入口網站來管理。
+您可以在我們的 [GitHub 範例存放庫](https://github.com/Azure-Samples/PiggyMetrics)中找到本教學課程中使用的範例應用程式程式碼。 當您完成時，所提供的範例應用程式將可在線上存取，並可透過 Azure 入口網站來管理。
 
 透過遵循本快速入門，您將能了解如何：
 
@@ -60,7 +60,7 @@ az extension add --name spring-cloud
     - 服務名稱：指定您服務執行個體的名稱。  名稱長度必須為 4 到 32 個字元，且只能包含小寫字母、數字及連字號。  服務名稱的第一個字元必須是字母，且最後一個字元必須是字母或數字。
     - 訂用帳戶：選取您想要用來支付此資源費用的訂用帳戶。  請確定此訂用帳戶已新增至我們的 Azure Spring Cloud 允許清單。
     - 資源群組：為新資源建立新資源群組是最佳做法。
-    - 位置：選取您服務執行個體的位置。 目前支援的位置包括美國東部、美國西部 2、歐洲西部和東南亞。
+    - 位置：選取您服務執行個體的位置。 目前支援的位置包括美國東部、美國西部 2、西歐和東南亞。
 
 1. 按一下 [檢閱及建立]  。
 

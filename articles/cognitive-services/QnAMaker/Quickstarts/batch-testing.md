@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 12/19/2019
+ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: 9483db2187c05fe8e0f4fa2d41c17b8748ba3db7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e16166c741b99c1af5b36f2c7ccd25b01f7544ba
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462355"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109003"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>快速入門：使用批次問題和預期答案來測試知識庫
 
@@ -24,7 +24,7 @@ ms.locfileid: "75462355"
 ## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* [建立 QnA Maker 服務](create-publish-knowledge-base.md#create-a-new-qna-maker-knowledge-base)或使用現有服務，且針對本快速入門中所用的範例文件，此服務使用的語言必須是英文。
+* [建立 QnA Maker 服務](create-publish-knowledge-base.md)，或使用採用了英文版的現有服務。
 * 下載[多回合範例 `.docx` 檔案](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)
 * 下載[批次測試工具](https://aka.ms/qnamakerbatchtestingtool)，從 `.zip` 檔案擷取出可執行檔。
 
@@ -41,9 +41,16 @@ ms.locfileid: "75462355"
     * Azure QnA 服務名稱
     * 語言 - 英文
 1. 輸入名稱 `Multi-turn batch test quickstart` 作為知識庫的名稱。
-1. 在**步驟 4** 中，核取 [啟用從 URL、.pdf 或 .docx 檔案進行多回合擷取]  。
-1. 輸入 `Quickstart - can't find answer` 的**預設解答文字**。 在生產知識庫中，這項資訊應該要能讓使用者獲得更明確的指示，但在本快速入門中，提供簡單的回應就可以了。
-1. 留在**步驟 4** 中，選取 [+ 新增檔案]  ，然後選取必要條件中所下載的 `.docx` 檔案清單。
+
+1. 在 [步驟 4]  中，使用下表進行設定：
+
+    |設定|值|
+    |--|--|
+    |**啟用從 URL、.pdf 或 .docx 檔案進行多回合擷取。**|已檢查|
+    |**預設答案文字**| `Batch test - default answer not found.`|
+    |**+ 新增檔案**|選取 [必要條件] 中所下載的 `.docx` 檔案清單。|
+    |**閒聊**|選取 [Professional] |
+
 1. 在**步驟 5** 中，選取 [建立知識庫]  。
 
     當建立程序完成時，入口網站會顯示可編輯的知識庫。
@@ -160,7 +167,7 @@ batchtesting.exe batch-test-data-1.tsv https://YOUR-RESOURCE-NAME.azurewebsites.
 * **處理聊天記錄檔** - 針對先前沒見過的問題確定最佳解答 - 最常見的情況是您需要處理查詢的記錄檔時，例如聊天機器人的使用者問題。 建立只包含必要資料行的批次檔案測試。 此測試會傳回每個問題的最佳答案。 這並不表示最佳答案就是正確的答案。 完成此測試之後，請繼續進行驗證測試。
 * **驗證測試** - 驗證預期的答案。 這項測試會要求批次測試中的所有問題和相匹配的預期答案都已經過驗證。 其中的某些程序可能需要手動進行。
 
-下列程序假設此案例是要處理聊天記錄 
+下列程序假設此案例是要處理聊天記錄
 
 1. 建立新的批次測試檔案以包含選擇性資料 `batch-test-data-2.tsv`。 從原始的批次測試輸入檔案新增 6 個資料列，然後為每個資料列新增中繼資料、top 和 QnA 集合識別碼。
 

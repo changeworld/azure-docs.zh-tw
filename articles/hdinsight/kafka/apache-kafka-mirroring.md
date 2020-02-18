@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 0f444838c87e14fa88f2785030c29915df637cf8
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 45977f52226fac0a3e23455ce9457a721947a8cc
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552197"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425879"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>使用 MirrorMaker，透過 HDInsight 上的 Kafka 來複寫 Apache Kafka 主題
 
@@ -63,7 +63,7 @@ ms.locfileid: "75552197"
 
 1. 建立兩個新的資源群組：
 
-    |資源群組 | 位置 |
+    |資源群組 | Location |
     |---|---|
     | kafka-主要-rg | 美國中部 |
     | kafka-secondary-rg | 美國中北部 |
@@ -268,7 +268,7 @@ ms.locfileid: "75552197"
 
     此範例中使用的參數：
 
-    |參數 |說明 |
+    |參數 |描述 |
     |---|---|
     |--取用者 .config|指定包含取用者屬性的檔案。 這些屬性是用來建立從*主要*Kafka 叢集讀取的取用者。|
     |--生產者 .config|指定包含產生者屬性的檔案。 這些屬性是用來建立寫入*次要*Kafka 叢集的產生者。|
@@ -305,7 +305,7 @@ ms.locfileid: "75552197"
 在本文件中，您已學會如何使用 [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) 建立 [Apache Kafka](https://kafka.apache.org/) 叢集的複本。 使用下列連結來探索使用 Kafka 的其他方式︰
 
 * [Apache Kafka MirrorMaker 文件](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) (網址為 cwiki.apache.org)。
+* [Kafka 鏡像製作者最佳做法](https://community.cloudera.com/t5/Community-Articles/Kafka-Mirror-Maker-Best-Practices/ta-p/249269)
 * [開始使用 Apache Kafka on HDInsight](apache-kafka-get-started.md)
 * [在 HDInsight 上搭配使用 Apache Spark 與 Apache Kafka](../hdinsight-apache-spark-with-kafka.md)
-* [在 HDInsight 上搭配使用 Apache Storm 與 Apache Kafka](../hdinsight-apache-storm-with-kafka.md)
 * [透過 Azure 虛擬網路連線到 Apache Kafka](apache-kafka-connect-vpn-gateway.md)

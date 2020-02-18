@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 10/08/2019
-ms.openlocfilehash: 65fc3259b0bc5fce61ccd1ceb8df30f1bba49b19
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 102523316aaa59803fb9a6957457fc7bd4f6ce4f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161710"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186822"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>教學課程：使用 Apache Kafka Producer 和 Consumer API
 
@@ -33,21 +33,20 @@ Kafka Producer API 可讓應用程式將資料流傳送至 Kafka 叢集。 Kafka
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* HDInsight 3.6 上的 Apache Kafka。 若要深入了解如何建立 HDInsight 上的 Apache Kafka 叢集，請參閱[開始使用 HDInsight 上的 Apache Kafka](apache-kafka-get-started.md)。
-
+* HDInsight 叢集上的 Apache Kafka。 若要深入了解如何建立叢集，請參閱[開始使用 HDInsight 上的 Apache Kafka](apache-kafka-get-started.md)。
 * [Java Developer Kit (JDK) 第 8 版](https://aka.ms/azure-jdks)或同等版本，例如 OpenJDK。
-
 * 根據 Apache 正確[安裝](https://maven.apache.org/install.html)的 [Apache Maven](https://maven.apache.org/download.cgi)。  Maven 是適用於 Java 專案的專案建置系統。
-
-* SSH 用戶端。 如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
+* SSH 用戶端，例如 Putty。 如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 ## <a name="understand-the-code"></a>了解程式碼
 
-範例應用程式位於 [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) 的 `Producer-Consumer` 子目錄中。 該應用程式主要包含四個檔案：
+範例應用程式位於 [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) 的 `Producer-Consumer` 子目錄中。 如果您使用 **企業安全性套件 (ESP)** 啟用的 Kafka 叢集，您應該使用位於 `DomainJoined-Producer-Consumer` 子目錄中的應用程式版本。
 
+該應用程式主要包含四個檔案：
 * `pom.xml`:此檔案會定義專案相依性、Java 版本和封裝方法。
 * `Producer.java`:此檔案會使用 Producer API 將隨機句子傳送至 Kafka。
 * `Consumer.java`:此檔案會使用 Consumer API 從 Kafka 讀取資料並將其發送至 STDOUT。
+* `AdminClientWrapper.java`:此檔案會使用管理員 API 來建立、描述和刪除 Kafka 主題。
 * `Run.java`:用來執行產生者和取用者程式碼的命令列介面。
 
 ### <a name="pomxml"></a>Pom.xml
@@ -116,9 +115,11 @@ consumer = new KafkaConsumer<>(properties);
 
 ## <a name="build-and-deploy-the-example"></a>建置並部署範例
 
+如果您想要略過此步驟，可從 `Prebuilt-Jars` 子目錄下載預先建立的 jar。 下載 kafka-producer-consumer.jar。 如果您的叢集已啟用**企業安全性套件 (ESP)** ，請使用 kafka-producer-consumer-esp.jar。 執行步驟 3 將 jar 複製到您的 HDInsight 叢集。
+
 1. 從 [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) 下載並解壓縮範例。
 
-2. 將目前目錄設定為 `hdinsight-kafka-java-get-started\Producer-Consumer` 目錄的位置並使用下列命令︰
+2. 將目前目錄設定為 `hdinsight-kafka-java-get-started\Producer-Consumer` 目錄的位置。 如果您使用 **企業安全性套件 (ESP)** 啟用的 Kafka 叢集，您應該將位置設定為 `DomainJoined-Producer-Consumer` 子目錄。 使用下列命令建置應用程式：
 
     ```cmd
     mvn clean package
@@ -140,29 +141,12 @@ consumer = new KafkaConsumer<>(properties);
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. 安裝 [jq](https://stedolan.github.io/jq/)，這是命令列 JSON 處理器。 從開啟的 SSH 連線，輸入下列命令來安裝 `jq`：
+1. 若要取得 Kafka 代理程式主機，請取代下列命令中的 `<clustername>` 和 `<password>` 值並加以執行。 `<clustername>` 需使用相同的大小寫，如 Azure 入口網站所示。 請將 `<password>` 取代為叢集登入密碼，然後執行：
 
     ```bash
     sudo apt -y install jq
-    ```
-
-1. 設定密碼變數。 請將 `PASSWORD` 取代為叢集登入密碼，然後輸入下列命令：
-
-    ```bash
-    export password='PASSWORD'
-    ```
-
-1. 擷取正確大小寫的叢集名稱。 視叢集的建立方式而定，叢集名稱的實際大小寫可能與您預期的不同。 此命令會取得實際的大小寫，然後將其儲存在變數中。 輸入下列命令：
-
-    ```bash
-    export clusterName=$(curl -u admin:$password -sS -G "http://headnodehost:8080/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
-    ```
-    > [!Note]  
-    > 如果您是從叢集外部執行此程序，則應以不同的程序儲存叢集名稱。 請從 Azure 入口網站取得小寫的叢集名稱。 然後，在下列命令中，以叢集名稱取代 `<clustername>`，並執行命令：`export clusterName='<clustername>'`。  
-
-1. 若要取得 Kafka 訊息代理程式主機，請使用下列命令：
-
-    ```bash
+    export clusterName='<clustername>'
+    export password='<password>'
     export KAFKABROKERS=$(curl -sS -u admin:$password -G https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2);
     ```
 

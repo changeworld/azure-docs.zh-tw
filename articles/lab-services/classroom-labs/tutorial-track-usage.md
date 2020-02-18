@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/31/2019
+ms.date: 02/10/2020
 ms.author: spelluru
-ms.openlocfilehash: 315ebfa1460f9d9bc041925cec2451f63ac5be16
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 55c7e2f30324fe7878e38f1129c63c6e0c51a75f
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580265"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134837"
 ---
 # <a name="tutorial-track-usage-of-a-lab-in-azure-lab-service"></a>教學課程：追蹤實驗室在 Azure 實驗室服務中的使用情形
 本教學課程會說明實驗室建立者/擁有者如何追蹤實驗室的使用情況。
@@ -32,18 +32,18 @@ ms.locfileid: "73580265"
 > * 管理學生 VM 
 
 
-## <a name="view-users-registered-with-the-lab"></a>檢視已向實驗室註冊的使用者
+## <a name="view-registered-users"></a>檢視已註冊的使用者
 
 1. 瀏覽至 [Azure 實驗室服務網站](https://labs.azure.com)。 
 2. 選取 [登入]  ，然後輸入您的認證。 Azure 實驗室服務支援組織帳戶和 Microsoft 帳戶。
 3. 在 [我的實驗室]  頁面上，選取您要追蹤其使用情況的實驗室。 
-4. 選取左側功能表或 [使用者]  圖格上的 [使用者]  。 您會看到已向實驗室註冊的學生。 選取 [註冊連結]  、複製該連結，並將連結傳送給任何尚未向實驗室完成註冊的新學生。 
+4. 選取左側功能表或 [使用者]  圖格上的 [使用者]  。 您會看到已向實驗室註冊的學生。  
 
     ![已註冊的使用者](../media/tutorial-track-usage/registered-users.png)
 
     如需為實驗室新增和管理使用者的詳細資訊，請參閱[新增和管理實驗室使用者](how-to-configure-student-usage.md)。
 
-## <a name="view-the-usage-of-vms-in-the-lab"></a>檢視實驗室中 VM 的使用情況 
+## <a name="view-the-usage-of-vms"></a>檢視 VM 的使用情況
 
 1. 在左側的功能表上選取 [虛擬機器]  。 
 2. 確認您有看到 VM 的狀態和 VM 已執行的時數。 實驗室擁有者花在學生 VM 的時間，不會計入最後一個資料行所示的使用時間中。 

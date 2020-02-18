@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 37253bb4c6001afe436e22597e75e2bc869fbbc8
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 04b3802ae17440fe7cb96b424727600ab53aefce
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75990290"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168758"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>教學課程：透過建議最佳化成本
 
@@ -79,7 +79,7 @@ Azure Advisor 可監視過去 7 天的虛擬機器使用量，並找出使用量
 
 請注意目前虛擬機器的大小。 在確認虛擬機器的大小應該進行調整之後，請關閉 VM 詳細資料，讓您可以查看虛擬機器清單。
 
-在要關閉或調整大小的候選項目清單中，選取 [從 &lt;FromVirtualMachineSKU&gt;  調整大小為 &lt;ToVirtualMachineSKU&gt;]。
+在要關閉或調整大小的候選項目清單中，選取 [從 &lt;FromVirtualMachineSKU&gt;  調整大小為 &lt;ToVirtualMachineSKU&gt;   ]。
 ![使用選項調整虛擬機器大小的範例建議](./media/tutorial-acm-opt-recommendations/resize-vm.png)
 
 接下來，您會看到一份可用的調整大小選項清單。 選擇可為您帶來最佳效能，並且可讓案例最符合成本效益的選項。 在下列範例中，所選擇的選項會從 **Standard_D8s_v3** 調整大小為 **Standard_D2s_v3**。

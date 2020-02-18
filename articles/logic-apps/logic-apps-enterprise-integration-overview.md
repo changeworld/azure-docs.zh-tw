@@ -8,16 +8,16 @@ ms.author: divswa
 ms.reviewer: jonfan, logicappspm
 ms.topic: overview
 ms.date: 08/01/2019
-ms.openlocfilehash: 141f1a7fc8f966132cb3570fd9d9cfa911127eed
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 9356cecb22672ae15505d14b5ac73d5baeef09e0
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792461"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191364"
 ---
 # <a name="b2b-enterprise-integration-solutions-with-azure-logic-apps-and-enterprise-integration-pack"></a>搭配 Azure Logic Apps 與企業整合套件的 B2B 企業整合解決方案
 
-如需企業對企業 (B2B) 解決方案，以及在組織間進行無接縫通訊，您可以使用企業整合套件 (EIP) 搭配 [Azure Logic Apps](../logic-apps/logic-apps-overview.md)來建置可調整的自動化企業整合工作流程。 雖然組織使用不同的通訊協定與格式，但他們能以電子方式來交換訊息。 EIP 會將不同格式轉換成您組織系統可以處理，並且可支援業界標準通訊協定的格式，包括 [AS2](../logic-apps/logic-apps-enterprise-integration-as2.md)、[X12](logic-apps-enterprise-integration-x12.md) 和 [EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md)。 您也可以使用加密與數位簽章來保護訊息的安全。 EIP 支援這些[企業整合連接器](../connectors/apis-list.md#integration-account-connectors)及下列產業標準：
+如需企業對企業 (B2B) 解決方案，以及在組織間進行無接縫通訊，您可以使用企業整合套件 (EIP) 搭配 [Azure Logic Apps](../logic-apps/logic-apps-overview.md)來建置可調整的自動化企業整合工作流程。 雖然組織使用不同的通訊協定與格式，但他們能以電子方式來交換訊息。 EIP 會將不同格式轉換成您組織系統可以處理，並且可支援業界標準通訊協定的格式，包括 [AS2](../logic-apps/logic-apps-enterprise-integration-as2.md)、[X12](logic-apps-enterprise-integration-x12.md) 和 [EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md)。 您也可以使用加密和數位簽章來改善訊息的安全性。 EIP 支援這些[企業整合連接器](../connectors/apis-list.md#integration-account-connectors)及下列產業標準：
 
 * 電子資料交換 (EDI)
 * 企業應用程式整合 (EAI)

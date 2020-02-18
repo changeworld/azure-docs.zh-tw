@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 02/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9854027bbdfaf22c650ae9e2e0aa1eec457f89dd
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 2d5e324ea20b2ea82fac5b5132893d3558bd3b41
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977953"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425556"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-virtual-machine-scale-using-a-template"></a>使用範本在 Azure 虛擬機器擴展上設定 Azure 資源的受控識別
 
@@ -32,7 +32,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 - 在 Azure 虛擬機器擴展集上啟用和停用系統指派的受控識別
 - 在 Azure 虛擬機器擴展集上新增和移除使用者指派的受控識別
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 如果您不熟悉 Azure 資源的受控識別，請參閱[概觀一節](overview.md)。 **請務必檢閱[系統指派和使用者指派受控識別之間的差異](overview.md#how-does-the-managed-identities-for-azure-resources-work)** 。
 - 如果您還沒有 Azure 帳戶，請先[註冊免費帳戶](https://azure.microsoft.com/free/)，再繼續進行。
@@ -45,7 +45,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
     - [受控識別參與者](/azure/role-based-access-control/built-in-roles#managed-identity-contributor)角色，可建立使用者指派的受控識別。
     - [受控識別操作員](/azure/role-based-access-control/built-in-roles#managed-identity-operator)角色，可為虛擬機器擴展集指派和移除使用者指派的受控識別。
 
-## <a name="azure-resource-manager-templates"></a>Azure Resource Manager 範本
+## <a name="azure-resource-manager-templates"></a>Azure 資源管理員範本
 
 如同 Azure 入口網站和指令碼，[Azure Resource Manager](../../azure-resource-manager/management/overview.md) 範本可讓您部署由 Azure 資源群組所定義的最新或已修改資源。 範本編輯和部署有幾個選項可用 (在本機和入口網站)，包括：
 
@@ -63,7 +63,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 ### <a name="enable-system-assigned-managed-identity-during-creation-the-creation-of-a-virtual-machines-scale-set-or-an-existing-virtual-machine-scale-set"></a>建立虛擬機器擴展集或現有的虛擬機器擴展集時，啟用系統指派的受控識別
 
 1. 無論您是在本機登入 Azure 或透過 Azure 入口網站登入，都請使用與包含虛擬機器擴展集的 Azure 訂用帳戶相關聯的帳戶。
-2. 若要啟用系統指派的受控識別，請將範本載入到編輯器、在 resources 區段中找出感興趣的 `Microsoft.Compute/virtualMachinesScaleSets` 資源，然後在與 `"type": "Microsoft.Compute/virtualMachinesScaleSets"` 屬性相同的層級上新增 `identity`。 使用下列語法：
+2. 若要啟用系統指派的受控識別，請將範本載入到編輯器、在 resources 區段中找出感興趣的 `Microsoft.Compute/virtualMachinesScaleSets` 資源，然後在與 `identity` 屬性相同的層級上新增 `"type": "Microsoft.Compute/virtualMachinesScaleSets"`。 使用下列語法：
 
    ```JSON
    "identity": {
@@ -121,7 +121,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
 1. 無論您是在本機登入 Azure 或透過 Azure 入口網站登入，都請使用與包含虛擬機器擴展集的 Azure 訂用帳戶相關聯的帳戶。
 
-2. 在[編輯器](#azure-resource-manager-templates)中載入範本，然後在 `resources` 區段找出想要的 `Microsoft.Compute/virtualMachineScaleSets` 資源。 若您的虛擬機器只有系統指派的受控識別，您可以將識別類型變更為 `None` 予以停用。
+2. 在[編輯器](#azure-resource-manager-templates)中載入範本，然後在 `Microsoft.Compute/virtualMachineScaleSets` 區段找出想要的 `resources` 資源。 若您的虛擬機器只有系統指派的受控識別，您可以將識別類型變更為 `None` 予以停用。
 
    **Microsoft.Compute/virtualMachineScaleSets API 2018-06-01 版**
 
@@ -129,7 +129,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
    **Microsoft.Compute/virtualMachineScaleSets API 2018-06-01 版**
 
-   若您的 apiVersion 為 `identityIds` 且您的虛擬機器擴展集同時具有系統與使用者指派的受控識別，請從識別類型中移除 `2017-12-01`，並保留 `SystemAssigned` 以及使用者指派受控識別的 `UserAssigned` 陣列。
+   若您的 apiVersion 為 `2017-12-01` 且您的虛擬機器擴展集同時具有系統與使用者指派的受控識別，請從識別類型中移除 `SystemAssigned`，並保留 `UserAssigned` 以及使用者指派受控識別的 `identityIds` 陣列。
 
 
 
@@ -189,7 +189,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
        "identity": {
            "type": "userAssigned",
            "identityIds": [
-               "[resourceID('Micrososft.ManagedIdentity/userAssignedIdentities/',variables('<USERASSIGNEDIDENTITY>'))]"
+               "[resourceID('Microsoft.ManagedIdentity/userAssignedIdentities/',variables('<USERASSIGNEDIDENTITY>'))]"
            ]
        }
 
@@ -291,7 +291,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
 1. 無論您是在本機登入 Azure 或透過 Azure 入口網站登入，都請使用與包含虛擬機器擴展集的 Azure 訂用帳戶相關聯的帳戶。
 
-2. 在[編輯器](#azure-resource-manager-templates)中載入範本，然後在 `resources` 區段找出想要的 `Microsoft.Compute/virtualMachineScaleSets` 資源。 若您的虛擬機器擴展集只有使用者指派的受控識別，您可以將識別類型變更為 `None` 予以停用。
+2. 在[編輯器](#azure-resource-manager-templates)中載入範本，然後在 `Microsoft.Compute/virtualMachineScaleSets` 區段找出想要的 `resources` 資源。 若您的虛擬機器擴展集只有使用者指派的受控識別，您可以將識別類型變更為 `None` 予以停用。
 
    下列範例示範如何從沒有系統指派受控識別的虛擬機器中移除所有使用者指派的受控識別：
 
@@ -310,13 +310,13 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
    若要從虛擬機器擴展集移除單一使用者指派的受控識別，請從 `userAssignedIdentities` 字典中移除它。
 
-   如果您有系統指派的受控識別，則將它保存在 `identity` 值下方的 `type` 值中。
+   如果您有系統指派的受控識別，則將它保存在 `type` 值下方的 `identity` 值中。
 
    **Microsoft.Compute/virtualMachineScaleSets API 2017-12-01 版**
 
    若要從虛擬機器擴展集移除單一使用者指派的受控識別，請從 `identityIds` 陣列中移除它。
 
-   如果您有系統指派的受控識別，則將它保存在 `identity` 值下方的 `type` 值中。
+   如果您有系統指派的受控識別，則將它保存在 `type` 值下方的 `identity` 值中。
 
 ## <a name="next-steps"></a>後續步驟
 

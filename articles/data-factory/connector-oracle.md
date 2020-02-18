@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 02/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 736cf03b58ec09b291c91857177a32c7dad89c6a
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 874c685491774e2a318ae0a8b7394945a51b2f7f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75892049"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77423805"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 Oracle 複製資料及將資料複製到該處
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -44,13 +44,12 @@ ms.locfileid: "75892049"
     - Oracle 9i R2 （9.2）和更高版本
     - Oracle 8i R3 （8.1.7）和更高版本
     - Oracle Database Cloud Exadata 服務
-- 使用「基本」或「OID」驗證來複製資料。
 - 從 Oracle 來源平行複製。 如需詳細資訊，請參閱[從 Oracle 平行複製](#parallel-copy-from-oracle)一節。
 
 > [!Note]
 > 不支援 Oracle Proxy 伺服器。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)] 
 
@@ -66,7 +65,7 @@ ms.locfileid: "75892049"
 
 Oracle 連結服務支援下列屬性：
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | type 屬性必須設定為 **Oracle**。 | 是 |
 | connectionString | 指定連線到 Oracle 資料庫執行個體所需的資訊。 <br/>您也可以將密碼放在 Azure Key Vault 中，並從連接字串中提取 `password` 設定。 請參閱下列範例，並[在 Azure Key Vault 中儲存認證](store-credentials-in-key-vault.md)，並提供更多詳細資料。 <br><br>**支援的連線類型**：您可以使用 [Oracle SID] 或 [Oracle 服務名稱] 來識別您的資料庫：<br>- 如果您使用 SID：`Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>- 如果您使用服務名稱：`Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;`<br>針對 [先進的 Oracle 原生連接選項]，您可以選擇在 Tnsnames.ora 中新增專案[。TNSNAMES.ORA](http://www.orafaq.com/wiki/Tnsnames.ora)檔案在 oracle 伺服器和 ADF oracle 連結服務中，選擇使用 [Oracle 服務名稱] 連線類型，並設定對應的服務名稱。 | 是 |
@@ -77,7 +76,7 @@ Oracle 連結服務支援下列屬性：
 
 您可以在連接字串中，根據您的案例設定更多的連接屬性：
 
-| 屬性 | 說明 | 允許的值 |
+| 屬性 | 描述 | 允許的值 |
 |:--- |:--- |:--- |
 | ArraySize |連接器可以在單一網路來回行程中提取的位元組數目。 例如，`ArraySize=‭10485760‬`。<br/><br/>較大的值會藉由減少透過網路提取資料的次數來增加輸送量。 較小的值會增加回應時間，因為等待伺服器傳輸資料的延遲較少。 | 從1到4294967296（4 GB）的整數。 預設值為 `60000`。 值1不會定義位元組數目，而是表示只為一個資料列配置空間。 |
 
@@ -171,7 +170,7 @@ Oracle 連結服務支援下列屬性：
 
 若要將資料從和複製到 Oracle，請將資料集的 type 屬性設定為 `OracleTable`。 以下是支援的屬性。
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 資料集的類型屬性必須設定為 `OracleTable`。 | 是 |
 | 結構描述 | 結構描述的名稱。 |否 (來源)；是 (接收)  |
@@ -210,7 +209,7 @@ Oracle 連結服務支援下列屬性：
 
 若要從 Oracle 複製資料，請將複製活動中的來源類型設定為 `OracleSource`。 複製活動的 [來源] 區段支援下列屬性。
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的類型屬性必須設定為 `OracleSource`。 | 是 |
 | oracleReaderQuery | 使用自訂 SQL 查詢來讀取資料。 例如 `"SELECT * FROM MyTable"`。<br>當您啟用資料分割載入時，您必須在查詢中攔截任何對應的內建資料分割參數。 如需範例，請參閱[從 Oracle 平行複製](#parallel-copy-from-oracle)一節。 | 否 |
@@ -257,7 +256,7 @@ Oracle 連結服務支援下列屬性：
 
 若要將資料複製到 Oracle，請將複製活動中的接收類型設定為 `OracleSink`。 複製活動的 [接收] 區段支援下列屬性。
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動接收器的 type 屬性必須設定為 `OracleSink`。 | 是 |
 | writeBatchSize | 當緩衝區大小達到 `writeBatchSize`時，將資料插入 SQL 資料表中。<br/>允許的值為整數 (資料列數目)。 |否 (預設值為 10000) |
@@ -305,7 +304,7 @@ Data Factory Oracle 連接器會提供內建的資料分割，以平行方式從
 
 建議您啟用具有資料分割的平行複製，特別是當您從 Oracle 資料庫載入大量資料時。 以下是適用于不同案例的建議設定。 將資料複製到以檔案為基礎的資料存放區時，會建議寫入資料夾做為多個檔案（僅指定資料夾名稱），在此情況下，效能會比寫入單一檔案更好。
 
-| 案例                                                     | 建議的設定                                           |
+| 狀況                                                     | 建議的設定                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 具有實體分割區的大型資料表完整載入。          | 資料**分割選項**：資料表的實體分割區。 <br><br/>在執行期間，Data Factory 會自動偵測實體分割區，並依分割區複製資料。 |
 | 從大型資料表（不含實體分割區）進行完整載入，同時使用資料磁碟分割的整數資料行。 | 資料**分割選項**：動態範圍分割區。<br>**分割**區資料行：指定用來分割資料的資料行。 如果未指定，則會使用主鍵資料行。 |
@@ -353,7 +352,7 @@ Data Factory Oracle 連接器會提供內建的資料分割，以平行方式從
 | BLOB |Byte[]<br/>(僅 Oracle 10g 及更高版本可支援) |
 | CHAR |String |
 | CLOB |String |
-| 日期 |日期時間 |
+| 日期 |Datetime |
 | FLOAT |Decimal，字串 (如果精確度 > 28) |
 | INTEGER |Decimal，字串 (如果精確度 > 28) |
 | LONG |String |
@@ -364,10 +363,10 @@ Data Factory Oracle 連接器會提供內建的資料分割，以平行方式從
 | NVARCHAR2 |String |
 | RAW |Byte[] |
 | ROWID |String |
-| timestamp |日期時間 |
+| timestamp |Datetime |
 | TIMESTAMP WITH LOCAL TIME ZONE |String |
 | TIMESTAMP WITH TIME ZONE |String |
-| 不帶正負號的整數 |數字 |
+| 不帶正負號的整數 |Number |
 | VARCHAR2 |String |
 | XML |String |
 
