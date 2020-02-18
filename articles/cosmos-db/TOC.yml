@@ -176,6 +176,9 @@
         - name: 關鍵字
           displayName: 'keywords, distinct, between, in, top'
           href: sql-query-keywords.md
+        - name: 常數
+          displayName: 'object, number,array'
+          href: sql-query-constants.md
         - name: 操作員
           displayName: 'operators, operator, logical operators, equality, comparison'
           href: sql-query-operators.md
@@ -582,8 +585,7 @@
             - name: 變更摘要
               href: cassandra-change-feed.md
             - name: 儲存和管理 Spring 資料
-              href: /java/azure/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db
-              maintainContext: true
+              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
             - name: Cassandra 與 Spark
               items:
                 - name: 簡介
@@ -658,8 +660,7 @@
                   href: tutorial-develop-mongodb-react.md
             - name: 2 - 遷移資料
               displayName: import
-              href: /azure/dms/tutorial-mongodb-cosmos-db
-              maintainContext: true
+              href: ../dms/tutorial-mongodb-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: 3 - 查詢資料
               href: tutorial-query-mongodb.md
             - name: 4 - 全域散發資料
@@ -690,8 +691,7 @@
             - name: 管理資料索引
               href: mongodb-indexing.md
             - name: 儲存和管理 Spring 資料
-              href: /java/azure/spring-framework/configure-spring-data-mongodb-with-cosmos-db
-              maintainContext: true
+              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
             - name: MongoDB 擴充功能命令
               href: mongodb-custom-commands.md
               displayName: custom commands
@@ -755,8 +755,7 @@
             - name: 圖表資料視覺化
               href: graph-visualization.md
             - name: 儲存和管理 Spring 資料
-              href: /java/azure/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db
-              maintainContext: true
+              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
             - name: 使用 Resource Manager 範本進行管理
               href: manage-gremlin-with-resource-manager.md
             - name: 使用 Powershell 管理
@@ -951,8 +950,7 @@
         - name: Azure Databricks Spark 連接器
           href: spark-connector.md
         - name: 使用 Apache Kafka 和 Cosmos DB 進行串流
-          href: /azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb
-          maintainContext: true
+          href: ../hdinsight/apache-kafka-spark-structured-streaming-cosmosdb.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
     - name: 內建 Jupyter 筆記本
       items:
         - name: 啟用筆記本
@@ -976,8 +974,7 @@
         - name: 設定來自私人端點的存取
           href: how-to-configure-private-endpoints.md
         - name: 私下連線至 Cosmos DB 帳戶
-          href: /azure/private-link/create-private-endpoint-cosmosdb-portal
-          maintainContext: true
+          href: ../private-link/create-private-endpoint-cosmosdb-portal.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: 設定跨原始資源共用 (CORS)
           href: how-to-configure-cross-origin-resource-sharing.md
         - name: 使用 Key Vault 保護 Azure Cosmos 金鑰
@@ -999,12 +996,11 @@
         - name: 使用診斷記錄進行監視
           href: cosmosdb-monitor-resource-logs.md
         - name: 適用於 Cosmos 的 Azure 監視器 (預覽)
-          href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json
+          href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: 從 Cosmos DB 帳戶檢視計量
           href: use-metrics.md
         - name: 使用 Logic Apps 進行應用程式記錄
-          href: /azure/logic-apps/logic-apps-scenario-error-and-exception-handling
-          maintainContext: true
+          href: ../logic-apps/logic-apps-scenario-error-and-exception-handling.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: 監視資料參考
           href: monitor-cosmos-db-reference.md
     - name: 本機開發
@@ -1032,29 +1028,23 @@
         - name: Azure App Service
           href: create-website.md
         - name: Azure 認知搜尋索引子
-          href: /azure/search/search-howto-index-cosmosdb
-          maintainContext: true
+          href: ../search/search-howto-index-cosmosdb.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Azure Functions
           items:
             - name: 無伺服器運算
               href: serverless-computing-database.md
             - name: Azure Functions 繫結
-              href: /azure/azure-functions/functions-bindings-cosmosdb
-              maintainContext: true
+              href: ../azure-functions/functions-bindings-cosmosdb.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Azure Data Factory
-          href: /azure/data-factory/connector-azure-cosmos-db
-          maintainContext: true
+          href: ../data-factory/connector-azure-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Azure 串流分析
-          href: '/azure/stream-analytics/stream-analytics-define-outputs#azure-cosmos-db'
-          maintainContext: true
+          href: ../stream-analytics/stream-analytics-documentdb-output.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Azure 事件中樞與 Azure 儲存體
           href: 'https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md'
         - name: 使用 Spring Boot Starter
-          href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db
-          maintainContext: true
+          href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
         - name: Spring Data 開發人員指南
-          href: /java/azure/spring-framework/how-to-guides-spring-data-cosmosdb
-          maintainContext: true
+          href: 'https://docs.microsoft.com/azure/java/spring-framework/how-to-guides-spring-data-cosmosdb?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
         - name: ODBC 驅動程式
           href: odbc-driver.md
     - name: 將資料遷移到 Cosmos DB

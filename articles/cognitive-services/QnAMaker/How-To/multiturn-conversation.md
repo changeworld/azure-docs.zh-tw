@@ -1,22 +1,14 @@
 ---
 title: 多回合交談-QnA Maker
-titleSuffix: Azure Cognitive Services
 description: 使用提示和內容來管理 bot 的多個回合（稱為多回合），從一個問題到另一個。 多回合功能能夠進行前後交談，其中先前的問題內容會影響下一個問題和答案。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 12/05/2019
-ms.author: diberry
-ms.openlocfilehash: 681f00adde1d440fbb41f2e66652db34d53fbf99
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 02/13/2020
+ms.openlocfilehash: abdde09fbb1f6b066772366c5cea933824cb5864
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843255"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210409"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>使用後續追蹤提示來建立多回合對話
 
@@ -31,6 +23,9 @@ ms.locfileid: "76843255"
 某些問題無法在單一回合中回答。 當您設計用戶端應用程式（聊天機器人）交談時，使用者可能會詢問需要進行篩選或調整的問題，以判斷正確的答案。 您可以藉由向使用者呈現*後續追蹤提示*，讓此流程更有問題。
 
 當使用者提出問題時，QnA Maker 會傳回答案_和_任何後續追蹤提示。 此回應可讓您將後續問題呈現為選擇。
+
+> [!CAUTION]
+> 多回合提示不會從常見問題檔中解壓縮。 如果您需要多重回合解壓縮，請移除將 QnA 組指定為常見問題的問號。
 
 ## <a name="example-multi-turn-conversation-with-chat-bot"></a>使用聊天機器人進行多回合對話的範例
 
@@ -97,7 +92,7 @@ ms.locfileid: "76843255"
 
 [多回合內容] 會顯示在第一個資料行中。
 
-![![內容（預覽）資料行](../media/conversational-coNtext/surface-manual-pdf-follow-up-prompt.png)](../media/conversational-context/surface-manual-pdf-follow-up-prompt.png#lightbox)
+![![內容（預覽） 資料行](../media/conversational-coNtext/surface-manual-pdf-follow-up-prompt.png)](../media/conversational-context/surface-manual-pdf-follow-up-prompt.png#lightbox)
 
 在上圖中， **#1**表示資料行中的粗體文字，表示目前的問題。 父問題是資料列中的最上層專案。 其底下的任何問題都是連結的問答配對。 這些專案是可選取的，因此您可以立即移至其他內容專案。
 
