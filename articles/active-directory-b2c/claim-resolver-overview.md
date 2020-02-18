@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/17/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1734b063530f9e8a8f0429111c4c39d628bfad4e
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 4434c877f69391f5dc5926c6aed07049ba46b7b7
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251765"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425641"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>關於 Azure Active Directory B2C 自訂原則中的宣告解析程式
 
@@ -104,6 +104,18 @@ OIDC 或 OAuth2 要求中所包含的任何參數名稱均可對應至使用者�
 | ----- | ----------------------- | --------|
 | {oauth2:access_token} | 存取權杖。 | N/A |
 
+
+### <a name="saml"></a>SAML
+
+| 宣告 | 描述 | 範例 |
+| ----- | ----------- | --------|
+| {SAML： AuthnCoNtextClassReferences} | 來自 SAML 要求的 `AuthnContextClassRef` 元素值。 | urn： oasis： names： tc： SAML：2.0： ac：類別： PasswordProtectedTransport |
+| {SAML： NameIdPolicyFormat} | `Format` 屬性，來自 SAML 要求的 `NameIDPolicy` 元素。 | urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress |
+| {SAML： Issuer} |  SAML 要求的 SAML `Issuer` 元素值。| https://contoso.com |
+| {SAML： AllowCreate} | `AllowCreate` 屬性值，來自 SAML 要求的 `NameIDPolicy` 元素。 | True |
+| {SAML： ForceAuthn} | `ForceAuthN` 屬性值，來自 SAML 要求的 `AuthnRequest` 元素。 | True |
+| {SAML： ProviderName} | `ProviderName` 屬性值，來自 SAML 要求的 `AuthnRequest` 元素。| Contoso.com |
+
 ## <a name="using-claim-resolvers"></a>使用宣告解析程式 
 
 您可以使用宣告解析程式搭配下列元素： 
@@ -160,7 +172,7 @@ OIDC 或 OAuth2 要求中所包含的任何參數名稱均可對應至使用者�
 
 ### <a name="dynamic-ui-customization"></a>動態 UI 自訂
 
-Azure AD B2C 可讓您將查詢字串參數傳遞至您的 HTML 內容定義端點，以動態呈現頁面內容。 例如，這可讓您根據從 web 或行動應用程式傳遞的自訂參數，修改 Azure AD B2C 註冊或登入頁面上的背景影像。 如需詳細資訊，請參閱[使用 Azure Active Directory B2C 中的自訂原則動態設定 UI](custom-policy-ui-customization-dynamic.md)。 您也可以根據語言參數將 HTML 網頁當地語系化，也可以根據用戶端識別碼來變更內容。
+Azure AD B2C 可讓您將查詢字串參數傳遞至您的 HTML 內容定義端點，以動態呈現頁面內容。 例如，這可讓您根據從 web 或行動應用程式傳遞的自訂參數，修改 Azure AD B2C 註冊或登入頁面上的背景影像。 如需詳細資訊，請參閱[使用 Azure Active Directory B2C 中的自訂原則動態設定 UI](custom-policy-ui-customization.md)。 您也可以根據語言參數將 HTML 網頁當地語系化，也可以根據用戶端識別碼來變更內容。
 
 下列範例會傳入名為**campaignId**的查詢字串參數，其值為 `hawaii`、`en-US`的**語言**代碼，以及代表用戶端識別碼的**應用程式**：
 
