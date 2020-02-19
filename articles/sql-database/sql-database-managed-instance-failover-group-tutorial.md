@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 08/27/2019
-ms.openlocfilehash: b7c406c1d7f55b364d72b2b5626b3c17a34d8338
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: bf83155e971061f22e5f5fc33d216b58621c9249
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552758"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462644"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>教學課程：將 SQL Database 受控實例新增至容錯移轉群組
 
@@ -36,13 +36,13 @@ ms.locfileid: "75552758"
 
 ## <a name="prerequisites"></a>必要條件
 
-# <a name="portaltabazure-portal"></a>[入口網站](#tab/azure-portal)
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
 若要完成本教學課程，請確定您具有下列項目︰ 
 
 - Azure 訂用帳戶。 如果您還沒有帳戶，請[建立一個免費帳戶](https://azure.microsoft.com/free/)。
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 若要完成本教學課程，請確定您有下列專案：
 
 - Azure 訂用帳戶。 如果您還沒有帳戶，請[建立一個免費帳戶](https://azure.microsoft.com/free/)。
@@ -55,7 +55,7 @@ ms.locfileid: "75552758"
 在此步驟中，您將使用 Azure 入口網站或 PowerShell，為您的容錯移轉群組建立資源群組和主要受控實例。 
 
 
-# <a name="portaltabazure-portal"></a>[入口網站](#tab/azure-portal) 
+# <a name="portal"></a>[入口網站](#tab/azure-portal) 
 
 使用 Azure 入口網站建立資源群組和您的主要受控實例。 
 
@@ -75,7 +75,7 @@ ms.locfileid: "75552758"
 1. 將其餘設定保留為預設值，然後選取 [**審查 + 建立**] 來檢查您的受控實例設定。 
 1. 選取 [**建立**] 以建立您的主要受控實例。 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 建立您的資源群組和主要受控實例。 
 
@@ -405,7 +405,7 @@ ms.locfileid: "75552758"
 ## <a name="2---create-secondary-virtual-network"></a>2-建立次要虛擬網路
 如果您使用 Azure 入口網站建立受控實例，您必須另外建立虛擬網路，因為主要和次要受控實例的子網不會有重迭的範圍。 如果您使用 PowerShell 來設定受控實例，請跳至步驟3。 
 
-# <a name="portaltabazure-portal"></a>[入口網站](#tab/azure-portal) 
+# <a name="portal"></a>[入口網站](#tab/azure-portal) 
 若要確認主要虛擬網路的子網範圍，請遵循下列步驟：
 1. 在  [Azure 入口網站](https://portal.azure.com)中，流覽至您的資源群組，然後選取主要實例的虛擬網路。 
 1. 選取 [**設定**] 底下的 [**子網**]，並記下**位址範圍**。 次要受控實例之虛擬網路的子網位址範圍不能重迭。 
@@ -433,7 +433,7 @@ ms.locfileid: "75552758"
 
     ![次要虛擬網路值](media/sql-database-managed-instance-failover-group-tutorial/secondary-virtual-network.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 只有當您使用 Azure 入口網站來部署受控實例時，才需要執行此步驟。 如果您使用的是 PowerShell，請直接跳到步驟3。 
 
@@ -446,7 +446,7 @@ ms.locfileid: "75552758"
 - 是空的。 
 - 具有與主要受控實例不同的子網和 IP 範圍。 
 
-# <a name="portaltabazure-portal"></a>[入口網站](#tab/azure-portal) 
+# <a name="portal"></a>[入口網站](#tab/azure-portal) 
 
 使用 Azure 入口網站建立次要受控實例。 
 
@@ -482,7 +482,7 @@ ms.locfileid: "75552758"
 1. 選取 [審核] [ **+ 建立**] 來檢查次要受控實例的設定。 
 1. 選取 [**建立**] 以建立次要受控實例。 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 建立次要受控實例。 
 
@@ -734,7 +734,7 @@ ms.locfileid: "75552758"
 本文提供建立兩個 VPN 閘道並加以連線的步驟，但如果您已設定 ExpressRoute，可以直接跳到建立容錯移轉群組。 
 
 
-# <a name="portaltabazure-portal"></a>[入口網站](#tab/azure-portal)
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
 
 使用 Azure 入口網站，為您的主要受控實例的虛擬網路建立閘道。 
 
@@ -773,7 +773,7 @@ ms.locfileid: "75552758"
 1. 選取 [**建立**] 以建立新的虛擬網路閘道。 
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 為您的主要受控實例的虛擬網路建立閘道。 
 
@@ -828,7 +828,7 @@ ms.locfileid: "75552758"
 在此步驟中，請使用 Azure 入口網站，為次要受控實例的虛擬網路建立閘道。 
 
 
-# <a name="portaltabazure-portal"></a>[入口網站](#tab/azure-portal)
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
 
 使用 Azure 入口網站，重複上一節中的步驟，以建立次要受控實例的虛擬網路子網和閘道。 填寫必要欄位，為您的次要受控實例設定閘道。 
 
@@ -851,7 +851,7 @@ ms.locfileid: "75552758"
    ![次要閘道設定](media/sql-database-managed-instance-failover-group-tutorial/settings-for-secondary-gateway.png)
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 為次要受控實例的虛擬網路建立閘道。 
 
@@ -908,7 +908,7 @@ ms.locfileid: "75552758"
 在此步驟中，請在兩個虛擬網路的兩個閘道之間建立雙向連線。 
 
 
-# <a name="portaltabazure-portal"></a>[入口網站](#tab/azure-portal)
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
 
 使用 Azure 入口網站來連接這兩個閘道。 
 
@@ -933,7 +933,7 @@ ms.locfileid: "75552758"
 1. 在 [**摘要**] 索引標籤上，檢查雙向連線的設定，然後選取 **[確定]** 以建立您的連線。 
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 來連接這兩個閘道。 
 
@@ -967,7 +967,7 @@ ms.locfileid: "75552758"
 在此步驟中，您將建立容錯移轉群組，並將這兩個受控實例新增至其中。 
 
 
-# <a name="portaltabazure-portal"></a>[入口網站](#tab/azure-portal)
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
 使用 Azure 入口網站建立容錯移轉群組。 
 
 
@@ -984,7 +984,7 @@ ms.locfileid: "75552758"
 1. 容錯移轉群組部署完成後，您會回到 [**容錯移轉群組**] 頁面。 
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 使用 PowerShell 建立容錯移轉群組。 
 
    ```powershell-interactive
@@ -1010,11 +1010,11 @@ ms.locfileid: "75552758"
 在此步驟中，您會將容錯移轉群組容錯移轉到次要伺服器，然後使用 Azure 入口網站進行容錯回復。 
 
 
-# <a name="portaltabazure-portal"></a>[入口網站](#tab/azure-portal)
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
 使用 Azure 入口網站測試容錯移轉。 
 
 
-1. 流覽至[Azure 入口網站](https://portal.azure.com)內您的受控實例，然後選取 [設定] 底下的 [**實例容錯移轉群組**]。 
+1. 流覽至[Azure 入口網站](https://portal.azure.com)內您的_次要_受控實例，然後選取 [設定] 底下的 [**實例容錯移轉群組**]。 
 1. 檢查哪個受控實例是主要複本，以及哪個受控實例是次要複本。 
 1. 選取 [**容錯移轉**]，然後在關於 TDS 會話中斷連線的警告上選取 **[是]** 。 
 
@@ -1024,10 +1024,10 @@ ms.locfileid: "75552758"
 
    ![受控實例在容錯移轉後已切換角色](media/sql-database-managed-instance-failover-group-tutorial/mi-switched-after-failover.png)
 
-1. 再次選取 [**容錯移轉**]，使主要實例無法回到主要角色。 
+1. 移至新的_次要_受控實例，然後再次選取 [**容錯移轉**]，將主要實例容錯回復至主要角色。 
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 使用 PowerShell 測試容錯移轉。 
 
    ```powershell-interactive
@@ -1076,14 +1076,14 @@ ms.locfileid: "75552758"
 ## <a name="clean-up-resources"></a>清除資源
 藉由先刪除受控實例、虛擬叢集、任何剩餘的資源，以及最後的資源群組來清除資源。 
 
-# <a name="portaltabazure-portal"></a>[入口網站](#tab/azure-portal)
-1. 在[Azure 入口網站](https://portal.azure.com)中，流覽至您的資源群組。 
-1. 選取 [受控實例]，然後選取 [**刪除**]。 在文字方塊中輸入 `yes`，確認您想要刪除資源，然後選取 [**刪除**]。 此程式可能需要一些時間才能在背景中完成，而且在完成之前，您將無法刪除*虛擬叢集*或任何其他相依資源。 監視 [活動] 索引標籤中的 [刪除]，確認已刪除您的受控實例。 
-1. 刪除受控實例之後，請在您的資源群組中選取*虛擬*叢集，然後選擇 [**刪除**]，將它刪除。 在文字方塊中輸入 `yes`，確認您想要刪除資源，然後選取 [**刪除**]。 
-1. 刪除任何剩餘的資源。 在文字方塊中輸入 `yes`，確認您想要刪除資源，然後選取 [**刪除**]。 
-1. 若要刪除資源群組，請選取 [**刪除資源群組**]，輸入資源群組的名稱，`myResourceGroup`，然後選取 [**刪除**]。 
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
+1. 瀏覽至您在 [Azure 入口網站](https://portal.azure.com)中的資源群組。 
+1. 選取受控執行個體，然後選取 [刪除]。 在文字方塊中輸入 `yes` 以確認您要刪除資源，然後選取 [刪除]。 此程式可能需要一些時間才能在背景中完成，而且在完成之前，您將無法刪除*虛擬叢集*或任何其他相依資源。 監視 [活動] 索引標籤中的刪除，確認您的受控執行個體已刪除。 
+1. 受控執行個體刪除後，請在資源群組中選取虛擬叢集，然後選擇 [刪除]，加以刪除。 在文字方塊中輸入 `yes` 以確認您要刪除資源，然後選取 [刪除]。 
+1. 刪除任何剩餘的資源。 在文字方塊中輸入 `yes` 以確認您要刪除資源，然後選取 [刪除]。 
+1. 選取 [刪除資源群組]、輸入資源群組的名稱 `myResourceGroup`，然後選取 [刪除]，以刪除資源群組。 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 您將需要移除資源群組兩次。 第一次移除資源群組時，將會移除受控執行個體和虛擬叢集，但接著會失敗並出現錯誤訊息：`Remove-AzResourceGroup : Long running operation failed with status 'Conflict'.`。 請再次執行 Remove-AzResourceGroup 命令，以移除所有剩餘的資源及資源群組。
 
@@ -1104,7 +1104,7 @@ Write-host "Removing residual resources and resouce group..."
 
 ## <a name="full-script"></a>完整指令碼
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 [!code-powershell-interactive[main](../../powershell_scripts/sql-database/failover-groups/add-managed-instance-to-failover-group-az-ps.ps1 "Add managed instance to a failover group")]
 
 此指令碼會使用下列命令。 下表中的每個命令都會連結至命令特定的文件。
@@ -1136,7 +1136,7 @@ Write-host "Removing residual resources and resouce group..."
 | [Switch-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) | 執行受控執行個體容錯移轉群組的容錯移轉。 | 
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 移除資源群組。 | 
 
-# <a name="portaltabazure-portal"></a>[入口網站](#tab/azure-portal) 
+# <a name="portal"></a>[入口網站](#tab/azure-portal) 
 
 沒有可供 Azure 入口網站使用的腳本。
 
