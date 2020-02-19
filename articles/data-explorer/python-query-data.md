@@ -1,30 +1,32 @@
 ---
 title: 使用 Azure 資料總管 Python 程式庫查詢資料
-description: 在本文中, 您將瞭解如何使用 Python 從 Azure 資料總管查詢資料。
+description: 在本文中，您將瞭解如何使用 Python 從 Azure 資料總管查詢資料。
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 2c32e67bb2b47a24036a341ea4e1b83037abbaee
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: ebd65f2dcbb0040b764290627bbfd2901aa9a7d3
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827525"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443970"
 ---
 # <a name="query-data-using-the-azure-data-explorer-python-library"></a>使用 Azure 資料總管 Python 程式庫查詢資料
 
-Azure 資料總管是一項快速又可高度調整的資料探索服務，可用於處理記錄和遙測資料。 Azure 資料總管提供一個[適用於 Python 的資料用戶端程式庫](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data) \(英文\)。 此程式庫可讓您從程式碼中查詢資料。 在本文中, 您會連接到說明叢集上已設定的資料表, 以協助學習。 您接著要查詢該叢集上的資料表，並傳回結果。
+在本文中，您會使用 Azure 資料總管來查詢資料。 Azure 資料總管是一項快速又可高度調整的資料探索服務，可用於處理記錄和遙測資料。
+
+Azure 資料總管提供一個[適用於 Python 的資料用戶端程式庫](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data) \(英文\)。 此程式庫可讓您從程式碼中查詢資料。 連接到說明叢集上的資料表，我們已設定此*資訊*來協助學習。 您可以查詢該叢集上的資料表，並傳回結果。
 
 這篇文章也以[Azure 筆記本](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueryKusto.ipynb)的形式提供。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
+
+* [Python 3.4 +](https://www.python.org/downloads/)
 
 * 屬於 Azure Active Directory (AAD) 成員的組織電子郵件帳戶
-
-* 安裝在您開發電腦上的 [Python](https://www.python.org/downloads/)
 
 ## <a name="install-the-data-library"></a>安裝資料程式庫
 
@@ -75,7 +77,7 @@ KCSB.authority_id = AAD_TENANT_ID
 
 ## <a name="connect-to-azure-data-explorer-and-execute-a-query"></a>連線到 Azure 資料總管並執行查詢
 
-針對叢集執行查詢，然後將輸出儲存於資料框架中。 此程式碼執行時，它會傳回類似以下的訊息：*若要登入，請使用網頁瀏覽器開啟頁面 https://microsoft.com/devicelogin ，並輸入代碼 F3W4VWZDM 以進行驗證*。 請遵循下列步驟來登入，然後返回以執行下一個程式碼區塊。
+針對叢集執行查詢，然後將輸出儲存於資料框架中。 此程式碼執行時，會傳回與下列類似的訊息：若要登入，請使用網頁瀏覽器開啟頁面 *，並輸入程式碼 F3W4VWZDM 來驗證 https://microsoft.com/devicelogin* 。 請遵循下列步驟來登入，然後返回以執行下一個程式碼區塊。
 
 ```python
 KUSTO_CLIENT = KustoClient(KCSB)

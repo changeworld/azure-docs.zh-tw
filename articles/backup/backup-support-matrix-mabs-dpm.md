@@ -3,12 +3,12 @@ title: MABS & System Center DPM 支援矩陣
 description: 本文摘要說明當您使用 Microsoft Azure 備份 Server （MABS）或 System Center DPM 來備份內部部署和 Azure VM 資源時的 Azure 備份支援。
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 211a7e39dc9cda9e4bd96e3a66924b2195524be7
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.openlocfilehash: 9441f7ce9069cd85475877f37abe669f3c4fd516
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77111458"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444021"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>使用 Microsoft Azure 備份 Server 或 System Center DPM 進行備份的支援矩陣
 
@@ -70,9 +70,9 @@ Azure 備份可以備份正在執行下列任何作業系統的 DPM/MABS 實例�
 
 **案例** | **DPM/MABS**
 --- | ---
-**Azure VM 上的 MABS** | Windows Server 2012 R2。<br/><br/> Windows 2016 Datacenter。<br/><br/> Windows 2019 Datacenter。<br/><br/> 我們建議您從 marketplace 開始使用映射。<br/><br/> 最低 A2 標準，具有兩個核心和 3.5 GB 的 RAM。
-**Azure VM 上的 DPM** | System Center 2012 R2 (含 Update 3 或更新版本)。<br/><br/> 符合 [System Center 需求](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server)的 Windows 作業系統。<br/><br/> 我們建議您從 marketplace 開始使用映射。<br/><br/> 最低 A2 標準，具有兩個核心和 3.5 GB 的 RAM。
-**內部部署 MABS** | 支援的 64 位元作業系統：<br/><br/> MABS v3 和更新版本： Windows Server 2019 （Standard、Datacenter、Essentials）。 <br/><br/> MABS v2 和更新版本： Windows Server 2016 （Standard、Datacenter、Essentials）。<br/><br/> 所有 MABS 版本： Windows Server 2012 R2。<br/><br/>所有 MABS 版本： Windows Storage Server 2012 R2。
+**Azure VM 上的 MABS** |  Windows 2016 Datacenter。<br/><br/> Windows 2019 Datacenter。<br/><br/> 我們建議您從 marketplace 開始使用映射。<br/><br/> 具有四個核心和 8 GB RAM 的最低 Standard_A4_v2。
+**Azure VM 上的 DPM** | System Center 2012 R2 (含 Update 3 或更新版本)。<br/><br/> 符合 [System Center 需求](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server)的 Windows 作業系統。<br/><br/> 我們建議您從 marketplace 開始使用映射。<br/><br/> 具有四個核心和 8 GB RAM 的最低 Standard_A4_v2。
+**內部部署 MABS** |  MABS v3 和更新版本： Windows Server 2016 或 Windows Server 2019
 **內部部署 DPM** | 實體伺服器/Hyper-v VM： System Center 2012 SP1 或更新版本。<br/><br/> VMware VM： System Center 2012 R2 （含 Update 5 或更新版本）。
 
 >[!NOTE]
@@ -116,7 +116,7 @@ DPM 伺服器/MABS 需要存取下列 URL：
 - http://www.msftncsi.com/ncsi.txt
 - *.Microsoft.com
 - *.WindowsAzure.com
-- \* microsoftonline.com
+- *.microsoftonline.com
 - *.windows.net
 
 ### <a name="dpmmabs-connectivity-to-azure-backup"></a>DPM/MABS 與 Azure 備份的連線

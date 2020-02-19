@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 01/13/2020
-ms.openlocfilehash: fd358801b5fe84aac754b5a975234688a707e544
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 6e5571604e6154408f2005ab4804b4270041e4cf
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169955"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444344"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>在 Azure 虛擬網路中保護 Azure ML 實驗和推斷作業
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -134,13 +134,14 @@ Azure Machine Learning 會使用與工作區相關聯的金鑰保存庫實例來
 > * 如果您要將多個計算實例或叢集放在一個虛擬網路中，您可能需要要求增加一或多個資源的配額。
 > * 如果工作區的 Azure 儲存體帳戶也在虛擬網路中受到保護，它們必須位於與 Azure Machine Learning 計算實例或叢集相同的虛擬網路中。 
 
-Machine Learning 計算實例或叢集會自動在包含虛擬網路的資源群組中配置額外的網路資源。 針對每個計算實例或叢集，服務會配置下列資源：
-
-* 一個網路安全性群組
-* 一個公用 IP 位址
-* 一個負載平衡器
-
-這些資源會被訂用帳戶的[資源配額](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)所限制。
+> [!TIP]
+> Machine Learning 計算實例或叢集會自動在包含虛擬網路的資源群組中配置額外的網路資源。 針對每個計算實例或叢集，服務會配置下列資源：
+> 
+> * 一個網路安全性群組
+> * 一個公用 IP 位址
+> * 一個負載平衡器
+> 
+> 這些資源會被訂用帳戶的[資源配額](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)所限制。
 
 
 ### <a id="mlcports"></a> 所需連接埠
@@ -500,6 +501,10 @@ az rest --method put --uri https://management.azure.com"/subscriptions/<subscrip
 新增規則時，請將__通訊協定__設定為 [任何]，並將埠設為 [`*`]。
 
 如需設定網路規則的詳細資訊，請參閱[部署和設定 Azure 防火牆](/azure/firewall/tutorial-firewall-deploy-portal#configure-a-network-rule)。
+
+## <a name="use-azure-container-registry"></a>使用 Azure Container Registry
+
+使用具有 Azure Machine Learning 的虛擬網路時，__請勿__將工作區的 Azure Container Registry 放在虛擬網路中。 不支援這樣的設定。
 
 ## <a name="next-steps"></a>後續步驟
 

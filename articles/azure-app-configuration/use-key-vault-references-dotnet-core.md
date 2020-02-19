@@ -125,7 +125,7 @@ ms.locfileid: "77116612"
 
 1. 新增環境變數，以儲存 *clientId*、*clientSecret* 和 *tenantId* 的值。
 
-    #### <a name="windows-command-prompttabcmd"></a>[Windows 命令提示字元](#tab/cmd)
+    #### <a name="windows-command-prompt"></a>[Windows 命令提示字元](#tab/cmd)
 
     ```cmd
     setx AZURE_CLIENT_ID <clientId-of-your-service-principal>
@@ -133,7 +133,7 @@ ms.locfileid: "77116612"
     setx AZURE_TENANT_ID <tenantId-of-your-service-principal>
     ```
 
-    #### <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    #### <a name="powershell"></a>[PowerShell](#tab/powershell)
 
     ```PowerShell
     $Env:AZURE_CLIENT_ID = <clientId-of-your-service-principal>
@@ -141,7 +141,7 @@ ms.locfileid: "77116612"
     $Env:AZURE_TENANT_ID = <tenantId-of-your-service-principal>
     ```
 
-    #### <a name="bashtabbash"></a>[Bash](#tab/bash)
+    #### <a name="bash"></a>[Bash](#tab/bash)
 
     ```bash
     export AZURE_CLIENT_ID = <clientId-of-your-service-principal>
@@ -174,7 +174,7 @@ ms.locfileid: "77116612"
 
 1. 藉由呼叫 `config.AddAzureAppConfiguration` 方法將 `CreateWebHostBuilder` 方法更新為使用應用程式設定。 包含 `ConfigureKeyVault` 選項，並將正確的認證傳遞給您的 Key Vault。
 
-    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
+    #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -195,7 +195,7 @@ ms.locfileid: "77116612"
             .UseStartup<Startup>();
     ```
 
-    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3.x](#tab/core3x)
+    #### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
 
     ```csharp
         public static IHostBuilder CreateHostBuilder(string[] args) =>

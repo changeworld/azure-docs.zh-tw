@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 02/14/2020
 ms.author: mlearned
-ms.openlocfilehash: 20cef402a81ef348d4492daf05e6b16a8d9f709f
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: e77710fe446810ec566ebc7088d802f0721806d2
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77365170"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443919"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service （AKS）中建立及管理叢集的多個節點集區
 
@@ -483,7 +483,7 @@ az aks nodepool add \
 > [!NOTE]
 > 使用[az aks nodepool update][az-aks-nodepool-update]命令以及在叢集建立期間，您也可以使用 `--tags` 參數。 在叢集建立期間，`--tags` 參數會將標籤套用至使用叢集建立的初始節點集區。 所有標記名稱都必須遵守[使用標記來組織您的 Azure 資源][tag-limitation]的限制。 以 `--tags` 參數更新節點集區會更新任何現有的標記值，並附加任何新的標記。 例如，如果您的節點集區具有*部門 = it*並*costcenter = 9999*的標籤，且您已使用*team = dev*和*costcenter = 111*來更新標記，則 nodepool 會有*部門 = it*、 *costcenter = 111*和*team = dev* for tags。
 
-下列來自[az aks nodepool list][az-aks-nodepool-list]命令的範例輸出顯示*taggednodepool*正在*建立*具有指定*標記*的節點：
+下列來自[az aks nodepool list][az-aks-nodepool-list]命令的範例輸出顯示*tagnodepool*正在*建立*具有指定*標記*的節點：
 
 ```console
 $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster

@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 8d43965e87ab57d9f0c79c6661a761b06ccb7073
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 50e050a05fd364a4b1f880e3501b04274ffd360c
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76902112"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444225"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>使用 Python 建立 Azure 資料總管叢集與資料庫
 
@@ -24,11 +24,15 @@ ms.locfileid: "76902112"
 > * [Python](create-cluster-database-python.md)
 > * [ARM 範本](create-cluster-database-resource-manager.md)
 
-Azure Data Explorer 是快速、完全受控的資料分析服務，可即時分析來自應用程式、網站、IoT 裝置等的大量資料流。 若要使用 Azure 資料總管，請先建立叢集，然後在該叢集中建立一或多個資料庫。 然後將資料內嵌 (載入) 至資料庫，讓您可以對資料執行查詢。 在本文中，您會使用 Python 建立叢集和資料庫。
+在本文中，您會使用 Python 建立 Azure 資料總管叢集和資料庫。 Azure 資料總管是快速、完全受控的資料分析服務，可即時分析來自應用程式、網站、IoT 裝置等的大量資料流。 若要使用 Azure 資料總管，請先建立叢集，然後在該叢集中建立一或多個資料庫。 然後將資料內嵌或載入至資料庫，讓您可以對其執行查詢。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/)。
+* 具有有效訂用帳戶的 Azure 帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+
+* [Python 3.4+](https://www.python.org/downloads/)。
+
+* [可以存取資源的 Azure AD 應用程式和服務主體](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。 取得 `Directory (tenant) ID`、`Application ID`和 `Client Secret`的值。
 
 ## <a name="install-python-package"></a>安裝 Python 套件
 
@@ -83,7 +87,7 @@ pip install azure-mgmt-kusto
    | cluster_name | *mykustocluster* | 所需的叢集名稱。|
    | sku_name | *Standard_D13_v2* | 將用於叢集的 SKU。 |
    | tier | *Standard* | SKU 層。 |
-   | 存儲 | *number* | 叢集的實例數目。 |
+   | capacity | *number* | 叢集的實例數目。 |
    | resource_group_name | *testrg* | 將在其中建立叢集的資源群組名稱。 |
 
     > [!NOTE]
@@ -95,7 +99,7 @@ pip install azure-mgmt-kusto
     cluster_operations.get(resource_group_name = resource_group_name, cluster_name= clusterName, custom_headers=None, raw=False)
     ```
 
-如果結果中包含有 `Succeeded` 值的 `provisioningState`，表示已成功建立叢集。
+如果結果中包含有 `provisioningState` 值的 `Succeeded`，表示已成功建立叢集。
 
 ## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>在 Azure 資料總管叢集中建立資料庫
 

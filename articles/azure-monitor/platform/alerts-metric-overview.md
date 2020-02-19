@@ -7,12 +7,12 @@ ms.date: 12/5/2019
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: 8f84b5641b79514ffed493302f246ecc51a20a87
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: abcf7d100a1c195d4a49c3061bf22710285c2a9f
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850052"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444157"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>了解計量警示在 Azure 監視器中的運作方式
 
@@ -125,15 +125,15 @@ Azure 監視器中的計量警示也支援以一個規則監視多個維度值�
 
 ## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>在 Azure 監視器中使用計量警示大規模進行監視
 
-到目前為止，您已經了解如何使用單一計量警示來監視與單一 Azure 資源相關的一或多個計量時間序列。 很多時候，您可能想將相同的警示規則套用至許多資源。 Azure 監視器也支援以單一計量警示規則監視多個資源。 這項功能目前僅在虛擬機器、SQL server 資料庫、SQL server 彈性集區和 data box edge 裝置上受到支援。 此外，單一計量警示也可以監視一個 Azure 區域中的資源。
+到目前為止，您已經了解如何使用單一計量警示來監視與單一 Azure 資源相關的一或多個計量時間序列。 很多時候，您可能想將相同的警示規則套用至許多資源。 Azure 監視器也支援針對存在於相同 Azure 區域中的資源，使用一個計量警示規則監視多個資源（屬於相同類型）。 這項功能目前僅在 Azure 公用雲端中受到支援，而且僅適用于虛擬機器、SQL server 資料庫、SQL server 彈性集區和 Data box edge 裝置。 此外，這項功能僅適用于平臺計量，且不支援自訂計量。
 
-您可以透過下列三種方式之一，指定單一計量警示所監視的範圍：
+您可以透過下列三種方式的其中一種，以單一計量警示規則來指定監視範圍：
 
 - 作為訂用帳戶中的一系列虛擬機器 (位於一個 Azure 區域)
 - 作為訂用帳戶中一或多個資源群組的所有虛擬機器 (位於一個 Azure 區域)
 - 作為訂用帳戶中的所有虛擬機器 (位於一個 Azure 區域)
 
-建立監視多個資源的計量警示規則，類似於[建立監視單一資源的任何其他計量警示](alerts-metric.md)。 唯一的區別是您會選取要監視的所有資源。 您也可以透過 [Azure Resource Manager 範本](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources)建立這些規則。 您會收到每個虛擬機器的個別通知。
+建立監視多個資源的計量警示規則，類似於[建立監視單一資源的任何其他計量警示](alerts-metric.md)。 唯一的區別是您會選取要監視的所有資源。 您也可以透過 [Azure Resource Manager 範本](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources)建立這些規則。 您會收到每個受監視資源的個別通知。
 
 ## <a name="typical-latency"></a>一般延遲
 

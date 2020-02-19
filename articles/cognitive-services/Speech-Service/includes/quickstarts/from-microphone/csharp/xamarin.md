@@ -54,7 +54,7 @@ ms.locfileid: "77156708"
 
    [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld/Services/IMicrophoneService.cs)]
 
-#### <a name="androidtabx-android"></a>[Android](#tab/x-android)
+#### <a name="android"></a>[Android](#tab/x-android)
 ## <a name="add-sample-code-for-the-helloworldandroid-project"></a>新增 `helloworld.Android` 專案的範例程式碼
 
 現在，新增 C# 程式碼以定義應用程式的 Android 特定部分。
@@ -75,7 +75,7 @@ ms.locfileid: "77156708"
    <uses-permission android:name="android.permission.RECORD_AUDIO" />
    ```
    
-#### <a name="iostabios"></a>[iOS](#tab/ios)
+#### <a name="ios"></a>[iOS](#tab/ios)
 ## <a name="add-sample-code-for-the-helloworldios-project"></a>新增 `helloworld.iOS` 專案的範例程式碼
 
 現在，新增 C# 程式碼以定義應用程式的 iOS 特定部分。 另請建立 helloworld.iOS 專案的 Apple 裝置特定設定。
@@ -100,7 +100,7 @@ ms.locfileid: "77156708"
 
 1. 如果您是在 Windows 電腦上建置，則必須與 Mac 裝置建立連線，以透過 [工具]   > [iOS]   > [與 Mac 配對]  進行建置。 請依照 Visual Studio 提供的指示精靈操作，以啟用 Mac 裝置的連線。
 
-#### <a name="uwptabhelloworlduwp"></a>[UWP](#tab/helloworlduwp)
+#### <a name="uwp"></a>[UWP](#tab/helloworlduwp)
 ## <a name="add-sample-code-for-the-helloworlduwp-project"></a>新增 `helloworld.UWP` 專案的範例程式碼
 
 ## <a name="add-sample-code-for-the-helloworlduwp-project"></a>新增 helloworld.UWP 專案的範例程式碼

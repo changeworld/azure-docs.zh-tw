@@ -1,20 +1,20 @@
 ---
-title: 如何將 Azure 防火牆設定遷移至 Azure 防火牆原則（預覽）
+title: 使用 PowerShell 將 Azure 防火牆設定遷移至 Azure 防火牆原則（預覽）
 description: 瞭解如何將 Azure 防火牆設定遷移至 Azure 防火牆原則（預覽）
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 02/18/2020
 ms.author: victorh
-ms.openlocfilehash: f23c9c030b94fe6f563b4e850a78d2d11db7ec25
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 498863c98f308a9fd9b47f80328d572187475901
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516327"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443103"
 ---
-# <a name="how-to-migrate-azure-firewall-configurations-to-azure-firewall-policy-preview"></a>如何將 Azure 防火牆設定遷移至 Azure 防火牆原則（預覽）
+# <a name="migrate-azure-firewall-configurations-to-azure-firewall-policy-preview-using-powershell"></a>使用 Powershell 將 Azure 防火牆設定遷移至 Azure 防火牆原則（預覽）
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 

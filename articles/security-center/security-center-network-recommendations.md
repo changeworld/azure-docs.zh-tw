@@ -1,5 +1,5 @@
 ---
-title: 保護 Azure 資訊安全中心內的網路資源 | Microsoft Docs
+title: 保護 Azure 資訊安全中心中的網路資源
 description: 此文件說明可協助您保護 Azure 網路資源及遵守安全性原則的 Azure 資訊安全中心建議。
 services: security-center
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
-ms.openlocfilehash: 98001ba01c5dd29375a9af3af43a06f760e4f55f
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 792b95b120f67afcd360730acbd783a3071388b2
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552911"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77431480"
 ---
 # <a name="protect-your-network-resources"></a>保護您的網路資源
 Azure 資訊安全中心會持續分析 Azure 資源的安全性狀態，以獲得網路安全性最佳做法。 當資訊安全中心發現潛在的安全性弱點時，它會建立可引導您完成所需控制之設定程序的建議，以加強並保護您的資源。

@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/15/2020
-ms.openlocfilehash: c4a787362089dabf9c4eda9681358e7a70d8e78a
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 5846e9516548032595c1ce072d1dae8dcce9d39e
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210531"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443596"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>監視 Azure 認知搜尋的作業和活動
 
 本文會在工作負載層級（查詢和索引編制）介紹服務（資源）層級的監視，並建議用來監視使用者存取的架構。
 
-在整個頻譜中，您將使用內建基礎結構和基本服務（如 Azure 監視器）的組合，以及傳回統計資料、計數和狀態的服務 Api。 瞭解功能的範圍可協助您設定或建立有效的通訊系統，以便在發生問題時主動做出回應。
+在整個頻譜中，您將使用內建基礎結構和基本服務（如 Azure 監視器）的組合，以及傳回統計資料、計數和狀態的服務 Api。 瞭解功能的範圍可以協助您建立意見反應迴圈，以便在發生問題時加以解決。
 
 ## <a name="use-azure-monitor"></a>使用 Azure 監視器
 
@@ -52,9 +52,9 @@ ms.locfileid: "77210531"
 
 如果您要完成有關[要針對生產環境工作負載使用哪個定價層](search-sku-tier.md)或是否要[調整作用中複本和分割區的數量](search-capacity-planning.md)的決策，這些計量可透過顯示資源消耗速度及目前設定處理現有負載的情況，協助您進行這些決策。
 
-與存放裝置相關的警示目前無法使用;儲存體耗用量不會匯總或登入**AzureMetrics**。 您需要建立自訂解決方案，以取得與資源相關的通知。
+與存放裝置相關的警示目前無法使用;儲存體耗用量不會匯總或登入 Azure 監視器中的**AzureMetrics**資料表。 您需要建立自訂解決方案來發出資源相關通知，您的程式碼會在其中檢查儲存體大小並處理回應。 如需儲存體計量的詳細資訊，請參閱[取得服務統計資料](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics#response)。
 
-在入口網站中，[**使用量**] 索引標籤會顯示相對於服務層級所強加之目前[限制](search-limits-quotas-capacity.md)的資源可用性。 
+若要在入口網站中進行視覺化監視，[**使用量**] 索引標籤會顯示相對於服務層級所設定之目前[限制](search-limits-quotas-capacity.md)的資源可用性。 
 
 以下是一個免費服務的圖例，其上限為每個類型 3 個物件且儲存體為 50 MB。 「基本」或「標準」服務的上限較高，且如果您增加分割區計數，儲存體上限也會按比例增加。
 
@@ -63,7 +63,7 @@ ms.locfileid: "77210531"
 
 ## <a name="monitor-workloads"></a>監視工作負載
 
-記錄的事件包括與索引編制和查詢相關的事件。 Log Analytics 中的**Azure 診斷**資料表會收集與查詢和索引相關的運算元據。
+記錄的事件包括與索引編制和查詢相關的事件。 Log Analytics 中的**AzureDiagnostics**資料表會收集與查詢和索引相關的運算元據。
 
 大部分記錄的資料都是用於唯讀作業。 針對未在記錄檔中捕捉的其他建立-更新-刪除作業，您可以查詢搜尋服務中的系統資訊。
 
@@ -115,9 +115,9 @@ Azure 認知搜尋 REST API 和 .NET SDK 都可讓您以程式設計方式存取
 
 ## <a name="monitor-user-access"></a>監視使用者存取
 
-因為搜尋索引是較大用戶端應用程式的元件，所以沒有內建的每一使用者方法可控制索引的存取。 假設要求是來自用戶端應用程式，就是系統管理員或查詢要求。 管理員讀寫作業包括建立、更新、刪除整個服務中的物件。 唯讀作業是針對檔集合的查詢，範圍限定為單一索引。 
+因為搜尋索引是較大用戶端應用程式的元件，所以沒有任何內建的方法可以控制或監視索引的每個使用者存取。 假設要求是來自用戶端應用程式，就是系統管理員或查詢要求。 管理員讀寫作業包括建立、更新、刪除整個服務中的物件。 唯讀作業是針對檔集合的查詢，範圍限定為單一索引。 
 
-因此，您在記錄中看到的內容是使用系統管理金鑰或查詢金鑰的呼叫參考。 適當的金鑰會包含在來自用戶端程式代碼的要求中。 服務未配備處理身分識別權杖或模擬。
+因此，您會在活動記錄中看到的內容是使用系統管理金鑰或查詢金鑰的呼叫參考。 適當的金鑰會包含在來自用戶端程式代碼的要求中。 服務未配備處理身分識別權杖或模擬。
 
 當每個使用者授權的商務需求都存在時，建議與 Azure Active Directory 整合。 您可以使用 $filter 和使用者身分識別，來修剪使用者不應該看到的檔[搜尋結果](search-security-trimming-for-azure-search-with-aad.md)。 
 

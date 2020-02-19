@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
-ms.openlocfilehash: 695b87540178fb5c1012a095c2a86937a189ef24
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: dfb133f9aa3dd9b76f8b4ea4c6188cfaf9a67b75
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133756"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444106"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>設定實驗室以使用 Python 和 Jupyter 筆記本來教授資料科學
 
@@ -30,7 +30,7 @@ ms.locfileid: "77133756"
 
 ### <a name="lab-account-settings"></a>實驗室帳戶設定
 
-針對實驗室帳戶啟用下表所述的設定。 如需如何啟用 marketplace 映射的詳細資訊，請參閱[指定可供實驗室建立者使用的 marketplace 映射](how-to-configure-lab-accounts.md#specify-marketplace-images-available-to-lab-creators)。
+針對實驗室帳戶啟用下表所述的設定。 如需如何啟用 marketplace 映射的詳細資訊，請參閱[指定可供實驗室建立者使用的 marketplace 映射](specify-marketplace-images.md)。
 
 | 實驗室帳戶設定 | Instructions |
 | ------------------- | ------------ |
@@ -56,7 +56,7 @@ ms.locfileid: "77133756"
 
 ## <a name="cost-estimate"></a>成本預估
 
-讓我們來討論這個類別的可能成本預估。  我們將使用25名學生的課程。  已排程的類別時間有20小時。  此外，每個學生在排程的類別時間以外，會取得家庭或指派10小時的配額。  我們選擇的虛擬機器大小為小型 gpu （計算），也就是139實驗室單位。
+讓我們來討論這個類別的可能成本預估。  我們將使用25名學生的課程。  已排程的類別時間有20小時。  此外，每個學生在排程的類別時間以外，會取得家庭或指派10小時的配額。  我們選擇的虛擬機器大小為小型 GPU （計算），也就是139實驗室單位。
 
 以下是此類別的可能成本預估範例：
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: reference
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: dd9ac9654f916653af974e816485630423466ae5
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: fcc43caf895dadfaf832a47c3254f9b828bcb71a
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815434"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430800"
 ---
 # <a name="swagger-documentation"></a>Swagger 文件
 
@@ -28,9 +28,9 @@ ms.locfileid: "74815434"
 
 [Swagger 規格](https://cris.ai/swagger/ui/index)具有可讓您快速測試各種路徑的選項。 但是，有時需要為所有路徑產生程式碼，建立一個未來解決方案可以作為基礎的單一呼叫程式庫。 讓我們看看產生 Python 程式庫的流程。
 
-您必須將 Swagger 設定為與語音服務訂用帳戶相同的區域。 您可以在語音服務資源下的 Azure 入口網站中確認您的區域。 如需支援的區域的完整清單，請參閱[區域](regions.md)。
+您必須將 Swagger 設定為與語音服務訂用帳戶相同的區域。 您可以在語音服務資源下的 Azure 入口網站中確認您的區域。 如需支援區域的完整清單，請參閱[區域](regions.md)。
 
-1. 前往 https://editor.swagger.io
+1. 移至 https://editor.swagger.io。
 2. 按一下 [檔案]，然後按一下 [匯入]
 3. 輸入 swagger URL，包括語音服務訂用帳戶的區域 `https://<your-region>.cris.ai/docs/v2.0/swagger`
 4. 按一下 [產生用戶端]，然後選取 [Python]

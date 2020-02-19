@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: 5d2ee6c530e2154373508be00edcf1bcdbb59861
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 8dbb4ff0c9f8df6609d8447e84dcfe878a954fff
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210888"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443953"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions HTTP 觸發程式
 
@@ -29,7 +29,7 @@ HTTP 觸發函式的預設傳回值為：
 
 ## <a name="example"></a>範例
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 下列範例會顯示在查詢字串或 HTTP 要求主體中尋找 [ 參數的 ](functions-dotnet-class-library.md)C# 函式`name`。 請注意，傳回值用於輸出繫結，但傳回值屬性並非必要。
 
@@ -53,7 +53,7 @@ public static async Task<IActionResult> Run(
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C#文字](#tab/csharp-script)
+# <a name="c-script"></a>[C#文字](#tab/csharp-script)
 
 下列範例示範 function.json 檔案中的觸發程序繫結，以及使用此繫結的 [C# 指令碼函式](functions-reference-csharp.md)。 函式會尋找 `name` 參數，其位於查詢字串或 HTTP 要求的主體。
 
@@ -129,7 +129,7 @@ public class Person {
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 下列範例示範的是使用繫結之 function.json 檔案，以及 [JavaScript 函式](functions-reference-node.md)中的觸發程序繫結。 函式會尋找 `name` 參數，其位於查詢字串或 HTTP 要求的主體。
 
@@ -178,7 +178,7 @@ module.exports = function(context, req) {
 };
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 下列範例示範 *function.json* 檔案中的觸發程序繫結，以及使用此繫結的 [Python 函式](functions-reference-python.md)。 函式會尋找 `name` 參數，其位於查詢字串或 HTTP 要求的主體。
 
@@ -234,7 +234,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         )
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 * [讀取查詢字串的參數](#read-parameter-from-the-query-string)
 * [從 POST 要求讀取主體](#read-body-from-a-post-request)
@@ -428,7 +428,7 @@ public HttpResponseMessage run(
 
 您可以在屬性函式參數、webhook 類型和路由範本中，設定授權層級和允許的 HTTP 方法。 如需這些設定的詳細資訊，請參閱[configuration](#configuration)。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 這個範例示範如何使用[HttpTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions.Http/HttpTriggerAttribute.cs)屬性。
 
@@ -443,19 +443,19 @@ public static Task<IActionResult> Run(
 
 如需完整範例，請參閱[觸發程式範例](#example)。
 
-# <a name="c-scripttabcsharp-script"></a>[C#文字](#tab/csharp-script)
+# <a name="c-script"></a>[C#文字](#tab/csharp-script)
 
 C#腳本不支援屬性。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 JavaScript 不支援屬性。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Python 不支援屬性。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 這個範例示範如何使用[HttpTrigger](https://github.com/Azure/azure-functions-java-library/blob/dev/src/main/java/com/microsoft/azure/functions/annotation/HttpTrigger.java)屬性。
 
@@ -489,11 +489,11 @@ public HttpResponseMessage<String> HttpTrigger(
 | **route** | **路由** | 會定義路由範本，從而控制函式所要回應的要求 URL。 如果沒有提供任何值，預設值為 `<functionname>`。 如需詳細資訊，請參閱[自訂 HTTP 端點](#customize-the-http-endpoint)。 |
 | **webHookType** | **WebHookType** | _只有針對 1.x 版執行階段才有支援。_<br/><br/>會設定 HTTP 觸發程序作為指定提供者的 [webhook](https://en.wikipedia.org/wiki/Webhook) 接收器。 如果設定這個屬性，請勿設定 `methods` 屬性。 Webhook 類型可以是下列值其中之一：<ul><li><code>genericJson</code>&mdash;一般用途的 Webhook 端點，不需要特定提供者的邏輯。 此設定會將要求限制為只有那些使用 HTTP POST 和包含 `application/json` 內容類型的要求。</li><li><code>github</code>&mdash;函式會回應 [GitHub Webhook](https://developer.github.com/webhooks/)。 請勿使用 _authLevel_ 屬性搭配 GitHub Webhook。 如需詳細資訊，請參閱本文稍後的 GitHub Webhook 一節。</li><li><code>slack</code>&mdash;函式會回應 [Slack Webhook](https://api.slack.com/outgoing-webhooks)。 請勿使用 _authLevel_ 屬性搭配 Slack Webhook。 如需詳細資訊，請參閱本文稍後的 Slack Webhook 一節。</li></ul>|
 
-## <a name="usage"></a>使用量
+## <a name="payload"></a>Payload
 
 觸發程式輸入類型會宣告為 `HttpRequest` 或自訂類型。 如果您選擇 `HttpRequest`，就會取得要求物件的完整存取權。 針對自訂的類型，執行階段會嘗試剖析 JSON 要求本文來設定物件屬性。
 
-### <a name="customize-the-http-endpoint"></a>自訂 HTTP 端點
+## <a name="customize-the-http-endpoint"></a>自訂 HTTP 端點
 
 根據預設，當您為 HTTP 觸發程序建立函式時，將可透過下列形式的路由來定址該函式：
 
@@ -528,7 +528,7 @@ http://<APP_NAME>.azurewebsites.net/api/products/electronics/357
 
 此設定可讓函式程式碼支援位址、_類別_和_識別碼_中的兩個參數。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 您可以將任何 [Web API 路由條件約束](https://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#constraints)與您的參數搭配使用。 下列 C# 函式程式碼會同時利用這兩個參數。
 
@@ -544,7 +544,7 @@ public static IActionResult Run(HttpRequest req, string category, int? id, ILogg
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C#文字](#tab/csharp-script)
+# <a name="c-script"></a>[C#文字](#tab/csharp-script)
 
 您可以將任何 [Web API 路由條件約束](https://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#constraints)與您的參數搭配使用。 下列 C# 函式程式碼會同時利用這兩個參數。
 
@@ -562,7 +562,7 @@ public static IActionResult Run(HttpRequest req, string category, int? id, ILogg
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 在 Node 中，函式執行時間會提供來自 `context` 物件的要求主體。 如需詳細資訊，請參閱 [JavaScript 觸發程序範例](#example)。
 
@@ -583,7 +583,7 @@ module.exports = function (context, req) {
 }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 函數執行內容是透過宣告為 `func.HttpRequest`的參數公開。 這個實例可讓函數存取資料路由參數、查詢字串值和方法，讓您能夠傳回 HTTP 回應。
 
@@ -603,7 +603,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     return func.HttpResponse(message)
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 函數執行內容是 `HttpTrigger` 屬性中所宣告的屬性。 屬性可讓您定義路由參數、授權層級、HTTP 指令動詞和連入要求實例。
 
@@ -644,7 +644,7 @@ public class HttpTriggerJava {
 }
 ```
 
-### <a name="using-route-parameters"></a>使用路由參數
+## <a name="using-route-parameters"></a>使用路由參數
 
 定義函式 `route` 模式的路由參數可用於每個系結。 例如，如果您有定義為 `"route": "products/{id}"` 的路由，則資料表儲存體系結可以使用系結設定中 `{id}` 參數的值。
 
@@ -661,13 +661,13 @@ public class HttpTriggerJava {
 }
 ```
 
-### <a name="working-with-client-identities"></a>使用用戶端身分識別
+## <a name="working-with-client-identities"></a>使用用戶端身分識別
 
 如果您的函式應用程式使用 [App Service 驗證/授權](../app-service/overview-authentication-authorization.md)，您可以透過程式碼來檢視已驗證的用戶端相關資訊。 這項資訊是以[由平台插入的要求標頭](../app-service/app-service-authentication-how-to.md#access-user-claims)形式提供。 
 
 您也可以從繫結資料來讀取這項資訊。 這項功能僅適用于2.x 和更新版本中的函式執行時間。 它目前也僅適用於 .NET 語言。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 已驗證用戶端的相關資訊可在[ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal)中取得。 ClaimsPrincipal 可作為要求內容的一部分提供，如下列範例所示：
 
@@ -699,7 +699,7 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C#文字](#tab/csharp-script)
+# <a name="c-script"></a>[C#文字](#tab/csharp-script)
 
 已驗證用戶端的相關資訊可在[ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal)中取得。 ClaimsPrincipal 可作為要求內容的一部分提供，如下列範例所示：
 
@@ -733,21 +733,21 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 已驗證的使用者可透過[HTTP 標頭](../app-service/app-service-authentication-how-to.md#access-user-claims)取得。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 已驗證的使用者可透過[HTTP 標頭](../app-service/app-service-authentication-how-to.md#access-user-claims)取得。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 已驗證的使用者可透過[HTTP 標頭](../app-service/app-service-authentication-how-to.md#access-user-claims)取得。
 
 ---
 
-### <a name="authorization-keys"></a>授權金鑰
+## <a name="authorization-keys"></a>授權金鑰
 
 Functions 可讓您使用金鑰來提高開發期間存取 HTTP 函式端點的困難度。  標準 HTTP 觸發程序可要求在要求中有這樣的 API 金鑰存在。 
 
@@ -769,7 +769,7 @@ Functions 可讓您使用金鑰來提高開發期間存取 HTTP 函式端點的�
 > [!CAUTION]  
 > 由於主要金鑰會在您的函數應用程式中授與提高的權限，因此您不應該與第三方共用此金鑰，或是在原生用戶端應用程式中散發它。 當您選擇管理授權層級時，請務必謹慎。
 
-### <a name="obtaining-keys"></a>取得金鑰
+## <a name="obtaining-keys"></a>取得金鑰
 
 金鑰會當作您函數應用程式的一部分儲存於 Azure 中，並在加密後靜置。 若要檢視您的金鑰，請建立新的金鑰或將金鑰輪替為新的值，瀏覽至您在 [Azure 入口網站](https://portal.azure.com)中的其中一個 HTTP 觸發函式，然後選取 [管理]。
 
@@ -777,7 +777,7 @@ Functions 可讓您使用金鑰來提高開發期間存取 HTTP 函式端點的�
 
 您可以使用[金鑰管理 api](https://github.com/Azure/azure-functions-host/wiki/Key-management-API)以程式設計方式取得功能鍵。
 
-### <a name="api-key-authorization"></a>API 金鑰授權
+## <a name="api-key-authorization"></a>API 金鑰授權
 
 大多數 HTTP 觸發程序範本都會要求在要求中有 API 金鑰。 因此，您的 HTTP 要求通常看起來會像以下 URL：
 
@@ -791,7 +791,7 @@ Functions 可讓您使用金鑰來提高開發期間存取 HTTP 函式端點的�
 > 在本機執行函式時，不論指定的授權層級設定為何，都會停用授權。 發佈至 Azure 之後，就會強制執行您觸發程序中的 `authLevel` 設定。 [在容器中的本機執行](functions-create-function-linux-custom-image.md#build-the-container-image-and-test-locally)時，仍然需要金鑰。
 
 
-### <a name="secure-an-http-endpoint-in-production"></a>在生產環境中保護 HTTP 端點
+## <a name="secure-an-http-endpoint-in-production"></a>在生產環境中保護 HTTP 端點
 
 若要在生產環境中完全保護您的函式端點，您應該考慮實作下列其中一個函數應用程式等級安全性選項：
 
@@ -803,24 +803,24 @@ Functions 可讓您使用金鑰來提高開發期間存取 HTTP 函式端點的�
 
 使用其中一個函數應用層級的安全性方法時，您應該將 HTTP 觸發的函式授權層級設定為 `anonymous`。
 
-### <a name="webhooks"></a>Webhook
+## <a name="webhooks"></a>Webhook
 
 > [!NOTE]
 > Webhook 模式僅適用於 1.x 版 Functions 執行階段。 已進行這項變更，以改善2.x 版和更高版本中的 HTTP 觸發程式效能。
 
 在版本 1.x 中，Webhook 範本會提供 Webhook 承載的額外驗證。 在2.x 版和更新版本中，基底 HTTP 觸發程式仍然有效，而且是建議的 webhook 方法。 
 
-#### <a name="github-webhooks"></a>GitHub Webhook
+### <a name="github-webhooks"></a>GitHub Webhook
 
 若要回應 GitHub Webhook，請先建立含有 HTTP 觸發程序的函式，然後將 **webHookType** 屬性設定為 `github`。 接著將其 URL 和 API 金鑰複製到您 GitHub 存放庫的 [新增 Webhook] 頁面。 
 
 ![](./media/functions-bindings-http-webhook/github-add-webhook.png)
 
-#### <a name="slack-webhooks"></a>Slack Webhook
+### <a name="slack-webhooks"></a>Slack Webhook
 
 Slack webhook 會為您產生權杖，而不是由您指定，因此您必須使用 Slack 的權杖來設定函式專屬的金鑰。 請參閱[授權金鑰](#authorization-keys)。
 
-### <a name="webhooks-and-keys"></a>Webhook 和金鑰
+## <a name="webhooks-and-keys"></a>Webhook 和金鑰
 
 Webhook 授權是由 Webhook 接收器元件 (HTTP 觸發程序的一部分) 處理，處理機制則會以 Webhook 類型作為基礎而有所不同。 每個機制都依賴金鑰。 根據預設，將會使用名稱為 "default" 的函式金鑰。 如需使用不同的金鑰，請設定 Webhook 提供者以下列其中一種方式將金鑰名稱隨著要求一起傳送：
 

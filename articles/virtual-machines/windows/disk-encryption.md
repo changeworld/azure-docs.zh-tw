@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 73a505ce68ed046eba011d3b36991616f441506e
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: bc15ee42fd7ef8e41b332104b28af808c336789f
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77206291"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430403"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure 受控磁片的伺服器端加密
 
@@ -58,7 +58,7 @@ Azure 受控磁片預設會在將資料保存到雲端時，自動將您的資�
 
 目前僅支援下欄區域：
 
-- 可在美國東部、美國西部2和美國中南部區域正式提供。
+- 以「美國東部」、「美國西部2」、「美國中南部」、英國南部區域的 GA 供應專案形式提供。
 - 可在美國中西部、美國東部2、加拿大中部和北歐地區提供公開預覽。
 
 ### <a name="restrictions"></a>限制

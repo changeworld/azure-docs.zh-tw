@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: f1f425a6e3c66a72c7632cfea16d78ea6cc0d319
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 560575ca7f51218e472abecb4319f4a3db69b1ff
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201147"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77431157"
 ---
 # <a name="speech-service-supported-regions"></a>語音服務支援的區域
 
@@ -44,13 +44,13 @@ ms.locfileid: "77201147"
 
 透過語音 SDK 進行**意圖辨識**的可用區域如下所示：
 
-| 全球區域 | 區域           | 語音 SDK 參數 |
+| 全球區域 | 區域           | 區域識別碼 |
 | ------------- | ---------------- | -------------------- |
 | Asia          | 東亞        | `eastasia`           |
 | Asia          | 東南亞   | `southeastasia`      |
-| 澳洲     | 澳大利亞東部   | `australiaeast`      |
-| 歐洲        | 歐洲北部     | `northeurope`        |
-| 歐洲        | 歐洲西部      | `westeurope`         |
+| 澳大利亞     | 澳大利亞東部   | `australiaeast`      |
+| 歐洲        | 北歐     | `northeurope`        |
+| 歐洲        | 西歐      | `westeurope`         |
 | 北美洲 | 美國東部          | `eastus`             |
 | 北美洲 | 美國東部 2        | `eastus2`            |
 | 北美洲 | 美國中南部 | `southcentralus`     |
@@ -65,14 +65,14 @@ ms.locfileid: "77201147"
 
 [語音 SDK](speech-sdk.md)支援下欄區域中的**語音助理**功能：
 
-| 區域         | 語音 SDK 參數 |
+| 區域         | 區域識別碼 |
 | -------------- | -------------------- |
 | 美國西部        | `westus`             |
 | 美國西部 2      | `westus2`            |
 | 美國東部        | `eastus`             |
 | 美國東部 2      | `eastus2`            |
-| 歐洲西部    | `westeurope`         |
-| 歐洲北部   | `northeurope`        |
+| 西歐    | `westeurope`         |
+| 北歐   | `northeurope`        |
 | 東南亞 | `southeastasia`      |
 
 ## <a name="rest-apis"></a>REST API

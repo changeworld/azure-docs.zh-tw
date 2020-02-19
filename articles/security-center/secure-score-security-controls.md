@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/04/2019
 ms.author: memildin
-ms.openlocfilehash: 0287a8011eb10120e273fb063c98ccd3c1a85782
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 0096bccf76e81f2bca1a449cea2474cb5266fabc
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278014"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443579"
 ---
 # <a name="the-enhanced-secure-score-preview"></a>增強的安全分數（預覽） 
 
@@ -101,7 +101,7 @@ Azure 資訊安全中心有兩個主要目標：協助您瞭解目前的安全�
 |**加密傳輸中的資料**|4|-API 應用程式應該只能透過 HTTPS 存取<br>-函數應用程式只能透過 HTTPS 存取<br>-只應啟用 Redis 快取的安全連線<br>-應啟用儲存體帳戶的安全傳輸<br>-Web 應用程式應該只能透過 HTTPS 存取|
 |**管理存取權和許可權**|4|-應為您的訂用帳戶指定最多3位擁有者<br>-應從您的訂用帳戶移除已淘汰的帳戶（預覽）<br>-應從您的訂用帳戶移除具有擁有者許可權的已淘汰帳戶（預覽）<br>-應從您的訂用帳戶中移除具有擁有者許可權的外部帳戶（預覽）<br>-應從您的訂用帳戶移除具有讀取權限的外部帳戶<br>-應從您的訂用帳戶中移除具有寫入權限的外部帳戶（預覽）<br>-應將一個以上的擁有者指派給您的訂用帳戶<br>-以角色為基礎的存取控制（RBAC）應用於 Kubernetes 服務（預覽）<br>-Service Fabric 叢集應該只使用 Azure Active Directory 進行用戶端驗證|
 |**修復安全性設定**|4|-Pod 安全性原則應定義于 Kubernetes Services （預覽）<br>-應補救容器安全性設定中的弱點<br>-應補救您電腦上安全性設定中的弱點<br>-應補救虛擬機器擴展集上安全性設定中的弱點<br>-監視代理程式應該安裝在您的虛擬機器上<br>-監視代理程式應該安裝在您的電腦上<br>-監視代理程式應該安裝在虛擬機器擴展集上<br>-監視代理程式健康情況問題應在您的電腦上解決|
-|**限制未經授權的網路存取**|4|-您的虛擬機器上的 IP 轉送應停用<br>-已授權的 IP 範圍應定義于 Kubernetes Services （預覽）<br>-應限制應用程式服務的存取（預覽）<br>-應強化 IaaS Nsg 上 web 應用程式的規則<br>-虛擬機器應該與網路安全性群組相關聯<br>-CORS 不應允許每個資源存取您的 API 應用程式<br>-CORS 不應允許每個資源存取您的函數應用程式<br>-CORS 不應允許每個資源存取您的 Web 應用程式<br>-API 應用程式的遠端偵測應關閉<br>-應關閉函數應用程式的遠端偵錯程式<br>-應關閉 Web 應用程式的遠端偵錯程式<br>-應限制與網際網路對向 Vm 的寬鬆網路安全性群組<br>-應強化網際網路面向虛擬機器的網路安全性群組規則|
+|**限制未經授權的網路存取**|4|-您的虛擬機器上的 IP 轉送應停用<br>-已授權的 IP 範圍應定義于 Kubernetes Services （預覽）<br>-（已淘汰）應限制應用程式服務的存取（預覽）<br>-（已淘汰）應強化 IaaS Nsg 上 web 應用程式的規則<br>-虛擬機器應該與網路安全性群組相關聯<br>-CORS 不應允許每個資源存取您的 API 應用程式<br>-CORS 不應允許每個資源存取您的函數應用程式<br>-CORS 不應允許每個資源存取您的 Web 應用程式<br>-API 應用程式的遠端偵測應關閉<br>-應關閉函數應用程式的遠端偵錯程式<br>-應關閉 Web 應用程式的遠端偵錯程式<br>-應限制與網際網路對向 Vm 的寬鬆網路安全性群組<br>-應強化網際網路面向虛擬機器的網路安全性群組規則|
 |**套用適應性應用程式控制**|3|-應在虛擬機器上啟用彈性應用程式控制<br>-監視代理程式應該安裝在您的虛擬機器上<br>-監視代理程式應該安裝在您的電腦上<br>-監視代理程式健康情況問題應在您的電腦上解決|
 |**套用資料分類**|2|-SQL 資料庫中的機密資料應分類（預覽）|
 |**保護應用程式免于遭受 DDoS 攻擊**|2|-應啟用 DDoS 保護標準|
@@ -122,7 +122,7 @@ Azure 資訊安全中心有兩個主要目標：協助您瞭解目前的安全�
 是，但一段時間，它們會並存執行，以減輕轉換。
 
 ### <a name="if-a-recommendation-isnt-applicable-to-me-and-i-disable-it-in-the-policy-will-my-security-control-be-fulfilled-and-my-secure-score-updated"></a>如果建議不適用於我，而我在原則中將它停用，我的安全性控制是否會完成，而且我的安全分數也會更新？
-可以。 建議您在環境中不適用時停用建議。 如需有關如何停用特定建議的指示，請參閱[停用安全性原則](https://docs.microsoft.com/azure/security-center/tutorial-security-policy#disable-security-policies)。
+是。 建議您在環境中不適用時停用建議。 如需有關如何停用特定建議的指示，請參閱[停用安全性原則](https://docs.microsoft.com/azure/security-center/tutorial-security-policy#disable-security-policies)。
 
 ### <a name="if-a-security-control-offers-me-zero-points-towards-my-secure-score-should-i-ignore-it"></a>如果安全性控制提供給我安全分數的零點，我應該忽略它嗎？
 在某些情況下，您會看到控制項的最大分數大於零，但影響是零。 當修正資源的累加分數可以忽略時，會四捨五入為零。 請勿忽略這些建議，因為它們仍然會帶來安全性改進。 唯一的例外是「其他最佳作法」控制項。 補救這些建議並不會增加您的分數，但它會增強您的整體安全性。

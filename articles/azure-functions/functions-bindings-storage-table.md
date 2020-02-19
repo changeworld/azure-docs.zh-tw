@@ -36,7 +36,7 @@ ms.locfileid: "77425233"
 
 使用 Azure 資料表儲存體輸入繫結以讀取 Azure 儲存體帳戶中的資料表。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ### <a name="one-entity"></a>一個實體
 
@@ -143,7 +143,7 @@ namespace FunctionAppCloudTable2
 
 如果您嘗試繫結至 `CloudTable`，並出現錯誤訊息，請確定您已參考[正確的儲存體 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
 
-# <a name="c-scripttabcsharp-script"></a>[C#文字](#tab/csharp-script)
+# <a name="c-script"></a>[C#文字](#tab/csharp-script)
 
 ### <a name="one-entity"></a>一個實體
 
@@ -310,7 +310,7 @@ public class LogEntity : TableEntity
 如果您嘗試繫結至 `CloudTable`，並出現錯誤訊息，請確定您已參考[正確的儲存體 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
 
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 下列範例所示範的是使用繫結的 *function.json* 檔案和 [JavaScript 指令碼](functions-reference-node.md)程式碼中的資料表輸入繫結。 此函式會使用佇列觸發程序來讀取單一資料表列。 
 
@@ -352,7 +352,7 @@ module.exports = function (context, myQueueItem) {
 };
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 單一資料表資料列 
 
@@ -401,7 +401,7 @@ def main(req: func.HttpRequest, messageJSON) -> func.HttpResponse:
     return func.HttpResponse(f"Table row: {messageJSON}")
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 下列範例顯示由 HTTP 觸發的函式，其會傳回資料表儲存體中指定資料分割內的項目總計數。
 
@@ -423,7 +423,7 @@ public int run(
 
 ## <a name="input---attributes-and-annotations"></a>輸入-屬性和注釋
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
  在 [C# 類別庫](functions-dotnet-class-library.md)中，使用下列屬性來設定資料表輸入繫結：
 
@@ -481,19 +481,19 @@ public int run(
 * `StorageAccount` 屬性套用至該類別。
 * 函數應用程式 (「AzureWebJobsStorage」應用程式設定) 的預設儲存體帳戶。
 
-# <a name="c-scripttabcsharp-script"></a>[C#文字](#tab/csharp-script)
+# <a name="c-script"></a>[C#文字](#tab/csharp-script)
 
 C#腳本不支援屬性。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 JavaScript 不支援屬性。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Python 不支援屬性。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 在 [Java 函式執行階段程式庫](/java/api/overview/azure/functions/runtime)中，對其值來自資料表儲存體的參數使用 `@TableInput` 註釋。  此註釋可以搭配原生 Java 類型、POJO 或使用 `Optional<T>` 的可為 Null 值使用。
 
@@ -519,7 +519,7 @@ Python 不支援屬性。
 
 ## <a name="input---usage"></a>輸入 - 使用方式
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 * **讀取中的一個資料列**
 
@@ -532,7 +532,7 @@ Python 不支援屬性。
   > [!NOTE]
   > `IQueryable`Functions V2 執行階段[不支援 ](functions-versions.md)。 替代方式是使用 Azure 儲存體 SDK，藉以[使用 CloudTable paramName 方法參數](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) \(英文\) 來讀取資料表。 如果您嘗試繫結至 `CloudTable`，並出現錯誤訊息，請確定您已參考[正確的儲存體 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
 
-# <a name="c-scripttabcsharp-script"></a>[C#文字](#tab/csharp-script)
+# <a name="c-script"></a>[C#文字](#tab/csharp-script)
 
 * **讀取中的一個資料列**
 
@@ -545,15 +545,15 @@ Python 不支援屬性。
   > [!NOTE]
   > `IQueryable`Functions V2 執行階段[不支援 ](functions-versions.md)。 替代方式是使用 Azure 儲存體 SDK，藉以[使用 CloudTable paramName 方法參數](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) \(英文\) 來讀取資料表。 如果您嘗試繫結至 `CloudTable`，並出現錯誤訊息，請確定您已參考[正確的儲存體 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 請設定 `filter` 和 `take` 屬性。 請勿設定 `partitionKey` 或 `rowKey`。 使用 `context.bindings.<BINDING_NAME>` 來存取輸入資料表實體 (或多個實體)。 還原序列化的物件具有 `RowKey` 和 `PartitionKey` 屬性。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 資料表資料會當做 JSON 字串傳遞至函數。 藉由呼叫 `json.loads` （如輸入[範例](#input)所示）來還原序列化訊息。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 [TableInput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.tableinput)屬性可讓您存取觸發函數的資料表資料列。
 
@@ -566,7 +566,7 @@ Python 不支援屬性。
 > [!NOTE]
 > 此輸出繫結不支援更新現有的實體。 `TableOperation.Replace`從 Azure 儲存體 SDK[ 使用 ](../cosmos-db/tutorial-develop-table-dotnet.md#delete-an-entity) 作業來更新現有的實體。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 下列範例示範 [C# 函式](functions-dotnet-class-library.md)，該函式會使用 HTTP 觸發程序來寫入單一資料表資料列。 
 
@@ -590,7 +590,7 @@ public class TableStorage
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C#文字](#tab/csharp-script)
+# <a name="c-script"></a>[C#文字](#tab/csharp-script)
 
 下列範例所示範的是使用繫結之 *function.json* 檔案，以及 [C# 指令碼](functions-reference-csharp.md)程式碼中的資料表輸出繫結。 函式會寫入多個資料表實體。
 
@@ -645,7 +645,7 @@ public class Person
 
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 下列範例所示範的是使用繫結之 *function.json* 檔案，以及 [JavaScript 函式](functions-reference-node.md)中的資料表輸出繫結。 函式會寫入多個資料表實體。
 
@@ -692,7 +692,7 @@ module.exports = function (context) {
 };
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 下列範例示範如何使用資料表儲存體輸出系結。 `table` 系結會藉由將值指派給 `name`、`tableName`、`partitionKey`和 `connection`，在*json*中進行設定：
 
@@ -751,7 +751,7 @@ def main(req: func.HttpRequest, message: func.Out[str]) -> func.HttpResponse:
     return func.HttpResponse(f"Message created with the rowKey: {rowKey}")
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 下列範例顯示的 JAVA 函式會使用 HTTP 觸發程式來寫入單一資料表資料列。
 
@@ -831,7 +831,7 @@ public class AddPersons {
 
 ## <a name="output---attributes-and-annotations"></a>輸出-屬性和注釋
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 在 [C# 類別庫](functions-dotnet-class-library.md)中，使用 [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables/TableAttribute.cs)。
 
@@ -865,19 +865,19 @@ public static MyPoco TableOutput(
 
 您可以使用 `StorageAccount` 屬性來指定類別、方法或參數層級的儲存體帳戶。 如需詳細資訊，請參閱[輸入 - 屬性](#input---attributes-and-annotations)。
 
-# <a name="c-scripttabcsharp-script"></a>[C#文字](#tab/csharp-script)
+# <a name="c-script"></a>[C#文字](#tab/csharp-script)
 
 C#腳本不支援屬性。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 JavaScript 不支援屬性。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Python 不支援屬性。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 在 JAVA 函式執行時間連結[庫](/java/api/overview/azure/functions/runtime)中，在參數上使用[TableOutput](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/TableOutput.java/)注釋，將值寫入資料表儲存體。
 
@@ -903,23 +903,23 @@ Python 不支援屬性。
 
 ## <a name="output---usage"></a>輸出 - 使用方式
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 使用方法參數 `ICollector<T> paramName` 或 `IAsyncCollector<T> paramName` （其中 `T` 包含 `PartitionKey` 和 `RowKey` 屬性）來存取輸出資料表實體。 這些屬性通常會伴隨著執行 `ITableEntity` 或繼承 `TableEntity`。
 
 或者，您可以使用 `CloudTable` 方法參數，使用 Azure 儲存體 SDK 來寫入資料表。 如果您嘗試繫結至 `CloudTable`，並出現錯誤訊息，請確定您已參考[正確的儲存體 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
 
-# <a name="c-scripttabcsharp-script"></a>[C#文字](#tab/csharp-script)
+# <a name="c-script"></a>[C#文字](#tab/csharp-script)
 
 使用方法參數 `ICollector<T> paramName` 或 `IAsyncCollector<T> paramName` （其中 `T` 包含 `PartitionKey` 和 `RowKey` 屬性）來存取輸出資料表實體。 這些屬性通常會伴隨著執行 `ITableEntity` 或繼承 `TableEntity`。 `paramName` 值是在*函數. json*的 `name` 屬性中指定。
 
 或者，您可以使用 `CloudTable` 方法參數，使用 Azure 儲存體 SDK 來寫入資料表。 如果您嘗試繫結至 `CloudTable`，並出現錯誤訊息，請確定您已參考[正確的儲存體 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 使用 `context.bindings.<name>` 存取輸出事件，其中 `<name>` 是在*function*的 `name` 屬性中指定的值。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 有兩個選項可從函式輸出資料表儲存體資料列訊息：
 
@@ -927,7 +927,7 @@ Python 不支援屬性。
 
 - **命令式**：將值傳遞給宣告為[Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python)類型之參數的[set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none)方法。 傳遞至 `set` 的值會保存為事件中樞訊息。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 有兩個選項可使用[TableStorageOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.tableoutput?view=azure-java-stablet)注釋，從函式輸出資料表儲存體資料列：
 

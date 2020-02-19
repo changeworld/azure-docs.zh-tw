@@ -5,12 +5,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 1/21/2020
 ms.author: raynew
-ms.openlocfilehash: 1ec49e7cab9a79ea2ae308afc096b19b10a8acd5
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: b7ace4f470a4e054be5d7f5945fc3e9c4f7d0810
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293737"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444242"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>從 VMware VM 和實體伺服器至 Azure 之災害復原的支援矩陣
 
@@ -31,7 +31,7 @@ VMware Vm 的嚴重損壞修復 | 將內部部署 VMware 虛擬機器複寫至 A
 **Server** | **需求** | **詳細資料**
 --- | --- | ---
 vCenter Server | 6\.7、6.5、6.0 或5.5 版 | 我們建議您在嚴重損壞修復部署中使用 vCenter server。
-vSphere 主機 | 6\.7、6.5、6.0 或5.5 版 | 我們建議 vSphere 主機與 vCenter 伺服器應位於和處理序伺服器相同的網路中。 根據預設，進程伺服器會在設定伺服器上執行。 [深入了解](vmware-physical-azure-config-process-server-overview.md)。
+vSphere 主機 | 6\.7、6.5、6.0 或5.5 版 | 我們建議 vSphere 主機與 vCenter 伺服器應位於和處理序伺服器相同的網路中。 根據預設，進程伺服器會在設定伺服器上執行。 [詳細資訊](vmware-physical-azure-config-process-server-overview.md)。
 
 
 ## <a name="site-recovery-configuration-server"></a>Site Recovery 組態伺服器
@@ -43,9 +43,9 @@ vSphere 主機 | 6\.7、6.5、6.0 或5.5 版 | 我們建議 vSphere 主機與 vC
 
 **元件** | **需求**
 --- |---
-CPU 核心數 | 8
+CPU 核心 | 8
 RAM | 16 GB
-磁碟數目 | 3 個磁碟<br/><br/> 磁碟包括作業系統磁碟、處理序伺服器快取磁碟和用於容錯回復的保留磁碟機。
+磁碟數量 | 3 個磁碟<br/><br/> 磁碟包括作業系統磁碟、處理序伺服器快取磁碟和用於容錯回復的保留磁碟機。
 磁碟可用空間 | 600 GB 的進程伺服器快取空間。
 磁碟可用空間 | 600 GB 的保留磁片磁碟機空間。
 作業系統  | Windows Server 2012 R2 或 Windows Server 2016 （含桌面體驗） <br/><br> 如果您打算使用此設備的內建主要目標來進行容錯回復，請確定作業系統版本與複寫的專案相同或更高。|
@@ -68,20 +68,20 @@ Site Recovery 支援複寫任何執行於所支援機器上的工作負載。
 **元件** | **詳細資料**
 --- | ---
 機器設定 | 複寫到 Azure 的電腦必須符合 [Azure 需求](#azure-vm-requirements)。
-機器工作負載 | Site Recovery 支援複寫任何執行於所支援機器上的工作負載。 [深入了解](https://aka.ms/asr_workload)。
+機器工作負載 | Site Recovery 支援複寫任何執行於所支援機器上的工作負載。 [詳細資訊](https://aka.ms/asr_workload)。
 Windows Server 2019 | 支援自[更新彙總套件 34](https://support.microsoft.com/help/4490016) （行動服務的9.22 版）。
 Windows Server 2016 64 位 | 支援 Server Core、具有桌面體驗的伺服器。
 Windows Server 2012 R2/Windows Server 2012 | 支援。
 Windows Server 2008 R2 SP1 和更新版本。 | 支援。<br/><br/> 從行動服務代理程式的[9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery)版，您必須在執行 Windows 2008 R2 SP1 或更新版本的電腦上安裝[服務堆疊更新（SSU）](https://support.microsoft.com/help/4490628)和[sha-1 更新](https://support.microsoft.com/help/4474419)。 2019年9月不支援 SHA-1，而且如果未啟用 SHA-1 程式碼簽署，代理程式延伸模組將不會如預期般安裝/升級。 深入瞭解[SHA-2 升級和需求](https://aka.ms/SHA-2KB)。
-Windows Server 2008 SP2 或更新版本（64位/32 位） |  僅支援遷移。 [深入了解](migrate-tutorial-windows-server-2008.md)。<br/><br/> 從行動服務代理程式的版本[9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) ，您需要在 WINDOWS 2008 SP2 電腦上安裝[服務堆疊更新（SSU）](https://support.microsoft.com/help/4493730)和[sha-1 更新](h https://support.microsoft.com/help/4474419)。 2019年9月不支援 ISHA-1，如果未啟用 SHA-2 程式碼簽署，代理程式延伸模組將不會如預期般安裝/升級。 深入瞭解[SHA-2 升級和需求](https://aka.ms/SHA-2KB)。
+Windows Server 2008 SP2 或更新版本（64位/32 位） |  僅支援遷移。 [詳細資訊](migrate-tutorial-windows-server-2008.md)。<br/><br/> 從行動服務代理程式的版本[9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) ，您需要在 WINDOWS 2008 SP2 電腦上安裝[服務堆疊更新（SSU）](https://support.microsoft.com/help/4493730)和[sha-1 更新](h https://support.microsoft.com/help/4474419)。 2019年9月不支援 ISHA-1，如果未啟用 SHA-2 程式碼簽署，代理程式延伸模組將不會如預期般安裝/升級。 深入瞭解[SHA-2 升級和需求](https://aka.ms/SHA-2KB)。
 Windows 10、Windows 8.1、Windows 8 | 支援。
 Windows 7 （含 SP1）64位 | 支援自[更新彙總套件 36](https://support.microsoft.com/help/4503156) （行動服務的9.22 版）。 </br></br> 從行動服務代理程式的[9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) ，您需要安裝在 WINDOWS 7 SP1 電腦上的[服務堆疊更新（SSU）](https://support.microsoft.com/help/4490628)和[sha-1 更新](https://support.microsoft.com/help/4474419)。  2019年9月不支援 SHA-1，而且如果未啟用 SHA-1 程式碼簽署，代理程式延伸模組將不會如預期般安裝/升級。 深入瞭解[SHA-2 升級和需求](https://aka.ms/SHA-2KB)。
 Linux | 僅支援64位系統。 不支援 32-bit 系統。<br/><br/>每個 Linux 伺服器都應該安裝[linux Integration Services （.lis）元件](https://www.microsoft.com/download/details.aspx?id=55106)。 在測試容錯移轉/容錯移轉之後，必須在 Azure 中啟動伺服器。 如果遺漏了 .LIS 元件，請務必先安裝[元件](https://www.microsoft.com/download/details.aspx?id=55106)，再啟用複寫，讓機器在 Azure 中開機。 <br/><br/> Site Recovery 會協調容錯移轉以在 Azure 中執行 Linux 伺服器。 不過，Linux 廠商可能會將支援僅限於生命週期尚未結束的發行版本。<br/><br/> 在 Linux 散發套件上，僅支援屬於散發套件次要版本/更新的庫存核心。<br/><br/> 不支援升級各主要 Linux 散發套件版本的受保護機器。 若要升級，請停用複寫、升級作業系統，然後再次啟用複寫。<br/><br/> [深入瞭解](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)Azure 中的 Linux 和開放原始碼技術支援。
-Linux Red Hat Enterprise | 5.2 到 5.11</b><br/> 6.1 到 6.10</b> </br> 7.0、7.1、7.2、7.3、7.4、7.5、7.6、 [7.7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery)、 [8.0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) <br/> 執行 Red Hat Enterprise Linux 5.2-5.11 & 6.1-6.10 的伺服器尚未預先安裝[Linux Integration Services （.lis）元件](https://www.microsoft.com/download/details.aspx?id=55106)。 請務必先安裝[元件](https://www.microsoft.com/download/details.aspx?id=55106)，再啟用複寫，讓機器在 Azure 中開機。
-Linux：CentOS | 5.2 到 5.11</b><br/> 6.1 到 6.10</b><br/> 7.0 到 7.7</b><br/>8.0<br/><br/> 執行 CentOS 5.2 的伺服器-5.11 & 6.1-6.10 不會預先安裝[Linux Integration Services （.lis）元件](https://www.microsoft.com/download/details.aspx?id=55106)。 請務必先安裝[元件](https://www.microsoft.com/download/details.aspx?id=55106)，再啟用複寫，讓機器在 Azure 中開機。
+Linux Red Hat Enterprise | 5.2 到 5.11</b><br/> 6.1 到 6.10</b> </br> 7.0、7.1、7.2、7.3、7.4、7.5、7.6、 [7.7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery)、 [8.0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)、8。1 <br/> 執行 Red Hat Enterprise Linux 5.2-5.11 & 6.1-6.10 的伺服器尚未預先安裝[Linux Integration Services （.lis）元件](https://www.microsoft.com/download/details.aspx?id=55106)。 請務必先安裝[元件](https://www.microsoft.com/download/details.aspx?id=55106)，再啟用複寫，讓機器在 Azure 中開機。
+Linux：CentOS | 5.2 到 5.11</b><br/> 6.1 到 6.10</b><br/> 7.0 到7。6<br/> <br/> 8.0 到8。1<br/><br/> 執行 CentOS 5.2 的伺服器-5.11 & 6.1-6.10 不會預先安裝[Linux Integration Services （.lis）元件](https://www.microsoft.com/download/details.aspx?id=55106)。 請務必先安裝[元件](https://www.microsoft.com/download/details.aspx?id=55106)，再啟用複寫，讓機器在 Azure 中開機。
 Ubuntu | Ubuntu 14.04 LTS 伺服器[（請參閱支援的核心版本）](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS 伺服器[（請參閱支援的核心版本）](#ubuntu-kernel-versions) </br> Ubuntu 18.04 LTS 伺服器[（請參閱支援的核心版本）](#ubuntu-kernel-versions)
 Debian | Debian 7/Debian 8 [（審查支援的核心版本）](#debian-kernel-versions)
-SUSE Linux | SUSE Linux Enterprise Server 12 SP1、SP2、SP3、SP4 [（請參閱支援的核心版本）](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/> SUSE Linux Enterprise Server 11 SP3、SUSE Linux Enterprise Server 11 SP4<br/> 不支援將複寫的機器從 SUSE Linux Enterprise Server 11 SP3 升級至 SP4。 若要升級，請停用複寫，然後在升級之後重新啟用。
+SUSE Linux | SUSE Linux Enterprise Server 12 SP1、SP2、SP3、SP4 [（請參閱支援的核心版本）](#suse-linux-enterprise-server-12-supported-kernel-versions) <br/> SUSE Linux Enterprise Server 15，15 SP1 [（請參閱支援的核心版本）](#suse-linux-enterprise-server-15-supported-kernel-versions)<br/> SUSE Linux Enterprise Server 11 SP3、SUSE Linux Enterprise Server 11 SP4<br/> 不支援將複寫的機器從 SUSE Linux Enterprise Server 11 SP3 升級至 SP4。 若要升級，請停用複寫，然後在升級之後重新啟用。
 Oracle Linux | 6.4，6.5，6.6，6.7，6.8，6.9，6.10，7.0，7.1，7.2，7.3，7.4，7.5，7.6， [7.7](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)<br/><br/> 執行 Red Hat 相容核心或 Unbreakable Enterprise Kernel 第3版，4 & 5 （UEK3，UEK4，UEK5） 
 
 > [!Note]
@@ -91,16 +91,17 @@ Oracle Linux | 6.4，6.5，6.6，6.7，6.8，6.9，6.10，7.0，7.1，7.2，7.3�
 
 **支援的版本** | **行動服務版本** | **核心版本** |
 --- | --- | --- |
+14.04 LTS | [9.32][9.32 UR] | 3.13.0-24-generic to 3.13.0-170-generic，<br/>3.16.0-25-generic 至 3.16.0-77-generic、<br/>3.19.0-18-generic 至 3.19.0-80-generic、<br/>4.2.0-18-generic 至 4.2.0-42-generic、<br/>4.4.0-21-generic to 4.4.0-148-generic，<br/>4.15.0-1023-azure 至 4.15.0-1045-azure |
 14.04 LTS | [9.31][9.31 UR] | 3.13.0-24-generic to 3.13.0-170-generic，<br/>3.16.0-25-generic 至 3.16.0-77-generic、<br/>3.19.0-18-generic 至 3.19.0-80-generic、<br/>4.2.0-18-generic 至 4.2.0-42-generic、<br/>4.4.0-21-generic to 4.4.0-148-generic，<br/>4.15.0-1023-azure 至 4.15.0-1045-azure |
 14.04 LTS | [9.30][9.30 UR] | 3.13.0-24-generic to 3.13.0-170-generic，<br/>3.16.0-25-generic 至 3.16.0-77-generic、<br/>3.19.0-18-generic 至 3.19.0-80-generic、<br/>4.2.0-18-generic 至 4.2.0-42-generic、<br/>4.4.0-21-generic to 4.4.0-148-generic，<br/>4.15.0-1023-azure 至 4.15.0-1045-azure |
 14.04 LTS | [9.29][9.29 UR]| 3.13.0-24-generic to 3.13.0-170-generic，<br/>3.16.0-25-generic 至 3.16.0-77-generic、<br/>3.19.0-18-generic 至 3.19.0-80-generic、<br/>4.2.0-18-generic 至 4.2.0-42-generic、<br/>4.4.0-21-generic to 4.4.0-148-generic，<br/>4.15.0-1023-azure 至 4.15.0-1045-azure |
-14.04 LTS | [9.28][9.28 UR]| 3.13.0-24-generic to 3.13.0-170-generic，<br/>3.16.0-25-generic 至 3.16.0-77-generic、<br/>3.19.0-18-generic 至 3.19.0-80-generic、<br/>4.2.0-18-generic 至 4.2.0-42-generic、<br/>4.4.0-21-generic to 4.4.0-148-generic，<br/>4.15.0-1023-azure 至 4.15.0-1045-azure |
 |||
+16.04 LTS | [9.32][9.32 UR] | 4.4.0-21-generic to 4.4.0-171-generic，<br/>4.8.0-34-generic 至 4.8.0-58-generic、<br/>4.10.0-14-generic 至 4.10.0-42-generic、<br/>4.11.0-13-generic 至 4.11.0-14-generic、<br/>4.13.0-16-generic 至 4.13.0-45-generic、<br/>4.15.0-13-泛型至 4.15.0-74-generic<br/>4.11.0-1009-azure 至 4.11.0-1016-azure、<br/>4.13.0-1005-azure 至 4.13.0-1018-azure <br/>4.15.0-1012-azure 至 4.15.0-1066-azure|
 16.04 LTS | [9.31][9.31 UR] | 4.4.0-21-generic to 4.4.0-170-generic，<br/>4.8.0-34-generic 至 4.8.0-58-generic、<br/>4.10.0-14-generic 至 4.10.0-42-generic、<br/>4.11.0-13-generic 至 4.11.0-14-generic、<br/>4.13.0-16-generic 至 4.13.0-45-generic、<br/>4.15.0-13-泛型至 4.15.0-72-generic<br/>4.11.0-1009-azure 至 4.11.0-1016-azure、<br/>4.13.0-1005-azure 至 4.13.0-1018-azure <br/>4.15.0-1012-azure 至 4.15.0-1063-azure|
 16.04 LTS | [9.30][9.30 UR] | 4.4.0-21-generic 至 4.4.0-166-generic，<br/>4.8.0-34-generic 至 4.8.0-58-generic、<br/>4.10.0-14-generic 至 4.10.0-42-generic、<br/>4.11.0-13-generic 至 4.11.0-14-generic、<br/>4.13.0-16-generic 至 4.13.0-45-generic、<br/>4.15.0-13-泛型至 4.15.0-66-generic<br/>4.11.0-1009-azure 至 4.11.0-1016-azure、<br/>4.13.0-1005-azure 至 4.13.0-1018-azure <br/>4.15.0-1012-azure 至 4.15.0-1061-azure|
 16.04 LTS | [9.29][9.29 UR] | 4.4.0-21-generic to 4.4.0-164-generic，<br/>4.8.0-34-generic 至 4.8.0-58-generic、<br/>4.10.0-14-generic 至 4.10.0-42-generic、<br/>4.11.0-13-generic 至 4.11.0-14-generic、<br/>4.13.0-16-generic 至 4.13.0-45-generic、<br/>4.15.0-13-泛型至 4.15.0-64-泛型<br/>4.11.0-1009-azure 至 4.11.0-1016-azure、<br/>4.13.0-1005-azure 至 4.13.0-1018-azure <br/>4.15.0-1012-azure 至 4.15.0-1059-azure|
-16.04 LTS | [9.28][9.28 UR] | 4.4.0-21-generic 至 4.4.0-159-generic，<br/>4.8.0-34-generic 至 4.8.0-58-generic、<br/>4.10.0-14-generic 至 4.10.0-42-generic、<br/>4.11.0-13-generic 至 4.11.0-14-generic、<br/>4.13.0-16-generic 至 4.13.0-45-generic、<br/>4.15.0-13-泛型至 4.15.0-58-generic<br/>4.11.0-1009-azure 至 4.11.0-1016-azure、<br/>4.13.0-1005-azure 至 4.13.0-1018-azure <br/>4.15.0-1012-azure 至 4.15.0-1055-azure|
 |||
+18.04 LTS | [9.32][9.32 UR]| 4.15.0-20-generic to 4.15.0-74-generic </br> 4.18.0-13-泛型至 4.18.0-25-一般 </br> 5.0.0-15-泛型至 5.0.0-37-泛型 </br> 5.3.0-19-generic 至 5.3.0-24-generic </br> 4.15.0-1009-azure 至 4.15.0-1037-azure </br> 4.18.0-1006-azure 至 4.18.0-1025-azure </br> 5.0.0-1012-azure 至 5.0.0-1028-azure </br> 5.3.0-1007-azure 至 5.3.0-1009-azure|
 18.04 LTS | [9.31][9.31 UR]| 4.15.0-20-generic 至 4.15.0-72-generic </br> 4.18.0-13-泛型至 4.18.0-25-一般 </br> 5.0.0-15-泛型至 5.0.0-37-泛型 </br> 5.3.0-19-generic 至 5.3.0-24-generic </br> 4.15.0-1009-azure 至 4.15.0-1037-azure </br> 4.18.0-1006-azure 至 4.18.0-1025-azure </br> 5.0.0-1012-azure 至 5.0.0-1025-azure </br> 5.3.0-1007-azure|
 18.04 LTS | [9.30][9.30 UR] | 4.15.0-20-generic 至 4.15.0-66-generic </br> 4.18.0-13-泛型至 4.18.0-25-一般 </br> 5.0.0-15-泛型至 5.0.0-32-泛型 </br> 4.15.0-1009-azure 至 4.15.0-1037-azure </br> 4.18.0-1006-azure 至 4.18.0-1025-azure </br> 5.0.0-1012-azure 至 5.0.0-1023-azure|
 18.04 LTS | [9.29][9.29 UR] | 4.15.0-20-泛型至 4.15.0-62-一般 </br> 4.18.0-13-泛型至 4.18.0-25-一般 </br> 5.0.0-15-泛型至 5.0.0-27-一般 </br> 4.15.0-1009-azure 至 4.15.0-1037-azure </br> 4.18.0-1006-azure 至 4.18.0-1025-azure </br> 5.0.0-1012-azure 至 5.0.0-1018-azure|
@@ -110,20 +111,25 @@ Oracle Linux | 6.4，6.5，6.6，6.7，6.8，6.9，6.10，7.0，7.1，7.2，7.3�
 
 **支援的版本** | **行動服務版本** | **核心版本** |
 --- | --- | --- |
-Debian 7 | [9.28][9.28 UR]、 [9.29][9.29 UR]、 [9.30][9.30 UR]、 [9.31][9.31 UR]| 3.2.0-4-amd64 至 3.2.0-6-amd64、3.16.0-0.bpo.4-amd64 |
+Debian 7 | [9.29][9.29 UR]、 [9.30][9.30 UR]、 [9.31][9.31 UR]、 [9.32][9.32 UR]| 3.2.0-4-amd64 至 3.2.0-6-amd64、3.16.0-0.bpo.4-amd64 |
 |||
-Debian 8 | [9.30][9.30 UR]、 [9.31][9.31 UR] | 3.16.0-4-amd64 至 3.16.0-10-amd64、4.9.0 4.9.0-. bpo. 4-amd64 至 4.9.0 4.9.0-. bpo. 11-amd64 |
-Debian 8 | [9.28][9.28 UR]、 [9.29][9.29 UR] | 3.16.0-4-amd64 至 3.16.0-10-amd64、4.9.0 4.9.0-. bpo. 4-amd64 至 4.9.0 4.9.0-. bpo. 9-amd64 |
+Debian 8 | [9.30][9.30 UR]、 [9.31][9.31 UR]、 [9.32][9.32 UR] | 3.16.0-4-amd64 至 3.16.0-10-amd64、4.9.0 4.9.0-. bpo. 4-amd64 至 4.9.0 4.9.0-. bpo. 11-amd64 |
+Debian 8 | [9.29][9.29 UR] | 3.16.0-4-amd64 至 3.16.0-10-amd64、4.9.0 4.9.0-. bpo. 4-amd64 至 4.9.0 4.9.0-. bpo. 9-amd64 |
 
 ### <a name="suse-linux-enterprise-server-12-supported-kernel-versions"></a>SUSE Linux Enterprise Server 12 支援的核心版本
 
 **版本** | **行動服務版本** | **核心版本** |
 --- | --- | --- |
+SUSE Linux Enterprise Server 12 （SP1、SP2、SP3、SP4） | [9.32][9.32 UR] | 支援所有[股票 SUSE 12 SP1、SP2、SP3、SP4](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12)核心。</br></br> l t 4.4.138-4.7-azure 至 4.4.180-4.31-azure，</br>4.12.14-6.3-azure 至 4.12.14-6.34-azure  |
 SUSE Linux Enterprise Server 12 （SP1、SP2、SP3、SP4） | [9.31][9.31 UR] | 支援所有[股票 SUSE 12 SP1、SP2、SP3、SP4](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12)核心。</br></br> l t 4.4.138-4.7-azure 至 4.4.180-4.31-azure，</br>4.12.14-6.3-azure 至 4.12.14-6.29-azure  |
 SUSE Linux Enterprise Server 12 （SP1、SP2、SP3、SP4） | [9.30][9.30 UR] | 支援所有[股票 SUSE 12 SP1、SP2、SP3、SP4](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12)核心。</br></br> l t 4.4.138-4.7-azure 至 4.4.180-4.31-azure，</br>4.12.14-6.3-azure 至 4.12.14-6.26-azure  |
 SUSE Linux Enterprise Server 12 （SP1、SP2、SP3、SP4） | [9.29][9.29 UR] | 支援所有[股票 SUSE 12 SP1、SP2、SP3、SP4](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12)核心。</br></br> l t 4.4.138-4.7-azure 至 4.4.180-4.31-azure，</br>4.12.14-6.3-azure 至 4.12.14-6.23-azure  |
-SUSE Linux Enterprise Server 12 （SP1、SP2、SP3、SP4） | [9.28][9.28 UR] | SP1 3.12.49-11-default 至 3.12.74-60.64.40-default</br></br> SP1 （LTSS） 3.12.74-60.64.45 d-預設為 3.12.74-60.64.118-default</br></br> SP2 4.4.21-69-default 至 4.4.120-92.70-default</br></br>SP2 （LTSS） 4.4.121-92.73 d-預設為 4.4.121-92.117-default</br></br>SP3 4.4.73-5-預設為 4.4.180-94.100-default</br></br>SP3 l t 4.4.138-4.7-azure 至 4.4.180-4.31-azure</br></br>SP4 4.12.14-94.41-預設為 4.12.14-95.29-default</br>SP4 4.12.14-6.3-azure 至 4.12.14-6.23-azure |
 
+### <a name="suse-linux-enterprise-server-15-supported-kernel-versions"></a>SUSE Linux Enterprise Server 15 個支援的核心版本
+
+**版本** | **行動服務版本** | **核心版本** |
+--- | --- | --- |
+SUSE Linux Enterprise Server 15 和 15 SP1 | 9.32 | 支援所有[股票 SUSE 15 和 15](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_15)核心。</br></br> 4.12.14-5.5-azure 至 4.12.14-8.22-azure |
 
 ## <a name="linux-file-systemsguest-storage"></a>Linux 檔案系統/客體儲存體
 
@@ -153,15 +159,15 @@ BTRFS | 從[更新彙總套件 34](https://support.microsoft.com/help/4490016) �
 **元件** | **支援**
 --- | ---
 主機網路 NIC 小組 | 支援 VMware VM。 <br/><br/>不支援實體機器複寫。
-主機網路 VLAN | 可以。
-主機網路 IPv4 | 可以。
-主機網路 IPv6 | 不會。
-客體/伺服器網路 NIC 小組 | 不會。
-客體/伺服器網路 IPv4 | 可以。
-客體/伺服器網路 IPv6 | 不會。
-客體/伺服器網路靜態 IP (Windows) | 可以。
-客體/伺服器網路靜態 IP (Linux) | 可以。 <br/><br/>VM 設定為在容錯回復時使用 DHCP。
-客體/伺服器網路多重 NIC | 可以。
+主機網路 VLAN | 是。
+主機網路 IPv4 | 是。
+主機網路 IPv6 | 否。
+客體/伺服器網路 NIC 小組 | 否。
+客體/伺服器網路 IPv4 | 是。
+客體/伺服器網路 IPv6 | 否。
+客體/伺服器網路靜態 IP (Windows) | 是。
+客體/伺服器網路靜態 IP (Linux) | 是。 <br/><br/>VM 設定為在容錯回復時使用 DHCP。
+客體/伺服器網路多重 NIC | 是。
 
 
 ## <a name="azure-vm-network-after-failover"></a>Azure VM 網路 (容錯移轉後)
@@ -204,8 +210,8 @@ Docker 磁碟設定 | 否
 客體/伺服器 熱新增/移除磁碟 | 否
 客體/伺服器 - 排除磁碟 | 是
 客體/伺服器多重路徑 (MPIO) | 否
-來賓/伺服器 GPT 磁碟分割 | [更新彙總套件 37](https://support.microsoft.com/help/4508614/) （行動服務版本9.25）支援五個磁碟分割。 先前只支援四個。
-ReFS | 行動服務9.23 版或更高版本支援復原檔案系統
+來賓/伺服器 GPT 磁碟分割 | [更新彙總套件 37](https://support.microsoft.com/help/4508614/) （行動服務版本9.25）支援五個磁碟分割。 先前支援四個。
+參照 | 行動服務9.23 版或更高版本支援復原檔案系統
 來賓/伺服器 EFI/UEFI 開機 | -支援 Windows Server 2012 或更新版本、SLES 12 SP4 和 RHEL 8.0 （搭配行動代理程式版本9.30）<br/> -不支援安全 UEFI 開機類型。 
 
 ## <a name="replication-channels"></a>複寫通道
@@ -214,7 +220,7 @@ ReFS | 行動服務9.23 版或更高版本支援復原檔案系統
 |---------|---------|
 |卸載的資料傳輸（ODX）    |       否  |
 |離線植入        |   否      |
-| Azure Data Box | 否
+| Azure 資料箱 | 否
 
 ## <a name="azure-storage"></a>Azure 儲存體
 
@@ -230,7 +236,7 @@ ReFS | 行動服務9.23 版或更高版本支援復原檔案系統
 待用加密（CMK）| 是（透過 Powershell Az 3.3.0 module 開始）
 進階儲存體 | 是
 匯入/匯出服務 | 否
-適用于 Vnet 的 Azure 儲存體防火牆 | 可以。<br/> 設定于目標儲存體/快取儲存體帳戶（用來儲存複寫資料）。
+適用于 Vnet 的 Azure 儲存體防火牆 | 是。<br/> 設定于目標儲存體/快取儲存體帳戶（用來儲存複寫資料）。
 一般用途 v2 儲存體帳戶（經常性存取和非經常性存取層） | 是（相較于 V1，V2 的交易成本會大幅提高）
 
 ## <a name="azure-compute"></a>Azure 計算
@@ -313,8 +319,8 @@ VM 上所有磁碟的尖峰資料變換 | 54 MB/秒
 ## <a name="next-steps"></a>後續步驟
 [了解如何](tutorial-prepare-azure.md)準備 Azure 的 VMware VM 災害復原。
 
-
-[9.31 UR]: https://support.microsoft.com/en-in/help/4531426/update-rollup-42-for-azure-site-recovery
+[9.32 UR]: https://support.microsoft.com/en-in/help/4538187/update-rollup-44-for-azure-site-recovery
+[9.31 UR]: https://support.microsoft.com/en-in/help/4537047/update-rollup-43-for-azure-site-recovery
 [9.30 UR]: https://support.microsoft.com/en-in/help/4531426/update-rollup-42-for-azure-site-recovery
 [9.29 UR]: https://support.microsoft.com/en-in/help/4528026/update-rollup-41-for-azure-site-recovery
 [9.28 UR]: https://support.microsoft.com/en-in/help/4521530/update-rollup-40-for-azure-site-recovery

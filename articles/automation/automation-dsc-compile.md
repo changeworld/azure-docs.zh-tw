@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 09/10/2018
 ms.topic: conceptual
-ms.openlocfilehash: d7f22e5042f301d7c16573318b6ddd1585f1e350
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 5462d0fae44217f6217d5be1b321df53c4706aaa
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769994"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430562"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>編譯 Azure Automation State Configuration 中的 DSC 組態
 
@@ -27,6 +27,8 @@ ms.locfileid: "75769994"
   - 使用大規模的節點和非節點資料
   - 大幅改善效能
 
+如需編譯詳細資料，請參閱[具有 Azure Resource Manager 範本的 Desired State Configuration 延伸模組](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template#details)。
+
 ## <a name="compiling-a-dsc-configuration-in-azure-state-configuration"></a>在 Azure 狀態設定中編譯 DSC 設定
 
 ### <a name="portal"></a>入口網站
@@ -34,7 +36,7 @@ ms.locfileid: "75769994"
 1. 從您的自動化帳戶，按一下 [State Configuration (DSC)]。
 1. 按一下 [組態] 索引標籤，然後按一下要編譯的組態名稱。
 1. 按一下 [編譯]。
-1. 如果組態沒有參數，系統會提示您確認是否要加以編譯。 如果組態有參數，即會開啟 [編譯組態] 刀鋒視窗，讓您可以提供參數值。 如需參數的進一步詳細資訊，請參閱下列[**基本參數**](#basic-parameters)一節。
+1. 如果組態沒有參數，系統會提示您確認是否要加以編譯。 如果設定具有參數，則會開啟 [**編譯**設定] 分頁，讓您可以提供參數值。
 1. [編譯工作] 頁面隨即開啟，供您追蹤編譯工作的狀態，以及因為此工作而放在 Azure Automation State Configuration 提取伺服器上的節點組態 (MOF 組態文件)。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
@@ -61,7 +63,7 @@ while($null -eq $CompilationJob.EndTime -and $null -eq $CompilationJob.Exception
 $CompilationJob | Get-AzAutomationDscCompilationJobOutput –Stream Any
 ```
 
-###  <a name="basic-parameters"></a>基本參數
+### <a name="declare-basic-parameters"></a>宣告基本參數
 
 DSC 組態中的參數宣告 (包括參數類型和屬性) 的運作方式與 Azure 自動化 Runbook 中相同。 若要深入了解 Runbook 參數，請參閱 [在 Azure 自動化中啟動 Runbook](automation-starting-a-runbook.md) 。
 
@@ -118,17 +120,17 @@ Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -Automa
 
 如需如何將 PSCredentials 傳入作為參數的相關資訊，請參閱下方的[認證資產](#credential-assets)。
 
-### <a name="compiling-configurations-in-azure-automation-that-contain-composite-resources"></a>在包含複合資源的 Azure 自動化中編譯設定
+### <a name="compile-configurations-containing-composite-resources-in-azure-automation"></a>Azure 自動化中包含複合資源的編譯設定
 
-**複合資源**可讓您使用 DSC 組態作為組態內的巢狀資源。 這可讓您將多個組態套用至單一資源。 如需深入了解**複合資源**，請參閱[複合資源：使用 DSC 組態作為資源](/powershell/scripting/dsc/resources/authoringresourcecomposite)。
+**複合資源**功能可讓您在設定內使用 DSC 設定作為嵌套資源。 這可讓您將多個組態套用至單一資源。 如需深入瞭解複合資源，請參閱[複合資源：使用 DSC 設定做為資源](/powershell/scripting/dsc/resources/authoringresourcecomposite)。
 
 > [!NOTE]
-> 為了讓包含**複合資源**的設定正確編譯，您必須先確定複合依賴的任何 DSC 資源都已先匯入 Azure 自動化。
+> 若要讓包含**複合資源**的設定正確編譯，您必須先確定複合依賴的任何 DSC 資源都已先匯入 Azure 自動化。
 
 新增 DSC**複合資源**與將任何 PowerShell 模組新增至 Azure 自動化並無不同。
 如需此程式的逐步指示，請參閱[管理 Azure 自動化中的模組](/azure/automation/shared-resources/modules)一文。
 
-### <a name="managing-configurationdata-when-compiling-configuration-in-azure-automation"></a>在 Azure 自動化中編譯設定時管理 ConfigurationData
+### <a name="manage-configurationdata-when-compiling-configurations-in-azure-automation"></a>在 Azure 自動化中編譯設定時管理 ConfigurationData
 
 **ConfigurationData** 可讓您在使用 PowerShell DSC 時，將結構化設定與任何環境特定設定進行區隔。 請參閱 [區隔 PowerShell DSC 中的 "What" 與 "Where"](https://blogs.msdn.com/b/powershell/archive/2014/01/09/continuous-deployment-using-dsc-with-minimal-change.aspx) ，以深入了解 **ConfigurationData**。
 
@@ -183,7 +185,7 @@ $ConfigData = @{
 Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'ConfigurationDataSample' -ConfigurationData $ConfigData
 ```
 
-### <a name="working-with-assets-in-azure-automation-during-compilation"></a>在編譯期間使用 Azure 自動化中的資產
+### <a name="work-with-assets-in-azure-automation-during-compilation"></a>在編譯期間使用 Azure 自動化中的資產
 
 Azure Automation State Configuration 和 Runbook 中的資產參考是相同的。 如需詳細資訊，請參閱下列：
 
@@ -198,7 +200,7 @@ Azure 自動化中的 DSC 組態可以使用 `Get-AutomationPSCredential` Cmdlet
 
 要在節點組態 (MOF 組態文件) 中保持認證的安全性，需要在節點組態 MOF 檔案中為認證加密。 不過，目前您必須告知 PowerShell DSC 在節點組態 MOF 產生期間以純文字形式輸出認證是可行的，因為 PowerShell DSC 並不知道在透過編譯工作產生 MOF 檔案之後 Azure 自動化會加密整個檔案。
 
-您可以告訴 PowerShell DSC，使用設定資料在產生的節點設定 Mof 中以純文字輸出認證是正常的。 您應針對每個出現在 DSC 組態中且使用認證的節點區塊名稱，透過 **ConfigurationData** 傳遞 `PSDscAllowPlainTextPassword = $true`。
+您可以告訴 PowerShell DSC，使用設定資料在產生的節點設定 Mof 中以純文字輸出認證是正常的。 您應針對每個出現在 DSC 組態中且使用認證的節點區塊名稱，透過 `PSDscAllowPlainTextPassword = $true`ConfigurationData**傳遞**。
 
 下列範例說明使用自動化認證資產的 DSC 組態。
 
@@ -244,7 +246,7 @@ Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -Automa
 > [!NOTE]
 > 完成編譯時，您可能會收到錯誤，指出：**並未匯入 'Microsoft.PowerShell.Management' 模組，因為已經匯入 'Microsoft.PowerShell.Management' 嵌入式管理單元。** 請放心忽略這項警告。
 
-## <a name="compiling-configurations-in-windows-powershell-and-publishing-to-azure-automation"></a>在 Windows PowerShell 中編譯設定併發布至 Azure 自動化
+## <a name="compiling-configurations-in-windows-powershell"></a>在 Windows PowerShell 中編譯設定
 
 您也可以匯入在 Azure 外部編譯的節點組態 (MOF)。
 這包括從開發人員工作站或服務（如[Azure DevOps](https://dev.azure.com)）進行編譯。
@@ -257,14 +259,14 @@ DSC 代理程式會在受控節點上本機驗證簽署的節點組態，確保�
 
 如需如何簽署節點組態的詳細資訊，請參閱 [WMF 5.1 的改進 - 如何簽署組態和模組](/powershell/scripting/wmf/whats-new/dsc-improvements#dsc-module-and-configuration-signing-validations)。
 
-### <a name="compiling-a-configuration-in-windows-powershell"></a>在 Windows PowerShell 中編譯設定
+### <a name="compile-a-configuration-in-windows-powershell"></a>在 Windows PowerShell 中編譯設定
 
 在 Windows PowerShell 中編譯 DSC 設定的套裝程式含在 PowerShell DSC 檔中：[寫入、編譯及](/powershell/scripting/dsc/configurations/write-compile-apply-configuration#compile-the-configuration)套用設定。
 這可以從開發人員工作站或在組建服務（如[Azure DevOps](https://dev.azure.com)）中執行。
 
 藉由編譯設定所產生的 MOF 檔案，可以直接匯入至 Azure 狀態設定服務。
 
-### <a name="importing-a-node-configuration-in-the-azure-portal"></a>在 Azure 入口網站中匯入節點組態
+### <a name="import-a-node-configuration-in-the-azure-portal"></a>匯入 Azure 入口網站中的節點設定
 
 1. 從您的自動化帳戶，按一下 [組態管理] 下方的 [State configuration (DSC)]。
 1. 在 [State Configuration (DSC)] 頁面中，按一下 [組態] 索引標籤，然後按一下 [+ 新增]。
@@ -275,7 +277,7 @@ DSC 代理程式會在受控節點上本機驗證簽署的節點組態，確保�
 1. 在 [組態名稱]文字方塊中輸入名稱。 此名稱必須符合已編譯節點組態的組態名稱。
 1. 按一下 [確定]。
 
-### <a name="importing-a-node-configuration-with-azure-powershell"></a>使用 Azure PowerShell 匯入節點設定
+### <a name="import-a-node-configuration-with-azure-powershell"></a>使用 Azure PowerShell 匯入節點設定
 
 您可以使用[AzAutomationDscNodeConfiguration 指令程式](/powershell/module/az.automation/import-azautomationdscnodeconfiguration)，將節點設定匯入到您的自動化帳戶。
 
@@ -285,8 +287,8 @@ Import-AzAutomationDscNodeConfiguration -AutomationAccountName 'MyAutomationAcco
 
 ## <a name="next-steps"></a>後續步驟
 
-- 若要開始使用，請參閱[開始使用 Azure 自動化狀態設定](automation-dsc-getting-started.md)
-- 若要了解如何編譯 DSC 組態，以將它們指派給目標節點，請參閱[編譯 Azure Automation State Configuration 中的組態](automation-dsc-compile.md)
-- 如需 PowerShell Cmdlet 參考，請參閱 [Azure 自動化狀態設定 Cmdlet](/powershell/module/az.automation)
-- 如需定價資訊，請參閱 [Azure 自動化狀態設定的定價](https://azure.microsoft.com/pricing/details/automation/)
-- 若要查看在持續部署管線中使用 Azure 自動化狀態設定的範例，請參閱[使用 Azure 自動化狀態設定和 Chocolatey 的持續部署](automation-dsc-cd-chocolatey.md)
+- 若要開始，請參閱 [開始使用 Azure 自動化狀態設定] （Automation-dsc-started.md。
+- 若要瞭解如何編譯 DSC 設定，讓您可以將它們指派給目標節點，請參閱[在 Azure 自動化狀態設定中編譯](automation-dsc-compile.md)設定。
+- 如需 PowerShell Cmdlet 參考，請參閱[Azure 自動化狀態設定 Cmdlet](/powershell/module/az.automation)。
+- 如需定價資訊，請參閱[Azure 自動化狀態設定定價](https://azure.microsoft.com/pricing/details/automation/)。
+- 若要查看在持續部署管線中使用 Azure 自動化狀態設定的範例，請參閱[使用 Azure 自動化狀態設定和 Chocolatey 的持續部署](automation-dsc-cd-chocolatey.md)。

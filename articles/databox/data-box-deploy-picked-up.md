@@ -77,7 +77,7 @@ ms.locfileid: "77187540"
 
 ::: zone-end
 
-## <a name="in-us-canada-europetabin-us-canada-europe"></a>[美國、加拿大、歐洲](#tab/in-us-canada-europe)
+## <a name="in-us-canada-europe"></a>[美國、加拿大、歐洲](#tab/in-us-canada-europe)
 
 如果在美國、加拿大或歐洲退回裝置，請執行下列步驟。
 
@@ -114,7 +114,7 @@ ms.locfileid: "77187540"
 ::: zone-end
 
 
-## <a name="in-australiatabin-australia"></a>[澳大利亞](#tab/in-australia)
+## <a name="in-australia"></a>[澳大利亞](#tab/in-australia)
 
 澳洲的 Azure 資料中心有額外的安全性通知。 所有送達的貨物都必須有預先通知。 在澳洲寄送可採取下列步驟。
 
@@ -143,7 +143,7 @@ ms.locfileid: "77187540"
 
 ::: zone-end
 
-## <a name="in-japantabin-japan"></a>[日本](#tab/in-japan) 
+## <a name="in-japan"></a>[日本](#tab/in-japan) 
 
 1. 保留用來寄送裝置以供退貨的原始外盒。
 2. 關閉裝置電源並移除纜線。
@@ -191,7 +191,7 @@ ms.locfileid: "77187540"
 
 ::: zone-end
 
-## <a name="in-singaporetabin-singapore"></a>[新加坡](#tab/in-singapore) 
+## <a name="in-singapore"></a>[新加坡](#tab/in-singapore) 
 
 1. 保留用來寄送裝置以供退貨的原始外盒。
 2. 記下追蹤號碼 (您可以在資料箱本機 Web UI 的 [準備寄送] 頁面上看到參考編號)。 準備出貨步驟成功完成之後，即會顯示此號碼。 從此頁面下載出貨標籤，並貼到包裝盒上。 
@@ -273,7 +273,7 @@ Once the upload to Azure is complete, the Data Box erases the data on its disks 
 ::: zone-end
 -->
 
-## <a name="self-managedtabin-selfmanaged"></a>[自我管理](#tab/in-selfmanaged) 
+## <a name="self-managed"></a>[自我管理](#tab/in-selfmanaged) 
 
 如果您在日本、新加坡、韓國和西歐使用資料箱，並已在建立訂單期間選取自我管理寄送選項，請遵循下列指示。 
 

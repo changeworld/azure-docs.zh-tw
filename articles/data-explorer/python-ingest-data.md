@@ -1,32 +1,34 @@
 ---
 title: 使用 Azure 資料總管 Python 程式庫內嵌資料
-description: 在本文中, 您將瞭解如何使用 Python 將資料內嵌 (載入) 至 Azure 資料總管。
+description: 在本文中，您將瞭解如何使用 Python 將資料內嵌（載入）至 Azure 資料總管。
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: f109f2dd45fe90884d3947b244b3dafffd547725
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 91401031945d0ec3ac22fc8cbcea8ba73580ee50
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68355926"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77441998"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-python-library"></a>使用 Azure 資料總管 Python 程式庫內嵌資料
 
-Azure 資料總管是一項快速又可高度調整的資料探索服務，可用於處理記錄和遙測資料。 Azure 資料總管提供兩個適用於 Python 的用戶端程式庫：[內嵌程式庫](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest)和[資料程式庫](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data)。 這些程式庫可讓您將資料內嵌 (載入) 至叢集，並從您的程式碼查詢資料。 在本文中, 您會先在叢集中建立資料表和資料對應。 然後，您將叢集的擷取排入佇列並驗證結果。
+在本文中，您會使用 Azure 資料總管 Python 程式庫內嵌資料。 Azure 資料總管是一項快速又可高度調整的資料探索服務，可用於處理記錄和遙測資料。 Azure 資料總管提供兩個適用於 Python 的用戶端程式庫：[內嵌程式庫](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest)和[資料程式庫](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data)。 這些程式庫可讓您將資料內嵌或載入至叢集，並從您的程式碼查詢資料。
+
+首先，在叢集中建立資料表和資料對應。 然後，您將叢集的擷取排入佇列並驗證結果。
 
 這篇文章也以[Azure 筆記本](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueuedIngestSingleBlob.ipynb)的形式提供。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/)。
+* 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-* [叢集和資料庫](create-cluster-database-portal.md)
+* [Python 3.4+](https://www.python.org/downloads/)。
 
-* 安裝在您開發電腦上的 [Python](https://www.python.org/downloads/)
+* [叢集和資料庫](create-cluster-database-portal.md)。
 
 ## <a name="install-the-data-and-ingest-libraries"></a>安裝資料並內嵌程式庫
 
@@ -59,7 +61,7 @@ https://login.windows.net/<YourDomain>/.well-known/openid-configuration/
 "authorization_endpoint":"https://login.windows.net/6babcaad-604b-40ac-a9d7-9fd97c0b779f/oauth2/authorize"
 ```
 
-在此情況下，租用戶識別碼為 `6babcaad-604b-40ac-a9d7-9fd97c0b779f`。 先設定 AAD_TENANT_ID、KUSTO_URI、KUSTO_INGEST_URI 和 KUSTO_DATABASE 的值，再執行此程式碼。
+在此案例中，租用戶識別碼為 `6babcaad-604b-40ac-a9d7-9fd97c0b779f`。 先設定 AAD_TENANT_ID、KUSTO_URI、KUSTO_INGEST_URI 和 KUSTO_DATABASE 的值，再執行此程式碼。
 
 ```python
 AAD_TENANT_ID = "<TenantId>"
@@ -68,7 +70,7 @@ KUSTO_INGEST_URI = "https://ingest-<ClusterName>.<Region>.kusto.windows.net:443/
 KUSTO_DATABASE = "<DatabaseName>"
 ```
 
-現在，請建構連接字串。 此範例使用服務驗證來存取叢集。 您也可以使用 [AAD 應用程式憑證](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24)、[AAD 應用程式金鑰](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20)，以及 [AAD 使用者和密碼](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34)。
+現在來建構連接字串。 此範例使用服務驗證來存取叢集。 您也可以使用 [AAD 應用程式憑證](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24)、[AAD 應用程式金鑰](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20)，以及 [AAD 使用者和密碼](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34)。
 
 您可以在稍後的步驟中建立目的地資料表和對應。
 
@@ -103,7 +105,7 @@ BLOB_PATH = "https://" + ACCOUNT_NAME + ".blob.core.windows.net/" + \
 
 ## <a name="create-a-table-on-your-cluster"></a>在叢集上建立資料表
 
-建立符合 StormEvents.csv 檔案中資料結構描述的資料表。 此程式碼執行時，它會傳回類似以下的訊息：*若要登入，請使用網頁瀏覽器開啟頁面 https://microsoft.com/devicelogin ，並輸入代碼 F3W4VWZDM 以進行驗證*。 請遵循下列步驟來登入，然後返回執行下一個程式碼區塊。 建立連線的後續程式碼區塊需要您重新登入。
+建立符合 StormEvents.csv 檔案中資料結構描述的資料表。 此程式碼執行時，會傳回與下列類似的訊息：若要登入，請使用網頁瀏覽器開啟頁面 *，並輸入程式碼 F3W4VWZDM 來驗證 https://microsoft.com/devicelogin* 。 請遵循下列步驟來登入，然後返回執行下一個程式碼區塊。 建立連線的後續程式碼區塊需要您重新登入。
 
 ```python
 KUSTO_CLIENT = KustoClient(KCSB_DATA)
@@ -175,7 +177,7 @@ dataframe_from_result_table(RESPONSE.primary_results[0])
 
 ## <a name="clean-up-resources"></a>清除資源
 
-如果您打算遵循其他文章, 請保留您建立的資源。 否則，請在資料庫中執行下列命令，來清除 StormEvents 資料表。
+如果您打算遵循其他文章，請保留您建立的資源。 否則，請在資料庫中執行下列命令，來清除 StormEvents 資料表。
 
 ```Kusto
 .drop table StormEvents

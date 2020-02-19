@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 59ac2f74d4753c1f647bedfa2c402e729e25ee62
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 6e629f3c83d847cf20eccbe7a3fb0d3f444dac62
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847806"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430324"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>設定 Azure Active Directory B2C 中的密碼複雜度需求
 
@@ -46,11 +46,11 @@ Azure Active Directory B2C (Azure AD B2C) 支援的變更密碼複雜度需求�
 
 ### <a name="comparison-chart"></a>比較圖表
 
-| 複雜度 | 說明 |
+| 複雜度 | 描述 |
 | --- | --- |
-| 簡單 | 密碼至少為 8 到 64 個字元。 |
-| Strong | 密碼至少為 8 到 64 個字元。 它需要小寫字母、大寫字母、數字或符號 4 個之中的 3 個。 |
-| 自訂 | 此選項會對密碼複雜度規則提供最多的控制權。  它允許設定自訂的長度。  它也可以接受僅限數字的密碼 (PIN)。 |
+| Simple | 密碼至少為 8 到 64 個字元。 |
+| 強式 | 密碼至少為 8 到 64 個字元。 它需要小寫字母、大寫字母、數字或符號 4 個之中的 3 個。 |
+| Custom | 此選項會對密碼複雜度規則提供最多的控制權。  它允許設定自訂的長度。  它也可以接受僅限數字的密碼 (PIN)。 |
 
 ## <a name="custom-options"></a>自訂選項
 
@@ -73,7 +73,7 @@ Azure Active Directory B2C (Azure AD B2C) 支援的變更密碼複雜度需求�
 可讓您控制密碼中使用的不同字元類型。
 
 - **4 個其中 2 個：小寫字元、大寫字元、數字 (0-9)、符號**可確保密碼包含至少兩個字元類型。 例如，數字和小寫字元。
-- **4 個其中 3 個：小寫字元、大寫字元、數字 (0-9)、符號**可確保密碼包含至少兩個字元類型。 例如，數字、小寫字元和大寫字元。
+- **3/4：小寫字元、大寫字元、數位（0-9）、符號**可確保密碼包含至少三個字元類型。 例如，數字、小寫字元和大寫字元。
 - **4 個其中 4 個：小寫字元、大寫字元、數字 (0-9)、符號**可確保密碼包含所有的字元類型。
 
     > [!NOTE]

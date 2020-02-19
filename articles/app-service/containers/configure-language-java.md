@@ -10,18 +10,18 @@ ms.date: 11/22/2019
 ms.author: brendm
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 9c95772c8f10d7170a06d1d6793545a60fc8dd7c
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 1b9db20da58f50c91da88c2f9f890623b741f10a
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750748"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443868"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>設定適用于 Azure App Service 的 Linux JAVA 應用程式
 
-Linux 上的 Azure App Service 可讓 JAVA 開發人員在完全受控的 Linux 服務上，快速建立、部署及調整其 Tomcat、WildFly 或 JAVA Standard Edition （SE）封裝的 web 應用程式。 從命令列或編輯器 (例如 IntelliJ、Eclipse 或 Visual Studio Code)，使用 Maven 外掛程式部署應用程式。
+Linux 上的 Azure App Service 可讓 JAVA 開發人員在完全受控的 Linux 服務上，快速建立、部署及調整其 Tomcat，或 JAVA Standard Edition （SE）封裝的 web 應用程式。 從命令列或編輯器 (例如 IntelliJ、Eclipse 或 Visual Studio Code)，使用 Maven 外掛程式部署應用程式。
 
-本指南提供 JAVA 開發人員在 App Service 中使用內建 Linux 容器的重要概念和指示。 如果您從未使用過 Azure App Service，請先遵循[java 快速入門](quickstart-java.md)和[java with 于 postgresql 教學](tutorial-java-enterprise-postgresql-app.md)課程。
+本指南提供 JAVA 開發人員在 App Service 中使用內建 Linux 容器的重要概念和指示。 如果您從未使用過 Azure App Service，請遵循[JAVA 快速入門](quickstart-java.md)。
 
 ## <a name="deploying-your-app"></a>部署應用程式
 
@@ -50,7 +50,7 @@ Linux 上的 Azure App Service 可讓 JAVA 開發人員在完全受控的 Linux 
 
 ### <a name="app-logging"></a>應用程式記錄
 
-透過 Azure 入口網站或 [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) 啟用[應用程式記錄](../troubleshoot-diagnostic-logs.md?toc=/azure/app-service/containers/toc.json#enable-application-logging-windows)，設定 App Service 將應用程式的標準主控台輸出和標準主控台錯誤資料流寫入至本機檔案系統或 Azure Blob 儲存體。 設定後的 12 個小時會停用記錄至本機 App Service 檔案系統執行個體。 如果您需要較長的保留期，則請設定應用程式將輸出寫入至 Blob 儲存體容器。 您的 JAVA 和 Tomcat 應用程式記錄可在 */home/LogFiles/Application/* 目錄中找到。
+透過 Azure 入口網站或 [Azure CLI](../troubleshoot-diagnostic-logs.md?toc=/azure/app-service/containers/toc.json#enable-application-logging-windows) 啟用[應用程式記錄](/cli/azure/webapp/log#az-webapp-log-config)，設定 App Service 將應用程式的標準主控台輸出和標準主控台錯誤資料流寫入至本機檔案系統或 Azure Blob 儲存體。 設定後的 12 個小時會停用記錄至本機 App Service 檔案系統執行個體。 如果您需要較長的保留期，則請設定應用程式將輸出寫入至 Blob 儲存體容器。 您的 JAVA 和 Tomcat 應用程式記錄可在 */home/LogFiles/Application/* 目錄中找到。
 
 如果您的應用程式使用 [Logback](https://logback.qos.ch/) 或 [Log4j](https://logging.apache.org/log4j) 追蹤，則您可以使用[在 Application Insights 中探索 Java 追蹤記錄](/azure/application-insights/app-insights-java-trace-logs)中的記錄架構設定指示，將這些要檢閱的追蹤轉送至 Azure Application Insights。
 
@@ -136,7 +136,7 @@ jcmd <pid> JFR.dump name=continuous_recording filename="/home/recording1.jfr"
 
 調整應用程式堆積設定時，請檢閱 App Service 方案詳細資料，並考慮多個應用程式和部署位置需求以尋找最佳的記憶體配置。
 
-如果您要部署 JAR 應用程式，它應該命名為*app.config* ，讓內建映射能夠正確地識別您的應用程式。 （Maven 外掛程式會自動進行此重新命名）。如果您不想要將 JAR 重新命名為*app.config*，可以使用命令上傳 shell 腳本來執行 JAR。 然後在入口網站的 [設定] 區段的 [[啟動](app-service-linux-faq.md#built-in-images)檔案] 文字方塊中，貼上此腳本的完整路徑。 啟動腳本不會從其放置所在的目錄執行。 因此，請一律使用絕對路徑來參考啟動腳本中的檔案（例如： `java -jar /home/myapp/myapp.jar`）。
+如果您要部署 JAR 應用程式，它應該命名為*app.config* ，讓內建映射能夠正確地識別您的應用程式。 （Maven 外掛程式會自動進行此重新命名）。如果您不想要將 JAR 重新命名為*app.config*，可以使用命令上傳 shell 腳本來執行 JAR。 然後，在入口網站的 [設定] 區段中，將此指令碼的完整路徑貼到 [[啟動檔案](app-service-linux-faq.md#built-in-images)] 文字方塊中。 啟動指令碼不會從其放置所在的目錄來執行。 因此，請一律使用絕對路徑在啟動指令碼中參考檔案 (例如： `java -jar /home/myapp/myapp.jar`)。
 
 ### <a name="turn-on-web-sockets"></a>開啟 Web 通訊端
 
@@ -186,9 +186,9 @@ az webapp start --name <app-name> --resource-group <resource-group-name>
 
 使用 **驗證和授權** 選項，在 Azure 入口網站中設定應用程式驗證。 在這裡，您可以使用 Azure Active Directory 或社交登入 (例如 Facebook、Google 或 GitHub) 來啟用驗證。 只有在設定單一驗證提供者時，Azure 入口網站設定才會運作。 如需詳細資訊，請參閱[設定 App Service 應用程式使用 Azure Active Directory 登入](../configure-authentication-provider-aad.md?toc=/azure/app-service/containers/toc.json)，以及其他身分識別提供者的相關文章。 如果您需要啟用多個登入提供者，請遵循[自訂 App Service 驗證](../app-service-authentication-how-to.md?toc=/azure/app-service/containers/toc.json)一文中的指示。
 
-#### <a name="tomcat-and-wildfly"></a>Tomcat 和 WildFly
+#### <a name="tomcat"></a>Tomcat
 
-您的 Tomcat 或 WildFly 應用程式可以藉由將主體物件轉換成對應物件，直接從 servlet 存取使用者的宣告。 Map 物件會將每個宣告類型對應到該類型的宣告集合。 在下列程式碼中，`request` 是 `HttpServletRequest`的實例。
+Tomcat 應用程式可以藉由將主體物件轉換成對應物件，直接從 servlet 存取使用者的宣告。 Map 物件會將每個宣告類型對應到該類型的宣告集合。 在下列程式碼中，`request` 是 `HttpServletRequest`的實例。
 
 ```java
 Map<String, Collection<String>> map = (Map<String, Collection<String>>) request.getUserPrincipal();
@@ -283,20 +283,18 @@ keyStore.load(
 5. 將已解壓縮的 NewRelic JAVA 代理程式檔案上傳至 */home/site/wwwroot/apm*底下的目錄。 您的代理程式檔案應位於 */home/site/wwwroot/apm/newrelic*中。
 6. 在 */home/site/wwwroot/apm/newrelic/newrelic.yml*修改 YAML 檔案，並將預留位置授權值取代為您自己的授權金鑰。
 7. 在 Azure 入口網站中，瀏覽至您在 App Service 中的應用程式，並建立新的應用程式設定。
-    - 如果您的應用程式使用 **Java SE**，請使用 `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` 值建立名為 `JAVA_OPTS` 的環境變數。
-    - 如果您使用 **Tomcat**，請使用 `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` 值建立名為 `CATALINA_OPTS` 的環境變數。
-    - 如果您使用的是**WildFly**，請參閱[這裡](https://docs.newrelic.com/docs/agents/java-agent/additional-installation/wildfly-version-11-installation-java)的新 new relic 檔，以取得安裝 JAVA 代理程式和 JBoss 設定的指引。
+    - 如果您的應用程式使用 **Java SE**，請使用 `JAVA_OPTS` 值建立名為 `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` 的環境變數。
+    - 如果您使用 **Tomcat**，請使用 `CATALINA_OPTS` 值建立名為 `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` 的環境變數。
 
 ### <a name="configure-appdynamics"></a>設定 AppDynamics
 
 1. 在 [AppDynamics.com](https://www.appdynamics.com/community/register/) 建立 AppDynamics 帳戶
-2. 從 AppDynamics 網站下載 JAVA 代理程式，檔案名會類似*AppServerAgent-x*的名稱。
+2. 從 AppDynamics 網站下載 JAVA 代理程式，檔案名會類似*AppServerAgent-x*的名稱。 *
 3. 透過[SSH 連線到您的 App Service 實例](app-service-linux-ssh-support.md)，並建立新的目錄 */home/site/wwwroot/apm*。
 4. 將 JAVA 代理程式檔案上傳至 */home/site/wwwroot/apm*底下的目錄。 您的代理程式檔案應位於 */home/site/wwwroot/apm/appdynamics*中。
 5. 在 Azure 入口網站中，瀏覽至您在 App Service 中的應用程式，並建立新的應用程式設定。
-    - 如果您使用 **Java SE**，請使用 `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` 值建立名為 `JAVA_OPTS` 的環境變數，其中 `<app-name>` 是您的 App Service 名稱。
-    - 如果您使用 **Tomcat**，請使用 `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` 值建立名為 `CATALINA_OPTS` 的環境變數，其中 `<app-name>` 是您的 App Service 名稱。
-    - 如果您使用的是**WildFly**，請參閱[這裡](https://docs.appdynamics.com/display/PRO45/JBoss+and+Wildfly+Startup+Settings)的 AppDynamics 檔，以取得安裝 JAVA 代理程式和 JBoss 設定的指引。
+    - 如果您使用 **Java SE**，請使用 `JAVA_OPTS` 值建立名為 `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` 的環境變數，其中 `<app-name>` 是您的 App Service 名稱。
+    - 如果您使用 **Tomcat**，請使用 `CATALINA_OPTS` 值建立名為 `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` 的環境變數，其中 `<app-name>` 是您的 App Service 名稱。
 
 > [!NOTE]
 > 如果您已經有 `JAVA_OPTS` 或 `CATALINA_OPTS` 的環境變數，請將 `-javaagent:/...` 選項附加至目前值的結尾。
@@ -326,7 +324,7 @@ App Service Linux 會將傳入要求路由傳送至埠80，讓您的應用程式
 
 這些指示適用於所有資料庫連線。 您將必須在預留位置中填入您所選資料庫的驅動程式類別名稱和 JAR 檔案。 下表提供常見資料庫的類別名稱和驅動程式下載。
 
-| 資料庫   | 驅動程式類別名稱                             | JDBC Driver                                                                      |
+| 資料庫   | 驅動程式類別名稱                             | JDBC 驅動程式                                                                      |
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [下載](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [下載](https://dev.mysql.com/downloads/connector/j/) (請選取 [Platform Independent] \(不受平台影響\)) |
@@ -343,7 +341,7 @@ App Service Linux 會將傳入要求路由傳送至埠80，讓您的應用程式
 </appSettings>
 ```
 
-或者，在 Azure 入口網站的 [**設定** > **應用程式設定**] 頁面中設定環境變數。
+或者，在 Azure 入口網站的 [設定 ** > ** **應用程式設定**] 頁面中設定環境變數。
 
 接著，決定資料來源應僅供在 Tomcat Servlet 上執行的一個應用程式還是所有應用程式使用。
 
@@ -351,7 +349,7 @@ App Service Linux 會將傳入要求路由傳送至埠80，讓您的應用程式
 
 1. 在您專案的*中繼 INF/* 目錄中，建立一個*內容 .xml*檔案。 建立*中繼 INF/* 目錄（如果不存在）。
 
-2. 在*內容 .xml*中，新增 `Context` 元素，以將資料來源連結至 JNDI 位址。 以上表中您驅動程式的類別名稱取代 `driverClassName` 預留位置。
+2. 在*內容 .xml*中，新增 `Context` 專案，以將資料來源連結至 JNDI 位址。 以上表中您驅動程式的類別名稱取代 `driverClassName` 預留位置。
 
     ```xml
     <Context>
@@ -491,513 +489,6 @@ xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl 
 
 如需有關此主題的詳細資訊，請參閱有關資料存取和[外部化](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html)設定的[彈簧開機檔](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-data-access.html)。
 
-## <a name="configure-java-ee-wildfly"></a>設定 JAVA EE （WildFly）
-
-> [!NOTE]
-> App Service Linux 上的 JAVA Enterprise Edition 目前為預覽狀態。 **不**建議將此堆疊用於生產面向的工作。
-
-Linux 上的 Azure App Service 可讓 JAVA 開發人員在完全受控的 Linux 服務上，建立、部署及調整 JAVA Enterprise （JAVA EE）應用程式。  基礎 JAVA 企業執行時間環境是開放原始碼[WildFly](https://wildfly.org/)應用程式伺服器。
-
-本節包含下列小節：
-
-- [使用 App Service 進行調整](#scale-with-app-service)
-- [自訂應用程式伺服器設定](#customize-application-server-configuration)
-- [安裝模組和相依性](#install-modules-and-dependencies)
-- [設定資料來源](#configure-data-sources)
-- [使用服務匯流排做為訊息代理程式](#use-service-bus-as-a-message-broker)
-
-### <a name="scale-with-app-service"></a>使用 App Service 調整
-
-在 Linux 上的 App Service 中執行的 WildFly 應用程式伺服器會以獨立模式執行，而不會在網域設定中執行。 當您相應放大 App Service 方案時，每個 WildFly 執行個體會設定為獨立伺服器。
-
-使用[調整規模規則](../../monitoring-and-diagnostics/monitoring-autoscale-get-started.md)以及藉由[增加執行個體計數](../manage-scale-up.md?toc=/azure/app-service/containers/toc.json)，以垂直或水平方式調整您的應用程式。
-
-### <a name="customize-application-server-configuration"></a>自訂應用程式伺服器設定
-
-Web 應用程式實例是無狀態的，因此每個啟動的新實例都必須在啟動時設定，以支援應用程式所需的 WildFly 設定。
-您可以撰寫啟動 Bash 指令碼來呼叫 WildFly CLI，以便：
-
-- 設定資料來源
-- 設定傳訊提供者
-- 將其他模組和相依性新增至 WildFly 伺服器設定。
-
-當 WildFly 已啟動並執行，但在應用程式啟動之前，會執行此腳本。 腳本應該使用從 */opt/jboss/wildfly/bin/jboss-cli.sh*呼叫的[JBOSS CLI](https://docs.jboss.org/author/display/WFLY/Command+Line+Interface)來設定應用程式伺服器，以及伺服器啟動後所需的任何設定或變更。
-
-請勿使用 CLI 的互動模式來設定 WildFly。 您可以改用 `--file` 命令來為 JBoss CLI 提供命令的指令碼，例如：
-
-```bash
-/opt/jboss/wildfly/bin/jboss-cli.sh -c --file=/path/to/your/jboss_commands.cli
-```
-
-使用 FTP，將啟動腳本上傳至 */home*目錄下 App Service 實例中的位置，例如 */home/site/deployments/tools*。 如需詳細資訊，請參閱[使用 FTP/S 將您的應用程式部署到 Azure App Service](https://docs.microsoft.com/azure/app-service/deploy-ftp)。
-
-將 Azure 入口網站中的 [**啟動腳本**] 欄位設定為啟動 shell 腳本的位置，例如 */home/site/deployments/tools/your-startup-script.sh*。
-
-在應用程式設定中提供[應用程式設定](../configure-common.md?toc=/azure/app-service/containers/toc.json#configure-app-settings)，以傳遞要在腳本中使用的環境變數。 應用程式設定會保留設定應用程式脫離版本控制所需的連接字串和其他祕密。
-
-### <a name="install-modules-and-dependencies"></a>安裝模組和相依性
-
-若要透過 JBoss CLI 將模組及其相依性安裝到 WildFly 的路徑，您必須在自己的目錄中建立下列檔案。 部分模組和相依性可能需要其他設定 (例如 JNDI 命名或其他 API 特有的設定)，因此，這份清單是您將需要在大多數情況下設定相依性之項目的基本組合。
-
-- [XML 模組描述元](https://jboss-modules.github.io/jboss-modules/manual/#descriptors) \(英文\)。 這個 XML 檔案會定義模組的名稱、屬性和相依性。 這個[範例 module.xml 檔案](https://access.redhat.com/documentation/en-us/jboss_enterprise_application_platform/6/html/administration_and_configuration_guide/example_postgresql_xa_datasource) \(英文\) 會定義 Postgres 模組、它的 JAR 檔案 JDBC 相依性，以及其他所需的模組相依性。
-- 所有適用於您模組的必要 JAR 檔案相依性。
-- 含有您 JBoss CLI 命令的指令碼，可用來設定新的模組。 這個檔案所包含的命令將透過 JBoss CLI 執行，以設定伺服器來使用相依性。 如需用來新增模組、資料來源和傳訊提供者的相關文件，請參閱[這份文件](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.0/html-single/management_cli_guide/#how_to_cli) \(英文\)。
-- Bash 啟動指令碼，會在上一個步驟中呼叫 JBoss CLI 並執行此指令碼。 當您的 App Service 實例重新開機時，或在向外延展時布建新的實例時，就會執行這個檔案。您可以在此啟動腳本中執行應用程式的任何其他設定，因為 JBoss 命令會傳遞至 JBoss CLI。 至少，這個檔案可以是用來將您的 JBoss CLI 命令指令碼傳遞至 JBoss CLI 的單一命令：
-
-```bash
-/opt/jboss/wildfly/bin/jboss-cli.sh -c --file=/path/to/your/jboss_commands.cli
-```
-
-當您擁有模組的檔案和內容之後，請遵循下列步驟，將模組新增至 WildFly 應用程式伺服器。
-
-1. 使用 FTP，將您的檔案上傳至 */home*目錄下的 App Service 實例中的位置，例如 */home/site/deployments/tools*。 如需詳細資訊，請參閱[使用 FTP/S 將您的應用程式部署到 Azure App Service](../deploy-ftp.md)。
-2. 在 Azure 入口網站的 [**設定** > **一般設定**] 頁面中，將 [**啟動腳本**] 欄位設定為啟動 shell 腳本的位置，例如 */home/site/deployments/tools/startup.sh*。
-3. 按入口網站 [**總覽**] 區段中的 [**重新開機**] 按鈕，或使用 Azure CLI，重新開機您的 App Service 實例。
-
-### <a name="configure-data-sources"></a>設定資料來源
-
-若要設定 WildFly/JBoss 來存取資料來源，請使用上述「安裝模組和相依性」一節中所述的一般程式。 下一節針對于 postgresql、MySQL 和 SQL Server 資料來源，提供此程式的特定詳細資訊。
-
-本節假設您已有應用程式、App Service 實例和 Azure 資料庫服務實例。 下列指示會參考您的 App Service 名稱、其資源群組，以及您的資料庫連接資訊。 您可以在 Azure 入口網站上找到此資訊。
-
-如果您想要從使用範例應用程式開始逐步完成整個流程，請參閱[教學課程：在 Azure 中建立 JAVA EE 和 Postgres web 應用程式](tutorial-java-enterprise-postgresql-app.md)。
-
-下列步驟說明連接現有 App Service 和資料庫的需求。
-
-1. 下載適用于[于 postgresql](https://jdbc.postgresql.org/download.html)、 [MySQL](https://dev.mysql.com/downloads/connector/j/)或[SQL Server](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server)的 JDBC 驅動程式。 解壓縮下載的封存以取得驅動程式 .jar 檔案。
-
-2. 使用類似*module*的名稱建立檔案，然後新增下列標記。 將 `<module name>` 預留位置（包括角括弧）取代為于 postgresql 的 `org.postgres`、適用于 MySQL 的 `com.mysql`，或 SQL Server 的 `com.microsoft`。 將 `<JDBC .jar file path>` 取代為上一個步驟中的 .jar 檔案名稱，包括將檔案放在 App Service 實例中的位置完整路徑。 這可以是 */home*目錄下的任何位置。
-
-    ```xml
-    <?xml version="1.0" ?>
-    <module xmlns="urn:jboss:module:1.1" name="<module name>">
-        <resources>
-           <resource-root path="<JDBC .jar file path>" />
-        </resources>
-        <dependencies>
-            <module name="javax.api"/>
-            <module name="javax.transaction.api"/>
-        </dependencies>
-    </module>
-    ```
-
-3. 建立名稱類似*datasource-commands*的檔案，並新增下列程式碼。 以您在上一個步驟中使用的值取代 `<JDBC .jar file path>`。 將 `<module file path>` 取代為上一個步驟中的檔案名和 App Service 路徑，例如 */home/module.xml*。
-
-    **PostgreSQL**
-
-    ```console
-    module add --name=org.postgres --resources=<JDBC .jar file path> --module-xml=<module file path>
-
-    /subsystem=datasources/jdbc-driver=postgres:add(driver-name=postgres,driver-module-name=org.postgres,driver-class-name=org.postgresql.Driver,driver-xa-datasource-class-name=org.postgresql.xa.PGXADataSource)
-
-    data-source add --name=postgresDS --driver-name=postgres --jndi-name=java:jboss/datasources/postgresDS --connection-url=$DATABASE_CONNECTION_URL --user-name=$DATABASE_SERVER_ADMIN_FULL_NAME --password=$DATABASE_SERVER_ADMIN_PASSWORD --use-ccm=true --max-pool-size=5 --blocking-timeout-wait-millis=5000 --enabled=true --driver-class=org.postgresql.Driver --exception-sorter-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter --jta=true --use-java-context=true --valid-connection-checker-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker
-
-    reload --use-current-server-config=true
-    ```
-
-    **MySQL**
-
-    ```console
-    module add --name=com.mysql --resources=<JDBC .jar file path> --module-xml=<module file path>
-
-    /subsystem=datasources/jdbc-driver=mysql:add(driver-name=mysql,driver-module-name=com.mysql,driver-class-name=com.mysql.cj.jdbc.Driver)
-
-    data-source add --name=mysqlDS --jndi-name=java:jboss/datasources/mysqlDS --connection-url=$DATABASE_CONNECTION_URL --driver-name=mysql --user-name=$DATABASE_SERVER_ADMIN_FULL_NAME --password=$DATABASE_SERVER_ADMIN_PASSWORD --use-ccm=true --max-pool-size=5 --blocking-timeout-wait-millis=5000 --enabled=true --driver-class=com.mysql.cj.jdbc.Driver --jta=true --use-java-context=true --exception-sorter-class-name=com.mysql.cj.jdbc.integration.jboss.ExtendedMysqlExceptionSorter
-
-    reload --use-current-server-config=true
-    ```
-
-    **SQL Server**
-
-    ```console
-    module add --name=com.microsoft --resources=<JDBC .jar file path> --module-xml=<module file path>
-
-    /subsystem=datasources/jdbc-driver=sqlserver:add(driver-name=sqlserver,driver-module-name=com.microsoft,driver-class-name=com.microsoft.sqlserver.jdbc.SQLServerDriver,driver-datasource-class-name=com.microsoft.sqlserver.jdbc.SQLServerDataSource)
-
-    data-source add --name=sqlDS --jndi-name=java:jboss/datasources/sqlDS --driver-name=sqlserver --connection-url=$DATABASE_CONNECTION_URL --validate-on-match=true --background-validation=false --valid-connection-checker-class-name=org.jboss.jca.adapters.jdbc.extensions.mssql.MSSQLValidConnectionChecker --exception-sorter-class-name=org.jboss.jca.adapters.jdbc.extensions.mssql.MSSQLExceptionSorter
-
-    reload --use-current-server-config=true
-    ```
-
-    這個檔案是由下一個步驟中所述的啟動腳本執行。 它會將 JDBC 驅動程式安裝為 WildFly 模組、建立對應的 WildFly 資料來源，並重載伺服器以確保變更生效。
-
-4. 建立名稱類似*startup.sh*的檔案，並新增下列程式碼。 將 `<JBoss CLI script>` 取代為您在上一個步驟中建立的檔案名。 請務必包含您將在 App Service 實例中放置檔案之位置的完整路徑，例如 */home/datasource-commands.cli*。
-
-    ```bash
-    #!/usr/bin/env bash
-    /opt/jboss/wildfly/bin/jboss-cli.sh -c --file=<JBoss CLI script>
-    ```
-
-5. 使用 FTP 將 JDBC .jar 檔案、模組 XML 檔案、JBoss CLI 腳本和啟動腳本上傳至您的 App Service 實例。 將這些檔案放在您在先前步驟中指定的位置，例如 */home*。 如需 FTP 的詳細資訊，請參閱[使用 ftp/S 將您的應用程式部署到 Azure App Service](https://docs.microsoft.com/azure/app-service/deploy-ftp)。
-
-6. 使用 [Azure CLI] 將設定新增至保存資料庫連接資訊的 App Service。 以 App Service 使用的值取代 `<resource group>` 和 `<webapp name>`。 以您的資料庫連接資訊取代 `<database server name>`、`<database name>`、`<admin name>`和 `<admin password>`。 您可以從 Azure 入口網站取得您的 App Service 和資料庫資訊。
-
-    **PostgreSQL：**
-
-    ```bash
-    az webapp config appsettings set \
-        --resource-group <resource group> \
-        --name <webapp name> \
-        --settings \
-            DATABASE_CONNECTION_URL=jdbc:postgresql://<database server name>:5432/<database name>?ssl=true \
-            DATABASE_SERVER_ADMIN_FULL_NAME=<admin name> \
-            DATABASE_SERVER_ADMIN_PASSWORD=<admin password>
-    ```
-
-    **MySQL**
-
-    ```bash
-    az webapp config appsettings set \
-        --resource-group <resource group> \
-        --name <webapp name> \
-        --settings \
-            DATABASE_CONNECTION_URL=jdbc:mysql://<database server name>:3306/<database name>?ssl=true\&useLegacyDatetimeCode=false\&serverTimezone=GMT \
-            DATABASE_SERVER_ADMIN_FULL_NAME=<admin name> \
-            DATABASE_SERVER_ADMIN_PASSWORD=<admin password>
-    ```
-
-    **SQL Server:**
-
-    ```bash
-    az webapp config appsettings set \
-        --resource-group <resource group> \
-        --name <webapp name> \
-        --settings \
-            DATABASE_CONNECTION_URL=jdbc:sqlserver://<database server name>:1433;database=<database name>;user=<admin name>;password=<admin password>;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
-    ```
-
-    每個資料庫伺服器的 DATABASE_CONNECTION_URL 值都不同，而且不同于 Azure 入口網站上的值。 WildFly 需要使用此處所示的 URL 格式（和上述程式碼片段）：
-
-    * **于 postgresql：** `jdbc:postgresql://<database server name>:5432/<database name>?ssl=true`
-    * **MySQL：** `jdbc:mysql://<database server name>:3306/<database name>?ssl=true\&useLegacyDatetimeCode=false\&serverTimezone=GMT`
-    * **SQL Server：** `jdbc:sqlserver://<database server name>:1433;database=<database name>;user=<admin name>;password=<admin password>;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;`
-
-7. 在 Azure 入口網站中，流覽至您的 App Service 並尋找 **設定** > **一般設定** 頁面。 將 [**啟動腳本**] 欄位設定為啟動腳本的名稱和位置，例如 */home/startup.sh*。
-
-下次 App Service 重新開機時，它將會執行啟動腳本，並執行必要的設定步驟。 若要測試此設定是否正確發生，您可以使用 SSH 存取您的 App Service，然後從 Bash 提示字元自行執行啟動腳本。 您也可以檢查 App Service 記錄。 如需這些選項的詳細資訊，請參閱[記錄和偵錯工具](#logging-and-debugging-apps)。
-
-接下來，您將需要更新應用程式的 WildFly 設定，並重新部署它。 使用下列步驟：
-
-1. 開啟應用程式的*src/main/resources/META-INF/持續性 .xml*檔案，並尋找 `<jta-data-source>` 元素。 取代其內容，如下所示：
-
-    **PostgreSQL**
-
-    ```xml
-    <jta-data-source>java:jboss/datasources/postgresDS</jta-data-source>
-    ```
-
-    **MySQL**
-
-    ```xml
-    <jta-data-source>java:jboss/datasources/mysqlDS</jta-data-source>
-    ```
-
-    **SQL Server**
-
-    ```xml
-    <jta-data-source>java:jboss/datasources/postgresDS</jta-data-source>
-    ```
-
-2. 在 Bash 提示字元中使用下列命令，重建並重新部署您的應用程式：
-
-    ```bash
-    mvn package -DskipTests azure-webapp:deploy
-    ```
-
-3. 在 Azure 入口網站的 [**總覽**] 區段中按下 [**重新開機**] 按鈕，或使用 Azure CLI，重新開機您的 App Service 實例。
-
-您的 App Service 實例現在已設定為可存取您的資料庫。
-
-如需使用 WildFly 設定資料庫連線的詳細資訊，請參閱[于 postgresql](https://developer.jboss.org/blogs/amartin-blog/2012/02/08/how-to-set-up-a-postgresql-jdbc-driver-on-jboss-7)、 [MySQL](https://docs.jboss.org/jbossas/docs/Installation_And_Getting_Started_Guide/5/html/Using_other_Databases.html#Using_other_Databases-Using_MySQL_as_the_Default_DataSource)或[SQL Server](https://docs.jboss.org/jbossas/docs/Installation_And_Getting_Started_Guide/5/html/Using_other_Databases.html#d0e3898)。
-
-### <a name="use-service-bus-as-a-message-broker"></a>使用服務匯流排做為訊息代理程式
-
-您可以設定 WildFly 和訊息驅動的 bean，以使用[Azure 服務匯流排](/azure/service-bus-messaging)做為訊息代理程式。 設定之後，您可以使用[Apache Qpid](https://qpid.apache.org)做為您的 JAVA Message SERVICE （JMS）用戶端來傳送和接收訊息。 設定 JMS 資源介面卡（JMS RA）的幾個步驟，可讓企業 JAVA Bean （Ejb）設定遠端 JMS 連接處理站和佇列。 此遠端安裝程式會指向 Azure 服務匯流排並使用 AMQP 通訊協定的 Apache Qpid JMS 提供者。
-
-下列步驟說明必要的設定和程式碼。 這些步驟假設您已建立用來裝載 bean 的 App Service 實例、服務匯流排命名空間、佇列，以及包含訂閱的主題。 如需建立這些資源的相關資訊，請參閱：
-
-- [快速入門：在 Linux 上的 Azure App Service 上建立 JAVA 應用程式](/azure/app-service/containers/quickstart-java)
-- [快速入門：使用 Azure CLI 建立服務匯流排佇列](/azure/service-bus-messaging/service-bus-quickstart-cli)
-- [快速入門：使用 Azure 入口網站建立主題的服務匯流排主題和訂用帳戶](/azure/service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal)
-
-1. 開啟 Bash 終端機，並使用下列命令，將您的 Azure 資源資訊儲存在環境變數中。 將預留位置（包括角括弧）取代為指定的值。
-
-    | 變數            | 值                                                                      |
-    |---------------------|----------------------------------------------------------------------------|
-    | RESOURCEGROUP_NAME  | 包含您 App Service 實例之資源群組的名稱。       |
-    | WEBAPP_NAME         | App Service 實例的名稱。                                     |
-    | 地區              | 裝載應用程式的區功能變數名稱稱。                           |
-    | DEFAULT_SBNAMESPACE | 服務匯流排命名空間的名稱。                                    |
-    | SB_SAS_POLICY       | 命名空間的共用存取簽章（SAS）原則的名稱。   |
-    | SB_SAS_KEY          | 佇列 SAS 原則的主要或次要金鑰。                  |
-    | SB_QUEUE            | 服務匯流排佇列的名稱。                                        |
-    | SB_TOPIC            | 服務匯流排主題的名稱。                                        |
-    | SB_SUBSCRIPTION     | 您的主題的訂用帳戶名稱。                                |
-
-    ```bash
-    RESOURCEGROUP_NAME=<resource group>
-    WEBAPP_NAME=<web app>
-    WEBAPP_PLAN_NAME=${WEBAPP_NAME}-appservice-plan
-    REGION=<region>
-    DEFAULT_SBNAMESPACE=<namespace>
-    SB_SAS_POLICY=<SAS policy>
-    SB_SAS_KEY=<SAS key>
-    SB_QUEUE=<queue>
-    SB_TOPIC=<topic>
-    SB_SUBSCRIPTION=<subscription>
-    PROVIDER_URL=amqps://${DEFAULT_SBNAMESPACE}.servicebus.windows.net?amqp.idleTimeout=120000
-    ```
-
-    您可在 Azure 入口網站中找到此資訊。 針對 SAS 原則和金鑰，請務必使用命名空間的值，讓您的應用程式可以存取您的佇列和主題訂用帳戶。 若要在 Azure 入口網站上尋找這些值，請流覽至您的命名空間資源，選取 [**共用存取原則**]，然後選取 [ **RootManageSharedAccessKey** ] 原則。
-
-2. 下載[Apache QPID JMS 提供者](https://qpid.apache.org/components/jms/index.html)。 找出*lib*和*lib/optional*目錄中的 .jar 檔案。
-
-3. 建立名為*module*的檔案，並新增下列標記。 以每個 .jar 檔案的正確版本取代每個 `<version>` 預留位置（包括角括弧）的實例，如此一來，檔案名就會與您在步驟1中解壓縮的檔案相符。
-
-    ```xml
-    <module xmlns="urn:jboss:module:1.1" name="org.jboss.genericjms.provider">
-        <resources>
-            <resource-root path="proton-j-<version>.jar"/>
-            <resource-root path="qpid-jms-client-<version>.jar"/>
-            <resource-root path="slf4j-log4j12-<version>.jar"/>
-            <resource-root path="slf4j-api-<version>.jar"/>
-            <resource-root path="log4j-<version>.jar"/>
-            <resource-root path="netty-buffer-<version>.jar" />
-            <resource-root path="netty-codec-<version>.jar" />
-            <resource-root path="netty-codec-http-<version>.jar" />
-            <resource-root path="netty-common-<version>.jar" />
-            <resource-root path="netty-handler-<version>.jar" />
-            <resource-root path="netty-resolver-<version>.jar" />
-            <resource-root path="netty-transport-<version>.jar" />
-            <resource-root path="netty-transport-native-epoll-<version>-linux-x86_64.jar" />
-            <resource-root path="netty-transport-native-kqueue-<version>-osx-x86_64.jar" />
-            <resource-root path="netty-transport-native-unix-common-<version>.jar" />
-            <resource-root path="qpid-jms-discovery-<version>jar" />
-        </resources>
-        <dependencies>
-            <module name="javax.api"/>
-            <module name="javax.jms.api"/>
-        </dependencies>
-    </module>
-    ```
-
-4. 建立名為*startup.sh*的檔案，並新增下列程式碼。
-
-    ```bash
-    echo "Generating jndi.properties file in /home/site/deployments/tools directory"
-    echo "connectionfactory.mymdbconnection=amqps://${DEFAULT_SBNAMESPACE}.servicebus.windows.net?amqp.idleTimeout=120000&jms.username=${SB_SAS_POLICY}&jms.password=${SB_SAS_KEY}" > /home/site/deployments/tools/jndi.properties
-    echo "queue.mymdbqueue=${SB_QUEUE}" >> /home/site/deployments/tools/jndi.properties
-    echo "topic.mymdbtopic=${SB_TOPIC}" >> /home/site/deployments/tools/jndi.properties
-    echo "queue.mymdbsubscription=${SB_TOPIC}/Subscriptions/${SB_SUBSCRIPTION}" >> /home/site/deployments/tools/jndi.properties
-    echo "====== contents of /home/site/deployments/tools/jndi.properties ======"
-    cat /home/site/deployments/tools/jndi.properties
-    echo "====== EOF /home/site/deployments/tools/jndi.properties ======"
-    echo "Generating commands.cli file for /home/site/deployments/tools directory"
-    echo "# Start batching commands" > /home/site/deployments/tools/commands.cli
-    echo "batch" >> /home/site/deployments/tools/commands.cli
-    echo "# Configure the ee subsystem to enable MDB annotation property substitution" >> /home/site/deployments/tools/commands.cli
-    echo "/subsystem=ee:write-attribute(name=annotation-property-replacement,value=true)" >> /home/site/deployments/tools/commands.cli
-    echo "# Define system properties to be used in the substititution" >> /home/site/deployments/tools/commands.cli
-    echo "/system-property=property.mymdb.queue:add(value=java:global/remoteJMS/mymdbqueue})" >> /home/site/deployments/tools/commands.cli
-    echo "/system-property=property.mymdb.topic:add(value=java:global/remoteJMS/mymdbsubscription)" >> /home/site/deployments/tools/commands.cli
-    echo "/system-property=property.connection.factory:add(value=java:global/remoteJMS/mymdbconnection)" >> /home/site/deployments/tools/commands.cli
-    echo "/subsystem=ee:list-add(name=global-modules, value={\"name\" => \"org.jboss.genericjms.provider\", \"slot\" =>\"main\"}" >> /home/site/deployments/tools/commands.cli
-    echo "/subsystem=naming/binding=\"java:global/remoteJMS\":add(binding-type=external-context,module=org.jboss.genericjms.provider,class=javax.naming.InitialContext,environment=[java.naming.factory.initial=org.apache.qpid.jms.jndi.JmsInitialContextFactory,org.jboss.as.naming.lookup.by.string=true,java.naming.provider.url=/home/site/deployments/tools/jndi.properties])" >> /home/site/deployments/tools/commands.cli
-    echo "/subsystem=resource-adapters/resource-adapter=generic-ra:add(module=org.jboss.genericjms,transaction-support=XATransaction)" >> /home/site/deployments/tools/commands.cli
-    echo "/subsystem=resource-adapters/resource-adapter=generic-ra/connection-definitions=sbf-cd:add(class-name=org.jboss.resource.adapter.jms.JmsManagedConnectionFactory, jndi-name=java:/jms/mymdbconnection)" >> /home/site/deployments/tools/commands.cli
-    echo "/subsystem=resource-adapters/resource-adapter=generic-ra/connection-definitions=sbf-cd/config-properties=ConnectionFactory:add(value=mymdbconnection)" >> /home/site/deployments/tools/commands.cli
-    echo "/subsystem=resource-adapters/resource-adapter=generic-ra/connection-definitions=sbf-cd/config-properties=JndiParameters:add(value=\"java.naming.factory.initial=org.apache.qpid.jms.jndi.JmsInitialContextFactory;java.naming.provider.url=/home/site/deployments/tools/jndi.properties\")" >> /home/site/deployments/tools/commands.cli
-    echo "/subsystem=resource-adapters/resource-adapter=generic-ra/connection-definitions=sbf-cd:write-attribute(name=security-application,value=true)" >> /home/site/deployments/tools/commands.cli
-    echo "/subsystem=ejb3:write-attribute(name=default-resource-adapter-name, value=generic-ra)" >> /home/site/deployments/tools/commands.cli
-    echo "# Run the batch commands" >> /home/site/deployments/tools/commands.cli
-    echo "run-batch" >> /home/site/deployments/tools/commands.cli
-    echo "reload" >> /home/site/deployments/tools/commands.cli
-    echo "====== contents of /home/site/deployments/tools/commands.cli ======"
-    cat /home/site/deployments/tools/commands.cli
-    echo "======= EOF /home/site/deployments/tools/commands.cli ========"
-    mkdir /opt/jboss/wildfly/modules/system/layers/base/org/jboss/genericjms/provider
-    mkdir /opt/jboss/wildfly/modules/system/layers/base/org/jboss/genericjms/provider/main
-    cp  /home/site/deployments/tools/*.jar /opt/jboss/wildfly/modules/system/layers/base/org/jboss/genericjms/provider/main/
-    cp /home/site/deployments/tools/module.xml /opt/jboss/wildfly/modules/system/layers/base/org/jboss/genericjms/provider/main/
-    cp /home/site/deployments/tools/jndi.properties /opt/jboss/wildfly/standalone/configuration/
-    /opt/jboss/wildfly/bin/jboss-cli.sh -c --file=/home/site/deployments/tools/commands.cli
-    echo "Startup Run done"
-    ```
-
-    您的 App Service 實例會在每次啟動時執行此腳本，並提供 WildFly 所需的其他設定。 此腳本會將您的應用程式相依性複製到所需的位置。 它也會產生*jndi*檔案，以及使用步驟1中所示之環境變數的*命令. cli*檔案。 在稍後的步驟中，這些值也會傳遞至您的 App Service 實例。
-
-    *命令. cli*檔案是由啟動腳本啟動的[Wildfly cli](https://docs.jboss.org/author/display/WFLY/Command+Line+Interface)腳本。 此檔案中的命令會設定 JMS 和 JNDI，並使用*JNDI. properties*檔案。 這些命令會在您的應用程式與服務匯流排的佇列或主題之間建立連線。
-
-5. 使用 FTP 將 .jar 檔案、 *module .xml*檔案和*startup.sh*檔案上傳至您的 App Service 實例。 將*startup.sh*放在您的 */home*目錄中，並將其他檔案放在 */home/site/deployments/tools*目錄中。 請務必上傳每個在*module*檔案中列出的 .jar 檔案，以達到可轉移的相依性結束。 如需 FTP 的詳細資訊，請參閱[使用 ftp/S 將您的應用程式部署到 Azure App Service](https://docs.microsoft.com/azure/app-service/deploy-ftp)。
-
-6. 更新您的 MessageListener 執行，以新增下列 `import` 語句：
-
-    ```java
-    import javax.ejb.ActivationConfigProperty;
-    import javax.ejb.MessageDriven;
-    import javax.ejb.TransactionAttribute;
-    import javax.ejb.TransactionAttributeType;
-    import javax.ejb.TransactionManagement;
-    import javax.ejb.TransactionManagementType;
-    import javax.jms.JMSException;
-    import javax.jms.Message;
-    import javax.jms.MessageListener;
-    import javax.jms.TextMessage;
-    ```
-
-7. 接下來，更新您的接聽程式類別注釋，以符合下列範例。 這個類別會提供記錄接收訊息的範例執行。
-
-    ```java
-    @TransactionManagement(TransactionManagementType.BEAN)
-    @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-    @MessageDriven(name = "MyQueueListener", activationConfig = {
-            @ActivationConfigProperty(propertyName = "connectionFactory", propertyValue = "${property.connection.factory}"),
-            @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "${property.mymdb.queue}"),
-            @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
-            @ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge") })
-    public class MyQueueListener implements MessageListener {
-
-        private static final Logger LOGGER = Logger.getLogger(TopicListener.class.toString());
-
-        public void onMessage(Message rcvMessage) {
-            TextMessage msg = null;
-            try {
-                if (rcvMessage instanceof TextMessage) {
-                    msg = (TextMessage) rcvMessage;
-                    LOGGER.info("Received Message from topic: " + msg.getText());
-                } else {
-                    LOGGER.warning("Message of wrong type: " + rcvMessage.getClass().getName());
-                }
-            } catch (JMSException e) {
-                LOGGER.warning("Exception on message : " + e.getMessage());
-                throw new RuntimeException(e);
-            }
-        }
-    }
-    ```
-
-    `connectionFactory` 和 `destinationLookup` 值會參考*startup.sh*腳本所設定的 WildFly 系統屬性值。 `destinationType` 值為 `javax.jms.Queue`，表示您要連接到服務匯流排的佇列實例。 當您連接到服務匯流排主題時，應該 `javax.jms.Topic` 這個值，如下所示：
-
-    ```java
-    @TransactionManagement(TransactionManagementType.BEAN)
-    @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-    @MessageDriven(name = "MyTopicListener", activationConfig = {
-            @ActivationConfigProperty(propertyName = "connectionFactory", propertyValue = "${property.connection.factory}"),
-            @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "${property.mymdb.topic}"),
-            @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Topic"),
-            @ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge") })
-        public class MyTopicListener implements MessageListener {
-        // ...
-    }
-    ```
-
-8. 更新*pom*檔案的 `dependencies` 區段，以新增下列相依性：
-
-    ```xml
-    <dependencies>
-        <dependency>
-            <groupId>org.apache.qpid</groupId>
-            <artifactId>qpid-jms-client</artifactId>
-            <version>0.40.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.qpid</groupId>
-            <artifactId>proton-j</artifactId>
-            <version>0.31.0</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.enterprise</groupId>
-            <artifactId>cdi-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.spec.javax.ejb</groupId>
-            <artifactId>jboss-ejb-api_3.2_spec</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.spec.javax.jms</groupId>
-            <artifactId>jboss-jms-api_2.0_spec</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.spec.javax.servlet</groupId>
-            <artifactId>jboss-servlet-api_4.0_spec</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.spec.javax.annotation</groupId>
-            <artifactId>jboss-annotations-api_1.3_spec</artifactId>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
-    ```
-
-9. 更新*pom*檔案中的 `azure-webapp-maven-plugin` 設定，以參考您服務匯流排的帳戶資訊。 如有必要，請將 `1.7.0` 變更為最新版的 [Maven 外掛程式 (適用於 Azure App Service)](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)。
-
-    ```xml
-    <plugin>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>azure-webapp-maven-plugin</artifactId>
-        <version>1.7.0</version>
-        <configuration>
-
-            <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
-            <appServicePlanName>${WEBAPP_PLAN_NAME}</appServicePlanName>
-            <appName>${WEBAPP_NAME}</appName>
-            <region>${REGION}</region>
-
-            <!-- Java Runtime Stack for Web App on Linux-->
-            <linuxRuntime>wildfly 14-jre8</linuxRuntime>
-
-            <appSettings>
-                <property>
-                    <name>DEFAULT_SBNAMESPACE</name>
-                    <value>${DEFAULT_SBNAMESPACE}</value>
-                </property>
-                <property>
-                    <name>SB_SAS_POLICY</name>
-                    <value>${SB_SAS_POLICY}</value>
-                </property>
-                <property>
-                    <name>SB_SAS_KEY</name>
-                    <value>${SB_SAS_KEY}</value>
-                </property>
-                <property>
-                    <name>PROVIDER_URL</name>
-                    <value>${PROVIDER_URL}</value>
-                </property>
-                <property>
-                    <name>SB_QUEUE</name>
-                    <value>${SB_QUEUE}</value>
-                </property>
-                <property>
-                    <name>SB_TOPIC</name>
-                    <value>${SB_TOPIC}</value>
-                </property>
-                <property>
-                    <name>SB_SUBSCRIPTION</name>
-                    <value>${SB_SUBSCRIPTION}</value>
-                </property>
-            </appSettings>
-        </configuration>
-    </plugin>
-    ```
-
-    這些設定會設定您的 App Service 實例，使其擁有您在本機設定的相同環境變數。 它會使用環境變數，將您的帳戶資訊保留在原始程式檔中。
-
-10. 重建並重新部署您的應用程式。
-
-    ```bash
-    mvn package -DskipTests azure-webapp:deploy
-    ```
-
-您的訊息驅動 bean 現在已設定為使用服務匯流排做為訊息機制。
-
-下次 App Service 重新開機時，它將會執行啟動腳本，並執行必要的設定步驟。 若要測試此設定是否正確發生，您可以使用 SSH 存取您的 App Service，然後從 Bash 提示字元自行執行啟動腳本。 您也可以檢查 App Service 記錄。 如需這些選項的詳細資訊，請參閱[記錄和偵錯工具](#logging-and-debugging-apps)。
-
-如需您可以用來測試這些指示的範例，請參閱 GitHub 上的[遷移-java-ee-應用程式對 azure-2](https://github.com/Azure-Samples/migrate-java-ee-app-to-azure-2)存放庫，並尋找 `helloworld-mdb-propertysubstitution` 範例。
-
 ## <a name="use-redis-as-a-session-cache-with-tomcat"></a>使用 Redis 作為 Tomcat 的會話快取
 
 您可以設定 Tomcat 使用外部會話存放區，例如[Azure Cache For Redis](/azure/azure-cache-for-redis/)。 這可讓您在使用者轉移至應用程式的另一個實例時，保留使用者會話狀態（例如購物車資料），例如在發生自動調整、重新開機或容錯移轉的情況下。
@@ -1126,7 +617,7 @@ Web 應用程式實例是無狀態的，因此每個啟動的新實例都必須�
 
 ## <a name="docker-containers"></a>Docker 容器
 
-若要在您的容器中使用支援 Azure 的 Zulu JDK，請務必提取並使用預先建置映像 (如[適用於 Azure 的支援 Azul Zulu Enterprise 下載頁面](https://www.azul.com/downloads/azure-only/zulu/) \(英文\) 所述)，或使用來自 [Microsoft Java GitHub 存放庫](https://github.com/Microsoft/java/tree/master/docker) 的 `Dockerfile` 範例。
+若要在您的容器中使用支援 Azure 的 Zulu JDK，請務必提取並使用預先建置映像 (如[適用於 Azure 的支援 Azul Zulu Enterprise 下載頁面](https://www.azul.com/downloads/azure-only/zulu/) \(英文\) 所述)，或使用來自 `Dockerfile`Microsoft Java GitHub 存放庫[ 的 ](https://github.com/Microsoft/java/tree/master/docker) 範例。
 
 ## <a name="statement-of-support"></a>支援聲明
 

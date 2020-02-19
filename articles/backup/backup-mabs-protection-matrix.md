@@ -3,12 +3,12 @@ title: Azure 備份伺服器可以備份哪些內容
 description: 本文提供支援矩陣，其中列出 Azure 備份伺服器保護的所有工作負載、資料類型和安裝。
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8f1ae1432f619dafc5084d250e3f89707405e08b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c7aa8823ca2bf638c6b726c504cddf8c5217fa19
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449897"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444038"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Azure 備份伺服器保護矩陣
 
@@ -25,7 +25,7 @@ ms.locfileid: "75449897"
 |用戶端電腦 (64 位元和 32 位元)|Windows 8|VMWare 中的 Windows 虛擬機器 (保護在 VMWare 的 Windows 虛擬機器中執行的工作負載)|V3、V2|磁碟區、共用、資料夾、檔案、已啟用重複資料刪除功能的磁碟區<br /><br />受保護的磁碟區必須是 NTFS。 不支援 FAT 和 FAT32。<br /><br />磁碟區至少必須是 1 GB。 Azure 備份伺服器使用磁碟區陰影複製服務（VSS）來製作資料快照集，而且只有在磁片區至少為 1 GB 時，快照集才會運作。|
 |用戶端電腦 (64 位元和 32 位元)|Windows 7|實體伺服器<br /><br />內部部署 Hyper-V 虛擬機器|V3、V2|磁碟區、共用、資料夾、檔案、已啟用重複資料刪除功能的磁碟區<br /><br />受保護的磁碟區必須是 NTFS。 不支援 FAT 和 FAT32。<br /><br />磁碟區至少必須是 1 GB。 Azure 備份伺服器使用磁碟區陰影複製服務（VSS）來製作資料快照集，而且只有在磁片區至少為 1 GB 時，快照集才會運作。|
 |用戶端電腦 (64 位元和 32 位元)|Windows 7|VMWare 中的 Windows 虛擬機器 (保護在 VMWare 的 Windows 虛擬機器中執行的工作負載)|V3、V2|磁碟區、共用、資料夾、檔案、已啟用重複資料刪除功能的磁碟區<br /><br />受保護的磁碟區必須是 NTFS。 不支援 FAT 和 FAT32。<br /><br />磁碟區至少必須是 1 GB。 Azure 備份伺服器使用磁碟區陰影複製服務（VSS）來製作資料快照集，而且只有在磁片區至少為 1 GB 時，快照集才會運作。|
-|伺服器 (64 位元)|Windows Server 2019|Azure 虛擬機器 (當工作負載當做 Azure 虛擬機器執行時)<br /><br />VMWare 中的 Windows 虛擬機器 (保護在 VMWare 的 Windows 虛擬機器中執行的工作負載)<br /><br />實體伺服器<br /><br />內部部署 Hyper-V 虛擬機器<br /> <br /> Azure Stack|V3 <br />不包括 Nano 伺服器|磁碟區、共用、資料夾、檔案、系統狀態/裸機、已啟用重複資料刪除功能的磁碟區|
+|伺服器（64位）|Windows Server 2019|Azure 虛擬機器 (當工作負載當做 Azure 虛擬機器執行時)<br /><br />VMWare 中的 Windows 虛擬機器 (保護在 VMWare 的 Windows 虛擬機器中執行的工作負載)<br /><br />實體伺服器<br /><br />內部部署 Hyper-V 虛擬機器<br /> <br /> Azure Stack|V3 <br />不包括 Nano 伺服器|磁碟區、共用、資料夾、檔案、系統狀態/裸機、已啟用重複資料刪除功能的磁碟區|
 |伺服器 (32 位元和 64 位元)|Windows Server 2016|Azure 虛擬機器 (當工作負載當做 Azure 虛擬機器執行時)<br /><br />VMWare 中的 Windows 虛擬機器 (保護在 VMWare 的 Windows 虛擬機器中執行的工作負載)<br /><br />實體伺服器<br /><br />內部部署 Hyper-V 虛擬機器<br /> <br /> Azure Stack|V3、V2<br />不包括 Nano 伺服器|磁碟區、共用、資料夾、檔案、系統狀態/裸機、已啟用重複資料刪除功能的磁碟區|
 |伺服器 (32 位元和 64 位元)|Windows Server 2012 R2 - Datacenter 和 Standard|Azure 虛擬機器 (當工作負載當做 Azure 虛擬機器執行時)<br /> <br /> Azure Stack|V3、V2|磁碟區、共用、資料夾、檔案<br /><br />Azure 備份伺服器必須至少在 Windows Server 2012 R2 上執行，才能保護 Windows Server 2012 重復資料刪除磁片區。|
 |伺服器 (32 位元和 64 位元)|Windows Server 2012 R2 - Datacenter 和 Standard|VMWare 中的 Windows 虛擬機器 (保護在 VMWare 的 Windows 虛擬機器中執行的工作負載)<br /> <br /> Azure Stack|V3、V2|磁碟區、共用、資料夾、檔案、系統狀態/裸機<br /><br />Azure 備份伺服器必須在 Windows Server 2012 或 2012 R2 上執行，才能保護 Windows Server 2012 重復資料刪除磁片區。|
@@ -78,7 +78,7 @@ ms.locfileid: "75449897"
 |Hyper-v 主機伺服器、叢集或 VM 上的 hyper-v 主機-MABS 保護代理程式|Windows Server 2008 SP2|實體伺服器<br /><br />內部部署 Hyper-V 虛擬機器|不支援|保護：Hyper-V 電腦、叢集共用磁碟區 (CSV)<br /><br />復原：虛擬機器、檔案和資料夾的項目層級復原、磁碟區、虛擬硬碟|
 |VMware VM|VMware vCenter/vSphere ESX/ESXi 授權版本 5.5/6.0/6。5 |實體伺服器、 <br/>內部部署 Hyper-V VM、 <br/> VMWare 中的 Windows VM|V3、V2|叢集共用磁碟區 (CSV)、NFS 和 SAN 儲存體上的 VMware VM<br /> 檔案和資料夾的項目層級復原僅適用於 Windows VM，不支援 VMware vApps。|
 |VMware VM|[VMware vSphere 授權版本6。7](backup-azure-backup-server-vmware.md#vmware-vsphere-67) |實體伺服器、 <br/>內部部署 Hyper-V VM、 <br/> VMWare 中的 Windows VM|V3|叢集共用磁碟區 (CSV)、NFS 和 SAN 儲存體上的 VMware VM<br /> 檔案和資料夾的項目層級復原僅適用於 Windows VM，不支援 VMware vApps。|
-|Linux|當做 Hyper-V 或 VMware 客體執行的 Linux|實體伺服器、 <br/>內部部署 Hyper-V VM、 <br/> VMWare 中的 Windows VM|V3、V2|Hyper-V 必須在 Windows Server 2012 R2 或 Windows Server 2016 上執行。 保護：整部虛擬機器<br /><br />復原：整部虛擬機器 <br/><br/> 如需支援的 Linux 發行版本和版本完整清單，請參閱[經 Azure 背書的 Linux 發佈](../virtual-machines/linux/endorsed-distros.md)一文。|
+|Linux|當做 Hyper-V 或 VMware 客體執行的 Linux|實體伺服器、 <br/>內部部署 Hyper-V VM、 <br/> VMWare 中的 Windows VM|V3、V2|Hyper-V 必須在 Windows Server 2012 R2 或 Windows Server 2016 上執行。 保護：整部虛擬機器<br /><br />復原：整部虛擬機器 <br/><br/> 僅支援檔案一致的快照集。 <br/><br/> 如需支援的 Linux 發行版本和版本完整清單，請參閱[經 Azure 背書的 Linux 發佈](../virtual-machines/linux/endorsed-distros.md)一文。|
 
 ## <a name="azure-expressroute-support"></a>Azure ExpressRoute 支援
 

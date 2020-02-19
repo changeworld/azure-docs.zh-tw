@@ -87,6 +87,8 @@
           href: built-in-vulnerability-assessment.md
         - name: 使用外部掃描器
           href: partner-vulnerability-assessment.md
+    - name: 監視您的容器
+      href: monitor-container-security.md
     - name: 使用 Microsoft Defender ATP 保護伺服器
       href: security-center-wdatp.md
     - name: 在 Azure VM 上使用適用於 SQL 的進階資料安全性

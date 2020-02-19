@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2020
+ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: 98a21e9fa846d5a91ed1242701484afaa641cddc
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 1267487e44556a468db26a2ffaaa163dce540571
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76718033"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443477"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>在 Azure 實驗室服務中附加或卸離共用映射資源庫
 教師/實驗室系統管理員可以將範本 VM 映射儲存在 Azure[共用映射資源庫](../../virtual-machines/windows/shared-image-galleries.md)中，供其他人重複使用。 第一個步驟是，實驗室系統管理員將現有的共用映射資源庫附加至實驗室帳戶。 連結共用映射資源庫之後，在實驗室帳戶中建立的實驗室可以將影像儲存到共用映射資源庫。 其他老師可以從共用映射庫中選取此映射，以建立其類別的範本。 

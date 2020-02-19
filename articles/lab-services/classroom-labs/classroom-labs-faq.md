@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: a0361203f4a8a2e57d179b39ba6da2fb62f68720
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 8d1ed128181d036af0026ae273c2c5bf1d3a066e
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77252054"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443494"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Azure 實驗室服務中的教室實驗室-常見問題（FAQ）
 取得一些關於 Azure 實驗室服務中的教室實驗室最常見問題的解答。 
@@ -27,6 +27,9 @@ ms.locfileid: "77252054"
 
 ### <a name="is-the-quota-per-user-or-per-week-or-per-entire-duration-of-the-lab"></a>每位使用者或每週的配額，或實驗室的整個持續時間？ 
 您為實驗室設定的配額，適用于實驗室的整個持續時間。 而且， [vm 的排程執行時間](how-to-create-schedules.md)不會計入分配給使用者的配額。 該配額用於學生在排程時間以外花費於 VM 上的時間。  如需有關配額的詳細資訊，請參閱[設定使用者配額](how-to-configure-student-usage.md#set-quotas-for-users)。
+
+### <a name="if-professor-turns-on-a-student-vm-does-that-affect-the-student-quota"></a>如果教授開啟學生 VM，會影響學生配額嗎？ 
+否。 不是。 當教授開啟學生 VM 時，不會影響配置給學生的配額。 
 
 ## <a name="schedules"></a>排程
 
@@ -42,7 +45,9 @@ ms.locfileid: "77252054"
 
 ### <a name="what-port-ranges-should-i-open-on-my-organizations-firewall-setting-to-connect-to-lab-virtual-machines-via-rdpssh"></a>我應該在組織的防火牆設定上開啟哪些埠範圍，以透過 RDP/SSH 連接到實驗室虛擬機器？
 
-埠為：49152–65535。 教室實驗室位於負載平衡器後方，因此實驗室中的所有虛擬機器都有單一 IP 位址，而實驗室中的每部虛擬機器都有唯一的埠。 每次重新發佈實驗室時，埠號碼和公用 IP 位址都可以變更。
+埠為：49152–65535。 教室實驗室位於負載平衡器後方。 每個實驗室都有一個公用 IP 位址，而實驗室中的每部虛擬機器都有一個唯一的埠。 
+
+您也可以在 Azure 入口網站的 實驗室 首頁的 **虛擬機器集**區 索引標籤上，查看每部虛擬機器的私人 IP 位址。 如果您重新發佈實驗室，實驗室的公用 IP 位址不會變更，但是實驗室中每部虛擬機器的私人 IP 和埠號碼都可以變更。 您可以在下列文章中深入瞭解： [Azure 實驗室服務的防火牆設定](how-to-configure-firewall-settings.md)。
 
 ### <a name="what-public-ip-address-range-should-i-open-on-my-organizations-firewall-settings-to-connect-to-lab-virtual-machines-via-rdpssh"></a>我應該在組織的防火牆設定上開啟哪些公用 IP 位址範圍，以透過 RDP/SSH 連接到實驗室虛擬機器？
 請參閱[AZURE IP 範圍和服務標籤-公用雲端](https://www.microsoft.com/download/details.aspx?id=56519)，其可為 Azure 中的資料中心提供公用 IP 位址範圍。 您可以開啟實驗室帳戶所在區域的 IP 位址。

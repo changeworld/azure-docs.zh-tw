@@ -1,6 +1,6 @@
 ---
-title: 如何將使用者新增為 Azure 實驗室服務中的實驗室擁有者
-description: 本文會說明系統管理員如何將使用者新增為實驗室的擁有者。
+title: 如何將其他擁有者新增至 Azure 實驗室服務中的實驗室
+description: 本文會說明系統管理員如何將使用者新增為 Azure 實驗室服務中的實驗室的擁有者。
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -11,19 +11,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2019
+ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: 9e007ee6c95843b7e8ef9d7a701237034811489e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9302cadf0b900c9faac382bad86b51cea7d828fb
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480849"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443511"
 ---
-# <a name="how-to-add-a-user-as-an-owner-of-a-classroom-lab-in-azure-lab-services"></a>如何將使用者新增為 Azure 實驗室服務中的教室實驗室擁有者
-本文說明如何在 Azure 實驗室服務中將使用者新增為實驗室的擁有者。
+# <a name="how-to-add-additional-owners-to-an-existing-lab-in-azure-lab-services"></a>如何在 Azure 實驗室服務中將其他擁有者新增至現有的實驗室
+本文將告訴您，身為系統管理員，您可以如何將其他擁有者新增至現有的實驗室。
 
 ## <a name="add-user-to-the-reader-role-for-the-lab-account"></a>將使用者新增至實驗室帳戶的 [讀者] 角色
+若要將使用者新增為現有實驗室的其他擁有者，您必須先授與使用者實驗室帳戶的 [**讀取**] 許可權。
+
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 選取左側功能表上的 [所有服務]。 搜尋 [**實驗室服務**]，然後選取它。
 3. 從清單中選取您的**實驗室帳戶**。 

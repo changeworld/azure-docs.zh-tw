@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 69801909c6bc8d215ca7dd3ccb7ac349201e8774
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 578fcf4cd03a2d4fc8400b9e84f53206750a588c
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198559"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430715"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-azure-monitor-logs"></a>將 Azure 自動化狀態設定報告資料轉送至 Azure 監視器記錄
 
@@ -31,7 +31,7 @@ Azure 自動化狀態設定會保留節點狀態資料30天。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始將您的自動化狀態設定報告傳送至 Azure 監視器記錄，您需要：
 
@@ -39,7 +39,7 @@ Azure 自動化狀態設定會保留節點狀態資料30天。
 - Azure 自動化帳戶。 如需詳細資訊，請參閱[Azure 自動化簡介](automation-intro.md)。
 - 具有自動化 & 控制服務供應專案的 Log Analytics 工作區。 如需詳細資訊，請參閱[開始使用 Azure 監視器中的 Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)。
 - 至少一個 Azure Automation State Configuration 節點。 如需詳細資訊，請參閱將[機器上架以進行管理 Azure 自動化狀態設定](automation-dsc-onboarding.md)。
-- [XDscDiagnostics](https://www.powershellgallery.com/packages/xDscDiagnostics/2.7.0.0)模組，版本2.7.0.0 或更高。 如需安裝步驟，請參閱針對[Azure 自動化 Desired State Configuration 進行疑難排解](./troubleshoot/desired-state-configuration.md#steps-to-troubleshoot-desired-state-configuration-dsc)。
+- [XDscDiagnostics](https://www.powershellgallery.com/packages/xDscDiagnostics/2.7.0.0)模組，版本2.7.0.0 或更高。 如需安裝步驟，請參閱針對[Azure 自動化 Desired State Configuration 進行疑難排解](./troubleshoot/desired-state-configuration.md)。
 
 ## <a name="set-up-integration-with-azure-monitor-logs"></a>設定與 Azure 監視器記錄的整合
 
@@ -76,7 +76,7 @@ Azure 自動化狀態設定會保留節點狀態資料30天。
 
 設定與自動化狀態設定資料的 Azure 監視器記錄整合之後，您可以在 [狀態設定（DSC）] 頁面的左窗格中選取 [**監視**] 區段中的 [**記錄**]，以查看它們。
 
-![記錄檔](media/automation-dsc-diagnostics/automation-dsc-logs-toc-item.png)
+![記錄](media/automation-dsc-diagnostics/automation-dsc-logs-toc-item.png)
 
 [**記錄搜尋**] 窗格隨即開啟，其中包含範圍設定為您的自動化帳戶資源的查詢區域。 您可以藉由搜尋 Azure 監視器記錄，搜尋 DSC 作業的狀態設定記錄。 DSC 作業的記錄會儲存在 AzureDiagnostics 資料表中。 例如，若要尋找不符合規範的節點，請輸入下列查詢。
 
@@ -140,7 +140,7 @@ Azure 自動化診斷會在 Azure 監視器記錄檔中建立兩種記錄類別�
 | NodeName_s |受控節點名稱。 |
 | NodeComplianceStatus_s |節點是否符合規範。 |
 | DscReportStatus |合規性檢查是否已順利執行。 |
-| ConfigurationMode | 設定如何套用至節點。 可能的值包括： <ul><li>*ApplyOnly*：DSC 會套用設定但不執行任何進一步的動作，除非有新的設定發送到目標節點，或從伺服器提取新的設定時。 第一次套用新設定之後，DSC 不會檢查與先前設定狀態的偏離。 DSC 會嘗試套用設定，直到成功之後， *ApplyOnly*值才會生效。 </li><li>*ApplyAndMonitor*：這是預設值。 LCM 適用於任何新的設定。 初始套用新設定之後，如果目標節點從所需狀態漂移，DSC 會在記錄中報告差異。 DSC 會嘗試套用設定，直到成功之後， *ApplyAndMonitor*值才會生效。</li><li>*ApplyAndAutoCorrect*：DSC 會套用任何新的設定。 初始套用新設定之後，如果目標節點從所需狀態漂移，DSC 會在記錄中報告差異，然後重新套用目前的設定。</li></ul> |
+| ConfigurationMode | 設定如何套用至節點。 可能的值包括： <ul><li>*ApplyOnly*：DSC 會套用設定但不執行任何進一步的動作，除非有新的設定發送到目標節點，或從伺服器提取新的設定時。 初始套用新的設定之後，DSC 不會檢查先前設定的狀態是否漂移。 DSC 會嘗試套用設定，直到成功之後， *ApplyOnly*值才會生效。 </li><li>*ApplyAndMonitor*：這是預設值。 LCM 會套用任何新的設定。 初始套用新設定之後，如果目標節點從所需狀態漂移，DSC 會在記錄中報告差異。 DSC 會嘗試套用設定，直到成功之後， *ApplyAndMonitor*值才會生效。</li><li>*ApplyAndAutoCorrect*：DSC 會套用任何新的設定。 初始套用新設定之後，如果目標節點從所需狀態漂移，DSC 會在記錄中報告差異，然後重新套用目前的設定。</li></ul> |
 | HostName_s | 受控節點名稱。 |
 | IPAddress | 受控節點的 IPv4 位址。 |
 | 類別 | DscNodeStatus. |

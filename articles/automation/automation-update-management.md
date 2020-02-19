@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 01/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9e03ba960ab6542198372d75de7e0d34bf8d9e1b
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: aec46a1914fa2361ea15ba34dd1510cfe53a4dc0
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513315"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443834"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 中的更新管理解決方案
 
@@ -67,12 +67,12 @@ ms.locfileid: "76513315"
 
 ### <a name="supported-client-types"></a>支援的用戶端類型
 
-下表列出更新評估支援的作業系統。 修補需要混合式 Runbook 背景工作角色。 如需混合式 Runbook 背景工作角色需求的詳細資訊，請參閱安裝[Windows 混合式 runbook 背景工作角色](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker)和[Linux 混合式 Runbook 背景工作角色](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)的安裝指南。
+下表列出更新評估支援的作業系統。 修補需要混合式 Runbook 背景工作角色。 如需混合式 Runbook 背景工作角色需求的詳細資訊，請參閱安裝[Windows 混合式 runbook 背景工作角色](automation-windows-hrw-install.md)和[Linux 混合式 Runbook 背景工作角色](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)的安裝指南。
 
 |作業系統  |注意  |
 |---------|---------|
 |Windows Server 2019 （Datacenter/Datacenter Core/Standard）<br><br>Windows Server 2016 （Datacenter/Datacenter Core/Standard）<br><br>Windows Server 2012 R2 （Datacenter/Standard）<br><br>Windows Server 2012 || 
-|Windows Server 2008 R2 （RTM 和 SP1 標準）| 更新管理只支援執行此作業系統的評量，不支援修補，因為 Windows Server 2008 R2 不支援[混合式 Runbook 背景工作角色](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker)。 |
+|Windows Server 2008 R2 （RTM 和 SP1 標準）| 更新管理只支援執行此作業系統的評量，不支援修補，因為 Windows Server 2008 R2 不支援[混合式 Runbook 背景工作角色](automation-windows-hrw-install.md)。 |
 |CentOS 6 (x86/x64) 和 7 (x64)      | Linux 代理程式必須能夠存取更新存放庫。 以分類為基礎的修補需要 `yum` 傳回其 RTM 版本中 CentOS 沒有的安全性資料。 如需 CentOS 上以分類為基礎之修補的詳細資訊，請參閱[Linux 上的更新分類](automation-view-update-assessments.md#linux-2)。          |
 |Red Hat Enterprise 6 (x86/x64) 和 7 (x64)     | Linux 代理程式必須能夠存取更新存放庫。        |
 |SUSE Linux Enterprise Server 11 (x86/x64) 和 12 (x64)     | Linux 代理程式必須能夠存取更新存放庫。        |
@@ -117,7 +117,7 @@ Windows 代理程式必須設定為與 WSUS 伺服器通訊，或必須具有 Mi
 
 從 Azure Marketplace 中提供的隨選 Red Hat Enterprise Linux （RHEL）映射所建立的 Vm，會進行註冊以存取部署在 Azure 中的[Red Hat 更新基礎結構（RHUI）](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md) 。 任何其他 Linux 發行版本都必須使用發佈的支援方法，從發佈的線上檔案存放庫更新。
 
-## <a name="permissions"></a>使用權限
+## <a name="permissions"></a>權限
 
 若要建立及管理更新部署，您必須具有特定權限。 若要瞭解這些許可權，請參閱以[角色為基礎的存取–更新管理](automation-role-based-access-control.md#update-management)。
 
@@ -155,7 +155,7 @@ Windows 代理程式必須設定為與 WSUS 伺服器通訊，或必須具有 Mi
 
 下表描述本解決方案支援的連線來源：
 
-| 連線的來源 | 支援的 | 說明 |
+| 連線的來源 | 支援 | 描述 |
 | --- | --- | --- |
 | Windows 代理程式 |是 |解決方案會從 Windows 代理程式收集系統更新的相關資訊，然後起始必要更新的安裝。 |
 | Linux 代理程式 |是 |解決方案會從 Linux 代理程式收集系統更新的相關資訊，然後在支援的發行版本上起始必要更新的安裝。 |
@@ -175,7 +175,7 @@ Windows 代理程式必須設定為與 WSUS 伺服器通訊，或必須具有 Mi
 
 以下為「更新管理」特別需求的位址。 與這些位址的通訊皆經由連接埠 443 進行。
 
-|Azure 公用  |Azure 政府機構  |
+|Azure 公用  |Azure Government  |
 |---------|---------|
 |*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
@@ -206,7 +206,7 @@ Windows 代理程式必須設定為與 WSUS 伺服器通訊，或必須具有 Mi
 
 選取 [缺少的更新] 以檢視機器缺少的更新清單。 會列出每個更新，而且您可以選取更新。 畫面上會顯示需要更新的機器數目、作業系統以及一個能提供詳細資訊的連結。 [記錄搜尋] 窗格會顯示與更新有關的詳細資訊。
 
-![遺失更新](./media/automation-view-update-assessments/automation-view-update-assessments-missing-updates.png)
+![缺少更新](./media/automation-view-update-assessments/automation-view-update-assessments-missing-updates.png)
 
 ## <a name="update-classifications"></a>更新分類
 
@@ -214,7 +214,7 @@ Windows 代理程式必須設定為與 WSUS 伺服器通訊，或必須具有 Mi
 
 ### <a name="windows"></a>Windows
 
-|分類  |說明  |
+|分類  |描述  |
 |---------|---------|
 |重大更新     | 特定問題的更新，負責處理與安全性無關的重大錯誤。        |
 |安全性更新     | 特定產品的安全性相關更新。        |
@@ -227,7 +227,7 @@ Windows 代理程式必須設定為與 WSUS 伺服器通訊，或必須具有 Mi
 
 ### <a name="linux-2"></a>Linux
 
-|分類  |說明  |
+|分類  |描述  |
 |---------|---------|
 |重大更新和安全性更新     | 特定問題或特定產品的安全性相關問題的更新，         |
 |其他更新     | 本質上不重要或不是安全性更新的所有其他更新。        |

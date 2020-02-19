@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: d3f6acef7491a07f94eec0b2c3b2f3bcd9c01a33
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 5e013011f81542aa279ba9276a6a1aac01eb9e41
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74701675"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443175"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>將實驗室的網路與 Azure 實驗室服務中的對等虛擬網路連線 
 本文提供與您的實驗室網路與其他網路對等互連的相關資訊。 
@@ -34,7 +34,7 @@ ms.locfileid: "74701675"
 某些內部部署網路會透過[ExpressRoute](../../expressroute/expressroute-introduction.md)或[虛擬網路閘道](../../vpn-gateway/vpn-gateway-about-vpngateways.md)連線至 Azure 虛擬網路。 這些服務必須在 Azure 實驗室服務外部設定。 若要深入瞭解如何使用 ExpressRoute 將內部部署網路連接至 Azure，請參閱[ExpressRoute 總覽](../../expressroute/expressroute-introduction.md)。 針對使用虛擬網路閘道的內部部署連線能力，閘道、指定的虛擬網路和實驗室帳戶必須全部位於相同的區域。
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>在建立實驗室帳戶時設定
-在建立新的實驗室帳戶期間，您可以選擇在 [**對等虛擬網路**] 下拉式清單中顯示的現有虛擬網路。 選取的虛擬網路已連接（對等互連）至實驗室帳戶所建立的實驗室。 在進行這項變更之後，在實驗室中建立的所有虛擬機器都可以存取對等互連虛擬網路上的資源。 
+在建立新的實驗室帳戶期間，您可以在 [ **Advanced** ] 索引標籤的 [**對等虛擬網路**] 下拉式清單中，挑選顯示的現有虛擬網路。選取的虛擬網路已連接（對等互連）至實驗室帳戶所建立的實驗室。 在進行這項變更之後，在實驗室中建立的所有虛擬機器都可以存取對等互連虛擬網路上的資源。 
 
 ![選取 VNet 對等互連](../media/how-to-connect-peer-virtual-network/select-vnet-to-peer.png)
 
@@ -54,10 +54,10 @@ ms.locfileid: "74701675"
 
 
 ## <a name="next-steps"></a>後續步驟
-請參閱下列文章：
+查看下列文章：
 
-- [以管理員身分建立及管理實驗室帳戶](how-to-manage-lab-accounts.md)
-- [以實驗室擁有者身分建立及管理實驗室](how-to-manage-classroom-labs.md)
-- [以實驗室擁有者身分設定及發佈範本](how-to-create-manage-template.md)
-- [以實驗室使用者的身分存取教室實驗室](how-to-use-classroom-lab.md)
-
+- [允許實驗室建立者選擇實驗室位置](allow-lab-creator-pick-lab-location.md)
+- [將共用映射資源庫連結至實驗室](how-to-attach-detach-shared-image-gallery.md)
+- [將使用者新增為實驗室擁有者](how-to-add-user-lab-owner.md)
+- [查看實驗室的防火牆設定](how-to-configure-firewall-settings.md)
+- [設定實驗室的其他設定](how-to-configure-lab-accounts.md)

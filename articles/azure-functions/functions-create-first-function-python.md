@@ -36,7 +36,7 @@ ms.locfileid: "77157885"
 在適用的資料夾中執行下列命令，以建立並啟用名為 `.venv` 的虛擬環境。 請務必使用受 Azure Functions 支援的 Python 3.7。
 
 
-# <a name="bashtabbash"></a>[bash](#tab/bash)
+# <a name="bash"></a>[bash](#tab/bash)
 
 ```bash
 python -m venv .venv
@@ -52,7 +52,7 @@ source .venv/bin/activate
 sudo apt-get install python3-venv
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 py -m venv .venv
@@ -62,7 +62,7 @@ py -m venv .venv
 .venv\scripts\activate
 ```
 
-# <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+# <a name="cmd"></a>[Cmd](#tab/cmd)
 
 ```cmd
 py -m venv .venv
@@ -269,14 +269,14 @@ Functions in msdocs-azurefunctions-qs:
 
 由於您的函式會使用 HTTP 觸發程序，因此您在叫用函式時，可以在瀏覽器中對其 URL 提出 HTTP 要求，或使用 curl 之類的工具。 無論採用何種方式，`code` URL 參數都會是您向函式端點授與叫用權限的唯一函式金鑰。
 
-# <a name="browsertabbrowser"></a>[瀏覽器](#tab/browser)
+# <a name="browser"></a>[瀏覽器](#tab/browser)
 
 將發佈命令的輸出中顯示的完整**叫用 URL** 複製到瀏覽器網址列中 (請附加查詢參數 `&name=Azure`)。 瀏覽器應該會顯示與您在本機執行函式時類似的輸出。
 
 ![使用瀏覽器在 Azure 上執行函式的輸出](./media/functions-create-first-function-python/function-test-cloud-browser.png)
 
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# <a name="curl"></a>[curl](#tab/curl)
 
 使用**叫用 URL** 來執行 [curl](https://curl.haxx.se/) (請附加參數 `&name=Azure`)。 命令的輸出應該是文字 "Hello Azure"。
 

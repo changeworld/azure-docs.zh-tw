@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 01/16/2020
+ms.date: 02/18/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 3df7e772ea88a7a58780f08ff20f44d50f01c336
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: f15e92f5e98c047fc5ed481968674370cf222a16
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063878"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443613"
 ---
 # <a name="frequently-asked-questions-faqs-about-the-microsoft-authenticator-app"></a>關於 Microsoft Authenticator 應用程式的常見問題（Faq）
 
@@ -52,6 +52,7 @@ Microsoft Authenticator 應用程式取代了 Azure Authenticator 應用程式�
 | 為什麼我會收到關於帳戶活動的通知？ | 為了讓您更了解個人 Microsoft 帳戶的現況，我們會將活動通知傳送至您的 Microsoft Authenticator 應用程式。 這些通知會發生變更後立即顯示，以利確保您的安全性。 我們之前透過電子郵件和簡訊傳送這些通知，而現在已擴充為包括應用程式。 如需這些活動通知的詳細資訊，請參閱[若您的帳戶出現異常登入，將會如何](https://support.microsoft.com/help/13967/microsoft-account-unusual-sign-in)。 若要變更您收到通知的位置，請登入您帳戶的 [[我們可以如何與您的非關鍵帳戶警示](https://account.live.com/SecurityNotifications/Update)連線] 頁面。 |
 | 使用 iOS 隨附的預設郵件應用程式登入我的公司或學校帳戶時，我會收到 Microsoft Authenticator 應用程式的提示，以取得我的安全性驗證資訊。 輸入該資訊並返回郵件應用程式之後，我收到錯誤。 我該怎麼辦？ | 這很可能是因為您的登入和郵件應用程式會在兩個不同的應用程式中發生，導致初始背景登入進程停止運作並失敗。 若要嘗試修正此問題，建議您在登入郵件應用程式時，選取畫面右下方的**Safari**圖示。 藉由移至 Safari，整個登入程式會在單一應用程式中進行，讓您可以成功登入應用程式。 |
 | 我的一次性密碼（OTP）代碼無法運作。 我該怎麼辦？ | 請確定您裝置上的日期和時間是正確的，而且會自動同步處理。 如果日期和時間錯誤或不同步，則程式碼將無法使用。 |
+| Windows 10 行動裝置版作業系統已于2019年12月淘汰。 Windows Mobile 作業系統上的 Microsoft Authenticator 也會被取代嗎？ | 2020年2月28日之後，將不支援所有 Windows Mobile 作業系統上的 Microsoft Authenticator 應用程式。 使用者在提及的日期之後，將無法接收任何新的應用程式更新。 2020年2月28日之後，在所有 Windows Mobile 作業系統上使用 Microsoft Authenticator 來支援驗證的 Microsoft 服務，都將開始淘汰其支援。 為了在 Microsoft 服務中進行驗證，我們強烈建議所有的使用者在此日期之前切換到替代的驗證機制。 |
 
 ## <a name="next-steps"></a>後續步驟
 

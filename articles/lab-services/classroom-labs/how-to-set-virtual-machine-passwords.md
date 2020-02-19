@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2019
 ms.author: spelluru
-ms.openlocfilehash: d89d506d8912706bbdb802801b16d01036ecb8e2
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 99c6ee5d58655350d14add61530fae647a675508
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583552"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443222"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>設定和管理虛擬機器集區 
 本文說明如何執行下列工作：
@@ -76,7 +76,7 @@ ms.locfileid: "73583552"
 ### <a name="set-password-at-the-time-of-lab-creation"></a>在建立實驗室時設定密碼
 實驗室擁有者（老師）可以在實驗室建立嚮導的 [**虛擬機器認證**] 頁面上，為實驗室中的 vm 設定密碼。
 
-![新增實驗室視窗](../media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
+![[新增實驗室] 視窗](../media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
 
 藉由啟用/停用此頁面上**所有虛擬機器的 [使用相同的密碼**] 選項，老師可以選擇針對實驗室中的所有 vm 使用相同的密碼，或允許學生設定其 vm 的密碼。 根據預設，除了 Ubuntu 以外，所有 Windows 和 Linux 作業系統映射都會啟用此設定。 當此設定停用時，學生會在嘗試第一次連線到 VM 時，提示您設定密碼。 
 
@@ -96,6 +96,9 @@ ms.locfileid: "73583552"
  若要連接到學生 VM，請將滑鼠停留在清單中的 VM 上，然後選取 [電腦] 按鈕。  
 
 ![[連線至學生 VM] 按鈕](../media/how-to-set-virtual-machine-passwords/connect-student-vm.png)
+
+> [!NOTE]
+> 當教授啟動 VM 並聯機到它時，學生配額不會受到影響。 
 
 ## <a name="next-steps"></a>後續步驟
 若要瞭解您（身為實驗室擁有者）可以設定的其他學生使用選項，請參閱下列文章：[設定學生使用](how-to-configure-student-usage.md)方式。

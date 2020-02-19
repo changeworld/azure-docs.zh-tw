@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: ac31783f0eb270823b71c86cc8d7f0975d3a586a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 29b8a32989b5a1d60792fb5678f7ba8a9f12daba
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452271"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443800"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>在混合式 Runbook 背景工作角色上執行 Runbook
 
@@ -86,7 +86,7 @@ Restart-Computer -ComputerName $Computer -Credential $Cred
 1. 建立 Azure VM
 2. [在 VM 上設定 Azure 資源的受控識別](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-on-an-existing-vm)
 3. [在 Resource Manager 教學課程中，授與您的 VM 存取權給資源群組](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager)-windows-VM----------------使用 vm-----------------------使用---------------
-4. 在虛擬機器上[安裝 Windows 混合式 Runbook 背景工作角色](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker)。
+4. 在虛擬機器上[安裝 Windows 混合式 Runbook 背景工作角色](automation-windows-hrw-install.md)。
 
 完成上述步驟後，您可以使用 Runbook 中的 `Connect-AzureRmAccount -Identity` 對 Azure 資源進行驗證。 此組態可減少使用執行身分帳戶及管理執行身分帳戶憑證的需求。
 

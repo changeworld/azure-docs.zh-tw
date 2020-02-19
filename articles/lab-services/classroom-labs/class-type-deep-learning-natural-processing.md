@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 21a11863bd2bc9882d4336f5c5d2bf1d7b7f49da
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 49ef78ac5a7d58d86583d91bf072f0f3131796fe
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133771"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444089"
 ---
 # <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>使用 Azure 實驗室服務設定以自然語言處理深度學習為焦點的實驗室
 本文說明如何使用 Azure 實驗室服務，設定以自然語言處理（NLP）深度學習為焦點的實驗室。 自然語言處理 (NLP) 是一種人工智慧 (AI) 形式，可讓電腦具有翻譯、語音辨識和其他語言理解功能。  
@@ -32,7 +32,7 @@ ms.locfileid: "77133771"
 
 | 實驗室帳戶設定 | Instructions |
 | ----------- | ------------ |  
-| Marketplace 映射 | 啟用資料科學虛擬機器 for Linux （Ubuntu）映射以在實驗室帳戶中使用。  如需相關指示，請參閱下列文章：[指定可供實驗室建立者使用的 marketplace 映射](how-to-configure-lab-accounts.md#specify-marketplace-images-available-to-lab-creators)。 | 
+| Marketplace 映射 | 啟用資料科學虛擬機器 for Linux （Ubuntu）映射以在實驗室帳戶中使用。  如需相關指示，請參閱下列文章：[指定可供實驗室建立者使用的 marketplace 映射](specify-marketplace-images.md)。 | 
 
 遵循[此教學](tutorial-setup-classroom-lab.md)課程來建立新的實驗室，並套用下列設定：
 

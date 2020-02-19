@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2020
+ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: ea9df341fcc76a38364e590f8541e6a85d7ec466
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 52d5628698d1f945a7f672595ee7ce4739b6d13c
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77211005"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444361"
 ---
 # <a name="allow-lab-creator-to-pick-location-for-the-lab-in-azure-lab-services"></a>允許實驗室建立者在 Azure 實驗室服務中挑選實驗室的位置
 在 Azure 實驗室服務中，實驗室帳戶擁有者可以允許實驗室人員（教師）為他們所建立的實驗室挑選一個位置。 這個位置可以與實驗室帳戶的位置不同。 「位置」是一組 Azure 區域。 例如，「美國地區」是一組區域，例如「美國東部」、「美國西部」等等。 
@@ -73,6 +73,8 @@ ms.locfileid: "77211005"
 ## <a name="next-steps"></a>後續步驟
 查看下列文章：
 
-- [以實驗室擁有者身分建立及管理實驗室](how-to-manage-classroom-labs.md)
-- [以實驗室擁有者身分設定及發佈範本](how-to-create-manage-template.md)
-- [以實驗室擁有者身分設定及控制實驗室的使用方式](how-to-configure-student-usage.md)
+- [將您的實驗室網路與對等虛擬網路連線](how-to-connect-peer-virtual-network.md)
+- [將共用映射資源庫連結至實驗室](how-to-attach-detach-shared-image-gallery.md)
+- [將使用者新增為實驗室擁有者](how-to-add-user-lab-owner.md)
+- [查看實驗室的防火牆設定](how-to-configure-firewall-settings.md)
+- [設定實驗室的其他設定](how-to-configure-lab-accounts.md)

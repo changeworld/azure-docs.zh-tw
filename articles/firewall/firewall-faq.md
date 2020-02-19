@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 01/29/2020
 ms.author: victorh
-ms.openlocfilehash: 8b55f31f12ab1057ac2e0f625a0285b6518cc44a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 78269461bf01d61bffeed504b0168b4913c6e131
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845764"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77442984"
 ---
 # <a name="azure-firewall-faq"></a>Azure 防火牆常見問題集
 
@@ -121,11 +121,11 @@ Set-AzFirewall -AzureFirewall $azfw
 
 ## <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network-or-peered-virtual-networks"></a>Azure 防火牆可以在同一個虛擬網路或對等虛擬網路的子網路之間轉寄和篩選網路流量嗎？
 
-可以。 不過，若要設定 Udr 以重新導向相同 VNET 中子網之間的流量，則需要額外注意。 雖然對 UDR 而言，使用 VNET 位址範圍作為目標前置詞已足夠，但這也會使得所有流量透過 Azure 防火牆執行個體從一部機器路由至相同子網路中的另一部機器。 若要避免此狀況，需在下一個躍點類型為 **VNET** 的 UDR 中包括子網路的路由。 管理這些路由可能會很麻煩，而且容易出錯。 對於內部網路區隔的建議方法是使用網路安全性群組，而這不需要 UDR。
+是。 不過，若要設定 Udr 以重新導向相同 VNET 中子網之間的流量，則需要額外注意。 雖然對 UDR 而言，使用 VNET 位址範圍作為目標前置詞已足夠，但這也會使得所有流量透過 Azure 防火牆執行個體從一部機器路由至相同子網路中的另一部機器。 若要避免此狀況，需在下一個躍點類型為 **VNET** 的 UDR 中包括子網路的路由。 管理這些路由可能會很麻煩，而且容易出錯。 對於內部網路區隔的建議方法是使用網路安全性群組，而這不需要 UDR。
 
 ## <a name="does-azure-firewall-outbound-snat-between-private-networks"></a>私人網路之間的 Azure 防火牆輸出 SNAT 嗎？
 
-當目的地 IP 位址是每個[IANA RFC 1918](https://tools.ietf.org/html/rfc1918)的私人 ip 範圍時，Azure 防火牆不會 SNAT。 如果您的組織使用私人網路的公用 IP 位址範圍，Azure 防火牆會 SNATs AzureFirewallSubnet 中其中一個防火牆私人 IP 位址的流量。
+當目的地 IP 位址是每個[IANA RFC 1918](https://tools.ietf.org/html/rfc1918)的私人 ip 範圍時，Azure 防火牆不會 SNAT。 如果您的組織使用私人網路的公用 IP 位址範圍，Azure 防火牆會 SNATs AzureFirewallSubnet 中其中一個防火牆私人 IP 位址的流量。 您可以將 Azure 防火牆設定為**不**會 SNAT 公用 IP 位址範圍。 如需詳細資訊，請參閱[Azure 防火牆 SNAT 私人 IP 位址範圍](snat-private-range.md)。
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>受支援的網路虛擬裝置是否有強制通道/連結？
 
@@ -135,11 +135,11 @@ Set-AzFirewall -AzureFirewall $azfw
 
 ## <a name="are-there-any-firewall-resource-group-restrictions"></a>是否有任何防火牆資源群組的限制？
 
-可以。 防火牆、子網路、VNet 和公用 IP 位址全都必須在相同的資源群組中。
+是。 防火牆、子網路、VNet 和公用 IP 位址全都必須在相同的資源群組中。
 
 ## <a name="when-configuring-dnat-for-inbound-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>在設定傳入網路流量的 DNAT 時，是否也需要設定對應的網路規則，才能允許該流量？
 
-不會。 NAT 規則會隱含地新增對應的網路規則，以允許已轉譯的流量。 若要覆寫這個行為，您可以明確地使用符合已轉譯流量的拒絕規則來新增網路規則集合。 若要深入了解 Azure 防火牆規則處理邏輯，請參閱 [Azure 防火牆規則處理邏輯](rule-processing.md)。
+否。 NAT 規則會隱含地新增對應的網路規則，以允許已轉譯的流量。 若要覆寫這個行為，您可以明確地使用符合已轉譯流量的拒絕規則來新增網路規則集合。 若要深入了解 Azure 防火牆規則處理邏輯，請參閱 [Azure 防火牆規則處理邏輯](rule-processing.md)。
 
 ## <a name="how-do-wildcards-work-in-an-application-rule-target-fqdn"></a>如何在應用程式規則中將萬用字元用於目標 FQDN？
 
@@ -154,7 +154,7 @@ Azure 防火牆是由一個主動-主動設定中的幾個後端節點所組成�
 
 ## <a name="is-there-a-character-limit-for-a-firewall-name"></a>是否有防火牆名稱的字元限制？
 
-可以。 防火牆名稱有50個字元的限制。
+是。 防火牆名稱有50個字元的限制。
 
 ## <a name="why-does-azure-firewall-need-a-26-subnet-size"></a>為什麼 Azure 防火牆需要/26 個子網大小？
 
@@ -162,7 +162,7 @@ Azure 防火牆必須在調整規模時布建更多虛擬機器實例。 /26 位
 
 ## <a name="does-the-firewall-subnet-size-need-to-change-as-the-service-scales"></a>當服務調整時，防火牆子網大小是否需要變更？
 
-不會。 Azure 防火牆不需要大於/26 的子網。
+否。 Azure 防火牆不需要大於/26 的子網。
 
 ## <a name="how-can-i-increase-my-firewall-throughput"></a>如何增加防火牆輸送量？
 
@@ -174,4 +174,4 @@ Azure 防火牆目前需要五到七分鐘的時間來相應放大。如果您�
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Azure 防火牆預設允許存取 Active Directory 嗎？
 
-不會。 根據預設，Azure 防火牆會封鎖 Active Directory 存取。 若要允許存取，請設定 AzureActiveDirectory 服務標記。 如需詳細資訊，請參閱[Azure 防火牆服務標記](service-tags.md)。
+否。 根據預設，Azure 防火牆會封鎖 Active Directory 存取。 若要允許存取，請設定 AzureActiveDirectory 服務標記。 如需詳細資訊，請參閱[Azure 防火牆服務標記](service-tags.md)。

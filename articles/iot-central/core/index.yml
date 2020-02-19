@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: philmea
   ms.author: philmea
-  ms.date: 10/25/2019
-  ms.openlocfilehash: cddfdbe709849f81f585ad7537556945ec14c990
-  ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+  ms.date: 02/18/2020
+  ms.openlocfilehash: f404ecb676b75258cd44fb819dbafc3b2fb6452e
+  ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 02/05/2020
-  ms.locfileid: "77023424"
+  ms.lasthandoff: 02/18/2020
+  ms.locfileid: "77431174"
 landingContent:
 - title: 關於 Azure IoT Central
   linkLists:
@@ -23,14 +23,14 @@ landingContent:
     links:
     - text: 何謂 Azure IoT 中心？
       url: overview-iot-central.md
-    - text: IoT 解決方案選項
-      url: overview-iot-central-tour.md
     - text: UI 導覽
       url: overview-iot-central-tour.md
   - linkListType: architecture
     links:
     - text: Azure IoT 中心架構
       url: concepts-architecture.md
+    - text: 應用程式範本
+      url: concepts-app-templates.md
   - linkListType: quickstart
     links:
     - text: 建立新的應用程式
@@ -39,12 +39,12 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: 設定裝置範本
-      url: howto-set-up-template.md
     - text: 連接 IoT 隨插即用 (預覽) 裝置
-      url: tutorial-add-device.md
+      url: tutorial-connect-pnp-device.md
   - linkListType: how-to-guide
     links:
+    - text: 設定裝置範本
+      url: howto-set-up-template.md
     - text: 準備及連線 MX Chip IoT DevKit
       url: howto-connect-devkit.md
     - text: 連線其他 IoT 雲端
@@ -53,8 +53,8 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: 使用裝置設定
-      url: howto-use-device-sets.md
+    - text: 使用裝置群組
+      url: tutorial-use-device-groups.md
   - linkListType: how-to-guide
     links:
     - text: 管理您的裝置
@@ -68,9 +68,9 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: 建立遙測規則
-      url: howto-create-telemetry-rules.md
-    - text: 匯出至 Blob 儲存體
-      url: howto-export-data-blob-storage.md
+      url: tutorial-create-telemetry-rules.md
+    - text: 匯出資料
+      url: howto-export-data.md
   - linkListType: how-to-guide
     links:
     - text: 建立自訂規則
