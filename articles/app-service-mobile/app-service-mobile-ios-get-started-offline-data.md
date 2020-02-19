@@ -6,20 +6,15 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 66897263ff9c7d71c64d04fcc6860b96bf59588c
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: d943213814b999f101a541abb0195a9fdd5a7423
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668487"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459169"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>啟用 iOS Mobile Apps 的離線同步處理
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
-
-> [!NOTE]
-> Visual Studio App Center 支援使用端對端及整合服務中心來開發行動應用程式。 開發人員可以使用**建置**、**測試**和**散發**服務來設定持續整合及傳遞管線。 部署應用程式之後，開發人員可以使用**分析**和**診斷**服務來監視其應用程式的狀態和使用情況，並使用**推送**服務與使用者互動。 開發人員也可以利用**驗證**來驗證其使用者，並使用**資料**來保存及同步雲端中的應用程式資料。
->
-> 如果您想要在行動應用程式中整合雲端服務，請立即註冊 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) \(英文\)。
 
 ## <a name="overview"></a>概觀
 本教學課程涵蓋適用於 iOS 的 Azure App Service Mobile Apps 功能的離線同步處理說明。 透過離線同步處理，終端使用者即使沒有網路連線，也可以和行動裝置 App 互動以檢視、新增、修改資料。 變更會儲存在本機資料庫中。 裝置恢復上線後，這些變更就會與遠端後端進行同步處理。
@@ -35,7 +30,7 @@ Mobile Apps 的離線資料同步處理功能可讓終端使用者在無法存�
 
 在 **QSTodoService.m** (Objective-C) 或 **ToDoTableViewController.swift** (Swift) 中，注意到成員 **syncTable** 的類型為 **MSSyncTable**。 離線同步處理會使用此同步處理資料表介面，而不是 **MSTable**。 使用同步處理資料表時，所有作業都會移至本機存放區，而且只會與具有明確推送和提取作業的遠端後端同步處理。
 
- 若要取得同步處理資料表的參考，請在 `MSClient` 上使用 **syncTableWithName** 方法。 若要移除離線同步處理功能，請改用 **tableWithName**。
+ 若要取得同步處理資料表的參考，請在 **上使用**syncTableWithName`MSClient` 方法。 若要移除離線同步處理功能，請改用 **tableWithName**。
 
 必須先初始化本機存放區，才可以執行資料表作業。 以下是相關的程式碼：
 
@@ -156,11 +151,11 @@ Mobile Apps 的離線資料同步處理功能可讓終端使用者在無法存�
 
 ![MS_TableOperations 資料表屬性][defining-core-data-tableoperations-entity]
 
-| 屬性 | Type |
+| 屬性 | 類型 |
 | --- | --- |
 | id | 整數 64 |
 | itemId | String |
-| properties | 二進位資料 |
+| properties | Binary Data |
 | 資料表 | String |
 | tableKind | 整數 16 |
 
@@ -169,21 +164,21 @@ Mobile Apps 的離線資料同步處理功能可讓終端使用者在無法存�
 
  ![MS_TableOperationErrors 資料表屬性][defining-core-data-tableoperationerrors-entity]
 
-| 屬性 | Type |
+| 屬性 | 類型 |
 | --- | --- |
 | id |String |
 | operationId |整數 64 |
-| properties |二進位資料 |
+| properties |Binary Data |
 | tableKind |整數 16 |
 
  **MS_TableConfig**
 
  ![][defining-core-data-tableconfig-entity]
 
-| 屬性 | Type |
+| 屬性 | 類型 |
 | --- | --- |
 | id |String |
-| key |String |
+| 索引鍵 |String |
 | keyType |整數 64 |
 | 資料表 |String |
 | value |String |
@@ -192,13 +187,13 @@ Mobile Apps 的離線資料同步處理功能可讓終端使用者在無法存�
 
 **TodoItem**
 
-| 屬性 | Type | 附註 |
+| 屬性 | 類型 | 附註 |
 | --- | --- | --- |
 | id | 字串 (標示為必要) |遠端存放區中的主索引鍵 |
 | 完成 | Boolean | To-do 項目欄位 |
 | text |String |To-do 項目欄位 |
-| 建立時間 | 日期 | (選擇性) 對應至 **createdAt** 系統屬性 |
-| 更新時間 | 日期 | (選擇性) 對應至 **updatedAt** 系統屬性 |
+| 建立時間 | Date | (選擇性) 對應至 **createdAt** 系統屬性 |
+| 更新時間 | Date | (選擇性) 對應至 **updatedAt** 系統屬性 |
 | version | String | (選擇性) 用來偵測衝突，對應至版本 |
 
 ## <a name="setup-sync"></a>變更應用程式的同步處理行為
@@ -223,7 +218,7 @@ Mobile Apps 的離線資料同步處理功能可讓終端使用者在無法存�
 
 **Swift**：
 
-在 **ToDoTableViewController.swift** 的 `viewDidLoad` 中，註解化這兩行以停止在 App 啟動時同步處理。 在本文撰寫期間，當某人新增或完成項目時，Swift Todo App 不會更新服務。 只有在 App 啟動時它才會更新。
+在 `viewDidLoad`ToDoTableViewController.swift**的** 中，註解化這兩行以停止在 App 啟動時同步處理。 在本文撰寫期間，當某人新增或完成項目時，Swift Todo App 不會更新服務。 只有在 App 啟動時它才會更新。
 
    ```swift
   self.refreshControl?.beginRefreshing()
@@ -246,7 +241,7 @@ Mobile Apps 的離線資料同步處理功能可讓終端使用者在無法存�
 2. 新增一些 To-do 項目。 結束模擬器 (或強制關閉 App)，然後重新啟動它。 確認已保存您的變更。
 
 3. 檢視遠端 **TodoItem** 資料表的內容：
-   * 針對 Node.js 後端，請移至 [Azure 入口網站](https://portal.azure.com/)，在您的行動裝置 App 後端中按一下 [簡易表]  >  [TodoItem]。  
+   * 針對 Node.js 後端，請移至 [Azure 入口網站](https://portal.azure.com/)，在您的行動裝置 App 後端中按一下 [簡易表] >  [TodoItem]。  
    * 針對 .NET 後端，請使用 SQL 工具 (例如 SQL Server Management Studio) 或 REST 用戶端 (例如 Fiddler 或 Postman)。  
 
 4. 請確認新項目「尚未」同步處理到伺服器。
@@ -258,7 +253,7 @@ Mobile Apps 的離線資料同步處理功能可讓終端使用者在無法存�
 
 7. 再次檢視 **TodoItem** 資料。 其中會顯示已變更的新 To-do 項目。
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 為了支援離線同步處理功能，我們使用了 `MSSyncTable` 介面，並對本機存放區初始化 `MSClient.syncContext`。 在此案例中，本機存放區是以核心資料為基礎的資料庫。
 
 使用核心資料本機存放區時，您必須使用[正確的系統屬性](#review-core-data)定義數個資料表。
@@ -269,7 +264,7 @@ Mobile Apps 的離線資料同步處理功能可讓終端使用者在無法存�
 
 ## <a name="additional-resources"></a>其他資源
 * [Mobile Apps 中的離線資料同步處理]
-* [雲端報導：Azure Mobile Services 中的離線同步處理] \(雖然影片是關於 Mobile Services，但 Mobile Apps 也是以類似的方式進行離線同步處理。\)
+* [雲端報導︰Azure 行動服務中的離線同步處理]處理 \(影片是關於行動服務，但 Mobile Apps 離線同步作業則以類似的方式運作。\)
 
 <!-- URLs. -->
 
@@ -282,5 +277,5 @@ Mobile Apps 的離線資料同步處理功能可讓終端使用者在無法存�
 [defining-core-data-tableconfig-entity]: ./media/app-service-mobile-ios-get-started-offline-data/defining-core-data-tableconfig-entity.png
 [defining-core-data-todoitem-entity]: ./media/app-service-mobile-ios-get-started-offline-data/defining-core-data-todoitem-entity.png
 
-[雲端報導：Azure Mobile Services 中的離線同步處理]: https://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
+[雲端報導︰Azure 行動服務中的離線同步處理]: https://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 [Azure Friday: Offline-enabled apps in Azure Mobile Services]: https://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/

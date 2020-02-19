@@ -852,6 +852,8 @@
           href: ./domain-joined/hdinsight-use-oozie-domain-joined-clusters.md
     - name: 概念
       items:
+        - name: 企業安全性一般指導方針
+          href: ./domain-joined/general-guidelines.md
         - name: 針對 ESP 叢集進行規劃
           href: ./domain-joined/apache-domain-joined-architecture.md
         - name: HDInsight 虛擬網路架構
@@ -864,6 +866,8 @@
           href: ./hdinsight-service-tags.md
         - name: 客戶管理金鑰磁碟加密
           href: ./disk-encryption.md
+        - name: Ranger 和 Apache Ambari 中的 LDAP 同步處理
+          href: ./domain-joined/ldap-sync.md
     - name: 如何
       items:
         - name: 使用識別碼訊息代理程式進行認證管理

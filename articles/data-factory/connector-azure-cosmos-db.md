@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/11/2019
-ms.openlocfilehash: 6e9e1d54599ab88092638762ccd7974e44c82cbf
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 7096b429145a54b5a09fe38eb8099c4ff24ac452
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025804"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460955"
 ---
 # <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>使用 Azure Data Factory 複製和轉換 Azure Cosmos DB （SQL API）中的資料
 
@@ -58,7 +58,7 @@ Data Factory 可與 [Azure Cosmos DB 大量執行程式庫](https://github.com/A
 
 以下是針對 Azure Cosmos DB (SQL API) 連結服務支援的屬性：
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | **type** 屬性必須設定為 **CosmosDb**.。 | 是 |
 | connectionString |指定連線到 Azure Cosmos DB 資料庫所需的資訊。<br />**注意**：您必須在連接字串中指定資料庫資訊，如後續範例所示。 <br/> 您也可以將帳戶金鑰放在 Azure Key Vault 並從連接字串中提取 `accountKey` 組態。 請參閱下列範例和[在 Azure Key Vault 中儲存認證](store-credentials-in-key-vault.md)一文中的更多詳細資料。 |是 |
@@ -114,7 +114,7 @@ Data Factory 可與 [Azure Cosmos DB 大量執行程式庫](https://github.com/A
 
 Azure Cosmos DB （SQL API）資料集支援下列屬性： 
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 資料集的**類型**屬性必須設定為**CosmosDbSqlApiCollection**。 |是 |
 | collectionName |Azure Cosmos DB 文件集合的名稱。 |是 |
@@ -150,7 +150,7 @@ Azure Cosmos DB （SQL API）資料集支援下列屬性：
 
 複製活動的 [來源] 區段支援下列屬性：
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的**類型**屬性必須設定為**CosmosDbSqlApiSource**。 |是 |
 | 查詢 |指定 Azure Cosmos DB 查詢來讀取資料。<br/><br/>範例：<br /> `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |否 <br/><br/>如果未指定，則會執行此 SQL 陳述式：`select <columns defined in structure> from mycollection` |
@@ -202,7 +202,7 @@ Azure Cosmos DB （SQL API）資料集支援下列屬性：
 
 複製活動的 [來源] 區段支援下列屬性：
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動接收器的**type**屬性必須設定為**CosmosDbSqlApiSink**。 |是 |
 | writeBehavior |描述如何將資料寫入至 Azure Cosmos DB。 允許的值：**insert** 和 **upsert**。<br/><br/>如果存在具有相同識別碼的文件，**upsert** 的行為會用來取代文件；否則會插入文字。<br /><br />**注意**：如果未在原始文件中或藉由資料行對應來指定識別碼，則 Data Factory 會自動產生文件的識別碼。 這表示您必須確定，為了讓 **upsert** 如預期般運作，您的文件具有識別碼。 |否<br />(預設值為 **insert**) |
@@ -318,7 +318,7 @@ Azure Cosmos DB （SQL API）資料集支援下列屬性：
 
 ## <a name="migrate-from-relational-database-to-cosmos-db"></a>從關係資料庫移轉至 Cosmos DB
 
-從關係資料庫（例如 SQL Server 至 Azure Cosmos DB）進行遷移時，複製活動可以輕鬆地從來源對應表格式資料，以在 Cosmos DB 中簡維 JSON 檔。 在某些情況下，您可能會想要重新設計資料模型，根據[Azure Cosmos DB 中的資料](../cosmos-db/modeling-data.md)模型化來針對 NoSQL 使用案例進行優化，例如，藉由內嵌一個 JSON 檔中所有相關的子專案來反正規化資料。 針對這種情況，請參閱[這篇 blog 文章](https://medium.com/@ArsenVlad/denormalizing-via-embedding-when-copying-data-from-sql-to-cosmos-db-649a649ae0fb)，其中包含如何使用 Azure Data Factory 複製活動來達成此目標的逐步解說。
+從關係資料庫（例如 SQL Server 至 Azure Cosmos DB）進行遷移時，複製活動可以輕鬆地從來源對應表格式資料，以在 Cosmos DB 中簡維 JSON 檔。 在某些情況下，您可能會想要重新設計資料模型，根據[Azure Cosmos DB 中的資料](../cosmos-db/modeling-data.md)模型化來針對 NoSQL 使用案例進行優化，例如，藉由內嵌一個 JSON 檔中所有相關的子專案來反正規化資料。 針對這種情況，請參閱[這篇文章](../cosmos-db/migrate-relational-to-cosmos-db-sql-api.md)，並逐步解說如何使用 Azure Data Factory 複製活動來達成此目的。
 
 ## <a name="next-steps"></a>後續步驟
 

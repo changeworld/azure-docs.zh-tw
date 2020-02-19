@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: ac93d1f4f0f148e1f0ce3d0f21ac9a694f2e896d
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 322d1c9ead1e7591c359c35c445fa32529db22ef
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310011"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462474"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>關於 Azure Cosmos DB 內不同 API 的常見問題集
 
@@ -79,12 +79,13 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 當�
 
 ## <a id="try-cosmos-db"></a>試用 Azure Cosmos DB 訂用帳戶
 
-您現在不需要訂用帳戶即可享用限時的 Azure Cosmos DB 體驗，不僅免費，也沒有任何承諾用量。 若要註冊試用 Azure Cosmos DB 訂用帳戶，請移至[免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)。 此訂用帳戶與 [Azure 免費試用](https://azure.microsoft.com/free/)有所區別，可以搭配 Azure 免費試用或 Azure 付費訂用帳戶使用。
+您現在不需要訂用帳戶即可享用限時的 Azure Cosmos DB 體驗，不僅免費，也沒有任何承諾用量。 若要註冊試用 Azure Cosmos DB 訂用帳戶，請移至[免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) ，並使用任何個人 MICROSOFT 帳戶（MSA）。 此訂用帳戶與 [Azure 免費試用](https://azure.microsoft.com/free/)有所區別，可以搭配 Azure 免費試用或 Azure 付費訂用帳戶使用。
 
 試用 Azure Cosmos DB 訂用帳戶會顯示在 Azure 入口網站中，與您的使用者識別碼相關聯的其他訂用帳戶旁。
 
 下列條件適用於試用 Azure Cosmos DB 訂用帳戶：
 
+* 帳戶存取權可以授與個人 Microsoft 帳戶（MSA）。 請避免使用屬於公司 AAD 租使用者的 Active Directory （AAD）帳戶或帳戶，他們可能會有可能封鎖存取授與的限制。
 * 針對 SQL、Gremlin API 和資料表帳戶，每個訂用帳戶布建了一個[輸送量的容器](./set-throughput.md#set-throughput-on-a-container)。
 * 針對 MongoDB 帳戶，每個訂用帳戶最多可布建三個[輸送量的集合](./set-throughput.md#set-throughput-on-a-container)。
 * 每個訂用帳戶已布[建一個輸送量的資料庫](./set-throughput.md#set-throughput-on-a-database)。 輸送量已布建的資料庫可以包含任意數目的容器。
@@ -198,7 +199,7 @@ SQL API 透過 JavaScript 預存程序和觸發程序，支援語言整合式交
 
 ### <a name="is-a-local-instance-of-sql-api-available"></a>SQL API 的本機執行個體可供使用嗎？
 
-可以。 [Azure Cosmos DB 模擬器](local-emulator.md)提供 Cosmos DB 服務的高逼真度模擬。 它支援與 Azure Cosmos DB 完全相同的功能，包括支援建立和查詢 JSON 文件、佈建和擴充集合，以及執行預存程序和觸發程序。 您可以使用 Azure Cosmos DB 模擬器來開發及測試應用程式，並且只需對 Azure Cosmos DB 的連接端點進行單一組態變更，就能將它們部署至全球規模的 Azure。
+是。 [Azure Cosmos DB 模擬器](local-emulator.md)提供 Cosmos DB 服務的高逼真度模擬。 它支援與 Azure Cosmos DB 完全相同的功能，包括支援建立和查詢 JSON 文件、佈建和擴充集合，以及執行預存程序和觸發程序。 您可以使用 Azure Cosmos DB 模擬器來開發及測試應用程式，並且只需對 Azure Cosmos DB 的連接端點進行單一組態變更，就能將它們部署至全球規模的 Azure。
 
 ### <a name="why-are-long-floating-point-values-in-a-document-rounded-when-viewed-from-data-explorer-in-the-portal"></a>在入口網站中從資料總管檢視文件中的長浮點值時，這些值為何會四捨五入。
 
@@ -226,7 +227,7 @@ Azure Cosmos DB 會強制執行嚴格的安全性需求和標準。 Azure Cosmos
 
 除了常見的 MongoDB 錯誤碼，適用於 MongoDB 的 Azure Cosmos DB API 有專用錯誤碼：
 
-| 錯誤               | 程式碼  | 說明  | 解決方案  |
+| 錯誤               | 程式碼  | 描述  | 解決方法  |
 |---------------------|-------|--------------|-----------|
 | TooManyRequests     | 16500 | 取用的要求單位總數大於為容器布建的要求單位速率，並已進行節流。 | 請考慮從 Azure 入口網站調整指派給容器或容器集的輸送量，或重試一次。 |
 | ExceededMemoryLimit | 16501 | 做為多租用戶服務，作業已超出用戶端的記憶體配額。 | 透過更嚴格的查詢準則來縮小作業的範圍，或經由 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)連絡支援人員。 <br><br>範例： <em>&nbsp;&nbsp;&nbsp;&nbsp;getCollection （' users '）。 aggregate （[<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$match： {name： "（）}}， <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$sort： {age：-1}}<br>&nbsp;&nbsp;&nbsp;&nbsp;]）</em>） |
@@ -353,7 +354,7 @@ Azure Cosmos DB 的設計乃藉由使用水平調整提供無限制的儲存體�
 
 ### <a name="can-i-use-the-table-api-sdk-locally-with-the-emulator"></a>我可以在本機搭配使用資料表 API SDK 與模擬器嗎？
 
-目前不是。
+目前沒有。
 
 ### <a name="can-my-existing-application-work-with-the-table-api"></a>我現有的應用程式可以與資料表 API 搭配運作嗎？
 
@@ -500,7 +501,7 @@ Azure Cosmos DB 是 SLA 型系統，它提供無限制的調整和延遲、輸�
 
 ### <a name="so-partitionkey-and-rowkey-are-still-required-with-the-table-api"></a>這樣說來，資料表 API 仍然需要 PartitionKey 和 RowKey 嗎？
 
-可以。 因為「資料表 API」的介面區與「Azure 資料表」儲存體 SDK 的介面區類似，所以分割區索引鍵能提供有效率的資料散發方式。 資料列索引鍵在該資料分割內是唯一的。 資料列索引鍵必須存在且不能為 Null，如同在標準 SDK 中。 RowKey 的長度是 255 個位元組，而 PartitionKey 為 1 KB。
+是。 因為「資料表 API」的介面區與「Azure 資料表」儲存體 SDK 的介面區類似，所以分割區索引鍵能提供有效率的資料散發方式。 資料列索引鍵在該資料分割內是唯一的。 資料列索引鍵必須存在且不能為 Null，如同在標準 SDK 中。 RowKey 的長度是 255 個位元組，而 PartitionKey 為 1 KB。
 
 ### <a name="what-are-the-error-messages-for-the-table-api"></a>資料表 API 的錯誤訊息將有哪些？
 

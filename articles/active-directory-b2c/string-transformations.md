@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/05/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 69091fbcc2b6789abc7825632a56197427d34e4c
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 06323ba8f623bc80a355be69ed9571ee32dd69e6
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77045348"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461210"
 ---
 # <a name="string-claims-transformations"></a>字串宣告轉換
 
@@ -523,9 +523,9 @@ ms.locfileid: "77045348"
 
 | Item | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
-| OutputClaim | claim_to_null | 字串 | 值為 NULL 的宣告。 |
+| OutputClaim | claim_to_null | 字串 | 宣告的值會設定為 Null。 |
 
-使用此宣告轉換，從宣告屬性包中移除不必要的資料。 因此，工作階段 Cookie 將變得比較小。 下列範例會移除 `TermsOfService` 宣告類型的值。
+使用此宣告轉換，從宣告屬性包中移除不必要的資料，讓會話 cookie 變小。 下列範例會移除 `TermsOfService` 宣告類型的值。
 
 ```XML
 <ClaimsTransformation Id="SetTOSToNull" TransformationMethod="NullClaim">

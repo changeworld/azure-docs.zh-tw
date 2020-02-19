@@ -6,22 +6,17 @@ ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: f85c8e4f8eedccf3039038308f2262727fb18197
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 3714ce2a8098608851991115aa82afdc00d08a47
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668560"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459383"
 ---
 # <a name="add-authentication-to-your-apache-cordova-app"></a>新增驗證至您的 Apache Cordova 應用程式
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
-> [!NOTE]
-> Visual Studio App Center 支援使用端對端及整合服務中心來開發行動應用程式。 開發人員可以使用**建置**、**測試**和**散發**服務來設定持續整合及傳遞管線。 部署應用程式之後，開發人員可以使用**分析**和**診斷**服務來監視其應用程式的狀態和使用情況，並使用**推送**服務與使用者互動。 開發人員也可以利用**驗證**來驗證其使用者，並使用**資料**來保存及同步雲端中的應用程式資料。
->
-> 如果您想要在行動應用程式中整合雲端服務，請立即註冊 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) \(英文\)。
-
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 在本教學課程中，您可以使用支援的身分識別提供者，將驗證加入 Apache Cordova 上的 TodoList 快速入門專案。 本教學課程以[開始使用 Mobile Apps] 為基礎，您必須先完成該教學課程。
 
 ## <a name="register"></a>註冊應用程式進行驗證，並設定應用程式服務
@@ -47,7 +42,7 @@ ms.locfileid: "74668560"
    | 提供者 | SDK 提供者名稱 | OAuth 主機 |
    |:--- |:--- |:--- |
    | Azure Active Directory | aad | https://login.microsoftonline.com |
-   | Facebook | Facebook | https://www.facebook.com |
+   | Facebook | facebook | https://www.facebook.com |
    | Google | Google | https://accounts.google.com |
    | Microsoft | microsoftaccount | https://login.live.com |
    | Twitter | Twitter | https://api.twitter.com |
@@ -88,7 +83,7 @@ ms.locfileid: "74668560"
     login () 方法會開始向提供者驗證。 login() 方法是會傳回 JavaScript Promise 的非同步函式。  初始化作業的其餘部分會置於承諾回應中，如此就不會在 login() 方法完成之前執行。
 
 4. 在您剛才加入的程式碼中，使用您的登入提供者名稱取代 `SDK_Provider_Name` 。 例如，針對 Azure Active Directory，請使用 `client.login('aad')`。
-5. 執行專案。  當專案完成初始化時，您的應用程式會針對選擇的驗證提供者顯示 OAuth 登入頁面。
+5. 執行您的專案。  當專案完成初始化時，您的應用程式會針對選擇的驗證提供者顯示 OAuth 登入頁面。
 
 ## <a name="next-steps"></a>後續步驟
 * 深入了解 Azure App Service [驗證相關資訊] 。

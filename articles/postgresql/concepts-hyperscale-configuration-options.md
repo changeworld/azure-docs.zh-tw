@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: 2ee3e661d6c01aa2e4f37ac9a70e00be5da5f794
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 2/18/2020
+ms.openlocfilehash: 1c9b4b1099bda69764aa7a1a5a984a6316e1047d
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975630"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462406"
 ---
 # <a name="azure-database-for-postgresql--hyperscale-citus-performance-options"></a>適用於 PostgreSQL 的 Azure 資料庫–超大規模資料庫（Citus）效能選項
 
@@ -29,24 +29,27 @@ ms.locfileid: "74975630"
 | IOPS                  | 最多 3 IOPS/GiB      | 最多 3 IOPS/GiB      |
 
 
-## <a name="regions"></a>地區
+## <a name="regions"></a>區域
 超大規模資料庫（Citus）伺服器群組適用于下列 Azure 區域：
 
 * 美洲：
-    * 加拿大中部 *
+    * 加拿大中部
+    * 美國中部
     * 美國東部
     * 美國東部 2
-    * 美國中北部 *
+    * 美國中北部
     * 美國西部 2
 * 亞太地區：
-    * 澳大利亞東部 *
+    * 澳大利亞東部
+    * 日本東部
+    * 南韓中部
     * 東南亞
 * 歐洲
     * 北歐
     * 英國南部
     * 西歐
 
-具有星號（\*）的區域尚未支援[高可用性](concepts-hyperscale-high-availability.md)。
+某些區域可能一開始不會在所有 Azure 訂用帳戶上啟用。 如果您想要使用上述清單中的區域，且在您的訂用帳戶中看不到它，或如果您想要使用不在此清單上的區域，請開啟[支援要求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
 
 ## <a name="pricing"></a>價格
 如需最新的定價資訊，請參閱服務的[定價頁面](https://azure.microsoft.com/pricing/details/postgresql/)。

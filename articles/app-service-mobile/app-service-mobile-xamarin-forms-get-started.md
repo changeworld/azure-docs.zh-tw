@@ -6,28 +6,23 @@ ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 06/25/2019
-ms.openlocfilehash: 69a9b3294bf080f7ae1516b0acbfc4be077518f4
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 9ae97ccbcc358a150e914a6e950579a972fef0bc
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668655"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461329"
 ---
 # <a name="create-a-xamarinforms-app-with-azure"></a>使用 Azure 建立 Xamarin.Forms 應用程式
 
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
-
-> [!NOTE]
-> Visual Studio App Center 支援使用端對端及整合服務中心來開發行動應用程式。 開發人員可以使用**建置**、**測試**和**散發**服務來設定持續整合及傳遞管線。 部署應用程式之後，開發人員可以使用**分析**和**診斷**服務來監視其應用程式的狀態和使用情況，並使用**推送**服務與使用者互動。 開發人員也可以利用**驗證**來驗證其使用者，並使用**資料**來保存及同步雲端中的應用程式資料。
->
-> 如果您想要在行動應用程式中整合雲端服務，請立即註冊 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) \(英文\)。
 
 ## <a name="overview"></a>概觀
 本教學課程說明如何使用 Azure App Service 的 Mobile Apps 功能作為後端，將雲端型後端服務新增到 Xamarin.Forms 行動裝置應用程式。 您會同時建立新的 Mobile Apps 後端，以及可在 Azure 中儲存應用程式資料的簡易待辦事項清單 Xamarin.Forms 應用程式。
 
 完成本教學課程是所有其他 Xamarin.Forms 應用程式的行動應用程式教學課程的必要條件。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成此教學課程，您需要下列項目：
 
@@ -49,7 +44,7 @@ ms.locfileid: "74668655"
 
 ### <a name="visual-studio-windows-and-mac"></a>Visual Studio （Windows 和 Mac）
 
-1. 移至  [Azure 入口網站](https://portal.azure.com/)，然後流覽至您所建立的行動應用程式。 在 [`Overview`] 分頁上，尋找您的行動應用程式的公用端點 URL。 範例-應用程式名稱 "test123" 的 sitename 將會 https://test123.azurewebsites.net 。
+1. 移至  [Azure 入口網站](https://portal.azure.com/)，然後流覽至您所建立的行動應用程式。 在 [`Overview`] 分頁上，尋找您的行動應用程式的公用端點 URL。 範例-應用程式名稱 "test123" 的 sitename 將會 https://test123.azurewebsites.net。
 
 2. 開啟此資料夾中的檔案 `Constants.cs`-xamarin. forms/z。 應用程式名稱為 `ZUMOAPPNAME`。
 
@@ -57,7 +52,7 @@ ms.locfileid: "74668655"
 
     `public static string ApplicationURL = @"ZUMOAPPURL";`
 
-    滿
+    變成
 
     `public static string ApplicationURL = @"https://test123.azurewebsites.net";`
     
@@ -154,7 +149,7 @@ ms.locfileid: "74668655"
 
 如果在建置解決方案時發生問題，請執行 NuGet 套件管理員，並更新為最新版的 `Xamarin.Forms`，並在 Android 專案中，更新 `Xamarin.Android` 支援套件。 快速入門專案不一定會包含最新版本。
 
-請注意，您 Android 專案中參考的所有支援套件都必須有相同的版本。 [Azure Mobile Apps NuGet 套件](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) 有 Android 平台的 `Xamarin.Android.Support.CustomTabs` 相依性，因此若您的專案使用較新的支援套件，您必須直接安裝具有必要版本的此套件以避免衝突。
+請注意，您 Android 專案中所參考的所有支援套件都必須具有相同版本。 [Azure Mobile Apps NuGet 套件](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) 具有 Android 平台的 `Xamarin.Android.Support.CustomTabs` 相依性，因此若您的專案使用較新的支援套件，您必須直接安裝具有必要版本的此套件以避免發生衝突。
 
 <!-- Images. -->
 [10]: ./media/app-service-mobile-xamarin-forms-get-started/mobile-quickstart-startup-ios.png

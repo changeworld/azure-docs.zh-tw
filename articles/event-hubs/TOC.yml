@@ -50,7 +50,7 @@
           href: event-hubs-python-get-started-send.md
         - name: JavaScript (azure/event-hubs 第 2 版)
           href: event-hubs-node-get-started-send.md
-        - name: .NET Framework (Microsoft.Azure.EventHubs)
+        - name: .NET Framework (Microsoft.ServiceBus)
           href: event-hubs-dotnet-framework-getstarted-send.md
     - name: 擷取事件
       items:

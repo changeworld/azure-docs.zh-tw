@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/15/2020
-ms.openlocfilehash: 5846e9516548032595c1ce072d1dae8dcce9d39e
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
-ms.translationtype: HT
+ms.openlocfilehash: 353e00f902a7314e5e5b7c8ee03e8b925a510b26
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443596"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462321"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>監視 Azure 認知搜尋的作業和活動
 
@@ -52,7 +52,7 @@ ms.locfileid: "77443596"
 
 如果您要完成有關[要針對生產環境工作負載使用哪個定價層](search-sku-tier.md)或是否要[調整作用中複本和分割區的數量](search-capacity-planning.md)的決策，這些計量可透過顯示資源消耗速度及目前設定處理現有負載的情況，協助您進行這些決策。
 
-與存放裝置相關的警示目前無法使用;儲存體耗用量不會匯總或登入 Azure 監視器中的**AzureMetrics**資料表。 您需要建立自訂解決方案來發出資源相關通知，您的程式碼會在其中檢查儲存體大小並處理回應。 如需儲存體計量的詳細資訊，請參閱[取得服務統計資料](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics#response)。
+與存放裝置相關的警示目前無法使用;儲存體耗用量不會匯總或登入 Azure 監視器中的**AzureMetrics**資料表。 您需要[建立自訂解決方案](https://docs.microsoft.com/azure/azure-monitor/insights/solutions-creating)來發出資源相關通知，您的程式碼會在其中檢查儲存體大小並處理回應。 如需儲存體計量的詳細資訊，請參閱[取得服務統計資料](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics#response)。
 
 若要在入口網站中進行視覺化監視，[**使用量**] 索引標籤會顯示相對於服務層級所設定之目前[限制](search-limits-quotas-capacity.md)的資源可用性。 
 

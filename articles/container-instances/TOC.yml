@@ -81,7 +81,7 @@
           href: container-instances-managed-identity.md
         - name: 使用 GPU 資源 (預覽)
           href: container-instances-gpu.md
-        - name: 啟用 SSL 端點
+        - name: 在側車中啟用 SSL 端點
           href: container-instances-container-group-ssl.md
     - name: 裝載資料磁碟區
       items:

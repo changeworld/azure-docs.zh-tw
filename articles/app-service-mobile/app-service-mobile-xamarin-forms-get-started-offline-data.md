@@ -6,20 +6,15 @@ ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 85cb39de40d72d4fb4629d055d016e8a3dca23bd
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 57776073ef7e2760b308df22280faf1d65b8d104
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668289"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77458846"
 ---
-# <a name="enable-offline-sync-for-your-xamarinforms-mobile-app"></a>為您的 Xamarin.Forms 行動裝置 App 啟用離線同步處理
+# <a name="enable-offline-sync-for-your-xamarinforms-mobile-app"></a>啟用 Xamarin.Forms 行動應用程式的離線同步處理
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
-
-> [!NOTE]
-> Visual Studio App Center 支援使用端對端及整合服務中心來開發行動應用程式。 開發人員可以使用**建置**、**測試**和**散發**服務來設定持續整合及傳遞管線。 部署應用程式之後，開發人員可以使用**分析**和**診斷**服務來監視其應用程式的狀態和使用情況，並使用**推送**服務與使用者互動。 開發人員也可以利用**驗證**來驗證其使用者，並使用**資料**來保存及同步雲端中的應用程式資料。
->
-> 如果您想要在行動應用程式中整合雲端服務，請立即註冊 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) \(英文\)。
 
 ## <a name="overview"></a>概觀
 此教學課程介紹適用於 Xamarin.Forms 之 Azure 行Mobile Apps 的離線同步處理功能。 離線同步處理可讓使用者與行動應用程式進行互動--檢視、新增或修改資料--即使沒有網路連線進也可行。 變更會儲存在本機資料庫中。 裝置恢復上線後，這些變更就會與遠端服務進行同步處理。
@@ -115,7 +110,7 @@ ms.locfileid: "74668289"
 
 針對具有內容追蹤之擱置中本機更新的資料表執行提取，該提取作業將自動觸發先前的內容推送。 在此範例中重新整理、新增和完成項目時，您可以省略明確的 **PushAsync** 呼叫。
 
-在提供的程式碼中，遠端 TodoItem 資料表中的所有記錄都會進行查詢，但是也可能透過將查詢識別碼與查詢傳遞至 **PushAsync**來篩選記錄。 如需詳細資訊，請參閱 [Azure Mobile Apps 中的離線資料同步處理][2]中的*增量同步處理*一節。
+在提供的程式碼中，遠端 TodoItem 資料表中的所有記錄都會進行查詢，但是也可能透過將查詢識別碼與查詢傳遞至 **PushAsync**來篩選記錄。 如需詳細資訊，請參閱 *Azure Mobile Apps 中的離線資料同步處理*中的[增量同步處理][2]一節。
 
 ## <a name="run-the-client-app"></a>執行用戶端應用程式
 離線同步現在已啟用，請在每個平台執行用戶端應用程式至少一次，以填入本機存放區資料庫。 稍後，模擬一個離線案例，並在應用程式離線時修改本機存放區中的資料。

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 01/29/2020
 ms.author: victorh
-ms.openlocfilehash: 39c08a568a60c905394eec23dd27d5dd32ff0112
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
-ms.translationtype: MT
+ms.openlocfilehash: 78269461bf01d61bffeed504b0168b4913c6e131
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77460462"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77442984"
 ---
 # <a name="azure-firewall-faq"></a>Azure 防火牆常見問題集
 
@@ -129,9 +129,7 @@ Set-AzFirewall -AzureFirewall $azfw
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>受支援的網路虛擬裝置是否有強制通道/連結？
 
-支援強制通道。 如需詳細資訊，請參閱[Azure 防火牆強制通道（預覽）](forced-tunneling.md)。 
-
-「Azure 防火牆」必須能夠直接連線到網際網路。 如果您的 AzureFirewallSubnet 學習到透過 BGP 連至您內部部署網路的預設路由，您必須將其覆寫為 0.0.0.0/0 UDR，且 **NextHopType** 值必須設為 [網際網路]，以保有直接網際網路連線。
+目前不支援強制通道。 「Azure 防火牆」必須能夠直接連線到網際網路。 如果您的 AzureFirewallSubnet 學習到透過 BGP 連至您內部部署網路的預設路由，您必須將其覆寫為 0.0.0.0/0 UDR，且 **NextHopType** 值必須設為 [網際網路]，以保有直接網際網路連線。
 
 如果您的設定需要對內部部署網路使用強制通道，而且您可以決定網際網路目的地的目標 IP 首碼，則您可以透過 AzureFirewallSubnet 上的使用者定義路由，將使用內部部署網路的這些範圍設定為下一個躍點。 或者，您可以使用 BGP 來定義這些路由。
 
@@ -168,7 +166,7 @@ Azure 防火牆必須在調整規模時布建更多虛擬機器實例。 /26 位
 
 ## <a name="how-can-i-increase-my-firewall-throughput"></a>如何增加防火牆輸送量？
 
-Azure 防火牆的初始輸送量容量為 2.5-3 Gbps。 目前，相應放大是以 CPU 使用量和輸送量為基礎。 在某些情況下，只有網路規則的防火牆不會相應增加，以提高輸送量，因為網路規則不會嚴重影響 CPU 使用量。 如果您需要更高的防火牆輸送量，請聯絡支援人員以增加防火牆的初始輸送量容量。
+Azure 防火牆的初始輸送量容量為 2.5-3 Gbps。 目前，相應放大僅以 CPU 使用量為基礎。 在某些情況下，只有網路規則的防火牆不會相應增加，以提高輸送量，因為網路規則不會嚴重影響 CPU 使用量。 如果您需要更高的防火牆輸送量，請聯絡支援人員以增加防火牆的初始輸送量容量。
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Azure 防火牆需要多久的時間來相應放大？
 

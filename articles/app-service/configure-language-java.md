@@ -9,12 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: e5beb60107b3632da336a20f167e1c2f5b53140a
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
-ms.translationtype: MT
+ms.openlocfilehash: a088a90642a0394b0ede3c163590f64112799d1a
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461261"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425284"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>設定適用于 Azure App Service 的 Windows JAVA 應用程式
 
@@ -29,7 +29,6 @@ Azure App Service 可讓 JAVA 開發人員在完全受控的 Windows 服務上�
 否則，您的部署方法將取決於您的封存類型：
 
 - 若要將 .war 檔案部署至 Tomcat，請使用 `/api/wardeploy/` 端點透過 POST 張貼您的封存檔案。 如需有關此 API 的詳細資訊，請參閱[這份文件](https://docs.microsoft.com/azure/app-service/deploy-zip#deploy-war-file)。
-- 若要將 .jar 檔案部署至 JAVA SE，請使用 Kudu 網站的 `/api/zipdeploy/` 端點。 如需有關此 API 的詳細資訊，請參閱[這份文件](https://docs.microsoft.com/azure/app-service/deploy-zip#rest)。
 
 請勿使用 FTP 部署您的 war。 FTP 工具是為上傳啟動指令碼、相依性或其他執行階段檔案而設計的。 它不是部署網頁的最佳選擇。
 
@@ -129,9 +128,9 @@ az webapp start --name <app-name> --resource-group <resource-group-name>
 
 使用 **驗證和授權** 選項，在 Azure 入口網站中設定應用程式驗證。 在這裡，您可以使用 Azure Active Directory 或社交登入 (例如 Facebook、Google 或 GitHub) 來啟用驗證。 只有在設定單一驗證提供者時，Azure 入口網站設定才會運作。 如需詳細資訊，請參閱[設定 App Service 應用程式使用 Azure Active Directory 登入](configure-authentication-provider-aad.md)，以及其他身分識別提供者的相關文章。 如果您需要啟用多個登入提供者，請遵循[自訂 App Service 驗證](app-service-authentication-how-to.md)一文中的指示。
 
-#### <a name="tomcat"></a>Tomcat
+#### <a name="tomcat-and-wildfly"></a>Tomcat 和 Wildfly
 
-Tomcat 應用程式可以藉由將主體物件轉換成對應物件，直接從 servlet 存取使用者的宣告。 Map 物件會將每個宣告類型對應到該類型的宣告集合。 在下列程式碼中，`request` 是 `HttpServletRequest`的實例。
+您的 Tomcat 或 Wildfly 應用程式可以藉由將主體物件轉換成對應物件，直接從 servlet 存取使用者的宣告。 Map 物件會將每個宣告類型對應到該類型的宣告集合。 在下列程式碼中，`request` 是 `HttpServletRequest`的實例。
 
 ```java
 Map<String, Collection<String>> map = (Map<String, Collection<String>>) request.getUserPrincipal();
@@ -288,10 +287,6 @@ public int getServerPort()
 
 最後，重新啟動 App Service。 您的部署應該會如先前一樣移至 `D:\home\site\wwwroot\webapps`。
 
-## <a name="configure-java-se"></a>設定 JAVA SE
-
-執行時。Windows 上的 JAVA SE 上的 JAR 應用程式，在應用程式啟動時，會以命令列選項的形式傳遞 `server.port`。 您可以從環境變數手動解析 HTTP 埠，`HTTP_PLATFORM_PORT`。 此環境變數的值將會是您的應用程式應該接聽的 HTTP 埠。 
-
 ## <a name="java-runtime-statement-of-support"></a>Java 執行階段支援聲明
 
 ### <a name="jdk-versions-and-maintenance"></a>JDK 版本和維護
@@ -305,8 +300,6 @@ Azure 支援的 Java Development Kit (JDK) 是透過 [Azul Systems](https://www.
 ### <a name="security-updates"></a>安全性更新
 
 只要主要資訊安全漏洞的修補程式和修正程式在 Azul Systems 中變成可用，就予以發行。 在 [NIST Common Vulnerability Scoring System 第 2 版](https://nvd.nist.gov/cvss.cfm)上，「主要」弱點是由基本分數 9.0 或更大值定義。
-
-Tomcat 8.0 已[于2018年9月30日到達生命週期結束（EOL）](https://tomcat.apache.org/tomcat-80-eol.html)。 雖然執行時間仍是在 Azure App Service 上可，但 Azure 不會將安全性更新套用至 Tomcat 8.0。 可能的話，請將您的應用程式遷移至 Tomcat 8.5 或9.0。 Tomcat 8.5 和9.0 都可以在 Azure App Service 上取得。 如需詳細資訊，請參閱[官方 Tomcat 網站](https://tomcat.apache.org/whichversion.html)。 
 
 ### <a name="deprecation-and-retirement"></a>取代和淘汰
 

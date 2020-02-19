@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: 51ede9e264bd92721aca0ca0b75baf73c089e8fb
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: 9fb470e31e8b7a8e04cf8347ae7af8340cad16b1
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77371237"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459857"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作夥伴和對等互連位置
 
@@ -116,7 +116,7 @@ ExpressRoute 位置（有時稱為「對等位置」或「符合我的位置」�
 | **慕尼克** | [EdgeConneX](https://www.edgeconnex.com/locations/europe/) | 1 | n/a | 10G、100G | |
 | **紐約** | [Equinix NY9](https://www.equinix.com/locations/americas-colocation/united-states-colocation/new-york-data-centers/ny9/) | 1 | n/a | n/a | CenturyLink Cloud Connect、Colt、Coresite、Equinix、InterCloud、Megaport、Packet、Zayo |
 | **Newport(Wales)** | [新一代資料](https://www.nextgenerationdata.co.uk) | 1 | 英國西部 | n/a | 英屬電信，Colt，層級3通訊，新一代資料 |
-| **大阪** | [Equinix OS1](https://www.equinix.com/locations/asia-colocation/japan-colocation/osaka-data-centers/os1/) | 2 | 日本西部 | 10G、100G | Colt，Equinix，網際網路方案日本 Inc.-IIJ，NTT 通訊，NTT SmartConnect，Softbank |
+| **大阪** | [Equinix OS1](https://www.equinix.com/locations/asia-colocation/japan-colocation/osaka-data-centers/os1/) | 2 | 日本西部 | 10G、100G | Colt，Equinix，網際網路方案日本 Inc.-IIJ，Megaport，NTT 通訊，NTT SmartConnect，Softbank |
 | **Oslo** | [DigiPlex Ulven](https://www.digiplex.com/locations/oslo-datacentre) | 1 | 挪威東部 | 10G、100G | Megaport、Telenor、Telia 電訊廠商 |
 | **巴黎** | [Interxion PAR5](https://www.interxion.com/Locations/paris/) | 1 | 法國中部 | n/a | CenturyLink Cloud Connect、Colt、Equinix、Intercloud、Interxion、橙色、Telia 電訊廠商、Zayo |
 | **伯斯** | [NextDC P1](https://www.nextdc.com/data-centres/p1-perth-data-centre) | 2 | n/a | 10G | Megaport、NextDC |

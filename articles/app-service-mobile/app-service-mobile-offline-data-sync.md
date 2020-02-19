@@ -6,19 +6,14 @@ ms.assetid: 982fb683-8884-40da-96e6-77eeca2500e3
 ms.devlang: multiple
 ms.topic: article
 ms.date: 10/30/2016
-ms.openlocfilehash: 9238ebd06a4aa532d20a2a98499963a75780f025
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 0cc4309fa57a29997bdd2f650634efd0723e6965
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668423"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77458744"
 ---
-# <a name="offline-data-sync-in-azure-mobile-apps"></a>Azure Mobile Apps 中的離線資料同步
-
-> [!NOTE]
-> Visual Studio App Center 支援使用端對端及整合服務中心來開發行動應用程式。 開發人員可以使用**建置**、**測試**和**散發**服務來設定持續整合及傳遞管線。 部署應用程式之後，開發人員可以使用**分析**和**診斷**服務來監視其應用程式的狀態和使用情況，並使用**推送**服務與使用者互動。 開發人員也可以利用**驗證**來驗證其使用者，並使用**資料**來保存及同步雲端中的應用程式資料。
->
-> 如果您想要在行動應用程式中整合雲端服務，請立即註冊 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) \(英文\)。
+# <a name="offline-data-sync-in-azure-mobile-apps"></a>Azure 行動應用程式中的離線資料同步處理
 
 ## <a name="what-is-offline-data-sync"></a>什麼是離線資料同步處理？
 離線資料同步處理是 Azure 行動應用程式的用戶端和伺服器 SDK 功能，可讓開發人員建立不需要網路連線就能運作的應用程式。
@@ -58,7 +53,7 @@ ms.locfileid: "74668423"
 ## <a name="what-is-a-sync-context"></a>什麼是同步處理內容？
 「同步處理內容」會與行動用戶端物件相關聯 (例如 `IMobileServiceClient` 或 `MSClient`)，並且追蹤對同步處理資料表所做的變更。 同步處理內容會維護一個「作業佇列」，其中保留一份稍後要傳送給伺服器的 CUD 作業 (Create、Update、Delete) 排序清單。
 
-本機存放區會使用初始化方法 (例如 [.NET 用戶端 SDK] 中的 `IMobileServicesSyncContext.InitializeAsync(localstore)`)，來與同步處理內容相關聯。
+本機存放區會使用初始化方法 (例如 `IMobileServicesSyncContext.InitializeAsync(localstore)`.NET 用戶端 SDK[.NET 用戶端 SDK])，來與同步處理內容相關聯。
 
 ## <a name="how-sync-works"></a>離線同步處理如何運作
 使用同步處理資料表時，您的用戶端程式碼需要控制本機變更與 Azure 行動應用程式後端同步處理的時機。 在有呼叫要「推送」( *push* ) 變更之前不會傳送任何項目到後端。 同樣地，只當有呼叫要「提取」( *pull* ) 時才會將新資料填入本機存放區。

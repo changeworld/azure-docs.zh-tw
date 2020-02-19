@@ -6,20 +6,15 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 925894cab00537cb9aeb03ca05c9699bb4bf6a84
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: fd7860053e8c04ca9d5e355a721afd834835a441
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668461"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459018"
 ---
 # <a name="add-authentication-to-your-ios-app"></a>將驗證新增至您的 iOS 應用程式
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
-
-> [!NOTE]
-> Visual Studio App Center 支援使用端對端及整合服務中心來開發行動應用程式。 開發人員可以使用**建置**、**測試**和**散發**服務來設定持續整合及傳遞管線。 部署應用程式之後，開發人員可以使用**分析**和**診斷**服務來監視其應用程式的狀態和使用情況，並使用**推送**服務與使用者互動。 開發人員也可以利用**驗證**來驗證其使用者，並使用**資料**來保存及同步雲端中的應用程式資料。
->
-> 如果您想要在行動應用程式中整合雲端服務，請立即註冊 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) \(英文\)。
 
 在本教學課程中，您可以使用支援的身分識別提供者，將驗證加入 [iOS 快速入門] 專案。 本教學課程以 [iOS 快速入門] 教學課程為基礎，您必須先完成該教學課程。
 
@@ -42,7 +37,7 @@ ms.locfileid: "74668461"
 
 6. 按一下 [確定]。
 
-7. 按一下 [儲存]。
+7. 按一下 [檔案]。
 
 ## <a name="permissions"></a>限制只有通過驗證的使用者具有權限
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
@@ -78,7 +73,7 @@ ms.locfileid: "74668461"
 
     使用您應用程式的唯一名稱來取代 **urlScheme**。  urlScheme 必須與您在 Azure 入口網站中的 [允許的外部重新導向 URL] 欄位中指定的 URL 配置通訊協定相同。 urlScheme 可在完成驗證要求之後，供驗證回呼用來切換回您的應用程式。
 
-2. 使用以下程式碼來取代 QSTodoListViewController.m 內 `viewDidLoad` 中的 `[self refresh]`：
+2. 使用以下程式碼來取代 QSTodoListViewController.m`[self refresh]``viewDidLoad` 內 *中的*：
 
     ```Objective-C
     [self loginAndGetData];
@@ -127,7 +122,7 @@ ms.locfileid: "74668461"
 
     此程式碼應該置於 `<dict>` 元素內部。  使用您在步驟 1 中選擇應的用程式名稱來取代 appname 字串 (在 **CFBundleURLSchemes** 的陣列內)。  您也可以在 plist 編輯器中進行這些變更 - 按一下 XCode 中的 `AppName-Info.plist` 檔案以開啟 plist 編輯器。
 
-    使用您的 Apple 套件組合識別碼，來取代 **CFBundleURLName** 的 `com.microsoft.azure.zumo` 字串。
+    使用您的 Apple 套件組合識別碼，來取代 `com.microsoft.azure.zumo`CFBundleURLName**的** 字串。
 
 6. 按下 [執行] 以啟動應用程式，然後登入。 當您登入時，應該能夠檢視待辦事項清單並進行更新。
 
@@ -164,7 +159,7 @@ ms.locfileid: "74668461"
 
     使用您應用程式的唯一名稱來取代 **urlScheme**。  urlScheme 必須與您在 Azure 入口網站中的 [允許的外部重新導向 URL] 欄位中指定的 URL 配置通訊協定相同。 urlScheme 可在完成驗證要求之後，供驗證回呼用來切換回您的應用程式。
 
-2. 移除 ToDoTableViewController.swift 中 `viewDidLoad()` 結尾處的 `self.refreshControl?.beginRefreshing()` 和 `self.onRefresh(self.refreshControl)` 行。 在其位置新增呼叫至 `loginAndGetData()` ：
+2. 移除 ToDoTableViewController.swift`self.refreshControl?.beginRefreshing()``self.onRefresh(self.refreshControl)` 中 `viewDidLoad()` 結尾處的 *和* 行。 在其位置新增呼叫至 `loginAndGetData()` ：
 
     ```swift
     loginAndGetData()
@@ -205,7 +200,7 @@ ms.locfileid: "74668461"
 
     此程式碼應該置於 `<dict>` 元素內部。  使用您在步驟 1 中選擇應的用程式名稱來取代 appname 字串 (在 **CFBundleURLSchemes** 的陣列內)。  您也可以在 plist 編輯器中進行這些變更 - 按一下 XCode 中的 `AppName-Info.plist` 檔案以開啟 plist 編輯器。
 
-    使用您的 Apple 套件組合識別碼，來取代 **CFBundleURLName** 的 `com.microsoft.azure.zumo` 字串。
+    使用您的 Apple 套件組合識別碼，來取代 `com.microsoft.azure.zumo`CFBundleURLName**的** 字串。
 
 5. 按下 [執行] 以啟動應用程式，然後登入。 當您登入時，應該能夠檢視待辦事項清單並進行更新。
 

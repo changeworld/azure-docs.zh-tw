@@ -8,18 +8,20 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: bc90ecb029afe70ed61e94a727c67c53bb968b96
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: e2ba5301b81b1a6f5de696ab4587cd8ff43e3c68
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212552"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462559"
 ---
 # <a name="adjust-capacity-in-azure-cognitive-search"></a>調整 Azure 認知搜尋中的容量
 
-在布建[搜尋服務](search-create-service-portal.md)並鎖定特定定價層之前，請花幾分鐘的時間來瞭解服務中複本和分割區的角色、您是否需要按比例放大或更快速的資料分割，以及如何設定服務以進行預期的負載。
+在布建[搜尋服務](search-create-service-portal.md)並鎖定特定定價層之前，請花幾分鐘的時間來瞭解服務中複本和分割區的角色，以及如何調整服務，以因應資源需求的尖峰和下降。
 
-容量是[您所選層](search-sku-tier.md)的功能（階層會決定硬體特性），以及預計工作負載所需的複本和分割區組合。 本文著重于複本和分割區的組合和互動。
+容量是[您所選層](search-sku-tier.md)的功能（階層會決定硬體特性），以及預計工作負載所需的複本和分割區組合。 視層級和調整大小而定，新增或減少容量可能需要15分鐘到數小時的時間。 
+
+修改複本和分割區的配置時，我們建議使用 Azure 入口網站。 入口網站會對允許的組合強制執行限制，而這會持續低於層級的最大限制。 不過，如果您需要以腳本為基礎或以程式碼為基礎的布建方法， [Azure PowerShell](search-manage-powershell.md)或[管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/services)為替代解決方案。
 
 ## <a name="terminology-replicas-and-partitions"></a>術語：複本和分割區
 
@@ -28,15 +30,17 @@ ms.locfileid: "77212552"
 |*分割數* | 為讀寫作業 (例如，在重建或重新整理索引時) 提供索引儲存體和 I/O。 每個資料分割都有總計索引的共用。 如果您配置三個分割區，則您的索引會分為三分之二。 |
 |*複本* | 搜尋服務的執行個體，主要用來讓查詢作業達到負載平衡。 每個複本都是一個索引複本。 如果您配置三個複本，則會有三個索引複本可用於服務查詢要求。|
 
-## <a name="how-to-allocate-replicas-and-partitions"></a>如何配置複本和分割區
+## <a name="when-to-add-nodes"></a>新增節點的時機
 
 一開始，服務會配置由一個資料分割和一個複本組成的最低層級資源。 
 
-單一服務必須具有足夠的資源，才能處理所有工作負載 (編製索引和查詢)。 工作負載都不會在背景中執行。 您可以針對查詢要求自然較不頻繁的時間排程編制索引，但服務也不會優先處理另一個工作。
-
-修改複本和分割區的配置時，我們建議使用 Azure 入口網站。 入口網站會對允許的組合強制執行限制，而這會持續低於層級的最大限制。 不過，如果您需要以腳本為基礎或以程式碼為基礎的布建方法， [Azure PowerShell](search-manage-powershell.md)或[管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/services)為替代解決方案。
+單一服務必須具有足夠的資源，才能處理所有工作負載 (編製索引和查詢)。 工作負載都不會在背景中執行。 您可以針對查詢要求自然較不頻繁的時間排程編制索引，但服務也不會優先處理另一個工作。 此外，在內部更新服務或節點時，一定數量的冗余會平滑查詢效能。
 
 一般來說，搜尋應用程式通常需要比資料分割更多的複本，特別是當服務作業傾向于查詢工作負載時。 [高可用性](#HA) 一節將會說明原因。
+
+新增更多複本或分割區會增加執行服務的成本。 請務必檢查[定價計算機](https://azure.microsoft.com/pricing/calculator/)，以瞭解新增更多節點的計費影響。 [下圖](#chart)可協助您交叉參考特定設定所需的搜尋單位數目。
+
+## <a name="how-to-allocate-replicas-and-partitions"></a>如何配置複本和分割區
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)，然後選取搜尋服務。
 
@@ -114,7 +118,7 @@ Azure 認知搜尋的服務等級協定（SLA）是以查詢作業和包含新�
 
 ## <a name="estimate-replicas"></a>估計複本
 
-在生產服務上，您應該配置三個複本以供 SLA 之用。 如果您遇到查詢效能緩慢的問題，其中一項補救措施是加入複本，讓索引的其他複本能夠上線，以支援更大的查詢工作負載，以及對多個複本的要求進行負載平衡。
+在生產服務上，您應該配置三個複本以供 SLA 之用。 如果您遇到查詢效能變慢的情況，您可以加入複本，讓索引的其他複本能夠上線以支援更大的查詢工作負載，以及對多個複本的要求進行負載平衡。
 
 我們不提供需要多少複本來配合查詢負載的指導方針。 查詢效能取決於查詢和競爭工作負載的複雜性。 雖然新增複本會明顯獲得更好的效能，但是最終結果並不會完全地呈線性關係：新增 3 個複本並不保證有 3 倍的輸送量。
 
@@ -122,7 +126,7 @@ Azure 認知搜尋的服務等級協定（SLA）是以查詢作業和包含新�
 
 ## <a name="estimate-partitions"></a>估計資料分割
 
-[您選擇的層級](search-sku-tier.md)會決定資料分割大小和速度，而且每個層級都會根據符合各種案例的一組特性來優化。 如果您選擇較高的層級，則您所需的資料分割可能會比使用 S1 時少。
+[您選擇的層級](search-sku-tier.md)會決定資料分割大小和速度，而且每個層級都會根據符合各種案例的一組特性來優化。 如果您選擇較高的層級，則您所需的資料分割可能會比使用 S1 時少。 您需要透過自我引導測試來回答的其中一個問題，就是在較低層布建的服務上，較大且較昂貴的資料分割是否會產生較高的效能。
 
 要求近乎即時資料重新整理的搜尋應用程式，按比例需要比複本更多的資料分割數。 新增資料分割可將讀取/寫入作業分配到更大量的計算資源。 它也提供更多磁碟空間來儲存額外的索引和文件。
 

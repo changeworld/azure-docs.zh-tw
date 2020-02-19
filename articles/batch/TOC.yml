@@ -55,7 +55,7 @@
       href: high-availability-disaster-recovery.md
     - name: 工作執行階段環境變數
       href: batch-compute-node-environment-variables.md
-- name: 使用說明指南
+- name: 操作指南
   items:
     - name: 管理 Batch 帳戶
       items:
@@ -71,6 +71,8 @@
           href: batch-aad-auth.md
         - name: 包含 Batch 管理的 Azure AD
           href: batch-aad-auth-management.md
+        - name: 使用 Batch 安全地存取 Key Vault
+          href: credential-access-key-vault.md
     - name: 使用應用程式封裝
       href: batch-application-packages.md
     - name: 建立和管理集區
@@ -229,7 +231,7 @@
       href: 'https://blogs.technet.microsoft.com/windowshpc/'
     - name: Azure 上的 HPC
       href: 'https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/batch/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'

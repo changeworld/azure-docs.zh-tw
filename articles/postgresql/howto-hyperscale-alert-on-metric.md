@@ -5,17 +5,17 @@ author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 68a830f344023967f07ab809d67833f99e4e2958
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 2/18/2020
+ms.openlocfilehash: 0e2eb4ab13319779ae209e58253c6a5f2ccb75da
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977602"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462423"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---hyperscale-citus"></a>使用 Azure 入口網站來設定適用於 PostgreSQL 的 Azure 資料庫超大規模資料庫（Citus）的計量警示
 
-本文說明如何使用 Azure 入口網站來設定「適用於 PostgreSQL 的 Azure 資料庫」警示。 您可以收到以 Azure 服務的監視計量為基礎的警示。
+本文說明如何使用 Azure 入口網站來設定「適用於 PostgreSQL 的 Azure 資料庫」警示。 您可以根據 Azure 服務的[監視計量](concepts-hyperscale-monitoring.md)來接收警示。
 
 我們會設定警示，以在指定的計量值超出閾值時觸發。 此警示會在第一次符合條件時觸發，並在之後繼續觸發。
 
@@ -81,13 +81,31 @@ ms.locfileid: "74977602"
 
     在幾分鐘之內，警示會開始作用，且先前所述觸發。
 
-## <a name="manage-your-alerts"></a>管理您的警示
+### <a name="managing-alerts"></a>管理警示
 
 建立警示之後，您可以選取它，然後執行下列動作：
 
 * 檢視圖表，其中顯示與此警示相關的計量臨界值及前一天的實際值。
 * **編輯**或**刪除**警示規則。
 * 如果您想要暫時停止或恢復接收通知，可以將警示**停用**或**啟用**。
+
+## <a name="suggested-alerts"></a>建議的警示
+
+### <a name="disk-space"></a>磁碟空間
+
+監視和警示對於每個生產超大規模資料庫（Citus）伺服器群組而言都很重要。 基礎于 postgresql 資料庫需要可用的磁碟空間，才能正常運作。 如果磁片已滿，資料庫伺服器節點將會離線，並會拒絕啟動，直到可用空間為止。 此時，它需要 Microsoft 支援要求來修正這種情況。
+
+我們建議您在每個伺服器群組中的每個節點上設定磁碟空間警示，即使非生產環境使用也是如此。 [磁碟空間使用量] 警示提供介入和保持節點狀況良好所需的提前警告。 為獲得最佳結果，請嘗試一系列75%、85% 和95% 使用量的警示。 要選擇的百分比取決於資料的內嵌速度，因為快速的資料內嵌會更快地填滿磁片。
+
+當磁片接近其空間限制時，請嘗試下列技術以取得更多可用空間：
+
+* 檢查資料保留原則。 將較舊的資料移到冷儲存體（如果可行）。
+* 請考慮[將節點新增](howto-hyperscale-scaling.md#add-worker-nodes)至伺服器群組，並重新平衡分區。 重新平衡會將資料分散到更多電腦上。
+* 請考慮增加背景工作節點的[容量](howto-hyperscale-scaling.md#increase-vcores)。 每個背景工作角色最多可以有2個 TiB 的儲存體。 不過，應該先嘗試加入節點，再調整節點大小，因為新增節點的速度會更快完成。
+
+### <a name="cpu-usage"></a>CPU 使用率
+
+監視 CPU 使用量非常適合用來建立效能基準。 例如，您可能會注意到 CPU 使用量通常大約是40-60%。 如果 CPU 使用量突然開始停留在95% 附近，您就可以辨識異常。 CPU 使用量可能會反映出有機的成長，但可能也會顯示偏離的查詢。 建立 CPU 警示時，請設定長時間的匯總資料細微性，以攔截長期增加並忽略瞬間尖峰。
 
 ## <a name="next-steps"></a>後續步驟
 * 深入了解 [在警示中設定 webhook](../azure-monitor/platform/alerts-webhooks.md)。

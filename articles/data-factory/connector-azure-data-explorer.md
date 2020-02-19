@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/26/2019
-ms.openlocfilehash: 4cc315b91b5dbedcb22091149ca37061ff956efa
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 02/18/2020
+ms.openlocfilehash: 4c265cb0cdc665ef52f4dc6e69440e83c22db449
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74913419"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460968"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>使用 Azure Data Factory 在 Azure 資料總管之間複製資料
 
@@ -73,11 +73,11 @@ Azure 資料總管連接器會使用服務主體驗證。 請遵循下列步驟�
 
 以下是針對 Azure 資料總管已連結服務支援的屬性：
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| 類型 | **Type**屬性必須設定為**AzureDataExplorer**。 | 是 |
-| endpoint | Azure 資料總管叢集的端點 URL，格式為 `https://<clusterName>.<regionName>.kusto.windows.net`。 | 是 |
-| 資料庫 | 資料庫名稱。 | 是 |
+| type | **Type**屬性必須設定為**AzureDataExplorer**。 | 是 |
+| 端點 | Azure 資料總管叢集的端點 URL，格式為 `https://<clusterName>.<regionName>.kusto.windows.net`。 | 是 |
+| [資料庫] | 資料庫名稱。 | 是 |
 | tenant | 指定您的應用程式所在租用戶的資訊 (網域名稱或租用戶識別碼)。 這在[Kusto 連接字串](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)中稱為「授權識別碼」。 將滑鼠指標暫留在 Azure 入口網站的右上角，即可取出。 | 是 |
 | servicePrincipalId | 指定應用程式的用戶端識別碼。 這在[Kusto 連接字串](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)中稱為「AAD 應用程式用戶端識別碼」。 | 是 |
 | servicePrincipalKey | 指定應用程式的金鑰。 這在[Kusto 連接字串](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)中稱為「AAD 應用程式金鑰」。 將此欄位標記為**SecureString** ，將它安全地儲存在 Data Factory 中，或[參考儲存在 Azure Key Vault 中的安全資料](store-credentials-in-key-vault.md)。 | 是 |
@@ -111,9 +111,9 @@ Azure 資料總管連接器會使用服務主體驗證。 請遵循下列步驟�
 
 以下是支援的屬性：
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| 類型 | **Type**屬性必須設定為**AzureDataExplorerTable**。 | 是 |
+| type | **Type**屬性必須設定為**AzureDataExplorerTable**。 | 是 |
 | 資料表 | 連結服務所參考的資料表名稱。 | Yes (接收)：No (來源) |
 
 **資料集屬性範例：**
@@ -143,17 +143,17 @@ Azure 資料總管連接器會使用服務主體驗證。 請遵循下列步驟�
 
 若要從 Azure 資料總管複製資料，請將複製活動來源中的 **type** 屬性設定為 **AzureDataExplorerSource**。 複製活動的 **source** 區段支援下列屬性：
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| 類型 | 複製活動來源的**類型**屬性必須設定為： **AzureDataExplorerSource** | 是 |
-| query | [KQL 格式](/azure/kusto/query/)中指定的唯讀要求。 使用自訂的 KQL 查詢作為參考。 | 是 |
+| type | 複製活動來源的**類型**屬性必須設定為： **AzureDataExplorerSource** | 是 |
+| 查詢 | [KQL 格式](/azure/kusto/query/)中指定的唯讀要求。 使用自訂的 KQL 查詢作為參考。 | 是 |
 | queryTimeout | 查詢要求超時之前的等候時間。預設值為10分鐘（00:10:00）;允許的最大值為1小時（01:00:00）。 | 否 |
 | noTruncation | 指出是否截斷傳回的結果集。 根據預設，在500000記錄或 64 mb 之後，會截斷結果。 強烈建議進行截斷，以確保活動的正確行為。 |否 |
 
 >[!NOTE]
 >根據預設，Azure 資料總管來源的大小限制為500000筆記錄或 64 MB。 若要取出所有記錄而不截斷，您可以在查詢的開頭指定 `set notruncation;`。 如需詳細資訊，請參閱[查詢限制](https://docs.microsoft.com/azure/kusto/concepts/querylimits)。
 
-**範例：**
+**範例︰**
 
 ```json
 "activities":[
@@ -190,12 +190,13 @@ Azure 資料總管連接器會使用服務主體驗證。 請遵循下列步驟�
 
 若要將資料複製到 Azure 資料總管，請將複製活動接收中的 type 屬性設定為 **AzureDataExplorerSink**。 複製活動的 **sink** 區段支援下列屬性：
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| 類型 | 複製活動接收器的**類型**屬性必須設定為： **AzureDataExplorerSink**。 | 是 |
+| type | 複製活動接收器的**類型**屬性必須設定為： **AzureDataExplorerSink**。 | 是 |
 | ingestionMappingName | Kusto 資料表上預先建立的[對應](/azure/kusto/management/mappings#csv-mapping)名稱。 若要將資料行從來源對應到 Azure 資料總管（適用于[所有支援的來源存放區和格式](copy-activity-overview.md#supported-data-stores-and-formats)，包括 CSV/JSON/Avro 格式），您可以使用複製活動資料[行對應](copy-activity-schema-and-type-mapping.md)（以名稱隱含或明確設定）和/或 Azure 資料總管對應。 | 否 |
+| additionalProperties | 屬性包，可以用來指定 Azure 資料總管接收尚未設定的任何內嵌屬性。 具體來說，它可以用來指定內嵌標記。 若要深入瞭解，請[流覽 Azure 資料探索資料](https://kusto.azurewebsites.net/docs/management/data-ingestion/index.html)內嵌檔。 | 否 |
 
-**範例：**
+**範例︰**
 
 ```json
 "activities":[
@@ -208,7 +209,8 @@ Azure 資料總管連接器會使用服務主體驗證。 請遵循下列步驟�
             },
             "sink": {
                 "type": "AzureDataExplorerSink",
-                "ingestionMappingName": "<optional Azure Data Explorer mapping name>"
+                "ingestionMappingName": "<optional Azure Data Explorer mapping name>",
+                "additionalProperties": {<additional settings for data ingestion>}
             }
         },
         "inputs": [

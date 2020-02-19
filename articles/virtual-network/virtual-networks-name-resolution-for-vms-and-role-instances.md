@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: f17b4ee0e4ce79cd12a6fda6f056b4e63b4161c9
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: fac6c29d5371c536c20eca58d90ee5d54d7e90d1
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76991026"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462661"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 虛擬網路中的資源名稱解析
 
@@ -55,7 +55,7 @@ ms.locfileid: "76991026"
 >
 >
 
-### <a name="features"></a>功能
+### <a name="features"></a>特性
 
 Azure 提供的名稱解析包含下列功能：
 * 容易使用。 不需要組態。
@@ -105,8 +105,7 @@ Azure 提供的名稱解析包含下列功能：
 
 > [!NOTE]
 > dnsmasq 套件只是許多適用於 Linux 之 DNS 快取的其中一個。 使用它之前，請檢查特定需求的適用性，而且沒有安裝其他快取。
->
->
+
     
 ### <a name="client-side-retries"></a>用戶端重試
 
@@ -169,11 +168,10 @@ DNS 轉送也會實現虛擬網路之間的 DNS 解析，並使內部部署電�
 * 受保護以防止來自網際網路的存取，降低外部代理程式的威脅。
 
 > [!NOTE]
-> 為了達到最佳效能，當您使用 Azure 虛擬機器作為 DNS 伺服器時，應該停用 IPv6。 您應該將[公用 IP 位址](virtual-network-public-ip-address.md)指派給每部 DNS 伺服器虛擬機器。 如需在使用 Windows Server 作為您的 DNS 伺服器時的額外效能分析和最佳化，請參閱[遞迴 Windows DNS Server 2012 R2 的名稱解析效能](https://blogs.technet.com/b/networking/archive/2015/08/19/name-resolution-performance-of-a-recursive-windows-dns-server-2012-r2.aspx)。
-> 
+> 為了達到最佳效能，當您使用 Azure 虛擬機器作為 DNS 伺服器時，應該停用 IPv6。 您應該將[公用 IP 位址](virtual-network-public-ip-address.md)指派給每部 DNS 伺服器虛擬機器。 
 > 
 
-### <a name="web-apps"></a>Web apps
+### <a name="web-apps"></a>Web 應用程式
 假設您需要從使用 App Service 建置之 Web 應用程式執行名稱解析，請連結至虛擬網路以及相同虛擬網路中的虛擬機器。 除了設定自訂 DNS 伺服器 (它具有可將查詢轉送至 Azure (虛擬 IP 168.63.129.16) 的 DNS 轉送工具) 以外，請執行下列步驟：
 1. 如果您的 Web 應用程式尚未與虛擬網路整合，則透過[將您的應用程式與虛擬網路整合](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)中所述加以整合。
 2. 在 Azure 入口網站中，針對裝載 Web 應用程式的 AppService 方案，選取 [網路]、[虛擬網路整合] 底下的 [同步網路]。

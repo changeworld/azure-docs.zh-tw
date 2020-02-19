@@ -6,21 +6,16 @@ ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: c1119a803f160c1833cd87413263b868928b82c2
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 4faab572cd77e20bb61d147ca6e58b25cd88ad9f
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668345"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77458863"
 ---
 # <a name="enable-offline-sync-for-your-xamarinandroid-mobile-app"></a>啟用您 Xamarin.Android 行動應用程式的離線同步處理
 
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
-
-> [!NOTE]
-> Visual Studio App Center 支援使用端對端及整合服務中心來開發行動應用程式。 開發人員可以使用**建置**、**測試**和**散發**服務來設定持續整合及傳遞管線。 部署應用程式之後，開發人員可以使用**分析**和**診斷**服務來監視其應用程式的狀態和使用情況，並使用**推送**服務與使用者互動。 開發人員也可以利用**驗證**來驗證其使用者，並使用**資料**來保存及同步雲端中的應用程式資料。
->
-> 如果您想要在行動應用程式中整合雲端服務，請立即註冊 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) \(英文\)。
 
 ## <a name="overview"></a>概觀
 
@@ -93,13 +88,13 @@ Azure 行動應用程式的離線功能可讓您在離線狀態時，仍可與�
             // For more details, see https://go.microsoft.com/fwlink/?LinkId=521416.
             await client.SyncContext.InitializeAsync(store);
         }
-* `ToDoActivity` 的 `toDoTable` 成員屬於 `IMobileServiceSyncTable` 類型而非 `IMobileServiceTable`。 IMobileServiceSyncTable 會將所有建立、讀取、更新和刪除 (CRUD) 資料表作業導向至本機存放區資料庫。
+* `toDoTable` 的 `ToDoActivity` 成員屬於 `IMobileServiceSyncTable` 類型而非 `IMobileServiceTable`。 IMobileServiceSyncTable 會將所有建立、讀取、更新和刪除 (CRUD) 資料表作業導向至本機存放區資料庫。
 
     您可以呼叫 `IMobileServiceSyncContext.PushAsync()`，以決定何時將變更推送至 Azure 行動應用程式後端。 當呼叫 `PushAsync` 時，透過追蹤和推送所有用戶端應用程式修改之資料表中的變更，同步處理內容可協助保存資料表關聯性。
 
     每當重新整理 todoitem 清單或是已新增或完成 todoitem 時，提供的程式碼會呼叫 `ToDoActivity.SyncAsync()` 來進行同步處理。 每次本機變更之後，程式碼會同步處理。
 
-    在提供的程式碼中，遠端 `TodoItem` 資料表中的所有記錄都會進行查詢，但是也可能透過將查詢識別碼與查詢傳遞至 `PushAsync` 來篩選記錄。 如需詳細資訊，請參閱 [Azure Mobile Apps 中的離線資料同步處理]中的*增量同步處理*一節。
+    在提供的程式碼中，遠端 `TodoItem` 資料表中的所有記錄都會進行查詢，但是也可能透過將查詢識別碼與查詢傳遞至 `PushAsync` 來篩選記錄。 如需詳細資訊，請參閱 *Azure Mobile Apps 中的離線資料同步處理*中的[Azure Mobile Apps 中的離線資料同步處理]一節。
 
         // ToDoActivity.cs
         private async Task SyncAsync()

@@ -6,20 +6,15 @@ ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 23d3c897f227dd49253abfcc6d3a84d477341c13
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 32d4313b345964a2db13d68e83f81756a4acf0d9
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668391"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77458931"
 ---
 # <a name="add-authentication-to-your-windows-app"></a>將驗證新增至您的 Windows 應用程式
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
-
-> [!NOTE]
-> Visual Studio App Center 支援使用端對端及整合服務中心來開發行動應用程式。 開發人員可以使用**建置**、**測試**和**散發**服務來設定持續整合及傳遞管線。 部署應用程式之後，開發人員可以使用**分析**和**診斷**服務來監視其應用程式的狀態和使用情況，並使用**推送**服務與使用者互動。 開發人員也可以利用**驗證**來驗證其使用者，並使用**資料**來保存及同步雲端中的應用程式資料。
->
-> 如果您想要在行動應用程式中整合雲端服務，請立即註冊 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) \(英文\)。
 
 ## <a name="overview"></a>概觀
 本主題說明如何將雲端式驗證加入到您的行動應用程式。 在本教學課程中，您會使用 Azure App Service 所支援的身分識別提供者，將驗證新增至 Mobile Apps 的通用 Windows 平台 (UWP) 快速入門專案。 由行動應用程式後端成功驗證並授權之後，就會顯示使用者識別碼值。
@@ -39,7 +34,7 @@ ms.locfileid: "74668391"
 
 3. 在 [允許的外部重新導向 URL] 中，輸入 `url_scheme_of_your_app://easyauth.callback`。  此字串中的 **url_scheme_of_your_app** 是您行動應用程式的 URL 配置。  它必須遵循通訊協定的標準 URL 規格 (只使用字母和數字，並以字母為開頭)。  請記下您選擇的字串，因為您將需要在數個位置中使用該 URL 配置來調整您的行動應用程式程式碼。
 
-4. 按一下 [儲存]。
+4. 按一下 [檔案]。
 
 ## <a name="permissions"></a>限制只有通過驗證的使用者具有權限
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
@@ -155,10 +150,10 @@ ms.locfileid: "74668391"
 ## <a name="next-steps"></a>後續步驟
 現在您已經完成了這個基本驗證的教學課程，可以考慮繼續進行下列其中一個教學課程：
 
-* [將推播通知新增至應用程式中](app-service-mobile-windows-store-dotnet-get-started-push.md)  
+* [將推播通知新增至應用程式](app-service-mobile-windows-store-dotnet-get-started-push.md)  
   了解如何將推播通知支援新增至應用程式，並設定行動應用程式後端以使用 Azure 通知中樞傳送推播通知。
 * [啟用應用程式的離線同步處理](app-service-mobile-windows-store-dotnet-get-started-offline-data.md)  
-  了解如何使用行動應用程式後端，將離線支援新增至應用程式。 離線同步處理可讓使用者與行動應用程式進行互動&mdash;檢視、新增或修改資料&mdash;即使沒有網路連線進也可行。
+  ：了解如何使用行動應用程式後端，將離線支援加入至應用程式。 離線同步處理可讓使用者與行動應用程式進行互動&mdash;檢視、新增或修改資料&mdash;即使沒有網路連線進也可行。
 
 <!-- URLs. -->
 [Get started with your mobile app]: app-service-mobile-windows-store-dotnet-get-started.md

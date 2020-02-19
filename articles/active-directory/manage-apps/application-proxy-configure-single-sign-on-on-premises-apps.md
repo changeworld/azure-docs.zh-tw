@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59e4e527f25a32c8a5274db5eab5d33a7843bc3c
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 1046c11e064e69ed0ddb18c77bf5935ba60fb5aa
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275591"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461278"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>使用應用程式 Proxy 進行內部部署應用程式的 SAML 單一登入
 
@@ -41,17 +41,15 @@ SAML SSO 與應用程式 Proxy 也適用于 SAML 權杖加密功能。 如需詳
 
 1. 在 Azure 入口網站中，選取  **Azure Active Directory > 企業應用程式**，然後選取 **新增應用程式**。
 
-2. 在 [**內部部署應用程式**] 區段中，選取 [**新增內部部署應用程式**]。
+2. 輸入新應用程式的顯示名稱，選取 **[整合您在資源庫中找不到的任何其他應用程式**]，然後選取 [**建立**]。
 
-3. 輸入新應用程式的顯示名稱，**然後選取 [新增]** 。
+3. 在應用程式的 **[總覽**] 頁面上，選取 [**單一登入**]。
 
-4. 在應用程式的 **[總覽**] 頁面上，選取 [**單一登入**]。
+4. 選取 [ **SAML** ] 做為單一登入方法。
 
-5. 選取 [ **SAML** ] 做為單一登入方法。
+5. 第一次設定 SAML SSO 在公司網路上運作。 在 [以**SAML 設定單一登入**] 頁面中，移至 [**基本 SAML**設定] 標題，然後選取其 [**編輯**] 圖示（鉛筆）。 依照[輸入基本 SAML](configure-single-sign-on-non-gallery-applications.md#step-1-edit-the-basic-saml-configuration)設定中的步驟，為應用程式設定 SAML 型驗證。
 
-6. 第一次設定 SAML SSO 在公司網路上運作。 在 [以**SAML 設定單一登入**] 頁面中，移至 [**基本 SAML**設定] 標題，然後選取其 [**編輯**] 圖示（鉛筆）。 依照[輸入基本 SAML](configure-single-sign-on-non-gallery-applications.md#step-1-edit-the-basic-saml-configuration)設定中的步驟，為應用程式設定 SAML 型驗證。
-
-7. 將至少一個使用者新增至應用程式，並確定測試帳戶具有應用程式的存取權。 連線到公司網路時，請使用測試帳戶來查看您是否有應用程式的單一登入。 
+6. 將至少一個使用者新增至應用程式，並確定測試帳戶具有應用程式的存取權。 連線到公司網路時，請使用測試帳戶來查看您是否有應用程式的單一登入。 
 
    > [!NOTE]
    > 設定應用程式 Proxy 之後，您將會返回並更新 SAML**回復 URL**。
@@ -74,7 +72,7 @@ SAML SSO 與應用程式 Proxy 也適用于 SAML 權杖加密功能。 如需詳
 
 1. 當應用程式仍在 Azure 入口網站中開啟時，請選取 [**單一登入**]。 
 
-2. 在 [以**SAML 設定單一登入**] 頁面中，移至 [**基本 SAML**設定] 標題，然後選取其 [**編輯**] 圖示（鉛筆）。 您在 [應用程式 Proxy] 中設定的**外部 URL**會自動填入 [**識別碼**]、[**回復 URL**] 和 [**登出 url** ] 欄位。 請勿編輯這些 Url，因為應用程式 Proxy 必須要有它們才能正常運作。
+2. 在 [以**SAML 設定單一登入**] 頁面中，移至 [**基本 SAML**設定] 標題，然後選取其 [**編輯**] 圖示（鉛筆）。 請確定您在 [應用程式 Proxy] 中設定的**外部 URL**已填入 [**識別碼**]、[**回復 URL**] 和 [**登出 url** ] 欄位中。 應用程式 Proxy 必須要有這些 Url，才能正確運作。 
 
 3. 編輯稍早設定的**回復 URL** ，讓應用程式 Proxy 能夠連線其網域。 例如，如果您的**外部 URL** `https://contosotravel-f128.msappproxy.net`，而原始的**回復 url** `https://contosotravel.com/acs`，則您必須將原始的**回復 url**更新為 `https://contosotravel-f128.msappproxy.net/acs`。 
 

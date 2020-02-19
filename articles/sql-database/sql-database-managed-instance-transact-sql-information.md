@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova, danil
 ms.date: 02/10/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 392d7d7efcd5b23a7a4575e2d22d21fb4433bb6d
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: d3e631fae4899fffafad9bd140abaae4fb170624
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121967"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462576"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>受控實例的 T-sql 差異、限制和已知問題
 
@@ -65,6 +65,7 @@ ms.locfileid: "77121967"
 
 - 使用受控實例，您可以將實例資料庫備份至最多32個等量的備份，如果使用備份壓縮，這就足以應付最多 4 TB 的資料庫。
 - 您無法在使用服務管理的透明資料加密（TDE）加密的資料庫上執行 `BACKUP DATABASE ... WITH COPY_ONLY`。 服務管理的 TDE 會強制使用內部 TDE 金鑰來加密備份。 無法匯出金鑰，因此您無法還原備份。 使用自動備份和時間點還原，或改為使用[客戶管理的（BYOK） TDE](transparent-data-encryption-azure-sql.md#customer-managed-transparent-data-encryption---bring-your-own-key) 。 您也可以在資料庫上停用加密。
+- 只有[BlockBlobStorage 帳戶](/azure/storage/common/storage-account-overview#types-of-storage-accounts)才支援手動備份至 Azure Blob 儲存體。
 - 在受控實例中使用 `BACKUP` 命令的備份等量大小上限為 195 GB，這是最大 blob 大小。 在備份命令中增加條帶 (Stripe) 數目，可減少個別條帶 (Stripe) 的大小並維持在此限制內。
 
     > [!TIP]

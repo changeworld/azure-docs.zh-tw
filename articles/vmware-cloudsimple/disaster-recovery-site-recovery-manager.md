@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ccdf385d2581923e1fad4fa5c42f351c4f0947ca
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 209eb6ed93ed12f97b116b648a36d14e09b822f7
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77083146"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461176"
 ---
 # <a name="set-up-avs-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>使用 VMware Site Recovery Manager 將 AVS 私用雲端設定為嚴重損壞修復目標
 
@@ -223,7 +223,7 @@ AVS 要求您不要使用預設的 ' cloudowner ' 使用者來安裝 vRA 和 SRM
 
 * [VMware Site Recovery Manager 檔](https://docs.vmware.com/en/Site-Recovery-Manager/index.html)
 * [Site Recovery Manager 6.5 的操作限制](https://kb.vmware.com/s/article/2147110)
-* [計算 vSphere 複寫的頻寬需求](https://kb.vmware.com/s/article/2037268)
+* [計算 vSphere 複寫的頻寬需求](https://docs.vmware.com/en/vSphere-Replication/6.5/com.vmware.vsphere.replication-admin.doc/GUID-4A34D0C9-8CC1-46C4-96FF-3BF7583D3C4F.html)
 * [部署 vSphere 複寫6.5 時的 OVF 選項](https://blogs.vmware.com/virtualblocks/2017/01/20/vr-65-ovf-choices/)
 * [VMware vSphere 複寫6.5 安裝和設定](https://docs.vmware.com/en/vSphere-Replication/6.5/vsphere-replication-65-install.pdf)
 * [SRM 6.5 的必要條件和最佳作法](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-BB0C03E4-72BE-4C74-96C3-97AC6911B6B8.html)

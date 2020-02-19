@@ -6,25 +6,20 @@ ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 60c46c32c8650bf72c0032cf0ec03895905bae1c
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: fa70b7419e1877ab2daba49ad154cdfd5a8d2cba
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668361"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77458948"
 ---
 # <a name="add-authentication-to-your-xamarinandroid-app"></a>將驗證新增至 Xamarin.Android 應用程式
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
-> [!NOTE]
-> Visual Studio App Center 支援使用端對端及整合服務中心來開發行動應用程式。 開發人員可以使用**建置**、**測試**和**散發**服務來設定持續整合及傳遞管線。 部署應用程式之後，開發人員可以使用**分析**和**診斷**服務來監視其應用程式的狀態和使用情況，並使用**推送**服務與使用者互動。 開發人員也可以利用**驗證**來驗證其使用者，並使用**資料**來保存及同步雲端中的應用程式資料。
->
-> 如果您想要在行動應用程式中整合雲端服務，請立即註冊 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) \(英文\)。
-
 ## <a name="overview"></a>概觀
 本主題說明如何從用戶端應用程式驗證行動應用程式的使用者。 在本教學課程中，您會使用 Azure 行動應用程式所支援的身分識別提供者將驗證新增至快速入門專案。 在行動應用程式中成功驗證並授權之後，就會顯示使用者識別碼值。
 
-本教學課程以行動應用程式快速入門為基礎。 您也必須先完成 [建立 Xamarin.Android 應用程式]。 如果您不要使用下載的快速入門伺服器專案，必須將驗證擴充套件新增至您的專案。 如需伺服器擴充套件的詳細資訊，請參閱 [使用 Azure Mobile Apps 的 .NET 後端伺服器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。
+本教學課程以行動應用程式快速入門為基礎。 您也必須先完成 [建立 Xamarin.Android 應用程式教學課程]。 如果您不要使用下載的快速入門伺服器專案，必須將驗證擴充套件新增至您的專案。 如需伺服器擴充套件的詳細資訊，請參閱 [使用 Azure Mobile Apps 的 .NET 後端伺服器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。
 
 ## <a name="register"></a>註冊應用程式進行驗證，並設定應用程式服務
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
@@ -41,7 +36,7 @@ ms.locfileid: "74668361"
 
 4. 按一下 [確定]。
 
-5. 按一下 [儲存]。
+5. 按一下 [檔案]。
 
 ## <a name="permissions"></a>限制只有通過驗證的使用者具有權限
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
@@ -128,7 +123,7 @@ ms.locfileid: "74668361"
 
 **應用程式因 `Java.Lang.NoSuchMethodError: No static method startActivity` 而當機**
 
-在某些情況下，支援套件中的衝突在 Visual studio 中僅顯示為警告，但應用程式在執行階段會因此例外狀況而當機。 在此情況下，您必須確定您專案中所參考的所有支援套件都具有相同版本。 [Azure Mobile Apps NuGet 套件](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) 有 Android 平台的 `Xamarin.Android.Support.CustomTabs` 相依性，因此若您的專案使用較新的支援套件，您必須直接安裝具有必要版本的此套件以避免衝突。
+在某些情況下，支援套件中的衝突在 Visual studio 中僅顯示為警告，但應用程式在執行階段會因此例外狀況而當機。 在此情況下，您必須確定您專案中所參考的所有支援套件都具有相同版本。 [Azure Mobile Apps NuGet 套件](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) 具有 Android 平台的 `Xamarin.Android.Support.CustomTabs` 相依性，因此若您的專案使用較新的支援套件，您必須直接安裝具有必要版本的此套件以避免發生衝突。
 
 <!-- URLs. -->
-[建立 Xamarin.Android 應用程式]: app-service-mobile-xamarin-android-get-started.md
+[建立 Xamarin.Android 應用程式教學課程]: app-service-mobile-xamarin-android-get-started.md
