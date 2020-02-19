@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
-ms.openlocfilehash: 05b099eebcbb7b8f77357c9dcf3a4d567d3886d6
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 3b423a25b6b13ad543ef4a74bc0335ce19f5766d
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75553064"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461796"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>設定 Azure SQL Database 的容錯移轉群組
 
@@ -33,7 +33,7 @@ ms.locfileid: "75553064"
 
 ### <a name="create-failover-group"></a>建立容錯移轉群組
 
-# <a name="portaltabazure-portal"></a>[入口網站](#tab/azure-portal)
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
 建立您的容錯移轉群組，並使用 Azure 入口網站將您的單一資料庫新增至其中。
 
 
@@ -49,11 +49,11 @@ ms.locfileid: "75553064"
 
 1. 在 [**容錯移轉群組**] 頁面上，輸入或選取所需的值，然後選取 [**建立**]。
 
-   - **群組內的資料庫**：選擇您要加入至容錯移轉群組的資料庫。 將資料庫新增到容錯移轉群組，將會自動啟動異地複寫程式。 
+   - **群組內的資料庫**：選擇您想要新增到容錯移轉群組的資料庫。 將資料庫新增到容錯移轉群組，將會自動啟動異地複寫程式。 
         
     ![將 SQL DB 新增到容錯移轉群組](media/sql-database-single-database-failover-group-tutorial/add-sqldb-to-failover-group.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 建立您的容錯移轉群組，並使用 PowerShell 將您的單一資料庫新增至其中。 
 
    ```powershell-interactive
@@ -107,7 +107,7 @@ ms.locfileid: "75553064"
 
 使用 Azure 入口網站或 PowerShell 測試容錯移轉群組的容錯移轉。 
 
-# <a name="portaltabazure-portal"></a>[入口網站](#tab/azure-portal)
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
 
 使用 Azure 入口網站測試容錯移轉群組的容錯移轉。 
 
@@ -129,7 +129,7 @@ ms.locfileid: "75553064"
 1. 檢查哪一個伺服器現在是主要的，哪個伺服器是次要的。 如果容錯移轉成功，這兩部伺服器應該會有已交換的角色。 
 1. 再次選取 [**容錯移轉**]，讓伺服器無法回到原先的角色。 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 測試容錯移轉群組的容錯移轉。  
 
@@ -200,7 +200,7 @@ ms.locfileid: "75553064"
 
 使用 Azure 入口網站或 PowerShell，為您的彈性集區建立容錯移轉群組。 
 
-# <a name="portaltabazure-portal"></a>[入口網站](#tab/azure-portal)
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
 建立您的容錯移轉群組，並使用 Azure 入口網站將彈性集區新增至其中。
 
 1. 在 [Azure 入口網站](https://portal.azure.com)的左側功能表中，選取 [Azure SQL]。 如果**AZURE SQL**不在清單中，請選取 [**所有服務**]，然後在搜尋方塊中輸入 azure sql。 (選用) 選取 **Azure SQL** 旁的星號將其設為最愛，並新增為左側導覽中的項目。 
@@ -221,7 +221,7 @@ ms.locfileid: "75553064"
         
 1. 選取 [**選取**] 將您的彈性集區設定套用到容錯移轉群組，然後選取 [**建立**] 以建立容錯移轉群組。 將彈性集區新增至容錯移轉群組，將會自動啟動異地複寫程式。 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 建立您的容錯移轉群組，並使用 PowerShell 將您的彈性集區新增至其中。 
 
@@ -271,7 +271,7 @@ ms.locfileid: "75553064"
 
 使用 Azure 入口網站或 PowerShell 測試彈性集區的容錯移轉。 
 
-# <a name="portaltabazure-portal"></a>[入口網站](#tab/azure-portal)
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
 
 將容錯移轉群組容錯移轉到次要伺服器，然後使用 Azure 入口網站進行容錯回復。 
 
@@ -293,7 +293,7 @@ ms.locfileid: "75553064"
 1. 檢查哪一個伺服器是主要的，哪一個是次要伺服器。 如果容錯移轉成功，這兩部伺服器應該會有已交換的角色。 
 1. 再次選取 [**容錯移轉**]，將容錯移轉群組容錯回復至原始設定。 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 測試容錯移轉群組的容錯移轉。
 
@@ -353,7 +353,7 @@ ms.locfileid: "75553064"
 
 如果您尚未設定[ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)，您可以使用 Azure 入口網站或 PowerShell 來建立主要虛擬網路閘道。 
 
-# <a name="portaltabazure-portal"></a>[入口網站](#tab/azure-portal)
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
 
 使用 Azure 入口網站建立主要虛擬網路閘道。 
 
@@ -390,7 +390,7 @@ ms.locfileid: "75553064"
 
 1. 選取 [**建立**] 以建立新的虛擬網路閘道。 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 建立主要虛擬網路閘道。 
 
@@ -426,7 +426,7 @@ ms.locfileid: "75553064"
 
 使用 Azure 入口網站或 PowerShell 建立次要虛擬網路閘道。 
 
-# <a name="portaltabazure-portal"></a>[入口網站](#tab/azure-portal)
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
 重複上一節中的步驟，以建立次要受控實例的虛擬網路子網和閘道。 填寫必要欄位，為您的次要受控實例設定閘道。 
 
    下表顯示次要受控實例的閘道所需的值：
@@ -447,7 +447,7 @@ ms.locfileid: "75553064"
 
    ![次要閘道設定](media/sql-database-managed-instance-failover-group-tutorial/settings-for-secondary-gateway.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 建立次要虛擬網路閘道。 
 
@@ -488,10 +488,10 @@ ms.locfileid: "75553064"
 
 針對每個連線，這兩個連線所使用的共用金鑰應相同。 
 
-# <a name="portaltabazure-portal"></a>[入口網站](#tab/azure-portal)
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
 使用 Azure 入口網站建立兩個閘道之間的連接。 
 
-1. 從 [ [Azure 入口網站](https://portal.azure.com)中選取 [**建立資源**]。
+1. 從 [Azure 入口網站](https://portal.azure.com)中選取 [**建立資源**]。
 1. 在搜尋方塊中輸入 `connection`，然後按 enter 鍵進行搜尋，這會帶您前往 Microsoft 所發佈的**連線資源。**
 1. 選取 [**建立**] 以建立連接。 
 1. 在 [**基本**] 索引標籤上，選取下列值，然後選取 **[確定]** 。 
@@ -510,7 +510,7 @@ ms.locfileid: "75553064"
 
 1. 在 [**摘要**] 索引標籤上，檢查雙向連線的設定，然後選取 **[確定]** 以建立您的連線。 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 建立兩個閘道之間的連線。 
 
@@ -546,7 +546,7 @@ ms.locfileid: "75553064"
 ### <a name="create-the-failover-group"></a>建立容錯移轉群組 
 使用 Azure 入口網站或 PowerShell，為您的受控實例建立容錯移轉群組。 
 
-# <a name="portaltabazure-portal"></a>[入口網站](#tab/azure-portal)
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
 
 使用 Azure 入口網站，為您的受控實例建立容錯移轉群組。 
 
@@ -562,7 +562,7 @@ ms.locfileid: "75553064"
 
 1. 容錯移轉群組部署完成後，您會回到 [**容錯移轉群組**] 頁面。 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 為您的受控實例建立容錯移轉群組。 
 
@@ -588,11 +588,11 @@ ms.locfileid: "75553064"
 
 使用 Azure 入口網站或 PowerShell 測試容錯移轉群組的容錯移轉。 
 
-# <a name="portaltabazure-portal"></a>[入口網站](#tab/azure-portal)
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
 
 使用 Azure 入口網站測試容錯移轉群組的容錯移轉。 
 
-1. 流覽至[Azure 入口網站](https://portal.azure.com)內您的受控實例，然後選取 [設定] 底下的 [**實例容錯移轉群組**]。 
+1. 流覽至[Azure 入口網站](https://portal.azure.com)內您的_次要_受控實例，然後選取 [設定] 底下的 [**實例容錯移轉群組**]。 
 1. 檢查哪個受控實例是主要複本，以及哪個受控實例是次要複本。 
 1. 選取 [**容錯移轉**]，然後在關於 TDS 會話中斷連線的警告上選取 **[是]** 。 
 
@@ -602,9 +602,9 @@ ms.locfileid: "75553064"
 
    ![受控實例在容錯移轉後已切換角色](media/sql-database-managed-instance-failover-group-tutorial/mi-switched-after-failover.png)
 
-1. 再次選取 [**容錯移轉**]，使主要實例無法回到主要角色。 
+1. 移至新的_次要_受控實例，然後再次選取 [**容錯移轉**]，將主要實例容錯回復至主要角色。 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 測試容錯移轉群組的容錯移轉。 
 

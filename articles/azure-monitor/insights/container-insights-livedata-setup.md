@@ -3,12 +3,12 @@ title: 設定容器即時資料的 Azure 監視器（預覽） |Microsoft Docs
 description: 本文說明如何設定容器記錄（stdout/stderr）和事件的即時查看，而不需使用 kubectl 與容器的 Azure 監視器。
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: 91f035b98a57fd9a37203cc48b3cc5d685967a13
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: f19071ca642cd229cbd7d49b4eab90c970672eee
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251782"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459917"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>如何設定即時資料（預覽）功能
 
@@ -48,7 +48,7 @@ Azure 入口網站會提示您驗證 Azure Active Directory 叢集的登入認�
 
 ## <a name="using-clustermonitoringuser-with-rbac-enabled-clusters"></a>使用 clusterMonitoringUser 搭配已啟用 RBAC 的叢集
 
-為了避免在[啟用 RBAC](#configure-kubernetes-rbac-authorization)授權後，套用其他設定變更以允許 Kubernetes 使用者規則系結**ClusterUser**存取即時資料（預覽）功能，AKS 已新增稱為**clusterMonitoringUser**的新 Kubernetes 叢集角色系結。 此叢集角色系結具有現成的所有必要許可權，可存取 Kubernetes API 和使用即時資料（預覽）功能的端點。 
+為了避免在[啟用 RBAC](#configure-kubernetes-rbac-authorization)授權後，套用其他設定變更以允許 Kubernetes 使用者角色系結**ClusterUser**存取即時資料（預覽）功能的需求，AKS 已新增名為**clusterMonitoringUser**的新 Kubernetes 叢集角色系結。 此叢集角色系結具有現成的所有必要許可權，可存取 Kubernetes API 和使用即時資料（預覽）功能的端點。
 
 若要將即時資料（預覽）功能與這個新使用者搭配使用，您必須是 AKS 叢集資源上[參與者](../../role-based-access-control/built-in-roles.md#contributor)角色的成員。 啟用容器的 Azure 監視器，預設會設定為使用此使用者進行驗證。 如果 clusterMonitoringUser 角色系結不存在於叢集上，則會改用**clusterUser**來進行驗證。
 
