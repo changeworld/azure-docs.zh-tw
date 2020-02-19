@@ -6,19 +6,14 @@ ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 32e0584478031226ed52d6ed5f6849f7ad6d3cfe
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 52e91d900ce0f22862904695ba8adf463219c469
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668898"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461584"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>如何使用 Android 版 Azure Mobile Apps SDK
-
-> [!NOTE]
-> Visual Studio App Center 支援使用端對端及整合服務中心來開發行動應用程式。 開發人員可以使用**建置**、**測試**和**散發**服務來設定持續整合及傳遞管線。 部署應用程式之後，開發人員可以使用**分析**和**診斷**服務來監視其應用程式的狀態和使用情況，並使用**推送**服務與使用者互動。 開發人員也可以利用**驗證**來驗證其使用者，並使用**資料**來保存及同步雲端中的應用程式資料。
->
-> 如果您想要在行動應用程式中整合雲端服務，請立即註冊 [App Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) \(英文\)。
 
 本指南說明如何使用適用於 Mobile Apps 的 Android 用戶端 SDK 來實作常見案例，例如：
 
@@ -69,7 +64,7 @@ Android 版 Azure Mobile Apps SDK 支援 API 層級 19 至 24 (KitKat 至 Nougat
     }
     ```
 
-2. 將此程式碼新增至 *dependencies* 標籤內的*模組應用程式*層級 **build.gradle** 檔案：
+2. 將此程式碼新增至 *dependencies* 標籤內的**模組應用程式**層級 *build.gradle* 檔案：
 
     ```gradle
     implementation 'com.microsoft.azure:azure-mobile-android:3.4.0@aar'
@@ -104,7 +99,7 @@ MobileServiceClient mClient = new MobileServiceClient(
 
 `<MobileAppUrl>` 是字串，或是指向您行動後端的 URL 物件。  如果您是使用 Azure App Service 來裝載您的行動後端，請確定您使用安全 `https://` 版本的 URL。
 
-用戶端也需要存取活動或內容 - 本範例中為 `this` 參數。  MobileServiceClient 建構應該發生在 `AndroidManifest.xml` 檔案中所參考的 `onCreate()` 活動方法。
+用戶端也需要存取活動或內容 - 本範例中為 `this` 參數。  MobileServiceClient 建構應該發生在 `onCreate()` 檔案中所參考的 `AndroidManifest.xml` 活動方法。
 
 最佳做法是，您應該將伺服器通訊擷取到它自己的 (單一模式) 類別。  在此情況下，您應該傳遞建構函式內的活動，以適當地設定服務。  例如：
 
@@ -148,7 +143,7 @@ public class AzureServiceAdapter {
 }
 ```
 
-您現在可以呼叫主要活動 `onCreate()` 方法中的 `AzureServiceAdapter.Initialize(this);`。  需要存取用戶端的其他任何方法會使用 `AzureServiceAdapter.getInstance();`，來取得服務配接器的參考。
+您現在可以呼叫主要活動 `AzureServiceAdapter.Initialize(this);` 方法中的 `onCreate()`。  需要存取用戶端的其他任何方法會使用 `AzureServiceAdapter.getInstance();`，來取得服務配接器的參考。
 
 ## <a name="data-operations"></a>資料作業
 
@@ -290,10 +285,10 @@ MobileServiceTable<ToDoItem> mToDoTable = mClient.getTable("ToDoItemBackup", ToD
 
 首先，取得資料表參考。  然後針對資料表參考執行查詢。  查詢是以下的任何組合︰
 
-* `.where()` [篩選子句](#filtering)。
-* `.orderBy()` [排序子句](#sorting)。
-* `.select()` [欄位選取子句](#selection)。
-* [分頁結果](#paging)的 `.skip()` 和 `.top()`。
+* `.where()`[篩選子句](#filtering)。
+* `.orderBy()` 的[排序子句](#sorting)。
+* `.select()`[欄位選取子句](#selection)。
+* `.skip()`分頁結果`.top()`的 [ 和 ](#paging)。
 
 子句必須依上述順序呈現。
 
@@ -911,7 +906,7 @@ App Service 支援使用各種外部識別提供者 (Facebook、Google、Microso
 * 限制只有 App Service 後端上經驗證的使用者會具有資料表權限。
 * 將驗證碼新增至您的應用程式。
 
-您可以在資料表上設定權限，以限制僅有通過驗證使用者可以存取特定操作。 您也可以使用已驗證的使用者 SID 來修改要求。  如需詳細資訊，請檢閱 [Get started with authentication] 和伺服器 SDK 做法文件。
+您可以在資料表上設定權限，以限制僅有通過驗證使用者可以存取特定操作。 您也可以使用已驗證的使用者 SID 來修改要求。  如需詳細資訊，請檢閱 [開始使用驗證] 和伺服器 SDK 做法文件。
 
 ### <a name="caching"></a>驗證︰伺服器流程
 
@@ -994,7 +989,7 @@ dependencies {
 }
 ```
 
-使用 **getUserId** 方法從 **MobileServiceUser** 取得已登入使用者的識別碼。 如需如何使用 Futures 來呼叫非同步登入 API 的範例，請參閱 [Get started with authentication]。
+使用 **getUserId** 方法從 **MobileServiceUser** 取得已登入使用者的識別碼。 如需如何使用 Futures 來呼叫非同步登入 API 的範例，請參閱 [開始使用驗證]。
 
 > [!WARNING]
 > 所述的 URL 配置會區分大小寫。  確認所有出現的 `{url_scheme_of_you_app}` 大小寫相符。
@@ -1107,10 +1102,10 @@ MobileServiceUser user = mClient
 
 3. 將下列程式碼新增至您的應用程式，進行下列取代：
 
-    * 以您佈建應用程式的租用戶名稱取代 **INSERT-AUTHORITY-HERE** 。 格式應為 https://login.microsoftonline.com/contoso.onmicrosoft.com 。
+    * 以您佈建應用程式的租用戶名稱取代 **INSERT-AUTHORITY-HERE** 。 格式應為 https://login.microsoftonline.com/contoso.onmicrosoft.com。
     * 以您行動應用程式後端的用戶端識別碼取代 INSERT-RESOURCE-ID-HERE 。 您可以從入口網站 [Azure Active Directory 設定] 底下的 [進階] 索引標籤取得用戶端識別碼。
     * 以您從原生用戶端應用程式中複製的用戶端識別碼取代 INSERT-CLIENT-ID-HERE 。
-    * 使用 HTTPS 配置，以您網站的 **/.auth/login/done** 端點取代 *INSERT-REDIRECT-URI-HERE* 。 此值應該類似 https://contoso.azurewebsites.net/.auth/login/done。
+    * 使用 HTTPS 配置，以您網站的 **/.auth/login/done** 端點取代 *INSERT-REDIRECT-URI-HERE* 。 此值應該類似 *https://contoso.azurewebsites.net/.auth/login/done* 。
 
 ```java
 private AuthenticationContext mContext;
@@ -1298,7 +1293,7 @@ client.setGsonBuilder(
 [ASCII control codes C0 and C1]: https://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
 [Mobile Services SDK for Android]: https://go.microsoft.com/fwlink/p/?LinkID=717033
 [Azure portal]: https://portal.azure.com
-[Get started with authentication]: app-service-mobile-android-get-started-users.md
+[開始使用驗證]: app-service-mobile-android-get-started-users.md
 [1]: https://static.javadoc.io/com.google.code.gson/gson/2.8.5/com/google/gson/JsonObject.html
 [2]: https://hashtagfail.com/post/44606137082/mobile-services-android-serialization-gson
 [3]: https://www.javadoc.io/doc/com.google.code.gson/gson/2.8.5

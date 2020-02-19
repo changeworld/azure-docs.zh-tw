@@ -7,7 +7,6 @@ documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
-ms.assetid: 2cf6a49b-5d35-491f-abc3-63ec24eb4bc2
 ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
@@ -15,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 6a4fc842113218294b3e2ab449e27cfa94c5cfd3
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 1c85f0205f568f065a7959a9b33890b2117e45a0
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766531"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462219"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>適用於 IoT 的 Azure 資訊安全中心的簡介
 
 整合安全性管理，並在混合式雲端工作負載和您的 Azure IoT 解決方案之間啟用端對端威脅偵測和分析。 
 
-## <a name="secure-your-entire-iot-solution-from-iot-devices-to-azure-cloud"></a>保護從 IoT 裝置到 Azure 雲端的整個 IoT 解決方案。
+## <a name="secure-your-entire-iot-solution-from-iot-devices-to-azure-cloud"></a>保護從 IoT 裝置到 Azure 雲端的整個 IoT 解決方案
 
 從我們的無縫無代理程式解決方案中選擇，或利用以代理程式為基礎的全面安全性，IoT 的 Azure 資訊安全中心可針對您的 IoT 資產，為每個裝置、IoT Edge 和 IoT 中樞提供威脅防護和分析。
 
@@ -38,7 +37,7 @@ ms.locfileid: "76766531"
 
 ### <a name="unified-visibility-and-control"></a>統一的可見度和控制
 
-可讓您統一檢視跨內部部署和雲端所有工作負載的安全性，包括 Azure IoT 解決方案。 將新裝置上線，並在您的工作負載（分葉裝置、Microsoft Edge 裝置、IoT 中樞）中套用安全性原則，以確保符合安全性標準和改良的安全性狀態。 
+取得所有內部部署和雲端工作負載的安全性統一觀點，包括您的 Azure IoT 解決方案。 將新裝置上線，並在您的工作負載（分葉裝置、Microsoft Edge 裝置、IoT 中樞）中套用安全性原則，以確保符合安全性標準和改良的安全性狀態。 
 
 ### <a name="adaptive-threat-prevention"></a>適應性威脅防護
 
@@ -46,7 +45,7 @@ ms.locfileid: "76766531"
 
 ### <a name="intelligent-threat-detection-and-response"></a>智慧型威脅偵測和回應
 
-使用 advanced analytics 和 Microsoft Intelligent Security Graph 來取得不斷演進的網路攻擊的優勢。 內建行為分析和機器學習服務可識別攻擊和零時差入侵。 監控您的 IoT 解決方案，以偵測外來攻擊與入侵後活動。 使用互動式工具和內容相關威脅情報來簡化裝置調查和補救。
+使用 advanced analytics 和 Microsoft Intelligent Security Graph 來取得不斷演進的網路攻擊的優勢。 內建行為分析和機器學習服務可識別攻擊和零時差入侵。 監視您的 IoT 解決方案，以解決傳入攻擊和入侵後的活動。 使用互動式工具和內容相關威脅情報來簡化裝置調查和補救。
 
 ## <a name="next-steps"></a>後續步驟
 

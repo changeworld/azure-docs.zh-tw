@@ -323,10 +323,10 @@
       items:
         - name: 基礎
           href: search-monitor-usage.md
-        - name: 監視查詢活動
-          href: search-monitor-queries.md
         - name: 診斷記錄
           href: search-monitor-logs.md
+        - name: 監視查詢活動
+          href: search-monitor-queries.md
         - name: 搜尋流量分析
           href: search-traffic-analytics.md
     - name: 疑難排解

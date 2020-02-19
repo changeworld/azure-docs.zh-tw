@@ -6,20 +6,15 @@ ms.tgt_pltfrm: html
 ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 0f70523b5b27a4f3db86bacf39469e233e43f807
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 029b01f3aacc928ebdae0e8fe90871437afccea5
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668835"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461516"
 ---
 # <a name="how-to-use-the-javascript-client-library-for-azure-mobile-apps"></a>如何使用適用於 Azure Mobile Apps 的 JavaScript 用戶端程式庫
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
-
-> [!NOTE]
-> Visual Studio App Center 支援使用端對端及整合服務中心來開發行動應用程式。 開發人員可以使用**建置**、**測試**和**散發**服務來設定持續整合及傳遞管線。 部署應用程式之後，開發人員可以使用**分析**和**診斷**服務來監視其應用程式的狀態和使用情況，並使用**推送**服務與使用者互動。 開發人員也可以利用**驗證**來驗證其使用者，並使用**資料**來保存及同步雲端中的應用程式資料。
->
-> 如果您想要在行動應用程式中整合雲端服務，請立即註冊 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) \(英文\)。
 
 ## <a name="overview"></a>概觀
 本指南將教導您使用最新的 [適用於 Azure Mobile Apps 的 JavaScript SDK]執行一般案例。 如果您不熟悉 Azure Mobile Apps，請先完成 [Azure Mobile Apps 快速啟動] 建立後端，並建立資料表。 在本指南中，我們會著重在使用 HTML/JavaScript Web 應用程式中的行動後端。
@@ -56,7 +51,7 @@ import * as WindowsAzure from 'azure-mobile-apps-client';
 [!INCLUDE [app-service-mobile-html-js-library](../../includes/app-service-mobile-html-js-library.md)]
 
 ## <a name="auth"></a>作法：驗證使用者
-Azure App Service 支援使用各種外部識別提供者 (Facebook、Google、Microsoft 帳戶及 Twitter) 來驗證與授權應用程式使用者。 您可以在資料表上設定權限，以限制僅有通過驗證使用者可以存取特定操作。 您也可以使用通過驗證使用者的身分識別來實作伺服器指令碼中的授權規則。 如需詳細資訊，請參閱 [Get started with authentication] 教學課程。
+Azure App Service 支援使用各種外部識別提供者 (Facebook、Google、Microsoft 帳戶及 Twitter) 來驗證與授權應用程式使用者。 您可以在資料表上設定權限，以限制僅有通過驗證使用者可以存取特定操作。 您也可以使用通過驗證使用者的身分識別來實作伺服器指令碼中的授權規則。 如需詳細資訊，請參閱 [開始使用驗證] 教學課程。
 
 支援兩個驗證流程：伺服器流程和用戶端流程。  由於伺服器流程採用提供者的 Web 驗證介面，因此所提供的驗證體驗也最為簡單。 用戶端流程依賴提供者專屬的 SDK，可以與裝置特有的功能深入整合，例如單一登入。
 
@@ -75,7 +70,7 @@ Azure App Service 支援使用各種外部識別提供者 (Facebook、Google、M
 2. 瀏覽至行動裝置應用程式後端。
 3. 選取 [開發工具] 功能表中的 [資源總管]。
 4. 按一下 [執行] ，在新的索引標籤或視窗中開啟行動裝置應用程式後端的資源總管。
-5. 展開應用程式的 [config]  >  [authsettings] 節點。
+5. 展開應用程式的 [config] >  [authsettings] 節點。
 6. 按一下 [編輯] 按鈕來啟用資源的編輯。
 7. 尋找 **allowedExternalRedirectUrls** 元素，此元素應該是 null。 在陣列中新增 URL：
 
@@ -99,7 +94,7 @@ Azure App Service 支援使用各種外部識別提供者 (Facebook、Google、M
 
 <!-- URLs. -->
 [Azure Mobile Apps 快速啟動]: app-service-mobile-cordova-get-started.md
-[Get started with authentication]: app-service-mobile-cordova-get-started-users.md
+[開始使用驗證]: app-service-mobile-cordova-get-started-users.md
 [Add authentication to your app]: app-service-mobile-cordova-get-started-users.md
 
 [Azure 入口網站]: https://portal.azure.com/

@@ -4,15 +4,15 @@ description: 描述 Azure Analysis Services 中表格式1200和更高資料模�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 02/20/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4a99bfe8d8235400f9122423aa4592fc6898abc1
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: f65d8fa2c2e522c718c637e32defc4c56fca8364
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922293"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461652"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services 中支援的資料來源
 
@@ -23,7 +23,7 @@ ms.locfileid: "75922293"
 |資料來源  |記憶體內  |DirectQuery  |注意 |
 |---------|---------|---------|---------|
 |Azure SQL Database      |   是      |    是      |<sup>[2](#azprovider)</sup>、 <sup> [3](#azsqlmanaged)</sup>|
-|Azure SQL 資料倉儲      |   是      |   是       |<sup>[2](#azprovider)</sup>|
+|Azure Synapse 分析（SQL 資料倉儲）      |   是      |   是       |<sup>[2](#azprovider)</sup>|
 |Azure Blob 儲存體      |   是       |    否      | <sup>[1](#tab1400a)</sup> |
 |Azure 表格儲存體     |   是       |    否      | <sup>[1](#tab1400a)</sup>|
 |Azure Cosmos DB     |  是        |  否        |<sup>[1](#tab1400a)</sup> |
@@ -33,7 +33,7 @@ ms.locfileid: "75922293"
 |Azure HDInsight Spark     |   是       |   否       |<sup>[1](#tab1400a)</sup>、 <sup> [4](#databricks)</sup>|
 ||||
 
-**注意：**    
+**附注：**    
 <a name="tab1400a">1</a> - 僅限 Tabular 1400 和更高模型。  
 <a name="azprovider">2</a> -當指定為表格式1200和更高模型中的*提供者*資料來源時，記憶體內部和 DirectQuery 模型都需要 Microsoft OLE DB Driver for SQL Server 內含 msoledbsql.h （建議）、SQL Server Native Client 11.0，或 Data Provider 的 .NET Framework SQL Server。    
 <a name="azsqlmanaged">3</a> -支援 Azure SQL Database 受控執行個體。 因為受控實例會在具有私人 IP 位址的 Azure VNet 中執行，所以必須在實例上啟用公用端點。 如果未啟用，則需要內部[部署資料閘道](analysis-services-gateway.md)。    
@@ -56,7 +56,7 @@ ms.locfileid: "75922293"
 |IBM Informix  |是 | 否 |  |
 |JSON 文件      |  是 | 否 | <sup>[7](#tab1400b)</sup> |
 |二進位檔中的行      | 是 | 否 | <sup>[7](#tab1400b)</sup> |
-|MySQL 資料庫     | 是 | 否 |  |
+|MySQL Database     | 是 | 否 |  |
 |OData 摘要      |  是 | 否 | <sup>[7](#tab1400b)</sup> |
 |ODBC 查詢     | 是 | 否 |  |
 |OLE DB     |   是 | 否 |  |
@@ -75,7 +75,7 @@ ms.locfileid: "75922293"
 |XML 資料表    |  是 | 否 | <sup>[7](#tab1400b)</sup> |
 | | | |
 
-**注意：**    
+**附注：**    
 <a name="tab1400b">6</a> -僅限表格式1400和更高的模型。  
 <a name="sqlim">7</a> -當指定為表格式1200和更高模型中的*提供者*資料來源時，請為 Data Provider 指定 SQL Server 內含 msoledbsql.h （建議）的 Microsoft OLE DB 驅動程式、SQL Server Native Client 11.0 或 .NET Framework SQL Server。  
 <a name="instgw">8</a> -如果將內含 msoledbsql.h 指定為數據提供者，可能需要在與內部部署資料閘道相同的電腦上，下載並安裝[適用于 SQL Server 的 Microsoft OLE DB 驅動程式](https://docs.microsoft.com/sql/connect/oledb/oledb-driver-for-sql-server)。  
@@ -120,7 +120,7 @@ ms.locfileid: "75922293"
 
 ## <a name="oauth-credentials"></a>OAuth 認證
 
-若是1400和更高相容性層級的表格式模型使用記憶體中模式，Azure SQL Database、Azure SQL 資料倉儲、Dynamics 365 和 SharePoint 清單支援 OAuth 認證。 Azure Analysis Services 會管理 OAuth 資料來源的權杖重新整理，以避免長時間執行的重新整理作業發生超時。 若要產生有效的權杖，請使用 SSMS 設定認證。
+針對1400和更高相容性層級使用記憶體中模式的表格式模型，Azure SQL Database、Azure Synapse 分析（SQL 資料倉儲）、Dynamics 365 和 SharePoint 清單支援 OAuth 認證。 Azure Analysis Services 會管理 OAuth 資料來源的權杖重新整理，以避免長時間執行的重新整理作業發生超時。 若要產生有效的權杖，請使用 SSMS 設定認證。
 
 OAuth 認證不支援直接查詢模式。
 

@@ -6,22 +6,17 @@ ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: f68b4f8477d5b21a7107270370af387a7e88756e
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 705ebb5809840155e6bbf3f8eef091eb95f63e63
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668940"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461635"
 ---
 # <a name="add-authentication-to-your-android-app"></a>將驗證加入 Android 應用程式中
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
-> [!NOTE]
-> Visual Studio App Center 支援使用端對端及整合服務中心來開發行動應用程式。 開發人員可以使用**建置**、**測試**和**散發**服務來設定持續整合及傳遞管線。 部署應用程式之後，開發人員可以使用**分析**和**診斷**服務來監視其應用程式的狀態和使用情況，並使用**推送**服務與使用者互動。 開發人員也可以利用**驗證**來驗證其使用者，並使用**資料**來保存及同步雲端中的應用程式資料。
->
-> 如果您想要在行動應用程式中整合雲端服務，請立即註冊 [App Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) \(英文\)。
-
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 在本教學課程中，您可以使用支援的身分識別提供者，將驗證加入 Android 上的 TodoList 快速入門專案。 本教學課程以[開始使用 Mobile Apps] 為基礎，您必須先完成該教學課程。
 
 ## <a name="register"></a>註冊應用程式進行驗證，並設定 Azure App Service
@@ -39,7 +34,7 @@ ms.locfileid: "74668940"
 
 4. 按一下 [確定]。
 
-5. 按一下 [儲存]。
+5. 按一下 [檔案]。
 
 ## <a name="permissions"></a>限制只有通過驗證的使用者具有權限
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]

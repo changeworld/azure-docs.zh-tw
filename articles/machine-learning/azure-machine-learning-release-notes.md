@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 33b3f9292a2fd185ea5487c0111dc294a6f163cf
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 11b8ade765a2b1c1ee25421073983b96c34e5d15
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030807"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462168"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning 版本資訊
 
@@ -23,10 +23,53 @@ ms.locfileid: "77030807"
 
 若要了解已知的 Bug 和因應措施，請參閱[已知問題的清單](resource-known-issues.md)。
 
+## <a name="2020-02-18"></a>2020-02-18
+
+### <a name="azure-machine-learning-sdk-for-python-v111rc0"></a>適用于 Python 的 Azure Machine Learning SDK rc0
+
++ **Bug 修正和改善**
+  + **azure-cli-ml**
+    + 已修正單一實例分析以產生建議，並可在 core sdk 中取得。
+  + **azureml-automl-核心**
+    + 已改善錯誤記錄。
+  + **azureml-automl-執行時間**
+    + 已修正資料集包含長時間間距的簡短粒紋時的預測問題。
+    + 已修正 [自動最大水準] 開啟時的問題，而 [日期] 資料行包含格式為字串的日期。 我們已新增適當的轉換，並在無法轉換成日期時有合理的錯誤
+    + 使用原生 NumPy 和 SciPy 序列化和還原序列化 FileCacheStore 的中繼資料（用於本機 AutoML 執行）
+    + 已修正失敗的子系執行可能會停滯在執行中狀態的 bug。
+  + **azureml-cli-通用**
+    + 已修正單一實例分析以產生建議，並可在 core sdk 中取得。
+  + **azureml-核心**
+    + 已將 `--grant-workspace-msi-access` 新增為數據存放區 CLI 的額外參數，用於註冊 Azure Blob 容器，可讓您註冊位於 VNet 後方的 Blob 容器
+    + 已修正單一實例分析以產生建議，並可在 core sdk 中取得。
+    + 已修正 aks.py 中的問題 _deploy
+    + 驗證所上傳模型的完整性以避免無訊息的儲存失敗。
+  + **azureml-解讀**
+    + 已將 azureml 樣式的例外狀況新增至 azureml-解讀
+    + 已修正 keras 模型的 DeepScoringExplainer 序列化
+  + **azureml-管線核心**
+    + 管線批次計分筆記本現在會使用 ParallelRunStep
+  + **azureml-管線-步驟**
+    + 已移動 `azureml-pipeline-steps` 套件中的 `AutoMLStep`。 已取代 `azureml-train-automl-runtime`內的 `AutoMLStep`。
+  + **azureml-contrib-管線-步驟**
+    + 選擇性參數 side_inputs 新增至 ParallelRunStep。 這個參數可以用來在容器上掛接資料夾。 目前支援的類型為 DataReference 和 PipelineData。
+  + **azureml-tensorboard**
+    + 已更新 azureml-tensorboard 以支援 tensorflow 2。0
+  + **azureml-定型-automl-用戶端**
+    + 修正了篩選自訂特徵化 config 的 FeaturizationConfig 覆寫問題。
+  + **azureml-定型-automl-執行時間**
+    + 已移動 `azureml-pipeline-steps` 套件中的 `AutoMLStep`。 已取代 `azureml-train-automl-runtime`內的 `AutoMLStep`。
+  + **azureml-定型-核心**
+    + 支援 PyTorch 估計工具中的 PyTorch 1.4 版
+  
 ## <a name="2020-02-04"></a>2020-02-04
 
 ### <a name="azure-machine-learning-sdk-for-python-v110rc0"></a>Azure Machine Learning SDK for Python v 1.1.0 rc0
 
++ **重大變更**
+  + **語義版本控制2.0。0**
+    + 從1.1 版開始，Azure ML Python SDK 會採用語義版本設定2.0.0。 [請在這裡閱讀更多資訊](https://semver.org/)。 所有後續版本將遵循新的編號配置和語義版本設定合約。 
+  
 + **Bug 修正和改善**
   + **azureml-automl-執行時間**
     + 增加特徵化的速度。
@@ -118,8 +161,7 @@ ms.locfileid: "77030807"
     + 已將 CreatedBy 資訊新增至模型和服務物件。 可透過 <var>存取。 created_by
     + 已修正 Install-containerimage （），其未正確設定 Docker 容器的 HTTP 埠。
     + 為 `az ml dataset register` cli 命令設為選擇性 `azureml-dataprep`
-  + **azureml-dataprep**
-    + 已修正 to_pandas_dataframe TabularDataset 會錯誤地切換回替代讀取器並印出警告的錯誤（bug）。
+    + 已修正 `TabularDataset.to_pandas_dataframe` 會錯誤地切換回替代讀取器並印出警告的 bug。
   + **azureml-說明-模型**
     + 延遲 shap 相依性以從 azureml 解讀
   + **azureml-管線核心**
@@ -1261,7 +1303,7 @@ Azure Machine Learning SDK for Python v 1.0.30 已發行。
   + 您現在可以使用 [資料透視轉換]。
     + 操作指南：[資料透視筆記本](https://aka.ms/aml-data-prep-pivot-nb)
   + 您現在可以在原生函式中使用正則運算式。
-    + 範例:
+    + 範例：
       + `dflow.filter(dprep.RegEx('pattern').is_match(dflow['column_name']))`
       + `dflow.assert_value('column_name', dprep.RegEx('pattern').is_match(dprep.value))`
   + 您現在可以使用運算式語言中的 `to_upper` 和 `to_lower` 函數。

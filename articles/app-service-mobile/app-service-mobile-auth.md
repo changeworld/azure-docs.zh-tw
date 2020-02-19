@@ -1,21 +1,16 @@
 ---
-title: 驗證與授權
+title: 驗證和授權
 description: Azure App Service 的驗證/授權功能的概念性參考和總覽，特別是針對行動應用程式。
 ms.topic: article
 ms.date: 10/01/2016
-ms.openlocfilehash: 2c3bc1f9563a5657d7574020fc908f23a711391c
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 4a9ef62178b9a58fa8703413a09114a617d1d239
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668522"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459458"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-for-mobile-apps"></a>Azure App Service 中行動裝置應用程式的驗證和授權
-
-> [!NOTE]
-> Visual Studio App Center 支援使用端對端及整合服務中心來開發行動應用程式。 開發人員可以使用**建置**、**測試**和**散發**服務來設定持續整合及傳遞管線。 部署應用程式之後，開發人員可以使用**分析**和**診斷**服務來監視其應用程式的狀態和使用情況，並使用**推送**服務與使用者互動。 開發人員也可以利用**驗證**來驗證其使用者，並使用**資料**來保存及同步雲端中的應用程式資料。
->
-> 如果您想要在行動應用程式中整合雲端服務，請立即註冊 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) \(英文\)。
 
 本文說明使用 App Service 後端開發原生行動裝置應用程式時，驗證和授權的運作方式。 App Service 會提供整合式驗證和授權，讓您的行動裝置應用程式可以將使用者登入，而不需要在 App Service 中變更任何程式碼。 它提供簡單的方法來保護您的應用程式，以及使用每位使用者的資料。 
 
@@ -48,7 +43,7 @@ ms.locfileid: "74668522"
 每個平台的驗證教學課程都包含啟動此流程的程式碼。 在流程結束時，用戶端 SDK 會擁有 App Service 權杖，而該權杖會自動附加至對應用程式後端的所有要求。
 
 如需驗證流程的詳細資訊，請參閱 [App Service 驗證流程](../app-service/overview-authentication-authorization.md#authentication-flow)。 
-## <a name="more-resources"></a>更多資源
+## <a name="more-resources"></a>其他資源
 
 下列教學課程示範如何使用[伺服器導向流程](../app-service/overview-authentication-authorization.md#authentication-flow)，將驗證新增至您的行動用戶端︰
 

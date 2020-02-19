@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: aahi
-ms.openlocfilehash: 5d3aba2f6010ba16656be96433c521d2adae4c58
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 3e5fd2315a5d352ed5abee9253b5c84eea3b73a9
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169169"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462270"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>使用 Azure 命令列介面（CLI）建立認知服務資源
 
@@ -25,7 +25,7 @@ ms.locfileid: "76169169"
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 有效的 Azure 訂用帳戶-免費[建立一個](https://azure.microsoft.com/free/)。
 * [Azure 命令列介面（CLI）](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
@@ -84,11 +84,11 @@ az group create \
 > [!NOTE]
 > 下列許多認知服務都有可用來試用服務的免費層。 若要使用免費層，請使用 `F0` 作為資源的 sku。
 
-### <a name="vision"></a>辨識
+### <a name="vision"></a>視覺
 
 | 服務                    | 種類                      |
 |----------------------------|---------------------------|
-| Computer Vision            | `ComputerVision`          |
+| 電腦視覺            | `ComputerVision`          |
 | 自訂視覺-預測 | `CustomVision.Prediction` |
 | 自訂視覺訓練   | `CustomVision.Training`   |
 | 臉部                       | `Face`                    |
@@ -112,22 +112,22 @@ az group create \
 | 語音服務    | `SpeechServices`     |
 | 語音辨識 | `SpeakerRecognition` |
 
-### <a name="language"></a>語言
+### <a name="language"></a>Language
 
 | 服務            | 種類                |
 |--------------------|---------------------|
 | 表單理解 | `FormUnderstanding` |
 | LUIS               | `LUIS`              |
-| 製作問與答的人員          | `QnAMaker`          |
+| QnA Maker          | `QnAMaker`          |
 | 文字分析     | `TextAnalytics`     |
-| Text Translation (文字翻譯)   | `TextTranslation`   |
+| 文字翻譯   | `TextTranslation`   |
 
 ### <a name="decision"></a>決策
 
 | 服務           | 種類               |
 |-------------------|--------------------|
-| Anomaly Detector  | `AnomalyDetector`  |
-| Content Moderator | `ContentModerator` |
+| 異常偵測器  | `AnomalyDetector`  |
+| 內容仲裁 | `ContentModerator` |
 | 個人化工具      | `Personalizer`     |
 
 您可以使用[az cognitiveservices account list-種類](https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-kinds)命令來尋找可用的認知服務「種類」清單：
@@ -195,10 +195,10 @@ az cognitiveservices account list-usage \
 若要移除資源群組及其相關聯的資源，請使用 az group delete 命令。
 
 ```azurecli-interactive
-az group delete --name storage-resource-group
+az group delete --name cognitive-services-resource-group
 ```
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [驗證 Azure 認知服務要求](authentication.md)
 * [什麼是 Azure 認知服務？](Welcome.md)

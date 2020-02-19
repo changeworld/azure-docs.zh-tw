@@ -6,21 +6,16 @@ ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 69fe4b98c26ac2f67fc777b754f3bc391e3b71b5
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: f23ac2d693492695c398893c103d5a77a0e93129
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023050"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461465"
 ---
 # <a name="add-push-notifications-to-your-xamarinforms-app"></a>將推播通知新增至 Xamarin.Forms 應用程式
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
-
-> [!NOTE]
-> Visual Studio App Center 支援使用端對端及整合服務中心來開發行動應用程式。 開發人員可以使用**建置**、**測試**和**散發**服務來設定持續整合及傳遞管線。 部署應用程式之後，開發人員可以使用**分析**和**診斷**服務來監視其應用程式的狀態和使用情況，並使用**推送**服務與使用者互動。 開發人員也可以利用**驗證**來驗證其使用者，並使用**資料**來保存及同步雲端中的應用程式資料。
->
-> 如果您想要在行動應用程式中整合雲端服務，請立即註冊 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) \(英文\)。
 
 ## <a name="overview"></a>概觀
 
@@ -28,7 +23,7 @@ ms.locfileid: "77023050"
 
 如果您不要使用下載的快速入門伺服器專案，將需要推播通知擴充套件。 如需詳細資訊，請參閱[使用 Azure Mobile Apps 的 .NET 後端伺服器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若為 iOS，您需要 [Apple Developer Program 成員資格](https://developer.apple.com/programs/ios/)和實體 iOS 裝置。 [iOS 模擬器不支援推播通知](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html)。
 
@@ -78,7 +73,7 @@ ms.locfileid: "77023050"
 
 #### <a name="implementing-the-firebase-instance-id-service"></a>實作 Firebase 執行個體識別碼服務
 
-1. 將新的類別新增至名為 `FirebaseRegistrationService` 的 **Droid** 專案，並確定下列 `using` 陳述式出現在檔案頂端：
+1. 將新的類別新增至名為 **的**Droid`FirebaseRegistrationService` 專案，並確定下列 `using` 陳述式出現在檔案頂端：
 
     ```csharp
     using System.Threading.Tasks;
@@ -121,7 +116,7 @@ ms.locfileid: "77023050"
 
 #### <a name="registering-with-the-azure-notification-hub"></a>向 Azure 通知中樞進行註冊
 
-1. 將新的類別新增至名為 `AzureNotificationHubService` 的 **Droid** 專案，並確定下列 `using` 陳述式出現在檔案頂端：
+1. 將新的類別新增至名為 **的**Droid`AzureNotificationHubService` 專案，並確定下列 `using` 陳述式出現在檔案頂端：
 
     ```csharp
     using System;
@@ -164,7 +159,7 @@ ms.locfileid: "77023050"
 
 #### <a name="displaying-the-contents-of-a-push-notification"></a>顯示推播通知的內容
 
-1. 將新的類別新增至名為 `FirebaseNotificationService` 的 **Droid** 專案，並確定下列 `using` 陳述式出現在檔案頂端：
+1. 將新的類別新增至名為 **的**Droid`FirebaseNotificationService` 專案，並確定下列 `using` 陳述式出現在檔案頂端：
 
     ```csharp
     using Android.App;
@@ -351,7 +346,7 @@ ms.locfileid: "77023050"
     using <your_TodoItemManager_portable_class_namespace>;
     ```
 
-    使用包含 `TodoItemManager` 類別的可攜式專案命名空間來取代 `<your_TodoItemManager_portable_class_namespace>`。
+    使用包含 `<your_TodoItemManager_portable_class_namespace>` 類別的可攜式專案命名空間來取代 `TodoItemManager`。
 
 2. 在 App.xaml.cs 中，新增下列 **InitNotificationsAsync** 方法：
 
@@ -381,7 +376,7 @@ ms.locfileid: "77023050"
 
     這個方法會取得推播通知通道，並註冊範本以接收來自通知中樞的範本通知。 支援 messageParam 的範本通知會傳送到此用戶端。
 
-3. 在 App.xaml.cs 中，新增 `async` 修飾詞以更新 **OnLaunched** 事件處理常式方法定義。 然後，在方法的結尾新增下列程式碼行：
+3. 在 App.xaml.cs 中，新增 **修飾詞以更新**OnLaunched`async` 事件處理常式方法定義。 然後，在方法的結尾新增下列程式碼行：
 
     ```csharp
     await InitNotificationsAsync();

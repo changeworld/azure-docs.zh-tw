@@ -5,19 +5,14 @@ ms.assetid: 4e96cb9d-a632-4cf6-8219-0810d8ade3f9
 ms.tgt_pltfrm: mobile-multiple
 ms.topic: conceptual
 ms.date: 06/25/2019
-ms.openlocfilehash: d85ac89a4226b545419cea3413a04f4013a073be
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 73fdf7f09ebb5073829f9787917946e8053f8e12
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668713"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461431"
 ---
-# <a name="getting-started"> </a>關於 Azure App Service 中的 Mobile Apps
-
-> [!NOTE]
-> Visual Studio App Center 支援使用端對端及整合服務中心來開發行動應用程式。 開發人員可以使用**建置**、**測試**和**散發**服務來設定持續整合及傳遞管線。 部署應用程式之後，開發人員可以使用**分析**和**診斷**服務來監視其應用程式的狀態和使用情況，並使用**推送**服務與使用者互動。 開發人員也可以利用**驗證**來驗證其使用者，並使用**資料**來保存及同步雲端中的應用程式資料。
->
-> 如果您想要在行動應用程式中整合雲端服務，請立即註冊 [App Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) \(英文\)。
+# <a name="getting-started"></a>關於 Azure App Service 中的 Mobile Apps
 
 Azure App Service 是完全受控的[平台即服務](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) 供應項目，適用於專業開發人員。 此服務為 Web、行動及整合案例提供一組豐富的功能。 
 

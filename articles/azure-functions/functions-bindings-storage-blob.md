@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 794e18590f554d1537449d2aee9451c0053ac4a7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 6950f1dd81ef2c70f2c45fb4c547ed7676067790
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198409"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462304"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions-overview"></a>適用于 Azure Functions 總覽的 Azure Blob 儲存體系結
 
@@ -26,9 +26,9 @@ Azure Functions 透過[觸發程式和](./functions-triggers-bindings.md)系結�
 
 ### <a name="functions-2x-and-higher"></a>函數2.x 和更新版本
 
-使用觸發程式和系結時，您需要參考適當的套件。 NuGet 套件會用於 .NET 類別庫，而擴充功能會將所有其他應用程式類型組合在一起。
+使用觸發程式和系結時，您需要參考適當的套件。 NuGet 套件適用于 .NET 類別庫，而延伸模組配套則用於所有其他應用程式類型。
 
-| 語言                                        | 加入者 。                                   | 備註 
+| Language                                        | 加入者 。                                   | 備註 
 |-------------------------------------------------|---------------------------------------------|-------------|
 | C#                                              | 安裝[NuGet 套件]3.x 版 | |
 | C#腳本，JAVA，JavaScript，Python，PowerShell | 註冊[延伸]模組配套          | 建議使用[Azure Tools 擴充](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack)功能搭配 Visual Studio Code。 |

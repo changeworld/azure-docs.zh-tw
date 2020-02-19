@@ -6,25 +6,20 @@ ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 90d26d6469c5f3e238ac2410cdccb8ef5e0c160f
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 4788aa50074016a34d906353f5b37dbba85ef104
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668333"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77458761"
 ---
 # <a name="add-authentication-to-your-xamarin-forms-app"></a>將驗證新增至 Xamarin Forms 應用程式
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
-> [!NOTE]
-> Visual Studio App Center 支援使用端對端及整合服務中心來開發行動應用程式。 開發人員可以使用**建置**、**測試**和**散發**服務來設定持續整合及傳遞管線。 部署應用程式之後，開發人員可以使用**分析**和**診斷**服務來監視其應用程式的狀態和使用情況，並使用**推送**服務與使用者互動。 開發人員也可以利用**驗證**來驗證其使用者，並使用**資料**來保存及同步雲端中的應用程式資料。
->
-> 如果您想要在行動應用程式中整合雲端服務，請立即註冊 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) \(英文\)。
-
 ## <a name="overview"></a>概觀
 本主題說明如何從用戶端應用程式驗證 App Service 行動應用程式的使用者。 在本教學課程中，您將使用 App Service 支援的識別提供者，將驗證新增至 Xamarin.Forms 快速入門專案。 由行動應用程式成功驗證並授權之後，就會顯示使用者識別碼值，而您也將可以存取受限制的資料庫資料。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 如需本教學課程的最佳結果，建議您先完成[建立 Xamarin Forms 應用程式][1]教學課程。 完成本教學課程之後，您將會有一個多平台 TodoList 應用程式的 Xamarin.Forms 專案。
 
 如果您不要使用下載的快速入門伺服器專案，必須將驗證擴充套件新增至您的專案。 如需伺服器擴充套件的詳細資訊，請參閱 [使用 Azure Mobile Apps 的 .NET 後端伺服器 SDK][2]。
@@ -44,7 +39,7 @@ ms.locfileid: "74668333"
 
 4. 按一下 [確定]。
 
-5. 按一下 [儲存]。
+5. 按一下 [檔案]。
 
 ## <a name="restrict-permissions-to-authenticated-users"></a>限制只有通過驗證的使用者具有權限
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
@@ -59,7 +54,7 @@ Mobile Apps 使用[MobileServiceClient][4]上的[LoginAsync][3]擴充方法來�
 1. 在 Visual Studio 或 Xamarin Studio 中，從名稱中有 **Portable** 的專案中開啟 App.cs，也就是可攜式類別庫專案，然後新增下列 `using` 陳述式︰
 
         using System.Threading.Tasks;
-2. 在 App.cs 中，在 `App` 類別定義之前緊接著加入下列 `IAuthenticate` 介面定義。
+2. 在 App.cs 中，在 `IAuthenticate` 類別定義之前緊接著加入下列 `App` 介面定義。
 
         public interface IAuthenticate
         {
@@ -164,7 +159,7 @@ Mobile Apps 使用[MobileServiceClient][4]上的[LoginAsync][3]擴充方法來�
 
     如果您使用 Facebook 以外的識別提供者，請為 [MobileServiceAuthenticationProvider][7]選擇不同的值。
 
-6. 藉由新增下列 `<application>` 元素內部的 XML，更新 **AndroidManifest.xml** 檔案：
+6. 藉由新增下列 **元素內部的 XML，更新**AndroidManifest.xml`<application>` 檔案：
 
     ```xml
     <activity android:name="com.microsoft.windowsazure.mobileservices.authentication.RedirectUrlActivity" android:launchMode="singleTop" android:noHistory="true">
@@ -189,7 +184,7 @@ Mobile Apps 使用[MobileServiceClient][4]上的[LoginAsync][3]擴充方法來�
 
 **應用程式因 `Java.Lang.NoSuchMethodError: No static method startActivity` 而當機**
 
-在某些情況下，支援套件中的衝突在 Visual studio 中僅顯示為警告，但應用程式在執行階段會因此例外狀況而當機。 在此情況下，您必須確定您專案中所參考的所有支援套件都具有相同版本。 [Azure Mobile Apps NuGet 套件](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) 有 Android 平台的 `Xamarin.Android.Support.CustomTabs` 相依性，因此若您的專案使用較新的支援套件，您必須直接安裝具有必要版本的此套件以避免衝突。
+在某些情況下，支援套件中的衝突在 Visual studio 中僅顯示為警告，但應用程式在執行階段會因此例外狀況而當機。 在此情況下，您必須確定您專案中所參考的所有支援套件都具有相同版本。 [Azure Mobile Apps NuGet 套件](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) 具有 Android 平台的 `Xamarin.Android.Support.CustomTabs` 相依性，因此若您的專案使用較新的支援套件，您必須直接安裝具有必要版本的此套件以避免發生衝突。
 
 ## <a name="add-authentication-to-the-ios-app"></a>將驗證加入 iOS 應用程式中
 本節說明如何在 iOS 應用程式專案中實作 **IAuthenticate** 介面。 如果您不要支援 iOS 裝置，請略過這一節。
@@ -340,7 +335,7 @@ Mobile Apps 使用[MobileServiceClient][4]上的[LoginAsync][3]擴充方法來�
 ## <a name="next-steps"></a>後續步驟
 現在您已經完成了這個基本驗證的教學課程，可以考慮繼續進行下列其中一個教學課程：
 
-* [將推播通知新增至應用程式中](app-service-mobile-xamarin-forms-get-started-push.md)
+* [將推播通知新增至應用程式](app-service-mobile-xamarin-forms-get-started-push.md)
 
   了解如何將推播通知支援新增至應用程式，並設定行動應用程式後端以使用 Azure 通知中樞傳送推播通知。
 * [啟用應用程式的離線同步處理](app-service-mobile-xamarin-forms-get-started-offline-data.md)

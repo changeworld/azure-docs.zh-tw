@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/27/2019
-ms.openlocfilehash: b64b0f32b7e8d94115facf43646a5a030697d80f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cf79a670db4e2729c6e0a5fb7112cdc6114f465a
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444418"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460700"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>使用 Azure Data Factory 將資料複製到 Azure 資料表儲存體或從該處複製資料
 
@@ -51,7 +51,7 @@ ms.locfileid: "75444418"
 
 您可以使用帳戶金鑰來建立 Azure 儲存體連結服務。 它可將儲存體的全域存取權提供給資料處理站。 以下是支援的屬性。
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 類型屬性必須設為 **AzureTableStorage**。 |是 |
 | connectionString | 針對 connectionString 屬性指定連線到儲存體所需的資訊。 <br/>您也可以將帳戶金鑰放在 Azure Key Vault 並從連接字串中提取 `accountKey` 組態。 請參閱下列範例和[在 Azure Key Vault 中儲存認證](store-credentials-in-key-vault.md)一文中的更多詳細資料。 |是 |
@@ -120,7 +120,7 @@ ms.locfileid: "75444418"
 
 若要使用共用存取簽章驗證，以下是支援的屬性。
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 類型屬性必須設為 **AzureTableStorage**。 |是 |
 | sasUri | 將共用存取簽章 URI 的 SAS URI 指定至資料表。 <br/>將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中。 您也可以將 SAS 權杖放在 Azure Key Vault 中，以運用自動輪替並移除權杖部分。 請參閱下列範例和[在 Azure Key Vault 中儲存認證](store-credentials-in-key-vault.md)一文中的更多詳細資料。 | 是 |
@@ -191,7 +191,7 @@ ms.locfileid: "75444418"
 
 若要將資料複製到「Azure 資料表」以及從該處複製資料，請將資料集的類型屬性設定為 **AzureTable**。 以下是支援的屬性。
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 資料集的 type 屬性必須設定為 **AzureTable**。 |是 |
 | tableName |資料表儲存體資料庫執行個體中連結服務所參照的資料表名稱。 |是 |
@@ -231,7 +231,7 @@ ms.locfileid: "75444418"
 
 若要從「Azure 資料表」複製資料，請將複製活動中的來源類型設定為 **AzureTableSource**。 複製活動的 [來源] 區段支援下列屬性。
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的 type 屬性必須設定為 **AzureTableSource**。 |是 |
 | AzureTableSourceQuery |使用自訂的資料表儲存體查詢來讀取資料。 請參閱下一節中的範例。 |否 |
@@ -239,13 +239,16 @@ ms.locfileid: "75444418"
 
 ### <a name="azuretablesourcequery-examples"></a>azureTableSourceQuery 範例
 
-如果 Azure 資料表資料行是日期時間類型：
+>[!NOTE]
+>Azure 資料表查詢作業會在[azure 表格服務強制執行](https://docs.microsoft.com/rest/api/storageservices/setting-timeouts-for-table-service-operations)30 秒的時間內。 瞭解如何從[設計](../storage/tables/table-storage-design-for-query.md)中將查詢優化以查詢文章。
+
+在 Azure Data Factory 中，如果您想要根據 datetime 類型資料行來篩選資料，請參閱此範例：
 
 ```json
 "azureTableSourceQuery": "LastModifiedTime gt datetime'2017-10-01T00:00:00' and LastModifiedTime le datetime'2017-10-02T00:00:00'"
 ```
 
-如果 Azure 資料表資料行是字串類型：
+如果您想要根據字串類型資料行來篩選資料，請參閱此範例：
 
 ```json
 "azureTableSourceQuery": "LastModifiedTime ge '201710010000_0000' and LastModifiedTime le '201710010000_9999'"
@@ -257,7 +260,7 @@ ms.locfileid: "75444418"
 
 若要將資料複製到 Azure 資料表，將複製活動中的接收類型設定為 **AzureTableSink**。 複製活動的 [接收] 區段支援下列屬性。
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動接收的 type 屬性必須設定為 **AzureTableSink**。 |是 |
 | azureTableDefaultPartitionKeyValue |可供接收使用的預設資料分割索引鍵值。 |否 |
@@ -332,9 +335,9 @@ ms.locfileid: "75444418"
 |:--- |:--- |:--- |
 | Edm.Binary |byte[] |上限為 64 KB 的位元組陣列。 |
 | Edm.Boolean |bool |布林值。 |
-| Edm.DateTime |日期時間 |以國際標準時間 (UTC) 表示的 64 位元值。 支援的 DateTime 範圍從西元 1601 年 1 月 1 日午夜開始。 (C.E.), UTC. 此範圍結束於 9999 年 12 月 31 日。 |
+| Edm.DateTime |Datetime |以國際標準時間 (UTC) 表示的 64 位元值。 支援的 DateTime 範圍從西元 1601 年 1 月 1 日午夜開始。 (C.E.), UTC. 此範圍結束於 9999 年 12 月 31 日。 |
 | Edm.Double |double |64 位元的浮點值。 |
-| Edm.Guid |GUID |128 位元的全域唯一識別碼。 |
+| Edm.Guid |Guid |128 位元的全域唯一識別碼。 |
 | Edm.Int32 |Int32 |32 位元的整數。 |
 | Edm.Int64 |Int64 |64 位元的整數。 |
 | Edm.String |String |UTF 16 編碼值。 字串值最大可達 64 KB。 |

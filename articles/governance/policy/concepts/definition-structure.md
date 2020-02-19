@@ -3,12 +3,12 @@ title: 原則定義結構的詳細資料
 description: 說明如何使用原則定義來建立組織中 Azure 資源的慣例。
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: b98702161753a996cd8a6751670308a78dc36b7c
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: d30097badd3ab9ee5a328f17d0e3e91254a89185
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169776"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461997"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure 原則定義結構
 
@@ -111,6 +111,12 @@ Azure 原則會建立資源的慣例。 原則定義會描述資源合規性[條
 - `metadata`：定義主要由 Azure 入口網站用來顯示使用者易記資訊的子屬性：
   - `description`：參數用途的說明。 能用來提供可接受值的範例。
   - `displayName`：在入口網站中為參數顯示的易記名稱。
+  - `version`：（選擇性）追蹤原則定義內容版本的詳細資料。
+
+    > [!NOTE]
+    > Azure 原則服務會使用 `version`、`preview`和 `deprecated` 屬性來傳達內建原則定義或計畫與狀態的變更層級。 `version` 的格式為： `{Major}.{Minor}.{Patch}`。 特定狀態（例如已被_取代_或_預覽_）會附加至 `version` 屬性或另一個屬性中做為**布林值**。
+
+  - `category`：（選擇性）決定要在哪一個類別目錄中顯示原則定義 Azure 入口網站。
   - `strongType`：（選擇性）透過入口網站指派原則定義時使用。 提供內容感知清單。 如需詳細資訊，請參閱 [strongType](#strongtype)。
   - `assignPermissions`：（選擇性）設定為_true_ ，讓 Azure 入口網站在原則指派期間建立角色指派。 如果您想要在指派範圍之外指派許可權，此屬性會很有用。 原則中的每個角色定義（或計畫中的所有原則中的每個角色定義）都有一個角色指派。 參數值必須是有效的資源或範圍。
 - `defaultValue`：（選擇性）如果未指定任何值，則會在指派中設定參數的值。
@@ -663,7 +669,7 @@ Azure 原則支援下列類型的效果：
 
 ### <a name="understanding-the--alias"></a>了解 [*] 別名
 
-其中有幾個可用的別名，其版本會顯示為「一般」名稱，另一個則會附加 **\[\*\]** 。 例如，
+其中有幾個可用的別名，其版本會顯示為「一般」名稱，另一個則會附加 **\[\*\]** 。 例如：
 
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`

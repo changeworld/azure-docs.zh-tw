@@ -3,19 +3,19 @@ title: 語音合成標記語言（SSML）-語音服務
 titleSuffix: Azure Cognitive Services
 description: 使用語音合成標記語言控制文字轉語音的發音和韻律。
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
-ms.author: erhopf
-ms.openlocfilehash: d97073666a18a3ffb7a88e1d2350f213ef589e6a
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.date: 02/18/2020
+ms.author: dapine
+ms.openlocfilehash: ac891e96e350f73b7728ee4b572d9e16a8794ff7
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562522"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460989"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>語音合成標記語言 (SSML)
 
@@ -28,13 +28,13 @@ SSML 的語音服務執行是以全球資訊網協會的[語音合成標記語�
 
 ## <a name="standard-neural-and-custom-voices"></a>標準、類神經和自訂語音
 
-從標準和類神經語音中選擇，或為您的產品或品牌建立專屬的自訂語音。 75 + standard 語音提供45以上的語言和地區設定，而5類神經語音則提供4種語言和地區設定。 如需支援的語言、地區設定和語音 (神經和標準) 的完整清單，請參閱[語言支援](language-support.md)。
+從標準和類神經語音中選擇，或為您的產品或品牌建立專屬的自訂語音。 75 + standard 語音提供45以上的語言和地區設定，而5類神經語音則提供四種語言和地區設定。 如需支援的語言、地區設定和語音 (神經和標準) 的完整清單，請參閱[語言支援](language-support.md)。
 
 若要深入瞭解標準、類神經和自訂語音，請參閱[文字轉換語音的總覽](text-to-speech.md)。
 
 ## <a name="special-characters"></a>特殊字元
 
-使用 SSML 轉換文字到合成的語音時，請記住，就像使用 XML 一樣，特殊字元（例如引號、撇號和方括弧）必須經過轉義。 如需詳細資訊，請參閱[可延伸標記語言 (XML) （XML）1.0：附錄 D](https://www.w3.org/TR/xml/#sec-entexpand)。
+使用 SSML 時，請記住，特殊字元（例如引號、撇號和方括弧）必須經過轉義。 如需詳細資訊，請參閱[可延伸標記語言 (XML) （XML）1.0：附錄 D](https://www.w3.org/TR/xml/#sec-entexpand)。
 
 ## <a name="supported-ssml-elements"></a>支援的 SSML 元素
 
@@ -55,11 +55,11 @@ SSML 的語音服務執行是以全球資訊網協會的[語音合成標記語�
 
 **屬性**
 
-| 屬性 | 說明 | 必要/選用 |
+| 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
-| version | 表示用來解讀檔標記的 SSML 規格版本。 目前的版本為1.0。 | 必要項 |
-| xml:lang | 指定根文檔的語言。 此值可包含小寫、兩個字母的語言代碼（例如**en**），或語言代碼和大寫國家/地區（例如， **en-us**）。 | 必要項 |
-| xmlns | 指定檔的 URI，以定義 SSML 檔的標記詞彙（元素類型和屬性名稱）。 目前的 URI 為 https://www.w3.org/2001/10/synthesis 。 | 必要項 |
+| `version` | 表示用來解讀檔標記的 SSML 規格版本。 目前的版本為1.0。 | 必要 |
+| `xml:lang` | 指定根文檔的語言。 此值可包含小寫、兩個字母的語言代碼（例如 `en`），或語言代碼和大寫國家/地區（例如，`en-US`）。 | 必要 |
+| `xmlns` | 指定檔的 URI，以定義 SSML 檔的標記詞彙（元素類型和屬性名稱）。 目前的 URI 為 https://www.w3.org/2001/10/synthesis。 | 必要 |
 
 ## <a name="choose-a-voice-for-text-to-speech"></a>選擇文字轉換語音的語音
 
@@ -75,9 +75,9 @@ SSML 的語音服務執行是以全球資訊網協會的[語音合成標記語�
 
 **屬性**
 
-| 屬性 | 說明 | 必要/選用 |
+| 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
-| NAME | 識別文字到語音轉換輸出所使用的語音。 如需支援的語音的完整清單，請參閱[語言支援](language-support.md#text-to-speech)。 | 必要項 |
+| `name` | 識別文字到語音轉換輸出所使用的語音。 如需支援的語音的完整清單，請參閱[語言支援](language-support.md#text-to-speech)。 | 必要 |
 
 **範例**
 
@@ -86,7 +86,7 @@ SSML 的語音服務執行是以全球資訊網協會的[語音合成標記語�
 
 ```XML
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice  name="en-US-Jessa24kRUS">
+    <voice name="en-US-Jessa24kRUS">
         This is the text that is spoken.
     </voice>
 </speak>
@@ -94,22 +94,93 @@ SSML 的語音服務執行是以全球資訊網協會的[語音合成標記語�
 
 ## <a name="use-multiple-voices"></a>使用多重音源
 
-在 `speak` 元素內，您可以為文字到語音轉換輸出指定多個語音。 這些語音可以採用不同的語言。 針對每個聲音，文字必須包裝在 `voice` 元素中。
+在 `speak` 元素內，您可以為文字到語音轉換輸出指定多個語音。 這些語音可以採用不同的語言。 針對每個聲音，文字必須包裝在 `voice` 元素中。 
 
 **屬性**
 
-| 屬性 | 說明 | 必要/選用 |
+| 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
-| NAME | 識別文字到語音轉換輸出所使用的語音。 如需支援的語音的完整清單，請參閱[語言支援](language-support.md#text-to-speech)。 | 必要項 |
+| `name` | 識別文字到語音轉換輸出所使用的語音。 如需支援的語音的完整清單，請參閱[語言支援](language-support.md#text-to-speech)。 | 必要 |
+
+> [!IMPORTANT]
+> 多個語音與「字邊界」功能不相容。 必須停用「字邊界」功能，才能使用多個語音。
+
+### <a name="disable-word-boundary"></a>停用字邊界
+
+視語音 SDK 語言而定，您會將 `"SpeechServiceResponse_Synthesis_WordBoundaryEnabled"` 屬性設定為 `SpeechConfig` 物件之實例上的 `false`。
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+如需詳細資訊，請參閱<a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.setproperty?view=azure-dotnet" target="_blank">`SetProperty` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。
+
+```csharp
+speechConfig.SetProperty(
+    "SpeechServiceResponse_Synthesis_WordBoundaryEnabled", "false");
+```
+
+# <a name="c"></a>[C++](#tab/cpp)
+
+如需詳細資訊，請參閱<a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#setproperty" target="_blank">`SetProperty` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。
+
+```cpp
+speechConfig->SetProperty(
+    "SpeechServiceResponse_Synthesis_WordBoundaryEnabled", "false");
+```
+
+# <a name="java"></a>[Java](#tab/java)
+
+如需詳細資訊，請參閱<a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setproperty?view=azure-java-stable#com_microsoft_cognitiveservices_speech_SpeechConfig_setProperty_String_String_" target="_blank">`setProperty` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。
+
+```java
+speechConfig.setProperty(
+    "SpeechServiceResponse_Synthesis_WordBoundaryEnabled", "false");
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+如需詳細資訊，請參閱<a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#set-property-by-name-property-name--str--value--str-" target="_blank">`set_property_by_name` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。
+
+```python
+speech_config.set_property_by_name(
+    "SpeechServiceResponse_Synthesis_WordBoundaryEnabled", "false");
+```
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+如需詳細資訊，請參閱<a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#setproperty-string--string-" target="_blank">`setProperty` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。
+
+```javascript
+speechConfig.setProperty(
+    "SpeechServiceResponse_Synthesis_WordBoundaryEnabled", "false");
+```
+
+# <a name="objective-c"></a>[Objective-C](#tab/objectivec)
+
+如需詳細資訊，請參閱<a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank">`setPropertyTo` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。
+
+```objectivec
+[speechConfig setPropertyTo:@"false" byName:@"SpeechServiceResponse_Synthesis_WordBoundaryEnabled"];
+```
+
+# <a name="swift"></a>[Swift](#tab/swift)
+
+如需詳細資訊，請參閱<a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank">`setPropertyTo` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。
+
+```swift
+speechConfig!.setPropertyTo(
+    "false", byName: "SpeechServiceResponse_Synthesis_WordBoundaryEnabled")
+```
+
+---
 
 **範例**
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice  name="en-US-Jessa24kRUS">
+    <voice name="en-US-Jessa24kRUS">
         Good morning!
     </voice>
-    <voice  name="en-US-Guy24kRUS">
+    <voice name="en-US-Guy24kRUS">
         Good morning to you too Jessa!
     </voice>
 </speak>
@@ -118,7 +189,7 @@ SSML 的語音服務執行是以全球資訊網協會的[語音合成標記語�
 ## <a name="adjust-speaking-styles"></a>調整說話樣式
 
 > [!IMPORTANT]
-> 這項功能只適用于神經語音。
+> 說話樣式的調整僅適用于類神經語音。
 
 根據預設，文字轉換語音服務會針對標準和類神經語音使用中性說話樣式來合成文字。 使用神經語音時，您可以調整說話樣式，以 `<mstts:express-as>` 元素表達 cheerfulness、理解或情感。 這是語音服務特有的選擇性元素。
 
@@ -136,28 +207,29 @@ SSML 的語音服務執行是以全球資訊網協會的[語音合成標記語�
 
 **屬性**
 
-| 屬性 | 說明 | 必要/選用 |
+| 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
-| type | 指定說話的樣式。 目前，說話樣式是語音特有的。 | 如果要調整類神經語音的說話樣式，則為必要。 如果使用 `mstts:express-as`，則必須提供類型。 如果提供了不正確值，則會忽略此元素。 |
+| `type` | 指定說話的樣式。 目前，說話樣式是語音特有的。 | 如果要調整類神經語音的說話樣式，則為必要。 如果使用 `mstts:express-as`，則必須提供類型。 如果提供了不正確值，則會忽略此元素。 |
 
 使用此表格來判斷每個類神經語音支援哪些說話樣式。
 
-| 語音 | 類型 | 說明 |
+| 語音 | 類型 | 描述 |
 |-------|------|-------------|
-| `en-US-JessaNeural` | 類型 =`cheerful` | 表達正面且滿意的表情 |
-| | 類型 =`empathy` | 表達管也和認知的意義 |
-| | 類型 =`chat` | 以偶爾、寬鬆的語調說話 |
-| | 類型 =`newscast` | 表達類似于新聞廣播的正式音調 |
-| | 類型 =`customerservice` | 以易記且患者的方式說話，做為客戶服務 |
-| `zh-CN-XiaoxiaoNeural` | 類型 =`newscast` | 表達類似于新聞廣播的正式音調 |
-| | 類型 =`sentiment` | 傳達觸控訊息或故事 |
+| `en-US-JessaNeural` | `type="cheerful"` | 表達正面且滿意的表情 |
+| | `type="empathy"` | 表達管也和認知的意義 |
+| | `type="chat"` | 以偶爾、寬鬆的語調說話 |
+| | `type="newscast"` | 表達類似于新聞廣播的正式音調 |
+| | `type="customerservice"` | 以易記且患者的方式說話，做為客戶服務 |
+| `zh-CN-XiaoxiaoNeural` | `type="newscast"` | 表達類似于新聞廣播的正式音調 |
+| | `type="sentiment"` | 傳達觸控訊息或故事 |
 
 **範例**
 
 這個 SSML 程式碼片段說明如何使用 `<mstts:express-as>` 元素，將說話風格變更為 `cheerful`。
 
 ```xml
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="en-US">
+<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis"
+       xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="en-US">
     <voice name="en-US-JessaNeural">
         <mstts:express-as type="cheerful">
             That'd be just amazing!
@@ -182,14 +254,14 @@ SSML 的語音服務執行是以全球資訊網協會的[語音合成標記語�
 
 **屬性**
 
-| 屬性 | 說明 | 必要/選用 |
+| 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
-| 程度 | 使用下列其中一個值，指定暫停的相對持續時間：<ul><li>無</li><li>x-弱式</li><li>不足</li><li>中（預設值）</li><li>強式</li><li>x-強式</li></ul> | 選用 |
-| time | 指定暫停的絕對持續時間（以秒或毫秒為單位）。 有效值為2和500的範例 | 選用 |
+| `strength` | 使用下列其中一個值，指定暫停的相對持續時間：<ul><li>無</li><li>x-弱式</li><li>不足</li><li>中（預設值）</li><li>強式</li><li>x-強式</li></ul> | 選用 |
+| `time` | 指定暫停的絕對持續時間（以秒或毫秒為單位）。 有效值的範例包括 `2s` 和 `500` | 選用 |
 
-| 程度 | 說明 |
+| 程度 | 描述 |
 |----------|-------------|
-| 無; 如果未提供任何值，則為 | 0 毫秒 |
+| 無; 如果未提供任何值，則為 | 0毫秒 |
 | x-弱式 | 250毫秒 |
 | 不足 | 500 毫秒 |
 | 中 | 750 毫秒 |
@@ -201,7 +273,7 @@ SSML 的語音服務執行是以全球資訊網協會的[語音合成標記語�
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice  name="en-US-Jessa24kRUS">
+    <voice name="en-US-Jessa24kRUS">
         Welcome to Microsoft Cognitive Services <break time="100ms" /> Text-to-Speech API.
     </voice>
 </speak>
@@ -226,7 +298,7 @@ SSML 的語音服務執行是以全球資訊網協會的[語音合成標記語�
 
 ```XML
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice  name="en-US-Jessa24kRUS">
+    <voice name="en-US-Jessa24kRUS">
         <p>
             <s>Introducing the sentence element.</s>
             <s>Used to mark individual sentences.</s>
@@ -253,16 +325,16 @@ SSML 的語音服務執行是以全球資訊網協會的[語音合成標記語�
 
 **屬性**
 
-| 屬性 | 說明 | 必要/選用 |
+| 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
-| 拉丁字母 | 指定合成 `ph` 屬性中字串的發音時，所要使用的語音字母。 指定字母的字串必須以小寫字母指定。 以下是您可以指定的可能字母。<ul><li>.ipa &ndash; 國際語音字母</li><li>sapi &ndash; 語音 API 電話集合</li><li>通用電話組 &ndash; 的 ups</li></ul>此字母僅適用于元素中的音素。 如需詳細資訊，請參閱[語音字母參考](https://msdn.microsoft.com/library/hh362879(v=office.14).aspx)。 | 選用 |
-| 三相 | 包含電話的字串，指定 `phoneme` 元素中的單字發音。 如果指定的字串包含無法辨識的手機，文字轉換語音（TTS）服務會拒絕整個 SSML 檔，而且不會產生任何在檔中指定的語音輸出。 | 如果使用音素，則為必要。 |
+| `alphabet` | 指定合成 `ph` 屬性中字串的發音時，所要使用的語音字母。 指定字母的字串必須以小寫字母指定。 以下是您可以指定的可能字母。<ul><li>.ipa &ndash; 國際語音字母</li><li>sapi &ndash; 語音 API 電話集合</li><li>通用電話組 &ndash; 的 ups</li></ul>此字母僅適用于元素中的音素。 如需詳細資訊，請參閱[語音字母參考](https://msdn.microsoft.com/library/hh362879(v=office.14).aspx)。 | 選用 |
+| `ph` | 包含電話的字串，指定 `phoneme` 元素中的單字發音。 如果指定的字串包含無法辨識的手機，文字轉換語音（TTS）服務會拒絕整個 SSML 檔，而且不會產生任何在檔中指定的語音輸出。 | 如果使用音素，則為必要。 |
 
 **範例**
 
 ```XML
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice  name="en-US-Jessa24kRUS">
+    <voice name="en-US-Jessa24kRUS">
         <s>His name is Mike <phoneme alphabet="ups" ph="JH AU"> Zhou </phoneme></s>
     </voice>
 </speak>
@@ -270,7 +342,7 @@ SSML 的語音服務執行是以全球資訊網協會的[語音合成標記語�
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice  name="en-US-Jessa24kRUS">
+    <voice name="en-US-Jessa24kRUS">
         <phoneme alphabet="ipa" ph="t&#x259;mei&#x325;&#x27E;ou&#x325;"> tomato </phoneme>
     </voice>
 </speak>
@@ -290,14 +362,14 @@ SSML 的語音服務執行是以全球資訊網協會的[語音合成標記語�
 
 **屬性**
 
-| 屬性 | 說明 | 必要/選用 |
+| 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
-| 介紹 | 表示文字的基準間距。 您可以用下列方式表達音調：<ul><li>絕對值，以數位表示，後面接著 "Hz" （赫茲）。 例如，600Hz。</li><li>以數位表示的相對值，前面加上 "+" 或 "-"，後面接著 "Hz" 或 "st"，以指定要變更音調的數量。 例如： + 80Hz 或-2st。 "St" 表示變更單位是 semitone，這是標準 diatonic 尺規上的一半色調（半步驟）。</li><li>常數值：<ul><li>x-低</li><li>low</li><li>中</li><li>high</li><li>x-高</li><li>預設</li></ul></li></ul>。 | 選用 |
-| 輪廓 | 類神經語音不支援等高線。 [等高線] 代表語音內容在語音輸出中指定時間位置的 [音調] 變更，做為目標陣列。 每個目標都是由一組參數配對所定義。 例如： <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>每一組參數中的第一個值會指定音調變更的位置，以文字持續時間的百分比表示。 第二個值會使用相對值或音調的列舉值，指定要提高或降低音調的數量（請參閱 `pitch`）。 | 選用 |
-| range  | 值，表示文字的音調範圍。 您可以使用相同的絕對值、相對值或用來描述 `pitch`的列舉值來表示 `range`。 | 選用 |
-| rate  | 表示文字的說話速率。 您可以將 `rate` 表達為：<ul><li>相對值，以做為預設值之乘數的數位來表示。 例如，值*1*會導致速率不會變更。 值為 *.5*會產生速率的減半。 值為*3*會產生速率的增加三倍。</li><li>常數值：<ul><li>x-慢</li><li>slow</li><li>中</li><li>快速</li><li>x-快速</li><li>預設</li></ul></li></ul> | 選用 |
-| duration  | 語音合成（TTS）服務讀取文字（以秒或毫秒為單位）時所經過的時間長度。 例如，2*秒*或*1800ms*。 | 選用 |
-| 磁碟區  | 表示說話語音的音量層級。 您可以將磁片區表示為：<ul><li>絕對值，以0.0 到100.0 範圍內的數位表示，從*quietest*到*loudest*。 例如，75。 預設值為100.0。</li><li>以數位表示的相對值，其前面加上 "+" 或 "-"，以指定要變更磁片區的數量。 例如 + 10 或-5.5。</li><li>常數值：<ul><li>無聲</li><li>x-軟</li><li>軟</li><li>中</li><li>很</li><li>x-大聲</li><li>預設</li></ul></li></ul> | 選用 |
+| `pitch` | 表示文字的基準間距。 您可以用下列方式表達音調：<ul><li>絕對值，以數位表示，後面接著 "Hz" （赫茲）。 例如，600 Hz。</li><li>以數位表示的相對值，前面加上 "+" 或 "-"，後面接著 "Hz" 或 "st"，以指定要變更音調的數量。 例如： + 80 Hz 或-2st。 "St" 表示變更單位是 semitone，這是標準 diatonic 尺規上的一半色調（半步驟）。</li><li>常數值：<ul><li>x-低</li><li>low</li><li>中</li><li>high</li><li>x-高</li><li>預設</li></ul></li></ul>。 | 選用 |
+| `contour` | 類神經語音不支援等高線。 等高線代表音調中的變更。 這些變更會在語音輸出中的指定時間位置以目標陣列表示。 每個目標都是由一組參數配對所定義。 例如： <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>每一組參數中的第一個值會指定音調變更的位置，以文字持續時間的百分比表示。 第二個值會使用相對值或音調的列舉值，指定要提高或降低音調的數量（請參閱 `pitch`）。 | 選用 |
+| `range` | 值，表示文字的音調範圍。 您可以使用相同的絕對值、相對值或用來描述 `pitch`的列舉值來表示 `range`。 | 選用 |
+| `rate` | 表示文字的說話速率。 您可以將 `rate` 表達為：<ul><li>相對值，以做為預設值之乘數的數位來表示。 例如，值*1*會導致速率不會變更。 *0.5*的值會產生速率的減半。 值為*3*會產生速率的增加三倍。</li><li>常數值：<ul><li>x-慢</li><li>slow</li><li>中</li><li>快速</li><li>x-快速</li><li>預設</li></ul></li></ul> | 選用 |
+| `duration` | 語音合成（TTS）服務讀取文字（以秒或毫秒為單位）時所經過的時間長度。 例如，2*秒*或*1800ms*。 | 選用 |
+| `volume` | 表示說話語音的音量層級。 您可以將磁片區表示為：<ul><li>絕對值，以0.0 到100.0 範圍內的數位表示，從*quietest*到*loudest*。 例如，75。 預設值為100.0。</li><li>以數位表示的相對值，其前面加上 "+" 或 "-"，以指定要變更磁片區的數量。 例如，+ 10 或-5.5。</li><li>常數值：<ul><li>無聲</li><li>x-軟</li><li>軟</li><li>中</li><li>很</li><li>x-大聲</li><li>預設</li></ul></li></ul> | 選用 |
 
 ### <a name="change-speaking-rate"></a>改變說話速度
 
@@ -307,7 +379,7 @@ SSML 的語音服務執行是以全球資訊網協會的[語音合成標記語�
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice  name="en-US-Guy24kRUS">
+    <voice name="en-US-Guy24kRUS">
         <prosody rate="+30.00%">
             Welcome to Microsoft Cognitive Services Text-to-Speech API.
         </prosody>
@@ -323,7 +395,7 @@ SSML 的語音服務執行是以全球資訊網協會的[語音合成標記語�
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice  name="en-US-Jessa24kRUS">
+    <voice name="en-US-Jessa24kRUS">
         <prosody volume="+20.00%">
             Welcome to Microsoft Cognitive Services Text-to-Speech API.
         </prosody>
@@ -339,7 +411,7 @@ SSML 的語音服務執行是以全球資訊網協會的[語音合成標記語�
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice  name="en-US-Guy24kRUS">
+    <voice name="en-US-Guy24kRUS">
         Welcome to <prosody pitch="high">Microsoft Cognitive Services Text-to-Speech API.</prosody>
     </voice>
 </speak>
@@ -354,16 +426,16 @@ SSML 的語音服務執行是以全球資訊網協會的[語音合成標記語�
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice  name="en-US-Jessa24kRUS">
+    <voice name="en-US-Jessa24kRUS">
         <prosody contour="(80%,+20%) (90%,+30%)" >
             Good morning.
         </prosody>
     </voice>
 </speak>
 ```
-## <a name="say-as-element"></a>假設為元素  
+## <a name="say-as-element"></a>假設為元素
 
-`say-as` 是選擇性的專案，表示元素文字的內容類型（例如數位或日期）。 這會提供語音合成引擎關於如何朗讀文字的指引。 
+`say-as` 是選擇性的專案，表示元素文字的內容類型（例如數位或日期）。 這會提供語音合成引擎關於如何朗讀文字的指引。
 
 **語法**
 
@@ -373,11 +445,11 @@ SSML 的語音服務執行是以全球資訊網協會的[語音合成標記語�
 
 **屬性**
 
-| 屬性 | 說明 | 必要/選用 |
+| 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
-| 解讀為 | 表示元素文字的內容類型。 如需類型清單，請參閱下表。 | 必要項 |
-| format | 針對可能有不明確格式的內容類型，提供元素文字精確格式的其他資訊。 SSML 會定義使用它們之內容類型的格式（請參閱下表）。 | 選用 |
-| 詳細資料 | 表示要讀出的詳細資料層級。 例如，此屬性可能會要求語音合成引擎發音標點符號。 沒有針對 `detail`定義的標準值。 | 選用 |
+| `interpret-as` | 表示元素文字的內容類型。 如需類型清單，請參閱下表。 | 必要 |
+| `format` | 針對可能有不明確格式的內容類型，提供元素文字精確格式的其他資訊。 SSML 會定義使用它們之內容類型的格式（請參閱下表）。 | 選用 |
+| `detail` | 表示要讀出的詳細資料層級。 例如，此屬性可能會要求語音合成引擎發音標點符號。 沒有針對 `detail`定義的標準值。 | 選用 |
 
 <!-- I don't understand the last sentence. Don't we know which one Cortana uses? -->
 
@@ -385,15 +457,15 @@ SSML 的語音服務執行是以全球資訊網協會的[語音合成標記語�
 
 | 解讀為 | format | 解讀 |
 |--------------|--------|----------------|
-| address | | 文字會以位址的形式讀出。 語音合成引擎 pronounces：<br /><br />`I'm at <say-as interpret-as="address">150th CT NE, Redmond, WA</say-as>`<br /><br />「我在150th 法院的美國華盛頓州 redmond」。 |
-| 基數、數位 | | 文字是以基本數位來讀出。 語音合成引擎 pronounces：<br /><br />`There are <say-as interpret-as="cardinal">3</say-as> alternatives`<br /><br />「有三種替代方案」。 |
-| 字元，拼出 | | 文字是以個別字母讀出（拼法）。 語音合成引擎 pronounces：<br /><br />`<say-as interpret-as="characters">test</say-as>`<br /><br />As "T E S T"。 |
-| date  | dmy、mdy、ymd、ydm、ym、my、md、dm、d、m、y | 文字會以日期說出。 `format` 屬性會指定日期的格式（*d = day、m = month 和 y = year*）。 語音合成引擎 pronounces：<br /><br />`Today is <say-as interpret-as="date" format="mdy">10-19-2016</say-as>`<br /><br />As 「今天是2016年10月的第十九個」。 |
-| 數位、number_digit | | 文字是以一系列的個別數位來讀出。 語音合成引擎 pronounces：<br /><br />`<say-as interpret-as="number_digit">123456789</say-as>`<br /><br />做為 "1 2 3 4 5 6 7 8 9"。 |
-| 分數 | | 文字會以小數的形式讀出。 語音合成引擎 pronounces：<br /><br /> `<say-as interpret-as="fraction">3/8</say-as> of an inch`<br /><br />做為「一種八分之的一英寸」。 |
-| 序數  | | 文字會以序號的形式讀出。 語音合成引擎 pronounces：<br /><br />`Select the <say-as interpret-as="ordinal">3rd</say-as> option`<br /><br />做為「選取第三個選項」。 |
-| telephone  | | 文字會以電話號碼的形式讀出。 `format` 屬性可能包含代表國家/地區代碼的數位。 例如，美國的 "1" 或義大利的 "39"。 語音合成引擎可能會使用這項資訊來引導其電話號碼的發音。 電話號碼也可能包含國家/地區代碼，若是如此，則會優先于 `format`中的國家/地區代碼。 語音合成引擎 pronounces：<br /><br />`The number is <say-as interpret-as="telephone" format="1">(888) 555-1212</say-as>`<br /><br />As 「我的數位是區功能變數代碼 8 8 8 5 5 5 1 2 1 2」。 |
-| time | hms12, hms24 | 文字會以一段時間讀出。 `format` 屬性會指定使用12小時制（hms12）或24小時制（hms24）來指定時間。 使用冒號來分隔代表小時、分鐘和秒數的數位。 以下是有效的時間範例：12:35、1:14:32、08:15 和02:50:45。 語音合成引擎 pronounces：<br /><br />`The train departs at <say-as interpret-as="time" format="hms12">4:00am</say-as>`<br /><br />「訓練離開在四個 M」。 |
+| `address` | | 文字會以位址的形式讀出。 語音合成引擎 pronounces：<br /><br />`I'm at <say-as interpret-as="address">150th CT NE, Redmond, WA</say-as>`<br /><br />「我在150th 法院的美國華盛頓州 redmond」。 |
+| `cardinal`, `number` | | 文字是以基本數位來讀出。 語音合成引擎 pronounces：<br /><br />`There are <say-as interpret-as="cardinal">3</say-as> alternatives`<br /><br />「有三種替代方案」。 |
+| `characters`, `spell-out` | | 文字是以個別字母讀出（拼法）。 語音合成引擎 pronounces：<br /><br />`<say-as interpret-as="characters">test</say-as>`<br /><br />As "T E S T"。 |
+| `date` | dmy、mdy、ymd、ydm、ym、my、md、dm、d、m、y | 文字會以日期說出。 `format` 屬性會指定日期的格式（*d = day、m = month 和 y = year*）。 語音合成引擎 pronounces：<br /><br />`Today is <say-as interpret-as="date" format="mdy">10-19-2016</say-as>`<br /><br />As 「今天是2016年10月的第十九個」。 |
+| `digits`, `number_digit` | | 文字是以一系列的個別數位來讀出。 語音合成引擎 pronounces：<br /><br />`<say-as interpret-as="number_digit">123456789</say-as>`<br /><br />做為 "1 2 3 4 5 6 7 8 9"。 |
+| `fraction` | | 文字會以小數的形式讀出。 語音合成引擎 pronounces：<br /><br /> `<say-as interpret-as="fraction">3/8</say-as> of an inch`<br /><br />做為「一種八分之的一英寸」。 |
+| `ordinal` | | 文字會以序號的形式讀出。 語音合成引擎 pronounces：<br /><br />`Select the <say-as interpret-as="ordinal">3rd</say-as> option`<br /><br />做為「選取第三個選項」。 |
+| `telephone` | | 文字會以電話號碼的形式讀出。 `format` 屬性可能包含代表國家/地區代碼的數位。 例如，美國的 "1" 或義大利的 "39"。 語音合成引擎可能會使用這項資訊來引導其電話號碼的發音。 電話號碼也可能包含國家/地區代碼，若是如此，則會優先于 `format`中的國家/地區代碼。 語音合成引擎 pronounces：<br /><br />`The number is <say-as interpret-as="telephone" format="1">(888) 555-1212</say-as>`<br /><br />As 「我的數位是區功能變數代碼 8 8 8 5 5 5 1 2 1 2」。 |
+| `time` | hms12, hms24 | 文字會以一段時間讀出。 `format` 屬性會指定使用12小時制（hms12）或24小時制（hms24）來指定時間。 使用冒號來分隔代表小時、分鐘和秒數的數位。 以下是有效的時間範例：12:35、1:14:32、08:15 和02:50:45。 語音合成引擎 pronounces：<br /><br />`The train departs at <say-as interpret-as="time" format="hms12">4:00am</say-as>`<br /><br />「訓練離開在四個 M」。 |
 
 **使用量**
 
@@ -401,18 +473,18 @@ SSML 的語音服務執行是以全球資訊網協會的[語音合成標記語�
 
 **範例**
 
-語音合成引擎會將下列範例當做「您的第一個要求是在10月第十九個 20 10 的一個聊天室，並于 12 35 P M 的初期抵達。」
+語音合成引擎會將下列範例說為「您的第一個要求是在10月第十九個 20 10 的一個聊天室，並于下午 12 35 PM 提早抵達。」
  
 ```XML
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice  name="en-US-Jessa24kRUS">
-    <p>
-    Your <say-as interpret-as="ordinal"> 1st </say-as> request was for <say-as interpret-as="cardinal"> 1 </say-as> room
-    on <say-as interpret-as="date" format="mdy"> 10/19/2010 </say-as>, with early arrival at <say-as interpret-as="time" format="hms12"> 12:35pm </say-as>.
-    </p>
+    <voice name="en-US-Jessa24kRUS">
+        <p>
+        Your <say-as interpret-as="ordinal"> 1st </say-as> request was for <say-as interpret-as="cardinal"> 1 </say-as> room
+        on <say-as interpret-as="date" format="mdy"> 10/19/2010 </say-as>, with early arrival at <say-as interpret-as="time" format="hms12"> 12:35pm </say-as>.
+        </p>
+    </voice>
 </speak>
 ```
-
 
 ## <a name="add-recorded-audio"></a>新增錄製的音訊
 
@@ -435,20 +507,23 @@ SSML 檔中包含的任何音訊都必須符合下列需求：
 
 **屬性**
 
-| 屬性 | 說明 | 必要/選用 |
+| 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
-| src | 指定音訊檔案的位置/URL。 | 如果在您的 SSML 檔中使用音訊元素，則為必要專案。 |
+| `src` | 指定音訊檔案的位置/URL。 | 如果在您的 SSML 檔中使用音訊元素，則為必要專案。 |
 
 **範例**
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <p>
-        <audio src="https://contoso.com/opinionprompt.wav"/>
-        Thanks for offering your opinion. Please begin speaking after the beep.
-        <audio src="https://contoso.com/beep.wav">
-        Could not play the beep, please voice your opinion now. </audio>
-    </p>
+    <voice name="en-US-Jessa24kRUS">
+        <p>
+            <audio src="https://contoso.com/opinionprompt.wav"/>
+            Thanks for offering your opinion. Please begin speaking after the beep.
+            <audio src="https://contoso.com/beep.wav">
+                Could not play the beep, please voice your opinion now.
+            </audio>
+        </p>
+    </voice>
 </speak>
 ```
 
@@ -468,12 +543,12 @@ SSML 檔中包含的任何音訊都必須符合下列需求：
 
 **屬性**
 
-| 屬性 | 說明 | 必要/選用 |
+| 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
-| src | 指定背景音訊檔案的位置/URL。 | 如果您在 SSML 檔中使用背景音訊，則為必要項。 |
-| 磁碟區 | 指定背景音訊檔案的磁片區。 **接受的值**： `0` `100` 內含。 預設值是 `1`。 | 選用 |
-| fadein | 指定背景音訊淡入的持續時間（以毫秒為單位）。 預設值為 `0`，這相當於「不淡入」。 **接受的值**： `0` `10000` 內含。  | 選用 |
-| fadeout | 指定背景音訊的持續時間（以毫秒為單位）。 預設值為 `0`，相當於 [不淡出]。**接受的值**： `0` `10000` 內含。  | 選用 |
+| `src` | 指定背景音訊檔案的位置/URL。 | 如果您在 SSML 檔中使用背景音訊，則為必要項。 |
+| `volume` | 指定背景音訊檔案的磁片區。 **接受的值**： `0` `100` 內含。 預設值是 `1`。 | 選用 |
+| `fadein` | 指定背景音訊「淡入」的持續時間（以毫秒為單位）。 預設值為 `0`，這相當於「不淡入」。 **接受的值**： `0` `10000` 內含。  | 選用 |
+| `fadeout` | 指定背景音訊的持續時間（以毫秒為單位）。 預設值為 `0`，相當於 [不淡出]。**接受的值**： `0` `10000` 內含。  | 選用 |
 
 **範例**
 

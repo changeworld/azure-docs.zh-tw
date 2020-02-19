@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: 5c6173971ac5272c2c2d769551fc9caf3dfa2573
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4fe1ee3ccf2849943959889838ba0f22fb64bb9a
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75385791"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462236"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>常見的雲端服務啟動工作
 本文提供一些常見的啟動工作範例，做為您在雲端服務中執行的參考。 您可以利用啟動工作，在角色啟動之前執行作業。 您可能想要執行的作業包括安裝元件、註冊 COM 元件、設定登錄機碼，或啟動長時間執行的處理序。 
@@ -60,7 +60,7 @@ ms.locfileid: "75385791"
 * 如果 *AppCmd.exe* 動作執行一次以上，可能會產生錯誤。 例如，嘗試將區段新增至 *Web.config* 兩次，就可能會產生錯誤。
 * 若啟動工作傳回非零的結束代碼或 **errorlevel**，就會執行失敗。 例如，*AppCmd.exe* 產生錯誤時。
 
-呼叫 *AppCmd.exe* 之後，最好檢查 **errorlevel**，如果您是使用 *.cmd* 檔案包裝 *AppCmd.exe* 的呼叫，可讓這項檢查作業更容易進行。 如果偵測到已知的 **errorlevel** 回應，可以予以忽略，或是回傳。
+呼叫 **AppCmd.exe** 之後，最好檢查 *errorlevel*，如果您是使用 *.cmd* 檔案包裝 *AppCmd.exe* 的呼叫，可讓這項檢查作業更容易進行。 如果偵測到已知的 **errorlevel** 回應，可以予以忽略，或是回傳。
 
 *AppCmd.exe* 傳回的 errorlevel 會列在 winerror.h 檔案中，[MSDN](/windows/desktop/Debug/system-error-codes--0-499-) 中也會顯示。
 
@@ -90,7 +90,7 @@ REM   ERRORLEVEL 183 occurs when trying to add a section that already exists. Th
 REM   batch file were executed twice. This can occur and must be accounted for in an Azure startup
 REM   task. To handle this situation, set the ERRORLEVEL to zero by using the Verify command. The Verify
 REM   command will safely set the ERRORLEVEL to zero.
-IF %ERRORLEVEL% EQU 183 DO VERIFY > NUL
+IF %ERRORLEVEL% EQU 183 VERIFY > NUL
 
 REM   If the ERRORLEVEL is not zero at this point, some other error occurred.
 IF %ERRORLEVEL% NEQ 0 (
@@ -119,7 +119,7 @@ EXIT %ERRORLEVEL%
 ```
 
 ## <a name="add-firewall-rules"></a>新增防火牆規則
-Azure 實際上擁有兩個防火牆。 第一道防火牆會控制虛擬機器與外界之間的連結。 此防火牆是由 [EndPoints] 檔案中的 [EndPoints] 項目所控制。
+Azure 實際上擁有兩個防火牆。 第一道防火牆會控制虛擬機器與外界之間的連結。 此防火牆是由 [ServiceDefinition.csdef] 檔案中的 [EndPoints] 項目所控制。
 
 第二道防火牆會控制虛擬機器與該虛擬機器中處理序之間的連結。 可以透過 `netsh advfirewall firewall` 命令列工具來控制此防火牆。
 
@@ -508,7 +508,7 @@ EXIT %ERRORLEVEL%
 [Variable]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
-[EndPoints]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
+[ServiceDefinition.csdef]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
 [LocalStorage]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalStorage
 [LocalResources]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue

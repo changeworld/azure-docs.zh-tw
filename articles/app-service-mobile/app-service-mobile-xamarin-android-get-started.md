@@ -6,20 +6,15 @@ ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 06/25/2019
-ms.openlocfilehash: 1bac9ac03971765f1afc4f15ff3de6cc4b7d3883
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: b42205436c88f9075423bfcaf9e5a9fd931ee4f4
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668678"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461363"
 ---
 # <a name="create-a-xamarinandroid-app"></a>建立 Xamarin.Android 應用程式
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
-
-> [!NOTE]
-> Visual Studio App Center 支援使用端對端及整合服務中心來開發行動應用程式。 開發人員可以使用**建置**、**測試**和**散發**服務來設定持續整合及傳遞管線。 部署應用程式之後，開發人員可以使用**分析**和**診斷**服務來監視其應用程式的狀態和使用情況，並使用**推送**服務與使用者互動。 開發人員也可以利用**驗證**來驗證其使用者，並使用**資料**來保存及同步雲端中的應用程式資料。
->
-> 如果您想要在行動應用程式中整合雲端服務，請立即註冊 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) \(英文\)。
 
 ## <a name="overview"></a>概觀
 本教學課程將示範如何將雲端後端服務加入至 Xamarin.Android 應用程式。 如需詳細資訊，請參閱 [什麼是 Mobile Apps？](app-service-mobile-value-prop.md)。
@@ -30,7 +25,7 @@ ms.locfileid: "74668678"
 
 完成本教學課程是 Xamarin Android 應用程式所有其他行動應用程式教學課程的必要條件。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 若要完成本教學課程，您需要下列必要條件：
 
 * 使用中的 Azure 帳戶。 如果您沒有帳戶，請註冊 Azure 試用版並取得最多 10 個免費的 Mobile Apps。 如需詳細資料，請參閱 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
@@ -49,7 +44,7 @@ ms.locfileid: "74668678"
 ## <a name="run-the-xamarinandroid-app"></a>執行 Xamarin Android 應用程式
 1. 開啟 [Xamarin] 專案。
 
-2. 移至  [Azure 入口網站](https://portal.azure.com/)，然後流覽至您所建立的行動應用程式。 在 [`Overview`] 分頁上，尋找您的行動應用程式的公用端點 URL。 範例-應用程式名稱 "test123" 的 sitename 將會 https://test123.azurewebsites.net 。
+2. 移至  [Azure 入口網站](https://portal.azure.com/)，然後流覽至您所建立的行動應用程式。 在 [`Overview`] 分頁上，尋找您的行動應用程式的公用端點 URL。 範例-應用程式名稱 "test123" 的 sitename 將會 https://test123.azurewebsites.net。
 
 3. 開啟此資料夾中的檔案 `ToDoActivity.cs`-xamarin. android/z/ToDoActivity。 應用程式名稱為 `ZUMOAPPNAME`。
 
@@ -57,7 +52,7 @@ ms.locfileid: "74668678"
 
     `const string applicationURL = @"ZUMOAPPURL";`
 
-    滿
+    變成
     
     `const string applicationURL = @"https://test123.azurewebsites.net";`
     
@@ -75,7 +70,7 @@ ms.locfileid: "74668678"
 ## <a name="troubleshooting"></a>疑難排解
 如果在建置解決方案時發生問題，請執行 NuGet 套件管理員，並更新 `Xamarin.Android` 支援套件。 快速入門專案不一定會包含最新版本。
 
-請注意，您專案中參考的所有支援套件都必須有相同的版本。 [Azure Mobile Apps NuGet 套件](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) 有 Android 平台的 `Xamarin.Android.Support.CustomTabs` 相依性，因此若您的專案使用較新的支援套件，您必須直接安裝具有必要版本的此套件以避免衝突。
+請注意，您專案中參考的所有支援套件都必須有相同的版本。 [Azure Mobile Apps NuGet 套件](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) 具有 Android 平台的 `Xamarin.Android.Support.CustomTabs` 相依性，因此若您的專案使用較新的支援套件，您必須直接安裝具有必要版本的此套件以避免發生衝突。
 
 <!-- Images. -->
 [0]: ./media/app-service-mobile-xamarin-android-get-started/mobile-quickstart-completed-android.png

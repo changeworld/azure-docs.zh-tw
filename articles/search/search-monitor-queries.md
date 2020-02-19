@@ -7,25 +7,25 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/12/2020
-ms.openlocfilehash: 346a44f02667976d95125b72371b6e33715ee4b1
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.date: 02/18/2020
+ms.openlocfilehash: a3a313ef9cd74ba901f5a6a2d82a18e3c21145dc
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77211148"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462511"
 ---
 # <a name="monitor-query-requests-in-azure-cognitive-search"></a>監視 Azure 認知搜尋中的查詢要求
 
-本文說明如何使用計量來測量查詢效能和磁片區。 它也會說明當您需要評估搜尋主體的公用程式和有效性時，如何收集查詢所需的輸入詞彙。
+本文說明如何使用計量和診斷記錄來測量查詢效能和磁片區。 它也會說明當您需要評估搜尋主體的公用程式和有效性時，如何收集查詢所需的輸入詞彙。
 
-饋送至計量的歷程記錄資料會保留30天。 針對較長的保留期，或要報告運算元據和查詢字串，請務必啟用指定儲存選項的[診斷設定](search-monitor-logs.md)。
+饋送至計量的歷程記錄資料會保留30天。 針對較長的保留期，或要報告運算元據和查詢字串，請務必啟用[診斷設定](search-monitor-logs.md)，以指定保存記錄事件和計量的儲存選項。
 
-最大化資料度量完整性的條件包括：
+將資料量測的完整性最大化的條件包括：
 
 + 使用可計費服務（在基本或標準層建立的服務）。 「免費」服務是由多個「訂閱者」共用，其中引進了特定數量的變動性作為「負載轉移」。
 
-+ 如果可能的話，請使用單一複本，讓計算限制在一部電腦上。 如果您使用多個複本，則查詢計量會平均分佈于多個節點，其中有些可能會比較快。 如果您要調整查詢效能，單一節點會提供更穩定的環境來進行測試。
++ 如果可能，請使用單一複本和分割區來建立包含和隔離的環境。 如果您使用多個複本，則查詢計量會平均分佈在多個節點上，因此可以降低結果的精確度。 同樣地，多個分割區表示資料會被劃分，而如果編制索引也在進行中，可能會有部分資料分割有不同的資料。 微調查詢效能時，單一節點和資料分割會提供更穩定的環境來進行測試。
 
 > [!Tip]
 > 透過額外的用戶端程式代碼和 Application Insights，您也可以取得點選連結資料，以深入瞭解應用程式使用者的相關吸引。 如需詳細資訊，請參閱[搜尋流量分析](search-traffic-analytics.md)。
@@ -116,6 +116,45 @@ ms.locfileid: "77211148"
 
 1. 放大折線圖上的相關區域。 將滑鼠指標放在區域的開頭，然後按住滑鼠左鍵，拖曳至區域的另一端，再放開按鈕。 圖表將會放大該時間範圍。
 
+## <a name="identify-strings-used-in-queries"></a>識別查詢中使用的字串
+
+當您啟用診斷記錄時，系統會在**AzureDiagnostics**資料表中捕捉查詢要求。 必要條件是您必須已啟用[診斷記錄](search-monitor-logs.md)，並指定 log analytics 工作區或其他儲存體選項。
+
+1. 在 [監視] 區段下，選取 [**記錄**] 以在 Log Analytics 中開啟空白查詢視窗。
+
+1. 執行下列運算式來搜尋查詢。搜尋作業，傳回包含作業名稱、查詢字串、查詢的索引，以及找到的檔數目的表格式結果集。 最後兩個語句會透過範例索引排除包含空白或未指定搜尋的查詢字串，以減少結果中的雜訊。
+
+   ```
+   AzureDiagnostics
+   | project OperationName, Query_s, IndexName_s, Documents_d
+   | where OperationName == "Query.Search"
+   | where Query_s != "?api-version=2019-05-06&search=*"
+   | where IndexName_s != "realestate-us-sample-index"
+   ```
+
+1. （選擇性）在*Query_s*上設定資料行篩選，以便在特定的語法或字串上進行搜尋。 例如，您可以篩選*等於*`?api-version=2019-05-06&search=*&%24filter=HotelName`）。
+
+   ![記錄的查詢字串](./media/search-monitor-usage/log-query-strings.png "記錄的查詢字串")
+
+雖然這項技術適用于臨機操作的調查，但建立報表可讓您將查詢字串合併和呈現，以更採用遭利用的方式進行分析。
+
+## <a name="identify-long-running-queries"></a>識別長時間執行的查詢
+
+新增 [持續時間] 資料行，以取得所有查詢的數目，而不只是當做計量挑選的查詢。 排序此資料會顯示哪些查詢需要最長的時間才能完成。
+
+1. 在 [監視] 區段下，選取 [**記錄**] 以查詢記錄資訊。
+
+1. 執行下列查詢來傳回查詢，並依持續時間（以毫秒為單位）排序。 執行時間最長的查詢位於最上方。
+
+   ```
+   AzureDiagnostics
+   | project OperationName, resultSignature_d, DurationMs, Query_s, Documents_d, IndexName_s
+   | where OperationName == "Query.Search"
+   | sort by DurationMs
+   ```
+
+   ![依持續時間排序查詢](./media/search-monitor-usage/azurediagnostics-table-sortby-duration.png "依持續時間排序查詢")
+
 ## <a name="create-a-metric-alert"></a>建立計量警示
 
 計量警示會建立一個臨界值，您會在此收到通知或觸發您預先定義的矯正措施。 
@@ -144,31 +183,9 @@ ms.locfileid: "77211148"
 
 如果您指定了電子郵件通知，您將會收到來自「Microsoft Azure」的電子郵件，主旨為「Azure：已啟用嚴重性： 3 `<your rule name>`」。
 
-## <a name="query-strings-used-in-queries"></a>查詢中使用的查詢字串
+<!-- ## Report query data
 
-當您啟用診斷記錄時，系統會在**AzureDiagnostics**資料表中捕捉查詢要求。 必要條件是您必須已啟用[診斷記錄](search-monitor-logs.md)，並指定 log analytics 工作區或其他儲存體選項。
-
-1. 在 [監視] 區段下，選取 [**記錄**] 以在 Log Analytics 中開啟空白查詢視窗。
-
-1. 執行下列運算式來搜尋查詢。搜尋作業，並傳回包含作業名稱、查詢字串、查詢的索引，以及找到的檔數目的表格式結果集。 最後兩個語句會透過範例索引排除包含空白或未指定搜尋的查詢字串，以減少結果中的雜訊。
-
-   ```
-    AzureDiagnostics 
-     | project OperationName, Query_s, IndexName_s, Documents_d 
-     | where OperationName == "Query.Search"
-     | where Query_s != "?api-version=2019-05-06&search=*"
-     | where IndexName_s != "realestate-us-sample-index"
-   ```
-
-1. （選擇性）在*Query_s*上設定資料行篩選，以便在特定的語法或字串上進行搜尋。 例如，您可以篩選*等於*`?api-version=2019-05-06&search=*&%24filter=HotelName`）。
-
-   ![記錄的查詢字串](./media/search-monitor-usage/log-query-strings.png "記錄的查詢字串")
-
-雖然這項技術適用于臨機操作的調查，但建立報表可讓您將查詢字串合併和呈現，以更採用遭利用的方式進行分析。
-
-## <a name="report-query-data"></a>報表查詢資料
-
-Power BI 是一種分析報告工具，可用於儲存在 Blob 儲存體或 Log Analytics 工作區中的記錄資料。
+Power BI is an analytical reporting tool useful for visualizing data, including log information. If you are collecting data in Blob storage, a Power BI template makes it easy to spot anomalies or trends. Use this link to download the template. -->
 
 ## <a name="next-steps"></a>後續步驟
 

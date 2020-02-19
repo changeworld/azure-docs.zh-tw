@@ -7,10 +7,14 @@
 - name: 教學課程
   expanded: true
   items:
-    - name: 保護您的雲端網路 - 入口網站
+    - name: 保護您的虛擬 WAN - 入口網站
       href: secure-cloud-network.md
+    - name: 保護您的中樞虛擬網路 - 入口網站
+      href: secure-hybrid-network.md
 - name: 概念
   items:
+    - name: 原則概觀
+      href: policy-overview.md
     - name: 什麼是安全虛擬中樞？
       href: secured-virtual-hub.md
     - name: 一般部署程序
@@ -19,11 +23,13 @@
       href: trusted-security-partners.md
     - name: 規則處理邏輯
       href: rule-processing.md
+    - name: 架構選項
+      href: vhubs-and-vnets.md
 - name: 操作指南
   items:
     - name: 部署信任的安全性合作夥伴
       href: deploy-trusted-security-partner.md
-    - name: 遷移至防火牆原則
+    - name: 遷移至防火牆原則 - PowerShell
       href: migrate-to-policy.md
 - name: 參考
   items:
@@ -51,7 +57,7 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 社群範本
       href: 'https://azure.microsoft.com/documentation/templates'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/azure-firewall/'
     - name: 區域可用性
       href: 'https://azure.microsoft.com/regions/services/'

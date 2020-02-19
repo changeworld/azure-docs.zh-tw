@@ -6,20 +6,15 @@ ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 0f2c78c3d4b18e7c662c4f7345938ddab377229b
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 05e936accbcd5c6fa2760c4f8682d907557f23b5
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668271"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461312"
 ---
-# <a name="add-authentication-to-your-xamarinios-app"></a>在您的 Xamarin.iOS 應用程式中新增驗證
+# <a name="add-authentication-to-your-xamarinios-app"></a>將驗證新增至 Xamarin.iOS 應用程式
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
-
-> [!NOTE]
-> Visual Studio App Center 支援使用端對端及整合服務中心來開發行動應用程式。 開發人員可以使用**建置**、**測試**和**散發**服務來設定持續整合及傳遞管線。 部署應用程式之後，開發人員可以使用**分析**和**診斷**服務來監視其應用程式的狀態和使用情況，並使用**推送**服務與使用者互動。 開發人員也可以利用**驗證**來驗證其使用者，並使用**資料**來保存及同步雲端中的應用程式資料。
->
-> 如果您想要在行動應用程式中整合雲端服務，請立即註冊 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) \(英文\)。
 
 ## <a name="overview"></a>概觀
 
@@ -42,7 +37,7 @@ ms.locfileid: "74668271"
 
 4. 按一下 [確定]。
 
-5. 按一下 [儲存]。
+5. 按一下 [檔案]。
 
 ## <a name="restrict-permissions-to-authenticated-users"></a>限制只有通過驗證的使用者具有權限
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]

@@ -6,21 +6,16 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
-ms.openlocfilehash: fe5ced96a74bfbfbacf3ce1874d64711f6db7449
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 566b6db829c9694a7e5e83cc25695e71ada0bc8d
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668752"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461448"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>如何使用 Mobile Apps Node.js SDK
 
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
-
-> [!NOTE]
-> Visual Studio App Center 支援使用端對端及整合服務中心來開發行動應用程式。 開發人員可以使用**建置**、**測試**和**散發**服務來設定持續整合及傳遞管線。 部署應用程式之後，開發人員可以使用**分析**和**診斷**服務來監視其應用程式的狀態和使用情況，並使用**推送**服務與使用者互動。 開發人員也可以利用**驗證**來驗證其使用者，並使用**資料**來保存及同步雲端中的應用程式資料。
->
->  如果您想要在行動應用程式中整合雲端服務，請立即註冊 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) \(英文\)。
 
 本文提供詳細的資訊及範例，說明如何在 Azure App Service 的 Mobile Apps 功能中使用 Node.js 後端。
 
@@ -103,7 +98,7 @@ Visual Studio 2015 需要延伸模組才能在整合式開發環境 (IDE) 內開
 1. 開啟 [新增專案] 對話方塊 (從 [檔案] > [新增] > [專案...])。
 1. 展開**範本** > **JavaScript** > **Node.js**。
 1. 選取 [基本 Azure Node.js Express 4 應用程式]。
-1. 填入專案名稱。 選取 [確定]。
+1. 填入專案名稱。 選取 **\[確定\]** 。
 
    ![Visual Studio 2015 新專案][1]
 1. 以滑鼠右鍵按一下 **npm** 節點，然後選取 [安裝新的 npm 套件]。
@@ -283,7 +278,7 @@ Mobile Apps Node.js SDK 會使用 [mssql Node.js 套件] 來建立及使用 SQL 
 
    a. 在樹狀結構功能表中，展開 [SQL Server 網路組態] 節點。
 
-   b.這是另一個 C# 主控台應用程式。 選取 [SQLEXPRESS 的通訊協定]。
+   b。 選取 [SQLEXPRESS 的通訊協定]。
 
    c. 以滑鼠右鍵按一下 [TCP/IP]，然後選取 [啟用]。 在快顯對話方塊中選取 [確定]。
 
@@ -295,7 +290,7 @@ Mobile Apps Node.js SDK 會使用 [mssql Node.js 套件] 來建立及使用 SQL 
 
       ![進行 SQL Server Express 的 TCP/IP 設定][3]
 
-   g. 選取 [確定]。 在快顯對話方塊中選取 [確定]。
+   g. 選取 **\[確定\]** 。 在快顯對話方塊中選取 [確定]。
 
    h. 在樹狀結構功能表中，選取 [SQL Server 服務]。
 
@@ -308,19 +303,19 @@ Mobile Apps Node.js SDK 會使用 [mssql Node.js 套件] 來建立及使用 SQL 
    1. 以滑鼠右鍵按一下您在物件總管中的執行個體，然後選取 [屬性]。
    1. 選取 [安全性] 頁面 。
    1. 確定已選取 [SQL Server 及 Windows 驗證模式]。
-   1. 選取 [確定]。
+   1. 選取 **\[確定\]** 。
 
       ![設定 SQL Server Express 驗證][4]
    1. 在物件總管中展開 [安全性] > [登入]。
    1. 以滑鼠右鍵按一下 [登入]，然後選取 [新增登入]。
    1. 輸入登入名稱。 選取 [SQL Server 驗證]。 輸入密碼，然後在 [確認密碼] 中輸入相同的密碼。 密碼必須符合 Windows 複雜性需求。
-   1. 選取 [確定]。
+   1. 選取 **\[確定\]** 。
 
       ![將新的使用者新增至 SQL Server Express][5]
    1. 以滑鼠右鍵按一下新的登入，然後選取 [屬性]。
    1. 選取 [伺服器角色] 頁面。
    1. 選取 **dbcreator** 伺服器角色的核取方塊。
-   1. 選取 [確定]。
+   1. 選取 **\[確定\]** 。
    1. 關閉 SQL Server 2015 Management Studio。
 
 請確實記下您選取的使用者名稱和密碼。 您可能需要根據您特定的資料庫需求，指派其他伺服器角色或權限。
@@ -369,7 +364,7 @@ azureMobile.js 檔案中的大部分設定在 [Azure 入口網站]中都有對�
 
 | 應用程式設定 | azureMobile.js 設定 | 描述 | 有效值 |
 |:--- |:--- |:--- |:--- |
-| **MS_MobileAppName** |名稱 |應用程式的名稱 |string |
+| **MS_MobileAppName** |name |應用程式的名稱 |string |
 | **MS_MobileLoggingLevel** |logging.level |要記錄的訊息的最小記錄層級 |error、warning、info、verbose、debug、silly |
 | **MS_DebugMode** |debug |啟用或停用偵錯模式 |true、false |
 | **MS_TableSchema** |data.schema |SQL 資料表的預設結構描述名稱 |字串 (預設值：dbo) |
@@ -397,13 +392,13 @@ azureMobile.js 檔案中的大部分設定在 [Azure 入口網站]中都有對�
 無論是何種 Azure App Service 應用程式類型，以 SQL Database 作為資料存放區的程序都是相同的。 如果您尚未執行，請依照下列步驟建立 Mobile Apps 後端：
 
 1. 登入 [Azure 入口網站]。
-1. 在視窗左上方，依序選取 [+新增] 按鈕 > [Web + 行動] > [行動應用程式]，然後為您的 Mobile Apps 後端命名。
+1. 在視窗左上方，選取  **+ 新增** 按鈕 > **Web + Mobile** > 行動**應用程式**，然後提供 Mobile Apps 後端的名稱。
 1. 在 [資源群組] 方塊中，輸入與您應用程式相同的名稱。
 1. 系統將會選取預設 App Service 方案。 如果您要變更 App Service 方案：
 
    a. 選取 [App Service 方案] > [+新建]。
 
-   b.這是另一個 C# 主控台應用程式。 為新的應用程式服務方案命名，並選取適當位置。
+   b。 為新的應用程式服務方案命名，並選取適當位置。
 
    c. 為服務選取適當的定價層。 選取 [檢視全部] 以檢視其他價格選項，例如 [免費] 和 [共用]。
 
@@ -421,11 +416,11 @@ azureMobile.js 檔案中的大部分設定在 [Azure 入口網站]中都有對�
 
 1. 在新的 Mobile Apps 後端中，依序選取 [設定] > [行動應用程式] > [資料] > [+新增]。
 1. 在 [新增資料連線] 窗格中，依序選取 [SQL Database - 設定必要設定] > [建立新的資料庫]。 在 [名稱] 方塊中輸入新資料庫的名稱。
-1. 選取 [伺服器]。 在 [新增伺服器] 窗格中，於 [伺服器名稱] 方塊中輸入唯一的伺服器名稱，然後提供合適的伺服器管理登入和密碼。 確定已選取 [允許 Azure 服務存取伺服器]。 選取 [確定]。
+1. 選取 [伺服器]。 在 [新增伺服器] 窗格中，於 [伺服器名稱] 方塊中輸入唯一的伺服器名稱，然後提供合適的伺服器管理登入和密碼。 確定已選取 [允許 Azure 服務存取伺服器]。 選取 **\[確定\]** 。
 
    ![建立 Azure SQL 資料庫][6]
 1. 在 [新增資料庫] 窗格中，選取 [確定]。
-1. 返回 [新增資料連線] 窗格中，選取 [連接字串]，然後輸入您建立資料庫時提供的登入與密碼。 如果您使用現有的資料庫，請提供該資料庫的登入認證。 選取 [確定]。
+1. 返回 [新增資料連線] 窗格中，選取 [連接字串]，然後輸入您建立資料庫時提供的登入與密碼。 如果您使用現有的資料庫，請提供該資料庫的登入認證。 選取 **\[確定\]** 。
 1. 再次返回 [新增資料連接] 窗格中，選取 [確定] 以建立資料庫。
 
 <!--- END OF ALTERNATE INCLUDE -->

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2020
 ms.author: shvija
-ms.openlocfilehash: 324425662622201bb50261d396d3eef1f531ba37
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 9b69feef7c6587f7356648e6a6828277ba500aea
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187304"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460070"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>透過 Azure 事件中樞在 Azure Blob 儲存體或 Azure Data Lake Storage 中擷取事件
 Azure 事件中樞可讓您在[Azure Blob 儲存體](https://azure.microsoft.com/services/storage/blobs/)中事件中樞，或您選擇的[Azure Data Lake Storage Gen 1 或 gen 2](https://azure.microsoft.com/services/data-lake-store/)帳戶中，自動捕捉串流資料，並增加了指定時間或大小間隔的彈性。 設定擷取的作業很快，因此執行時不需要系統管理成本，而且它可以針對事件中樞的[輸送量單位](event-hubs-scalability.md#throughput-units)自動進行調整。 事件中樞擷取是將串流資料載入至 Azure 的最簡單方式，並可讓您專注於處理資料而非擷取資料。
@@ -157,7 +157,7 @@ Apache Avro 已完成適用于[JAVA][Java]和[Python][Python]的消費者入門�
 [support request]: https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade
 [Azure Storage Explorer]: https://azurestorageexplorer.codeplex.com/
 [3]: ./media/event-hubs-capture-overview/event-hubs-capture3.png
-[Avro Tools]: https://www.apache.org/dist/avro/stable/java/avro-tools-1.9.1.jar
+[Avro Tools]: https://www.apache.org/dist/avro/stable/java/avro-tools-1.9.2.jar
 [Java]: https://avro.apache.org/docs/current/gettingstartedjava.html
 [Python]: https://avro.apache.org/docs/current/gettingstartedpython.html
 [Event Hubs overview]: event-hubs-what-is-event-hubs.md

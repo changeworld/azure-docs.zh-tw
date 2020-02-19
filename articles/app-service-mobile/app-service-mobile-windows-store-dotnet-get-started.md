@@ -6,21 +6,16 @@ ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 06/25/2019
-ms.openlocfilehash: a0f78239406567513c1eb94b48bf1090165d9185
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 9188db19adab9bd46d65fc97f1c62b39141cee90
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668690"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461380"
 ---
 # <a name="create-a-windows-app-with-an-azure-backend"></a>建立具有 Azure 後端的 Windows 應用程式
 
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
-
-> [!NOTE]
-> Visual Studio App Center 支援使用端對端及整合服務中心來開發行動應用程式。 開發人員可以使用**建置**、**測試**和**散發**服務來設定持續整合及傳遞管線。 部署應用程式之後，開發人員可以使用**分析**和**診斷**服務來監視其應用程式的狀態和使用情況，並使用**推送**服務與使用者互動。 開發人員也可以利用**驗證**來驗證其使用者，並使用**資料**來保存及同步雲端中的應用程式資料。
->
-> 如果您想要在行動應用程式中整合雲端服務，請立即註冊 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) \(英文\)。
 
 ## <a name="overview"></a>概觀
 
@@ -30,7 +25,7 @@ ms.locfileid: "74668690"
 
 完成本教學課程是 UWP 應用程式的所有其他行動應用程式教學課程的必要條件。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成此教學課程，您需要下列項目：
 
@@ -52,7 +47,7 @@ ms.locfileid: "74668690"
 
 1. 開啟 UWP 專案。
 
-2. 移至  [Azure 入口網站](https://portal.azure.com/)，然後流覽至您所建立的行動應用程式。 在 [`Overview`] 分頁上，尋找您的行動應用程式的公用端點 URL。 範例-應用程式名稱 "test123" 的 sitename 將會 https://test123.azurewebsites.net 。
+2. 移至  [Azure 入口網站](https://portal.azure.com/)，然後流覽至您所建立的行動應用程式。 在 [`Overview`] 分頁上，尋找您的行動應用程式的公用端點 URL。 範例-應用程式名稱 "test123" 的 sitename 將會 https://test123.azurewebsites.net。
 
 3. 開啟此資料夾中的檔案 `App.xaml.cs`-windows-uwp-cs/z/。 應用程式名稱為 `ZUMOAPPNAME`。
 
@@ -60,7 +55,7 @@ ms.locfileid: "74668690"
 
     `public static MobileServiceClient MobileService = new MobileServiceClient("ZUMOAPPURL");`
 
-    滿
+    變成
     
     `public static MobileServiceClient MobileService = new MobileServiceClient("https://test123.azurewebsites.net");`
 

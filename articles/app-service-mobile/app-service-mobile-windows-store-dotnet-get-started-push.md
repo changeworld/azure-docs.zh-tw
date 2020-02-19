@@ -6,21 +6,16 @@ ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: e2178322c7006a6ddd2ca6daffca066f04fff68c
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 4438084a9471bf816b371b7e663856205f87f8ba
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668718"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461414"
 ---
 # <a name="add-push-notifications-to-your-windows-app"></a>將推播通知加入至 Windows 應用程式
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
-
-> [!NOTE]
-> Visual Studio App Center 支援使用端對端及整合服務中心來開發行動應用程式。 開發人員可以使用**建置**、**測試**和**散發**服務來設定持續整合及傳遞管線。 部署應用程式之後，開發人員可以使用**分析**和**診斷**服務來監視其應用程式的狀態和使用情況，並使用**推送**服務與使用者互動。 開發人員也可以利用**驗證**來驗證其使用者，並使用**資料**來保存及同步雲端中的應用程式資料。
->
-> 如果您想要在行動應用程式中整合雲端服務，請立即註冊 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) \(英文\)。
 
 ## <a name="overview"></a>概觀
 
@@ -36,7 +31,7 @@ ms.locfileid: "74668718"
 
 您需要將應用程式提交至 Microsoft Store，然後設定您的伺服器專案，以與 [Windows 通知服務 (WNS)](https://docs.microsoft.com/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) 整合來傳送推播。
 
-1. 在 Visual Studio 方案總管中，以滑鼠右鍵按一下 UWP 應用程式專案，然後按一下 [市集]  >  [將應用程式與市集建立關聯...]。
+1. 在 Visual Studio 方案總管中，以滑鼠右鍵按一下 UWP 應用程式專案，然後按一下 [市集] >  [將應用程式與市集建立關聯...]。
 
     ![將應用程式與 Microsoft Store 建立關聯](./media/app-service-mobile-windows-store-dotnet-get-started-push/notification-hub-associate-uwp-app.png)
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2019
 ms.author: mlottner
-ms.openlocfilehash: c189ece9763e484b969b91f9c1ab9120e5665261
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: c385be0c21e7a61f66eb274ec293f4aabd4208ba
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71305947"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77458880"
 ---
 # <a name="customize-your-azure-security-center-for-iot-solution"></a>自訂 IoT 解決方案的 Azure 資訊安全中心 
 
@@ -32,7 +32,7 @@ ms.locfileid: "71305947"
 
 ## <a name="change-settings"></a>變更設定
 
-「管理您的 IoT Azure 資訊安全中心設定：
+管理 IoT 的 Azure 資訊安全中心設定：
 
 在您的 IoT 中樞上，前往左上角的 [安全性總覽] 分頁，請參閱「設定」以設定 IoT 設定的 Azure 資訊安全中心，請執行下列動作：
 

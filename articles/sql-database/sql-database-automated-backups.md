@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 12/13/2019
-ms.openlocfilehash: f460bc3e4809b8a1cbabe1161c888255a7a484db
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 16ee8c1e271f0aa3e6565322f9a4a422dd90b8b8
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157494"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461762"
 ---
 # <a name="automated-backups"></a>自動備份
 
@@ -81,10 +81,14 @@ PITR 備份會受到異地多餘儲存體的保護。 如需詳細資訊，請�
 
 Azure SQL Database 會將您的保留備份儲存體總計計算為累計值。 此值每小時會回報給 Azure 計費管線，負責匯總此每小時使用量，以計算每個月結束時的耗用量。 卸載資料庫之後，耗用量會隨著備份存留期而降低。 一旦備份會比保留期間還舊，就會停止計費。 
 
+   > [!IMPORTANT]
+   > 資料庫的備份會保留給指定的保留期間，即使已卸載資料庫也一樣。 經常卸載並重新建立資料庫時，可能會節省儲存空間和計算成本，因為我們會在每次卸載的資料庫中保留備份的備份儲存成本（最少7天）。 
 
-### <a name="monitoring-consumption"></a>監視耗用量
 
-每種類型的備份（完整、差異和記錄）都會在 [資料庫監視] 分頁上報告為個別的計量。 下圖顯示如何監視備份儲存體耗用量。  
+
+### <a name="monitor-consumption"></a>監視耗用量
+
+每種類型的備份（完整、差異和記錄）都會在 [資料庫監視] 分頁上報告為個別的計量。 下圖顯示如何監視單一資料庫的備份儲存體耗用量。 此功能目前無法供受控實例使用。
 
 ![在 Azure 入口網站的 [資料庫監視] 分頁上監視資料庫備份耗用量](media/sql-database-automated-backup/backup-metrics.png)
 
@@ -105,6 +109,7 @@ Azure SQL Database 會將您的保留備份儲存體總計計算為累計值。 
 
 ## <a name="storage-costs"></a>儲存成本
 
+如果您使用的是 DTU 模型或 vCore 模型，儲存體的價格會有所不同。 
 
 ### <a name="dtu-model"></a>DTU 模型
 
@@ -120,11 +125,14 @@ Azure SQL DB 會以累計值計算您的保留備份儲存體總計。 此值每
 
 現在是更複雜的範例。 假設資料庫的保留期已增加至該月的14天，而此（假設情況下）會導致備份儲存體總計加倍到 1488 GB。 SQL DB 會報告 1 GB 的使用量（小時）1-372，然後將使用量報告為 2 GB （小時）373-744。 這會匯總為每月 1116 GB 的最終帳單。 
 
-您可以使用 Azure 訂用帳戶成本分析來判斷您目前的備份儲存體費用。
+### <a name="monitor-costs"></a>監視成本
+
+若要瞭解備份儲存體成本，請移至 Azure 入口網站的 [**成本管理 + 帳單**]，選取 [**成本管理**]，然後選取 [**成本分析**]。 選取所需的訂用帳戶作為**範圍**，然後篩選您感興趣的時間週期和服務。 
+
+新增 [**服務名稱**] 的篩選，然後從下拉式選選擇 [ **sql database** ]。 使用 [**計量子類別**目錄] 篩選器可選擇服務的計費計數器。 針對單一資料庫或彈性集區，選擇 [**單一/彈性集區 pitr 備份儲存體**]。 針對受控實例，請選擇**mi pitr backup storage**。 **儲存體**和**計算**子類別也可能會對您感青睞，但不會與備份儲存體成本相關聯。 
 
 ![備份儲存體成本分析](./media/sql-database-automated-backup/check-backup-storage-cost-sql-mi.png)
 
-例如，若要瞭解受控實例的備份儲存體成本，請前往 Azure 入口網站中的訂用帳戶，然後開啟 [成本分析] 分頁。 選取計量子類別**mi [pitr 備份儲存體**]，以查看您目前的備份成本和費用預測。 您也可以包含其他計量子類別，例如**受控實例一般目的儲存體**或**受控實例一般目的-計算第5代**，以比較備份儲存體成本與其他成本類別。
 
 ## <a name="backup-retention"></a>備份保留期
 
@@ -169,13 +177,13 @@ Azure SQL Database 工程小組會持續自動測試在邏輯伺服器和彈性�
 
 若要使用 Azure 入口網站來變更 PITR 備份保留期限，請流覽至您想要在入口網站中變更其保留期限的伺服器物件，然後根據您要修改的伺服器物件，選取適當的選項。
 
-#### <a name="single-database--elastic-poolstabsingle-database"></a>[單一資料庫與彈性集區](#tab/single-database)
+#### <a name="single-database--elastic-pools"></a>[單一資料庫與彈性集區](#tab/single-database)
 
 單一 Azure SQL 資料庫的 PITR 備份保留變更會在伺服器層級執行。 在伺服器層級進行的變更會套用至該伺服器上的資料庫。 若要從 Azure 入口網站變更 Azure SQL Database server 的 PITR，請流覽至 [伺服器總覽] 分頁，按一下導覽功能表上的 [管理備份]，然後按一下巡覽列上的 [設定保留]。
 
 ![變更 PITR Azure 入口網站](./media/sql-database-automated-backup/configure-backup-retention-sqldb.png)
 
-#### <a name="managed-instancetabmanaged-instance"></a>[受控執行個體](#tab/managed-instance)
+#### <a name="managed-instance"></a>[受控執行個體](#tab/managed-instance)
 
 SQL Database 受控實例的 PITR 備份保留變更會在個別資料庫層級執行。 若要從 Azure 入口網站變更實例資料庫的 PITR 備份保留，請流覽至 [個別資料庫總覽] 分頁，然後按一下巡覽列上的 [設定備份保留]。
 

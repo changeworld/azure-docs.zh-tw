@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 3/14/2019
-ms.openlocfilehash: ed67a21107f6a7d90341ae40feeb817671785778
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: daca108cfc8bb2e5b2a068170a4a0244c72c9592
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823806"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462593"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>在 Azure SQL Database 中調整彈性集區
 
@@ -57,12 +57,12 @@ ms.locfileid: "73823806"
 > - 如果將資料庫移入/移出彈性集區，只有資料庫所使用的空間會影響延遲，而非彈性集區所使用的空間。
 >
 > [!TIP]
-> 若要監視進行中的作業，請參閱：[使用 SQL REST API 管理作業](https://docs.microsoft.com/rest/api/sql/operations/list)、[使用 CLI 管理](/cli/azure/sql/db/op)作業、[使用 t-sql 監視作業](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database)和這兩個 PowerShell 命令： [get-azsqldatabaseactivity](/powershell/module/az.sql/get-azsqldatabaseactivity)和[Get-azsqldatabaseactivity](/powershell/module/az.sql/stop-azsqldatabaseactivity)。
+> 若要監視進行中的作業，請參閱：[使用 SQL REST API 管理作業](https://docs.microsoft.com/rest/api/sql/operations/list)、[使用 CLI 管理](/cli/azure/sql/db/op)作業、[使用 t-sql 監視作業](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database)和這兩個 PowerShell 命令： [get-azsqldatabaseactivity](/powershell/module/az.sql/get-azsqldatabaseactivity)和[get-azsqldatabaseactivity](/powershell/module/az.sql/stop-azsqldatabaseactivity)。
 
 ### <a name="additional-considerations-when-changing-service-tier-or-rescaling-compute-size"></a>變更服務層級或重新調整計算大小時的其他考慮
 
 - 縮減彈性集區的虛擬核心或 Edtu 時，集區使用的空間必須小於目標服務層級和集區 Edtu 允許的大小上限。
-- 重新調整彈性集區的虛擬核心或 Edtu 時，如果（1）目標集區支援集區的儲存體大小上限，而且（2）儲存體大小上限超過目標集區內含的儲存體數量，則會產生額外的儲存體成本。 例如，如果大小上限為 100 GB 的 100 eDTU 標準集區縮減為 50 eDTU 標準集區，則會產生額外的儲存體成本，因為目標集區可支援 100 GB 的大小上限，而且其內含儲存體數量只有 50 GB。 因此，額外的儲存體數量為 100 GB – 50 GB = 50 GB。 如需額外儲存體的價格詳細資訊，請參閱 [SQL Database 定價](https://azure.microsoft.com/pricing/details/sql-database/)。 如果實際的使用空間量小於內含的儲存體數量，則可將資料庫大小上限降低至內含量，以避免造成額外成本。
+- 重新調整彈性集區的 eDTU 時，如果發生下列情況，就會產生額外的儲存體成本：(1) 目標集區支援集區的儲存體大小上限，而且 (2) 儲存體大小上限超過目標集區內含的儲存體數量。 例如，如果大小上限為 100 GB 的 100 eDTU 標準集區縮減為 50 eDTU 標準集區，則會產生額外的儲存體成本，因為目標集區可支援 100 GB 的大小上限，而且其內含儲存體數量只有 50 GB。 因此，額外的儲存體數量為 100 GB – 50 GB = 50 GB。 如需額外儲存體的價格詳細資訊，請參閱 [SQL Database 定價](https://azure.microsoft.com/pricing/details/sql-database/)。 如果實際的使用空間量小於內含的儲存體數量，則可將資料庫大小上限降低至內含量，以避免造成額外成本。
 
 ### <a name="billing-during-rescaling"></a>重新調整期間的計費
 

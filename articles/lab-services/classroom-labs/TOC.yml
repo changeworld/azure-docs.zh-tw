@@ -52,16 +52,20 @@
           href: how-to-manage-lab-accounts.md
         - name: 設定實驗室帳戶
           href: how-to-configure-lab-accounts.md
+        - name: 新增實驗室建立者
+          href: add-lab-creator.md
         - name: 允許實驗室建立者挑選實驗室位置
           href: allow-lab-creator-pick-lab-location.md
-        - name: 將實驗室連線至對等虛擬網路
+        - name: 連線至對等虛擬網路
           href: how-to-connect-peer-virtual-network.md
         - name: 附加或中斷連結共用映像資源庫
           href: how-to-attach-detach-shared-image-gallery.md
-        - name: 將使用者新增為教室實驗室的擁有者
+        - name: 將其他擁有者新增至教室實驗室
           href: how-to-add-user-lab-owner.md
-        - name: Azure 實驗室服務的防火牆設定
+        - name: 設定防火牆設定
           href: how-to-configure-firewall-settings.md
+        - name: 指定實驗室的 Marketplace 映像
+          href: specify-marketplace-images.md
     - name: 建立和設定教室實驗室 (講師)
       items:
         - name: 建立和管理教室實驗室

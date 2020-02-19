@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: sngun
-ms.openlocfilehash: 4ae2cc33275702a0d549f4e994a597614191b3e3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 70545020899b69508a4cedb0fd7cf5495c847104
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444867"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462440"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>使用 Azure Cosmos DB 和 Azure Functions 的無伺服器資料庫計算
 
@@ -148,10 +148,4 @@ Azure Functions 的優點：
 
 * [在 Azure 入口網站中建立 Cosmos DB 的 Azure Functions 觸發程式](https://aka.ms/cosmosdbtriggerportalfunc)
 * [使用 Azure Cosmos DB 輸入繫結建立 Azure Functions HTTP 觸發程序 (Create an Azure Functions HTTP trigger with an Azure Cosmos DB input binding)](https://aka.ms/cosmosdbinputbind)
-* [Azure DB Cosmos 繫結和觸發程序](../azure-functions/functions-bindings-cosmosdb.md)
-
-
- 
-
-
-
+* [Azure DB Cosmos 繫結和觸發程序](../azure-functions/functions-bindings-cosmosdb-v2.md)

@@ -1,21 +1,20 @@
 ---
-title: 透過 Azure 虛擬 WAN 中的 ExpressRoute 私人對等互連建立站對站 VPN 連線 |Microsoft Docs
+title: 設定 ExpressRoute 加密：適用于 Azure 虛擬 WAN 的 IPsec over ExpressRoute
 description: 在本教學課程中，您將瞭解如何使用 Azure 虛擬 WAN，透過 ExpressRoute 私用對等互連來建立站對站 VPN 連線。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: article
-ms.date: 10/11/2019
+ms.date: 02/18/2020
 ms.author: cherylmc
-Customer intent: I want to connect my on-premises networks to my virtual networks by using an S2S VPN connection over my ExpressRoute private peering through Azure Virtual WAN.
-ms.openlocfilehash: ae971bad47d84b6928ebea64e416d21af25528ad
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: c74f703927999bf35dd2d8292b8fa0a6d3c55065
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896605"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459781"
 ---
-# <a name="create-a-site-to-site-vpn-connection-over-expressroute-private-peering-by-using-azure-virtual-wan"></a>使用 Azure 虛擬 WAN，透過 ExpressRoute 私用對等互連建立站對站 VPN 連線
+# <a name="expressroute-encryption-ipsec-over-expressroute-for-virtual-wan"></a>ExpressRoute 加密：透過 ExpressRoute 進行虛擬 WAN 的 IPsec
 
 本文說明如何使用 Azure 虛擬 WAN，透過 Azure ExpressRoute 線路的私人對等互連，建立從內部部署網路到 Azure 的 IPsec/IKE VPN 連線。 這項技術可透過 ExpressRoute 提供內部部署網路與 Azure 虛擬網路之間的加密傳輸，而不需要經過公用網際網路或使用公用 IP 位址。
 
@@ -148,7 +147,7 @@ ms.locfileid: "74896605"
            ```
     * VPN 閘道連線的設定詳細資料，例如 BGP 和預先共用金鑰。 系統會自動為您產生預先共用金鑰。 您隨時可以在 [**總覽**] 頁面上編輯自訂預先共用金鑰的連接。
   
-### <a name="example-device-configuration-file"></a>範例裝置組態檔
+### <a name="example-device-configuration-file"></a>範例裝置設定檔
 
 ```
 [{

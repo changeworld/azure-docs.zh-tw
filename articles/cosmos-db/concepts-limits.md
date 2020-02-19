@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: d250cc3c74f27079d633fa24c49eb11b94135ead
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 940ac7b0a2720283b669fc7ea5a9dbc163ddbe64
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200039"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460206"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服務配額
 
@@ -77,7 +77,8 @@ Cosmos DB 會自動定期備份您的資料。 如需備份保留間隔和 windo
 | 資源 | 預設限制 |
 | --- | --- |
 | 資料庫的最大數目 | 無限制 |
-| 可以在具有共用輸送量的資料庫中布建的容器數目上限 |25 |
+| 每個資料庫中具有共用輸送量的容器數目上限 |25 |
+| 每個資料庫或具有專用輸送量之帳戶的容器數目上限  |無限制 |
 | 區域數目上限 | 無限制（所有 Azure 區域） |
 
 ## <a name="per-container-limits"></a>每個容器的限制
@@ -103,7 +104,7 @@ Cosmos DB 會自動定期備份您的資料。 如需備份保留間隔和 windo
 | --- | --- |
 | 專案的大小上限 | 2 MB （UTF-8 長度的 JSON 標記法） |
 | 資料分割索引鍵值的最大長度 | 2048個位元組 |
-| 識別碼值的最大長度 | 1024個位元組 |
+| 識別碼值的最大長度 | 1023個位元組 |
 | 每個專案的屬性數目上限 | 沒有實際限制 |
 | 最大的嵌套深度 | 沒有實際限制 |
 | 屬性名稱的最大長度 | 沒有實際限制 |

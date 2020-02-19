@@ -2,17 +2,17 @@
 title: SKU 無法使用錯誤
 description: 描述如何在使用 Azure Resource Manager 部署資源時，針對 [無法使用 SKU] 錯誤進行疑難排解。
 ms.topic: troubleshooting
-ms.date: 10/19/2018
-ms.openlocfilehash: a79f55b4d3baf33126807fa099ed2d7b8b48aac5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/18/2020
+ms.openlocfilehash: be341a5ed5321fe71b0e3b34ba5f6cc823958c8b
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75477456"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462287"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>解決 SKU 無法使用的錯誤
 
-本文說明如何解決 **SkuNotAvailable** 錯誤。 如果您在該區域或符合您業務需求的替代區域中找不到適當的 SKU，請向 Azure 支援服務提交 [SKU 要求](https://aka.ms/skurestriction)。
+本文說明如何解決 **SkuNotAvailable** 錯誤。 如果您找不到該區域/區域或符合您業務需求的替代區域/區域中的適當 SKU，請向 Azure 支援服務提交[SKU 要求](https://aka.ms/skurestriction)。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -22,7 +22,7 @@ ms.locfileid: "75477456"
 
 ```
 Code: SkuNotAvailable
-Message: The requested tier for resource '<resource>' is currently not available in location '<location>' 
+Message: The requested tier for resource '<resource>' is currently not available in location '<location>'
 for subscription '<subscriptionID>'. Please try another tier or deploy to a different location.
 ```
 
@@ -34,7 +34,7 @@ for subscription '<subscriptionID>'. Please try another tier or deploy to a diff
 
 ## <a name="solution-1---powershell"></a>解決方案 1：PowerShell
 
-若要判斷區域中有哪些可用的 SKU，請使用 [Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku) 命令。 依據位置篩選結果。 您必須擁有最新版 PowerShell 才能執行此命令。
+若要判斷區域/區域中可用的 Sku，請使用[get-azcomputeresourcesku](/powershell/module/az.compute/get-azcomputeresourcesku)命令。 依據位置篩選結果。 您必須擁有最新版 PowerShell 才能執行此命令。
 
 ```azurepowershell-interactive
 Get-AzComputeResourceSku | where {$_.Locations -icontains "centralus"}
@@ -43,12 +43,22 @@ Get-AzComputeResourceSku | where {$_.Locations -icontains "centralus"}
 結果包括該位置的 SKU 清單，以及該 SKU 的任何限制。 請注意，SKU 可能會列出為 `NotAvailableForSubscription`。
 
 ```powershell
-ResourceType          Name        Locations   Restriction                      Capability           Value
-------------          ----        ---------   -----------                      ----------           -----
-virtualMachines       Standard_A0 centralus   NotAvailableForSubscription      MaxResourceVolumeMB   20480
-virtualMachines       Standard_A1 centralus   NotAvailableForSubscription      MaxResourceVolumeMB   71680
-virtualMachines       Standard_A2 centralus   NotAvailableForSubscription      MaxResourceVolumeMB  138240
+ResourceType          Name           Locations   Zone      Restriction                      Capability           Value
+------------          ----           ---------   ----      -----------                      ----------           -----
+virtualMachines       Standard_A0    centralus             NotAvailableForSubscription      MaxResourceVolumeMB   20480
+virtualMachines       Standard_A1    centralus             NotAvailableForSubscription      MaxResourceVolumeMB   71680
+virtualMachines       Standard_A2    centralus             NotAvailableForSubscription      MaxResourceVolumeMB  138240
+virtualMachines       Standard_D1_v2 centralus   {2, 1, 3}                                  MaxResourceVolumeMB
 ```
+
+一些其他範例：
+
+```azurepowershell-interactive
+Get-AzComputeResourceSku | where {$_.Locations.Contains("centralus") -and $_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains("Standard_DS14_v2")}
+Get-AzComputeResourceSku | where {$_.Locations.Contains("centralus") -and $_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains("v3")} | fc
+```
+
+在結尾附加 "fc" 會傳回更多詳細資料。
 
 ## <a name="solution-2---azure-cli"></a>解決方案 2：Azure CLI
 
