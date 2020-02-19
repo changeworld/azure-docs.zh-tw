@@ -55,10 +55,10 @@ ms.locfileid: "74280802"
 
 |範例語句|
 |--|
-|如何取得電腦？|
-|何處取得電腦？|
-|我想要取得電腦，如何著手呢？|
-|我何時可擁有電腦？| 
+|how do I get a computer?|
+|Where do I get a computer?|
+|I want to get a computer, how do I go about it?|
+|When can I have a computer?| 
 
 這裡的核心詞彙「電腦」並不會有任何不同。 可使用桌上型電腦、膝上型電腦、工作站，甚至只稱為機器來替代。 LUIS 可以智慧地從內容推斷同義字，但當您建立定型的語句時，一定會改變它們。
 
@@ -144,8 +144,8 @@ LUIS 會利用由 LUIS 模型建立者精挑細選的語句來建置有效的模
 
 |語句|
 |--|
-|今年夏天西雅圖地區正在舉辦什麼類型的博覽會?|
-|對於 Seattle Review 目前的評分是否公平？|
+|What kind of county fairs are happening in the Seattle area this summer?|
+|Is the current rating for the Seattle review fair?|
 
 如果您想要讓事件實體尋找所有事件資料，請標記第一個語句中的 `fair` 一字，但不要標記第二個語句中的該字。
 

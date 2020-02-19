@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 01/09/2020
-ms.openlocfilehash: bc083a95ebf6c7ecfabfef87e606f99053ba58bb
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 32b3135f805cc6c68d8cd9d6fa2b6f957cd140ad
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312408"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444140"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning 的企業安全性
 
@@ -43,9 +43,9 @@ ms.locfileid: "76312408"
 
 Azure Machine Learning 針對 web 服務支援兩種形式的驗證：金鑰和權杖。 每個 web 服務一次只能啟用一種形式的驗證。
 
-|驗證方法|說明|Azure 容器執行個體|AKS|
+|驗證方法|描述|Azure Container Instances|AKS|
 |---|---|---|---|
-|索引鍵|金鑰是靜態的，不需要重新整理。 可以手動重新產生金鑰。|預設為停用| 預設啟用|
+|Key|金鑰是靜態的，不需要重新整理。 可以手動重新產生金鑰。|預設為停用| 預設啟用|
 |Token|權杖會在指定的時間週期後過期，而且需要重新整理。| 無法使用| 預設為停用 |
 
 如需程式碼範例，請參閱[web 服務驗證一節](how-to-setup-authentication.md#web-service-authentication)。
@@ -71,7 +71,7 @@ Azure Machine Learning 針對 web 服務支援兩種形式的驗證：金鑰和�
 | 執行實驗 | ✓ | ✓ | |
 | 視圖執行/計量 | ✓ | ✓ | ✓ |
 | 註冊模型 | ✓ | ✓ | |
-| 建立映像 | ✓ | ✓ | |
+| 建立映射 | ✓ | ✓ | |
 | 部署 Web 服務 | ✓ | ✓ | |
 | 視圖模型/影像 | ✓ | ✓ | ✓ |
 | 呼叫 web 服務 | ✓ | ✓ | ✓ |
@@ -86,7 +86,7 @@ Azure Machine Learning 針對 web 服務支援兩種形式的驗證：金鑰和�
 
 如需受控識別的詳細資訊，請參閱[適用于 Azure 資源的受控](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)識別。
 
-| 資源 | 使用權限 |
+| 資源 | 權限 |
 | ----- | ----- |
 | 工作區 | 參與者 |
 | 儲存體帳戶 | 儲存體 Blob 資料參與者 |
@@ -215,7 +215,7 @@ SSH 密碼和計算目標（例如 Azure HDInsight 和 Vm）的金鑰會儲存�
 
 Microsoft 可能會收集非使用者識別資訊，例如資源名稱（如資料集名稱或機器學習實驗名稱），或作業環境變數以供診斷之用。 所有這類資料都是使用 microsoft 所擁有的訂用帳戶儲存在儲存體中，並遵循[microsoft 的標準隱私權原則和資料處理標準](https://privacy.microsoft.com/privacystatement)來儲存。
 
-Microsoft 也建議您不要將敏感資訊（例如帳戶金鑰秘密）儲存在環境變數中。 我們會記錄、加密及儲存環境變數。
+Microsoft 也建議您不要將敏感資訊（例如帳戶金鑰秘密）儲存在環境變數中。 我們會記錄、加密及儲存環境變數。 同樣地，在命名[runid](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py)時，請避免包含敏感性資訊，例如使用者名稱或密碼專案名稱。 這項資訊可能會出現在 Microsoft 支援服務工程師可存取的遙測記錄中。
 
 在布建工作區時，您可以將 `hbi_workspace` 參數設定為 `TRUE`，以選擇不要收集診斷資料。 使用 AzureML Python SDK、CLI、REST Api 或 Azure Resource Manager 範本時，支援此功能。
 
@@ -227,7 +227,7 @@ Microsoft 也建議您不要將敏感資訊（例如帳戶金鑰秘密）儲存�
 
 ## <a name="monitoring"></a>監視
 
-### <a name="metrics"></a>計量
+### <a name="metrics"></a>度量
 
 您可以使用 Azure 監視器計量來查看和監視 Azure Machine Learning 工作區的計量。 在  [Azure 入口網站](https://portal.azure.com)中，選取您的工作區，然後選取 **計量**：
 
@@ -237,7 +237,7 @@ Microsoft 也建議您不要將敏感資訊（例如帳戶金鑰秘密）儲存�
 
 如需詳細資訊，請參閱[Azure 監視器中的計量](/azure/azure-monitor/platform/data-platform-metrics)。
 
-### <a name="activity-log"></a>活動記錄
+### <a name="activity-log"></a>活動記錄檔
 
 您可以查看工作區的活動記錄，以查看工作區上執行的各種作業。 此記錄檔包含基本資訊，例如作業名稱、事件起始端和時間戳記。
 
@@ -253,7 +253,7 @@ Microsoft 也建議您不要將敏感資訊（例如帳戶金鑰秘密）儲存�
 * RequestUrl
 * StatusCode
 * RequestId
-* 課程時間
+* Duration
 
 > [!IMPORTANT]
 > Azure Machine Learning 工作區中的某些動作不會將資訊記錄到活動記錄中。 例如，不會記錄定型執行的開始和模型的註冊。
