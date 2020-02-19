@@ -5,15 +5,15 @@ author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: include
-ms.date: 02/13/2020
+ms.date: 02/14/2020
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 775e9fc737798a0e5517f9eb3314c71b14c5be07
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: cc53f7ae6eb6254eaa05bf643ecfa0188650df95
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77371985"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461851"
 ---
 本節將說明如何使用 [Azure 入口網站](https://portal.azure.com)建立 IoT 中樞。
 
@@ -29,7 +29,7 @@ ms.locfileid: "77371985"
 
    - **資源群組**：選取資源群組或建立新的資源群組。 若要建立新的資源群組，選取 [新建]  並填入您要使用的名稱。 若要使用現有資源群組，請選取該資源群組。 如需詳細資訊，請參閱[管理 Azure Resource Manager 資源群組](../articles/azure-resource-manager/management/manage-resource-groups-portal.md)。
 
-   - **區域**：選取您要放置中樞的區域。 選取最靠近您的位置。
+   - **區域**：選取您要放置中樞的區域。 選取最靠近您的位置。 某些功能 (例如 [IoT 中樞裝置串流](../articles/iot-hub/iot-hub-device-streams-overview.md)) 僅適用於特定區域。 針對這些有限的功能，您必須選取其中一個支援的區域。
 
    - **IoT 中樞名稱**：輸入您的中樞名稱。 此名稱必須是全域唯一的。 如果您輸入的名稱可用，則會出現綠色核取記號。
 
@@ -41,9 +41,11 @@ ms.locfileid: "77371985"
 
    ![使用 Azure 入口網站設定新中樞的大小與級別](./media/iot-hub-include-create-hub/iot-hub-create-screen-size-scale.png)
 
-    此畫面可讓您設定下列值：
+   您可以在這裡接受預設設定。 若有需要，您可以修改下列任一欄位： 
 
-    - **定價與級別層**：您選取的階層。 您可以依據所需的功能多寡，以及每天透過解決方案傳送的訊息多寡，從數個層級中做選擇。 免費層適用於測試和評估。 它可允許 500 個裝置連接到中樞，每天最多可允許 8,000 則訊息。 每個 Azure 訂用帳戶可以在免費層建立一個 IoT 中樞。
+    - **定價與級別層**：您選取的階層。 您可以依據所需的功能多寡，以及每天透過解決方案傳送的訊息多寡，從數個層級中做選擇。 免費層適用於測試和評估。 它可允許 500 個裝置連接到中樞，每天最多可允許 8,000 則訊息。 每個 Azure 訂用帳戶可以在免費層建立一個 IoT 中樞。 
+
+      如果您正在逐步執行 IoT 中樞裝置串流的快速入門，請選取免費層。
 
     - **IoT 中樞單位**：每天每單位允許的訊息數目取決於您的中樞定價層。 例如，如果您想要中樞支援 700,000 封訊息的輸入，您可以選擇 2 個 S1 層單位。
     如需有關其他層級選項的詳細資料，請參閱[選擇適合的 IoT 中樞層](../articles/iot-hub/iot-hub-scaling.md)。
@@ -52,14 +54,14 @@ ms.locfileid: "77371985"
 
     - **進階設定** > **裝置到雲端的分割區**：此屬性會將裝置到雲端的訊息數與同時閱讀訊息的讀者數產生關聯。 大部分的中樞只需要四個分割區。
 
-1. 在本文中，接受預設選項，然後選取 [下一步:  標籤] 以移至下一個畫面。
+1.  完成時，選取 下一步:**標籤** 以繼續進入下一個畫面。
 
     標籤為名稱/值組。 您可以將相同標記指派給多個資源和資源群組，以將資源分類並合併計費。 如需詳細資訊，請參閱 [使用標記組織您的 Azure 資源](../articles/azure-resource-manager/management/tag-resources.md)。
 
-   ![使用 Azure 入口網站設定新中樞的大小與級別](./media/iot-hub-include-create-hub/iot-hub-create-tabs.png)
+    ![使用 Azure 入口網站為中樞指派標籤](./media/iot-hub-include-create-hub/iot-hub-create-tabs.png)
 
-    完成時，選取 [下一步:  檢閱 + 建立] 以檢閱您的選擇。 您會看到類似這個畫面的內容。
+1.  完成時，選取 [下一步:  檢閱 + 建立] 以檢閱您的選擇。 您會看到類似此畫面的內容，但使用您在建立中樞時所選取的值。 
 
-   ![檢閱有關建立新中樞的資訊](./media/iot-hub-include-create-hub/iot-hub-create-review.png)
+    ![檢閱有關建立新中樞的資訊](./media/iot-hub-include-create-hub/iot-hub-create-review.png)
 
-1. 選取 [建立]  以建立新的中樞。 建立中樞需要幾分鐘的時間。
+1.  選取 [建立]  以建立新的中樞。 建立中樞需要幾分鐘的時間。

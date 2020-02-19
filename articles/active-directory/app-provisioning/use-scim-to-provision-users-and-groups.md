@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30f8111e1d8c9bd76e7b55dd958256f8892b9058
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
-ms.translationtype: HT
+ms.openlocfilehash: d7c8bdb7236ed0a3a12bae5050e564afe0b68cde
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77442015"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461227"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>建立 SCIM 端點，並使用 Azure Active Directory （Azure AD）來設定使用者布建
 
@@ -1445,6 +1445,16 @@ Azure AD 可以設定為將已指派的使用者和群組自動布建至應用�
 
 如果您要建立的應用程式將由多個租使用者使用，您可以在 Azure AD 應用程式資源庫中使用它。 這可讓組織輕鬆地探索應用程式並設定布建。 在 Azure AD 資源庫中發佈您的應用程式，並將布建提供給其他人很容易。 請在 [這裡](../develop/howto-app-gallery-listing.md)查明步驟。 Microsoft 會與您合作，將您的應用程式整合到我們的資源庫、測試您的端點，以及發行登入[檔](../saas-apps/tutorial-list.md)供客戶使用。 
 
+### <a name="gallery-onboarding-checklist"></a>圖庫上架檢查清單
+請遵循下列檢查清單，以確保您的應用程式上架快速，而且客戶有順暢的部署體驗。 當您上架至資源庫時，系統會向您收集資訊。 
+> [!div class="checklist"]
+> * [支援 SCIM 2.0](https://tools.ietf.org/html/draft-wahl-scim-profile-00) （必要）
+> * 每個租使用者至少支援25個要求（必要）
+> * 支援架構探索（建議）
+> * 支援 OAuth 授權碼授與或長時間的權杖，如下所述（必要）
+> * 建立工程師的工程和支援點，以支援客戶的後置圖庫上線（必要）
+> * 公開記錄您的 SCIM 端點（建議） 
+
 
 ### <a name="authorization-for-provisioning-connectors-in-the-application-gallery"></a>在應用程式資源庫中布建連接器的授權
 SCIM 規格不會定義驗證和授權的 SCIM 特定配置。 它依賴現有的業界標準。 Azure AD 布建用戶端對資源庫中的應用程式支援兩種授權方法。 
@@ -1471,6 +1481,17 @@ SCIM 規格不會定義驗證和授權的 SCIM 特定配置。 它依賴現有�
 **長期的 OAuth 持有人權杖：** 如果您的應用程式不支援 OAuth 授權碼授與流程，您也可以產生長時間的 OAuth 持有人權杖，而不是系統管理員可用來設定布建整合。 權杖應該是永久的，否則當令牌過期時，將會[隔離](application-provisioning-quarantine-status.md)布建作業。 此權杖的大小必須低於1KB。  
 
 如需其他驗證和授權方法，請在[UserVoice](https://aka.ms/appprovisioningfeaturerequest)上讓我們知道。
+
+### <a name="gallery-go-to-market-launch-check-list"></a>圖庫進入市場的上市檢查清單
+為了協助您瞭解我們的聯合整合的認知和需求，建議您更新現有的檔，並在您的行銷通路中擴展整合。  以下是我們建議您完成以支援啟動的一組檢查清單活動
+
+* **銷售和客戶支援就緒。** 確保您的銷售和支援小組知道，並可與整合功能交談。 簡述您的銷售和支援小組，提供他們常見問題，並將整合納入您的銷售材料。 
+* **Blog 文章和/或按發行。** 製作一篇 blog 文章，或按發行來描述聯合整合、優點以及如何開始使用。 [範例： Imprivata 和 Azure Active Directory 按發行](https://www.imprivata.com/company/press/imprivata-introduces-iam-cloud-platform-healthcare-supported-microsoft) 
+* **社交媒體。** 利用您的社交媒體，例如 Twitter、Facebook 或 LinkedIn，將整合推廣給您的客戶。 請務必包含 @AzureAD，讓我們可以轉推您的文章。 [範例： Imprivata Twitter 文章](https://twitter.com/azuread/status/1123964502909779968)
+* **行銷網站。** 建立或更新您的行銷頁面（例如整合頁面、合作夥伴頁面、定價頁面等）以包含聯合整合的可用性。 [範例： Pingboard 整合頁面](https://pingboard.com/org-chart-for)、 [Smartsheet 整合頁面](https://www.smartsheet.com/marketplace/apps/microsoft-azure-ad)、 [Monday.com 定價頁面](https://monday.com/pricing/) 
+* **技術檔。** 建立說明中心文章或技術檔，以瞭解客戶可以如何開始著手。 [範例： Envoy + Microsoft Azure Active Directory 整合。](https://envoy.help/en/articles/3453335-microsoft-azure-active-directory-integration/
+) 
+* **客戶通訊。** 透過您的客戶通訊（每月電子報、電子郵件行銷活動、產品版本資訊），警示客戶新整合。 
 
 ### <a name="allow-ip-addresses-used-by-the-azure-ad-provisioning-service-to-make-scim-requests"></a>允許 Azure AD 布建服務所使用的 IP 位址進行 SCIM 要求
 
