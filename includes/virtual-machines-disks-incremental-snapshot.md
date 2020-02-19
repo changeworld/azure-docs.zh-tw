@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c5b9c1d294cd984ca3cf062d3b657239995e5908
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 3361f4723c5a9776cb156417e57d609175d11621
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75752151"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77445270"
 ---
 增量快照集（預覽）是受控磁片的時間點備份，在這種情況下，只會包含自上一個快照集之後的所有變更。 當您嘗試下載或使用增量快照集時，會使用完整的 VHD。 這項適用于受控磁片快照集的新功能可能會讓它們更符合成本效益，因為您不再需要將整個磁片與每個個別的快照集一起儲存，除非您選擇。 就像一般快照集一樣，您可以使用增量快照集來建立完整的受控磁片，或建立一般的快照集。
 
@@ -23,7 +23,7 @@ ms.locfileid: "75752151"
 
 ## <a name="restrictions"></a>限制
 
-- 增量快照集目前僅適用于美國東部、美國東部2、美國中部、美國中西部、加拿大東部、加拿大中部和北歐。
+- 增量快照集目前僅適用于美國東部、美國東部2、美國中部、美國中西部、加拿大東部、加拿大中部、北歐、南部東亞。
 - 當您變更磁片的大小時，目前無法建立增量快照集。
 - 目前無法在訂用帳戶之間移動增量快照集。
 - 您目前最多隻能在任何指定的時間產生特定快照集系列的五個快照集的 SAS Uri。

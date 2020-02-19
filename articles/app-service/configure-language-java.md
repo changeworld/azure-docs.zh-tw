@@ -9,12 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a088a90642a0394b0ede3c163590f64112799d1a
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: f6f334ed6b84d4688849b6dfd8cb1f79f8db57bf
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425284"
+ms.locfileid: "77443889"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>設定適用于 Azure App Service 的 Windows JAVA 應用程式
 
@@ -128,9 +128,9 @@ az webapp start --name <app-name> --resource-group <resource-group-name>
 
 使用 **驗證和授權** 選項，在 Azure 入口網站中設定應用程式驗證。 在這裡，您可以使用 Azure Active Directory 或社交登入 (例如 Facebook、Google 或 GitHub) 來啟用驗證。 只有在設定單一驗證提供者時，Azure 入口網站設定才會運作。 如需詳細資訊，請參閱[設定 App Service 應用程式使用 Azure Active Directory 登入](configure-authentication-provider-aad.md)，以及其他身分識別提供者的相關文章。 如果您需要啟用多個登入提供者，請遵循[自訂 App Service 驗證](app-service-authentication-how-to.md)一文中的指示。
 
-#### <a name="tomcat-and-wildfly"></a>Tomcat 和 Wildfly
+#### <a name="tomcat"></a>Tomcat
 
-您的 Tomcat 或 Wildfly 應用程式可以藉由將主體物件轉換成對應物件，直接從 servlet 存取使用者的宣告。 Map 物件會將每個宣告類型對應到該類型的宣告集合。 在下列程式碼中，`request` 是 `HttpServletRequest`的實例。
+Tomcat 應用程式可以藉由將主體物件轉換成對應物件，直接從 servlet 存取使用者的宣告。 Map 物件會將每個宣告類型對應到該類型的宣告集合。 在下列程式碼中，`request` 是 `HttpServletRequest`的實例。
 
 ```java
 Map<String, Collection<String>> map = (Map<String, Collection<String>>) request.getUserPrincipal();
