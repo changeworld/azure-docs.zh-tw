@@ -8,12 +8,12 @@
   expanded: true
   items:
     - name: 安裝及設定 Terraform
-      href: /azure/virtual-machines/linux/terraform-install-configure
+      href: terraform-install-configure.md
       maintainContext: true
     - name: 建立 Terraform 組態
       href: terraform-create-configuration.md
     - name: 建立 Linux VM
-      href: /azure/virtual-machines/linux/terraform-create-complete-vm
+      href: terraform-create-complete-vm.md
       maintainContext: true
 - name: 教學課程
   items:
@@ -35,8 +35,6 @@
           href: terraform-create-k8s-cluster-with-aks-applicationgateway-ingress.md
     - name: 基礎結構
       items:
-        - name: 針對啟用 Azure 資源的受控識別建立 Terraform 虛擬機器
-          href: terraform-vm-managed-identities-for-azure-resources.md
         - name: 以 Terraform 模組建立 VM 叢集
           href: terraform-create-vm-cluster-module.md
         - name: 以 Terraform 和 HCL 建立 VM 叢集
