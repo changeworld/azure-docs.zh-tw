@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 7ec18cab74d683e4547843f965d22026e7ba22aa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 254c912114e3f1c7a495f389bc6a6416cbde7e11
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461136"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472446"
 ---
 # <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>將認知服務資源連結至 Azure 認知搜尋中的技能集 
 
@@ -48,7 +48,7 @@ Azure 認知搜尋相依于認知服務，包括影像分析和光學字元辨�
 
 您可以使用有限的免費處理選項來完成 AI 擴充教學課程和快速入門練習。
 
-每個訂用帳戶每天可免費（有限的擴充）資源限制為20份檔。
+每個索引子的免費（有限的擴充）資源限制為每天20份檔。 您可以刪除並重新建立索引子，以重設計數器。
 
 1. 開啟 [匯入資料] 嚮導：
 

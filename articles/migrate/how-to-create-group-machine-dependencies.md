@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: hamusa
-ms.openlocfilehash: 96d1c44eb9ecb71684e817a89f9376a07dbe3ccb
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: bf6798d557cb1d27030565e4706864e945de6f04
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514964"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472089"
 ---
 # <a name="set-up-dependency-visualization-for-assessment"></a>設定評估的相依性視覺效果
 
@@ -31,7 +31,7 @@ ms.locfileid: "76514964"
 
 - 請確定您已[建立](how-to-add-tool-first-time.md)Azure Migrate 專案。
 - 如果您已經建立專案，請確定您已[新增](how-to-assess.md)Azure Migrate：伺服器評估工具。
-- 請確定您已在 Azure Migrate 中探索到您的電腦。若要這麼做，您可以設定[VMware](how-to-set-up-appliance-vmware.md)或[hyper-v](how-to-set-up-appliance-hyper-v.md)的 Azure Migrate 設備。 設備會探索內部部署機器，並將中繼資料和效能資料傳送至 Azure Migrate：伺服器評量。 [深入了解](migrate-appliance.md)。
+- 請確定您已在 Azure Migrate 中探索到您的電腦。若要這麼做，您可以設定[VMware](how-to-set-up-appliance-vmware.md)或[hyper-v](how-to-set-up-appliance-hyper-v.md)的 Azure Migrate 設備。 設備會探索內部部署機器，並將中繼資料和效能資料傳送至 Azure Migrate：伺服器評量。 [詳細資訊](migrate-appliance.md)。
 
 
 **功能** | **注意**
@@ -40,7 +40,7 @@ ms.locfileid: "76514964"
 服務對應 | 相依性視覺效果使用 Azure 監視器中的服務對應解決方案。 [服務對應](../azure-monitor/insights/service-map.md)會自動探索並顯示伺服器之間的連接。
 代理程式 | 若要使用相依性視覺效果，請在您想要對應的電腦上安裝下列代理程式：<br/> - [Log Analytics 代理](../azure-monitor/platform/log-analytics-agent.md)程式代理程式（先前稱為 MICROSOFT MONITORING AGENT （MMA）。<br/> - [服務對應 Dependency agent](../azure-monitor/insights/vminsights-enable-overview.md#the-microsoft-dependency-agent)。<br/><br/> 若要自動安裝代理程式，您可以使用具有 Azure Migrate 代理程式部署解決方案的部署工具（例如 Configuration Manager）。
 相依性代理程式 | 審查[Dependency agent](../azure-monitor/insights/vminsights-enable-overview.md#the-microsoft-dependency-agent)對 Windows 和 Linux 的支援。<br/><br/> [深入瞭解](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples)如何使用腳本來安裝 Dependency agent。
-Log Analytics 代理程式（MMA） | [深入瞭解](../azure-monitor/platform/log-analytics-agent.md#install-and-configure-agent)MMA 安裝方法。<br/><br/> 針對 System Center Operations Manager 2012 R2 或更新版本監視的機器，您不需要安裝 MMA 代理程式。 服務對應與 Operations Manager 整合。 您可以使用[此處](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites)的指導方針來啟用整合。 不過要注意的是，相依性代理程式必須安裝在這些電腦上。<br/><br/> 請[參閱](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)Log Analytics 代理程式所支援的 Linux 作業系統。
+Log Analytics 代理程式（MMA） | [深入瞭解](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration)MMA 安裝方法。<br/><br/> 針對 System Center Operations Manager 2012 R2 或更新版本監視的機器，您不需要安裝 MMA 代理程式。 服務對應與 Operations Manager 整合。 您可以使用[此處](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites)的指導方針來啟用整合。 不過要注意的是，相依性代理程式必須安裝在這些電腦上。<br/><br/> 請[參閱](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)Log Analytics 代理程式所支援的 Linux 作業系統。
 評量群組 | 您想要將相依性視覺化的群組不應該包含超過 10 部的機器。 如果您有超過10部電腦，請將它們分割成較小的群組，以將相依性視覺化。
 
 ## <a name="associate-a-log-analytics-workspace"></a>與 Log Analytics 工作區建立關聯
@@ -50,7 +50,7 @@ Log Analytics 代理程式（MMA） | [深入瞭解](../azure-monitor/platform/l
 - 您只能將工作區附加在 Azure Migrate 專案訂用帳戶中。
 - 您可以附加現有的工作區，或建立一個新的。
 - 您第一次設定電腦的相依性視覺效果時，會附加工作區。
-- 您只能在探索 Azure Migrate 專案中的機器之後，才連接工作區。 若要這麼做，您可以設定[VMware](how-to-set-up-appliance-vmware.md)或[hyper-v](how-to-set-up-appliance-hyper-v.md)的 Azure Migrate 設備。 設備會探索內部部署機器，並將中繼資料和效能資料傳送至 Azure Migrate：伺服器評量。 [深入了解](migrate-appliance.md)。
+- 您只能在探索 Azure Migrate 專案中的機器之後，才連接工作區。 若要這麼做，您可以設定[VMware](how-to-set-up-appliance-vmware.md)或[hyper-v](how-to-set-up-appliance-hyper-v.md)的 Azure Migrate 設備。 設備會探索內部部署機器，並將中繼資料和效能資料傳送至 Azure Migrate：伺服器評量。 [詳細資訊](migrate-appliance.md)。
 
 附加工作區，如下所示：
 

@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: ef0eed330dd7a5b338cdbf36a159d1f046d3939d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a028a0b5d79b2c79f1da336f033d3e8cac21a2e2
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76020894"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77474147"
 ---
 共用映射資源庫是一種服務，可協助您在受控映射周圍建立結構和組織。 共用映射資源庫提供：
 
 - 受管理的映射全域複寫。
 - 為映射進行版本控制和群組，以方便管理。
-- 在支援可用性區域的區域中，具有區域冗余儲存體（ZRS）帳戶的高可用性映射。 面對區域性故障時，ZRS 能提供更佳的復原力。
+- 在支援可用性區域的區域中，具有區域冗余儲存體（ZRS）帳戶的高可用性映射。 ZRS 針對區域性失敗提供更佳的復原能力。
 - 使用 RBAC 在訂用帳戶之間共用，甚至是在 Active Directory （AD）租使用者之間共用。
 - 使用每個區域中的映射複本來調整您的部署。
 
@@ -31,7 +31,7 @@ ms.locfileid: "76020894"
 
 共用映像庫具有多個資源類型：
 
-| 資源 | 說明|
+| 資源 | 描述|
 |----------|------------|
 | **受控映像** | 可以單獨使用或用來在映射庫中建立**映射版本**的基本映射。 系統會從[一般化](#generalized-and-specialized-images)vm 建立受控映射。 受控映像是一種特殊的 VHD 類型，可用來產生多個 VM，現在可以用來建立共用映像版本。 |
 | **快照式** | 可以用來建立**映射版本**的 VHD 複本。 您可以從[特製](#generalized-and-specialized-images)化 VM （尚未一般化的虛擬機器）取得快照集，然後單獨使用或搭配資料磁片的快照集，以建立特製化的映射版本。
@@ -49,11 +49,11 @@ ms.locfileid: "76020894"
 
 每個映射定義都有三個參數，用於組合-**發行者**、**供應**專案和**SKU**。 這些是用來尋找特定的映射定義。 不同的映像版本之間可以擁有一或兩個相同的值，但不能三個值都相同。  例如，以下是三個映像定義和其值：
 
-|映像定義|發佈者|供應項目|SKU|
+|映像定義|發行者|供應項目|Sku|
 |---|---|---|---|
-|myImage1|Contoso|金融|後端|
-|myImage2|Contoso|金融|前端|
-|myImage3|測試|金融|前端|
+|myImage1|Contoso|財務|後端|
+|myImage2|Contoso|財務|前端|
+|myImage3|測試|財務|前端|
 
 這三個映像定義都擁有唯一的值組。 格式類似于您目前可以在 Azure PowerShell 中指定[Azure Marketplace 映射](../articles/virtual-machines/windows/cli-ps-findimage.md)的發行者、供應專案和 SKU，以取得最新版本的 Marketplace 映射。 每個映射定義都必須有一組唯一的這些值。
 
@@ -117,7 +117,7 @@ ms.locfileid: "76020894"
 
 如需詳細資訊，請參閱根據[限制檢查資源使用狀況](https://docs.microsoft.com/azure/networking/check-usage-against-limits)，以取得如何檢查目前使用量的範例。
  
-## <a name="scaling"></a>調整
+## <a name="scaling"></a>調整大小
 共用映像庫可讓您指定要讓 Azure 保留的映像複本數目。 這對於有多個 VM 的部署案例很有幫助，因為 VM 部署可以分散到不同複本，減少執行個體建立程序由於單一複本多載而遭到節流的機會。
 
 使用共用映射資源庫時，您現在可以在虛擬機器擴展集中部署最多1000個 VM 實例（從600開始，使用受控映射）。 映射複本可提供更佳的部署效能、可靠性和一致性。  您可以根據區域的規模需求，在每個目的地區域中設定不同的複本計數。 由於每個複本都是您映射的深層複本，因此可協助您使用每個額外的複本，以線性方式調整您的部署。 雖然我們不了解兩個影像或區域都相同，但以下是如何在區域中使用複本的一般指導方針：
@@ -158,8 +158,8 @@ ms.locfileid: "76020894"
 您也可以使用多租使用者應用程式註冊，大規模地共用映射。 如需跨租使用者共用映射的詳細資訊，請參閱[在 Azure 租使用者之間共用資源庫 VM 映射](../articles/virtual-machines/linux/share-images-across-tenants.md)。
 
 ## <a name="billing"></a>計費
-使用共用映像庫服務不需支付額外費用。 您只會支付下列資源的費用：
-- 儲存共用映像版本的儲存體成本。 成本取決於映射版本的複本數目，以及版本所複寫到的區域數目。 例如，如果您有2個影像，而且兩者都複寫到3個區域，則會根據其大小來變更6個受控磁片。 如需詳細資訊，請參閱[受控磁碟定價](https://azure.microsoft.com/pricing/details/managed-disks/)。
+使用共用映像庫服務不會有額外費用。 您只會支付下列資源的費用：
+- 儲存共用映像版本的儲存體成本。 成本取決於映射版本的複本數目，以及版本所複寫到的區域數目。 例如，如果您有2個影像，而且兩者都複寫到3個區域，則會根據其大小向您收取6個受控磁片的費用。 如需詳細資訊，請參閱[受控磁碟定價](https://azure.microsoft.com/pricing/details/managed-disks/)。
 - 從來源區域將第一個映射版本複寫至複寫區域的網路輸出費用。 後續的複本會在區域內處理，因此不會產生額外費用。 
 
 ## <a name="updating-resources"></a>更新資源
@@ -167,12 +167,12 @@ ms.locfileid: "76020894"
 建立之後，您就可以對映射庫資源進行一些變更。 這些限制為：
  
 共用映像庫：
-- 說明
+- 描述
 
 映像定義：
 - 建議的 vCPU
 - 建議的記憶體
-- 說明
+- 描述
 - 生命週期結束日期
 
 映像版本：
@@ -191,7 +191,7 @@ ms.locfileid: "76020894"
 - [Python](https://docs.microsoft.com/python/api/overview/azure/virtualmachines?view=azure-python)
 - [Go](https://docs.microsoft.com/azure/go/)
 
-## <a name="templates"></a>範本
+## <a name="templates"></a>樣板
 
 您可以使用範本建立共用映像庫資源。 有數個 Azure 快速入門範本可以使用： 
 
@@ -237,7 +237,7 @@ ms.locfileid: "76020894"
 
 ### <a name="can-i-move-my-existing-image-to-the-shared-image-gallery"></a>是否可以將現有映像移至共用映像庫？
  
-可以。 根據您可能擁有的映像類型，案例共有 3 種。
+是的。 根據您可能擁有的映像類型，案例共有 3 種。
 
  案例1：如果您在與 SIG 相同的訂用帳戶中有受控映射，則可以從它建立映射定義和映射版本。
 
@@ -291,7 +291,7 @@ ms.locfileid: "76020894"
 
 如果未對每個位置指定區域複本計數，則複本的預設數目會是所指定的一般複本計數。 
 
-若要在 CLI 中指定一般複本計數，請在 `az sig image-version create` 命令中使用 **--replica-count** 引數。
+若要在 CLI 中指定一般複本計數，請在 **命令中使用**--replica-count`az sig image-version create` 引數。
 
 ### <a name="can-i-create-the-shared-image-gallery-in-a-different-location-than-the-one-for-the-image-definition-and-image-version"></a>我可以在映射定義和映射版本以外的不同位置建立共用映射庫嗎？
 

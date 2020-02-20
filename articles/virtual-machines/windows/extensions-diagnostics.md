@@ -12,20 +12,20 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/06/2018
 ms.author: johnkem
-ms.openlocfilehash: 3fcdcd4565ed0512b3efcf9b23ca349a3bbf3a6c
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d4ba3e8bbdad72f10c630a056f988ec83e9b1a68
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033486"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471613"
 ---
 # <a name="azure-diagnostics-extension-for-windows-vms"></a>適用於 Windows VM 的 Azure 診斷延伸模組
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概觀
 
 「Azure 診斷」VM 延伸模組可讓您從 Windows VM 收集監視資料，例如效能計數器和事件記錄。 您可以細微地指定您想要收集的資料，以及要將資料移至何處，例如 Azure 儲存體帳戶或 Azure 事件中樞。 您也可以在 Azure 入口網站中使用此資料建立圖表，或建立度量警示。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 ### <a name="operating-system"></a>作業系統
 
@@ -37,7 +37,7 @@ ms.locfileid: "74033486"
 
 ## <a name="extension-schema"></a>擴充功能結構描述
 
-[本文件說明 Azure 診斷延伸模組結構描述和屬性值。](../../azure-monitor/platform/diagnostics-extension-schema-1dot3.md)
+[本文件說明 Azure 診斷延伸模組結構描述和屬性值。](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)
 
 ## <a name="template-deployment"></a>範本部署
 
@@ -92,4 +92,4 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 
 ## <a name="next-steps"></a>後續步驟
 * [深入了解 Azure 診斷延伸模組](../../azure-monitor/platform/diagnostics-extension-overview.md)
-* [檢閱擴充功能結構描述和版本](../../azure-monitor/platform/diagnostics-extension-schema.md)
+* [檢閱擴充功能結構描述和版本](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)

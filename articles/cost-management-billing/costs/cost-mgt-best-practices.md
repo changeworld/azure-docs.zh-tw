@@ -1,21 +1,20 @@
 ---
 title: 透過 Azure 成本管理將雲端投資最佳化 | Microsoft Docs
 description: 本文有助於從雲端投資中獲得最大價值、降低成本並評估您的資金支出。
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/21/2019
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: vitavor
+ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 47a53136a8f299e5c8654d122d8e319be4ae29db
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 6d13bf4b2a3abd3a1552ac656a6a15fed8c7cb60
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75988379"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201062"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>如何透過 Azure 成本管理將雲端投資最佳化
 
@@ -85,20 +84,20 @@ Azure 會提供工具來協助您評估程序。 這些工具可讓您了解啟�
 
 若要深入了解各種選項，請造訪[如何購買 Azure](https://azure.microsoft.com/pricing/purchase-options/)。 以下是幾個最常見的計費模式。
 
-#### <a name="freehttpsazuremicrosoftcomfree"></a>[免費](https://azure.microsoft.com/free/)
+#### <a name="free"></a>[免費](https://azure.microsoft.com/free/)
 
 - 12 個月的熱門免費服務
 - 使用 200 美元的信用額度探索服務 30 天
 - 25 項以上的服務一律免費
 
-#### <a name="pay-as-you-gohttpsazuremicrosoftcomoffersms-azr-0003p"></a>[隨用隨付](https://azure.microsoft.com/offers/ms-azr-0003p)
+#### <a name="pay-as-you-go"></a>[隨用隨付](https://azure.microsoft.com/offers/ms-azr-0003p)
 
 - 沒有最低金額或承諾用量
 - 具有競爭力的價格
 - 用多少付多少
 - 可隨時取消
 
-#### <a name="enterprise-agreementhttpsazuremicrosoftcompricingenterprise-agreement"></a>[Enterprise 合約](https://azure.microsoft.com/pricing/enterprise-agreement/)
+#### <a name="enterprise-agreement"></a>[Enterprise 合約](https://azure.microsoft.com/pricing/enterprise-agreement/)
 
 - 預付承諾用量的選項
 - 取得較低的 Azure 定價

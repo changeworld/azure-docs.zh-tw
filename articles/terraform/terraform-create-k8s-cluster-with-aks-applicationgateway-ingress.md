@@ -3,12 +3,12 @@ title: 教學課程 - 在 Azure Kubernetes Service 中建立應用程式閘道�
 description: 教學課程說明如何使用 Azure Kubernetes Service 建立 Kubernetes 叢集並以應用程式閘道作為輸入控制器
 ms.topic: tutorial
 ms.date: 11/13/2019
-ms.openlocfilehash: da9768c8b2ad854b116ef1b9eab801661f547bfa
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: b16b0a40d14ecde87b2637976299d05d37d706f3
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772862"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472259"
 ---
 # <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>教學課程：在 Azure Kubernetes Service 中建立應用程式閘道輸入控制器
 
@@ -29,7 +29,7 @@ ms.locfileid: "76772862"
 
 - **Azure 訂用帳戶**：如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-- **設定 Terraform**：請遵循 [Terraform 和設定 Azure 的存取](/azure/virtual-machines/linux/terraform-install-configure)一文中的指示
+- **設定 Terraform**：請遵循 [Terraform 和設定 Azure 的存取](terraform-install-configure.md)一文中的指示
 
 - **Azure 資源群組**：如果您沒有可用於示範的 Azure 資源群組，[請建立 Azure 資源群組](/azure/azure-resource-manager/manage-resource-groups-portal#create-resource-groups)。 請記下資源群組名稱和位置，因為示範時會用到這些值。
 

@@ -3,21 +3,18 @@ title: 檢視及下載您 Microsoft Azure 發票
 description: 說明如何檢視及下載您的 Microsoft Azure 發票。
 keywords: 帳單發票,發票下載,azure 發票,azure 使用量
 author: bandersmsft
-manager: jureid
+ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 0f413d38565202d379c81570b5cb169c2ed8effe
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 691d27acebf238e84265870e8c01976bfc2412b2
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75987820"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200260"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>檢視及下載您 Microsoft Azure 發票
 
@@ -32,7 +29,7 @@ ms.locfileid: "75987820"
 - 讀取者
 - 發票管理員
 
-如果您有 Microsoft 合作夥伴合約 (MPA)，您必須是夥伴組織中的全域系統管理員或管理員代理人，才能檢視及下載 Azure 發票。 [檢查您的計費帳戶類型](#check-your-billing-account-type)，以找出您所需的權限。
+如果您有 Microsoft 合作夥伴合約 (MPA)，您必須是夥伴組織中的全域管理員或管理員代理人，才能檢視及下載 Azure 發票。 [檢查您的計費帳戶類型](#check-your-billing-account-type)，以找出您所需的權限。
 
 <!-- For more information about billing roles for Microsoft Customer Agreements, see [Billing profile roles and tasks](../manage/understand-mca-roles.md#billing-profile-roles-and-tasks). -->
 
@@ -87,7 +84,7 @@ ms.locfileid: "75987820"
 <!-- Does following section apply to MPA too? -->
 ## <a name="get-your-microsoft-customer-agreement-invoices-in-email"></a>以電子郵件取得 Microsoft 客戶合約的發票
 
-如果您有 Microsoft 客戶合約的計費帳戶，您可以選擇以電子郵件取得您的發票。 具有帳單設定檔的擁有者、參與者、讀者或發票管理者角色的所有使用者，都會透過電子郵件取得其發票。 
+如果您有 Microsoft 客戶合約的計費帳戶，您可以選擇以電子郵件取得您的發票。 具有帳單設定檔的擁有者、參與者、讀者或發票管理者角色的所有使用者，都會透過電子郵件取得其發票。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
@@ -109,11 +106,11 @@ ms.locfileid: "75987820"
 
 ## <a name="opt-out-of-getting-your-microsoft-customer-agreement-invoices-in-email"></a>選擇不要以電子郵件取得 Microsoft 客戶合約的發票
 
-若要選擇不以電子郵件取得發票，請遵循上述步驟，然後按一下 [退出]  。具有擁有者、參與者、讀者或發票管理者角色的所有使用者，都會選擇不要以電子郵件取得發票。 
+若要選擇不以電子郵件取得發票，請遵循上述步驟，然後按一下 [退出]  。具有擁有者、參與者、讀者或發票管理者角色的所有使用者，都會選擇不要以電子郵件取得發票。
 
 ## <a name="give-others-access-to-your-microsoft-customer-agreement-invoices"></a>為他人授與您 Microsoft 客戶合約發票的存取權
 
-您可以將帳單設定檔的發票管理者角色指派給其他人，使其有權檢視、下載和支付發票。 如果您已選擇透過電子郵件取得發票，則這些使用者也會透過電子郵件取得發票。 
+您可以將帳單設定檔的發票管理者角色指派給其他人，使其有權檢視、下載和支付發票。 如果您已選擇透過電子郵件取得發票，則這些使用者也會透過電子郵件取得發票。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 

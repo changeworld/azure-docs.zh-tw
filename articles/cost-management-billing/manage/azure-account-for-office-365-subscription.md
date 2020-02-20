@@ -1,26 +1,20 @@
 ---
 title: 使用 Azure 帳戶註冊 Office 365 | Microsoft Docs
 description: 了解如何使用 Azure 帳戶建立 Office 365 訂用帳戶
-services: ''
-documentationcenter: ''
 author: JiangChen79
-manager: adpick
-editor: ''
+ms.reviewer: adwise
 tags: billing,top-support-issue
-ms.assetid: ''
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 02/21/2020
 ms.author: banders
-ms.openlocfilehash: 034df0de027a50c61e5a7cab3d1e829446002c86
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: b38800a990056d7de0b6978573ddc19c80503a1d
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75993592"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199920"
 ---
 # <a name="sign-up-for-an-office-365-subscription-with-your-azure-account"></a>使用 Azure 帳戶註冊 Office 365 訂用帳戶
 如果您是 Azure 訂閱者，您可以使用 Azure 帳戶來註冊 Office 365 訂用帳戶。 如果您屬於具有 Azure 訂用帳戶的組織，您可以為現有 Azure Active Directory (Azure AD) 中的使用者建立 Office 365 訂用帳戶。 使用具有 Azure Active Directory 租用戶中全域管理員或帳務管理員權限的帳戶，來註冊 Office 365。 如需詳細資訊，請參閱[在 Azure AD 中檢查我的帳戶權限](#RoleInAzureAD)和[在 Azure Active Directory 中指派系統管理員角色](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)。

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: 056b2d2b1951b6630b61bbd6fd8a8c38b272900a
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: bbb2ae0b10af795d71f0a78c045bec0c216ee378
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76967006"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368463"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -30,8 +30,6 @@ ms.locfileid: "76967006"
 
 
 ## <a name="change-model-programmatically"></a>以程式設計方式變更模型
-
-使用 GO 將機器學習的實體 [API](https://aka.ms/luis-apim-v3-authoring) 新增至應用程式。
 
 1. 建立名為 `model.js` 的新檔案。 新增下列程式碼：
 

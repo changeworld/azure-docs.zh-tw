@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 11/07/2019
+ms.date: 02/02/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: e9d5a137247c072516c0b25d7f6147ef48fec248
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 1cf4cc9cf4d98dfca59e01cc264549af3a4d5cb4
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839800"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471783"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>使用維護排程管理服務更新和維護
 
@@ -73,7 +73,7 @@ ms.locfileid: "73839800"
 若要變更資料倉儲的維護排程，請完成下列步驟：
 1.  登入 [Azure 入口網站](https://portal.azure.com/)。
 2.  選取您要更新的資料倉儲。 頁面會在概觀刀鋒視窗上開啟。 
-3.  選取概觀刀鋒視窗上的 [維護排程 (預覽) 摘要] 連結，來開啟維護排程設定的頁面。 或者，選取左側資源功能表上的 [維護排程] 選項。  
+3.  選取 [總覽] 分頁上的 [**維護排程摘要**] 連結，以開啟維護排程設定的頁面。 或者，選取左側資源功能表上的 [維護排程] 選項。  
 
     ![概觀刀鋒視窗選項](media/sql-data-warehouse-maintenance-scheduling/maintenance-change-option.png)
 
@@ -88,7 +88,7 @@ ms.locfileid: "73839800"
 
    刀鋒視窗底部的 [排程摘要] 區域會根據所選取的值來更新。 
   
-6. 選取 [ **儲存**]。 隨即出現一則訊息，確認您的新排程目前為作用中。 
+6. 選取 [儲存]。 隨即出現一則訊息，確認您的新排程目前為作用中。 
 
    如果您將排程儲存於不支援維護排程的區域中，即會出現下列訊息。 您的設定已儲存，並在功能於您選取的區域中成為可用時變成作用中。    
 

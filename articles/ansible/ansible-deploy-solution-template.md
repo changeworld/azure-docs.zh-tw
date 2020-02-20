@@ -4,12 +4,12 @@ description: 在本快速入門中，請了解如何在裝載於 Azure 的 CentO
 keywords: ansible, azure, devops, 解決方案範本, 虛擬機器, 適用於 Azure 資源的受控識別, centos, red hat
 ms.topic: quickstart
 ms.date: 04/30/2019
-ms.openlocfilehash: ebd01411ff27b0e95be21ef147098a90b6f62742
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: cc3a6c1f0ef36b51b62e6aa58f317aee13149589
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74156322"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193781"
 ---
 # <a name="quickstart-deploy-the-ansible-solution-template-for-azure-to-centos"></a>快速入門：將適用於 Azure 的 Ansible 解決方案範本部署至 CentOS
 
@@ -19,7 +19,7 @@ ms.locfileid: "74156322"
 - **Azure 命令列介面 (CLI) 2.0** - [Azure CLI 2.0](/cli/azure/?view=azure-cli-latest) 是用來管理 Azure 資源的跨平台命令列體驗。 
 - **適用於 Azure 資源的受控識別** - [適用於 Azure 資源的受控識別](/azure/active-directory/managed-identities-azure-resources/overview)功能可解決如何讓雲端應用程式認證保持安全的問題。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 
@@ -85,4 +85,4 @@ ms.locfileid: "74156322"
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"] 
-> [快速入門：使用 Ansible 在 Azure 中設定 Linux 虛擬機器](/azure/virtual-machines/linux/ansible-create-vm)
+> [快速入門：使用 Ansible 在 Azure 中設定 Linux 虛擬機器](./ansible-create-vm.md)

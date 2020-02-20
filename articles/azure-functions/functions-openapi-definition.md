@@ -5,12 +5,12 @@ ms.topic: tutorial
 ms.date: 05/08/2019
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 56e2182b408b4e8b1f89eee7458a27c5dd54bb55
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 9465209467c83f7de075d16e724459c307d55bd3
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562008"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210203"
 ---
 # <a name="create-an-openapi-definition-for-a-serverless-api-using-azure-api-management"></a>使用 Azure API 管理為無伺服器 API 建立 OpenAPI 定義
 
@@ -45,7 +45,7 @@ REST API 通常會使用 OpenAPI 定義來描述。 此定義包含有關 API �
 
 1. 選取 [更多範本...]  ，然後選取 [完成並檢視範本] 
 
-1. 選取 HTTP 觸發程序，輸入 `TurbineRepair` 作為函式 [名稱]  ，選擇 `Function` 作為 **[[驗證層級]](functions-bindings-http-webhook.md#http-auth)** ，然後選取 [建立]  。  
+1. 選取 HTTP 觸發程序，輸入 `TurbineRepair` 作為函式 [名稱]  ，選擇 `Function` 作為 **[[驗證層級]](functions-bindings-http-webhook-trigger.md#http-auth)** ，然後選取 [建立]  。  
 
     ![建立適用於 OpenAPI 的 HTTP 函式](media/functions-openapi-definition/select-http-trigger-openapi.png)
 

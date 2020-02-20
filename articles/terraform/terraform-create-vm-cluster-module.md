@@ -3,12 +3,12 @@ title: 教學課程 - 使用模組登錄以 Terraform 建立 Azure VM 叢集
 description: 了解如何在 Azure 中使用 Terraform 模組建立 Windows 虛擬機器叢集
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 3ddc80e8f5a81e89e4574ff6524055f12a4a618a
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: d17a0d7c26cc1a16ab73350fe6e8c28ba4af6ff2
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185552"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472193"
 ---
 # <a name="tutorial-create-an-azure-vm-cluster-with-terraform-using-the-module-registry"></a>教學課程：使用模組登錄以 Terraform 建立 Azure VM 叢集
 
@@ -17,7 +17,7 @@ ms.locfileid: "74185552"
 > [!div class="checklist"]
 > * 使用 Azure 設定驗證
 > * 建立 Terraform 範本
-> * 視覺化計劃變更
+> * 使用 plan 視覺化變更
 > * 套用設定以建立 VM 叢集
 
 如需 Terraform 的詳細資訊，請參閱 [Terraform 文件](https://www.terraform.io/docs/index.html)。
@@ -25,9 +25,9 @@ ms.locfileid: "74185552"
 ## <a name="set-up-authentication-with-azure"></a>使用 Azure 設定驗證
 
 > [!TIP]
-> 如果您[使用 Terraform 環境變數](/azure/virtual-machines/linux/terraform-install-configure)或在 [Azure Cloud Shell](/azure/cloud-shell/overview) 中執行本教學課程，請略過此步驟。
+> 如果您[使用 Terraform 環境變數](terraform-install-configure.md)或在 [Azure Cloud Shell](/azure/cloud-shell/overview) 中執行本教學課程，請略過此步驟。
 
- 檢閱[安裝 Terraform 並設定對 Azure 的存取權限](/azure/virtual-machines/linux/terraform-install-configure)，來建立 Azure 服務主體。 使用這個服務主體與下列程式碼，將新檔案 `azureProviderAndCreds.tf` 植入空的目錄中：
+ 檢閱[安裝 Terraform 並設定對 Azure 的存取權限](terraform-install-configure.md)，來建立 Azure 服務主體。 使用這個服務主體與下列程式碼，將新檔案 `azureProviderAndCreds.tf` 植入空的目錄中：
 
 ```hcl
 variable subscription_id {}
@@ -91,7 +91,7 @@ output "vm_private_ips" {
 ![Terraform Plan](media/terraform-create-vm-cluster-with-infrastructure/terraform-plan.png)
 
 
-## <a name="create-the-virtual-machines-with-apply"></a>使用套用建立虛擬機器
+## <a name="create-the-virtual-machines-with-apply"></a>使用 apply 建立虛擬機器
 
 在 Azure 上執行 `terraform apply` 以佈建 VM。
 

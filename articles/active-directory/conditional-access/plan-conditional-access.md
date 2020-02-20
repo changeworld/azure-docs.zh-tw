@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 266fa2403ef96e808a0c1f1eb46b4f7065c06252
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 3c8c5e3c2552101437bfed17906f94861e676568
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185894"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468432"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>如何：在 Azure Active Directory 中規劃條件式存取部署
 
@@ -31,6 +31,9 @@ ms.locfileid: "77185894"
 條件式存取原則有兩種類型：基準和標準。 [基準原則](baseline-protection.md)是預先定義的條件式存取原則。 這些原則的目標是確保您的環境中至少會啟用基準層級的安全性。 基準原則。 所有 Azure AD 版本都可以使用基準原則，而這些原則僅提供有限的自訂選項。 如果案例需要更多彈性，您可以停用基準原則，然後在自訂標準原則中實作自己的需求。
 
 在標準條件式存取原則中，您可以自訂所有設定，以根據您的業務需求調整原則。 標準原則需要 Azure AD Premium P1 授權。
+
+>[!NOTE]
+> 我們建議使用 Azure AD 裝置型條件式存取原則，以在初始裝置驗證之後取得最佳的強制執行。 這包括關閉會話（如果裝置不符合規範）和裝置程式碼流程。
 
 ## <a name="draft-policies"></a>草稿原則
 

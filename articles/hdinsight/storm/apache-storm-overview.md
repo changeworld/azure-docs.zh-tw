@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: overview
 ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: 9c7e49fe522859f97f00f760822d5eef60db5f69
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b291d5babb0680f5f1a742efcf624a82c804de68
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228848"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460002"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>什麼是 Apache Storm on Azure HDInsight？
 
@@ -42,7 +42,7 @@ Storm on HDInsight 提供下列功能︰
 
     如需與 Azure 服務整合的解決方案範例，請參閱[使用 Apache Storm on HDInsight 處理事件中樞的事件](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)。
 
-如需使用 Apache Storm 作為即時分析解決方案的公司清單，請參閱[使用 Apache Storm 的公司](https://storm.apache.org/documentation/Powered-By.html)。
+如需使用 Apache Storm 作為即時分析解決方案的公司清單，請參閱[使用 Apache Storm 的公司](https://storm.apache.org/Powered-By.html)。
 
 若要開始使用 Storm，請參閱[建立和監視 Azure HDInsight 中的 Apache Storm 拓撲](apache-storm-quickstart.md)。
 
@@ -118,7 +118,7 @@ Storm on HDInsight 隨附完整的企業級連續支援。 Storm on HDInsight �
 
 如需真實案例的資訊，請參閱 [How companies are using Apache Storm](https://storm.apache.org/Powered-By.html) (公司如何使用 Apache Storm) 文件。
 
-## <a name="development"></a>開發
+## <a name="development"></a>部署
 
 .NET 開發人員可以使用 Data Lake Tools for Visual Studio，以 C# 語言設計和實作拓撲。 您也可以建立使用 Java 和 C# 元件的混合式拓撲。
 

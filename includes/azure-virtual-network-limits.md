@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 17558b44c91425ce1a06625f8fd5c1806a762ba2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 28724f85ada989cbe3ce754418fb781bb0468de4
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76021113"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77466067"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>網路限制-Azure Resource Manager 下列限制僅適用于透過每個訂用帳戶的每個區域**Azure Resource Manager**管理的網路資源。 深入了解如何[根據您的訂用帳戶限制檢視目前資源使用量](../articles/networking/check-usage-against-limits.md)。
 
@@ -51,10 +51,13 @@ ms.locfileid: "76021113"
 #### <a name="publicip-address"></a>公用 IP 位址限制
 | 資源 | 預設限制 | 上限 |
 | --- | --- | --- |
-| 公用 IP 位址 - 動態 | 適用于 Basic 的1000。 |請連絡支援人員。 |
-| 公用 IP 位址 - 靜態 | 適用于 Basic 的1000。 |請連絡支援人員。 |
-| 公用 IP 位址 - 靜態 | 適用于 Standard 的1000。|請連絡支援人員。 |
+| 公用 IP 位址<sup>1</sup> | 10適用于基本。 | 請連絡支援人員。 |
+| 靜態公用 IP 位址<sup>1</sup> | 10適用于基本。 | 請連絡支援人員。 |
+| 標準公用 IP 位址<sup>1</sup> | 10 | 請連絡支援人員。 |
+| 公用 IP 前置詞 | 受訂用帳戶中的標準公用 Ip 數目限制 | 請連絡支援人員。 |
 | 公用 IP 前置長度 | /28 | 請連絡支援人員。 |
+
+<sup>1</sup>公用 IP 位址的預設限制會因供應專案類別類型而異，例如免費試用、隨用隨付、CSP。 例如，Enterprise 合約訂閱的預設值是1000。
 
 #### <a name="load-balancer"></a>負載平衡器限制
 下列限制僅適用於透過每個訂用帳戶每一區域的 Azure Resource Manager 所管理的網路資源。 深入了解如何[根據您的訂用帳戶限制檢視目前資源使用量](../articles/networking/check-usage-against-limits.md)。
@@ -98,6 +101,6 @@ ms.locfileid: "76021113"
 | 每個路由表的使用者定義路由 |400 |400 |
 | 公用 IP 位址 (動態) |500 |500 |
 | 保留的公用 IP 位址 |500 |500 |
-| 每個部署的公用 VIP |5 |連絡客戶支援 |
+| 每個部署的公用 VIP |5 |請連絡支援人員 |
 | 每個部署的私人 VIP （內部負載平衡） |1 |1 |
 | 端點存取控制清單（Acl） |50 |50 |

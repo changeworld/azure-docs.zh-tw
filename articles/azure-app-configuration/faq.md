@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 8d286cbab33a1fb6a2d2a2cb70caed11b21af735
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 4bcd8f042563fa381832fd629061a822f71e844a
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904100"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467584"
 ---
 # <a name="azure-app-configuration-faq"></a>Azure 應用程式組態常見問題
 
@@ -46,23 +46,23 @@ ms.locfileid: "73904100"
 
 ## <a name="does-app-configuration-encrypt-my-data"></a>應用程式組態加密我的資料嗎？
 
-是。 應用程式組態會加密它所保留的所有金鑰值，並將網路通訊加密。 金鑰名稱是用來做為抓取設定資料的索引，並不會加密。
+是。 應用程式組態會加密它所保留的所有金鑰值，並將網路通訊加密。 金鑰名稱和標籤會用來做為抓取設定資料的索引，而且不會加密。
 
 ## <a name="how-is-app-configuration-different-from-azure-app-service-settings"></a>應用程式組態與 Azure App Service 設定有何不同？
 
 Azure App Service 可讓您定義每個 App Service 實例的應用程式設定。 這些設定會以環境變數的形式傳遞給應用程式程式碼。 如有需要，您可以將設定與特定部署位置產生關聯。 如需詳細資訊，請參閱[設定應用程式設定](/azure/app-service/configure-common#configure-app-settings)。
 
-相反地，Azure 應用程式組態可讓您定義可以在多個應用程式之間共用的設定，包括在 App Service 中執行的應用程式。 這些設定可透過 .NET 和 JAVA 的設定提供者、透過 Azure SDK，或直接透過 REST Api，在應用程式程式碼中存取。
+相反地，Azure 應用程式組態可讓您定義可以在多個應用程式之間共用的設定。 這包括在 App Service 中執行的應用程式，以及其他平臺。 您的應用程式程式碼會透過 .NET 和 JAVA 的設定提供者、透過 Azure SDK，或直接透過 REST Api 來存取這些設定。
 
-您也可以在 App Service 和應用程式組態之間匯入和匯出設定。 這可讓您根據現有的 App Service 設定快速設定新的應用程式組態存放區，或輕鬆地與依賴 App Service 設定的現有應用程式共用設定。
+您也可以在 App Service 和應用程式組態之間匯入和匯出設定。 這項功能可讓您根據現有的 App Service 設定快速地設定新的應用程式組態存放區。 您也可以與依賴 App Service 設定的現有應用程式共用設定。
 
 ## <a name="are-there-any-size-limitations-on-keys-and-values-stored-in-app-configuration"></a>應用程式組態中儲存的索引鍵和值是否有任何大小限制？
 
-單一索引鍵/值專案有10KB 的限制。
+單一索引鍵/值專案有 10 KB 的限制。
 
 ## <a name="how-should-i-store-configurations-for-multiple-environments-test-staging-production-and-so-on"></a>如何儲存多個環境的設定（測試、預備、生產等等）？
 
-目前，您可以控制誰能夠存取每個存放區層級的應用程式組態。 針對每個需要不同許可權的環境使用個別的存放區。 這種方法可為您提供最佳的安全性隔離。
+目前，您可以控制誰可以存取每個商店層級的應用程式組態。 針對每個需要不同許可權的環境使用個別的存放區。 這種方法可為您提供最佳的安全性隔離。
 
 ## <a name="what-are-the-recommended-ways-to-use-app-configuration"></a>使用應用程式組態的建議方式為何？
 
@@ -70,7 +70,32 @@ Azure App Service 可讓您定義每個 App Service 實例的應用程式設定�
 
 ## <a name="how-much-does-app-configuration-cost"></a>應用程式組態的成本是多少？
 
-公開預覽期間可免費使用此服務。
+有兩個定價層：1）免費層和2）標準層。
+
+如果您在引進標準層之前建立了存放區，它會在公開上市時自動移至免費層。 如果符合您的需求，您可以選擇升級至標準層，或維持在免費層。
+
+## <a name="which-app-configuration-tier-should-i-use"></a>應該使用哪個應用程式組態層？
+
+應用程式組態層都提供核心功能，包括 config 設定、功能旗標、Key Vault 參考、基本管理作業、計量和記錄。
+
+以下是選擇層的考慮。
+
+- **每個訂**用帳戶的資源：資源是由單一設定存放區所組成。 每個訂用帳戶僅限免費層中的一個設定存放區。 在標準層中，訂用帳戶可以有不限數量的設定存放區。
+- **每個資源的儲存體**：在免費層中，每個設定存放區的儲存空間限制為 10 MB。 在標準層中，每個設定存放區最多可以使用 1 GB 的儲存空間。
+- **金鑰歷程記錄**：應用程式組態儲存對金鑰所做之所有變更的歷程記錄。 在免費層中，此歷程記錄會儲存7天。 在標準層中，此歷程記錄會儲存30天。
+- **每日要求**數：免費層存放區受限於每日1000個要求。 一旦存放區到達1000要求，它會傳回 HTTP 狀態碼429給所有要求，直到 UTC 午夜。
+
+    針對標準層存放區，每日費用會包含前200000個要求。 其他要求則會以超額部分計費。
+
+- **服務等級協定**：標準層的 SLA 為99.9% 的可用性。 免費層不提供 SLA。
+- **安全性功能**：兩個層級都包含基本的安全性功能，包括使用 Microsoft 管理的金鑰進行加密、透過 HMAC 或 Azure Active Directory 的驗證、RBAC 支援和受控識別。 標準層提供更先進的安全性功能，包括私人連結支援，以及使用客戶管理的金鑰進行加密。
+- **成本**：標準層商店具有每日使用量費用。 對於過去每日配置的要求，也會收取超額費用。 使用免費層存放區不會產生任何費用。
+
+## <a name="can-i-upgrade-a-store-from-the-free-tier-to-the-standard-tier-can-i-downgrade-a-store-from-the-standard-tier-to-the-free-tier"></a>我可以將商店從免費層升級至標準層嗎？ 我可以將存放區從標準層降級為免費層嗎？
+
+您可以隨時從免費層升級至標準層。
+
+您無法將存放區從標準層降級至免費層。 您可以在免費層中建立新的存放區，然後將設定[資料匯入該存放區](howto-import-export-data.md)。
 
 ## <a name="how-can-i-receive-announcements-on-new-releases-and-other-information-related-to-app-configuration"></a>如何接收新版本的公告和與應用程式組態相關的其他資訊？
 

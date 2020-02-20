@@ -15,12 +15,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 9f18cb79e4c160271fbb3855b1fc6e05589cf854
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 62628b611c7df7aa0515cbb2cc938b02977e510e
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899437"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467652"
 ---
 # <a name="delete-an-azure-app-configuration-store"></a>刪除 Azure 應用程式設定存放區
 
@@ -31,10 +31,6 @@ ms.locfileid: "76899437"
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 如果您選擇在本機安裝和使用 CLI，本文會要求您執行 Azure CLI 2.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
-
-您必須先執行下列命令，以安裝 Azure 應用程式設定 CLI 擴充功能：
-
-        az extension add -n appconfig
 
 ## <a name="sample-script"></a>範例指令碼
 
@@ -53,7 +49,7 @@ az appconfig delete --name myTestAppConfigStore --resource-group myResourceGroup
 
 | Command | 注意 |
 |---|---|
-| [az appconfig delete](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-delete) | 刪除應用程式組態存放區資源。 |
+| [az appconfig delete](/cli/azure/appconfig#az-appconfig-delete) | 刪除應用程式組態存放區資源。 |
 
 ## <a name="next-steps"></a>後續步驟
 

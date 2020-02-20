@@ -1,21 +1,19 @@
 ---
 title: 在 Azure 成本管理中管理 AWS 成本和使用量
 description: 本文協助您了解如何使用 Azure 成本管理中的成本分析和預算，來管理 AWS 成本和使用量。
-services: cost-management
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2019
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: ormaoz
+ms.reviewer: matrive
 ms.custom: ''
-ms.openlocfilehash: a7520d7b3bd46aa9151c68598574f9cbec84d6fc
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: fd4d4a16642e764276d49dd732a785be48197d01
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75988613"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200022"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>在 Azure 中管理 AWS 成本和使用量
 

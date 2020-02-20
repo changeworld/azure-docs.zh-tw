@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/08/2019
-ms.openlocfilehash: 1f3dd1fa4b70fcdbec7e62c84bbfc1df14d3502e
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: e2b3ceba7a3673caa38e09f6b4dfa296fd063cfe
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425080"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467908"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure 診斷疑難排解
 本文說明有關使用 Azure 診斷的疑難排解資訊。 如需有關 Azure 診斷的詳細資訊，請參閱 [Azure 診斷概觀](diagnostics-extension-overview.md)。
@@ -297,5 +297,5 @@ System.IO.FileLoadException: Could not load file or assembly 'System.Threading.T
 
 - 儲存體中的資料是否具有英文計數器名稱。 如果計數器名稱不是英文，入口網站計量圖表將無法辨識該計數器。 **緩解方式**：針對系統帳戶，將電腦的語言變更為英文。 若要執行上述方式，請選取 [控制台] > [地區] > [系統管理] > [複製設定]。 接下來，取消選取 [歡迎畫面及系統帳戶]，如此一來自訂語言就不會套用到系統帳戶。
 
-- 如果您在效能計數器名稱中使用萬用字元 (\*)，在將效能計數器傳送至 Azure 儲存體接收時，入口網站將無法關聯設定和收集的計數器。 **風險降低**：若要確定您可以使用萬用字元，並讓入口網站展開 (\*)，請將效能計數器傳送至[「Azure 監視器」接收](diagnostics-extension-schema.md#diagnostics-extension-111)。
+- 如果您在效能計數器名稱中使用萬用字元 (\*)，在將效能計數器傳送至 Azure 儲存體接收時，入口網站將無法關聯設定和收集的計數器。 **緩和**：為確保您可以使用萬用字元，並讓入口網站展開（\*），請將效能計數器路由傳送至 Azure 監視器接收。
 

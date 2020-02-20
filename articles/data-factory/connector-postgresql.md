@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 02/19/2020
 ms.author: jingwang
-ms.openlocfilehash: fa5835b287a2fd39671ea5ac0c3bc849378645c5
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 38cab21fb38fe171992ec8ce6c48b07f2ea94e9a
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75891940"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471137"
 ---
 # <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 PostgreSQL 複製資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -36,11 +36,11 @@ ms.locfileid: "75891940"
 
 具體而言，這個 PostgreSQL 連接器支援 PostgreSQL **7.4 版和更新版本**。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-針對版本 3.7 以前的自我裝載 IR 版本，您必須在 Integration Runtime 電腦上安裝 [PostgreSQL 的 Ngpsql 資料提供者](https://go.microsoft.com/fwlink/?linkid=282716)，版本為 2.0.12 和 3.1.9 之間的版本。
+Integration Runtime 從版本 3.7 開始提供內建的 PostgreSQL 驅動程式，因此您不需要手動安裝任何驅動程式。
 
 ## <a name="getting-started"></a>開始使用
 
@@ -52,7 +52,7 @@ ms.locfileid: "75891940"
 
 以下是針對 PostgreSQL 已連結服務支援的屬性：
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 類型屬性必須設定為：**PostgreSql** | 是 |
 | connectionString | ODBC 連接字串，用於連線到適用於 PostgreSQL 的 Azure 資料庫。 <br/>您也可以將密碼放在 Azure Key Vault 中，並從連接字串中提取 `password` 組態。 請參閱下列範例和[在 Azure Key Vault 中儲存認證](store-credentials-in-key-vault.md)一文中的更多詳細資料。 | 是 |
@@ -60,7 +60,7 @@ ms.locfileid: "75891940"
 
 一般的連接字串為 `Server=<server>;Database=<database>;Port=<port>;UID=<username>;Password=<Password>`。 您可以根據您的案例設定更多屬性：
 
-| 屬性 | 說明 | 選項 | 必要項 |
+| 屬性 | 描述 | 選項。 | 必要 |
 |:--- |:--- |:--- |:--- |
 | EncryptionMethod (EM)| 驅動程式用來加密在驅動程式和資料庫伺服器之間傳送之資料的方法。 例如，`EncryptionMethod=<0/1/6>;`| 0 (無加密) **(預設)** / 1 (SSL) / 6 (RequestSSL) | 否 |
 | ValidateServerCertificate (VSC) | 決定啟用 SSL 加密時，驅動程式是否驗證由資料庫伺服器所傳送的憑證 (加密方法 = 1)。 例如，`ValidateServerCertificate=<0/1>;`| 0 (停用) **(預設)** / 1 (啟用) | 否 |
@@ -141,7 +141,7 @@ ms.locfileid: "75891940"
 
 若要從于 postgresql 複製資料，支援下列屬性：
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 資料集的類型屬性必須設定為： **PostgreSqlTable** | 是 |
 | 結構描述 | 結構描述的名稱。 |否 (如果已指定活動來源中的「查詢」)  |
@@ -176,7 +176,7 @@ ms.locfileid: "75891940"
 
 若要從于 postgresql 複製資料，複製活動的 [**來源**] 區段中支援下列屬性：
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的類型屬性必須設定為： **PostgreSqlSource** | 是 |
 | 查詢 | 使用自訂 SQL 查詢來讀取資料。 例如： `"query": "SELECT * FROM \"MySchema\".\"MyTable\""` 。 | 否 (如果已指定資料集中的 "tableName") |

@@ -6,18 +6,16 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: overview
 ms.date: 02/24/2019
-ms.openlocfilehash: 22ebfc53405149358b0a2a03cd256a78db5d1910
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 67a76d3b347ef750b639225a009cc6968cb84c6f
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899340"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467550"
 ---
 # <a name="what-is-azure-app-configuration"></a>什麼是 Azure 應用程式設定？
 
 Azure 應用程式組態會提供集中管理應用程式設定和功能旗標的服務。 最新的程式 (特別是在雲端中執行的程式) 通常會有許多分散性質的元件。 將組態設定分散到這些元件，可能會導致應用程式部署期間發生難以排解的錯誤。 使用應用程式設定儲存應用程式的所有設定，並在同一個地方保護其存取權。
-
-應用程式組態目前為公開預覽狀態。 在預覽期間可免費使用應用程式組態。 您可以在 [Azure 入口網站](https://portal.azure.com)中註冊該服務。
 
 ## <a name="why-use-app-configuration"></a>為什麼使用應用程式設定？
 

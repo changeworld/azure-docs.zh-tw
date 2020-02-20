@@ -12,12 +12,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 04/13/2018
 ms.author: cjiang
-ms.openlocfilehash: 72fbdbcfcd94dd41a67bb81314802dd7314ae463
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9bb228725d5ad8e3583c73be09c582478f74a1e8
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60505791"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471885"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>在 Azure 中建立、重新啟動或調整 VM 大小時，對配置失敗進行疑難排解
 
@@ -25,7 +25,7 @@ ms.locfileid: "60505791"
 
 **錯誤碼**：AllocationFailed 或 ZonalAllocationFailed
 
-**錯誤訊息**：「配置失敗。 我們在此區域沒有足夠的容量可供要求的 VM 大小使用。 深入了解提高的配置成功率，請參閱 https:\//aka.ms/allocation-guidance"
+**錯誤訊息**：「配置失敗。 我們在此區域沒有足夠的容量可供要求的 VM 大小使用。 深入瞭解如何在 HTTPs 上改善配置成功的可能性：\//aka.ms/allocation-guidance」
 
 本文說明一些常見的配置失敗原因，並建議可能的補救方法。
 
@@ -47,7 +47,7 @@ ms.locfileid: "60505791"
 如果 VM 可以屬於不同的可用性設定組，請在不同的可用性設定組 (位於相同區域) 中建立 VM。 然後，這個新的 VM 就可以加入至相同的虛擬網路。
 
 停止 (解除配置) 相同可用性設定組中的所有 VM，然後重新啟動每一部 VM。
-若要停止：按一下 [資源群組] > [您的資源群組] > [資源] > [您的可用性設定組] > [虛擬機器] > [您的虛擬機器] > [停止]。
+若要停止，請按一下 [資源群組] > [您的資源群組] > [資源] > [您的可用性設定組] > [虛擬機器] > [您的虛擬機器] > [停止]。
 所有 VM 都停止之後，請選取第一個 VM，然後按一下 [啟動]。
 此步驟可確保執行新的配置嘗試，而且可以選取有足夠容量的新叢集。
 
@@ -60,7 +60,7 @@ ms.locfileid: "60505791"
 ### <a name="workaround"></a>因應措施
 
 停止 (解除配置) 相同可用性設定組中的所有 VM，然後重新啟動每一部 VM。
-若要停止：按一下 [資源群組] > [您的資源群組] > [資源] > [您的可用性設定組] > [虛擬機器] > [您的虛擬機器] > [停止]。
+若要停止，請按一下 [資源群組] > [您的資源群組] > [資源] > [您的可用性設定組] > [虛擬機器] > [您的虛擬機器] > [停止]。
 所有 VM 都停止之後，請選取第一個 VM，然後按一下 [啟動]。
 這可確保執行新的配置嘗試，而且可以選取有足夠容量的新叢集。
 
@@ -79,9 +79,11 @@ ms.locfileid: "60505791"
 
 如果您的配置要求相當大 (超過 500 個核心)，請參閱下列小節中的指引，將要求分解成較小的部署。
 
+請嘗試重新[部署 VM](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/redeploy-to-new-node-windows)。 重新部署 VM 會將 VM 配置到區域內的新叢集。
+
 ## <a name="allocation-failures-for-older-vm-sizes-av1-dv1-dsv1-d15v2-ds15v2-etc"></a>較舊版 VM 大小 (Av1、Dv1、DSv1、D15v2、DS15v2 等) 的配置失敗
 
-隨著我們擴充 Azure 基礎結構，我們會部署更新一代、專為支援最新虛擬機器類型而設計的硬體。 有些較舊系列的 VM 無法在我們最新一代的基礎結構上執行。 因此，客戶可能偶爾會遇到這些舊版 SKU 的配置失敗問題。 若要避免發生這個問題，我們會鼓勵使用舊系列虛擬機器的客戶考慮遷移到較新的對等 VM，建議方法如下：這些 VM 都針對最新硬體進行了最佳化，將可讓您享有更高的性價比。 
+隨著我們擴充 Azure 基礎結構，我們會部署更新一代、專為支援最新虛擬機器類型而設計的硬體。 有些較舊系列的 VM 無法在我們最新一代的基礎結構上執行。 因此，客戶可能偶爾會遇到這些舊版 SKU 的配置失敗問題。 為了避免這個問題，我們鼓勵使用舊版系列虛擬機器的客戶考慮依據下列建議移轉至對等的較新版 VM：這些 VM 已針對最新硬體進行最佳化，將可讓您享有更好的定價和效能。 
 
 |傳統 VM 系列/大小|建議的較新版 VM 系列/大小|詳細資訊|
 |----------------------|----------------------------|--------------------|

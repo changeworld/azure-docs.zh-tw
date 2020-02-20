@@ -527,7 +527,7 @@
               href: platform/resource-logs-blob-format.md
         - name: 將資料串流至事件中樞
           href: platform/stream-monitoring-data-event-hubs.md
-    - name: 監視 VM 和計算
+    - name: 監視 VM 和客體 OS
       items:
         - name: 代理程式
           items:
@@ -537,13 +537,15 @@
               href: 'faq.md#agents'
             - name: Azure 診斷擴充功能
               items:
+                - name: 概觀
+                  href: platform/diagnostics-extension-overview.md
                 - name: Windows
                   displayname: diagnostics extension
                   items:
-                    - name: 概觀
-                      href: platform/diagnostics-extension-overview.md
                     - name: 安裝和設定
                       items:
+                        - name: 安裝選項
+                          href: platform/diagnostics-extension-windows-install.md
                         - name: PowerShell
                           href: ../virtual-machines/extensions/diagnostics-windows.md?toc=/azure/azure-monitor/toc.json
                         - name: Resource Manager 範本
@@ -561,13 +563,11 @@
                     - name: 傳送至事件中樞
                       href: platform/diagnostics-extension-stream-event-hubs.md
                     - name: 傳送至記錄
-                      href: platform/azure-storage-iis-table.md
-                    - name: 傳送到 Azure 儲存體
-                      href: platform/diagnostics-extension-to-storage.md
+                      href: platform/diagnostics-extension-logs.md
                     - name: 傳送至 Application Insights
                       href: platform/diagnostics-extension-to-application-insights.md
                     - name: 版本歷程記錄
-                      href: platform/diagnostics-extension-schema.md
+                      href: platform/diagnostics-extension-versions.md
                     - name: JSON 行資源記錄格式
                       href: platform/diagnostic-logs-append-blobs.md
                     - name: 疑難排解
@@ -588,9 +588,9 @@
                 - name: Linux 代理程式
                   href: platform/agent-linux.md
                 - name: Windows 的 VM 延伸模組
-                  href: ../virtual-machines/windows/extensions-oms.md
+                  href: ../virtual-machines/windows/extensions-oms.md?toc=/azure/azure-monitor/toc.json
                 - name: Linux 的 VM 延伸模組
-                  href: ../virtual-machines/linux/extensions-oms.md
+                  href: ../virtual-machines/linux/extensions-oms.md?toc=/azure/azure-monitor/toc.json
                 - name: Log Analytics 閘道
                   href: platform/gateway.md
                 - name: 代理程式管理
@@ -1151,8 +1151,8 @@
       href: service-limits.md
     - name: 診斷擴充功能
       items:
-        - name: 結構描述
-          href: platform/diagnostics-extension-schema-1dot3.md
+        - name: Windows 組態結構描述
+          href: platform/diagnostics-extension-schema-windows.md
     - name: 術語變更
       href: terminology.md
     - name: Application Insights

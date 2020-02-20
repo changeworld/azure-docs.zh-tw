@@ -2,21 +2,18 @@
 title: 追蹤 Microsoft 客戶合約的 Azure 點數餘額
 description: 了解如何查看 Microsoft 客戶合約的 Azure 點數餘額。
 author: bandersmsft
-manager: amberb
+ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 10/01/2019
+ms.date: 02/13/2019
 ms.author: banders
-ms.openlocfilehash: c8ea083e216331904c9d5741b97f69b7f5a8249a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e65637f20d14b93c212b1af2f20695ff5dfeb350
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75991330"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199682"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>追蹤 Microsoft 客戶合約的 Azure 點數餘額
 
@@ -28,7 +25,7 @@ ms.locfileid: "75991330"
 
 ## <a name="check-your-credit-balance"></a>查看您的點數餘額
 
-### <a name="azure-portaltabportal"></a>[Azure 入口網站](#tab/portal)
+### <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
@@ -99,7 +96,7 @@ ms.locfileid: "75991330"
 
     ![計費帳戶的點數清單螢幕擷取畫面](./media/mca-check-azure-credits-balance/mca-account-credit-list.png)
 
-### <a name="rest-apitabrest"></a>[REST API](#tab/rest)
+### <a name="rest-api"></a>[REST API](#tab/rest)
 
 您可以使用 [Azure 計費](https://docs.microsoft.com/rest/api/billing/)和[使用量](https://docs.microsoft.com/rest/api/consumption/) API，以程式設計方式取得計費帳戶的點數餘額。
 

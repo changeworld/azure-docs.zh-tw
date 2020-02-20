@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: e12fc5d92cfc850e1d049bc11286c0c863e718b0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bad3be86bd85f7e5cebcf9445d14d836c73a87ef
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459179"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470782"
 ---
 # <a name="export-security-alerts-and-recommendations-preview"></a>匯出安全性警示和建議（預覽）
 
@@ -105,7 +105,7 @@ Azure 監視器針對各種 Azure 警示（包括診斷記錄、計量警示，�
 
 ## <a name="manual-one-time-export-of-security-alerts"></a>手動一次匯出安全性警示
 
-若要下載警示或建議的 CSV 報告，請開啟 [**安全性警示**或**建議**] 頁面，然後按一下 [**下載 CSV 報表（預覽）** ] 按鈕。
+若要下載警示或建議的 CSV 報告，請開啟 [**安全性警示**或**建議**] 頁面，然後按一下 [**下載 CSV 報表**] 按鈕。
 
 [![將警示資料下載為 CSV 檔案](media/continuous-export/download-alerts-csv.png)](media/continuous-export/download-alerts-csv.png#lightbox)
 

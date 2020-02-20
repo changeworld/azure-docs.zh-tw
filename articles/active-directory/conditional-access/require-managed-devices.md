@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb0764b9c2c43faf88db165a11ae963c4f170f01
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 5a16d28f31887c8bedcc95424382e674e037450e
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512584"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468400"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>作法：透過條件式存取要求受管理的裝置存取雲端應用程式
 
@@ -24,12 +24,16 @@ ms.locfileid: "76512584"
 
 本文說明如何設定條件式存取原則，以要求受管理的裝置存取您環境中的特定雲端應用程式。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 需要受管理的裝置進行雲端應用程式存取系結**Azure AD 條件式存取**和**Azure AD 裝置管理**。 如果您還不熟悉上述其中一種領域，您應該先閱讀下列主題：
 
 - **[Azure Active Directory 中的條件式存取](../active-directory-conditional-access-azure-portal.md)** -這篇文章會提供條件式存取和相關術語的概念總覽。
 - **[Azure Active Directory 中的裝置管理簡介](../devices/overview.md)** - 本文概略說明在組織的控制下可用來連接裝置的各種選項。 
+
+>[!IMPORTANT] 
+> 我們建議使用 Azure AD 裝置型條件式存取原則，以在初始裝置驗證之後取得最佳的強制執行。 這包括關閉會話（如果裝置不符合規範）和裝置程式碼流程。
+
 
 ## <a name="scenario-description"></a>案例描述
 

@@ -8,12 +8,12 @@ metadata:
   ms.date: 12/19/2019
   ms.service: dms
   ms.topic: landing-page
-  ms.openlocfilehash: 8ca7f2618c6415dd3dbe22cada35bccb56be50ee
-  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+  ms.openlocfilehash: f72b43fe60676011819dc3aafe026017af6c62c0
+  ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 12/25/2019
-  ms.locfileid: "75437889"
+  ms.lasthandoff: 02/19/2020
+  ms.locfileid: "77471375"
 landingContent:
 - title: 關於 Azure 資料庫移轉服務
   linkLists:
@@ -55,41 +55,43 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: 遷移到 SQL Database 單一資料庫 - 線上
+    - text: 遷移至 SQL DB 單一資料庫 - 線上
       url: tutorial-sql-server-azure-sql-online.md
-    - text: 遷移到 SQL Database 單一資料庫 - 離線
+    - text: 遷移至 SQL DB 單一資料庫 - 離線
       url: tutorial-sql-server-to-azure-sql.md
-    - text: 遷移到 SQL Database 受控執行個體 - 線上
+    - text: 遷移至 SQL DB 受控執行個體 - 線上
       url: tutorial-sql-server-managed-instance-online.md
-    - text: 遷移到 SQL Database 受控執行個體 - 離線
+    - text: 遷移至 SQL DB 受控執行個體 - 離線
       url: tutorial-sql-server-to-managed-instance.md
-    - text: 將 RDS SQL Server 遷移到 SQL Database 單一資料庫/受控執行個體 - 線上
+    - text: 將 RDS SQL Server 遷移到 SQL DB 單一資料庫/受控執行個體 - 線上
       url: tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md
   - linkListType: reference
     links:
-    - text: 已知問題 - 線上移轉至 SQL Database 單一資料庫
+    - text: 已知問題 - 線上移轉至 SQL DB 單一資料庫
       url: known-issues-azure-sql-online.md
-    - text: 已知問題 - 線上移轉至 SQL Database 受控執行個體
+    - text: 已知問題 - 線上移轉至 SQL DB 受控執行個體
       url: known-issues-azure-sql-db-managed-instance-online.md
-    - text: 適用於 SQL Database 受控執行個體移轉的網路拓撲
+    - text: 適用於 SQL DB 受控執行個體移轉的網路拓撲
       url: resource-network-topologies.md
-    - text: 從 SQL Server 線上移轉至 SQL Database 受控執行個體的自訂角色
+    - text: 從 SQL Server 線上移轉至 SQL DB 受控執行個體的自訂角色
       url: resource-custom-roles-sql-db-managed-instance.md
   - linkListType: video
     links:
-    - text: 將 SQL Server 2008 遷移到 SQL Database 受控執行個體
+    - text: 將 SQL Server 2008 遷移至 SQL DB 受控執行個體
       url: https://azure.microsoft.com/resources/videos/how-to-migrate-sql-server-2008-or-r2-to-azure-sqldbmi/
 - title: 將開放原始碼資料庫遷移到 Azure
   linkLists:
   - linkListType: tutorial
     links:
-    - text: 遷移到適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器 - 線上
+    - text: 透過入口網站線上遷移至適用於 PostgreSQL 的 Azure DB
+      url: tutorial-postgresql-azure-postgresql-online-portal.md
+    - text: 透過 CLI 線上遷移至適用於 PostgreSQL 的 Azure DB
       url: tutorial-postgresql-azure-postgresql-online.md
-    - text: 將 RDS PostgreSQL 遷移到適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器 - 線上
+    - text: 將 RDS PostgreSQL 遷移至適用於 PostgreSQL 的 Azure DB
       url: tutorial-rds-postgresql-server-azure-db-for-postgresql-online.md
-    - text: 遷移到適用於 MySQL 的 Azure 資料庫 - 線上
+    - text: 遷移至適用於 MySQL 的 Azure DB - 線上
       url: tutorial-mysql-azure-mysql-online.md
-    - text: 將 RDS MySQL 遷移到適用於 MySQL 的 Azure 資料庫 - 線上
+    - text: 將 RDS MySQL 遷移至適用於 MySQL 的 Azure DB - 線上
       url: tutorial-rds-mysql-server-azure-db-for-mysql-online.md
     - text: 遷移到 Azure Cosmos DB Mongo API - 線上
       url: tutorial-mongodb-cosmos-db-online.md
@@ -97,13 +99,13 @@ landingContent:
       url: tutorial-mongodb-cosmos-db.md
   - linkListType: reference
     links:
-    - text: 已知問題 - 線上移轉到適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器
+    - text: 已知問題 - 線上移轉至適用於 PostgreSQL 的 Azure DB - 單一資料庫
       url: known-issues-azure-postgresql-online.md
-    - text: 已知問題 - 線上移轉到適用於 MySQL 的 Azure 資料庫
+    - text: 已知問題 - 線上移轉至適用於 MySQL 的 Azure DB
       url: known-issues-azure-mysql-online.md
   - linkListType: video
     links:
-    - text: 將 PostgreSQL 遷移到適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器
+    - text: 將 PostgreSQL 遷移到適用於 PostgreSQL 的 Azure DB - 單一伺服器
       url: https://azure.microsoft.com/resources/videos/how-to-migrate-postgresql-to-azure-postgresql-online-dms-and-cli/
     - text: 遷移到 Azure Cosmos DB Mongo API
       url: https://azure.microsoft.com/resources/videos/how-to-migrate-mongodb-to-cosmos-db/

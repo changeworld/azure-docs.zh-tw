@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.openlocfilehash: 2250e41bffc26bd9ae59dfc652a06d08016d227a
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.date: 02/17/2020
+ms.openlocfilehash: 016107248399e84b7a82a656c9d590c3cbe0cdbe
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053800"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77466921"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>透過 JDBC 驅動程式在 HDInsight 中查詢 Apache Hive
 
@@ -23,9 +23,9 @@ ms.locfileid: "73053800"
 
 如需有關 Hive JDBC 介面的詳細資訊，請參閱 [HiveJDBCInterface](https://cwiki.apache.org/confluence/display/Hive/HiveJDBCInterface)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* HDInsight Hadoop 叢集。 若要建立，請參閱[開始使用 Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md)。
+* HDInsight Hadoop 叢集。 若要建立，請參閱[開始使用 Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md)。 確定服務 HiveServer2 正在執行。
 * [JAVA 開發人員套件（JDK）第11版](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html)或更高版本。
 * [SQuirreL SQL](http://squirrel-sql.sourceforge.net/)。 SQuirreL 是 JDBC 用戶端應用程式。
 
@@ -37,7 +37,7 @@ Azure 上 HDInsight 叢集的 JDBC 連線會透過埠443進行，並使用 SSL �
 
 將 `CLUSTERNAME` 替換為 HDInsight 叢集的名稱。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>驗證
 
 建立連線時，您必須使用 HDInsight 叢集系統管理員名稱和密碼來通過叢集閘道器驗證。 從 SQuirreL SQL 之類的 JDBC 用戶端連接時，您必須在用戶端設定中輸入系統管理員名稱和密碼。
 
@@ -65,15 +65,15 @@ SQuirreL SQL 是可用來從遠端以 HDInsight 叢集執行 Hive 查詢的 JDBC
 
     ![視窗左側的 [驅動程式] 索引標籤](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-squirreldrivers.png)
 
-4. 從 [驅動程式] 對話方塊上方的圖示，選取 [+] 圖示以建立驅動程式。
+4. 從 [驅動程式] 對話方塊上方的圖示，選取 [ **]+** 圖示以建立驅動程式。
 
     ![SQuirreL SQL 應用程式驅動程式圖示](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-driversicons.png)
 
 5. 在 [新增驅動程式] 對話方塊中，新增下列資訊：
 
-    |屬性 | Value |
+    |屬性 | 值 |
     |---|---|
-    |Name|Hive|
+    |名稱|Hive|
     |範例 URL|jdbc： hive2：//localhost： 443/default; transportMode = HTTP; ssl = true; HTTPPath =/hive2|
     |額外類別路徑|使用 [**新增**] 按鈕來新增稍早下載的所有 jar 檔案。|
     |類別名稱|[Org.apache.hive.jdbc.hivedriver]。|
@@ -88,11 +88,11 @@ SQuirreL SQL 是可用來從遠端以 HDInsight 叢集執行 Hive 查詢的 JDBC
 
 7. 在 [**新增別名**] 對話方塊中使用下列值：
 
-    |屬性 |Value |
+    |屬性 |值 |
     |---|---|
-    |Name|HDInsight 上的 Hive|
+    |名稱|HDInsight 上的 Hive|
     |驅動程式|使用下拉式選來選取**Hive**驅動程式。|
-    |URL|jdbc： hive2：//CLUSTERNAME.azurehdinsight.net： 443/default; transportMode = HTTP; ssl = true; HTTPPath =/hive2。 將 CLUSTERNAME 取代為 HDInsight 叢集的名稱。|
+    |URL|jdbc： hive2：//CLUSTERNAME.azurehdinsight.net： 443/default; transportMode = HTTP; ssl = true; HTTPPath =/hive2。 將 **CLUSTERNAME** 取代為 HDInsight 叢集的名稱。|
     |使用者名稱|HDInsight 叢集的叢集登入帳戶名稱。 預設值為**admin**。|
     |密碼|叢集登入帳戶的密碼。|
 

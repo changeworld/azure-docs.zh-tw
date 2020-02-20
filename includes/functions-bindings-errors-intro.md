@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: 8573a915c572885b53437843b114aa987be4c66b
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 629de079f7cc7d95d10f8ff951a47b8b8fc62dad
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198442"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77474107"
 ---
 Azure Functions 中引發的錯誤可能來自下列任何來源：
 
@@ -37,6 +37,6 @@ Azure Functions 中引發的錯誤可能來自下列任何來源：
 * [Azure 佇列儲存體](../articles/azure-functions/functions-bindings-storage-queue.md)
 * [Azure 服務匯流排 (佇列/主題)](../articles/azure-functions/functions-bindings-service-bus.md)
 
-根據預設，這些觸發程式會重試最多五次的要求。 在第五次重試之後，Azure 佇列儲存體和 Azure 服務匯流排觸發程式都會將訊息寫入[有害佇列](..\articles\azure-functions\functions-bindings-storage-queue.md#trigger---poison-messages)。
+根據預設，這些觸發程式會重試最多五次的要求。 在第五次重試之後，Azure 佇列儲存體和 Azure 服務匯流排觸發程式都會將訊息寫入[有害佇列](..\articles\azure-functions\functions-bindings-storage-queue-trigger.md#poison-messages)。
 
 您必須手動為任何其他觸發程式或系結類型執行重試原則。 手動執行可能包括將錯誤資訊寫入[有害訊息佇列](..\articles\azure-functions\functions-bindings-storage-blob-trigger.md#poison-blobs)。 藉由寫入有害佇列，您有機會在稍後重試作業。 這是 Blob 儲存體觸發程式所使用的方法。

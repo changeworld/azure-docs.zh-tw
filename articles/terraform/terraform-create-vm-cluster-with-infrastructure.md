@@ -3,12 +3,12 @@ title: 教學課程 - 使用 Terraform 和 HCL 建立 Azure VM 叢集
 description: 使用 Terraform 和 HCL，在 Azure 中建立具有負載平衡器的 Linux 虛擬機器叢集
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 1ff13f05a5be463ed7477b4bbbc3e1f977a04a75
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 39e9857ad0119c08e949bbe5f6accb07432f3469
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665362"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470865"
 ---
 # <a name="tutorial-create-an-azure-vm-cluster-with-terraform-and-hcl"></a>教學課程：使用 Terraform 和 HCL 建立 Azure VM 叢集
 
@@ -28,11 +28,11 @@ ms.locfileid: "75665362"
 ## <a name="1-set-up-azure-authentication"></a>1.設定 Azure 驗證
 
 > [!NOTE]
-> 如果您是[使用 Terraform 環境變數](/azure/virtual-machines/linux/terraform-install-configure)，或是在 [Azure Cloud Shell](terraform-cloud-shell.md) 中執行本教學課程，請略過此小節。
+> 如果您是[使用 Terraform 環境變數](terraform-install-configure.md)，或是在 [Azure Cloud Shell](terraform-cloud-shell.md) 中執行本教學課程，請略過此小節。
 
 在本節中，您會產生一個 Azure 服務主體，以及兩個包含來自安全性主體之認證的 Terraform 設定檔。
 
-1. [設定 Azure AD 服務主體](/azure/virtual-machines/linux/terraform-install-configure#set-up-terraform-access-to-azure)以讓 Terraform 將資源佈建至 Azure。 建立主體時，請記下訂用帳戶識別碼、租用戶、應用程式識別碼及密碼的值。
+1. [設定 Azure AD 服務主體](terraform-install-configure.md#set-up-terraform-access-to-azure)以讓 Terraform 將資源佈建至 Azure。 建立主體時，請記下訂用帳戶識別碼、租用戶、應用程式識別碼及密碼的值。
 
 2. 開啟命令提示字元。
 

@@ -3,14 +3,16 @@ author: yashar
 ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 11-20-2018
-ms.openlocfilehash: 9a7de2b41c8016bdb7849cdef428d6f54a8ccf64
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 02-18-2020
+ms.openlocfilehash: aebe8f05bd1a3607da6d1153c87490891fc6b299
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005467"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471445"
 ---
+當您購買保留的 VM 實例時，您可以選擇優化實例大小彈性或容量優先順序。 如需設定或變更保留 VM 實例之優化設定的詳細資訊，請參閱[變更保留 vm 實例的優化設定](../articles/cost-management-billing/reservations/manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances)。
+
 使用已針對實例大小彈性進行優化的保留虛擬機器實例，您購買的保留專案可套用至相同實例大小彈性群組中的虛擬機器（Vm）大小。 例如，如果您購買 DSv2 系列中所列 VM 大小的保留，例如 Standard_DS5_v2，保留折扣可以套用至相同實例大小彈性群組中所列的其他四個大小：
 
 - Standard_DS1_v2

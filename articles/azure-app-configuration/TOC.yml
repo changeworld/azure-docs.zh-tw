@@ -1,4 +1,4 @@
-- name: Azure 應用程式組態預覽文件
+- name: Azure 應用程式組態文件
   href: index.yml
 - name: 概觀
   items:
@@ -59,6 +59,8 @@
   items:
     - name: 索引鍵-值存放區
       href: concept-key-value.md
+    - name: 使用客戶管理的金鑰加密
+      href: concept-customer-managed-keys.md
     - name: 時間點快照集
       href: concept-point-time-snapshot.md
     - name: 功能管理
@@ -67,14 +69,18 @@
       href: concept-github-action.md
     - name: 事件處理
       href: concept-app-configuration-event.md
+    - name: 驗證
+      items:
+        - name: 與 Azure 受控識別整合
+          href: howto-integrate-azure-managed-service-identity.md
+        - name: 使用 Azure Active Directory 啟用存取
+          href: concept-enable-rbac.md
     - name: 高可用性
       items:
         - name: 復原和災害復原
           href: concept-disaster-recovery.md
 - name: 操作指南
   items:
-    - name: 與 Azure 受控識別整合
-      href: howto-integrate-azure-managed-service-identity.md
     - name: 匯入或匯出設定資料
       href: howto-import-export-data.md
     - name: 將事件路由至自訂端點
@@ -86,12 +92,12 @@
     - name: 組態
       items:
         - name: Azure CLI
-          href: 'https://docs.microsoft.com/cli/azure/ext/appconfig/appconfig?view=azure-cli-latest'
+          href: 'https://docs.microsoft.com/cli/azure/appconfig?view=azure-cli-latest'
         - name: .NET Core 提供者
           href: 'https://go.microsoft.com/fwlink/?linkid=2074664'
         - name: .NET Framework 建立器
           href: 'https://go.microsoft.com/fwlink/?linkid=2074663'
-        - name: 適用於 .Net 的 Azure SDK
+        - name: 適用於 .NET 的 Azure SDK
           href: 'https://go.microsoft.com/fwlink/?linkid=2092056'
         - name: Java Spring 提供者
           href: 'https://go.microsoft.com/fwlink/?linkid=2074659'

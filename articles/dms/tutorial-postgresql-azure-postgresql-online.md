@@ -1,7 +1,7 @@
 ---
-title: 教學課程：將于 postgresql online 遷移至適用於 PostgreSQL 的 Azure 資料庫
+title: 教學課程：透過 Azure CLI 將于 postgresql 遷移至適用於 PostgreSQL 的 Azure 資料庫 online
 titleSuffix: Azure Database Migration Service
-description: 了解如何使用 Azure 資料庫移轉服務，在線上將內部部署的 PostgreSQL 移轉至適用於 PostgreSQL 的 Azure 資料庫。
+description: 瞭解如何透過 CLI 使用 Azure 資料庫移轉服務，從內部部署于 postgresql 到適用於 PostgreSQL 的 Azure 資料庫進行線上遷移。
 services: dms
 author: HJToland3
 ms.author: jtoland
@@ -11,15 +11,15 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: ee5863497ce067d2ff056c3fc1c64b00d3004cd8
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/17/2020
+ms.openlocfilehash: c9cea6041c7f4d91295072121c62ba028e5ad937
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76903930"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470933"
 ---
-# <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>教學課程：使用 DMS 在線上將 PostgreSQL 移轉至適用於 PostgreSQL 的 Azure 資料庫
+# <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-cli"></a>教學課程：透過 Azure CLI，使用 DMS 將于 postgresql 遷移至 Azure DB for 于 postgresql online
 
 您可以使用 Azure 資料庫移轉服務，在最短的停機時間內將資料庫從內部部署 PostgreSQL 執行個體移轉至[適用於 PostgreSQL 的 Azure 資料庫](https://docs.microsoft.com/azure/postgresql/)。 換句話說，可在最短的應用程式停機時間內完成移轉。 在此教學課程中，您會在 Azure 資料庫移轉服務中使用線上移轉活動，將 **DVD Rental** 範例資料庫從內部部署的 PostgreSQL 9.6 執行個體移轉至適用於 PostgreSQL 的 Azure 資料庫。
 
@@ -38,7 +38,7 @@ ms.locfileid: "76903930"
 > [!IMPORTANT]
 > 為了獲得最佳的移轉體驗，Microsoft 建議在目標資料庫所在的同一個 Azure 區域中，建立 Azure 資料庫移轉服務的執行個體。 跨區域或地理位置移動資料可能使移轉程序變慢，並產生錯誤。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，您需要：
 
@@ -46,7 +46,7 @@ ms.locfileid: "76903930"
 
     此外，內部部署 PostgreSQL 版本必須符合適用於 PostgreSQL 的 Azure 資料庫版本。 例如，PostgreSQL 9.5.11.5 只能移轉至「適用於 PostgreSQL 的 Azure 資料庫」9.5.11，而無法移轉至 9.6.7。
 
-* [在適用於 PostgreSQL 的 Azure 資料庫中建立執行個體](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)。  
+* [在適用於 PostgreSQL 的 Azure 資料庫中建立實例](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)，或[建立適用於 PostgreSQL 的 Azure 資料庫超大規模資料庫（Citus）伺服器](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal)。
 * 使用 Azure Resource Manager 部署模型建立 Azure 資料庫移轉服務的 Microsoft Azure 虛擬網路，以使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)或[VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)為您的內部部署來源伺服器提供站對站連線能力。 如需有關建立虛擬網路的詳細資訊，請參閱[虛擬網路檔](https://docs.microsoft.com/azure/virtual-network/)，特別是快速入門文章，其中包含逐步解說的詳細資料。
 
     > [!NOTE]
@@ -100,7 +100,7 @@ ms.locfileid: "76903930"
 
 2. 在您的目標環境中建立一個空的資料庫，即適用於 PostgreSQL 的 Azure 資料庫。
 
-    如需有關如何連線及建立資料庫的詳細資訊，請參閱[在 Azure 入口網站中建立適用於 PostgreSQL 的 Azure 資料庫伺服器](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)一文。
+    如需如何連接及建立資料庫的詳細資訊，請參閱在[Azure 入口網站中建立適用於 PostgreSQL 的 Azure 資料庫伺服器](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)或在[Azure 入口網站中建立適用於 PostgreSQL 的 Azure 資料庫超大規模資料庫（Citus）伺服器](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal)一文。
 
 3. 透過還原結構描述傾印檔案，將結構描述匯入到您所建立的目標資料庫中。
 
@@ -189,6 +189,9 @@ ms.locfileid: "76903930"
        ---------------  ------
        whl              dms
        ```
+
+      > [!IMPORTANT]
+      > 請確定您的延伸模組版本高於0.11.0。
 
    * 隨時透過執行下列命令查看 DMS 中支援的所有命令：
 
@@ -358,7 +361,7 @@ ms.locfileid: "76903930"
    az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask
    ```
 
-   或
+   OR
 
     ```
    az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask --expand output
@@ -374,7 +377,7 @@ ms.locfileid: "76903930"
 
 在輸出檔案中，有幾個參數指出移轉的進度。 例如，查看下面的輸出檔案：
 
-    ```
+  ```
     "output": [                                 Database Level
           {
             "appliedChanges": 0,        //Total incremental sync applied after full load
@@ -449,7 +452,7 @@ ms.locfileid: "76903930"
       },
       "resourceGroup": "PostgresDemo",
       "type": "Microsoft.DataMigration/services/projects/tasks"
-    ```
+  ```
 
 ## <a name="cutover-migration-task"></a>完全移轉工作
 

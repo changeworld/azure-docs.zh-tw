@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 2772535ff5eb7cf1e50c40b8ff075f67e71e1326
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 319d43b4096c638eee74031e5b506b5cec3ffd5d
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751006"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467278"
 ---
 # <a name="logs-in-azure-monitor"></a>Azure 監視器中的記錄
 
@@ -76,23 +76,23 @@ Azure 監視器可以在 Azure 中及內部部署資源的各種來源收集資�
 
 ### <a name="azure-tenant-and-subscription"></a>Azure 租使用者和訂用帳戶
 
-| 資料 | 說明 |
+| 資料 | 描述 |
 |:---|:---|
 | Azure Active Directory audit 記錄檔 | 透過每個目錄的診斷設定來設定。 請參閱[整合 Azure AD 記錄與 Azure 監視器記錄](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)。  |
 | 活動記錄 | 預設會個別儲存，並可用於近乎即時的警示。 安裝活動記錄分析解決方案以寫入 Log Analytics 工作區。 請參閱[在 Log Analytics 中收集並分析 Azure 活動記錄](activity-log-collect.md)。 |
 
 ### <a name="azure-resources"></a>Azure 資源
 
-| 資料 | 說明 |
+| 資料 | 描述 |
 |:---|:---|
 | 資源診斷 | 設定診斷設定以寫入診斷資料，包括對 Log Analytics 工作區的計量。 請參閱[將 Azure 資源記錄串流至 Log Analytics](resource-logs-collect-storage.md)。 |
 | 監視解決方案 | 監視解決方案會將他們收集的資料寫入其 Log Analytics 工作區。 如需解決方案清單，請參閱[Azure 中管理解決方案的資料收集詳細資料](../insights/solutions-inventory.md)。 如需安裝和使用解決方案的詳細資訊，請參閱[Azure 監視器中的監視解決方案](../insights/solutions.md)。 |
-| 計量 | 將 Azure 監視器資源的平臺計量傳送到 Log Analytics 工作區，以保留記錄資料較長的時間，以及使用[Kusto 查詢語言](/azure/kusto/query/)來執行其他資料類型的複雜分析。 請參閱[將 Azure 資源記錄串流至 Log Analytics](resource-logs-collect-storage.md)。 |
-| Azure 表格儲存體 | 從 Azure 儲存體收集資料，其中某些 Azure 資源會寫入監視資料。 如需 Log Analytics 的事件，請參閱[使用適用于 IIS 的 azure blob 儲存體和 azure 資料表儲存體](azure-storage-iis-table.md)。 |
+| 度量 | 將 Azure 監視器資源的平臺計量傳送到 Log Analytics 工作區，以保留記錄資料較長的時間，以及使用[Kusto 查詢語言](/azure/kusto/query/)來執行其他資料類型的複雜分析。 請參閱[將 Azure 資源記錄串流至 Log Analytics](resource-logs-collect-storage.md)。 |
+| Azure 表格儲存體 | 從 Azure 儲存體收集資料，其中某些 Azure 資源會寫入監視資料。 如需 Log Analytics 的事件，請參閱[使用適用于 IIS 的 azure blob 儲存體和 azure 資料表儲存體](diagnostics-extension-logs.md)。 |
 
 ### <a name="virtual-machines"></a>虛擬機器
 
-| 資料 | 說明 |
+| 資料 | 描述 |
 |:---|:---|
 |  代理程式資料來源 | 從[Windows](agent-windows.md)和[Linux](../learn/quick-collect-linux-computer.md)代理程式收集的資料來源包含事件、效能資料和自訂記錄。 如需資料來源的清單和設定的詳細資訊，請參閱[Azure 監視器中的代理程式資料來源](data-sources.md)。 |
 | 監視解決方案 | 監視解決方案會將他們從代理程式收集到的資料寫入其 Log Analytics 工作區。 如需解決方案清單，請參閱[Azure 中管理解決方案的資料收集詳細資料](../insights/solutions-inventory.md)。 如需安裝和使用解決方案的詳細資訊，請參閱[Azure 監視器中的監視解決方案](../insights/solutions.md)。 |
@@ -101,30 +101,30 @@ Azure 監視器可以在 Azure 中及內部部署資源的各種來源收集資�
 
 ### <a name="applications"></a>應用程式
 
-| 資料 | 說明 |
+| 資料 | 描述 |
 |:---|:---|
 | 要求和例外狀況 | 有關應用程式要求和例外狀況的詳細資料位於 [_要求_]、[ _pageViews_] 和 [_例外_狀況] 資料表中。 [外部元件](../app/asp-net-dependencies.md)的_呼叫位於相依性資料表中_。 |
 | 使用方式和效能 | 應用程式的效能可在_requests_、 _browserTimings_和_performanceCounters_資料表中取得。 [自訂計量](../app/api-custom-events-metrics.md#trackevent)的資料位於_customMetrics_資料表中。|
 | 追蹤資料 | [分散式追蹤](../app/distributed-tracing.md)的結果會儲存在_追蹤_資料表中。 |
 | 可用性集合 | 來自[可用性測試](../app/monitor-web-app-availability.md)的摘要資料會儲存在_availabilityResults_資料表中。 這些測試中的詳細資料位於不同的儲存體，並從 Azure 入口網站中的 Application Insights 存取。 |
 
-### <a name="insights"></a>深入資訊
+### <a name="insights"></a>深入解析
 
-| 資料 | 說明 |
+| 資料 | 描述 |
 |:---|:---|
 | 適用於容器的 Azure 監視器 | [Azure 監視器針對容器](../insights/container-insights-overview.md)收集的清查和效能資料。 如需資料表的清單，請參閱[容器資料收集詳細資料](../insights/container-insights-log-search.md#container-records)。 |
 | 適用於 VM 的 Azure 監視器 | [適用於 VM 的 Azure 監視器](../insights/vminsights-overview.md)所收集的對應和效能資料。 如需查詢此資料的詳細資訊，請參閱[如何從適用於 VM 的 Azure 監視器查詢記錄](../insights/vminsights-log-search.md)。 |
 
-### <a name="custom"></a>自訂 
+### <a name="custom"></a>Custom 
 
-| 資料 | 說明 |
+| 資料 | 描述 |
 |:---|:---|
 | REST API | 將資料從任何 REST 用戶端寫入 Log Analytics 工作區。 如需詳細資訊，請參閱[使用 HTTP 資料收集器 API 將記錄資料傳送至 Azure 監視器](data-collector-api.md)。
-| Logic 應用程式 | 使用**Azure Log Analytics 資料收集器**動作，從邏輯應用程式工作流程將任何資料寫入 Log Analytics 工作區。 |
+| 邏輯應用程式 | 使用**Azure Log Analytics 資料收集器**動作，從邏輯應用程式工作流程將任何資料寫入 Log Analytics 工作區。 |
 
 ### <a name="security"></a>安全性
 
-| 資料 | 說明 |
+| 資料 | 描述 |
 |:---|:---|
 | Azure 資訊安全中心 | [Azure 資訊安全中心](/azure/security-center/)會將它收集的資料儲存在 Log Analytics 工作區中，以便使用其他記錄資料進行分析。 如需工作區設定的詳細資訊，請參閱[Azure 資訊安全中心中的資料收集](../../security-center/security-center-enable-data-collection.md)。 |
 | Azure Sentinel | [Azure Sentinel](/azure/sentinel/)會將資料來源中的資料儲存至 Log Analytics 工作區。 請參閱[連接資料來源](/azure/sentinel/connect-data-sources)。  |

@@ -1,31 +1,23 @@
 ---
 title: 使用 REST API 檢閱 Azure Enterprise 註冊計費資料 | Microsoft Docs
 description: 了解如何使用 Azure REST API 來檢閱 Enterprise 註冊計費資訊。
-services: billing
-documentationcenter: na
 author: lleonard-msft
-manager: ''
-editor: ''
-ms.assetid: 82D50B98-40F2-44B1-A445-4391EA9EBBAA
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 10/01/2019
+ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 222b0358f027e0a6687ca0710e3cf5b80f292c4e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 24c4d9b74d68a05a253f05521ee62a0881a90988
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75993462"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199563"
 ---
 # <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>使用 REST API 檢閱 Enterprise 註冊計費
 
 Azure 報告 API 可協助您檢閱及管理 Azure 費用。
 
-在本文中，您會了解如何使用 Azure REST API，來擷取與計費帳戶、部門或 Enterprise 合約 (EA) 註冊帳戶相關聯的帳單資訊。 
+在本文中，您會了解如何使用 Azure REST API，來擷取與計費帳戶、部門或 Enterprise 合約 (EA) 註冊帳戶相關聯的帳單資訊。
 
 ## <a name="individual-account-billing"></a>個別帳戶的帳單
 
@@ -39,7 +31,7 @@ Authorization: Bearer
 
 `{billingAccountId}` 是必要參數，其中應該包含帳戶的識別碼。
 
-以下是必要標頭： 
+以下是必要標頭：
 
 |要求標頭|描述|  
 |--------------------|-----------------|  
@@ -80,9 +72,9 @@ Authorization: Bearer
 
 此範例已經過縮減；如需每個回應欄位和錯誤處理的完整說明，請參閱[取得帳單帳戶的使用量詳細資料](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslist-legacy)。
 
-## <a name="department-billing"></a>部門帳單 
+## <a name="department-billing"></a>部門帳單
 
-取得針對某部門所有帳戶所彙總的使用量詳細資料。 
+取得針對某部門所有帳戶所彙總的使用量詳細資料。
 
 ```http
 GET https://management.azure.com/providers/Microsoft.Billing/departments/{departmentId}/providers/Microsoft.Consumption/usageDetails?api-version=2018-06-30
@@ -92,7 +84,7 @@ Authorization: Bearer
 
 `{departmentId}` 是必要參數，其中應該包含註冊帳戶中的部門識別碼。
 
-以下是必要標頭： 
+以下是必要標頭：
 
 |要求標頭|描述|  
 |--------------------|-----------------|  
@@ -148,7 +140,7 @@ Authorization: Bearer
 
 `{enrollmentAccountId}` 是必要參數，其中應該包含註冊帳戶的識別碼。
 
-以下是必要標頭： 
+以下是必要標頭：
 
 |要求標頭|描述|  
 |--------------------|-----------------|  
@@ -185,11 +177,11 @@ Authorization: Bearer
     }
   ]
 }
-``` 
+```
 
 此範例已經過縮減；如需每個回應欄位和錯誤處理的完整說明，請參閱[取得註冊帳戶的使用量詳細資料](/rest/api/consumption/usagedetails/list#enrollmentaccountusagedetailslist-legacy)。
 
-## <a name="next-steps"></a>後續步驟 
+## <a name="next-steps"></a>後續步驟
 - 檢閱[企業報告概觀](https://docs.microsoft.com/azure/billing/billing-enterprise-api)
 - 調查[企業計費 REST API](https://docs.microsoft.com/rest/api/billing/)   
 - [Get started with Azure REST API](https://docs.microsoft.com/rest/api/azure/) (開始使用 Azure REST API)   

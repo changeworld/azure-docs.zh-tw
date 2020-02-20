@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: a5ad4cbd11d6468413a43576e2156ee807067aa8
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: a2f3dbf58363331cf6b1b05e759d246e68e7e7a5
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153344"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471205"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>使用 PowerShell 來管理 Azure Data Lake Storage Gen2 中的目錄、檔案和 Acl （預覽）
 
@@ -25,7 +25,7 @@ ms.locfileid: "77153344"
 
 [Gen1 至 Gen2 對應](#gen1-gen2-map) | [提供意見](https://github.com/Azure/azure-powershell/issues)反應
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 > [!div class="checklist"]
 > * Azure 訂用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
@@ -339,7 +339,7 @@ $file.ACL
 
 使用 `Get-AzDataLakeGen2Item` Cmdlet 取得目錄或檔案的 ACL。 然後，使用 `New-AzDataLakeGen2ItemAclObject` Cmdlet 來建立新的 ACL 專案。 使用 `Update-AzDataLakeGen2Item` Cmdlet 來套用新的 ACL。
 
-這個範例會為使用者提供目錄的寫入和執行許可權。
+這個範例會提供目錄的群組寫入和執行許可權。
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -370,7 +370,7 @@ Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirna
 
 ```
 
-這個範例會為使用者提供檔案的寫入和執行許可權。
+這個範例會提供檔案的「寫入」和「執行」許可權給群組。
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -418,7 +418,7 @@ Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Recurse -
 
 下表顯示用於 Data Lake Storage Gen1 的 Cmdlet 對應至 Data Lake Storage Gen2 之 Cmdlet 的方式。
 
-|Data Lake Storage Gen1 Cmdlet| Data Lake Storage Gen2 Cmdlet| 注意事項 |
+|Data Lake Storage Gen1 Cmdlet| Data Lake Storage Gen2 Cmdlet| 注意 |
 |--------|---------|-----|
 |AzDataLakeStoreChildItem|AzDataLakeGen2ChildItem|根據預設，AzDataLakeGen2ChildItem Cmdlet 只會列出第一個層級的子專案。 -遞迴參數會以遞迴方式列出子專案。 |
 |AzDataLakeStoreItem<br>AzDataLakeStoreItemAclEntry<br>AzDataLakeStoreItemOwner<br>AzDataLakeStoreItemPermission|AzDataLakeGen2Item|AzDataLakeGen2Item 指令程式的輸出專案具有下列屬性： Acl、擁有者、群組、許可權。|

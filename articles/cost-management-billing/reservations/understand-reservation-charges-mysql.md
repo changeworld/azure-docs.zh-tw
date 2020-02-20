@@ -8,17 +8,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/17/2019
-ms.openlocfilehash: 7be3a7913559947be1291db35ac3531f152dfae9
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/13/2020
+ms.openlocfilehash: ed067e4bbde737cb08afe7c9429854e54e2ef3d9
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75995542"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199308"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-mysql"></a>保留折扣如何套用至適用於 MySQL 的 Azure 資料庫
 
-購買適用於 MySQL 的 Azure 資料庫保留容量之後，保留折扣就會自動套用至符合保留屬性和數量的 MySQL 伺服器。 保留僅涵蓋適用於 MySQL 的 Azure 資料庫計算成本。 您必須依標準費率支付儲存體和網路的費用。 
+購買適用於 MySQL 的 Azure 資料庫保留容量之後，保留折扣就會自動套用至符合保留屬性和數量的 MySQL 伺服器。 保留僅涵蓋適用於 MySQL 的 Azure 資料庫計算成本。 您必須依標準費率支付儲存體和網路的費用。
 
 ## <a name="how-reservation-discount-is-applied"></a>保留折扣的套用方式
 

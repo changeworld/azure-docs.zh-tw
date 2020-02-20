@@ -5,18 +5,18 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: 瞭解如何設定 Azure Dev Spaces 以使用自訂 traefik 輸入控制器，並使用該輸入控制器來設定 HTTPS
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s
-ms.openlocfilehash: db9afc3a5e33d1a12246c2af80428137043aa242
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2ac43f00e2fa7ecf792469c2140bbbfee4bb57cf
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438480"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471392"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>使用自訂 traefik 輸入控制器並設定 HTTPS
 
 本文說明如何將 Azure Dev Spaces 設定為使用自訂 traefik 輸入控制器。 本文也會說明如何將該自訂輸入控制器設定為使用 HTTPS。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 如果您沒有帳戶，您可以建立[免費帳戶][azure-account-create]。
 * [已安裝 Azure CLI][az-cli]。
@@ -53,6 +53,13 @@ helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 kubectl create ns traefik
 helm install traefik stable/traefik --namespace traefik --set kubernetes.ingressClass=traefik --set kubernetes.ingressEndpoint.useDefaultPublishedService=true --version 1.85.0
 ```
+
+> [!NOTE]
+> 上述範例會建立輸入控制器的公用端點。 如果您需要改用輸入控制器的私用端點，請新增 *--set 服務。附注。service\\Beta\\. kubernetes\\。 io/azure-load-平衡器-internal "= true*參數至*helm install*命令。
+> ```console
+> helm install traefik stable/traefik --namespace traefik --set kubernetes.ingressClass=traefik --set kubernetes.ingressEndpoint.useDefaultPublishedService=true --set service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-internal"=true --version 1.85.0
+> ```
+> 此私人端點會在您 AKS 叢集部署所在的虛擬網路中公開。
 
 使用[kubectl get][kubectl-get]取得 traefik 輸入控制器服務的 IP 位址。
 
@@ -140,7 +147,7 @@ http://dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/  Available
 http://dev.gateway.traefik.MY_CUSTOM_DOMAIN/         Available
 ```
 
-開啟來自 `azds list-uris` 命令的公用 URL，來瀏覽至 *bikesharingweb* 服務。 在上述範例中，*bikesharingweb* 服務的公用 URL 是 `http://dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/`。
+開啟來自 *命令的公用 URL，來瀏覽至*bikesharingweb`azds list-uris` 服務。 在上述範例中，*bikesharingweb* 服務的公用 URL 是 `http://dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/`。
 
 使用 `azds space select` 命令在*dev*底下建立子空間，並列出 url 以存取子開發人員空間。
 

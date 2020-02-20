@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 32865b84de2dc1c1f8a3fd6beca80a2659f1e3d9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 74c8c7dfc2beda2d242bc21e12293dc6f3c1cffe
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75370760"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470831"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>在 Azure 中於 SUSE Linux Enterprise Server 上設定 Pacemaker
 
@@ -60,6 +60,9 @@ SBD 裝置至少需要一部額外的虛擬機器，作為 iSCSI 目標伺服器
 
    <pre><code>sudo zypper update
    </code></pre>
+
+   > [!NOTE]
+   > 升級或更新 OS 之後，您可能需要重新開機作業系統。 
 
 1. 移除套件
 
@@ -517,7 +520,7 @@ o- / ...........................................................................
 
 STONITH 裝置會使用服務主體來對 Microsoft Azure 授權。 請遵循下列步驟來建立服務主體。
 
-1. 前往 <https://portal.azure.com>
+1. 移至 <https://portal.azure.com>。
 1. 開啟 [Azure Active Directory] 刀鋒視窗  
    移至 [屬性]，並記下目錄識別碼。 這是「租用戶識別碼」。
 1. 按一下 [應用程式註冊]
@@ -568,7 +571,7 @@ STONITH 裝置會使用服務主體來對 Microsoft Azure 授權。 請遵循下
 1. 按一下 [新增角色指派]
 1. 選取「Linux 柵欄代理程式角色」角色
 1. 輸入您先前建立的應用程式名稱
-1. 按一下 [儲存]
+1. 按一下 [Save] \(儲存)。
 
 針對第二個叢集節點重複上述步驟。
 

@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.topic: sample
 ms.date: 01/24/2020
 ms.author: lcozzens
-ms.openlocfilehash: 7cc8454ca8dc8d6313e1cf353292adb47b15ef47
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 11f3aec10aed0dc8bc0c9831d563dca2b0c1a6fb
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898726"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468315"
 ---
 # <a name="create-an-azure-app-configuration-store"></a>建立 Azure 應用程式設定存放區
 
@@ -24,10 +24,6 @@ ms.locfileid: "76898726"
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 如果您選擇在本機安裝和使用 CLI，本文會要求您執行 Azure CLI 2.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
-
-您必須先執行下列命令，以安裝 Azure 應用程式設定 CLI 擴充功能：
-
-        az extension add -n appconfig
 
 ## <a name="sample-script"></a>範例指令碼
 
@@ -71,8 +67,8 @@ echo "$appConfigConnectionString"
 | Command | 注意 |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | 建立用來存放所有資源的資源群組。 |
-| [az appconfig create](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-create) | 建立應用程式組態存放區資源。 |
-| [az appconfig credential list](/cli/azure/ext/appconfig/appconfig/credential?view=azure-cli-latest) | 列出應用程式組態存放區的存取金鑰。 |
+| [az appconfig create](/cli/azure/appconfig#az-appconfig-create) | 建立應用程式組態存放區資源。 |
+| [az appconfig credential list](/cli/azure/appconfig/credential#az-appconfig-credential-list) | 列出應用程式組態存放區的存取金鑰。 |
 
 ## <a name="next-steps"></a>後續步驟
 

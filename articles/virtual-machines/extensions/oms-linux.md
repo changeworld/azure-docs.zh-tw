@@ -1,5 +1,5 @@
 ---
-title: 適用于 Linux 的 Azure 監視器虛擬機器擴充功能
+title: 適用於 Linux 的 Log Analytics 虛擬機器擴充功能
 description: 使用虛擬機器擴充功能在 Linux 虛擬機器上部署 Log Analytics 代理程式。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -12,38 +12,38 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/06/2019
+ms.date: 02/18/2020
 ms.author: akjosh
-ms.openlocfilehash: a431ae8130e258664328fa32a364eb76c28ea811
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 9ddac229fc38a91a8b97b24dc2807080b2295758
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544730"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468774"
 ---
-# <a name="azure-monitor-virtual-machine-extension-for-linux"></a>適用于 Linux 的 Azure 監視器虛擬機器擴充功能
+# <a name="log-analytics-virtual-machine-extension-for-linux"></a>適用於 Linux 的 Log Analytics 虛擬機器擴充功能
 
 ## <a name="overview"></a>概觀
 
-Azure 監視器記錄可提供跨雲端和內部部署資產的監視、警示和警示補救功能。 Microsoft 已發佈和支援適用於 Linux 的 Log Analytics 代理程式虛擬機器擴充功能。 擴充功能會在 Azure 虛擬機器上安裝 Log Analytics 代理程式，並且在現有的 Log Analytics 工作區中註冊虛擬機器。 本檔詳述適用于 Linux 的 Azure 監視器虛擬機器擴充功能所支援的平臺、設定和部署選項。
+Azure 監視器記錄可提供跨雲端和內部部署資產的監視、警示和警示補救功能。 適用于 Linux 的 Log Analytics 虛擬機器擴充功能已由 Microsoft 發佈及支援。 擴充功能會在 Azure 虛擬機器上安裝 Log Analytics 代理程式，並且在現有的 Log Analytics 工作區中註冊虛擬機器。 本文件詳述適用於 Linux 的 Log Analytics 虛擬機器擴充功能所支援的平台、組態和部署選項。
 
 >[!NOTE]
 >Microsoft Operations Management Suite (OMS) 正在轉換為 Azure 監視器，而適用於 Windows 或 Linux 的 OMS 代理程式屬於此轉換的一部份，之後會將其稱為適用於 Windows 的 Log Analytics 代理程式和適用於 Linux 的 Log Analytics 代理程式。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 ### <a name="operating-system"></a>作業系統
 
 如需有關支援的 Linux 發行版本的詳細資訊，請參閱[Log Analytics 代理程式總覽](../../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)一文。
 
 ### <a name="agent-and-vm-extension-version"></a>代理程式和 VM 擴充功能版本
-下表提供每個版本之 Azure 監視器 VM 擴充功能和 Log Analytics 代理程式套件組合的版本對應。 隨附 Log Analytics 代理程式套件組合版本的版本資訊連結。 版本資訊包含錯誤修正和適用於指定代理程式版本的新功能詳細資料。  
+下表針對每個版本提供 Log Analytics VM 擴充功能和 Log Analytics 代理程式套件組合的版本對應。 隨附 Log Analytics 代理程式套件組合版本的版本資訊連結。 版本資訊包含錯誤修正和適用於指定代理程式版本的新功能詳細資料。  
 
-| Azure 監視器 Linux VM 擴充功能版本 | Log Analytics 代理程式套件組合版本 | 
+| Log Analytics Linux VM 擴充功能版本 | Log Analytics 代理程式套件組合版本 | 
 |--------------------------------|--------------------------|
-| 1.12.15 | [1.12.15-0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.12.15-0) |
+| 1.12.25 | [1.12.15-0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.12.15-0) |
 | 1.11.15 | [1.11.0-9](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.11.0-9) |
 | 1.10.0 | [1.10.0-1](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.10.0-1) |
 | 1.9.1 | [1.9.0-0](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.9.0-0) |
@@ -100,7 +100,6 @@ Azure 資訊安全中心會自動佈建 Log Analytics 代理程式，並且將�
 
 >[!NOTE]
 >上述結構描述假設會將它放置於範本的根層級。 如果您將它放置於範本中的虛擬機器資源內部，那麼也應該變更 `type` 和 `name` 屬性，如[後續內容](#template-deployment)所述。
->
 
 ### <a name="property-values"></a>屬性值
 

@@ -7,19 +7,31 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 12/04/2019
-ms.openlocfilehash: d4263b8b338f057893c9dfcda1541fc338c2577f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.date: 02/17/2020
+ms.openlocfilehash: 3f8ff3cbc24f6e3a7e0eccf1b18e01941c9584b9
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894265"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471175"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>在 HDInsight 上分析 Apache Kafka 的記錄
 
 瞭解如何使用 Azure 監視器記錄來分析 Apache Kafka on HDInsight 所產生的記錄。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+## <a name="logs-location"></a>記錄位置
+
+叢集中的 Apache Kafka 記錄位於 `/var/log/kafka`。 無論是否使用受控磁片，Kafka 記錄都不會在叢集生命週期中儲存或保存。 下表顯示可用的記錄檔。
+
+|Log |描述 |
+|---|---|
+|kafka。|Kafka 進程的 stdout 和 stderr。 您會在此檔案中找到 Kafka 的啟動和關閉記錄。|
+|伺服器 .log|主要的 Kafka 伺服器記錄檔。 所有 Kafka broker 記錄都會在此結束。|
+|控制器 .log|如果訊息代理程式作為控制器，則為控制器記錄檔。|
+|statechange .log|訊息代理程式的所有狀態變更事件都會記錄在此檔案中。|
+|kafka-gc .log|Kafka 垃圾收集統計資料。|
 
 ## <a name="enable-azure-monitor-logs-for-apache-kafka"></a>啟用 Apache Kafka 的 Azure 監視器記錄
 

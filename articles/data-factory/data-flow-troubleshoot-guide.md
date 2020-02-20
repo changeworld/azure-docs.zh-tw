@@ -8,12 +8,12 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 02/04/2020
-ms.openlocfilehash: 901868da8ed859a846a507557d383db760f297c9
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: e2e1ddd031041f49107545cd0b3d3de4eaebcd6d
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029515"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472123"
 ---
 # <a name="troubleshoot-data-flows-in-azure-data-factory"></a>針對 Azure Data Factory 中的資料流程進行疑難排解
 
@@ -29,8 +29,8 @@ ms.locfileid: "77029515"
 ### <a name="error-code-df-executor-systemimplicitcartesian"></a>錯誤碼： DF-執行程式-SystemImplicitCartesian
 
 - **訊息**：不支援內部聯結的隱含笛卡兒乘積，請改用 CROSS join。 聯結中使用的資料行應該建立資料列的唯一索引鍵。
-- **原因**：不支援邏輯計畫之間內部聯結的隱含笛卡兒乘積。 如果聯結中使用的資料行建立唯一索引鍵
-- **建議**：對於不相等的聯結，您必須選擇 CROSS JOIN。
+- **原因**：不支援邏輯計畫之間內部聯結的隱含笛卡兒乘積。 如果聯結中使用的資料行建立唯一索引鍵，則需要關聯性兩邊的至少一個資料行。
+- **建議**：對於不相等的聯結，您必須選擇自訂交叉聯結。
 
 ### <a name="error-code-df-executor-systeminvalidjson"></a>錯誤碼： DF-執行程式-SystemInvalidJson
 

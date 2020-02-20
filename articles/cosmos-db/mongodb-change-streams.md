@@ -7,16 +7,19 @@ ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 11/16/2019
 ms.author: srchi
-ms.openlocfilehash: fbfce1c107fcf4b6f7d0b5f590a8ddfa64e69190
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: ec1ec1a8a80953f8988355341ee7128bd29b982d
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184729"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467772"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>變更 Azure Cosmos DB 的 MongoDB API 中的資料流程
 
 您可以使用變更資料流程 API，取得 Azure Cosmos DB 的 MongoDB API 中的[變更](change-feed.md)摘要支援。 藉由使用變更資料流程 API，您的應用程式可以取得對集合或單一分區中的專案所做的變更。 稍後您可以根據結果採取進一步的動作。 集合中的專案變更會依照其修改時間順序來捕捉，而排序次序則是依據分區索引鍵來保證。
+
+> [!NOTE]
+> 若要使用變更資料流程，請建立3.6 版 Azure Cosmos DB 適用于 MongoDB 的 API 或更新版本的帳戶。 如果您針對較舊的版本執行變更資料流程範例，您可能會看到 `Unrecognized pipeline stage name: $changeStream` 錯誤。 
 
 下列範例顯示如何取得集合中所有專案的變更資料流程。 這個範例會建立一個資料指標，以便在插入、更新或取代專案時加以監看。 若要取得變更資料流程，必須要有 $match 階段、$project 階段和 fullDocument 選項。 目前不支援使用變更資料流程來監看刪除作業。 因應措施是，您可以在要刪除的專案上新增軟標記。 例如，您可以在名為「已刪除」的專案中加入屬性，並將它設定為 "true"，並在專案上設定 TTL，讓您可以自動將它刪除並加以追蹤。
 

@@ -3,12 +3,12 @@ title: 教學課程 - 使用 Terraform 從 Packer 自訂映像建立 Azure 虛�
 description: 使用 Terraform 從 Packer 產生的自訂映像設定 Azure 虛擬機器擴展集和控制版本 (完整包含虛擬網路和受控連接磁碟)。
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: 9d149a28f82100715035f435de56ff134ca685f5
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 92a8221d625f8b6b73343f74b85fdfcf5e578b23
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159279"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472194"
 ---
 # <a name="tutorial-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image-by-using-terraform"></a>教學課程：使用 Terraform 從 Packer 自訂映像建立 Azure 虛擬機器擴展集
 
@@ -26,9 +26,9 @@ ms.locfileid: "74159279"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-- **Terraform**：[安裝 Terraform 並設定對 Azure 的存取權限](/azure/virtual-machines/linux/terraform-install-configure)。
+- **Terraform**：[安裝 Terraform 並設定對 Azure 的存取權限](terraform-install-configure.md)。
 - **SSH 金鑰組**：[建立 SSH 金鑰組](/azure/virtual-machines/linux/mac-create-ssh-keys)。
 - **Packer**：[安裝 Packer](https://www.packer.io/docs/install/index.html)。
 
@@ -36,9 +36,9 @@ ms.locfileid: "74159279"
 
 在空白目錄中建立使用下列三個名稱的新檔案：
 
-- `variables.tf`：此檔案會保留範本中所使用的變數值。
-- `output.tf`：此檔案描述在部署後顯示的設定。
-- `vmss.tf`：此檔案包含您要部署的基礎結構程式碼。
+- `variables.tf`:此檔案會保留範本中所使用的變數值。
+- `output.tf`:此檔案描述在部署後顯示的設定。
+- `vmss.tf`:此檔案包含您要部署的基礎結構程式碼。
 
 ##  <a name="create-the-variables"></a>建立變數 
 

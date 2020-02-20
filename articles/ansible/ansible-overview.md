@@ -4,12 +4,12 @@ description: 簡介使用 Ansible 自動佈建雲端、進行組態管理和應�
 keywords: ansible, azure, devops, 概觀, 雲端佈建, 組態管理, 應用程式部署, ansible 模組, ansible 腳本
 ms.topic: overview
 ms.date: 04/30/2019
-ms.openlocfilehash: eab2a44257c6769106124c4c9ab6711ba3be531e
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: e9d5b8858f052083b157c7d4809fe21018518bcd
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74155788"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193560"
 ---
 # <a name="using-ansible-with-azure"></a>使用 Ansible 搭配 Azure
 
@@ -57,4 +57,4 @@ Ansible 包含一組用來佈建和設定 Azure 資源的模組。 這些資源�
 ## <a name="next-steps"></a>後續步驟
 
 - [快速入門：將適用於 Azure 的 Ansible 解決方案範本部署至 CentOS](./ansible-deploy-solution-template.md)
-- [快速入門：使用 Ansible 在 Azure 中設定 Linux 虛擬機器](/azure/virtual-machines/linux/ansible-install-configure?toc=%2Fazure%2Fansible%2Ftoc.json&bc=%2Fazure%2Fbread%2Ftoc.json)
+- [快速入門：使用 Ansible 在 Azure 中設定 Linux 虛擬機器](./ansible-install-configure.md)

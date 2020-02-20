@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 94a7218933935aa1a9d38a9fc420bb8d3f669492
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 91a37178f8dc8ecc3c61ca16f193e2e52c309d46
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75471363"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209472"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>教學課程：使用 Resource Manager 範本建立多個資源執行個體
 
@@ -108,7 +108,7 @@ ms.locfileid: "75471363"
 }
 ```
 
-如需有關建立多個執行個體的詳細資訊，請參閱[在 Azure Resource Manager 範本中部署資源或屬性的多個執行個體](./create-multiple-instances.md)
+如需有關建立多個執行個體的詳細資訊，請參閱[在 Azure Resource Manager 範本中部署資源或屬性的多個執行個體](./copy-resources.md)
 
 ## <a name="deploy-the-template"></a>部署範本
 
@@ -118,14 +118,14 @@ ms.locfileid: "75471363"
 
 若要列出全部三個儲存體帳戶，請省略 --name 參數：
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 echo "Enter the Resource Group name:" &&
 read resourceGroupName &&
 az storage account list --resource-group $resourceGroupName
 ```
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $resourceGroupName = Read-Host -Prompt "Enter the resource group name"

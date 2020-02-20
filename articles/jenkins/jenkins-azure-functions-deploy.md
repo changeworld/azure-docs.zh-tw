@@ -4,20 +4,20 @@ description: 了解如何使用 Jenkins Azure Functions 外掛程式部署至 Az
 keywords: jenkins, azure, devops, java, azure functions
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: af3e8dfd6e2bfc676e659a03d92658af66b5bcde
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: edf8c763a46a6f519175842a6525b2c1b314fb66
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158765"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470661"
 ---
 # <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plug-in"></a>使用 Jenkins Azure Functions 外掛程式部署至 Azure Functions
 
 [Azure Functions](/azure/azure-functions/) 是無伺服器計算服務。 您可以視需要使用 Azure Functions 來執行程式碼，無須佈建或管理基礎結構。 本教學課程會示範如何使用 Azure Functions 外掛程式將 JAVA 函數部署至 Azure Functions。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-- **Azure 訂用帳戶**：如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) 。
+- **Azure 訂用帳戶**：如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - **Jenkins 伺服器**：如果您沒有安裝 Jenkins 伺服器，請參閱本文：[在 Azure 上建立 Jenkins 伺服器](./install-jenkins-solution-template.md)。
 
   > [!TIP]
@@ -131,7 +131,7 @@ ms.locfileid: "74158765"
 
 現在可以開始執行 Jenkins 作業。
 
-1. 首先，透過 [Azure Functions HTTP 觸發程序和繫結](/azure/azure-functions/functions-bindings-http-webhook#authorization-keys)一文中的指示取得授權金鑰。
+1. 首先，透過 [Azure Functions HTTP 觸發程序和繫結](/azure/azure-functions/functions-bindings-http-webhook-trigger#authorization-keys)一文中的指示取得授權金鑰。
 
 1. 在瀏覽器中，輸入應用程式的 URL。 以適當的值取代預留位置，並將 **&lt;input_number>** 的數值指定為 Java 函式的輸入。
 

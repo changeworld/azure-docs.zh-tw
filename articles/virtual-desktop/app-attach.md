@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/14/2019
 ms.author: helohr
-ms.openlocfilehash: f6a8e4b9129018686aa5833a2ac260075e5627f9
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 5db60160540fc59465e13bd2e68680f49ee0aa2b
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367623"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470882"
 ---
 # <a name="set-up-msix-app-attach"></a>設定 MSIX 應用程式附加
 
@@ -407,7 +407,7 @@ rmdir $packageName -Force -Verbose
 
 以下說明如何設定離線使用的授權： 
 
-1. 從商務用 Microsoft Store 下載應用程式套件、授權和所需的架構。 您同時需要已編碼和未編碼的授權檔案。 您可以在[這裡](/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app/)找到詳細的下載指示。
+1. 從商務用 Microsoft Store 下載應用程式套件、授權和所需的架構。 您同時需要已編碼和未編碼的授權檔案。 您可以在[這裡](/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app)找到詳細的下載指示。
 2. 在步驟3的腳本中更新下列變數：
       1. `$contentID` 是來自未編碼授權檔案（.xml）的 ContentID 值。 您可以在您選擇的文字編輯器中開啟授權檔案。
       2. `$licenseBlob` 是編碼授權檔案（. bin）中授權 blob 的整個字串。 您可以在您選擇的文字編輯器中開啟編碼的授權檔案。 

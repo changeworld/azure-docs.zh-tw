@@ -1,5 +1,5 @@
 ---
-title: StorSimple Virtual Array 的災害復原和裝置容錯移轉 | Microsoft Docs
+title: StorSimple Virtual Array 的容錯移轉和嚴重損壞修復
 description: 深入了解如何容錯移轉 StorSimple Virtual Array。
 services: storsimple
 documentationcenter: NA
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 19a676f4187af2d358934539e4ca29dbc5c25897
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 464fa05f658dd6e6e25d79f8840ceeb939383149
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190647"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467210"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>透過 Azure 入口網站進行 StorSimple Virtual Array 的災害復原和裝置容錯移轉
 
@@ -44,7 +44,7 @@ ms.locfileid: "77190647"
 
 ## <a name="prerequisites-for-device-failover"></a>裝置容錯移轉需求
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 對於裝置容錯移轉，請確定符合下列必要條件：
 

@@ -7,12 +7,12 @@ ms.author: brysmith
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 02/10/2020
-ms.openlocfilehash: 1be97f9754733561111cedcf95fe237b7788583e
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: b929dd8979ecf587872092af2fa44e5ae03626d1
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122553"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472480"
 ---
 # <a name="tutorial-convert-ml-experimental-code-to-production-code"></a>教學課程：將 ML 實驗性程式碼轉換為實際執行程式碼
 
@@ -409,4 +409,4 @@ MLOpsPython 範本會使用 evaluate_model 指令碼，以根據均方差來比�
 
 > [!div class="nextstepaction"]
 > [監視 Azure ML 實驗執行和計量](https://docs.microsoft.com/azure/machine-learning/how-to-track-experiments)
-> [從 ML Web 服務端點監視和收集資料](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insight)
+> [從 ML Web 服務端點監視和收集資料](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights)

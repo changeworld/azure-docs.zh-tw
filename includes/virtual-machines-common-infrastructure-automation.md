@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: 4259868ff3b3c9ca9f9818532acd7e865e0300d7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 525eba8a5a4e891526eb32a24287ea3887ee6743
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77205704"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77474160"
 ---
 若要以一致的方式大規模建立並管理 Azure 虛擬機器 (VM)，通常需要某種形式的自動化。 有許多工具和解決方案可讓您將完整的 Azure 基礎結構部署及管理生命週期自動化。 本文介紹的一些基礎結構自動化工具可供您在 Azure 中使用。 這些工具通常符合下列其中一種方法：
 
@@ -48,7 +48,7 @@ ms.locfileid: "77205704"
 
 了解如何：
 
-- [從 Azure Marketplace 部署 Puppet ](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2?tab=Overview)。
+- [從 Azure Marketplace 部署 Puppet ](https://azuremarketplace.microsoft.com/marketplace/apps/Puppet.puppet-agent-windows-asm?tab=Overview)。
 
 
 ## <a name="cloud-init"></a>Cloud-init
@@ -99,8 +99,8 @@ DSC 設定會定義要在電腦上安裝的項目，以及設定主機的方式�
 
 了解如何：
 
-- [使用 Azure 安裝及設定 Terraform](../articles/virtual-machines/linux/terraform-install-configure.md)。
-- [使用 Terraform 建立 Azure 基礎結構](../articles/virtual-machines/linux/terraform-create-complete-vm.md)。
+- [使用 Azure 安裝及設定 Terraform](../articles/terraform/terraform-install-configure.md)。
+- [使用 Terraform 建立 Azure 基礎結構](../articles/terraform/terraform-create-complete-vm.md)。
 
 
 ## <a name="azure-automation"></a>Azure 自動化

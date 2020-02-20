@@ -3,27 +3,27 @@ title: 教學課程 - 設定 Azure Terraform Visual Studio Code 擴充功能
 description: 了解如何在 Visual Studio Code 中安裝和使用 Azure Terraform 擴充功能。
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 7f2f15c3a45480b8922f34e191fb965d5e83d9fa
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: fcb47024fd26f061ca4475b01d00f1ae13303b61
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159228"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472276"
 ---
 # <a name="tutorial-configure-the-azure-terraform-visual-studio-code-extension"></a>教學課程：設定 Azure Terraform Visual Studio Code 擴充功能
 
 您可以透過 Azure Terraform Visual Studio Code 延伸模組，在編輯器中使用 Terraform。 可使用此延伸模組來撰寫、測試及執行 Terraform 設定。 延伸模組也支援資源圖表視覺效果。
 
-在本文中，您將了解：
+在本文中，您將學會如何：
 > [!div class="checklist"]
 > * 如何使用 Terraform 自動佈建 Azure 服務
 > * 如何安裝和使用適用於 Azure 服務的 Terraform Visual Studio Code 擴充功能。
 > * 如何使用 Visual Studio Code 來撰寫、規劃及執行 Terraform 方案。
 
-## <a name="prerequisites"></a>必要條件
-- **Azure 訂用帳戶**：如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) 。
+## <a name="prerequisites"></a>Prerequisites
+- **Azure 訂用帳戶**：如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-- **Terraform**：[安裝及設定 Terraform](/azure/virtual-machines/linux/terraform-install-configure)。
+- **Terraform**：[安裝及設定 Terraform](terraform-install-configure.md)。
 
 - **Visual Studio Code**：安裝您的環境適用的 [Visual Studio Code](https://code.visualstudio.com/download) 版本。
 
@@ -190,7 +190,7 @@ Terraform *plan* 命令是用來檢查變更集的執行計畫是否會執行您
 
     ![Terraform apply](media/terraform-vscode-extension/tf-terraform-apply.png)
 
-1. 輸入 `yes` 。
+1. 輸入 `yes`。
 
     ![Terraform 套用 > 是](media/terraform-vscode-extension/tf-terraform-apply-yes.png)
 

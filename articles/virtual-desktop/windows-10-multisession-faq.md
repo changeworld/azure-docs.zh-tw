@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: helohr
-ms.openlocfilehash: 543514683ff96449bfe0e5a21c525834f61f3027
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: e2fa30772082f4d2f7c02add61412432233e3f04
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367125"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470567"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Windows 10 企業版的多重工作階段常見問題集
 
@@ -28,7 +28,7 @@ Windows 10 企業版的多會話，之前稱為 Windows 10 Enterprise for Virtua
  
 ## <a name="why-does-my-application-report-windows-10-enterprise-multi-session-as-a-server-operating-system"></a>為什麼我的應用程式會將 Windows 10 企業版的多重會話報告成伺服器作業系統？
 
-Windows 10 企業版多會話是 Windows 10 企業版的虛擬版本。 其中一項差異是，此作業系統（OS）將[ProductType](/windows/desktop/cimwin32prov/win32-operatingsystem/)的值報告為3，其值與 Windows Server 相同。 此屬性可讓 OS 與現有的 RDSH 管理工具、RDSH 多會話感知應用程式，以及針對 RDSH 環境的低層級系統效能優化相容。 某些應用程式安裝程式可以根據偵測到的 ProductType 是否設為 [用戶端]，封鎖 Windows 10 多會話安裝。 如果您的應用程式不會安裝，請洽詢您的應用程式廠商以取得更新的版本。 
+Windows 10 企業版多會話是 Windows 10 企業版的虛擬版本。 其中一項差異是，此作業系統（OS）將[ProductType](/windows/win32/cimwin32prov/win32-operatingsystem)的值報告為3，其值與 Windows Server 相同。 此屬性可讓 OS 與現有的 RDSH 管理工具、RDSH 多會話感知應用程式，以及針對 RDSH 環境的低層級系統效能優化相容。 某些應用程式安裝程式可以根據偵測到的 ProductType 是否設為 [用戶端]，封鎖 Windows 10 多會話安裝。 如果您的應用程式不會安裝，請洽詢您的應用程式廠商以取得更新的版本。 
  
 ## <a name="can-i-run-windows-10-enterprise-multi-session-on-premises"></a>我可以在內部部署執行 Windows 10 企業版多會話嗎？
 

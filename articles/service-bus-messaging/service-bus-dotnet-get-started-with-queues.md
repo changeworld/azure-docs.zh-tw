@@ -14,18 +14,18 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 60428e3c5be4ac994f83f44c4492ebd80ee65da7
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 5718106aee0e60d111398efdb839945c2c7a8a06
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760976"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471732"
 ---
 # <a name="get-started-with-service-bus-queues"></a>開始使用服務匯流排佇列
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 在本教學課程中，您會建立 .NET Core 主控台應用程式，以在服務匯流排佇列中傳送和接收訊息。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - [Visual Studio 2019](https://www.visualstudio.com/vs)。
 - [.NET Core SDK](https://www.microsoft.com/net/download/windows)，2.0 版或更新版本。
@@ -204,6 +204,7 @@ namespace CoreSenderApp
 1. 在*Program.cs*中，于命名空間定義的頂端新增下列 `using` 語句，在類別宣告之前：
 
     ```csharp
+    using System;
     using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
@@ -220,18 +221,23 @@ namespace CoreSenderApp
 
     輸入命名空間的連接字串做為 `ServiceBusConnectionString` 變數。 輸入您的佇列名稱。
 
-1. 以下列這一行程式碼取代 `Main()` 的預設內容：
+1. 以下列程式碼取代 `Main()` 方法：
 
     ```csharp
-    public static async Task Main(string[] args)
-    {    
+    static void Main(string[] args)
+    {
+        MainAsync().GetAwaiter().GetResult();
+    }
+
+    static async Task MainAsync()
+    {
         queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
 
         Console.WriteLine("======================================================");
         Console.WriteLine("Press ENTER key to exit after receiving all the messages.");
         Console.WriteLine("======================================================");
 
-        // Register the queue message handler and receive messages in a loop
+        // Register QueueClient's MessageHandler and receive messages in a loop
         RegisterOnMessageHandlerAndReceiveMessages();
 
         Console.ReadKey();

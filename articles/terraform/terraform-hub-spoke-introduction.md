@@ -3,12 +3,12 @@ title: 教學課程 - 使用 Terraform 在 Azure 中建立中樞和輪輻混合�
 description: 教學課程說明如何在 Azure 中使用 Terraform 建立完整的混合式網路參考架構
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 90a60fc4fe98397c903e3e8a460806d6a2edb908
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 6f156dd90b83ceaf5749c8c2acebae35bcb54a92
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159029"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472174"
 ---
 # <a name="tutorial-create-a-hub-and-spoke-hybrid-network-topology-in-azure-using-terraform"></a>教學課程：使用 Terraform 在 Azure 中建立中樞和輪輻混合網路拓撲
 
@@ -26,11 +26,11 @@ ms.locfileid: "74159029"
 > * 使用 Terraform 建立內部部署和 Azure 網路之間的閘道和連線
 > * 使用 Terraform 建立與輪輻網路的 VNet 對等互連
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - **Azure 訂用帳戶**：如果您還沒有 Azure 訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-- **安裝及設定 Terraform**：若要在 Azure 中佈建 VM 和其他基礎架構，請[安裝及設定 Terraform](/azure/virtual-machines/linux/terraform-install-configure)
+- **安裝及設定 Terraform**：若要在 Azure 中佈建 VM 和其他基礎架構，請[安裝及設定 Terraform](terraform-install-configure.md)
 
 ## <a name="hub-and-spoke-topology-architecture"></a>中樞與輪輻拓撲架構
 

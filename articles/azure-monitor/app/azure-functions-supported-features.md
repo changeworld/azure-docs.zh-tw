@@ -8,20 +8,22 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 5688bd92e63016e195726488bd9ff9ed039c5795
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: ce8fcc827afdf0102a459f2c6b58db45eff72fa0
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928410"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467382"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>適用於 Azure Functions 的 Application Insights 支援的功能
 
 Azure Functions 提供與 Application Insights 的[內建整合](../../azure-functions/functions-monitoring.md)，可透過 ILogger 介面來使用。 以下列出目前支援的功能。 請檢閱 Azure Functions 的[開始使用](../../azure-functions/functions-monitoring.md#enable-application-insights-integration)指南。
 
+如需執行階段版本的詳細資訊，請參閱[這裡](../../azure-functions/functions-versions.md)。
+
 ## <a name="supported-features"></a>支援的功能
 
-| Azure Functions                       | V1                | V2 (Ignite 2018)  | 
+| Azure Functions                       | V1                | V2 & V3   | 
 |-----------------------------------    |---------------    |------------------ |
 | **Application Insights .NET SDK**   | **2.5.0**       | **2.9.1**         |
 | | | | 

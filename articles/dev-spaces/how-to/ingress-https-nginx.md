@@ -5,18 +5,18 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: 瞭解如何設定 Azure Dev Spaces 以使用自訂 NGINX 輸入控制器，並使用該輸入控制器來設定 HTTPS
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s
-ms.openlocfilehash: a6fcc6bfd7f3bd682cd67b58312a83c23e2a3b1b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c6158c3229f4cb81df69b05c6973425c346a2046
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483163"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77466870"
 ---
 # <a name="use-a-custom-nginx-ingress-controller-and-configure-https"></a>使用自訂 NGINX 輸入控制器並設定 HTTPS
 
 本文說明如何將 Azure Dev Spaces 設定為使用自訂 NGINX 輸入控制器。 本文也會說明如何將該自訂輸入控制器設定為使用 HTTPS。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 如果您沒有帳戶，您可以建立[免費帳戶][azure-account-create]。
 * [已安裝 Azure CLI][az-cli]。
@@ -53,6 +53,13 @@ helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 kubectl create ns nginx
 helm install nginx stable/nginx-ingress --namespace nginx --version 1.27.0
 ```
+
+> [!NOTE]
+> 上述範例會建立輸入控制器的公用端點。 如果您需要改用輸入控制器的私用端點，請新增 *--設定控制器。service\\Beta\\. kubernetes\\。 io/azure-load-平衡器-internal "= true*參數至*helm install*命令。 例如：
+> ```console
+> helm install nginx stable/nginx-ingress --namespace nginx --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-internal"=true --version 1.27.0
+> ```
+> 此私人端點會在您 AKS 叢集部署所在的虛擬網路中公開。
 
 使用[kubectl get][kubectl-get]取得 NGINX 輸入控制器服務的 IP 位址。
 
@@ -141,7 +148,7 @@ http://dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/  Available
 http://dev.gateway.nginx.MY_CUSTOM_DOMAIN/         Available
 ```
 
-開啟來自 `azds list-uris` 命令的公用 URL，來瀏覽至 *bikesharingweb* 服務。 在上述範例中，*bikesharingweb* 服務的公用 URL 是 `http://dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/`。
+開啟來自 *命令的公用 URL，來瀏覽至*bikesharingweb`azds list-uris` 服務。 在上述範例中，*bikesharingweb* 服務的公用 URL 是 `http://dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/`。
 
 使用 `azds space select` 命令在*dev*底下建立子空間，並列出 url 以存取子開發人員空間。
 

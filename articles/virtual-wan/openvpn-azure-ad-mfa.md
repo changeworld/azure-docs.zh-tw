@@ -7,32 +7,32 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: alzam
-ms.openlocfilehash: fcb60e80189da89b3f634c14582be606307536e6
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 13f012af95bb2b6098317e59e5293fb72804a6a6
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76166639"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471495"
 ---
 # <a name="enable-azure-multi-factor-authentication-mfa-for-vpn-users"></a>為 VPN 使用者啟用 Azure 多重要素驗證（MFA）
 
-如果您想要在授與存取權之前提示使用者提供第二個驗證因素，您可以為您的 Azure AD 租使用者設定 Azure 多重要素驗證（MFA）。 這篇文章中的步驟可協助您啟用雙步驟驗證的需求。
+[!INCLUDE [overview](../../includes/vpn-gateway-vwan-openvpn-enable-mfa-overview.md)]
 
-## <a name="prereq"></a>必要
+## <a name="enableauth"></a>啟用驗證
 
-這項設定的必要條件是使用[設定租](openvpn-azure-ad-tenant.md)使用者中的步驟設定 Azure AD 租使用者。
-
-[!INCLUDE [MFA steps](../../includes/vpn-gateway-vwan-openvpn-azure-ad-mfa.md)]
+[!INCLUDE [enable authentication](../../includes/vpn-gateway-vwan-openvpn-enable-auth.md)]
 
 ## <a name="enablesign"></a>設定登入設定
 
-在 [ **AZURE VPN-屬性**] 頁面上，設定 [登入設定]。
+[!INCLUDE [sign in](../../includes/vpn-gateway-vwan-openvpn-sign-in.md)]
 
-1. 將 [**為使用者啟用登入嗎？** ] 設定為 **[是]** 。 這可讓 AD 租使用者中的所有使用者成功連接到 VPN。
-2. **需要設定使用者指派嗎？** 如果您想要將登入限制為僅有 Azure VPN 許可權的使用者，則為 **[是]** 。
-3. 儲存您的變更。
+## <a name="peruser"></a>選項 1-每位使用者存取
 
-   ![使用權限](./media/openvpn-azure-ad-mfa/user2.jpg)
+[!INCLUDE [per user](../../includes/vpn-gateway-vwan-openvpn-per-user.md)]
+
+## <a name="conditional"></a>選項 2-條件式存取
+
+[!INCLUDE [conditional access](../../includes/vpn-gateway-vwan-openvpn-conditional.md)]
 
 ## <a name="next-steps"></a>後續步驟
 
