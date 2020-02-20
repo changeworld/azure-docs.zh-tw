@@ -5,12 +5,12 @@ ms.date: 01/15/2020
 ms.topic: tutorial
 ms.custom: mvc
 zone_pivot_groups: programming-languages-set-functions01
-ms.openlocfilehash: 9c97606b21a6e98494fffb689567aaab6e2f0621
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: b714806c163a94bbae7069c357e603b82ba797ba
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210186"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482355"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>在 Linux 上使用自訂容器建立函式
 
@@ -919,7 +919,7 @@ export default httpTrigger;
     
     ---
 
-1. 使用 [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) 命令檢視此佇列中的訊息，這應該是您先前測試函式時所使用的名字。 此命令會以 [base64 編碼](functions-bindings-storage-queue.md#encoding)擷取佇列中的第一個訊息，因此您也必須將訊息解碼，以便以文字格式檢視。
+1. 使用 [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) 命令檢視此佇列中的訊息，這應該是您先前測試函式時所使用的名字。 此命令會以 [base64 編碼](functions-bindings-storage-queue-trigger.md#encoding)擷取佇列中的第一個訊息，因此您也必須將訊息解碼，以便以文字格式檢視。
 
     # <a name="bash"></a>[bash](#tab/bash)
     

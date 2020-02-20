@@ -371,11 +371,23 @@
         - name: 通知中樞
           href: functions-bindings-notification-hubs.md
         - name: 佇列儲存體
-          href: functions-bindings-storage-queue.md
+          items:
+            - name: 概觀
+              href: functions-bindings-storage-queue.md
+            - name: 觸發程序
+              href: functions-bindings-storage-queue-trigger.md
+            - name: 輸出
+              href: functions-bindings-storage-queue-output.md
         - name: SendGrid
           href: functions-bindings-sendgrid.md
         - name: 服務匯流排
-          href: functions-bindings-service-bus.md
+          items:
+            - name: 概觀
+              href: functions-bindings-service-bus.md
+            - name: 觸發程序
+              href: functions-bindings-service-bus-trigger.md
+            - name: 輸出
+              href: functions-bindings-service-bus-output.md
         - name: SignalR Service
           href: functions-bindings-signalr-service.md
         - name: 表格儲存體

@@ -281,6 +281,8 @@
               href: howto-read-replicas-cli.md
     - name: 超大規模資料庫 (Citus)
       items:
+        - name: 建立使用者
+          href: howto-hyperscale-create-users.md
         - name: 調整
           href: howto-hyperscale-scaling.md
         - name: 管理防火牆

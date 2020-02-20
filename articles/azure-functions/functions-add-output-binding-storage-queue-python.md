@@ -3,12 +3,12 @@ title: 將 Azure 儲存體佇列繫結新增至您的 Python 函式
 description: 使用輸出繫結來整合 Azure 儲存體佇列與 Python 函式。
 ms.date: 01/15/2020
 ms.topic: quickstart
-ms.openlocfilehash: f5527e0e636c3f8c9ee3723570ed9811f0df3641
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 6cea44dca666bbf002de6e2b7dd283f49ac7bd5a
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198474"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485160"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>將 Azure 儲存體佇列繫結新增至您的 Python 函式
 
@@ -100,7 +100,7 @@ ms.locfileid: "77198474"
 
 在此案例下，會將 `msg` 提供給函式作為輸出引數。 針對 `queue` 類型，您也必須在 `queueName` 中指定佇列的名稱，並在 `connection` 中提供 Azure 儲存體連線 (來自 *local.settings.json*) 的*名稱*。
 
-如需繫結的詳細資訊，請參閱 [Azure Functions 觸發程序和繫結概念](functions-triggers-bindings.md)與[佇列輸出設定](functions-bindings-storage-queue.md#output---configuration)。
+如需繫結的詳細資訊，請參閱 [Azure Functions 觸發程序和繫結概念](functions-triggers-bindings.md)與[佇列輸出設定](functions-bindings-storage-queue-output.md#configuration)。
 
 ## <a name="add-code-to-use-the-output-binding"></a>新增程式碼以使用輸出繫結
 
@@ -219,7 +219,7 @@ def main(req: func.HttpRequest, msg: func.Out[func.QueueMessage]) -> str:
     ---
 
 
-1. 使用 [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) 命令檢視此佇列中的訊息，這應該是您先前測試函式時所使用的名字。 此命令會以 [base64 編碼](functions-bindings-storage-queue.md#encoding)擷取佇列中的第一個訊息，因此您也必須將訊息解碼，以便以文字格式檢視。
+1. 使用 [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) 命令檢視此佇列中的訊息，這應該是您先前測試函式時所使用的名字。 此命令會以 [base64 編碼](functions-bindings-storage-queue-trigger.md#encoding)擷取佇列中的第一個訊息，因此您也必須將訊息解碼，以便以文字格式檢視。
 
     # <a name="bash"></a>[bash](#tab/bash)
     

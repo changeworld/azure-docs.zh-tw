@@ -11,8 +11,8 @@
       href: tutorial-enable-sspr.md
     - name: 啟用 Azure Multi-Factor Authentication
       href: tutorial-enable-azure-mfa.md
-    - name: 啟用 SSPR 內部部署整合
-      href: tutorial-enable-writeback.md
+    - name: 啟用將密碼回寫至內部部署
+      href: tutorial-enable-sspr-writeback.md
     - name: 整合 Azure Identity Protection
       href: tutorial-risk-based-sspr-mfa.md
 - name: 概念
@@ -68,8 +68,6 @@
           href: howto-sspr-deployment.md
         - name: 預先登錄驗證資料
           href: howto-sspr-authenticationdata.md
-        - name: 啟用密碼回寫
-          href: howto-sspr-writeback.md
         - name: 適用於 Windows 用戶端的 SSPR
           href: howto-sspr-windows.md
     - name: 雲端式 MFA
