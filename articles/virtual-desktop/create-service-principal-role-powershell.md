@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: helohr
-ms.openlocfilehash: 1141731697c9f649a4a8d4052cd550605049b52e
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 1e26af6c4bf86cfd412df7435379e610ffd69e85
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606945"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367429"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>教學課程：使用 PowerShell 建立服務主體和角色指派
 
@@ -28,7 +28,7 @@ ms.locfileid: "73606945"
 > * 在 Windows 虛擬桌面中建立角色指派。
 > * 使用服務主體登入 Windows 虛擬桌面。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 您必須先執行下列三項作業，才能建立服務主體和角色指派：
 
@@ -38,7 +38,7 @@ ms.locfileid: "73606945"
     Install-Module AzureAD
     ```
 
-2. [下載並匯入 Windows 虛擬桌面 PowerShell 模組](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)。
+2. [下載並匯入 Windows 虛擬桌面 PowerShell 模組](/powershell/windows-virtual-desktop/overview/)。
 
 3. 在相同的 PowerShell 工作階段中，遵循本文中的所有指示。 如果您藉由關閉視窗再於稍後重新開啟來中斷 PowerShell 工作階段，此程序可能就不適用。
 
@@ -80,7 +80,7 @@ $svcPrincipalCreds = New-AzureADApplicationPasswordCredential -ObjectId $svcPrin
 
 接下來，您必須建立角色指派，讓服務主體能夠登入 Windows 虛擬桌面。 請務必使用有權限建立角色指派的帳戶登入。
 
-首先，[下載並匯入 Windows 虛擬桌面的 PowerShell 模組](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)，以在您的 PowerShell 工作階段中使用 (如果您還沒這麼做的話)。
+首先，[下載並匯入 Windows 虛擬桌面的 PowerShell 模組](/powershell/windows-virtual-desktop/overview/)，以在您的 PowerShell 工作階段中使用 (如果您還沒這麼做的話)。
 
 執行下列 PowerShell Cmdlet 以連線至 Windows 虛擬桌面並顯示您的租用戶。
 

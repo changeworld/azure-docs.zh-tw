@@ -1,23 +1,23 @@
 ---
 title: 從 Azure Container Registry 部署容器映射
-description: 了解如何使用 Azure Container Registry 中的容器映像，在 Azure 容器執行個體中部署容器。
+description: 瞭解如何從 Azure container registry 提取容器映射，以在 Azure 容器實例中部署容器。
 services: container-instances
 ms.topic: article
-ms.date: 12/30/2019
+ms.date: 02/18/2020
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 0d39c83646357cf9426239d28e445c4791ddceb0
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bcb1b02b8a2605a42acbe7f33973bef315ca6f54
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981679"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468910"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>從 Azure Container Registry 部署至 Azure 容器執行個體
 
-[Azure Container Registry](../container-registry/container-registry-intro.md) 是 Azure 型的受控容器登錄服務，可用來儲存私人 Docker 容器映像。 本文說明如何將儲存於 Azure Container Registry 的容器映像部署至 Azure Container Instances。
+[Azure Container Registry](../container-registry/container-registry-intro.md) 是 Azure 型的受控容器登錄服務，可用來儲存私人 Docker 容器映像。 本文說明如何在部署至 Azure 容器實例時，提取儲存在 Azure container registry 中的容器映射。 設定登錄存取的建議方式是建立 Azure Active Directory 服務主體和密碼，並將登入認證儲存在 Azure 金鑰保存庫中。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 **Azure container registry**：您需要 azure container registry，以及至少一個登錄中的容器映射--以完成本文中的步驟。 如果您需要登錄，請參閱[使用 Azure CLI 建立容器登錄](../container-registry/container-registry-get-started-azure-cli.md)。
 
@@ -28,6 +28,9 @@ ms.locfileid: "75981679"
 在您提供「無周邊」服務和應用程式存取權的生產案例中，建議使用[服務主體](../container-registry/container-registry-auth-service-principal.md)來設定登錄存取。 服務主體可讓您為容器映射提供[角色型存取控制](../container-registry/container-registry-roles.md)。 例如，您可以設定服務主體具有僅限提取登錄的存取權。
 
 Azure Container Registry 提供額外的[驗證選項](../container-registry/container-registry-authentication.md)。
+
+> [!NOTE]
+> 您無法使用在相同容器群組中設定的[受控識別](container-instances-managed-identity.md)，在容器群組部署期間向 Azure Container Registry 進行驗證以提取映射。
 
 在下一節中，您會建立 Azure 金鑰保存庫和服務主體，並將服務主體的認證儲存在保存庫中。 
 
@@ -78,7 +81,7 @@ az keyvault secret set \
     --value $(az ad sp show --id http://$ACR_NAME-pull --query appId --output tsv)
 ```
 
-您已建立 Azure Key Vault，並在其中儲存兩個祕密：
+您已建立 Azure 金鑰保存庫，並在其中儲存兩個秘密：
 
 * `$ACR_NAME-pull-usr`：服務主體識別碼，作為容器登錄的**使用者名稱**。
 * `$ACR_NAME-pull-pwd`：服務主體密碼，作為容器登錄的**密碼**。

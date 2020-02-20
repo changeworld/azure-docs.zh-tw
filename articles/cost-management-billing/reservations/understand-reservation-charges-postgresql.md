@@ -8,17 +8,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/17/2019
-ms.openlocfilehash: 2f1843690861a463c634f523e82facffc72b6743
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/13/2020
+ms.openlocfilehash: e0dc7780ee570ce2d731bedf9ef56be606088a1f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75995503"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199291"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-postgresql-single-server"></a>保留折扣如何套用至適用於 PostgreSQL Single 的 Azure 資料庫伺服器
 
-購買適用於 PostgreSQL Single 的 Azure 資料庫伺服器保留容量之後，保留折扣就會自動套用至符合保留屬性和數量的 PostgreSQL Single 伺服器資料庫。 保留僅涵蓋適用於 PostgreSQL Single 的 Azure 資料庫伺服器計算成本。 您必須依標準費率支付儲存體和網路的費用。 
+購買適用於 PostgreSQL Single 的 Azure 資料庫伺服器保留容量之後，保留折扣就會自動套用至符合保留屬性和數量的 PostgreSQL Single 伺服器資料庫。 保留僅涵蓋適用於 PostgreSQL Single 的 Azure 資料庫伺服器計算成本。 您必須依標準費率支付儲存體和網路的費用。
 
 ## <a name="how-reservation-discount-is-applied"></a>保留折扣的套用方式
 

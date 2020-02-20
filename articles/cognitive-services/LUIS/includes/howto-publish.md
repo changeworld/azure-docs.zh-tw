@@ -6,18 +6,18 @@ author: diberry
 manager: nitinme
 ms.custom: include file
 ms.service: cognitive-services
-ms.subservice: luis
+ms.date: 02/14/2020
+ms.subservice: language-understanding
 ms.topic: include
-ms.date: 11/05/2019
 ms.author: diberry
-ms.openlocfilehash: 47913f86edcf83825254775705e38310f3c2c6b4
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: c10065707aa3bdf27cb20ab9c03d1cd22e6db050
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325900"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77279736"
 ---
-若要在聊天機器人或其他應用程式中收到 LUIS 預測，您必須將應用程式發佈到端點。 
+若要在聊天機器人或其他應用程式中收到 LUIS 預測，您必須將應用程式發佈到端點。
 
 1. 選取右上方導覽列中的 [發佈]  。
 

@@ -1,5 +1,5 @@
 ---
-title: 8000 系列裝置的 StorSimple 容錯移轉和災害復原 | Microsoft Docs
+title: StorSimple 8000 系列裝置的容錯移轉和嚴重損壞修復
 description: 了解如何將 StorSimple 裝置容錯移轉至其本身、另一個實體裝置或雲端設備。
 services: storsimple
 documentationcenter: ''
@@ -14,27 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 079a2f153f257040d1899a33c9e255d633e526ad
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c1acc084d5abe3385fe311873dfd64c9009e83f2
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60576323"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468587"
 ---
 # <a name="failover-and-disaster-recovery-for-your-storsimple-8000-series-device"></a>StorSimple 8000 系列裝置的容錯移轉和災害復原
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 本文說明 StorSimple 8000 系列裝置的裝置容錯移轉功能，以及發生災害時，如何使用此功能來復原 StorSimple 裝置。 StorSimple 會使用裝置容錯移轉將資料從資料中心的來源裝置移轉至另一個目標裝置。 本文中的指導方針適用於 StorSimple 8000 系列實體裝置和執行軟體版本 Update 3 和更新版本的雲端設備。
 
-發生災害時，StorSimple 會使用 [裝置]  刀鋒視窗來啟動裝置容錯移轉功能。 此刀鋒視窗會列出所有連接至 StorSimple 裝置管理員服務的 StorSimple 裝置。
+發生災害時，StorSimple 會使用 [裝置] 刀鋒視窗來啟動裝置容錯移轉功能。 此刀鋒視窗會列出所有連接至 StorSimple 裝置管理員服務的 StorSimple 裝置。
 
 ![[裝置] 刀鋒視窗](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev1.png)
 
 
 ## <a name="disaster-recovery-dr-and-device-failover"></a>災害復原 (DR) 與裝置容錯移轉
 
-在災害復原 (DR) 案例中，主要裝置會停止運作。 StorSimple 會使用主要裝置做為_來源_，並將相關聯的雲端資料移至另一個_目標_裝置。 這個程序就稱為「容錯移轉」  。 下圖說明容錯移轉的流程。
+在災害復原 (DR) 案例中，主要裝置會停止運作。 StorSimple 會使用主要裝置做為_來源_，並將相關聯的雲端資料移至另一個_目標_裝置。 這個程序就稱為「容錯移轉」。 下圖說明容錯移轉的流程。
 
 ![裝置容錯移轉時會發生什麼事？](./media/storsimple-8000-device-failover-disaster-recovery/failover-dr-flow.png)
 
@@ -48,12 +48,12 @@ ms.locfileid: "60576323"
 
 在 StorSimple 8000 系列上，備份原則與備份有關係。 如果相同磁碟區有多個備份原則，StorSimple 會選擇磁碟區數目最多的備份原則。 接著，StorSimple 會使用所選的備份原則中最新的備份，以還原目標裝置上的資料。
 
-假設有兩個備份原則，defaultPol  與 customPol  ：
+假設有兩個備份原則，defaultPol 與 customPol：
 
-* *defaultPol*:一個磁碟區*vol1*，執行每日開始，在下午 10:30。
-* *customPol*:四個磁碟區， *vol1*， *vol2*， *vol3*， *vol4*，執行每日開始 10:00 PM。
+* defaultPol：一個磁碟區 (vol1)，會於每日晚上 10:30 開始執行。
+* customPol：四個磁碟區 (vol1、vol2、vol3、vol4)，會於每日晚上 10:00 開始執行。
 
-在此情況下，StorSimple 會針對損毀一致性來排定優先順序，並使用 customPol  ，因其擁有的磁碟區較多。 此原則的最新備份可用來還原資料。 如需如何建立及管理備份原則的詳細資訊，請移至[使用 StorSimple 裝置管理員服務來管理備份原則](storsimple-8000-manage-backup-policies-u2.md)。
+在此情況下，StorSimple 會針對損毀一致性來排定優先順序，並使用 customPol，因其擁有的磁碟區較多。 此原則的最新備份可用來還原資料。 如需如何建立及管理備份原則的詳細資訊，請移至[使用 StorSimple 裝置管理員服務來管理備份原則](storsimple-8000-manage-backup-policies-u2.md)。
 
 ## <a name="common-considerations-for-device-failover"></a>裝置容錯移轉的一般注意事項
 
@@ -106,21 +106,21 @@ ms.locfileid: "60576323"
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 
-問： **如果 DR 失敗或只有部分成功，會發生什麼狀況？**
+Q. **如果 DR 失敗或只有部分成功，會發生什麼狀況？**
 
 A. 如果 DR 失敗，建議您再試一次。 第二次裝置容錯移轉作業可感知第一次作業的進度，並從該點開始進行。
 
-問： **正在進行裝置容錯移轉時，是否可以刪除裝置？**
+Q. **正在進行裝置容錯移轉時，是否可以刪除裝置？**
 
-A. 您無法在 DR 正在進行時刪除裝置。 只有在 DR 完成之後，您才能刪除裝置。 您可以在 [作業]  刀鋒視窗中監視裝置容錯移轉作業進度。
+A. 您無法在 DR 正在進行時刪除裝置。 只有在 DR 完成之後，您才能刪除裝置。 您可以在 [作業] 刀鋒視窗中監視裝置容錯移轉作業進度。
 
-問： **何時開始收集來源裝置上的廢棄項目，以便刪除來源裝置上的本機資料？**
+Q. **何時開始收集來源裝置上的廢棄項目，以便刪除來源裝置上的本機資料？**
 
 A. 只有在完全清理裝置之後，才會在來源裝置上啟用記憶體回收。 清理作業包括清理已從來源裝置容錯移轉的物件，例如磁碟區、備份物件 (非資料)、磁碟區容器，以及原則。
 
-問： **如果與來源裝置中磁碟區容器關聯的刪除作業失敗，會發生什麼情況？**
+Q. **如果與來源裝置中磁碟區容器關聯的刪除作業失敗，會發生什麼情況？**
 
-A.  如果刪除作業失敗，您可以手動刪除磁碟區容器。 在 [裝置]  刀鋒視窗中，選取您的來源裝置，然後按一下 [磁碟區容器]  。 選取您已進行容錯移轉的磁碟區容器，然後在刀鋒視窗底部按一下 [刪除]  。 刪除來源裝置上所有已容錯移轉的磁碟區容器之後，您便可以開始容錯回復。 如需詳細資訊，請移至[刪除磁碟區容器](storsimple-8000-manage-volume-containers.md#delete-a-volume-container)。
+A.  如果刪除作業失敗，您可以手動刪除磁碟區容器。 在 [裝置] 刀鋒視窗中，選取您的來源裝置，然後按一下 [磁碟區容器]。 選取您已進行容錯移轉的磁碟區容器，然後在刀鋒視窗底部按一下 [刪除]。 刪除來源裝置上所有已容錯移轉的磁碟區容器之後，您便可以開始容錯回復。 如需詳細資訊，請移至[刪除磁碟區容器](storsimple-8000-manage-volume-containers.md#delete-a-volume-container)。
 
 ## <a name="business-continuity-disaster-recovery-bcdr"></a>業務持續性災害復原 (BCDR)
 

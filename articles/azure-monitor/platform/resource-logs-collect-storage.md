@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: e99a0e8e42bcfb5c7967a9cb1c91631bacbea53a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f4109359adaaeae0a1ba027ac04439ff60b5a939
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980065"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467176"
 ---
 # <a name="archive-azure-resource-logs-to-storage-account"></a>將 Azure 資源記錄封存到儲存體帳戶
 Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記錄和資源記錄，可提供 azure 資源的詳細診斷和審核資訊，以及它們所依賴的 azure 平臺。  本文說明如何將平臺記錄檔收集至 Azure 儲存體帳戶，以保留資料以供封存。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 如果您還沒有[Azure 儲存體帳戶](../../storage/common/storage-account-create.md)，您必須建立它。 儲存體帳戶不一定要與資源傳送記錄位於相同的訂用帳戶中，前提是設定此設定的使用者具有這兩個訂用帳戶的適當 RBAC 存取權。
 
 
@@ -33,7 +33,7 @@ Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記�
 
 
 ## <a name="collect-data-from-compute-resources"></a>從計算資源收集資料
-診斷設定會收集 Azure 計算資源的資源記錄，就像任何其他資源一樣，而不是其客體作業系統或工作負載。 若要收集此資料，請安裝[Windows Azure 診斷代理程式](diagnostics-extension-overview.md)。 如需詳細資訊，請參閱[在 Azure 儲存體中儲存和查看診斷資料](diagnostics-extension-to-storage.md)。
+診斷設定會收集 Azure 計算資源的資源記錄，就像任何其他資源一樣，而不是其客體作業系統或工作負載。 若要收集此資料，請安裝[Windows Azure 診斷代理程式](diagnostics-extension-overview.md)。 
 
 
 ## <a name="schema-of-platform-logs-in-storage-account"></a>儲存體帳戶中平臺記錄的架構

@@ -5,17 +5,17 @@ services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: luis
+ms.subservice: language-understanding
+ms.date: 02/14/2020
 ms.topic: include
 ms.custom: include file
-ms.date: 01/23/2020
 ms.author: diberry
-ms.openlocfilehash: 69814c89c1c44a63febbcac04a4d161cd4c0921f
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 631185c20b816191530158fab2b7cd1ed68c3092
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774242"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77372192"
 ---
 使用適用於 Python 的 Language Understanding (LUIS) 撰寫用戶端程式庫可以：
 
@@ -46,7 +46,7 @@ ms.locfileid: "76774242"
 
 請使用適合您作業系統的指示。
 
-#### <a name="windowstabwindows"></a>[Windows](#tab/windows)
+#### <a name="windows"></a>[Windows](#tab/windows)
 
 ```console
 setx LUIS_AUTHORING_KEY <replace-with-your-luis-authoring-key
@@ -55,7 +55,7 @@ setx LUIS_REGION <replace-with-your-luis-region>
 
 新增環境變數之後，請重新啟動主控台視窗。
 
-#### <a name="linuxtablinux"></a>[Linux](#tab/linux)
+#### <a name="linux"></a>[Linux](#tab/linux)
 
 ```bash
 export LUIS_AUTHORING_KEY=<replace-with-your-luis-authoring-key>
@@ -64,7 +64,7 @@ export LUIS_REGION=<replace-with-your-luis-region>
 
 新增環境變數之後，從主控台視窗執行 `source ~/.bashrc`，讓變更生效。
 
-#### <a name="macostabunix"></a>[macOS](#tab/unix)
+#### <a name="macos"></a>[macOS](#tab/unix)
 
 編輯 `.bash_profile`，然後新增環境變數：
 

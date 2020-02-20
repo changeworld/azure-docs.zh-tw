@@ -1,21 +1,18 @@
 ---
 title: 在 Azure 中建立 Cloudyn 的支援要求 | Microsoft Docs
 description: 本文會逐步解說建立 Cloudyn 之支援要求所需的步驟。
-services: cost-management
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 02/12/2020
 ms.topic: troubleshooting
 ms.service: cost-management-billing
-manager: benshy
-ms.custom: ''
-ms.openlocfilehash: 4ebb2a1f617da75aad8cea805ba793910375c47a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.reviewer: adwise
+ms.openlocfilehash: 683fe2be0e93945d03fb8ee8218ab11e7a1ee624
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75989315"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199903"
 ---
 # <a name="create-a-support-request-for-cloudyn"></a>建立 Cloudyn 的支援要求
 

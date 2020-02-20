@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: ef87d8d02e6d7800435cab207a88197ef7c94b7c
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: c18751d315af6da1a4b2f06aaca28c84746b7be5
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77430987"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470763"
 ---
 # <a name="container-security-in-security-center"></a>資訊安全中心中的容器安全性
 
@@ -41,7 +41,7 @@ Azure 資訊安全中心是適用于容器安全性的 Azure 原生解決方案�
 ## <a name="environment-hardening"></a>強化環境
 
 ### <a name="continuous-monitoring-of-your-docker-configuration"></a>持續監視 Docker 設定
-Azure 資訊安全中心可識別 IaaS Linux Vm 上裝載的非受控容器，或其他執行 Docker 容器的 Linux 電腦。 資訊安全中心會持續評估這些容器的設定。 然後將它們與「[網際網路安全性」（CIS） Docker 基準測試的中心](https://www.cisecurity.org/benchmark/docker/)進行比較。
+Azure 資訊安全中心可識別 IaaS Linux Vm 上裝載的非受控容器，或其他執行 Docker 容器的 Linux 電腦。 資訊安全中心會持續評估這些容器的設定。 然後將它們與「[網際網路安全性」（CIS） Docker 基準的中心](https://www.cisecurity.org/benchmark/docker/)進行比較。
 
 資訊安全中心包含 CIS Docker 基準測試的整個規則集，並在您的容器無法滿足任何控制項時發出警示。 當它找到錯誤的錯誤時，資訊安全中心會產生安全性建議。 使用 [**建議] 頁面**來查看建議並補救問題。 您也會在 [**容器**] 索引標籤上看到建議，其中會顯示使用 Docker 部署的所有虛擬機器。 
 
@@ -71,9 +71,9 @@ AKS 提供安全性控制和叢集安全性狀態的可見度。 資訊安全中
 ## <a name="container-security-faq"></a>容器安全性常見問題
 
 ### <a name="what-types-of-images-can-azure-security-center-scan"></a>哪些映射類型可以 Azure 資訊安全中心掃描？
-資訊安全中心會掃描以 Linux OS 為基礎的映射。 
+資訊安全中心會掃描以 Linux 作業系統為基礎的映射，以提供 shell 存取。 
 
-Qualys 掃描器不支援只包含您的應用程式及其執行時間相依性的 "distroless" 映射。
+Qualys 掃描器不支援像是[Docker 待用](https://hub.docker.com/_/scratch/)映射的超級極簡映射，或只包含您應用程式及其執行時間相依性（不含套件管理員、SHELL 或 OS）的 "Distroless" 映射。
 
 ### <a name="how-does-we-scan-azure-security-center-scan-an-image"></a>我們會如何掃描 Azure 資訊安全中心掃描影像？
 映射會從登錄中解壓縮。 然後，它會在隔離的沙箱中執行，並使用 Qualys 掃描器來解壓縮已知弱點的清單。

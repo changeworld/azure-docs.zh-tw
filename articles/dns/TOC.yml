@@ -71,7 +71,7 @@
           href: ../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
         - name: 常見問題集
           href: dns-faq-private.md
-- name: 作法
+- name: 如何
   items:
     - name: 公用 DNS
       items:
@@ -113,6 +113,10 @@
           href: dns-sdk.md
         - name: Azure 資源自訂網域
           href: dns-custom-domain.md
+    - name: 私人 DNS
+      items:
+        - name: 保護私人 DNS 區域和記錄
+          href: dns-protect-private-zones-recordsets.md
     - name: 疑難排解
       items:
         - name: 疑難排解指南
@@ -179,7 +183,7 @@
       href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork'
     - name: 網路部落格
       href: 'https://azure.microsoft.com/blog/topics/networking'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/dns/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'

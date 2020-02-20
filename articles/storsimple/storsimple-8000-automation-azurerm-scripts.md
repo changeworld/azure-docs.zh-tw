@@ -1,17 +1,17 @@
 ---
-title: 使用 Azure Resource Manager 腳本來管理 StorSimple 裝置
+title: 使用 AzureRM PowerShell 腳本管理 StorSimple 裝置
 description: 了解如何使用 Azure Resource Manager 指令碼將 StorSimple 作業自動化
 author: alkohli
 ms.service: storsimple
 ms.topic: conceptual
 ms.date: 10/03/2017
 ms.author: alkohli
-ms.openlocfilehash: d1c98aa8c9b635f08bb14db2bde5485640a5d24d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 03a5ef49b2d58d351d882b30b5d11e4a5ba90264
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276637"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471953"
 ---
 # <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>使用 Azure Resource Manager SDK 型指令碼管理 StorSimple 裝置
 
@@ -25,7 +25,7 @@ ms.locfileid: "76276637"
 
 #### <a name="table-of-azure-resource-manager-sdk-based-sample-scripts"></a>Azure Resource Manager SDK 型範例指令碼表格
 
-| Azure Resource Manager 指令碼                    | 說明                                                                                                                                                                                                       |
+| Azure Resource Manager 指令碼                    | 描述                                                                                                                                                                                                       |
 |--------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Authorize-ServiceEncryptionRollover.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Authorize-ServiceEncryptionRollover.ps1)          | 此指令碼可讓您授權 StorSimple 裝置以變更服務資料加密金鑰。                                                                                                           |
 | [Create-StorSimpleCloudAppliance.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Create-StorSimpleCloudAppliance.ps1)              | 此指令碼會建立 8010 或 8020 StorSimple 雲端設備。 接著可以設定雲端設備，然後向您的 StorSimple Data Manager 服務註冊。                                                       |
@@ -49,7 +49,7 @@ ms.locfileid: "76276637"
 
 本節會採用範例指令碼，並詳細說明執行指令碼所需的各種步驟。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 開始之前，請確定您有︰
 

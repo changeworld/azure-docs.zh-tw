@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: fd8be170f0f4388ee711881dde16923b9547f21f
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 98d1a9c3dd86972990ae896d156be6c6aedfff77
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606923"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367397"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>教學課程：建立主機集區以驗證服務更新
 
@@ -20,12 +20,12 @@ ms.locfileid: "73606923"
 
 為了確保您的應用程式可使用最新更新，驗證主機集區應盡可能類似於您生產環境中的主機集區。 使用者應該經常連線到驗證主機集區，就如同連線到生產主機集區一樣。 如果您已在主機集區上進行自動化測試，則應該在驗證主機集區上包含自動化測試。
 
-您可以使用[診斷功能](diagnostics-role-service.md)或 [Windows 虛擬桌面疑難排解文章](https://docs.microsoft.com/Azure/virtual-desktop/troubleshoot-set-up-overview)，在驗證主機集區中進行問題偵錯。
+您可以使用[診斷功能](diagnostics-role-service.md)或 [Windows 虛擬桌面疑難排解文章](troubleshoot-set-up-overview.md)，在驗證主機集區中進行問題偵錯。
 
 >[!NOTE]
 > 建議您將驗證主機集區保持原狀，以測試所有未來的更新。
 
-開始之前，[下載並匯入 Windows 虛擬桌面 PowerShell 模組](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) (如果您還沒這麼做的話)。 之後，請執行下列 Cmdlet 來登入您的帳戶：
+開始之前，[下載並匯入 Windows 虛擬桌面 PowerShell 模組](/powershell/windows-virtual-desktop/overview/) (如果您還沒這麼做的話)。 之後，請執行下列 Cmdlet 來登入您的帳戶：
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"

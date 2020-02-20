@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 01/13/2020
+ms.date: 02/18/2020
 ms.author: juliako
-ms.openlocfilehash: b0a4f390a3a897d14adc2944195b0c51148de495
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 245eabdf4d77682c87062c2581239a554112d748
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209268"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468757"
 ---
 # <a name="upload-and-index-your-videos"></a>上傳影片及編製影片索引  
 
@@ -123,6 +123,10 @@ ms.locfileid: "77209268"
 - 僅使用影片來 `VideoOnly` 編制索引及解壓縮見解（忽略音訊）
 - `Default` – 使用音訊和視訊來編製索引及擷取深入解析
 - `DefaultWithNoiseReduction` – 從音訊及視訊編製索引及擷取深入解析的同時，在音訊串流上套用減少雜訊演算法
+
+> [!NOTE]
+> 影片索引子最多可涵蓋兩個音訊追蹤。 如果檔案中有更多的音訊播放軌，則會將它們視為一個追蹤。<br/>
+如果您想要個別編制追蹤的索引，您必須將相關的音訊檔案解壓縮，並將其編制為 `AudioOnly`。
 
 價格取決於選取的索引編製選項。  
 

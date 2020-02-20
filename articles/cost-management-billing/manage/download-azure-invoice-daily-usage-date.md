@@ -2,25 +2,19 @@
 title: 下載 Azure 帳單發票和每日使用量資料 | Microsoft Docs
 description: 說明如何下載或檢視您的 Azure 帳單發票和每日使用量資料。
 keywords: 帳單發票,發票下載,azure 發票,azure 使用量
-services: billing
-documentationcenter: ''
 author: genlin
-manager: dcscontentpm
-editor: ''
+ms.reviewer: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: c5068dc38597d64634f19297fa7784de8d55d590
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: af2184d7faa2ace8ed1043eaf2aaec0d525bc937
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75992552"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200858"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>下載或檢視您的 Azure 帳單發票和每日使用量資料
 

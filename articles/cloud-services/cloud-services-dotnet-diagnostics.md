@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: tagore
-ms.openlocfilehash: d5a4e5ce40726ea36734a0dcf751b79225d5e153
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1e49a0935a70a2470267e5458fa1f55e3059e965
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75361108"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469760"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>在 Azure 雲端服務中啟用 Azure 診斷
 如需有關 Azure 診斷的背景資訊，請參閱 [Azure 診斷概觀](../azure-diagnostics.md) 。
@@ -23,7 +23,7 @@ ms.locfileid: "75361108"
 ## <a name="how-to-enable-diagnostics-in-a-worker-role"></a>如何在背景工作角色中啟用診斷
 本逐步解說說明如何實作 Azure 背景工作角色，該角色使用 .NET EventSource 類別發出遙測資料。 Azure 診斷可用來收集遙測資料，並將資料儲存在 Azure 儲存體帳戶。 建立背景工作角色時，Visual Studio 會自動啟用診斷 1.0 來作為 Azure SDK for .NET 2.4 及更早版本中解決方案的一部分。 下列指示說明建立背景工作角色、從解決方案停用診斷 1.0，以及將診斷 1.2 或 1.3 部署至背景工作角色的程序。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 本文假設您擁有 Azure 訂用帳戶，並且搭配 Azure SDK 使用 Visual Studio。 如果您沒有 Azure 訂用帳戶，可以註冊 [免費試用版][Free Trial]。 請務必 [安裝及設定 Azure PowerShell 0.8.7 版或更新版本][Install and configure Azure PowerShell version 0.8.7 or later]。
 
 ### <a name="step-1-create-a-worker-role"></a>步驟 1：建立背景工作角色
@@ -136,7 +136,7 @@ namespace WorkerRole1
     ```powershell
     (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File -Encoding utf8 -FilePath 'WadConfig.xsd'
     ```
-2. 以滑鼠右鍵按一下 **WorkerRole1** 專案，然後選取 [新增] ->  [新增項目]，將 XML 檔新增至您的 **WorkerRole1** 專案 -> [Visual C# 項目] -> [資料] -> [XML 檔案]。 將檔案命名為 "WadExample.xml"。
+2. 以滑鼠右鍵按一下 **WorkerRole1** 專案，然後選取 [新增] **[新增項目]**  -> ，將 XML 檔新增至您的 **WorkerRole1** 專案 -> [Visual C# 項目] -> [資料] -> [XML 檔案]。 將檔案命名為 "WadExample.xml"。
 
    ![CloudServices_diag_add_xml](./media/cloud-services-dotnet-diagnostics/AddXmlFile.png)
 3. 將 WadConfig.xsd 與組態檔產生關聯。 確定 WadExample.xml 編輯器視窗是使用中視窗。 按 **F4** 鍵開啟 [屬性] 視窗。 在 [屬性] 視窗中，按一下 [結構描述] 屬性。 按一下 [...] 在 [結構描述] 屬性中。 按一下 [新增...] 按鈕並瀏覽至您儲存 XSD 檔的位置，然後選取檔案 WadConfig.xsd。 按一下 [確定]。
@@ -193,7 +193,7 @@ Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -Diagnostic
 如果您遇到困難，請參閱 [Azure 診斷的疑難排解](../azure-diagnostics-troubleshooting.md) ，以解決常見的問題。
 
 ## <a name="next-steps"></a>後續步驟
-[請參閱相關的 Azure 虛擬機器診斷文章清單](../azure-monitor/platform/diagnostics-extension-overview.md#cloud-services-using-azure-diagnostics)，以變更您收集的資料、為問題進行疑難排解，或深入了解一般的診斷。
+[請參閱相關的 Azure 虛擬機器診斷文章清單](../azure-monitor/platform/diagnostics-extension-overview.md)，以變更您收集的資料、為問題進行疑難排解，或深入了解一般的診斷。
 
 [EventSource Class]: https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx
 

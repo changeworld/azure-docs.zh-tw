@@ -5,12 +5,12 @@ author: ColbyTresness
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.reviewer: azfuncdf, cotresne
-ms.openlocfilehash: b0a1d1a9305f6de2a072ee1ded310d8de174436b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 431bd45763cbe24e44d47342b32c5c452a27b0f6
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845718"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210288"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>使用 JavaScript 建立第一個耐久函式
 
@@ -57,7 +57,7 @@ ms.locfileid: "76845718"
     | 選取版本 | Azure Functions v2 | 您只會在尚未安裝 Core Tools 時看到此選項。 在此情況下，Core Tools 會在您第一次執行應用程式時安裝。 |
     | 選取您專案第一個函式的範本 | HTTP 觸發程序 | 在新的函式應用程式中建立由 HTTP 觸發的函式。 |
     | 提供函式名稱 | HttpTrigger | 按 Enter 鍵以使用預設名稱。 |
-    | 授權層級 | 函式 | 當您呼叫函式的 HTTP 端點時，`function` 授權層級會要求您提供存取金鑰。 這會使存取不安全的端點變得更加困難。 若要深入了解，請參閱[授權金鑰](../functions-bindings-http-webhook.md#authorization-keys)。  |
+    | 授權層級 | 函式 | 當您呼叫函式的 HTTP 端點時，`function` 授權層級會要求您提供存取金鑰。 這會使存取不安全的端點變得更加困難。 若要深入了解，請參閱[授權金鑰](../functions-bindings-http-webhook-trigger.md#authorization-keys)。  |
     | 選取您要如何開啟專案 | 新增到工作區 | 在目前的工作區中建立函式應用程式。 |
 
 如有需要，Visual Studio Code 安裝 Azure Functions Core Tools。 其也會在新的工作區中建立函式應用程式專案。 此專案包含 [host.json](../functions-host-json.md) 和 [local.settings.json](../functions-run-local.md#local-settings-file) 組態檔。 其也會建立 HttpExample 資料夾，其中包含 [function.json 定義檔](../functions-reference-node.md#folder-structure)和 [index.js 檔案](../functions-reference-node.md#exporting-a-function) (這是包含函式程式碼的 Node.js 檔案)。
@@ -84,7 +84,7 @@ ms.locfileid: "76845718"
 
     ![選擇 HTTP 入門範本](./media/quickstart-js-vscode/create-function-choose-template.png)
 
-3. 將預設名稱保留為 `DurableFunctionsHttpStart` 並按下 ** **Enter**，然後選取 [匿名]  驗證。
+3. 將預設名稱保留為 `DurableFunctionsHttpStart` 並按下 ** **Enter**， 然後選取 [匿名]  驗證。
 
     ![選擇匿名驗證](./media/quickstart-js-vscode/create-function-anonymous-auth.png)
 

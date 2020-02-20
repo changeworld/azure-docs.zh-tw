@@ -1,5 +1,5 @@
 ---
-title: 評估從 StorSimple 5000-7000 系列移轉資料的選項 | Microsoft Docs
+title: StorSimple 5000-7000 系列裝置的資料移轉選項
 description: 概略說明從 StorSimple 5000-7000 系列移轉資料的選項。
 services: storsimple
 documentationcenter: NA
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: d51891c076f1784fbddb88bfaed28ac1d889afdc
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 44a05ecb273bdf7582300c3b6a9110e2ada0994c
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227771"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471817"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>從 StorSimple 5000-7000 系列移轉資料的選項 
 
@@ -74,55 +74,55 @@ Talon 可讓 StorSimple 5000-7000 客戶輕鬆地利用其在 StorSimple 平臺�
 
 ## <a name="migration---frequently-asked-questions"></a>移轉 - 常見問題集
 
-### <a name="q-when-do-the-storsimple-5000-and-7000-series-devices-reach-end-of-service"></a>問： StorSimple 5000 和 7000 系列裝置的服務將於何時終止？ 
+### <a name="q-when-do-the-storsimple-5000-and-7000-series-devices-reach-end-of-service"></a>Q. StorSimple 5000 和 7000 系列裝置的服務將於何時終止？ 
 
-答： StorSimple 5000-7000 系列將在 2019 年 7 月[終止服務](https://support.microsoft.com/lifecycle/search?alpha=StorSimple%205000%2F7000%20Series)。 終止服務意味著在 2019 年 7 月之後，Microsoft 將無法再提供這些裝置的軟硬體支援。 強烈建議您立即開始擬定從裝置移轉資料的計劃。
+A. StorSimple 5000-7000 系列將在 2019 年 7 月[終止服務](https://support.microsoft.com/lifecycle/search?alpha=StorSimple%205000%2F7000%20Series)。 終止服務意味著在 2019 年 7 月之後，Microsoft 將無法再提供這些裝置的軟硬體支援。 強烈建議您立即開始擬定從裝置移轉資料的計劃。
 
-### <a name="q-what-happens-to-the-data-i-have-stored-in-azure"></a>問： 我已儲存在 Azure 中的資料將會如何？  
+### <a name="q-what-happens-to-the-data-i-have-stored-in-azure"></a>Q. 我已儲存在 Azure 中的資料將會如何？  
 
-答： 將資料移轉至較新的服務後，您即可繼續在 Azure 中使用這些資料。 
+A. 將資料移轉至較新的服務後，您即可繼續在 Azure 中使用這些資料。 
 
 
-### <a name="q-what-happens-to-the-data-i-have-stored-locally-on-my-storsimple-device"></a>問： 我已在 StorSimple 裝置的本機儲存的資料將會如何？ 
+### <a name="q-what-happens-to-the-data-i-have-stored-locally-on-my-storsimple-device"></a>Q. 我已在 StorSimple 裝置的本機儲存的資料將會如何？ 
 
-答： 本機裝置上的資料可複製到較新的服務，如移轉文件所說明。
+A. 本機裝置上的資料可複製到較新的服務，如移轉文件所說明。
 
-### <a name="q-what-happens-if-i-want-to-keep-my-storsimple-50007000-series-appliance"></a>問： 如果我想要保留 StorSimple 5000/7000 系列設備，會有何後果？ 
+### <a name="q-what-happens-if-i-want-to-keep-my-storsimple-50007000-series-appliance"></a>Q. 如果我想要保留 StorSimple 5000/7000 系列設備，會有何後果？ 
 
-答： 雖然服務或許可繼續運作，但 Microsoft 將無法再提供軟硬體支援。 為保有商務持續性，強烈建議您進行移轉。
+A. 雖然服務或許可繼續運作，但 Microsoft 將無法再提供軟硬體支援。 為保有商務持續性，強烈建議您進行移轉。
 
-### <a name="q-what-options-are-available-to-migrate-data-from-storsimple-5000-7000-series-devices"></a>問： 從 StorSimple 5000-7000 系列 裝置移轉資料的選項有哪些？ 
+### <a name="q-what-options-are-available-to-migrate-data-from-storsimple-5000-7000-series-devices"></a>Q. 從 StorSimple 5000-7000 系列 裝置移轉資料的選項有哪些？ 
 
-答： StorSimple 5000-7000 系列使用者可根據其所處的情境，選擇下列移轉選項。 
+A. StorSimple 5000-7000 系列使用者可根據其所處的情境，選擇下列移轉選項。 
 
  - **升級至 8000 系列**：如果您想要繼續使用 StorSimple 平台，請使用此選項。 
  - **移轉至 Azure 檔案同步**：如果您想要切換至 Azure 原生格式，請使用此選項。 您可以使用 Azure 檔案同步來集中管理檔案共用。 
 
 您可以連絡 Microsoft 支援服務，討論此處未列出的移轉選項。
 
-### <a name="q-is-migration-to-other-storage-solutions-supported"></a>問： 是否支援移轉至其他儲存體解決方案？
+### <a name="q-is-migration-to-other-storage-solutions-supported"></a>Q. 是否支援移轉至其他儲存體解決方案？
 
-答： 是。 使用資料的主機複本移轉至其他儲存體解決方案，是可行的。
+A. 是。 使用資料的主機複本移轉至其他儲存體解決方案，是可行的。
 
-### <a name="q-is-migration-supported-by-microsoft"></a>問： Microsoft 是否支援移轉？ 
+### <a name="q-is-migration-supported-by-microsoft"></a>Q. Microsoft 是否支援移轉？ 
 
-答： 從 5000 或 7000 系列移轉的作業受到完整支援。 事實上，Microsoft 建議您在開始移轉之前，應先洽詢「支援服務」。 移轉目前是協助進行的作業。 如果您想要從 StorSimple 5000-7000 系列裝置移轉資料，請[建立支援票證](storsimple-8000-contact-microsoft-support.md)。
+A. 從 5000 或 7000 系列移轉的作業受到完整支援。 事實上，Microsoft 建議您在開始移轉之前，應先洽詢「支援服務」。 移轉目前是協助進行的作業。 如果您想要從 StorSimple 5000-7000 系列裝置移轉資料，請[建立支援票證](storsimple-8000-contact-microsoft-support.md)。
 
-### <a name="q-what-is-the-pricing-model-for-both-the-migration-options"></a>問： 這兩個移轉選項的計價模式為何？
+### <a name="q-what-is-the-pricing-model-for-both-the-migration-options"></a>Q. 這兩個移轉選項的計價模式為何？
 
-答： 移轉的成本取決於您選擇的選項。 雖然移轉作業本身是免費的，但如果您決定要升級到 StorSimple 8000 系列，則會有硬體裝置的成本。 
+A. 移轉的成本取決於您選擇的選項。 雖然移轉作業本身是免費的，但如果您決定要升級到 StorSimple 8000 系列，則會有硬體裝置的成本。 
 
 同樣地，在使用 Azure 檔案同步時，將會收取該服務的訂閱費用。 在前述兩種情況下，客戶也都必須支付現行儲存體的成本。 請參考以下內容來估計價格： 
 - [StorSimple 定價](https://azure.microsoft.com/pricing/details/storsimple/)  
 - [AFS 定價]( https://azure.microsoft.com/pricing/details/storage/files/)
 
-### <a name="q--how-long-does-it-take-to-complete-a-migration"></a>問：  完成移轉需要多少時間呢？
+### <a name="q--how-long-does-it-take-to-complete-a-migration"></a>Q.  完成移轉需要多少時間呢？
 
-答： 移轉資料的所需時間，取決於資料量和選取的升級選項。 
+A. 移轉資料的所需時間，取決於資料量和選取的升級選項。 
 
-### <a name="q-what-is-the-end-of-support-date-for-storsimple-8000-series"></a>問： StorSimple 8000 系列的最後支援期限為何？
+### <a name="q-what-is-the-end-of-support-date-for-storsimple-8000-series"></a>Q. StorSimple 8000 系列的最後支援期限為何？
 
-答： StorSimple 8000 系列最後支援期限發佈於[此](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series)。
+A. StorSimple 8000 系列最後支援期限發佈於[此](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series)。
 
 
 ## <a name="next-steps"></a>後續步驟

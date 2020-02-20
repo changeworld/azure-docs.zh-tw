@@ -2,21 +2,18 @@
 title: 了解 Azure 中的 Microsoft 客戶合約發票
 description: 學習如何閱讀並了解 Azure 中的 Microsoft 客戶合約帳單
 author: bandersmsft
-manager: amberb
+ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: 54fcff23501c3f65e32298126d402f7a3b6ae6d1
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 4c4b105bb4b67e855de27b6a57d2080fde068421
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134997"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200209"
 ---
 # <a name="terms-in-your-microsoft-customer-agreement-invoice"></a>您 Microsoft 客戶合約發票中的詞彙
 

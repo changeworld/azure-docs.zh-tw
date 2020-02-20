@@ -2,21 +2,18 @@
 title: 了解詳細使用量和費用 | Microsoft Docs
 description: 了解如何讀取並了解詳細的使用量和費用
 author: bandersmsft
-manager: micflan
+ms.reviewer: micflan
 tags: billing
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 04/24/2019
+ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: a68393b2852f8ddc758e2a47b9e1b5d94befb7b4
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e45ef26f3d0a4b968b601e70658c5f3680492682
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76290133"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199019"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>了解 Azure 使用量和費用檔案中的詞彙
 
@@ -24,7 +21,7 @@ ms.locfileid: "76290133"
 費用不包括信用額度、稅金，或其他費用或折扣。
 下表涵蓋每種帳戶類型所包含的費用。
 
-帳戶類型 | Azure 使用情況 | Marketplace 使用情況 | 購買 | 退款
+帳戶類型 | Azure 使用情況 | Marketplace 使用情況 | 購買 | 退費
 --- | --- | --- | --- | ---
 Enterprise 合約 (EA) | 是 | 是 | 是 | 否
 Microsoft 客戶合約 (MCA) | 是 | 是 | 是 | 是
@@ -53,7 +50,7 @@ BillingPeriodEndDate | 全部 | 計費週期的結束日期。
 BillingPeriodStartDate | 全部 | 計費週期的開始日期。
 BillingProfileId<sup>1</sup> | 全部 | EA 註冊、PAYG 訂用帳戶、MCA 帳單設定檔或 AWS 合併帳戶的唯一識別碼。
 BillingProfileName | 全部 | EA 註冊、PAYG 訂用帳戶、MCA 帳單設定檔或 AWS 合併帳戶的名稱。
-ChargeType | 全部 | 指出費用是否代表使用量 (**使用量**)、購買 (**購買**) 或退款 (**退款**)。
+ChargeType | 全部 | 指出費用是否代表使用量 (**使用量**)、購買 (**購買**) 或退費 (**退費**)。
 ConsumedService | 全部 | 與費用相關聯的服務名稱。
 CostCenter<sup>1</sup> | EA、MCA | 針對訂用帳戶所定義來追蹤成本的成本中心 (僅適用於 MCA 帳戶的開放計費週期)。
 成本 | EA、PAYG | 請參閱 CostInBillingCurrency。
@@ -79,9 +76,9 @@ MeterSubCategory | 全部 | 計量的子分類類別名稱。
 OfferId<sup>1</sup> | 全部 | 所購買供應項目的名稱。
 PartNumber<sup>1</sup> | EA、PAYG | 用來取得特定計量定價的識別碼。
 PlanName | EA、PAYG | Marketplace 方案名稱。
-PreviousInvoiceId | MCA | 如果此明細項目為退款。
+PreviousInvoiceId | MCA | 如果此明細項目為退費，則為原始發票的參考。
 PricingCurrency | MCA | 根據協商價格額定時所使用的貨幣。
-Product | 全部 | 產品的名稱。
+Products | 全部 | 產品的名稱。
 ProductId<sup>1</sup> | MCA | 產品的唯一識別碼。
 ProductOrderId | 全部 | 產品訂單的唯一識別碼。
 ProductOrderName | 全部 | 產品訂單的唯一名稱。

@@ -1,22 +1,19 @@
 ---
 title: 檢閱您的 Azure Enterprise 合約帳單
 description: 學習如何閱讀並了解 Azure Enterprise 合約的使用量和帳單。
-author: banders
-manager: dougeby
+author: bandersmsft
+ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 02/04/2020
 ms.author: banders
-ms.openlocfilehash: 8e674ec1c2d4c47d3b4e56bd788c963c81ea23e9
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 1affe81228b491ea45f610d741d454fa38f2029a
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77016199"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199104"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>了解您的 Azure Enterprise 合約帳單
 

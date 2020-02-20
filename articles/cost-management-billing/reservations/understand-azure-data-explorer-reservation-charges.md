@@ -1,19 +1,18 @@
 ---
 title: 了解保留折扣如何套用至 Azure 資料總管
 description: 了解保留折扣如何套用至 Azure 資料總管加成計量。
-services: data-explorer
 author: avneraa
 ms.author: avnera
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 11/03/2019
-ms.openlocfilehash: 88ab9c475d417bc935cf5d2d67f1678794fb74d1
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/12/2020
+ms.openlocfilehash: ab107a0afe8be1d95de8dafb21f239e6da733271
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75995620"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199325"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-data-explorer"></a>了解保留折扣如何套用至 Azure 資料總管
 
@@ -36,23 +35,23 @@ ms.locfileid: "75995620"
 ## <a name="examples"></a>範例
 
 下列範例說明如何根據所購買的核心數目，以及其執行時間，套用 Azure 資料總管保留容量折扣。
-例如，針對引擎叢集大小：**2 D11_v2 VM**，您的隨選總費用是針對每小時 4 單位的 Azure 資料總管加成計量。 
+例如，針對引擎叢集大小：**2 D11_v2 VM**，您的隨選總費用是針對每小時 4 單位的 Azure 資料總管加成計量。
 
-**案例 1** 
+**案例 1**
 
 您購買了 8 個 Azure 資料總管加成單位的 Azure 資料總管保留容量。 您會執行兩個 D13_v2 VM 的引擎叢集 (總共有 16 個核心)，其收費方式為每小時 16 單位的 Azure 資料總管加成單位，且符合保留的其餘屬性。 您需要就 8 個核心的 Azure 資料總管計算使用量支付隨用隨付價格的費用，並可取得一小時的 8 核心 Azure 資料總管加成單位使用量保留折扣。
 
 對於其餘的範例，假設您所購買的 Azure 資料總管保留容量適用於 16 核心 Azure 資料總管叢集，而且其餘的保留屬性符合執行中的 Azure 資料總管叢集。
 
-**案例 2** 
+**案例 2**
 
 您在兩個不同的區域中執行具有 8 個核心的兩個 Azure 資料總管引擎叢集，每個叢集各執行一小時。 這兩個叢集以及其所取用 16 個單位的 Azure 資料總管加成單位都會套用 16 核心保留折扣。
 
-**案例 3** 
+**案例 3**
 
 您下午 1 點到 1:30 執行一個 16 核心 Azure 資料總管引擎叢集。 您從下午 1:30 到 2 點執行另一個 16 核心 Azure 資料總管引擎叢集。 兩者都在保留折扣的涵蓋範圍內。
 
-**案例 4** 
+**案例 4**
 
 您下午 1 點到 1:45 執行一個 16 核心 Azure 資料總管引擎叢集。 您從下午 1:30 到 2 點執行另一個 16 核心 Azure 資料總管引擎叢集。 您需要就 15 分鐘的重疊時間支付隨用隨付價格的費用。 保留折扣會套用至其餘時間的 Azure 資料總管加成使用量。
 

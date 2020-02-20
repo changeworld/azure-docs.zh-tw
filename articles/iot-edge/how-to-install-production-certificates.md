@@ -8,12 +8,12 @@ ms.date: 02/11/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: fe46e968aa2dcebaa483cd38fd2e050ccfe43054
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: d9f715a6ab43206d02107f6335e9b4c0bb4266e0
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77149893"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471001"
 ---
 # <a name="install-production-certificates-on-an-iot-edge-device"></a>在 IoT Edge 裝置上安裝生產憑證
 
@@ -30,7 +30,7 @@ ms.locfileid: "77149893"
 >[!NOTE]
 >本文中使用的「根 CA」一詞指的是 IoT 解決方案的憑證鏈最上層授權公開憑證。 您不需要使用聯合憑證授權單位單位的憑證根目錄，或組織的憑證授權單位單位的根。 在許多情況下，它實際上是中繼 CA 公開憑證。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 在[Windows](how-to-install-iot-edge-windows.md)或[Linux](how-to-install-iot-edge-linux.md)上執行的 IoT Edge 裝置。
 * 擁有根憑證授權單位（CA）憑證，可以自我簽署或從受信任的商業憑證授權單位單位（例如巴爾的摩、Verisign、DigiCert 或透過 globalsign）購買。
@@ -68,24 +68,24 @@ ms.locfileid: "77149893"
    * Windows：`C:\ProgramData\iotedge\config.yaml`
    * Linux：`/etc/iotedge/config.yaml`
 
-3. 將 yaml 檔案中的**憑證**屬性，設定為 IoT Edge 裝置上憑證和金鑰檔的檔案 URI。 移除憑證屬性之前的 `#` 字元，以取消批註四行。 請確定 [**憑證：** ] 行沒有前面的空白字元，且已將該嵌套專案縮排為兩個空格。 例如，
+3. 將 yaml 檔案中的**憑證**屬性設定為憑證的完整路徑和 IoT Edge 裝置上的金鑰檔案。 移除憑證屬性之前的 `#` 字元，以取消批註四行。 請確定 [**憑證：** ] 行沒有前面的空白字元，且已將該嵌套專案縮排為兩個空格。 例如：
 
    * Windows：
 
       ```yaml
       certificates:
-        device_ca_cert: "file:///c:/path/device-ca.cert.pem"
-        device_ca_pk: "file:///c:/path/device-ca.key.pem"
-        trusted_ca_certs: "file:///c:/path/root-ca.root.ca.cert.pem"
+        device_ca_cert: "c:\\<path>\\device-ca.cert.pem"
+        device_ca_pk: "c:\\<path>\\device-ca.key.pem"
+        trusted_ca_certs: "c:\\<path>\\root-ca.root.ca.cert.pem"
       ```
 
    * Linux：
 
       ```yaml
       certificates:
-        device_ca_cert: "file:///path/device-ca.cert.pem"
-        device_ca_pk: "file:///path/device-ca.key.pem"
-        trusted_ca_certs: "file:///path/root-ca.root.ca.cert.pem"
+        device_ca_cert: "<path>/device-ca.cert.pem"
+        device_ca_pk: "<path>/device-ca.key.pem"
+        trusted_ca_certs: "<path>/root-ca.root.ca.cert.pem"
       ```
 
 4. 在 Linux 裝置上，請確定使用者**iotedge**具有保存憑證之目錄的 [讀取] 許可權。

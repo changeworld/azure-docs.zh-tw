@@ -1,23 +1,18 @@
 ---
 title: 軟體方案折扣 -Azure | Microsoft Docs
 description: 了解軟體方案折扣如何套用至虛擬機器上的軟體。
-documentationcenter: ''
 author: yashesvi
-manager: yashar
-editor: ''
+ms.reviewer: yashar
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 09/30/2019
+ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: f3d0c123fcbd16f3a4125ad74f0502863b6ce6d1
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9979ced6d5bd71dd1a42d19c222111a76ed18428
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75995256"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200226"
 ---
 # <a name="azure-software-plan-discount"></a>Azure 軟體方案折扣
 

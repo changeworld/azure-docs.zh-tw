@@ -1,22 +1,18 @@
 ---
 title: 將 Azure 帳戶連結到合作夥伴識別碼 | Microsoft Docs
 description: 將合作夥伴識別碼連結到您用來管理客戶資源的使用者帳戶，以追蹤與 Azure 客戶的業務開發情況。
-services: billing
 author: dhirajgandhi
-manager: dhgandhi
+ms.reviewer: dhgandhi
 ms.author: banders
-ms.date: 10/01/2019
+ms.date: 02/13/2020
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.openlocfilehash: a67f2985e2db8c48d7e50a91d20c76b88c1c55e6
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 4e4b039b6ad6fad8a414fc9703309fa76853ef09
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75991915"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199665"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>將合作夥伴識別碼連結到您的 Azure 帳戶
 

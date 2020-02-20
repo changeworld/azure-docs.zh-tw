@@ -1,21 +1,19 @@
 ---
 title: 快速入門 - 利用成本分析探索 Azure 成本 | Microsoft Docs
 description: 本快速入門可協助您使用成本分析，來探索及分析您的 Azure 組織成本。
-services: cost-management
-keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 02/11/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
-manager: micflan
+ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: e77f6ca587a6dcd001b06fac22d974b22d6fee4e
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: bc19c6358ff116b3d7299673783e8fbd6e8cd4f5
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188657"
+ms.locfileid: "77201045"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>快速入門：使用成本分析探索及分析成本
 
@@ -64,9 +62,9 @@ ms.locfileid: "77188657"
 
 ### <a name="understand-forecast"></a>了解預測
 
-成本預測會顯示所選期間的預估成本預測。 此模型是以時間序列回歸模型為基礎。 這需要至少 10 天的近期成本和使用量資料，才能精確地預測成本。 針對指定的時間週期，預測模型需要預測期間中相等數量的訓練資料。 例如，三個月的預測需要至少三個月的近期成本和使用量資料。 
+成本預測會顯示所選期間的預估成本預測。 此模型是以時間序列回歸模型為基礎。 這需要至少 10 天的近期成本和使用量資料，才能精確地預測成本。 針對指定的時間週期，預測模型需要預測期間中相等數量的訓練資料。 例如，三個月的預測需要至少三個月的近期成本和使用量資料。
 
-此模型最多會使用六個月的訓練資料來預測一年的專案成本。 最少則需要七天的訓練資料來變更其預測。 預測會以成本和使用模式中的重大變更 (例如高點和低點) 為基礎。 預測不會為 **Group by (群組依據)** 屬性中的每個項目產生個別預測。 只會提供總累計成本的預測。 如果您使用多種貨幣，此模型只會以美元提供成本的預測。 
+此模型最多會使用六個月的訓練資料來預測一年的專案成本。 最少則需要七天的訓練資料來變更其預測。 預測會以成本和使用模式中的重大變更 (例如高點和低點) 為基礎。 預測不會為 **Group by (群組依據)** 屬性中的每個項目產生個別預測。 只會提供總累計成本的預測。 如果您使用多種貨幣，此模型只會以美元提供成本的預測。
 
 
 ## <a name="customize-cost-views"></a>自訂成本檢視

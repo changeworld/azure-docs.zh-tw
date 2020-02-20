@@ -4,18 +4,18 @@ description: 在本教學課程中，您將了解如何在 Azure Cloud Shell 中
 keywords: ansible、azure、devops、bash、cloudshell、腳本、bash
 ms.topic: quickstart
 ms.date: 04/30/2019
-ms.openlocfilehash: d04708be82a704c2ce20a928380fca1d325493da
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 0eb89bcacae1629bdb1f6dcda8f9a25efdb6eedf
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74155965"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193645"
 ---
 # <a name="quickstart-run-ansible-playbooks-via-bash-in-azure-cloud-shell"></a>快速入門：在 Azure Cloud Shell 中透過 Bash 執行 Ansible 劇本
 
 Azure Cloud Shell 是可經由瀏覽器存取的互動式殼層，應用在 Azure 資源管理上。 Cloud Shell 可讓您使用 Bash 或 Powershell 命令列。 在本文中，您可以在 Azure Cloud Shell 中使用 Bash 執行 Ansible 劇本。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 - **設定 Azure Cloud Shell** - 如果您還不熟悉 Azure Cloud Shell，請參閱 [Azure Cloud Shell 中 Bash 的快速入門](https://docs.microsoft.com/azure/cloud-shell/quickstart)。
@@ -47,4 +47,4 @@ export AZURE_SUBSCRIPTION_ID=<your-subscription-id>
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"] 
-> [快速入門：使用 Ansible 在 Azure 中設定虛擬機器](/azure/virtual-machines/linux/ansible-create-vm)
+> [快速入門：使用 Ansible 在 Azure 中設定虛擬機器](./ansible-create-vm.md)

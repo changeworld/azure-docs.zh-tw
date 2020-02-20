@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: zarhoads
-ms.openlocfilehash: 9c2da82034a3742f789c736d8c0410f005f20edb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 774a0354c6262598c7d5e1f51e2e475fd17fe2d7
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422305"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468275"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service 中輪替憑證（AKS）
 
@@ -42,7 +42,7 @@ AKS 會產生並使用下列憑證、憑證授權單位單位和服務帳戶：
 > 
 > 此外，您可以檢查叢集憑證的到期日。 例如，下列命令會顯示*myAKSCluster*叢集的憑證詳細資料。
 > ```console
-> kubectl config view --raw -o jsonpath='{.clusters[?(@.name == "myAKSCluster")].cluster.certificate-authority-data}' | base64 -d > my-cert.crt
+> kubectl config view --raw -o jsonpath="{.clusters[?(@.name == 'myAKSCluster')].cluster.certificate-authority-data}" | base64 -d > my-cert.crt
 > openssl x509 -in my-cert.crt -text
 > ```
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: de644e49d998ad260532078de5c93c482cbc6fbc
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: b48aab918b477f5c689a50ca476b0b1336642f0f
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029486"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471851"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>關於 Azure 網路監看員的常見問題（FAQ）
 [Azure 網路監看員](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)服務提供一套工具，可用來監視、診斷、查看計量，以及啟用或停用 Azure 虛擬網路中的資源記錄。 本文會回答有關此服務的常見問題。
@@ -75,8 +75,11 @@ ms.locfileid: "77029486"
 ### <a name="what-are-resource-limits-on-network-watcher"></a>網路監看員上的資源限制為何？
 如需所有限制，請參閱[服務限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#network-watcher-limits)頁面。  
 
-### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>為什麼每個區域只允許一個網路監看員實例？
+### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>為什麼每個區域只允許一個網路監看員實例？ 
 網路監看員只需要針對訂用帳戶啟用一次，它的功能才能正常執行，這不是服務的限制。
+
+### <a name="how-can-i-manage-the-network-watcher-resource"></a>如何管理網路監看員資源？ 
+網路監看員資源代表網路監看員的後端服務，而且完全由 Azure 管理。 客戶不需要管理它。 資源不支援移動之類的作業。 不過，您[可以刪除資源](https://docs.microsoft.com/azure/network-watcher/network-watcher-create#delete-a-network-watcher-in-the-portal)。 
 
 ## <a name="nsg-flow-logs"></a>NSG 流量記錄
 

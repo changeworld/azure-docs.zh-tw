@@ -1,19 +1,18 @@
 ---
 title: Azure 企業版註冊發票
 description: 本文將說明如何管理 Azure 企業發票，並採取相關行動。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/04/2020
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: boalcsva
-ms.openlocfilehash: 2a75972d00733d23df7f4a59b2d5010404df8dc3
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.reviewer: boalcsva
+ms.openlocfilehash: 37af492ae156aa880c55034550d4165ec046e74f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023390"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199750"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure 企業版註冊發票
 
@@ -71,11 +70,11 @@ ms.locfileid: "77023390"
   - 預付金中未涵蓋的任何費用都將計為超額款項。  
 
 - **註冊開始日期早於 2018 年 5 月 1 日的間接註冊**：
-  
+
   如果您是間接 Enterprise 合約 (EA) 客戶，而且開始日期在 2018 年 5 月1日之前，您的計費週期將會以季度來計算。 通路合作夥伴 (CP) 會直接向您開立發票。  
 
 - **開始日期晚於 2018 年 5 月1 日的間接註冊**：
-  
+
   您將使用每月計費週期。  
 
 ### <a name="increase-your-monetary-commitment"></a>增加您的預付金
@@ -617,7 +616,7 @@ See [Power BI self-service sign up](https://powerbi.microsoft.com/documentation/
 - **Exclusions**:
   - Users already participating in the Extended Power BI Pro trial will continue to qualify under the pre-existing offer and can't enter into the Azure EA Power BI Pro trial offer.
   - Users participating in the Offer can only use Power BI Pro with the Microsoft Azure Enterprise content pack. Any other use of Power BI Pro is prohibited.
-  - Term: The Offer began on June 1, 2017 and ended on May 31, 2018.  Acceptance can occur at any time during the 12-month period, though the offer will terminate on May 31, 2018 for all users regardless of when they accepted the Offer. 
+  - Term: The Offer began on June 1, 2017 and ended on May 31, 2018.  Acceptance can occur at any time during the 12-month period, though the offer will terminate on May 31, 2018 for all users regardless of when they accepted the Offer.
   -->
 
 ### <a name="to-access-microsoft-azure-consumption-insights"></a>若要存取 Microsoft Azure 使用量見解：
@@ -630,7 +629,7 @@ See [Power BI self-service sign up](https://powerbi.microsoft.com/documentation/
 1. 完成時，新的儀表板、報表和模型將會出現在導覽窗格中。 選取儀表板即可檢視匯入的資料。
 
 > [!TIP]
-> 
+>
 > - 若要了解如何為您的註冊產生 API 金鑰，請參閱[企業版入口網站](https://ea.azure.com/?WT.mc_id=azurebg_email_Trans_33675_1378_Service_Notice_EA_Customer_Power_BI_EA_Content_Pack_Apr26)上的 API 報表說明檔。
 > - 如需如何將 Power BI 連線到您 Azure 使用量的詳細資訊，請參閱 [Microsoft Azure 使用量見解](/power-bi/desktop-connect-azure-cost-management)。
 

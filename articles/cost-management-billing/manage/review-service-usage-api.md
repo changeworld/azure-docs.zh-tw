@@ -1,24 +1,17 @@
 ---
 title: 使用 REST API 檢閱 Azure 服務資源使用量 | Microsoft Docs
 description: 了解如何使用 Azure REST API 檢閱 Azure 服務資源使用量。
-services: billing
-documentationcenter: na
 author: lleonard-msft
-manager: ''
-editor: ''
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 10/01/2019
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: eb444f090c1b2047e3d71c1b2ec52699a61bd880
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f421ddc7cd509527053b099c7e4e538ab84b814e
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75989302"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200566"
 ---
 # <a name="review-azure-resource-usage-using-the-rest-api"></a>使用 REST API 檢閱 Azure 資源使用量
 
@@ -41,7 +34,7 @@ Authorization: Bearer
 
 `{subscriptionGuid}` 參數為必要，且應包含可使用 API 權杖中提供認證來讀取的訂用帳戶識別碼。 `{reportName}`
 
-以下是必要標頭： 
+以下是必要標頭：
 
 |要求標頭|描述|  
 |--------------------|-----------------|  
@@ -93,7 +86,7 @@ Authorization: Bearer
 
 ## <a name="filtering-reports"></a>篩選報告
 
-建立報告時要求本文的 `filter` 和 `dimensions` 區段可讓您專注在特定資源類型的成本。 先前的要求本文會示範在區域中如何依照所有資源進行篩選。 
+建立報告時要求本文的 `filter` 和 `dimensions` 區段可讓您專注在特定資源類型的成本。 先前的要求本文會示範在區域中如何依照所有資源進行篩選。
 
 ### <a name="get-all-compute-usage"></a>取得所有計算使用量
 
@@ -105,9 +98,9 @@ Authorization: Bearer
         "name": "ResourceType",
         "operator": "In",
         "values": [
-                "Microsoft.ClassicCompute/virtualMachines", 
+                "Microsoft.ClassicCompute/virtualMachines",
                 "Microsoft.Compute/virtualMachines"
-        ] 
+        ]
     }
 }
 ```
@@ -123,7 +116,7 @@ Authorization: Bearer
         "operator": "In",
         "values": [
                 "Microsoft.Sql/servers"
-        ] 
+        ]
     }
 }
 ```

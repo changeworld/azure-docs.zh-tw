@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 17e5f35e83f5cb6e8115a9d344f93abf84e5b38a
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: e8ab3cd262876548b8cbfab55dce0cff0cb3132b
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77156578"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77445843"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -65,8 +65,7 @@ namespace helloworld
 您必須先建立使用訂用帳戶金鑰和訂用帳戶區域的設定，才可以初始化 `SpeechSynthesizer` 物件。 在 `SynthesisToAudioFileAsync()` 方法中插入此程式碼。
 
 ````C#
-// Replace with your own subscription key and service region (e.g., "westus", use the one of SpeechSDKParameters
-// from here: https://aka.ms/speech/sdkregion).
+// Replace with your own subscription key and region identifier from here: https://aka.ms/speech/sdkregion
 // The default language is "en-us".
 var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 ````

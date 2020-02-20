@@ -4,12 +4,12 @@ description: 了解如何使用 Ansible 來管理 Azure 動態清查
 keywords: ansible, azure, devops, bash, cloudshell, 動態清查
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: f159322a19cc79758de33904bbad9dfce32ff7cc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d2ebf202cfc9f94b28fc7a512e1fea452401aec6
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442777"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193594"
 ---
 # <a name="tutorial-configure-dynamic-inventories-of-your-azure-resources-using-ansible"></a>教學課程：使用 Ansible 設定 Azure 資源的動態清查
 
@@ -47,7 +47,7 @@ ms.locfileid: "75442777"
 
 1. 使用下列其中一項技術，在 Azure 上建立兩個 Linux 虛擬機器：
 
-    - **Ansible 腳本** - [使用 Ansible 在 Azure 中建立基本虛擬機器](/azure/virtual-machines/linux/ansible-create-vm)一文中說明如何從 Ansible 腳本建立虛擬機器。 如果您使用腳本來定義一個或兩個虛擬機器，請確定您是使用 SSH 連線而不是使用密碼。
+    - **Ansible 腳本** - [使用 Ansible 在 Azure 中建立基本虛擬機器](./ansible-create-vm.md)一文中說明如何從 Ansible 腳本建立虛擬機器。 如果您使用腳本來定義一個或兩個虛擬機器，請確定您是使用 SSH 連線而不是使用密碼。
 
     - **Azure CLI** - 在 Cloud Shell 中發出以下每一個命令，以建立兩個虛擬機器：
 
@@ -316,4 +316,4 @@ Ansible 提供名為 [azure_rm.py](https://github.com/ansible/ansible/blob/devel
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"] 
-> [快速入門：使用 Ansible 在 Azure 中設定 Linux 虛擬機器](/azure/virtual-machines/linux/ansible-create-vm)
+> [快速入門：使用 Ansible 在 Azure 中設定 Linux 虛擬機器](./ansible-create-vm.md)

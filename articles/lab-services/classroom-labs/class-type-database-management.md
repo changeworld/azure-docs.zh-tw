@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
-ms.openlocfilehash: 92152652ca264cace12d3f780ebec0f80bb2048a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4c375487b30595251753021033c98cf0ca1e8dd7
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233762"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469913"
 ---
 # <a name="set-up-a-lab-to-teach-database-management-for-relational-databases"></a>設定實驗室來教授關係資料庫的資料庫管理
 
@@ -28,13 +28,13 @@ ms.locfileid: "74233762"
 
 ## <a name="lab-configuration"></a>實驗室組態
 
-若要設定此實驗室，您需要 Azure 訂用帳戶和實驗室帳戶，才能開始使用。 如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/) 。 取得 Azure 訂用帳戶之後，您可以在 Azure 實驗室服務中建立新的實驗室帳戶。 如需建立新實驗室帳戶的詳細資訊，請參閱[設定實驗室帳戶的教學](tutorial-setup-lab-account.md)課程。  您也可以使用現有的實驗室帳戶。
+若要設定此實驗室，您需要 Azure 訂用帳戶和實驗室帳戶，才能開始使用。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。 取得 Azure 訂用帳戶之後，您可以在 Azure 實驗室服務中建立新的實驗室帳戶。 如需建立新實驗室帳戶的詳細資訊，請參閱[設定實驗室帳戶的教學](tutorial-setup-lab-account.md)課程。  您也可以使用現有的實驗室帳戶。
 
 ### <a name="lab-account-settings"></a>實驗室帳戶設定
 
-針對實驗室帳戶啟用下表所述的設定。 如需如何啟用 marketplace 映射的詳細資訊，請參閱[指定可供實驗室建立者使用的 marketplace 映射](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#specify-marketplace-images-available-to-lab-creators)。
+針對實驗室帳戶啟用下表所述的設定。 如需如何啟用 marketplace 映射的詳細資訊，請參閱[指定可供實驗室建立者使用的 marketplace 映射](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images)。
 
-| 實驗室帳戶設定 | 範例的指示 |
+| 實驗室帳戶設定 | Instructions |
 | ------------------- | ------------ |
 |Marketplace 映射| 啟用「Windows Server 2019 上的 SQL Server 2019 標準」映射，以在您的實驗室帳戶中使用。|
 
@@ -53,7 +53,7 @@ ms.locfileid: "74233762"
 
 SQL Server 2019 已預先安裝在建立新實驗室時所選擇的虛擬機器映射中。
 
-## <a name="cost-estimate"></a>成本預估值
+## <a name="cost-estimate"></a>成本預估
 
 讓我們來討論這個類別的可能成本預估。  我們將使用25名學生的課程。  已排程的類別時間有20小時。  此外，每個學生在排程的類別時間以外，會取得家庭或指派10小時的配額。  我們選擇的虛擬機器大小為「中」，也就是42實驗室單位。
 

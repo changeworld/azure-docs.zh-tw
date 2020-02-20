@@ -2,24 +2,21 @@
 title: 根據您的需求整理發票 - Azure
 description: 了解如何以您的發票整理成本。
 author: amberbhargava
-manager: amberb
-editor: banders
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.workload: na
-ms.date: 10/01/2019
+ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 7f3a5232f8c5bfbf3f2e81ba52607406f8a038b4
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c9cb1d7d1dcc6e7872b22d8c58fe44b9bce25f13
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76843883"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200739"
 ---
 # <a name="organize-costs-by-customizing-your-billing-account"></a>自訂計費帳戶以整理成本
 
-您的 Microsoft 客戶合約計費帳戶可讓您彈性地根據自己的需求來整理成本，無論是依部門、專案或開發環境。 
+您的 Microsoft 客戶合約計費帳戶可讓您彈性地根據自己的需求來整理成本，無論是依部門、專案或開發環境。
 
 本文說明如何使用 Azure 入口網站來整理成本。 內容適用於 Microsoft 客戶合約的計費帳戶。 請[確認您是否有 Microsoft 客戶合約的存取權](#check-access-to-a-microsoft-customer-agreement)。
 
@@ -33,7 +30,7 @@ ms.locfileid: "76843883"
 
 帳單設定檔代表發票和相關的計費資訊，例如付款方式和帳單地址。 您帳戶中的每個帳單設定檔都會在月初產生每月發票。 發票包含 Azure 使用量的費用以及上個月其他購買所產生的費用。
 
-在您註冊 Azure 時，系統會自動為您的計費帳戶建立帳單設定檔。 您可以建立額外的帳單設定檔，以數個月的發票整理成本。 
+在您註冊 Azure 時，系統會自動為您的計費帳戶建立帳單設定檔。 您可以建立額外的帳單設定檔，以數個月的發票整理成本。
 
 > [!IMPORTANT]
 >
@@ -41,9 +38,9 @@ ms.locfileid: "76843883"
 
 ### <a name="invoice-section"></a>發票區段
 
-發票區段代表發票中的一個成本群組。 系統會在您的帳戶中自動為每個帳單設定檔建立發票區段。 您可以根據您的需求，建立額外的區段來整理成本。 每個發票區段都會顯示在發票上，並附上該月份產生的費用。 
+發票區段代表發票中的一個成本群組。 系統會在您的帳戶中自動為每個帳單設定檔建立發票區段。 您可以根據您的需求，建立額外的區段來整理成本。 每個發票區段都會顯示在發票上，並附上該月份產生的費用。
 
-下圖顯示的發票包含「工程」和「行銷」兩個發票區段。 每個區段的摘要和詳細費用都會顯示在發票中。 圖中顯示的價格僅供示範，不代表 Azure 服務的實際價格。 
+下圖顯示的發票包含「工程」和「行銷」兩個發票區段。 每個區段的摘要和詳細費用都會顯示在發票中。 圖中顯示的價格僅供示範，不代表 Azure 服務的實際價格。
 
 ![顯示發票和區段的圖片](./media/mca-section-invoice/mca-invoice-with-sections.png)
 
@@ -79,7 +76,7 @@ ms.locfileid: "76843883"
 
    ![顯示在入口網站中搜尋 [成本管理 + 帳單] 的螢幕擷取畫面](./media/mca-section-invoice/search-cmb.png)
 
-3. 從左側窗格中選取 [帳單設定檔]  。 從清單中選取 [帳單設定檔]。 新的區段會顯示在所選帳單設定檔的發票上。 
+3. 從左側窗格中選取 [帳單設定檔]  。 從清單中選取 [帳單設定檔]。 新的區段會顯示在所選帳單設定檔的發票上。
 
    [![顯示帳單設定檔清單的螢幕擷取畫面](./media/mca-section-invoice/mca-select-profile.png)](./media/mca-section-invoice/mca-select-profile-zoomed-in.png#lightbox)
 
@@ -87,7 +84,7 @@ ms.locfileid: "76843883"
 
    [![顯示新增發票區段的螢幕擷取畫面](./media/mca-section-invoice/mca-list-invoice-sections.png)](./media/mca-section-invoice/mca-list-invoice-sections-zoomed-in.png#lightbox)
 
-5. 輸入發票區段的名稱。 
+5. 輸入發票區段的名稱。
 
    [![顯示發票區段建立頁面的螢幕擷取畫面](./media/mca-section-invoice/mca-create-invoice-section.png)](./media/mca-section-invoice/mca-create-invoice-section-zoomed-in.png#lightbox)
 
@@ -152,13 +149,13 @@ ms.locfileid: "76843883"
 
 6. 選取發票區段以連結訂用帳戶的費用。 費用會顯示在此區段下帳單設定檔的發票上。
 
-7. 選取 Azure 方案，並為您的訂用帳戶輸入易記的名稱。 
+7. 選取 Azure 方案，並為您的訂用帳戶輸入易記的名稱。
 
 9. 按一下頁面底部的 [新增]  。  
 
 ### <a name="link-existing-subscriptions-and-products"></a>連結現有的訂用帳戶和產品
 
-如果您有現有的 Azure 訂用帳戶或其他產品，例如 Azure Marketplace、應用程式來源資源，您可以將它們從其現有的發票區段移至另一個發票區段，以重新整理您的成本。 
+如果您有現有的 Azure 訂用帳戶或其他產品，例如 Azure Marketplace、應用程式來源資源，您可以將它們從其現有的發票區段移至另一個發票區段，以重新整理您的成本。
 
 > [!IMPORTANT]
 >
@@ -212,7 +209,7 @@ ms.locfileid: "76843883"
 |---------|---------|---------|
 |前 50 TB 的每一 TB 1.84 美元/月    | 50 TB        | 92.0  |
 |之後 450 TB 的每一 TB 1.77 美元/月    |  0 TB         | 0.0  |
-|總計     |     50 TB  | 92.0 
+|總計     |     50 TB  | 92.0
 
 `Charges for the second billing profile`
 
@@ -220,17 +217,17 @@ ms.locfileid: "76843883"
 |---------|---------|---------|
 |前 50 TB 的每一 TB 1.84 美元/月    | 50 TB        | 92.0  |
 |之後 450 TB 的每一 TB 1.77 美元/月    |  0 TB         | 0.0  |
-|總計     |     50 TB  | 92.0 
+|總計     |     50 TB  | 92.0
 
 在此案例中，使用 100 TB 資料的費用總計是 **184.0** (92.0 * 2)。
 
 ### <a name="azure-reservation-benefits-might-not-apply-to-all-subscriptions"></a>Azure 保留權益可能不會套用至所有訂用帳戶
 
-具有共用範圍的 Azure 保留只會套用至單一帳單設定檔中的訂用帳戶，不會在帳單設定檔之間共用。 
+具有共用範圍的 Azure 保留只會套用至單一帳單設定檔中的訂用帳戶，不會在帳單設定檔之間共用。
 
 ![不同計費帳戶結構的保留套用資訊圖形](./media/mca-section-invoice/mca-reservations-benefits-by-bg.png)
 
-在上圖中，Contoso 有兩個訂用帳戶。 Azure 保留權益的套用方式會根據計費帳戶的結構而不同。 在左邊的案例中，保留權益會同時套用到工程帳單設定檔中的兩個計費訂用帳戶。 在右邊的案例中，保留權益只會套用到「訂用帳戶 1」，因為它是工程帳單設定檔中唯一的計費訂用帳戶。 
+在上圖中，Contoso 有兩個訂用帳戶。 Azure 保留權益的套用方式會根據計費帳戶的結構而不同。 在左邊的案例中，保留權益會同時套用到工程帳單設定檔中的兩個計費訂用帳戶。 在右邊的案例中，保留權益只會套用到「訂用帳戶 1」，因為它是工程帳單設定檔中唯一的計費訂用帳戶。
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>檢查 Microsoft 客戶合約的存取
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]

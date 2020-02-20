@@ -8,16 +8,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 09/17/2019
-ms.openlocfilehash: 3e0fddc03ad880d36876276827198b0ac180a00d
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: f03797a8c7df1609a32f934bc090c7adc899aa9a
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076367"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198917"
 ---
 # <a name="what-is-interactive-query-in-azure-hdinsight"></a>Azure HDInsight 中的互動式查詢是什麼
 
-互動式查詢 (又稱為 Apache Hive LLAP 或[低延遲分析處理](https://cwiki.apache.org/confluence/display/Hive/LLAP) \(英文\)) 是一種 Azure HDInsight [叢集類型](../hdinsight-hadoop-provision-linux-clusters.md#cluster-types)。 互動式查詢支援記憶體內快取，可讓 Apache Hive 查詢速度更快且更具互動性。 客戶使用互動式查詢，以非常快速的方式查詢儲存在 Azure 儲存體和 Azure Data Lake Storage 中的資料。 互動式查詢讓開發人員和資料科學家更方便地使用他們最愛的 BI 工具，來運用巨量資料。 HDInsight 互動式查詢支援數種工具，以簡單的方式來存取巨量資料。
+互動式查詢 (又稱為 Apache Hive LLAP 或[低延遲分析處理](https://cwiki.apache.org/confluence/display/Hive/LLAP) \(英文\)) 是一種 Azure HDInsight [叢集類型](../hdinsight-hadoop-provision-linux-clusters.md#cluster-type)。 互動式查詢支援記憶體內快取，可讓 Apache Hive 查詢速度更快且更具互動性。 客戶使用互動式查詢，以非常快速的方式查詢儲存在 Azure 儲存體和 Azure Data Lake Storage 中的資料。 互動式查詢讓開發人員和資料科學家更方便地使用他們最愛的 BI 工具，來運用巨量資料。 HDInsight 互動式查詢支援數種工具，以簡單的方式來存取巨量資料。
 
 [!INCLUDE [hdinsight-price-change](../../../includes/hdinsight-enhancements.md)]
 

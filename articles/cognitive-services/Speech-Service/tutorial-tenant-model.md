@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 02ae140568150b0db8ebdea065ee683e4f4eec9c
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: a83ed5c9cec994c1bc4cadd5cf6208c159823658
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77189008"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469012"
 ---
 # <a name="tutorial-create-a-tenant-model-preview"></a>教學課程：建立租用戶模型 (預覽)
 
@@ -81,7 +81,7 @@ ms.locfileid: "77189008"
    > 在北美洲的 Office 365 企業客戶有資格建立租用戶模型 (英文)。 如果您是客戶加密箱、客戶金鑰或 Office 365 政府版客戶，則無法使用此功能。 若要判斷您是「客戶加密箱」或「客戶金鑰」客戶，請參閱：
    > * [客戶加密箱](/microsoft-365/compliance/customer-lockbox-requests) \(部分機器翻譯\)
    > * [客戶金鑰](/microsoft-365/compliance/customer-key-overview) \(部分機器翻譯\)
-   > * [Office 365 政府版](/microsoft-365/government)
+   > * [Office 365 政府版](https://www.microsoft.com/microsoft-365/government)
 
 1. 選取 [加入]  。
 

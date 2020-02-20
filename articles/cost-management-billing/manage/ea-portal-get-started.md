@@ -1,19 +1,18 @@
 ---
 title: 開始使用 Azure 企業版入口網站
 description: 本文說明 Azure Enterprise 合約 (Azure EA) 客戶如何使用 Azure 企業版入口網站。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/04/2020
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: boalcsva
-ms.openlocfilehash: 516b3704daee885541cec49b0ee374e050dd4b22
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.reviewer: boalcsva
+ms.openlocfilehash: e1c6eac81968ef6ecbc12ec52415c2aa9680f3e1
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023339"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200824"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>開始使用 Azure 企業版入口網站
 
@@ -235,7 +234,7 @@ Azure 企業版入口網站階層包含：
   - 從公司或學校帳戶轉移至另一個公司或學校帳戶。
   - 從 Microsoft 帳戶轉移至公司或學校帳戶。
   - 從 Microsoft 帳戶轉移至另一個 Microsoft 帳戶。
-  
+
     目標帳戶必須是有效的 Azure Commerce 帳戶，才能作為轉移的有效目標。 若使用新帳戶，當您登入 Azure 企業版入口網站時，系統會要求您建立 Azure Commerce 帳戶。 若使用現有帳戶，您必須先建立新的 Azure 訂用帳戶，才能讓該帳戶符合資格。
 
 - 您無法從公司或學校帳戶轉移至 Microsoft 帳戶。
@@ -285,7 +284,7 @@ Azure 企業版入口網站階層包含：
 
 當您為每個應用程式環境建立不同的訂用帳戶後，您可以協助保護每個環境的安全。
 
-- 您也可以為每個訂用帳戶指派不同的服務管理員帳戶。 
+- 您也可以為每個訂用帳戶指派不同的服務管理員帳戶。
 - 您可以將訂用帳戶與任意數目的服務建立關聯。
 - 帳戶擁有者會建立訂用帳戶，並將服務管理員帳戶指派給其帳戶中的每個訂用帳戶。
 
@@ -309,7 +308,7 @@ _Microsoft Azure 企業版_ 是建立訂用帳戶時的預設名稱。 您可以
 1. 選取 [訂用帳戶]  ，然後選取您所建立的訂用帳戶。
 1. 選取 [編輯訂用帳戶詳細資料]  。
 1. 編輯 [訂用帳戶名稱]  和 [服務管理員]  ，然後選取核取記號。
-  
+
    訂用帳戶名稱會出現在報告上。 這是與開發入口網站中訂用帳戶相關聯的專案名稱。
 
 新的訂用帳戶可能需要最多 24 小時的時間，才會出現在訂用帳戶清單中。 建立訂用帳戶之後，您可以：
@@ -509,14 +508,14 @@ Azure 企業版入口網站為企業客戶提供兩種類型的訂用帳戶：
 - Microsoft Azure 企業版，其適合用於：
   - 所有生產使用量
   - 以基礎結構費用為基礎的最佳價格
-  
+
   如需詳細資訊，[請連絡 Azure 業務代表](https://azure.microsoft.com/pricing/enterprise-agreement/)。
 
 - Enterprise 開發/測試，其適合用於：
   - 所有團隊開發/測試工作負載
   - 中度至重度的個人開發/測試工作負載
   - 存取特殊 MSDN 映像和優惠服務費率
-  
+
   如需詳細資訊，請參閱 [Enterprise 開發/測試供應項目](https://azure.microsoft.com/offers/ms-azr-0148p/)。
 
 ### <a name="is-it-possible-to-transfer-subscription-ownership-to-another-account"></a>是否可能將 Azure 訂用帳戶擁有權轉移給另一個帳戶？

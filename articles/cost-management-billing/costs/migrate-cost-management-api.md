@@ -1,21 +1,18 @@
 ---
 title: 將 EA 遷移至 Microsoft 客戶合約 API - Azure
 description: 本文可協助您了解將 Microsoft Enterprise 合約 (EA) 遷移至 Microsoft 客戶合約的結果。
-services: cost-management
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/21/2020
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: micflan
-ms.custom: ''
-ms.openlocfilehash: b0c30cd35efd598767d21dbdafc5100d8896380c
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.reviewer: micflan
+ms.openlocfilehash: 397e0a21b1ba11b3bdd74c2030ff358c1ce159d8
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76514709"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201028"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>從 Enterprise 合約遷移至 Microsoft 客戶合約 API
 
@@ -199,7 +196,7 @@ EA API 使用 API 金鑰來進行驗證和授權。 MCA API 則使用 Azure AD �
 | 訂單編號 | None | &nbsp;  |
 | PartNumber | None | 使用 meterId 和 productOrderName 來唯一識別價格。 |
 | 方案名稱 | productOrderName | &nbsp;  |
-| Product | Product |   |
+| Products | Products |   |
 | ProductId | productId | 確切的字串值會不同。 |
 | 發行者名稱 | publisherName | &nbsp;  |
 | ResourceGroup | resourceGroupName | &nbsp;  |

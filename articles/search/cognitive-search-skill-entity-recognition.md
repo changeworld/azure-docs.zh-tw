@@ -8,21 +8,21 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 559d8cb25624c1d8bebb2969fbeeb80bdcc020e6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6393c1eeaaa72d653704fcc52442bfb326dc2cdd
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73479749"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472327"
 ---
 #   <a name="entity-recognition-cognitive-skill"></a>實體辨識認知技能
 
 **實體辨識**技能會從文字擷取實體。 這項技能會使用認知服務中[文字分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview)所提供的機器學習模型。
 
 > [!NOTE]
-> 當您透過增加處理頻率、新增更多文件或新增更多 AI 演算法來擴展範圍時，您必須[連結可計費的認知服務資源](cognitive-search-attach-cognitive-services.md)。 在認知服務中呼叫 Api 時，會產生費用，並在 Azure 認知搜尋中以檔破解階段的形式進行映射解壓縮。 從文件中擷取文字不會產生費用。
+> 當您透過增加處理頻率、新增更多文件或新增更多 AI 演算法來擴展範圍時，您必須[連結可計費的認知服務資源](cognitive-search-attach-cognitive-services.md)。 在認知服務中呼叫 API，以及在 Azure 認知搜尋的文件萃取階段中擷取影像時，都會產生費用。 從文件中擷取文字不會產生費用。
 >
-> 內建技能的執行會依現有的[認知服務預付型方案價格](https://azure.microsoft.com/pricing/details/cognitive-services/)收費。 [Azure 認知搜尋定價頁面](https://go.microsoft.com/fwlink/?linkid=2042400)會說明影像提取定價。
+> 內建技能的執行會依現有的[認知服務預付型方案價格](https://azure.microsoft.com/pricing/details/cognitive-services/)收費。 影像擷取定價的說明請見 [Azure 認知搜尋定價頁面](https://go.microsoft.com/fwlink/?linkid=2042400)。
 
 
 ## <a name="odatatype"></a>@odata.type  
@@ -35,27 +35,27 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 
 參數區分大小寫，且均為選擇性。
 
-| 參數名稱     | 說明 |
+| 參數名稱     | 描述 |
 |--------------------|-------------|
 | categories    | 應擷取的類別陣列。  可能的類別類型：`"Person"`、`"Location"`、`"Organization"`、`"Quantity"`、`"Datetime"`、`"URL"`、`"Email"`。 如果未提供任何類別，則會傳回所有類型。|
-|defaultLanguageCode |  輸入文字的語言代碼。 支援下列語言：`de, en, es, fr, it`|
-|minimumPrecision | 0 到 1 之間的值。 如果信賴分數（在 `namedEntities` 輸出中）低於此值，則不會傳回實體。 預設值為 0。 |
-|includeTypelessEntities | 如果您想要辨識不符合目前類別的知名實體，請將設定為 `true`。 已辨識的實體會在 `entities` 複雜輸出欄位中傳回。 例如，「Windows 10」是知名實體（產品），但由於「產品」不是支援的分類，因此此實體會包含在 [實體] 輸出欄位中。 預設值為 `false` |
+|defaultLanguageCode |  輸入文字的語言代碼。 支援下列語言： `ar, cs, da, de, en, es, fi, fr, hu, it, ja, ko, nl, no, pl, pt-BR, pt-PT, ru, sv, tr, zh-hans`。 並非所有的實體類別都支援所有語言;請參閱下面的附注。|
+|minimumPrecision | 0 到 1 之間的值。 如果信賴分數（在 `namedEntities` 輸出中）低於此值，則不會傳回實體。 預設值是 0。 |
+|includeTypelessEntities | 如果您想要辨識不符合目前類別的知名實體，請將設定為 `true`。 已辨識的實體會在 `entities` 複雜輸出欄位中傳回。 例如，「Windows 10」是知名實體（產品），但由於「產品」不是支援的分類，因此此實體會包含在 [實體] 輸出欄位中。 預設為 `false` |
 
 
 ## <a name="skill-inputs"></a>技能輸入
 
-| 輸入名稱      | 說明                   |
+| 輸入名稱      | 描述                   |
 |---------------|-------------------------------|
-| languageCode  | 選用。 預設值為 `"en"`。  |
-| 文字          | 要分析的文字。          |
+| languageCode  | 選擇性。 預設值為 `"en"`。  |
+| text          | 要分析的文字。          |
 
 ## <a name="skill-outputs"></a>技能輸出
 
 > [!NOTE]
-> 並非所有的實體類別都支援所有語言。 只有 _en_、_es_ 支援 `"Quantity"`、`"Datetime"`、`"URL"`、`"Email"` 類型的擷取。
+> 並非所有的實體類別都支援所有語言。 上述語言的完整清單支援 [`"Person"`]、[`"Location"`] 和 [`"Organization"` 實體] 類別目錄類型。 只有_de_、 _en_、 _es_、 _fr_和_zh-hans_支援 `"Quantity"`、`"Datetime"`、`"URL"`和 `"Email"` 類型的解壓縮。 如需詳細資訊，請參閱[文字分析 API 的語言和區域支援](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support)。  
 
-| 輸出名稱     | 說明                   |
+| 輸出名稱     | 描述                   |
 |---------------|-------------------------------|
 | 人員      | 字串陣列，其中每個字串代表人員名稱。 |
 | 位置  | 字串陣列，其中每個字串代表位置。 |

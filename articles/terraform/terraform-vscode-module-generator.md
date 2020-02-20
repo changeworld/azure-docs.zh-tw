@@ -3,12 +3,12 @@ title: 教學課程 - 使用 Yeoman 在 Azure 中建立 Terraform 基底範本
 description: 了解如何使用 Yeoman 在 Azure 中建立 Terraform 基底範本。
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: ba81d0ee797fd879fdadc3a6b25ca8f310383f61
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 82c3f5e640789547abb716b55959e1821a61e6d0
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159160"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472140"
 ---
 # <a name="tutorial-create-a-terraform-base-template-in-azure-using-yeoman"></a>教學課程：使用 Yeoman 在 Azure 中建立 Terraform 基底範本
 
@@ -21,11 +21,11 @@ ms.locfileid: "74159160"
 > * 使用 Docker 檔案執行 Terraform 模組。
 > * 在 Azure Cloud Shell 中以原生方式執行 Terraform 模組。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-- **Azure 訂用帳戶**：如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/) 。
+- **Azure 訂用帳戶**：如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 - **Visual Studio Code**：配合您的平台，[下載 Visual Studio Code](https://code.visualstudio.com/download)。
-- **Terraform**：[安裝 Terraform](/azure/virtual-machines/linux/terraform-install-configure )，執行由 Yeoman 建立的模組。
+- **Terraform**：[安裝 Terraform](terraform-install-configure.md)，執行由 Yeoman 建立的模組。
 - **Docker**：[安裝 Docker](https://www.docker.com/get-started)，執行由 Yeoman 產生器建立的模組。
 - **Go 程式設計語言**：[Yeoman 產生的測試案例是使用 Go 語言的程式碼時，請安裝 Go](https://golang.org/)。
 
@@ -164,7 +164,7 @@ Yeoman 範本會在目前的目錄中產生檔案。 因此，您必須建立目
 
 1. 從命令提示字元，輸入
 
-    `docker build --build-arg BUILD_ARM_SUBSCRIPTION_ID= --build-arg BUILD_ARM_CLIENT_ID= --build-arg BUILD_ARM_CLIENT_SECRET= --build-arg BUILD_ARM_TENANT_ID= -t terra-mod-example .` 。
+    第 1 課：建立 Windows Azure 儲存體物件`docker build --build-arg BUILD_ARM_SUBSCRIPTION_ID= --build-arg BUILD_ARM_CLIENT_ID= --build-arg BUILD_ARM_CLIENT_SECRET= --build-arg BUILD_ARM_TENANT_ID= -t terra-mod-example .`。
 
     系統將會顯示訊息 **Successfully built** (成功建置)。
 
@@ -174,7 +174,7 @@ Yeoman 範本會在目前的目錄中產生檔案。 因此，您必須建立目
 
     ![包含新模組的清單](media/terraform-vscode-module-generator/ymg-repository-results.png)
 
-1. 輸入 `docker run -it terra-mod-example /bin/sh` 。 執行 `docker run` 命令之後，您就會在 Docker 環境中。 此時，您可以使用 `ls` 命令來探索檔案。
+1. 輸入 `docker run -it terra-mod-example /bin/sh`。 執行 `docker run` 命令之後，您就會在 Docker 環境中。 此時，您可以使用 `ls` 命令來探索檔案。
 
     ![Docker 中的檔案清單](media/terraform-vscode-module-generator/ymg-list-docker-file.png)
 
@@ -236,7 +236,7 @@ Yeoman 範本會在目前的目錄中產生檔案。 因此，您必須建立目
 
 1. 此時，Cloud Shell 已為您在環境變數中設定 GOPATH。 若要查看此路徑，請輸入 `go env`。
 
-1. 如果尚無 $GOPATH 目錄，請建立一個：輸入 `mkdir ~/go` 。
+1. 如果尚無 $GOPATH 目錄，請建立一個：輸入 `mkdir ~/go`。
 
 1. 在 $GOPATH 目錄中建立目錄。 此目錄會用來保存此範例中建立的不同專案目錄。 
 

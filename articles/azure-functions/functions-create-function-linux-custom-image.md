@@ -5,12 +5,12 @@ ms.date: 01/15/2020
 ms.topic: tutorial
 ms.custom: mvc
 zone_pivot_groups: programming-languages-set-functions01
-ms.openlocfilehash: edb947f0748c186e146bce5f4dbe9d0b95a2568d
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 9c97606b21a6e98494fffb689567aaab6e2f0621
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846496"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210186"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>在 Linux 上使用自訂容器建立函式
 
@@ -61,7 +61,7 @@ ms.locfileid: "76846496"
 
 ### <a name="prerequisite-check"></a>先決條件檢查
 
-1. 在終端機或命令視窗中，執行 `func --version`，以檢查 Azure Functions Core Tools 為 2.7.1846 版或更新版本。
+1. 在終端機或命令視窗中，執行 `func --version`，以確認 Azure Functions Core Tools 為 2.7.1846 版或更新版本。
 1. 執行 `az --version` 以檢查 Azure CLI 版本為 2.0.76 或更新版本。
 1. 執行 `az login` 以登入 Azure 並驗證有效訂用帳戶。
 1. 執行 `docker login` 以登入 Docker。 如果 Docker 並未執行，此命令就會失敗，在此情況下，請啟動 Docker 並重試命令。
@@ -256,7 +256,7 @@ ms.locfileid: "76846496"
     docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
     ```
     
-1. 映像一旦在本機容器中執行，請將瀏覽器開啟至 `http://localhost:8080`，這應會顯示如下所示的預留位置影像。 此影像會在此時出現，因為您的函式是在本機容器中執行，就像在 Azure 中一樣，這表示其利用 `"authLevel": "function"` 屬性受到 *function.json* 中所定義的存取金鑰保護。 然而，容器尚未在 Azure 中發佈至函式應用程式，因此還沒有可用的金鑰。 如果您想要在本機測試，請停止 Docker、將授權屬性變更為 `"authLevel": "anonymous"`、重建映像，然後重新啟動 Docker。 然後在 *function.json* 中重設 `"authLevel": "function"`。 如需詳細資訊，請參閱[授權金鑰](functions-bindings-http-webhook.md#authorization-keys)。
+1. 映像一旦在本機容器中執行，請將瀏覽器開啟至 `http://localhost:8080`，這應會顯示如下所示的預留位置影像。 此影像會在此時出現，因為您的函式是在本機容器中執行，就像在 Azure 中一樣，這表示其利用 `"authLevel": "function"` 屬性受到 *function.json* 中所定義的存取金鑰保護。 然而，容器尚未在 Azure 中發佈至函式應用程式，因此還沒有可用的金鑰。 如果您想要在本機測試，請停止 Docker、將授權屬性變更為 `"authLevel": "anonymous"`、重建映像，然後重新啟動 Docker。 然後在 *function.json* 中重設 `"authLevel": "function"`。 如需詳細資訊，請參閱[授權金鑰](functions-bindings-http-webhook-trigger.md#authorization-keys)。
 
     ![表示容器正在本機執行的預留位置影像](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
 
@@ -370,7 +370,7 @@ Docker Hub 是一個容器登錄，其裝載映像並提供映像和容器服務
 
 1. 使用 Azure 入口網站，或使用 Azure CLI 搭配 `az rest` 命令，利用存取 (函式) 金鑰擷取函式 URL。)
 
-    # <a name="portaltabportal"></a>[入口網站](#tab/portal)
+    # <a name="portal"></a>[入口網站](#tab/portal)
 
     1. 登入 Azure 入口網站，然後在頁面頂端的 [**搜尋**] 方塊中輸入函式應用程式名稱，以找出您的函式應用程式。 在結果中，選取 [App Service]  資源。
 
@@ -387,7 +387,7 @@ Docker Hub 是一個容器登錄，其裝載映像並提供映像和容器服務
     > [!NOTE]  
     > 因為您的函數應用程式會部署為容器，所以，您無法在入口網站中對函式程式碼進行變更。 您必須改為更新本機映像中的專案、再次將映像推送至登錄，然後重新部署至 Azure。 您可以在後面的章節中設定持續部署。
     
-    # <a name="azure-clitabazurecli"></a>[Azure CLI](#tab/azurecli)
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
     1. 以下列格式建構 URL 字串，並分別以您的 Azure 訂用帳戶識別碼、函式應用程式的資源群組和函式應用程式的名稱取代 `<subscription_id>`、`<resource_group>` 和 `<app_name>`：
 
@@ -877,19 +877,19 @@ export default httpTrigger;
 
 1. 開啟函式專案的 *local.setting.json* 檔案，並複製連接字串值。 在終端機或命令視窗中，執行下列命令 (請貼上您的特定連接字串以取代 `<connection_string>`)，以建立名為 `AZURE_STORAGE_CONNECTION_STRING`的環境變數。 (此環境變數意味著您無須使用 `--connection-string` 引數將連接字串提供給每個後續命令。)
 
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     $env:AZURE_STORAGE_CONNECTION_STRING = "<connection_string>"
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     ```cmd
     set AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
@@ -899,19 +899,19 @@ export default httpTrigger;
     
 1. (選擇性) 使用 [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) 命令檢視您帳戶中的儲存體佇列。 此命令的輸出應該會包含名為 `outqueue` 的佇列，這是函式將其第一個訊息寫入至該佇列時所建立的。
     
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```azurecli
     az storage queue list --output tsv
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```azurecli
     az storage queue list --output tsv
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     ```azurecli
     az storage queue list --output tsv
@@ -921,19 +921,19 @@ export default httpTrigger;
 
 1. 使用 [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) 命令檢視此佇列中的訊息，這應該是您先前測試函式時所使用的名字。 此命令會以 [base64 編碼](functions-bindings-storage-queue.md#encoding)擷取佇列中的第一個訊息，因此您也必須將訊息解碼，以便以文字格式檢視。
 
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     echo `echo $(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}')))
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     由於您必須從 base64 對訊息集合取值並解碼，請執行 PowerShell 並使用 PowerShell 命令。
 

@@ -1,19 +1,18 @@
 ---
 title: 自動更新 Azure 保留
 description: 了解您可以如何自動更新 Azure 保留，以繼續獲得保留折扣。
-services: billing
 author: bandersmsft
-manager: yashar
+ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: dfff02c554c94daf1dd7fd844cea461fd76589d8
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: fc82fe0f63b244adb74d2242d25270528669380a
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75995711"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199393"
 ---
 # <a name="automatically-renew-reservations"></a>自動更新保留
 

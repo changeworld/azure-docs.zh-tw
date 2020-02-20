@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 47adda38bb39a95fe9abc0775a1822d677f19dab
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 0a4d7f152e555ed89bd0a6aee0a7bc83b9815492
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513842"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469131"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>針對 Azure 備份失敗進行疑難排解：與代理程式或延伸模組相關的問題
 
@@ -64,6 +64,7 @@ Azure VM 代理程式可能已停止、過期、處於不一致的狀態，或�
 
 - 如果復原點資源群組上有鎖定導致無法自動清除復原點，就會發生此問題。
 - 如果每日觸發多個備份，也會發生此問題。 目前建議每天只進行一次備份，因為在每個設定的快照集保留期間，立即還原點會保留1-5 天，而且在任何指定時間內，只有18個立即 Rp 可以與 VM 相關聯。 <br>
+- 跨還原點集合和 VM 的資源群組的還原點數目不能超過18個。 若要建立新的還原點，請刪除現有的還原點。
 
 建議的動作：<br>
 若要解決此問題，請移除 VM 資源群組的鎖定，並重試此作業以觸發清除動作。
@@ -143,7 +144,7 @@ Azure VM 代理程式可能已停止、過期、處於不一致的狀態，或�
 
 ### <a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>代理程式已安裝在 VM 中，但沒有回應 (適用於 Windows VM)
 
-#### <a name="solution"></a>解決方案
+#### <a name="solution"></a>解決方法
 
 VM 代理程式可能已損毀，或服務可能已停止。 重新安裝 VM 代理程式有助於取得最新版本。 也有助於重新開始與服務通訊。
 
@@ -159,7 +160,7 @@ VM 代理程式可能已損毀，或服務可能已停止。 重新安裝 VM 代
 
 ### <a name="the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>VM 中安裝的代理程式已過時 (適用於 Linux VM)
 
-#### <a name="solution"></a>解決方案
+#### <a name="solution"></a>解決方法
 
 針對 Linux VM，與代理程式或擴充功能相關的多數失敗是由於會影響過時 VM 代理程式的問題所造成。 若要對此問題進行疑難排解，請遵循下列一般方針：
 
@@ -197,11 +198,11 @@ VM 代理程式可能已損毀，或服務可能已停止。 重新安裝 VM 代
 
 VM 備份仰賴發給底層儲存體帳戶的快照命令。 備份可能會失敗，因為它無權存取儲存體帳戶，或是因為快照集工作延遲執行。
 
-#### <a name="solution"></a>解決方案
+#### <a name="solution"></a>解決方法
 
 下列狀況可能導致快照集工作失敗：
 
-| 原因 | 解決方案 |
+| 原因 | 解決方法 |
 | --- | --- |
 | 因為遠端桌面通訊協定 (RDP) 中的 VM 關機，而導致報告的 VM 狀態不正確。 | 如果您關閉 RDP 中的 VM，請檢查入口網站，以判斷 VM 狀態是否正確。 如果不正確，可使用 VM 儀表板上的 [關閉] 選項來關閉入口網站中的 VM。 |
 | VM 無法從 DHCP 取得主機或網狀架構位址。 | 必須在來賓內啟用 DHCP，IaaS VM 備份才能運作。 如果 VM 無法從 DHCP 回應 245 取得主機或網狀架構位址，則無法下載或執行任何延伸模組。 如果您需要靜態私人 IP，則應透過**Azure 入口網站**或**PowerShell**加以設定，並確定已啟用 VM 內的 DHCP 選項。 [深入瞭解](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)如何使用 PowerShell 設定靜態 IP 位址。
@@ -210,7 +211,7 @@ VM 備份仰賴發給底層儲存體帳戶的快照命令。 備份可能會失�
 
 如果無法載入延伸模組，備份就會因為無法取得快照集而失敗。
 
-#### <a name="solution"></a>解決方案
+#### <a name="solution"></a>解決方法
 
 將擴充功能解除安裝，以強制重新載入 VMSnapshot 擴充功能。 下一次備份嘗試會重新載入解除安裝。
 

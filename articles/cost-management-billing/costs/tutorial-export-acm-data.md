@@ -1,21 +1,19 @@
 ---
 title: 教學課程 - 建立及管理 Azure 成本管理的匯出資料
 description: 本文示範如何建立及管理匯出的 Azure 成本管理資料，以將其用於外部系統中。
-services: cost-management
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/14/2020
+ms.date: 02/12/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
-manager: jasonh
+ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 76ee5aba0f1d0769e15a5969409dfef2a018e477
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 40846de9ee8eec3225a05e3c2c68c3ad5af02042
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75984033"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201011"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>教學課程：建立和管理匯出的資料
 

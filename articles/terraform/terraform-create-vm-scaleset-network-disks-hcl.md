@@ -3,12 +3,12 @@ title: 教學課程 - 使用 Terraform 建立 Azure 虛擬機器擴展集
 description: 了解如何使用 Terraform 來設定 Azure 虛擬機器擴展集及進行其版本管理。
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: 6dcdad21eef003fe773a2c6ea3cb8a69b9175ecb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4e445d5e6ae4b7fc4528c6d61ee2bc86870827b1
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369468"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472225"
 ---
 # <a name="tutorial-create-an-azure-virtual-machine-scale-set-using-terraform"></a>教學課程：使用 Terraform 建立 Azure 虛擬機器擴展集
 
@@ -30,7 +30,7 @@ ms.locfileid: "75369468"
 
 - **Azure 訂用帳戶**：如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-- **安裝 Terraform**：請遵循 [Terraform 和設定 Azure 的存取](/azure/virtual-machines/linux/terraform-install-configure)一文中的指示
+- **安裝 Terraform**：請遵循 [Terraform 和設定 Azure 的存取](terraform-install-configure.md)一文中的指示
 
 - **建立 SSH 金鑰組**：如需詳細資訊，請參閱[如何在 Azure 中建立和使用 Linux VM 的 SSH 公開和私密金鑰組](/azure/virtual-machines/linux/mac-create-ssh-keys)。
 

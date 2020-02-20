@@ -3,12 +3,12 @@ title: 教學課程 - 使用 Azure Kubernetes Service (AKS) 和 Terraform 建立
 description: 教學課程說明如何以 Azure Kubernetes Service 和 Terraform 建立 Kubernetes 叢集
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: e04abdab2893e76a65615635ae9937797be89855
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: eb8619418cf6d42f600499bb5a12322adce6f44b
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708269"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472242"
 ---
 # <a name="tutorial-create-a-kubernetes-cluster-with-azure-kubernetes-service-using-terraform"></a>教學課程：使用 Azure Kubernetes Service 和 Terraform 建立 Kubernetes 叢集
 
@@ -25,7 +25,7 @@ ms.locfileid: "75708269"
 
 - **Azure 訂用帳戶**：如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-- **設定 Terraform**：請遵循 [Terraform 和設定 Azure 的存取](/azure/virtual-machines/linux/terraform-install-configure)一文中的指示
+- **設定 Terraform**：請遵循 [Terraform 和設定 Azure 的存取](terraform-install-configure.md)一文中的指示
 
 - **Azure 服務主體**：請遵循[使用 Azure CLI 建立 Azure 服務主體](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)一文中**建立服務主體**一節的指示。 記下 appId、displayName、密碼和租用戶欄位內的值。
 

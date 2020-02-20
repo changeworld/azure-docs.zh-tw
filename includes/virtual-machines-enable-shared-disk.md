@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 02/13/2020
+ms.date: 02/18/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 4487beffd0e6a0643f4d3d88f5bb342f23eb848f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 26e76731f663ac9038bc87182d52c4bd245f1b6e
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77202251"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471670"
 ---
 ## <a name="limitations"></a>限制
 
@@ -143,4 +143,4 @@ PR_EXCLUSIVE_ACCESS_ALL_REGISTRANTS
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您想要試用共用磁片，請[註冊我們的預覽版](https://aka.ms/shareddisksignup)。
+如果您想要試用共用磁片，請[註冊我們的預覽版](https://aka.ms/AzureSharedDiskPreviewSignUp)。
