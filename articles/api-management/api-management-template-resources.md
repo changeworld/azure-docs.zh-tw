@@ -48,7 +48,7 @@ Azure API 管理提供下列類型的資源，用於開發人員入口網站的�
   
 以下是支援的當地語系化選項：
 
-| Locale    | 語言               |
+| Locale    | Language               |
 |-----------|------------------------|
 | 「zh-tw」      | /              |
 | cs      | "Čeština"              |
@@ -58,7 +58,7 @@ Azure API 管理提供下列類型的資源，用於開發人員入口網站的�
 | hu      | Magyar               |
 | 這樣      | Italiano             |
 | "ja-jp"   | 한국어日本語                |
-| ko      | 한국어                |
+| "ko"      | 한국어                |
 | nl      | Nederlands           |
 | pl      | Polski               |
 | "pt-br"   | "Português （Brasil）"   |
@@ -83,7 +83,7 @@ Azure API 管理提供下列類型的資源，用於開發人員入口網站的�
   
 -   [CommonStrings](#CommonStrings)  
   
--   [Documentation](#Documentation)  
+-   [文件集](#Documentation)  
   
 -   [ErrorPageStrings](#ErrorPageStrings)  
   
@@ -113,30 +113,30 @@ Azure API 管理提供下列類型的資源，用於開發人員入口網站的�
   
 ###  <a name="ApisStrings"></a> ApisStrings  
   
-|Name|文字|  
+|名稱|Text|  
 |----------|----------|  
 |PageTitleApis|API|  
   
 ###  <a name="AppDetailsStrings"></a> AppDetailsStrings  
   
-|Name|文字|  
+|名稱|Text|  
 |----------|----------|  
 |WebApplicationsDetailsTitle|應用程式預覽|  
-|WebApplicationsRequirementsHeader|要求|  
+|WebApplicationsRequirementsHeader|需求|  
 |WebApplicationsScreenshotAlt|螢幕擷取畫面|  
 |WebApplicationsScreenshotsHeader|螢幕擷取畫面|  
   
 ###  <a name="ApplicationListStrings"></a> ApplicationListStrings  
   
-|Name|文字|  
+|名稱|Text|  
 |----------|----------|  
 |WebDevelopersAppDeleteConfirmation|確定要移除應用程式嗎?|  
 |WebDevelopersAppNotPublished|未發佈|  
 |WebDevelopersAppNotSubmitted|未提交|  
 |WebDevelopersAppTableCategoryHeader|類別|  
-|WebDevelopersAppTableNameHeader|Name|  
-|WebDevelopersAppTableStateHeader|狀況|  
-|WebDevelopersEditLink|Edit|  
+|WebDevelopersAppTableNameHeader|名稱|  
+|WebDevelopersAppTableStateHeader|State|  
+|WebDevelopersEditLink|編輯|  
 |WebDevelopersRegisterAppLink|註冊應用程式|  
 |WebDevelopersRemoveLink|移除|  
 |WebDevelopersSubmitLink|提交|  
@@ -144,13 +144,13 @@ Azure API 管理提供下列類型的資源，用於開發人員入口網站的�
   
 ###  <a name="AppStrings"></a> AppStrings  
   
-|Name|文字|  
+|名稱|Text|  
 |----------|----------|  
 |WebApplicationsHeader|應用程式|  
   
 ###  <a name="CommonResources"></a> CommonResources  
   
-|Name|文字|  
+|名稱|Text|  
 |----------|----------|  
 |NoItemsToDisplay|找不到結果。|  
 |GeneralExceptionMessage|某些項目不正確。 可能是暫時性的問題或有錯誤。 請再試一次。|  
@@ -161,15 +161,15 @@ Azure API 管理提供下列類型的資源，用於開發人員入口網站的�
   
 ###  <a name="CommonStrings"></a> CommonStrings  
   
-|Name|文字|  
+|名稱|Text|  
 |----------|----------|  
 |ButtonLabelCancel|取消|  
 |ButtonLabelSave|儲存|  
 |GeneralExceptionMessage|某些項目不正確。 可能是暫時性的問題或有錯誤。 請再試一次。|  
 |NoItemsToDisplay|沒有可顯示的項目。|  
-|PagerButtonLabelFirst|最前|  
-|PagerButtonLabelLast|最後一頁|  
-|PagerButtonLabelNext|下一個|  
+|PagerButtonLabelFirst|First|  
+|PagerButtonLabelLast|Last|  
+|PagerButtonLabelNext|下一頁|  
 |PagerButtonLabelPrevious|上一頁|  
 |PagerLabelPageNOfM|第 {0}/{1} 頁|  
 |PasswordTooShort|密碼太短|  
@@ -185,7 +185,7 @@ Azure API 管理提供下列類型的資源，用於開發人員入口網站的�
   
 ###  <a name="Documentation"></a> Documentation  
   
-|Name|文字|  
+|名稱|Text|  
 |----------|----------|  
 |WebDocumentationInvalidHeaderErrorMessage|無效的標頭 '{0}'|  
 |WebDocumentationInvalidRequestErrorMessage|無效的要求 URL|  
@@ -249,16 +249,16 @@ Azure API 管理提供下列類型的資源，用於開發人員入口網站的�
 |OAuth2ClientId_ImplicitGrant_AuthorizationRequest|「必要」。 用戶端識別碼。|  
 |OAuth2Code_AuthorizationCodeGrant_AuthorizationResponse|「必要」。 由授權伺服器產生的授權碼。|  
 |OAuth2Code_AuthorizationCodeGrant_TokenRequest|「必要」。 從授權伺服器那裡收到的授權碼。|  
-|OAuth2ErrorDescription_AuthorizationCodeGrant_AuthorizationErrorResponse|「選用」。 人類可閱讀的 ASCII 文字，提供其他資訊。|  
-|OAuth2ErrorDescription_AuthorizationCodeGrant_TokenErrorResponse|「選用」。 人類可閱讀的 ASCII 文字，提供其他資訊。|  
-|OAuth2ErrorDescription_ClientCredentialsGrant_TokenErrorResponse|「選用」。 人類可閱讀的 ASCII 文字，提供其他資訊。|  
-|OAuth2ErrorDescription_ImplicitGrant_AuthorizationErrorResponse|「選用」。 人類可閱讀的 ASCII 文字，提供其他資訊。|  
-|OAuth2ErrorDescription_ResourceOwnerPasswordCredentialsGrant_TokenErrorResponse|「選用」。 人類可閱讀的 ASCII 文字，提供其他資訊。|  
-|OAuth2ErrorUri_AuthorizationCodeGrant_AuthorizationErrorResponse|「選用」。 識別人類可閱讀網頁的 URI，網頁中包含錯誤的相關資訊。|  
-|OAuth2ErrorUri_AuthorizationCodeGrant_TokenErrorResponse|「選用」。 識別人類可閱讀網頁的 URI，網頁中包含錯誤的相關資訊。|  
-|OAuth2ErrorUri_ClientCredentialsGrant_TokenErrorResponse|「選用」。 識別人類可閱讀網頁的 URI，網頁中包含錯誤的相關資訊。|  
-|OAuth2ErrorUri_ImplicitGrant_AuthorizationErrorResponse|「選用」。 識別人類可閱讀網頁的 URI，網頁中包含錯誤的相關資訊。|  
-|OAuth2ErrorUri_ResourceOwnerPasswordCredentialsGrant_TokenErrorResponse|「選用」。 識別人類可閱讀網頁的 URI，網頁中包含錯誤的相關資訊。|  
+|OAuth2ErrorDescription_AuthorizationCodeGrant_AuthorizationErrorResponse|選擇性。 人類可閱讀的 ASCII 文字，提供其他資訊。|  
+|OAuth2ErrorDescription_AuthorizationCodeGrant_TokenErrorResponse|選擇性。 人類可閱讀的 ASCII 文字，提供其他資訊。|  
+|OAuth2ErrorDescription_ClientCredentialsGrant_TokenErrorResponse|選擇性。 人類可閱讀的 ASCII 文字，提供其他資訊。|  
+|OAuth2ErrorDescription_ImplicitGrant_AuthorizationErrorResponse|選擇性。 人類可閱讀的 ASCII 文字，提供其他資訊。|  
+|OAuth2ErrorDescription_ResourceOwnerPasswordCredentialsGrant_TokenErrorResponse|選擇性。 人類可閱讀的 ASCII 文字，提供其他資訊。|  
+|OAuth2ErrorUri_AuthorizationCodeGrant_AuthorizationErrorResponse|選擇性。 識別人類可閱讀網頁的 URI，網頁中包含錯誤的相關資訊。|  
+|OAuth2ErrorUri_AuthorizationCodeGrant_TokenErrorResponse|選擇性。 識別人類可閱讀網頁的 URI，網頁中包含錯誤的相關資訊。|  
+|OAuth2ErrorUri_ClientCredentialsGrant_TokenErrorResponse|選擇性。 識別人類可閱讀網頁的 URI，網頁中包含錯誤的相關資訊。|  
+|OAuth2ErrorUri_ImplicitGrant_AuthorizationErrorResponse|選擇性。 識別人類可閱讀網頁的 URI，網頁中包含錯誤的相關資訊。|  
+|OAuth2ErrorUri_ResourceOwnerPasswordCredentialsGrant_TokenErrorResponse|選擇性。 識別人類可閱讀網頁的 URI，網頁中包含錯誤的相關資訊。|  
 |OAuth2Error_AuthorizationCodeGrant_AuthorizationErrorResponse|「必要」。 下列 ASCII 錯誤碼的其中一個︰invalid_request、unauthorized_client、access_denied、unsupported_response_type、invalid_scope、server_error、temporarily_unavailable。|  
 |OAuth2Error_AuthorizationCodeGrant_TokenErrorResponse|「必要」。 下列 ASCII 錯誤碼的其中一個invalid_request、invalid_client、invalid_grant、unauthorized_client、unsupported_grant_type、invalid_scope。|  
 |OAuth2Error_ClientCredentialsGrant_TokenErrorResponse|「必要」。 下列 ASCII 錯誤碼的其中一個invalid_request、invalid_client、invalid_grant、unauthorized_client、unsupported_grant_type、invalid_scope。|  
@@ -272,21 +272,21 @@ Azure API 管理提供下列類型的資源，用於開發人員入口網站的�
 |OAuth2GrantType_ClientCredentialsGrant_TokenRequest|「必要」。 此值必須設為 "client_credentials"。|  
 |OAuth2GrantType_ResourceOwnerPasswordCredentialsGrant_TokenRequest|「必要」。 此值必須設為 "password"。|  
 |OAuth2Password_ResourceOwnerPasswordCredentialsGrant_TokenRequest|「必要」。 資源擁有者的密碼。|  
-|OAuth2RedirectUri_AuthorizationCodeGrant_AuthorizationRequest|「選用」。 重新導向端點 URI 必須是絕對 URI。|  
+|OAuth2RedirectUri_AuthorizationCodeGrant_AuthorizationRequest|選擇性。 重新導向端點 URI 必須是絕對 URI。|  
 |OAuth2RedirectUri_AuthorizationCodeGrant_TokenRequest|如果授權要求中包含 "redirect_uri" 參數則為「必要」，且其值「必須」相同。|  
-|OAuth2RedirectUri_ImplicitGrant_AuthorizationRequest|「選用」。 重新導向端點 URI 必須是絕對 URI。|  
-|OAuth2RefreshToken_AuthorizationCodeGrant_TokenResponse|「選用」。 重新整理權杖，可用來取得新的存取權杖。|  
-|OAuth2RefreshToken_ClientCredentialsGrant_TokenResponse|「選用」。 重新整理權杖，可用來取得新的存取權杖。|  
-|OAuth2RefreshToken_ResourceOwnerPasswordCredentialsGrant_TokenResponse|「選用」。 重新整理權杖，可用來取得新的存取權杖。|  
+|OAuth2RedirectUri_ImplicitGrant_AuthorizationRequest|選擇性。 重新導向端點 URI 必須是絕對 URI。|  
+|OAuth2RefreshToken_AuthorizationCodeGrant_TokenResponse|選擇性。 重新整理權杖，可用來取得新的存取權杖。|  
+|OAuth2RefreshToken_ClientCredentialsGrant_TokenResponse|選擇性。 重新整理權杖，可用來取得新的存取權杖。|  
+|OAuth2RefreshToken_ResourceOwnerPasswordCredentialsGrant_TokenResponse|選擇性。 重新整理權杖，可用來取得新的存取權杖。|  
 |OAuth2ResponseType_AuthorizationCodeGrant_AuthorizationRequest|「必要」。 此值必須設為 "code"。|  
 |OAuth2ResponseType_ImplicitGrant_AuthorizationRequest|「必要」。 此值必須設為 "token"。|  
-|OAuth2Scope_AuthorizationCodeGrant_AuthorizationRequest|「選用」。 存取要求的範圍。|  
+|OAuth2Scope_AuthorizationCodeGrant_AuthorizationRequest|選擇性。 存取要求的範圍。|  
 |OAuth2Scope_AuthorizationCodeGrant_TokenResponse|如果與用戶端要求的範圍一樣則為「選用」，否則為「必要」。|  
-|OAuth2Scope_ClientCredentialsGrant_TokenRequest|「選用」。 存取要求的範圍。|  
+|OAuth2Scope_ClientCredentialsGrant_TokenRequest|選擇性。 存取要求的範圍。|  
 |OAuth2Scope_ClientCredentialsGrant_TokenResponse|如果與用戶端要求的範圍一樣則為「選用」，否則為「必要」。|  
-|OAuth2Scope_ImplicitGrant_AuthorizationRequest|「選用」。 存取要求的範圍。|  
+|OAuth2Scope_ImplicitGrant_AuthorizationRequest|選擇性。 存取要求的範圍。|  
 |OAuth2Scope_ImplicitGrant_AuthorizationResponse|如果與用戶端要求的範圍一樣則為「選用」，否則為「必要」。|  
-|OAuth2Scope_ResourceOwnerPasswordCredentialsGrant_TokenRequest|「選用」。 存取要求的範圍。|  
+|OAuth2Scope_ResourceOwnerPasswordCredentialsGrant_TokenRequest|選擇性。 存取要求的範圍。|  
 |OAuth2Scope_ResourceOwnerPasswordCredentialsGrant_TokenResponse|如果與用戶端要求的範圍一樣則為「選用」，否則為「必要」。|  
 |OAuth2State_AuthorizationCodeGrant_AuthorizationErrorResponse|如果用戶端授權要求中有 "state" 參數，則為「必要」。  收到來自用戶端的確切值。|  
 |OAuth2State_AuthorizationCodeGrant_AuthorizationRequest|「建議使用」。 不透明值，用戶端用來維持在要求與回呼之間的狀態。  授權伺服器將使用者代理程式重新導向傳回給用戶端時，會加入此值。  「應該」使用此參數來防止跨網站偽造要求。|  
@@ -333,7 +333,7 @@ Azure API 管理提供下列類型的資源，用於開發人員入口網站的�
   
 ###  <a name="ErrorPageStrings"></a> ErrorPageStrings  
   
-|Name|文字|  
+|名稱|Text|  
 |----------|----------|  
 |LinkLabelBack|上一步|  
 |LinkLabelHomePage|首頁|  
@@ -351,7 +351,7 @@ Azure API 管理提供下列類型的資源，用於開發人員入口網站的�
   
 ###  <a name="IssuesStrings"></a> IssuesStrings  
   
-|Name|文字|  
+|名稱|Text|  
 |----------|----------|  
 |WebIssuesIndexTitle|問題|  
 |WebIssuesNoActiveSubscriptions|您沒有作用中的訂用帳戶。 您必須訂閱產品才會回報問題。|  
@@ -362,7 +362,7 @@ Azure API 管理提供下列類型的資源，用於開發人員入口網站的�
   
 ###  <a name="NotFoundStrings"></a> NotFoundStrings  
   
-|Name|文字|  
+|名稱|Text|  
 |----------|----------|  
 |LinkLabelHomePage|首頁|  
 |LinkLabelSendUsEmail|傳送電子郵件|  
@@ -377,16 +377,16 @@ Azure API 管理提供下列類型的資源，用於開發人員入口網站的�
   
 ###  <a name="ProductDetailsStrings"></a> ProductDetailsStrings  
   
-|Name|文字|  
+|名稱|Text|  
 |----------|----------|  
 |WebProductsAgreement|訂閱 {0} 產品即表示我同意 `<a data-toggle='modal' href='#legal-terms'\>Terms of Use</a\>`。|  
-|WebProductsLegalTermsLink|使用規定|  
+|WebProductsLegalTermsLink|使用條款|  
 |WebProductsSubscribeButton|訂閱|  
-|WebProductsUsageLimitsHeader|使用方式限制|  
+|WebProductsUsageLimitsHeader|使用限制|  
 |WebProductsYouAreNotSubscribed|您已訂閱此產品。|  
 |WebProductsYouRequestedSubscription|您要求訂閱此產品。|  
 |ErrorYouNeedToAgreeWithLegalTerms|您必須同意使用條款才可以繼續。|  
-|ButtonLabelAddSubscription|加入訂閱|  
+|ButtonLabelAddSubscription|新增訂用帳戶|  
 |LinkLabelChangeSubscriptionName|變更|  
 |ButtonLabelConfirm|確認|  
 |TextblockMultipleSubscriptionsCount|您有 {0} 個此產品的訂用帳戶：|  
@@ -399,13 +399,13 @@ Azure API 管理提供下列類型的資源，用於開發人員入口網站的�
   
 ###  <a name="ProductsStrings"></a> ProductsStrings  
   
-|Name|文字|  
+|名稱|Text|  
 |----------|----------|  
 |PageTitleProducts|Products|  
   
 ###  <a name="ProviderInfoStrings"></a> ProviderInfoStrings  
   
-|Name|文字|  
+|名稱|Text|  
 |----------|----------|  
 |TextboxExternalIdentitiesDisabled|目前系統管理員已停用登入。|  
 |TextboxExternalIdentitiesSigninInvitation|或者，以此登入|  
@@ -413,7 +413,7 @@ Azure API 管理提供下列類型的資源，用於開發人員入口網站的�
   
 ###  <a name="SigninResources"></a> SigninResources  
   
-|Name|文字|  
+|名稱|Text|  
 |----------|----------|  
 |PrincipalNotFound|找不到主體或簽章無效|  
 |ErrorSsoAuthenticationFailed|SSO 驗證失敗|  
@@ -434,7 +434,7 @@ Azure API 管理提供下列類型的資源，用於開發人員入口網站的�
 |ValidationErrorEmailInvalid|電子郵件地址無效|  
 |TextboxLabelEmail|電子郵件|  
 |ValidationErrorEmailRequired|電子郵件為必填欄位。|  
-|WebAuthenticationErrorNoticeHeader|Error|  
+|WebAuthenticationErrorNoticeHeader|錯誤|  
 |WebAuthenticationFieldLengthErrorMessage|{0} 的長度上限是 {1}|  
 |TextboxLabelEmailFirstName|名字|  
 |ValidationErrorFirstNameRequired|名字為必填欄位。|  
@@ -504,34 +504,34 @@ Azure API 管理提供下列類型的資源，用於開發人員入口網站的�
 |WebAuthenticationNoAadTenantConfigured|服務未設定 Azure Active Directory 租用戶。|  
 |CheckboxLabelUserRegistrationTermsConsentRequired|我同意 `<a data-toggle="modal" href="#" data-target="#terms"\>Terms of Use</a\>`。|  
 |TextblockUserRegistrationTermsProvided|請檢閱 `<a data-toggle="modal" href="#" data-target="#terms"\>Terms of Use.</a\>`|  
-|DialogHeadingTermsOfUse|使用規定|  
+|DialogHeadingTermsOfUse|使用條款|  
 |ValidationMessageConsentNotAccepted|您必須同意使用條款才可以繼續。|  
   
 ###  <a name="SigninStrings"></a> SigninStrings  
   
-|Name|文字|  
+|名稱|Text|  
 |----------|----------|  
 |WebAuthenticationForgotPassword|忘記密碼了嗎?|  
 |WebAuthenticationIfAdministrator|如果您是系統管理員，您必須登入 `<a href="{0}"\>here</a\>`。|  
 |WebAuthenticationNotAMember|還不是會員嗎? `<a href="/signup"\>Sign up now</a\>`|  
 |WebAuthenticationRemember|在這台電腦上記住我|  
 |WebAuthenticationSigininWithPassword|以您的使用者名稱和密碼登入|  
-|WebAuthenticationSigninTitle|Sign in|  
+|WebAuthenticationSigninTitle|登入|  
 |WebAuthenticationSignUpNow|立即註冊|  
   
 ###  <a name="SignupStrings"></a> SignupStrings  
   
-|Name|文字|  
+|名稱|Text|  
 |----------|----------|  
 |PageTitleSignup|註冊|  
-|WebAuthenticationAlreadyAMember|已是方案成員嗎？|  
+|WebAuthenticationAlreadyAMember|已經是會員嗎?|  
 |WebAuthenticationCreateNewAccount|建立新的 API 管理帳戶|  
 |WebAuthenticationSigninNow|立即登入|  
 |ButtonLabelSignup|註冊|  
   
 ###  <a name="SubscriptionListStrings"></a> SubscriptionListStrings  
   
-|Name|文字|  
+|名稱|Text|  
 |----------|----------|  
 |SubscriptionCancelConfirmation|確定要取消輸入這個訂用帳戶嗎?|  
 |SubscriptionRenewConfirmation|確定要續訂這個訂用帳戶嗎?|  
@@ -543,18 +543,18 @@ Azure API 管理提供下列類型的資源，用於開發人員入口網站的�
 |ButtonLabelRenewSubscription|續訂|  
 |WebDevelopersSubscriptionRequested|已於 {0} 要求|  
 |WebDevelopersSubscriptionRequestedState|已要求|  
-|WebDevelopersSubscriptionTableNameHeader|Name|  
-|WebDevelopersSubscriptionTableStateHeader|狀況|  
+|WebDevelopersSubscriptionTableNameHeader|名稱|  
+|WebDevelopersSubscriptionTableStateHeader|State|  
 |WebDevelopersUsageStatisticsLink|分析報告|  
 |WebDevelopersYourSubscriptions|您的訂用帳戶|  
 |SubscriptionPropertyLabelRequestedDate|已於此日期要求|  
 |SubscriptionPropertyLabelStartedDate|已於此日期開始|  
 |PageTitleRenameSubscription|重新命名訂用帳戶|  
-|SubscriptionPropertyLabelName|訂用帳戶名稱|  
+|SubscriptionPropertyLabelName|訂閱名稱|  
   
 ###  <a name="SubscriptionStrings"></a> SubscriptionStrings  
   
-|Name|文字|  
+|名稱|Text|  
 |----------|----------|  
 |SectionHeadingCloseAccount|想要關閉您的帳戶嗎?|  
 |PageTitleDeveloperProfile|設定檔|  
@@ -565,14 +565,14 @@ Azure API 管理提供下列類型的資源，用於開發人員入口網站的�
   
 ###  <a name="UpdateProfileStrings"></a> UpdateProfileStrings  
   
-|Name|文字|  
+|名稱|Text|  
 |----------|----------|  
 |ButtonLabelUpdateProfile|更新設定檔|  
 |PageTitleUpdateProfile|變更帳戶資訊|  
   
 ###  <a name="UserProfile"></a> UserProfile  
   
-|Name|文字|  
+|名稱|Text|  
 |----------|----------|  
 |ButtonLabelChangeAccountInfo|變更帳戶資訊|  
 |ButtonLabelChangePassword|變更密碼|  
@@ -582,7 +582,7 @@ Azure API 管理提供下列類型的資源，用於開發人員入口網站的�
 |TextboxLabelEmailLastName|姓氏|  
 |TextboxLabelNotificationsSenderEmail|通知的寄件者電子郵件|  
 |TextboxLabelOrganizationName|組織名稱|  
-|SubscriptionStateActive|作用中|  
+|SubscriptionStateActive|Active|  
 |SubscriptionStateCancelled|已取消|  
 |SubscriptionStateExpired|已過期|  
 |SubscriptionStateRejected|已拒絕|  
@@ -590,7 +590,7 @@ Azure API 管理提供下列類型的資源，用於開發人員入口網站的�
 |SubscriptionStateSuspended|暫止|  
 |DefaultSubscriptionNameTemplate|{0}  (預設值)|  
 |SubscriptionNameTemplate|開發人員存取 #{0}|  
-|TextboxLabelSubscriptionName|訂用帳戶名稱|  
+|TextboxLabelSubscriptionName|訂閱名稱|  
 |ValidationMessageSubscriptionNameRequired|訂用帳戶名稱不可為空白。|  
 |ApiManagementUserLimitReached|您已達到允許的使用者數目上限。 請升級至更高的定價層。|  
   
