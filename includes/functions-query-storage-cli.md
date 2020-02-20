@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/26/2019
 ms.author: glenga
-ms.openlocfilehash: ca576290ea511dc54b89ecebef72ca2a42e9169f
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 4fe159660421113e0f0ac0586ae7e4a22d5bcda7
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329558"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77474158"
 ---
 ### <a name="query-the-storage-queue"></a>查詢儲存體佇列
 
@@ -30,4 +30,4 @@ echo `echo $(az storage message peek --queue-name outqueue -o tsv --query '[].{M
 傳回的字串應該會與您傳送用來測試函式的訊息相同。
 
 > [!NOTE]  
-> 上述範例解碼了 base64 傳回的字串。 這是因為佇列儲存體繫結會以 [base64 字串](../articles/azure-functions/functions-bindings-storage-queue.md#encoding)的形式寫入和讀取自 Azure 儲存體。
+> 上述範例解碼了 base64 傳回的字串。 這是因為佇列儲存體繫結會以 [base64 字串](../articles/azure-functions/functions-bindings-storage-queue-trigger.md#encoding)的形式寫入和讀取自 Azure 儲存體。

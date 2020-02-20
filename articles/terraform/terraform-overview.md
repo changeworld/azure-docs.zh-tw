@@ -3,12 +3,12 @@ title: 搭配 Azure 使用 Terraform
 description: 使用 Terraform 設定 Azure 基礎結構版本和部署的簡介。
 ms.topic: overview
 ms.date: 10/26/2019
-ms.openlocfilehash: d1754594c651206a0d4d15e659e2926557f9e912
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 05b92fdf8c0a0f84d2f29b4aa7479850b2721441
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158999"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472157"
 ---
 # <a name="terraform-with-azure"></a>搭配 Azure 使用 Terraform
 
@@ -40,6 +40,6 @@ Terraform 非常適合用來部署多個雲端提供者間的基礎結構。 它
 
 既然您已了解 Terraform 的概觀和其優點，以下是建議的後續步驟：
 
-- 了解如何[安裝 Terraform 並設定它以使用 Azure](/azure/virtual-machines/linux/terraform-install-configure)。
-- [使用 Terraform 建立 Azure 虛擬機器](/azure/virtual-machines/linux/terraform-create-complete-vm)
+- 了解如何[安裝 Terraform 並設定它以使用 Azure](terraform-install-configure.md)。
+- [使用 Terraform 建立 Azure 虛擬機器](terraform-create-complete-vm.md)
 - 探索[適用於 Terraform 的 Azure Resource Manager 模組](https://www.terraform.io/docs/providers/azurerm/) \(英文\) 

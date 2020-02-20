@@ -4,18 +4,18 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/23/2019
 ms.author: glenga
-ms.openlocfilehash: 64a1062a8b73768a334277eafb663a7d2d5dd59a
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: b118da6b751bc7a1e29ceef10c91dc5e9e3659c2
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71838926"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77474278"
 ---
-繫結屬性是直接定義在 function.json 檔案中。 根據繫結類型，可能需要額外的屬性。 [佇列輸出組態](../articles/azure-functions/functions-bindings-storage-queue.md#output---configuration)會說明 Azure 儲存體佇列繫結所需的欄位。 擴充可讓您輕鬆地將繫結加入至 function.json 檔案。 
+繫結屬性是直接定義在 function.json 檔案中。 根據繫結類型，可能需要額外的屬性。 [佇列輸出組態](../articles/azure-functions/functions-bindings-storage-queue-output.md#configuration)會說明 Azure 儲存體佇列繫結所需的欄位。 擴充可讓您輕鬆地將繫結加入至 function.json 檔案。 
 
 若要建立繫結，請以滑鼠右鍵按一下 (在 macOS 上則為 Ctrl+按一下) HttpTrigger 資料夾中的 `function.json` 檔案，然後選擇 [新增繫結]  。遵循提示來針對新繫結定義下列繫結屬性：
 
-| Prompt | 值 | 說明 |
+| Prompt | 值 | 描述 |
 | -------- | ----- | ----------- |
 | **選取繫結方向** | `out` | 此繫結為輸出繫結。 |
 | **選取具有下列方向的繫結** | `Azure Queue Storage` | 此繫結是 Azure 儲存體佇列繫結。 |

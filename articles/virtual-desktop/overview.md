@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 01/27/2020
 ms.author: helohr
-ms.openlocfilehash: 168a345427be47dc1c33f43be1af47daa8f638ef
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 6cb8362b2de1f8345f693b00df021afe84f2d5a5
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772775"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471766"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>什麼是 Windows 虛擬桌面？ 
 
@@ -72,7 +72,7 @@ Windows 虛擬桌面是可以在雲端執行的桌面與應用程式虛擬化服
 
 您的基礎結構需要下列項目才能支援 Windows 虛擬桌面：
 
-* [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)
+* [Azure Active Directory](/azure/active-directory/)
 * 與 Azure Active Directory 同步的 Windows Server Active Directory。 您可以使用下列其中一項來進行設定：
   * Azure AD Connect (適用於混合式組織)
   * Azure AD Domain Services (適用於混合式雲端組織)
@@ -80,7 +80,7 @@ Windows 虛擬桌面是可以在雲端執行的桌面與應用程式虛擬化服
   
 您為 Windows 虛擬桌面建立的 Azure 虛擬機器必須：
 
-* [已加入標準網域](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison)或[已加入混合式 AD](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)。 虛擬機器無法加入 Azure AD。
+* [已加入標準網域](../active-directory-domain-services/active-directory-ds-comparison.md)或[已加入混合式 AD](../active-directory/devices/hybrid-azuread-join-plan.md)。 虛擬機器無法加入 Azure AD。
 * 執行下列其中一個[支援的 OS 映像](#supported-virtual-machine-os-images)。
 
 >[!NOTE]

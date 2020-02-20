@@ -1,20 +1,20 @@
 ---
 title: 概觀 | Microsoft Azure 地圖服務
 description: 了解 Microsoft Azure 地圖服務中的服務和功能，以及如何在您的應用程式中加以使用。
-author: walsehgal
-ms.author: v-musehg
-ms.date: 02/11/2020
+author: farah-alyasari
+ms.author: v-faalya
+ms.date: 01/15/2020
 ms.topic: overview
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: e01bfec9edbe1e868a3e3244e3cb6d1e1a46561d
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: b375ea8fdebd876bdc7ecf157a4cebd5e614dfd0
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190344"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443676"
 ---
 # <a name="what-is-azure-maps"></a>什麼是 Azure 地圖服務？
 
@@ -45,13 +45,13 @@ Azure 地圖服務是地理空間服務的集合，採用最新的地圖資料�
 
 Azure 地圖服務 Web SDK 可讓您以自己的內容和圖像自訂互動式地圖。 您可以針對 Web 或行動應用程式使用此互動式地圖。 此地圖控制項使用 WebGL，因此您能夠以高效能轉譯大型資料集。 您可以使用 JavaScript 或 TypeScript 搭配 SDK 進行開發。
 
-![示意人口變化的地圖範例](media/about-azure-maps/Introduction_WebMapControl.png)
+![示意人口變化的地圖範例](media/about-azure-maps/intro_web_map_control.png)
 
 ### <a name="android-sdk"></a>Android SDK
 
 Azure 地圖服務 Android SDK 可讓您建立功能強大的行動地圖應用程式。 
 
-![行動裝置上的地圖範例](media/about-azure-maps/AndroidSDK.png)
+![行動裝置上的地圖範例](media/about-azure-maps/android_sdk.png)
 
 ## <a name="services-in-azure-maps"></a>Azure 地圖服務中的服務
 
@@ -73,7 +73,7 @@ Azure 地圖服務行動服務可讓您即時規劃行程。 它會傳回最理�
 
 轉譯服務可協助開發人員建立具有地圖服務功能的 Web 和行動裝置應用程式。 此服務會使用高品質點陣圖形影像 (提供 19 個縮放層級)，或可完全自訂的向量格式地圖影像。
 
-![從轉譯服務建立的地圖範例](media/about-azure-maps/Introduction_Map.png)
+![從轉譯服務建立的地圖範例](media/about-azure-maps/intro_map.png)
 
 轉譯服務現在提供具預覽功能的 API，可讓開發人員使用衛星影像。 如需詳細資訊，請參閱[轉譯 API 文件](https://docs.microsoft.com/rest/api/maps/render) \(英文\)。
 
@@ -81,7 +81,7 @@ Azure 地圖服務行動服務可讓您即時規劃行程。 它會傳回最理�
 
 路線規劃服務包含真實世界基礎結構的強固幾何計算，與多種交通模式的路線。 服務可讓開發人員跨幾種旅行模式 (例如汽車、貨車、自行車或步行) 計算方向。 服務也可以考量輸入，例如交通情況、重量限制，或危險材料運輸。
 
-![從路線規劃服務建立的地圖範例](media/about-azure-maps/Introduction_Route.png)
+![從路線規劃服務建立的地圖範例](media/about-azure-maps/intro_route.png)
 
 路線規劃服務提供以下進階功能的預覽： 
 
@@ -95,7 +95,7 @@ Azure 地圖服務行動服務可讓您即時規劃行程。 它會傳回最理�
 
 搜尋服務可協助開發人員搜尋地址、位置、依名稱或類別列出的企業清單，以及其他地理資訊。 搜尋服務可根據經度和緯度進行地址與交叉路口的[反向地理編碼](https://en.wikipedia.org/wiki/Reverse_geocoding) \(英文\)。
 
-![在地圖上搜尋的範例](media/about-azure-maps/Introduction_Search.png)
+![在地圖上搜尋的範例](media/about-azure-maps/intro_search.png)
 
 搜尋服務也提供進階功能，例如：
 
@@ -149,7 +149,7 @@ Azure 地圖服務的空間作業服務會取得位置資訊。 該服務會快�
 * 交通流量：針對路網中的所有重要道路提供即時觀察速度和行進時間。
 * 交通事故：提供路網中交通阻塞和交通事故的最新檢視。
 
-![含路況資訊的地圖範例](media/about-azure-maps/Introduction_Traffic.png)
+![含路況資訊的地圖範例](media/about-azure-maps/intro_traffic.png)
 
 如需詳細資訊，請參閱[交通路況 API 文件](https://docs.microsoft.com/rest/api/maps/traffic) \(英文\)。
 
