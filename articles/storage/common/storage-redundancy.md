@@ -10,12 +10,12 @@ ms.date: 02/10/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 076708cdc32b0547fe34f714798b4a7a963296fe
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 038e53251bd81552fd3379f2d7645570fbcda4ef
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462627"
+ms.locfileid: "77471341"
 ---
 # <a name="azure-storage-redundancy"></a>Azure 儲存體備援
 
@@ -66,7 +66,7 @@ Azure 儲存體帳戶中的資料一律會在主要區域中複寫三次。 Azur
 |    FileStorage    | 西歐<br /> 美國東部    |    僅 Azure 檔案儲存體    |
 
 <sup>1</sup>封存層目前不支援 ZRS 帳戶。<br />
-<sup>2</sup>個適用于虛擬機器的 Azure 磁片，包括受控和非受控磁片，僅支援 LRS。 它們不支援 ZRS 或切換。 如需受控磁片的詳細資訊，請參閱[Azure 受控磁片的定價](https://azure.microsoft.com/pricing/details/managed-disks)。
+<sup>2</sup>個適用于虛擬機器的 Azure 磁片，包括受控和非受控磁片，僅支援 LRS。 它們不支援 ZRS 或切換。 如需受控磁片的詳細資訊，請參閱[Azure 受控磁片的定價](https://azure.microsoft.com/pricing/details/managed-disks/)。
 
 如需哪些區域支援 ZRS 的相關資訊，請參閱 [什麼是 Azure 可用性區域？](../../availability-zones/az-overview.md)中**的服務支援（依區域**）。
 
