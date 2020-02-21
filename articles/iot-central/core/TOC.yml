@@ -35,7 +35,7 @@
       items:
         - name: 建立規則
           href: tutorial-create-telemetry-rules.md
-        - name: 使用 REST API
+        - name: 探索 IoT Central API
           href: 'https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/'
 - name: 概念
   items:
@@ -83,8 +83,10 @@
           href: howto-version-device-template.md
     - name: 轉換
       items:
-        - name: 設定連續資料匯出
+        - name: 將資料匯出至 Azure 中的目的地
           href: howto-export-data.md
+        - name: 探索 IoT Central API
+          href: 'https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/'
         - name: 建立規則的 Webhook
           href: howto-create-webhooks.md
         - name: 連接規則的 Azure 監視器動作群組
@@ -159,7 +161,7 @@
   items:
     - name: 支援和協助選項
       href: /azure/iot-fundamentals/iot-support-help
-    - name: REST API
+    - name: IoT Central API 參考
       href: 'https://docs.microsoft.com/rest/api/iotcentral/'
     - name: 客戶資料要求
       href: iot-central-customer-data-requests.md

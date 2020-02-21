@@ -6,20 +6,20 @@
   items:
     - name: 什麼是資料科學虛擬機器 (DSVM)？
       href: overview.md
-    - name: 什麼是 Geo AI DSVM？
+    - name: 什麼是地區人工智慧資料科學虛擬機器？
       href: geo-ai-dsvm-overview.md
-    - name: DSVM 中包含的工具
+    - name: 資料科學虛擬機器上包含的工具
       href: tools-included.md
 - name: 快速入門
   expanded: true
   items:
-    - name: 建立 Windows DSVM
+    - name: 建立 Windows 資料科學虛擬機器
       href: provision-vm.md
-    - name: 建立 Ubuntu DSVM
+    - name: 建立 Ubuntu 資料科學虛擬機器
       href: dsvm-ubuntu-intro.md
-    - name: 建立 CentOS DSVM
+    - name: 建立 CentOS 資料科學虛擬機器
       href: linux-dsvm-intro.md
-    - name: 建立 Geo AI DSVM
+    - name: 建立地區人工智慧資料科學虛擬機器
       href: provision-geo-ai-dsvm.md
 - name: 概念
   items:
@@ -43,13 +43,13 @@
   href: dsvm-samples-and-walkthroughs.md
 - name: 操作指南
   items:
-    - name: 使用 Windows DSVM
+    - name: 使用 Windows 資料科學虛擬機器
       href: vm-do-ten-things.md
-    - name: 使用 Linux DSVM
+    - name: 使用 Linux 資料科學虛擬機器
       href: linux-dsvm-walkthrough.md
-    - name: 使用 Geo AI DSVM
+    - name: 使用地區人工智慧資料科學虛擬機器
       href: use-geo-ai-dsvm.md
-    - name: 建立自動調整的 DSVM 集區
+    - name: 建立自動調整資料科學虛擬機器集區
       href: dsvm-pools.md
     - name: 與 Active Directory 整合
       href: dsvm-common-identity.md
@@ -65,9 +65,9 @@
       href: /azure/architecture/data-guide/technology-choices/r-developers-guide?context=azure/machine-learning/data-science-virtual-machine/context/ml-context
 - name: 參考
   items:
-    - name: Ubuntu DSVM
+    - name: Ubuntu 資料科學虛擬機器
       href: reference-ubuntu-vm.md
-    - name: CentOS DSVM
+    - name: CentOS 資料科學虛擬機器
       href: reference-centos-vm.md
     - name: 版本資訊
       href: release-notes.md

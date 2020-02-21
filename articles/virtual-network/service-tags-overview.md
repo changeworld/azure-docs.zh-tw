@@ -13,21 +13,21 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: c93460797fc1cf953d467e2739d71c5a2a9b74ed
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
-ms.translationtype: HT
+ms.openlocfilehash: 47488403a10a6b955e15b0048d455cc17016f009
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486163"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526241"
 ---
-# <a name="virtual-network-service-tags"></a>虛擬網路服務標籤 
+# <a name="virtual-network-service-tags"></a>虛擬網路服務標籤
 <a name="network-service-tags"></a>
 
-服務標記代表來自指定 Azure 服務的一組 IP 位址首碼。 Microsoft 會管理服務標籤所包含的位址前置詞，並隨著位址變更自動更新服務標籤，將經常更新網路安全性規則的複雜度降到最低。 
+服務標記代表來自指定 Azure 服務的一組 IP 位址首碼。 Microsoft 會管理服務標籤所包含的位址前置詞，並隨著位址變更自動更新服務標籤，將經常更新網路安全性規則的複雜度降到最低。
 
-您可以使用服務標籤，在 或 [Azure 防火牆](https://docs.microsoft.com/azure/firewall/service-tags)的 [網路安全性群組](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)上定義網路存取控制。 當您建立安全性規則時，請使用服務標記來取代特定的 IP 位址。 藉由在適當的 *來源* 或規則的 [ *目的地* ] 欄位中指定服務標籤名稱（例如， **ApiManagement**），您可以允許或拒絕對應服務的流量。 
+您可以使用服務標籤，在 或 [Azure 防火牆](https://docs.microsoft.com/azure/firewall/service-tags)的[網路安全性群組](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)上定義網路存取控制。 當您建立安全性規則時，請使用服務標記來取代特定的 IP 位址。 藉由在適當的*來源* 或規則的 [ *目的地* ] 欄位中指定服務標籤名稱（例如， **ApiManagement**），您可以允許或拒絕對應服務的流量。
 
-您可以使用服務標籤來達到網路隔離，並在存取具有公用端點的 Azure 服務時，從一般網際網路保護您的 Azure 資源。 建立輸入/輸出網路安全性群組規則，以拒絕進出**網際網路**的流量，並允許進出**AzureCloud**的流量，或特定 Azure 服務的其他[可用服務](#available-service-tags)標籤。 
+您可以使用服務標籤來達到網路隔離，並在存取具有公用端點的 Azure 服務時，從一般網際網路保護您的 Azure 資源。 建立輸入/輸出網路安全性群組規則，以拒絕進出**網際網路**的流量，並允許進出**AzureCloud**的流量，或特定 Azure 服務的其他[可用服務](#available-service-tags)標籤。
 
 ## <a name="available-service-tags"></a>可用的服務標記
 下表包含可以在[網路安全性群組](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)規則中使用的所有服務標籤。
@@ -97,7 +97,7 @@ ms.locfileid: "77486163"
 >| 傳統拼寫 | 對等 Resource Manager 標記 |
 >|---|---|
 >| AZURE_LOADBALANCER | AzureLoadBalancer |
->| 網際網路 | Internet |
+>| 網際網路 | 網際網路 |
 >| VIRTUAL_NETWORK | VirtualNetwork |
 
 > [!NOTE]

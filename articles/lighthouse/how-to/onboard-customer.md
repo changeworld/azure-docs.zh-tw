@@ -3,12 +3,12 @@ title: 讓客戶在 Azure 委派的資源管理中上線
 description: 了解如何讓客戶在 Azure 委派的資源管理中上線，讓其資源可透過您自己的租用戶來管理。
 ms.date: 01/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: b3868987fa76d4ce0d4c34e81b46301ea106203d
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 34c6173211a9125cace59d77ea942d301919aa26
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543404"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526207"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>讓客戶在 Azure 委派的資源管理中上線
 
@@ -39,7 +39,7 @@ ms.locfileid: "76543404"
 
 如果您還沒有這些識別碼值，可以使用下列其中一種方式來抓取它們。 請確定並在您的部署中使用這些確切值。
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure 入口網站
 
 將滑鼠指標暫留在 Azure 入口網站右上角的帳戶名稱上，或選取 [切換目錄] 就能查看您的租用戶識別碼。 若要選取並複製您的租使用者識別碼，請在入口網站中搜尋 "Azure Active Directory"，然後選取 [屬性]，並複製 [目錄識別碼] 欄位中顯示的值。 若要在客戶租使用者中尋找訂用帳戶的識別碼，請搜尋「訂閱」，然後選取適當的訂用帳戶識別碼。
 
@@ -120,10 +120,7 @@ az role definition list --name "<roleName>" | grep name
 |**managedByTenantId**     |您的租用戶識別碼。          |
 |**authorizations**     |租使用者中的使用者/群組/Spn 的**principalId**值，每個都有一個**principalIdDisplayName**可協助您的客戶瞭解授權的用途，並對應至內建的**roleDefinitionId**值來指定存取層級。      |
 
-> [!TIP]
-> 請確定您的**managedByTenantID**、 **principalIdDisplayName**和**roleDefinitionId**專案與 Azure 所使用的值相同。 請勿在這些值中使用任何大寫字母。
-
-上執行緒序需要 Azure Resource Manager 範本（在我們的[範例](https://github.com/Azure/Azure-Lighthouse-samples/)存放庫中提供，以及您修改的對應參數檔案，以符合您的設定並定義您的授權。
+上執行緒序需要 Azure Resource Manager 範本（在我們的[範例](https://github.com/Azure/Azure-Lighthouse-samples/)存放庫中提供），以及您修改的對應參數檔案，以符合您的設定並定義您的授權。
 
 您選擇的範本將取決於您要在訂用帳戶中上線整個訂用帳戶、資源群組或多個資源群組。 如果您偏好使用範本讓已購買受控服務供應項目 (您發佈至 Azure Marketplace) 的客戶上線，我們也提供可用於此情況的範本。
 
@@ -247,7 +244,7 @@ az deployment create --name <deploymentName> \
 
 當客戶訂用帳戶已經成功地上線至 Azure 委派的資源管理時，服務提供者租用戶中的使用者將能夠查看訂用帳戶與其資源 (如果他們已透過上述程序獲授與其存取權，無論是以個人身分或以有適當權限的 Azure AD 群組成員身分)。 若要確認，請檢查並確定訂用帳戶以下列其中一種方式出現。  
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure 入口網站
 
 在服務提供者的租用戶中：
 
@@ -303,7 +300,7 @@ az account list
 
 擁有此權限的使用者可以使用下列其中一種方式移除委派。
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure 入口網站
 
 1. 瀏覽至 [[我的客戶] 頁面](view-manage-customers.md)。
 2. 選取 [**委派**]。

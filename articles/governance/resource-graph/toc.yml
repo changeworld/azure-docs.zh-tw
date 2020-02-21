@@ -44,7 +44,7 @@
     - name: 節流要求指引
       displayName: 'pagination, batching, throttling, parallel'
       href: ./concepts/guidance-for-throttled-requests.md
-- name: 使用說明指南
+- name: 操作指南
   items:
     - name: 取得資源變更
       displayName: 'resource, change, history, snapshot, details'
@@ -78,6 +78,8 @@
       href: /rest/api/azure-resourcegraph/
     - name: OpenAPI
       href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/stable/2019-04-01'
+    - name: Resource Graph 資料表和資源類型
+      href: ./reference/supported-tables-resources.md
 - name: 資源
   items:
     - name: Azure 藍圖

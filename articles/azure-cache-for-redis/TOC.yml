@@ -53,6 +53,8 @@
           href: cache-how-to-premium-vnet.md
         - name: 設定異地複寫
           href: cache-how-to-geo-replication.md
+        - name: 使用保留容量來儲存
+          href: cache-reserved-pricing.md
         - name: 從受控快取服務遷移
           href: cache-migrate-to-redis.md
     - name: 自動化
@@ -139,7 +141,7 @@
       href: /learn/browse/?products=azure-redis-cache
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/?category=databases'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/cache/'
     - name: Azure Cache for Redis 常見問題集
       href: cache-faq.md

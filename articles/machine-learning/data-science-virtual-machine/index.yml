@@ -11,36 +11,36 @@ metadata:
   author: gvashishtha
   ms.author: gopalv
   ms.date: 09/13/2019
-  ms.openlocfilehash: db6cebf4b4114a97fd86a173208cc639a5e1f7ed
-  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+  ms.openlocfilehash: 3996c34b4ac1acfa040c38712f7b96fa546c8eb9
+  ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 11/04/2019
-  ms.locfileid: "73500146"
+  ms.lasthandoff: 02/21/2020
+  ms.locfileid: "77526037"
 landingContent:
-- title: 開始使用您的 DSVM
+- title: 開始使用您的資料科學虛擬機器
   linkLists:
   - linkListType: overview
     links:
-    - text: 什麼是 DSVM？
+    - text: 什麼是資料科學虛擬機器？
       url: overview.md
-    - text: 什麼是 Geo AI DSVM？
+    - text: 什麼是地區人工智慧資料科學虛擬機器？
       url: geo-ai-dsvm-overview.md
-    - text: DSVM 中包含的工具
+    - text: 資料科學虛擬機器上包含的工具
       url: tools-included.md
     - text: 版本資訊
       url: release-notes.md
   - linkListType: get-started
     links:
-    - text: 建立 Windows DSVM
+    - text: 建立 Windows 資料科學虛擬機器
       url: provision-vm.md
-    - text: 建立 Ubuntu DSVM
+    - text: 建立 Ubuntu 資料科學虛擬機器
       url: dsvm-ubuntu-intro.md
-    - text: 建立 CentOS DSVM
+    - text: 建立 CentOS 資料科學虛擬機器
       url: linux-dsvm-intro.md
-    - text: 建立 Geo AI DSVM
+    - text: 建立地區人工智慧資料科學虛擬機器
       url: provision-geo-ai-dsvm.md
-- title: 管理您的 DSVM
+- title: 管理您的資料科學虛擬機器
   linkLists:
   - linkListType: architecture
     links:
@@ -48,7 +48,7 @@ landingContent:
       url: dsvm-enterprise-overview.md
   - linkListType: how-to-guide
     links:
-    - text: 建立自動調整 DSVM 集區
+    - text: 建立自動調整資料科學虛擬機器集區
       url: dsvm-pools.md
     - text: 與 Active Directory 整合
       url: dsvm-common-identity.md
