@@ -281,23 +281,23 @@
         - name: 設定 Azure 備份報告
           items:
             - name: 設定 Azure 備份報告
-              href: backup-azure-configure-reports.md
-            - name: Azure 備份報告的資料模型
-              href: backup-azure-reports-data-model.md
-            - name: 適用於 Azure 備份的 Log Analytics 資料模型
-              href: backup-azure-log-analytics-data-model.md
+              href: configure-reports.md
         - name: 設定復原服務保存庫的診斷事件
           items:
             - name: 使用適用於復原服務保存庫的診斷設定
               href: backup-azure-diagnostic-events.md
             - name: 適用於特定資源診斷事件的記錄分析資料模型
-              href: backup-azure-log-analytics-new-data-model.md
+              href: backup-azure-reports-data-model.md
+            - name: 適用於 Azure 備份的 Log Analytics 資料模型 (Azure 診斷模式)
+              href: backup-azure-diagnostics-mode-data-model.md
     - name: 自動化
       items:
         - name: Azure 備份的內建 Azure 原則
           items:
             - name: 使用 Azure 原則自動啟用 VM 建立的備份
               href: backup-azure-auto-enable-backup.md
+            - name: 大規模地設定保存庫診斷設定
+              href: azure-policy-configure-diagnostics.md
         - name: PowerShell
           items:
             - name: Azure 入口網站中的 Azure VM

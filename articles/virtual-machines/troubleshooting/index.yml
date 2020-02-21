@@ -1,0 +1,145 @@
+### YamlMime:Landing
+title: 針對 Azure 中的 Windows 虛擬機器進行疑難排解
+summary: 用來針對 Azure 中的虛擬機器進行疑難排解的文件。
+metadata:
+  title: 針對 Azure 中的 Windows 虛擬機器進行疑難排解
+  description: 用來針對 Azure 中的 Windows 虛擬機器進行疑難排解和管理的文件。
+  services: virtual-machines-windows
+  ms.service: virtual-machines-windows
+  ms.topic: landing-page
+  author: genlin
+  ms.author: genli
+  ms.date: 09/09/2019
+  ms.openlocfilehash: 4111df079f6e4c0d49ab1381add835d493b3540a
+  ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 02/20/2020
+  ms.locfileid: "77519235"
+landingContent:
+- title: 針對部署失敗進行疑難排解
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 在 Azure 中建立、重新啟動或調整 VM 大小時，對配置失敗進行疑難排解
+      url: allocation-failure.md
+    - text: 針對在 Azure 中建立新虛擬機器的部署問題進行疑難排解
+      url: troubleshoot-deployment-new-vm-windows.md
+    - text: 解決無效範本的錯誤
+      url: ../../azure-resource-manager/templates/error-invalid-template.md
+    - text: 解決 SKU 無法使用的錯誤
+      url: https://docs.microsoft.com/azure/azure-resource-manager/templates/error-sku-not-available
+- title: VM 部署指引
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 準備 Windows VHD 或 VHDX 以上傳至 Azure
+      url: https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image
+    - text: 在 Azure 中部署或建立 Windows 用戶端作業系統
+      url: https://docs.microsoft.com/azure/virtual-machines/windows/client-images
+    - text: 解決與配額相關聯的錯誤
+      url: https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors
+- title: 無法連線至我的 VM
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 解決常見 RDP 連線問題的快速步驟
+      url: https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-rdp-connection
+    - text: 依事件識別碼對 Azure VM 的 RDP 連線問題進行疑難排解
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/event-id-troubleshoot-vm-rdp-connecton
+    - text: 針對使用 RDP 來連線至 Azure VM 時的驗證錯誤進行疑難排解
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-authentication-error-rdp-vm
+    - text: VM 客體網路卡已停用
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-rdp-nic-disabled
+- title: 密碼重設
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 如何在 Windows VM 中重設遠端桌面服務或其登入密碼
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/reset-rdp
+    - text: 使用離線方式重設 Azure VM 的本機 Windows 密碼
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/reset-local-password-without-agent
+    - text: 針對 Azure 中 Windows VM 的特定 RDP 錯誤訊息進行疑難排解
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-specific-rdp-errors
+    - text: 針對 Azure 虛擬機器的遠端桌面連線進行疑難排解
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-rdp-connection
+- title: VM 無法開機
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 檢查磁碟開機錯誤
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-check-disk-boot-error
+    - text: BitLocker 開機錯誤
+      url: https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-bitlocker-boot-error
+    - text: 開機設定更新錯誤
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-vm-boot-configure-update
+    - text: 常見的藍色畫面錯誤
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-common-blue-screen-error
+- title: 無法啟動或停止 VM
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 針對 VM 部署問題進行疑難排解
+      url: https://docs.microsoft.com/azure/virtual-machines/windows/restart-resize-error-troubleshooting
+    - text: 針對配置失敗進行疑難排解 (傳統部署模型)
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/allocation-failure-classic
+    - text: 開機設定更新錯誤
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-vm-boot-configure-update
+    - text: VM 生命週期和狀態
+      url: https://docs.microsoft.com/azure/virtual-machines/windows/states-lifecycle
+- title: 非預期的 VM 重新啟動
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 如何檢視 VM 重新啟動記錄以找出重新啟動的原因
+      url: https://azure.microsoft.com/blog/viewing-vm-reboot-logs
+    - text: 診斷重新啟動後的開機失敗並從中復原
+      url: https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/
+    - text: 了解 Azure 虛擬機器的計劃性維護
+      url: https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates
+    - text: Azure VM 啟動程序停滯於 Windows Update
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-stuck-updating-boot-error
+- title: 虛擬磁碟管理問題
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 虛擬磁碟的常見問題集
+      url: https://docs.microsoft.com/azure/virtual-machines/windows/faq-for-disks
+    - text: 針對在調整 VM 大小時的配置失敗進行疑難排解
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/allocation-failure
+    - text: 了解您 VM 上的暫存磁碟機
+      url: https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#temporary-disk
+    - text: Azure 受控磁碟概觀
+      url: https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview
+- title: 磁碟加密問題
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 針對 Azure 磁碟加密進行疑難排解
+      url: https://docs.microsoft.com/azure/security/azure-security-disk-encryption-tsg
+    - text: Azure 磁碟加密常見問題集
+      url: https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq
+    - text: 如何對 Azure 擴充功能進行疑難排解
+      url: https://docs.microsoft.com/azure/virtual-machines/extensions/troubleshoot
+- title: VM 效能問題
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 針對共用映像資源庫複寫速度緩慢進行疑難排解
+      url: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/troubleshooting-shared-images#replication-is-slow
+- title: VM 擴充功能問題
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 擴充功能的一般疑難排解步驟
+      url: https://docs.microsoft.com/azure/virtual-machines/extensions/troubleshoot
+    - text: 在 VM 中安裝擴充功能
+      url: https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/diagnostics-windows
+    - text: Windows 的自訂指令碼延伸模組
+      url: https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/custom-script-windows#tips-and-tricks
+- title: 備份與還原
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 在 Azure 入口網站中針對 Azure 虛擬機器備份進行移難排解
+      url: https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot

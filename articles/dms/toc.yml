@@ -73,7 +73,7 @@
           href: known-issues-azure-sql-db-managed-instance-online.md
         - name: 已知問題 - 線上移轉至適用於 MySQL 的 Azure DB
           href: known-issues-azure-mysql-online.md
-        - name: 已知問題 - 從 PostgreSQL 線上移轉到適用於 PostgreSQL 單一資料庫的 Azure DB
+        - name: 已知問題 - 從 PostgreSQL 線上移轉到適用於 PostgreSQL 的 Azure DB
           href: known-issues-azure-postgresql-online.md
         - name: 已知問題 - 從 Oracle 線上移轉到適用於 PostgreSQL 單一資料庫的 Azure DB
           href: known-issues-oracle-azure-postgresql-online.md

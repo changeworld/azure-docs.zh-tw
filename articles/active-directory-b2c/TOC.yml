@@ -81,6 +81,9 @@
         - name: 註冊 SAML 服務提供者
           href: connect-with-saml-service-providers.md
           displayName: 'SP, RP, service provider, connect'
+        - name: 註冊 Graph 應用程式
+          href: microsoft-graph-get-started.md
+          displayName: 'migrate, migration, microsoft graph'
         - name: 新增 Web API 應用程式
           href: add-web-application.md
         - name: 新增原生用戶端應用程式
@@ -377,8 +380,6 @@
       items:
         - name: 移轉使用者
           href: user-migration.md
-        - name: 遷移具有外部身分識別的使用者
-          href: migrate-social-identities.md
 - name: 參考
   items:
     - name: Identity Experience Framework 版本資訊
@@ -392,9 +393,11 @@
       displayName: 'cookies, SameSite'
     - name: 錯誤碼
       href: error-codes.md
+    - name: Microsoft Graph API 作業
+      href: microsoft-graph-operations.md
     - name: 區域可用性與資料落地
       href: data-residency.md
-    - name: 啟用計費
+    - name: 計費模式
       href: billing.md
     - name: 威脅管理
       href: threat-management.md

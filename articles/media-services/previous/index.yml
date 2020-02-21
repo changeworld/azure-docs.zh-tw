@@ -1,0 +1,63 @@
+### YamlMime:Landing
+title: Azure 媒體服務 v2 (舊版)
+summary: 媒體服務 v2 中不會新增任何新功能。 請查看最新版本，也就是媒體服務 v3。
+metadata:
+  title: Azure 媒體服務 v2 文件
+  description: 了解如何使用媒體服務 v2 安全地串流處理隨選或即時廣播品質的影片。
+  services: media-services
+  ms.service: media-services
+  ms.subservice: 
+  ms.topic: landing-page
+  ms.collection: collection
+  author: Juliako
+  ms.author: juliako
+  ms.date: 02/18/2020
+  ms.openlocfilehash: c222a7c0603e9b57518993216711076659b51e4c
+  ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 02/20/2020
+  ms.locfileid: "77500768"
+landingContent:
+- title: 關於 Azure 媒體服務 v2
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure 媒體服務 v2 概觀
+      url: media-services-overview.md
+    - text: 遷移至媒體服務 v3
+      url: https://docs.microsoft.com/azure/media-services/latest/migrate-from-v2-to-v3
+  - linkListType: whats-new
+    links:
+    - text: 媒體服務 v2 的新功能
+      url: media-services-release-notes.md
+  - linkListType: concept
+    links:
+    - text: 舊版元件
+      url: legacy-components.md
+- title: 即時串流
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 概觀
+      url: media-services-manage-channels-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用入口網站建立媒體服務帳戶
+      url: media-services-portal-create-account.md
+    - text: 以程式設計方式連線
+      url: media-services-use-aad-auth-to-access-ams-api.md
+    - text: 使用 Azure 入口網站來即時串流
+      url: media-services-portal-live-passthrough-get-started.md
+    - text: 使用 .NET 來即時串流
+      url: media-services-dotnet-live-encode-with-onpremises-encoders.md
+- title: 傳遞隨選影片
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 Azure 入口網站
+      url: media-services-portal-vod-get-started.md
+    - text: 使用 .NET
+      url: media-services-dotnet-get-started.md
+    - text: 使用 REST
+      url: media-services-rest-get-started.md

@@ -130,10 +130,14 @@
       items:
         - name: 無密碼部署
           href: howto-authentication-passwordless-deployment.md
-        - name: 無密碼安全性金鑰
-          href: howto-authentication-passwordless-security-key.md
-        - name: 無密碼 Windows 10
-          href: howto-authentication-passwordless-security-key-windows.md
+        - name: 無密碼 FIDO2 安全性金鑰
+          items:
+            - name: 為租用戶啟用 FIDO2 安全性金鑰
+              href: howto-authentication-passwordless-security-key.md
+            - name: 登入 Windows 10 裝置
+              href: howto-authentication-passwordless-security-key-windows.md
+            - name: SSO 至內部部署資源
+              href: howto-authentication-passwordless-security-key-on-premises.md
         - name: 手機無密碼登入
           href: howto-authentication-passwordless-phone.md
         - name: Windows Hello 企業版

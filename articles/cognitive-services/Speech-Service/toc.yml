@@ -305,46 +305,50 @@
       items:
         - name: 什麼是語音助理？
           href: voice-assistants.md
-    - name: 建置您的助理
+    - name: 自訂命令 (預覽)
       items:
-        - name: 自訂命令 (預覽)
+        - name: 什麼是自訂命令？
           href: custom-commands.md
-        - name: Direct Line Speech
+        - name: 快速入門
+          items:
+            - name: 建立自訂命令 (預覽)
+              href: quickstart-custom-speech-commands-create-new.md
+            - name: 使用參數建立自訂命令 (預覽)
+              href: quickstart-custom-speech-commands-create-parameters.md
+            - name: 使用自訂命令搭配自訂語音 (預覽)
+              href: quickstart-custom-speech-commands-select-custom-voice.md
+            - name: 搭配語音 SDK 使用自訂命令 (預覽)
+              href: quickstart-custom-speech-commands-speech-sdk.md
+        - name: 操作指南
+          items:
+            - name: 使用語音 SDK 執行自訂命令
+              href: how-to-custom-speech-commands-fulfill-sdk.md
+            - name: 將參數驗證新增至自訂命令
+              href: how-to-custom-speech-commands-validations.md
+            - name: 在自訂命令中新增確認
+              href: how-to-custom-speech-commands-confirmations.md
+            - name: 在自訂命令中新增單一步驟的更正
+              href: how-to-custom-speech-commands-one-step-correction.md
+    - name: Direct Line Speech
+      items:
+        - name: 什麼是 Direct Line Speech？
           href: direct-line-speech.md
-    - name: 快速入門
-      items:
-        - name: 'C# (UWP)'
-          href: quickstart-voice-assistant-csharp-uwp.md
-        - name: Java (Windows、macOS、Linux)
-          href: quickstart-voice-assistant-java-jre.md
-        - name: Java (Android)
-          href: quickstart-voice-assistant-java-android.md
-        - name: 建立自訂命令 (預覽)
-          href: quickstart-custom-speech-commands-create-new.md
-        - name: 使用參數建立自訂命令 (預覽)
-          href: quickstart-custom-speech-commands-create-parameters.md
-        - name: 使用自訂命令搭配自訂語音 (預覽)
-          href: quickstart-custom-speech-commands-select-custom-voice.md
-        - name: 搭配語音 SDK 使用自訂命令 (預覽)
-          href: quickstart-custom-speech-commands-speech-sdk.md
-    - name: 操作指南
-      items:
-        - name: 使用語音 SDK 執行自訂命令
-          href: how-to-custom-speech-commands-fulfill-sdk.md
-        - name: 將參數驗證新增至自訂命令
-          href: how-to-custom-speech-commands-validations.md
-        - name: 在自訂命令中新增確認
-          href: how-to-custom-speech-commands-confirmations.md
-        - name: 在自訂命令中新增單一步驟的更正
-          href: how-to-custom-speech-commands-one-step-correction.md
-    - name: 教學課程
-      items:
-        - name: 使用語音 SDK 透過聲音啟用 Bot
-          href: tutorial-voice-enable-your-bot-speech-sdk.md
-    - name: 資源
-      items:
-        - name: 語音助理常見問題集
-          href: faq-voice-assistants.md
+        - name: 快速入門
+          items:
+            - name: 'C# (UWP)'
+              href: quickstart-voice-assistant-csharp-uwp.md
+            - name: Java (Windows、macOS、Linux)
+              href: quickstart-voice-assistant-java-jre.md
+            - name: Java (Android)
+              href: quickstart-voice-assistant-java-android.md
+        - name: 教學課程
+          items:
+            - name: 使用語音 SDK 透過聲音啟用 Bot
+              href: tutorial-voice-enable-your-bot-speech-sdk.md
+        - name: 資源
+          items:
+            - name: 語音助理常見問題集
+              href: faq-voice-assistants.md
 - name: 自訂
   expanded: false
   items:

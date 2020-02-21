@@ -1,217 +1,302 @@
+### YamlMime:TOC
 - name: 針對 Azure VM 進行疑難排解
-  href: index.md
-- name: 配置失敗
+  href: index.yml
+- name: 針對部署失敗進行疑難排解
+  items:
+    - name: Windows
+      href: troubleshoot-deploy-vm-windows.md
+    - name: Linux
+      href: troubleshoot-deploy-vm-linux.md
+    - name: 可用性設定組
+      href: virtual-machines-availability-set-supportability.md
+- name: VM 部署指引
+  items:
+    - name: 新的 VM 部署
+      items:
+        - name: Linux
+          href: troubleshoot-deployment-new-vm-linux.md
+        - name: Windows
+          href: troubleshoot-deployment-new-vm-windows.md
+    - name: 重新部署 VM
+      items:
+        - name: Linux
+          href: redeploy-to-new-node-linux.md
+        - name: Windows
+          href: redeploy-to-new-node-windows.md
+    - name: 重設 NIC
+      href: reset-network-interface.md
+- name: 為配置失敗進行疑難排解
   items:
     - name: 配置失敗
       href: allocation-failure.md
-    - name: 傳統部署的配置失敗
+    - name: 傳統部署模型
       href: allocation-failure-classic.md
-    - name: 可用性設定組
-      href: virtual-machines-availability-set-supportability.md
-- name: RDP
-  href: rdp.md
+- name: VM 重新啟動問題
   items:
-    - name: 重設 RDP
-      href: reset-rdp.md
-    - name: RDP 疑難排解
-      href: troubleshoot-rdp-connection.md
-    - name: 詳細 RDP 疑難排解
-      href: detailed-troubleshoot-rdp.md
-    - name: 針對停用 DHCP 而導致的 RDP 錯誤進行疑難排解
-      href: troubleshoot-rdp-dhcp-disabled.md
-    - name: 針對 NSG 設定而導致的 RDP 錯誤進行疑難排解
-      href: troubleshoot-rdp-nsg-problem.md
-    - name: 針對特定錯誤進行疑難排解
-      href: troubleshoot-specific-rdp-errors.md
-    - name: 針對無授權伺服器錯誤進行疑難排解
-      href: troubleshoot-rdp-no-license-server.md
-    - name: 針對遠端桌面服務問題進行疑難排解
-      href: troubleshoot-remote-desktop-services-issues.md
-    - name: 針對內部錯誤進行疑難排解
-      href: Troubleshoot-rdp-internal-error.md
-    - name: 針對連線經常中斷的問題進行疑難排解
-      href: troubleshoot-rdp-intermittent-connectivity.md
-    - name: 針對一般錯誤進行疑難排解
-      href: troubleshoot-rdp-general-error.md
-    - name: 針對驗證錯誤進行疑難排解
-      href: troubleshoot-authentication-error-rdp-vm.md
-    - name: 依事件識別碼對 Azure VM 的 RDP 連線問題進行疑難排解
-      href: event-id-troubleshoot-vm-rdp-connecton.md
-    - name: 針對靜態 IP 而在 VM 中導致的 RDP 錯誤進行疑難排解
-      href: troubleshoot-rdp-static-ip.md
-    - name: 針對停用 NIC 而在 VM 中導致的 RDP 錯誤進行疑難排解
-      href: troubleshoot-rdp-nic-disabled.md
-    - name: 針對由安全模式所造成的 RDP 錯誤進行疑難排解
-      href: troubleshoot-rdp-safe-mode.md
-    - name: 停用 Azure VM 中的客體 OS 防火牆
-      href: disable-guest-os-firewall-windows.md
-    - name: 啟用或停用客體 OS 上的防火牆規則
-      href: enable-disable-firewall-rule-guest-os.md
-    - name: 客體 OS 防火牆封鎖輸入流量
-      href: guest-os-firewall-blocking-inbound-traffic.md
-    - name: 客體 OS 防火牆設定不正確
-      href: guest-os-firewall-misconfigured.md
-    - name: 針對由 netvsc.sys所造成的 RDP 錯誤進行疑難排解
-      href: troubleshoot-rdp-driver-netvsc.md
-- name: SSH
-  items:
-    - name: SSH 疑難排解
-      href: troubleshoot-ssh-connection.md
-    - name: 檔案系統錯誤系統錯誤
-      href: linux-recovery-cannot-start-file-system-errors.md
-    - name: 核心相關開機問題疑難排解
-      href: 'https://support.microsoft.com/help/4091524'
-    - name: 復原已設定 LVM 的 VM 且不重新開機
-      href: chroot-logical-volume-manager.md
-    - name: fstab 錯誤疑難排解
-      href: linux-virtual-machine-cannot-start-fstab-errors.md
-    - name: 詳細 SSH 疑難排解
-      href: detailed-troubleshoot-ssh-connection.md
-- name: 常見的錯誤訊息
-  href: error-messages.md
-- name: 對 Azure VM 效能問題進行疑難排解
-  items:
-    - name: Linux 或 Windows 上的效能問題
-      href: troubleshoot-performance-virtual-machine-linux-windows.md
-    - name: 效能診斷
-      href: performance-diagnostics.md
-- name: 32 位元作業系統支援
-  href: support-32-bit-operating-systems-virtual-machines.md
-- name: PerfInsights
-  items:
-    - name: Windows
-      items:
-        - name: 如何使用 PerfInsights
-          href: how-to-use-perfinsights.md
-        - name: 效能診斷擴充功能
-          href: performance-diagnostics-vm-extension.md
-    - name: Linux
-      items:
-        - name: 如何使用 PerfInsights
-          href: how-to-use-perfinsights-linux.md
-- name: 離線安裝 Windows VM 代理程式
-  href: install-vm-agent-offline.md
-- name: 重新部署 VM
-  items:
-    - name: Linux
-      href: redeploy-to-new-node-linux.md
-    - name: Windows
-      href: redeploy-to-new-node-windows.md
-- name: 重設 VM 密碼
-  items:
-    - name: Windows
-      href: reset-local-password-without-agent.md
-    - name: Linux
-      href: reset-password.md
-- name: 重設 NIC
-  href: reset-network-interface.md
-- name: 重新啟動或調整 VM 大小
-  href: restart-resize-error-troubleshooting.md
-- name: 序列主控台
-  items:
-    - name: 序列主控台概觀
-      href: serial-console-overview.md
-    - name: 適用於 Linux 的序列主控台
-      href: serial-console-linux.md
-      items:
-        - name: 序列主控台 GRUB/單一使用者模式
-          href: serial-console-grub-single-user-mode.md
-        - name: 序列主控台 NMI/SysRq
-          href: serial-console-nmi-sysrq.md
-        - name: 序列主控台 Grub 主動式設定
-          href: serial-console-grub-proactive-configuration.md
-    - name: 適用於 Windows 的序列主控台
-      href: serial-console-windows.md
-      items:
-        - name: CMD 及 PowerShell 命令
-          href: serial-console-cmd-ps-commands.md
-    - name: 啟用和停用序列主控台
-      href: serial-console-enable-disable.md
-    - name: 序列主控台內的電源選項
-      href: serial-console-power-options.md
-    - name: 常見的序列主控台錯誤
-      href: serial-console-errors.md
-- name: 刪除儲存體資源時發生錯誤
-  href: storage-resource-deletion-errors.md
-- name: 刪除傳統儲存體資源時發生錯誤
-  href: storage-classic-cannot-delete-storage-account-container-vhd.md
-- name: VM 重新開機問題疑難排解
+    - name: 重新啟動或調整 VM 大小
+      href: restart-resize-error-troubleshooting.md
+    - name: 重新啟動、關閉或停止服務
+      href: boot-error-troubleshoot-windows.md
+- name: 非預期的重新啟動
   items:
     - name: 包含連結 VHD 的 VM 非預期重新開機
       href: unexpected-reboots-attached-vhds.md
     - name: 了解系統重新開機
       href: understand-vm-reboot.md
-- name: Windows 啟用
+- name: 無法啟動或停止 VM
+  items:
+    - name: 使用 Azure 自動化來啟動/停止 VM
+      href: ../../automation/troubleshoot/start-stop-vm.md
+    - name: 重新啟動或調整 VM 大小
+      href: restart-resize-error-troubleshooting.md
+    - name: 傳統部署的配置失敗
+      href: allocation-failure-classic.md
+    - name: VM 啟動已停滯
+      href: troubleshoot-vm-boot-configure-update.md
+    - name: VM 生命週期和狀態
+      href: ../windows/states-lifecycle.md
+- name: VM 無法開機
+  items:
+    - name: Linux
+      href: boot-error-troubleshoot-linux.md
+      items:
+        - name: Grub 修復
+          href: troubleshoot-vm-boot-error.md
+    - name: Windows
+      href: boot-error-troubleshoot.md
+      items:
+        - name: 開機診斷
+          href: boot-diagnostics.md
+        - name: BitLocker 錯誤
+          href: troubleshoot-bitlocker-boot-error.md
+        - name: 檢查檔案系統錯誤
+          href: troubleshoot-check-disk-boot-error.md
+        - name: 藍色畫面錯誤
+          href: troubleshoot-common-blue-screen-error.md
+        - name: VM 啟動已停滯
+          href: troubleshoot-vm-boot-configure-update.md
+        - name: 重要服務已失敗
+          href: troubleshoot-critical-service-failed-boot-error.md
+        - name: 重新開機迴圈
+          href: troubleshoot-reboot-loop.md
+        - name: 在執行 Windows 更新時停滯
+          href: troubleshoot-stuck-updating-boot-error.md
+- name: 無法連接到我的 VM
+  items:
+    - name: RDP
+      href: rdp.md
+      items:
+        - name: 重設 RDP
+          href: reset-rdp.md
+        - name: RDP 疑難排解
+          href: troubleshoot-rdp-connection.md
+        - name: 詳細 RDP 疑難排解
+          href: detailed-troubleshoot-rdp.md
+        - name: 針對停用 DHCP 而導致的 RDP 錯誤進行疑難排解
+          href: troubleshoot-rdp-dhcp-disabled.md
+        - name: 針對 NSG 設定而導致的 RDP 錯誤進行疑難排解
+          href: troubleshoot-rdp-nsg-problem.md
+        - name: 針對特定錯誤進行疑難排解
+          href: troubleshoot-specific-rdp-errors.md
+        - name: 針對無授權伺服器錯誤進行疑難排解
+          href: troubleshoot-rdp-no-license-server.md
+        - name: 針對遠端桌面服務問題進行疑難排解
+          href: troubleshoot-remote-desktop-services-issues.md
+        - name: 針對內部錯誤進行疑難排解
+          href: Troubleshoot-rdp-internal-error.md
+        - name: 針對連線經常中斷的問題進行疑難排解
+          href: troubleshoot-rdp-intermittent-connectivity.md
+        - name: 針對一般錯誤進行疑難排解
+          href: troubleshoot-rdp-general-error.md
+        - name: 針對驗證錯誤進行疑難排解
+          href: troubleshoot-authentication-error-rdp-vm.md
+        - name: 依事件識別碼對 Azure VM 的 RDP 連線問題進行疑難排解
+          href: event-id-troubleshoot-vm-rdp-connecton.md
+        - name: 針對靜態 IP 而在 VM 中導致的 RDP 錯誤進行疑難排解
+          href: troubleshoot-rdp-static-ip.md
+        - name: 針對停用 NIC 而在 VM 中導致的 RDP 錯誤進行疑難排解
+          href: troubleshoot-rdp-nic-disabled.md
+        - name: 針對由安全模式所造成的 RDP 錯誤進行疑難排解
+          href: troubleshoot-rdp-safe-mode.md
+        - name: 停用 Azure VM 中的客體 OS 防火牆
+          href: disable-guest-os-firewall-windows.md
+        - name: 啟用或停用客體 OS 上的防火牆規則
+          href: enable-disable-firewall-rule-guest-os.md
+        - name: 客體 OS 防火牆封鎖輸入流量
+          href: guest-os-firewall-blocking-inbound-traffic.md
+        - name: 客體 OS 防火牆設定不正確
+          href: guest-os-firewall-misconfigured.md
+        - name: 針對由 netvsc.sys所造成的 RDP 錯誤進行疑難排解
+          href: troubleshoot-rdp-driver-netvsc.md
+    - name: SSH
+      items:
+        - name: SSH 疑難排解
+          href: troubleshoot-ssh-connection.md
+        - name: 檔案系統錯誤系統錯誤
+          href: linux-recovery-cannot-start-file-system-errors.md
+        - name: 核心相關開機問題疑難排解
+          href: 'https://support.microsoft.com/help/4091524'
+        - name: 復原已設定 LVM 的 VM 且不重新開機
+          href: chroot-logical-volume-manager.md
+        - name: fstab 錯誤疑難排解
+          href: linux-virtual-machine-cannot-start-fstab-errors.md
+        - name: 詳細 SSH 疑難排解
+          href: detailed-troubleshoot-ssh-connection.md
+    - name: 應用程式存取問題
+      href: troubleshoot-app-connection.md
+- name: VM 密碼重設的說明
+  items:
+    - name: Windows
+      href: reset-local-password-without-agent.md
+    - name: Linux
+      href: reset-password.md
+    - name: VM 復原存取
+      items:
+        - name: Windows
+          items:
+            - name: PowerShell
+              href: troubleshoot-recovery-disks-windows.md
+            - name: Azure 入口網站
+              href: troubleshoot-recovery-disks-portal-windows.md
+        - name: Linux
+          items:
+            - name: CLI
+              href: troubleshoot-recovery-disks-linux.md
+            - name: Azure 入口網站
+              href: troubleshoot-recovery-disks-portal-linux.md
+        - name: 裝置名稱已變更
+          href: troubleshoot-device-names-problems.md
+- name: 虛擬磁碟管理問題
+  items:
+    - name: 概觀
+      href: ../windows/managed-disks-overview.md
+    - name: 常見問題集
+      href: ../windows/faq-for-disks.md
+    - name: 刪除儲存體資源時發生錯誤
+      href: storage-resource-deletion-errors.md
+    - name: 刪除傳統儲存體資源時發生錯誤
+      href: storage-classic-cannot-delete-storage-account-container-vhd.md
+    - name: 使用巢狀虛擬化
+      href: troubleshoot-vm-by-use-nested-virtualization.md
+- name: VM 效能問題
+  items:
+    - name: 對 Azure VM 效能問題進行疑難排解
+      items:
+        - name: Linux 或 Windows 上的效能問題
+          href: troubleshoot-performance-virtual-machine-linux-windows.md
+        - name: 效能診斷
+          href: performance-diagnostics.md
+    - name: PerfInsights
+      items:
+        - name: Windows
+          items:
+            - name: 如何使用 PerfInsights
+              href: how-to-use-perfinsights.md
+            - name: 效能診斷擴充功能
+              href: performance-diagnostics-vm-extension.md
+        - name: Linux
+          items:
+            - name: 如何使用 PerfInsights
+              href: how-to-use-perfinsights-linux.md
+- name: VM 擴充功能問題
+  items:
+    - name: Azure 擴充功能概觀
+      href: ../extensions/overview.md
+    - name: 針對擴充功能問題進行疑難排解
+      href: ../extensions/troubleshoot.md
+    - name: 離線安裝 Windows VM 代理程式
+      href: install-vm-agent-offline.md
+- name: 備份與還原
+  items:
+    - name: 針對 Azure VM 上的備份失敗進行疑難排解
+      href: ../../backup/backup-azure-vms-troubleshoot.md
+- name: 使用命令修復 VM
+  items:
+    - name: Windows
+      href: repair-windows-vm-using-azure-virtual-machine-repair-commands.md
+    - name: Linux
+      href: repair-linux-vm-using-azure-virtual-machine-repair-commands.md
+- name: Windows 啟用問題
   items:
     - name: Windows 啟用問題
       href: troubleshoot-activation-problems.md
     - name: 啟用強制通道的問題
       href: custom-routes-enable-kms-activation.md
-- name: 應用程式存取問題
-  href: troubleshoot-app-connection.md
-- name: 新的 VM 部署
-  items:
-    - name: Linux
-      href: troubleshoot-deployment-new-vm-linux.md
-    - name: Windows
-      href: troubleshoot-deployment-new-vm-windows.md
-- name: 針對部署進行疑難排解
-  items:
-    - name: Linux
-      href: troubleshoot-deploy-vm-linux.md
-    - name: Windows
-      href: troubleshoot-deploy-vm-windows.md
-- name: 裝置名稱已變更
-  href: troubleshoot-device-names-problems.md
-- name: VM 復原存取
-  items:
-    - name: Windows
-      items:
-        - name: PowerShell
-          href: troubleshoot-recovery-disks-windows.md
-        - name: Azure 入口網站
-          href: troubleshoot-recovery-disks-portal-windows.md
-    - name: Linux
-      items:
-        - name: CLI
-          href: troubleshoot-recovery-disks-linux.md
-        - name: Azure 入口網站
-          href: troubleshoot-recovery-disks-portal-linux.md
-- name: 開機錯誤 Linux
-  href: boot-error-troubleshoot-linux.md
-  items:
-    - name: Grub 修復
-      href: troubleshoot-vm-boot-error.md
-- name: 開機錯誤 Windows
-  href: boot-error-troubleshoot.md
-  items:
-    - name: 開機診斷
-      href: boot-diagnostics.md
-    - name: BitLocker 錯誤
-      href: troubleshoot-bitlocker-boot-error.md
-    - name: 檢查檔案系統錯誤
-      href: troubleshoot-check-disk-boot-error.md
-    - name: 藍色畫面錯誤
-      href: troubleshoot-common-blue-screen-error.md
-    - name: VM 啟動已停滯
-      href: troubleshoot-vm-boot-configure-update.md
-    - name: 重要服務已失敗
-      href: troubleshoot-critical-service-failed-boot-error.md
-    - name: 重新開機迴圈
-      href: troubleshoot-reboot-loop.md
-    - name: 重新啟動、關閉或停止服務
-      href: boot-error-troubleshoot-windows.md
-    - name: 在執行 Windows 更新時停滯
-      href: troubleshoot-stuck-updating-boot-error.md
-- name: 節流處理錯誤
-  href: troubleshooting-throttling-errors.md
-- name: 使用巢狀虛擬化
-  href: troubleshoot-vm-by-use-nested-virtualization.md
 - name: 遠端疑難排解工具
   href: remote-tools-troubleshoot-azure-vm-issues.md
-- name: 虛擬機器修復
   items:
-    - name: 使用 Azure 虛擬機器修復命令修復 Windows VM
-      href: repair-windows-vm-using-azure-virtual-machine-repair-commands.md
-    - name: 使用 Azure 虛擬機器修復命令修復 Linux VM
-      href: repair-linux-vm-using-azure-virtual-machine-repair-commands.md
+    - name: 序列主控台
+      items:
+        - name: 概觀
+          href: serial-console-overview.md
+        - name: 適用於 Linux 的序列主控台
+          href: serial-console-linux.md
+          items:
+            - name: 序列主控台 GRUB/單一使用者模式
+              href: serial-console-grub-single-user-mode.md
+            - name: 序列主控台 NMI/SysRq
+              href: serial-console-nmi-sysrq.md
+            - name: 序列主控台 Grub 主動式設定
+              href: serial-console-grub-proactive-configuration.md
+        - name: 適用於 Windows 的序列主控台
+          href: serial-console-windows.md
+          items:
+            - name: CMD 及 PowerShell 命令
+              href: serial-console-cmd-ps-commands.md
+        - name: 啟用和停用序列主控台
+          href: serial-console-enable-disable.md
+        - name: 序列主控台內的電源選項
+          href: serial-console-power-options.md
+        - name: 常見的序列主控台錯誤
+          href: serial-console-errors.md
+- name: Azure 磁碟加密問題
+  items:
+    - name: Windows
+      items:
+        - name: 概觀
+          href: ../windows/disk-encryption-overview.md
+        - name: 疑難排解
+          href: ../windows/disk-encryption-troubleshooting.md
+        - name: 常見問題集
+          href: ../windows/disk-encryption-faq.md
+    - name: Linux
+      items:
+        - name: 概觀
+          href: ../linux/disk-encryption-overview.md
+        - name: 疑難排解
+          href: ../linux/disk-encryption-troubleshooting.md
+        - name: 常見問題集
+          href: ../linux/disk-encryption-faq.md
+- name: 增加配額
+  items:
+    - name: 增加計算 vCPU 限制
+      items:
+        - name: 資源管理員部署模型。
+          items:
+            - name: 增加 VM 系列 vCPU 限制
+              href: ../../azure-portal/supportability/per-vm-quota-requests.md
+            - name: 增加區域總 vCPU 限制
+              href: ../../azure-portal/supportability/regional-quota-requests.md
+            - name: 增加位置配額限制
+              href: ../../azure-portal/supportability/low-priority-quota.md
+        - name: 傳統部署模型
+          href: ../../azure-portal/supportability/classic-deployment-model-quota-increase-requests.md
+    - name: 增加網路限制
+      href: ../../azure-portal/supportability/networking-quota-requests.md
+- name: 移轉和移動問題
+  items:
+    - name: Azure Resource Manager 移轉 (ASM 至 ARM) 常見問題集
+      href: ../windows/migration-classic-resource-manager-overview.md
+- name: 計劃性維護
+  items:
+    - name: 概觀
+      href: ../maintenance-notifications.md
+- name: 常見的錯誤訊息
+  href: error-messages.md
+  items:
+    - name: 節流處理錯誤
+      href: troubleshooting-throttling-errors.md
+- name: 支援陳述式
+  items:
+    - name: 32 位元作業系統支援
+      href: support-32-bit-operating-systems-virtual-machines.md

@@ -431,53 +431,9 @@
           items:
             - name: 使用 Apache Hadoop 沙箱
               href: ./hadoop/apache-hadoop-emulator-get-started.md
+            - name: 使用 Apache Pig
+              href: use-pig.md
         - name: 開發
-          items:
-            - name: 使用 MapReduce 搭配 Apache Hadoop
-              items:
-                - name: MapReduce 概觀
-                  href: ./hadoop/hdinsight-use-mapreduce.md
-                - name: 使用 SSH
-                  href: ./hadoop/apache-hadoop-use-mapreduce-ssh.md
-                - name: 使用 cURL
-                  href: ./hadoop/apache-hadoop-use-mapreduce-curl.md
-                - name: 使用 Azure PowerShell
-                  href: ./hadoop/apache-hadoop-use-mapreduce-powershell.md
-                - name: 使用適用於 .NET 的 SDK
-                  href: ./hadoop/apache-hadoop-use-mapreduce-dotnet-sdk.md
-                - name: 執行 MapReduce 範例
-                  href: ./hadoop/apache-hadoop-run-samples-linux.md
-                - name: 執行自訂 Apache Hadoop MapReduce 程式
-                  href: ./hadoop/apache-hadoop-run-custom-programs.md
-                - name: '開發 C# 串流 MapReduce 程式'
-                  href: ./hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md
-                - name: 開發 Java MapReduce 程式
-                  href: ./hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
-            - name: 使用 Apache Hive 為擷取、 轉換和載入 (ETL) 工具
-              href: ./hadoop/apache-hadoop-using-apache-hive-as-an-etl-tool.md
-            - name: 大規模擷取、 轉換和載入
-              href: ./hadoop/apache-hadoop-etl-at-scale.md
-            - name: 建立非互動式驗證 .NET HDInsight 應用程式
-              href: ./hdinsight-create-non-interactive-authentication-dotnet-applications.md
-            - name: 分析巨量資料
-              items:
-                - name: 使用 Power Query 進行分析
-                  href: ./hadoop/apache-hadoop-connect-excel-power-query.md
-                - name: 將 Power BI 與互動式查詢連線
-                  href: ./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md
-                - name: 將 Power BI 連線到 Apache Hadoop
-                  href: ./hadoop/apache-hadoop-connect-hive-power-bi.md
-                - name: 將 Excel 連線到 Apache Hadoop
-                  href: ./hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md
-                - name: 使用 Apache Hive JDBC 驅動程式連線
-                  href: ./hadoop/apache-hadoop-connect-hive-jdbc-driver.md
-                - name: 分析儲存的推文
-                  href: ./hdinsight-analyze-twitter-data-linux.md
-                - name: 使用 Apache Mahout 產生建議
-                  href: ./hadoop/apache-hadoop-mahout-linux-mac.md
-                - name: HDInsight 的進階分析
-                  href: ./hadoop/apache-hadoop-deep-dive-advanced-analytics.md
-        - name: 管理
           items:
             - name: 使用空白邊緣節點
               href: ./hdinsight-apps-use-edge-node.md
