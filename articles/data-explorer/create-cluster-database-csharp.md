@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 2d800dc401b0d85b26a71817a1a70d66539203ae
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: a26dc461653f4308b0764b8c5ecc0272717a6171
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76902115"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77506012"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-c"></a>使用 C# 建立 Azure 資料總管叢集與資料庫
 
@@ -24,17 +24,14 @@ ms.locfileid: "76902115"
 > * [Python](create-cluster-database-python.md)
 > * [Azure Resource Manager 範本](create-cluster-database-resource-manager.md)
 
-Azure Data Explorer 是快速、完全受控的資料分析服務，可即時分析來自應用程式、網站、IoT 裝置等的大量資料流。 若要使用 Azure 資料總管，請先建立叢集，然後在該叢集中建立一或多個資料庫。 然後將資料內嵌 (載入) 至資料庫，讓您可以對資料執行查詢。 在本文中，您會使用C#來建立叢集和資料庫。
+Azure 資料總管是快速、完全受控的資料分析服務，可即時分析來自應用程式、網站、IoT 裝置等的大量資料流。 若要使用 Azure 資料總管，請先建立叢集，然後在該叢集中建立一或多個資料庫。 然後將資料內嵌 (載入) 至資料庫，讓您可以對資料執行查詢。 在本文中，您會使用C#來建立叢集和資料庫。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 如果您尚未安裝 Visual Studio 2019，您可以下載並使用**免費**的[Visual Studio 2019 的社區版本](https://www.visualstudio.com/downloads/)。 務必在 Visual Studio 設定期間啟用 **Azure 開發**。
 * 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="install-c-nuget"></a>安裝C# Nuget
-
-* 安裝 [Azure 資料總管 (Kusto) NuGet 套件](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)。
-* 安裝用來驗證的 [Microsoft.IdentityModel.Clients.ActiveDirectory NuGet 套件](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)。
+[!INCLUDE [data-explorer-data-connection-install-nuget-csharp](../../includes/data-explorer-data-connection-install-nuget-csharp.md)]
 
 ## <a name="authentication"></a>驗證
 若要執行本文中的範例，我們需要 Azure AD 應用程式和服務主體，才能存取資源。 核取 [[建立 Azure AD 應用程式](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)] 以建立免費的 Azure AD 應用程式，並在訂用帳戶範圍中新增角色指派。 它也會說明如何取得 `Directory (tenant) ID`、`Application ID`和 `Client Secret`。
@@ -75,7 +72,7 @@ Azure Data Explorer 是快速、完全受控的資料分析服務，可即時分
    | clusterName | *mykustocluster* | 所需的叢集名稱。|
    | skuName | *Standard_D13_v2* | 將用於叢集的 SKU。 |
    | tier | *Standard* | SKU 層。 |
-   | 存儲 | *number* | 叢集的實例數目。 |
+   | capacity | *number* | 叢集的實例數目。 |
    | resourceGroupName | *testrg* | 將在其中建立叢集的資源群組名稱。 |
 
     > [!NOTE]
@@ -87,7 +84,7 @@ Azure Data Explorer 是快速、完全受控的資料分析服務，可即時分
     kustoManagementClient.Clusters.Get(resourceGroupName, clusterName);
     ```
 
-如果結果中包含有 `Succeeded` 值的 `ProvisioningState`，表示已成功建立叢集。
+如果結果中包含有 `ProvisioningState` 值的 `Succeeded`，表示已成功建立叢集。
 
 ## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>在 Azure 資料總管叢集中建立資料庫
 

@@ -1,22 +1,22 @@
 ---
-title: Azure 防火牆合規性認證
-description: 適用于 PCI、SOC 和 ISO 的 Azure 防火牆合規性認證清單
+title: Azure 防火牆認證
+description: 適用于 PCI、SOC、ISO 和 ICSA Labs 的 Azure 防火牆認證清單
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 01/17/2020
+ms.date: 02/19/2020
 ms.author: victorh
-ms.openlocfilehash: f7e235a4212cf14f851c0c58eb087970c8f8d137
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: b1e7dce6f652d8c9e0fcf5974c3e72be9e1e7844
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76158178"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482170"
 ---
-# <a name="azure-firewall-compliance-certifications"></a>Azure 防火牆合規性認證
+# <a name="azure-firewall-certifications"></a>Azure 防火牆認證
 
-Azure 防火牆是支付卡產業（PCI）、服務組織控制（SOC）、國際標準組織（ISO）和 HITRUST 相容。
+Azure 防火牆是支付卡產業（PCI）、服務組織控制（SOC）、國際標準組織（ISO）、ICSA Labs 和 HITRUST 相容。
 
 下列認證適用于全域 Azure 和 Azure Government。
 
@@ -29,23 +29,23 @@ Azure 防火牆是支付卡產業（PCI）、服務組織控制（SOC）、國�
 - AMF 和 ACPR （法國）
 - APRA （澳大利亞）
 - 阿根廷 PDPA
-- Australia IRAP
+- 澳大利亞 IRAP
 - CDSA
 - CFTC 1.31
 - CSA STAR Attestation
-- CSA STAR 認證
-- CSA STAR 自我評鑑
+- CSA STAR Certification
+- CSA STAR 自我評估
 - 加拿大隱私權法則
 - DPP （英國）
 - 歐盟 ENISA IAF
-- EU 示範條款
+- EU 模型條款
 - 歐洲銀行機關
 - FCA 和 PRA （英國）
-- FERPA (美國)
+- FERPA （US）
 - FFIEC （US）
-- FINMA (瑞士)
-- FSA (丹麥)
-- GLBA (美國)
+- FINMA （瑞士）
+- FSA （丹麥）
+- GLBA （US）
 - Germany C5
 - GxP (FDA 21 CFR Part 11)
 - HITRUST
@@ -65,17 +65,17 @@ Azure 防火牆是支付卡產業（PCI）、服務組織控制（SOC）、國�
 - NHS IG 工具組（英國）
 - 荷蘭 BIR 2012
 - OSFI （加拿大）
-- PCI DSS 層級 1
+- PCI DSS 層級1
 - RBI 和 IRDAI （印度）
 - SOC 1 類型2
 - SOC 2 類型2
 - SOC 3
-- SOX (美國)
+- SOX （US）
 - 西班牙 DPA
 - TISAX
 - TruSight
-- UK G-Cloud
-- WCAG 2.0
+- 英國 G-雲端
+- WCAG 2。0
 
 
 ## <a name="azure-government-certifications"></a>Azure Government 認證
@@ -90,19 +90,27 @@ Azure 防火牆是支付卡產業（PCI）、服務組織控制（SOC）、國�
 - DoE 10 CFR 第810部分
 - EAR
 - FIPS 140-2
-- FedRAMP 高
+- FedRAMP High
 - HITRUST
 - IRS 1075
 - ITAR
-- MARS-E (美國)
+- MARS-E （US）
 - NERC
 - NIST 網路安全性架構
 - NIST SP 800-171
 - SOC 1 類型2
 - SOC 2 類型2
 - SOC 3
-- SOX (美國)
-- Section 508 VPATs
+- SOX （US）
+- 第508節 Vpat
+
+## <a name="icsa-labs-corporate-firewall-certification"></a>ICSA Labs 的公司防火牆認證
+
+![ICSA 認證](media/overview/icsa-cert-firewall-small.png)
+
+ICSA Labs 是協力廠商測試的領先廠商，以及安全性和健康 IT 產品的認證，以及網路連線的裝置。 他們會為大部分世界頂尖的技術廠商，測量產品的合規性、可靠性和效能。
+
+Azure 防火牆是第一個雲端防火牆服務，可達成 ICSA Labs 的公司防火牆認證。 如需 Azure 防火牆認證報告，請參閱[ICSA Labs 認證測試和審核報告](https://aka.ms/ICSALabsCertification)。 如需詳細資訊，請參閱[ICSA Labs 防火牆認證計畫](https://www.icsalabs.com/technology-program/firewalls)頁面。
 
 
 ## <a name="next-steps"></a>後續步驟

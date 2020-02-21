@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 02/12/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 826b8e923575db3d6c6aee7ead230f87f1efb50e
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 8d5ff722d4a035113af8528ed8adb396b01c81eb
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848437"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77504937"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>啟用無密碼安全性金鑰登入（預覽）
 
@@ -29,7 +29,7 @@ ms.locfileid: "74848437"
 | FIDO2 安全性金鑰是 Azure Active Directory 的公開預覽功能。 如需有關預覽版的詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
 
-## <a name="requirements"></a>要求
+## <a name="requirements"></a>需求
 
 - [Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
 - [結合的安全性資訊註冊預覽](concept-registration-mfa-sspr-combined.md)
@@ -40,7 +40,9 @@ ms.locfileid: "74848437"
 
 ## <a name="prepare-devices-for-preview"></a>準備裝置以供預覽
 
-您將試驗的裝置必須執行 Windows 10 1809 版或更高版本。 最佳體驗是在 Windows 10 1903 版或更新版本上。
+您試驗的 Azure AD 聯結裝置必須執行 Windows 10 1809 版或更高版本。 最佳體驗是在 Windows 10 1903 版或更新版本上。
+
+混合式 Azure AD 加入的裝置必須執行 Windows 10 Insider 組建18945或更新版本。
 
 ## <a name="enable-passwordless-authentication-method"></a>啟用無密碼 authentication 方法
 
@@ -68,7 +70,7 @@ ms.locfileid: "74848437"
 1. 選擇 [ **USB 裝置**] 或 [ **NFC 裝置**]。
 1. 備妥您的金鑰，然後選擇 **[下一步]** 。
 1. 隨即會出現一個方塊，並要求使用者建立/輸入您的安全性金鑰的 PIN，然後執行金鑰的必要手勢，也就是生物識別或觸控。
-1. 使用者將會回到合併的註冊體驗，並要求您提供有意義的金鑰名稱，讓使用者可以識別有多個索引鍵（如果有的話）。 按一下 [下一步]。
+1. 使用者將會回到合併的註冊體驗，並要求您提供有意義的金鑰名稱，讓使用者可以識別有多個索引鍵（如果有的話）。 按 [下一步]。
 1. 按一下 [**完成**] 完成程式。
 
 ## <a name="sign-in-with-passwordless-credential"></a>使用無密碼認證登入
@@ -79,13 +81,13 @@ ms.locfileid: "74848437"
 
 ## <a name="troubleshooting-and-feedback"></a>疑難排解與意見反應
 
-如果您想要在預覽這項功能時分享意見反應或遇到問題，請透過 Windows 意見反應中樞應用程式共用。
+如果您想要在預覽這項功能時分享意見反應或遇到問題，請使用下列步驟透過 Windows 意見反應中樞應用程式共用：
 
 1. 啟動**意見反應中樞**，並確認您已登入。
 1. 在下列分類下提交意見反應：
-   1. 類別：安全性和隱私權
-   1. 子類別目錄： FIDO
-1. 若要捕獲記錄，請使用 [**重新建立我的問題**] 選項。
+   - 類別：安全性和隱私權
+   - 子類別目錄： FIDO
+1. 若要捕獲記錄，請使用選項來**重新建立我的問題**
 
 ## <a name="known-issues"></a>已知問題
 
@@ -95,7 +97,7 @@ ms.locfileid: "74848437"
 
 ### <a name="upn-changes"></a>UPN 變更
 
-如果使用者的 UPN 變更，您就無法再修改 FIDO2 安全性金鑰來考慮變更。 解決方式是重設裝置，且使用者必須重新註冊其 FIDO2 安全性金鑰。
+我們正努力支援一項功能，可讓混合式 Azure AD 加入和 Azure AD 聯結的裝置上進行 UPN 變更。 如果使用者的 UPN 變更，您就無法再修改 FIDO2 安全性金鑰來考慮變更。 解決方式是重設裝置，且使用者必須重新註冊。
 
 ## <a name="next-steps"></a>後續步驟
 

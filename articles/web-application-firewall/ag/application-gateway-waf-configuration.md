@@ -4,15 +4,15 @@ description: 本文提供應用程式閘道中具有 Azure 入口網站的 Web �
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 10/17/2019
+ms.date: 02/20/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: cfde1355ef5e5a2f9033456ac4089ce3ca3f9d72
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 7244788bbc7431c7f26363b2852babb72d5697e9
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839961"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526785"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Web 應用程式防火牆要求大小限制與排除清單
 
@@ -91,7 +91,13 @@ $exclusion2 = New-AzApplicationGatewayFirewallExclusionConfig `
 Web 應用程式可讓您設定介於上下限範圍之間的要求大小限制。 下列是兩個可用的大小限制：
 
 - [要求本文大小上限] 欄位以 kb 為單位指定，並控制所有檔案上傳的整體要求大小限制。 此欄位值的範圍可從最小 1 KB 到最大 128 KB。 要求本文大小的預設值為 128 KB。
-- 檔案上傳限制欄位是以 MB 為單位指定，而且它會控管允許的檔案上傳大小上限。 當中型 SKU 的最大值為 100 MB 時，大型 SKU 執行個體的這個欄位其最小值為 1MB，最大值為 500 MB。 檔案上傳限制的預設值為 100 MB。
+- 檔案上傳限制欄位是以 MB 為單位指定，而且它會控管允許的檔案上傳大小上限。 此欄位的最小值為 1 MB 和下列上限：
+
+   - 100 MB 適用于 v1 中型 WAF 閘道
+   - 500 MB 適用于 v1 大型 WAF 閘道
+   - 750 MB 適用于 v2 WAF 閘道 
+
+ 檔案上傳限制的預設值為 100 MB。
 
 WAF 也可提供可設定的旋鈕，以便開啟或關閉要求本文檢查。 根據預設，要求本文檢查是啟用的。 如果要求主體檢查已關閉，WAF 就不會評估 HTTP 訊息內文的內容。 在此情況下，WAF 會繼續針對標頭、Cookie 與 URI 強制執行 WAF 規則。 如果要求本文檢查關閉，則最大要求本文大小欄位就不適用，而且也無法設定。 關閉要求本文檢查可讓要傳送給 WAF 的訊息大於 128 KB，但不會檢查訊息本文是否有漏洞。
 

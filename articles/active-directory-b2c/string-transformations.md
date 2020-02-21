@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/05/2020
+ms.date: 02/20/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 06323ba8f623bc80a355be69ed9571ee32dd69e6
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: df0bd87fffba8ed70c60da358b38079d3d017c76
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461210"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505635"
 ---
 # <a name="string-claims-transformations"></a>字串宣告轉換
 
@@ -34,7 +34,8 @@ ms.locfileid: "77461210"
 | InputClaim | inputClaim2 | 字串 | 要比較的第二個宣告類型。 |
 | InputParameter | stringComparison | 字串 | 字串比較，其中一個值：Ordinal、OrdinalIgnoreCase。 |
 
-**AssertStringClaimsAreEqual** 宣告轉換一律會從[驗證技術設定檔](validation-technical-profile.md)執行，其會透過[自我判斷技術設定檔](self-asserted-technical-profile.md)來呼叫。 **UserMessageIfClaimsTransformationStringsAreNotEqual** 自我判斷技術設定檔中繼資料會控制要呈現給使用者的錯誤訊息。
+**AssertStringClaimsAreEqual**宣告轉換一律會從[自我判斷技術設定檔](self-asserted-technical-profile.md)或[DisplayConrtol](display-controls.md)所呼叫的[驗證技術設定檔](validation-technical-profile.md)執行。 自我判斷技術設定檔的 `UserMessageIfClaimsTransformationStringsAreNotEqual` 中繼資料會控制呈現給使用者的錯誤訊息。
+
 
 ![AssertStringClaimsAreEqual 執行](./media/string-transformations/assert-execution.png)
 
@@ -122,7 +123,7 @@ ms.locfileid: "77461210"
 
 ## <a name="createstringclaim"></a>CreateStringClaim
 
-從原則中提供的輸入參數建立字串宣告。
+從轉換中提供的輸入參數建立字串宣告。
 
 | Item | TransformationClaimType | 資料類型 | 注意 |
 |----- | ----------------------- | --------- | ----- |
@@ -516,6 +517,42 @@ ms.locfileid: "77461210"
     - **errorOnFailedLookup**：false
 - 輸出宣告：
     - **outputClaim**：c7026f88-4299-4cdb-965d-3f166464b8a9
+
+當 `errorOnFailedLookup` 輸入參數設定為 `true`時，一律會從[自我判斷技術設定檔](self-asserted-technical-profile.md)所呼叫的[驗證技術設定檔](validation-technical-profile.md)或[DisplayConrtol](display-controls.md)來執行**LookupValue**宣告轉換。 自我判斷技術設定檔的 `LookupNotFound` 中繼資料會控制呈現給使用者的錯誤訊息。
+
+![AssertStringClaimsAreEqual 執行](./media/string-transformations/assert-execution.png)
+
+下列範例會查詢其中一個 inpuParameters 集合中的網域名稱。 宣告轉換會查閱識別碼中的功能變數名稱，並傳回其值（應用程式識別碼），或引發錯誤訊息。
+
+```XML
+ <ClaimsTransformation Id="DomainToClientId" TransformationMethod="LookupValue">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="domainName" TransformationClaimType="inputParameterId" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="contoso.com" DataType="string" Value="13c15f79-8fb1-4e29-a6c9-be0d36ff19f1" />
+    <InputParameter Id="microsoft.com" DataType="string" Value="0213308f-17cb-4398-b97e-01da7bd4804e" />
+    <InputParameter Id="test.com" DataType="string" Value="c7026f88-4299-4cdb-965d-3f166464b8a9" />
+    <InputParameter Id="errorOnFailedLookup" DataType="boolean" Value="true" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="domainAppId" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>範例
+
+- 輸入宣告：
+    - **inputParameterId**： live.com
+- 輸入參數：
+    - **contoso.com**：13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
+    - **microsoft.com**：0213308f-17cb-4398-b97e-01da7bd4804e
+    - **test.com**：c7026f88-4299-4cdb-965d-3f166464b8a9
+    - **errorOnFailedLookup**： true
+- 錯誤：
+    - 在輸入參數識別碼的清單中找不到符合的輸入宣告值，而且 errorOnFailedLookup 為 true。
+
 
 ## <a name="nullclaim"></a>NullClaim
 

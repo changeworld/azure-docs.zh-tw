@@ -1,5 +1,6 @@
 ---
-title: 參考： Ubuntu DSVM
+title: 參考： Ubuntu 資料科學虛擬機器
+titleSuffix: Azure Data Science Virtual Machine
 description: Ubuntu 資料科學虛擬機器中包含的工具詳細資料
 author: gvashishtha
 ms.service: machine-learning
@@ -7,12 +8,12 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 97072f1a17f2b0adbe96afae3263dc84aff0f30f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5c184e7f1dc828c3f9ff8d449d29ab3aaa4d1cf6
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497630"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525816"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>參考： Ubuntu （Linux）資料科學虛擬機器
 
@@ -253,7 +254,7 @@ Azure Machine Learning 是完全受控的雲端服務，讓您能夠建置、部
 
 ## <a name="machine-learning-tools"></a>機器學習工具
 
-VM 隨附已預先編譯且預先安裝在本機上的機器學習工具和演算法。 其中包含：
+VM 隨附已預先編譯且預先安裝在本機上的機器學習工具和演算法。 其中包括：
 
 * **Vowpal Wabbit**：快速線上學習演算法。
 * **xgboost**：提供最佳化推進式決策樹演算法的工具。
@@ -280,7 +281,7 @@ vw house_dataset
 
 該目錄中有其他更大的示範。 如需 Vowpal Wabbit 的詳細資訊，請參閱 [GitHub 的這一節](https://github.com/JohnLangford/vowpal_wabbit)，以及 [Vowpal Wabbit Wiki](https://github.com/JohnLangford/vowpal_wabbit/wiki)。
 
-### <a name="xgboost"></a>XGBoost
+### <a name="xgboost"></a>xgboost
 
 xgboost 是針對促進式決策 (樹) 演算法而設計和最佳化的程式庫。 此程式庫的目標是要將機器的運算限制推到所需的極致，以提供可調整、可攜且精確的大規模樹狀推進式決策。
 
@@ -314,7 +315,7 @@ xgboost mushroom.conf
 
 ### <a name="rattle"></a>Rattle
 
-Rattle (**R** **A**nalytical **T**ool **T**o **L**earn **E**asily) 會使用 GUI 型資料探索和模型化。 它會提供資料的統計和視覺化摘要、轉換已經可以輕易模型化的資料、從資料建置未經指導和經過指導的模型、以圖形方式呈現模型的效能，以及評分新的資料集。 它也會產生 R 程式碼，複寫 UI 中可以直接在 R 中執行的作業，或是作為進一步分析之起點的作業。
+Rattle （ **R** **A**nalytical **t**ool **t**o **L**贏得**E**asily）會使用 GUI 型資料探索和模型化。 它會提供資料的統計和視覺化摘要、轉換已經可以輕易模型化的資料、從資料建置未經指導和經過指導的模型、以圖形方式呈現模型的效能，以及評分新的資料集。 它也會產生 R 程式碼，複寫 UI 中可以直接在 R 中執行的作業，或是作為進一步分析之起點的作業。
 
 若要執行 Rattle，您必須位於圖形化桌面登入工作階段。 在終端機上輸入 **R**，以開啟 R 環境。 在 R 提示字元中輸入下列命令：
 
@@ -338,7 +339,7 @@ rattle()
 1. 選取 [風險] 選項，然後選取 [執行] 以顯示兩個 [風險 (累積)] 效能繪圖。
 1. 選取 [記錄] 索引標籤，以顯示針對先前的作業產生的 R 程式碼。
    (由於目前的 Rattle 版本中有錯誤，您必須在記錄的文字中，於 **Export this log# 前面插入**  字元。)
-1. 選取 [匯出] 按鈕，將名為 weather_script.R 的 R 指令碼檔案儲存到主資料夾。
+1. 選取 [匯出] 按鈕，將名為 weather_script.R 的 R 指令檔儲存到主資料夾。
 
 您可以結束 Rattle 和 R。現在，您可以修改產生的 R 指令碼。 或者，您可以照原樣使用，並且隨時執行，以便重複執行在 Rattle UI 中完成的所有動作。 這是特別適合 R 初學者的方法，他們將可在簡單的圖形化介面中快速進行分析和機器學習，同時自動產生 R 程式碼來修改或學習。
 

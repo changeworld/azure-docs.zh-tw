@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 02/20/2020
 ms.author: victorh
-ms.openlocfilehash: 39c08a568a60c905394eec23dd27d5dd32ff0112
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: b28d228dd950796265c5412be30e5d7777cf94c6
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77460462"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526507"
 ---
 # <a name="azure-firewall-faq"></a>Azure 防火牆常見問題集
 
@@ -88,7 +88,7 @@ Azure 防火牆是受控服務，具有多個保護層，包括具備 NIC 層級
 
 您可以使用 Azure PowerShell 的「解除配置」和「配置」方法。
 
-例如：
+例如，
 
 ```azurepowershell
 # Stop an existing firewall
@@ -117,11 +117,11 @@ Set-AzFirewall -AzureFirewall $azfw
 
 ## <a name="can-azure-firewall-in-a-hub-virtual-network-forward-and-filter-network-traffic-between-two-spoke-virtual-networks"></a>中樞虛擬網路中的 Azure 防火牆是否可以在兩個輪幅虛擬網路之間轉寄和篩選網路流量？
 
-是，您可以在中樞虛擬網路中，使用 Azure 防火牆來路由傳送和篩選兩個輪幅虛擬網路之間的流量。 每個輪幅虛擬網路中的子網路，都必須有 UDR 指向 Azure 防火牆作為此案例的預設閘道，才能正常運作。
+是，您可以在中樞虛擬網路中，使用 Azure 防火牆來路由傳送和篩選兩個輪幅虛擬網路之間的流量。 每個輪輻虛擬網路中的子網都必須有一個 UDR 指向 Azure 防火牆作為預設閘道，此案例才能正常運作。
 
 ## <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network-or-peered-virtual-networks"></a>Azure 防火牆可以在同一個虛擬網路或對等虛擬網路的子網路之間轉寄和篩選網路流量嗎？
 
-是。 不過，若要設定 Udr 以重新導向相同 VNET 中子網之間的流量，則需要額外注意。 雖然對 UDR 而言，使用 VNET 位址範圍作為目標前置詞已足夠，但這也會使得所有流量透過 Azure 防火牆執行個體從一部機器路由至相同子網路中的另一部機器。 若要避免此狀況，需在下一個躍點類型為 **VNET** 的 UDR 中包括子網路的路由。 管理這些路由可能會很麻煩，而且容易出錯。 對於內部網路區隔的建議方法是使用網路安全性群組，而這不需要 UDR。
+是的。 不過，若要設定 Udr 以重新導向相同 VNET 中子網之間的流量，則需要額外注意。 雖然對 UDR 而言，使用 VNET 位址範圍作為目標前置詞已足夠，但這也會使得所有流量透過 Azure 防火牆執行個體從一部機器路由至相同子網路中的另一部機器。 若要避免此狀況，需在下一個躍點類型為 **VNET** 的 UDR 中包括子網路的路由。 管理這些路由可能會很麻煩，而且容易出錯。 對於內部網路區隔的建議方法是使用網路安全性群組，而這不需要 UDR。
 
 ## <a name="does-azure-firewall-outbound-snat-between-private-networks"></a>私人網路之間的 Azure 防火牆輸出 SNAT 嗎？
 
@@ -137,11 +137,11 @@ Set-AzFirewall -AzureFirewall $azfw
 
 ## <a name="are-there-any-firewall-resource-group-restrictions"></a>是否有任何防火牆資源群組的限制？
 
-是。 防火牆、子網路、VNet 和公用 IP 位址全都必須在相同的資源群組中。
+是的。 防火牆、VNet 和公用 IP 位址都必須位於相同的資源群組中。
 
 ## <a name="when-configuring-dnat-for-inbound-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>在設定傳入網路流量的 DNAT 時，是否也需要設定對應的網路規則，才能允許該流量？
 
-否。 NAT 規則會隱含地新增對應的網路規則，以允許已轉譯的流量。 若要覆寫這個行為，您可以明確地使用符合已轉譯流量的拒絕規則來新增網路規則集合。 若要深入了解 Azure 防火牆規則處理邏輯，請參閱 [Azure 防火牆規則處理邏輯](rule-processing.md)。
+No。 NAT 規則會隱含地新增對應的網路規則，以允許已轉譯的流量。 若要覆寫這個行為，您可以明確地使用符合已轉譯流量的拒絕規則來新增網路規則集合。 若要深入了解 Azure 防火牆規則處理邏輯，請參閱 [Azure 防火牆規則處理邏輯](rule-processing.md)。
 
 ## <a name="how-do-wildcards-work-in-an-application-rule-target-fqdn"></a>如何在應用程式規則中將萬用字元用於目標 FQDN？
 
@@ -156,7 +156,7 @@ Azure 防火牆是由一個主動-主動設定中的幾個後端節點所組成�
 
 ## <a name="is-there-a-character-limit-for-a-firewall-name"></a>是否有防火牆名稱的字元限制？
 
-是。 防火牆名稱有50個字元的限制。
+是的。 防火牆名稱有50個字元的限制。
 
 ## <a name="why-does-azure-firewall-need-a-26-subnet-size"></a>為什麼 Azure 防火牆需要/26 個子網大小？
 
@@ -164,16 +164,16 @@ Azure 防火牆必須在調整規模時布建更多虛擬機器實例。 /26 位
 
 ## <a name="does-the-firewall-subnet-size-need-to-change-as-the-service-scales"></a>當服務調整時，防火牆子網大小是否需要變更？
 
-否。 Azure 防火牆不需要大於/26 的子網。
+No。 Azure 防火牆不需要大於/26 的子網。
 
 ## <a name="how-can-i-increase-my-firewall-throughput"></a>如何增加防火牆輸送量？
 
-Azure 防火牆的初始輸送量容量為 2.5-3 Gbps。 目前，相應放大是以 CPU 使用量和輸送量為基礎。 在某些情況下，只有網路規則的防火牆不會相應增加，以提高輸送量，因為網路規則不會嚴重影響 CPU 使用量。 如果您需要更高的防火牆輸送量，請聯絡支援人員以增加防火牆的初始輸送量容量。
+Azure 防火牆的初始輸送量容量為 2.5-3 Gbps，並相應放大為 30 Gbps。 它會根據 CPU 使用量和輸送量進行相應放大。 如果您的防火牆未相應放大以符合您的需求，而且您需要更高的輸送量容量，請聯絡支援人員以增加防火牆的輸送量容量。
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Azure 防火牆需要多久的時間來相應放大？
 
-Azure 防火牆目前需要五到七分鐘的時間來相應放大。如果您有需要更快速自動調整的高載，請聯絡支援人員以增加防火牆的初始輸送量容量。
+Azure 防火牆需要五到七分鐘的時間來相應放大。如果您有需要更快速自動調整的高載，請聯絡支援以增加防火牆的初始輸送量容量。
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Azure 防火牆預設允許存取 Active Directory 嗎？
 
-否。 根據預設，Azure 防火牆會封鎖 Active Directory 存取。 若要允許存取，請設定 AzureActiveDirectory 服務標記。 如需詳細資訊，請參閱[Azure 防火牆服務標記](service-tags.md)。
+No。 根據預設，Azure 防火牆會封鎖 Active Directory 存取。 若要允許存取，請設定 AzureActiveDirectory 服務標記。 如需詳細資訊，請參閱[Azure 防火牆服務標記](service-tags.md)。

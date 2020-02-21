@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 11/16/2019
-ms.openlocfilehash: 6a84dee783240f7f662dab2f04275ead3a3dfe09
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: f5ed3ee9b0e7e7218a519baa56cda443fddab105
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750778"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77522612"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database 計量和診斷記錄
 
@@ -41,7 +41,7 @@ ms.locfileid: "75750778"
 
 您可以使用下列其中一種方法來啟用及管理計量和診斷遙測記錄功能︰
 
-- Azure Portal
+- Azure 入口網站
 - PowerShell
 - Azure CLI
 - Azure 監視器 REST API
@@ -50,7 +50,7 @@ ms.locfileid: "75750778"
 當您啟用計量和診斷記錄時，您需要指定用來收集診斷遙測資料的 Azure 資源目的地。 可用的選項包括：
 
 - Azure SQL 分析
-- Azure 事件中樞
+- Azure 事件中心
 - Azure 儲存體
 
 您可以佈建新的 Azure 資源，或選取現有的資源。 使用 [診斷設定]選項選擇資源之後，指定要收集的資料。
@@ -82,7 +82,7 @@ ms.locfileid: "75750778"
 > - 若要啟用 audit 記錄串流，請參閱[設定資料庫的審核](sql-database-auditing.md#subheading-2)，以及[Azure 監視器記錄和 Azure 事件中樞中的審核記錄](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242)。
 > - 無法為**系統資料庫**設定診斷設定，例如 master、msdb、model、resoure 和 tempdb 資料庫。
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Azure 入口網站
 
 您可以在 Azure 入口網站中，針對每個單一、集區或實例資料庫使用 [**診斷設定**] 功能表，以設定診斷遙測的串流處理。 此外，也可以為資料庫容器分別設定診斷遙測：彈性集區和受控實例。 您可以設定下列目的地以串流診斷遙測： Azure 儲存體、Azure 事件中樞和 Azure 監視器記錄檔。
 
@@ -260,7 +260,7 @@ ms.locfileid: "75750778"
 
 若要支援多個訂用帳戶，從[使用 PowerShell 啟用 Azure 資源計量記錄](https://blogs.technet.microsoft.com/msoms/20../../enable-azure-resource-metrics-logging-using-powershell/)使用 PowerShell 指令碼。
 
-在執行指令碼 `Enable-AzureRMDiagnostics.ps1` 將診斷資料從多個資源傳送至工作區時，提供工作區資源識別碼 \<$WSID\> 做為參數。
+在執行指令碼 \< 將診斷資料從多個資源傳送至工作區時，提供工作區資源識別碼 \>$WSID`Enable-AzureRMDiagnostics.ps1` 做為參數。
 
 - 若要取得您診斷資料目的地的工作區識別碼 \<$WSID\>，請使用下列指令碼：
 
@@ -449,9 +449,9 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 |**度量**|**計量顯示名稱**|**說明**|
 |---|---|---|
-|tempdb_data_size| Tempdb 資料檔案大小 Kb |Tempdb 資料檔案大小（Kb）。 不適用於資料倉儲。 針對以 DTU 為基礎的購買模型，使用 vCore 購買模型或 100 DTU 和更新版本的資料庫，將可使用此計量。 |
-|tempdb_log_size| Tempdb 記錄檔大小 Kb |Tempdb 記錄檔大小（Kb）。 不適用於資料倉儲。 針對以 DTU 為基礎的購買模型，使用 vCore 購買模型或 100 DTU 和更新版本的資料庫，將可使用此計量。 |
-|tempdb_log_used_percent| 使用的 Tempdb 百分比記錄 |使用的 Tempdb 百分比記錄。 不適用於資料倉儲。 針對以 DTU 為基礎的購買模型，使用 vCore 購買模型或 100 DTU 和更新版本的資料庫，將可使用此計量。 |
+|tempdb_data_size| Tempdb 資料檔案大小 Kb |Tempdb 資料檔案大小（Kb）。 不適用於資料倉儲。 此計量適用于使用 vCore 購買模型（具有2虛擬核心和更高版本）的資料庫，或 200 DTU 和更新版本（適用于以 DTU 為基礎的購買模型）。 此度量目前不適用於超大規模資料庫資料庫。|
+|tempdb_log_size| Tempdb 記錄檔大小 Kb |Tempdb 記錄檔大小（Kb）。 不適用於資料倉儲。 此計量適用于使用 vCore 購買模型（具有2虛擬核心和更高版本）的資料庫，或 200 DTU 和更新版本（適用于以 DTU 為基礎的購買模型）。 此度量目前不適用於超大規模資料庫資料庫。|
+|tempdb_log_used_percent| 使用的 Tempdb 百分比記錄 |使用的 Tempdb 百分比記錄。 不適用於資料倉儲。 此計量適用于使用 vCore 購買模型（具有2虛擬核心和更高版本）的資料庫，或 200 DTU 和更新版本（適用于以 DTU 為基礎的購買模型）。 此度量目前不適用於超大規模資料庫資料庫。|
 
 ## <a name="basic-logs"></a>基本記錄
 
@@ -459,7 +459,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="resource-usage-stats-for-managed-instance"></a>受控實例的資源使用狀況統計資料
 
-|屬性|說明|
+|屬性|描述|
 |---|---|
 |TenantId|您的租用戶識別碼 |
 |SourceSystem|一律：Azure|
@@ -484,7 +484,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="query-store-runtime-statistics"></a>查詢存放區執行階段統計資料
 
-|屬性|說明|
+|屬性|描述|
 |---|---|
 |TenantId|您的租用戶識別碼 |
 |SourceSystem|一律：Azure |
@@ -535,7 +535,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="query-store-wait-statistics"></a>查詢存放區等候統計資料
 
-|屬性|說明|
+|屬性|描述|
 |---|---|
 |TenantId|您的租用戶識別碼 |
 |SourceSystem|一律：Azure |
@@ -573,7 +573,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="errors-dataset"></a>錯誤資料集
 
-|屬性|說明|
+|屬性|描述|
 |---|---|
 |TenantId|您的租用戶識別碼 |
 |SourceSystem|一律：Azure |
@@ -593,7 +593,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |訊息|純文字的錯誤訊息 |
 |user_defined_b|錯誤是否為使用者定義的位元 |
 |error_number_d|錯誤碼 |
-|嚴重性|錯誤的嚴重性 |
+|Severity|錯誤的嚴重性 |
 |state_d|錯誤的狀態 |
 |query_hash_s|失敗查詢的查詢雜湊 (如果有) |
 |query_plan_hash_s|失敗查詢的查詢計劃雜湊 (如果有) |
@@ -602,7 +602,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="database-wait-statistics-dataset"></a>資料庫等候統計資料資料集
 
-|屬性|說明|
+|屬性|描述|
 |---|---|
 |TenantId|您的租用戶識別碼 |
 |SourceSystem|一律：Azure |
@@ -631,7 +631,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="time-outs-dataset"></a>逾時資料集
 
-|屬性|說明|
+|屬性|描述|
 |---|---|
 |TenantId|您的租用戶識別碼 |
 |SourceSystem|一律：Azure |
@@ -654,7 +654,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="blockings-dataset"></a>封鎖資料集
 
-|屬性|說明|
+|屬性|描述|
 |---|---|
 |TenantId|您的租用戶識別碼 |
 |SourceSystem|一律：Azure |
@@ -678,7 +678,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="deadlocks-dataset"></a>死結 (Deadlock) 資料集
 
-|屬性|說明|
+|屬性|描述|
 |---|---|
 |TenantId|您的租用戶識別碼 |
 |SourceSystem|一律：Azure |
@@ -699,7 +699,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="automatic-tuning-dataset"></a>自動調整資料集
 
-|屬性|說明|
+|屬性|描述|
 |---|---|
 |TenantId|您的租用戶識別碼 |
 |SourceSystem|一律：Azure |

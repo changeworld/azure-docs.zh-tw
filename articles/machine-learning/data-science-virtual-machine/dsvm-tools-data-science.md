@@ -1,5 +1,6 @@
 ---
 title: 機器學習與資料科學工具
+titleSuffix: Azure Data Science Virtual Machine
 description: 瞭解預先安裝在資料科學虛擬機器上的機器學習工具和架構。
 keywords: 資料科學工具、資料科學虛擬機器、資料科學工具、linux 資料科學
 services: machine-learning
@@ -9,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: c77e1834804dba0d2e5fd6eaec574ffce19d1d45
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: c6b7e3da6cb6fd87e3b43d6f310e3b76f8fc4d30
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771201"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526088"
 ---
 # <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Azure 資料科學上的機器學習和資料科學工具虛擬機器
 Azure 資料科學虛擬機器（Dsvm）具有一組豐富的工具和程式庫，適用于以熱門語言（例如 Python、R 和 Julia）提供的機器學習服務。

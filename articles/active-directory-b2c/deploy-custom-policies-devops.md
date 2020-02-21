@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 21fde69f404ee535bfe0019a91843297b1752a92
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 8649537a2992ba11a2b664a9b36207e06c8b1274
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77463137"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498545"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>使用 Azure Pipelines 部署自訂原則
 
@@ -35,6 +35,7 @@ ms.locfileid: "77463137"
 
 * [Azure AD B2C 租](tutorial-create-tenant.md)使用者，以及具有[B2C IEF 原則系統管理員](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator)角色之目錄中使用者的認證
 * 已上傳至您租使用者的[自訂原則](custom-policy-get-started.md)
+* 已在您的租使用者中註冊的[管理應用程式](microsoft-graph-get-started.md)，其中包含 Microsoft Graph API 許可權*原則。 ReadWrite. TrustFramework*
 * [Azure 管線](https://azure.microsoft.com/services/devops/pipelines/)和[Azure DevOps Services 專案][devops-create-project]的存取權
 
 ## <a name="client-credentials-grant-flow"></a>用戶端認證授與流程
@@ -43,47 +44,11 @@ ms.locfileid: "77463137"
 
 ## <a name="register-an-application-for-management-tasks"></a>註冊管理工作的應用程式
 
-一開始請先建立應用程式註冊，由 Azure Pipelines 所執行的 PowerShell 腳本將用來與 Azure AD B2C 通訊。 如果您已經有用於自動化工作的應用程式註冊，則可以跳至 [授與[許可權](#grant-permissions)] 區段。
+如[必要條件](#prerequisites)中所述，您需要應用程式註冊，您的 PowerShell 腳本（由 Azure Pipelines 執行）可用於存取您租使用者中的資源。
 
-### <a name="register-application"></a>註冊應用程式
+如果您已經有用於自動化工作的應用程式註冊，請確定它已被授與在應用程式註冊之**API 許可權**中的**Microsoft Graph** > **原則** > **TrustFramework**許可權。
 
-[!INCLUDE [active-directory-b2c-appreg-mgmt](../../includes/active-directory-b2c-appreg-mgmt.md)]
-
-### <a name="grant-permissions"></a>授與權限
-
-接下來，授與應用程式許可權，以使用 Microsoft Graph API 在您的 Azure AD B2C 租使用者中讀取和寫入自訂原則。
-
-#### <a name="applications"></a>[應用程式](#tab/applications/)
-
-1. 在 [**已註冊的應用程式**總覽] 頁面上，選取 [**設定**]。
-1. 在 [ **API 存取**] 底下，選取 [**必要許可權**]。
-1. 選取 [**新增**]，然後**選取 API**。
-1. 選取 [ **Microsoft Graph**]，然後**選取**[]。
-1. 在 [**應用程式許可權**] 底下，選取 [**讀取及寫入您組織的信任架構原則**]。
-1. 依序選取 [**選取**] 和 [**完成**]。
-1. 選取 [授與權限]，然後選取 [是]。 可能需要幾分鐘的時間才能完全傳播許可權。
-
-#### <a name="app-registrations-preview"></a>[應用程式註冊 (預覽)](#tab/app-reg-preview/)
-
-1. 選取 [**應用程式註冊（預覽）** ]，然後選取應可存取 Microsoft Graph API 的 web 應用程式。 例如， *managementapp1*。
-1. 在 [管理] 之下選取 [API 權限]。
-1. 在 [已設定的權限] 底下，選取 [新增權限]。
-1. 選取 [ **Microsoft api** ] 索引標籤，然後選取 [ **Microsoft Graph**]。
-1. 選取 [應用程式權限]。
-1. 展開 [**原則**]，然後選取 [ **TrustFramework**]。
-1. 選取 [新增權限]。 依照指示，稍等幾分鐘，然後再繼續進行下一個步驟。
-1. 選取 [授與管理員同意 (您的租用戶名稱)]。
-1. 選取您目前登入的系統管理員帳戶，或使用 Azure AD B2C 租用戶中的帳戶 (該租用戶至少已指派「雲端應用程式管理員」角色) 來登入。
-1. 選取 [接受]。
-1. 選取 **[** 重新整理]，然後確認「已授與 ...」出現在 [**狀態**] 之下。 權限可能需要幾分鐘的時間來傳播。
-
-* * *
-
-### <a name="create-client-secret"></a>建立用戶端密碼
-
-若要使用 Azure AD B2C 進行驗證，您的 PowerShell 腳本必須指定您為應用程式建立的用戶端密碼。
-
-[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
+如需註冊管理應用程式的指示，請參閱[使用 Microsoft Graph 管理 Azure AD B2C](microsoft-graph-get-started.md)。
 
 ## <a name="configure-an-azure-repo"></a>設定 Azure 存放庫
 
@@ -200,7 +165,7 @@ ms.locfileid: "77463137"
 
         ```PowerShell
         # After
-        -ClientID $(clientId) -ClientSecret $(clientSecret) -TenantId $(tenantId) -PolicyId B2C_1A_TrustFrameworkBase -PathToFile $(System.DefaultWorkingDirectory)/contosob2cpolicies/B2CAssets/TrustFrameworkBase.xml
+        -ClientID $(clientId) -ClientSecret $(clientSecret) -TenantId $(tenantId) -PolicyId B2C_1A_TrustFrameworkBase -PathToFile $(System.DefaultWorkingDirectory)/policyRepo/B2CAssets/TrustFrameworkBase.xml
         ```
 
 1. 選取 [**儲存**] 以儲存代理程式作業。

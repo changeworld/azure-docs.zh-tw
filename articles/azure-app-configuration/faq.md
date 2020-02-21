@@ -1,31 +1,26 @@
 ---
-title: Azure 應用程式組態常見問題 |Microsoft Docs
+title: Azure 應用程式組態常見問題
 description: 關於 Azure 應用程式組態的常見問題
 services: azure-app-configuration
-documentationcenter: ''
 author: lisaguthrie
-manager: maiye
-editor: ''
-ms.assetid: ''
 ms.service: azure-app-configuration
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 02/19/2020
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: 4bcd8f042563fa381832fd629061a822f71e844a
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 60ba0a7723861d6e642a23418dda6a1daa57f14e
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467584"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523487"
 ---
 # <a name="azure-app-configuration-faq"></a>Azure 應用程式組態常見問題
 
-本文解決有關 Azure 應用程式組態的常見問題。
+本文會回答有關 Azure 應用程式組態的常見問題。
 
 ## <a name="how-is-app-configuration-different-from-azure-key-vault"></a>應用程式組態與 Azure Key Vault 有何不同？
 
-應用程式組態是針對一組不同的使用案例而設計的：它可協助開發人員管理應用程式設定，並控制功能的可用性。 它的目的是要簡化處理複雜設定資料的許多工。
+應用程式組態可協助開發人員管理應用程式設定，並控制功能的可用性。 它的目的是要簡化處理複雜設定資料的許多工。
 
 應用程式組態支援：
 
@@ -36,7 +31,7 @@ ms.locfileid: "77467584"
 - 特殊化的管理作業
 - 功能管理使用者介面
 
-應用程式組態是 Key Vault 的互補，而兩者應該在大部分的應用程式部署中並存使用。
+應用程式組態補充 Key Vault，而這兩者應該在大部分的應用程式部署中並存使用。
 
 ## <a name="should-i-store-secrets-in-app-configuration"></a>我應該將秘密儲存在應用程式組態嗎？
 
@@ -46,7 +41,7 @@ ms.locfileid: "77467584"
 
 ## <a name="does-app-configuration-encrypt-my-data"></a>應用程式組態加密我的資料嗎？
 
-是。 應用程式組態會加密它所保留的所有金鑰值，並將網路通訊加密。 金鑰名稱和標籤會用來做為抓取設定資料的索引，而且不會加密。
+是的。 應用程式組態會加密它所保留的所有金鑰值，並將網路通訊加密。 金鑰名稱和標籤會用來做為抓取設定資料的索引，而且不會加密。
 
 ## <a name="how-is-app-configuration-different-from-azure-app-service-settings"></a>應用程式組態與 Azure App Service 設定有何不同？
 
@@ -62,7 +57,7 @@ Azure App Service 可讓您定義每個 App Service 實例的應用程式設定�
 
 ## <a name="how-should-i-store-configurations-for-multiple-environments-test-staging-production-and-so-on"></a>如何儲存多個環境的設定（測試、預備、生產等等）？
 
-目前，您可以控制誰可以存取每個商店層級的應用程式組態。 針對每個需要不同許可權的環境使用個別的存放區。 這種方法可為您提供最佳的安全性隔離。
+您可以控制誰可以存取每個商店層級的應用程式組態。 針對每個需要不同許可權的環境使用個別的存放區。 這種方法可提供最佳的安全性隔離。
 
 ## <a name="what-are-the-recommended-ways-to-use-app-configuration"></a>使用應用程式組態的建議方式為何？
 
@@ -70,9 +65,14 @@ Azure App Service 可讓您定義每個 App Service 實例的應用程式設定�
 
 ## <a name="how-much-does-app-configuration-cost"></a>應用程式組態的成本是多少？
 
-有兩個定價層：1）免費層和2）標準層。
+定價層有兩種： 
 
-如果您在引進標準層之前建立了存放區，它會在公開上市時自動移至免費層。 如果符合您的需求，您可以選擇升級至標準層，或維持在免費層。
+- 免費層
+- 標準層。
+
+如果您在引進標準層之前建立了存放區，它會在公開上市時自動移至免費層。 您可以選擇升級至標準層，或保留在免費層。
+
+您無法將存放區從標準層降級至免費層。 您可以在免費層中建立新的存放區，然後將設定資料匯入該存放區。
 
 ## <a name="which-app-configuration-tier-should-i-use"></a>應該使用哪個應用程式組態層？
 

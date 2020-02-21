@@ -6,7 +6,7 @@ documentationcenter: ''
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: app-provisioning
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfc5c24b1ba3d623e148e0da5b38a869d056996a
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 7003899b59e409a785c3a50e89aae6674e377b4d
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367816"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77522590"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>在 Azure Active Directory 中自訂 SaaS 應用程式的使用者布建屬性對應
 
@@ -111,7 +111,7 @@ Azure AD 布建服務可以部署在「greenfield」案例中（使用者不會�
 
 - Salesforce
 - ServiceNow
-- Workday
+- 工作日
 - Azure Active Directory （[REST API Microsoft Graph 支援1.0 版參考](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)和自訂目錄延伸模組）
 - 支援 [SCIM 2.0](https://tools.ietf.org/html/rfc7643) 的應用程式，定義於[核心結構描述](https://tools.ietf.org/html/rfc7643)中的屬性必須新增至此處
 

@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2019
-ms.openlocfilehash: b60b117b10ac9ade6f685acf788e942ff7a2c93c
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 39eacbb9a87fa18cc6ef92e319fbfbd3e415337b
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188777"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525510"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>在容器和資料庫中佈建輸送量
 
@@ -60,11 +60,10 @@ Azure Cosmos 資料庫是一組容器的管理單位。 資料庫是由一組無
 
 如果邏輯分割區上的工作負載所取用的輸送量超過配置給特定邏輯分割區的輸送量時，您的作業將會受到速率限制。 發生速率限制時，您可以增加整個資料庫的輸送量，或重試作業。 如需有關分割的詳細資訊，請參閱[邏輯分割區](partition-data.md)。
 
-共用輸送量資料庫中的容器會共用配置給該資料庫的輸送量（RU/秒）。 在共用輸送量資料庫中：
+共用輸送量資料庫中的容器會共用配置給該資料庫的輸送量（RU/秒）。 在資料庫上，最多可以有四個容器，而且至少有 400 RU/秒。 前四個容器之後的每個新容器都需要額外 100 RU/秒的最小值。 例如，如果您有包含八個容器的共用輸送量資料庫，資料庫上的最小 RU/秒將是 800 RU/秒。
 
-* 在資料庫上，最多可以有四個容器，而且至少有 400 RU/秒。 前四個容器之後的每個新容器都需要額外 100 RU/秒的最小值。 例如，如果您有包含八個容器的共用輸送量資料庫，資料庫上的最小 RU/秒將是 800 RU/秒。
-
-* 資料庫中最多可以有25個容器。 如果您在共用輸送量資料庫中已有25個以上的容器，在容器計數小於25之前，您將無法建立其他容器。
+> [!NOTE]
+> 在共用的輸送量資料庫中，資料庫中最多可以有25個容器。 如果您在共用輸送量資料庫中已有25個以上的容器，在容器計數小於25之前，您將無法建立其他容器。
 
 如果您的工作負載牽涉到刪除和重新建立資料庫中的所有集合，建議您卸載空的資料庫，然後在建立集合之前，先重新建立新的資料庫。 下圖顯示實體分割區如何裝載一或多個屬於資料庫內不同容器的邏輯分割區：
 

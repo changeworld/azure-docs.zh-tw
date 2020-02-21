@@ -1,18 +1,19 @@
 ---
-title: 參考： DSVM 影像淘汰
-description: 影響 Azure 資料科學虛擬機器的棄用功能詳細資料（DSVM）
+title: 參考：資料科學虛擬機器影像淘汰
+titleSuffix: Azure Data Science Virtual Machine
+description: 影響 Azure 資料科學虛擬機器的棄用功能詳細資料
 author: gvashishtha
 ms.service: machine-learning
 ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 10/14/2019
 ms.topic: reference
-ms.openlocfilehash: 252f9c66034dbadaf7a2e9e6f78665c26d414deb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 71ce8519dca6fa71340b1c34fe3a6891ccf5753f
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456276"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525782"
 ---
 # <a name="reference-deprecation-of-dsvm-images"></a>參考：取代 DSVM 映射
 

@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/06/2019
-ms.openlocfilehash: 34f102b43de669b5ea03324db47ac4dfcb554133
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: eefaaa59a3dc0f0900666bc697f64e4f405a0d74
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190750"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498714"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Azure SQL Database 中的自動調整
 
@@ -82,8 +82,8 @@ Azure SQL Database 中可用的自動調整選項有：
 > [!IMPORTANT]
 > 從3月起2020，自動調整的 Azure 預設值變更將會生效，如下所示：
 > - 新的 Azure 預設值將會 FORCE_LAST_GOOD_PLAN = 已啟用，CREATE_INDEX = 已停用，且 DROP_INDEX = 已停用。
-> - 未設定自動調整喜好設定的現有伺服器會自動以新的 Azure 預設值進行設定。 這適用于目前在未定義狀態下自動調整的所有客戶。
-> - 新建立的伺服器會自動使用新的 Azure 預設值來設定（不同于先前在建立新伺服器時，自動調整設定處於未定義狀態）。
+> - 未設定自動調整喜好設定的現有伺服器會自動設定為繼承新的 Azure 預設值。 這適用于目前有未定義狀態自動調整之伺服器設定的所有客戶。
+> - 新建立的伺服器會自動設定為繼承新的 Azure 預設值（不同于先前在建立新伺服器時，自動調整設定處於未定義狀態時）。
 >
 
 在伺服器上設定自動調整選項，並繼承屬於父代伺服器的資料庫設定，是設定自動調整的建議方法，因為這可簡化大量資料庫的自動調整選項管理。

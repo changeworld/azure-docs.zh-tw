@@ -5,20 +5,20 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/24/2020
+ms.date: 01/30/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0d426fb743e6b1ce5d279544f12bcb490d529f9
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: ba579d6da8c759a4653b729f1a471efdedc2baa7
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756788"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505763"
 ---
-# <a name="passwordless-authentication-options"></a>無密碼驗證選項
+# <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory 的無密碼 authentication 選項
 
 多重要素驗證（MFA）是保護組織安全的好方法，但是使用者通常會在必須記住密碼的情況下，使額外的安全性層感到沮喪。 無密碼驗證方法更方便，因為密碼已移除，並以您擁有的內容取代，再加上您所知的東西。
 
@@ -26,7 +26,7 @@ ms.locfileid: "76756788"
 | --- | --- | --- |
 | 無密碼 | Windows 10 裝置、電話或安全性金鑰 | 生物識別或 PIN |
 
-在驗證方面，每個組織都有不同的需求。 Microsoft 提供三種無密碼的驗證選項：
+在驗證方面，每個組織都有不同的需求。 Microsoft 提供下列三種無密碼驗證選項：
 
 - Windows Hello 企業版
 - Microsoft Authenticator 應用程式
@@ -52,7 +52,7 @@ Windows Hello 企業版[規劃指南](https://docs.microsoft.com/windows/securit
 
 FIDO2 安全性金鑰是一種以 unphishable 標準為基礎的無密碼驗證方法，可採用任何形式的規格。 快速身分識別線上（FIDO）是無密碼 authentication 的開放標準。 FIDO 可讓使用者和組織利用外部安全性金鑰或裝置內建的平臺金鑰，使用標準來登入其資源，而不需要使用者名稱或密碼。
 
-對於公開預覽，員工可以使用安全性金鑰登入其已加入 Azure AD 的 Windows 10 裝置，並取得其雲端和內部部署資源的單一登入。 使用者也可以登入支援的瀏覽器。 對於安全性敏感的企業，或有不願意或無法使用其電話作為第二個因素的案例，FIDO2 安全性金鑰是很好的選擇。
+對於公開預覽，員工可以使用安全性金鑰來登入其 Azure AD 或混合式 Azure AD 加入的 Windows 10 裝置，並取得單一登入其雲端和內部部署資源。 使用者也可以登入支援的瀏覽器。 對於安全性敏感的企業，或有不願意或無法使用其電話作為第二個因素的案例，FIDO2 安全性金鑰是很好的選擇。
 
 ![使用安全性金鑰登入 Microsoft Edge](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 

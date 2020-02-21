@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 01/05/2020
+ms.date: 02/07/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bec73ee7286ea831920fc20bd46cf43c2874081
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 5048cefaae10cd55091dd72f0b73a3cf9d731a35
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77047090"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498815"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中指派 Azure AD 角色
 
@@ -33,9 +33,9 @@ Azure AD Privileged Identity Management （PIM）服務也允許特殊許可權�
 1. 以[特殊權限角色管理員](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)角色的使用者身分登入[Azure 入口網站](https://portal.azure.com/)。
 1. 開啟 **Azure AD Privileged Identity Management**。 如果您在 [總覽] 頁面頂端有橫幅，請遵循本文的 [**新版本**] 索引標籤中的指示。 否則，請依照 [**先前版本**] 索引標籤中的指示進行。
 
-    ![Azure AD 角色新版本](./media/pim-how-to-add-role-to-user/pim-new-version.png)
+  [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
-# <a name="new-versiontabnew"></a>[新版本](#tab/new)
+# <a name="new-version"></a>[新版本](#tab/new)
 
 ## <a name="assign-a-role"></a>指派角色
 
@@ -75,11 +75,11 @@ Azure AD Privileged Identity Management （PIM）服務也允許特殊許可權�
 
 1. 若要指定特定指派的持續時間，請清除核取方塊，並修改開始和/或結束日期和時間方塊。 完成時，選取 [**完成**]。
 
-    ![成員資格設定 - 日期和時間](./media/pim-resource-roles-assign-roles/resources-membership-settings-date.png)
+    ![成員資格設定 - 日期和時間](./media/pim-how-to-add-role-to-user/start-and-end-dates.png)
 
 1. 若要建立新的角色指派，**請選取 [新增]** 。 狀態通知會隨即顯示。
 
-    ![新增指派 - 通知](./media/pim-resource-roles-assign-roles/resources-new-assignment-notification.png)
+    ![新增指派 - 通知](./media/pim-how-to-add-role-to-user/assignment-notification.png)
 
 ## <a name="update-or-remove-an-existing-role-assignment"></a>更新或移除現有角色指派
 
@@ -87,23 +87,19 @@ Azure AD Privileged Identity Management （PIM）服務也允許特殊許可權�
 
 1. 開啟 **Azure AD Privileged Identity Management**。
 
-1. 選取 [Azure 資源]。
+1. 選取 [ **Azure AD 角色**]。
 
-1. 選取您想要管理的資源，例如訂用帳戶或管理群組。
-
-1. 在 [管理] 底下，選取 [**角色**] 以查看 Azure 資源的角色清單。
+1. 選取 [**角色**] 以查看 Azure AD 的角色清單。
 
 1. 選取要更新或移除的角色。
 
 1. 在 [合格角色] 或 [有效角色] 索引標籤上尋找角色指派。
 
-    ![更新或移除角色指派](./media/pim-resource-roles-assign-roles/resources-update-remove.png)
+    ![更新或移除角色指派](./media/pim-how-to-add-role-to-user/remove-update-assignments.png)
 
 1. 選取 [更新] 或 [移除] 以更新或移除角色指派。
 
-    如需有關擴充角色指派的詳細資訊，請參閱[在 Privileged Identity Management 中擴充或更新 Azure 資源角色](pim-resource-roles-renew-extend.md)。
-
-# <a name="previous-versiontabprevious"></a>[先前的版本](#tab/previous)
+# <a name="previous-version"></a>[先前的版本](#tab/previous)
 
 ## <a name="make-a-user-eligible-for-a-role"></a>讓使用者有資格獲派角色
 

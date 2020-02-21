@@ -1,5 +1,6 @@
 ---
-title: 參考： CentOS DSVM
+title: 參考： CentOS 資料科學虛擬機器
+titleSuffix: Azure Data Science Virtual Machine
 description: 包含在 CentOS 資料科學虛擬機器中的工具詳細資料
 author: gvashishtha
 ms.service: machine-learning
@@ -7,12 +8,12 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 0f71a8af2f7d2cfbfe43c0cfcc84cc7c08109c32
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: db49a9f5e0e6675d93cb58d6af9c92fac21e8b74
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493718"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525833"
 ---
 # <a name="reference-centos-linux-data-science-virtual-machine"></a>參考： CentOS （Linux）資料科學虛擬機器
 
@@ -235,7 +236,7 @@ Azure Machine Learning 是完全受控的雲端服務，可用來建置、部署
 
 ## <a name="machine-learning-tools"></a>機器學習工具
 
-DSVM 隨附了一些已預先編譯且預先安裝在本機上的機器學習工具和演算法。 其中包含：
+DSVM 隨附了一些已預先編譯且預先安裝在本機上的機器學習工具和演算法。 其中包括：
 
 * **Microsoft Cognitive Toolkit**：深度學習工具組。
 * **Vowpal Wabbit**：快速線上學習演算法。
@@ -308,7 +309,7 @@ xgboost mushroom.conf
 
 ### <a name="rattle"></a>Rattle
 
-Rattle (*R* *A*nalytical *T*ool *T*o *L*earn *E*asily) 會使用 GUI 型資料探索和模型化。 Rattle：
+Rattle （*R* *A*nalytical *t*ool *t*o *L*贏得*E*asily）使用 GUI 型資料探索和模型化。 Rattle：
 - 顯示資料的統計和視覺化摘要。
 - 轉換已可建立模型的資料。
 - 從資料建置不受監督和受監督的模型。
@@ -338,7 +339,7 @@ rattle()
 1. 選取 [評估] 索引標籤。
 1. 選取 [風險] 選項，然後選取 [執行] 以顯示兩個 [風險 (累積)] 效能繪圖。
 1. 選取 [記錄] 索引標籤，以顯示針對先前的作業產生的 R 程式碼。 (由於目前的 Rattle 版本中有錯誤，您必須在記錄的文字中，於 **Export this log# 前面插入**  字元。)
-1. 選取 [匯出] 按鈕，將名為 weather_script.R 的 R 指令碼檔案儲存到主資料夾。
+1. 選取 [匯出] 按鈕，將名為 weather_script.R 的 R 指令檔儲存到主資料夾。
 
 您可以結束 Rattle 和 R。現在，您可以修改產生的 R 指令碼。 或者，您可以照原樣使用，並且隨時執行，以便重複執行在 Rattle UI 中完成的所有動作。 這是特別適合 R 初學者的方法，他們將可在簡單的圖形化介面中快速進行分析和機器學習，同時自動產生 R 程式碼來修改或學習。
 

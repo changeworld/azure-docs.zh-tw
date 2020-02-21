@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/11/2020
-ms.openlocfilehash: 172753f6bbcc47ed8ae9061b71ca3291e95b7a33
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: a093eea8b1961482722211017174018a649e2c4f
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162849"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484837"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>自動調整 Azure HDInsight 叢集規模
 
@@ -78,7 +78,7 @@ HDInsight 服務會計算需要多少個新的背景工作節點，以符合目�
 
 ### <a name="create-a-cluster-with-load-based-autoscaling"></a>建立具有以負載為基礎之自動調整的叢集
 
-若要在叢集上使用自動調整，您必須在建立叢集時啟用 [**啟用自動**調整] 選項。 若要啟用以負載為基礎的自動調整功能，請在一般叢集建立程式中完成下列步驟：
+若要啟用以負載為基礎的自動調整功能，請在一般叢集建立程式中完成下列步驟：
 
 1. 在 [設定 **+ 定價**] 索引標籤上，選取 [**啟用自動**調整] 核取方塊。
 1. 選取 [**自動調整類型**] 下**的 [載入型**]。

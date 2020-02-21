@@ -8,16 +8,14 @@ ms.date: 01/30/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: a3d60bf38c4a9dad13dacf8ba9798c4078c1df1a
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 0386897b6cecc27781626cfecd6f1f5f8a3752e4
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049722"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524378"
 ---
-# <a name="export-your-azure-iot-central-data"></a>匯出您的 Azure IoT Central 資料
-
-
+# <a name="export-iot-data-to-destinations-in-azure"></a>將 IoT 資料匯出至 Azure 中的目的地
 
 *此主題適用於系統管理員。*
 
@@ -29,7 +27,7 @@ ms.locfileid: "77049722"
 > [!Note]
 > 當您開啟「連續資料匯出」時，只會取得從該時刻的資料。 目前，無法擷取「連續資料匯出」時的資料。 若要保留更多歷史資料，請儘早開啟「連續資料匯出」。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 您必須是 IoT Central 應用程式中的系統管理員，或具有資料匯出許可權。
 
@@ -69,7 +67,7 @@ ms.locfileid: "77049722"
     |標準|一般用途 V2|
     |標準|一般用途 V1|
     |標準|Blob 儲存體|
-    |Premium|封鎖 Blob 儲存體|
+    |高階|封鎖 Blob 儲存體|
 
 2. 在您的儲存體帳戶中建立容器。 移至您的儲存體帳戶。 在 [Blob 服務] 下，選取 [瀏覽 Blob]。 選取頂端的 [+ 容器] 以建立新的容器。
 

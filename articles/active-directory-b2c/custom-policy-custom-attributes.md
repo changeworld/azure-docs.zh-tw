@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 04cc45956fc5aedc4c14dfb138be5db02ddec500
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c2361192a612cfd92003b1e3c36e85dbbd9090bb
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847052"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482763"
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C︰在自訂設定檔編輯原則中使用自訂屬性
 
@@ -24,7 +24,7 @@ ms.locfileid: "76847052"
 
 在本文中，您會在 Azure Active Directory B2C （Azure AD B2C）目錄中建立自訂屬性。 您將使用這個新屬性，作為設定檔編輯使用者旅程圖中的自訂宣告。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 依照 [Azure Active Directory B2C：開始使用自訂原則](custom-policy-get-started.md)一文中的步驟執行。
 
@@ -34,7 +34,7 @@ ms.locfileid: "76847052"
 * 識別提供者擁有必須儲存的唯一使用者識別碼，例如 **uniqueUserGUID**。
 * 自訂使用者旅程圖需要保有使用者的狀態，例如 **migrationStatus**。
 
-Azure AD B2C 會擴充每個使用者帳戶所儲存的屬性組合。 您也可以使用 [Azure AD Graph API](manage-user-accounts-graph-api.md)讀取和寫入這些屬性。
+Azure AD B2C 會擴充每個使用者帳戶所儲存的屬性組合。 您也可以使用[MICROSOFT GRAPH API](manage-user-accounts-graph-api.md)來讀取和寫入這些屬性。
 
 擴充屬性會擴充目錄中的使用者物件結構描述。 「擴充屬性」、「自訂屬性」及「自訂宣告」等術語在本文內容中係指相同的動作。 名稱會根據內容 (例如應用程式、物件或原則) 而有所不同。
 
@@ -68,7 +68,7 @@ Azure AD B2C 會擴充每個使用者帳戶所儲存的屬性組合。 您也可
 
 ## <a name="modify-your-custom-policy-to-add-the-applicationobjectid"></a>修改您的自訂原則以新增 **ApplicationObjectId**
 
-當您依照 [Azure Active Directory B2C：開始使用自訂原則](custom-policy-get-started.md)中的步驟執行時，便已經下載並修改名為 **TrustFrameworkBase.xml**、**TrustFrameworkExtensions.xml**、**SignUpOrSignin.xml**、**ProfileEdit.xml** 及 **PasswordReset.xml** 的[範例檔案](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip) \(英文\)。 在此步驟中，您可以對那些檔案進行更多修改。
+當您依照 [Azure Active Directory B2C：開始使用自訂原則](custom-policy-get-started.md)中的步驟執行時，便已經下載並修改名為 [TrustFrameworkBase.xml](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip)、**TrustFrameworkExtensions.xml**、**SignUpOrSignin.xml**、**ProfileEdit.xml** 及 **PasswordReset.xml** 的**範例檔案** \(英文\)。 在此步驟中，您可以對那些檔案進行更多修改。
 
 * 開啟 TrustFrameworkBase.xml 檔案，並新增 `Metadata` 區段，如下列範例所示。 插入您先前為 `ApplicationObjectId` 值記錄的物件識別碼，以及為 `ClientId` 值記錄的應用程式識別碼：
 
@@ -141,7 +141,7 @@ Azure AD B2C 會擴充每個使用者帳戶所儲存的屬性組合。 您也可
 
 4. 將相同的 `ClaimType` 定義新增到 TrustFrameworkBase.xml 中。 您不需要同時在基底和擴充檔案中新增 `ClaimType` 定義。 不過，後續步驟會將 `extension_loyaltyId` 新增至基底檔案中的 **TechnicalProfiles**。 因此，原則驗證程式會在沒有它的情況下拒絕上傳基底檔案。 針對 **TrustFrameworkBase.xml** 檔案中名為 **ProfileEdit** 的使用者旅程圖，這在追蹤其執行情形時可能很有用。 在您的編輯器中搜尋具有相同名稱的使用者旅程圖。 留意到協調流程步驟 5 會叫用 **TechnicalProfileReferenceID="SelfAsserted-ProfileUpdate**。 搜尋並檢查此 **TechnicalProfile** 以熟悉流程。
 
-5. 開啟 **TrustFrameworkBase.xml** 檔案，並在 **TechnicalProfile SelfAsserted-ProfileUpdate** 中新增 `loyaltyId` 作為輸入和輸出宣告：
+5. 開啟 **TrustFrameworkBase.xml** 檔案，並在 `loyaltyId`TechnicalProfile SelfAsserted-ProfileUpdate**中新增** 作為輸入和輸出宣告：
 
     ```xml
     <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
@@ -297,7 +297,7 @@ Azure AD B2C 會擴充每個使用者帳戶所儲存的屬性組合。 您也可
 
 ## <a name="reference"></a>參考
 
-如需擴充屬性的詳細資訊，請參閱[目錄結構描述擴充 | 圖形 API 概念](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions) \(機器翻譯\) 一文。
+如需延伸模組屬性的詳細資訊，請參閱[使用延伸模組將自訂資料新增至資源](https://docs.microsoft.com/graph/extensibility-overview)一文。
 
 > [!NOTE]
 > * **TechnicalProfile** 是一個元素類型或函式，其會定義端點的名稱、中繼資料及通訊協定。 **TechnicalProfile** 會詳述識別體驗架構執行的宣告交換。 當這個函式在協調流程步驟中或從另一個 **TechnicalProfile** 被呼叫時，呼叫端會提供 **InputClaims** 和 **OutputClaims** 作為參數。

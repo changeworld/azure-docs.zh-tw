@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/11/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f3a9265c1f9a5c6c63931798718e4d0679cd126b
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 3b0e59912d740e30b0e29fb882542f1995ab6f54
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77136241"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505667"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>關於 Azure Active Directory B2C 自訂原則中的技術設定檔
 
@@ -39,7 +39,7 @@ ms.locfileid: "77136241"
 - [SAML2](saml-technical-profile.md) - 與任何 SAML 通訊協定識別提供者建立同盟。
 - [自我判斷](self-asserted-technical-profile.md) - 與使用者進行互動。 例如，收集使用者的認證以進行登入、呈現註冊頁面或密碼重設。
 - [工作階段管理](custom-policy-reference-sso.md) - 處理各種不同類型的工作階段。
-- **Application Insights**
+- [Application Insights](../azure-monitor/app/usage-overview.md)
 - 單次[密碼](one-time-password-technical-profile.md)-提供管理單次密碼的產生和驗證的支援。 
 
 ## <a name="technical-profile-flow"></a>技術設定檔流程

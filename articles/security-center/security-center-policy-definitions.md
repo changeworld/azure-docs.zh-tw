@@ -1,86 +1,39 @@
 ---
-title: Azure 資訊安全中心監控的 Azure 原則定義 | Microsoft Docs
+title: Azure 原則在 Azure 資訊安全中心中監視的定義 |Microsoft Docs
 description: 本文提供您可以在 Azure 資訊安全中心中監視的 Azure 原則定義清單。
 services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 8/22/2019
+ms.date: 02/15/2020
 ms.author: memildin
-ms.openlocfilehash: 07d45f7cafa09ef6c5341acd5ffd0914cc56e4fd
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: 0bc03385cda8752571482cc3d74c0f3887b4656a
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559252"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77506193"
 ---
 # <a name="azure-security-policies-monitored-by-security-center"></a>受資訊安全中心監視的 Azure 安全性原則
-本文提供您可以在 Azure 資訊安全中心中監視的 Azure 原則定義清單。 如需有關安全性原則的詳細資訊，請參閱[搭配使用安全性原則](tutorial-security-policy.md)。
 
-## <a name="available-security-policies"></a>可用的安全性原則
+本文提供您可以在 Azure 資訊安全中心中監視的[Azure 原則](../governance/policy/overview.md)定義和計畫清單。 如需有關安全性原則的詳細資訊，請參閱[搭配使用安全性原則](tutorial-security-policy.md)。
+
+## <a name="built-in-policy-definitions"></a>內建原則定義
 
 若要瞭解資訊安全中心所監視的內建原則，請參閱下表：
 
-| 原則 | 原則的功能 |
-| --- | --- |
-|應該啟用虛擬機器擴展集中的診斷記錄|我們建議您啟用記錄，以便在事件或入侵之後，可以使用活動記錄來進行調查。|
-|應從事件中樞命名空間移除 RootManageSharedAccessKey 以外的所有授權規則|Azure 事件中樞用戶端不應使用命名空間層級的存取原則，以提供命名空間中所有佇列和主題的存取權。 若要配合最低許可權的安全性模型，您應該在佇列和主題的實體層級建立存取原則，以提供只有特定實體的存取權。|
-|應定義事件中樞實體的授權規則|請在事件中樞的實體上，審查授權規則是否存在，以授與最低許可權的存取權。|
-|應限制具有防火牆和虛擬網路設定的儲存體帳戶存取權|稽核儲存體帳戶防火牆設定中不受限制的網路存取。 設定網路規則，讓只有來自允許的網路的應用程式可以存取儲存體帳戶。 若要允許來自特定網際網路或內部部署用戶端的連線，請授與來自特定 Azure 虛擬網路或公用網際網路 IP 位址範圍之流量的存取權。|
-|稽核自訂 RBAC 規則的使用方式|審核內建角色，例如「擁有者、參與者、讀者」，而不是自訂的角色型存取控制（RBAC）角色，這是很容易發生的錯誤。 使用自訂角色會視為例外狀況，而且需要嚴格的審查和威脅模型化。|
-|應該啟用 Azure 串流分析中的診斷記錄|審核記錄的啟用，並保留最多一年。 這會建立活動線索，以便在發生安全性事件或網路遭到入侵時進行調查。|
-|應啟用儲存體帳戶的安全傳輸|在您的儲存體帳戶中審查安全傳輸的需求。 安全傳輸這個選項會強制您的儲存體帳戶僅接受來自安全連線 (HTTPS) 的要求。 使用 HTTPS 可確保伺服器與服務之間的驗證。 它也會保護傳輸中的資料免于網路層的攻擊，例如中間人、竊聽及會話劫持。|
-|應布建 SQL server 的 Azure AD 系統管理員|針對 SQL Server 的 Azure Active Directory （Azure AD）系統管理員進行審核布建，以啟用 Azure AD 驗證。 Azure AD authentication 支援簡化的版權管理，以及資料庫使用者和其他 Microsoft 服務的集中式身分識別管理。|
-|除了 RootManageSharedAccessKey 以外的所有授權規則都應該從服務匯流排命名空間移除|Azure 服務匯流排用戶端不應使用命名空間層級的存取原則，以提供命名空間中所有佇列和主題的存取權。 若要與最低許可權的安全性模型一致，請在佇列和主題的實體層級建立存取原則，以提供僅限特定實體的存取權。|
-|應該啟用服務匯流排中的診斷記錄|審核記錄的啟用，並將其保留一年。 這會建立活動線索，以便在發生安全性事件或網路遭到入侵時進行調查。|
-|應設定 Service Fabric 中要 EncryptAndSign 的 ClusterProtectionLevel 屬性|Service Fabric 針對使用主要叢集憑證的節點對節點通訊提供三種保護層級： None、Sign 和 EncryptAndSign。 設定保護層級可確保所有節點對節點的訊息皆經過加密及數位簽署。|
-|用戶端驗證應該使用 Azure Active Directory|僅透過 Service Fabric 中的 Azure AD，來審核用戶端驗證。|
-|搜尋服務中的診斷記錄應該啟用|審核記錄的啟用，並保留最多一年。 這會建立活動線索，以便在發生安全性事件或網路遭到入侵時進行調查。|
-|應該只允許對 Redis Cache 的安全連線|Audit 僅允許透過 SSL 連線至 Azure Cache for Redis 的連線。 使用安全連線可確保伺服器與服務之間的驗證。 它也會保護傳輸中的資料免于網路層的攻擊，例如中間人、竊聽及會話劫持。|
-|應該啟用 Logic Apps 中的診斷記錄|審核記錄的啟用，並保留最多一年。 這會建立活動線索，以便在發生安全性事件或網路遭到入侵時進行調查。|
-|應該啟用 Key Vault 中的診斷記錄|審核記錄的啟用，並保留最多一年。 這會建立活動線索，以便在發生安全性事件或網路遭到入侵時進行調查。|
-|應該啟用事件中樞的診斷記錄|審核記錄的啟用，並保留最多一年。 這會建立活動線索，以便在發生安全性事件或網路遭到入侵時進行調查。|
-|應啟用 Azure Data Lake 存放區中的診斷記錄|審核記錄的啟用，並保留最多一年。 這會建立活動線索，以便在發生安全性事件或網路遭到入侵時進行調查。|
-|應該啟用 Data Lake Analytics 中的診斷記錄|審核記錄的啟用，並保留最多一年。 這會建立活動線索，以便在發生安全性事件或網路遭到入侵時進行調查。|
-|儲存體帳戶應遷移至新的 AzureRM 資源|針對您的儲存體帳戶使用 Azure Resource Manager，以提供安全性增強功能。 這些區域包括： <br>-更強的存取控制（RBAC）<br>-較佳的審核<br>-Azure Resource Manager 為基礎的部署和治理<br>-受控識別的存取權<br>-Azure Key Vault 秘密的存取權<br>-以 Azure AD 為基礎的驗證<br>-支援標記和資源群組，以便更輕鬆地管理安全性|
-|虛擬機器應遷移至新的 AzureRM 資源|使用虛擬機器的 Azure Resource Manager 來提供安全性增強功能。 這些區域包括： <br>-更強的存取控制（RBAC）<br>-較佳的審核<br>-Azure Resource Manager 為基礎的部署和治理<br>-受控識別的存取權<br>-Azure Key Vault 秘密的存取權<br>-以 Azure AD 為基礎的驗證<br>-支援標記和資源群組，以便更輕鬆地管理安全性|
-|應設定 Batch 帳戶上的計量警示規則|在 Azure Batch 帳戶上審查計量警示規則的設定，以啟用所需的度量。|
-|應啟用 Batch 帳戶中的診斷記錄|審核記錄的啟用，並保留最多一年。 這會建立活動線索，以便在發生安全性事件或網路遭到入侵時進行調查。|
-|應在自動化帳戶變數上啟用加密|當您儲存機密資料時，請務必啟用 Azure 自動化帳戶變數資產的加密。|
-|應該啟用應用程式服務中的診斷記錄|稽核應用程式中診斷記錄的啟用情形。 這會建立活動線索，以便在發生安全性事件或網路遭到入侵時進行調查。|
-|應在 SQL 資料庫上啟用透明資料加密|稽核 SQL 資料庫的透明資料加密狀態。|
-|應啟用 SQL server 審核|請在伺服器層級上，審查 SQL Audit 是否存在。|
-|\[預覽]：在 Azure 資訊安全中心中監視未加密的 SQL 資料庫|Azure 資訊安全中心會依建議監視未加密的 SQL server 或資料庫。|
-|\[預覽]：在 Azure 資訊安全中心中監視未稽核 SQL 資料庫|Azure 資訊安全中心會監視未依建議開啟 SQL 審核的 SQL server 和資料庫。|
-|\[預覽]：系統更新應該安裝在您的電腦上|Azure 資訊安全中心會依建議監視伺服器上缺少的安全性系統更新。|
-|\[預覽]： Audit 遺漏儲存體帳戶的 blob 加密|審核不使用 blob 加密的儲存體帳戶。 這僅適用于 Microsoft 儲存體資源類型，而不是其他提供者的儲存體。 Azure 資訊安全中心會依建議監視可能的網路即時存取。|
-|\[預覽]：您應該在虛擬機器上套用即時網路存取控制|Azure 資訊安全中心會依建議監視可能的網路即時存取。|
-|\[預覽]：您應該在虛擬機器上啟用彈性應用程式控制|Azure 資訊安全中心監視可能的應用程式允許清單設定。|
-|\[預覽]：必須設定虛擬機器的網路安全性群組遺失|Azure 資訊安全中心會依建議監視具有過於寬鬆規則的網路安全性群組。|
-|\[預覽]：您電腦上安全性設定中的弱點應予以補救|Azure 資訊安全中心會監視不符合所建議之設定基準的伺服器。| 
-|\[預覽]：端點保護應安裝在虛擬機器上|Azure 資訊安全中心會依建議監視未安裝 Microsoft System Center Endpoint Protection 代理程式的伺服器。|
-|\[預覽]：應該在虛擬機器上套用磁片加密|Azure 資訊安全中心會監視未依建議啟用磁片加密的虛擬機器。|
-|\[預覽]：弱點評估解決方案應補救漏洞|監視弱點評定解決方案偵測到的弱點，以及在 Azure 資訊安全中心中沒有弱點評估解決方案的 Vm （如建議）。|
-|\[預覽]：在 Azure 資訊安全中心中監視未受保護的 web 應用程式|Azure 資訊安全中心會依建議監視缺少 web 應用程式防火牆保護的 web 應用程式。|
-|\[預覽]：端點保護解決方案應該安裝在虛擬機器上|Azure 資訊安全中心會監視沒有建議的新一代防火牆保護的網路端點。|
-|\[預覽]：應補救 SQL 資料庫上的弱點|監視弱點評定掃描結果，並建議如何補救資料庫弱點。|
-|\[預覽]：您的訂用帳戶應指定最多3個擁有者|我們建議您指定最多三個訂用帳戶擁有者，以降低受到遭入侵之擁有者入侵的可能性。|
-|\[預覽]：必須有多個擁有者指派給您的訂用帳戶|我們建議您指定多個訂用帳戶擁有者，以確保系統管理員存取權是重複的。|
-|\[預覽]：必須在訂用帳戶上具有擁有者許可權的帳戶上啟用 MFA |具有擁有者許可權的所有訂用帳戶都應該啟用多重要素驗證（MFA），以避免發生帳戶或資源缺口。|
-|\[預覽]：必須在具有寫入權限的訂用帳戶上啟用 MFA|對於具有寫入權限的所有訂用帳戶，都應該啟用多重要素驗證，以避免發生帳戶或資源缺口。|
-|\[預覽]：必須在具有讀取權限的訂用帳戶上啟用 MFA|對於具有讀取權限的所有訂用帳戶，都應該啟用多重要素驗證，以避免發生帳戶或資源缺口。|
-|\[預覽]：具有擁有者許可權的已淘汰帳戶應從您的訂用帳戶中移除|具有擁有者許可權的已淘汰帳戶應從您的訂用帳戶中移除。 已封鎖已淘汰的帳戶進行登入。|
-|\[預覽]：已淘汰的帳戶應從您的訂用帳戶中移除|已取代帳戶應該從您的訂用帳戶中移除。 已封鎖已淘汰的帳戶進行登入。|
-|\[預覽]：必須從您的訂用帳戶中移除具有擁有者許可權的外部帳戶|必須從您的訂用帳戶中移除具有擁有者許可權的外部帳戶，以防止存取許可權。|
-|\[預覽]：具有寫入權限的外部帳戶應從您的訂用帳戶移除|具有寫入權限的外部帳戶應從您的訂用帳戶移除，以避免未受監視的存取。|
-|\[預覽]：應從您的訂用帳戶移除具有讀取權限的外部帳戶|具有讀取權限的外部帳戶應從您的訂用帳戶移除，以避免未受監視的存取。|
+[!INCLUDE [azure-policy-samples-policies-security-center](../../includes/azure-policy-samples-policies-security-center.md)]
 
+## <a name="built-in-policy-initiatives"></a>內建原則計畫
 
+若要瞭解資訊安全中心所監視的內建計畫，請參閱下表：
 
+[!INCLUDE [azure-policy-samples-policyset-security-center](../../includes/azure-policy-samples-policyset-security-center.md)]
 
 ## <a name="next-steps"></a>後續步驟
-在本文中，您了解到如何在資訊安全中心設定安全性原則。 若要深入瞭解資訊安全中心，請參閱下列文章。
+
+在本文中，您已瞭解資訊安全中心中 Azure 原則安全性原則定義。 若要深入瞭解資訊安全中心，請參閱下列文章。
 
 * [Azure 資訊安全中心規劃和操作指南](security-center-planning-and-operations-guide.md)：瞭解如何規劃及瞭解 Azure 資訊安全中心中的設計考慮。
 * [Azure 資訊安全中心的安全性健全狀況監視](security-center-monitoring.md)：了解如何監視 Azure 資源的健全狀況。
@@ -88,5 +41,6 @@ ms.locfileid: "74559252"
 * [使用 Azure 資訊安全中心監視合作夥伴解決方案](security-center-partner-solutions.md)：了解如何監視合作夥伴解決方案的健全狀況。
 * [Azure 資訊安全中心常見問題集](security-center-faq.md)：取得使用服務常見問題的解答。
 * [Azure 安全性部落格](https://blogs.msdn.com/b/azuresecurity/)：尋找有關 Azure 安全性與相容性的部落格文章。
+* [Azure 原則](../governance/policy/overview.md)：瞭解如何審查和管理您的 Azure 資源。
 
 若要深入瞭解 Azure 原則，請參閱[什麼是 Azure 原則？](../governance/policy/overview.md)。

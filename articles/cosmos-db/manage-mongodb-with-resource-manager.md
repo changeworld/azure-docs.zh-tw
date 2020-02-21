@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
-ms.openlocfilehash: 408f29322af2199259f59be1f2c7e891a80a6b35
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 65838c36cadba580c578677185683e27b57b1e27
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980584"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525493"
 ---
 # <a name="manage-azure-cosmos-db-mongodb-api-resources-using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 範本來管理 Azure Cosmos DB MongoDB API 資源
 
@@ -24,6 +24,8 @@ ms.locfileid: "75980584"
 > [!NOTE]
 > 帳戶名稱必須是小寫、44或較少的字元。
 > 若要更新 RU/秒，請重新提交具有已更新輸送量屬性值的範本。
+>
+> 目前，您只能使用 PowerShell、CLI 和 Resource Manager 範本，建立3.2 版本（也就是使用 `*.documents.azure.com`的格式端點） Azure Cosmos DB 適用于 MongoDB 帳戶之 API 的帳戶。 若要建立3.6 版的帳戶，請改用 Azure 入口網站。
 
 [!code-json[create-cosmos-mongo](~/quickstart-templates/101-cosmosdb-mongodb/azuredeploy.json)]
 
@@ -57,7 +59,7 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
 
 以下是一些其他資源：
 
-- [Azure Resource Manager 檔](/azure/azure-resource-manager/)
+- [Azure Resource Manager 文件](/azure/azure-resource-manager/)
 - [Azure Cosmos DB 資源提供者架構](/azure/templates/microsoft.documentdb/allversions)
 - [Azure Cosmos DB 快速入門範本](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
 - [針對常見 Azure Resource Manager 部署錯誤進行疑難排解](../azure-resource-manager/templates/common-deployment-errors.md)
