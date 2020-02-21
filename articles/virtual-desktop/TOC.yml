@@ -154,3 +154,5 @@
       href: 'https://windowsvirtualdesktop.uservoice.com/forums/921118-general'
     - name: Microsoft 365 藍圖
       href: 'https://aka.ms/wvdroadmap'
+    - name: Azure 資源管理員範本
+      href: 'https://github.com/Azure/RDS-Templates/tree/master/wvd-templates'
