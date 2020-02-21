@@ -2,17 +2,17 @@
 title: 部署已啟用 GPU 的容器實例
 description: 瞭解如何部署 Azure 容器實例，以使用 GPU 資源來執行計算密集型容器應用程式。
 ms.topic: article
-ms.date: 04/17/2019
-ms.openlocfilehash: ea3b0ccba2d84487356f4bbd404cec3af1d0979a
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.date: 02/19/2020
+ms.openlocfilehash: 0f1d21c62be5d7ae099faa2c6fcc440829bb451f
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484189"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525281"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>部署使用 GPU 資源的容器執行個體
 
-若要在 Azure 容器執行個體上執行某些計算密集型工作負載，請部署包含「GPU 資源」[](container-instances-container-groups.md)的*容器群組*。 群組中的容器執行個體可以存取一或多個 NVIDIA Tesla GPU，同時執行容器工作負載，例如 CUDA 和深度學習應用程式。
+若要在 Azure 容器執行個體上執行某些計算密集型工作負載，請部署包含「GPU 資源」的[容器群組](container-instances-container-groups.md)。 群組中的容器執行個體可以存取一或多個 NVIDIA Tesla GPU，同時執行容器工作負載，例如 CUDA 和深度學習應用程式。
 
 本文說明當您使用[YAML](container-instances-multi-container-yaml.md)檔或[Resource Manager 範本](container-instances-multi-container-group.md)部署容器群組時，如何新增 GPU 資源。 當您使用 Azure 入口網站部署容器實例時，也可以指定 GPU 資源。
 
@@ -29,22 +29,25 @@ ms.locfileid: "74484189"
 
 **支援的 OS 類型**：僅限 Linux
 
-**其他限制**：將容器群組部署至[虛擬網路](container-instances-vnet.md)時，無法使用 GPU 資源。
+**其他限制**：當容器群組是部署到[虛擬網路](container-instances-vnet.md)中時，就無法使用 GPU 資源。
 
 ## <a name="about-gpu-resources"></a>關於 GPU 資源
+
+> [!IMPORTANT]
+> 只有在要求時，才可以使用 GPU 資源。 若要要求存取 GPU 資源，請提交[Azure 支援要求][azure-support]。
 
 ### <a name="count-and-sku"></a>計數和 SKU
 
 若要在容器執行個體中使用 GPU，請使用下列資訊來指定「GPU 資源」：
 
-* **計數**-gpu 數目： **1**、 **2**或**4**。
-* **SKU** -GPU Sku： **K80**、 **P100**或**V100**。 每個 SKU 都對應到下列其中一個啟用 GPU 的 Azure VM 系列的 NVIDIA Tesla GPU：
+* **計數** - GPU 數目：**1**、**2** 或 **4**。
+* **SKU** - GPU SKU：**K80**、**P100** 或 **V100**。 每個 SKU 都對應到下列其中一個啟用 GPU 的 Azure VM 系列的 NVIDIA Tesla GPU：
 
   | SKU | VM 系列 |
   | --- | --- |
-  | K80 | [NC](../virtual-machines/linux/sizes-gpu.md#nc-series) |
-  | P100 | [NCv2](../virtual-machines/linux/sizes-gpu.md#ncv2-series) |
-  | V100 | [NCv3](../virtual-machines/linux/sizes-gpu.md#ncv3-series) |
+  | K80 | [NC](../virtual-machines/nc-series.md) |
+  | P100 | [NCv2](../virtual-machines/ncv2-series.md) |
+  | V100 | [NCv3](../virtual-machines/ncv3-series.md) |
 
 [!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]
 
@@ -62,7 +65,7 @@ ms.locfileid: "74484189"
 
   我們會在此階段支援 CUDA 9.0。 例如，您可以將下列基底映射用於 Docker 檔案：
   * [nvidia/cuda： 9.0-base-ubuntu 16.04](https://hub.docker.com/r/nvidia/cuda/)
-  * [tensorflow/tensorflow： 1.12.0-gpu-py3](https://hub.docker.com/r/tensorflow/tensorflow)
+  * [tensorflow/tensorflow：1.12.0-gpu-py3](https://hub.docker.com/r/tensorflow/tensorflow)
     
 ## <a name="yaml-example"></a>YAML 範例
 
@@ -206,7 +209,7 @@ Adding run metadata for 999
 
 ## <a name="clean-up-resources"></a>清除資源
 
-因為使用 GPU 資源很昂貴，所以請確保您的容器不會非預期地長時間執行。 在 Azure 入口網站中監視您的容器，或使用[az container show][az-container-show]命令來檢查容器群組的狀態。 例如︰
+因為使用 GPU 資源很昂貴，所以請確保您的容器不會非預期地長時間執行。 在 Azure 入口網站中監視您的容器，或使用[az container show][az-container-show]命令來檢查容器群組的狀態。 例如:
 
 ```azurecli
 az container show --resource-group myResourceGroup --name gpucontainergroup --output table
@@ -230,6 +233,7 @@ az container delete --resource-group myResourceGroup --name gpucontainergrouprm 
 
 <!-- LINKS - External -->
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
+[azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest
 
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container#az-container-create

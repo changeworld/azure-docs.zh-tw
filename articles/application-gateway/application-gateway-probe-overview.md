@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 01/28/2020
+ms.date: 02/20/2020
 ms.author: victorh
-ms.openlocfilehash: 5c25f591d1011d2efd66851cafd67ceef8b56637
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: a4427c05d16a42879d37fdbd2e8b8be9095fcc9b
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766836"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505905"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>應用程式閘道健全狀況監視概觀
 
@@ -59,7 +59,7 @@ $match = New-AzApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 
 ### <a name="default-health-probe-settings"></a>預設的健全狀況探查設定
 
-| 探查屬性 | 值 | 說明 |
+| 探查屬性 | 值 | 描述 |
 | --- | --- | --- |
 | 探查 URL |http://127.0.0.1:\<port\>/ |URL 路徑 |
 | 間隔 |30 |在傳送下一個健康情況探查之前的等候時間，以秒為單位。|
@@ -85,11 +85,11 @@ $match = New-AzApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 
 下表提供自訂健全狀況探查的屬性定義。
 
-| 探查屬性 | 說明 |
+| 探查屬性 | 描述 |
 | --- | --- |
 | 名稱 |探查的名稱。 此名稱用來在後端 HTTP 設定中指出探查。 |
 | 通訊協定 |用來傳送探查的通訊協定。 探查會使用後端 HTTP 設定中定義的通訊協定 |
-| 主機 |用來傳送探查的主機名稱。 只有當應用程式閘道上設定多站台時適用，否則請使用 '127.0.0.1'。 此值與 VM 主機名稱不同。 |
+| Host |用來傳送探查的主機名稱。 只有當應用程式閘道上設定多站台時適用，否則請使用 '127.0.0.1'。 此值與 VM 主機名稱不同。 |
 | Path |探查的相對路徑。 有效路徑的開頭為 '/'。 |
 | 間隔 |探查間隔 (秒)。 這個值是兩個連續探查之間的時間間隔。 |
 | 逾時 |探查逾時 (秒)。 如果在此超時期間內未收到有效的回應，則會將探查標示為失敗。  |
@@ -101,9 +101,11 @@ $match = New-AzApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 
 ## <a name="nsg-considerations"></a>NSG 考量
 
-如果應用程式閘道子網上有網路安全性群組（NSG），則必須在應用程式閘道子網上開啟埠範圍65503-65534，以供輸入流量使用。 需要這些連接埠，後端健康狀態 API 才能運作。
+您必須允許應用程式閘道 v1 SKU 的 TCP 埠65503-65534 上的連入網際網路流量，以及使用目的地子網做為**Any**和 Source as **GatewayManager**服務標籤的 v2 sku 的 tcp 埠65200-65535。 Azure 基礎結構通訊需要此連接埠範圍。
 
-此外，不可封鎖輸出網際網路連線，且必須允許來自 AzureLoadBalancer 標記的輸入流量。
+此外，無法封鎖輸出網際網路連線，且必須允許來自**AzureLoadBalancer**標記的輸入流量。
+
+如需詳細資訊，請參閱[應用程式閘道設定總覽](configuration-overview.md#network-security-groups-on-the-application-gateway-subnet)。
 
 ## <a name="next-steps"></a>後續步驟
 在了解應用程式閘道的健全狀態監視之後，您可以在 Azure 入口網站中[自訂健全狀態探查](application-gateway-create-probe-portal.md)，或使用 PowerShell 和 Azure Resource Manager 部署模型設定[自訂健全狀態探查](application-gateway-create-probe-ps.md)。

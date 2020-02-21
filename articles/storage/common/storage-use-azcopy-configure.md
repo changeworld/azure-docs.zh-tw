@@ -8,12 +8,12 @@ ms.date: 01/28/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 00ce40e24a01b765419186a609ecf19ce53c772b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: d2cb40d7510e46539db46bdb61ec2d64c0fd1ec7
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905271"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526490"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>設定、優化和疑難排解 AzCopy
 
@@ -30,7 +30,7 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 blob �
 
 若要設定 AzCopy 的 proxy 設定，請設定 `https_proxy` 環境變數。 如果您在 Windows 上執行 AzCopy，AzCopy 會自動偵測 proxy 設定，因此您不需要在 Windows 中使用此設定。 如果您選擇在 Windows 中使用此設定，將會覆寫自動偵測。
 
-| 作業系統 | Command  |
+| 作業系統 | 命令  |
 |--------|-----------|
 | **Windows** | 在命令提示字元中，請使用：`set https_proxy=<proxy IP>:<proxy port>`<br> 在 PowerShell 中，請使用：`$env:https_proxy="<proxy IP>:<proxy port>"`|
 | **Linux** | `export https_proxy=<proxy IP>:<proxy port>` |
@@ -38,7 +38,7 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 blob �
 
 目前，AzCopy 不支援需要使用 NTLM 或 Kerberos 進行驗證的 proxy。
 
-## <a name="optimize-performance"></a>將效能最佳化
+## <a name="optimize-performance"></a>效能最佳化
 
 您可以基準效能，然後使用命令和環境變數來尋找效能和資源耗用量之間的最佳取捨。
 
@@ -85,7 +85,7 @@ azcopy jobs resume <job-id> --cap-mbps 10
 
 如果您的電腦的 Cpu 少於5個，則此變數的值會設定為 `32`。 否則，預設值等於16乘以 Cpu 的數目。 此變數的預設值上限為 `3000`，但您可以手動將此值設定為較高或較低。 
 
-| 作業系統 | Command  |
+| 作業系統 | 命令  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_CONCURRENCY_VALUE=<value>` |
 | **Linux** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
@@ -100,7 +100,7 @@ azcopy jobs resume <job-id> --cap-mbps 10
 設定 `AZCOPY_BUFFER_GB` 環境變數，以指定您想要 AzCopy 在下載和上傳檔案時使用的系統記憶體數量上限。
 以 gb 為單位表示此值。
 
-| 作業系統 | Command  |
+| 作業系統 | 命令  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_BUFFER_GB=<value>` |
 | **Linux** | `export AZCOPY_BUFFER_GB=<value>` |
@@ -121,6 +121,8 @@ AzCopy 會為每個作業建立記錄檔和計畫檔案。 您可以使用記錄
 記錄檔將包含失敗的狀態（`UPLOADFAILED`、`COPYFAILED`和 `DOWNLOADFAILED`）、完整路徑，以及失敗的原因。
 
 根據預設，記錄檔和方案檔位於 Windows 上的 `%USERPROFILE%\.azcopy` 目錄或 Mac 和 Linux 上的 `$HOME$\.azcopy` 目錄，但您可以視需要變更該位置。
+
+相關的錯誤不一定是出現在檔案中的第一個錯誤。 對於像是網路錯誤、超時和伺服器忙碌錯誤等錯誤，AzCopy 會重試最多20次，而且通常會成功重試進程。  您所看到的第一個錯誤，可能是已成功重試的無害問題。  因此，請不要查看檔案中的第一個錯誤，而是尋找接近 `UPLOADFAILED`、`COPYFAILED`或 `DOWNLOADFAILED`的錯誤。 
 
 > [!IMPORTANT]
 > 提交要求以 Microsoft 支援服務（或針對任何協力廠商的問題進行疑難排解）時，請共用您要執行之命令的編校版本。 這可確保 SAS 不會意外與任何人共用。 您可以在記錄檔開頭找到編校的版本。
@@ -181,7 +183,7 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 
 使用任何這些命令。
 
-| 作業系統 | Command  |
+| 作業系統 | 命令  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_JOB_PLAN_LOCATION=<value>` |
 | **Linux** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
@@ -193,7 +195,7 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 
 使用任何這些命令。
 
-| 作業系統 | Command  |
+| 作業系統 | 命令  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_LOG_LOCATION=<value>` |
 | **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |

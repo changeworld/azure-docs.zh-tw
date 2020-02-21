@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/02/2020
-ms.openlocfilehash: ef136345c7c41c720efd3c79923b6ce646de41e2
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: d1723b6c5d56554fbff576f6a07e37455845bda4
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75642160"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498636"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>如何使用 Azure 認知搜尋中的索引子為 Cosmos DB 資料編制索引 
 
@@ -29,13 +29,13 @@ ms.locfileid: "75642160"
 
 由於術語可能會造成混淆，值得注意的是， [Azure Cosmos DB 索引](https://docs.microsoft.com/azure/cosmos-db/index-overview)和[Azure 認知搜尋索引](search-what-is-an-index.md)是不同的作業，每個服務都是唯一的。 開始進行 Azure 認知搜尋索引之前，您的 Azure Cosmos DB 資料庫必須已經存在並包含資料。
 
-Azure 認知搜尋中的 Cosmos DB 索引子可以編目透過不同通訊協定存取的[Azure Cosmos DB 專案](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items)。
+Azure 認知搜尋中的 Cosmos DB 索引子可以編目透過不同通訊協定存取的[Azure Cosmos DB 專案](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items)。 
 
-+ 針對正式推出的[SQL API](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference)，您可以使用[入口網站](#cosmos-indexer-portal)、 [REST API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)或[.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)。
++ 針對正式推出的[SQL API](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference)，您可以使用[入口網站](#cosmos-indexer-portal)、 [REST API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)或[.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)來建立資料來源和索引子。
 
-+ 針對[MONGODB api （預覽）](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction)和[Gremlin api （預覽）](https://docs.microsoft.com/azure/cosmos-db/graph-introduction)，您可以在[建立索引子（REST）](https://docs.microsoft.com/rest/api/searchservice/create-indexer)呼叫上使用[入口網站](#cosmos-indexer-portal)或[REST API 版本 2019-05-06-preview](search-api-preview.md)來建立索引子。
++ 針對[MONGODB API （預覽）](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction)，您可以使用[入口網站](#cosmos-indexer-portal)或[REST API 版本 2019-05-06-preview](search-api-preview.md)來建立資料來源和索引子。
 
-+ 針對[Cassandra API （預覽）](https://docs.microsoft.com/azure/cosmos-db/cassandra-introduction)，您只能在[建立索引子（REST）](https://docs.microsoft.com/rest/api/searchservice/create-indexer)呼叫上使用[REST API 版本 2019-05-06-preview](search-api-preview.md) 。
++ 針對[Cassandra API （預覽）](https://docs.microsoft.com/azure/cosmos-db/cassandra-introduction)和[Gremlin API （預覽）](https://docs.microsoft.com/azure/cosmos-db/graph-introduction)，您只能使用[REST API 版本 2019-05-06-preview](search-api-preview.md)來建立資料來源和索引子。
 
 
 > [!Note]
@@ -173,7 +173,7 @@ Azure 認知搜尋中的 Cosmos DB 索引子可以編目透過不同通訊協定
 
 要求的主體包含資料來源定義，其中應包含下列欄位：
 
-| 欄位   | 說明 |
+| 欄位   | 描述 |
 |---------|-------------|
 | **name** | 必要。 選擇任何名稱來表示您的資料來源物件。 |
 |**type**| 必要。 必須是 `cosmosdb`。 |

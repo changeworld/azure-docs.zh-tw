@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/04/2019
 ms.author: memildin
-ms.openlocfilehash: 0096bccf76e81f2bca1a449cea2474cb5266fabc
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: f4f6cf01502070ea63eaf0083aba33ff213534a4
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443579"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500255"
 ---
 # <a name="the-enhanced-secure-score-preview"></a>增強的安全分數（預覽） 
 
@@ -65,15 +65,15 @@ Azure 資訊安全中心有兩個主要目標：協助您瞭解目前的安全�
 
 上述螢幕擷取畫面中的「套用系統更新」安全性控制可能會顯示「2% （1點）」。 這表示，如果您補救此控制項中的所有建議，您的分數會增加2% （在此案例中為一個點）。 為了簡單起見，建議清單中 [可能增加] 資料行的值會舍入為整數。 工具提示會顯示精確的值：
 
+* **最大分數**-完成控制項內的所有建議可獲得的點數上限。 控制項的最大分數表示該控制項的相對重要性。 使用 [最大分數] 值來分級要優先處理的問題。 
 * **可能的增加**-您可以在控制項內使用的剩餘點數。 若要將這些點新增至您的安全分數，請修復所有控制項的建議。 在上述範例中，控制項所顯示的一個點實際上是0.96 點。
 * **目前分數**-此控制項的目前分數。 每個控制項都有貢獻總分數。 在此範例中，控制項會對總計貢獻5.04 點。 
-* **最大分數**-前兩個值的總和。
 
 ### <a name="calculations---understanding-your-score"></a>計算-瞭解您的分數
 
 |計量|公式和範例|
 |-|-|
-|**安全性控制項的目前分數**|<br>用來計算安全性控制項目前分數的 ![方程式](media/secure-score-security-controls/security-control-scoring-equation.png)<br><br>每個個別的安全性控制都會貢獻安全性分數。 受此控制項中的建議影響的每個資源，都是針對控制項的目前分數。 每個控制項的目前分數是控制項*內*資源狀態的量值。<br>![工具提示，顯示在計算安全性控制項的目前分數時所使用的值](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>在此範例中，最大分數6會除以78，因為這是狀況良好和狀況不良資源的總和。<br>6/78 = 0.0769<br>乘以狀況良好資源（74）的數目，會產生目前的分數：<br>0.0769 * 74 = **5.69**<br><br>|
+|**安全性控制項的目前分數**|<br>用來計算安全性控制項目前分數的 ![方程式](media/secure-score-security-controls/security-control-scoring-equation.png)<br><br>每個個別的安全性控制都會貢獻安全性分數。 受此控制項中的建議影響的每個資源，都是針對控制項的目前分數。 每個控制項的目前分數是控制項*內*資源狀態的量值。<br>![工具提示，顯示在計算安全性控制項的目前分數時所使用的值](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>在此範例中，最大分數6會除以78，因為這是狀況良好和狀況不良資源的總和。<br>6/78 = 0.0769<br>乘以狀況良好的資源數目（4）會導致目前的分數：<br>0.0769 * 4 = **0.31**<br><br>|
 |**安全分數**<br>單一訂用帳戶|<br>![用於計算目前安全分數的方程式](media/secure-score-security-controls/secure-score-equation.png)<br><br>![已啟用所有控制項的單一訂用帳戶安全分數](media/secure-score-security-controls/secure-score-example-single-sub.png)<br>在此範例中，會有單一訂用帳戶，其中包含所有可用的安全性控制項（可能的最大分數為60點）。 分數顯示可能60的28點，其餘的32點會反映在安全性控制項的「潛在分數增加」圖中。<br>![控制項清單和可能的分數增加](media/secure-score-security-controls/secure-score-example-single-sub-recs.png)|
 |**安全分數**<br>多重訂閱|<br>新增所有訂用帳戶中所有資源的目前分數，然後計算會與單一訂用帳戶相同<br><br>在查看多個訂用帳戶時，安全分數會評估所有已啟用原則中的所有資源，並將其對每個安全性控制的最大分數所造成的影響<br>為已啟用所有控制項的多個訂用帳戶 ![安全分數](media/secure-score-security-controls/secure-score-example-multiple-subs.png)<br>結合的分數**不**是平均值;而是所有訂用帳戶上所有資源狀態的評估狀態。<br>在這裡，如果您移至 [建議] 頁面並加上可能的可用點，您會發現這是目前分數（24）和可用的最大分數（60）之間的差異。|
 ||||

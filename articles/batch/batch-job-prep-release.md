@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 5163c0cd5584848058620f76f77d9efbb6cef9c1
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 7103daa4a943edfd8d05333f413245cebaf8f4af
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025141"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524251"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>在 Batch 計算節點上執行作業準備和作業解除工作
 
@@ -58,7 +58,7 @@ Batch 作業通常需要一組常用的資料做為作業工作的輸入。 例�
 > 
 
 ## <a name="job-preparation-task"></a>作業準備工作
-執行作業的工作之前，Batch 會在排定執行工作的每個計算節點上執行作業準備工作。 依預設，Batch 服務會等作業準備工作完成，才執行節點上排定的工作。 不過，您可以設定服務不要等待。 如果節點重新啟動，作業準備工作會再次執行，但您也可以停用此行為。
+執行作業的工作之前，Batch 會在排定執行工作的每個計算節點上執行作業準備工作。 依預設，Batch 服務會等作業準備工作完成，才執行節點上排定的工作。 不過，您可以設定服務不要等待。 如果節點重新啟動，作業準備工作會再次執行，但您也可以停用此行為。 如果您的作業已設定作業準備工作和作業管理員工作，則作業準備工作會在作業管理員工作之前執行，就如同所有其他工作一樣。 作業準備工作一律會先執行。
 
 作業準備工作只會在排定執行工作的節點上執行。 這可避免未指派工作的節點執行不必要的準備工作。 這種情況會發生在當作業的工作數目小於集區中的節點數目時。 此外，也適用於已啟用 [並行工作執行](batch-parallel-node-tasks.md) 時，而如果作業計數小於可能的並行工作總數，則會讓一些節點閒置。 藉由不在閒置的節點上執行作業準備工作，您在資料傳輸費用上可以花費更少金錢。
 

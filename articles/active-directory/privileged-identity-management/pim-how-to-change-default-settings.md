@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 02/05/2020
+ms.date: 02/07/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a409d71ff3eae3bc62527a0669a74696246a50cd
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 77132ae9a10eda7170ac56f2b7c65a3ebcde8d6d
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048077"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77499011"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>在 Privileged Identity Management 中設定 Azure AD 角色設定
 
@@ -32,11 +32,11 @@ ms.locfileid: "77048077"
 1. 以[特殊權限角色管理員](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)角色的使用者身分登入[Azure 入口網站](https://portal.azure.com/)。
 1. 開啟 **Azure AD Privileged Identity Management**。 如果您在 [總覽] 頁面頂端有橫幅，請遵循本文的 [**新版本**] 索引標籤中的指示。 否則，請依照 [**先前版本**] 索引標籤中的指示進行。
 
-    ![Azure AD 角色新版本](./media/pim-how-to-add-role-to-user/pim-new-version.png)
+  [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 請遵循這篇文章中的步驟，核准或拒絕 Azure AD 角色的要求。
 
-# <a name="new-versiontabnew"></a>[新版本](#tab/new)
+# <a name="new-version"></a>[新版本](#tab/new)
 
 ## <a name="open-role-settings"></a>開啟角色設定
 
@@ -46,15 +46,15 @@ ms.locfileid: "77048077"
 gt
 1. 開啟**Azure AD Privileged Identity Management** &gt; **Azure AD**角色 &gt;**角色設定**。
 
-    ![列出 Azure 資源角色的 [角色設定] 頁面](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
+    ![列出 Azure AD 角色的角色設定頁面](./media/pim-how-to-change-default-settings/role-settings.png)
 
 1. 選取您要設定其設定的角色。
 
-    ![列出數個指派和啟用設定的角色設定詳細資料頁面](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
+    ![列出數個指派和啟用設定的角色設定詳細資料頁面](./media/pim-how-to-change-default-settings/role-settings-page.png)
 
 1. 選取 [**編輯**] 以開啟 [角色設定] 頁面。
 
-    ![[編輯角色設定] 頁面，其中包含更新指派和啟用設定的選項](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
+    ![[編輯角色設定] 頁面，其中包含更新指派和啟用設定的選項](./media/pim-how-to-change-default-settings/role-settings-edit.png)
 
     在每個角色的 [角色設定] 窗格上，有許多您可以設定的設定。
 
@@ -66,18 +66,18 @@ gt
 
 | | |
 | --- | --- |
-| **允許永久合格的指派** | 資源管理員可以指派永久的合格指派。 |
-| **合格指派的有效期限** | 資源管理員可以要求所有合格指派有指定的開始和結束日期。 |
+| **允許永久合格的指派** | 全域管理員和特殊許可權角色管理員可以指派永久的合格指派。 |
+| **合格指派的有效期限** | 全域管理員和特殊許可權角色管理員可以要求所有合格指派都具有指定的開始和結束日期。 |
 
 此外，您可以從下列**有效**指派持續時間選項中選擇一個：
 
 | | |
 | --- | --- |
-| **允許永久有效的指派** | 資源管理員可以指派永久的主動指派。 |
-| **有效指派的有效期限** | 資源管理員可以要求所有有效指派有指定的開始和結束日期。 |
+| **允許永久有效的指派** | 全域管理員和特殊許可權角色管理員可以指派永久的主動指派。 |
+| **有效指派的有效期限** | 全域管理員和特殊許可權角色管理員可以要求所有作用中的指派都具有指定的開始和結束日期。 |
 
 > [!NOTE]
-> 資源管理員可以更新所有具有指定結束日期的指派。 此外，使用者也可以起始自助要求，以[延長或更新角色指派](pim-resource-roles-renew-extend.md)。
+> 具有指定結束日期的所有指派都可以由全域管理員和特殊許可權角色管理員進行更新。 此外，使用者也可以起始自助要求，以[延長或更新角色指派](pim-resource-roles-renew-extend.md)。
 
 ## <a name="require-multi-factor-authentication"></a>需要多重要素驗證
 
@@ -87,13 +87,13 @@ Privileged Identity Management 可針對兩個不同的案例選擇性地強制�
 
 在某些情況下，您可能會想要在短時間內將使用者指派給某個角色（例如一天）。 在此情況下，指派的使用者不需要要求啟用。 在此案例中，當使用者使用其角色指派時，Privileged Identity Management 無法強制執行多重要素驗證，因為它們已在角色中從指派的時間開始生效。
 
-若要確保資源管理員履行指派，就是他們所說的是誰，您可以勾選 [在作用中**指派時需要多重要素驗證**] 方塊，對作用中的指派強制執行多重要素驗證。
+若要確保系統管理員滿足指派，您可以藉由勾選 [在作用中**指派時需要多重要素驗證**] 方塊，對作用中的指派強制執行多重要素驗證。
 
 ### <a name="require-multi-factor-authentication-on-activation"></a>啟用時需要 Multi-Factor Authentication
 
 您可以要求具有角色資格的使用者，證明他們使用 Azure 多重要素驗證的物件，然後才能啟用。 多重要素驗證可確保使用者的身分為合理的確定性。 在使用者帳戶可能受到危害的情況下，強制執行這個選項可保護重要資源。
 
-若要在啟用前要求多重要素驗證，請核取 [**啟用時需要多重要素驗證**] 方塊。
+若要在啟用前要求多重要素驗證，請在 [**編輯角色設定**] 的 [指派] 索引標籤中，核取 [**啟用時需要多重要素驗證**] 方塊。
 
 如需詳細資訊，請參閱[多重要素驗證和 Privileged Identity Management](pim-how-to-require-mfa.md)。
 
@@ -121,7 +121,7 @@ Privileged Identity Management 可針對兩個不同的案例選擇性地強制�
 
 1. 當您指定所有角色設定後，請選取 [**更新**] 以儲存變更。
 
-# <a name="previous-versiontabprevious"></a>[先前的版本](#tab/previous)
+# <a name="previous-version"></a>[先前的版本](#tab/previous)
 
 ## <a name="open-role-settings"></a>開啟角色設定
 

@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/24/2020
+ms.date: 02/20/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0d37b0cd042e6e11f8b2029b51c589c96154065
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e49a07f591731a1deb2838751852c0134548966d
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76909086"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77521841"
 ---
 # <a name="features-and-licenses-for-azure-multi-factor-authentication"></a>Azure 多重要素驗證的功能與授權
 
@@ -34,14 +34,14 @@ ms.locfileid: "76909086"
 | EMS 或 Microsoft 365 E3 和 E5 | EMS E3 或 Microsoft 365 E3 （包括 EMS 和 Office 365）包含 Azure AD Premium P1。 EMS E5 或 Microsoft 365 E5 包含 Azure AD Premium P2。 您可以使用下列各節中所述的相同條件式存取功能，為使用者提供多重要素驗證。 |
 | Azure AD Premium P1 | 您可以使用[Azure AD 條件式存取](../conditional-access/overview.md)，在特定案例或事件期間提示使用者進行多重要素驗證，以符合您的商務需求。 |
 | Azure AD Premium P2 | 提供最強的安全性位置和更好的使用者體驗。 新增以[風險為基礎的條件式存取](../conditional-access/howto-conditional-access-policy-risk.md)Azure AD Premium P1 功能，以適應使用者的模式，並將多重要素驗證提示降至最低。 |
-| Office Premium、E3 或 E5 | 所有使用者都可以在所有登入事件中，啟用或停用 Azure 多重要素驗證。 只有在某些情況下，才能夠啟用多重要素驗證，或僅限於特定案例。 管理是透過 Office 365 入口網站。 如需改善的使用者體驗，請升級至 Azure AD Premium P1 或 P2，並使用條件式存取。 如需詳細資訊，請參閱[使用多重要素驗證保護 Office 365 資源](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6)。 |
+| Office 365 Business Premium、E3 或 E5 | 所有使用者都可以在所有登入事件中，啟用或停用 Azure 多重要素驗證。 只有在某些情況下，才能夠啟用多重要素驗證，或僅限於特定案例。 管理是透過 Office 365 入口網站。 如需改善的使用者體驗，請升級至 Azure AD Premium P1 或 P2，並使用條件式存取。 如需詳細資訊，請參閱[使用多重要素驗證保護 Office 365 資源](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6)。 |
 | Azure AD Free | 您可以使用[安全性預設值](../fundamentals/concept-fundamentals-security-defaults.md)，在每次進行驗證要求時，為所有使用者啟用多重要素驗證。 您不會對已啟用的使用者或案例有細微的控制，但是它確實提供了額外的安全性步驟。<br /> 即使未使用安全性預設值來為每個人啟用多重要素驗證，獲指派*Azure AD 全域管理員*角色的使用者，都可以設定為使用多重要素驗證。 免費層的這項功能可確保重要的系統管理員帳戶受到多重要素驗證的保護。 |
 
 ## <a name="feature-comparison-of-versions"></a>版本的功能比較
 
 下表提供 Azure Multi-Factor Authentication 各版本中可用的功能清單。 規劃保護使用者驗證的需求，然後判斷哪一種方法符合這些需求。 例如，雖然 Azure AD Free 提供提供 Azure 多重要素驗證的安全性預設值，但只有行動驗證器應用程式可用於驗證提示，而不是電話或 SMS。 如果您無法確定行動驗證應用程式是安裝在使用者的個人裝置上，這種方法可能會是一項限制。
 
-| 功能 | Azure AD Free-安全性預設值 | Azure AD Free Azure AD 全域管理員 | Office Premium、E3 或 E5 | Azure AD Premium P1 或 P2 |
+| 功能 | Azure AD Free-安全性預設值 | Azure AD Free Azure AD 全域管理員 | Office 365 Business Premium、E3 或 E5 | Azure AD Premium P1 或 P2 |
 | --- |:---:|:---:|:---:|:---:|
 | 透過 MFA 保護 Azure AD 系統管理員帳戶 | ● | ●（僅*Azure AD 全域管理員*帳戶） | ● | ● |
 | 以行動應用程式做為第二個因素 | ● | ● | ● | ● |
@@ -57,15 +57,15 @@ ms.locfileid: "76909086"
 | 內部部署應用程式的 MFA | | | | ● |
 
 > [!IMPORTANT]
-> 自2019年3月起，在 Azure AD Free/試用版租使用者中，Azure 多重要素驗證和 Azure 自助式密碼重設使用者已不再提供通話選項。 SMS 訊息不會受到這項變更的影響。 Azure AD Premium P1 或 P2 租使用者或使用或 Office Premium、E3 或 E5 中的使用者，仍可繼續使用電話通話。
+> 自2019年3月起，在 Azure AD Free/試用版租使用者中，Azure 多重要素驗證和 Azure 自助式密碼重設使用者已不再提供通話選項。 SMS 訊息不會受到這項變更的影響。 Azure AD Premium P1 或 P2 租使用者中的使用者，或使用或 Office 365 Business Premium、E3 或 E5，仍可繼續使用通話。
 
 ## <a name="purchase-and-enable-azure-multi-factor-authentication"></a>購買並啟用 Azure 多重要素驗證
 
-若要使用 Azure 多重要素驗證，請註冊或購買合格的 Azure AD 層。 Azure AD 有四種版本：免費版、Office 365 應用程式版本（適用于 Office 365 Premium E3 或 E5 客戶）、Premium P1 和 Premium P2。
+若要使用 Azure 多重要素驗證，請註冊或購買合格的 Azure AD 層。 Azure AD 有四種版本：免費版、Office 365 應用程式版本（適用于 Office 365 Business Premium E3 或 E5 客戶）、Premium P1 和 Premium P2。
 
-Azure 訂用帳戶即包含免費版。 如需如何使用安全性預設值或以*Azure AD 全域管理員*角色保護帳戶的相關資訊，請參閱[下一節](#azure-ad-free-tier)。
+免費版隨附于 Azure 訂用帳戶。 如需如何使用安全性預設值或以*Azure AD 全域管理員*角色保護帳戶的相關資訊，請參閱[下一節](#azure-ad-free-tier)。
 
-Azure AD Premium 版本可透過您的 Microsoft 代表、 [Open Volume 授權方案](https://www.microsoft.com/licensing/licensing-programs/open-license.aspx)及[雲端解決方案提供者方案](https://go.microsoft.com/fwlink/?LinkId=614968&clcid=0x409)取得。 Azure 及 Office 365 訂閱者也可以線上購買 Azure Active Directory Premium P1 與 P2。 登[入](https://portal.office.com/Commerce/Catalog.aspx)以購買。
+Azure AD Premium 版本可透過您的 Microsoft 代表、 [Open Volume 授權方案](https://www.microsoft.com/licensing/licensing-programs/open-license.aspx)及[雲端解決方案提供者方案](https://go.microsoft.com/fwlink/?LinkId=614968&clcid=0x409)取得。 Azure 和 Office 365 訂閱者也可以在線上購買 Azure Active Directory Premium P1 和 P2。 登[入](https://portal.office.com/Commerce/Catalog.aspx)以購買。
 
 > [!IMPORTANT]
 > 自2018年9月1日起，新客戶將無法再使用以耗用量為基礎的授權。 使用以耗用量為基礎的模型的現有客戶可以繼續使用每個已啟用的使用者或每一驗證計費。

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/14/2020
+ms.date: 02/20/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1f23d3ffa14deccae9825568dee2f3c8b9ac7e7e
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
-ms.translationtype: HT
+ms.openlocfilehash: 5eeae1ab6866435311eeec944b4a51ecf2793dee
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77492951"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77522963"
 ---
 # <a name="microsoft-graph-operations-available-for-azure-ad-b2c"></a>適用于 Azure AD B2C 的 Microsoft Graph 作業
 
@@ -57,7 +57,7 @@ Azure AD B2C 資源的管理支援下列 Microsoft Graph API 作業，包括使�
 
 下列作業可讓您管理 Azure AD B2C 的信任架構原則，稱為[自訂原則](custom-policy-overview.md)。
 
-- [列出租使用者中設定的所有信任架構原則](https://docs.microsoft.com/graph/api/trustframework-list-trustframeworkpolicies.md)
+- [列出租使用者中設定的所有信任架構原則](https://docs.microsoft.com/graph/api/trustframework-list-trustframeworkpolicies)
 - [建立信任架構原則](https://docs.microsoft.com/graph/api/trustframework-post-trustframeworkpolicy)
 - [讀取現有信任架構原則的屬性](https://docs.microsoft.com/graph/api/trustframeworkpolicy-get)
 - [更新或建立信任架構原則。](https://docs.microsoft.com/graph/api/trustframework-put-trustframeworkpolicy)

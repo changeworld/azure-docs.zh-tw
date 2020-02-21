@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
-ms.openlocfilehash: ea7c695ddb92d441018503839b974c1f4bb33473
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 673cda4005d9c985d8d6ee5ef1d28a3d8c241ac0
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77047853"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482879"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>適用於 VM 的 Azure 監視器正式推出（GA）的常見問題
 
@@ -24,7 +24,9 @@ ms.locfileid: "77047853"
 
 透過這項升級，適用於 VM 的 Azure 監視器效能資料會儲存在與[容器 Azure 監視器](container-insights-overview.md)相同的*InsightsMetrics*資料表中，讓您更輕鬆地查詢這兩個資料集。 此外，您也可以儲存我們無法在先前使用的資料表中儲存的更多樣化資料集。 
 
-在下一周或兩個中，我們的效能觀點也會更新為使用這個新的資料表。
+我們的效能觀點現在會使用我們儲存在*InsightsMetrics*資料表中的資料。  如果您尚未升級為在您的工作區上使用最新的 VMInsights 解決方案，您的圖表將不會再顯示資訊。  您可以從我們的 [**開始**使用] 頁面進行升級，如下所述。
+
+透過這項升級，適用於 VM 的 Azure 監視器效能資料會儲存在與[容器 Azure 監視器](container-insights-overview.md)相同的*InsightsMetrics*資料表中，讓您更輕鬆地查詢這兩個資料集。 您也可以儲存更多樣化的資料集，我們無法儲存在先前使用的資料表中。 
 
 我們發現，詢問現有客戶的升級會導致工作流程中斷，這就是為什麼我們在公開預覽期間選擇立即執行此動作，而不是在 GA 之後才進行。
 
@@ -34,6 +36,8 @@ ms.locfileid: "77047853"
 我們發行了名為 VMInsights 的新解決方案，其中包含資料收集的額外功能，以及將此資料儲存在 Log Analytics 工作區中的新位置。 
 
 在過去，我們已在您的工作區上啟用 ServiceMap 解決方案，並在您的 Log Analytics 工作區中設定效能計數器，以將資料傳送至*Perf*資料表。 這個新的解決方案會將資料傳送至名為*InsightsMetrics*的資料表，也就是用於容器的 Azure 監視器。 這個資料表架構可讓我們儲存與*Perf*資料表格式不相容的其他計量和服務資料集。
+
+我們已更新效能圖表，以使用我們儲存在*InsightsMetrics*資料表中的資料。 您可以從我們的 [**開始**使用] 頁面升級為使用*InsightsMetrics*資料表，如下所述。
 
 
 ## <a name="how-do-i-upgrade"></a>如何? 升級嗎？

@@ -7,16 +7,16 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: d2313bfc47026ed9655d0ca25f0a0fdf3f86d8a5
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 5db86c09cd104b2a68431ccbe24128a24ebd2ad4
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191073"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500415"
 ---
 # <a name="what-is-azure-private-link-service"></a>什麼是 Azure 私人連結服務？
 
-Azure 私人連結服務是由 Azure 私用連結所支援的專屬服務參考。 您在[Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md)之後執行的服務可以啟用私人連結存取，讓服務的取用者可以從自己的 vnet 私下存取它。 您的客戶可以在其 VNet 內建立私人端點，並將其對應至此服務。 本文說明與服務提供者端相關的概念。 
+Azure Private Link 服務是由 Azure Private Link 所支援的自有服務參考。 您在[Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md)之後執行的服務可以啟用私人連結存取，讓服務的取用者可以從自己的 vnet 私下存取它。 您的客戶可以在其 VNet 內建立私人端點，並將其對應至此服務。 本文說明與服務提供者端相關的概念。 
 
 ## <a name="workflow"></a>工作流程
 
@@ -98,7 +98,7 @@ Azure 私人連結服務是由 Azure 私用連結所支援的專屬服務參考�
 
 ## <a name="getting-connection-information-using-tcp-proxy-v2"></a>使用 TCP Proxy v2 取得連接資訊
 
-使用私用連結服務時，來自私人端點之封包的來源 IP 位址是服務提供者端的網路位址轉譯（NAT），其使用從提供者的虛擬網路配置的 NAT IP。 因此，應用程式會接收配置的 NAT IP 位址，而不是服務取用者的實際來源 IP 位址。 如果您的應用程式需要取用者端的實際來源 IP 位址，您可以在您的服務上啟用 Proxy 通訊協定，並從 proxy 通訊協定標頭抓取資訊。 除了來源 IP 位址之外，proxy 通訊協定標頭也會攜帶私用端點的 LinkID。 來源 IP 位址和 LinkID 的組合可協助服務提供者唯一識別其取用者。 如需 Proxy 通訊協定的詳細資訊，請造訪這裡。 
+使用私用連結服務時，來自私人端點之封包的來源 IP 位址是服務提供者端的網路位址轉譯（NAT），其使用從提供者的虛擬網路配置的 NAT IP。 因此，應用程式會接收配置的 NAT IP 位址，而不是服務取用者的實際來源 IP 位址。 如果您的應用程式需要取用者端的實際來源 IP 位址，您可以在您的服務上啟用 Proxy 通訊協定，並從 proxy 通訊協定標頭抓取資訊。 除了來源 IP 位址之外，proxy 通訊協定標頭也會攜帶私用端點的 LinkID。 來源 IP 位址和 LinkID 的組合可協助服務提供者唯一識別其取用者。 如需 Proxy 通訊協定的詳細資訊，請造訪[這裡](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt)。 
 
 此資訊會使用自訂的類型長度值（TLV）向量進行編碼，如下所示：
 
@@ -107,7 +107,7 @@ Azure 私人連結服務是由 Azure 私用連結所支援的專屬服務參考�
 |欄位 |長度（八位）  |描述  |
 |---------|---------|----------|
 |類型  |1        |PP2_TYPE_AZURE （0xEE）|
-|Length  |2      |值的長度|
+|長度  |2      |值的長度|
 |值  |1     |PP2_SUBTYPE_AZURE_PRI加值稅EENDPOINT_LINKID （0x01）|
 |  |4        |UINT32 （4個位元組），代表私用端點的 LINKID。 以小 endian 格式編碼。|
 

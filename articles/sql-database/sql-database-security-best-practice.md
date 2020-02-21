@@ -1,23 +1,27 @@
 ---
-title: Azure SQL Database 的安全性最佳做法腳本 |Microsoft Docs
-description: 本文提供 Azure SQL Database 中安全性最佳做法的一般指引。
+title: 解決常見安全性需求的腳本 |Microsoft Docs
+titleSuffix: Azure SQL Database
+description: 本文提供 Azure SQL Database 中常見的安全性需求和最佳作法。
 ms.service: sql-database
 ms.subservice: security
 author: VanMSFT
 ms.author: vanto
 ms.topic: article
-ms.date: 01/22/2020
+ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 095d435b9a595c420821da0813fdfc0893d70d89
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c18e1b1a1feba5c528a692b7d63287b3751b62cf
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845877"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77506222"
 ---
-# <a name="azure-sql-database-security-best-practices-playbook"></a>Azure SQL Database 安全性最佳做法腳本
+# <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database"></a>使用 Azure SQL Database 解決常見安全性需求的腳本
 
-## <a name="overview"></a>概觀
+> [!NOTE]
+> 本檔提供如何解決常見安全性需求的最佳作法。 並非所有的需求都適用于所有環境，而且您應該向資料庫和安全性小組諮詢要執行的功能。
+
+## <a name="solving-common-security-requirements"></a>解決常見的安全性需求
 
 本檔提供有關如何使用 Azure SQL Database 來解決新的或現有應用程式的一般安全性需求的指引。 它是依高階安全性區域來組織。 如需解決特定威脅，請參閱[常見的安全性威脅和可能](#common-security-threats-and-potential-mitigations)的緩和措施一節。 雖然某些呈現的建議適用于將應用程式從內部部署遷移至 Azure 時，但遷移案例並不是本檔的重點。
 
@@ -32,7 +36,7 @@ ms.locfileid: "76845877"
 - Azure SQL Vm （IaaS）
 - 內部部署的 SQL Server
 
-### <a name="audience"></a>觀眾
+### <a name="audience"></a>適用對象
 
 本指南的目標物件是有關如何保護 Azure SQL Database 的客戶問題。 對這個最佳做法文章感興趣的角色包括（但不限於）：
 
@@ -66,6 +70,9 @@ ms.locfileid: "76845877"
 - SQL 驗證
 - Azure Active Directory 驗證
 
+> [!NOTE]
+> 所有工具和協力廠商應用程式可能不支援 Azure Active Directory 驗證。
+
 ### <a name="central-management-for-identities"></a>身分識別的集中管理
 
 中央身分識別管理提供下列優點：
@@ -82,7 +89,7 @@ ms.locfileid: "76845877"
 
 - 建立 Azure AD 租使用者，並[建立使用者](../active-directory/fundamentals/add-users-azure-active-directory.md)來代表人類的使用者，並建立[服務主體](../active-directory/develop/app-objects-and-service-principals.md)來代表應用程式、服務和自動化工具。 服務主體相當於 Windows 和 Linux 中的服務帳戶。 
 
-- 透過群組指派將資源的存取權限指派給 Azure AD 主體：建立 Azure AD 群組、授與群組的存取權，以及將個別成員新增至群組。 在您的資料庫中，建立對應 Azure AD 群組的自主資料庫使用者。 
+- 透過群組指派將資源的存取權限指派給 Azure AD 主體：建立 Azure AD 群組、授與群組的存取權，以及將個別成員新增至群組。 在您的資料庫中，建立對應 Azure AD 群組的自主資料庫使用者。 若要在資料庫內指派許可權，請將使用者放在具有適當許可權的資料庫角色中。
   - 請參閱文章：[使用 Sql 設定及管理 Azure Active Directory 驗證](sql-database-aad-authentication-configure.md)和[使用 AZURE AD 以使用 sql 進行驗證](sql-database-aad-authentication.md)。
   > [!NOTE]
   > 在受控實例中，您也可以建立對應到 master 資料庫中 Azure AD 主體的登入。 請參閱[CREATE LOGIN （transact-sql）](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)。
@@ -204,11 +211,6 @@ SQL 驗證是指使用使用者名稱和密碼連接到 Azure SQL Database 時�
 - 以伺服器管理員的身分，建立登入和使用者。 除非使用含有密碼的自主資料庫使用者，否則所有密碼都會儲存在 master 資料庫中。
   - 請參閱[控制和授與資料庫存取權的 SQL Database 和 SQL 資料倉儲](sql-database-manage-logins.md)一文。
 
-- 遵循密碼管理最佳作法：
-  - 提供複雜密碼，由拉丁大小寫字母、數位（0-9）和非英數位元（例如 $、！、# 或%）所組成。
-  - 使用較長的複雜密碼，而不是較短的隨機選取字元。
-  - 至少每隔90天強制執行一次手動變更密碼。
-
 ## <a name="access-management"></a>存取管理
 
 存取管理是控制和管理授權使用者的存取權和許可權以 Azure SQL Database 的程式。
@@ -250,24 +252,25 @@ SQL 驗證是指使用使用者名稱和密碼連接到 Azure SQL Database 時�
 
 - 避免將許可權指派給個別使用者。 請改用一致的角色（資料庫或伺服器角色）。 角色有助於對報告和疑難排解許可權有很大的説明。 （Azure RBAC 僅支援透過角色指派的許可權）。 
 
-- 當角色的許可權完全符合使用者所需的許可權時，請使用內建角色。 您可以將使用者指派給多個角色。 
-
-- 當內建角色授與的許可權太多或不足時，建立及使用自訂角色。 實務中使用的一般角色： 
+- 以所需的確切許可權建立和使用自訂角色。 實務中使用的一般角色： 
   - 安全性部署 
-  - 管理員 
-  - Developer 
+  - 系統管理員 
+  - 開發人員 
   - 支援人員 
   - 稽核員 
   - 自動化進程 
   - 終端使用者 
+  
+- 只有當角色的許可權符合使用者所需的許可權時，才使用內建角色。 您可以將使用者指派給多個角色。 
 
 - 請記住，SQL Server 資料庫引擎中的許可權可套用至下列範圍。 範圍越小，授與許可權的影響就越小： 
   - Azure SQL Database server （master 資料庫中的特殊角色） 
   - 資料庫 
-  - 架構（另請參閱：[適用于 SQL Server 的架構設計：建議在考慮安全性的架構設計](http://andreas-wolter.com/en/schema-design-for-sql-server-recommendations-for-schema-design-with-security-in-mind/)）
+  - 結構描述
+      - 最佳做法是使用架構來授與資料庫內的許可權。 （另請參閱：[適用于 SQL Server 的架構設計：建議在考慮安全性的架構設計](http://andreas-wolter.com/en/schema-design-for-sql-server-recommendations-for-schema-design-with-security-in-mind/)）
   - 物件（資料表、view、procedure 等） 
   > [!NOTE]
-  > 不建議在物件層級上套用許可權，因為此層級會在整體的執行中增加不必要的複雜度。 如果您決定使用物件層級的許可權，則應該清楚地記載。 同樣的，也適用于資料行層級許可權，因為相同的原因，這是較少的建議。 [[拒絕](https://docs.microsoft.com/sql/t-sql/statements/deny-object-permissions-transact-sql)] 的標準規則不適用於資料行。
+  > 不建議在物件層級上套用許可權，因為此層級會在整體的執行中增加不必要的複雜度。 如果您決定使用物件層級的許可權，則應該清楚地記載。 同樣的，也適用于資料行層級許可權，因為相同的原因，這是較少的建議。 也請注意，根據預設，資料表層級的[DENY](https://docs.microsoft.com/sql/t-sql/statements/deny-object-permissions-transact-sql)不會覆寫資料行層級的授與。 這需要啟用[通用條件合規性伺服器](https://docs.microsoft.com/sql/database-engine/configure-windows/common-criteria-compliance-enabled-server-configuration-option)設定。
 
 - 使用[弱點評定（VA）](https://docs.microsoft.com/sql/relational-databases/security/sql-vulnerability-assessment)執行定期檢查，以測試是否有太多許可權。
 
@@ -320,7 +323,7 @@ SQL 驗證是指使用使用者名稱和密碼連接到 Azure SQL Database 時�
 
 - 請一律確定有安全性相關動作的審核記錄。 
 
-- 您可以取得內建 RBAC 角色的定義，以查看所使用的許可權，並根據這些透過 Powershell 的摘錄和 cumulations 建立自訂角色 
+- 您可以取得內建 RBAC 角色的定義，以查看所使用的許可權，並根據這些透過 PowerShell 的摘錄和 cumulations 建立自訂角色。
 
 - 由於 db_owner 資料庫角色的任何成員都可以變更透明資料加密（TDE）之類的安全性設定，或變更 SLO，因此應該謹慎授與此成員資格。 不過，有許多工需要 db_owner 許可權。 變更任何資料庫設定（例如變更 DB 選項）之類的工作。 「審核」在任何解決方案中扮演著重要的角色。
 
@@ -409,6 +412,8 @@ SQL 驗證是指使用使用者名稱和密碼連接到 Azure SQL Database 時�
 
 使用中的資料是在 SQL 查詢執行期間，儲存在資料庫系統記憶體中的資料。 如果您的資料庫儲存機密資料，您的組織可能需要確保高許可權的使用者無法在資料庫中查看敏感性資料。 高許可權使用者（例如組織中的 Microsoft 操作員或 Dba）應該能夠管理資料庫，但防止從 SQL Server 程式的記憶體中或藉由查詢資料庫來查看及可能 exfiltrating 敏感性資料。
 
+決定哪些資料是機密的原則，以及敏感性資料是否必須在記憶體中加密，而且不能由純文字中的系統管理員存取，是專屬於您的組織和您必須遵守的合規性法規。 請參閱相關的需求：[識別並標記敏感性資料](#identify-and-tag-sensitive-data)。
+
 **如何執行**：
 
 - 使用[Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine)確保機密資料不會在 Azure SQL Database 中以純文字公開，即使在記憶體/使用中也一樣。 Always Encrypted 保護來自資料庫管理員（Dba）和雲端系統管理員（或可以模擬高許可權但未經授權的使用者）的資料，並讓您更充分掌控誰可以存取您的資料。
@@ -416,6 +421,8 @@ SQL 驗證是指使用使用者名稱和密碼連接到 Azure SQL Database 時�
 **最佳做法**：
 
 - Always Encrypted 不是用來加密待用資料（TDE）或傳輸（SSL/TLS）的替代方式。 Always Encrypted 不應用於非敏感性資料，以將效能和功能的影響降至最低。 建議使用 Always Encrypted 搭配 TDE 和傳輸層安全性（TLS），以全面保護待用、傳輸中和使用中的資料。 
+
+- 在生產資料庫中部署 Always Encrypted 之前，請先評估加密已識別之敏感性資料行的影響。 一般來說，Always Encrypted 會減少加密資料行上查詢的功能，而且有其他限制，列于[Always Encrypted 功能詳細資料](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine#feature-details)中。 因此，您可能需要重新架構應用程式，以便在用戶端或/上重新執行功能，而不支援查詢，包括預存程式、函數、視圖和觸發程式的定義。 如果現有的應用程式不符合 Always Encrypted 的限制和限制，則可能無法使用加密的資料行。 雖然 Microsoft 工具的生態系統、支援 Always Encrypted 的產品和服務日益成長，但其中有一些無法與加密的資料行搭配使用。 加密資料行可能也會影響查詢效能，端視工作負載的特性而定。 
 
 - 如果您使用 Always Encrypted 來保護來自惡意 Dba 的資料，請使用角色隔離來管理 Always Encrypted 金鑰。 使用角色隔離時，安全性系統管理員會建立實體金鑰。 DBA 會在資料庫中建立資料行主要金鑰和資料行加密金鑰中繼資料物件，以描述實體金鑰。 在此過程中，安全性系統管理員不需要存取資料庫，而且 DBA 不需要存取純文字格式的實體金鑰。 
   - 如需詳細資訊，請參閱[使用角色隔離管理金鑰](https://docs.microsoft.com/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted#managing-keys-with-role-separation)一文。 
@@ -705,7 +712,7 @@ SQL 驗證是指使用使用者名稱和密碼連接到 Azure SQL Database 時�
 
 ### <a name="identify-and-tag-sensitive-data"></a>識別及標記敏感性資料 
 
-探索可能包含敏感性資料的資料行。 分類資料行，以使用先進的敏感性式審核和保護案例。 
+探索可能包含敏感性資料的資料行。 所謂的敏感性資料主要取決於客戶、合規性法規等，而且需要由使用者負責評估該資料。 分類資料行，以使用先進的敏感性式審核和保護案例。 
 
 **如何執行**：
 

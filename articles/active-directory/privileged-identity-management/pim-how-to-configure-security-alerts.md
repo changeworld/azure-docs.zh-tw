@@ -14,12 +14,12 @@ ms.date: 11/13/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a28a4ccbaa256133b785d2238657093ba40ea11f
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 530eebea19d9e53f85a0079d6fba91c615ee6dd1
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024189"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498936"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中設定 Azure AD 角色的安全性警示
 
@@ -32,11 +32,11 @@ ms.locfileid: "77024189"
 1. 以[特殊權限角色管理員](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)角色的使用者身分登入[Azure 入口網站](https://portal.azure.com/)。
 1. 開啟 **Azure AD Privileged Identity Management**。 如果您在 [總覽] 頁面頂端有橫幅，請遵循本文的 [**新版本**] 索引標籤中的指示。 否則，請依照 [**先前版本**] 索引標籤中的指示進行。
 
-    ![Azure AD 角色新版本](./media/pim-how-to-add-role-to-user/pim-new-version.png)
+  [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 請遵循這篇文章中的步驟來調查 Azure AD 角色的安全性警示。
 
-# <a name="new-versiontabnew"></a>[新版本](#tab/new)
+# <a name="new-version"></a>[新版本](#tab/new)
 
 ![Azure AD 角色-列出警示和嚴重性的警示窗格](./media/pim-how-to-configure-security-alerts/view-alerts.png)
 
@@ -82,7 +82,7 @@ ms.locfileid: "77024189"
 
 | | |
 | --- | --- |
-| **Severity** | 中型 |
+| **Severity** | 中 |
 | **為什麼會收到此警示？** | 特殊許可權角色中的帳戶在過去90天內未變更其密碼。 這些帳戶可能是未受到維護且容易遭到攻擊的服務或共用帳戶。 |
 | **如何修正？** | 檢閱清單中的帳戶。 如果他們不再需要存取，請將它們從其特殊權限角色中移除。 |
 | **預護** | 確定共用帳戶會在知道密碼的使用者有所變更時，輪替使用強式密碼。 </br>使用[存取權檢閱](pim-how-to-start-security-review.md)功能定期檢閱具備特殊權限角色的帳戶，並移除不再需要的角色指派。 |
@@ -135,7 +135,7 @@ ms.locfileid: "77024189"
 
 ![設定頁面中的警示以啟用和設定設定](media/pim-resource-roles-configure-alerts/rbac-alert-settings.png)
 
-# <a name="previous-versiontabprevious"></a>[先前的版本](#tab/previous)
+# <a name="previous-version"></a>[先前的版本](#tab/previous)
 
 ![Azure AD 角色-列出警示和嚴重性的警示窗格](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
 
@@ -181,7 +181,7 @@ ms.locfileid: "77024189"
 
 | | |
 | --- | --- |
-| **Severity** | 中型 |
+| **Severity** | 中 |
 | **為什麼會收到此警示？** | 特殊許可權角色中的帳戶在過去90天內未變更其密碼。 這些帳戶可能是未受到維護且容易遭到攻擊的服務或共用帳戶。 |
 | **如何修正？** | 檢閱清單中的帳戶。 如果他們不再需要存取，請將它們從其特殊權限角色中移除。 |
 | **預護** | 確定共用帳戶會在知道密碼的使用者有所變更時，輪替使用強式密碼。 </br>使用[存取權檢閱](pim-how-to-start-security-review.md)功能定期檢閱具備特殊權限角色的帳戶，並移除不再需要的角色指派。 |

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 8cebe02ebc638ba62fceec80dff2c6724ccf92c8
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 58b60a0eee8ab407709f33911d3c6b13ffbf301a
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212306"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498370"
 ---
 # <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中重建索引
 
@@ -33,7 +33,7 @@ ms.locfileid: "77212306"
 | 將分析器指派給欄位 | [分析器](search-analyzers.md)定義在索引中，之後指派給欄位。 您可以隨時將新分析器定義新增至索引，但當欄位建立後，您只能*指派*分析器。 這適用於 **analyzer** 和 **indexAnalyzer** 屬性。 **searchAnalyzer** 屬性是例外狀況 (您可以將此屬性指派給現有欄位)。 |
 | 更新或刪除索引中的分析器定義 | 您無法刪除或變更索引中的現有分析器組態 (分析器、權杖化工具、權杖篩選器或 char 篩選器)，除非您重建整個索引。 |
 | 將欄位新增至建議工具 | 如果已有欄位存在，且您想要將它新增至[建議工具](index-add-suggesters.md)建構中，您必須重建索引。 |
-| 刪除欄位 | 若要實體上移除欄位的所有追蹤，您必須重建索引。 如果沒有立即進行重建，您可以修改應用程式碼，以停用對「已刪除」欄位的存取。 實體上，在您下次套用省略問題欄位的結構描述重建之前，欄位定義和內容都會保留在索引中。 |
+| 刪除欄位 | 若要實體上移除欄位的所有追蹤，您必須重建索引。 當立即重建不可行時，您可以修改應用程式代碼來停用對「已刪除」欄位的存取，或使用[$select 查詢參數](search-query-odata-select.md)來選擇要在結果集中表示的欄位。 實體上，在您下次套用省略問題欄位的結構描述重建之前，欄位定義和內容都會保留在索引中。 |
 | 切換階層 | 如果您需要更多容量，Azure 入口網站中沒有就地升級。 必須建立新的服務，而且必須在新的服務上從頭開始建立索引。 若要協助自動化此程式，您可以使用此[Azure 認知搜尋 .net 範例](https://github.com/Azure-Samples/azure-search-dotnet-samples)存放庫中的**索引備份-還原範例程式**代碼。 此應用程式會將您的索引備份至一系列 JSON 檔案，然後在您指定的搜尋服務中重新建立索引。|
 
 ## <a name="update-conditions"></a>更新條件
@@ -52,9 +52,11 @@ ms.locfileid: "77212306"
 
 ## <a name="how-to-rebuild-an-index"></a>如何重建索引
 
-在開發期間，索引架構經常變更。 您可以藉由建立可使用小型代表性資料集快速刪除、重新建立及重載的索引來進行規劃。 
+在開發期間，索引架構經常變更。 您可以藉由建立可使用小型代表性資料集快速刪除、重新建立及重載的索引來進行規劃。
 
 對於已經在生產環境中的應用程式，我們建議您建立與現有索引並存執行的新索引，以避免查詢停機時間。 您的應用程式程式碼會提供重新導向至新的索引。
+
+索引編制不會在背景中執行，而服務將會針對進行中的查詢，平衡額外的索引編制。 在編制索引期間，您可以在入口網站中[監視查詢要求](search-monitor-queries.md)，以確保查詢會及時完成。
 
 1. 判斷是否需要重建。 如果您只是加入欄位，或變更索引中與欄位無關的部分，您可以直接[更新定義](https://docs.microsoft.com/rest/api/searchservice/update-index)，而不需要刪除、重新建立和完全重載。
 
@@ -78,6 +80,10 @@ ms.locfileid: "77212306"
 ## <a name="check-for-updates"></a>檢查更新
 
 第一個文件載入之後，您就可以開始查詢索引。 如果您知道文件的別碼，[查閱文件 REST API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) \(英文\) 可傳回特定文件。 若要進行更廣泛的測試，您應該等到索引完全載入，然後使用查詢來確認您預期會看到的內容。
+
+您可以使用[搜尋瀏覽器](search-explorer.md)或 Web 測試控管（例如[Postman](search-get-started-postman.md) ）來檢查是否有更新的內容。
+
+如果您已新增或重新命名欄位，請使用[$select](search-query-odata-select.md)來傳回該欄位： `search=*&$select=document-id,my-new-field,some-old-field&$count=true`
 
 ## <a name="see-also"></a>另請參閱
 

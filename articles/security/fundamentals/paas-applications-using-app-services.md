@@ -1,5 +1,6 @@
 ---
-title: 使用 Azure App Service 來保護 PaaS Web 與行動應用程式 | Microsoft Docs
+title: 保護 PaaS web & 行動應用程式
+titleSuffix: Azure App Service
 description: '了解用來保護 PaaS Web 與行動應用程式的 Azure App Service 安全性最佳做法。 '
 services: security
 documentationcenter: na
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2019
 ms.author: terrylan
-ms.openlocfilehash: 4967f6f7831f1f09a502b935342fcd752af72fce
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c3f3c7fbaa043a03b70ab770c06e493716c70daf
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999155"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500288"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-app-service"></a>使用 Azure App Service 保護 PaaS Web 與行動應用程式的最佳做法
 

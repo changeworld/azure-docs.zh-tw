@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.date: 02/10/2020
-ms.openlocfilehash: f0c38590b667894dd65d212124ef1d26c7918ff7
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.date: 02/20/2020
+ms.openlocfilehash: 059894d441897bd89be525abcc7e1c7ab6ba23e7
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77366414"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485041"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps 的限制和設定資訊
 
@@ -155,7 +155,7 @@ Azure Logic Apps 透過閘道支援寫入作業，包括插入和更新。 不�
 |------|--------------------|---------------------------------------|-------|
 | 訊息大小 | 100 MB | 200 MB | 若要解決此限制，請參閱[使用區塊化處理大型訊息](../logic-apps/logic-apps-handle-large-messages.md)。 不過，某些連接器和 API 可能不支援區塊化或甚至預設限制。 |
 | 使用區塊化時的訊息大小 | 1 GB | 5 GB | 此限制適用於原生支援區塊化的動作，或可讓您在其執行階段設定中啟用區塊化的動作。 <p>對於整合服務環境，Logic Apps 引擎支援此限制，但連接器有自己的區塊限制，最高可達引擎限制，例如，請參閱[Azure Blob 儲存體連接器的 API 參考](https://docs.microsoft.com/connectors/azureblob/)。 如需有關區塊化的詳細資訊，請參閱[使用區塊化處理大型訊息](../logic-apps/logic-apps-handle-large-messages.md)。 |
-|||||   
+|||||
 
 #### <a name="character-limits"></a>字元限制
 
@@ -248,12 +248,16 @@ Azure Logic Apps 透過閘道支援寫入作業，包括插入和更新。 不�
 | 結構描述 | 8 MB | 若要上傳大於 2 MB 的檔案，請使用 [Azure 儲存體帳戶和 Blob 容器](../logic-apps/logic-apps-enterprise-integration-schemas.md)。 |
 ||||
 
-| 執行階段端點 | 限制 | 注意 |
-|------------------|-------|-------|
-| 每 5 分鐘讀取呼叫數目 | 60,000 | 您可以視需要將工作負載分散到多個帳戶。 |
-| 每 5 分鐘叫用呼叫數目 | 45,000 | 您可以視需要將工作負載分散到多個帳戶。 |
-| 每 5 分鐘追蹤呼叫數目 | 45,000 | 您可以視需要將工作負載分散到多個帳戶。 |
-| 封鎖並行呼叫數目 | ~1,000 | 您可以視需要減少並行要求數目或縮短持續時間。 |
+<a name="integration-account-throughput-limits"></a>
+
+### <a name="throughput-limits"></a>輸送量限制
+
+| 執行階段端點 | 免費 | 基本 | 標準 | 注意 |
+|------------------|------|-------|----------|-------|
+| 每 5 分鐘讀取呼叫數目 | 3,000 | 30,000 | 60,000 | 您可以視需要將工作負載分散到多個帳戶。 |
+| 每 5 分鐘叫用呼叫數目 | 3,000 | 30,000 | 45,000 | 您可以視需要將工作負載分散到多個帳戶。 |
+| 每 5 分鐘追蹤呼叫數目 | 3,000 | 30,000 | 45,000 | 您可以視需要將工作負載分散到多個帳戶。 |
+| 封鎖並行呼叫數目 | ~1,000 | ~1,000 | ~1,000 | 所有 Sku 都相同。 您可以視需要減少並行要求數目或縮短持續時間。 |
 ||||
 
 <a name="b2b-protocol-limits"></a>

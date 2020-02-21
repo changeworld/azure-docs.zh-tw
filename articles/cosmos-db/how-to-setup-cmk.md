@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: thweiss
 ROBOTS: noindex, nofollow
-ms.openlocfilehash: 56cbae7ae56c4b482ac6de201c7a2c8aacb81e59
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 44bbd7eab80ecb1cbfef9738e42b4070dff31180
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048601"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77506054"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>使用 Azure Key Vault 為您的 Azure Cosmos 帳戶設定客戶管理的金鑰
 
@@ -61,7 +61,7 @@ ms.locfileid: "77048601"
 
    ![選取正確的許可權](./media/how-to-setup-cmk/portal-akv-add-ap-perm2.png)
 
-1. 在 [**選取主體**] 底下，選取 [**未選取**]。 然後，搜尋**Azure Cosmos DB**主體並加以選取。 最後，選擇底部的 [**選取**]。 如果**Azure Cosmos DB**主體不在清單中，您可能需要重新註冊**Microsoft DocumentDB**資源提供者，如本文的[註冊資源提供者](#register-resource-provider)一節所述。
+1. 在 [**選取主體**] 底下，選取 [**未選取**]。 然後，搜尋**Azure Cosmos DB**主體並加以選取（以方便尋找，您也可以依主體識別碼： `a232010e-820c-4083-83bb-3ace5fc29d0b` 搜尋任何 Azure 區域，但主體識別碼 `57506a73-e302-42a9-b869-6f12d9ec29e9`的 Azure Government 區域除外）。 最後，選擇底部的 [**選取**]。 如果**Azure Cosmos DB**主體不在清單中，您可能需要重新註冊**Microsoft DocumentDB**資源提供者，如本文的[註冊資源提供者](#register-resource-provider)一節所述。
 
    ![選取 Azure Cosmos DB 主體](./media/how-to-setup-cmk/portal-akv-add-ap.png)
 

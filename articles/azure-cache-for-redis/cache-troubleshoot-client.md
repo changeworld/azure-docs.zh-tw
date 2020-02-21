@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: troubleshooting
 ms.date: 10/18/2019
-ms.openlocfilehash: abb73f93116fae217f527e0a9faaf61e2b42ba6c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ace953fcb278604cb64eef463753f0f2622d3d24
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433365"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523334"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>針對 Azure Cache for Redis 用戶端問題進行疑難排解
 
@@ -51,7 +51,7 @@ ms.locfileid: "75433365"
 - 請注意，在 `IOCP` 區段和 `WORKER` 區段中，`Busy` 值大於 `Min` 值。 這種差異表示您的 `ThreadPool` 設定需要調整。
 - 您也可以查看 `in: 64221`。 此值表示在用戶端的核心通訊端層收到64211個位元組，但應用程式尚未讀取。 這種差異通常表示您的應用程式（例如，Stackexchange.redis. Redis）在伺服器將資料傳送給您時，不會快速地從網路讀取資料。
 
-您可以設定[您的 `ThreadPool` 設定](https://gist.github.com/JonCole/e65411214030f0d823cb)，以確保您的執行緒集區會在高載案例下快速地相應增加。
+您可以設定[您的 `ThreadPool` 設定](cache-faq.md#important-details-about-threadpool-growth)，以確保您的執行緒集區會在高載案例下快速地相應增加。
 
 ## <a name="high-client-cpu-usage"></a>用戶端 CPU 使用量很高
 
@@ -60,7 +60,7 @@ ms.locfileid: "75433365"
 使用 Azure 入口網站中可用的計量，或透過電腦上的效能計數器，監視用戶端全系統的 CPU 使用量。 請小心不要監視*處理*程式 CPU，因為單一進程可能會有較低的 cpu 使用量，但全系統的 cpu 可能很高。 請監看與逾時對應的 CPU 使用量暴增。 高 CPU 可能也會導致 `TimeoutException` 錯誤訊息中的高 `in: XXX` 值，如[流量](#traffic-burst)激增一節中所述。
 
 > [!NOTE]
-> StackExchange.Redis 1.1.603 和更新版本在 `TimeoutException` 錯誤訊息中包含 `local-cpu` 度量。 請確定您使用最新版的 [StackExchange.Redis NuGet 封裝](https://www.nuget.org/packages/StackExchange.Redis/)。 程式碼中的錯誤會經常修正，以便更能應付逾時問題，因此請務必要擁有最新版本。
+> StackExchange.Redis 1.1.603 和更新版本在 `local-cpu` 錯誤訊息中包含 `TimeoutException` 度量。 請確定您使用最新版的 [StackExchange.Redis NuGet 封裝](https://www.nuget.org/packages/StackExchange.Redis/)。 程式碼中的錯誤會經常修正，以便更能應付逾時問題，因此請務必要擁有最新版本。
 >
 
 若要降低用戶端的高 CPU 使用量：

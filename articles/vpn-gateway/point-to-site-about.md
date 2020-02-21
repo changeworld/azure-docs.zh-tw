@@ -1,18 +1,18 @@
 ---
-title: 關於 Azure 點對站 VPN 連線 | Microsoft 文件
+title: 關於 Azure 點對站 VPN 連線 |VPN 閘道
 description: 本文可協助您了解點對站連線，並協助您決定所要使用的 P2S VPN 閘道驗證類型。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/07/2020
+ms.date: 02/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: 3db5cf0ddfec231a313df58e551061cbd5f9bef5
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 78ed07560fdb15efb2de13c194549f5b433b775a
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110438"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500609"
 ---
 # <a name="about-point-to-site-vpn"></a>關於點對站 VPN
 
@@ -53,16 +53,16 @@ Azure AD authentication 可讓使用者使用其 Azure Active Directory 認證�
 
 1. [設定 Azure AD 租使用者](openvpn-azure-ad-tenant.md)
 
-2. [在閘道上啟用 Azure AD 驗證](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant#enable-authentication)
+2. [在閘道上啟用 Azure AD 驗證](openvpn-azure-ad-tenant.md#enable-authentication)
 
 3. [下載並設定 Azure VPN 用戶端](https://go.microsoft.com/fwlink/?linkid=2117554)
 
 
 ### <a name="authenticate-using-active-directory-ad-domain-server"></a>使用 Azure Active Directory (AD) 網域伺服器進行驗證
 
-AD 網域驗證可讓使用者使用其組織網域認證來連線至 Azure。 它需要可與 AD 伺服器整合的 RADIUS 伺服器。 組織也可利用其現有的 RADIUS 部署。   
+AD 網域驗證可讓使用者使用其組織網域認證來連線至 Azure。 它需要可與 AD 伺服器整合的 RADIUS 伺服器。 組織也可利用其現有的 RADIUS 部署。
   
-RADIUS 伺服器可以部署在內部部署環境或 Azure VNET 中。 在驗證期間，Azure VPN 閘道可作為 RADIUS 伺服器與連線裝置之間的通道，雙向轉送驗證訊息。 所以閘道觸達 RADIUS 伺服器的能力很重要。 如果 RADIUS 伺服器位於內部部署環境，則需要從 Azure 到內部部署網站的 VPN S2S 連線才能觸達。  
+RADIUS 伺服器可以部署在內部部署環境或 Azure VNet 中。 在驗證期間，Azure VPN 閘道可作為 RADIUS 伺服器與連線裝置之間的通道，雙向轉送驗證訊息。 所以閘道觸達 RADIUS 伺服器的能力很重要。 如果 RADIUS 伺服器位於內部部署環境，則需要從 Azure 到內部部署網站的 VPN S2S 連線才能觸達。  
   
 RADIUS 伺服器也可以與 AD 憑證服務整合。 這可讓您對 P2S 憑證驗證使用 RADIUS 伺服器和企業憑證部署，來替代 Azure 憑證驗證。 優點是，您不需要將根憑證及撤銷的憑證上傳至 Azure。
 
@@ -156,9 +156,6 @@ Zip 檔案也會提供 Azure 端的某些重要設定值，以便用於為這些
 |TLS_RSA_WITH_AES_128_CBC_SHA256 |
 |TLS_RSA_WITH_AES_256_CBC_SHA256 |
 
-
-
-
 ## <a name="configure"></a>如何設定 P2S 連線？
 
 P2S 設定需要相當多的特定步驟。 下列文章包含的步驟可引導您進行 P2S 設定，然後連結以設定 VPN 用戶端裝置：
@@ -169,11 +166,9 @@ P2S 設定需要相當多的特定步驟。 下列文章包含的步驟可引導
 
 * [設定 OpenVPN](vpn-gateway-howto-openvpn.md)
 
-## <a name="how-do-i-remove-the-configuration-of-a-p2s-connection"></a>如何? 移除 P2S 連接的設定嗎？
+### <a name="to-remove-the-configuration-of-a-p2s-connection"></a>若要移除 P2S 連接的設定
 
-您可以使用 az cli 和下列命令來移除 P2S 設定： 
-
-`az network vnet-gateway update --name <gateway-name> --resource-group <resource-group name> --remove "vpnClientConfiguration"`
+如需相關步驟，請參閱下面的[常見問題](#removeconfig)。
  
 ## <a name="faqcert"></a>原生 Azure 憑證驗證的常見問題集
 

@@ -3,12 +3,12 @@ title: Azure 備份支援矩陣
 description: 摘要說明 Azure 備份服務的支援設定和限制。
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: 37347e6febdfc3500c218238606fc96463da631c
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 15c2fdfbe63dd73e665a4bac01dd2cd1b1144949
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76936240"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505861"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 備份的支援矩陣
 
@@ -78,8 +78,9 @@ Azure 備份使用復原服務保存庫來協調和管理備份。 它也會使�
 --- | ---
 **直接備份執行 Linux 的內部部署機器** | 不支援。 MARS 代理程式只能安裝在 Windows 電腦上。
 **使用代理程式擴充功能來備份執行 Linux 的 Azure VM** | 使用[自訂腳本](backup-azure-linux-app-consistent.md)進行應用程式一致備份。<br/><br/> 檔案層級復原。<br/><br/> 從復原點或磁碟建立 VM 以進行還原。
-**使用 DPM 備份執行 Linux 的內部部署或 Azure VM** | Hyper-v 和 VMWare 上 Linux 來賓 Vm 的檔案一致備份。<br/><br/> Hyper-v 和 VMWare Linux 來賓 Vm 的 VM 還原。<br/><br/> Azure VM 無法使用檔案一致備份。
-**使用 MABS 來備份執行 Linux 的內部部署機器或 Azure VM** | Hyper-v 和 VMWare 上 Linux 來賓 Vm 的檔案一致備份。<br/><br/> Hyper-v 和 VMWare Linux 來賓 Vm 的 VM 還原。<br/><br/> 檔案一致性備份不適用於 Azure VM。
+**使用 DPM 備份執行 Linux 的內部部署機器** | Hyper-v 和 VMWare 上 Linux 來賓 Vm 的檔案一致備份。<br/><br/> Hyper-v 和 VMWare Linux 來賓 Vm 的 VM 還原。
+**使用 MABS 備份執行 Linux 的內部部署機器** | Hyper-v 和 VMWare 上 Linux 來賓 Vm 的檔案一致備份。<br/><br/> Hyper-v 和 VMWare Linux 來賓 Vm 的 VM 還原。
+**使用 MABS 或 DPM 備份 Linux Azure Vm** | 不支援。
 
 ## <a name="daylight-saving-time-support"></a>日光節約時間支援
 
@@ -137,7 +138,7 @@ Azure 備份支援傳輸中和待用資料的加密。
 **設定** | **限制**
 --- | ---
 **每個受保護的實例（機器或工作負載）的最大復原點** | 9999
-**復原點的最大到期時間** | 無限制
+**復原點的最大到期時間** | 沒有限制
 **DPM/MABS 的備份頻率上限** | 每隔 15 分鐘 (SQL Server)<br/><br/> 針對其他工作負載一小時一次
 **備份至保存庫的頻率上限** | 內部**部署 Windows 機器或執行 MARS 的 Azure vm：** 每天三個<br/><br/> **DPM/MABS：** 每天兩個<br/><br/> **AZURE VM 備份：** 一天一次
 **復原點保留期** | 每日、每週、每月、每年
@@ -148,9 +149,9 @@ Azure 備份支援傳輸中和待用資料的加密。
 
 Azure 備份已新增跨區域還原功能，以加強資料可用性和復原功能，讓客戶可以完全控制將資料還原到次要區域。 若要設定這項功能，請造訪[Set 跨區域還原一文。](backup-create-rs-vault.md#set-cross-region-restore) 下列管理類型支援這項功能：
 
-| 備份管理類型 | 支援的                                                    | 支援的區域 |
+| 備份管理類型 | 支援                                                    | 支援的區域 |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Azure VM               | 可以。 已加密的 Vm 和低於 4 TB 磁片的 Vm 支援公開有限預覽 | 美國中西部   |
+| Azure VM               | 是。 已加密的 Vm 和低於 4 TB 磁片的 Vm 支援公開有限預覽 | 美國中西部   |
 | MARS 代理程式/內部部署 | 否                                                           | N/A               |
 | SQL/SAP HANA          | 否                                                           | N/A               |
 | AFS                    | 否                                                           | N/A               |

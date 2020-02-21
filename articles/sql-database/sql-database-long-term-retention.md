@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 05/18/2019
-ms.openlocfilehash: 9c5534f2df4a375daf355d74f788b7f610f92919
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 15a2d58d2fc14c370c41d5454d62c74a5b66ad42
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162152"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77499969"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>儲存多達 10 年的 Azure SQL Database 備份
 
@@ -28,7 +28,13 @@ ms.locfileid: "77162152"
 
 ## <a name="how-sql-database-long-term-retention-works"></a>SQL Database 長期保留如何運作
 
-長期備份保留 (LTR) 會運用[自動建立](sql-database-automated-backups.md)的完整資料庫備份來啟用時間點還原 (PITR)。 如果設定 LTR 原則，則會將這些備份複製到不同的 blob 以進行長期儲存。 複製作業是背景工作，對資料庫工作負載不會有任何效能影響。 Ltr 備份會保留一段時間，由 LTR 原則設定。 每個 SQL 資料庫的 LTR 原則也可以指定建立 LTR 備份的頻率。 若要啟用這項彈性，您可以使用四個參數的組合來定義原則：每週備份保留（W）、每月備份保留（M）、每年備份保留（Y）和年中的周（WeekOfYear）。 如果指定 W，每週一次的備份會複製到長期儲存體。 如果指定 M，每月第一週進行的一次備份會複製到長期儲存體。 如果指定 Y，在以 WeekOfYear 指定的當週進行的一次備份會複製到長期儲存體。 在長期儲存體中，每個備份會保留以這些參數所指定的期間。 LTR 原則的任何變更都適用于未來的備份。 例如，如果指定的 WeekOfYear 在設定原則時為過去，則會在下一年建立第一個 LTR 備份。 
+長期備份保留 (LTR) 會運用[自動建立](sql-database-automated-backups.md)的完整資料庫備份來啟用時間點還原 (PITR)。 如果設定 LTR 原則，則會將這些備份複製到不同的 blob 以進行長期儲存。 複製是背景工作，對資料庫工作負載不會有任何效能影響。 每個 SQL 資料庫的 LTR 原則也可以指定建立 LTR 備份的頻率。
+
+若要啟用 LTR，您可以使用下列四個參數的組合來定義原則：每週備份保留（W）、每月備份保留（M）、每年備份保留（Y）和年中的周（WeekOfYear）。 如果指定 W，每週一次的備份會複製到長期儲存體。 如果指定 M，每個月的第一個備份會複製到長期儲存體。 如果指定 Y，在以 WeekOfYear 指定的當週進行的一次備份會複製到長期儲存體。 如果指定的 WeekOfYear 在設定原則時為過去，則會在下一年建立第一個 LTR 備份。 每個備份都會根據建立 LTR 備份時所設定的原則參數，保留在長期儲存體中。
+
+> [!NOTE]
+> LTR 原則的任何變更僅適用于未來的備份。 例如，如果每週備份保留（W）、每月備份保留（M）或每年備份保留（Y）都已修改，新的保留設定將只會套用至新的備份。 將不會修改現有備份的保留期。 如果您想要在保留期限到期之前刪除舊的 LTR 備份，您將需要[手動刪除備份](https://docs.microsoft.com/azure/sql-database/sql-database-long-term-backup-retention-configure#delete-ltr-backups)。
+> 
 
 LTR 原則的範例：
 

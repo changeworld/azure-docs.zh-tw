@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
-ms.openlocfilehash: f86a63315798d982f7e78fd1ff293061daf50132
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e1157a695d34c75b237391427b37365421366ef8
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786770"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523165"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>使用 Azure SignalR Service Azure Functions 開發和設定
 
@@ -31,8 +31,8 @@ Azure SignalR Service 可以在不同的模式下設定。 與 Azure Functions �
 
 以 Azure Functions 和 Azure SignalR Service 建立的無伺服器即時應用程式通常需要兩個 Azure Functions：
 
-* 用戶端呼叫的「negotiate」函式，以取得有效的 SignalR Service 存取權杖和服務端點 URL
-* 傳送訊息或管理群組成員資格的一或多個函式
+* "negotiate" 函式，用戶端會呼叫該函式來取得有效的 SignalR Service 存取權杖和服務端點 URL
+* 傳送訊息或管理群組成員資格的一個或多個函式
 
 ### <a name="negotiate-function"></a>negotiate 函式
 
@@ -40,7 +40,7 @@ Azure SignalR Service 可以在不同的模式下設定。 與 Azure Functions �
 
 使用 HTTP 觸發的 Azure 函數和*SignalRConnectionInfo*輸入系結來產生連接資訊物件。 函式必須具有以 `/negotiate`結尾的 HTTP 路由。
 
-如需有關如何建立 negotiate 函式的詳細資訊，請參閱[ *SignalRConnectionInfo*輸入](../azure-functions/functions-bindings-signalr-service.md#input)系結參考。
+如需有關如何建立 negotiate 函式的詳細資訊，請參閱[ *SignalRConnectionInfo*輸入](../azure-functions/functions-bindings-signalr-service-input.md)系結參考。
 
 若要瞭解如何建立已驗證的權杖，請參閱[使用 App Service 驗證](#using-app-service-authentication)。
 
@@ -50,7 +50,7 @@ Azure SignalR Service 可以在不同的模式下設定。 與 Azure Functions �
 
 使用者可以新增至一個或多個群組。 您也可以使用*SignalR*輸出系結，在群組中新增或移除使用者。
 
-如需詳細資訊，請參閱[ *SignalR*輸出](../azure-functions/functions-bindings-signalr-service.md#output)系結參考。
+如需詳細資訊，請參閱[ *SignalR*輸出](../azure-functions/functions-bindings-signalr-service-output.md)系結參考。
 
 ### <a name="signalr-hubs"></a>SignalR 中樞
 
@@ -100,7 +100,7 @@ const connection = new signalR.HubConnectionBuilder()
 
 JavaScript/TypeScript 用戶端會向 negotiate 函式發出 HTTP 要求，以起始連接協商。 當用戶端應用程式裝載于與 Azure Function 應用程式不同的網域時，必須在函數應用程式上啟用跨原始來源資源分享（CORS），否則瀏覽器將會封鎖要求。
 
-#### <a name="localhost"></a>發出
+#### <a name="localhost"></a>Localhost
 
 在您的本機電腦上執行函式應用程式時，您可以將 `Host` 區段新增至 [*本機*]，以啟用 CORS。 在 [`Host`] 區段中，新增兩個屬性：
 

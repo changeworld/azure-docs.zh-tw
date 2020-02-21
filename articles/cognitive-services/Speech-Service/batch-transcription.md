@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: panosper
-ms.openlocfilehash: dc473c814cdd69204cddd976bc77f19b5db567b1
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 6d5ec5f798617d03072ec5931b0d1d3623df3d42
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200073"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500005"
 ---
 # <a name="how-to-use-batch-transcription"></a>如何使用批次轉譯
 
@@ -34,7 +34,7 @@ ms.locfileid: "77200073"
 
 在容易使用的 API 旁，您不需要部署自訂端點，也不會有任何要觀察的並行需求。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 ### <a name="subscription-key"></a>訂用帳戶金鑰
 
@@ -53,7 +53,7 @@ ms.locfileid: "77200073"
 
 Batch 轉譯 API 支援下列格式：
 
-| [格式] | 轉碼器 | Bitrate | 取樣率 |
+| [格式] | 轉碼器 | Bitrate | 採樣速率 |
 |--------|-------|---------|-------------|
 | WAV | PCM | 16 位元 | 8 kHz 或 16 kHz、單聲道或身歷聲 |
 | MP3 | PCM | 16 位元 | 8 kHz 或 16 kHz、單聲道或身歷聲 |
@@ -87,14 +87,55 @@ Batch 轉譯 API 支援下列格式：
 
 使用這些選擇性屬性來設定轉譯：
 
-| 參數 | 描述 |
-|-----------|-------------|
-| `ProfanityFilterMode` | 指定如何處理辨識結果中的不雅內容。 接受的值為 `None` (會停用不雅內容過濾)、`Masked` (為以星號取代不雅內容)、`Removed` (會移除結果中的所有不雅內容) 或 `Tags` (會新增「不雅內容」標記)。 預設值是 `Masked`。 |
-| `PunctuationMode` | 指定如何處理辨識結果中的標點符號。 接受的值為`None` (會停用標點符號)、`Dictated` (暗示明確的標點符號)、`Automatic` (會讓解碼器處理標點符號) 或 `DictatedAndAutomatic` (暗示口述的標點符號或自動)。 |
-| `AddWordLevelTimestamps` | 指定是否將字組層級時間戳記新增至輸出。 接受的值為`true` 會啟用字組層級時間戳記，而 `false` (預設值) 會停用。 |
-| `AddSentiment` | 指定應該將情感新增至語句。 接受的值為 `true`，可讓每個語句的情感和 `false` （預設值）停用它。 |
-| `AddDiarization` | 指定應該在輸入上執行 diarization 分析，這應該是包含兩個語音的 mono 通道。 接受的值為 `true`，可讓 diarization 和 `false` （預設值）停用它。 它也需要 `AddWordLevelTimestamps` 設定為 true。|
-|`TranscriptionResultsContainerUrl`|選擇性的 URL，其中包含[服務 SAS](../../storage/common/storage-sas-overview.md)至 Azure 中可寫入的容器。 結果將會儲存在此容器中。
+:::row:::
+   :::column span="1":::
+      **參數**
+   :::column-end:::
+   :::column span="2":::
+      **說明**
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `ProfanityFilterMode`
+   :::column-end:::
+   :::column span="2":::
+      指定如何處理辨識結果中的不雅內容。 接受的值為停用不雅內容篩選的 `None`，`Masked` 以星號取代不雅內容，`Removed` 移除結果中的所有不雅內容，或 `Tags` 新增「不雅內容」標記。 預設值是 `Masked`。
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `PunctuationMode`
+   :::column-end:::
+   :::column span="2":::
+      指定如何處理辨識結果中的標點符號。 接受的值為停用標點符號的 `None`，`Dictated` 表示明確（讀出）標點符號，`Automatic` 可讓解碼器處理標點符號，或 `DictatedAndAutomatic` 使用聽寫和自動標點符號。 預設值是 `DictatedAndAutomatic`。
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `AddWordLevelTimestamps`
+   :::column-end:::
+   :::column span="2":::
+      指定是否將字組層級時間戳記新增至輸出。 接受的值會 `true`，以啟用 word 層級時間戳記和 `false` （預設值）來停用它。
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `AddSentiment`
+   :::column-end:::
+   :::column span="2":::
+      指定應該將情感新增至語句。 接受的值會 `true`，以啟用每個語句的情感和 `false` （預設值）來停用它。
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `AddDiarization`
+   :::column-end:::
+   :::column span="2":::
+      指定應該在輸入上執行 diarization 分析，這應該是包含兩個語音的 mono 通道。 接受的值 `true` 啟用 diarization 和 `false` （預設值）來停用它。 它也需要 `AddWordLevelTimestamps` 設定為 true。
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `TranscriptionResultsContainerUrl`
+   :::column-end:::
+   :::column span="2":::
+      選擇性的 URL，其中包含[服務 SAS](../../storage/common/storage-sas-overview.md)至 Azure 中可寫入的容器。 結果將會儲存在此容器中。
+:::row-end:::
 
 ### <a name="storage"></a>儲存體
 

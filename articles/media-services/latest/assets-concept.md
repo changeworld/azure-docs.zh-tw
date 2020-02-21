@@ -1,5 +1,5 @@
 ---
-title: 資產
+title: Assets
 titleSuffix: Azure Media Services
 description: 瞭解什麼是資產，以及它們如何由 Azure 媒體服務使用。
 services: media-services
@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/29/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: ab4eebf56abd2d328ccf86929a043d4354ca157c
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 3860823787b860f2504d6fb13b9479d1feec9d28
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186321"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505808"
 ---
 # <a name="assets-in-azure-media-services"></a>Azure 媒體服務中的資產
 
@@ -28,7 +28,13 @@ ms.locfileid: "74186321"
 
 **封存**儲存層只建議用於經過編碼，且編碼作業輸出已放在輸出 Blob 容器的極大型來源檔案。 輸出容器中您想要與資產建立關聯，並用於串流或分析內容的 blob，必須**存在於經常性存取或非**經常性**存取儲存層**中。
 
-### <a name="naming-blobs"></a>命名 blob
+### <a name="naming"></a>命名 
+
+#### <a name="assets"></a>Assets
+
+資產的名稱必須是唯一的。 媒體服務 v3 資源名稱（例如資產、作業、轉換）會受限於 Azure Resource Manager 命名條件約束。 如需詳細資訊，請參閱[命名慣例](media-services-apis-overview.md#naming-conventions)。
+
+#### <a name="blobs"></a>Blob
 
 資產中的檔案/blob 名稱必須遵循[blob 名稱需求](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)和[NTFS 名稱需求](https://docs.microsoft.com/windows/win32/fileio/naming-a-file)。 這些需求的原因是檔案可以從 blob 儲存體複製到本機 NTFS 磁片進行處理。
 

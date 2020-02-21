@@ -10,16 +10,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/12/2020
+ms.date: 02/18/2020
 ms.author: rkarlin
-ms.openlocfilehash: ada2ad67bc3634d8e6a31d3c8a69fc0c8b08a93a
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: 5ab5d3c0fc1c37feaac2cc6b4b6837627c5a82df
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77369701"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500631"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Azure Sentinel 中的 Advanced 多階段攻擊偵測
+
+
+> [!IMPORTANT]
+> Azure Sentinel 中的某些融合功能目前為公開預覽狀態。
+> 這些功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+
 
 藉由使用以機器學習為基礎的融合技術，Azure Sentinel 可以結合異常行為和在終止鏈的各種階段觀察到的可疑活動，來自動偵測多階段攻擊。 Azure Sentinel 接著會產生嚴重難以攔截的事件。 這些事件會將兩個或多個警示或活動。 根據設計，這些事件的數量很低、高精確度和高嚴重性。
 
@@ -41,13 +48,32 @@ ms.locfileid: "77369701"
 
 規則範本不適用於 advanced 多階段攻擊偵測。
 
+> [!NOTE]
+> Azure Sentinel 目前使用30天的歷程記錄資料來訓練機器學習系統。 當此資料通過機器學習管線時，一律會使用 Microsoft 的金鑰進行加密。 不過，如果您在 Azure Sentinel 工作區中啟用 CMK，則不會使用[客戶管理的金鑰（CMK）](customer-managed-keys.md)來加密定型資料。 若要選擇不融合，請流覽至**Azure Sentinel**  **\>設定** \> **分析 \> Active 規則 \> Advanced 多階段攻擊偵測**，並在 [**狀態**] 欄中選取 [停用] **。**
+
 ## <a name="fusion-using-palo-alto-networks-and-microsoft-defender-atp"></a>使用 Palo Alto 網路和 Microsoft Defender ATP 進行融合
 
-- TOR 匿名服務的網路要求，後面接著 Palo Alto 網路防火牆所標記的異常流量
+這些案例結合了安全性分析師所使用的兩個基本記錄：來自 Palo Alto 網路的防火牆記錄，以及來自 Microsoft Defender ATP 的端點偵測記錄。 在下面所列的所有案例中，會在包含外部 IP 位址的端點中偵測到可疑的活動，然後將來自外部 IP 位址的異常流量傳回防火牆。 在 Palo Alto 記錄中，Azure Sentinel 著重于[威脅記錄](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)，而當允許威脅時，會將流量視為可疑（可疑的資料、檔案、洪水、封包、掃描、間諜軟體、url、病毒、弱點、野火病毒、wildfires）。
 
-- PowerShell 建立了可疑的網路連線，後面接著以 Palo Alto 網路防火牆標記的異常流量
+### <a name="network-request-to-tor-anonymization-service-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>TOR 匿名服務的網路要求，後面接著 Palo Alto 網路防火牆所標記的異常流量。
 
-- 連到 IP 的輸出連線，包含未經授權的存取嘗試歷程記錄，後面接著 Palo Alto 網路防火牆所標記的異常流量
+在此案例中，Azure Sentinel 會先偵測到 Microsoft Defender Advanced 威脅防護對導致異常活動的 TOR 匿名 service 提出網路要求的警示。 這是在 {time} 的帳戶 {account name} （具有 SID 識別碼 {sid}）底下起始。 連線的連出 IP 位址是 {IndividualIp}。
+然後，Palo Alto Networks Firewall 在 {TimeGenerated} 偵測到不尋常的活動。 這表示惡意流量進入您的網路，網路流量的目的地 IP 位址是 {DestinationIP}。
+
+此案例目前為公開預覽狀態。
+
+
+### <a name="powershell-made-a-suspicious-network-connection-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>PowerShell 建立了可疑的網路連線，後面接著以 Palo Alto 網路防火牆標記的異常流量。
+
+在此案例中，Azure Sentinel 會先偵測到 Microsoft Defender Advanced 威脅防護偵測到 PowerShell 建立了可疑的網路連線，因而導致 Palo Alto 網路防火牆所偵測到的異常活動。 這是由帳戶 {account name} 在 {time} 的 SID 識別碼 {sid} 起始。 連線的連出 IP 位址是 {IndividualIp}。 然後，Palo Alto Networks Firewall 在 {TimeGenerated} 偵測到不尋常的活動。 這表示惡意流量進入您的網路。 網路流量的目的地 IP 位址是 {DestinationIP}。
+
+此案例目前為公開預覽狀態。
+
+### <a name="outbound-connection-to-ip-with-a-history-of-unauthorized-access-attempts-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>連到 IP 的輸出連線，包含未經授權的存取嘗試歷程記錄，後面接著 Palo Alto 網路防火牆所標記的異常流量
+
+在此案例中，Azure Sentinel 會偵測到警示，表示 Microsoft Defender Advanced 威脅防護偵測到 IP 位址的輸出連線，其記錄了未經授權的存取嘗試，而導致 Palo Alto 偵測到異常活動。網路防火牆。 這是由帳戶 {account name} 在 {time} 的 SID 識別碼 {sid} 起始。 連線的連出 IP 位址是 {IndividualIp}。 在此情況下，Palo Alto Networks Firewall 會在 {TimeGenerated} 偵測到不尋常的活動。 這表示惡意流量進入您的網路。 網路流量的目的地 IP 位址是 {DestinationIP}。
+
+此案例目前為公開預覽狀態。
 
 
 

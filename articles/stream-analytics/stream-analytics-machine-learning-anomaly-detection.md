@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: e29ac6671d71ea02b432c9843541796984737c8b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 51b9c827d453eef2e2e75e1aa5222204eaa38d0e
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459620"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525527"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Azure 串流分析中的異常偵測
 
@@ -21,6 +21,12 @@ Azure 串流分析 (在雲端和 Azure IoT Edge 中都可取得) 提供內建的
 機器學習模型假設有一個均勻取樣的時間序列。 如果此時間序列不均勻，您可以在呼叫異常偵測之前，透過輪轉視窗插入彙總步驟。
 
 機器學習作業目前不支援季節性趨勢或多變數行銷的相互關聯。
+
+## <a name="anomaly-detection-using-machine-learning-in-azure-stream-analytics"></a>在 Azure 中使用機器學習服務進行異常偵測串流分析
+
+下列影片示範如何使用 Azure 串流分析中的機器學習功能，即時偵測異常狀況。 
+
+> [!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Real-Time-ML-Based-Anomaly-Detection-In-Azure-Stream-Analytics/player]
 
 ## <a name="model-behavior"></a>模型行為
 
@@ -125,7 +131,7 @@ windowDuration （以毫秒為單位） = 1000 * historySize/（每秒輸入事�
 
 | 記錄大小（事件） | 視窗持續時間（毫秒） | 每秒輸入事件總數 |
 | --------------------- | -------------------- | -------------------------- |
-| 60 | 55 | 2,200 |
+| 60 | 55 | 2200 |
 | 600 | 728 | 1650 |
 | 6,000 | 10910 | 1,100 |
 
@@ -147,12 +153,6 @@ windowDuration （以毫秒為單位） = 1000 * historySize/（每秒輸入事�
 
 ### <a name="identifying-bottlenecks"></a>找出瓶頸
 使用 Azure 串流分析作業中的 [計量] 窗格，來識別管線中的瓶頸。 檢查輸送量的**輸入/輸出事件**和「[浮水印延遲](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/)」或待處理的**事件**，以查看作業是否與輸入速率保持一致。 針對事件中樞計量，尋找已**節流的要求**，並據以調整閾值單位。 如 Cosmos DB 計量，請參閱輸送量之下**每個分割區索引鍵範圍的最大使用 RU/秒**，以確保您的資料分割索引鍵範圍會一致地取用。 若為 Azure SQL DB，請監視**記錄 IO**和**CPU**。
-
-## <a name="anomaly-detection-using-machine-learning-in-azure-stream-analytics"></a>在 Azure 中使用機器學習服務進行異常偵測串流分析
-
-下列影片示範如何使用 Azure 串流分析中的機器學習功能，即時偵測異常狀況。 
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Anomaly-detection-using-machine-learning-in-Azure-Stream-Analytics/player]
 
 ## <a name="next-steps"></a>後續步驟
 

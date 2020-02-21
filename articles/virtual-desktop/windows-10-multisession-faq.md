@@ -5,22 +5,22 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/28/2019
+ms.date: 02/19/2020
 ms.author: helohr
-ms.openlocfilehash: e2fa30772082f4d2f7c02add61412432233e3f04
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 426ca10893e6858722b58422400582e4940287e2
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77470567"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484599"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Windows 10 企業版的多重工作階段常見問題集
 
-本文將回答常見問題，並涵蓋 Windows 10 企業版多會話的最佳作法。
+本文提供常見問題的解答，並說明 Windows 10 企業版多會話的最佳作法。
  
-## <a name="what-is-windows-10-enterprise-multi-session"></a>什麼是 Windows 10 企業版的多重會話？ 
+## <a name="what-is-windows-10-enterprise-multi-session"></a>什麼是 Windows 10 企業版的多重會話？
 
-Windows 10 企業版的多會話，之前稱為 Windows 10 Enterprise for Virtual desktop （EVD），是新的遠端桌面工作階段主機，可允許多個並行的互動式會話，但先前只有 Windows Server 可以執行此操作。 這項功能可讓使用者熟悉 Windows 10 的體驗，同時也能受益于多重會話的成本優勢，並使用現有的每一使用者 Windows 授權，而不是 RDS 用戶端存取使用權（Cal）。 如需有關授權和定價的詳細資訊，請參閱[Windows 虛擬桌面定價](https://azure.microsoft.com/pricing/details/virtual-desktop/)。 
+Windows 10 企業版多會話，先前稱為 Windows 10 Enterprise for Virtual desktop （EVD），是允許多個並行互動會話的新遠端桌面工作階段主機。 先前只有 Windows Server 可以執行此動作。 這項功能可讓使用者熟悉 Windows 10 的體驗，同時也能受益于多重會話的成本優勢，並使用現有的每一使用者 Windows 授權，而不是 RDS 用戶端存取使用權（Cal）。 如需有關授權和定價的詳細資訊，請參閱[Windows 虛擬桌面定價](https://azure.microsoft.com/pricing/details/virtual-desktop/)。 
  
 ## <a name="how-many-users-can-simultaneously-have-an-interactive-session-on-windows-10-enterprise-multi-session"></a>有多少使用者可以同時在 Windows 10 企業版多會話上擁有互動式會話？
 
@@ -71,6 +71,31 @@ Windows 10 企業版的多重會話（1809和更新版本）受到支援，並�
 ## <a name="which-license-do-i-need-to-access-windows-10-enterprise-multi-session"></a>我需要哪一種授權才能存取 Windows 10 企業版的多重會話？
 
 如需適用授權的完整清單，請參閱[Windows 虛擬桌面定價](https://azure.microsoft.com/pricing/details/virtual-desktop/)。
+
+## <a name="why-do-my-apps-disappear-after-i-sign-out"></a>為什麼我的應用程式在我登出之後消失？
+
+之所以會發生這種情況，是因為您使用 Windows 10 企業版多會話，並搭配像是 FSLogix 的設定檔管理解決方案。 您的系統管理員或設定檔解決方案已設定您的系統，在使用者登出時刪除使用者設定檔。此設定表示當您的系統在登出之後刪除使用者設定檔時，也會移除您在會話期間所安裝的任何應用程式。 如果您想要保留已安裝的應用程式，您必須要求系統管理員為您 Windows 虛擬桌面環境中的所有使用者布建這些應用程式。
+
+## <a name="how-do-i-make-sure-apps-dont-disappear-when-users-sign-out"></a>如何? 在使用者登出時，確保應用程式不會消失嗎？
+
+預設會設定大部分的虛擬化環境，以防止使用者將其他應用程式安裝到其設定檔。 如果您想要在使用者登出 Windows 虛擬桌面時確保應用程式不會消失，您必須為環境中的所有使用者設定檔布建該應用程式。 如需布建應用程式的詳細資訊，請參閱下列資源：
+
+- [在 Windows 虛擬桌面中發佈內建應用程式](publish-apps.md)
+- [DISM 應用程式套件服務命令列選項](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-app-package--appx-or-appxbundle--servicing-command-line-options)
+- [新增-AppxProvisionedPackage](https://docs.microsoft.com/powershell/module/dism/add-appxprovisionedpackage?view=win10-ps)
+
+## <a name="how-do-i-make-sure-users-dont-download-and-install-apps-from-the-microsoft-store"></a>如何? 確保使用者不會從 Microsoft Store 下載並安裝應用程式嗎？
+
+您可以停用 Microsoft Store 應用程式，以確保使用者不會下載額外的應用程式超過您已為其布建的應用程式。
+
+若要停用儲存應用程式：
+
+1. 建立新的群組原則。
+2. 選取 **電腦**設定 > **系統管理範本** > **Windows 元件**。
+3. 選取 [市集]。
+4. 選取 [**儲存應用程式**]。
+5. 選取 [**停用**]，然後選取 **[確定]** 。
+6. 選取 [套用]。
  
 ## <a name="next-steps"></a>後續步驟
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd3ebb40ff101f4d2e3fecd05afed834a9ddc688
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
-ms.translationtype: HT
+ms.openlocfilehash: 327f53fb39e58f7b70040eb41b6cd80aca18e510
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505701"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77522028"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>啟用無密碼安全性金鑰使用 Azure Active Directory 登入 Windows 10 裝置（預覽）
 
@@ -43,7 +43,7 @@ ms.locfileid: "77505701"
 | 布建套件（選擇性） | X | X |
 | 群組原則（選擇性） |   | X |
 
-### <a name="unsupported-scenarios"></a>不支援的情節
+### <a name="unsupported-scenarios"></a>不支援的案例
 
 不支援下列案例：
 
@@ -107,7 +107,7 @@ ms.locfileid: "77505701"
 
 ### <a name="enable-with-a-provisioning-package"></a>使用布建套件啟用
 
-對於不受 Intune 管理的裝置，可以安裝布建套件來啟用此功能。 您可以從[Microsoft Store](https://www.microsoft.com/en-us/p/windows-configuration-designer/9nblggh4tx22)安裝 Windows 設定設計工具應用程式。 完成下列步驟以建立布建套件：
+對於不受 Intune 管理的裝置，可以安裝布建套件來啟用此功能。 您可以從[Microsoft Store](https://www.microsoft.com/p/windows-configuration-designer/9nblggh4tx22)安裝 Windows 設定設計工具應用程式。 完成下列步驟以建立布建套件：
 
 1. 啟動 Windows 設定設計工具。
 1. 選取 **[** 檔案] > [**新增專案**]。

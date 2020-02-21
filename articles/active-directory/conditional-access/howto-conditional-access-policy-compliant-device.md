@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 02/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a18f0b1f83ae02b06344c332cfdd1cc093f37fc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1d19cc39147608dafc4576f4c8bad0533ad1b32d
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424884"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77521909"
 ---
 # <a name="conditional-access-require-compliant-devices"></a>條件式存取：需要符合規範的裝置
 
@@ -27,14 +27,14 @@ ms.locfileid: "75424884"
 * 需要最低或最高的作業系統版本
 * 要求裝置未越獄或根目錄
 
-此原則合規性資訊會轉送到 Azure AD，條件式存取可以在其中決定是否要授與或封鎖資源的存取權。
+此原則合規性資訊會轉送到 Azure AD，條件式存取可以在其中決定是否要授與或封鎖資源的存取權。 如需裝置相容性原則的詳細資訊，請參閱在[裝置上設定規則，以允許使用 Intune 存取組織中的資源](/intune/protect/device-compliance-get-started)
 
 ## <a name="create-a-conditional-access-policy"></a>建立條件式存取原則
 
 下列步驟將協助建立條件式存取原則，以要求存取資源的裝置必須標示為符合您組織的 Intune 合規性政策。
 
 1. 以全域管理員、安全性系統管理員或條件式存取系統管理員的身分登入**Azure 入口網站**。
-1. 流覽至**Azure Active Directory** > **安全性** > **條件式存取**。
+1. 瀏覽至 [Azure Active Directory] > [安全性] > [條件式存取]。
 1. 選取 [新增原則]。
 1. 提供您的原則名稱。 我們建議組織針對其原則的名稱建立有意義的標準。
 1. 在 [**指派**] 底下，選取 [**使用者和群組**]
@@ -61,4 +61,4 @@ ms.locfileid: "75424884"
 
 [使用條件式存取 What If 工具模擬登入行為](troubleshoot-conditional-access-what-if.md)
 
-[裝置合規性政策適用 Azure AD](https://docs.microsoft.com/intune/device-compliance-get-started#device-compliance-policies-work-with-azure-ad)
+[裝置合規性政策適用 Azure AD](/intune/device-compliance-get-started#device-compliance-policies-work-with-azure-ad)
