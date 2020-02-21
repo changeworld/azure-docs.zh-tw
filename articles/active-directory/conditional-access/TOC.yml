@@ -6,12 +6,14 @@
       href: overview.md
 - name: 快速入門
   items:
-    - name: 特定應用程式需要 MFA
-      href: app-based-mfa.md
     - name: 需要接受使用條款
       href: require-tou.md
     - name: 偵測到工作階段風險時封鎖存取
       href: app-sign-in-risk.md
+- name: 教學課程
+  items:
+    - name: 要求使用 Azure Multi-Factor Authentication
+      href: /authentication/tutorial-enable-azure-mfa.md?toc=/azure/conditional-access/toc.json&bc=/azure/conditional-access/breadcrumb/toc.json
 - name: 概念
   expanded: false
   items:

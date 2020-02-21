@@ -6,12 +6,12 @@ author: lisaguthrie
 ms.topic: conceptual
 ms.date: 12/29/2019
 ms.author: lcozzens
-ms.openlocfilehash: f85f63af94beb5c0d99632be69368c0c7c727b7b
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 2cdeb0d513230cac5d03f85f2189f15c818798fd
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212216"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500396"
 ---
 # <a name="integrate-with-azure-managed-identities"></a>與 Azure 受控識別整合
 
@@ -78,7 +78,7 @@ Azure 應用程式組態及其 .NET Core、.NET Framework 和 JAVA 春季用戶�
 1. 新增對*Azure 身分識別*套件的參考：
 
     ```cli
-    dotnet add package Azure.Identity --version 1.1.0
+    dotnet add package Azure.Identity
     ```
 
 1. 尋找應用程式組態存放區的端點。 此 URL 會列在 Azure 入口網站中存放區的 **存取金鑰** 索引標籤上。
@@ -102,7 +102,7 @@ Azure 應用程式組態及其 .NET Core、.NET Framework 和 JAVA 春季用戶�
     > [!IMPORTANT]
     > `CreateHostBuilder` 會取代 .NET Core 3.0 中的 `CreateWebHostBuilder`。  根據您的環境選取正確的語法。
 
-    ### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
+    ### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -116,7 +116,7 @@ Azure 應用程式組態及其 .NET Core、.NET Framework 和 JAVA 春季用戶�
                 .UseStartup<Startup>();
     ```
 
-    ### <a name="net-core-3xtabcore3x"></a>[.NET Core 3.x](#tab/core3x)
+    ### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
 
     ```csharp
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -134,7 +134,7 @@ Azure 應用程式組態及其 .NET Core、.NET Framework 和 JAVA 春季用戶�
 
 1. 若要同時使用應用程式組態值和 Key Vault 參考，請更新*Program.cs* ，如下所示。 這段程式碼會使用 `AzureServiceTokenProvider` 建立新的 `KeyVaultClient`，並將此參考傳遞給 `UseAzureKeyVault` 方法的呼叫。
 
-    ### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
+    ### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
             public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -150,7 +150,7 @@ Azure 應用程式組態及其 .NET Core、.NET Framework 和 JAVA 春季用戶�
                     .UseStartup<Startup>();
     ```
 
-    ### <a name="net-core-3xtabcore3x"></a>[.NET Core 3.x](#tab/core3x)
+    ### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
 
     ```csharp
         public static IHostBuilder CreateHostBuilder(string[] args) =>

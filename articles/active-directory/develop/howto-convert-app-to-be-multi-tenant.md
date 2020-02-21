@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/10/2019
+ms.date: 02/19/2020
 ms.author: ryanwi
-ms.reviewer: jmprieur, lenalepa, sureshja
+ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 197379b5edd3f59c83c557590445fc5dac8fc43a
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: b3338edf644aee8409cfca05d4ac801594cbf66b
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212234"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467754"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>操作說明：讓任何 Azure Active Directory (AD) 使用者以多租用戶應用程式的模式登入
 
@@ -37,7 +37,7 @@ ms.locfileid: "77212234"
 3. [更新您的程式碼以處理多個簽發者值](#update-your-code-to-handle-multiple-issuer-values)
 4. [取得使用者和系統管理員的同意並進行適當的程式碼變更](#understand-user-and-admin-consent)
 
-讓我們仔細看看每個步驟。 您也可以直接跳到[這份多租使用者範例清單](https://docs.microsoft.com/samples/browse/?products=azure-active-directory)。
+讓我們仔細看看每個步驟。 您也可以直接跳到範例[組建使用 Azure AD 和 OpenID connect 呼叫 Microsoft Graph 的多租使用者 SaaS web 應用程式](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/2-WebApp-graph-user/2-3-Multi-Tenant/README.md)。
 
 ## <a name="update-registration-to-be-multi-tenant"></a>將註冊更新成多租用戶
 
@@ -119,7 +119,7 @@ Web 應用程式和 web Api 會接收並驗證來自 Microsoft 身分識別平�
 
 如果您的應用程式使用需要系統管理員同意的權限，您就必須要有相關的表示，例如可供系統管理員起始動作的按鈕或連結。 您的應用程式針對此動作傳送的要求是一個一般的 OAuth2/OpenID Connect 授權要求，其中也包含 `prompt=admin_consent` 查詢字串參數。 在系統管理員同意且系統已在客戶的租用戶中建立服務主體之後，後續的登入要求就不再需要 `prompt=admin_consent` 參數。 由於系統管理員已決定可接受要求的權限，因此從該時間點之後，就不會再提示租用戶中的任何其他使用者行使同意權。
 
-租用戶系統管理員可以停用一般使用者對應用程式行使同意權的能力。 如果停用這項功能，就一律需要系統管理員同意，才能在租用戶中使用應用程式。 如果您想要在停用使用者同意的情況下測試應用程式，您可以在 [**企業應用程式**] 底下的 [ **[使用者設定](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)** ] 區段中的 [[Azure 入口網站][AZURE-portal]]中找到設定參數。
+租用戶系統管理員可以停用一般使用者對應用程式行使同意權的能力。 如果停用這項功能，就一律需要系統管理員同意，才能在租用戶中使用應用程式。 如果您想要在停用使用者同意的情況下測試應用程式，您可以在 [**企業應用程式**] 底下的 [ **[使用者設定](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)** ] 區段中的  [Azure 入口網站][AZURE-portal]中找到設定參數。
 
 如果應用程式要求的權限不需要系統管理員同意，則應用程式也可以使用 `prompt=admin_consent` 參數。 這項作業的使用時機範例如下：如果應用程式需要租用戶系統管理員「註冊」一次，之後就不會再提示其他使用者表示同意的情況。
 

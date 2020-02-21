@@ -381,7 +381,7 @@
         - name: 更新和修補程式
           items:
             - name: Red Hat 更新基礎結構
-              href: update-infrastructure-redhat.md
+              href: ../workloads/redhat/redhat-rhui.md
         - name: Azure VM 代理程式
           items:
             - name: 概觀
