@@ -7,12 +7,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: dea45cec29101c3b085ab8098c3b05906e1049cd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 88382a5b6e0364145d8504b5e25ef1a9bfd0111a
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449795"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484123"
 ---
 # <a name="check-for-pool-and-node-errors"></a>檢查是否有集區和節點錯誤
 
@@ -72,7 +72,7 @@ ms.locfileid: "75449795"
 
 如果您已設定要讓節點等待「開始工作」順利完成，但開始工作卻失敗，該如何處理？ 在這種情況下，節點將無法使用，但仍會產生費用。
 
-您可以使用最上層 [startTaskInfo](https://docs.microsoft.com/rest/api/batchservice/computenode/get#starttaskinformation) 節點屬性的 [result](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskexecutionresult) 和 [failureInfo](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskfailureinformation) 屬性，來偵測失敗的「開始工作」。
+您可以使用最上層 [startTaskInfo](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskexecutionresult) 節點屬性的 [result](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskfailureinformation) 和 [failureInfo](https://docs.microsoft.com/rest/api/batchservice/computenode/get#starttaskinformation) 屬性，來偵測失敗的「開始工作」。
 
 如果**waitForSuccess**設定為**true**，失敗的啟動工作也會導致批次將節點[狀態](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate)設定為**starttaskfailed** 。
 
@@ -104,7 +104,7 @@ Azure Batch 將[節點狀態](https://docs.microsoft.com/rest/api/batchservice/c
 
 - VM 因基礎結構失敗或低層級升級而移動。 Batch 會復原節點。
 
-- VM 映射已部署在不支援的硬體上。 例如，嘗試在[Standard_D1_v2](../virtual-machines/linux/sizes-general.md#dv2-series) VM 上執行 CentOS HPC 映射。
+- VM 映射已部署在不支援的硬體上。 例如，嘗試在[Standard_D1_v2](../virtual-machines/dv2-dsv2-series.md) VM 上執行 CentOS HPC 映射。
 
 - Vm 位於[Azure 虛擬網路](batch-virtual-network.md)中，且流量已封鎖到金鑰埠。
 

@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/02/2019
+ms.date: 02/18/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd013b44454cc0283ef84d6a978b15400eca8786
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 0d6d621646aaa5c8c44a20cf327cd10fa31990b0
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022489"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484531"
 ---
 # <a name="understand-the-azure-ad-schema"></a>瞭解 Azure AD 架構
 Azure Active Directory （Azure AD）中的物件（例如任何目錄）是以程式設計的高階資料結構，代表使用者、群組和連絡人等專案。 當您在 Azure AD 中建立新的使用者或連絡人時，就是建立該物件的新實例。 這些實例可以根據其屬性加以區別。
@@ -58,21 +58,24 @@ Azure AD 有兩種類型的屬性：
 
 |內部部署 Active Directory|對應類型|Azure AD|
 |-----|-----|-----|
-|cn|Direct|commonName
-|countryCode|Direct|countryCode|
-|displayName|Direct|displayName|
+|cn|直接|commonName
+|countryCode|直接|countryCode|
+|displayName|直接|displayName|
 |givenName|運算是|givenName|
-|objectGUID|Direct|sourceAnchorBinary|  
-|userprincipalName|Direct|userPrincipalName|
-|ProxyAdress|Direct|ProxyAddress|
+|objectGUID|直接|sourceAnchorBinary|  
+|userprincipalName|直接|userPrincipalName|
+|ProxyAdress|直接|ProxyAddress|
 
 ## <a name="view-the-schema"></a>查看架構
+> [!WARNING]
+> 雲端布建設定會建立服務主體。 服務主體會顯示在 Azure 入口網站中。 您不應該使用 Azure 入口網站中的服務主體體驗來修改屬性對應。  不支援這個動作。
+
 若要查看架構並加以驗證，請遵循下列步驟。
 
 1.  移至 [ [Graph Explorer]](https://developer.microsoft.com/graph/graph-explorer)。
 1.  使用您的全域管理員帳戶登入。
 1.  在左側選取 [**修改許可權**]，並確定已*同意*[**全部**]。
-1.  執行查詢 https://graph.microsoft.com/beta/serviceprincipals/? $filter = startswith （Displayname，' Active '）。 此查詢會傳回已篩選的服務主體清單。
+1.  執行查詢 https://graph.microsoft.com/beta/serviceprincipals/?$filter = startswith （Displayname，' Active '）。 此查詢會傳回已篩選的服務主體清單。
 1.  找出 `"appDisplayName": "Active Directory to Azure Active Directory Provisioning"` 並記下 `"id"`的值。
     ```
     "value": [

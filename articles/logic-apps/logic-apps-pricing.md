@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: 1c21a84bd9aaa259d0459b4e16c7a62aabaa615d
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 6c7112b6b5944042036fd3e7af6ec6f6dfbde0c0
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896391"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526139"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure Logic Apps 的定價模式
 
@@ -40,13 +40,15 @@ ms.locfileid: "75896391"
 
 ## <a name="fixed-pricing-model"></a>固定定價模式
 
-[*整合服務環境*（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)提供私用、隔離且專用的方式，讓您建立及執行可存取 Azure 虛擬網路中資源的邏輯應用程式。 對於在 ISE 內執行的新邏輯應用程式，您需支付這些功能的[固定每月價格](https://azure.microsoft.com/pricing/details/logic-apps)：
+[*整合服務環境*（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)提供隔離的方式，讓您建立和執行可存取 Azure 虛擬網路中資源的邏輯應用程式。 對於在 ISE 內執行的新邏輯應用程式，您需支付這些功能的[固定每月價格](https://azure.microsoft.com/pricing/details/logic-apps)：
 
-* [內建觸發程式和動作](../connectors/apis-list.md#built-in)
+* [內建觸發程式](../connectors/apis-list.md#built-in)和動作
 
-* [標準連接器](../connectors/apis-list.md#managed-connectors)
+  在 ISE 中，內建的觸發程式和動作會顯示**核心**標籤，並在與您的邏輯應用程式相同的 ISE 中執行。
 
-* 使用您想要的多個連接的[企業連接器](../connectors/apis-list.md#enterprise-connectors)
+* [標準](../connectors/apis-list.md#managed-connectors)連接器和[企業](../connectors/apis-list.md#enterprise-connectors)連接器（所需的企業連線數目）
+
+   顯示**ise**標籤的標準和企業連接器，會在與邏輯應用程式相同的 ise 中執行。 未顯示 ISE 標籤的連接器會在全域 Logic Apps 服務中執行。 當您搭配在 ISE 中執行的邏輯應用程式使用時，每月價格也適用于全域服務中執行的連接器。
 
 * [整合帳戶](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)的使用量不需額外費用，視您的[ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)而定：
 
@@ -60,12 +62,9 @@ ms.locfileid: "75896391"
 
   * **開發人員 SKU**：最多4個標準帳戶，或最多5個標準帳戶。 沒有基本帳戶。
 
-如需整合帳戶限制的詳細資訊，請參閱[Logic Apps 限制和](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)設定。 您可以在本主題稍後深入瞭解[整合帳戶層及其計價模式](#integration-accounts)。
+  如需整合帳戶限制的詳細資訊，請參閱[Logic Apps 限制和](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)設定。 您可以在本主題稍後深入瞭解[整合帳戶層及其計價模式](#integration-accounts)。
 
-針對 Premium ISE SKU，基礎單位具有固定容量，因此如果您需要更多輸送量，可以在建立期間或之後[新增更多縮放單位](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity)。 開發人員 ISE SKU 沒有新增更多縮放單位的功能。 在 ISE 中執行的邏輯應用程式不會產生資料保留成本。
-
-> [!NOTE]
-> 在 ISE 中，內建的觸發程式和動作會顯示**核心**標籤，並在與您的邏輯應用程式相同的 ISE 中執行。 顯示**ise**標籤的標準和企業連接器，會在與邏輯應用程式相同的 ise 中執行。 未顯示 ISE 標籤的連接器會在全域 Logic Apps 服務中執行。
+如果您選擇 Premium ISE SKU，基礎單位會有固定容量。 如果您需要更多的輸送量，您可以在建立期間或之後[新增更多縮放單位](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity)。 開發人員 ISE SKU 沒有新增更多縮放單位的功能。 在 ISE 中執行的邏輯應用程式不會產生資料保留成本。
 
 如需定價費率，請參閱[Logic Apps 定價](https://azure.microsoft.com/pricing/details/logic-apps)。
 

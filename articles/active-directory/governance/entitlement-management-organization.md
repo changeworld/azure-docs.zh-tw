@@ -16,12 +16,12 @@ ms.date: 01/22/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c1b6f5ebffa39d3b735e85df794e37329e3aa2e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 1ecf3a8819518c674a3d8bd7af55d1a3c6393c42
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548895"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483851"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中新增已連線的組織
 
@@ -96,6 +96,23 @@ Azure AD 目錄或網域中的使用者將如何驗證，取決於驗證類型�
 1. 在 [**審查 + 建立**] 索引標籤上，檢查您的組織設定，然後按一下 [**建立**]。
 
     ![存取套件-原則-新增已連線的組織-審核 + 建立索引標籤](./media/entitlement-management-organization/organization-review-create.png)
+
+## <a name="update-a-connected-organization"></a>更新已連線的組織 
+
+如果已連線的組織變更為不同的網域，如果您有該組織的新名稱，或想要變更贊助者，則可以更新已連線的組織。
+
+**先決條件角色：** 全域管理員、使用者系統管理員或來賓邀請者
+
+1. 在 Azure 入口網站中按一下 [Azure Active Directory]，然後按一下 [身分識別治理]。
+
+1. 在左側功能表中，按一下 [**已連接的組織**]，然後按一下以開啟 [已連線的組織]。
+
+1. 在 [總覽] 頁面上，按一下 [**編輯**] 以變更組織名稱或描述。  
+
+1. 在 [目錄 + 網域] 頁面上，按一下 [**更新目錄 + 網域**]，以變更為不同的目錄或網域。
+
+1. 在 [贊助者] 頁面上，按一下 [**新增內部贊助**者] 或 [**新增外部贊助**者]，將使用者新增為贊助者。  若要移除贊助者，請按一下 [贊助者]，然後在右邊的功能表上，按一下 [**刪除**]。
+
 
 ## <a name="delete-a-connected-organization"></a>刪除已連線的組織
 

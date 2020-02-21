@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 11/24/2019
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: e833ca92004c678808ec5e294de2df7c90121be7
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: ce2b4200496938e6cffb935207df8c7027eaf37a
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75835118"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486129"
 ---
 # <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>使用 Azure CLI 管理 Azure Data Lake Storage Gen2 中的目錄、檔案和 Acl （預覽）
 
@@ -24,7 +24,7 @@ ms.locfileid: "75835118"
 > 本文中所述的 `storage-preview` 擴充功能目前為公開預覽狀態。
 
  | [Gen1 至 Gen2 對應的](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2)[範例](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#adls-gen2-support)， | [提供意見](https://github.com/Azure/azure-cli-extensions/issues)反應
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 > [!div class="checklist"]
 > * Azure 訂用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
@@ -77,7 +77,7 @@ ms.locfileid: "75835118"
 這個範例會建立名為 `my-file-system`的檔案系統。
 
 ```azurecli
-az storage container create --name my-file-system
+az storage container create --name my-file-system --account-name mystorageaccount
 ```
 
 ## <a name="create-a-directory"></a>建立目錄
@@ -98,7 +98,7 @@ az storage blob directory create -c my-file-system -d my-directory --account-nam
 az storage blob directory show -c my-file-system -d my-directory --account-name mystorageaccount
 ```
 
-## <a name="rename-or-move-a-directory"></a>重新命名目錄或移動目錄
+## <a name="rename-or-move-a-directory"></a>重新命名或移動目錄
 
 使用 `az storage blob directory move` 命令來重新命名或移動目錄。
 
@@ -178,7 +178,7 @@ az storage blob directory upload -c my-file-system --account-name mystorageaccou
 az storage blob show -c my-file-system -b my-file.txt --account-name mystorageaccount
 ```
 
-## <a name="rename-or-move-a-file"></a>重新命名檔案或移動檔案
+## <a name="rename-or-move-a-file"></a>重新命名或移動檔案
 
 使用 `az storage blob move` 命令來重新命名或移動檔案。
 
@@ -237,6 +237,12 @@ az storage blob access show -b my-directory/upload.txt -c my-file-system --accou
 
 ```azurecli
 az storage blob directory access set -a "user::rw-,group::rw-,other::-wx" -d my-directory -c my-file-system --account-name mystorageaccount
+```
+
+這個範例會在擁有使用者、擁有群組或其他使用者的目錄上設定*預設*ACL，然後將 acl 列印到主控台。
+
+```azurecli
+az storage blob directory access set -a "default:user::rw-,group::rw-,other::-wx" -d my-directory -c my-file-system --account-name mystorageaccount
 ```
 
 使用 `az storage blob access set` 命令來設定**檔案的 acl。** 
@@ -299,7 +305,7 @@ az storage blob directory metadata update --metadata tag1=value1 tag2=value2 -c 
 az storage blob directory metadata show -c my-file-system -d my-directory --account-name mystorageaccount
 ```
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [範例](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview)
 * [Gen1 至 Gen2 對應](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2)

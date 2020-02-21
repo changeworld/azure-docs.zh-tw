@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 07/08/2019
 ms.author: cshoe
-ms.openlocfilehash: 35df4c6c20345053bcc39a267a90a7bb1b227241
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 1688fe848beb62731391bf4399a0dabec5265320
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766238"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484718"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>註冊 Azure Functions 系結延伸模組
 
@@ -26,7 +26,7 @@ ms.locfileid: "76766238"
 
 | 開發環境 |註冊<br/> 在 Functions 1.x 中  |註冊<br/> 在 Functions 2.x 中  |
 |-------------------------|------------------------------------|------------------------------------|
-|Azure Portal|自動|自動|
+|Azure 入口網站|自動|自動|
 |Non-.NET 語言或本機 Azure Core 工具開發|自動|[使用 Azure Functions Core Tools 和延伸模組配套](#extension-bundles)|
 |C#使用 Visual Studio 的類別庫|[使用 NuGet 工具](#vs)|[使用 NuGet 工具](#vs)|
 |使用 Visual Studio Code 的 C# 類別庫|N/A|[使用 .NET Core CLI](#vs-code)|
@@ -55,9 +55,9 @@ ms.locfileid: "76766238"
 Install-Package Microsoft.Azure.WebJobs.Extensions.ServiceBus -Version <TARGET_VERSION>
 ```
 
-用於指定系結的封裝名稱會在該系結的參考文章中提供。 如需範例，請參閱[服務匯流排繫結參考文章的套件一節](functions-bindings-service-bus.md#packages---functions-1x)。
+用於指定系結的封裝名稱會在該系結的參考文章中提供。 如需範例，請參閱[服務匯流排繫結參考文章的套件一節](functions-bindings-service-bus.md#functions-1x)。
 
-請以特定版本的套件 (例如 `3.0.0-beta5`) 取代範例中的 `<TARGET_VERSION>`。 有效版本會列在[NuGet.org](https://nuget.org)的個別套件頁面上。對應至函式執行時間1.x 或2.x 的主要版本，會在系結的參考文章中指定。
+請以特定版本的套件 (例如 `<TARGET_VERSION>`) 取代範例中的 `3.0.0-beta5`。 有效版本會列在[NuGet.org](https://nuget.org)的個別套件頁面上。對應至函式執行時間1.x 或2.x 的主要版本，會在系結的參考文章中指定。
 
 如果您使用 `Install-Package` 來參考系結，則不需要使用[延伸](#extension-bundles)模組配套。 這個方法是 Visual Studio 內建的類別庫所特有。
 
@@ -73,7 +73,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.<BINDING_TYPE_NAME> --vers
 
 將 `<BINDING_TYPE_NAME>` 取代為包含您所需系結的套件名稱。 您可以在支援的系結[清單](./functions-triggers-bindings.md#supported-bindings)中找到所需的系結參考文章。
 
-請以特定版本的套件 (例如 `3.0.0-beta5`) 取代範例中的 `<TARGET_VERSION>`。 有效版本會列在[NuGet.org](https://nuget.org)的個別套件頁面上。對應至函式執行時間1.x 或2.x 的主要版本，會在系結的參考文章中指定。
+請以特定版本的套件 (例如 `<TARGET_VERSION>`) 取代範例中的 `3.0.0-beta5`。 有效版本會列在[NuGet.org](https://nuget.org)的個別套件頁面上。對應至函式執行時間1.x 或2.x 的主要版本，會在系結的參考文章中指定。
 
 ## <a name="next-steps"></a>後續步驟
 > [!div class="nextstepaction"]

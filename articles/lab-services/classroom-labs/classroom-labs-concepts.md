@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2019
 ms.author: spelluru
-ms.openlocfilehash: 348340516f9332f5492c7ce60c3d164da44a008c
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 15fd3c18d059466c2b2bd5e2431013f393092b4b
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120891"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526224"
 ---
 # <a name="classroom-labs-concepts"></a>教室實驗室概念
 
@@ -32,7 +32,13 @@ ms.locfileid: "77120891"
 
 ## <a name="schedules"></a>排程
 
-排程是老師可以為類別建立的時間位置（一次或週期性）。 實驗室中的所有虛擬機器都會從排程開始自動啟動，並在排程結束時停止。 當排程正在執行時，不會使用配額時數。
+排程是老師可以為類別建立的時間位置，讓學生 Vm 可供班級時間使用。  排程可以是一次性或週期性。  當排程正在執行時，不會使用配額時數。
+
+排程的類型有三種： [標準]、[僅啟動] 和 [僅停止]。
+
+- **標準**。  此排程會在指定的開始時間啟動所有學生 Vm，並在指定的停止時間關閉所有學生 Vm。
+- **僅啟動**。   此排程會在指定的時間啟動所有學生 Vm。  學生 Vm 將不會停止，直到學生透過 Azure 實驗室服務入口網站停止其 VM，或發生「僅停止」排程。
+- **僅停止**。  此排程將會在指定的時間停止所有學生 Vm。  
 
 ## <a name="template-virtual-machine"></a>範本虛擬機器
 

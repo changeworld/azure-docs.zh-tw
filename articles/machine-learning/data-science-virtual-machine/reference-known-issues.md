@@ -1,5 +1,5 @@
 ---
-title: 已知問題和疑難排解
+title: 參考： & 疑難排解的已知問題
 titleSuffix: Azure Data Science Virtual  Machine
 description: 取得 Azure 資料科學虛擬機器的已知問題、因應措施和疑難排解清單
 services: machine-learning
@@ -9,12 +9,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: reference
 ms.date: 10/10/2019
-ms.openlocfilehash: a0b22326a429edfa2f2b8741453215b42910891c
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: d022b1124146a1e506401e6cee257805e3a38fd3
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301915"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526539"
 ---
 # <a name="known-issues-and-troubleshooting-the-azure-data-science-virtual-machine"></a>Azure 資料科學虛擬機器的已知問題和疑難排解
 
@@ -24,7 +24,7 @@ ms.locfileid: "72301915"
 
 ### <a name="installing-packages-with-pip-breaks-dependencies-on-linux"></a>在 Linux 上安裝具有 pip 中斷相依性的套件
 
-安裝套件時，請使用 `sudo pip install`，而不是 `pip install`。
+安裝套件時，請使用 `sudo pip install` 而不是 `pip install`。
 
 ## <a name="disk-encryption-issues"></a>磁片加密問題
 

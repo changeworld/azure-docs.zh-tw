@@ -6,12 +6,12 @@ author: mamccrea
 ms.author: mamccrea
 ms.topic: conceptual
 ms.date: 01/29/2020
-ms.openlocfilehash: ac06521df38bdc91ca717d888c73cd541576014d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 73905483850a47a9d036bef1b9e1ee60d3484555
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905461"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484582"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>在 Azure 串流分析中剖析 JSON 和 Avro 資料
 
@@ -63,7 +63,7 @@ FROM input
 
 結果如下：
 
-|DeviceID|Lat|長|溫度|版本|
+|裝置識別碼|Lat|long|溫度|版本|
 |-|-|-|-|-|
 |12345|47|122|80|1.2.45|
 
@@ -80,7 +80,7 @@ FROM input
 
 結果如下：
 
-|DeviceID|Lat|長|
+|裝置識別碼|Lat|long|
 |-|-|-|
 |12345|47|122|
 
@@ -123,7 +123,7 @@ WHERE
 
 結果如下：
 
-|DeviceID|SensorName|AlertMessage|
+|裝置識別碼|SensorName|AlertMessage|
 |-|-|-|
 |12345|溼度|警示：感應器高於閾值|
 
@@ -144,7 +144,7 @@ CROSS APPLY GetRecordProperties(event.SensorReadings) AS sensorReading
 
 結果如下：
 
-|DeviceID|SensorName|AlertMessage|
+|裝置識別碼|SensorName|AlertMessage|
 |-|-|-|
 |12345|溫度|80|
 |12345|溼度|70|
@@ -167,6 +167,38 @@ WITH Stage0 AS
 
 SELECT DeviceID, PropertyValue AS Temperature INTO TemperatureOutput FROM Stage0 WHERE PropertyName = 'Temperature'
 SELECT DeviceID, PropertyValue AS Humidity INTO HumidityOutput FROM Stage0 WHERE PropertyName = 'Humidity'
+```
+
+### <a name="parse-json-record-in-sql-reference-data"></a>剖析 SQL 參考資料中的 JSON 記錄
+當您使用 Azure SQL Database 做為作業中的參考資料時，可能會有資料行具有 JSON 格式的資料。 範例如下所示。
+
+|裝置識別碼|資料|
+|-|-|
+|12345|{"key"： "value1"}|
+|54321|{"key"： "value2"}|
+
+您可以藉由撰寫簡單的 JavaScript 使用者定義函數，來剖析*資料*行中的 JSON 記錄。
+
+```javascript
+function parseJson(string) {
+return JSON.parse(string);
+}
+```
+
+接著，您可以在串流分析查詢中建立步驟，如下所示，以存取 JSON 記錄的欄位。
+
+ ```SQL
+ WITH parseJson as
+ (
+ SELECT DeviceID, udf.parseJson(sqlRefInput.Data) as metadata,
+ FROM sqlRefInput
+ )
+ 
+ SELECT metadata.key
+ INTO output
+ FROM streamInput
+ JOIN parseJson 
+ ON streamInput.DeviceID = parseJson.DeviceID
 ```
 
 ## <a name="array-data-types"></a>陣列資料類型
@@ -291,7 +323,7 @@ LEFT JOIN DynamicCTE M ON M.smKey = 'Manufacturer' and M.DeviceId = i.DeviceId A
 
 結果如下：
 
-|deviceId|Lat|長|smVersion|smManufacturer|
+|deviceId|Lat|long|smVersion|smManufacturer|
 |-|-|-|-|-|
 |12345|47|122|1.2.45|ABC|
 

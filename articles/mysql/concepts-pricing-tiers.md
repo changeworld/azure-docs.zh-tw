@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: fc538b55e31a4c133da1bc2f7ecc32b5fada6399
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 10eacb9cc1ca4641396212ec9564308d7ef74c3a
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210392"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484667"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>適用於 MySQL 的 Azure 資料庫定價層
 
@@ -23,7 +23,6 @@ ms.locfileid: "77210392"
 | 虛擬核心 | 1, 2 | 2、4、8、16、32、64 |2、4、8、16、32 |
 | 每個虛擬核心的記憶體 | 2 GB | 5 GB | 10 GB |
 | 儲存體大小 | 5 GB 至 1 TB | 5 GB 到 16 TB | 5 GB 到 16 TB |
-| 儲存體類型 | Azure 標準儲存體 | Azure 進階儲存體 | Azure 進階儲存體 |
 | 資料庫備份的保留期限 | 7 至 35 天 | 7 至 35 天 | 7 至 35 天 |
 
 若要選擇定價層，請從下表著手。
@@ -46,7 +45,7 @@ ms.locfileid: "77210392"
 
 |    | **基本** | **一般用途** | **記憶體最佳化** |
 |:---|:----------|:--------------------|:---------------------|
-| 儲存體類型 | Azure 標準儲存體 | Azure 進階儲存體 | Azure 進階儲存體 |
+| 儲存體類型 | 基本儲存體 | 一般用途儲存體 | 一般用途儲存體 |
 | 儲存體大小 | 5 GB 至 1 TB | 5 GB 到 16 TB | 5 GB 到 16 TB |
 | 儲存體遞增大小 | 1 GB | 1 GB | 1 GB |
 | IOPS | 變數 |3 IOPS/GB<br/>最小值為 100 IOPS<br/>最大 20000 IOPS | 3 IOPS/GB<br/>最小值為 100 IOPS<br/>最大 20000 IOPS |

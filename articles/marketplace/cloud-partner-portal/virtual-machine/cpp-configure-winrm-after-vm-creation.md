@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: pabutler
-ms.openlocfilehash: ae5a55c6d640852cbd873bc6b36e502b5fe17165
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7d050b32b212f66623a24bcf87d40111fc5973a5
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73817944"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77481369"
 ---
 # <a name="configure-winrm-after-virtual-machine-creation"></a>在建立虛擬機器之後設定 WinRM
 
@@ -25,7 +25,7 @@ ms.locfileid: "73817944"
 
 ## <a name="enabling-port-traffic"></a>啟用連接埠流量
 
-WinRM over HTTPS 通訊協定會使用連接埠 5896，預設不會在 Azure Marketplace 上提供的預先設定 Windows VM 上啟用。 若要啟用此通訊協定，請使用下列步驟，透過 [Azure 入口網站](https://portal.azure.com)來將新規則新增至網路安全性群組 (NSG)。  如需有關 NSG 的詳細資訊，請參閱[安全性群組](https://docs.microsoft.com/azure/virtual-network/security-overview)。
+WinRM over HTTPS 通訊協定使用埠5986，預設不會在 Azure Marketplace 上提供的預先設定 Windows Vm 上啟用。 若要啟用此通訊協定，請使用下列步驟，透過 [Azure 入口網站](https://portal.azure.com)來將新規則新增至網路安全性群組 (NSG)。  如需有關 NSG 的詳細資訊，請參閱[安全性群組](https://docs.microsoft.com/azure/virtual-network/security-overview)。
 
 1.  瀏覽至刀鋒視窗 [虛擬機器] > [  <*vm-name*>  ] > [設定/網路]。
 2.  按一下 NSG 名稱 (在此範例中為 **testvm11002**) 以顯示其屬性：

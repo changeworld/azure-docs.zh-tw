@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/13/2020
+ms.date: 02/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 83144738124b223e305b6c0d3ad1065f5dae408e
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: f49240c29b4ec0a5fa1cb38861da3d4060db2f82
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212602"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525439"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 來裝載和執行 SAP 工作負載案例
 
@@ -121,6 +121,7 @@ Azure 上的 SAP 工作負載區段中的檔變更會列在本文結尾。
 
 ## <a name="change-log"></a>變更記錄檔
 
+- 02/20/2020：[Azure vm 上的 SAP NetWeaver 的高可用性變更 SLES 多 sid 指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)，以新增 SUSE 多重 sid 叢集指南的連結
 - 02/13/2020：在[Azure vm 中變更 Sap NetWeaver 的高可用性（rhel](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel) ）和[azure VM 高可用性 SAP NetWeaver On Rhel 與 azure NetApp Files](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files) ，以將叢集資源的超時時間對應至 Red Hat 超時建議
 - 02/11/2020：[將 Azure 大型實例遷移至 azure 虛擬機器的 SAP Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-large-instance-virtual-machine-migration)版本
 - 02/07/2020：在[SAP HA 案例中使用 Azure 標準 ILB 來變更 vm 的公用端點連線能力](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)，以更新範例 NSG 螢幕擷取畫面

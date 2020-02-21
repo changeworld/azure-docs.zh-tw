@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 90be5b407708f6cca3748dd6d6fa09c28ab7fcdc
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: fcdbf0d56b79662cccd90380489ede672e6a0a66
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840429"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484106"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中管理使用者存取
 
@@ -46,7 +46,7 @@ ms.locfileid: "76840429"
 
 以下是收集家長同意的使用者流程範例：
 
-1. [Azure Active Directory 圖形 API](/previous-versions/azure/ad/graph/api/api-catalog) 作業將使用者識別為未成年人，並以未簽署的 JSON 權杖形式將使用者資料傳回至應用程式。
+1. [MICROSOFT GRAPH API](https://docs.microsoft.com/graph/use-the-api)作業會將使用者識別為次要，並以不帶正負號 JSON 權杖的形式將使用者資料傳回給應用程式。
 
 2. 應用程式會處理 JSON 權杖，並向其顯示畫面，通知他們需要家長同意，並要求線上家長同意。
 
@@ -54,9 +54,9 @@ ms.locfileid: "76840429"
 
 4. 應用程式會為未成年人提供撤銷同意的選項。
 
-5. 當未成年人或成人撤銷同意時，可以使用 Azure AD 圖形 API 將 **consetProvidedForMinor** 變更為**拒絕**。 或者，應用程式可以選擇刪除同意已撤銷的未成年人。 使用者流程可以選擇性地自訂，讓已驗證的未成年人 (或使用未成年人帳戶的成人) 據以撤銷同意。 Azure AD B2C 會將 **consentProvidedForMinor** 記錄為**拒絕**。
+5. 當次要或成人撤銷同意時，可以使用 Microsoft Graph API 將**consentProvidedForMinor**變更為「已**拒絕**」。 或者，應用程式可以選擇刪除同意已撤銷的未成年人。 使用者流程可以選擇性地自訂，讓已驗證的未成年人 (或使用未成年人帳戶的成人) 據以撤銷同意。 Azure AD B2C 會將 **consentProvidedForMinor** 記錄為**拒絕**。
 
-如需 **legalAgeGroupClassification**、**consentProvidedForMinor** 和 **ageGroup** 的詳細資訊，請參閱[使用者資源類型](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user)。 如需自訂屬性的詳細資訊，請參閱[使用自訂屬性收集取用者的相關資訊](user-flow-custom-attributes.md)。 在使用 Azure AD 圖形 API 來處理擴充屬性時，您必須使用屬性的完整版本，例如 *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*。
+如需 **legalAgeGroupClassification**、**consentProvidedForMinor** 和 **ageGroup** 的詳細資訊，請參閱[使用者資源類型](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user)。 如需自訂屬性的詳細資訊，請參閱[使用自訂屬性收集取用者的相關資訊](user-flow-custom-attributes.md)。 當您使用 Microsoft Graph API 來處理擴充屬性時，必須使用屬性的完整版本，例如*extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*： *2011-01-01T00：00： 00Z*。
 
 ## <a name="gather-date-of-birth-and-countryregion-data"></a>收集出生日期和國家/地區資料
 

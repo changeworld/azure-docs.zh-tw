@@ -7,12 +7,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 05/28/2019
-ms.openlocfilehash: 4214c4eb9fbe1d3e39d1ee16289f30b893b94653
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 35b5a85ea6fba87e785b581a7a20d0c28f312820
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906612"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484140"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>在 Azure 儲存體中裝載靜態網站
 
@@ -22,7 +22,7 @@ ms.locfileid: "76906612"
 
 <a id="portal" />
 
-## <a name="portaltabazure-portal"></a>[入口網站](#tab/azure-portal)
+## <a name="portal"></a>[入口網站](#tab/azure-portal)
 
 如需逐步教學課程，請參閱教學課程[：在 Blob 儲存體上裝載靜態網站](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website-host)。
 
@@ -38,7 +38,7 @@ ms.locfileid: "76906612"
 
 <a id="cli" />
 
-## <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 您可以使用[Azure 命令列介面（CLI）](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)來啟用靜態網站裝載。
 
@@ -72,7 +72,7 @@ ms.locfileid: "76906612"
    這個範例假設您正在執行來自 Azure Cloud Shell 會話的命令。
 
    ```azurecli-interactive
-   az storage blob upload-batch -s <source-path> -d \$web --account-name <storage-account-name>
+   az storage blob upload-batch -s <source-path> -d \$web --account-name <storage-account-name> --content-type 'text/html; charset=utf-8'
    ```
 
    * 使用您的儲存體帳戶名稱取代 `<storage-account-name>` 預留位置值。
@@ -102,7 +102,7 @@ az storage account show -n <storage-account-name> -g <resource-group-name> --que
 
 <a id="powershell" />
 
-## <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+## <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 您可以使用 Azure PowerShell 模組來啟用靜態網站裝載。
 
@@ -157,6 +157,7 @@ az storage account show -n <storage-account-name> -g <resource-group-name> --que
     ```powershell
     # upload a file
     set-AzStorageblobcontent -File "<path-to-file>" `
+    -Properties @{ ContentType = "text/html; charset=utf-8";} `
     -Container `$web `
     -Blob "<blob-name>" `
     -Context $ctx

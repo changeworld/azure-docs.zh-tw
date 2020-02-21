@@ -3,12 +3,12 @@ title: 使用 Visual Studio Code 開發 Azure Functions
 description: 瞭解如何使用適用于 Visual Studio Code 的 Azure Functions 延伸模組來開發和測試 Azure Functions。
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 3bc8c9aa5d31f757a34350d9605fdecbe42b8be7
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 41a1a64be4823769f6bf23b251fec94fd68eb0f0
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210237"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484769"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>使用 Visual Studio Code 開發 Azure Functions
 
@@ -92,11 +92,11 @@ Azure Functions 延伸模組提供下列優點：
 
 根據您的語言而定，會建立這些其他檔案：
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 * 實作用函式的[HttpExample.cs 類別庫](functions-dotnet-class-library.md#functions-class-library-project)檔案。
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 * 根資料夾中的 package. json 檔案。
 
@@ -122,7 +122,7 @@ Azure Functions 延伸模組提供下列優點：
 
 除了 HTTP 和計時器觸發程式以外，系結會在延伸模組套件中執行。 您必須為需要的觸發程式和系結安裝延伸模組套件。 安裝系結延伸模組的程式取決於您專案的語言。
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 在終端機視窗中執行[dotnet add package](/dotnet/core/tools/dotnet-add-package)命令，以在您的專案中安裝所需的延伸模組套件。 下列命令會安裝 Azure 儲存體延伸模組，其會執行 Blob、佇列和資料表儲存體的系結。
 
@@ -130,7 +130,7 @@ Azure Functions 延伸模組提供下列優點：
 dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 ```
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
@@ -142,11 +142,11 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 此動作的結果取決於您專案的語言：
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 新C#的類別庫（.cs）檔案會加入至您的專案。
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 專案中會建立新的資料夾。 此資料夾包含新的函式 json 檔案和新的 JavaScript 程式碼檔案。
 
@@ -158,7 +158,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 下列範例會連線到名為 `outqueue`的儲存體佇列，其中儲存體帳戶的連接字串是在 [web.config] 的 [`MyStorageConnection`] 應用程式設定中設定。
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 更新函數方法，將下列參數新增至 `Run` 方法定義：
 
@@ -174,9 +174,9 @@ using Microsoft.Azure.WebJobs.Extensions.Storage;
 
 `msg` 參數是 `ICollector<T>` 類型，其代表會在函式完成時寫入輸出繫結的訊息集合。 您可以將一或多個訊息新增至集合。 當函式完成時，會將這些訊息傳送至佇列。
 
-若要深入瞭解，請參閱[佇列儲存體輸出](functions-bindings-storage-queue.md#output)系結檔。
+若要深入瞭解，請參閱[佇列儲存體輸出](functions-bindings-storage-queue-output.md)系結檔。
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 Visual Studio Code 可讓您遵循一組方便的提示，將系結新增至您的函式. json 檔案。 若要建立系結，請以滑鼠右鍵按一下（Ctrl + 按一下 [macOS]）函式資料夾中的函式**json**檔案，然後選取 [**新增**系結]：
 
@@ -212,7 +212,7 @@ Visual Studio Code 可讓您遵循一組方便的提示，將系結新增至您�
 context.bindings.msg = "Name passed to the function: " req.query.name;
 ```
 
-若要深入瞭解，請參閱[佇列儲存體輸出](functions-bindings-storage-queue.md#output)系結參考。
+若要深入瞭解，請參閱[佇列儲存體輸出](functions-bindings-storage-queue-output.md)系結參考。
 
 ---
 

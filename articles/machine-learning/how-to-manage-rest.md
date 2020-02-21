@@ -9,18 +9,18 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/31/2020
-ms.openlocfilehash: 6d6e7d564722d1c2ad4713dd1d39e7cba5ed0605
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: e1e19f985c9aa02759c6fff3c634c216c7ef42ef
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964952"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525544"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>使用 REST 建立、執行及刪除 Azure ML 資源
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-有數種方式可以管理您的 Azure ML 資源。 您可以使用[入口網站](https://portal.azure.com/)、[命令列介面](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)或[Python SDK](https://docs.microsoft.com/python/api/overview/azureml-sdk/?view=azure-ml-py)。 或者，您可以選擇 [REST API]。 REST API 以標準方式使用 HTTP 動詞命令來建立、取得、更新和刪除資源。 REST API 適用于任何可提出 HTTP 要求的語言或工具。 REST 的直接結構通常是讓它成為腳本環境和 MLOps 自動化的絕佳選擇。 
+有數種方式可以管理您的 Azure ML 資源。 您可以使用[入口網站](https://portal.azure.com/)、[命令列介面](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)或[Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)。 或者，您可以選擇 [REST API]。 REST API 以標準方式使用 HTTP 動詞命令來建立、取得、更新和刪除資源。 REST API 適用于任何可提出 HTTP 要求的語言或工具。 REST 的直接結構通常是讓它成為腳本環境和 MLOps 自動化的絕佳選擇。 
 
 在本文中，您將學會如何：
 
@@ -201,9 +201,9 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/mod
 
 請注意，若要列出實驗，路徑的開頭為 `history/v1.0`，而若要列出模型，路徑的開頭為 `modelmanagement/v1.0`。 REST API 分成數個作業群組，每個都有不同的路徑。 下列連結中的 API 參考檔會列出各種作業的作業、參數和回應碼。
 
-|區域|Path|參考|
+|區域|路徑|參考|
 |-|-|-|
-|Artifacts|成品/v2.0/|[REST API 參考](https://docs.microsoft.com/rest/api/azureml/artifacts)|
+|成品|成品/v2.0/|[REST API 參考](https://docs.microsoft.com/rest/api/azureml/artifacts)|
 |資料存放區|資料存放區/v1.0/|[REST API 參考](https://docs.microsoft.com/rest/api/azureml/datastores)|
 |超參數微調|hyperdrive/v1.0/|[REST API 參考](https://docs.microsoft.com/rest/api/azureml/hyperparametertuning)|
 |模型|modelmanagement/v1.0/|[REST API 參考](https://docs.microsoft.com/rest/api/azureml/modelsanddeployments/mlmodels)|
@@ -213,7 +213,7 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/mod
 
 |URL 元件|範例|
 |-|-|
-| HTTPs://| |
+| https://| |
 | 區域-api-伺服器/ | centralus.api.azureml.ms/ |
 | 作業-路徑/ | 歷程記錄/v1.0/ |
 | 訂閱/{您的訂用帳戶識別碼}/ | 訂閱/abcde123-abab-abab-1234-0123456789abc/ |

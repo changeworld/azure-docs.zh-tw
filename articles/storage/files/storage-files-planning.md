@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9b71c4a5c0f245d9da97dc8f096d15c5386bf919
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 98965a50037558f512401e09915021234790840d
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368609"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526473"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>規劃 Azure 檔案服務部署
 
@@ -176,7 +176,7 @@ Azure 檔案儲存體 premium 共用同時支援 LRS 和 ZRS，但 ZRS 目前可
 
 具有 100 TiB 容量限制的標準檔案共用，可在所有 Azure 區域中全域取得-
 
-- LRS：除了南非北部和南非西部以外的所有區域。
+- LRS：除了南非北部、南非西部、德國中西部和德國北部以外的所有區域。
 - ZRS：除了日本東部、北歐、南非北部以外的所有區域。
 - GRS/切換：不支援。
 

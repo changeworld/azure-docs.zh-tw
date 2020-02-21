@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 846819c3a05baf4ef1174d4e086f09893e834b2a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: fdc7d9fce3ebce4603369262f164ba72b1e39499
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847793"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484310"
 ---
 # <a name="user-flows-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的使用者流程
 
@@ -81,10 +81,8 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 
 在上述任何情況下，不保證電子郵件地址都經過驗證。 租用戶系統管理員可以在本機帳戶的基本原則中停用電子郵件驗證。 即使已啟用電子郵件地址驗證，如果地址來自社交識別提供者且尚未變更，則不會加以驗證。
 
-只有 **otherMails** 和 **signInNames** 屬性會透過 Active Directory Graph API 公開。 無法使用強式驗證詳細資料屬性中的電子郵件地址。
+只有**otherMails**和**signInNames**屬性會透過 Microsoft Graph API 公開。 無法使用強式驗證詳細資料屬性中的電子郵件地址。
 
 ## <a name="next-steps"></a>後續步驟
 
 若要建立建議的使用者流程，請依照[教學課程：建立使用者流程](tutorial-create-user-flows.md)中的指示進行。
-
-

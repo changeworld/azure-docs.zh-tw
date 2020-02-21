@@ -12,12 +12,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 04/13/2018
 ms.author: cjiang
-ms.openlocfilehash: 9bb228725d5ad8e3583c73be09c582478f74a1e8
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: b4750ad9fdfa214aa4d7b6a0355c319e7eb1d9c3
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77471885"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484395"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>在 Azure 中建立、重新啟動或調整 VM 大小時，對配置失敗進行疑難排解
 
@@ -87,9 +87,9 @@ ms.locfileid: "77471885"
 
 |傳統 VM 系列/大小|建議的較新版 VM 系列/大小|詳細資訊|
 |----------------------|----------------------------|--------------------|
-|Av1 系列|[Av2 系列](../windows/sizes-general.md#av2-series)|https://azure.microsoft.com/blog/new-av2-series-vm-sizes/
-|Dv1 或 DSv1 系列 (D1 到 D5)|[Dv3 或 DSv3 系列](../windows/sizes-general.md#dsv3-series-1)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
-|Dv1 或 DSv1 系列 (D11 到 D14)|[Ev3 或 ESv3 系列](../windows/sizes-memory.md#ev3-series)|
+|Av1 系列|[Av2 系列](../av2-series.md)|https://azure.microsoft.com/blog/new-av2-series-vm-sizes/
+|Dv1 或 DSv1 系列 (D1 到 D5)|[Dv3 或 DSv3 系列](../dv3-dsv3-series.md)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
+|Dv1 或 DSv1 系列 (D11 到 D14)|[Ev3 或 ESv3 系列](../ev3-esv3-series.md)|
 |D15v2 或 DS15v2|如果您使用 Resource Manager 部署模型來利用較大的 VM 大小，請考慮移轉至 D16v3/DS16v3 或 D32v3/DS32v3。 這些 VM 是專為在最新一代硬體上執行而設計。 如果您使用 Resource Manager 部署模型來確保 VM 執行個體與單一客戶專用的硬體隔離，請考慮移轉至新的隔離式 VM 大小 (E64i_v3 或 E64is_v3)，這些 VM 是專為在最新一代硬體上執行而設計。 |https://azure.microsoft.com/blog/new-isolated-vm-sizes-now-available/
 
 ## <a name="allocation-failures-for-large-deployments-more-than-500-cores"></a>大型部署 (超過 500 個核心) 的配置失敗

@@ -1,33 +1,59 @@
 ---
-title: Azure 應用程式組態時間點快照集
-description: 概略說明時間點快照集在 Azure 應用程式設定中的運作方式
+title: 從時間點取出索引鍵/值組
+titleSuffix: Azure App Configuration
+description: 使用 Azure 應用程式組態中的時間點快照集，抓取舊的機碼值組
 services: azure-app-configuration
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
-ms.date: 02/24/2019
-ms.openlocfilehash: 4a352ba913b6ad4e3c8607677078e21070f294fd
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/20/2020
+ms.openlocfilehash: 1e2a4f7a7bc5db1b6a49f085821f7fa2bde54229
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899584"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523647"
 ---
 # <a name="point-in-time-snapshot"></a>時間點快照集
 
-Azure 應用程式設定會記錄新的索引鍵值組建立和後續修改的精確時間。 這些記錄會形成完整的金鑰-值變更時間軸。 應用程式組態存放區可以重建任何索引鍵值的過往記錄，並重新執行其在任何給定時刻的過往值，直到當下的時間。 使用這項功能，可讓您進行「時間回溯」，並擷取舊的索引鍵值。 例如，您可以取得昨天的最新部署之前的組態設定，以便復原先前的設定和復原應用程式。
+Azure 應用程式組態會維護對索引鍵/值組所做之變更的記錄。 此記錄會提供索引鍵/值變更的時間軸。 您可以重建任何索引鍵/值的歷程記錄，並在前七天內的任何時間提供其過去的值。 使用這項功能，您可以「準時」回溯並取出舊的索引鍵/值。 例如，您可以復原最近部署之前使用的設定，以便將應用程式回復到先前的設定。
 
 ## <a name="key-value-retrieval"></a>擷取金鑰-值
 
-若要擷取過去的索引鍵值，請在 REST API 呼叫的 HTTP 標頭中，指定索引鍵值快照集的建立時間。 例如：
+您可以使用 Azure PowerShell 來取出過去的索引鍵值。  使用 `az appconfig revision list`，並新增適當的參數來抓取必要的值。  指定 Azure 應用程式組態實例，方法是提供存放區名稱（`--name {app-config-store-name}`），或使用連接字串（`--connection-string {your-connection-string}`）。 指定特定的時間點（`--datetime`），並指定要傳回的專案數上限（`--top`），以限制輸出。
 
-```rest
-GET /kv HTTP/1.1
-Accept-Datetime: Sat, 1 Jan 2019 02:10:00 GMT
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+取得索引鍵/值的所有已記錄變更。
+
+```azurepowershell
+az appconfig revision list --name {your-app-config-store-name}.
 ```
 
-目前，應用程式設定會保留七天的變更記錄。
+取出金鑰 `environment` 和標籤 `test` 和 `prod`的所有記錄變更。
+
+```azurepowershell
+az appconfig revision list --name {your-app-config-store-name} --key environment --label test,prod
+```
+
+在階層式金鑰空間 `environment:prod`中取出所有記錄的變更。
+
+```azurepowershell
+az appconfig revision list --name {your-app-config-store-name} --key environment:prod:* 
+```
+
+在特定時間點，取得金鑰 `color` 的所有記錄變更。
+
+```azurepowershell
+az appconfig revision list --connection-string {your-app-config-connection-string} --key color --datetime "2019-05-01T11:24:12Z" 
+```
+
+將最後10個記錄的變更取出至您的索引鍵/值，並只傳回 `key`、`label`和 `last-modified` 時間戳記的值。
+
+```azurepowershell
+az appconfig revision list --name {your-app-config-store-name} --top 10 --fields key,label,last-modified
+```
 
 ## <a name="next-steps"></a>後續步驟
 

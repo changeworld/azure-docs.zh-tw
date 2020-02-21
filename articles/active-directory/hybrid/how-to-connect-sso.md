@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ef8f1ef381c86b6eec62c96ff6dcf87522de040
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: f1b7e4716e731e6b73e3ac60b64baa71043906fc
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367972"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483749"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory 無縫單一登入
 
@@ -36,7 +36,7 @@ ms.locfileid: "77367972"
 ![無縫單一登入](./media/how-to-connect-sso/sso1.png)
 
 >[!IMPORTANT]
->無縫 SSO 只需要將使用者的裝置**加入網域**，但不會用於已[加入 Azure AD](../active-directory-azureadjoin-overview.md)或 [已加入混合式 Azure AD] （。/active-directory-azureadjoin-overview.md）裝置。 SSO pn Azure AD 已加入，且混合式 Azure AD 聯結的運作方式是根據 [主要重新整理權杖] （.。/active-directory/devices/concept-primary-refresh-token.md)
+>無縫 SSO 只需要將使用者的裝置**加入網域**，但不會用於已[加入 Azure AD](../devices/concept-azure-ad-join.md)或已[加入混合式 Azure AD](../devices/concept-azure-ad-join-hybrid.md)的裝置。 Azure AD 加入的 SSO，並根據主要的重新整理[權杖](../devices/concept-primary-refresh-token.md)來加入混合式 Azure AD。
 
 ## <a name="key-benefits"></a>主要權益
 
@@ -78,7 +78,7 @@ ms.locfileid: "77367972"
 \*\*\*需要[其他設定](how-to-connect-sso-quick-start.md#browser-considerations)
 
 >[!NOTE]
->對於 Windows 10，建議使用 [Azure AD Join](../active-directory-azureadjoin-overview.md) 以獲得 Azure AD 最佳單一登入體驗。
+>對於 Windows 10，建議使用 [Azure AD Join](../devices/concept-azure-ad-join.md) 以獲得 Azure AD 最佳單一登入體驗。
 
 ## <a name="next-steps"></a>後續步驟
 

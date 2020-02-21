@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: f6819ddce777a5740ef1f5f9ab887a0646c4e464
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: e53db645875646b1e021cc0d3d760677e1128c0c
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122333"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486371"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps：使用 Azure Machine Learning 進行模型管理、部署和監視
 
@@ -120,7 +120,7 @@ Microsoft Power BI 支援使用機器學習模型來進行資料分析。 如需
 
 ## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>取得捕獲端對端 ML 生命週期所需的治理資料
 
-Azure ML 可讓您追蹤所有 ML 資產的端對端審核記錄。 具體而言：
+Azure ML 可讓您追蹤所有 ML 資產的端對端審核記錄。 具體來說：
 
 - Azure ML 會[與 Git 整合](how-to-set-up-training-targets.md#gitintegration)，以追蹤您的程式碼來自哪個存放庫/分支/認可的資訊。
 - [AZURE ML 資料集](how-to-create-register-datasets.md)可協助您追蹤、分析和版本資料。 
@@ -138,6 +138,19 @@ Azure ML 會將主要事件發佈到 Azure EventGrid，可用來通知和自動�
 此資訊可協助您瞭解模型的使用方式。 收集的輸入資料可能也有助於定型模型的未來版本。
 
 如需詳細資訊，請參閱[如何啟用模型資料收集](how-to-enable-data-collection.md)。
+
+## <a name="retrain-your-model-on-new-data"></a>針對新資料重新定型您的模型
+
+通常，您會想要更新您的模型，或甚至從頭重新訓練，因為您會收到新的資訊。 有時候，接收新資料是網域的預期部分。 如在[資料集上偵測資料漂移（預覽）](how-to-monitor-datasets.md)中所討論的其他時間，模型效能可能會因為特定感應器的變更、自然資料變更（例如季節性效果）或功能在其與其他功能之間的關聯性轉移而降低。 
+
+「如何? 知道是否應該重新訓練？」的通用解答 但是先前所討論的 Azure ML 事件和監視工具是自動化的好起點。 一旦您決定重新定型，您應該： 
+
+- 使用可重複的自動化程式來前置處理您的資料
+- 訓練您的新模型
+- 將新模型的輸出與舊模型的輸出進行比較
+- 使用預先定義的準則，選擇是否要取代舊的模型 
+
+上述步驟的主題是，您的重新定型應該是自動化的，而不是特定的。 [Azure Machine Learning 管線](concept-ml-pipelines.md)是建立與資料準備、訓練、驗證和部署相關之工作流程的好辦法。 閱讀[使用 Azure Machine Learning 設計工具（預覽）](how-to-retrain-designer.md)重新定型模型，以瞭解管線和 Azure Machine Learning 設計工具如何融入重新定型案例。 
 
 ## <a name="automate-the-ml-lifecycle"></a>自動化 ML 生命週期 
 

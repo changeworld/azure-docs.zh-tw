@@ -5,25 +5,24 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/05/2019
-ms.openlocfilehash: 75811382867b93c778641ece42971018eff39949
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: hdinsightactive
+ms.date: 02/18/2020
+ms.openlocfilehash: c5c8a41aef92876ceaa66fb23c01c6ece1609f91
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73664637"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484803"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>在 Azure HDInsight 上搭配使用 Apache Zeppelin Notebook 和 Apache Spark 叢集
 
 HDInsight Spark 叢集包含可用來執行 [Apache Spark](https://zeppelin.apache.org/) 作業的 [Apache Zeppelin](https://spark.apache.org/) Notebook。 在本文中，您將學習如何在 HDInsight 叢集上使用 Zeppelin Notebook。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* Azure 訂用帳戶。 請參閱 [取得 Azure 免費試用](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
-* HDInsight 上的 Apache Spark 叢集。 如需指示，請參閱 [在 Azure HDInsight 中建立 Apache Spark 叢集](apache-spark-jupyter-spark-sql.md)。
-* 叢集主要儲存體的 URI 配置。 這會針對 Azure Blob 儲存體 `wasb://`，`abfs://` 用於 `adl://` Azure Data Lake Storage Gen2 或 Azure Data Lake Storage Gen1。 如果已啟用 Blob 儲存體的安全傳輸，則 URI 會 `wasbs://`。  如需詳細資訊，請參閱[Azure 儲存體中的「需要安全傳輸](../../storage/common/storage-require-secure-transfer.md)」。
+* HDInsight 上的 Apache Spark 叢集。 如需指示，請參閱[在 Azure HDInsight 中建立 Apache Spark 叢集](apache-spark-jupyter-spark-sql.md)。
+* 叢集主要儲存體的 URI 配置。 這會針對 Azure Blob 儲存體 `wasb://`，`abfs://` 用於 `adl://` Azure Data Lake Storage Gen2 或 Azure Data Lake Storage Gen1。 如果已啟用 Blob 儲存體的安全傳輸，則 URI 會 `wasbs://`。  如需詳細資訊，請參閱[Azure 儲存體中需要安全傳輸](../../storage/common/storage-require-secure-transfer.md)。
 
 ## <a name="launch-an-apache-zeppelin-notebook"></a>啟動 Apache Zeppelin Notebook
 
@@ -136,7 +135,7 @@ HDInsight Spark 叢集包含可用來執行 [Apache Spark](https://zeppelin.apac
 
     a. 在「Maven 儲存機制」中找出套件。 在本文中，我們使用了[spark-csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar)。
 
-    b.這是另一個 C# 主控台應用程式。 從儲存機制收集 [GroupId]、[ArtifactId] 及 [版本] 的值。
+    b. 從儲存機制收集 [GroupId]、[ArtifactId] 及 [版本] 的值。
 
     ![搭配 Jupyter 筆記本使用外部套件](./media/apache-spark-zeppelin-notebook/use-external-packages-with-jupyter.png "搭配 Jupyter Notebook 使用外部套件")
 
@@ -154,7 +153,7 @@ Zeppelin Notebook 會儲存到叢集前端節點。 因此，如果您刪除叢�
 
 ## <a name="livy-session-management"></a>Livy 工作階段管理
 
-當您在 Zeppelin Notebook 中執行第一個程式碼段落時，HDInsight Spark 叢集中便會建立新的 Livy 工作階段。 此工作階段可供您後續建立的所有 Zeppelin Notebook 共用。 如果 Livy 工作階段因為某些原因而遭到刪除 (叢集重新開機等)，您就無法從 Zeppelin Notebook 執行作業。
+當您在 Zeppelin Notebook 中執行第一個程式碼段落時，HDInsight Spark 叢集中便會建立新的 Livy 工作階段。 此工作階段可供您後續建立的所有 Zeppelin Notebook 共用。 如果基於某些原因而終止 Livy 會話（叢集重新開機等等），您將無法從 Zeppelin 筆記本執行作業。
 
 在這種情況下，您必須先執行下列步驟，然後才能開始從 Zeppelin Notebook 執行作業。  
 
@@ -168,20 +167,55 @@ Zeppelin Notebook 會儲存到叢集前端節點。 因此，如果您刪除叢�
 
 3. 從現有的 Zeppelin Notebook 執行程式碼單元。 這會在 HDInsight 叢集中建立新的 Livy 工作階段。
 
-## <a name="seealso"></a>另請參閱
+## <a name="general-information"></a>一般資訊
 
-* [概觀：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)
+### <a name="validate-service"></a>驗證服務
+
+若要從 Ambari 驗證服務，請流覽至 `https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary`，其中 CLUSTERNAME 是您的叢集名稱。
+
+若要從命令列驗證服務，請透過 SSH 連線到前端節點。 使用命令 `sudo su zeppelin`將使用者切換至 zeppelin。 狀態命令：
+
+|Command |描述 |
+|---|---|
+|`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh status`|服務狀態。|
+|`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh --version`|服務版本。|
+|`ps -aux | grep zeppelin`|識別 PID。|
+
+### <a name="log-locations"></a>記錄檔位置
+
+|服務 |Path |
+|---|---|
+|zeppelin-伺服器|/usr/hdp/current/zeppelin-server/|
+|伺服器記錄|/var/log/zeppelin|
+|設定解譯器，Shiro，log4j|/usr/hdp/current/zeppelin-server/conf 或/etc/zeppelin/conf|
+|PID 目錄|/var/run/zeppelin|
+
+### <a name="enable-debug-logging"></a>啟用偵錯記錄
+
+1. 流覽至 `https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary`，其中 CLUSTERNAME 是您的叢集名稱。
+
+1. 流覽至 **[**  > **Advanced zeppelin-log4j-properties** ] > **log4j_properties_content**的 [內容]。
+
+1. 修改 `log4j.appender.dailyfile.Threshold = INFO` 以 `log4j.appender.dailyfile.Threshold = DEBUG`。
+
+1. 加入 `log4j.logger.org.apache.zeppelin.realm=DEBUG`。
+
+1. 儲存變更並重新啟動服務。
+
+## <a name="next-steps"></a>後續步驟
+
+[概觀：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>案例
 
-* [Apache Spark 和 BI：在 HDInsight 中搭配使用 Spark 和 BI 工具執行互動式資料分析](apache-spark-use-bi-tools.md)
+* [Apache Spark 和 BI：在 HDInsight 中搭配 BI 工具使用 Spark 執行互動式資料分析](apache-spark-use-bi-tools.md)
 * [Apache Spark 和機器學習服務：使用 HDInsight 中的 Spark，使用 HVAC 資料來分析建築物溫度](apache-spark-ipython-notebook-machine-learning.md)
 * [Apache Spark 和機器學習服務：在 HDInsight 中使用 Spark 預測食品檢查結果](apache-spark-machine-learning-mllib-ipython.md)
 * [在 HDInsight 中使用 Apache Spark 進行網站記錄分析](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>建立及執行應用程式
 
-* [使用 Scala 來建立獨立的應用程式](apache-spark-create-standalone-application.md)
+* [使用 Scala 建立獨立應用程式](apache-spark-create-standalone-application.md)
 * [利用 Apache Livy 在 Apache Spark 叢集上遠端執行作業](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>工具和擴充功能

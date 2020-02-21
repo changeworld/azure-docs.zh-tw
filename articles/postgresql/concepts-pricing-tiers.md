@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: 2b5d5bfff3ff97efb351497c48a404beada2036a
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: b5a2d8a812c5b3b0021ad4f74fc705049807cb1b
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209336"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485058"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫中的定價層-單一伺服器
 
@@ -23,7 +23,6 @@ ms.locfileid: "77209336"
 | 虛擬核心 | 1, 2 | 2、4、8、16、32、64 |2、4、8、16、32 |
 | 每個虛擬核心的記憶體 | 2 GB | 5 GB | 10 GB |
 | 儲存體大小 | 5 GB 至 1 TB | 5 GB 到 16 TB | 5 GB 到 16 TB |
-| 儲存體類型 | Azure 標準儲存體 | Azure 進階儲存體 | Azure 進階儲存體 |
 | 資料庫備份的保留期限 | 7 至 35 天 | 7 至 35 天 | 7 至 35 天 |
 
 若要選擇定價層，請從下表著手。
@@ -46,7 +45,7 @@ ms.locfileid: "77209336"
 
 |    | **基本** | **一般用途** | **記憶體最佳化** |
 |:---|:----------|:--------------------|:---------------------|
-| 儲存體類型 | Azure 標準儲存體 | Azure 進階儲存體 | Azure 進階儲存體 |
+| 儲存體類型 | 基本儲存體 | 一般用途儲存體 | 一般用途儲存體 |
 | 儲存體大小 | 5 GB 至 1 TB | 5 GB 到 16 TB | 5 GB 到 16 TB |
 | 儲存體遞增大小 | 1 GB | 1 GB | 1 GB |
 | IOPS | 變數 |3 IOPS/GB<br/>最小值為 100 IOPS<br/>最大 20000 IOPS | 3 IOPS/GB<br/>最小值為 100 IOPS<br/>最大 20000 IOPS |

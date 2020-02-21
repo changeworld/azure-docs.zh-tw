@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: manayar
-ms.openlocfilehash: fc95cae925e0961bb2f21397ebecb4db09117e11
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: ddebde842b5c63dcd5a46fc13e38f2df710a229e
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271823"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485432"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 虛擬機器擴展集的網路
 
@@ -64,6 +64,8 @@ az vmss create \
     --lb mylb \
     --backend-pool-name mybackendpool
 ```
+    >[!NOTE]
+    >After the scale set has been created, the backend port cannot be modified for a load balancing rule used by a health probe of the load balancer. To change the port, you can remove the health probe by updating the Azure virtual machine scale set, update the port and then configure the health probe again. 
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>建立參考應用程式閘道的擴展集
 若要建立使用應用程式閘道的擴展集，請和此 ARM 範本設定中一樣，參考擴展集 ipConfigurations 區段中的應用程式閘道後端位址集區：
@@ -177,7 +179,7 @@ Get-AzPublicIpAddress -ResourceGroupName myrg -Name myvmsspip
 若要查詢 [Azure 資源總管](https://resources.azure.com)：
 
 1. 在 Web 瀏覽器中開啟 [Azure 資源總管](https://resources.azure.com)。
-1. 從左側按一下 [訂用帳戶] 旁的 [+]，即可展開訂用帳戶。 如果 [訂用帳戶] 底下只有一個項目，則可能已經展開。
+1. 從左側按一下 [訂用帳戶] 旁的 [ *]+* ，即可展開訂用帳戶。 如果 [訂用帳戶] 底下只有一個項目，則可能已經展開。
 1. 展開您的訂用帳戶。
 1. 展開您的資源群組。
 1. 展開 [提供者]。

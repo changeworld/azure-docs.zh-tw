@@ -6,12 +6,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 03/19/2019
-ms.openlocfilehash: 26bd6c8b31bd16c058c5cb35cab086117b9f8cc5
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 8559dc357d34d505d45cd0a6491183345ae5cf61
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845807"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526581"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault 虛刪除概觀
 
@@ -34,15 +34,13 @@ Azure Key Vault 是由 Azure Resource Manager 管理的追蹤資源。 Azure Res
 
 ### <a name="soft-delete-behavior"></a>虛刪除行為
 
-使用此功能時，對 Key Vault 或 Key Vault 物件進行的 DELETE 作業是虛刪除，實際上會在指定的保留期間 (90 天) 內保留資源，但物件看起來會像已刪除。 此服務進一步提供復原已刪除物件的機制 (基本上是復原刪除作業)。 
+啟用虛刪除時，標示為已刪除資源的資源會保留一段指定的時間（預設為90天）。 此服務進一步提供復原已刪除物件的機制 (基本上是復原刪除作業)。
 
-針對新建立的金鑰保存庫，現在預設會開啟虛刪除。 您可以透過[Azure CLI](key-vault-soft-delete-cli.md)或[Azure Powershell](key-vault-soft-delete-powershell.md)來停用它。
+建立新的金鑰保存庫時，預設會開啟虛刪除。 您可以建立金鑰保存庫，而不需要透過[Azure CLI](key-vault-soft-delete-cli.md)或[Azure Powershell](key-vault-soft-delete-powershell.md)進行虛刪除。 一旦在金鑰保存庫上啟用虛刪除，即無法停用
 
-預設的保留期限為90天，但可以透過 Azure 入口網站將保留原則間隔設定為從7到90天的值。 清除保護保留原則會使用相同的間隔。 
+預設的保留期限為90天，但在建立金鑰保存庫期間，您可以透過 Azure 入口網站，將保留原則間隔設定為從7到90天的值。 清除保護保留原則會使用相同的間隔。 設定之後，就無法變更保留原則間隔。
 
-在金鑰保存庫上設定虛刪除之後，即無法停用它，而且無法變更保留原則間隔。 
-
-在達到保留期限之前，您無法重複使用已虛刪除的金鑰保存庫名稱。 
+在達到保留期限之前，您無法重複使用已虛刪除的金鑰保存庫名稱。
 
 ### <a name="purge-protection"></a>清除保護 
 

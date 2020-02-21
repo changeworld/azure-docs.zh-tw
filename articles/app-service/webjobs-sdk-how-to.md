@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 83884447e9856b5e3db26e4829ccbd3ab1baed13
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 715415929afaad36e4854e75a2b7b5360d22a6bf
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549082"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486337"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>如何使用 Azure WebJobs SDK 進行事件驅動幕後處理
 
@@ -71,7 +71,7 @@ static void Main(string[] args)
 
 您可以在開發模式中執行主機，讓本機開發更有效率。 以下是當您在開發模式中執行時，所變更的一些設定：
 
-| 屬性 | 開發設定 |
+| 內容 | 開發設定 |
 | ------------- | ------------- |
 | `Tracing.ConsoleLevel` | `TraceLevel.Verbose` 將記錄輸出最大化。 |
 | `Queues.MaxPollingInterval`  | 最低值可確保立即觸發佇列方法。  |
@@ -355,8 +355,8 @@ class Program
 
 您可以設定某些觸發程式和系結的行為。 設定它們的程式取決於 SDK 版本。
 
-* **第3版。*x*：** 在 `ConfigureWebJobs`中呼叫 `Add<Binding>` 方法時設定設定。
-* **第2版。*x*：** 在您傳入 `JobHost`的設定物件中設定屬性，藉以進行設定。
+* **第3版。*x*：** 在 `ConfigureWebJobs`中呼叫 `Add<Binding>` 方法時，設定設定。
+* **第2版。*x*：** 藉由在您傳入 `JobHost`的設定物件中設定屬性來進行設定。
 
 這些系結特有的設定相當於 Azure Functions 中的[主機 json 專案](../azure-functions/functions-host-json.md)檔中的設定。
 
@@ -453,7 +453,7 @@ static async Task Main()
 }
 ```
 
-如需詳細資訊，請參閱[佇列儲存體](../azure-functions/functions-bindings-storage-queue.md#hostjson-settings)系結文章。
+如需詳細資訊，請參閱[佇列儲存體](../azure-functions/functions-bindings-storage-queue-trigger.md#hostjson-properties)系結文章。
 
 #### <a name="version-2x"></a>第2版。*x*
 
@@ -524,7 +524,7 @@ static async Task Main()
 }
 ```
 
-如需詳細資訊，請參閱[服務匯流排](../azure-functions/functions-bindings-service-bus.md#hostjson-settings)系結文章。
+如需詳細資訊，請參閱[服務匯流排](../azure-functions/functions-bindings-service-bus-output.md#hostjson-settings)系結文章。
 
 ### <a name="configuration-for-other-bindings"></a>其他繫結的設定
 
@@ -680,11 +680,11 @@ public static void CreateQueueMessage(
 
 Azure Functions 檔提供有關每個系結類型的參考資訊。 您會在每個系結參考文章中找到下列資訊。 （此範例是以儲存體佇列為基礎）。
 
-* [封裝](../azure-functions/functions-bindings-storage-queue.md#packages---functions-1x)。 您需要安裝的套件，包括對 Webjob SDK 專案中的系結支援。
-* [範例](../azure-functions/functions-bindings-storage-queue.md#trigger)。 程式碼範例。 C#類別庫範例適用于 webjob SDK。 只要省略 `FunctionName` 屬性即可。
-* [屬性](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes-and-annotations)。 要用於系結類型的屬性。
-* [設定](../azure-functions/functions-bindings-storage-queue.md#trigger---configuration)。 屬性屬性和構造函式參數的說明。
-* [使用方式](../azure-functions/functions-bindings-storage-queue.md#trigger---usage)。 您可以系結的類型，以及系結運作方式的相關資訊。 例如：輪詢演算法、有害佇列處理。
+* [封裝](../azure-functions/functions-bindings-storage-queue.md)。 您需要安裝的套件，包括對 Webjob SDK 專案中的系結支援。
+* [範例](../azure-functions/functions-bindings-storage-queue-trigger.md)。 程式碼範例。 C#類別庫範例適用于 webjob SDK。 只要省略 `FunctionName` 屬性即可。
+* [屬性](../azure-functions/functions-bindings-storage-queue-trigger.md#attributes-and-annotations)。 要用於系結類型的屬性。
+* [設定](../azure-functions/functions-bindings-storage-queue-trigger.md#configuration)。 屬性屬性和構造函式參數的說明。
+* [使用量](../azure-functions/functions-bindings-storage-queue-trigger.md#usage)。 您可以系結的類型，以及系結運作方式的相關資訊。 例如：輪詢演算法、有害佇列處理。
   
 如需系結參考文章的清單，請參閱 Azure Functions 的觸發程式[和](../azure-functions/functions-triggers-bindings.md#supported-bindings)系結文章中的「支援的系結」。 在該清單中，只有 Azure Functions （而非 Webjob SDK）支援 HTTP、Webhook 和 Event Grid 系結。
 
@@ -809,7 +809,7 @@ WebJobs SDK 使用 [Azure 二進位大型物件租用](../storage/common/storage
 
 如果您想要確保即使有多個主 web 應用程式實例，也只會執行一個函式的實例，您可以使用[`Singleton`](#singleton-attribute)屬性。
 
-## <a name="filters"></a>篩選
+## <a name="filters"></a>篩選器
 
 函式篩選條件 (預覽) 讓您能夠使用自己的邏輯自訂 WebJobs 執行管線。 篩選器類似[ASP.NET Core 篩選](https://docs.microsoft.com/aspnet/core/mvc/controllers/filters)條件。 您可以將它們實作為套用至函數或類別的宣告式屬性。 如需詳細資訊，請參閱[函式篩選條件](https://github.com/Azure/azure-webjobs-sdk/wiki/Function-Filters) (英文)。
 
@@ -825,11 +825,11 @@ WebJobs SDK 使用 [Azure 二進位大型物件租用](../storage/common/storage
 |------------|---|
 |追蹤       | 0 |
 |偵錯       | 1 |
-|資訊 | 2 |
+|內容 | 2 |
 |警告     | 3 |
-|錯誤       | 4 |
-|危急    | 5 |
-|無        | 6 |
+|Error       | 4 |
+|重大    | 5 |
+|None        | 6 |
 
 您可以將每個類別個別篩選成特定[`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel)。 例如，您可能想要看見二進位大型物件觸發程序處理的所有記錄，但只看見所有其他項目的 `Error` 以上等級記錄。
 

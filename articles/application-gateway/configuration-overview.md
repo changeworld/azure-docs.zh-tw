@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: 146dbdbf2f4e107e81515ce83188fa48c52aef36
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 355909052a711773545114179cd5d1ca01811cec
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714866"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485075"
 ---
 # <a name="application-gateway-configuration-overview"></a>應用程式閘道設定總覽
 
@@ -210,7 +210,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 如果已針對基本規則設定重新導向，則相關聯接聽程式上的所有要求都會重新導向至目標。 這是*全域*重新導向。 如果已針對以路徑為基礎的規則設定重新導向，則只會重新導向特定網站區域中的要求。 例如， */cart/\** 表示的購物車區域。 這是以*路徑為基礎的重新導向*。
 
-如需重新導向的詳細資訊，請參閱[應用程式閘道重新導向總覽](https://docs.microsoft.com/azure/application-gateway/redirect-overview)。
+如需重新導向的詳細資訊，請參閱[應用程式閘道重新導向總覽](redirect-overview.md)。
 
 #### <a name="redirection-type"></a>重新導向類型
 
@@ -227,24 +227,24 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 ![應用程式閘道元件 對話方塊](./media/configuration-overview/configure-redirection.png)
 
 如需有關 HTTP 對 HTTPS 重新導向的詳細資訊，請參閱：
-- [使用 Azure 入口網站的 HTTP 對 HTTPS 重新導向](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal)
-- [使用 PowerShell 的 HTTP 對 HTTPS 重新導向](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-powershell)
-- [使用 Azure CLI 的 HTTP 對 HTTPS 重新導向](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-cli)
+- [使用 Azure 入口網站的 HTTP 對 HTTPS 重新導向](redirect-http-to-https-portal.md)
+- [使用 PowerShell 的 HTTP 對 HTTPS 重新導向](redirect-http-to-https-powershell.md)
+- [使用 Azure CLI 的 HTTP 對 HTTPS 重新導向](redirect-http-to-https-cli.md)
 
 ##### <a name="external-site"></a>外部網站
 
 當您想要將與此規則相關聯之接聽程式上的流量重新導向至外部網站時，請選擇 [外部網站]。 您可以從轉送至重新導向目標的要求中，選擇包含原始要求中的查詢字串。 您無法將路徑轉送到原始要求中的外部網站。
 
 如需重新導向的詳細資訊，請參閱：
-- [使用 PowerShell 將流量重新導向至外部網站](https://docs.microsoft.com/azure/application-gateway/redirect-external-site-powershell)
-- [使用 CLI 將流量重新導向至外部網站](https://docs.microsoft.com/azure/application-gateway/redirect-external-site-cli)
+- [使用 PowerShell 將流量重新導向至外部網站](redirect-external-site-powershell.md)
+- [使用 CLI 將流量重新導向至外部網站](redirect-external-site-cli.md)
 
 #### <a name="rewrite-the-http-header-setting"></a>重寫 HTTP 標頭設定
 
 此設定會在要求和回應封包于用戶端與後端集區之間移動時，新增、移除或更新 HTTP 要求和回應標頭。 如需詳細資訊，請參閱
 
- - [重寫 HTTP 標頭總覽](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)
- - [設定 HTTP 標頭重寫](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers-portal)
+ - [重寫 HTTP 標頭總覽](rewrite-http-headers.md)
+ - [設定 HTTP 標頭重寫](rewrite-http-headers-portal.md)
 
 ## <a name="http-settings"></a>HTTP 設定
 
@@ -252,7 +252,18 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ### <a name="cookie-based-affinity"></a>以 Cookie 為基礎的同質性
 
-當您想要在同一部伺服器上保留使用者會話時，這項功能很有用。 閘道管理的 cookie 可讓應用程式閘道將使用者會話的後續流量導向至同一部伺服器進行處理。 當會話狀態儲存在伺服器本機上供使用者會話使用時，這點很重要。 如果應用程式無法處理以 cookie 為基礎的親和性，您就無法使用這項功能。 若要使用它，請確定用戶端支援 cookie。
+Azure 應用程式閘道會使用閘道管理的 cookie 來維護使用者會話。 當使用者將第一個要求傳送至應用程式閘道時，它會在回應中設定具有包含會話詳細資料之雜湊值的親和性 cookie，讓具有相似性 cookie 的後續要求會路由至相同的後端伺服器維持與您的密切。 
+
+當您想要在相同的伺服器上保留使用者會話，以及在使用者會話的本機儲存會話狀態時，這項功能就很有用。 如果應用程式無法處理以 cookie 為基礎的親和性，您就無法使用這項功能。 若要使用它，請確定用戶端支援 cookie。
+
+自**2020 年2月 17**日起， [Chromium](https://www.chromium.org/Home) [v80 update](https://chromiumdash.appspot.com/schedule)會提供一個規定，其中沒有 SameSite 屬性的 HTTP cookie 會被視為 SameSite = 不嚴格。 在 CORS （跨原始資源分享）要求的情況下，如果 cookie 必須在協力廠商內容中傳送，則必須使用 "SameSite = None;安全的屬性，而且只能透過 HTTPS 傳送。 否則，在僅限 HTTP 的案例中，瀏覽器不會傳送協力廠商內容中的 cookie。 這項更新自 Chrome 的目標是要加強安全性，並避免跨網站偽造要求（CSRF）攻擊。 
+
+為了支援這項變更，應用程式閘道（所有 SKU 類型）除了現有的**ApplicationGatewayAffinity** cookie 之外，也會插入另一個名為**ApplicationGatewayAffinityCORS**的相同 cookie，但此 cookie 現在會有兩個以上的屬性 **"SameSite = None;「安全**」新增至其中，以便即使跨原始來源要求也可以維護粘滯會話。
+
+請注意，預設的親和性 cookie 名稱是**ApplicationGatewayAffinity** ，而這可由使用者進行變更。 如果您使用自訂的親和性 cookie 名稱，則會以 CORS 作為尾碼新增額外的 cookie，例如**CustomCookieNameCORS**。
+
+> [!NOTE]
+> 如果設定了屬性**SameSite = None** ，則 cookie 也應該包含**安全**旗標，而且應該透過**HTTPS**傳送。 因此，如果需要透過 CORS 的會話親和性，您必須將工作負載遷移至 HTTPS。 如需應用程式閘道的詳細資訊，請參閱 SSL 卸載和端對端 SSL 檔-[總覽](ssl-overview.md)，[如何設定 ssl](create-ssl-portal.md)卸載，[如何設定端對端 ssl](end-to-end-ssl-portal.md)。
 
 ### <a name="connection-draining"></a>清空連線
 
@@ -262,7 +273,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 應用程式閘道支援 HTTP 和 HTTPS，以將要求路由傳送至後端伺服器。 如果您選擇 HTTP，則會加密對後端伺服器的流量。 如果無法接受未加密的通訊，請選擇 [HTTPS]。
 
-這項設定與接聽程式中的 HTTPS 結合，[可支援端對端 SSL](https://docs.microsoft.com/azure/application-gateway/ssl-overview)。 這可讓您安全地將加密的機密資料傳輸至後端。 後端集區中已啟用端對端 SSL 的每部後端伺服器，都必須使用憑證來設定，以允許安全通訊。
+這項設定與接聽程式中的 HTTPS 結合，[可支援端對端 SSL](ssl-overview.md)。 這可讓您安全地將加密的機密資料傳輸至後端。 後端集區中已啟用端對端 SSL 的每部後端伺服器，都必須使用憑證來設定，以允許安全通訊。
 
 ### <a name="port"></a>連接埠
 
@@ -301,7 +312,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ### <a name="use-custom-probe"></a>使用自訂探查
 
-此設定會將[自訂探查](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#custom-health-probe)與 HTTP 設定產生關聯。 您只能將一個自訂探查與 HTTP 設定產生關聯。 如果您未明確建立自訂探查的關聯，則會使用[預設探查](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#default-health-probe-settings)來監視後端的健全狀況。 我們建議您建立自訂探查，以便更充分掌控後端的健全狀況監視。
+此設定會將[自訂探查](application-gateway-probe-overview.md#custom-health-probe)與 HTTP 設定產生關聯。 您只能將一個自訂探查與 HTTP 設定產生關聯。 如果您未明確建立自訂探查的關聯，則會使用[預設探查](application-gateway-probe-overview.md#default-health-probe-settings)來監視後端的健全狀況。 我們建議您建立自訂探查，以便更充分掌控後端的健全狀況監視。
 
 > [!NOTE]
 > 自訂探查不會監視後端集區的健康情況，除非對應的 HTTP 設定已明確與接聽程式相關聯。
@@ -335,7 +346,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ## <a name="health-probes"></a>健康狀態探查
 
-應用程式閘道預設會監視其後端中所有資源的健全狀況。 但強烈建議您為每個後端 HTTP 設定建立自訂探查，以進一步掌控健全狀況監視。 若要瞭解如何設定自訂探查，請參閱[自訂健康情況探查設定](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#custom-health-probe-settings)。
+應用程式閘道預設會監視其後端中所有資源的健全狀況。 但強烈建議您為每個後端 HTTP 設定建立自訂探查，以進一步掌控健全狀況監視。 若要瞭解如何設定自訂探查，請參閱[自訂健康情況探查設定](application-gateway-probe-overview.md#custom-health-probe-settings)。
 
 > [!NOTE]
 > 建立自訂健康情況探查之後，您必須將它與後端 HTTP 設定產生關聯。 自訂探查不會監視後端集區的健康情況，除非對應的 HTTP 設定已明確與使用規則的接聽程式相關聯。

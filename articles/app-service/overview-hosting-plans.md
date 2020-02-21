@@ -6,12 +6,12 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 11/09/2017
 ms.custom: seodec18
-ms.openlocfilehash: c0b28bd7a854d1b4a8b387e40fb045d47160768d
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: f1012f8c00de4b19bbf6206408ec1a806e09e54f
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672273"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482338"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service 方案概觀
 
@@ -37,7 +37,7 @@ App Service 方案的_定價層_可決定您獲得哪些 App Service 功能，�
 <a name="new-pricing-tier-premiumv2"></a>
 
 > [!NOTE]
-> 新的 **PremiumV2** 層提供搭載更快速處理器的 [Dv2 系列 VM](../virtual-machines/windows/sizes-general.md#dv2-series)、SSD 儲存體，以及**標準**層雙倍的記憶體/核心比率。 **PremiumV2** 也支援透過增加執行個體計數來提高規模，同時仍提供標準方案中的所有進階功能。 現有**進階**層中可用的所有功能都包含在 **PremiumV2** 中。
+> 新的 **PremiumV2** 層提供搭載更快速處理器的 [Dv2 系列 VM](../virtual-machines/dv2-dsv2-series.md)、SSD 儲存體，以及**標準**層雙倍的記憶體/核心比率。 **PremiumV2** 也支援透過增加執行個體計數來提高規模，同時仍提供標準方案中的所有進階功能。 現有**進階**層中可用的所有功能都包含在 **PremiumV2** 中。
 >
 > 類似於其他專用層，此層有三個可用的 VM 大小：
 >

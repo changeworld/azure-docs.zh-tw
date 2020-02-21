@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 278639b27d821e8d6440248a1add43bcd9de22c6
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: e75146266568001d8fee7be26898ac8bdfffb7fc
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775220"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484781"
 ---
 # <a name="what-are-the-default-and-recommended-node-configurations-for-azure-hdinsight"></a>Azure HDInsight 的預設和建議節點設定為何？
 
@@ -44,9 +44,9 @@ ms.locfileid: "74775220"
 
 如需每個 VM 類型規格的詳細資訊，請參閱下列檔：
 
-* [一般用途的虛擬機器大小： Dv2 系列1-5](../virtual-machines/linux/sizes-general.md#dv2-series)
-* [記憶體優化的虛擬機器大小： Dv2 系列11-15](../virtual-machines/linux/sizes-memory.md#dv2-series-11-15)
-* [一般用途的虛擬機器大小： Av2 系列1-8](../virtual-machines/linux/sizes-general.md#av2-series)
+* [一般用途的虛擬機器大小： Dv2 系列1-5](../virtual-machines/dv2-dsv2-series.md)
+* [記憶體優化的虛擬機器大小： Dv2 系列11-15](../virtual-machines/dv2-dsv2-series-memory.md)
+* [一般用途的虛擬機器大小： Av2 系列1-8](../virtual-machines/av2-series.md)
 
 ### <a name="all-supported-regions-except-brazil-south-and-japan-west"></a>除了巴西南部和日本西部以外的所有支援區域
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/08/2019
+ms.date: 02/19/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b1489ce6bee2ce25ffb268ef20cc8fa587664619
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f4265659df786cf0a972b6dcf4f122bfc68535c1
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848924"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483273"
 ---
 # <a name="set-up-sign-in-with-a-microsoft-account-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則來設定以 Microsoft 帳戶進行登入
 
@@ -24,12 +24,12 @@ ms.locfileid: "76848924"
 
 本文說明如何使用 Azure Active Directory B2C （Azure AD B2C）中的[自訂原則](custom-policy-overview.md)，讓使用者能夠從 Microsoft 帳戶登入。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 完成在 [Azure Active Directory B2C 中開始使用自訂原則](custom-policy-get-started.md)中的步驟。
 - 如果您還沒有 Microsoft 帳戶，請前往 [https://www.live.com/](https://www.live.com/) 來建立。
 
-## <a name="add-an-application"></a>新增應用程式
+## <a name="register-an-application"></a>註冊應用程式
 
 若要讓具有 Microsoft 帳戶的使用者能夠登入，您必須在 Azure AD 租使用者內註冊應用程式。 此 Azure AD 租用戶與您的 Azure AD B2C 租用戶不同。
 
@@ -47,6 +47,19 @@ ms.locfileid: "76848924"
 1. 輸入密碼的**描述**，例如*MSA 應用程式用戶端密碼*，然後按一下 [**新增**]。
 1. 記錄 [**值**] 資料行中顯示的應用程式密碼。 您會在下一節中使用此值。
 
+## <a name="configuring-optional-claims"></a>設定選擇性宣告
+
+如果您想要從 Azure AD 取得 `family_name` 和 `given_name` 宣告，您可以在 Azure 入口網站 UI 或應用程式資訊清單中設定應用程式的選擇性宣告。 如需詳細資訊，請參閱[如何提供選擇性宣告給您的 Azure AD 應用程式](../active-directory/develop/active-directory-optional-claims.md)。
+
+1. 登入 [Azure 入口網站](https://portal.azure.com)。 搜尋並選取 [Azure Active Directory]。
+1. 從 [**管理**] 區段中，選取 [**應用程式註冊**]。
+1. 在清單中選取您想要為其設定選擇性宣告的應用程式。
+1. 從 [**管理**] 區段中，選取 [**權杖設定（預覽）** ]。
+1. 選取 [**新增選擇性**宣告]。
+1. 選取您想要設定的權杖類型。
+1. 選取要新增的選擇性宣告。
+1. 按一下 [新增]。
+
 ## <a name="create-a-policy-key"></a>建立原則金鑰
 
 既然您已在 Azure AD 租使用者中建立應用程式，您必須將該應用程式的用戶端密碼儲存在您的 Azure AD B2C 租使用者中。
@@ -60,7 +73,7 @@ ms.locfileid: "76848924"
 1. 輸入原則金鑰的 [名稱]。 例如： `MSASecret` 。 金鑰名稱前面會自動新增前置詞 `B2C_1A_`。
 1. 在 [**秘密**] 中，輸入您在上一節中記錄的用戶端密碼。
 1. 針對 [金鑰使用方法]，選取 `Signature`。
-1. 按一下頁面底部的 [新增]。
+1. 按一下 **[建立]** 。
 
 ## <a name="add-a-claims-provider"></a>新增宣告提供者
 
@@ -94,10 +107,12 @@ ms.locfileid: "76848924"
             <Key Id="client_secret" StorageReferenceId="B2C_1A_MSASecret" />
           </CryptographicKeys>
           <OutputClaims>
-            <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="live.com" />
-            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
-            <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="sub" />
+            <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="oid" />
+            <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name" />
+            <OutputClaim ClaimTypeReferenceId="surName" PartnerClaimType="family_name" />
             <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
+            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
+            <OutputClaim ClaimTypeReferenceId="identityProvider" PartnerClaimType="iss" />
             <OutputClaim ClaimTypeReferenceId="email" />
           </OutputClaims>
           <OutputClaimsTransformations>
@@ -133,7 +148,7 @@ ms.locfileid: "76848924"
 此時，您已設定身分識別提供者，但它尚未在任何註冊或登入畫面中提供。 若要讓它可供使用，請建立現有範本使用者旅程圖的複本，然後加以修改，讓它也具有 Microsoft 帳戶身分識別提供者。
 
 1. 從 Starter Pack 開啟 TrustFrameworkBase.xml 檔案。
-1. 尋找並複製包含 `Id="SignUpOrSignIn"` 之 **UserJourney** 元素的整個內容。
+1. 尋找並複製包含 **之**UserJourney`Id="SignUpOrSignIn"` 元素的整個內容。
 1. 開啟 *TrustFrameworkExtensions.xml*，並尋找 **UserJourneys** 元素。 如果此元素不存在，請新增。
 1. 貼上您複製的整個 **UserJourney** 元素內容作為 **UserJourneys** 元素的子系。
 1. 重新命名使用者旅程圖的識別碼。 例如： `SignUpSignInMSA` 。
@@ -142,7 +157,7 @@ ms.locfileid: "76848924"
 
 **ClaimsProviderSelection** 元素類似於註冊或登入畫面上的識別提供者按鈕。 如果您為 Microsoft 帳戶新增**ClaimsProviderSelection**元素，當使用者在頁面上時，就會顯示新的按鈕。
 
-1. 在 TrustFrameworkExtensions.xml 檔案中，於您所建立的使用者旅程圖中尋找包含 `Order="1"` 的 **OrchestrationStep** 元素。
+1. 在 TrustFrameworkExtensions.xml 檔案中，於您所建立的使用者旅程圖中尋找包含 **的**OrchestrationStep`Order="1"` 元素。
 1. 在 **ClaimsProviderSelects** 底下新增下列元素。 將 **TargetClaimsExchangeId** 的值設定成適當的值，例如 `MicrosoftAccountExchange`：
 
     ```XML
@@ -153,7 +168,7 @@ ms.locfileid: "76848924"
 
 現在已備妥按鈕，您需要將它連結至動作。 在此案例中，動作是用於 Azure AD B2C 與 Microsoft 帳戶通訊以接收權杖。
 
-1. 在使用者旅程圖中，尋找包含 `Order="2"` 的 **OrchestrationStep**。
+1. 在使用者旅程圖中，尋找包含 **的**OrchestrationStep`Order="2"`。
 1. 新增下列 **ClaimsExchange** 元素，請確定用於 ID 的值與用於 **TargetClaimsExchangeId** 的值相同：
 
     ```xml
@@ -179,7 +194,7 @@ ms.locfileid: "76848924"
 1. 將 **PublicPolicyUri** 的值更新成原則的 URI。 例如：`http://contoso.com/B2C_1A_signup_signin_msa`
 1. 更新**DefaultUserJourney**中**ReferenceId**屬性的值，以符合您稍早建立之使用者旅程圖的識別碼（SignUpSignInMSA）。
 1. 儲存您的變更、上傳檔案，然後選取清單中的新原則。
-1. 請確定已在 [**選取應用程式**] 欄位中選取您在上一節中建立的 Azure AD B2C 應用程式（或完成必要條件，例如*webapp1*或*testapp1*），然後按一下 [立即執行] 進行測試。
+1. 請確定已在 [**選取應用程式**] 欄位中選取您在上一節中建立的 Azure AD B2C 應用程式（或完成必要條件，例如*webapp1*或*testapp1*），然後按一下 [**立即執行**] 進行測試。
 1. 選取 [ **Microsoft 帳戶**] 按鈕並登入。
 
     如果登入作業成功，系統會將您重新導向至顯示已解碼權杖的 `jwt.ms`，如下所示：

@@ -4,15 +4,15 @@ description: 了解如何在 Azure Kubernetes Service (AKS) 叢集中安裝和�
 author: paulbouwer
 ms.service: container-service
 ms.topic: article
-ms.date: 11/15/2019
+ms.date: 02/19/2020
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: d886205e88db780a7a09554391bd975f57eebfe7
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 15b73380269c568977b524a63ca709e352485433
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251731"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485211"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中安裝和使用 Istio
 
@@ -98,10 +98,7 @@ Istio 的[Helm][helm]安裝方法將于未來淘汰。 適用于 Istio 的新安
 > Istio 目前必須排程在 Linux 節點上執行。 如果您的叢集中有 Windows Server 節點，您必須確定 Istio pod 只排程在 Linux 節點上執行。 我們將使用[節點選取器][kubernetes-node-selectors]來確定 pod 已排程至正確的節點。
 
 > [!CAUTION]
-> [SDS （秘密探索服務）][istio-feature-sds]和[Istio CNI][istio-feature-cni] Istio 功能目前是以[Alpha][istio-feature-stages]提供，因此請先考慮一下，再啟用這些功能。 
->
-> 請注意，現在已針對 AKS 上的所有 Kubernetes 1.13 和更新版本**啟用**[服務帳戶權杖磁片區投射][kubernetes-feature-sa-projected-volume]Kubernetes 功能（SDS 的需求）。
-
+> [SDS （秘密探索服務）][istio-feature-sds]和[Istio CNI][istio-feature-cni] Istio 功能目前是以[Alpha][istio-feature-stages]提供，因此請先考慮一下，再啟用這些功能。 此外，目前的 AKS 版本不會啟用[服務帳戶權杖磁片區投射][kubernetes-feature-sa-projected-volume]Kubernetes 功能（SDS 的需求）。
 使用下列內容建立名為 `istio.aks.yaml` 的檔案。 這個檔案會保留[Istio 控制平面的規格][istio-control-plane]詳細資料，以供設定 Istio。
 
 ```yaml

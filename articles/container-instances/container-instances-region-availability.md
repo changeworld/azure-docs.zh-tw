@@ -2,14 +2,14 @@
 title: 依區域的資源可用性
 description: Azure 容器執行個體服務的計算和記憶體資源在不同 Azure 區域中的可用性。
 ms.topic: article
-ms.date: 01/31/2020
+ms.date: 02/19/2020
 ms.author: danlep
-ms.openlocfilehash: 3f64a13331658c1360c9d54f6f57a68c2c91fc6f
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: f429a165fe26cc9fc7aa973231f5a77163feef4a
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77117804"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525294"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure 容器執行個體在 Azure 區域中的資源可用性
 
@@ -24,7 +24,7 @@ ms.locfileid: "77117804"
 
 ## <a name="availability---general"></a>可用性 - 一般
 
-下列區域和資源可供包含 Linux 和[支援的](container-instances-faq.md#what-windows-base-os-images-are-supported) Windows Server 2016 容器的容器群組使用。
+下欄區域和最大資源可供具有 Linux 和[支援](container-instances-faq.md#what-windows-base-os-images-are-supported)的 Windows Server 2016 容器的容器群組使用。
 
 | 區域 | OS | 最大 CPU | 最大記憶體（GB） | 儲存體 (GB) |
 | -------- | -- | :---: | :-----------: | :---: |
@@ -37,7 +37,7 @@ ms.locfileid: "77117804"
 
 ## <a name="availability---windows-server-2019-ltsc-1809-deployments-preview"></a>可用性 - Windows Server 2019 LTSC，1809年部署 (預覽)
 
-下列區域和資源可供包含 Windows Server 2019 容器 (預覽) 的容器群組使用。
+下欄區域和最大資源可供具有 Windows Server 2019 容器（預覽）的容器群組使用。
 
 | 區域 | OS | 最大 CPU | 最大記憶體（GB） | 儲存體 (GB) |
 | -------- | -- | :---: | :-----------: | :---: |
@@ -47,13 +47,16 @@ ms.locfileid: "77117804"
 
 ## <a name="availability---virtual-network-deployment"></a>可用性-虛擬網路部署
 
-下欄區域和資源可供[Azure 虛擬網路](container-instances-vnet.md)中部署的容器群組使用。
+[Azure 虛擬網路](container-instances-vnet.md)中部署的容器群組可使用下欄區域和資源上限。
 
 [!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
 
 ## <a name="availability---gpu-resources-preview"></a>可用性 - GPU 資源 (預覽)
 
-下列區域和資源可供隨 [GPU 資源](container-instances-gpu.md) (預覽) 部署的容器群組使用。
+下欄區域和最大資源可供使用[GPU 資源](container-instances-gpu.md)（預覽）部署的容器群組使用。
+
+> [!IMPORTANT]
+> 只有在要求時，才可以使用 GPU 資源。 若要要求存取 GPU 資源，請提交[Azure 支援要求][azure-support]。
 
 [!INCLUDE [container-instances-gpu-regions](../../includes/container-instances-gpu-regions.md)]
 [!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]
@@ -63,3 +66,6 @@ ms.locfileid: "77117804"
 如果您想要了解其他區域或增加的資源可用性，請經由 [aka.ms/aci/feedback](https://aka.ms/aci/feedback) 告知小組人員。
 
 如需對容器執行個體部署疑難排解的相關資訊，請參閱[對 Azure 容器執行個體的部署問題進行疑難排解](container-instances-troubleshooting.md)。
+
+
+[azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest

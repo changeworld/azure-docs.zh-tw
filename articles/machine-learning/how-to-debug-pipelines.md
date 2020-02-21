@@ -1,7 +1,7 @@
 ---
 title: 對機器學習管線進行調試和疑難排解
 titleSuffix: Azure Machine Learning
-description: 在適用于 Python 的 Azure Machine Learning SDK 中，針對機器學習管線進行 Debug 和疑難排解。 瞭解開發管線的常見陷阱，以及協助您在遠端執行之前和期間進行腳本的秘訣。
+description: 在適用于 Python 的 Azure Machine Learning SDK 中，針對機器學習管線進行 Debug 和疑難排解。 瞭解開發管線的常見陷阱，以及協助您在遠端執行之前和期間進行腳本的秘訣。 瞭解如何使用 Visual Studio Code，以互動方式對您的機器學習管線進行偵錯工具。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,17 +9,22 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 12/12/2019
-ms.openlocfilehash: 5ba26584f08e705b24749a76d6f607aa84b48fab
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 0080b64e16b979b32aa5a91f9ee497e5f9ec47fb
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76769116"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485364"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>對機器學習管線進行調試和疑難排解
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本文中，您將瞭解如何在[AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)和[Azure Machine Learning 設計工具（預覽）](https://docs.microsoft.com/azure/machine-learning/concept-designer)中，針對[機器學習管線](concept-ml-pipelines.md)進行調試和疑難排解。
+在本文中，您將瞭解如何在[AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)和[Azure Machine Learning 設計工具（預覽）](https://docs.microsoft.com/azure/machine-learning/concept-designer)中，針對[機器學習管線](concept-ml-pipelines.md)進行調試和疑難排解。 提供資訊的方式如下：
+
+* 使用 Azure Machine Learning SDK 進行 Debug
+* 使用 Azure Machine Learning 設計工具進行 Debug
+* 使用 Application Insights 進行 Debug
+* 使用 Visual Studio Code （VS Code）和適用於 Visual Studio 的 Python 工具（PTVSD）以互動方式進行調試
 
 ## <a name="debug-and-troubleshoot-in-the-azure-machine-learning-sdk"></a>Azure Machine Learning SDK 中的調試和疑難排解
 下列各節概述建立管線時的常見陷阱，以及用來偵測管線中執行之程式碼的不同策略。 當您無法如預期般執行管線時，請使用下列秘訣。
@@ -67,7 +72,7 @@ ms.locfileid: "76769116"
 > [!TIP]
 > 可以在工作區的 [**端點**] 索引標籤中找到*已發行管線*的執行。 在**實驗**或**管線**中可以找到*非已發行管線*的執行。
 
-### <a name="troubleshooting-tips"></a>疑難排解提示
+### <a name="troubleshooting-tips"></a>疑難排解秘訣
 
 下表包含管線開發期間的常見問題，以及可能的解決方案。
 
@@ -83,11 +88,11 @@ ms.locfileid: "76769116"
 
 下表提供管線的不同偵錯工具選項的資訊。 這不是詳盡的清單，因為除了此處所示的 Azure Machine Learning、Python 和 OpenCensus 以外，其他選項仍存在。
 
-| 程式庫                    | 類型   | 範例                                                          | 目的地                                  | 資源                                                                                                                                                                                                                                                                                                                    |
+| 程式庫                    | 類型   | 範例                                                          | Destination                                  | 資源                                                                                                                                                                                                                                                                                                                    |
 |----------------------------|--------|------------------------------------------------------------------|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Azure Machine Learning SDK | 計量 | `run.log(name, val)`                                             | Azure Machine Learning 入口網站 UI             | [如何追蹤實驗](how-to-track-experiments.md#available-metrics-to-track)<br>[azureml. core. 執行類別](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=experimental)                                                                                                                                                 |
-| Python 列印/記錄    | 記錄    | `print(val)`<br>`logging.info(message)`                          | 驅動程式記錄檔，Azure Machine Learning 設計工具 | [如何追蹤實驗](how-to-track-experiments.md#available-metrics-to-track)<br><br>[Python 記錄](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
-| OpenCensus Python          | 記錄    | `logger.addHandler(AzureLogHandler())`<br>`logging.log(message)` | Application Insights-追蹤                | [Application Insights 中的 Debug 管線](how-to-debug-pipelines-application-insights.md)<br><br>[OpenCensus Azure 監視器匯出工具](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)<br>[Python 記錄操作手冊](https://docs.python.org/3/howto/logging-cookbook.html) |
+| Python 列印/記錄    | Log    | `print(val)`<br>`logging.info(message)`                          | 驅動程式記錄檔，Azure Machine Learning 設計工具 | [如何追蹤實驗](how-to-track-experiments.md#available-metrics-to-track)<br><br>[Python 記錄](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
+| OpenCensus Python          | Log    | `logger.addHandler(AzureLogHandler())`<br>`logging.log(message)` | Application Insights-追蹤                | [Application Insights 中的 Debug 管線](how-to-debug-pipelines-application-insights.md)<br><br>[OpenCensus Azure 監視器匯出工具](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)<br>[Python 記錄操作手冊](https://docs.python.org/3/howto/logging-cookbook.html) |
 
 #### <a name="logging-options-example"></a>記錄選項範例
 
@@ -148,6 +153,239 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 
 ## <a name="debug-and-troubleshoot-in-application-insights"></a>Application Insights 中的 Debug 和疑難排解
 如需以這種方式使用 OpenCensus Python 程式庫的詳細資訊，請參閱此指南： [Application Insights 中的機器學習管線的 Debug 和疑難排解](how-to-debug-pipelines-application-insights.md)
+
+## <a name="debug-and-troubleshoot-in-visual-studio-code"></a>Visual Studio Code 中的 Debug 和疑難排解
+
+在某些情況下，您可能需要以互動方式來對 ML 管線中使用的 Python 程式碼進行偵錯工具。 藉由使用 Visual Studio Code （VS Code）和適用於 Visual Studio 的 Python 工具（PTVSD），您可以附加至在定型環境中執行的程式碼。
+
+### <a name="prerequisites"></a>Prerequisites
+
+* 設定為使用__Azure 虛擬網路__的__Azure Machine Learning 工作區__。
+* 在管線步驟中使用 Python 腳本的__Azure Machine Learning 管線__。 例如，PythonScriptStep。
+* Azure Machine Learning 計算叢集，位於__虛擬網路中__，並__由管線用來進行定型__。
+* __虛擬網路中__的__開發環境__。 開發環境可能是下列其中一項：
+
+    * 虛擬網路中的 Azure 虛擬機器
+    * 虛擬網路中筆記本 VM 的計算實例
+    * 由虛擬私人網路（VPN）連線到虛擬網路的用戶端電腦。
+
+如需有關搭配 Azure Machine Learning 使用 Azure 虛擬網路的詳細資訊，請參閱[在 azure 虛擬網路中保護 AZURE ML 實驗和推斷作業](how-to-enable-virtual-network.md)。
+
+### <a name="how-it-works"></a>運作方式
+
+您的 ML 管線步驟會執行 Python 腳本。 這些腳本會進行修改，以執行下列動作：
+    
+1. 記錄正在執行之主機的 IP 位址。 您可以使用 IP 位址，將偵錯工具連接至腳本。
+
+2. 啟動 PTVSD debug 元件，並等候偵錯工具連接。
+
+3. 從您的開發環境中，您可以監視定型程式所建立的記錄，以找出執行腳本的 IP 位址。
+
+4. 您可以使用 `launch.json` 檔案，告訴 VS Code 要將偵錯工具連接到的 IP 位址。
+
+5. 您會附加偵錯工具，並以互動方式逐步執行腳本。
+
+### <a name="configure-python-scripts"></a>設定 Python 腳本
+
+若要啟用偵錯工具，請對 ML 管線中的步驟所使用的 Python 腳本進行下列變更：
+
+1. 新增下列 import 語句：
+
+    ```python
+    import ptvsd
+    import socket
+    from azureml.core import Run
+    ```
+
+1. 新增下列引數。 這些引數可讓您視需要啟用偵錯工具，並設定附加偵錯工具的超時時間：
+
+    ```python
+    parser.add_argument('--remote_debug', action='store_true')
+    parser.add_argument('--remote_debug_connection_timeout', type=int,
+                    default=300,
+                    help=f'Defines how much time the Azure ML compute target '
+                    f'will await a connection from a debugger client (VSCODE).')
+    ```
+
+1. 加入下列語句。 這些語句會載入目前的執行內容，讓您可以記錄執行程式碼所在節點的 IP 位址：
+
+    ```python
+    global run
+    run = Run.get_context()
+    ```
+
+1. 加入可啟動 PTVSD 的 `if` 語句，並等候偵錯工具附加。 如果偵錯工具在超時之前沒有附加，腳本會繼續正常運作。
+
+    ```python
+    if args.remote_debug:
+        print(f'Timeout for debug connection: {args.remote_debug_connection_timeout}')
+        # Log the IP and port
+        ip = socket.gethostbyname(socket.gethostname())
+        print(f'ip_address: {ip}')
+        ptvsd.enable_attach(address=('0.0.0.0', 5678),
+                            redirect_output=True)
+        # Wait for the timeout for debugger to attach
+        ptvsd.wait_for_attach(timeout=args.remote_debug_connection_timeout)
+        print(f'Debugger attached = {ptvsd.is_attached()}')
+    ```
+
+下列 Python 範例顯示可啟用偵錯工具的基本 `train.py` 檔案：
+
+```python
+# Copyright (c) Microsoft. All rights reserved.
+# Licensed under the MIT license.
+
+import argparse
+import os
+import ptvsd
+import socket
+from azureml.core import Run
+
+print("In train.py")
+print("As a data scientist, this is where I use my training code.")
+
+parser = argparse.ArgumentParser("train")
+
+parser.add_argument("--input_data", type=str, help="input data")
+parser.add_argument("--output_train", type=str, help="output_train directory")
+
+# Argument check for remote debugging
+parser.add_argument('--remote_debug', action='store_true')
+parser.add_argument('--remote_debug_connection_timeout', type=int,
+                    default=300,
+                    help=f'Defines how much time the AML compute target '
+                    f'will await a connection from a debugger client (VSCODE).')
+# Get run object, so we can find and log the IP of the host instance
+global run
+run = Run.get_context()
+
+args = parser.parse_args()
+
+# Start debugger if remote_debug is enabled
+if args.remote_debug:
+    print(f'Timeout for debug connection: {args.remote_debug_connection_timeout}')
+    # Log the IP and port
+    ip = socket.gethostbyname(socket.gethostname())
+    print(f'ip_address: {ip}')
+    ptvsd.enable_attach(address=('0.0.0.0', 5678),
+                        redirect_output=True)
+    # Wait for the timeout for debugger to attach
+    ptvsd.wait_for_attach(timeout=args.remote_debug_connection_timeout)
+    print(f'Debugger attached = {ptvsd.is_attached()}')
+
+print("Argument 1: %s" % args.input_data)
+print("Argument 2: %s" % args.output_train)
+
+if not (args.output_train is None):
+    os.makedirs(args.output_train, exist_ok=True)
+    print("%s created" % args.output_train)
+```
+
+### <a name="configure-ml-pipeline"></a>設定 ML 管線
+
+若要提供啟動 PTVSD 和取得執行內容所需的 Python 套件，請建立[環境]()並設定 `pip_packages=['ptvsd', 'azureml-sdk==1.0.83']`。 變更 SDK 版本，使其符合您所使用的版本。 下列程式碼片段示範如何建立環境：
+
+```python
+# Use a RunConfiguration to specify some additional requirements for this step.
+from azureml.core.runconfig import RunConfiguration
+from azureml.core.conda_dependencies import CondaDependencies
+from azureml.core.runconfig import DEFAULT_CPU_IMAGE
+
+# create a new runconfig object
+run_config = RunConfiguration()
+
+# enable Docker 
+run_config.environment.docker.enabled = True
+
+# set Docker base image to the default CPU-based image
+run_config.environment.docker.base_image = DEFAULT_CPU_IMAGE
+
+# use conda_dependencies.yml to create a conda environment in the Docker image for execution
+run_config.environment.python.user_managed_dependencies = False
+
+# specify CondaDependencies obj
+run_config.environment.python.conda_dependencies = CondaDependencies.create(conda_packages=['scikit-learn'],
+                                                                           pip_packages=['ptvsd', 'azureml-sdk==1.0.83'])
+```
+
+在 [[設定 Python 腳本](#configure-python-scripts)] 區段中，已將兩個新的引數新增至 ML 管線步驟所使用的腳本。 下列程式碼片段示範如何使用這些引數來啟用元件的偵錯工具，以及設定超時。 它也會示範如何使用稍早建立的環境，方法是設定 `runconfig=run_config`：
+
+```python
+# Use RunConfig from a pipeline step
+step1 = PythonScriptStep(name="train_step",
+                         script_name="train.py",
+                         arguments=['--remote_debug', '--remote_debug_connection_timeout', 300],
+                         compute_target=aml_compute, 
+                         source_directory=source_directory,
+                         runconfig=run_config,
+                         allow_reuse=False)
+```
+
+當管線執行時，每個步驟都會建立子執行。 如果已啟用偵錯工具，修改過的腳本會在子執行的 `70_driver_log.txt` 中記錄類似下列文字的資訊：
+
+```text
+Timeout for debug connection: 300
+ip_address: 10.3.0.5
+```
+
+儲存 `ip_address` 值。 此資訊使用於下一節。
+
+> [!TIP]
+> 您也可以從針對此管線步驟執行的子系執行記錄中，尋找 IP 位址。 如需有關如何查看此資訊的詳細資訊，請參閱[監視 AZURE ML 實驗執行和計量](how-to-track-experiments.md)。
+
+### <a name="configure-development-environment"></a>設定開發環境
+
+1. 若要在您的 VS Code 開發環境上安裝適用於 Visual Studio 的 Python 工具（PTVSD），請使用下列命令：
+
+    ```
+    python -m pip install --upgrade ptvsd
+    ```
+
+    如需搭配 VS Code 使用 PTVSD 的詳細資訊，請參閱[遠端偵錯](https://code.visualstudio.com/docs/python/debugging#_remote-debugging)程式。
+
+1. 若要設定 VS Code 與執行偵錯工具的 Azure Machine Learning 計算通訊，請建立新的 debug 設定：
+
+    1. 從 VS Code 選取 [__調試__] 功能表，然後選取 [__開啟__設定]。 隨即開啟名為 [__啟動 json__ ] 的檔案。
+
+    1. 在 __啟動 json__檔案] 中，尋找包含 `"configurations": [`的行，並在其後插入下列文字。 將 `"host": "10.3.0.5"` 專案變更為您在上一節的記錄中傳回的 IP 位址。 將 `"localRoot": "${workspaceFolder}/code/step"` 專案變更為包含正在進行調試之腳本複本的本機目錄：
+
+        ```json
+        {
+            "name": "Azure Machine Learning Compute: remote debug",
+            "type": "python",
+            "request": "attach",
+            "port": 5678,
+            "host": "10.3.0.5",
+            "redirectOutput": true,
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}/code/step1",
+                    "remoteRoot": "."
+                }
+            ]
+        }
+        ```
+
+        > [!IMPORTANT]
+        > 如果 [設定] 區段中已經有其他專案，請在您插入的程式碼後面新增逗號（，）。
+
+        > [!TIP]
+        > 最佳做法是將腳本的資源保留在不同的目錄中，這就是為什麼 `localRoot` 範例值會 `/code/step1`參考。
+        >
+        > 如果您要對多個腳本進行偵錯工具，請在不同的目錄中為每個腳本建立個別的設定區段。
+
+    1. 儲存 [__啟動 json__檔案]。
+
+### <a name="connect-the-debugger"></a>連接偵錯工具
+
+1. 開啟 VS Code 並開啟腳本的本機複本。
+2. 在附加之後，設定您想要讓腳本停止的中斷點。
+3. 當子進程正在執行腳本，且 `Timeout for debug connection` 顯示在記錄中時，請使用 F5 鍵或選取 [ __Debug__]。 出現提示時，選取 [ __Azure Machine Learning 計算：遠端 debug__ ] 設定。 您也可以從側邊列選取 [debug] 圖示，從 [偵錯工具] 下拉式功能表中選取 [ __Azure Machine Learning：遠端 debug__ ] 專案，然後使用綠色箭號來附加偵錯工具。
+
+    此時，VS Code 會連接到計算節點上的 PTVSD，並在您先前設定的中斷點停止。 您現在可以在程式碼執行時逐步執行、查看變數等。
+
+    > [!NOTE]
+    > 如果記錄檔顯示 `Debugger attached = False`的專案，則超時時間已過期，而腳本會繼續進行，但不含偵錯工具。 再次提交管線，並在 `Timeout for debug connection` 訊息之後和超時時間到期之前，連接偵錯工具。
 
 ## <a name="next-steps"></a>後續步驟
 

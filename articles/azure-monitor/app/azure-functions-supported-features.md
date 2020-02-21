@@ -8,24 +8,25 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: ce8fcc827afdf0102a459f2c6b58db45eff72fa0
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 807dde08d6ae88054524cb9e397d36db41324482
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467382"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484565"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>適用於 Azure Functions 的 Application Insights 支援的功能
 
 Azure Functions 提供與 Application Insights 的[內建整合](../../azure-functions/functions-monitoring.md)，可透過 ILogger 介面來使用。 以下列出目前支援的功能。 請檢閱 Azure Functions 的[開始使用](../../azure-functions/functions-monitoring.md#enable-application-insights-integration)指南。
 
-如需執行階段版本的詳細資訊，請參閱[這裡](../../azure-functions/functions-versions.md)。
+如需函數執行時間版本的詳細資訊，請參閱[這裡](../../azure-functions/functions-versions.md)。
+
+如需 Application Insights 相容版本的詳細資訊，請[參閱相依](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/)性。
 
 ## <a name="supported-features"></a>支援的功能
 
 | Azure Functions                       | V1                | V2 & V3   | 
 |-----------------------------------    |---------------    |------------------ |
-| **Application Insights .NET SDK**   | **2.5.0**       | **2.9.1**         |
 | | | | 
 | **自動收集**        |                 |                   |               
 | &bull; 要求                     | 是             | 是               | 

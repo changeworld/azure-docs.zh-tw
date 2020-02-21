@@ -1,36 +1,35 @@
 ---
-title: 使用 Azure 排程器來建立排定的工作 - Azure 入口網站 | Microsoft Docs
-description: 了解如何在 Azure 入口網站中使用 Azure 排程器來建立、排定及執行您的第一個自動化工作
+title: 建立排程工作-Azure 入口網站
+description: 在 Azure 入口網站中使用 Azure 排程器建立、排程和執行您的第一個自動化工作
 services: scheduler
 ms.service: scheduler
 ms.suite: infrastructure-services
 author: derek1ee
-ms.author: deli
-ms.reviewer: klam
-ms.assetid: e69542ec-d10f-4f17-9b7a-2ee441ee7d68
+ms.author: estfan
+ms.reviewer: klam, estfan, logicappspm
 ms.topic: conceptual
-ms.date: 09/17/2018
-ms.openlocfilehash: 48e03f41fa0a39642330288fc05ef709179b4c62
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.date: 02/29/2020
+ms.openlocfilehash: a9f7169f4b54dfc08612b1d53bfde48154ee2d1d
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300981"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524796"
 ---
-# <a name="create-and-schedule-your-first-job-with-azure-scheduler---azure-portal"></a>使用 Azure 排程器來建立及排定您的第一個工作 - Azure 入口網站
+# <a name="create-and-schedule-your-first-job-by-using-azure-scheduler---azure-portal"></a>使用 Azure 排程器建立和排定第一個作業-Azure 入口網站
 
 > [!IMPORTANT]
 > [Azure Logic Apps](../logic-apps/logic-apps-overview.md)會取代即將[淘汰](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 排程器。 若要繼續使用您在排程器中設定的作業，請儘快[遷移至 Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) 。
 
-本教學課程說明如何輕鬆建立及排定工作，然後監視及管理該工作。 
+本教學課程說明如何輕鬆建立及排定工作，然後監視及管理該工作。
 
-如果您沒有 Azure 訂用帳戶，請先<a href="https://azure.microsoft.com/free/" target="_blank">註冊免費的 Azure 帳戶</a>。
+如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="create-job"></a>建立工作
+## <a name="create-job"></a>建立作業
 
-1. 登入 [Azure 入口網站](https://portal.azure.com/)。  
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
-1. 在 Azure 主功能表上，選取 [建立資源]。 在搜尋方塊中，輸入「排程器」。 從結果清單中，選取 [排程器]，然後選擇 [建立]。
+1. 在 [Azure 搜尋服務] 方塊中，輸入 `scheduler` 作為篩選準則。 從結果清單中選取 [排程器**工作集合**]，然後選取 [**建立**]。
 
    ![建立排程器資源](./media/scheduler-get-started-portal/scheduler-v2-portal-marketplace-create.png)
 
@@ -140,7 +139,7 @@ ms.locfileid: "71300981"
 
 <a name="users"></a>
 
-### <a name="users"></a>使用者人數
+### <a name="users"></a>使用者
 
 您可以使用「Azure 角色型存取控制」(RBAC)，在細微層級管理每個使用者對「Azure 排程器」的存取權。 若要了解如何根據角色設定存取權，請參閱[使用 RBAC 來管理存取權](../role-based-access-control/role-assignments-portal.md)
 

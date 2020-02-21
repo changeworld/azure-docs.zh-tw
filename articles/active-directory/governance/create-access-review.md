@@ -15,12 +15,12 @@ ms.date: 02/06/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcb2198ea3f01e923022c205e478167240a01894
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 3e769df186597a88247601f4fc70c48263edc88b
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77084438"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483902"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>在 Azure AD 存取評論中建立群組和應用程式的存取權審查
 
@@ -53,7 +53,7 @@ ms.locfileid: "77084438"
 
     ![建立存取權檢閱 - 開始和結束日期](./media/create-access-review/start-end-dates.png)
 
-1. 若要定期進行存取權檢查，請將**頻率**設定**從一次**變更為**每週**、**每月**、每**季**或**每年**。 使用 [**持續時間**] 滑杆或文字方塊，定義每次審核重複數列的天數，以供審核者輸入。 例如，您可以為每月檢閱設定的最長持續期間為 27 天，以避免重疊的檢閱。
+1. 若要定期進行存取權檢查，請**將頻率**設定**從一次**變更為**每週**、**每月**、每**季**、每**半年**或**每年**。 使用 [**持續時間**] 滑杆或文字方塊，定義每次審核重複數列的天數，以供審核者輸入。 例如，您可以為每月檢閱設定的最長持續期間為 27 天，以避免重疊的檢閱。
 
 1. 使用 [結束] 設定來指定如何結束週期性存取權檢閱系列。 此系列的結束方式有三種：它會持續執行而無限期地啟動檢閱、直到特定日期為止，或是在完成所定義的發生次數之後。 您、其他使用者的系統管理員或其他全域管理員可以藉由變更 [**設定**] 中的日期，讓該數列在建立後停止，使其在該日期結束。
 

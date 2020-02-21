@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: mlearned
-ms.openlocfilehash: 1b0d3dec3925518922c5f668560889edd6f5de0b
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 62fc95ed7179dc4188c0c40e4c15aa9940bf2eb5
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867175"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524234"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>服務主體與 Azure Kubernetes Service (AKS)
 
@@ -70,6 +70,9 @@ az aks create \
     --client-secret <password>
 ```
 
+> [!NOTE]
+> 如果您使用現有的服務主體搭配自訂的密碼，請確定秘密的長度不超過190個位元組。
+
 若使用 Azure 入口網站來部署 AKS 叢集，請在 [建立 Kubernetes 叢集] 對話方塊的 [驗證] 頁面選擇 [設定服務主體]。 選取 [一般] 索引標籤，並指定下列值：
 
 - **服務主體用戶端識別碼**是您的 *appId*
@@ -95,7 +98,7 @@ az role assignment create --assignee <appId> --scope <resourceScope> --role Cont
 
 如果您使用 Azure Container Registry （ACR）做為容器映射存放區，則必須將許可權授與 AKS 叢集的服務主體，才能讀取和提取映射。 目前，建議的設定是使用[az aks create][az-aks-create]或[az aks update][az-aks-update]命令來與登錄整合，並為服務主體指派適當的角色。 如需詳細步驟，請參閱[使用來自 Azure Kubernetes Service 的 Azure Container Registry 進行驗證][aks-to-acr]。
 
-### <a name="networking"></a>網路
+### <a name="networking"></a>網路功能
 
 您可以使用進階網路功能，其中虛擬網路和子網路或公用 IP 位址都在另一個資源群組中。 指派下列一組角色權限：
 
@@ -117,7 +120,7 @@ az role assignment create --assignee <appId> --scope <resourceScope> --role Cont
   - *Microsoft.Compute/disks/write*
 - 或者，在資源群組上指派[儲存體帳戶參與者][rbac-storage-contributor]內建角色
 
-### <a name="azure-container-instances"></a>Azure 容器執行個體
+### <a name="azure-container-instances"></a>Azure Container Instances
 
 如果您使用 Virtual Kubelet 來與 AKS 整合，並選擇在與 AKS 叢集不同的資源群組中執行「Azure 容器執行個體」(ACI)，就必須將 ACI 資源群組的「參與者」權限授與 AKS 服務主體。
 

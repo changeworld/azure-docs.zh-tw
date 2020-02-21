@@ -5,13 +5,13 @@ author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
-ms.date: 05/29/2019
-ms.openlocfilehash: 889699ab184b82a7c194043d15358ecdaab5d03d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/20/2020
+ms.openlocfilehash: 96ef09ac081aa328014217592a7fcd3ed6314c0e
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899631"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523759"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>復原和災害復原
 
@@ -27,9 +27,9 @@ Azure 應用程式組態目前是一項區域性服務。 每個組態存放區�
 
 ## <a name="failover-between-configuration-stores"></a>組態存放區之間的容錯移轉
 
-技術上，您的應用程式並不會執行容錯移轉。 它會嘗試同時從兩個應用程式組態存放區擷取相同的組態資料集。 編排您的程式碼，使其先從次要存放區載入，然後再從主要存放區載入。 此方法可確保主要存放區中的組態資料在可用時即應優先使用。 下列程式碼片段示範如何在 .NET Core CLI 中實作此種編排方式：
+技術上，您的應用程式並不會執行容錯移轉。 它會嘗試同時從兩個應用程式組態存放區擷取相同的組態資料集。 編排您的程式碼，使其先從次要存放區載入，然後再從主要存放區載入。 此方法可確保主要存放區中的組態資料在可用時即應優先使用。 下列程式碼片段示範如何在 .NET Core 中執行這種相片順序：
 
-#### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
+#### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
 ```csharp
 public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -44,7 +44,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
     
 ```
 
-#### <a name="net-core-3xtabcore3x"></a>[.NET Core 3.x](#tab/core3x)
+#### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
 
 ```csharp
 public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -60,7 +60,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 ```
 ---
 
-請留意傳入 `AddAzureAppConfiguration` 函式中的 `optional` 參數。 此參數設為 `true` 時，會防止應用程式在函式無法載入組態資料時無法繼續執行。
+請留意傳入 `optional` 函式中的 `AddAzureAppConfiguration` 參數。 此參數設為 `true` 時，會防止應用程式在函式無法載入組態資料時無法繼續執行。
 
 ## <a name="synchronization-between-configuration-stores"></a>組態存放區之間的同步處理
 
@@ -70,17 +70,18 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 1. 移至 [匯入/匯出] 索引標籤，然後選取 [匯出] > [應用程式組態] > [目標] > [選取資源]。
 
-2. 在開啟的新刀鋒視窗中，指定次要存放區的訂用帳戶、資源群組和資源名稱，然後選取 [套用]。
+1. 在開啟的新分頁中，指定訂用帳戶、資源群組和次要存放區的資源名稱，**然後選取 [** 套用]。
 
-3. UI 會更新，供您選擇要匯出至次要存放區的組態資料。 您可以保留預設的時間值，並將 [來源標籤] 和 [目標標籤] 設為相同的值。 選取 [套用]。
+1. UI 會更新，供您選擇要匯出至次要存放區的組態資料。 您可以保留預設的時間值，並將 [來源標籤] 和 [目標標籤] 設為相同的值。 選取 [套用]。
 
-4. 重複先前步驟以進行所有組態變更。
+1. 重複先前步驟以進行所有組態變更。
 
 若要自動執行此匯出程序，請使用 Azure CLI。 下列命令說明如何將單一組態變更從主要存放區匯出至次要存放區：
 
+```azurecli
     az appconfig kv export --destination appconfig --name {PrimaryStore} --label {Label} --dest-name {SecondaryStore} --dest-label {Label}
+```
 
 ## <a name="next-steps"></a>後續步驟
 
 在本文中，您已了解如何擴充應用程式，以達到應用程式組態在執行階段的異地復原能力。 您也可以在建置或部署時內嵌應用程式組態中的組態資料。 如需詳細資訊，請參閱[與 CI/CD 管線整合](./integrate-ci-cd-pipeline.md)。
-

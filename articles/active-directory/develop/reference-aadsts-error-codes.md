@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 12/18/2019
+ms.date: 02/19/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7798cb86606c206f027a1014802770a74aba909a
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: ba5af060a02e8525320f005b5d1c80534c5ca4ea
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77160372"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483919"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 驗證和授權錯誤碼
 
@@ -133,7 +133,7 @@ ms.locfileid: "77160372"
 | AADSTS50180 | WindowsIntegratedAuthMissing - 需要整合式 Windows 驗證。 為租用戶啟用無縫 SSO。 |
 | AADSTS50187 | DeviceInformationNotProvided - 服務無法執行裝置驗證。 |
 | AADSTS50196 | LoopDetected-偵測到用戶端迴圈。 檢查應用程式的邏輯，以確保會執行權杖快取，並正確處理錯誤狀況。  應用程式在一段時間內有太多相同的要求，表示它處於錯誤狀態，或 abusively 要求權杖。 |
-| AADSTS50199 | CmsiInterrupt-此驗證需要使用者互動。  因為這是「interaction_required」錯誤，所以用戶端應該執行互動式驗證。 之所以會發生這種情況，是因為系統的 web 工作已用來要求原生應用程式的權杖-使用者必須提示詢問，這確實是他們想要登入的應用程式。|
+| AADSTS50199 | CmsiInterrupt-基於安全考慮，此要求需要使用者確認。  因為這是「interaction_required」錯誤，所以用戶端應該執行互動式驗證。 之所以會發生這種情況，是因為系統的 web 工作已用來要求原生應用程式的權杖-使用者必須提示詢問，這確實是他們想要登入的應用程式。|
 | AADSTS51000 | RequiredFeatureNotEnabled - 此功能已停用。 |
 | AADSTS51001 | DomainHintMustbePresent - 網域提示必須與內部部署安全性識別碼或 內部部署 UPN 一起顯示。 |
 | AADSTS51004 | UserAccountNotInDirectory - 目錄中不存在使用者帳戶。 |

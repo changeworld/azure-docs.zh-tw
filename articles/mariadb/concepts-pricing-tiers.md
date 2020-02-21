@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 36563e11d7a5fb7cfd5878294c3b83977f6bb619
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 084c1b4163ac7f0f595fadba93a7905ea7f96dd0
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74772392"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485449"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>適用於 MariaDB 的 Azure 資料庫定價層
 
@@ -19,16 +19,15 @@ ms.locfileid: "74772392"
 
 |    | **基本** | **一般用途** | **記憶體最佳化** |
 |:---|:----------|:--------------------|:---------------------|
-| 計算世代 | 第 5 代 |第 5 代 | 第 5 代 |
-| 虛擬核心 | 1、2 | 2、4、8、16、32、64 |2、4、8、16、32 |
-| 每個虛擬核心的記憶體 | 2GB | 5 GB | 10 GB |
+| 計算世代 | Gen 5 |Gen 5 | Gen 5 |
+| 虛擬核心 | 1, 2 | 2、4、8、16、32、64 |2、4、8、16、32 |
+| 每個虛擬核心的記憶體 | 2 GB | 5 GB | 10 GB |
 | 儲存體大小 | 5 GB 至 1 TB | 5 GB 至 4 TB | 5 GB 至 4 TB |
-| 儲存體類型 | Azure 標準儲存體 | Azure 進階儲存體 | Azure 進階儲存體 |
 | 資料庫備份的保留期限 | 7 至 35 天 | 7 至 35 天 | 7 至 35 天 |
 
 若要選擇定價層，請從下表著手。
 
-| 價格層 | 目標工作負載 |
+| 定價層 | 目標工作負載 |
 |:-------------|:-----------------|
 | 基本 | 需要輕量計算和 I/O 效能的工作負載。 範例包括用於開發或測試的伺服器，或者不常使用的小規模應用程式。 |
 | 一般用途 | 需要平衡的計算和記憶體以及可擴充 I/O 輸送量的大多數商務工作負載。 範例包括用於裝載 Web 和行動應用程式的伺服器，以及其他企業應用程式。|
@@ -46,9 +45,9 @@ ms.locfileid: "74772392"
 
 |    | **基本** | **一般用途** | **記憶體最佳化** |
 |:---|:----------|:--------------------|:---------------------|
-| 儲存體類型 | Azure 標準儲存體 | Azure 進階儲存體 | Azure 進階儲存體 |
+| 儲存體類型 | 基本儲存體 | 一般用途儲存體 | 一般用途儲存體 |
 | 儲存體大小 | 5 GB 至 1 TB | 5 GB 至 4 TB | 5 GB 至 4 TB |
-| 儲存體遞增大小 | 1GB | 1GB | 1GB |
+| 儲存體遞增大小 | 1 GB | 1 GB | 1 GB |
 | IOPS | 變數 |3 IOPS/GB<br/>最小值為 100 IOPS<br/>最大值為 6000 IOPS | 3 IOPS/GB<br/>最小值為 100 IOPS<br/>最大值為 6000 IOPS |
 
 您可以在建立伺服器期間和之後新增額外的儲存體容量，並允許系統根據您工作負載的儲存體耗用量自動成長儲存體。

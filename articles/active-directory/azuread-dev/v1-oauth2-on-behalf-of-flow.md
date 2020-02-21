@@ -17,12 +17,12 @@ ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: fbef4d84e86c3d35e35a8bbeb04a399ad87a1b89
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 084c15c7ac3ec782dc48a55e65bf4d7aa43b58a1
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77164080"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484174"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>使用代理者流程中委派使用者身分識別的服務對服務呼叫
 
@@ -111,7 +111,7 @@ https://login.microsoftonline.com/<tenant>/oauth2/token
 | 參數 |  | 描述 |
 | --- | --- | --- |
 | grant_type |required | 權杖要求的類型。 OBO 要求會使用 JSON Web 權杖 (JWT)，所以值必須是 **urn:ietf:params:oauth:grant-type:jwt-bearer**。 |
-| Assertion - 判斷提示 |required | 要求中使用的存取權杖值。 |
+| assertion |required | 要求中使用的存取權杖值。 |
 | client_id |required | 在向 Azure AD 註冊期間指派給呼叫服務的應用程式識別碼。 若要在 Azure 入口網站中尋找應用程式識別碼，請選取 [Active Directory]，選擇目錄，然後選取應用程式名稱。 |
 | client_secret |required | 在 Azure AD 中註冊之呼叫端服務的金鑰。 此值應該在註冊期間記下來。 |
 | resource |required | 接收端服務 (受保護的資源) 的應用程式識別碼 URI。 若要在 Azure 入口網站中尋找應用程式識別碼 URI，請選取 [Active Directory]，然後選擇目錄。 選取應用程式名稱，選擇 [所有設定]，然後選取 [屬性]。 |
@@ -145,7 +145,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 | 參數 |  | 描述 |
 | --- | --- | --- |
 | grant_type |required | 權杖要求的類型。 OBO 要求會使用 JWT 存取權杖，所以值必須是 **urn:ietf:params:oauth:grant-type:jwt-bearer**。 |
-| Assertion - 判斷提示 |required | 要求中使用的權杖值。 |
+| assertion |required | 要求中使用的權杖值。 |
 | client_id |required | 在向 Azure AD 註冊期間指派給呼叫服務的應用程式識別碼。 若要在 Azure 入口網站中尋找應用程式識別碼，請選取 [Active Directory]，選擇目錄，然後選取應用程式名稱。 |
 | client_assertion_type |required |值必須是 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
 | client_assertion |required | 您所建立並使用註冊為您應用程式之認證的憑證簽署的 JSON Web 權杖。 請參閱[憑證認證](../develop/active-directory-certificate-credentials.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)以了解判斷提示格式，以及如何註冊您的憑證。|
@@ -255,7 +255,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InowMzl6ZHNGdW
 | 參數 |  | 描述 |
 | --- | --- | --- |
 | grant_type |required | 權杖要求的類型。 針對使用 JWT 的要求，此值必須是 **urn:ietf:params:oauth:grant-type:jwt-bearer**。 |
-| Assertion - 判斷提示 |required | 要求中使用的存取權杖值。|
+| assertion |required | 要求中使用的存取權杖值。|
 | client_id |required | 在向 Azure AD 註冊期間指派給呼叫服務的應用程式識別碼。 若要在 Azure 入口網站中尋找應用程式識別碼，請選取 [Active Directory]，選擇目錄，然後選取應用程式名稱。 |
 | client_secret |required | 在 Azure AD 中註冊之呼叫端服務的金鑰。 此值應該在註冊期間記下來。 |
 | resource |required | 接收端服務 (受保護的資源) 的應用程式識別碼 URI。 這是 SAML 權杖對象的資源。 若要在 Azure 入口網站中尋找應用程式識別碼 URI，請選取 [Active Directory]，然後選擇目錄。 選取應用程式名稱，選擇 [所有設定]，然後選取 [屬性]。 |
@@ -267,7 +267,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InowMzl6ZHNGdW
 - **源自 OBO 呼叫之 SAML 判斷提示的 SubjectConfirmationData**：如果目標應用程式需要 **SubjectConfirmationData** 中的收件者值，該值必須是資源應用程式設定中的非萬用字元回覆 URL。
 - **SubjectConfirmationData 節點**：此節點不能包含 **InResponseTo** 屬性，因為它不屬於 SAML 回應。 接收 SAML 權杖的應用程式必須能夠在沒有 **InResponseTo** 屬性的情況下接受 SAML 判斷提示。
 
-- **同意**：必須被授與同意，才能在 OAuth 流程上接收包含使用者資料的 SAML 權杖。 如需權限和取得系統管理員同意的相關資訊，請參閱 [Azure Active Directory v1.0 端點中的權限和同意](https://docs.microsoft.com/azure/active-directory/develop/v1-permissions-and-consent)。
+- **同意**：必須被授與同意，才能在 OAuth 流程上接收包含使用者資料的 SAML 權杖。 如需權限和取得系統管理員同意的相關資訊，請參閱 [Azure Active Directory v1.0 端點中的權限和同意](https://docs.microsoft.com/azure/active-directory/azuread-dev/v1-permissions-consent)。
 
 ### <a name="response-with-saml-assertion"></a>使用 SAML 判斷提示進行回應
 
@@ -279,7 +279,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InowMzl6ZHNGdW
 | expires_on |存取權杖的到期時間。 日期會表示為從 1970-01-01T0:0:0Z UTC 至到期時間的秒數。 這個值用來判斷快取權杖的存留期。 |
 | resource |接收端服務 (受保護的資源) 的應用程式識別碼 URI。 |
 | access_token |傳回 SAML 判斷提示的參數。 |
-| refresh_token |重新整理語彙基元。 呼叫端服務可以使用這個權杖，在目前的 SAML 判斷提示過期之後，要求其他的存取權杖。 |
+| refresh_token |重新整理權杖。 呼叫端服務可以使用這個權杖，在目前的 SAML 判斷提示過期之後，要求其他的存取權杖。 |
 
 - token_type：Bearer
 - expires_in：3296

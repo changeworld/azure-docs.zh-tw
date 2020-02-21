@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: 9b9e39776e519a91a4464532e11e85da711087b3
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 2d0cf18de09932c5d66e269a85919f4d85383c5b
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766243"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485500"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Azure Functions 系結運算式模式
 
@@ -115,7 +115,7 @@ public static void Run(Stream image, string filename, Stream imageSmall, ILogger
 <!--TODO: add JavaScript example -->
 <!-- Blocked by bug https://github.com/Azure/Azure-Functions/issues/248 -->
 
-類別庫中的所有屬性都可以使用繫結運算式和模式。 在下列範例中，屬性建構函式參數是與上述 function.json 範例相同的 `path` 值： 
+類別庫中的所有屬性都可以使用繫結運算式和模式。 在下列範例中，屬性建構函式參數是與上述 function.json`path`*範例相同的* 值： 
 
 ```csharp
 [FunctionName("ResizeImage")]
@@ -159,7 +159,7 @@ public static void Run(
 * NextVisibleTime
 * PopReceipt
 
-您可以在 *function.json* 檔案屬性中存取這些中繼資料值。 例如，假設您使用佇列觸發程序，且佇列訊息包含您想要讀取的 Blob 名稱。 在 *function.json* 檔案中，您可以使用 Blob `path` 屬性中的 `queueTrigger` 中繼資料屬性，如下列範例所示：
+您可以在 *function.json* 檔案屬性中存取這些中繼資料值。 例如，假設您使用佇列觸發程序，且佇列訊息包含您想要讀取的 Blob 名稱。 在 *function.json* 檔案中，您可以使用 Blob `queueTrigger` 屬性中的 `path` 中繼資料屬性，如下列範例所示：
 
 ```json
   "bindings": [
@@ -179,7 +179,7 @@ public static void Run(
   ]
 ```
 
-在對應的參考文章中，會描述每個觸發程序之中繼資料屬性的詳細資料。 如需範例，請參閱[佇列觸發程序中繼資料](functions-bindings-storage-queue.md#trigger---message-metadata)。 您也可以在入口網站的 [整合] 索引標籤中，繫結設定區域之下的 [文件] 區段取得文件。  
+在對應的參考文章中，會描述每個觸發程序之中繼資料屬性的詳細資料。 如需範例，請參閱[佇列觸發程序中繼資料](functions-bindings-storage-queue-trigger.md#message-metadata)。 您也可以在入口網站的 [整合] 索引標籤中，繫結設定區域之下的 [文件] 區段取得文件。  
 
 ## <a name="json-payloads"></a>JSON 承載
 
@@ -268,7 +268,7 @@ module.exports = function (context, info) {
 }
 ```
 
-您可直接以 `BlobName.FileName` 的形式參考 `FileName`。 在使用此 JSON 格式時，以下是上述範例中 `path` 屬性的樣貌：
+您可直接以 `FileName` 的形式參考 `BlobName.FileName`。 在使用此 JSON 格式時，以下是上述範例中 `path` 屬性的樣貌：
 
 ```json
 "path": "strings/{BlobName.FileName}.{BlobName.Extension}",

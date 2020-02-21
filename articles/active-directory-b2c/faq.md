@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d8bdae5a860eb19741aa321606feb3f0825740a9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 6451c5d32fffc0290592a2489c9cdc99be1b7b7c
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847299"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483290"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C：常見問題集 (FAQ)
 
@@ -49,7 +49,7 @@ Azure AD B2C 也支援[自訂原則](custom-policy-overview.md)。 自訂原則�
 
 ### <a name="can-i-configure-scopes-to-gather-more-information-about-consumers-from-various-social-identity-providers"></a>我可以設定範圍，以便從各種社交身分識別提供者收集取用者的詳細資訊嗎？
 
-不會。 我們支援的一組社交身分識別提供者所使用的預設範圍如下：
+否。 我們支援的一組社交身分識別提供者所使用的預設範圍如下：
 
 * Facebook: email
 * Google+: email
@@ -86,15 +86,17 @@ Azure AD B2C 也支援[自訂原則](custom-policy-overview.md)。 自訂原則�
 
 ### <a name="how-can-i-migrate-my-existing-user-names-passwords-and-profiles-from-my-database-to-azure-ad-b2c"></a>我如何將現有的使用者名稱、密碼和設定檔從資料庫移轉至 Azure AD B2C？
 
-您可以使用 Azure AD 圖形 API 來撰寫您的移轉工具。 如需詳細資訊，請參閱[使用者移轉指南](user-migration.md)。
+您可以使用 Microsoft Graph API 來撰寫您的遷移工具。 如需詳細資訊，請參閱[使用者移轉指南](user-migration.md)。
 
 ### <a name="what-password-user-flow-is-used-for-local-accounts-in-azure-ad-b2c"></a>Azure AD B2C 中用於本機帳戶的密碼使用者流程為何？
 
-Azure AD B2C 的本機帳戶密碼使用者流程是以 Azure AD 的原則為基礎。 Azure AD B2C 的註冊、註冊或登入和密碼重設使用者流程會使用「強式」密碼強度，而且不會讓任何密碼到期。 如需更詳細的資料，請閱讀 [Azure AD 中的密碼原則](/previous-versions/azure/jj943764(v=azure.100)) 。 如需帳戶鎖定和密碼相關資訊，請參閱[管理對 Azure Active Directory B2C 中的資源與資料的威脅](threat-management.md)。
+Azure AD B2C 的本機帳戶密碼使用者流程是以 Azure AD 的原則為基礎。 Azure AD B2C 的註冊、註冊或登入和密碼重設使用者流程會使用「強式」密碼強度，而且不會讓任何密碼到期。 如需詳細資訊，請參閱[Azure Active Directory 中的密碼原則和限制](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy)。
+
+如需帳戶鎖定和密碼相關資訊，請參閱[管理對 Azure Active Directory B2C 中的資源與資料的威脅](threat-management.md)。
 
 ### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c"></a>我可以使用 Azure AD Connect，將儲存於內部部署 Active Directory 的取用者身分識別移轉至 Azure AD B2C 嗎？
 
-否，Azure AD Connect 不是設計來搭配 Azure AD B2C 一起使用。 請考慮使用 [Azure AD 圖形 API](manage-user-accounts-graph-api.md) 來移轉使用者。 如需詳細資訊，請參閱[使用者移轉指南](user-migration.md)。
+否，Azure AD Connect 不是設計來搭配 Azure AD B2C 一起使用。 請考慮使用[MICROSOFT GRAPH API](manage-user-accounts-graph-api.md)來進行使用者遷移。 如需詳細資訊，請參閱[使用者移轉指南](user-migration.md)。
 
 ### <a name="can-my-app-open-up-azure-ad-b2c-pages-within-an-iframe"></a>我的應用程式是否能在 iFrame 內開啟 Azure AD B2C 頁面？
 
@@ -134,7 +136,7 @@ Azure AD B2C 不適用於 SharePoint 外部夥伴共用的情節。請改以參�
 
 您可以使用目前的**應用程式**體驗或我們新的統一**應用程式註冊（預覽）** 體驗。 [深入了解新的體驗](https://aka.ms/b2cappregintro)。
 
-#### <a name="applicationstabapplications"></a>[應用程式](#tab/applications/)
+#### <a name="applications"></a>[應用程式](#tab/applications/)
 
 1. 以*訂用帳戶管理員*身分登入[Azure 入口網站](https://portal.azure.com/)。 使用相同的公司或學校帳戶，或您用來註冊 Azure 的相同 Microsoft 帳戶。
 1. 在頂端功能表中選取 [目錄 + 訂用帳戶] 篩選，然後選取包含您 Azure AD B2C 租用戶的目錄。
@@ -155,7 +157,7 @@ Azure AD B2C 不適用於 SharePoint 外部夥伴共用的情節。請改以參�
 1. 選取左側功能表上的 [ **Azure Active Directory** ]。
 1. 在 [**總覽**] 頁面上，選取 [**刪除目錄**]。 遵循畫面上的指示來完成程式。
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[應用程式註冊 (預覽)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[應用程式註冊 (預覽)](#tab/app-reg-preview/)
 
 1. 以*訂用帳戶管理員*身分登入[Azure 入口網站](https://portal.azure.com/)。 使用相同的公司或學校帳戶，或您用來註冊 Azure 的相同 Microsoft 帳戶。
 1. 在頂端功能表中選取 [目錄 + 訂用帳戶] 篩選，然後選取包含您 Azure AD B2C 租用戶的目錄。

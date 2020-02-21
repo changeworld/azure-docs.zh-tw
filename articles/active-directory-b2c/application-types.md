@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f8c98149d9e9ff65b7b18762f0f17d19053f2f49
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ec97f986c4472f793c2d38ded2a1c6873b1ee08d
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846753"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482780"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>可以在 Active Directory B2C 中使用的應用程式類型
 
 Azure Active Directory B2C （Azure AD B2C）支援各種新式應用程式架構的驗證。 全部都以業界標準通訊協定 [OAuth 2.0](protocols-overview.md) 或 [OpenID Connect](protocols-overview.md) 為基礎。 本文描述您可以建立的應用程式類型，與您慣用的語言或平臺無關。 在您開始建置應用程式之前，也可協助您先了解一些高階案例。
 
-每個使用 Azure AD B2C 的應用程式都必須使用 [Azure 入口網站](https://portal.azure.com/)，在 [Azure AD B2C 租用戶](tutorial-create-tenant.md)中註冊。 應用程式註冊程序會收集和指派值，例如：
+每個使用 Azure AD B2C 的應用程式都必須使用 [Azure 入口網站](tutorial-create-tenant.md)，在 [Azure AD B2C 租用戶](https://portal.azure.com/)中註冊。 應用程式註冊程序會收集和指派值，例如：
 
 * 可唯一識別應用程式的**應用程式識別碼**。
 * 可用來將回應導回應用程式的**回覆 URL**。
@@ -125,7 +125,7 @@ Web API 接收的權杖可以來自許多類型的用戶端，包括 Web 應用�
 
 #### <a name="web-api-chains-on-behalf-of-flow"></a>Web API 鏈結 (代理者流程)
 
-許多架構中都有一個 Web API 需要呼叫另一個下游 Web API，而兩者都受 Azure AD B2C 保護。 這種情況在具有 Web API 後端的原生用戶端，以及呼叫 Microsoft 線上服務（例如 Microsoft Graph API 或 Azure AD 圖形 API）時很常見。
+許多架構中都有一個 Web API 需要呼叫另一個下游 Web API，而兩者都受 Azure AD B2C 保護。 這種情況在具有 Web API 後端的原生用戶端，以及呼叫 Microsoft 線上服務（例如 Microsoft Graph API）時很常見。
 
 使用 OAuth 2.0 JWT 持有人認證授與可支援此鏈結的 Web API 案例，亦稱為代理者流程。  不過，Azure AD B2C 目前未實作代理者流程。
 

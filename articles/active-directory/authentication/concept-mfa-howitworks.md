@@ -1,6 +1,6 @@
 ---
 title: 如何運作 Azure MFA-Azure Active Directory
-description: Azure Multi-Factor Authentication 不但能協助保護資料和應用程式免遭不當存取，還可符合使用者對簡易登入程序的需求。
+description: Azure Multi-Factor Authentication 有助於保護對資料與應用程式的存取，同時可以滿足使用者對簡單登入程序的需求。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0982f6fb70cd6866af48feab640d5dc36bcb6b28
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 39948214f5bd080be417ed515bea6bff87d3b303
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848675"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484055"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>運作方式：Azure Multi-Factor Authentication
 
@@ -38,7 +38,7 @@ Multi-Factor Authentication 隨附於下列供應項目：
 
 * **Azure Active Directory Premium**或**Microsoft 365 商務版**-使用條件式存取原則進行 Azure 多因素驗證的完整功能使用，以要求多重要素驗證。
 
-* **Azure AD Free**或獨立**Office 365**授權-使用預先建立的[條件式存取基準保護原則](../conditional-access/concept-baseline-protection.md)，為您的使用者和系統管理員要求多重要素驗證。
+* **Azure AD Free**或獨立**Office 365**授權-使用[安全性預設值](../fundamentals/concept-fundamentals-security-defaults.md)，為您的使用者和系統管理員要求多重要素驗證。
 
 * **Azure Active Directory 全域管理員** - Azure Multi-Factor Authentication 功能子集可用來作為保護全域管理員帳戶的方法。
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/23/2020
-ms.openlocfilehash: 9f377f93ab8fef2c1ad713da6fcd6c6f14107c3f
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 33af9c8f3fbe4de57d65be432f249d4aeb5d3e27
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986813"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485330"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure 監視器常見問題
 
@@ -36,7 +36,7 @@ Azure 監視器會在您建立新的 Azure 訂用帳戶時啟用，而且會自�
 從 Azure 入口網站的 [**監視**] 功能表中，存取所有 Azure 監視器功能和資料。 不同 Azure 服務功能表的 [**監視**] 區段，可讓您存取與篩選至特定資源的資料相同的工具。 使用 CLI、PowerShell 和 REST API 的各種案例也可以存取 Azure 監視器資料。
 
 ### <a name="is-there-an-on-premises-version-of-azure-monitor"></a>是否有 Azure 監視器的內部部署版本？
-不會。 Azure 監視器是可調整的雲端服務，可處理並儲存大量資料，但 Azure 監視器可以監視內部部署和其他雲端中的資源。
+否。 Azure 監視器是可調整的雲端服務，可處理並儲存大量資料，但 Azure 監視器可以監視內部部署和其他雲端中的資源。
 
 ### <a name="can-azure-monitor-monitor-on-premises-resources"></a>Azure 監視器可以監視內部部署資源嗎？
 是的，除了從 Azure 資源收集監視資料之外，Azure 監視器還可以從其他雲端和內部部署中的虛擬機器和應用程式收集資料。 如需 Azure 監視器，請參閱[監視資料的來源](platform/data-sources.md)。
@@ -240,7 +240,7 @@ View Designer 僅適用于在 Log Analytics 工作區中獲派「參與者」許
 
 [請參閱定價方案](https://azure.microsoft.com/pricing/details/application-insights/)。
 
-### <a name="how-much-does-it-cost"></a>費用是多少？
+### <a name="how-much-does-it-cost"></a>它的成本有多高？
 
 * 在 Application Insights 資源中開啟 [使用量和估計成本] 頁面。 系統會顯示一張最近使用量的圖表。 您可以視需要設定資料量上限。
 * 開啟 [Azure 帳單刀鋒視窗](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview)以查看您所有資源的帳單。
@@ -273,7 +273,7 @@ View Designer 僅適用于在 Log Analytics 工作區中獲派「參與者」許
 
 一個傳統型應用程式，您可以在 IIS Web 伺服器中使用它，以協助您在 Web 應用程式中設定 Application Insights。 它不會收集遙測資料：當您沒有在設定應用程式時，可以將它停止。 
 
-[深入了解](app/monitor-performance-live-website-now.md#questions)。
+[詳細資訊](app/monitor-performance-live-website-now.md#questions)。
 
 ### <a name="what-telemetry-is-collected-by-application-insights"></a>Application Insights 會收集什麼遙測資料？
 
@@ -319,7 +319,7 @@ View Designer 僅適用于在 Log Analytics 工作區中獲派「參與者」許
 * 若要深入瞭解如何在 Application Insights 中收集 IP 位址和地理位置資料，請參閱這[篇文章](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection)。
 
 
-您可以設定 `ClientIpHeaderTelemetryInitializer` 以從不同的標頭取得 IP 位址。 例如，在某些系統中，Proxy、負載平衡器或 CDN 會將它移至 `X-Originating-IP`。 [深入了解](https://apmtips.com/blog/2016/07/05/client-ip-address/)。
+您可以設定 `ClientIpHeaderTelemetryInitializer` 以從不同的標頭取得 IP 位址。 例如，在某些系統中，Proxy、負載平衡器或 CDN 會將它移至 `X-Originating-IP`。 [詳細資訊](https://apmtips.com/blog/2016/07/05/client-ip-address/)。
 
 您可以[使用 Power BI](app/export-power-bi.md ) 在地圖上顯示您的要求遙測資料。
 
@@ -347,7 +347,7 @@ View Designer 僅適用于在 Log Analytics 工作區中獲派「參與者」許
 
 您可以：
 
-* 針對用戶端和伺服器資料，請使用兩個個別的檢測金鑰（個別的 Application Insights 資源）。 或
+* 針對用戶端和伺服器資料，請使用兩個個別的檢測金鑰（個別的 Application Insights 資源）。 Or
 * 撰寫一個在您伺服器中執行的 Proxy，並讓 Web 用戶端透過該 Proxy 傳送資料。
 
 ### <a name="post"></a>如何在診斷搜尋中查看 POST 資料？
@@ -380,8 +380,8 @@ View Designer 僅適用于在 Log Analytics 工作區中獲派「參與者」許
 | 相依性遙測 |[在伺服器上安裝 AI 狀態監視器](app/monitor-performance-live-website-now.md) |診斷資料庫或其他外部元件的問題 |
 | 取得例外狀況的堆疊追蹤 |[在程式碼中插入 TrackException 呼叫](app/asp-net-exceptions.md) (但部分會自動報告) |偵測並診斷例外狀況 |
 | 搜尋記錄追蹤 |[新增記錄配接器](app/asp-net-trace-logs.md) |診斷例外狀況、效能問題 |
-| 用戶端使用基本概念：頁面檢視、工作階段... |[網頁中的 JavaScript 初始設定式](app/javascript.md) |使用量分析 |
-| 用戶端自訂度量 |[追蹤網頁中的呼叫](app/api-custom-events-metrics.md) |增強使用者體驗 |
+| 用戶端使用基本概念：頁面檢視、工作階段... |[網頁中的 JavaScript 初始設定式](app/javascript.md) |流量分析 |
+| 用戶端自訂度量 |[追蹤網頁中的呼叫](app/api-custom-events-metrics.md) |增強使用者經驗 |
 | 伺服器自訂度量 |[追蹤伺服器中的呼叫](app/api-custom-events-metrics.md) |商業智慧 |
 
 ### <a name="why-are-the-counts-in-search-and-metrics-charts-unequal"></a>為什麼 [搜尋] 和 [計量] 圖表中的計數不相等？
@@ -395,7 +395,7 @@ View Designer 僅適用于在 Log Analytics 工作區中獲派「參與者」許
 ```
 
 
-### <a name="automation"></a>Automation
+### <a name="automation"></a>自動化
 
 #### <a name="configuring-application-insights"></a>設定 Application Insights
 
@@ -678,7 +678,7 @@ LogEntry : ({“Hello": "This example has multiple lines:","Docker/Moby": "will 
 否，Windows 不包含個別處理器和邏輯處理器層級健全準則，依預設僅會監視 CPU 總使用率，以根據 Azure VM 可用的邏輯 CPU 總數有效評估 CPU 壓力。 
 
 ### <a name="are-all-health-criteria-thresholds-configurable"></a>所有健全準則臨界值都是可設定的嗎？  
-以 Windows VM 為目標的健全準則閾值均為不可修改的，因為其健全準則會設定為「執行中」或「可用」。 當您從[工作負載監視 API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components) \(英文\) 查詢健全狀態時，在下列情況中，會針對服務或實體顯示 **LessThan** 或 **GreaterThan** 的 *comparisonOperator* 值且「閾值」為 **4**：
+以 Windows VM 為目標的健全準則閾值均為不可修改的，因為其健全準則會設定為「執行中」或「可用」。 當您從[工作負載監視 API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components) \(英文\) 查詢健全狀態時，在下列情況中，會針對服務或實體顯示 *LessThan* 或 **GreaterThan** 的 **comparisonOperator** 值且「閾值」為 **4**：
    - DNS 用戶端服務健康情況：服務未執行。 
    - DHCP 用戶端服務健康情況：服務未執行。 
    - RPC 用戶端服務健康情況：服務未執行。 
@@ -688,7 +688,7 @@ LogEntry : ({“Hello": "This example has multiple lines:","Docker/Moby": "will 
    - Windows 遠端管理服務健康情況：服務未執行。 
    - 檔案系統錯誤或損毀：邏輯磁碟無法使用。
 
-下列 Linux 健全準則的閾值不可修改，因為其健全狀態已設定為 *true*。 從工作負載監視 API 進行查詢時，實體的健全狀態會根據其內容顯示值為 **LessThan** 的 *comparisonOperator* 且「閾值」為 **1**：
+下列 Linux 健全準則的閾值不可修改，因為其健全狀態已設定為 *true*。 從工作負載監視 API 進行查詢時，實體的健全狀態會根據其內容顯示值為 *LessThan* 的 **comparisonOperator** 且「閾值」為 **1**：
    - 邏輯磁碟狀態：邏輯磁碟未連線/無法使用
    - 磁碟狀態：磁碟未連線/無法使用
    - 網路介面卡狀態 - 網路介面卡已停用
@@ -697,7 +697,10 @@ LogEntry : ({“Hello": "This example has multiple lines:","Docker/Moby": "will 
 為每個健全準則所定義的警示規則不會顯示於 Azure 入口網站中。 您只能在[工作負載監視 API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components) \(英文\) 中啟用或停用健康情況警示規則。 此外，您無法從 Azure 入口網站指派健康情況警示的 [Azure 監視器動作群組](platform/action-groups.md)。 您只可以使用通知設定 API，設定在健康情況警示引發時所要觸發的動作群組。 目前，您可以針對 VM 指派動作群組，因此，對 VM 引發的所有「健康情況警示」會觸發相同的動作群組。 不同於傳統的 Azure 警示，每個健康情況警示規則均不具個別動作群組的概念。 此外，在觸發健康情況警示時，僅支援設定來提供電子郵件或簡訊通知的動作群組。 
 
 ### <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>我在適用於 VM 的效能圖表中看不到部分或任何資料
+我們的效能圖表已更新為使用儲存在*InsightsMetrics*資料表中的資料。  若要查看這些圖表中的資料，您將需要升級以使用新的 VM Insights 解決方案。  如需其他資訊，請參閱我們的[GA 常見問題](insights/vminsights-ga-release-faq.md)。
+
 如果您在磁碟表格中或在某些效能圖表中看不到效能資料，則您可能未在工作區中設定效能計數器。 若要解決此問題，請執行下列 [PowerShell 指令碼](insights/vminsights-enable-at-scale-powershell.md#enable-with-powershell)。
+
 
 ### <a name="how-is-azure-monitor-for-vms-map-feature-different-from-service-map"></a>適用於 VM 的 Azure 監視器對應功能與服務對應有何不同？
 適用於 VM 的 Azure 監視器對應功能會以服務對應為根據，但有下列差異：
