@@ -1,22 +1,22 @@
 ### YamlMime:Hub
 title: Azure 認知服務文件
 summary: 了解如何在應用程式、網站和 Bot 中融入智慧型和支援的演算法，來查看、聆聽、述說、了解及詮釋您的使用者需求。
+brand: azure
 metadata:
   title: Azure 認知服務文件
   description: 了解如何在應用程式、網站和 Bot 中融入智慧型和支援的演算法，來查看、聆聽、述說、了解及詮釋您的使用者需求。
   ms.service: cognitive-services
   ms.topic: hub-page
-  brand: azure
   author: nitinme
   ms.author: nitinme
   manager: nitinme
-  ms.date: 11/04/2019
-  ms.openlocfilehash: e0fc6aaaedc5eff98017eb62187575ab9afbba59
-  ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+  ms.date: 01/21/2020
+  ms.openlocfilehash: f39f2a6360363131eb346f613cf0f7a25910404a
+  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 01/14/2020
-  ms.locfileid: "75945186"
+  ms.lasthandoff: 02/22/2020
+  ms.locfileid: "77560757"
 highlightedContent:
   items:
   - title: 認知服務是什麼？
@@ -71,7 +71,7 @@ conceptualContent:
     links:
     - url: ./immersive-reader/index.yml
       itemType: overview
-      text: 沈浸式閱讀程式
+      text: 沈浸式閱讀程式 (預覽)
     - url: ./luis/index.yml
       itemType: overview
       text: 語言理解 (LUIS)
@@ -87,7 +87,7 @@ conceptualContent:
   - title: 語音
     summary: 將語音轉換成文字，並將文字轉換成自然發音語音。 從一種語言翻譯成另一種語言，並啟用說話者驗證和辨識。
     links:
-    - url: ./speech-service/index.md
+    - url: ./speech-service/index.yml
       itemType: overview
       text: 語音服務
     - url: ./speaker-recognition/home.md
