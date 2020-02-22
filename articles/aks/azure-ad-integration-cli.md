@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: mlearned
-ms.openlocfilehash: 520557c80bf2630a359188dd86ec0987e0d5326b
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 32138c228284f9487b816583dd1f701556bbcb95
+ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77158140"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77544210"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>使用 Azure CLI 整合 Azure Active Directory 與 Azure Kubernetes Service
 
@@ -22,7 +22,7 @@ Azure Kubernetes Service (AKS) 可以設定為使用 Azure Active Directory (AD)
 
 如需本文中使用的完整範例腳本，請參閱[Azure CLI 範例-AKS 與 Azure AD 整合][complete-script]。
 
-套用下列限制：
+適用下列限制：
 
 - 只有建立啟用 RBAC 功能的新叢集時，才能啟用 Azure AD。 您無法在現有的 AKS 叢集上啟用 Azure AD。
 
@@ -123,7 +123,7 @@ oAuthPermissionId=$(az ad app show --id $serverApplicationId --query "oauth2Perm
 使用[az ad app 許可權 add][az-ad-app-permission-add]命令，新增用戶端應用程式和伺服器應用程式元件的許可權，以使用 oAuth2 通訊流程。 然後，使用[az ad app 許可權 grant][az-ad-app-permission-grant]命令，授與用戶端應用程式與伺服器應用程式通訊的許可權：
 
 ```azurecli-interactive
-az ad app permission add --id $clientApplicationId --api $serverApplicationId --api-permissions $oAuthPermissionId=Scope
+az ad app permission add --id $clientApplicationId --api $serverApplicationId --api-permissions ${oAuthPermissionId}=Scope
 az ad app permission grant --id $clientApplicationId --api $serverApplicationId
 ```
 

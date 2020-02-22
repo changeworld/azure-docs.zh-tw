@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: sukishen
-ms.openlocfilehash: 38711c9f1cee07b04dad0ccfeff5694e61dd5b53
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: ef9efcea1c06149e084dc261f5add7b408ae7b92
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484956"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539258"
 ---
 # <a name="about-azure-networking-msp-partners"></a>關於 Azure 網路功能 MSP 合作夥伴
 
@@ -50,7 +50,7 @@ Azure 網路 Msp 是一組特製化的受控服務提供者，可解決雲端和
 |[IT 的警惕](https://vigilant.it/manage-cloud-service/)|[Azure 健康情況檢查：5天評估](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.ahc01)|[ExpressRoute：5天的執行](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.erd01)|||
 |[Vandis](https://www.vandis.com/microsoft-azure-practice/)||[Vandis 受控 ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_expressroute?tab=Overview)|[Vandis 由 Fortinet 提供技術支援的受控 VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_fortinet?tab=Overview);[由 Palo Alto Networks 提供技術支援的 Vandis 受控 VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_palo_alto_networks?tab=Overview)|
 
-Azure Marketplace 的供應專案包括新的受控安全性服務，以及來自下列 Azure 網路 MSP 合作夥伴的受管理的 MEC 服務，其藍圖如下： [Amdocs](https://www.amdocs.com/);[CenturyLink](https://www.centurylink.com/business/networking/cloud-connectivity.html);   [IX 觸及](https://www.ixreach.com/services/sdn-cloud-connect/); [InterCloud](https://intercloud.com/partners/microsoft-azure/); [KINX](https://www.kinx.net/service/cloud/?lang=en);[Megaport](https://www.megaport.com/services/microsoft-expressroute/); [OmniClouds](https://omniclouds.com/services/); [Sejong 電信](https://www.sejongtelecom.net/en/pages/service/cloud_ms); [技術 Mahindra](https://networkservices.techmahindra.com/pages/default.aspx)
+Azure Marketplace 的供應專案包括新的受控安全性服務，以及來自下列 Azure 網路 MSP 合作夥伴的受管理的 MEC 服務，其藍圖如下： [Amdocs](https://www.amdocs.com/);[CenturyLink](https://www.centurylink.com/business/networking/cloud-connectivity.html);   [IX 觸及](https://www.ixreach.com/services/sdn-cloud-connect/); [InterCloud](https://intercloud.com/partners/microsoft-azure/); [KINX](https://www.kinx.net/service/cloud/?lang=en);[Megaport](https://www.megaport.com/services/microsoft-expressroute/); [OmniClouds](https://omniclouds.com/services/); [Sejong 電信](https://www.sejongtelecom.net/en/pages/service/cloud_ms); [Tech Mahindra](https://networkservices.techmahindra.com/pages/default.aspx);[聯盟無線](https://www.federatedwireless.com/caas/)
 
 ## <a name="expressroute"></a>ExpressRoute 合作夥伴
 

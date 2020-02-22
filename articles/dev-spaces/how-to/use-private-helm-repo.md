@@ -8,12 +8,12 @@ ms.topic: conceptual
 description: 使用 Azure 開發人員空間中的私用 Helm 存放庫。
 keywords: Docker，Kubernetes，Azure，AKS，Azure Container Service，容器，Helm
 manager: gwallace
-ms.openlocfilehash: b1579adc00540a429170027b66c5d3e508bcb5d4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 6036184c43242f2ec2279438950b26dfb53e9bb4
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76718731"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77538664"
 ---
 # <a name="use-a-private-helm-repository-in-azure-dev-spaces"></a>在 Azure Dev Spaces 中使用私用 Helm 存放庫
 
@@ -33,7 +33,7 @@ helm repo update
 流覽至您的專案目錄，然後執行 `azds prep`。
 
 ```cmd
-azds prep --public
+azds prep --enable-ingress
 ```
 
 > [!TIP]

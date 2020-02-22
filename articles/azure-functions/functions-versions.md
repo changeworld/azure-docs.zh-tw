@@ -3,12 +3,12 @@ title: Azure Functions 執行階段版本概觀
 description: Azure Functions 支援多個執行階段版本。 了解其間的差異以及如何選擇最適合您的版本。
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 0138af15c89a4792b9ccb73a8b761577fad36c5e
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 21722d66129224038df20a0a1ef2bff989221224
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290371"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539496"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions 執行階段版本概觀
 
@@ -16,8 +16,8 @@ Azure Functions 執行時間的主要版本與執行時間所依據的 .NET 版�
 
 | 執行階段版本 | 發行層級<sup>1</sup> | .NET 版本 | 
 | --------------- | ------------- | ------------ |
-| 3.x | 正式上市 | .NET Core 3.1 | 
-| 2.x | 正式上市 | .NET Core 2.2 |
+| 3.x | GA | .NET Core 3.1 | 
+| 2.x | GA | .NET Core 2.2 |
 | 1.x | GA<sup>2</sup> | .NET Framework 4.6<sup>3</sup> |
 
 <sup>1</sup> GA 版本支援生產案例。   
@@ -26,7 +26,7 @@ Azure Functions 執行時間的主要版本與執行時間所依據的 .NET 版�
 
 本文會詳細說明各種版本之間的一些差異、如何建立每個版本，以及如何變更版本。
 
-## <a name="languages"></a>語言
+## <a name="languages"></a>程式語言
 
 從2.x 版開始，執行時間會使用語言擴充性模型，而且函數應用程式中的所有函式都必須共用相同的語言。 建立應用程式時，會選擇函式應用程式中的函式語言，並在[\_WORKER\_運行](functions-app-settings.md#functions_worker_runtime)時間設定的函式中維護。 
 
@@ -38,7 +38,7 @@ Azure Functions 1.x 實驗語言無法使用新模型，因此在2.x 中不支�
 
 ## <a name="creating-1x-apps"></a>在特定版本上執行
 
-根據預設，在 Azure 入口網站和 Azure CLI 中建立的函數應用程式會設定為2.x 版。 您可以視需要修改此版本。 您只能在建立函數應用程式之後，但在新增任何函式之前，將執行階段版本變更為1.x。  即使應用程式具有函式，也允許在2.x 和3.x 之間移動，但仍建議您先在新應用程式中進行測試。
+根據預設，在 Azure 入口網站和 Azure CLI 中建立的函數應用程式會設定為版本3.x。 您可以視需要修改此版本。 您只能在建立函數應用程式之後，但在新增任何函式之前，將執行階段版本變更為1.x。  即使應用程式具有函式，也允許在2.x 和3.x 之間移動，但仍建議您先在新應用程式中進行測試。
 
 ## <a name="migrating-from-1x-to-later-versions"></a>從1.x 遷移至更新版本
 
@@ -182,7 +182,7 @@ Azure Functions 版本3.x 與2.x 版具有高度回溯相容性。  許多應用
 </configuration>
 ```
 
-## <a name="bindings"></a>繫結
+## <a name="bindings"></a>Bindings
 
 從2.x 版開始，執行時間會使用新的系結擴充性[模型](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview)，以提供下列優點：
 

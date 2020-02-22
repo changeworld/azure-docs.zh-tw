@@ -1,29 +1,26 @@
 ---
 title: SharePoint 檔案-QnA Maker
-titleSuffix: Azure Cognitive Services
 description: 將受保護的 SharePoint 資料來源新增至您的知識庫，以使用 Active Directory 保護的問題和答案來擴充知識庫。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 06/24/2019
-ms.author: diberry
-ms.openlocfilehash: e28f144c33cbdf253603cb38ca56a4d304afd474
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 02/20/2020
+ms.openlocfilehash: ec77d3ac217991ff191d80249bc86805e7c8ba35
+ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843287"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77544159"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>將受保護的 SharePoint 資料來源新增至您的知識庫
 
-將受保護的 SharePoint 資料來源新增至您的知識庫，以使用 Active Directory 保護的問題和答案來擴充知識庫。
+將安全的以雲端為基礎的 SharePoint 資料來源新增至您的知識庫，以使用 Active Directory 可保護的問題和答案來擴充知識庫。
 
 當您將受保護的 SharePoint 檔加入至您的知識庫時，身為 QnA Maker 管理員，您必須要求 QnA Maker 的 Active Directory 許可權。 一旦從 Active Directory 管理員授與此許可權，以 QnA Maker 存取 SharePoint，就不需要再次指定。 如果知識庫的每個後續檔都在同一個 SharePoint 資源中，則不需要授權。
 
 如果 QnA Maker 知識庫管理員不是 Active Directory 管理員，您就必須與 Active Directory 管理員通訊，才能完成此程式。
+
+## <a name="prerequisites"></a>必要條件
+
+QnA Maker 使用 Microsoft Graph 的許可權。 如果您的 SharePoint 是內部部署，您將無法從 SharePoint 解壓縮，因為 Microsoft Graph 無法判斷許可權。
 
 ## <a name="add-supported-file-types-to-knowledge-base"></a>將支援的檔案類型新增至知識庫
 
@@ -50,7 +47,7 @@ ms.locfileid: "76843287"
 
 當您在互動式測試面板中測試 QnA 組時，在 QnA Maker 入口網站中，會顯示影像，而不是 markdown 文字。 這會驗證可以從您的用戶端應用程式公開抓取映射。
 
-## <a name="permissions"></a>使用權限
+## <a name="permissions"></a>權限
 
 當 SharePoint 伺服器的安全檔案加入至知識庫時，就會授與許可權。 根據 SharePoint 的設定方式，以及新增檔案的人員許可權而定，這可能需要：
 

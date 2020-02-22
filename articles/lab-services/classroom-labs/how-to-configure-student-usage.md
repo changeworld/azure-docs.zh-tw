@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
+ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 80e8bc47f6e6293d70bbc9fae888abdf5527fe93
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 9fda1295bcdcd44b8a92c101c2aa445197ce6d4a
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169216"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539141"
 ---
 # <a name="add-and-manage-lab-users"></a>新增和管理實驗室使用者
 本文說明如何將使用者新增至實驗室、讓他們向實驗室註冊、控制他們可以使用 VM 的時數等等。 
@@ -35,7 +35,7 @@ ms.locfileid: "76169216"
     ![新增使用者電子郵件地址](../media/how-to-configure-student-usage/add-users-email-addresses.png)
 4. 選取 [儲存]。 您會在清單中看到使用者的電子郵件地址及其狀態 (是否已註冊)。 
 
-    ![使用者清單](../media/how-to-configure-student-usage/users-list-new.png)
+    ![使用者清單](../media/how-to-configure-student-usage/list-of-added-users.png)
 
     > [!NOTE]
     > 在使用者向實驗室註冊後，您會在清單中看到使用者的名稱。 清單中顯示的名稱是在 Azure Active Directory 中使用使用者的名字和姓氏所建立。 
@@ -101,11 +101,14 @@ ms.locfileid: "76169216"
 2. 在 [**使用者註冊**] 對話方塊上，選取 [**完成**]。 
 4. 將**註冊連結**傳送給學生，讓學生可以註冊類別。 
 
-## <a name="view-users-registered-with-the-lab"></a>檢視已向實驗室註冊的使用者
+## <a name="view-registered-users"></a>查看已註冊的使用者
 
-選取左側功能表上的 [使用者]，查看已向實驗室註冊的使用者清單。 
+1. 瀏覽至 [Azure 實驗室服務網站](https://labs.azure.com)。 
+2. 選取 [登入]，然後輸入您的認證。 Azure 實驗室服務支援組織帳戶和 Microsoft 帳戶。
+3. 在 [我的實驗室] 頁面上，選取您要追蹤其使用情況的實驗室。 
+4. 選取左側功能表或 [使用者] 圖格上的 [使用者]。 您會看到已向實驗室註冊的學生。  
 
-![已向實驗室註冊的使用者清單](../media/how-to-configure-student-usage/students-registered.png)
+    ![已註冊的使用者](../media/tutorial-track-usage/registered-users.png)
 
 ## <a name="set-quotas-for-users"></a>設定使用者的配額
 您可以使用下列步驟來設定每位使用者的配額： 
@@ -115,7 +118,7 @@ ms.locfileid: "76169216"
 3. 在 [**每位使用者的配額**] 頁面上，指定您想要提供給每位使用者（student）在排定的類別時間之外的時數，然後選取 [**儲存**]。
 
     ![每位使用者的配額](../media/how-to-configure-student-usage/quota-per-user.png)    
-5. 您會立即在工具列上看到變更的值：**每位使用者的配額： \<> 小時數**。 
+5. 您會立即在工具列上看到變更的值：**每位使用者的配額： \<> 時數**，也會在 [使用者] 清單中。
 
     ![每位使用者的配額-之後](../media/how-to-configure-student-usage/quot-per-user-after.png)
 
@@ -125,7 +128,7 @@ ms.locfileid: "76169216"
 ## <a name="set-additional-quota-for-a-specific-user"></a>為特定使用者設定額外的配額
 您可以為使用者指定額外的配額。 此配額除了上一節中所有使用者所設定的一般配額之外。 例如，如果您（身為講師）將所有使用者的配額設為10小時，並為特定使用者設定5小時的額外配額，則該使用者會取得15（10 + 5）小時的配額。 如果您稍後將一般配額變更為（例如15），則使用者會取得20（15 + 5）小時的配額。 請記住，此整體配額是在排定的時間外。 在排程時間期間，學生在實驗室 VM 上花費的時間，不會計入此配額。 
 
-若要這樣做，請依照下列步驟執行：
+若要執行此作業，請遵循下列步驟：
 
 1. 在 [**使用者**] 頁面上，從使用者清單中選取使用者（student）。
 2. 然後，從工具列選取 [**調整配額**]。 

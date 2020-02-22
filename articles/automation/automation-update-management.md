@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 01/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: aec46a1914fa2361ea15ba34dd1510cfe53a4dc0
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: e7a86f3a709566bcf18241ce3c329c0355be2743
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443834"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539547"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 中的更新管理解決方案
 
@@ -69,7 +69,7 @@ ms.locfileid: "77443834"
 
 下表列出更新評估支援的作業系統。 修補需要混合式 Runbook 背景工作角色。 如需混合式 Runbook 背景工作角色需求的詳細資訊，請參閱安裝[Windows 混合式 runbook 背景工作角色](automation-windows-hrw-install.md)和[Linux 混合式 Runbook 背景工作角色](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)的安裝指南。
 
-|作業系統  |注意  |
+|作業系統  |注意事項  |
 |---------|---------|
 |Windows Server 2019 （Datacenter/Datacenter Core/Standard）<br><br>Windows Server 2016 （Datacenter/Datacenter Core/Standard）<br><br>Windows Server 2012 R2 （Datacenter/Standard）<br><br>Windows Server 2012 || 
 |Windows Server 2008 R2 （RTM 和 SP1 標準）| 更新管理只支援執行此作業系統的評量，不支援修補，因為 Windows Server 2008 R2 不支援[混合式 Runbook 背景工作角色](automation-windows-hrw-install.md)。 |
@@ -86,7 +86,7 @@ ms.locfileid: "77443834"
 
 下表列出不支援的作業系統：
 
-|作業系統  |注意  |
+|作業系統  |注意事項  |
 |---------|---------|
 |Windows 用戶端     | 不支援用戶端作業系統 (例如 Windows 7 和 Windows 10)。        |
 |Windows Server 2016 Nano Server     | 不支援。       |
@@ -115,7 +115,7 @@ Windows 代理程式必須設定為與 WSUS 伺服器通訊，或必須具有 Mi
 
 如需有關如何安裝適用于 Linux 的 Log Analytics 代理程式及下載最新版本的詳細資訊，請參閱[適用于 linux 的 Log Analytics 代理程式](https://github.com/microsoft/oms-agent-for-linux)。 如需有關如何安裝適用于 Windows 的 Log Analytics 代理程式的詳細資訊，請參閱[將 Windows 電腦連線到 Azure 監視器](../log-analytics/log-analytics-windows-agent.md)。
 
-從 Azure Marketplace 中提供的隨選 Red Hat Enterprise Linux （RHEL）映射所建立的 Vm，會進行註冊以存取部署在 Azure 中的[Red Hat 更新基礎結構（RHUI）](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md) 。 任何其他 Linux 發行版本都必須使用發佈的支援方法，從發佈的線上檔案存放庫更新。
+從 Azure Marketplace 中提供的隨選 Red Hat Enterprise Linux （RHEL）映射所建立的 Vm，會進行註冊以存取部署在 Azure 中的[Red Hat 更新基礎結構（RHUI）](../virtual-machines/workloads/redhat/redhat-rhui.md) 。 任何其他 Linux 發行版本都必須使用發佈的支援方法，從發佈的線上檔案存放庫更新。
 
 ## <a name="permissions"></a>權限
 
@@ -184,7 +184,7 @@ Windows 代理程式必須設定為與 WSUS 伺服器通訊，或必須具有 Mi
 
 對於 Windows 機器，您也必須允許流量傳送至 Windows Update 所需的任何端點。 您可以在[與 HTTP/Proxy 相關的問題](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy)中，找到所需端點的更新清單。 如果您有本機[Windows Update 伺服器](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment)，您也必須允許流向[WSUS 金鑰](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)中所指定伺服器的流量。
 
-對於 Red Hat Linux 電腦，請參閱必要端點[的 RHUI 內容傳遞伺服器的 ip](../virtual-machines/linux/update-infrastructure-redhat.md#the-ips-for-the-rhui-content-delivery-servers) 。 如需其他 Linux 發行版本，請參閱您的提供者檔。
+對於 Red Hat Linux 電腦，請參閱必要端點[的 RHUI 內容傳遞伺服器的 ip](../virtual-machines/workloads/redhat/redhat-rhui.md#the-ips-for-the-rhui-content-delivery-servers) 。 如需其他 Linux 發行版本，請參閱您的提供者檔。
 
 如需混合式 Runbook 背景工作角色所需連接埠的詳細資訊，請參閱[混合式背景工作角色連接埠](automation-hybrid-runbook-worker.md#hybrid-worker-role)。
 

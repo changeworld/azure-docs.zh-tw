@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: b2c59fd6ee925d531a5a5ff3bb26fdebea025b83
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: c5acc9637fe5afe8f7dd32d23fbdbb80373b4f61
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513553"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539377"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>關於適用於 VMware VM 和實體伺服器的行動服務
 
@@ -21,6 +21,9 @@ ms.locfileid: "76513553"
 - [推入安裝](#push-installation)：當透過 Azure 入口網站啟用保護時，Site Recovery 會在伺服器上安裝行動代理程式。
 - 手動安裝：您可以透過[UI](#install-mobility-agent-through-ui)或[命令提示](#install-mobility-agent-through-command-prompt)字元，在每部機器上手動安裝行動服務。
 - [自動化部署](vmware-azure-mobility-install-configuration-mgr.md). 您可以使用 Configuration Manager 之類的軟體部署工具來自動化安裝。
+
+> [!NOTE]
+> 行動代理程式在 VMware Vm 或實體機器的來源機器上使用大約 6%-10% 的記憶體。
 
 ## <a name="anti-virus-on-replicated-machines"></a>在複寫的機器上防毒
 
@@ -35,7 +38,7 @@ ms.locfileid: "76513553"
 
 下列各節已說明推播安裝工作流程的詳細資料。
 
-### <a name="from-923-versionhttpssupportmicrosoftcomen-inhelp4494485update-rollup-35-for-azure-site-recovery-onwards"></a>從[9.23 版](https://support.microsoft.com/en-in/help/4494485/update-rollup-35-for-azure-site-recovery)起
+### <a name="from-923-version-onwards"></a>從[9.23 版](https://support.microsoft.com/en-in/help/4494485/update-rollup-35-for-azure-site-recovery)起
 
 在行動代理程式的推入安裝期間，會執行下列步驟
 
@@ -73,7 +76,7 @@ ms.locfileid: "76513553"
 
     ![[行動服務註冊] 頁面](./media/vmware-physical-mobility-service-install-manual/mobility3.png)
 
-5. 在 [設定**伺服器詳細資料**] 中，指定您所設定的 IP 位址和複雜密碼。  
+5. 在 [設定**伺服器詳細資料**] 中，指定您所設定的 IP 位址和複雜密碼。
 
     ![[行動服務註冊] 頁面](./media/vmware-physical-mobility-service-install-manual/mobility4.png)
 
@@ -115,7 +118,7 @@ ms.locfileid: "76513553"
 #### <a name="installation-settings"></a>安裝設定
 **設定** | **詳細資料**
 --- | ---
-用量 | Unifiedagent.exe/Role \<MS/MT >/InstallLocation \<安裝位置 >/Platform "VmWare"/Silent
+使用方式 | Unifiedagent.exe/Role \<MS/MT >/InstallLocation \<安裝位置 >/Platform "VmWare"/Silent
 安裝記錄 | 在 %ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log 底下。
 /Role | 必要安裝參數。 指定應該要安裝行動服務 (MS) 還是主要目標 (MT)。
 /InstallLocation| 選擇性參數。 指定行動服務安裝位置 (任何資料夾)。
@@ -125,7 +128,7 @@ ms.locfileid: "76513553"
 #### <a name="registration-settings"></a>註冊設定
 **設定** | **詳細資料**
 --- | ---
-用量 | Unifiedagentconfigurator.exe/CSEndPoint \<CSIP >/PassphraseFilePath \<PassphraseFilePath >
+使用方式 | Unifiedagentconfigurator.exe/CSEndPoint \<CSIP >/PassphraseFilePath \<PassphraseFilePath >
 代理程式設定記錄 | 在 %ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log 底下。
 /CSEndPoint | 必要參數。 指定設定伺服器的 IP 位址。 請使用任何有效的 IP 位址。
 /PassphraseFilePath |  Mandatory。 複雜密碼的位置。 請使用任何有效的 UNC 或本機檔案路徑。
@@ -154,7 +157,7 @@ ms.locfileid: "76513553"
 #### <a name="installation-settings"></a>安裝設定
 **設定** | **詳細資料**
 --- | ---
-用量 | ./install-d \<安裝位置 >-r \<MS/MT >-v VmWare-q
+使用方式 | ./install-d \<安裝位置 >-r \<MS/MT >-v VmWare-q
 -r | 必要安裝參數。 指定應該要安裝行動服務 (MS) 還是主要目標 (MT)。
 -d | 選擇性參數。 指定行動服務安裝位置：/usr/local/ASR。
 -v | Mandatory。 指定要安裝行動服務的平台。 如果是 VMware VM/實體伺服器，則為 **VMware**；如果是 Azure VM，則為 **Azure**。
@@ -163,7 +166,7 @@ ms.locfileid: "76513553"
 #### <a name="registration-settings"></a>註冊設定
 **設定** | **詳細資料**
 --- | ---
-用量 | cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh-i \<CSIP >-P \<PassphraseFilePath >
+使用方式 | cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh-i \<CSIP >-P \<PassphraseFilePath >
 -i | 必要參數。 指定設定伺服器的 IP 位址。 請使用任何有效的 IP 位址。
 -P |  Mandatory。 儲存複雜密碼之檔案的完整檔案路徑。 請使用任何有效的資料夾。
 

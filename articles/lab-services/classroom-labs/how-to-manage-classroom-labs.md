@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2019
+ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: ad7fd664f0dce08e4482b4fb2cba2831208396fc
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: ac990141ccc694ed7460763e84126d9fefdbb609
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264826"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539445"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>管理 Azure 實驗室服務中的教室實驗室 
 本文說明如何建立和刪除教室實驗室。 它也示範如何檢視實驗室帳戶中的所有教室實驗室。 
@@ -41,6 +41,9 @@ ms.locfileid: "76264826"
     6. 選取 [儲存]。
 
         ![[新增實驗室] 視窗](../media/tutorial-setup-classroom-lab/new-lab-window.png)
+
+        > [!NOTE]
+        > 如果實驗室帳戶已設定為[允許實驗室建立者選擇實驗室位置](allow-lab-creator-pick-lab-location.md)選項，您會看到選取實驗室位置的選項。 
 4. 在 [虛擬機器認證] 頁面上，指定實驗室中所有 VM 的預設認證。
     1. 指定實驗室中所有 VM 的 [使用者名稱]。
     2. 指定使用者的 [密碼]。 
@@ -52,12 +55,14 @@ ms.locfileid: "76264826"
         老師可以選擇針對實驗室中的所有 Vm 使用相同的密碼，或允許學生設定其 Vm 的密碼。 根據預設，除了 Ubuntu 以外，所有 Windows 和 Linux 映射都會啟用這項設定。 當您選取 [ **Ubuntu** VM] 時，此設定會停用，因此學生會在第一次登入時提示他們設定密碼。  
 
         ![[新增實驗室] 視窗](../media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
-        > [!IMPORTANT]
-        > 請記下使用者名稱和密碼。 它們將不會再次顯示。    
     4. 然後，在 [**虛擬機器認證**] 頁面上選取 **[下一步]** 。 
-5. 在 [實驗室原則] 頁面上，輸入在實驗室的排程時間外所配置給每位使用者的時數 (**每位使用者的配額**)，然後選取 [完成]。 
+5. 在 [**實驗室原則**] 頁面上，執行下列步驟：
+    1. 輸入在實驗室的排程時間外，為每個使用者分配的時數（**每位使用者的配額**）。 
+    2. 在 [**自動關閉虛擬機器**] 選項中，指定是否要在使用者中斷連線時自動關閉 VM。 您也可以指定 VM 在自動關機之前，應等候使用者重新連線的時間長度。 如需詳細資訊，請參閱[在中斷連線時啟用 vm 的自動關機](how-to-enable-shutdown-disconnect.md)。
+    3. 然後選取 **[完成]** 。 
 
-    ![每位使用者的配額](../media/tutorial-setup-classroom-lab/quota-for-each-user.png)
+        ![每位使用者的配額](../media/tutorial-setup-classroom-lab/quota-for-each-user.png)
+    
 5. 您應該會看到下列畫面，其中顯示範本 VM 的建立狀態。 在實驗室中建立範本最多需要 20 分鐘。 
 
     ![範本 VM 的建立狀態](../media/tutorial-setup-classroom-lab/create-template-vm-progress.png)
@@ -92,12 +97,12 @@ ms.locfileid: "76264826"
 
 ### <a name="vm-sizes"></a>VM 大小  
 
-| 大小 | 核心 | RAM | 說明 | 
+| 大小 | 核心 | RAM | 描述 | 
 | ---- | ----- | --- | ----------- | 
-| 小 | 2 | 3.5 GB | 此大小最適合用於命令列、開啟網頁瀏覽器、低流量網頁伺服器、小型至中型資料庫。 |
-| 中型 | 4 | 7 GB | 此大小最適合用於關係資料庫、記憶體內部快取和分析 | 
+| Small | 2 | 3.5 GB | 此大小最適合用於命令列、開啟網頁瀏覽器、低流量網頁伺服器、小型至中型資料庫。 |
+| 中 | 4 | 7 GB | 此大小最適合用於關係資料庫、記憶體內部快取和分析 | 
 | 中（嵌套虛擬化） | 4 | 16 GB | 此大小最適合用於關係資料庫、記憶體內部快取及分析。 此大小也支援嵌套虛擬化。 <p>此大小可用於每個學生都需要多個 Vm 的案例。 老師可以使用嵌套虛擬化，在虛擬機器內設定幾個小型的嵌套虛擬機器。 </p> |
-| 大 | 8 | 32 GB | 此大小最適合需要更快的 Cpu、更佳的本機磁片效能、大型資料庫、大型記憶體快取的應用程式。 此大小也支援嵌套虛擬化 |  
+| Large | 8 | 32 GB | 此大小最適合需要更快的 Cpu、更佳的本機磁片效能、大型資料庫、大型記憶體快取的應用程式。 此大小也支援嵌套虛擬化 |  
 | 小型 GPU （視覺效果） | 6 | 56 GB | 此大小最適合用於使用 OpenGL 和 DirectX 這類架構的遠端視覺效果、串流、遊戲、編碼。 | 
 | 小型 GPU （計算） | 6 | 56 GB | 此大小最適合用於計算密集型和網路密集型應用程式，例如人工智慧和深度學習應用程式。 | 
 | 中 GPU （視覺效果） | 12 | 112 GB | 此大小最適合用於使用 OpenGL 和 DirectX 這類架構的遠端視覺效果、串流、遊戲、編碼。 | 
@@ -116,7 +121,7 @@ ms.locfileid: "76264826"
 ## <a name="delete-a-classroom-lab"></a>刪除教室實驗室
 1. 在實驗室的磚上，選取角落的三個點（...），然後選取 [**刪除**]。 
 
-    ![刪除按鈕](../media/how-to-manage-classroom-labs/delete-button.png)
+    ![[刪除] 按鈕](../media/how-to-manage-classroom-labs/delete-button.png)
 3. 在 [**刪除實驗室**] 對話方塊中，選取 [**刪除**] 繼續刪除作業。 
 
 ## <a name="switch-to-another-classroom-lab"></a>切換到另一個教室實驗室

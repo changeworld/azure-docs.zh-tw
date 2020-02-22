@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 7ad10ad2d4393c1d25a835d0ff8cd0b98ed25879
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 6156557d10210535b287aa516070c0b5da416512
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756391"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539360"
 ---
 # <a name="message-browsing"></a>訊息瀏覽
 
@@ -34,7 +34,7 @@ ms.locfileid: "76756391"
 
 ## <a name="peek-apis"></a>預覽 API
 
-[Peek/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) 和 [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) 方法存在於所有 .NET 和 Java 用戶端程式庫及所有接收者物件上：**MessageReceiver**、**MessageSession**、**QueueClient** 及 **SubscriptionClient**。 預覽適用於所有佇列、訂用帳戶與各自的無效信件佇列。
+[Peek/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync)和[PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_)方法存在於所有 .net 和 JAVA 用戶端程式庫中，以及所有接收者物件上： **MessageReceiver**、 **MessageSession**。 預覽適用於所有佇列、訂用帳戶與各自的無效信件佇列。
 
 當重複叫用時，Peek 方法會列舉出佇列或訂用帳戶記錄中的所有訊息，並依照序號順序從最小序號排列到最大序號。 這是訊息加入佇列時的順序，而不是最終的擷取順序。
 

@@ -3,12 +3,12 @@ title: 了解效果的運作方式
 description: Azure 原則定義有各種不同的效果，可決定合規性的管理和報告方式。
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2b588cfb7c13a63e3fa5d3a65d9ccb24a2e854fd
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 502c8a87c4e915ebd1fd764915daa9c89a307097
+ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972804"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77544125"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure 原則效果
 
@@ -28,7 +28,7 @@ ms.locfileid: "75972804"
 
 ## <a name="order-of-evaluation"></a>評估順序
 
-「Azure 原則」會先評估透過 Azure Resource Manager 進行的資源建立或更新要求。 Azure 原則會建立適用于資源的所有指派清單，然後根據每個定義來評估資源。 Azure 原則會先處理數個效果，再將要求交給適當的資源提供者。 這麼做可避免資源提供者在資源不符合 Azure 原則的設計治理控制項時進行不必要的處理。
+透過 Azure Resource Manager 來建立或更新資源的要求，會先由 Azure 原則評估。 Azure 原則會建立適用于資源的所有指派清單，然後根據每個定義來評估資源。 Azure 原則會先處理數個效果，再將要求交給適當的資源提供者。 這麼做可避免資源提供者在資源不符合 Azure 原則的設計治理控制項時進行不必要的處理。
 
 - 首先會檢查 **Disabled**，以決定是否應評估原則規則。
 - 接著會評估 [**附加**] 和 [**修改**]。 由於可能會改變要求，因此所做的變更可能會導致無法觸發 audit 或 deny 的影響。
@@ -117,7 +117,7 @@ Append 效果只有一個 **details** 陣列且為必要。 由於 **details** �
   - 定義的角色必須包括授與[參與者](../../../role-based-access-control/built-in-roles.md#contributor)角色的所有作業。
 - **作業**[必要]
   - 要在比對資源上完成之所有標記作業的陣列。
-  - 屬性：
+  - 屬性:
     - 作業 **[必要**]
       - 定義要對相符資源採取的動作。 選項包括： _addOrReplace_、 _Add_、 _Remove_。 _新增_的行為類似于[附加](#append)效果。
     - **欄位**[必要]
@@ -158,10 +158,10 @@ Append 效果只有一個 **details** 陣列且為必要。 由於 **details** �
 
 **Operation**屬性具有下列選項：
 
-|作業 |說明 |
+|作業 |描述 |
 |-|-|
 |addOrReplace |將已定義的標籤和值新增至資源，即使標記已經存在且具有不同的值。 |
-|新增 |將已定義的標記和值加入至資源。 |
+|Add |將已定義的標記和值加入至資源。 |
 |移除 |從資源中移除已定義的標記。 |
 
 ### <a name="modify-examples"></a>修改範例
@@ -327,11 +327,12 @@ AuditIfNotExists 效果的 **details** 屬性含有定義所要比對相關資�
 類似于 AuditIfNotExists，DeployIfNotExists 原則定義會在符合條件時執行範本部署。
 
 > [!NOTE]
-> 使用 **deployIfNotExists** 時，支援[巢狀範本](../../../azure-resource-manager/templates/linked-templates.md#nested-template)，但目前不支援[連結的範本](../../../azure-resource-manager/templates/linked-templates.md#linked-template)。
+> 使用 [deployIfNotExists](../../../azure-resource-manager/templates/linked-templates.md#nested-template) 時，支援**巢狀範本**，但目前不支援[連結的範本](../../../azure-resource-manager/templates/linked-templates.md#linked-template)。
 
 ### <a name="deployifnotexists-evaluation"></a>DeployIfNotExists 評估
 
-DeployIfNotExists 的執行順序是在「資源提供者」已處理建立或更新資源要求，並且已傳回成功狀態碼之後。 如果沒有任何相關資源，或 **ExistenceCondition** 所定義的資源未評估為 true，就會進行範本部署。
+在資源提供者已處理建立或更新資源要求，且已傳回成功狀態碼之後，DeployIfNotExists 大約會執行15分鐘。 如果沒有任何相關資源，或 **ExistenceCondition** 所定義的資源未評估為 true，就會進行範本部署。
+部署的持續時間取決於範本中包含的資源複雜度。
 
 在評估週期期間，會將含有 DeployIfNotExists 效果且與資源相符的原則定義標示為不符合規範，但不會對該資源採取任何動作。
 
@@ -539,7 +540,7 @@ EnforceRegoPolicy 效果的**details**屬性具有描述閘道管理員 v2 許�
 
 ## <a name="layering-policies"></a>分層原則
 
-一個資源可能會受到數個指派影響。 這些指派可能屬於相同範圍，也可能屬於不同範圍。 這些指派中的每項指派也可能定義了不同的效果。 針對每個原則的條件和效果，都會以獨立方式進行評估。 例如：
+一個資源可能會受到數個指派影響。 這些指派可能屬於相同範圍，也可能屬於不同範圍。 這些指派中的每項指派也可能定義了不同的效果。 針對每個原則的條件和效果，都會以獨立方式進行評估。 例如，
 
 - 原則 1
   - 將資源位置限制為 'westus'

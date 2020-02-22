@@ -3,12 +3,12 @@ title: 補救不相容的資源
 description: 本指南會逐步引導您在 Azure 原則中，修復不符合原則的資源。
 ms.date: 09/09/2019
 ms.topic: how-to
-ms.openlocfilehash: 341a325aa7a82c8b1f6366c3a674848c60a8fb5e
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: e3db0f5f8ae1be4a6ab6eb281801958bfb816228
+ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873041"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77544176"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>補救不符合 Azure 原則規範的資源
 
@@ -143,7 +143,7 @@ if ($roleDefinitionIds.Count -gt 0)
 
    ![補救-選取要補救的資源](../media/remediate-resources/select-resources.png)
 
-1. 篩選資源之後，按一下 [補救] 來開始補救工作。 原則合規性頁面將會開啟至 [補救工作] 索引標籤，以顯示工作進度的狀態。
+1. 篩選資源之後，按一下 [補救] 來開始補救工作。 [原則合規性] 頁面會開啟至 [**補救**工作] 索引標籤，以顯示工作進度的狀態。 補救工作所建立的部署會立即開始。
 
    ![補救-補救工作的進度](../media/remediate-resources/task-progress.png)
 

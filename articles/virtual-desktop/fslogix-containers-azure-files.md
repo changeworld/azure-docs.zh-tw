@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 7b67569ee821fee837f4fa63a1d71e622a0370a5
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 49a63be8e8ac3752006d531f4541cb3c2904c3e3
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472463"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539615"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix 設定檔容器和 Azure 檔案
 
@@ -46,7 +46,7 @@ UPD 和 RUP 是遠端桌面工作階段主機（RDSH）和虛擬硬碟（VHD）�
 
 下表顯示先前的使用者設定檔技術的優點與限制。
 
-| 技術 | 新式設定 | Win32 設定 | OS 設定 | 使用者資料 | 伺服器 SKU 上支援 | Azure 上的後端儲存體 | 內部部署的後端儲存體 | 版本支援 | 後續登入時間 |注意|
+| 技術 | 新式設定 | Win32 設定 | OS 設定 | 使用者資料 | 伺服器 SKU 上支援 | Azure 上的後端儲存體 | 內部部署的後端儲存體 | 版本支援 | 後續登入時間 |注意事項|
 | ---------- | :-------------: | :------------: | :---------: | --------: | :---------------------: | :-----------------------: | :--------------------------: | :-------------: | :---------------------: |-----|
 | **使用者設定檔磁片（UPD）** | 是 | 是 | 是 | 是 | 是 | 否 | 是 | Win 7 + | 是 | |
 | **漫遊使用者設定檔（RUP），維護模式** | 否 | 是 | 是 | 是 | 是| 否 | 是 | Win 7 + | 否 | |
@@ -58,7 +58,7 @@ UPD 和 RUP 是遠端桌面工作階段主機（RDSH）和虛擬硬碟（VHD）�
 
 UPD 需要[儲存空間直接存取（S2D）](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/)來處理效能需求。 UPD 會使用伺服器訊息區（SMB）通訊協定。 它會將配置檔案複製到要在其中記錄使用者的 VM。 UPD with S2D 是我們建議 Windows 虛擬桌面的解決方案。  
 
-#### <a name="cost"></a>成本
+#### <a name="cost"></a>Cost
 
 雖然 S2D 叢集達到所需的效能，但成本對於企業客戶而言是昂貴的，但對於小型和中型企業（SMB）客戶而言特別昂貴。 針對此解決方案，企業會支付儲存體磁片的費用，以及使用共用磁片的 Vm 成本。
 
@@ -87,7 +87,7 @@ Windows 虛擬桌面提供客戶所使用 Vm 的大小、類型和計數的完�
 若要確保您的 Windows 虛擬桌面環境遵循最佳做法：
 
 - Azure 檔案儲存體儲存體帳戶必須位於與會話主機 Vm 相同的區域中。
-- Azure 檔案儲存體許可權應符合[需求-設定檔容器](/fslogix/overview#requirements)中所述的許可權。
+- Azure 檔案儲存體許可權應符合[需求-設定檔容器](/fslogix/fslogix-storage-config-ht)中所述的許可權。
 - 每個主機集區都必須根據相同的主要映射，建立相同類型和大小的 VM。
 - 每部主機集區 VM 都必須位於相同的資源群組中，以協助管理、調整和更新。
 - 為了達到最佳效能，儲存體解決方案和 FSLogix 設定檔容器應該位於相同的資料中心位置。

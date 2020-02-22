@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cb1a57c5b18f1da25e3843b55e86705d05f43c5
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: d9ebeb0db14a42f090a629e379d88e00867bda65
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522334"
+ms.locfileid: "77538170"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>建立 SCIM 端點，並使用 Azure Active Directory （Azure AD）來設定使用者布建
 
@@ -1448,12 +1448,13 @@ Azure AD 可以設定為將已指派的使用者和群組自動布建至應用�
 ### <a name="gallery-onboarding-checklist"></a>圖庫上架檢查清單
 請遵循下列檢查清單，以確保您的應用程式上架快速，而且客戶有順暢的部署體驗。 當您上架至資源庫時，系統會向您收集資訊。 
 > [!div class="checklist"]
-> * [支援 SCIM 2.0](https://tools.ietf.org/html/draft-wahl-scim-profile-00) （必要）
+> * 支援[SCIM 2.0](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#step-2-understand-the-azure-ad-scim-implementation)使用者和群組端點（只需要一個），但建議兩者都使用）
 > * 每個租使用者至少支援25個要求（必要）
-> * 支援架構探索（建議）
 > * 支援 OAuth 授權碼授與或長時間的權杖，如下所述（必要）
-> * 建立工程師的工程和支援點，以支援客戶的後置圖庫上線（必要）
+> * 建立小組的工程和支援點，以支援客戶在後置庫上線（必要）
+> * 支援使用單一修補程式來更新多個群組成員資格（建議） 
 > * 公開記錄您的 SCIM 端點（建議） 
+> * [支援架構探索](https://tools.ietf.org/html/rfc7643#section-6)（建議）
 
 
 ### <a name="authorization-for-provisioning-connectors-in-the-application-gallery"></a>在應用程式資源庫中布建連接器的授權

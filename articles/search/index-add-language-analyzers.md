@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: ea7a62210f48b216d3f98f6359447eacf15cf821
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a97bee27b74aa211b4d4d56547726555edefa87a
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460809"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539394"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>將語言分析器新增至 Azure 認知搜尋索引中的字串欄位
 
@@ -44,7 +44,7 @@ Azure 認知搜尋支援 Lucene 支援的35分析器，以及由 Office 和 Bing
  
 + Lucene 的英文分析器能擴充標準分析器。 它會從字詞中移除所有格 (結尾的 's)、為每個 Porter 詞幹演算法套用詞幹，然後移除英文停用字詞。  
 
-+ Microsoft 的英文分析器會執行詞形的歸併還原，而不是詞幹分析。 這表示它可以把變形和不規則的字詞形式處理得更好，以得到相關性更強的搜尋結果 
++ Microsoft 的英文分析器會執行詞形的歸併還原，而不是詞幹分析。 這表示它可以處理屈折變化和不規則的文字形式，而使其產生更相關的搜尋結果。 
 
 ## <a name="configuring-analyzers"></a>設定分析器
 
@@ -67,7 +67,7 @@ Azure 認知搜尋支援 Lucene 支援的35分析器，以及由 Office 和 Bing
 |阿拉伯文|ar.microsoft|ar.lucene|  
 |亞美尼亞文||hy.lucene|  
 |孟加拉文|bn.microsoft||  
-|巴斯克文||eu.lucene|  
+|Basque||eu.lucene|  
 |保加利亞文|bg.microsoft|bg.lucene|  
 |卡達隆尼亞文|ca.microsoft|ca.lucene|  
 |簡體中文|zh-Hans.microsoft|zh-Hans.lucene|  
@@ -76,7 +76,7 @@ Azure 認知搜尋支援 Lucene 支援的35分析器，以及由 Office 和 Bing
 |捷克文|cs.microsoft|cs.lucene|  
 |丹麥文|da.microsoft|da.lucene|  
 |荷蘭文|nl.microsoft|nl.lucene|  
-|繁體中文|en.microsoft|en.lucene|  
+|英文|en.microsoft|en.lucene|  
 |愛沙尼亞文|et.microsoft||  
 |芬蘭文|fi.microsoft|fi.lucene|  
 |法文|fr.microsoft|fr.lucene|  
@@ -123,7 +123,7 @@ Azure 認知搜尋支援 Lucene 支援的35分析器，以及由 Office 和 Bing
 
  所有名稱加上 **Lucene** 註解的分析器都是由 [Apache Lucene 的語言分析器](https://lucene.apache.org/core/6_6_1/core/overview-summary.html ) \(英文\) 所提供。
 
-## <a name="see-also"></a>請參閱  
+## <a name="see-also"></a>另請參閱  
 
 + [建立索引&#40;Azure 認知搜尋 REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  
 

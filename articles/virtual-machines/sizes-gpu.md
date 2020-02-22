@@ -14,12 +14,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jonbeck
-ms.openlocfilehash: 9be3c14bb435aaa1cddf008a27389bb3b1fdbc3d
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 3ee7a2ffed9c2c50829f237fdf4c8d3b5a6f1531
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493536"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77538767"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>GPU 最佳化的虛擬機器大小
 
@@ -37,9 +37,9 @@ GPU 最佳化的 VM 大小，為搭配單一或多個 NVIDIA GPU 提供的特製
 
 若要利用 Azure N 系列 Vm 的 GPU 功能，必須安裝 NVIDIA GPU 驅動程式。
 
-[NVIDIA GPU 驅動程式擴充功能](/extensions/hpccompute-gpu-windows.md)會在 N 系列 VM 上安裝適當的 NVIDIA CUDA 或 GRID 驅動程式。 使用 Azure 入口網站或者 Azure PowerShell 或 Azure Resource Manager 範本之類的工具，安裝或管理擴充功能。 如需支援的作業系統和部署步驟，請參閱 [NVIDIA GPU 驅動程式擴充功能文件](/extensions/hpccompute-gpu-windows.md)。 如需有關虛擬機器擴充功能的一般資訊，請參閱 [Azure 虛擬機器擴充功能和功能](/extensions/overview.md)。
+[NVIDIA GPU 驅動程式擴充功能](/azure/virtual-machines/extensions/hpccompute-gpu-windows)會在 N 系列 VM 上安裝適當的 NVIDIA CUDA 或 GRID 驅動程式。 使用 Azure 入口網站或者 Azure PowerShell 或 Azure Resource Manager 範本之類的工具，安裝或管理擴充功能。 如需支援的作業系統和部署步驟，請參閱 [NVIDIA GPU 驅動程式擴充功能文件](/azure/virtual-machines/extensions/hpccompute-gpu-windows)。 如需有關虛擬機器擴充功能的一般資訊，請參閱 [Azure 虛擬機器擴充功能和功能](/azure/virtual-machines/extensions/overview)。
 
-如果您選擇手動安裝 NVIDIA GPU 驅動程式，請參閱適用于[Windows 的 n 系列 gpu 驅動程式設定](/windows/n-series-driver-setup.md)或[Linux 的 n 系列 gpu 驅動](/linux/n-series-driver-setup)程式設定，以瞭解支援的作業系統、驅動程式、安裝和驗證步驟。
+如果您選擇手動安裝 NVIDIA GPU 驅動程式，請參閱適用于[Windows 的 n 系列 gpu 驅動程式設定](/azure/virtual-machines/windows/n-series-driver-setup)或[Linux 的 n 系列 gpu 驅動](/azure/virtual-machines/linux/n-series-driver-setup)程式設定，以瞭解支援的作業系統、驅動程式、安裝和驗證步驟。
 
 ## <a name="deployment-considerations"></a>部署考量因素
 

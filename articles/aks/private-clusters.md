@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 1/24/2020
+ms.date: 2/21/2020
 ms.author: mlearned
-ms.openlocfilehash: 934dfdb43d6d2e4ccc346b728f0ac4f5febea327
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 08929d5ec05fbeb80eddebfd667fe1e0fde9bff7
+ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76932583"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77544227"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>建立私人 Azure Kubernetes Service 叢集（預覽）
 
@@ -31,13 +31,33 @@ ms.locfileid: "76932583"
 * Azure CLI 版2.0.77 或更新版本，以及 Azure CLI AKS Preview 延伸模組版本0.4.18
 
 ## <a name="currently-supported-regions"></a>目前支援的區域
+
+* 澳大利亞東部
+* 澳大利亞東南部
+* 巴西南部
+* 加拿大中部
+* 加拿大東部
+* Cenral 我們
+* 東亞
+* 美國東部
+* 美國東部 2
+* 美國東部 2 EUAP
+* 法國中部
+* 德國北部
+* 日本東部
+* 日本西部
+* 南韓中部
+* 南韓南部
+* 美國中北部
+* 北歐
+* 北歐
+* 美國中南部
+* 英國南部
+* 西歐
 * 美國西部
 * 美國西部 2
 * 美國東部 2
-* 加拿大中部
-* 北歐
-* 西歐
-* 澳大利亞東部
+
 
 ## <a name="install-the-latest-azure-cli-aks-preview-extension"></a>安裝最新的 Azure CLI AKS Preview 擴充功能
 
@@ -98,7 +118,7 @@ az aks create \
 > 如果 Docker 橋接器位址 CIDR （172.17.0.1/16）與子網 CIDR 衝突，請適當地變更 Docker 橋接器位址。
 
 ## <a name="connect-to-the-private-cluster"></a>連接到私人叢集
-API 伺服器端點沒有公用 IP 位址。 因此，您必須在虛擬網路中建立 Azure 虛擬機器（VM），並連接到 API 伺服器。 若要這樣做，請執行下列動作：
+API 伺服器端點沒有公用 IP 位址。 因此，您必須在虛擬網路中建立 Azure 虛擬機器（VM），並連接到 API 伺服器。 若要這樣做，請執行以下動作：
 
 1. 取得認證以連接到叢集。
 
@@ -106,7 +126,7 @@ API 伺服器端點沒有公用 IP 位址。 因此，您必須在虛擬網路�
    az aks get-credentials --name MyManagedCluster --resource-group MyResourceGroup
    ```
 
-1. 執行下列任一步驟：
+1. 請執行下列其中一個動作：
    * 在與 AKS 叢集相同的虛擬網路中建立 VM。  
    * 請在不同的虛擬網路中建立 VM，並將此虛擬網路與 AKS 叢集虛擬網路對等互連。
 
