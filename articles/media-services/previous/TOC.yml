@@ -397,8 +397,6 @@
       items:
         - name: 使用現有播放器來播放媒體
           href: media-services-playback-content-with-existing-players.md
-        - name: 使用媒體播放器來播放媒體
-          href: media-services-develop-video-players.md
         - name: 其他播放選項
           items:
             - name: Smooth Streaming Windows Store 應用程式
