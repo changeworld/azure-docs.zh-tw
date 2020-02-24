@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 11/13/2019
+ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 476763e1cb354edb8cdc4cbbae0d3aa7017faa16
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 342ae7e42c85ad661c04ba4ebb6629673f4af4dc
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118755"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482270"
 ---
 # <a name="quickstart-extract-text-and-layout-information-using-the-form-recognizer-rest-api-with-python"></a>快速入門：搭配使用表單辨識器 REST API 與 Python 來擷取文字和版面配置資訊
 
@@ -85,7 +85,7 @@ https://cognitiveservice/formrecognizer/v2.0-preview/layout/operations/54f0b076-
 
 ## <a name="get-the-layout-results"></a>取得版面配置結果
 
-呼叫**分析版面配置** API 之後，您可以呼叫 **[取得分析版面配置結果](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeLayoutResult)** API 來取得作業狀態並擷取資料。 將下列程式碼新增到 Python 指令碼底部。 這會在新的 API 呼叫中使用作業識別碼值。 此指令碼會定期呼叫 API，直到有結果為止。 我們建議的間隔為一秒以上。
+呼叫**分析版面配置** API 之後，您可以呼叫 **[取得分析版面配置結果](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeLayoutResult)** API 來取得作業狀態並擷取資料。 將下列程式碼新增到 Python 指令碼底部。 此資料會在新的 API 呼叫中使用作業識別碼值。 此指令碼會定期呼叫 API，直到有結果為止。 我們建議的間隔為一秒以上。
 
 ```python
 n_tries = 10

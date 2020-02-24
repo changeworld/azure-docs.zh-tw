@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 11/14/2019
+ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 8ab673c1a268f5ab663e8f423dd9b60cdfde14ab
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 812680e587ac5c5c8b3d949199a615fcd85fa610
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118366"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485347"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>使用範例標籤工具，以標籤定型表單辨識器模型
 
@@ -28,10 +28,14 @@ ms.locfileid: "77118366"
 
 - 至少有六個相同類型的表單。 您將使用此資料來定型模型和測試表單。 您可以使用本快速入門的[範例資料集](https://go.microsoft.com/fwlink/?linkid=2090451)。 將訓練檔案上傳至 Azure 儲存體帳戶中 Blob 儲存體容器的根目錄。
 
+## <a name="create-a-form-recognizer-resource"></a>建立表單辨識器資源
+
+[!INCLUDE [create resource](../includes/create-resource.md)]
+
 ## <a name="set-up-the-sample-labeling-tool"></a>設定範例標籤工具
 
 您將使用 Docker 引擎來執行範例標籤工具。 請依照下列步驟來設定 Docker 容器。 如需 Docker 和容器基本概念的入門，請參閱 [Docker 概觀](https://docs.docker.com/engine/docker-overview/) \(英文\)。
-1. 首先，在主機電腦上安裝 Docker。 主機電腦可以是您的本機電腦 ([Windows](https://docs.docker.com/docker-for-windows/)、[MacOS](https://docs.docker.com/docker-for-mac/) 或 [Linux](https://docs.docker.com/install/))。 或者，您可以使用 Azure 中的 Docker 主控服務，例如[部署至 Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-solution-template-kubernetes-deploy?view=azs-1910) 的 [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/index)、[Azure 容器執行個體](https://docs.microsoft.com/azure/container-instances/index)或 Kubernetes 叢集。 主機電腦必須符合下列硬體需求：
+1. 首先，在主機電腦上安裝 Docker。 主機電腦可以是您的本機電腦 ([Windows](https://docs.docker.com/docker-for-windows/)、[macOS](https://docs.docker.com/docker-for-mac/) 或 [Linux](https://docs.docker.com/install/))。 或者，您可以使用 Azure 中的 Docker 主控服務，例如[部署至 Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-solution-template-kubernetes-deploy?view=azs-1910) 的 [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/index)、[Azure 容器執行個體](https://docs.microsoft.com/azure/container-instances/index)或 Kubernetes 叢集。 主機電腦必須符合下列硬體需求：
 
     | 容器 | 最小值 | 建議|
     |:--|:--|:--|
@@ -70,7 +74,7 @@ ms.locfileid: "77118366"
 
 ## <a name="connect-to-the-sample-labeling-tool"></a>連線至範例標籤工具
 
-範例標籤工具會連線至來源 (原始表單所在之處) 和目標 (此工具匯出所建立的標籤和輸出資料的位置)。
+範例標籤工具會連線至來源 (原始表單所在之處) 和目標 (此工具匯出所建立標籤和輸出資料時所選擇的目的地)。
 
 您可以跨專案設定和共用連線。 連線會使用可延伸提供者模型，因此您可以輕鬆地新增來源/目標提供者。
 
@@ -89,7 +93,7 @@ ms.locfileid: "77118366"
 在範例標籤工具中，專案會儲存您的組態和設定。 建立新的專案，並在欄位中填入下列值：
 
 * **顯示名稱** - 專案的顯示名稱
-* **安全性權杖** - 某些專案設定可能會包含敏感值，例如 API 金鑰或其他共用秘密。 每個專案都會產生可用來加密/解密敏感專案設定的安全性權杖。 按一下左側瀏覽列下底端的齒輪圖示，即可在 [應用程式設定] 中找到安全性權杖。
+* **安全性權杖** - 某些專案設定可能會包含敏感值，例如 API 金鑰或其他共用秘密。 每個專案都會產生可用來加密/解密敏感專案設定的安全性權杖。 您可以按一下左側瀏覽列下方角落的齒輪圖示，在 [應用程式設定] 中找到安全性權杖。
 * **來源連線** - 您在先前的步驟中建立而要在此專案中使用的 Azure Blob 儲存體連線。
 * **資料夾路徑** - 選擇性 - 如果您的來源表單位於 Blob 容器的資料夾中，請在此處指定資料夾名稱
 * **表單辨識器服務 URI** - 您的表單辨識器端點 URL。
@@ -146,7 +150,7 @@ ms.locfileid: "77118366"
 
 ## <a name="analyze-a-form"></a>分析表單
 
-按一下左側的「預測 (矩形)」圖示，以測試您的模型。 上傳您在定型程序中未使用的表單文件。 然後按一下右側的 [預測]  按鈕，以取得表單的索引鍵/值預測。 此工具會將標籤套用到週框方塊中，且會報告每個標籤的信賴度。
+按一下左側的「預測 (矩形)」圖示，以測試您的模型。 上傳還未用於定型程序的表單文件。 然後按一下右側的 [預測]  按鈕，以取得表單的索引鍵/值預測。 此工具會將標籤套用到週框方塊中，且會報告每個標籤的信賴度。
 
 > [!TIP]
 > 您也可以使用 REST 呼叫來執行分析 API。 若要了解其執行方法，請參閱[使用 Python 以標籤定型](./python-labeled-data.md)。
@@ -155,7 +159,7 @@ ms.locfileid: "77118366"
 
 根據報告的精確度，您可以進一步定型以改善模型。 完成預測後，請查看每個套用標籤的信賴值。 如果平均精確度的訓練值很高，但信賴分數很低 (或結果不正確)，您應將用於預測的檔案新增至定型集，並為其加上標籤，然後再次定型。
 
-如果分析的文件與定型中使用的文件不同，報告的平均精確度、信賴分數和實際精確度可能會不一致。 請注意，有些文件在常人看來會是類似的，但 AI 模型則會看出其不同之處。 例如，假設您使用具有兩種變化的表單類型來定型，其中，定型集由 20% 的變化 A 和 80% 的變化 B 所組成。在預測期間，變化 A 文件的信賴分數可能會較低。
+如果所分析的文件與用於定型的文件不同，則報告的平均精確度、信賴分數和實際精確度可能會不一致。 請注意，有些文件在常人看來會是類似的，但 AI 模型則會看出其不同之處。 例如，假設您使用具有兩種變化的表單類型來定型，其中，定型集由 20% 的變化 A 和 80% 的變化 B 所組成。在預測期間，變化 A 文件的信賴分數可能會較低。
 
 ## <a name="save-a-project-and-resume-later"></a>儲存專案並於稍後繼續執行
 
@@ -165,7 +169,7 @@ ms.locfileid: "77118366"
 移至您的專案設定頁面 (滑杆圖示)，並記下安全性權杖名稱。 然後，移至您的應用程式設定 (齒輪圖示)，此處會顯示目前瀏覽器執行個體中的所有安全性權杖。 找出專案的安全性權杖，並將其名稱和金鑰值複製到安全的位置。
 
 ### <a name="restore-project-credentials"></a>還原專案認證
-想要繼續執行專案時，您必須先建立對相同 Blob 儲存體容器的連線。 請依照上述步驟來執行此動作。 然後，移至應用程式設定頁面 (齒輪圖示)，並確認您專案的安全性權杖位於該處。 如果不在該處，請新增安全性權杖，並以其覆寫先前步驟中的權杖名稱和金鑰。 然後，按一下 [儲存設定]。 
+想要繼續執行專案時，您必須先建立對相同 Blob 儲存體容器的連線。 請重複進行上述步驟來執行此動作。 然後，移至應用程式設定頁面 (齒輪圖示)，並確認您專案的安全性權杖位於該處。 如果不在該處，請新增安全性權杖，並以其覆寫先前步驟中的權杖名稱和金鑰。 然後，按一下 [儲存設定]。 
 
 ### <a name="resume-a-project"></a>繼續執行專案
 最後，移至主頁面 (房屋圖示)，然後按一下 [開啟雲端專案]。 接著，選取 Blob 儲存體連線，再選取專案的 *.vott* 檔案。 應用程式會載入所有專案的設定，因為它具有安全性權杖。

@@ -12,12 +12,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 4dea0feb5d5a1cb42640b1fc05bb185e970ae8af
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: c9eb8b3d909313470ee9febdc5b1c37eea834b08
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77084490"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484038"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>快速入門：從 iOS 或 macOS 應用程式登入使用者並呼叫 Microsoft Graph API
 
@@ -91,6 +91,14 @@ ms.locfileid: "77084490"
 >    ```swift
 >    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
+> 1. 編輯 **ViewController.swift**，並使用下列程式碼片段來取代開頭為 'let kAuthority' 的那一行：
+>    ```swift
+>    let kAuthority = "Enter_the_Authority_Endpoint_Host_HereEnter_the_Tenant_Info_Here"
+>    ```
+> 1. 編輯 **ViewController.swift**，並使用下列程式碼片段來取代開頭為 'let kGraphEndpoint' 的那一行：
+>    ```swift
+>    let kGraphEndpoint = "Enter_the_MS_Graph_Endpoint_Host_Here"
+>    ```
 > 1. 開啟專案設定。 在 [身分識別]  區段中，輸入您在入口網站中輸入的 [套件組合識別碼]  。
 > 1. (僅限於 iOS) 以滑鼠右鍵按一下 **Info.plist**，然後選取 [開啟為]   > [原始程式碼]  。
 > 1. (僅限於 iOS) 在 dict 根節點下，使用您在入口網站中輸入的 [套件組合識別碼] 取代 `CFBundleURLSchemes`。
@@ -117,6 +125,16 @@ ms.locfileid: "77084490"
 >    ```swift
 >    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
+> 1. 如果您要為 [Azure AD 國家雲端](https://docs.microsoft.com/graph/deployments#app-registration-and-token-service-root-endpoints)建置應用程式，請使用正確端點來取代開頭為 'let kGraphEndpoint' 的那一行。 在 [全域存取] 中，請使用預設值：
+>     ```objective-c
+>     let kGraphEndpoint = "https://graph.microsoft.com/"
+>     let kAuthority = "https://login.microsoftonline.com/common"
+>     ```
+> 1. 其他端點則記載在[這裡](https://docs.microsoft.com/graph/deployments#app-registration-and-token-service-root-endpoints)。 例如，若要執行 Azure AD Germany 的快速入門，請使用下列內容：
+>     ```objective-c
+>     let kGraphEndpoint = "https://graph.microsoft.de/"
+>     let kAuthority = "https://login.microsoftonline.de/common"
+>     ```
 > 1. 開啟專案設定。 在 [身分識別]  區段中，輸入您在入口網站中輸入的 [套件組合識別碼]  。
 > 1. (僅限於 iOS) 以滑鼠右鍵按一下 **Info.plist**，然後選取 [開啟為]   > [原始程式碼]  。
 > 1. (僅限於 iOS) 在 dict 根節點下，使用您在入口網站中使用的 [套件組合識別碼] 取代 `Enter_the_bundle_Id_Here`。

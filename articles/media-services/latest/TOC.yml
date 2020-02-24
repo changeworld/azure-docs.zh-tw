@@ -99,6 +99,8 @@
         - name: 串流端點
           displayName: 'origin, packager, cdn'
           href: streaming-endpoint-concept.md
+        - name: 使用 CDN 調整串流作業的規模
+          href: scale-streaming-cdn.md
         - name: 串流定位器
           displayName: URLs
           href: streaming-locators-concept.md
@@ -228,6 +230,8 @@
           href: cli-create-transform.md
         - name: 建立作業 - CLI
           href: cli-create-jobs.md
+        - name: 具有多個轉換輸出的作業
+          href: job-multiple-transform-outputs.md
     - name: 編碼內容
       items:
         - name: HTTPS 即作業輸入 - .NET

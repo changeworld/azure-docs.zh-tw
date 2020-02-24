@@ -42,6 +42,8 @@
           href: deploy-windows-7-virtual-machine.md
         - name: 部署 GPU 型工作階段主機
           href: configure-vm-gpu.md
+        - name: 擴充現有的主機集區
+          href: expand-existing-host-pool.md
     - name: 建立設定檔容器
       items:
         - name: 使用 VM 型檔案共用

@@ -1,24 +1,19 @@
 ---
-title: 教學課程：在 .NET Framework 應用程式中使用 Azure 應用程式組態的動態組態 | Microsoft Docs
-description: 在本教學課程，您將了解如何以動態方式更新 .NET Framework 應用程式的組態資料
+title: .NET Framework 教學課程：Azure 應用程式組態中的動態設定
+description: 在本教學課程，您將了解如何使用 Azure 應用程式組態，以動態方式更新 .NET Framework 應用程式的組態資料。
 services: azure-app-configuration
-documentationcenter: ''
 author: lisaguthrie
-manager: maiye
-editor: ''
-ms.assetid: ''
 ms.service: azure-app-configuration
-ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: 7cb76d5836055ce352373fa13449e27d81e84022
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 7ba3eae4ea5557b4bb1b1be4e2c79eab8f6e7988
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185241"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484871"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-framework-app"></a>教學課程：在 .NET Framework 應用程式中使用動態組態
 
@@ -33,7 +28,7 @@ ms.locfileid: "74185241"
 > [!div class="checklist"]
 > * 設定您的 .NET Framework 應用程式，使其在應用程式組態存放區發生變更時更新其組態。
 > * 在您的應用程式中插入最新的組態。
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)

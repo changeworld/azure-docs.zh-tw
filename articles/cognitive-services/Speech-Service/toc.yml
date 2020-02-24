@@ -1,26 +1,30 @@
 - name: 語音服務文件
-  href: index.md
+  href: index.yml
 - name: 概觀
   expanded: true
   items:
     - name: 什麼是語音服務？
       href: overview.md
+    - name: 免費試用語音服務
+      href: get-started.md
     - name: 語言與區域支援
       href: language-support.md
       displayName: 'languages,locales,region,voice,gender,language code,locale,locale code,neural voice,standard voice'
 - name: 語音轉文字
   expanded: false
   items:
+    - name: 語音轉文字文件
+      href: index-speech-to-text.yml
     - name: 概觀
       items:
         - name: 什麼是語音轉換文字？
           href: speech-to-text.md
     - name: 快速入門
       items:
-        - name: 辨識來自音訊檔案的語音
-          href: quickstarts/speech-to-text-from-file.md
         - name: 以麥克風輸入辨識語音
           href: quickstarts/speech-to-text-from-microphone.md
+        - name: 辨識來自音訊檔案的語音
+          href: quickstarts/speech-to-text-from-file.md
         - name: 辨識儲存在 Blob 儲存體中的語音
           href: quickstarts/from-blob.md
     - name: 操作指南
@@ -45,8 +49,20 @@
           href: how-to-use-codec-compressed-audio-input-streams-ios.md
         - name: 使用壓縮的音訊輸入格式 (Android)
           href: how-to-use-codec-compressed-audio-input-streams-android.md
-        - name: 搭配 Docker 容器使用語音辨識
-          href: speech-container-howto.md?tabs=stt
+    - name: 自訂
+      items:
+        - name: 準備資料
+          href: how-to-custom-speech-test-data.md
+        - name: 檢查資料
+          href: how-to-custom-speech-inspect-data.md
+        - name: 評估精確度
+          href: how-to-custom-speech-evaluate-data.md
+        - name: 定型自訂模型
+          href: how-to-custom-speech-train-model.md
+        - name: 部署自訂模型
+          href: how-to-custom-speech-deploy-model.md
+        - name: 建立人為標記的轉譯
+          href: how-to-custom-speech-human-labeled-transcriptions.md
     - name: 參考
       items:
         - name: 語音 SDK API
@@ -86,33 +102,68 @@
 - name: 文字轉換語音
   expanded: false
   items:
+    - name: 文字轉換語音文件
+      href: index-text-to-speech.yml
     - name: 概觀
       items:
         - name: 什麼是文字轉換語音？
           href: text-to-speech.md
     - name: 快速入門
       items:
-        - name: 將語音合成至音訊檔案
-          href: quickstarts/text-to-speech-audio-file.md
         - name: 將語音合成至喇叭
           href: quickstarts/text-to-speech.md
-        - name: 適用於長時間音訊的非同步合成
+        - name: 將語音合成至音訊檔案
+          href: quickstarts/text-to-speech-audio-file.md
+        - name: 使用長格式音訊合成語音
           href: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
     - name: 操作指南
       items:
-        - name: 使用 SSML 改善輸出
+        - name: 使用 SSML 改善合成
           href: speech-synthesis-markup.md
-        - name: 使用自訂語音改善輸出
+        - name: 使用自訂語音改善合成
           href: how-to-custom-voice.md
           displayName: custom voice
         - name: 使用長音訊 API 合成語音
           href: long-audio-api.md
-        - name: 搭配 Docker 容器使用語音合成
-          href: speech-container-howto.md?tabs=tts
         - name: 取得使用 REST 的語音清單 (Python)
           href: quickstart-python-get-text-to-speech-voices.md
         - name: 使用 REST 將文字轉換為語音 (Python)
           href: quickstart-python-text-to-speech.md
+    - name: 自訂
+      items:
+        - name: 負責部署
+          items:
+            - name: 自訂語音的管制
+              href: concepts-gating-overview.md
+            - name: 合成技術的部署
+              href: concepts-guidelines-responsible-deployment-synthetic.md
+            - name: 配音員揭露
+              href: 'https://aka.ms/disclosure-voice-talent'
+            - name: 公開設計指引
+              href: concepts-disclosure-guidelines.md
+            - name: 公開設計模式
+              href: concepts-disclosure-patterns.md
+            - name: 管理辦法
+              href: 'https://aka.ms/custom-neural-code-of-conduct'
+        - name: 自訂語音入口網站
+          items:
+            - name: 開始使用自訂語音
+              href: how-to-custom-voice.md
+              displayName: 'custom voice, neural voice'
+            - name: 準備資料
+              href: how-to-custom-voice-prepare-data.md
+            - name: 建立和使用自訂語音模型
+              href: how-to-custom-voice-create-voice.md
+            - name: 記錄語音範例
+              href: record-custom-voice-samples.md
+            - name: 自訂關鍵字命名方針
+              href: speech-devices-sdk-kws-guidelines.md
+            - name: 找出自訂關鍵字
+              href: speech-devices-sdk-create-kws.md
+        - name: 音訊內容建立
+          items:
+            - name: 音訊內容建立
+              href: how-to-audio-content-creation.md
     - name: 參考
       items:
         - name: 語音 SDK
@@ -147,50 +198,11 @@
         - name: 文字轉換語音常見問題集
           href: faq-text-to-speech.md
           displayName: 'FAQ,TTS FAQ,SS FAQ,frequently asked questions'
-- name: 意圖辨識
-  expanded: false
-  items:
-    - name: 快速入門
-      items:
-        - name: 辨識語音、意圖和實體
-          href: quickstarts/intent-recognition.md
-          displayName: 'Recognize intents and entities with LUIS, LUIS, Language Understanding, prebuilt domains'
-    - name: 操作指南
-      items:
-        - name: '以 LUIS 辨識語音意圖 (C#)'
-          href: how-to-recognize-intents-from-speech-csharp.md
-    - name: 參考
-      items:
-        - name: 語音 SDK
-          items:
-            - name: C++
-              href: 'https://aka.ms/csspeech/cppref'
-              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
-            - name: 'C#'
-              href: 'https://aka.ms/csspeech/csharpref'
-              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
-            - name: Java
-              href: 'https://aka.ms/csspeech/javaref'
-              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
-            - name: JavaScript
-              href: 'https://aka.ms/csspeech/javascriptref'
-              displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
-            - name: Objective-C
-              href: 'https://aka.ms/csspeech/objectivecref'
-              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
-            - name: Python
-              href: 'https://aka.ms/csspeech/pythonref'
-              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
-            - name: 版本資訊
-              href: releasenotes.md
-              displayName: 'release notes,updates,what''s new,what is new,changes'
-        - name: LUIS 服務
-          items:
-            - name: LUIS 開發人員資源
-              href: 'https://docs.microsoft.com/azure/cognitive-services/luis/developer-reference-resource'
 - name: 語音翻譯
   expanded: false
   items:
+    - name: 語音翻譯文件
+      href: index-speech-translation.yml
     - name: 概觀
       items:
         - name: 什麼是語音翻譯？
@@ -236,17 +248,65 @@
       items:
         - name: 語音翻譯常見問題集
           href: 'https://www.microsoft.com/translator/faq.aspx'
+- name: 意圖辨識
+  expanded: false
+  items:
+    - name: 意圖辨識文件
+      href: index-intent-recognition.yml
+    - name: 快速入門
+      items:
+        - name: 辨識語音、意圖和實體
+          href: quickstarts/intent-recognition.md
+          displayName: 'Recognize intents and entities with LUIS, LUIS, Language Understanding, prebuilt domains'
+    - name: 操作指南
+      items:
+        - name: '以 LUIS 辨識語音意圖 (C#)'
+          href: how-to-recognize-intents-from-speech-csharp.md
+    - name: 參考
+      items:
+        - name: 語音 SDK
+          items:
+            - name: C++
+              href: 'https://aka.ms/csspeech/cppref'
+              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
+            - name: 'C#'
+              href: 'https://aka.ms/csspeech/csharpref'
+              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
+            - name: Java
+              href: 'https://aka.ms/csspeech/javaref'
+              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
+            - name: JavaScript
+              href: 'https://aka.ms/csspeech/javascriptref'
+              displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
+            - name: Objective-C
+              href: 'https://aka.ms/csspeech/objectivecref'
+              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
+            - name: Python
+              href: 'https://aka.ms/csspeech/pythonref'
+              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
+            - name: 版本資訊
+              href: releasenotes.md
+              displayName: 'release notes,updates,what''s new,what is new,changes'
+        - name: LUIS 服務
+          items:
+            - name: LUIS 開發人員資源
+              href: 'https://docs.microsoft.com/azure/cognitive-services/luis/developer-reference-resource'
 - name: 對話情節
   expanded: false
   items:
+    - name: 對話情節文件
+      href: index-conversation-scenarios.yml
     - name: 對話轉譯
       items:
         - name: 概觀
           items:
-            - name: 什麼是對話轉譯？
+            - name: 關於對話轉譯
               href: conversation-transcription.md
         - name: 操作指南
           items:
+            - name: 處理客服中心案例
+              href: call-center-transcription.md
+              displayName: 'IVRs, IVR, Telephony Data, Transcription for Telephony Data, Real-time Transcription for Call Centers'
             - name: 即時對話轉譯
               href: how-to-use-conversation-transcription.md
             - name: 非同步對話轉譯
@@ -284,7 +344,7 @@
       items:
         - name: 概觀
           items:
-            - name: 什麼是多裝置對話？
+            - name: 關於多裝置對話
               href: multi-device-conversation.md
         - name: 快速入門
           items:
@@ -301,6 +361,8 @@
 - name: 語音助理
   expanded: false
   items:
+    - name: 語音助理文件
+      href: index-voice-assistants.yml
     - name: 概觀
       items:
         - name: 什麼是語音助理？
@@ -349,115 +411,25 @@
           items:
             - name: 語音助理常見問題集
               href: faq-voice-assistants.md
-- name: 自訂
+- name: 裝載
   expanded: false
   items:
-    - name: 語音轉文字
-      items:
-        - name: 自訂語音入口網站
-          items:
-            - name: 開始使用自訂語音
-              href: how-to-custom-speech.md
-            - name: 準備資料
-              href: how-to-custom-speech-test-data.md
-            - name: 檢查資料
-              href: how-to-custom-speech-inspect-data.md
-            - name: 評估精確度
-              href: how-to-custom-speech-evaluate-data.md
-            - name: 定型自訂模型
-              href: how-to-custom-speech-train-model.md
-            - name: 部署自訂模型
-              href: how-to-custom-speech-deploy-model.md
-            - name: 建立人為標記的轉譯
-              href: how-to-custom-speech-human-labeled-transcriptions.md
-        - name: 租用戶模型
-          items:
-            - name: 建立、發佈和使用模型
-              href: tutorial-tenant-model.md
-    - name: 文字轉換語音
-      items:
-        - name: 負責部署
-          items:
-            - name: 自訂語音的管制
-              href: concepts-gating-overview.md
-            - name: 合成技術的部署
-              href: concepts-guidelines-responsible-deployment-synthetic.md
-            - name: 配音員揭露
-              href: 'https://aka.ms/disclosure-voice-talent'
-            - name: 公開設計指引
-              href: concepts-disclosure-guidelines.md
-            - name: 公開設計模式
-              href: concepts-disclosure-patterns.md
-            - name: 管理辦法
-              href: 'https://aka.ms/custom-neural-code-of-conduct'
-        - name: 自訂語音入口網站
-          items:
-            - name: 開始使用自訂語音
-              href: how-to-custom-voice.md
-              displayName: 'custom voice, neural voice'
-            - name: 準備資料
-              href: how-to-custom-voice-prepare-data.md
-            - name: 建立和使用自訂語音模型
-              href: how-to-custom-voice-create-voice.md
-            - name: 記錄語音範例
-              href: record-custom-voice-samples.md
-        - name: 音訊內容建立
-          items:
-            - name: 音訊內容建立
-              href: how-to-audio-content-creation.md
-    - name: 自訂關鍵字命名方針
-      href: speech-devices-sdk-kws-guidelines.md
-    - name: 找出自訂關鍵字
-      href: speech-devices-sdk-create-kws.md
-- name: 語音服務
-  expanded: false
-  items:
-    - name: 案例
-      items:
-        - name: 客服中心
-          href: call-center-transcription.md
-          displayName: 'IVRs, IVR, Telephony Data, Transcription for Telephony Data, Real-time Transcription for Call Centers'
+    - name: 裝載文件
+      href: index-hosting.yml
     - name: 操作指南
       items:
-        - name: 免費試用語音服務
-          href: get-started.md
-        - name: 建立語音服務資源
-          href: 'get-started.md#create-a-speech-resource-in-azure'
-        - name: 容器
-          expanded: false
-          items:
-            - name: 安裝及執行容器
-              href: speech-container-howto.md
-              displayName: 'containers,install container,run container'
-            - name: 設定容器
-              href: speech-container-configuration.md
-              displayName: 'containers,configure containers,container config,configuration'
-            - name: Kubernetes 和 Helm
-              href: speech-container-howto-on-premises.md
-              displayName: 'containers,kubernetes,k8s,helm,orchestration,on-prem,on-premises'
-            - name: Azure 容器執行個體
-              href: deploy-speech-on-container-instances.md
-              displayName: 'ACI,azure container instances,container instances,containers'
-    - name: 範例
-      items:
-        - name: 文字轉換語音 REST 範例
-          href: 'https://github.com/Azure-Samples/Cognitive-Speech-TTS'
-        - name: 批次轉譯 REST 範例
-          href: 'https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch'
-    - name: 參考
-      items:
-        - name: REST API
-          items:
-            - name: 批次轉譯與自訂 REST API
-              href: 'https://westus.cris.ai/swagger/ui/index'
-            - name: 對話轉譯 REST API
-              href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
-            - name: 語音轉換文字 REST API
-              href: rest-speech-to-text.md
-            - name: 文字轉換語音 REST API
-              href: rest-text-to-speech.md
-        - name: Swagger 文件
-          href: swagger-documentation.md
+        - name: 安裝及執行容器
+          href: speech-container-howto.md
+          displayName: 'containers,install container,run container'
+        - name: 設定容器
+          href: speech-container-configuration.md
+          displayName: 'containers,configure containers,container config,configuration'
+        - name: Kubernetes 和 Helm
+          href: speech-container-howto-on-premises.md
+          displayName: 'containers,kubernetes,k8s,helm,orchestration,on-prem,on-premises'
+        - name: Azure 容器執行個體
+          href: deploy-speech-on-container-instances.md
+          displayName: 'ACI,azure container instances,container instances,containers'
 - name: 語音 SDK
   expanded: false
   items:
@@ -510,6 +482,8 @@
 - name: 裝置
   expanded: false
   items:
+    - name: 語音裝置文件
+      href: index-devices.yml
     - name: 概觀
       items:
         - name: 關於語音裝置 SDK
@@ -524,12 +498,8 @@
           href: speech-devices-sdk-roobo-v1.md
     - name: 快速入門
       items:
-        - name: Windows
-          href: speech-devices-sdk-windows-quickstart.md
-        - name: Linux
-          href: speech-devices-sdk-linux-quickstart.md
-        - name: Android
-          href: speech-devices-sdk-android-quickstart.md
+        - name: 使用語音裝置 SDK
+          href: speech-devices-sdk-quickstart.md
     - name: 資源
       items:
         - name: 針對語音裝置 SDK 進行疑難排解
@@ -555,6 +525,8 @@
       displayName: 'support,help,release notes,search,scoped search,azure support,github support,stack overflow,github issues,bugs,feedback,uservoice'
     - name: 區域
       href: regions.md
+    - name: Swagger 文件
+      href: swagger-documentation.md
     - name: Sovereign Clouds
       href: sovereign-clouds.md
       displayName: 'fairfax,mooncake,compliant,secret,compliance,government,government cloud,dod,china'

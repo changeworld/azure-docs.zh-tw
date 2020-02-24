@@ -43,7 +43,7 @@
           href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Azure 儲存體加密
           href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: 透過 SMB 的 Azure AD 驗證
+        - name: 身分識別型驗證和授權
           href: storage-files-active-directory-overview.md
         - name: 使用 Azure 私人端點
           href: ../common/storage-private-endpoints.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
@@ -173,7 +173,9 @@
           href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: 需要安全傳輸
           href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: 啟用透過 SMB 的 Azure AD 驗證
+        - name: 啟用 AD 驗證和授權
+          href: storage-files-active-directory-domain-services-enable.md
+        - name: 啟用 Azure AD DS 驗證和授權
           href: storage-files-active-directory-enable.md
         - name: 為 Azure 儲存體用戶端啟用安全的 TLS
           href: ../common/storage-security-tls.md

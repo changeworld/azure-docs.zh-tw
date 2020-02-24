@@ -8,12 +8,12 @@ ms.date: 1/23/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a36427616691b0a0d400dadb4e35c2f7fbf23b22
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 572441fe13dfeff550e2e541c3d775bd4c3d433e
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722271"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482899"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>教學課程：在 IoT Edge 上為機器學習設定環境
 
@@ -26,7 +26,7 @@ ms.locfileid: "76722271"
 
 此步驟通常是由雲端開發人員來執行。 某一部分的軟體可能也會對資料科學家有所幫助。
 
-我們已建立一個 PowerShell 指令碼，此指令碼會建立已設定許多必要項目的 Azure 虛擬機器。 我們建立的 VM 必須能處理[巢狀虛擬化](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization)，這也是我們選擇 [Standard_D8s_v3](../virtual-machines/windows/sizes-general.md#dsv3-series-1) 電腦大小的原因。
+我們已建立一個 PowerShell 指令碼，此指令碼會建立已設定許多必要項目的 Azure 虛擬機器。 我們建立的 VM 必須能處理[巢狀虛擬化](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization)，這也是我們選擇 [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md) 電腦大小的原因。
 
 開發 VM 將會搭配下列項目進行設定：
 
@@ -35,7 +35,7 @@ ms.locfileid: "76722271"
 * [適用於 Windows 的 Docker Desktop](https://www.docker.com/products/docker-desktop) \(英文\)
 * [Git for Windows](https://gitforwindows.org/)
 * [適用於 Windows 的 Git 認證管理員](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) \(英文\)
-* [.Net Core SDK](https://dotnet.microsoft.com/) (英文)
+* [.NET Core SDK](https://dotnet.microsoft.com/)
 * [Python 3](https://www.python.org/) \(英文\)
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.1.0)
@@ -52,7 +52,7 @@ ms.locfileid: "76722271"
 
 1. 將[機器學習和 IoT Edge](https://github.com/Azure-Samples/IoTEdgeAndMlSample) 範例存放庫複製或下載到您的本機電腦。
 
-1. 以系統管理員身分開啟 Powershell，並瀏覽至您下載程式碼的根目錄下包含的 **\IoTEdgeAndMlSample\DevVM** 目錄。 我們會將來源的根目錄稱為 `srcdir`。
+1. 以系統管理員身分開啟 PowerShell，並瀏覽至您下載程式碼的根目錄下包含的 **\IoTEdgeAndMlSample\DevVM** 目錄。 我們會將來源的根目錄稱為 `srcdir`。
 
     ```powershell
     cd c:\srcdir\IoTEdgeAndMlSample\DevVM
@@ -76,7 +76,7 @@ ms.locfileid: "76722271"
 
     * **Azure 訂用帳戶識別碼**：您的訂用帳戶識別碼 (可在入口網站中的 [Azure 訂用帳戶](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)內找到)。
     * **資源群組名稱**：Azure 中新的或現有資源群組的名稱。
-    * **位置**：選擇要建立虛擬機器的 Azure 位置。 例如，「美國西部 2」或「歐洲北部」。 如需詳細資訊，請參閱 [Azure 的地點](https://azure.microsoft.com/global-infrastructure/locations/)。
+    * **位置**：選擇要建立虛擬機器的 Azure 位置。 例如，「美國西部 2」或「北歐」。 如需詳細資訊，請參閱 [Azure 的地點](https://azure.microsoft.com/global-infrastructure/locations/)。
     * **使用者名稱**：為 VM 的系統管理員帳戶提供易記的名稱。
     * **密碼**：設定 VM 系統管理員帳戶的密碼。
 

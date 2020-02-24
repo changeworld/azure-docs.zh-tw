@@ -3,95 +3,457 @@ title: 使用 Java 的 Azure 儲存體範例 | Microsoft Docs
 description: 檢視、下載及執行 Azure 儲存體的範例程式碼和應用程式。 探索使用 Java 儲存體用戶端程式庫之 Blob、佇列、資料表和檔案的入門範例。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 09/06/2019
+ms.date: 02/13/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: dfdde1ae981dcd2d539dec3667e44e90cef4d1c8
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 46f19748ea56777bd1c23b3cf066fa28787d8882
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748038"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486095"
 ---
-# <a name="azure-storage-samples-using-java"></a>使用 Java 的 Azure 儲存體範例
+# <a name="azure-storage-samples-using-v12-java-client-libraries"></a>使用 v12 Java 用戶端程式庫的 Azure 儲存體範例
 
 下表提供我們的範例儲存機制和每個範例所涵蓋案例的概觀。 按一下連結即可檢視 GitHub 中對應的範例程式碼。
 
 > [!NOTE]
-> 這些範例會使用 Azure 儲存體 Java v11 程式庫。 如需 v12 程式碼，請參閱 GitHub 存放庫中的[範例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)。
+> 這些範例會使用最新的 Azure 儲存體 Java v12 程式庫。 如需舊版的 v8 程式碼，請參閱 GitHub 存放庫中的[開始使用 Java 中的 Azure Blob 服務](https://github.com/Azure-Samples/storage-blob-java-getting-started)。
 
-## <a name="blob-samples-v11"></a>Blob 範例 (v11)
+## <a name="blob-samples"></a>Blob 範例
 
-| **案例** | **範例程式碼** |
-|--------------|-----------------|
-| 附加 Blob | [開始使用 Java 中的 Azure Blob 服務](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
-| 區塊 Blob | [開始使用 Java 中的 Azure Blob 服務](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
-| 用戶端加密 | [開始使用 Java 中的 Azure 用戶端加密](https://github.com/Azure-Samples/storage-java-client-side-encryption) |
-| 複製 Blob | [開始使用 Java 中的 Azure Blob 服務](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
-| 建立容器 | [開始使用 Java 中的 Azure Blob 服務](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
-| 刪除 Blob | [開始使用 Java 中的 Azure Blob 服務](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
-| 刪除容器 | [開始使用 Java 中的 Azure Blob 服務](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
-| Blob 中繼資料/屬性/統計資料 | [開始使用 Java 中的 Azure Blob 服務](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobAdvanced.java) |
-| 容器 ACL/中繼資料/屬性 | [開始使用 Java 中的 Azure Blob 服務](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobAdvanced.java) |
-| 取得頁面範圍 | [開始使用 Java 中的 Azure Blob 服務](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java#L399) |
-| 租用 Blob/容器 | [開始使用 Java 中的 Azure Blob 服務](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
-| 列出 Blob/容器 | [開始使用 Java 中的 Azure Blob 服務](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
-| 分頁 Blob | [開始使用 Java 中的 Azure Blob 服務](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
-| SAS | [SAS 測試範例](https://github.com/Azure/azure-storage-java/blob/89540f018f1160ce55619c6fe7b5f5ff57d0ce10/src/test/java/com/microsoft/azure/storage/Samples.java#L513) |
-| 服務屬性 | [開始使用 Java 中的 Azure Blob 服務](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobAdvanced.java) |
-| 快照 Blob | [開始使用 Java 中的 Azure Blob 服務](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
+### <a name="authentication"></a>驗證
 
-## <a name="file-samples-v11"></a>檔案範例 (v11)
+:::row:::
+   :::column span="":::
+      [使用共用金鑰認證進行驗證](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L38)
+   :::column-end:::
+   :::column span="":::
+      [使用 Azure 身分識別進行驗證](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/AzureIdentityExample.java#L10)
+   :::column-end:::
+:::row-end:::
 
-| **案例** | **範例程式碼** |
-|--------------|-----------------|
-| 建立共用/目錄/檔案 | [開始使用 Java 中的 Azure 檔案服務](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java) |
-| 刪除共用/目錄/檔案 | [開始使用 Java 中的 Azure 檔案服務](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java) |
-| 目錄屬性/中繼資料 | [開始使用 Java 中的 Azure 檔案服務](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java) |
-| 下載檔案 | [開始使用 Java 中的 Azure 檔案服務](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java) |
-| 檔案屬性/中繼資料/計量 | [開始使用 Java 中的 Azure 檔案服務](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java) |
-| 檔案服務屬性 | [開始使用 Java 中的 Azure 檔案服務](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java) |
-| 列出目錄和檔案 | [開始使用 Java 中的 Azure 檔案服務](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java) |
-| 列出共用 | [開始使用 Java 中的 Azure 檔案服務](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java) |
-| 共用屬性/中繼資料/統計資料 | [開始使用 Java 中的 Azure 檔案服務](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java) |
+### <a name="blob-service"></a>Blob 服務
 
-## <a name="queue-samples-v11"></a>佇列範例 (v11)
+:::row:::
+   :::column span="":::
+      [建立 Blob 服務用戶端](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L49)
+   :::column-end:::
+   :::column span="":::
+      [列出容器](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/ListContainersExample.java#L10)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="2":::
+      [刪除容器](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/ListContainersExample.java#L52)
+   :::column-end:::
+:::row-end:::
 
-| **案例** | **範例程式碼** |
-|--------------|-----------------|
-| 新增訊息 | [開始使用 Java 中的 Azure 佇列服務](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java#L63) |
-| 用戶端加密 | [開始使用 Java 中的 Azure 用戶端加密](https://github.com/Azure-Samples/storage-java-client-side-encryption/blob/master/src/gettingstarted/KeyVaultGettingStarted.java) |
-| 建立佇列 | [開始使用 Java 中的 Azure 佇列服務](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java) |
-| 刪除訊息/佇列 | [開始使用 Java 中的 Azure 佇列服務](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java) |
-| 查看訊息 | [開始使用 Java 中的 Azure 佇列服務](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java) |
-| 佇列 ACL/中繼資料/統計資料 | [開始使用 Java 中的 Azure 佇列服務](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueAdvanced.java) |
-| 佇列服務屬性 | [開始使用 Java 中的 Azure 佇列服務](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueAdvanced.java) |
-| 更新訊息 | [開始使用 Java 中的 Azure 佇列服務](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java)
-|
+### <a name="batching"></a>批次處理
+
+:::row:::
+   :::column span="":::
+      [建立 Blob 批次用戶端](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob-batch/src/samples/java/com/azure/storage/blob/batch/ReadmeSamples.java#L41)
+   :::column-end:::
+   :::column span="":::
+      [大量刪除 Blob](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob-batch/src/samples/java/com/azure/storage/blob/batch/ReadmeSamples.java#L45)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="2":::
+      [在一批 Blob 上設定存取層](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob-batch/src/samples/java/com/azure/storage/blob/batch/ReadmeSamples.java#L51)
+   :::column-end:::
+:::row-end:::
+
+### <a name="container"></a>容器
+
+:::row:::
+   :::column span="":::
+      [建立容器用戶端](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L57)
+   :::column-end:::
+   :::column span="":::
+      [建立容器](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L64)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [列出 Blob](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L112)
+   :::column-end:::
+   :::column span="":::
+      [刪除容器](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L123)
+   :::column-end:::
+:::row-end:::
+
+### <a name="blob"></a>Blob
+
+:::row:::
+   :::column span="":::
+      [上傳 Blob](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L79)
+   :::column-end:::
+   :::column span="":::
+      [下載 Blob](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L86)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [刪除 Blob](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L118)
+   :::column-end:::
+   :::column span="":::
+      [從大型檔案上傳 Blob](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/FileTransferExample.java#L95)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="2":::
+      [將大型 Blob 下載到檔案](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/FileTransferExample.java#L100)
+   :::column-end:::
+:::row-end:::
+
+### <a name="troubleshooting"></a>疑難排解
+:::row:::
+   :::column span="2":::
+      [使用容器用戶端觸發可復原的錯誤](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/StorageErrorHandlingExample.java#L11)
+   :::column-end:::
+:::row-end:::
+
+## <a name="data-lake-storage-gen2-samples"></a>Data Lake Storage Gen2 範例
+
+### <a name="data-lake-service"></a>Data Lake 服務
+:::row:::
+   :::column span="":::
+      [建立 Data Lake 服務用戶端](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L48)
+   :::column-end:::
+   :::column span="":::
+      [建立檔案系統用戶端](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L57)
+   :::column-end:::
+:::row-end:::
+
+### <a name="file-system"></a>檔案系統
+:::row:::
+   :::column span="":::
+      [建立檔案系統](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L64)
+   :::column-end:::
+   :::column span="":::
+      [建立目錄](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L68)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [建立檔案和子目錄](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L73)
+   :::column-end:::
+   :::column span="":::
+      [建立檔案用戶端](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L83)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [列出檔案系統中的路徑](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L131)
+   :::column-end:::
+   :::column span="":::
+      [刪除檔案系統](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L142)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="2":::
+      [列出 Azure 儲存體帳戶中的檔案系統](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/ListFileSystemsExample.java#L10)
+   :::column-end:::
+:::row-end:::
+
+### <a name="directory"></a>目錄
+
+:::row:::
+   :::column span="":::
+      [建立目錄用戶端](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/DirectoryExample.java#L31)
+   :::column-end:::
+   :::column span="":::
+      [建立父代目錄](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/DirectoryExample.java#L37)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [建立子系目錄](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/DirectoryExample.java#L44)
+   :::column-end:::
+   :::column span="":::
+      [在子系目錄中建立檔案](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/DirectoryExample.java#L52)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [取得目錄屬性](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/DirectoryExample.java#L68)
+   :::column-end:::
+   :::column span="":::
+      [刪除子系目錄](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/DirectoryExample.java#L83)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="2":::
+      [刪除父代資料夾](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/DirectoryExample.java#L90)
+   :::column-end:::
+:::row-end:::
+
+### <a name="file"></a>檔案
+
+:::row:::
+   :::column span="":::
+      [使用檔案用戶端建立檔案](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L93)
+   :::column-end:::
+   :::column span="":::
+      [刪除檔案](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L137)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [在檔案上設定存取控制](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/GetSetAccessControlExample.java#L82)
+   :::column-end:::
+   :::column span="":::
+      [取得檔案上的存取控制](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/GetSetAccessControlExample.java#L104)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [使用 Data Lake 檔案用戶端建立檔案](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/UploadDownloadExample.java#L67)
+   :::column-end:::
+   :::column span="":::
+      [將資料附加至檔案](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/UploadDownloadExample.java#L85)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="2":::
+      [下載檔案](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/UploadDownloadExample.java#L127)
+   :::column-end:::
+:::row-end:::
+
+## <a name="azure-file-samples"></a>Azure 檔案儲存體範例
+
+### <a name="authentication"></a>驗證
+
+:::row:::
+   :::column span="2":::
+      [使用連接字串進行驗證](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareServiceSample.java#L27)
+   :::column-end:::
+:::row-end:::
+
+### <a name="file-service"></a>檔案服務
+
+:::row:::
+   :::column span="":::
+      [建立檔案共用](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareServiceSample.java#L31)
+   :::column-end:::
+   :::column span="":::
+      [取得屬性](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareServiceSample.java#L40)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [列出共用](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareServiceSample.java#L49)
+   :::column-end:::
+   :::column span="":::
+      [刪除共用](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareServiceSample.java#L49)
+   :::column-end:::
+:::row-end:::
+
+### <a name="file-share"></a>檔案共用
+
+:::row:::
+   :::column span="":::
+      [建立共用用戶端](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L29)
+   :::column-end:::
+   :::column span="":::
+      [建立共用](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L40)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [建立共用快照集](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L55)
+   :::column-end:::
+   :::column span="":::
+      [使用共用用戶端建立目錄](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L63)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [取得共用的屬性](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L72)
+   :::column-end:::
+   :::column span="":::
+      [取得根目錄並列出目錄](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L100)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="2":::
+      [刪除共用](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L151)
+   :::column-end:::
+:::row-end:::
+
+### <a name="directory"></a>目錄
+
+:::row:::
+   :::column span="":::
+      [建立父代目錄](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/DirectorySample.java#L35)
+   :::column-end:::
+   :::column span="":::
+      [建立子系目錄](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/DirectorySample.java#L42)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [在子系目錄中建立檔案](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/DirectorySample.java#L50)
+   :::column-end:::
+   :::column span="":::
+      [列出目錄和檔案](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/DirectorySample.java#L66)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [刪除子系資料夾](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/DirectorySample.java#L90)
+   :::column-end:::
+   :::column span="":::
+      [刪除父代資料夾](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/DirectorySample.java#L97)
+   :::column-end:::
+:::row-end:::
+
+### <a name="file"></a>檔案
+
+:::row:::
+   :::column span="":::
+      [建立檔案用戶端](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/FileSample.java#L45)
+   :::column-end:::
+   :::column span="":::
+      [上傳檔案](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/FileSample.java#L90)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [下載檔案](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/FileSample.java#L100)
+   :::column-end:::
+   :::column span="":::
+      [取得檔案屬性](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/FileSample.java#L120)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [刪除檔案](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/FileSample.java#L128)
+   :::column-end:::
+:::row-end:::
+
+
+## <a name="queue-samples"></a>佇列範例
+
+### <a name="authentication"></a>驗證
+
+:::row:::
+   :::column span="2":::
+      [使用 SAS 權杖進行驗證](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/QueueServiceSamples.java#L17)
+   :::column-end:::
+:::row-end:::
+
+### <a name="queue-service"></a>佇列服務
+
+:::row:::
+   :::column span="":::
+      [建立佇列](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/QueueServiceSamples.java#L20)
+   :::column-end:::
+   :::column span="":::
+      [列出佇列](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/QueueServiceSamples.java#L22)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="2":::
+      [刪除佇列](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/QueueServiceSamples.java#L27)
+   :::column-end:::
+:::row-end:::
+
+### <a name="queue"></a>佇列
+
+:::row:::
+   :::column span="":::
+      [建立佇列用戶端](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L25)
+   :::column-end:::
+   :::column span="":::
+      [將訊息新增至佇列](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L27)
+   :::column-end:::
+:::row-end:::
+
+### <a name="message"></a>訊息
+
+:::row:::
+   :::column span="":::
+      [取得訊息計數](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L34)
+   :::column-end:::
+   :::column span="":::
+      [查看訊息](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L37)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [接收訊息](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L41)
+   :::column-end:::
+   :::column span="":::
+      [更新訊息](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L45)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [刪除第一個訊息](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L50)
+   :::column-end:::
+   :::column span="":::
+      [清除所有訊息](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L59)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="2":::
+      [刪除佇列](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L64)
+   :::column-end:::
+:::row-end:::
+
 ## <a name="table-samples-v11"></a>資料表範例 (v11)
 
-| **案例** | **範例程式碼** |
-|--------------|-----------------|
-| 建立資料表 | [開始使用 Java 中的 Azure 表格服務](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java) |
-| 刪除實體/資料表 | [開始使用 Java 中的 Azure 表格服務](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java) |
-| 插入/合併/取代實體 | [開始使用 Java 中的 Azure 表格服務](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java) |
-| 查詢實體 | [開始使用 Java 中的 Azure 表格服務](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java) |
-| 查詢資料表 | [開始使用 Java 中的 Azure 表格服務](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java) |
-| 資料表 ACL/屬性 | [開始使用 Java 中的 Azure 表格服務](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableAdvanced.java) |
-| 更新實體 | [開始使用 Java 中的 Azure 表格服務](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java) |
-## <a name="azure-code-samples-library"></a>Azure 程式碼範例程式庫
+:::row:::
+   :::column span="":::
+      [建立資料表](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L50)
+   :::column-end:::
+   :::column span="":::
+      [刪除實體/資料表](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L109)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [插入/合併/取代實體](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L195)
+   :::column-end:::
+   :::column span="":::
+      [查詢實體](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L234)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [查詢資料表](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L262)
+   :::column-end:::
+   :::column span="":::
+      [資料表 ACL/屬性](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableAdvanced.java#L49)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="2":::
+      [更新實體](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L76)
+   :::column-end:::
+:::row-end:::
 
-若要檢視完整的範例程式庫，請移至 [Azure 程式碼範例](https://azure.microsoft.com/resources/samples/?service=storage)程式庫，其中包含您可以下載並在本機執行的「Azure 儲存體」範例。 程式碼範例程式庫會提供 .zip 格式的範例程式碼。 或者，您可以瀏覽並複製每個範例的 GitHub 存放庫。
+## <a name="azure-code-sample-libraries"></a>Azure 程式碼範例程式庫
 
-[!INCLUDE [storage-java-samples-include](../../../includes/storage-java-samples-include.md)]
+若要檢視完整的 Java 範例程式庫，請移至：
+
+* [Azure Blob 程式碼範例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)
+* [Azure Data Lake 程式碼範例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake)
+* [Azure 檔案儲存體程式碼範例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share)
+* [Azure 佇列程式碼範例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue)
+
+您可以瀏覽並複製每個程式庫的 GitHub 存放庫。
 
 ## <a name="getting-started-guides"></a>入門指南
 
 如果您要尋找有關如何安裝和開始使用「Azure 儲存體用戶端程式庫」的指示，請查看下列指南。
 
 * [開始使用 Java 中的 Azure Blob 服務](../blobs/storage-quickstart-blobs-java.md)
-* [開始使用 Java 中的 Azure 佇列服務](../queues/storage-java-how-to-use-queue-storage.md)
+* [開始使用 Java 中的 Azure 佇列服務](../queues/storage-quickstart-queues-java.md)
 * [開始使用 Java 中的 Azure 表格服務](../../cosmos-db/table-storage-how-to-use-java.md)
 * [開始使用 Java 中的 Azure 檔案服務](../files/storage-java-how-to-use-file-storage.md)
 
@@ -100,6 +462,6 @@ ms.locfileid: "75748038"
 如需其他語言的範例相關資訊︰
 
 * .NET：[使用 .NET 的 Azure 儲存體範例](storage-samples-dotnet.md)
-* JavaScript/Node.js：[使用 JavaScript 的 Azure 儲存體範例](storage-samples-javascript.md)
 * Python：[使用 Python 的 Azure 儲存體範例](storage-samples-python.md)
+* JavaScript/Node.js：[使用 JavaScript 的 Azure 儲存體範例](storage-samples-javascript.md)
 * 所有其他語言：[Azure 儲存體範例](storage-samples.md)

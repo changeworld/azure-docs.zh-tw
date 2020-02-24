@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 01/27/2020
+ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 94fafd8b0411c1c7a4032769eec0eb5818844648
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 5469c2512e133d17e4d18cebb64ab9e2a21b1f83
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118154"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482288"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>使用 REST API 和 Python 以標籤定型表單辨識器模型
 
@@ -28,9 +28,13 @@ ms.locfileid: "77118154"
 - 已安裝 [Python](https://www.python.org/downloads/) (如果您想要在本機執行此範例)。
 - 至少有六個相同類型的表單。 您將使用此資料來定型模型和測試表單。 您可以使用本快速入門的[範例資料集](https://go.microsoft.com/fwlink/?linkid=2090451)。 將訓練檔案上傳至 Azure 儲存體帳戶中 Blob 儲存體容器的根目錄。
 
+## <a name="create-a-form-recognizer-resource"></a>建立表單辨識器資源
+
+[!INCLUDE [create resource](../includes/create-resource.md)]
+
 ## <a name="set-up-training-data"></a>設定定型資料
 
-首先，您必須設定必要的輸入資料。 加上標籤的資料功能除了用以定型自訂模型的需求外，還有特殊的輸入需求。 
+接下來，您必須設定必要的輸入資料。 加上標籤的資料功能除了用以定型自訂模型的需求外，還有特殊的輸入需求。 
 
 請確定所有定型文件都有相同的格式。 如果您的表單有多種格式，請根據共同的格式將這些表單組織成子資料夾。 在定型時，您必須將 API 導向子資料夾。
 

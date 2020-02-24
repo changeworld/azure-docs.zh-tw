@@ -64,6 +64,8 @@
   items:
     - name: 將基本公用 Load Balancer 升級為標準公用 Load Balancer
       href: upgrade-basic-standard.md
+    - name: 將基本內部 Load Balancer 升級為標準內部 Load Balancer
+      href: upgrade-basicInternal-standard.md
     - name: 設定輸出規則
       items:
         - name: Azure CLI
