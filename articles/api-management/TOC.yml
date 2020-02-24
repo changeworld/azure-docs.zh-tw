@@ -123,6 +123,8 @@
       items:
         - name: 以 Azure AD 保護您的 API
           href: api-management-howto-protect-backend-with-aad.md
+        - name: 使用 Azure AD B2C 保護您的 SPA 後端 API
+          href: howto-protect-backend-frontend-azure-ad-b2c.md
         - name: 連接到虛擬網路
           href: api-management-using-with-vnet.md
         - name: 連接到內部虛擬網路
@@ -247,7 +249,7 @@
   items:
     - name: 常見問題集
       href: api-management-faq.md
-    - name: 價格
+    - name: 定價
       href: 'https://aka.ms/apimpricing'
     - name: 區域可用性
       href: 'https://azure.microsoft.com/regions/services/'
