@@ -10,12 +10,12 @@ ms.date: 07/25/2018
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: a65bb119994e8bb56eecc730774535d7c0a4d8b6
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 2399849b87e44c5cb70d2db987ae18d8d2d9c552
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928432"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77564035"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>在 Azure Data Factory 中監視整合執行階段  
 **整合執行階段**是 Azure Data Factory 所使用的計算基礎結構，可提供跨不同網路環境的各種資料整合功能。 Data Factory 提供三種類型的整合執行階段：
@@ -42,8 +42,8 @@ Cmdlet 會為不同類型的整合執行階段傳回不同的資訊。 本文說
 
 | 屬性 | 描述 |
 -------- | ------------- | 
-| Name | Azure 整合執行階段的名稱。 |  
-| 狀況 | Azure 整合執行階段的狀態。 | 
+| 名稱 | Azure 整合執行階段的名稱。 |  
+| State | Azure 整合執行階段的狀態。 | 
 | Location | Azure 整合執行階段的位置。 如需 Azure 整合執行階段的位置詳細資訊，請參閱[整合執行階段簡介](concepts-integration-runtime.md)。 |
 | DataFactoryName | Azure 整合執行階段所屬的資料處理站名稱。 | 
 | resourceGroupName | 資料處理站所屬的資源群組名稱。  |
@@ -69,7 +69,7 @@ Cmdlet 會為不同類型的整合執行階段傳回不同的資訊。 本文說
 
 | 屬性 | 描述 | 
 | -------- | ----------- | 
-| Name | 自我裝載整合執行階段及其關聯之節點的名稱。 節點是安裝了自我裝載整合執行階段的內部部署 Windows 電腦。 |  
+| 名稱 | 自我裝載整合執行階段及其關聯之節點的名稱。 節點是安裝了自我裝載整合執行階段的內部部署 Windows 電腦。 |  
 | 狀態 | 整體自我裝載整合執行階段與每個節點的狀態。 範例：線上/離線/有限/等。如需這些狀態的相關資訊，請參閱下一節。 | 
 | 版本 | 自我裝載整合執行階段與每個節點的版本。 自我裝載整合執行階段的版本取決於群組中大多數節點的版本。 如果自我裝載整合執行階段設定中有不同版本的節點，則只有版本號碼和邏輯自我裝載整合執行階段的節點會正常運作。 其他節點會進入受限制模式，並需要加以手動更新 (如果自動更新失敗才需要這麼做)。 | 
 | 可用的記憶體 | 自我裝載整合執行階段節點上的可用記憶體。 這個值是近乎即時的快照集。 | 
@@ -96,7 +96,7 @@ Cmdlet 會為不同類型的整合執行階段傳回不同的資訊。 本文說
 | 線上 | 節點已連線至 Data Factory 服務。 |
 | 離線 | 節點已離線。 |
 | 升級中 | 節點正在自動更新。 |
-| 有限制 | 由於連線能力問題。 可能是因為 HTTP 連接埠 8050 問題、服務匯流排連線問題或認證同步問題。 |
+| 限制 | 由於連線能力問題。 可能是因為 HTTP 連接埠 8050 問題、服務匯流排連線問題或認證同步問題。 |
 | 非使用中 | 節點所在的組態不同於其他大多數節點的組態。 |
 
 節點無法連線至其他節點時，便會處於非使用中狀態。
@@ -109,12 +109,12 @@ Cmdlet 會為不同類型的整合執行階段傳回不同的資訊。 本文說
 | 需要註冊 | 尚未針對此自我裝載整合執行階段註冊節點。 |
 | 線上 | 所有節點已連線。 |
 | 離線 | 沒有節點在線上。 |
-| 有限制 | 在此自我裝載整合執行階段中，並非所有節點皆處於健康狀態。 這個狀態是某些節點可能會關閉的警告。 此狀態可能是發送器/背景工作角色節點的認證同步問題所引起。 |
+| 限制 | 在此自我裝載整合執行階段中，並非所有節點皆處於健康狀態。 這個狀態是某些節點可能會關閉的警告。 此狀態可能是發送器/背景工作角色節點的認證同步問題所引起。 |
 
 使用**AzDataFactoryV2IntegrationRuntimeMetric** Cmdlet 來提取 JSON 承載，其中包含詳細的自我裝載整合執行時間屬性，以及其在執行 Cmdlet 期間的快照集值。
 
 ```powershell
-Get-AzDataFactoryV2IntegrationRuntimeMetric -name $integrationRuntimeName -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName  | | ConvertTo-Json 
+Get-AzDataFactoryV2IntegrationRuntimeMetric -name $integrationRuntimeName -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName | ConvertTo-Json 
 ```
 
 輸出範例 (假設此自我裝載整合執行階段有兩個相關節點)：
@@ -162,7 +162,7 @@ Azure SSIS 整合執行階段是完全受控的 Azure 虛擬機器 (或節點) �
 | 節點 | 含特定節點狀態 (啟動中/可用/回收/無法使用中) 的 Azure SSIS 整合執行階段的配置/可用節點，及可採取動作的錯誤。 |
 | OtherErrors | 您的 Azure SSIS 整合執行階段上非特定節點之可採取動作的錯誤。 |
 | LastOperation | Azure SSIS 整合執行階段上最後一個啟動/停止作業的結果，含在失敗時可採取動作的錯誤。 |
-| 狀況 | 您的 Azure SSIS 整合執行階段的整體狀態 (初始/啟動中/已啟動/停止中/已停止)。 |
+| State | 您的 Azure SSIS 整合執行階段的整體狀態 (初始/啟動中/已啟動/停止中/已停止)。 |
 | Location | Azure SSIS 整合執行階段的位置。 |
 | NodeSize | Azure SSIS 整合執行階段之每個節點的大小。 |
 | NodeCount | Azure SSIS 整合執行階段中的節點數目。 |
@@ -174,10 +174,10 @@ Azure SSIS 整合執行階段是完全受控的 Azure 虛擬機器 (或節點) �
 | VNetId | Azure SSIS 整合執行階段要加入的虛擬網路資源識別碼。 |
 | 子網路 | Azure SSIS 整合執行階段要加入的子網路名稱。 |
 | ID | Azure SSIS 整合執行階段的資源識別碼。 |
-| Type | Azure SSIS 整合執行階段的 (受控/自我裝載) 類型。 |
+| 類型 | Azure SSIS 整合執行階段的 (受控/自我裝載) 類型。 |
 | resourceGroupName | Azure 資源群組的名稱，其中已建立 Data Factory 和 Azure SSIS 整合執行階段。 |
 | DataFactoryName | Azure 資料處理站的名稱。 |
-| Name | Azure SSIS 整合執行階段的名稱。 |
+| 名稱 | Azure SSIS 整合執行階段的名稱。 |
 | 描述 | Azure SSIS 整合執行階段的說明。 |
 
   
@@ -185,7 +185,7 @@ Azure SSIS 整合執行階段是完全受控的 Azure 虛擬機器 (或節點) �
 
 | 狀態 | 描述 |
 | ------ | ----------- | 
-| 正在啟動 | 正在準備此節點。 |
+| 啟動中 | 正在準備此節點。 |
 | 可用 | 此節點已準備好部署/執行 SSIS 套件。 |
 | 回收中 | 此節點正在修復/重新啟動。 |
 | 無法使用 | 此節點未準備好部署/執行 SSIS 套件，而且具有可採取動作解決的錯誤/問題。 |
@@ -195,9 +195,9 @@ Azure SSIS 整合執行階段是完全受控的 Azure 虛擬機器 (或節點) �
 | 整體狀態 | 描述 | 
 | -------------- | ----------- | 
 | Initial | 您的 Azure SSIS 整合執行階段的節點尚未配置/備妥。 | 
-| 正在啟動 | Azure SSIS 整合執行階段的節點正在配置/備妥，並已開始計費。 |
-| 已啟動 | Azure SSIS 整合執行階段的節點已配置/備妥，而且它們已準備好部署/執行 SSIS 套件。 |
-| 正在停止  | Azure SSIS 整合執行階段的節點正在釋出。 |
+| 啟動中 | Azure SSIS 整合執行階段的節點正在配置/備妥，並已開始計費。 |
+| Started | Azure SSIS 整合執行階段的節點已配置/備妥，而且它們已準備好部署/執行 SSIS 套件。 |
+| 停止中  | Azure SSIS 整合執行階段的節點正在釋出。 |
 | 已停止 | Azure SSIS 整合執行階段的節點已釋出並已停止計費。 |
 
 ### <a name="monitor-the-azure-ssis-integration-runtime-in-the-azure-portal"></a>在 Azure 入口網站中監視 Azure-SSIS 整合執行階段
@@ -220,10 +220,10 @@ Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $A
 
 請參閱下列文章以深入了解 Azure SSIS 整合執行階段：
 
-- [Azure SSIS 整合執行階段](concepts-integration-runtime.md#azure-ssis-integration-runtime)。 本文提供整合執行階段的一般概念性資訊，包括 Azure-SSIS IR。 
+- [Azure-SSIS 整合執行階段](concepts-integration-runtime.md#azure-ssis-integration-runtime)。 本文提供整合執行階段的一般概念性資訊，包括 Azure-SSIS IR。 
 - [教學課程：將 SSIS 套件部署至 Azure](tutorial-create-azure-ssis-runtime-portal.md)。 本文逐步說明如何建立 Azure-SSIS IR，並使用 Azure SQL 資料庫裝載 SSIS 目錄。 
 - [如何：建立 Azure-SSIS 整合執行階段](create-azure-ssis-integration-runtime.md)。 這篇文章會詳述教學課程，並提供使用 Azure SQL Database 受控執行個體，以及將 IR 加入虛擬網路的指示。 
-- [管理 Azure-SSIS IR](manage-azure-ssis-integration-runtime.md). 本文示範如何停止、啟動或移除 Azure-SSIS IR。 它也會告訴您如何將更多節點新增至 IR，藉此相應放大 Azure SSIS IR。 
+- [管理 Azure-SSIS IR](manage-azure-ssis-integration-runtime.md). 本文示範如何停止、啟動或移除 Azure-SSIS IR。 它也會示範如何將更多節點新增至 IR，藉此相應放大 Azure-SSIS IR。 
 - [將 Azure-SSIS IR 加入虛擬網路](join-azure-ssis-integration-runtime-virtual-network.md)。 這篇文章提供將 Azure SSIS IR 加入至 Azure 虛擬網路的概念資訊。 它也提供使用 Azure 入口網站來設定虛擬網路，好讓 Azure SSIS IR 可加入虛擬網路的步驟。 
 
 ## <a name="next-steps"></a>後續步驟

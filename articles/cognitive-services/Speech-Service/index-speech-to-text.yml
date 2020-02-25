@@ -1,0 +1,83 @@
+### YamlMime:Landing
+title: 語音轉換文字檔
+summary: 語音服務的語音轉換文字（也稱為語音辨識）可將音訊串流的即時轉譯為文字。
+metadata:
+  title: 語音轉換文字檔-教學課程和 API 參考-Azure 認知服務 |Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: IEvangelist
+  manager: nitinme
+  layout: LandingPage
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 02/11/2020
+  ms.author: dapine
+  ms.openlocfilehash: 2dd9fa8c9af53c69a1790dd890b48a7092f5a5da
+  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.translationtype: MT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 02/22/2020
+  ms.locfileid: "77563076"
+landingContent:
+- title: 開始使用
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是語音轉換文字？
+      url: speech-to-text.md
+  - linkListType: quickstart
+    links:
+    - text: 以麥克風輸入辨識語音
+      url: quickstarts/speech-to-text-from-microphone.md
+    - text: 辨識來自音訊檔案的語音
+      url: quickstarts/speech-to-text-from-file.md
+    - text: 辨識儲存在 Blob 儲存體中的語音
+      url: quickstarts/from-blob.md
+- title: 逐步指南
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 變更語音辨識的來源語言
+      url: how-to-specify-source-language.md
+    - text: 選擇語音辨識模式
+      url: how-to-choose-recognition-mode.md
+    - text: 以片語清單提高精確度
+      url: how-to-phrase-lists.md
+    - text: 以租用戶模型提高精確度
+      url: tutorial-tenant-model.md
+    - text: 以自訂語音提高精確度
+      url: how-to-custom-speech.md
+    - text: 選取特定的麥克風輸入裝置
+      url: how-to-select-audio-input-devices.md
+    - text: 使用自動來源語言偵測
+      url: how-to-automatic-language-detection.md
+    - text: 使用壓縮的音訊輸入格式
+      url: how-to-use-codec-compressed-audio-input-streams.md
+    - text: 使用壓縮的音訊輸入格式 (iOS)
+      url: how-to-use-codec-compressed-audio-input-streams-ios.md
+    - text: 使用壓縮的音訊輸入格式 (Android)
+      url: how-to-use-codec-compressed-audio-input-streams-android.md
+  - linkListType: concept
+    links:
+    - text: 準備自訂語音資料
+      url: how-to-custom-speech-test-data.md
+    - text: 檢查自訂語音資料
+      url: how-to-custom-speech-inspect-data.md
+    - text: 評估自訂語音準確度
+      url: how-to-custom-speech-evaluate-data.md
+    - text: 定型自訂模型
+      url: how-to-custom-speech-train-model.md
+    - text: 部署自訂模型
+      url: how-to-custom-speech-deploy-model.md
+    - text: 建立人為標記的轉譯
+      url: how-to-custom-speech-human-labeled-transcriptions.md
+- title: 參考
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 語言支援
+      url: language-support.md#speech-to-text
+    - text: 價格
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
+    - text: 語音轉換文字常見問題集
+      url: faq-stt.md

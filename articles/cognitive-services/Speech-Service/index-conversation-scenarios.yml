@@ -1,0 +1,55 @@
+### YamlMime:Landing
+title: 交談案例檔
+summary: 探索各種對話案例、交談轉譯或多裝置交談。
+metadata:
+  title: 交談案例檔-教學課程和 API 參考-Azure 認知服務 |Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: IEvangelist
+  manager: nitinme
+  layout: LandingPage
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 02/11/2020
+  ms.author: dapine
+  ms.openlocfilehash: d6ea318c2745f7d80a49e5fcb1b47381a9f276f7
+  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.translationtype: MT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 02/22/2020
+  ms.locfileid: "77563080"
+landingContent:
+- title: 對話轉譯
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 關於交談轉譯
+      url: conversation-transcription.md
+  - linkListType: how-to-guide
+    links:
+    - text: 轉譯即時對話
+      url: how-to-use-conversation-transcription.md
+    - text: 以非同步方式轉譯對話
+      url: how-to-async-conversation-transcription.md
+    - text: 處理撥打電話中心案例
+      url: call-center-transcription.md
+- title: 多裝置對話
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 關於多裝置交談
+      url: multi-device-conversation.md
+  - linkListType: quickstart
+    links:
+    - text: 開始和加入對話
+      url: quickstarts/multi-device-conversation.md
+- title: 參考
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 對話轉譯語言支援
+      url: conversation-transcription.md#language-support
+    - text: 多重裝置交談語言支援
+      url: multi-device-conversation.md#language-support
+    - text: 價格
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/

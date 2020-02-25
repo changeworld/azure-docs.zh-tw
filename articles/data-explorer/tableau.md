@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 資料總管的開放式資料庫連接（ODBC）連線，以 Tableau 將資料視覺化
+title: 使用 Azure 資料總管 ODBC 連接器將 Tableau 資料視覺化
 description: 在本文中，您將瞭解如何使用開放式資料庫連接（ODBC）連線至 Azure 資料總管連線，以使用 Tableau 將資料視覺化。
 author: orspod
 ms.author: orspodek
@@ -7,18 +7,18 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 4dd8fbd761a3442536919e17bae5465adf6b945f
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 903daf450800a7f060899d736c2b31920c1b51f6
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74023853"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562440"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-tableau"></a>在 Tableau 中將 Azure 資料總管的資料視覺化
 
  [Tableau](https://www.tableau.com/)是適用于商業智慧的視覺化分析平臺。 若要從 Tableau 連接到 Azure 資料總管並從範例叢集帶入資料，請使用 SQL Server 開放式資料庫連接（ODBC）驅動程式。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 您需要下列專案才能完成這篇文章：
 

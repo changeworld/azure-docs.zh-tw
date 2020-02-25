@@ -1,5 +1,5 @@
 ---
-title: 使用 C# 建立 Azure 資料總管叢集與資料庫
+title: 使用建立 Azure 資料總管叢集 & DBC#
 description: 了解如何使用 C# 建立 Azure 資料總管叢集與資料庫
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: a26dc461653f4308b0764b8c5ecc0272717a6171
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 0c32d438ac8551f061343edb747e9fc035b498e2
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77506012"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560519"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-c"></a>使用 C# 建立 Azure 資料總管叢集與資料庫
 

@@ -13,16 +13,16 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f5be5829843e9857239ca5ea9a7395f569f563a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 3632f8a360df8837569104232b7380fdc8383953
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74025332"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77559142"
 ---
-# <a name="assign-custom-admin-roles-using-graph-api-in-azure-active-directory"></a>在 Azure Active Directory 中使用圖形 API 指派自訂系統管理員角色 
+# <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>在 Azure Active Directory 中使用 Microsoft Graph API 指派自訂系統管理員角色 
 
-您可以自動化將角色指派給使用者帳戶 Microsoft Graph API 的方式。 本文涵蓋 roleAssignments 上的 POST、GET 及 DELETE 作業。
+您可以使用 Microsoft Graph API，將角色指派給使用者帳戶的作業自動化。 本文涵蓋 roleAssignments 上的 POST、GET 及 DELETE 作業。
 
 ## <a name="required-permissions"></a>所需的權限
 
@@ -35,10 +35,11 @@ ms.locfileid: "74025332"
 POST
 
 ``` HTTP
-https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments?api-version=1.61-internal
+POST https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
+Content-type: application/json
 ```
 
-內文
+body
 
 ``` HTTP
 {
@@ -48,7 +49,7 @@ https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments?api-version
 }
 ```
 
-Response
+回應
 
 ``` HTTP
 HTTP/1.1 201 Created
@@ -59,10 +60,10 @@ HTTP/1.1 201 Created
 POST
 
 ``` HTTP
-https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments?api-version=1.61-internal
+https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
 ```
 
-內文
+body
 
 ``` HTTP
 {
@@ -72,7 +73,7 @@ https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments?api-version
 }
 ```
 
-Response
+回應
 
 ``` HTTP
 HTTP/1.1 404 Not Found
@@ -86,10 +87,10 @@ HTTP/1.1 404 Not Found
 POST
 
 ``` HTTP
-https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments?api-version=1.61-internal
+https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
 ```
 
-內文
+body
 
 ``` HTTP
 {
@@ -99,7 +100,7 @@ https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments?api-version
 }
 ```
 
-Response
+回應
 
 ``` HTTP
 HTTP/1.1 400 Bad Request
@@ -130,10 +131,10 @@ HTTP/1.1 400 Bad Request
 GET
 
 ``` HTTP
-https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments?api-version=1.61-internal&$filter=principalId eq ‘<object-id-of-principal>’
+https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments&$filter=principalId eq ‘<object-id-of-principal>’
 ```
 
-Response
+回應
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -156,10 +157,10 @@ HTTP/1.1 200 OK
 GET
 
 ``` HTTP
-https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments?api-version=1.61-internal&$filter=roleDefinitionId eq ‘<object-id-or-template-id-of-role-definition>’
+https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments&$filter=roleDefinitionId eq ‘<object-id-or-template-id-of-role-definition>’
 ```
 
-Response
+回應
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -176,15 +177,15 @@ HTTP/1.1 200 OK
 GET
 
 ``` HTTP
-https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments/<id-of-role-assignment>?api-version=1.61-internal
+GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/lAPpYvVpN0KRkAEhdxReEJC2sEqbR_9Hr48lds9SGHI-1
 ```
 
-Response
+回應
 
 ``` HTTP
 HTTP/1.1 200 OK
 { 
-    "id":"mhxJMipY4UanIzy2yE-r7JIiSDKQoTVJrLE9etXyrY0-1"
+    "id":"mhxJMipY4UanIzy2yE-r7JIiSDKQoTVJrLE9etXyrY0-1",
     "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
     "roleDefinitionId":"10dae51f-b6af-4016-8d66-8c2a99b929b3",
     "resourceScopes":["/"]
@@ -198,10 +199,10 @@ HTTP 要求，用以刪除使用者與角色定義之間的角色指派。
 刪除
 
 ``` HTTP
-https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments/<id-of-role-assignment>?api-version=1.61-internal
+GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/lAPpYvVpN0KRkAEhdxReEJC2sEqbR_9Hr48lds9SGHI-1
 ```
 
-Response
+回應
 ``` HTTP
 HTTP/1.1 204 No Content
 ```
@@ -211,10 +212,10 @@ HTTP/1.1 204 No Content
 刪除
 
 ``` HTTP
-https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments/<id-of-role-assignment>?api-version=1.61-internal
+GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/lAPpYvVpN0KRkAEhdxReEJC2sEqbR_9Hr48lds9SGHI-1
 ```
 
-Response
+回應
 
 ``` HTTP
 HTTP/1.1 404 Not Found
@@ -225,10 +226,10 @@ HTTP/1.1 404 Not Found
 刪除
 
 ``` HTTP
-https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments/<id-of-role-assignment>?api-version=1.61-internal
+GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/lAPpYvVpN0KRkAEhdxReEJC2sEqbR_9Hr48lds9SGHI-1
 ```
 
-Response
+回應
 
 ``` HTTP
 HTTP/1.1 400 Bad Request

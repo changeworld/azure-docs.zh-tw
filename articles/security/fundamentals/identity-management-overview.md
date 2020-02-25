@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: cdf07c6a4cb98f17a9bc15934a7be42ba70810f6
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f61b6193a0d2082296a17128b41d7220f9b7e05f
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840446"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565888"
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure 身分識別管理安全性概觀
 
@@ -45,7 +45,7 @@ ms.locfileid: "76840446"
 * 安全性監視、警示以及機器學習服務型報告
 * 消費者身分識別與存取管理
 * 裝置註冊
-* 特殊權限身分識別管理
+* Privileged Identity Management
 * 身分識別保護
 * 混合式身分識別管理/Azure AD connect
 * Azure AD 存取權檢閱
@@ -64,7 +64,7 @@ Azure AD 將內部部署的 Active Directory 環境延伸到雲端，讓使用�
 
 * [單一登入概觀](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/)
 * [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../../active-directory/manage-apps/what-is-single-sign-on.md)
-* [整合 Azure Active Directory 單一登入與 SaaS 應用程式](../../active-directory/manage-apps/configure-single-sign-on-portal.md)
+* [整合 Azure Active Directory 單一登入與 SaaS 應用程式](../../active-directory/manage-apps/configure-single-sign-on-non-gallery-applications.md)
 
 ## <a name="reverse-proxy"></a>反向 proxy
 
@@ -140,7 +140,7 @@ Azure AD 裝置註冊是裝置型[條件式存取](/azure/active-directory/activ
 * [自動向 Azure AD 註冊加入網域的 Windows 裝置](/azure/active-directory/active-directory-conditional-access-automatic-device-registration)
 * [設定讓已加入網域的 Windows 裝置自動向 Azure AD 註冊](/azure/active-directory/active-directory-conditional-access-automatic-device-registration-setup)
 
-## <a name="privileged-identity-management"></a>特殊權限身分識別管理
+## <a name="privileged-identity-management"></a>Privileged Identity Management
 
 有了 Azure AD Privileged Identity Management ，您便可管理、控制和監視特殊權限身分識別，以及存取 Azure AD 和 Office 365 與 Microsoft Intune 等其他 Microsoft Online 服務的資源。
 
@@ -174,7 +174,7 @@ Microsoft 的身分識別解決方案可跨越內部部署和雲端架構功能�
 * Synchronization
 * AD FS 和同盟整合
 * 通過驗證
-* 健康狀況監視
+* 健康狀態監視
 
 深入了解：
 

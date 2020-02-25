@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d19cc39147608dafc4576f4c8bad0533ad1b32d
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 90d958d2adc8920e4e6ccbccef20acf20aedca4c
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77521909"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561607"
 ---
 # <a name="conditional-access-require-compliant-devices"></a>條件式存取：需要符合規範的裝置
 
@@ -48,6 +48,9 @@ ms.locfileid: "77521909"
    1. 選取 [選取]。
 1. 確認您的設定，並將 [**啟用原則**] 設為 [**開啟**]。
 1. 選取 [**建立**] 以建立以啟用您的原則。
+
+> [!NOTE]
+> 您可以使用上述步驟，將您的新裝置註冊至 Intune，即使您選取 [**需要將裝置標示為符合規範**]**所有使用者**和**所有雲端應用程式**。 [**要求裝置必須標記為相容**] 控制項不會封鎖 Intune 註冊。 
 
 ### <a name="known-behavior"></a>已知的行為
 

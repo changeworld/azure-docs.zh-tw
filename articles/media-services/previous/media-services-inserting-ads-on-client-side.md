@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f56c897fd6f5ce7e5129a4500ecaacbaf0a75f3b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 274ee09ae98dd229b255e58261f462e322be9f89
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895974"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565735"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>在用戶端插入廣告
 本文包含如何在用戶端上插入各種類型廣告的相關資訊。
@@ -276,7 +276,7 @@ VMAP 檔案開頭為 `<VMAP>` 元素，包含一或多個 `<AdBreak>` 元素，�
     </vmap:VMAP>
 ```
 
-如需 <**TrackingEvents**> 元素及其子系的詳細資訊，請參閱 http://iab.net/VMAP.pdf 。
+如需 <**TrackingEvents**> 元素及其子系的詳細資訊，請參閱 http://iab.net/VMAP.pdf。
 
 ### <a name="using-a-media-abstract-sequencing-template-mast-file"></a>使用 Media Abstract Sequencing Template (MAST) 檔案
 MAST 檔案可讓您指定觸發程序，定義何時顯示廣告。 以下是範例 MAST 檔案，其中包含片頭廣告、片中廣告和片尾廣告的觸發程序。
@@ -363,7 +363,7 @@ VPAID 是 API，用於啟用可執行廣告單元，以便與視訊播放器通�
     </MediaFiles>
 ```
 
-可以使用 VAST 回應中 `<Linear>` 或 `<NonLinear>` 元素內的 `<AdParameters>` 元素，初始化可執行廣告。 如需 `<AdParameters>` 元素的詳細資訊，請參閱 [VAST 3.0](https://www.iab.net/media/file/VASTv3.0.pdf)。 如需 VPAID API 的詳細資訊，請參閱 [VPAID 2.0](https://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf)。
+可以使用 VAST 回應中 `<AdParameters>` 或 `<Linear>` 元素內的 `<NonLinear>` 元素，初始化可執行廣告。 如需 `<AdParameters>` 元素的詳細資訊，請參閱 [VAST 3.0](https://www.iab.net/media/file/VASTv3.0.pdf)。 如需 VPAID API 的詳細資訊，請參閱 [VPAID 2.0](https://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf)。
 
 ## <a name="implementing-a-windows-or-windows-phone-8-player-with-ad-support"></a>實作包含廣告支援的 Windows 或 Windows Phone 8 播放器
 Microsoft 媒體平台：Player Framework for Windows 8 和 Windows Phone 8 包含範例應用程式集合，為您示範如何使用架構實作視訊播放器應用程式。 您可以從 [適用於Windows 8 和 Windows Phone 8 的 Player Framework](https://playerframework.codeplex.com)下載 Player Framework 和範例。
@@ -848,7 +848,3 @@ Microsoft 媒體平台：Player Framework for iOS 包含範例應用程式集合
 
 ## <a name="provide-feedback"></a>提供意見反應
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-
-## <a name="see-also"></a>另請參閱
-[開發視訊播放程式應用程式](media-services-develop-video-players.md)
-

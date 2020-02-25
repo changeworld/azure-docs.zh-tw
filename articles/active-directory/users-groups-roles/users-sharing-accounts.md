@@ -15,16 +15,16 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a01ebde09517cbe7f093dd56a8a4116e76e64e38
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 987c3ee7c90eb0bb793b96eb2771efbb258f16a4
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736762"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565497"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>使用 Azure AD 共用帳戶
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 有時候組織需要讓多人使用同一個使用者名稱和密碼，這通常發生在兩種情況下：
 
@@ -51,7 +51,7 @@ Azure AD 提供使用共用帳戶的新方法，可以消除這些缺點。
 
 共用帳戶不只增加監督的方便性和改善可用性，也可增強安全性。 具有認證使用權限的使用者看不到共用密碼，而是會在協調的驗證流程當中取得密碼的使用權限。 此外，某些密碼 SSO 應用程式可讓您選擇使用 Azure AD 以定期換用 (更新) 密碼。 系統會使用大型、複雜的密碼，以提高帳戶安全性。 管理員可以輕易地授與或撤銷應用程式的存取權，知道誰有權存取帳戶以及誰曾經存取帳戶。
 
-Azure AD 在所有類型的密碼單一登入應用程式中, 支援任何企業行動套件 (EMS) 或 Azure AD Premium 授權方案的共用帳戶。 您可以共用應用程式庫中數千個預先整合的應用程式的帳戶，並可加入含有 [自訂 SSO 應用程式](../manage-apps/configure-single-sign-on-portal.md)的密碼驗證應用程式。
+Azure AD 在所有類型的密碼單一登入應用程式中，支援任何企業行動套件（EMS）或 Azure AD Premium 授權方案的共用帳戶。 您可以共用應用程式庫中數千個預先整合的應用程式的帳戶，並可加入含有 [自訂 SSO 應用程式](../manage-apps/configure-single-sign-on-non-gallery-applications.md)的密碼驗證應用程式。
 
 啟用帳戶共用的 Azure AD 功能包括：
 
@@ -62,7 +62,7 @@ Azure AD 在所有類型的密碼單一登入應用程式中, 支援任何企業
 * [應用程式使用方式儀表板/報告](../active-directory-passwords-get-insights.md)
 * 使用者存取入口網站
 * [應用程式 proxy](../manage-apps/application-proxy.md)
-* [Active Directory Marketplace](https://azure.microsoft.com/marketplace/active-directory/all/)
+* [Active Directory 市集](https://azure.microsoft.com/marketplace/active-directory/all/)
 
 ## <a name="sharing-an-account"></a>共用帳戶
 

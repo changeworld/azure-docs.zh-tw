@@ -1,5 +1,5 @@
 ---
-title: 使用 SUSE Linux Enterprise Server 上的 Azure NetApp Files，在 Azure Vm 上部署具有待命節點的 SAP Hana 相應放大系統 |Microsoft Docs
+title: 使用 Azure NetApp Files 在 SLES 上以待命方式 SAP Hana 相應放大 |Microsoft Docs
 description: 在 SUSE Linux Enterprise Server 上使用 sap NetWeaver 的高可用性指南，適用于 SAP 應用程式的 Azure NetApp Files
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/10/2020
 ms.author: radeltch
-ms.openlocfilehash: 243bbd431b7332d06a4e14581aa5c02bae2b7cba
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: c594ef3a62d45fb68002ec2b21fb89115f7a30af
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896285"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565803"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>使用 azure NetApp Files on SUSE Linux Enterprise Server 在 Azure Vm 上部署具有待命節點的 SAP Hana 相應放大系統 
 

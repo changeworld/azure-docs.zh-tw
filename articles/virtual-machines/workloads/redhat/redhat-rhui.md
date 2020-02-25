@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: dc4762cbda5ad2877d2d69953d2514dea17c8b46
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: d989553dc2248e7e0c830bb8cf169a80354dbab2
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368897"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562542"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>適用於 Azure 中隨選 Red Hat Enterprise Linux VM 的 Red Hat Update Infrastructure
  [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) 允許雲端提供者 (例如 Azure) 鏡像 Red Hat 代管的存放庫內容、建立具有 Azure 特定內容的自訂存放庫，以及讓它可供使用者 VM 使用。
@@ -28,7 +28,7 @@ Red Hat Enterprise Linux (RHEL) 隨用隨付 (PAYG) 映像預先設定為存取 
 如需所有 RHEL 版本的 Red Hat 支援原則資訊，請參閱 [Red Hat Enterprise Linux 生命週期](https://access.redhat.com/support/policy/updates/errata)頁面。
 
 > [!IMPORTANT]
-> RHUI 僅適用于隨用隨付（PAYGO）影像。 針對自訂和黃金映射（也稱為自備訂用帳戶（BYOS）），系統必須連接到 RHSM 或衛星，才能接收更新。 如需詳細資訊，請參閱[Red Hat 文章](https://access.redhat.com/solutions/253273)。
+> RHUI 僅適用于隨用隨付（PAYG）影像。 針對自訂和黃金映射（也稱為自備訂用帳戶（BYOS）），系統必須連接到 RHSM 或衛星，才能接收更新。 如需詳細資訊，請參閱[Red Hat 文章](https://access.redhat.com/solutions/253273)。
 
 
 ## <a name="important-information-about-azure-rhui"></a>Azure RHUI 的重要資訊
@@ -105,7 +105,7 @@ RedHat:RHEL:7.6:7.6.2019062116
     yum --config='https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel7-eus.config' install 'rhui-azure-rhel7-eus'
     ```
 
-1. 鎖定 releasever 變數（以 root 身分執行）：
+1. 鎖定 `releasever` 變數（以 root 身分執行）：
     ```bash
     echo $(. /etc/os-release && echo $VERSION_ID) > /etc/yum/vars/releasever
     ```
@@ -120,7 +120,7 @@ RedHat:RHEL:7.6:7.6.2019062116
 
 ### <a name="switch-a-rhel-vm-back-to-non-eus-remove-a-version-lock"></a>將 RHEL VM 切換回非 EUS （移除版本鎖定）
 以 root 身分執行下列內容：
-1. 移除 releasever 檔案：
+1. 移除 `releasever` 檔案：
     ```bash
     rm /etc/yum/vars/releasever
      ```

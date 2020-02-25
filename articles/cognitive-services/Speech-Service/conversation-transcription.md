@@ -1,23 +1,23 @@
 ---
-title: 什麼是對話轉譯（預覽）？ -語音服務
+title: 關於交談轉譯（預覽）-語音服務
 titleSuffix: Azure Cognitive Services
-description: 對話轉譯是一種語音轉換文字的解決方案，可將語音辨識、說話者識別和句子屬性結合到每個說話者（也稱為 diarization），以提供即時和/或非同步轉譯任何轉換.
+description: 對話轉譯是一種語音轉換文字的解決方案，可將語音辨識、說話者識別和句子屬性結合到每個說話者（也稱為 diarization），以提供任何交談的即時和/或非同步轉譯。
 services: cognitive-services
-author: markamos
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.author: erhopf
-ms.openlocfilehash: 07e3e498a3bd2693b72079a8a731c3d139414c90
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 01/31/2020
+ms.author: dapine
+ms.openlocfilehash: 8e36a5c4d9ce2bc38565d6c9c256ed2cc7efe357
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806281"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561063"
 ---
-# <a name="what-is-conversation-transcription-preview"></a>什麼是對話轉譯（預覽）？
+# <a name="about-conversation-transcription-preview"></a>關於交談轉譯（預覽）
 
 對話轉譯是一種[語音轉換文字](speech-to-text.md)的解決方案，可將語音辨識、說話者識別和句子屬性結合到每個說話者（也稱為_diarization_），以提供任何交談的即時和/或非同步轉譯。 對話轉譯可區別交談中的說話者，以判斷誰說什麼，以及如何讓開發人員輕鬆地將語音轉換文字新增至執行多喇叭 diarization 的應用程式。
 
@@ -63,7 +63,7 @@ ms.locfileid: "74806281"
 
 音訊資料會即時處理，以傳回喇叭識別碼 + 文字記錄。 如果您的轉譯解決方案需求是要為對話參與者提供進行中交談的即時文字記錄，請選取此模式。 例如，建立應用程式讓會議更容易存取，失聰和困難的出席者是即時轉譯的理想使用案例。
 
-### <a name="asynchronous"></a>非同步
+### <a name="asynchronous"></a>非同步的
 
 音訊資料會進行批次處理，以傳回喇叭識別碼和文字記錄。 如果您的轉譯解決方案需求是提供較高的精確度，而不需要即時文字記錄，請選取此模式。 例如，如果您想要建立應用程式，讓會議參與者能夠輕鬆地趕上錯過的會議，則請使用非同步轉譯模式來取得高準確度的轉譯結果。
 

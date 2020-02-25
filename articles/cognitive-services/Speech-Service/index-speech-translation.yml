@@ -1,0 +1,55 @@
+### YamlMime:Landing
+title: 語音翻譯檔
+summary: 語音服務的語音翻譯可讓您即時、多語言的語音轉換語音和語音轉換文字轉譯音訊串流
+metadata:
+  title: 語音翻譯檔-教學課程和 API 參考-Azure 認知服務 |Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: IEvangelist
+  manager: nitinme
+  layout: LandingPage
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 02/11/2020
+  ms.author: dapine
+  ms.openlocfilehash: c45c16b4421bf48e5728f95e7043ef7ffc109c3a
+  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.translationtype: MT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 02/22/2020
+  ms.locfileid: "77563074"
+landingContent:
+- title: 開始使用
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是語音翻譯？
+      url: speech-translation.md
+  - linkListType: quickstart
+    links:
+    - text: 翻譯語音轉換文字
+      url: quickstarts/translate-speech-to-text.md
+    - text: 將語音轉譯為多種目的語言
+      url: quickstarts/translate-speech-to-text-multiple-languages.md
+    - text: 翻譯語音轉換語音
+      url: quickstarts/translate-speech-to-speech.md
+- title: 逐步指南
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 即時轉譯語音
+      url: https://docs.microsoft.com/learn/modules/convert-speech-to-text
+  - linkListType: tutorial
+    links:
+    - text: 使用 REST Api 轉譯和合成文字
+      url: ../translator/tutorial-build-flask-app-translation-synthesis.md
+- title: 參考
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 語言支援
+      url: language-support.md#speech-translation
+    - text: 價格
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/
+    - text: 語音翻譯常見問題集
+      url: https://www.microsoft.com/translator/business/faq/

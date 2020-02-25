@@ -1,5 +1,5 @@
 ---
-title: 搭配 Azure Kubernetes Service (AKS) 負載平衡器使用靜態 IP 位址
+title: 搭配 Azure Kubernetes Service （AKS）負載平衡器使用靜態 IP 位址和 DNS 標籤
 description: 了解如何搭配 Azure Kubernetes Service (AKS) 負載平衡器來建立和使用靜態 IP 位址。
 services: container-service
 author: mlearned
@@ -7,14 +7,14 @@ ms.service: container-service
 ms.topic: article
 ms.date: 11/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 8457f1c0c5b6107c4b44f6f00236a33f7c67452a
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 5e1f88e82d994c7f912b21781271448d35b5d726
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325432"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77558900"
 ---
-# <a name="use-a-static-public-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>搭配 Azure Kubernetes Service (AKS) 負載平衡器使用靜態公用 IP 位址
+# <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>搭配 Azure Kubernetes Service （AKS）負載平衡器使用靜態公用 IP 位址和 DNS 標籤
 
 根據預設，指派給 AKS 叢集所建立之負載平衡器資源的公用 IP 位址，只有在該資源的生命週期內有效。 如果您刪除 Kubernetes 服務，相關聯的負載平衡器和 IP 位址也會一併刪除。 如果您想要針對已重新部署的 Kubernetes 服務指派特定的 IP 位址或保留 IP 位址，您可以建立並使用靜態公用 IP 位址。
 
@@ -65,7 +65,7 @@ $ az network public-ip show --resource-group myResourceGroup --name myAKSPublicI
 
 ## <a name="create-a-service-using-the-static-ip-address"></a>使用靜態 IP 位址建立服務
 
-建立服務之前，請確定 AKS 叢集所使用的服務主體具有其他資源群組的委派許可權。 例如︰
+建立服務之前，請確定 AKS 叢集所使用的服務主體具有其他資源群組的委派許可權。 例如：
 
 ```azurecli-interactive
 az role assignment create \
@@ -97,6 +97,30 @@ spec:
 ```console
 kubectl apply -f load-balancer-service.yaml
 ```
+
+## <a name="apply-a-dns-label-to-the-service"></a>將 DNS 標籤套用至服務
+
+如果您的服務使用動態或靜態公用 IP 位址，您可以使用服務注釋 `service.beta.kubernetes.io/azure-dns-label-name` 來設定對外公開的 DNS 標籤。 這會使用 Azure 的公用 DNS 伺服器和最上層網域來發行服務的完整功能變數名稱。 批註值在 Azure 位置中必須是唯一的，因此建議使用完整的標籤。   
+
+接著，Azure 會自動將預設子網（`<location>.cloudapp.azure.com` 例如 [位置] 為您選取的區域）附加至您提供的名稱，以建立完整的 DNS 名稱。 例如：
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    service.beta.kubernetes.io/azure-dns-label-name: myserviceuniquelabel
+  name: azure-load-balancer
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: azure-load-balancer
+```
+
+> [!NOTE] 
+> 若要在您自己的網域上發佈服務，請參閱[Azure DNS][azure-dns-zone]和[外部 DNS][external-dns]專案。
 
 ## <a name="troubleshoot"></a>疑難排解
 
@@ -136,6 +160,8 @@ Events:
 
 <!-- LINKS - External -->
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
+[azure-dns-zone]: https://azure.microsoft.com/services/dns/
+[external-dns]: https://github.com/kubernetes-sigs/external-dns
 
 <!-- LINKS - Internal -->
 [aks-faq-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks

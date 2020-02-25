@@ -1,6 +1,6 @@
 ---
-title: 快速入門-在 AVS 私人雲端上建立 VMware VM
-description: 說明如何在 AVS 私人雲端上建立 VMware VM
+title: 快速入門-在私人雲端上建立 Azure VMware VM-CloudSimple 的 Azure VMware 解決方案
+description: 說明如何在 CloudSimple 私人雲端上建立 Azure VMware VM
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/16/2019
@@ -8,42 +8,42 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: cbe88afc4f566bad4bacb408346d4dd25a2f6c96
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 4ac818cfd267b781366c0e32c9f93cc885dff99c
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77020058"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77566143"
 ---
-# <a name="create-vmware-virtual-machines-on-your-avs-private-cloud"></a>在您的 AVS 私人雲端上建立 VMware 虛擬機器
+# <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>在您的私人雲端上建立 VMware 虛擬機器
 
-若要在您的 AVS 私人雲端上建立虛擬機器，請從 Azure 入口網站存取 AVS 入口網站開始。
+若要在私人雲端上建立虛擬機器，請從 Azure 入口網站存取 CloudSimple 入口網站開始。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
 登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
 
-## <a name="access-the-avs-portal"></a>存取 AVS 入口網站
+## <a name="access-the-cloudsimple-portal"></a>存取 CloudSimple 入口網站
 
 1. 選取 [所有服務]。
-2. 搜尋 [ **AVS 服務**]。
-3. 選取您要在其上建立您的 AVS 私人雲端的 AVS 服務。
-4. 在 [**總覽**] 頁面上，按一下 [**移至 avs 入口網站**] 以開啟 [avs 入口網站] 的新瀏覽器索引標籤。 若出現提示，請使用您的 Azure 登入認證登入。 
+2. 搜尋**CloudSimple Services**。
+3. 選取您要在其上建立私人雲端的 CloudSimple 服務。
+4. 在 [**總覽**] 頁面上，按一下 [**移至 CloudSimple 入口網站**] 以開啟 CloudSimple 入口網站的新瀏覽器索引標籤。  若出現提示，請使用您的 Azure 登入認證登入。  
 
-    ![啟動 AVS 入口網站](media/launch-cloudsimple-portal.png)
+    ![啟動 CloudSimple 入口網站](media/launch-cloudsimple-portal.png)
 
 ## <a name="launch-vcenter-web-ui"></a>啟動 vCenter web ui
 
 您現在可以啟動 vCenter 來設定虛擬機器和原則。
 
-若要存取 vCenter，請從 AVS 入口網站啟動。 在首頁的 [**一般**工作] 底下，按一下 [**啟動 vSphere 用戶端**]。 選取 [AVS 私用雲端]，然後按一下 [在 AVS 私人雲端上**啟動 VSphere 用戶端**]。
+若要存取 vCenter，請從 CloudSimple 入口網站啟動。 在首頁的 [**一般**工作] 底下，按一下 [**啟動 vSphere 用戶端**]。  選取私人雲端，然後按一下 [在私人雲端上**啟動 VSphere 用戶端**]。
 
    ![啟動 vSphere 用戶端](media/launch-vcenter-from-cloudsimple-portal.png)
 
 ## <a name="upload-an-iso-or-vsphere-template"></a>上傳 ISO 或 vSphere 範本
 
   > [!WARNING]
-  > 針對 ISO 上傳，請使用 vSphere HTML5 用戶端。 使用 Flash client 可能會導致錯誤。
+  > 針對 ISO 上傳，請使用 vSphere HTML5 用戶端。  使用 Flash 用戶端可能會導致錯誤。
 
 1. 取得您想要上傳至 vCenter 的 ISO 或 vSphere 範本，以建立 VM，並在您的本機系統上使用它。
 2. 在 vCenter 中，按一下**磁片**圖示，然後選取 [ **vsanDatastore**]。 按一下 [檔案 **]，然後按一下 [** **新增資料夾**]。
@@ -78,7 +78,7 @@ ms.locfileid: "77020058"
 8. 選取您要建立之 VM 的 ISO 的 [客體作業系統]，然後按 **[下一步]** 。
     ![新的 VM](media/vcvm07.png)
 
-9. 選取 [硬碟和網路選項]。 針對新的 CD/DVD 光碟機，請選取 [資料存放區**ISO**檔案]。 如果您想要允許從公用 IP 位址到此 VM 的流量，請選取 [網路] 做為 [ **vm-1**]。
+9. 選取 [硬碟和網路選項]。 針對新的 CD/DVD 光碟機，請選取 [資料存放區**ISO**檔案]。  如果您想要允許從公用 IP 位址到此 VM 的流量，請選取 [網路] 做為 [ **vm-1**]。
     ![新的 VM](media/vcvm08.png)
 
 10. 選取範圍視窗隨即開啟。 選取您先前上傳至 [Iso 和範本] 資料夾的檔案，然後按一下 **[確定]** 。
@@ -90,19 +90,19 @@ ms.locfileid: "77020058"
 VM 現在已新增至工作負載計算資源，並可供使用。 
 ![新的 VM](media/vcvm12.png)
 
-基本設定現已完成。 您可以開始使用您的 AVS 私人雲端，類似于您使用內部部署 VM 基礎結構的方式。
+基本設定現已完成。 您可以開始使用您的私用雲端，類似于您使用內部部署 VM 基礎結構的方式。
 
-下列各節包含設定適用于 AVS 私人雲端工作負載的 DNS 和 DHCP 伺服器，以及修改預設網路設定的選擇性資訊。
+下列各節包含有關設定私人雲端工作負載的 DNS 和 DHCP 伺服器，以及修改預設網路設定的選擇性資訊。
 
 ## <a name="add-users-and-identity-sources-to-vcenter-optional"></a>將使用者和身分識別來源新增至 vCenter （選擇性）
 
-AVS 會指派預設的 vCenter 使用者帳戶，其中包含 username `cloudowner@AVS.local`。 您不需要進行其他帳戶設定即可開始使用。 AVS 通常會為系統管理員指派執行正常作業所需的許可權。 將您的內部部署 active directory 或 Azure AD 設定為您的 AVS 私人雲端上的[其他身分識別來源](set-vcenter-identity.md)。
+CloudSimple 會指派預設的 vCenter 使用者帳戶，並 `cloudowner@cloudsimple.local`使用者名稱。 您不需要進行其他帳戶設定即可開始使用。  CloudSimple 通常會為系統管理員指派執行正常作業所需的許可權。  將您的內部部署 active directory 或 Azure AD 設定為私人雲端上的[其他身分識別來源](set-vcenter-identity.md)。
 
 ## <a name="create-a-dns-and-dhcp-server-optional"></a>建立 DNS 和 DHCP 伺服器（選擇性）
 
-在 AVS 私人雲端環境中執行的應用程式和工作負載需要名稱解析和 DHCP 服務，才能進行查閱和 IP 位址指派。 必須要有適當的 DHCP 和 DNS 基礎結構，才能提供這些服務。 您可以在 vCenter 中設定虛擬機器，以在您的 AVS 私用雲端環境中提供這些服務。
+在私人雲端環境中執行的應用程式和工作負載需要名稱解析和 DHCP 服務，才能進行查閱和 IP 位址指派。 必須要有適當的 DHCP 和 DNS 基礎結構，才能提供這些服務。 您可以在 vCenter 中設定虛擬機器，以在您的私用雲端環境中提供這些服務。
 
-必要條件
+Prerequisites
 
 * 已設定 VLAN 的分散式通訊埠群組
 
@@ -114,7 +114,7 @@ AVS 會指派預設的 vCenter 使用者帳戶，其中包含 username `cloudown
 
 #### <a name="linux-based-dns-server-setup"></a>以 Linux 為基礎的 DNS 伺服器設定
 
-Linux 提供各種封裝來設定 DNS 伺服器。 以下是設定開放原始碼系結 DNS 伺服器的指示連結。
+Linux 提供各種封裝來設定 DNS 伺服器。  以下是設定開放原始碼系結 DNS 伺服器的指示連結。
 
 [範例設定](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-centos-7)
 
@@ -128,11 +128,11 @@ Linux 提供各種封裝來設定 DNS 伺服器。 以下是設定開放原始�
 
 ## <a name="customize-networking-configuration-optional"></a>自訂網路設定（選擇性）
 
-AVS 入口網站中的 [網路] 頁面可讓您指定防火牆資料表的設定和 Vm 的公用 IP 位址。
+CloudSimple 入口網站中的 [網路] 頁面可讓您指定防火牆資料表的設定和 Vm 的公用 IP 位址。
 
 ### <a name="allocate-public-ips"></a>配置公用 Ip
 
-1. 在 AVS 入口網站中流覽至**網路 > 公用 IP** 。
+1. 在 CloudSimple 入口網站中，流覽至**網路 > 公用 IP** 。
 2. 按一下 [**配置公用 IP**]。
 3. 輸入名稱以識別 IP 位址專案。
 4. 保留預設位置。
@@ -207,10 +207,10 @@ python3 -m http.server 80
 ```
 在您的桌面上啟動瀏覽器，並將它指向公用 IP 位址的埠80，以流覽 VM 上的檔案。
 
-### <a name="default-avs-firewall-rules-for-public-ip"></a>公用 IP 的預設 AVS 防火牆規則
+### <a name="default-cloudsimple-firewall-rules-for-public-ip"></a>公用 IP 的預設 CloudSimple 防火牆規則
 
 * VPN 流量：允許（從/到） VPN 與所有工作負載網路和管理網路之間的所有流量。
-* AVS 私人雲端內部流量：允許（from/to）工作負載網路和管理網路（如上所示）之間的所有東部-西部流量。
+* 私人雲端內部流量：允許（from/to）工作負載網路和管理網路（如上所示）之間的所有東部-西部流量。
 * 網際網路流量：
   * 所有來自網際網路的連入流量都會拒絕到工作負載網路和管理網路。
   * 允許從工作負載網路或管理網路到網際網路的所有連出流量。
@@ -219,7 +219,7 @@ python3 -m http.server 80
 
 ## <a name="install-solutions-optional"></a>安裝解決方案（選用）
 
-您可以在您的 AVS 私人雲端上安裝解決方案，以充分利用您的 AVS 私用雲端 vCenter 環境。 您可以設定備份、嚴重損壞修復、複寫和其他功能來保護您的虛擬機器。 範例包括 VMware Site Recovery Manager （VMware SRM）和 Veeam Backup & 複寫。
+您可以在 CloudSimple 私用雲端上安裝解決方案，以充分利用您的私用雲端 vCenter 環境。 您可以設定備份、嚴重損壞修復、複寫和其他功能來保護您的虛擬機器。 範例包括 VMware Site Recovery Manager （VMware SRM）和 Veeam Backup & 複寫。
 
 若要安裝方案，您必須在有限期間內要求額外的許可權。 請參閱[提升許可權](escalate-private-cloud-privileges.md)。
 
@@ -227,4 +227,4 @@ python3 -m http.server 80
 
 * [使用 Azure 上的 VMware Vm](quickstart-create-vmware-virtual-machine.md)
 * [使用 Azure ExpressRoute 連接到內部部署網路](on-premises-connection.md)
-* [在 AVS 網路上設定 VPN 閘道](vpn-gateway.md)
+* [在 CloudSimple 網路上設定 VPN 閘道](vpn-gateway.md)

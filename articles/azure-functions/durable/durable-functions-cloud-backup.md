@@ -4,18 +4,16 @@ description: 了解如何在 Azure Functions 的 Durable Functions 擴充中實�
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: a87a4edd544c2f7d8ff9c6415df2f2dda125f2bf
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: d61600801286126ea6ffb9a97bc5655b6f233816
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232989"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562185"
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Durable Functions 中的展開傳送/收合傳送情節 - 雲端備份範例
 
 「展開傳送/收合傳送」是指同時執行多個函式，然後對結果執行一些彙總的模式。 本文以一個範例說明如何使用 [Durable Functions](durable-functions-overview.md) 來實作展開傳送/收合傳送情節。 範例是一個永久性函式，可將應用程式的所有或部分網站內容備份至 Azure 儲存體。
-
-[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -23,7 +21,7 @@ ms.locfileid: "74232989"
 
 在此範例中，函式會將指定目錄中的所有檔案，以遞迴方式上傳至 blob 儲存體。 還會計算已上傳的位元組總數。
 
-您可以只撰寫一個函式來處理這一切。 您會遇到的主要問題是**延展性**。 單一函式執行只能在單一虛擬機器上執行，所以輸送量受限於該單一虛擬機器的輸送量。 另一個問題是**可靠性**。 如果中途失敗，或是整個程式花費了5分鐘以上，則備份可能會在部分完成狀態下失敗。 於是就必須重新啟動。
+您可以只撰寫一個函式來處理這一切。 您會遇到的主要問題是**延展性**。 單一函式執行只能在單一虛擬機器上執行，因此輸送量會受限於該單一 VM 的輸送量。 另一個問題是**可靠性**。 如果中途失敗，或是整個程式花費了5分鐘以上，則備份可能會在部分完成狀態下失敗。 於是就必須重新啟動。
 
 更強固的方法是撰寫兩個一般函式：其中一個會列舉檔案，並將檔案名稱加入佇列中，另一個會讀取佇列，並將檔案上傳至 blob 儲存體。 這種方法在輸送量和可靠性方面較佳，但它需要您布建和管理佇列。 更重要的是，如果您想要再多一些功能，例如報告已上傳的位元組總數，則在**狀態管理**和**協調**方面會變得相當複雜。
 
@@ -33,27 +31,11 @@ Durable Functions 方法提供上述所有優點，而且額外負荷極低。
 
 本文說明範例應用程式中的函式如下：
 
-* `E2_BackupSiteContent`
-* `E2_GetFileList`
-* `E2_CopyFileToBlob`
+* `E2_BackupSiteContent`：[協調](durable-functions-bindings.md#orchestration-trigger)器函式，會呼叫 `E2_GetFileList` 以取得要備份的檔案清單，然後呼叫 `E2_CopyFileToBlob` 來備份每個檔案。
+* `E2_GetFileList`：傳回目錄中檔案清單的[活動](durable-functions-bindings.md#activity-trigger)函式。
+* `E2_CopyFileToBlob`：將單一檔案備份至 Azure Blob 儲存體的活動函數。
 
-下列各節說明用於C#撰寫腳本的設定和程式碼。 Visual Studio 開發適用的程式碼會顯示在文章結尾。
-
-## <a name="the-cloud-backup-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>雲端備份協調流程 (Visual Studio Code 和 Azure 入口網站範例程式碼)
-
-`E2_BackupSiteContent` 函式使用協調器函式的標準  *function.json*。
-
-[!code-json[Main](~/samples-durable-functions/samples/csx/E2_BackupSiteContent/function.json)]
-
-以下是實作協調器函式的程式碼：
-
-### <a name="c"></a>C#
-
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_BackupSiteContent/run.csx)]
-
-### <a name="javascript-functions-20-only"></a>JavaScript (僅限 Functions 2.0)
-
-[!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_BackupSiteContent/index.js)]
+### <a name="e2_backupsitecontent-orchestrator-function"></a>E2_BackupSiteContent 協調器函式
 
 此協調器函式基本上會執行下列動作：
 
@@ -63,54 +45,89 @@ Durable Functions 方法提供上述所有優點，而且額外負荷極低。
 4. 等候所有上傳完成。
 5. 傳回已上傳到 Azure Blob 儲存體的位元組總數。
 
-請注意 `await Task.WhenAll(tasks);` (C#) 和 `yield context.df.Task.all(tasks);` (JavaScript) 等程式碼行。 *未*等候 `E2_CopyFileToBlob` 函式的所有個別呼叫，這可讓它們以平行方式執行。 將這個工作陣列傳遞給 `Task.WhenAll` (C#) 或 `context.df.Task.all` (JavaScript) 時，即會傳回一個「直到所有複製作業都完成」才會完成的工作。 如果您熟悉 .NET 中的工作平行程式庫 (TPL) 或 JavaScript 中的 [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)，則對此不會感到陌生。 差別在於，這些工作可以在多個虛擬機器上同時執行，而 Durable Functions 擴充可確保端對端執行在處理序回收的情況下迅速恢復。
+# <a name="c"></a>[C#](#tab/csharp)
+
+以下是實作協調器函式的程式碼：
+
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/BackupSiteContent.cs?range=16-42)]
+
+請注意 `await Task.WhenAll(tasks);` 這一行。 *未*等候 `E2_CopyFileToBlob` 函式的所有個別呼叫，這可讓它們以平行方式執行。 將這一批工作傳給 `Task.WhenAll` 時，將會傳回一個「直到所有複製作業都完成」才會完成的工作。 如果您熟悉 .NET 中的工作平行程式庫 (TPL)，則對此不會感到陌生。 差別在於，這些工作可以在多個虛擬機器上同時執行，而 Durable Functions 擴充功能可確保端對端執行在進程回收方面具有彈性。
+
+結束等候 `Task.WhenAll` 之後，就可知道所有函式呼叫已完成，而值也已傳回給我們。 每次呼叫 `E2_CopyFileToBlob` 都會傳回已上傳的位元組數，因此，只要合計所有這些傳回值，就能算出位元組總數。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+函式會針對協調器函式使用標準*函數. json* 。
+
+[!code-json[Main](~/samples-durable-functions/samples/javascript/E2_BackupSiteContent/function.json)]
+
+以下是實作協調器函式的程式碼：
+
+[!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_BackupSiteContent/index.js)]
+
+請注意 `yield context.df.Task.all(tasks);` 這一行。 *不會*產生 `E2_CopyFileToBlob` 函式的所有個別呼叫，這可讓它們以平行方式執行。 將這一批工作傳給 `context.df.Task.all` 時，將會傳回一個「直到所有複製作業都完成」才會完成的工作。 如果您熟悉 JavaScript 中的[`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) ，這不是您的新功能。 差別在於，這些工作可以在多個虛擬機器上同時執行，而 Durable Functions 擴充功能可確保端對端執行在進程回收方面具有彈性。
 
 > [!NOTE]
 > 儘管工作在概念上類似於 JavaScript Promise，協調器函式還是應該使用 `context.df.Task.all` 和 `context.df.Task.any`，而不是使用 `Promise.all` 和 `Promise.race` 來管理工作平行處理。
 
-結束等候 `Task.WhenAll` (或暫止 `context.df.Task.all`) 之後，就可知道所有函式呼叫已完成，而值也已傳回給我們。 每次呼叫 `E2_CopyFileToBlob` 都會傳回已上傳的位元組數，因此，只要合計所有這些傳回值，就能算出位元組總數。
+從 `context.df.Task.all`開始之後，我們知道所有函式呼叫已完成，並將值傳回給我們。 每次呼叫 `E2_CopyFileToBlob` 都會傳回已上傳的位元組數，因此，只要合計所有這些傳回值，就能算出位元組總數。
 
-## <a name="helper-activity-functions"></a>協助程式活動函式
+---
 
-如同其他範例一樣，協助程式活動函式只不過是使用 `activityTrigger` 觸發程序繫結的一般函式。 例如， *的 function.json*`E2_GetFileList` 檔案看起來像下面這樣：
+### <a name="helper-activity-functions"></a>協助程式活動函式
 
-[!code-json[Main](~/samples-durable-functions/samples/csx/E2_GetFileList/function.json)]
+如同其他範例一樣，協助程式活動函式只不過是使用 `activityTrigger` 觸發程序繫結的一般函式。
+
+#### <a name="e2_getfilelist-activity-function"></a>E2_GetFileList 活動函數
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/BackupSiteContent.cs?range=44-54)]
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+`E2_GetFileList` 的*函數. json*檔案看起來如下：
+
+[!code-json[Main](~/samples-durable-functions/samples/javascript/E2_GetFileList/function.json)]
 
 實作如下：
 
-### <a name="c"></a>C#
-
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_GetFileList/run.csx)]
-
-### <a name="javascript-functions-20-only"></a>JavaScript (僅限 Functions 2.0)
-
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_GetFileList/index.js)]
 
-`E2_GetFileList` 的 JavaScript 實作會使用 `readdirp` 模組以遞迴方式讀取目錄結構。
+函式會使用 `readdirp` 模組（2.x 版），以遞迴方式讀取目錄結構。
+
+---
 
 > [!NOTE]
-> 您可能覺得奇怪，為何不能直接將此程式碼放入協調器函式中。 您可以這樣做，但這會違反協調器函式的基本規則之一，也就是永遠都不該執行 I/O，包括本機檔案系統存取。
+> 您可能覺得奇怪，為何不能直接將此程式碼放入協調器函式中。 您可以這樣做，但這會違反協調器函式的基本規則之一，也就是永遠都不該執行 I/O，包括本機檔案系統存取。 如需詳細資訊，請參閱協調器函式程式[代碼條件約束](durable-functions-code-constraints.md)。
+
+#### <a name="e2_copyfiletoblob-activity-function"></a>E2_CopyFileToBlob 活動函數
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/BackupSiteContent.cs?range=56-81)]
+
+> [!NOTE]
+> 您將需要安裝 `Microsoft.Azure.WebJobs.Extensions.Storage` NuGet 套件，才能執行範例程式碼。
+
+此函式會使用 Azure Functions 系結的一些先進功能（也就是使用[`Binder` 參數](../functions-dotnet-class-library.md#binding-at-runtime)），但是您不需要擔心此逐步解說的細節。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 *的* function.json`E2_CopyFileToBlob` 檔案也一樣簡單：
 
-[!code-json[Main](~/samples-durable-functions/samples/csx/E2_CopyFileToBlob/function.json)]
+[!code-json[Main](~/samples-durable-functions/samples/javascript/E2_CopyFileToBlob/function.json)]
 
-C#其實作也很簡單。 碰巧用到 Azure Functions 繫結的一些進階功能 (也就是使用 `Binder` 參數)，但基於本逐步解說的目的，您不必擔心這些細節。
-
-### <a name="c"></a>C#
-
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_CopyFileToBlob/run.csx)]
-
-### <a name="javascript-functions-20-only"></a>JavaScript (僅限 Functions 2.0)
-
-JavaScript 實作無法存取 Azure Functions 的 `Binder` 功能，所以 [Azure Storage SDK for Node](https://github.com/Azure/azure-storage-node) 取代之。
+JavaScript 執行會使用[適用于節點的 AZURE 儲存體 SDK](https://github.com/Azure/azure-storage-node) ，將檔案上傳至 Azure Blob 儲存體。
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_CopyFileToBlob/index.js)]
+
+---
 
 實作會從磁碟載入檔案，並以非同步方式將內容串流至 "backups" 容器中相同名稱的 blob。 傳回值是複製到儲存體的位元組數，協調器函式接著會利用此值來計算的總數。
 
 > [!NOTE]
-> 這是將 I/O 作業移入 `activityTrigger` 函式中的最佳範例。 不僅可將工作分散至許多不同的虛擬機器，還可讓您享受到檢查點檢查進度的好處。 如果主機處理序由於任何原因而終止，您會知道哪些上傳已完成。
+> 這是將 I/O 作業移入 `activityTrigger` 函式中的最佳範例。 工作不僅可以分散到多部不同的電腦，還能獲得檢查點進度的優點。 如果主機處理序由於任何原因而終止，您會知道哪些上傳已完成。
 
 ## <a name="run-the-sample"></a>執行範例
 
@@ -164,15 +181,6 @@ Content-Type: application/json; charset=utf-8
 ```
 
 現在，您可以看到協調流程已完成，以及大約耗費多少時間完成。 您還會看到 `output` 欄位的值，這指出大約已上傳 450 KB 的記錄。
-
-## <a name="visual-studio-sample-code"></a>Visual Studio 範例程式碼
-
-以下是 Visual Studio 專案中單一 C# 檔案的協調流程：
-
-> [!NOTE]
-> 您將需要安裝 `Microsoft.Azure.WebJobs.Extensions.Storage` NuGet 套件，才能執行下列範例程式碼。
-
-[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/BackupSiteContent.cs)]
 
 ## <a name="next-steps"></a>後續步驟
 

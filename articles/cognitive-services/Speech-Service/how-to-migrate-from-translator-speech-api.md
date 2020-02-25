@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/15/2019
+ms.date: 01/21/2020
 ms.author: aahi
-ms.openlocfilehash: ba9484bd5b04e5a79da53a0bb78877153be42a43
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 75a456c4a297b0465c34b8e0af2e87056ad565b3
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805904"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560893"
 ---
 # <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>從翻譯工具語音 API 遷移至語音服務
 
-使用本文，將您的應用程式從 Microsoft 翻譯工具語音 API 遷移至[語音服務](index.md)。 本指南概述翻譯工具語音 API 和語音服務之間的差異，並提供遷移應用程式的建議策略。
+使用本文，將您的應用程式從 Microsoft 翻譯工具語音 API 遷移至[語音服務](index.yml)。 本指南概述翻譯工具語音 API 和語音服務之間的差異，並提供遷移應用程式的建議策略。
 
 > [!NOTE]
 > 語音服務不會接受您的翻譯工具語音 API 訂用帳戶金鑰。 您必須建立新的語音服務訂用帳戶。
@@ -35,7 +35,7 @@ ms.locfileid: "74805904"
 | 連線時間限制                             | 90 分鐘                                               | 搭配 SDK 時沒有限制。 搭配 WebSocket 連線時為 10 分鐘。                                                                                                                                                                                                                                                                                   |
 | 標頭中的驗證金鑰                                | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | 在單一要求中翻譯多個語言 | :heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
-| 可用的 SDK                                    | :heavy_minus_sign:                                              | :heavy_check_mark:                 | 請參閱[語音服務檔](index.md)以取得可用的 sdk。                                                                                                                                                    |
+| 可用的 SDK                                    | :heavy_minus_sign:                                              | :heavy_check_mark:                 | 請參閱[語音服務檔](index.yml)以取得可用的 sdk。                                                                                                                                                    |
 | WebSocket 連線                            | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | 語言 API                                     | :heavy_check_mark:                                              | :heavy_minus_sign:                 | 語音服務支援[翻譯 API 語言參考](../translator-speech/languages-reference.md)文章中所述的相同語言範圍。 |
 | 粗話篩選和標記                       | :heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
@@ -49,7 +49,7 @@ ms.locfileid: "74805904"
 
 ## <a name="migration-strategies"></a>移轉策略
 
-如果您或您的組織在使用翻譯工具語音 API 的開發或生產環境中有應用程式，您應該更新它們以使用語音服務。 請參閱[語音服務](index.md)檔以取得可用的 sdk、程式碼範例和教學課程。 移轉時，請考慮下列事項：
+如果您或您的組織在使用翻譯工具語音 API 的開發或生產環境中有應用程式，您應該更新它們以使用語音服務。 請參閱[語音服務](index.yml)檔以取得可用的 sdk、程式碼範例和教學課程。 移轉時，請考慮下列事項：
 
 * 語音服務不提供全域端點。 請判斷自己的應用程式是否能在針對所有流量使用單一區域端點的情況下有效運作。 如果不行，請使用地理位置來判斷最有效的端點。
 
@@ -64,7 +64,7 @@ ms.locfileid: "74805904"
 * [免費試用語音服務](get-started.md)
 * [快速入門：使用語音 SDK 在 UWP 應用程式中辨識語音](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp)
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [什麼是語音服務](overview.md)
 * [語音服務和語音 SDK 檔](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-qsg)

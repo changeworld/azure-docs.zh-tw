@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 02/13/2020
+ms.date: 02/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 9858f7ac25f2063e62dce0322f1859a0a7fcf83b
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 63b1adc7b25b732cda147c5c1d11cc37e7b39248
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198661"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562015"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>適用於 Azure 資源的內建角色
 
@@ -115,6 +115,7 @@ ms.locfileid: "77198661"
 > | [Log Analytics 讀者](#log-analytics-reader) | 「Log Analytics 讀者」可以檢視和搜尋所有監視資料，以及檢視監視設定，包括檢視所有 Azure 資源上的 Azure 診斷設定。 | 73c42c96-874c-492b-b04d-ab87d138a893 |
 > | [邏輯應用程式參與者](#logic-app-contributor) | 可讓您管理邏輯應用程式，但不能變更其存取。 | 87a39d53-fc1b-424a-814c-f7e04687dc9e |
 > | [邏輯應用程式運算子](#logic-app-operator) | 可讓您讀取、啟用及停用邏輯應用程式，但無法編輯或更新它們。 | 515c2055-d9d4-4321-b1b9-bd0c9a0f79fe |
+> | [受控應用程式參與者角色](#managed-application-contributor-role) | 允許建立受控應用程式資源。 | 641177b8-a67a-45b9-a033-47bc880bb21e |
 > | [受控應用程式操作員角色](#managed-application-operator-role) | 可讓您讀取受控應用程式資源及對其執行動作 | c7393b34-138c-406f-901b-d8cf2b17e6ae |
 > | [受控應用程式讀者](#managed-applications-reader) | 可讓您讀取受控應用程式中的資源及要求 JIT 存取權。 | b9331d33-8a36-4f8c-b097-4f54124fdb44 |
 > | [受控身分識別參與者](#managed-identity-contributor) | 建立、讀取、更新及刪除使用者指派的身分識別 | e40ec5ca-96e0-45a2-b4ff-59039f2c2b59 |
@@ -133,9 +134,10 @@ ms.locfileid: "77198661"
 > | [資源原則參與者](#resource-policy-contributor) | 具有許可權可建立/修改資源原則、建立支援票證及讀取資源/階層的使用者。 | 36243c78-bf99-498c-9df9-86d9f8d28608 |
 > | [排程器工作集合參與者](#scheduler-job-collections-contributor) | 可讓您管理「排程器」工作集合，但無法存取它們。 | 188a0f2f-5c9e-469b-ae67-2aa5ce574b94 |
 > | [搜尋服務參與者](#search-service-contributor) | 可讓您管理「搜尋」服務，但無法存取它們。 | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
-> | [安全性系統管理員](#security-admin) | 僅限資訊安全中心：可檢視安全性原則、檢視安全性狀態、編輯安全性原則、檢視警示和建議、關閉警示和建議 | fb1c8493-542b-48eb-b624-b4c8fea62acd |
-> | [安全性管理員 (舊版)](#security-manager-legacy) | 此為舊版角色。 請改用安全性系統管理員 | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
-> | [安全性讀取者](#security-reader) | 僅限資訊安全中心：可檢視建議和警示、檢視安全性原則、檢視安全性狀態，但無法進行變更 | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
+> | [安全性系統管理員](#security-admin) | 可檢視安全性原則、檢視安全性狀態、編輯安全性原則、檢視警示和建議、關閉警示和建議。 | fb1c8493-542b-48eb-b624-b4c8fea62acd |
+> | [安全性評定參與者](#security-assessment-contributor) | 可讓您將評量推送至資訊安全中心 | 612c2aa1-cb24-443b-ac28-3ab7272de6f5 |
+> | [安全性管理員 (舊版)](#security-manager-legacy) | 此為舊版角色。 請改用安全性系統管理員。 | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
+> | [安全性讀取者](#security-reader) | 可以查看建議和警示、查看安全性原則、查看安全性狀態，但無法進行變更。 | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
 > | [Site Recovery 參與者](#site-recovery-contributor) | 可讓您管理 Site Recovery 服務，但無法建立保存庫和指派角色 | 6670b86e-a3f7-4917-ac9b-5d6ab1be4567 |
 > | [Site Recovery 操作員](#site-recovery-operator) | 可讓您容錯移轉及容錯回復，但無法執行其他 Site Recovery 管理作業 | 494ae006-db33-4328-bf46-533a6560a3ca |
 > | [Site Recovery 讀取者](#site-recovery-reader) | 可讓您檢視 Site Recovery 狀態，但無法執行其他管理作業 | dbaa88c4-0c30-4179-9fb3-46319faa6149 |
@@ -167,6 +169,8 @@ ms.locfileid: "77198661"
 > | [虛擬機器使用者登入](#virtual-machine-user-login) | 在入口網站中檢視虛擬機器並以一般使用者身分登入。 | fb879df8-f326-4884-b1cf-06f3ad86be52 |
 > | [Web 方案參與者](#web-plan-contributor) | 可讓您管理網站的 Web 方案，但無法存取它們。 | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
 > | [網站參與者](#website-contributor) | 可讓您管理網站 (非 Web 方案)，但無法存取它們。 | de139f84-1756-47ae-9be6-808fbbe84772 |
+> | [活頁簿參與者](#workbook-contributor) | 可以儲存共用的活頁簿。 | e8ddcd69-c73f-4f9f-9844-4100522f16ad |
+> | [活頁簿讀者](#workbook-reader) | 可以讀取活頁簿。 | b279062a-9be3-42a0-92ae-8b3cf002ec4d |
 
 
 ## <a name="owner"></a>擁有者
@@ -184,7 +188,7 @@ ms.locfileid: "77198661"
 > | **NotDataActions** |  |
 > | 無 |  |
 
-## <a name="contributor"></a>Contributor
+## <a name="contributor"></a>參與者
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -346,7 +350,7 @@ ms.locfileid: "77198661"
 > | Microsoft.ApiManagement/service/restore/action | 從使用者所提供之儲存體帳戶中的指定容器來還原 API 管理服務 |
 > | Microsoft.ApiManagement/service/updatecertificate/action | 上傳 API 管理服務的 SSL 憑證 |
 > | Microsoft.ApiManagement/service/updatehostname/action | 設定、更新或移除 API 管理服務的自訂網域名稱 |
-> | Microsoft.ApiManagement/service/write | 建立 API 管理服務的新執行個體 |
+> | Microsoft.ApiManagement/service/write | 建立或更新 API 管理服務實例 |
 > | Microsoft.Authorization/*/read | 讀取授權 |
 > | Microsoft.Insights/alertRules/* | 建立及管理警示規則 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
@@ -609,7 +613,7 @@ ms.locfileid: "77198661"
 > | **Id** | b64e21ea-ac4e-4cdf-9dc9-5b892992bee7 |
 > | **動作** |  |
 > | HybridCompute/機器/讀取 | 讀取任何 Azure Arc 機器 |
-> | HybridCompute/機器/寫入 | 撰寫 Azure Arc 機器 |
+> | HybridCompute/機器/寫入 | 寫入 Azure Arc 機器 |
 > | Microsoft.GuestConfiguration/guestConfigurationAssignments/read | 取得來賓組態指派。 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -626,7 +630,7 @@ ms.locfileid: "77198661"
 > | **Id** | cd570a14-e51a-42ad-bac8-bafd67325302 |
 > | **動作** |  |
 > | HybridCompute/機器/讀取 | 讀取任何 Azure Arc 機器 |
-> | HybridCompute/機器/寫入 | 撰寫 Azure Arc 機器 |
+> | HybridCompute/機器/寫入 | 寫入 Azure Arc 機器 |
 > | HybridCompute/機器/刪除 | 刪除 Azure Arc 機器 |
 > | HybridCompute/電腦/重新連接/動作 | 重新連接 Azure Arc 機器 |
 > | HybridCompute/*/read |  |
@@ -690,6 +694,7 @@ ms.locfileid: "77198661"
 > | **Id** | 0ab0b1a8-8aac-4efd-b8c2-3ee1fb270be8 |
 > | **動作** |  |
 > | Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action | 列出受控叢集的 clusterAdmin 認證 |
+> | Microsoft.ContainerService/managedClusters/accessProfiles/listCredential/action | 使用清單認證依角色名稱取得受控叢集存取設定檔 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -1540,6 +1545,8 @@ ms.locfileid: "77198661"
 > | Microsoft.Databox/jobs/listsecrets/action |  |
 > | Microsoft.Databox/jobs/listcredentials/action | 列出與訂單相關的未加密認證。 |
 > | Microsoft.Databox/locations/availableSkus/action | 此方法會傳回可用的 SKU 清單。 |
+> | Databox/位置/validateInputs/動作 | 這個方法會執行所有類型的驗證。 |
+> | Databox/位置/regionConfiguration/動作 | 這個方法會傳回區域的設定。 |
 > | Databox/位置/validateAddress/動作 | 驗證出貨地址，並提供備用的地址 (若有的話)。 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
 > | Microsoft.Support/* | 建立和管理支援票證 |
@@ -1565,6 +1572,7 @@ ms.locfileid: "77198661"
 > | Microsoft.Resources/deployments/* | 建立和管理資源群組部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | Microsoft.Support/* | 建立和管理支援票證 |
+> | Microsoft.EventGrid/eventSubscriptions/write | 建立或更新 eventSubscription |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -1851,6 +1859,8 @@ ms.locfileid: "77198661"
 > | Microsoft.LabServices/labAccounts/createLab/action | 在實驗室帳戶中建立實驗室。 |
 > | Microsoft.LabServices/labAccounts/sizes/getRegionalAvailability/action |  |
 > | Microsoft.LabServices/labAccounts/getRegionalAvailability/action | 取得在實驗室帳戶下設定的每個大小類別的區域可用性資訊 |
+> | LabServices/labAccounts/getPricingAndAvailability/action | 取得實驗室帳戶的大小、地理位置和作業系統組合的價格和可用性。 |
+> | LabServices/labAccounts/getRestrictionsAndUsage/action | 取得此訂用帳戶的核心限制和使用方式 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | Microsoft.Support/* | 建立和管理支援票證 |
 > | **NotActions** |  |
@@ -1964,6 +1974,25 @@ ms.locfileid: "77198661"
 > | Microsoft.Web/connections/*/read | 讀取「連線」。 |
 > | Microsoft.Web/customApis/*/read | 讀取「自訂 API」。 |
 > | Microsoft.Web/serverFarms/read | 取得 App Service 方案的屬性 |
+> | **NotActions** |  |
+> | 無 |  |
+> | **DataActions** |  |
+> | 無 |  |
+> | **NotDataActions** |  |
+> | 無 |  |
+
+## <a name="managed-application-contributor-role"></a>受控應用程式參與者角色
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **說明** | 允許建立受控應用程式資源。 |
+> | **Id** | 641177b8-a67a-45b9-a033-47bc880bb21e |
+> | **動作** |  |
+> | */read | 讀取密碼以外的所有類型的資源。 |
+> | Microsoft. 解決方案/應用程式/* |  |
+> | Microsoft.Solutions/register/action | 向 Solutions 註冊。 |
+> | Microsoft .Resources/訂用帳戶/resourceGroups/* |  |
+> | Microsoft.Resources/deployments/* | 建立和管理資源群組部署 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -2337,7 +2366,7 @@ ms.locfileid: "77198661"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **說明** | 僅限資訊安全中心：可檢視安全性原則、檢視安全性狀態、編輯安全性原則、檢視警示和建議、關閉警示和建議 |
+> | **說明** | 可檢視安全性原則、檢視安全性狀態、編輯安全性原則、檢視警示和建議、關閉警示和建議。 |
 > | **Id** | fb1c8493-542b-48eb-b624-b4c8fea62acd |
 > | **動作** |  |
 > | Microsoft.Authorization/*/read | 讀取角色和角色指派 |
@@ -2358,11 +2387,26 @@ ms.locfileid: "77198661"
 > | **NotDataActions** |  |
 > | 無 |  |
 
+## <a name="security-assessment-contributor"></a>安全性評定參與者
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **說明** | 可讓您將評量推送至資訊安全中心 |
+> | **Id** | 612c2aa1-cb24-443b-ac28-3ab7272de6f5 |
+> | **動作** |  |
+> | Microsoft. 安全性/評量/寫入 | 在您的訂用帳戶上建立或更新安全性評量 |
+> | **NotActions** |  |
+> | 無 |  |
+> | **DataActions** |  |
+> | 無 |  |
+> | **NotDataActions** |  |
+> | 無 |  |
+
 ## <a name="security-manager-legacy"></a>安全性管理員 (舊版)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **說明** | 此為舊版角色。 請改用安全性系統管理員 |
+> | **說明** | 此為舊版角色。 請改用安全性系統管理員。 |
 > | **Id** | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
 > | **動作** |  |
 > | Microsoft.Authorization/*/read | 讀取角色和角色指派 |
@@ -2386,7 +2430,7 @@ ms.locfileid: "77198661"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **說明** | 僅限資訊安全中心：可檢視建議和警示、檢視安全性原則、檢視安全性狀態，但無法進行變更 |
+> | **說明** | 可以查看建議和警示、查看安全性原則、查看安全性狀態，但無法進行變更。 |
 > | **Id** | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
 > | **動作** |  |
 > | Microsoft.Authorization/*/read | 讀取角色和角色指派 |
@@ -3114,6 +3158,9 @@ ms.locfileid: "77198661"
 > | Microsoft.Compute/locations/* | 建立和管理運算位置 |
 > | Microsoft.Compute/virtualMachines/* | 建立和管理虛擬機器 |
 > | Microsoft.Compute/virtualMachineScaleSets/* | 建立和管理虛擬機器擴展集 |
+> | Microsoft.Compute/disks/write | 建立新的磁碟，或更新現有磁碟 |
+> | Microsoft.Compute/disks/read | 取得磁碟的屬性 |
+> | Microsoft.Compute/disks/delete | 刪除磁碟 |
 > | Microsoft.DevTestLab/schedules/* |  |
 > | Microsoft.Insights/alertRules/* | 建立和管理 Insights 警示規則 |
 > | Microsoft.Network/applicationGateways/backendAddressPools/join/action | 加入應用程式閘道後端位址集區。 未打斷。 |
@@ -3214,6 +3261,38 @@ ms.locfileid: "77198661"
 > | Microsoft.Web/serverFarms/join/action |  |
 > | Microsoft.Web/serverFarms/read | 取得 App Service 方案的屬性 |
 > | Microsoft.Web/sites/* | 建立和管理網站 (建立網站也需要相關聯應用程式服務方案的寫入權限) |
+> | **NotActions** |  |
+> | 無 |  |
+> | **DataActions** |  |
+> | 無 |  |
+> | **NotDataActions** |  |
+> | 無 |  |
+
+## <a name="workbook-contributor"></a>活頁簿參與者
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **說明** | 可以儲存共用的活頁簿。 |
+> | **Id** | e8ddcd69-c73f-4f9f-9844-4100522f16ad |
+> | **動作** |  |
+> | Microsoft Insights/活頁簿/寫入 | 建立或更新活頁簿 |
+> | Microsoft Insights/活頁簿/刪除 | 刪除活頁簿 |
+> | Microsoft Insights/活頁簿/讀取 | 讀取活頁簿 |
+> | **NotActions** |  |
+> | 無 |  |
+> | **DataActions** |  |
+> | 無 |  |
+> | **NotDataActions** |  |
+> | 無 |  |
+
+## <a name="workbook-reader"></a>活頁簿讀者
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **說明** | 可以讀取活頁簿。 |
+> | **Id** | b279062a-9be3-42a0-92ae-8b3cf002ec4d |
+> | **動作** |  |
+> | microsoft insights/活頁簿/讀取 | 讀取活頁簿 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |

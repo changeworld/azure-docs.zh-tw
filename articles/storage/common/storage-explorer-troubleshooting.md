@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 3d5b1ab4e72ec759098e9c71515200f89a8dfe82
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: aec8048c7ef2eb0d944cdd2a863e23578f4f87e5
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931200"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561675"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure 儲存體總管疑難排解指南
 
@@ -59,6 +59,17 @@ RBAC 角色可以包含管理或資料層存取的許可權。 例如，「讀�
 ### <a name="what-if-i-cant-get-the-management-layer-permissions-i-need-from-my-administrator"></a>如果我無法取得系統管理員所需的管理層許可權，該怎麼辦？
 
 我們目前沒有適用于此問題的 RBAC 相關解決方案。 因應措施是，您可以要求 SAS URI 以[附加至您的資源](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri)。
+
+### <a name="recommended-built-in-rbac-roles"></a>建議的內建 RBAC 角色
+
+有數個內建的 RBAC 角色可提供使用儲存體總管所需的許可權。 其中一些角色如下：
+- [擁有](/azure/role-based-access-control/built-in-roles#owner)者：管理所有專案，包括資源的存取權。 **注意**：此角色將提供您金鑰存取權。
+- [參與者](/azure/role-based-access-control/built-in-roles#contributor)：管理所有專案，但不包括對資源的存取。 **注意**：此角色將提供您金鑰存取權。
+- [讀取器](/azure/role-based-access-control/built-in-roles#reader)：讀取和列出資源。
+- [儲存體帳戶參與者](/azure/role-based-access-control/built-in-roles#storage-account-contributor)：儲存體帳戶的完整管理。 **注意**：此角色將提供您金鑰存取權。
+- [儲存體 Blob 資料擁有](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)者： Azure 儲存體 Blob 容器和資料的完整存取權。
+- [儲存體 Blob 資料參與者](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)： [讀取]、[寫入] 和 [刪除] Azure 儲存體容器和 blob。
+- [儲存體 Blob 資料讀取器](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)：讀取和列出 Azure 儲存體的容器和 blob。
 
 ## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>錯誤：憑證鏈中的自我簽署憑證（和類似的錯誤）
 
@@ -244,20 +255,20 @@ MacOS Keychain 有時可能會進入導致儲存體總管 authentication 程式�
 
 完成所有連線之後，針對所有未新增的連接名稱，您必須清除其損毀的資料（如果有的話），然後使用儲存體總管中的標準步驟將其重新加入：
 
-# <a name="windowstabwindows"></a>[Windows](#tab/Windows)
+# <a name="windows"></a>[Windows](#tab/Windows)
 
 1. 在 [**開始**] 功能表上，搜尋 [**認證管理員**] 並開啟它。
 2. 移至 [ **Windows 認證**]。
 3. 在 [**一般認證**] 下，尋找具有 `<connection_type_key>/<corrupted_connection_name>` 索引鍵的專案（例如，`StorageExplorer_CustomConnections_Accounts_v1/account1`）。
 4. 刪除這些專案，然後重新加入連接。
 
-# <a name="macostabmacos"></a>[macOS](#tab/macOS)
+# <a name="macos"></a>[macOS](#tab/macOS)
 
 1. 開啟 [焦點] （命令 + 空格鍵），並搜尋 [ **Keychain 存取**]。
 2. 尋找具有 `<connection_type_key>/<corrupted_connection_name>` 索引鍵的專案（例如，`StorageExplorer_CustomConnections_Accounts_v1/account1`）。
 3. 刪除這些專案，然後重新加入連接。
 
-# <a name="linuxtablinux"></a>[Linux](#tab/Linux)
+# <a name="linux"></a>[Linux](#tab/Linux)
 
 本機認證管理會依據 Linux 散發套件而有所不同。 如果您的 Linux 散發套件未提供內建的 GUI 工具來管理本機認證，您可以安裝協力廠商工具來管理本機認證。 例如，您可以使用[Seahorse](https://wiki.gnome.org/Apps/Seahorse/)，這是用來管理 Linux 本機認證的開放原始碼 GUI 工具。
 
@@ -309,7 +320,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 > [!NOTE]
 > 儲存體總管版本1.7.0 和舊版需要 .NET Core 2.0。 如果您已安裝較新版本的 .NET Core，則必須[修補儲存體總管](#patching-storage-explorer-for-newer-versions-of-net-core)。 如果您正在執行儲存體總管1.8.0 或更新版本，您應該能夠使用最多 .NET Core 2.2。 2\.2 以外的版本尚未經過驗證，無法在此時間使用。
 
-# <a name="ubuntu-1904tab1904"></a>[Ubuntu 19.04](#tab/1904)
+# <a name="ubuntu-1904"></a>[Ubuntu 19.04](#tab/1904)
 
 1. 下載儲存體總管。
 2. 安裝[.Net Core 運行](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu19-04/runtime-current)時間。
@@ -318,7 +329,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
    sudo apt-get install libgconf-2-4 libgnome-keyring0
    ```
 
-# <a name="ubuntu-1804tab1804"></a>[Ubuntu 18.04](#tab/1804)
+# <a name="ubuntu-1804"></a>[Ubuntu 18.04](#tab/1804)
 
 1. 下載儲存體總管。
 2. 安裝[.Net Core 運行](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu18-04/runtime-current)時間。
@@ -327,7 +338,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
    sudo apt-get install libgconf-2-4 libgnome-keyring-common libgnome-keyring0
    ```
 
-# <a name="ubuntu-1604tab1604"></a>[Ubuntu 16.04](#tab/1604)
+# <a name="ubuntu-1604"></a>[Ubuntu 16.04](#tab/1604)
 
 1. 下載儲存體總管。
 2. 安裝[.Net Core 運行](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/runtime-current)時間。
@@ -336,7 +347,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
    sudo apt install libgnome-keyring-dev
    ```
 
-# <a name="ubuntu-1404tab1404"></a>[Ubuntu 14.04](#tab/1404)
+# <a name="ubuntu-1404"></a>[Ubuntu 14.04](#tab/1404)
 
 1. 下載儲存體總管。
 2. 安裝[.Net Core 運行](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu14-04/runtime-current)時間。

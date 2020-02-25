@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/28/2020
-ms.openlocfilehash: d39ffa05448600fe3bd09baf6080aa1565ae19ba
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c7e98c31c0db1db3051ad66df6526dcbddb265c5
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843564"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560417"
 ---
 # <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>使用 Azure 資料總管查詢 Azure 監視器中的資料（預覽）
 
@@ -23,7 +23,7 @@ Azure 資料總管 proxy 流程：
 
 ![ADX proxy 流程](media/adx-proxy/adx-proxy-flow.png)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 > [!NOTE]
 > ADX Proxy 處於預覽模式。 連線[到 proxy](#connect-to-the-proxy) ，為您的叢集啟用 ADX proxy 功能。 請洽詢[ADXProxy](mailto:adxproxy@microsoft.com)小組，並提供任何問題。
@@ -34,7 +34,7 @@ Azure 資料總管 proxy 流程：
 
     ![ADX 原生叢集](media/adx-proxy/web-ui-help-cluster.png)
 
-1. 在 Azure 資料總管 UI （ https://dataexplorer.azure.com/clusters) 中，選取 [**新增**叢集]。
+1. 在 Azure 資料總管 UI （ https://dataexplorer.azure.com/clusters)中，選取 [**新增**叢集]。
 
 1. 在 [**新增**叢集] 視窗中，將 URL 新增至 LA 或 AI 叢集。 
     

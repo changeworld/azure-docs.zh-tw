@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: dapine
-ms.openlocfilehash: ac891e96e350f73b7728ee4b572d9e16a8794ff7
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: c4a27db8bec6dbbd2f1b2be8acfdd034d45d37d5
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77460989"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561915"
 ---
-# <a name="speech-synthesis-markup-language-ssml"></a>語音合成標記語言 (SSML)
+# <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>使用語音合成標記語言（SSML）改善合成
 
 語音合成標記語言（SSML）是以 XML 為基礎的標記語言，可讓開發人員指定如何使用文字轉換語音服務，將輸入文字轉換成合成語音。 相較于純文字，SSML 讓開發人員能夠微調文字到語音轉換輸出的音調、發音、說話速度、音量和更多。 一般標點符號（例如在句號之後暫停），或使用正確的聲調（當句子以問號結尾時）會自動處理。
 

@@ -1,5 +1,5 @@
 ---
-title: 使用計量監視 Azure 資料總管效能、健康情況和使用量
+title: 使用計量監視 Azure 資料總管效能、健康情況 & 使用量
 description: 瞭解如何使用 Azure 資料總管計量來監視叢集的效能、健康情況和使用量。
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/19/2020
-ms.openlocfilehash: f8078d8bae00ac4789a679be4d7a1944c749cce6
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 1319b8cd6ac8a0eb83381c24bcde9996458e47a7
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77423839"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560299"
 ---
 # <a name="monitor-azure-data-explorer-performance-health-and-usage-with-metrics"></a>使用計量監視 Azure 資料總管效能、健康情況和使用量
 

@@ -4,18 +4,16 @@ description: 了解如何使用 Azure Functions 的 Durable Functions 擴充功�
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: f8a589bd4ab4de396c0688f8022515d6fbec96a2
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: ed92156df9d8e1e07b56cea4b1e64edee11d68d9
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769586"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562117"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Durable Functions 中的監視器案例 - 天氣監看員範例
 
 監視模式是指工作流程中的彈性「週期性」程序，例如，輪詢直到符合特定條件。 本文會說明使用 [Durable Functions](durable-functions-overview.md) 來實作監視的範例。
-
-[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -30,11 +28,13 @@ ms.locfileid: "75769586"
 * 監視器具有擴充性。 由於每個監視器都是協調流程執行個體，您可以建立多個監視器，而不必建立新函式或定義多個程式碼。
 * 監視器可輕鬆整合至大型工作流程。 監視器可以是更複雜之協調流程函式的一個區段，也可以是[子協調流程](durable-functions-sub-orchestrations.md)。
 
-## <a name="configuring-twilio-integration"></a>設定 Twilio 整合
+## <a name="configuration"></a>組態
+
+### <a name="configuring-twilio-integration"></a>設定 Twilio 整合
 
 [!INCLUDE [functions-twilio-integration](../../../includes/functions-twilio-integration.md)]
 
-## <a name="configuring-weather-underground-integration"></a>設定 Weather Underground 整合
+### <a name="configuring-weather-underground-integration"></a>設定 Weather Underground 整合
 
 這個範例涉及使用 Weather Underground API 來檢查某地點的目前天氣狀況。
 
@@ -50,27 +50,29 @@ ms.locfileid: "75769586"
 
 本文說明範例應用程式中的函式如下：
 
-* `E3_Monitor`：定期呼叫 `E3_GetIsClear` 的協調器函式。 如果 `E3_GetIsClear` 傳回 true，此函式會呼叫 `E3_SendGoodWeatherAlert`。
-* `E3_GetIsClear`：會檢查某地點目前天氣狀況的活動函式。
+* `E3_Monitor`：定期呼叫 `E3_GetIsClear` 的[協調](durable-functions-bindings.md#orchestration-trigger)器函式。 如果 `E3_SendGoodWeatherAlert` 傳回 true，此函式會呼叫 `E3_GetIsClear`。
+* `E3_GetIsClear`：檢查位置目前天氣狀況的[活動](durable-functions-bindings.md#activity-trigger)函式。
 * `E3_SendGoodWeatherAlert`：會透過 Twilio 傳送手機簡訊的活動函式。
 
-下列各節說明用於C#腳本處理和 JavaScript 的設定和程式碼。 適用於 Visual Studio 開發的程式碼顯示在本文結尾。
+### <a name="e3_monitor-orchestrator-function"></a>E3_Monitor 協調器函式
 
-## <a name="the-weather-monitoring-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>天氣監視協調流程 (Visual Studio Code 和 Azure 入口網站程式碼範例)
+# <a name="c"></a>[C#](#tab/csharp)
+
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs?range=41-78,97-115)]
+
+協調器需要有要監視的位置，以及在該位置上是否清楚時，傳送訊息的電話號碼。 此資料會以強型別 `MonitorRequest` 物件的形式傳遞至 orchestrator。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **E3_Monitor** 函式會使用協調器函式的標準 function.json。
 
-[!code-json[Main](~/samples-durable-functions/samples/csx/E3_Monitor/function.json)]
+[!code-json[Main](~/samples-durable-functions/samples/javascript/E3_Monitor/function.json)]
 
 以下是實作函式的程式碼：
 
-### <a name="c-script"></a>C# 指令碼
-
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_Monitor/run.csx)]
-
-### <a name="javascript-functions-20-only"></a>JavaScript (僅限 Functions 2.0)
-
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_Monitor/index.js)]
+
+---
 
 此協調器函式會執行下列動作：
 
@@ -79,48 +81,52 @@ ms.locfileid: "75769586"
 3. 呼叫 **E3_GetIsClear** 來判斷所要求之地點的天空是否晴朗。
 4. 如果天氣晴朗，則呼叫 **E3_SendGoodWeatherAlert** 以將簡訊通知傳送至要求的電話號碼。
 5. 建立長期計時器以在下一個輪詢間隔繼續進行協調流程。 為求簡單明瞭，這個範例會使用硬式編碼值。
-6. 會繼續執行，直到 `CurrentUtcDateTime` （.NET）或 `currentUtcDateTime` （JavaScript）通過監視的到期時間，或傳送 SMS 警示為止。
+6. 會繼續執行，直到目前的 UTC 時間通過監視的到期時間，或傳送了 SMS 警示為止。
 
-您可以藉由傳送多個 **MonitorRequests** 來同時執行多個協調器執行個體。 您可以指定要監視的地點以及要作為簡訊通知傳送目的地的電話號碼。
+多個協調器實例可以多次呼叫協調器函式來執行。 您可以指定要監視的地點以及要作為簡訊通知傳送目的地的電話號碼。
 
-## <a name="strongly-typed-data-transfer-net-only"></a>強型別資料轉送 (僅限 .NET)
+### <a name="e3_getisclear-activity-function"></a>E3_GetIsClear 活動函數
 
-協調器需要多個資料片段，因此會在和C# C#腳本中使用[共用 POCO 物件](../functions-reference-csharp.md#reusing-csx-code)進行強型別資料傳輸：  
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/MonitorRequest.csx)]
+如同其他範例一樣，協助程式活動函式是使用 `activityTrigger` 觸發程序繫結的一般函式。 **E3_GetIsClear** 函式會使用 Weather Underground API 取得目前的天氣狀況，並判斷天空是否晴朗。
 
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/Location.csx)]
+# <a name="c"></a>[C#](#tab/csharp)
 
-JavaScript 範例會使用一般 JSON 物件作為參數。
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs?range=80-85)]
 
-## <a name="helper-activity-functions"></a>協助程式活動函式
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-如同其他範例一樣，協助程式活動函式是使用 `activityTrigger` 觸發程序繫結的一般函式。 **E3_GetIsClear** 函式會使用 Weather Underground API 取得目前的天氣狀況，並判斷天空是否晴朗。 function.json 定義如下：
+function.json 定義如下：
 
-[!code-json[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/function.json)]
+[!code-json[Main](~/samples-durable-functions/samples/javascript/E3_GetIsClear/function.json)]
 
-實作如下。 就像用於資料轉送的 POCO，用來處理 API 呼叫和剖析回應 JSON 的邏輯，在經過抽象化之後會成為 C# 中的共用類別。 您可以在 [Visual Studio 程式碼範例](#run-the-sample)中找到此邏輯。
-
-### <a name="c-script"></a>C# 指令碼
-
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/run.csx)]
-
-### <a name="javascript-functions-20-only"></a>JavaScript (僅限 Functions 2.0)
+實作如下。
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_GetIsClear/index.js)]
 
-**E3_SendGoodWeatherAlert** 函式會使用 Twilio 繫結來傳送手機簡訊，通知使用者這是散步的好時機。 其 function.json 很簡單：
+---
 
-[!code-json[Main](~/samples-durable-functions/samples/csx/E3_SendGoodWeatherAlert/function.json)]
+### <a name="e3_sendgoodweatheralert-activity-function"></a>E3_SendGoodWeatherAlert 活動函數
+
+**E3_SendGoodWeatherAlert** 函式會使用 Twilio 繫結來傳送手機簡訊，通知使用者這是散步的好時機。
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs?range=87-96,140-205)]
+
+> [!NOTE]
+> 您將需要安裝 `Microsoft.Azure.WebJobs.Extensions.Twilio` Nuget 套件，才能執行範例程式碼。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+其 function.json 很簡單：
+
+[!code-json[Main](~/samples-durable-functions/samples/javascript/E3_SendGoodWeatherAlert/function.json)]
 
 以下是傳送手機簡訊的程式碼：
 
-### <a name="c-script"></a>C# 指令碼
-
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_SendGoodWeatherAlert/run.csx)]
-
-### <a name="javascript-functions-20-only"></a>JavaScript (僅限 Functions 2.0)
-
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_SendGoodWeatherAlert/index.js)]
+
+---
 
 ## <a name="run-the-sample"></a>執行範例
 
@@ -168,15 +174,6 @@ RetryAfter: 10
 ```
 POST https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason=Because&taskHub=SampleHubVS&connection=Storage&code={systemKey}
 ```
-
-## <a name="visual-studio-sample-code"></a>Visual Studio 範例程式碼
-
-以下是 Visual Studio 專案中的單一 C# 檔案所示範的協調流程：
-
-> [!NOTE]
-> 您將需要安裝 `Microsoft.Azure.WebJobs.Extensions.Twilio` NuGet 套件，才能執行下列範例程式碼。
-
-[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs)]
 
 ## <a name="next-steps"></a>後續步驟
 

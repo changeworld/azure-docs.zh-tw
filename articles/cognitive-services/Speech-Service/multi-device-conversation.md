@@ -1,23 +1,23 @@
 ---
-title: 什麼是多裝置對話（預覽）-語音服務
+title: 關於多裝置交談（預覽）-語音服務
 titleSuffix: Azure Cognitive Services
 description: ''
 services: cognitive-services
-author: ralphe
-manager: cpoulain
+author: IEvangelist
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 1/15/2020
-ms.author: ralphe
-ms.openlocfilehash: 8d73c896f784507c2336a79130ff5f35aa61d30f
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.date: 01/31/2020
+ms.author: dapine
+ms.openlocfilehash: d94b3392d6bd5ab539d49c8a4cfdd568fbbb1cd0
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76268118"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560808"
 ---
-# <a name="what-is-multi-device-conversation-preview"></a>什麼是多重裝置對話（預覽）？
+# <a name="about-multi-device-conversation-preview"></a>關於多裝置交談（預覽）
 
 **多重裝置交談**可讓您輕鬆地在多個用戶端之間建立語音或文字交談，並協調其間傳送的訊息。
 

@@ -1,5 +1,5 @@
 ---
-title: 使用適用於 Power BI 的 Azure 資料總管連接器將資料視覺化
+title: 使用適用于 Power BI 的 Azure 資料總管連接器將資料視覺化
 description: 在本文中，您將瞭解如何使用三個選項的其中一個，將 Power BI 中的資料視覺化：適用于 Azure 資料總管的 Power BI 連接器。
 author: orspod
 ms.author: orspodek
@@ -7,18 +7,18 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 361ea6ed76207e8e9721f64df61738b6cd9631dc
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: a95d45481bed17e46429e3a22dff4b8cc62354a9
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024220"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560485"
 ---
 # <a name="visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>使用適用於 Power BI 的 Azure 資料總管連接器將資料視覺化
 
 Azure 資料總管是一項快速又可高度調整的資料探索服務，可用於處理記錄和遙測資料。 Power BI 是一個商務分析解決方案，可讓您將資料視覺化並在整個組織共用結果。 Azure 資料總管提供三個選項以便連線到 Power BI 中的資料：使用內建連接器，從 Azure 資料總管匯入查詢，或使用 SQL 查詢。 本文說明如何使用內建的連接器來取得資料，並在 Power BI 報表中將其視覺化。 使用 Azure 資料總管 native connector 來建立 Power BI 的儀表板相當簡單。 Power BI 連接器支援「匯[入」和「直接查詢」連接模式](https://docs.microsoft.com/power-bi/desktop-directquery-about)。 您可以使用 [匯**入**] 或 [ **DirectQuery** ] 模式建立儀表板，視案例、規模和效能需求而定。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 您需要下列專案才能完成這篇文章：
 
@@ -42,7 +42,7 @@ Azure 資料總管是一項快速又可高度調整的資料探索服務，可�
 
     ![叢集、資料庫、資料表選項](media/power-bi-connector/cluster-database-table.png)
 
-    **設定** | **值** | **欄位描述**
+    **設定** | **ReplTest1** | **欄位描述**
     |---|---|---|
     | 叢集 | *https://help.kusto.windows.net* | 說明叢集的 URL。 對於其他叢集，URL 的格式為 *https://\<ClusterName\>.\<Region\>.kusto.windows.net*。 |
     | 資料庫 | 保留空白 | 裝載於所要連線叢集上的資料庫。 我們會在稍後步驟中選取此項目。 |

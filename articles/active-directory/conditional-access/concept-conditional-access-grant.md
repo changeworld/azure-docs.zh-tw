@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 02/21/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89063cc8131c28f20153c6fe9b4c71b58794e609
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: fb098363a6f1b27bd8afa8e68ab14bfa666ea539
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77192112"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561641"
 ---
 # <a name="conditional-access-grant"></a>條件式存取：授與
 
@@ -55,13 +55,17 @@ ms.locfileid: "77192112"
 
 已部署 Microsoft Intune 的組織可以使用其裝置所傳回的資訊，來識別符合特定合規性需求的裝置。 此原則合規性資訊會從 Intune 轉送至 Azure AD，讓條件式存取可以決定要授與或封鎖資源的存取權。 如需相容性原則的詳細資訊，請參閱[使用 Intune 在裝置上設定規則以允許存取您組織中的資源一](https://docs.microsoft.com/intune/protect/device-compliance-get-started)文。
 
+Intune （適用于任何裝置作業系統）或協力廠商 MDM 系統（適用于 Windows 10 裝置）可能會將裝置標示為符合規範。 不支援針對 Windows 10 以外的裝置 OS 類型使用的第三方 MDM 系統。
+
+裝置必須先在 Azure AD 中註冊，才可以標示為符合規範。 如需裝置註冊的詳細資訊，請參閱[什麼是裝置身分識別一](../devices/overview.md)文。
+
 ### <a name="require-hybrid-azure-ad-joined-device"></a>需要已加入混合式 Azure AD 裝置
 
 組織可以選擇使用裝置身分識別作為其條件式存取原則的一部分。 組織可以要求裝置必須使用此核取方塊來加入混合式 Azure AD。 如需裝置身分識別的詳細資訊，請參閱[什麼是裝置身分識別？一](../devices/overview.md)文。
 
 ### <a name="require-approved-client-app"></a>需要已核准的用戶端應用程式
 
-組織可能需要從已核准的用戶端應用程式，對所選雲端應用程式的存取嘗試進行存取。
+組織可能需要從已核准的用戶端應用程式，對所選雲端應用程式的存取嘗試進行存取。 這些已核准的用戶端 ap 支援與任何行動裝置管理（MDM）解決方案無關的[Intune 應用程式保護原則](/intune/app-protection-policy)。
 
 此設定適用於下列用戶端應用程式：
 
@@ -102,9 +106,7 @@ ms.locfileid: "77192112"
 
 ### <a name="require-app-protection-policy"></a>需要應用程式保護原則
 
-在您的條件式存取原則中，您可以要求應用程式保護原則出現在用戶端應用程式上，才能存取所選的雲端應用程式。 
-
-![使用應用程式保護原則控制存取](./media/technical-reference/22.png)
+在您的條件式存取原則中，您可以要求用戶端應用程式上有[Intune 應用程式保護原則](/intune/app-protection-policy)，才能存取所選的雲端應用程式。 
 
 此設定適用於下列用戶端應用程式：
 
@@ -118,6 +120,10 @@ ms.locfileid: "77192112"
 - 應用程式保護原則的應用程式支援具有原則保護的 Intune 行動應用程式管理功能。
 - **需要應用程式保護原則**需求：
     - 僅支援 iOS 和 Android 的裝置平臺條件。
+
+### <a name="terms-of-use"></a>使用規定
+
+如果您的組織已建立使用規定，則在 [授與控制] 底下可能會顯示其他選項。 這些選項可讓系統管理員要求使用規定，做為存取原則所保護之資源的條件。 如需使用條款的詳細資訊，請參閱[Azure Active Directory 使用規定一](terms-of-use.md)文。
 
 ## <a name="next-steps"></a>後續步驟
 

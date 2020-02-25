@@ -1,19 +1,19 @@
 ---
 title: Microsoft Azure 的客戶加密箱
 description: Microsoft Azure 的客戶加密箱技術總覽，當 Microsoft 可能需要存取客戶資料時，可讓您控制雲端提供者的存取權。
-author: cabailey
+author: TerryLanfear
 ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
-ms.author: cabailey
-manager: barbkess
+ms.author: terrylan
+manager: rkarlin
 ms.date: 11/04/2019
-ms.openlocfilehash: 7c0409d48876a0f830366381c2a46821c4aa03a0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: abc16ae7f7ab8bf15173248a6e7668e689e127de
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466414"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561964"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Microsoft Azure 的客戶加密箱
 
@@ -42,37 +42,37 @@ Microsoft Azure 的客戶加密箱會提供介面，讓客戶審查及核准或�
     - 資源的範圍
     - 要求者是否為隔離的身分識別或使用多重要素驗證
     - 許可權層級
-    
+
     根據 JIT 規則，此要求也可能包含來自內部 Microsoft 核准者的核准。 例如，核准者可能是客戶支援組長或 DevOps Manager。
 
 6. 當要求需要直接存取客戶資料時，就會起始客戶加密箱要求。 例如，遠端桌面存取客戶的虛擬機器。
-    
+
     要求現在會在**客戶通知**狀態，等待客戶的核准，然後再授與存取權。
 
 7. 在客戶組織中，具有 Azure 訂用帳戶擁有者[角色](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-rbac-roles)的使用者會收到來自 Microsoft 的電子郵件，通知他們有擱置的存取要求。 對於客戶加密箱要求，此人員是指定的核准者。
-    
+
     範例電子郵件：
-    
+
     ![Azure 客戶加密箱-電子郵件通知](./media/customer-lockbox-overview/customer-lockbox-email-notification.png)
 
 8. 電子郵件通知會提供 Azure 入口網站中 [**客戶加密箱**] 分頁的連結。 使用此連結時，指定的核准者會登入 Azure 入口網站，以查看其組織客戶加密箱的任何擱置要求：
-    
+
     ![Azure 客戶加密箱-登陸頁面](./media/customer-lockbox-overview/customer-lockbox-landing-page.png)
-    
+
    要求會保留在客戶佇列中四天。 在這段時間之後，存取要求會自動到期，且不會授與 Microsoft 工程師的任何存取權。
 
 9. 若要取得待決要求的詳細資料，指定的核准者可以從**擱置要求**中選取加密箱要求：
-    
+
     ![Azure 客戶加密箱-查看擱置中的要求](./media/customer-lockbox-overview/customer-lockbox-pending-requests.png)
 
 10. 指定的核准者也可以選取**服務要求識別碼**，以查看原始使用者所建立的支援票證要求。 這項資訊會提供 Microsoft 支援服務參與原因的內容，以及所回報問題的歷程記錄。 例如：
-    
+
     ![Azure 客戶加密箱-查看支援票證要求](./media/customer-lockbox-overview/customer-lockbox-support-ticket.png)
 
 11. 在審查要求之後，指定的核准者會選取 [**核准**] 或 [**拒絕**]：
-    
+
     ![Azure 客戶加密箱-選取 [核准] 或 [拒絕]](./media/customer-lockbox-overview/customer-lockbox-approval.png)
-    
+
     做為選取專案的結果：
     - **核准**：授與 Microsoft 工程師的存取權。 授與存取權的預設期間為八小時。
     - **拒絕**： Microsoft 工程師的提高許可權存取要求會遭到拒絕，且不會採取進一步的動作。
@@ -113,20 +113,20 @@ Microsoft Azure 的客戶加密箱會提供介面，讓客戶審查及核准或�
 
 下列服務目前在客戶加密箱的預覽狀態：
 
-- Azure 儲存體 
+- Azure 儲存體
 
-- Azure SQL DB 
+- Azure SQL DB
 
-- Azure 資料總管 
+- Azure 資料總管
 
-- 虛擬機器（現在也涵蓋記憶體傾印和受控磁片的存取權） 
+- 虛擬機器（現在也涵蓋記憶體傾印和受控磁片的存取權）
 
 - Azure 訂用帳戶傳輸
 
 若要為您的組織啟用這些預覽供應專案的客戶加密箱，請註冊[Azure 公開預覽客戶加密箱](https://aka.ms/customerlockbox/insiderprogram)。
 
 
-## <a name="exclusions"></a>排除
+## <a name="exclusions"></a>名單
 
 在下列工程支援案例中，不會觸發客戶加密箱要求：
 

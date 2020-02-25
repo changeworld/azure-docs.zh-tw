@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa25a1b1d24c034a92a94ac9378bc4bff3947348
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 19afaf743cc594ab17776b990687a442c339ed92
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639916"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77559006"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>在 Azure Active Directory 中依管理工作區分的系統管理員角色
 
@@ -72,15 +72,15 @@ Task | 最低特殊權限角色 | 其他角色
 ---- | --------------------- | ----------------
 設定公司屬性 | 全域管理員 | 
 
-## <a name="connect"></a>連接
+## <a name="connect"></a>連線
 
 Task | 最低特殊權限角色 | 其他角色
 ---- | --------------------- | ----------------
 傳遞驗證 | 全域管理員 | 
 讀取所有設定 | 全域讀者 | 
-順暢的單一登入 | 全域管理員 | 
+無縫單一登入 | 全域管理員 | 
 
-## <a name="connect-health"></a>連線情況
+## <a name="connect-health"></a>Connect Health
 
 Task | 最低特殊權限角色 | 其他角色
 ---- | --------------------- | ----------------
@@ -104,7 +104,7 @@ Task | 最低特殊權限角色 | 其他角色
 管理網域 | 全域管理員 | 
 讀取所有設定 | 目錄讀取器 | 預設使用者角色 ([請參閱文件](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
 
-## <a name="domain-services"></a>Domain Services
+## <a name="domain-services"></a>網域服務
 
 Task | 最低特殊權限角色 | 其他角色
 ---- | --------------------- | ----------------
@@ -126,8 +126,8 @@ Task | 最低特殊權限角色 | 其他角色
 Task | 最低特殊權限角色 | 其他角色
 ---- | --------------------- | ----------------
 同意任何委派的權限 | 雲端應用程式系統管理員 | 應用程式管理員
-同意不包括 Microsoft Graph 或 Azure AD Graph 的應用程式權限 | 雲端應用程式系統管理員 | 應用程式管理員
-同意對 Microsoft Graph 或 Azure AD Graph 的應用程式權限 | 全域管理員 | 
+同意應用程式許可權不包括 Microsoft Graph | 雲端應用程式系統管理員 | 應用程式管理員
+同意 Microsoft Graph 的應用程式許可權 | 全域管理員 | 
 同意應用程式存取自己的資料 | 預設使用者角色 ([請參閱文件](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
 建立企業應用程式 | 雲端應用程式系統管理員 | 應用程式管理員
 管理應用程式 Proxy | 應用程式管理員 | 
@@ -165,7 +165,7 @@ Task | 最低特殊權限角色 | 其他角色
 更新群組擁有者 | 群組擁有者 ([請參閱文件](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 使用者管理員
 更新群組屬性 | 群組擁有者 ([請參閱文件](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 使用者管理員
 
-## <a name="identity-protection"></a>Identity Protection
+## <a name="identity-protection"></a>身分識別保護
 
 Task | 最低特殊權限角色 | 其他角色
 ---- | --------------------- | ----------------
@@ -202,7 +202,7 @@ Task | 最低特殊權限角色 | 其他角色
 ---- | --------------------- | ----------------
 讀取登入記錄 | 報表讀者 | 安全性讀取者、安全性系統管理員
 
-## <a name="multi-factor-authentication"></a>多因素驗證
+## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
 Task | 最低特殊權限角色 | 其他角色
 ---- | --------------------- | ----------------
@@ -251,7 +251,7 @@ Task | 最低特殊權限角色 | 其他角色
 設定註冊 | 全域管理員 |
 讀取所有設定 | 安全性系統管理員 | 使用者管理員 |
 
-## <a name="privileged-identity-management"></a>特殊權限身分識別管理
+## <a name="privileged-identity-management"></a>Privileged Identity Management
 
 Task | 最低特殊權限角色 | 其他角色
 ---- | --------------------- | ----------------
@@ -318,7 +318,7 @@ Task | 最低特殊權限角色 | 其他角色
 讀取所有設定 | 安全性讀取者 | 
 讀取標幟為有風險的使用者 | 安全性讀取者 | 
 
-## <a name="users"></a>使用者人數
+## <a name="users"></a>使用者
 
 Task | 最低特殊權限角色 | 其他角色
 ---- | --------------------- | ----------------

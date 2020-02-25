@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: c1e9be605a6f01695f2472ae76a9e5a786388aa0
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 849d1187d6b854d48ad75ab1e55f600407420346
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77206101"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562355"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure 媒體服務中的串流端點（原點）
 
@@ -73,7 +73,7 @@ IP 篩選/G20/自訂主機<sup>1</sup>|是|是
 
 <sup>1</sup>只有在未在端點上啟用 CDN 時，才直接用於串流端點。<br/>
 
-## <a name="properties"></a>屬性
+## <a name="streaming-endpoint-properties"></a>串流端點屬性
 
 本節提供一些串流端點屬性的詳細資料。 如需如何建立新串流端點的範例及所有屬性的說明，請參閱[串流端點](https://docs.microsoft.com/rest/api/media/streamingendpoints/create)。
 
@@ -130,50 +130,36 @@ IP 篩選/G20/自訂主機<sup>1</sup>|是|是
 
 - `scaleUnits`：提供您專用的輸出容量，您可以在 200 Mbps 的增量中購買。 如果您需要移至**進階**類型，請調整 `scaleUnits`。
 
-## <a name="working-with-cdn"></a>使用 CDN
+## <a name="why-use-multiple-streaming-endpoints"></a>為何要使用多個串流端點？
 
-您應該在大部分情況下啟用 CDN。 不過，如果您預期的最大平行存取低於500的檢視器，建議您停用 CDN，因為 CDN 會以並行方式調整最佳規模。
+單一串流端點可以串流即時和隨選影片，而大部分的客戶只會使用一個串流端點。 本節提供一些範例，說明為何您可能需要使用多個串流端點。
 
-### <a name="considerations"></a>考量
+* 每個保留單位允許 200 Mbps 的頻寬。 如果您需要超過 2000 Mbps （2 Gbps）的頻寬，您可以使用第二個串流端點和負載平衡，為您提供額外的頻寬。
 
-* 無論您是否啟用 CDN，串流端點 `hostname` 和串流 URL 都保持不變。
-* 如果您需要能夠在不使用 CDN 的情況下測試內容，請建立另一個未啟用 CDN 的串流端點。
+    不過，CDN 是針對串流內容進行相應放大的最佳方式，但如果您要傳遞的內容很多，CDN 會提取超過 2 Gbps，則您可以新增其他串流端點（來源）。 在此情況下，您必須在兩個串流端點之間取得平衡的內容 Url。 這種方法可提供比嘗試隨機傳送要求到每個原始來源（例如透過流量管理員）更好的快取。 
+    
+    > [!TIP]
+    > 通常，如果 CDN 提取超過 2 Gbps，可能會有一些設定錯誤（例如，沒有原始防護）。
+    
+* 負載平衡不同的 CDN 提供者。 例如，您可以將預設串流端點設定為使用 Verizon CDN，並建立第二個來使用 Akamai。 然後在兩者之間新增一些負載平衡，以達到多 CDN 平衡。 
 
-### <a name="detailed-explanation-of-how-caching-works"></a>詳細說明快取的運作方式
+    不過，客戶通常會使用單一來源，在多個 CDN 提供者之間進行負載平衡。
+* 串流混合內容：即時和隨選影片。 
 
-新增 CDN 時，不會有任何特定的頻寬值，因為啟用 CDN 的串流端點所需的頻寬量會有所不同。 有很多取決於內容的類型、熱門程度、位元速率和通訊協定。 CDN 只會快取所要求的內容。 這表示只要快取影片片段，就會直接從 CDN 提供熱門內容。 快取實況內容的機率很高，因為通常會有許多人觀看一模一樣的內容。 視需要內容可能有點棘手，因為您可能會有一些熱門的內容，有些則不會。 如果您有數百萬個不受歡迎的影片資產（一周只能有一或兩個檢視器），但您有數千名人員監看所有不同的影片，CDN 就會變得更不有效率。 因為此快取遺漏，您會增加串流端點上的負載。
+    即時和隨選內容的存取模式非常不同。 即時內容通常會為相同的內容一次取得許多需求。 影片隨選內容（實例的長尾封存內容）在相同內容上的使用量低。 因此，快取的運作方式非常適用于即時內容，而不是長尾內容。
 
-您也需要考量彈性資料流的運作方式。 每個個別的視訊片段都會快取為自有的實體。 例如，想像一下第一次監看特定的影片。 如果檢視器只會在此略過幾秒鐘的時間，而且只有與監看的人員相關的影片片段會在 CDN 中快取。 因為有彈性資料流，您通常會有 5 到 7 個位元速率不同的視訊。 如果其中一個人正在監看一個位元速率，而另一個人正在監看不同的位元速率，則它們會分別在 CDN 中快取。 即使兩個人監看相同的位元速率，它們也可以透過不同的通訊協定進行串流處理。 每個通訊協定 (HLS、MPEG DASH、Smooth Streaming) 會分別進行快取。 因此，每一個位元速率和通訊協定都會分別進行快取，而且只會快取已要求的那些視訊片段。
+    假設您的客戶主要是監看即時內容，但偶爾只會監看隨選內容，而且會從相同的串流端點提供服務。 視需要內容的使用量低，會佔用快取空間，以更有效率的方式儲存即時內容。 在此案例中，建議您從一個串流端點和來自另一個串流端點的長尾內容來提供即時內容。 這將可改善即時事件內容的效能。
+    
+## <a name="scaling-streaming-with-cdn"></a>使用 CDN 調整串流
 
-### <a name="enable-azure-cdn-integration"></a>啟用 Azure CDN 整合
+查看下列文章：
 
-> [!IMPORTANT]
-> 您無法為試用版或學生版 Azure 帳戶啟用 CDN。
->
-> 除了美國聯邦政府和中國地區以外，所有 Azure 資料中心都會啟用 CDN 整合。
-
-在布建啟用 CDN 的串流端點之後，在完成 DNS 更新以將串流端點對應至 CDN 端點之前，媒體服務已定義等待時間。
-
-如果您稍後想要停用/啟用 CDN，串流端點必須處於**已停止**狀態。 可能需要將近 2 小時，Azure CDN 整合才會啟用，變更也才會遍及所有 CDN POP。 不過，您可以啟動串流端點和串流，而不會從串流端點中斷，一旦整合完成後，就會從 CDN 傳遞串流。 在布建期間，您的串流端點會處於 [**啟動**中] 狀態，而您可能會發現效能降低。
-
-建立標準串流端點時，預設會使用標準 Verizon 來設定它。 您可以使用 REST Api 來設定 Premium Verizon 或 Standard Akamai 提供者。
-
-如果是標準串流端點，Azure 媒體服務與 Azure CDN 的整合是在**來自 Verizon 的 Azure CDN** 上實作。 您可以使用所有 **Azure CDN 定價層和提供者**來設定進階串流端點。 
-
-> [!NOTE]
-> 如需 Azure CDN 的詳細資訊，請參閱[CDN 總覽](../../cdn/cdn-overview.md)。
-
-### <a name="determine-if-dns-change-was-made"></a>判斷是否已進行 DNS 變更
-
-您可以使用 https://www.digwebinterface.com，判斷是否已在串流端點上進行 DNS 變更（流量會導向至 Azure CDN）。 如果結果中有 azureedge.net 的功能變數名稱，則流量現在會指向 CDN。
+- [CDN 總覽](../../cdn/cdn-overview.md)
+- [使用 CDN 調整串流](scale-streaming-cdn.md)
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>提出問題、提供意見反應、取得更新
 
 請參閱 [Azure 媒體服務社群](media-services-community.md)文章，以了解詢問問題、提供意見反應及取得媒體服務相關更新的不同方式。
-
-## <a name="see-also"></a>另請參閱
-
-[CDN 總覽](../../cdn/cdn-overview.md)
 
 ## <a name="next-steps"></a>後續步驟
 

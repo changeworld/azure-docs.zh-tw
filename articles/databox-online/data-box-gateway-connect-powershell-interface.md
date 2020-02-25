@@ -1,6 +1,6 @@
 ---
-title: 透過 Windows PowerShell 介面連接到 Microsoft Azure 資料箱閘道裝置並加以管理 |Microsoft Docs
-description: 說明如何透過 Windows PowerShell 介面連接到資料箱閘道, 然後再進行管理。
+title: 使用 Windows PowerShell 連線到 Azure 資料箱閘道裝置並加以管理
+description: 說明如何透過 Windows PowerShell 介面連接到資料箱閘道，然後再進行管理。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 08/02/2019
 ms.author: alkohli
-ms.openlocfilehash: 650777d849e172686e8b46502a84db8c519174e7
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 6c9f3455a07001a8d1b9b8a1e84f2af3392b5690
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775187"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561862"
 ---
 # <a name="manage-an-azure-data-box-gateway-device-via-windows-powershell"></a>透過 Windows PowerShell 管理 Azure 資料箱閘道裝置
 
@@ -21,11 +21,11 @@ Azure 資料箱的閘道解決方案可讓您透過網路將資料傳送至 Azur
 
 本文著重于您使用 PowerShell 介面進行的工作。
 
-本文包含下列程式:
+本文包含下列程式：
 
 - 連接到 PowerShell 介面
 - 建立支援封裝
-- 上傳憑證
+- Upload certificate
 - 在非 DHCP 環境中開機
 - 查看裝置資訊
 
@@ -37,7 +37,7 @@ Azure 資料箱的閘道解決方案可讓您透過網路將資料傳送至 Azur
 
 [!INCLUDE [Create a support package](../../includes/data-box-edge-gateway-create-support-package.md)]
 
-## <a name="upload-certificate"></a>上傳憑證
+## <a name="upload-certificate"></a>Upload certificate
 
 [!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
 

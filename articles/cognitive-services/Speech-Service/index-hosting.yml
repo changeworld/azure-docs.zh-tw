@@ -1,0 +1,47 @@
+### YamlMime:Landing
+title: 主檔案
+summary: 語音服務容器適用于語音轉換文字和文字轉換語音案例，包含標準或自訂的模型。
+metadata:
+  title: 裝載檔-教學課程和 API 參考-Azure 認知服務 |Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: IEvangelist
+  manager: nitinme
+  layout: LandingPage
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 02/11/2020
+  ms.author: dapine
+  ms.openlocfilehash: 1e8a57f6132af467975714e585f18059cf9b569e
+  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.translationtype: MT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 02/22/2020
+  ms.locfileid: "77563078"
+landingContent:
+- title: 開始使用
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 語音服務容器
+      url: speech-container-howto.md
+    - text: 具有 Kubernetes 的語音服務容器
+      url: speech-container-howto-on-premises.md
+    - text: Azure 容器實例上的語音服務容器
+      url: deploy-speech-on-container-instances.md
+- title: 逐步指南
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 建立 Azure 語音資源
+      url: get-started.md#create-a-speech-resource-in-azure
+    - text: 設定容器
+      url: speech-container-configuration.md
+- title: 參考
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 支援區域
+      url: regions.md
+    - text: 主權雲端
+      url: sovereign-clouds.md

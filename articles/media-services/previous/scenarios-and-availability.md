@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: ef8596d8dcc9502f590c55223f207e71f5b91cf6
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 4766f22cd84b2aab00f6dcc4064dbeea8018f694
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843934"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77564949"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>跨資料中心的媒體服務功能情節和可用性
 
@@ -33,7 +33,7 @@ AMS 在世界各地多個資料中心運作。 這些資料中心會依據地理
 
 ## <a name="overview"></a>概觀
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 若要開始使用 Azure 媒體服務，您應該具備下列項目：
 
@@ -137,7 +137,7 @@ AMS 在世界各地多個資料中心運作。 這些資料中心會依據地理
 
 ## <a name="consuming-content"></a>使用內容
 
-Azure 媒體服務提供一些工具，供您用來建立適用於大部分平台的豐富、動態用戶端播放器應用程式，此處所述的平台包括：iOS 裝置、Android 裝置、Windows、Windows Phone、Xbox 和機上盒。 下列主題也會提供 SDK 和 Player Framework 連結，可讓您開發自己的用戶端應用程式，使用來自媒體服務的串流媒體。 如需詳細資訊，請參閱[開發視訊付款人應用程式](media-services-develop-video-players.md)。
+Azure 媒體服務提供一些工具，供您用來建立適用於大部分平台的豐富、動態用戶端播放器應用程式，此處所述的平台包括：iOS 裝置、Android 裝置、Windows、Windows Phone、Xbox 和機上盒。 
 
 ## <a name="enabling-azure-cdn"></a>啟用 Azure CDN
 
@@ -179,8 +179,8 @@ AMS 客戶可以使用其 AMS 帳戶來調整串流端點、媒體處理和儲�
 
 |名稱|狀態|資料中心
 |---|---|---|
-|Standard|正式上市|所有|
-|高階|正式上市|所有|
+|標準|GA|全部|
+|Premium|GA|全部|
 
 ### <a name="live-encoding"></a>即時編碼
 
@@ -196,8 +196,8 @@ AMS 提供兩個隨選編碼器：**媒體編碼器標準**和**媒體編碼器�
 
 |媒體處理器名稱|狀態|資料中心
 |---|---|---|
-|Media Encoder Standard|正式上市|所有|
-|媒體編碼器高階工作流程|正式上市|所有區域 (中國除外)|
+|Media Encoder Standard|GA|全部|
+|媒體編碼器高階工作流程|GA|所有區域 (中國除外)|
 
 ### <a name="analytics-media-processors"></a>分析媒體處理器
 
@@ -207,12 +207,12 @@ AMS 提供兩個隨選編碼器：**媒體編碼器標準**和**媒體編碼器�
 
 |媒體處理器名稱|狀態|資料中心
 |---|---|---|
-|Azure 媒體臉部偵測器|預覽|所有|
-|Azure 媒體索引器|正式上市|所有|
-|Azure 媒體動作偵測器|預覽|所有|
-|Azure 媒體 OCR|預覽|所有|
-|Azure Media Redactor|正式上市|所有|
-|Azure 媒體視訊縮圖|預覽|所有|
+|Azure 媒體臉部偵測器|預覽|全部|
+|Azure Media Indexer|GA|全部|
+|Azure 媒體動作偵測器|預覽|全部|
+|Azure 媒體 OCR|預覽|全部|
+|Azure 媒體Media Redactor|GA|全部|
+|Azure 媒體視訊縮圖|預覽|全部|
 
 ### <a name="protection"></a>保護
 
@@ -222,11 +222,11 @@ Microsoft Azure 媒體服務可讓您保護媒體從離開電腦到進行儲存�
 
 |加密|狀態|資料中心|
 |---|---|---| 
-|儲存體|正式上市|所有|
-|AES-128 金鑰|正式上市|所有|
-|Fairplay|正式上市|所有|
-|PlayReady|正式上市|所有|
-|Widevine|正式上市|全部，但不含德國、美國聯邦政府和中國。
+|儲存體|GA|全部|
+|AES-128 金鑰|GA|全部|
+|Fairplay|GA|全部|
+|PlayReady|GA|全部|
+|Widevine|GA|全部，但不含德國、美國聯邦政府和中國。
 
 ### <a name="reserved-units-rus"></a>保留單元 (RU)
 
@@ -248,9 +248,9 @@ Microsoft Azure 媒體服務可讓您保護媒體從離開電腦到進行儲存�
 
 |RU 類型名稱|狀態|資料中心
 |---|---|---|
-|S1|正式上市|所有|
-|S2|正式上市|全部，但不含巴西南部和印度西部|
-|S3|正式上市|全部，但不含印度西部|
+|S1|GA|全部|
+|S2|GA|全部，但不含巴西南部和印度西部|
+|S3|GA|全部，但不含印度西部|
 
 ## <a name="additional-notes"></a>其他注意事項
 

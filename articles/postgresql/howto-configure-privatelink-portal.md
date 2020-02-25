@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: e73f5e578ef498d3c6be8422fbbcfa7ac8856adf
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 187fa7cf52193d94b932d9021749917fa4f9b1dc
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425811"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562593"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-preview-using-portal"></a>使用入口網站建立和管理適用於 PostgreSQL 的 Azure 資料庫單一伺服器（預覽）的私人連結
 
@@ -170,6 +170,9 @@ ms.locfileid: "77425811"
 2. 當您看到 [驗證成功] 訊息時，請選取 [建立]。 
 
     ![已建立私人連結](media/concepts-data-access-and-security-private-link/show-postgres-private-link.png)
+
+    > [!NOTE] 
+    > 客戶 DNS 設定中的 FQDN 不會解析為設定的私人 IP。 您將必須為設定的 FQDN 設定 DNS 區域[，如下所示。](../dns/dns-operations-recordsets-portal.md)
 
 ## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>使用遠端桌面 (RDP) 連線到 VM
 

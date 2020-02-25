@@ -3,19 +3,19 @@ title: 教學課程：使用語音 SDK 將您的 bot 啟用-語音服務
 titleSuffix: Azure Cognitive Services
 description: 在本教學課程中，您將使用 Microsoft Bot Framework 建立 Echo Bot、將其部署至 Azure，並向 Bot Framework Direct Line 語音通道註冊。 接著，您將設定適用于 Windows 的範例用戶端應用程式，讓您可以對 bot 說話，並知道它會回復您。
 services: cognitive-services
-author: dargilco
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/05/2019
-ms.author: dcohen
-ms.openlocfilehash: 0c26f94d0a51b7912d3f964e3cc96ec392fec69b
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.date: 02/21/2020
+ms.author: dapine
+ms.openlocfilehash: 6b037ced7acb94340214ce401ffee9d940312de8
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75495169"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562616"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>教學課程：使用語音 SDK 為您的 bot 啟用語音
 
@@ -50,7 +50,7 @@ ms.locfileid: "75495169"
 > * 新增自訂關鍵字啟用
 > * 瞭解如何變更可辨識和說話語音的語言
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 以下是完成本教學課程所需的事項：
 
@@ -65,14 +65,13 @@ ms.locfileid: "75495169"
 
 您在本教學課程中建立的用戶端應用程式會使用少數 Azure 服務。 若要減少 bot 回應的來回時間，請確定這些服務都位於相同的 Azure 區域中。 在本節中，您將在**美國西部**區域建立資源群組。 建立 Bot Framework、Direct Line 語音通道和語音服務的個別資源時，將會使用此資源群組。
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 從左側導覽中，選取 [**資源群組**]。 然後按一下 **[新增]** 以新增新的資源群組。
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.ResourceGroup" target="_blank">建立資源群組<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 1. 系統會提示您提供一些資訊：
    * 將**訂**用帳戶設定為**免費試用**（您也可以使用現有的訂用帳戶）。
    * 輸入**資源群組**的名稱。 我們建議**SpeechEchoBotTutorial-ResourceGroup**。
    * 從 [**區域**] 下拉式選單中，選取 [**美國西部**]。
 1. 按一下 [檢閱及建立]。 您應該會看到已通過讀取**驗證**的橫幅。
-1. 按一下頁面底部的 [新增]。 可能需要幾分鐘的時間來建立資源群組。
+1. 按一下 **[建立]** 。 可能需要幾分鐘的時間來建立資源群組。
 1. 就像您稍後在本教學課程中所建立的資源一樣，將此資源群組釘選到儀表板以方便存取，是個不錯的主意。 如果您想要釘選此資源群組，請按一下儀表板右上方的釘選圖示。
 
 ### <a name="choosing-an-azure-region"></a>選擇 Azure 區域
@@ -87,15 +86,13 @@ ms.locfileid: "75495169"
 
 ## <a name="create-resources"></a>建立資源
 
-現在您已在**美國西部**區域中有資源群組，下一個步驟是為您將在本教學課程中使用的每個服務建立個別的資源。
+現在您已在支援的區域中有資源群組，下一個步驟是為您將在本教學課程中使用的每個服務建立個別的資源。
 
 ### <a name="create-a-speech-service-resource"></a>建立語音服務資源
 
 請依照下列指示來建立語音資源：
 
-1. 移至  [Azure 入口網站](https://portal.azure.com)，然後從左側導覽中選取 **建立資源**]。
-2. 在搜尋列中，輸入**語音**。
-3. 選取 [語音]，然後按一下 [建立]。
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">建立語音服務資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 4. 系統會提示您提供一些資訊：
    * 為您的資源**命名**。 我們建議**SpeechEchoBotTutorial-Speech**
    * 針對 [**訂**用帳戶]，請確定已選取 [**免費試用**]。
@@ -107,17 +104,15 @@ ms.locfileid: "75495169"
 
 此時，請檢查您的資源群組（**SpeechEchoBotTutorial-ResourceGroup**）是否有語音資源：
 
-| NAME | 類型  | LOCATION |
+| 名稱 | 類型  | Location |
 |------|-------|----------|
-| SpeechEchoBotTutorial-語音 | 辨識服務 | 美國西部 |
+| SpeechEchoBotTutorial-語音 | 認知服務 | 美國西部 |
 
 ### <a name="create-an-azure-app-service-plan"></a>建立 Azure App Service 方案
 
 下一個步驟是建立 App Service 計畫。 App Service 方案會針對要執行的 Web 應用程式定義一組計算資源。
 
-1. 移至  [Azure 入口網站](https://portal.azure.com)，然後從左側導覽中選取 **建立資源**]。
-2. 在搜尋列中，輸入**App Service 方案**。 接下來，從搜尋結果中找出並選取 [ **App Service 計畫**] 卡片。
-3. 按一下頁面底部的 [新增]。
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.AppServicePlanCreate" target="_blank">建立 Azure App Service 方案<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 4. 系統會提示您提供一些資訊：
    * 將**訂**用帳戶設定為**免費試用**（您也可以使用現有的訂用帳戶）。
    * 針對 [**資源群組**]，選取 [ **SpeechEchoBotTutorial-ResourceGroup**]。
@@ -126,14 +121,14 @@ ms.locfileid: "75495169"
    * 針對 [**地區**]，選取 [**美國西部**]。
    * 針對 [**定價層**]，請確定已選取 [**標準 S1** ]。 這應該是預設值。 如果不是，請確定您已將**作業系統**設定為**Windows** ，如上所述。
 5. 按一下 [檢閱及建立]。 您應該會看到已通過讀取**驗證**的橫幅。
-6. 按一下頁面底部的 [新增]。 可能需要幾分鐘的時間來建立資源群組。
+6. 按一下 **[建立]** 。 可能需要幾分鐘的時間來建立資源群組。
 
 此時，請檢查您的資源群組（**SpeechEchoBotTutorial-ResourceGroup**）有兩個資源：
 
-| NAME | 類型  | LOCATION |
+| 名稱 | 類型  | Location |
 |------|-------|----------|
 | SpeechEchoBotTutorial-AppServicePlan | App Service 方案 | 美國西部 |
-| SpeechEchoBotTutorial-語音 | 辨識服務 | 美國西部 |
+| SpeechEchoBotTutorial-語音 | 認知服務 | 美國西部 |
 
 ## <a name="build-an-echo-bot"></a>建立 Echo Bot
 
@@ -157,11 +152,14 @@ ms.locfileid: "75495169"
    samples\csharp_dotnetcore\02.echo-bot\EchoBot.sln
    ```
 
-4. 載入專案之後，按 `F5` 以建立並執行專案。
+4. 載入專案之後，按<kbd>F5</kbd>以建立並執行專案。
+5. 瀏覽器應該會啟動，而您會看到看起來像這樣的畫面。
+    > [!div class="mx-imgBorder"]
+    > ![echobot-執行中-localhost](media/tutorial-voice-enable-your-bot-speech-sdk/echobot-running-on-localhost.png "在 localhost 上執行的 EchoBot")
 
 ### <a name="test-the-bot-sample-with-the-bot-framework-emulator"></a>使用 Bot Framework Emulator 測試 bot 範例
 
-[Bot Framework Emulator](https://github.com/microsoft/botframework-emulator)是桌面應用程式，可讓 Bot 開發人員在本機或透過通道從遠端對其 bot 進行測試和偵測。 模擬器支援輸入的文字做為輸入（非語音）。 Bot 會以文字回應。 請遵循下列步驟，使用 Bot Framework Emulator 來測試您在本機執行的 Echo Bot，其中包含文字輸入和文字輸出。 在我們部署 bot Azure 之後，我們會使用語音輸入和語音輸出進行測試。
+[Bot Framework Emulator](https://github.com/microsoft/botframework-emulator)是桌面應用程式，可讓 Bot 開發人員在本機或透過通道從遠端對其 bot 進行測試和偵測。 模擬器支援輸入的文字做為輸入（非語音）。 Bot 會以文字回應。 請遵循下列步驟，使用 Bot Framework Emulator 來測試您在本機執行的 Echo Bot，其中包含文字輸入和文字輸出。 將 bot 部署至 Azure 之後，我們會使用語音輸入和語音輸出進行測試。
 
 1. 安裝4.3.0 或更新版本的[Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases/latest)
 2. 啟動 Bot Framework Emulator 並開啟您的 Bot：
@@ -173,6 +171,7 @@ ms.locfileid: "75495169"
    ```
    然後按 [連線]。
 4. Bot 應該會立即歡迎您 "Hello，歡迎！" 訊息。 輸入任何文字訊息，並確認您收到來自 bot 的回應。
+5. 這是與 Echo Bot 實例的通訊交換可能如下所示： ![Bot-架構-模擬器](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png "Bot Framework 模擬器")
 
 ## <a name="deploy-your-bot-to-an-azure-app-service"></a>將您的 bot 部署到 Azure App Service
 
@@ -189,7 +188,7 @@ ms.locfileid: "75495169"
 
 1. 在 **方案總管**中，以滑鼠右鍵按一下**EchoBot**專案，然後選取 **發佈 ...** 。
 1. 標題為 [**挑選發行目標**] 的新視窗隨即開啟。
-1. 從左側導覽中選取 [ **App Service** ]，選取 **[新建]，然後**按一下 [**發佈**]。
+1. 從 [ **Azure 服務**] 導覽選取 [ **App Service** ]，選取 **[新建]，然後**按一下 [**發佈**]。
 1. 當 [**建立 App Service** ] 視窗出現時：
    * 按一下 [**新增帳戶**]，然後使用您的 Azure 帳號憑證登入。 如果已經登入，請從下拉式清單中選取要使用的帳戶。
    * 針對 [**應用程式名稱**]，您必須輸入 Bot 的全域唯一名稱。 這個名稱是用來建立唯一的 bot URL。 預設值將會填入，包括日期和時間（例如： "EchoBot20190805125647"）。 您可以使用本教學課程的預設名稱。
@@ -207,18 +206,18 @@ ms.locfileid: "75495169"
 1. 您的預設瀏覽器應該會開啟並顯示一頁：「您的 bot 已就緒！」。
 1. 此時，請檢查 Azure 入口網站中的資源群組**SpeechEchoBotTutorial-ResourceGroup** ，並確認有三個資源：
 
-| NAME | 類型  | LOCATION |
+| 名稱 | 類型  | Location |
 |------|-------|----------|
-| EchoBot20190805125647 | App Service | 美國西部 |
+| EchoBot20190805125647 | App Service 方案 | 美國西部 |
 | SpeechEchoBotTutorial-AppServicePlan | App Service 方案 | 美國西部 |
-| SpeechEchoBotTutorial-語音 | 辨識服務 | 美國西部 |
+| SpeechEchoBotTutorial-語音 | 認知服務 | 美國西部 |
 
 ## <a name="enable-web-sockets"></a>啟用 Web 通訊端
 
 您將需要進行小型的設定變更，讓您的 bot 可以使用 web 通訊端與 Direct Line 語音通道進行通訊。 請遵循下列步驟來啟用 web 通訊端：
 
 1. 流覽至 [ [Azure 入口網站](https://portal.azure.com)]，然後找出您的 App Service。 資源的名稱應該與**EchoBot20190805125647** （您的唯一應用程式名稱）類似。
-2. 在左側導覽的 [設定] 底下，**按一下 [** **設定**]。
+2. 在**Azure 服務**流覽的 [設定] 底下，**按一下 [** **設定**]。
 3. 選取 [**一般設定**] 索引標籤。
 4. 找出**Web 通訊端**的切換，並將其設定為 [**開啟**]。
 5. 按一下 [檔案]。
@@ -233,9 +232,11 @@ ms.locfileid: "75495169"
 > [!NOTE]
 > 如果您想要深入瞭解 bot 如何運用通道，請參閱[將 bot 連線至通道](https://docs.microsoft.com/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0)。
 
+<!-- https://ms.portal.azure.com/#create/Microsoft.BotServiceConnectivityGalleryPackage -->
+
 1. 第一個步驟是建立註冊的新資源。 在 [Azure 入口網站](https://portal.azure.com)中，按一下 [建立資源]。
 2. 在搜尋列中輸入**bot**，在結果出現之後，選取 [ **bot 通道註冊**]。
-3. 按一下頁面底部的 [新增]。
+3. 按一下 **[建立]** 。
 4. 系統會提示您提供一些資訊：
    * 針對 [ **Bot 控制碼**]，輸入**SpeechEchoBotTutorial-BotRegistration**。
    * 針對 [**訂**用帳戶]，選取 [**免費試用**]。
@@ -249,12 +250,12 @@ ms.locfileid: "75495169"
 
 此時，請檢查 Azure 入口網站中的資源群組**SpeechEchoBotTutorial-ResourceGroup** 。 它現在應該會顯示四個資源：
 
-| NAME | 類型  | LOCATION |
+| 名稱 | 類型  | Location |
 |------|-------|----------|
-| EchoBot20190805125647 | App Service | 美國西部 |
+| EchoBot20190805125647 | App Service 方案 | 美國西部 |
 | SpeechEchoBotTutorial-AppServicePlan | App Service 方案 | 美國西部 |
-| SpeechEchoBotTutorial-BotRegistration | Bot 通道註冊 | 全球 |
-| SpeechEchoBotTutorial-語音 | 辨識服務 | 美國西部 |
+| SpeechEchoBotTutorial-BotRegistration | Bot 通道註冊 | 全域 |
+| SpeechEchoBotTutorial-語音 | 認知服務 | 美國西部 |
 
 > [!IMPORTANT]
 > 即使您選取 [美國西部]，Bot 通道註冊資源仍會顯示全域區域。 這是預期行為。
@@ -264,13 +265,13 @@ ms.locfileid: "75495169"
 現在可以使用 Direct Line Speech 通道來註冊您的 bot。 此通道是用來在您的 echo bot 和使用語音 SDK 編譯的用戶端應用程式之間建立連線的。
 
 1. 在[Azure 入口網站](https://portal.azure.com)中找出並開啟您的**SpeechEchoBotTutorial-BotRegistration**資源。
-1. 從左側導覽中，選取 [**通道**]。
+1. 從**Azure 服務**導覽中，選取 [**通道**]。
    * 尋找**更多頻道**，找出並按一下 [ **Direct Line 語音**]。
    * 檢查標題為 [**設定 Direct Line Speech**] 頁面上的文字，然後展開標示為 [認知服務帳戶] 的下拉式功能表。
    * 從功能表中選取您稍早建立的語音資源（例如， **SpeechEchoBotTutorial-speech**），以將您的 bot 與您的語音訂用帳戶金鑰建立關聯。
    * 按一下 [檔案]。
 
-1. 在左側導覽中，按一下 [**設定**]。
+1. 從 [ **Azure 服務**] 流覽中，按一下 [**設定**]。
    * 選取標示為 [**啟用串流端點**] 的方塊。 這是為了讓您的 bot 與 Direct Line Speech 通道之間的 web 通訊端建立通訊協定所需。
    * 按一下 [檔案]。
 
@@ -295,11 +296,11 @@ Direct Line 語音用戶端有一個簡單的 UI，可讓您設定與 bot 的連
 
 如果您在主要應用程式視窗中收到錯誤訊息，請使用此資料表來識別錯誤並進行疑難排解：
 
-| 錯誤 | 您應該做什麼？ |
+| 錯誤 | 您該怎麼做？ |
 |-------|----------------------|
 |錯誤 AuthenticationFailure： WebSocket 升級失敗，發生驗證錯誤（401）。 檢查是否有正確的訂用帳戶金鑰（或授權權杖）和區功能變數名稱稱| 在應用程式的 [設定] 頁面中，請確定您已正確輸入語音訂用帳戶金鑰和其區域。<br>請確定已正確輸入您的語音金鑰和金鑰區域。 |
 |錯誤 ConnectionFailure：遠端主機已關閉連接。 錯誤碼：1011。 錯誤詳細資料：我們無法在傳送訊息之前連線到 bot | 請確定您[已核取 [啟用串流端點]](#register-the-direct-line-speech-channel)方塊及/或已將[ **Web 通訊端**切換](#enable-web-sockets)為 [開啟]。<br>請確定您的 Azure App Service 正在執行。 如果是，請嘗試重新開機您的 App Service。|
-|錯誤 ConnectionFailure：遠端主機已關閉連接。 錯誤碼：1011。 錯誤詳細資料：回應狀態碼未指出成功：500（InternalServerError）| 您的 bot 在其 [[輸出活動]](https://github.com/microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak) 欄位中指定了類神經語音, 但與語音訂用帳戶金鑰相關聯的 Azure 區域不支援類神經語音。 請參閱[標準和類神經語音](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices)。|
+|錯誤 ConnectionFailure：遠端主機已關閉連接。 錯誤碼：1011。 錯誤詳細資料：回應狀態碼未指出成功：500（InternalServerError）| 您的 bot 在其 [[輸出活動]](https://github.com/microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak)欄位中指定了類神經語音，但與語音訂用帳戶金鑰相關聯的 Azure 區域不支援類神經語音。 請參閱[標準和類神經語音](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices)。|
 |錯誤 ConnectionFailure：遠端主機已關閉連接。 錯誤碼：1000。 錯誤詳細資料：超過 web 通訊端連接閒置持續時間上限（> 300000 毫秒）| 當通道的連線保持開啟且非使用中超過五分鐘時，這是預期的錯誤。 |
 
 如果您的問題未在表格中解決，請參閱[語音助理：常見問題](faq-voice-assistants.md)。
@@ -432,7 +433,7 @@ Direct Line 語音用戶端會使用[CognitiveServices](https://www.nuget.org/pa
 
 如果您不打算繼續使用在本教學課程中部署的 echo bot，您只要刪除 Azure 資源群組**SpeechEchoBotTutorial**，就可以移除它及其所有相關聯的 azure 資源。
 
-1. 從[Azure 入口網站](https://portal.azure.com)按一下左側導覽中的 [**資源群組**]。
+1. 從[Azure 入口網站](https://portal.azure.com)按一下 [ **Azure 服務**] 導覽中的 [**資源群組**]。
 2. 尋找名為： **SpeechEchoBotTutorial-ResourceGroup**的資源群組。 按一下三個點（...）。
 3. 選取 [刪除資源群組]。
 
@@ -441,7 +442,7 @@ Direct Line 語音用戶端會使用[CognitiveServices](https://www.nuget.org/pa
 > [!div class="nextstepaction"]
 > [使用語音 SDK 建立您自己的用戶端應用程式](quickstart-voice-assistant-csharp-uwp.md)
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * 部署到[您附近的 Azure 區域](https://azure.microsoft.com/global-infrastructure/locations/)，以查看 bot 回應時間改進
 * 部署至[支援高品質神經 TTS 語音的 Azure 區域](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices)

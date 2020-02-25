@@ -3,27 +3,27 @@ title: 建立音訊內容-語音服務
 titleSuffix: Azure Cognitive Services
 description: 建立音訊內容是一種線上工具，可讓您針對應用程式和產品自訂及微調 Microsoft 的文字到語音轉換輸出。
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.author: erhopf
-ms.openlocfilehash: b65a39489f0823a411a9dddf79ec3abd1e5ee20d
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 01/31/2020
+ms.author: dapine
+ms.openlocfilehash: aed9c0a72af063c84c0744757772e11c689ac14c
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806198"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561029"
 ---
-# <a name="audio-content-creation"></a>音訊內容建立
+# <a name="improve-synthesis-with-audio-content-creation"></a>透過建立音訊內容來改善合成
 
 [建立音訊內容](https://aka.ms/audiocontentcreation)是一種線上工具，可讓您針對應用程式和產品自訂及微調 Microsoft 的文字到語音轉換輸出。 您可以使用此工具來微調公用和自訂語音，以取得更精確的自然運算式，並管理您在雲端中的輸出。
 
 音訊內容建立工具是以[語音合成標記語言（SSML）](speech-synthesis-markup.md)為基礎。 為了簡化自訂和微調，音訊內容的建立可讓您以視覺化方式即時檢查文字轉換語音的輸出。
 
-## <a name="how-does-it-work"></a>怎麼運作的呢？
+## <a name="how-does-it-work"></a>運作方式
 
 下圖顯示微調和匯出自訂的語音轉換文字輸出所需的步驟。 若要深入瞭解每個步驟，請使用下列連結。
 
@@ -99,12 +99,12 @@ Welcome to use Audio Content Creation to customize audio output for your product
 
 ### <a name="supported-audio-formats"></a>支援的音訊格式
 
-| 格式 | 16 kHz 取樣率 | 24 kHz 取樣率 |
+| [格式] | 16 kHz 取樣率 | 24 kHz 取樣率 |
 |--------|--------------------|--------------------|
 | wav | riff-riff-16khz-16bit-mono-pcm-dxil 16 位-mono-pcm | riff-24khz-dxil 16 位-mono-pcm |
 | mp3 | 音訊-riff-16khz-16bit-mono-pcm-128kbitrate-單聲道-mp3 | 音訊-24khz-160kbitrate-單聲道-mp3 |
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [長音訊 API](https://aka.ms/long-audio-api)
 

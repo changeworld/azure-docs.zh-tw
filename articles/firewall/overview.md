@@ -6,17 +6,19 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 02/18/2020
+ms.date: 02/19/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 6a045a55772d1d9266663571fc2ecc6911aa5125
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 2d931ed61cc3880a6158fd82f015e663ddb669c3
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77442883"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485279"
 ---
 # <a name="what-is-azure-firewall"></a>何謂 Azure 防火牆？
+
+![ICSA 認證](media/overview/icsa-cert-firewall-small.png)
 
 Azure 防火牆是受控、雲端式網路安全性服務，可以保護您的 Azure 虛擬網路資源。 它是完全具狀態的防火牆即服務，具有內建的高可用性和不受限制的雲端延展性。
 
@@ -92,9 +94,9 @@ FQDN 標籤讓您輕鬆就能允許已知的 Azure 服務網路流量通過您�
 
 所有事件都會與 Azure 監視器整合，讓您可以將記錄封存至儲存體帳戶、將事件串流至事件中樞，或者將它們傳送到 Azure 監視器記錄。
 
-## <a name="compliance-certifications"></a>合規性認證
+## <a name="certifications"></a>認證
 
-Azure 防火牆符合支付卡產業 (PCI)、服務組織控制 (SOC) 和國際標準化組織 (ISO) 規範。 如需詳細資訊，請參閱 [Azure 防火牆合規性認證](compliance-certifications.md)。
+Azure 防火牆符合支付卡產業 (PCI)、服務組織控制 (SOC)、國際標準化組織 (ISO) 規範和符合 ICSA 實驗室規範。 如需詳細資訊，請參閱 [Azure 防火牆合規性認證](compliance-certifications.md)。
 
 
 ## <a name="known-issues"></a>已知問題

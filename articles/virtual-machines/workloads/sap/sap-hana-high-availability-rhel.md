@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 虛擬機器 (VM) 上設定 SAP HANA 系統複寫 | Microsoft Docs
+title: 在 RHEL 上的 Azure Vm 上 SAP Hana 的高可用性 |Microsoft Docs
 description: 在 Azure 虛擬機器 (VM) 上，建立 SAP HANA 的高可用性。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 01/28/2020
 ms.author: radeltch
-ms.openlocfilehash: fe4c3d8ea7aee0922ca29b9c0f475bfd9fa3c67a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 5e3512ce86bdf96a5e6cfcf0e4459b656a5ac5bc
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76837029"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565854"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上 Azure VM 的 SAP HANA 高可用性
 

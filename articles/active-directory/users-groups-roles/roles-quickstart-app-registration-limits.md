@@ -13,20 +13,20 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12803e2f65e17155e8bbcaf4842789adc101b0dd
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 7acd76ff45f783f614b2a1d3f0d5c10d800a1ea9
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024400"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77559040"
 ---
 # <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>快速入門：授與建立無限制應用程式註冊的許可權
 
-在本快速入門中，您將建立自訂角色，其具有建立不限數目的應用程式註冊的許可權，然後將該角色指派給使用者。 然後，指派的使用者可以使用 Azure AD 入口網站、Azure AD PowerShell、Azure AD 圖形 API 或 Microsoft Graph API 來建立應用程式註冊。 與內建應用程式開發人員角色不同的是，這個自訂角色會授與建立不限數目之應用程式註冊的能力。 應用程式開發人員角色會授與能力，但已建立的物件總數限制為250，以防止達到全[目錄的物件配額](directory-service-limits-restrictions.md)。
+在本快速入門中，您將建立自訂角色，其具有建立不限數目的應用程式註冊的許可權，然後將該角色指派給使用者。 然後，指派的使用者可以使用 Azure AD 入口網站、Azure AD PowerShell 或 Microsoft Graph API 來建立應用程式註冊。 與內建應用程式開發人員角色不同的是，這個自訂角色會授與建立不限數目之應用程式註冊的能力。 應用程式開發人員角色會授與能力，但已建立的物件總數限制為250，以防止達到全[目錄的物件配額](directory-service-limits-restrictions.md)。
 
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisite"></a>先決條件
+## <a name="prerequisite"></a>必要條件
 
 建立和指派 Azure AD 自訂角色所需的最低特殊許可權角色是特殊許可權角色管理員。
 
@@ -141,7 +141,7 @@ POST
 https://graph.microsoft.com/beta/roleManagement/directory/roleDefinitions
 ```
 
-內文
+body
 
 ```HTTP
 {
@@ -178,7 +178,7 @@ POST
 https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
 ```
 
-內文
+body
 
 ``` HTTP
 {

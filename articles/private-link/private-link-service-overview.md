@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 5db86c09cd104b2a68431ccbe24128a24ebd2ad4
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 1ac1feb5e3b179ded5fd8dae47e1859f082ad827
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500415"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565781"
 ---
 # <a name="what-is-azure-private-link-service"></a>什麼是 Azure 私人連結服務？
 
@@ -111,6 +111,8 @@ Azure Private Link 服務是由 Azure Private Link 所支援的自有服務參�
 |值  |1     |PP2_SUBTYPE_AZURE_PRI加值稅EENDPOINT_LINKID （0x01）|
 |  |4        |UINT32 （4個位元組），代表私用端點的 LINKID。 以小 endian 格式編碼。|
 
+ > [!NOTE]
+ > 服務提供者會負責確保標準負載平衡器後方的服務已設定為在私人連結服務上啟用 proxy 通訊協定時，根據[規格](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt)來剖析 proxy 通訊協定標頭。 如果在私人連結服務上啟用 proxy 通訊協定設定，但未將服務設定為剖析標頭，則要求將會失敗。 同樣地，如果服務預期會有 proxy 通訊協定標頭，而私人連結服務並未啟用此設定，則要求將會失敗。 一旦啟用 proxy 通訊協定設定，proxy 通訊協定標頭也會包含在從主機到後端虛擬機器的 HTTP/TCP 健全狀況探查中，即使標頭中不會有用戶端資訊也一樣。 
 
 ## <a name="limitations"></a>限制
 

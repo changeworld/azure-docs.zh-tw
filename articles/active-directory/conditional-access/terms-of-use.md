@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31d84d5bf43bac55769a6479917794a51c1ccd0c
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: d92c3e51aae70c66dcf9b7ca6dfd631650ace574
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999110"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561743"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory 使用規定
 
@@ -52,7 +52,7 @@ Azure AD 使用規定具有下列功能：
 - 顯示使用規定活動的記錄，以進行合規性與審核。
 - 使用[Microsoft Graph api](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/agreement) （目前處於預覽狀態）來建立及管理使用規定。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要使用並設定 Azure AD 使用規定，您必須具備：
 
@@ -61,7 +61,7 @@ Azure AD 使用規定具有下列功能：
 - 下列其中一個管理帳戶，將用於您要設定的目錄：
    - 全域管理員
    - 安全性系統管理員
-   - 條件式存取管理員
+   - 條件式存取系統管理員
 
 ## <a name="terms-of-use-document"></a>使用規定文件
 
@@ -72,7 +72,7 @@ Azure AD 使用規定會使用 PDF 格式來呈現內容。 此 PDF 檔案可以
 一旦您完成使用規定檔，請使用下列程式加以新增。
 
 1. 以全域管理員、安全性系統管理員或條件式存取系統管理員的身分登入 Azure。
-1. 瀏覽至 [https://aka.ms/catou](https://aka.ms/catou) 上的 [使用規定]。
+1. 瀏覽至[ 上的 [使用規定]https://aka.ms/catou](https://aka.ms/catou)。
 
    ![條件式存取-使用規定 分頁](./media/terms-of-use/tou-blade.png)
 
@@ -85,7 +85,7 @@ Azure AD 使用規定會使用 PDF 格式來呈現內容。 此 PDF 檔案可以
 1. 如**使用規定檔**，請流覽至您已完成的使用規定 PDF 並加以選取。
 1. 選取您的使用條款檔的語言。 語言選項可讓您上傳多個使用規定，各有不同的語言。 終端使用者會看到的使用規定版本將以其瀏覽器喜好設定為基礎。
 1. 若要要求使用者在接受條款之前先查看使用規定，請將 **[要求使用者] 擴充為 [** **開啟**使用條款]。
-1. 若要要求使用者在其所存取的每個裝置上接受您的使用規定，請將 [**要求使用者在每個裝置上同意**] 設定為 [**開啟**]。 如需詳細資訊，請參閱[每一裝置的使用](#per-device-terms-of-use)規定。
+1. 若要要求使用者在其所存取的每個裝置上接受您的使用規定，請將 [**要求使用者在每個裝置上同意**] 設定為 [**開啟**]。 如果啟用此選項，則使用者可能需要安裝其他應用程式。 如需詳細資訊，請參閱[每一裝置的使用](#per-device-terms-of-use)規定。
 1. 如果您想要依排程讓 [使用規定] 同意過期，請將 [**過期同意**] 設定為 [**開啟**]。 設定為 [開啟] 時，系統會顯示兩個額外的排程設定。
 
    ![將同意設定設為 [開始日期]、[頻率] 和 [持續時間]](./media/terms-of-use/expire-consents.png)
@@ -99,14 +99,14 @@ Azure AD 使用規定會使用 PDF 格式來呈現內容。 此 PDF 檔案可以
 
    例如，如果您將 [到期生效時間] 設定為 [1 月 1 日]，並將 [頻率] 設定為 [每月]，則下列兩個使用者所遇到的到期方式將如下所示：
 
-   | 使用者 | 第一次接受日期 | 第一次到期日期 | 第二次到期日期 | 第三次到期日期 |
+   | User | 第一次接受日期 | 第一次到期日期 | 第二次到期日期 | 第三次到期日期 |
    | --- | --- | --- | --- | --- |
    | Alice | 1 月 1 日 | 2 月 1 日 | 3 月 1 日 | 4 月 1 日 |
    | Bob | 1 月 15 日 | 2 月 1 日 | 3 月 1 日 | 4 月 1 日 |
 
 1. 使用 [**重新接受前需要的期間（天）** ] 設定，指定使用者必須重新接受使用規定之前的天數。 這可讓使用者遵循自己的排程。 例如，如果您將期間設定為 **30** 天，則下列兩個使用者所遇到的到期方式將如下所示：
 
-   | 使用者 | 第一次接受日期 | 第一次到期日期 | 第二次到期日期 | 第三次到期日期 |
+   | User | 第一次接受日期 | 第一次到期日期 | 第二次到期日期 | 第三次到期日期 |
    | --- | --- | --- | --- | --- |
    | Alice | 1 月 1 日 | 1 月 31 日 | 3 月 2 日 | 4 月 1 日 |
    | Bob | 1 月 15 日 | 2 月 14 日 | 3 月 16 日 | 4 月 15 日 |
@@ -117,7 +117,7 @@ Azure AD 使用規定會使用 PDF 格式來呈現內容。 此 PDF 檔案可以
 
    ![[條件式存取] 下拉式清單以選取原則範本](./media/terms-of-use/conditional-access-templates.png)
 
-   | 範本 | 描述 |
+   | [範本] | 描述 |
    | --- | --- |
    | **所有來賓的雲端應用程式存取權** | 系統會為所有來賓和所有雲端應用程式建立條件式存取原則。 此原則會影響 Azure 入口網站。 建立此原則之後，您可能需要登出然後再登入。 |
    | **所有使用者的雲端應用程式存取權** | 系統會針對所有使用者和所有雲端應用程式建立條件式存取原則。 此原則會影響 Azure 入口網站。 建立此原則之後，您必須登出然後再登入。 |
@@ -127,9 +127,9 @@ Azure AD 使用規定會使用 PDF 格式來呈現內容。 此 PDF 檔案可以
    >[!IMPORTANT]
    >條件式存取原則控制項（包括使用規定）不支援在服務帳戶上強制執行。 建議您排除條件式存取原則中的所有服務帳戶。
 
-    自訂條件式存取原則可讓您更精細地使用特定雲端應用程式或使用者群組。 如需詳細資訊，請參閱[快速入門：必須接受使用規定才可存取雲端應用程式](require-tou.md)。
+    自訂條件式存取原則可讓您更精細地使用特定雲端應用程式或使用者群組。 如需詳細資訊，請參閱[快速入門：在存取雲端應用程式之前，必須接受使用](require-tou.md)規定。
 
-1. 按一下 [建立]。
+1. 按一下 **[建立]** 。
 
    如果您已選取自訂的條件式存取範本，則會出現新的畫面，讓您建立自訂的條件式存取原則。
 
@@ -143,7 +143,7 @@ Azure AD 使用規定會使用 PDF 格式來呈現內容。 此 PDF 檔案可以
 
 [使用規定] 刀鋒視窗會顯示已接受和已拒絕的使用者計數。 這些計數和已接受/已拒絕的人員會儲存在使用規定的生命週期內。
 
-1. 登入 Azure 並瀏覽至 [https://aka.ms/catou](https://aka.ms/catou) 上的 [使用規定]。
+1. 登入 Azure 並瀏覽至[ 上的 [使用規定]https://aka.ms/catou](https://aka.ms/catou)。
 
    ![[使用規定] 分頁列出已接受和已拒絕的使用者顯示數目](./media/terms-of-use/view-tou.png)
 
@@ -165,7 +165,7 @@ Azure AD 使用規定會使用 PDF 格式來呈現內容。 此 PDF 檔案可以
 
 若要開始使用 Azure AD 稽核記錄，請使用下列程序：
 
-1. 登入 Azure 並瀏覽至 [https://aka.ms/catou](https://aka.ms/catou) 上的 [使用規定]。
+1. 登入 Azure 並瀏覽至[ 上的 [使用規定]https://aka.ms/catou](https://aka.ms/catou)。
 1. 選取 [使用規定]。
 1. 按一下 [檢視稽核記錄]。
 
@@ -216,7 +216,7 @@ Azure AD 使用規定會使用 PDF 格式來呈現內容。 此 PDF 檔案可以
 
 您可以編輯使用規定的一些詳細資料，但無法修改現有的檔。 下列程序說明如何編輯詳細資料。
 
-1. 登入 Azure 並瀏覽至 [https://aka.ms/catou](https://aka.ms/catou) 上的 [使用規定]。
+1. 登入 Azure 並瀏覽至[ 上的 [使用規定]https://aka.ms/catou](https://aka.ms/catou)。
 1. 選取您想要編輯的使用規定。
 1. 按一下 [編輯使用規定]。
 1. 在 [編輯使用規定] 窗格中，變更名稱、顯示名稱，或要求使用者展開值。
@@ -233,7 +233,7 @@ Azure AD 使用規定會使用 PDF 格式來呈現內容。 此 PDF 檔案可以
 
 下列程式說明如何新增使用規定語言。
 
-1. 登入 Azure 並瀏覽至 [https://aka.ms/catou](https://aka.ms/catou) 上的 [使用規定]。
+1. 登入 Azure 並瀏覽至[ 上的 [使用規定]https://aka.ms/catou](https://aka.ms/catou)。
 1. 選取您想要編輯的使用規定。
 1. 在 [詳細資料] 窗格中，按一下 [語言] 索引標籤。
 
@@ -277,6 +277,10 @@ Azure AD 使用規定會使用 PDF 格式來呈現內容。 此 PDF 檔案可以
 
 如果他們是使用 Chrome，系統將會提示他們安裝 [Windows 10 Accounts 擴充功能](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji) \(英文\)。
 
+### <a name="join-an-android-device"></a>加入 Android 裝置
+
+如果使用者使用 Android 裝置，系統會提示他們安裝[Microsoft Authenticator 應用程式](https://play.google.com/store/apps/details?id=com.azure.authenticator)。
+
 ### <a name="browsers"></a>瀏覽器
 
 如果使用者是使用不支援的瀏覽器，系統將會提示他們使用其他瀏覽器。
@@ -287,7 +291,7 @@ Azure AD 使用規定會使用 PDF 格式來呈現內容。 此 PDF 檔案可以
 
 您可以使用下列程式來刪除舊的使用規定。
 
-1. 登入 Azure 並瀏覽至 [https://aka.ms/catou](https://aka.ms/catou) 上的 [使用規定]。
+1. 登入 Azure 並瀏覽至[ 上的 [使用規定]https://aka.ms/catou](https://aka.ms/catou)。
 1. 選取您想要移除的使用規定。
 1. 按一下 [刪除規定]。
 1. 出現詢問您是否要繼續的訊息時，請按一下 [是]。
@@ -339,8 +343,8 @@ Azure AD 使用規定會使用 PDF 格式來呈現內容。 此 PDF 檔案可以
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 
-**問：如何? 查看使用者是否已接受使用規定？**<br />
-答：在 [使用規定] 刀鋒視窗上，按一下 [已接受] 底下的數字。 您也可以檢視或搜尋 Azure AD 稽核記錄中的接受活動。 如需詳細資訊，請參閱檢視已接受和已拒絕的人員報表和[檢視 Azure AD 稽核記錄](#view-azure-ad-audit-logs)。
+**問：如何查看使用者何時或是否已接受使用規定？**<br />
+答：在 [使用規定] 刀鋒視窗上，按一下 [接受] 底下的數字。 您也可以檢視或搜尋 Azure AD 稽核記錄中的接受活動。 如需詳細資訊，請參閱檢視已接受和已拒絕的人員報表和[檢視 Azure AD 稽核記錄](#view-azure-ad-audit-logs)。
 
 **問：資訊會儲存多久時間？**<br />
 答：使用者在使用規定報表中的計數，以及已接受/已拒絕者會在使用規定的生命週期內儲存。 Azure AD 稽核記錄會儲存 30 天。
@@ -358,30 +362,30 @@ Azure AD 使用規定會使用 PDF 格式來呈現內容。 此 PDF 檔案可以
 答：是，使用者可以選取其他頁面的超連結，但不支援檔中區段的連結。
 
 **問：使用規定是否支援多種語言？**<br />
-答：是的。 目前，系統管理員可以針對單一使用規定來設定108不同的語言。 系統管理員可以上傳多個 PDF 文件，並以相對應的語言 (最多 108 個) 標記那些文件。 當使用者登入時，我們會查看其瀏覽器語言偏好設定，並顯示相符的文件。 如果沒有相符項目，我們將會顯示預設文件，也就是第一個上傳的文件。
+答： 會。 目前，系統管理員可以針對單一使用規定來設定108不同的語言。 系統管理員可以上傳多個 PDF 文件，並以相對應的語言 (最多 108 個) 標記那些文件。 當使用者登入時，我們會查看其瀏覽器語言偏好設定，並顯示相符的文件。 如果沒有相符項目，我們將會顯示預設文件，也就是第一個上傳的文件。
 
-**問：何時會觸發使用規定？**<br />
-答：使用規定會在登入體驗期間觸發。
+**問：何時觸發使用規定？**<br />
+答：登入體驗期間即會觸發使用規定。
 
-**問：我可以將使用規定設為目標的應用程式為何？**<br />
+**問：哪些應用程式也可以將使用規定設為目標？**<br />
 答：您可以使用新式驗證，在企業應用程式上建立條件式存取原則。 如需詳細資訊，請參閱[企業應用程式](./../manage-apps/view-applications-portal.md)。
 
-**問：我可以將多個使用規定新增至指定的使用者或應用程式嗎？**<br />
+**問：是否可以將多個使用規定新增至指定的使用者或應用程式？**<br />
 答：是，藉由建立以這些群組或應用程式為目標的多個條件式存取原則。 如果使用者落在多個使用規定的範圍內，他們會一次接受一個使用規定。
 
 **問：如果使用者拒絕使用規定，會發生什麼事？**<br />
-答：使用者會被封鎖而無法存取應用程式。 使用者必須再次登入並同意規定，才能取得存取權。
+答：使用者會遭封鎖而無法存取應用程式。 使用者必須再次登入並同意規定，才能取得存取權。
 
-**問：是否可以規定先前接受的使用規定？**<br />
+**問：是否可以規定先前已接受的使用規定？**<br />
 答：您可以[複習先前接受的使用](#how-users-can-review-their-terms-of-use)規定，但目前沒有規定的方法。
 
-**問：如果同時使用 Intune 條款及條件，會發生什麼事？**<br />
+**問：如果同時使用 Intune 條款及條件會發生什麼事？**<br />
 答：如果您已設定 Azure AD 使用規定和[Intune 條款及條件](/intune/terms-and-conditions-create)，使用者將必須接受這兩者。 如需詳細資訊，請參閱[為您組織的部落格文章選擇正確的條款解決方案](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409) \(英文\)。
 
-**問：使用規定服務會使用哪些端點進行驗證？**<br />
-答：使用規定利用下列端點進行驗證： https://tokenprovider.termsofuse.identitygovernance.azure.com 和。 https://account.activedirectory.windowsazure.com 如果您的組織有允許的 Url 清單來進行註冊，您將需要將這些端點新增至允許清單，以及用於登入的 Azure AD 端點。
+**問：哪些端點會使用「使用規定」服務來進行驗證？**<br />
+答：使用規定會利用下列端點進行驗證： https://tokenprovider.termsofuse.identitygovernance.azure.com 和 https://account.activedirectory.windowsazure.com。 如果您的組織有允許的 Url 清單來進行註冊，您將需要將這些端點新增至允許清單，以及用於登入的 Azure AD 端點。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [快速入門：必須接受使用規定才可存取雲端應用程式](require-tou.md)
+- [快速入門：存取雲端應用程式之前需要接受使用規定](require-tou.md)
 - [Azure Active Directory 中的條件式存取最佳做法](best-practices.md)

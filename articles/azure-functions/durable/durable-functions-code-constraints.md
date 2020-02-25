@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5013457aca99a63808077b86f5674460e83fdc41
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4ed604302ca187ad4953e865d68dc73030a37c02
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232982"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562134"
 ---
 # <a name="orchestrator-function-code-constraints"></a>協調器函式程式碼條件約束
 
@@ -38,7 +38,7 @@ Durable Functions 是[Azure Functions](../functions-overview.md)的延伸模組�
 | 封鎖 Api | 在 .NET 和類似的 Api 中 `Thread.Sleep` 封鎖 Api，可能會導致協調器函式的效能和規模問題，因此應予以避免。 在 Azure Functions 耗用量方案中，甚至可能導致不必要的執行時間費用。 | 使用替代方案來封鎖 Api （如果有的話）。 例如，使用 `CreateTimer` 在協調流程執行中引進延遲。 [持久性計時器](durable-functions-timers.md)延遲不會計入協調器函式的執行時間。 |
 | 非同步 Api | 協調器程式碼絕不能啟動任何非同步作業，除非使用 `IDurableOrchestrationContext` API 或 `context.df` 物件的 API。 例如，您無法使用 .NET 中的 `Task.Run`、`Task.Delay`和 `HttpClient.SendAsync`，或在 JavaScript 中使用 `setTimeout` 和 `setInterval`。 長期工作架構會在單一執行緒上執行協調器程式碼。 它無法與其他非同步 Api 可能呼叫的任何其他執行緒互動。 | 協調器函式應該只會進行持久的非同步呼叫。 活動函式應該進行任何其他的非同步 API 呼叫。 |
 | 非同步 JavaScript 函數 | 您無法將 JavaScript 協調器函式宣告為 `async`，因為 node.js 執行時間並不保證非同步函式具有決定性。 | 將 JavaScript 協調器函數宣告為同步產生器函式。 |
-| 執行緒 Api | 長期工作架構會在單一執行緒上執行協調器程式碼，而且無法與任何其他執行緒互動。 將新的執行緒引進協調流程的執行，可能會導致不具決定性的執行或鎖死。 | 協調器函式幾乎不應使用執行緒 Api。 如果需要這類 Api，請將其僅限於活動功能。 |
+| 執行緒 Api | 長期工作架構會在單一執行緒上執行協調器程式碼，而且無法與任何其他執行緒互動。 將新的執行緒引進協調流程的執行，可能會導致不具決定性的執行或鎖死。 | 協調器函式幾乎不應使用執行緒 Api。 例如，在 .NET 中，請避免使用 `ConfigureAwait(continueOnCapturedContext: false)`;這可確保工作接續在協調器函式的原始 `SynchronizationContext`上執行。 如果需要這類 Api，請將其僅限於活動功能。 |
 | 靜態變數 | 避免在協調器函式中使用非常數的靜態變數，因為它們的值可能會隨著時間而改變，因而導致不具決定性的運行 | 使用常數，或將靜態變數的使用限制為活動函式。 |
 | 環境變數 | 請勿在協調器函式中使用環境變數。 其值可能會隨著時間而改變，因而導致不具決定性的執行時間行為。 | 環境變數必須只能從用戶端函式或活動函式中參考。 |
 | 無限迴圈 | 在協調器函式中避免無限迴圈。 由於長期工作架構會在協調流程函式進行時儲存執行歷程記錄，因此無限迴圈可能會導致 orchestrator 實例耗盡記憶體。 | 針對無限迴圈案例，請使用 .NET 中的 `ContinueAsNew` Api 或 JavaScript 中的 `continueAsNew`，以重新開機函數執行並捨棄先前的執行歷程記錄。 |

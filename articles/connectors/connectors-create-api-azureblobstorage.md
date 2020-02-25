@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: 86e8415cf2076819e23226e5e7878a2c96343f69
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2e2fea90f125cae6de44afbc82dd749a421ff3e2
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789913"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77566007"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 在 Azure Blob 儲存體中建立和管理 blob
 
@@ -23,11 +23,11 @@ ms.locfileid: "74789913"
 如果您還不熟悉邏輯應用程式，請檢閱[什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)和[快速入門：建立第一個邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 如需連接器專屬的技術資訊，請參閱 [Azure Blob 儲存體連接器參考](https://docs.microsoft.com/connectors/azureblobconnector/)。
 
 > [!IMPORTANT]
-> 若要啟用從 Azure Logic Apps 到防火牆後方儲存體帳戶的存取權，請參閱本主題稍後的[存取防火牆後方的儲存體帳戶](#storage-firewalls)一節。
+> 如果邏輯應用程式位於相同的區域，則無法直接存取位於防火牆後面的儲存體帳戶。 因應措施是，您可以將邏輯應用程式和儲存體帳戶放在不同的區域中。 如需啟用從 Azure Logic Apps 存取防火牆後方之儲存體帳戶的詳細資訊，請參閱本主題稍後的[存取防火牆後方的儲存體帳戶](#storage-firewalls)一節。
 
 <a name="blob-storage-limits"></a>
 
-## <a name="limits"></a>Limits
+## <a name="limits"></a>限制
 
 * 根據預設，Azure Blob 儲存體動作可以讀取或寫入*50 MB 或更小*的檔案。 若要處理大於 50 MB 但最多 1024 MB 的檔案，Azure Blob 儲存體動作支援[訊息區塊](../logic-apps/logic-apps-handle-large-messages.md)化。 「**取得 blob 內容**」動作會隱含地使用區塊化。
 
@@ -37,9 +37,9 @@ ms.locfileid: "74789913"
 
   * 遵循具有 [Azure Blob 儲存體**取得 Blob 內容**] 動作的觸發程式，它會讀取完整的檔案，並隱含地使用區塊化。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊一個免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
+* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
 * [Azure 儲存體帳戶和儲存體容器](../storage/blobs/storage-quickstart-blobs-portal.md)
 
@@ -121,15 +121,15 @@ ms.locfileid: "74789913"
 
 1. 當系統提示您建立連線時，請提供下列資訊：
 
-   | 屬性 | 必要項 | Value | 描述 |
+   | 屬性 | 必要 | 值 | 描述 |
    |----------|----------|-------|-------------|
-   | 連線名稱 | 是 | <*connection-name*> | 要為連線建立的名稱 |
+   | **連接名稱** | 是 | <*connection-name*> | 要為連線建立的名稱 |
    | **儲存體帳戶** | 是 | <*儲存體帳戶*> | 從清單中選取您的儲存體帳戶。 |
    ||||
 
    例如：
 
-   ![建立 Azure Blob 儲存體帳戶連線](./media/connectors-create-api-azureblobstorage/create-storage-account-connection.png)  
+   ![建立 Azure Blob 儲存體帳戶連線](./media/connectors-create-api-azureblobstorage/create-storage-account-connection.png) 
 
 1. 當您準備好時，請選取 [**建立**]
 
@@ -159,9 +159,12 @@ ms.locfileid: "74789913"
 
 <a name="access-other-regions"></a>
 
-### <a name="access-to-storage-accounts-in-other-regions"></a>存取其他區域中的儲存體帳戶
+### <a name="problems-accessing-storage-accounts-in-the-same-region"></a>存取相同區域中的儲存體帳戶時發生問題
 
-邏輯應用程式無法直接存取具有防火牆規則且位於相同區域中的儲存體帳戶。 不過，如果您允許存取[區域中受管理連接器的輸出 IP 位址](../logic-apps/logic-apps-limits-and-config.md#outbound)，則您的邏輯應用程式可以存取不同區域中的儲存體帳戶，除非您使用 azure 表格儲存體連接器或 Azure 佇列儲存體連接器。 若要存取表格儲存體或佇列儲存體，您仍然可以使用內建的 HTTP 觸發程式和動作。
+當邏輯應用程式位於相同區域時，無法直接存取位於防火牆後方的儲存體帳戶。 因應措施是將您的邏輯應用程式放在與儲存體帳戶不同的區域中，並在[您的區域中授與受控連接器的輸出 IP 位址](../logic-apps/logic-apps-limits-and-config.md#outbound)存取權。
+
+> [!NOTE]
+> 此解決方案不適用於 Azure 表格儲存體連接器和 Azure 佇列儲存體連接器。 相反地，若要存取您的表格儲存體或佇列儲存體，請使用內建的 HTTP 觸發程式和動作。
 
 <a name="access-trusted-virtual-network"></a>
 

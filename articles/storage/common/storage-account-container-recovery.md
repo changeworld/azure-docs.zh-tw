@@ -1,17 +1,19 @@
 ---
 title: 儲存體帳戶容器復原
 description: 儲存體帳戶容器復原
+services: storage
 author: v-miegge
 ms.topic: troubleshooting
 ms.author: kartup
 ms.date: 10/30/2019
 ms.service: storage
-ms.openlocfilehash: f095bdfe7bbb5777a2ad2aabb3bda92d0974457d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: dcscontentpm
+ms.openlocfilehash: 8b9b69fb32edab54fb2df558ea292df264e00cbb
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693575"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562270"
 ---
 # <a name="storage-account-container-recovery"></a>儲存體帳戶容器復原
 
@@ -25,7 +27,7 @@ Azure 儲存體可透過自動化複本提供資料復原功能。 不過，這�
 
 3. 在 [**總覽**] 區段中，**檢查是否有**複寫。
 
-   ![映像](media/storage-account-container-recovery/1.png)
+   ![影像](media/storage-account-container-recovery/1.png)
 
 4. 如果複寫類型為**GRS/RA-GRS**，則可以在不保證的情況下進行帳戶容器復原。 針對所有其他複寫類型，則不可行。
 

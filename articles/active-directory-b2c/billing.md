@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 10/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4db758ce0710f5b8b122feaadaa8b97a90dcb7cb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e3cdf44c2fc4c16bba283b6f884078dd947b1f34
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846857"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77564768"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Azure Active Directory B2C 的計費模型
 
@@ -82,7 +82,7 @@ Azure Active Directory B2C （Azure AD B2C）的使用費用會依 Azure 訂用�
 
 連結至 Azure AD B2C 租使用者的訂用帳戶可用於 Azure AD B2C 使用量或其他 Azure 資源的計費，包括額外的 Azure AD B2C 資源。 此訂用帳戶無法用來在 Azure AD B2C 租用戶內新增其他 Azure 授權型服務或 Office 365 授權。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 * [Azure 訂用帳戶](https://azure.microsoft.com/free/)
 * 您想要連結至訂用帳戶的[Azure AD B2C 租](tutorial-create-tenant.md)使用者
@@ -140,4 +140,4 @@ Azure AD B2C 支援 Azure 雲端解決方案提供者 (CSP) 訂用帳戶。 針�
 
 ## <a name="next-steps"></a>後續步驟
 
-除了查看所選 Azure 訂用帳戶內的使用量和帳單詳細資料，您也可以使用[使用量報告 API](view-usage-reports.md)來查看詳細的每日使用方式報告。
+如需最新的定價資訊，請參閱[Azure Active Directory B2C 定價](https://azure.microsoft.com/pricing/details/active-directory-b2c/)。

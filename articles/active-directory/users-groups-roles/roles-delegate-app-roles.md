@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 461ee1fc73448f16ba68850d6137fb396c658abd
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 251bc1c2277f9e43543f95c49d0b730a5a41c3d9
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024861"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77558973"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>在 Azure Active Directory 中委派應用程式註冊許可權
 
@@ -74,7 +74,7 @@ ms.locfileid: "74024861"
 
 Azure AD 具有一組內建的系統管理員角色，可授與存取權來管理所有應用程式 Azure AD 中的設定。 建議使用這些角色來授與 IT 專家存取權，以管理廣泛的應用程式設定許可權，而不授予存取權來管理與應用程式設定無關之 Azure AD 的其他部分。
 
-- 應用程式系統管理員：此角色中的使用者可以建立及管理企業應用程式、應用程式註冊和應用程式 proxy 設定的所有層面。 此角色也會授與能力來同意委派的權限以及 Microsoft Graph 和 Azure AD Graph 以外的應用程式權限。 在建立新的應用程式註冊或企業應用程式時，不會將指派給此角色的使用者新增為擁有者。
+- 應用程式系統管理員：此角色中的使用者可以建立及管理企業應用程式、應用程式註冊和應用程式 proxy 設定的所有層面。 此角色也會授與同意委派許可權的能力，以及不含 Microsoft Graph 的應用程式許可權。 在建立新的應用程式註冊或企業應用程式時，不會將指派給此角色的使用者新增為擁有者。
 - 雲端應用程式系統管理員：此角色中的使用者具有與應用程式系統管理員角色相同的許可權，但不包括管理應用程式 proxy 的能力。 在建立新的應用程式註冊或企業應用程式時，不會將指派給此角色的使用者新增為擁有者。
 
 如需詳細資訊及查看這些角色的說明，請參閱 [可用的角色](directory-assign-admin-roles.md#available-roles)。

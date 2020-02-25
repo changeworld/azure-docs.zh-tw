@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0c7f2de0a454dceeff1946a93801c20ad81ab0ab
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 44c942e43cd4be1d04f56e828e3e17c58713a706
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122515"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77559839"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure 時間序列深入解析預覽中的資料儲存體和輸入
 
@@ -155,7 +155,7 @@ Azure 時間序列深入解析 Preview 目前有**每個分割區限制為 0.5 M
 * [事件中樞規模](https://docs.microsoft.com/azure/event-hubs/event-hubs-scalability#throughput-units)
 * [事件中樞磁碟分割](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#partitions)
 
-### <a name="data-storage"></a>資料儲存
+### <a name="data-storage"></a>資料儲存體
 
 當您建立時間序列深入解析預覽的*隨用隨付*（PAYG） SKU 環境時，您會建立兩個 Azure 資源：
 
@@ -171,7 +171,7 @@ Azure 時間序列深入解析 Preview 目前有**每個分割區限制為 0.5 M
 
 ### <a name="data-availability"></a>資料可用性
 
-Azure 時間序列深入解析預覽分割和索引資料，以獲得最佳查詢效能。 資料會在索引後變成可供查詢。 正在內嵌的資料量可能會影響此可用性。
+Azure 時間序列深入解析預覽分割和索引資料，以獲得最佳查詢效能。 資料會從暖（啟用時）和冷存放區編制索引之後，都可供查詢。 正在內嵌的資料量可能會影響此可用性。
 
 > [!IMPORTANT]
 > 在預覽期間，您可能會遇到最多60秒的時間，資料才會變成可用。 如果您遇到超過60秒的嚴重延遲，請透過 Azure 入口網站提交支援票證。

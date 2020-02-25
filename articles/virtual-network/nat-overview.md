@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: 1bdd6552c3d418d761ffaf1df4ebb769421693f5
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 98d77f43c990dd00dd5e5d616b2fdee44fb8a2f6
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484990"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77431412"
 ---
 # <a name="what-is-virtual-network-nat-public-preview"></a>什麼是虛擬網路 NAT (公開預覽版)？
 
@@ -195,10 +195,11 @@ NAT 是透過標準支援管道來支援。
 
 ## <a name="limitations"></a>限制
 
-- NAT 與標準 SKU 公用 IP、公用 IP 前置詞和負載平衡器資源相容。   基本資源 (例如基本負載平衡器) 及其衍生的所有產品都不會與 NAT 相容。  基本資源必須置於未透過 NAT 設定的子網路上。
+- NAT 與標準 SKU 公用 IP、公用 IP 前置詞和負載平衡器資源相容。   基本資源 (例如基本負載平衡器) 及其衍生的所有產品都不會與 NAT 相容。  基本資源必須置於未設定 NAT 的子網路上。
 - 支援 IPv4 位址系列。  NAT 不會與 IPv6 位址系列互動。
 - 使用 NAT 傳送至公用端點的輸出流量，不接受子網路或 NIC 上的 NSG。
 - 使用 NAT 時，不支援 NSG 流量記錄。
+- 當虛擬網路有多個子網路時，每個子網路都可以設定不同的 NAT。
 - NAT 無法跨越多個虛擬網路。
 
 ## <a name="next-steps"></a>後續步驟

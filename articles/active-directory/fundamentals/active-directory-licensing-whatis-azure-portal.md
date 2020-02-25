@@ -14,14 +14,14 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a455f0e1959ad496a04f531cc0c3ece240c757ad
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 9eec896e6cccaf58c83820161c54c4f10cfadadd
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987155"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561556"
 ---
-# <a name="what-is-group-based-licensing-in-azure-active-directory"></a>什麼是 Azure Active Directory 中以群組為基礎的授權?
+# <a name="what-is-group-based-licensing-in-azure-active-directory"></a>什麼是 Azure Active Directory 中的群組型授權？
 
 Microsoft 付費的雲端服務 (例如 Office 365、Enterprise Mobility + Security、Dynamics 365 及其他類似的產品) 需要授權。 這些授權指派給每位需要存取這些服務的使用者。 若要管理授權，系統管理員需要使用其中一個管理入口網站 (Office 或 Azure) 和 PowerShell Cmdlet。 Azure Active Directory (Azure AD) 是支援所有 Microsoft 雲端服務身分識別管理的基礎結構。 Azure AD 會儲存使用者授權指派狀態的相關資訊。
 
@@ -34,12 +34,12 @@ Microsoft 付費的雲端服務 (例如 Office 365、Enterprise Mobility + Secur
 
 - Azure AD Premium P1 和更新版本的付費或試用訂用帳戶
 
-- Office 365 企業版 E3 或 Office 365 A3 或 Office 365 GCC G3 和更新版本的付費或試用版
+- 付費或試用版的 Office 365 企業版 E3 或 Office 365 A3 或 Office 365 GCC G3 或 office 365 E3 for GCCH 或 Office 365 E3 for DOD 和更新版本
 
 ### <a name="required-number-of-licenses"></a>所需的授權數目
 針對指派授權的任何群組，您也必須為每個唯一成員取得授權。 雖然您不必為群組中的每個成員指派授權，但您必須至少要有足夠的授權，才能包含所有成員。 例如，如果您的租用戶中有 1,000 個唯一成員屬於授權群組，則必須至少擁有 1,000 個授權，才能符合授權合約。
 
-## <a name="features"></a>功能
+## <a name="features"></a>特性
 
 以下是群組型授權的主要特色：
 
@@ -49,7 +49,7 @@ Microsoft 付費的雲端服務 (例如 Office 365、Enterprise Mobility + Secur
 
 - 支援所有需要使用者層級授權的 Microsoft 雲端服務。 這項支援包括所有 Office 365 產品、Enterprise Mobility + Security 和 Dynamics 365。
 
-- 以群組為基礎的授權目前僅透過[Azure 入口網站](https://portal.azure.com)提供。 如果您主要是使用其他管理入口網站進行使用者和群組管理, 例如[Microsoft 365 系統管理中心](https://admin.microsoft.com), 您可以繼續執行此動作。 但是，若要在群組等級管理授權，您應該使用 Azure 入口網站。
+- 以群組為基礎的授權目前僅透過[Azure 入口網站](https://portal.azure.com)提供。 如果您主要是使用其他管理入口網站進行使用者和群組管理，例如[Microsoft 365 系統管理中心](https://admin.microsoft.com)，您可以繼續執行此動作。 但是，若要在群組等級管理授權，您應該使用 Azure 入口網站。
 
 - Azure AD 會自動管理因群組成員資格變更而產生的授權修改。 一般而言，在成員資格變更後的幾分鐘內，授權修改就會生效。
 
@@ -57,7 +57,7 @@ Microsoft 付費的雲端服務 (例如 Office 365、Enterprise Mobility + Secur
 
 - 在某些情況下，授權無法指派給使用者。 比方說，租用戶可能沒有足夠可用的授權，或可能同時指派衝突的服務。 對於 Azure AD 無法完整處理群組授權的使用者，系統管理員可以存取這些使用者的相關資訊。 然後，他們可以根據該資訊採取更正動作。
 
-## <a name="your-feedback-is-welcome"></a>您的意見反應為 褖畫惎 ！
+## <a name="your-feedback-is-welcome"></a>歡迎您提供寶貴的意見！
 
 如果您有意見或功能要求，請使用 [Azure AD 管理員論壇](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=162510)告訴我們。
 

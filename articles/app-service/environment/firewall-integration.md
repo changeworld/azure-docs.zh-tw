@@ -4,15 +4,15 @@ description: 瞭解如何與 Azure 防火牆整合，以保護從 App Service �
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-ms.date: 01/14/2020
+ms.date: 01/24/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6b9633e8a37e665577f1e69e8008a64b7e139c1c
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: f24a984a4b3e13039f1f9dcf0be459425c048c41
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513334"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565718"
 ---
 # <a name="locking-down-an-app-service-environment"></a>鎖定 App Service 環境
 
@@ -41,9 +41,11 @@ ASE 輸出相依性幾乎完全使用 FQDN 定義，它背後並沒有靜態位�
 
 ## <a name="locking-down-inbound-management-traffic"></a>鎖定輸入管理流量
 
-如果您的 ASE 子網尚未指派 NSG，請建立一個。 在 NSG 中設定第一個規則，以允許來自埠454，455上名為 AppServiceManagement 的服務標記流量。 這就是公用 Ip 用來管理 ASE 所需的一切。 該服務標籤後方的位址只會用來管理 Azure App Service。 流經這些連線的管理流量會經過加密，並使用驗證憑證來保護。 此通道上的一般流量包括客戶起始的命令和健康狀態探查等。 
+如果您的 ASE 子網尚未指派 NSG，請建立一個。 在 NSG 內，設定第一個規則，以允許來自埠454，455上名為 AppServiceManagement 的服務標記流量。 允許從 AppServiceManagement 標記存取的規則，是公用 Ip 用來管理 ASE 的唯一必要條件。 該服務標籤後方的位址只會用來管理 Azure App Service。 流經這些連線的管理流量會經過加密，並使用驗證憑證來保護。 此通道上的一般流量包括客戶起始的命令和健康狀態探查等。 
 
 透過入口網站使用新子網進行的 Ase，是以包含 AppServiceManagement 標籤允許規則的 NSG 來建立。  
+
+您的 ASE 也必須允許埠16001上來自 Load Balancer 標記的輸入要求。 來自埠16001上 Load Balancer 的要求會在 Load Balancer 與 ASE 前端之間保持運作檢查。 如果埠16001遭到封鎖，ASE 將會變成狀況不良。
 
 ## <a name="configuring-azure-firewall-with-your-ase"></a>使用 ASE 設定 Azure 防火牆 
 
@@ -273,6 +275,21 @@ Linux 在 US Gov 區域中無法使用，因此不會列為選擇性設定。
 | Azure SQL |
 | Azure 儲存體 |
 | Azure 事件中樞 |
+
+#### <a name="ip-address-dependencies"></a>IP 位址相依性
+
+| 端點 | 詳細資料 |
+|----------| ----- |
+| \*:123 | NTP 時鐘檢查。 在連接埠 123 上的多個端點檢查流量 |
+| \*:12000 | 此連接埠用於某些系統監視。 如果遭到封鎖，則某些問題將難以分級，但您的 ASE 會繼續運作 |
+| 40.77.24.27：80 | 需要監視 ASE 問題併發出警示 |
+| 40.77.24.27:443 | 需要監視 ASE 問題併發出警示 |
+| 13.90.249.229：80 | 需要監視 ASE 問題併發出警示 |
+| 13.90.249.229:443 | 需要監視 ASE 問題併發出警示 |
+| 104.45.230.69：80 | 需要監視 ASE 問題併發出警示 |
+| 104.45.230.69:443 | 需要監視 ASE 問題併發出警示 |
+| 13.82.184.151：80 | 需要監視 ASE 問題併發出警示 |
+| 13.82.184.151:443 | 需要監視 ASE 問題併發出警示 |
 
 #### <a name="dependencies"></a>相依性 ####
 

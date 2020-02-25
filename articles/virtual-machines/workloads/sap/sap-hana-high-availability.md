@@ -1,23 +1,23 @@
 ---
-title: SUSE Linux Enterprise Server 上 Azure VM 的 SAP HANA 高可用性 | Microsoft Docs
+title: 在 SLES 上的 Azure Vm 上 SAP Hana 的高可用性 |Microsoft Docs
 description: SUSE Linux Enterprise Server 上 Azure VM 的 SAP HANA 高可用性
 services: virtual-machines-linux
 documentationcenter: ''
-author: MSSedusch
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/06/2019
-ms.author: sedusch
-ms.openlocfilehash: ffa2f937a14aa14750480d1c45498fb4c49fcc30
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.author: radeltch
+ms.openlocfilehash: 65ba7c0d8115e7125f1318e7fdca979cfab02474
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721495"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565837"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上 Azure VM 的 SAP HANA 高可用性
 
@@ -77,7 +77,7 @@ ms.locfileid: "73721495"
   * 設定 SAP HANA SR 效能最佳化基礎結構 (SLES for SAP Applications 12 SP1)。 此指南包含所有必要資訊，可供您設定 SAP HANA 系統複寫以供內部部署開發之用。 請使用此指南做為基礎。
   * 設定 SAP HANA SR 成本最佳化基礎結構 (SLES for SAP Applications 12 SP1)
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概觀
 
 為了達到高可用性，SAP HANA 會安裝在兩個虛擬機器上。 資料會使用「HANA 系統複寫」進行複寫。
 

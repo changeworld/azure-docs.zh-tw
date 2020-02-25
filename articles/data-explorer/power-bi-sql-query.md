@@ -1,5 +1,5 @@
 ---
-title: 在 Power BI 中使用 SQL 查詢從 Azure 資料總管將資料視覺化
+title: 使用 Power BI SQL 查詢將 Azure 資料總管中的資料視覺化
 description: 在本文中，您將瞭解如何使用三個選項的其中一個，將 Power BI 中的資料視覺化：針對 Azure 資料總管叢集的 SQL 查詢。
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: e4e7858a54f3002a511269a2519135d5ac24ed68
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d402d4c1ee77d0f97d2a5c3bdf43d0cc62aac096
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024073"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560468"
 ---
 # <a name="visualize-data-from-azure-data-explorer-using-a-sql-query-in-power-bi"></a>在 Power BI 中使用 SQL 查詢從 Azure 資料總管將資料視覺化
 
@@ -22,7 +22,7 @@ Azure 資料總管提供三個選項以便連線到 Power BI 中的資料：使�
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 您需要下列專案才能完成這篇文章：
 
@@ -48,11 +48,11 @@ Azure 資料總管提供三個選項以便連線到 Power BI 中的資料：使�
 
     ![資料庫、資料表、查詢選項](media/power-bi-sql-query/database-table-query.png)
 
-    **設定** | **值** | **欄位描述**
+    **設定** | **ReplTest1** | **欄位描述**
     |---|---|---|
     | 伺服器 | *help.kusto.windows.net* | 說明叢集的 URL (不含 *https://* )。 對於其他叢集，URL 的格式為 *\<ClusterName\>.\<Region\>.kusto.windows.net*。 |
     | 資料庫 | *範例* | 裝載於所要連線叢集上的範例資料庫。 |
-    | 資料連線模式 | <bpt id="p1">*</bpt>Import<ept id="p1">*</ept> | 決定 Power BI 是否匯入資料或直接連線到資料來源。 您可以使用任一選項搭配此連接器。 |
+    | 資料連線模式 | *匯入* | 決定 Power BI 是否匯入資料或直接連線到資料來源。 您可以使用任一選項搭配此連接器。 |
     | 命令逾時 | 保留空白 | 查詢執行多久才會擲回逾時錯誤。 |
     | SQL 陳述式 | 複製此資料表下方的查詢 | Azure 資料總管轉譯成原生查詢的 SQL 陳述式。 |
     | 其他選項 | 保留為預設值 | 選項不適用於 Azure 資料總管叢集。 |

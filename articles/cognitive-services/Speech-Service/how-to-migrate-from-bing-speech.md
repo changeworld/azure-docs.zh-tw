@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/01/2018
+ms.date: 01/21/2020
 ms.author: nitinme
-ms.openlocfilehash: c0e1cc2fc1b3d4aed82c5442d2d3e23a1272fab5
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: d6d9cb4dda93523b1136c8cc4cd307ae82c8b674
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805938"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560928"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>從 Bing 語音遷移至語音服務
 
@@ -51,7 +51,7 @@ C# SDK | :heavy_check_mark: | :heavy_check_mark: | 語音服務支援 Windows 10
 簡單意圖辨識 | :heavy_minus_sign: | :heavy_check_mark:
 長音訊檔案的批次轉譯 | :heavy_minus_sign: | :heavy_check_mark:
 辨識模式 | 手動 (透過端點 URI) | 自動 | 語音服務無法使用辨識模式。
-端點位置 | 全球 | 區域 | 區域端點能改善延遲。
+端點位置 | 全域 | 地區 | 區域端點能改善延遲。
 REST API | :heavy_check_mark: | :heavy_check_mark: | 語音服務 REST Api 與 Bing 語音（不同端點）相容。 REST API 能支援文字轉換語音和有限的語音轉換文字功能。
 WebSocket 通訊協定 | :heavy_check_mark: | :heavy_check_mark: | 語音服務 Websocket API 與 Bing 語音（不同端點）相容。 可以的話，請移轉至語音 SDK 以簡化您的程式碼。
 服務對服務 API 呼叫 | :heavy_check_mark: | :heavy_minus_sign: | 透過 C# 服務程式庫在 Bing 語音中提供。
@@ -61,7 +61,7 @@ WebSocket 通訊協定 | :heavy_check_mark: | :heavy_check_mark: | 語音服務 
 
 ## <a name="migration-strategies"></a>移轉策略
 
-如果您或您的組織在使用 Bing 語音 API 的開發或生產環境中有應用程式，您應該儘快更新它們以使用語音服務。 請參閱[語音服務檔](index.md)以取得可用的 sdk、程式碼範例和教學課程。
+如果您或您的組織在使用 Bing 語音 API 的開發或生產環境中有應用程式，您應該儘快更新它們以使用語音服務。 請參閱[語音服務檔](index.yml)以取得可用的 sdk、程式碼範例和教學課程。
 
 語音服務[REST api](rest-apis.md)與 Bing 語音 api 相容。 如果您目前使用的是 Bing 語音 REST Api，您只需要變更 REST 端點，並切換至語音服務訂用帳戶金鑰。
 
@@ -92,7 +92,7 @@ Bing 語音客戶應該透過開啟[支援票證](https://ms.portal.azure.com/#b
 * [免費試用語音服務](get-started.md)
 * [快速入門：使用語音 SDK 在 UWP 應用程式中辨識語音](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp)
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 * [語音服務版本資訊](releasenotes.md)
 * [什麼是語音服務](overview.md)
 * [語音服務和語音 SDK 檔](speech-sdk.md#get-the-sdk)

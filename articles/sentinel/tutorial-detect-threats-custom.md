@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/20/2020
 ms.author: rkarlin
-ms.openlocfilehash: c643c037506725b1a48588ca779d074b6aecf7c2
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: bdd36e2f3c2b426f4bad3e787c12be2f7d09b303
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77506116"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565514"
 ---
 # <a name="tutorial-create-custom-analytic-rules-to-detect-suspicious-threats"></a>教學課程：建立自訂分析規則來偵測可疑威脅
 
@@ -40,7 +40,7 @@ ms.locfileid: "77506116"
 
     ![建立排程的查詢](media/tutorial-detect-threats-custom/create-scheduled-query.png)
 
-1. 在 [**一般**] 索引標籤中，提供唯一的**名稱**和**描述**。 在 [**策略**] 欄位中，您可以從用來分類規則的攻擊類別中選擇。 視需要設定警示**嚴重性**。當您建立規則時，預設會**啟用**其**狀態**，這表示它會在您完成建立之後立即執行。 如果您不想要讓它立即執行，請選取 [**停用**]，此規則將會新增至 [作用中**規則**] 索引標籤，而您可以在需要時從該處啟用它。
+1. 在 [**一般**] 索引標籤中，提供唯一的**名稱**和**描述**。 在 [**策略**] 欄位中，您可以從用來分類規則的攻擊類別中選擇。 視需要設定警示**嚴重性**。 當您建立規則時，預設會**啟用**其**狀態**，這表示它會在您完成建立之後立即執行。 如果您不想要讓它立即執行，請選取 [**停用**]，此規則將會新增至 [作用中**規則**] 索引標籤，而您可以在需要時從該處啟用它。
 
     ![開始建立自訂分析規則](media/tutorial-detect-threats-custom/general-tab.png)
 

@@ -4,20 +4,18 @@ description: 了解如何處理 Azure Functions 之長期函式延伸模組中�
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 6a442ac0d515f9cca9201767087a9b59588edeed
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 0c16ef092c30a94cd04b55c91d3643ac29b82be0
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769569"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562100"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>長期函式中的人為互動 - 電話驗證範例
 
 這個範例會示範如何建置[長期函式](durable-functions-overview.md)協調流程，其中牽涉到人為互動。 每當在自動化程序中牽涉到真人，處理程序必須能夠傳送通知給人員，並以非同步方式接收回應。 它也必須允許人員沒有空的可能性。 (此最後一個部分就是逾時變得重要的地方。)
 
 這個範例會實作以 SMS 為基礎的電話驗證系統。 這些類型的流量通常會在驗證客戶的電話號碼時，或針對多重要素驗證 (MFA) 使用。 這是一個強大的範例，因為整個執行都是使用幾個小型函式來完成。 不需要外部資料存放區，例如資料庫。
-
-[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -37,26 +35,32 @@ ms.locfileid: "75769569"
 
 本文會逐步解說範例應用程式中的下列函式：
 
-* **E4_SmsPhoneVerification**
-* **E4_SendSmsChallenge**
+* `E4_SmsPhoneVerification`：執行電話驗證程式的[協調](durable-functions-bindings.md#orchestration-trigger)器函式，包括管理超時和重試。
+* `E4_SendSmsChallenge`：透過文字訊息傳送程式碼的[協調](durable-functions-bindings.md#activity-trigger)器函式。
 
-下列各節說明用於C#腳本處理和 JavaScript 的設定和程式碼。 適用於 Visual Studio 開發的程式碼顯示在本文結尾。
+### <a name="e4_smsphoneverification-orchestrator-function"></a>E4_SmsPhoneVerification 協調器函式
 
-## <a name="the-sms-verification-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>SMS 驗證協調流程 (Visual Studio Code 和 Azure 入口網站範例程式碼)
+# <a name="c"></a>[C#](#tab/csharp)
+
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs?range=17-70)]
+
+> [!NOTE]
+> 起初可能不明顯，不過這個協調器函式完全具有決定性。 這是決定性的，因為 `CurrentUtcDateTime` 屬性是用來計算計時器到期時間，而且它會在協調器程式碼中的這個位置，于每次重新執行時傳回相同的值。 這個行為非常重要，可確保每次 `Task.WhenAny`的重複呼叫都有相同的 `winner` 結果。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **E4_SmsPhoneVerification** 函式會針對協調器函式使用標準 function.json。
 
-[!code-json[Main](~/samples-durable-functions/samples/csx/E4_SmsPhoneVerification/function.json)]
+[!code-json[Main](~/samples-durable-functions/samples/javascript/E4_SmsPhoneVerification/function.json)]
 
 以下是實作函式的程式碼：
 
-### <a name="c-script"></a>C# 指令碼
-
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SmsPhoneVerification/run.csx)]
-
-### <a name="javascript-functions-20-only"></a>JavaScript (僅限 Functions 2.0)
-
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SmsPhoneVerification/index.js)]
+
+> [!NOTE]
+> 起初可能不明顯，不過這個協調器函式完全具有決定性。 這是決定性的，因為 `currentUtcDateTime` 屬性是用來計算計時器到期時間，而且它會在協調器程式碼中的這個位置，于每次重新執行時傳回相同的值。 這個行為非常重要，可確保每次 `context.df.Task.any`的重複呼叫都有相同的 `winner` 結果。
+
+---
 
 一旦啟動，此協調器函式會執行下列作業：
 
@@ -65,31 +69,33 @@ ms.locfileid: "75769569"
 3. 建立長期計時器，它會觸發從目前時間起算 90 秒的時間。
 4. 與計時器同時，等候來自使用者的 **SmsChallengeResponse** 事件。
 
-使用者會收到具有四位數代碼的 SMS 訊息。 他們有 90 秒的時間將相同的 4 位數代碼傳送回協調器函式執行個體，以完成驗證程序。 如果提交錯誤的代碼，有額外三次嘗試可以進行修正 (在相同的 90 秒時間內)。
-
-> [!NOTE]
-> 起初可能不明顯，不過這個協調器函式完全具有決定性。 這是決定性的，因為 `CurrentUtcDateTime` （.NET）和 `currentUtcDateTime` （JavaScript）屬性會用來計算計時器到期時間，而這些屬性會在協調器程式碼中的這個時間點，于每次重新執行時傳回相同的值。 這個行為非常重要，可確保每次重複呼叫 `Task.WhenAny` （.NET）或 `context.df.Task.any` （JavaScript）時，都有相同的 `winner` 結果。
+使用者會收到具有四位數代碼的 SMS 訊息。 它們有90秒的時間，將相同的四位數代碼傳送回協調器函式實例，以完成驗證程式。 如果提交錯誤的代碼，有額外三次嘗試可以進行修正 (在相同的 90 秒時間內)。
 
 > [!WARNING]
 > 如果您已經在上述範例中接受挑戰回應，且不再需要使用計時器，請務必[取消計時器](durable-functions-timers.md)。
 
-## <a name="send-the-sms-message"></a>傳送 SMS 訊息
+## <a name="e4_sendsmschallenge-activity-function"></a>E4_SendSmsChallenge 活動函數
 
-**E4_SendSmsChallenge** 函式會使用 Twilio 繫結，將具有 4 位數代碼的 SMS 訊息傳送給使用者。 function.json 定義如下：
+**E4_SendSmsChallenge**函式會使用 Twilio 系結，將具有四位數代碼的 SMS 訊息傳送給使用者。
 
-[!code-json[Main](~/samples-durable-functions/samples/csx/E4_SendSmsChallenge/function.json)]
+# <a name="c"></a>[C#](#tab/csharp)
 
-以下是代碼，它會產生 4 位數挑戰碼並且傳送 SMS 訊息：
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs?range=72-89)]
 
-### <a name="c-script"></a>C# 指令碼
+> [!NOTE]
+> 您將需要安裝 `Microsoft.Azure.WebJobs.Extensions.Twilio` Nuget 套件，才能執行範例程式碼。
 
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SendSmsChallenge/run.csx)]
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-### <a name="javascript-functions-20-only"></a>JavaScript (僅限 Functions 2.0)
+function.json 定義如下：
+
+[!code-json[Main](~/samples-durable-functions/samples/javascript/E4_SendSmsChallenge/function.json)]
+
+以下程式碼會產生四位數的挑戰代碼並傳送 SMS 訊息：
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SendSmsChallenge/index.js)]
 
-這個 **E4_SendSmsChallenge** 函式只會呼叫一次，即使處理程序損毀或重新執行也是如此。 這樣是好的，因為您不會想要讓使用者收到多則 SMS 訊息。 `challengeCode` 傳回值會自動保存，讓協調器函式一定知道正確的代碼是什麼。
+---
 
 ## <a name="run-the-sample"></a>執行範例
 
@@ -147,15 +153,6 @@ Content-Length: 145
 
 {"runtimeStatus":"Completed","input":"+1425XXXXXXX","output":false,"createdTime":"2017-06-29T19:20:49Z","lastUpdatedTime":"2017-06-29T19:22:23Z"}
 ```
-
-## <a name="visual-studio-sample-code"></a>Visual Studio 範例程式碼
-
-以下是 Visual Studio 專案中的單一 C# 檔案所示範的協調流程：
-
-> [!NOTE]
-> 您將需要安裝 `Microsoft.Azure.WebJobs.Extensions.Twilio` NuGet 套件，才能執行下列範例程式碼。
-
-[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs)]
 
 ## <a name="next-steps"></a>後續步驟
 

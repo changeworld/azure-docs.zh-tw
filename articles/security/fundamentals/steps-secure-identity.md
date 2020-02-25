@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: cafa9d6100e03d8315bf5dd19d863ca90aadd4bb
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: e0db8edfdfa380697a1d8d7e262a7a84da2fb7d2
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190897"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565531"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>可保護身分識別基礎結構的五個步驟
 
@@ -35,7 +35,7 @@ ms.locfileid: "77190897"
 閱讀這份檢查清單時，請務必追蹤哪些功能和步驟已完成。
 
 > [!NOTE]
-> 這份文件中有諸多建議，僅對設定為以 Azure Active Directory 作為其識別提供者的應用程式有效。 為應用程式設定單一登入，可確保應用程式會享有認證原則、威脅偵測、稽核、記錄，以及其他已新增至這些應用程式的功能。 [透過 Azure Active Directory 的單一登入](../../active-directory/manage-apps/configure-single-sign-on-portal.md)是實現這些建議的基礎。
+> 這份文件中有諸多建議，僅對設定為以 Azure Active Directory 作為其識別提供者的應用程式有效。 為應用程式設定單一登入，可確保應用程式會享有認證原則、威脅偵測、稽核、記錄，以及其他已新增至這些應用程式的功能。 [透過 Azure Active Directory 的單一登入](../../active-directory/manage-apps/configure-single-sign-on-non-gallery-applications.md)是實現這些建議的基礎。
 
 本文件中的建議事項是與[身分識別安全分數](../../active-directory/fundamentals/identity-secure-score.md)相互搭配，其能針對您 Azure AD 租用戶的身分識別安全設定進行自動化評估。 組織可以使用 Azure AD 入口網站中的 [身分識別安全分數] 頁面，找出其目前安全性設定的差距，以確保其遵循目前 Microsoft 的安全性[最佳作法](identity-management-best-practices.md)。 實作 [安全分數] 頁面中的每個建議，將能提升您的分數並允許您追蹤自己的進度，並能協助您與業界其他類似規模的組織比較彼此的實作情況。
 
