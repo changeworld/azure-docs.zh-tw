@@ -353,9 +353,27 @@
             - name: 輸出
               href: functions-bindings-event-grid-output.md
         - name: 事件中樞
-          href: functions-bindings-event-hubs.md
+          items:
+            - name: 概觀
+              href: functions-bindings-event-hubs.md
+              displayName: Azure Event Hubs
+            - name: 觸發程序
+              href: functions-bindings-event-hubs-trigger.md
+              displayName: Azure Event Hubs
+            - name: 輸出
+              href: functions-bindings-event-hubs-output.md
+              displayName: Azure Event Hubs
         - name: IoT 中樞
-          href: functions-bindings-event-iot.md
+          items:
+            - name: 概觀
+              href: functions-bindings-event-iot.md
+              displayName: Azure IoT Hubs
+            - name: 觸發程序
+              href: functions-bindings-event-iot-trigger.md
+              displayName: Azure IoT Hubs
+            - name: 輸出
+              href: functions-bindings-event-iot-output.md
+              displayName: Azure IoT Hubs
         - name: HTTP 和 Webhook
           items:
             - name: 概觀

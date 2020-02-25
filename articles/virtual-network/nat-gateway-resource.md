@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/18/2020
+ms.date: 02/19/2020
 ms.author: allensu
-ms.openlocfilehash: 0cbebf4ab2d865d49a85da2e809bdf24e7258a5f
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: a118d560541595e26c80547dd641968c518aa353
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444378"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485007"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources-public-preview"></a>使用 NAT 閘道資源設計虛擬網路 (公開預覽版)
 
@@ -341,7 +341,6 @@ NAT 閘道資源會與 UDP 和 TCP 流量的 IP 和 IP 傳輸標頭互動，而�
 - 支援 IPv4 位址系列。  NAT 不會與 IPv6 位址系列互動。
 - 使用 NAT 傳送至公用端點的輸出流量，不接受子網路或 NIC 上的 NSG。
 - 使用 NAT 時，不支援 NSG 流量記錄。
-- 當虛擬網路有多個子網路時，每個子網路都可以設定不同的 NAT。
 - NAT 無法跨越多個虛擬網路。
 
 ## <a name="preview-participation"></a>預覽參與

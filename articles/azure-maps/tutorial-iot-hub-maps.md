@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 48d148256fe69bbdfd188f1d8472c2de80b0fa64
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: a49f641561aa7a293628e914c964020145e0ae62
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208364"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486410"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>教學課程：使用 Azure 地圖服務執行 IoT 空間分析
 
@@ -116,9 +116,9 @@ Azure 函式內的程式碼會檢查車輛是否已離開地理柵欄。 如果�
 
 ### <a name="create-a-storage-account"></a>建立儲存體帳戶
 
-為了記錄事件資料，我們將在 "ContosoRental" 資源群組中建立一般用途的 **v2storage** 帳戶，以將資料儲存為 Blob。 若要建立儲存體帳戶，請依照[建立儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal)中的指示操作。 接著，我們必須建立用來儲存 Blob 的容器。 請依照下列步驟執行此作業：
+若要記錄事件資料，我們將會建立一般用途 **v2storage** 提供所有 Azure 儲存體服務的存取權：Blob、檔案、佇列、資料表和磁碟。  我們必須將此儲存體帳戶放在「ContosoRental」資源群組中，以將資料儲存為 blob。 若要建立儲存體帳戶，請依照[建立儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal)中的指示操作。 接著，我們必須建立用來儲存 Blob 的容器。 請依照下列步驟執行此作業：
 
-1. 在您的儲存體帳戶中，瀏覽至 [容器]。
+1. 在您的「儲存體帳戶 - Blob、檔案、資料表、佇列」中，瀏覽至 [容器]。
 
     ![Blob](./media/tutorial-iot-hub-maps/blobs.png)
 
@@ -155,6 +155,9 @@ IoT 中樞是雲端中的受控服務。 IoT 中樞可作為 IoT 應用程式和
     
     ![register-device](./media/tutorial-iot-hub-maps/register-device.png)
 
+3. 儲存裝置的**主要連接字串**，以便在稍後的步驟中使用，而您需要使用此連接字串來變更預留位置。
+
+    ![add-device](./media/tutorial-iot-hub-maps/connectionString.png)
 
 ## <a name="upload-geofence"></a>上傳地理柵欄
 
@@ -188,7 +191,7 @@ IoT 中樞是雲端中的受控服務。 IoT 中樞可作為 IoT 應用程式和
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
    ```
 
-6. 複製您的狀態 URI 並為其附加 `subscription-key` 參數，使其值設為您的 Azure 地圖服務帳戶訂用帳戶金鑰。 狀態 URI 格式應會如下所示：
+6. 複製您的狀態 URI，並向其附加 `subscription-key` 參數。 將 Azure 地圖服務帳戶訂用帳戶金鑰的值指派給 `subscription-key` 參數。 狀態 URI 格式應如下所示，且 `{Subscription-key}` 取代為您的訂用帳戶金鑰。
 
    ```HTTP
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
@@ -218,7 +221,7 @@ Azure Functions 是無伺服器計算服務，可讓我們依需求執行程式�
 
     ![create-resource](./media/tutorial-iot-hub-maps/create-resource.png)
 
-2. 在 [函式應用程式建立]  頁面上，為您的函式應用程式命名。 在 [資源群組]  底下選取 [使用現有的]  ，然後從下拉式清單中選取 [ContosoRental]。 選取 [.NET Core] 作為執行時間堆疊。 在 [儲存體]  底下選取 [使用現有的]  ，從下拉式清單中選取 [contosorentaldata]，然後選取 [檢視 + 建立]  。
+2. 在 [函式應用程式建立]  頁面上，為您的函式應用程式命名。 在 [資源群組]  底下選取 [使用現有的]  ，然後從下拉式清單中選取 [ContosoRental]。 選取 [.NET Core] 作為執行時間堆疊。 在 [裝載]  下，針對 [儲存體帳戶]  ，從先前的步驟中選取儲存體帳戶名稱。 在先前的步驟中，我們將儲存體帳戶命名為 **v2storage**。  接著，請選取 [檢閱 + 建立]  。
     
     ![create-app](./media/tutorial-iot-hub-maps/rental-app.png)
 
@@ -233,10 +236,12 @@ Azure Functions 是無伺服器計算服務，可讓我們依需求執行程式�
 5. 選取具有 **Azure 事件方格觸發程序**的範本。 出現提示時請安裝延伸模組，並為函式命名，然後選取 [建立]  。
 
     ![function-template](./media/tutorial-iot-hub-maps/eventgrid-funct.png)
+    
+    **Azure 事件中樞觸發程序** 和 **Azure 事件方格觸發程序** 有類似的圖示。 請確定您選取了 **Azure 事件方格觸發程序**。
 
-6. 將 [C# 程式碼](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/blob/master/src/Azure%20Function/run.csx)複製到您的函式中，然後按一下 [儲存]  。
+6. 將 [C# 程式碼](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/blob/master/src/Azure%20Function/run.csx)複製到您的函式中。
  
-7. 在 C# 指令碼中，取代下列參數：
+7. 在 C# 指令碼中，取代下列參數。 按一下 [檔案]  。 請先不要按 [執行] 
     * 將 **SUBSCRIPTION_KEY** 取代為您的 Azure 地圖服務帳戶主要訂用帳戶金鑰。
     * 將 **UDID** 取代為您上傳之地理柵欄的 udId。 
     * 指令碼中的 **CreateBlobAsync** 函式會在資料儲存體帳戶中為每個事件建立一個 Blob。 將 **ACCESS_KEY**、**ACCOUNT_NAME** 和 **STORAGE_CONTAINER_NAME** 取代為您儲存體帳戶的存取金鑰、帳戶名稱和資料儲存體容器。
@@ -245,7 +250,7 @@ Azure Functions 是無伺服器計算服務，可讓我們依需求執行程式�
     
     ![add-event-grid](./media/tutorial-iot-hub-maps/add-egs.png)
 
-11. 在 [事件訂閱詳細資料]  下方填入訂閱詳細資料、為您的訂閱命名，並選擇 [事件方格結構描述] 作為事件結構描述。 在 [主題詳細資料]  底下，選取 [Azure IoT 中樞帳戶] 作為 [主題類型]。 選擇您用來建立資源群組的相同訂用帳戶、選取 [ContosoRental] 作為 [資源群組]。 選擇您建立的 IoT 中樞作為 [資源]。 選擇 [裝置遙測]  作為 [事件類型]。 選擇這些選項後，您會看到 [主題類型] 自動變更為 [IoT 中樞]。
+11. 在 [事件訂閱詳細資料]  下方填入訂閱詳細資料，為您的事件訂用帳戶命名。 針對 [事件架構]，選擇 [事件方格架構]。 在 [主題詳細資料]  底下，選取 [Azure IoT 中樞帳戶] 作為 [主題類型]。 選擇您用來建立資源群組的相同訂用帳戶、選取 [ContosoRental] 作為 [資源群組]。 選擇您建立的 IoT 中樞作為 [資源]。 選擇 [裝置遙測]  作為 [事件類型]。 選擇這些選項後，您會看到 [主題類型] 自動變更為 [IoT 中樞]。
 
     ![event-grid-subscription](./media/tutorial-iot-hub-maps/af-egs.png)
  

@@ -72,12 +72,12 @@
       items:
         - name: 安全性概觀
           href: overview-security.md
+        - name: 安全性基準
+          href: security-baseline.md
         - name: 安全性環境
           href: key-vault-ovw-security-worlds.md
         - name: 保護您的金鑰保存庫
           href: key-vault-secure-your-key-vault.md
-        - name: 內建安全性控制
-          href: key-vault-security-controls.md
     - name: 虛刪除
       href: key-vault-ovw-soft-delete.md
     - name: 監視 Key Vault 事件

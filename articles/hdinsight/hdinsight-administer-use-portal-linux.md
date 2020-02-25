@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/12/2020
-ms.openlocfilehash: d030e44f59d41c32c9a76c0b89c0bce1c8c54a69
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: b9d923b3272f9d8b3da39d7cdb771a766eee4eab
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186846"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561777"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 入口網站管理 HDInsight 中的 Apache Hadoop 叢集
 
@@ -229,18 +229,6 @@ HDInsight 叢集可以有兩個使用者帳戶。 HDInsight 叢集使用者帳�
    | 保存這個指令碼動作... |不選取此欄位。 |
 
 6. 按一下 [建立] 套用指令碼。 腳本完成後，您就可以使用 SSH 與新密碼連接到叢集。
-
-## <a name="grantrevoke-access"></a>授與/撤銷存取權
-
-HDInsight 叢集具有下列 HTTP Web 服務 (所有這些服務都有 RESTful 端點)：
-
-- ODBC
-- JDBC
-- Ambari
-- Oozie
-- Templeton
-
-預設會授與這些服務的存取權。 您可以使用[Azure PowerShell](hdinsight-administer-use-powershell.md#grantrevoke-access)撤銷/授與存取權。
 
 ## <a name="find-the-subscription-id"></a>尋找訂用帳戶識別碼
 

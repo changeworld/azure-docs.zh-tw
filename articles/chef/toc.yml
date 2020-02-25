@@ -21,7 +21,7 @@
     - name: Chef
       items:
         - name: 建立 Windows VM
-          href: /azure/virtual-machines/windows/chef-automation
+          href: ./chef-automation.md
 - name: 參考
   items:
     - name: Azure Chef 擴充功能
