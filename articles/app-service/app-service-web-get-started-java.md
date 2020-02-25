@@ -1,6 +1,6 @@
 ---
 title: 快速入門：在 Windows 上建立 Java 應用程式
-description: 在短短幾分鐘內將您的第一個 Java Hello World 部署至 Windows 上的 Azure App Service。 App Service 的 Maven 外掛程式可讓您輕鬆部署 Java 應用程式。
+description: 在短短幾分鐘內將您的第一個 Java Hello World 部署至 Windows 上的 Azure App Service。 適用於 Maven 的 Azure Web 應用程式外掛程式可讓您輕鬆部署 Java 應用程式。
 keywords: Azure, App Service, Web 應用程式, Windows, Java, Maven, 快速入門
 author: msangapu-msft
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: c511ed3f432c8e54a820c01839269712271774bd
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 3cf759294a31fcf90c5a3f4a6cdc68e3c35882e0
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672166"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425341"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>快速入門：在 Windows 上的 Azure App Service 中建立 Java 應用程式
 
@@ -22,7 +22,7 @@ ms.locfileid: "74672166"
 > 本文會將應用程式部署至 Windows 上的 App Service。 若要部署至 _Linux_ 上的 App Service，請參閱[在 Linux 上建立 Java Web 應用程式](./containers/quickstart-java.md)。
 >
 
-[Azure App Service](overview.md) 可提供可高度擴充、自我修復的 Web 主控服務。  本快速入門說明如何使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 搭配[適用於 Azure App Service 的 Maven 外掛程式](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin)，部署 Java Web 封存 (WAR) 檔案。
+[Azure App Service](overview.md) 可提供可高度擴充、自我修復的 Web 主控服務。  本快速入門說明如何使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 搭配[適用於 Maven 的 Azure Web 應用程式外掛程式](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin)，部署 Java Web 封存 (WAR) 檔案。
 
 > [!NOTE]
 > 使用 IntelliJ 和 Eclipse 等熱門 IDE 也可以執行相同的動作。 請參閱 [Azure Toolkit for IntelliJ 快速入門](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app)或 [Azure Toolkit for Eclipse 快速入門](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app)中的類似文件。
@@ -95,7 +95,7 @@ code pom.xml
 
 更新外掛程式組態中的下列預留位置：
 
-| Placeholder | 說明 |
+| 預留位置 | 描述 |
 | ----------- | ----------- |
 | `SUBSCRIPTION_ID` | 您要作為應用程式部署目的地的唯一訂用帳戶識別碼。 使用 `az account show` 命令，可以從 Cloud Shell 或 CLI 取得預設訂用帳戶的 ID。 如需所有可用的訂用帳戶，請使用 `az account list` 命令。|
 | `RESOURCEGROUP_NAME` | 容納新建立應用程式的新資源群組名稱。 將應用程式的所有資源放在群組中，藉此同時管理。 例如，刪除資源群組會刪除所有與應用程式相關聯的資源。 使用唯一的新資源群組名稱來更新此值，例如 myResourceGroup  。 您在下一節中會使用此資源群組名稱來清除所有的 Azure 資源。 |
