@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: a3e9c05fbe68bf1b03f45d045afd8754753fecd3
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 5109c33acf4a92a3227fe79d6d2c997a54adec08
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688837"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425267"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>教學課程：使用 Linux 上的 Azure App Service 和 Azure Cosmos DB 建置 Java Spring Boot Web 應用程式
 
@@ -31,7 +31,7 @@ ms.locfileid: "74688837"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 在您自己的電腦上安裝 [Azure CLI](https://docs.microsoft.com/cli/azure/overview)。 
 * [Git](https://git-scm.com/)
@@ -173,7 +173,7 @@ Spring TODO 應用程式啟動之後，您可以使用以下連結從本機存�
 
 ## <a name="configure-azure-deployment"></a>設定 Azure 部署
 
-開啟 `initial/spring-boot-todo` 目錄中的 `pom.xml` 檔案，並新增下列[適用於 Azure App Service 的 Maven 外掛程式](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md)組態。
+開啟 `initial/spring-boot-todo` 目錄中的 `pom.xml` 檔案，並新增下列[適用於 Maven 的 Azure Web 應用程式外掛程式](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md)組態。
 
 ```xml    
 <plugins> 

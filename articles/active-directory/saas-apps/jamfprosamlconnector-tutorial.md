@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/28/2019
+ms.date: 02/11/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc99e23e1b885de25bd2159d7916790cad851108
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 1d83dbe756e8e6acdb58861ac359801bc13a63c4
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77150218"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373186"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-jamf-pro"></a>教學課程：Azure Active Directory SSO 與 Jamf Pro 整合
 
@@ -31,7 +31,7 @@ ms.locfileid: "77150218"
 * 讓您的使用者使用其 Azure AD 帳戶自動登入 Jamf Pro。
 * 在 Azure 入口網站中集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 的整合，請參閱[搭配 Azure Active Directory 的單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 的整合，請參閱[搭配 Azure Active Directory 的單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -42,7 +42,10 @@ ms.locfileid: "77150218"
 
 ## <a name="scenario-description"></a>案例描述
 
-在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。 Jamf Pro 支援 **SP 起始**和 **IDP 起始**的 SSO。
+在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。 
+
+* Jamf Pro 支援 **SP 起始**和 **IDP 起始**的 SSO。
+* 設定 Jamf Pro 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="add-jamf-pro-from-the-gallery"></a>從資源庫新增 Jamf Pro
 
@@ -147,20 +150,20 @@ ms.locfileid: "77150218"
 
     ![Jamf Pro 中的單一登入頁面](./media/jamfprosamlconnector-tutorial/configure3.png)
 
-  a. 選取 [編輯]  。
+    a. 選取 [編輯]  。
 
-  b. 選取 [啟用單一登入驗證]  核取方塊。
+    b. 選取 [啟用單一登入驗證]  核取方塊。
 
-    c. 從 [識別提供者]  下拉式功能表中，選取 [Azure]  作為選項。
+  c. 從 [識別提供者]  下拉式功能表中，選取 [Azure]  作為選項。
 
-    d. 複製 [實體識別碼]  值，並將其貼至 Azure 入口網站中 [基本 SAML 組態]  區段上的 [識別碼 (實體識別碼)]  欄位中。
+  d. 複製 [實體識別碼]  值，並將其貼至 Azure 入口網站中 [基本 SAML 組態]  區段上的 [識別碼 (實體識別碼)]  欄位中。
 
-    > [!NOTE]
-    > 在 `<SUBDOMAIN>` 中使用此值來完成 Azure 入口網站上 [基本 SAML 設定]  區段中的 [登入 URL] 和 [回覆 URL]。
+> [!NOTE]
+> 在 `<SUBDOMAIN>` 中使用此值來完成 Azure 入口網站上 [基本 SAML 設定]  區段中的 [登入 URL] 和 [回覆 URL]。
 
-    e. 從 [識別提供者中繼資料來源]  下拉式功能表中選取 [中繼資料 URL]  。 在顯示的欄位中，貼上您從 Azure 入口網站複製的 [應用程式同盟中繼資料 URL]  值。
+  e. 從 [識別提供者中繼資料來源]  下拉式功能表中選取 [中繼資料 URL]  。 在顯示的欄位中，貼上您從 Azure 入口網站複製的 [應用程式同盟中繼資料 URL]  值。
 
-    f. (選擇性) 編輯權杖到期日，或選取 [停用 SAML 權杖到期日]。
+  f. (選擇性) 編輯權杖到期日，或選取 [停用 SAML 權杖到期日]。
 
 7. 在相同頁面上，向下捲動到 [使用者對應]  區段。 然後執行下列步驟。
 
@@ -200,7 +203,7 @@ ms.locfileid: "77150218"
 
     ![[Jamf Pro 使用者帳戶和群組] 頁面中的 [建立標準帳戶] 選項](./media/jamfprosamlconnector-tutorial/user3.png)
 
-6. 在 [新增帳戶]  對話方塊中，執行下列步驟。
+6. 在 [新增帳戶]  對話方塊中，執行下列步驟：
 
     ![Jamf Pro 系統設定中的新增帳戶設定選項](./media/jamfprosamlconnector-tutorial/user4.png)
 
@@ -228,8 +231,8 @@ ms.locfileid: "77150218"
 
 - [整合 SaaS 應用程式與 Azure Active Directory 的教學課程](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory 中的應用程式單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 中的應用程式單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 - [嘗試搭配 Azure AD 使用 Jamf Pro](https://aad.portal.azure.com/)

@@ -2,17 +2,17 @@
 title: 什麼是 Azure 保留項目？
 description: 了解 Azure Reservations 和定價，以節省虛擬機器、SQL 資料庫、Azure Cosmos DB 及其他資源的成本。
 author: yashesvi
-manager: yashar
+ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 11/22/2019
+ms.date: 02/18/2020
 ms.author: banders
-ms.openlocfilehash: 10cf5b5a0ec4edda3d3c868cda34352e827604b0
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c6a8547235c302f52aacd0e6ae4a8fbf08b538b8
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76841875"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443630"
 ---
 # <a name="what-are-azure-reservations"></a>什麼是 Azure 保留項目？
 
@@ -37,11 +37,19 @@ ms.locfileid: "76841875"
 - **SQL Database 保留的 vCore**：保留僅包含計算成本。 授權為分開計費。
 - **SQL 資料倉儲**：保留涵蓋 cDWU 使用量。 但未涵蓋與 SQL 資料倉儲使用量相關的儲存或網路費用。
 - **App Service 戳記費用**：保留涵蓋戳記使用量。 但不會套用至背景工作角色，因此任何其他與戳記相關聯的資源也會分開收費。
-- 適用於 MySQL 的 Azure 資料庫
-- 適用於 PostgreSQL 的 Azure 資料庫
-- 適用於 MariaDB 的 Azure 資料庫
-- Azure 資料總管
+- **Azure Databricks** - 保留僅涵蓋 DBU 使用量。 其他費用 (例如計算、儲存體和網路) 會個別收取。
+- **適用於 MySQL 的 Azure 資料庫** - 保留僅包含計算成本。 保留並未涵蓋與 MySQL Database 伺服器相關聯的軟體、網路或儲存體費用。
+- **適用於 PostgreSQL 的 Azure 資料庫** - 保留僅包含計算成本。 保留並未涵蓋與 PostgreSQL Database 伺服器相關聯的軟體、網路或儲存體費用。
+- **適用於 MariaDB 的 Azure 資料庫** - 保留僅包含計算成本。 保留並未涵蓋與 MariaDB Database 伺服器相關聯的軟體、網路或儲存體費用。
+- **Azure 資料總管** - 保留涵蓋加成費用。 保留並未涵蓋與叢集相關聯的計算、網路或儲存體費用。
+- **進階 SSD 受控磁碟** - 針對指定的磁碟 SKU 進行保留。 
 
+軟體方案：
+
+- **SUSE Linux** - 保留涵蓋軟體方案成本。 折扣僅適用於 SUSE 計量，但不適用於虛擬機器使用量。
+- **Red Hat 方案** - 保留涵蓋軟體方案成本。 折扣僅適用於 RedHat 計量，但不適用於虛擬機器使用量。
+- **由 CloudSimple 提供的 Azure VMware 解決方案** - 保留涵蓋 VMWare CloudSimple 節點。 可能會收取額外的軟體費用。
+- **Azure Red Hat OpenShift** - 保留適用於 OpenShift 成本，而不適用於 Azure 基礎結構成本。
 
 針對 Windows 虛擬機器和 SQL 資料庫，您可以利用 [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) 來涵蓋授權成本。
 

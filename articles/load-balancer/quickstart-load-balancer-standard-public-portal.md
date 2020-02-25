@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 4a5775be66f95fb69db761c2356a61f80068bc75
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: eab8298362bfb3ad790d13fcbf47e0fe624ed3fd
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843866"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470185"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立負載平衡器以平衡 VM 的負載
 
@@ -46,10 +46,14 @@ ms.locfileid: "76843866"
     | 名稱                   | *myLoadBalancer*                                   |
     | 區域         | 選取 [西歐]  。                                        |
     | 類型          | 選取 [公用]  。                                        |
-    | SKU           | 選取 [標準]  或 [基本]  。 Microsoft 建議對生產工作負載使用「標準」。  |
+    | SKU           | 選取 [標準]  或 [基本]  。 Microsoft 建議對生產工作負載使用「標準」。 |
     | 公用 IP 位址 | 選取 [建立新的]  。 如果您有想要使用的現有公用 IP，請選取 [使用現有]  。 |
-    | 公用 IP 位址名稱              | 在文字方塊中輸入 *myPublicIP*。   |
+    | 公用 IP 位址名稱              | 在文字方塊中輸入 *myPublicIP*。   使用 ```-SKU Basic``` 來建立基本公用 IP。 基本公用 IP 與 **標準**負載平衡器不相容。 Microsoft 建議對生產工作負載使用都需要**標準**。|
     | 可用性區域 | 輸入「區域備援」  以建立復原性 Load Balancer。 若要建立區域性 Load Balancer，請從 1、2 或 3 選取特定區域 |
+
+> [!IMPORTANT]
+> 本快速入門的其餘部分假設在上述 SKU 選取程序期間會選擇**標準** SKU。
+
 
 3. 在 [檢閱 + 建立]  索引標籤中，選取 [建立]  。   
 

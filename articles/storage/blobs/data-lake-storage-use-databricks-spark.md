@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: e26ae4d384b1718b1cdb12abbda82aad22afde4d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0c18c39ced40505a87af8907a65aa16aae978838
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462587"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471868"
 ---
 # <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>教學課程：Azure Data Lake Storage Gen2、Azure Databricks 和 Spark
 
@@ -129,7 +129,7 @@ ms.locfileid: "75462587"
 
    * 使用您的儲存體帳戶名稱取代 `<storage-account-name>` 預留位置值。
 
-   * 請以您要為容器指定的任何名稱取代 `<container-name>` 預留位置。
+   * 使用您儲存體帳戶中的容器名稱取代 `<container-name>` 預留位置。
 
 ## <a name="create-a-container-and-mount-it"></a>建立容器和掛接容器
 
@@ -161,20 +161,7 @@ ms.locfileid: "75462587"
     extra_configs = configs)
     ```
 
-18. 在此程式碼區塊中，請將此程式碼區塊中的 `appId`、`password`、`tenant` 和 `storage-account-name` 預留位置值取代為您在執行本教學課程的必要條件時所收集到的值。 請以您在先前步驟中提供給容器的名稱取代 `container-name` 預留位置值。
-
-請使用這些值來取代上述預留位置。
-
-   * `appId` 和 `password` 來自於您在建立服務主體時向 Active Directory 註冊的應用程式。
-
-   * `tenant-id` 來自於您的訂用帳戶。
-
-   * `storage-account-name` 是您 Azure Data Lake Storage Gen2 儲存體帳戶的名稱。
-
-   * 請以您要為容器指定的任何名稱取代 `container-name` 預留位置。
-
-   > [!NOTE]
-   > 在生產環境設定中，請考慮將密碼儲存在 Azure Databricks 中。 然後，將查閱索引鍵新增至程式碼區塊，而不是密碼。 完成此快速入門之後，請參閱 Azure Databricks 網站上的 [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) 一文，以檢視此方法的範例。
+18. 在此程式碼區塊中，請將此程式碼區塊中的 `appId`、`password`、`tenant` 和 `storage-account-name` 預留位置值取代為您在執行本教學課程的必要條件時所收集到的值。 使用容器名稱取代 `container-name` 預留位置值。
 
 19. 按 **SHIFT + ENTER** 鍵以執行此區塊中的程式碼。
 

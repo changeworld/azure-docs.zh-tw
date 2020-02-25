@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/28/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: be39449c1c11acdbdc99bd96f917c51eebda44ae
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 38ee180fa59fec6619010a3ded1f6837a5ca5239
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195782"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77371345"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站部署和設定 Azure 防火牆
 
@@ -143,9 +143,9 @@ ms.locfileid: "74195782"
    |訂用帳戶     |\<您的訂用帳戶\>|
    |資源群組     |**Test-FW-RG** |
    |名稱     |**Test-FW01**|
-   |位置     |選取您先前使用的相同位置|
+   |Location     |選取您先前使用的相同位置|
    |選擇虛擬網路     |**使用現有項目**︰**Test-FW-VN**|
-   |公用 IP 位址     |**建立新項目**。 公用 IP 位址必須是標準 SKU 類型。|
+   |公用 IP 位址     |**新增**。 公用 IP 位址必須是標準 SKU 類型。|
 
 5. 選取 [檢閱 + 建立]  。
 6. 檢閱摘要，然後選取 [建立]  來建立防火牆。

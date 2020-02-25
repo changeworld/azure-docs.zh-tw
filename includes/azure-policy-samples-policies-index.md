@@ -1,11 +1,15 @@
 ---
-ms.openlocfilehash: 3856f192f51c0cd276fd282d2fb72204d0e84092
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: bb96d48edf2b98c6c50b0477b4de748777b67eb8
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77170056"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77370762"
 ---
+## <a name="app-platform"></a>應用程式平台
+
+[!INCLUDE [azure-policy-samples-policies-app-platform](azure-policy-samples-policies-app-platform.md)]
+
 ## <a name="app-service"></a>App Service 方案
 
 [!INCLUDE [azure-policy-samples-policies-app-service](azure-policy-samples-policies-app-service.md)]
@@ -25,6 +29,10 @@ ms.locfileid: "77170056"
 ## <a name="compute"></a>計算
 
 [!INCLUDE [azure-policy-samples-policies-compute](azure-policy-samples-policies-compute.md)]
+
+## <a name="container-registry"></a>Container Registry
+
+[!INCLUDE [azure-policy-samples-policies-container-registry](azure-policy-samples-policies-container-registry.md)]
 
 ## <a name="cosmos-db"></a>Cosmos DB
 

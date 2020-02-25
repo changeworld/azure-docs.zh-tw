@@ -9,21 +9,21 @@ ms.topic: include
 ms.date: 01/13/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
-ms.openlocfilehash: c50326cf308d7d68f08fa5282f2baaa6b490d543
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: dd8f8e415f2e83b6f08aa00953e42daecead7652
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987871"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77372229"
 ---
 <a name="HOLTop"></a>
 
-#### <a name="version-30-previewtabversion-3"></a>[3.0-preview 版](#tab/version-3)
+#### <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
 
 [v3 參考文件](https://aka.ms/azsdk-js-textanalytics-ref-docs) | [v3 程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics) | [v3 套件 (NPM)](https://www.npmjs.com/package/@azure/ai-text-analytics) | [v3 範例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples)
 
 
-#### <a name="version-21tabversion-2"></a>[2.1 版](#tab/version-2)
+#### <a name="version-21"></a>[2.1 版](#tab/version-2)
 
 [v2 參考文件](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics) | [v2 程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesTextAnalytics) | [v2 套件 (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-textanalytics) | [v2 範例](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
 
@@ -56,6 +56,16 @@ npm init
 ```
 ### <a name="install-the-client-library"></a>安裝用戶端程式庫
 
+#### <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
+
+安裝 `@azure/ai-text-analytics` NPM 套件：
+
+```console
+npm install --save @azure/ai-text-analytics
+```
+
+#### <a name="version-21"></a>[2.1 版](#tab/version-2)
+
 安裝 `@azure/cognitiveservices-textanalytics` NPM 套件：
 
 ```console
@@ -66,11 +76,27 @@ npm install --save @azure/cognitiveservices-textanalytics
 
 建立名為 `index.js` 的檔案，並新增下列程式庫：
 
+---
+
+您應用程式的 `package.json` 檔案會隨著相依性而更新。
+建立名為 `index.js` 的檔案，並新增下列程式庫：
+
+#### <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
+
+```javascript
+"use strict";
+
+const { TextAnalyticsClient, TextAnalyticsApiKeyCredential } = require("@azure/ai-text-analytics");
+```
+
+#### <a name="version-21"></a>[2.1 版](#tab/version-2)
+
 ```javascript
 "use strict";
 
 const { TextAnalyticsClient, CognitiveServicesCredential } = require("@azure/cognitiveservices-textanalytics");
 ```
+---
 
 為資源的 Azure 端點和金鑰建立變數。
 
@@ -100,15 +126,15 @@ const endpoint = `<paste-your-text-analytics-endpoint-here>`;
 
 ## <a name="client-authentication"></a>用戶端驗證
 
-#### <a name="version-30-previewtabversion-3"></a>[3.0-preview 版](#tab/version-3)
+#### <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
 
 使用金鑰和端點作為參數來建立新的 `TextAnalyticsClient` 物件。
 
 ```javascript
-const client = new TextAnalyticsClient(endpoint,  new CognitiveServicesCredential(key));
+const textAnalyticsClient = new TextAnalyticsClient(endpoint,  new TextAnalyticsApiKeyCredential(key));
 ```
 
-#### <a name="version-21tabversion-2"></a>[2.1 版](#tab/version-2)
+#### <a name="version-21"></a>[2.1 版](#tab/version-2)
 
 以 `credentials` 和 `endpoint` 作為參數來建立新的 [TextAnalyticsClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient) 物件。
 
@@ -118,7 +144,7 @@ const client = new TextAnalyticsClient(endpoint,  new CognitiveServicesCredentia
 
 ## <a name="sentiment-analysis"></a>情感分析
 
-#### <a name="version-30-previewtabversion-3"></a>[3.0-preview 版](#tab/version-3)
+#### <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
 
 建立所要分析文件所在字串的陣列。 呼叫用戶端的 `analyzeSentiment()` 方法，並取得傳回的 `SentimentBatchResult` 物件。 逐一查看結果清單，並印出每份文件的識別碼、文件層級情感與信賴分數。 針對每份文件，結果中會包含句子層級的情感，以及位移、長度和信賴分數。
 
@@ -127,19 +153,19 @@ async function sentimentAnalysis(client){
 
     const sentimentInput = [
         "I had the best day of my life. I wish you were there with me."
-    ]
-
+    ];
     const sentimentResult = await client.analyzeSentiment(sentimentInput);
-    result.forEach(document => {
+
+    sentimentResult.forEach(document => {
         console.log(`ID: ${document.id}`);
         console.log(`\tDocument Sentiment: ${document.sentiment}`);
         console.log(`\tDocument Scores:`);
-        console.log(`\t\tPositive: ${document.documentScores.positive.toFixed(2)} \tNegative: ${document.documentScores.negative.toFixed(2)} \tNeutral: ${document.documentScores.neutral.toFixed(2)}`);
+        console.log(`\t\tPositive: ${document.sentimentScores.positive.toFixed(2)} \tNegative: ${document.sentimentScores.negative.toFixed(2)} \tNeutral: ${document.sentimentScores.neutral.toFixed(2)}`);
         console.log(`\tSentences Sentiment(${document.sentences.length}):`);
         document.sentences.forEach(sentence => {
             console.log(`\t\tSentence sentiment: ${sentence.sentiment}`)
             console.log(`\t\tSentences Scores:`);
-            console.log(`\t\tPositive: ${sentence.sentenceScores.positive.toFixed(2)} \tNegative: ${sentence.sentenceScores.negative.toFixed(2)} \tNeutral: ${sentence.sentenceScores.neutral.toFixed(2)}`);
+            console.log(`\t\tPositive: ${sentence.sentimentScores.positive.toFixed(2)} \tNegative: ${sentence.sentimentScores.negative.toFixed(2)} \tNeutral: ${sentence.sentimentScores.neutral.toFixed(2)}`);
             console.log(`\t\tLength: ${sentence.length}, Offset: ${sentence.offset}`);
         })
     });
@@ -155,7 +181,7 @@ sentimentAnalysis(textAnalyticsClient)
 ID: 0
         Document Sentiment: positive
         Document Scores:
-                Positive: 0.61  Negative: 0.01  Neutral: 0.39
+                Positive: 1.00  Negative: 0.00  Neutral: 0.00
         Sentences Sentiment(2):
                 Sentence sentiment: positive
                 Sentences Scores:
@@ -167,7 +193,7 @@ ID: 0
                 Length: 30, Offset: 31
 ```
 
-#### <a name="version-21tabversion-2"></a>[2.1 版](#tab/version-2)
+#### <a name="version-21"></a>[2.1 版](#tab/version-2)
 
 建立字典物件清單，其中包含您要分析的文件。 呼叫用戶端的 [sentiment()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#sentiment-models-textanalyticsclientsentimentoptionalparams-) 方法，並取得傳回的 [SentimentBatchResult](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/sentimentbatchresult)。 逐一查看結果清單，並列印每份文件的識別碼和人氣分數。 接近 0 的分數表示負面人氣，而接近 1 的分數則表示正面人氣。
 
@@ -188,24 +214,20 @@ ID: 0
 
 ## <a name="language-detection"></a>語言偵測
 
-#### <a name="version-30-previewtabversion-3"></a>[3.0-preview 版](#tab/version-3)
+#### <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
 
-建立所要分析文件所在字串的陣列。 呼叫用戶端的 `detectLanguages()` 方法，並取得傳回的 `DetectLanguageResult`。 接著逐一查看結果，並印出每個文件的識別碼以及各自的主要語言和偵測到的語言。
+建立所要分析文件所在字串的陣列。 呼叫用戶端的 `detectLanguage()` 方法，並取得傳回的 `DetectLanguageResultCollection`。 接著逐一查看結果，並印出每個文件的識別碼以及各自的主要語言。
 
 ```javascript
 async function languageDetection(client) {
 
     const languageInputArray = [
         "Ce document est rédigé en Français."
-    ]
+    ];
+    const languageResult = await client.detectLanguage(languageInputArray);
 
-    const languageResult = await client.detectLanguages(languageInputArray);
-
-    result.forEach(document => {
+    languageResult.forEach(document => {
         console.log(`ID: ${document.id}`);
-        document.detectedLanguages.forEach(language =>
-        console.log(`\tDetected Language ${language.name}`)
-        );
         console.log(`\tPrimary Language ${document.primaryLanguage.name}`)
     });
 }
@@ -218,11 +240,10 @@ languageDetection(textAnalyticsClient);
 
 ```console
 ID: 0
-        Detected Language French
         Primary Language French
 ```
 
-#### <a name="version-21tabversion-2"></a>[2.1 版](#tab/version-2)
+#### <a name="version-21"></a>[2.1 版](#tab/version-2)
 
 建立字典物件清單，其中包含您的文件。 呼叫用戶端的 [detectLanguage()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#detectlanguage-models-textanalyticsclientdetectlanguageoptionalparams-) 方法，並取得傳回的 [LanguageBatchResult](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/languagebatchresult)。 接著逐一查看結果，並列印每份文件的識別碼和語言。
 
@@ -242,7 +263,7 @@ Document ID: 3 , Language: Chinese_Simplified
 
 ## <a name="named-entity-recognition-ner"></a>具名實體辨識 (NER)
 
-#### <a name="version-30-previewtabversion-3"></a>[3.0-preview 版](#tab/version-3)
+#### <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
 
 > [!NOTE]
 > 在 `3.0-preview` 版中：
@@ -258,13 +279,12 @@ async function entityRecognition(client){
         "Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800",
         "La sede principal de Microsoft se encuentra en la ciudad de Redmond, a 21 kilómetros de Seattle."
     ];
-
     const entityResults = await client.recognizeEntities(entityInputs);
 
     entityResults.forEach(document => {
         console.log(`Document ID: ${document.id}`);
         document.entities.forEach(entity => {
-            console.log(`\tName: ${entity.text} \tType: ${entity.type} \tSub Type: ${entity.subtype != "" ? entity.subtype : "N/A"}`);
+            console.log(`\tName: ${entity.text} \tCategory: ${entity.category} \tSubcategory: ${entity.subCategory ? entity.subCategory : "N/A"}`);
             console.log(`\tOffset: ${entity.offset}, Length: ${entity.length} \tScore: ${entity.score}`);
         });
     });
@@ -278,23 +298,26 @@ entityRecognition(textAnalyticsClient);
 
 ```console
 Document ID: 0
-        Name: Microsoft         Type: Organization      Sub Type: N/A
+        Name: Microsoft         Category: Organization  Subcategory: N/A
         Offset: 0, Length: 9    Score: 1
-        Name: Bill Gates        Type: Person    Sub Type: N/A
-        Offset: 25, Length: 10  Score: 0.999786376953125
-        Name: Paul Allen        Type: Person    Sub Type: N/A
-        Offset: 40, Length: 10  Score: 0.9988105297088623
-        Name: April 4, 1975     Type: DateTime  Sub Type: Date
+        Name: Bill Gates        Category: Person        Subcategory: N/A
+        Offset: 25, Length: 10  Score: 0.67
+        Name: Paul Allen        Category: Person        Subcategory: N/A
+        Offset: 40, Length: 10  Score: 0.81
+        Name: April 4, 1975     Category: DateTime      Subcategory: Date
         Offset: 54, Length: 13  Score: 0.8
-        Name: Altair    Type: Organization      Sub Type: N/A
-        Offset: 116, Length: 6  Score: 0.7996330857276917
-        Name: 8800      Type: Quantity  Sub Type: Number
+        Name: interpreters      Category: PersonType    Subcategory: N/A
+        Offset: 95, Length: 12  Score: 0.6
+        Name: 8800      Category: Quantity      Subcategory: Number
         Offset: 123, Length: 4  Score: 0.8
 Document ID: 1
-        Name: Microsoft         Type: Organization      Sub Type: N/A
-        Offset: 21, Length: 9   Score: 0.9837456345558167
-        Name: 21        Type: Quantity  Sub Type: Number
+        Name: Microsoft         Category: Organization  Subcategory: N/A
+        Offset: 21, Length: 9   Score: 0.96
+        Name: Redmond   Category: Location      Subcategory: GPE
+        Offset: 60, Length: 7   Score: 0.09
+        Name: 21        Category: Quantity      Subcategory: Number
         Offset: 71, Length: 2   Score: 0.8
+        Name: Seattle   Category: Location      Subcategory: GPE
 ```
 
 ## <a name="using-ner-to-detect-personal-information"></a>使用 NER 來偵測個人資訊
@@ -307,13 +330,13 @@ async function entityPiiRecognition(client){
 
     const entityPiiInput = [
         "Insurance policy for SSN on file 123-12-1234 is here by approved."
-    ]
-    const entityResults = await client.recognizePiiEntities(entityPiiInput);
+    ];
+    const entityPiiResults = await client.recognizePiiEntities(entityPiiInput);
 
-    result.forEach(document => {
+    entityPiiResults.forEach(document => {
         console.log(`Document ID: ${document.id}`);
         document.entities.forEach(entity => {
-            console.log(`\tName: ${entity.text} \tType: ${entity.type} \tSub Type: ${entity.subtype != "" ? entity.subtype : "N/A"}`);
+            console.log(`\tName: ${entity.text} \tCategory: ${entity.category} \tSubcategory: ${entity.subCategory ? entity.subCategory : "N/A"}`);
             console.log(`\tOffset: ${entity.offset}, Length: ${entity.length} \tScore: ${entity.score}`);
         });
     });
@@ -327,7 +350,7 @@ entityPiiRecognition(textAnalyticsClient);
 
 ```console
 Document ID: 0
-        Name: 123-12-1234       Type: U.S. Social Security Number (SSN)         Sub Type: N/A
+        Name: 123-12-1234       Category: U.S. Social Security Number (SSN)     Subcategory: N/A
         Offset: 33, Length: 11  Score: 0.85
 ```
 
@@ -340,7 +363,7 @@ async function linkedEntityRecognition(client){
 
     const linkedEntityInput = [
         "Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800. During his career at Microsoft, Gates held the positions of chairman, chief executive officer, president and chief software architect, while also being the largest individual shareholder until May 2014."
-    ]
+    ];
     const entityResults = await client.recognizeLinkedEntities(linkedEntityInput);
 
     entityResults.forEach(document => {
@@ -351,7 +374,7 @@ async function linkedEntityRecognition(client){
             entity.matches.forEach(match => {
                 console.log(`\t\tText: ${match.text}`);
                 console.log(`\t\tOffset: ${match.offset}, Length: ${match.length} \tScore: ${match.score.toFixed(3)}`);
-            })
+            });
         });
     });
 }
@@ -367,34 +390,34 @@ Document ID: 0
         Name: Altair 8800       ID: Altair 8800         URL: https://en.wikipedia.org/wiki/Altair_8800  Data Source: Wikipedia
         Matches:
                 Text: Altair 8800
-                Offset: 116, Length: 11         Score: 0.650
+                Offset: 116, Length: 11         Score: 0.777
         Name: Bill Gates        ID: Bill Gates  URL: https://en.wikipedia.org/wiki/Bill_Gates   Data Source: Wikipedia
         Matches:
                 Text: Bill Gates
-                Offset: 25, Length: 10  Score: 0.243
+                Offset: 25, Length: 10  Score: 0.555
                 Text: Gates
-                Offset: 161, Length: 5  Score: 0.243
+                Offset: 161, Length: 5  Score: 0.555
         Name: Paul Allen        ID: Paul Allen  URL: https://en.wikipedia.org/wiki/Paul_Allen   Data Source: Wikipedia
         Matches:
                 Text: Paul Allen
-                Offset: 40, Length: 10  Score: 0.174
+                Offset: 40, Length: 10  Score: 0.533
         Name: Microsoft         ID: Microsoft   URL: https://en.wikipedia.org/wiki/Microsoft    Data Source: Wikipedia
         Matches:
                 Text: Microsoft
-                Offset: 0, Length: 9    Score: 0.196
+                Offset: 0, Length: 9    Score: 0.469
                 Text: Microsoft
-                Offset: 150, Length: 9  Score: 0.196
+                Offset: 150, Length: 9  Score: 0.469
         Name: April 4   ID: April 4     URL: https://en.wikipedia.org/wiki/April_4      Data Source: Wikipedia
         Matches:
                 Text: April 4
-                Offset: 54, Length: 7   Score: 0.137
+                Offset: 54, Length: 7   Score: 0.248
         Name: BASIC     ID: BASIC       URL: https://en.wikipedia.org/wiki/BASIC        Data Source: Wikipedia
         Matches:
                 Text: BASIC
-                Offset: 89, Length: 5   Score: 0.052
+                Offset: 89, Length: 5   Score: 0.281
 ```
 
-#### <a name="version-21tabversion-2"></a>[2.1 版](#tab/version-2)
+#### <a name="version-21"></a>[2.1 版](#tab/version-2)
 
 > [!NOTE]
 > 在 2.1 版中，實體連結會包含在 NER 回應中。
@@ -439,7 +462,7 @@ Document ID: 2
 
 ## <a name="key-phrase-extraction"></a>關鍵片語擷取
 
-#### <a name="version-30-previewtabversion-3"></a>[3.0-preview 版](#tab/version-3)
+#### <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
 
 建立所要分析文件所在字串的陣列。 呼叫用戶端的 `extractKeyPhrases()` 方法，並取得傳回的 `ExtractKeyPhrasesResult` 物件。 逐一查看結果，並列印每份文件的識別碼，以及任何偵測到的關鍵片語。
 
@@ -448,12 +471,10 @@ async function keyPhraseExtraction(client){
 
     const keyPhrasesInput = [
         "My cat might need to see a veterinarian.",
-    ]
-
-    const result = await client.extractKeyPhrases(keyPhrasesInput)
-
-
-    result.forEach(document => {
+    ];
+    const keyPhraseResult = await client.extractKeyPhrases(keyPhrasesInput);
+    
+    keyPhraseResult.forEach(document => {
         console.log(`ID: ${document.id}`);
         console.log(`\tDocument Key Phrases: ${document.keyPhrases}`);
     });
@@ -470,7 +491,7 @@ ID: 0
         Document Key Phrases: cat,veterinarian
 ```
 
-#### <a name="version-21tabversion-2"></a>[2.1 版](#tab/version-2)
+#### <a name="version-21"></a>[2.1 版](#tab/version-2)
 
 建立物件清單，其中包含您的文件。 呼叫用戶端的 [keyPhrases()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#keyphrases-models-textanalyticsclientkeyphrasesoptionalparams-) 方法，並取得傳回的 [KeyPhraseBatchResult](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/keyphrasebatchresult) 物件。 逐一查看結果，並列印每份文件的識別碼，以及任何偵測到的關鍵片語。
 

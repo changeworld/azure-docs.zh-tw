@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 12/20/2019
-ms.openlocfilehash: a994a72ae57b39dba8025e7636e0f822f483bc8c
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: e2e17ba6af60fa495a03e7d46a07cfe6b66f4e68
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720668"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472412"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中建立 Azure 認知搜尋的認知技能集
 
@@ -27,7 +27,7 @@ ms.locfileid: "76720668"
 
 本快速入門會使用 Azure 認知搜尋、[Azure Blob 儲存體](https://docs.microsoft.com/azure/storage/blobs/)和 [Azure 認知服務](https://azure.microsoft.com/services/cognitive-services/)進行 AI 處理。 
 
-由於工作負載很小，因此，從 Azure 認知搜尋叫用時，認知服務會在幕後連線以提供免費處理，每個索引子每天最多 20 筆交易。 如果使用我們提供的範例資料，就可以略過建立或連結認知服務資源的步驟。
+由於工作負載很小，因此認知服務會在幕後連線以提供免費處理，最多 20 筆交易。 對於這類小型資料集，您可以略過建立或連結認知服務資源的步驟。
 
 1. [下載範例資料](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)，其中有不同類型的小型檔案集。 將檔案解壓縮。
 
@@ -170,12 +170,12 @@ ms.locfileid: "76720668"
 
 如果您使用免費服務，請記住您會有三個索引、索引子和資料來源的限制。 您可以在入口網站中刪除個別項目，以避免超出限制。 
 
-> [!Tip]
-> 如果您想要重複此練習，或嘗試不同的 AI 擴充逐步解說，請刪除入口網站中的索引子。 刪除索引子，會將認知服務處理的免費每日交易計數器重設回零。
-
 ## <a name="next-steps"></a>後續步驟
 
 您可以使用入口網站、.NET SDK 或 REST API 來建立技能集。 若要進一步精進知識，請使用 Postman 和更多範例資料來試用 REST API。
 
 > [!div class="nextstepaction"]
 > [教學課程：使用 REST API 從 JSON Blob 擷取文字和結構](cognitive-search-tutorial-blob.md)
+
+> [!Tip]
+> 如果您想要重複此練習，或嘗試不同的 AI 擴充逐步解說，請刪除入口網站中的索引子。 刪除索引子，會將認知服務處理的免費每日交易計數器重設回零。

@@ -1,24 +1,24 @@
 ---
 title: 教學課程：使用 Azure Notebooks (Python) 規劃電動車的路線 | Microsoft Azure 地圖服務
 description: 使用 Microsoft Azure 地圖服務路線規劃 API 和 Azure Notebooks 來規劃電動車的路線。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: dfc9c045af5347ebd3f15df48d5a5756dd2a9e05
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 22a8561d69dd0eeb22f9fe025f5b792422db2c17
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844746"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208160"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>教學課程：使用 Azure Notebooks (Python) 規劃電動車的路線
 
-Azure 地圖服務是以原生方式整合到 Azure 的地理空間服務 API 組合。 透過這些 API，開發人員、企業及 ISV 就能建立定位感知的應用程式、IoT、行動性、物流及資產追蹤解決方案。 
+Azure 地圖服務是以原生方式整合到 Azure 的地理空間服務 API 組合。 這些 API 可讓開發人員、企業及 ISV 開發定位感知的應用程式、IoT、行動裝置、物流及資產追蹤解決方案。 
 
 您可以從 Python 和 R 等語言呼叫 Azure 地圖服務 REST API，以啟用地理空間資料分析和機器學習案例。 Azure 地圖服務提供一組健全的[路線規劃 API](https://docs.microsoft.com/rest/api/maps/route) \(英文\)，讓使用者能夠計算數個資料點之間的路線。 計算會以各種條件為依據，例如，車輛類型或可抵達的區域。 
 
@@ -74,7 +74,7 @@ Azure 地圖服務是以原生方式整合到 Azure 的地理空間服務 API �
 
 1. 成功完成上傳之後，您的檔案就會顯示在專案頁面上。 按兩下該檔案，使其以 Jupyter Notebook 的形式開啟。
 
-為協助您進一步了解在 Notebook 檔案中實作的功能，請在 Notebook 中就個別資料格逐一執行程式碼。 您可以選取筆記本應用程式頂端的 [執行]  按鈕，以執行每個資料格中的程式碼。
+請嘗試了解在 Notebook 檔案中執行的功能。 在 Notebook 檔案中執行程式碼，一次執行一個儲存格。 您可以選取筆記本應用程式頂端的 [執行]  按鈕，以執行每個資料格中的程式碼。
 
   ![[執行] 按鈕](./media/tutorial-ev-routing/run.png)
 
@@ -156,7 +156,7 @@ boundsData = {
 
 當您決定了電動車可抵達的範圍 (等時線) 之後，就可以在該範圍內搜尋充電站。 
 
-下列指令碼會呼叫 Azure 地圖服務 [Post 幾何內搜尋 API](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry) \(英文\)。 其會在車輛可抵達的最大範圍界限內搜尋電動車充電站，然後將回應剖析為可抵達位置的陣列。
+下列指令碼會呼叫 Azure 地圖服務 [Post 幾何內搜尋 API](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry) \(英文\)。 此 API 會在汽車的最大可到達範圍界限內搜尋電動車輛的充電站。 然後，指令碼會將回應剖析為可存取的位置陣列。
 
 若要在可抵達的範圍內搜尋電動車充電站，請執行下列指令碼：
 

@@ -1,5 +1,6 @@
 ---
-title: 使用 Azure Data Box Heavy 從 VHD 匯入資料並複製到受控磁碟的教學課程 | Microsoft Docs
+title: 教學課程：從 VHD 複製到受控磁碟
+titleSuffix: Azure Data Box Heavy
 description: 了解如何將 VHD 的資料從內部部署 VM 工作負載複製到 Azure Data Box Heavy
 services: databox
 author: alkohli
@@ -8,18 +9,18 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: a29cd142b3322c958f70aad8d5cad2bc30b87d76
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 01031159d1894c7cb5f36b48f268186dff21fd22
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67670828"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471324"
 ---
 # <a name="tutorial-use-data-box-heavy-to-import-data-as-managed-disks-in-azure"></a>教學課程：使用 Data Box Heavy 匯入資料以作為 Azure 中的受控磁碟
 
 本教學課程示範如何使用 Azure Data Box Heavy，將內部部署 VHD 移轉到 Azure 中的受控磁碟。 來自內部部署 VM 的 VHD 會複製到 Azure Data Box Heavy 以作為分頁 Blob，並上傳至 Azure 以作為受控磁碟。 這些受控磁碟接著可以連結到 Azure VM。
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 檢閱必要條件
@@ -27,7 +28,7 @@ ms.locfileid: "67670828"
 > * 將資料複製到 Data Box Heavy
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在您開始前，請確定：
 

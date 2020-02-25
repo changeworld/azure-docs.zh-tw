@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: 4e699b0fdbc22594a181d83c9650d569b35c52f3
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: b905b1e86810b25c4c94072d6cd414b993e2a883
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024155"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425975"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>開始導覽 Azure IoT 中心 UI
 
@@ -59,10 +59,10 @@ ms.locfileid: "77024155"
 
 ## <a name="navigate-your-application"></a>瀏覽您的應用程式
 
-在您進入 IoT 應用程式後，請使用左窗格存取不同的區域。 您可以藉由選取導覽列頂端的三條線圖示，來展開或摺疊導覽列：
+在您進入 IoT 應用程式後，請使用左窗格存取不同的區域。 您可藉由選取窗格頂端的三條線圖示，展開或摺疊左窗格：
 
 > [!NOTE]
-> 您在導覽列上看到的項目將取決於您的使用者角色。 深入了解如何[管理使用者和角色](howto-manage-users-roles.md)。 
+> 您在左窗格中看到的項目取決於您的使用者角色。 深入了解如何[管理使用者和角色](howto-manage-users-roles.md)。 
 
 :::row:::
   :::column span="":::

@@ -1,5 +1,6 @@
 ---
-title: 透過 REST API 將資料複製到 Azure 資料箱 Blob 儲存體的教學課程 | Microsoft Docs
+title: 教學課程：使用 REST API 複製到 Blob 儲存體
+titleSuffix: Azure Data Box
 description: 了解如何透過 REST API 將資料複製到您的 Azure 資料箱 Blob 儲存體
 services: databox
 author: alkohli
@@ -8,25 +9,25 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 05/09/2019
 ms.author: alkohli
-ms.openlocfilehash: fcd6fc95adc892885fd8471e622ce3b04258d8b5
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: b7d58bb13644c992894510f26a4848ea80c9df00
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800545"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471834"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>教學課程：透過 REST API 將資料複製到 Azure 資料箱 Blob 儲存體  
 
 本教學課程說明透過 REST API (透過 *http* 或 *https*) 連線到 Azure 資料箱 Blob 儲存體的程序。 連線之後，也會說明將資料複製到資料箱 Blob 儲存體並準備寄送資料箱所需的步驟。
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
-> * 必要條件
+> * Prerequisites
 > * 透過 *http* 或 *https* 連線到資料箱 Blob 儲存體
 > * 將資料複製到資料箱
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在您開始前，請確定：
 
@@ -213,7 +214,7 @@ RHEL、Fedora 及 CentOS 的新近版本則使用 `update-ca-trust` 命令。
     --recursive \
     --exclude-older
 
-#### <a name="windows"></a> Windows
+#### <a name="windows"></a>Windows
 
     AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
 
@@ -226,7 +227,7 @@ RHEL、Fedora 及 CentOS 的新近版本則使用 `update-ca-trust` 命令。
 在本教學課程中，您已了解 Azure 資料箱的相關主題，像是：
 
 > [!div class="checklist"]
-> * 必要條件
+> * Prerequisites
 > * 透過 *http* 或 *https* 連線到資料箱 Blob 儲存體
 > * 將資料複製到資料箱
 

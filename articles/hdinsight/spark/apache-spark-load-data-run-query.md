@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
-ms.date: 10/03/2019
-ms.openlocfilehash: 8c5fe1970857a04c7b237a101ac228dea024815b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive,mvc
+ms.date: 02/12/2020
+ms.openlocfilehash: 5eb6788a558e4429296731f1693edd18bf92f98f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494488"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198883"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>教學課程：在 Azure HDInsight 中的 Apache Spark 叢集上載入資料和執行查詢
 
@@ -24,7 +24,7 @@ ms.locfileid: "73494488"
 > * 從 csv 檔案建立資料框架
 > * 在資料框架上執行查詢
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 HDInsight 上的 Apache Spark 叢集。 請參閱[建立 Apache Spark 叢集](./apache-spark-jupyter-spark-sql-use-portal.md)。
 
@@ -60,7 +60,9 @@ Jupyter Notebook 是支援各種程式設計語言的互動式 Notebook 環境�
 
     ![互動式 Spark SQL 查詢的狀態](./media/apache-spark-load-data-run-query/hdinsight-spark-interactive-spark-query-status.png "互動式 Spark SQL 查詢的狀態")
 
-2. 執行下列程式碼，以建立資料框架和暫存資料表 (**hvac**)。
+1. 請記下傳回的工作階段識別碼。 在上圖中，工作階段識別碼為 0。 如有需要，您可以瀏覽至 `https://CLUSTERNAME.azurehdinsight.net/livy/sessions/ID/statements` 來擷取工作階段詳細資料，其中 CLUSTERNAME 是您的 Spark 叢集名稱，而 ID 是您的工作階段識別碼。
+
+1. 執行下列程式碼，以建立資料框架和暫存資料表 (**hvac**)。
 
     ```python
     # Create a dataframe and table from sample data

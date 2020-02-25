@@ -1,20 +1,20 @@
 ---
 title: 教學課程：依行進模式尋找多條路線 | Microsoft Azure 地圖服務
 description: 在本教學課程中，您將了解如何使用 Microsoft Azure 地圖服務尋找不同行進模式的路線。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 73cc2ff49653c91d635d52b79a92d1974bfd895b
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 628a3003cec2cc2ca58f1b133cf3236417dfa94e
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989649"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209489"
 ---
 # <a name="tutorial-find-routes-for-different-modes-of-travel-using-azure-maps"></a>教學課程：使用 Azure 地圖服務尋找不同行進模式的路線
 
@@ -158,7 +158,7 @@ ms.locfileid: "76989649"
     });
     ```
     
-    在地圖 `ready` 事件處理常式中，會建立資料來源以儲存路線以及起點和終點。 系統會建立線條圖層並將其附加至資料來源，以定義呈現路線的方式。 此外也會使用運算式，從路線特性的屬性中擷取線條的寬度和色彩。 將圖層新增至地圖時，會傳入值為 `'labels'` 的第二個參數，而指定要將此圖層呈現在地圖標籤下方。 這樣可以確保路線不會遮住道路標籤。 系統會建立符號圖層，並將其附加至資料來源。 此圖層會指定起點和終點的呈現方式。 此案例中已新增運算式，用以從每個點物件的屬性中擷取圖示影像和文字標籤資訊。 
+    在地圖 `ready` 事件處理常式中，會建立資料來源以儲存路線以及起點和終點。 系統會建立線條圖層並將其附加至資料來源，以定義呈現路線的方式。 此外也會使用運算式，從路線特性的屬性中擷取線條的寬度和色彩。 將圖層新增至地圖時，會傳入值為 `'labels'` 的第二個參數，而指定要將此圖層呈現在地圖標籤下方。 如此可確保路線不會遮住道路標籤。 系統會建立符號圖層，並將其附加至資料來源。 此圖層會指定起點和終點的呈現方式。 此案例中已新增運算式，用以從每個點物件的屬性中擷取圖示影像和文字標籤資訊。 
     
 2. 在此教學課程中，將起點設在西雅圖的一家虛構公司 Fabrikam，並將終點設在 Microsoft 辦公室。 在地圖 `ready` 事件處理常式中，新增下列程式碼。
 
@@ -200,7 +200,11 @@ ms.locfileid: "76989649"
 
 ## <a name="render-routes-prioritized-by-mode-of-travel"></a>轉譯依行進模式設定優先順序的路線
 
-本節說明如何使用地圖服務的路線規劃服務 API，根據運輸模式，尋找從給定起點到終點的多條路線。 路線規劃服務會提供 API 來規劃兩個位置之間「最快速」  、「最短」  、「最環保」  或「驚心動魄」  的路線，並將即時路況考慮進去。 它也可讓使用者使用 Azure 廣泛的歷史路況資料庫，並預測任何日期和時間的路線時間，以規劃日後的路線。 如需詳細資訊，請參閱 [GetRoute 指示](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)。 以下所有程式碼區塊都應該新增至**地圖載入 eventListener 內**，以確保會在地圖完整載入之後載入。
+本節說明如何使用地圖服務的路線規劃服務 API。 路線規劃服務 API 可根據運輸模式，尋找從給定起點到終點的多條路線。 路線規劃服務會提供 API 來規劃「最快速」  、「最短」  、「最環保」  或「驚心動魄」  的路線。 API 不只會在兩個位置之間規劃路由，還會考慮目前的交通狀況。 
+
+路線規劃 API 也可讓使用者使用 Azure 廣泛的歷史路況資料庫來規劃日後的路線。 API 可針對指定的日期和時間預測某段時間的路線狀況。 如需詳細資訊，請參閱 [GetRoute 指示](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)。 
+
+以下所有程式碼區塊都應該新增至**地圖載入 eventListener 內**，以確保會在地圖完整載入之後載入。
 
 1. 在 GetMap 函式中，將下列內容新增至 Javascript 程式碼。
 
@@ -244,7 +248,7 @@ ms.locfileid: "76989649"
     });
     ```
 
-    上方的程式碼片段會透過 [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest) 方法來查詢 Azure 地圖服務的路線規劃服務。 接著，系統會從回應中的 GeoJSON 特性集合擷取路線；這些特性是使用 `geojson.getFeatures()` 方法擷取的。 路線隨後會新增至資料來源。 指數 0 可確保該路線會在資料來源中的任何其他路線之前先呈現。 之所以這麼做，是因為卡車路線計算的速度通常比汽車路線計算慢，若卡車路線在汽車路線之後新增至資料來源，則會呈現於汽車路線之上。 系統會將兩個屬性新增至卡車路線，一個呈現為鮮明藍色的筆觸色彩，和一個寬度為九個像素的筆觸。
+    上方的程式碼片段會透過 [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest) 方法來查詢 Azure 地圖服務的路線規劃服務。 接著，系統會從回應中的 GeoJSON 特性集合擷取路線；這些特性是使用 `geojson.getFeatures()` 方法擷取的。 路線隨後會新增至資料來源。 指數 0 可確保該路線會在資料來源中的任何其他路線之前先呈現。 之所以這麼做，是因為卡車路線計算的速度通常比汽車路線計算慢。 如果卡車路線在汽車路線之後新增至資料來源，則會呈現於汽車路線之上。 系統會將兩個屬性新增至卡車路線，一個呈現為鮮明藍色的筆觸色彩，和一個寬度為九個像素的筆觸。
 
 3. 新增下列 JavaScript 程式碼以建構行車路線，並顯示結果。
 
@@ -270,7 +274,7 @@ ms.locfileid: "76989649"
 
     ![使用 Azure 路線規劃服務設定優先順序的路線](./media/tutorial-prioritized-routes/prioritized-routes.png)
 
-    卡車路線是較粗的藍色線，汽車路線則為較細的紫色線。 汽車路線會透過 I-90 穿越華盛頓湖，期間會經由隧道穿過住宅區底下，因此不得載運危險廢棄物貨物。 卡車路線 (指定了 USHazmatClass2 貨物類型) 則會正確引導使用不同的高速公路。
+    卡車路線為藍色粗線，而汽車路線為紫色細線。 汽車路線會透過 I-90 穿越華盛頓湖，期間會經由隧道穿過住宅區底下。 因為隧道接近居住區域，因此不得載運有害廢棄物。 卡車路線 (指定了 USHazmatClass2 貨物類型) 則會引導使用不同的高速公路。
 
 ## <a name="next-steps"></a>後續步驟
 

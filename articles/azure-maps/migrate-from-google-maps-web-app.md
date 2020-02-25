@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 67f9168d2b18a98850588554f77c4a5859f365df
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: b954c812bea6c2abf4376c2cee38a3789461ad01
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086426"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208738"
 ---
 # <a name="migrate-a-web-app-from-google-maps"></a>從 Google Maps 遷移 Web 應用程式
 
 使用 Google Maps 的 Web 應用程式大多使用 Google Maps V3 JavaScript SDK。 Azure 地圖服務 Web SDK 是適合作為遷移目的地的 Azure 型 SDK。 Azure 地圖服務 Web SDK 可讓您以自己的內容和圖像自訂互動式地圖。 您可以在 Web 或行動應用程式上執行應用程式。 此控制項使用 WebGL，可讓您以高效能轉譯大型資料集。 您可以使用 JavaScript 或 TypeScript 以此 SDK 進行開發。
 
-如果要遷移現有的 Web 應用程式，請檢查其是否使用開放原始碼地圖控制項程式庫。 開放原始碼地圖控制項程式庫的範例如下：Cesium、Leaflet 和 OpenLayers。 如果您的應用程式使用開放原始碼地圖控制項程式庫，而且不想使用 Azure 地圖服務 Web SDK，您仍然可以進行遷移。 在此情況下，請將您的應用程式連線至 Azure 地圖服務的地圖底圖服務 ([道路地圖底圖](https://docs.microsoft.com/rest/api/maps/render/getmaptile) \| [衛星地圖底圖](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile))。 以下幾點會詳細說明如何在某些常用的開放原始碼地圖控制項程式庫中使用 Azure 地圖服務。
+如果要遷移現有的 Web 應用程式，請檢查其是否使用開放原始碼地圖控制項程式庫。 開放原始碼地圖控制項程式庫的範例如下：Cesium、Leaflet 和 OpenLayers。 如果您的應用程式使用開放原始碼地圖控制項程式庫，而且您不想使用 Azure 地圖服務 Web SDK，您仍然可以遷移應用程式。 在這類情況下，請將您的應用程式連線至 Azure 地圖服務的地圖底圖服務 ([道路地圖底圖](https://docs.microsoft.com/rest/api/maps/render/getmaptile) \| [衛星地圖底圖](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile))。 以下幾點會詳細說明如何在某些常用的開放原始碼地圖控制項程式庫中使用 Azure 地圖服務。
 
 - Cesium - 適用於 Web 的3D 地圖控制項。 [程式碼範例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [文件](https://cesiumjs.org/)
 - Leaflet – 適用於 Web 的輕量型 2D 地圖控制項。 [程式碼範例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [文件](https://leafletjs.com/)
@@ -80,7 +80,7 @@ ms.locfileid: "77086426"
 - 在參考將於其中呈現地圖的 `div` 元素時，Azure 地圖服務中的 `Map` 類別只需要 `id` 值，而 Google Maps 則需要 `HTMLElement` 物件。
 - Azure 地圖服務中的座標會定義為 Position 物件，並可指定為 `[longitude, latitude]` 格式的簡單數字陣列。
 - Azure 地圖服務中的縮放層級比 Google Maps 中的縮放層級低一層級。 這項差異是因為兩個平台的地圖底圖系統大小不同。
-- Azure 地圖服務不會將任何導覽控制項新增至地圖畫布。 因此，根據預設，地圖不會有 [縮放] 按鈕和 [地圖樣式] 按鈕。 不過，會有控制項可用來新增地圖樣式選擇器、縮放按鈕、羅盤或旋轉控制項，以及傾斜角度控制項。
+- Azure 地圖服務不會將任何導覽控制項新增至地圖畫布。 因此，根據預設，地圖不會有 [縮放] 按鈕和 [地圖樣式] 按鈕。 不過，會有控制選項可用來新增地圖樣式選擇器、縮放按鈕、羅盤或旋轉控制項，以及傾斜角度控制項。
 - Azure 地圖服務中會新增事件處理常式，以監視地圖執行個體的 `ready` 事件。 當地圖完成載入 WebGL 內容和所有需要的資源時，就會引發此事件。 在地圖完成載入之後，將您要執行的任何程式碼新增至此事件處理常式。
 
 下列基本範例會使用 Google Maps 載入以紐約為座標中心的地圖。 經度：-73.985、緯度：40.747，而地圖的縮放層級為 12。
@@ -212,7 +212,7 @@ ms.locfileid: "77086426"
 
 **之後：Azure 地圖服務**
 
-Azure 地圖服務提供兩種不同的方式供您設定地圖的語言和區域檢視。 第一個選項是將這項資訊新增至全球*地圖集*命名空間，這會導致應用程式中的所有地圖控制項執行個體預設為這些設定。 以下範例會將語言設定為法文 ("fr-FR")，並將區域檢視設為「自動」：
+Azure 地圖服務提供兩種不同的方式供您設定地圖的語言和區域檢視。 第一個選項是將此資訊新增至全域 atlas  命名空間。 這會導致您應用程式中的所有地圖控制項執行個體皆以這些設定作為預設值。 以下範例會將語言設定為法文 ("fr-FR")，並將區域檢視設為「自動」：
 
 ```javascript
 atlas.setLanguage('fr-FR');
@@ -246,7 +246,7 @@ map = new atlas.Map('myMap', {
 
 ### <a name="setting-the-map-view"></a>設定地圖檢視
 
-在 Azure 地圖服務和 Google Maps 中，您都可以透過程式設計方式將動態地圖移至新的地理位置。 若要這麼做，請在 JavaScript 中呼叫適當的函式。 範例將說明如何讓地圖顯示衛星空照圖影像，將地圖置中於某個位置，以及在 Google Maps 中將縮放層級變更為 15。 使用的位置座標如下：經度：-111.0225 和緯度：35.0272。
+在 Azure 地圖服務和 Google Maps 中，您都可以透過程式設計方式將動態地圖移至新的地理位置。 若要這麼做，請在 JavaScript 中呼叫適當的函式。 範例將說明如何讓地圖顯示衛星空照圖影像，將地圖置中於某個位置，以及變更 Google Maps 中的縮放層級。 使用的位置座標如下：經度：-111.0225 和緯度：35.0272。
 
 > [!NOTE]
 > Google 地圖所使用的地圖底圖維度為 256 像素，而 Azure 地圖服務則使用較大的 512 像素地圖底圖。 因此，在載入和 Google Maps 相同的地圖區域時，Azure 地圖服務需要較少的網路要求數目。 由於地圖底圖金字塔在地圖控制項中的運作方式所致，您在使用 Azure 地圖服務時，必須將 Google Maps 中所用的縮放層級減去數字 1。 此算數運算可確保 Azure 地圖服務中較大的地圖底圖能和 Google Maps 呈現相同的地圖區域。
@@ -856,7 +856,7 @@ Google Maps 支援透過 `google.maps.Data` 類別來載入 GeoJSON 資料和動
 
 **之後：Azure 地圖服務**
 
-GeoJSON 是 Azure 地圖服務中的基底資料類型。 使用 `datasource.importFromUrl` 方法將其匯入資料來源。 若使用泡泡圖層，其可以根據資料來源中的功能屬性來呈現已縮放的圓形。 商務邏輯不會使用回呼函數，而是會轉換成運算式，並傳遞至樣式選項。 運算式會定義商務邏輯的運作方式。 運算式可傳遞至另一個執行緒，並根據功能資料進行評估。 可以將多個資料來源和層級新增至 Azure 地圖服務，每個都有不同的商務邏輯。 這項功能可讓您以不同的方式在地圖上呈現多個資料集。
+GeoJSON 是 Azure 地圖服務中的基底資料類型。 使用 `datasource.importFromUrl` 方法將其匯入資料來源。 使用泡泡圖層。 泡泡圖層會提供根據資料來源中的功能屬性呈現已縮放圓形的功能。 商務邏輯不會使用回呼函數，而是會轉換成運算式，並傳遞至樣式選項。 運算式會定義商務邏輯的運作方式。 運算式可傳遞至另一個執行緒，並根據功能資料進行評估。 可以將多個資料來源和層級新增至 Azure 地圖服務，每個都有不同的商務邏輯。 這項功能可讓您以不同的方式在地圖上呈現多個資料集。
 
 ```html
 <!DOCTYPE html>
@@ -953,7 +953,7 @@ GeoJSON 是 Azure 地圖服務中的基底資料類型。 使用 `datasource.imp
 
 **之前：Google 地圖**
 
-使用 MarkerCluster 程式庫來群集標記。 群集圖示僅限於影像，以一到五的數字作為名稱，並裝載於相同目錄中。
+使用 MarkerCluster 程式庫來群集標記。 群集圖示僅限於影像，並以一到五的數字作為名稱。 並且裝載在相同的目錄中。
 
 ```html
 <!DOCTYPE html>

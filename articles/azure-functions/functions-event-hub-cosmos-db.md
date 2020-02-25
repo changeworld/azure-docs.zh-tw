@@ -5,12 +5,12 @@ author: KarlErickson
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: karler
-ms.openlocfilehash: cef1d09f3365350240cb2ed879e4d41edec74aef
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b6d7b2c60e777266b1cab578b8970c1fa1c6bc50
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849831"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425318"
 ---
 # <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>教學課程：使用事件中樞觸發程序和 Azure Cosmos DB 輸出繫結來建立以 Java 撰寫的函式
 
@@ -25,7 +25,7 @@ ms.locfileid: "74849831"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，您必須安裝下列項目：
 
@@ -36,6 +36,8 @@ ms.locfileid: "74849831"
 
 > [!IMPORTANT]
 > `JAVA_HOME` 環境變數必須設定為 JDK 的安裝位置，才能完成本教學課程。
+
+如果您想要直接使用本教學課程的程式碼，請參閱 [java-functions-eventhub-cosmosdb](https://github.com/Azure-Samples/java-functions-eventhub-cosmosdb) 範例存放庫。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -201,7 +203,7 @@ az functionapp config appsettings set \
 
 ## <a name="create-and-test-your-functions"></a>建立和測試函式
 
-接下來，您會在本機電腦上建立專案、新增 Java 程式碼，並加以測試。 您會使用可與適用於 Azure Functions 的 Maven 外掛程式和 Azure Functions Core Tools 搭配運作的命令。 您的函式會在本機執行，但會使用您已建立的雲端式資源。 讓函式在本機運作之後，您就可以使用 Maven 將函式部署至雲端，並觀看資料和分析的累積。
+接下來，您會在本機電腦上建立專案、新增 Java 程式碼，並加以測試。 您會使用可與適用於 Maven 的 Azure Functions 外掛程式和 Azure Functions Core Tools 搭配運作的命令。 您的函式會在本機執行，但會使用您已建立的雲端式資源。 讓函式在本機運作之後，您就可以使用 Maven 將函式部署至雲端，並觀看資料和分析的累積。
 
 如果您使用了 Cloud Shell 來建立資源，則不會在本機連線至 Azure。 在此情況下，請使用 `az login` 命令來啟動以瀏覽器為基礎的登入流程。 然後，如有必要，請使用 `az account set --subscription` 並於後面加上訂用帳戶識別碼來設定預設的訂用帳戶。 最後，請執行下列命令在本機電腦上重新建立某些環境變數。 將 `<value>` 預留位置取代為您先前使用的相同值。
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/04/2019
-ms.openlocfilehash: e6ee75f4a7e00e8c21079e1336756db20221750f
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 6d75e48443fd8622ca2ae7ff05fe81184c4b2b16
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76837998"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472429"
 ---
 # <a name="introduction-to-ai-in-azure-cognitive-search"></a>Azure 認知搜尋中的 AI 簡介
 
@@ -131,7 +131,7 @@ Azure 認知搜尋服務中的認知技術是以認知服務 API 中預先訓練
 + [教學課程 (HTTP 要求)](cognitive-search-tutorial-blob.md)
 + [範例：建立 AI 擴充的自訂技能 (C#)](cognitive-search-create-custom-skill-example.md)
 
-基於學習目的，我們會建議使用免費服務，但可用的交易數目限制為每天 20 份文件。 若要在一天中執行快速入門和教學課程，請使用較小的檔案集 (10 份文件)，如此才能在限制內完成這兩項練習，否則請刪除您在快速入門或教學課程中使用的索引子，以將計數器歸零。
+基於學習目的，我們會建議使用免費服務，但可用的交易數目限制為每天 20 份文件。 若要多次執行課程，請刪除並重新建立索引子，以將計數器重設為零。
 
 **步驟 3：檢閱 API**
 

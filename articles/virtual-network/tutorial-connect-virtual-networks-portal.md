@@ -1,5 +1,5 @@
 ---
-title: 使用虛擬網路對等互連來連線虛擬網路 -教學課程 - Azure 入口網站 | Microsoft Docs
+title: 使用 VNet 對等互連連線虛擬網路 - 教學課程 - Azure 入口網站
 description: 在本教學課程中，您將了解如何使用 Azure 入口網站，透過虛擬網路對等互連來連線虛擬網路。
 services: virtual-network
 documentationcenter: virtual-network
@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 01/22/2020
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 65749182bf93e84c8712409cd16bd3a60184c7ca
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: e95441aab6c8ce7de37ba5f6b08d5f7d54e13347
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77016046"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201293"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站以虛擬網路對等互連連線虛擬網路
 
@@ -34,7 +34,7 @@ ms.locfileid: "77016046"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="log-in-to-azure"></a>登入 Azure 
+## <a name="log-in-to-azure"></a>登入 Azure
 
 在 https://portal.azure.com 上登入 Azure 入口網站。
 

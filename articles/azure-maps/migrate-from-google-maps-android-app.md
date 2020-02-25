@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 855036a5a8e87bd10e9a4d524a1e8ea8bcdccf50
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 9514398ec6a84becd1283e4b0975804101b64086
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086292"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209727"
 ---
 # <a name="migrate-an-android-app-from-google-maps"></a>從 Google 地圖遷移 Android 應用程式
 
@@ -725,7 +725,7 @@ public void onMapReady(GoogleMap googleMap) {
 您可以將地圖底圖圖層新增至地圖中，其方式與任何其他圖層大致相同。 具有 x、y、縮放預留位置 (分別為 `{x}`、`{y}`、`{z}`) 的格式化 URL 可用來讓圖層知道要於何處存取地圖底圖。 此外，Azure 地圖服務中的地圖底圖圖層也支援 `{quadkey}`、`{bbox-epsg-3857}` 和 `{subdomain}` 預留位置。 若要讓地圖底圖圖層變成半透明狀，可使用不透明度值 0.8。 不透明度和透明度雖然類似，但應使用倒數。 若要在這兩個選項之間轉換，將一減去其值即可。
 
 > [!TIP]
-> 在 Azure 地圖服務中，您可以輕鬆地在其他圖層下呈現圖層，包括基底地圖圖層。 地圖底圖圖層通常最好是放到地圖標籤下面來呈現，以方便辨識。 `map.layers.add` 方法會採用第二個參數，也就是要在其下面插入新圖層的目標圖層所具有的識別碼。 若要在地圖標籤下面插入地圖底圖圖層，您可以使用下列程式碼：`map.layers.add(myTileLayer, "labels");`
+> 在 Azure 地圖服務中，您可以輕鬆地在其他圖層下呈現圖層，包括基底地圖圖層。 此外，地圖底圖圖層通常最好是放到地圖標籤下面來呈現，以方便辨識。 `map.layers.add` 方法會採用第二個參數，也就是要在其下面插入新圖層的目標圖層所具有的識別碼。 若要在地圖標籤下面插入地圖底圖圖層，您可以使用下列程式碼：`map.layers.add(myTileLayer, "labels");`
 
 ```java
 mapControl.onReady(map -> {

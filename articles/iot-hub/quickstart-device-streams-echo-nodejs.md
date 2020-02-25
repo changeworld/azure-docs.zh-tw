@@ -9,49 +9,28 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 538e04d7ae4f6528c26762a8efac06d02b4f86bc
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 3bc5dc754509260591acf7c5d5809d5e85794d9b
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083739"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471919"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>快速入門：透過 IoT 中樞裝置串流與使用 Node.js 的裝置應用程式進行通訊 (預覽)
 
 [!INCLUDE [iot-hub-quickstarts-3-selector](../../includes/iot-hub-quickstarts-3-selector.md)]
 
-Microsoft Azure IoT 中樞目前支援裝置串流作為[預覽功能](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+在本快速入門中，您會執行服務端應用程式，並使用裝置串流來設定裝置與服務之間的通訊。 Azure IoT 中樞裝置串流可讓服務和裝置應用程式以安全且便於設定防火牆的方式進行通訊。 在公開預覽期間，Node.js SDK 僅支援服務端上的裝置串流。 因此，本快速入門僅提供執行服務端應用程式的指示。
 
-[IoT 中樞裝置串流](./iot-hub-device-streams-overview.md)可讓服務和裝置應用程式以安全且便於設定防火牆的方式進行通訊。 在公開預覽期間，Node.js SDK 僅支援服務端上的裝置串流。 因此，本快速入門僅提供執行服務端應用程式的指示。 您應執行來自下列其中一個快速入門中的隨附裝置端應用程式：
+## <a name="prerequisites"></a>Prerequisites
 
-* [透過 IoT 中樞裝置串流與使用 C 的裝置應用程式進行通訊](./quickstart-device-streams-echo-c.md)
+* 完成[透過 IoT 中樞裝置串流來與使用 C 的裝置應用程式通訊](./quickstart-device-streams-echo-c.md)或[透過 IoT 中樞裝置串流來與使用 C# 的裝置應用程式通訊](./quickstart-device-streams-echo-csharp.md)。
 
-* [透過 IoT 中樞裝置串流與使用 C# 的裝置應用程式進行通訊](./quickstart-device-streams-echo-csharp.md)。
+* 具有有效訂用帳戶的 Azure 帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-本快速入門中的服務端 Node.js 應用程式具有下列功能：
+* [Node.js 10+](https://nodejs.org)。
 
-* 建立對 IoT 裝置的裝置串流。
-
-* 從命令列中讀取輸入，並將其傳送至裝置應用程式，繼而從該處傳回回應。
-
-程式碼將示範裝置串流的起始程序，以及如何用它來傳送和接收資料。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
-
-## <a name="prerequisites"></a>必要條件
-
-裝置串流的預覽版目前僅支援在下列區域建立的 IoT 中樞：
-
-  * 美國中部
-  * 美國中部 EUAP
-  * 北歐
-  * 東南亞
-
-若要執行本快速入門中的服務端應用程式，您的開發電腦上需要 Node.js 10.x.x 版或更新版本。
-
-您可以從 [Nodejs.org](https://nodejs.org) \(英文\) 下載適用於多種平台的 Node.js。
+* [範例 Node.js 專案](https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip)。
 
 您可以使用下列命令，以確認開發電腦上目前的 Node.js 版本：
 
@@ -59,19 +38,31 @@ Microsoft Azure IoT 中樞目前支援裝置串流作為[預覽功能](https://a
 node --version
 ```
 
-執行下列命令，將適用於 Azure CLI 的 Microsoft Azure IoT 擴充功能新增至您的 Cloud Shell 執行個體。 IoT 擴充功能可將 IoT 中樞、IoT Edge 和 IoT 裝置佈建服務的命令新增至 Azure CLI。
+Microsoft Azure IoT 中樞目前支援裝置串流作為[預覽功能](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+> [!IMPORTANT]
+> 裝置串流的預覽版目前僅支援在下列區域建立的 IoT 中樞：
+>
+> * 美國中部
+> * 美國中部 EUAP
+> * 北歐
+> * 東南亞
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+### <a name="add-azure-iot-extension"></a>新增 Azure IoT 擴充功能
+
+執行下列命令，將適用於 Azure CLI 的 Microsoft Azure IoT 擴充功能新增至您的 Cloud Shell 執行個體。 IoT 擴充功能可將 IoT 中樞、IoT Edge 和 IoT 裝置佈建服務 (DPS) 的命令新增至 Azure CLI。
 
 ```azurecli-interactive
 az extension add --name azure-cli-iot-ext
 ```
 
-如果您尚未這樣做，請從 https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip 下載範例 Node.js 專案並將 ZIP 封存檔解壓縮。
-
 ## <a name="create-an-iot-hub"></a>建立 IoT 中樞
 
 如果您已完成先前的[快速入門：將遙測從裝置傳送到 IoT 中樞](quickstart-send-telemetry-node.md)，則可以略過此步驟。
 
-[!INCLUDE [iot-hub-include-create-hub-device-streams](../../includes/iot-hub-include-create-hub-device-streams.md)]
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>註冊裝置
 
@@ -109,13 +100,20 @@ az extension add --name azure-cli-iot-ext
 
 如先前所說明，IoT 中樞 Node.js SDK 僅支援服務端上的裝置串流。 對於裝置端應用程式，請使用可在這些快速入門中取得的其中一個隨附裝置程式：
 
-   * [透過 IoT 中樞裝置串流與使用 C 的裝置應用程式進行通訊](./quickstart-device-streams-echo-c.md)
+* [透過 IoT 中樞裝置串流與使用 C 的裝置應用程式進行通訊](./quickstart-device-streams-echo-c.md)
 
-   * [透過 IoT 中樞裝置串流與使用 C# 的裝置應用程式進行通訊](./quickstart-device-streams-echo-csharp.md)
+* [透過 IoT 中樞裝置串流與使用 C# 的裝置應用程式進行通訊](./quickstart-device-streams-echo-csharp.md)
 
 請確定裝置端應用程式已在執行中，再繼續進行下一個步驟。
 
 ### <a name="run-the-service-side-application"></a>執行服務端應用程式
+
+本快速入門中的服務端 Node.js 應用程式具有下列功能：
+
+* 建立對 IoT 裝置的裝置串流。
+* 從命令列中讀取輸入，並將其傳送至裝置應用程式，繼而從該處傳回回應。
+
+程式碼將示範裝置串流的起始程序，以及如何用它來傳送和接收資料。
 
 假設裝置端應用程式正在執行中，請在本機終端視窗中依照下列步驟執行使用 Node.js 的服務端應用程式：
 

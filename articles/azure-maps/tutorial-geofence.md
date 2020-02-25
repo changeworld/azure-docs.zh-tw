@@ -1,20 +1,20 @@
 ---
 title: 教學課程：建立地理柵欄並在地圖上追蹤裝置 | Microsoft Azure 地圖服務
 description: 了解如何使用 Microsoft Azure 地圖服務的空間服務來設定地理柵欄，並追蹤與地理柵欄相關的裝置。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 1/15/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 932dfb9624177c299997c4f9f184dc5c973d0fa0
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e0e918a2508bb65de176b030a73598e221aff676
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899207"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370155"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>教學課程：使用 Azure 地圖服務設定地理柵欄
 
@@ -176,7 +176,7 @@ ms.locfileid: "76899207"
 
 我們將建立兩個 [Logic Apps](https://docs.microsoft.com/azure/event-grid/event-handlers#logic-apps) 服務來處理進入和退出事件。 在觸發 Logic Apps 中的事件時，將會依序觸發更多事件。 其概念是要傳送警示；就此案例而言，是要傳送電子郵件給營運經理。 下圖說明如何建立適用於地理柵欄進入事件的邏輯應用程式。 您可以比照相同方式，為退出事件建立另一個應用程式。 您可以查看所有[支援的事件處理常式](https://docs.microsoft.com/azure/event-grid/event-handlers)以取得詳細資訊。
 
-1. 在 Azure 入口網站中建立邏輯應用程式
+1. 在 Azure 入口網站中建立邏輯應用程式。 在 Azure Marketplace 中選取邏輯應用程式。 選取 [建立]  按鈕。
 
    ![建立 Azure Logic Apps 來處理地理柵欄事件](./media/tutorial-geofence/logic-app.png)
 

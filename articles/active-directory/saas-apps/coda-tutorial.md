@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/23/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f015b1568098b506abc847608a1fca91ef72b6e9
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 74da278dbbc0ac32407c345524e224ca5f7616da
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76761287"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77194584"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coda"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Coda 整合
 
@@ -37,7 +37,7 @@ ms.locfileid: "76761287"
 若要開始，您需要下列項目：
 
 * Azure AD 訂用帳戶。 如果沒有訂用帳戶，您可以取得[免費帳戶](https://azure.microsoft.com/free/)。
-* 已啟用 Coda 單一登入 (SSO) 的訂用帳戶。
+* 已停用 GDrive 整合但啟用 Coda 單一登入 (SSO) 的訂用帳戶 (企業)。 如果您組織的 GDrive 整合目前已啟用，請洽詢 [Coda 支援小組](mailto:support@coda.io)來停用此功能。
 
 ## <a name="scenario-description"></a>案例描述
 
@@ -67,12 +67,33 @@ ms.locfileid: "76761287"
 
 若要設定及測試與 Coda 搭配運作的 Azure AD SSO，請完成下列建置組塊：
 
+1. **[開始設定 Coda SSO](#begin-configuration-of-coda-sso)** - 開始在 Coda 中設定 SSO。
 1. **[設定 Azure AD SSO](#configure-azure-ad-sso)** - 讓您的使用者能夠使用此功能。
-    * **[建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)** - 使用 B.Simon 測試 Azure AD 單一登入。
-    * **[指派 Azure AD 測試使用者](#assign-the-azure-ad-test-user)** - 讓 B.Simon 能夠使用 Azure AD 單一登入。
-1. **[設定 Coda SSO](#configure-coda-sso)** - 在應用程式端設定單一登入設定。
-    * **[建立 Coda 測試使用者](#create-coda-test-user)** - 使 Coda 中對應的 B.Simon 連結到該使用者在 Azure AD 中的代表項目。
+   * **[建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)** - 使用 B.Simon 測試 Azure AD 單一登入。
+   * **[指派 Azure AD 測試使用者](#assign-the-azure-ad-test-user)** - 讓 B.Simon 能夠使用 Azure AD 單一登入。
+1. **[設定 Coda SSO](#configure-coda-sso)** - 在 Coda 中完成單一登入的設定。
+   * **[建立 Coda 測試使用者](#create-coda-test-user)** - 使 Coda 中對應的 B.Simon 連結到該使用者在 Azure AD 中的代表項目。
 1. **[測試 SSO](#test-sso)** - 驗證組態是否能運作。
+
+## <a name="begin-configuration-of-coda-sso"></a>開始設定 Coda SSO
+
+若要開始，請在 Coda 中遵循這些步驟。
+
+1. 在 Coda 中，開啟您的**組織設定**面板。
+
+   ![開啟組織設定](media/coda-tutorial/org-settings.png)
+
+1. 確定您的組織已關閉 GDrive 整合。 如果目前是啟用的狀態，請洽詢 [Coda 支援小組](mailto:support@coda.io)來協助您關閉 GDrive。
+
+   ![GDrive 已停用](media/coda-tutorial/gdrive-off.png)
+
+1. 在 [使用 SSO (SAML) 進行驗證]  底下，選取 [設定 SAML]  選項。
+
+   ![SAML 設定](media/coda-tutorial/saml-settings-link.png)
+
+1. 請記下 [實體識別碼]  和 [SAML 回應 URL]  的值，您將在後續步驟中用到這些值。
+
+   ![要在 Azure 中使用的實體識別碼和 SAML 回應 URL](media/coda-tutorial/azure-settings.png)
 
 ## <a name="configure-azure-ad-sso"></a>設定 Azure AD SSO
 
@@ -86,20 +107,20 @@ ms.locfileid: "76761287"
 
 1. 在 [以 SAML 設定單一登入]  頁面上，輸入下列欄位的值：
 
-    a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：`https://coda.io/samlId/<CUSTOMID>`
+   a. 在 [識別碼]  文字方塊中，輸入上述的「實體識別碼」。 其應該遵循此模式：`https://coda.io/samlId/<CUSTOMID>`
 
-    b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://coda.io/samlId/<CUSTOMID>/consume`
+   b. 在 [回覆 URL]  文字方塊中，輸入上述的「SAML 回應 URL」。 其應該遵循此模式：`https://coda.io/login/sso/saml/<CUSTOMID>/consume`
 
-    > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的識別碼和回覆 URL 更新這些值。 請連絡 [Coda 用戶端支援小組](mailto:support@coda.io)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+   > [!NOTE]
+   > 您的值會與上述不同；您可以在 Coda 的 [設定 SAML] 主控台中找到您的值。 請使用實際的識別碼和回覆 URL 更新這些值。
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (Base64)]  並選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
-    ![憑證下載連結](common/certificatebase64.png)
+   ![憑證下載連結](common/certificatebase64.png)
 
 1. 在 [設定 Coda]  區段上，根據您的需求複製適當的 URL。
 
-    ![複製組態 URL](common/copy-configuration-urls.png)
+   ![複製組態 URL](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 
@@ -108,8 +129,8 @@ ms.locfileid: "76761287"
 1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
 1. 在畫面頂端選取 [新增使用者]  。
 1. 在 [使用者]  屬性中，執行下列步驟：
-   1. 在 [名稱]  欄位中，輸入 `B.Simon`。  
-   1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如：`B.Simon@contoso.com` 。
+   1. 在 [名稱]  欄位中，輸入 `B.Simon`。
+   1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
    1. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。
    1. 按一下頁面底部的 [新增]  。
 
@@ -125,7 +146,7 @@ ms.locfileid: "76761287"
 
 1. 選取 [新增使用者]  ，然後在 [新增指派]  對話方塊中選取 [使用者和群組]  。
 
-    ![[新增使用者] 連結](common/add-assign-user.png)
+   ![[新增使用者] 連結](common/add-assign-user.png)
 
 1. 在 [使用者和群組]  對話方塊的 [使用者] 清單中選取 [B.Simon]  ，然後按一下畫面底部的 [選取]  按鈕。
 1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色]  對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取]  按鈕。
@@ -133,13 +154,23 @@ ms.locfileid: "76761287"
 
 ## <a name="configure-coda-sso"></a>設定 Coda SSO
 
-若要設定 **Coda** 端的單一登入，您必須將從 Azure 入口網站下載的 [憑證 (Base64)]  和複製的適當 URL 傳送給 [Coda 支援小組](mailto:support@coda.io)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要完成設定，您將會在 [Coda 設定 SAML]  面板中輸入來自 Azure Active Directory 的值。
+
+1. 在 Coda 中，開啟您的**組織設定**面板。
+1. 在 [使用 SSO (SAML) 進行驗證]  底下，選取 [設定 SAML]  選項。
+1. 將 [SAML 提供者]  設定為 **Azure Active Directory**。
+1. 在 [識別提供者登入 URL]  中，貼上 Azure 主控台中的 [登入 URL]  。
+1. 在 [識別提供者簽發者]  中，貼上 Azure 主控台中的 [Azure AD 識別碼]  。
+1. 在 [識別提供者公開憑證]  中，選取 [上傳憑證]  選項，然後選取您稍早下載的憑證檔案。
+1. 選取 [儲存]  。
+
+這會完成 SAML SSO 連線設定所需的工作。
 
 ### <a name="create-coda-test-user"></a>建立 Coda 測試使用者
 
 本節會在 Coda 中建立名為 Britta Simon 的使用者。 Coda 支援依預設啟用的 Just-In-Time 使用者佈建。 在這一節沒有您需要進行的動作項目。 如果 Coda 中還沒有任何使用者存在，在驗證之後就會建立新的使用者。
 
-## <a name="test-sso"></a>測試 SSO 
+## <a name="test-sso"></a>測試 SSO
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 

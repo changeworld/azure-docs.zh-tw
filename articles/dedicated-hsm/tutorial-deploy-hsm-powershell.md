@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2f605d5adda913fa465b43a85bd027458959c122
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 63c531cc0e600d82df74154adb212be76ba9b4de
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928102"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368537"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>教學課程 – 使用 PowerShell 將 HSM 部署至現有的虛擬網路
 
@@ -38,7 +38,7 @@ Azure 專用 HSM 服務提供實體裝置以供單獨客戶使用，其具有完
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 Azure 入口網站目前不提供 Azure 專用 HSM ，因此與服務的所有互動都是透過命令列或使用 PowerShell 進行。 本教學課程會在 Azure Cloud Shell 中使用 PowerShell。 如果您不熟悉 PowerShell，請遵循以下的使用者入門指示：[Azure PowerShell 使用者入門](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
 
@@ -192,7 +192,7 @@ New-AzResourceGroupDeployment -ResourceGroupName myRG `
 
 順利完成時 (顯示 “provisioningState”:“Succeeded”)，您可以登入現有的虛擬機器，並使用 SSH 來確保 HSM 裝置的可用性。
 
-## <a name="verifying-the-deployment"></a>驗證部署
+## <a name="verifying-the-deployment"></a>確認部署
 
 若要驗證是否已佈建裝置以及查看裝置屬性，請執行下列命令集。 請確定已適當設定資源群組，且資源名稱完全與您在參數檔案中擁有的資源名稱相同。
 
@@ -245,17 +245,18 @@ SSH 工具用於連線至虛擬機器。 此命令將如下所示，但採用您
 
 ## <a name="delete-or-clean-up-resources"></a>刪除或清除資源
 
-如果您已處理完 HSM 裝置，即可將它當作資源刪除並傳回可用的集區。 執行此作業時的顯著考量就是裝置上的任何敏感性客戶資料。 若要移除敏感性客戶資料，裝置應使用 Gemalto 用戶端來恢復出廠預設值。 請參閱 Gemalto 系統管理員指南中的 SafeNet Network Luna 7 裝置，並考慮依序執行下列命令。
-
-1. `hsm factoryReset -f`
-2. `sysconf config factoryReset -f -service all`
-3. `my file clear -f`
-4. `my public-key clear -f`
-5. `syslog rotate`
-
+如果您已處理完 HSM 裝置，即可將它當作資源刪除並傳回可用的集區。 執行此作業時的顯著考量就是裝置上的任何敏感性客戶資料。 將裝置「歸零」的最佳方式是讓 HSM 管理員的密碼連錯 3 次 (注意：這裡指的不是裝置管理員，而是實際的 HSM 管理員)。 由於金鑰內容有安全措施保護，裝置必須處於歸零狀態，才能以 Azure 資源的形式刪除。
 
 > [!NOTE]
 > 如果您有關於任何 Gemalto 裝置組態的問題，您應該連絡 [Gemalto 客戶支援](https://safenet.gemalto.com/technical-support/)。
+
+如果您只想要移除 Azure 中的 HSM 資源，您可以使用下列命令將 "$" 變數取代為您的唯一參數：
+
+```powershel
+
+Remove-AzureRmResource -Resourceid ` /subscriptions/$subId/resourceGroups/$resourceGroupName/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/$resourceName
+
+```
 
 如果您已處理完此資源群組中的資源，即可透過下列命令來移除它們：
 

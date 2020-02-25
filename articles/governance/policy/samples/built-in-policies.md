@@ -1,20 +1,20 @@
 ---
 title: 內建原則定義的清單
 description: 列出 Azure 原則的內建原則定義。 分類包括標籤、法規合規性、Key Vault、Kubernetes、來賓設定等等。
-ms.date: 01/31/2020
+ms.date: 02/15/2020
 ms.topic: sample
-ms.openlocfilehash: a672089dd45169b59bfb87ff3b612bc029c02448
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 06c913bdccd8b35970a195f6ee658ce7b1d97a7b
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77170036"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77371208"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure 原則的內建原則定義
 
 此頁面是 Azure 原則內建原則定義的索引。
 
-在 [Azure 原則 GitHub 存放庫](https://github.com/Azure/azure-policy)上，每個內建連結的名稱都與原則定義來源相關。 內建方案會依照**中繼資料**中的**類別**屬性來分組。 若要跳至特定的**類別**，請使用頁面右側的功能表。 或是使用 <kbd>Ctrl</kbd>-<kbd>F</kbd> 來使用瀏覽器的搜尋功能。
+Azure 入口網站中原則定義的每個內建連結名稱。 使用 [來源]  資料行中的連結查看 [Azure 原則 GitHub 存放庫](https://github.com/Azure/azure-policy)上的來源。 內建方案會依照**中繼資料**中的**類別**屬性來分組。 若要跳至特定的**類別**，請使用頁面右側的功能表。 或是使用 <kbd>Ctrl</kbd>-<kbd>F</kbd> 來使用瀏覽器的搜尋功能。
 
 [!INCLUDE [azure-policy-samples-policies-index](../../../../includes/azure-policy-samples-policies-index.md)]
 

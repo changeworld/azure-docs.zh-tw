@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 04f9a067e0b7df1f90d181d42bc4dd562aca56b0
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 8020abf3f8ab153d0143ff50d837ebcfbf5bdfba
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026331"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77423685"
 ---
 # <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>在 Azure IoT Central 應用程式中定義新的 IoT 閘道裝置類型
 
@@ -40,7 +40,7 @@ ms.locfileid: "77026331"
 
 若要為 [S1 感應器]  裝置建立裝置範本：
 
-1. 在左側導覽中，選取 [裝置範本]  。 然後選取 **+** 以開始新增範本。
+1. 在左窗格中選取 [裝置範本]  。 然後選取 **+** 以開始新增範本。
 
 1. 向下捲動直到您看見 [S1 感應器]  裝置的圖格為止。 選取此圖格，然後選取 **[下一步:** 自訂]。
 
@@ -48,7 +48,7 @@ ms.locfileid: "77026331"
 
 若要位 *[RS40 在場感應器]  裝置建立裝置範本：
 
-1. 在左側導覽中，選取 [裝置範本]  。 然後選取 **+** 以開始新增範本。
+1. 在左窗格中選取 [裝置範本]  。 然後選取 **+** 以開始新增範本。
 
 1. 向下捲動直到您看見 *[RS40 在場感應器]  裝置的圖格為止。 選取此圖格，然後選取 **[下一步:** 自訂]。
 
@@ -65,7 +65,7 @@ ms.locfileid: "77026331"
 
 若要將新的閘道裝置範本新增至應用程式：
 
-1. 在左側導覽中，選取 [裝置範本]  。 然後選取 **+** 以開始新增範本。
+1. 在左窗格中選取 [裝置範本]  。 然後選取 **+** 以開始新增範本。
 
 1. 在 [選取範本類型]  頁面上，選取 [IoT 裝置]  圖格，然後選取 [下一步:  自訂]。
 

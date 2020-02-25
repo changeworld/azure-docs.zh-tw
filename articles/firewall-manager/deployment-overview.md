@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 10/25/2019
+ms.date: 02/18/2020
 ms.author: victorh
-ms.openlocfilehash: df87e652d2969d4ae12e97a2b455648cf39382c3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c3a94cea838609f65511a21ee2f64e8782a6adea
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488254"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443120"
 ---
 # <a name="azure-firewall-manager-preview-deployment-overview"></a>Azure 防火牆管理員預覽部署概觀
 
@@ -20,23 +20,32 @@ ms.locfileid: "73488254"
 
 有多種方法可以部署 Azure 防火牆管理員預覽，但建議使用下列一般程序。
 
-## <a name="prerequisites"></a>必要條件
-
-> [!IMPORTANT]
-> 您必須使用 `Register-AzProviderFeature` PowerShell 命令，明確地啟用 Azure 防火牆管理員預覽。
->從 PowerShell 命令提示字元執行下列命令：
->
->```azure-powershell
->connect-azaccount
->Register-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace Microsoft.Network
->```
->需要 30 分鐘才能完成功能註冊。 執行下列命令來檢查您的註冊狀態：
->
->`Get-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace Microsoft.Network`
-
-
-
 ## <a name="general-deployment-process"></a>一般部署程序
+
+### <a name="hub-virtual-networks"></a>中樞虛擬網路
+
+1.  建立防火牆原則
+
+    - 建立新的原則
+<br>*or*<br>
+    - 衍生基底原則及自訂本機原則
+<br>*or*<br>
+    - 從現有的 Azure 防火牆匯入規則。 請務必從應套用到多個防火牆的原則中移除 NAT 規則
+1. 建立中樞和輪輻架構
+   - 使用 Azure 防火牆管理員建立中樞虛擬網路，並使用虛擬網路對等互連將輪輻虛擬網路對等互連至中樞虛擬網路
+<br>*or*<br>
+    - 建立虛擬網路及新增虛擬網路連線，並使用虛擬網路對等互連將輪輻虛擬網路對等互連至該虛擬網路
+
+3. 選取安全性提供者並建立防火牆原則的關聯。 目前，只有 Azure 防火牆是支援的提供者。
+
+   - 這會在您建立中樞虛擬網路時完成
+<br>*or*<br>
+    - 將現有虛擬網路轉換為中樞虛擬網路。 此外，也可能轉換多個虛擬網路。
+
+4. 設定 [使用者定義路由]，以將流量路由傳送至您的中樞虛擬網路防火牆。
+
+
+### <a name="secured-virtual-hubs"></a>安全虛擬中樞
 
 1. 建立中樞和輪輻架構
 

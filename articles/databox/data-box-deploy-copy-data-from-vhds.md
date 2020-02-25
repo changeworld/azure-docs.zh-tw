@@ -1,5 +1,6 @@
 ---
-title: 使用 Azure 資料箱從 VHD 匯入資料並複製到受控磁碟的教學課程 | Microsoft Docs
+title: 教學課程：從 VHD 複製到受控磁碟
+titleSuffix: Azure Data Box
 description: 了解如何將 VHD 的資料從內部部署 VM 工作負載複製到 Azure 資料箱
 services: databox
 author: alkohli
@@ -8,18 +9,18 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 4b7182d1fa70a146da1c01273ffe1032f2982546
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 8f076deaafd938dc93800cf351bf471cead5f009
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240467"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471222"
 ---
 # <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>教學課程：使用資料箱匯入資料以作為 Azure 中的受控磁碟
 
 本教學課程示範如何使用 Azure 資料箱，將內部部署 VHD 移轉到 Azure 中的受控磁碟。 來自內部部署 VM 的 VHD 會複製到資料箱以作為分頁 Blob，並上傳至 Azure 以作為受控磁碟。 這些受控磁碟接著可以連結到 Azure VM。
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 檢閱必要條件
@@ -27,7 +28,7 @@ ms.locfileid: "70240467"
 > * 將資料複製到資料箱
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在您開始前，請確定：
 

@@ -1,24 +1,24 @@
 ---
 title: 教學課程：執行 IoT 空間分析 | Microsoft Azure 地圖服務
 description: 整合 IoT 中樞與 Microsoft Azure 地圖服務 API。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 24295e27a3b94f6960777a8704fdf448697da4e1
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 48d148256fe69bbdfd188f1d8472c2de80b0fa64
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987233"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208364"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>教學課程：使用 Azure 地圖服務執行 IoT 空間分析
 
-追蹤和擷取在空間和時間中發生的相關事件，是常見的 IoT 案例。 範例案例包括車隊管理、資產追蹤、行動和智慧城市應用程式。 本教學課程會引導您完成使用 Azure 地圖服務 API 的解決方案模式。 IoT 中樞會使用事件方格所提供的事件訂用帳戶模型來擷取相關事件。
+IoT 案例通常會捕捉及追蹤在空間和時間中發生的相關事件。 範例案例包括車隊管理、資產追蹤、行動和智慧城市應用程式。 本教學課程會引導您完成使用 Azure 地圖服務 API 的解決方案模式。 IoT 中樞會使用事件方格所提供的事件訂用帳戶模型來擷取相關事件。
 
 在本教學課程中，您將：
 
@@ -34,7 +34,7 @@ ms.locfileid: "76987233"
 
 ## <a name="use-case"></a>使用案例
 
-此解決方案將示範下列案例：某家汽車出租公司計劃要監視和記錄其出租車輛的事件。 汽車出租公司通常會在特定地理區域內出租車輛，且在出租期間必須追蹤車輛的行蹤。 汽車離開所選地理區域的實例，必須加以記錄。 記錄資料可確保原則、費用和其他商務層面會受到適當的處理。
+此解決方案將示範下列案例：某家汽車出租公司計劃要監視和記錄其出租車輛的事件。 車輛出租公司通常會將車輛出租到特定的地理區域。 他們必須在出租時追蹤汽車的行蹤。 汽車離開所選地理區域的實例，必須加以記錄。 記錄資料可確保原則、費用和其他商務層面會受到適當的處理。
 
 在我們的使用案例中，出租車輛配備了 IoT 裝置，會定期將遙測資料傳送至 Azure IoT 中樞。 這些遙測資料包括目前的位置，且會指出車輛的引擎是否運轉中。 裝置位置結構描述會符合[地理空間資料的 IoT 隨插即用結構描述](https://github.com/Azure/IoTPlugandPlay/blob/master/Schemas/geospatial.md)。 出租車輛的裝置遙測結構描述顯示如下：
 
@@ -63,9 +63,13 @@ ms.locfileid: "76987233"
 }
 ```
 
-我們將車載裝置遙測來達成目標。 我們想要在收到指出車輛已移動的事件時，執行地理柵欄規則並做出回應。 為此，我們將透過事件方格從 IoT 中樞訂閱裝置遙測事件。 有數種方式可訂閱事件方格，在本教學課程中，我們將使用 Azure Functions。 Azure Functions 可對事件方格中發佈的事件做出回應。 它也可根據 Azure 地圖服務空間分析來實作汽車出租商務邏輯。 Azure 函式內的程式碼會檢查車輛是否已離開地理柵欄。 如果車輛離開了地理柵欄，Azure 函式即會收集其他資訊，例如與目前的位置相關聯的位址。 此函式也會實作邏輯，將有意義的事件資料儲存在資料 Blob 儲存體中，以利提供事件狀況的說明。 事件狀況對汽車出租公司和租車客戶可能很有幫助。
+我們將車載裝置遙測來達成目標。 我們想要執行地理柵欄規則。 而且，我們想要在收到表示車輛已移動的事件時做出回應。 為此，我們將透過事件方格從 IoT 中樞訂閱裝置遙測事件。 
 
-下圖提供系統的高階概觀。
+有數種方式可訂閱事件方格，在本教學課程中，我們將使用 Azure Functions。 Azure Functions 可對事件方格中發佈的事件做出回應。 它也可根據 Azure 地圖服務空間分析來實作汽車出租商務邏輯。 
+
+Azure 函式內的程式碼會檢查車輛是否已離開地理柵欄。 如果車輛離開了地理柵欄，Azure 函式即會收集其他資訊，例如與目前的位置相關聯的位址。 此函式也會實作邏輯，將有意義的事件資料儲存在資料 Blob 儲存體中，以利提供事件狀況的說明。 
+
+事件狀況對汽車出租公司和租車客戶可能很有幫助。 下圖提供系統的高階概觀。
 
  
   <center>
@@ -74,7 +78,7 @@ ms.locfileid: "76987233"
   
   </center>
 
-下圖顯示以藍色醒目提示的地理柵欄區域，和以綠色線條表示的出租車輛路線。
+下圖以藍色標示的是地理柵欄區域。 出租車輛的路線會以綠色線表示。
 
   ![地理柵欄路線](./media/tutorial-iot-hub-maps/geofence-route.png)
 
@@ -83,7 +87,7 @@ ms.locfileid: "76987233"
 
 ### <a name="create-a-resource-group"></a>建立資源群組
 
-若要完成本教學課程中的步驟，您必須先在 Azure 入口網站中建立資源群組。 若要建立資源群組，請執行下列動作：
+若要完成本教學課程中的步驟，您必須先在 Azure 入口網站中建立資源群組。 若要建立資源群組，請執行下列步驟：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
@@ -106,7 +110,7 @@ ms.locfileid: "76987233"
 
 ### <a name="create-an-azure-maps-account"></a>建立 Azure 地圖服務帳戶 
 
-若要根據 Azure 地圖服務空間分析來實作商務邏輯，我們必須在已建立的資源群組中建立 Azure 地圖服務帳戶。 請遵循[建立帳戶](quick-demo-map-app.md#create-an-account-with-azure-maps)中的指示，建立使用 S1 定價層的 Azure 地圖服務帳戶訂用帳戶，並遵循[取得主要金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步驟來取得適用於您帳戶的主要金鑰。 如需 Azure 地圖服務中驗證的詳細資訊，請參閱[管理 Azure 地圖服務中的驗證](how-to-manage-authentication.md)。
+若要根據 Azure 地圖服務空間分析來實作商務邏輯，我們必須在已建立的資源群組中建立 Azure 地圖服務帳戶。 依照[建立帳戶](quick-demo-map-app.md#create-an-account-with-azure-maps)中的指示，在 S1 定價層中建立 Azure 地圖服務帳戶訂用帳戶。 請依照[取得主要金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步驟取得帳戶的主要金鑰。 如需 Azure 地圖服務中驗證的詳細資訊，請參閱[管理 Azure 地圖服務中的驗證](how-to-manage-authentication.md)。
 
 
 
@@ -131,10 +135,10 @@ ms.locfileid: "76987233"
 
 ### <a name="create-an-iot-hub"></a>建立 IoT 中樞
 
-IoT 中樞是雲端中的受控服務，可作為 IoT 應用程式及其管理的裝置之間進行雙向通訊的中央訊息中樞。 若要將裝置遙測訊息路由至事件方格，請在 "ContosoRental" 資源群組中建立 IoT 中樞。 請設定將根據汽車的引擎狀態來篩選訊息的訊息路由整合。 當車輛移動時，我們也會將裝置遙測訊息傳送至事件方格。
+IoT 中樞是雲端中的受控服務。 IoT 中樞可作為 IoT 應用程式和其所管理裝置之間雙向通訊的中央訊息中樞。 若要將裝置遙測訊息路由至事件方格，請在 "ContosoRental" 資源群組中建立 IoT 中樞。 請設定將根據汽車的引擎狀態來篩選訊息的訊息路由整合。 當車輛移動時，我們也會將裝置遙測訊息傳送至事件方格。
 
 > [!Note] 
-> IoT 中樞在事件方格上發佈裝置遙測事件的功能目前處於公開預覽狀態。 公開預覽功能適用於**美國東部、美國西部、歐洲西部、Azure Government、Azure China 21Vianet** 和 **Azure 德國**以外的所有區域。 
+> IoT 中樞在事件方格上發佈裝置遙測事件的功能目前處於公開預覽狀態。 公開預覽功能適用於**美國東部、美國西部、西歐、Azure Government、Azure China 21Vianet** 和 **Azure 德國**以外的所有區域。 
 
 依照[建立 IoT 中樞](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-dotnet#create-an-iot-hub)一節中的步驟，建立 Iot 中樞。
 
@@ -204,7 +208,11 @@ IoT 中樞是雲端中的受控服務，可作為 IoT 應用程式及其管理�
 
 ## <a name="create-an-azure-function-and-add-an-event-grid-subscription"></a>建立 Azure 函式並新增事件方格訂用帳戶
 
-Azure Functions 是無伺服器計算服務，可讓我們依需求執行程式碼，而無須明確佈建或管理計算基礎結構。 若要深入了解 Azure Functions，請參閱 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) 文件。 我們在函式中實作的邏輯，會使用來自車載裝置遙測的位置資料來評估地理柵欄狀態。 如果指定的車輛超出地理柵欄範圍，函式將會透過[取得搜尋位址反轉 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) 收集更多資訊 (例如位置位址)，將指定的位置座標轉譯為人類可理解的街道地址。 所有相關事件資訊都會儲存在 Blob 存放區中。 下方的步驟 5 會指向實作此類邏輯的可執行程式碼。 請依照下列步驟建立 Azure 函式，以將資料記錄傳送至儲存體帳戶中的 Blob 容器，並在其中新增事件方格訂用帳戶。
+Azure Functions 是無伺服器計算服務，可讓我們依需求執行程式碼，而無須明確佈建或管理計算基礎結構。 若要深入了解 Azure Functions，請參閱 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) 文件。 
+
+我們在函式中實作的邏輯，會使用來自車載裝置遙測的位置資料來評估地理柵欄狀態。 如果指定的車輛超出地理柵欄，此函式會透過[取得搜尋位址反轉 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) 收集更多資訊，例如位置的地址。 此 API 會將指定的位置座標轉譯為人類了解的街道地址。 
+
+所有相關事件資訊都會儲存在 Blob 存放區中。 下方的步驟 5 會指向實作此類邏輯的可執行程式碼。 請依照下列步驟建立 Azure 函式，以將資料記錄傳送至 Blob 儲存體帳戶中的 Blob 容器，並在其中新增事件方格訂用帳戶。
 
 1. 在 Azure 入口網站儀表板中，選取 [建立資源]。 從可用的資源類型清單中選取 [計算]  ，然後選取 [函式應用程式]  。
 
@@ -216,7 +224,7 @@ Azure Functions 是無伺服器計算服務，可讓我們依需求執行程式�
 
 2. 檢閱函式應用程式詳細資料，然後選取 [建立]。
 
-3. 應用程式建立後，我們必須為其新增函式。 移至函式應用程式，按一下 [新增函式]  以新增函式，選擇 [在入口網站中]  作為開發環境，然後選取 [繼續]  。
+3. 應用程式建立後，我們必須為其新增函式。 返回函數應用程式。 按一下 [新增函式]  以新增函式，然後選擇 [入口網站內]  作為開發環境。 然後，選取 [繼續]  。
 
     ![create-function](./media/tutorial-iot-hub-maps/function.png)
 
@@ -237,14 +245,14 @@ Azure Functions 是無伺服器計算服務，可讓我們依需求執行程式�
     
     ![add-event-grid](./media/tutorial-iot-hub-maps/add-egs.png)
 
-11. 在 [事件訂閱詳細資料]  下方填入訂閱詳細資料、為您的訂閱命名，並選擇 [事件方格結構描述] 作為事件結構描述。 在 [主題詳細資料]  底下，選取 [Azure IoT 中樞帳戶] 作為 [主題類型]。 選擇您用來建立資源群組的相同訂用帳戶、選取 [ContosoRental] 作為 [資源群組]，然後選擇您建立的 IoT 中樞作為 [資源]。 選擇 [裝置遙測]  作為 [事件類型]。 選擇這些選項後，您會看到 [主題類型] 自動變更為 [IoT 中樞]。
+11. 在 [事件訂閱詳細資料]  下方填入訂閱詳細資料、為您的訂閱命名，並選擇 [事件方格結構描述] 作為事件結構描述。 在 [主題詳細資料]  底下，選取 [Azure IoT 中樞帳戶] 作為 [主題類型]。 選擇您用來建立資源群組的相同訂用帳戶、選取 [ContosoRental] 作為 [資源群組]。 選擇您建立的 IoT 中樞作為 [資源]。 選擇 [裝置遙測]  作為 [事件類型]。 選擇這些選項後，您會看到 [主題類型] 自動變更為 [IoT 中樞]。
 
     ![event-grid-subscription](./media/tutorial-iot-hub-maps/af-egs.png)
  
 
 ## <a name="filter-events-using-iot-hub-message-routing"></a>使用 IoT 中樞訊息路由來篩選事件
 
-將事件方格訂用帳戶新增至 Azure 函式之後，您現在可以在 IoT 中樞的 [訊息路由]  刀鋒視窗中看到事件方格的預設訊息路由。 訊息路由可讓您將不同的資料類型 (例如裝置遙測訊息、裝置生命週期事件，以及裝置對應項變更事件) 路由至各個端點。 若要深入了解 IoT 中樞訊息路由，請參閱[使用 IoT 中樞訊息路由](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)。
+將事件方格訂用帳戶新增至 Azure 函式之後，您會在 IoT 中樞的 [訊息路由]  刀鋒視窗中看到事件方格的預設訊息路由。 訊息路由可讓您將不同的資料類型路由至不同的端點。 例如，您可以路由裝置遙測訊息、裝置生命週期事件和裝置對應項變更事件。 若要深入了解 IoT 中樞訊息路由，請參閱[使用 IoT 中樞訊息路由](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)。
 
 ![hub-EG-route](./media/tutorial-iot-hub-maps/hub-route.png)
 

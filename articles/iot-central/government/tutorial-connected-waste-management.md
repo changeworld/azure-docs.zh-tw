@@ -7,12 +7,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 6b8458ce41a1bdacddc4102e8282bbc638d4c01c
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 274d725a0e7987c8cb15363ba276aec7ebc541d5
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77016488"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426355"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>教學課程：在 IoT Central 中建立聯網廢棄物管理應用程式
 
@@ -129,7 +129,7 @@ Azure IoT Central 中的裝置範本會定義裝置的功能，例如遙測、�
 
 若要檢視裝置範本：
 
-1. 在 IoT Central 中您應用程式的左側導覽窗格中，按一下 [裝置範本]  。 
+1. 在 IoT Central 中您應用程式的左窗格中，按一下 [裝置範本]  。 
 
     ![裝置範本](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate.png)
 
@@ -177,7 +177,7 @@ Azure IoT Central 中的裝置範本會定義裝置的功能，例如遙測、�
 
 ### <a name="to-view-the-devices"></a>若要檢視裝置：
 
-1. 從 IoT Central 的左側導覽窗格中，瀏覽至 [裝置]  。 
+1. 從 IoT Central 的左窗格瀏覽至 [裝置]  。 
 
    ![裝置](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devices.png)
 
@@ -202,7 +202,7 @@ Azure IoT Central 中的裝置範本會定義裝置的功能，例如遙測、�
 **聯網廢棄物管理**應用程式有四個範例規則。
 
 ### <a name="to-view-rules"></a>若要檢視規則：
-1. 從 IoT Central 的左側導覽窗格中，瀏覽至 [規則] 
+1. 從 IoT Central 的左窗格瀏覽至 [規則]  。
 
    ![規則](./media/tutorial-connectedwastemanagement/connectedwastemanagement-rules.png)
 
@@ -231,13 +231,13 @@ Azure IoT Central 中的裝置範本會定義裝置的功能，例如遙測、�
 > 應用程式會在每次條件相符時傳送電子郵件。 **停用**規則可停止從自動化規則接收電子郵件。 
   
 若要建立新的規則： 
-1. 在左側導覽窗格的 [規則]  中，選取 [+新增]  。
+1. 在左窗格的 [規則]  上，選取 [+ 新增]  。
 
 ## <a name="configure-jobs"></a>設定作業
 
 在 IoT Central 中，作業可讓您在多個裝置上觸發裝置或雲端屬性更新。 除了屬性之外，您也可以使用作業來觸發多個裝置上的裝置命令。 IoT Central 會自動為您執行工作流程。 
 
-1. 從左側導覽窗格中移至 [作業]  。 
+1. 從左窗格移至 [作業]  。 
 2. 按一下 [+新增]  並設定一個或多個作業。 
 
 

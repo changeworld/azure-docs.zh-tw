@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 08/06/2019
 ms.author: sngun
-ms.openlocfilehash: ec2c943bfaecc1170889b1a7247d7532700d47bc
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: f317b7b5f3ab60f466054f2043027b13e8396abc
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990118"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212803"
 ---
 # <a name="quickstart-build-a-table-api-app-with-nodejs-and-azure-cosmos-db"></a>快速入門：使用 Node.js 與 Azure Cosmos DB 建置資料表 API 應用程式
 
@@ -24,19 +24,13 @@ ms.locfileid: "68990118"
 > * [Python](create-table-python.md)
 > 
 
-本快速入門示範如何使用 Node.js 與 Azure Cosmos DB [資料表 API](table-introduction.md)，以藉由從 GitHub 複製範例來建置應用程式。 本快速入門也會示範如何建立 Azure Cosmos DB 帳戶，以及如何使用資料總管在以 Web 為基礎的 Azure 入口網站中建立資料表和實體。
+在本快速入門中，您會建立 Azure Cosmos DB 資料表 API 帳戶，並使用資料總管和從 GitHub 複製的 Node.js 應用程式來建立資料表和實體。 Azure Cosmos DB 是多模型的資料庫服務，可讓您快速建立及查詢具有全域散發和水平調整功能的文件、資料表、索引鍵/值及圖形資料庫。
 
-Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您可以快速建立及查詢文件、索引鍵/值、整個資料行及圖形資料庫，所有這些都受惠於位於 Azure Cosmos DB 核心的全域散發和水平調整功能。 
+## <a name="prerequisites"></a>Prerequisites
 
-## <a name="prerequisites"></a>必要條件
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-[!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
-
-此外：
-
-* [Node.js](https://nodejs.org/en/) v0.10.29 版或更高版本
-* [Git](https://git-scm.com/)
+- 具有有效訂用帳戶的 Azure 帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 或[免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) (不需 Azure 訂用帳戶)。 您也可以搭配使用 [Azure Cosmos DB 模擬器](https://aka.ms/cosmosdb-emulator)與 `https://localhost:8081` 的 URI 和金鑰 `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`。
+- [Node.js 0.10.29+](https://nodejs.org/)。
+- [Git](https://git-scm.com/downloads)。
 
 ## <a name="create-a-database-account"></a>建立資料庫帳戶
 
@@ -80,19 +74,19 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 現在，返回 Azure 入口網站以取得連接字串資訊，並將它複製到應用程式中。 這可讓您的應用程式與託管資料庫進行通訊。 
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)中，按一下 [連接字串]  。 
+1. 在 [Azure 入口網站](https://portal.azure.com/)中的 Azure Cosmos DB 帳戶中，選取 [連接字串]  。 
 
     ![在 [連接字串] 窗格中檢視及複製所需的連接字串資訊](./media/create-table-nodejs/connection-string.png)
 
 2. 使用右側的複製按鈕複製 PRIMARY CONNECTION STRING。
 
-3. 開啟 app.config 檔案，然後將值貼到第三行上的 connectionString 中。 
+3. 開啟 app.config  檔案，然後將值貼到第三行上的 connectionString 中。 
 
     > [!IMPORTANT]
     > 如果端點使用 documents.azure.com，這表示您擁有預覽帳戶，因此您需要建立一個[新的資料表 API 帳戶](#create-a-database-account)與正式推出的資料表 API SDK 搭配使用。
     >
 
-3. 儲存 app.config 檔案。
+3. 儲存 app.config  檔案。
 
 您現已更新應用程式，使其具有與 Azure Cosmos DB 通訊所需的所有資訊。 
 
@@ -104,13 +98,13 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
     cd "C:\git-samples\storage-table-node-getting-started"
     ```
 
-2. 執行下列命令在本機安裝 [azure]、[node-uuid]、[nconf] 及 [async] 模組，並將其項目儲存至 package.json 檔案
+2. 執行下列命令在本機安裝 [azure]、[node-uuid]、[nconf] 及 [async] 模組，並將其項目儲存至 package.json  檔案。
 
    ```
    npm install azure-storage node-uuid async nconf --save
    ```
 
-2. 在 git 終端機視窗中，執行下列命令以執行啟動節點應用程式。
+2. 在 git 終端機視窗中，執行下列命令以執行 Node.js 應用程式。
 
     ```
     node ./tableSample.js 
@@ -130,7 +124,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已了解如何建立 Azure Cosmos DB 帳戶、如何使用資料總管來建立資料表，以及如何執行應用程式。  現在，您可以使用資料表 API 來查詢您的資料。  
+在本快速入門中，您已了解如何建立 Azure Cosmos DB 帳戶、如何使用 [資料總管] 建立資料表，以及如何執行 Node.js 應用程式來新增資料表的資料。  現在，您可以使用資料表 API 來查詢您的資料。  
 
 > [!div class="nextstepaction"]
 > [將資料表資料匯入至資料表 API](table-import.md)

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/31/2019
 ms.author: sngun
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 8c2ae82bae8457a1c715f160994c7a0da94193ff
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: bd7801c84860ddba3c3991bce9352c595adb123f
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134501"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469032"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>快速入門：建置 JAVA 應用程式來管理 Azure Cosmos DB SQL API 資料
 
@@ -69,15 +69,17 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
 
 此為選用步驟。 若您想要瞭解如何在程式碼中建立資料庫資源，則可檢閱下列程式碼片段。 或是，您可以直接跳到[執行應用程式](#run-the-app)。 
 
+### <a name="managing-database-resources-using-the-synchronous-sync-api"></a>使用同步 API 管理資料庫資源
+
 * `CosmosClient` 初始化。 `CosmosClient` 提供適用於 Azure Cosmos 資料庫服務的用戶端邏輯表示法。 此用戶端會用於設定和執行針對服務的要求。
     
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateSyncClient)]
 
-* 建立 CosmosDatabase。
+* `CosmosDatabase` 建立。
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateDatabaseIfNotExists)]
 
-* 建立 CosmosContainer。
+* `CosmosContainer` 建立。
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateContainerIfNotExists)]
 
@@ -85,13 +87,41 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateItem)]
    
-* 端點讀取是使用 `getItem` 和 `read` 方法來執行
+* 端點讀取是使用 `readItem` 方法來執行。
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=ReadItem)]
 
 * 使用 `queryItems` 方法，透過 JSON 執行 SQL 查詢。
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=QueryItems)]
+
+### <a name="managing-database-resources-using-the-asynchronous-async-api"></a>使用非同步 API 管理資料庫資源
+
+* 非同步 API 呼叫會立即傳回，而不需等待伺服器的回應。 有鑑於此，下列程式碼片段會顯示適當的設計模式，以便使用非同步 API 來完成上述所有管理工作。
+
+* `CosmosAsyncClient` 初始化。 `CosmosAsyncClient` 提供適用於 Azure Cosmos 資料庫服務的用戶端邏輯表示法。 此用戶端用於設定和執行針對服務的非同步要求。
+    
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateAsyncClient)]
+
+* `CosmosAsyncDatabase` 建立。
+
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateDatabaseIfNotExists)]
+
+* `CosmosAsyncContainer` 建立。
+
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateContainerIfNotExists)]
+
+* 就像同步 API 一樣，項目建立是使用 `createItem` 方法來完成。 此範例示範如何藉由訂閱可發出要求並列印通知的「回應式串流」，有效率地發出許多非同步 `createItem` 要求。 由於這個簡單範例會執行到完成並終止，因此 `CountDownLatch` 執行個體用來確保程式在項目建立期間不會終止。 **適當的非同步程式設計做法不會在非同步呼叫上進行封鎖 - 在實際的使用案例中，要求會產生自無限期執行的 main() 迴圈，而不需要在非同步呼叫上進行閂鎖。**
+
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateItem)]
+   
+* 就像同步 API 一樣，點讀取是使用 `readItem` 方法來執行。
+
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=ReadItem)]
+
+* 就像同步 API 一樣，透過 JSON 的 SQL 查詢是使用 `queryItems` 方法來執行。
+
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=QueryItems)]
 
 ## <a name="run-the-app"></a>執行應用程式
 
@@ -109,10 +139,10 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
     mvn package
     ```
 
-3. 在 git 終端機視窗中，使用下列命令啟動 Java 應用程式 (請將 YOUR_COSMOS_DB_HOSTNAME 取代為入口網站中加上引號的 URI 值，並將 YOUR_COSMOS_DB_MASTER_KEY 取代為入口網站中加上引號的主要金鑰)
+3. 在 git 終端機視窗中，使用下列命令啟動 Java 應用程式 (將 SYNCASYNCMODE 取代為 `sync` 或 `async` (取決於您想要執行的範例程式碼)，將 YOUR_COSMOS_DB_HOSTNAME 取代為入口網站中加上引號的 URI 值，並將 YOUR_COSMOS_DB_MASTER_KEY 取代為入口網站中加上引號的主要金鑰)
 
     ```bash
-    mvn exec:java -DACCOUNT_HOST=YOUR_COSMOS_DB_HOSTNAME -DACCOUNT_KEY=YOUR_COSMOS_DB_MASTER_KEY
+    mvn exec:java@SYNCASYNCMODE -DACCOUNT_HOST=YOUR_COSMOS_DB_HOSTNAME -DACCOUNT_KEY=YOUR_COSMOS_DB_MASTER_KEY
 
     ```
 

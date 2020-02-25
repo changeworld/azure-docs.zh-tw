@@ -1,22 +1,22 @@
 ---
-title: 什麼是 Azure Active Directory 中的企業狀態漫遊？ | Microsoft Docs
-description: 企業狀態漫遊提供使用者跨 Windows 裝置的一致體驗，並且減少設定新的裝置所需的時間。
+title: 什麼是 Azure Active Directory 中的企業狀態漫遊？
+description: 企業狀態漫遊可讓使用者在其 Windows 裝置上有一致的體驗
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: overview
-ms.date: 06/28/2019
+ms.date: 02/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5b60970592180a2353860369e637d4b9a9bb8f9
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: c22baf0a08718883f0c0c9844cc395f607b5b20d
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481916"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77194274"
 ---
 # <a name="what-is-enterprise-state-roaming"></a>企業狀態漫遊是什麼？
 
@@ -28,13 +28,13 @@ ms.locfileid: "67481916"
 
 企業狀態漫遊也可以在多個 Azure 區域中使用。 您可以在 Azure Active Directory 下方的 [依區域提供的 Azure 服務](https://azure.microsoft.com/regions/#services) 上找到可用區域的更新清單。
 
-| 文章 | 說明 |
+| 發行項 | 描述 |
 | --- | --- |
-| [在 Azure Active Directory 中啟用企業狀態漫遊](enterprise-state-roaming-enable.md) |企業狀態漫遊適用於具有 Premium Azure Active Directory (Azure AD) 訂用帳戶的任何組織。 如需如何取得 Azure AD 訂用帳戶的詳細資訊，請參閱 [Azure AD 產品](https://azure.microsoft.com/services/active-directory) 頁面。 |
-| [設定和資料漫遊常見問題集](enterprise-state-roaming-faqs.md) |本主題將回答 IT 系統管理員可能會遇到的設定和應用程式資料同步處理的一些問題。 |
+| [在 Azure Active Directory 中啟用企業狀態漫遊](enterprise-state-roaming-enable.md) |企業狀態漫遊適用於具有 Premium Azure Active Directory (Azure AD) 訂用帳戶的任何組織。 如需有關如何取得 Azure AD 訂用帳戶的詳細資訊，請參閱 [Azure AD 產品頁面](https://azure.microsoft.com/services/active-directory)。 |
+| [設定和資料漫遊常見問題集](enterprise-state-roaming-faqs.md) |本文將回答 IT 系統管理員可能會遇到的設定和應用程式資料同步處理的一些問題。 |
 | [設定同步處理的群組原則和 MDM 設定](enterprise-state-roaming-group-policy-settings.md) |Windows 10 提供群組原則和行動裝置管理 (MDM) 原則設定，以限制設定同步處理。 |
-| [Windows 10 漫遊設定參考](enterprise-state-roaming-windows-settings-reference.md) |以下是在 Windows 10 中進行漫遊及/或備份的所有設定的完整清單。 |
-| [疑難排解](enterprise-state-roaming-troubleshooting.md) |本主題會執行一些疑難排解基本步驟，並且包含一份已知問題清單。 |
+| [Windows 10 漫遊設定參考](enterprise-state-roaming-windows-settings-reference.md) |將在 Windows 10 中進行漫遊及/或備份的設定清單。 |
+| [疑難排解](enterprise-state-roaming-troubleshooting.md) |本文會執行一些疑難排解基本步驟，並且包含一份已知問題清單。 |
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 11eb2e0363682d39a00a3f47cd3cc6c4badc040f
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 175625ab9fca9103bde027c3c0ea0986806ad846
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086470"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208297"
 ---
 # <a name="migrate-from-google-maps-to-azure-maps"></a>從 Google 地圖遷移至 Azure 地圖服務
 
@@ -22,11 +22,11 @@ ms.locfileid: "77086470"
 
 ## <a name="azure-maps-platform-overview"></a>Azure 地圖服務平台概觀
 
-Azure 地圖服務提供強大的地理空間功能供所有產業的開發人員使用。 這些功能會隨定期更新的地圖資料一起封裝，以提供 Web 和行動應用程式的地理內容。 Azure 地圖服務有 REST API 的 Azure One API 相容集合。 這些 REST API 會提供地圖呈現、搜尋、路由、流量、時區、地理位置、地理柵欄、地圖資料、天氣、行動性和空間作業。 這些作業都會隨附在網頁和 Android SDK 中，如此可讓開發工作變得更簡單、更具彈性，且可跨多個平台使用。
+Azure 地圖服務提供強大的地理空間功能供所有產業的開發人員使用。 這些功能會隨定期更新的地圖資料一起封裝，以提供 Web 和行動應用程式的地理內容。 Azure 地圖服務有 REST API 的 Azure One API 相容集合。 REST API 會提供地圖呈現、搜尋、路由、流量、時區、地理位置、地理柵欄、地圖資料、天氣、行動性和空間作業。 這些作業都會隨附在網頁和 Android SDK 中，如此可讓開發工作變得更簡單、更具彈性，且可跨多個平台使用。
 
 ## <a name="high-level-platform-comparison"></a>高階平台比較
 
-下表提供 Azure 地圖服務功能的概略清單，這些功能可與 Google Maps 功能相對應。 這份清單不會顯示所有 Azure 地圖服務功能。 其他一些 Azure 地圖服務功能包含協助工具、地理柵欄 API、等時路線規劃、空間作業、直接地圖底圖存取、批次服務，以及資料涵蓋範圍比較 (也就是影像涵蓋範圍)。
+下表提供 Azure 地圖服務功能的概略清單，這些功能可與 Google Maps 功能相對應。 這份清單不會顯示所有 Azure 地圖服務功能。 其他 Azure 地圖服務功能包含：協助工具、地理柵欄、等時路線規劃、空間作業、直接地圖底圖存取、批次服務，以及資料涵蓋範圍比較 (也就是影像涵蓋範圍)。
 
 | Google 地圖功能         | Azure 地圖服務支援                     |
 |-----------------------------|:--------------------------------------:|
@@ -49,14 +49,14 @@ Azure 地圖服務提供強大的地理空間功能供所有產業的開發人�
 | 地圖內嵌 API           | N/A                                    |
 | 地圖 URL                    | N/A                                    |
 
-Google 地圖提供基本的金鑰型驗證。 Azure 地圖服務同時提供基本金鑰型驗證與 Azure Active Directory 驗證。 相較於基本金鑰型驗證，Azure Active Directory 具有更多安全性功能。
+Google 地圖提供基本的金鑰型驗證。 Azure 地圖服務同時提供基本金鑰型驗證與 Azure Active Directory 驗證。 相較於基本金鑰型驗證，Azure Active Directory 驗證提供更多的安全性功能。
 
 ## <a name="licensing-considerations"></a>授權考量
 
 從 Google Maps 遷移至 Azure 地圖服務時，請考量下列關於授權的要點。
 
 - 使用互動式地圖的 Azure 地圖服務費用 (根據已載入的地圖底圖數目)。 另一方面，用於載入地圖控制項的Google Maps 費用。 在互動式 Azure 地圖服務 SDK 中會自動快取地圖底圖，以降低開發人員的成本。 每載入 15 個地圖底圖，就會產生一筆 Azure 地圖服務交易。 互動式 Azure 地圖服務 SDK 使用 512 像素的底圖，平均每個頁面檢視會產生一筆或更少的交易。
-- 將 Google Maps Web 服務的靜態地圖影像取代為 Azure 地圖服務 Web SDK，通常更符合成本效益。 Azure 地圖服務 Web SDK 會使用地圖底圖，且除非使用者移動瀏覽及縮放地圖，否則服務通常只會根據地圖載入量產生少量交易。 如有需要，Azure 地圖服務 Web SDK 有停用移動瀏覽和縮放的選項。 此外，Azure 地圖服務 Web SDK 所提供的視覺效果選項遠比靜態地圖 Web 服務來得多。
+- 將 Google Maps Web 服務的靜態地圖影像取代為 Azure 地圖服務 Web SDK，通常更符合成本效益。 Azure 地圖服務 Web SDK 會使用地圖底圖。 除非使用者移動瀏覽及縮放地圖，否則服務通常只會根據地圖載入量產生少量交易。 如有需要，Azure 地圖服務 Web SDK 有停用移動瀏覽和縮放的選項。 此外，Azure 地圖服務 Web SDK 所提供的視覺效果選項遠比靜態地圖 Web 服務來得多。
 - Azure 地圖服務允許將其平台中的資料儲存在 Azure 中。 此外，也可以根據[使用規定](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=46)，在別處快取長達六個月的資料。
 
 以下是 Azure 地圖服務的一些相關資源：

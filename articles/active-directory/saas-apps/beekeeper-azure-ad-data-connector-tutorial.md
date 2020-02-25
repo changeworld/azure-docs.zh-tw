@@ -1,6 +1,6 @@
 ---
-title: 教學課程：Azure Active Directory 單一登入 (SSO) 與 Beekeeper Azure AD Data Connector 整合 | Microsoft Docs
-description: 了解如何設定 Azure Active Directory 與 Beekeeper Azure AD Data Connector 之間的單一登入。
+title: 教學課程：Azure Active Directory 單一登入 (SSO) 與 Beekeeper Azure AD SSO 整合 | Microsoft Docs
+description: 了解如何設定 Azure Active Directory 與 Beekeeper Azure AD SSO 之間的單一登入。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,22 +12,22 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 02/04/2020
+ms.date: 02/14/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7484d71c6032b97341537a0564d8d52b3996cc8e
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: bbac5f6b26ff5df9114eebdf850faff263f7cd78
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77050214"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373178"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-beekeeper-azure-ad-data-connector"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Beekeeper Azure AD Data Connector 整合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-beekeeper-azure-ad-sso"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Beekeeper Azure AD SSO 整合
 
-在本教學課程中，您將了解如何整合 Beekeeper Azure AD Data Connector 與 Azure Active Directory (Azure AD)。 當您整合 Beekeeper Azure AD Data Connector 與 Azure AD 時，您可以：
+在本教學課程中，您將了解如何整合 Beekeeper Azure AD SSO與 Azure Active Directory (Azure AD)。 當您整合 Beekeeper Azure AD SSO 與 Azure AD 時，您可以：
 
-* 在 Azure AD 中控制可存取 Beekeeper Azure AD Data Connector 的人員。
-* 讓使用者使用其 Azure AD 帳戶自動登入 Beekeeper Azure AD Data Connector。
+* 在 Azure AD 中控制可存取 Beekeeper Azure AD SSO 的人員。
+* 讓使用者使用其 Azure AD 帳戶自動登入 Beekeeper Azure AD SSO。
 * 在 Azure 入口網站集中管理您的帳戶。
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
@@ -37,46 +37,45 @@ ms.locfileid: "77050214"
 若要開始，您需要下列項目：
 
 * Azure AD 訂用帳戶。 如果沒有訂用帳戶，您可以取得[免費帳戶](https://azure.microsoft.com/free/)。
-* 已啟用 Beekeeper Azure AD Data Connector 單一登入 (SSO) 的訂用帳戶。
+* 已啟用 Beekeeper Azure AD SSO 單一登入 (SSO) 的訂用帳戶。
 
 ## <a name="scenario-description"></a>案例描述
 
 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
 
-* Beekeeper Azure AD Data Connector 支援 **SP 和 IDP** 起始的 SSO
-* Beekeeper Azure AD Data Connector 支援 **Just In Time** 使用者佈建
-* 設定 Beekeeper Azure AD Data Connector 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* Beekeeper Azure AD SSO 支援 **SP 和 IDP** 起始的 SSO
+* Beekeeper Azure AD SSO 支援 **Just In Time** 使用者佈建
+* 設定 Beekeeper Azure AD SSO 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
 
-## <a name="adding-beekeeper-azure-ad-data-connector-from-the-gallery"></a>從資源庫新增 Beekeeper Azure AD Data Connector
+## <a name="adding-beekeeper-azure-ad-sso-from-the-gallery"></a>從資源庫新增 Beekeeper Azure AD SSO
 
-若要設定 Beekeeper Azure AD Data Connector 與 Azure AD 整合，您需要從資源庫將 Beekeeper Azure AD Data Connector 新增到受控 SaaS 應用程式清單。
+若要設定 Beekeeper Azure AD SSO 與 Azure AD 整合，您需要從資源庫將 Beekeeper Azure AD SSO 新增到受控 SaaS 應用程式清單。
 
 1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Beekeeper Azure AD Data Connector**。
-1. 從結果面板中選取 [Beekeeper Azure AD Data Connector]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
+1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Beekeeper Azure AD SSO**。
+1. 從結果面板中選取 [Beekeeper Azure AD SSO]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
+## <a name="configure-and-test-azure-ad-single-sign-on-for-beekeeper-azure-ad-sso"></a>設定及測試 Beekeeper Azure AD SSO 的 Azure AD 單一登入
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-beekeeper-azure-ad-data-connector"></a>設定及測試 Beekeeper Azure AD Data Connector 的 Azure AD 單一登入
+以名為 **B.Simon** 的測試使用者，設定及測試與 Beekeeper Azure AD SSO 搭配運作的 Azure AD SSO。 若要讓 SSO 能夠運作，您必須建立 Azure AD 使用者與 Beekeeper Azure AD SSO 中相關使用者之間的連結關聯性。
 
-以名為 **B.Simon** 的測試使用者，設定及測試與 Beekeeper Azure AD Data Connector 搭配運作的 Azure AD SSO。 若要讓 SSO 能夠運作，您必須建立 Azure AD 使用者與 Beekeeper Azure AD Data Connector 中相關使用者之間的連結關聯性。
-
-若要使用 Beekeeper Azure AD Data Connector 來設定並測試 Azure AD SSO，您需要完成下列建構元素：
+若要使用 Beekeeper Azure AD SSO 來設定並測試 Azure AD SSO，您需要完成下列建構元素：
 
 1. **[設定 Azure AD SSO](#configure-azure-ad-sso)** - 讓您的使用者能夠使用此功能。
     * **[建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)** - 使用 B.Simon 測試 Azure AD 單一登入。
     * **[指派 Azure AD 測試使用者](#assign-the-azure-ad-test-user)** - 讓 B.Simon 能夠使用 Azure AD 單一登入。
-1. **[設定 Beekeeper Azure AD Data Connector SSO](#configure-beekeeper-azure-ad-data-connector-sso)** - 在應用程式端設定單一登入設定。
-    * **[建立 Beekeeper Azure AD Data Connector 測試使用者](#create-beekeeper-azure-ad-data-connector-test-user)** - 使 Beekeeper Azure AD Data Connector 中對應的 B.Simon 連結到該使用者在 Azure AD 中的代表項目。
+1. **[設定 Beekeeper Azure AD SSO](#configure-beekeeper-azure-ad-sso)** - 在應用程式端設定單一登入設定。
+    * **[建立 Beekeeper Azure AD SSO 測試使用者](#create-beekeeper-azure-ad-sso-test-user)** - 使 Beekeeper Azure AD SSO 中對應的 B.Simon 連結到該使用者在 Azure AD 中的代表項目。
 1. **[測試 SSO](#test-sso)** - 驗證組態是否能運作。
 
 ## <a name="configure-azure-ad-sso"></a>設定 Azure AD SSO
 
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Beekeeper Azure AD Data Connector]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
+1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Beekeeper Azure AD SSO]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
 1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
@@ -104,13 +103,13 @@ ms.locfileid: "77050214"
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<your_company>.beekeeper.io/login`
 
     > [!NOTE]
-    > [登入 URL] 的值不是真正的值。 使用實際的「登入 URL」來更新此值。 請連絡 [Beekeeper Azure AD Data Connector 支援小組](mailto:support@beekeeper.io)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > [登入 URL] 的值不是真正的值。 使用實際的「登入 URL」來更新此值。 請連絡 [Beekeeper Azure AD SSO 用戶端支援小組](mailto:support@beekeeper.io)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
-1. Beekeeper Azure AD Data Connector 應用程式需要特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應新增至您的 SAML 權杖屬性組態。 以下螢幕擷取畫面顯示預設屬性清單。
+1. Beekeeper Azure AD SSO 應用程式會預期要有特定格式的 SAML 判斷提示，這會要求您在 SAML 權杖屬性設定中新增自訂的屬性對應。 以下螢幕擷取畫面顯示預設屬性清單。
 
     ![image](common/default-attributes.png)
 
-1. 除了上述屬性外，Beekeeper Azure AD Data Connector 應用程式還需要在 SAML 回應中多傳回幾個屬性，如下所示。 這些屬性也會預先填入，但您可以根據您的需求來檢閱這些屬性。
+1. 除了上述屬性外，Beekeeper Azure AD SSO 應用程式還需要在 SAML 回應中多傳回幾個屬性，如下所示。 這些屬性也會預先填入，但您可以根據您的需求來檢閱這些屬性。
 
     | 名稱 | 來源屬性|
     | ------------ | --------- |
@@ -124,7 +123,7 @@ ms.locfileid: "77050214"
 
     ![憑證下載連結](common/metadataxml.png)
 
-1. 在 [設定 Beekeeper Azure AD Data Connector]  區段上，依據您的需求複製適當的 URL。
+1. 在 [設定 Beekeeper Azure AD SSO]  區段上，依據您的需求複製適當的 URL。
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
@@ -142,10 +141,10 @@ ms.locfileid: "77050214"
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
-在本節中，您會將 Beekeeper Azure AD Data Connector 的存取權授與 B.Simon，讓其能夠使用 Azure 單一登入。
+在本節中，您會將 Beekeeper Azure AD SSO 的存取權授與 B.Simon，讓其能夠使用 Azure 單一登入。
 
 1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
-1. 在應用程式清單中，選取 [Beekeeper Azure AD Data Connector]  。
+1. 在應用程式清單中，選取 [Beekeeper Azure AD SSO]  。
 1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
 
    ![[使用者和群組] 連結](common/users-groups-blade.png)
@@ -158,19 +157,19 @@ ms.locfileid: "77050214"
 1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色]  對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取]  按鈕。
 1. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
 
-## <a name="configure-beekeeper-azure-ad-data-connector-sso"></a>設定 Beekeeper Azure AD Data Connector SSO
+## <a name="configure-beekeeper-azure-ad-sso"></a>設定 Beekeeper Azure AD SSO
 
-若要在 **Beekeeper Azure AD Data Connector** 端設定單一登入，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML]  和複製的適當 URL 傳送給 [Beekeeper Azure AD Data Connector 支援小組](mailto:support@beekeeper.io)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要在 **Beekeeper Azure AD SSO** 端設定單一登入，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML]  和複製的適當 URL 傳送給 [Beekeeper Azure AD SSO 支援小組](mailto:support@beekeeper.io)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
 
-### <a name="create-beekeeper-azure-ad-data-connector-test-user"></a>建立 Beekeeper Azure AD Data Connector 測試使用者
+### <a name="create-beekeeper-azure-ad-sso-test-user"></a>建立 Beekeeper Azure AD SSO 測試使用者
 
-本節會在 Beekeeper Azure AD Data Connector 中建立名為 Britta Simon 的使用者。 Beekeeper Azure AD Data Connector 支援依預設啟用的 Just-In-Time 使用者佈建。 在這一節沒有您需要進行的動作項目。 如果 Beekeeper Azure AD Data Connector 中還沒有任何使用者存在，在驗證之後就會建立新的使用者。
+本節會在 Beekeeper Azure AD SSO 中建立名為 Britta Simon 的使用者。 Beekeeper Azure AD SSO 支援依預設啟用的 Just-In-Time 使用者佈建。 在這一節沒有您需要進行的動作項目。 如果 Beekeeper Azure AD SSO 中還沒有任何使用者存在，在驗證之後就會建立新的使用者。
 
 ## <a name="test-sso"></a>測試 SSO 
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 Beekeeper Azure AD Data Connector 圖格時，應該就會自動登入您已設定 SSO 的 Beekeeper Azure AD Data Connector。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 Beekeeper Azure AD SSO 圖格時，應該就會自動登入您已設定 SSO 的 Beekeeper Azure AD SSO。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
 ## <a name="additional-resources"></a>其他資源
 
@@ -180,6 +179,6 @@ ms.locfileid: "77050214"
 
 - [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [嘗試搭配 Azure AD 使用 Beekeeper Azure AD Data Connector](https://aad.portal.azure.com/)
+- [嘗試搭配 Azure AD 使用 Beekeeper Azure AD SSO](https://aad.portal.azure.com/)
 
 - [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

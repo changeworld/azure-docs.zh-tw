@@ -1,22 +1,19 @@
 ---
-title: 檢閱 Microsoft 合作夥伴合約的發票 - Azure
+title: 檢閱 Microsoft 合作夥伴合約發票 - Azure
 description: 了解如何檢閱您的帳單和資源使用量，以及確認您的 Microsoft 合作夥伴合約發票費用。
-author: jureid
-manager: jureid
+author: bandersmsft
+ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 11/22/2019
+ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: e3823a9eb2e0713f7f42e4e02808ef957efc5944
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: dd0d53fb89df5372d3974b85cdb659f6cfbbedd8
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75990836"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199087"
 ---
 # <a name="tutorial-review-your-microsoft-partner-agreement-invoice"></a>教學課程：檢閱 Microsoft 合作夥伴合約發票
 
@@ -41,7 +38,7 @@ ms.locfileid: "75990836"
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
-- 登入 Azure 入口網站： https://portal.azure.com 。
+- 在 https://portal.azure.com 登入 Azure 入口網站。
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>檢查 Microsoft 客戶合約的存取
 

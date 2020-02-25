@@ -1,20 +1,20 @@
 ---
 title: 教學課程：使用 Azure Notebooks (Python) 來聯結感應器資料與氣象預報資料 | Microsoft Azure 地圖服務
 description: 本教學課程說明如何使用 Azure Notebooks (Python) 來聯結感應器資料與得自 Microsoft Azure 地圖服務氣象服務的氣象預報資料。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/29/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 6d49a305a9b2e02d9e9d743ff8f076f453a08fcb
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: d6b82ec0662745fd9c9a05db28595ff84f57f330
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989615"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208024"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>教學課程：使用 Azure Notebooks (Python) 來聯結感應器資料與氣象預報資料
 
@@ -68,7 +68,7 @@ df = pd.read_csv("./data/weather_dataset_demo.csv")
 
 ## <a name="request-daily-forecast-data"></a>要求每日預報資料
 
-在我們的案例中，我們會要求每個感應器位置的每日預報。 下列指令碼會呼叫 Azure 地圖服務氣象服務的[每日預報 API](https://aka.ms/AzureMapsWeatherDailyForecast)，以取得每個風力發電機組的每日氣象預報，預報範圍是當日起的往後 15 天。
+在我們的案例中，我們會要求每個感應器位置的每日預報。 下列指令碼會呼叫 Azure 地圖服務氣象服務的[每日預測 API](https://aka.ms/AzureMapsWeatherDailyForecast)。 此 API 會針對每個風力發電機，傳回目前日期後 15 天內的氣象預報。
 
 
 ```python
@@ -129,7 +129,7 @@ display(Image(poi_range_map))
 ![發電機組的所在位置](./media/weather-service-tutorial/location-map.png)
 
 
-我們會根據天氣資料中心工作站的識別碼，將示範資料分組成預測資料。 此分組動作會使用預測資料來擴充示範資料。 
+我們會根據工作站的識別碼，將示範資料分組成預測資料。 工作站識別碼代表天氣資料中心。 此分組動作會使用預測資料來擴充示範資料。
 
 ```python
 # Group forecasted data for all locations

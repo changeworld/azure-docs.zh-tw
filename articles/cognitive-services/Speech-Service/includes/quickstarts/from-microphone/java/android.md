@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 11/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 882904ec09014df821c648bb4823d7a0930abba5
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 6348d09351cf627624340083e2c419def38dfc01
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77156723"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77445485"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -58,7 +58,7 @@ UI 的文字表現方式和畫面現在應會如下：
 
 1. 在相同檔案中，以您的訂用帳戶金鑰取代 `YourSubscriptionKey` 字串。
 
-1. 另請將字串 `YourServiceRegion` 取代為訂用帳戶所關聯[區域](https://aka.ms/speech/sdkregion)中的「語音 SDK 參數」。 例如，針對免費試用訂用帳戶使用 `westus`。
+1. 同時將 `YourServiceRegion` 字串取代為訂用帳戶所關聯[區域](https://aka.ms/speech/sdkregion)中的 [區域識別碼]  。 例如，針對免費試用訂用帳戶使用 `westus`。
 
 ## <a name="build-and-run-the-app"></a>建置並執行應用程式
 

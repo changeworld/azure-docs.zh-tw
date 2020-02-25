@@ -4,14 +4,14 @@ description: 在本快速入門中，您將使用 Azure 入口網站，將 Sprin
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 02/03/2020
+ms.date: 02/15/2020
 ms.author: brendm
-ms.openlocfilehash: 67ad112021c2fadb5ea93ffefcf5e58e9404e92a
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: a215fe2305b320fe27ef9d868d060f3e9cb14c1c
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137746"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77431294"
 ---
 # <a name="quickstart-launch-an-existing-azure-spring-cloud-application-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站來啟動現有的 Azure Spring Cloud 應用程式
 
@@ -54,17 +54,42 @@ az extension add --name spring-cloud
 
 ## <a name="provision-a-service-instance-on-the-azure-portal"></a>在 Azure 入口網站上佈建服務執行個體
 
-1. 在網頁瀏覽器中，開啟 [Azure 入口網站中 Azure Spring Cloud 的這個連結](https://ms.portal.azure.com/#create/Microsoft.AppPlatform)。
+1. 在新的索引標籤中，開啟 [Azure 入口網站](https://ms.portal.azure.com/)。 
 
-1. 填寫 Azure Spring Cloud [建立]  頁面上的表單。  請參考下列指引：
-    - 服務名稱：指定您服務執行個體的名稱。  名稱長度必須為 4 到 32 個字元，且只能包含小寫字母、數字及連字號。  服務名稱的第一個字元必須是字母，且最後一個字元必須是字母或數字。
-    - 訂用帳戶：選取您想要用來支付此資源費用的訂用帳戶。  請確定此訂用帳戶已新增至我們的 Azure Spring Cloud 允許清單。
-    - 資源群組：為新資源建立新資源群組是最佳做法。
-    - 位置：選取您服務執行個體的位置。 目前支援的位置包括美國東部、美國西部 2、西歐和東南亞。
+2. 從頂端的搜尋方塊，搜尋 **Azure Spring Cloud**。
 
-1. 按一下 [檢閱及建立]  。
+3. 從結果中選取 **Azure Spring Cloud**。
 
-1. 確認規格，然後按一下 [建立]  。
+ ![ASC 圖示](media/spring-cloud-quickstart-launch-app-portal/find-spring-cloud-start.png)
+
+4. 在 Azure Spring Cloud 頁面上，按一下 [+ 新增]  。
+
+ ![ASC 圖示](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
+
+5. 填寫 Azure Spring Cloud [建立]  頁面上的表單。  請參考下列指引：
+    - 訂用帳戶  ：選取您想要用來支付此資源費用的訂用帳戶。  請確定此訂用帳戶已新增至我們的 Azure Spring Cloud 允許清單。
+    - **資源群組**：為新資源建立新資源群組是最佳做法。
+    - **服務詳細資料/名稱**：指定您服務執行個體的名稱。  名稱長度必須為 4 到 32 個字元，且只能包含小寫字母、數字及連字號。  服務名稱的第一個字元必須是字母，且最後一個字元必須是字母或數字。
+    - **位置**：選取您服務執行個體的位置。 目前支援的位置包括美國東部、美國西部 2、西歐和東南亞。
+
+    ![ASC 入口網站啟動](media/spring-cloud-quickstart-launch-app-portal/portal-start.png)
+
+6. 按一下 [診斷設定]  索引標籤，以開啟下列對話方塊。
+
+7. 您可以根據您的需求，將 [啟用記錄]  設定為 [是]  或 [否]  。
+
+    ![啟用記錄](media/spring-cloud-quickstart-launch-app-portal/diagnostic-setting.png)
+
+8. 按一下 [追蹤]  索引標籤。
+
+9. 您可以根據您的需求，將 [啟用追蹤]  設定為 [是]  或 [否]  。  如果您將 [啟用追蹤]  設定為 [是]，請同時選取現有的應用程式見解，或建立一個新的應用程式見解。 如果不符合 **Application Insights** 規格，就會發生驗證錯誤。
+
+
+    ![追蹤](media/spring-cloud-quickstart-launch-app-portal/tracing.png)
+
+10. 按一下 [檢閱及建立]  。
+
+11. 確認規格，然後按一下 [建立]  。
 
 部署服務需要約 5 分鐘。  一旦部署之後，服務執行個體的 [概觀]  頁面隨即出現。
 
@@ -76,11 +101,9 @@ az extension add --name spring-cloud
 
 1. 移至服務 [概觀]  頁面並選取 [設定伺服器]  。
 
-1. 在 [預設存放庫]  區段中，將 [URI]  設定為 "https\://github.com/Azure-Samples/piggymetrics"。
+2. 在 [預設存放庫]  區段中，將 [URI]  設定為 [https://github.com/Azure-Samples/piggymetrics-config ]。
 
-1. 將 [標籤]  設定為 "config"。
-
-1. 選取 [套用]  以儲存變更。
+3. 選取 [套用]  以儲存變更。
 
     ![ASC 入口網站的螢幕擷取畫面](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
 
@@ -97,27 +120,27 @@ az extension add --name spring-cloud
     git clone https://github.com/Azure-Samples/piggymetrics
     ```
 
-1. 建置複製的封裝。
+2. 建置複製的封裝。
 
     ```azurecli
     cd piggymetrics
     mvn clean package -DskipTests
     ```
-1. 將名稱指派給您的資源群組和服務。 務必將下列預留位置取代為您稍早在本教學課程中所佈建的資源群組名稱和服務名稱。
+3. 將名稱指派給您的資源群組和服務。 務必將下列預留位置取代為您稍早在本教學課程中所佈建的資源群組名稱和服務名稱。
 
     ```azurecli
     az configure --defaults group=<resource group name>
     az configure --defaults spring-cloud=<service instance name>
     ```
 
-1. 建立 `gateway` 應用程式並部署 JAR 檔案。
+4. 建立 `gateway` 應用程式並部署 JAR 檔案。
 
     ```azurecli
     az spring-cloud app create -n gateway
     az spring-cloud app deploy -n gateway --jar-path ./gateway/target/gateway.jar
     ```
 
-1. 遵循相同的模式來建立 `account-service` 和 `auth-service` 應用程式，並部署它們的 JAR 檔案。
+5. 遵循相同的模式來建立 `account-service` 和 `auth-service` 應用程式，並部署它們的 JAR 檔案。
 
     ```azurecli
     az spring-cloud app create -n account-service
@@ -126,7 +149,7 @@ az extension add --name spring-cloud
     az spring-cloud app deploy -n auth-service --jar-path ./auth-service/target/auth-service.jar
     ```
 
-1. 系統需要幾分鐘的時間來完成部署應用程式。 若要確認它們已部署，請移至 Azure 入口網站的 [應用程式]  刀鋒視窗。 您應該會看到個別與這三個應用程式個別的行。
+6. 系統需要幾分鐘的時間來完成部署應用程式。 若要確認它們已部署，請移至 Azure 入口網站的 [應用程式]  刀鋒視窗。 您應該會看到個別與這三個應用程式個別的行。
 
 > [!div class="nextstepaction"]
 > [我遇到問題](https://www.research.net/r/javae2e?tutorial=asc-portal-quickstart&step=deploy)
@@ -135,13 +158,13 @@ az extension add --name spring-cloud
 
 1. 開啟左側功能表中的 [應用程式]  索引標籤。
 
-1. 選取 `gateway` 應用程式，以顯示 [概觀]  頁面。
+2. 選取 `gateway` 應用程式，以顯示 [概觀]  頁面。
 
-1. 選取 [指派網域]  來將公用端點指派到閘道。 這可能需要數分鐘的時間。
+3. 選取 [指派端點]  以將公用端點指派到閘道。 這可能需要數分鐘的時間。
 
     ![ASC 入口網站的螢幕擷取畫面](media/spring-cloud-quickstart-launch-app-portal/portal-endpoint.png)
 
-1. 將已指派的公用端點 (標示為 **URL**) 輸入至您的瀏覽器，以檢視正在執行的應用程式。
+4. 將已指派的公用端點 (標示為 **URL**) 輸入至您的瀏覽器，以檢視正在執行的應用程式。
 
     ![ASC 入口網站的螢幕擷取畫面](media/spring-cloud-quickstart-launch-app-portal/sample-app.png)
 

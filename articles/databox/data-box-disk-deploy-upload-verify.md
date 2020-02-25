@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.localizationpriority: high
 ms.date: 09/04/2019
 ms.author: alkohli
-ms.openlocfilehash: e2851f7087151b09b5f859b7142aa28e5b18a4e5
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 3f89d713003f1f4265a7ab7c467454af750fab48
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514080"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200124"
 ---
 ::: zone target="docs"
 
@@ -100,7 +100,7 @@ ms.locfileid: "76514080"
 
 ## <a name="erasure-of-data-from-data-box-disk"></a>清除資料箱磁碟的資料
 
-在複製完成，且您已確認資料位於 Azure 儲存體帳戶之後，就會根據 NIST 標準安全地清除磁碟。
+上傳到 Azure 之後，資料箱磁碟會根據 [NIST SP 800-88](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi) 標準清除磁碟中的資料。
 
 ::: zone target="docs"
 

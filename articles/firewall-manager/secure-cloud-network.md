@@ -1,41 +1,38 @@
 ---
-title: 教學課程：使用 Azure 入口網站以 Azure 防火牆管理員預覽保護您的雲端網路
-description: 在此教學課程中，您將了解如何使用 Azure 入口網站以 Azure 防火牆管理員保護您的雲端網路。
+title: 教學課程：使用 Azure 防火牆管理員預覽來保護您的虛擬 WAN
+description: 在此教學課程中，您將了解如何使用 Azure 入口網站以 Azure 防火牆管理員保護您的虛擬 WAN。
 services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 10/27/2019
+ms.date: 02/18/2020
 ms.author: victorh
-ms.openlocfilehash: d2ebfd6003c0bc2b47636be1e38f47e554cc6988
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3dc94a8be265682fbe2128f2e5870dfdf5850a2d
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510032"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443052"
 ---
-# <a name="tutorial-secure-your-cloud-network-with-azure-firewall-manager-preview-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站以 Azure 防火牆管理員預覽保護您的雲端網路
+# <a name="tutorial-secure-your-virtual-wan-using-azure-firewall-manager-preview"></a>教學課程：使用 Azure 防火牆管理員預覽來保護您的虛擬 WAN 
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
-您可以使用 Azure 防火牆管理員預覽建立安全中樞，以保護以私人 IP 位址、Azure PaaS 與網際網路為目標的雲端網路流量。 路由傳送到防火牆的流量會經過自動化，因此不需要建立使用者定義的路由 (UDR)。
+您可以使用 Azure 防火牆管理員預覽建立安全虛擬中樞，以保護以私人 IP 位址、Azure PaaS 與網際網路為目標的雲端網路流量。 路由傳送到防火牆的流量會經過自動化，因此不需要建立使用者定義的路由 (UDR)。
 
 ![保護雲端網路](media/secure-cloud-network/secure-cloud-network.png)
 
-## <a name="prerequisites"></a>必要條件
+防火牆管理員也支援中樞虛擬網路架構。 如需安全虛擬中樞和中樞虛擬網路架構類型的比較，請參閱[什麼是 Azure 防火牆管理員架構選項？](vhubs-and-vnets.md)
 
-> [!IMPORTANT]
-> 您必須使用 `Register-AzProviderFeature` PowerShell 命令，明確地啟用 Azure 防火牆管理員預覽。
+在本教學課程中，您會了解如何：
 
-從 PowerShell 命令提示字元執行下列命令：
-
-```azure-powershell
-connect-azaccount
-Register-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace Microsoft.Network
-```
-需要 30 分鐘才能完成功能註冊。 執行下列命令以檢查您的註冊狀態：
-
-`Get-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace Microsoft.Network`
+> [!div class="checklist"]
+> * 建立輪輻虛擬網路
+> * 建立安全虛擬中樞
+> * 連接中樞和輪輻 VNet
+> * 建立防火牆原則並保護您的中樞
+> * 將流量路由傳送到您的中樞
+> * 測試防火牆
 
 ## <a name="create-a-hub-and-spoke-architecture"></a>建立中樞和輪輻架構
 
@@ -151,7 +148,7 @@ Register-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace M
    |虛擬機器名稱     |**Jump-Srv**|
    |區域     |**(美國) 美國東部**|
    |系統管理員使用者名稱     |**azureuser**|
-   |密碼     |**Azure123456!**|
+   |密碼     |輸入密碼|
 
 4. 在 [輸入連接埠規則]  底下，針對 [公用輸入連接埠]  選取 [允許選取的連接埠]  。
 5. 在 [選取輸入連接埠]  中，選取 [RDP (3389)]  。

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 11/23/2019
 ms.author: victorh
-ms.openlocfilehash: a72e98341ecafcda98cc2fde34cf1f9d4eaff94c
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 1e80fa23519104c3c62f6a0bf5d65cbbe0848ae2
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658265"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443817"
 ---
 # <a name="what-is-azure-application-gateway"></a>什麼是 Azure 應用程式閘道？
 
@@ -61,7 +61,7 @@ Web 應用程式已逐漸成為利用常見已知弱點的惡意攻擊目標。 
 ## <a name="ingress-controller-for-aks"></a>AKS 的輸入控制器
 應用程式閘道輸入控制器 (AGIC) 可讓您使用應用程式閘道作為 [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service/) 叢集的輸入。 
 
-輸入控制器會在 AKS 叢集中以 Pod 的形式執行，並取用 [Kubernetes 輸入資源](https://kubernetes.io/docs/concepts/services-networking/ingress/)，然後將其轉換成應用程式閘道設定，讓閘道能夠對 Kubernetes Pod 的流量進行負載平衡。 輸入控制器僅支援應用程式閘道 V2 SKU。 
+輸入控制器會在 AKS 叢集中以 Pod 的形式執行，並取用 [Kubernetes 輸入資源](https://kubernetes.io/docs/concepts/services-networking/ingress/)，然後將其轉換成應用程式閘道設定，讓閘道能夠對 Kubernetes Pod 的流量進行負載平衡。 輸入控制器僅支援應用程式閘道 Standard_v2 和 WAF_v2 SKU。 
 
 如需詳細資訊，請參閱[應用程式閘道輸入控制器 (AGIC)](ingress-controller-overview.md)。
 

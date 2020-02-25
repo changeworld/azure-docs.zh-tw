@@ -1,20 +1,20 @@
 ---
 title: 教學課程：使用 Azure 地圖服務建立商店定位器應用程式 | Microsoft Azure 地圖服務
 description: 在本教學課程中，您將了解如何使用 Microsoft Azure 地圖服務 Web SDK 來建立商店定位器 Web 應用程式。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 063f085de875272a7b1ba4f52aeceb8f36114cca
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 5621ed8f9e5d7990ca7b522d6388f855db81618e
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987000"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209557"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>教學課程：使用 Azure 地圖服務建立商店定位器
 
@@ -381,7 +381,7 @@ ms.locfileid: "76987000"
 
 此時，使用者介面中的一切設定皆已完成。 我們還需要新增 JavaScript 以載入和剖析資料，然後在地圖上轉譯資料。 為此，請先開啟 *index.js* 並為其新增程式碼，如下列步驟所說明。
 
-1. 新增全域選項以便更新設定。 請定義地圖的變數、快顯視窗、資料來源、圖示圖層、顯示搜尋區域中心點的 HTML 標記，以及 Azure 地圖服務搜尋服務用戶端的執行個體。
+1. 新增全域選項以便更新設定。 定義地圖的變數、快顯視窗、資料來源、圖示圖層及 HTML 標記。 設定 HTML 標記以指示搜尋區域的中心。 以及，定義 Azure 地圖服務搜尋服務用戶端的執行個體。
 
     ```JavaScript
     //The maximum zoom level to cluster data point data on the map.
@@ -397,9 +397,9 @@ ms.locfileid: "76987000"
 
 1. 將程式碼新增至 *index.js*。 下列程式碼會初始化地圖。 我們已新增[事件接聽程式](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)，以等待頁面載入完成。 然後，我們會連結事件以監視地圖的載入，並將功能提供給搜尋按鈕和「我的位置」按鈕。
 
-   當使用者選取搜尋按鈕時，或是當使用者在搜尋方塊中輸入位置之後按下 Enter 鍵時，就會起始對使用者查詢的模糊搜尋。 將國家/地區 ISO 2 值的陣列傳入 `countrySet` 選項，可將搜尋結果限制在這些國家/地區。 限制要搜尋的國家/地區，有助於提高傳回結果的精確度。 
+   當使用者選取搜尋按鈕，或是在搜尋方塊中輸入位置然後按下 Enter 鍵時，就會起始使用者查詢的模糊搜尋。 將國家/地區 ISO 2 值的陣列傳入 `countrySet` 選項，可將搜尋結果限制在這些國家/地區。 限制要搜尋的國家/地區，有助於提高傳回結果的精確度。 
   
-   搜尋完成後，請取用第一項結果，並設定該區域的地圖相機。 當使用者選取 [我的位置] 按鈕時，請使用瀏覽器中內建的 HTML5 地理位置 API 來擷取使用者的位置，並以其位置作為地圖的中心點。  
+   搜尋完成後，請取用第一項結果，並設定該區域的地圖相機。 當使用者選取 [我的位置] 按鈕時，請使用 HTML5 地理位置 API 來擷取使用者的位置。 此 API 會內建在瀏覽器中。 然後，將他們的位置放在地圖中心。  
 
    > [!Tip]
    > 當您使用的快顯視窗時，建議您最好建立單一 `Popup` 執行個體，並藉由更新內容和位置重複使用該執行個體。 您新增至程式碼的每個 `Popup` 執行個體，會有多個 DOM 元素新增至頁面。 頁面上的 DOM 元素越多，瀏覽器所須追蹤的項目就越多。 如果項目過多，瀏覽器可能會變慢。
@@ -527,7 +527,7 @@ ms.locfileid: "76987000"
     map.markers.add(centerMarker);
     ```
 
-1. 在地圖的 `ready` 事件接聽程式中，新增資料來源。 然後，進行呼叫以載入和剖析資料集。 啟用資料來源的叢集。 資料來源的叢集會將重疊的資料點分組到同一個叢集中。 當使用者放大地圖時，這些叢集會分成個別的資料點。 這可讓使用者體驗更為流暢，並改善效能。
+1. 在地圖的 `ready` 事件接聽程式中，新增資料來源。 然後，進行呼叫以載入和剖析資料集。 啟用資料來源的叢集。 資料來源的叢集會將重疊的資料點分組到同一個叢集中。 當使用者放大地圖時，這些叢集會分成個別的資料點。 此行為可提供更好的使用者體驗，並改善效能。
 
     ```JavaScript
     //Create a data source, add it to the map, and then enable clustering.
@@ -928,7 +928,7 @@ ms.locfileid: "76987000"
 
 ![瀏覽器要求存取使用者所在位置的螢幕擷取畫面](./media/tutorial-create-store-locator/GeolocationApiWarning.png)</center>
 
-當您將咖啡廳所在位置的區域放大足夠的程度時，叢集就會分成個別的位置。 選取地圖上的其中一個圖示，或選取側邊面板中的項目，就會顯示一個快顯視窗，內含該位置的相關資訊。
+當您將咖啡廳所在位置的區域放大足夠的程度時，叢集就會分成個別的位置。 選取地圖上的其中一個圖示或選取側邊面板中的項目，即可檢視快顯示窗。 快顯視窗會顯示所選位置的資訊。
 
 <center>
 

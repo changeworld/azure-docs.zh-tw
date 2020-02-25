@@ -16,12 +16,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 8bf4039ac968883628a72974b64d90faf707c9af
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 6280f3784247b671521a4994be1f233d4913d90c
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700289"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77194495"
 ---
 # <a name="microsoft-identity-platform-v20-overview"></a>Microsoft 身分識別平台 (v2.0) 概觀
 
@@ -42,7 +42,11 @@ Microsoft 身分識別平台是 Azure Active Directory (Azure AD) 開發人員�
 
 ## <a name="getting-started"></a>開始使用
 
-使用身分識別一點都不難。 選擇您適用的[案例](authentication-flows-app-scenarios.md) — 每個案例路徑都有快速入門和概觀頁面，可讓您在短短幾分鐘內啟動並執行：
+使用身分識別一點都不難。 
+
+觀看 [Microsoft 身分識別平台影片](identity-videos.md)以了解基本概念。 
+
+選擇您適用的[案例](authentication-flows-app-scenarios.md) — 每個案例路徑都有快速入門和概觀頁面，可讓您在短短幾分鐘內啟動並執行：
 
 - [建置單一頁面應用程式](scenario-spa-overview.md)
 - [建置可登入使用者的 Web 應用程式](scenario-web-app-sign-user-overview.md)

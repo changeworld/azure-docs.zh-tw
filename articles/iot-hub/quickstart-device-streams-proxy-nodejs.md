@@ -9,65 +9,60 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 7f2b98f196a0889406e7821c60db7066a21b9178
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: f7dfa1bf391e4affba52fc40a8c22ea9b5f4b4df
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084275"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470678"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-nodejs-proxy-application-preview"></a>快速入門：使用 Node.js Proxy 應用程式透過 IoT 中樞裝置串流進行 SSH 和 RDP 輸送 (預覽)
 
 [!INCLUDE [iot-hub-quickstarts-4-selector](../../includes/iot-hub-quickstarts-4-selector.md)]
 
+在本快速入門中，您可讓安全殼層 (SSH) 和遠端桌面通訊協定 (RDP) 流量透過裝置串流傳送至裝置。 Azure IoT 中樞裝置串流可讓服務和裝置應用程式以安全且便於設定防火牆的方式進行通訊。 本快速入門說明服務端上所執行 Node.js Proxy 應用程式的執行作業。 在公開預覽期間，Node.js SDK 僅支援服務端上的裝置串流。 因此，本快速入門僅提供執行裝置本機 Proxy 應用程式的指示。
+
+## <a name="prerequisites"></a>Prerequisites
+
+* 完成[使用 C Proxy 應用程式透過 IoT 中樞裝置串流進行 SSH 和 RDP 輸送](./quickstart-device-streams-proxy-c.md)或[使用 C# Proxy 應用程式透過 IoT 中樞裝置串流進行 SSH 和 RDP 輸送](./quickstart-device-streams-proxy-csharp.md)。
+
+* 具有有效訂用帳戶的 Azure 帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+
+* [Node.js 10+](https://nodejs.org)。
+
+* [範例 Node.js 專案](https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip)。
+
+您可以使用下列命令，確認開發電腦上目前的 Node.js 版本：
+
+```cmd/sh
+node --version
+```
+
 Microsoft Azure IoT 中樞目前支援裝置串流作為[預覽功能](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-[IoT 中樞裝置串流](./iot-hub-device-streams-overview.md)可讓服務和裝置應用程式以安全且便於設定防火牆的方式進行通訊。 
-
-本快速入門說明如何在服務端執行 Node.js Proxy 應用程式，讓安全殼層 (SSH) 和遠端桌面通訊協定 (RDP) 流量能夠透過裝置串流傳送至裝置。 如需設定的概觀，請參閱[本機 Proxy 範例](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp)。 
-
-在公開預覽期間，Node.js SDK 僅支援服務端上的裝置串流。 因此，本快速入門僅提供執行裝置本機 Proxy 應用程式的指示。 若要執行裝置本機 Proxy 應用程式，請參閱：  
-
-   * [使用 C Proxy 應用程式透過 IoT 中樞裝置串流進行 SSH 和 RDP 輸送](./quickstart-device-streams-proxy-c.md)
-   * [使用 C# Proxy 應用程式透過 IoT 中樞裝置串流進行 SSH 和 RDP 輸送](./quickstart-device-streams-proxy-csharp.md)
-
-本文說明 SSH 的設定 (使用連接埠 22)，接著說明如何針對 RDP 修改設定 (其使用連接埠 3389)。 由於裝置串流與應用程式或通訊協定無關，因此您可以修改相同的範例，以用於其他類型的主從應用程式流量 (通常藉由修改通訊連接埠)。
-
+> [!IMPORTANT]
+> 裝置串流的預覽版目前僅支援在下列區域建立的 IoT 中樞：
+>
+> * 美國中部
+> * 美國中部 EUAP
+> * 北歐
+> * 東南亞
+  
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+### <a name="add-azure-iot-extension"></a>新增 Azure IoT 擴充功能
 
-## <a name="prerequisites"></a>必要條件
+執行下列命令，將適用於 Azure CLI 的 Azure IoT 擴充功能新增至您的 Cloud Shell 執行個體。 IoT 擴充功能可將 IoT 中樞、IoT Edge 和 IoT 裝置佈建服務 (DPS) 的特定命令新增至 Azure CLI。
 
-* 裝置串流的預覽版目前僅支援在下列區域建立的 IoT 中樞：
-
-  * 美國中部
-  * 美國中部 EUAP
-  * 東南亞
-  * 北歐
-  
-
-* 若要執行本快速入門中的服務本機應用程式，您的開發電腦上需要 Node.js 10.x.x 版或更新版本。
-  * 下載適用於多種平台的 [Node.js](https://nodejs.org)。
-  * 使用下列命令，確認開發電腦上目前的 Node.js 版本：
-
-   ```
-   node --version
-   ```
-
-* 執行下列命令，將適用於 Azure CLI 的 Azure IoT 擴充功能新增至您的 Cloud Shell 執行個體。 IoT 擴充功能可將 IoT 中樞、IoT Edge 和 IoT 裝置佈建服務的特定命令新增至 Azure CLI。
-
-    ```azurecli-interactive
-    az extension add --name azure-cli-iot-ext
-    ```
-
-* 如果您尚未這樣做，請[下載範例 Node.js 專案](https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip)並將 ZIP 封存檔解壓縮。
+```azurecli-interactive
+az extension add --name azure-cli-iot-ext
+```
 
 ## <a name="create-an-iot-hub"></a>建立 IoT 中樞
 
 如果您已完成先前的[快速入門：將遙測從裝置傳送到 IoT 中樞](quickstart-send-telemetry-node.md)，則可以略過此步驟。
 
-[!INCLUDE [iot-hub-include-create-hub-device-streams](../../includes/iot-hub-include-create-hub-device-streams.md)]
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>註冊裝置
 
@@ -109,9 +104,11 @@ Microsoft Azure IoT 中樞目前支援裝置串流作為[預覽功能](https://a
    * [使用 C Proxy 應用程式透過 IoT 中樞裝置串流進行 SSH 和 RDP 輸送](./quickstart-device-streams-proxy-c.md)
    * [使用 C# Proxy 應用程式透過 IoT 中樞裝置串流進行 SSH 和 RDP 輸送](./quickstart-device-streams-proxy-csharp.md) 
 
-繼續進行下一個步驟前，請先確定裝置本機 Proxy 應用程式正在執行中。
+繼續進行下一個步驟前，請先確定裝置本機 Proxy 應用程式正在執行中。 如需設定的概觀，請參閱[本機 Proxy 範例](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp)。
 
 ### <a name="run-the-service-local-proxy-application"></a>執行服務本機 Proxy 應用程式
+
+本文說明 SSH 的設定 (使用連接埠 22)，接著說明如何針對 RDP 修改設定 (其使用連接埠 3389)。 由於裝置串流與應用程式或通訊協定無關，因此您可以修改相同的範例，以用於其他類型的主從應用程式流量 (通常藉由修改通訊連接埠)。
 
 如果裝置本機 Proxy 應用程式正在執行中，請在本機終端視窗中依照下列步驟來執行以 Node.js 撰寫的服務本機 Proxy 應用程式：
 

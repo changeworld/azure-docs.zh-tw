@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/28/2019
+ms.date: 02/12/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 727d4ec79b142595e59ff63a4afbcbe4a51c2a6d
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: e7911f52d71501324a1b05c290402cc2ee33a706
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77057425"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370423"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-lessonly"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Lesson.ly 整合
 
@@ -31,7 +30,7 @@ ms.locfileid: "77057425"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Lesson.ly。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -46,6 +45,7 @@ ms.locfileid: "77057425"
 
 * Lesson.ly 支援 **SP** 起始的 SSO
 * Lesson.ly 支援 **Just In Time** 使用者佈建
+* 設定 Lesson.ly 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-lessonly-from-the-gallery"></a>從資源庫加入 Lesson.ly
 
@@ -83,14 +83,14 @@ ms.locfileid: "77057425"
 
 1. 在 [基本 SAML 組態]  區段上，輸入下列欄位的值：
 
-     a. 在 [登入 URL]  文字方塊中，使用下列模式輸入 URL：`https://<companyname>.lessonly.com/signin`
+    a. 在 [登入 URL]  文字方塊中，使用下列模式輸入 URL：`https://<companyname>.lessonly.com/auth/saml`
 
     > [!NOTE]
     > 參考一般名稱時，**companyname** 需要由實際名稱取代。
     
-     b. 在 [回覆 URL (判斷提示客戶服務 URL)]  文字方塊中，以下列模式輸入 URL：`https://<companyname>.lessonly.com/auth/saml/callback`
+    b. 在 [回覆 URL (判斷提示客戶服務 URL)]  文字方塊中，以下列模式輸入 URL：`https://<companyname>.lessonly.com/auth/saml/callback`
 
-     c. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：`https://<companyname>.lessonly.com/auth/saml/metadata`
+    c. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：`https://<companyname>.lessonly.com/auth/saml/metadata`
     
     > [!NOTE]
     > 這些都不是真正的值。 請使用實際的 [登入 URL]、[回覆 URL] 和 [識別碼] 來更新這些值。 請連絡 [Lessonly.com 用戶端支援小組](mailto:support@lessonly.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
@@ -169,7 +169,7 @@ ms.locfileid: "77057425"
 
 - [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
