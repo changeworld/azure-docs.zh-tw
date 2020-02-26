@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
-ms.openlocfilehash: 0435198af09b087e1449541df078b47758148d42
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 6ab54e56368e7e26e807e4d1dc0592536dc9374a
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980571"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588754"
 ---
 # <a name="manage-azure-cosmos-db-table-api-resources-using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 範本管理 Azure Cosmos DB 資料表 API 資源
 
@@ -25,7 +25,7 @@ ms.locfileid: "75980571"
 > 帳戶名稱必須是小寫、44或較少的字元。
 > 若要更新 RU/秒，請重新提交具有已更新輸送量屬性值的範本。
 
-[!code-json[create-cosmos-table](~/quickstart-templates/101-cosmosdb-table/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-table/azuredeploy.json":::
 
 ### <a name="deploy-via-powershell"></a>透過 PowerShell 部署
 
@@ -79,7 +79,7 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
 
 以下是一些其他資源：
 
-- [Azure Resource Manager 檔](/azure/azure-resource-manager/)
+- [Azure Resource Manager 文件](/azure/azure-resource-manager/)
 - [Azure Cosmos DB 資源提供者架構](/azure/templates/microsoft.documentdb/allversions)
 - [Azure Cosmos DB 快速入門範本](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
 - [針對常見 Azure Resource Manager 部署錯誤進行疑難排解](../azure-resource-manager/templates/common-deployment-errors.md)

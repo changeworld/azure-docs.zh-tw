@@ -5,15 +5,15 @@ author: harelbr
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 2/17/2020
+ms.date: 2/24/2020
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: f402effe40042740e74220d177c54963f6c45916
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 2f2940496682372b0d00d2b419aa941dcedd533c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444004"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586524"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>使用 Resource Manager 範本建立度量警示
 
@@ -1251,7 +1251,7 @@ az group deployment create \
 
 若要深入瞭解 Azure 監視器中的自訂計量，請參閱[Azure 監視器中的自訂計量](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview)。
 
-在自訂計量上建立警示規則時，您必須同時指定計量名稱和計量命名空間。
+在自訂計量上建立警示規則時，您必須同時指定計量名稱和計量命名空間。 您也應該確定已報告自訂度量，因為您無法針對尚未存在的自訂計量建立警示規則。
 
 針對本逐步解說的目的，請將以下的 json 儲存為 customstaticmetricalert。
 

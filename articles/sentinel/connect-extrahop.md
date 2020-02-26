@@ -3,7 +3,7 @@ title: 將 ExtraHop 顯示（x）至 Azure Sentinel |Microsoft Docs
 description: 瞭解如何將 ExtraHop 顯示（x）連接到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
-author: cabailey
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,20 +13,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
-ms.author: cabailey
-ms.openlocfilehash: 90d2a5a985e904217a461b509fb171822d266f60
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: 8d82d8c5a76c34875e9a4aae22c547aec897c18a
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610572"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588292"
 ---
 # <a name="connect-extrahop-revealx"></a>連線 ExtraHop Reveal(x)
 
 ExtraHop 顯示（x）資料連線器可讓您輕鬆地連接您的顯示（x）系統與 Azure Sentinel 來觀看儀表板、建立自訂警示，以及改善調查。 此整合可讓您深入瞭解組織的網路，並改善您的安全性作業功能。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - [Azure Sentinel] 工作區的 [讀取] 和 [寫入] 許可權。
 

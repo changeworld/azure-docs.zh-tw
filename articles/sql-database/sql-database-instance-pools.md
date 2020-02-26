@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 98757677eae6d21b02d6b0b2a3abade453b5dfed
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: c1e740fbfa4bf1e8a77a2d9d6060ab39dba7ae7b
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552775"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587391"
 ---
 # <a name="what-are-sql-database-instance-pools-preview"></a>什麼是 SQL Database 實例集區（預覽）？
 
@@ -108,7 +108,7 @@ ms.locfileid: "75552775"
 
 選擇性功能或需要您選擇特定值的功能（例如實例層級定序、時區、資料流量的公用端點、容錯移轉群組）是在實例層級設定，而且在集區中的每個實例都可能不同。
 
-## <a name="performance-considerations"></a>效能注意事項
+## <a name="performance-considerations"></a>效能考量
 
 雖然集區中的受控實例有專用的 vCore 和 RAM，但它們會共用本機磁片（適用于 tempdb 使用量）和網路資源。 不可能，但如果集區中有多個實例同時具有高資源耗用量，則可能會遇到*雜訊的鄰近*效果。 如果您發現此行為，請考慮將這些實例部署到較大的集區或單一實例。
 
@@ -126,7 +126,7 @@ ms.locfileid: "75552775"
 
 如果您遇到與集區中的單一實例或資料庫相關的問題，您應該為 Azure SQL Database 受控實例建立一般支援票證。
 
-若要建立較大型的受控實例部署（不論是否有實例集區），您可能需要取得較大的區域配額。 使用[標準的受控實常式序來要求較大的配額](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance)，但請注意，如果您使用的是實例集區，部署邏輯會將*集區層級的*總 vCore 耗用量與您的配額進行比較，以判斷是否允許您建立新的資源，而不需要進一步增加您的配額。
+若要建立較大型的受控實例部署（不論是否有實例集區），您可能需要取得較大的區域配額。 如需詳細資訊，請參閱[Azure SQL Database 的要求配額增加](quota-increase-request.md)。 請注意，如果您使用的是實例集區，部署邏輯會將*集區層級的*總 vCore 耗用量與您的配額進行比較，以判斷是否允許您建立新的資源，而不需要進一步增加您的配額。
 
 ## <a name="instance-pool-billing"></a>實例集區計費
 

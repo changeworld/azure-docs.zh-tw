@@ -3,14 +3,14 @@ title: 安全地連接到 Azure Service Fabric 叢集
 description: 說明如何驗證用戶端對 Service Fabric 叢集的存取，以及如何保護用戶端與叢集之間的通訊。
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 89d9f67ba1a202b3830df7a5b960c6ef01091bf2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a1f4abbabe428a09492efefca4a8da9801b9f68d
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458266"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587051"
 ---
-# <a name="connect-to-a-secure-cluster"></a>連線以保護叢集
+# <a name="connect-to-a-secure-cluster"></a>連線到安全的叢集
 
 當用戶端連線到 Service Fabric 叢集節點時，用戶端可以使用憑證安全性或 Azure Active Directory (AAD) 來接受驗證及保護已建立的通訊。 此驗證可確保只有已獲授權的使用者可以存取叢集和已部署的應用程式，以及執行管理工作。  憑證或 AAD 安全性必須在叢集建立之時即事先在叢集上啟用。  如需有關叢集安全性案例的詳細資訊，請參閱 [叢集安全性](service-fabric-cluster-security.md)。 如果您要連接到使用憑證保護的叢集，請在要連接到叢集的電腦上[設定用戶端憑證](service-fabric-connect-to-secure-cluster.md#connectsecureclustersetupclientcert)。 
 
@@ -24,7 +24,7 @@ ms.locfileid: "75458266"
 
 指定用戶端憑證時，可以使用兩種不同的方式，以憑證與金鑰組方式指定，或是以單一 PFX 檔案方式指定。 針對受密碼保護的 PEM 檔案，系統會自動提示您輸入密碼。 如果您已取得用戶端憑證作為 PFX 檔案，先使用下列命令，將 PFX 檔案轉換為 PEM 檔案。 
 
-```bash
+```shell
 openssl pkcs12 -in your-cert-file.pfx -out your-cert-file.pem -nodes -passin pass:your-pfx-password
 ```
 
@@ -32,7 +32,7 @@ openssl pkcs12 -in your-cert-file.pfx -out your-cert-file.pem -nodes -passin pas
 
 若要以 pem 檔案指定用戶端憑證，請在 `--pem` 引數中指定檔案路徑。 例如：
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem
 ```
 
@@ -40,7 +40,7 @@ sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./clie
 
 為了指定憑證，金鑰組會使用 `--cert` 和 `--key` 引數來指定每個個別檔案的檔案路徑。
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --cert ./client.crt --key ./keyfile.key
 ```
 
@@ -49,13 +49,13 @@ sfctl cluster select --endpoint https://testsecurecluster.com:19080 --cert ./cli
 > [!WARNING]
 > 連線到生產環境 Service Fabric 叢集時，請勿使用 `no-verify` 選項。
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
 此外，您可以指定受信任 CA 憑證，或個別憑證的目錄路徑。 若要指定這些路徑，請使用 `--ca` 引數。 例如：
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --ca ./trusted_ca
 ```
 
@@ -163,7 +163,7 @@ FabricClient fabricClient = new FabricClient();
 
 ### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>使用用戶端憑證連線到安全的叢集
 
-叢集中的節點必須具備有效的憑證，這些憑證在 SAN 中的通用名稱或 DNS 名稱會出現在於 [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) 上設定的 [RemoteCommonNames](https://docs.microsoft.com/dotnet/api/system.fabric.x509credentials) 屬性中。 遵循此程序，就可讓用戶端與叢集節點之間進行相互驗證。
+叢集中的節點必須具備有效的憑證，這些憑證在 SAN 中的通用名稱或 DNS 名稱會出現在於 [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.x509credentials) 上設定的 [RemoteCommonNames](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) 屬性中。 遵循此程序，就可讓用戶端與叢集節點之間進行相互驗證。
 
 ```csharp
 using System.Fabric;

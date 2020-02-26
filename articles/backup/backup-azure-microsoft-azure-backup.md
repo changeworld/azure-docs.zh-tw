@@ -3,12 +3,12 @@ title: 使用 Azure 備份伺服器備份工作負載
 description: 在本文中，您將瞭解如何準備您的環境，以使用 Microsoft Azure 備份 Server （MABS）來保護和備份工作負載。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: efa54eac2e3e134fb285d38242ca1b59727c2c86
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: e601328a09ece54eb1c678310f76c7999c69f24c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425182"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586422"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>安裝及升級 Azure 備份伺服器
 
@@ -45,7 +45,7 @@ Azure 備份伺服器承襲了 Data Protection Manager (DPM) 的大部分工作�
 
 選擇要執行 Azure 備份伺服器的伺服器時，建議您從 Windows Server 2016 Datacenter 或 Windows Server 2019 Datacenter 的圖庫映射開始。 即使您之前從未使用過 Azure， [在 Azure 入口網站中建立第一個 Windows 虛擬機器](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)一文會提供教學課程讓您在 Azure 中開始使用建議的虛擬機器。 伺服器虛擬機器（VM）的建議最低需求應該是： Standard_A4_v2 具有四個核心和 8 GB 的 RAM。
 
-使用 Azure 備份伺服器保護工作負載有許多細節需要注意。 [將 DPM 安裝為 Azure 虛擬機器](https://technet.microsoft.com/library/jj852163.aspx)一文可協助說明這些細節。 在部署機器之前，請先確實閱讀此文章。
+使用 Azure 備份伺服器保護工作負載有許多細節需要注意。 [將 DPM 安裝為 Azure 虛擬機器](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/jj852163(v=sc.12))一文可協助說明這些細節。 在部署機器之前，請先確實閱讀此文章。
 
 ### <a name="using-an-on-premises-server"></a>使用內部部署伺服器
 
@@ -56,7 +56,7 @@ Azure 備份伺服器承襲了 Data Protection Manager (DPM) 的大部分工作�
 | Windows Server 2019 |64 位元 |Standard、Datacenter、Essentials |
 | Windows Server 2016 和最新的 SP |64 位元 |Standard、Datacenter、Essentials  |
 
-您可以使用 Windows Server Deduplication 為 DPM 儲存體刪除重複資料。 深入了解在 Hyper-V VM 中部署時， [DPM 和重複資料刪除](https://technet.microsoft.com/library/dn891438.aspx) 如何搭配運作。
+您可以使用 Windows Server Deduplication 為 DPM 儲存體刪除重複資料。 深入了解在 Hyper-V VM 中部署時， [DPM 和重複資料刪除](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/dn891438(v=sc.12)) 如何搭配運作。
 
 > [!NOTE]
 > Azure 備份伺服器的設計目的是在專用、單一用途的伺服器上執行。 您無法在下列位置安裝 Azure 備份伺服器︰
@@ -196,7 +196,7 @@ Azure 備份伺服器一律加入網域。 如果您打算將伺服器移到不�
 
     ![Microsoft Azure 備份必要條件 2](./media/backup-azure-microsoft-azure-backup/space-screen.png)
 
-    備份至 Azure 需要暫存位置。 請確保暫存位置至少為打算備份至雲端的資料的 5%。 在磁碟保護方面，安裝完成之後必須設定獨立的磁碟。 如需有關存放集區的詳細資訊，請參閱 [設定存放集區和磁碟儲存體](https://technet.microsoft.com/library/hh758075.aspx)。
+    備份至 Azure 需要暫存位置。 請確保暫存位置至少為打算備份至雲端的資料的 5%。 在磁碟保護方面，安裝完成之後必須設定獨立的磁碟。 如需有關存放集區的詳細資訊，請參閱 [設定存放集區和磁碟儲存體](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758075(v=sc.12))。
 5. 為受限的本機使用者帳戶提供強式密碼，按 [下一步]。
 
     ![Microsoft Azure 備份必要條件 2](./media/backup-azure-microsoft-azure-backup/security-screen.png)
@@ -305,6 +305,14 @@ Azure 備份伺服器需要連線至 Azure 備份服務，產品才能順利運�
 * \*.microsoftonline.com
 * \*.windows.net
 
+如果您使用 ExpressRoute Microsoft 對等互連，請選取下列服務/區域：
+
+* Azure Active Directory （12076:5060）
+* Microsoft Azure 區域（依據復原服務保存庫的位置）
+* Azure 儲存體（依據復原服務保存庫的位置）
+
+如需詳細資訊，請流覽[ExpressRoute 路由需求](https://docs.microsoft.com/azure/expressroute/expressroute-routing)。
+
 在 Azure 的連線已還原至 Azure 備份伺服器機器之後，可執行的作業將取決於 Azure 訂用帳戶狀態。 上表詳細列出機器「已連接」之後所允許之作業的相關資訊。
 
 ### <a name="handling-subscription-states"></a>處理訂用帳戶狀態
@@ -351,7 +359,7 @@ Azure 備份伺服器需要連線至 Azure 備份服務，產品才能順利運�
 
 ## <a name="next-steps"></a>後續步驟
 
-您可以在 Microsoft TechNet 網站上取得有關 [準備 DPM 的環境](https://technet.microsoft.com/library/hh758176.aspx) 的詳細資訊。 其中也包含可據以部署和使用 Azure 備份伺服器之支援組態的相關資訊。 您可以使用一系列的 [PowerShell Cmdlet](https://docs.microsoft.com/powershell/module/dataprotectionmanager/?view=systemcenter-ps-2016) 來執行各種作業。
+您可以在這裡取得有關[為 DPM 準備環境的](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758176(v=sc.12))詳細資訊。 其中也包含可據以部署和使用 Azure 備份伺服器之支援組態的相關資訊。 您可以使用一系列的 [PowerShell Cmdlet](https://docs.microsoft.com/powershell/module/dataprotectionmanager/?view=systemcenter-ps-2016) 來執行各種作業。
 
 請參閱這些文章，以深入了解使用 Microsoft Azure 備份伺服器來保護工作負載。
 

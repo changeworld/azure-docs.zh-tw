@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 2/23/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 820e7187332b02993d3d8bcba9c01958cfbdd61d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b8a42723a9b56665160e660c0ea1451253c3d185
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965825"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588972"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>使用 Azure Active Directory 授權存取 blob 和佇列
 
@@ -27,7 +27,7 @@ Azure 儲存體支援使用 Azure Active Directory （Azure AD）來授權對 Bl
 
 Blob 儲存體額外支援建立以 Azure AD 認證簽署的共用存取簽章（SAS）。 如需詳細資訊，請參閱[使用共用存取簽章授與資料的有限存取權](storage-sas-overview.md)。
 
-Azure 檔案儲存體僅針對已加入網域的 Vm 支援透過 SMB 的 Azure AD 進行授權。 若要瞭解如何使用 Azure AD 透過 SMB 進行 Azure 檔案儲存體，請參閱[Azure 檔案儲存體的透過 smb 進行 Azure Active Directory 授權的總覽](../files/storage-files-active-directory-overview.md)。
+Azure 檔案儲存體針對已加入網域的 Vm，透過 SMB 支援 AD （預覽）或 Azure AD DS （GA）的授權。 若要瞭解如何使用 AD （預覽）或透過 SMB 的 Azure AD DS （GA）來 Azure 檔案儲存體，請參閱[Azure 檔案儲存體以身分識別為基礎的驗證支援 smb 存取](../files/storage-files-active-directory-overview.md)。
 
 Azure 資料表儲存體不支援具有 Azure AD 的授權。 使用共用金鑰來授權對資料表儲存體的要求。
 

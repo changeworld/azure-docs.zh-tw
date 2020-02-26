@@ -3,7 +3,7 @@ title: 使用以 Azure Sentinel 中 Azure 監視器活頁簿為基礎的儀表�
 description: 使用此教學課程，以瞭解如何使用以 Azure Sentinel 中的活頁簿為基礎的儀表板來視覺化您的資料。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/01/2020
-ms.author: rkarlin
-ms.openlocfilehash: 7baf8cf2e954d773376b7c3c989bce01f60ae0a6
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: b4461ac43e9356536914b345ef28f5de62fc9f82
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610449"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585215"
 ---
 # <a name="tutorial-visualize-and-monitor-your-data"></a>教學課程：將您的資料視覺化並加以監視
 
@@ -33,7 +33,7 @@ ms.locfileid: "75610449"
 > * 使用內建活頁簿
 > * 建立新活頁簿
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 在 Azure Sentinel 工作區的資源群組上，您至少必須擁有活頁簿讀取者或活頁簿參與者許可權。
 

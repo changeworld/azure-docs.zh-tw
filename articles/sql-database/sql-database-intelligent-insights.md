@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 20c30a77201c4f728013bdd204eef81294eefb73
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: d32ce79d0c8b26e0e78e2bae0f0335315c1a3a40
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76545155"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587323"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>Intelligent Insights 使用 AI 來監視和疑難排解資料庫效能（預覽）
 
@@ -28,7 +28,7 @@ Intelligent Insights 使用內建的智慧功能透過人工智慧持續監視�
 
 Intelligent Insights 是 Azure 內建智慧功能的一項獨特功能，可提供下列價值：
 
-- 主動式監視
+- 主動監視
 - 量身打造的效能深入解析
 - 提早偵測到資料庫效能降低
 - 針對所偵測到問題的根本原因分析
@@ -113,7 +113,7 @@ Azure SQL 分析解決方案提供圖形化使用者介面、資料庫效能的�
 
 ### <a name="set-up-with-azure-storage"></a>使用 Azure 儲存體設定
 
-若要使用 Intelligent Insights 搭配儲存體，請將 Intelligent Insights 記錄資料設定為串流處理到儲存體，請參閱[串流處理到 Azure 儲存體](sql-database-metrics-diag-logging.md#stream-into-storage)。
+若要使用 Intelligent Insights 搭配儲存體，請將 Intelligent Insights 記錄資料設定為串流處理到儲存體，請參閱[串流處理到 Azure 儲存體](sql-database-metrics-diag-logging.md#stream-diagnostic-telemetry-into-azure-storage)。
 
 ### <a name="custom-integrations-of-intelligent-insights-log"></a>自訂的 Intelligent Insights 記錄整合
 

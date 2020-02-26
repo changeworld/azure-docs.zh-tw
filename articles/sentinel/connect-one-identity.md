@@ -3,7 +3,7 @@ title: 將一個身分識別保護連接到 Azure Sentinel |Microsoft Docs
 description: 瞭解如何將一個身分識別保護連接到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
-author: cabailey
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,19 +13,19 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
-ms.author: cabailey
-ms.openlocfilehash: 7e33580c253c98279644e10305557a7e60701c90
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: 849087cbbe91be799c51929353b9f020859c85b8
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610500"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588139"
 ---
 # <a name="connect-one-identity-safeguard"></a>連接一個身分識別保護
 一種身分識別保護資料連線器可增強標準的一般事件格式（CEF）連接器，並提供特殊許可權會話特定儀表板的防護。 使用此連接器可輕鬆地開始使用您的裝置所產生的事件，以進行視覺效果、警示、調查等等。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - [Azure Sentinel] 工作區的 [讀取] 和 [寫入] 許可權。
 

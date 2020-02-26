@@ -3,12 +3,12 @@ title: 備份和還原已加密的 Azure Vm
 description: 說明如何使用 Azure 備份服務來備份和還原已加密的 Azure Vm。
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 754a0899d25f2672c6a66eeafe5013f98b7a8f4d
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 3719f26211677a1b726d3c3dc1d217fb58db1fb2
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513774"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583169"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>備份和還原已加密的 Azure VM
 
@@ -30,7 +30,7 @@ Azure 備份可以使用具有和不含 Azure AD 應用程式的 ADE 來備份�
 **納入** | 是 | 是
 **受控**  | 是 | 是
 
-- 深入瞭解[ADE](../security/azure-security-disk-encryption-overview.md)、 [Key Vault](../key-vault/key-vault-overview.md)和[kek](https://blogs.msdn.microsoft.com/cclayton/2017/01/03/creating-a-key-encrypting-key-kek/)。
+- 深入瞭解[ADE](../security/azure-security-disk-encryption-overview.md)、 [Key Vault](../key-vault/key-vault-overview.md)和[kek](https://docs.microsoft.com/azure/virtual-machine-scale-sets/disk-encryption-key-vault#set-up-a-key-encryption-key-kek/)。
 - 閱讀 Azure VM 磁片加密的[常見問題](../security/azure-security-disk-encryption-faq.md)。
 
 ### <a name="limitations"></a>限制
@@ -82,7 +82,7 @@ Azure 備份可以使用具有和不含 Azure AD 應用程式的 ADE 來備份�
 
     - 如果您收到此訊息，則不需要採取任何動作。
 
-        ![存取 OK](./media/backup-azure-vms-encryption/access-ok.png)
+        ![存取正常](./media/backup-azure-vms-encryption/access-ok.png)
 
     - 如果您收到此訊息，則需要設定許可權，如[下列](#provide-permissions)程式所述。
 
@@ -136,8 +136,8 @@ Azure VM 需要唯讀存取權，才能備份金鑰和密碼，以及相關聯�
 
 1. [還原 VM 磁片](backup-azure-arm-restore-vms.md#restore-disks)。
 2. 執行下列其中一項動作，以重新建立虛擬機器實例：
-    1. 使用還原作業期間所產生的範本來自訂 VM 設定，並觸發 VM 部署。 [深入了解](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm)。
-    2. 使用 PowerShell 從還原的磁片建立新的 VM。 [深入了解](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)。
+    1. 使用還原作業期間所產生的範本來自訂 VM 設定，並觸發 VM 部署。 [詳細資訊](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm)。
+    2. 使用 PowerShell 從還原的磁片建立新的 VM。 [詳細資訊](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)。
 3. 若為 Linux Vm，請重新安裝 ADE 延伸模組，以便開啟並裝載資料磁片。
 
 ## <a name="next-steps"></a>後續步驟

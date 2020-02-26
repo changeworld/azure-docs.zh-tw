@@ -3,12 +3,12 @@ title: Azure 監視器記錄資料模型
 description: 在本文中，您將瞭解 Azure 備份資料的 Azure 監視器 Log Analytics 資料模型詳細資料。
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 121117d20f5b9eb6e53da1b8884557fcfb46ff76
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: d14634c5e317682462e77e0549f064c75059f15c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501000"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586371"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>適用於 Azure 備份資料的 Log Analytics 資料模型
 
@@ -18,7 +18,7 @@ ms.locfileid: "77501000"
 
 > [!NOTE]
 >
-> 此資料模型會參考將診斷事件傳送至 Log Analytics （LA）的 Azure 診斷模式。 若要瞭解新資源特定模式的資料模型，您可以參考下列文章： [Azure 備份診斷事件的資料模型](https://aka.ms/diagnosticsdatamodel)
+> 此資料模型會參考將診斷事件傳送至 Log Analytics （LA）的 Azure 診斷模式。 若要瞭解新資源特定模式的資料模型，您可以參考下列文章： [Azure 備份診斷事件的資料模型](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)
 
 ## <a name="using-azure-backup-data-model"></a>使用 Azure 備份資料模型
 
@@ -28,7 +28,7 @@ ms.locfileid: "77501000"
 
 下表提供警示相關欄位的詳細資料。
 
-| 欄位 | 資料型別 | 描述 |
+| 欄位 | 資料類型 | 描述 |
 | --- | --- | --- |
 | AlertUniqueId_s |Text |所產生警示的唯一識別碼 |
 | AlertType_s |Text |警示的類型，例如備份 |
@@ -62,7 +62,7 @@ ms.locfileid: "77501000"
 
 下表提供備份項目相關欄位的詳細資料。
 
-| 欄位 | 資料型別 | 描述 |
+| 欄位 | 資料類型 | 描述 |
 | --- | --- | --- |
 | EventName_s |Text |活動的名稱。 一律為 AzureBackupCentralReport |  
 | BackupItemUniqueId_s |Text |備份項目的唯一識別碼 |
@@ -92,7 +92,7 @@ ms.locfileid: "77501000"
 
 下表提供與各種實體關聯的備份項目相關詳細資料。
 
-| 欄位 | 資料型別 | 描述 |
+| 欄位 | 資料類型 | 描述 |
 | --- | --- | --- |
 | EventName_s |Text |此欄位代表這個事件的名稱，它一律為 AzureBackupCentralReport |  
 | BackupItemUniqueId_s |Text |備份專案的唯一識別碼 |
@@ -117,7 +117,7 @@ ms.locfileid: "77501000"
 
 下表提供與各種實體關聯的備份項目相關詳細資料。
 
-| 欄位 | 資料型別 | 描述 |
+| 欄位 | 資料類型 | 描述 |
 | --- | --- | --- |
 |BackupManagementServerName_s     |Text         |備份管理伺服器的名稱        |
 |AzureBackupAgentVersion_s     |Text         |備份管理伺服器上 Azure 備份代理程式的版本          |
@@ -136,7 +136,7 @@ ms.locfileid: "77501000"
 
 下表提供作業相關欄位的詳細資料。
 
-| 欄位 | 資料型別 | 描述 |
+| 欄位 | 資料類型 | 描述 |
 | --- | --- | --- |
 | EventName_s |Text |活動的名稱。 一律為 AzureBackupCentralReport |
 | BackupItemUniqueId_s |Text |備份項目的唯一識別碼 |
@@ -168,11 +168,11 @@ ms.locfileid: "77501000"
 | ResourceProvider |Text |要收集其資料的資源提供者。 例如 Microsoft.RecoveryServices |
 | ResourceType |Text |要收集其資料的資源類型。 例如保存庫 |
 
-### <a name="policy"></a>Policy(Windows Intune 說明：原則)
+### <a name="policy"></a>原則
 
 下表提供原則相關欄位的詳細資料。
 
-| 欄位 | 資料型別 | 適用的版本 | 描述 |
+| 欄位 | 資料類型 | 適用的版本 | 描述 |
 | --- | --- | --- | --- |
 | EventName_s |Text ||此欄位代表這個事件的名稱，它一律為 AzureBackupCentralReport |
 | SchemaVersion_s |Text ||此欄位代表架構的目前版本，它是**V2** |
@@ -204,7 +204,7 @@ ms.locfileid: "77501000"
 | YearlyRetentionDaysOfTheMonth_s |Text ||一個月中所選用於每年保留期的日期 |
 | SynchronisationFrequencyPerDay_s |整數 |v2|在一天中，SC DPM 和 MABS 的檔案備份已同步處理的次數 |
 | DiffBackupFormat_s |Text |v2|Azure VM 備份中 SQL 的差異備份格式 |
-| DiffBackupTime_s |時間 |v2|Azure VM 備份中 SQL 的差異備份時間|
+| DiffBackupTime_s |Time |v2|Azure VM 備份中 SQL 的差異備份時間|
 | DiffBackupRetentionDuration_s |十進位數字 |v2|Azure VM 備份中 SQL 的差異備份保留期間|
 | LogBackupFrequency_s |十進位數字 |v2|SQL 記錄備份的頻率|
 | LogBackupRetentionDuration_s |十進位數字 |v2|Azure VM 備份中 SQL 記錄備份的保留期間|
@@ -220,7 +220,7 @@ ms.locfileid: "77501000"
 
 下表提供與各種實體關聯的原則相關詳細資料。
 
-| 欄位 | 資料型別 | 適用的版本 | 描述 |
+| 欄位 | 資料類型 | 適用的版本 | 描述 |
 | --- | --- | --- | --- |
 | EventName_s |Text ||此欄位代表這個事件的名稱，它一律為 AzureBackupCentralReport |
 | SchemaVersion_s |Text ||此欄位代表架構的目前版本，它是**V2** |
@@ -243,7 +243,7 @@ ms.locfileid: "77501000"
 
 下表提供有關受保護容器的基本欄位。 （已在 v1 中 ProtectedServer）
 
-| 欄位 | 資料型別 | 描述 |
+| 欄位 | 資料類型 | 描述 |
 | --- | --- | --- |
 | ProtectedContainerUniqueId_s |Text | 唯一識別受保護容器的欄位 |
 | ProtectedContainerOSType_s |Text |受保護容器的 OS 類型 |
@@ -262,7 +262,7 @@ ms.locfileid: "77501000"
 
 下表提供儲存體相關欄位的詳細資料。
 
-| 欄位 | 資料型別 | 描述 |
+| 欄位 | 資料類型 | 描述 |
 | --- | --- | --- |
 | CloudStorageInBytes_s |十進位數字 |備份所使用的雲端備份儲存體，會根據最新的值來計算（此欄位僅適用于 v1 架構）|
 | ProtectedInstances_s |十進位數字 |用於在帳單中計算前端儲存體的受保護執行個體數目，在計算時會以最後的值為依據 |
@@ -290,7 +290,7 @@ ms.locfileid: "77501000"
 
 下表提供與其他實體連接儲存體的基本儲存體相關欄位。
 
-| 欄位 | 資料型別 | 描述 |
+| 欄位 | 資料類型 | 描述 |
 | --- | --- |  --- |
 | StorageUniqueId_s |Text |用來識別儲存體實體的唯一識別碼 |
 | SchemaVersion_s |Text |此欄位代表架構的目前版本，它是**V2** |
@@ -304,7 +304,7 @@ ms.locfileid: "77501000"
 
 下表提供保存庫相關欄位的詳細資料。
 
-| 欄位 | 資料型別 | 描述 |
+| 欄位 | 資料類型 | 描述 |
 | --- | --- | --- |
 | EventName_s |Text |此欄位代表這個事件的名稱，它一律為 AzureBackupCentralReport |
 | SchemaVersion_s |Text |此欄位代表架構的目前版本，它是**V2** |
@@ -327,7 +327,7 @@ ms.locfileid: "77501000"
 
 下表提供有關備份管理伺服器的基本欄位。
 
-|欄位  |資料型別  | 描述  |
+|欄位  |資料類型  | 描述  |
 |---------|---------|----------|
 |BackupManagementServerName_s     |Text         |備份管理伺服器的名稱        |
 |AzureBackupAgentVersion_s     |Text         |備份管理伺服器上 Azure 備份代理程式的版本          |
@@ -340,7 +340,7 @@ ms.locfileid: "77501000"
 
 此資料表會指定與磁片區相關聯的工作負載。
 
-| 欄位 | 資料型別 | 描述 |
+| 欄位 | 資料類型 | 描述 |
 | --- | --- | --- |
 | StorageUniqueId_s |Text |用來識別儲存體實體的唯一識別碼 |
 | BackupItemType_s |Text |此磁片區為慣用儲存體的工作負載|
@@ -349,7 +349,7 @@ ms.locfileid: "77501000"
 
 下表提供基本的受保護實例相關欄位。
 
-| 欄位 | 資料型別 |適用的版本 | 描述 |
+| 欄位 | 資料類型 |適用的版本 | 描述 |
 | --- | --- | --- | --- |
 | BackupItemUniqueId_s |Text |v2|唯一識別碼，用來識別使用 DPM （MABS）備份之 Vm 的備份專案|
 | ProtectedContainerUniqueId_s |Text |v2|唯一識別碼，用來識別受保護的容器，以及使用 DPM、MABS 備份的 Vm 除外的所有專案|
@@ -359,7 +359,7 @@ ms.locfileid: "77501000"
 
 下表提供基本復原點相關的欄位。
 
-| 欄位 | 資料型別 | 描述 |
+| 欄位 | 資料類型 | 描述 |
 | --- | --- | --- |
 | BackupItemUniqueId_s |Text |唯一識別碼，用來識別使用 DPM （MABS）備份之 Vm 的備份專案|
 | OldestRecoveryPointTime_s |Text |備份專案的最舊復原點日期時間|

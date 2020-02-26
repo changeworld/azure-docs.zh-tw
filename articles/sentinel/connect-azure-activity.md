@@ -3,7 +3,7 @@ title: 將 Azure 活動資料連線至 Azure Sentinel |Microsoft Docs
 description: 瞭解如何將 Azure 活動資料連線至 Azure Sentinel。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.assetid: 8c25baa8-b93b-41da-9e6c-15bb7b5c5511
@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: 107bbed8aea692a76f6d5bf6bbf1da26277b2c85
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.author: yelevin
+ms.openlocfilehash: 28d5acd80deef193c7d2fea46f682f26abd756aa
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156568"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588598"
 ---
 # <a name="connect-data-from-azure-activity-log"></a>從 Azure 活動記錄連接資料
 
@@ -29,7 +29,7 @@ ms.locfileid: "76156568"
 只要按一下，您就可以將記錄從[Azure 活動記錄](../azure-monitor/platform/platform-logs-overview.md)串流至 Azure Sentinel。 活動記錄是訂用客戶紀錄，可讓您深入瞭解 Azure 中發生的訂用帳戶層級事件。 所涵蓋的資料範圍從 Azure Resource Manager 作業資料到服務健康情況事件的更新。 使用活動記錄，您可以判斷訂用帳戶中資源上任何寫入作業（PUT、POST、DELETE）的「內容、物件和時間」。 您也可以了解作業的狀態和其他相關屬性。 活動記錄不包含讀取（GET）作業，或是使用傳統/"RDFE" 模型之資源的作業。 
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 具有 Log Analytics 工作區參與者許可權的使用者 
 

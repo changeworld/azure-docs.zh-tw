@@ -8,12 +8,12 @@ ms.date: 09/05/2017
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: f4c76539f6b14c3fb5ad5dba8fc8c8df514edfe4
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 34665db48d2097fd3be3cdcd11a0d9cceb31855c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526836"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588938"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure 監視器中的 Azure 儲存體計量
 
@@ -363,7 +363,7 @@ Azure 儲存體會提供下列 Azure 監視器容量計量。
 | QueueCount   | 儲存體帳戶中的佇列數目。 <br/><br/> 單位：計數 <br/> 彙總類型：平均 <br/> 值範例：1024 |
 | QueueMessageCount | 儲存體帳戶中未到期的佇列訊息數目。 <br/><br/>單位：計數 <br/> 彙總類型：平均 <br/> 值範例：1024 |
 
-### <a name="file-storage"></a>檔案儲存
+### <a name="file-storage"></a>檔案儲存體
 
 | 標準名稱 | 描述 |
 | ------------------- | ----------------- |
@@ -396,8 +396,7 @@ Azure 儲存體支援下列 Azure 監視器計量維度。
 | **BlobTier** | Azure 儲存體提供不同的存取層，可讓您以最符合成本效益的方式儲存 blob 物件資料。 如需詳細資訊，請參閱[Azure 儲存體 blob 層](../blobs/storage-blob-storage-tiers.md)。 支援的值包括： <br/> <li>經常性**存取：熱**層</li> <li>**酷炫**：非經常性存取層</li> <li>封存 **：封存**層</li> <li>**Premium**：區塊 blob 的高階層級</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**： premium 分頁 blob 的層級類型</li> <li>**標準**：標準分頁 Blob 的層級類型</li> <li>**Untiered**：一般用途 v1 儲存體帳戶的層級類型</li> |
 | **GeoType** | 來自主要或次要叢集的交易。 可用的值包括 [**主要**] 和 [**次要**]。 在從次要租用戶讀取物件時，此維度會套用到讀取權限異地備援儲存體 (RA-GRS)。 |
 | **ResponseType** | 交易回應類型。 可用的值包括： <br/><br/> <li>**ServerOtherError**：除了描述的其他所有伺服器端錯誤 </li> <li>**ServerBusyError**：傳回 HTTP 503 狀態碼的已驗證要求。 </li> <li>**ServerTimeoutError**：超時的已驗證要求，其傳回 HTTP 500 狀態碼。 逾時是因為伺服器錯誤而發生。 </li> <li>**AuthorizationError**：因為未經授權存取資料或授權失敗而失敗的已驗證要求。 </li> <li>**NetworkError**：因網路錯誤而失敗的已驗證要求。 當用戶端在逾時到期前就過早關閉連線時，最常會發生這個情況。 </li>  <li>**ClientAccountBandwidthThrottlingError**：要求會在頻寬上受到節流，以超過[儲存體帳戶的擴充性限制](scalability-targets-standard-account.md)。</li><li>**ClientAccountRequestThrottlingError**：要求已根據超出[儲存體帳戶擴充性限制](scalability-targets-standard-account.md)的要求速率進行節流。<li>**ClientThrottlingError**：其他用戶端節流錯誤。 已排除 ClientAccountBandwidthThrottlingError 和 ClientAccountRequestThrottlingError。</li> <li>**ClientTimeoutError**：超時的已驗證要求，其傳回 HTTP 500 狀態碼。 如果用戶端的網路逾時或要求逾時設定為比儲存體服務預期的值還低，則此值是符合預期的逾時。 否則，它會回報為 ServerTimeoutError。</li> </li> <li>**ClientOtherError**：除了描述的所有其他用戶端錯誤。 </li> <li>**成功**：成功的要求</li> <li> **SuccessWithThrottling**：當 SMB 用戶端在第一次嘗試時受到節流，但在重試之後成功時的成功要求。</li> |
-| **ResponseType** | 交易回應類型。 可用的值包括： <br/><br/> <li>**ServerOtherError**：除了描述的其他所有伺服器端錯誤 </li> <li>**ServerBusyError**：傳回 HTTP 503 狀態碼的已驗證要求。 </li> <li>**ServerTimeoutError**：超時的已驗證要求，其傳回 HTTP 500 狀態碼。 逾時是因為伺服器錯誤而發生。 </li> <li>**AuthorizationError**：因為未經授權存取資料或授權失敗而失敗的已驗證要求。 </li> <li>**NetworkError**：因網路錯誤而失敗的已驗證要求。 當用戶端在逾時到期前就過早關閉連線時，最常會發生這個情況。 </li>  <li>**ClientAccountBandwidthThrottlingError**：要求會在頻寬上受到節流，以超過[儲存體帳戶的擴充性限制](scalability-targets-standard-account.md)。</li><li>**ClientAccountRequestThrottlingError**：要求已根據超出[儲存體帳戶擴充性限制]()的要求速率進行節流。<li>**ClientThrottlingError**：其他用戶端節流錯誤。 已排除 ClientAccountBandwidthThrottlingError 和 ClientAccountRequestThrottlingError。</li> <li>**ClientTimeoutError**：超時的已驗證要求，其傳回 HTTP 500 狀態碼。 如果用戶端的網路逾時或要求逾時設定為比儲存體服務預期的值還低，則此值是符合預期的逾時。 否則，它會回報為 ServerTimeoutError。</li> </li> <li>**ClientOtherError**：除了描述的所有其他用戶端錯誤。 </li> <li>**成功**：成功的要求</li> <li> **SuccessWithThrottling**：當 SMB 用戶端在第一次嘗試時受到節流，但在重試之後成功時的成功要求。</li> |
-| **ApiName** | 作業的名稱。 例如， <br/> <li>**CreateContainer**</li> <li>**DeleteBlob**</li> <li>**GetBlob**</li> 如需所有的作業名稱，請參閱[文件](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)。 |
+| **ApiName** | 作業的名稱。 例如： <br/> <li>**CreateContainer**</li> <li>**DeleteBlob**</li> <li>**GetBlob**</li> 如需所有的作業名稱，請參閱[文件](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)。 |
 | **驗證** | 交易中所使用的驗證類型。 可用的值包括： <br/> <li>**AccountKey**：交易已使用儲存體帳戶金鑰進行驗證。</li> <li>**SAS**：交易是以共用存取簽章進行驗證。</li> <li>**Oauth**：交易是以 oauth 存取權杖進行驗證。</li> <li>**Anonymous**：以匿名方式要求交易。 不包括預檢要求。</li> <li>**AnonymousPreflight**：交易是預檢要求。</li> |
 
 對於計量支援維度，您必須指定維度值才能查看對應的計量值。 例如，如果您要查看成功回應的 **Transactions** 值，則需要篩選具有 **Success** 值的 **ResponseType** 維度。 或者，如果您要查看區塊 Blob 的 **BlobCount** 值，就需要篩選具有 **BlockBlob** 值的 **BlobType** 維度。

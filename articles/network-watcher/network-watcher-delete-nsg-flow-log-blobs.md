@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2019
 ms.author: damendo
-ms.openlocfilehash: 6898bed0645146af9c0131307459e31bad661329
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 6d535bcc2e0831baae658796f76c8087d74c6a85
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036302"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587204"
 ---
 # <a name="delete-network-security-group-flow-log-storage-blobs-in-network-watcher"></a>刪除網路監看員中的網路安全性群組流量記錄儲存體 blob
 
-目前有一個問題是，系統不會根據保留原則設定從 Blob 儲存體自動刪除網路監看員的[網路安全性群組 (NSG) 流量記錄](network-watcher-nsg-flow-logging-overview.md)。 您現在必須執行 PowerShell 腳本, 以手動方式刪除儲存體帳戶中的流量記錄, 如這篇文章中所述。
+目前有一個問題是，系統不會根據保留原則設定從 Blob 儲存體自動刪除網路監看員的[網路安全性群組 (NSG) 流量記錄](network-watcher-nsg-flow-logging-overview.md)。 您現在必須執行 PowerShell 腳本，以手動方式刪除儲存體帳戶中的流量記錄，如這篇文章中所述。
 
 ## <a name="run-powershell-script-to-delete-nsg-flow-logs"></a>執行 PowerShell 腳本以刪除 NSG 流量記錄
  
@@ -124,17 +124,17 @@ foreach ($Psflowlog in $FlowLogsList)
 Write-Output ('Retention policy for all NSGs evaluated and completed successfully')
 ```
 
-1. 視需要在腳本中輸入下列參數:
-   - **SubscriptionId**[強制]:您想要從中刪除 NSG 流量記錄檔 blob 的訂用帳戶識別碼。
-   - **位置**[強制]:您想要刪除 NSG 流量記錄檔 blob 之 Nsg 區域的_位置字串_。 您可以在 Azure 入口網站或[GitHub](https://github.com/Azure/azure-extensions-cli/blob/beb3d3fe984cfa9c7798cb11a274c5337968cbc5/regions.go#L23)上查看此資訊。
-   - **確認**[選用]:如果您想要手動確認刪除每個儲存體 blob, 請傳遞 [確認] 旗標。
+1. 視需要在腳本中輸入下列參數：
+   - **SubscriptionId** [強制]：您想要從中刪除 NSG 流量記錄檔 blob 的訂用帳戶識別碼。
+   - **Location** [強制]：您要刪除 NSG 流量記錄檔 Blob 之 nsg 區域的_位置字串_。 您可以在 Azure 入口網站或[GitHub](https://github.com/Azure/azure-extensions-cli/blob/beb3d3fe984cfa9c7798cb11a274c5337968cbc5/regions.go#L23)上查看此資訊。
+   - **確認**[選用]：如果您想要手動確認刪除每個儲存體 blob，請傳遞確認旗標。
 
-1. 如下列範例所示, 執行已儲存的腳本, 其中腳本檔案儲存為**Delete-NsgFlowLogsBlobs。 ps1**:
+1. 如下列範例所示，執行已儲存的腳本，其中腳本檔案儲存為**Delete-NsgFlowLogsBlobs。 ps1**：
    ```
    .\Delete-NsgFlowLogsBlobs.ps1 -SubscriptionId <subscriptionId> -Location  <location> -Confirm
    ```
     
 ## <a name="next-steps"></a>後續步驟
-- 客戶可以使用[Azure](https://azure.microsoft.com/services/scheduler/)排程器或[Azure 自動化](https://azure.microsoft.com/services/automation/)自動化執行腳本
-- 若要深入瞭解 NSG 記錄, 請參閱[網路安全性群組的 Azure 監視器記錄 (nsg)](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
+- 客戶可以使用[Azure Logic Apps](../logic-apps/logic-apps-overview.md)或[Azure 自動化](https://azure.microsoft.com/services/automation/)，自動執行腳本。
+- 若要深入瞭解 NSG 記錄，請參閱[網路安全性群組的 Azure 監視器記錄（nsg）](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
 

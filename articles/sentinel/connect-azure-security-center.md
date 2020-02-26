@@ -1,20 +1,20 @@
 ---
 title: 將 Azure 資訊安全中心資料連線到 Azure Sentinel
 description: 瞭解如何將 Azure 資訊安全中心資料連線到 Azure Sentinel。
-author: rkarlin
+author: yelevin
 manager: rkarlin
 ms.assetid: d28c2264-2dce-42e1-b096-b5a234ff858a
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: 4c75d1870ca3b966acdd658c91c0af8fd7465bfb
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.author: yelevin
+ms.openlocfilehash: e6e24a97a8b98bdd5447295880811914100563fe
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190870"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588530"
 ---
 # <a name="connect-data-from-azure-security-center"></a>從 Azure 資訊安全中心連接資料
 
@@ -24,7 +24,7 @@ ms.locfileid: "77190870"
 
 Azure Sentinel 可讓您從[Azure 資訊安全中心](../security-center/security-center-intro.md)連接警示，並將它們串流至 Azure Sentinel。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 若要從 Azure 資訊安全中心匯出警示，您必須在您所串流之記錄的訂用帳戶中具有安全性讀取者角色。
 
@@ -40,7 +40,7 @@ Azure Sentinel 可讓您從[Azure 資訊安全中心](../security-center/securit
 
 1. 您可以選取是否要讓警示 Azure 資訊安全中心自動在 Azure Sentinel 中自動產生事件。 在 [建立事件] 底下，選取 [啟用] 來啟用預設分析規則，以自動從已連線安全性服務中產生的警示建立事件。 接著，您可以在 [分析] 下編輯此規則，然後編輯 [有效規則]。
 
-3. 按一下 [連接]。
+3. 按一下 [ **連接**]。
 
 4. 若要在 Log Analytics 中針對 Azure 資訊安全中心警示使用相關的架構，請搜尋**SecurityAlert**。
 

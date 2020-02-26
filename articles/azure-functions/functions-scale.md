@@ -5,16 +5,16 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fb36b81d1b2a343da334d63d9c0555ed537ef122
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: c4ff3ebf6239f9b62409ff0885f23115711e33cb
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024648"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77584536"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions 的規模調整和主控
 
-當您在 Azure 中建立函數應用程式時，您必須為應用程式選擇主控方案。 有三個適用于 Azure Functions 的主控方案：取用[方案](#consumption-plan)、 [Premium 方案](#premium-plan)和[專用（App Service）方案](#app-service-plan)。
+當您在 Azure 中建立函數應用程式時，您必須為應用程式選擇主控方案。 Azure Functions 有三個可用的主控方案：取用[方案](#consumption-plan)、 [Premium 方案](#premium-plan)和[專用（App Service）方案](#app-service-plan)。
 
 您選擇的主控方案會指示下列行為：
 
@@ -37,12 +37,12 @@ App Service 方案可讓您利用您所管理的專用基礎結構。 您的函�
 
 下表指出在 Windows 或 Linux 上執行時，三個主控方案目前的支援層級：
 
-| | 使用量方案 | Premium 方案 | 專用方案 |
+| | 取用方案 | 進階方案 | 專用方案 |
 |-|:----------------:|:------------:|:----------------:|
-| Windows | 正式上市 | 正式上市 | 正式上市 |
-| Linux | 正式上市 | 正式上市 | 正式上市 |
+| Windows | GA | GA | GA |
+| Linux | GA | GA | GA |
 
-## <a name="consumption-plan"></a>使用量方案
+## <a name="consumption-plan"></a>取用方案
 
 當您使用取用方案時，會根據傳入事件的數目，動態新增和移除 Azure Functions 主機的實例。 此無伺服器方案會自動調整，您只需支付函式執行時使用的計算資源。 在取用方案中，函式執行會在一段可設定的時間之後逾時。
 
@@ -158,7 +158,7 @@ Azure Functions 的尺規單位是函式應用程式。 當函式應用程式相
 
 不同的觸發程序可能也會有不同的縮放限制，包含下方文件中所述的限制：
 
-* [事件中樞](functions-bindings-event-hubs.md#trigger---scaling)
+* [事件中樞](functions-bindings-event-hubs-trigger.md#scaling)
 
 ### <a name="best-practices-and-patterns-for-scalable-apps"></a>可調整應用程式的最佳做法與模式
 

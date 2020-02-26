@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 80f38f8bf323717693df70399ad982c51dda8f13
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 2f62be94c901b383e34608508baa87ea37c893af
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169810"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77580708"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>使用 Azure Machine Learning SDK 建立及執行機器學習管線
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -340,6 +340,8 @@ pipeline1 = Pipeline(workspace=ws, steps=steps)
 ### <a name="use-a-dataset"></a>使用資料集 
 
 若要在您的管線中使用 `TabularDataset` 或 `FileDataset`，您必須呼叫[as_named_input （name）](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#as-named-input-name-)，將它轉換成[DatasetConsumptionConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_consumption_config.datasetconsumptionconfig?view=azure-ml-py)物件。 您會將此 `DatasetConsumptionConfig` 物件當做管線步驟的其中一個 `inputs` 傳遞。 
+
+從 Azure Blob 儲存體、Azure 檔案儲存體、Azure Data Lake Storage Gen1、Azure Data Lake Storage Gen2、Azure SQL Database 和適用於 PostgreSQL 的 Azure 資料庫建立的資料集可用來做為任何管線步驟的輸入。 除了將輸出寫入[DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py)或[DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py)以外，輸出資料（[PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)）只能寫入 azure Blob 和 azure 檔案共用資料存放區。
 
 ```python
 dataset_consuming_step = PythonScriptStep(

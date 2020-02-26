@@ -11,16 +11,16 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 386c44cbf7a86e1a1dc92b918d87d0d8c1e60dd2
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: c4923e43613653bf3dfe8055754039ab0cf57fca
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75744714"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587374"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>使用 Intelligent Insights 針對 Azure SQL Database 效能問題進行疑難排解
 
-此頁面提供透過 [Intelligent Insights](sql-database-intelligent-insights.md) 資料庫效能診斷記錄偵測到之 Azure SQL Database 和受控執行個體效能問題的相關資訊。 診斷記錄遙測可以串流處理至[Azure 監視器記錄](../azure-monitor/insights/azure-sql.md)、 [Azure 事件中樞](../azure-monitor/platform/resource-logs-stream-event-hubs.md)、 [Azure 儲存體](sql-database-metrics-diag-logging.md#stream-into-storage)或協力廠商解決方案，以取得自訂的 DevOps 警示和報告功能。
+此頁面提供透過 [Intelligent Insights](sql-database-intelligent-insights.md) 資料庫效能診斷記錄偵測到之 Azure SQL Database 和受控執行個體效能問題的相關資訊。 診斷記錄遙測可以串流處理至[Azure 監視器記錄](../azure-monitor/insights/azure-sql.md)、 [Azure 事件中樞](../azure-monitor/platform/resource-logs-stream-event-hubs.md)、 [Azure 儲存體](sql-database-metrics-diag-logging.md#stream-diagnostic-telemetry-into-azure-storage)或協力廠商解決方案，以取得自訂的 DevOps 警示和報告功能。
 
 > [!NOTE]
 > 如需使用 Intelligent Insights 進行快速 SQL Database 效能疑難排解的指南，請參閱此文件中的[建議的疑難排解流程](sql-database-intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow)流程圖。
@@ -34,7 +34,7 @@ Intelligent Insights 能根據查詢執行等候時間、錯誤或逾時，自�
 | :------------------- | ------------------- | ------------------- |
 | [達到資源限制](sql-database-intelligent-insights-troubleshoot-performance.md#reaching-resource-limits) | 可用資源 (DTU)、資料庫背景工作執行緒或被監視訂用帳戶上可用之資料庫登入工作階段的使用量已達到限制。 這會影響 SQL Database 效能。 | CPU 資源使用量已達到受控執行個體限制。 這會影響資料庫效能。 |
 | [工作負載增加](sql-database-intelligent-insights-troubleshoot-performance.md#workload-increase) | 偵測到工作負載增加或資料庫上工作負載的持續累積。 這會影響 SQL Database 效能。 | 偵測到工作負載增加。 這會影響資料庫效能。 |
-| [記憶體壓力](sql-database-intelligent-insights-troubleshoot-performance.md#memory-pressure) | 要求記憶體授與的背景工作角色必須針對記憶體配置等待就統計而言明顯增加的時間長度。 或是存在要求記憶體授與之背景工作角色的持續累積。 這會影響 SQL Database 效能。 | 要求記憶體授與的背景工作角色，在統計上來說花了很長的時間等待記憶體配置。 這會影響資料庫效能。 |
+| [記憶體壓力](sql-database-intelligent-insights-troubleshoot-performance.md#memory-pressure) | 要求記憶體授與的背景工作角色必須等候記憶體配置的時間統計長，或已增加要求記憶體授與的背景工作角色累計量。 這會影響 SQL Database 效能。 | 要求記憶體授與的背景工作角色，在統計上來說花了很長的時間等待記憶體配置。 這會影響資料庫效能。 |
 | [鎖定](sql-database-intelligent-insights-troubleshoot-performance.md#locking) | 偵測到過多的資料庫鎖定，這會影響 SQL Database 效能。 | 偵測到過多的資料庫鎖定，這會影響資料庫效能。 |
 | [MAXDOP 增加](sql-database-intelligent-insights-troubleshoot-performance.md#increased-maxdop) | 平行處理原則的最大程度 (MAXDOP) 選項已變更，因而影響查詢執行效率。 這會影響 SQL Database 效能。 | 平行處理原則的最大程度 (MAXDOP) 選項已變更，因而影響查詢執行效率。 這會影響資料庫效能。 |
 | [頁面閂鎖爭用](sql-database-intelligent-insights-troubleshoot-performance.md#pagelatch-contention) | 多個執行緒同時嘗試存取相同的記憶體內資料緩衝區分頁，因而導致等候時間增加，且造成分頁閂鎖爭用。 這會影響 SQL 資料庫的效能。 | 多個執行緒同時嘗試存取相同的記憶體內資料緩衝區分頁，因而導致等候時間增加，且造成分頁閂鎖爭用。 這會影響資料庫的效能。 |

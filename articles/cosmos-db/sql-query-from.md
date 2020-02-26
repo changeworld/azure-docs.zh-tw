@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: 4f6d7580ea7ff0e8968c0c3ce4b3ca6111c86ac8
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 3939594064b63c567720378b9d316acca64d3266
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873364"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587680"
 ---
 # <a name="from-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 FROM 子句
 
@@ -79,9 +79,9 @@ FROM <from_specification>
   
   指定應該從由提供的別名定義的其他來源擷取文件。  
   
-- `<container_expression> '.' property_`  
+- `<container_expression> '.' property_name`  
   
-  指定文件應該透過存取 `property_name` 屬性或 array_index 陣列元素加以擷取，其中所文件均依指定的容器運算式擷取。  
+  指定應該藉由存取 `property_name` 屬性來抓取檔。  
   
 - `<container_expression> '[' "property_name" | array_index ']'`  
   
@@ -114,7 +114,7 @@ FROM 子句可以將來源減少為較小的子集。 若只要列舉每個專�
     FROM Families.children
 ```
 
-結果為：
+結果如下：
 
 ```json
     [
@@ -154,7 +154,7 @@ FROM 子句可以將來源減少為較小的子集。 若只要列舉每個專�
     FROM Families.address.state
 ```
 
-結果為：
+結果如下：
 
 ```json
     [
@@ -165,6 +165,6 @@ FROM 子句可以將來源減少為較小的子集。 若只要列舉每個專�
 
 ## <a name="next-steps"></a>後續步驟
 
-- [開始使用](sql-query-getting-started.md)
+- [快速入門](sql-query-getting-started.md)
 - [SELECT 子句](sql-query-select.md)
 - [WHERE 子句](sql-query-where.md)

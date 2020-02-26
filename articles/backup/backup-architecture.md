@@ -3,12 +3,12 @@ title: 架構概觀
 description: 概略說明 Azure 備份服務所使用的架構、元件和程序。
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: f311f6d49a776a49080675f3c1ccc28a7a27cb92
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: b093c6702bb26fe537622727fe1b623141bf4160
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963932"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77584382"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure 備份架構和元件
 
@@ -44,8 +44,8 @@ Azure 備份會將已備份的資料儲存在復原服務保存庫中。 保存�
 - 您可以在保存庫中監視已備份的專案，包括 Azure Vm 和內部部署機器。
 - 您可以使用 Azure [角色型存取控制 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) 來管理保存庫存取。
 - 您可以指定如何複寫保存庫中的資料以提供備援性：
-  - **本機多餘儲存體（LRS）** ：若要防止資料中心發生失敗，您可以使用 LRS。 LRS 會將資料複寫至儲存體縮放單位。 [深入了解](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)。
-  - **異地多餘儲存體（GRS）** ：若要防止全區域中斷，您可以使用 GRS。 GRS 會將您的資料複寫至次要區域。 [深入了解](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)。
+  - **本機多餘儲存體（LRS）** ：若要防止資料中心發生失敗，您可以使用 LRS。 LRS 會將資料複寫至儲存體縮放單位。 [詳細資訊](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)。
+  - **異地多餘儲存體（GRS）** ：若要防止全區域中斷，您可以使用 GRS。 GRS 會將您的資料複寫至次要區域。 [詳細資訊](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)。
   - 根據預設，復原服務保存庫會使用 GRS。
 
 ## <a name="backup-agents"></a>備份代理程式
@@ -135,7 +135,7 @@ Azure 備份提供不同的備份代理程式，視要備份的機器類型而�
     - 快照集資料可能不會立即複製到保存庫。 在尖峰時間，備份可能需要一些時間。 針對每日備份原則，VM 的總備份時間會小於24小時。
 1. 將資料傳送至保存庫之後，就會建立復原點。 根據預設，快照集會在刪除前兩天保留。 這項功能可讓您從這些快照集進行還原作業，進而減少還原時間。 它可減少從保存庫轉換和複製資料所需的時間。 請參閱[Azure 備份立即還原功能](https://docs.microsoft.com/azure/backup/backup-instant-restore-capability)。
 
-Azure Vm 需要網際網路存取才能進行控制命令。 如果您要備份 VM 內的工作負載（例如，SQL Server 資料庫備份），後端資料也需要網際網路存取。
+您不需要明確地允許網際網路連線來備份您的 Azure Vm。
 
 ![備份 Azure VM](./media/backup-architecture/architecture-azure-vm.png)
 

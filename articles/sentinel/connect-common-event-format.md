@@ -3,7 +3,7 @@ title: 將 CEF 資料連線至 Azure Sentinel 預覽 |Microsoft Docs
 description: 瞭解如何將 CEF 資料連線到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2019
-ms.author: rkarlin
-ms.openlocfilehash: 640d1ff9e2ee1471706b7900e7e22dbc44920527
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: 8314614616c6b8969832d52fc684d47ba1bf0fe3
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610636"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588343"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>使用一般事件格式來連接您的外部解決方案
 
@@ -49,7 +49,7 @@ ms.locfileid: "75610636"
 若要在安全性解決方案和 Syslog 電腦之間使用 TLS 通訊，您必須將 Syslog daemon （rsyslog 或 Syslog）設定為在 TLS 中進行通訊：[使用 tls Rsyslog 加密 Syslog 流量](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html)，[並使用 tls-Syslog-ng 加密記錄檔訊息](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298)。
 
  
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 請確定您用來做為 proxy 的 Linux 機器正在執行下列其中一個作業系統：
 
 - 64 位元
@@ -76,7 +76,7 @@ ms.locfileid: "75610636"
    - Syslog RFC 5424
  
 請確定您的電腦也符合下列需求： 
-- 使用權限
+- 權限
     - 您的電腦上必須具有更高的許可權（sudo）。 
 - 軟體需求
     - 確定您的電腦上正在執行 Python

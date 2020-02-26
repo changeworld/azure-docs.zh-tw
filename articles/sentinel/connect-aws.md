@@ -3,7 +3,7 @@ title: 將 AWS CloudTrail 連接到 Azure Sentinel |Microsoft Docs
 description: 瞭解如何將 AWS CloudTrail 資料連線到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,19 +13,19 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
-ms.author: rkarlin
-ms.openlocfilehash: 2913ef93d610b1d6a0ea57d79b27aee329838d25
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: 5cbef1f31ea7088d4fab4888f5630af1b765a910
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610738"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588649"
 ---
 # <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>將 Azure Sentinel 連線至 AWS CloudTrail
 
 使用 AWS 連接器將所有 AWS CloudTrail 事件串流至 Azure Sentinel。 此連線程式會將 Azure Sentinel 的存取權委派給 AWS 資源記錄，並建立 AWS CloudTrail 與 Azure Sentinel 之間的信任關係。 這是在 AWS 上完成，藉由建立可授與存取 AWS 記錄 Azure Sentinel 許可權的角色。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 您必須擁有 Azure Sentinel 工作區的 [寫入] 許可權。
 

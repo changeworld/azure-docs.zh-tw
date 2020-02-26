@@ -3,12 +3,12 @@ title: Azure Service Fabric 集中式秘密存放區
 description: 本文說明如何在 Azure Service Fabric 中使用中央秘密存放區。
 ms.topic: conceptual
 ms.date: 07/25/2019
-ms.openlocfilehash: bc6ea6260bf50d5b4f8e294e0a3827426f90bee3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 11fb94a9fba40e6f2474ad64f5eb0c454be28ca0
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980931"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589159"
 ---
 # <a name="central-secrets-store-in-azure-service-fabric"></a>Azure Service Fabric 中的中央秘密存放區 
 本文說明如何在 Azure Service Fabric 中使用中央秘密存放區（CSS），在 Service Fabric 的應用程式中建立秘密。 CSS 是一個本機秘密存放區快取，可讓機密資料（例如密碼、權杖和金鑰）在記憶體中加密。
@@ -76,7 +76,8 @@ ms.locfileid: "75980931"
 若要使用 REST API 建立 `supersecret` 秘密資源，請提出 PUT 要求給 `https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview`。 您需要叢集憑證或管理用戶端憑證，才能建立秘密資源。
 
 ```powershell
-Invoke-WebRequest  -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview -Method PUT -CertificateThumbprint <CertThumbprint>
+$json = '{"properties": {"kind": "inlinedValue", "contentType": "text/plain", "description": "supersecret"}}'
+Invoke-WebRequest  -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview -Method PUT -CertificateThumbprint <CertThumbprint> -Body $json
 ```
 
 ## <a name="set-the-secret-value"></a>設定密碼值
@@ -125,8 +126,12 @@ Invoke-WebRequest  -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecre
 
 使用下列腳本來使用 REST API 來設定密碼值。
 ```powershell
-$Params = @{"properties": {"value": "mysecretpassword"}}
+$Params = '{"properties": {"value": "mysecretpassword"}}'
 Invoke-WebRequest -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecret/values/ver1?api-version=6.4-preview -Method PUT -Body $Params -CertificateThumbprint <ClusterCertThumbprint>
+```
+### <a name="examine-the-secret-value"></a>檢查秘密值
+```powershell
+Invoke-WebRequest -CertificateThumbprint <ClusterCertThumbprint> -Method POST -Uri "https:<clusterfqdn>/Resources/Secrets/supersecret/values/ver1/list_value?api-version=6.4-preview"
 ```
 ## <a name="use-the-secret-in-your-application"></a>在您的應用程式中使用秘密
 

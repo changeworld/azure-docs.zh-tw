@@ -1,8 +1,8 @@
 ---
 title: 在 Azure Sentinel 中使用搜尋書簽進行資料調查
 description: 本文說明如何使用 Azure Sentinel 搜尋書簽來追蹤資料。
-author: cabailey
-ms.author: cabailey
+author: yelevin
+ms.author: yelevin
 manager: rkarlin
 ms.assetid: 320ccdad-8767-41f3-b083-0bc48f1eeb37
 ms.service: azure-sentinel
@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 10/24/2019
-ms.openlocfilehash: 457898e257aa7a347ff99d0987c5ad594637b5f4
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: eacc104bf7157732f91507f631bcda2cd166bfb3
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563729"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588683"
 ---
 # <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>使用 Azure Sentinel 在搜尋期間追蹤資料
 
@@ -34,7 +34,7 @@ ms.locfileid: "75563729"
 
 此外，在預覽中，您可以從書簽詳細資料按一下 [**調查**]，將已加入書簽的資料視覺化。 這會啟動調查體驗，讓您可以使用互動式實體圖表和時程表來查看、調查和視覺化您的結果。
 
-## <a name="add-a-bookmark"></a>新增書籤
+## <a name="add-a-bookmark"></a>新增書簽
 
 1. 在 Azure 入口網站中，流覽至**Sentinel** > **威脅管理** > **搜尋**來執行可疑和異常行為的查詢。
 

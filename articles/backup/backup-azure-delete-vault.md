@@ -3,12 +3,12 @@ title: 刪除 Microsoft Azure 復原服務保存庫
 description: 在本文中，瞭解如何移除相依性，然後刪除 Microsoft Azure 備份復原服務（MARS）保存庫。
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 23e0d2874229616037c44800639411f66bc4d1b6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 172c632ae27c789f96e2e5cc1bdef492ef09f667
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173180"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586456"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>刪除 Azure 備份復原服務保存庫
 
@@ -28,13 +28,13 @@ ms.locfileid: "74173180"
 
   ![刪除受保護的伺服器錯誤。](./media/backup-azure-delete-vault/error-message.jpg)
 
-- 如果備份專案處於虛刪除狀態，則會出現下列警告訊息，而且您必須等到它們永久刪除為止。 如需詳細資訊，請參閱這篇[文章](https://aka.ms/SoftDeleteCloudWorkloads)。
+- 如果備份專案處於虛刪除狀態，則會出現下列警告訊息，而且您必須等到它們永久刪除為止。 如需詳細資訊，請參閱這篇[文章](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud)。
 
    ![刪除保存庫錯誤。](./media/backup-azure-delete-vault/error-message-soft-delete.png)
   
 若要刪除保存庫，請選擇符合您設定的案例，並遵循建議的步驟：
 
-案例 | 移除相依性以刪除保存庫的步驟 |
+狀況 | 移除相依性以刪除保存庫的步驟 |
 -- | --
 我有使用 Azure 備份代理程式保護的內部部署檔案和資料夾，並備份至 Azure | 執行[從 MARS 管理主控台刪除備份專案](#delete-backup-items-from-the-mars-management-console)中的步驟
 我有使用 MABS （Microsoft Azure 備份 Server）或 DPM （System Center Data Protection Manager）保護的內部部署機器至 Azure | 執行[從 MABS 管理主控台刪除備份專案](#delete-backup-items-from-the-mabs-management-console)中的步驟
@@ -94,7 +94,7 @@ ms.locfileid: "74173180"
 
 4. 選取 [同意] 核取方塊，然後選取 [**刪除**]。
 
-5. 檢查**通知**圖示![刪除備份資料](./media/backup-azure-delete-vault/messages.png)。 作業完成後，服務會顯示訊息： [*正在停止備份並刪除備份資料] 的 [備份專案]。* *已成功完成*作業。
+5. 檢查**通知**圖示 ![刪除備份資料](./media/backup-azure-delete-vault/messages.png)。 作業完成後，服務會顯示訊息： [*正在停止備份並刪除備份資料] 的 [備份專案]。* *已成功完成*作業。
 6. 選取 [**備份專案**] 功能表**上的 [** 重新整理]，確認已刪除備份專案。
 
 完成此程式之後，您可以從管理主控台刪除備份專案：
@@ -134,7 +134,7 @@ ms.locfileid: "74173180"
 若要停止保護並刪除備份資料，請執行下列步驟：
 
 1. 開啟 [DPM 管理主控台]，然後選取導覽列上的 [**保護**]。
-2. 在 [顯示] 窗格中，選取您要移除的保護群組成員。 以滑鼠右鍵按一下以選取 [**停止保護群組成員**] 選項。
+2. 在 [顯示] 窗格中，選取要移除的保護群組成員。 以滑鼠右鍵按一下以選取 [**停止保護群組成員**] 選項。
 3. 從 [**停止保護**] 對話方塊中，選取 [**刪除受保護的資料**]，然後選取 [**線上刪除存放裝置**] 核取方塊。 然後，選取 [**停止保護**]。
 
     ![從 [停止保護] 窗格中選取 [刪除受保護的資料]。](./media/backup-azure-delete-vault/delete-storage-online.png)

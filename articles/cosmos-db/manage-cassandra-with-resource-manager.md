@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
-ms.openlocfilehash: e3dd086108ba8c518bf7caf027f149de2ab70e57
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c4dc97453fe50865db74f8918ef3dffdb4013b4f
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980622"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588802"
 ---
 # <a name="manage-azure-cosmos-db-cassandra-api-resources-using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 範本管理 Azure Cosmos DB Cassandra API 資源
 
@@ -25,7 +25,7 @@ ms.locfileid: "75980622"
 > 帳戶名稱必須是小寫、44或較少的字元。
 > 若要更新 RU/秒，請重新提交具有已更新輸送量屬性值的範本。
 
-[!code-json[create-cosmos-Cassandra](~/quickstart-templates/101-cosmosdb-cassandra/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-cassandra/azuredeploy.json":::
 
 ## <a name="deploy-with-the-azure-cli"></a>使用 Azure CLI 部署
 
@@ -58,7 +58,7 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
 
 以下是一些其他資源：
 
-- [Azure Resource Manager 檔](/azure/azure-resource-manager/)
+- [Azure Resource Manager 文件](/azure/azure-resource-manager/)
 - [Azure Cosmos DB 資源提供者架構](/azure/templates/microsoft.documentdb/allversions)
 - [Azure Cosmos DB 快速入門範本](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
 - [針對常見 Azure Resource Manager 部署錯誤進行疑難排解](../azure-resource-manager/templates/common-deployment-errors.md)

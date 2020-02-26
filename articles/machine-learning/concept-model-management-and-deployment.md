@@ -9,27 +9,36 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: jpe316
 ms.author: jordane
-ms.date: 11/22/2019
+ms.date: 02/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: e53db645875646b1e021cc0d3d760677e1128c0c
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 11a6a668b1028ba1640ef076606d4aeb4c3aae6e
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486371"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589363"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps：使用 Azure Machine Learning 進行模型管理、部署和監視
 
 在本文中，您將瞭解如何使用 Azure Machine Learning 來管理模型的生命週期。 Azure Machine Learning 使用 Machine Learning 作業（MLOps）方法。 MLOps 可改善機器學習解決方案的品質與一致性。 
 
+## <a name="what-is-mlops"></a>什麼是 MLOps?
+
+Machine Learning 作業（MLOps）是以[DevOps](https://azure.microsoft.com/overview/what-is-devops/)原則和實務為基礎，可提高工作流程的效率。 例如，持續整合、傳遞和部署。 MLOps 會將這些原則套用至機器學習程式，其目標為：
+
+* 更快速地測試和開發模型
+* 更快速地將模型部署至生產環境
+* 品質保證
+
 Azure Machine Learning 提供下列 MLOps 功能：
 
-- **建立可重現的 ML 管線**。 管線可讓您針對資料準備、定型和評分程式，定義可重複且可重複使用的步驟。
-- **從任何地方註冊、封裝和部署模型**，並追蹤使用模型所需的相關中繼資料。
-- **捕捉捕獲端對端 ML 生命週期所需的治理資料**，包括正在發佈模型的物件、變更的原因，以及模型部署或用於生產環境中的時間。
-- **通知和警示 ML 生命週期中的事件**，例如實驗完成、模型註冊、模型部署和資料漂移偵測。
+- **建立可重現的 ML 管線**。 Machine Learning 管線可讓您針對資料準備、定型和評分程式，定義可重複且可重複使用的步驟。
+- **建立可重複使用的軟體環境**，以定型和部署模型。
+- **從任何地方註冊、封裝和部署模型**。 您也可以追蹤使用模型所需的相關中繼資料。
+- **捕捉端對端 ML 生命週期的治理資料**。 記錄的資訊可能包括正在發行模型的物件、進行變更的原因，以及模型部署或用於生產環境中的時間。
+- **通知並警示 ML 生命週期中的事件**。 例如，實驗完成、模型註冊、模型部署和資料漂移偵測。
 - **監視 ml 應用程式的操作和 ml 相關問題**。 比較定型和推斷之間的模型輸入、探索模型特定計量，以及提供 ML 基礎結構的監視和警示。
-- **使用 Azure Machine Learning 和 Azure DevOps 自動化端對端 ML 生命週期**，以便經常更新模型、測試新模型，以及持續推出新的 ml 模型以及其他應用程式和服務。
+- **使用 Azure Machine Learning 和 Azure Pipelines 自動化端對端 ML 生命週期**。 使用管線可讓您經常更新模型、測試新的模型，以及持續向其他應用程式和服務推出新的 ML 模型。
 
 ## <a name="create-reproducible-ml-pipelines"></a>建立可重現的 ML 管線
 
@@ -38,6 +47,12 @@ Azure Machine Learning 提供下列 MLOps 功能：
 ML 管線可以包含從資料準備到功能解壓縮到超參數微調到模型評估的步驟。 如需詳細資訊，請參閱[ML 管線](concept-ml-pipelines.md)。
 
 如果您使用[設計](concept-designer.md)工具來建立 ML 管線，您隨時都可以按一下設計工具頁面右上方的 [ **...]** ，然後選取 [**複製**]。 複製管線可讓您反復執行管線設計，而不會遺失舊版本。  
+
+## <a name="create-reusable-software-environments"></a>建立可重複使用的軟體環境
+
+Azure Machine Learning 的環境可讓您追蹤和重現專案的軟體相依性。 環境可讓您確保組建可重現，而不需要手動軟體設定。
+
+環境會描述專案的 pip 和 Conda 相依性，並可用於定型和部署模型。 如需詳細資訊，請參閱[什麼是 Azure Machine Learning 環境](concept-environments.md)。
 
 ## <a name="register-package-and-deploy-models-from-anywhere"></a>從任何地方註冊、封裝和部署模型
 
@@ -82,7 +97,7 @@ Azure Machine Learning 可以流量分析來判斷部署模型時所要使用的
 
 * 用來對提交給服務/裝置的資料進行評分的模型。
 * 輸入腳本。 此腳本會接受要求，使用模型來對資料進行評分，並傳迴響應。
-* Conda 環境檔案，描述模型和專案腳本所需的相依性。
+* Azure Machine Learning 環境，描述模型和專案腳本所需的 pip 和 Conda 相依性。
 * 模型和專案腳本所需的任何其他資產，例如文字、資料等等。
 
 您也會提供目標部署平臺的設定。 例如，VM 系列類型、可用記憶體，以及部署到 Azure Kubernetes Service 時的核心數目。
@@ -162,6 +177,8 @@ Azure ML 會將主要事件發佈到 Azure EventGrid，可用來通知和自動�
 * 可讓發行管線由定型管線中建立的定型模型觸發。
 
 如需有關搭配 Azure Machine Learning 使用 Azure Pipelines 的詳細資訊，請參閱[使用 Azure Pipelines 的持續整合和部署 ML 模型一](/azure/devops/pipelines/targets/azure-machine-learning)文和[Azure Machine Learning MLOps](https://aka.ms/mlops)存放庫。
+
+您也可以使用 Azure Data Factory 來建立資料內嵌管線，以準備要與定型搭配使用的資料。 如需詳細資訊，請參閱[資料內嵌管線](how-to-cicd-data-ingestion.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

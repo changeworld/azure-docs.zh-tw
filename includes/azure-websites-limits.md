@@ -4,14 +4,14 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 08/09/2019
 ms.author: jroth
-ms.openlocfilehash: 17d6947efcbaf8a01aeca70bf7a88dcc7b65cd0a
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 83bf357fff8fd3cfb8c0e69af92b36710287898f
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548190"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586697"
 ---
-| 資源 | 免費 | 共用 | 基本 | Standard | 進階 (v2) | 隔離式 </th> |
+| 資源 | 免費 | 共用 | 基本 | 標準 | 進階 (v2) | 隔離 </th> |
 | --- | --- | --- | --- | --- | --- | --- |
 | 每個[Azure App Service 方案](../articles/app-service/overview-hosting-plans.md)<sup>1</sup>的[Web、行動或 API 應用程式](https://azure.microsoft.com/services/app-service/) |10 |100 |無限制<sup>2</sup> |無限制<sup>2</sup> |無限制<sup>2</sup> |無限制<sup>2</sup>|
 | [App Service 計劃](../articles/app-service/overview-hosting-plans.md) |每個區域 10 個 |每個資源群組 10 個 |每個資源群組 100 個 |每個資源群組 100 個 |每個資源群組 100 個 |每個資源群組 100 個|
@@ -21,7 +21,7 @@ ms.locfileid: "76548190"
 | CPU 時間（5分鐘）<sup>6</sup> |3 分鐘 |3 分鐘 |無限制，以標準[費率](https://azure.microsoft.com/pricing/details/app-service/)付費</a> |無限制，以標準[費率](https://azure.microsoft.com/pricing/details/app-service/)付費</a> |無限制，以標準[費率](https://azure.microsoft.com/pricing/details/app-service/)付費</a> |無限制，以標準[費率](https://azure.microsoft.com/pricing/details/app-service/)付費</a>|
 | CPU 時間 (天)<sup>6</sup> |60 Minuten |240 Minuten |無限制，以標準[費率](https://azure.microsoft.com/pricing/details/app-service/)付費</a> |無限制，以標準[費率](https://azure.microsoft.com/pricing/details/app-service/)付費</a> |無限制，以標準[費率](https://azure.microsoft.com/pricing/details/app-service/)付費</a> |無限制，以標準[費率](https://azure.microsoft.com/pricing/details/app-service/)付費</a> |
 | 記憶體 (1 小時) |1024 MB/App Service 方案 |每個應用程式 1024 MB |N/A |N/A |N/A |N/A |
-| Bandwidth |165 MB |無限制，套用 [資料傳輸費率](https://azure.microsoft.com/pricing/details/data-transfers/) |無限制，套用 [資料傳輸費率](https://azure.microsoft.com/pricing/details/data-transfers/) |無限制，套用 [資料傳輸費率](https://azure.microsoft.com/pricing/details/data-transfers/) |無限制，套用 [資料傳輸費率](https://azure.microsoft.com/pricing/details/data-transfers/) |無限制，套用 [資料傳輸費率](https://azure.microsoft.com/pricing/details/data-transfers/) |
+| 頻寬 |165 MB |無限制，套用 [資料傳輸費率](https://azure.microsoft.com/pricing/details/data-transfers/) |無限制，套用 [資料傳輸費率](https://azure.microsoft.com/pricing/details/data-transfers/) |無限制，套用 [資料傳輸費率](https://azure.microsoft.com/pricing/details/data-transfers/) |無限制，套用 [資料傳輸費率](https://azure.microsoft.com/pricing/details/data-transfers/) |無限制，套用 [資料傳輸費率](https://azure.microsoft.com/pricing/details/data-transfers/) |
 | 應用程式架構 |32 位元 |32 位元 |32 位元/64 位元 |32 位元/64 位元 |32 位元/64 位元 |32 位元/64 位元 |
 | 每個實例的 Web 通訊端<sup>7</sup> |5 |35 |350 |無限制 |無限制 |無限制 |
 | IP 連線 | 600 | 600 | 取決於實例大小<sup>8</sup> | 取決於實例大小<sup>8</sup> | 取決於實例大小<sup>8</sup> | 16,000 |
@@ -35,7 +35,6 @@ ms.locfileid: "76548190"
 | [排定的備份](../articles/app-service/manage-backup.md) | | | | 排定的備份每隔2小時，最多每日12次備份（手動 + 排程） | 排定的備份每小時，最多每天50備份（手動 + 排程） | 排定的備份每小時，最多每天50備份（手動 + 排程） |
 | [Autoscale](../articles/app-service/manage-scale-up.md) | | | |X |X |X |
 | [Webjob](../articles/app-service/webjobs-create.md)<sup>11</sup> |X |X |X |X |X |X |
-| [Azure 排程器](https://azure.microsoft.com/services/scheduler/) 支援 | |X |X |X |X |X |
 | [端點監視](../articles/app-service/web-sites-monitor.md) | | |X |X |X |X |
 | [預備位置](../articles/app-service/deploy-staging-slots.md) | | | |5 |20 |20 |
 | SLA | |  |99.95%|99.95%|99.95%|99.95%|  
@@ -50,4 +49,4 @@ ms.locfileid: "76548190"
 <sup>8</sup>IP 連線數目上限為每個實例，且取決於實例大小：1920每 B1/S1/P1V2 實例，每個 B2/S2/P2V2 實例3968，8064每個 B3/S3/P3V2 實例。  
 <sup>9</sup>每個訂用帳戶的 App Service 憑證配額限制可以透過支援要求增加為200的最大限制。  
 <sup>10</sup>App Service 隔離式方案 Sku 可以透過 Azure Load Balancer 進行內部負載平衡（ILB），因此沒有網際網路的公用連線能力。 因此，ILB 隔離式 App Service 的某些功能必須從具有 ILB 網路端點直接存取權的電腦才能使用。  
-<sup>11</sup>在您的 App Service 實例內，以背景工作的形式依需求、按照排程或連續執行自訂可執行檔和/或腳本。 連續執行 WebJob 需要永遠開啟。 排程的 WebJob 需要 Azure 排程器免費或標準層次。 在 App Service 實例中可執行檔 Webjob 數目沒有預先定義的限制。 有一些實際的限制取決於應用程式程式碼嘗試執行的動作。  
+<sup>11</sup>在您的 App Service 實例內，以背景工作的形式依需求、按照排程或連續執行自訂可執行檔和/或腳本。 若要連續執行 WebJobs，「永遠開啟」是必要選項。 在 App Service 實例中可執行檔 Webjob 數目沒有預先定義的限制。 有一些實際的限制取決於應用程式程式碼嘗試執行的動作。  

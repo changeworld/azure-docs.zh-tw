@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/31/2020
-ms.openlocfilehash: e1e19f985c9aa02759c6fff3c634c216c7ef42ef
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 419dbd998abc5cbd2da64a990e13d46f3fb2efbe
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77525544"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77580622"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>使用 REST 建立、執行及刪除 Azure ML 資源
 
@@ -32,7 +32,7 @@ ms.locfileid: "77525544"
 > * 使用刪除要求來清除資源 
 > * 使用以金鑰為基礎的授權來評分已部署的模型
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 您具有系統管理許可權的**Azure 訂**用帳戶。 如果您沒有這類訂用帳戶，請試用[免費或付費的個人訂](https://aka.ms/AMLFree)用帳戶
 - [Azure Machine Learning 工作區](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
@@ -201,9 +201,9 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/mod
 
 請注意，若要列出實驗，路徑的開頭為 `history/v1.0`，而若要列出模型，路徑的開頭為 `modelmanagement/v1.0`。 REST API 分成數個作業群組，每個都有不同的路徑。 下列連結中的 API 參考檔會列出各種作業的作業、參數和回應碼。
 
-|區域|路徑|參考|
+|區域|Path|參考|
 |-|-|-|
-|成品|成品/v2.0/|[REST API 參考](https://docs.microsoft.com/rest/api/azureml/artifacts)|
+|構件|成品/v2.0/|[REST API 參考](https://docs.microsoft.com/rest/api/azureml/artifacts)|
 |資料存放區|資料存放區/v1.0/|[REST API 參考](https://docs.microsoft.com/rest/api/azureml/datastores)|
 |超參數微調|hyperdrive/v1.0/|[REST API 參考](https://docs.microsoft.com/rest/api/azureml/hyperparametertuning)|
 |模型|modelmanagement/v1.0/|[REST API 參考](https://docs.microsoft.com/rest/api/azureml/modelsanddeployments/mlmodels)|
@@ -401,6 +401,23 @@ providers/Microsoft.Storage/storageAccounts/{your-storage-account-name}"
 ```
 
 您應該會收到 `202 Accepted` 回應，並在傳回的標頭中，`Location` URI。 您可以取得此 URI 以取得部署的相關資訊，包括有用的偵錯工具資訊（如果您的其中一個相依資源有問題的話）（例如，如果您忘記在容器登錄上啟用系統管理員存取）。 
+
+## <a name="troubleshooting"></a>疑難排解
+
+### <a name="resource-provider-errors"></a>資源提供者錯誤
+
+[!INCLUDE [machine-learning-resource-provider](../../includes/machine-learning-resource-provider.md)]
+
+### <a name="moving-the-workspace"></a>移動工作區
+
+> [!WARNING]
+> 不支援將您的 Azure Machine Learning 工作區移至不同的訂用帳戶，或將擁有的訂用帳戶移至新的租使用者。 這麼做可能會導致錯誤。
+
+### <a name="deleting-the-azure-container-registry"></a>刪除 Azure Container Registry
+
+Azure Machine Learning 工作區會使用 Azure Container Registry （ACR）進行某些作業。 當 ACR 實例第一次需要時，它會自動建立。
+
+[!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
 ## <a name="next-steps"></a>後續步驟
 

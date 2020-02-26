@@ -3,12 +3,12 @@ title: 使用 PowerShell 將 Windows Server 備份至 Azure
 description: 在本文中，您將瞭解如何使用 PowerShell 來設定 Windows Server 或 Windows 用戶端上的 Azure 備份，以及管理備份和復原。
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: 25ea84ba00648e2f515f96885cfdb5bb662c8575
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: ff723eb2ebe48a7019fecec9106c1618a636b94c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77483069"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583103"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>使用 PowerShell 部署和管理 Windows Server/Windows 用戶端的 Azure 備份
 
@@ -147,7 +147,7 @@ $certficate = [convert]::ToBase64String($cert.Export([System.Security.Cryptograp
 $CredsFilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $Vault -Path $CredsPath -Certificate $certficate
 ```
 
-在 Windows Server 或 Windows 用戶端電腦上，執行 [Start-OBRegistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx) Cmdlet 向保存庫註冊電腦。
+在 Windows Server 或 Windows 用戶端電腦上，執行 [Start-OBRegistration](https://docs.microsoft.com/powershell/module/msonlinebackup/start-obregistration?view=winserver2012-ps) Cmdlet 向保存庫註冊電腦。
 這也是用於備份的其他 Cmdlet，是來自 MSONLINE 模組，Mars AgentInstaller 會在安裝過程中新增此模組。
 
 AgentInstaller 不會更新 $Env:PSModulePath 變數。 這表示模組自動載入會失敗。 若要解決這個問題，您可以執行下列動作：
@@ -187,7 +187,7 @@ Machine registration succeeded.
 
 您也可以針對給定的一組當週天數，使用 [`work hour bandwidth`] 和 [`non-work hour bandwidth`] 的選項來控制頻寬使用情形。
 
-使用 [Set-OBMachineSetting](https://technet.microsoft.com/library/hh770409%28v=wps.630%29.aspx) Cmdlet 即可設定 Proxy 和頻寬的詳細資料：
+使用 [Set-OBMachineSetting](https://docs.microsoft.com/powershell/module/msonlinebackup/set-obmachinesetting?view=winserver2012-ps) Cmdlet 即可設定 Proxy 和頻寬的詳細資料：
 
 ```powershell
 Set-OBMachineSetting -NoProxy
@@ -233,7 +233,7 @@ Windows Server 和用戶端的所有 Azure 備份都是由原則來掌管。 原
 2. **保留排程** 可指定要在 Azure 中保留復原點多久時間。
 3. **檔案包含/排除規格** ，指出要備份的項目。
 
-本文件中要說明如何將備份自動化，因此我們假設還未設定任何選項。 一開始，請先使用 [New-OBPolicy](https://technet.microsoft.com/library/hh770416.aspx) Cmdlet 建立新的備份原則。
+本文件中要說明如何將備份自動化，因此我們假設還未設定任何選項。 一開始，請先使用 [New-OBPolicy](https://docs.microsoft.com/powershell/module/msonlinebackup/new-obpolicy?view=winserver2012-ps) Cmdlet 建立新的備份原則。
 
 ```powershell
 $NewPolicy = New-OBPolicy
@@ -243,7 +243,7 @@ $NewPolicy = New-OBPolicy
 
 ### <a name="configuring-the-backup-schedule"></a>設定備份排程
 
-原則的三個部分中的第一個是備份排程，使用[set-obschedule](https://technet.microsoft.com/library/hh770401) Cmdlet 來建立。 備份排程會定義何時需要進行備份。 建立排程時，您需要指定兩個輸入參數：
+原則的三個部分中的第一個是備份排程，使用[set-obschedule](https://docs.microsoft.com/powershell/module/msonlinebackup/new-obschedule?view=winserver2012-ps) Cmdlet 來建立。 備份排程會定義何時需要進行備份。 建立排程時，您需要指定兩個輸入參數：
 
 * **星期幾** 要執行備份。 您可以只選一天或選擇一週的每天都執行備份工作，或任意選取要一週的哪幾天。
 * **時段** 。 您最多可以在一天當中定義觸發備份的三個不同時間。
@@ -254,7 +254,7 @@ $NewPolicy = New-OBPolicy
 $Schedule = New-OBSchedule -DaysOfWeek Saturday, Sunday -TimesOfDay 16:00
 ```
 
-備份排程需要與原則建立關聯，您可以使用 [Set-OBSchedule](https://technet.microsoft.com/library/hh770407) Cmdlet 來達成。
+備份排程需要與原則建立關聯，您可以使用 [Set-OBSchedule](https://docs.microsoft.com/powershell/module/msonlinebackup/set-obschedule?view=winserver2012-ps) Cmdlet 來達成。
 
 ```powershell
 Set-OBSchedule -Policy $NewPolicy -Schedule $Schedule
@@ -266,13 +266,13 @@ BackupSchedule : 4:00 PM Saturday, Sunday, Every 1 week(s) DsList : PolicyName :
 
 ### <a name="configuring-a-retention-policy"></a>設定保留原則
 
-保留原則會定義所建立備份工作的復原點保留時間長度。 使用 [New-OBRetentionPolicy](https://technet.microsoft.com/library/hh770425) Cmdlet 建立新的保留原則時，您可以使用 Azure 備份來指定需要保留備份復原點的天數。 下列範例會將保留原則設定為七天。
+保留原則會定義所建立備份工作的復原點保留時間長度。 使用 [New-OBRetentionPolicy](https://docs.microsoft.com/powershell/module/msonlinebackup/new-obretentionpolicy?view=winserver2012-ps) Cmdlet 建立新的保留原則時，您可以使用 Azure 備份來指定需要保留備份復原點的天數。 下列範例會將保留原則設定為七天。
 
 ```powershell
 $RetentionPolicy = New-OBRetentionPolicy -RetentionDays 7
 ```
 
-保留原則必須與主要原則建立關聯，方法為使用 Cmdlet [Set-OBRetentionPolicy](https://technet.microsoft.com/library/hh770405)：
+保留原則必須與主要原則建立關聯，方法為使用 Cmdlet [Set-OBRetentionPolicy](https://docs.microsoft.com/powershell/module/msonlinebackup/set-obretentionpolicy?view=winserver2012-ps)：
 
 ```powershell
 Set-OBRetentionPolicy -Policy $NewPolicy -RetentionPolicy $RetentionPolicy
@@ -309,7 +309,7 @@ PolicyState     : Valid
 
 後者可利用在 New-OBFileSpec 命令中使用 -NonRecursive 旗標來達成。
 
-在下例中，我們會備份磁碟區 C: 和 D:，並排除 Windows 資料夾和任何暫存資料夾中的作業系統二進位檔。 若要這麼做，我們將使用[OBFileSpec](https://technet.microsoft.com/library/hh770408)指令程式建立兩個檔案規格-一個用於包含，另一個用於排除。 一旦建立檔案規格之後，再使用 [Add-OBFileSpec](https://technet.microsoft.com/library/hh770424) Cmdlet 建立與原則的關聯。
+在下例中，我們會備份磁碟區 C: 和 D:，並排除 Windows 資料夾和任何暫存資料夾中的作業系統二進位檔。 若要這麼做，我們將使用[OBFileSpec](https://docs.microsoft.com/powershell/module/msonlinebackup/new-obfilespec?view=winserver2012-ps)指令程式建立兩個檔案規格-一個用於包含，另一個用於排除。 一旦建立檔案規格之後，再使用 [Add-OBFileSpec](https://docs.microsoft.com/powershell/module/msonlinebackup/add-obfilespec?view=winserver2012-ps) Cmdlet 建立與原則的關聯。
 
 ```powershell
 $Inclusions = New-OBFileSpec -FileSpec @("C:\", "D:\")
@@ -433,7 +433,7 @@ Get-OBSystemStatePolicy
 
 ### <a name="applying-the-policy"></a>套用原則
 
-現在原則物件已完成，且具有關聯的備份排程、保留原則及包含/排除的檔案清單。 此原則現在已經過認可，適合用於 Azure 備份。 套用新建立的原則之前，請確定沒有任何現有的備份原則與伺服器相關聯，方法是使用[OBPolicy](https://technet.microsoft.com/library/hh770415) Cmdlet。 移除原則時，系統會提示確認。 若要略過確認，請使用 `-Confirm:$false` 旗標搭配 Cmdlet。
+現在原則物件已完成，且具有關聯的備份排程、保留原則及包含/排除的檔案清單。 此原則現在已經過認可，適合用於 Azure 備份。 套用新建立的原則之前，請確定沒有任何現有的備份原則與伺服器相關聯，方法是使用[OBPolicy](https://docs.microsoft.com/powershell/module/msonlinebackup/remove-obpolicy?view=winserver2012-ps) Cmdlet。 移除原則時，系統會提示確認。 若要略過確認，請使用 `-Confirm:$false` 旗標搭配 Cmdlet。
 
 ```powershell
 Get-OBPolicy | Remove-OBPolicy
@@ -443,7 +443,7 @@ Get-OBPolicy | Remove-OBPolicy
 Microsoft Azure Backup Are you sure you want to remove this backup policy? This will delete all the backed up data. [Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "Y"):
 ```
 
-若要認可原則物件已完成，請使用 [Set-OBPolicy](https://technet.microsoft.com/library/hh770421) Cmdlet。 系統將提示您進行確認。 若要略過確認，請使用 `-Confirm:$false` 旗標搭配 Cmdlet。
+若要認可原則物件已完成，請使用 [Set-OBPolicy](https://docs.microsoft.com/powershell/module/msonlinebackup/set-obpolicy?view=winserver2012-ps) Cmdlet。 系統將提示您進行確認。 若要略過確認，請使用 `-Confirm:$false` 旗標搭配 Cmdlet。
 
 ```powershell
 Set-OBPolicy -Policy $NewPolicy
@@ -491,7 +491,7 @@ RetentionPolicy : Retention Days : 7
 State : Existing PolicyState : Valid
 ```
 
-您可以使用 [Get-OBPolicy](https://technet.microsoft.com/library/hh770406) Cmdlet 來檢視現有備份原則的詳細資料。 您可以使用 [Get-OBSchedule](https://technet.microsoft.com/library/hh770423) Cmdlet (適用於備份排程) 和 [Get-OBRetentionPolicy](https://technet.microsoft.com/library/hh770427) Cmdlet (適用於保留原則) 進一步向下鑽研
+您可以使用 [Get-OBPolicy](https://docs.microsoft.com/powershell/module/msonlinebackup/get-obpolicy?view=winserver2012-ps) Cmdlet 來檢視現有備份原則的詳細資料。 您可以使用 [Get-OBSchedule](https://docs.microsoft.com/powershell/module/msonlinebackup/get-obschedule?view=winserver2012-ps) Cmdlet (適用於備份排程) 和 [Get-OBRetentionPolicy](https://docs.microsoft.com/powershell/module/msonlinebackup/get-obretentionpolicy?view=winserver2012-ps) Cmdlet (適用於保留原則) 進一步向下鑽研
 
 ```powershell
 Get-OBPolicy | Get-OBSchedule
@@ -546,7 +546,7 @@ IsRecursive : True
 
 ### <a name="performing-an-on-demand-backup"></a>執行隨選備份
 
-一旦設定備份原則之後，就會依排程進行備份。 也可以使用[start-obbackup 來](https://technet.microsoft.com/library/hh770426)Cmdlet 來觸發隨選備份：
+一旦設定備份原則之後，就會依排程進行備份。 也可以使用[start-obbackup 來](https://docs.microsoft.com/powershell/module/msonlinebackup/start-obbackup?view=winserver2012-ps)Cmdlet 來觸發隨選備份：
 
 ```powershell
 Get-OBPolicy | Start-OBBackup
@@ -576,7 +576,7 @@ The backup operation completed successfully.
 
 ### <a name="picking-the-source-volume"></a>挑選來源磁碟區
 
-若要從 Azure 備份還原項目，您必須先識別項目的來源。 我們在 Windows Server 或 Windows 用戶端的內容中執行命令，則已經識別電腦。 找出來源的下一步是識別包含它的磁碟區。 執行 [Get-OBRecoverableSource](https://technet.microsoft.com/library/hh770410) Cmdlet 可以擷取一份這部電腦所備份磁碟區或來源清單。 此命令會傳回這部伺服器/用戶端備份的所有來源陣列。
+若要從 Azure 備份還原項目，您必須先識別項目的來源。 我們在 Windows Server 或 Windows 用戶端的內容中執行命令，則已經識別電腦。 找出來源的下一步是識別包含它的磁碟區。 執行 [Get-OBRecoverableSource](https://docs.microsoft.com/powershell/module/msonlinebackup/get-obrecoverablesource?view=winserver2012-ps) Cmdlet 可以擷取一份這部電腦所備份磁碟區或來源清單。 此命令會傳回這部伺服器/用戶端備份的所有來源陣列。
 
 ```powershell
 $Source = Get-OBRecoverableSource
@@ -595,7 +595,7 @@ ServerName : myserver.microsoft.com
 
 ### <a name="choosing-a-backup-point-from-which-to-restore"></a>選擇要從中還原的備份點
 
-您可以執行 [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) Cmdlet 並搭配適當參數來擷取備份點清單。 在我們的範例中，我們會選擇來源磁片區*C：* 的最新備份點，並使用它來復原特定檔案。
+您可以執行 [Get-OBRecoverableItem](https://docs.microsoft.com/powershell/module/msonlinebackup/get-obrecoverableitem?view=winserver2012-ps) Cmdlet 並搭配適當參數來擷取備份點清單。 在我們的範例中，我們會選擇來源磁片區*C：* 的最新備份點，並使用它來復原特定檔案。
 
 ```powershell
 $Rps = Get-OBRecoverableItem $Source[0]
@@ -654,13 +654,13 @@ ItemLastModifiedTime : 21-Jun-14 6:43:02 AM
 
 ### <a name="triggering-the-restore-process"></a>觸發還原程序
 
-為了觸發還原程序，我們首先需要指定復原選項。 使用 [New-OBRecoveryOption](https://technet.microsoft.com/library/hh770417.aspx) Cmdlet 可以完成這項工作。 在此範例中，假設我們想要將檔案還原至*C：\temp*。我們也假設我們想要略過已經存在於目的地資料夾*C：\temp*上的檔案。若要建立這種修復選項，請使用下列命令：
+為了觸發還原程序，我們首先需要指定復原選項。 使用 [New-OBRecoveryOption](https://docs.microsoft.com/powershell/module/msonlinebackup/new-obrecoveryoption?view=winserver2012-ps) Cmdlet 可以完成這項工作。 在此範例中，假設我們想要將檔案還原至*C：\temp*。我們也假設我們想要略過已經存在於目的地資料夾*C：\temp*上的檔案。若要建立這種修復選項，請使用下列命令：
 
 ```powershell
 $RecoveryOption = New-OBRecoveryOption -DestinationPath "C:\temp" -OverwriteType Skip
 ```
 
-現在，從 [ Cmdlet 的輸出，在選取的 ](https://technet.microsoft.com/library/hh770402.aspx) 上使用 `$Item`Start-OBRecovery`Get-OBRecoverableItem` 命令來觸發還原程序：
+現在，從 [ Cmdlet 的輸出，在選取的 ](https://docs.microsoft.com/powershell/module/msonlinebackup/start-obrecovery?view=winserver2012-ps) 上使用 `$Item`Start-OBRecovery`Get-OBRecoverableItem` 命令來觸發還原程序：
 
 ```powershell
 Start-OBRecovery -RecoverableItem $Item -RecoveryOption $RecoveryOption

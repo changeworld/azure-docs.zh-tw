@@ -3,7 +3,7 @@ title: 將您的 Azure Stack 虛擬機器上架到 Azure Sentinel |Microsoft Doc
 description: 本文說明如何在 Azure Stack 虛擬機器上布建 Azure 監視器、更新和設定管理虛擬機器擴充功能，並使用 Sentinel 開始監視它們。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: fb306ec3f8abe2eedb97f83d01836745779db914
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.author: yelevin
+ms.openlocfilehash: a8213bd57936f95870324950204dbd6c1473739a
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240764"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588513"
 ---
 # <a name="connect-azure-stack-virtual-machines-to-azure-sentinel"></a>將 Azure Stack 虛擬機器連接到 Azure Sentinel
 
@@ -37,7 +37,7 @@ ms.locfileid: "71240764"
 1. 在新的瀏覽器索引標籤中，登入您的[Azure Stack 入口網站](https://docs.microsoft.com/azure-stack/user/azure-stack-use-portal#access-the-portal)。
 2. 移至 [**虛擬機器**] 頁面，選取您想要使用 Azure Sentinel 保護的虛擬機器。 如需如何在 Azure Stack 上建立虛擬機器的相關資訊，請參閱使用[Azure Stack 入口網站建立 Windows SERVER vm](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-windows-portal)或[使用 Azure Stack 入口網站建立 Linux 伺服器 vm](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-linux-portal)。
 3. 選取 [擴充功能]。 此時會列出安裝在此虛擬機器上的虛擬機器擴充功能。
-4. 按一下 [新增] 索引標籤。[新增資源] 功能表刀鋒視窗隨即開啟，並顯示可用的虛擬機器擴充功能清單。 
+4. 按一下 [**新增**] 索引標籤。[**新增資源**功能表] 分頁隨即開啟，並顯示可用的虛擬機器擴充功能清單。 
 5. 選取 [ **Azure 監視器]、[更新] 和**[設定管理] 延伸模組，然後按一下 [**建立**]。 [**安裝延伸**模組設定] 視窗隨即開啟。
 
    ![Azure 監視器、更新和設定管理設定](./media/connect-azure-stack/azure-monitor-extension-fix.png)  
@@ -68,6 +68,6 @@ ms.locfileid: "71240764"
 ## <a name="next-steps"></a>後續步驟
 
 若要深入了解 Azure Sentinel，請參閱下列文章：
-- 瞭解如何[查看您的資料和潛在威脅](quickstart-get-visibility.md)。
+- 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
 - 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats-built-in.md)。
-- 將[常見錯誤格式設備](connect-common-event-format.md)的資料串流至 Azure Sentinel。
+- 從[常見的錯誤格式設備](connect-common-event-format.md)將資料串流至 Azure Sentinel。

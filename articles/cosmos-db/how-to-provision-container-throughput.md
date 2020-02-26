@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: mjbrown
-ms.openlocfilehash: bfd18a009ed9ab5edffafcd0327b1d846cae02d8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 6d163609d505516514f078e5d5374c20b5a24e89
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75643843"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585578"
 ---
 # <a name="provision-throughput-on-an-azure-cosmos-container"></a>在 Azure Cosmos 容器上佈建輸送量
 
 本文說明如何在 Azure Cosmos DB 中佈建容器 (集合、圖表或資料表) 的輸送量。 您可以佈建單一容器的輸送量，或[佈建資料庫的輸送量](how-to-provision-database-throughput.md)，並在資料庫內的容器之間共用。 您可以使用 Azure 入口網站、Azure CLI 或 Azure CosmosDB SDK 來佈建容器的輸送量。
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Azure 入口網站
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
@@ -64,7 +64,8 @@ await client.CreateDocumentCollectionAsync(
 ```
 
 ### <a name="net-v3-sdk"></a>.Net V3 SDK
-[!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/ContainerDocsSampleCode.cs?name=ContainerCreateWithThroughput)]
+
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/ContainerDocsSampleCode.cs" id="ContainerCreateWithThroughput":::
 
 ## <a name="javascript-sdk"></a>JavaScript SDK
 

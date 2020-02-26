@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 226611bde6024f98ce6d3660fe18e66dba9a420c
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: b10433190ccc7703938bed2a75a5d816f073295e
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493692"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587255"
 ---
 # <a name="lsv2-series"></a>Lsv2 系列
 
@@ -23,7 +23,7 @@ Lsv2 系列以在全核心加速為 2.55GHz 且最大加速為 3.0GHz 之 [AMD E
 >
 > 本機磁片的高輸送量和 IOPs 讓 Lsv2 系列 Vm 適用于 NoSQL 存放區（例如 Apache Cassandra 和 MongoDB），其會將資料複寫到多個 Vm，以在單一 VM 失敗時達到持續性。
 >
-> 若要深入瞭解，請參閱[Lsv2 系列虛擬機器上的效能優化](/linux/storage-performance.md)。  
+> 若要深入瞭解，請參閱在適用于[Windows](../virtual-machines/windows/storage-performance.md)或[Linux](../virtual-machines/linux/storage-performance.md)的 Lsv2 系列虛擬機器上優化效能。  
 
 ACU：150-175
 

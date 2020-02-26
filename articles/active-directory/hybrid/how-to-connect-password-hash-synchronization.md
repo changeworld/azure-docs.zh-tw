@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3a76b06c08d670cfb3ab0757e8c46dac0988c5f
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 405b2fb9d9b8ef3bce17a9370ac87592a3437026
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025175"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585946"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步來實作密碼雜湊同步處理
 本文提供您所需資訊，以讓您將使用者密碼從內部部署 Active Directory 執行個體同步處理至雲端式 Azure Active Directory (Azure AD) 執行個體。
@@ -99,14 +99,15 @@ Active Directory 網域服務是以使用者實際密碼的雜湊值表示法格
 
 
 若要啟用 EnforceCloudPasswordPolicyForPasswordSyncedUsers 功能，請使用 MSOnline PowerShell 模組執行下列命令，如下所示。 您必須為 Enable 參數輸入 yes，如下所示：
+
 ```
-`Set-MsolDirSyncFeature -Feature EnforceCloudPasswordPolicyForPasswordSyncedUsers`
-`cmdlet Set-MsolDirSyncFeature at command pipeline position 1`
-`Supply values for the following parameters:`
-`Enable: yes`
-`Confirm`
-`Continue with this operation?`
-`[Y] Yes [N] No [S] Suspend [?] Help (default is "Y"): y`
+Set-MsolDirSyncFeature -Feature EnforceCloudPasswordPolicyForPasswordSyncedUsers
+cmdlet Set-MsolDirSyncFeature at command pipeline position 1
+Supply values for the following parameters:
+Enable: yes
+Confirm
+Continue with this operation?
+[Y] Yes [N] No [S] Suspend [?] Help (default is "Y"): y
 ```
 
 啟用之後，Azure AD 不會移至每個已同步處理的使用者，從 PasswordPolicies 屬性中移除 `DisablePasswordExpiration` 值。 相反地，當每位使用者下次在內部部署 AD 中變更其密碼時，此值會設定為 `None` 在下一個密碼同步處理期間。  

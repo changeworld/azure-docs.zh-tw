@@ -3,12 +3,12 @@ title: MARS 代理程式的支援矩陣
 description: 本文摘要說明當您備份執行 Microsoft Azure 復原服務（MARS）代理程式的電腦時的 Azure 備份支援。
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8f5ce33b5057b11caa33c0ae80cf72e1b13da5d0
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: ef57688dd7b5ccee4e71ac0a54138ac567320aa2
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425012"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582631"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>使用 Microsoft Azure 復原服務 (MARS) 代理程式進行備份的支援矩陣
 
@@ -66,6 +66,29 @@ MARS 伺服器需要存取這些 URL：
 - 40.126.0.0/18
 
 對上述所有 Url 和 IP 位址的存取，都會使用埠443上的 HTTPS 通訊協定。
+
+### <a name="azure-expressroute-support"></a>Azure ExpressRoute 支援
+
+您可以使用公用對等互連（適用于舊的線路）和 Microsoft 對等互連，透過 Azure ExpressRoute 來備份您的資料。 不支援透過私用對等互連進行備份。
+
+使用公用對等互連：請確認存取下列網域/位址：
+
+- `http://www.msftncsi.com/ncsi.txt`
+- `microsoft.com`
+- `.WindowsAzure.com`
+- `.microsoftonline.com`
+- `.windows.net`
+
+透過 Microsoft 對等互連，請選取下列服務/區域和相關的「社區」值：
+
+- Azure Active Directory （12076:5060）
+- Microsoft Azure 區域（根據復原服務保存庫的位置）
+- Azure 儲存體（根據您的復原服務保存庫的位置）
+
+如需詳細資訊，請參閱[ExpressRoute 路由需求](https://docs.microsoft.com/azure/expressroute/expressroute-routing)。
+
+>[!NOTE]
+>新線路的公用對等互連已被取代。
 
 ### <a name="throttling-support"></a>節流支援
 

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure NetApp Files （SMB）在 Windows 上進行 SAP NetWeaver 的 Azure 虛擬機器高可用性 |Microsoft Docs
+title: 使用 Azure NetApp Files （SMB）在 Windows 上進行 SAP NW 的 azure Vm HA |Microsoft Docs
 description: 使用適用于 SAP 應用程式的 Azure NetApp Files （SMB）在 Windows 上的 Azure Vm 上進行 SAP NetWeaver 的高可用性
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: radeltch
-ms.openlocfilehash: d7c2bfbe3f277bbaf652191977434ea5fe4dbffd
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: b41db629c5308348f632b3dc51c75822ba361c60
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555304"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591348"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>使用適用于 SAP 應用程式的 Azure NetApp Files （SMB）在 Windows 上的 Azure Vm 上進行 SAP NetWeaver 的高可用性
 

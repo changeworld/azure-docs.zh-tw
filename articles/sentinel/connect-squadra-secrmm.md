@@ -2,7 +2,7 @@
 title: 將 Squadra 技術 secRMM 資料連線到 Azure Sentinel |Microsoft Docs
 description: 瞭解如何將 Squadra 技術 secRMM 資料連線到 Azure Sentinel。
 services: sentinel
-author: rkarlin
+author: yelevin
 editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/20/2020
-ms.author: rkarlin
-ms.openlocfilehash: 1e35cd4a5b27b87fd5a022c5e798f4590b0bba1c
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.author: yelevin
+ms.openlocfilehash: d904e51321870fb4b61a237c23e425034b76dc0b
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501234"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588105"
 ---
 # <a name="connect-your-squadra-technologies-secrmm-data-to-azure-sentinel"></a>將您的 Squadra 技術 secRMM 資料連線到 Azure Sentinel 
 

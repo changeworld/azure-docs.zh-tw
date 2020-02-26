@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 02/24/2020
 ms.author: jgao
-ms.openlocfilehash: d8212fb55b20f051c6479071010ef4f828792baa
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 19ef5a08b66b8d1a09ddf9a6b73a3856f745485d
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561148"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586701"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>在範本中使用部署腳本（預覽）
 
@@ -42,7 +42,12 @@ ms.locfileid: "77561148"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-- **使用者指派的受控識別，且在訂用帳戶層級上具有參與者角色**。 此身分識別會用來執行部署指令碼。 若要建立一個，請參閱使用 Azure 入口網站或[使用 Azure CLI](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)[建立使用者指派的受控識別](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)，或使用[Azure PowerShell](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)。 您在部署範本時將需要身分識別的識別碼。 此身分識別的格式為：
+- **使用者指派的受控識別，具有對目標資源群組的參與者角色**。 此身分識別會用來執行部署指令碼。 若要在資源群組外部執行作業，您必須授與其他許可權。 例如，如果您想要建立新的資源群組，請將身分識別指派給訂用帳戶層級。
+
+  > [!NOTE]
+  > 部署腳本引擎必須在背景中建立儲存體帳戶和容器實例。  如果訂用帳戶尚未註冊 Azure 儲存體帳戶（Microsoft 儲存體）和 Azure 容器實例（Microsoft.containerinstance）資源，則需要使用者指派的受控識別（在訂用帳戶層級具有參與者的角色）都會.
+
+  若要建立身分識別，請參閱使用 Azure 入口網站或[使用 Azure CLI](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)[建立使用者指派的受控識別](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)，或使用[Azure PowerShell](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)。 您在部署範本時將需要身分識別的識別碼。 此身分識別的格式為：
 
   ```json
   /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<IdentityID>
@@ -99,8 +104,7 @@ ms.locfileid: "77561148"
       Write-Output $output
       $DeploymentScriptOutputs = @{}
       $DeploymentScriptOutputs['text'] = $output
-    ",
-    "primaryScriptUri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
+    ", // or "primaryScriptUri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
     "supportingScriptUris":[],
     "timeout": "PT30M",
     "cleanupPreference": "OnSuccess",
@@ -208,6 +212,12 @@ reference('<ResourceName>').output.text
 [!code-json[](~/resourcemanager-templates/deployment-script/deploymentscript-basic-cli.json?range=1-44)]
 
 [jq](https://stedolan.github.io/jq/)是在上一個範例中使用。 它隨附容器映射。 請參閱[設定開發環境](#configure-development-environment)。
+
+## <a name="handle-non-terminating-errors"></a>處理非終止錯誤
+
+您可以使用部署腳本中的[ **$ErrorActionPreference**](/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-7#erroractionpreference
+)變數，控制 PowerShell 如何回應非終止錯誤。 部署腳本引擎不會設定/變更此值。  儘管您為 $ErrorActionPreference 設定的值，部署腳本會在腳本遇到錯誤時，將資源布建狀態設定為 [*失敗*]。
+
 
 ## <a name="debug-deployment-scripts"></a>Debug 部署腳本
 

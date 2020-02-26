@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2019
 ms.author: aschhab
-ms.openlocfilehash: 610c3aa486b48b2d29df48d98e93b37cfec4854c
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 548163f4c86f4df4d858b31afd95e0e4615f1696
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790385"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587493"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>將現有的 Azure 服務匯流排標準命名空間遷移至進階層
 之前，Azure 服務匯流排只會在標準層上提供命名空間。 命名空間是針對低輸送量和開發人員環境優化的多租使用者的設置。 進階層會針對每個命名空間提供專用資源，以獲得可預測的延遲，並以固定價格增加輸送量。 Premium 層已針對需要額外企業功能的高輸送量和生產環境進行優化。
@@ -32,7 +32,7 @@ ms.locfileid: "72790385"
 - 高階**命名空間**不應該有**任何實體**可讓遷移成功。 
 - 在遷移過程中，會將標準命名空間中的所有**實體** **複製**到 premium 命名空間。 
 - 在進階層上，遷移會**針對每個訊息單位支援1000個實體**。 若要識別您需要多少個訊息單位，請從您目前的標準命名空間上的實體數目開始。 
-- 您無法直接從**基本層**遷移至**頂級層**，但是您可以在下一個步驟中，從 [基本] 遷移至 [標準]，然後從 [標準] 到 [premium]，間接執行此動作。
+- 您無法直接從**基本層**遷移至進階層，但是您可以在下一個步驟中，從 [基本] 遷移至 [標準]，然後從 [標準] 到 [premium **]，間接**執行此動作。
 
 ## <a name="migration-steps"></a>移轉步驟
 某些條件會與遷移程式相關聯。 請熟悉下列步驟，以降低發生錯誤的可能性。 這些步驟概述了遷移程式，而逐步詳細資料會列在下列各節中。
@@ -118,7 +118,7 @@ ms.locfileid: "72790385"
     當遷移完成時，會出現 [確認] 頁面。
     ![交換器命名空間-成功][]
 
-## <a name="caveats"></a>需要注意的事項
+## <a name="caveats"></a>警示
 
 Azure 服務匯流排 Premium 層不支援 Azure 服務匯流排標準層所提供的部分功能。 這些是根據設計，因為進階層會針對可預測的輸送量和延遲提供專用資源。
 
@@ -176,7 +176,7 @@ Azure 服務匯流排 Premium 層不支援 Azure 服務匯流排標準層所提�
 az servicebus migration abort --resource-group $resourceGroup --name $standardNamespace
 ```
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>Azure 入口網站
 
 ![中止流程-中止同步處理][]
 ![中止流程-中止完成][]
@@ -190,7 +190,7 @@ az servicebus migration abort --resource-group $resourceGroup --name $standardNa
 >[!IMPORTANT]
 > 如果您決定中止遷移，請刪除您為遷移所布建的 premium 命名空間，這樣就不會向您收取資源的費用。
 
-#### <a name="i-dont-want-to-have-to-drain-the-messages-what-do-i-do"></a>我不想要清空訊息。 我該怎麼做？
+#### <a name="i-dont-want-to-have-to-drain-the-messages-what-do-i-do"></a>我不想要清空訊息。 該怎麼辦？
 
 可能是傳送者應用程式在進行遷移時，以及在認可遷移之前，送出了標準命名空間上的儲存體的訊息。
 

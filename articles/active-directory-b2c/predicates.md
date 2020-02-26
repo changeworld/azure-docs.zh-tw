@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/28/2019
+ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a09478bd2e32a1ab484b85fec33ae03878ebb10c
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 8e38f422189ce001063276ddc7c7f82b2acb5929
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951015"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585759"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predicates 與 PredicateValidations
 
@@ -42,16 +42,17 @@ ms.locfileid: "74951015"
 
 **Predicate** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 描述 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| 識別碼 | 是 | 要用於述詞的識別碼。 其他元素可以在原則中使用這個識別碼。 |
+| Id | 是 | 要用於述詞的識別碼。 其他元素可以在原則中使用這個識別碼。 |
 | 方法 | 是 | 要用於驗證的方法類型。 可能的值：**IsLengthRange**、**MatchesRegex**、**IncludesCharacters** 或 **IsDateRange**。 **IsLengthRange** 值可讓您檢查字串宣告值的長度是否位於所指定 Minimum 和 Maximum 參數的範圍內。 **MatchesRegex** 值會檢查字串宣告值是否符合規則運算式。 **IncludesCharacters** 值會檢查字串宣告值是否包含字元集。 **IsDateRange** 值會檢查日期宣告值是否介於所指定 Minimum 和 Maximum 參數的範圍之間。 |
+| HelpText | 否 | 檢查失敗時提供給使用者的錯誤訊息。 此字串可以使用[語言自訂](localization.md)進行當地語系化。 |
 
 **Predicate** 元素包含下列元素：
 
 | 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
-| UserHelpText | 1:1 | 檢查失敗時提供給使用者的錯誤訊息。 此字串可以使用[語言自訂](localization.md)進行當地語系化。 |
+| UserHelpText | 0:1 | 不再如果檢查失敗，則為使用者提供錯誤訊息。 |
 | 參數 | 1:1 | 適用於字串驗證方法類型的參數。 |
 
 **Parameters** 元素包含下列元素：
@@ -64,16 +65,15 @@ ms.locfileid: "74951015"
 
 | 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
-| 識別碼 | 1:1 | 參數的識別碼。 |
+| Id | 1:1 | 參數的識別碼。 |
 
 下列範例顯示 `IsLengthRange` 方法，以及可指定字串長度範圍的 `Minimum` 和 `Maximum` 參數：
 
 ```XML
-<Predicate Id="IsLengthBetween8And64" Method="IsLengthRange">
-  <UserHelpText>The password must be between 8 and 64 characters.</UserHelpText>
-    <Parameters>
-      <Parameter Id="Minimum">8</Parameter>
-      <Parameter Id="Maximum">64</Parameter>
+<Predicate Id="IsLengthBetween8And64" Method="IsLengthRange" HelpText="The password must be between 8 and 64 characters.">
+  <Parameters>
+    <Parameter Id="Minimum">8</Parameter>
+    <Parameter Id="Maximum">64</Parameter>
   </Parameters>
 </Predicate>
 ```
@@ -81,8 +81,7 @@ ms.locfileid: "74951015"
 下列範例顯示 `MatchesRegex` 方法，以及可指定規則運算式的 `RegularExpression` 參數：
 
 ```XML
-<Predicate Id="PIN" Method="MatchesRegex">
-  <UserHelpText>The password must be numbers only.</UserHelpText>
+<Predicate Id="PIN" Method="MatchesRegex" HelpText="The password must be numbers only.">
   <Parameters>
     <Parameter Id="RegularExpression">^[0-9]+$</Parameter>
   </Parameters>
@@ -92,15 +91,14 @@ ms.locfileid: "74951015"
 下列範例顯示 `IncludesCharacters` 方法，以及可指定字元集的 `CharacterSet` 參數：
 
 ```XML
-<Predicate Id="Lowercase" Method="IncludesCharacters">
-  <UserHelpText>a lowercase letter</UserHelpText>
+<Predicate Id="Lowercase" Method="IncludesCharacters" HelpText="a lowercase letter">
   <Parameters>
     <Parameter Id="CharacterSet">a-z</Parameter>
   </Parameters>
 </Predicate>
 ```
 
-下列範例顯示 `IsDateRange` 方法，以及可使用 `yyyy-MM-dd` 和 `Today` 格式來指定日期範圍的 `Minimum` 和 `Maximum` 參數。
+下列範例顯示 `IsDateRange` 方法，以及可使用 `Minimum` 和 `Maximum` 格式來指定日期範圍的 `yyyy-MM-dd` 和 `Today` 參數。
 
 ```XML
 <Predicate Id="DateRange" Method="IsDateRange" HelpText="The date must be between 1970-01-01 and today.">
@@ -143,9 +141,9 @@ ms.locfileid: "74951015"
 
 **PredicateValidation** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 描述 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| 識別碼 | 是 | 要用於述詞驗證的識別碼。 **ClaimType** 元素可以在原則中使用這個識別碼。 |
+| Id | 是 | 要用於述詞驗證的識別碼。 **ClaimType** 元素可以在原則中使用這個識別碼。 |
 
 **PredicateValidation** 元素包含下列元素：
 
@@ -161,22 +159,22 @@ ms.locfileid: "74951015"
 
 **PredicateGroup** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 描述 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| 識別碼 | 是 | 要用於述詞群組的識別碼。  |
+| Id | 是 | 要用於述詞群組的識別碼。  |
 
 **PredicateGroup** 元素包含下列元素：
 
 | 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
-| UserHelpText | 1:1 |  述詞的說明，有助於使用者了解他們應輸入的值。 |
+| UserHelpText | 0:1 |  述詞的說明，有助於使用者了解他們應輸入的值。 |
 | PredicateReferences | 1:n | 述詞參考清單。 |
 
 **PredicateReferences** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 描述 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| MatchAtLeast | 否 | 指定值至少必須符合許多述詞定義，以用於要接受的輸入。 |
+| MatchAtLeast | 否 | 指定值至少必須符合許多述詞定義，以用於要接受的輸入。 如果未指定，則值必須符合所有述詞定義。 |
 
 **PredicateReferences** 元素包含下列元素：
 
@@ -186,78 +184,70 @@ ms.locfileid: "74951015"
 
 **PredicateReference** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 描述 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| 識別碼 | 是 | 要用於述詞驗證的識別碼。  |
+| Id | 是 | 要用於述詞驗證的識別碼。  |
 
 
 ## <a name="configure-password-complexity"></a>設定密碼複雜度
 
 利用 **Predicates** 和 **PredicateValidationsInput**，您可以控制使用者在建立帳戶時所提供密碼的複雜度需求。 根據預設，Azure AD B2C 會使用強式密碼。 Azure AD B2C 也支援組態選項，可控制客戶可以使用的密碼複雜度。 您可以使用這些述詞元素來定義密碼複雜度：
 
-- 使用 `IsLengthRange` 方法的 **IsLengthBetween8And64**，驗證密碼長度必須介於 8 到 64 個字元之間。
-- 使用 `IncludesCharacters` 方法的 **Lowercase**，驗證密碼包含小寫字母。
-- 使用 `IncludesCharacters` 方法的 **Uppercase**，驗證密碼包含大寫字母。
-- 使用 `IncludesCharacters` 方法的 **Number**，驗證密碼包含數字。
+- 使用 **方法的**IsLengthBetween8And64`IsLengthRange`，驗證密碼長度必須介於 8 到 64 個字元之間。
+- 使用 **方法的**Lowercase`IncludesCharacters`，驗證密碼包含小寫字母。
+- 使用 **方法的**Uppercase`IncludesCharacters`，驗證密碼包含大寫字母。
+- 使用 **方法的**Number`IncludesCharacters`，驗證密碼包含數字。
 - **符號**：使用 `IncludesCharacters` 方法，會驗證密碼是否包含數個符號字元的其中一個。
-- 使用 `MatchesRegex` 方法的 **PIN**，驗證密碼只包含數字。
-- 使用 `MatchesRegex` 方法的 **AllowedAADCharacters**，驗證提供了只對密碼無效的字元。
-- 使用 `MatchesRegex` 方法的 **DisallowedWhitespace**，驗證密碼不是以空白字元開始或結尾。
+- 使用 **方法的**PIN`MatchesRegex`，驗證密碼只包含數字。
+- 使用 **方法的**AllowedAADCharacters`MatchesRegex`，驗證提供了只對密碼無效的字元。
+- 使用 **方法的**DisallowedWhitespace`MatchesRegex`，驗證密碼不是以空白字元開始或結尾。
 
 ```XML
 <Predicates>
-  <Predicate Id="IsLengthBetween8And64" Method="IsLengthRange">
-    <UserHelpText>The password must be between 8 and 64 characters.</UserHelpText>
+  <Predicate Id="IsLengthBetween8And64" Method="IsLengthRange" HelpText="The password must be between 8 and 64 characters.">
     <Parameters>
       <Parameter Id="Minimum">8</Parameter>
       <Parameter Id="Maximum">64</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="Lowercase" Method="IncludesCharacters">
-    <UserHelpText>a lowercase letter</UserHelpText>
+  <Predicate Id="Lowercase" Method="IncludesCharacters" HelpText="a lowercase letter">
     <Parameters>
       <Parameter Id="CharacterSet">a-z</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="Uppercase" Method="IncludesCharacters">
-    <UserHelpText>an uppercase letter</UserHelpText>
+  <Predicate Id="Uppercase" Method="IncludesCharacters" HelpText="an uppercase letter">
     <Parameters>
       <Parameter Id="CharacterSet">A-Z</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="Number" Method="IncludesCharacters">
-    <UserHelpText>a digit</UserHelpText>
+  <Predicate Id="Number" Method="IncludesCharacters" HelpText="a digit">
     <Parameters>
       <Parameter Id="CharacterSet">0-9</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="Symbol" Method="IncludesCharacters">
-    <UserHelpText>a symbol</UserHelpText>
+  <Predicate Id="Symbol" Method="IncludesCharacters" HelpText="a symbol">
     <Parameters>
       <Parameter Id="CharacterSet">@#$%^&amp;*\-_+=[]{}|\\:',.?/`~"();!</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="PIN" Method="MatchesRegex">
-    <UserHelpText>The password must be numbers only.</UserHelpText>
+  <Predicate Id="PIN" Method="MatchesRegex" HelpText="The password must be numbers only.">
     <Parameters>
       <Parameter Id="RegularExpression">^[0-9]+$</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="AllowedAADCharacters" Method="MatchesRegex">
-    <UserHelpText>An invalid character was provided.</UserHelpText>
+  <Predicate Id="AllowedAADCharacters" Method="MatchesRegex" HelpText="An invalid character was provided.">
     <Parameters>
       <Parameter Id="RegularExpression">(^([0-9A-Za-z\d@#$%^&amp;*\-_+=[\]{}|\\:',?/`~"();! ]|(\.(?!@)))+$)|(^$)</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="DisallowedWhitespace" Method="MatchesRegex">
-    <UserHelpText>The password must not begin or end with a whitespace character.</UserHelpText>
+  <Predicate Id="DisallowedWhitespace" Method="MatchesRegex" HelpText="The password must not begin or end with a whitespace character.">
     <Parameters>
       <Parameter Id="RegularExpression">(^\S.*\S$)|(^\S+$)|(^$)</Parameter>
     </Parameters>
@@ -357,12 +347,11 @@ ms.locfileid: "74951015"
 
 ## <a name="configure-a-date-range"></a>設定日期範圍
 
-利用 **Predicates** 和 **PredicateValidations** 元素，您可以使用 `DateTimeDropdown` 來控制 **UserInputType** 的最小和最大日期值。 若要這樣做，請使用 `IsDateRange` 方法來建立 **Predicate**，並提供 Minimum 和 Maximum 參數。
+利用 **Predicates** 和 **PredicateValidations** 元素，您可以使用 **來控制**UserInputType`DateTimeDropdown` 的最小和最大日期值。 若要這樣做，請使用 **方法來建立**Predicate`IsDateRange`，並提供 Minimum 和 Maximum 參數。
 
 ```XML
 <Predicates>
-  <Predicate Id="DateRange" Method="IsDateRange">
-    <UserHelpText>The date must be between 01-01-1980 and today.</UserHelpText>
+  <Predicate Id="DateRange" Method="IsDateRange" HelpText="The date must be between 01-01-1980 and today.">
     <Parameters>
       <Parameter Id="Minimum">1980-01-01</Parameter>
       <Parameter Id="Maximum">Today</Parameter>
@@ -371,7 +360,7 @@ ms.locfileid: "74951015"
 </Predicates>
 ```
 
-使用對 `DateRange` 述詞的參考來新增 **PredicateValidation**。
+使用對 **述詞的參考來新增**PredicateValidation`DateRange`。
 
 ```XML
 <PredicateValidations>

@@ -3,12 +3,12 @@ title: 使用復原服務保存庫的診斷設定
 description: 說明如何針對 Azure 備份使用舊的和新的診斷事件的文章
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 875adb82aeeb56b378a84ca01e716c7189abc64f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 7abf8873aafeb996476d818376057bfd8732d906
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74281099"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583940"
 ---
 # <a name="using-diagnostics-settings-for-recovery-services-vaults"></a>使用適用於復原服務保存庫的診斷設定
 
@@ -21,14 +21,15 @@ Azure 備份會傳送可收集的診斷事件，並用於分析、警示和報�
 ## <a name="diagnostics-events-available-for-azure-backup-users"></a>適用于 Azure 備份使用者的診斷事件
 
 Azure 備份提供下列診斷事件，其中每一個都會在一組特定的備份相關成品上提供詳細資料：
+
 * CoreAzureBackup
 * AddonAzureBackupAlerts
 * AddonAzureBackupProtectedInstance
 * AddonAzureBackupJobs
 * AddonAzureBackupPolicy
-* AddonAzureBackupStorage 
+* AddonAzureBackupStorage
 
-[Azure 備份診斷事件的資料模型](https://aka.ms/diagnosticsdatamodel)
+[Azure 備份診斷事件的資料模型](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)
 
 這些事件的資料可以傳送至儲存體帳戶、LA 工作區或事件中樞。 如果您要將此資料傳送至 LA 工作區，您需要在 [**診斷設定**] 畫面中選取**資源特定**的切換（請參閱下列各節中的詳細資訊）。
 
@@ -37,11 +38,12 @@ Azure 備份提供下列診斷事件，其中每一個都會在一組特定的�
 與 Azure Log Analytics 藍圖一致，Azure 備份現在可讓您將保存庫診斷資料傳送至專用的 LA 資料表以進行備份。 這些稱為[資源特有的資料表](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#resource-specific)。
 
 若要將您的保存庫診斷資料傳送至 LA：
+
 1.  流覽至您的保存庫，然後按一下 [**診斷設定**]。 按一下 [ **+ 新增診斷設定**]。
 2.  為 [診斷] 設定指定名稱。
 3.  勾選 [**傳送至 Log analytics** ] 方塊，然後選取 Log Analytics 工作區。
 4.  選取切換中的 [資源] [**特定**]，並檢查下列六個事件： **CoreAzureBackup**、 **AddonAzureBackupAlerts**、 **AddonAzureBackupProtectedInstance**、 **AddonAzureBackupJobs**、 **AddonAzureBackupPolicy**和**AddonAzureBackupStorage**。
-5.  按一下 [儲存]。
+5.  按一下 [ **儲存**]。
 
 ![資源特定模式](./media/backup-azure-diagnostics-events/resource-specific-blade.png)
 
@@ -84,4 +86,4 @@ Azure 備份和 Azure Site Recovery 事件會從相同的復原服務保存庫�
 
 ## <a name="next-steps"></a>後續步驟
 
-[瞭解診斷事件的 Log Analytics 資料模型](https://aka.ms/diagnosticsdatamodel)
+[瞭解診斷事件的 Log Analytics 資料模型](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)

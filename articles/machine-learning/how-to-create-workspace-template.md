@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 11/04/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: b3e4ff60ab290d25afb003f0753cf852cefffe1a
-ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
+ms.openlocfilehash: 75297f15dbc0067767d97afd7c8aa16738f2fc1a
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77069552"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77581305"
 ---
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 <br>
@@ -63,9 +63,11 @@ ms.locfileid: "77069552"
     其他服務的名稱會隨機產生。
 
 > [!TIP]
-> 雖然與此檔相關聯的範本會建立新的 Azure Container Registry，但您也可以建立新的工作區，而不需要建立容器登錄。 如果工作區中有容器登錄，則當您執行需要容器登錄的作業時，將會建立一個。 例如，定型或部署模型。
+> 雖然與此檔相關聯的範本會建立新的 Azure Container Registry，但您也可以建立新的工作區，而不需要建立容器登錄。 當您執行需要 container registry 的作業時，將會建立一個。 例如，定型或部署模型。
 >
 > 您也可以在 [Azure Resource Manager] 範本中參考現有的容器登錄或儲存體帳戶，而不是建立一個新的。
+
+[!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
 如需範本的詳細資訊，請參閱下列文章：
 

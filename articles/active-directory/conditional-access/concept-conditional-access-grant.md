@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb098363a6f1b27bd8afa8e68ab14bfa666ea539
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: e5df7eedcd92d338d3f741f7092ff6ef73f3442d
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561641"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585878"
 ---
 # <a name="conditional-access-grant"></a>條件式存取：授與
 
@@ -65,7 +65,7 @@ Intune （適用于任何裝置作業系統）或協力廠商 MDM 系統（適�
 
 ### <a name="require-approved-client-app"></a>需要已核准的用戶端應用程式
 
-組織可能需要從已核准的用戶端應用程式，對所選雲端應用程式的存取嘗試進行存取。 這些已核准的用戶端 ap 支援與任何行動裝置管理（MDM）解決方案無關的[Intune 應用程式保護原則](/intune/app-protection-policy)。
+組織可能需要從已核准的用戶端應用程式，對所選雲端應用程式的存取嘗試進行存取。 這些已核准的用戶端應用程式支援與任何行動裝置管理（MDM）解決方案無關的[Intune 應用程式保護原則](/intune/app-protection-policy)。
 
 此設定適用於下列用戶端應用程式：
 

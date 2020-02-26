@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 09c704237e3c1fde8a7591d610d1b801dd016c46
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7ccc5fe314d49ea65aaa8750937170ab79a8c04f
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76836648"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77581458"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>在 Azure AD B2C 中註冊 SAML 應用程式
 
@@ -38,12 +38,12 @@ Azure AD B2C 利用下列兩種方式的其中一種來達到 SAML 互通性：
 
 使用 SAML 摘要說明兩個非專屬的核心案例：
 
-| 案例 | Azure AD B2C 角色 | 操作說明 |
+| 狀況 | Azure AD B2C 角色 | 操作方式 |
 | -------- | ----------------- | ------- |
 | 我的應用程式預期 SAML 判斷提示會完成驗證。 | **Azure AD B2C 作為身分識別提供者（IdP）**<br />Azure AD B2C 會作為應用程式的 SAML IdP。 | 本文。 |
 | 我的使用者必須使用與 SAML 相容的身分識別提供者（例如 ADFS、Salesforce 或 Shibboleth）進行單一登入。  | **Azure AD B2C 會作為服務提供者（SP）**<br />當連接到 SAML 識別提供者時，Azure AD B2C 會作為服務提供者。 這是您的應用程式與 SAML 識別提供者之間的同盟 proxy。  | <ul><li>[使用自訂原則，設定以 ADFS 作為 SAML IdP 的登入](identity-provider-adfs2016-custom.md)</li><li>[使用自訂原則來設定使用 Salesforce SAML 提供者進行登入](identity-provider-salesforce-custom.md)</li></ul> |
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 完成在 Azure AD B2C 中[開始使用自訂原則](custom-policy-get-started.md)中的步驟。 您需要從文章中討論的自訂原則入門套件中的*SocialAndLocalAccounts*自訂原則。
 * 安全性聲明標記語言（SAML）通訊協定的基本瞭解。
@@ -259,7 +259,7 @@ Azure AD B2C 利用下列兩種方式的其中一種來達到 SAML 互通性：
 
 儲存您的變更，並上傳新的原則檔案。 在您上傳這兩個原則（延伸模組和信賴憑證者檔案）之後，請開啟網頁瀏覽器並流覽至原則中繼資料。
 
-Azure AD B2C 的原則中繼資料可在下列 URL 取得。 以您 Azure AD B2C 的租使用者名稱取代 `tenant-name`，並以原則的名稱（ID）取代 `policy-name`：
+Azure AD B2C 原則 IDP 中繼資料是 SAML 通訊協定中用來公開 SAML 識別提供者設定的資訊。 中繼資料會定義服務的位置，例如，登入和登出、憑證、登入方法，以及其他項目。 Azure AD B2C 的原則中繼資料可在下列 URL 取得。 以您 Azure AD B2C 的租使用者名稱取代 `tenant-name`，並以原則的名稱（ID）取代 `policy-name`：
 
 `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
 

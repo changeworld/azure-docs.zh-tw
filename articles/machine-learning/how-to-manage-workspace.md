@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5a1d3753dfec673338bdde67656afd9c5f413ef0
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 4f31c5583671ed3441e1a3f0f53c8518e550080a
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137597"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77580713"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>建立和管理 Azure 入口網站中的 Azure Machine Learning 工作區
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -119,6 +119,12 @@ ms.locfileid: "77137597"
 
 > [!WARNING]
 > 不支援將您的 Azure Machine Learning 工作區移至不同的訂用帳戶，或將擁有的訂用帳戶移至新的租使用者。 這麼做可能會導致錯誤。
+
+### <a name="deleting-the-azure-container-registry"></a>刪除 Azure Container Registry
+
+Azure Machine Learning 工作區會使用 Azure Container Registry （ACR）進行某些作業。 當 ACR 實例第一次需要時，它會自動建立。
+
+[!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -3,12 +3,12 @@ title: 原則定義結構的詳細資料
 description: 說明如何使用原則定義來建立組織中 Azure 資源的慣例。
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: d30097badd3ab9ee5a328f17d0e3e91254a89185
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 1e90009a0c34bf166a18659a19988ea5a0c9ab07
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461997"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587119"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure 原則定義結構
 
@@ -328,7 +328,7 @@ Azure 原則會建立資源的慣例。 原則定義會描述資源合規性[條
 **value** 已和任何支援的 [condition](#conditions) 配對。
 
 > [!WARNING]
-> 如果_範本_函式的結果是錯誤，原則評估會失敗。 失敗的評估是隱含的**拒絕**。 如需詳細資訊，請參閱[避免範本失敗](#avoiding-template-failures)。
+> 如果「範本函式」的結果為錯誤，則原則評估會失敗。 失敗的評估隱含著**拒絕**的意思。 如需詳細資訊，請參閱[避免範本錯誤](#avoiding-template-failures)。 使用**DoNotEnforce**的[enforcementMode](./assignment-structure.md#enforcement-mode) ，以避免在測試和驗證新的原則定義時，對新的或更新的資源進行評估失敗的影響。
 
 #### <a name="value-examples"></a>Value 範例
 
@@ -372,7 +372,7 @@ Azure 原則會建立資源的慣例。 原則定義會描述資源合規性[條
 
 #### <a name="avoiding-template-failures"></a>避免範本失敗
 
-在**值**中_使用_樣板函式，可允許許多複雜的嵌套函數。 如果_範本_函式的結果是錯誤，原則評估會失敗。 失敗的評估是隱含的**拒絕**。 在某些情況下失敗的**值**範例：
+在**值**中_使用_樣板函式，可允許許多複雜的嵌套函數。 如果「範本函式」的結果為錯誤，則原則評估會失敗。 失敗的評估隱含著**拒絕**的意思。 在某些情況下失敗的**值**範例：
 
 ```json
 {
@@ -580,13 +580,22 @@ Azure 原則支援下列類型的效果：
 
 下列函式可在原則規則中使用，但與 Azure Resource Manager 範本中的用法不同：
 
-- addDays （dateTime，numberOfDaysToAdd）
+- `addDays(dateTime, numberOfDaysToAdd)`
   - **datetime**： [Required] 通用 ISO 8601 dateTime 格式 ' Yyyy-mm-dd ' ddTHH： MM： Ss. ss.fffffffz ' 中的 string 字串
   - **numberOfDaysToAdd**： [必要] 整數-要加入的天數
-- utcNow （）-與 Resource Manager 範本不同的是，這可以在 defaultValue 以外使用。
+- `utcNow()`-不同于 Resource Manager 範本，這可以在 defaultValue 以外使用。
   - 傳回設定為目前日期和時間的字串，其為通用 ISO 8601 DateTime 格式 ' yyyy-mm-dd ' ddTHH： MM： ss. Ss.fffffffz '
 
-此外，`field` 函式可用於原則規則。 `field` 主要是與 **AuditIfNotExists** 和 **DeployIfNotExists** 搭配使用，以參考所評估資源上的欄位。 如需此用法的範例，請參閱 [DeployIfNotExists 範例](effects.md#deployifnotexists-example)。
+下列函式僅適用于原則規則：
+
+- `field(fieldName)`
+  - **fieldName**： [必要] 字串-要抓取之[欄位](#fields)的名稱
+  - 傳回 If 條件所評估資源中該欄位的值。
+  - `field` 主要是與 **AuditIfNotExists** 和 **DeployIfNotExists** 搭配使用，以參考所評估資源上的欄位。 如需此用法的範例，請參閱 [DeployIfNotExists 範例](effects.md#deployifnotexists-example)。
+- `requestContext().apiVersion`
+  - 傳回觸發原則評估之要求的 API 版本（範例： `2019-09-01`）。 這會是在資源建立/更新評估的 PUT/PATCH 要求中所使用的 API 版本。 在對現有資源進行合規性評估時，一律會使用最新的 API 版本。
+  
+
 
 #### <a name="policy-function-example"></a>原則函式範例
 

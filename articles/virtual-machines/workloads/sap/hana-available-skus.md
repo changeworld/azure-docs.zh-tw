@@ -10,15 +10,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/03/2019
+ms.date: 02/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d5ed903eefea3a8c13bb9e43f5ef71063b453d93
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: f31d742dc78e16d4786216259a8fce5349152c63
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806638"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591246"
 ---
 # <a name="available-skus-for-hli"></a>HLI 可用的 SKU
 
@@ -55,6 +55,7 @@ ms.locfileid: "74806638"
 | 已針對 OLTP 最佳化：SAP Business Suite<br /> on SAP HANA 或 S/4HANA (OLTP)<br /> (一般 OLTP) | SAP HANA on Azure S72m<br /> – 2 x Intel® Xeon® Processor E7-8890 v3<br /> 36 個 CPU 核心和 72 個 CPU 執行緒 |  1.5 TB |  6 TB | 不再提供 |
 |---| SAP HANA on Azure S144m<br /> – 4 x Intel® Xeon® Processor E7-8890 v3<br /> 72 個 CPU 核心和 144 個 CPU 執行緒 |  3.0 TB |  12 TB | 不再提供 |
 |---| SAP HANA on Azure S192m<br /> – 4 x Intel® Xeon® Processor E7-8890 v4<br /> 96 個 CPU 核心和 192 個 CPU 執行緒  |  4.0 TB |  16 TB | 不再提供 |
+| --- | Azure S224m 上的 SAP Hana<br /> – 4 x Intel®，®白金8276處理器（也稱為 Cascade lake）<br /> 112 CPU 核心和 224 CPU 執行緒 |  6.0 TB |  10.5 TB | 適用于 Revision3 和 Revision4 戳記  |
 |---| SAP HANA on Azure S384m<br /> – 8 x Intel® Xeon® Processor E7-8890 v4<br /> 192 個 CPU 核心和 384 個 CPU 執行緒 |  6.0 TB |  18 TB | 適用于 Revision4 戳記|
 |---| SAP HANA on Azure S384xm<br /> – 8 x Intel® Xeon® Processor E7-8890 v4<br /> 192 個 CPU 核心和 384 個 CPU 執行緒 |  8.0 TB |  22 TB |  適用于 Revision4 戳記 |
 |---| SAP HANA on Azure S576m<br /> – 12 x Intel® Xeon® Processor E7-8890 v4<br /> 288 個 CPU 核心和 576 個 CPU 執行緒 |  12.0 TB |  28 TB | 適用于 Revision4 戳記|
@@ -90,7 +91,7 @@ ms.locfileid: "74806638"
 
 供應項目的硬體基底 (除了客戶專屬的大小調整專案單位) 已通過 SAP Hana TDI 認證。 兩種不同類別的硬體會將 SKU 分成：
 
-- S72、S72m、S96、S144、S144m、S192、S192m、S192xm 和 S224，稱為「類型 I 類別」的 Sku。
+- S72、S72m、S96、S144、S144m、S192、S192m、S192xm、S224 和 S224m，稱為「類型 I 類別」的 Sku。
 - S384、S384m、S384xm、S384xxm、S576m、S576xm S768m、S768xm 和 S960m，稱為「類型 II 類別」的 Sku。
 - 如果您有興趣使用 Optane 的其他 S224 Sku 供應專案，請洽詢您的 Microsoft 帳戶小組，以取得詳細資訊。 
 

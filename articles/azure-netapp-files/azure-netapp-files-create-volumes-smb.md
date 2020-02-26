@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: b-juche
-ms.openlocfilehash: c65da771dd483b3a79785d4bec2b89cbeefca5c4
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 7affd408ce2471f34a8362ba32101b639aafc514
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049893"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586595"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>建立適用於 Azure NetApp Files 的 SMB 磁碟區
 
@@ -70,7 +70,7 @@ Azure NetApp Files 支援 NFS 和 SMBv3 磁片區。 磁碟區的容量耗用量
 
 * 「Azure NetApp Files 委派的子網」必須能夠連線到網域中的所有 Active Directory Domain Services （新增）網域控制站，包括所有的本機和遠端網域控制站。 否則，可能會發生服務中斷。  
 
-    如果您有無法透過 Azure NetApp Files 委派子網連線的網域控制站，您可以提交 Azure 支援要求，將範圍從**全域**（預設值）變更為**site**。  Azure NetApp Files 只需要與 Azure NetApp Files 委派子網位址空間所在網站中的網域控制站進行通訊。
+    如果您有無法透過 Azure NetApp Files 委派子網連線的網域控制站，您可以在建立 Active Directory 連線期間指定 Active Directory 網站。  Azure NetApp Files 只需要與 Azure NetApp Files 委派子網位址空間所在網站中的網域控制站進行通訊。
 
     請參閱設計關於 AD 網站和服務[的網站拓撲](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology)。 
     
@@ -88,8 +88,10 @@ Azure NetApp Files 支援 NFS 和 SMBv3 磁片區。 磁碟區的容量耗用量
         這是 Active Directory 網域加入和 SMB 驗證作業所需的 DNS。 
     * **次要 DNS**   
         這是用來確保重複名稱服務的次要 DNS 伺服器。 
-    * **網域**  
+    * **AD DNS 功能變數名稱**  
         這是您想要加入之 Active Directory Domain Services 的功能變數名稱。
+    * **AD 網站名稱**  
+        這是網域控制站探索將受限於的網站名稱。
     * **SMB 伺服器（電腦帳戶）首碼**  
         這是 Active Directory 中，Azure NetApp Files 將用來建立新帳戶之電腦帳戶的命名前置詞。
 

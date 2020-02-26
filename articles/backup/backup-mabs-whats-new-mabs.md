@@ -3,12 +3,12 @@ title: Microsoft Azure 備份伺服器的新功能
 description: Microsoft Azure 備份伺服器可提供您經過強化的備份功能，讓您保護 VM、檔案和資料夾以及工作負載等項目。 了解如何安裝或升級為 Azure 備份伺服器 V3。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 564b11ebf14652166733c226485dfab94e69dfbb
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 61430ce06d3e441fcfe0443eaaf5de3755b04624
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172228"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582801"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server"></a>Microsoft Azure 備份伺服器的新功能
 
@@ -18,7 +18,7 @@ MABS V3 包含下列功能︰
 
 ## <a name="volume-to-volume-migration"></a>磁碟區對磁碟區移轉
 
-藉由 MABS V2 中的 Modern Backup Storage (MBS) 功能，我們已推出工作負載感知儲存體，您可以在其中設定特定工作負載，使其根據儲存體屬性來備份到特定儲存體。 不過，完成設定後，您可能會需要將特定資料來源的備份移至其他儲存體，以最佳化資源使用率。 MABS V3 可讓您在[三個步驟](https://blogs.technet.microsoft.com/dpm/2017/10/24/storage-migration-with-dpm-2016-mbs/)中遷移備份，並將其設定為儲存至不同的磁片區。
+藉由 MABS V2 中的 Modern Backup Storage (MBS) 功能，我們已推出工作負載感知儲存體，您可以在其中設定特定工作負載，使其根據儲存體屬性來備份到特定儲存體。 不過，完成設定後，您可能會需要將特定資料來源的備份移至其他儲存體，以最佳化資源使用率。 MABS V3 可讓您在[三個步驟](https://techcommunity.microsoft.com/t5/system-center-blog/sc-2016-dpm-ur4-migrate-backup-storage-in-3-simple-steps/ba-p/351842)中遷移備份，並將其設定為儲存至不同的磁片區。
 
 ## <a name="prevent-unexpected-data-loss"></a>避免非預期的資料遺失
 
