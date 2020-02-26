@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 01/09/2020
-ms.openlocfilehash: 32b3135f805cc6c68d8cd9d6fa2b6f957cd140ad
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
-ms.translationtype: MT
+ms.openlocfilehash: 7b6bd33346df9496c4c30353b68c11bdd7fad7a2
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444140"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486388"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning 的企業安全性
 
@@ -112,6 +112,7 @@ Azure Machine Learning 依賴其他 Azure 服務來計算資源。 計算資源 
 > [!IMPORTANT]
 > 如果您的工作區包含機密資料，建議您在建立工作區時設定[hbi_workspace 旗](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)標。 這會控制 Microsoft 針對診斷目的收集的資料量，並在 Microsoft 管理的環境中啟用額外的加密。
 
+如需 Azure 中待用加密運作方式的詳細資訊，請參閱[azure 待用資料加密](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)。
 
 #### <a name="azure-blob-storage"></a>Azure Blob 儲存體
 
@@ -189,7 +190,9 @@ Azure 容器實例不支援磁片加密。 如果您需要磁片加密，建議�
 
 每部虛擬機器也會有本機暫存磁片供 OS 作業使用。 如果您想要的話，可以使用磁片來暫存定型資料。 根據預設，如果工作區的 [`hbi_workspace`] 參數設定為 [`TRUE`]，則磁片會進行加密。 此環境只有在執行期間才會短暫存留，而且加密支援僅限於系統管理的金鑰。
 
-如需 Azure 中待用加密運作方式的詳細資訊，請參閱[azure 待用資料加密](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)。
+#### <a name="azure-databricks"></a>Azure Databricks
+
+Azure Databricks 可以在 Azure Machine Learning 管線中使用。 根據預設，Azure Databricks 使用的 Databricks 檔案系統（DBFS）會使用 Microsoft 管理的金鑰進行加密。 若要設定 Azure Databricks 使用客戶管理的金鑰，請參閱[在預設（root） DBFS 設定客戶管理的金鑰](/azure/databricks/security/customer-managed-keys-dbfs)。
 
 ### <a name="encryption-in-transit"></a>傳輸中加密
 
@@ -229,7 +232,7 @@ Microsoft 也建議您不要將敏感資訊（例如帳戶金鑰秘密）儲存�
 
 ### <a name="metrics"></a>度量
 
-您可以使用 Azure 監視器計量來查看和監視 Azure Machine Learning 工作區的計量。 在  [Azure 入口網站](https://portal.azure.com)中，選取您的工作區，然後選取 **計量**：
+您可以使用 Azure 監視器計量來查看和監視 Azure Machine Learning 工作區的計量。 在  [Azure 入口網站](https://portal.azure.com)中，選取您的工作區，然後選取 **計量**]：
 
 [![螢幕擷取畫面，其中顯示工作區的範例計量](media/concept-enterprise-security/workspace-metrics.png)](media/concept-enterprise-security/workspace-metrics-expanded.png#lightbox)
 
