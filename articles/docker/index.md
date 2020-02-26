@@ -10,12 +10,12 @@ ms.devlang: devops
 ms.topic: landing-page
 ms.date: 06/19/2017
 ms.author: gwallace
-ms.openlocfilehash: 33f18722c26decb117a476a9d3adb562a7a726ed
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 4f4849139f0e5c5a8672b9364f7acc03cff6c948
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610462"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605579"
 ---
 <div class="content">
    <h1>Azure 上的 Docker</h1>   
@@ -33,7 +33,7 @@ Docker 是常用的容器管理和映像處理平台，能讓您在 Linux 和 Wi
 <ol>
   <li><a href="/azure/app-service/containers/tutorial-python-postgresql-app">透過 Docker 建置 Python 和 PostgreSQL</a></li>
   <li><a href="/azure/container-service/container-service-docker-swarm-mode-setup-ci-cd-acs-engine">搭配 Docker Swarm 和 Azure DevOps Services 的 CI/CD</a></li>
-  <li><a href="/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd">整合 Docker、Jenkins 和 Linux VM</a></li>
+  <li><a href="/azure/jenkins/tutorial-jenkins-github-docker-cicd">整合 Docker、Jenkins 和 Linux VM</a></li>
 </ol>
 <h2>資源</h2>
 <p>如需運用 Azure 上的 Docker，請參閱其他參考資料與工具，連結如下。</p>

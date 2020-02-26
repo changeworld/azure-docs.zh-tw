@@ -12,8 +12,8 @@
     - name: 搭配 Docker Swarm 和 Azure DevOps 的 CI/CD
       href: /azure/container-service/container-service-docker-swarm-mode-setup-ci-cd-acs-engine
     - name: 搭配 Docker、Jenkins 和 Linux 的 CI/CD
-      href: /azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd
-- name: 使用說明指南
+      href: /azure/jenkins/tutorial-jenkins-github-docker-cicd
+- name: 操作指南
   items:
     - name: Docker VM 擴充功能
       href: /azure/virtual-machines/linux/dockerextension
