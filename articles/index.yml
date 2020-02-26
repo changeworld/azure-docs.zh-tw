@@ -13,12 +13,12 @@ metadata:
   ms.date: 02/24/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: 76f0570108a7e730d841b0fc0810e465b11cecdb
-  ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+  ms.openlocfilehash: 9615b3df4c48ef073413ce0ecdec93264a0b9711
+  ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 02/25/2020
-  ms.locfileid: "77598947"
+  ms.lasthandoff: 02/26/2020
+  ms.locfileid: "77622621"
 highlightedContent:
   items:
   - title: Azure 開發人員開始使用指南
@@ -484,7 +484,7 @@ productDirectory:
     - containers
     - mobile
     - web
-    url: app-service-mobile/index.md
+    url: app-service-mobile/index.yml
   - title: Azure 上的 SAP HANA 大型執行個體
     summary: 執行任何超大規模雲端提供者的最大 SAP HANA 工作負載
     imageSrc: https://static.docs.com/ui/media/product/azure/sap.svg

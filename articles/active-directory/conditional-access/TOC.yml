@@ -43,7 +43,7 @@
       href: location-condition.md
     - name: 假設工具
       href: what-if-tool.md
-    - name: 控制
+    - name: 自訂控制項
       href: controls.md
     - name: 傳統原則移轉
       href: policy-migration.md
