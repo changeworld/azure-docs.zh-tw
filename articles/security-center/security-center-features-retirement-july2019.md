@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: bb8cfae73d84135858733899e6441f564106e9d1
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 456f379e2b3c2ff411b196d45aef4663fddb0fe6
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997219"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604341"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>淘汰資訊安全中心功能（2019年7月）
 
@@ -156,7 +156,7 @@ Log Analytics 儀表板已在單一工作區上顯示深入解析。 不過，�
 
 - [新一代防火牆和 web 應用程式防火牆解決方案](https://docs.microsoft.com/azure/sentinel/connect-data-sources)
 - [整合支援通用事件格式（CEF）的安全性解決方案](https://docs.microsoft.com/azure/sentinel/connect-common-event-format)
-- [Microsoft 進階威脅分析](https://docs.microsoft.com/azure/sentinel/connect-azure-atp)
+- [Microsoft Advanced Threat Analytics](https://docs.microsoft.com/azure/sentinel/connect-azure-atp)
 - [Azure AD Identity Protection](https://docs.microsoft.com/azure/sentinel/connect-azure-ad-identity-protection)
 
 淘汰之後，您就無法從 UI 或 API 新增或修改前述清單中提及的任何解決方案類型。 Azure 資訊安全中心將不會再探索這些合作夥伴解決方案的任何新實例。

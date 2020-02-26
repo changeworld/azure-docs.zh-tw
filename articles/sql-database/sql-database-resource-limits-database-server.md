@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 11/19/2019
-ms.openlocfilehash: da8c194b7911d2eeda8e0c903cb7412186aacfcb
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: fa41649e002bd4845b95e787c1d0589ed1987588
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638250"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587238"
 ---
 # <a name="sql-database-resource-limits-and-resource-governance"></a>SQL Database 資源限制和資源管理
 
@@ -37,14 +37,14 @@ ms.locfileid: "75638250"
 | 每一伺服器的集區數目上限 | 受限於 DTU 或 vCore 數目。 例如，如果每個集區是 1000 DTU，則伺服器可以支援 54 集區。|
 |||
 
-> [!NOTE]
-> 若要取得更多 DTU/eDTU 配額、vCore 配額或超過預設數量的伺服器，可以在 Azure 入口網站中，針對具有問題類型「配額」的訂用帳戶提交新的支援要求。 每一伺服器的 DTU/eDTU 配額和資料庫限制，都限制每部伺服器的彈性集區數目。
-
 > [!IMPORTANT]
 > 每當資料庫數量接近每台 SQL Database 伺服器的限制時，可能會出現下列情況：
 >
 > - 使用 master 資料庫執行查詢時，延遲狀況增加。  這包含資源使用率統計資料的檢視，例如 sys.resource_stats。
 > - 管理作業以及涉及列舉伺服器中資料庫入口網站檢視點的轉譯作業，皆增加延遲狀況。
+
+> [!NOTE]
+> 若要取得更多 DTU/eDTU 配額、vCore 配額或超過預設數量的伺服器，請在 Azure 入口網站中提交新的支援要求。 如需詳細資訊，請參閱[Azure SQL Database 的要求配額增加](quota-increase-request.md)。
 
 ### <a name="storage-size"></a>儲存體大小
 

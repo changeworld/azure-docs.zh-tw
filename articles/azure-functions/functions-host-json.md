@@ -3,12 +3,12 @@ title: 適用於 Azure Functions 2.x 的 host.json 參考
 description: Azure Functions host.json 檔案與 v2 執行階段的參考文件。
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: b9c57378df1510179c5a45b6aa669bab804aca5e
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 949d4f2c5d8c1d8034ccc392915bc40f1f2fddda
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484429"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605129"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 和更新版本的 host. json 參考 
 
@@ -208,7 +208,7 @@ ms.locfileid: "77484429"
 
 ## <a name="cosmosdb"></a>cosmosDb
 
-可在 [Cosmos DB 觸發程序和繫結](functions-bindings-cosmosdb-v2.md#host-json)中找到組態設定。
+可在 [Cosmos DB 觸發程序和繫結](functions-bindings-cosmosdb-v2-output.md#host-json)中找到組態設定。
 
 ## <a name="durabletask"></a>durableTask
 
@@ -216,7 +216,7 @@ ms.locfileid: "77484429"
 
 ## <a name="eventhub"></a>eventHub
 
-可在[事件中樞觸發程序和繫結](functions-bindings-event-hubs.md#host-json)中找到組態設定。 
+可在[事件中樞觸發程序和繫結](functions-bindings-event-hubs-output.md#host-json)中找到組態設定。 
 
 ## <a name="extensions"></a>擴充功能
 

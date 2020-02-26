@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2019
 ms.author: memildin
-ms.openlocfilehash: cfa767a42800ceaf78fe007a8468fe9113a2d412
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: 4d65ca8d97e1cca81886259d4f15cc880e45be9c
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558776"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604284"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure 資訊安全中心的檔案完整性監視
 了解如何利用此逐步解說，在 Azure 資訊安全中心設定檔案完整性監視 (FIM)。
@@ -206,7 +206,6 @@ FIM 使用 Azure 變更追蹤解決方案來追蹤及識別您環境中的變更
 * [安全性健康狀態監視](security-center-monitoring.md) - 了解如何監視 Azure 資源的健康清況。
 * [管理及回應安全性警訊](security-center-managing-and-responding-alerts.md) - 了解如何管理及回應安全性警訊。
 * [監視合作夥伴解決方案](security-center-partner-solutions.md) - 了解如何監視合作夥伴解決方案的健全狀態。
-* [資訊安全中心常見問題集](security-center-faq.md) - 尋找有關使用服務的常見問題集。
 * [Azure 安全性部落格](https://blogs.msdn.com/b/azuresecurity/)-- 取得最新的 Azure 安全性新聞和資訊。
 
 <!--Image references-->

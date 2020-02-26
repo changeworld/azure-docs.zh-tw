@@ -3,7 +3,7 @@ title: 將 Cloud App Security 資料連線到 Azure Sentinel |Microsoft Docs
 description: 瞭解如何將 Cloud App Security 資料連線到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: 32e7e79465b68caca9a636019f65b9f08284fc72
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.author: yelevin
+ms.openlocfilehash: 348576fbbdd1037f9e2e792218b96bbbecf36668
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928224"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588360"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>從 Microsoft Cloud App Security 連接資料 
 
@@ -27,7 +27,7 @@ ms.locfileid: "73928224"
 
 您只要按一下，就可以將[Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security)的記錄串流至 Azure Sentinel。 此連接可讓您將 Cloud App Security 的警示串流至 Azure Sentinel。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 具有全域管理員或安全性系統管理員許可權的使用者
 - 若要將 Cloud Discovery 記錄串流至 Azure Sentinel，請[在 Microsoft Cloud App Security 中啟用 Azure Sentinel 作為您的 SIEM](https://aka.ms/AzureSentinelMCAS)。
@@ -47,7 +47,7 @@ ms.locfileid: "73928224"
 
 1. 選取您想要串流至 Azure Sentinel 的記錄檔，您可以選擇 [**警示**] 和 [ **Cloud Discovery 記錄**（預覽）]。 
 
-1. 按一下 [連接]。
+1. 按一下 [ **連接**]。
 
 1. 若要在 Log Analytics 中針對 Cloud App Security 警示使用相關的架構，請搜尋**SecurityAlert**。
 
@@ -56,5 +56,5 @@ ms.locfileid: "73928224"
 
 ## <a name="next-steps"></a>後續步驟
 在本檔中，您已瞭解如何將 Microsoft Cloud App Security 連接到 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
-- 瞭解如何[查看您的資料和潛在威脅](quickstart-get-visibility.md)。
+- 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
 - 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats.md)。

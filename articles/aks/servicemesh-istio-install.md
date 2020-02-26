@@ -2,17 +2,16 @@
 title: 在 Azure Kubernetes Service (AKS) 中安裝 Istio
 description: 了解如何在 Azure Kubernetes Service (AKS) 叢集中安裝和使用 Istio 以建立服務網格
 author: paulbouwer
-ms.service: container-service
 ms.topic: article
 ms.date: 02/19/2020
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 15b73380269c568977b524a63ca709e352485433
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 608eaaab9fb1e24b00d2aa2d4bfe393b5f17c9a1
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485211"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593928"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中安裝和使用 Istio
 

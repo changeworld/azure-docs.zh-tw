@@ -1,10 +1,10 @@
 ---
-title: 在 Azure 中的 Red Hat Enterprise Linux 上設定 Pacemaker | Microsoft Docs
+title: 在 Azure 中的 RHEL 上設定 Pacemaker |Microsoft Docs
 description: 在 Azure 中的 Red Hat Enterprise Linux 上設定 Pacemaker
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: mssedusch
-manager: timlt
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/17/2018
-ms.author: sedusch
-ms.openlocfilehash: 9ccbd67348a8dae7391471ccd1dcc1ba9b135ea2
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.author: radeltch
+ms.openlocfilehash: 21c551721815847eea4cb1435298ea6f7bf37966
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941833"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598794"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>在 Azure 中的 Red Hat Enterprise Linux 上設定 Pacemaker
 
@@ -200,7 +200,7 @@ ms.locfileid: "75941833"
 
 STONITH 裝置會使用服務主體來對 Microsoft Azure 授權。 請遵循下列步驟來建立服務主體。
 
-1. 前往 <https://portal.azure.com>
+1. 移至 <https://portal.azure.com>。
 1. 開啟 [Azure Active Directory] 刀鋒視窗  
    移至 [屬性]，並記下目錄識別碼。 這是「租用戶識別碼」。
 1. 按一下 [應用程式註冊]
@@ -243,14 +243,14 @@ STONITH 裝置會使用服務主體來對 Microsoft Azure 授權。 請遵循下
 
 將在上一章中建立的自訂角色「Linux 柵欄代理程式角色」指派給服務主體。 不要再使用「擁有者」角色！
 
-1. 前往 https://portal.azure.com
+1. 移至 https://portal.azure.com。
 1. 開啟 [所有資源] 刀鋒視窗
 1. 選取第一個叢集節點的虛擬機器
 1. 選取 [存取控制 (IAM)]
 1. 按一下 [新增角色指派]
 1. 選取「Linux 柵欄代理程式角色」角色
 1. 輸入您先前建立的應用程式名稱
-1. 按一下 [儲存]
+1. 按一下 [Save] \(儲存)。
 
 針對第二個叢集節點重複上述步驟。
 

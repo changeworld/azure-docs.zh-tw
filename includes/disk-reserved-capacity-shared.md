@@ -8,97 +8,95 @@ ms.topic: include
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 89586f932ee358664a2869c87ced72594336b404
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: cb959b94807678187363d3132ece273584f13a0a
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847130"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77590753"
 ---
-使用保留的容量來儲存您的 premium 固態硬碟（SSD）使用量，並結合保留的虛擬機器實例，您可以降低總 VM 成本。 保留折扣會自動套用至所選保留範圍中的相符磁片，您不需要將保留指派給受控磁片來取得折扣。 折扣會依磁片使用量每小時套用，而且任何未使用的保留容量也不會超過。 受控磁片保留折扣不適用於非受控磁片、ultra 磁片或分頁 blob 耗用量。
+使用保留容量節省 Azure 磁碟儲存體的使用量。 Azure 磁碟儲存體保留與 Azure 保留的虛擬機器執行個體結合，可讓您降低虛擬機器（VM）的總成本。 保留折扣會自動套用至所選保留範圍中的相符磁片。 由於此自動應用程式的原因，您不需要將保留指派給受控磁片來取得折扣。
+
+根據磁片使用量，會每小時套用一次折扣。 未使用的保留容量不會執行。 Azure 磁碟儲存體保留折扣不適用於非受控磁片、ultra 磁片或分頁 blob 耗用量。
 
 ## <a name="determine-your-storage-needs"></a>判斷您的儲存體需求
 
-購買保留之前，您應該決定您的儲存體需求為何。 目前，磁片保留僅適用于選取的 premium SSD Sku。 Premium SSD 的 SKU 會決定磁片的大小和效能。 在決定您的儲存體需求時，我們不建議您將磁片視為總容量，您無法將保留用於較大的磁片（例如 P40），並使用它來支付兩個較小的磁片（P30）。 購買保留時，您只會購買每個 SKU 的磁片總數。
+購買保留之前，請先決定您的儲存體需求。 目前，Azure 磁碟儲存體保留僅適用于選取的 Azure premium SSD Sku。 Premium SSD 的 SKU 會決定磁片的大小和效能。
 
-磁片保留是根據磁片 SKU 進行，因此保留耗用量是以磁片 Sku 的單位為基礎，而不是提供的大小。 例如，如果您保留1個 P40 2 TiB 布建容量，但只配置2個 P30 磁片，則兩個 P30 耗用量將不會考慮 P40 保留，而且您會支付隨用隨付費率。
+在判斷您的儲存體需求時，請不要只以容量為基礎來考慮磁片。 例如，您不能保留 P40 磁片，並使用它來支付兩個較小的 P30 磁片。 購買保留時，您只會針對每個 SKU 的磁片總數購買保留。
 
+磁片保留是根據磁片 SKU 來進行。 因此，保留耗用量是以磁片 Sku 的單位為基礎，而不是所提供的大小。
 
-
+例如，假設您保留一個 P40 磁片，其中有2個 TiB 的已布建儲存體容量。 也假設您只配置兩個 P30 磁片。 在此情況下，P40 保留區不會考慮 P30 的耗用量，而且您必須支付 P30 磁片的隨用隨付費率。
+<br/>
+<br/>
 [!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
 
 ## <a name="purchase-considerations"></a>購買考量
 
-考慮購買磁片保留時，建議您遵循下列最佳作法：
+考慮購買磁片保留時，建議您採用下列做法：
 
-- 分析您的使用量資訊，以協助判斷您應該購買的保留。 請確定您追蹤的是磁片 Sku 中的使用量，而不是已布建或已使用的磁片容量。 
-- 檢查您的磁片保留，以及您的 VM 保留專案。 我們強烈建議您為 VM 和磁片使用量進行保留，以達到最大儲存空間。 您可以從決定正確的 VM 保留開始著手，然後據以評估磁片保留。 一般而言，您會有每個工作負載的標準設定，例如，SQL server 可能會有兩個 P40 資料磁片和一個 P30 OS 磁片。 這種模式可協助您判斷可能購買的保留數量。 這種方法可以簡化評估程式，也請確定您在訂用帳戶、區域和其他方面都有對齊的 VM 和磁片計畫。 
+- 分析您的使用量資訊，以協助判斷您應該購買的保留。 請確定您追蹤的是磁片 Sku 中的使用量，而不是已布建或已使用的磁片容量。
+- 檢查您的磁片保留，以及您的 VM 保留專案。 我們強烈建議您為 VM 使用量和磁片使用量進行保留，以提供最大的節約。 您可以從判斷正確的 VM 保留開始，然後評估磁片保留。 一般來說，您會有每個工作負載的標準設定。 例如，SQL Server 的伺服器可能有兩個 P40 資料磁片和一個 P30 作業系統磁片。
+  
+  這種模式可協助您判斷可能購買的保留數量。 這種方法可以簡化評估程式，並確保您的 VM 和磁片都有對齊的計畫。 此方案包含訂用帳戶或區域等考慮。
 
 ## <a name="purchase-restrictions"></a>購買限制
 
-保留折扣目前不適用於下列磁片：
-- 非受控磁片/分頁 blob
-- 標準 SSD 或標準 HDD
-- 進階 SSD 的 Sku 小於 P30 –保留不適用於 P1/P2/P3/P4/P6/P10/P15/P20 進階 SSD Sku。
-- 雲端-保留無法在 Azure Gov、德國或中國地區購買。
-- 容量限制-在罕見的情況下，Azure 會限制購買磁片 Sku 子集的新保留，因為區域中的低容量。
+保留折扣目前無法供下列專案使用：
+
+- 非受控磁片或分頁 blob。
+- 標準 Ssd 或標準硬碟（Hdd）。
+- 進階 SSD 的 Sku 小於 P30： P1、P2、P3、P4、P6、P10、P15 和 P20 SSD Sku。
+- Azure Government、Azure 德國或 Azure 中國區域中的磁片。
+
+在罕見的情況下，Azure 會因為區域中的低容量，而將新的保留購買範圍限制為磁片 Sku 的子集。
 
 ## <a name="buy-a-disk-reservation"></a>購買磁片保留
 
-您可以透過[Azure 入口網站](https://portal.azure.com/)購買 Azure 磁片保留。 您可以事先或按月付款來支付保留期。 如需以每月付款購買的詳細資訊，請參閱[每月付款的購買保留](../articles/cost-management-billing/reservations/monthly-payments-reservations.md)。
+您可以透過[Azure 入口網站](https://portal.azure.com/)購買 Azure 磁碟儲存體保留。 您可以事先或按月付款來支付保留費用。 如需以每月付款購買的詳細資訊，請參閱[每月付款的購買保留](../articles/cost-management-billing/reservations/monthly-payments-reservations.md)。
 
 請遵循下列步驟來購買保留容量：
 
-1. 流覽至 Azure 入口網站中的 [[購買保留](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Browse_AddCommand)] 分頁。
+1. 移至 Azure 入口網站中的 [[購買保留](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Browse_AddCommand)] 窗格。
+
 1. 選取 [ **Azure 受控磁碟**] 以購買保留。
 
-    ![disks-reserved-purchase-reservation .png](media/disks-reserved-capacity/disks-reserved-purchase-reservation.png)    
+    ![購買保留的窗格](media/disks-reserved-capacity/disks-reserved-purchase-reservation.png) 
 
-1. 請填寫必填欄位，如下表中所述：
+1. 指定下表所述的必要值：
 
-   |欄位  |說明  |
+   |元素  |描述  |
    |---------|---------|
-   |**範圍**   |  指出有多少訂用帳戶可以使用與保留相關的計費權益。 它也會控制保留容量套用至特定訂用帳戶的方式。 <br/><br/> 如果您選取 [**共用**]，保留折扣會套用至計費內容內任何訂用帳戶中 Azure 儲存體容量。 計費內容取是以您註冊 Azure 的方式為基礎。 針對企業客戶，共用範圍是註冊，並包含註冊中的所有訂用帳戶。 對於隨用隨付客戶，共用範圍包含帳戶管理員所建立之隨用隨付費率的所有個別訂閱。  <br/><br/>  如果您選取 [**單一訂**用帳戶]，保留折扣會套用至所選訂用帳戶中 Azure 儲存體容量。 <br/><br/> 如果您選取 [**單一資源群組**]，保留折扣會套用至所選訂用帳戶中的 Azure 儲存體容量，以及該訂用帳戶內選取的資源群組。 <br/><br/> 購買保留區之後，您可以變更保留範圍。  |
-   |**訂用帳戶**  | 用來支付 Azure 儲存體保留的訂用帳戶。 所選訂用帳戶的付款條件會用於收費成本。 訂用帳戶必須是下列其中一種類型： <br/><br/>  Enterprise 合約（供應專案號碼： MS-AZR-0017P-Ms-azr-0017p 或 MS-AZR-0017P-Ms-azr-0148p）：若為企業訂用帳戶，費用會從註冊的承諾用量金額餘額扣除或作為超額部分收費。 <br/><br/> 使用隨用隨付費率的個別訂用帳戶（供應專案號碼： MS-AZR-0017P-Ms-azr-0003p 或 MS-MS-AZR-0017P-Ms-azr-0023p）：對於使用隨用隨付費率的個別訂用帳戶，費用會依訂用帳戶的信用卡或發票付款方法計費。    |
+   |**範圍**   |  有多少訂用帳戶可以使用與保留相關的計費權益。 這個值也會指定將保留套用至特定訂用帳戶的方式。 <br/><br/> 如果您選取 [**共用**]，保留折扣會套用至計費內容內每個訂用帳戶中 Azure 儲存體容量。 計費內容取是以您註冊 Azure 的方式為基礎。 針對企業客戶，共用範圍是註冊，並包含註冊中的所有訂用帳戶。 對於隨用隨付客戶，共用範圍包含帳戶管理員所建立之隨用隨付費率的所有個別訂閱。  <br/><br/>  如果您選取 [**單一訂**用帳戶]，保留折扣會套用至所選訂用帳戶中 Azure 儲存體容量。 <br/><br/> 如果您選取 [**單一資源群組**]，保留折扣會套用至所選訂用帳戶中的 Azure 儲存體容量，以及該訂用帳戶的選取資源群組。 <br/><br/> 購買保留區之後，您可以變更保留範圍。  |
+   |**訂用帳戶**  | 您用來支付 Azure 儲存體保留費用的訂用帳戶。 所選訂用帳戶的付款條件會用於收費成本。 訂用帳戶必須是下列其中一種類型：<br/><ul><li> Enterprise 合約（供應專案號碼 MS-AZR-0017P-Ms-azr-0017p 和 MS-MS-AZR-0017P-Ms-azr-0148p）。 針對 Enterprise 訂用帳戶，費用會從註冊的承諾用量金額餘額扣除或作為超額部分收費。</li><br/><li>使用隨用隨付費率的個別訂用帳戶（供應專案號碼 MS-AZR-0017P-Ms-azr-0003p 和 MS-MS-AZR-0017P-Ms-azr-0023p）。 針對使用隨用隨付費率的個別訂用帳戶，費用會依訂用帳戶的信用卡或發票付款方法計費。</li></ul>    |
    | **磁碟** | 您想要建立的 SKU。 |
    | **區域** | 保留作用中的區域。 |
-   | **計費頻率** | 指出帳戶收取保留費用的頻率。 選項包括 [*每月*] 或 [*提前*]。 |
+   | **計費頻率** | 帳戶收取保留費用的頻率。 選項包括 [**每月**] 和 [**提前**]。 |
 
-    ![premium-ssd-reserved-purchase-selection .png](media/disks-reserved-capacity/premium-ssd-reserved-purchase-selection.png)
+    ![選取您想要購買之產品的窗格。 png](media/disks-reserved-capacity/premium-ssd-reserved-purchase-selection.png)
 
-1. 在您選取保留的參數之後，Azure 入口網站會顯示成本。 入口網站也會顯示 [隨用隨付計費] 的折扣百分比。 選取 **[下一步]** 以繼續前往 [**購買保留**] 分頁。
+1. 在您指定保留的值之後，Azure 入口網站會顯示成本。 入口網站也會顯示 [隨用隨付計費] 的折扣百分比。 選取 **[下一步**] 以繼續前往 [**購買保留**] 窗格。
 
-1. 在 [**購買保留**] 窗格中，您可以命名您的保留區，並選取您想要進行的保留總數量。 保留的數目會對應到磁片數目。 例如，如果您想要保留一百個磁片，則會將 [**數量**] 變更為100。
+1. 在 [**購買保留**] 窗格中，您可以命名您的保留區，並選取您想要進行的保留總數量。 保留的數目會對應到磁片數目。 例如，如果您想要保留一百個磁片，請輸入**Quantity**值**100**。
+
 1. 檢查保留的總成本。
 
-    ![premium-ssd-reserved-selecting-sku-total-purchase .png](media/disks-reserved-capacity/premium-ssd-reserved-selecting-sku-total-purchase.png)
+    ![[購買保留] 窗格](media/disks-reserved-capacity/premium-ssd-reserved-selecting-sku-total-purchase.png)
 
-購買保留之後，它會自動套用至任何符合保留條款的現有 Azure 磁片儲存體資源。 如果您尚未建立任何 Azure 磁片儲存體資源，則會在您建立符合保留條款的資源時套用保留。 不論是哪一種情況，保留期都會在成功購買後立即開始。
+購買保留專案之後，它會自動套用至任何符合保留條款的現有磁碟儲存體資源。 如果您尚未建立任何磁碟儲存體資源，則會在您建立符合保留條款的資源時套用保留。 不論是哪一種情況，保留期限都會在成功購買後立即開始。
 
-## <a name="exchange-or-refund-a-reservation"></a>交換或退款保留
+## <a name="cancel-exchange-or-refund-reservations"></a>取消、交換保留或進行退費
 
-有某些限制，您可以交換或退款保留。
-
-若要交換或退款保留，請流覽至 Azure 入口網站中的保留詳細資料。 選取 [ **Exchange] 或 [退款**]，並遵循指示提交支援要求。 處理要求之後，Microsoft 會傳送電子郵件給您，以確認要求完成。
-
-如需 Azure 保留原則的詳細資訊，請參閱[Azure 保留的自助交換和退款](../articles/cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)。
-
-### <a name="exchange-a-reservation"></a>交換保留
-
-交換保留可讓您根據保留的未使用部分，收到按比例計算的退款。 然後，您可以將退款套用至新 Azure 磁片保留的購買價格。
-您可以無限次進行交換。 而且，交換不會產生任何費用。 您所購買的新保留專案，其值必須等於或大於原始保留區中按比例計算的信用額度。 Azure 磁片保留區只能針對另一個 Azure 磁片保留交換，而不能用於任何其他 Azure 服務的保留。
-
-### <a name="refund-a-reservation"></a>退款保留
-
-您可以隨時取消 Azure 磁片保留。 如果您取消，您會收到按比例計算的退款，並以剩餘的保留期限減去12% 的提前終止費用。 每年的退款上限為 $50000。
-取消保留會立即終止保留區，並將剩餘的月份傳回給 Microsoft。 剩餘的按比例餘額減去費用，將會退款至您的原始購買形式。
+在某些限制下，您可以取消、交換或退款保留。 如需詳細資訊，請參閱 [Azure 保留的自助式交換和退費](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations)。
 
 ## <a name="expiration-of-a-reservation"></a>保留期的到期日
 
-當保留期限到期時，您在該保留下使用的任何 Azure 磁片容量都會依照隨用隨付費率計費。 保留項目不會自動續約。
-您會在保留期限前30天收到電子郵件通知，並在到期日再次出現。 若要繼續利用保留所提供的節省成本，請在到期日之後續訂。
+當保留期限到期時，您在該保留下使用的任何 Azure 磁碟儲存體容量都會依照隨用隨付費率計費。 保留不會自動更新。
 
-## <a name="need-help-contact-us"></a>需要協助嗎？ 連絡我們
+您會在保留期限到期前30天收到電子郵件通知，並在到期日再次出現。 若要繼續利用保留所提供的節省成本，請在到期日之後續訂。
+
+## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡
 
 如果您有問題或需要協助，請[建立支援要求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 

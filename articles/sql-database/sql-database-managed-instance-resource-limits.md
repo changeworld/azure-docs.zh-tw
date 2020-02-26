@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 02/18/2020
-ms.openlocfilehash: 6e6d4ea6c96949a60677bcf3bf40a53ec3a251c7
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.date: 02/25/2020
+ms.openlocfilehash: 12d457d8d5e57dc4db16d9a191c7795a5f013574
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526853"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605021"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL Database 受控實例資源限制的總覽
 
@@ -74,7 +74,7 @@ ms.locfileid: "77526853"
 | 每個實例的資料庫檔案數目上限 | 最多280，除非已達到實例儲存體大小或[Azure Premium 磁片儲存體配置空間](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files)的限制。 | 32767每個資料庫的檔案，除非已達到實例儲存體大小限制。 |
 | 資料檔案大小上限 | 受限於目前可用的實例儲存體大小（最多 2 TB-8 TB）和[Azure Premium 磁片儲存體配置空間](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files)。 | 受限於目前可用的實例儲存體大小（最多 1 TB-4 TB）。 |
 | 記錄檔大小上限 | 受限於 2 TB 和目前可用的實例儲存體大小。 | 受限於 2 TB 和目前可用的實例儲存體大小。 |
-| 資料/記錄 IOPS (大約) | 每個實例最多 30-40 K IOPS *，500-每個檔案7500<br/>\*[增加檔案大小以取得更多 IOPS](#file-io-characteristics-in-general-purpose-tier)| 5.5 K-110 K （1375 IOPS/vCore）<br/>新增更多虛擬核心，以取得更佳的 IO 效能。 |
+| 資料/記錄 IOPS (大約) | 每個實例最多 30-40 K IOPS *，500-每個檔案7500<br/>\*[增加檔案大小以取得更多 IOPS](#file-io-characteristics-in-general-purpose-tier)| 10 k-200 K （2500 IOPS/vCore）<br/>新增更多虛擬核心，以取得更佳的 IO 效能。 |
 | 記錄寫入輸送量限制（每個實例） | 每個虛擬核心 3 MB/秒<br/>最大值 22 MB/秒 | 每個 vCore 4 MB/秒<br/>最大 48 MB/秒 |
 | 資料輸送量 (大約) | 每個檔案 100 - 250 MB/秒<br/>\*[增加檔案大小以取得更佳的 IO 效能](#file-io-characteristics-in-general-purpose-tier) | 不受限制。 |
 | 儲存 IO 延遲（近似） | 5-10 毫秒 | 1-2 毫秒 |
@@ -107,7 +107,7 @@ ms.locfileid: "77526853"
 
 ## <a name="supported-regions"></a>支援區域
 
-受控實例只能在[支援的區域](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all)中建立。 若要在目前不支援的區域中建立受控實例，您可以透過[Azure 入口網站傳送支援要求](#obtaining-a-larger-quota-for-sql-managed-instance)。
+受控實例只能在[支援的區域](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all)中建立。 若要在目前不支援的區域中建立受控實例，您可以透過[Azure 入口網站傳送支援要求](quota-increase-request.md)。
 
 ## <a name="supported-subscription-types"></a>支援的訂用帳戶類型
 
@@ -122,13 +122,13 @@ ms.locfileid: "77526853"
 
 ## <a name="regional-resource-limitations"></a>區域資源限制
 
-支援的訂用帳戶類型可包含有限的每一區域資源數目。 受控實例有兩個每個 Azure 區域的預設限制（根據訂用帳戶類型的類型，您可以視需要在[Azure 入口網站中建立特殊支援要求](#obtaining-a-larger-quota-for-sql-managed-instance)）來增加：
+支援的訂用帳戶類型可包含有限的每一區域資源數目。 受控實例有兩個每個 Azure 區域的預設限制（根據訂用帳戶類型的類型，您可以視需要在[Azure 入口網站中建立特殊支援要求](quota-increase-request.md)來增加）：
 
 - **子網路限制**：在單一區域中部署受控執行個體的子網路數目上限。
 - **vCore 單位限制**：可以在單一區域中的所有實例之間部署的 vCore 單位數目上限。 一個 GP vCore 使用一個 vCore 單位，而一個 BC vCore 採用4個 vCore 單位。 實例總數不會受到限制，只要它在 vCore 單位限制內即可。
 
 > [!Note]
-> 這些限制是預設設定，而不是技術限制。 如果您在目前的區域中需要更多受控實例，您可以在 Azure 入口網站中建立特殊的[支援要求，以](#obtaining-a-larger-quota-for-sql-managed-instance)增加視需要的限制。 或者，您可以在另一個 Azure 區域中建立新的受控實例，而不需要傳送支援要求。
+> 這些限制是預設設定，而不是技術限制。 如果您在目前的區域中需要更多受控實例，您可以在 Azure 入口網站中建立特殊的[支援要求，以](quota-increase-request.md)增加視需要的限制。 或者，您可以在另一個 Azure 區域中建立新的受控實例，而不需要傳送支援要求。
 
 下表顯示支援的訂用帳戶類型的**預設地區限制**（可以使用以下所述的支援要求來擴充預設限制）：
 
@@ -146,39 +146,9 @@ ms.locfileid: "77526853"
 
 \*\* 較大的子網和 vCore 限制可在下欄區域使用：澳大利亞東部、美國東部、美國東部2、北歐、美國中南部、東南亞、英國南部、西歐、美國西部2。
 
-## <a name="obtaining-a-larger-quota-for-sql-managed-instance"></a>取得較大的 SQL 受控實例配額
+## <a name="request-a-quota-increase-for-sql-managed-instance"></a>要求 SQL 受控實例的配額增加
 
-如果您在目前的區域中需要更多受控實例，請使用 Azure 入口網站來傳送支援要求以擴充配額。
-若要起始取得較大配額的程序：
-
-1. 開啟 [說明 + 支援]，然後按一下 [新增支援要求]。
-
-   ![協助和支援](media/sql-database-managed-instance-resource-limits/help-and-support.png)
-2. 在新支援要求的 [基本] 索引標籤上：
-   - 針對 [問題類型]，選取 [服務與訂用帳戶限制 (配額)]。
-   - 在 [訂用帳戶] 中，選取您的訂用帳戶。
-   - 針對 [配額類型]，選取 [SQL Database 受控執行個體]。
-   - 針對 [支援方案]，選取您的支援方案。
-
-     ![問題類型配額](media/sql-database-managed-instance-resource-limits/issue-type-quota.png)
-
-3. 按 [下一步]。
-4. 在新支援要求的 [**問題]** 索引標籤上：
-   - 針對 [嚴重性]，選取問題的嚴重性層級。
-   - 針對 [詳細資料]，提供關於問題的其他資訊，包括錯誤訊息在內。
-   - 針對 [檔案上傳]，附加內含更多資訊的檔案 (最多 4 MB)。
-
-     ![問題詳細資料](media/sql-database-managed-instance-resource-limits/problem-details.png)
-
-     > [!IMPORTANT]
-     > 有效的要求應包含：
-     > - 需要增加訂用帳戶限制的區域。
-     > - 在配額增加之後，現有子網中的每個服務層級所需的虛擬核心數目（如果需要擴充任何現有的子網）。
-     > - 新子網中的每個服務層級所需的新子網數和虛擬核心總數（如果您需要在新的子網中部署受控實例）。
-
-5. 按 [下一步]。
-6. 在新支援要求的 [連絡資訊] 索引標籤上，輸入慣用的連絡方法 (電子郵件或電話) 和連絡人詳細資料。
-7. 按一下 [建立]。
+如果您在目前的區域中需要更多受控實例，請使用 Azure 入口網站來傳送支援要求以擴充配額。 如需詳細資訊，請參閱[Azure SQL Database 的要求配額增加](quota-increase-request.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

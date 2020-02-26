@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/09/2019
 ms.author: memildin
-ms.openlocfilehash: 1a66ea200082f60a3a763c6a4e2bdea62ec473d8
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 15029c3e0bd3959000786af484a42691f00bb704
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75920992"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603562"
 ---
 # <a name="provide-security-contact-details-in-azure-security-center"></a>在 Azure 資訊安全中心提供安全性連絡人詳細資料
 Azure 資訊安全中心會建議您針對您的 Azure 訂用帳戶提供安全性連絡人詳細資料 (如果您還沒有這麼做)。 如果 Microsoft 安全性回應中心 (MSRC) 發現您的客戶資料遭到非法或未經授權的對象存取，Microsoft 會使用此資訊連絡您。 MSRC 執行 Azure 網路和基礎結構的選取安全性監視，並接收來自協力廠商的威脅情報和濫用客訴。
@@ -39,7 +39,7 @@ Azure 資訊安全中心會建議您針對您的 Azure 訂用帳戶提供安全�
 ## 設定警示的電子郵件通知<a name="email"></a>
 
 1. 從入口網站中，選取 [定價] [ **& 設定**]。
-1. 按一下訂用帳戶。
+1. 按一下 [訂用帳戶]。
 1. 按一下 [電子郵件通知]。
 
 > [!NOTE]
@@ -53,7 +53,7 @@ Azure 資訊安全中心會建議您針對您的 Azure 訂用帳戶提供安全�
    * 您可以選擇將電子郵件通知傳送給訂用帳戶擁有者（傳統服務管理員和共同管理員，再加上訂用帳戶範圍中的 RBAC 擁有者角色）。
    * 選取 [儲存] 將安全性連絡人資訊套用至您的訂用帳戶。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 如要深入了解資訊安全中心，請參閱下列主題：
 
 * [在 Azure 資訊安全中心設定安全性原則](tutorial-security-policy.md) -- 了解如何為您的 Azure 訂用帳戶及資源群組設定安全性原則。
@@ -61,8 +61,6 @@ Azure 資訊安全中心會建議您針對您的 Azure 訂用帳戶提供安全�
 * [Azure 資訊安全中心的安全性健全狀況監視](security-center-monitoring.md) -- 了解如何監視 Azure 資源的健全狀況。
 * [管理與回應 Azure 資訊安全中心的安全性警示](security-center-managing-and-responding-alerts.md) -- 了解如何管理與回應安全性警示。
 * [使用 Azure 資訊安全中心監視合作夥伴解決方案](security-center-partner-solutions.md) -- 了解如何監視合作夥伴解決方案的健全狀況。
-* [Azure 資訊安全中心常見問題集](security-center-faq.md) -- 尋找有關使用服務的常見問題。
-* [Azure 安全性部落格](https://blogs.msdn.com/b/azuresecurity/) -- 取得最新的 Azure 安全性新聞和資訊。
 
 <!--Image references-->
 [1]: ./media/security-center-provide-security-contacts/provide-contacts.png

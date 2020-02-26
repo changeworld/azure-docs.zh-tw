@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 1d82261d4b5c1a66498c33610670d7a38acbb197
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 91480b3ba0a2bbd3e8c31adb931f5baabe1b07ce
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152324"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605588"
 ---
 # <a name="execute-python-script-module"></a>執行 Python 腳本模組
 
@@ -75,7 +75,7 @@ import os
 os.system(f"pip install scikit-misc")
 ```
 
-## <a name="how-to-use"></a>如何使用
+## <a name="how-to-use"></a>使用方式
 
 **執行 Python 腳本**模組包含範例 Python 程式碼，可供您做為起點。 若要設定**執行 Python 腳本**模組，請在 [ **Python 腳本**] 文字方塊中提供一組要執行的輸入和 Python 程式碼。
 
@@ -91,7 +91,7 @@ os.system(f"pip install scikit-misc")
 
     ![執行 Python 輸入對應](media/module/python-module.png)
 
-4. 若要包含新的 Python 套件或程式碼，請在**腳本**組合上新增包含這些自訂資源的 zip 壓縮檔案。 **腳本**組合的輸入必須是已上傳至工作區的 zip 壓縮檔案。 
+4. 若要包含新的 Python 套件或程式碼，請在**腳本**組合上新增包含這些自訂資源的 zip 壓縮檔案。 **腳本**組合的輸入必須是以檔案類型資料集的形式上傳到您工作區的 zip 壓縮檔案。 
 
     在管線執行期間，您可以使用上傳的壓縮封存中包含的任何檔案。 如果封存包含目錄結構，則會保留結構，但是您必須在路徑前面加上名為**src**的目錄。
 

@@ -4,12 +4,12 @@ description: 了解如何使用 System Center 2012 R2 DPM 將 Exchange Server �
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: b2231fcadc3e0cb591302ba47572627ae3a17e58
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 813a13739020bed839cc389897704395c77a322d
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173270"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586490"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>使用 System Center 2012 R2 DPM 將 Exchange Server 備份至 Azure 備份
 
@@ -24,7 +24,7 @@ ms.locfileid: "74173270"
 >
 >
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 繼續之前，請確定符合使用 Microsoft Azure 備份保護工作負載的所有 [必要條件](backup-azure-dpm-introduction.md#prerequisites-and-limitations) 。 這些先決條件包含下列各項：
 
@@ -38,8 +38,8 @@ ms.locfileid: "74173270"
 
 若要在 Exchange Server 上安裝 DPM 保護代理程式，請遵循下列步驟：
 
-1. 請確定已正確設定防火牆。 請參閱 [設定代理程式的防火牆例外狀況](https://technet.microsoft.com/library/Hh758204.aspx)。
-2. 按一下 DPM 系統管理員主控台中的 [管理] > [代理程式] > [安裝]，在 Exchange Server 上安裝代理程式。 如需詳細步驟，請參閱 [安裝 DPM 保護代理程式](https://technet.microsoft.com/library/hh758186.aspx?f=255&MSPPError=-2147217396) 。
+1. 請確定已正確設定防火牆。 請參閱 [設定代理程式的防火牆例外狀況](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758204(v=sc.12))。
+2. 按一下 DPM 系統管理員主控台中的 [管理] > [代理程式] > [安裝]，在 Exchange Server 上安裝代理程式。 如需詳細步驟，請參閱 [安裝 DPM 保護代理程式](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758186(v=sc.12)) 。
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>建立 Exchange Server 的保護群組
 
@@ -49,7 +49,7 @@ ms.locfileid: "74173270"
 4. 選取您想要保護的 Exchange Server 資料庫，然後按 [下一步]。
 
    > [!NOTE]
-   > 如果您要保護 Exchange 2013，請檢查 [Exchange 2013 先決條件](https://technet.microsoft.com/library/dn751029.aspx)。
+   > 如果您要保護 Exchange 2013，請檢查 [Exchange 2013 先決條件](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/dn751029(v=sc.12))。
    >
    >
 
@@ -62,7 +62,7 @@ ms.locfileid: "74173270"
 
    * 我想要使用磁碟進行短期保護。
    * 我想要線上保護。
-6. 按一下 [下一步]。
+6. 按 [下一步]。
 7. 如果您想要檢查 Exchange Server 資料庫的完整性，請選取 [執行 Eseutil 以檢查資料完整性] 選項。
 
     選取此選項之後，將會在 DPM 伺服器上執行備份一致性檢查，以避免在 Exchange Server 上執行 **eseutil** 命令所產生的 I/O 流量。
@@ -72,7 +72,7 @@ ms.locfileid: "74173270"
    > ![eseutil 錯誤](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >
-8. 按一下 [下一步]。
+8. 按 [下一步]。
 9. 選取用於 [複製備份] 的資料庫，然後按 [下一步]。
 
    > [!NOTE]
@@ -83,10 +83,10 @@ ms.locfileid: "74173270"
 11. 檢閱可用的磁碟空間，然後按 [下一步]。
 12. 選取 DPM 伺服器將建立初始複寫的時間，然後按 [下一步]。
 13. 選取一致性檢查選項，然後按 [下一步]。
-14. 選擇您要備份至 Azure 資料庫，然後按 [下一步]。 例如︰
+14. 選擇您要備份至 Azure 資料庫，然後按 [下一步]。 例如：
 
     ![指定線上保護資料](./media/backup-azure-backup-exchange-server/specify-online-protection-data.png)
-15. 定義 [Azure 備份] 的排程，然後按 [下一步]。 例如︰
+15. 定義 [Azure 備份] 的排程，然後按 [下一步]。 例如：
 
     ![指定線上備份排程](./media/backup-azure-backup-exchange-server/specify-online-backup-schedule.png)
 

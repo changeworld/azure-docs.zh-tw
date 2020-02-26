@@ -7,19 +7,19 @@ ms.topic: conceptual
 ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4b3e51b5e8d0ee9b62a7e7bc39955396f327c7e7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 237846ec3adda208126aeb22e7900cbf5118ee95
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209543"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598658"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>如何建立 premium Azure 檔案共用
 高階檔案共用是在固態硬碟（SSD）儲存媒體上提供，適用于需要大量 IO 的工作負載，包括裝載資料庫和高效能運算（HPC）。 高階檔案共用裝載在特殊用途的儲存體帳戶類型中，稱為 FileStorage 帳戶。 Premium 檔案共用是針對高效能和企業級應用程式所設計，可提供一致的低延遲、高 IOPS 和高輸送量的共用。
 
 本文說明如何使用[Azure 入口網站](https://portal.azure.com/)、Azure PowerShell 和 Azure CLI 來建立這個新帳戶類型。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要存取 Azure 資源（包括 premium Azure 檔案共用），您將需要 Azure 訂用帳戶。 如果您還沒有訂用帳戶，則先建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)，再開始操作。
 
@@ -77,7 +77,7 @@ ms.locfileid: "74209543"
 
 安裝最新版的 [PowerShellGet](/powershell/scripting/gallery/installing-psget) 模組。
 
-然後升級您的 powershell 模組、登入您的 Azure 訂用帳戶、建立資源群組，然後建立儲存體帳戶。
+然後，升級您的 PowerShell 模組、登入您的 Azure 訂用帳戶、建立資源群組，然後建立儲存體帳戶。
 
 ### <a name="upgrade-your-powershell-module"></a>升級您的 PowerShell 模組
 
@@ -113,7 +113,7 @@ New-AzResourceGroup -Name $resourceGroup -Location $location
 
 ### <a name="create-a-filestorage-storage-account"></a>建立 FileStorage 儲存體帳戶
 
-若要從 PowerShell 建立 filestorage 儲存體帳戶，請使用[new-azstorageaccount](/powershell/module/az.storage/New-azStorageAccount)命令：
+若要從 PowerShell 建立 FileStorage 儲存體帳戶，請使用[new-azstorageaccount](/powershell/module/az.storage/New-azStorageAccount)命令：
 
 ```powershell
 $storageAcct = New-AzStorageAccount -ResourceGroupName $resourceGroup -Name "fileshowto" -SkuName "Premium_LRS" -Location "westus2" -Kind "FileStorage"
@@ -211,4 +211,4 @@ az group delete --name myResourceGroup
 在本文中，您已建立 premium 檔案共用。 若要瞭解此帳戶所提供的效能，請繼續進行《規劃指南》中的「效能層」一節。
 
 > [!div class="nextstepaction"]
-> [檔案共用效能層級](storage-files-planning.md#file-share-performance-tiers)
+> [檔案共用層](storage-files-planning.md#storage-tiers)

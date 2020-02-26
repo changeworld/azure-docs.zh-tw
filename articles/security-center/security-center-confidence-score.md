@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2018
 ms.author: memildin
-ms.openlocfilehash: ca2afaa9f4e01ac56657681ce71e32e3c5375fdf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8aa17f473c550c99d91862754e6a746575aca202
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355637"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604377"
 ---
 # <a name="alert-confidence-score-preview"></a>警示信賴分數（預覽）
 
@@ -47,14 +47,6 @@ Azure 資訊安全中心可讓您檢視在 Azure 中執行的各項資源，並�
   ![可疑信賴分數][2]
 
 使用資訊安全中心的信賴分數，在您的環境中排定警示分級的優先順序。 信賴分數可節省您的時間和心力，因為它會自動調查警示、套用業界最佳做法和智慧型演算法，並化身為虛擬分析人員來判斷哪些是真正的威脅，以及您需要注意哪些部分。
-
-
-## <a name="next-steps"></a>後續步驟
-本文說明了如何使用信賴分數來排定警示調查的優先順序。 如要深入了解資訊安全中心，請參閱下列主題：
-
-* [Azure 資訊安全中心常見問題集](security-center-faq.md)-- 尋找有關使用服務的常見問題。
-* [Azure 資訊安全中心的安全性健康狀態監視](security-center-monitoring.md)--了解如何監視 Azure 資源的健康狀態。
-
 
 
 <!--Image references-->

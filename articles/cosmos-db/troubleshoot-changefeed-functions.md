@@ -7,12 +7,12 @@ ms.date: 07/17/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: f3af350c96d1dd9eaf4773db503acb10d8a08a8f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f382406d164aa7378631753c2cfc85bc69003a4f
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441111"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605084"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>針對 Cosmos DB 使用 Azure Functions 觸發程式時，診斷並疑難排解問題
 
@@ -23,7 +23,7 @@ ms.locfileid: "75441111"
 Cosmos DB 的 Azure Functions 觸發程式和系結相依于基底 Azure Functions 執行時間上的延伸模組套件。 請一律保持這些套件的更新，因為它們可能包含修正和新功能，可解決您可能會遇到的任何潛在問題：
 
 * 如 Azure Functions V2，請參閱[CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB)。
-* 如 Azure Functions V1，請參閱 [Microsoft Azure web.config. DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB)。
+* 如 Azure Functions V1，請參閱 < [Microsoft Azure web.config. DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB)。
 
 除非明確指定，否則本文一律會在每次提及執行時間時參考 Azure Functions V2。
 
@@ -66,7 +66,7 @@ Azure 函數失敗，並出現錯誤訊息：「來源集合 ' collection-name '
 
 1. Azure 函式是否部署在與 Azure Cosmos 帳戶相同的區域中？ 為了獲得理想的網路延遲時間，Azure 函式和 Azure Cosmos 帳戶應該共存於相同 Azure 區域。
 2. Azure Cosmos 容器中的變更是持續發生還是偶爾發生？
-如果是偶爾發生，則在儲存變更與 Azure 函式取得變更之間會有一些延遲。 這是因為在內部，當觸發程序檢查 Azure Cosmos 容器中的變更卻發現沒有任何擱置待讀取的變更時，其便會進入睡眠時間 (時間長短可設定，預設為 5 秒)，之後再檢查是否有新的變更 (以避免耗用過多 RU)。 您可以在觸發程序[設定](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration)中透過 `FeedPollDelay/feedPollDelay` 設定來設定此睡眠時間 (值應以毫秒為單位)。
+如果是偶爾發生，則在儲存變更與 Azure 函式取得變更之間會有一些延遲。 這是因為在內部，當觸發程序檢查 Azure Cosmos 容器中的變更卻發現沒有任何擱置待讀取的變更時，其便會進入睡眠時間 (時間長短可設定，預設為 5 秒)，之後再檢查是否有新的變更 (以避免耗用過多 RU)。 您可以在觸發程序`FeedPollDelay/feedPollDelay`設定[中透過 ](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) 設定來設定此睡眠時間 (值應以毫秒為單位)。
 3. 您的 Azure Cosmos 容器可能會受到[速率限制](./request-units.md)。
 4. 您可以使用觸發程式中的 `PreferredLocations` 屬性來指定以逗號分隔的 Azure 區域清單，以定義自訂的慣用連接順序。
 
@@ -93,10 +93,10 @@ Azure 函數失敗，並出現錯誤訊息：「來源集合 ' collection-name '
 從一開始就重新處理容器中的所有專案：
 1. 如果您的 Azure 函式目前正在執行，請將它停止。 
 1. 刪除租用集合中的檔（或刪除並重新建立租用集合，使其空白）
-1. 將函數中的[StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) CosmosDBTrigger 屬性設定為 true。 
+1. 將函數中的[StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) CosmosDBTrigger 屬性設定為 true。 
 1. 重新開機 Azure function。 它現在會從一開始就讀取和處理所有變更。 
 
-將[StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration)設定為 true 時，會告訴 Azure 函式從集合歷程記錄的開頭開始讀取變更，而不是目前的時間。 這僅適用于沒有已建立的租用時（也就是租用集合中的檔）。 當已經建立租用時，將此屬性設定為 true 不會有任何作用;在此情況下，當函式停止並重新啟動時，它會從最後一個檢查點開始讀取，如租用集合中所定義。 若要從頭重新處理，請遵循上述步驟1-4。  
+將[StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration)設定為 true 時，會告訴 Azure 函式從集合歷程記錄的開頭開始讀取變更，而不是目前的時間。 這僅適用于沒有已建立的租用時（也就是租用集合中的檔）。 當已經建立租用時，將此屬性設定為 true 不會有任何作用;在此情況下，當函式停止並重新啟動時，它會從最後一個檢查點開始讀取，如租用集合中所定義。 若要從頭重新處理，請遵循上述步驟1-4。  
 
 ### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>只能使用 IReadOnlyList\<檔 > 或 JArray 來進行系結
 
@@ -106,7 +106,7 @@ Azure 函數失敗，並出現錯誤訊息：「來源集合 ' collection-name '
 
 ### <a name="changing-azure-functions-polling-interval-for-the-detecting-changes"></a>變更偵測變更的 Azure Function 輪詢間隔
 
-如稍早所述，[我們所做的變更時間太長](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-to-be-received)，Azure 函式會在檢查是否有新的變更之前，進入睡眠狀態（預設為5秒），以避免高 RU 耗用量。 您可以在觸發程序[設定](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration)中透過 `FeedPollDelay/feedPollDelay` 設定來設定此睡眠時間 (值應以毫秒為單位)。
+如稍早所述，[我們所做的變更時間太長](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-to-be-received)，Azure 函式會在檢查是否有新的變更之前，進入睡眠狀態（預設為5秒），以避免高 RU 耗用量。 您可以在觸發程序`FeedPollDelay/feedPollDelay`設定[中透過 ](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) 設定來設定此睡眠時間 (值應以毫秒為單位)。
 
 ## <a name="next-steps"></a>後續步驟
 

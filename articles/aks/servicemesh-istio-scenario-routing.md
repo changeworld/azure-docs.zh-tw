@@ -2,17 +2,16 @@
 title: 透過 Istio 在 Azure Kubernetes Service (AKS) 中使用智慧型路由和 Canary 版本
 description: 了解如何使用 Istio 在 Azure Kubernetes Service (AKS) 叢集中提供智慧型路由及部署 Canary 版本
 author: paulbouwer
-ms.service: container-service
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 48daf2be4a05922982479a86e6574f3aa85d2130
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 4c29658473aaa50168175c76234dfca34fcdad83
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530286"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594097"
 ---
 # <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>透過 Istio 在 Azure Kubernetes Service (AKS) 中使用智慧型路由和 Canary 版本
 
@@ -20,7 +19,7 @@ ms.locfileid: "72530286"
 
 本文將說明如何使用 Istio 的流量管理功能。 我們將使用範例 AKS 投票應用程式來探索智慧型路由和 Canary 版本。
 
-在本文中，您將了解：
+在本文中，您將學會如何：
 
 > [!div class="checklist"]
 > * 部署應用程式
@@ -31,7 +30,7 @@ ms.locfileid: "72530286"
 ## <a name="before-you-begin"></a>開始之前
 
 > [!NOTE]
-> 此案例已針對 Istio 版本 `1.3.2` 進行測試。
+> 此案例已針對 Istio 版本 `1.3.2`進行測試。
 
 本文中詳述的步驟假設您已建立 AKS 叢集（已啟用 RBAC 的 Kubernetes `1.13` 和更新版本），並已建立與叢集的 `kubectl` 連接。 您也需要在您的叢集中安裝 Istio。
 
@@ -351,14 +350,14 @@ voting-storage.voting.svc.cluster.local:6379     OK         mTLS       mTLS     
 
 ## <a name="roll-out-a-canary-release-of-the-application"></a>推出應用程式的 Canary 版本
 
-現在讓我們來部署 `voting-app`、`voting-analytics` 和 `voting-storage` 元件的新版本 `2.0`。 新的 `voting-storage` 元件會使用 MySQL，而不是 Redis，而且 `voting-app` 和 `voting-analytics` 元件會更新，讓他們能夠使用這個新的 `voting-storage` 元件。
+現在讓我們來部署 `voting-app`、`voting-analytics`和 `voting-storage` 元件的新版本 `2.0`。 新的 `voting-storage` 元件會使用 MySQL，而不是 Redis，而且 `voting-app` 和 `voting-analytics` 元件會更新，讓他們能夠使用這個新的 `voting-storage` 元件。
 
-@No__t_0 元件現在支援功能旗標功能。 此功能旗標可讓您針對某部分的使用者測試 Istio 的 Canary 版本功能。
+`voting-app` 元件現在支援功能旗標功能。 此功能旗標可讓您針對某部分的使用者測試 Istio 的 Canary 版本功能。
 
 下圖顯示您將在本節結尾處執行的內容。
 
-* @No__t_1 元件的版本 `1.0`、`voting-analytics` 元件的版本 `1.1`，以及 `1.0` 元件的版本 `voting-storage` 能夠彼此通訊。
-* @No__t_1 元件的版本 `2.0`、`voting-analytics` 元件的版本 `2.0`，以及 `2.0` 元件的版本 `voting-storage` 能夠彼此通訊。
+* `voting-app` 元件的版本 `1.0`、`voting-analytics` 元件的版本 `1.1`，以及 `1.0` 元件的版本 `voting-storage` 能夠彼此通訊。
+* `voting-app` 元件的版本 `2.0`、`voting-analytics` 元件的版本 `2.0`，以及 `2.0` 元件的版本 `voting-storage` 能夠彼此通訊。
 * 只有已設定特定功能旗標的使用者，才能存取 `voting-app` 元件的版本 `2.0`。 這項變更可透過 Cookie 使用功能旗標來管理。
 
 ![AKS 投票應用程式元件和路由。](media/servicemesh/istio/scenario-routing-components-03.png)

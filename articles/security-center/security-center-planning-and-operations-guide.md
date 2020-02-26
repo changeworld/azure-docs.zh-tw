@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 239438133dc16630852626c49e8ffda08590976b
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 039a30d23c45471d88132f544c11df813fb4b8e6
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280997"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603732"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Azure 資訊安全中心規劃和操作指南
 本指南適用于規劃使用 Azure 資訊安全中心的資訊技術（IT）專業人員、IT 架構設計師、資訊安全分析師和雲端系統管理員。
@@ -33,8 +33,7 @@ ms.locfileid: "76280997"
 
 
 > [!NOTE]
-> 如需在設計和規劃階段也很好用的常見問題清單，請閱讀 [Azure 資訊安全中心常見問題集 (FAQ)](security-center-faq.md) 。
->
+> 如需在設計和規劃階段也很好用的常見問題清單，請閱讀 [Azure 資訊安全中心常見問題集 (FAQ)](faq-general.md) 。
 
 ## <a name="security-roles-and-access-controls"></a>安全性角色和存取控制
 根據您組織的大小和結構，多個個人和小組可以使用資訊安全中心來執行不同的安全性相關工作。 下圖是虛構人物與其各自角色和安全性責任的範例︰
@@ -143,8 +142,7 @@ Azure 資訊安全中心使用 Microsoft Monitoring Agent –這是 Azure 監視
 如果您想在某個時間點停用資料收集，您可以在安全性原則中將它關閉。 不過，因為其他 Azure 管理和監視服務可能會使用 Microsoft Monitoring Agent，所以當您在資訊安全中心中關閉資料收集時，不會自動卸載代理程式。 您可以視需要手動解除安裝代理程式。
 
 > [!NOTE]
-> 若要尋找支援的 VM 清單，請閱讀 [Azure 資訊安全中心常見問題集 (FAQ)](security-center-faq.md)。
->
+> 若要尋找支援的 VM 清單，請閱讀 [Azure 資訊安全中心常見問題集 (FAQ)](faq-vms.md)。
 
 ### <a name="workspace"></a>工作區
 
@@ -199,7 +197,7 @@ Azure 資訊安全中心使用 Microsoft Monitoring Agent –這是 Azure 監視
 
 您也應該定期監視現有資源，查看可能已建立安全性風險的設定變更、不受建議基準的漂移和安全性警示。 從資訊安全中心儀表板開始。 從這裡，您有三個主要區域可以一致地進行審查。
 
-![Dynamics 365](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig4-newUI.png)
+![作業](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig4-newUI.png)
 
 1. [預防] 區段面板可供您快速存取關鍵資源。 使用此選項來監視 [計算]、[網路服務]、[儲存體和資料] 及 [應用程式]。
 2. **建議** 面板可讓您檢閱資訊安全中心建議。 在進行中的監視期間，您可能會發現每日不會有任何建議，這是正常現象，因為您已解決初始資訊安全中心設定的所有建議。 基於這個理由，這個區段中可能不會每天都有新資訊，您只需要視需要進行存取。
@@ -254,5 +252,5 @@ Azure 資訊安全中心使用 Microsoft Monitoring Agent –這是 Azure 監視
 * [管理及回應 Azure 資訊安全中心的安全性警示](security-center-managing-and-responding-alerts.md)
 * [Azure 資訊安全中心的安全性健全狀況監視](security-center-monitoring.md) — 了解如何監視 Azure 資源的健全狀況。
 * [使用 Azure 資訊安全中心監視合作夥伴解決方案](security-center-partner-solutions.md) — 了解如何監視合作夥伴解決方案的健全狀況。
-* [Azure 資訊安全中心常見問題集](security-center-faq.md) — 尋找有關使用服務的常見問題。
+* [Azure 資訊安全中心常見問題集](faq-general.md) — 尋找有關使用服務的常見問題。
 * [Azure 安全性部落格](https://blogs.msdn.com/b/azuresecurity/) — 尋找有關 Azure 安全性與相容性的部落格文章。

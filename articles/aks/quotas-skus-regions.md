@@ -2,17 +2,14 @@
 title: Azure Kubernetes Service （AKS）中的配額、Sku 和區域可用性
 description: 瞭解預設配額、受限制的節點 VM SKU 大小，以及 Azure Kubernetes Service 的區域可用性（AKS）。
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/09/2019
-ms.author: mlearned
-ms.openlocfilehash: 1bb928f8e7a1f56c4b6b437f260d875662bff60f
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 03e7396932f0813ef4bd00d644dcdaddfe229e6a
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77469829"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594544"
 ---
 # <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service 中的配額、虛擬機器大小限制和區域可用性（AKS）
 

@@ -2,17 +2,14 @@
 title: Azure Kubernetes Service (AKS) 的最佳做法
 description: 在 Azure Kubernetes Service (AKS) 中建置和管理應用程式的叢集操作員和開發人員最佳做法集合
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 12/07/2018
-ms.author: mlearned
-ms.openlocfilehash: 7127894b364ac8f0fe1d87e13150d5522f5473e2
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 627eeffd18a479486e5a682da06bf89cd5f8f0e1
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67615968"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596312"
 ---
 # <a name="cluster-operator-and-developer-best-practices-to-build-and-manage-applications-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中建置和管理應用程式的叢集操作員和開發人員最佳做法
 
@@ -40,7 +37,7 @@ ms.locfileid: "67615968"
 * [叢集安全性與升級的最佳做法](operator-best-practices-cluster-security.md)
     * 包括保護 API 伺服器的存取權、限制容器存取，以及管理升級和節點重新開機。
 * [容器映像管理與安全性的最佳做法](operator-best-practices-container-image-management.md)
-    * 包含保護映像和執行階段和基底映像更新的自動化的組建。
+    * 包括保護映射和執行時間，以及基底映射更新的自動化組建。
 * [Pod 安全性的最佳做法](developer-best-practices-pod-security.md)
     * 包括保護資源存取權、限制認證公開程度，以及使用 Pod 身分識別與數位金鑰保存庫。
 

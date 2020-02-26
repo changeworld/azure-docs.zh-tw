@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/24/2017
 ms.author: yurid
-ms.openlocfilehash: 481dbff90ee5368e1581502e612cb5d1993ac89e
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: ed2c1f874bd61e846cbdf1f68181a8f374c89524
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200738"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603371"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines"></a>Azure 資訊安全中心和 Azure 虛擬機器
 [Azure 資訊安全中心](https://azure.microsoft.com/services/security-center/)可協助您保護、偵測威脅並採取相應的措施。 它提供您 Azure 訂用帳戶之間的整合式安全性監視和原則管理，協助您偵測可能會忽略的威脅，且適用於廣泛的安全性解決方案生態系統。
@@ -42,12 +42,12 @@ ms.locfileid: "71200738"
 > 
 > 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 若要開始使用 Azure 資訊安全中心，您將需要知道並考慮下列項目︰
 
 * 您需要 Microsoft Azure 訂用帳戶。 請參閱[安全性中心價格](https://azure.microsoft.com/pricing/details/security-center/)，以深入了解資訊安全中心的免費和標準層。
 * 規劃資訊安全中心的採用，請參閱 [Azure 資訊安全中心規劃和操作指南](security-center-planning-and-operations-guide.md)，以深入了解規劃和作業考量。
-* 如需作業系統可支援性的相關資訊，請參閱 [Azure 資訊安全中心常見問題集 (FAQ)](security-center-faq.md)。 
+* 如需有關支援的作業系統的詳細資訊，請參閱[Azure 資訊安全中心常見問題（FAQ）](faq-vms.md)。 
 
 ## <a name="set-security-policy"></a>設定安全性原則
 必須啟用資料收集，讓 Azure 資訊安全中心可收集其提供建議所需的資訊，以及根據您所設定之安全性原則所產生的警示。 在下圖中，您可以看到**資料收集**已**開啟**。
@@ -69,8 +69,8 @@ ms.locfileid: "71200738"
 | 啟用訂用帳戶的資料收集 |建議您為每個訂用帳戶和訂用帳戶中的所有虛擬機器 (VM) 開啟安全性原則中的 [資料收集]。 |
 | 修復 OS 弱點 |建議您讓作業系統組態符合建議的設定規則，例如不允許儲存密碼。 |
 | 套用系統更新 |建議您將遺漏的系統安全性與重大更新部署到 VM。 |
-| 系統更新後重新啟動 |建議您重新啟動 VM 以完成套用系統更新的程序。 |
-| 安裝 Endpoint Protection |建議您將反惡意程式碼程式佈建到 VM (僅適用於 Windows VM)。 |
+| 在系統更新之後重新開機 |建議您重新啟動 VM 以完成套用系統更新的程序。 |
+| 安裝端點保護 |建議您將反惡意程式碼程式佈建到 VM (僅適用於 Windows VM)。 |
 | 啟用 VM 代理程式 |可讓您查看哪些 VM 需要「VM 代理程式」。 為了佈建修補程式掃描、基準掃描及反惡意程式碼程式，必須在 VM 上安裝「VM 代理程式」。 預設會為從 Azure Marketplace 部署的 VM 安裝「VM 代理程式」。 如需如何安裝 VM 代理程式的相關資訊，請參閱 [VM 代理程式和擴充功能 – 第 2 部分](https://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/) 。 |
 | 套用磁碟加密 |建議您使用 Azure 磁碟加密來加密您的 VM 磁碟 (Windows 和 Linux VM)。 建議您的 VM 上的作業系統和資料磁碟區都進行加密。 |
 | 未安裝弱點評估 |建議在 VM 上安裝弱點評估解決方案。 |
@@ -98,5 +98,4 @@ ms.locfileid: "71200738"
 
 * [在 Azure 資訊安全中心設定安全性原則](tutorial-security-policy.md) -- 了解如何為您的 Azure 訂用帳戶及資源群組設定安全性原則。
 * [管理與回應 Azure 資訊安全中心的安全性警示](security-center-managing-and-responding-alerts.md) -- 了解如何管理與回應安全性警示。
-* [Azure 資訊安全中心常見問題集](security-center-faq.md) -- 尋找有關使用服務的常見問題。
-
+* [常見問題-虛擬機器](faq-vms.md)--尋找有關使用服務的常見問題。

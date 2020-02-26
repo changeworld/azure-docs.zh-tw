@@ -9,12 +9,12 @@ author: ramakoni1
 ms.author: ramakoni
 ms.reviewer: carlrab,vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: 9ee43533532f51f6f0d2aa9d0d4e8d3993ccadb4
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 6baf9d4edba9ba8db008c5c6a8d7af6832ba3273
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027725"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591229"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-microsoft-azure-sql-database"></a>疑難排解 Microsoft Azure SQL Database 的連線問題和其他錯誤
 
@@ -27,7 +27,7 @@ Azure 基礎結構能夠在 SQL Database 服務出現繁重的工作負載時動
 ### <a name="list-of-transient-fault-error-codes"></a>暫時性錯誤錯誤碼清單
 
 
-| 錯誤碼 | 嚴重性 | 說明 |
+| 錯誤碼 | 嚴重性 | 描述 |
 | ---:| ---:|:--- |
 | 4060 |16 |無法開啟登入所要求的資料庫 "%.&#x2a;ls"。 登入失敗。 如需詳細資訊，請參閱[錯誤4000到 4999](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-4000-to-4999)|
 | 40197 |17 |服務處理您的要求時發生錯誤。 請再試一次。 錯誤代碼 %d。<br/><br/>當服務因為軟體或硬體升級、硬體故障或任何其他容錯移轉問題而關閉時，您會收到這個錯誤。 內嵌在錯誤40197訊息中的錯誤碼（% d）會提供發生的失敗或容錯移轉類型的其他資訊。 錯誤代碼會內嵌在錯誤 40197 的訊息錯誤範例包括 40020、40143、40166 和 40540。<br/><br/>重新連線到您的 SQL Database 伺服器時，會自動連線至健康情況良好的資料庫複本。 您的應用程式必須攔截錯誤 40197、記錄訊息中內嵌的錯誤碼 (%d) 以進行疑難排解，並嘗試重新連接到 SQL Database 直到資源可供使用，並再次建立您的連線。 如需詳細資訊，請參閱[暫時性錯誤](sql-database-connectivity-issues.md#transient-errors-transient-faults)。|
@@ -84,7 +84,7 @@ Azure 基礎結構能夠在 SQL Database 服務出現繁重的工作負載時動
 
 ## <a name="cannot-connect-to-server-due-to-firewall-issues"></a>因為防火牆問題而無法連接到伺服器
 
-### <a name="error-40615-cannot-connect-to--servername-"></a>錯誤40615：無法連接到 < servername >
+### <a name="error-40615-cannot-connect-to--servername-"></a>錯誤 40615：無法連接到 < servername >
 
 若要解決此問題，請[透過 Azure 入口網站在 SQL Database 上設定防火牆設定。](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)
 
@@ -157,11 +157,11 @@ Azure 基礎結構能夠在 SQL Database 服務出現繁重的工作負載時動
 
 ``System.Data.SqlClient.SqlException (0x80131904): Connection Timeout Expired. The timeout period elapsed while attempting to consume the pre-login handshake acknowledgement. This could be because the pre-login handshake failed or the server was unable to respond back in time. The duration spent while attempting to connect to this server was - [Pre-Login] initialization=3; handshake=29995;``
 
-### <a name="systemdatasqlclientsqlexception-0x80131904-timeout-expired"></a>SqlClient. SqlException （0x80131904）： Timeout 已過期
+### <a name="systemdatasqlclientsqlexception-0x80131904-timeout-expired"></a>SqlClient. SqlException （0x80131904）：已超過逾時的設定
 
 ``System.Data.SqlClient.SqlException (0x80131904): Timeout expired. The timeout period elapsed prior to completion of the operation or the server is not responding.``
 
-### <a name="systemdataentitycoreentityexception-the-underlying-provider-failed-on-open"></a>EntityException：在開啟時，基礎提供者失敗
+### <a name="systemdataentitycoreentityexception-the-underlying-provider-failed-on-open"></a>System.web. EntityException：基礎提供者開啟時失敗
 
 ``System.Data.Entity.Core.EntityException: The underlying provider failed on Open. -> System.Data.SqlClient.SqlException: Timeout expired. The timeout period elapsed prior to completion of the operation or the server is not responding. -> System.ComponentModel.Win32Exception: The wait operation timed out``
 
@@ -175,7 +175,7 @@ Azure 基礎結構能夠在 SQL Database 服務出現繁重的工作負載時動
 
 ## <a name="resource-governance-errors"></a>資源管理錯誤
 
-### <a name="error-10928-resource-id-d"></a>錯誤10928：資源識別碼：% d
+### <a name="error-10928-resource-id-d"></a>錯誤 10928：資源識別碼：% d
 
 ``10928: Resource ID: %d. The %s limit for the database is %d and has been reached. See http://go.microsoft.com/fwlink/?LinkId=267637 for assistance. The Resource ID value in error message indicates the resource for which limit has been reached. For sessions, Resource ID = 2.``
 
@@ -230,8 +230,8 @@ Azure 基礎結構能夠在 SQL Database 服務出現繁重的工作負載時動
 
    ```sql
    SELECT o.name,
-    a.SUM(p.row_count) AS 'Row Count',
-    b.SUM(p.reserved_page_count) * 8.0 / 1024 AS 'Table Size (MB)'
+    SUM(p.row_count) AS 'Row Count',
+    SUM(p.reserved_page_count) * 8.0 / 1024 AS 'Table Size (MB)'
    FROM sys.objects o
    JOIN sys.dm_db_partition_stats p on p.object_id = o.object_id
    GROUP BY o.name
@@ -264,7 +264,7 @@ Azure 基礎結構能夠在 SQL Database 服務出現繁重的工作負載時動
 
 如需深入的疑難排解程式，請參閱[我的查詢在雲端中是否正常運作？](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx)。
 
-### <a name="error-40551-the-session-has-been-terminated-because-of-excessive-tempdb-usage"></a>錯誤40551：已終止會話，因為過度使用 TEMPDB
+### <a name="error-40551-the-session-has-been-terminated-because-of-excessive-tempdb-usage"></a>錯誤40551：會話已終止，因為過度使用 TEMPDB
 
 ``40551: The session has been terminated because of excessive TEMPDB usage. Try modifying your query to reduce the temporary table space usage.``
 
@@ -274,7 +274,7 @@ Azure 基礎結構能夠在 SQL Database 服務出現繁重的工作負載時動
 2. 不再需要暫存物件之後，請將它卸載。
 3. 截斷資料表或移除未使用的資料表。
 
-### <a name="error-40552-the-session-has-been-terminated-because-of-excessive-transaction-log-space-usage"></a>錯誤40552：因為交易記錄檔空間使用量過高，所以會話已終止
+### <a name="error-40552-the-session-has-been-terminated-because-of-excessive-transaction-log-space-usage"></a>錯誤40552：會話已終止，因為交易記錄空間使用量過高
 
 ``40552: The session has been terminated because of excessive transaction log space usage. Try modifying fewer rows in a single transaction.``
 
@@ -287,7 +287,7 @@ Azure 基礎結構能夠在 SQL Database 服務出現繁重的工作負載時動
   > [!NOTE]
   > 對於索引重建，所更新欄位的平均大小應該由平均索引大小所取代。
 
-### <a name="error-40553-the-session-has-been-terminated-because-of-excessive-memory-usage"></a>錯誤40553：因為記憶體使用量過高，所以已終止會話
+### <a name="error-40553-the-session-has-been-terminated-because-of-excessive-memory-usage"></a>錯誤40553：會話已終止，因為記憶體使用量過高
 
 ``40553 : The session has been terminated because of excessive memory usage. Try modifying your query to process fewer rows.``
 
@@ -297,7 +297,7 @@ Azure 基礎結構能夠在 SQL Database 服務出現繁重的工作負載時動
 
 ### <a name="table-of-additional-resource-governance-error-messages"></a>其他資源治理錯誤訊息的資料表
 
-| 錯誤碼 | 嚴重性 | 說明 |
+| 錯誤碼 | 嚴重性 | 描述 |
 | ---:| ---:|:--- |
 | 10928 |20 |資源識別碼：%d。 資料庫的 %s 限制是 %d，且已達到。 如需詳細資訊，請參閱[單一和集區資料庫的 SQL Database 資源限制](sql-database-resource-limits-database-server.md)。<br/><br/>資源識別碼可指出已達到限制的資源。 對於背景工作執行緒，資源識別碼 = 1。 對於工作階段，資源識別碼 = 2。<br/><br/>如需有關此錯誤以及其解決方法的詳細資訊，請參閱： <br/>&bull; &nbsp;[資料庫伺服器資源限制](sql-database-resource-limits-database-server.md)<br/>&bull;[單一資料庫 &nbsp;以 DTU 為基礎的限制](sql-database-service-tiers-dtu.md)<br/>&bull; 彈性集區 &nbsp;[以 DTU 為基礎的限制](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull;[單一資料庫 &nbsp;vCore 為基礎的限制](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; 彈性集區 &nbsp;[vCore 為基礎的限制](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[受控實例資源限制](sql-database-managed-instance-resource-limits.md)。 |
 | 10929 |20 |資源識別碼：%d。 %s 最小保證是 %d，最大限制是 %d，而資料庫的目前使用量是 %d。 但伺服器目前太忙碌，無法針對此資料庫支援大於 %d 的要求。 資源識別碼可指出已達到限制的資源。 對於背景工作執行緒，資源識別碼 = 1。 對於工作階段，資源識別碼 = 2。 如需詳細資訊，請參閱： <br/>&bull; &nbsp;[資料庫伺服器資源限制](sql-database-resource-limits-database-server.md)<br/>&bull;[單一資料庫 &nbsp;以 DTU 為基礎的限制](sql-database-service-tiers-dtu.md)<br/>&bull; 彈性集區 &nbsp;[以 DTU 為基礎的限制](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull;[單一資料庫 &nbsp;vCore 為基礎的限制](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; 彈性集區 &nbsp;[vCore 為基礎的限制](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[受控實例資源限制](sql-database-managed-instance-resource-limits.md)。 <br/>或者，請稍後再試一次。 |
@@ -312,7 +312,7 @@ Azure 基礎結構能夠在 SQL Database 服務出現繁重的工作負載時動
 
 下列錯誤與建立及使用彈性集區有關：
 
-| 錯誤碼 | 嚴重性 | 說明 | 更正措施 |
+| 錯誤碼 | 嚴重性 | 描述 | 更正措施 |
 |:--- |:--- |:--- |:--- |
 | 1132 | 17 |彈性集區已達到其儲存體限制。 彈性集區的儲存體使用量不能超過 (%d) MB。 當彈性集區達到儲存體限制時，嘗試將資料寫入資料庫。 如需資源限制的相關資訊，請參閱： <br/>&bull; 彈性集區 &nbsp;[以 DTU 為基礎的限制](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; 彈性集區 &nbsp;[以 vCore 為基礎的限制](sql-database-vcore-resource-limits-elastic-pools.md)。 <br/> |請考慮盡可能增加彈性集區的 DTU 及/或儲存體，以提高其儲存體限制、減少彈性集區中個別資料庫所使用的儲存體量，或是從彈性集區移除資料庫。 如需彈性集區調整，請參閱[調整彈性集區資源](sql-database-elastic-pool-scale.md)。|
 | 10929 | 16 |%s 最小保證是 %d，最大限制是 %d，而資料庫的目前使用量是 %d。 但伺服器目前太忙碌，無法針對此資料庫支援大於 %d 的要求。 如需資源限制的相關資訊，請參閱： <br/>&bull; 彈性集區 &nbsp;[以 DTU 為基礎的限制](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; 彈性集區 &nbsp;[以 vCore 為基礎的限制](sql-database-vcore-resource-limits-elastic-pools.md)。 <br/> 或者，請稍後再試一次。 每個資料庫的最小 DTU / vCore；每個資料庫的最大 DTU / vCore。 彈性集區中的所有資料庫並行背景工作 (要求) 總數試圖超過集區限制。 |請考慮盡可能增加彈性集區的 DTU 或 vCore，以提高其背景工作數的限制，或是從彈性集區移除資料庫。 |

@@ -7,19 +7,16 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 0321d253eb1db414dff2acbb704d3d36726010d9
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 207a3a6c59012154d547bbd224782b90e1046c6a
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544951"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597961"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>針對 Windows 中的 Azure 檔案服務問題進行疑難排解
 
 本文列出當您從 Windows 用戶端連線時，與 Microsoft Azure 檔案服務相關的常見問題。 文中也會提供這些問題的可能原因和解決方案。 除了本文中的疑難排解步驟之外，您也可以使用 [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5)  來確保 Windows 用戶端環境具備正確的先決條件。 AzFileDiagnostics 會自動偵測本文中提及的大部分徵兆，並協助設定您的環境以取得最佳效能。 您也可以在 [Azure 檔案共用疑難排解員](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)中找到此資訊，當中有提供步驟來協助您解決連線/對應/掛接 Azure 檔案共用的問題。
-
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 <a id="error5"></a>
 ## <a name="error-5-when-you-mount-an-azure-file-share"></a>掛接 Azure 檔案共用時發生錯誤 5
@@ -128,7 +125,7 @@ Azure 檔案儲存體也支援 SMB 以外的 REST。 REST 存取會透過埠443�
 
 當您到達同時開啟的控制代碼上限時 (此為針對掛接檔案共用之電腦上的檔案所允許的上限)，即會發生錯誤 1816。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 關閉一些控制代碼以減少同時開啟的控制代碼數，然後再試一次。 如需詳細資訊，請參閱 [Microsoft Azure 儲存體效能與延展性檢查清單](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
@@ -143,7 +140,7 @@ Azure 檔案儲存體也支援 SMB 以外的 REST。 REST 存取會透過埠443�
 ## <a name="error-no-access-when-you-try-to-access-or-delete-an-azure-file-share"></a>當您嘗試存取或刪除 Azure 檔案共用時發生錯誤「沒有存取權」  
 當您嘗試存取或刪除入口網站中的 Azure 檔案共用時，可能會收到下列錯誤：
 
-無存取權  
+不允許存取  
 錯誤碼：403 
 
 ### <a name="cause-1-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>原因1：已在儲存體帳戶上啟用虛擬網路或防火牆規則
@@ -167,7 +164,7 @@ Azure 檔案儲存體也支援 SMB 以外的 REST。 REST 存取會透過埠443�
 ### <a name="cause"></a>原因
 如果檔案或目錄有開啟的控制碼，通常就會發生此問題。 
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 如果 SMB 用戶端已關閉所有開啟的控制碼，且問題持續發生，請執行下列動作：
 
@@ -213,7 +210,7 @@ Azure 檔案儲存體也支援 SMB 以外的 REST。 REST 存取會透過埠443�
 
 根據預設，Windows 檔案總管不會以系統管理員身分執行。 如果您從系統管理命令提示字元執行 net use，就是以系統管理員身分對應網路磁碟機。 因為對應的磁碟機是以使用者為中心，如果磁碟機掛接在不同的使用者帳戶下，登入的使用者帳戶不會顯示此磁碟機。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 從非系統管理員命令掛接共用。 或者，您可以依照[此 TechNet 主題](https://technet.microsoft.com/library/ee844140.aspx)設定 **EnableLinkedConnections** 登錄值。
 
 <a id="netuse"></a>
@@ -223,7 +220,7 @@ Azure 檔案儲存體也支援 SMB 以外的 REST。 REST 存取會透過埠443�
 
 Net use 命令會將斜線 (/) 解譯為命令列選項。 如果您的使用者帳戶名稱開頭為斜線，磁碟機對應將會失敗。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 您可以使用下列其中一種方式來解決這個問題：
 
@@ -244,13 +241,13 @@ Net use 命令會將斜線 (/) 解譯為命令列選項。 如果您的使用者
 
 磁碟機是按每個使用者掛接。 如果您的應用程式或服務正在與掛接磁碟機之帳戶不同的使用者帳戶下執行，應用程式將不會看到該磁碟機。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 使用下列其中一個解決方案：
 
 -   從應用程式所屬的相同使用者帳戶掛接磁碟機。 您可以使用 PsExec 之類的工具。
 - 在 net use 命令的使用者名稱和密碼參數中傳遞儲存體帳戶名稱和金鑰。
-- 使用 cmdkey 命令以將認證新增至認證管理員。 透過互動式登入或使用 runas，從服務帳戶內容底下的命令列執行這個命令。
+- 使用 cmdkey 命令以將認證新增至認證管理員。 請從服務帳戶內容下的命令列執行這項操作，不論是透過互動式登入或使用 `runas`。
   
   `cmdkey /add:<storage-account-name>.file.core.windows.net /user:AZURE\<storage-account-name> /pass:<storage-account-key>`
 - 直接對應共用而不使用對應磁碟機代號。 某些應用程式可能無法正確地重新連線至磁碟機代號，因此使用完整的 UNC 路徑可能比較可靠。 
@@ -285,7 +282,7 @@ Net use 命令會將斜線 (/) 解譯為命令列選項。 如果您的使用者
 
 如果用戶端機器上沒有足夠的快取可供大型目錄使用時，就會發生此問題。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 若要解決此問題，請調整 **DirectoryCacheEntrySizeMax** 登錄值，以允許在用戶端機器快取較大型的目錄清單：
 
@@ -300,9 +297,9 @@ Net use 命令會將斜線 (/) 解譯為命令列選項。 如果您的使用者
 
 ### <a name="cause"></a>原因
 
-當您嘗試 Azure 檔案儲存體針對未在相關聯訂用帳戶的 AAD 租使用者上建立[Aad 網域服務（AAD ds）](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview)的儲存體帳戶[啟用 Azure Active Directory 網域服務（aad ds）驗證](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-enable)時，就會發生錯誤 AadDsTenantNotFound。  
+當您嘗試在未于相關聯訂用帳戶的 AAD 租使用者上建立[Aad 網域服務（AAD DS）](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview)的儲存體帳戶[Azure 檔案儲存體上啟用 AZURE ACTIVE DIRECTORY DOMAIN SERVICES （Azure AD DS）驗證](storage-files-identity-auth-active-directory-domain-service-enable.md)時，就會發生錯誤 AadDsTenantNotFound。  
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 在您儲存體帳戶部署所在訂用帳戶的 AAD 租用戶上啟用 AAD DS。 您必須有 AAD 租用戶的系統管理員權限，才能建立受控網域。 如果您不是 Azure AD 租用戶的系統管理員，請連絡系統管理員，並遵循[使用 Azure 入口網站啟用 Azure Active Directory Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started) 的逐步指導。
 
@@ -314,7 +311,7 @@ Net use 命令會將斜線 (/) 解譯為命令列選項。 如果您的使用者
 
 錯誤「發生系統錯誤1359。 當您嘗試使用以數位字元開頭的網域 DNS 名稱，針對 AAD DS 啟用 AAD DS 驗證來連線到檔案共用時，就會發生內部錯誤。 例如，如果您的 AAD DS 網域 DNS 名稱是 "1domain"，當您嘗試使用 AAD 認證掛接檔案共用時，就會收到此錯誤。 
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 目前，您可以考慮使用適用于下列規則的新網域 DNS 名稱來重新部署 AAD DS：
 - 名稱的開頭不能是數位字元。

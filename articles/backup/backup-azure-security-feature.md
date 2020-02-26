@@ -4,12 +4,12 @@ description: 了解如何使用 Azure 備份的安全性功能，讓備份更安
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/08/2017
-ms.openlocfilehash: c3c62f8ea7813c14fa6e19d825a5253de18f6639
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 7213f26493a118c2cb32f8f9935b4954176b99a2
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172686"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586388"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>利用安全性功能協助保護使用 Azure 備份的混合式備份
 
@@ -108,7 +108,7 @@ ms.locfileid: "74172686"
 
 本文所提的安全性功能可提供對付目標攻擊的防禦機制。 更重要的是，如果發生攻擊，這些功能可讓您復原資料。
 
-## <a name="troubleshooting-errors"></a>錯誤疑難排解
+## <a name="troubleshooting-errors"></a>疑難排解錯誤
 
 | 作業 | 錯誤詳細資料 | 解決方案 |
 | --- | --- | --- |
@@ -120,5 +120,5 @@ ms.locfileid: "74172686"
 
 - [開始使用 Azure 復原服務保存庫](backup-azure-vms-first-look-arm.md)以啟用這些功能。
 - [下載最新的 Azure 復原服務代理程式](https://aka.ms/azurebackup_agent)，以協助保護 Windows 電腦及防護備份資料以免遭受攻擊。
-- [下載最新的 Azure 備份伺服器](https://aka.ms/latest_azurebackupserver)，以協助保護工作負載及防護備份資料以免遭受攻擊。
+- [下載最新的 Azure 備份伺服器](https://support.microsoft.com/help/4457852/microsoft-azure-backup-server-v3)，以協助保護工作負載及防護備份資料以免遭受攻擊。
 - [下載適用於 System Center 2012 R2 Data Protection Manager 的 UR12](https://support.microsoft.com/help/3209592/update-rollup-12-for-system-center-2012-r2-data-protection-manager) 或[下載適用於 System Center 2016 Data Protection Manager 的 UR2](https://support.microsoft.com/help/3209593/update-rollup-2-for-system-center-2016-data-protection-manager)，以協助保護工作負載及防護備份資料以免遭受攻擊。

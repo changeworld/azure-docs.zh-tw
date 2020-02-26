@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: 97975d72214426907a2ab91f0d3cd98d0ce6734b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 39835d9d73adcbe474d3b70dfced313e18d1a3b3
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693484"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603427"
 ---
 # <a name="security-alerts-map-and-threat-intelligence"></a>安全性警示地圖和威脅情報
 本文可協助您使用的 Azure 資訊安全中心安全性警訊地圖和以安全性事件為基礎的威脅情報地圖，以解決安全性相關問題。
@@ -64,5 +64,3 @@ ms.locfileid: "73693484"
 * [Azure 資訊安全中心的安全性健全狀況監視](security-center-monitoring.md)。 了解如何監視 Azure 資源的健全狀況。
 * [了解 Azure 資訊安全中心的安全性警示](https://docs.microsoft.com/azure/security-center/security-center-alerts-type)。 了解不同類型的安全性警示。
 * 《[Azure 資訊安全中心疑難排解指南](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide)》。 了解如何針對資訊安全中心的常見問題進行疑難排解。
-* [Azure 資訊安全中心常見問題集](security-center-faq.md)。 尋找有關使用服務常見問題的答案。
-* [Azure 安全性部落格](https://blogs.msdn.com/b/azuresecurity/)。 尋找有關 Azure 安全性與相容性的部落格文章。

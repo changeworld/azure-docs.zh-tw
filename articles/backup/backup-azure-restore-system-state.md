@@ -4,12 +4,12 @@ description: 如何從 Azure 中的備份來還原 Windows Server 系統狀態�
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 08/18/2017
-ms.openlocfilehash: 8e256fbac0651b4c237c540151b3377927989d36
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 6d46a091a4e620e26d05735f12a201009663e65d
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172827"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602461"
 ---
 # <a name="restore-system-state-to-windows-server"></a>將系統狀態還原到 Windows Server
 
@@ -159,7 +159,7 @@ ms.locfileid: "74172827"
 系統狀態備份中包含了 Active Directory 資料。 請使用下列步驟將 Active Directory Domain Services (AD DS) 從目前的狀態還原到先前的狀態。
 
 1. 將網域控制站重新啟動為目錄服務還原模式 (DSRM)。
-2. 遵循[此處](https://technet.microsoft.com/library/cc794755(v=ws.10).aspx)的步驟，以使用 Windows Server Backup Cmdlet 來復原 AD DS。
+2. 遵循[此處](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-nonauthoritative-restore)的步驟，以使用 Windows Server Backup Cmdlet 來復原 AD DS。
 
 ## <a name="troubleshoot-failed-system-state-restore"></a>針對失敗的系統狀態還原進行疑難排解
 

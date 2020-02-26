@@ -3,12 +3,12 @@ title: 關於 Azure VM 備份
 description: 在本文中，您將瞭解 Azure 備份服務如何備份 Azure 虛擬機器，以及如何遵循最佳作法。
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: b38c61adaf334eacb7d85292d4174189d6fddc46
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8ffbf0d0164cbf6f085518d57566b0befde6e124
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75391889"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597247"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Azure VM 備份總覽
 
@@ -58,12 +58,7 @@ Bek 也會一併備份。 因此，如果 Bek 遺失，授權的使用者就可�
 
 Azure 備份會根據備份排程來取得快照集。
 
-- **Windows vm：** 對於 Windows Vm，備份服務會與 VSS 協調，以取得 VM 磁片的應用程式一致快照集。
-
-  - 根據預設，Azure 備份會建立完整的 VSS 備份。 [深入了解](https://blogs.technet.com/b/filecab/archive/2008/05/21/what-is-the-difference-between-vss-full-backup-and-vss-copy-backup-in-windows-server-2008.aspx)。
-  - 若要變更設定，讓 Azure 備份採用 VSS 複本備份，請從命令提示字元設定下列登錄機碼：
-
-    **REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgent"/v USEVSSCOPYBACKUP/t REG_SZ/d TRUE/f**
+- **Windows vm：** 對於 Windows Vm，備份服務會與 VSS 協調，以取得 VM 磁片的應用程式一致快照集。  根據預設，Azure 備份會進行完整的 VSS 備份（它會截斷應用程式的記錄，例如備份時的 SQL Server，以取得應用層級一致的備份）。  如果您在 Azure VM 備份上使用 SQL Server 資料庫，則可以修改設定以進行 VSS 複本備份（以保留記錄）。 如需詳細資訊，請參閱 [本篇文章](https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot#troubleshoot-vm-snapshot-issues)。
 
 - **Linux vm：** 若要採用 Linux Vm 的應用程式一致快照集，請使用 Linux 前置腳本和後置腳本架構來撰寫您自己的自訂腳本，以確保一致性。
 
@@ -102,7 +97,7 @@ Azure 備份會根據備份排程來取得快照集。
 - **磁片變換：** 如果正在進行增量備份的受保護磁片具有超過 200 GB 的每日變換，則備份可能需要很長一段時間（超過八小時）才能完成。
 - **備份版本：** 最新版本的備份（也稱為「立即還原」版本）使用比「總和檢查碼比較」更優化的進程來識別變更。 但是，如果您使用「立即還原」並已刪除備份快照集，則備份會切換為總和檢查碼比較。 在此情況下，備份作業將會超過24小時（或失敗）。
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳作法
 
 當您要設定 VM 備份時，我們建議您遵循下列做法：
 
@@ -129,7 +124,7 @@ Azure 備份會根據備份排程來取得快照集。
 --- | --- | ---
 作業系統磁碟 | 32 TB | 17 GB
 本機/暫存磁碟 | 135 GB | 5 GB (未包含備份)
-資料磁碟 1 | 32 TB| 30GB
+資料磁碟 1 | 32 TB| 30 GB
 資料磁碟 2 | 32 TB | 0 GB
 
 在此案例中，VM 的實際容量為 17 GB + 30 GB + 0 GB = 47 GB。 這個受保護的實例大小（47 GB）會成為每月帳單的基礎。 當 VM 中的資料量增加時，用於計費變更的受保護實例大小會符合。

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: memildin
-ms.openlocfilehash: 32cc4b01d68ee7a15ae7cfa2259d234cbcd143c4
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: ef1684f11349696c22a290c90469a8d94f922e58
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202057"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603989"
 ---
 # <a name="investigate-incidents-and-alerts-in-azure-security-center-retired"></a>調查 Azure 資訊安全中心中的事件和警示（已淘汰）
 本檔可協助您使用 Azure 資訊安全中心中的調查功能（預覽）來調查安全性事件和警示。
@@ -40,14 +40,14 @@ ms.locfileid: "71202057"
 ## <a name="how-investigation-works"></a>調查的運作方式？
 調查是由佔用調查儀表板中央區域的圖表組成。 圖表永遠會將焦點放在特定實體，並且呈現與它相關的實體。 實體可以是安全性警示、使用者、電腦或事件。
 
-![地圖](./media/security-center-investigation/security-center-investigation-fig1.png)
+![對應](./media/security-center-investigation/security-center-investigation-fig1.png)
 
 使用者可以藉由在圖表中按一下某個實體，從該實體瀏覽到另一個實體。 圖表會自動將選取的實體及其相關實體置中。 不再相關的實體可能會從圖表中移除。
 
 ### <a name="investigation-path"></a>調查路徑
 當使用者瀏覽至不同實體時，調查路徑會協助追蹤調查內容，並允許快速瀏覽。 包含調查結果的事件永遠是調查路徑中最左邊的事件。
 
-![`Path`](./media/security-center-investigation/security-center-investigation-fig2.png)
+![Path](./media/security-center-investigation/security-center-investigation-fig2.png)
 
 ### <a name="general-information"></a>一般資訊
 當實體出現在圖表中時，索引標籤會顯示這個實體的其他資訊。 [資訊] 索引標籤會顯示各種可用資訊來源的實體一般資訊。
@@ -72,11 +72,11 @@ ms.locfileid: "71202057"
 
 ### <a name="exploration"></a>探索
 
-[探索] 索引標籤可讓調查員檢查與各種問題 (與實體相關) 相關的資料。 例如，調查機器時，針對它執行的處理序清單會顯示在 [探索] 索引標籤中。在某些情況下，[探索] 索引標籤會呈現可能表示可疑問題的資料。 調查員可以檢查索引標籤內的資料，或在搜尋畫面中開啟以檢查大型資料集，以及使用進階搜尋選項，例如篩選和匯出至 Excel。
+[探索] 索引標籤可讓調查員檢查與各種問題 (與實體相關) 相關的資料。 例如，調查機器時，在它上執行的進程清單會顯示在 [探索] 索引標籤中。在某些情況下，[探索] 索引標籤會顯示可能表示可疑問題的資料。 調查員可以檢查索引標籤內的資料，或在搜尋畫面中開啟以檢查大型資料集，以及使用進階搜尋選項，例如篩選和匯出至 Excel。
 
 ![探索](./media/security-center-investigation/security-center-investigation-fig6.png)
 
-### <a name="timeline"></a>時間表
+### <a name="timeline"></a>時間軸
 
 圖表中顯示的大部分資料和各種索引標籤，是在特定時間週期相關。 此時間範圍是使用圖表左上方的時間範圍選取器進行設定。 調查員有各種方法可以選取時間範圍。
 
@@ -118,6 +118,3 @@ ms.locfileid: "71202057"
 * [管理及回應 Azure 資訊安全中心的安全性警示](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)。 了解如何在資訊安全中心管理警示，以及回應安全性事件。
 * [Azure 資訊安全中心的安全性健全狀況監視](security-center-monitoring.md)。 了解如何監視 Azure 資源的健全狀況。
 * [了解 Azure 資訊安全中心的安全性警示](https://docs.microsoft.com/azure/security-center/security-center-alerts-type)。 了解不同類型的安全性警示。
-* [Azure 資訊安全中心疑難排解指南](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide)。 了解如何針對資訊安全中心的常見問題進行疑難排解。
-* [Azure 資訊安全中心常見問題集](security-center-faq.md)。 尋找有關使用服務的常見問題。
-* [Azure 安全性部落格](https://blogs.msdn.com/b/azuresecurity/)。 尋找有關 Azure 安全性與相容性的部落格文章。

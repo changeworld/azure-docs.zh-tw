@@ -11,16 +11,16 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 9ed2cc8bfb10d916218417a7dd27010638d2a927
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 8272867f5b6144b92dbffcf96cc539eb82f75801
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810273"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587346"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>使用 Intelligent Insights Azure SQL Database 效能診斷記錄
 
-此頁面提供有關如何使用 [Intelligent Insights](sql-database-intelligent-insights.md) 所產生 Azure SQL Database 效能診斷記錄的使用方式、其格式及其所含資料的資訊，來因應您的自訂開發需求。 您可以將此診斷記錄傳送至[Azure 監視器記錄](../azure-monitor/insights/azure-sql.md)、 [Azure 事件中樞](../azure-monitor/platform/resource-logs-stream-event-hubs.md)、 [Azure 儲存體](sql-database-metrics-diag-logging.md#stream-into-storage)或協力廠商解決方案，以取得自訂的 DevOps 警示和報告功能。
+此頁面提供有關如何使用 [Intelligent Insights](sql-database-intelligent-insights.md) 所產生 Azure SQL Database 效能診斷記錄的使用方式、其格式及其所含資料的資訊，來因應您的自訂開發需求。 您可以將此診斷記錄傳送至[Azure 監視器記錄](../azure-monitor/insights/azure-sql.md)、 [Azure 事件中樞](../azure-monitor/platform/resource-logs-stream-event-hubs.md)、 [Azure 儲存體](sql-database-metrics-diag-logging.md#stream-diagnostic-telemetry-into-azure-storage)或協力廠商解決方案，以取得自訂的 DevOps 警示和報告功能。
 
 ## <a name="log-header"></a>記錄標頭
 
@@ -84,12 +84,12 @@ Intelligent Insights 效能記錄的下一個區段包含透過內建的人工�
 | MAXDOP 增加 | <li>查詢雜湊</li><li>CXP 等候時間</li><li>等候時間</li> |
 | 頁面閂鎖爭用 | <li>造成爭用之查詢的查詢雜湊</li> |
 | 遺漏索引 | <li>查詢雜湊</li> |
-| 新查詢 | <li>新查詢的查詢雜湊</li> |
+| 新增查詢 | <li>新查詢的查詢雜湊</li> |
 | 不尋常的等候統計資料 | <li>不尋常的等候類型</li><li>查詢雜湊</li><li>查詢等候時間</li> |
 | TempDB 爭用 | <li>造成爭用之查詢的查詢雜湊</li><li>整體資料庫頁面閂鎖爭用等候時間的查詢歸屬 [%]</li> |
 | 彈性集區 DTU 不足 | <li>彈性集區</li><li>DTU 取用量最高的資料庫</li><li>取用量最高之取用者所使用的不良 DTU 百分比</li> |
 | 計畫迴歸 | <li>查詢雜湊</li><li>良好計畫識別碼</li><li>不良計畫識別碼</li> |
-| 資料庫範圍組態值變更 | <li>與預設值相比的資料庫範圍組態變更</li> |
+| 資料庫範圍設定值變更 | <li>與預設值相比的資料庫範圍組態變更</li> |
 | 用戶端執行速度太慢 | <li>查詢雜湊</li><li>等候時間</li> |
 | 定價層降級 | <li>文字通知</li> |
 

@@ -3,12 +3,12 @@ title: 範本函式-陣列和物件
 description: 描述 Azure Resource Manager 範本中用來使用陣列和物件的函式。
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: a38ab0fb2ddb15c3e853ae1b249df9a8364c6910
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 1359951c00ba04e641ae84636459a8836924c729
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207361"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591178"
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager 範本的陣列和物件函式
 
@@ -1067,7 +1067,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ## <a name="range"></a>range
 
-`range(startingInteger, numberOfElements)`
+`range(startIndex, count)`
 
 從起始整數建立整數陣列，且其中包含一些項目。
 
@@ -1075,8 +1075,8 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 | 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
-| startingInteger |是 |int |陣列中的第一個整數。 |
-| numberofElements |是 |int |陣列中的整數數目。 |
+| startIndex |是 |int |陣列中的第一個整數。 StartIndex 和計數的總和不得大於2147483647。 |
+| count |是 |int |陣列中的整數數目。 必須是最多10000的非負整數。 |
 
 ### <a name="return-value"></a>傳回值
 

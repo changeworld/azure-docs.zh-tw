@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: 6ec818ff77664fcc038412f79fffc1e3e05b82f0
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 089fcc89f330e47a09187b5338176bf23fd801bb
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294247"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603761"
 ---
 # <a name="supported-platforms"></a>支援的平台 
 
@@ -97,7 +97,7 @@ Azure 資訊安全中心支援下列 Azure PaaS 資源：
 * 儲存體帳戶
 * App Service
 * 函式
-* 雲端服務
+* 服務雲端
 * VNet
 * 子網路
 * NIC
@@ -112,7 +112,7 @@ Azure 資訊安全中心支援下列 Azure PaaS 資源：
 * 事件中樞命名空間
 * 邏輯應用程式
 * Redis
-* Data Lake Analytics
+* 資料湖分析
 * Data Lake Store
 * 金鑰保存庫
 
@@ -127,5 +127,3 @@ Azure 資訊安全中心支援下列 Azure PaaS 資源：
 - 了解如何[規劃及了解採用 Azure 資訊安全中心的設計考量](security-center-planning-and-operations-guide.md)。
 - 瞭解[適用于不同雲端環境的功能](security-center-services.md)。
 - 深入瞭解[Azure 資訊安全中心中的 vm & 伺服器的威脅偵測](security-center-alerts-iaas.md)。
-- 尋找[有關使用 Azure 資訊安全中心的常見問題](security-center-faq.md)。
-- 尋找[有關 Azure 安全性與合規性的部落格文章](https://blogs.msdn.com/b/azuresecurity/)。

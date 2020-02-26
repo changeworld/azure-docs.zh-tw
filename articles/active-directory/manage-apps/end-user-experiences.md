@@ -12,12 +12,12 @@ ms.date: 09/27/2019
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f9ff446bae0a010b12e84172d5af60c6ca81c0e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 72b3e37a423442194b81e3d10ecc7157201ff8be
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76896894"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586048"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Azure Active Directory 中的應用程式使用者體驗
 
@@ -32,7 +32,7 @@ Azure Active Directory (Azure AD) 提供幾種可自訂的方式，來對您組�
 
 ## <a name="azure-ad-access-panel"></a>Azure AD 存取面板
 
-位於 https://myapps.microsoft.com 的「存取面板」是一種 Web 入口網站，可讓 Azure Active Directory 中擁有組織帳戶的使用者檢視和啟動 Azure AD 系統管理員已授與他們存取權的雲端應用程式。 如果您是 [Azure Active Directory Premium](https://azure.microsoft.com/pricing/details/active-directory/) 的使用者，也可以透過 [存取面板] 使用自助式群組管理功能。
+https://myapps.microsoft.com 的存取面板是網頁型入口網站，可讓使用者在 Azure Active Directory 中具有組織帳戶，以查看並啟動 Azure AD 系統管理員已授與他們存取權的應用程式。 如果您是 [Azure Active Directory Premium](https://azure.microsoft.com/pricing/details/active-directory/) 的使用者，也可以透過 [存取面板] 使用自助式群組管理功能。
 
 ![螢幕擷取畫面顯示 Azure AD 存取面板入口網站](media/what-is-single-sign-on/azure-ad-access-panel.png)
 

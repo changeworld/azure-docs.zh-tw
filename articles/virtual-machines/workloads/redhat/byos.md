@@ -14,16 +14,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: a54e1c9cbc9a80139d71a89f86ac51ecf5ce9902
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: a53a27a92b393c38d1f49efbd50d91fa1a2e9657
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190507"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597689"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux 在 Azure 中攜帶自己的訂用帳戶黃金映射
 
 Red Hat Enterprise Linux （RHEL）映射可透過隨用隨付（PAYG）或自備訂用帳戶（Red Hat 黃金圖）模型，在 Azure 中提供。 本檔概要說明 Azure 中的 Red Hat 黃金映射。
+
+>[!NOTE]
+> RHEL BYOS 黃金映射適用于 Azure 公用（商業）和 Azure Government 雲端。 它們無法在 Azure 中國或 Azure Blackforest 雲端中使用。
 
 ## <a name="important-points-to-consider"></a>需要考慮的要點
 

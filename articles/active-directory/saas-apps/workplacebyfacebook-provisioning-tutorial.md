@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7d8a7881c00427023e5f174461b3d8b24d83444
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 22576be8dec021f0f18a6e2dda16891ce70d4f13
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121456"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603219"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>教學課程：設定 Workplace by Facebook 來自動佈建使用者
 
@@ -46,12 +46,12 @@ https://portal.azure.com/?Microsoft_AAD_IAM_userProvisioningEnableCredentialsOve
 #### <a name="how-can-i-tell-if-my-application-has-been-migrated"></a>如何判斷我的應用程式是否已遷移？ 
 當您的應用程式遷移時，將會移除 [授權] 區段中有關 upcomming 變更的橫幅，而 [秘密權杖] 欄位將會取代為藍色授權按鈕。 
 
-#### <a name="the-admin-credentials-section-is-greyed-out-on-my-application-and-i-cant-save-why"></a>我的應用程式上的 [管理員認證] 區段呈現灰色，因此無法儲存。 為什麼？
+#### <a name="the-admin-credentials-section-is-greyed-out-on-my-application-and-i-cant-save-why"></a>我的應用程式上的 [管理員認證] 區段呈現灰色，因此無法儲存。 原因為何？
 我們已鎖定現有工作場所客戶的 [系統管理員認證] 區段。 當您的租使用者已遷移至新的 Workplace 應用程式時，您將能夠再次更新 [管理員認證] 區段。 如果您無法等待，您可以使用上述 URL 來編輯您的應用程式。 
 
  
 #### <a name="when-will-these-changes-happen"></a>這些變更何時會發生？
-Workplace 的所有新實例都已使用新的整合/授權方法。 現有的整合將于二月逐步遷移。 所有租使用者的遷移將會在該月結束後完成。 
+Workplace 的所有新實例都已使用新的整合/授權方法。 可能會逐漸遷移現有的整合。 Workplace 小組已于2月28日提供截止時間的延伸模組，可能為-1。 
 
 ## <a name="capabilities-supported"></a>支援的功能
 > [!div class="checklist"]
@@ -60,7 +60,7 @@ Workplace 的所有新實例都已使用新的整合/授權方法。 現有的�
 > * 在 Azure AD 與 Workplace by Facebook 之間保持使用者屬性同步
 > * [單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/workplacebyfacebook-tutorial)至 Workplace by Facebook （建議選項）
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 

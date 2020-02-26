@@ -3,16 +3,15 @@ title: Azure Kubernetes Service 的支援原則（AKS）
 description: 瞭解 Azure Kubernetes Service （AKS）支援原則、共同責任，以及處於預覽狀態的功能（或 Alpha 或搶鮮版（Beta））。
 services: container-service
 author: jnoller
-ms.service: container-service
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: 9a68a0d0a288a27d67a9615385391c06be2b662d
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: a5d90106a85a61cbf499c4c08130392b922a45f0
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76767371"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593575"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes Service 的支援原則
 
@@ -41,11 +40,11 @@ AKS 不是完全受控的叢集解決方案。 某些元件（例如背景工作
 這些服務是以 Microsoft 和 AKS 團隊部署、操作及負責服務可用性和功能的意義來*管理*。 客戶無法改變這些受管理的元件。 Microsoft 會限制自訂，以確保一致且可調整的使用者體驗。 如需可完全自訂的解決方案，請參閱[AKS Engine](https://github.com/Azure/aks-engine)。
 
 > [!NOTE]
-> AKS 背景工作節點會在 Azure 入口網站中顯示為一般的 Azure IaaS 資源。 但這些虛擬機器會部署到自訂的 Azure 資源群組（前面加上 MC\\*）。 您可以變更 AKS 背景工作節點。 例如，您可以使用安全殼層（SSH），以變更一般虛擬機器的方式變更 AKS 背景工作節點（不過，您無法變更基本 OS 映射，而且變更可能不會透過更新或重新開機來保存），而且您可以將其他 Azure 資源附加至 AKS背景工作節點。 但是當您在 *頻外管理和自訂* 時進行變更時，AKS 叢集可能會變成不受支援。 除非 Microsoft 支援服務會引導您進行變更，否則請避免變更背景工作節點。
+> AKS 背景工作節點會在 Azure 入口網站中顯示為一般的 Azure IaaS 資源。 但這些虛擬機器會部署到自訂的 Azure 資源群組（前面加上 MC\\*）。 您可以變更 AKS 背景工作節點。 例如，您可以使用安全殼層（SSH），以變更一般虛擬機器的方式變更 AKS 背景工作節點（不過，您無法變更基本 OS 映射，而且變更可能不會透過更新或重新開機來保存），而且您可以將其他 Azure 資源附加至 AKS背景工作節點。 但是當您在*頻外管理和自訂*時進行變更時，AKS 叢集可能會變成不受支援。 除非 Microsoft 支援服務會引導您進行變更，否則請避免變更背景工作節點。
 
 如上面所述發出不支援的作業（例如，所有代理程式節點的頻外解除配置），則會呈現不支援的叢集。 AKS 保留封存控制飛機的權利，此中心已設定為不超過30天的延長期間。 AKS 會維護叢集 etcd 中繼資料的備份，而且可以輕易地重新配置叢集。 此重新配置可由任何 PUT 作業起始，使叢集回到支援，例如升級或調整為使用中的代理程式節點。
 
-## <a name="shared-responsibility"></a>共同負擔的責任
+## <a name="shared-responsibility"></a>共同責任
 
 建立叢集時，客戶會定義 AKS 建立的 Kubernetes 背景工作角色節點。 客戶工作負載會在這些節點上執行。 客戶擁有和可以查看或修改背景工作節點。
 

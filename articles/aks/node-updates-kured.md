@@ -2,17 +2,14 @@
 title: 在 Azure Kubernetes Service （AKS）中使用 kured 更新並重新啟動 Linux 節點
 description: 瞭解如何在 Azure Kubernetes Service （AKS）中使用 kured 更新 Linux 節點並自動重新開機
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 02/28/2019
-ms.author: mlearned
-ms.openlocfilehash: c9e7c23806d4a0a0e2c0b36122d9eb087c986556
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: b0bb7a3309cf1b56a5779b54b34310aa01f3e719
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549167"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594935"
 ---
 # <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service （AKS）中將安全性和核心更新套用至 Linux 節點
 
@@ -39,7 +36,7 @@ ms.locfileid: "76549167"
 
 某些安全性更新 (例如核心更新) 需要重新啟動節點，才能完成此程序。 需要重新開機的 Linux 節點會建立名為 */var/run/reboot-required*的檔案。 此重新啟動程序不會自動執行。
 
-您可以使用自己的工作流程和程序來處理節點重新啟動，或使用 `kured` 來協調此程序。 在中, 會部署 [DaemonSet][DaemonSet], 在叢集中的每個 Linux 節點上執行 pod。`kured` DaemonSet 中的這些 pod 會監看是否有 */var/run/reboot-required*檔案，然後起始重新開機節點的程式。
+您可以使用自己的工作流程和程序來處理節點重新啟動，或使用 `kured` 來協調此程序。 使用 `kured`，部署的[DaemonSet][DaemonSet]會在叢集中的每個 Linux 節點上執行 pod。 DaemonSet 中的這些 pod 會監看是否有 */var/run/reboot-required*檔案，然後起始重新開機節點的程式。
 
 ### <a name="node-upgrades"></a>節點升級
 

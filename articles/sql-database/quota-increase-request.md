@@ -8,12 +8,12 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
 ms.date: 02/04/2020
-ms.openlocfilehash: fb576b81adeec99e4080c744749097390d1add1d
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: ff2be6972bb4e8af266d0aa8a56d1879bc1b8b78
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77111094"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586150"
 ---
 # <a name="request-quota-increases-for-azure-sql-database"></a>Azure SQL Database 的要求配額增加
 
@@ -90,7 +90,7 @@ ms.locfileid: "77111094"
 
 如需詳細資訊，請參閱[SQL Database 資源限制和資源管理](sql-database-resource-limits-database-server.md)。
 
-### <a name="enable-subscription-access-to-a-region"></a>啟用區域的訂用帳戶存取
+### <a id="other"></a>啟用區域的訂用帳戶存取
 
 某些供應專案類型無法在每個區域中使用。 您可能會看到如下的錯誤：
 

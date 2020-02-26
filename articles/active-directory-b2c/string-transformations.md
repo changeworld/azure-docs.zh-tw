@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/20/2020
+ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: df0bd87fffba8ed70c60da358b38079d3d017c76
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: e220009ec04ce732d99a53432077d681707e28d1
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505635"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585725"
 ---
 # <a name="string-claims-transformations"></a>字串宣告轉換
 
@@ -127,7 +127,7 @@ ms.locfileid: "77505635"
 
 | Item | TransformationClaimType | 資料類型 | 注意 |
 |----- | ----------------------- | --------- | ----- |
-| InputParameter | value | 字串 | 要設定的字串 |
+| InputParameter | value | 字串 | 要設定的字串。 這個輸入參數支援[字串宣告轉換運算式](string-transformations.md#string-claim-transformations-expressions)。 |
 | OutputClaim | createdClaim | 字串 | 叫用此宣告轉換之後所產生的 ClaimType，並含有輸入參數中指定的值。 |
 
 使用此宣告轉換來設定字串 ClaimType 值。
@@ -297,7 +297,7 @@ ms.locfileid: "77505635"
 | Item | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim |字串 |做為字串格式 {0} 參數的 ClaimType。 |
-| InputParameter | stringFormat | 字串 | 字串格式，包括 {0} 參數。 |
+| InputParameter | stringFormat | 字串 | 字串格式，包括 {0} 參數。 這個輸入參數支援[字串宣告轉換運算式](string-transformations.md#string-claim-transformations-expressions)。  |
 | OutputClaim | outputClaim | 字串 | 叫用此宣告轉換之後所產生的 ClaimType。 |
 
 使用此宣告轉換，利用一個參數 {0} 來將任何字串格式化。 下列範例會建立 **userPrincipalName**。 所有社交識別提供者技術設定檔 (例如 `Facebook-OAUTH`) 會呼叫 **CreateUserPrincipalName** 來產生 **userPrincipalName**。
@@ -333,7 +333,7 @@ ms.locfileid: "77505635"
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim |字串 | 做為字串格式 {0} 參數的 ClaimType。 |
 | InputClaim | inputClaim | 字串 | 做為字串格式 {1} 參數的 ClaimType。 |
-| InputParameter | stringFormat | 字串 | 字串格式，包括 {0} 和 {1} 參數。 |
+| InputParameter | stringFormat | 字串 | 字串格式，包括 {0} 和 {1} 參數。 這個輸入參數支援[字串宣告轉換運算式](string-transformations.md#string-claim-transformations-expressions)。   |
 | OutputClaim | outputClaim | 字串 | 叫用此宣告轉換之後所產生的 ClaimType。 |
 
 使用此宣告轉換，利用兩個參數 ({0} 和 {1}) 來將任何字串格式化。 下列範例會使用指定的格式來建立 **displayName**：
@@ -925,3 +925,12 @@ ms.locfileid: "77505635"
   - **分隔符號**： "，"
 - 輸出宣告：
   - **outputClaim**： ["Admin"，"Author"，"Reader"]
+  
+## <a name="string-claim-transformations-expressions"></a>字串宣告轉換運算式
+Azure AD B2C 自訂原則中的宣告轉換運算式會提供有關租使用者識別碼和技術設定檔識別碼的內容資訊。
+
+  | 運算是 | 描述 | 範例 |
+ | ----- | ----------- | --------|
+ | `{TechnicalProfileId}` | 技術 profileId 名稱。 | Facebook-OAUTH |
+ | `{RelyingPartyTenantId}` | 信賴憑證者原則的租用戶識別碼。 | your-tenant.onmicrosoft.com |
+ | `{TrustFrameworkTenantId}` | 信任架構的租用戶識別碼。 | your-tenant.onmicrosoft.com |

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: memildin
-ms.openlocfilehash: 96efe5271b91f87e30ba26aabe69a0de76e1a791
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b8b8b05f703a3eb05936ca95e2047a13650914cf
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202389"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604257"
 ---
 # <a name="understand-azure-security-center-container-recommendations"></a>了解 Azure 資訊安全中心容器建議
 
@@ -42,9 +42,9 @@ Azure 資訊安全中心提供下列功能協助您保護您的容器：
 ## <a name="recommendations"></a>建議
 使用下表作為參考，協助您了解裝載於 IaaS Linux 機器上的可用容器，以及 Docker 設定的安全性評估。
 
-| 建議 | 描述 | 修復 |
+| 建議 | 描述 | 補救 |
 | --- | --- | --- |
-|補救容器安全性設定中的弱點 |根據設定最佳做法，補救容器安全性設定中的弱點。| 補救容器安全性設定中的弱點：<br>1.檢閱失敗規則的清單。<br>2.根據指定的指示來修正每個規則。|
+|補救容器安全性設定中的弱點 |根據設定最佳做法，補救容器安全性設定中的弱點。| 補救容器安全性設定中的弱點：<br>1. 檢查失敗規則的清單。<br>2. 根據指定的指示來修正每個規則。|
 
 
 ## <a name="next-steps"></a>後續步驟
@@ -59,5 +59,3 @@ Azure 資訊安全中心提供下列功能協助您保護您的容器：
 * [保護 Azure 資訊安全中心內的機器和應用程式](security-center-virtual-machine-protection.md)
 * [在 Azure 資訊安全中心設定安全性原則](tutorial-security-policy.md) -- 了解如何為您的 Azure 訂用帳戶及資源群組設定安全性原則。
 * [管理與回應 Azure 資訊安全中心的安全性警示](security-center-managing-and-responding-alerts.md) -- 了解如何管理與回應安全性警示。
-* [Azure 資訊安全中心常見問題集](security-center-faq.md) -- 尋找有關使用服務的常見問題。
-

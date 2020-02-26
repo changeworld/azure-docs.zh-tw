@@ -6,19 +6,19 @@ ms.service: storage
 ms.topic: article
 ms.date: 02/21/2020
 ms.author: rogarana
-ms.openlocfilehash: 3a9a2a903bd9979cd0f9a09b7589edc6d4fd8962
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 673bf3be59d72b2cc62b9f92af353fee235c5ddc
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77565074"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598811"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-support-for-smb-access"></a>瞭解 SMB 存取的 Azure 檔案儲存體身分識別型驗證支援
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
 
-若要瞭解如何啟用 Azure 檔案共用的 AD 驗證，請參閱[針對 azure 檔案共用啟用透過 SMB 的 Active Directory 驗證](storage-files-active-directory-domain-services-enable.md)。
+若要瞭解如何啟用 Azure 檔案共用的 AD 驗證，請參閱[針對 azure 檔案共用啟用透過 SMB 的 Active Directory 驗證](storage-files-identity-auth-active-directory-enable.md)。
 
-若要瞭解如何為 Azure 檔案共用啟用 Azure AD DS 驗證，請參閱[針對 Azure 檔案儲存體啟用透過 SMB 的 Azure Active Directory 網域服務驗證](storage-files-active-directory-enable.md)。
+若要瞭解如何為 Azure 檔案共用啟用 Azure AD DS 驗證，請參閱[在 Azure 檔案儲存體上啟用 Azure Active Directory Domain Services 驗證](storage-files-identity-auth-active-directory-domain-service-enable.md)。
 
 ## <a name="glossary"></a>詞彙 
 瞭解 Azure 檔案共用的透過 SMB Azure AD 網域服務驗證的一些重要詞彙，會很有説明：
@@ -98,7 +98,7 @@ Azure 檔案共用支援 kerberos 驗證，以便與 Azure AD DS （GA）或 AD 
 
 ### <a name="enable-identity-based-authentication"></a>啟用以身分識別為基礎的驗證
 
-您可以在新的和現有的儲存體帳戶上，使用適用于 Azure 檔案共用的 Azure AD DS （GA）或 AD （預覽）來啟用身分識別型驗證。 只有一個網域服務可用於儲存體帳戶上的檔案存取驗證，這適用于帳戶中的所有檔案共用。 在我們的文章中啟用透過 Azure 檔案儲存體 SMB 進行驗證的檔案共用，以使用 Azure AD DS （GA）的詳細逐步指導方針，請參閱針對[Azure 檔案共用 Active Directory 啟用透過 smb](storage-files-active-directory-domain-services-enable.md)的[Azure Active Directory Domain Services 驗證](storage-files-active-directory-enable.md)（預覽）。
+您可以在新的和現有的儲存體帳戶上，使用適用于 Azure 檔案共用的 Azure AD DS （GA）或 AD （預覽）來啟用身分識別型驗證。 只有一個網域服務可用於儲存體帳戶上的檔案存取驗證，這適用于帳戶中的所有檔案共用。 在[Azure 檔案儲存體 Azure Active Directory Domain Services](storage-files-identity-auth-active-directory-domain-service-enable.md)我們的文章中針對 AD （預覽）使用 Azure AD DS （GA）設定檔案共用的詳細逐步指導方針，請參閱針對[Azure 檔案共用啟用透過 SMB 的 Active Directory 驗證](storage-files-identity-auth-active-directory-enable.md)。
 
 ### <a name="configure-share-level-permissions-for-azure-files"></a>設定 Azure 檔案共用層級權限
 
@@ -126,6 +126,6 @@ Azure 檔案儲存體在將資料複製到 Azure 檔案共用時，支援保留�
 如需有關透過 SMB 進行 Azure 檔案儲存體和以身分識別為基礎之驗證的詳細資訊，請參閱下列資源：
 
 - [規劃 Azure 檔案部署](storage-files-planning.md)
-- [針對 Azure 檔案共用啟用透過 SMB 進行 Active Directory 驗證](storage-files-active-directory-domain-services-enable.md)
-- [啟用 Azure 檔案儲存體上的 Azure Active Directory Domain Services 驗證](storage-files-active-directory-enable.md)
+- [針對 Azure 檔案共用啟用透過 SMB 進行 Active Directory 驗證](storage-files-identity-auth-active-directory-enable.md)
+- [啟用 Azure 檔案儲存體上的 Azure Active Directory Domain Services 驗證](storage-files-identity-auth-active-directory-domain-service-enable.md)
 - [常見問題集](storage-files-faq.md)

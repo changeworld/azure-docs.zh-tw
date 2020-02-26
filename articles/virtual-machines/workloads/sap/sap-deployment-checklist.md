@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/21/2020
+ms.date: 02/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 56b78f4296709206cefb762c87d4d1471bff2df7
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 2c3c52fc85e6c915587db27a3f5ce247fd05ea51
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291510"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598318"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 上的 SAP 工作負載：規劃和部署檢查清單
 
@@ -48,10 +48,13 @@ ms.locfileid: "76291510"
     - 商務持續性和嚴重損壞修復架構。
     - OS、DB、核心和 SAP 支援套件版本的詳細資訊。 Azure Vm 支援 SAP NetWeaver 或 S/4HANA 所支援的每個 OS 版本，這不一定是正確的。 DBMS 版本也是如此。 請檢查下列來源，以配合並視需要升級 SAP 版本、DBMS 版本和 OS 版本，以確保 SAP 和 Azure 支援。 您必須擁有 SAP 和 Azure 支援的發行組合，才能取得 SAP 和 Microsoft 的完整支援。 如有需要，您必須規劃升級某些軟體元件。 如需支援的 SAP、OS 和 DBMS 軟體的詳細資訊，請參閱：
         - [SAP 支援附注 #1928533](https://launchpad.support.sap.com/#/notes/1928533)。 此附注會定義 Azure Vm 上支援的最低 OS 版本。 它也會定義大多數非 HANA 資料庫所需的最小資料庫發行。 最後，它會針對 SAP 支援的 Azure VM 類型提供 SAP 大小調整。
+        - [SAP 支援附注 #2015553](https://launchpad.support.sap.com/#/notes/2015553)。 此附注會定義 Azure 儲存體的支援原則，並支援 Microsoft 所需的關係。
         - [SAP 支援附注 #2039619](https://launchpad.support.sap.com/#/notes/2039619)。 此附注會定義 Azure 的 Oracle 支援矩陣。 Oracle 僅支援將 Windows 和 Oracle Linux 作為 SAP 工作負載的 Azure 上的客體作業系統。 此支援聲明也適用于執行 SAP 實例的 SAP 應用層。 不過，Oracle 不支援透過 Pacemaker 在 Oracle Linux 中使用 SAP 中央服務的高可用性。 如果您需要 Oracle Linux 上 ASCS 的高可用性，您必須使用適用于 Linux 的 SIOS 保護套件。 如需詳細的 SAP 認證資料，請參閱 SAP 支援附注[#1662610-適用于 Linux 的 SIOS 保護套件支援詳細](https://launchpad.support.sap.com/#/notes/1662610)資料。 針對 Windows，支援 SAP 中央服務的 SAP 支援的 Windows Server 容錯移轉叢集解決方案與 Oracle 做為 DBMS 層。
         - [SAP 支援附注 #2235581](https://launchpad.support.sap.com/#/notes/2235581)。 此附注提供不同 OS 版本 SAP Hana 的支援矩陣。
         - [SAP 網站](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)上列出 SAP Hana 支援的 Azure Vm 和[HANA 大型實例](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。
         - [SAP 產品可用性矩陣](https://support.sap.com/en/)。
+        - [SAP 支援附注 #2555629-SAP Hana 2.0 動態分層–虛擬程式和雲端支援](https://launchpad.support.sap.com/#/notes/2555629)
+        - [SAP 支援附注 #1662610-適用于 Linux SIOS 保護套件的支援詳細資料](https://launchpad.support.sap.com/#/notes/1662610)
         - 適用于其他 SAP 特定產品的 SAP 附注。     
     - 我們建議針對 SAP 生產系統進行嚴格的三層式設計。 我們不建議將 ASCS 和/或 DBMS 和（或）應用程式伺服器合併在一個 VM 上。 在 Azure 上的 Windows 客體作業系統上支援使用 SAP 中央服務的多 SID 叢集設定。 但在 Azure 上，Linux 作業系統上的 SAP 中央服務不支援此設定。 您可以在下列文章中找到 Windows 客體作業系統案例的檔：
         - [在 Azure 上搭配 Windows Server 容錯移轉叢集和共用磁碟的 SAP ASCS/SCS 執行個體多重 SID 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-shared-disk)
@@ -102,7 +105,7 @@ ms.locfileid: "76291510"
         - 針對您在規劃階段中所選擇 VM 類型的最大儲存體輸送量和網路輸送量，評估及測試您的 Azure Vm 大小。 您可以在這裡找到資料：
            -  [Azure 中 Windows 虛擬機器的大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)。 請務必考慮調整大小的最大未快取*磁片輸送量*。
            -  [Azure 中 Linux 虛擬機器的大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)。 請務必考慮調整大小的最大未快取*磁片輸送量*。
-   2. 儲存體。
+   2. 容量.
         - 針對代表 SAP 應用層的 Vm，以及針對不區分效能的 Dbms 部署，請至少使用[Azure 標準 SSD 儲存體](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-ssd)。
         - 一般而言，我們不建議使用[Azure 標準 HDD 磁片](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-hdd)。
         - 針對任何遠端效能敏感的 DBMS Vm，使用[Azure 進階儲存體](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd)。
@@ -148,6 +151,21 @@ ms.locfileid: "76291510"
             - SameSubNetDelay = 2000
             - SameSubNetThreshold = 15
             - RoutingHistorylength = 30
+    6. OS 設定或修補程式
+        - 如需在 SAP 上執行 HANA，請閱讀下列注意事項和檔：
+            -   [SAP 支援附注 #2814271-SAP Hana 備份在 Azure 上失敗，發生總和檢查碼錯誤](https://launchpad.support.sap.com/#/notes/2814271)
+            -   [SAP 支援附注 #2753418-因計時器回溯而造成的潛在效能降低](https://launchpad.support.sap.com/#/notes/2753418)
+            -   [SAP 支援附注 #2791572-效能降低，因為 Azure 中的 Hyper-v 缺少 VDSO 支援](https://launchpad.support.sap.com/#/notes/2791572)
+            -   [SAP 支援附注 #2382421-優化 HANA 和 OS 層級上的網路設定](https://launchpad.support.sap.com/#/notes/2382421)
+            -   [SAP 支援附注 #2694118-Red Hat Enterprise Linux Azure 上的 HA 附加元件](https://launchpad.support.sap.com/#/notes/2694118)
+            -   [SAP 支援附注 #1984787-SUSE LINUX Enterprise Server 12：安裝注意事項](https://launchpad.support.sap.com/#/notes/1984787)
+            -   [SAP 支援附注 #2002167-Red Hat Enterprise Linux 7.x：安裝和升級](https://launchpad.support.sap.com/#/notes/0002002167)
+            -   [SAP 支援附註 #2292690 - SAP HANA DB：適用於 RHEL 7 的建議作業系統設定](https://launchpad.support.sap.com/#/notes/0002292690)
+            -   [SAP 支援附注 #2772999-Red Hat Enterprise Linux 8.x：安裝和設定](https://launchpad.support.sap.com/#/notes/2772999)
+            -   [SAP 支援附注 #2777782-SAP Hana DB：適用于 RHEL 8 的建議作業系統設定](https://launchpad.support.sap.com/#/notes/2777782)
+            -   [SAP 支援附注 #2578899-SUSE Linux Enterprise Server 15：安裝注意事項](https://launchpad.support.sap.com/#/notes/2578899)
+            -   [SAP 支援附注 # https://launchpad.support.sap.com/#/notes/0002455582)(https://launchpad.support.sap.com/#/notes/0002455582)
+            -    [SAP 支援附注 #2729475-HWCCT 失敗，錯誤為「不支援「虛擬機器」，因為 Azure Vm 已通過 SAP Hana 認證](https://launchpad.support.sap.com/#/notes/2729475)
 1. 測試您的高可用性和嚴重損壞修復程式。
    1. 藉由關閉 Vm （Windows 客體作業系統）或將作業系統置於緊急模式（Linux 客體作業系統）來模擬容錯移轉情況。 此步驟將協助您找出您的容錯移轉設定是否如設計正常。
    1. 測量執行容錯移轉所花費的時間。 如果時間太長，請考慮：
@@ -188,7 +206,7 @@ ms.locfileid: "76291510"
 10. 部署基礎結構之後，請根據 SAP 支援附注[#500235](https://launchpad.support.sap.com/#/notes/500235)和[#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)，測試和評估 sap 應用層 vm 與 DBMS vm 之間的網路延遲。 根據[SAP 支援附注 #1100926](https://launchpad.support.sap.com/#/notes/1100926/E)中的網路延遲指引來評估結果。 網路延遲應為適中或良好的範圍。 例外狀況適用于 Vm 與 HANA 大型實例單位之間的流量，如[這篇文章](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance)中所述。 請確定適用于[SAP 工作負載的 azure 虛擬機器 DBMS 部署考慮](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#azure-network-considerations)和[azure 上的 SAP Hana 基礎結構設定和作業](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)都不會有任何限制，會套用至您的部署。
 11. 請確定您的 Vm 已部署至正確的[azure 鄰近放置群組](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)（如 Azure 鄰近放置群組中所述），[以取得 SAP 應用程式的最佳網路延遲](sap-proximity-placement-scenarios.md)。
 11. 在套用工作負載之前，請先執行針對概念證明階段列出的其他所有檢查。
-12. 當工作負載適用時，記錄 Azure 中系統的資源耗用量。 比較此耗用量與舊版平臺的記錄。 如果您發現有很大的差異，請調整未來部署的 VM 大小。 請記住，當您縮減時，也會減少 Vm 的儲存體和網路頻寬。
+12. 當工作負載適用時，記錄 Azure 中系統的資源耗用量。 比較此耗用量與舊版平臺的記錄。 如果您發現有很大的差異，請調整未來部署的 VM 大小。 請記住，當您縮減時，Vm 的儲存體和網路頻寬也會減少。
     - [Azure 中的 Windows 虛擬機器大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)
     - [Azure 中的 Linux 虛擬機器大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json) 
 13. 使用系統複製功能和程式進行實驗。 目標是讓您輕鬆複製開發系統或測試系統，讓專案小組可以快速地取得新的系統。 請考慮使用[SAP LaMa](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+Landscape+Management+%28SAP+LaMa%29+at+a+Glance)來進行這些工作。
@@ -209,7 +227,7 @@ ms.locfileid: "76291510"
     - 如果您需要將您的遷移與 SAP 版本升級結合，請使用[SAP sql-dmo](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/)進程。 請記住，並非所有來源 DBMS 和目標 DBMS 的組合都受到支援。 您可以在不同的 SQL-DMO 版本的特定 SAP 支援附注中找到詳細資訊。 例如， [SUM 2.0 SP04 的資料庫移轉選項（sql-dmo）](https://launchpad.support.sap.com/#/notes/2644872)。
     - 透過網際網路或透過 ExpressRoute 測試資料傳輸輸送量是否較佳，以防您需要移動備份或 SAP 匯出檔案。 如果您要透過網際網路移動資料，您可能需要變更某些您必須為未來生產系統準備的網路安全性群組/應用程式安全性群組規則。
 1.  將系統從舊平臺移至 Azure 之前，請先收集資源耗用量資料。 有用的資料包含 CPU 使用量、儲存體輸送量和 IOPS 資料。 特別是從 DBMS 層單位收集此資料，但也從應用層單位收集。 此外，也請測量網路和儲存體延遲。
-1.  重新檢查 SAP 支援附注、SAP Hana 硬體目錄，以及 SAP PAM。 請確定在 Azure 支援的 Vm、這些 Vm 中支援的 OS 版本，以及支援的 SAP 和 DBMS 版本中，沒有任何變更。
+1.  重新檢查 SAP 支援附注和所需的 OS 設定、SAP Hana 硬體目錄，以及 SAP PAM。 請確定在 Azure 支援的 Vm、這些 Vm 中支援的 OS 版本，以及支援的 SAP 和 DBMS 版本中，沒有任何變更。
 1.  更新部署腳本，將您在 VM 類型和 Azure 功能上所做的最新決策納入考慮。
 1.  部署基礎結構和應用程式之後，請驗證：
     - 已部署正確的 VM 類型，且具有正確的屬性和儲存體大小。
@@ -219,7 +237,7 @@ ms.locfileid: "76291510"
     - Vm 已依照規劃部署到 Azure 可用性設定組中。
     - Azure 進階儲存體用於延遲敏感磁片，或需要[99.9% 的單一 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) 。
     - 已正確部署 Azure 寫入加速器。
-        - 請確定在 Vm 中，儲存空間或等量集合已在需要寫入加速器的磁片上正確建立。
+        - 請確定在 Vm、儲存空間或等量集合中，已在需要寫入加速器的磁片上正確建立。
         - 檢查[Linux 上的軟體 RAID](https://docs.microsoft.com/azure/virtual-machines/linux/configure-raid)設定。
         - 檢查[Azure 中 Linux vm 上的 LVM](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm)設定。
     - [Azure 受控磁片](https://azure.microsoft.com/services/managed-disks/)會以獨佔方式使用。

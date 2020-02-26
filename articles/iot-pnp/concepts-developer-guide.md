@@ -7,12 +7,12 @@ ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 55f3e42687c90936c33208684b58792b3e2b9f85
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 5fda51e6d2f62b9cbef0fcac22d5bb2ea0df905b
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905787"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605215"
 ---
 # <a name="iot-plug-and-play-preview-modeling-developer-guide"></a>IoT 隨插即用預覽模型開發人員指南
 
@@ -67,9 +67,9 @@ IoT 隨插即用預覽版可讓您建立裝置，以向 Azure IoT 應用程式�
 
 透過 DTDL，您可以使用介面來描述裝置的功能。 介面會描述您的裝置中所執行的_屬性_、_遙測_和_命令_：
 
-- `Properties`答案中所述步驟，工作帳戶即會啟用。 屬性是代表裝置狀態的資料欄位。 使用屬性來表示裝置的持久狀態，例如 coolant 泵的關閉狀態。 屬性也可以代表基本裝置屬性，例如裝置的「固件」版本。 您可以將屬性宣告為唯讀或可寫入。
-- `Telemetry`答案中所述步驟，工作帳戶即會啟用。 遙測欄位代表來自感應器的測量。 每當您的裝置接受感應器測量時，它應該會傳送包含感應器資料的遙測事件。
-- `Commands`答案中所述步驟，工作帳戶即會啟用。 命令代表裝置的使用者可以在裝置上執行的方法。 例如，可切換或關閉風扇的 reset 命令或命令。
+- `Properties`第 1 課：建立 Windows Azure 儲存體物件{2}。 屬性是代表裝置狀態的資料欄位。 使用屬性來表示裝置的持久狀態，例如 coolant 泵的關閉狀態。 屬性也可以代表基本裝置屬性，例如裝置的「固件」版本。 您可以將屬性宣告為唯讀或可寫入。
+- `Telemetry`第 1 課：建立 Windows Azure 儲存體物件{2}。 遙測欄位代表來自感應器的測量。 每當您的裝置接受感應器測量時，它應該會傳送包含感應器資料的遙測事件。
+- `Commands`第 1 課：建立 Windows Azure 儲存體物件{2}。 命令代表裝置的使用者可以在裝置上執行的方法。 例如，可切換或關閉風扇的 reset 命令或命令。
 
 下列範例顯示控溫器裝置的介面：
 
@@ -182,26 +182,26 @@ result = DigitalTwin_DeviceClient_RegisterInterfacesAsync(
 
 IoT 隨插即用可讓您使用已向 IoT 中樞註冊其功能的裝置。 例如，您可以直接存取裝置的屬性和命令。
 
-若要使用已連線到您 IoT 中樞的 IoT 隨插即用裝置，請使用 IoT 中樞 REST API 或其中一個 IoT 語言 Sdk。 下列範例會使用 IoT 中樞 REST API。
+若要使用已連線到您 IoT 中樞的 IoT 隨插即用裝置，請使用 IoT 中樞 REST API 或其中一個 IoT 語言 Sdk。 下列範例會使用 IoT 中樞 REST API。 目前的 API 版本為 `2019-07-01-preview`。 將 `?api-version=2019-07-01-preview` 附加至 REST PI 呼叫。
 
 若要取得裝置屬性的值（例如控溫器中 `DeviceInformation` 介面的固件版本（`fwVersion`），您可以使用數位 twins REST API。
 
-如果 `t-123`呼叫您的控溫器裝置，您可以使用 REST API GET 呼叫來取得裝置所執行的所有屬性：
+如果 `t-123`呼叫您的控溫器裝置，您可以使用 REST API GET 呼叫，取得裝置所執行之所有介面上的所有屬性：
 
 ```REST
 GET /digitalTwins/t-123/interfaces
 ```
 
-一般來說，所有屬性都是使用此 REST API 範本來存取，其中 `{device-id}` 是裝置的識別碼：
+更常見的情況是，所有介面上的所有屬性都是使用此 REST API 範本來存取，其中 `{device-id}` 是裝置的識別碼：
 
 ```REST
 GET /digitalTwins/{device-id}/interfaces
 ```
 
-如果您知道介面的名稱，而且想要取得該特定介面的屬性，請依名稱將要求的範圍限定于特定的介面：
+如果您知道介面的名稱，例如 `deviceInformation`，而且想要取得該特定介面的屬性，請依名稱將要求的範圍限定于特定的介面：
 
 ```REST
-GET /digitalTwins/t-123/interfaces/info
+GET /digitalTwins/t-123/interfaces/deviceInformation
 ```
 
 更常見的情況是，可以透過此 REST API 範本來存取特定介面的屬性，其中 `device-id` 是裝置的識別碼，而 `{interface-name}` 是介面的名稱：

@@ -8,19 +8,19 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 11f5bd7f01e142273509ae59ddc19a2557464bde
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 40d8e298237b6110fee04aefbb7b79c5f3bac6f0
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152307"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598607"
 ---
 # <a name="export-data-module"></a>匯出資料模組
 
 本文說明 Azure Machine Learning 設計工具（預覽）中的模組。
 
-使用此模組可將您管線中的結果、中繼資料和工作資料儲存到 Azure Machine Learning 外部的雲端儲存體目的地。 
+使用此模組可將您管線中的結果、中繼資料和工作資料儲存到雲端儲存體目的地。 
 
 此模組支援將您的資料匯出至下列雲端資料服務：
 
@@ -29,7 +29,7 @@ ms.locfileid: "77152307"
 - Azure Data Lake
 - Azure Data Lake Gen2
 
-在匯出資料之前，您必須先在您的 Azure Machine Learning 工作區中先註冊資料存放區。 如需詳細資訊，請參閱[存取 Azure 儲存體服務中的資料](../how-to-access-data.md)。
+在匯出資料之前，您必須先在 Azure Machine Learning 工作區中註冊資料存放區。 如需詳細資訊，請參閱[存取 Azure 儲存體服務中的資料](../how-to-access-data.md)。
 
 ## <a name="how-to-configure-export-data"></a>如何設定匯出資料
 
@@ -41,7 +41,13 @@ ms.locfileid: "77152307"
 
 1. 針對**資料**存放區，請從下拉式清單中選取現有的資料存放區。 您也可以建立新的資料存放區。 查看如何造訪[Azure 儲存體服務中的存取資料](../how-to-access-data.md)。
 
-1. 定義資料存放區中用來寫入資料的路徑。 
+1. [重新產生**輸出**] 核取方塊會決定是否要執行模組，以便在執行時間重新產生輸出。 
+
+    預設為未選取，這表示如果模組先前已使用相同的參數執行，則系統會重複使用最後一次執行的輸出，以縮短執行時間。 
+
+    如果選取此選項，系統會再次執行模組以重新產生輸出。
+
+1. 定義資料存放區中的路徑。 路徑是相對路徑。 不允許空的路徑或 URL 路徑。
 
 
 1. 在 [**檔案格式**] 中，選取資料的儲存格式。

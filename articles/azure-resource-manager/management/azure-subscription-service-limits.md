@@ -3,13 +3,13 @@ title: Azure 訂用帳戶限制與配額
 description: 提供通用的 Azure 訂用帳戶和服務限制、配額和條件約束的清單。 本文包含如何增加限制和最大值的資訊。
 tags: billing
 ms.topic: conceptual
-ms.date: 02/11/2020
-ms.openlocfilehash: 4b36fcf8d3630ffd9008ad9deee8d0945f901f9b
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/24/2020
+ms.openlocfilehash: 1987d444c49bb5e53950c26c43c1607c8a87be6d
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153888"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592406"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 訂用帳戶和服務限制、配額與限制
 
@@ -295,10 +295,6 @@ ms.locfileid: "77153888"
 
 [!INCLUDE [role-based-access-control-limits](../../../includes/role-based-access-control-limits.md)]
 
-## <a name="scheduler-limits"></a>排程器限制
-
-[!INCLUDE [scheduler-limits-table](../../../includes/scheduler-limits-table.md)]
-
 ## <a name="service-bus-limits"></a>服務匯流排限制
 
 [!INCLUDE [azure-servicebus-limits](../../../includes/service-bus-quotas-table.md)]
@@ -315,7 +311,7 @@ ms.locfileid: "77153888"
 
 如 SQL 資料倉儲限制，請參閱[SQL 資料倉儲資源限制](../../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)。
 
-## <a name="storage-limits"></a>存放裝置限制
+## <a name="storage-limits"></a>儲存體限制
 
 <!--like # storage accts -->
 [!INCLUDE [azure-storage-account-limits-standard](../../../includes/azure-storage-account-limits-standard.md)]

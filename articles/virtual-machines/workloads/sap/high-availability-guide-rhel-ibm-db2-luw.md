@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/10/2019
+ms.date: 02/13/2020
 ms.author: juergent
-ms.openlocfilehash: 5487b90172788c08a4383a32462ea5a85c1763ee
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c6a230f6abeab45c56aab2db40b8b1defcc06d90
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099685"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598692"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [2015553]: https://launchpad.support.sap.com/#/notes/2015553
@@ -101,7 +101,7 @@ ms.locfileid: "70099685"
 
 
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概觀
 為了達到高可用性，IBM Db2 LUW with HADR 會安裝在至少兩個 Azure 虛擬機器上，它們會部署在[azure 可用性設定組](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)或跨[Azure 可用性區域](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones)。 
 
 下列圖形顯示兩個資料庫伺服器 Azure Vm 的設定。 這兩個資料庫伺服器 Azure Vm 都有自己的儲存體，且已啟動並執行。 在 HADR 中，其中一個 Azure Vm 中的一個資料庫實例具有主要實例的角色。 所有用戶端都會連接到主要實例。 資料庫交易中的所有變更都會保存在 Db2 交易記錄檔的本機。 當交易記錄檔記錄在本機保存時，記錄會透過 TCP/IP 傳輸到第二個資料庫伺服器、待命伺服器或待命實例上的資料庫實例。 待命實例會藉由向前復原已傳送的交易記錄檔記錄來更新本機資料庫。 如此一來，待命伺服器就會與主伺服器保持同步。
@@ -141,14 +141,14 @@ HADR 只是一種複寫功能。 它沒有任何失敗偵測，也沒有自動�
 
 在執行部署之前，請先完成規劃程式。 規劃會建立在 Azure 中使用 HADR 部署 Db2 設定的基礎。 下表列出需要屬於規劃 IMB-M43 Db2 LUW （SAP 環境的資料庫部分）的重要元素：
 
-| 主題 | 簡短說明 |
+| 主題 | 簡短描述 |
 | --- | --- |
 | 定義 Azure 資源群組 | 您部署 VM、VNet、Azure Load Balancer 和其他資源的資源群組。 可以是現有或新的。 |
 | 虛擬網路/子網定義 | 要在其中部署 IBM Db2 和 Azure Load Balancer 的 Vm。 可以是現有或新建立的。 |
 | 裝載 IBM Db2 LUW 的虛擬機器 | VM 大小、儲存體、網路、IP 位址。 |
 | IBM Db2 資料庫的虛擬主機名稱和虛擬 IP| 用來連接 SAP 應用程式伺服器的虛擬 IP 或主機名稱。 **virt-hostname**、 **db-virt-ip**。 |
 | Azure 隔離 | 避免發生分割大腦狀況的方法。 |
-| Azure 負載平衡器 | 使用基本或標準（建議），適用于 Db2 資料庫的探查埠（我們的建議62500）**探查-埠**。 |
+| Azure Load Balancer | 使用基本或標準（建議），適用于 Db2 資料庫的探查埠（我們的建議62500）**探查-埠**。 |
 | 名稱解析| 名稱解析在環境中的運作方式。 強烈建議使用 DNS 服務。 可以使用本機主機檔案。 |
     
 如需有關 Azure 中 Linux Pacemaker 的詳細資訊，請參閱在[azure 上的 Red Hat Enterprise Linux 上設定 Pacemaker][rhel-pcs-azr]。
@@ -185,7 +185,7 @@ IBM Db2 LUW 的資源代理套裝程式含在 Red Hat Enterprise Linux Server HA
 
 在您開始安裝以 IBM Db2 LUW 為基礎的 SAP 環境之前，請先參閱下列檔：
 
-+ Azure 文件
++ Azure 檔
 + SAP 檔
 + IBM 檔
 
@@ -435,11 +435,16 @@ Daemon 狀態： corosync：作用中/已停用的 pacemaker： active/disabled 
 ### <a name="configure-azure-load-balancer"></a>設定 Azure 負載平衡器
 若要設定 Azure Load Balancer，建議使用[Azure STANDARD LOAD BALANCER SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) ，然後執行下列動作：
 
+> [!NOTE]
+> Standard Load Balancer SKU 有從 Load Balancer 之下的節點存取公用 IP 位址的限制。 在[SAP 高可用性案例中使用 Azure Standard Load Balancer 虛擬機器的公用端點](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)連線一文說明如何讓這些節點存取公用 IP 位址的方式
+
+
+
 1. 建立前端 IP 集區：
 
    a. 在 Azure 入口網站中，開啟 Azure Load Balancer，選取 **前端 IP 集**區，然後選取 **新增**。
 
-   b.這是另一個 C# 主控台應用程式。 輸入新前端 IP 集區的名稱（例如， **Db2-connection**）。
+   b. 輸入新前端 IP 集區的名稱（例如， **Db2-connection**）。
 
    c. 將 [**指派**] 設定為 [**靜態**]，然後輸入在一開始定義的 ip 位址**虛擬 ip** 。
 
@@ -451,7 +456,7 @@ Daemon 狀態： corosync：作用中/已停用的 pacemaker： active/disabled 
 
    a. 在 Azure 入口網站中，開啟 Azure Load Balancer，選取 **後端**集區，然後選取 **新增**。
 
-   b.這是另一個 C# 主控台應用程式。 輸入新後端集區的名稱（例如， **Db2-後**端）。
+   b. 輸入新後端集區的名稱（例如， **Db2-後**端）。
 
    c. 選取 [新增虛擬機器]。
 
@@ -465,7 +470,7 @@ Daemon 狀態： corosync：作用中/已停用的 pacemaker： active/disabled 
 
    a. 在 Azure 入口網站中，開啟 Azure Load Balancer，選取 **健康情況探查**，然後選取 **新增**。
 
-   b.這是另一個 C# 主控台應用程式。 輸入新健康狀態探查的名稱（例如， **Db2-hp**）。
+   b. 輸入新健康狀態探查的名稱（例如， **Db2-hp**）。
 
    c. 選取 [ **TCP** ] 作為通訊協定和埠**62500**。 將 [**間隔**] 值保持設定為 [ **5**]，並將 [**狀況不良臨界**值] 設定為**2**。
 
@@ -475,7 +480,7 @@ Daemon 狀態： corosync：作用中/已停用的 pacemaker： active/disabled 
 
    a. 在 Azure 入口網站中，開啟 Azure Load Balancer，選取 **負載平衡規則**，然後選取 **新增**。
 
-   b.這是另一個 C# 主控台應用程式。 輸入新 Load Balancer 規則的名稱（例如， **Db2-SID**）。
+   b. 輸入新 Load Balancer 規則的名稱（例如， **Db2-SID**）。
 
    c. 選取您稍早建立的前端 IP 位址、後端集區及健康情況探查（例如， **Db2-前端**）。
 
@@ -537,7 +542,7 @@ j2ee/dbhost = db-virt-hostname
 
 我們建議您設定通用 NFS 共用或 GlusterFS，其中記錄是從兩個節點寫入。 NFS 共用或 GlusterFS 必須具有高度可用性。 
 
-您可以使用現有的高可用性 NFS 共用或 GlusterFS 來進行傳輸或設定檔目錄。 如需詳細資訊，請參閱：
+您可以使用現有的高可用性 NFS 共用或 GlusterFS 來進行傳輸或設定檔目錄。 如需詳細資訊，請參閱
 
 - [Red Hat Enterprise Linux for SAP NetWeaver 上的 GlusterFS on Azure VM][glusterfs] 
 - [Red Hat Enterprise Linux 上的 Azure Vm 上的 SAP NetWeaver 高可用性與適用于 SAP 應用程式的 Azure NetApp Files][anf-rhel]

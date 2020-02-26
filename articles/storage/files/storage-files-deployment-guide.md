@@ -7,26 +7,26 @@ ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 3ce754a67643f4506fa825f0780969dc4a06f826
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 38339defc9d06f3e809bc24f957ebbb30abb46d3
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299575"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598777"
 ---
 # <a name="how-to-deploy-azure-files"></a>如何部署 Azure 檔案服務
 [Azure 檔案服務](storage-files-introduction.md)可提供在雲端中完全受控的檔案共用，可透過業界標準 SMB 通訊協定加以存取。 本文將說明如何在組織中實際部署 Azure 檔案服務。
 
 強烈建議您先閱讀[規劃 Azure 檔案服務部署](storage-files-planning.md)，再遵循這篇文章中的步驟。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 本文假設您已完成下列步驟：
 
 - 在所要區域中，建立 Azure 儲存體帳戶，並設定所需的復原和加密選項。 如需如何建立儲存體帳戶的逐步指示，請參閱[建立儲存體帳戶](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 - 已在儲存體帳戶中建立 Azure 檔案共用，並設定所需的配額。 如需如何建立檔案共用的逐步指示，請參閱[建立檔案共用](storage-how-to-create-file-share.md)。
 
 ## <a name="transfer-data-into-azure-files"></a>將資料傳送到 Azure 檔案服務
-您可能想要將現有的檔案共用 (例如儲存在內部部署的檔案共用) 移轉至新的 Azure 檔案共用。 本節示範如何透過[規劃指南](storage-files-planning.md#data-transfer-method)詳述的幾個常用方法，將資料移至 Azure 檔案共用
+您可能想要將現有的檔案共用 (例如儲存在內部部署的檔案共用) 移轉至新的 Azure 檔案共用。 本節示範如何透過[規劃指南](storage-files-planning.md#migration)詳述的幾個常用方法，將資料移至 Azure 檔案共用
 
 ### <a name="azure-file-sync"></a>Azure 檔案同步
 Azure 檔案同步可讓您將組織的檔案共用集中在「Azure 檔案服務」中，而不需要犧牲內部部署檔案伺服器的靈活度、效能及相容性。 它會將您的 Windows Server 轉換成 Azure 檔案共用的快速快取來達到這個目的。 您可以使用 Windows Server 上可用的任何通訊協定來存取本機資料 (包括 SMB、NFS 和 FTPS)，並且可以在世界各地擁有任何所需數量的快取。
@@ -88,7 +88,7 @@ Azure 檔案同步可讓您將組織的檔案共用集中在「Azure 檔案服�
 7. [建立匯入作業](../common/storage-import-export-data-to-files.md#step-2-create-an-import-job)。
     
 ### <a name="robocopy"></a>Robocopy
-Robocopy 是隨附於 Windows 和 Windows Server 的常用複製工具。 Robocopy 可在本機掛接檔案共用，然後將該掛接位置作為 Robocopy 命令中的目的地，以將資料傳輸到 Azure 檔案服務中。 使用 Robocopy 相當簡單：
+Robocopy 是隨附於 Windows 和 Windows Server 的常用複製工具。 Robocopy 可在本機掛接檔案共用，然後將掛接位置作為 Robocopy 命令中的目的地使用，以將資料傳輸到 Azure 檔案服務中。 使用 Robocopy 相當簡單：
 
 1. [裝載 Azure 檔案共用](storage-how-to-use-files-windows.md)。 為了達到最佳效能，建議您在含有資料的伺服器上本機裝載 Azure 檔案共用。 某些情況可能無法這麼做，例如提供資料的檔案伺服器是 NAS 裝置時。 這時候，您完全可以將 Azure 檔案共用裝載到電腦上。 此範例會在命令列中使用 `net use` 以掛接檔案共用：
 
