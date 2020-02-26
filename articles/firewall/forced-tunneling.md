@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 02/18/2020
+ms.date: 02/24/2020
 ms.author: victorh
-ms.openlocfilehash: 4093f91e55272a32ce7df4a78e2ee8b3ebed5fde
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: e51f6de370a5340082f64a0ca15c61583f75962b
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444468"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597266"
 ---
 # <a name="azure-firewall-forced-tunneling-preview"></a>Azure 防火牆強制通道（預覽）
 
@@ -27,11 +27,15 @@ ms.locfileid: "77444468"
 
 ## <a name="forced-tunneling-configuration"></a>強制通道設定
 
-為了支援強制通道，服務管理流量會與客戶流量分開。 另一個名為*AzureFirewallManagementSubnet*的專用子網，需要有自己的相關聯公用 IP 位址。 這個子網上唯一允許的路由是網際網路的預設路由，且必須停用 BGP 路由傳播。
+為了支援強制通道，服務管理流量會與客戶流量分開。 需要另一個名為*AzureFirewallManagementSubnet* （最小子網大小/26）的專用子網，而且其本身有相關聯的公用 IP 位址。 這個子網上唯一允許的路由是網際網路的預設路由，且必須停用 BGP 路由傳播。
 
-如果您有透過 BGP 通告的預設路由，以強制流量至內部部署，您必須先建立*AzureFirewallSubnet*和*AzureFirewallManagementSubnet* ，然後再部署防火牆，並將 UDR 設為網際網路的預設路由，且虛擬網路閘道路由傳播已停用。
+如果您有透過 BGP 通告的預設路由，以強制流量至內部部署，您必須先建立*AzureFirewallSubnet*和*AzureFirewallManagementSubnet* ，然後再部署防火牆，並將 UDR 設為網際網路的預設路由，且**虛擬網路閘道路由傳播**已停用。
 
-在此設定中， *AzureFirewallSubnet*現在可以包含任何內部部署防火牆或 NVA 的路由，以在傳遞至網際網路之前處理流量。 如果已在此子網上啟用虛擬網路閘道路由傳播，您也可以透過 BGP 將這些路由發佈至*AzureFirewallSubnet* 。
+在此設定中， *AzureFirewallSubnet*現在可以包含任何內部部署防火牆或 NVA 的路由，以在傳遞至網際網路之前處理流量。 如果已在此子網上啟用**虛擬網路閘道路由傳播**，您也可以透過 BGP 將這些路由發佈至*AzureFirewallSubnet* 。
+
+例如，您可以在*AzureFirewallSubnet*上建立預設路由，並將您的 VPN 閘道做為下一個躍點，以前往您的內部部署裝置。 或者，您可以啟用**虛擬網路閘道路由傳播**，以取得適用于內部部署網路的適當路由。
+
+![虛擬網路閘道路由傳播](media/forced-tunneling/route-propagation.png)
 
 一旦您設定 Azure 防火牆以支援強制通道，就無法復原設定。 如果您移除防火牆上的所有其他 IP 設定，系統也會移除管理 IP 設定，並解除配置防火牆。 指派給管理 IP 設定的公用 IP 位址無法移除，但您可以指派不同的公用 IP 位址。
 

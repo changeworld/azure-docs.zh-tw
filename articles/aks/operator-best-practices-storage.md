@@ -2,17 +2,14 @@
 title: 操作員最佳做法 - Azure Kubernetes Services (AKS) 中的儲存體
 description: 了解叢集操作員在 Azure Kubernetes Service (AKS) 中進行儲存、資料加密及備份時的最佳做法
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.author: mlearned
-ms.openlocfilehash: 8e5f394987de06feaeb9a635face643eecc97cb9
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 6521655ded45f0a1d15c3ec40a44993d757b8854
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174214"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594663"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中進行儲存和備份的最佳做法
 

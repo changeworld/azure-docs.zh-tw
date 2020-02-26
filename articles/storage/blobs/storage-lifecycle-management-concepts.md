@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: fdc98991134e0857d24575d22962a52e43266cbe
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 238c12baf55b525a24107a727d09588ef06a6bef
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76939229"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598301"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>管理 Azure Blob 儲存體生命週期
 
@@ -34,7 +34,7 @@ ms.locfileid: "76939229"
 
 生命週期管理原則適用于一般用途 v2 （GPv2）帳戶、Blob 儲存體帳戶，以及 Premium 區塊 Blob 儲存體帳戶。 在 Azure 入口網站中，您可以將現有的一般用途（GPv1）帳戶升級至 GPv2 帳戶。 如需有關儲存體帳戶的詳細資訊，請參閱 [Azure 儲存體帳戶概觀](../common/storage-account-overview.md)。  
 
-## <a name="pricing"></a>定價
+## <a name="pricing"></a>價格
 
 生命週期管理功能是免費的。 客戶需針對 [List Blobs ](https://docs.microsoft.com/rest/api/storageservices/list-blobs) (列出 Blob) 和[Set Blob Tier](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) (設定 Blob 層) API 呼叫的一般作業成本支付費用。 刪除作業是免費的。 如需定價的詳細資訊，請參閱[區塊 Blob 價格](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 
@@ -58,7 +58,7 @@ ms.locfileid: "76939229"
 
 本文說明如何使用入口網站和 PowerShell 方法來管理原則。  
 
-# <a name="portaltabazure-portal"></a>[入口網站](#tab/azure-portal)
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
 
 有兩種方式可透過 Azure 入口網站新增原則。 
 
@@ -128,7 +128,7 @@ ms.locfileid: "76939229"
 
 6. 如需有關此 JSON 範例的詳細資訊，請參閱[原則](#policy)和[規則](#rules)章節。
 
-# <a name="powershelltabazure-powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 下列 PowerShell 腳本可以用來將原則新增至您的儲存體帳戶。 `$rgname` 變數必須使用您的資源組名進行初始化。 `$accountName` 變數必須使用您的儲存體帳戶名稱進行初始化。
 
@@ -158,7 +158,7 @@ $rule1 = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action -Fi
 $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountName $accountName -Rule $rule1
 ```
 
-# <a name="templatetabtemplate"></a>[範本](#tab/template)
+# <a name="template"></a>[範本](#tab/template)
 
 您可以使用 Azure Resource Manager 範本來定義生命週期管理。 以下是使用生命週期管理原則部署 RA GRS GPv2 儲存體帳戶的範例範本。
 
@@ -232,12 +232,12 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 原則中的每個規則都有數個參數：
 
-| 參數名稱 | 參數類型 | 注意 | 必要項 |
+| 參數名稱 | 參數類型 | 注意 | 必要 |
 |----------------|----------------|-------|----------|
-| `name`         | String |規則名稱最多可包含256個英數位元。 規則名稱會區分大小寫。  它在原則內必須是唯一的。 | 是 |
-| `enabled`      | Boolean | 選擇性布林值，允許暫時停用規則。 如果未設定，預設值為 true。 | 否 | 
-| `type`         | 列舉值 | 目前的有效類型為 `Lifecycle`。 | 是 |
-| `definition`   | 定義生命週期規則的物件 | 每個定義是由篩選集和動作集組成。 | 是 |
+| `name`         | String |規則名稱最多可包含256個英數位元。 規則名稱會區分大小寫。  它在原則內必須是唯一的。 | True |
+| `enabled`      | Boolean | 選擇性布林值，允許暫時停用規則。 如果未設定，預設值為 true。 | False | 
+| `type`         | 列舉值 | 目前的有效類型為 `Lifecycle`。 | True |
+| `definition`   | 定義生命週期規則的物件 | 每個定義是由篩選集和動作集組成。 | True |
 
 ## <a name="rules"></a>規則
 
@@ -287,7 +287,7 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 篩選會將規則動作限制為儲存體帳戶內的 Blob 子集。 如果定義一個以上的篩選條件，則邏輯 `AND` 會在所有篩選器上執行。
 
-篩選準則包括：
+篩選器包括：
 
 | 篩選名稱 | 篩選類型 | 注意 | 必要 |
 |-------------|-------------|-------|-------------|
@@ -300,18 +300,18 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 生命週期管理支援分層及刪除 blob 和刪除 blob 快照集。 在 Blob 或 Blob 快照集上每項規則至少需定義一個動作。
 
-| 行動        | 基底 Blob                                   | 快照集      |
+| 動作        | 基底 Blob                                   | 快照式      |
 |---------------|---------------------------------------------|---------------|
 | tierToCool    | 支援目前在經常性儲存層的 Blob         | 不支援 |
 | tierToArchive | 支援目前在經常儲存性或非經常性儲存層的 Blob | 不支援 |
-| delete        | 支援的                                   | 支援的     |
+| delete        | 支援                                   | 支援     |
 
 >[!NOTE]
 >如果在同一個 Blob 上定義多個動作，生命週期管理會將最便宜的動作套用至 Blob。 例如，動作 `delete` 比動作 `tierToArchive` 更便宜。 而動作 `tierToArchive` 比動作 `tierToCool` 更便宜。
 
 執行條件是以年齡為基礎。 基底 Blob 使用上次修改時間來追蹤存在時間，而 Blob 快照集使用快照集建立時間來追蹤存在時間。
 
-| 動作執行條件             | 條件值                          | 說明                             |
+| 動作執行條件             | 條件值                          | 描述                             |
 |----------------------------------|------------------------------------------|-----------------------------------------|
 | daysAfterModificationGreaterThan | 表示存在時間的整數值 (以天數為單位) | 基底 blob 動作的條件     |
 | daysAfterCreationGreaterThan     | 表示存在時間的整數值 (以天數為單位) | Blob 快照集動作的條件 |
@@ -438,7 +438,7 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 平台會每天執行一次生命週期原則。 一旦設定原則，第一次執行某些動作最多可能需要24小時的時間。  
 
 **如果我更新現有的原則，執行動作需要多久的時間？**  
-更新後的原則最多需要24小時才會生效。 原則生效後，最多可能需要24小時的時間來執行動作。 因此，原則最多可能需要48小時的時間來執行。   
+更新後的原則最多需要24小時才會生效。 原則生效後，最多可能需要24小時的時間來執行動作。 因此，原則動作最多可能需要48小時的時間才能完成。   
 
 **我手動解除凍結封存的 blob，如何避免暫時將它移回封存層？**  
 將 blob 從某個存取層移至另一個時，其上次修改時間不會變更。 如果您手動將封存的 blob 解除凍結至經常性存取層，則生命週期管理引擎會將其移回封存層。 暫時停用影響此 blob 的規則，以避免再次封存它。 當 blob 可以安全地移回封存層時，請重新啟用該規則。 如果 blob 需要永久保留在經常性存取或非經常性存取層，您也可以將它複製到另一個位置。

@@ -1,15 +1,14 @@
 ---
 author: paulbouwer
-ms.service: container-service
 ms.topic: include
 ms.date: 10/09/2019
 ms.author: pabouwer
-ms.openlocfilehash: 6b94d892410bd665bdcb76fc96bc1602d09cf652
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 8931ba97cf72891c78e20389be10178dd2c0317a
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530559"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594233"
 ---
 在 Windows 上以 PowerShell 為基礎的 shell 中，使用 `Invoke-WebRequest` 下載 Consul Helm 圖表版本，然後以 `Expand-Archive` 解壓縮，如下所示：
 

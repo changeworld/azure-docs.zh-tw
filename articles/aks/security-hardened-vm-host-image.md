@@ -3,17 +3,16 @@ title: AKS 虛擬機器主機中的安全性強化
 description: 瞭解 AKS VM 主機 OS 中的安全性強化
 services: container-service
 author: saudas
-ms.service: container-service
 ms.topic: article
 ms.date: 09/11/2019
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 8b7e50fdc02ab47c50cecb95073f1b51393db898
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: d4105a9fba3c40c563198040afb811625727ead0
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73885637"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594375"
 ---
 # <a name="security-hardening-in-aks-virtual-machine-hosts"></a>AKS 虛擬機器主機中的安全性強化 
 
@@ -69,7 +68,7 @@ AKS 引擎目前不會升階或遵守任何特定的安全性標準，但在適�
 |第5.2.10 |確定 SSH PermitUserEnvironment 已停用 |
 |第5.2.11 |請確定只使用已核准的最大演算法 |
 |第5.2.12 |確保已設定 SSH 閒置逾時間隔 |
-|第5.2.13 |確定 SSH LoginGraceTime 設定為一分鐘或更少 |
+|5.2.13 |確定 SSH LoginGraceTime 設定為一分鐘或更少 |
 |第5.2.15 |確定已設定 SSH 警告橫幅 |
 |5.3.1 |確定已設定密碼建立需求 |
 |5.4.1.1 |確認密碼到期時間為90天或更少 |

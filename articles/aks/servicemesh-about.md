@@ -2,16 +2,15 @@
 title: 關於服務網格
 description: 取得服務網格的總覽、其架構和功能，以及您在選取要部署時應考慮的準則。
 author: paulbouwer
-ms.service: container-service
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
-ms.openlocfilehash: 226a4e5cf97be2e23ef13a95b80be07b7fbf5d7a
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: eca49a3fac1ea0398ebe1d05bde20fbca3c81232
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530702"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594306"
 ---
 # <a name="about-service-meshes"></a>關於服務網格
 
@@ -39,7 +38,7 @@ ms.locfileid: "72530702"
 
 ![一般服務網格架構](media/servicemesh/typical-architecture.png)
 
-## <a name="capabilities"></a>容量
+## <a name="capabilities"></a>功能
 
 每個服務網格都有自然的配合，並著重于支援特定的案例，但您通常會發現，大部分的都是執行下列其中一項功能。
 

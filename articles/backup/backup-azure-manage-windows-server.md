@@ -3,12 +3,12 @@ title: 管理 Azure 復原服務保存庫與伺服器
 description: 在本文中，您將瞭解如何使用復原服務保存庫總覽儀表板來監視和管理您的復原服務保存庫。
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: f043d50a2b0e4efbda957a9c4ccb8f1d472dce15
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 5ae875b2e767768e90a9fbc6ff4ecfc6efb239c5
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173033"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586439"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>監視及管理復原服務保存庫
 
@@ -73,13 +73,13 @@ ms.locfileid: "74173033"
 
 ![備份警示](./media/backup-azure-manage-windows-server/backup-alerts.png)
 
-### <a name="alerts"></a>Alerts
+### <a name="alerts"></a>警示
 
 [備份警示] 清單會顯示篩選後警示的所選資訊。 在 [備份警示] 功能表中，您可以針對 [重踏] 或 [警告] 警示篩選。
 
 | 警示層級 | 產生警示的事件 |
 | ----------- | ----------- |
-| 重要 | 您會在下列情況中收到重大警示：備份作業失敗、復原作業失敗，以及當您在伺服器停止保護時，但保留資料。|
+| 重大 | 您會在下列情況中收到重大警示：備份作業失敗、復原作業失敗，以及當您在伺服器停止保護時，但保留資料。|
 | 警告 | 您會在以下情況收到警示：備份作業完成，但有警告 (例如，當不到 100 個檔案因為損毀問題而未備份，或是有超過 1,000,000 個檔案成功備份時)。 |
 | 資訊 | 目前沒有使用中的資訊警示。 |
 
@@ -95,9 +95,9 @@ ms.locfileid: "74173033"
 * 備份項目
 * 受保護的伺服器
 * Severity
-* 持續時間
+* Duration
 * 建立時間
-* Status
+* 狀態
 * 最新發生時間
 
 ### <a name="change-the-details-in-alerts-report"></a>變更警示報告中的詳細資料
@@ -217,20 +217,20 @@ ms.locfileid: "74173033"
 * 所有作業
 * 註冊
 * 設定備份
-* 備份
-* 還原
+* Backup
+* {1}還原{2}
 * 停用備份
 * 刪除備份資料
 
-#### <a name="status"></a>Status
+#### <a name="status"></a>狀態
 
 您可以檢視 [所有狀態] 或一個狀態。 您無法選取兩個或三個狀態。 可用的狀態如下：
 
 * 所有狀態
 * Completed
 * 進行中
-* Failed
-* Canceled
+* 失敗
+* 已取消
 * 已完成，但出現警告
 
 #### <a name="start-time"></a>開始時間
@@ -272,4 +272,4 @@ ms.locfileid: "74173033"
 
 * [從 Azure 還原 Windows Server 或 Windows 用戶端](backup-azure-restore-windows-server.md)
 * 若要深入了解 Azure 備份，請參閱 [Azure 備份概觀](backup-introduction-to-azure-backup.md)
-* 瀏覽 [Azure 備份論壇](https://go.microsoft.com/fwlink/p/?LinkId=290933)
+

@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 715415929afaad36e4854e75a2b7b5360d22a6bf
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: c606f6e60b1c906a0d5c29992287d126aaa37b7b
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486337"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602931"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>如何使用 Azure WebJobs SDK 進行事件驅動幕後處理
 
@@ -395,7 +395,7 @@ static async Task Main()
 }
 ```
 
-如需詳細資訊，請參閱[Azure CosmosDB](../azure-functions/functions-bindings-cosmosdb-v2.md#hostjson-settings)系結一文。
+如需詳細資訊，請參閱[Azure CosmosDB](../azure-functions/functions-bindings-cosmosdb-v2-output.md#hostjson-settings)系結一文。
 
 ### <a name="event-hubs-trigger-configuration-version-3x"></a>事件中樞觸發程式設定（第3版。*x*）
 
@@ -423,7 +423,7 @@ static async Task Main()
 }
 ```
 
-如需詳細資訊，請參閱[事件中樞](../azure-functions/functions-bindings-event-hubs.md#hostjson-settings)系結文章。
+如需詳細資訊，請參閱[事件中樞](../azure-functions/functions-bindings-event-hubs-output.md#hostjson-settings)系結文章。
 
 ### <a name="queue-storage-trigger-configuration"></a>佇列儲存體觸發程式設定
 

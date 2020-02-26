@@ -2,17 +2,14 @@
 title: 操作員最佳做法 - Azure Kubernetes Services (AKS) 中的基本排程器功能
 description: 了解叢集操作員在使用基本排程器功能 (例如，Azure Kubernetes Service (AKS) 中的資源配額和 Pod 中斷預算) 時的最佳做法
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: mlearned
-ms.openlocfilehash: 3661f435b5c2dd88aa8e17ca396f9af43aea5224
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: cccc476a944b28d24c53a947e434d465c94f94ee
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293601"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594646"
 ---
 # <a name="best-practices-for-basic-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) 中基本排程器功能的最佳做法
 

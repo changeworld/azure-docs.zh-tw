@@ -3,12 +3,12 @@ title: 將 Service Fabric 叢集相應縮小或相應放大
 description: 針對每個節點類型/虛擬機器擴展集設定自動調整規模規則，以相應縮小或相應放大 Service Fabric 叢集以符合需求。 新增或移除 Service Fabric 叢集的節點
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: 42193ee06eda3f1d8c56b4db3251763b9dc52076
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 26ef13f38d525e4e493ad933bfb906dd36ed0070
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774455"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587476"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>將叢集相應縮小或相應放大
 
@@ -104,7 +104,7 @@ Service fabric 系統服務會在叢集中的主要節點類型上執行。 向�
 Get-ServiceFabricNode | Sort-Object NodeInstanceId -Descending | Select-Object -First 1
 ```
 
-```azurecli
+```shell
 sfctl node list --query "sort_by(items[*], &name)[-1]"
 ```
 
@@ -186,7 +186,7 @@ else
 
 在下方的 **sfctl** 程式碼中，會使用下列命令來取得最後建立節點的 **node-name** 值：`sfctl node list --query "sort_by(items[*], &name)[-1].name"`
 
-```azurecli
+```shell
 # Inform the node that it is going to be removed
 sfctl node disable --node-name _nt1vm_5 --deactivation-intent 4 -t 300
 

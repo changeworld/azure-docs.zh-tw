@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 68d37bfbc629062a788ba32793b95c6f1653ff42
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 55a4aa066739203f8697fb4c9083869f5a05ef4f
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749649"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603385"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure 資訊安全中心疑難排解指南
 
@@ -83,7 +83,7 @@ ms.locfileid: "75749649"
 
 [監視狀態] 可定義資訊安全中心無法成功監視為了自動佈建而初始化之 VM 和電腦的原因。 下表顯示 [監視狀態] 值、描述和解決步驟。
 
-| 監視狀態 | 說明 | 解決步驟 |
+| 監視狀態 | 描述 | 解決步驟 |
 |---|---|---|
 | 擱置代理程式安裝 | Microsoft Monitoring Agent 安裝仍在執行中。  安裝作業可能需要多達數小時的時間。 | 等到自動安裝完成為止。 |
 | 電源為關閉狀態 | VM 已停止。  Microsoft Monitoring Agent 只能安裝於執行中的 VM。 | 重新啟動 VM。 |
@@ -138,7 +138,7 @@ ms.locfileid: "75749649"
 
 ![Microsoft 支援服務](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 在本文件中，您已了解如何在「Azure 資訊安全中心」設定安全性原則。 若要深入了解「Azure 資訊安全中心」，請參閱下列主題：
 
@@ -154,5 +154,5 @@ ms.locfileid: "75749649"
 * [在 Azure 資訊安全中心調查事件和警示](security-center-investigation.md)
 * [Azure 資訊安全中心的偵測功能](security-center-detection-capabilities.md)
 * [使用 Azure 資訊安全中心監視合作夥伴解決方案](security-center-partner-solutions.md) — 了解如何監視合作夥伴解決方案的健全狀況。
-* [Azure 資訊安全中心常見問題集](security-center-faq.md) — 尋找有關使用服務的常見問題。
+* [Azure 資訊安全中心常見問題集](faq-general.md) — 尋找有關使用服務的常見問題。
 * [Azure 安全性部落格](https://blogs.msdn.com/b/azuresecurity/) — 尋找有關 Azure 安全性與相容性的部落格文章。

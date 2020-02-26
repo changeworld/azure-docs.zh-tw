@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: e95a0b4b9f071a0fd3949d50eeee17b811dfb8ea
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: e01be0442f6d968613ffd800f076705d33e3e16e
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064813"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598199"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT 中樞訊息路由查詢語法
 
@@ -52,11 +52,11 @@ IoT 中樞會針對所有裝置到雲端訊息定義[常見格式](iot-hub-devgu
 
 | 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
-| contentType | string | 使用者會指定訊息的內容類型。 若要允許對訊息本文進行查詢，此值應該設為 application/JSON。 |
-| contentEncoding | string | 使用者會指定訊息的編碼類型。 允許的值為 UTF-8、UTF-16、UTF-32 (若 contentType 是設為 application/JSON)。 |
-| iothub-connection-device-id | string | 此值是由 IoT 中樞設定，並能識別裝置的識別碼。 若要查詢，請使用 `$connectionDeviceId`。 |
-| iothub-enqueuedtime | string | 此值是由 IoT 中樞設定，並代表將訊息加入佇列的實際時間 (以 UTC 表示)。 若要查詢，請使用 `enqueuedTime`。 |
-| iothub-interface-name | string | 這個值是由使用者設定，代表實作為遙測訊息的數位對應項介面名稱。 若要查詢，請使用 `$interfaceName`。 這項功能可做為[IoT 隨插即用公開預覽](../iot-pnp/overview-iot-plug-and-play.md)的一部分。 |
+| ContentType | 字串 | 使用者會指定訊息的內容類型。 若要允許對訊息本文進行查詢，此值應該設為 application/JSON。 |
+| contentEncoding | 字串 | 使用者會指定訊息的編碼類型。 允許的值為 UTF-8、UTF-16、UTF-32 (若 contentType 是設為 application/JSON)。 |
+| iothub-connection-device-id | 字串 | 此值是由 IoT 中樞設定，並能識別裝置的識別碼。 若要查詢，請使用 `$connectionDeviceId`。 |
+| iothub-enqueuedtime | 字串 | 此值是由 IoT 中樞設定，並代表將訊息加入佇列的實際時間 (以 UTC 表示)。 若要查詢，請使用 `enqueuedTime`。 |
+| iothub-interface-name | 字串 | 這個值是由使用者設定，代表實作為遙測訊息的數位對應項介面名稱。 若要查詢，請使用 `$interfaceName`。 這項功能可做為[IoT 隨插即用公開預覽](../iot-pnp/overview-iot-plug-and-play.md)的一部分。 |
 
 如 [IoT 中樞訊息](iot-hub-devguide-messages-construct.md)中所述，訊息中還有其他系統屬性。 除了 **contentType**、**contentEncoding** 和 **enqueuedTime** 之外，可查詢的屬性還包括 **connectionDeviceId** 和 **connectionModuleId**。
 
@@ -66,7 +66,7 @@ IoT 中樞會針對所有裝置到雲端訊息定義[常見格式](iot-hub-devgu
 
 ### <a name="query-expressions"></a>查詢運算式
 
-針對訊息系統屬性的查詢，需要其前面加上 `$` 符號。 針對應用程式屬性的查詢是透過屬性名稱來存取，因此不應該其前面加上 `$` 符號。 如果應用程式屬性名稱是以 `$` 作為開頭，則 IoT 中樞將會在系統屬性中搜尋它，並在找不到它的情況下於應用程式屬性中尋找它。 例如， 
+針對訊息系統屬性的查詢，需要其前面加上 `$` 符號。 針對應用程式屬性的查詢是透過屬性名稱來存取，因此不應該其前面加上 `$` 符號。 如果應用程式屬性名稱是以 `$` 作為開頭，則 IoT 中樞將會在系統屬性中搜尋它，並在找不到它的情況下於應用程式屬性中尋找它。 例如： 
 
 查詢系統屬性 contentEncoding 
 
@@ -88,7 +88,7 @@ $contentEncoding = 'UTF-8' AND processingPath = 'hot'
 
 [[運算式和條件](iot-hub-devguide-query-language.md#expressions-and-conditions)] 中會顯示支援的運算子和函式的完整清單。
 
-## <a name="message-routing-query-based-on-message-body"></a>根據訊息本文的訊息路由查詢 
+## <a name="message-routing-query-based-on-message-body"></a>根據訊息本文的訊息路由查詢
 
 若要啟用針對訊息本文的查詢，訊息必須是 UTF-8、UTF-16 或 UTF-32 編碼的 JSON 格式檔案。 `contentType` 必須設定為 `application/JSON`，而 `contentEncoding` 則必須設定為系統屬性中其中一個支援的 UTF 編碼。 如果未指定這些屬性，IoT 中樞將不會針對訊息本文評估查詢運算式。 
 
@@ -140,6 +140,10 @@ deviceClient.sendEvent(message, (err, res) => {
     if (res) console.log('status: ' + res.constructor.name);
 });
 ```
+
+> [!NOTE] 
+> 這會顯示如何以 javascript 處理本文的編碼方式。 如果您想要查看中C#的範例，請下載[Azure IoT C#範例](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)。 將 master.zip 檔案解壓縮。 Visual Studio 方案*SimulatedDevice*的 Program.cs 檔案示範如何編碼和提交訊息至 IoT 中樞。 這是用來測試訊息路由的相同範例，如[訊息路由教學](tutorial-routing.md)課程中所述。 在 Program.cs 底部，它也有一個方法可以讀取其中一個已編碼的檔案、將它解碼，然後將它寫回為 ASCII，讓您可以讀取它。 
+
 
 ### <a name="query-expressions"></a>查詢運算式
 

@@ -3,16 +3,15 @@ title: Azure Kubernetes Service (AKS) 上的 HTTP 應用程式路由附加元件
 description: 使用 Azure Kubernetes Service (AKS) 上的 HTTP 應用程式路由附加元件。
 services: container-service
 author: lachie83
-ms.service: container-service
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: laevenso
-ms.openlocfilehash: fc04e38c3d6933cde81d81d5569ed73e7506a745
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 5794e46f10abec1ceef4c79a881f7f353e729634
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756431"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595683"
 ---
 # <a name="http-application-routing"></a>HTTP 應用程式路由
 
@@ -205,7 +204,7 @@ kube-system   addon-http-application-routing-udp-services                0      
 kubectl delete configmaps addon-http-application-routing-nginx-configuration --namespace kube-system
 ```
 
-針對留在叢集中的所有 *addon-http-application-routing* 資源重複先前 `kubectl delete` 步驟。
+針對留在叢集中的所有 `kubectl delete`addon-http-application-routing*資源重複先前* 步驟。
 
 ## <a name="troubleshoot"></a>疑難排解
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/27/2019
 ms.author: memildin
-ms.openlocfilehash: 46ed2af51f34a25c1cdc1abb6152169feedd989e
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 203e3718cedca693dc029a4ba20a86ca50ab3e32
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666290"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603853"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>管理和回應 Azure 資訊安全中心中的安全性警示
 
@@ -65,7 +65,7 @@ ms.locfileid: "75666290"
     > [!NOTE]
     >在某些情況下，來源 IP 位址無法使用，某些 Windows 安全性事件記錄檔不會包含 IP 位址。
 
-1. 資訊安全中心會根據安全性警訊，建議您不同的補救步驟。 針對每個警示遵循這些步驟。 在某些情況下，為了減輕威脅偵測警示，您可能必須使用其他 Azure 控制項或服務來執行建議的補救措施。 
+1. 資訊安全中心建議的補救步驟會根據安全性警示而有所不同。 針對每個警示遵循這些步驟。 在某些情況下，為了減輕威脅偵測警示，您可能必須使用其他 Azure 控制項或服務來執行建議的補救措施。 
 
     下列主題會根據資源類型，引導您完成不同的警示：
     
@@ -78,12 +78,10 @@ ms.locfileid: "75666290"
     * [服務層警示](security-center-alerts-service-layer.md)
     * [Azure WAF 和 Azure DDoS 保護的威脅偵測](security-center-alerts-integration.md)
     
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 在本文件中，您了解到如何在資訊安全中心設定安全性原則。 如要深入了解資訊安全中心，請參閱下列主題：
 
 * [Azure 資訊安全中心中的安全性警示](security-center-alerts-overview.md)。
 * [處理安全性事件](security-center-incident.md)
 * [Azure 資訊安全中心規劃和操作指南](security-center-planning-and-operations-guide.md)
-* [Azure 資訊安全中心常見問題集](security-center-faq.md) — 尋找有關使用服務的常見問題。
-* [Azure 安全性部落格](https://blogs.msdn.com/b/azuresecurity/) — 尋找有關 Azure 安全性與相容性的部落格文章。

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 01/23/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 099cf74dd27f39a4289397d5178511125d9ebf6f
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 63aef8d2036e442659145e031d384e9677c779a1
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720694"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598063"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>使用 Azure RBAC 和 Azure 入口網站列出角色指派
 
@@ -116,7 +116,7 @@ ms.locfileid: "76720694"
 
 ## <a name="list-role-assignments-for-a-user-assigned-managed-identity"></a>列出使用者指派的受控識別的角色指派
 
-1. 在 Azure 入口網站中，開啟系統指派的受控識別。
+1. 在 Azure 入口網站中，開啟使用者指派的受控識別。
 
 1. 按一下 [Azure 資源]。
 

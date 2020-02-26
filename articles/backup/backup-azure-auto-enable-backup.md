@@ -3,12 +3,12 @@ title: 使用 Azure 原則自動啟用 VM 建立的備份
 description: 本文說明如何使用 Azure 原則自動啟用在指定範圍內建立之所有 Vm 的備份
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: 7a3b526d654936d4e7ec89127a9074146c1b0179
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1d423371788f87155328e8f5c9334e47349a68e8
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450126"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77584263"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>使用 Azure 原則自動啟用 VM 建立的備份
 
@@ -16,9 +16,9 @@ ms.locfileid: "75450126"
 
 今天，Azure 備份提供內建原則（使用 Azure 原則），可以指派給訂用帳戶**或資源群組內指定位置中的所有 Azure vm**。 當此原則指派給指定的範圍時，在該範圍內建立的所有新 Vm 都會自動設定為備份至**相同位置和訂用帳戶中的現有保存庫**。 使用者可以指定要與備份的 Vm 相關聯的保存庫和保留原則。
 
-## <a name="supported-scenarios"></a>支援的案例 
+## <a name="supported-scenarios"></a>支援的案例
 
-* 目前只有 Azure Vm 支援內建原則。 使用者必須小心確保指派期間指定的保留原則是 VM 保留原則。 請參閱[這](https://aka.ms/PolicySupportedSKUs)份檔，以查看此原則支援的所有 VM sku。
+* 目前只有 Azure Vm 支援內建原則。 使用者必須小心確保指派期間指定的保留原則是 VM 保留原則。 請參閱[這](https://docs.microsoft.com/azure/backup/backup-azure-policy-supported-skus)份檔，以查看此原則支援的所有 VM sku。
 
 * 原則一次只能指派給單一位置和訂用帳戶。 若要啟用跨位置和訂用帳戶的 Vm 備份，必須建立多個原則指派實例，分別用於每個位置和訂用帳戶的組合。
 

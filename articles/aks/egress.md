@@ -2,17 +2,14 @@
 title: Azure Kubernetes Service (AKS) 中適用於輸出流量的靜態 IP 位址
 description: 了解如何在 Azure Kubernetes Service (AKS) 叢集中，建立和使用適用於輸出流量的靜態公用 IP 位址
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.author: mlearned
-ms.openlocfilehash: 67471d688e64244067a7537bc87c379da4a69c03
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 5850f8dfc08ed80dfe5e5e13f49808c3fd9338c1
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68696369"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595751"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中使用適用於輸出流量的靜態公用 IP 位址
 
@@ -22,9 +19,9 @@ ms.locfileid: "68696369"
 
 ## <a name="before-you-begin"></a>開始之前
 
-此文章假設您目前具有 AKS 叢集。 如果您需要 AKS 叢集, 請參閱[使用 Azure CLI][aks-quickstart-cli]或[使用 Azure 入口網站][aks-quickstart-portal]的 AKS 快速入門。
+此文章假設您目前具有 AKS 叢集。 如果您需要 AKS 叢集，請參閱[使用 Azure CLI][aks-quickstart-cli]或[使用 Azure 入口網站][aks-quickstart-portal]的 AKS 快速入門。
 
-您也需要安裝並設定 Azure CLI 版本2.0.59 或更新版本。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級, 請參閱 [安裝 Azure CLI][install-azure-cli]。
+您也需要安裝並設定 Azure CLI 版本2.0.59 或更新版本。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
 
 ## <a name="egress-traffic-overview"></a>輸出流量概觀
 
@@ -34,7 +31,7 @@ ms.locfileid: "68696369"
 
 ## <a name="create-a-static-public-ip"></a>建立靜態公用 IP
 
-使用[az aks show][az-aks-show]命令取得資源組名, 並新增`--query nodeResourceGroup`查詢參數。 下列範例會在 *myResourceGroup* 資源群組名稱中，取得 AKS 叢集名稱 *myAKSCluster* 的節點資源群組：
+使用[az aks show][az-aks-show]命令取得資源組名，並加入 `--query nodeResourceGroup` 查詢參數。 下列範例會在 *myResourceGroup* 資源群組名稱中，取得 AKS 叢集名稱 *myAKSCluster* 的節點資源群組：
 
 ```azurecli-interactive
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -42,7 +39,7 @@ $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeR
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-現在, 使用[az network public ip create][az-network-public-ip-create]命令來建立靜態公用 ip 位址。 指定在上一個命令中所取得的節點資源群組名稱，然後指定 IP 位址資源的名稱，例如 *myAKSPublicIP*：
+現在，使用[az network public ip create][az-network-public-ip-create]命令來建立靜態公用 ip 位址。 指定在上一個命令中所取得的節點資源群組名稱，然後指定 IP 位址資源的名稱，例如 *myAKSPublicIP*：
 
 ```azurecli-interactive
 az network public-ip create \
@@ -123,7 +120,7 @@ $ curl -s checkip.dyndns.org
 
 ## <a name="next-steps"></a>後續步驟
 
-若要避免在 Azure Load Balancer 上維護多個公用 IP 位址，您可以改用輸入控制器。 輸入控制器會提供 SSL/TLS 終止、支援 URI 重寫及上游 SSL/TLS 加密等其他權益。 如需詳細資訊, 請參閱[在 AKS 中建立基本輸入控制器][ingress-aks-cluster]。
+若要避免在 Azure Load Balancer 上維護多個公用 IP 位址，您可以改用輸入控制器。 輸入控制器會提供 SSL/TLS 終止、支援 URI 重寫及上游 SSL/TLS 加密等其他權益。 如需詳細資訊，請參閱[在 AKS 中建立基本輸入控制器][ingress-aks-cluster]。
 
 <!-- LINKS - internal -->
 [az-network-public-ip-create]: /cli/azure/network/public-ip#az-network-public-ip-create

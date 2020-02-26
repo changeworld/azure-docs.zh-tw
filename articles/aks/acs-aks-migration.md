@@ -2,18 +2,15 @@
 title: 遷移至 Azure Kubernetes Service （AKS）
 description: 遷移至 Azure Kubernetes Service （AKS）。
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 11/07/2018
-ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: c4ed78dc9fd277fc61a923364519e338a9f720c2
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: bc96d3e8e5a595c80822065801873a44642be078
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290388"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596839"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>遷移至 Azure Kubernetes Service （AKS）
 
@@ -145,7 +142,7 @@ az aks create \
 * 建立磁碟的快照集。
 * 從快照集建立新的受控磁碟。
 * 在 AKS 中建立永久性磁碟區。
-* 將 pod 規格更新為[使用現有的磁碟區](https://docs.microsoft.com/azure/aks/azure-disk-volume)，而不是 PersistentVolumeClaims (靜態佈建)。
+* 將 pod 規格更新為[使用現有的磁片](https://docs.microsoft.com/azure/aks/azure-disk-volume)區，而不是 PersistentVolumeClaims （靜態布建）。
 * 將您的應用程式部署至 AKS。
 * 驗證您的應用程式是否正常運作。
 * 將您的即時流量指向新的 AKS 叢集。
@@ -155,8 +152,8 @@ az aks create \
 
 某些開放原始碼工具可協助您建立受控磁碟，並在 Kubernetes 叢集之間移轉磁碟區：
 
-* [Azure CLI 磁碟複製延伸模組](https://github.com/noelbundick/azure-cli-disk-copy-extension)會在資源群組和 Azure 區域之間複製和轉換磁碟。
-* [Azure KUBE CLI 延伸模組](https://github.com/yaron2/azure-kube-cli)會列舉 ACS Kubernetes 磁碟區，並將其移轉至 AKS 叢集。
+* [Azure CLI 磁碟複製延伸](https://github.com/noelbundick/azure-cli-disk-copy-extension)模組會在資源群組和 Azure 區域之間複製和轉換磁片。
+* [Azure KUBE CLI 擴充](https://github.com/yaron2/azure-kube-cli)功能會列舉 ACS Kubernetes 磁片區，並將其遷移至 AKS 叢集。
 
 
 ### <a name="deployment-of-your-cluster-configuration"></a>部署叢集設定

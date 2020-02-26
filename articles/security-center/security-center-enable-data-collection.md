@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 795661912633f0d225aef4de8ea7620a8766e096
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 71c30e0a86f67a2e2826859032144aa491c0cee1
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766985"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597026"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure 資訊安全中心的資料收集
 資訊安全中心會從您的 Azure 虛擬機器（Vm）、虛擬機器擴展集、IaaS 容器和非 Azure （包括內部部署）電腦收集資料，以監視是否有安全性弱點和威脅。 系統會使用 Log Analytics 代理程式來收集資料，這會從電腦讀取各種安全性相關設定和事件記錄，並將資料複製到您的工作區進行分析。 這類資料的範例包括︰作業系統類型和版本、作業系統記錄 (Windows 事件記錄)、執行中程序、電腦名稱、IP 位址和已登入的使用者。 Log Analytics 代理程式也會將損毀傾印檔案複製到您的工作區。
@@ -43,7 +43,7 @@ ms.locfileid: "74766985"
 1. 在 [資訊安全中心] 主功能表下，選取 [定價和設定]。
 2. 按一下適用的訂用帳戶
 
-   ![選取訂用帳戶][7]
+   ![選取訂閱][7]
 
 3. 選取 [**資料收集**]。
 4. 在 [自動佈建] 下，選取 [開啟] 啟用自動佈建。
@@ -72,7 +72,7 @@ ms.locfileid: "74766985"
 1. 在 [預設工作區組態] 下，選取 [使用資訊安全中心建立的工作區]。
    ![選取定價層][10] 
 
-1. 按一下 [儲存]。<br>
+1. 按一下 [檔案]。<br>
     資訊安全中心會在此地理位置建立新的資源群組和預設工作區，並將代理程式連線到該工作區。 工作區和資源群組的命名慣例如下：<br>
    **工作區：DefaultWorkspace-[subscription-ID]-[geo]<br> 資源群組：DefaultResourceGroup-[geo]**
 
@@ -83,7 +83,7 @@ ms.locfileid: "74766985"
 > 資訊安全中心所建立工作區的 Log Analytics 定價層不會影響資訊安全中心的收費。 資訊安全中心的計費一律根據您的資訊安全中心的安全性原則，以及工作區安裝的解決方案。 針對免費層，資訊安全中心在預設工作區啟用 SecurityCenterFree 解決方案。 對於標準層，資訊安全中心在預設工作區啟用 Security 解決方案。
 > 將資料儲存在 Log Analytics 中可能會產生額外的資料儲存體費用。 如需詳細資訊，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/security-center/)。
 
-如需有關現有 log analytics 帳戶的詳細資訊，請參閱[現有的 log analytics 客戶](security-center-faq.md#existingloganalyticscust)。
+如需有關現有 log analytics 帳戶的詳細資訊，請參閱[現有的 log analytics 客戶](./faq-azure-monitor-logs.md)。
 
 ### <a name="using-an-existing-workspace"></a>使用現有工作區
 
@@ -127,7 +127,7 @@ ms.locfileid: "74766985"
 
     a.  在資訊安全中心主功能表中，選取 **定價 & 設定**。
      
-    b.這是另一個 C# 主控台應用程式。  選取您要連線代理程式所需的工作區。
+    b.  選取您要連線代理程式所需的工作區。
         ![選取工作區][7] c. 設定定價層。
         ![選取定價層][9]
    
@@ -145,7 +145,7 @@ ms.locfileid: "74766985"
 > 
 > 對於訂用帳戶和工作區，您可以從儲存在您工作區的四組事件中選擇合適的篩選原則： 
 
-- **無** – 停用安全性事件的儲存空間。 這是預設設定。
+- **無** – 停用安全性事件的儲存空間。 這是預設值。
 - **最小** – 適合想要將事件數量最小化的客戶，是較小的一組事件。
 - **一般** – 這組事件能滿足大部分客戶的需求，而能讓這些客戶使用完整的稽核記錄。
 - **所有事件** – 適合想要確定已儲存所有事件的客戶。
@@ -168,9 +168,9 @@ ms.locfileid: "74766985"
 
 | 資料層 | 收集的事件指標 |
 | --- | --- |
-| 有限 | 1102,4624,4625,4657,4663,4688,4700,4702,4719,4720,4722,4723,4724,4727,4728,4732,4735,4737,4739,4740,4754,4755, |
+| 最小 | 1102,4624,4625,4657,4663,4688,4700,4702,4719,4720,4722,4723,4724,4727,4728,4732,4735,4737,4739,4740,4754,4755, |
 | | 4756,4767,4799,4825,4946,4948,4956,5024,5033,8001,8002,8003,8004,8005,8006,8007,8222 |
-| 一般 | 1，299，300，324，340，403，404，410，411，412，413，431，500，501，1100，1102，1107，1108，4608，4610，4611，4614，4622， |
+| 通用 | 1，299，300，324，340，403，404，410，411，412，413，431，500，501，1100，1102，1107，1108，4608，4610，4611，4614，4622， |
 | |  4624,4625,4634,4647,4648,4649,4657,4661,4662,4663,4665,4666,4667,4688,4670,4672,4673,4674,4675,4689,4697, |
 | | 4700,4702,4704,4705,4716,4717,4718,4719,4720,4722,4723,4724,4725,4726,4727,4728,4729,4733,4732,4735,4737, |
 | | 4738,4739,4740,4742,4744,4745,4746,4750,4751,4752,4754,4755,4756,4757,4760,4761,4762,4764,4767,4768,4771, |
@@ -179,7 +179,7 @@ ms.locfileid: "74766985"
 | | 6273,6278,6416,6423,6424,8001,8002,8003,8004,8005,8006,8007,8222,26401,30004 |
 
 > [!NOTE]
-> - 如果您使用群組原則物件 (GPO)，則建議您啟用稽核原則程序建立事件 4688 和事件 4688 內的 [CommandLine] 欄位。 如需更多程序建立事件 4688 的相關資訊，請參閱資訊安全中心的[常見問題集](security-center-faq.md#what-happens-when-data-collection-is-enabled)。 如需更多稽核原則的相關資訊，請參閱[稽核原則建議](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/audit-policy-recommendations)。
+> - 如果您使用群組原則物件 (GPO)，則建議您啟用稽核原則程序建立事件 4688 和事件 4688 內的 [CommandLine] 欄位。 如需更多程序建立事件 4688 的相關資訊，請參閱資訊安全中心的[常見問題集](faq-data-collection-agents.md#what-happens-when-data-collection-is-enabled)。 如需更多稽核原則的相關資訊，請參閱[稽核原則建議](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/audit-policy-recommendations)。
 > -  若要啟用[自適性應用程式控制](security-center-adaptive-application.md)的資料收集，資訊安全中心會在稽核模式中設定本機 AppLocker 原則以允許所有的應用程式。 這會導致 AppLocker 產生事件，然後由資訊安全中心收集並利用。 請務必注意，在已經設定 AppLocker 原則的機器上不會設定此原則。 
 > - 若要收集 Windows 篩選平台[事件識別碼 5156](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=5156)，您必須啟用[稽核篩選平台連線](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-filtering-platform-connection) (Auditpol /set /subcategory:"Filtering Platform Connection" /Success:Enable)
 >
@@ -211,7 +211,7 @@ ms.locfileid: "74766985"
 - 預先存在的 VM 擴充功能已存在<br>
     - 當監視代理程式安裝為擴充功能時，延伸模組設定只允許報告至單一工作區。 資訊安全中心不會覆寫既存的使用者工作區連線。 如果已安裝「安全性」或「securityFree」解決方案，資訊安全中心會將 VM 中的安全性資料儲存在已連線的工作區中。 資訊安全中心可以將延伸模組版本升級為此程式中的最新版本。  
     - 若要查看現有擴充功能將資料傳送到哪個工作區，請執行測試以[驗證與 Azure 資訊安全中心的連線](https://blogs.technet.microsoft.com/yuridiogenes/2017/10/13/validating-connectivity-with-azure-security-center/)。 或者，您可以開啟 Log Analytics 工作區、選取工作區、選取 VM，以及查看 Log Analytics 代理程式連線。 
-    - 如果您的環境中的 Log Analytics 代理程式已安裝在用戶端工作站上，並向現有的 Log Analytics 工作區報告，請檢查[Azure 資訊安全中心支援的作業系統](security-center-os-coverage.md)清單，以確定您的作業系統受到支援。 如需詳細資訊，請參閱[現有的 log analytics 客戶](security-center-faq.md#existingloganalyticscust)。
+    - 如果您的環境中的 Log Analytics 代理程式已安裝在用戶端工作站上，並向現有的 Log Analytics 工作區報告，請檢查[Azure 資訊安全中心支援的作業系統](security-center-os-coverage.md)清單，以確定您的作業系統受到支援。 如需詳細資訊，請參閱[現有的 log analytics 客戶](./faq-azure-monitor-logs.md)。
  
 ### 關閉自動佈建 <a name="offprovisioning"></a>
 您可以在安全性原則中關閉從資源自動佈建，隨時關閉這項設定。 
@@ -231,7 +231,7 @@ ms.locfileid: "74766985"
 -   資訊安全中心會停止從預設工作區收集資料。
  
 > [!NOTE]
->  停用自動布建並不會從已布建代理程式的 Azure Vm 移除 Log Analytics 代理程式。 如需移除 OMS 擴充功能的相關資訊，請參閱[我要如何移除資訊安全中心安裝的 OMS 擴充功能](security-center-faq.md#remove-oms)。
+>  停用自動布建並不會從已布建代理程式的 Azure Vm 移除 Log Analytics 代理程式。 如需移除 OMS 擴充功能的相關資訊，請參閱[我要如何移除資訊安全中心安裝的 OMS 擴充功能](faq-data-collection-agents.md#remove-oms)。
 >
     
 ## 手動佈建代理程式 <a name="manual-agent"></a>
@@ -246,7 +246,7 @@ ms.locfileid: "74766985"
 
    a.  在 [資訊安全中心] 主功能表中，選取 [安全性原則]。
      
-   b.這是另一個 C# 主控台應用程式。  選取您要在其中連線代理程式的工作區。 請確定工作區位於您在資訊安全中心使用的相同訂用帳戶中，而且您具備工作區的讀取/寫入權限。
+   b.  選取您要在其中連線代理程式的工作區。 請確定工作區位於您在資訊安全中心使用的相同訂用帳戶中，而且您具備工作區的讀取/寫入權限。
        ![選取工作區][8]
 3. 設定定價層。
    ![選取定價層][9] 
@@ -258,7 +258,7 @@ ms.locfileid: "74766985"
 
    a.  [安裝適用於 Windows 的 OMS 虛擬機器擴充功能](../virtual-machines/extensions/oms-windows.md)
     
-   b.這是另一個 C# 主控台應用程式。  [安裝適用於 Linux 的 OMS 虛擬機器擴充功能](../virtual-machines/extensions/oms-linux.md)
+   b.  [安裝適用於 Linux 的 OMS 虛擬機器擴充功能](../virtual-machines/extensions/oms-linux.md)
 5. 若要在現有的 VM 上部署擴充功能，請遵循[收集有關 Azure 虛擬機器的資料](../azure-monitor/learn/quick-collect-azurevm.md)中的指示。
 
    > [!NOTE]
@@ -314,8 +314,8 @@ ms.locfileid: "74766985"
 ## <a name="next-steps"></a>後續步驟
 本文說明資料收集和自動佈建如何在資訊安全中心運作。 如要深入了解資訊安全中心，請參閱下列主題：
 
-* [Azure 資訊安全中心常見問題集](security-center-faq.md)-- 尋找有關使用服務的常見問題。
-* [Azure 資訊安全中心的安全性健全狀況監視](security-center-monitoring.md)-- 了解如何監視 Azure 資源的健全狀況。
+* [Azure 資訊安全中心常見問題集](faq-general.md)-- 尋找有關使用服務的常見問題。
+* [Azure 資訊安全中心的安全性健康狀態監視](security-center-monitoring.md)--了解如何監視 Azure 資源的健康狀態。
 
 
 

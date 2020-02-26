@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: memildin
-ms.openlocfilehash: 5b496523f6205532ea7a4278671e3be6986935a7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a1034eb47010da2b0e795ee8c79646f06151cac1
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355291"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603277"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>使用 Azure 資訊安全中心建議增強安全性
 您可以設定安全性原則，然後實作 Azure 資訊安全中心提供的建議，以降低發生重大安全性事件的機會。 本文說明如何使用資訊安全中心的安全性原則和建議，以協助減少安全性攻擊。 
@@ -28,7 +28,7 @@ ms.locfileid: "75355291"
 - 作業系統安全性設定建議會在48小時內更新
 - Endpoint Protection 問題建議會在8小時內更新
 
-## <a name="scenario"></a>案例
+## <a name="scenario"></a>狀況
 此案例示範如何使用資訊安全中心，透過監控資訊安全中心建議並採取動作，以協助降低發生安全性事件的機會。 此案例使用虛構公司 Contoso，以及資訊安全中心[規劃與操作指南](security-center-planning-and-operations-guide.md#security-roles-and-access-controls)中出現的角色。 在此案例中，我們著重於下列人物的角色：
 
 ![案例角色](./media/security-center-using-recommendations/scenario-roles.png)
@@ -57,7 +57,7 @@ Jeff 會執行下列工作：
 
 2. Jeff 會檢查**安全分數**，以取得訂用帳戶如何保護的整體圖片，並查看分數為548。
 
-3. Jeff 必須決定要先處理哪些建議。 所以 Jeff 會按一下安全分數，並根據建議可改善其[安全分數影響](security-center-secure-score.md)的程度，開始處理建議。
+3. Jeff 必須決定要先處理哪些建議。 所以 Jeff 按一下安全分數，開始處理建議的方式，取決於提升其[安全分數影響](security-center-secure-score.md)的程度。
 
 4. Jeff 有大量已連線的 VM 和伺服器，因此決定著重於 [計算和應用程式]。
 
@@ -65,10 +65,10 @@ Jeff 會執行下列工作：
 
 6. Jeff 有許多網際網路對應的 Vm，而且因為其埠已公開，所以他們會擔心攻擊者可以取得伺服器的控制權。 因此 Jeff 選擇使用[**即時 VM 存取**](security-center-just-in-time.md)。
 
-Jeff 繼續瀏覽高優先權和中優先順序的建議，然後進行實作決策。 針對每項建議，Jeff 會查看資訊安全中心所提供的詳細資訊，以了解哪些資源受到影響、安全分數影響為何、每項建議的用意，以及如何緩和每個問題的補救步驟。
+Jeff 繼續瀏覽高優先權和中優先順序的建議，然後進行實作決策。 針對每個建議，Jeff 會查看資訊安全中心所提供的詳細資訊，以瞭解哪些資源受到影響、安全分數的影響為何、每個建議的意義，以及如何降低每個問題的補救步驟。
 
 ## <a name="conclusion"></a>結論
-監控資訊安全中心的建議有助於在發生攻擊之前消除安全性弱點。 當您補救建議時，您的安全分數和工作負載的安全性狀態都會改善。 資訊安全中心會自動探索您所部署的新資源、根據您的安全性原則進行評估，並提供新的建議來保護它們。
+監控資訊安全中心的建議有助於在發生攻擊之前消除安全性弱點。 當您修復建議時，您的安全分數和工作負載的安全性狀態都會改善。 資訊安全中心會自動探索您所部署的新資源、根據您的安全性原則進行評估，並提供新的建議來保護它們。
 
 
 ## <a name="next-steps"></a>後續步驟

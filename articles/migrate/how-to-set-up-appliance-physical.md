@@ -6,19 +6,16 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 99ccd00dbcea7f8eaed2e8e51a64b89c1e0b42a2
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: b60a30e5e30ee81cbaca7d5e4691ccedac2462b6
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028845"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598165"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>設定實體伺服器的設備
 
 本文說明當您使用 Azure Migrate： Server 評估工具來評估實體伺服器時，如何設定 Azure Migrate 設備。
-
-> [!NOTE]
-> 如果此處提及您尚未在 Azure Migrate 入口網站中看到的功能，請稍候。 它們將會在下週前後出現。
 
 Azure Migrate 設備是輕量設備，供 Azure Migrate 伺服器評估用來執行下列動作：
 
@@ -44,7 +41,7 @@ Azure Migrate 設備是輕量設備，供 Azure Migrate 伺服器評估用來執
 2. 在 [探索機器] > [機器是否已虛擬化?] 中，按一下 [未虛擬化/其他]。
 3. 按一下 [下載] 以下載 ZIP 壓縮檔案。
 
-    ![下載 VM](./media/how-to-set-up-appliance-hyper-v/download-appliance-hyperv.png)
+    ![下載 VM](./media/tutorial-assess-physical/download-appliance.png)
 
 
 ### <a name="verify-security"></a>確認安全性
@@ -55,21 +52,16 @@ Azure Migrate 設備是輕量設備，供 Azure Migrate 伺服器評估用來執
 2. 執行下列命令以產生 VHD 的雜湊
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 使用方式範例：```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3.  針對最新的設備版本，產生的雜湊應符合這些設定。
-
-  **演算法** | **雜湊值**
-  --- | ---
-  MD5 | 96fd99581072c400aa605ab036a0a7c0
-  SHA256 | f5454beef510c0aa38ac1c6be6346207c351d5361afa0c9cea4772d566fcdc36
+3.  針對最新的設備版本，產生的雜湊應符合這些[設定](https://docs.microsoft.com/azure/migrate/tutorial-assess-physical#verify-security)。
 
 
 
 ## <a name="run-the-azure-migrate-installer-script"></a>執行 Azure Migrate 安裝程式指令碼
-= 此安裝程式指令碼會執行下列作業︰
+此安裝程式指令碼會執行下列作業︰
 
 - 安裝用於實體伺服器探索及評定的代理程式與 Web 應用程式。
 - 安裝 Windows 角色，包括 Windows 啟用服務、IIS 與 PowerShell ISE。
-- 下載並安裝 IIS 可讀寫模組。 [深入了解](https://www.microsoft.com/download/details.aspx?id=7435)。
+- 下載並安裝 IIS 可讀寫模組。 [詳細資訊](https://www.microsoft.com/download/details.aspx?id=7435)。
 - 使用 Azure Migrate 的持續設定詳細資料來更新登錄機碼 (HKLM)。
 - 在路徑底下建立下列檔案：
     - **組態檔**：%Programdata%\Microsoft Azure\Config
@@ -80,13 +72,16 @@ Azure Migrate 設備是輕量設備，供 Azure Migrate 伺服器評估用來執
 1. 將 ZIP 壓縮檔案解壓縮至會裝載設備之伺服器上的資料夾。
 2. 在上述伺服器上，使用系統管理 (提高的) 權限來啟動 PowerShell。
 3. 將 PowerShell 目錄變更為已從下載的 ZIP 壓縮檔案解壓縮內容的資料夾。
-4. 執行下列命令，以執行指令碼：
+4. 藉由執行下列命令，以執行名為 **AzureMigrateInstaller.ps1** 的指令碼：
     ```
-    AzureMigrateInstaller.ps1
+    PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1
     ```
 指令碼會在成功完成時啟動設備 Web 應用程式。
 
+如果發生任何問題，您可以存取位於 C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>時間戳記</em>.log 的指令碼記錄，以進行疑難排解。
 
+> [!NOTE]
+> 請不要在現有的 Azure Migrate 設備上執行 Azure Migrate 安裝程式指令碼。
 
 ### <a name="verify-appliance-access-to-azure"></a>確認設備是否能存取 Azure
 

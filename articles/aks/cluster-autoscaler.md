@@ -2,17 +2,14 @@
 title: 使用 Azure Kubernetes Service (AKS) 中的叢集自動調整程式
 description: 了解如何使用叢集自動調整程式，根據 Azure Kubernetes Service (AKS) 叢集中的應用程式需求，自動調整叢集。
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.author: mlearned
-ms.openlocfilehash: 12e5ee1b5c56e642cef117963d7cd879cf9b0633
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 0b94865d81afc56c24d470012c668662f003a1b8
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524283"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596244"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>自動調整叢集以符合 Azure Kubernetes Service (AKS) 的應用程式需求
 
@@ -147,7 +144,7 @@ az aks update \
   --cluster-autoscaler-profile scan-interval=30s
 ```
 
-當您在叢集中的節點集區上啟用叢集自動調整程式時，這些叢集也會使用叢集自動調整程式設定檔。 例如，
+當您在叢集中的節點集區上啟用叢集自動調整程式時，這些叢集也會使用叢集自動調整程式設定檔。 例如：
 
 ```azurecli-interactive
 az aks nodepool update \
@@ -164,7 +161,7 @@ az aks nodepool update \
 
 ### <a name="set-the-cluster-autoscaler-profile-when-creating-an-aks-cluster"></a>建立 AKS 叢集時設定叢集自動調整程式設定檔
 
-建立叢集時，您也可以使用*自動調整程式設定檔*參數。 例如，
+建立叢集時，您也可以使用*自動調整程式設定檔*參數。 例如：
 
 ```azurecli-interactive
 az aks create \

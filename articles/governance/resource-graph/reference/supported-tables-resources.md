@@ -1,14 +1,14 @@
 ---
 title: 支援的 Resource Manager 資源類型
 description: 提供 Azure Resource Graph 和變更歷程記錄所支援的 Resource Manager 資源類型清單。
-ms.date: 02/20/2020
+ms.date: 02/25/2020
 ms.topic: reference
-ms.openlocfilehash: 130b11f0060f7f27091a21652aa481f0340b288f
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: dc08c4a33ec9e0c20b865ffa4d7c6ff9d5248e90
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77530220"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602567"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph 資料表和資源類型參考
 
@@ -34,7 +34,7 @@ Azure Resource Graph 支援[Azure Resource Manager](../../../azure-resource-mana
 - microsoft .resources/訂閱
 - microsoft .resources/訂用帳戶/resourcegroups
 
-## <a name="resources"></a>資源
+## <a name="resources"></a>resources
 
 - 84codes. cloudamqp/servers
 - citrix. services/xenappessentials
@@ -116,6 +116,7 @@ Azure Resource Graph 支援[Azure Resource Manager](../../../azure-resource-mana
 - microsoft. compute/sharedvmimages
 - microsoft。 compute/sharedvmimages/版本
 - microsoft. 計算/快照集
+- microsoft. compute/sshpublickeys
 - microsoft. compute/virtualmachines
 - microsoft。計算/virtualmachines/延伸模組
 - microsoft. compute/virtualmachinescalesets
@@ -270,13 +271,14 @@ Azure Resource Graph 支援[Azure Resource Manager](../../../azure-resource-mana
 - microsoft 網路/ddoscustompolicies
 - microsoft 網路/ddosprotectionplans
 - microsoft 網路/dnszones
-- Microsoft 網路/expressroutecircuits
+- microsoft 網路/expressroutecircuits
 - microsoft 網路/expressroutecrossconnections
 - microsoft 網路/expressroutegateways
 - microsoft 網路/expressrouteports
 - microsoft 網路/firewallpolicies
 - microsoft 網路/frontdoors
 - microsoft 網路/frontdoorwebapplicationfirewallpolicies
+- microsoft 網路/ipallocations
 - microsoft 網路/ipgroups
 - microsoft 網路/loadbalancers
 - microsoft 網路/localnetworkgateways

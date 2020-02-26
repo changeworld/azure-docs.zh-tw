@@ -14,12 +14,12 @@ ms.date: 01/14/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7d096f721869e43e9a860733d0f6893f224a6776
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: bd9622d3e34198402bc45e5d855d05b0c8e35eb8
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772580"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605452"
 ---
 # <a name="in-place-change-of-sql-server-edition-on-azure-vm"></a>Azure VM 上 SQL Server 版本的就地變更
 
@@ -29,13 +29,13 @@ SQL Server 的版本取決於產品金鑰，並使用安裝媒體在安裝過程
 
 一旦 SQL Server 的版本在內部變更為 SQL Server VM，您就必須在 Azure 入口網站中更新 SQL Server 的版本屬性，以供計費之用。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要進行 SQL Server 版本的就地變更，您需要下列各項： 
 
 - [Azure 訂用帳戶](https://azure.microsoft.com/free/)。
 - 已向[SQL vm 資源提供者](virtual-machines-windows-sql-register-with-resource-provider.md)註冊之[Windows 上的 SQL Server VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) 。
-- 使用所需的 SQL Server**版本**來設定媒體。 具有[軟體保證](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default)的客戶可以從[大量授權中心](https://www.microsoft.com/Licensing/servicecenter/default.aspx)取得其安裝媒體。 沒有軟體保證的客戶可以從具有所需版本的 Azure Marketplace SQL Server VM 映射（通常位於 `c:\SQLInstalls`）使用安裝媒體。 
+- 使用所需的 SQL Server**版本**來設定媒體。 具有[軟體保證](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default)的客戶可以從[大量授權中心](https://www.microsoft.com/Licensing/servicecenter/default.aspx)取得其安裝媒體。 沒有軟體保證的客戶可以從具有所需版本的 Azure Marketplace SQL Server VM 映射（通常位於 `C:\SQLServerFull`）使用安裝媒體。 
 
 
 ## <a name="upgrade-an-edition"></a>升級版本

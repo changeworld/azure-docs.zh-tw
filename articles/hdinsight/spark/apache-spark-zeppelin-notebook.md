@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/18/2020
-ms.openlocfilehash: c5c8a41aef92876ceaa66fb23c01c6ece1609f91
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: e313048986beca1991e38ce2e65ea12f954170d2
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484803"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598267"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>在 Azure HDInsight 上搭配使用 Apache Zeppelin Notebook 和 Apache Spark 叢集
 
@@ -150,6 +150,25 @@ Zeppelin Notebook 會儲存到叢集前端節點。 因此，如果您刪除叢�
 ![下載筆記本](./media/apache-spark-zeppelin-notebook/zeppelin-download-notebook.png "下載筆記本")
 
 這會將 Notebook 以 JSON 檔案的形式儲存在下載位置中。
+
+## <a name="use-shiro-to-configure-access-to-zeppelin-interpreters-in-enterprise-security-package-esp-clusters"></a>使用 Shiro 來設定企業安全性套件（ESP）叢集中 Zeppelin 解譯器的存取權
+如先前所述，HDInsight 4.0 和更新版本不支援 `%sh` 解譯器。 此外，由於 `%sh` 解譯器會引進潛在的安全性問題，例如使用 shell 命令存取 keytabs，因此它也已從 HDInsight 3.6 ESP 叢集移除。 這表示在預設情況下，按一下 [**建立新便箋**] 或 [在解譯器 UI] 時，不會提供 `%sh` 解譯器。 
+
+具有特殊許可權的網域使用者可以利用 `Shiro.ini` 檔案來控制解譯器 UI 的存取權。 因此，只有這些使用者可以建立新的 `%sh` 解譯器，並設定每個新 `%sh` 解譯器的許可權。 若要使用 `shiro.ini` 檔案來控制存取，請使用下列步驟：
+
+1. 使用現有的網域組名來定義新的角色。 在下列範例中，`adminGroupName` 是 AAD 中的特殊許可權使用者群組。 請勿在組名中使用特殊字元或空格。 `=` 之後的字元會授與此角色的許可權。 `*` 表示群組具有完整許可權。
+
+    ```
+    [roles]
+    adminGroupName = *
+    ```
+
+2. 新增新角色以存取 Zeppelin 解譯器。 在下列範例中，`adminGroupName` 中的所有使用者都會獲得 Zeppelin 解譯器的存取權，而且能夠建立新的解譯器。 您可以將多個角色放在 `roles[]`中的括弧之間，並以逗號分隔。 然後，具有必要許可權的使用者可以存取 Zeppelin 解譯器。
+
+    ```
+    [urls]
+    /api/interpreter/** = authc, roles[adminGroupName]
+    ```
 
 ## <a name="livy-session-management"></a>Livy 工作階段管理
 

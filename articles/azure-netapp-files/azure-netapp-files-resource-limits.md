@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/09/2019
+ms.date: 02/25/2020
 ms.author: b-juche
-ms.openlocfilehash: 6fcea0aaecb860e07c2066877494c05b51f43ca4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7637d18017f5bdc76c8a271198a88f21a59a6aac
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976242"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604973"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp Files 的資源限制
 
@@ -36,7 +36,7 @@ ms.locfileid: "74976242"
 |  每個容量集區的磁片區數目     |    500   |    是     |
 |  每個磁片區的快照集數目       |    255     |    否        |
 |  每個 Azure 虛擬網路委派給 Azure NetApp Files （Microsoft NetApp/磁片區）的子網數目    |   1   |    否    |
-|  可存取 Azure NetApp Files 的 VNet 中的 Ip 數目（包括對等互連 Vnet）   |    1000   |    是   |
+|  VNet 中已使用的 Ip 數目（包括立即對等互連 Vnet）與 Azure NetApp Files   |    1000   |    是   |
 |  單一容量集區的大小下限   |  4 TiB     |    否  |
 |  單一容量集區的大小上限    |  500 TiB   |   否   |
 |  單一磁片區的大小下限    |    100 GiB    |    否    |

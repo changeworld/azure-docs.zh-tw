@@ -2,17 +2,16 @@
 title: 在 Azure Kubernetes Service 中安裝 Linkerd （AKS）
 description: 瞭解如何安裝和使用 Linkerd，以在 Azure Kubernetes Service （AKS）叢集中建立服務網格
 author: paulbouwer
-ms.service: container-service
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: f70052a62152a20f808c1e491a663d1406fbd407
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 419b61527b68299c82dec4f2f5da6b0220859cc1
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747721"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593703"
 ---
 # <a name="install-linkerd-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service 中安裝 Linkerd （AKS）
 
@@ -25,7 +24,7 @@ ms.locfileid: "73747721"
 >
 > Linkerd `stable-2.6.x` 可以針對 Kubernetes `1.13+`版本執行。 您可以在[GitHub Linkerd 版本][linkerd-github-releases]中找到其他穩定和 edge Linkerd 版本。
 
-在本文中，您將了解：
+在本文中，您將學會如何：
 
 > [!div class="checklist"]
 > * 下載並安裝 Linkerd Linkerd 用戶端二進位檔

@@ -2,17 +2,16 @@
 title: 教學課程 - 使用 Jenkins 從 GitHub 部署至 Azure Kubernetes Service (AKS)
 description: 設定 Jenkins 以進行從 GitHub 的持續整合 (CI) 以及對 Azure Kubernetes Service (AKS) 的持續部署 (CD)
 services: container-service
-ms.service: container-service
 author: zr-msft
 ms.author: zarhoads
 ms.topic: article
 ms.date: 01/09/2019
-ms.openlocfilehash: e46e2c2933ee9afda860b68b10c135ac75a5d247
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: fd754b539a9b0ba3d47ddd2228365dbd09d6e6df
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263936"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595479"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-kubernetes-service-aks-with-jenkins-continuous-integration-and-deployment"></a>教學課程：使用 Jenkins 持續整合和部署從 GitHub 部署至 Azure Kubernetes Service (AKS)
 
@@ -27,7 +26,7 @@ ms.locfileid: "72263936"
 > * 建立 Jenkins 建置作業和 GitHub Webhook 來進行自動化建置。
 > * 測試 CI/CD 管線以根據 GitHub 程式碼認可來更新 AKS 中的應用程式。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，您需要下列項目：
 

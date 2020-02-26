@@ -3,12 +3,12 @@ title: 設定 Hyper-v 的 Azure Migrate 設備
 description: 瞭解如何設定 Azure Migrate 應用裝置，以評估和遷移 Hyper-v Vm。
 ms.topic: article
 ms.date: 11/19/2019
-ms.openlocfilehash: 0704adda314b94736b01fe114c3643ef8bd83753
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 8199525a118ffca2cfc03734283eb26facba8483
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029099"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598335"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>設定 Hyper-v Vm 的應用裝置
 
@@ -48,12 +48,8 @@ Hyper-v VM 應用裝置是一種輕量設備，Azure Migrate Server 評估/遷�
 2. 執行下列命令以產生 VHD 的雜湊
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 使用方式範例：```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.vhd SHA256```
-3.  針對 [設備版本 2.19.11.12]，產生的雜湊應符合這些設定。
+3.  針對 [設備版本 2.19.11.12]，產生的雜湊應符合這些[設定](https://docs.microsoft.com/azure/migrate/tutorial-assess-hyper-v#verify-security)。
 
-  **演算法** | **雜湊值**
-  --- | ---
-  MD5 | 29a7531f32bcf69f32d964fa5ae950bc
-  SHA256 | 37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
 
 
 

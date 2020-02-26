@@ -3,16 +3,16 @@ title: Azure 檔案服務的常見問題集 (FAQ) | Microsoft Docs
 description: 尋找關於 Azure 檔案服務之常見問題集的解答。
 author: roygara
 ms.service: storage
-ms.date: 02/19/2020
+ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: c6503f2782832b7155c0c081aab9769296e08a8e
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 5cbb819ef1300f16a40dbdd0da52a35bdf578e59
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77565055"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598182"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>關於 Azure 檔案服務的常見問題集 (FAQ)
 [Azure 檔案](storage-files-introduction.md)提供雲端中完全受控的檔案共用，可透過業界標準[伺服器訊息區 (SMB) 通訊協定](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)來存取。 您可以同時在 Windows、Linux 和 macOS 的雲端或內部部署上掛接 Azure 檔案共用。 您也可以使用 Azure 檔案同步，在接近使用資料之處進行快速存取，藉以在 Windows Server 電腦上快取 Azure 檔案共用。
@@ -85,7 +85,7 @@ ms.locfileid: "77565055"
 
 * <a id="afs-region-availability"></a>
   **哪些區域支援 Azure 檔案同步？**  
-    如需可用區域的清單，請參閱 Azure 檔案同步規劃指南的[區域可用性](storage-sync-files-planning.md#region-availability)一節。 我們會持續新增其他區域的支援，包括非公用區域。
+    如需可用區域的清單，請參閱 Azure 檔案同步規劃指南的[區域可用性](storage-sync-files-planning.md#azure-file-sync-region-availability)一節。 我們會持續新增其他區域的支援，包括非公用區域。
 
 * <a id="cross-domain-sync"></a>
   **相同的同步群組中是否可以同時有已加入網域和未加入網域的伺服器？**  
@@ -155,13 +155,13 @@ ms.locfileid: "77565055"
 
     如果您已在檔案同步受控檔案共用上啟用 Azure 備份，檔案 Acl 可以繼續還原為備份還原工作流程的一部分。 這適用于整個共用或個別檔案/目錄。
 
-    如果您使用快照集做為受檔案同步管理之檔案共用的自我管理備份解決方案的一部分，則如果在2020年2月24日前建立快照集，您的 Acl 可能無法正確地還原為 NTFS Acl。 如果發生這種情況，請考慮聯絡 Azure 支援。
+    如果您使用快照集做為受檔案同步管理之檔案共用的自我管理備份解決方案的一部分，則如果在2020年2月24日之前取得快照集，您的 Acl 可能無法正確地還原為 NTFS Acl。 如果發生這種情況，請考慮聯絡 Azure 支援。
     
 ## <a name="security-authentication-and-access-control"></a>安全性、驗證和存取控制
 * <a id="ad-support"></a>
 **是以身分識別為基礎的驗證和存取控制（由 Azure 檔案儲存體所支援）嗎？**  
     
-    是，Azure 檔案儲存體支援以身分識別為基礎的驗證和存取控制。 您可以選擇下列兩種方式的其中一種來使用身分識別型存取控制： Azure Active Directory Domain Services （Azure AD DS）（GA）或 Active Directory （AD）（預覽）。 Azure AD 透過 SMB 進行的 DS 驗證 Azure 檔案儲存體可讓已加入網域的 Azure AD DS Windows Vm 使用 Azure AD 認證來存取共用、目錄和檔案。 AD 支援在內部部署或 Azure 中使用已加入 AD 網域的電腦進行驗證，以透過 SMB 存取 Azure 檔案共用。 如需詳細資訊，請參閱[SMB 存取的 Azure 檔案儲存體身分識別型驗證支援的總覽](storage-files-active-directory-overview.md)。 
+    是，Azure 檔案儲存體支援以身分識別為基礎的驗證和存取控制。 您可以選擇下列兩種方式的其中一種來使用身分識別型存取控制： Active Directory （AD）（預覽）或 Azure Active Directory Domain Services （Azure AD DS）（GA）。 AD 支援在內部部署或 Azure 中使用已加入 AD 網域的電腦進行驗證，以透過 SMB 存取 Azure 檔案共用。 Azure AD 透過 SMB 進行的 DS 驗證 Azure 檔案儲存體可讓已加入網域的 Azure AD DS Windows Vm 使用 Azure AD 認證來存取共用、目錄和檔案。 如需詳細資訊，請參閱[SMB 存取的 Azure 檔案儲存體身分識別型驗證支援的總覽](storage-files-active-directory-overview.md)。 
 
     Azure 檔案服務提供兩種管理存取控制的額外方式：
 
@@ -199,14 +199,12 @@ ms.locfileid: "77565055"
 * <a id="ad-multiple-forest"></a>
 **是否 AZURE 檔案儲存體 ad 驗證支援使用多個樹系與 ad 環境整合？**    
 
-    Azure 檔案儲存體 AD 驗證只會與儲存體帳戶註冊的 AD 網域服務樹系整合。 若要支援來自另一個 AD 樹系的驗證，您的環境必須正確設定樹系信任。 AD 網域服務的 Azure 檔案儲存體註冊與一般的檔案伺服器大致相同，因為它會在 AD 中建立帳戶以進行驗證。 唯一的差異在於儲存體帳戶的已註冊 SPN 結尾為 "file.core.windows.net"，這不符合網域尾碼。
-
-    請洽詢您的網域系統管理員，查看是否需要對 DNS 路由原則進行任何更新以啟用多樹系驗證。
+    Azure 檔案儲存體 AD 驗證只會與儲存體帳戶註冊的 AD 網域服務樹系整合。 若要支援來自另一個 AD 樹系的驗證，您的環境必須正確設定樹系信任。 Azure 檔案儲存體向 AD 網域服務註冊的方式，大致上與一般的檔案伺服器相同，它會在 AD 中建立身分識別（電腦或服務登入帳戶）以進行驗證。 唯一的差異在於儲存體帳戶的已註冊 SPN 結尾為 "file.core.windows.net"，這不符合網域尾碼。 請洽詢您的網域系統管理員，查看是否需要對 DNS 路由原則進行任何更新，以啟用多樹系驗證，因為不同的網域尾碼。
 
 * <a id=""></a>
 **哪些區域可供 AZURE 檔案儲存體 AD 驗證（預覽）？**
 
-    如需詳細資訊，請參閱[AD 區域可用性](storage-files-active-directory-domain-services-enable.md#regional-availability)。
+    如需詳細資訊，請參閱[AD 區域可用性](storage-files-identity-auth-active-directory-enable.md#regional-availability)。
 
 * <a id="ad-aad-smb-afs"></a>
 **可以在 Azure 檔案同步所管理的檔案共用上，利用 Azure 檔案儲存體 AZURE AD DS 驗證或 Active Directory （AD）驗證（預覽）嗎？**
@@ -347,7 +345,7 @@ ms.locfileid: "77565055"
 
 * <a id="need-larger-share"></a>
 **適用于 Azure 檔案共用的大小為何？**  
-    Azure 檔案共用大小（premium 和 standard）可以相應增加至 100 TiB。 請參閱規劃指南的上[架至較大的檔案共用（標準層）](storage-files-planning.md#onboard-to-larger-file-shares-standard-tier)一節，以取得有關標準層的較大檔案共用的入門指示。
+    Azure 檔案共用大小（premium 和 standard）可以相應增加至 100 TiB。 請參閱規劃指南的上[架至較大的檔案共用（標準層）](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib)一節，以取得有關標準層的較大檔案共用的入門指示。
 
 * <a id="lfs-performance-impact"></a>
 **擴充檔案共用配額會影響我的工作負載或 Azure 檔案同步嗎？**

@@ -2,17 +2,14 @@
 title: 在 Azure Kubernetes Service （AKS）中使用客戶管理的金鑰來加密 Azure 磁片
 description: 攜帶您自己的金鑰（BYOK）來加密 AKS OS 和資料磁片。
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 01/12/2020
-ms.author: mlearned
-ms.openlocfilehash: 1852ba059d13a8886b739cac439798b4d031a531
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: bb6ba5e6dd4ace9e33043079c0f435c10baf5cb2
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76932628"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596499"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service （AKS）中攜帶您自己的金鑰（BYOK）與 Azure 磁片
 

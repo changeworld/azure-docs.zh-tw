@@ -2,17 +2,14 @@
 title: Concepts - Azure Kubernetes Services (AKS) 的 Kubernetes 基本概念
 description: 了解 Kubernetes 的基本叢集和工作負載元件，及其與 Azure Kubernetes Service (AKS) 中的功能有何關聯
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.author: mlearned
-ms.openlocfilehash: 9efd053bde11a29c37e3ff6afb7c6fc4492338db
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bcf56aa89a42d65fdb7bf03696faad13c64cbc8a
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967563"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596227"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) 的 Kubernetes 核心概念
 
@@ -106,7 +103,7 @@ kubectl describe node [NODE_NAME]
     - 下一個 112 GB 記憶體的6% （最多 128 GB）
     - 128 GB 以上任何記憶體的2%
 
-上述的記憶體和 CPU 配置規則是用來讓代理程式節點狀況良好，某些裝載系統 pod 對叢集健康情況很重要。 這些配置規則也會導致節點回報較不 allocatable 的記憶體和 CPU，而不是 Kubernetes 叢集的一部分。 無法變更上述資源保留。
+上述的記憶體和 CPU 配置規則是用來讓代理程式節點保持良好狀態，包括一些對叢集健康狀態很重要的裝載系統 pod。 這些配置規則也會導致節點回報較不 allocatable 的記憶體和 CPU，而不是 Kubernetes 叢集的一部分。 無法變更上述資源保留。
 
 例如，如果節點提供 7 GB，則會回報34% 的記憶體未 allocatable 在750Mi 硬性收回閾值的上方。
 
@@ -224,7 +221,7 @@ spec:
 
 ### <a name="statefulsets"></a>StatefulSet
 
-現今的應用程式開發通常以無狀態應用程式為目標，但 *StatefulSet* 可用於具狀態的應用程式，例如包含資料庫元件的應用程式。 StatefulSet 類似於會建立和管理一或多個相同 Pod 的部署。 StatefulSet 中的複本會依照正常、循序的方法進行部署、調整、升級和終止。 透過 StatefulSet，命名慣例、網路名稱和儲存體在複本重新排程後仍可持續保存。
+現今的應用程式開發通常以無狀態應用程式為目標，但 *StatefulSet* 可用於具狀態的應用程式，例如包含資料庫元件的應用程式。 StatefulSet 類似於會建立和管理一或多個相同 Pod 的部署。 StatefulSet 中的複本會依照正常、循序的方法進行部署、調整、升級和終止。 使用 StatefulSet （作為複本重新排定）時，命名慣例、網路名稱和儲存體會保存。
 
 您可以使用 `kind: StatefulSet` 定義 YAML 格式的應用程式，隨後再由 StatefulSet 控制器處理必要複本的部署和管理。 資料會寫入至 Azure 受控磁碟或 Azure 檔案所提供的永續性儲存體。 透過 StatefulSet，即使在 StatefulSet 刪除後，基礎的永續性儲存體仍將保存。
 

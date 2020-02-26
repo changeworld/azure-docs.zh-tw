@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 79e7f2a8dad59de4dc9d84a26d24c82889c14c2f
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 6c002838d5a4f515a594d61e5137196c4d391795
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493315"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605432"
 ---
 # <a name="updated-ndv2-series-preview"></a>已更新 NDv2 系列（預覽）
 
@@ -24,13 +24,16 @@ NDv2 實例可為 HPC 和 AI 工作負載提供絕佳的效能，利用 CUDA 的
 
 嚴重來說，NDv2 是針對計算密集相應增加（每個 VM 的8個 Gpu）和向外延展（利用多個 Vm 一起運作）工作負載而建立的。 NDv2 系列現在支援 100-Gigabit 未處理的 EDR 後端網路，類似于 HB 系列的 HPC VM 上所提供的資料，以允許平行案例的高效能叢集，包括 AI 和 ML 的分散式訓練。 這個後端網路支援所有主要的未使用通訊協定，包括 NVIDIA 的 NCCL2 程式庫所採用的，讓 Gpu 能夠順暢地叢集化。
 
+
+> [!NOTE]
 > 在 ND40rs_v2 的 VM 上[啟用](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/enable-infiniband)「未使用」時，請使用 4.7-1.0.0.1 Mellanox OFED 驅動程式。
-
+>
 > 由於 GPU 記憶體增加，新的 ND40rs_v2 VM 需要使用[第2代 vm](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2)和 marketplace 映射。 
-
+>
 > [註冊以要求搶先存取 NDv2 虛擬機器預覽版。](https://aka.ms/AzureNDrv2Preview)
-
+>
 > 請注意：每個 GPU 記憶體有 16 GB 的 ND40s_v2 已不再提供預覽，並已由更新過的 ND40rs_v2 取代。
+
 <br>
 
 進階儲存體：支援

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 媒體服務帳戶的 azure 儲存體帳戶 |Microsoft Docs
+title: 具有 Azure 媒體服務帳戶的 Azure 儲存體帳戶 |Microsoft Docs
 description: 建立媒體服務帳戶時，您需要提供 Azure 儲存體帳戶資源的名稱。 指定的儲存體帳戶會附加到您的媒體服務帳戶。
 services: media-services
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: juliako
-ms.openlocfilehash: 5c5bfa224b87040f5142663e6adab01072c6e6ba
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 4bbadd7e10f0fd6896932dd79a5ca42d9906d2a2
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67619304"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602146"
 ---
 # <a name="azure-storage-accounts"></a>Azure 儲存體帳戶
 
@@ -26,16 +26,16 @@ ms.locfileid: "67619304"
 
 您只能有一個**主要**儲存體帳戶，而與您的媒體服務帳戶相關聯的**次要**儲存體帳戶可以有任意數量。 媒體服務支援**一般用途 v2** (GPv2) 或**一般用途 v1** (GPv1) 帳戶。 <br/>僅有 Blob 的帳戶不允許作為**主要**帳戶。 
 
-我們建議您使用 GPv2，因此您可以善加利用最新的功能和效能。 若要深入了解儲存體帳戶，請參閱 [Azure 儲存體帳戶概觀](../../storage/common/storage-account-overview.md)。
+建議您使用 GPv2，讓您可以利用最新的功能和效能。 若要深入了解儲存體帳戶，請參閱 [Azure 儲存體帳戶概觀](../../storage/common/storage-account-overview.md)。
 
 > [!NOTE]
-> 只有經常性存取層支援搭配 Azure 媒體服務中，雖然您可以使用其他的存取層，以降低儲存成本，未主動使用的內容。
+> 只有經常性存取層支援與 Azure 媒體服務搭配使用，雖然其他存取層可以用來降低未主動使用之內容的儲存成本。
 
-有不同的 Sku，您可以選擇儲存體帳戶。 如需詳細資訊，請參閱[儲存體帳戶](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest)。 如果您想要以儲存體帳戶進行試驗，請使用 `--sku Standard_LRS`。 不過，在選擇用於生產環境的 SKU 時應考慮使用 `--sku Standard_RAGRS`，以提供地理複寫功能而確保商務持續性。 
+您可以為儲存體帳戶選擇不同的 Sku。 如需詳細資訊，請參閱[儲存體帳戶](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest)。 如果您想要以儲存體帳戶進行試驗，請使用 `--sku Standard_LRS`。 不過，在選擇用於生產環境的 SKU 時應考慮使用 `--sku Standard_RAGRS`，以提供地理複寫功能而確保商務持續性。 
 
 ## <a name="assets-in-a-storage-account"></a>儲存體帳戶中的資產
 
-在媒體服務 v3，儲存體 Api 來將檔案上傳到資產。 如需詳細資訊，請參閱 <<c0> [ 資產概念](assets-concept.md)。
+在媒體服務 v3 中，儲存體 Api 可用來將檔案上傳到資產。 如需詳細資訊，請參閱[資產概念](assets-concept.md)。
 
 > [!Note]
 > blob 容器若是由媒體服務 SDK 產生時，請務必使用媒體服務 API 變更 blob 容器的內容。
@@ -58,10 +58,14 @@ ms.locfileid: "67619304"
 
 以下是可能會導致媒體服務帳戶無法存取附加儲存體帳戶的主要情況。 
 
-|問題|方案|
+|問題|解決方法|
 |---|---|
 |媒體服務帳戶或附加儲存體帳戶已移轉至個別的訂用帳戶中。 |移轉媒體服務帳戶或儲存體帳戶，讓帳戶全都位於同一個訂用帳戶中。 |
 |媒體服務帳戶使用的是不同訂用帳戶中的附加儲存體帳戶，因為其是受到支援的早期媒體服務帳戶。 所有的早期媒體服務帳戶均已轉換為最新的 Azure Resources Manager (ARM) 帳戶，而且會出現中斷連線的狀態。 |移轉媒體服務帳戶或儲存體帳戶，讓帳戶全都位於同一個訂用帳戶中。|
+
+## <a name="azure-storage-firewall"></a>Azure 儲存體防火牆
+
+Azure 媒體服務不支援已啟用「Azure 儲存體防火牆」或「[私人端點](https://docs.microsoft.com/azure/storage/common/storage-network-security)」的儲存體帳戶。
 
 ## <a name="next-steps"></a>後續步驟
 

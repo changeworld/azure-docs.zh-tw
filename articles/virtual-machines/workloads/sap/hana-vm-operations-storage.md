@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/27/2019
+ms.date: 02/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 26994c3488feb5f2c1522960ba4d2664bdbc80f4
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 4cc4db9ffcb700d4b65a7f5c21d258e9af52d164
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707480"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598522"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 虛擬機器儲存體設定
 
@@ -54,8 +54,11 @@ Azure 針對 Azure 標準儲存體和 Azure 進階儲存體上的 VHD，提供�
 
 **建議：做為 RAID 0 的等量大小，建議使用：**
 
-- 針對 **/hana/log** 使用 64 KB或 128 KB
+- 適用于 **/hana/data**的 256 KB
 - 針對 **/hana/log** 使用 32 KB
+
+> [!IMPORTANT]
+> /Hana/data 的等量大小已從先前的建議變更，從較舊的 Linux 版本以客戶經驗為基礎，呼叫 64 KB 或 128 KB 至 256 KB。 256 KB 的大小會提供稍微較佳的效能
 
 > [!NOTE]
 > 您不需要使用 RAID 磁碟區設定任何備援層級，因為 Azure 進階和標準儲存體會保存三個 VHD 的映像。 RAID 磁碟區的使用方式單純是用來設定會提供足夠 I/O 輸送量的磁碟區。
@@ -65,7 +68,7 @@ RAID 下的 Azure VHD 數目累計，是從 IOPS 和儲存體輸送量端累計�
 當調整 VM 大小或決定 VM 時，也請注意整體 VM I/O 輸送量。 [記憶體最佳化的虛擬機器大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory)一文中說明整體虛擬機器儲存體輸送量。
 
 ## <a name="linux-io-scheduler-mode"></a>Linux I/O 排程器模式
-Linux 有數個不同的 I/O 排程模式。 透過 Linux 廠商和 SAP 的一般建議是將磁片區的 i/o 排程器模式從**cfq**模式重新設定為**noop**模式。 [#1984787 的 SAP 附注](https://launchpad.support.sap.com/#/notes/1984787)中會參考詳細資料。 
+Linux 有數個不同的 I/O 排程模式。 透過 Linux 廠商和 SAP 的一般建議是將磁片區的 i/o 排程器模式從**cfq**模式重新設定為**noop** （非 multiqueue）或**none** （multiqueue）模式。 [#1984787 的 SAP 附注](https://launchpad.support.sap.com/#/notes/1984787)中會參考詳細資料。 
 
 
 ## <a name="solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines"></a>適用于 Azure M 系列虛擬機器的進階儲存體和 Azure 寫入加速器解決方案
@@ -100,7 +103,7 @@ Azure 寫入加速器是僅適用于 Azure M 系列 Vm 的功能。 如同名稱
 
 **建議：生產環境案例的建議設定如下所示：**
 
-| VM SKU | RAM | 最大 VM I/O<br /> 輸送量 | /hana/data | /hana/log | HANA/shared | /root volume | /usr/sap | hana/backup |
+| VM SKU | RAM | 最大 VM I/O<br /> Throughput | /hana/data | /hana/log | HANA/shared | /root volume | /usr/sap | hana/backup |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- |
 | M32ts | 192 GiB | 500 MB/秒 | 3 x P20 | 2 x P20 | 1 x P20 | 1 x P6 | 1 x P6 |1 x P20 |
 | M32ls | 256 GiB | 500 MB/秒 | 3 x P20 | 2 x P20 | 1 x P20 | 1 x P6 | 1 x P6 |1 x P20 |
@@ -116,9 +119,9 @@ Azure 寫入加速器是僅適用于 Azure M 系列 Vm 的功能。 如同名稱
 
 檢查不同建議磁片區的儲存體輸送量是否符合您想要執行的工作負載。 如果工作負載需要更多 **/hana/data** 和 **/hana/log** 磁碟區，您需要增加 Azure 進階儲存體 VHD 的數目。 使用超過列出的 Vhd 來調整磁片區大小，會增加 Azure 虛擬機器類型限制內的 IOPS 和 i/o 輸送量。
 
-Azure Write Accelerator 只能與 [Azure 受控磁碟](https://azure.microsoft.com/services/managed-disks/)搭配運作。 所以至少必須將組成 **/hana/log** 磁碟區的 Azure 進階儲存體磁碟部署為受控磁碟。
+Azure 寫入加速器只能與 [Azure 受控磁碟](https://azure.microsoft.com/services/managed-disks/)搭配運作。 所以至少必須將組成 **/hana/log** 磁碟區的 Azure 進階儲存體磁碟部署為受控磁碟。
 
-Azure Write Accelerator 可以支援之每個虛擬機器的 Azure 進階儲存體 VHD 有其限制。 目前的上限是：
+Azure 寫入加速器可以支援之每個虛擬機器的 Azure 進階儲存體 VHD 有其上限。 目前的上限是：
 
 - 適用于 M128xx 和 M416xx VM 的16個 Vhd
 - 8個適用于 M64xx 和 M208xx VM 的 Vhd
@@ -142,7 +145,7 @@ Azure Write Accelerator 的詳細資料和限制可以在相同文件中找到�
 
 建議通常超過本文稍早所述的 SAP 最低需求。 列出的建議是 SAP 的大小建議與不同 VM 類型提供的最大儲存體輸送量之間的折衷。
 
-| VM SKU | RAM | 最大 VM I/O<br /> 輸送量 | /hana/data 和 /hana/log<br /> 與 LVM 或 MDADM 等量 | HANA/shared | /root volume | /usr/sap | hana/backup |
+| VM SKU | RAM | 最大 VM I/O<br /> Throughput | /hana/data 和 /hana/log<br /> 與 LVM 或 MDADM 等量 | HANA/shared | /root volume | /usr/sap | hana/backup |
 | --- | --- | --- | --- | --- | --- | --- | -- |
 | DS14v2 | 112 GiB | 768 MB/秒 | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E15 |
 | E16v3 | 128 GB | 384 MB/秒 | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E15 |
@@ -192,7 +195,7 @@ Ultra 磁片可讓您定義單一磁片，以滿足您的大小、IOPS 和磁片
 
 建議通常超過本文稍早所述的 SAP 最低需求。 列出的建議是 SAP 的大小建議與不同 VM 類型提供的最大儲存體輸送量之間的折衷。
 
-| VM SKU | RAM | 最大 VM I/O<br /> 輸送量 | /hana/data 磁片區 | /hana/data i/o 輸送量 | /hana/data IOPS | /hana/log 磁片區 | /hana/log i/o 輸送量 | /hana/log IOPS |
+| VM SKU | RAM | 最大 VM I/O<br /> Throughput | /hana/data 磁片區 | /hana/data i/o 輸送量 | /hana/data IOPS | /hana/log 磁片區 | /hana/log i/o 輸送量 | /hana/log IOPS |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- |
 | E64s_v3 | 432 GiB | 1200 MB/秒 | 600 GB | 700 MBps | 7,500 | 512 GB | 500 MBps  | 2,000 |
 | M32ts | 192 GiB | 500 MB/秒 | 250 GB | 400 MBps | 7,500 | 256 GB | 250 MBps  | 2,000 |
@@ -217,7 +220,7 @@ Ultra 磁片可讓您定義單一磁片，以滿足您的大小、IOPS 和磁片
 
 建議通常超過本文稍早所述的 SAP 最低需求。 列出的建議是 SAP 的大小建議與不同 VM 類型提供的最大儲存體輸送量之間的折衷。
 
-| VM SKU | RAM | 最大 VM I/O<br /> 輸送量 | /Hana/data 和/log 的磁片區 | /hana/data 和記錄 i/o 輸送量 | /hana/data 和記錄 IOPS |
+| VM SKU | RAM | 最大 VM I/O<br /> Throughput | /Hana/data 和/log 的磁片區 | /hana/data 和記錄 i/o 輸送量 | /hana/data 和記錄 IOPS |
 | --- | --- | --- | --- | --- | --- |
 | E64s_v3 | 432 GiB | 1200 MB/秒 | 1200 GB | 1200 MBps | 9500 | 
 | M32ts | 192 GiB | 500 MB/秒 | 512 GB | 400 MBps | 9500 | 

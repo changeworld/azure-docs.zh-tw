@@ -2,17 +2,14 @@
 title: 操作員最佳做法 - Azure Kubernetes Services (AKS) 中的容器映像管理
 description: 了解叢集操作員在 Azure Kubernetes Service (AKS) 中管理和保護容器映像的最佳做法
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: mlearned
-ms.openlocfilehash: cd859a4009782ca39732ec004a3d3e05edd377b0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: efe72157f598c336248e407c57bce92fe87da23a
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442907"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594734"
 ---
 # <a name="best-practices-for-container-image-management-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) 中的容器映像管理與安全性最佳做法
 
@@ -32,7 +29,7 @@ ms.locfileid: "75442907"
 
 **最佳做法指導方針** - 掃描容器映像的弱點，並僅部署通過驗證的映像。 定期更新基底映像與應用程式執行階段，然後重新部署 AKS 叢集中的工作負載。
 
-採用容器型工作負載的其中一項考量，就是驗證用來建置您自己應用程式的映像與執行階段安全性。 如何確保您的部署不會招致安全性弱點？ 您的部署工作流程應該包含使用[Twistlock][twistlock]或[青色][aqua]之類的工具掃描容器映射的程式, 然後只允許部署已驗證的映射。
+採用容器型工作負載的其中一項考量，就是驗證用來建置您自己應用程式的映像與執行階段安全性。 如何確保您的部署不會招致安全性弱點？ 您的部署工作流程應該包含使用[Twistlock][twistlock] [或青色之類的工具][aqua]掃描容器映射的程式，然後只允許部署已驗證的映射。
 
 ![掃描和修復容器映像、驗證及部署](media/operator-best-practices-container-security/scan-container-images-simplified.png)
 

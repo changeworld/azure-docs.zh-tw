@@ -3,16 +3,15 @@ title: 整合 Azure NetApp Files 與 Azure Kubernetes Service
 description: 瞭解如何整合 Azure NetApp Files 與 Azure Kubernetes Service
 services: container-service
 author: zr-msft
-ms.service: container-service
 ms.topic: article
 ms.date: 09/26/2019
 ms.author: zarhoads
-ms.openlocfilehash: 84192a831e3b1f24e20eb07a6c8695516c28970f
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 42985e57d63c01553532928b2ba04ed5ee3dd8fb
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71329327"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596635"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>整合 Azure NetApp Files 與 Azure Kubernetes Service
 
@@ -33,7 +32,8 @@ ms.locfileid: "71329327"
 * Azure NetApp Files 僅適用[于選取的 azure 區域][anf-regions]。
 * 您必須先獲得 Azure NetApp Files 服務的存取權，才可以使用 Azure NetApp Files。 若要申請存取，您可以使用[Azure NetApp Files 等候清單提交表單][anf-waitlist]。 在您收到來自 Azure NetApp Files 小組的官方確認電子郵件之前，您無法存取 Azure NetApp Files 服務。
 * 您的 Azure NetApp Files 服務必須建立在與您的 AKS 叢集相同的虛擬網路中。
-* AKS 只支援 Azure NetApp Files 的靜態布建。
+* 初始部署 AKS 叢集之後，只支援 Azure NetApp Files 的靜態布建。
+* 若要搭配使用動態布建與 Azure NetApp Files，請安裝並設定[NetApp Trident](https://netapp-trident.readthedocs.io/) 19.07 版或更新版本。
 
 ## <a name="configure-azure-netapp-files"></a>設定 Azure NetApp Files
 
@@ -143,7 +143,7 @@ $ az netappfiles volume show --resource-group $RESOURCE_GROUP --account-name $AN
 }
 ```
 
-建立 `pv-nfs.yaml` 定義 PersistentVolume。 將 `path` 取代為上一個命令中具有*ipAddress*的*creationToken*和 `server`。 例如︰
+建立 `pv-nfs.yaml` 定義 PersistentVolume。 將 `path` 取代為上一個命令中具有*ipAddress*的*creationToken*和 `server`。 例如：
 
 ```yaml
 ---
@@ -175,7 +175,7 @@ kubectl describe pv pv-nfs
 
 ## <a name="create-the-persistentvolumeclaim"></a>建立 PersistentVolumeClaim
 
-建立 `pvc-nfs.yaml` 定義 PersistentVolume。 例如︰
+建立 `pvc-nfs.yaml` 定義 PersistentVolume。 例如：
 
 ```yaml
 apiVersion: v1
@@ -205,7 +205,7 @@ kubectl describe pvc pvc-nfs
 
 ## <a name="mount-with-a-pod"></a>使用 pod 掛接
 
-建立 `nginx-nfs.yaml`，定義使用 PersistentVolumeClaim 的 pod。 例如︰
+建立 `nginx-nfs.yaml`，定義使用 PersistentVolumeClaim 的 pod。 例如：
 
 ```yaml
 kind: Pod

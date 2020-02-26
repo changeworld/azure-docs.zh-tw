@@ -8,12 +8,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: aschhab
-ms.openlocfilehash: 21a3bfd09e83571e489e15e9351e12220a99e563
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: f852ad70b2eb97e2b8b3e40d086e98b3836c3592
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301252"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598284"
 ---
 # <a name="throttling-operations-on-azure-service-bus"></a>Azure 服務匯流排上的節流作業
 
@@ -51,10 +51,15 @@ Azure 服務匯流排標準層會以隨用隨付定價模型的多租使用者�
 
 並非所有作業都是以相等的建立。 以下是每項作業的信用成本- 
 
-| 運算 | 信用成本|
+| 作業 | 信用成本|
 |-----------|-----------|
 | 資料作業（Send、SendAsync、Receive、ReceiveAsync、Peek） |每個訊息1個信用額度 |
 | 管理作業（建立、讀取、更新、刪除佇列、主題、訂用帳戶、篩選） | 10信用額度 |
+
+> [!NOTE]
+> 請注意，傳送至主題時，每個訊息都會針對篩選準則進行評估，然後才在訂用帳戶上提供。
+> 每個篩選準則評估也會計算點數限制（也就是每個篩選評估1個信用額度）。
+>
 
 ### <a name="how-will-i-know-that-im-being-throttled"></a>我要如何知道我正在進行節流？
 

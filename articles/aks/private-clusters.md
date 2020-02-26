@@ -2,17 +2,14 @@
 title: 建立私用 Azure Kubernetes Service 叢集
 description: 瞭解如何建立私用 Azure Kubernetes Service （AKS）叢集
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 2/21/2020
-ms.author: mlearned
-ms.openlocfilehash: 08929d5ec05fbeb80eddebfd667fe1e0fde9bff7
-ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
+ms.openlocfilehash: e59dccbcc7514f12e148bfb2f771593a53e85dc5
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77544227"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594561"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>建立私人 Azure Kubernetes Service 叢集（預覽）
 
@@ -26,7 +23,7 @@ ms.locfileid: "77544227"
 > * [AKS 支援原則](support-policies.md)
 > * [Azure 支援常見問題集](faq.md)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure CLI 版2.0.77 或更新版本，以及 Azure CLI AKS Preview 延伸模組版本0.4.18
 
@@ -118,7 +115,7 @@ az aks create \
 > 如果 Docker 橋接器位址 CIDR （172.17.0.1/16）與子網 CIDR 衝突，請適當地變更 Docker 橋接器位址。
 
 ## <a name="connect-to-the-private-cluster"></a>連接到私人叢集
-API 伺服器端點沒有公用 IP 位址。 因此，您必須在虛擬網路中建立 Azure 虛擬機器（VM），並連接到 API 伺服器。 若要這樣做，請執行以下動作：
+API 伺服器端點沒有公用 IP 位址。 因此，您必須在虛擬網路中建立 Azure 虛擬機器（VM），並連接到 API 伺服器。 若要這樣做，請執行下列動作：
 
 1. 取得認證以連接到叢集。
 
@@ -126,7 +123,7 @@ API 伺服器端點沒有公用 IP 位址。 因此，您必須在虛擬網路�
    az aks get-credentials --name MyManagedCluster --resource-group MyResourceGroup
    ```
 
-1. 請執行下列其中一個動作：
+1. 執行下列任一步驟：
    * 在與 AKS 叢集相同的虛擬網路中建立 VM。  
    * 請在不同的虛擬網路中建立 VM，並將此虛擬網路與 AKS 叢集虛擬網路對等互連。
 

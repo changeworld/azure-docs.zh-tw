@@ -3,12 +3,12 @@ title: 設定 Azure 備份報告
 description: 使用 Log Analytics 和 Azure 活頁簿來設定及查看 Azure 備份的報表
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 5c43efc8d61d7aa6c8fc94c6c39294d744cd6b87
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: cefe81e53e89b8d7903469e836f3c5d2665febea
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501117"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582699"
 ---
 # <a name="configure-azure-backup-reports"></a>設定 Azure 備份報告
 
@@ -41,11 +41,11 @@ ms.locfileid: "77501117"
 
 Azure Resource Manager 的資源，例如復原服務保存庫，會將排程作業和使用者觸發作業的相關資訊記錄為診斷資料。 
 
-在復原服務保存庫的 [監視] 區段中，選取 [**診斷設定**]，並指定復原服務保存庫之診斷資料的目標。 [深入瞭解如何使用診斷事件](https://aka.ms/AzureBackupDiagnosticDocs)。
+在復原服務保存庫的 [監視] 區段中，選取 [**診斷設定**]，並指定復原服務保存庫之診斷資料的目標。 [深入瞭解如何使用診斷事件](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events)。
 
 ![診斷設定分頁](./media/backup-azure-configure-backup-reports/resource-specific-blade.png)
 
-Azure 備份也提供內建的 Azure 原則，可將指定範圍內所有保存庫的診斷設定自動化。 請參閱下列文章，以瞭解如何使用此原則：[設定大規模的保存庫診斷設定](https://aka.ms/AzureBackupDiagnosticsPolicyDocs)
+Azure 備份也提供內建的 Azure 原則，可將指定範圍內所有保存庫的診斷設定自動化。 請參閱下列文章，以瞭解如何使用此原則：[設定大規模的保存庫診斷設定](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics)
 
 3. **在 Azure 入口網站上查看報告：**
 
@@ -53,7 +53,7 @@ Azure 備份也提供內建的 Azure 原則，可將指定範圍內所有保存�
 
 ![保存庫儀表板](./media/backup-azure-configure-backup-reports/vault-dashboard.png)
 
-按一下此連結會開啟 [備份報表] 活頁簿。 
+按一下此連結會開啟 [備份報表] 活頁簿。
 
 > [!NOTE]
 > 目前，報表的初始載入可能需要最多1分鐘的時間。

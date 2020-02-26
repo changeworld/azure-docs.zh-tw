@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 11fdaa0d547e588daa9d264c2393606705554a17
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 2983be507fdc40d033623afa37c72eb2507d99ca
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157258"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597163"
 ---
 # <a name="storage-account-overview"></a>儲存體帳戶概觀
 
@@ -72,7 +72,7 @@ BlockBlobStorage 帳戶目前不支援對經常性、非經常性或封存存取
 
 FileStorage 帳戶是特殊的儲存體帳戶，用來儲存和建立 premium 檔案共用。 此儲存體帳戶種類支援檔案，但不支援區塊 blob、附加 blob、分頁 blob、資料表或佇列。
 
-FileStorage 帳戶提供獨特的效能特性，例如 IOPS 高載。 如需這些特性的詳細資訊，請參閱檔規劃指南的檔案[共用效能層](../files/storage-files-planning.md#file-share-performance-tiers)一節。
+FileStorage 帳戶提供獨特的效能專用特性，例如 IOPS 負載平衡。 如需這些特性的詳細資訊，請參閱檔案規劃指南的檔案[共用儲存層](../files/storage-files-planning.md#storage-tiers)一節。
 
 ## <a name="naming-storage-accounts"></a>儲存體帳戶命名
 

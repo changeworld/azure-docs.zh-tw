@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: efb0a9229d6061d4df8d67ba8455801d9d2a2964
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 32b680acdee29bf97a0e132fee93d5fee3377245
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548878"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604952"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>建立多個 Azure Functions 的 Cosmos DB 觸發程序
 
@@ -38,7 +38,7 @@ ms.locfileid: "76548878"
 
 ## <a name="configuring-a-shared-leases-container"></a>設定共用租用容器
 
-若要設定共用租用容器，只有在使用 JavaScript 時，如果您使用C#或 `leaseCollectionPrefix`[屬性](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger)，則必須在觸發程式中加入 `LeaseCollectionPrefix`[屬性](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---attributes-and-annotations)。 屬性值應該是該特定觸發程序的邏輯描述項。
+若要設定共用租用容器，只有在使用 JavaScript 時，如果您使用C#或 `leaseCollectionPrefix`[屬性](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md)，則必須在觸發程式中加入 `LeaseCollectionPrefix`[屬性](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#attributes-and-annotations)。 屬性值應該是該特定觸發程序的邏輯描述項。
 
 例如，如果您有三個觸發程序：一個會傳送電子郵件、一個會進行彙總以建立具體化檢視，還有一個會將變更傳送至另一個儲存體以供稍後分析，您可以將 `LeaseCollectionPrefix` 為 "emails" 指派給第一個、將其值為 "materialized" 指派給第二個，以及將其值為 "analytics" 指派給第三個。
 
@@ -78,7 +78,7 @@ public static void MaterializedViews([CosmosDBTrigger(
 }
 ```
 
-而在 JavaScript 中，您可以使用 `leaseCollectionPrefix` 屬性在 `function.json` 檔案上套用組態：
+而在 JavaScript 中，您可以使用 `function.json` 屬性在 `leaseCollectionPrefix` 檔案上套用組態：
 
 ```json
 {
@@ -108,6 +108,6 @@ public static void MaterializedViews([CosmosDBTrigger(
 
 ## <a name="next-steps"></a>後續步驟
 
-* 請參閱 [Azure Functions 的 Cosmos DB 觸發程序](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration)的完整組態
-* 請檢查擴充的[範例清單](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger)以取得所有語言。
+* 請參閱 [Azure Functions 的 Cosmos DB 觸發程序](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration)的完整組態
+* 請檢查擴充的[範例清單](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md)以取得所有語言。
 * 請瀏覽 [GitHub 存放庫](https://github.com/ealsur/serverless-recipes/tree/master/cosmosdbtriggerscenarios)中 Azure Cosmos DB 與 Azure Functions 的無伺服器訣竅，以取得更多範例。

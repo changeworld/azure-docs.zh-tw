@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/03/2020
+ms.date: 02/20/2020
 ms.author: jonbeck
-ms.openlocfilehash: cd45d38759bcf41307ba42d68d504266719579d2
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 2d54c39577a359499cf6dc3aca84cebc4fa6e206
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493419"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598012"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>前幾代的虛擬機器大小
 
@@ -210,6 +210,24 @@ ACU： 160-250 <sup>1</sup>
 <sup>1</sup>個 VM 系列可以在下列其中一個 CPU 上執行： 2.2 GHz Intel® E5-2660 v2、2.4 GHz intel Haswell® e5-2673 V3 （）或 2.3 GHz intel® E5-2673 V4 （Broadwell）  
 
 <br>
+
+## <a name="preview-dc-series"></a>預覽： DC 系列
+
+進階儲存體：支援
+
+進階儲存體快取：支援
+
+DC 系列使用最新一代的 3.7 GHz Intel E-2176g (具處理器與 SGX 技術，而且透過 Intel Turbo 加速技術，最高可達 4.7 GHz。 
+
+| 大小          | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量︰IOPS / MBps (以 GiB 為單位的快取大小) | 最大取消快取的磁碟輸送量︰IOPS / MBps | 最大 NIC/預期的網路頻寬 (Mbps) |
+|---------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|-------------------------------------------|----------------------------------------------|
+| Standard_DC2s | 2    | 8           | 100                    | 2              | 4000 / 32 (43)                                                          | 3200 /48                                  | 2 / 1500                                     |
+| Standard_DC4s | 4    | 16          | 200                    | 4              | 8000 / 64 (86)                                                          | 6400 /96                                  | 2 / 3000                                     |
+
+> [!IMPORTANT]
+>
+> DC 系列 Vm 是[第2代 vm](./linux/generation-2.md#creating-a-generation-2-vm) ，只支援 `Gen2` 映射。
+
 
 ### <a name="ds-series"></a>DS 系列  
 

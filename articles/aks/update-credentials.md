@@ -2,17 +2,14 @@
 title: 重設 Azure Kubernetes Service (AKS) 叢集的認證
 description: 了解如何為 Azure Kubernetes Service (AKS) 中的叢集更新或重設服務主體認證
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: mlearned
-ms.openlocfilehash: bda0ab50b829fa2e6d58e73b51e3a0a0f6c9e2af
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 46665e78450538cdc473de32e6c2e9a418660af1
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72432927"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593065"
 ---
 # <a name="update-or-rotate-the-credentials-for-a-service-principal-in-azure-kubernetes-service-aks"></a>為 Azure Kubernetes Service (AKS) 中的服務主體更新或輪替認證
 
@@ -31,7 +28,7 @@ ms.locfileid: "72432927"
 
 ### <a name="update-existing-service-principal-expiration"></a>更新現有的服務主體到期日
 
-若要更新現有服務主體的認證，請使用[az aks show][az-aks-show]命令取得叢集的服務主體識別碼。 下列範例會針對 *myResourceGroup* 資源群組中名稱為 *myAKSCluster* 的叢集取得識別碼。 服務主體識別碼會設定為名為*SP_ID*的變數，以用於其他命令。
+若要更新現有服務主體的認證，請使用[az aks show][az-aks-show]命令取得叢集的服務主體識別碼。 下列範例會針對 *myResourceGroup* 資源群組中名稱為 *myAKSCluster* 的叢集取得識別碼。 服務主體識別碼會設定為名為*SP_ID*的變數，以在其他命令中使用。
 
 ```azurecli-interactive
 SP_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster \

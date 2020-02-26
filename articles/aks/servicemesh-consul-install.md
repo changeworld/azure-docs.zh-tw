@@ -2,17 +2,16 @@
 title: 在 Azure Kubernetes Service 中安裝 Consul （AKS）
 description: 瞭解如何安裝和使用 Consul，以在 Azure Kubernetes Service （AKS）叢集中建立服務網格
 author: dstrebel
-ms.service: container-service
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: dastrebe
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: d5d0a575c3fb662df034b66a48135ac33393f95c
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 06ca2327b2859ffb0f5b314d7b92082d5a83dc48
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73885397"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594232"
 ---
 # <a name="install-and-use-consul-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service 中安裝和使用 Consul （AKS）
 
@@ -25,7 +24,7 @@ ms.locfileid: "73885397"
 >
 > 可以針對 Kubernetes 版本 `1.13+`執行 Consul `1.6.x` 版本。 您可以在[GitHub Consul 版本][consul-github-releases]中找到其他 Consul 版本，並在[Consul 版本][consul-release-notes]資訊中找到每個版本的相關資訊。
 
-在本文中，您將了解：
+在本文中，您將學會如何：
 
 > [!div class="checklist"]
 > * 在 AKS 上安裝 Consul 元件

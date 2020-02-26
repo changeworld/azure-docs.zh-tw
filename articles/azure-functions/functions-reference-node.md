@@ -4,12 +4,12 @@ description: 了解如何使用 JavaScript 開發函式。
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
 ms.date: 12/17/2019
-ms.openlocfilehash: ee6b886c6ed18aad54092005d800b4087280190b
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: b0cd9541deac106525cfe80244d1867f513825f0
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714788"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77584484"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 開發人員指南
 
@@ -232,7 +232,7 @@ context.bindings.myOutput = {
 context.bindingData
 ```
 
-傳回包含觸發程序中繼資料和函式引動過程資料的具名物件 (`invocationId`、`sys.methodName`、`sys.utcNow`、`sys.randGuid`)。 如需觸發程序中繼資料的範例，請參閱此[事件中樞範例](functions-bindings-event-hubs.md#trigger)。
+傳回包含觸發程序中繼資料和函式引動過程資料的具名物件 (`invocationId`、`sys.methodName`、`sys.utcNow`、`sys.randGuid`)。 如需觸發程序中繼資料的範例，請參閱此[事件中樞範例](functions-bindings-event-hubs-trigger.md)。
 
 ### <a name="contextdone-method"></a>context.done 方法
 
@@ -418,14 +418,17 @@ FUNCTIONS_WORKER_PROCESS_COUNT 適用于在相應放大應用程式以符合需�
 
 ## <a name="node-version"></a>節點版本
 
-下表顯示 Functions 執行階段每個主要版本所使用的 Node.js 版本：
+下錶針對每個主要版本的函式執行時間，依作業系統顯示目前支援的 node.js 版本：
 
-| Functions 版本 | Node.js 版本 | 
-|---|---|
-| 1.x | 6.11.2 (由執行階段鎖定) |
-| 2.x  | _ACTIVE LTS_ AND_維護 LTS_ node.js 版本（建議使用 ~ 10）。 藉由將 WEBSITE_NODE_DEFAULT_VERSION[應用程式設定](functions-how-to-use-azure-function-app-settings.md#settings)設為 `~10`，以 Azure 中的版本為目標。|
+| Functions 版本 | 節點版本（Windows） | 節點版本（Linux） |
+|---|---| --- |
+| 1.x | 6.11.2 (由執行階段鎖定) | n/a |
+| 2.x  | ~ 8<br/>~ 10 （建議）<br/>~ 12<sup>*</sup> | ~ 8 （建議）<br/>~ 10  |
+| 3.x | ~ 10<br/>~ 12 （建議）  | ~ 10<br/>~ 12 （建議） |
 
-您可以藉由檢查以上的應用程式設定，或藉由從任何函式列印 `process.version`，來查看執行階段目前正在使用的版本。
+<sup>*</sup>在2.x 版的函式執行時間中，目前允許節點 ~ 12。 不過，為了達到最佳效能，我們建議使用函數執行時間3.x 與節點 ~ 12。 
+
+您可以藉由檢查以上的應用程式設定，或藉由從任何函式列印 `process.version`，來查看執行階段目前正在使用的版本。 藉由將 WEBSITE_NODE_DEFAULT_VERSION[應用程式設定](functions-how-to-use-azure-function-app-settings.md#settings)設為支援的 LTS 版本（例如 `~10`），以 Azure 中的版本為目標。
 
 ## <a name="dependency-management"></a>相依性管理
 若要使用 JavaScript 程式碼中的社群程式庫，如下列範例所示，您必須確定已在 Azure 中的函數應用程式上安裝所有的相依性。

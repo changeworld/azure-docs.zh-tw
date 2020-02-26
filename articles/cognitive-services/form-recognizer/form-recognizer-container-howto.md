@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 02/25/2020
 ms.author: dapine
-ms.openlocfilehash: f0a707f65ecf17887b4e5d12e3487ba3359a68ec
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 64bd6bb0a1a064f38eae472cb889acb6df7ae4b1
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888306"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605157"
 ---
 # <a name="install-and-run-form-recognizer-containers-preview"></a>安裝和執行表單辨識器容器（預覽）
 
@@ -25,17 +25,17 @@ Azure 表單辨識器會套用機器學習技術，以識別並從表單中解�
 > [!IMPORTANT]
 > 表單辨識器容器目前使用1.0 版的表單辨識器 API。 您可以改為使用受控服務來存取 API 的最新版本。
 
-|函式|功能|
+|函式|特性|
 |-|-|
 |表單辨識器| <li>處理 PDF、PNG 和 JPG 檔案<li>以相同版面配置的最少五種形式，訓練自訂模型 <li>解壓縮索引鍵/值組和資料表資訊 <li>使用 Azure 認知服務電腦視覺 API 辨識文字功能，從表單內的影像偵測及解壓縮印刷文字<li>不需要注釋或標籤|
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 使用表單辨識器容器之前，您必須符合下列必要條件：
 
-|必要項|目的|
+|必要|目的|
 |--|--|
 |Docker 引擎| 您必須在[主機電腦](#the-host-computer)上安裝 Docker 引擎。 Docker 提供可在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上設定 Docker 環境的套件。 如需 Docker 和容器基本概念的入門，請參閱 [Docker 概觀](https://docs.docker.com/engine/docker-overview/) \(英文\)。<br><br> Docker 必須設定為允許容器與 Azure 連線，以及傳送帳單資料至 Azure。 <br><br> 在 Windows 上，您也必須將 Docker 設定為支援 Linux 容器。<br><br>|
 |熟悉 Docker | 對於 Docker 概念（例如登錄、存放庫、容器和容器映射），您應該具備基本的瞭解，以及基本 `docker` 命令的知識。|
@@ -64,7 +64,7 @@ Azure 表單辨識器會套用機器學習技術，以識別並從表單中解�
 
 ## <a name="request-access-to-the-container-registry"></a>要求存取容器登錄
 
-您必須先完成並提交[認知服務表單辨識器容器存取要求表單](https://aka.ms/FormRecognizerRequestAccess)，以要求容器的存取權。 這麼做也會讓您登入電腦視覺。 您不需要另外註冊電腦視覺要求表單。 
+您必須先完成並提交[認知服務表單辨識器容器存取要求表單](https://aka.ms/FormRecognizerContainerRequestAccess)，以要求容器的存取權。 這麼做也會讓您登入電腦視覺。 您不需要另外註冊電腦視覺要求表單。 
 
 [!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
 
@@ -80,7 +80,7 @@ Azure 表單辨識器會套用機器學習技術，以識別並從表單中解�
 
 | 容器 | 最小值 | 建議 |
 |-----------|---------|-------------|
-| 表單辨識器 | 2核心，4 GB 記憶體 | 4核心，8 GB 記憶體 |
+| 表單辨識器 | 2 核心、4 GB 記憶體 | 4 核心，8 GB 記憶體 |
 | 辨識文字 | 1個核心，8 GB 記憶體 | 2個核心，8 GB 記憶體 |
 
 * 每個核心必須至少 2.6 GHz 或更快。
@@ -125,14 +125,14 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-t
 
 在容器位於[主機電腦](#the-host-computer)上之後，請使用下列程式來處理容器。
 
-1. 使用所需的計費設定[執行容器](#run-the-container-by-using-the-docker-run-command)。 `docker run` 命令有相關[範例](form-recognizer-container-configuration.md#example-docker-run-commands)可供參考。
+1. 使用所需的計費設定[執行容器](#run-the-container-by-using-the-docker-run-command)。 [ 命令有相關](form-recognizer-container-configuration.md#example-docker-run-commands)範例`docker run`可供參考。
 1. [查詢容器的預測端點](#query-the-containers-prediction-endpoint)。
 
 ## <a name="run-the-container-by-using-the-docker-run-command"></a>使用 docker run 命令執行容器
 
 將 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令執行容器。 如需如何取得 `{COMPUTER_VISION_ENDPOINT_URI}`、`{COMPUTER_VISION_API_KEY}`、`{FORM_RECOGNIZER_ENDPOINT_URI}` 和 `{FORM_RECOGNIZER_API_KEY}` 值的詳細資訊，請參閱[收集必要參數](#gathering-required-parameters)。
 
-命令的[範例](form-recognizer-container-configuration.md#example-docker-run-commands)可供使用。`docker run`
+`docker run` 命令的[範例](form-recognizer-container-configuration.md#example-docker-run-commands)可供使用。
 
 ### <a name="form-recognizer"></a>表單辨識器
 
@@ -189,7 +189,7 @@ ApiKey={COMPUTER_VISION_API_KEY}
 
 ### <a name="run-separate-containers-with-docker-compose"></a>透過 Docker Compose 執行個別的容器
 
-針對裝載在相同主機本機上的表單辨識器和文字辨識器組合，請參閱下列範例 Docker Compose YAML 檔案。 `formrecognizer` 和 `ocr` 容器的文字辨識器 `{COMPUTER_VISION_API_KEY}` 必須相同。 `{COMPUTER_VISION_ENDPOINT_URI}` 只能在 `ocr` 容器中使用，因為 `formrecognizer` 容器會使用 `ocr` 名稱和埠。 
+針對裝載在相同主機本機上的表單辨識器和文字辨識器組合，請參閱下列範例 Docker Compose YAML 檔案。 `{COMPUTER_VISION_API_KEY}` 和 `formrecognizer` 容器的文字辨識器 `ocr` 必須相同。 `{COMPUTER_VISION_ENDPOINT_URI}` 只能在 `ocr` 容器中使用，因為 `formrecognizer` 容器會使用 `ocr` 名稱和埠。 
 
 ```docker
 version: '3.3'

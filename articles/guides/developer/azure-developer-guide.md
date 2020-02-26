@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: af5399a6e1a76a6020448b2e91d76a1d2e1f0ed8
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: d74fd2e3f6b5cc090c6313aba67a1e139c713b85
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186957"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598046"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 開發人員開始使用指南
 
@@ -31,9 +31,9 @@ Azure 是一個完整的雲端平臺，可以裝載您現有的應用程式，�
 
 本指南是適用於應用程式開發人員的 Azure 平台簡介。 它會提供下列作業所需的指引和指示：開始在 Azure 中建置新應用程式，或將現有應用程式移轉至 Azure。
 
-## <a name="where-do-i-start"></a>我要從哪裡開始？
+## <a name="where-do-i-start"></a>我該從哪裡開始？
 
-有了 Azure 提供的所有服務，它可以是恐嚇的工作，以找出支援您的解決方案架構所需的服務。 本節著重於開發人員常用的 Azure 服務。 如需所有 Azure 服務的清單，請參閱 [Azure 文件](../../index.md)。
+有了 Azure 提供的所有服務，它可以是恐嚇的工作，以找出支援您的解決方案架構所需的服務。 本節著重於開發人員常用的 Azure 服務。 如需所有 Azure 服務的清單，請參閱 [Azure 文件](../../index.yml)。
 
 首先，您必須決定如何在 Azure 中裝載應用程式。 您需要以虛擬機器 (VM) 形式管理整個基礎結構嗎？ 您可以使用 Azure 所提供的平台管理功能嗎？ 您只需要使用無伺服器架構來裝載程式碼執行嗎？
 
@@ -96,7 +96,7 @@ Azure Service Fabric 是分散式系統平臺。 此平臺可讓您輕鬆地建�
 * 正在部署
 * 監視
 * 升級/修補
-* 刪除
+* 刪除中
 
 在共用電腦集區上執行的應用程式可以從小規模著手，然後視需要調整為成千上萬部電腦。
 
@@ -250,7 +250,7 @@ Azure 提供兩種方式，從命令列管理您的應用程式和服務。 您�
 
 Azure 是以支援 Azure 入口網站 UI 的一組 REST API 所建置。 也支援其中的大部分 REST API，讓您以程式設計方式從任何啟用網際網路的裝置佈建和管理 Azure 資源和應用程式。 如需一組完整 REST API 文件，請參閱 [Azure REST SDK 參考](https://docs.microsoft.com/rest/api/)。
 
-### <a name="apis"></a>APIs
+### <a name="apis"></a>API
 
 除了 REST Api，許多 Azure 服務也可讓您使用平臺特定的 Azure Sdk （包括適用于下列開發平臺的 Sdk），以程式設計方式從應用程式管理資源：
 

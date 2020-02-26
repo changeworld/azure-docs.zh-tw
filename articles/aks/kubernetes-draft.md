@@ -3,16 +3,15 @@ title: 在 Azure Kubernetes Service （AKS）上使用草稿進行開發
 description: 使用 Draft 搭配 AKS 和 Azure Container Registry
 services: container-service
 author: zr-msft
-ms.service: container-service
 ms.topic: article
 ms.date: 06/20/2019
 ms.author: zarhoads
-ms.openlocfilehash: 07e267af307fedd9b896e08919b7026a3a1c2bac
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: b03256ee65a3c40d8a64d70b877c49e44e68f822
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76292957"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595216"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-draft"></a>快速入門：使用草稿在 Azure Kubernetes Service （AKS）上進行開發
 
@@ -21,7 +20,7 @@ Draft 是一個開放原始碼工具，可協助在 Kubernetes 叢集中封裝�
 本文說明如何使用 Draft 在 AKS 上封裝和執行應用程式。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，您可以建立[免費帳戶](https://azure.microsoft.com/free)。
 * [已安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。

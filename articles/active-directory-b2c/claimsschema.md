@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/17/2020
+ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: fc01bd5c868cddd448e3a262960af64f50b78d74
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.openlocfilehash: 2861b882d9b4c00a1c4db87b2dd49d49dfeb53a6
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/17/2020
-ms.locfileid: "77372986"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77581101"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -175,6 +175,8 @@ PredicateValidationReference| 0:1 | 對 **PredicateValidationsInput** 元素的�
 
 #### <a name="enumeration"></a>{1}列舉型別{2}
 
+**列舉**元素會定義使用者可用的選項，以在使用者介面中選取宣告，例如 `CheckboxMultiSelect`、`DropdownSingleSelect`或 `RadioSingleSelect`中的值。 或者，您可以使用[LocalizedCollections](localization.md#localizedcollections)元素來定義和當地語系化可用的選項。 若要從宣告**列舉**集合中查閱專案，請使用[GetMappedValueFromLocalizedCollection](string-transformations.md#getmappedvaluefromlocalizedcollection)宣告轉換。
+
 **Enumeration** 元素包含下列屬性：
 
 | 屬性 | 必要 | 描述 |
@@ -209,7 +211,7 @@ PredicateValidationReference| 0:1 | 對 **PredicateValidationsInput** 元素的�
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | RegularExpression | 是 | 此類型的宣告必須符合才能生效的規則運算式。 |
-| HelpText | 否 | 適用於此宣告的模式或規則運算式。 |
+| HelpText | 否 | 如果正則運算式檢查失敗，則為使用者提供錯誤訊息。 |
 
 下列範例會設定 **email** 宣告，並提供規則運算式輸入驗證和說明文字：
 
@@ -247,7 +249,7 @@ Azure AD B2C 支援各種不同的使用者輸入類型 (例如文字方塊、�
 |Paragraph | `boolean`、`date`、`dateTime`、`duration`、`int`、`long`、`string`|僅在段落標記中顯示文字的欄位。 |
 |密碼 | `string` |[密碼] 文字方塊。|
 |RadioSingleSelect |`string` | 選項按鈕的集合。 宣告值是選取的值。|
-|Readonly | `boolean`、`date`、`dateTime`、`duration`、`int`、`long`、`string`| [唯讀] 文字方塊。 |
+|Readonly | `boolean`、`date`、`dateTime`、`duration`、`int`、`long`、`string`| 唯讀文字方塊。 |
 |TextBox |`boolean`、`int`、`string` |單行文字方塊。 |
 
 
@@ -407,5 +409,3 @@ Azure AD B2C 支援各種不同的使用者輸入類型 (例如文字方塊、�
   </Restriction>
 </ClaimType>
 ```
-
-若要顯示 **responseMsg** 宣告中的其中一個 **Enumeration** 值，請使用 `GetMappedValueFromLocalizedCollection` 或 `CreateStringClaim` 宣告轉換。 如需詳細資訊，請參閱[字串宣告轉換](string-transformations.md)

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19afaf743cc594ab17776b990687a442c339ed92
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: f07b37fffe61a6be62a72a0281e701b69167e95b
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77559006"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596754"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>在 Azure Active Directory 中依管理工作區分的系統管理員角色
 
@@ -45,14 +45,14 @@ Task | 最低特殊權限角色 | 其他角色
 建立 Azure AD B2C 目錄 | 所有非來賓使用者 ([請參閱文件](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
 建立 B2C 應用程式 | 全域管理員 | 
 建立企業應用程式 | 雲端應用程式系統管理員 | 應用程式系統管理員
-建立、讀取、更新及刪除 B2C 原則 | 全域管理員 | 
-建立、讀取、更新及刪除識別提供者 | 全域管理員 | 
-建立、讀取、更新及刪除密碼重設使用者流程 | 全域管理員 | 
-建立、讀取、更新及刪除設定檔編輯使用者流程 | 全域管理員 | 
-建立、讀取、更新及刪除登入使用者流程 | 全域管理員 | 
-建立、讀取、更新及刪除註冊使用者流程 |全域管理員 | 
-建立、讀取、更新及刪除使用者屬性 | 全域管理員 | 
-建立、讀取、更新及刪除使用者 | 全域系統管理員 ([請參閱文件](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs))
+建立、讀取、更新及刪除 B2C 原則 | B2C IEF 原則管理員 | 
+建立、讀取、更新及刪除識別提供者 | 外部識別提供者系統管理員 | 
+建立、讀取、更新及刪除密碼重設使用者流程 | B2C 使用者流程管理員 | 
+建立、讀取、更新及刪除設定檔編輯使用者流程 | B2C 使用者流程管理員 | 
+建立、讀取、更新及刪除登入使用者流程 | B2C 使用者流程管理員 | 
+建立、讀取、更新及刪除註冊使用者流程 |B2C 使用者流程管理員 | 
+建立、讀取、更新及刪除使用者屬性 | B2C 使用者流程屬性管理員 | 
+建立、讀取、更新及刪除使用者 | 使用者管理員
 讀取所有設定 | 全域讀者 | 
 讀取 B2C 稽核記錄 | 全域讀取者（[請參閱檔](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)） | 
 
@@ -127,7 +127,7 @@ Task | 最低特殊權限角色 | 其他角色
 ---- | --------------------- | ----------------
 同意任何委派的權限 | 雲端應用程式系統管理員 | 應用程式管理員
 同意應用程式許可權不包括 Microsoft Graph | 雲端應用程式系統管理員 | 應用程式管理員
-同意 Microsoft Graph 的應用程式許可權 | 全域管理員 | 
+同意 Microsoft Graph 的應用程式許可權 | 特殊權限角色管理員 | 
 同意應用程式存取自己的資料 | 預設使用者角色 ([請參閱文件](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
 建立企業應用程式 | 雲端應用程式系統管理員 | 應用程式管理員
 管理應用程式 Proxy | 應用程式管理員 | 
@@ -156,7 +156,7 @@ Task | 最低特殊權限角色 | 其他角色
 建立群組 | 使用者管理員 | 
 建立、更新或刪除群組或應用程式的存取權檢閱 | 使用者管理員 | 
 管理群組到期日 | 使用者管理員 | 
-管理群組設定 | 全域管理員 | 
+管理群組設定 | 群組管理員 | 使用者管理員 | 
 讀取所有設定 (隱藏的成員資格除外) | 目錄讀取器 | 預設使用者角色 ([請參閱文件](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
 讀取隱藏的成員資格 | 群組成員 | 群組擁有者、密碼管理員、Exchange 系統管理員、SharePoint 管理員、小組系統管理員、使用者系統管理員
 讀取具有隱藏成員資格之群組的成員資格 | 服務台系統管理員 | 使用者系統管理員、小組系統管理員
@@ -234,7 +234,7 @@ Task | 最低特殊權限角色 | 其他角色
 
 Task | 最低特殊權限角色 | 其他角色
 ---- | --------------------- | ----------------
-管理識別提供者 | 全域管理員 | 
+管理識別提供者 | 外部識別提供者系統管理員 | 
 管理設定 | 全域管理員 | 
 管理使用規定 | 全域管理員 | 
 讀取所有設定 | 全域讀者 | 
@@ -330,11 +330,11 @@ Task | 最低特殊權限角色 | 其他角色
 刪除使用者 | 使用者管理員 | 
 使受限制管理員的重新整理權杖失效 (請參閱文件) | 使用者管理員 | 
 使非管理員的重新整理權杖失效 (請參閱文件) | 密碼管理員 | 使用者管理員
-使具特殊權限管理員的重新整理權杖失效 (請參閱文件) | 全域管理員 | 
+使具特殊權限管理員的重新整理權杖失效 (請參閱文件) | 特殊許可權驗證管理員 | 
 讀取基本設定 | 預設使用者角色 ([請參閱文件](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions) | 
 為受限制的管理員重設密碼 (請參閱文件) | 使用者管理員 | 
 為非管理員重設密碼 (請參閱文件) | 密碼管理員 | 使用者管理員
-為具特殊權限的管理員重設密碼 | 全域管理員 | 
+為具特殊權限的管理員重設密碼 | 特殊許可權驗證管理員 | 
 撤銷授權 | 授權管理員 | 使用者管理員
 更新使用者主體名稱以外的所有屬性 | 使用者管理員 | 
 更新適用於受限制管理員的使用者主體名稱 (請參閱文件) | 使用者管理員 | 

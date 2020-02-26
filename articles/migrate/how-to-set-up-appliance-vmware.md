@@ -3,12 +3,12 @@ title: 設定 VMware 的 Azure Migrate 設備
 description: 瞭解如何設定 Azure Migrate 設備，以評估和遷移 VMware Vm。
 ms.topic: article
 ms.date: 11/18/2019
-ms.openlocfilehash: 139b694bafb9d67192e6f182ff879e86e2b73ce4
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: e331d45d3e87f8007642675a0349839e7494958c
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291935"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598148"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>設定適用于 VMware Vm 的應用裝置
 
@@ -35,7 +35,7 @@ VMware VM 應用裝置是一種輕量設備，Azure Migrate Server 評估/遷移
 2. 在 [探索機器] > [機器是否已虛擬化?] 中，按一下 [是，使用 VMWare vSphere Hypervisor]。
 3. 按一下 [下載] 以下載 .OVA 範本檔案。
 
-
+  ![用於下載 OVA 檔案的選項](./media/tutorial-assess-vmware/download-ova.png)
 
 ### <a name="verify-security"></a>確認安全性
 
@@ -45,12 +45,8 @@ VMware VM 應用裝置是一種輕量設備，Azure Migrate Server 評估/遷移
 2. 執行下列命令，以產生 OVA 的雜湊：
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 使用方式範例：```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. 針對最新的設備版本，產生的雜湊應符合這些設定。
+3. 針對最新的設備版本，產生的雜湊應符合這些[設定](https://docs.microsoft.com/azure/migrate/tutorial-assess-vmware#verify-security)。
 
-  **演算法** | **雜湊值**
-  --- | ---
-  MD5 | c06ac2a2c0f870d3b274a0b7a73b78b1
-  SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 
 
 ## <a name="create-the-appliance-vm"></a>建立設備 VM
@@ -58,6 +54,8 @@ VMware VM 應用裝置是一種輕量設備，Azure Migrate Server 評估/遷移
 匯入所下載的檔案，並建立 VM。
 
 1. 在 vSphere 用戶端主控台中，按一下 [檔案] > [部署 OVF 範本]。
+用於部署 OVF 範本的 ![Menu 命令](./media/tutorial-assess-vmware/deploy-ovf.png)
+
 2. 在 [部署 OVF 範本精靈] > [來源] 中，指定 OVA 檔案的位置。
 3. 在 [名稱] 和 [位置] 中，指定 VM 的易記名稱。 選取將裝載 VM 的庫存物件。
 5. 在 [主機/叢集] 中，指定 VM 的執行所在主機或叢集。

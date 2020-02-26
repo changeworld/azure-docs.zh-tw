@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: e7aa19c1d189eb19237ea85aae1ad2441d7e98b9
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 8b1e4c60e6054141e71d2509fe34c7ca9baf9ca6
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163189"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598454"
 ---
 # <a name="import-data-module"></a>匯入資料模組
 
@@ -48,9 +48,7 @@ ms.locfileid: "77163189"
 
 1. 將匯**入資料**模組新增至您的管線。 您可以在設計工具的 [**資料輸入和輸出**] 分類中找到此模組。
 
-1. 按一下 [**啟動資料匯入嚮導**]，使用 Wizard 設定資料來源。
-
-    Wizard 會取得帳戶名稱和認證，並協助您設定其他選項。 如果您要編輯現有的設定，它會先載入目前的值。
+1. 選取模組以開啟右窗格。
 
 1. 選取 [**資料來源**]，然後選擇 [資料來源類型]。 它可以是 HTTP 或資料存放區。
 
@@ -60,6 +58,11 @@ ms.locfileid: "77163189"
 
     ![匯入-資料-預覽](media/module/import-data.png)
 
+1. [重新產生**輸出**] 核取方塊會決定是否要執行模組，以便在執行時間重新產生輸出。 
+
+    預設為未選取，這表示如果模組先前已使用相同的參數執行，則系統會重複使用最後一次執行的輸出，以縮短執行時間。 
+
+    如果選取此選項，系統會再次執行模組以重新產生輸出。 因此，當儲存體中的基礎資料更新時，請選取此選項，這有助於取得最新的資料。
 
 
 1. 執行管道。
