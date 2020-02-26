@@ -18,7 +18,7 @@
     - name: 2. 設定
       items:
         - name: 使用 Azure 容器執行個體進行縮放
-          href: /azure/container-instances/container-instances-jenkins
+          href: container-instances-jenkins.md
           maintainContext: true
         - name: 用 Azure VM 代理程式進行調整
           href: jenkins-azure-vm-agents.md

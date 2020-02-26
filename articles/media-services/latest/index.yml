@@ -1,8 +1,8 @@
 ### YamlMime:Landing
-title: 了解 Azure 媒體服務 v3 雲端式平台
+title: Azure 媒體服務 v3 雲端式平台文件
 summary: 了解如何使用媒體服務 v3 來編碼和封裝內容、串流隨選影片、即時廣播及分析您的影片。 教學課程、API 參考和其他文件會示範如何安全地提供可針對數百萬位使用者調整的隨選和即時視訊或音訊串流。
 metadata:
-  title: Azure 媒體服務文件 v3 文件
+  title: Azure 媒體服務 v3 雲端式平台文件
   description: 了解如何使用媒體服務 v3 來編碼和封裝內容、串流隨選影片、即時廣播及分析您的影片。
   services: media-services
   ms.service: media-services
@@ -12,12 +12,12 @@ metadata:
   author: Juliako
   ms.author: juliako
   ms.date: 10/07/2019
-  ms.openlocfilehash: 5b46cb4faa1b18d9b1902e760b2905f59f42f19d
-  ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+  ms.openlocfilehash: 02d1e00d6aa70c406049fe09adbab32d55114c81
+  ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 02/01/2020
-  ms.locfileid: "76939002"
+  ms.lasthandoff: 02/25/2020
+  ms.locfileid: "77586099"
 landingContent:
 - title: 關於媒體服務
   linkLists:

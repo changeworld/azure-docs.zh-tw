@@ -114,6 +114,8 @@
           href: service-bus-messaging-security-controls.md
 - name: 操作指南
   items:
+    - name: 從 Azure Service Manager (傳統) API 遷移至 Resource Manager API
+      href: deprecate-service-bus-management.md
     - name: 建立命名空間
       href: service-bus-create-namespace-portal.md
     - name: 開發
@@ -257,7 +259,7 @@
       href: 'https://blogs.msdn.microsoft.com/servicebus/'
     - name: MSDN 論壇
       href: 'https://social.msdn.microsoft.com/forums/home?forum=servbus'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/service-bus/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'

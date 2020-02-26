@@ -890,8 +890,8 @@
                   href: log-query/examples.md
                 - name: 智慧分析範例
                   href: log-query/smart-analytics.md
-                - name: 寫入有效率的查詢
-                  href: log-query/log-query-performance.md
+                - name: 最佳化查詢
+                  href: log-query/query-optimization.md
                 - name: 剖析文字資料
                   href: log-query/parse-text.md
         - name: Flow/Logic Apps
@@ -1235,8 +1235,6 @@
           href: platform/monitoring-classic-retirement.md
         - name: 切換記錄警示 API 喜好設定
           href: platform/alerts-log-api-switch.md
-        - name: HockeyApp 資料
-          href: app/hockeyapp-bridge-app.md
         - name: Web 應用程式 Analytics 解決方案
           href: insights/azure-web-apps-analytics.md
         - name: Application Insights 連接器

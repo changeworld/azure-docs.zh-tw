@@ -28,3 +28,15 @@
       href: security-control-incident-response.md
     - name: 滲透測試和 Red Team 練習
       href: security-control-penetration-tests-red-team-exercises.md
+- name: 安全性基準
+  items:
+    - name: Azure 安全性基準概觀
+      href: security-baselines-overview.md
+    - name: 批次安全性基準
+      href: ../../batch/security-baseline.md
+    - name: Key Vault 安全性基準
+      href: ../../key-vault/security-baseline.md
+    - name: HDInsight 安全性基準
+      href: ../../hdinsight/security-baseline.md
+    - name: SQL Database 安全性基準
+      href: ../../sql-database/security-baseline.md
