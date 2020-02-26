@@ -5,18 +5,18 @@ author: Christina-Kang
 ms.topic: conceptual
 ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: db271d479fd84e5338d53cc25ecc0122d856c442
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 7d361d44c349bc7a6e3c041f78d00ad66182fa15
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610228"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589142"
 ---
 # <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli-sfctl"></a>使用 Azure Service Fabric CLI 來管理 Azure Service Fabric 應用程式 (sfctl)
 
 了解如何建立和刪除在 Azure Service Fabric 叢集中執行的應用程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 安裝 Service Fabric CLI。 然後選取 Service Fabric 叢集。 如需詳細資訊，請參閱[開始使用 Service Fabric CLI](service-fabric-cli.md)。
 
@@ -47,7 +47,7 @@ ms.locfileid: "75610228"
 
 例如，如果您的應用程式封裝在 `app_package_dir` 目錄中，使用下列命令上傳目錄：
 
-```azurecli
+```shell
 sfctl application upload --path ~/app_package_dir
 ```
 
@@ -57,7 +57,7 @@ sfctl application upload --path ~/app_package_dir
 
 上傳完成時，佈建應用程式。 若要佈建應用程式，請使用下列命令：
 
-```azurecli
+```shell
 sfctl application provision --application-type-build-path app_package_dir
 ```
 
@@ -69,7 +69,7 @@ sfctl application provision --application-type-build-path app_package_dir
 
 若要從映像存放區中刪除應用程式封裝，請使用下列命令：
 
-```azurecli
+```shell
 sfctl store delete --content-path app_package_dir
 ```
 
@@ -79,7 +79,7 @@ sfctl store delete --content-path app_package_dir
 
 佈建應用程式之後，使用下列命令為應用程式命名並建立應用程式：
 
-```azurecli
+```shell
 sfctl application create --app-name fabric:/TestApp --app-type TestAppType --app-version 1.0
 ```
 
@@ -91,7 +91,7 @@ sfctl application create --app-name fabric:/TestApp --app-type TestAppType --app
 
 建立應用程式之後，從該應用程式建立服務。 在下列範例中，我們會從應用程式建立新的無狀態服務。 先前佈建的應用程式封裝之中的服務資訊清單中會定義您可以從應用程式建立的服務。
 
-```azurecli
+```shell
 sfctl service create --app-id TestApp --name fabric:/TestApp/TestSvc --service-type TestServiceType \
 --stateless --instance-count 1 --singleton-scheme
 ```
@@ -100,19 +100,19 @@ sfctl service create --app-id TestApp --name fabric:/TestApp/TestSvc --service-t
 
 若要驗證所有項目的健康情況良好，請使用下列健康情況命令：
 
-```azurecli
+```shell
 sfctl application list
 sfctl service list --application-id TestApp
 ```
 
 若要確認服務是否狀況良好，請使用類似的命令來取出服務和應用程式的健康情況：
 
-```azurecli
+```shell
 sfctl application health --application-id TestApp
 sfctl service health --service-id TestApp/TestSvc
 ```
 
-狀況良好的服務和應用程式的 `Ok` 值是 `HealthState`。
+狀況良好的服務和應用程式的 `HealthState` 值是 `Ok`。
 
 ## <a name="remove-an-existing-application"></a>移除現有的應用程式
 
@@ -122,7 +122,7 @@ sfctl service health --service-id TestApp/TestSvc
 
 若要刪除應用程式，請使用下列命令：
 
-```azurecli
+```shell
 sfctl application delete --application-id TestEdApp
 ```
 
@@ -130,7 +130,7 @@ sfctl application delete --application-id TestEdApp
 
 刪除應用程式之後，如果不再需要應用程式，可以解除佈建應用程式類型。 若要解除佈建應用程式類型，請使用下列命令：
 
-```azurecli
+```shell
 sfctl application unprovision --application-type-name TestAppType --application-type-version 1.0
 ```
 
@@ -142,7 +142,7 @@ sfctl application unprovision --application-type-name TestAppType --application-
 
 若要執行升級，請先使用與以前相同的命令，佈建下一版的應用程式：
 
-```azurecli
+```shell
 sfctl application upload --path ~/app_package_dir_2
 sfctl application provision --application-type-build-path app_package_dir_2
 sfctl store delete --content-path app_package_dir_2
@@ -150,7 +150,7 @@ sfctl store delete --content-path app_package_dir_2
 
 然後才建議您執行受監視的自動升級，藉由執行下列命令來啟動升級：
 
-```azurecli
+```shell
 sfctl application upgrade --app-id TestApp --app-version 2.0.0 --parameters "{\"test\":\"value\"}" --mode Monitored
 ```
 

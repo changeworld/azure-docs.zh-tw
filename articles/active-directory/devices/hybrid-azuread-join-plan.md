@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ad3bb41b6c5faa7bab0e618dd46c48427f364db
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: b7c4a0e64e1f08bb3e80eaf67937da10906bfce0
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167372"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591603"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何：規劃混合式 Azure Active Directory 聯結執行
 
@@ -30,7 +30,7 @@ ms.locfileid: "76167372"
 
 如果您有內部部署 Active Directory （AD）環境，而且想要將已加入 AD 網域的電腦加入 Azure AD，您可以執行混合式 Azure AD 聯結來完成這項作業。 本文提供在您的環境中實作混合式 Azure AD Join 的相關步驟。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本文假設您已熟悉[Azure Active Directory 中的裝置身分識別管理簡介](../device-management-introduction.md)。
 
@@ -64,7 +64,7 @@ ms.locfileid: "76167372"
 ### <a name="windows-down-level-devices"></a>舊版 Windows 裝置
 
 - Windows 8.1
-- Windows 7 支援已于2020年1月14日結束。 如需詳細資訊，請參閱[Windows 7 的支援已結束](https://support.microsoft.com/en-us/help/4057281/windows-7-support-ended-on-january-14-2020)。
+- Windows 7 支援已於 2020 年 1 月 14 日終止。 如需詳細資訊，請參閱[Windows 7 的支援已結束](https://support.microsoft.com/en-us/help/4057281/windows-7-support-ended-on-january-14-2020)。
 - Windows Server 2012 R2
 - Windows Server 2012
 - Windows Server 2008 R2。 如需 Windows Server 2008 和 2008 R2 的支援資訊，請參閱[準備 Windows server 2008 終止支援](https://www.microsoft.com/cloud-platform/windows-server-2008)。
@@ -73,20 +73,21 @@ ms.locfileid: "76167372"
 
 ## <a name="review-things-you-should-know"></a>檢閱您應該知道的事情
 
-如果您的環境包含將識別資料同步處理至多個 Azure AD 租使用者的單一 AD 樹系，則目前不支援混合式 Azure AD 聯結。
+### <a name="unsupported-scenarios"></a>不支援的情節
+- 如果您的環境包含將識別資料同步處理至多個 Azure AD 租使用者的單一 AD 樹系，則目前不支援混合式 Azure AD 聯結。
 
-如果您的環境使用虛擬桌面基礎結構（VDI），請參閱[裝置身分識別和桌面虛擬化](https://docs.microsoft.com/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure)。
+- 執行網域控制站（DC）角色的 Windows Server 不支援混合式 Azure AD 聯結。
 
-符合 FIPS 規範的 TPM 2.0 支援混合式 Azure AD 聯結，TPM 1.2 則不支援。 如果您的裝置具有 FIPS 相容的 TPM 1.2，您必須先停用它們，再繼續進行混合式 Azure AD 聯結。 Microsoft 不會提供任何工具來停用 Tpm 的 FIPS 模式，因為它相依于 TPM 製造商。 請洽詢您的硬體 OEM 以取得支援。 從 Windows 10 1903 版本開始，Tpm 1.2 不會用於混合式 Azure AD 聯結，而那些 Tpm 的裝置將會被視為沒有 TPM。
+- 使用認證漫遊或使用者設定檔漫遊或強制設定檔時，舊版 Windows 裝置不支援混合式 Azure AD 聯結。
 
-執行網域控制站（DC）角色的 Windows Server 不支援混合式 Azure AD 聯結。
+### <a name="os-imaging-considerations"></a>OS 映射考慮
+- 如果您依賴系統準備工具（Sysprep），而且您使用**Windows 前 10 1809**映射來進行安裝，請確定映射不是來自已向 Azure AD 註冊的裝置混合式 Azure AD 聯結。
 
-使用認證漫遊或使用者設定檔漫遊或強制設定檔時，舊版 Windows 裝置不支援混合式 Azure AD 聯結。
+- 如果您依賴虛擬機器（VM）快照集來建立其他 Vm，請確定快照集不是來自已向 Azure AD 註冊的 VM，因為混合式 Azure AD 聯結。
 
-如果您依賴系統準備工具（Sysprep），而且您使用**Windows 前 10 1809**映射來進行安裝，請確定映射不是來自已向 Azure AD 註冊的裝置混合式 Azure AD 聯結。
+- 如果您使用的是[整合寫入篩選器](https://docs.microsoft.com/windows-hardware/customize/enterprise/unified-write-filter)，以及在重新開機時清除磁片變更的類似技術，則必須在裝置混合式 Azure AD 聯結之後套用。 在混合式 Azure AD 聯結完成之前啟用這類技術，會導致裝置在每次重新開機時都無法退出
 
-如果您依賴虛擬機器（VM）快照集來建立其他 Vm，請確定快照集不是來自已向 Azure AD 註冊的 VM，因為混合式 Azure AD 聯結。
-
+### <a name="handling-devices-with-azure-ad-registered-state"></a>處理具有 Azure AD 註冊狀態的裝置
 如果您已加入 Windows 10 網域的裝置 Azure AD 向您的租使用者[註冊](overview.md#getting-devices-in-azure-ad)，則可能會導致混合式 Azure AD 已加入的雙重狀態並 Azure AD 已註冊的裝置。 建議您升級至 Windows 10 1803 （已套用 KB4489894）或更新版本，以自動解決這種情況。 在1803之前的版本中，您必須先手動移除 Azure AD 註冊狀態，才能啟用混合式 Azure AD 聯結。 在1803和更新版本中，已進行下列變更以避免這種雙重狀態：
 
 - <i>混合式 Azure AD 加入裝置之後，</i>就會自動移除任何現有的 Azure AD 註冊狀態。
@@ -95,6 +96,11 @@ ms.locfileid: "76167372"
 
 > [!NOTE]
 > 如果 Azure AD 已註冊的裝置受 Intune 管理，則不會自動移除。
+
+### <a name="additional-considerations"></a>其他考量
+- 如果您的環境使用虛擬桌面基礎結構（VDI），請參閱[裝置身分識別和桌面虛擬化](https://docs.microsoft.com/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure)。
+
+- 符合 FIPS 規範的 TPM 2.0 支援混合式 Azure AD 聯結，TPM 1.2 則不支援。 如果您的裝置具有 FIPS 相容的 TPM 1.2，您必須先停用它們，再繼續進行混合式 Azure AD 聯結。 Microsoft 不會提供任何工具來停用 Tpm 的 FIPS 模式，因為它相依于 TPM 製造商。 請洽詢您的硬體 OEM 以取得支援。 從 Windows 10 1903 版本開始，Tpm 1.2 不會用於混合式 Azure AD 聯結，而那些 Tpm 的裝置將會被視為沒有 TPM。
 
 ## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>審查混合式 Azure AD 聯結的受控制驗證
 
@@ -108,7 +114,7 @@ ms.locfileid: "76167372"
 
 ### <a name="managed-environment"></a>受控環境
 
-受控環境可使用[無縫單一登入](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)透過[密碼雜湊同步 (PHS)](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-phs) 或[傳遞驗證 (PTA)](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta) 進行部署。
+受控環境可使用[無縫單一登入](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-phs)透過[密碼雜湊同步 (PHS)](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta) 或[傳遞驗證 (PTA)](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso) 進行部署。
 
 在這些案例中，您不需要設定同盟伺服器以進行驗證。
 
@@ -146,7 +152,7 @@ ms.locfileid: "76167372"
 
 下表提供有關在 Windows 10 混合式 Azure AD Join 中支援這些內部部署 AD UPN 的詳細資料
 
-| 內部部署 AD UPN 的類型 | 網域類型 | Windows 10 版本 | 說明 |
+| 內部部署 AD UPN 的類型 | 網域類型 | Windows 10 版本 | 描述 |
 | ----- | ----- | ----- | ----- |
 | 路由式 | 同盟 | 自 1703 版起 | 正式推出 |
 | 非可路由傳送 | 同盟 | 自 1803 版起 | 正式推出 |

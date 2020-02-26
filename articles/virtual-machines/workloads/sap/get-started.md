@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/21/2020
+ms.date: 02/25/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: abbacf57f6e00411c6041422cfc47e68fd46bb15
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: d6efad8160115347469fb387108812ddc9adecc1
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566024"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77601927"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 來裝載和執行 SAP 工作負載案例
 
@@ -120,8 +120,17 @@ Azure 上的 SAP 工作負載區段中的檔變更會列在本文結尾。
 
 
 ## <a name="change-log"></a>變更記錄檔
+- 02/25/2020：在[SUSE Linux Enterprise Server 上使用 Pacemaker 的 Azure vm 上的 IBM DB2 LUW 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide-ha-ibm)變更，以指向說明使用標準 Azure 負載平衡器存取公用端點的檔
+- 02/21/2020：[SAP Hana Azure 虛擬機器存放裝置](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)設定中的變更，以代表新建議的等量大小以/hana/data 和新增 i/o 排程器的設定
+- 02/21/2020：HANA 大型實例檔中的變更，代表 S224 和 S224m 的新認證 Sku
 - 02/21/2020：[Azure vm 在 rhel 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)和 azure vm 上的 sap NetWeaver 高可用性在 rhel 上的 sap [NetWeaver 使用 azure NetApp Files](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)來調整佇列伺服器複寫2架構的叢集限制（ENSA2）
 - 02/20/2020：[Azure vm 上的 SAP NetWeaver 的高可用性變更 SLES 多 sid 指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)，以新增 SUSE 多重 sid 叢集指南的連結
+- 02/13/2020：[針對 SAP NetWeaver 的 Azure 虛擬機器規劃和執行的](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)變更，以執行新檔的連結
+- 02/13/2020：已[在 Azure 虛擬機器支援的案例中新增 SAP 工作負載的](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-planning-supported-configurations)新檔
+- 02/13/2020：已新增新檔[Azure 部署支援的 SAP 軟體](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure)
+- 02/13/2020：在[Red Hat Enterprise Linux 伺服器上的 Azure vm 上，將 IBM DB2 LUW 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-ibm-db2-luw)變更為指向說明使用標準 Azure 負載平衡器存取公用端點的檔
+- 02/13/2020：將新的 VM 類型新增至[在 Microsoft Azure 上執行的 SAP 認證和](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-certifications)設定
+- 02/13/2020：在 Azure 上新增 SAP 支援附注[sap 工作負載：規劃和部署檢查清單](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist)
 - 02/13/2020：在[Azure vm 中變更 Sap NetWeaver 的高可用性（rhel](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel) ）和[azure VM 高可用性 SAP NetWeaver On Rhel 與 azure NetApp Files](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files) ，以將叢集資源的超時時間對應至 Red Hat 超時建議
 - 02/11/2020：[將 Azure 大型實例遷移至 azure 虛擬機器的 SAP Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-large-instance-virtual-machine-migration)版本
 - 02/07/2020：在[SAP HA 案例中使用 Azure 標準 ILB 來變更 vm 的公用端點連線能力](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)，以更新範例 NSG 螢幕擷取畫面
@@ -157,10 +166,5 @@ Azure 上的 SAP 工作負載區段中的檔變更會列在本文結尾。
 - 08/16/2019：在[azure Red Hat Enterprise Linux 上設定 Pacemaker 的](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker)變更，以在更新至新版本的 azure 隔離代理程式時，提醒客戶更新自訂角色中的動作  
 - 08/15/2019：[SAP Hana Azure 虛擬機器儲存體](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)設定的變更，以反映 ultra （舊稱 ultra SSD）的正式運作
 - 08/01/2019：在[Azure 中的 SUSE Linux Enterprise Server 上設定 Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) ，以整合特別針對 SLES 15 進行的變更 
-- 07/23/2019：在[Azure 中使用檔案共用在 Windows 容錯移轉叢集上進行 SAP ASCS/SCS 實例叢集的](sap-high-availability-guide-wsfc-file-share.md)變更，以反映 Azure Site Recovery 服務的儲存空間直接存取支援
-- 07/14/2019：[針對 SAP 應用程式，釋放 Azure 鄰近放置群組以取得最佳的網路延遲](sap-proximity-placement-scenarios.md)
-- 07/11/2019：涵蓋 HANA 大型實例的各種檔變更，涵蓋 HANA 大型實例的修訂4
-- 07/09/2019：[Red Hat Enterprise Server 中的 IBM DB2 HADR](high-availability-guide-rhel-ibm-db2-luw.md)新指南版本
-- 06/13/2019：透過[適用于 sap 應用程式的 Azure NetApp Files，在 Red Hat Enterprise Linux 上推出 Sap NetWeaver 的高可用性](high-availability-guide-rhel-netapp-files.md)
 
 

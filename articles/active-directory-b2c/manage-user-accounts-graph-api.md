@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 64df1188692ae9f1b6200ad880a2bf1eafd98844
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: b53405d199072211304e21b681de646c4e41243c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77483222"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585623"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>使用 Microsoft Graph 管理 Azure AD B2C 的使用者帳戶
 
@@ -180,7 +180,7 @@ public static async Task ListUsers(GraphServiceClient graphClient)
 }
 ```
 
-[使用 Microsoft Graph Sdk 進行 API 呼叫](https://docs.microsoft.comgraph/sdks/create-requests)包括如何從 Microsoft Graph 讀取和寫入資訊、使用 `$select` 來控制傳回的屬性、提供自訂查詢參數，以及使用 `$filter` 和 `$orderBy` 查詢參數的相關資訊。
+[使用 Microsoft Graph Sdk 進行 API 呼叫](https://docs.microsoft.com/graph/sdks/create-requests)包括如何從 Microsoft Graph 讀取和寫入資訊、使用 `$select` 來控制傳回的屬性、提供自訂查詢參數，以及使用 `$filter` 和 `$orderBy` 查詢參數的相關資訊。
 
 ## <a name="next-steps"></a>後續步驟
 

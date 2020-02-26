@@ -2,17 +2,14 @@
 title: Azure Kubernetes Service 中 Windows Server 節點集區的限制（AKS）
 description: 瞭解在 Azure Kubernetes Service 中執行 Windows Server 節點集區和應用程式工作負載時的已知限制（AKS）
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: mlearned
-ms.openlocfilehash: 3dd7399b68388d92d38b0f64c6e816cb94b3f295
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 6d951652e3522b7ff926b72a3916bffe97575054
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768566"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592488"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service 中 Windows Server 節點集區和應用程式工作負載目前的限制（AKS）
 
@@ -32,7 +29,7 @@ AKS 會使用 Windows Server 2019 做為主機作業系統版本，而且只支�
 
 ## <a name="is-kubernetes-different-on-windows-and-linux"></a>Windows 和 Linux 上的 Kubernetes 不同嗎？
 
-Windows Server 節點集區支援包含在 Kubernetes 專案中屬於上游 Windows Server 的一些限制。 這些限制並不是 AKS 特有的。 如需有關此 Kubernetes 中 Windows Server 之上游支援的詳細資訊，請參閱 Kubernetes 專案中的 [Kubernetes 中的 windows 支援簡介][intro-windows]檔中的[支援的功能和限制][upstream-limitations]一節。
+Windows Server 節點集區支援包含在 Kubernetes 專案中屬於上游 Windows Server 的一些限制。 這些限制並不是 AKS 特有的。 如需有關此 Kubernetes 中 Windows Server 之上游支援的詳細資訊，請參閱 Kubernetes 專案中的 < [Kubernetes 中的 windows 支援簡介][intro-windows]檔中的[支援的功能和限制][upstream-limitations]一節。
 
 Kubernetes 在過去是以 Linux 為重點。 上游[Kubernetes.io][kubernetes]網站中使用的許多範例都是供 Linux 節點使用。 當您建立使用 Windows Server 容器的部署時，適用于 OS 層級的下列考慮事項：
 

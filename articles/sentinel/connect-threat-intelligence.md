@@ -2,7 +2,7 @@
 title: 將威脅情報資料連線到 Azure Sentinel |Microsoft Docs
 description: 深入瞭解如何將威脅情報資料連線到 Azure Sentinel。
 documentationcenter: na
-author: cabailey
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: security-center
@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2019
-ms.author: cabailey
-ms.openlocfilehash: 33edeb04e88a01efafaf69b850ed87120671ed11
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.author: yelevin
+ms.openlocfilehash: 5c79642d287224cd15531701d7cc87ebfd72eb69
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384129"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588037"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>從威脅情報提供者連接資料
 
@@ -54,13 +54,13 @@ Azure Sentinel 可讓您匯入組織所使用的威脅指標，這可以增強�
 
 ## <a name="connect-azure-sentinel-to-your-threat-intelligence-platform"></a>將 Azure Sentinel 連接到您的威脅情報平臺
 
-## <a name="prerequisites"></a>先決條件  
+## <a name="prerequisites"></a>Prerequisites  
 
 - 全域管理員或安全性系統管理員的 Azure AD 角色，以授與許可權給您的 TIP 產品或自訂應用程式，其使用與 Microsoft Graph Security tiIndicators API 的直接整合。
 
 - [Azure Sentinel] 工作區的 [讀取] 和 [寫入] 許可權，以儲存您的威脅指示器。
 
-## <a name="instructions"></a>範例的指示
+## <a name="instructions"></a>Instructions
 
 1. 在 Azure Active Directory 中[註冊應用程式](/graph/auth-v2-service#1-register-your-app)，以取得應用程式識別碼、應用程式密碼，以及 Azure Active Directory 的租使用者識別碼。 當您設定整合式秘訣產品或使用與 Microsoft Graph Security tiIndicators API 直接整合的應用程式時，您需要這些值。
 
@@ -72,7 +72,7 @@ Azure Sentinel 可讓您匯入組織所使用的威脅指標，這可以增強�
     
     a. 已註冊應用程式的識別碼、密碼和租使用者識別碼的值。
     
-    b.這是另一個 C# 主控台應用程式。 針對目標產品，指定 Azure Sentinel。
+    b. 針對目標產品，指定 Azure Sentinel。
     
     c. 針對 [動作]，指定 [警示]。
 
@@ -84,13 +84,13 @@ Azure Sentinel 可讓您匯入組織所使用的威脅指標，這可以增強�
 
 ## <a name="connect-azure-sentinel-to-taxii-servers"></a>將 Azure Sentinel 連線至 TAXII 伺服器
 
-## <a name="prerequisites"></a>先決條件  
+## <a name="prerequisites"></a>Prerequisites  
 
 - [Azure Sentinel] 工作區的 [讀取] 和 [寫入] 許可權，以儲存您的威脅指示器。
 
 - TAXII 2.0 伺服器 URI 和集合識別碼。
 
-## <a name="instructions"></a>範例的指示
+## <a name="instructions"></a>Instructions
 
 1. 在 [Azure 入口網站中，流覽至**Azure Sentinel** > **資料連線器**]，然後選取 [**威脅情報-TAXII （預覽）** ] 連接器。
 
@@ -108,5 +108,5 @@ Azure Sentinel 可讓您匯入組織所使用的威脅指標，這可以增強�
 
 在本檔中，您已瞭解如何將威脅情報提供者連接到 Azure Sentinel。 若要深入瞭解 Azure Sentinel，請參閱下列文章。
 
-- 瞭解如何[查看您的資料和潛在威脅](quickstart-get-visibility.md)。
+- 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
 - 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats.md)。

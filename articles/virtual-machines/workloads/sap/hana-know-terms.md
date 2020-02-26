@@ -10,15 +10,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/03/2019
+ms.date: 02/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2ea6a8963d0905036f759fbab792492cc63d551c
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: e9719f1a081da688501e6dbea0fc1b865168077c
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806740"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591212"
 ---
 # <a name="know-the-terms"></a>認識詞彙
 
@@ -38,7 +38,7 @@ ms.locfileid: "74806740"
    內部部署網域的網域使用者可以存取伺服器，並可在這些 VM 上執行服務 (例如 DBMS 服務)。 在內部部署的 VM 與 Azure 部署的 VM 之間可進行通訊和名稱解析。 這是部署大部分 SAP 資產時的典型案例。 如需詳細資訊，請參閱[Azure VPN 閘道](../../../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)並[使用 Azure 入口網站建立具有站對站連線的虛擬網路](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 - **租用戶**：部署於 HANA 大型執行個體戳記的客戶會隔離到*租用戶*中。 每個租用戶的網路、儲存體和計算層會彼此區隔開來。 指派給不同租用戶的儲存體和計算單位無法看到彼此，也無法在 HANA 大型執行個體戳記層級上彼此通訊。 客戶可以選擇部署到不同的租用戶。 即使如此，租用戶彼此之間還是無法在 HANA 大型執行個體戳記層級上進行通訊。
 - **SKU 類別**：對於 HANA 大型執行個體，會提供下列兩種 SKU：
-    - **類型 I 類別**： S72、S72m、S96、S144、S144m、S192、S192m、S192xm 和 S224
+    - **類型 I 類別**： S72、S72m、S96、S144、S144m、S192、S192m、S192xm、S224 和 S224m
     - **類型 II 類別**：S384、S384m、S384xm、S384xxm、S576m、S576xm、S768m、S768xm 和 S960m
 - **戳記**：定義「HANA 大型實例」的 Microsoft 內部部署大小。 在可以部署 HANA 大型實例單位之前，必須在資料中心位置部署由計算、網路和儲存機架組成的 HANA 大型實例戳記。 這類部署稱為「HANA 大型實例」戳記，或從修訂版4（請參閱下文），我們使用的是**大型實例資料列**的替代詞彙
 - **修訂**：適用于 HANA 大型實例戳記的兩個不同戳記修訂。 這些與 Azure 虛擬機器主機的架構和鄰近性不同

@@ -2,17 +2,14 @@
 title: 在 Azure Kubernetes Service (AKS) 中使用 Azure CLI 建立虛擬節點
 description: 了解如何使用 Azure CLI 建立使用虛擬節點執行 Pod 的 Azure Kubernetes Service (AKS) 叢集。
 services: container-service
-author: mlearned
 ms.topic: conceptual
-ms.service: container-service
 ms.date: 05/06/2019
-ms.author: mlearned
-ms.openlocfilehash: 2133d1aefe3363a2fb2af73c004e22ba0a0239ca
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 2b726dff1e2c23b94118a11fb6b6ccf1f9622d4d
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901501"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592739"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>使用 Azure CLI 建立和設定 Azure Kubernetes Service (AKS) 叢集以使用虛擬節點
 
@@ -63,7 +60,7 @@ az provider register --namespace Microsoft.ContainerInstance
 ## <a name="known-limitations"></a>已知限制
 虛擬節點功能非常依賴 ACI 的功能集。 虛擬節點尚未支援下列案例
 
-* 使用服務主體來提取 ACR 映射。 [因應措施](https://github.com/virtual-kubelet/virtual-kubelet/blob/master/providers/azure/README.md#Private-registry)是使用[Kubernetes 秘密](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line)
+* 使用服務主體來提取 ACR 映射。 因[應措施](https://github.com/virtual-kubelet/virtual-kubelet/blob/master/providers/azure/README.md#Private-registry)是使用[Kubernetes 秘密](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line)
 * [虛擬網路限制](../container-instances/container-instances-vnet.md)，包括 VNet 對等互連、Kubernetes 網路原則，以及使用網路安全性群組連到網際網路的輸出流量。
 * Init 容器
 * [主機別名](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
@@ -275,13 +272,13 @@ Pod 會從 Azure 虛擬網路的子網路 (為搭配使用虛擬節點而委派)
 kubectl run --generator=run-pod/v1 -it --rm testvk --image=debian
 ```
 
-使用 `apt-get` 在 Pod 中安裝 `curl`：
+使用 `curl` 在 Pod 中安裝 `apt-get`：
 
 ```console
 apt-get update && apt-get install -y curl
 ```
 
-現在您可以使用 `curl` (例如 http://10.241.0.4) 來存取 Pod 的位址。 提供前述 `kubectl get pods` 命令中您自己的 IP 位址：
+現在您可以使用 `curl` (例如 *http://10.241.0.4* ) 來存取 Pod 的位址。 提供前述 `kubectl get pods` 命令中您自己的 IP 位址：
 
 ```console
 curl -L http://10.241.0.4

@@ -3,12 +3,12 @@ title: 常見問題-Azure Migrate 中的探索、評估和相依性分析
 description: 取得 Azure Migrate 中探索、評估和相依性分析的常見問題解答。
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 2ae534e50cbee3ebd17d703f957aa7200460dbfe
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 179be4f5b39806c717e94789c9fe52842d2a07d8
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77426287"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589227"
 ---
 # <a name="common-questions-about-discovery-assessment-and-dependency-analysis"></a>探索、評估和相依性分析的相關常見問題
 
@@ -92,7 +92,7 @@ Azure Migrate 設備會持續收集內部部署環境的相關資訊。 但評�
 
 ## <a name="can-i-use-an-existing-workspace"></a>我可以使用現有的工作區嗎？
 
-是，您可以將現有的工作區附加至遷移專案，並將其用於相依性視覺效果。 [詳細資訊](concepts-dependency-visualization.md#how-does-it-work)。
+是，您可以將現有的工作區附加至遷移專案，並將其用於相依性視覺效果。 
 
 ## <a name="can-i-export-the-dependency-visualization-report"></a>是否可以匯出相依性視覺效果報告？
 

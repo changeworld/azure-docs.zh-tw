@@ -3,7 +3,7 @@ title: 使用 Azure Sentinel 調查事件 |Microsoft Docs
 description: 使用此教學課程來瞭解如何使用 Azure Sentinel 調查事件。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: fbab3eff3d7f742c2542e4264ef1b2124c5f15e5
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.author: yelevin
+ms.openlocfilehash: ecd8c508d05bfeb541a6cb5efbcdf2fffd3c78d3
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72024617"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587187"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>教學課程：使用 Azure Sentinel 調查事件
 
@@ -39,7 +39,7 @@ ms.locfileid: "72024617"
 
 事件可以包含多個警示。 它是特定調查的所有相關辨識項的匯總。 系統會根據您在 [**分析**] 頁面中建立的分析規則來建立事件。 與警示相關的屬性（例如嚴重性和狀態）會在事件層級設定。 當您讓 Azure Sentinel 知道您要尋找的威脅種類，以及如何尋找它們之後，您可以藉由調查事件來監視偵測到的威脅。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 只有當您在設定分析規則時使用實體對應欄位，才能夠調查事件。 調查圖表需要您的原始事件包含實體。
 
 ## <a name="how-to-investigate-incidents"></a>如何調查事件
@@ -54,7 +54,7 @@ ms.locfileid: "72024617"
 
 1. 若要在事件中查看警示和實體的更多詳細資料，請選取 [事件] 頁面中的 [**查看完整詳細資料**]，並查看摘要事件資訊的相關索引標籤。 在 [**警示**] 索引標籤中，檢查警示本身。 您可以查看警示的所有相關資訊–觸發警示的查詢、每個查詢所傳回的結果數目，以及對警示執行腳本的能力。 若要更進一步向下切入事件，請選取**事件**的數目。 這會開啟產生結果的查詢，以及在 Log Analytics 中觸發警示的事件。 在 [**實體**] 索引標籤中，您可以看到您對應為警示規則定義之一部分的所有實體。
 
-    ![查看警示詳細資料](media/tutorial-investigate-cases/alert-details.png)
+    ![檢視警示詳細資料](media/tutorial-investigate-cases/alert-details.png)
 
 1. 如果您要主動調查事件，建議您將事件的狀態設定為 [**進行中**]，直到您關閉它為止。
 

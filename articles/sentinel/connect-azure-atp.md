@@ -3,7 +3,7 @@ title: 將 Azure ATP 資料連線到 Azure Sentinel |Microsoft Docs
 description: 瞭解如何將 Azure ATP 資料連線到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
-ms.author: rkarlin
-ms.openlocfilehash: 6f099a0eb6501b6576c4560e0b397d3105bb15f0
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: 387d04cbbb125006efcc4efc53a02015fe3f5919
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610704"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588581"
 ---
 # <a name="connect-data-from-azure-advanced-threat-protection-atp"></a>從 Azure 進階威脅防護連接資料（ATP）
 
@@ -29,7 +29,7 @@ ms.locfileid: "75610704"
 
 您只要按一下，就可以將[Azure 進階威脅防護](https://docs.microsoft.com/azure-advanced-threat-protection/what-is-atp)的記錄串流至 Azure Sentinel。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 具有全域管理員或安全性系統管理員許可權的使用者
 - 您必須是 Azure ATP 的預覽客戶，並且能夠在 Azure ATP 和 Microsoft Cloud App Security 之間進行整合。 如需詳細資訊，請參閱[Azure Advanced Protection 整合](https://docs.microsoft.com/cloud-app-security/aatp-integration)。

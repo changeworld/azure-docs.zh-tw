@@ -4,12 +4,12 @@ description: 這篇文章概述 SharePoint 伺服器陣列至 Azure 的 DPM/Azur
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: 1750270b3383e815b9255273923b50d2879fdba6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: b766c0401dde10fdc257044e004de3dbf8a7b84c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173328"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586473"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>使用 DPM 將 SharePoint 伺服器陣列備份至 Azure
 
@@ -27,13 +27,13 @@ DPM 的 Azure 備份支援下列案例：
 
 您需要先確定幾件事，再將 SharePoint 伺服器陣列備份至 Azure。
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>Prerequisites
 
 繼續之前，請確定 [使用 Microsoft Azure 備份來保護工作負載的所有必要條件](backup-azure-dpm-introduction.md#prerequisites-and-limitations) 已滿足。 一些滿足必要條件的工作包括︰建立備份保存庫、下載保存庫認證、安裝 Azure 備份代理程式，以及向保存庫註冊 DPM/Azure 備份伺服器。
 
 ### <a name="dpm-agent"></a>DPM 代理程式
 
-DPM 代理程式必須安裝在執行 SharePoint 的伺服器、執行 SQL Server 的伺服器，以及隸屬於 SharePoint 伺服器陣列的其他任何伺服器上。 如需設定保護代理程式的詳細資訊，請參閱[設定保護代理程式](https://technet.microsoft.com/library/hh758034\(v=sc.12\).aspx)。  唯一的例外是您只能在單一 Web 前端 (WFE) 伺服器上安裝代理程式。 DPM 只需要將 WFE 伺服器上的代理程式做為保護的進入點。
+DPM 代理程式必須安裝在執行 SharePoint 的伺服器、執行 SQL Server 的伺服器，以及隸屬於 SharePoint 伺服器陣列的其他任何伺服器上。 如需設定保護代理程式的詳細資訊，請參閱[設定保護代理程式](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019)。  唯一的例外是您只能在單一 Web 前端 (WFE) 伺服器上安裝代理程式。 DPM 只需要將 WFE 伺服器上的代理程式做為保護的進入點。
 
 ### <a name="sharepoint-farm"></a>SharePoint 伺服器陣列
 
@@ -97,12 +97,12 @@ DPM 會以 LocalSystem 帳戶身分執行。 若要備份 SQL Server 資料庫�
    > 在已安裝 DPM 代理程式的情況下，您會在精靈中看到伺服器。 DPM 也會顯示其結構。 由於已執行 ConfigureSharePoint.exe，DPM 會與 SharePoint VSS 寫入器服務及其對應的 SQL 資料庫通訊，並辨識 SharePoint 伺服器陣列結構、相關聯的內容資料庫和任何對應的項目。
    >
    >
-4. 在 [選擇資料保護方式] 頁面上，輸入**保護群組**的名稱，然後選取您偏好的*保護方式*。 按一下 [下一步]。
+4. 在 [選擇資料保護方式] 頁面上，輸入**保護群組**的名稱，然後選取您偏好的*保護方式*。 按 [下一步]。
 
     ![選擇資料保護方式](./media/backup-azure-backup-sharepoint/select-data-protection-method1.png)
 
    > [!NOTE]
-   > 磁碟保護方法有助於達成短暫的復原時間目標。 相較於磁帶，Azure 是經濟實惠的長期保護目標。 如需詳細資訊，請參閱 [使用 Azure 備份來取代您的磁帶基礎結構](https://azure.microsoft.com/documentation/articles/backup-azure-backup-cloud-as-tape/)
+   > 磁碟保護方法有助於達成短暫的復原時間目標。 相較於磁帶，Azure 是經濟實惠的長期保護目標。 如需詳細資訊，請參閱 [使用 Azure 備份來取代您的磁帶基礎結構](./backup-azure-backup-cloud-as-tape.md)
    >
    >
 5. 在 [指定短期目標] 頁面上，選取您偏好的**保留範圍**，然後識別您想要進行備份的時間。
@@ -149,7 +149,7 @@ DPM 會以 LocalSystem 帳戶身分執行。 若要備份 SQL Server 資料庫�
     ![Online_replica](./media/backup-azure-backup-sharepoint/online-replication.png)
 13. 在 [摘要] 頁面上檢閱您選取的設定，然後按一下 [建立群組]。 建立保護群組之後，您會看到成功訊息。
 
-    ![Summary](./media/backup-azure-backup-sharepoint/summary.png)
+    ![摘要](./media/backup-azure-backup-sharepoint/summary.png)
 
 ## <a name="restore-a-sharepoint-item-from-disk-by-using-dpm"></a>使用 DPM 從磁碟還原 SharePoint 項目
 
@@ -169,7 +169,7 @@ DPM 會以 LocalSystem 帳戶身分執行。 若要備份 SQL Server 資料庫�
 5. 您也可以瀏覽不同的復原點，並選取要復原的資料庫或項目。 選取 [日期] > [復原時間]，然後選取正確的 [資料庫] > [SharePoint 伺服器陣列] > [復原點] > [項目]。
 
     ![DPM SharePoint Protection7](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection8.png)
-6. 在該項目上按一下滑鼠右鍵，然後選取 [復原] 以開啟 [復原精靈]。 按一下 [下一步]。
+6. 在該項目上按一下滑鼠右鍵，然後選取 [復原] 以開啟 [復原精靈]。 按 [下一步]。
 
     ![檢閱復原選項](./media/backup-azure-backup-sharepoint/review-recovery-selection.png)
 7. 選取您想要執行的復原類型，然後按 [下一步]。
@@ -193,7 +193,7 @@ DPM 會以 LocalSystem 帳戶身分執行。 若要備份 SQL Server 資料庫�
     DPM 會將裝載 SharePoint 項目的內容資料庫附加至暫存 SQL Server 執行個體。 從內容資料庫，DPM 伺服器會復原項目，並將它放在 DPM 伺服器上的預備檔案位置。 在 DPM 伺服器預備位置上的復原項目，現在需要匯出至 SharePoint 伺服器陣列上的預備位置。
 
     ![Staging Location2](./media/backup-azure-backup-sharepoint/staging-location2.png)
-10. 選取 [指定復原選項]，並將安全性設定套用至 SharePoint 伺服器陣列，或套用復原點的安全性設定。 按一下 [下一步]。
+10. 選取 [指定復原選項]，並將安全性設定套用至 SharePoint 伺服器陣列，或套用復原點的安全性設定。 按 [下一步]。
 
     ![修復選項](./media/backup-azure-backup-sharepoint/recovery-options.png)
 
@@ -243,5 +243,5 @@ DPM 會以 LocalSystem 帳戶身分執行。 若要備份 SQL Server 資料庫�
 ## <a name="next-steps"></a>後續步驟
 
 * 深入了解 DPM 的 SharePoint 保護 - 請參閱 [影片系列 - DPM 的 SharePoint 保護](https://channel9.msdn.com/Series/Azure-Backup/Microsoft-SCDPM-Protection-of-SharePoint-1-of-2-How-to-create-a-SharePoint-Protection-Group)
-* 檢閱 [System Center 2012 - Data Protection Manager 版本資訊](https://technet.microsoft.com/library/jj860415.aspx)
-* 檢閱 [System Center 2012 SP1 的 Data Protection Manager 版本資訊](https://technet.microsoft.com/library/jj860394.aspx)
+* 檢閱 [System Center 2012 - Data Protection Manager 版本資訊](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/jj860415(v=sc.12)?redirectedfrom=MSDN)
+* 檢閱 [System Center 2012 SP1 的 Data Protection Manager 版本資訊](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/jj860394(v=sc.12)?redirectedfrom=MSDN)

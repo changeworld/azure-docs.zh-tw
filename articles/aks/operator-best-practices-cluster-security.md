@@ -2,17 +2,14 @@
 title: 操作員最佳做法 - Azure Kubernetes Services (AKS) 中的叢集安全性
 description: 了解叢集操作員在 Azure Kubernetes Service (AKS) 中管理叢集安全性和升級的最佳做法
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: mlearned
-ms.openlocfilehash: 2377cc2e0824911217fbc2783fdf8e86fd7b9405
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: f02f6588946e2b63a1a092aba15603d1685e8207
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549201"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594799"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中叢集安全性和升級的最佳做法
 

@@ -3,7 +3,7 @@ title: 部署代理程式，以將 CEF 資料連線至 Azure Sentinel 預覽 |Mi
 description: 瞭解如何部署代理程式，以將 CEF 資料連線到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2019
-ms.author: rkarlin
-ms.openlocfilehash: 5451382763195172b48e93ef2ea859552b05d154
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: b0c9335357cb793ea76e1dbe68575f716a50372a
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615368"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588462"
 ---
 # <a name="step-1-deploy-the-agent"></a>步驟1：部署代理程式
 

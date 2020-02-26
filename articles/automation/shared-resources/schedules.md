@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8daa87eca74570f5b1fdf1537b83dae60d292128
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: c4898ba62abdc42d95b77b9a77387bfe71fb4771
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849457"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592198"
 ---
 # <a name="scheduling-a-runbook-in-azure-automation"></a>在 Azure 自動化中排程 Runbook
 
@@ -143,7 +143,7 @@ Register-AzureRmAutomationScheduledRunbook –AutomationAccountName $automationA
 
 可為 Azure 自動化中的排程設定的最頻繁間隔是一小時。 如果您需要讓排程以比一小時更頻繁地頻率來執行，您有兩個選項：
 
-* 為 Runbook 建立 [Webhook](../automation-webhooks.md) 並使用 [Azure 排程器](../../scheduler/scheduler-get-started-portal.md)來呼叫此 Webhook。 Azure 排程器在定義排程時，可提供更細微的方式。
+* 建立 runbook 的[webhook](../automation-webhooks.md) ，並使用[Azure Logic Apps](../../logic-apps/logic-apps-overview.md)來呼叫 webhook。 在定義排程時，Azure Logic Apps 提供更細微的資料細微性。
 
 * 建立四個排程，讓其每小時執行一次，且彼此全都會在相差 15 分鐘內開始。 此案例可讓 Runbook 使用不同排程每 15 分鐘執行一次。
 

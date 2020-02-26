@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 01/25/2020
-ms.openlocfilehash: ff128d148abb87959894aee94d257ae71a3ca65e
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 02/24/2020
+ms.openlocfilehash: 9236fab332758308ceb8bde1f83a9f3ac8ee6789
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773852"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587578"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>對應資料流程效能和微調指南
 
@@ -35,8 +35,8 @@ ms.locfileid: "76773852"
 ## <a name="increasing-compute-size-in-azure-integration-runtime"></a>增加 Azure Integration Runtime 中的計算大小
 
 具有更多核心的 Integration Runtime 會增加 Spark 計算環境中的節點數目，並提供讀取、寫入及轉換資料的更多處理能力。
-* 如果您想要處理速率高於輸入速率，請嘗試**計算優化**叢集
-* 如果您想要在記憶體中快取更多資料，請嘗試使用**記憶體優化**的叢集。
+* 如果您希望處理速率高於您的輸入速率，請嘗試**計算優化**叢集。
+* 如果您想要在記憶體中快取更多資料，請嘗試使用**記憶體優化**的叢集。 記憶體優化比計算優化的每個核心具有更高的價格點，但可能會導致更快速的轉換速度。
 
 ![新增 IR](media/data-flow/ir-new.png "新增 IR")
 
@@ -87,17 +87,24 @@ ms.locfileid: "76773852"
 
 在您的管線執行之前，排程來源的調整大小並接收 Azure SQL DB 和 DW，以增加輸送量，並在達到 DTU 限制之後將 Azure 節流降至最低。 當您的管線執行完成之後，請將您的資料庫調整回其正常執行速率。
 
-### <a name="azure-sql-dw-only-use-staging-to-load-data-in-bulk-via-polybase"></a>[僅限 Azure SQL DW]使用預備環境透過 Polybase 大量載入資料
+* 具有887k 資料列和74資料行的 SQL DB 來源資料表至具有單一衍生資料行轉換的 SQL DB 資料表，會使用記憶體優化的 80-核心 debug Azure IRs 來進行大約3分鐘的端對端處理。
+
+### <a name="azure-synapse-sql-dw-only-use-staging-to-load-data-in-bulk-via-polybase"></a>[僅限 Azure Synapse SQL DW]使用預備環境透過 Polybase 大量載入資料
 
 若要避免將逐列插入至 DW，請核取 [在您的接收設定中**啟用暫存**]，讓 ADF 可以使用[PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide)。 PolyBase 可讓 ADF 大量載入資料。
 * 當您從管線執行「資料流程」活動時，您必須選取 Blob 或 ADLS Gen2 儲存體位置，以便在大量載入期間暫存您的資料。
 
+* 包含74個數據行的421Mb 檔案的檔案來源到 Synapse 資料表，而單一衍生的資料行轉換需要大約4分鐘的端對端，使用記憶體優化 80-核心 debug Azure IRs。
+
 ## <a name="optimizing-for-files"></a>檔案的優化
 
-在每次轉換時，您都可以在 [優化] 索引標籤中設定要讓 data factory 使用的資料分割配置。
+在每次轉換時，您都可以在 [優化] 索引標籤中設定要讓 data factory 使用的資料分割配置。最好先測試以檔案為基礎的接收，保留預設的分割和優化。
+
 * 對於較小的檔案，您可能會發現選取*單一分割*區的工作，有時可以比要求 Spark 分割小型檔案更好且快速。
 * 如果您沒有來源資料的足夠資訊，請選擇 [*迴圈*配置資源分割]，並設定資料分割數目。
 * 如果您的資料行有可能是良好的雜湊索引鍵，請選擇 [*雜湊分割*]。
+
+* 具有74個數據行之421Mb 檔的 file 接收和單一衍生的資料行轉換，需要大約2分鐘的端對端使用記憶體優化 80-核心 debug Azure IRs。
 
 在資料預覽和管線偵錯工具中進行偵錯工具時，檔案型源資料集的限制和取樣大小只會套用至傳回的資料列數目，而不會套用至讀取的資料列數目。 這可能會影響您的偵錯工具執行效能，而且可能會導致流程失敗。
 * Debug 叢集預設為小型單一節點叢集，建議使用範例小型檔案進行偵錯工具。 移至 [偵錯工具] [設定]，並使用暫存檔案指向資料的小型子集。

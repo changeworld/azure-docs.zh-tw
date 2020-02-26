@@ -3,12 +3,12 @@ title: 使用 MABS 備份 Hyper-v 虛擬機器
 description: 本文包含使用 Microsoft Azure 備份 Server （MABS）來備份和復原虛擬機器的程式。
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: 69e415b5aef179c2b64bb04e933593010c8b47d3
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: e23a3a5ad57e07f95958d8a21e091d663a5c1185
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444055"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586507"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>使用 Azure 備份伺服器備份 Hyper-v 虛擬機器
 
@@ -145,7 +145,7 @@ MABS 會以 VSS 執行備份，如下所示。 此描述中的步驟會進行編
 
 3. 將 MABSMachineName $ 帳戶指派為 VMM 管理伺服器上的唯讀系統管理員帳戶。
 
-4. 使用 `Set-DPMGlobalProperty` PowerShell Cmdlet，將所有 Hyper-v 主機伺服器連接到所有 MABS 伺服器。 此 Cmdlet 會接受多個 MABS 伺服器名稱。 使用格式︰`Set-DPMGlobalProperty -dpmservername <MABSservername> -knownvmmservers <vmmservername>`。 如需詳細資訊，請參閱[get-dpmglobalproperty](https://technet.microsoft.com/library/hh881752.aspx)。
+4. 使用 `Set-DPMGlobalProperty` PowerShell Cmdlet，將所有 Hyper-v 主機伺服器連接到所有 MABS 伺服器。 此 Cmdlet 會接受多個 MABS 伺服器名稱。 使用格式︰`Set-DPMGlobalProperty -dpmservername <MABSservername> -knownvmmservers <vmmservername>`。 如需詳細資訊，請參閱[get-dpmglobalproperty](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmglobalproperty?view=systemcenter-ps-2019)。
 
 5. 在 VMM 中探索到 VMM 雲端中的 Hyper-v 主機上執行的所有虛擬機器之後，請設定保護群組，並新增您想要保護的虛擬機器。 必須在保護群組層級啟用自動一致性檢查，以在虛擬機器行動性案例下受到保護。
 

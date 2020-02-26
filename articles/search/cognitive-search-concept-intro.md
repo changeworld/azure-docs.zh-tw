@@ -6,18 +6,18 @@ manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6d75e48443fd8622ca2ae7ff05fe81184c4b2b16
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
-ms.translationtype: HT
+ms.openlocfilehash: 14c120af69a94331586f9264a12f5d2333a5d87d
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472429"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586745"
 ---
 # <a name="introduction-to-ai-in-azure-cognitive-search"></a>Azure 認知搜尋中的 AI 簡介
 
-AI 擴充是 Azure 認知搜尋服務索引的功能，可用來從影像、Blob 及其他非結構化的資料來源擷取文字，以擴充其內容並使其更容易在索引或知識存放區中被找到。 系統會透過附加到索引管線的「認知技術」  來進行擷取和擴充。 服務內建的認知技能可分為下列幾個類別： 
+AI 擴充是 Azure 認知搜尋服務索引的功能，可用來從影像、Blob 及其他非結構化的資料來源擷取文字，以擴充其內容並使其更容易在索引或知識存放區中被找到。 系統會透過附加到索引管線的「認知技術」來進行擷取和擴充。 服務內建的認知技能可分為下列幾個類別： 
 
 + **自然語言處理**技術，包括[實體辨識](cognitive-search-skill-entity-recognition.md)、[語言偵測](cognitive-search-skill-language-detection.md)、[關鍵片語擷取](cognitive-search-skill-keyphrases.md)、文字操作、[情感偵測](cognitive-search-skill-sentiment.md)和 [PII 偵測](cognitive-search-skill-pii-detection.md)。 透過這些技術，非結構化的文字將能取得新的型態，並對應為索引中可搜尋且可篩選的欄位。
 
@@ -25,7 +25,7 @@ AI 擴充是 Azure 認知搜尋服務索引的功能，可用來從影像、Blob
 
 ![擴充管線圖表](./media/cognitive-search-intro/cogsearch-architecture.png "擴充管線概觀")
 
-Azure 認知搜尋服務中的認知技術是以認知服務 API 中預先訓練的機器學習模型為基礎：[電腦視覺](https://docs.microsoft.com/azure/cognitive-services/computer-vision/)和[文字分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview)。 
+Azure 認知搜尋中的認知技能是以認知服務 API 中預先定型的機器學習模型為基礎：[電腦視覺](https://docs.microsoft.com/azure/cognitive-services/computer-vision/)和[文字分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview)。 
 
 在資料擷取階段中會套用自然語言和影像處理，且其結果會在 Azure 認知搜尋服務的可搜尋索引中成為文件撰寫的一部分。 資料會作為 Azure 資料集的來源，然後使用您所需的[內建技能](cognitive-search-predefined-skills.md)透過索引管線推送出去。 其架構是可延伸的，因此如果內建技能不敷使用，您可以建立及附加[自訂技能](cognitive-search-create-custom-skill-example.md)，以整合自訂處理。 其範例包括以特定領域為目標 (例如金融、科學出版品或醫藥) 的自訂實體模組或文件分類器。
 
@@ -65,15 +65,15 @@ Azure 認知搜尋服務中的認知技術是以認知服務 API 中預先訓練
 
 擴充管線以會搜耙資料來源並提供端對端索引處理的[*索引子*](search-indexer-overview.md)為基礎。 技能現在已連結至索引子，會根據您所定義的技能集攔截及擴充文件。 完成索引編製後，您即可使用 [Azure 認知搜尋服務所支援的所有查詢類型](search-query-overview.md)，透過搜尋要求來存取內容。  如果您不熟悉索引子，本節將引導您逐步完成相關步驟。
 
-### <a name="step-1-connection-and-document-cracking-phase"></a>步驟 1:連線和文件萃取階段
+### <a name="step-1-connection-and-document-cracking-phase"></a>步驟1：連接和檔破解階段
 
 在一開始執行管線時，您會有非結構化的文字或非文字內容 (例如影像和掃描的文件 JPEG 檔案)。 資料必須存在於可由索引子存取的 Azure 資料儲存體服務中。 索引子可以「萃取」來源文件，以從來源資料中擷取文字。
 
 ![文件萃取階段](./media/cognitive-search-intro/document-cracking-phase-blowup.png "文件萃取")
 
- 支援的來源包括 Azure Blob 儲存體、Azure 資料表儲存體、Azure SQL Database 和 Azure Cosmos DB。 文字型的內容可以從下列檔案類型中擷取：PDF、Word、PowerPoint、CSV 檔案。 如需完整的清單，請參閱[支援的格式](search-howto-indexing-azure-blob-storage.md#supported-document-formats)。
+ 支援的來源包括 Azure Blob 儲存體、Azure 資料表儲存體、Azure SQL Database 和 Azure Cosmos DB。 以文字為基礎的內容可以從下列檔案類型中擷取：PDF、Word、PowerPoint、CSV 檔案。 如需完整的清單，請參閱[支援的格式](search-howto-indexing-azure-blob-storage.md#supported-document-formats)。
 
-### <a name="step-2-cognitive-skills-and-enrichment-phase"></a>步驟 2:認知技能和擴充階段
+### <a name="step-2-cognitive-skills-and-enrichment-phase"></a>步驟2：認知技能和擴充階段
 
 擴充是經由*認知技能*執行不可部分完成作業而進行的。 例如，當您從 PDF 取得文字內容後，您可以套用實體辨識語言偵測或關鍵片語擷取，在您的索引中產生在來源中原本無法使用的新欄位。 技能的集合會統合用於您的管線中，我們稱之為*技能集*。  
 
@@ -89,7 +89,7 @@ Azure 認知搜尋服務中的認知技術是以認知服務 API 中預先訓練
 
 將知識存放區新增到技能集時，讓您能夠針對非全文檢索搜尋案例，投射擴充的表示法。 如需詳細資訊，請參閱[知識存放區 (預覽版)](knowledge-store-concept-intro.md)。
 
-### <a name="step-3-search-index-and-query-based-access"></a>步驟 3：搜尋索引和以查詢為基礎的存取
+### <a name="step-3-search-index-and-query-based-access"></a>步驟3：搜尋索引和以查詢為基礎的存取
 
 處理完成後，您即具有由擴充文件組成、可在 Azure 認知搜尋服務中進行全文檢索搜尋的搜尋索引。 [查詢索引](search-query-overview.md)是開發人員和使用者存取管線所產生之擴充內容的具體方式。 
 
@@ -123,17 +123,17 @@ Azure 認知搜尋服務中的認知技術是以認知服務 API 中預先訓練
 
 ## <a name="where-do-i-start"></a>我該從哪裡開始？
 
-**步驟 1：[建立 Azure 認知搜尋資源](search-create-service-portal.md)** 
+**步驟1：[建立 Azure 認知搜尋資源](search-create-service-portal.md)** 
 
-**步驟 2：請嘗試一些快速入門和範例，以獲得實際操作經驗**
+**步驟2：嘗試一些快速入門和實際操作體驗範例**
 
 + [快速入門 (入口網站)](cognitive-search-quickstart-blob.md)
 + [教學課程 (HTTP 要求)](cognitive-search-tutorial-blob.md)
-+ [範例：建立 AI 擴充的自訂技能 (C#)](cognitive-search-create-custom-skill-example.md)
++ [範例：建立 AI 擴充（C#）的自訂技能](cognitive-search-create-custom-skill-example.md)
 
-基於學習目的，我們會建議使用免費服務，但可用的交易數目限制為每天 20 份文件。 若要多次執行課程，請刪除並重新建立索引子，以將計數器重設為零。
+基於學習目的，我們會建議使用免費服務，但可用的交易數目限制為每天 20 份文件。 若要多次執行課程，請刪除並重新建立索引子，將計數器重設為零。
 
-**步驟 3：檢閱 API**
+**步驟3：檢查 API**
 
 您可以在要求或 .NET SDK 上使用 REST `api-version=2019-05-06`。 如果您要探索知識存放區，請改用預覽 REST API (`api-version=2019-05-06-Preview`)。
 
@@ -171,7 +171,7 @@ Azure 認知搜尋服務中的認知技術是以認知服務 API 中預先訓練
 ## <a name="next-steps"></a>後續步驟
 
 + [AI 擴充的文件連結](cognitive-search-resources-documentation.md)
-+ [快速入門：在入口網站中試用 AI 擴充的逐步解說](cognitive-search-quickstart-blob.md)
-+ [教學課程：了解 AI 擴充 API](cognitive-search-tutorial-blob.md)
++ [快速入門：在入口網站中試用 AI 擴充逐步解說](cognitive-search-quickstart-blob.md)
++ [教學課程：瞭解 AI 擴充 Api](cognitive-search-tutorial-blob.md)
 + [知識存放區 (預覽)](knowledge-store-concept-intro.md)
 + [在 REST 中建立知識存放區](knowledge-store-create-rest.md)

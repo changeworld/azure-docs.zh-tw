@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 215ecc1e392f8e7051173fb6f589fb940c26f17d
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 3487de958df100cd43d4191028d0a15d7007067a
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872242"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604990"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>具有 Azure Cosmos DB 和 Azure Functions 的無伺服器事件架構
 
@@ -20,17 +20,17 @@ Azure Functions 提供最簡單的方式來連接到[變更](change-feed.md)摘�
 
 ![以無伺服器事件為基礎的函式使用 Cosmos DB 的 Azure Functions 觸發程式](./media/change-feed-functions/functions.png)
 
-使用[Cosmos DB 的 Azure Functions 觸發程式](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger)，您可以利用[變更摘要處理器](./change-feed-processor.md)的調整和可靠的事件偵測功能，而不需要維護任何背景[工作基礎結構](./change-feed-processor.md)。 只需專注于 Azure 函式的邏輯，而不需擔心事件來源管線的其餘部分。 您甚至可以將觸發程式與任何其他[Azure Functions](../azure-functions/functions-triggers-bindings.md#supported-bindings)系結混合在一起。
+使用[Cosmos DB 的 Azure Functions 觸發程式](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md)，您可以利用[變更摘要處理器](./change-feed-processor.md)的調整和可靠的事件偵測功能，而不需要維護任何背景[工作基礎結構](./change-feed-processor.md)。 只需專注于 Azure 函式的邏輯，而不需擔心事件來源管線的其餘部分。 您甚至可以將觸發程式與任何其他[Azure Functions](../azure-functions/functions-triggers-bindings.md#supported-bindings)系結混合在一起。
 
 > [!NOTE]
 > 目前，僅支援將 Cosmos DB 的 Azure Functions 觸發程式用於 Core （SQL） API。
 
-## <a name="requirements"></a>要求
+## <a name="requirements"></a>需求
 
 若要執行無伺服器事件型流程，您需要：
 
 * **受監視的容器**：受監視的容器是受監視的 Azure Cosmos 容器，它會儲存產生變更摘要的資料。 受監視容器的任何插入、更新都會反映在容器的變更摘要中。
-* **租用容器**：租用容器會維護多個和動態無伺服器 Azure 函式實例之間的狀態，並啟用動態調整。 Cosmos DB 的 Azure Functions 觸發程式可以手動或自動建立此租用容器。 若要自動建立租用容器，請在[設定](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration)中設定 *CreateLeaseCollectionIfNotExists* 旗標。 分割的租用容器必須要有 `/id` 的分割區索引鍵定義。
+* **租用容器**：租用容器會維護多個和動態無伺服器 Azure 函式實例之間的狀態，並啟用動態調整。 Cosmos DB 的 Azure Functions 觸發程式可以手動或自動建立此租用容器。 若要自動建立租用容器，[請在設定](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration)中設定*CreateLeaseCollectionIfNotExists*旗標。 分割的租用容器必須要有 `/id` 的分割區索引鍵定義。
 
 ## <a name="create-your-azure-functions-trigger-for-cosmos-db"></a>建立 Cosmos DB 的 Azure Functions 觸發程式
 

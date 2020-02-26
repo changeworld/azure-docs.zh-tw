@@ -11,28 +11,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: spelluru
-ms.openlocfilehash: 4ca17bece33107de756eb221e14eaab851660a99
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: fbac5a2fab91cdac8ebf626e324f12f209cfade5
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76992231"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588700"
 ---
 # <a name="security-alerts-for-environments-in-azure-devtest-labs"></a>Azure DevTest Labs 中環境的安全性警示
-本文說明如何在 Azure DevTest Labs 中查看環境的安全性警示。 
+身為實驗室使用者，您現在可以看到實驗室環境的 Azure 資訊安全中心警示。 資訊安全中心會自動收集、分析及整合您 Azure 資源、網路和已連線的合作夥伴解決方案 (例如防火牆和端點保護解決方案) 的記錄檔資料，來偵測真正的威脅並減少誤判情形。 「資訊安全中心」會顯示優先安全性警示清單，以及需要您快速調查問題的資訊，和如何修復攻擊行為的建議。 [深入瞭解 Azure 資訊安全中心中的安全性警示](../security-center//security-center-alerts-overview.md)。  
 
-## <a name="prerequisites"></a>必要條件
-目前，您只可以針對部署到實驗室的環境來查看安全性警示。 若要測試或使用這項功能，請將環境部署至您的實驗室。 
+
+## <a name="prerequisites"></a>Prerequisites
+目前，您只可以針對部署在實驗室中的平臺即服務（PaaS）環境，查看安全性警示。 若要測試或使用這項功能，請將[環境部署至您的實驗室](devtest-lab-create-environment-from-arm.md)。 
 
 ## <a name="view-security-alerts-for-an-environment"></a>查看環境的安全性警示
 
-1. 在您實驗室的首頁上，選取左側功能表上的 [**安全性警示**]。 您應該會看到安全性警示的數目（[高]、[中] 和 [低]）。
+1. 在您實驗室的首頁上，選取左側功能表上的 [**安全性警示**]。 您應該會看到安全性警示的數目（[高]、[中] 和 [低]）。 深入瞭解[警示的分類方式](../security-center/security-center-alerts-overview.md#how-are-alerts-classified)。
 
     ![安全性警示-總覽](./media/environment-security-alerts/security-alerts-overview-page.png)
 2. 以滑鼠右鍵按一下最後一個資料行中的三個點（...），然後選取 [**查看安全性警示**]。 
 
     ![檢視安全性警示](./media/environment-security-alerts/view-security-alerts-menu.png)
-3. 您會看到有關警示和 advisor 建議的更多詳細資料。 
+    
+3. 您會看到有關警示和 advisor 建議的更多詳細資料。 深入瞭解[如何管理及回應 Azure 資訊安全中心中的安全性警示](../security-center/security-center-managing-and-responding-alerts.md)。
 
     ![檢視安全性警示](./media/environment-security-alerts/advisor-recommendations.png)
 

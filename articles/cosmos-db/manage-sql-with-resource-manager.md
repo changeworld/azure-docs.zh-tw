@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
-ms.openlocfilehash: ce9ca202ee57fe9c42906ebeb62a44c724bd1a52
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 72a87c3b23e0eed6cfbf1614388702443f4e99d0
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978736"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588782"
 ---
 # <a name="manage-azure-cosmos-db-sql-core-api-resources-with-azure-resource-manager-templates"></a>使用 Azure Resource Manager 範本來管理 Azure Cosmos DB SQL （核心） API 資源
 
-在本文中，您將瞭解如何使用 Azure Resource Manager 範本，協助您將 Azure Cosmos DB 帳戶、資料庫和容器的管理自動化。
+在本文中，您會了解如何使用 Azure Resource Manager 範本，協助將 Azure Cosmos DB 帳戶、資料庫和容器的管理自動化。
 
 本文只會顯示 SQL API 帳戶 Azure Resource Manager 範本範例。 您也可以尋找[Cassandra](manage-cassandra-with-resource-manager.md)、 [Gremlin](manage-gremlin-with-resource-manager.md)、 [MongoDB](manage-mongodb-with-resource-manager.md)和[資料表](manage-table-with-resource-manager.md)api 的範本範例。
 
@@ -39,7 +39,7 @@ ms.locfileid: "75978736"
 > * 帳戶名稱限制為44個字元，全部小寫。
 > * 若要變更輸送量值，請以已更新的 RU/秒重新提交範本。
 
-[!code-json[create-cosmosdb-sql](~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json":::
 
 > [!NOTE]
 > 若要建立具有大型分割區索引鍵的容器，請修改先前的範本，以在 `partitionKey` 物件內包含 `"version":2` 屬性。
@@ -136,9 +136,9 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
 * （選擇性）您可以前往[Azure 快速入門資源庫](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql-container-sprocs/)，並從 Azure 入口網站部署範本。
 * 您也可以將範本下載到本機電腦，或建立新的範本，並使用 `--template-file` 參數指定本機路徑。
 
-[!code-json[create-cosmosdb-sql-sprocs](~/quickstart-templates/101-cosmosdb-sql-container-sprocs/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-sql-container-sprocs/azuredeploy.json":::
 
-### <a name="deploy-with-powershell"></a>使用 Powershell 部署
+### <a name="deploy-with-powershell"></a>使用 PowerShell 部署
 
 若要使用 PowerShell 來部署 Azure Resource Manager 範本：
 
@@ -172,7 +172,7 @@ New-AzResourceGroupDeployment `
 
 您可以選擇使用本機安裝的 PowerShell 版本來部署範本，而不是 Azure Cloud Shell。 您必須[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。 執行 `Get-Module -ListAvailable Az` 來尋找所需的版本。
 
-### <a name="deploy-with-azure-cli"></a>使用 Azure CLI 部署
+### <a name="deploy-with-azure-cli"></a>使用 Azure CLI 進行部署
 
 若要使用 Azure CLI 部署 Azure Resource Manager 範本：
 
@@ -202,7 +202,7 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
 
 以下是一些其他資源：
 
-* [Azure Resource Manager 檔](/azure/azure-resource-manager/)
+* [Azure Resource Manager 文件](/azure/azure-resource-manager/)
 * [Azure Cosmos DB 資源提供者架構](/azure/templates/microsoft.documentdb/allversions)
 * [Azure Cosmos DB 快速入門範本](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Documentdb&pageNumber=1&sort=Popular)
 * [針對常見 Azure Resource Manager 部署錯誤進行疑難排解](../azure-resource-manager/templates/common-deployment-errors.md)

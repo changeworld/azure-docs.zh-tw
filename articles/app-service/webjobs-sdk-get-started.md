@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: e2b61b87707a732d3b7c27f97b9ca5fcf82b4bf3
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: bfbae282f9c383c19aae84a70dfc53f754bd9367
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77483036"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592606"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>開始使用 Azure WebJobs SDK 進行事件驅動幕後處理
 
@@ -382,7 +382,7 @@ WebJobs SDK 會在 Azure 中的 [應用程式設定] 尋找儲存體連接字串
                     string instrumentationKey = context.Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"];
                     if (!string.IsNullOrEmpty(instrumentationKey))
                     {
-                        b.AddApplicationInsights(o => o.InstrumentationKey = instrumentationKey);
+                        b.AddApplicationInsightsWebJobs(o => o.InstrumentationKey = instrumentationKey);
                     }
                 });
         var host = builder.Build();

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: c01106bf7288e777e601c06558b1408960f4e49b
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: 0af2b5f7d756060d463d2b4f3ef71bdd135710ee
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539428"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591518"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>設定和管理虛擬機器集區 
 本文說明如何執行下列工作：
@@ -58,6 +58,9 @@ ms.locfileid: "77539428"
 ![啟動選取的 Vm](../media/how-to-set-virtual-machine-passwords/start-selected-vms.png)
 
 同樣地，您可以切換 [**狀態**] 欄中的按鈕，或在工具列上選取 [**停止**]，來停止一或多個 vm。 
+
+> [!NOTE]
+> 當教育者開啟學生 VM 時，該學生的配額不會受到影響。 使用者的配額會指定使用者可在排程的類別時間之外使用的實驗室時數。 如需有關配額的詳細資訊，請參閱[設定使用者配額](how-to-configure-student-usage.md?#set-quotas-for-users)。
 
 ## <a name="reset-vms"></a>重設 Vm
 若要重設一或多個 Vm，請在清單中選取它們，然後選取工具列上的 [**重設**]。 
