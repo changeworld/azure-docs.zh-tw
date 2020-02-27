@@ -6,12 +6,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: ca73c7e610b8bd818355f30b9d08bceffeddfc73
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: a68392d003e4e2a81801a903302badd99c1e9e87
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688896"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523963"
 ---
 # <a name="build-a-nodejs-and-mongodb-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure App Service 中建置 Node.js 和 MongoDB 應用程式
 
@@ -35,7 +35,7 @@ ms.locfileid: "74688896"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程：
 
@@ -436,7 +436,7 @@ git commit -am "added article comment"
 git push azure master
 ```
 
-完成 `git push` 之後，瀏覽至 Azure 應用程式，然後嘗試執行新功能。
+完成 `git push` 之後，巡覽至 Azure 應用程式，然後嘗試執行新功能。
 
 ![發佈至 Azure 的模型和資料庫變更](media/tutorial-nodejs-mongodb-app/added-comment-field-published.png)
 

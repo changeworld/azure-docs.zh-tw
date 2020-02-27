@@ -5,13 +5,13 @@ ms.service: cosmos-db
 ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
-ms.date: 07/26/2019
-ms.openlocfilehash: ea4abada259c929f387b1477c127824ac6269319
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.date: 01/31/2020
+ms.openlocfilehash: 287933de6403d680c5aa5b6c78df49abe5f2ac56
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76939149"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591365"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>使用 Azure Cosmos 模擬器進行本機開發和測試
 
@@ -236,7 +236,7 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 
 若要檢視選項清單，請在命令提示字元輸入 `Microsoft.Azure.Cosmos.Emulator.exe /?` 。
 
-|**選項** | **描述** | **命令**| **引數**|
+|**選項** | **說明** | **命令**| **引數**|
 |---|---|---|---|
 |[無引數] | 使用預設設定來啟動 Azure Cosmos 模擬器。 |Microsoft.Azure.Cosmos.Emulator.exe| |
 |[說明] |顯示支援的命令列引數清單。|Microsoft.Azure.Cosmos.Emulator.exe /? | |
@@ -283,7 +283,7 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 如果您在超過目前分割區計數之後嘗試建立容器，模擬器就會擲回 ServiceUnavailable 例外狀況，並隨附下列訊息。
 
 「很抱歉，這個區域目前出現了大量的需求，此時無法完成您的需求。 我們正持續努力讓越來越多容量上線，並建議您再試一次。
-ActivityId：12345678-1234-1234-1234-123456789abc」
+ActivityId：12345678-1234-1234-1234-123456789abc"
 
 若要變更 Azure Cosmos 模擬器中可用的容器數目，請執行下列步驟：
 

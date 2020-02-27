@@ -1,5 +1,5 @@
 ---
-title: 透過 REST API 將資料複製到 Azure Data Box Heavy Blob 儲存體的教學課程 | Microsoft Docs
+title: 教學課程：透過 REST API 將資料複製到 Azure 資料箱 Blob 儲存體
 description: 了解如何透過 REST API 將資料複製到您的 Azure Data Box Heavy Blob 儲存體
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: adc48acbadaef56958587dc79be377b76a21fdc0
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 43f6404a483cad8377e70591f5454180f0dd07a6
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606304"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560332"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>教學課程：透過 REST API 將資料複製到 Azure 資料箱 Blob 儲存體  
 
@@ -22,11 +22,11 @@ ms.locfileid: "73606304"
 在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
-> * 必要條件
+> * Prerequisites
 > * 透過 *http* 或 *https* 連線到資料箱 Blob 儲存體
 > * 將資料複製到 Data Box Heavy
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在您開始前，請確定：
 
@@ -241,7 +241,7 @@ RHEL、Fedora 及 CentOS 的新近版本則使用 `update-ca-trust` 命令。
 在本教學課程中，您已了解 Azure 資料箱的相關主題，像是：
 
 > [!div class="checklist"]
-> * 必要條件
+> * Prerequisites
 > * 透過 *http* 或 *https* 連線到資料箱 Blob 儲存體
 > * 將資料複製到 Data Box Heavy
 

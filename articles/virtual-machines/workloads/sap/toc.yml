@@ -120,6 +120,11 @@
       href: sap-deployment-checklist.md
     - name: 在 Azure 上規劃和實作 SAP NetWeaver
       href: planning-guide.md
+      items:
+        - name: Azure 虛擬機器支援案例上的 SAP 工作負載
+          href: sap-planning-supported-configurations.md
+        - name: Azure 部署支援哪些 SAP 軟體
+          href: sap-supported-product-on-azure.md
     - name: SAP NetWeaver 部署指南
       href: deployment-guide.md
     - name: 適用於 SAP 工作負載的 DBMS 部署指南

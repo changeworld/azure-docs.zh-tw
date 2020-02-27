@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: a49f641561aa7a293628e914c964020145e0ae62
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: f0367a195ca0aa5f26ff0819b00c50fabae1d271
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486410"
+ms.locfileid: "77505841"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>教學課程：使用 Azure 地圖服務執行 IoT 空間分析
 
@@ -157,7 +157,7 @@ IoT 中樞是雲端中的受控服務。 IoT 中樞可作為 IoT 應用程式和
 
 3. 儲存裝置的**主要連接字串**，以便在稍後的步驟中使用，而您需要使用此連接字串來變更預留位置。
 
-    ![add-device](./media/tutorial-iot-hub-maps/connectionString.png)
+    ![add-device](./media/tutorial-iot-hub-maps/connection-string.png)
 
 ## <a name="upload-geofence"></a>上傳地理柵欄
 

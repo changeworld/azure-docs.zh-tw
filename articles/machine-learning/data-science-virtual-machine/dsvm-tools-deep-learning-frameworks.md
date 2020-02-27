@@ -10,17 +10,17 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 3dfb2c201138a65379aa509ce1bf10894ab6819b
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: d8a5cf428f41b130e6faf68ac87a075c15211099
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984705"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587595"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>適用于 Azure 資料科學 VM 的深度學習和 AI 架構
 下面列出 DSVM 的深度學習架構。
 
-## <a name="caffehttpsgithubcombvlccaffe"></a>[Caffe](https://github.com/BVLC/caffe)
+## <a name="caffe"></a>[Caffe](https://github.com/BVLC/caffe)
 
 |    |           |
 | ------------- | ------------- |
@@ -29,7 +29,7 @@ ms.locfileid: "76984705"
 | 它是如何在 DSVM 上設定/安裝的？  | Caffe 是安裝在 `/opt/caffe` 中。   範例位於 `/opt/caffe/examples`。|
 | 如何執行它      | 使用 X2Go 登入您的 VM，然後啟動新的終端機並輸入下列內容：<br/>`cd /opt/caffe/examples`<br/>`source activate root`<br/>`jupyter notebook`<br/><br/>具有範例筆記本的新瀏覽器視窗將會開啟。 二進位檔安裝在 /opt/caffe/build/install/bin。<br/><br/>已安裝的 Caffe 版本需要 Python 2.7，而且無法與預設啟用的 Python 3.5 搭配使用。 若要切換至 Python 2.7，請執行 `source activate root` 以切換到 Anaconda 環境。|    
 
-## <a name="caffe2httpsgithubcomcaffe2caffe2"></a>[Caffe2](https://github.com/caffe2/caffe2)
+## <a name="caffe2"></a>[Caffe2](https://github.com/caffe2/caffe2)
 
 |    |           |
 | ------------- | ------------- |
@@ -38,7 +38,7 @@ ms.locfileid: "76984705"
 | 它是如何在 DSVM 上設定/安裝的？  | Caffe2 會安裝在 [Python 2.7 （root） conda 環境中。 |
 | 如何執行它      | 終端機：啟動 Python，然後匯入 Caffe2。 <br/> * JupyterHub：[連接到 JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)，然後移至 Caffe2 目錄以尋找範例筆記本。 某些筆記本會要求以 Python 程式碼設定 Caffe2 根，請輸入 /opt/caffe2。 |
 
-## <a name="chainerhttpschainerorg"></a>[Chainer](https://chainer.org/)
+## <a name="chainer"></a>[Chainer](https://chainer.org/)
 
 |    |           |
 | ------------- | ------------- |
@@ -47,7 +47,7 @@ ms.locfileid: "76984705"
 | 它是如何在 DSVM 上設定/安裝的？  | Chainer 安裝在 Python 3.5 中。 |
 | 如何執行它      | 終端機：啟用 Python 3.5 環境、執行 `python`，然後 `import chainer`。 <br/> * JupyterHub：[連接到 JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)，然後移至 Chainer 目錄以尋找範例筆記本。| 
 
-## <a name="cuda-cudnn-nvidia-driverhttpsdevelopernvidiacomcuda-toolkit"></a>[CUDA、cuDNN、NVIDIA 驅動程式](https://developer.nvidia.com/cuda-toolkit)
+## <a name="cuda-cudnn-nvidia-driver"></a>[CUDA、cuDNN、NVIDIA 驅動程式](https://developer.nvidia.com/cuda-toolkit)
 
 |    |           |
 | ------------- | ------------- |
@@ -57,7 +57,7 @@ ms.locfileid: "76984705"
 | 如何執行它      | 開啟命令提示字元（在 Windows 上）或終端機（在 Linux 上），然後執行_nvidia-smi-s_。 |
 
 
-## <a name="horovodhttpsgithubcomuberhorovod"></a>[Horovod](https://github.com/uber/horovod)
+## <a name="horovod"></a>[Horovod](https://github.com/uber/horovod)
 
 |    |           |
 | ------------- | ------------- |
@@ -66,7 +66,7 @@ ms.locfileid: "76984705"
 | 它是如何在 DSVM 上設定/安裝的？  | Horovod 安裝在 Python 3.5 中 |
 | 如何執行它      | 在終端機上啟用正確的環境，然後執行 Python。 |
 
-## <a name="kerashttpskerasio"></a>[Keras](https://keras.io/)
+## <a name="keras"></a>[Keras](https://keras.io/)
 
 |    |           |
 | ------------- | ------------- |
@@ -75,7 +75,7 @@ ms.locfileid: "76984705"
 | 它是如何在 DSVM 上設定/安裝的？  | Keras 安裝在 Windows 上的 Python 3.6 和 Linux 中的 Python 3。5 |
 | 如何執行它      | 在終端機上啟用正確的環境，然後執行 Python。 |
 
-## <a name="microsoft-cognitive-toolkit-cntkhttpsdocsmicrosoftcomcognitive-toolkit"></a>[Microsoft Cognitive Toolkit (CNTK)](https://docs.microsoft.com/cognitive-toolkit/)
+## <a name="microsoft-cognitive-toolkit-cntk"></a>[Microsoft Cognitive Toolkit (CNTK)](https://docs.microsoft.com/cognitive-toolkit/)
 
 |    |           |
 | ------------- | ------------- |
@@ -84,7 +84,7 @@ ms.locfileid: "76984705"
 | 它是如何在 DSVM 上設定/安裝的？  | CNTK 安裝在[Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition)上的 python 3.6 和[Linux](./dsvm-tools-languages.md#python-linux-edition)上的 python 3.5 中 |
 | 如何執行它      | 終端機：啟用正確的環境，然後執行 Python。 <br/>Jupyter：連接到[Jupyter](provision-vm.md)或[JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)，然後開啟 CNTK 目錄以取得範例。 |
 
-## <a name="mxnethttpsmxnetapacheorg"></a>[MXNet](https://mxnet.apache.org/)
+## <a name="mxnet"></a>[MXNet](https://mxnet.apache.org/)
 |    |           |
 | ------------- | ------------- |
 | 支援的版本 | 1.3.0 |
@@ -92,7 +92,7 @@ ms.locfileid: "76984705"
 | 它是如何在 DSVM 上設定/安裝的？  | MXNet 會安裝在 Windows 上的 `C:\dsvm\tools\mxnet`，以及 Ubuntu 上的 `/dsvm/tools/mxnet`。 Python 系結會安裝在[Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition)上的 python 3.6 和[Linux](./dsvm-tools-languages.md#python-linux-edition)上的 python 3.5 中，而 Ubuntu DSVM 也會包含 R 系結。 |
 | 如何執行它      | 終端機：啟用正確的 conda 環境，然後執行 `import mxnet`。 <br/>Jupyter：連接到[Jupyter](provision-vm.md#access-the-dsvm)或[JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)，然後開啟 `mxnet` 目錄以取得範例。 |
 
-## <a name="mxnet-model-serverhttpsgithubcomawslabsmxnet-model-serverquick-start"></a>[MXNet Model Server](https://github.com/awslabs/mxnet-model-server#quick-start)
+## <a name="mxnet-model-server"></a>[MXNet Model Server](https://github.com/awslabs/mxnet-model-server#quick-start)
 
 |    |           |
 | ------------- | ------------- |
@@ -101,7 +101,7 @@ ms.locfileid: "76984705"
 | 它是如何在 DSVM 上設定/安裝的？  | MXNet 模型伺服器安裝在[Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition)上的 python 3.6 和[Linux](./dsvm-tools-languages.md#python-linux-edition)上的 python 3.5 中 |
 | 如何執行它      | 終端機：執行 `sudo systemctl stop jupyterhub` 以先停止 JupyterHub 服務，因為這兩者都是在相同的埠上接聽。 然後啟動正確的 conda 環境，並執行 `mxnet-model-server --start --models squeezenet=https://s3.amazonaws.com/model-server/model_archive_1.0/squeezenet_v1.1.mar` |
 
-## <a name="nvidia-system-management-interface-nvidia-smihttpsdevelopernvidiacomnvidia-system-management-interface"></a>[NVidia 系統管理介面（nvidia-smi-s）](https://developer.nvidia.com/nvidia-system-management-interface)
+## <a name="nvidia-system-management-interface-nvidia-smi"></a>[NVidia 系統管理介面（nvidia-smi-s）](https://developer.nvidia.com/nvidia-system-management-interface)
 
 |    |           |
 | ------------- | ------------- |
@@ -111,16 +111,16 @@ ms.locfileid: "76984705"
 | 它是如何在 DSVM 上設定/安裝的？  | `nvidia-smi` 在系統路徑上。 |
 | 如何執行它      | 在**具有 GPU 的**虛擬機器上，開啟命令提示字元（在 Windows 上）或終端機（在 Linux 上），然後執行 `nvidia-smi`。 |
 
-## <a name="pytorchhttpspytorchorg"></a>[PyTorch](https://pytorch.org/)
+## <a name="pytorch"></a>[PyTorch](https://pytorch.org/)
 
 |    |           |
 | ------------- | ------------- |
-| 支援的版本 | 1.2.0 （ubuntu 16.04、Windows 2016、Windows 2019）、1.4.0 （Ubuntu 18.04） |
+| 支援的版本 | 1.2.0 （ubuntu 16.04、Windows 2016）、1.4.0 （Ubuntu 18.04、Windows 2019） |
 | 支援的 DSVM 版本      | Linux |
 | 它是如何在 DSVM 上設定/安裝的？  | 安裝在[Python 3.5](dsvm-tools-languages.md#python-linux-edition)中。 包含範例 Jupyter 筆記本，範例位於/dsvm/samples/pytorch。 |
 | 如何執行它      | 終端機：啟用正確的環境，然後執行 Python。<br/>* [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)：連接，然後開啟 [PyTorch] 目錄以取得範例。  |
 
-## <a name="tensorflowhttpswwwtensorfloworg"></a>[TensorFlow](https://www.tensorflow.org/)
+## <a name="tensorflow"></a>[TensorFlow](https://www.tensorflow.org/)
 
 |    |           |
 | ------------- | ------------- |
@@ -129,7 +129,7 @@ ms.locfileid: "76984705"
 | 它是如何在 DSVM 上設定/安裝的？  | 安裝在[Linux](dsvm-tools-languages.md#python-linux-edition)上的 python 3.5 和[Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition)上的 python 3。6 |
 | 如何執行它      | 終端機：啟用正確的環境，然後執行 Python。 <br/> * Jupyter：連接到[Jupyter](provision-vm.md)或[JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)，然後開啟 TensorFlow 目錄以取得範例。   |
 
-## <a name="tensorflow-servinghttpswwwtensorfloworgserving"></a>[TensorFlow Serving](https://www.tensorflow.org/serving/)
+## <a name="tensorflow-serving"></a>[TensorFlow Serving](https://www.tensorflow.org/serving/)
 
 |    |           |
 | ------------- | ------------- |
@@ -139,7 +139,7 @@ ms.locfileid: "76984705"
 | 如何執行它      |  可從[線上](https://www.tensorflow.org/serving/)取得範例。   |
 
 
-## <a name="theanohttpsgithubcomtheanotheano"></a>[Theano](https://github.com/Theano/Theano)
+## <a name="theano"></a>[Theano](https://github.com/Theano/Theano)
 
 |    |           |
 | ------------- | ------------- |

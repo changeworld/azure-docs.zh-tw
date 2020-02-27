@@ -12,12 +12,12 @@ ms.date: 10/14/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 0d3e1e10120dce404f0fdfe781661c4c169ae00a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
-ms.translationtype: MT
+ms.openlocfilehash: 2283f4f3cf1d31f0d67e01e1a63ee20557ef5633
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697212"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591569"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>操作說明：使用入口網站來建立可存取資源的 Azure AD 應用程式和服務主體
 
@@ -40,9 +40,9 @@ ms.locfileid: "76697212"
 
 您已建立 Azure AD 應用程式和服務主體。
 
-## <a name="assign-the-application-to-a-role"></a>指派角色給應用程式
+## <a name="assign-a-role-to-the-application"></a>將角色指派給應用程式
 
-若要存取您的訂用帳戶中的資源，您必須將應用程式指派給角色。 決定哪個角色可提供應用程式的適當權限。 若要深入了解可用的角色，請參閱 [RBAC：內建角色](../../role-based-access-control/built-in-roles.md)。
+若要存取您訂用帳戶中的資源，您必須將角色指派給應用程式。 決定哪個角色可提供應用程式的適當權限。 若要深入了解可用的角色，請參閱 [RBAC：內建角色](../../role-based-access-control/built-in-roles.md)。
 
 您可以針對訂用帳戶、資源群組或資源的層級設定範圍。 較低的範圍層級會繼承較高層級的權限。 例如，為資源群組的讀取者角色新增應用程式，代表該角色可以讀取資源群組及其所包含的任何資源。
 
@@ -62,7 +62,7 @@ ms.locfileid: "76697212"
 
    ![選取要指派給應用程式的角色](./media/howto-create-service-principal-portal/select-role.png)
 
-1. 選取 [儲存] 以完成角色指派。 您在使用者清單中看到應用程式已指派給該範圍的角色。
+1. 選取 [儲存] 以完成角色指派。 您會在具有該範圍之角色的使用者清單中看到您的應用程式。
 
 您的服務主體已設定。 您可以開始使用它來執行指令碼或應用程式。 下節說明如何取得以程式設計方式登入時所需的值。
 
@@ -112,21 +112,21 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 1. 選取 [用戶端秘密] -> [新增用戶端密碼]。
 1. 提供秘密的描述及持續時間。 完成時，選取 [新增]。
 
-   儲存用戶端秘密之後，就會顯示用戶端秘密的值。 請複製此值，因為您之後就無法擷取金鑰。 您需要提供金鑰值和應用程式識別碼，以應用程式身分登入。 將金鑰值儲存在應用程式可擷取的地方。
+   儲存用戶端秘密之後，就會顯示用戶端秘密的值。 複製此值，因為您稍後將無法取出金鑰。 您將會提供具有應用程式識別碼的金鑰值，以應用程式的身分登入。 將金鑰值儲存在應用程式可擷取的地方。
 
    ![複製秘密值，因為您之後無法取得此值](./media/howto-create-service-principal-portal/copy-secret.png)
 
 ## <a name="configure-access-policies-on-resources"></a>設定資源的存取原則
 請記住，您可能需要設定應用程式需要存取之資源的額外許可權。 例如，您也必須[更新金鑰保存庫的存取原則](/azure/key-vault/key-vault-secure-your-key-vault#data-plane-and-access-policies)，讓您的應用程式存取金鑰、秘密或憑證。  
 
-1. 在  [Azure 入口網站](https://portal.azure.com)中，流覽至您的金鑰保存庫，然後選取 **存取原則**。  
+1. 在 [Azure 入口網站](https://portal.azure.com)中，流覽至您的金鑰保存庫，然後選取 **存取原則**。  
 1. 選取 [**新增存取原則**]，然後選取您想要授與應用程式的金鑰、密碼和憑證許可權。  選取您先前建立的服務主體。
 1. 選取 [**新增**] 以新增存取原則，然後按一下 [**儲存**] 以認可您的變更。
     ![新增存取原則](./media/howto-create-service-principal-portal/add-access-policy.png)
 
 ## <a name="required-permissions"></a>所需的權限
 
-您必須有足夠權限向 Azure AD 租用戶註冊應用程式，並將應用程式指派給 Azure 訂用帳戶中的角色。
+您必須有足夠的許可權，才能向您的 Azure AD 租使用者註冊應用程式，並將 Azure 訂用帳戶中的角色指派給應用程式。
 
 ### <a name="check-azure-ad-permissions"></a>檢查 Azure AD 權限
 
@@ -138,11 +138,11 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 1. 在左窗格中，選取 [**使用者設定**]。
 1. 檢查 [應用程式註冊] 設定。 此值只能由系統管理員設定。 若設定為 [是]，則 Azure AD 租用戶中的任何使用者都可以註冊應用程式。
 
-如果應用程式註冊設定設為 [否]，則只有具備系統管理員角色的使用者才能註冊這些類型的應用程式。 若要了解 Azure AD 中可用的系統管理員角色及賦予每個角色的特定權限，請參閱[可用的角色](../users-groups-roles/directory-assign-admin-roles.md#available-roles)和[角色權限](../users-groups-roles/directory-assign-admin-roles.md#role-permissions)。 如果您的帳戶已指派給「使用者」角色，但應用程式註冊設定僅限於系統管理員使用者，請洽詢系統管理員將您指派給其中一個可建立和管理所有應用程式註冊層面的系統管理員角色，或是讓使用者能夠註冊應用程式。
+如果應用程式註冊設定設為 [否]，則只有具備系統管理員角色的使用者才能註冊這些類型的應用程式。 若要了解 Azure AD 中可用的系統管理員角色及賦予每個角色的特定權限，請參閱[可用的角色](../users-groups-roles/directory-assign-admin-roles.md#available-roles)和[角色權限](../users-groups-roles/directory-assign-admin-roles.md#role-permissions)。 如果您的帳戶已獲指派使用者角色，但應用程式註冊設定僅限於系統管理員使用者，請要求系統管理員為您指派其中一個可建立和管理應用程式註冊層面的管理員角色，或讓使用者註冊均.
 
 ### <a name="check-azure-subscription-permissions"></a>檢查 Azure 訂用帳戶權限
 
-在您的 Azure 訂用帳戶中，您的帳戶必須具有 `Microsoft.Authorization/*/Write` 存取權，才能將 AD 應用程式指派給角色。 此動作是[擁有者](../../role-based-access-control/built-in-roles.md#owner)角色或[使用者存取系統管理員](../../role-based-access-control/built-in-roles.md#user-access-administrator)角色來授與。 如果您的帳戶已指派給 [參與者] 角色，則您沒有足夠的權限。 當您嘗試將服務主體指派給角色時，您會收到錯誤。
+在您的 Azure 訂用帳戶中，您的帳戶必須具有 `Microsoft.Authorization/*/Write` 的存取權，才能將角色指派給 AD 應用程式。 此動作是[擁有者](../../role-based-access-control/built-in-roles.md#owner)角色或[使用者存取系統管理員](../../role-based-access-control/built-in-roles.md#user-access-administrator)角色來授與。 如果您的帳戶已獲指派「**參與者**」角色，則您沒有足夠的許可權。 當您嘗試將角色指派給服務主體時，將會收到錯誤。
 
 若要檢查訂用帳戶權限：
 
@@ -154,9 +154,9 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 
    ![選取您想要在其中建立服務主體的訂用帳戶](./media/howto-create-service-principal-portal/view-details.png)
 
-1. 選取 [**角色指派**] 以查看您指派的角色，並判斷您是否有足夠的許可權可將 AD 應用程式指派給角色。 如果沒有，請洽詢訂用帳戶管理員，將您新增至「使用者存取系統管理員」角色。 在下圖中，使用者已指派給「擁有者」角色，這表示該使用者具有足夠的權限。
+1. 選取 [**角色指派**] 以查看您指派的角色，並判斷您是否有足夠的許可權可將角色指派給 AD 應用程式。 如果沒有，請洽詢訂用帳戶管理員，將您新增至「使用者存取系統管理員」角色。 在下圖中，會將「擁有者」角色指派給使用者，這表示該使用者具有足夠的許可權。
 
-   ![此範例顯示將使用者指派給擁有者角色](./media/howto-create-service-principal-portal/view-user-role.png)
+   ![此範例顯示使用者已獲指派擁有者角色](./media/howto-create-service-principal-portal/view-user-role.png)
 
 ## <a name="next-steps"></a>後續步驟
 

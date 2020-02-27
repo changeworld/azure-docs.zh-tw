@@ -1,19 +1,19 @@
 ---
 title: 進行警示的根本原因分析 - Azure | Microsoft Docs
 description: 在此教學課程中，您會了解如何使用「Azure 時間序列深入解析」來進行警示的根本原因分析。
-author: aditidugar
-ms.author: adugar
+author: Philmea
+ms.author: philmea
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/20/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 70d29359d4a4bcf9f5badbbf0c553d7bed88a02b
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: c3cb940583677d813873c07fbfa679fdcc1dff59
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284554"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565463"
 ---
 # <a name="tutorial-conduct-a-root-cause-analysis-on-an-alert"></a>教學課程：進行警示的根本原因分析
 
@@ -30,31 +30,31 @@ ms.locfileid: "52284554"
 > * 進行根本原因分析
 > * 根據您已獲得的知識建立新規則
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
 ## <a name="choose-the-devices-to-display"></a>選擇要顯示的裝置
 
-若要選取要在 [儀表板] 頁面上顯示哪些已連線的裝置，請使用篩選條件。 若只要顯示**卡車**裝置，請在篩選條件下拉式清單中選擇內建 [卡車] 篩選條件：
+若要選取要在 [儀表板]  頁面上顯示哪些已連線的裝置，請使用篩選條件。 若只要顯示**卡車**裝置，請在篩選條件下拉式清單中選擇內建 [卡車]  篩選條件：
 
 [![儀表板上的卡車篩選條件](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-trucks-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-trucks-expanded.png#lightbox)
 
-當您套用篩選條件時，只有符合篩選條件的裝置會顯示在 [儀表板] 的地圖上和遙測面板中。 您可以看到有兩輛卡車連線至解決方案加速器，其中包括 **truck-02**。
+當您套用篩選條件時，只有符合篩選條件的裝置會顯示在 [儀表板]  的地圖上和遙測面板中。 您可以看到有兩輛卡車連線至解決方案加速器，其中包括 **truck-02**。
 
 ## <a name="view-real-time-telemetry"></a>檢視即時遙測
 
-解決方案加速器會在 [儀表板] 頁面的圖表中繪製即時遙測。 此圖表預設會顯示海拔遙測資料，此資料會隨時間改變：
+解決方案加速器會在 [儀表板]  頁面的圖表中繪製即時遙測。 此圖表預設會顯示海拔遙測資料，此資料會隨時間改變：
 
 [![卡車海拔遙測繪圖](./media/iot-accelerators-remote-monitoring-root-cause-analysis/trucks-moving-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/trucks-moving-expanded.png#lightbox)
 
-若要檢視卡車的溫度遙測資料，請按一下 [遙測面板] 中的 [溫度]。 您可以看到兩輛卡車在過去 15 分鐘的溫度變化。 您也可以看到在警示窗格中已針對 delivery-truck-02 觸發低溫警示。
+若要檢視卡車的溫度遙測資料，請按一下 [遙測面板]  中的 [溫度]  。 您可以看到兩輛卡車在過去 15 分鐘的溫度變化。 您也可以看到在警示窗格中已針對 delivery-truck-02 觸發低溫警示。
 
 [![含有低溫警示的 RM 儀表板](./media/iot-accelerators-remote-monitoring-root-cause-analysis/low-temp-alert-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/low-temp-alert-expanded.png#lightbox)
 
 ## <a name="explore-the-data"></a>探索資料
 
-若要識別低溫警示的原因，請在「時間序列深入解析」總管中開啟送貨卡車遙測資料。 按一下儀表板上的任何一個 [在時間序列深入解析中探索] 連結：
+若要識別低溫警示的原因，請在「時間序列深入解析」總管中開啟送貨卡車遙測資料。 按一下儀表板上的任何一個 [在時間序列深入解析中探索]  連結：
 
 [![已醒目提示 TSI 連結的 RM 儀表板](./media/iot-accelerators-remote-monitoring-root-cause-analysis/explore-tsi-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/explore-tsi-expanded.png#lightbox)
 
@@ -62,7 +62,7 @@ ms.locfileid: "52284554"
 
 [![TSI 總管初始檢視](./media/iot-accelerators-remote-monitoring-root-cause-analysis/initial-tsi-view-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/initial-tsi-view-expanded.png#lightbox)
 
-請在篩選方塊中輸入 **delivery-truck**，然後在左側面板中選取 [溫度] 作為 [量值]：
+請在篩選方塊中輸入 **delivery-truck**，然後在左側面板中選取 [溫度]  作為 [量值]  ：
 
 [![TSI 總管卡車溫度](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-tsi-temp-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-tsi-temp-expanded.png#lightbox)
 
@@ -70,11 +70,11 @@ ms.locfileid: "52284554"
 
 [![TSI 總管縮放](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-zoom-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-zoom-expanded.png#lightbox)
 
-您也可以加入來自卡車的其他遙測資料流。 請按一下左上角的 [新增] 按鈕。 新增窗格隨即出現：
+您也可以加入來自卡車的其他遙測資料流。 請按一下左上角的 [新增]  按鈕。 新增窗格隨即出現：
 
 [![含有新窗格的 TSI 總管](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-pane-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-pane-expanded.png#lightbox)
 
-在新窗格中，將新標籤的名稱變更為 [裝置]，使其與先前的名稱相符。 選取 [海拔] 作為 [量值]，並選取 [iothub-connection-device-id] 作為 [分割依據] 值，以將海拔遙測資料新增至您的檢視：
+在新窗格中，將新標籤的名稱變更為 [裝置]  ，使其與先前的名稱相符。 選取 [海拔]  作為 [量值]  ，並選取 [iothub-connection-device-id]  作為 [分割依據]  值，以將海拔遙測資料新增至您的檢視：
 
 [![含有溫度和海拔的 TSI 總管](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-altitude-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-altitude-expanded.png#lightbox)
 
@@ -82,7 +82,7 @@ ms.locfileid: "52284554"
 
 當您查看目前檢視中的資料流時，可以看到兩輛卡車的海拔設定檔並不同。 此外，當 **delivery-truck-02** 到達高海拔時，該卡車便發生溫度下降的情況。 您對該項發現感到訝異，因為這些卡車都排定成行駛相同路線。
 
-為確認您對該卡車採用不同旅程路徑的懷疑，請使用 [新增] 按鈕將另一個窗格加入側邊面板中。 在新窗格中，將新標籤的名稱變更為 [裝置]，使其與先前的名稱相符。 選取 [經度] 作為 [量值]，並選取 [iothub-connection-device-id] 作為 [分割依據] 值，以將經度遙測資料新增至您的檢視。 您可以藉由查看**經度**資料流之間的差異，看出貨車是否確實採用不同的旅程：
+為確認您對該卡車採用不同旅程路徑的懷疑，請使用 [新增]  按鈕將另一個窗格加入側邊面板中。 在新窗格中，將新標籤的名稱變更為 [裝置]  ，使其與先前的名稱相符。 選取 [經度]  作為 [量值]  ，並選取 [iothub-connection-device-id]  作為 [分割依據]  值，以將經度遙測資料新增至您的檢視。 您可以藉由查看**經度**資料流之間的差異，看出貨車是否確實採用不同的旅程：
 
 [![含有溫度、海拔及經度的 TSI 總管](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-longitude-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-longitude-expanded.png#lightbox)
 

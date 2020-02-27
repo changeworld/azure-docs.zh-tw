@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 00187051eec27ee7b6b2d4927510a2ab9dee442e
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 09e55abcd97317b87f8a272afa51c6b4ace572e8
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708252"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598080"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>針對 Azure 檔案儲存體效能問題進行疑難排解
 
@@ -22,7 +22,7 @@ ms.locfileid: "75708252"
 
 ### <a name="cause-1-share-experiencing-throttling"></a>原因1：共用遇到節流
 
-Premium 共用上的預設配額為 100 GiB，可提供100基準 IOPS （最高可達一個小時的300）。 如需布建和其 IOPS 關聯性的詳細資訊，請參閱《規劃指南》中的布[建的共用](storage-files-planning.md#provisioned-shares)一節。
+Premium 共用上的預設配額為 100 GiB，可提供100基準 IOPS （最高可達一個小時的300）。 如需布建和其 IOPS 關聯性的詳細資訊，請參閱《規劃指南》中的布[建的共用](storage-files-planning.md#understanding-provisioning-for-premium-file-shares)一節。
 
 若要確認您的共用是否正在進行節流處理，您可以在入口網站中利用 Azure 計量。
 
@@ -45,7 +45,7 @@ Premium 共用上的預設配額為 100 GiB，可提供100基準 IOPS （最高�
 > [!NOTE]
 > 若要在檔案共用受到節流處理時收到警示，請參閱如何在檔案[共用已節流時建立警示](#how-to-create-an-alert-if-a-file-share-is-throttled)。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 - 藉由在您的共用上指定較高的配額，以增加共用布建的容量。
 
@@ -66,7 +66,7 @@ Premium 共用上的預設配額為 100 GiB，可提供100基準 IOPS （最高�
 
 如果客戶使用的應用程式是單一執行緒，這可能會導致 IOPS/輸送量明顯低於根據您布建的共用大小所可能的最大值。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 - 藉由增加執行緒的數目來增加應用程式平行處理原則。
 - 切換至可以平行處理的應用程式。 例如，對於複製作業，客戶可以從 Windows 用戶端使用 AzCopy 或 RoboCopy，或在 Linux 用戶端上使用**parallel**命令。
@@ -77,7 +77,7 @@ Premium 共用上的預設配額為 100 GiB，可提供100基準 IOPS （最高�
 
 用戶端 VM 可能位於與檔案共用不同的區域中。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 - 從與檔案共用位於相同區域的 VM 執行應用程式。
 
@@ -102,7 +102,7 @@ Premium 共用上的預設配額為 100 GiB，可提供100基準 IOPS （最高�
 
 - 將負載分散到多個 Vm。
 - 在相同的 VM 上，使用多個掛接點搭配**nosharesock**選項，並將負載分散到這些掛接點。
-- 在 Linux 上，請嘗試使用**nostrictsync**選項掛接，以避免在每次 fsync 呼叫時強制執行 SMB 清除。 針對 Azure 檔案儲存體，此選項不會干擾資料 consistentcy，但可能會導致目錄清單（**ls-l**命令）上有過時的檔案中繼資料。 直接查詢檔案的中繼資料（**stat**命令）將會傳回最新的檔案中繼資料。
+- 在 Linux 上，請嘗試使用**nostrictsync**選項掛接，以避免在每次**fsync**呼叫時強制執行 SMB 清除。 針對 Azure 檔案儲存體，此選項不會影響資料的一致性，但可能會導致目錄清單（**ls-l**命令）上的過時檔案中繼資料。 直接查詢檔案的中繼資料（**stat**命令）將會傳回最新的檔案中繼資料。
 
 ## <a name="high-latencies-for-metadata-heavy-workloads-involving-extensive-openclose-operations"></a>包含大量開啟/關閉作業的中繼資料繁重工作負載的高延遲。
 
@@ -174,7 +174,7 @@ CentOS/RHEL 不支援大於1的 IO 深度。
 
 ## <a name="how-to-create-an-alert-if-a-file-share-is-throttled"></a>如何在檔案共用已節流時建立警示
 
-1. 在  [Azure 入口網站](https://portal.azure.com)中，按一下 **監視**]。 
+1. 在  [Azure 入口網站](https://portal.azure.com)中，按一下 **監視**。 
 
 2. 按一下 [**警示**]，然後按一下 [ **+ 新增警示規則**]。
 
@@ -194,7 +194,7 @@ CentOS/RHEL 不支援大於1的 IO 深度。
   > [!NOTE]
   > 如果檔案共用是標準的檔案共用，則 [維度值] 下拉式會是空白的，因為標準檔案共用無法使用個別共用的計量。 如果儲存體帳戶中的任何檔案共用受到節流處理，且警示無法識別已節流的檔案共用，則會觸發標準檔案共用的節流警示。 由於標準檔案共用不提供每個共用的計量，因此建議每個儲存體帳戶都有一個檔案共用。 
 
-8. 定義用來評估計量警示規則的**警示參數**（閾值、運算子、匯總細微性和頻率），然後按一下 [**完成**]。
+8. 定義用來評估計量警示規則的**警示參數**（閾值、運算子、匯總資料細微性和頻率），然後按一下 [**完成**]。
 
   > [!TIP]
   > 如果您使用靜態閾值，如果檔案共用目前正在進行節流，計量圖表可以協助判斷合理的閾值。 如果您使用的是動態閾值，計量圖表會顯示以最近資料為基礎的計算臨界值。

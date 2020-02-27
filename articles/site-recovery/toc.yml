@@ -417,6 +417,8 @@
               href: vmware-physical-secondary-disaster-recovery.md
         - name: Hyper-V VM
           items:
+            - name: 已淘汰 Hyper-V VM 的站對站案例
+              href: site-to-site-deprecation.md
             - name: 逐步解說 - 將 VMM 雲端中的 Hyper-V VM 災害復原至次要網站
               href: hyper-v-vmm-disaster-recovery.md
             - name: 執行 Hyper-V 虛擬機器至次要網站的災害復原演練

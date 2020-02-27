@@ -42,9 +42,9 @@
     - name: 13 - 管理 VM 安全性
       href: tutorial-azure-security.md
     - name: 14a - 使用 Jenkins 建置
-      href: tutorial-jenkins-github-docker-cicd.md
+      href: ../../jenkins/tutorial-jenkins-github-docker-cicd.md
     - name: 14b - 將 Jenkins 與 Azure DevOps 進行整合
-      href: tutorial-build-deploy-jenkins.md
+      href: ../../jenkins/tutorial-build-deploy-jenkins.md
     - name: 15a - Azure 上適用於 IaaS 和 PaaS 的 DevOps
       href: tutorial-devops-azure-pipelines-classic.md
     - name: 15b - 具有 Azure Pipelines 的 CI/CD (YAML)
@@ -91,8 +91,8 @@
               href: ../av2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: B 系列 Burstable
               href: ../sizes-b-series-burstable.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-            - name: DC 系列
-              href: ../dc-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: DCv2 系列
+              href: ../dcv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Dv2 和 DSv2 系列
               href: ../dv2-dsv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Dv3 和 Dsv3 系列
@@ -534,7 +534,7 @@
             - name: 以 VM 代理程式進行調整
               href: ../../jenkins/jenkins-azure-vm-agents.md
             - name: 將成品發佈至儲存體
-              href: ../../storage/common/storage-java-jenkins-continuous-integration-solution.md
+              href: ../../jenkins/storage-java-jenkins-continuous-integration-solution.md
             - name: 保護 Jenkins
               href: 'https://jenkins.io/blog/2017/04/20/secure-jenkins-on-azure/'
     - name: 執行容器

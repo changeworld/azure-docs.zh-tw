@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 01/21/2020
 ms.author: diberry
-ms.openlocfilehash: 685e4f841ba077c81f46a27af8040fa6c57c0021
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: bf0710ebef21226d8d8582a920d64027bb015d34
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846206"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622730"
 ---
 # <a name="what-is-personalizer"></a>什麼是個人化工具？
 
@@ -63,7 +63,7 @@ Azure 個人化工具是雲端式 API 服務，可協助您的用戶端應用程
 
 當您的內容如下時，請使用個人化工具：
 
-* 具有一組有限的項目 (最多 ~50) 可供選取。 如果您有較大的清單，[請使用建議引擎](where-can-you-use-personalizer.md#use-personalizer-with-recommendation-engines)將清單縮減為 50 個項目。
+* 具有一組有限的項目 (最多 ~50) 可供選取。 如果您有較大的清單，[請使用建議引擎](where-can-you-use-personalizer.md#how-to-use-personalizer-with-a-recommendation-solution)將清單縮減為 50 個項目。
 * 具有資訊來描述您要排名的內容：「具有特性的動作」  和「關係特性」  。
 * 每天至少有 1 千個內容相關事件，個人化工具才有效用。 如果個人化工具未收到所需的最小流量，則服務會花更長的時間來判斷單一最佳內容項目。
 

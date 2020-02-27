@@ -2,17 +2,14 @@
 title: 限制 Azure Kubernetes Service 中的輸出流量（AKS）
 description: 瞭解在 Azure Kubernetes Service （AKS）中控制輸出流量所需的埠和位址
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 01/21/2020
-ms.author: mlearned
-ms.openlocfilehash: 1206c20ec4f547dd591ac711d546d1dad0b7a19a
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: a76f4eb8680d07193feb29450fdba7bb2a710a68
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251595"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595003"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>控制 Azure Kubernetes Service 中叢集節點的輸出流量（AKS）
 
@@ -146,7 +143,7 @@ AKS 叢集需要下列輸出埠/網路規則：
 | cloudflare.docker.com | HTTPS：443 | 此位址可用來提取 linux alpine 和其他 Azure Dev Spaces 映射 |
 | gcr.io | HTTP：443 | 此位址可用來提取 helm/tiller 映射 |
 | storage.googleapis.com | HTTP：443 | 此位址可用來提取 helm/tiller 映射 |
-| azds-<guid>.<location>.azds.io | HTTPS：443 | 與您的控制器 Azure Dev Spaces 後端服務進行通訊。 您可以在% USERPROFILE%\.azds\settings.json 的 "dataplaneFqdn" 中找到確切的 FQDN |
+| azds-<guid>。<location>。 azds.io | HTTPS：443 | 與您的控制器 Azure Dev Spaces 後端服務進行通訊。 您可以在% USERPROFILE%\.azds\settings.json 的 "dataplaneFqdn" 中找到確切的 FQDN |
 
 ## <a name="required-addresses-and-ports-for-aks-clusters-with-azure-policy-in-public-preview-enabled"></a>已啟用 Azure 原則（處於公開預覽狀態）的 AKS 叢集所需的位址和埠
 
@@ -159,7 +156,7 @@ AKS 叢集需要下列輸出埠/網路規則：
 |-----------------------------------------|-----------|----------|
 | gov-prod-policy-data.trafficmanager.net | HTTPS：443 | 此位址會用來進行 Azure 原則的正確操作。 （目前在 AKS 中為預覽狀態） |
 | raw.githubusercontent.com | HTTPS：443 | 此位址是用來從 GitHub 提取內建原則，以確保 Azure 原則的正確操作。 （目前在 AKS 中為預覽狀態） |
-| *.gk.<location>.azmk8s.io | HTTPS：443 | Azure 原則附加元件，會與在主伺服器中執行的閘道管理員 audit 端點交談，以取得審核結果。 |
+| *. gk。<location>。 azmk8s.io | HTTPS：443 | Azure 原則附加元件，會與在主伺服器中執行的閘道管理員 audit 端點交談，以取得審核結果。 |
 | dc.services.visualstudio.com | HTTPS：443 | 將遙測資料傳送至 application insights 端點的 Azure 原則附加元件。 |
 
 ## <a name="required-by-windows-server-based-nodes-in-public-preview-enabled"></a>已啟用 Windows Server 架構節點的必要項（公開預覽）

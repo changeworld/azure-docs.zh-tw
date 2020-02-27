@@ -2,18 +2,15 @@
 title: Azure 上的 Kubernetes 教學課程 - 調整應用程式
 description: 在本 Azure Kubernetes Service (AKS) 教學課程中，您將了解如何在 Kubernetes 中調整節點和 Pod，以及實作水平 Pod 自動調整。
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: tutorial
 ms.date: 01/14/2019
-ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: b668d2bfecfba53c2a1b0904a8b6b77805ad965b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7db80e9bf0bd864762a88680132d77a3c5d21f19
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967427"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621101"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>教學課程：調整 Azure Kubernetes Service (AKS) 中的應用程式
 
@@ -57,7 +54,7 @@ kubectl scale --replicas=5 deployment/azure-vote-front
 再次執行 [kubectl get pods][kubectl-get]，以確認 AKS 是否建立其他 Pod。 大約一分鐘後，其他 Pod 就會成為叢集中的可用項目：
 
 ```console
-$ kubectl get pods
+kubectl get pods
 
                                     READY     STATUS    RESTARTS   AGE
 azure-vote-back-2606967446-nmpcf    1/1       Running   0          15m
@@ -134,13 +131,13 @@ spec:
 使用 `kubectl apply` 來套用 `azure-vote-hpa.yaml` 資訊清單檔中定義的自動調整程式。
 
 ```
-$ kubectl apply -f azure-vote-hpa.yaml
+kubectl apply -f azure-vote-hpa.yaml
 ```
 
 若要查看自動調整程式的狀態，請使用 `kubectl get hpa` 命令，如下所示：
 
 ```
-$ kubectl get hpa
+kubectl get hpa
 
 NAME               REFERENCE                     TARGETS    MINPODS   MAXPODS   REPLICAS   AGE
 azure-vote-front   Deployment/azure-vote-front   0% / 50%   3         10        3          2m

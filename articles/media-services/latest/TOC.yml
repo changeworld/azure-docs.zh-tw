@@ -148,6 +148,8 @@
           href: live-event-states-billing.md
         - name: Latency
           href: live-event-latency.md
+        - name: 即時活動錯誤碼
+          href: live-event-error-codes.md
     - name: 監視
       items:
         - name: 具有事件方格的事件
@@ -175,6 +177,8 @@
           items:
             - name: 串流端點錯誤碼
               href: streaming-endpoint-error-codes.md
+            - name: 即時活動錯誤碼
+              href: live-event-error-codes.md
             - name: 作業錯誤碼
               href: job-error-codes.md
     - name: 將移轉指引從 v2 變更為 v3
@@ -325,6 +329,8 @@
       items:
         - name: 串流端點錯誤碼
           href: streaming-endpoint-error-codes.md
+        - name: 即時活動錯誤碼
+          href: live-event-error-codes.md
         - name: 作業錯誤碼
           href: job-error-codes.md
 - name: 資源

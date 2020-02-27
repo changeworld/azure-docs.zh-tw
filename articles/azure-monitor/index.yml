@@ -4,18 +4,16 @@ summary: 監視 Azure 和內部部署服務。 彙總和分析計量、記錄和
 metadata:
   title: Azure 監視器文件
   description: Azure 監視器現在包括 Log Analytics 與 Application Insights，它提供複雜的工具讓您用來收集並分析遙測，讓您可以將您雲端與內部部署資源與應用程式的效能與可用性最佳化。
-  services: azure-monitor
-  ms.service: azure-monitor
   ms.topic: landing-page
   author: rboucher
   ms.author: robb
   ms.date: 10/08/2019
-  ms.openlocfilehash: e099b61e168de05e6a81ca166cbedd56837303a3
-  ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
+  ms.openlocfilehash: 15a9b1cdbe46baca85959d3e9e5124f706027ec5
+  ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 02/21/2020
-  ms.locfileid: "77544142"
+  ms.lasthandoff: 02/27/2020
+  ms.locfileid: "77667120"
 landingContent:
 - title: 關於 Azure 監視器
   linkLists:

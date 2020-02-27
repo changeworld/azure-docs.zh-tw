@@ -109,6 +109,8 @@
           href: search-capacity-planning.md
         - name: 效能級別
           href: search-performance-optimization.md
+        - name: 跨區域轉移服務
+          href: search-howto-move-across-regions.md
         - name: 多租用戶架構
           href: search-modeling-multitenant-saas-applications.md
     - name: 安全性
