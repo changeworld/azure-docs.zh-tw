@@ -40,9 +40,9 @@
       items:
         - name: 健康狀態探查
           href: load-balancer-custom-probe-overview.md
-        - name: 標準 Load Balancer計量和診斷
+        - name: Standard Load Balancer 計量和診斷
           href: load-balancer-standard-diagnostics.md
-        - name: 適用於基本 Load Balancer 的 Azure 監視器記錄
+        - name: 適用於 Basic Load Balancer 的 Azure 監視器記錄
           href: load-balancer-monitor-log.md
         - name: 使用 REST 取得 Load Balancer 計量
           href: load-balancer-query-metrics-rest-api.md
@@ -56,16 +56,20 @@
       href: load-balancer-outbound-rules-overview.md
     - name: 逾時時的 TCP 重設
       href: load-balancer-tcp-reset.md
-    - name: 標準 Load Balancer 和可用性區域
+    - name: Standard Load Balancer 和可用性區域
       href: load-balancer-standard-availability-zones.md
     - name: 內建安全性控制
       href: load-balancer-security-controls.md
 - name: 如何
   items:
-    - name: 將基本公用 Load Balancer 升級為標準公用 Load Balancer
-      href: upgrade-basic-standard.md
-    - name: 將基本內部 Load Balancer 升級為標準內部 Load Balancer
-      href: upgrade-basicInternal-standard.md
+    - name: 將 Basic Load Balancer 升級為 Standard Load Balancer
+      items:
+        - name: 將基本公用 Load Balancer 進行升級
+          href: upgrade-basic-standard.md
+        - name: 將基本內部 Load Balancer 進行升級 - 不需要輸出連線
+          href: upgrade-basicInternal-standard.md
+        - name: 將基本內部 Load Balancer 進行升級 - 需要輸出連線
+          href: upgrade-InternalBasic-To-PublicStandard.md
     - name: 設定輸出規則
       items:
         - name: Azure 入口網站

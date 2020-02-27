@@ -141,15 +141,17 @@
       items:
         - name: 自動化容器映像建置
           items:
-            - name: 從原始內容建置
+            - name: 1 - 從原始內容建置
               href: container-registry-tutorial-quick-task.md
-            - name: 在程式碼認可時建置
+            - name: 2a - 在程式碼認可時建置
               href: container-registry-tutorial-build-task.md
-            - name: 在程式碼認可時進行多步驟工作
+            - name: 2b - 在程式碼認可時進行多步驟工作
               href: container-registry-tutorial-multistep-task.md
-            - name: 在基礎映像更新時建置
+            - name: 3a - 在基礎映像更新時建置
               href: container-registry-tutorial-base-image-update.md
-            - name: 排程工作
+            - name: 3b - 在私人基礎映像更新時建置
+              href: container-registry-tutorial-private-base-image-update.md
+            - name: 4 - 依排程建置
               href: container-registry-tasks-scheduled.md
     - name: 範例
       expanded: false
@@ -160,6 +162,8 @@
       items:
         - name: 多步驟工作
           href: container-registry-tasks-multi-step.md
+        - name: 基底映像更新
+          href: container-registry-tasks-base-images.md
     - name: 操作指南
       expanded: false
       items:

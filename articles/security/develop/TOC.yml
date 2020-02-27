@@ -66,20 +66,22 @@
               href: threat-modeling-tool-releases-71607021.md
             - name: Threat Modeling Tool 更新版本 7.1.61015.1 - 2019 年 10 月 16 日
               href: threat-modeling-tool-releases-71610151.md
+            - name: Threat Modeling Tool 更新版本 7.3.00206.1 - 2020 年 2 月 11 日
+              href: threat-modeling-tool-releases-73002061.md
         - name: 風險降低
           href: threat-modeling-tool-mitigations.md
           items:
             - name: 稽核和記錄
               href: threat-modeling-tool-auditing-and-logging.md
-            - name: Authentication
+            - name: 驗證
               href: threat-modeling-tool-authentication.md
-            - name: Authorization
+            - name: 授權
               href: threat-modeling-tool-authorization.md
             - name: 通訊安全性
               href: threat-modeling-tool-communication-security.md
             - name: 設定管理
               href: threat-modeling-tool-configuration-management.md
-            - name: 加密
+            - name: Cryptography
               href: threat-modeling-tool-cryptography.md
             - name: 例外狀況管理
               href: threat-modeling-tool-exception-management.md

@@ -83,8 +83,10 @@
       href: concept-workspace.md
     - name: 環境
       href: concept-environments.md
-    - name: 資料
+    - name: 資料存取
       href: concept-data.md
+    - name: 資料擷取
+      href: concept-data-ingestion.md
     - name: 模型訓練
       displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
       href: concept-train-machine-learning-model.md
@@ -329,23 +331,18 @@
           href: how-to-deploy-existing-model.md
         - name: 疑難排解與偵錯
           href: how-to-troubleshoot-deployment.md
-    - name: 取用 Web 服務
-      items:
-        - name: 即時取用
+        - name: 建立用戶端
           displayName: create client consume request response synchronous
           href: how-to-consume-web-service.md
-        - name: 設計工具批次預測
-          displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
-          href: how-to-run-batch-predictions-designer.md
-    - name: 監視模型
-      items:
-        - name: 收集和評估模型資料
-          displayName: track production
-          href: how-to-enable-data-collection.md
-        - name: 偵測資料漂移
-          href: how-to-monitor-data-drift.md
-        - name: 使用 Application Insights 進行監視
-          href: how-to-enable-app-insights.md
+        - name: 監視模型
+          items:
+            - name: 收集和評估模型資料
+              displayName: track production
+              href: how-to-enable-data-collection.md
+            - name: 偵測資料漂移
+              href: how-to-monitor-data-drift.md
+            - name: 使用 Application Insights 進行監視
+              href: how-to-enable-app-insights.md
     - name: 建置及使用 ML 管線
       displayName: pipelines
       items:
@@ -372,6 +369,9 @@
         - name: 針對平行執行步驟進行偵錯和疑難排解
           displayName: debug_batch consume pipeline parallelrunstep inference
           href: how-to-debug-parallel-run-step.md
+        - name: 設計工具批次預測
+          displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
+          href: how-to-run-batch-predictions-designer.md
     - name: 管理資源配額
       displayName: limits
       href: how-to-manage-quotas.md

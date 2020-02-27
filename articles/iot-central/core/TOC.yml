@@ -21,6 +21,8 @@
   items:
     - name: 進行連線
       items:
+        - name: 連接裝置
+          href: tutorial-connect-device.md
         - name: 連接隨插即用 (預覽) 裝置
           href: tutorial-connect-pnp-device.md
         - name: 建立閘道裝置範本
