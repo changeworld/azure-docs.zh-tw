@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2019
-ms.openlocfilehash: 39eacbb9a87fa18cc6ef92e319fbfbd3e415337b
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 236ae017832d5d613d0bf9fc948d16a7218d2269
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77525510"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621935"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>在容器和資料庫中佈建輸送量
 
@@ -108,7 +108,7 @@ Azure Cosmos 資料庫是一組容器的管理單位。 資料庫是由一組無
 |指派給或適用於特定容器的 RU|不提供保證。 指派給指定容器的 RU 視屬性而定。 屬性可以選擇是共用輸送量之容器的資料分割索引鍵、工作負載散發，以及容器的數目。 |設定於容器上的所有 RU 都是專為該容器保留的。|
 |容器的儲存體上限|無限制。|無限制。|
 |容器中每個邏輯分割區的輸送量上限|10K RU|10K RU|
-|容器中每個邏輯分割區的儲存體上限 (資料 + 索引)|10 GB|10 GB|
+|容器中每個邏輯分割區的儲存體上限 (資料 + 索引)|20 GB|20 GB|
 
 ## <a name="next-steps"></a>後續步驟
 

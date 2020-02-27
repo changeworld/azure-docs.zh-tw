@@ -1,10 +1,10 @@
 ---
-title: SAP NetWeaver 的 Azure 虛擬機器高可用性架構和案例 | Microsoft Docs
+title: 適用于 SAP NetWeaver 的 Azure Vm HA 架構和案例 |Microsoft Docs
 description: Azure 虛擬機器上 SAP NetWeaver 的高可用性架構和案例
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: goraco
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/21/2019
-ms.author: rclaus
+ms.date: 02/25/2020
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c04726bf3b4166255ada7c9f1252be0471dcc761
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: b974869d1462f449e8a241a5925ef345170b493a
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291476"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623863"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>SAP NetWeaver 的高可用性架構和案例
 
@@ -289,7 +289,7 @@ Azure 中的 SAP 高可用性與內部部署實體或虛擬環境中的 SAP 高�
 
 
 ### <a name="azure-availability-zones"></a>Azure 可用性區域
-Azure 正在不同的 [Azure 區域](https://azure.microsoft.com/global-infrastructure/regions/)到處推廣 [Azure 可用性區域](https://docs.microsoft.com/azure/availability-zones/az-overview)的概念。 有提供可用性區域的 Azure 區域會有多個資料中心，而這些資料中心與電力來源、冷卻及網路無關。 之所以在單一 Azure 區域 (region) 中提供不同區域 (zone)，是要讓您可跨兩個或三個所提供的可用性區域來部署應用程式。 假設電力來源和/或網路中的問題只會影響一個可用性區域基礎結構，那麼 Azure 區域內的應用程式部署仍然可完全正常運作。 由於可能會失去單一區域內的一些 VM，因此最後會造成部分產能降低。 但其他兩個區域中的 VM 仍舊會繼續執行。 [Azure 可用性區域](https://docs.microsoft.com/azure/availability-zones/az-overview)會列出提供可用性區域的 Azure 區域。
+Azure 正在不同的 [Azure 區域](https://docs.microsoft.com/azure/availability-zones/az-overview)到處推廣 [Azure 可用性區域](https://azure.microsoft.com/global-infrastructure/regions/)的概念。 有提供可用性區域的 Azure 區域會有多個資料中心，而這些資料中心與電力來源、冷卻及網路無關。 之所以在單一 Azure 區域 (region) 中提供不同區域 (zone)，是要讓您可跨兩個或三個所提供的可用性區域來部署應用程式。 假設電力來源和/或網路中的問題只會影響一個可用性區域基礎結構，那麼 Azure 區域內的應用程式部署仍然可完全正常運作。 由於可能會失去單一區域內的一些 VM，因此最後會造成部分產能降低。 但其他兩個區域中的 VM 仍舊會繼續執行。 [Azure 可用性區域](https://docs.microsoft.com/azure/availability-zones/az-overview)會列出提供可用性區域的 Azure 區域。
 
 使用可用性區域時有一些考量事項。 考量清單如下：
 
@@ -391,6 +391,8 @@ Azure 縮放單位內的 Azure 可用性設定組可使用的更新和容錯網�
 
 * **使用檔案共用來叢集 SAP ASCS/SCS 實例**：如需此架構的詳細資訊，請參閱[使用檔案共用在 Windows 容錯移轉叢集上進行 SAP ASCS/scs 實例][sap-high-availability-guide-wsfc-file-share]叢集。
 
+* **使用及 SMB 共用來叢集 SAP ASCS/scs 實例**：如需此架構的詳細資訊，請參閱[使用及 SMB 檔案共用在 Windows 容錯移轉叢集上叢集叢集 SAP ASCS/scs 實例](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb)。
+
 ### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-linux"></a>Linux 上 SAP ASCS/SCS 執行個體的高可用性架構
 
 > ![Linux][Logo_Linux] Linux
@@ -404,13 +406,20 @@ Azure 縮放單位內的 Azure 可用性設定組可使用的更新和容錯網�
 
 > ![Windows][Logo_Windows] Windows
 > 
-> 目前多重 SID 僅支援搭配 WSFC。 支援多重 SID 使用檔案共用和共用磁碟。
+> WSFC 支援多重 SID，使用檔案共用和共用磁片。
 > 
-> 如需多重 SID 高可用性架構的詳細資訊，請參閱：
+> 如需 Windows 上多 SID 高可用性架構的詳細資訊，請參閱：
 
 * [適用于 Windows Server 容錯移轉叢集和檔案共用的 SAP ASCS/SCS 實例多重 SID 高可用性][sap-ascs-ha-multi-sid-wsfc-file-share]
 
 * [適用于 Windows Server 容錯移轉叢集和共用磁片的 SAP ASCS/SCS 實例多重 SID 高可用性][sap-ascs-ha-multi-sid-wsfc-shared-disk]
+
+> ![Linux][Logo_Linux] Linux
+> 
+> 適用于 SAP ASCS/ERS 的 Linux Pacemaker 叢集支援多重 SID 叢集，但在相同叢集上限制為**五個**sap sid。
+> 如需 Linux 上多 SID 高可用性架構的詳細資訊，請參閱：
+
+* [SLES for SAP 應用程式上的 Azure Vm 上的 HA for SAP NW 多 SID 指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
 
 ### <a name="high-availability-dbms-instance"></a>高可用性 DBMS 執行個體
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: b2a1bcedcc459a21bbc8a461ba9c8d9a8d65aebe
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 7e0e904b182a57a51b5d76f0acebc13bce5902b2
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132195"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612928"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>如何在 Azure AD Domain Services 受控網域中同步處理物件和認證
 
@@ -47,9 +47,9 @@ Azure Active Directory Domain Services （AD DS）受控網域中的物件和認
 | 使用者和群組的 SID 歷程記錄 | 內部部署主要使用者和群組 SID | Azure AD DS 中使用者和群組的*SidHistory*屬性會設定為符合內部部署 AD DS 環境中對應的主要使用者或群組 SID。 這項功能有助於將內部部署應用程式隨即轉移至 Azure AD DS，因為您不需要重新 ACL 資源。 |
 
 > [!TIP]
-> **使用 UPN 格式登入受控網域**Azure AD DS 受控網域中的某些使用者帳戶可能會自動產生*SAMAccountName*屬性（例如 `CONTOSO\driley`）。 使用者自動產生的*SAMAccountName*可能與其 UPN 前置詞不同，因此不一定是可靠的登入方式。
+> **使用 UPN 格式登入受控網域**Azure AD DS 受控網域中的某些使用者帳戶可能會自動產生*SAMAccountName*屬性（例如 `AADDSCONTOSO\driley`）。 使用者自動產生的*SAMAccountName*可能與其 UPN 前置詞不同，因此不一定是可靠的登入方式。
 >
-> 例如，如果有多個使用者具有相同的*mailNickname*屬性，或使用者的 UPN 前置詞太長，可能會自動產生這些使用者的*SAMAccountName* 。 使用 UPN 格式（例如 `driley@contoso.com`），以可靠的方式登入 Azure AD DS 受控網域。
+> 例如，如果有多個使用者具有相同的*mailNickname*屬性，或使用者的 UPN 前置詞太長，可能會自動產生這些使用者的*SAMAccountName* 。 使用 UPN 格式（例如 `driley@aaddscontoso.com`），以可靠的方式登入 Azure AD DS 受控網域。
 
 ### <a name="attribute-mapping-for-user-accounts"></a>使用者帳戶的屬性對應
 

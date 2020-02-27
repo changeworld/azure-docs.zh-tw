@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 50ac62ded92b69f44324f4f9c5eacee939159449
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 636c7c654b98ced5f93c3ace0e4a99bfc9bf7def
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76834122"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77611811"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>呼叫 web Api 的桌面應用程式：取得權杖
 
@@ -33,7 +33,7 @@ Web API 是由其 `scopes`所定義。 無論您在應用程式中提供的體�
 - 藉由呼叫 `AcquireTokenSilent`，有系統地嘗試從權杖快取取得權杖。
 - 如果這個呼叫失敗，請使用您想要使用的 `AcquireToken` 流程，這是由 `AcquireTokenXX`在這裡表示。
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 ### <a name="in-msalnet"></a>在 MSAL.NET 中
 
@@ -55,41 +55,46 @@ catch(MsalUiRequiredException ex)
 }
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```java
-CompletableFuture<IAuthenticationResult> future = app.acquireToken(parameters);
 
-future.handle((res, ex) -> {
-    if(ex != null) {
-        System.out.println("Oops! We have an exception - " + ex.getMessage());
-        return "Unknown!";
+Set<IAccount> accountsInCache = pca.getAccounts().join();
+// Take first account in the cache. In a production application, you would filter
+// accountsInCache to get the right account for the user authenticating.
+IAccount account = accountsInCache.iterator().next();
+
+IAuthenticationResult result;
+try {
+    SilentParameters silentParameters =
+            SilentParameters
+                    .builder(SCOPE, account)
+                    .build();
+
+    // try to acquire token silently. This call will fail since the token cache
+    // does not have any data for the user you are trying to acquire a token for
+    result = pca.acquireTokenSilently(silentParameters).join();
+} catch (Exception ex) {
+    if (ex.getCause() instanceof MsalException) {
+
+        InteractiveRequestParameters parameters = InteractiveRequestParameters
+                .builder(new URI("http://localhost"))
+                .scopes(SCOPE)
+                .build();
+
+        // Try to acquire a token interactively with system browser. If successful, you should see
+        // the token and account information printed out to console
+        result = pca.acquireToken(parameters).join();
+    } else {
+        // Handle other exceptions accordingly
+        throw ex;
     }
+}
+return result;
 
-    Collection<IAccount> accounts = app.getAccounts().join();
-
-    CompletableFuture<IAuthenticationResult> future1;
-    try {
-        future1 = app.acquireTokenSilently
-                (SilentParameters.builder(Collections.singleton(TestData.GRAPH_DEFAULT_SCOPE),
-                        accounts.iterator().next())
-                        .forceRefresh(true)
-                        .build());
-
-    } catch (MalformedURLException e) {
-        e.printStackTrace();
-        throw new RuntimeException();
-    }
-
-    future1.join();
-    IAccount account = app.getAccounts().join().iterator().next();
-    app.removeAccount(account).join();
-
-    return res;
-}).join();
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```Python
 result = None
@@ -103,7 +108,7 @@ if not result:
     result = app.acquire_token_by_xxx(scopes=config["scope"])
 ```
 
-# <a name="macostabmacos"></a>[MacOS](#tab/macOS)
+# <a name="macos"></a>[MacOS](#tab/macOS)
 
 ### <a name="in-msal-for-ios-and-macos"></a>適用于 iOS 和 macOS 的 MSAL
 
@@ -151,7 +156,7 @@ application.acquireTokenSilent(with: silentParameters) { (result, error) in
 
 下列範例顯示使用 Microsoft Graph 以互動方式取得權杖的最少程式碼，以讀取使用者的設定檔。
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 ### <a name="in-msalnet"></a>在 MSAL.NET 中
 
 ```csharp
@@ -240,7 +245,7 @@ MSAL 為大部分的平臺提供 web UI，但在某些情況下，您可能會�
 - 您想要對應用程式進行 UI 測試，並使用可與 Selenium 搭配使用的自動化瀏覽器。
 - 執行 MSAL 的瀏覽器和應用程式位於不同的進程中。
 
-##### <a name="at-a-glance"></a>概覽
+##### <a name="at-a-glance"></a>速覽
 
 為了達到此目的，您會提供 MSAL `start Url`，這需要在選擇的瀏覽器中顯示，讓使用者可以輸入如使用者名稱之類的專案。
 驗證完成後，您的應用程式必須傳回 MSAL `end Url`，其中包含 Azure AD 所提供的程式碼。
@@ -304,46 +309,56 @@ var result = app.AcquireTokenInteractive(scopes)
 
 若要深入瞭解 `AcquireTokenInteractive`的所有其他選用參數，請參閱[AcquireTokenInteractiveParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods)。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
-
-MSAL JAVA 不會直接提供互動式取得權杖方法。 相反地，它會要求應用程式在其使用者互動流程的執行中傳送授權要求，以取得授權碼。 然後，可以將此程式碼傳遞給 `acquireToken` 方法，以取得權杖。
+# <a name="java"></a>[Java](#tab/java)
 
 ```java
-AuthorizationCodeParameters parameters =  AuthorizationCodeParameters.builder(
-                authorizationCode, redirectUri)
-                .build();
-CompletableFuture<IAuthenticationResult> future = app.acquireToken(parameters);
+private static IAuthenticationResult acquireTokenInteractive() throws Exception {
 
-future.handle((res, ex) -> {
-    if(ex != null) {
-        System.out.println("Oops! We have an exception - " + ex.getMessage());
-        return "Unknown!";
-    }
+    // Load token cache from file and initialize token cache aspect. The token cache will have
+    // dummy data, so the acquireTokenSilently call will fail.
+    TokenCacheAspect tokenCacheAspect = new TokenCacheAspect("sample_cache.json");
 
-    Collection<IAccount> accounts = app.getAccounts().join();
+    PublicClientApplication pca = PublicClientApplication.builder(CLIENT_ID)
+            .authority(AUTHORITY)
+            .setTokenCacheAccessAspect(tokenCacheAspect)
+            .build();
 
-    CompletableFuture<IAuthenticationResult> future1;
+    Set<IAccount> accountsInCache = pca.getAccounts().join();
+    // Take first account in the cache. In a production application, you would filter
+    // accountsInCache to get the right account for the user authenticating.
+    IAccount account = accountsInCache.iterator().next();
+
+    IAuthenticationResult result;
     try {
-        future1 = app.acquireTokenSilently
-                (SilentParameters.builder(Collections.singleton(TestData.GRAPH_DEFAULT_SCOPE),
-                        accounts.iterator().next())
-                        .forceRefresh(true)
-                        .build());
+        SilentParameters silentParameters =
+                SilentParameters
+                        .builder(SCOPE, account)
+                        .build();
 
-    } catch (MalformedURLException e) {
-        e.printStackTrace();
-        throw new RuntimeException();
+        // try to acquire token silently. This call will fail since the token cache
+        // does not have any data for the user you are trying to acquire a token for
+        result = pca.acquireTokenSilently(silentParameters).join();
+    } catch (Exception ex) {
+        if (ex.getCause() instanceof MsalException) {
+
+            InteractiveRequestParameters parameters = InteractiveRequestParameters
+                    .builder(new URI("http://localhost"))
+                    .scopes(SCOPE)
+                    .build();
+
+            // Try to acquire a token interactively with system browser. If successful, you should see
+            // the token and account information printed out to console
+            result = pca.acquireToken(parameters).join();
+        } else {
+            // Handle other exceptions accordingly
+            throw ex;
+        }
     }
-
-    future1.join();
-    IAccount account = app.getAccounts().join().iterator().next();
-    app.removeAccount(account).join();
-
-    return res;
-}).join();
+    return result;
+}
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 MSAL Python 不會直接提供互動式取得權杖方法。 相反地，它會要求應用程式在其使用者互動流程的執行中傳送授權要求，以取得授權碼。 然後，可以將此程式碼傳遞給 `acquire_token_by_authorization_code` 方法，以取得權杖。
 
@@ -362,7 +377,7 @@ if not result:
 
 ```
 
-# <a name="macostabmacos"></a>[MacOS](#tab/macOS)
+# <a name="macos"></a>[MacOS](#tab/macOS)
 
 ### <a name="in-msal-for-ios-and-macos"></a>適用于 iOS 和 macOS 的 MSAL
 
@@ -431,7 +446,7 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 
 ### <a name="learn-how-to-use-it"></a>了解其使用方式
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 在 MSAL.NET 中，您必須使用：
 
@@ -522,33 +537,63 @@ static async Task GetATokenForGraph()
 
 如需 AcquireTokenByIntegratedWindowsAuthentication 上可能的修飾詞清單，請參閱[AcquireTokenByIntegratedWindowsAuthParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyintegratedwindowsauthparameterbuilder?view=azure-dotnet-preview#methods)。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-這是來自[MSAL JAVA dev 範例](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/)的摘錄。 以下是在 MSAL JAVA dev 範例中用來設定範例的類別： [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java)。
+這是來自[MSAL JAVA dev 範例](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/)的摘錄。
 
 ```Java
-PublicClientApplication app = PublicClientApplication.builder(TestData.PUBLIC_CLIENT_ID)
-         .authority(TestData.AUTHORITY_ORGANIZATION)
-         .telemetryConsumer(new Telemetry.MyTelemetryConsumer().telemetryConsumer)
-         .build();
+private static IAuthenticationResult acquireTokenIwa() throws Exception {
 
- IntegratedWindowsAuthenticationParameters parameters =
-         IntegratedWindowsAuthenticationParameters.builder(
-                 Collections.singleton(TestData.GRAPH_DEFAULT_SCOPE), TestData.USER_NAME)
-                 .build();
+    // Load token cache from file and initialize token cache aspect. The token cache will have
+    // dummy data, so the acquireTokenSilently call will fail.
+    TokenCacheAspect tokenCacheAspect = new TokenCacheAspect("sample_cache.json");
 
- Future<IAuthenticationResult> future = app.acquireToken(parameters);
+    PublicClientApplication pca = PublicClientApplication.builder(CLIENT_ID)
+            .authority(AUTHORITY)
+            .setTokenCacheAccessAspect(tokenCacheAspect)
+            .build();
 
- IAuthenticationResult result = future.get();
+    Set<IAccount> accountsInCache = pca.getAccounts().join();
+    // Take first account in the cache. In a production application, you would filter
+    // accountsInCache to get the right account for the user authenticating.
+    IAccount account = accountsInCache.iterator().next();
 
- return result;
+    IAuthenticationResult result;
+    try {
+        SilentParameters silentParameters =
+                SilentParameters
+                        .builder(SCOPE, account)
+                        .build();
+
+        // try to acquire token silently. This call will fail since the token cache
+        // does not have any data for the user you are trying to acquire a token for
+        result = pca.acquireTokenSilently(silentParameters).join();
+    } catch (Exception ex) {
+        if (ex.getCause() instanceof MsalException) {
+
+            IntegratedWindowsAuthenticationParameters parameters =
+                    IntegratedWindowsAuthenticationParameters
+                            .builder(SCOPE, USER_NAME)
+                            .build();
+
+            // Try to acquire a IWA. You will need to generate a Kerberos ticket.
+            // If successful, you should see the token and account information printed out to
+            // console
+            result = pca.acquireToken(parameters).join();
+        } else {
+            // Handle other exceptions accordingly
+            throw ex;
+        }
+    }
+    return result;
+}
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 MSAL Python 尚不支援此流程。
 
-# <a name="macostabmacos"></a>[MacOS](#tab/macOS)
+# <a name="macos"></a>[MacOS](#tab/macOS)
 
 此流程不適用於 MacOS。
 
@@ -583,7 +628,7 @@ MSAL Python 尚不支援此流程。
 
 ### <a name="use-it"></a>使用它
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 `IPublicClientApplication`包含 `AcquireTokenByUsernamePassword`的方法。
 
@@ -792,54 +837,56 @@ static async Task GetATokenForGraph()
 
 如需可套用至 `AcquireTokenByUsernamePassword`之所有修飾詞的詳細資訊，請參閱[AcquireTokenByUsernamePasswordParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyusernamepasswordparameterbuilder?view=azure-dotnet-preview#methods)。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-以下是來自[MSAL JAVA dev 範例](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/)的摘錄。 以下是在 MSAL JAVA dev 範例中用來設定範例的類別： [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java)。
+以下是來自[MSAL JAVA dev 範例](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/)的摘錄。
 
 ```Java
-PublicClientApplication app = PublicClientApplication.builder(TestData.PUBLIC_CLIENT_ID)
-        .authority(TestData.AUTHORITY_ORGANIZATION)
-        .build();
+private static IAuthenticationResult acquireTokenUsernamePassword() throws Exception {
 
-UserNamePasswordParameters parameters = UserNamePasswordParameters.builder(
-        Collections.singleton(TestData.GRAPH_DEFAULT_SCOPE),
-        TestData.USER_NAME,
-        TestData.USER_PASSWORD.toCharArray())
-        .build();
+    // Load token cache from file and initialize token cache aspect. The token cache will have
+    // dummy data, so the acquireTokenSilently call will fail.
+    TokenCacheAspect tokenCacheAspect = new TokenCacheAspect("sample_cache.json");
 
-CompletableFuture<IAuthenticationResult> future = app.acquireToken(parameters);
+    PublicClientApplication pca = PublicClientApplication.builder(CLIENT_ID)
+            .authority(AUTHORITY)
+            .setTokenCacheAccessAspect(tokenCacheAspect)
+            .build();
 
-future.handle((res, ex) -> {
-    if(ex != null) {
-        System.out.println("Oops! We have an exception - " + ex.getMessage());
-        return "Unknown!";
-    }
+    Set<IAccount> accountsInCache = pca.getAccounts().join();
+    // Take first account in the cache. In a production application, you would filter
+    // accountsInCache to get the right account for the user authenticating.
+    IAccount account = accountsInCache.iterator().next();
 
-    Collection<IAccount> accounts = app.getAccounts().join();
-
-    CompletableFuture<IAuthenticationResult> future1;
+    IAuthenticationResult result;
     try {
-        future1 = app.acquireTokenSilently
-                (SilentParameters.builder(Collections.singleton(TestData.GRAPH_DEFAULT_SCOPE),
-                        accounts.iterator().next())
-                        .forceRefresh(true)
-                        .build());
+        SilentParameters silentParameters =
+                SilentParameters
+                        .builder(SCOPE, account)
+                        .build();
+        // try to acquire token silently. This call will fail since the token cache
+        // does not have any data for the user you are trying to acquire a token for
+        result = pca.acquireTokenSilently(silentParameters).join();
+    } catch (Exception ex) {
+        if (ex.getCause() instanceof MsalException) {
 
-    } catch (MalformedURLException e) {
-        e.printStackTrace();
-        throw new RuntimeException();
+            UserNamePasswordParameters parameters =
+                    UserNamePasswordParameters
+                            .builder(SCOPE, USER_NAME, USER_PASSWORD.toCharArray())
+                            .build();
+            // Try to acquire a token via username/password. If successful, you should see
+            // the token and account information printed out to console
+            result = pca.acquireToken(parameters).join();
+        } else {
+            // Handle other exceptions accordingly
+            throw ex;
+        }
     }
-
-    future1.join();
-
-    IAccount account = app.getAccounts().join().iterator().next();
-    app.removeAccount(account).join();
-
-    return res;
-}).join();
+    return result;
+}
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 這是來自[MSAL Python dev 範例](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/dev/sample/)的摘錄。
 
@@ -869,7 +916,7 @@ if not result:
         config["username"], config["password"], scopes=config["scope"])
 ```
 
-# <a name="macostabmacos"></a>[MacOS](#tab/macOS)
+# <a name="macos"></a>[MacOS](#tab/macOS)
 
 MSAL for macOS 不支援此流程。
 
@@ -889,7 +936,7 @@ MSAL for macOS 不支援此流程。
 
 ### <a name="use-it"></a>使用它
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 `IPublicClientApplication`包含名為 `AcquireTokenWithDeviceCode`的方法。
 
@@ -994,40 +1041,62 @@ private async Task<AuthenticationResult> AcquireByDeviceCodeAsync(IPublicClientA
     }
 }
 ```
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-這是來自[MSAL JAVA dev 範例](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/)的摘錄。 以下是在 MSAL JAVA dev 範例中用來設定範例的類別： [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java)。
+這是來自[MSAL JAVA dev 範例](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/)的摘錄。
 
 ```java
-PublicClientApplication app = PublicClientApplication.builder(TestData.PUBLIC_CLIENT_ID)
-        .authority(TestData.AUTHORITY_COMMON)
-        .build();
+private static IAuthenticationResult acquireTokenDeviceCode() throws Exception {
 
-Consumer<DeviceCode> deviceCodeConsumer = (DeviceCode deviceCode) -> {
-    System.out.println(deviceCode.message());
-};
+    // Load token cache from file and initialize token cache aspect. The token cache will have
+    // dummy data, so the acquireTokenSilently call will fail.
+    TokenCacheAspect tokenCacheAspect = new TokenCacheAspect("sample_cache.json");
 
-CompletableFuture<IAuthenticationResult> future = app.acquireToken(
-        DeviceCodeFlowParameters.builder(
-                Collections.singleton(TestData.GRAPH_DEFAULT_SCOPE),
-                deviceCodeConsumer)
-                .build());
+    PublicClientApplication pca = PublicClientApplication.builder(CLIENT_ID)
+            .authority(AUTHORITY)
+            .setTokenCacheAccessAspect(tokenCacheAspect)
+            .build();
 
-future.handle((res, ex) -> {
-    if(ex != null) {
-        System.out.println("Oops! We have an exception of type - " + ex.getClass());
-        System.out.println("message - " + ex.getMessage());
-        return "Unknown!";
+    Set<IAccount> accountsInCache = pca.getAccounts().join();
+    // Take first account in the cache. In a production application, you would filter
+    // accountsInCache to get the right account for the user authenticating.
+    IAccount account = accountsInCache.iterator().next();
+
+    IAuthenticationResult result;
+    try {
+        SilentParameters silentParameters =
+                SilentParameters
+                        .builder(SCOPE, account)
+                        .build();
+
+        // try to acquire token silently. This call will fail since the token cache
+        // does not have any data for the user you are trying to acquire a token for
+        result = pca.acquireTokenSilently(silentParameters).join();
+    } catch (Exception ex) {
+        if (ex.getCause() instanceof MsalException) {
+
+            Consumer<DeviceCode> deviceCodeConsumer = (DeviceCode deviceCode) ->
+                    System.out.println(deviceCode.message());
+
+            DeviceCodeFlowParameters parameters =
+                    DeviceCodeFlowParameters
+                            .builder(SCOPE, deviceCodeConsumer)
+                            .build();
+
+            // Try to acquire a token via device code flow. If successful, you should see
+            // the token and account information printed out to console, and the sample_cache.json
+            // file should have been updated with the latest tokens.
+            result = pca.acquireToken(parameters).join();
+        } else {
+            // Handle other exceptions accordingly
+            throw ex;
+        }
     }
-    System.out.println("Returned ok - " + res);
-
-    return res;
-});
-
-future.join();
+    return result;
+}
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 這是來自[MSAL Python dev 範例](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/dev/sample/)的摘錄。
 
@@ -1078,7 +1147,7 @@ if not result:
         # and then keep calling acquire_token_by_device_flow(flow) in your own customized loop
 ```
 
-# <a name="macostabmacos"></a>[MacOS](#tab/macOS)
+# <a name="macos"></a>[MacOS](#tab/macOS)
 
 此流程不適用於 MacOS。
 
@@ -1101,7 +1170,7 @@ if not result:
   ![權杖快取序列化圖表](https://user-images.githubusercontent.com/13203188/56027172-d58d1480-5d15-11e9-8ada-c0292f1800b3.png)
 
 > [!IMPORTANT]
-> MSAL.NET 會為您建立權杖快取，並且在您呼叫應用程式的 `UserTokenCache` 和 `AppTokenCache` 屬性時提供 `IToken` 快取。 您不應該自行執行介面。 當您實作自訂權杖快取序列化時，您的責任是：
+> MSAL.NET 會為您建立權杖快取，並且在您呼叫應用程式的 `IToken` 和 `UserTokenCache` 屬性時提供 `AppTokenCache` 快取。 您不應該自行執行介面。 當您實作自訂權杖快取序列化時，您的責任是：
 >
 > - 回應 `BeforeAccess` 和 `AfterAccess` 事件，或其*非同步*對應。 `BeforeAccess` 委派負責還原序列化快取。 `AfterAccess` 委派負責序列化快取。
 > - 瞭解這些事件的一部分會儲存或載入 blob，並透過事件引數傳遞至您想要的任何儲存體。

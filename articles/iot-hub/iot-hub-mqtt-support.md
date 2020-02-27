@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 694697be85b61ad2d59a0a4be1ced3581873cb77
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.openlocfilehash: 2b200692610302bb135982e5419dcda36d5cfe60
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77111748"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648490"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>使用 MQTT 通訊協定來與 IoT 中樞通訊
 
@@ -44,7 +44,7 @@ IoT 中樞不是功能完整的 MQTT 訊息代理程式，而且不支援 MQTT v
 
 下表包含每個支援語言之程式碼範例的連結，並指定使用 MQTT 或 MQTT over Web 通訊端通訊協定，來建立 IoT 中樞連接的參數。
 
-| 語言 | MQTT 通訊協定參數 | 透過 Web 通訊端通訊協定參數的 MQTT
+| Language | MQTT 通訊協定參數 | 透過 Web 通訊端通訊協定參數的 MQTT
 | --- | --- | --- |
 | [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) | azure-iot-裝置-mqtt。Mqtt | azure-iot-裝置-mqtt。MqttWs |
 | [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |[IotHubClientProtocol](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.iothubclientprotocol?view=azure-java-stable)。MQTT | IotHubClientProtocol。 MQTT_WS |
@@ -71,7 +71,7 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
 為了確保用戶端/IoT 中樞連線保持運作，服務和用戶端會定期傳送*keep-alive ping。* 使用 IoT SDK 的用戶端會在下表所定義的間隔傳送 keep-alive：
 
-|語言  |預設保持連線間隔  |可設定  |
+|Language  |預設保持連線間隔  |可設定  |
 |---------|---------|---------|
 |Node.js     |   180秒      |     否    |
 |Java     |    230秒     |     否    |
@@ -161,28 +161,27 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
 **若為 Windows：**
 
-• TelemetryMQTTWin32：包含程式碼，可將遙測訊息傳送至 Azure IoT 中樞，並在 Windows 電腦上建立和執行。
+* TelemetryMQTTWin32：包含程式碼，可將遙測訊息傳送至 Azure IoT 中樞，並在 Windows 電腦上建立和執行。
 
-• SubscribeMQTTWin32：包含用來訂閱 Windows 電腦上特定 IoT 中樞之事件的程式碼。
+* SubscribeMQTTWin32：包含用來訂閱 Windows 電腦上特定 IoT 中樞之事件的程式碼。
 
-• DeviceTwinMQTTWin32：包含程式碼，可在 Windows 電腦上的 Azure IoT 中樞查詢和訂閱裝置的裝置對應項事件。
+* DeviceTwinMQTTWin32：包含用來查詢和訂閱 Windows 電腦上 Azure IoT 中樞裝置之裝置對應項事件的程式碼。
 
-• PnPMQTTWin32：包含用來將遙測訊息傳送至 Azure IoT 中樞，並在 Windows 電腦上建立和執行之 IoT 外掛程式的程式碼 & Play preview 裝置功能 深入瞭解 IoT 外掛程式 & 在[此](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play)播放
+* PnPMQTTWin32：包含 & 用來將遙測訊息傳送至 Azure IoT 中樞的程式碼，並在 Windows 電腦上建立並執行該功能。 深入瞭解 IoT 外掛程式 & 在[此](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play)播放
 
 **若為 Linux：**
 
-• MQTTLinux：包含要在 Linux 上執行的程式碼和組建腳本（WSL、Ubuntu 和 Raspbian 已于目前為止進行過測試）。
+* MQTTLinux：包含要在 Linux 上執行的程式碼和組建腳本（WSL、Ubuntu 和 Raspbian 已于目前為止進行過測試）。
 
-• LinuxConsoleVS2019：包含相同的程式碼，但位於以 WSL 為目標的 VS2019 專案中（Windows Linux 子系統系統）。 此專案可讓您從 Visual Studio，在 Linux 上逐步調試執行的程式碼。
+* LinuxConsoleVS2019：包含相同的程式碼，但位於以 WSL 為目標的 VS2019 專案中（Windows Linux 子系統系統）。 此專案可讓您從 Visual Studio，在 Linux 上逐步調試執行的程式碼。
 
 **針對 mosquitto_pub：**
 
-•此資料夾包含兩個範例命令，用於 Mosquitto.org 所提供的 mosquitto_pub 公用程式工具。
+此資料夾包含兩個範例命令，用於 Mosquitto.org 所提供的 mosquitto_pub 公用程式工具。
 
-Mosquitto_sendmessage：將簡單的文字訊息傳送至作為裝置的 Azure IoT 中樞。
+* Mosquitto_sendmessage：將簡單的文字訊息傳送至作為裝置的 Azure IoT 中樞。
 
-Mosquitto_subscribe：查看 Azure IoT 中樞發生的事件。
-
+* Mosquitto_subscribe：查看 Azure IoT 中樞發生的事件。
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-module"></a>直接使用 MQTT 通訊協定 (作為模組)
 
@@ -287,7 +286,7 @@ client.connect(iot_hub_name+".azure-devices.net", port=8883)
 
 ## <a name="sending-device-to-cloud-messages"></a>傳送裝置到雲端訊息
 
-成功連線之後，裝置可以使用 `devices/{device_id}/messages/events/` 或 `devices/{device_id}/messages/events/{property_bag}` 作為**主題名稱**，將訊息傳送至 IoT 中樞。 `{property_bag}` 項目可讓裝置以 URL 編碼格式傳送具有其他屬性的訊息。 例如，
+成功連線之後，裝置可以使用 `devices/{device_id}/messages/events/` 或 `devices/{device_id}/messages/events/{property_bag}` 作為**主題名稱**，將訊息傳送至 IoT 中樞。 `{property_bag}` 項目可讓裝置以 URL 編碼格式傳送具有其他屬性的訊息。 例如：
 
 ```text
 RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-encoded(<PropertyName2>)=RFC 2396-encoded(<PropertyValue2>)…
@@ -342,7 +341,7 @@ IoT 中樞會在有訊息屬性時，傳遞**主題名稱**`devices/{device_id}/
 
 |狀態 | 描述 |
 | ----- | ----------- |
-| 204 | 成功 (不會傳回任何內容) |
+| 200 | Success |
 | 429 | 太多要求（節流），依據[IoT 中樞節流](iot-hub-devguide-quotas-throttling.md) |
 | 5** | 伺服器錯誤 |
 
@@ -360,7 +359,7 @@ IoT 中樞會在有訊息屬性時，傳遞**主題名稱**`devices/{device_id}/
 
 3. 服務接著會傳送回應訊息，其中包含`$iothub/twin/res/{status}/?$rid={request id}` 主題上報告之屬性集合的新 ETag 值。 這個回應訊息使用和要求相同的**要求 ID**。
 
-要求訊息本文會包含 JSON 文件，其包含已報告屬性的新值。 JSON 文件中的每個成員會在裝置對應項的文件中更新或新增對應的成員。 設定為 `null` 的成員會從包含的物件中刪除成員。 例如，
+要求訊息本文會包含 JSON 文件，其包含已報告屬性的新值。 JSON 文件中的每個成員會在裝置對應項的文件中更新或新增對應的成員。 設定為 `null` 的成員會從包含的物件中刪除成員。 例如：
 
 ```json
 {
@@ -373,7 +372,7 @@ IoT 中樞會在有訊息屬性時，傳遞**主題名稱**`devices/{device_id}/
 
 |狀態 | 描述 |
 | ----- | ----------- |
-| 200 | 成功 |
+| 204 | 成功 (不會傳回任何內容) |
 | 400 | 不正確的要求。 JSON 格式錯誤 |
 | 429 | 太多要求（節流），依據[IoT 中樞節流](iot-hub-devguide-quotas-throttling.md) |
 | 5** | 伺服器錯誤 |
@@ -398,7 +397,7 @@ client.publish("$iothub/twin/PATCH/properties/reported/?$rid=" +
 
 ## <a name="receiving-desired-properties-update-notifications"></a>接收所需屬性更新通知
 
-當連接裝置時，IoT 中樞傳送通知給主題 `$iothub/twin/PATCH/properties/desired/?$version={new version}`，其中包含解決方案後端所執行的更新內容。 例如，
+當連接裝置時，IoT 中樞傳送通知給主題 `$iothub/twin/PATCH/properties/desired/?$version={new version}`，其中包含解決方案後端所執行的更新內容。 例如：
 
 ```json
 {
@@ -408,7 +407,7 @@ client.publish("$iothub/twin/PATCH/properties/reported/?$rid=" +
 }
 ```
 
-和屬性更新一樣，`null` 值表示將要刪除的 JSON 物件成員。 另請注意，`$version` 指出對應項所需屬性區段的新版本。
+就屬性更新而言，`null` 值表示正在刪除 JSON 物件成員。 另請注意，`$version` 指出對應項所需屬性區段的新版本。
 
 > [!IMPORTANT]
 > IoT 中樞只會在連接裝置時產生變更通知。 請務必執行裝置重新連線[流程](iot-hub-devguide-device-twins.md#device-reconnection-flow)，讓所需的屬性在 IoT 中樞和裝置應用程式之間保持同步。

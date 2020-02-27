@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 42ab32e80ef0a1a7f3c02d8a8eedbb8ab13c4b88
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 89fa2297c50b6f28045f6f934092de3fd5d6c879
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132259"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613065"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>啟用 Azure Active Directory Domain Services 的安全性審核
 
@@ -84,7 +84,7 @@ Azure AD DS 安全性審核與傳統 AD DS 網域控制站的傳統審核一致�
 > Azure AD DS 安全性審核不會追溯。 您無法捕獲或重新執行過去的事件。 Azure AD DS 只能傳送在啟用安全性審核之後發生的事件。
 
 1. 在 https://portal.azure.com 登入 Azure 入口網站。
-1. 在 Azure 入口網站頂端，搜尋並選取 [ **Azure AD Domain Services**]。 選擇您的受控網域，例如 aadds.contoso.com。
+1. 在 Azure 入口網站頂端，搜尋並選取 [ **Azure AD Domain Services**]。 選擇您的受控網域，例如*aaddscontoso.com*。
 1. 在 [Azure AD DS] 視窗中，選取左側的 [**診斷設定**]。
 1. 預設不會設定診斷。 若要開始使用，請選取 [**新增診斷設定**]。
 

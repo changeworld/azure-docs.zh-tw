@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd78c78a711b64c58290f09eb2ee52263375002f
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: cc41a18063202bfefb9ddf7238de17fc691984af
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522504"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612150"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>在 Azure Active Directory 中撰寫屬性對應的運算式
 當您設定佈建到 SaaS 應用程式時，您可以指定的其中一種屬性對應類型是運算式對應。 您必須撰寫類似指令碼的運算式，以便讓您將使用者的資料轉換成 SaaS 應用程式更能接受的格式。
@@ -29,16 +29,16 @@ ms.locfileid: "77522504"
 
 * 整個運算式必須以函式定義，由函式名稱後面接著以括號括住的引數組成： <br>
   *FunctionName(`<<argument 1>>`,`<<argument N>>`)*
-* 您可以在函式內互相巢狀函式。 例如， <br> *FunctionOne(FunctionTwo(`<<argument1>>`))*
+* 您可以在函式內互相巢狀函式。 例如： <br> *FunctionOne(FunctionTwo(`<<argument1>>`))*
 * 您可以將三種不同類型的引數傳入函式：
   
   1. 屬性，必須以方括弧括住。 例如：[attributeName]
   2. 字串常數，必須以雙引號括住。 例如："United States"
-  3. 其他函數。 例如： FunctionOne （`<<argument1>>`、FunctionTwo （`<<argument2>>`））
+  3. 其他函式。 例如： FunctionOne （`<<argument1>>`、FunctionTwo （`<<argument2>>`））
 * 對於字串常數，如果您在字串中需要反斜線 ( \ ) 或引號 ( " ) ，則必須使用反斜線 ( \ ) 符號逸出。 例如： "Company name： \\" Contoso\\""
 
 ## <a name="list-of-functions"></a>函式的清單
-[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [BitAnd](#bitand) &nbsp;&nbsp;&nbsp;&nbsp; [CBool](#cbool) &nbsp;&nbsp;&nbsp;&nbsp; [Coalesce](#coalesce) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToBase64](#converttobase64) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToUTF8Hex](#converttoutf8hex) &nbsp;&nbsp;&nbsp;&nbsp; [Count](#count) &nbsp;&nbsp;&nbsp;&nbsp; [CStr](#cstr) &nbsp;&nbsp;&nbsp;&nbsp; [DateFromNum](#datefromnum) &nbsp;[FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Guid](#guid) &nbsp;&nbsp;&nbsp;&nbsp; [InStr](#instr) &nbsp;&nbsp;&nbsp;&nbsp; [IsNull](#isnull) &nbsp;&nbsp;&nbsp;&nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp;&nbsp;&nbsp;&nbsp; [IsPresent](#ispresent) &nbsp;&nbsp;&nbsp;&nbsp; [IsString](#isstring) &nbsp;&nbsp;&nbsp;&nbsp; [Item](#item) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Left](#left) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [NumFromDate](#numfromdate) &nbsp;&nbsp;&nbsp;&nbsp;[RemoveDuplicates](#removeduplicates) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [Split](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)&nbsp;&nbsp;&nbsp;&nbsp; [Word](#word)
+[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [BitAnd](#bitand) &nbsp;&nbsp;&nbsp;&nbsp; [CBool](#cbool) &nbsp;&nbsp;&nbsp;&nbsp; [Coalesce](#coalesce) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToBase64](#converttobase64) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToUTF8Hex](#converttoutf8hex) &nbsp;&nbsp;&nbsp;&nbsp; [Count](#count) &nbsp;&nbsp;&nbsp;&nbsp; [CStr](#cstr) &nbsp;&nbsp;&nbsp;&nbsp; [DateFromNum](#datefromnum) &nbsp;[FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Guid](#guid) &nbsp;&nbsp;&nbsp;&nbsp; [IIF](#iif) &nbsp;&nbsp;&nbsp;&nbsp;[InStr](#instr) &nbsp;&nbsp;&nbsp;&nbsp; [IsNull](#isnull) &nbsp;&nbsp;&nbsp;&nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp;&nbsp;&nbsp;&nbsp; [IsPresent](#ispresent) &nbsp;&nbsp;&nbsp;&nbsp; [IsString](#isstring) &nbsp;&nbsp;&nbsp;&nbsp; [Item](#item) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Left](#left) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [RemoveDuplicates](#removeduplicates) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [Split](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)&nbsp;&nbsp;&nbsp;&nbsp; [Word](#word)
 
 ---
 ### <a name="append"></a>附加
@@ -48,10 +48,10 @@ ms.locfileid: "77522504"
 
 **參數：**<br> 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意事項 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **來源** |必要項 |String |通常為 source 物件的屬性名稱。 |
-| **suffix** |必要項 |String |您想要附加至 source 值結尾的字串。 |
+| **來源** |必要 |String |通常為 source 物件的屬性名稱。 |
+| **suffix** |必要 |String |您想要附加至 source 值結尾的字串。 |
 
 ---
 ### <a name="bitand"></a>BitAnd
@@ -66,10 +66,10 @@ ms.locfileid: "77522504"
 
 **參數：**<br> 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意事項 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **value1** |必要項 |num |應該使用 value2 AND'ed 的數值|
-| **value2** |必要項 |num |應該使用 value1 AND'ed 的數值|
+| **value1** |必要 |num |應該使用 value2 AND'ed 的數值|
+| **value2** |必要 |num |應該使用 value1 AND'ed 的數值|
 
 **範例︰**<br>
 BitAnd(&HF, &HF7)                                                                                
@@ -83,9 +83,9 @@ BitAnd(&HF, &HF7)
 
 **參數：**<br> 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意事項 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **expression** |必要項 | 運算式 | 任何有效的運算式 |
+| **expression** |必要 | expression | 任何有效的運算式 |
 
 **範例︰**<br>
 CBool （[attribute1] = [attribute2]）                                                                    
@@ -99,10 +99,10 @@ CBool （[attribute1] = [attribute2]）
 
 **參數：**<br> 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意事項 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **source1  … sourceN** | 必要項 | String |必要，可變次數。 通常為 source 物件的屬性名稱。 |
-| **defaultValue** | 選擇性 | String | 當所有來源值都是 Null 時，所要使用的預設值。 可以是空字串 ("")。
+| **source1  … sourceN** | 必要 | String |必要，可變次數。 通常為 source 物件的屬性名稱。 |
+| **defaultValue** | 選用 | String | 當所有來源值都是 Null 時，所要使用的預設值。 可以是空字串 ("")。
 
 ---
 ### <a name="converttobase64"></a>ConvertToBase64
@@ -112,9 +112,9 @@ CBool （[attribute1] = [attribute2]）
 
 **參數：**<br> 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意事項 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **來源** |必要項 |String |要轉換成基底64的字串|
+| **來源** |必要 |String |要轉換成基底64的字串|
 
 **範例︰**<br>
 ConvertToBase64("Hello world!")                                                                                                        
@@ -128,25 +128,25 @@ ConvertToBase64("Hello world!")
 
 **參數：**<br> 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意事項 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **來源** |必要項 |String |要轉換成 UTF8 十六進位的字串|
+| **來源** |必要 |String |要轉換成 UTF8 十六進位的字串|
 
 **範例︰**<br>
 ConvertToUTF8Hex("Hello world!")                                                                                                         
 傳回 48656C6C6F20776F726C6421
 
 ---
-### <a name="count"></a>[計數]
+### <a name="count"></a>Count
 **函式：**<br> Count （屬性）
 
 **說明：**<br> Count 函式會傳回多重值屬性中的元素個數
 
 **參數：**<br> 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意事項 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **特性** |必要項 |屬性 |會計算元素的多重值屬性|
+| **特性** |必要 |屬性 |會計算元素的多重值屬性|
 
 ---
 ### <a name="cstr"></a>CStr
@@ -156,9 +156,9 @@ ConvertToUTF8Hex("Hello world!")
 
 **參數：**<br> 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意事項 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **value** |必要項 | 數值、參考或布林值 | 可以是數值、參考屬性或布林。 |
+| **value** |必要 | 數值、參考或布林值 | 可以是數值、參考屬性或布林值。 |
 
 **範例︰**<br>
 CStr([dn])                                                            
@@ -172,9 +172,9 @@ CStr([dn])
 
 **參數：**<br> 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意事項 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **value** |必要項 | 日期 | 要轉換成日期時間類型的 AD 日期 |
+| **value** |必要 | Date | 要轉換成日期時間類型的 AD 日期 |
 
 **範例︰**<br>
 DateFromNum([lastLogonTimestamp])                                                                                                   
@@ -189,17 +189,34 @@ DateFromNum(129699324000000000)
 
 **參數：**<br> 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意事項 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **來源** |必要項 |String |通常為 source 物件的屬性名稱。 |
-| **inputFormat** |必要項 |String |來源值的預期格式。 如需支援的格式，請參閱[https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)。 |
-| **outputFormat** |必要項 |String |輸出日期的格式。 |
+| **來源** |必要 |String |通常為 source 物件的屬性名稱。 |
+| **inputFormat** |必要 |String |source 值的預期格式。 如需支援的格式，請參閱[https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)。 |
+| **outputFormat** |必要 |String |輸出日期的格式。 |
 
 ---
 ### <a name="guid"></a>Guid
 **函式：**<br> Guid()
 
 **說明：**<br> 函式 GUID 會產生新的隨機 GUID
+
+---
+### <a name="iif"></a>IIF
+**函式：**<br> IIF （condition，valueIfTrue，valueIfFalse）
+
+**說明：**<br> IIF 函式會根據指定的條件傳回其中一組可能值。
+
+**參數：**<br> 
+
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
+| --- | --- | --- | --- |
+| **條件** |必要 |變數或運算式 |可以評估為 true 或 false 的任何值或運算式。 |
+| **valueIfTrue** |必要 |變數或字串 | 條件評估為 True 時所傳回的值。 |
+| **valueIfFalse** |必要 |變數或字串 |條件評估為 False 時所傳回的值。|
+
+**範例︰**<br>
+IIF （[country] = "USA"，[country]，[部門]）
 
 ---
 ### <a name="instr"></a>InStr
@@ -209,12 +226,12 @@ DateFromNum(129699324000000000)
 
 **參數：**<br> 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意事項 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **value1** |必要項 |String |要搜尋的字串 |
-| **value2** |必要項 |String |要尋找的字串 |
-| **start** |選擇性 |整數 |尋找子字串的開始位置|
-| **compareType** |選擇性 |Enum |可以是 vbTextCompare 或 vbBinaryCompare |
+| **value1** |必要 |String |要搜尋的字串 |
+| **value2** |必要 |String |要尋找的字串 |
+| **start** |選用 |整數 |尋找子字串的開始位置|
+| **compareType** |選用 |例舉 |可以是 vbTextCompare 或 vbBinaryCompare |
 
 **範例︰**<br>
 InStr("The quick brown fox","quick")                                                                             
@@ -231,9 +248,9 @@ InStr("repEated","e",3,vbBinaryCompare)
 
 **參數：**<br> 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意事項 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **expression** |必要項 |運算式 |要評估的運算式 |
+| **expression** |必要 |expression |要評估的運算式 |
 
 **範例︰**<br>
 IsNull([displayName])                                                                                                
@@ -248,9 +265,9 @@ IsNull([displayName])
 
 **參數：**<br> 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意事項 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **expression** |必要項 |運算式 |要評估的運算式 |
+| **expression** |必要 |expression |要評估的運算式 |
 
 **範例︰**<br>
 IsNullOrEmpty （[displayName]）                                               
@@ -264,9 +281,9 @@ IsNullOrEmpty （[displayName]）
 
 **參數：**<br> 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意事項 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **expression** |必要項 |運算式 |要評估的運算式 |
+| **expression** |必要 |expression |要評估的運算式 |
 
 **範例︰**<br>
 Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])
@@ -279,22 +296,22 @@ Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager])
 
 **參數：**<br> 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意事項 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **expression** |必要項 |運算式 |要評估的運算式 |
+| **expression** |必要 |expression |要評估的運算式 |
 
 ---
-### <a name="item"></a>項目
+### <a name="item"></a>Item
 **函式：**<br> Item （屬性、索引）
 
 **說明：**<br> Item 函式會從多重值字串/屬性傳回一個項目。
 
 **參數：**<br> 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意事項 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **特性** |必要項 |屬性 |要搜尋的多重值屬性 |
-| **index** |必要項 |整數 | 多重值字串中的專案索引|
+| **特性** |必要 |屬性 |要搜尋的多重值屬性 |
+| **index** |必要 |整數 | 多重值字串中的專案索引|
 
 **範例︰**<br>
 Item （[proxyAddresses]，1）
@@ -303,19 +320,19 @@ Item （[proxyAddresses]，1）
 ### <a name="join"></a>Join
 **函式：**<br> Join(separator, source1, source2, …)
 
-**說明：**<br> Join() 類似於 Append()，除了其在單一字串中結合多個**來源**字串值，以及使用**分隔符號**字串隔開各個值。
+**說明：**<br> Join() 類似 Append()，不過前者可以將多個 **source** 字串值合併成單一字串，且每個值會以 **separator** 字串分隔。
 
 如果其中一個 source 值是多重值屬性，則該屬性中的每個值會聯結在一起，並以分隔符號值分隔。
 
 **參數：**<br> 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意事項 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **separator** |必要項 |String |用來分隔串連成一個字串的 source 值的字串。 如果不需要分隔符號，可以是 ""。 |
+| **separator** |必要 |String |用來分隔串連成一個字串的 source 值的字串。 如果不需要分隔符號，可以是 ""。 |
 | **source1  … sourceN** |必要，變動次數 |String |要聯結在一起的字串值。 |
 
 ---
-### <a name="left"></a>左
+### <a name="left"></a>Left
 **函式：**<br> Left （String，NumChars）
 
 **說明：**<br> Left 函式會從字串左邊傳回指定的字元數。 如果 numChars = 0，會傳回空字串。
@@ -325,10 +342,10 @@ Item （[proxyAddresses]，1）
 
 **參數：**<br> 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意事項 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **String** |必要項 |屬性 | 要從中傳回字元的字串 |
-| **NumChars** |必要項 |整數 | 數位，識別要從字串的開頭（左邊）傳回的字元數。|
+| **String** |必要 |屬性 | 要從中傳回字元的字串 |
+| **NumChars** |必要 |整數 | 數位，識別要從字串的開頭（左邊）傳回的字元數。|
 
 **範例︰**<br>
 Left （"John Doe"，3）                                                            
@@ -342,11 +359,11 @@ Left （"John Doe"，3）
 
 **參數：**<br> 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意事項 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **來源** |必要項 |String |通常為屬性的名稱。 |
-| **start** |必要項 |integer |**來源**字串中的索引，代表子字串的開頭。 字串第一個字元的索引為 1，第二個字元的索引為 2，依此類推。 |
-| **length** |必要項 |integer |子字串的長度。 如果長度超出 **source** 字串結尾，函式會傳回從 **start** 索引一直到 **source** 字串結尾的子字串。 |
+| **來源** |必要 |String |通常為屬性的名稱。 |
+| **start** |必要 |integer |子字串在 **source** 字串中起始位置的索引。 字串第一個字元的索引為 1，第二個字元的索引為 2，依此類推。 |
+| **length** |必要 |integer |子字串的長度。 如果長度超出 **source** 字串結尾，函式會傳回從 **start** 索引一直到 **source** 字串結尾的子字串。 |
 
 ---
 ### <a name="normalizediacritics"></a>NormalizeDiacritics
@@ -356,21 +373,21 @@ Left （"John Doe"，3）
 
 **參數：**<br> 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意事項 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **來源** |必要項 |String | 通常是名字或姓氏屬性。 |
+| **來源** |必要 |String | 通常是名字或姓氏屬性。 |
 
 ---
 ### <a name="not"></a>Not
 **函式：**<br> Not(source)
 
-**說明：**<br> 切換**來源**的布林值。 若**來源**值為 "*True*"，則傳回 "*false*"。 反之，則傳回 "*True*"。
+**說明：**<br> 翻轉 **source** 的布林值。 如果 **source** 值為 "*True*"，則傳回 "*False*"。 反之則傳回 "*True*"。
 
 **參數：**<br> 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意事項 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **來源** |必要項 |Boolean String |預期的**來源**值為 "True" 或 "False"。 |
+| **來源** |必要 |Boolean String |預期的 **source** 值為 "True" 或 "False"。 |
 
 ---
 ### <a name="numfromdate"></a>NumFromDate
@@ -380,9 +397,9 @@ Left （"John Doe"，3）
 
 **參數：**<br> 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意事項 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **value** |必要項 | String | 支援格式的日期時間字串。 如需支援的格式，請參閱 https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx。 |
+| **value** |必要 | String | 支援格式的日期時間字串。 如需支援的格式，請參閱 https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx。 |
 
 **範例︰**<br>
 * Workday 範例 <br>
@@ -402,27 +419,27 @@ Left （"John Doe"，3）
 
 **參數：**<br> 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意事項 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **特性** |必要項 |多重值屬性 |會移除重複專案的多重值屬性|
+| **特性** |必要 |多重值屬性 |會移除重複專案的多重值屬性|
 
 **範例︰**<br>
 RemoveDuplicates([proxyAddresses])                                                                                                       
 傳回已清理的 proxyAddress 屬性，其中已移除所有重複的值
 
 ---
-### <a name="replace"></a>取代
+### <a name="replace"></a>Replace
 **函式：**<br> Replace(source, oldValue, regexPattern, regexGroupName, replacementValue, replacementAttributeName, template)
 
 **說明：**<br>
 取代字串內的值。 根據提供的參數而以不同的方式運作：
 
-* 若提供 **oldValue** 及 **replacementValue**：
+* 提供 **oldValue** 和 **replacementValue** 時：
   
   * 以 **replacementValue** 取代 **source** 中所有的 **oldValue** 項目
-* 若提供 **oldValue** 及**範本**：
+* 提供 **oldValue** 和 **template** 時：
   
-  * 將**範本**中全部出現的 **oldValue** 取代為**來源**值
+  * 以 **source** 值取代 **template** 中所有的 **oldValue** 項目
 * 提供 **regexPattern** 和 **replacementValue** 時：
 
   * 函式會將 **regexPattern** 套用至 **source** 字串，而您可以使用 regex 群組名稱來建構 **replacementValue** 的字串
@@ -436,15 +453,15 @@ RemoveDuplicates([proxyAddresses])
 
 **參數：**<br> 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意事項 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **來源** |必要項 |String |通常為 **source** 物件的屬性名稱。 |
-| **oldValue** |選擇性 |String |在 **source** 或 **template** 中要被取代的值。 |
-| **regexPattern** |選擇性 |String |用於比對**來源**中要取代之值的 Regex 模式。 或者，如果使用了 **replacementPropertyName**，則為從 **replacementPropertyName** 擷取值的模式。 |
-| **regexGroupName** |選擇性 |String |**regexPattern**內的群組名稱。 只有在使用了 **replacementPropertyName** 時，我們才會從 **replacementPropertyName** 擷取此群組的值作為 **replacementValue**。 |
-| **replacementValue** |選擇性 |String |要取代舊值的新值。 |
-| **replacementAttributeName** |選擇性 |String |要用於取代值的屬性名稱 |
-| **template** |選擇性 |String |提供 **template** 值時，我們會尋找範本內的 **oldValue**，並將其取代為 **source** 值。 |
+| **來源** |必要 |String |通常為 **source** 物件的屬性名稱。 |
+| **oldValue** |選用 |String |在 **source** 或 **template** 中要被取代的值。 |
+| **regexPattern** |選用 |String |在 **source**中要被取代的值的規則運算式模式。 或者，如果使用了 **replacementPropertyName**，則為從 **replacementPropertyName** 擷取值的模式。 |
+| **regexGroupName** |選用 |String |**regexPattern**內的群組名稱。 只有在使用了 **replacementPropertyName** 時，我們才會從 **replacementPropertyName** 擷取此群組的值作為 **replacementValue**。 |
+| **replacementValue** |選用 |String |要取代舊值的新值。 |
+| **replacementAttributeName** |選用 |String |要用於取代值的屬性名稱 |
+| **template** |選用 |String |提供 **template** 值時，我們會尋找範本內的 **oldValue**，並將其取代為 **source** 值。 |
 
 ---
 ### <a name="selectuniquevalue"></a>SelectUniqueValue
@@ -461,7 +478,7 @@ RemoveDuplicates([proxyAddresses])
 
 **參數：**<br> 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意事項 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **uniqueValueRule1  … uniqueValueRuleN** |至少需要 2 個，沒有上限 |String | 要評估的唯一值產生規則清單。 |
 
@@ -474,22 +491,22 @@ RemoveDuplicates([proxyAddresses])
 
 **參數：**<br> 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意事項 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **[appRoleAssignments]** |必要項 |String |**[appRoleAssignments]** 物件。 |
+| **[appRoleAssignments]** |必要 |String |**[appRoleAssignments]** 物件。 |
 
 ---
-### <a name="split"></a>分割
+### <a name="split"></a>Split
 **函式：**<br> Split(source, delimiter)
 
 **說明：**<br> 使用指定的分隔符號字元將字串分割成多重值陣列。
 
 **參數：**<br> 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意事項 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **來源** |必要項 |String |**source** 值。 |
-| **delimiter** |必要項 |String |指定將用來分割字串的字元 (範例：",") |
+| **來源** |必要 |String |**source** 值。 |
+| **delimiter** |必要 |String |指定將用來分割字串的字元 (範例：",") |
 
 ---
 ### <a name="stripspaces"></a>StripSpaces
@@ -499,24 +516,24 @@ RemoveDuplicates([proxyAddresses])
 
 **參數：**<br> 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意事項 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **來源** |必要項 |String |**source** 值。 |
+| **來源** |必要 |String |**source** 值。 |
 
 ---
 ### <a name="switch"></a>Switch
 **函式：**<br> Switch(source, defaultValue, key1, value1, key2, value2, …)
 
-**說明：**<br> 若**來源**值符合 **key**，則傳回該 **key** 的 **value**。 若**來源**值不符合任何 key，則傳回 **defaultValue**.。  **key** 和 **value** 參數必須永遠成對出現。 函式必須要有偶數數目的參數。 函數不應用於參考屬性，例如管理員。 
+**說明：**<br> 當 **source** 值符合某個 **key** 時，傳回該 **key** 的 **value**。 如果 **source** 值不符合任何 key，則傳回 **defaultValue**。  **key** 和 **value** 參數必須永遠成對出現。 函式必須要有偶數數目的參數。 函數不應用於參考屬性，例如管理員。 
 
 **參數：**<br> 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意事項 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **來源** |必要項 |String |**Source** 值。 |
-| **defaultValue** |選擇性 |String |當 source 不符合任何 key 時要使用的預設值。 可以是空字串 ("")。 |
-| **key** |必要項 |String |要與 **source** 值比較的 **key**。 |
-| **value** |必要項 |String |符合 key 的 **source** 的取代值。 |
+| **來源** |必要 |String |**Source** 值。 |
+| **defaultValue** |選用 |String |當 source 不符合任何 key 時要使用的預設值。 可以是空字串 ("")。 |
+| **key** |必要 |String |要與 **source** 值比較的 **key**。 |
+| **value** |必要 |String |符合 key 的 **source** 的取代值。 |
 
 ---
 ### <a name="tolower"></a>ToLower
@@ -526,10 +543,10 @@ RemoveDuplicates([proxyAddresses])
 
 **參數：**<br> 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意事項 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **來源** |必要項 |String |通常為 source 物件的屬性名稱 |
-| **culture** |選擇性 |String |根據 RFC 4646，文化特性 (Culture) 名稱的格式為 *languagecode2-country/regioncode2*，其中 *languagecode2* 是兩個字母的語言代碼，而 *country/regioncode2* 則是兩個字母的子文化特性代碼。 範例包括 ja-JP 代表日文 (日本)，en-US 代表英文 (美國)。 如果沒有兩個字母的語言代碼可供使用，則會使用衍生自 ISO 639-2 的三個字母代碼。|
+| **來源** |必要 |String |通常為 source 物件的屬性名稱 |
+| **culture** |選用 |String |根據 RFC 4646，文化特性 (Culture) 名稱的格式為 *languagecode2-country/regioncode2*，其中 *languagecode2* 是兩個字母的語言代碼，而 *country/regioncode2* 則是兩個字母的子文化特性代碼。 範例包括 ja-JP 代表日文 (日本)，en-US 代表英文 (美國)。 如果沒有兩個字母的語言代碼可供使用，則會使用衍生自 ISO 639-2 的三個字母代碼。|
 
 ---
 ### <a name="toupper"></a>ToUpper
@@ -539,10 +556,10 @@ RemoveDuplicates([proxyAddresses])
 
 **參數：**<br> 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意事項 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **來源** |必要項 |String |通常為 source 物件的屬性名稱。 |
-| **culture** |選擇性 |String |根據 RFC 4646，文化特性 (Culture) 名稱的格式為 *languagecode2-country/regioncode2*，其中 *languagecode2* 是兩個字母的語言代碼，而 *country/regioncode2* 則是兩個字母的子文化特性代碼。 範例包括 ja-JP 代表日文 (日本)，en-US 代表英文 (美國)。 如果沒有兩個字母的語言代碼可供使用，則會使用衍生自 ISO 639-2 的三個字母代碼。|
+| **來源** |必要 |String |通常為 source 物件的屬性名稱。 |
+| **culture** |選用 |String |根據 RFC 4646，文化特性 (Culture) 名稱的格式為 *languagecode2-country/regioncode2*，其中 *languagecode2* 是兩個字母的語言代碼，而 *country/regioncode2* 則是兩個字母的子文化特性代碼。 範例包括 ja-JP 代表日文 (日本)，en-US 代表英文 (美國)。 如果沒有兩個字母的語言代碼可供使用，則會使用衍生自 ISO 639-2 的三個字母代碼。|
 
 ---
 ### <a name="word"></a>Word
@@ -556,11 +573,11 @@ RemoveDuplicates([proxyAddresses])
 
 **參數：**<br> 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意事項 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **String** |必要項 |多重值屬性 |要從中傳回單字的字串。|
-| **WordNumber** |必要項 | 整數 | 識別應傳回的文字數目|
-| **限定詞** |必要項 |String| 字串，代表應該用來識別單字的分隔符號|
+| **String** |必要 |多重值屬性 |要從中傳回單字的字串。|
+| **WordNumber** |必要 | 整數 | 識別應傳回的文字數目|
+| **限定詞** |必要 |String| 字串，代表應該用來識別單字的分隔符號|
 
 **範例︰**<br>
 Word （"quick 棕色 fox"，3，""）                                                                                       
@@ -631,7 +648,7 @@ Split([extensionAttribute5], ",")
 
 ### <a name="output-date-as-a-string-in-a-certain-format"></a>以特定格式將日期輸出為字串
 您想要以特定格式傳送日期到 SaaS 應用程式。 <br>
-例如，您要格式化日期以用於 ServiceNow。
+例如，您要格式化 ServiceNow 的日期。
 
 **運算式：** <br>
 
@@ -645,7 +662,7 @@ Split([extensionAttribute5], ",")
 ### <a name="replace-a-value-based-on-predefined-set-of-options"></a>根據預先定義的一組選項取代值
 
 您必須根據儲存在 Azure AD 中的狀態碼定義使用者的時區。 <br>
-如果狀態碼不符合任何預先定義的選項，則使用預設值 "Australia/Sydney"。
+如果狀態碼不符合任何預先定義的選項，則使用 "Australia/Sydney" 的預設值。
 
 **運算式：** <br>
 `Switch([state], "Australia/Sydney", "NSW", "Australia/Sydney","QLD", "Australia/Brisbane", "SA", "Australia/Adelaide")`

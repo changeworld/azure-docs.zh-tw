@@ -8,12 +8,12 @@ ms.date: 02/10/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: aae11facd2fea5413b2996b3088cb2edc23f0dc1
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 0dd3cb12c52e23a0a8acd57bf401ba68acfb9925
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77424927"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623698"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>使用 Azure Cosmos DB 時針對查詢問題進行疑難排解
 
@@ -22,6 +22,20 @@ ms.locfileid: "77424927"
 您可以廣泛地分類 Azure Cosmos DB 中的查詢優化：優化可減少查詢的要求單位（RU）費用，以及只會降低延遲的優化。 藉由減少查詢的 RU 費用，您幾乎也會降低延遲。
 
 本檔將使用可使用[營養](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json)資料集重新建立的範例。
+
+## <a name="important"></a>重要事項
+
+- 若要獲得最佳效能，請遵循[效能秘訣](performance-tips.md)。
+    > [!NOTE] 
+    > 建議使用 Windows 64 位主機處理來改善效能。 SQL SDK 包含原生 Microsoft.azure.documents.serviceinterop.dll，可在本機剖析和優化查詢，而且只有在 Windows x64 平臺上才支援。 針對 linux 和無法使用 Microsoft.azure.documents.serviceinterop.dll 的其他不支援平臺，將會對閘道進行額外的網路呼叫，以取得優化的查詢。 
+- Cosmos DB 查詢不支援最小專案計數。
+    - 程式碼應處理從0到最大專案計數的任何頁面大小
+    - 頁面中的專案數可以和變更，而不會有任何通知。
+- 查詢應該會有空白頁面，而且可以隨時出現。 
+    - 在 Sdk 中公開空白頁面的原因是，它可讓您更有機會取消查詢。 它也可以清楚指出 SDK 正在進行多個網路呼叫。
+    - 空白頁面可能會顯示在現有的工作負載中，因為實體分割區會在 Cosmos DB 中分割。 第一個分割區現在有0個結果，這會導致空白頁面。
+    - 空白頁面是由後端搶佔查詢所造成，因為查詢在後端會花費超過一段固定的時間來抓取檔。 如果 Cosmos DB 比查詢，它會傳回接續 token，讓查詢繼續進行。 
+- 請務必完全清空查詢。 查看 SDK 範例，並在 `FeedIterator.HasMoreResults` 上使用 while 迴圈來清空整個查詢。
 
 ### <a name="obtaining-query-metrics"></a>取得查詢計量：
 
@@ -144,7 +158,7 @@ SELECT * FROM c WHERE c.description = "Malabar spinach, cooked"
 }
 ```
 
-**RU 費用：** 409.51 ru
+**RU 費用：** 409.51 RUs
 
 ### <a name="optimized"></a>最佳化的
 
@@ -163,7 +177,7 @@ SELECT * FROM c WHERE c.description = "Malabar spinach, cooked"
 }
 ```
 
-**RU 費用：** 2.98 ru
+**RU 費用：** 2.98 RUs
 
 您可以隨時將其他屬性新增至索引編制原則，而不會影響寫入可用性或效能。 如果您將新的屬性加入至索引，則使用這個屬性的查詢會立即使用新的可用索引。 查詢會在建立時使用新的索引。 因此，查詢結果可能會不一致，因為索引重建正在進行中。 如果新的屬性已編制索引，則在索引重建期間，只會影響使用現有索引的查詢不會受到影響。 您可以[追蹤索引轉換進度](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-net-sdk-v3)。
 
@@ -217,7 +231,7 @@ SELECT * FROM c WHERE c.foodGroup = "Soups, Sauces, and Gravies" ORDER BY c._ts 
 }
 ```
 
-**RU 費用：** 44.28 ru
+**RU 費用：** 44.28 RUs
 
 ### <a name="optimized"></a>最佳化的
 
@@ -257,7 +271,7 @@ ORDER BY c.foodGroup, c._ts ASC
 
 ```
 
-**RU 費用：** 8.86 ru
+**RU 費用：** 8.86 RUs
 
 ## <a name="optimize-join-expressions-by-using-a-subquery"></a>使用子查詢優化聯結運算式
 多重值子查詢可以將述詞推送至每個 select-many 運算式之後，而不是在 `WHERE` 子句中的所有交叉聯結之後，藉以優化 `JOIN` 運算式。
@@ -274,7 +288,7 @@ WHERE t.name = 'infant formula' AND (n.nutritionValue > 0
 AND n.nutritionValue < 10) AND s.amount > 1
 ```
 
-**RU 費用：** 167.62 ru
+**RU 費用：** 167.62 RUs
 
 在此查詢中，索引會比對具有名稱 "嬰兒 formula"、nutritionValue 大於0且提供大於1之標記的任何檔。 此處的 `JOIN` 運算式會在套用任何篩選之前，針對每個相符的檔，執行標記、nutrients 和 servings 陣列之所有專案的交叉乘積。 `WHERE` 子句接著會在每個 `<c, t, n, s>` 元組上套用篩選述詞。
 
@@ -290,7 +304,7 @@ JOIN (SELECT VALUE n FROM n IN c.nutrients WHERE n.nutritionValue > 0 AND n.nutr
 JOIN (SELECT VALUE s FROM s IN c.servings WHERE s.amount > 1)
 ```
 
-**RU 費用：** 22.17 ru
+**RU 費用：** 22.17 RUs
 
 假設標記陣列中只有一個專案符合篩選準則，而且 nutrients 和 servings 陣列都有五個專案。 然後，`JOIN` 運算式會展開為 1 x 1 x 5 x 5 = 25 個專案，而不是第一個查詢中的1000個專案。
 
