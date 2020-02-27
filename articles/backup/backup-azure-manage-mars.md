@@ -4,12 +4,12 @@ description: 瞭解如何使用 Azure 備份服務來管理和監視 Microsoft A
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: b7e947e7fd473ec787d49ffe82532ffd5b6a98d1
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: 26ed6fefdf95281429a8c91057195785db4f5589
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75496986"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617609"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>使用 Azure 備份服務管理 Microsoft Azure 復原服務（MARS）代理程式備份
 
@@ -162,7 +162,7 @@ ms.locfileid: "75496986"
 - 按一下 **[流覽]** 以儲存新的複雜密碼。
 
     ![產生複雜密碼。](./media/backup-azure-manage-mars/passphrase.png)
-- 按一下 \[確定\] 套用變更。  如果已在復原服務保存庫的 Azure 入口網站上啟用[安全性功能](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#enable-security-features)，系統會提示您輸入安全性 PIN 碼。 若要接收 PIN，請遵循這[篇文章](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#authentication-to-perform-critical-operations)中所列的步驟。<br>
+- 按一下 **[確定]** 以套用變更。  如果已在復原服務保存庫的 Azure 入口網站上啟用[安全性功能](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#enable-security-features)，系統會提示您輸入安全性 PIN 碼。 若要接收 PIN，請遵循這[篇文章](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#authentication-to-perform-critical-operations)中所列的步驟。<br>
 - 從入口網站貼上安全性 PIN 碼，然後按一下 **[確定]** 套用變更。<br>
 
     ![產生複雜密碼。](./media/backup-azure-manage-mars/passphrase2.png)
@@ -172,4 +172,4 @@ ms.locfileid: "75496986"
 ## <a name="next-steps"></a>後續步驟
 
 - 如需有關支援的案例和限制的詳細資訊，請參閱[MARS 代理程式的支援矩陣](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent)。
-- 深入瞭解[隨選備份原則保留行為](backup-configure-vault.md#on-demand-backup-policy-retention-behavior)。
+- 深入瞭解[隨選備份原則保留行為](backup-configure-vault.md#set-up-on-demand-backup-policy-retention-behavior)。

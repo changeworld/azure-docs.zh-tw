@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: f51744d79d34b734c9cc24cf72785a076a91a4f5
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 9d983015927d2635f69a327a9c5b168056542519
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509048"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613862"
 ---
 # <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>設定 Azure Active Directory Domain Services 以支援 SharePoint Server 的使用者設定檔同步處理
 
@@ -62,7 +62,7 @@ SharePoint Server 的服務帳戶需要有足夠的許可權，才能將變更�
 
 1. 從 [開始] 畫面中，選取 [系統**管理工具**]。 已安裝在教學課程中的可用管理工具清單，以[建立管理 VM][tutorial-create-management-vm]。
 1. 若要管理群組成員資格，請從系統管理工具清單中選取 [ **Active Directory 管理中心**]。
-1. 在左窗格中，選擇您的 Azure AD DS 受控網域，例如*aadds.contoso.com*。 隨即會顯示現有 Ou 和資源的清單。
+1. 在左窗格中，選擇您的 Azure AD DS 受控網域，例如*aaddscontoso.com*。 隨即會顯示現有 Ou 和資源的清單。
 1. 選取 [**使用者**] OU，然後選擇 [ *AAD DC 服務帳戶*] 安全性群組。
 1. 選取 [**成員**]，然後選擇 [**新增 ...** ]。
 1. 輸入 SharePoint 服務帳戶的名稱，然後選取 **[確定]** 。 在下列範例中，SharePoint 服務帳戶名為*spadmin*：

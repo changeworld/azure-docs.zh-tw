@@ -17,12 +17,12 @@ ms.date: 07/17/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49b49949c1765c3cb1598d728e21479c65037930
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: ad399fc24b2cdfbdc51e7feccba2c05786216b19
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714487"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648420"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 入口網站中的稽核活動報告 
 
@@ -41,11 +41,11 @@ ms.locfileid: "76714487"
  
 ## <a name="who-can-access-the-data"></a>誰可以存取資料？
 
-* **安全性系統管理員**、**安全性讀取**者、**報告讀取**者或**全域管理員**角色中的使用者
+* **安全性系統管理員**、**安全性讀取**者、**報告讀取**者、**全域讀取**者或**全域管理員**角色中的使用者
 
 ## <a name="audit-logs"></a>稽核記錄
 
-Azure AD 稽核記錄會提供符合規範的系統活動記錄。 若要存取稽核報告，請選取 [Azure Active Directory] 中 [活動] 區段上的 [稽核記錄]。 請注意，「審核記錄」的延遲最多可能會有一小時，因此在完成工作之後，可能需要該時間才會在入口網站中顯示「審核活動資料」。
+Azure AD 稽核記錄會提供符合規範的系統活動記錄。 若要存取 audit 報告，請在**Azure Active Directory**的 [**監視**] 區段中選取 [ **audit logs** ]。 請注意，「審核記錄」的延遲最多可能會有一小時，因此在完成工作之後，可能需要該時間才會在入口網站中顯示「審核活動資料」。
 
 
 
@@ -90,16 +90,20 @@ Azure AD 稽核記錄會提供符合規範的系統活動記錄。 若要存取�
 **服務**篩選準則可讓您從下列服務的下拉式清單中選取：
 
 - 全部
+- AAD 管理 UX
 - 存取權檢閱
-- 帳戶佈建 
-- 應用程式 SSO
+- 帳戶佈建
+- 應用程式 Proxy
 - 驗證方法
 - B2C
 - 條件式存取
 - 核心目錄
 - 權利管理
+- 混合式驗證
 - 身分識別保護
 - 受邀的使用者
+- MIM 服務
+- MyApps
 - PIM
 - 自助式群組管理
 - 自助式密碼管理
@@ -118,7 +122,11 @@ Azure AD 稽核記錄會提供符合規範的系統活動記錄。 若要存取�
 - DirectoryManagement
 - EntitlementManagement
 - GroupManagement
+- KerberosDomain
+- KeyManagement
+- 標籤
 - 其他
+- PermissionGrantPolicy
 - 原則
 - ResourceManagement
 - RoleManagement
@@ -134,14 +142,13 @@ Azure AD 稽核記錄會提供符合規範的系統活動記錄。 若要存取�
 - Success
 - 失敗
 
-**目標**篩選準則可讓您依名稱或使用者主體名稱（UPN）來搜尋特定的目標。 目標名稱和 UPN 會區分大小寫。 
+**目標**篩選準則可讓您依名稱或使用者主體名稱（UPN）的開頭，搜尋特定的目標。 目標名稱和 UPN 會區分大小寫。 
 
-[**起始者**] 篩選器可讓您定義動作專案的名稱或通用主要名稱（UPN）。 名稱和 UPN 會區分大小寫。
+[**起始者**] 篩選器可讓您定義動作專案名稱或通用主要名稱（UPN）的開頭。 名稱和 UPN 會區分大小寫。
 
 [**日期範圍**] 篩選準則可讓您定義所傳回資料的時間範圍。  
 可能的值包括：
 
-- 1 個月
 - 7 天
 - 24 小時
 - Custom
@@ -179,11 +186,11 @@ Azure AD 稽核記錄會提供符合規範的系統活動記錄。 若要存取�
 
 - 指派給群組或使用者的授權為何？
 
-如果您只想要檢查與使用者相關的資料，您可以在 [**使用者**] 索引標籤的 [**活動**] 區段中，找到 [ **Audit logs** ] 底下的篩選視圖。此進入點已**usermanagement program.cs**為預先選取的類別目錄。
+如果您只想要檢查與使用者相關的資料，您可以在 [**使用者**] 索引標籤的 [**監視**] 區段中，找到 [ **Audit logs** ] 底下的篩選視圖。此進入點已**usermanagement program.cs**為預先選取的類別目錄。
 
 ![稽核記錄](./media/concept-audit-logs/users.png "稽核記錄")
 
-如果您只想要查看與群組相關的資料，您可以在 [**群組**] 索引標籤的 [**活動**] 區段中，找到 [ **Audit logs** ] 底下的篩選視圖。此進入點已**GroupManagement**為預先選取的類別目錄。
+如果您只想要檢查與群組相關的資料，您可以在 [**群組**] 索引標籤的 [**監視**] 區段中，找到 [ **Audit logs** ] 底下的篩選視圖。此進入點已**GroupManagement**為預先選取的類別目錄。
 
 ![稽核記錄](./media/concept-audit-logs/groups.png "稽核記錄")
 

@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 1c06c1d0403e526e1ed58a193cfe9b57bb9fe561
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 0a7012d9daa808933a51ac05862a8a9aa4cfcf77
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780229"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614791"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>從封存層解除凍結 blob 資料
 
@@ -51,7 +51,7 @@ ms.locfileid: "75780229"
 ## <a name="quickstart-scenarios"></a>快速入門案例
 
 ### <a name="rehydrate-an-archive-blob-to-an-online-tier"></a>將封存 blob 解除凍結到線上層
-# <a name="portaltabazure-portal"></a>[入口網站](#tab/azure-portal)
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
 1. 在 Azure 入口網站中，搜尋並選取 **所有資源**。
@@ -70,14 +70,14 @@ ms.locfileid: "75780229"
 
 ![變更儲存體帳戶層](media/storage-tiers/blob-access-tier.png)
 
-# <a name="powershelltabazure-powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 下列 PowerShell 腳本可以用來變更封存 blob 的 blob 層。 `$rgName` 變數必須使用您的資源組名進行初始化。 `$accountName` 變數必須使用您的儲存體帳戶名稱進行初始化。 `$containerName` 變數必須使用您的容器名稱進行初始化。 `$blobName` 變數必須使用您的 blob 名稱進行初始化。 
 ```powershell
 #Initialize the following with your resource group, storage account, container, and blob names
 $rgName = ""
 $accountName = ""
 $containerName = ""
-$blobName == ""
+$blobName = ""
 
 #Select the storage account and get the context
 $storageAccount =Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName
@@ -99,8 +99,8 @@ $rgName = ""
 $accountName = ""
 $srcContainerName = ""
 $destContainerName = ""
-$srcBlobName == ""
-$destBlobName == ""
+$srcBlobName = ""
+$destBlobName = ""
 
 #Select the storage account and get the context
 $storageAccount =Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName

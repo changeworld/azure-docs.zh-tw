@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: dech
 Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: a273b89d864d97d9bc71acff476371f77cfff066
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 5204c7cf80a5b52b0c30b3165d522aa2648cd95c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754827"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587425"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>教學課程：使用 JavaScript SDK 建置 Node.js 主控台應用程式，以管理 Azure Cosmos DB SQL API 資料
 
@@ -37,7 +37,7 @@ ms.locfileid: "72754827"
 > * 將項目新增至容器。
 > * 對項目、容器和資料庫執行基本作業。
 
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>Prerequisites 
 
 請確定您具有下列資源：
 
@@ -61,7 +61,7 @@ ms.locfileid: "72754827"
 2. 找出您想儲存 Node.js 應用程式的資料夾或目錄位置。
 3. 使用下列命令，建立兩個空白的 JavaScript 檔案：
 
-   * Windows:
+   * Windows：
      * ```fsutil file createnew app.js 0```
      * ```fsutil file createnew config.js 0```
 
@@ -95,7 +95,7 @@ ms.locfileid: "72754827"
 
 1. 在您設定 ```config.endpoint``` 和 ```config.key``` 屬性的位置下面，複製 ```database```、```container``` 和 ```items``` 資料並貼到您的 ```config``` 物件。 如果您已有想要儲存於資料庫中的資料，您可以使用 Azure Cosmos DB 中的資料移轉工具，而無須在此處定義資料。 您的 config.js 檔案應該有下列程式碼：
 
-   [!code-javascript[nodejs-get-started](~/cosmosdb-nodejs-get-started/config.js)]
+   :::code language="javascript" source="~/cosmosdb-nodejs-get-started/config.js":::
 
    JavaScript SDK 會使用通用詞彙*容器*和*項目*。 容器可以是集合、圖形或資料表。 項目可以是文件、邊緣/頂點或資料列，並且是容器內的內容。 
    
@@ -602,7 +602,7 @@ Azure Cosmos DB 支援刪除 JSON 項目。
 
 整體來看，您的程式碼應會顯示如下：
 
-[!code-javascript[nodejs-get-started](~/cosmosdb-nodejs-get-started/app.js)]
+:::code language="javascript" source="~/cosmosdb-nodejs-get-started/app.js":::
 
 在終端機中，找出您的 ```app.js``` 檔案並執行命令： 
 

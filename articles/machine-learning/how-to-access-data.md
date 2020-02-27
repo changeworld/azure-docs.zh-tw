@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 01/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 54ad9109a23b0fb25470987c2bc863934864b83f
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: b31d0237f04ef535fa6528d5b3a04e5ee7256e22
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77580663"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623683"
 ---
 # <a name="access-data-in-azure-storage-services"></a>存取 Azure 儲存體服務中的資料
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -84,13 +84,12 @@ Standard 和 premium 儲存體都適用于 blob。 雖然高階儲存體的成�
 
 所有的暫存器方法都在[`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py)類別上，並具有 `register_azure_*`的表單。
 
-您可以使用[Azure 入口網站](https://portal.azure.com)來尋找填入 `register()` 方法所需的資訊：
+您可以在[Azure 入口網站](https://portal.azure.com)上找到填入 `register()` 方法所需的資訊。
+在左窗格中選取 [**儲存體帳戶**]，然後選擇您要註冊的儲存體帳戶。 [**總覽**] 頁面會提供帳戶名稱、容器和檔案共用名稱等資訊。 
 
-1. 在左窗格中選取 [**儲存體帳戶**]，然後選擇您要註冊的儲存體帳戶。 
-2. 如需帳戶名稱、容器和檔案共用名稱之類的資訊，請移至 [**總覽**] 頁面。 
-3. 如需驗證資訊（如帳戶金鑰或 SAS 權杖），請移至 [**設定**] 窗格上的 [**存取金鑰**]。 
+* 如需驗證專案（如帳戶金鑰或 SAS 權杖），請移至 [**設定**] 窗格上的 [**帳戶金鑰**]。 
 
-4. 如需服務主體專案（例如，租使用者識別碼和用戶端識別碼），請移至**應用程式註冊**的 [**總覽**] 頁面。 
+* 針對 [租使用者識別碼] 和 [用戶端識別碼] 等服務主體專案，移至您的**應用程式註冊**，然後選取您要使用的應用程式。 其對應的 **[總覽**] 頁面將包含這些專案。
 
 > [!IMPORTANT]
 > 如果您的儲存體帳戶位於虛擬網路中，則只支援透過**SDK**建立 Blob、檔案共用、ADLS gen 1 和 ADLS gen 2 資料存放區。 若要將您的工作區存取權授與您的儲存體帳戶，請將參數 `grant_workspace_access` 設定為 `True`。
@@ -137,7 +136,7 @@ file_datastore = Datastore.register_azure_file_share(workspace=ws,
 
 #### <a name="azure-data-lake-storage-generation-2"></a>Azure Data Lake Storage 層代2
 
-若為 Azure Data Lake Storage 層代2（ADLS Gen 2）資料存放區，請使用[register_azure_data_lake_gen2 （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-)來註冊與 Azure DataLake Gen 2 儲存體（具有[服務主體許可權](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)）連線的認證資料存放區。 若要利用您的服務主體，您必須[註冊您的應用程式](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)。 深入瞭解[ADLS Gen 2 的存取控制設定](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。 
+若為 Azure Data Lake Storage 層代2（ADLS Gen 2）資料存放區，請使用[register_azure_data_lake_gen2 （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-)來註冊與 Azure DataLake Gen 2 儲存體（具有[服務主體許可權](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)）連線的認證資料存放區。 若要利用您的服務主體，您必須[註冊您的應用程式](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)，並將角色指派設定為讀取器和資料存取。 深入瞭解[ADLS Gen 2 的存取控制設定](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。 
 
 下列程式碼會建立 `adlsgen2_datastore_name` 資料存放區，並將其註冊至 `ws` 工作區。 此資料存放區會使用所提供的服務主體認證，存取 `account_name` 儲存體帳戶上的檔案系統 `test`。
 
@@ -177,7 +176,7 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
 
 * 如需驗證專案（如帳戶金鑰或 SAS 權杖），請移至 [**設定**] 窗格上的 [**帳戶金鑰**]。 
 
-* 如需服務主體專案（例如，租使用者識別碼和用戶端識別碼），請移至**應用程式註冊**的 [**總覽**] 頁面。 
+* 針對 [租使用者識別碼] 和 [用戶端識別碼] 等服務主體專案，移至您的**應用程式註冊**，然後選取您要使用的應用程式。 其對應的 **[總覽**] 頁面將包含這些專案。 
 
 下列範例示範當您建立 Azure blob 資料存放區時，表單看起來的樣子： 
     

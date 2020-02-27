@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 46557d802222190c0ed82f6243dd2a9b997ecaa5
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 18395f2b839aef88491f71aeed660eb2ce011e2c
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76960564"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614227"
 ---
 # <a name="change-the-sku-for-an-existing-azure-ad-domain-services-managed-domain"></a>變更現有 Azure AD Domain Services 受控網域的 SKU
 
@@ -46,7 +46,7 @@ ms.locfileid: "76960564"
 
 若要使用 Azure 入口網站變更 Azure AD DS 受控網域的 SKU，請完成下列步驟：
 
-1. 在 Azure 入口網站頂端，搜尋並選取 [ **Azure AD Domain Services**]。 從清單中選擇您的受控網域，例如*aadds.contoso.com*。
+1. 在 Azure 入口網站頂端，搜尋並選取 [ **Azure AD Domain Services**]。 從清單中選擇您的受控網域，例如*aaddscontoso.com*。
 1. 在 [Azure AD DS] 頁面左側的功能表中，選取 [設定] [ **>** ] [SKU]。
 
     ![在 Azure 入口網站中，為您的 Azure AD DS 受控網域選取 [SKU] 功能表選項](media/change-sku/overview-change-sku.png)

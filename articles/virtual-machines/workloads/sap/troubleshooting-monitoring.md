@@ -3,22 +3,22 @@ title: Azure 上的 SAP HANA (大型執行個體) 的監視 | Microsoft Docs
 description: 監視 Azure 上的 SAP HANA (大型執行個體)。
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
-ms.author: rclaus
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b0aea4dddef65600fe30f36499d4ad2a4f461245
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 50a6b4f15a7de02533e3bb51e5659f7b4c078b40
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70077928"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617299"
 ---
 # <a name="how-to-monitor-sap-hana-large-instances-on-azure"></a>如何監視 Azure 上的 SAP HANA (大型執行個體)
 
@@ -31,13 +31,13 @@ Azure 上的 SAP HANA (大型執行個體) 與任何其他 IaaS 部署並無不�
 
 使用 Azure 虛擬機器時，您必須了解上述資源類別是否足夠，或是否已耗盡。 以下提供每個這些不同類別的更多詳細資料：
 
-**CPU 資源耗用量:** 會強制執行針對 HANA 的特定工作負載所定義之 SAP 的比率, 以確保有足夠的 CPU 資源可用來處理儲存在記憶體中的資料。 不過，可能會有因為遺漏索引或類似的問題，而導致 HANA 耗用許多執行查詢的 CPU 的情況。 這意謂著您不僅應該監視特定 HANA 服務所耗用的 CPU 資源，也應該監視 HANA 大型執行個體單位的 CPU 資源耗用量。
+**CPU 資源耗用量：** 系統會強制執行 SAP 為針對 HANA 的特定工作負載定義的比例，以確保有足夠的 CPU 資源可用來處理儲存在記憶體中的資料。 不過，可能會有因為遺漏索引或類似的問題，而導致 HANA 耗用許多執行查詢的 CPU 的情況。 這意謂著您不僅應該監視特定 HANA 服務所耗用的 CPU 資源，也應該監視 HANA 大型執行個體單位的 CPU 資源耗用量。
 
-**記憶體耗用量:** 請務必從 HANA, 以及在該單位的 HANA 外部進行監視。 在 HANA 內，您可以監視資料如何耗用 HANA 已配置的記憶體，以便保持在 SAP 所要求的大小指導方針限制內。 您也可以監視「大型執行個體」層級的記憶體耗用量，以確保所安裝的額外非 HANA 軟體不會耗用太多記憶體而與 HANA 爭用記憶體。
+**記憶體耗用量：** 從 HANA 內部監視與從 HANA 外部在單位上監視一樣重要。 在 HANA 內，您可以監視資料如何耗用 HANA 已配置的記憶體，以便保持在 SAP 所要求的大小指導方針限制內。 您也可以監視「大型執行個體」層級的記憶體耗用量，以確保所安裝的額外非 HANA 軟體不會耗用太多記憶體而與 HANA 爭用記憶體。
 
-**網路頻寬:** Azure VNet 閘道在移入 Azure VNet 的資料頻寬中受到限制, 因此您可以監視 VNet 內所有 Azure Vm 所接收的資料, 以找出您對所選 Azure 閘道 SKU 的限制。 在「HANA 大型執行個體」單位上，監視連入和連出網路流量，並隨著時間記錄所處理的磁碟區，是有意義的。
+**網路頻寬：** Azure VNet 閘道對於將資料移入 Azure VNet 的頻寬方面有所限制，因此監視 VNet 內所有 Azure VM 所接收的資料相當有用，可了解您有多接近所選 Azure 閘道 SKU 的限制。 在「HANA 大型執行個體」單位上，監視連入和連出網路流量，並隨著時間記錄所處理的磁碟區，是有意義的。
 
-**磁碟空間：** 磁碟空間耗用量通常會隨著時間而增加。 最常見的原因包括：資料量增加、執行交易記錄備份、儲存追蹤檔案，以及執行儲存體快照集。 因此，監視磁碟空間使用量並管理與「HANA 大型執行個體」單位關聯的磁碟空間相當重要。
+**磁碟空間：** 磁碟空間耗用量通常會隨著時間增加。 最常見的原因包括：資料量增加、執行交易記錄備份、儲存追蹤檔案，以及執行儲存體快照集。 因此，監視磁碟空間使用量並管理與「HANA 大型執行個體」單位關聯的磁碟空間相當重要。
 
 如果是**類型 II SKU** 的 HANA 大型執行個體，伺服器會隨附預先載入的系統診斷工具。 您可以利用這些診斷工具執行系統健康情況檢查。 執行下列命令可在 /var/log/health_check 產生健康情況檢查記錄檔。
 ```

@@ -7,14 +7,14 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 179d0ff8143b526e100b89cffbbac0bbc29ca3e1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 83cac961eb3cd700451f16c684c64185b35e9bd3
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776660"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616759"
 ---
-# <a name="upgrade-azure-public-load-balancer-from-basic-sku-to-standard-sku"></a>將 Azure 公用 Load Balancer 從基本 SKU 升級至標準 SKU
+# <a name="upgrade-azure-public-load-balancer"></a>升級 Azure 公用 Load Balancer
 [Azure Standard Load Balancer](load-balancer-overview.md)透過區域冗余提供了一組豐富的功能和高可用性。 若要深入瞭解 Load Balancer SKU，請參閱[比較表](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus)。
 
 升級有兩個階段：
@@ -28,8 +28,8 @@ ms.locfileid: "76776660"
 
 有 Azure PowerShell 腳本可執行下列動作：
 
-* 在資源群組和您指定的位置中建立標準公用 SKU Load Balancer。
-* 將基本 SKU 公用 Load Balancer 的設定順暢地複製到新建立的標準公用 Load Balancer。
+* 在資源群組和您指定的位置中建立標準 SKU Load Balancer。
+* 將基本 SKU Load Balancer 的設定順暢地複製到新建立的 Standard Load Balancer。
 
 ### <a name="caveatslimitations"></a>Caveats\Limitations
 
@@ -70,17 +70,8 @@ ms.locfileid: "76776660"
 
 1. 使用 `Import-Module Az` 匯入 Az 模組。
 
-1. 執行 `Get-Help AzureLBUpgrade.ps1` 以檢查必要的參數：
+1. 檢查必要的參數：
 
-   ```
-   AzurePublicLBUpgrade.ps1
-    -oldRgName <name of the Resource Group where Basic Load Balancer exists>
-    -oldLBName <name of existing Basic Load Balancer>
-    -newrgName <Name of the Resource Group where the new Standard Load Balancer will be created>
-    -newlocation <Name of the location where the new Standard Load Balancer will be created>
-    -newLBName <Name of the Standard Load Balancer to be created>
-   ```
-   腳本的參數：
    * **oldRgName： [String]： Required** –這是您想要升級的現有基本 Load Balancer 的資源群組。 若要尋找此字串值，請流覽至 Azure 入口網站，選取您的基本 Load Balancer 來源，然後按一下負載平衡器的**總覽**。 資源群組位於該頁面。
    * **oldLBName： [String]： Required** –這是您想要升級的現有基本平衡器名稱。 
    * **newrgName： [String]： Required** –這是將在其中建立 Standard Load Balancer 的資源群組。 它可以是新的資源群組或現有的。 如果您選擇現有的資源群組，請注意，Load Balancer 的名稱在資源群組內必須是唯一的。 
@@ -122,11 +113,11 @@ ms.locfileid: "76776660"
 
 ### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>Azure PowerShell 腳本是否有任何限制，可將設定從 v1 遷移至 v2？
 
-可以。 請參閱[警告/限制](#caveatslimitations)。
+是。 請參閱[警告/限制](#caveatslimitations)。
 
 ### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-basic-load-balancer-to-the-newly-created-standard-load-balancer"></a>Azure PowerShell 腳本是否也會將來自我的基本 Load Balancer 的流量切換到新建立的 Standard Load Balancer？
 
-不會。 Azure PowerShell 腳本只會遷移設定。 實際的流量遷移是您在控制中的責任。
+否。 Azure PowerShell 腳本只會遷移設定。 實際的流量遷移是您在控制中的責任。
 
 ### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>我在使用此腳本時遇到一些問題。 如何取得協助？
   

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 9dc7e6341f77fc17ae26f34ea029b3eb5414dcbc
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 58749e4518f6fa73c8641ce38483c101576047aa
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705308"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614087"
 ---
 # <a name="create-a-group-managed-service-account-gmsa-in-azure-ad-domain-services"></a>在 Azure AD Domain Services 中建立群組受管理的服務帳戶（gMSA）
 
@@ -65,32 +65,32 @@ ms.locfileid: "74705308"
 > [!TIP]
 > 若要完成這些步驟來建立 gMSA，請[使用您的管理 VM][tutorial-create-management-vm]。 此管理 VM 應該已有必要的 AD PowerShell Cmdlet 和與受控網域的連線。
 
-下列範例會在名為*aadds.contoso.com*的 Azure AD DS 受控網域中建立名為*myNewOU*的自訂 OU。 使用您自己的 OU 和受控功能變數名稱：
+下列範例會在名為*aaddscontoso.com*的 Azure AD DS 受控網域中建立名為*myNewOU*的自訂 OU。 使用您自己的 OU 和受控功能變數名稱：
 
 ```powershell
-New-ADOrganizationalUnit -Name "myNewOU" -Path "DC=contoso,DC=COM"
+New-ADOrganizationalUnit -Name "myNewOU" -Path "DC=aaddscontoso,DC=COM"
 ```
 
 現在使用[uninstall-adserviceaccount][New-ADServiceAccount] Cmdlet 來建立 gMSA。 定義的範例參數如下：
 
 * **-Name**設為*WebFarmSvc*
 * **-Path**參數會針對在上一個步驟中建立的 gMSA 指定自訂 OU。
-* 已針對*WebFarmSvc.aadds.contoso.com*設定 DNS 專案和服務主體名稱
-* CONTOSO 中的主體 *-允許伺服器 $* 取得密碼使用身分識別。
+* 已針對*WebFarmSvc.aaddscontoso.com*設定 DNS 專案和服務主體名稱
+* *AADDSCONTOSO-SERVER $* 中的主體可讓您取得密碼，使用身分識別。
 
 指定您自己的名稱和功能變數名稱。
 
 ```powershell
 New-ADServiceAccount -Name WebFarmSvc `
-    -DNSHostName WebFarmSvc.aadds.contoso.com `
-    -Path "OU=MYNEWOU,DC=contoso,DC=com" `
+    -DNSHostName WebFarmSvc.aaddscontoso.com `
+    -Path "OU=MYNEWOU,DC=aaddscontoso,DC=com" `
     -KerberosEncryptionType AES128, AES256 `
     -ManagedPasswordIntervalInDays 30 `
-    -ServicePrincipalNames http/WebFarmSvc.aadds.contoso.com/aadds.contoso.com, `
-        http/WebFarmSvc.aadds.contoso.com/contoso, `
-        http/WebFarmSvc/aadds.contoso.com, `
-        http/WebFarmSvc/contoso `
-    -PrincipalsAllowedToRetrieveManagedPassword CONTOSO-SERVER$
+    -ServicePrincipalNames http/WebFarmSvc.aaddscontoso.com/aaddscontoso.com, `
+        http/WebFarmSvc.aaddscontoso.com/aaddscontoso, `
+        http/WebFarmSvc/aaddscontoso.com, `
+        http/WebFarmSvc/aaddscontoso `
+    -PrincipalsAllowedToRetrieveManagedPassword AADDSCONTOSO-SERVER$
 ```
 
 應用程式和服務現在可以設定為視需要使用 gMSA。

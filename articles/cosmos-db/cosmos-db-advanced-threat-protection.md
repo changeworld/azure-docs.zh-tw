@@ -8,12 +8,12 @@ ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: 5cea2f1dac50744c974917347b4428bc39aa737d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bcc1c6ffe7cdec4aed325a67969235ae993a5109
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445537"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614840"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Azure Cosmos DB 的先進威脅防護（預覽）
 
@@ -105,7 +105,7 @@ Azure Cosmos DB 的先進威脅防護會偵測異常活動，指出不尋常且�
 
 ## <a name="cosmos-db-atp-alerts"></a>Cosmos DB ATP 警示
 
- 若要查看監視 Azure Cosmos DB 帳戶時所產生的警示清單，請參閱資訊安全中心檔中的[Cosmos DB 警示](../security-center/security-center-alerts-data-services.md#cosmos-db)一節。
+ 若要查看監視 Azure Cosmos DB 帳戶時所產生的警示清單，請參閱 Azure 資訊安全中心檔中的[Cosmos DB 警示](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurecosmos)一節。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 01/23/2020
+ms.date: 02/24/2020
 ms.author: aahi
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: 87cf5f226a8b2d1efcc0ee967d84f6e0002cb03d
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: c6883b9b79adfc4f91af354147d45ea27d806d78
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987874"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614476"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>快速入門：使用文字分析用戶端程式庫
 
@@ -37,17 +37,6 @@ ms.locfileid: "76987874"
 > * 為求簡化，本文中的程式碼使用同步方法和未受保護的認證儲存體。 針對生產案例，建議您使用批次非同步方法來取得效能和擴充性。 請參閱下列參考文件。
 
 [!INCLUDE [C# quickstart](../includes/quickstarts/csharp-sdk.md)]
-
-::: zone-end
-
-::: zone pivot="programming-language-python"
-
-> [!IMPORTANT]
-> * 文字分析 API 的最新預覽版本是 `3.0-preview` 版，這個版本包含已改善的[情感分析](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)和[具名實體辨識 (NER)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) 公開預覽。 最新穩定版本是 `2.1`。
->    * 請務必遵循您所使用版本的指示。
-> * 為求簡化，本文中的程式碼使用同步方法和未受保護的認證儲存體。 針對生產案例，建議您使用批次非同步方法來取得效能和擴充性。 請參閱下列參考文件。 
-
-[!INCLUDE [Python quickstart](../includes/quickstarts/python-sdk.md)]
 
 ::: zone-end
 
@@ -73,6 +62,17 @@ ms.locfileid: "76987874"
 
 ::: zone-end
 
+::: zone pivot="programming-language-python"
+
+> [!IMPORTANT]
+> * 文字分析 API 的最新預覽版本是 `3.0-preview` 版，這個版本包含已改善的[情感分析](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)和[具名實體辨識 (NER)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) 公開預覽。 最新穩定版本是 `2.1`。
+>    * 請務必遵循您所使用版本的指示。
+> * 為求簡化，本文中的程式碼使用同步方法和未受保護的認證儲存體。 針對生產案例，建議您使用批次非同步方法來取得效能和擴充性。 請參閱下列參考文件。 
+
+[!INCLUDE [Python quickstart](../includes/quickstarts/python-sdk.md)]
+
+::: zone-end
+
 ::: zone pivot="programming-language-other"
 
 ## <a name="additional-language-support"></a>其他語言支援
@@ -81,8 +81,8 @@ ms.locfileid: "76987874"
 
 | Language | 可用版本 | 
 |----------|------------------------|
-| Ruby     | [2.1 版](ruby-sdk.md)          | 
-| Go       | [2.1 版](go-sdk.md)          | 
+| Ruby     | [2.1 版](ruby-sdk.md) | 
+| Go       | [2.1 版](go-sdk.md) | 
 
 ::: zone-end
 

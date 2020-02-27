@@ -7,14 +7,14 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 02/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 543227ac9c07207112177dfaccbd00723b61a314
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 8d3f4294a5c8b09a132d56cd72ccb36ce766e0dd
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566396"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616711"
 ---
-# <a name="upgrade-azure-internal-load-balancer-from-basic-sku-to-standard-sku"></a>將 Azure 內部 Load Balancer 從基本 SKU 升級至標準 SKU
+# <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>升級 Azure 內部 Load Balancer-不需要輸出連線
 [Azure Standard Load Balancer](load-balancer-overview.md)透過區域冗余提供了一組豐富的功能和高可用性。 若要深入瞭解 Load Balancer SKU，請參閱[比較表](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus)。
 
 升級有兩個階段：
@@ -28,12 +28,12 @@ ms.locfileid: "77566396"
 
 有 Azure PowerShell 腳本可執行下列動作：
 
-* 在資源群組和您指定的位置中建立標準內部 SKU Load Balancer。
-* 將基本 SKU 內部 Load Balancer 的設定順暢地複製到新建立的標準內部 Load Balancer。
+* 在您指定的位置中建立標準內部 SKU Load Balancer。 請注意，標準內部 Load Balancer 不會提供[輸出連接](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)。
+* 將基本 SKU Load Balancer 的設定順暢地複製到新建立的 Standard Load Balancer。
 
 ### <a name="caveatslimitations"></a>Caveats\Limitations
 
-* 腳本僅支援內部 Load Balancer 升級。 針對內部基本 Load Balancer 升級，如果不想要輸出連線能力，請建立標準內部 Load Balancer，並建立標準內部 Load Balancer 和標準內部 Load Balancer （如果需要輸出連線能力）。
+* 腳本只支援內部 Load Balancer 升級，而不需要任何輸出連接。 如果您的部分 Vm 需要[輸出](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)連線，請參閱此[頁面](upgrade-InternalBasic-To-PublicStandard.md)以取得相關指示。 
 * Standard Load Balancer 具有新的公用位址。 不可能將與現有基本 Load Balancer 相關聯的 IP 位址順暢地移動到 Standard Load Balancer，因為它們有不同的 Sku。
 * 如果在不同的區域中建立標準負載平衡器，您將無法將舊區域中現有的 Vm 與新建立的 Standard Load Balancer 建立關聯。 若要解決這項限制，請務必在新的區域中建立新的 VM。
 * 如果您的 Load Balancer 沒有任何前端 IP 設定或後端集區，您可能會遇到執行腳本的錯誤。 請確認它們不是空的。

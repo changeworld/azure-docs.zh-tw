@@ -12,12 +12,12 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 7d596292a823b4d912204f5cfbe8623ab7429fa3
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 06a3ef7677d52ebb0d835dfed2f47fc66870f0ec
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161387"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620892"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft 身分識別平臺存取權杖
 
@@ -178,7 +178,7 @@ Azure AD 中介軟體已內建驗證存取權杖的功能，您可以瀏覽我�
 
 JWT 包含三個區段 (以 `.` 字元分隔)。 第一個區段稱為**標頭**、第二個稱為**主體**，而第三個稱為**簽章**。 簽章區段可用來驗證權杖的真實性，您的應用程式才得以信任。
 
-Azure AD 所簽發的權杖是使用業界標準非對稱式加密演算法 (例如 RSA 256) 進行簽署。 JWT 標頭包含用來簽署權杖的金鑰和加密方法相關資訊：
+Azure AD 所簽發的權杖是使用業界標準非對稱式加密演算法（例如 RS256）來簽署。 JWT 標頭包含用來簽署權杖的金鑰和加密方法相關資訊：
 
 ```json
 {

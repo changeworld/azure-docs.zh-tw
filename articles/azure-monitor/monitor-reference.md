@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: d605b852d37af3b1e2ef0868084f3c0b99c24784
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 055ba8b5050aef639bbe6527292a18c8b405065a
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765727"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620263"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure 監視器監視的內容為何？
 本文說明 Azure 監視器監視的不同應用程式和服務。 
@@ -20,11 +20,11 @@ ms.locfileid: "76765727"
 ## <a name="insights-and-core-solutions"></a>深入解析與核心解決方案
 核心深入解析和解決方案會視為 Azure 監視器的一部分，並遵循 Azure 的支援和服務等級協定。 所有可使用 Azure 監視器的 Azure 區域都支援這些功能。
 
-### <a name="insights"></a>深入資訊
+### <a name="insights"></a>深入解析
 
 深入解析針對特定應用程式和服務提供自訂的監視體驗。 它們會收集並分析記錄和計量。
 
-| 見解 | 說明 |
+| 見解 | 描述 |
 |:---|:---|
 | [Application Insights](app/app-insights-overview.md) | 可擴充的應用程式效能管理（APM）服務，可在任何平臺上監視您的即時 web 應用程式。 |
 | [容器的 Azure 監視器](insights/container-insights-overview.md) | 監視部署至 Azure 容器實例或裝載于 Azure Kubernetes Service （AKS）之受控 Kubernetes 叢集的容器工作負載效能。 |
@@ -38,7 +38,7 @@ ms.locfileid: "76765727"
 
 解決方案是以針對特定應用程式或服務自訂的記錄查詢和 views 為基礎。 它們只會收集和分析記錄檔，並在經過一段時間後淘汰，以利深入解析。
 
-| 解決方案 | 說明 |
+| 解決方法 | 描述 |
 |:---|:---|
 | [代理程式健全狀況](insights/solution-agenthealth.md) | 分析 Log Analytics 代理程式的健康情況和設定。 |
 | [警示管理](platform/alert-management-solution.md) | 分析從 System Center Operations Manager、Nagios 或 Zabbix 收集的警示。 |
@@ -53,40 +53,40 @@ ms.locfileid: "76765727"
 - 記錄-此服務支援可收集平臺記錄和計量以 Azure 監視器記錄的診斷設定。
 - 深入解析-提供服務的自訂監視體驗之服務的深入解析。
 
-| 服務 | 計量 | 記錄 | 見解 | 注意 |
+| 服務 | 度量 | 記錄 | 見解 | 注意 |
 |:---|:---|:---|:---|:---|
 |Active Directory | 否 | 是 | [是](../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md) |  |
 |Active Directory B2C | 否 | 否 | 否 |  |
 |Active Directory Domain Services | 否 | 是 | 否 |  |
-|活動記錄 | 否 | 是 | 否 | |
+|活動記錄檔 | 否 | 是 | 否 | |
 |進階威脅防護 | 否 | 否 | 否 |  |
-|Advisor | 否 | 否 | 否 |  |
+|建議程式 | 否 | 否 | 否 |  |
 |AI Builder | 否 | 否 | 否 |  |
 |Analysis Services | 是 | 是 | 否 |  |
 |適用于 FHIR 的 API | 否 | 否 | 否 |  |
 |API 管理 | 是 | 是 | 否 |  |
-|App Service | 是 | 是 | 否 |  |
+|App Service 方案 | 是 | 是 | 否 |  |
 |AppConfig | 否 | 否 | 否 |  |
 |應用程式閘道 | 是 | 是 | 否 |  |
 |證明服務 | 否 | 否 | 否 |  |
-|Automation | 是 | 是 | 否 |  |
+|自動化 | 是 | 是 | 否 |  |
 |Azure Service Manager （RDFE） | 否 | 否 | 否 |  |
-|備份 | 否 | 是 | 否 |  |
+|Backup | 否 | 是 | 否 |  |
 |Bastion | 否 | 否 | 否 |  |
 |Batch | 是 | 是 | 否 |  |
 |Batch AI | 否 | 否 | 否 |  |
 |區塊鏈服務 | 否 | 是 | 否 |  |
 |藍圖 | 否 | 否 | 否 |  |
-|Bot Service | 否 | 否 | 否 |  |
+|Bot 服務 | 否 | 否 | 否 |  |
 |雲端服務 | 是 | 是 | 否 | 監視客體作業系統和工作流程所需的代理程式。  |
 |Cloud Shell | 否 | 否 | 否 |  |
-|辨識服務 | 是 | 是 | 否 |  |
-|容器執行個體 | 是 | 否 | 否 |  |
+|認知服務 | 是 | 是 | 否 |  |
+|Container Instances | 是 | 否 | 否 |  |
 |Container Registry | 是 | 是 | 否 |  |
 |內容傳遞網路 (CDN) | 否 | 是 | 否 |  |
 |Cosmos DB | 是 | 是 | [是](insights/cosmosdb-insights-overview.md) |  |
 |成本管理 | 否 | 否 | 否 |  |
-|Data Box | 否 | 否 | 否 |  |
+|資料箱 | 否 | 否 | 否 |  |
 |資料目錄 Gen2 | 否 | 否 | 否 |  |
 |資料總管 | 是 | 是 | 否 |  |
 |Data Factory | 是 | 是 | 否 |  |
@@ -97,28 +97,28 @@ ms.locfileid: "76765727"
 |適用于于 postgresql 的資料庫 | 是 | 是 | 否 |  |
 |Database Migration Service | 否 | 否 | 否 |  |
 |Databricks | 否 | 是 | 否 |  |
-|DDoS 保護 | 是 | 是 | 否 |  |
+|DDoS保護 | 是 | 是 | 否 |  |
 |DevOps | 否 | 否 | 否 |  |
 |DNS | 是 | 否 | 否 |  |
 |網域名稱 | 否 | 否 | 否 |  |
 |DPS | 否 | 否 | 否 |  |
 |Dynamics 365 Customer Engagement | 否 | 否 | 否 |  |
 |Dynamics 365 財務和營運 | 否 | 否 | 否 |  |
-|事件格線 | 是 | 否 | 否 |  |
+|Event Grid | 是 | 否 | 否 |  |
 |事件中樞 | 是 | 是 | 否 |  |
 |ExpressRoute | 是 | 是 | 否 |  |
 |防火牆 | 是 | 是 | 否 |  |
 |Front Door | 是 | 是 | 否 |  |
-|函式 | 是 | 是 | 否 |  |
+|Functions | 是 | 是 | 否 |  |
 |HDInsight | 否 | 是 | 否 |  |
 |HPC 快取 | 否 | 否 | 否 |  |
 |資訊保護 | 否 | 是 | 否 |  |
 |Intune | 否 | 是 | 否 |  |
-|IoT Central | 否 | 否 | 否 |  |
-|IoT Hub | 是 | 是 | 否 |  |
+|IoT 中心 | 否 | 否 | 否 |  |
+|IoT 中樞 | 是 | 是 | 否 |  |
 |Key Vault | 是 | 是 | 否 |  |
 |Kubernetes Service (AKS) | 否 | 否 | [是](insights/container-insights-overview.md)  |  |
-|Load Balancer | 是 | 是 | 否 |  |
+|負載平衡器 | 是 | 是 | 否 |  |
 |Logic Apps | 是 | 是 | 否 |  |
 |機器學習服務 | 否 | 否 | 否 |  |
 |受控應用程式  | 否 | 否 | 否 |  |
@@ -127,9 +127,9 @@ ms.locfileid: "76765727"
 |Microsoft Flow | 否 | 否 | 否 |  |
 |Microsoft 受管理的電腦 | 否 | 否 | 否 |  |
 |Microsoft PowerApps | 否 | 否 | 否 |  |
-|Microsoft Social Engagement | 否 | 否 | 否 |  |
+|Microsoft 社會參與 | 否 | 否 | 否 |  |
 |Microsoft Stream | 是 | 是 | 否 |  |
-|移轉 | 否 | 否 | 否 |  |
+|遷移 | 否 | 否 | 否 |  |
 |Multi-Factor Authentication | 否 | 是 | 否 |  |
 |網路監看員 | 是 | 是 | 否 |  |
 |通知中樞 | 是 | 否 | 否 |  |
@@ -137,11 +137,11 @@ ms.locfileid: "76765727"
 |原則 | 否 | 否 | 否 |  |
 |Power BI | 是 | 是 | 否 |  |
 |Power BI Embedded | 否 | 否 | 否 |  |
-|Private Link | 否 | 否 | 否 |  |
+|私人連結 | 否 | 否 | 否 |  |
 |專案多工緩衝處理通訊平臺 | 否 | 否 | 否 |  |
 |Red Hat OpenShift | 否 | 否 | 否 |  |
 |Redis 快取 | 是 | 是 | 否 |  |
-|資源圖表 | 否 | 否 | 否 |  |
+|Resource Graph | 否 | 否 | 否 |  |
 |Resource Manager | 否 | 否 | 否 |  |
 |零售搜尋–依 Bing | 否 | 否 | 否 |  |
 |搜尋 | 是 | 是 | 否 |  |
@@ -157,8 +157,8 @@ ms.locfileid: "76765727"
 |儲存體 | 是 | 否 | [是](insights/storage-insights-overview.md) |  |
 |儲存體快取 | 否 | 否 | 否 |  |
 |儲存體同步服務 | 否 | 否 | 否 |  |
-|Stream Analytics | 是 | 是 | 否 |  |
-|Time Series Insights | 是 | 是 | 否 |  |
+|串流分析 | 是 | 是 | 否 |  |
+|時間序列深入解析 | 是 | 是 | 否 |  |
 |TINA | 否 | 否 | 否 |  |
 |流量管理員 | 是 | 是 | 否 |  |
 |通用列印 | 否 | 否 | 否 |  |
@@ -167,13 +167,13 @@ ms.locfileid: "76765727"
 |虛擬網路 | 是 | 是 | [是](insights/network-insights-overview.md) |  |
 |虛擬網路 NSG 流量記錄 | 否 | 是 | 否 |  |
 |VPN 閘道 | 是 | 是 | 否 |  |
-|Windows Virtual Desktop | 否 | 否 | 否 |  |
+|Windows 虛擬桌面 | 否 | 否 | 否 |  |
 
 
 ## <a name="product-integrations"></a>產品整合
 下表中的服務和解決方案會將其資料儲存在 Log Analytics 工作區中，以便使用 Azure 監視器所收集的其他記錄資料進行分析。
 
-| 產品/服務 | 說明 |
+| 產品/服務 | 描述 |
 |:---|:---|
 | [Azure 自動化](/azure/automation/) | 管理作業系統更新，並追蹤 Windows 和 Linux 電腦上的變更。 請參閱[變更追蹤](../automation/change-tracking.md)和[更新管理](../automation/automation-update-management.md)。 |
 | [Azure 資訊保護](https://docs.microsoft.com/azure/information-protection/) | 分類並選擇性地保護檔和電子郵件。 請參閱[Azure 資訊保護的集中報告](https://docs.microsoft.com/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports)。 |
@@ -195,22 +195,22 @@ ms.locfileid: "76765727"
 ## <a name="other-solutions"></a>其他解決方案
 其他解決方案可用於監視不同的應用程式和服務，但已停止作用中的開發，而且它們可能無法在所有區域使用。 其涵蓋于 Azure Log Analytics 資料內嵌服務等級協定。
 
-| 解決方案 | 說明 |
+| 解決方法 | 描述 |
 |:---|:---|
-| [Active Directory 評量](insights/ad-assessment.md) | 評估 Active Directory 環境的風險和健康情況。 |
+| [Active Directory 健康情況檢查](insights/ad-assessment.md) | 評估 Active Directory 環境的風險和健康情況。 |
 | [Active Directory 複寫狀態](insights/ad-replication-status.md) | 會定期監視您的 Active Directory 環境是否有任何複寫失敗。 |
 | [活動記錄分析](platform/activity-log-view.md#activity-logs-analytics-monitoring-solution) | 使用預先定義的記錄查詢和視圖來分析活動記錄專案。 |
 | [DNS 分析（預覽）](insights/dns-analytics.md) | 從您的 DNS 伺服器收集、分析和關聯 Windows DNS 分析和 audit 記錄檔，以及其他相關資料。 |
 | [Cloud Foundry](../cloudfoundry/cloudfoundry-oms-nozzle.md) | 跨多個部署收集、查看和分析您的 Cloud Foundry 系統健康狀態和效能計量。 |
 | [容器](insights/containers.md) | 查看及管理 Docker 和 Windows 容器主機。 |
 | [隨選評量](https://docs.microsoft.com/services-hub/health/getting_started_with_on_demand_assessments) | 評估和優化內部部署、混合式和雲端 Microsoft 技術環境的可用性、安全性及效能。 |
-| [SQL 評估](insights/sql-assessment.md) | 評估 SQL Server 環境的風險和健康情況。  |
+| [SQL 健全狀況檢查](insights/sql-assessment.md) | 評估 SQL Server 環境的風險和健康情況。  |
 | [連線資料](insights/wire-data.md) | 使用 Log Analytics 代理程式從 Windows 連線和 Linux 連線的電腦收集的匯總網路和效能資料。 |
 
 
 ## <a name="third-party-integration"></a>協力廠商整合
 
-| 解決方案 | 說明 |
+| 解決方法 | 描述 |
 |:---|:---|
 | [ITSM](platform/itsmc-overview.md) | IT Service Management Connector (ITSMC) 可讓您連線 Azure 和支援的 IT 服務管理 (ITSM) 產品/服務。  |
 

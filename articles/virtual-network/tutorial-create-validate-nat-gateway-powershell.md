@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: d734553dd8eaf51d42cc31304f6a42c9cad5bbcd
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: bb75631beed73a6ebd9d1cf2c00c375726fed387
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77429079"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586983"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-powershell-and-test-the-nat-service"></a>教學課程：使用 Azure PowerShell 建立 NAT 閘道並測試 NAT 服務
 
@@ -35,8 +35,6 @@ ms.locfileid: "77429079"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-> [!IMPORTANT]
-> 在您的訂用帳戶上[啟用虛擬網路 NAT 預覽版](./nat-overview.md#enable-preview)之後，請使用 https://aka.ms/natportal 來存取入口網站。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
@@ -85,7 +83,7 @@ New-AzPublicIpPrefix -Name $prips -ResourceGroupName $rsg -Location $loc -Prefix
 ### <a name="create-a-nat-gateway-resource"></a>建立 NAT 閘道資源
 
 本節將詳細說明如何使用 NAT 閘道資源建立及設定下列 NAT 服務元件：
-  - 公用 IP 集區和公用 IP 首碼，將用於 NAT 閘道資源所轉譯的輸出流量。
+  - 公用 IP 集區和公用 IP 前置詞，將用於 NAT 閘道資源所轉譯的輸出流量。
   - 將閒置逾時時間從預設的 4 分鐘變更為 10 分鐘。
 
 使用 [New-AzNatGateway](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway) 建立全域 Azure NAT 閘道。 此命令的結果會建立名為 **myNATgateway** 的閘道資源，並且使用公用 IP 位址 **myPublicIPsource** 和公用 IP 首碼 **myPublicIPprefixsource**。 將閒置逾時時間設定為 10 分鐘。  此命令的結果將會儲存在名為 **$natGateway** 的變數中，以供稍後使用。
@@ -465,7 +463,7 @@ go get -u github.com/rakyll/hey
 
 登入來源 VM 時，您可以使用 **curl** 和 **hey** 來產生目的地 IP 位址的要求。
 
-使用 curl 來擷取 100 Kb 的檔案。  以您先前複製的目的地 IP 位址取代下列範例中的 **\<ip-address-destination>** 。  **--output** 參數表示將會捨棄擷取的檔案。
+使用 curl 來擷取 100 KB 的檔案。  以您先前複製的目的地 IP 位址取代下列範例中的 **\<ip-address-destination>** 。  **--output** 參數表示將會捨棄擷取的檔案。
 
 ```bash
 curl http://<ip-address-destination>/100k --output /dev/null
@@ -477,7 +475,7 @@ curl http://<ip-address-destination>/100k --output /dev/null
 hey -n 100 -c 10 -t 30 --disable-keepalive http://<ip-address-destination>/100k
 ```
 
-此命令將會產生 100 個要求 (一次 10 個)，並將逾期時間設為 30 秒。 TCP 連線不會重複使用。  每個要求都會擷取 100 Kb。  在回合結束時，**hey** 會回報 NAT 服務執行效能的相關統計資料。
+此命令將會產生 100 個要求 (一次 10 個)，並將逾期時間設為 30 秒。 TCP 連線不會重複使用。  每個要求都會擷取 100 KB。  在回合結束時，**hey** 會回報 NAT 服務執行效能的相關統計資料。
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -490,7 +488,7 @@ Remove-AzResourceGroup -Name myResourceGroupNAT
 ## <a name="next-steps"></a>後續步驟
 在本教學課程中，您已建立 NAT 閘道、建立來源和目的地 VM，然後測試了 NAT 閘道。
 
-接著請檢閱 Azure 監視器中的計量，以了解 NAT 服務的運作。 診斷可用 SNAT 連接埠的資源耗盡相關問題。  新增額外的公用 IP 位址資源或公用 IP 首碼資源 (或兩者)，都可以輕鬆地解決 SNAT 連接埠的資源耗盡問題。
+接著請檢閱 Azure 監視器中的計量，以了解 NAT 服務的運作。 診斷可用 SNAT 連接埠的資源耗盡相關問題。  新增額外的公用 IP 位址資源或公用 IP 前置詞資源 (或兩者)，都可以輕鬆地解決 SNAT 連接埠的資源耗盡問題。
 
 - 了解[虛擬網路 NAT](./nat-overview.md)
 - 深入了解 [NAT 閘道資源](./nat-gateway-resource.md)。

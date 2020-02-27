@@ -6,14 +6,14 @@ ms.service: service-bus
 documentationcenter: ''
 author: axisc
 ms.topic: conceptual
-ms.date: 11/15/2019
+ms.date: 02/25/2020
 ms.author: aschhab
-ms.openlocfilehash: 6d20d4031f0ed4d1be4dddf9e33946251d6dd523
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: aeb9a9730ddc61793e49c9e042906457e0068d9a
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903328"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624078"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>使用 Azure 入口網站，設定客戶管理的金鑰來加密待用 Azure 服務匯流排資料
 Azure 服務匯流排 Premium 使用 Azure 儲存體服務加密（Azure SSE）提供待用資料的加密。 服務匯流排 Premium 依賴 Azure 儲存體來儲存資料，而且根據預設，所有以 Azure 儲存體儲存的資料都會使用 Microsoft 管理的金鑰進行加密。 
@@ -78,22 +78,22 @@ Azure 服務匯流排現在支援使用 Microsoft 管理的金鑰或客戶管理
     1. 填入金鑰的詳細資料，然後按一下 [**選取**]。 這可讓您使用客戶管理的金鑰，對命名空間中的待用資料進行加密。 
 
 
-> [!IMPORTANT]
-> 如果您想要使用客戶管理的金鑰以及異地嚴重損壞修復，請參閱下列- 
->
-> 若要使用客戶管理的金鑰啟用待用加密，請在指定的 Azure KeyVault 上設定服務匯流排「受控識別」的[存取原則](../key-vault/key-vault-secure-your-key-vault.md)。 這可確保從 Azure 服務匯流排命名空間控制對 Azure KeyVault 的存取。
->
-> 原因如下：
-> 
->   * 如果已啟用服務匯流排命名空間的[地理災難](service-bus-geo-dr.md)復原，而且您想要啟用客戶管理的金鑰，則 
->     * 中斷配對
->     * 將主要和次要命名空間的受控識別[存取原則設定](../key-vault/managed-identity.md)為金鑰保存庫。
->     * 在主要命名空間上設定加密。
->     * 重新配對主要和次要命名空間。
-> 
->   * 如果您想要在已設定客戶管理金鑰的服務匯流排命名空間上啟用異地 DR，則-
->     * 將次要命名空間之受控識別的[存取原則設定](../key-vault/managed-identity.md)為金鑰保存庫。
->     * 配對主要和次要命名空間。
+    > [!IMPORTANT]
+    > 如果您想要使用客戶管理的金鑰以及異地嚴重損壞修復，請參閱下列- 
+    >
+    > 若要使用客戶管理的金鑰啟用待用加密，請在指定的 Azure KeyVault 上設定服務匯流排「受控識別」的[存取原則](../key-vault/key-vault-secure-your-key-vault.md)。 這可確保從 Azure 服務匯流排命名空間控制對 Azure KeyVault 的存取。
+    >
+    > 原因如下：
+    > 
+    >   * 如果已啟用服務匯流排命名空間的[地理災難](service-bus-geo-dr.md)復原，而且您想要啟用客戶管理的金鑰，則 
+    >     * 中斷配對
+    >     * 將主要和次要命名空間的受控識別[存取原則設定](../key-vault/managed-identity.md)為金鑰保存庫。
+    >     * 在主要命名空間上設定加密。
+    >     * 重新配對主要和次要命名空間。
+    > 
+    >   * 如果您想要在已設定客戶管理金鑰的服務匯流排命名空間上啟用異地 DR，則-
+    >     * 將次要命名空間之受控識別的[存取原則設定](../key-vault/managed-identity.md)為金鑰保存庫。
+    >     * 配對主要和次要命名空間。
 
 
 ## <a name="rotate-your-encryption-keys"></a>輪替加密金鑰
@@ -105,6 +105,224 @@ Azure 服務匯流排現在支援使用 Microsoft 管理的金鑰或客戶管理
 撤銷加密金鑰的存取權並不會從服務匯流排清除資料。 不過，資料無法從服務匯流排命名空間存取。 您可以透過存取原則或藉由刪除金鑰來撤銷加密金鑰。 深入瞭解存取原則和保護您的金鑰保存庫，[以安全地存取金鑰保存庫](../key-vault/key-vault-secure-your-key-vault.md)。
 
 撤銷加密金鑰之後，加密命名空間上的服務匯流排服務就會變成無法運作。 如果已啟用金鑰的存取權，或還原已刪除的金鑰，服務匯流排服務會挑選金鑰，讓您可以從加密的服務匯流排命名空間存取資料。
+
+## <a name="use-resource-manager-template-to-enable-encryption"></a>使用 Resource Manager 範本來啟用加密
+本節說明如何使用**Azure Resource Manager 範本**執行下列工作。 
+
+1. 建立具有**受控服務識別**的**premium**服務匯流排命名空間。
+2. 建立**金鑰保存庫**，並將金鑰保存庫的存取權授與服務識別。 
+3. 使用金鑰保存庫資訊（索引鍵/值）更新服務匯流排的命名空間。 
+
+
+### <a name="create-a-premium-service-bus-namespace-with-managed-service-identity"></a>建立具有受控服務識別的 premium 服務匯流排命名空間
+本節說明如何使用 Azure Resource Manager 範本和 PowerShell，建立具有受控服務識別的 Azure 服務匯流排命名空間。 
+
+1. 建立 Azure Resource Manager 範本，以使用受控服務識別來建立服務匯流排進階層命名空間。 將檔案命名為： **CreateServiceBusPremiumNamespace. json**： 
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "namespaceName":{
+             "type":"string",
+             "metadata":{
+                "description":"Name for the Namespace."
+             }
+          },
+          "location":{
+             "type":"string",
+             "defaultValue":"[resourceGroup().location]",
+             "metadata":{
+                "description":"Specifies the Azure location for all resources."
+             }
+          }
+       },
+       "resources":[
+          {
+             "type":"Microsoft.ServiceBus/namespaces",
+             "apiVersion":"2018-01-01-preview",
+             "name":"[parameters('namespaceName')]",
+             "location":"[parameters('location')]",
+             "identity":{
+                "type":"SystemAssigned"
+             },
+             "sku":{
+                "name":"Premium",
+                "tier":"Premium",
+                "capacity":1
+             },
+             "properties":{
+    
+             }
+          }
+       ],
+       "outputs":{
+          "ServiceBusNamespaceId":{
+             "type":"string",
+             "value":"[resourceId('Microsoft.ServiceBus/namespaces',parameters('namespaceName'))]"
+          }
+       }
+    }
+    ```
+2. 建立名為的範本參數檔案： **CreateServiceBusPremiumNamespaceParams. json**。 
+
+    > [!NOTE]
+    > 取代下列值： 
+    > - `<ServiceBusNamespaceName>`-服務匯流排命名空間的名稱
+    > - `<Location>`-服務匯流排命名空間的位置
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "namespaceName":{
+             "value":"<ServiceBusNamespaceName>"
+          },
+          "location":{
+             "value":"<Location>"
+          }
+       }
+    }
+    ```
+3. 執行下列 PowerShell 命令來部署範本，以建立 premium 服務匯流排命名空間。 然後，取出服務匯流排命名空間的識別碼，以供稍後使用。 執行命令之前，請將 `{MyRG}` 取代為資源群組的名稱。  
+
+    ```powershell
+    $outputs = New-AzResourceGroupDeployment -Name CreateServiceBusPremiumNamespace -ResourceGroupName {MyRG} -TemplateFile ./CreateServiceBusPremiumNamespace.json -TemplateParameterFile ./CreateServiceBusPremiumNamespaceParams.json
+    
+    $ServiceBusNamespaceId = $outputs.Outputs["serviceBusNamespaceId"].value
+    ```
+ 
+### <a name="grant-service-bus-namespace-identity-access-to-key-vault"></a>授與金鑰保存庫的服務匯流排命名空間身分識別存取權
+
+1. 執行下列命令，以建立已啟用**清除保護**和虛**刪除**的金鑰保存庫。 
+
+    ```powershell
+    New-AzureRmKeyVault -Name "{keyVaultName}" -ResourceGroupName {RGName}  -Location "{location}" -EnableSoftDelete -EnablePurgeProtection    
+    ```
+    
+    (或)
+    
+    執行下列命令來更新現有的**金鑰保存庫**。 執行命令之前，請先指定資源群組和金鑰保存庫名稱的值。 
+    
+    ```powershell
+    ($updatedKeyVault = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -ResourceGroupName {RGName} -VaultName {keyVaultName}).ResourceId).Properties| Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"-Force | Add-Member -MemberType "NoteProperty" -Name "enablePurgeProtection" -Value "true" -Force
+    ``` 
+2. 設定 key vault 存取原則，讓服務匯流排命名空間的受控識別可以存取金鑰保存庫中的金鑰值。 使用上一節中服務匯流排命名空間的識別碼。 
+
+    ```powershell
+    $identity = (Get-AzureRmResource -ResourceId $ServiceBusNamespaceId -ExpandProperties).Identity
+    
+    Set-AzureRmKeyVaultAccessPolicy -VaultName {keyVaultName} -ResourceGroupName {RGName} -ObjectId $identity.PrincipalId -PermissionsToKeys get,wrapKey,unwrapKey,list
+    ```
+
+### <a name="encrypt-data-in-service-bus-namespace-with-customer-managed-key-from-key-vault"></a>使用 key vault 中客戶管理的金鑰來加密服務匯流排命名空間中的資料
+您目前已完成下列步驟： 
+
+1. 已建立具有受控識別的 premium 命名空間。
+2. 建立金鑰保存庫，並將金鑰保存庫的存取權授與受控識別。 
+
+在此步驟中，您將使用金鑰保存庫資訊來更新服務匯流排命名空間。 
+
+1. 使用下列內容建立名為**UpdateServiceBusNamespaceWithEncryption**的 json 檔案： 
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "namespaceName":{
+             "type":"string",
+             "metadata":{
+                "description":"Name for the Namespace to be created in cluster."
+             }
+          },
+          "location":{
+             "type":"string",
+             "defaultValue":"[resourceGroup().location]",
+             "metadata":{
+                "description":"Specifies the Azure location for all resources."
+             }
+          },
+          "keyVaultUri":{
+             "type":"string",
+             "metadata":{
+                "description":"URI of the KeyVault."
+             }
+          },
+          "keyName":{
+             "type":"string",
+             "metadata":{
+                "description":"KeyName."
+             }
+          }
+       },
+       "resources":[
+          {
+             "type":"Microsoft.ServiceBus/namespaces",
+             "apiVersion":"2018-01-01-preview",
+             "name":"[parameters('namespaceName')]",
+             "location":"[parameters('location')]",
+             "identity":{
+                "type":"SystemAssigned"
+             },
+             "sku":{
+                "name":"Premium",
+                "tier":"Premium",
+                "capacity":1
+             },
+             "properties":{
+                "encryption":{
+                   "keySource":"Microsoft.KeyVault",
+                   "keyVaultProperties":[
+                      {
+                         "keyName":"[parameters('keyName')]",
+                         "keyVaultUri":"[parameters('keyVaultUri')]"
+                      }
+                   ]
+                }
+             }
+          }
+       ]
+    }
+    ``` 
+
+2. 建立範本參數檔案： **UpdateServiceBusNamespaceWithEncryptionParams。**
+
+    > [!NOTE]
+    > 取代下列值： 
+    > - `<ServiceBusNamespaceName>`-服務匯流排命名空間的名稱
+    > - `<Location>`-服務匯流排命名空間的位置
+    > - `<KeyVaultName>`-金鑰保存庫的名稱
+    > - `<KeyName>`-金鑰保存庫中的金鑰名稱  
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "namespaceName":{
+             "value":"<ServiceBusNamespaceName>"
+          },
+          "location":{
+             "value":"<Location>"
+          },
+          "keyName":{
+             "value":"<KeyName>"
+          },
+          "keyVaultUri":{
+             "value":"https://<KeyVaultName>.vault.azure.net"
+          }
+       }
+    }
+    ```             
+3. 執行下列 PowerShell 命令來部署 Resource Manager 範本。 執行命令之前，以您的資源組名取代 `{MyRG}`。 
+
+    ```powershell
+    New-AzResourceGroupDeployment -Name UpdateServiceBusNamespaceWithEncryption -ResourceGroupName {MyRG} -TemplateFile ./UpdateServiceBusNamespaceWithEncryption.json -TemplateParameterFile ./UpdateServiceBusNamespaceWithEncryptionParams.json
+    ```
+    
 
 ## <a name="next-steps"></a>後續步驟
 查看下列文章：

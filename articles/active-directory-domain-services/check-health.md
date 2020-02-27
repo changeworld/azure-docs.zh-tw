@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: f0719542eb693e52f9a7996e28699b7425b0e0fe
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: fa1cba2d791cd40a46f8ad182c123a726143faec
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509133"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614255"
 ---
 # <a name="check-the-health-of-an-azure-active-directory-domain-services-managed-domain"></a>檢查 Azure Active Directory Domain Services 受控網域的健康情況
 
@@ -29,7 +29,7 @@ Azure Active Directory Domain Services （Azure AD DS）會執行一些背景工
 Azure AD DS 受控網域的健全狀況狀態是使用 Azure 入口網站來查看。 您可以看到上次備份時間和與 Azure AD 同步處理的資訊，以及指出受控網域健康情況發生問題的任何警示。 若要查看 Azure AD DS 受控網域的健全狀況狀態，請完成下列步驟：
 
 1. 在 Azure 入口網站中，搜尋並選取  **Azure AD Domain Services**。
-1. 選取您的 Azure AD DS 受控網域，例如*aadds.contoso.com*。
+1. 選取您的 Azure AD DS 受控網域，例如*aaddscontoso.com*。
 1. 在 [Azure AD DS 資源] 視窗的左側，選取 [**健康**情況]。 下列範例螢幕擷取畫面顯示狀況良好的 Azure AD DS 受控網域，以及上一次備份和 Azure AD 同步處理的狀態：
 
     ![顯示 Azure Active Directory Domain Services 狀態的 Azure 入口網站中的健康情況頁面總覽](./media/check-health/health-page.png)
@@ -53,7 +53,7 @@ Azure AD DS 受控網域的健全狀況狀態會顯示兩種類型的資訊-*監
 
 監視是定期檢查 Azure AD DS 受控網域的區域。 如果 Azure AD DS 受控網域有任何作用中警示，可能會導致其中一個監視器回報問題。 Azure AD Domain Services 目前有下欄區域的監視：
 
-* 備份
+* Backup
 * 與 Azure AD 的同步處理
 
 #### <a name="backup-monitor"></a>備份監視器

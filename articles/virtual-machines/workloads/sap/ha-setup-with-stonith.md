@@ -4,7 +4,7 @@ description: 使用 STONITH 在 SUSE 中為 Azure 上的 SAP HANA (大型執行�
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -13,18 +13,18 @@ ms.workload: infrastructure
 ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0f23fe2aa17934b967e7aecf41687cc555b9552c
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 4060dbe936af8ff1f9dd8c958f64834cb06525de
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71212540"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615093"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>使用 STONITH 在 SUSE 中進行高可用性設定
 本文件提供使用 STONITH 裝置在 SUSE 作業系統上進行高可用性設定的詳細逐步指示。
 
 **免責聲明：** *本指南的衍生方式是在 Microsoft HANA 大型實例環境中測試安裝程式，這項功能成功運作。由於適用于 HANA 大型實例的 Microsoft 服務管理小組不支援作業系統，因此您可能需要聯繫 SUSE，以在作業系統層進行進一步的疑難排解或澄清。Microsoft 服務管理小組會設定 STONITH 裝置並完全支援，並可用於針對 STONITH 裝置問題進行疑難排解。*
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概觀
 若要使用 SUSE 叢集進行高可用性設定，必須符合下列先決條件。
 ### <a name="pre-requisites"></a>必要條件
 - 已佈建 HANA 大型執行個體
@@ -154,7 +154,7 @@ zypper in SAPHanaSR SAPHanaSR-doc
 
 ![yast-key-file.png](media/HowToHLI/HASetupWithStonith/yast-key-file.png)
 
-按一下 [虛擬機器]
+按一下 [檔案] &gt; [新增] &gt; [專案]
 
 驗證會使用 IP 位址和 Csync2 中的預先共用金鑰執行。 金鑰檔案是使用 csync2 -k /etc/csync2/key_hagroup 產生。 檔案 key_hagroup 應在建立之後手動複製到叢集的所有成員。 **務必將檔案從 node1 複製到 node2**。
 
@@ -371,7 +371,7 @@ Login to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal
 ### <a name="scenario-2-yast2-does-not-show-graphical-view"></a>案例 2：yast2 未顯示圖形檢視
 此文件使用 yast2 圖形畫面來設定高可用性叢集。 如果 yast2 並未如圖所示以圖形視窗開啟，並擲回 Qt 錯誤，請依照下列步驟執行。 如果它以圖形視窗開啟，您可以略過步驟。
 
-**Error**
+**錯誤**
 
 ![yast2-qt-gui-error.png](media/HowToHLI/HASetupWithStonith/yast2-qt-gui-error.png)
 

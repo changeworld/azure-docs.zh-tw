@@ -5,19 +5,19 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: pepogors
-ms.openlocfilehash: d5a03629a134a0b2c7d6ee95dba9ea3ad06e99ba
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: f40e54f5260f827f0b18c833d23d1f57b5ebc3a3
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75609820"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617458"
 ---
 # <a name="reliable-services-application-and-service-manifest-examples"></a>Reliable Services 應用程式和服務資訊清單範例
 以下舉例說明 Service Fabric 應用程式 (具有 ASP.NET Core Web 前端和具狀態後端) 的應用程式和服務資訊清單。 這些範例的目的是要說明有哪些設定可供使用以及要如何使用。 這些應用程式和服務資訊清單是以 [Service Fabric .NET 快速入門](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/)的資訊清單作為基礎。
 
 下面是會顯示的功能：
 
-|資訊清單|功能|
+|資訊清單|特性|
 |---|---|
 |[應用程式資訊清單](#application-manifest)| [資源管理](service-fabric-resource-governance.md)、[以本機系統管理員帳戶的身分執行服務](service-fabric-application-runas-security.md)、[對所有服務程式碼套件套用預設原則](service-fabric-application-runas-security.md#apply-a-default-policy-to-all-service-code-packages)、[建立使用者和群組主體](service-fabric-application-runas-security.md)、在服務執行個體之間共用資料套件、[覆寫服務端點](service-fabric-service-manifest-resources.md#overriding-endpoints-in-servicemanifestxml)| 
 |FrontEndService 服務資訊清單| [在服務啟動時執行指令碼](service-fabric-run-script-at-service-startup.md)、[定義 HTTPS 端點](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md#define-an-https-endpoint-in-the-service-manifest) | 
@@ -69,7 +69,7 @@ ms.locfileid: "75609820"
                                 MemorySwapInMB="[MemorySwapInMB]"/>
 
       <!-- Share the data package across multiple instances of the VotingData service-->
-      <PackageSharingPolicy PackageRef="VotingDataPkg.Data"/>
+      <PackageSharingPolicy PackageRef="Data"/>
 
       <!-- Give read rights on the "DataEndpoint" endpoint to the Customer2 account.-->
       <SecurityAccessPolicy GrantRights="Read" PrincipalRef="Customer2" ResourceRef="DataEndpoint" ResourceType="Endpoint"/>         

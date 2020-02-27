@@ -4,12 +4,12 @@ description: 了解如何使用 System Center 2012 R2 DPM 將 Exchange Server �
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 813a13739020bed839cc389897704395c77a322d
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 389713767409ff49c6fc83a4d6e8dc3c87272fc9
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586490"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614377"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>使用 System Center 2012 R2 DPM 將 Exchange Server 備份至 Azure 備份
 
@@ -38,8 +38,8 @@ ms.locfileid: "77586490"
 
 若要在 Exchange Server 上安裝 DPM 保護代理程式，請遵循下列步驟：
 
-1. 請確定已正確設定防火牆。 請參閱 [設定代理程式的防火牆例外狀況](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758204(v=sc.12))。
-2. 按一下 DPM 系統管理員主控台中的 [管理] > [代理程式] > [安裝]，在 Exchange Server 上安裝代理程式。 如需詳細步驟，請參閱 [安裝 DPM 保護代理程式](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758186(v=sc.12)) 。
+1. 請確定已正確設定防火牆。 請參閱 [設定代理程式的防火牆例外狀況](https://docs.microsoft.com/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019)。
+2. 按一下 DPM 系統管理員主控台中的 [管理] > [代理程式] > [安裝]，在 Exchange Server 上安裝代理程式。 如需詳細步驟，請參閱 [安裝 DPM 保護代理程式](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) 。
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>建立 Exchange Server 的保護群組
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/10/2020
+ms.date: 02/26/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2a0a786d3e2135467c7279c76bae273bff0ba2d0
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: b24e8cc5f6bb6213bf021362c5654afd4d5266fb
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77149502"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620605"
 ---
 # <a name="page-layout-versions"></a>頁面配置版本
 
@@ -33,7 +33,7 @@ ms.locfileid: "77149502"
 
 - 所有頁面
   - 協助工具修正程式
-  - 您現在可以在 HTML 標籤中加入 `data-preload="true"` 屬性，以控制 CSS 和 JavaScript 的載入順序。
+  - 您現在可以[在 HTML 標籤中](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content)加入 `data-preload="true"` 屬性，以控制 CSS 和 JavaScript 的載入順序。
     - 將連結的 CSS 檔案與您的 HTML 範本同時載入，使其不會在載入檔案時「閃爍」。
     - 控制在頁面載入之前提取和執行 `script` 標記的順序。
   - [電子郵件] 欄位現在已 `type=email`，而行動電話鍵盤會提供正確的建議

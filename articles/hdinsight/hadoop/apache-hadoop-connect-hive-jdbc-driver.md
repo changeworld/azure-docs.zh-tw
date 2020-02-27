@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 016107248399e84b7a82a656c9d590c3cbe0cdbe
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 7d1a77800093ae01bc4eb1e1269d1e9a60f9ce26
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77466921"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616657"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>透過 JDBC 驅動程式在 HDInsight 中查詢 Apache Hive
 
@@ -36,6 +36,18 @@ Azure 上 HDInsight 叢集的 JDBC 連線會透過埠443進行，並使用 SSL �
     jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2
 
 將 `CLUSTERNAME` 替換為 HDInsight 叢集的名稱。
+
+或者，您也可以透過**AMBARI UI > Hive > 配置 > Advanced**來取得連接。
+
+![透過 Ambari 取得 JDBC 連接字串](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-get-connection-string-through-ambari.png)
+
+### <a name="host-name-in-connection-string"></a>連接字串中的主機名稱
+
+連接字串中的主機名稱 ' CLUSTERNAME.azurehdinsight.net ' 與您的叢集 URL 相同。 您可以透過 Azure 入口網站取得此檔案。 
+
+### <a name="port-in-connection-string"></a>連接字串中的埠
+
+您只能使用**埠 443** ，從 Azure 虛擬網路外部的某些位置連線到叢集。 HDInsight 是受控服務，這表示叢集的所有連線都是透過安全的閘道來管理。 您無法直接在埠10001或10000上連接到 HiveServer 2，因為這些埠不會公開至外部。 
 
 ## <a name="authentication"></a>驗證
 
@@ -138,6 +150,15 @@ at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 1. 結束 SQuirreL，然後移至系統上安裝 SQuirreL 的目錄，也許 `C:\Program Files\squirrel-sql-4.0.0\lib`。 在 SquirreL 目錄的 `lib` 目錄下，使用從 HDInsight 叢集下載的版本來取代現有的 commons-codec.jar。
 
 1. 重新啟動 SQuirreL。 連接到 HDInsight 上的 Hive 時應該不會再出現此錯誤。
+
+### <a name="connection-disconnected-by-hdinsight"></a>HDInsight 中斷連接連線
+
+**徵兆**：嘗試透過 JDBC/ODBC 下載大量資料（例如數 gb）時，HDInsight 會在下載時意外中斷連接。 
+
+**原因**：此錯誤是由閘道節點的限制所造成。 從 JDBC/ODBC 取得資料時，所有的資料都需要通過閘道節點。 不過，閘道並非設計來下載大量資料，因此如果閘道無法處理流量，則可能會關閉連線。
+
+**解決方法**：避免使用 JDBC/ODBC 驅動程式下載大量資料。 改為直接從 blob 儲存體複製資料。
+
 
 ## <a name="next-steps"></a>後續步驟
 

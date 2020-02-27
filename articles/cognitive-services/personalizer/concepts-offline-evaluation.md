@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 02/20/2020
 ms.author: diberry
-ms.openlocfilehash: dec6faab0dfc7f073639186429767bbf653ceda1
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: f8ceef5e80bf15f0ba52a9c289e617018febfb5c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513604"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623596"
 ---
 # <a name="offline-evaluation"></a>離線評估
 
@@ -49,6 +49,16 @@ ms.locfileid: "76513604"
 個人化工具可使用離線評估程序來自動探索更好的學習原則。
 
 執行離線評估之後，您可以看到新原則與目前線上原則相比之下，個人化工具所具有的比較成效。 接著，您可以套用該學習原則，讓它在個人化工具中立即生效，方法是下載它，然後在 [模型和原則] 面板中上傳它。 您也可以下載它以供日後分析或使用。
+
+評估中包含的目前原則：
+
+| 學習設定 | 目的|
+|--|--|
+|**線上原則**| 個人化工具中目前使用的學習原則 |
+|**底線**|應用程式的預設值（由順位呼叫中所傳送的第一個動作所決定）|
+|**隨機原則**|虛構排名行為，其一律會從所提供的動作傳回隨機選擇的動作。|
+|**自訂原則**|開始評估時上傳的額外學習原則。|
+|**優化的原則**|若開始評估時採用探索最佳化原則的選項，則也會比較最佳化原則，而且您能夠下載該原則或使其成為線上學習原則，並取代目前的學習原則。|
 
 ## <a name="understanding-the-relevance-of-offline-evaluation-results"></a>了解離線評估結果的相關性
 
@@ -92,7 +102,7 @@ ms.locfileid: "76513604"
 
 * 您的應用程式或系統可提供什麼其他更有效果的額外特性？
 * 可以移除哪些效果低的特性？ 效果低的特性會加重機器學習中的「干擾」。
-* 是否有任何意外加入的特性？ 範例如下：個人識別資訊 (PII) 或重複識別碼等等。
+* 是否有任何意外加入的特性？ 範例如下：使用者標識資訊、重複的識別碼等等。
 * 是否有任何不可用的特性，也就是因為法規或責任考量而不應該用來個人化的特性？ 是否有可以取代不可用特性的特性 (也就是即近似或相關的特性)？
 
 

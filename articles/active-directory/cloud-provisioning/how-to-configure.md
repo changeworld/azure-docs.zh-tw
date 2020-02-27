@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/05/2019
+ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 853950cf441007eac0170f32f28f2d9c16a71292
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: c086227d23901cb7904d8cc0a768e9f4b5ad43db
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75549426"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620980"
 ---
-# <a name="azure-ad-connect-cloud-provisioning-new-agent-configuration"></a>Azure AD Connect 雲端布建新的代理程式設定
+# <a name="create-a-new-configuration-for-azure-ad-connect-cloud-based-provisioning"></a>建立 Azure AD Connect 雲端式布建的新設定
 
 安裝代理程式之後，您必須登入 Azure 入口網站並設定 Azure Active Directory （Azure AD） [連線雲端布建]。 請遵循下列步驟來啟用代理程式。
 
@@ -56,7 +56,8 @@ ms.locfileid: "75549426"
 
     ![選取的安全性群組選項](media/how-to-configure/scope3.png)
 
-1.  或者，您可以將範圍變更為僅包含特定的組織單位。 選取 [**完成**] 和 [**儲存**]。
+1.  或者，您可以將範圍變更為僅包含特定的組織單位。 選取 [**完成**] 和 [**儲存**]。  
+2.  變更範圍之後，您應該[重新開機](#restart-provisioning)布建以起始變更的立即同步處理。
 
     ![選取的組織單位選項](media/how-to-configure/scope4.png)
 

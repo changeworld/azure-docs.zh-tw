@@ -4,7 +4,7 @@ description: 在 Azure 上部署適用於 SAP ERP 6.0 的 SAP IDES EHP7 SP3
 services: virtual-machines-windows
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
-ms.openlocfilehash: 66921280403027d1723b27f104b42d2c83271213
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3efd92226b7c69590f3960458ffec49b63b8364f
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100073"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616696"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>在 Azure 上部署適用於 SAP ERP 6.0 的 SAP IDES EHP7 SP3
 本文說明如何透過 SAP Cloud Appliance Library (SAP CAL) 3.0 在 Azure 上部署與 SQL Server 和 Windows 作業系統搭配執行的 SAP IDES 系統。 螢幕擷取畫面會顯示逐步程序。 若要部署不同的解決方案，請遵循相同的步驟。
@@ -41,7 +41,7 @@ ms.locfileid: "70100073"
 
     a. 選取 Azure 上的部署模型 (Resource Manager 或傳統)。
 
-    b.這是另一個 C# 主控台應用程式。 輸入您的 Azure 訂用帳戶。 一個 SAP CAL 帳戶只能指派給一個訂用帳戶。 如果您需要多個訂用帳戶，則必須另外建立 SAP CAL 帳戶。
+    b. 輸入您的 Azure 訂用帳戶。 一個 SAP CAL 帳戶只能指派給一個訂用帳戶。 如果您需要多個訂用帳戶，則必須另外建立 SAP CAL 帳戶。
     
     c. 賦予 SAP CAL 部署到 Azure 訂用帳戶的權限。
 
@@ -105,7 +105,7 @@ ms.locfileid: "70100073"
 
     ![SAP CAL 基本模式：建立執行個體](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
 
-1. 按一下 [建立]。 在一段時間之後，視解決方案的大小和複雜性 (SAP CAL 會提供預估) 而定，狀態將會顯示為作用中並可供使用： 
+1. 按一下 **[建立]** 。 在一段時間之後，視解決方案的大小和複雜性 (SAP CAL 會提供預估) 而定，狀態將會顯示為作用中並可供使用： 
 
     ![SAP CAL 執行個體](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic12a.png)
 

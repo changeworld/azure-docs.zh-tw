@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: iainfou
-ms.openlocfilehash: 7bf01eea71134d932305cce7665c68d4dcc655cb
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: e3dffca1d5e98de60941aab4400469810c9cfc30
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712565"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613752"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>使用 Resource Manager 範本將 Windows Server 虛擬機器加入 Azure Active Directory Domain Services 受控網域
 
@@ -93,8 +93,8 @@ Resource Manager 範本可讓您在程式碼中定義 Azure 基礎結構。 Vm �
     | 現有的子網名稱      | 現有虛擬網路子網的名稱，例如*工作負載*。 |
     | DNS 標籤首碼          | 輸入要用於 VM 的 DNS 名稱，例如*myvm*。 |
     | VM 大小                   | 指定 VM 大小，例如*Standard_DS2_v2*。 |
-    | 要加入的網域            | Azure AD DS 受控網域 DNS 名稱，例如*aadds.contoso.com*。 |
-    | 網域使用者名稱           | Azure AD DS 受控網域中的使用者帳戶，應該用來將 VM 加入受控網域，例如 `contosoadmin@aadds.contoso.com`。 此帳戶必須是*AZURE AD DC 系統管理員*群組的成員。 |
+    | 要加入的網域            | Azure AD DS 受控網域 DNS 名稱，例如*aaddscontoso.com*。 |
+    | 網域使用者名稱           | Azure AD DS 受控網域中的使用者帳戶，應該用來將 VM 加入受控網域，例如 `contosoadmin@aaddscontoso.com`。 此帳戶必須是*AZURE AD DC 系統管理員*群組的成員。 |
     | 網域密碼           | 先前設定中所指定使用者帳戶的密碼。 |
     | 選用 OU 路徑          | 要在其中新增 VM 的自訂 OU。 如果您未指定此參數的值，VM 會新增至預設*AAD DC 電腦*OU。 |
     | VM 系統管理員使用者名稱         | 指定要在 VM 上建立的本機系統管理員帳戶。 |
@@ -123,7 +123,7 @@ Resource Manager 範本可讓您在程式碼中定義 Azure 基礎結構。 Vm �
     | 資源群組            | 選擇包含現有 VM 的資源群組。 |
     | Location                  | 選取現有 VM 的位置。 |
     | VM 清單                   | 輸入要加入 Azure AD DS 受控網域的現有 VM 逗號分隔清單，例如*myVM1、myVM2*。 |
-    | 加入網域的使用者名稱     | Azure AD DS 受控網域中的使用者帳戶，應該用來將 VM 加入受控網域，例如 `contosoadmin@aadds.contoso.com`。 此帳戶必須是*AZURE AD DC 系統管理員*群組的成員。 |
+    | 加入網域的使用者名稱     | Azure AD DS 受控網域中的使用者帳戶，應該用來將 VM 加入受控網域，例如 `contosoadmin@aaddscontoso.com`。 此帳戶必須是*AZURE AD DC 系統管理員*群組的成員。 |
     | 加入網域的使用者密碼 | 先前設定中所指定使用者帳戶的密碼。 |
     | 選用 OU 路徑          | 要在其中新增 VM 的自訂 OU。 如果您未指定此參數的值，VM 會新增至預設*AAD DC 電腦*OU。 |
 

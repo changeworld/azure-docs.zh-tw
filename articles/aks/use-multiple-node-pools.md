@@ -4,12 +4,12 @@ description: 瞭解如何在 Azure Kubernetes Service （AKS）中建立及管�
 services: container-service
 ms.topic: article
 ms.date: 02/14/2020
-ms.openlocfilehash: 846425e6d36462636ea1f4e82d6c7233dcb28ac9
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 3e0890a0e8600526da2047cabc0b50af8177ea37
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77592878"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615700"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service （AKS）中建立及管理叢集的多個節點集區
 
@@ -29,8 +29,7 @@ ms.locfileid: "77592878"
 當您建立和管理支援多個節點集區的 AKS 叢集時，適用下列限制：
 
 * 請參閱[配額、虛擬機器大小限制，以及 Azure Kubernetes Service 中的區域可用性（AKS）][quotas-skus-regions]。
-* 您無法刪除預設（第一個）節點集區。
-* 無法使用 HTTP 應用程式路由附加元件。
+* 根據預設，您無法刪除第一個節點集區的系統節點集區。
 * AKS 叢集必須使用標準 SKU 負載平衡器來使用多個節點集區，但基本 SKU 負載平衡器不支援此功能。
 * AKS 叢集必須使用節點的虛擬機器擴展集。
 * 節點集區的名稱只可包含小寫英數位元，且必須以小寫字母開頭。 針對 Linux 節點集區，長度必須介於1到12個字元之間，而 Windows 節點集區的長度必須介於1到6個字元之間。

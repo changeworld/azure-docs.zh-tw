@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 02/24/2020
-ms.openlocfilehash: 0cb33f55acacfd3635d19719265a46b566765a64
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 2ea77be0a7aabefaf8f6ed9a5bd841ea1fdda263
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77592097"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620317"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Azure 監視器客戶管理的金鑰設定 
 
@@ -172,7 +172,7 @@ https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<res
 
 ### <a name="azure-monitor-data-store-adx-cluster-provisioning"></a>Azure 監視器資料存放區（ADX 叢集）布建
 
-在此功能的早期存取期間，產品小組會在先前的步驟完成後，手動布建 ADX 叢集。 使用與 Microsoft 搭配的通道來提供*叢集資源詳細*資料。 您可以使用 GET REST API 來抓取 JSON 回應：
+在此功能的早期存取期間，產品小組會在先前的步驟完成後，手動布建 ADX 叢集。 使用您的 Microsoft 通道來提供*叢集資源詳細*資料。 從*叢集資源 GET* REST API 複製 JSON 回應：
 
 ```rst
 GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview

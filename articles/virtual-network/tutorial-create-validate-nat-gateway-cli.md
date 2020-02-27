@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: bc815281a005f750072176015a937547ff6d4670
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 26a427baddc99fa702b638c36b5378750364c849
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77429069"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587017"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-cli-and-test-the-nat-service"></a>教學課程：使用 Azure CLI 建立 NAT 閘道並測試 NAT 服務
 
@@ -34,8 +34,6 @@ ms.locfileid: "77429069"
 
 如果您選擇在本機執行這些命令，則必須安裝 CLI。  在本教學課程中，您必須執行 Azure CLI 2.0.71 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
 
-> [!IMPORTANT]
-> 在您的訂用帳戶上[啟用虛擬網路 NAT 預覽版](./nat-overview.md#enable-preview)之後，請使用 https://aka.ms/natportal 來存取入口網站。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
@@ -77,7 +75,7 @@ ms.locfileid: "77429069"
 
 本節將詳細說明如何使用 NAT 閘道資源建立及設定下列 NAT 服務元件：
   - 公用 IP 集區和公用 IP 前置詞，將用於 NAT 閘道資源所轉譯的輸出流量。
-  - 將閒置逾時從預設的 4 分鐘變更為 10 分鐘。
+  - 將閒置逾時時間從預設的 4 分鐘變更為 10 分鐘。
 
 使用 [az network nat gateway create](https://docs.microsoft.com/cli/azure/network/nat?view=azure-cli-latest) 建立全域 Azure NAT 閘道，其名稱為 **myNATgateway**。 此命令會使用公用 IP 位址 **myPublicIP** 和公用 IP 前置詞 **myPublicIPprefix**。 此命令也會將閒置逾時變更為 10 分鐘。
 

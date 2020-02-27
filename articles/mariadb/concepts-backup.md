@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 333e51782fd0dd88b3e8747fb831b841a22c8e6c
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 02/25/2020
+ms.openlocfilehash: 3e10c23aaaef6315e072348d879d5f077e16382a
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74773081"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623667"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>在適用於 MariaDB 的 Azure 資料庫中備份與還原
 
@@ -20,6 +20,8 @@ ms.locfileid: "74773081"
 ## <a name="backups"></a>備份
 
 適用於 MariaDB 的 Azure 資料庫採用完整、差異及交易記錄備份。 在您設定的備份保留期限內，這些備份可讓您將伺服器還原至任何時間點。 預設的備份保留期限是七天。 可選擇設定的期限最多為 35 天。 所有備份皆會使用 AES 256 位元加密進行加密。
+
+無法匯出這些備份檔案。 備份只能用於適用於 MariaDB 的 Azure 資料庫中的還原作業。 您可以使用[mysqldump](howto-migrate-dump-restore.md)來複製資料庫。
 
 ### <a name="backup-frequency"></a>備份頻率
 
@@ -40,7 +42,7 @@ ms.locfileid: "74773081"
 
 如需備份儲存體成本的詳細資訊，請前往 [MariaDB 定價頁面](https://azure.microsoft.com/pricing/details/mariadb/)。
 
-## <a name="restore"></a>還原
+## <a name="restore"></a>{1}還原{2}
 
 在適用於 MariaDB 的 Azure 資料庫中，執行還原會從原始伺服器的備份中建立新伺服器。
 

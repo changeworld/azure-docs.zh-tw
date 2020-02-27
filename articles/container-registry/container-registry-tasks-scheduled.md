@@ -3,12 +3,12 @@ title: 教學課程-排程 ACR 工作
 description: 在本教學課程中，您將瞭解如何藉由設定一或多個計時器觸發程式，以定義的排程執行 Azure Container Registry 工作。
 ms.topic: article
 ms.date: 06/27/2019
-ms.openlocfilehash: 37247289ef11873ac37dc78ad56548994220f894
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 4c0962a38cca73e4a03a7417baaa595cf0d97009
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454668"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617449"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>依定義的排程執行 ACR 工作
 
@@ -25,7 +25,7 @@ ms.locfileid: "74454668"
 * 針對已排程的維護作業執行容器工作負載。 例如，執行容器化應用程式，從您的登錄中移除不需要的映射。
 * 在 workday 期間對生產映射執行一組測試，做為即時網站監視的一部分。
 
-您可以使用 Azure Cloud Shell 或本機安裝的 Azure CLI 來執行本文中的範例。 如果您想要在本機使用，則需要2.0.68 或更新版本。 執行 `az --version` 找出版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli-install]。
+您可以使用 Azure Cloud Shell 或本機安裝的 Azure CLI 來執行本文中的範例。 如果您想要在本機使用，則需要2.0.68 或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli-install]。
 
 
 ## <a name="about-scheduling-a-task"></a>關於排程工作
@@ -175,7 +175,7 @@ ACR 工作使用[NCronTab](https://github.com/atifaziz/NCrontab)程式庫來解�
 
 每個欄位可以具備下列類型的值：
 
-|在系統提示您進行確認時，輸入  |範例  |觸發時間  |
+|類型  |範例  |觸發時間  |
 |---------|---------|---------|
 |特定值 |<nobr>`"5 * * * *"`</nobr>|每小時在過去的5分鐘內|
 |所有值 (`*`)|<nobr>`"* 5 * * *"`</nobr>|一小時的每分鐘開始 5:00 UTC （每天60次）|
@@ -197,6 +197,14 @@ ACR 工作使用[NCronTab](https://github.com/atifaziz/NCrontab)程式庫來解�
 |`"30 9 * * 1-5"`|每個工作日 9:30 UTC|
 |`"30 9 * Jan Mon"`|在1月每週一的 9:30 UTC|
 
+## <a name="clean-up-resources"></a>清除資源
+
+若要移除您在本教學課程系列中建立的所有資源，包括容器登錄或登錄、容器實例、金鑰保存庫和服務主體，請發出下列命令：
+
+```azurecli-interactive
+az group delete --resource-group $RES_GROUP
+az ad sp delete --id http://$ACR_NAME-pull
+```
 
 ## <a name="next-steps"></a>後續步驟
 

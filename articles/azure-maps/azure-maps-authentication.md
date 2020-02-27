@@ -9,16 +9,19 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: ee8b166077c64ae5e0f2cce18ee0bc77e8c996f4
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 171219c001f43137a52f29b282fb1705b3d836aa
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210118"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649818"
 ---
 # <a name="authentication-with-azure-maps"></a>向 Azure 地圖服務驗證
 
 Azure 地圖服務支援兩種驗證要求的方式：共用金鑰驗證和 Azure Active Directory 驗證。 本文說明這些驗證方法，以協助引導您執行 Azure 地圖服務服務。
+
+> [!NOTE]
+> 為了改善與 Azure 地圖服務的安全通訊，我們現在支援傳輸層安全性（TLS）1.2，而且我們即將淘汰對 TLS 1.0 和1.1 的支援。 若要避免任何服務中斷，請在**2020 年4月2日前，將您的伺服器和應用程式更新為使用 TLS 1.2**。  如果您目前使用 TLS 1.x，請評估您的 TLS 1.2 就緒程度，並使用[解決 TLS 1.0 問題](https://docs.microsoft.com/security/solving-tls1-problem)中所述的測試來開發遷移計畫。
 
 ## <a name="shared-key-authentication"></a>共用金鑰驗證
 

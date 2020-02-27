@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2019
 ms.author: jegeib
-ms.openlocfilehash: 12db1a0b0b5a9677d0490f8eff229bbb524a91ff
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6a5216f17645dc86a9e7a1872c7e66947c8bd36b
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224768"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624075"
 ---
 # <a name="threat-modeling-tool-releases"></a>Threat Modeling Tool 版本
 
@@ -37,6 +37,7 @@ Microsoft Threat Modeling Tool 目前以 Windows 免費應用程式的形式發�
 
 ## <a name="release-notes"></a>版本資訊
 
+- [MICROSOFT THREAT MODELING TOOL GA 發行版本 7.3.00206.1](threat-modeling-tool-releases-73002061.md) -11 2020 年2月
 - [MICROSOFT THREAT MODELING TOOL GA 發行版本 7.1.61015.1](threat-modeling-tool-releases-71610151.md) -16 2019 年10月
 - [MICROSOFT THREAT MODELING TOOL GA 發行版本 7.1.60702.1](threat-modeling-tool-releases-71607021.md) -2 2019 年7月
 - [MICROSOFT THREAT MODELING TOOL GA 發行版本 7.1.60408.1](threat-modeling-tool-releases-71604081.md) -9 2019 年4月

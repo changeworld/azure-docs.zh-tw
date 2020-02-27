@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 6737b75a955bb12072722f274ac589cb6d525ffb
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 216fdeca9893f4e290474512617f13382d22890f
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772545"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614006"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>在 Azure Active Directory Domain Services 中設定 Kerberos 限制委派（KCD）
 
@@ -24,7 +24,7 @@ ms.locfileid: "76772545"
 
 本文說明如何在 Azure AD DS 受控網域中設定以資源為基礎的 Kerberos 限制委派。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本文，您需要下列資源：
 
@@ -56,7 +56,7 @@ Windows Server 2012 和更新版本讓服務系統管理員能夠設定其服務
 
 ## <a name="configure-resource-based-kcd-for-a-computer-account"></a>針對電腦帳戶設定以資源為基礎的 KCD
 
-在此案例中，假設您有一個在名為*contoso-webapp.aadds.contoso.com*的電腦上執行的 web 應用程式。 Web 應用程式需要存取在網域使用者內容中名為*contoso-api.aadds.contoso.com*的電腦上執行的 Web API。 請完成下列步驟來設定此案例：
+在此案例中，假設您有一個在名為*contoso-webapp.aaddscontoso.com*的電腦上執行的 web 應用程式。 Web 應用程式需要存取在網域使用者內容中名為*contoso-api.aaddscontoso.com*的電腦上執行的 Web API。 請完成下列步驟來設定此案例：
 
 1. [建立自訂 OU](create-ou.md)。 您可以將管理這個自訂 OU 的許可權委派給 Azure AD DS 受控網域中的使用者。
 1. [網域-將][create-join-windows-vm]執行 web 應用程式的虛擬機器和執行 Web API 的電腦，加入至 Azure AD DS 受控網域。 在上一個步驟的自訂 OU 中建立這些電腦帳戶。
@@ -67,8 +67,8 @@ Windows Server 2012 和更新版本讓服務系統管理員能夠設定其服務
 1. 最後，使用 Get-adcomputer PowerShell Cmdlet 來[設定][Set-ADComputer]以資源為基礎的 KCD。 從已加入網域的管理 VM，並以屬於*AZURE AD DC administrators*群組成員的使用者帳戶登入，執行下列 Cmdlet。 視需要提供您自己的電腦名稱稱：
     
     ```powershell
-    $ImpersonatingAccount = Get-ADComputer -Identity contoso-webapp.aadds.contoso.com
-    Set-ADComputer contoso-api.aadds.contoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
+    $ImpersonatingAccount = Get-ADComputer -Identity contoso-webapp.aaddscontoso.com
+    Set-ADComputer contoso-api.aaddscontoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
     ```
 
 ## <a name="configure-resource-based-kcd-for-a-user-account"></a>為使用者帳戶設定以資源為基礎的 KCD

@@ -1,28 +1,24 @@
 ---
-title: 教學課程：使用 Azure 應用程式組態將事件傳送至 Web 端點
-titleSuffix: Azure App Configuration
-description: 在本教學課程中，您將了解如何設定 Azure 應用程式組態事件訂用帳戶，以將索引鍵/值修改事件傳送至 Web 端點。
+title: 使用 Azure 應用程式組態將事件傳送至 web 端點
+description: 瞭解如何使用 Azure 應用程式組態事件訂閱，將索引鍵/值修改事件傳送至 web 端點
 services: azure-app-configuration
-documentationcenter: ''
-author: jimmyca
-editor: ''
+author: lisaguthrie
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.devlang: csharp
-ms.topic: tutorial
-ms.date: 05/30/2019
+ms.topic: how-to
+ms.date: 02/25/2020
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: 2a80f931f2060d421483b9e26940985091c9bb5c
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
-ms.translationtype: HT
+ms.openlocfilehash: 93700af5e7fb3a4a1253424996ed04532c01f88c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899691"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619595"
 ---
-# <a name="quickstart-route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>快速入門：使用 Azure CLI 將 Azure 應用程式組態事件路由傳送至 Web 端點
+# <a name="route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>使用 Azure CLI 將 Azure 應用程式組態事件路由傳送至 Web 端點
 
-在本快速入門中，您將了解如何設定 Azure 應用程式組態事件訂用帳戶，以將索引鍵/值修改事件傳送至 Web 端點。 Azure 應用程式組態使用者可以訂閱修改索引鍵/值時所發出的事件。 這些事件可以觸發 Webhook、Azure Functions、Azure 儲存體佇列，或 Azure 事件方格所支援的任何其他事件處理常式。 通常，您會將事件傳送至可處理事件資料及採取行動的端點。 不過，若要簡化這篇文章，您可將事件傳送至可收集及顯示訊息的 Web 應用程式。
+在本文中，您將瞭解如何設定 Azure 應用程式組態事件訂用帳戶，將索引鍵/值修改事件傳送至 web 端點。 Azure 應用程式組態使用者可以訂閱每次修改索引鍵/值時所發出的事件。 這些事件可以觸發 web 勾點、Azure Functions、Azure 儲存體的佇列，或 Azure 事件方格所支援的任何其他事件處理常式。 通常，您會將事件傳送至可處理事件資料及採取行動的端點。 不過，若要簡化這篇文章，您可將事件傳送至可收集及顯示訊息的 Web 應用程式。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -40,21 +36,22 @@ Event Grid 為 Azure 資源，必須放入 Azure 資源群組中。 資源群組
 
 使用 [az group create](/cli/azure/group) 命令來建立資源群組。 
 
-下列範例會在 westus *`<resource_group_name>` 位置建立名為*  的資源群組。  以資源群組的唯一名稱取代 `<resource_group_name>`。
+下列範例會在 westus `<resource_group_name>`*位置建立名為* 的資源群組。  以資源群組的唯一名稱取代 `<resource_group_name>`。
 
 ```azurecli-interactive
 az group create --name <resource_group_name> --location westus
 ```
 
-## <a name="create-an-app-configuration"></a>建立應用程式組態
+## <a name="create-an-app-configuration-store"></a>建立應用程式組態存放區
 
-以應用程式組態的唯一名稱取代 `<appconfig_name>`，並以您稍早建立的資源群組取代 `<resource_group_name>`。 此名稱必須是唯一的，因為它會當作 DNS 項目使用。
+將 `<appconfig_name>` 取代為設定存放區的唯一名稱，並使用您稍早建立的資源群組 `<resource_group_name>`。 此名稱必須是唯一的，因為它會當作 DNS 項目使用。
 
 ```azurecli-interactive
 az appconfig create \
   --name <appconfig_name> \
   --location westus \
-  --resource-group <resource_group_name>
+  --resource-group <resource_group_name> \
+  --sku free
 ```
 
 ## <a name="create-a-message-endpoint"></a>建立訊息端點
@@ -78,7 +75,7 @@ az group deployment create \
 
 [!INCLUDE [event-grid-register-provider-cli.md](../../includes/event-grid-register-provider-cli.md)]
 
-## <a name="subscribe-to-your-app-configuration"></a>訂閱應用程式組態
+## <a name="subscribe-to-your-app-configuration-store"></a>訂閱您的應用程式組態存放區
 
 您可訂閱主題，告知 Event Grid 您想要追蹤的事件，以及要將事件傳送至何處。 下列範例會訂閱您所建立的應用程式組態，從 Web 應用程式傳遞 URL 作為事件通知的端點。 以事件訂用帳戶的名稱來取代 `<event_subscription_name>`。 對於 `<resource_group_name>` 和 `<appconfig_name>`，使用您稍早建立的值。
 
@@ -122,7 +119,6 @@ az appconfig kv set --name <appconfig_name> --key Foo --value Bar --yes
   "dataVersion": "1",
   "metadataVersion": "1"
 }]
-
 ```
 
 ## <a name="clean-up-resources"></a>清除資源

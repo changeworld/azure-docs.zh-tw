@@ -5,13 +5,13 @@ author: jan-eng
 ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/08/2019
-ms.openlocfilehash: b5a2d8a812c5b3b0021ad4f74fc705049807cb1b
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.date: 02/25/2020
+ms.openlocfilehash: 9ce88c687df4e329acd2949d0b26033dc10c94ea
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485058"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619480"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫中的定價層-單一伺服器
 
@@ -87,7 +87,7 @@ ms.locfileid: "77485058"
 
 ## <a name="backup"></a>Backup
 
-服務會自動採用伺服器的備份。 備份的最小保留期限是七天。 您可以設定的保留期限最多為 35 天。 在伺服器的存留期期間，您可以在任何時間點調整保留期限。 您可以選擇本地備援和異地備援備份。 異地備援備份也會儲存在您伺服器所在建立區域的[地理配對區域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)中。 此備援能力可在發生災害時提供一層保護。 您也可讓伺服器還原到其他任何 Azure 區域，只要其中的服務可使用異地備援備份。 建立伺服器之後，便無法在兩個備份儲存體選項之間做變更。
+服務會自動採用伺服器的備份。 您可以選取介於7到35天的保留期間。 一般用途和記憶體優化伺服器可以選擇使用異地多餘的儲存空間來進行備份。 若要深入瞭解備份，請參閱[概念文章](concepts-backup.md)。
 
 ## <a name="scale-resources"></a>調整資源
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: iainfou
-ms.openlocfilehash: 93cb200751c1c107ae844ffd274d83dd997293de
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 1be9134ee217cb91461e89c9908b889a14ec0c3a
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712592"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613789"
 ---
 # <a name="join-a-red-hat-enterprise-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>將 Red Hat Enterprise Linux 的虛擬機器加入 Azure AD Domain Services 受控網域
 
@@ -63,13 +63,13 @@ sudo vi /etc/hosts
 
 在*hosts*檔案中，更新*localhost*位址。 在下例中︰
 
-* *aadds.contoso.com*是 Azure AD DS 受控網域的 DNS 功能變數名稱。
+* *aaddscontoso.com*是 Azure AD DS 受控網域的 DNS 功能變數名稱。
 * *rhel*是您要加入受控網域之 rhel VM 的主機名稱。
 
 使用您自己的值來更新這些名稱：
 
 ```console
-127.0.0.1 rhel rhel.aadds.contoso.com
+127.0.0.1 rhel rhel.aaddscontoso.com
 ```
 
 完成時，請使用編輯器的 [`:wq`] 命令儲存並結束*hosts*檔案。
@@ -96,30 +96,30 @@ sudo yum install adcli sssd authconfig krb5-workstation
 
 ### <a name="rhel-7"></a>RHEL 7
 
-1. 使用 `realm discover` 命令探索 Azure AD DS 受控網域。 下列範例會探索領域*AADDS。CONTOSO.COM*。 以全部大寫指定您自己的 Azure AD DS 受控功能變數名稱：
+1. 使用 `realm discover` 命令探索 Azure AD DS 受控網域。 下列範例會探索領域*AADDSCONTOSO.COM*。 以全部大寫指定您自己的 Azure AD DS 受控功能變數名稱：
 
     ```console
-    sudo realm discover AADDS.CONTOSO.COM
+    sudo realm discover AADDSCONTOSO.COM
     ```
 
    如果 `realm discover` 命令找不到您 Azure AD DS 受控網域，請參閱下列疑難排解步驟：
 
-    * 請確定可從 VM 連線到該網域。 嘗試 `ping aadds.contoso.com` 以查看是否傳回正面回復。
+    * 請確定可從 VM 連線到該網域。 嘗試 `ping aaddscontoso.com` 以查看是否傳回正面回復。
     * 檢查 VM 是否已部署至相同或對等互連的虛擬網路，其中可使用 Azure AD DS 受控網域。
     * 確認虛擬網路的 DNS 伺服器設定已更新，以指向 Azure AD DS 受控網域的網域控制站。
 
 1. 現在使用 `kinit` 命令來初始化 Kerberos。 指定屬於*AAD DC 系統管理員*群組的使用者。 如有需要，請[將使用者帳戶新增至 Azure AD 中的群組](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md)。
 
-    同樣地，必須以全部大寫輸入 Azure AD DS 受管理的功能變數名稱。 在下列範例中，會使用名為 `contosoadmin@aadds.contoso.com` 的帳戶來初始化 Kerberos。 輸入屬於*AAD DC 系統管理員*群組成員的您自己的使用者帳戶：
+    同樣地，必須以全部大寫輸入 Azure AD DS 受管理的功能變數名稱。 在下列範例中，會使用名為 `contosoadmin@aaddscontoso.com` 的帳戶來初始化 Kerberos。 輸入屬於*AAD DC 系統管理員*群組成員的您自己的使用者帳戶：
 
     ```console
-    kinit contosoadmin@AADDS.CONTOSO.COM
+    kinit contosoadmin@AADDSCONTOSO.COM
     ```
 
-1. 最後，使用 `realm join` 命令將電腦加入 Azure AD DS 受控網域。 使用與您在上一個 `kinit` 命令中指定的*AAD DC 系統管理員*群組成員相同的使用者帳戶，例如 `contosoadmin@AADDS.CONTOSO.COM`：
+1. 最後，使用 `realm join` 命令將電腦加入 Azure AD DS 受控網域。 使用與您在上一個 `kinit` 命令中指定的*AAD DC 系統管理員*群組成員相同的使用者帳戶，例如 `contosoadmin@AADDSCONTOSO.COM`：
 
     ```console
-    sudo realm join --verbose AADDS.CONTOSO.COM -U 'contosoadmin@AADDS.CONTOSO.COM'
+    sudo realm join --verbose AADDSCONTOSO.COM -U 'contosoadmin@AADDSCONTOSO.COM'
     ```
 
 將 VM 加入 Azure AD DS 受控網域需要幾分鐘的時間。 下列範例輸出顯示 VM 已成功加入 Azure AD DS 受控網域：
@@ -130,26 +130,26 @@ Successfully enrolled machine in realm
 
 ### <a name="rhel-6"></a>RHEL 6
 
-1. 使用 `adcli info` 命令探索 Azure AD DS 受控網域。 下列範例會探索領域*ADDDS。CONTOSO.COM*。 以全部大寫指定您自己的 Azure AD DS 受控功能變數名稱：
+1. 使用 `adcli info` 命令探索 Azure AD DS 受控網域。 下列範例會探索領域*ADDDSCONTOSO.COM*。 以全部大寫指定您自己的 Azure AD DS 受控功能變數名稱：
 
     ```console
-    sudo adcli info aadds.contoso.com
+    sudo adcli info aaddscontoso.com
     ```
 
    如果 `adcli info` 命令找不到您 Azure AD DS 受控網域，請參閱下列疑難排解步驟：
 
-    * 請確定可從 VM 連線到該網域。 嘗試 `ping aadds.contoso.com` 以查看是否傳回正面回復。
+    * 請確定可從 VM 連線到該網域。 嘗試 `ping aaddscontoso.com` 以查看是否傳回正面回復。
     * 檢查 VM 是否已部署至相同或對等互連的虛擬網路，其中可使用 Azure AD DS 受控網域。
     * 確認虛擬網路的 DNS 伺服器設定已更新，以指向 Azure AD DS 受控網域的網域控制站。
 
 1. 首先，使用 `adcli join` 命令加入網域，此命令也會建立 keytab 來驗證機器。 使用屬於*AAD DC 系統管理員*群組成員的使用者帳戶。
 
     ```console
-    sudo adcli join aadds.contoso.com -U contosoadmin
+    sudo adcli join aaddscontoso.com -U contosoadmin
     ```
 
-1. 現在設定 `/ect/krb5.conf` 並建立 `/etc/sssd/sssd.conf` 檔案，以使用 `aadds.contoso.com` Active Directory 網域。
-   請確定 `AADDS.CONTOSO.COM` 已由您自己的功能變數名稱取代：
+1. 現在設定 `/ect/krb5.conf` 並建立 `/etc/sssd/sssd.conf` 檔案，以使用 `aaddscontoso.com` Active Directory 網域。
+   請確定 `AADDSCONTOSO.COM` 已由您自己的功能變數名稱取代：
 
     使用編輯器開啟 `/ect/krb5.conf` 檔案：
 
@@ -166,7 +166,7 @@ Successfully enrolled machine in realm
      admin_server = FILE:/var/log/kadmind.log
     
     [libdefaults]
-     default_realm = AADDS.CONTOSO.COM
+     default_realm = AADDSCONTOSO.COM
      dns_lookup_realm = true
      dns_lookup_kdc = true
      ticket_lifetime = 24h
@@ -174,14 +174,14 @@ Successfully enrolled machine in realm
      forwardable = true
     
     [realms]
-     AADDS.CONTOSO.COM = {
-     kdc = AADDS.CONTOSO.COM
-     admin_server = AADDS.CONTOSO.COM
+     AADDSCONTOSO.COM = {
+     kdc = AADDSCONTOSO.COM
+     admin_server = AADDSCONTOSO.COM
      }
     
     [domain_realm]
-     .CONTOSO.COM = AADDS.CONTOSO.COM
-     CONTOSO.COM = AADDS.CONTOSO.COM
+     .AADDSCONTOSO.COM = AADDSCONTOSO.COM
+     AADDSCONTOSO.COM = AADDSCONTOSO.COM
     ```
     
    建立 `/etc/sssd/sssd.conf` 檔案：
@@ -196,9 +196,9 @@ Successfully enrolled machine in realm
     [sssd]
      services = nss, pam, ssh, autofs
      config_file_version = 2
-     domains = AADDS.CONTOSO.COM
+     domains = AADDSCONTOSO.COM
     
-    [domain/AADDS.CONTOSO.COM]
+    [domain/AADDSCONTOSO.COM]
     
      id_provider = ad
     ```
@@ -273,11 +273,11 @@ sudo getent passwd contosoadmin
     sudo visudo
     ```
 
-1. 將下列專案新增至 */etc/sudoers*檔案的結尾。 *AAD DC 系統管理員*群組包含名稱中的空白字元，因此請在組名中包含反斜線 escape 字元。 新增您自己的功能變數名稱，例如*aadds.contoso.com*：
+1. 將下列專案新增至 */etc/sudoers*檔案的結尾。 *AAD DC 系統管理員*群組包含名稱中的空白字元，因此請在組名中包含反斜線 escape 字元。 新增您自己的功能變數名稱，例如*aaddscontoso.com*：
 
     ```console
     # Add 'AAD DC Administrators' group members as admins.
-    %AAD\ DC\ Administrators@aadds.contoso.com ALL=(ALL) NOPASSWD:ALL
+    %AAD\ DC\ Administrators@aaddscontoso.com ALL=(ALL) NOPASSWD:ALL
     ```
 
     完成時，請使用編輯器的 [`:wq`] 命令儲存並結束編輯器。
@@ -286,10 +286,10 @@ sudo getent passwd contosoadmin
 
 若要確認 VM 已成功加入 Azure AD DS 受控網域，請使用網域使用者帳戶啟動新的 SSH 連線。 確認已建立主目錄，並已套用網域的群組成員資格。
 
-1. 從您的主控台建立新的 SSH 連線。 使用屬於受控 `ssh -l` 網域的網域帳戶（例如 `contosoadmin@aadds.contoso.com`），然後輸入您 VM 的位址，例如*rhel.aadds.contoso.com*。 如果您使用 Azure Cloud Shell，請使用 VM 的公用 IP 位址，而不是內部 DNS 名稱。
+1. 從您的主控台建立新的 SSH 連線。 使用屬於受控 `ssh -l` 網域的網域帳戶（例如 `contosoadmin@aaddscontoso.com`），然後輸入您 VM 的位址，例如*rhel.aaddscontoso.com*。 如果您使用 Azure Cloud Shell，請使用 VM 的公用 IP 位址，而不是內部 DNS 名稱。
 
     ```console
-    ssh -l contosoadmin@AADDS.CONTOSO.com rhel.contoso.com
+    ssh -l contosoadmin@AADDSCONTOSO.com rhel.aaddscontoso.com
     ```
 
 1. 當您成功連線到 VM 時，請確認已正確初始化主目錄：

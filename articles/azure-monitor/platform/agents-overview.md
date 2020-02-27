@@ -8,14 +8,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 629b75963ba90a25d59c1601fcd479fce40c92e7
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: e3385234433a292ce146c9aed25ecfeb1095d79a
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467261"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616120"
 ---
-# <a name="overview-of-azure-monitor-agents"></a>Azure 監視器代理程式的總覽 
+# <a name="overview-of-azure-monitor-agents"></a>Azure 監視器代理程式的總覽
+
 虛擬機器和其他計算資源需要代理程式來收集監視資料，以測量其客體作業系統和工作負載的效能和可用性。 本文說明 Azure 監視器所使用的代理程式，並協助您判斷需要符合特定環境需求的方式。
 
 > [!NOTE]
@@ -24,6 +25,7 @@ ms.locfileid: "77467261"
 特定虛擬機器的單一代理程式可能無法完全符合一組特定的需求。 例如，您可能會想要使用需要 Azure 診斷延伸模組但也想要利用需要 Log Analytics 代理程式和相依性代理程式之適用於 VM 的 Azure 監視器功能的計量警示。 在這種情況下，您可以使用多個代理程式，而這是一種常見的案例，適用于需要各項功能的客戶。
 
 ## <a name="summary-of-agents"></a>代理程式摘要
+
 下表提供 Windows 和 Linux Azure 監視器代理程式的快速比較。 下一節會提供每個詳細資料。 
 
 ### <a name="windows-agents"></a>Windows 代理程式
@@ -32,7 +34,7 @@ ms.locfileid: "77467261"
 |:---|:---|:---|:---|
 | 支援的環境 | Azure | Azure<br>其他雲端<br>內部部署 | Azure<br>其他雲端<br>內部部署 | 
 | 代理程式需求  | None | None | 需要 Log Analytics 代理程式 |
-| 收集的資料 | 事件記錄<br>ETW 事件<br>效能<br>以檔案為基礎的記錄檔<br>IIS 記錄<br>.NET 應用程式記錄檔<br>損毀傾印<br>代理程式診斷記錄 | 事件記錄<br>效能<IIS logs><br>以檔案為基礎的記錄檔<br>深入解析和解決方案<br>其他服務 | 進程詳細資料和相依性<br>網路連接計量 |
+| 收集的資料 | 事件記錄<br>ETW 事件<br>效能<br>以檔案為基礎的記錄檔<br>IIS 記錄<br>.NET 應用程式記錄檔<br>損毀傾印<br>代理程式診斷記錄 | 事件記錄<br>效能<IIS logs><br>以檔案為基礎的記錄檔<br>見解和解決方案<br>其他服務 | 進程詳細資料和相依性<br>網路連接計量 |
 | 資料傳送至 | Azure 儲存體<br>Azure 監視器計量<br>事件中樞 | Azure 監視器記錄 | Azure 監視器記錄 |
 
 
@@ -46,11 +48,12 @@ ms.locfileid: "77467261"
 | 資料傳送至 | Azure 儲存體<br>事件中樞 | Azure 監視器計量 | Azure 監視器記錄 | Azure 監視器記錄 |
 
 ## <a name="log-analytics-agent"></a>Log Analytics 代理程式
+
 [Log Analytics 代理程式](log-analytics-agent.md)會收集來自客體作業系統的監視資料，以及 Azure、其他雲端提供者和內部部署中虛擬機器的工作負載。 它會將資料收集到 Log Analytics 工作區。 Log Analytics 代理程式是 System Center Operations Manager 所使用的相同代理程式，您可以多路連接代理程式電腦與管理群組通訊並同時 Azure 監視器。 Azure 監視器中的特定見解和解決方案也需要此代理程式。
 
 
 > [!NOTE]
-> 適用于 Windows 的 Log Analytics 代理程式通常稱為 Microsoft 管理代理程式（MMA）。 適用于 Linux 的 Log Analytics 代理程式通常稱為「OMS 代理程式」。
+> 適用于 Windows 的 Log Analytics 代理程式通常稱為 Microsoft Monitoring Agent （MMA）。 適用于 Linux 的 Log Analytics 代理程式通常稱為「OMS 代理程式」。
 
 
 
@@ -68,6 +71,7 @@ Log Analytics 代理程式的限制包括：
 - 無法將資料傳送至 Azure 監視器計量、Azure 儲存體或 Azure 事件中樞。
 
 ## <a name="azure-diagnostics-extension"></a>Azure 診斷延伸模組
+
 [Azure 診斷延伸](diagnostics-extension-overview.md)模組會收集來自客體作業系統的監視資料，以及 Azure 虛擬機器和其他計算資源的工作負載。 它主要會將資料收集到 Azure 儲存體，但也可讓您定義資料接收，以同時將資料傳送至其他目的地，例如 Azure 監視器計量和 Azure 事件中樞。
 
 如果您需要，請使用 Azure 診斷擴充功能：
@@ -82,9 +86,8 @@ Azure 診斷延伸模組的限制包括：
 - 只能與 Azure 資源搭配使用。
 - 將資料傳送至 Azure 監視器記錄的功能有限。
 
-
-
 ## <a name="telegraf-agent"></a>Telegraf 代理程式
+
 [InfluxData Telegraf 代理程式](collect-custom-metrics-linux-telegraf.md)可用來收集 Linux 電腦的效能資料，以 Azure 監視器計量。
 
 如果您需要，請使用 Telegraf 代理程式：
@@ -94,24 +97,25 @@ Azure 診斷延伸模組的限制包括：
 
 
 ## <a name="dependency-agent"></a>相依性代理程式
+
 相依性代理程式會收集有關虛擬機器上執行之進程的探索資料，以及外部進程相依性。 
 
 如果您需要，請使用 Dependency agent：
 
 * 使用對應功能[適用於 VM 的 Azure 監視器](../insights/vminsights-overview.md)或[服務對應](../insights/service-map.md)方案。
 
-
 使用 Dependency agent 時，請考慮下列事項：
 
 - 相依性代理程式需要在相同的虛擬機器上安裝 Log Analytics 代理程式。
 - 在 Linux Vm 上，Log Analytics 代理程式必須安裝在 Azure 診斷擴充功能之前。
 
-
 ## <a name="extensions-compared-to-agents"></a>與代理程式相較之下的延伸模組
+
 適用于[Windows](../../virtual-machines/extensions/oms-windows.md)和[Linux](../../virtual-machines/extensions/oms-linux.md)的 log analytics 擴充功能會在 Azure 虛擬機器上安裝 log analytics 代理程式。 適用于[Windows](../../virtual-machines/extensions/agent-dependency-windows.md)和[Linux](../../virtual-machines/extensions/agent-dependency-linux.md)的 Azure 監視器相依性延伸模組會在 Azure 虛擬機器上安裝 dependency agent。 這些是上述相同的代理程式，但可讓您透過[虛擬機器擴充](../../virtual-machines/extensions/overview.md)功能進行管理。 您應該盡可能使用延伸模組來安裝和管理代理程式。
 
 
 ## <a name="next-steps"></a>後續步驟
+
 取得每個代理程式的詳細資料，如下所示：
 
 - [Log Analytics 代理程式總覽](log-analytics-agent.md)

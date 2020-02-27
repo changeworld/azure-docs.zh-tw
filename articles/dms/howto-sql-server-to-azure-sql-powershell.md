@@ -3,21 +3,21 @@ title: Powershell：將 SQL Server 遷移至 SQL Database
 titleSuffix: Azure Database Migration Service
 description: 瞭解如何透過 Azure 資料庫移轉服務使用 Azure PowerShell，從內部部署 SQL Server 遷移至 Azure SQL Database。
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: f67572adc3b40115b2c6d4618718867eacf8c95e
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 02/20/2020
+ms.openlocfilehash: f63f79402b457017257f1762c6ddc7e04c0ee1af
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746312"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650685"
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-database-using-azure-powershell"></a>使用 Azure PowerShell 將 SQL Server 內部部署遷移至 Azure SQL Database
 
@@ -31,7 +31,7 @@ ms.locfileid: "75746312"
 > * 在 Azure 資料庫移轉服務執行個體中建立移轉專案。
 > * 執行移轉。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成這些步驟，您需要：
 
@@ -122,7 +122,7 @@ $targetConnInfo = New-AzDmsConnInfo -ServerType SQL `
 
 建立 `AzDataMigrationDatabaseInfo` 物件清單，該清單會指定資料庫作為 Azure 資料庫移轉專案的一部份，並提供給建立物件所需的參數使用。 Cmdlet `New-AzDataMigrationDatabaseInfo` 可以用來建立 AzDataMigrationDatabaseInfo。 
 
-下列範例會為 **AdventureWorks2016** 資料庫建立 `AzDataMigrationDatabaseInfo` 專案，並將其新增至清單 (提供給建立物件所需的參數使用)。
+下列範例會為 `AzDataMigrationDatabaseInfo`AdventureWorks2016**資料庫建立** 專案，並將其新增至清單 (提供給建立物件所需的參數使用)。
 
 ```powershell
 $dbInfo1 = New-AzDataMigrationDatabaseInfo -SourceDatabaseName AdventureWorks2016
@@ -131,7 +131,7 @@ $dbList = @($dbInfo1)
 
 ### <a name="create-a-project-object"></a>建立專案物件
 
-最後，您可以使用 `New-AzDataMigrationProject` 建立位在美國東部且名為 MyDMSProject 的 Azure 資料庫移轉專案，並新增先前建立的來源和目標連線及資料庫清單來進行移轉。
+最後，您可以使用  *建立位在美國東部* *且名為 MyDMSProject*`New-AzDataMigrationProject` 的 Azure 資料庫移轉專案，並新增先前建立的來源和目標連線及資料庫清單來進行移轉。
 
 ```powershell
 $project = New-AzDataMigrationProject -ResourceGroupName myResourceGroup `

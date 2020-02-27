@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/6/2019
 ms.author: iainfou
-ms.openlocfilehash: c0fcb8c2c5f9afa7fabe2ffa63a715ec24aa4a26
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c6e4e6a45fbbeab64184d8ae4b0684ba055d7735
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720476"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613977"
 ---
 # <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-ad-domain-services-managed-domain"></a>部署 Azure AD 應用程式 Proxy，以安全存取 Azure AD Domain Services 受控網域中的內部應用程式
 
@@ -74,7 +74,7 @@ ms.locfileid: "73720476"
         > [!NOTE]
         > 用來註冊連接器的全域系統管理員帳戶必須屬於您啟用應用程式 Proxy 服務的相同目錄。
         >
-        > 例如，如果 Azure AD 網域是*contoso.com*，則全域管理員應該 `admin@contoso.com` 或該網域上的其他有效別名。
+        > 例如，如果 Azure AD 網域是*aaddscontoso.com*，則全域管理員應該 `admin@aaddscontoso.com` 或該網域上的其他有效別名。
 
    * 如果已針對您安裝連接器的 VM 開啟 Internet Explorer 增強式安全性設定，則可能會封鎖註冊畫面。 若要允許存取，請遵循錯誤訊息中的指示，或在安裝過程中關閉 Internet Explorer 增強式安全性。
    * 如果連接器註冊失敗，請參閱針對[應用程式 Proxy 進行疑難排解](../active-directory/manage-apps/application-proxy-troubleshoot.md)。
@@ -99,16 +99,16 @@ ms.locfileid: "73720476"
 
 使用[get-adcomputer][Get-ADComputer]來抓取安裝 Azure AD 應用程式 Proxy 連接器之電腦的設定。 從已加入網域的管理 VM，並以屬於*AZURE AD DC administrators*群組成員的使用者帳戶登入，執行下列 Cmdlet。
 
-下列範例會取得名為*appproxy.contoso.com*之電腦帳戶的相關資訊。 為先前步驟中設定的 Azure AD 應用程式 Proxy VM 提供您自己的電腦名稱稱。
+下列範例會取得名為*appproxy.aaddscontoso.com*之電腦帳戶的相關資訊。 為先前步驟中設定的 Azure AD 應用程式 Proxy VM 提供您自己的電腦名稱稱。
 
 ```powershell
-$ImpersonatingAccount = Get-ADComputer -Identity appproxy.contoso.com
+$ImpersonatingAccount = Get-ADComputer -Identity appproxy.aaddscontoso.com
 ```
 
-針對在 Azure AD 應用程式 Proxy 後方執行應用程式的每個應用程式伺服器，使用[Get-adcomputer][Set-ADComputer] PowerShell Cmdlet 來設定以資源為基礎的 KCD。 在下列範例中，Azure AD 應用程式 Proxy 連接器會被授與使用*appserver.contoso.com*電腦的許可權：
+針對在 Azure AD 應用程式 Proxy 後方執行應用程式的每個應用程式伺服器，使用[Get-adcomputer][Set-ADComputer] PowerShell Cmdlet 來設定以資源為基礎的 KCD。 在下列範例中，Azure AD 應用程式 Proxy 連接器會被授與使用*appserver.aaddscontoso.com*電腦的許可權：
 
 ```powershell
-Set-ADComputer appserver.contoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
+Set-ADComputer appserver.aaddscontoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
 ```
 
 如果您部署多個 Azure AD 應用程式 Proxy 連接器，您必須為每個連接器實例設定以資源為基礎的 KCD。

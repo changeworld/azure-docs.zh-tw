@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: iainfou
-ms.openlocfilehash: e63f330d463be21905467869474527fdf9d6abff
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 2daadb539bc08df37f15c187866b735e45309288
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030194"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612787"
 ---
 # <a name="create-an-azure-active-directory-domain-services-managed-domain-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本建立 Azure Active Directory Domain Services 受控網域
 
@@ -23,7 +23,7 @@ Azure Active Directory Domain Services (Azure AD DS) 提供受控網域服務，
 
 本文說明如何使用 Azure Resource Manager 範本啟用 Azure AD DS。 支援的資源是使用 Azure PowerShell 建立的。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本文，您需要下列資源：
 
@@ -45,17 +45,17 @@ Azure Active Directory Domain Services (Azure AD DS) 提供受控網域服務，
 * **不可路由傳送的網域尾碼：** 我們通常會建議您避免使用無法路由傳送的功能變數名稱尾碼，例如*contoso. local*。 .local 尾碼是不可路由的，因此會導致 DNS 解析發生問題。
 
 > [!TIP]
-> 如果您建立自訂網域名稱，請注意現有的 DNS 命名空間。 建議您包含網域名稱的唯一首碼。 例如，如果您的 DNS 根名稱是 contoso.com，請使用 corp.contoso.com 或 ds.contoso.com 自訂網域名稱建立 Azure AD DS 受控網域。 在搭配內部部署 AD DS 環境的混合式環境中，這些首碼可能已在使用中。 請針對 Azure AD DS 使用唯一首碼。
+> 如果您建立自訂網域名稱，請注意現有的 DNS 命名空間。 建議使用與任何現有 Azure 或內部部署 DNS 命名空間分開的功能變數名稱。
 >
-> 您可以使用 Azure AD DS 受控網域的根 DNS 名稱，但您可能需要為環境中的其他服務建立一些額外的 DNS 記錄。 例如，如果您使用根 DNS 名稱執行裝載網站的 Web 伺服器，可能會發生需要其他 DNS 項目的命名衝突。
+> 例如，如果您有現有的 DNS 命名空間*contoso.com*，請使用*aaddscontoso.com*的自訂功能變數名稱來建立 Azure AD DS 受控網域。 如果您需要使用安全 LDAP，您必須註冊並擁有此自訂功能變數名稱，以產生必要的憑證。
 >
-> 在這些教學課程和操作說明文章中，aadds.contoso.com 的自訂網域會作為簡短的範例。 在所有命令中，指定其中可能包含唯一首碼的自有網域名稱。
+> 您可能需要為環境中的其他服務或環境中現有 DNS 命名空間之間的條件式 DNS 轉寄站，建立一些額外的 DNS 記錄。 例如，如果您使用根 DNS 名稱執行裝載網站的 Web 伺服器，可能會發生需要其他 DNS 項目的命名衝突。
 >
-> 如需詳細資訊，請參閱[選取網域的命名首碼][naming-prefix]。
+> 在這些教學課程和操作說明文章中， *aaddscontoso.com*的自訂網域是用來做為簡短的範例。 在 [所有命令] 中，指定您自己的功能變數名稱。
 
 下列 DNS 名稱限制也適用於此：
 
-* **網域前置詞限制：** 您無法使用超過15個字元的首碼來建立受控網域。 指定網域名稱的前置詞 (例如，contoso.com 網域名稱中的 contoso) 必須包含 15 個以內的字元。
+* **網域前置詞限制：** 您無法使用超過15個字元的首碼來建立受控網域。 您指定之功能變數名稱的前置詞（例如*aaddscontoso.com*功能變數名稱中的*aaddscontoso* ）必須包含15個或更少的字元。
 * **網路名稱衝突：** 受控網域的 DNS 功能變數名稱不應已存在於虛擬網路中。 具體而言，請檢閱下列會導致名稱衝突的案例：
     * Azure 虛擬網路上是否已有包含相同 DNS 網域名稱的 Active Directory 網域。
     * 您打算啟用受控網域的虛擬網路是否與內部部署網路建立 VPN 連線。 在此案例中，確定您在內部部署網路上沒有使用相同 DNS 網域名稱的網域。
@@ -88,7 +88,7 @@ New-AzureADGroup -DisplayName "AAD DC Administrators" `
 
 建立*AAD DC 系統管理員*群組後，使用[add-azureadgroupmember][Add-AzureADGroupMember] Cmdlet 將使用者新增至群組。 首先，您會使用[get-azureadgroup][Get-AzureADGroup] Cmdlet 取得*AAD DC 系統管理員*群組物件識別碼，然後使用[new-azureaduser 指令程式][Get-AzureADUser]，以所需的使用者物件識別碼。
 
-在下列範例中，`admin@contoso.onmicrosoft.com`的 UPN 之帳戶的使用者物件識別碼。 以您想要新增至*AAD DC 系統管理員*群組之使用者的 UPN 取代此使用者帳戶：
+在下列範例中，`admin@aaddscontoso.onmicrosoft.com`的 UPN 之帳戶的使用者物件識別碼。 以您想要新增至*AAD DC 系統管理員*群組之使用者的 UPN 取代此使用者帳戶：
 
 ```powershell
 # First, retrieve the object ID of the newly created 'AAD DC Administrators' group.
@@ -98,7 +98,7 @@ $GroupObjectId = Get-AzureADGroup `
 
 # Now, retrieve the object ID of the user you'd like to add to the group.
 $UserObjectId = Get-AzureADUser `
-  -Filter "UserPrincipalName eq 'admin@contoso.onmicrosoft.com'" | `
+  -Filter "UserPrincipalName eq 'admin@aaddscontoso.onmicrosoft.com'" | `
   Select-Object ObjectId
 
 # Add the user to the 'AAD DC Administrators' group.
@@ -128,12 +128,12 @@ New-AzResourceGroup `
 | notificationSettings    | 如果 Azure AD DS 受控網域中產生任何警示，則可以送出電子郵件通知。 <br />Azure 租使用者的*全域管理員*和*AAD DC 系統管理員*群組的成員都可以針對這些通知*啟用*。<br /> 如有需要，您可以在有需要注意的警示時，為通知新增額外的收件者。|
 | domainConfigurationType | 根據預設，Azure AD DS 受控網域會建立為*使用者*樹系。 這種類型的樹系會同步 Azure AD 中的所有物件，包括在內部部署 AD DS 環境中建立的任何使用者帳戶。 您不需要指定*domainConfiguration*值來建立使用者樹系。<br /> *資源*樹系只會同步直接在 Azure AD 中建立的使用者和群組。 資源樹系目前為預覽狀態。 將值設定為*ResourceTrusting* ，以建立資源樹系。<br />如需*資源*樹系的詳細資訊，包括您使用某一樹系的原因，以及如何建立與內部部署 AD DS 網域之間的樹系信任，請參閱 [Azure AD DS 資源樹系概觀][resource-forests]。|
 
-下列「壓縮的參數」定義會顯示這些值的宣告方式。 建立名為*aadds.contoso.com*的使用者樹系時，會將所有使用者從 Azure AD 同步處理到 Azure AD DS 受控網域：
+下列「壓縮的參數」定義會顯示這些值的宣告方式。 建立名為*aaddscontoso.com*的使用者樹系時，會將所有使用者從 Azure AD 同步處理到 Azure AD DS 受控網域：
 
 ```json
 "parameters": {
     "domainName": {
-        "value": "aadds.contoso.com"
+        "value": "aaddscontoso.com"
     },
     "filteredSync": {
         "value": "Disabled"
@@ -176,7 +176,7 @@ New-AzResourceGroup `
 
 ## <a name="create-a-managed-domain-using-sample-template"></a>使用範例範本建立受控網域
 
-下列完整的 Resource Manager 範例範本會建立 Azure AD DS 受控網域，以及支援的虛擬網路、子網和網路安全性群組規則。 必須要有網路安全性群組規則，才能保護受控網域，並確保流量可以正確地流動。 建立 DNS 名稱為*aadds.contoso.com*的使用者樹系，並從 Azure AD 同步處理所有使用者：
+下列完整的 Resource Manager 範例範本會建立 Azure AD DS 受控網域，以及支援的虛擬網路、子網和網路安全性群組規則。 必須要有網路安全性群組規則，才能保護受控網域，並確保流量可以正確地流動。 建立 DNS 名稱為*aaddscontoso.com*的使用者樹系，並從 Azure AD 同步處理所有使用者：
 
 ```json
 {
@@ -190,7 +190,7 @@ New-AzResourceGroup `
             "value": "FullySynced"
         },
         "domainName": {
-            "value": "aadds.contoso.com"
+            "value": "aaddscontoso.com"
         },
         "filteredSync": {
             "value": "Disabled"

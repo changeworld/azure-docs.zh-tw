@@ -1,24 +1,24 @@
 ---
-title: 使用自訂原則進行手機註冊和登入
+title: 使用自訂原則進行手機註冊和登入（預覽）
 titleSuffix: Azure AD B2C
-description: 瞭解如何在 Azure Active Directory B2C 中使用自訂原則，將文字訊息中的單次密碼傳送給應用程式使用者的手機。
+description: 使用 Azure Active Directory B2C 中的自訂原則，將文字訊息中的單次密碼（OTP）傳送給應用程式使用者的手機。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/17/2019
+ms.date: 02/25/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8cb0340d9e04db2bfbf088bce9505351d7588cd9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 50e7d66fef67e2728c95790947393de8d58398c2
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840327"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647520"
 ---
-# <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>在 Azure AD B2C 中使用自訂原則設定電話註冊和登入
+# <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c-preview"></a>在 Azure AD B2C （預覽）中使用自訂原則設定電話註冊和登入
 
 Azure Active Directory B2C （Azure AD B2C）中的電話註冊和登入可讓您的使用者透過使用文字訊息傳送至其電話的一次性密碼（OTP）來註冊並登入您的應用程式。 單次密碼可協助將使用者忘記或破解密碼的風險降至最低。
 
@@ -26,7 +26,13 @@ Azure Active Directory B2C （Azure AD B2C）中的電話註冊和登入可讓�
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="pricing"></a>價格
+
+單次密碼會使用 SMS 文字訊息傳送給您的使用者，而且您可能會針對每個傳送的訊息收費。 如需定價資訊，請參閱[Azure Active Directory B2C 定價](https://azure.microsoft.com/pricing/details/active-directory-b2c/)的**個別費用**一節。
+
+## <a name="prerequisites"></a>Prerequisites
+
+在設定 OTP 之前，您必須先準備好下列資源。
 
 * [Azure AD B2C 租用戶](tutorial-create-tenant.md)
 * 在您的租使用者中[註冊的 Web 應用程式](tutorial-register-applications.md)
@@ -69,6 +75,22 @@ Azure Active Directory B2C （Azure AD B2C）中的電話註冊和登入可讓�
 1. 針對 [**選取回復 url**]，選擇 [`https://jwt.ms`]。
 1. 選取 [**立即執行**]，然後使用電子郵件地址或電話號碼進行註冊。
 1. 再次選取 [**立即執行**]，然後使用相同的帳戶登入，以確認您擁有正確的設定。
+
+## <a name="get-user-account-by-phone-number"></a>依電話號碼取得使用者帳戶
+
+以電話號碼註冊但未提供修復電子郵件地址的使用者，會記錄在您的 Azure AD B2C 目錄中，並以其電話號碼作為其登入名稱。 如果使用者想要變更其電話號碼，技術支援人員或支援小組必須先尋找其帳戶，然後更新其電話號碼。
+
+您可以使用[Microsoft Graph](manage-user-accounts-graph-api.md)來尋找使用者的電話號碼（登入名稱）：
+
+```http
+GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+{phone number}' and c/issuer eq '{tenant name}.onmicrosoft.com')
+```
+
+例如：
+
+```http
+GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+450334567890' and c/issuer eq 'contosob2c.onmicrosoft.com')
+```
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -4,7 +4,7 @@ description: 了解如何在 Azure 中的 Linux 虛擬機器上部署 SAP 軟體
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: MSSedusch
-manager: gwallace
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: sedusch
-ms.openlocfilehash: e7a61cc64ae72adfcbeb347ddd076065ccc3a321
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 19dc9f25cc7355eb540b68f009a77b1ca1e5fb86
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645832"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614905"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>適用於 SAP NetWeaver 的 Azure 虛擬機器部署
 
@@ -315,7 +315,7 @@ ms.locfileid: "75645832"
 
 在本文中，我們將討論在 Azure 中的虛擬機器 (VM) 上部署 SAP 應用程式的步驟，包括替代部署選項和疑難排解。 本文是以[適用于 SAP NetWeaver 的 Azure 虛擬機器規劃和執行][planning-guide]中的資訊為基礎。 本文也可補充 SAP 安裝文件和 SAP Note 的不足，而這些是安裝及部署 SAP 軟體的主要資源。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
@@ -1081,15 +1081,15 @@ Azperflib.exe 輸出會顯示適用於 SAP 的所有已填入 Azure 效能計數
 
 1. 檢查 Azure Extension for SAP 的輸出。
 
-   a.  `more /var/lib/AzureEnhancedMonitor/PerfCounters`執行 
+   a.  `more /var/lib/AzureEnhancedMonitor/PerfCounters`執行 {2}
 
    **預期的結果**：傳回效能計數器的清單。 此檔案不得是空的。
 
-   b. `cat /var/lib/AzureEnhancedMonitor/PerfCounters | grep Error`執行 
+   b. `cat /var/lib/AzureEnhancedMonitor/PerfCounters | grep Error`執行 {2}
 
    **預期的結果**：傳回**無**錯誤的一行，例如 **3;config;Error;;0;0;none;0;1456416792;tst-servercs;**
 
-   c. `more /var/lib/AzureEnhancedMonitor/LatestErrorRecord`執行 
+   c. `more /var/lib/AzureEnhancedMonitor/LatestErrorRecord`執行 {2}
 
    **預期的結果**：傳回為空白或不存在。
 
@@ -1097,29 +1097,29 @@ Azperflib.exe 輸出會顯示適用於 SAP 的所有已填入 Azure 效能計數
 
 1. 確定已安裝並啟用 waagent。
 
-   a.  `sudo ls -al /var/lib/waagent/`執行 
+   a.  `sudo ls -al /var/lib/waagent/`執行 {2}
 
      **預期的結果**：列出 waagent 目錄的內容。
 
-   b.  `ps -ax | grep waagent`執行 
+   b.  `ps -ax | grep waagent`執行 {2}
 
    **預期的結果**：顯示類似下列一個項目：`python /usr/sbin/waagent -daemon`
 
 1. 請確定適用于 SAP 的 Azure 擴充功能已安裝且正在執行。
 
-   a.  `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-*/'`執行 
+   a.  `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-*/'`執行 {2}
 
    **預期的結果**：列出 Azure EXTENSION for SAP 目錄的內容。
 
-   b. `ps -ax | grep AzureEnhanced`執行 
+   b. `ps -ax | grep AzureEnhanced`執行 {2}
 
    **預期的結果**：顯示類似下列一個項目：`python /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-2.0.0.2/handler.py daemon`
 
 1. 安裝 SAP Host Agent (如 SAP Note [1031096] 所述) 並檢查 `saposcol` 的輸出。
 
-   a.  `/usr/sap/hostctrl/exe/saposcol -d`執行 
+   a.  `/usr/sap/hostctrl/exe/saposcol -d`執行 {2}
 
-   b.  `dump ccm`執行 
+   b.  `dump ccm`執行 {2}
 
    c.  檢查 **Virtualization_Configuration\Enhanced Monitoring Access** 計量是否為 **true**。
 
@@ -1166,7 +1166,7 @@ AzureEnhancedMonitoring Windows 服務會收集 Azure 中的效能計量。 如�
 
 安裝目錄 \\Packages\\Plugins\\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler\\&lt;版本>\\drop 是空的。
 
-###### <a name="solution"></a>解決方案
+###### <a name="solution"></a>解決方法
 
 未安裝此擴充功能。 判斷這是否為 Proxy 問題 (如先前所述)。 您可能需要重新啟動電腦，或重新執行 `Set-AzVMAEMExtension` 組態指令碼。
 
@@ -1181,7 +1181,7 @@ Azperflib.exe 輸出會擲回錯誤︰
 ![執行 azperflib.exe 時，表示適用于 SAP 的 Azure 延伸模組的服務並未執行][deployment-guide-figure-1400]
 <a name="figure-14"></a>
 
-###### <a name="solution"></a>解決方案
+###### <a name="solution"></a>解決方法
 
 如果服務不存在，則未正確安裝適用于 SAP 的 Azure 擴充功能。 使用[Azure 中適用于 SAP 的 Vm 部署案例][deployment-guide-3]中的部署案例中所述的步驟，重新部署擴充功能。
 
@@ -1193,7 +1193,7 @@ Azperflib.exe 輸出會擲回錯誤︰
 
 AzureEnhancedMonitoring Windows 服務存在並已啟用，但無法啟動。 如需詳細資訊，請檢查應用程式事件記錄檔。
 
-###### <a name="solution"></a>解決方案
+###### <a name="solution"></a>解決方法
 
 組態不正確。 如[設定適用于 sap 的 Azure 擴充][deployment-guide-4.5]功能所述，在 VM 中重新開機適用于 Sap 的 azure 擴充功能。
 
@@ -1213,7 +1213,7 @@ Daemon 會收集在 Azure 中的效能計量。 如果未執行 Daemon，則不�
 
 目錄 \\var\\lib\\waagent\\ 沒有適用于 SAP 的 Azure 擴充功能的子目錄。
 
-###### <a name="solution"></a>解決方案
+###### <a name="solution"></a>解決方法
 
 未安裝此擴充功能。 判斷這是否為 Proxy 問題 (如先前所述)。 您可能需要重新啟動電腦及/或重新執行 `Set-AzVMAEMExtension` 組態指令碼。
 
@@ -1231,7 +1231,7 @@ WARNING: [WARN] Standard Managed Disks are not supported. Extension will be inst
 
 如先前所述，執行 azperfli.exe 可能會獲得表示健康情況不良狀態的結果。 
 
-###### <a name="solution"></a>解決方案
+###### <a name="solution"></a>解決方法
 
 這些訊息的原因是標準受控磁碟不會傳遞 SAP Extension for SAP 所使用的 Api 來檢查標準 Azure 儲存體帳戶的統計資料。 使用者並不需要在意此問題。 引進標準磁碟儲存體帳戶收集資料的原因，是因為經常發生 i/o 的節流。 受控磁碟將會透過限制儲存體帳戶中的磁碟數量來避免此類節流。 因此，沒有該資料的類型並不重要。
 

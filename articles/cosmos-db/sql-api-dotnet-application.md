@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
-ms.openlocfilehash: b0da9f2f2d14c0487e61c1927b5456d09052cff3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6af5f4c3ab028f8f0c6945eba86ec79dd6027680
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444920"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587459"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>教學課程：使用 .NET SDK，透過 Azure Cosmos DB 開發 ASP NET Core MVC Web 應用程式
 
@@ -110,7 +110,7 @@ ms.locfileid: "75444920"
 
 1. 以下列程式碼取代 *Item.cs* 類別的內容：
 
-   [!code-csharp[Main](~/samples-cosmosdb-dotnet-core-web-app/src/Models/Item.cs)]
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Models/Item.cs":::
 
 Azure Cosmos DB 使用 JSON 來移動和儲存資料。 您可以使用 `JsonProperty` 屬性來控制 JSON 序列化和還原序列化物件的方式。 `Item` 類別會示範 `JsonProperty` 屬性。 此程式碼會控制進入 JSON 的屬性名稱格式。 它也會將 .NET 屬性重新命名為 `Completed`。
 
@@ -183,7 +183,7 @@ Azure Cosmos DB 使用 JSON 來移動和儲存資料。 您可以使用 `JsonPro
 
 1. 以下列程式碼取代 *ItemController.cs* 的內容。
 
-   [!code-csharp[Main](~/samples-cosmosdb-dotnet-core-web-app/src/Controllers/ItemController.cs)]
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Controllers/ItemController.cs":::
 
 此處所使用的 **ValidateAntiForgeryToken** 屬性可協助應用程式防止跨網站偽造要求攻擊。 您的檢視也應該使用此防偽權杖。 如需詳細資訊和範例，請參閱[在 ASP.NET MVC 應用程式中避免跨網站偽造要求 (CSRF) 攻擊][Preventing Cross-Site Request Forgery]。 [GitHub][GitHub] 上提供的原始程式碼已有完整實作。
 
@@ -203,11 +203,11 @@ Azure Cosmos DB 使用 JSON 來移動和儲存資料。 您可以使用 `JsonPro
 
 1. 以下列程式碼取代 *CosmosDBService.cs* 的內容：
 
-   [!code-csharp[Main](~/samples-cosmosdb-dotnet-core-web-app/src/Services/CosmosDbService.cs)]
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/CosmosDbService.cs":::
 
 1. 重複先前兩個步驟，但這次請使用名稱 *ICosmosDBService*，並使用下列程式碼：
 
-   [!code-csharp[Main](~/samples-cosmosdb-dotnet-core-web-app/src/Services/ICosmosDbService.cs)]
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/ICosmosDbService.cs":::
 
 1. 在 **ConfigureServices** 處理常式中，新增以下這一行：
 
@@ -219,7 +219,7 @@ Azure Cosmos DB 使用 JSON 來移動和儲存資料。 您可以使用 `JsonPro
 
 1. 在相同的檔案中，新增以下方法 **InitializeCosmosClientInstanceAsync**，以讀取組態並初始化用戶端。
 
-    [!code-csharp[](~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs?name=InitializeCosmosClientInstanceAsync)]
+    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs" id="InitializeCosmosClientInstanceAsync":::
 
 1. 在專案的 *appsettings.json* 檔案中定義組態。 開啟該檔案並新增名為 **CosmosDb** 的區段：
 

@@ -7,23 +7,18 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 49129bede62e456cf2807cc879b7fc5e1793b65b
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 4a0593ccd6bdf37520e73ba8ed421ec4b10ea52c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77424944"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623296"
 ---
 # <a name="streaming-ingestion-preview"></a>串流內嵌（預覽）
 
 串流內嵌的目標是針對不同的磁片區資料，在需要低延遲的情況下，有一段時間小於10秒的案例。 它可用來在一或多個資料庫中優化許多資料表的工作處理，其中每個資料表中的資料流程相對較小（每秒少筆記錄），但整體資料內嵌磁片區為高（每秒數千筆記錄）。
 
 當資料量成長到每個資料表每秒 1 MB 以上時，請使用傳統（大量）內嵌，而不是串流內嵌。 閱讀[資料內嵌總覽](/azure/data-explorer/ingest-data-overview)，以深入瞭解內嵌的各種方法。
-
-> [!NOTE]
-> 串流內嵌不支援下列功能：
-> * [資料庫資料指標](/azure/kusto/management/databasecursor)。
-> * [資料對應](/azure/kusto/management/mappings)。 僅支援[預先建立的](/azure/kusto/management/tables#create-ingestion-mapping)資料對應。 
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -32,6 +27,9 @@ ms.locfileid: "77424944"
 * 建立[Azure 資料總管叢集和資料庫](create-cluster-database-portal.md)
 
 ## <a name="enable-streaming-ingestion-on-your-cluster"></a>在您的叢集中啟用串流內嵌
+
+> [!WARNING]
+> 啟用串流內嵌之前，請先檢查這些[限制](#limitations)。
 
 1. 在 Azure 入口網站中，移至您的 Azure 資料總管叢集。 在 [設定] 中 **，選取 [** **設定**]。 
 1. **在 [設定**] 窗格中，選取 [**開啟**] 以啟用**串流**內嵌。
@@ -49,8 +47,9 @@ ms.locfileid: "77424944"
 
 支援的串流內嵌類型有兩種：
 
-* 當做資料來源使用的[事件中樞](/azure/data-explorer/ingest-data-event-hub)
-* 自訂內嵌需要您撰寫使用其中一個 Azure 資料總管用戶端程式庫的應用程式。 如需範例應用程式，請參閱[串流內嵌範例](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample)。
+
+* 當做資料來源使用的[**事件中樞**](/azure/data-explorer/ingest-data-event-hub)
+* **自訂**內嵌需要您撰寫使用其中一個 Azure 資料總管用戶端程式庫的應用程式。 如需範例應用程式，請參閱[串流內嵌範例](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample)。
 
 ### <a name="choose-the-appropriate-streaming-ingestion-type"></a>選擇適當的串流內嵌類型
 
@@ -78,6 +77,10 @@ ms.locfileid: "77424944"
 * 架構更新（例如建立和修改資料表和內嵌對應）最多可能需要5分鐘的時間來處理串流內嵌服務。
 * 在叢集上啟用串流內嵌，即使資料不是透過串流內嵌，也會使用叢集機器的部分本機 SSD 磁片來串流內嵌資料，並減少用於熱快取的儲存體。
 * 無法在串流內嵌資料上設定[範圍標記](/azure/kusto/management/extents-overview.md#extent-tagging)。
+
+串流內嵌不支援下列功能：
+* [資料庫資料指標](/azure/kusto/management/databasecursor)。
+* [資料對應](/azure/kusto/management/mappings)。 僅支援[預先建立的](/azure/kusto/management/tables#create-ingestion-mapping)資料對應。 
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -11,12 +11,12 @@ ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 9220d3adb31005551b6358034207f1071065b1a7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: da06112b0990898227191c919b209c8a95d15197
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692391"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616524"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>在 Azure SQL 資料倉儲中設計資料表
 
@@ -44,7 +44,7 @@ CREATE SCHEMA wwi;
 | WideWorldImportersDW 資料表  | 資料表類型 | SQL 資料倉儲 |
 |:-----|:-----|:------|:-----|
 | City | 維度 | wwi.DimCity |
-| 順序 | 事實 | wwi.FactOrder |
+| 單 | 事實 | wwi.FactOrder |
 
 
 ## <a name="table-persistence"></a>資料表持續性 
@@ -69,7 +69,7 @@ CREATE TABLE MyTable (col1 int, col2 int );
 SQL 資料倉儲支援最常用的資料類型。 如需支援的資料類型清單，請參閱 CREATE TABLE 參考中 CREATE TABLE 陳述式中的[資料類型](/sql/t-sql/statements/create-table-azure-sql-data-warehouse#DataTypes)。 如需資料類型的使用指引，請參閱[資料類型](sql-data-warehouse-tables-data-types.md)。
 
 ## <a name="distributed-tables"></a>分散式資料表
-SQL 資料倉儲的基本功能, 是它可以跨[散發套件](massively-parallel-processing-mpp-architecture.md#distributions)儲存和運算元據表的方式。  SQL 資料倉儲支援三種散發資料的方法、迴圈配置資源（預設值）、雜湊和複寫。
+SQL 資料倉儲的基本功能，是它[可以跨散發](massively-parallel-processing-mpp-architecture.md#distributions)套件儲存和運算元據表的方式。  SQL 資料倉儲支援三種散發資料的方法、迴圈配置資源（預設值）、雜湊和複寫。
 
 ### <a name="hash-distributed-tables"></a>雜湊分散式資料表
 雜湊分散式資料表會根據散發資料行中的值來散發資料列。 雜湊分散式資料表的設計，是為了在大型資料表上達到查詢的高效能。 選擇散發資料行時，有幾個要考慮的因素。 
@@ -116,7 +116,7 @@ ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION
 ## <a name="commands-for-creating-tables"></a>建立資料表的命令
 您可以將資料表建立為新的空資料表。 您也可以在建立資料表後填入 Select 陳述式的結果。 以下是用來建立資料表的 T-SQL 命令。
 
-| T-SQL 陳述式 | 說明 |
+| T-SQL 陳述式 | 描述 |
 |:----------------|:------------|
 | [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) | 藉由定義所有的資料表資料行和選項，建立空的資料表。 |
 | [CREATE EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql) | 建立外部資料表。 資料表的定義會儲存在 SQL 資料倉儲中。 資料表的資料會儲存在 Azure 儲存體或 Azure Data Lake Store 中。 |
@@ -135,7 +135,7 @@ SQL 資料倉儲支援其他資料庫所提供的多項 (但並非所有) 資料
 - 外鍵，檢查[資料表條件約束](/sql/t-sql/statements/alter-table-table-constraint-transact-sql)
 - [計算資料行](/sql/t-sql/statements/alter-table-computed-column-definition-transact-sql)
 - [索引檢視表](/sql/relational-databases/views/create-indexed-views)
-- [順序](/sql/t-sql/statements/create-sequence-transact-sql)
+- [序列](/sql/t-sql/statements/create-sequence-transact-sql)
 - [疏鬆資料行](/sql/relational-databases/tables/use-sparse-columns)
 - Surrogate 索引鍵。 使用[身分識別](sql-data-warehouse-tables-identity.md)進行實作。
 - [同義字](/sql/t-sql/statements/create-synonym-transact-sql)
@@ -213,6 +213,7 @@ LEFT OUTER JOIN (select * from sys.pdw_column_distribution_properties where dist
 LEFT OUTER JOIN sys.columns c
     ON cdp.[object_id] = c.[object_id]
     AND cdp.[column_id] = c.[column_id]
+WHERE pn.[type] = 'COMPUTE'
 )
 , size
 AS

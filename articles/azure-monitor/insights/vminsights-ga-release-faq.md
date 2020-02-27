@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
-ms.openlocfilehash: 673cda4005d9c985d8d6ee5ef1d28a3d8c241ac0
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 883f24e529f9479f0c6ee6597c1324a0089ece7b
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77482879"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620387"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>適用於 VM 的 Azure 監視器正式推出（GA）的常見問題
 
@@ -25,8 +25,6 @@ ms.locfileid: "77482879"
 透過這項升級，適用於 VM 的 Azure 監視器效能資料會儲存在與[容器 Azure 監視器](container-insights-overview.md)相同的*InsightsMetrics*資料表中，讓您更輕鬆地查詢這兩個資料集。 此外，您也可以儲存我們無法在先前使用的資料表中儲存的更多樣化資料集。 
 
 我們的效能觀點現在會使用我們儲存在*InsightsMetrics*資料表中的資料。  如果您尚未升級為在您的工作區上使用最新的 VMInsights 解決方案，您的圖表將不會再顯示資訊。  您可以從我們的 [**開始**使用] 頁面進行升級，如下所述。
-
-透過這項升級，適用於 VM 的 Azure 監視器效能資料會儲存在與[容器 Azure 監視器](container-insights-overview.md)相同的*InsightsMetrics*資料表中，讓您更輕鬆地查詢這兩個資料集。 您也可以儲存更多樣化的資料集，我們無法儲存在先前使用的資料表中。 
 
 我們發現，詢問現有客戶的升級會導致工作流程中斷，這就是為什麼我們在公開預覽期間選擇立即執行此動作，而不是在 GA 之後才進行。
 

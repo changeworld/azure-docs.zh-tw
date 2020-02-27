@@ -4,12 +4,12 @@ description: 針對安裝、註冊「Azure 備份伺服器」以及備份和還�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 3a83c496191baaebc30f6fe0aedda790827644cb
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 018a6cee3f00531752684b12f4988cac174d3d26
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605739"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617581"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>針對 Azure 備份伺服器進行疑難排解
 
@@ -32,7 +32,7 @@ ms.locfileid: "77605739"
 
 | 作業 | 錯誤詳細資料 | 因應措施 |
 | --- | --- | --- |
-| 註冊至保存庫 | 提供的保存庫認證無效。 檔案已損毀或沒有與復原服務關聯的最新認證。 | 建議的動作： <br> <ul><li> 從保存庫下載最新的認證檔案，然後再試一次。 <br>(或)</li> <li> 如果前述動作沒有用，請嘗試將認證下載至不同的本機目錄，或建立新的保存庫。 <br>(或)</li> <li> 如[這個部落格](https://azure.microsoft.com/blog/troubleshooting-common-configuration-issues-with-azure-backup/)所述，嘗試更新日期和時間設定。 <br>(或)</li> <li> 檢查看看 c:\windows\temp 中的檔案數是否超過 65000 個。 將過時檔案移至另一個位置，或刪除 [Temp] 資料夾中的項目。 <br>(或)</li> <li> 檢查憑證的狀態。 <br> a. 開啟 [管理電腦憑證] (在 [控制台] 中)。 <br> b. 展開 [個人] 節點和它的子節點 [憑證]。<br> c.  移除 [Windows Azure Tools] 憑證。 <br> d. 在「Azure 備份」用戶端中重試註冊。 <br> (或) </li> <li> 檢查看看是否已有任何適當的群組原則。 </li></ul> |
+| 註冊至保存庫 | 提供的保存庫認證無效。 檔案已損毀或沒有與復原服務關聯的最新認證。 | 建議的動作： <br> <ul><li> 從保存庫下載最新的認證檔案，然後再試一次。 <br>(或)</li> <li> 如果前述動作沒有用，請嘗試將認證下載至不同的本機目錄，或建立新的保存庫。 <br>(或)</li> <li> 嘗試更新日期和時間設定，如[這篇文章](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#invalid-vault-credentials-provided)中所述。 <br>(或)</li> <li> 檢查看看 c:\windows\temp 中的檔案數是否超過 65000 個。 將過時檔案移至另一個位置，或刪除 [Temp] 資料夾中的項目。 <br>(或)</li> <li> 檢查憑證的狀態。 <br> a. 開啟 [管理電腦憑證] (在 [控制台] 中)。 <br> b. 展開 [個人] 節點和它的子節點 [憑證]。<br> c.  移除 [Windows Azure Tools] 憑證。 <br> d. 在「Azure 備份」用戶端中重試註冊。 <br> (或) </li> <li> 檢查看看是否已有任何適當的群組原則。 </li></ul> |
 
 ## <a name="replica-is-inconsistent"></a>複本不一致
 
@@ -62,7 +62,7 @@ ms.locfileid: "77605739"
 
 | 作業 | 錯誤詳細資料 | 因應措施 |
 | --- | --- | --- |
-| 將代理程式推送至受保護的伺服器 | 代理程式作業因為 \<ServerName> 上的「DPM 代理程式協調員」服務發生通訊錯誤而失敗。 | **如果產品所示的建議動作沒有用，請執行下列步驟**： <ul><li> 如果您要連結來自不受信任網域的電腦，請依照[這些步驟](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh757801(v=sc.12))進行操作。 <br> (或) </li><li> 如果您要連結來自受信任網域的電腦，請使用[這個部落格](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726)中概述的步驟來進行疑難排解。 <br>(或)</li><li> 嘗試停用防毒功能來作為疑難排解步驟。 如果這能解決問題，請修改[這篇文章](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh757911(v=sc.12))中建議的防毒設定。</li></ul> |
+| 將代理程式推送至受保護的伺服器 | 代理程式作業因為 \<ServerName> 上的「DPM 代理程式協調員」服務發生通訊錯誤而失敗。 | **如果產品所示的建議動作沒有用，請執行下列步驟**： <ul><li> 如果您要連結來自不受信任網域的電腦，請依照[這些步驟](https://docs.microsoft.com/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019)進行操作。 <br> (或) </li><li> 如果您要連結來自受信任網域的電腦，請使用[這個部落格](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726)中概述的步驟來進行疑難排解。 <br>(或)</li><li> 嘗試停用防毒功能來作為疑難排解步驟。 如果這能解決問題，請修改[這篇文章](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh757911(v=sc.12))中建議的防毒設定。</li></ul> |
 
 ## <a name="setup-could-not-update-registry-metadata"></a>安裝程式無法更新登錄中繼資料
 
@@ -75,7 +75,7 @@ ms.locfileid: "77605739"
 
 | 作業 | 錯誤詳細資料 | 因應措施 |
 | --- | --- | --- |
-| 將代理程式推送至受保護的伺服器 | 為伺服器指定的認證無效。 | **如果產品所示的建議動作沒有用，請執行下列步驟**： <br> 如[這篇文章](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758186(v=sc.12))所指定，嘗試手動將保護代理程式安裝在生產伺服器上。|
+| 將代理程式推送至受保護的伺服器 | 為伺服器指定的認證無效。 | **如果產品所示的建議動作沒有用，請執行下列步驟**： <br> 如[這篇文章](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019)所指定，嘗試手動將保護代理程式安裝在生產伺服器上。|
 | Azure 備份代理程式無法連線到 Azure 備份服務 (ID：100050) | Azure 備份代理程式無法連線到 Azure 備份服務。 | **如果產品所示的建議動作沒有用，請執行下列步驟**： <br>1. 從提高許可權的提示字元中執行下列命令： **psexec-i-s "C:\Program Files\Internet Explorer\iexplore.exe**。 這會開啟 Internet Explorer 視窗。 <br/> 2. 移至 [**工具**] > [**網際網路選項**] **[ > 連線**] > [ **LAN 設定**]。 <br/> 3. 將設定變更為使用 proxy 伺服器。 接著提供 Proxy 伺服器詳細資料。<br/> 4. 如果您的電腦具有有限的網際網路存取權，請確定電腦或 proxy 上的防火牆設定允許這些[url](backup-configure-vault.md#verify-internet-access)和[IP 位址](backup-configure-vault.md#verify-internet-access)。|
 | Azure 備份代理程式安裝失敗 | Microsoft Azure 復原服務安裝失敗。 「Microsoft Azure 復原服務」安裝作業對系統所做的所有變更都已復原。 (ID：4024) | 手動安裝「Azure 代理程式」。
 

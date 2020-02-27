@@ -3,18 +3,18 @@ title: 定義屬性的多個實例
 description: 在 Azure Resource Manager 範本中使用複製作業，在資源上建立屬性時反復執行多次。
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: b1e31f981f361b4cfbe7e7930f2c70bfce8b8656
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: b759389cd1065c399658bd8d0c1ddd263054697c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210862"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622868"
 ---
 # <a name="property-iteration-in-azure-resource-manager-templates"></a>Azure Resource Manager 範本中的屬性反復專案
 
 本文說明如何在 Azure Resource Manager 範本中建立一個以上的屬性實例。 藉由將**copy**元素新增至範本中資源的屬性區段，您可以在部署期間，動態設定屬性的專案數。 您也可以避免重複範本語法。
 
-您也可以將 copy 與[資源](copy-resources.md)和[變數](copy-variables.md)搭配使用。
+您也可以使用 [複製] 搭配[資源](copy-resources.md)、[變數](copy-variables.md)和[輸出](copy-outputs.md)。
 
 ## <a name="property-iteration"></a>屬性反覆運算
 
@@ -192,7 +192,10 @@ copy 元素為一個陣列，因此，您可以針對資源指定一個以上的
 ## <a name="next-steps"></a>後續步驟
 
 * 如須逐步瀏覽教學課程，請參閱[教學課程：使用 Resource Manager 範本建立多個資源執行個體](template-tutorial-create-multiple-instances.md)。
-* 如需 copy 元素的其他用法，請參閱[Azure Resource Manager 範本中](copy-variables.md)Azure Resource Manager 範本和變數反復專案[中的資源反復](copy-resources.md)專案。
+* 如需 copy 元素的其他用法，請參閱：
+  * [Azure Resource Manager 範本中的資源反復專案](copy-resources.md)
+  * [Azure Resource Manager 範本中的變數反復專案](copy-variables.md)
+  * [Azure Resource Manager 範本中的輸出反復專案](copy-outputs.md)
 * 若要了解範本區段的相關資訊，請參閱[編寫 Azure Resource Manager 範本](template-syntax.md)。
 * 若要了解如何部署範本，請參閱 [使用 Azure 資源管理員範本部署應用程式](deploy-powershell.md)。
 

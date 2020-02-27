@@ -4,12 +4,12 @@ description: 了解如何升級 Azure Kubernetes Service (AKS) 叢集
 services: container-service
 ms.topic: article
 ms.date: 05/31/2019
-ms.openlocfilehash: 9acf08765ee42401229bc464b4513856127e9f66
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 4520297e83f96f95b10ecafd5af52a913dc5f450
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77592980"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621985"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>升級 Azure Kubernetes Service (AKS) 叢集
 
@@ -22,7 +22,7 @@ ms.locfileid: "77592980"
 本文會要求您執行 Azure CLI 版本2.0.65 或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli-install]。
 
 > [!WARNING]
-> AKS 叢集升級會觸發 cordon 並清空您的節點。 如果您有可用的計算配額不足，升級可能會失敗。  如需詳細資訊，請參閱[增加配額](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request?branch=pr-en-us-83289)。
+> AKS 叢集升級會觸發 cordon 並清空您的節點。 如果您有可用的計算配額不足，升級可能會失敗。 如需詳細資訊，請參閱[增加配額](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)。
 > 如果您正在執行自己的叢集自動調整程式部署，請在升級期間將它停用（您可以將它調整為零個複本），因為它可能會干擾升級程式。 受控自動調整程式會自動處理這種情況。 
 
 ## <a name="check-for-available-aks-cluster-upgrades"></a>檢查可用的 AKS 叢集升級

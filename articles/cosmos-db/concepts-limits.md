@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 940ac7b0a2720283b669fc7ea5a9dbc163ddbe64
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 5681efc202df511745532e4a314e88b319e9880a
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77460206"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623413"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服務配額
 
@@ -26,7 +26,7 @@ ms.locfileid: "77460206"
 | 每個容器的最大 ru 數（[專用輸送量布建模式](databases-containers-items.md#azure-cosmos-containers)） | 預設為1000000。 您可以藉由提出[Azure 支援票證](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)來增加它 |
 | 每個資料庫最多 ru （已布[建的共用輸送量模式](databases-containers-items.md#azure-cosmos-containers)） | 預設為1000000。 您可以藉由提出[Azure 支援票證](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)來增加它 |
 | 每個（邏輯）分割區索引鍵的最大 ru | 10,000 |
-| 每個（邏輯）分割區索引鍵的所有專案儲存體上限| 10 GB |
+| 每個（邏輯）分割區索引鍵的所有專案儲存體上限| 20 GB |
 | 相異（邏輯）分割區索引鍵的最大數目 | 無限制 |
 | 每個容器的儲存體上限 | 無限制 |
 | 每個資料庫的儲存體上限 | 無限制 |

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: iainfou
-ms.openlocfilehash: 601574cc2a478dc53a261cfcb074e43a556dd4c0
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 76dc964b7fe7f5e8acfcfb03b2e89bebb2caa176
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979502"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613378"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>解決現有 Azure AD Domain Services 受控網域的不相符目錄錯誤
 
@@ -26,7 +26,7 @@ ms.locfileid: "75979502"
 
 ## <a name="what-causes-this-error"></a>造成此錯誤的原因為何？
 
-當 Azure AD DS 受控網域和虛擬網路屬於兩個不同的 Azure AD 租使用者時，就會發生不相符的目錄錯誤。 例如，您可能會有一個名為*aadds.contoso.com*的 Azure AD DS 受控網域，它會在 contoso 的 Azure AD 租使用者中執行。 不過，適用于受控網域的 Azure 虛擬網路是 Fabrikam Azure AD 租使用者的一部分。
+當 Azure AD DS 受控網域和虛擬網路屬於兩個不同的 Azure AD 租使用者時，就會發生不相符的目錄錯誤。 例如，您可能會有一個名為*aaddscontoso.com*的 Azure AD DS 受控網域，它會在 Contoso 的 Azure AD 租使用者中執行。 不過，適用于受控網域的 Azure 虛擬網路是 Fabrikam Azure AD 租使用者的一部分。
 
 Azure 會使用角色型存取控制（RBAC）來限制對資源的存取。 當您在 Azure AD 租使用者中啟用 Azure AD DS 時，認證雜湊會同步處理至受控網域。 此作業需要您是 Azure AD 目錄的租使用者系統管理員，而且必須控制認證的存取權。 若要將資源部署到 Azure 虛擬網路並控制流量，您必須在部署 Azure AD DS 的虛擬網路上具有系統管理許可權。
 

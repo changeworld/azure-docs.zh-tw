@@ -1,5 +1,5 @@
 ---
-title: SAP NetWeaver 的 Azure 虛擬機器高可用性 | Microsoft Docs
+title: SAP NetWeaver 的 Azure Vm 高可用性 |Microsoft Docs
 description: Azure 虛擬機器上的 SAP NetWeaver 高可用性指南
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
-ms.author: rclaus
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8db9eb81efdc367e312649948c9eb1a9eee0532f
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 25a0ac9ab349cfe8bef8e33d3f533bc5942e6323
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638029"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623837"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虛擬機器高可用性
 
@@ -244,7 +244,7 @@ ms.locfileid: "75638029"
 
 * ![Linux][Logo_Linux][使用適用于 SAP ASCS/SCS 實例的 SUSE Linux Enterprise Server 叢集架構搭配 Azure NetApp Files 來安裝 Sap NetWeaver 高可用性][sap-suse-ascs-ha-sap-installation-anf]
 
-* ![Rhel 在][Logo_Linux] [rhel 上的高可用性設定中安裝 SAP NetWeaver ASCS/SCS][sap-rhel-ascs-ha]
+* ![RHEL][Logo_Linux][在 RHEL 的高可用性設定中安裝 SAP NETWEAVER ASCS/SCS][sap-rhel-ascs-ha]
 
 * ![RHEL][Logo_Linux][使用 Azure NetApp Files 在 RHEL 的高可用性設定中安裝 SAP NETWEAVER ASCS/SCS][sap-rhel-ascs-ha-sap-installation-anf]
 

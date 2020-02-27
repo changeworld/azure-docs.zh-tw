@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 79771e082a4a6ffae15f33f636b0300e93bcdaba
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 40dd7066d959b56f4554ea9d0390e8b1eb41e77f
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896267"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587561"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>使用 .NET SDK 將資料大量匯入至 Azure Cosmos DB SQL API 帳戶
 
@@ -27,7 +27,7 @@ ms.locfileid: "74896267"
 > * 連線至已啟用大量支援的 Azure Cosmos 帳戶
 > * 透過並行建立作業執行資料匯入
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 依照本文的指示進行之前，請確定您具備下列資源：
 
@@ -35,13 +35,13 @@ ms.locfileid: "74896267"
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-* [NET Core 3 SDK](https://dotnet.microsoft.com/download/dotnet-core)。 您可以藉由執行 `dotnet --version`，來確認您環境中可使用的版本。
+* [NET Core 3 SDK](https://dotnet.microsoft.com/download/dotnet-core). 您可以藉由執行 `dotnet --version`，來確認您環境中可使用的版本。
 
-## <a name="step-1-create-an-azure-cosmos-db-account"></a>步驟 1：建立 Azure Cosmos DB 帳戶
+## <a name="step-1-create-an-azure-cosmos-db-account"></a>步驟 1:建立 Azure Cosmos DB 帳戶
 
 從 Azure 入口網站[建立 Azure Cosmos DB SQL API 帳戶](create-cosmosdb-resources-portal.md)，或者您可以使用 [Azure Cosmos DB 模擬器](local-emulator.md)來建立帳戶。
 
-## <a name="step-2-set-up-your-net-project"></a>步驟 2：設定 .NET 專案
+## <a name="step-2-set-up-your-net-project"></a>步驟 2:設定 .NET 專案
 
 從您的本機電腦開啟 Windows 命令提示字元或終端機視窗。 您將會從命令提示字元或終端機執行下一節中的所有命令。 執行下列 dotnet 新命令，來建立名為 *bulk-import-demo* 的新應用程式。 `--langVersion` 參數會設定所建立專案檔中的 *LangVersion* 屬性。
 
@@ -120,13 +120,13 @@ ms.locfileid: "74896267"
 
 在 `Main` 方法中，新增下列程式碼以初始化 CosmosClient 物件：
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=CreateClient)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="CreateClient":::
 
 啟用大量執行之後，CosmosClient 會在內部將並行作業組為單一服務呼叫。 如此一來，它會藉由在分割區之間發佈服務呼叫，最後再將個別結果指派給原始呼叫端的方式，以將輸送量使用率最佳化。
 
 接著，您可以建立容器來儲存我們所有的項目。  將 `/pk` 定義為分割區索引鍵，定義每秒 50000 RU 為佈建的輸送量，並定義自訂編製索引原則來排除所有欄位，以將寫入輸送量最佳化。 在 CosmosClient 初始化陳述式後面新增下列程式碼：
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Initialize)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="Initialize":::
 
 ## <a name="step-6-populate-a-list-of-concurrent-tasks"></a>步驟 6：填入並行工作清單
 
@@ -141,22 +141,22 @@ ms.locfileid: "74896267"
 
 定義所要儲存項目的定義。 您必須在 `Program.cs` 檔案內定義 `Item` 類別：
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Model)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="Model":::
 
 接下來，在 `Program` 類別內建立 helper 函數。 此 helper 函數會取得您定義要插入的項目數目，並產生隨機資料：
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Bogus)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="Bogus":::
 
 讀取項目，並使用 `System.Text.Json` 類別將項目序列化至資料流執行個體。 由於自動產生資料的性質，資料會序列化為資料流。 您也可以直接使用項目執行個體，但透過將它們轉換成資料流，您便可以在 CosmosClient 中利用資料流 API 的效能。 通常只要您知道分割區索引鍵，就可以直接使用資料。 
 
 
 若要將資料轉換成資料流執行個體，請在 `Main` 方法中，於建立容器之後隨即加入下列程式碼：
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Operations)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="Operations":::
 
 接下來，使用資料流來建立並行工作，並填入工作清單以將項目插入容器中。 若要執行這項操作，請將下列程式碼新增至 `Program` 類別：
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=ConcurrentTasks)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="ConcurrentTasks":::
 
 這些並行點作業會全部一起執行 (亦即大量)，如簡介一節中所述。
 

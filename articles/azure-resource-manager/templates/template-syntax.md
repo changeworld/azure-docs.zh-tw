@@ -2,13 +2,13 @@
 title: 範本結構和語法
 description: 使用宣告式 JSON 語法描述 Azure Resource Manager 範本的結構和屬性。
 ms.topic: conceptual
-ms.date: 11/12/2019
-ms.openlocfilehash: 9cd602644ecf803e97254189cfc157d60713cc6c
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.date: 02/25/2020
+ms.openlocfilehash: 08c688da3e812a4a67070c926cf11512bfc60667
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209455"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622887"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>了解 Azure Resource Manager 範本的結構和語法
 
@@ -260,10 +260,14 @@ ms.locfileid: "77209455"
 
 ```json
 "outputs": {
-  "<output-name>" : {
+  "<output-name>": {
     "condition": "<boolean-value-whether-to-output-value>",
-    "type" : "<type-of-output-value>",
-    "value": "<output-value-expression>"
+    "type": "<type-of-output-value>",
+    "value": "<output-value-expression>",
+    "copy": {
+      "count": <number-of-iterations>,
+      "input": <values-for-the-variable>
+    }
   }
 }
 ```
@@ -273,7 +277,8 @@ ms.locfileid: "77209455"
 | 輸出-名稱 |是 |輸出值的名稱。 必須是有效的 JavaScript 識別碼。 |
 | condition (條件) |否 | 布林值，指出是否傳回此輸出值。 當為 `true` 時，該值會包含在部署的輸出中。 若為 `false`，則會略過此部署的輸出值。 未指定時，預設值為 `true`。 |
 | type |是 |輸出值的類型。 輸出值支援與範本輸入參數相同的類型。 如果您針對輸出類型指定**securestring** ，此值不會顯示在部署歷程記錄中，而且無法從另一個範本抓取。 若要在多個範本中使用秘密值，請將密碼儲存在 Key Vault 中，並在參數檔案中參考密碼。 如需詳細資訊，請參閱[在部署期間使用 Azure Key Vault 以傳遞安全的參數值](key-vault-parameter.md)。 |
-| value |是 |評估並傳回做為輸出值的範本語言運算式。 |
+| value |否 |評估並傳回做為輸出值的範本語言運算式。 請指定 [**值**] 或 [**複製**]。 |
+| copy |否 | 用來針對輸出傳回一個以上的值。 指定 [**值**] 或 [**複製**]。 如需詳細資訊，請參閱[Azure Resource Manager 範本中的輸出反復](copy-outputs.md)專案。 |
 
 如需如何使用輸出的範例，請參閱[Azure Resource Manager 範本中的輸出](template-outputs.md)。
 
@@ -379,7 +384,7 @@ ms.locfileid: "77209455"
 
 ## <a name="multi-line-strings"></a>多行字串
 
-您可以將字串分成多行。 例如，location 屬性和下列 JSON 範例中的其中一個批註。
+您可以將字串分成多行。 例如，請參閱 location 屬性和下列 JSON 範例中的其中一個批註。
 
 ```json
 {

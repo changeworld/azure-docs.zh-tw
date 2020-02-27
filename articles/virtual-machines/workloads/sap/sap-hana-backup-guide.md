@@ -4,20 +4,20 @@ description: SAP HANA 備份指南說明備份 Azure 虛擬機器上 SAP HANA �
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
-ms.author: rclaus
-ms.openlocfilehash: 05a4b8e8034e1c354a4209244694aeb2fc2c6007
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: hermannd
+ms.openlocfilehash: 8de83cbb7060e6ca5390720a4a241be71bb9dc92
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078754"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617436"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Azure 虛擬機器上的 SAP HANA 備份指南
 
@@ -30,11 +30,11 @@ Azure 虛擬機器上執行的 SAP HANA 備份指南只描述 Azure 相關主題
 - HANA 備份至 Azure Linux 虛擬機器中的檔案系統 (請參閱[檔案層級的 SAP HANA Azure 備份](sap-hana-backup-file-level.md))
 - 手動使用 Azure 儲存體 Blob 快照集功能或使用 Azure 備份服務，進行以儲存體快照集為基礎的 HANA 備份 (請參閱[以儲存體快照集為基礎的 HANA 備份](sap-hana-backup-storage-snapshots.md))
 
-SAP HANA 提供備份 API，可讓第三方備份工具直接與 SAP HANA 整合。 (這已超出本指南的範圍。)根據此 API，目前 SAP HANA 與 Azure 備份服務沒有任何直接整合。
+SAP HANA 提供備份 API，可讓第三方備份工具直接與 SAP HANA 整合。 （不在本指南的討論範圍內）。目前並不會根據此 API 直接將 SAP Hana 整合至可用的 Azure 備份服務。
 
 各種 Azure VM 類型都正式支援 SAP HANA (例如 Azure M 系列)。 如需完整 SAP HANA 認證 Azure VM 清單，請參閱 [Find Certified IaaS Platforms](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) (尋找認證 IaaS 平台)。 這篇文章將會更新為新的供應項目，您就可以使用 Azure 上的 SAP HANA。
 
-Azure 上另外還有一個 SAP HANA 的混合式解決方案，其中的 SAP HANA 是在實體伺服器上非虛擬化的執行。 不過，此 SAP HANA Azure 備份指南涵蓋純 Azure 環境，即 SAP HANA 在 Azure VM 中執行，而不是 SAP HANA 在「大型執行個體」&quot;&quot;上執行。針對此備份解決方案在「大型執行個體」&quot;&quot;上執行以儲存體快照集為基礎的備份，如需詳細資訊請參閱 [Azure 上的 SAP HANA (大型執行個體) 概觀和架構](hana-overview-architecture.md)。
+Azure 上另外還有一個 SAP HANA 的混合式解決方案，其中的 SAP HANA 是在實體伺服器上非虛擬化的執行。 不過，此 SAP Hana Azure 備份指南涵蓋了純粹的 Azure 環境，其中 SAP Hana 在 Azure VM 中執行，而不是 SAP Hana 在 &quot;大型實例上執行。如需有關此備份解決方案的詳細資訊，請參閱 Azure 上的[SAP Hana （大型實例）總覽和架構](hana-overview-architecture.md)&quot; 以儲存體快照集為基礎的 &quot;大型&quot; 實例。
 
 Azure 上支援的 SAP 產品資訊可在 [SAP Note 1928533](https://launchpad.support.sap.com/#/notes/1928533) 之中找到。
 
@@ -54,7 +54,7 @@ Azure 上支援的 SAP 產品資訊可在 [SAP Note 1928533](https://launchpad.s
 
 _&quot;是否可能在次要端建立備份？_
 
-_否，目前您只能在主要端上建立資料和記錄的備份。若有啟用自動記錄備份，在次要端接管之後，會自動將記錄備份寫入那裡。&quot;_
+_否，目前您只能在主要端接受資料和記錄備份。如果已啟用自動記錄備份，在接管至次要端之後，就會在該處自動寫入記錄備份。&quot;_
 
 ## <a name="sap-resources-for-hana-backup"></a>HANA 備份的 SAP 資源
 
@@ -89,13 +89,13 @@ SAP 不特別偏好 HANA 備份或儲存體快照集之中的任何一個。 它
 
 在 Azure 上，請注意一件事：Azure blob 快照集功能不保證檔案系統的一致性 (請參閱[以 PowerShell 使用 blob 快照集](https://blogs.msdn.microsoft.com/cie/2016/05/17/using-blob-snapshots-with-powershell/))。 下一節＜建立儲存體快照集時，SAP HANA 資料的一致性＞將討論此功能的考量事項。
 
-此外, 當您經常使用 blob 快照集時, 必須瞭解其對計費的影響, 如這篇文章中所述:[瞭解快照集如何產生費用](/rest/api/storageservices/understanding-how-snapshots-accrue-charges), 不&#39;像使用 Azure 虛擬磁片一樣明顯。
+此外，您必須了解經常使用 blob 快照集對費用的影響，如這篇文章中所述︰[了解快照如何產生費用](/rest/api/storageservices/understanding-how-snapshots-accrue-charges)— 它不像使用 Azure 虛擬磁碟那麼明顯。
 
 ### <a name="sap-hana-data-consistency-when-taking-storage-snapshots"></a>建立儲存體快照集時，SAP HANA 資料的一致性
 
 建立儲存體快照集時，檔案系統和應用程式的一致性是複雜的問題。 若要避免問題，最簡單的方法是關閉 SAP HANA，或甚至是整台虛擬機器。 關機在示範或原型，或甚至開發系統上也許可行，但不是生產系統的選項。
 
-在 Azure 上，必須記住：Azure blob 快照集功能不保證檔案系統的一致性。 不過，只要僅有單一虛擬磁碟，使用SAP HANA 快照集功能便能讓一致性正常運作。 但即使是使用單一磁碟，也必須檢查其他項目。 [SAP Note 2039883](https://launchpad.support.sap.com/#/notes/2039883) 中有關於透過儲存體快照集進行 SAP HANA 備份的重要資訊。 例如其中提到，若使用 XFS 檔案系統，就必須在開始儲存體快照集之前執行 **xfs\_freeze**，才可以確保一致性 (如需有關 **xfs\_freeze** 的詳細資訊，請參閱 [xfs\_freeze(8) -Linux man page](https://linux.die.net/man/8/xfs_freeze))。
+在 Azure 上，必須記住：Azure blob 快照集功能不保證檔案系統的一致性。 不過，只要僅有單一虛擬磁碟，使用SAP HANA 快照集功能便能讓一致性正常運作。 但即使是使用單一磁碟，也必須檢查其他項目。 [SAP Note 2039883](https://launchpad.support.sap.com/#/notes/2039883) 中有關於透過儲存體快照集進行 SAP HANA 備份的重要資訊。 例如其中提到，若使用 XFS 檔案系統，就必須在開始儲存體快照集之前執行 **xfs\_freeze**，才可以確保一致性 (如需有關 [xfs\_freeze](https://linux.die.net/man/8/xfs_freeze) 的詳細資訊，請參閱 **xfs\_freeze(8) -Linux man page**)。
 
 當單一檔案系統跨多個磁碟/磁碟區的情況下，一致性的主題會變得更具挑戰性。 例如，使用 mdadm 或 LVM 和串接。 上述 SAP Note 中描述︰
 
@@ -192,7 +192,7 @@ Azure 備份服務可以處理加密過的 VM/磁碟 (請參閱[如何使用 Azu
 
 ### <a name="test-backup-size-estimation"></a>測試備份大小估計
 
-請務必估計 SAP HANA 備份的大小。 這項估計有助於增進效能，因為檔案複製期間採用平行處理原則，藉由定義若干備份檔案的大小上限，可以改善效能。 (詳情稍後在本文中會加以說明。)您也必須決定要執行完整備份或差別備份 (增量或差異)。
+請務必估計 SAP HANA 備份的大小。 這項估計有助於增進效能，因為檔案複製期間採用平行處理原則，藉由定義若干備份檔案的大小上限，可以改善效能。 （這些詳細資料會在本文稍後說明）。其中一個也必須決定要執行完整備份或差異備份（增量或差異）。
 
 幸運的是，有個簡單的 SQL 陳述式可以估計備份檔案的大小︰**select \* from M\_BACKUP\_SIZE\_ESTIMATIONS** (請參閱[估計檔案系統資料備份所需的空間](https://help.sap.com/saphelp_hanaplatform/helpdata/en/7d/46337b7a9c4c708d965b65bc0f343c/content.htm))。
 
@@ -206,13 +206,13 @@ Azure 備份服務可以處理加密過的 VM/磁碟 (請參閱[如何使用 Azu
 
 HANA Studio 備份主控台可讓您限制 HANA 備份檔案的檔案大小上限。 在範例環境中，此功能可以得到多個較小的備份檔案，而不是一個大型的 230 GB 備份檔案。 較小的檔案大小對效能的影響顯著 (請參閱相關文章[檔案層級的 SAP HANA Azure 備份](sap-hana-backup-file-level.md))。
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
 根據測試結果，下表列出備份 Azure 虛擬機器上執行的 SAP HANA 資料庫時，使用不同方案的優缺點。
 
 **先將 SAP HANA 備份至檔案系統，再將備份檔案複製到備份目的地**
 
-|方案                                           |優點                                 |缺點                                  |
+|解決方法                                           |優點                                 |缺點                                  |
 |---------------------------------------------------|-------------------------------------|--------------------------------------|
 |將 HANA 備份保留在 VM 磁碟上                      |沒有額外的管理工作     |耗盡本機 VM 磁碟空間           |
 |用 blobxfer 工具將備份檔案複製到 blob 儲存體 |以平行處理原則複製多個檔案、可選擇使用非經常性存取的 blob 儲存體 | 需額外維護工具和自訂指令碼 | 
@@ -225,7 +225,7 @@ HANA Studio 備份主控台可讓您限制 HANA 備份檔案的檔案大小上�
 
 **以儲存體快照集為基礎的 SAP HANA 備份**
 
-|方案                                           |優點                                 |缺點                                  |
+|解決方法                                           |優點                                 |缺點                                  |
 |---------------------------------------------------|-------------------------------------|--------------------------------------|
 |Azure 備份服務                               | 允許以 blob 快照集為基礎備份 VM | 如果不使用檔案層級還原，則需要為還原程序建立新的 VM，這表示需要新的 SAP HANA 授權金鑰|
 |手動 blob 快照集                              | 可彈性地建立和還原特定 VM 磁碟，而不需變更唯一 VM 識別碼|必須由客戶完成所有的手動作業|

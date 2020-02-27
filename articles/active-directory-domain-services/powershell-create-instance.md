@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: iainfou
-ms.openlocfilehash: dddbc15a80fe741b9ad1634aac18cb13819dc235
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: ee85002aea962dfa675ac6c09a6bfbaeba8e9e79
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704417"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613228"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>使用 PowerShell 啟用 Azure Active Directory Domain Services
 
@@ -26,7 +26,7 @@ Azure Active Directory Domain Services (Azure AD DS) 提供受控網域服務，
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本文，您需要下列資源：
 
@@ -64,7 +64,7 @@ New-AzureADGroup -DisplayName "AAD DC Administrators" `
 
 建立*AAD DC 系統管理員*群組後，使用[add-azureadgroupmember][Add-AzureADGroupMember] Cmdlet 將使用者新增至群組。 首先，您會使用[get-azureadgroup][Get-AzureADGroup] Cmdlet 取得*AAD DC 系統管理員*群組物件識別碼，然後使用[new-azureaduser 指令程式][Get-AzureADUser]，以所需的使用者物件識別碼。
 
-在下列範例中，`admin@contoso.onmicrosoft.com`的 UPN 之帳戶的使用者物件識別碼。 以您想要新增至*AAD DC 系統管理員*群組之使用者的 UPN 取代此使用者帳戶：
+在下列範例中，`admin@aaddscontoso.onmicrosoft.com`的 UPN 之帳戶的使用者物件識別碼。 以您想要新增至*AAD DC 系統管理員*群組之使用者的 UPN 取代此使用者帳戶：
 
 ```powershell
 # First, retrieve the object ID of the newly created 'AAD DC Administrators' group.
@@ -74,7 +74,7 @@ $GroupObjectId = Get-AzureADGroup `
 
 # Now, retrieve the object ID of the user you'd like to add to the group.
 $UserObjectId = Get-AzureADUser `
-  -Filter "UserPrincipalName eq 'admin@contoso.onmicrosoft.com'" | `
+  -Filter "UserPrincipalName eq 'admin@aaddscontoso.onmicrosoft.com'" | `
   Select-Object ObjectId
 
 # Add the user to the 'AAD DC Administrators' group.
@@ -128,7 +128,7 @@ $Vnet= New-AzVirtualNetwork `
 
 ## <a name="create-an-azure-ad-ds-managed-domain"></a>建立 Azure AD DS 受控網域
 
-現在讓我們建立一個 Azure AD DS 受控網域。 設定您的 Azure 訂用帳戶識別碼，然後提供受控網域的名稱，例如*aadds.contoso.com*。 您可以使用[get-azsubscription][Get-AzSubscription] Cmdlet 來取得訂用帳戶識別碼。
+現在讓我們建立一個 Azure AD DS 受控網域。 設定您的 Azure 訂用帳戶識別碼，然後提供受控網域的名稱，例如*aaddscontoso.com*。 您可以使用[get-azsubscription][Get-AzSubscription] Cmdlet 來取得訂用帳戶識別碼。
 
 如果您選擇支援可用性區域的區域，Azure AD DS 資源會跨區域分散，以供額外的備援。
 
@@ -138,7 +138,7 @@ $Vnet= New-AzVirtualNetwork `
 
 ```powershell
 $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-$ManagedDomainName = "aadds.contoso.com"
+$ManagedDomainName = "aaddscontoso.com"
 
 # Enable Azure AD Domain Services for the directory.
 New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.AAD/DomainServices/$ManagedDomainName" `
@@ -167,12 +167,12 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 
 ```powershell
 # Change the following values to match your deployment.
-$AaddsAdminUserUpn = "admin@contoso.onmicrosoft.com"
+$AaddsAdminUserUpn = "admin@aaddscontoso.onmicrosoft.com"
 $ResourceGroupName = "myResourceGroup"
 $VnetName = "myVnet"
 $AzureLocation = "westus"
 $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-$ManagedDomainName = "aadds.contoso.com"
+$ManagedDomainName = "aaddscontoso.com"
 
 # Connect to your Azure AD directory.
 Connect-AzureAD

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: iainfou
-ms.openlocfilehash: 106cd870a8ba52917ecabe6266bbb2c376296d79
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 8a82d2ad3e79633bb930348c6162996e961c4306
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704265"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612957"
 ---
 # <a name="understand-the-health-states-and-resolve-suspended-domains-in-azure-active-directory-domain-services"></a>瞭解健全狀況狀態，並在 Azure Active Directory Domain Services 中解決已擱置的網域
 
@@ -34,7 +34,7 @@ Azure AD DS 受控網域可能處於下列其中一種狀態：
 
 * [執行中](#running-state)
 * [需要注意](#needs-attention-state)
-* [掛](#suspended-state)
+* [已暫停](#suspended-state)
 * [已刪除](#deleted-state)
 
 ## <a name="running-state"></a>執行狀態
@@ -96,7 +96,7 @@ Azure AD DS 受控網域可能處於下列其中一種狀態：
 若要還原處于「已*暫停*」狀態之 Azure AD DS 受控網域的健康情況，請完成下列步驟：
 
 1. 在 Azure 入口網站中，搜尋並選取 **網域服務**。
-1. 從清單中選擇您的 Azure AD DS 受控網域（例如*aadds.contoso.com*），然後選取 [**健康**情況]。
+1. 從清單中選擇您的 Azure AD DS 受控網域（例如*aaddscontoso.com*），然後選取 [**健康**情況]。
 1. 視暫停的原因而定，選取警示，例如*AADDS503*或*AADDS504*。
 1. 選擇警示中提供的解決連結，並遵循步驟來解決此問題。
 

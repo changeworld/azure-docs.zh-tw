@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/25/2020
 ms.author: rajanaki
-ms.openlocfilehash: 29a939452d9b90bd8afda7db4e115d10956ee5e5
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 68d975a1b8bb8d47011bb292d3cf897956b31712
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77606629"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623607"
 ---
 # <a name="deprecation-of-disaster-recovery-between-customer-managed-sites-with-vmm-using-azure-site-recovery"></a>使用 Azure Site Recovery 在客戶管理的網站（與 VMM）之間淘汰嚴重損壞修復
 
@@ -26,9 +26,9 @@ ms.locfileid: "77606629"
 
 ## <a name="what-changes-should-you-expect"></a>您預期會有哪些變更？
 
-- 從2019年11月開始，這些案例不會允許 boardings 的新使用者。 **現有的複寫和管理**作業，包括容錯移轉、測試容錯移轉、監視等，**將不會受到影響**。
+- 從2020年3月開始，您將會收到 Azure 入口網站通知，& 的電子郵件通訊，以及即將淘汰的 Hyper-v Vm 複寫站對站複寫。 已于2023年3月規劃淘汰。
 
-- 如果您有現有的設定，您將無法註冊新的 VMMs。
+- 如果您有現有的設定，將不會對安裝造成任何影響。
 
 - 一旦淘汰案例之後，除非客戶遵循其他方法，否則現有的複寫可能會中斷。 客戶無法透過 Azure 入口網站中的 Azure Site Recovery 體驗，來查看、管理或執行任何 DR 相關的作業。
  

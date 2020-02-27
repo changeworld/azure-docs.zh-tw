@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: sngun
-ms.openlocfilehash: 06fa98ae4acc2252d8866858ed0e2194ed84ff79
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 40735f91e2ca58cc42f723c7993686d92f0e5ff0
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60928274"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623335"
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>淘汰 S1、S2 和 S3 效能層級
 
@@ -26,7 +26,7 @@ ms.locfileid: "60928274"
 - [我該怎麼做才能確保不中斷地的存取我的資料？](#uninterrupted-access)
 - [在移轉之後我的集合會如何變更？](#collection-change)
 - [我移轉至單一資料分割集合之後，我的帳單將如何變更呢？](#billing-change)
-- [如果我需要超過 10 GB 的儲存體會如何？](#more-storage-needed)
+- [如果我需要超過 20 GB 的儲存體，該怎麼辦？](#more-storage-needed)
 - [在計劃性移轉之前，我可以在 S1、S2 和 S3 效能層級之間變更嗎？](#change-before)
 - [如何自己從 S1、S2、S3 效能層級移轉至單一資料分割集合？](#migrate-diy)
 - [如果我是 EA 客戶會受到什麼影響？](#ea-customer)
@@ -45,9 +45,9 @@ S1、S2 和 S3 效能層級不提供標準 Azure Cosmos DB 所提供的彈性。
 
 |   |資料分割的集合|單一資料分割集合|S1|S2|S3|
 |---|---|---|---|---|---|
-|最大輸送量|無限|10K RU/秒|250 RU/秒|1 K RU/秒|2.5 K RU/秒|
+|最大輸送量|無限制|10K RU/秒|250 RU/秒|1 K RU/秒|2.5 K RU/秒|
 |輸送量下限|2.5 K RU/秒|400 RU/秒|250 RU/秒|1 K RU/秒|2.5 K RU/秒|
-|儲存體上限|無限|10 GB|10 GB|10 GB|10 GB|
+|儲存體上限|無限制|20 GB|20 GB|20 GB|20 GB|
 |價格 (每月)|輸送量：$6 / 100 RU/秒<br><br>儲存體：$0.25/GB|輸送量：$6 / 100 RU/秒<br><br>儲存體：$0.25/GB|$25 美元|$50 美元|$100 美元|
 
 您是 EA 客戶嗎？ 如果是，請參閱[如果我是 EA 客戶會受到什麼影響？](#ea-customer)
@@ -80,9 +80,9 @@ S1、S2 和 S3 效能層級不提供標準 Azure Cosmos DB 所提供的彈性。
 
 <a name="more-storage-needed"></a>
 
-## <a name="what-if-i-need-more-than-10-gb-of-storage"></a>如果我需要超過 10 GB 的儲存空間怎麼辦？
+## <a name="what-if-i-need-more-than-20-gb-of-storage"></a>如果我需要超過 20 GB 的儲存體，該怎麼辦？
 
-無論您擁有具備 S1、S2 或 S3 效能層級的集合，或是擁有單一分割區的集合，全部都有 10 GB 的可用儲存空間。您可以利用幾乎不受限制的儲存空間，使用 Azure Cosmos DB 資料移轉工具來將資料移轉至分割區的集合。 如需資料分割集合優點的相關詳細資訊，請參閱 [Azure Cosmos DB 中的資料分割與規模調整](sql-api-partition-data.md)。 
+無論您的集合具有 S1、S2 或 S3 效能層級，或具有單一分割區集合，全都有 20 GB 的可用儲存空間，您可以使用 Azure Cosmos DB 資料移轉工具，將您的資料移轉至已分割的集合，幾乎無限制的儲存體。 如需資料分割集合優點的相關詳細資訊，請參閱 [Azure Cosmos DB 中的資料分割與規模調整](sql-api-partition-data.md)。 
 
 <a name="change-before"></a>
 

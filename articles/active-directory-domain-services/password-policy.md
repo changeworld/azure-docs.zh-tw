@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: b08c3854ef330081b4c55331cb410c5925f00dec
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: c4402c1ce2f051c8d1911e7c0332d4cac787ce1d
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512754"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613206"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>受控網域上的密碼和帳戶鎖定原則
 
@@ -87,7 +87,7 @@ ms.locfileid: "76512754"
 
 1. 從 [開始] 畫面中，選取 [系統**管理工具**]。 已安裝在教學課程中的可用管理工具清單，以[建立管理 VM][tutorial-create-management-vm]。
 1. 若要建立和管理 Ou，請從系統管理工具清單中選取 [ **Active Directory 管理中心**]。
-1. 在左窗格中，選擇您的 Azure AD DS 受控網域，例如*aadds.contoso.com*。
+1. 在左窗格中，選擇您的 Azure AD DS 受控網域，例如*aaddscontoso.com*。
 1. 開啟 [**系統**] 容器，然後按 [**密碼設定容器**]。
 
     隨即顯示 Azure AD DS 受控網域的內建密碼原則。 您無法修改此內建原則。 相反地，請建立自訂密碼原則來覆寫預設原則。
@@ -112,7 +112,7 @@ ms.locfileid: "76512754"
 
     ![選取要套用密碼原則的使用者和群組](./media/how-to/fgpp-applies-to.png)
 
-1. 密碼原則只能套用至群組。 在 [**位置**] 對話方塊中，展開功能變數名稱，例如*aadds.contoso.com*，然後選取 OU，例如**AADDC Users**。 如果您有一個自訂 OU，其中包含您想要套用的使用者群組，請選取該 OU。
+1. 密碼原則只能套用至群組。 在 [**位置**] 對話方塊中，展開功能變數名稱，例如*aaddscontoso.com*，然後選取 OU，例如**AADDC Users**。 如果您有一個自訂 OU，其中包含您想要套用的使用者群組，請選取該 OU。
 
     ![選取群組所屬的 OU](./media/how-to/fgpp-container.png)
 

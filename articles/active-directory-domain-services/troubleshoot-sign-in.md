@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: iainfou
-ms.openlocfilehash: aa03e388019bf696324ea7af6062ec98386df5fa
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 0585ced3bc53f216ab203b4686b5800b5e14bbbd
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827057"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612740"
 ---
 # <a name="troubleshoot-account-sign-in-problems-with-an-azure-ad-domain-services-managed-domain"></a>針對 Azure AD Domain Services 受控網域的帳戶登入問題進行疑難排解
 
@@ -32,7 +32,7 @@ ms.locfileid: "71827057"
 
 視目錄的大小而定，可能需要一些時間，使用者帳戶和認證雜湊才會在 Azure AD DS 中提供。 若為大型目錄，這個從 Azure AD 進行的初次單向同步處理可能需要幾個小時，最多一天或兩個。 請確定您等待的時間夠久，再重試驗證。
 
-針對使用者 Azure AD Connect 將內部部署目錄資料同步至 Azure AD 的混合式環境，請確定您執行的是最新版本的 Azure AD Connect 並已[設定 Azure AD Connect 在啟用 Azure 之後執行完整同步處理AD DS][azure-ad-connect-phs]。 如果您停用 Azure AD DS 然後重新啟用，就必須再次遵循這些步驟。
+針對使用者 Azure AD Connect 將內部部署目錄資料同步處理至 Azure AD 的混合式環境，請確定您執行的是最新版本的 Azure AD Connect 並已[設定 Azure AD Connect，以便在啟用 AZURE AD DS 之後執行完整同步][azure-ad-connect-phs]處理。 如果您停用 Azure AD DS 然後重新啟用，就必須再次遵循這些步驟。
 
 如果您繼續遇到未透過 Azure AD Connect 同步處理的帳戶問題，請重新開機 Azure AD 同步服務。 從已安裝 Azure AD Connect 的電腦上，開啟 [命令提示字元] 視窗，然後執行下列命令：
 
@@ -59,7 +59,7 @@ net start 'Microsoft Azure AD Sync'
     * [變更帳戶的密碼][enable-user-accounts]以產生所需的密碼雜湊，然後等候15分鐘，再嘗試重新登入。
     * 如果您停用 Azure AD DS，然後重新啟用，則每個帳戶都必須再次遵循這些步驟來變更其密碼，並產生所需的密碼雜湊。
 * **是，密碼已變更。**
-    * 嘗試使用*UPN*格式（例如 `driley@contoso.com`）來登入，而不是 `CONTOSO\deeriley` 之類的*SAMAccountName*格式。
+    * 嘗試使用*UPN*格式（例如 `driley@aaddscontoso.com`）登入，而不是像 `AADDSCONTOSO\deeriley`這樣的*SAMAccountName*格式。
     * 對於 UPN 前置詞過長或與受控網域上的其他使用者相同的使用者，可能會自動產生*SAMAccountName* 。 *UPN*格式保證在 Azure AD 租使用者內是唯一的。
 
 ## <a name="the-account-is-locked-out"></a>帳戶已鎖定

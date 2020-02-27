@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 2c6f594b16aac40abf885e0d058c7aba48d32f9c
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 3cb57fae2b1c67ece321a294e56612f49358405a
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512618"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612729"
 ---
 # <a name="common-errors-and-troubleshooting-steps-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 的常見錯誤和疑難排解步驟
 
@@ -30,7 +30,7 @@ ms.locfileid: "76512618"
 
 | **範例錯誤訊息** | **解決方案** |
 | --- |:--- |
-| *此網路上已有使用中的名稱 contoso.com。請指定未使用的名稱。* |[虛擬網路中的網域名稱衝突](troubleshoot.md#domain-name-conflict) |
+| *此網路上已有使用中的名稱 addscontoso.com。請指定未使用的名稱。* |[虛擬網路中的網域名稱衝突](troubleshoot.md#domain-name-conflict) |
 | *無法在此 Azure AD 租使用者中啟用網域服務。服務對名為「Azure AD Domain Services 同步」的應用程式沒有足夠的許可權。刪除名為「Azure AD Domain Services 同步」的應用程式，然後嘗試為您的 Azure AD 租使用者啟用網域服務。* |[網域服務對 Azure AD Domain Services 同步應用程式沒有足夠的許可權](troubleshoot.md#inadequate-permissions) |
 | *無法在此 Azure AD 租使用者中啟用網域服務。Azure AD 租使用者中的網域服務應用程式沒有啟用網域服務所需的許可權。使用應用程式識別碼 d87dcbc6-a371-462e-88e3-28ad15ec4e64 刪除應用程式，然後嘗試為您的 Azure AD 租使用者啟用網域服務。* |[未在您的 Azure AD 租使用者中正確設定網域服務應用程式](troubleshoot.md#invalid-configuration) |
 | *無法在此 Azure AD 租使用者中啟用網域服務。您的 Azure AD 租使用者中已停用 Microsoft Azure AD 應用程式。啟用應用程式識別碼為 00000002-0000-0000-c000-000000000000 的應用程式，然後嘗試為您的 Azure AD 租使用者啟用網域服務。* |[您的 Azure AD 租用戶已停用 Microsoft Graph 應用程式](troubleshoot.md#microsoft-graph-disabled) |
@@ -39,11 +39,11 @@ ms.locfileid: "76512618"
 
 **錯誤訊息**
 
-*此網路上已有使用中的名稱 contoso.com。請指定未使用的名稱。*
+*此網路上已有使用中的名稱 aaddscontoso.com。請指定未使用的名稱。*
 
 **解決方案**
 
-檢查您在相同或對等互連的虛擬網路上，沒有現有的 AD DS 環境具有相同的功能變數名稱。 例如，您可能會有一個名為*contoso.com*的 AD DS 網域，它會在 Azure vm 上執行。 當您嘗試在虛擬網路上啟用具有相同功能變數名稱*contoso.com*的 Azure AD DS 受控網域時，要求的作業會失敗。
+檢查您在相同或對等互連的虛擬網路上，沒有現有的 AD DS 環境具有相同的功能變數名稱。 例如，您可能會有一個名為*aaddscontoso.com*的 AD DS 網域，它會在 Azure vm 上執行。 當您嘗試在虛擬網路上啟用具有相同功能變數名稱*aaddscontoso.com*的 Azure AD DS 受控網域時，要求的作業會失敗。
 
 此失敗是因為虛擬網路上的功能變數名稱發生名稱衝突。 DNS 查閱會檢查現有的 AD DS 環境是否回應所要求的功能變數名稱。 若要解決此錯誤，請使用不同的名稱來設定您的 Azure AD DS 受控網域，或取消布建現有的 AD DS 網域，然後再試一次啟用 Azure AD DS。
 
@@ -128,9 +128,9 @@ if ($sp -ne $null)
 
 如果 Azure AD 租使用者中的一或多個使用者無法登入 Azure AD DS 受控網域，請完成下列疑難排解步驟：
 
-* **認證格式**-請嘗試使用 UPN 格式來指定認證，例如 `dee@contoso.onmicrosoft.com`。 UPN 格式是在 Azure AD DS 中指定認證的建議方式。 請確定已在 Azure AD 中正確設定此 UPN。
+* **認證格式**-請嘗試使用 UPN 格式來指定認證，例如 `dee@aaddscontoso.onmicrosoft.com`。 UPN 格式是在 Azure AD DS 中指定認證的建議方式。 請確定已在 Azure AD 中正確設定此 UPN。
 
-    如果您的租使用者中有多個使用者具有相同的 UPN 前置詞，或您的 UPN 前置詞太長，則您帳戶的*SAMAccountName* （例如*CONTOSO\driley* ）可能會自動產生。 因此，您帳戶的*SAMAccountName*格式可能會與您在內部部署網域中預期或使用的格式不同。
+    如果您的租使用者中有多個使用者具有相同的 UPN 前置詞，或您的 UPN 前置詞太長，則您帳戶的*SAMAccountName* （例如*AADDSCONTOSO\driley* ）可能會自動產生。 因此，您帳戶的*SAMAccountName*格式可能會與您在內部部署網域中預期或使用的格式不同。
 
 * **密碼同步化**-請確定您已為[僅限雲端的使用者][cloud-only-passwords]或[使用 Azure AD Connect 的混合式環境][hybrid-phs]啟用密碼同步化。
     * **混合式同步處理的帳戶：** 如果受影響的使用者帳戶會從內部部署目錄同步處理，請確認下欄區域：

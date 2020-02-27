@@ -1,31 +1,26 @@
 ---
 title: 獎勵分數 - 個人化工具
-titleSuffix: Azure Cognitive Services
 description: 獎勵分數會指出個人化選擇 (RewardActionID) 對使用者產生的成效。 獎勵分數的值取決於商務邏輯，並以觀察到的使用者行為作為基礎。 個人化工具會藉由評估獎勵來訓練其機器學習模型。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: personalizer
+ms.date: 02/20/2020
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.author: diberry
-ms.openlocfilehash: a47d6014e51dce81c9caf82f8624896c439f050d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 734e4d0fdcec25884f8535ec61ccd10569fa8890
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490879"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623771"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>獎勵分數表示個人化的成就
 
 獎勵分數會指出個人化選擇 [RewardActionID](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/rank/rank#response) 對使用者產生的成效。 獎勵分數的值取決於商務邏輯，並以觀察到的使用者行為作為基礎。
 
-個人化工具會藉由評估獎勵來訓練其機器學習模型。 
+個人化工具會藉由評估獎勵來訓練其機器學習模型。
+
+瞭解[如何](how-to-settings.md#configure-rewards-for-the-feedback-loop)在個人化工具資源的 Azure 入口網站中設定預設報酬分數。
 
 ## <a name="use-reward-api-to-send-reward-score-to-personalizer"></a>使用獎勵 API 將獎勵分數傳送給個人化工具
 
-獎勵會藉由[獎勵 API](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/events/reward) 來傳送給個人化工具。 「報酬」（報酬）通常是0和1之間的數位。 在某些情況下，可能會有值為-1 的負值報酬，而且只有在您有經驗的增強式 learning （RL）時才應該使用。 個人化工具會訓練模型，以盡可能在一段時間後達到最高的獎勵總和。
+獎勵會藉由[獎勵 API](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/events/reward) 來傳送給個人化工具。 「報酬」（報酬）通常是從0到1的數位。 在某些情況下，可能會有值為-1 的負值報酬，而且只有在您有經驗的增強式 learning （RL）時才應該使用。 個人化工具會訓練模型，以盡可能在一段時間後達到最高的獎勵總和。
 
 獎勵會在使用者行為發生後傳送，而這有可能是幾天後。 個人化工具最多會等到事件已被認定沒有獎勵為止，或是 Azure 入口網站中的[獎勵等候時間](#reward-wait-time)已設定預設獎勵。
 
@@ -47,16 +42,16 @@ ms.locfileid: "73490879"
 
 獎勵分數必須在您的商務邏輯內計算。 分數可以表示成：
 
-* 傳送一次的單一數字 
+* 傳送一次的單一數字
 * 立即傳送的分數 (例如 0.8) 和稍後傳送的其他分數 (通常為 0.2)。
 
 ## <a name="default-rewards"></a>預設獎勵
 
 發出排名呼叫的期間，如果未在[獎勵等候時間](#reward-wait-time)內收到任何獎勵，個人化工具就會以隱含方式將**預設獎勵**套用到排名事件。
 
-## <a name="building-up-rewards-with-multiple-factors"></a>建置具有多個因素的獎勵  
+## <a name="building-up-rewards-with-multiple-factors"></a>建置具有多個因素的獎勵
 
-如需有效的個人化，您可以根據多個因素來建立報酬分數。 
+如需有效的個人化，您可以根據多個因素來建立報酬分數。
 
 例如，您可以套用這些規則來個人化影片內容清單：
 
@@ -93,8 +88,8 @@ ms.locfileid: "73490879"
 * **請考慮非預期的結果**：建立報酬函式，以使用[道德和負](ethics-responsible-use.md)責任的方式來產生負責的結果。
 
 * **使用累加式**報酬：為較小的使用者行為新增部分報酬，有助於個人化工具達到更佳的報酬。 此累加獎勵可讓演算法知道使用者愈來愈受到最終預期行為的吸引。
-    * 如果您顯示一份電影清單，當使用者將滑鼠停留在第一部電影上一段時間時，您就可以判斷某些使用者參與情形已發生。 此行為可計為 0.1 的獎勵分數。 
-    * 如果使用者開啟網頁然後離開，獎勵分數可以是 0.2。 
+    * 如果您顯示一份電影清單，當使用者將滑鼠停留在第一部電影上一段時間時，您就可以判斷某些使用者參與情形已發生。 此行為可計為 0.1 的獎勵分數。
+    * 如果使用者開啟網頁然後離開，獎勵分數可以是 0.2。
 
 ## <a name="reward-wait-time"></a>報酬等候時間
 
@@ -106,12 +101,12 @@ ms.locfileid: "73490879"
 
 請遵循這些建議來取得更好的結果。
 
-* 請盡可能縮短獎勵等候時間，但要保留足夠的時間來取得使用者意見反應。 
+* 請盡可能縮短獎勵等候時間，但要保留足夠的時間來取得使用者意見反應。
 
 * 不要選擇比取得意見反應所需時間還短的期間。 例如，如果您的有些獎勵會在使用者觀看影片 1 分鐘後才傳入，則期限長度就應該至少是此時間的兩倍。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [增強式學習](concepts-reinforcement-learning.md) 
+* [增強式學習](concepts-reinforcement-learning.md)
 * [嘗試使用排名 API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank/console)
 * [嘗試使用獎勵 API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward)

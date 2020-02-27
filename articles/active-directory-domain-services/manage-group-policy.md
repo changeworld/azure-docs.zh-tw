@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 32020341c7ac3bf33082ba365f053a613dcdffc2
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 74d9aa8228e841b17313fb3c15efe459ccd7339a
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705089"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613579"
 ---
 # <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>管理 Azure AD Domain Services 受控網域中的群組原則
 
@@ -53,7 +53,7 @@ Azure Active Directory Domain Services （Azure AD DS）中使用者和電腦物
 1. 在 [伺服器管理員] 視窗的 [儀表板] 窗格內，選取 [新增角色及功能]。
 1. 在 [新增角色及功能精靈] 的 [開始之前] 頁面上，選取 [下一步]。
 1. 針對 [安裝類型]，保持勾選 [角色型或功能型安裝] 選項，然後選取 [下一步]。
-1. 在 [**伺服器選擇**] 頁面上，從伺服器集區中選擇目前的 VM，例如*myvm.aadds.contoso.com*，然後選取 **[下一步]** 。
+1. 在 [**伺服器選擇**] 頁面上，從伺服器集區中選擇目前的 VM，例如*myvm.aaddscontoso.com*，然後選取 **[下一步]** 。
 1. 在 [伺服器角色] 頁面上，按 [下一步]。
 1. 在 [功能] 頁面上，選取 [群組原則管理] 功能。
 
@@ -76,7 +76,7 @@ Azure AD DS 受控網域中的使用者和電腦都有預設的群組原則物�
 
 Azure AD DS 受控網域中有兩個內建的群組原則物件（Gpo）：一個用於*AADDC 電腦*容器，另一個用於*AADDC 使用者*容器。 您可以視需要自訂這些 Gpo 來設定 Azure AD DS 受控網域內的群組原則。
 
-1. 在 [**群組原則管理**] 主控台中，展開 [**樹系： aadds.contoso.com** ] 節點。 接下來，展開 [**網域**] 節點。
+1. 在 [**群組原則管理**] 主控台中，展開 [**樹系： aaddscontoso.com** ] 節點。 接下來，展開 [**網域**] 節點。
 
     有兩個內建容器適用于*AADDC 電腦*和*AADDC 使用者*。 這些容器都會套用預設 GPO。
 

@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: bb2371fc7732e8fa6fcfea53bf2822fcf3d7d2fa
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 48d98d6fef896f9288be88824a62fa1c8179217f
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963949"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621057"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Functions 中函數應用程式的自動化資源部署
 
@@ -28,8 +28,8 @@ Azure Functions 部署通常包含下列資源：
 
 | 資源                                                                           | 需求 | 語法和屬性參考                                                         |   |
 |------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|---|
-| 函數應用程式                                                                     | 必要項    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |   |
-| [Azure 儲存體](../storage/index.yml)帳戶                                   | 必要項    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
+| 函數應用程式                                                                     | 必要    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |   |
+| [Azure 儲存體](../storage/index.yml)帳戶                                   | 必要    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
 | [Application Insights](../azure-monitor/app/app-insights-overview.md)元件 | 選用    | [Microsoft Insights/元件](/azure/templates/microsoft.insights/components)         |   |
 | [主控方案](./functions-scale.md)                                             | 選擇性<sup>1</sup>    | [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)                 |   |
 
@@ -60,7 +60,7 @@ Azure Functions 部署通常包含下列資源：
 
 Azure Functions 執行階段會使用 `AzureWebJobsStorage` 連接字串來建立內部佇列。  在未啟用 Application Insights 的情況下，執行階段會使用 `AzureWebJobsDashboard` 連接字串來記錄至 Azure 資料表儲存體，並啟動入口網站中的 [監視] 索引標籤。
 
-這些屬性會在 `siteConfig` 物件的 `appSettings`集合中指定：
+這些屬性會在 `appSettings` 物件的 `siteConfig`集合中指定：
 
 ```json
 "appSettings": [
@@ -137,7 +137,7 @@ Azure Functions 執行階段會使用 `AzureWebJobsStorage` 連接字串來建�
 
 函數應用程式必須包含下列應用程式設定：
 
-| 設定名稱                 | 說明                                                                               | 範例值                        |
+| 設定名稱                 | 描述                                                                               | 範例值                        |
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
 | AzureWebJobsStorage          | 函式執行時間用來進行內部佇列之儲存體帳戶的連接字串 | 請參閱[儲存體帳戶](#storage)       |
 | FUNCTIONS_EXTENSION_VERSION  | Azure Functions 執行時間的版本                                                | `~2`                                  |
@@ -309,17 +309,25 @@ Premium 方案提供與取用方案相同的調整，但包含專用的資源和
 
 ### <a name="create-a-premium-plan"></a>建立進階方案
 
-Premium 方案是一種特殊類型的「伺服器陣列」資源。 您可以使用 [`EP1`]、[`EP2`] 或 [`sku`] 屬性值的 `EP3` 來指定它。
+Premium 方案是一種特殊類型的「伺服器陣列」資源。 您可以使用 [`sku`[描述] 物件](https://docs.microsoft.com/azure/templates/microsoft.web/2018-02-01/serverfarms#skudescription-object)中 `Name` 屬性值的 `EP1`、`EP2`或 `EP3` 來指定它。
 
 ```json
 {
     "type": "Microsoft.Web/serverfarms",
-    "apiVersion": "2015-04-01",
-    "name": "[variables('hostingPlanName')]",
+    "apiVersion": "2018-02-01",
+    "name": "[parameters('hostingPlanName')]",
     "location": "[resourceGroup().location]",
     "properties": {
-        "name": "[variables('hostingPlanName')]",
-        "sku": "EP1"
+        "name": "[parameters('hostingPlanName')]",
+        "workerSize": "[parameters('workerSize')]",
+        "workerSizeId": "[parameters('workerSizeId')]",
+        "numberOfWorkers": "[parameters('numberOfWorkers')]",
+        "hostingEnvironment": "[parameters('hostingEnvironment')]",
+        "maximumElasticWorkerCount": "20"
+    },
+    "sku": {
+        "Tier": "ElasticPremium",
+        "Name": "EP1"
     }
 }
 ```
@@ -646,7 +654,7 @@ Linux 應用程式也應該在 `siteConfig`下包含 `linuxFxVersion` 屬性。 
 
 ### <a name="deploy-to-azure-button"></a>部署至 Azure 按鈕
 
-以 GitHub 中 `azuredeploy.json` 檔案的原始路徑 [URL 編碼](https://www.bing.com/search?q=url+encode)版本取代 ```<url-encoded-path-to-azuredeploy-json>```。
+以 GitHub 中 ```<url-encoded-path-to-azuredeploy-json>``` 檔案的原始路徑 [URL 編碼](https://www.bing.com/search?q=url+encode)版本取代 `azuredeploy.json`。
 
 以下是使用 Markdown 的範例：
 

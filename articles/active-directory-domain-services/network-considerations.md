@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 7c65e1f871fdab2c925f7a5e6747ad23fe8952d9
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 4a5aba6f8a357f33fd921ee12aac7e45f9b581ff
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512771"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613342"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Azure AD Domain Services 的虛擬網路設計考慮和設定選項
 
@@ -70,7 +70,7 @@ Azure AD DS 受控網域會連線到 Azure 虛擬網路中的子網。 為 Azure
 
 如需詳細資訊，請參閱[Azure 虛擬網路對等互連總覽](../virtual-network/virtual-network-peering-overview.md)。
 
-### <a name="virtual-private-networking-vpn"></a>虛擬私人網路 (VPN)
+### <a name="virtual-private-networking-vpn"></a>虛擬私人網路（VPN）
 
 您可以將虛擬網路連線到另一個虛擬網路（VNet 對 VNet），方法與將虛擬網路設定為內部部署網站位置的方式相同。 這兩個連線都使用 VPN 閘道，來建立使用 IPsec/IKE 的安全通道。 此連接模型可讓您將 Azure AD DS 部署到 Azure 虛擬網路，然後連線內部部署位置或其他雲端。
 
@@ -88,7 +88,7 @@ Azure AD DS 受控網域會連線到 Azure 虛擬網路中的子網。 為 Azure
 
 Azure AD DS 受控網域會在部署期間建立一些網路資源。 若要成功操作和管理 Azure AD DS 受控網域，則需要這些資源，而不應手動設定。
 
-| Azure 資源                          | 說明 |
+| Azure 資源                          | 描述 |
 |:----------------------------------------|:---|
 | 網路介面卡                  | 在做為 Azure Vm 的 Windows Server 上執行的兩個網域控制站（Dc）上，Azure AD DS 裝載受控網域。 每個 VM 都有一個虛擬網路介面，可連線到您的虛擬網路子網。 |
 | 動態標準公用 IP 位址      | Azure AD DS 會使用標準 SKU 公用 IP 位址與同步處理和管理服務進行通訊。 如需公用 IP 位址的詳細資訊，請參閱[Azure 中的 IP 位址類型和配置方法](../virtual-network/virtual-network-ip-addresses-overview-arm.md)。 |
@@ -105,12 +105,12 @@ Azure AD DS 受控網域會在部署期間建立一些網路資源。 若要成�
 
 需要下列網路安全性群組規則，Azure AD DS 提供驗證和管理服務。 請勿編輯或刪除 Azure AD DS 受控網域部署所在的虛擬網路子網的這些網路安全性群組規則。
 
-| 連接埠號碼 | 通訊協定 | 來源                             | 目的地 | 行動 | 必要項 | 目的 |
+| 連接埠號碼 | 通訊協定 | 來源                             | Destination | 動作 | 必要 | 目的 |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
-| 443         | TCP      | AzureActiveDirectoryDomainServices | 任意         | 允許  | 是      | 與您的 Azure AD 租使用者同步處理。 |
-| 3389        | TCP      | CorpNetSaw                         | 任意         | 允許  | 是      | 管理您的網域。 |
-| 5986        | TCP      | AzureActiveDirectoryDomainServices | 任意         | 允許  | 是      | 管理您的網域。 |
-| 636         | TCP      | 任意                                | 任意         | 允許  | 否       | 只有在您設定安全 LDAP （LDAPS）時才會啟用。 |
+| 443         | TCP      | AzureActiveDirectoryDomainServices | 任意         | Allow  | 是      | 與您的 Azure AD 租使用者同步處理。 |
+| 3389        | TCP      | CorpNetSaw                         | 任意         | Allow  | 是      | 管理您的網域。 |
+| 5986        | TCP      | AzureActiveDirectoryDomainServices | 任意         | Allow  | 是      | 管理您的網域。 |
+| 636         | TCP      | 任意                                | 任意         | Allow  | 否       | 只有在您設定安全 LDAP （LDAPS）時才會啟用。 |
 
 > [!WARNING]
 > 請勿手動編輯這些網路資源和設定。 當您將設定錯誤的網路安全性群組或使用者定義的路由表與部署 Azure AD DS 的子網產生關聯時，您可能會中斷 Microsoft 服務和管理網域的能力。 您的 Azure AD 租使用者與您 Azure AD DS 受控網域之間的同步處理也會中斷。
@@ -144,9 +144,9 @@ Azure AD DS 受控網域會在部署期間建立一些網路資源。 若要成�
 * 針對使用以 Resource Manager 為基礎之虛擬網路的 Azure AD DS 受控網域，您可以將此埠的輸入存取限制為*AzureActiveDirectoryDomainServices*服務標記。
     * 針對舊版 Azure AD 使用傳統虛擬網路的 DS 受控網域，您可以將此埠的輸入存取限制為下列來源 IP 位址： *52.180.183.8*、 *23.101.0.70*、 *52.225.184.198*、 *52.179.126.223*、 *13.74.249.156*、 *52.187.117.83*、 *52.161.13.95*、 *104.40.156.18*和*104.40.87.209*。
 
-## <a name="user-defined-routes"></a>使用者定義路由
+## <a name="user-defined-routes"></a>使用者定義的路由
 
-預設不會建立使用者定義的路由，Azure AD DS 也不需要這樣才能正確運作。 如果您需要使用路由表，請避免對*0.0.0.0*路由進行任何變更。 此路由的變更可能會中斷 Azure AD Domain Services。
+預設不會建立使用者定義的路由，Azure AD DS 也不需要這樣才能正確運作。 如果您需要使用路由表，請避免對*0.0.0.0*路由進行任何變更。 此路由的變更會中斷 Azure AD Domain Services，並將受控網域置於不支援的狀態。
 
 您也必須將輸入流量從個別 Azure 服務標籤中包含的 IP 位址路由傳送至 Azure AD Domain Services 子網。 如需服務標籤及其相關聯 IP 位址的詳細資訊，請參閱[AZURE IP 範圍和服務標籤-公用雲端](https://www.microsoft.com/en-us/download/details.aspx?id=56519)。
 

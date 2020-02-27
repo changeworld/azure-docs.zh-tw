@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 02/20/2020
 ms.author: diberry
-ms.openlocfilehash: c2aec0db2d1f9865188f2749a0eeb765a14d04ed
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: ce85c2d264b2b4849a4a36ed757150292fdf39f0
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953007"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622800"
 ---
 # <a name="analyze-your-learning-loop-with-an-offline-evaluation"></a>使用離線評估來分析您的學習迴圈
 
@@ -25,45 +25,40 @@ ms.locfileid: "73953007"
 
 閱讀[離線評估](concepts-offline-evaluation.md)進一步了解。
 
-
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 已設定的個人化工具迴圈
 * 個人化工具迴圈必須有代表性的資料量-作為約略，我們建議記錄中至少有50000個事件，以取得有意義的評估結果。 (選擇性) 您可能先前也已匯出「學習原則」檔案，以便在相同評估中進行比較和測試。
 
-## <a name="steps-to-start-a-new-offline-evaluation"></a>啟動新的離線評估的步驟
+## <a name="run-an-offline-evaluation"></a>執行離線評估
 
-1. 在  [Azure 入口網站](https://azure.microsoft.com/free/)中，找出您的個人化資源。
+1. 在  [Azure 入口網站](https://azure.microsoft.com/free/)中，找出您的個人化工具資源。
 1. 在 Azure 入口網站中，移至 [**評估**] 區段，然後選取 [**建立評估**]。
     ![在 Azure 入口網站中，移至 [評估] 區段，然後選取 [建立評估]。](./media/offline-evaluation/create-new-offline-evaluation.png)
 1. 設定下列值：
 
-    * 評估名稱
-    * 開始和結束日期-這些是過去的日期，可指定要在評估中使用的資料範圍。 此資料必須出現在記錄檔中，如[資料保留](how-to-settings.md)值中所指定。
-    * 優化探索設定為 **[是]**
+    * 評估名稱。
+    * 開始和結束日期-這些是用來指定要在評估中使用之資料範圍的日期。 此資料必須出現在記錄檔中，如[資料保留](how-to-settings.md)值中所指定。
+    * 優化探索設定為 **[是]** 。
 
-    ![選擇離線評估設定](./media/offline-evaluation/create-an-evaluation-form.png)
+    > [!div class="mx-imgBorder"]
+    > ![選擇離線評估設定](./media/offline-evaluation/create-an-evaluation-form.png)
 
-1. 選取 **[確定]** 以開始評估。 
+1. 選取 **[確定]** 以開始評估。
 
-## <a name="results"></a>結果
+## <a name="review-the-evaluation-results"></a>審查評估結果
 
 評估可能需要很長的執行時間，這取決於要處理的資料量、要比較的學習原則數目、是否已要求最佳化。
 
-完成後，您可以從評估清單中選取評估。 
+完成後，您可以從評估清單中選取評估，然後選取 [**比較應用程式的分數與其他潛在的學習設定**]。 當您想要查看目前的學習原則執行方式與新原則的比較時，請選取此功能。
 
-學習原則的比較包括：
+1. 審查[學習原則](concepts-offline-evaluation.md#discovering-the-optimized-learning-policy)的效能。
 
-* **線上原則**：個人化工具中使用的目前學習原則
-* **基準**：應用程式的預設值（由順位呼叫中所傳送的第一個動作所決定），
-* **隨機原則**：一種虛構的排名行為，一律會從所提供的動作中傳回隨機播放的動作。
-* **自訂原則**：開始評估時所上傳的其他學習原則。
-* **優化原則**：如果評估是以探索優化原則的選項來啟動，則也會進行比較，而且您將能夠下載它或將其設為線上學習原則，以取代目前的原則。
+    > [!div class="mx-imgBorder"]
+    > [![審查評估結果](./media/offline-evaluation/evaluation-results.png)](./media/offline-evaluation/evaluation-results.png#lightbox)
 
-![離線評估設定的結果圖表](./media/offline-evaluation/evaluation-results.png)
-
-動作和內容的[功能](concepts-features.md)有效性。
+1. 選取 **[** 套用] 以套用原則，以改善最適合您資料的模型。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 了解[離線評估的運作方式](concepts-offline-evaluation.md)。
+* 深入瞭解[離線評估如何工作](concepts-offline-evaluation.md)。

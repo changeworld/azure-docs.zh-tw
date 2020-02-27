@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: 3637a11724c1f0bab049077c5abbd817e168bd44
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 5620d1cdc7dc71bdac17057b9a13a74150b12d5c
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931223"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612527"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>教學課程：在 Azure Active Directory Domain Services （預覽）中建立內部部署網域的輸出樹系信任
 
@@ -33,7 +33,7 @@ ms.locfileid: "76931223"
 
 如果您沒有 Azure 訂用帳戶，請先[建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)再開始。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成此教學課程，您需要下列資源和權限：
 
@@ -51,7 +51,7 @@ ms.locfileid: "76931223"
 
 在本教學課程中，您會使用 Azure 入口網站來建立及設定來自 Azure AD DS 的輸出樹系信任。 若要開始使用，請先登入 [Azure 入口網站](https://portal.azure.com)。
 
-## <a name="networking-considerations"></a>網路功能考量
+## <a name="networking-considerations"></a>網路考量
 
 裝載 Azure AD DS 資源樹系的虛擬網路需要內部部署 Active Directory 的網路連接。 應用程式和服務也需要對裝載 Azure AD DS 資源樹系的虛擬網路進行網路連線。 Azure AD DS 資源樹系的網路連線必須一律開啟且穩定，否則使用者可能無法驗證或存取資源。
 
@@ -89,7 +89,7 @@ ms.locfileid: "76931223"
    > [!NOTE]
    > 如果您沒有看到 [**信任**] 功能表選項，請檢查樹系*類型*的 [**屬性**]。 只有*資源*樹系可以建立信任。 如果樹系類型為*User*，您就無法建立信任。 目前沒有任何方法可以變更 Azure AD DS 受控網域的樹系類型。 您必須刪除並重新建立受控網域作為資源樹系。
 
-1. 在 [Azure AD DS 功能變數名稱] 上輸入名稱，例如*aadds.contoso.com*，然後選取 **[下一步]**
+1. 在 [Azure AD DS 功能變數名稱] 上輸入名稱，例如*aaddscontoso.com*，然後選取 **[下一步]**
 1. 選取 [建立**樹系信任**] 選項，然後選擇 [建立一個**方式：連入**信任]。
 1. 選擇**只建立此網域**的信任。 在下一個步驟中，您會在 Azure AD DS 受控網域的 Azure 入口網站中建立信任。
 1. 選擇使用**全樹系驗證**，然後輸入並確認信任密碼。 在下一節中，也會在 Azure 入口網站中輸入相同的密碼。
@@ -102,7 +102,7 @@ ms.locfileid: "76931223"
 
 若要在 Azure 入口網站中建立 Azure AD DS 受控網域的輸出信任，請完成下列步驟：
 
-1. 在 Azure 入口網站中，搜尋並選取  **Azure AD Domain Services**，然後選取您的受控網域，例如*aadds.contoso.com*
+1. 在 Azure 入口網站中，搜尋並選取  **Azure AD Domain Services**，然後選取您的受控網域，例如*aaddscontoso.com*
 1. 從 Azure AD DS 受控網域左側的功能表中，選取 [**信任**]，然後選擇 [ **+ 新增**信任]。
 1. 輸入 [顯示名稱] 來識別您的信任，然後輸入內部部署信任的樹系 DNS 名稱，例如*onprem.contoso.com*
 1. 提供在上一節中設定內部部署 AD DS 網域的輸入樹系信任時，所使用的相同信任密碼。
@@ -194,7 +194,7 @@ ms.locfileid: "76931223"
 #### <a name="validate-cross-forest-authentication-to-a-resource"></a>驗證資源的跨樹系驗證
 
 1. 使用內部部署 Active Directory 的使用者帳戶，登入加入內部部署 Active Directory 的 Windows 電腦。
-1. 使用**Windows Explorer**，連接到您使用完整主機名稱和共用（例如 `\\fs1.aadds.contoso.com\CrossforestShare`）所建立的共用。
+1. 使用**Windows Explorer**，連接到您使用完整主機名稱和共用（例如 `\\fs1.aaddscontoso.com\CrossforestShare`）所建立的共用。
 1. 若要驗證寫入權限，請在資料夾中以滑鼠右鍵選取，選擇 [**新增**]，然後選取 [**文字檔**]。 使用預設名稱 [**新文字檔**]。
 
     如果已正確設定寫入權限，則會建立新的文字檔。 接著，下列步驟將會適當地開啟、編輯及刪除檔案。

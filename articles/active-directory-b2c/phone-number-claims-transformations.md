@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/14/2020
+ms.date: 02/26/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c5beef98f03c52ca022a7ab8047d3b392755c0bf
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 34a6d15090cd13a775ad3faa694718ec58738471
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212195"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620639"
 ---
 # <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>在 Azure AD B2C 中定義電話號碼宣告轉換
 
@@ -26,9 +26,39 @@ ms.locfileid: "77212195"
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
+## <a name="convertphonenumberclaimtostring"></a>ConvertPhoneNumberClaimToString
+
+將 `phoneNumber` 資料類型轉換成 `string` 資料類型。
+
+| Item | TransformationClaimType | 資料類型 | 注意 |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | phoneNumber | phoneNumber |  要轉換為字串的 ClaimType。 |
+| OutputClaim | phoneNumberString | 字串 | 叫用此宣告轉換之後所產生的 ClaimType。 |
+
+在此範例中，數值型別為 `phoneNumber` 的 cellPhoneNumber 宣告會轉換成數值型別為 `string`的行動電話宣告。
+
+```XML
+<ClaimsTransformation Id="PhoneNumberToString" TransformationMethod="ConvertPhoneNumberClaimToString">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="cellPhoneNumber" TransformationClaimType="phoneNumber" />
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="cellPhone" TransformationClaimType="phoneNumberString" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>範例
+
+- 輸入宣告：
+  - **phoneNumber**： + 11234567890 （phoneNumber）
+- 輸出宣告：
+  - **phoneNumberString**： + 11234567890 （字串）
+
+
 ## <a name="convertstringtophonenumberclaim"></a>ConvertStringToPhoneNumberClaim
 
-此宣告會驗證電話號碼的格式。 如果它是有效的格式，請將它變更為 Azure AD B2C 所使用的標準格式。 如果所提供的電話號碼格式不正確，則會傳回錯誤訊息。
+此宣告轉換會驗證電話號碼的格式。 如果它是有效的格式，請將它變更為 Azure AD B2C 所使用的標準格式。 如果所提供的電話號碼格式不正確，則會傳回錯誤訊息。
 
 | Item | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
@@ -68,10 +98,10 @@ ms.locfileid: "77212195"
 ### <a name="example-1"></a>範例 1
 
 - 輸入宣告：
-  - **phoneNumberString**： 045 456-7890
+  - **phoneNumberString**： 033 456-7890
   - **國家/地區**：深色
 - 輸出宣告：
-  - **outputClaim**： + 450546148120
+  - **outputClaim**： + 450334567890
 
 ### <a name="example-2"></a>範例 2
 
@@ -79,6 +109,7 @@ ms.locfileid: "77212195"
   - **phoneNumberString**： + 1 （123）456-7890
 - 輸出宣告： 
   - **outputClaim**： + 11234567890
+
 
 ## <a name="getnationalnumberandcountrycodefromphonenumberstring"></a>GetNationalNumberAndCountryCodeFromPhoneNumberString
 
