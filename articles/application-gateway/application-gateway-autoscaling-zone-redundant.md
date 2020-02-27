@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 11/09/2019
+ms.date: 02/26/2020
 ms.author: victorh
-ms.openlocfilehash: 8fe38870f593dd57d8e4dad5601ea404e99c3d10
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 39b7e94747f556b61f661968f7126d122156d9cf
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031555"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622004"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>自動調整規模和區域備援應用程式閘道 v2 
 
@@ -26,8 +26,8 @@ ms.locfileid: "77031555"
   區域冗余僅適用于可使用 Azure 區域的位置。 在其他區域中，則支援所有其他功能。 如需詳細資訊，請參閱[什麼是 Azure 中的可用性區域？](../availability-zones/az-overview.md#services-support-by-region)
 - **靜態 vip**：應用程式閘道 v2 SKU 僅支援靜態 vip 類型。 這可確保與應用程式閘道相關聯的 VIP 不會在部署的生命週期內變更，即使在重新開機之後也一樣。  V1 中沒有靜態 VIP，因此您必須使用應用程式閘道 URL，而不是功能變數名稱路由的 IP 位址，以透過應用程式閘道應用程式服務。
 - **標頭重寫**：應用程式閘道可讓您使用 v2 SKU 來新增、移除或更新 HTTP 要求和回應標頭。 如需詳細資訊，請參閱[使用應用程式閘道重寫 HTTP 標頭](rewrite-http-headers.md)
-- **Key Vault 整合（預覽）** ：應用程式閘道 v2 支援與 Key Vault 的整合（公開預覽），適用于連接到啟用 HTTPS 的接聽程式的伺服器憑證。 如需詳細資訊，請參閱[使用 Key Vault 憑證的 SSL 終止](key-vault-certs.md)。
-- **Azure Kubernetes Service 輸入控制器（預覽）** ：應用程式閘道 V2 輸入控制器可讓 Azure 應用程式閘道作為 AZURE KUBERNETES SERVICE （AKS）的輸入，稱為 AKS 叢集。 如需詳細資訊，請參閱[檔頁面](https://azure.github.io/application-gateway-kubernetes-ingress/)。
+- **Key Vault 整合**：應用程式閘道 v2 針對附加至啟用 HTTPS 之接聽程式的伺服器憑證，支援與 Key Vault 的整合。 如需詳細資訊，請參閱[使用 Key Vault 憑證的 SSL 終止](key-vault-certs.md)。
+- **Azure Kubernetes Service 輸入控制器**：應用程式閘道 V2 輸入控制器可讓 Azure 應用程式閘道作為 AZURE KUBERNETES SERVICE （AKS）的輸入，稱為 AKS 叢集。 如需詳細資訊，請參閱[什麼是應用程式閘道輸入控制器？](ingress-controller-overview.md)。
 - **效能增強**：相較于標準/WAF sku，v2 SKU 最多可提供5倍的 SSL 卸載效能。
 - **更快速的部署和更新時間**相較于標準/WAF SKU，v2 SKU 可提供更快速的部署和更新時間。 這也包括 WAF 設定變更。
 
@@ -37,7 +37,7 @@ ms.locfileid: "77031555"
 
 Standard_v2 和 WAF_v2 SKU 適用于下欄區域：美國中北部、美國中南部、美國西部、美國西部2、美國東部、美國東部2、美國中部、北歐、西歐、東南亞、法國中部、英國西部、日本東部、日本西部、澳大利亞東部、澳大利亞東南部、巴西南部、加拿大中部、加拿大東部、東亞、韓國中部、南韓南部、英國南部、印度中部、印度西部、印度南部。
 
-## <a name="pricing"></a>Pricing
+## <a name="pricing"></a>價格
 
 使用 v2 SKU，計價模式會以耗用量來驅動，不再附加至實例計數或大小。 V2 SKU 定價有兩個元件：
 
@@ -141,7 +141,7 @@ Standard_v2 和 WAF_v2 SKU 適用于下欄區域：美國中北部、美國中�
 
 |                                                   | v1 SKU   | v2 SKU   |
 | ------------------------------------------------- | -------- | -------- |
-| 自動調整規模                                       |          | &#x2713; |
+| 自動調整                                       |          | &#x2713; |
 | 區域備援                                   |          | &#x2713; |
 | 靜態 VIP                                        |          | &#x2713; |
 | Azure Kubernetes Service （AKS）輸入控制器 |          | &#x2713; |
@@ -172,7 +172,7 @@ Standard_v2 和 WAF_v2 SKU 適用于下欄區域：美國中北部、美國中�
 |應用程式閘道子網路上的使用者定義路由 (UDR)|不支援|
 |輸入連接埠範圍的 NSG| - Standard_v2 SKU 適用 65200 至 65535<br>- 標準 SKU 適用 65503 至 65534<br>如需詳細資訊，請參閱[常見問題集](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet)。|
 |Azure 診斷中的效能記錄|不支援。<br>應該使用 Azure 計量。|
-|帳務|排程于2019年7月1日開始計費。|
+|計費|排程于2019年7月1日開始計費。|
 |FIPS 模式|目前不支援。|
 |純 ILB 模式|目前不支援。 支援將公用與 ILB 模式搭配使用。|
 |Netwatcher 整合|不支援。|

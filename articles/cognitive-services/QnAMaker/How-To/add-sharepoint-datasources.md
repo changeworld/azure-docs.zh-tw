@@ -3,12 +3,12 @@ title: SharePoint 檔案-QnA Maker
 description: 將受保護的 SharePoint 資料來源新增至您的知識庫，以使用 Active Directory 保護的問題和答案來擴充知識庫。
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: ec77d3ac217991ff191d80249bc86805e7c8ba35
-ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
+ms.openlocfilehash: 402d8239ee9fbac01e64e3624a7e4d8a13f2e7d8
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77544159"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650430"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>將受保護的 SharePoint 資料來源新增至您的知識庫
 
@@ -18,9 +18,10 @@ ms.locfileid: "77544159"
 
 如果 QnA Maker 知識庫管理員不是 Active Directory 管理員，您就必須與 Active Directory 管理員通訊，才能完成此程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-QnA Maker 使用 Microsoft Graph 的許可權。 如果您的 SharePoint 是內部部署，您將無法從 SharePoint 解壓縮，因為 Microsoft Graph 無法判斷許可權。
+* 以雲端為基礎的 SharePoint QnA Maker 會使用 Microsoft Graph 的許可權。 如果您的 SharePoint 是內部部署，您將無法從 SharePoint 解壓縮，因為 Microsoft Graph 無法判斷許可權。
+* URL 格式-QnA Maker 只支援為了共用而產生的 SharePoint url，格式為 HTTPs：//*. SharePoint .com
 
 ## <a name="add-supported-file-types-to-knowledge-base"></a>將支援的檔案類型新增至知識庫
 

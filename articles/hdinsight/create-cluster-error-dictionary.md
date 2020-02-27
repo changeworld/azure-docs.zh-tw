@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/19/2019
-ms.openlocfilehash: 6e5ed996a0f44bae6c37027bc01f30be85d164f9
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 979e83c0eeaac4555fc5144bca479f0b5656cd28
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905490"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617532"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight：叢集建立錯誤
 
@@ -36,7 +36,7 @@ ms.locfileid: "76905490"
 
 HDInsight 服務無法存取您在建立叢集要求中提供的腳本動作 URL。 當服務嘗試存取腳本動作時，會收到先前的錯誤訊息。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 - 若為 HTTP 或 HTTPS URL，請嘗試從 incognito 瀏覽器視窗中移至 URL，以確認它。
 - 針對 WASB URL，請確定您在要求中提供的儲存體帳戶中有該腳本。 也請確定此儲存體帳戶的儲存體金鑰是正確的。
@@ -58,7 +58,7 @@ HDInsight 服務無法存取您在建立叢集要求中提供的腳本動作 URL
 
 HDInsight 服務無法存取您在建立叢集要求中提供的腳本動作 URL。 當服務嘗試存取腳本動作時，會收到先前的錯誤訊息。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 將對應的 Azure Data Lake Storage Gen 1 帳戶新增至叢集。 此外，將存取 Data Lake Storage Gen 1 帳戶的服務主體新增至叢集。
 
@@ -74,7 +74,7 @@ HDInsight 服務無法存取您在建立叢集要求中提供的腳本動作 URL
 
 角色不允許您指定的虛擬機器大小。 發生此錯誤的原因可能是 VM 大小值未如預期般運作，或不適用於電腦角色。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 錯誤訊息會列出 VM 大小的有效值。 選取其中一個值，然後重試建立叢集要求。
 
@@ -90,7 +90,7 @@ HDInsight 服務無法存取您在建立叢集要求中提供的腳本動作 URL
 
 您在叢集建立期間指定的**VirtualNetworkId**值格式不正確。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 請確定**VirtualNetworkId**和子網值的格式正確。 若要取得**VirtualNetworkId**值：
 
@@ -114,7 +114,7 @@ HDInsight 服務無法存取您在建立叢集要求中提供的腳本動作 URL
 
 您在建立叢集要求期間所提供的自訂腳本，會在成功部署叢集之後執行。 這個錯誤碼表示在執行名為 \<SCRIPT_NAME\>的自訂腳本期間，發生錯誤。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 由於腳本是您的自訂腳本，因此建議您針對問題進行疑難排解，並視需要重新執行腳本。 若要針對腳本失敗進行疑難排解，請檢查/var/lib/ambari-agent/* 資料夾中的記錄檔。 或者，在 Ambari UI 中開啟 [**作業**] 頁面，然後選取**run_customscriptaction**操作以查看錯誤詳細資料。
 
@@ -130,7 +130,7 @@ HDInsight 服務無法存取您在建立叢集要求中提供的腳本動作 URL
 
 自訂中繼存放區與選取的 HDInsight 叢集版本不相容。 目前，HDInsight 4.0 叢集僅支援中繼存放區3.0 版和更新版本，而 HDInsight 3.6 叢集不支援中繼存放區版本3.0 和更新版本。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 僅使用 HDInsight 叢集版本所支援的中繼存放區版本。 如果您未指定自訂中繼存放區，HDInsight 會在內部建立中繼存放區，然後在刪除叢集時刪除它。
 
@@ -146,7 +146,7 @@ HDInsight 服務無法存取您在建立叢集要求中提供的腳本動作 URL
 
 網路安全性群組（NSG）上的防火牆規則會封鎖與重要 Azure 健康狀態和管理服務的叢集通訊。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 如果您打算使用網路安全性群組來控制網路流量，請在安裝 HDInsight 之前，採取下列動作：
 
@@ -167,12 +167,12 @@ HDInsight 服務無法存取您在建立叢集要求中提供的腳本動作 URL
 
 您未提供管理身分識別所需的許可權。 使用者指派的受控識別在 Azure Data Lake Storage Gen2 儲存體帳戶上沒有「Blob 儲存體參與者」角色。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 1. 開啟 Azure 入口網站。
 1. 移至您的儲存體帳戶。
 1. 查看**存取控制（IAM）** 底下。
-1. 請確定儲存體 Blob 資料參與者角色或儲存體 Blob 資料擁有者角色已「指派」存取權給訂用帳戶的使用者指派受控識別。
+1. 請確定使用者已指派儲存體 Blob 資料參與者角色或儲存體 Blob 資料擁有者角色。
 
 如需詳細資訊，請參閱在[Data Lake Storage Gen2 帳戶上設定受控識別的許可權](hdinsight-hadoop-use-data-lake-storage-gen2.md)。
 
@@ -188,7 +188,7 @@ HDInsight 服務無法存取您在建立叢集要求中提供的腳本動作 URL
 
 如果網路安全性群組或使用者定義路由（Udr）控制對您 HDInsight 叢集的輸入流量，請確定您的叢集可以與重要的 Azure 健康情況和管理服務進行通訊。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 如果您打算使用網路安全性群組來控制網路流量，請在安裝 HDInsight 之前，採取下列動作：
 
@@ -208,7 +208,7 @@ HDInsight 服務無法存取您在建立叢集要求中提供的腳本動作 URL
 
 通常，當發生暫時性問題或 Azure 中斷時，就會產生此錯誤。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 檢查[azure 狀態](https://status.azure.com)頁面中可能會影響叢集部署的任何 azure 中斷。 如果沒有中斷，請重試叢集部署。
 

@@ -3,14 +3,14 @@ author: mmacy
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
-ms.date: 02/12/2020
+ms.date: 02/26/2020
 ms.author: marsma
-ms.openlocfilehash: 9612abbe078ab8d9e8c10c2da923a9a9b233d094
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.openlocfilehash: 4cf8eba9632c51ce9b5bcc42feae2446348890c2
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/17/2020
-ms.locfileid: "77373093"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77651656"
 ---
 ## <a name="use-custom-page-content"></a>使用自訂頁面內容
 
@@ -61,7 +61,7 @@ Azure AD B2C 使用[跨原始資源分享（CORS）](https://www.w3.org/TR/cors/
 ## <a name="guidelines-for-using-custom-page-content"></a>使用自訂頁面內容的指導方針
 
 - 當您在 HTML 檔案中包含媒體、CSS 和 JavaScript 檔案之類的外部資源時，請使用絕對 URL。
-- 在 HTML 標籤中加入 `data-preload="true"` 屬性，以控制 CSS 和 JavaScript 的載入順序。 使用 `data-preload=true`時，會先建立頁面，然後才向使用者顯示。 此屬性可透過預先載入 CSS 檔案來防止頁面「閃爍」，而不會對使用者顯示未使用樣式的 HTML。 下列 HTML 程式碼片段示範如何使用 `data-preload` 標記。
+- 使用[頁面配置](../articles/active-directory-b2c/page-layout.md)1.2.0 和更新版本，您可以在 HTML 標籤中加入 `data-preload="true"` 屬性，以控制 CSS 和 JavaScript 的載入順序。 使用 `data-preload=true`時，會先建立頁面，然後才向使用者顯示。 此屬性可透過預先載入 CSS 檔案來防止頁面「閃爍」，而不會對使用者顯示未使用樣式的 HTML。 下列 HTML 程式碼片段示範如何使用 `data-preload` 標記。
   ```HTML
   <link href="https://path-to-your-file/sample.css" rel="stylesheet" type="text/css" data-preload="true"/>
   ```

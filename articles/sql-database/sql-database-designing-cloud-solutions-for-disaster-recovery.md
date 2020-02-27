@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 12/04/2018
-ms.openlocfilehash: 8eb115497427338599db08e8c7bbdd55c5a158fc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 348bd2b92801217a5aea2ef4d1426c020085e4c1
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73807955"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624156"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>使用 Azure SQL Database 設計全域可用的服務
 
@@ -119,7 +119,7 @@ ms.locfileid: "73807955"
 
 ![案例 3. 美國東部主要區域的設定。](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-a.png)
 
-在每天結束時 (例如本地時間晚上 11 點)，作用中的資料庫應該切換到下一個區域 (北歐)。 可以使用 [Azure 排程服務](../scheduler/scheduler-intro.md)將這項工作全面自動化。  此工作涉及下列步驟：
+在一天結束時，例如在當地時間下午11：00，使用中的資料庫應該切換到下一個區域（北歐）。 您可以使用[Azure Logic Apps](../logic-apps/logic-apps-overview.md)來完全自動化這項工作。 此工作涉及下列步驟：
 
 * 使用好記的容錯移轉，將容錯移轉群組中的主要伺服器切換至北歐 (1)
 * 將美國東部和北歐之間的容錯移轉群組移除
@@ -130,7 +130,7 @@ ms.locfileid: "73807955"
 
 ![案例 3. 將主要伺服器轉換至北歐。](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-b.png)
 
-例如，如果在北歐發生中斷情況，容錯移轉群組就會起始自動資料庫容錯移轉，從而將應用程式在排程之前有效地移動到下一個區域 (1)。  在此情況下，北歐再度上線之前，美國東部是唯一剩餘的次要區域。 其餘的兩個區域會藉由切換角色來服務所有三個地理位置的客戶。 Azure 排程器必須隨之調整。 因為其餘的區域會從歐洲取得額外的使用者流量，應用程式的效能不只會受到額外延遲時間的影響，還會受到終端使用者連線遽增的影響。 一旦北歐的運作中斷情況趨緩，該處的次要資料庫會立即與目前的主要資料庫進行同步處理。 下圖說明北歐發生運作中斷的情形：
+例如，如果在北歐發生中斷情況，容錯移轉群組就會起始自動資料庫容錯移轉，從而將應用程式在排程之前有效地移動到下一個區域 (1)。  在此情況下，北歐再度上線之前，美國東部是唯一剩餘的次要區域。 其餘的兩個區域會藉由切換角色來服務所有三個地理位置的客戶。 Azure Logic Apps 必須據以調整。 因為其餘的區域會從歐洲取得額外的使用者流量，應用程式的效能不只會受到額外延遲時間的影響，還會受到終端使用者連線遽增的影響。 一旦北歐的運作中斷情況趨緩，該處的次要資料庫會立即與目前的主要資料庫進行同步處理。 下圖說明北歐發生運作中斷的情形：
 
 ![案例 3. 北歐發生中斷。](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-c.png)
 
@@ -163,6 +163,6 @@ ms.locfileid: "73807955"
 ## <a name="next-steps"></a>後續步驟
 
 * 如需商務持續性概觀和案例，請參閱 [商務持續性概觀](sql-database-business-continuity.md)
-* 若要深入了解作用中異地複寫，請參閱[主動式異地複寫](sql-database-active-geo-replication.md)。
+* 若要深入了解作用中異地複寫，請參閱[作用中異地複寫](sql-database-active-geo-replication.md)。
 * 若要深入了解自動容錯移轉群組，請參閱[自動容錯移轉群組](sql-database-auto-failover-group.md)。
 * 如需主動式異地複寫與彈性集區的相關資訊，請參閱[彈性集區災害復原策略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)。

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2020
 ms.author: Zhchia
-ms.openlocfilehash: 0ca9ed8781a13f9ab5e949e0e5f019a851dc75f4
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 1404854e054c8fc4967ba863486969b8a87db526
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77057476"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621521"
 ---
 # <a name="tutorial-configure-insight4grc-for-automatic-user-provisioning"></a>教學課程：設定 Insight4GRC 來自動布建使用者
 
@@ -35,7 +35,7 @@ ms.locfileid: "77057476"
 > * 在 Insight4GRC 中布建群組和群組成員資格
 > * [單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/insight4grc-tutorial)Insight4GRC （建議選項）
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -90,7 +90,7 @@ Azure AD 布建服務可讓您根據指派給應用程式的人員，或根據�
 
     ![布建索引標籤](common/provisioning-automatic.png)
 
-5. 在 [**管理員認證**] 區段下，輸入您的 Insight4GRC 系統管理員認證和使用者名稱。 按一下 [**測試連接**] 以確保 Azure AD 可以連接到 Insight4GRC。 如果連線失敗，請確定您的 Insight4GRC 帳戶具有系統管理員許可權，然後再試一次。
+5. 在 [**管理員認證**] 區段下，于 [租使用者**url**] 中輸入 SCIM 端點 url。 端點 URL 的格式應該是 `https://<Insight4GRC Domain Name>.insight4grc.com/public/api/scim/v2 `，其中**Insight4GRC 功能變數名稱**是在先前步驟中抓取的值。 輸入稍早在**秘密權杖**中所取得的持有人權杖值。 按一下 [**測試連接**] 以確保 Azure AD 可以連接到 Insight4GRC。 如果連線失敗，請確定您的 Insight4GRC 帳戶具有系統管理員許可權，然後再試一次。
 
     ![佈建](./media/insight4grc-provisioning-tutorial/provisioning.png)
 
@@ -123,7 +123,7 @@ Azure AD 布建服務可讓您根據指派給應用程式的人員，或根據�
       |---|---|
       |displayName|String|
       |externalId|String|
-      |成員|參考|
+      |members|參考|
 
 10. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 

@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2020
+ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 5453793c7e1bb1ef766939d2e7fdf32a1ac1ec72
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 01397ad078bc741977c4928f67d1834f05e1db8d
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77499933"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623962"
 ---
 # <a name="security-alerts---a-reference-guide"></a>安全性警示-參考指南
 
@@ -33,7 +33,7 @@ ms.locfileid: "77499933"
 
 ## <a name="alerts-windows"></a>Windows 電腦的警示
 
-[進一步的詳細資料和注意事項](security-center-alerts-iaas.md#windows-)
+[進一步的詳細資料和注意事項](threat-protection.md#windows-machines)
 
 |警示|描述|意圖（[深入瞭解](#intentions)）|
 |----|----|:----:|
@@ -124,7 +124,7 @@ ms.locfileid: "77499933"
 
 ## <a name="alerts-linux"></a>Linux 機器的警示
 
-[進一步的詳細資料和注意事項](security-center-alerts-iaas.md#linux-)
+[進一步的詳細資料和注意事項](threat-protection.md#linux-machines)
 
 |警示|描述|意圖（[深入瞭解](#intentions)）|
 |----|----|:----:|
@@ -213,7 +213,7 @@ ms.locfileid: "77499933"
 
 ## <a name="alerts-azureappserv"></a>Azure App Service 的警示
 
-[進一步的詳細資料和注意事項](security-center-alerts-compute.md#azure-app-service-)
+[進一步的詳細資料和注意事項](threat-protection.md#app-services)
 
 |警示|描述|意圖（[深入瞭解](#intentions)）|
 |----|----|:----:|
@@ -238,7 +238,7 @@ ms.locfileid: "77499933"
 
 ## <a name="alerts-akscluster"></a>容器的警示-Azure Kubernetes Service 叢集
 
-[進一步的詳細資料和注意事項](security-center-alerts-compute.md#azure-containers-)
+[進一步的詳細資料和注意事項](threat-protection.md#azure-containers)
 
 |警示|描述|意圖（[深入瞭解](#intentions)）|
 |----|----|:----:|
@@ -253,7 +253,7 @@ ms.locfileid: "77499933"
 
 ## <a name="alerts-containerhost"></a>容器的警示-主機層級
 
-[進一步的詳細資料和注意事項](security-center-alerts-compute.md#azure-containers-)
+[進一步的詳細資料和注意事項](threat-protection.md#azure-containers)
 
 |警示|描述|意圖（[深入瞭解](#intentions)）|
 |----|----|:----:|
@@ -269,7 +269,7 @@ ms.locfileid: "77499933"
 
 ## <a name="alerts-sql-db-and-warehouse"></a>SQL Database 和 SQL 資料倉儲的警示
 
-[進一步的詳細資料和注意事項](security-center-alerts-data-services.md#sql-database-and-sql-data-warehouse-)
+[進一步的詳細資料和注意事項](threat-protection.md#data-sql)
 
 |警示|描述|意圖（[深入瞭解](#intentions)）|
 |----|----|:----:|
@@ -287,7 +287,7 @@ ms.locfileid: "77499933"
 
 ## <a name="alerts-azurestorage"></a>Azure 儲存體的警示
 
-[進一步的詳細資料和注意事項](security-center-alerts-data-services.md#azure-storage-)
+[進一步的詳細資料和注意事項](threat-protection.md#azure-storage)
 
 |警示|描述|意圖（[深入瞭解](#intentions)）|
 |----|----|:----:|
@@ -308,7 +308,7 @@ ms.locfileid: "77499933"
 
 ## <a name="alerts-azurecosmos"></a>Azure Cosmos DB 的警示（預覽）
 
-[進一步的詳細資料和注意事項](security-center-alerts-data-services.md#azure-cosmos-db)
+[進一步的詳細資料和注意事項](threat-protection.md#cosmos-db)
 
 |警示|描述|意圖（[深入瞭解](#intentions)）|
 |----|----|:----:|
@@ -319,7 +319,7 @@ ms.locfileid: "77499933"
 
 ## <a name="alerts-azurenetlayer"></a>Azure 網路層的警示
 
-[進一步的詳細資料和注意事項](security-center-alerts-service-layer.md#azure-network-layer)
+[進一步的詳細資料和注意事項](threat-protection.md#network-layer)
 
 |警示|描述|意圖（[深入瞭解](#intentions)）|
 |----|----|:----:|
@@ -344,7 +344,7 @@ ms.locfileid: "77499933"
 
 ## <a name="alerts-azureresourceman"></a>Azure Resource Manager 的警示（預覽）
 
-[進一步的詳細資料和注意事項](security-center-alerts-service-layer.md#azure-management-layer-azure-resource-manager-preview)
+[進一步的詳細資料和注意事項](threat-protection.md#management-layer)
 
 |警示|描述|意圖（[深入瞭解](#intentions)）|
 |----|----|:----:|
@@ -363,7 +363,7 @@ ms.locfileid: "77499933"
 
 ## <a name="alerts-azurekv"></a>Azure Key Vault 的警示（預覽）
 
-[進一步的詳細資料和注意事項](security-center-alerts-service-layer.md#azure-keyvault)
+[進一步的詳細資料和注意事項](threat-protection.md#azure-keyvault)
 
 |警示|描述|意圖（[深入瞭解](#intentions)）|
 |----|----|:----:|
@@ -381,7 +381,7 @@ ms.locfileid: "77499933"
 
 ## <a name="alerts-azureddos"></a>Azure DDoS 保護的警示
 
-[進一步的詳細資料和注意事項](security-center-alerts-integration.md#azure-ddos)
+[進一步的詳細資料和注意事項](threat-protection.md#azure-ddos)
 
 |警示|描述|意圖（[深入瞭解](#intentions)）|
 |----|----|:----:|
@@ -418,6 +418,7 @@ ms.locfileid: "77499933"
 ## <a name="next-steps"></a>後續步驟
 若要深入瞭解警示，請參閱下列內容：
 
+* [Azure 資訊安全中心中的威脅防護](threat-protection.md)
 * [Azure 資訊安全中心的安全性警示](security-center-alerts-overview.md)
 * [在 Azure 資訊安全中心管理和回應安全性警示](security-center-managing-and-responding-alerts.md)
 * [匯出安全性警示和建議（預覽）](continuous-export.md)

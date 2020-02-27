@@ -6,12 +6,12 @@ author: joannapea
 ms.author: joanpo
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 5d4b1282b0a08657aea6f8a13aae7ed1fe49079b
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 11c759dc8865da9de63e3acbfa1d4e26836d010a
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964204"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622450"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Azure 資料共用中支援的資料存放區
 
@@ -47,7 +47,7 @@ Azure 資料共用可在決定資料存放區以接受中的資料時，為數�
 | Azure Synapse 分析（先前稱為 Azure SQL DW） | ✓ | | ✓| ✓| ✓|
 
 ## <a name="share-from-a-storage-account"></a>從儲存體帳戶共用
-Azure 資料共用支援從 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共用檔案、資料夾和檔案系統。 它也支援從 Azure Blob 儲存體共用 blob、資料夾和容器。 當資料夾是以快照集為基礎的共用共用時，資料取用者可以選擇建立共用資料的完整複本，或利用增量快照集功能來只複製新的或更新的檔案。 將會覆寫具有相同名稱的現有檔案。
+Azure 資料共用支援從 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共用檔案、資料夾和檔案系統。 它也支援從 Azure Blob 儲存體共用 blob、資料夾和容器。 目前僅支援區塊 blob。 當資料夾是以快照集為基礎的共用共用時，資料取用者可以選擇建立共用資料的完整複本，或利用增量快照集功能來只複製新的或更新的檔案。 將會覆寫具有相同名稱的現有檔案。
 
 ## <a name="share-from-a-sql-based-source"></a>從以 SQL 為基礎的來源共用
 Azure 資料共用支援從 Azure SQL Database 和 Azure Synapse Analytics （先前稱為 Azure SQL DW）共用資料表或 views。 資料取用者可以選擇接受 Azure Data Lake Storage Gen2 或 Azure Blob 儲存體的資料，作為 csv 或 parquet 檔案。 完整快照集會覆寫目標檔案的內容。 或者，資料取用者可以接受資料到 SQL 資料表中。 如果目標 SQL 資料表無法在資料取用者端使用，Azure 資料共用會建立具有來源架構的 SQL 資料表。 完整快照集會將來源資料表的內容附加至目標 SQL 資料表。 目前不支援增量快照集。

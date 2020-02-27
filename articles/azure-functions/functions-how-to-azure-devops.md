@@ -1,16 +1,16 @@
 ---
 title: 使用 Azure DevOps 持續更新函式應用程式程式碼
 description: 瞭解如何設定以 Azure Functions 為目標的 Azure DevOps 管線。
-author: ahmedelnably
+author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/18/2019
-ms.author: aelnably
-ms.openlocfilehash: e6ea7edb16aa28428754cbe920e1d350aded0cff
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.author: cshoe
+ms.openlocfilehash: 1d627329a6d5f4c283a4480c1b0b1077a8e856cf
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834031"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649937"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>使用 Azure DevOps 的持續傳遞
 
@@ -25,11 +25,11 @@ ms.locfileid: "75834031"
 
 若要建立以 YAML 為基礎的管線，請先建立您的應用程式，然後再部署應用程式。
 
-### <a name="build-your-app"></a>建置應用程式
+### <a name="build-your-app"></a>建置您的應用程式
 
 在 Azure Pipelines 中建立應用程式的方式，取決於您應用程式的程式設計語言。 每種語言都有建立部署成品的特定組建步驟。 部署成品是用來在 Azure 中部署函數應用程式。
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 您可以使用下列範例來建立 YAML 檔案，以建立 .NET 應用程式：
 
@@ -60,7 +60,7 @@ steps:
     artifactName: 'drop'
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 您可以使用下列範例來建立 YAML 檔案，以建立 JavaScript 應用程式：
 
@@ -88,7 +88,7 @@ steps:
     artifactName: 'drop'
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 您可以使用下列其中一個範例來建立 YAML 檔案，以建立特定 Python 版本的應用程式。 Python 僅支援在 Linux 上執行的函數應用程式。
 
@@ -150,7 +150,7 @@ steps:
     artifactName: 'drop'
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 您可以使用下列範例來建立 YAML 檔案，以封裝 PowerShell 應用程式。 PowerShell 僅支援 Windows Azure Functions。
 
@@ -215,7 +215,7 @@ steps:
 
 Azure DevOps 中的範本是預先定義的工作群組，可建立或部署應用程式。
 
-### <a name="build-your-app"></a>建置應用程式
+### <a name="build-your-app"></a>建置您的應用程式
 
 在 Azure Pipelines 中建立應用程式的方式，取決於您應用程式的程式設計語言。 每種語言都有建立部署成品的特定組建步驟。 部署成品用來更新 Azure 中的函數應用程式。
 

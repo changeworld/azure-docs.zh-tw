@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/27/2019
 ms.author: memildin
-ms.openlocfilehash: 203e3718cedca693dc029a4ba20a86ca50ab3e32
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 5c199d074a6655ad14a0c66925e4302f70424970
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603853"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615993"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>管理和回應 Azure 資訊安全中心中的安全性警示
 
@@ -65,19 +65,27 @@ ms.locfileid: "77603853"
     > [!NOTE]
     >在某些情況下，來源 IP 位址無法使用，某些 Windows 安全性事件記錄檔不會包含 IP 位址。
 
-1. 資訊安全中心建議的補救步驟會根據安全性警示而有所不同。 針對每個警示遵循這些步驟。 在某些情況下，為了減輕威脅偵測警示，您可能必須使用其他 Azure 控制項或服務來執行建議的補救措施。 
+1. 資訊安全中心建議的補救步驟會根據安全性警示而有所不同。 針對每個警示遵循這些步驟。 
+
+    在某些情況下，為了減輕威脅偵測警示，您可能必須使用其他 Azure 控制項或服務來執行建議的補救措施。 
 
     下列主題會根據資源類型，引導您完成不同的警示：
     
-    * [IaaS Vm 和伺服器警示](security-center-alerts-iaas.md)
-    * [原生計算警示](security-center-alerts-compute.md)
-    * [資料服務警示](security-center-alerts-data-services.md)
-    
+    * [IaaS Windows 機器的警示](threat-protection.md#windows-machines)
+    * [IaaS Linux 機器的警示](threat-protection.md#linux-machines)
+    * [Azure App Service 的警示](threat-protection.md#app-services)
+    * [Azure 容器的警示](threat-protection.md#azure-containers)
+    * [SQL Database 和 SQL 資料倉儲的警示](threat-protection.md#data-sql)
+    * [Azure 儲存體的警示](threat-protection.md#azure-storage)
+    * [Cosmos DB 的警示](threat-protection.md#cosmos-db)
+
     下列主題說明資訊安全中心如何使用它從與 Azure 基礎結構整合所收集的不同遙測資料，以針對部署在 Azure 上的資源套用額外的保護層級：
     
-    * [服務層警示](security-center-alerts-service-layer.md)
-    * [Azure WAF 和 Azure DDoS 保護的威脅偵測](security-center-alerts-integration.md)
-    
+    * [Azure 管理層（Azure Resource Manager）的警示（預覽）](threat-protection.md#management-layer)
+    * [Azure Key Vault 的警示（預覽）](threat-protection.md#azure-keyvault)
+    * [Azure 網路層的警示](threat-protection.md#network-layer)
+    * [來自其他服務的警示](threat-protection.md#alerts-other)    
+
 ## <a name="see-also"></a>另請參閱
 
 在本文件中，您了解到如何在資訊安全中心設定安全性原則。 如要深入了解資訊安全中心，請參閱下列主題：

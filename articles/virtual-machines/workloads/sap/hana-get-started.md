@@ -4,7 +4,7 @@ description: 在 Azure 虛擬機器上手動安裝單一執行個體 SAP HANA �
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: 630f094ffc6c57a0137d1abc46476f5abe64f616
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 0090ffe977dee3e493d726c9eb4d151bcbeb503f
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750372"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617239"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-virtual-machines"></a>快速入門：在 Azure 虛擬機器上手動安裝單一實例 SAP Hana
 ## <a name="introduction"></a>簡介
@@ -29,7 +29,7 @@ ms.locfileid: "72750372"
 > [!NOTE]
 > 本指南說明如何將 SAP HANA 部署到 Azure VM。 如需如何將 SAP Hana 部署到 HANA 大型實例的相關資訊，請參閱[使用 Azure 上的 SAP 虛擬機器](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)。
  
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 本指南假設您已熟悉這類基礎結構即服務（IaaS）基本概念，如下所示：
  * 如何透過 Azure 入口網站或 PowerShell 部署虛擬機器（Vm）或虛擬網路。
  * Azure 跨平臺命令列介面（CLI），包括使用 JavaScript 物件標記法（JSON）範本的選項。
@@ -179,16 +179,16 @@ ms.locfileid: "72750372"
 - 建議
 - 選用
 - 功能
-- 文件
+- Document
 - Yast
 
 嚴重性常用的值如下：
 
-- 危急
-- 重要
-- 中
+- 重大
+- 重要事項
+- 中度
 - 低
-- 識別
+- [未指定]
 
 **Zypper** 命令只會尋找已安裝套件所需要的更新。 例如，您可以使用此命令：
 
@@ -419,7 +419,7 @@ SLES for SAP Applications 12 正式運作和 SLES for SAP Applications 12 SP1 �
 * [SAP Hana 生命週期管理工具](https://www.tutorialspoint.com/sap_hana_administration/sap_hana_administration_lifecycle_management.htm)。
 * [SAP Hana 伺服器安裝與更新指南](https://help.sap.com/hana/SAP_HANA_Server_Installation_Guide_en.pdf)。
 
-您想要避免 `\<HANA SID\>adm user` 的預設群組識別碼設定發生問題，這是由 HDBLCM 工具所建立。 透過 HDBLCM 安裝 SAP Hana 之前，請使用群組識別碼 `1001` 來定義名為 `sapsys` 的新群組：
+您想要避免 `\<HANA SID\>adm user`的預設群組識別碼設定發生問題，這是由 HDBLCM 工具所建立。 透過 HDBLCM 安裝 SAP Hana 之前，請使用群組識別碼 `1001`來定義名為 `sapsys` 的新群組：
 
 ![使用群組識別碼 1001 定義的新群組 "sapsys"](./media/hana-get-started/image030.jpg)
 

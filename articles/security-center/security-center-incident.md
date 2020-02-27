@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: memildin
-ms.openlocfilehash: a600b17ce25a467b788671e12e3c2425ad20b809
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 1a6dbaeac5355d50edb93a7f215d7f8e88231e98
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604089"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615976"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>管理 Azure 資訊安全中心中的安全性事件
 
@@ -48,14 +48,20 @@ ms.locfileid: "77604089"
 
 下列主題會根據資源類型，引導您完成不同的警示：
 
-* [IaaS Vm 和伺服器警示](security-center-alerts-iaas.md)
-* [原生計算警示](security-center-alerts-compute.md)
-* [資料服務警示](security-center-alerts-data-services.md)
+* [IaaS Windows 機器的警示](threat-protection.md#windows-machines)
+* [IaaS Linux 機器的警示](threat-protection.md#linux-machines)
+* [Azure App Service 的警示](threat-protection.md#app-services)
+* [Azure 容器的警示](threat-protection.md#azure-containers)
+* [SQL Database 和 SQL 資料倉儲的警示](threat-protection.md#data-sql)
+* [Azure 儲存體的警示](threat-protection.md#azure-storage)
+* [Cosmos DB 的警示](threat-protection.md#cosmos-db)
 
 下列主題說明資訊安全中心如何使用它從與 Azure 基礎結構整合所收集的不同遙測資料，以針對部署在 Azure 上的資源套用額外的保護層級：
 
-* [服務層警示](security-center-alerts-service-layer.md)
-* [Azure WAF 和 Azure DDoS 保護的威脅偵測](security-center-alerts-integration.md)
+* [Azure 管理層（Azure Resource Manager）的警示（預覽）](threat-protection.md#management-layer)
+* [Azure Key Vault 的警示（預覽）](threat-protection.md#azure-keyvault)
+* [Azure 網路層的警示](threat-protection.md#network-layer)
+* [來自其他服務的警示](threat-protection.md#alerts-other)
 
 ## <a name="see-also"></a>另請參閱
 在本文件中，您已了解如何使用資訊安全中心的安全性事件功能。 如要深入了解資訊安全中心，請參閱下列主題：
@@ -63,4 +69,3 @@ ms.locfileid: "77604089"
 * [Azure 資訊安全中心中的安全性警示](security-center-alerts-overview.md)。
 * [管理安全性警示](security-center-managing-and-responding-alerts.md)
 * [Azure 資訊安全中心規劃和操作指南](security-center-planning-and-operations-guide.md)
-* [Azure 安全性部落格](https://blogs.msdn.com/b/azuresecurity/)-- 尋找有關 Azure 安全性與相容性的部落格文章。

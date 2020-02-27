@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 11/21/2019
+ms.date: 02/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aeb2e98ad9bbd35f3ec507e36e958c5ce6ad2198
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: dc87b434664ba12cefeb233972e749f631d8a2b4
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185872"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620693"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>在條件式存取中使用 What If 工具進行疑難排解
 
@@ -24,7 +24,7 @@ ms.locfileid: "77185872"
 
 本文說明如何使用此工具來測試您的條件式存取原則。
 
-## <a name="what-it-is"></a>說明
+## <a name="what-it-is"></a>內容
 
 **條件式存取 What If 原則工具**可讓您瞭解條件式存取原則對環境的影響。 這個工具並非要讓您以手動方式執行多個登入來測試原則，而是要讓您評估使用者的模擬登入。 該模擬可評估此登入對原則所造成的影響，並產生模擬報告。 此報告不只會列出已套用的條件式存取原則，還有[傳統原則](policy-migration.md#classic-policies)（如果有的話）。    
 
@@ -48,7 +48,7 @@ ms.locfileid: "77185872"
 
 若要啟動工具，請在原則清單頂端的工具列中，按一下 [ **What If**]。
 
-![如果](./media/what-if-tool/01.png)
+![What If](./media/what-if-tool/01.png)
 
 您必須先進行設定，才能執行評估。
 
@@ -56,9 +56,9 @@ ms.locfileid: "77185872"
 
 本節為您提供模擬執行設定的相關資訊。
 
-![如果](./media/what-if-tool/02.png)
+![What If](./media/what-if-tool/02.png)
 
-### <a name="user"></a>使用者
+### <a name="user"></a>User
 
 您只能選取一個使用者。 這是唯一的必要欄位。
 
@@ -90,7 +90,7 @@ IP 位址是用來模擬[位置條件](location-condition.md)的單一 IPv4 位�
 
 您可以按一下 [ **What If**] 開始評估。 評估結果所提供的報告中會包含： 
 
-![如果](./media/what-if-tool/03.png)
+![What If](./media/what-if-tool/03.png)
 
 - 環境中是否存在傳統原則的指標
 - 套用至使用者的原則
@@ -98,7 +98,7 @@ IP 位址是用來模擬[位置條件](location-condition.md)的單一 IPv4 位�
 
 如果選取的雲端應用程式中存在[傳統原則](policy-migration.md#classic-policies)，系統就會向您顯示指標。 按一下指標，系統就會將您重新導向至傳統原則頁面。 在傳統原則頁面中，您可以移轉傳統原則，也可以直接加以停用。 關閉此頁面就會回到評估結果。
 
-在套用至所選取使用者的原則清單中，您還可以找到使用者必須符合之[授與控制項](controls.md#grant-controls)和[工作階段](controls.md#session-controls)控制項的清單。
+在套用至所選使用者的原則清單中，您也可以找到使用者必須滿足的[授與控制項](concept-conditional-access-grant.md)和[會話控制項](concept-conditional-access-session.md)的清單。
 
 在未套用至使用者的原則清單中，您也可以找到未套用這些原則的原因。 每個所列出原則的原因各代表其第一個未符合的條件。 原則已停用是之所以未套用原則的可能原因之一，因為已停用的原則不會進行進一步的評估。   
 

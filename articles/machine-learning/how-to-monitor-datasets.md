@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/04/2019
-ms.openlocfilehash: 4efdc47e65f0f29f74f1477b02efdc6b8767ffb2
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 401019c537cb0eb51fa6002637e170a79210f7d2
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264758"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617641"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>在資料集上偵測資料漂移（預覽）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ ms.locfileid: "76264758"
 > [!Important]
 > 請注意，在所有版本中都可使用 SDK 的監視資料漂移，而透過 web 上的 studio 監視資料漂移則僅限 Enterprise edition。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要建立及使用資料集監視器，您需要：
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前先建立一個免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
@@ -61,7 +61,7 @@ ms.locfileid: "76264758"
 
 在概念上，在 Azure Machine Learning 中設定資料集監視器的主要案例有三種。
 
-案例 | 說明
+狀況 | 描述
 ---|---
 監視模型的服務資料，使其與模型的定型資料漂移 | 此案例的結果可以解讀為監視模型精確度的 proxy，假設如果服務資料從定型資料偏離，模型的精確度會降低。
 監視時間序列資料集與上一個時間週期的漂移。 | 此案例較通用，而且可用來監視模型建立的上游或下游相關的資料集。  目標資料集必須具有時間戳記資料行，而基準資料集可以是具有與目標資料集共通之功能的任何表格式資料集。
@@ -129,23 +129,23 @@ dset = dset.register(ws, 'target')
 
 此資料表包含用於資料集監視器的基本設定。
 
-| 設定 | 說明 | 提示 | 可變動 | 
+| 設定 | 描述 | 提示 | 可變動 | 
 | ------- | ----------- | ---- | ------- | 
 | 名稱 | 資料集監視器的名稱。 | | 否 |
 | 基準資料集 | 表格式資料集，將用來做為一段時間的目標資料集比較基準。 | 基準資料集必須具有與目標資料集共通的功能。 一般來說，基準應該設定為模型的訓練資料集或目標資料集的配量。 | 否 |
 | 目標資料集 | 已指定時間戳記資料行的表格式資料集，將會分析資料漂移。 | 目標資料集必須具有與基準資料集共同的功能，而且應該是將新資料附加至其中的 `timeseries` 資料集。 可以分析目標資料集中的歷程記錄資料，或可以監視新的資料。 | 否 | 
 | 頻率 | 在執行回填時，用來排程管線作業和分析歷程記錄資料的頻率。 選項包括 [每日]、[每週] 或 [每月]。 | 調整這項設定以包含可比較的資料大小給基準。 | 否 | 
-| 功能 | 將分析一段時間內資料漂移的功能清單。 | 設定為模型的輸出功能，以測量概念漂移。 請勿包含在一段時間內自然漂移的功能（月、年、索引等等）。 調整功能清單之後，您可以回填和現有的資料漂移監視器。 | 是 | 
+| 特性 | 將分析一段時間內資料漂移的功能清單。 | 設定為模型的輸出功能，以測量概念漂移。 請勿包含在一段時間內自然漂移的功能（月、年、索引等等）。 調整功能清單之後，您可以回填和現有的資料漂移監視器。 | 是 | 
 | 計算目標 | Azure Machine Learning 計算目標來執行資料集監視作業。 | | 是 | 
 
 ### <a name="monitor-settings"></a>監視設定
 
 這些設定適用于將建立的排程資料集監視管線。 
 
-| 設定 | 說明 | 提示 | 可變動 | 
+| 設定 | 描述 | 提示 | 可變動 | 
 | ------- | ----------- | ---- | ------- |
 | 啟用 | 啟用或停用資料集監視器管線上的排程 | 使用回填設定來停用排程來分析歷程記錄資料。 您可以在建立資料集監視器之後啟用它。 | 是 | 
-| 延遲 | 資料在資料集中抵達所需的時間（以小時為單位）。 例如，如果需要三天的時間，資料才會抵達 SQL DB （dataset 封裝），請將延遲設定為72。 | 建立資料集監視器之後無法變更 | 否 | 
+| Latency | 資料在資料集中抵達所需的時間（以小時為單位）。 例如，如果需要三天的時間，資料才會抵達 SQL DB （dataset 封裝），請將延遲設定為72。 | 建立資料集監視器之後無法變更 | 否 | 
 | 電子郵件地址 | 根據違反資料漂移百分比閾值而發出警示的電子郵件地址。 | 電子郵件是透過 Azure 監視器傳送。 | 是 | 
 | 閾值 | 電子郵件警示的資料漂移百分比閾值。 | 進一步的警示和事件可以在工作區相關聯 Application Insights 資源中的許多其他計量上設定。 | 是 | 
 
@@ -153,7 +153,7 @@ dset = dset.register(ws, 'target')
 
 這些設定是用來針對資料漂移計量的過去資料執行回填。
 
-| 設定 | 說明 | 提示 |
+| 設定 | 描述 | 提示 |
 | ------- | ----------- | ---- |
 | 開始日期 | 回填工作的開始日期。 | | 
 | 結束日期 | 回填作業的結束日期。 | 結束日期不能超過 31 * 開始日期的頻率單位。 在現有的資料集監視器上，可以回填度量來分析歷程記錄資料，或以更新的設定取代計量。 |
@@ -239,7 +239,7 @@ monitor = monitor.enable_schedule()
 
 **漂移總覽**一節包含資料漂移程度的最上層深入解析，以及應進一步調查哪些功能。 
 
-| 計量 | 說明 | 提示 | 
+| 計量 | 描述 | 提示 | 
 | ------ | ----------- | ---- | 
 | 資料漂移量 | 指定為一段時間的基準和目標資料集之間的百分比。 範圍從0到100，其中0表示相同的資料集，而100表示 Azure Machine Learning 資料漂移功能可以完全分辨出兩個資料集。 | 因為使用機器學習技術來產生這種程度，所以預期測量的確切百分比中有雜訊。 | 
 | 依功能的漂移比重 | 目標資料集內每項功能在測量漂移程度上的比重。 |  由於 covariate 轉移的緣故，功能的基礎分佈不一定需要變更，才會有相當高的功能重要性。 | 
@@ -262,7 +262,7 @@ monitor = monitor.enable_schedule()
 
 數值功能會在每個資料集監視執行中進行分析。 下列會在 Azure Machine Learning studio 中公開。 機率密度會針對分佈顯示。
 
-| 計量 | 說明 |  
+| 計量 | 描述 |  
 | ------ | ----------- |  
 | Wasserstein 距離 | 將基準散發轉換成目標分佈的最低工作量。 |
 | 平均值 | 功能的平均值。 |
@@ -275,7 +275,7 @@ monitor = monitor.enable_schedule()
 
 數值功能會在每個資料集監視執行中進行分析。 下列會在 Azure Machine Learning studio 中公開。 隨即顯示分佈的長條圖。
 
-| 計量 | 說明 |  
+| 計量 | 描述 |  
 | ------ | ----------- |  
 | Euclidian 距離 | 基準與目標分佈之間的幾何距離。 |
 | 唯一值 | 功能的唯一值（基數）數目。 |
@@ -319,13 +319,13 @@ monitor = monitor.enable_schedule()
 
 資料集中的資料行或功能會根據下表中的條件分類為類別或數值。 如果功能不符合這些條件，例如，具有 > 100 個唯一值之 string 類型的資料行，則會從我們的資料漂移演算法中卸載此功能，但仍會進行分析。 
 
-| 功能類型 | Data type | 條件 | 限制 | 
+| 功能類型 | 資料類型 | 條件 | 限制 | 
 | ------------ | --------- | --------- | ----------- |
 | 類別 | string、bool、int、float | 此功能中的唯一值數目小於100，且小於5% 的資料列數目。 | Null 會被視為它自己的類別。 | 
 | 數值 | int、float | 功能中的值是數值資料類型，而且不符合類別功能的條件。 | 如果 > 的15% 值為 null，則會卸載功能。 | 
 
 ## <a name="next-steps"></a>後續步驟
 
-* 前往[Azure Machine Learning studio](https://ml.azure.com)或[Python 筆記本](https://aka.ms/datadrift-notebook)來設定資料集監視。
+* 前往[Azure Machine Learning studio](https://ml.azure.com)或[Python 筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datadrift-tutorial/datadrift-tutorial.ipynb)來設定資料集監視。
 * 瞭解如何在[部署至 Azure Kubernetes Service 的模型](how-to-monitor-data-drift.md)上設定資料漂移。
 * 使用[事件方格](how-to-use-event-grid.md)來設定資料集漂移監視器。 

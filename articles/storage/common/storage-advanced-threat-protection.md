@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/04/2020
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: f9889f58ead8d1dd35ceb50fa100b2b466cbe7cf
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: d97b63aa87bfd8cf8ca1a3f5b213d6b16ca066df
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022387"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616856"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-storage"></a>設定 Azure 儲存體的先進威脅防護
 
@@ -31,7 +31,7 @@ Azure 儲存體的先進威脅防護提供一層額外的安全性情報，可�
 
 您可以透過下列各節所述的任一種方式來設定「先進的威脅防護」。
 
-### <a name="portaltabazure-portal"></a>[入口網站](#tab/azure-portal)
+### <a name="portal"></a>[入口網站](#tab/azure-portal)
 
 1. 啟動 [Azure 入口網站](https://portal.azure.com/)。
 1. 流覽至您的 Azure 儲存體帳戶。 在 [**設定**] 底下，選取 [ **Advanced security**]。
@@ -41,7 +41,7 @@ Azure 儲存體的先進威脅防護提供一層額外的安全性情報，可�
 
     ![開啟 Azure 儲存體進階威脅防護](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
 
-### <a name="azure-security-centertabazure-security-center"></a>[Azure 資訊安全中心](#tab/azure-security-center)
+### <a name="azure-security-center"></a>[Azure 資訊安全中心](#tab/azure-security-center)
 
 當您訂閱 Azure 資訊安全中心中的標準層時，系統會自動在您所有的儲存體帳戶上設定 advanced 威脅防護。 您可以在特定訂用帳戶下，針對儲存體帳戶啟用或停用「先進的威脅防護」，如下所示：
 
@@ -57,11 +57,11 @@ Azure 儲存體的先進威脅防護提供一層額外的安全性情報，可�
     ![在資訊安全中心中啟用 ATP](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
 1. 按一下 [檔案]。
 
-### <a name="templatetabtemplate"></a>[範本](#tab/template)
+### <a name="template"></a>[範本](#tab/template)
 
 使用 Azure Resource Manager 範本來部署已啟用「先進的威脅防護」的 Azure 儲存體帳戶。 如需詳細資訊，請參閱[具有 advanced 威脅防護的儲存體帳戶](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/)。
 
-### <a name="azure-policytabazure-policy"></a>[Azure 原則](#tab/azure-policy)
+### <a name="azure-policy"></a>[Azure 原則](#tab/azure-policy)
 
 使用 Azure 原則，在特定訂用帳戶或資源群組下的儲存體帳戶之間啟用先進的威脅防護。
 
@@ -79,14 +79,14 @@ Azure 儲存體的先進威脅防護提供一層額外的安全性情報，可�
 
     ![原則定義頁面](./media/storage-advanced-threat-protection/storage-atp-policy1.png)
 
-### <a name="rest-apitabrest-api"></a>[REST API](#tab/rest-api)
+### <a name="rest-api"></a>[REST API](#tab/rest-api)
 
 使用 Rest API 命令來建立、更新或取得特定儲存體帳戶的「先進的威脅防護」設定。
 
 * [先進的威脅防護-建立](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/create)
 * [先進的威脅防護-取得](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/get)
 
-### <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用下列 PowerShell Cmdlet：
 
@@ -116,9 +116,9 @@ Azure 儲存體的先進威脅防護提供一層額外的安全性情報，可�
 
 ![Azure 儲存體進階威脅防護警示電子郵件](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-alert.png)
 
-## <a name="protection-alerts"></a>防護警示
+## <a name="security-alerts"></a>安全性警示
 
-警示是因為以不尋常且有危害意圖的方式嘗試存取或惡意探索儲存體帳戶而產生的。 如需 Azure 儲存體的警示清單，請參閱[Azure 資訊安全中心警示中適用于資料服務的威脅偵測](../../security-center/security-center-alerts-data-services.md#azure-storage)的**儲存體**一節。
+警示是因為以不尋常且有危害意圖的方式嘗試存取或惡意探索儲存體帳戶而產生的。 如需 Azure 儲存體的警示清單，請參閱[Azure 資訊安全中心中資料服務的威脅防護](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurestorage)中的**儲存體**一節。
 
 ## <a name="next-steps"></a>後續步驟
 

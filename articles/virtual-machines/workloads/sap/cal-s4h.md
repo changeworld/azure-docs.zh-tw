@@ -4,7 +4,7 @@ description: 在 Azure VM 上部署 SAP S/4HANA 或 BW/4HANA
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
-ms.openlocfilehash: 2fa68d9dc3052263b5354086ee802cc31fa35ace
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c110a4e0429ba52e01c472097a2241f91d504cf5
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101449"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616214"
 ---
 # <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>在 Azure 上部署 SAP S/4HANA 或 BW/4HANA
 本文說明如何使用 SAP Cloud Appliance Library (SAP CAL) 3.0 在 Azure 上部署 S/4HANA。 若要部署其他 SAP HANA 型解決方案 (例如 BW/4HANA)，請遵循相同的步驟。
@@ -44,7 +44,7 @@ ms.locfileid: "70101449"
 
     a. 選取 Azure 上的部署模型 (Resource Manager 或傳統)。
 
-    b.這是另一個 C# 主控台應用程式。 輸入您的 Azure 訂用帳戶。 一個 SAP CAL 帳戶只能指派給一個訂用帳戶。 如果您需要多個訂用帳戶，則必須另外建立 SAP CAL 帳戶。
+    b. 輸入您的 Azure 訂用帳戶。 一個 SAP CAL 帳戶只能指派給一個訂用帳戶。 如果您需要多個訂用帳戶，則必須另外建立 SAP CAL 帳戶。
 
     c. 賦予 SAP CAL 部署到 Azure 訂用帳戶的權限。
 

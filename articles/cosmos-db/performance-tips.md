@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: sngun
-ms.openlocfilehash: eec5ab6cdf4afd63db2e77046bb19436e600ece6
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: dc9d10a6539c7fc3a7c5c8b3db290cc951c24883
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720991"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623324"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB 和 .NET 的效能祕訣
 
@@ -24,6 +24,35 @@ ms.locfileid: "76720991"
 Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得延遲與輸送量保證的情況下順暢地調整。 使用 Azure Cosmos DB 時，您不須進行主要的架構變更，或是撰寫複雜的程式碼來調整您的資料庫。 相應增加和減少就像進行單一 API 呼叫一樣簡單。 若要深入了解，請參閱[如何佈建容器輸送量](how-to-provision-container-throughput.md)或[如何佈建資料庫輸送量](how-to-provision-database-throughput.md)。 不過，由於 Azure Cosmos DB 是透過網路呼叫存取，所以您可以在使用 [SQL .NET SDK](sql-api-sdk-dotnet-standard.md) 時進行用戶端最佳化以達到最高效能。
 
 如果您詢問「如何改善我的資料庫效能？ 」，請考慮下列選項：
+
+## <a name="hosting-recommendations"></a>裝載建議
+
+1.  **針對需要大量查詢的工作負載，請使用 Windows 64 位，而不是 Linux 或 Windows 32 主機處理**
+
+    建議使用 Windows 64 位主機處理來改善效能。 SQL SDK 包含原生 Microsoft.azure.documents.serviceinterop.dll，可在本機剖析和優化查詢，而且只有在 Windows x64 平臺上才支援。 針對 Linux 和無法使用 Microsoft.azure.documents.serviceinterop.dll 的其他不支援平臺，將會對閘道進行額外的網路呼叫，以取得優化的查詢。 下列的應用程式類型預設使用 32 位元主機處理序，若要將其變更為 64 位元，請根據您的應用程式類型依照下列步驟執行：
+
+    - 針對可執行檔應用程式，您可以在 [**專案屬性**] 視窗的 [**組建**] 索引標籤上，將[平臺目標](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019)設定為**x64**來完成這項作業。
+
+    - 針對 VSTest 型的測試專案，可以從 [Visual Studio 測試] 功能表選項，選取 [測試]->[測試設定]->[以 X64 做為預設處理器架構] 來完成。
+
+    - 針對本機部署的 ASP.NET Web 應用程式，可以在 [工具] **[選項]** -> **[專案和方案]** -> **[Web 專案]** -> 之下，選取 [將 64 位元版本的 IIS Express 用於網站和專案] 來完成。
+
+    - 針對部署於 Azure 上的 ASP.NET Web 應用程式，可以在 Azure 入口網站上的 [應用程式設定] 中選擇 [以 64 位元做為平台] 來完成。
+
+    > [!NOTE] 
+    > Visual studio 會將新的專案預設為任何 CPU。 建議您將專案設定為 x64，以避免它切換至 x86。 如果新增的任何相依性僅為 x86，任何 CPU 專案都可以輕易切換至 x86。<br/>
+    > Microsoft.azure.documents.serviceinterop.dll 必須位於執行 SDK dll 所在的相同資料夾中。 只有在使用者手動處理 dll 或擁有自訂群組建/部署系統時，才需要執行此動作。
+    
+2. **開啟伺服器端垃圾收集（GC）**
+
+    在某些情況下，降低廢棄項目收集頻率可能會有幫助。 在 .NET 中，請將 [gcServer](https://msdn.microsoft.com/library/ms229357.aspx) 設定為 true。
+
+3. **相應放大用戶端工作負載**
+
+    如果您是以高輸送量層級 (> 50,000 RU/秒) 進行測試，用戶端應用程式可能會成為瓶頸，因為電腦對 CPU 或網路的使用率將達到上限。 如果到了這一刻，您可以將用戶端應用程式向外延展至多部伺服器，以繼續將 Azure Cosmos DB 帳戶再往前推進一步。
+
+    > [!NOTE] 
+    > 高 CPU 使用率可能會導致延遲增加和要求超時例外狀況。
 
 ## <a name="networking"></a>網路功能
 <a id="direct-connection"></a>
@@ -96,6 +125,7 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
     ![Azure Cosmos DB 連接原則的圖例](./media/performance-tips/same-region.png)
    <a id="increase-threads"></a>
+
 4. **增加執行緒/工作數目**
 
     由於對 Azure Cosmos DB 的呼叫要透過網路進行，因此您可能需要改變要求的平行處理原則程度，以便讓用戶端應用程式在不同要求之間只需等待很短的時間。 例如，如果您使用 .NET 的[工作平行程式庫](https://msdn.microsoft.com//library/dd460717.aspx)，請建立大約數百個讀取或寫入 Azure Cosmos DB 的工作。
@@ -121,9 +151,11 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
     每個 DocumentClient 和 CosmosClient 實例都是安全線程，並且會在直接模式中運作時執行有效率的連線管理和位址快取。 為了讓 SDK 用戶端能夠有效率地進行連線管理和更佳的效能，建議您在應用程式的存留期間，針對每個 AppDomain 使用單一實例。
 
    <a id="max-connection"></a>
+
 4. **增加使用閘道模式時每部主機的 System.Net MaxConnections**
 
-    使用閘道模式時，Azure Cosmos DB 要求是透過 HTTPS/REST 發出，並受制於每個主機名稱或 IP 位址的預設連線限制。 您可能必須將 MaxConnections 設定成較高的值 (100-1000)，以便用戶端程式庫利用多個同時連到 Azure Cosmos DB 的連線。 在 .NET SDK 1.8.0 和更新版本中，[ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) 的預設值為 50，而若要變更此值，您可以將 [Documents.Client.ConnectionPolicy.MaxConnectionLimit](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) 設定為更高的值。   
+    使用閘道模式時，Azure Cosmos DB 要求是透過 HTTPS/REST 發出，並受制於每個主機名稱或 IP 位址的預設連線限制。 您可能必須將 MaxConnections 設定成較高的值 (100-1000)，以便用戶端程式庫利用多個同時連到 Azure Cosmos DB 的連線。 在 .NET SDK 1.8.0 和更新版本中，[ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) 的預設值為 50，而若要變更此值，您可以將 [Documents.Client.ConnectionPolicy.MaxConnectionLimit](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) 設定為更高的值。
+
 5. **微調分割之集合的平行查詢**
 
      SQL .NET SDK 1.9.0 版和更新版本支援平行查詢，可讓您平行查詢分割的集合。 如需詳細資訊，請參閱使用 SDK 的相關[程式碼範例](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs)。 平行查詢的設計目的是要改善其連續對應項目的查詢延遲和輸送量。 平行查詢提供兩個可供使用者微調以符合其需求的參數：(a) MaxDegreeOfParallelism：用來控制可平行查詢的分割數目上限，以及 (b) MaxBufferedItemCount：用來控制預先擷取的結果數目。
@@ -135,10 +167,8 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
     (b) ***微調 MaxBufferedItemCount\:*** 平行查詢是設計成可以在用戶端處理目前的結果批次時預先擷取結果。 預先擷取有助於改善查詢的整體延遲。 MaxBufferedItemCount 是用來限制預先擷取之結果數量的參數。 將 MaxBufferedItemCount 設定為預期傳回的結果數目 (或更高的數目)，可讓查詢透過預先擷取獲得最大效益。
 
     不論平行處理原則的程度，預先提取的運作方式都相同，而且所有分割區的資料都有單一緩衝區。  
-6. **開啟伺服器端 GC**
 
-    在某些情況下，降低廢棄項目收集頻率可能會有幫助。 在 .NET 中，請將 [gcServer](https://msdn.microsoft.com/library/ms229357.aspx) 設定為 true。
-7. **在 RetryAfter 間隔實作降速**
+6. **在 RetryAfter 間隔實作降速**
 
     在進行效能測試期間，您應該增加負載，直到系統對小部分要求進行節流處理為止。 如果進行節流處理，用戶端應用程式應該在節流時降速，且持續時間達伺服器指定的重試間隔。 採用降速可確保您在重試之間花費最少的等待時間。 重試原則支援包含於 SQL [.NET](sql-api-sdk-dotnet.md) 和 [Java](sql-api-sdk-java.md) 的版本 1.8.0 和以上版本中，[Node.js](sql-api-sdk-node.md) 和 [Python](sql-api-sdk-python.md) 的版本 1.9.0 或以上版本中，以及 [.NET 核心](sql-api-sdk-dotnet-core.md) SDK 所有支援的版本。 如需詳細資訊，請參閱 [RetryAfter](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx) \(英文\)。
     
@@ -147,16 +177,13 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
     ResourceResponse<Document> readDocument = await this.readClient.ReadDocumentAsync(oldDocuments[i].SelfLink);
     readDocument.RequestDiagnosticsString 
     ```
-    
-8. **相應放大用戶端工作負載**
 
-    如果您是以高輸送量層級 (> 50,000 RU/秒) 進行測試，用戶端應用程式可能會成為瓶頸，因為電腦對 CPU 或網路的使用率將達到上限。 如果到了這一刻，您可以將用戶端應用程式向外延展至多部伺服器，以繼續將 Azure Cosmos DB 帳戶再往前推進一步。
-9. **快取較低讀取延遲的文件 URI**
+7. **快取較低讀取延遲的文件 URI**
 
-    盡可能快取文件 URI 以達到最佳讀取效能。 您必須在建立資源時，定義快取 resourceid 的邏輯。 以 Resourceid 為基礎的查閱比以名稱為基礎的查閱更快，因此快取這些值可改善效能。 
+    盡可能快取文件 URI 以達到最佳讀取效能。 當您建立資源時，您必須定義邏輯來快取資源識別碼。 以資源識別碼為基礎的查閱比以名稱為基礎的查閱更快速，因此快取這些值可改善效能。 
 
    <a id="tune-page-size"></a>
-10. **調整查詢/讀取摘要的頁面大小以獲得更好的效能**
+8. **調整查詢/讀取摘要的頁面大小以獲得更好的效能**
 
    使用讀取摘要功能 (例如 ReadDocumentFeedAsync) 執行大量文件讀取時，或發出 SQL 查詢時，如果結果集太大，則會以分段方式傳回結果。 根據預設，會以 100 個項目或 1 MB 的區塊傳回結果 (以先達到的限制為準)。
 
@@ -173,21 +200,9 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
     
    執行查詢時，會在 TCP 封包內傳送產生的資料。 如果您為 `maxItemCount`指定的值太低，則在 TCP 封包內傳送資料所需的往返次數會很高，因而影響效能。 因此，如果您不確定要為 `maxItemCount` 屬性設定哪個值，最好將它設為-1，並讓 SDK 選擇預設值。 
 
-11. **增加執行緒/工作數目**
+9. **增加執行緒/工作數目**
 
     請參閱＜網路＞一節中的[增加執行緒/工作數目](#increase-threads)。
-
-12. **使用 64 位元主機處理序**
-
-    當您使用 SQL .NET SDK 版本 1.11.4 和更新版本時，SQL SDK 會在 32 位元主機處理序中運作。 不過，若使用跨分割區查詢，建議您使用 64 位元主機處理以獲得改進的效能。 下列的應用程式類型預設使用 32 位元主機處理序，若要將其變更為 64 位元，請根據您的應用程式類型依照下列步驟執行：
-
-    - 針對「可執行檔」應用程式，做法是在 [專案屬性] 視窗中的 [建置] 索引標籤上取消選取 [建議使用 32 位元] 選項。
-
-    - 針對 VSTest 型的測試專案，可以從 [Visual Studio 測試] 功能表選項，選取 [測試]->[測試設定]->[以 X64 做為預設處理器架構] 來完成。
-
-    - 針對本機部署的 ASP.NET Web 應用程式，可以在 [工具] **[選項]** -> **[專案和方案]** -> **[Web 專案]** -> 之下，選取 [將 64 位元版本的 IIS Express 用於網站和專案] 來完成。
-
-    - 針對部署於 Azure 上的 ASP.NET Web 應用程式，可以在 Azure 入口網站上的 [應用程式設定] 中選擇 [以 64 位元做為平台] 來完成。
 
 ## <a name="indexing-policy"></a>索引原則
  
@@ -247,7 +262,7 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
     雖然自動重試行為有助於改善大部分應用程式的恢復功能和可用性，但是在進行效能基準測試時可能會有所歧異 (尤其是在測量延遲時)。  如果實驗達到伺服器節流並導致用戶端 SDK 以無訊息模式重試，則用戶端觀察到的延遲將會突然增加。 若要避免效能實驗期間的延遲尖峰，測量每個作業所傳回的費用，並確保要求是以低於保留要求速率的方式運作。 如需詳細資訊，請參閱 [要求單位](request-units.md)。
 3. **輸送量較高之少量文件的設計**
 
-    指定之作業的要求費用 (也就是要求處理成本) 與文件大小直接相互關聯。 大型文件的作業成本高於小型文件的作業成本。
+    給定作業的要求費用（亦即要求-處理成本）與檔案大小直接相互關聯。 大型文件的作業成本高於小型文件的作業成本。
 
 ## <a name="next-steps"></a>後續步驟
 如需用來評估 Azure Cosmos DB 在少數用戶端電腦上達到高效能的範例應用程式，請參閱 [Azure Cosmos DB 的效能和規模測試](performance-testing.md)。

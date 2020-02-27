@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 02/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a65145fe9752a90e3328c308ce603c8626d8708
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 7f7f6f31c4d2f67660fef507ce101b2d15897d51
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74380870"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620859"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>如何：使用條件式存取封鎖舊版驗證 Azure AD   
 
@@ -24,7 +24,7 @@ ms.locfileid: "74380870"
 
 如果您的環境已準備好封鎖舊版驗證以改善租使用者的保護，您可以使用條件式存取來達成此目標。 本文說明如何設定條件式存取原則，以封鎖您租使用者的舊版驗證。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 本文假設您已熟悉以下各項： 
 
@@ -48,13 +48,30 @@ Azure AD 支援數個最常用的驗證和授權通訊協定，包括舊式驗�
 
 本節說明如何設定條件式存取原則，以封鎖舊版驗證。 
 
+### <a name="legacy-authentication-protocols"></a>舊版驗證通訊協定
+
+下列選項視為舊版驗證通訊協定
+
+- 已驗證的 SMTP-POP 和 IMAP 用戶端用來傳送電子郵件訊息。
+- 自動探索-供 Outlook 和 EAS 用戶端用來尋找並聯機到 Exchange Online 中的信箱。
+- Exchange Online PowerShell-用來透過遠端 PowerShell 連線到 Exchange Online。 如果您封鎖 Exchange Online PowerShell 的基本驗證，您需要使用 Exchange Online PowerShell 模組來連接。 如需指示，請參閱[使用多重要素驗證連接到 Exchange Online PowerShell](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)。
+- Exchange Web 服務（EWS）-Outlook、Outlook for Mac 及協力廠商應用程式所使用的程式設計介面。
+- IMAP4-供 IMAP 電子郵件客戶程式使用。
+- MAPI over HTTP （MAPI/HTTP）-由 Outlook 2010 和更新版本使用。
+- 離線通訊錄（OAB）-Outlook 下載並使用的地址清單集合複本。
+- Outlook Anywhere （RPC over HTTP）-由 Outlook 2016 和更早版本使用。
+- Outlook 服務-適用于 Windows 10 的電子郵件和行事曆應用程式。
+- POP3-由 POP 電子郵件客戶程式使用。
+- 報表 Web 服務-用來在 Exchange Online 中取出報表資料。
+- 其他用戶端-識別為利用舊版驗證的其他通訊協定。
+
 ### <a name="identify-legacy-authentication-use"></a>識別舊版驗證使用
 
 您必須先瞭解您的使用者是否有使用舊版驗證的應用程式，以及它如何影響您的整體目錄，才可以在目錄中封鎖舊版驗證。 Azure AD 登入記錄可以用來瞭解您是否使用舊版驗證。
 
 1. 流覽至**Azure 入口網站** > **Azure Active Directory** > 登**入**。
 1. 新增 [用戶端應用程式] 資料行，如果未顯示，請按一下 [ > **用戶端應用程式**的資料**行**]。
-1.  > **用戶端應用程式** **新增篩選器**> 選取**其他用戶端**的所有選項，**然後按一下 [** 套用]。
+1.  > **用戶端應用程式** **新增篩選**> 選取所有舊版驗證通訊協定，然後**按一下 [** 套用]。
 
 篩選只會顯示舊版驗證通訊協定所進行的登入嘗試。 按一下每個個別的登入嘗試，將會顯示其他詳細資料。 [**基本資訊**] 索引標籤下的 [**用戶端應用程式**] 欄位會指出所使用的舊版驗證通訊協定。
 

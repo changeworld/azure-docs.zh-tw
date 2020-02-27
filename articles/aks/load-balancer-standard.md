@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 3fe4de2b8b85e603bc200b27fa15c67f6cc05dd4
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 9c414572e1c3b2f046ae9a14139885e9927ab3bb
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77595092"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622177"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service 中使用標準 SKU 負載平衡器（AKS）
 
@@ -39,7 +39,7 @@ Azure Load Balancer 有兩種 SKU -「基本」和「標準」。 根據預設�
 
 例如，讓藍色/綠色部署遷移叢集是一種常見的作法，因為叢集的 `load-balancer-sku` 類型只能在叢集建立時定義。 不過，*基本 sku*負載平衡器會使用與*標準*sku 負載平衡器不相容的*基本 sku* Ip 位址，因為它們需要*標準 sku* ip 位址。 當遷移叢集以 Load Balancer Sku 升級時，將需要具有相容 IP 位址 SKU 的新 IP 位址。
 
-如需有關如何遷移叢集的詳細考慮，請流覽[有關遷移考慮的檔](acs-aks-migration.md)，以查看遷移時要考慮的重要主題清單。 下列限制也是在 AKS 中使用標準 SKU 負載平衡器時，所要注意的重要行為差異。
+如需有關如何遷移叢集的詳細考慮，請流覽[有關遷移考慮的檔](aks-migration.md)，以查看遷移時要考慮的重要主題清單。 下列限制也是在 AKS 中使用標準 SKU 負載平衡器時，所要注意的重要行為差異。
 
 ### <a name="limitations"></a>限制
 

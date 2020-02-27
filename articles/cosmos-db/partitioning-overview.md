@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: c781c5e12f3f678ef640c6017a768e7ac14448f9
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 551703b5dcca082904197010366ee059998dde4b
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871987"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621873"
 ---
 # <a name="partitioning-in-azure-cosmos-db"></a>Azure Cosmos DB 中的資料分割
 
@@ -37,7 +37,7 @@ Azure Cosmos DB 使用以雜湊為基礎的資料分割，將邏輯磁碟分割�
 
 以下是選擇資料分割索引鍵的絕佳指引：
 
-* 單一邏輯分割區的儲存空間上限為 10 GB。  
+* 單一邏輯分割區的儲存空間上限為 20 GB。  
 
 * Azure Cosmos 容器的輸送量最低為每秒400個要求單位（RU/秒）。 在資料庫上布建輸送量時，每個容器的最小 ru 為每秒100個要求單位（RU/秒）。 對相同分割區索引鍵的要求不能超過配置給分割區的輸送量。 如果要求超過配置的輸送量，則要求會受到速率限制。 因此，請務必挑選不會在應用程式內產生「作用點」的分割區索引鍵。
 

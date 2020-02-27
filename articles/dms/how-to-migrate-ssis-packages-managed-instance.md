@@ -3,21 +3,21 @@ title: 將 SSIS 套件遷移至 SQL 受控實例
 titleSuffix: Azure Database Migration Service
 description: 瞭解如何使用 Azure 資料庫移轉服務或 Data Migration Assistant，將 SQL Server Integration Services （SSIS）套件和專案遷移至 Azure SQL Database 受控實例。
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: 22f3e6a0e4c041024e826a7ed724d788ce77da62
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 02/20/2020
+ms.openlocfilehash: a0669724888f02672d18ef9e8f725eef1c744f90
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751214"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650959"
 ---
 # <a name="migrate-sql-server-integration-services-packages-to-an-azure-sql-database-managed-instance"></a>將 SQL Server Integration Services 封裝遷移至 Azure SQL Database 受控實例
 如果您使用 SQL Server Integration Services （SSIS），而且想要將 SSIS 專案/套件從 SQL Server 裝載的來源 SSISDB 遷移到由 Azure SQL Database 受控實例所裝載的目的地 SSISDB，您可以使用 Azure 資料庫移轉服務。
@@ -33,7 +33,7 @@ ms.locfileid: "75751214"
 > * 評估來源 SSIS 專案/套件。
 > * 將 SSIS 專案/套件遷移至 Azure。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成這些步驟，您需要：
 

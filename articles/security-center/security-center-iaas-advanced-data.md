@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2019
 ms.author: memildin
-ms.openlocfilehash: 068fb9f61b7dcb3948e4f03c284ddfa680522c85
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: a2970ea3f5ad360deaedd7efc82154cd3bc50337
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73907017"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617100"
 ---
 # <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-preview"></a>Azure 上 SQL server 的 Advanced data security 虛擬機器（預覽）
 Azure 上 SQL Server 的 advanced data security 虛擬機器是先進 SQL 安全性功能的整合套件。 這項預覽功能包含可識別和減輕潛在資料庫弱點，以及偵測可能表示對資料庫有威脅之異常活動的功能。 
@@ -26,7 +26,7 @@ Azure 上 SQL Server 的 advanced data security 虛擬機器是先進 SQL 安全
 適用于 Azure Vm SQL server 的此安全性供應專案，是以[Azure SQL Database Advanced Data security 套件](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)中所用的相同基本技術為基礎。
 
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概觀
 
 先進的資料安全性提供一組先進的 SQL 安全性功能，其中包含弱點評估和先進的威脅防護。
 
@@ -61,7 +61,7 @@ Azure 上 SQL Server 的 advanced data security 虛擬機器是先進 SQL 安全
 若要將 SQL Server 的主機連線到工作區，請依照[將 Windows 電腦連線到 Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows)中的指示進行。
 
 
-## <a name="set-up-email-notification-for-atp-alerts"></a>設定 ATP 警示的電子郵件通知 
+## <a name="set-up-email-notification-for-security-alerts"></a>設定安全性警示的電子郵件通知 
 
 您可以設定要在產生資訊安全中心警示時接收電子郵件通知的收件者清單。 此電子郵件包含 Azure 資訊安全中心中警示的直接連結，以及所有相關的詳細資料。 
 

@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9ebeb0db14a42f090a629e379d88e00867bda65
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: 3dbe5871a78634d2866ec1a3d1455492762ff2aa
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77538170"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619233"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>建立 SCIM 端點，並使用 Azure Active Directory （Azure AD）來設定使用者布建
 
@@ -60,9 +60,9 @@ SCIM 2.0 （RFC [7642](https://tools.ietf.org/html/rfc7642)， [7643](https://to
 |loginName|userName|userPrincipalName|
 |firstName|name.givenName|givenName|
 |lastName|姓名 lastName|lastName|
-|workMail|電子郵件 [類型 eq "work"]。值|郵件|
+|workMail|電子郵件 [類型 eq "work"]。值|Mail|
 |manager|manager|manager|
-|tag (標記)|urn： ietf： params： scim：架構：擴充功能：2.0： CustomExtension：標記|extensionAttribute1|
+|tag|urn： ietf： params： scim：架構：擴充功能：2.0： CustomExtension：標記|extensionAttribute1|
 |status|作用中|isSoftDeleted （計算的值未儲存在使用者上）|
 
 上述定義的架構會使用下列 Json 承載來表示。 請注意，除了應用程式所需的屬性之外，JSON 標記法還包含必要的 "id"、"externalId" 和 "meta" 屬性。
@@ -106,7 +106,7 @@ SCIM 2.0 （RFC [7642](https://tools.ietf.org/html/rfc7642)， [7643](https://to
 | Facsimile-TelephoneNumber |phoneNumbers[type eq "fax"].value |
 | givenName |name.givenName |
 | jobTitle |title |
-| 郵件 |emails[type eq "work"].value |
+| mail |emails[type eq "work"].value |
 | mailNickname |externalId |
 | manager |urn： ietf： params： scim：架構：擴充功能： enterprise：2.0： User： manager |
 | mobile |phoneNumbers[type eq "mobile"].value |
@@ -124,16 +124,16 @@ SCIM 2.0 （RFC [7642](https://tools.ietf.org/html/rfc7642)， [7643](https://to
 | Azure Active Directory 群組 | urn： ietf： params： scim：架構： core：2.0： Group |
 | --- | --- |
 | displayName |displayName |
-| 郵件 |emails[type eq "work"].value |
+| mail |emails[type eq "work"].value |
 | mailNickname |displayName |
-| 成員 |成員 |
+| members |members |
 | objectId |externalId |
 | proxyAddresses |emails[type eq "other"].Value |
 
 SCIM RFC 中定義了數個端點。 您可以從/User 端點開始著手，然後從該處展開。 當您使用自訂屬性時，或您的架構經常變更時，/Schemas 端點會很有説明。 它可讓用戶端自動取得最新的架構。 /Bulk 端點在支援群組時特別有用。 下表描述 SCIM 標準中定義的各種端點。 當您使用自訂屬性時，或您的架構經常變更時，/Schemas 端點會很有説明。 它可讓用戶端自動取得最新的架構。 /Bulk 端點在支援群組時特別有用。 下表描述 SCIM 標準中定義的各種端點。 
  
 ### <a name="table-4-determine-the-endpoints-that-you-would-like-to-develop"></a>表4：判斷您想要開發的端點
-|端點|描述|
+|端點|DESCRIPTION|
 |--|--|
 |/User|在使用者物件上執行 CRUD 作業。|
 |/Group|對群組物件執行 CRUD 作業。|
@@ -966,6 +966,9 @@ netsh http add sslcert ipport=0.0.0.0:443 certhash=0000000000003ed9cd0c315bbb6dc
 
 來自 Azure Active Directory 的要求包括 OAuth 2.0 持有人權杖。   接收要求的任何服務都應該驗證簽發者為預期的 Azure Active Directory 租使用者 Azure Active Directory，以存取 Microsoft Graph API 服務。  在權杖中，簽發者是由 iss 宣告所識別，例如 "iss"： "https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/"。  在此範例中，宣告值 https://sts.windows.net的基底位址會將 Azure Active Directory 識別為簽發者，而相對位址區段 cbb1a5ac-f33b-45fa-9bf5-f37db0fed422 則則是發出權杖之 Azure Active Directory 租使用者的唯一識別碼。 權杖的物件將會是資源庫中應用程式的應用程式範本識別碼。 所有自訂應用程式的應用程式範本識別碼都是8adf8e6e-67b2-4cf2-a259-e3dc5476c621。 資源庫中每個應用程式的應用程式範本識別碼會有所不同。 如需有關資源庫應用程式之應用程式範本識別碼的問題，請洽詢 ProvisioningFeedback@microsoft.com。 在單一租使用者中註冊的每個應用程式可能會收到與 SCIM 要求相同的 `iss` 宣告。
 
+   > [!NOTE]
+   > ***不***建議將此欄位保留空白，並且依賴 Azure AD 所產生的權杖。 此選項主要是供測試之用。
+
 使用 Microsoft 為建立 SCIM 服務所提供之 CLI 程式庫的開發人員，可以依照下列步驟，使用 Owin 來驗證來自 Azure Active Directory 的要求： 
 
 首先，在提供者中，藉由讓它傳回每次服務啟動時所要呼叫的方法，來實 Microsoft.systemforcrossdomainidentitymanagement. Microsoft.systemforcrossdomainidentitymanagement.iprovider.startupbehavior. 讓 microsoft.systemforcrossdomainidentitymanagement.iprovider.startupbehavior 屬性： 
@@ -1450,6 +1453,8 @@ Azure AD 可以設定為將已指派的使用者和群組自動布建至應用�
 > [!div class="checklist"]
 > * 支援[SCIM 2.0](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#step-2-understand-the-azure-ad-scim-implementation)使用者和群組端點（只需要一個），但建議兩者都使用）
 > * 每個租使用者至少支援25個要求（必要）
+> * 建立工程和支援連絡人，以引導客戶張貼庫上線（必要）
+> * 3應用程式的非過期測試認證（必要）
 > * 支援 OAuth 授權碼授與或長時間的權杖，如下所述（必要）
 > * 建立小組的工程和支援點，以支援客戶在後置庫上線（必要）
 > * 支援使用單一修補程式來更新多個群組成員資格（建議） 

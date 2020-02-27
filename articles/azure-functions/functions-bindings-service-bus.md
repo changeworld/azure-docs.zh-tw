@@ -6,12 +6,12 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.openlocfilehash: b505a90057a213d7f64d4d168a6a70da0ff03c2f
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 44e4114b328701d5de363e91f5562f1daad351c6
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485296"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621084"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions 的 Azure 服務匯流排繫結
 
@@ -30,11 +30,11 @@ Azure Functions 透過[觸發程式和](./functions-triggers-bindings.md)系結�
 
 | Language                                        | 加入者 。                                   | 備註 
 |-------------------------------------------------|---------------------------------------------|-------------|
-| C#                                              | 安裝[NuGet 套件]3.x 版 | |
+| C#                                              | 安裝[NuGet 套件]，第4.x 版 | |
 | C#腳本，JAVA，JavaScript，Python，PowerShell | 註冊[延伸]模組配套          | 建議使用[Azure Tools 擴充功能]功能搭配 Visual Studio Code。 |
 | C#腳本（僅限線上 Azure 入口網站）         | 新增系結                            | 若要更新現有的系結延伸模組而不需要重新發佈函式應用程式，請參閱[更新您的擴充]功能。 |
 
-[Nuget 套件]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus
+[Nuget 套件]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus/
 [core tools]: ./functions-run-local.md
 [延伸]: ./functions-bindings-register.md#extension-bundles
 [更新您的擴充]: ./install-update-binding-extensions-manual.md

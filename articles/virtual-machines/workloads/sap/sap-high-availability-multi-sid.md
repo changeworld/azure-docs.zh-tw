@@ -3,8 +3,8 @@ title: 在 Azure 中建立 SAP 多 SID 組態 | Microsoft Docs
 description: Windows 虛擬機器上的 SAP NetWeaver 多 SID 組態的高可用性指南
 services: virtual-machines-windows, virtual-network, storage
 documentationcenter: saponazure
-author: goraco
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
-ms.author: rclaus
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ff01bd0d6586cf75dcfdb7277c34120c6ec22894
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: d7938f7db22f004a0bf6cdf2e22dc8e103896719
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647487"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617405"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>建立 SAP NetWeaver 多 SID 組態
 
@@ -55,7 +55,7 @@ Microsoft 在 2016 年 9 月發行的功能，可讓您使用 Azure 內部負載
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 您已設定一個用於一個 SAP ASCS/SCS 實例的 WSFC 叢集，如[Windows vm 上的高可用性 SAP NetWeaver 指南][sap-ha-guide]中所述，如本圖所示。
 
 ![高可用性的 SAP ASCS/SCS 執行個體][sap-ha-guide-figure-6001]

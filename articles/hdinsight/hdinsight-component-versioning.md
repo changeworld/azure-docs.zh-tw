@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 02/02/2020
-ms.openlocfilehash: 13c064701a5ecae2090a99980249f5daaa8d5395
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 02/26/2020
+ms.openlocfilehash: 9c801f5c039996ac36c4f4479318d64cccdd204d
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198951"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649988"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>可以搭配 HDInsight 使用的 Apache Hadoop 元件和版本有哪些？
 
@@ -62,6 +62,12 @@ Azure HDInsight 支援多個可隨時部署的 Hadoop 叢集版本。 從2017年
 請參閱 [HDInsight 版本資訊](hdinsight-release-notes.md) ，以取得 HDInsight 最新版本的其他版本資訊。
 
 ## <a name="supported-hdinsight-versions"></a>支援的 HDInsight 辦本
+
+### <a name="support-expiration-and-retirement-for-hdinsight-versions"></a>HDInsight 版本的支援到期和淘汰
+
+「**支援到期**」表示 Microsoft 將不再提供指定之 HDInsight 版本的支援，而且不會再透過 Azure 入口網站建立叢集來可用。 不過，您仍然可以使用 Azure CLI 或各種 Sdk 來建立這些版本。 
+
+**淘汰**HDInsight 版本表示現有的叢集將繼續依自己的方式執行。 不過，此版本的新叢集無法透過任何方式（包括 CLI 和 Sdk）來建立。 在淘汰版本之後，其他控制平面功能（例如手動縮放和自動調整）可能也無法使用。 已淘汰的版本不提供支援。
 
 下表列出 HDInsight 的版本。 如果已知支援到期日與停用日期，也會一併提供。
 

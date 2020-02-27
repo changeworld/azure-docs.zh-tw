@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/21/2020
+ms.date: 02/25/2020
 ms.author: dapine
-ms.openlocfilehash: 6b037ced7acb94340214ce401ffee9d940312de8
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 9112c7070708f3b97d79c1978a9b7204721c3194
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562616"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616625"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>教學課程：使用語音 SDK 為您的 bot 啟用語音
 
@@ -155,7 +155,7 @@ ms.locfileid: "77562616"
 4. 載入專案之後，按<kbd>F5</kbd>以建立並執行專案。
 5. 瀏覽器應該會啟動，而您會看到看起來像這樣的畫面。
     > [!div class="mx-imgBorder"]
-    > ![echobot-執行中-localhost](media/tutorial-voice-enable-your-bot-speech-sdk/echobot-running-on-localhost.png "在 localhost 上執行的 EchoBot")
+    > [![echobot-執行中-localhost](media/tutorial-voice-enable-your-bot-speech-sdk/echobot-running-on-localhost.png "在 localhost 上執行的 EchoBot")](media/tutorial-voice-enable-your-bot-speech-sdk/echobot-running-on-localhost.png#lightbox)
 
 ### <a name="test-the-bot-sample-with-the-bot-framework-emulator"></a>使用 Bot Framework Emulator 測試 bot 範例
 
@@ -171,7 +171,7 @@ ms.locfileid: "77562616"
    ```
    然後按 [連線]。
 4. Bot 應該會立即歡迎您 "Hello，歡迎！" 訊息。 輸入任何文字訊息，並確認您收到來自 bot 的回應。
-5. 這是與 Echo Bot 實例的通訊交換可能如下所示： ![Bot-架構-模擬器](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png "Bot Framework 模擬器")
+5. 這是與 Echo Bot 實例的通訊交換可能如下所示： [ ![Bot-架構-模擬器](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png "Bot Framework 模擬器")](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png#lightbox)
 
 ## <a name="deploy-your-bot-to-an-azure-app-service"></a>將您的 bot 部署到 Azure App Service
 
@@ -188,13 +188,14 @@ ms.locfileid: "77562616"
 
 1. 在 **方案總管**中，以滑鼠右鍵按一下**EchoBot**專案，然後選取 **發佈 ...** 。
 1. 標題為 [**挑選發行目標**] 的新視窗隨即開啟。
-1. 從 [ **Azure 服務**] 導覽選取 [ **App Service** ]，選取 **[新建]，然後**按一下 [**發佈**]。
+1. 從 [ **Azure 服務**] 導覽選取 [ **App Service** ]，選取 **[新建]，然後**按一下 [**建立設定檔**]。
 1. 當 [**建立 App Service** ] 視窗出現時：
    * 按一下 [**新增帳戶**]，然後使用您的 Azure 帳號憑證登入。 如果已經登入，請從下拉式清單中選取要使用的帳戶。
    * 針對 [**應用程式名稱**]，您必須輸入 Bot 的全域唯一名稱。 這個名稱是用來建立唯一的 bot URL。 預設值將會填入，包括日期和時間（例如： "EchoBot20190805125647"）。 您可以使用本教學課程的預設名稱。
    * 針對 [**訂**用帳戶]，將其設定為**免費試用**
    * 針對 [**資源群組**]，選取 [ **SpeechEchoBotTutorial-ResourceGroup** ]
    * 針對**主控方案**，選取 [ **SpeechEchoBotTutorial-AppServicePlan** ]
+   * 針對 [ **Application Insights**]，保留為 [**無**]
 1. 按一下 [建立]
 1. 您應該會看到 Visual Studio 中的成功訊息，如下所示：
 
@@ -232,12 +233,9 @@ ms.locfileid: "77562616"
 > [!NOTE]
 > 如果您想要深入瞭解 bot 如何運用通道，請參閱[將 bot 連線至通道](https://docs.microsoft.com/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0)。
 
-<!-- https://ms.portal.azure.com/#create/Microsoft.BotServiceConnectivityGalleryPackage -->
 
-1. 第一個步驟是建立註冊的新資源。 在 [Azure 入口網站](https://portal.azure.com)中，按一下 [建立資源]。
-2. 在搜尋列中輸入**bot**，在結果出現之後，選取 [ **bot 通道註冊**]。
-3. 按一下 **[建立]** 。
-4. 系統會提示您提供一些資訊：
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.BotServiceConnectivityGalleryPackage" target="_blank">建立 Azure Bot 通道註冊<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+2. 系統會提示您提供一些資訊：
    * 針對 [ **Bot 控制碼**]，輸入**SpeechEchoBotTutorial-BotRegistration**。
    * 針對 [**訂**用帳戶]，選取 [**免費試用**]。
    * 針對 [**資源群組**]，選取 [ **SpeechEchoBotTutorial-ResourceGroup**]。
@@ -271,7 +269,7 @@ ms.locfileid: "77562616"
    * 從功能表中選取您稍早建立的語音資源（例如， **SpeechEchoBotTutorial-speech**），以將您的 bot 與您的語音訂用帳戶金鑰建立關聯。
    * 按一下 [檔案]。
 
-1. 從 [ **Azure 服務**] 流覽中，按一下 [**設定**]。
+1. 從**Bot 管理**導覽中，按一下 [**設定**]。
    * 選取標示為 [**啟用串流端點**] 的方塊。 這是為了讓您的 bot 與 Direct Line Speech 通道之間的 web 通訊端建立通訊協定所需。
    * 按一下 [檔案]。
 
@@ -310,6 +308,7 @@ Direct Line 語音用戶端有一個簡單的 UI，可讓您設定與 bot 的連
 每個 bot 都會傳送及接收**活動**訊息。 在 Direct Line 語音用戶端的 [**活動記錄**] 視窗中，您會看到有時間戳記的記錄，其中包含用戶端從 bot 收到的每個活動。 您也可以使用[`DialogServiceConnector.SendActivityAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.sendactivityasync)方法，查看用戶端傳送給 bot 的活動。 當您選取記錄檔專案時，它會將相關聯活動的詳細資料顯示為 JSON。
 
 以下是用戶端收到的活動範例 json：
+
 ```json
 {
     "attachments":[],
@@ -395,7 +394,6 @@ Direct Line 語音用戶端會使用[CognitiveServices](https://www.nuget.org/pa
 1. 開啟 [Direct Line 語音用戶端應用程式]，按一下 [設定] 按鈕（右上角的齒輪圖示），然後在 [語言] 欄位中輸入 `de-de` （這是[語音轉換文字](language-support.md#speech-to-text)資料表中所述的地區設定值）。 這會設定要辨識的語音語言，並覆寫預設的 `en-us`。 這也會指示 Direct Line 語音通道使用 Bot 回復的預設德文語音。
 2. 關閉 [設定] 頁面，然後按一下 [重新連接] 按鈕，以建立與您 echo bot 的新連線。
 3. 按一下 [麥克風] 按鈕，然後在德文中說出一個片語。 您會看到已辨識的文字，而 echo bot 會以預設的德文語音回復。
-
 
 ### <a name="change-the-default-bot-voice"></a>變更預設的 bot 語音
 

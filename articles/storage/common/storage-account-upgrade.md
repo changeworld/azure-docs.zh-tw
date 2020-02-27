@@ -6,25 +6,25 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 02/25/2019
 ms.author: tamram
-ms.openlocfilehash: eb3523ca55e67d7a26ae608da8963dbf6124f2f7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 42cef26143eaeb49c4aa80dc5e1b05eb7be943cc
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75975842"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616834"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>升級至一般用途 v2 儲存體帳戶
 
 一般用途 v2 儲存體帳戶能支援最新的 Azure 儲存體功能，而且包含一般用途 v1 與 Blob 儲存體帳戶的所有功能。 針對大部分的儲存體案例，皆建議使用一般用途 v2 帳戶。 一般用途 v2 帳戶能針對 Azure 儲存體提供最低的每 GB 容量價格，以及極具業界競爭力的交易價格。 一般用途 v2 帳戶支援經常性、非經常性或封存之間的預設帳戶存取層，也就是經常性或非經常性和 blob 層級的階層處理。
 
-從一般用途 v1 或 Blob 儲存體帳戶升級至一般用途 v2 儲存體帳戶很簡單。 您可以使用 Azure 入口網站、PowerShell 或 Azure CLI 來執行升級。
+從一般用途 v1 或 Blob 儲存體帳戶升級至一般用途 v2 儲存體帳戶十分簡單。 您可以使用 Azure 入口網站、PowerShell 或 Azure CLI 來執行升級。 升級至一般用途 v2 儲存體帳戶時，不會發生任何停機或資料遺失的風險。 帳戶升級會透過變更帳戶類型的簡單 Azure Resource Manager 操作進行。
 
 > [!IMPORTANT]
 > 將一般用途 v1 或 Blob 儲存體帳戶升級至一般用途 v2 是永久的，而且無法復原。
 
-# <a name="portaltabazure-portal"></a>[入口網站](#tab/azure-portal)
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 瀏覽至儲存體帳戶。
@@ -35,7 +35,7 @@ ms.locfileid: "75975842"
 
     ![升級帳戶種類](../blobs/media/storage-blob-account-upgrade/upgrade-to-gpv2-account.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -46,7 +46,7 @@ ms.locfileid: "75975842"
 ```powershell
 Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2 -AccessTier <Hot/Cool>
 ```
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 若要使用 Azure CLI 將一般用途 v1 帳戶升級至一般用途 v2 帳戶，請先安裝最新版的 Azure CLI。 如需安裝 CLI 的相關資訊，請參閱[安裝 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 

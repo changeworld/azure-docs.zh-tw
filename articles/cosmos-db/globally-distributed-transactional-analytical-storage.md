@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 18cf43ba137c92fc00d5f8e82e13501d03b4b6a3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1c2b79f8d0641b1a1386329a2add14ded766bf5a
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445394"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623386"
 ---
 # <a name="globally-distributed-transactional-and-analytical-storage-for-azure-cosmos-containers"></a>適用于 Azure Cosmos 容器的全域分散式交易式和分析儲存體
 
@@ -30,7 +30,7 @@ Azure Cosmos 容器在內部由兩個儲存引擎支援-交易式儲存引擎和
 |功能  |交易式儲存體  |分析儲存體 |
 |---------|---------|---------|
 |每個 Azure Cosmos 容器的儲存體上限 |   無限制      |    無限制     |
-|每個邏輯分割區索引鍵的最大儲存體   |   10 GB      |   無限制      |
+|每個邏輯分割區索引鍵的最大儲存體   |   20 GB      |   無限制      |
 |儲存體編碼  |   資料列導向，使用內部格式。   |   資料行導向，使用 Apache Parquet 格式。 |
 |儲存位置 |   由本機/內部叢集 Ssd 所支援的複寫儲存體。 |  以便宜的遠端/叢集 Ssd 支援複寫的儲存體。       |
 |耐久性  |    99.99999 （7-9 秒）     |  99.99999 （7-9 秒）       |

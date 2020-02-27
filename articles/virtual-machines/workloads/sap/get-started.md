@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/25/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d6efad8160115347469fb387108812ddc9adecc1
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: c9d287d5bfc091fcbbff46095da5458fa08de73d
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77601927"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624177"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 來裝載和執行 SAP 工作負載案例
 
@@ -34,23 +34,20 @@ ms.locfileid: "77601927"
 在 Azure 中裝載 SAP 工作負載案例也可以建立身分識別整合和單一登入的需求。 當您使用 Azure Active Directory （Azure AD）連接不同的 SAP 元件和 SAP 軟體即服務（SaaS）或平臺即服務（PaaS）供應專案時，就會發生這種情況。 「AAD SAP 身分識別整合和單一登入」一節會描述並記載一份這類整合和單一登入案例的清單，其中包含 Azure AD 和 SAP 實體。
 
 ## <a name="changes-to-the-sap-workload-section"></a>SAP 工作負載區段的變更
-Azure 上的 SAP 工作負載區段中的檔變更會列在本文結尾。
+Azure 上的 SAP 工作負載區段中的檔變更會列在本文結尾。 變更記錄檔中的專案會保留大約180天。
 
+## <a name="you-want-to-know"></a>您想要知道
+如果您有特定問題，我們會將您指向 [起始頁] 區段中的特定檔或流程。 您想要知道：
 
+- SAP 軟體版本和哪些作業系統版本支援哪些 Azure Vm 和 HANA 大型實例單位。 閱讀檔[Azure 部署支援哪些 SAP 軟體](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure)來取得解答和尋找資訊的流程
+- Azure Vm 和 HANA 大型實例支援哪些 SAP 部署案例。 您可以在檔中找到支援案例的相關資訊：
+    - [Azure 虛擬機器支援案例上的 SAP 工作負載](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-planning-supported-configurations)
+    - [HANA 大型實例的支援案例](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario)
+
+ 
 ## <a name="sap-hana-on-azure-large-instances"></a>Azure 上的 SAP HANA (大型執行個體)
 
-一系列的檔會引導您完成 Azure （大型實例）或簡短的 HANA 大型實例的 SAP Hana。 如需有關「HANA 大型實例」的下欄區域的資訊，請參閱：
-
-- [SAP HANA on Azure (大型執行個體) 的概觀](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
-- [SAP HANA on Azure (大型執行個體) 的架構](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-architecture)
-- [Azure （大型實例）上 SAP Hana 的基礎結構和連線能力](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-infrastructure-connectivity)
-- [在 Azure （大型實例）上安裝 SAP Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-installation)
-- [Azure （大型實例）上 SAP Hana 的高可用性和嚴重損壞修復](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)
-- [針對 Azure （大型實例）上的 SAP Hana 進行疑難排解和監視](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/troubleshooting-monitoring)
-
-接下來的步驟：
-
-- 瞭解[Azure （大型實例）上 SAP Hana 的總覽和架構](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
+一系列的檔會引導您完成 Azure （大型實例）或簡短的 HANA 大型實例的 SAP Hana。 如需有關 HANA 大型實例的詳細資訊，請從[Azure （大型實例）上的 SAP Hana 檔總覽和架構](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)開始著手，並流覽 HANA 大型實例一節中的相關檔
 
 
 
@@ -120,7 +117,9 @@ Azure 上的 SAP 工作負載區段中的檔變更會列在本文結尾。
 
 
 ## <a name="change-log"></a>變更記錄檔
+- 02/25/2020：適用于[SAP 的高可用性架構和案例](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios)變更新增新 HA 文章的連結
 - 02/25/2020：在[SUSE Linux Enterprise Server 上使用 Pacemaker 的 Azure vm 上的 IBM DB2 LUW 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide-ha-ibm)變更，以指向說明使用標準 Azure 負載平衡器存取公用端點的檔
+- 02/21/2020：[針對 sap 工作負載的 SAP ASE Azure 虛擬機器 DBMS 部署](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sapase)文章的完整修訂
 - 02/21/2020：[SAP Hana Azure 虛擬機器存放裝置](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)設定中的變更，以代表新建議的等量大小以/hana/data 和新增 i/o 排程器的設定
 - 02/21/2020：HANA 大型實例檔中的變更，代表 S224 和 S224m 的新認證 Sku
 - 02/21/2020：[Azure vm 在 rhel 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)和 azure vm 上的 sap NetWeaver 高可用性在 rhel 上的 sap [NetWeaver 使用 azure NetApp Files](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)來調整佇列伺服器複寫2架構的叢集限制（ENSA2）

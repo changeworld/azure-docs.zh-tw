@@ -3,28 +3,28 @@ title: SAP HANA on Azure (大型執行個體) 的認證 | Microsoft Docs
 description: SAP HANA on Azure (大型執行個體) 的認證。
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/04/2018
-ms.author: saghorpa
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3c2c919d6e85a2b708dc247b1642e7e8987df81b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2a02f0e1b05b9de8105126d1c9e4e3f79057285f
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099886"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617235"
 ---
 # <a name="certification"></a>認證
 
 除了 NetWeaver 認證之外，SAP 還需要特殊的 SAP HANA 認證，才能在特定的基礎結構 (例如 Azure IaaS) 上支援 SAP HANA。
 
-NetWeaver 上的核心 sap 附注以及 SAP Hana 認證的程度, 都是[sap Note #1928533 – Azure 上的 sap 應用程式:支援的產品和 Azure VM](https://launchpad.support.sap.com/#/notes/1928533)類型。
+NetWeaver 和 SAP HANA 認證 (就某種程度而言) 的核心 SAP 附註是 [SAP 附註 #1928533 - Azure 上的 SAP 應用程式︰支援的產品和 Azure VM 類型](https://launchpad.support.sap.com/#/notes/1928533)。
 
 SAP Hana on Azure (大型執行個體) 單位的憑證記錄位於 [SAP HANA 認證 IaaS 平台](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)網站中。 
 

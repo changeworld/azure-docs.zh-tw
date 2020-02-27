@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 142974423816b07d754a5425017aedc3195e2f4e
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 386af46bbee623d37bc914d2ee9130c914c6c885
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793993"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620879"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-supported-topologies-and-scenarios"></a>Azure AD Connect 雲端布建支援的拓撲和案例
 本文說明使用 Azure AD Connect 雲端布建的各種內部部署和 Azure Active Directory （Azure AD）拓撲。 本文僅包含支援的設定和案例。
@@ -33,12 +33,16 @@ ms.locfileid: "74793993"
 - 系統會自動選擇物件的來源錨點。  它會使用 ConsistencyGuid （如果有的話），否則會使用 ObjectGUID。
 - 您無法變更用於來源錨點的屬性。
 
+## <a name="single-forest-single-azure-ad-tenant"></a>單一樹系、單一 Azure AD 租用戶
+![單一樹系和單一租用戶的拓撲](media/plan-cloud-provisioning-topologies/single-forest.png)
+
+最簡單的拓撲是單一內部部署樹系，其中包含一或多個網域，以及一個 Azure AD 租使用者。  如需此案例的範例，請參閱[教學課程：具有單一 Azure AD 租使用者的單一樹](tutorial-single-forest.md)系
 
 
 ## <a name="multi-forest-single-azure-ad-tenant"></a>多樹系、單一 Azure AD 租使用者
 ![多樹系和單一租使用者的拓撲](media/plan-cloud-provisioning-topologies/multi-forest.png)
 
-最常見的拓撲是多個 AD 樹系，具有一或多個網域，以及一個 Azure AD 租使用者。  
+常見的拓撲是多個 AD 樹系，其中包含一或多個網域，以及一個 Azure AD 租使用者。  
 
 ## <a name="existing-forest-with-azure-ad-connect-new-forest-with-cloud-provisioning"></a>具有 Azure AD Connect 的現有樹系具有雲端布建的新樹系
 ![單一樹系和單一租用戶的拓撲](media/plan-cloud-provisioning-topologies/existing-forest-new-forest.png)
@@ -50,13 +54,10 @@ ms.locfileid: "74793993"
 
 如需此案例的範例，請參閱[教學課程：在現有已同步 AD 樹系中進行雲端布建的試驗 Azure AD Connect](tutorial-pilot-aadc-aadccp.md)
 
-## <a name="single-forest-single-azure-ad-tenant"></a>單一樹系、單一 Azure AD 租用戶
-![單一樹系和單一租用戶的拓撲](media/plan-cloud-provisioning-topologies/single-forest.png)
 
-最簡單的拓撲是單一內部部署樹系，其中包含一或多個網域，以及一個 Azure AD 租使用者。  如需此案例的範例，請參閱[教學課程：具有單一 Azure AD 租使用者的單一樹](tutorial-single-forest.md)系
 
 ## <a name="next-steps"></a>後續步驟 
 
-- [什麼是布建？](what-is-provisioning.md)
-- [什麼是 Azure AD Connect 雲端布建？](what-is-cloud-provisioning.md)
+- [什麼是佈建？](what-is-provisioning.md)
+- [什麼是 Azure AD Connect 雲端佈建？](what-is-cloud-provisioning.md)
 

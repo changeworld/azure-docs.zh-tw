@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 01/27/2019
 ms.author: memildin
-ms.openlocfilehash: c286efcfad78a8f7acf9974605d53ed3cc06a09e
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 2d81e1a1218add504e1e35015276b6924da0e3e3
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604545"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616474"
 ---
 # <a name="protect-your-azure-app-service-web-apps-and-apis"></a>保護您的 Azure App Service web 應用程式和 Api
 
@@ -29,7 +29,7 @@ Azure App Service 是完全受控的平臺，可用於建立及裝載您的 web 
 
 啟用 App Service 方案後，資訊安全中心會評估 App Service 方案所涵蓋的資源，並根據其發現產生安全性建議。 資訊安全中心保護您的 App Service 在其中執行的 VM 實例和管理介面。 它也會監視傳送給在 App Service 中執行之應用程式的要求和回應，以及從這些應用程式傳送的要求和回應。
 
-資訊安全中心利用雲端的規模，以及 Azure 做為雲端提供者的可見度，來監視常見的 web 應用程式攻擊。 資訊安全中心可以探索您應用程式的攻擊，並找出新興的攻擊-即使攻擊者是在偵察階段，掃描以識別多個 Azure 託管應用程式的弱點。 身為 Azure 原生服務，資訊安全中心也位於唯一的位置，可提供涵蓋此 PaaS 之基礎計算節點的主機型安全性分析，讓資訊安全中心能夠偵測到對已被利用的 web 應用程式的攻擊。 如需資訊安全中心的威脅偵測警示從 Azure App Service 的詳細資訊，請參閱[雲端原生運算的威脅偵測](security-center-alerts-compute.md#azure-app-service-)。
+資訊安全中心利用雲端的規模，以及 Azure 做為雲端提供者的可見度，來監視常見的 web 應用程式攻擊。 資訊安全中心可以探索您應用程式的攻擊，並找出新興的攻擊-即使攻擊者是在偵察階段，掃描以識別多個 Azure 託管應用程式的弱點。 身為 Azure 原生服務，資訊安全中心也位於唯一的位置，可提供涵蓋此 PaaS 之基礎計算節點的主機型安全性分析，讓資訊安全中心能夠偵測到對已被利用的 web 應用程式的攻擊。 如需詳細資訊，請參閱[Azure App Service 的威脅防護](threat-protection.md#app-services)。
 
 
 ## <a name="enabling-monitoring-and-protection-of-app-service"></a>啟用 App Service 監視和保護
