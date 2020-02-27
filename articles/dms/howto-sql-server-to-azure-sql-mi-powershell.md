@@ -3,21 +3,21 @@ title: PowerShell：將 SQL Server 遷移至 SQL 受控實例
 titleSuffix: Azure Database Migration Service
 description: 瞭解如何使用 Azure PowerShell 和 Azure 資料庫移轉服務，從內部部署 SQL Server 遷移至 Azure SQL Database 受控實例。
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: 3b434bc8a495f47f7fb2de8429069283821cf397
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 02/20/2020
+ms.openlocfilehash: 9ea9f55681b93e79eec836f5808d2c6feaa6bb29
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746622"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650719"
 ---
 # <a name="migrate-sql-server-to-sql-database-managed-instance-with-powershell--azure-database-migration-service"></a>使用 PowerShell & Azure 資料庫移轉服務，將 SQL Server 遷移至 SQL Database 受控實例
 
@@ -35,7 +35,7 @@ ms.locfileid: "75746622"
 
 本文包含如何執行線上和離線遷移的詳細資料。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成這些步驟，您需要：
 

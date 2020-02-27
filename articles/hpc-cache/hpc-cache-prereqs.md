@@ -4,14 +4,14 @@ description: 使用 Azure HPC 快取的必要條件
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 02/20/2020
 ms.author: rohogue
-ms.openlocfilehash: 135c231f84d95ea2418fab4647d715473378e41c
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 40d282ad30a800a5e5a36a8d2211ec8da7ce63ec
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251952"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651061"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC 快取的必要條件
 
@@ -95,7 +95,9 @@ Azure HPC 快取需要具有下列品質的專用子網：
 > [!NOTE]
 > 如果快取沒有足夠的 NFS 儲存體系統存取權，儲存體目標的建立將會失敗。
 
-* **網路連線能力：** 在快取子網與 NFS 系統的資料中心之間，Azure HPC Cache 需要高頻寬的網路存取。 建議使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/)或類似的存取權。 如果使用 VPN，您可能需要將它設定為將 TCP MSS 固定在1350，以確保不會封鎖大型封包。
+[疑難排解 NAS 設定和 NFS 儲存體目標問題](troubleshoot-nas.md)中包含的詳細資訊。
+
+* **網路連線能力：** 在快取子網與 NFS 系統的資料中心之間，Azure HPC Cache 需要高頻寬的網路存取。 建議使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/)或類似的存取權。 如果使用 VPN，您可能需要將它設定為將 TCP MSS 固定在1350，以確保不會封鎖大型封包。 如需 VPN 設定的疑難排解詳細資訊，請參閱[vpn 封包大小限制](troubleshoot-nas.md#adjust-vpn-packet-size-restrictions)。
 
 * **埠存取：** 快取需要存取儲存系統上的特定 TCP/UDP 埠。 不同類型的存放裝置有不同的埠需求。
 
@@ -109,6 +111,8 @@ Azure HPC 快取需要具有下列品質的專用子網：
     rpcinfo -p <storage_IP> |egrep "100000\s+4\s+tcp|100005\s+3\s+tcp|100003\s+3\s+tcp|100024\s+1\s+tcp|100021\s+4\s+tcp"| awk '{print $4 "/" $3 " " $5}'|column -t
     ```
 
+  請確定 ``rpcinfo`` 查詢所傳回的所有埠，都允許來自 Azure HPC 快取子網的不受限制流量。
+
   * 除了 `rpcinfo` 命令所傳回的埠之外，請確定這些常用的埠可允許輸入和輸出流量：
 
     | 通訊協定 | 連接埠  | 服務  |
@@ -121,16 +125,20 @@ Azure HPC 快取需要具有下列品質的專用子網：
 
   * 檢查防火牆設定，確定它們允許所有這些必要端口上的流量。 請務必檢查 Azure 中所使用的防火牆，以及您資料中心內的內部部署防火牆。
 
-* **目錄存取：** 在儲存系統上啟用 [`showmount`] 命令。 Azure HPC 快取會使用此命令來檢查您的儲存體目標設定是否指向有效的匯出，同時確保多個掛接不會存取相同的子目錄（這會導致風險檔案衝突）。
+* **目錄存取：** 在儲存系統上啟用 [`showmount`] 命令。 Azure HPC 快取會使用此命令來檢查您的儲存體目標設定是否指向有效的匯出，同時確保多個掛接不會存取相同的子目錄（發生檔案衝突的風險）。
 
   > [!NOTE]
   > 如果您的 NFS 儲存體系統使用 NetApp 的 ONTAP 9.2 作業系統，**請勿啟用 `showmount`** 。 [請洽詢 Microsoft 服務和支援](hpc-cache-support-ticket.md)以取得協助。
+
+  若要深入瞭解目錄清單存取權，請參閱 NFS 儲存體目標[疑難排解一文](troubleshoot-nas.md#enable-export-listing)。
 
 * **根存取：** 快取會以使用者識別碼0的形式連線到後端系統。 在您的儲存系統上檢查這些設定：
   
   * 啟用 `no_root_squash`。 此選項可確保遠端根使用者可以存取 root 所擁有的檔案。
 
   * 核取 [匯出原則]，確保它們不包含從快取子網的根存取限制。
+
+  * 如果您的儲存體具有任何屬於另一個匯出之子目錄的匯出，請確定快取具有路徑最低區段的根目錄存取權。 如需詳細資訊，請參閱 NFS 儲存體目標疑難排解一文中[目錄路徑的根存取](troubleshoot-nas.md#allow-root-access-on-directory-paths)。
 
 * NFS 後端存放裝置必須是相容的硬體/軟體平臺。 如需詳細資訊，請洽詢 Azure HPC 快取小組。
 

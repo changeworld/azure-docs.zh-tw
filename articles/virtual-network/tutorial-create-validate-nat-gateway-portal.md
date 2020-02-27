@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/18/2020
+ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 582646b6e1c50c8e6835fafaa8a27c7386b4695c
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: a314af3d53936a58f9dfb3694ec1114ecdc3d521
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77429059"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587000"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal-and-test-the-nat-service"></a>教學課程：使用 Azure 入口網站建立 NAT 閘道並測試 NAT 服務
 
@@ -30,10 +30,7 @@ ms.locfileid: "77429059"
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
-> [!IMPORTANT]
-> 在您的訂用帳戶上[啟用虛擬網路 NAT 預覽版](./nat-overview.md#enable-preview)之後，請使用 https://aka.ms/natportal 來存取入口網站。
-
-登入 [Azure 入口網站](https://aka.ms/natportal)。
+登入 [Azure 入口網站](https://portal.azure.com)。
 
 ## <a name="prepare-the-source-for-outbound-traffic"></a>準備輸出流量的來源
 
@@ -99,7 +96,7 @@ ms.locfileid: "77429059"
 
 本節將詳細說明如何使用 NAT 閘道資源建立及設定下列 NAT 服務元件：
   - 公用 IP 集區和公用 IP 前置詞，將用於 NAT 閘道資源所轉譯的輸出流量。
-  - 將閒置逾時從預設的 4 分鐘變更為 10 分鐘。
+  - 將閒置逾時時間從預設的 4 分鐘變更為 10 分鐘。
 
 ### <a name="create-a-public-ip-address"></a>建立公用 IP 位址
 

@@ -2,21 +2,21 @@
 title: Azure 資料庫移轉服務工具矩陣
 description: 深入了解可用來移轉資料庫以及支援移轉程序不同階段的服務和工具。
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 01/10/2020
-ms.openlocfilehash: 6259f365edeb3c3d94646a4b2ae019d0776dcc23
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 02/20/2020
+ms.openlocfilehash: c64e9392173f2f329f6c95d4cf9f40614060066e
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75860838"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650993"
 ---
 # <a name="services-and-tools-available-for-data-migration-scenarios"></a>資料移轉案例可用的服務和工具
 
@@ -29,7 +29,7 @@ ms.locfileid: "75860838"
 
 ## <a name="business-justification-phase"></a>商業論證階段
 
-| 來源 | 確定目標 | 探索<br/>清查 | 目標和 SKU<br/>建議 | TCO/ROI 和<br/>商業案例 |
+| 來源 | 目標 | 探索<br/>清查 | 目標和 SKU<br/>建議 | TCO/ROI 和<br/>商務案例 |
 | --- | --- | --- | --- | --- |
 | SQL Server | Azure SQL DB | [對應工具組](https://msdn.microsoft.com/library/bb977556.aspx)<br/>[Azure Migrate](https://azure.microsoft.com/services/azure-migrate/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)<br/>[雲端 Atlas*](https://www.unifycloud.com/cloud-migration-tool/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [TCO 計算機](https://azure.microsoft.com/pricing/tco/calculator/) |
  SQL Server | Azure SQL DB MI | [對應工具組](https://msdn.microsoft.com/library/bb977556.aspx)<br/>[Azure Migrate](https://azure.microsoft.com/services/azure-migrate/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)<br/>[雲端 Atlas*](https://www.unifycloud.com/cloud-migration-tool/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [TCO 計算機](https://azure.microsoft.com/pricing/tco/calculator/) |
@@ -54,7 +54,7 @@ ms.locfileid: "75860838"
 
 ## <a name="pre-migration-phase"></a>移轉前階段
 
-| 來源 | 確定目標 | 應用程式資料存取<br/>分層評量 | 資料庫<br/>評量 | 效能<br/>評量 |
+| 來源 | 目標 | 應用程式資料存取<br/>分層評量 | 資料庫<br/>評量 | 效能<br/>評量 |
 | --- | --- | --- | --- | --- |
 | SQL Server | Azure SQL DB | [DAMT](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit) / [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) | [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)<br/>[雲端 Atlas*](https://www.unifycloud.com/cloud-migration-tool/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DEA](https://www.microsoft.com/download/details.aspx?id=54090)<br/>[Cloudamize*](https://www.cloudamize.com/) |
 | SQL Server | Azure SQL DB MI | [DAMT](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit) / [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) | [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)<br/>[雲端 Atlas*](https://www.unifycloud.com/cloud-migration-tool/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DEA](https://www.microsoft.com/download/details.aspx?id=54090)<br/>[Cloudamize*](https://www.cloudamize.com/) |
@@ -79,7 +79,7 @@ ms.locfileid: "75860838"
 
 ## <a name="migration-phase"></a>移轉階段
 
-| 來源 | 確定目標 | 結構描述 | 資料<br/>離線 | 資料<br/>線上 |
+| 來源 | 目標 | 結構描述 | 資料<br/>離線 | 資料<br/>線上 |
 | --- | --- | --- | --- | --- |
 | SQL Server | Azure SQL DB | [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Cloudamize*](https://www.cloudamize.com/)<br/>[Attunity*](https://www.attunity.com/products/replicate/)<br/>[Striim*](https://www.striim.com/partners/striim-for-microsoft-azure/) |
 | SQL Server | Azure SQL DB MI | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Cloudamize*](https://www.cloudamize.com/)<br/>[Attunity*](https://www.attunity.com/products/replicate/)<br/>[Striim*](https://www.striim.com/partners/striim-for-microsoft-azure/) |
@@ -104,7 +104,7 @@ ms.locfileid: "75860838"
 
 ## <a name="post-migration-phase"></a>移轉後階段
 
-| 來源 | 確定目標 | 最佳化 |
+| 來源 | 目標 | 最佳化 |
 | --- | --- | --- |
 | SQL Server | Azure SQL DB | [雲端 Atlas*](https://www.unifycloud.com/cloud-migration-tool/)<br/>[Cloudamize*](https://www.cloudamize.com/) |
 | SQL Server | Azure SQL DB MI | [雲端 Atlas*](https://www.unifycloud.com/cloud-migration-tool/)<br/>[Cloudamize*](https://www.cloudamize.com/) |

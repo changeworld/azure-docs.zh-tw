@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: e53bd3deae5ccd7339c7a6d491dc4ff0da44a277
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 47d9508c891d2b4fe74b42114783b02c58e8c91f
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77426219"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620012"
 ---
 # <a name="traffic-analytics"></a>流量分析
 
@@ -201,7 +201,7 @@ New-AzStorageAccount `
 
 ## <a name="view-traffic-analytics"></a>檢視流量分析
 
-在入口網站左側選取 [所有服務]，然後在 [篩選] 方塊中輸入 [監視器]。 當 [監視器] 出現在搜尋結果中時，請加以選取。 若要開始瀏覽流量分析及其功能，請選取 [網路監看員]，然後選取 [流量分析]。
+若要查看流量分析，請在入口網站搜尋列中搜尋**網路監看員**。 一次在網路監看員中，若要探索流量分析及其功能，請從左側功能表中選取 [使用**分析**]。 
 
 ![存取流量分析儀表板](./media/traffic-analytics/accessing-the-traffic-analytics-dashboard.png)
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 02/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9fe24e4a2b25b1ef3f0da2b1a5e1c0f29251df1
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: dff80d849268c770e4227ff8c99b8f4d133c4d78
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77192229"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620721"
 ---
 # <a name="conditional-access-conditions"></a>條件式存取：條件
 
@@ -52,7 +52,9 @@ Azure AD 條件式存取支援下列裝置平臺：
 
 當包含**任何位置**時，此選項會包含網際網路上的任何 IP 位址，而不只是設定的命名位置。 當您選取**任何位置**時，系統管理員可以選擇排除**所有信任**或**選取的位置**。
 
-例如，某些組織可能會選擇在其使用者連線到受信任位置（例如其實體總部）中的網路時，不需要多重要素驗證。 系統管理員可以建立包含任何位置的原則，但不包括其總部網路的所選位置
+例如，某些組織可能會選擇在其使用者連線到受信任位置（例如其實體總部）中的網路時，不需要多重要素驗證。 系統管理員可以建立包含任何位置的原則，但不包括其總部網路的所選位置。
+
+如需位置的詳細資訊，請參閱[Azure Active Directory 條件式存取中的位置條件](location-condition.md)。
 
 ## <a name="client-apps-preview"></a>用戶端應用程式（預覽）
 
@@ -64,9 +66,21 @@ Azure AD 條件式存取支援下列裝置平臺：
    - 新式驗證用戶端
       - 此選項包含 Office desktop 和 phone 應用程式等應用程式。
    - Exchange ActiveSync 用戶端
+      - 根據預設，這包括所有 Exchange ActiveSync （EAS）通訊協定的使用。 選擇 [**僅將原則套用至支援的平臺**] 將會限制為支援的平臺，例如 IOS、Android 和 Windows。
       - 當原則封鎖 Exchange ActiveSync 的使用時，受影響的使用者將會收到單一的隔離電子郵件。 這封電子郵件會提供封鎖原因的相關資訊，並包含修復指示（如果可以的話）。
    - 其他用戶端
-      - 此選項包括使用基本/舊版驗證通訊協定的用戶端，包括 IMAP、MAPI、POP、SMTP，以及不支援新式驗證的舊版 Office 應用程式。
+      - 此選項包括使用不支援新式驗證之基本/舊版驗證通訊協定的用戶端。
+         - 已驗證的 SMTP-POP 和 IMAP 用戶端用來傳送電子郵件訊息。
+         - 自動探索-供 Outlook 和 EAS 用戶端用來尋找並聯機到 Exchange Online 中的信箱。
+         - Exchange Online PowerShell-用來透過遠端 PowerShell 連線到 Exchange Online。 如果您封鎖 Exchange Online PowerShell 的基本驗證，您需要使用 Exchange Online PowerShell 模組來連接。 如需指示，請參閱[使用多重要素驗證連接到 Exchange Online PowerShell](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)。
+         - Exchange Web 服務（EWS）-Outlook、Outlook for Mac 及協力廠商應用程式所使用的程式設計介面。
+         - IMAP4-供 IMAP 電子郵件客戶程式使用。
+         - MAPI over HTTP （MAPI/HTTP）-由 Outlook 2010 和更新版本使用。
+         - 離線通訊錄（OAB）-Outlook 下載並使用的地址清單集合複本。
+         - Outlook Anywhere （RPC over HTTP）-由 Outlook 2016 和更早版本使用。
+         - Outlook 服務-適用于 Windows 10 的電子郵件和行事曆應用程式。
+         - POP3-由 POP 電子郵件客戶程式使用。
+         - 報表 Web 服務-用來在 Exchange Online 中取出報表資料。
 
 這些條件通常會在需要受控裝置、封鎖舊版驗證，以及封鎖 web 應用程式，但允許行動或桌面應用程式時使用。
 
@@ -100,19 +114,19 @@ Azure AD 條件式存取支援下列裝置平臺：
 
 |    |    |
 | --- | --- |
-| 路徑 | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
+| Path | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
 | 名稱 | 1 |
 | 類型 | REG_SZ (字串) |
-| Data | ppnbnpeolgkicgegkbkbjmhlideopiji; HTTPs\://clients2.google.com/service/update2/crx |
+| 資料 | ppnbnpeolgkicgegkbkbjmhlideopiji; HTTPs\://clients2.google.com/service/update2/crx |
 
 如需 **Windows 8.1 和 7** 中的 Chrome 支援，請建立下列登錄機碼：
 
 |    |    |
 | --- | --- |
-| 路徑 | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
+| Path | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
 | 名稱 | 1 |
 | 類型 | REG_SZ (字串) |
-| Data | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
+| 資料 | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
 
 這些瀏覽器支援裝置驗證，因此可以根據原則來識別和驗證裝置。 如果瀏覽器在私用模式中執行，裝置檢查將會失敗。
 

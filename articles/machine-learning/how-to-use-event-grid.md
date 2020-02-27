@@ -10,12 +10,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 11/04/2019
-ms.openlocfilehash: 0da5fe56bd56d360cd8052976bdde0cdc910c9a5
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 49ee00d43820d5aeb50e44cff1b6c5a448b4ce81
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76904275"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623907"
 ---
 # <a name="create-event-driven-machine-learning-workflows-preview"></a>建立事件驅動機器學習工作流程（預覽）
 
@@ -25,15 +25,15 @@ ms.locfileid: "76904275"
 
 使用「事件方格」來啟用常見案例，例如：
 
-* 觸發管線以重新定型
+* 執行完成時傳送電子郵件
+* 在註冊模型之後使用 azure 函式
 * 將事件從 Azure Machine Learning 串流至各種端點
+* 偵測到漂移時觸發 ML 管線
 
-## <a name="prerequisites"></a>必要條件
-
+## <a name="prerequisites"></a>Prerequisites
 * 您將為其建立事件之 Azure Machine Learning 工作區的參與者或擁有者存取權。
-* 選取事件處理常式端點，例如 webhook 或事件中樞。 如需詳細資訊，請參閱[事件處理常式](https://docs.microsoft.com/azure/event-grid/event-handlers)。 
 
-## <a name="configure-machine-learning-events-using-the-azure-portal"></a>使用 Azure 入口網站設定機器學習事件
+### <a name="configure-eventgrid-using-the-azure-portal"></a>使用 Azure 入口網站設定 EventGrid
 
 1. 開啟[Azure 入口網站](https://portal.azure.com)並移至您的 Azure Machine Learning 工作區。
 
@@ -51,7 +51,7 @@ ms.locfileid: "76904275"
 
 確認您的選擇之後，請按一下 [__建立__]。 設定之後，這些事件將會推送至您的端點。
 
-## <a name="set-up-azure-event-grid-using-cli"></a>使用 CLI 設定 Azure 事件方格
+### <a name="configure-eventgrid-using-the-cli"></a>使用 CLI 設定 EventGrid
 
 您可以安裝最新的[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)，或使用 Azure 訂用帳戶中提供的 Azure Cloud Shell。
 
@@ -61,7 +61,7 @@ ms.locfileid: "76904275"
 az add extension --name eventgrid
 ```
 
-下列範例示範如何選取 Azure 訂用帳戶，然後為 Azure Machine Learning 建立新的事件訂用帳戶：
+下列範例示範如何選取 Azure 訂用帳戶，並為 Azure Machine Learning 建立新的事件訂用帳戶：
 
 ```azurecli-interactive
 # Select the Azure subscription that contains the workspace
@@ -77,6 +77,12 @@ az eventgrid event-subscription create \
 ```
 
 ## <a name="sample-scenarios"></a>範例案例
+
+### <a name="use-azure-functions-to-deploy-a-model-based-on-tags"></a>使用 Azure Functions 根據標記來部署模型
+
+Azure Machine Learning 模型物件包含您可以在其中進行資料透視部署的參數，例如模型名稱、版本、標記和屬性。 模型註冊事件可以觸發端點，而您可以使用 Azure 函式，根據這些參數的值來部署模型。
+
+如需範例，請參閱[https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid)存放庫，並遵循**自述**檔中的步驟。
 
 ### <a name="use-a-logic-app-to-send-email-alerts"></a>使用邏輯應用程式傳送電子郵件警示
 
@@ -158,12 +164,6 @@ az eventgrid event-subscription create \
 
 ![視圖-工作區](./media/how-to-use-event-grid/view-in-workspace.png)
 
-
-### <a name="use-azure-functions-to-deploy-a-model-based-on-tags"></a>使用 Azure Functions 根據標記來部署模型
-
-Azure Machine Learning 模型物件包含您可以在其中進行資料透視部署的參數，例如模型名稱、版本、標記和屬性。 模型註冊事件可以觸發端點，而您可以使用 Azure 函式，根據這些參數的值來部署模型。
-
-如需範例，請參閱[https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid)存放庫，並遵循**自述**檔中的步驟。
 
 ## <a name="next-steps"></a>後續步驟
 

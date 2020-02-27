@@ -9,12 +9,12 @@ ms.reviewer: estfan, valthom
 ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
-ms.openlocfilehash: 309cf59c4b27c2a5906acfc519edd5306dece2d5
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: a9d3d0287e7839d6396553d532ba6f293fb19b68
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789234"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647660"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>使用 Azure Logic Apps 和 IBM 3270 連接器，整合 IBM 大型主機上的3270螢幕驅動應用程式與 Azure
 
@@ -39,9 +39,9 @@ ms.locfileid: "74789234"
 
 從設計工具產生中繼資料檔案之後，您可以將該檔案新增至 Azure 中的整合帳戶。 如此一來，當您新增3270連接器動作時，邏輯應用程式就可以存取您應用程式的中繼資料。 連接器會從您的整合帳戶讀取中繼資料檔案、處理3270畫面的流覽，並動態呈現3270連接器動作的參數。 接著，您可以將資料提供給主應用程式，連接器會將結果傳回您的邏輯應用程式。 如此一來，您就可以將繼承應用程式與 Azure、Microsoft 以及 Azure Logic Apps 支援的其他應用程式、服務和系統整合在一起。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊一個免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
+* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
 * [如何建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識
 
@@ -184,9 +184,9 @@ ms.locfileid: "74789234"
 
    | 方案類型 | 描述 |
    |-----------|-------------|
-   | **處理程序** | 適用于獨立或合併計畫 |
-   | **連線** | 適用于連接計畫 |
-   | **取消** | 適用于中斷連線計畫 |
+   | **處理** | 適用于獨立或合併計畫 |
+   | **[連接]** | 適用于連接計畫 |
+   | **中斷連接** | 適用于中斷連線計畫 |
    |||
 
 1. 從 [**主機畫面**] 窗格，將已捕獲的縮圖拖曳至**流覽**窗格中的導覽計畫介面。
@@ -288,7 +288,7 @@ ms.locfileid: "74789234"
 
 1. 在您新增所有方法的參數之後，請為每個參數定義下列屬性：
 
-   | 屬性名稱 | 可能的值 | 
+   | 屬性名稱 | 可能值 | 
    |---------------|-----------------|
    | **資料類型** | Byte、Date Time、Decimal、Int、Long、Short、String |
    | **欄位填滿技術** | 參數支援這些填滿類型，如有必要，請填妥空白： <p><p>- **類型**：在欄位中依序輸入字元。 <p>- **填滿**：以字元取代欄位的內容，如有必要，請以空格填滿。 <p>- **EraseEofType**：清除欄位，然後在欄位中依序輸入字元。 |
@@ -358,13 +358,13 @@ ms.locfileid: "74789234"
 
 1. 如果尚無連線存在，請提供連線所需的資訊，然後選擇 [**建立**]。
 
-   | 屬性 | 必要項 | Value | 描述 |
+   | 屬性 | 必要 | 值 | 描述 |
    |----------|----------|-------|-------------|
-   | 連線名稱 | 是 | <*connection-name*> | 您連線的名稱 |
+   | **連接名稱** | 是 | <*connection-name*> | 您連線的名稱 |
    | **整合帳戶識別碼** | 是 | <*integration-account-name*> | 您的整合帳戶名稱 |
    | **整合帳戶 SAS URL** | 是 | <*整合-帳戶-SAS-URL*> | 您的整合帳戶的共用存取簽章（SAS） URL，您可以從 Azure 入口網站中整合帳戶的設定產生。 <p>1. 在您的整合帳戶功能表的 [**設定**] 底下，選取 [**回呼 URL**]。 <br>2. 在右側窗格中，複製產生的 [**回呼 URL** ] 值。 |
-   | **伺服器** | 是 | <*TN3270-伺服器名稱*> | TN3270 服務的伺服器名稱 |
-   | **連接埠** | 否 | <*TN3270-伺服器-埠*> | TN3270 伺服器所使用的埠。 如果保留空白，連接器會使用 `23` 做為預設值。 |
+   | **Server** | 是 | <*TN3270-伺服器名稱*> | TN3270 服務的伺服器名稱 |
+   | **通訊埠** | 否 | <*TN3270-伺服器-埠*> | TN3270 伺服器所使用的埠。 如果保留空白，連接器會使用 `23` 做為預設值。 |
    | **裝置類型** | 否 | <*IBM-終端機模型*> | 要模擬之 IBM 終端機的型號名稱或編號。 如果保留空白，連接器會使用預設值。 |
    | **字碼頁** | 否 | <*字碼頁編號*> | 主機的字碼頁編號。 如果保留空白，連接器會使用 `37` 做為預設值。 |
    | **邏輯單元名稱** | 否 | <*邏輯單元-名稱*> | 要向主機要求的特定邏輯單元名稱 |
@@ -374,11 +374,11 @@ ms.locfileid: "74789234"
 
    例如：
 
-   ![連線屬性](./media/connectors-create-api-3270/connection-properties.png)
+   ![連線內容](./media/connectors-create-api-3270/connection-properties.png)
 
 1. 提供動作的必要資訊：
 
-   | 屬性 | 必要項 | Value | 描述 |
+   | 屬性 | 必要 | 值 | 描述 |
    |----------|----------|-------|-------------|
    | **Hidx 名稱** | 是 | <*HIDX-檔案名*> | 選取您要使用的 3270 HIDX 檔案。 |
    | **方法名稱** | 是 | <*方法-名稱*> | 在 HIDX 檔案中選取您想要使用的方法。 選取方法之後，就會出現 [**加入新的參數**] 清單，讓您可以選取要與該方法搭配使用的參數。 |
@@ -392,7 +392,7 @@ ms.locfileid: "74789234"
 
    **選取方法**
 
-   ![選取方法](./media/connectors-create-api-3270/select-method.png)
+   ![Select 方法](./media/connectors-create-api-3270/select-method.png)
 
    **選取參數**
 
@@ -409,7 +409,10 @@ ms.locfileid: "74789234"
 
 ## <a name="connector-reference"></a>連接器參考
 
-如需有關觸發程式、動作和限制的技術詳細資料（由連接器的 OpenAPI （先前稱為 Swagger）描述所描述），請參閱[連接器的參考頁面](/connectors/si3270/)。
+如需此連接器的更多技術詳細資料，例如連接器的 Swagger 檔案所描述的觸發程式、動作和限制，請參閱[連接器的參考頁面](https://docs.microsoft.com/connectors/si3270/)。
+
+> [!NOTE]
+> 對於[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的邏輯應用程式，此連接器的 ise 標記版本會使用[ISE 訊息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
 
 ## <a name="next-steps"></a>後續步驟
 

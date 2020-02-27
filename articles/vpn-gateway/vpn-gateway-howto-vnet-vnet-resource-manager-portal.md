@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 02/25/2020
 ms.author: cherylmc
-ms.openlocfilehash: b98fb4044028ec9b335dc314732da04d18a3e2f9
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: b26947f2dd25f950b2d69d58321582a503aea83d
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894967"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619765"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>使用 Azure 入口網站設定 VNet 對 VNet 的 VPN 閘道連線
 
@@ -103,7 +103,7 @@ ms.locfileid: "75894967"
    - **位址空間**：輸入*10.41.0.0/16*。
    - **訂**用帳戶：選取您要使用的訂用帳戶。
    - **資源群組**：輸入*TestRG4*。
-   - **位置**：選取 [美國西部]。
+   - **位置**：選取 [**美國西部**]。
    - **子網路** 
       - **名稱**：輸入*前端*。
       - **位址範圍**：輸入*10.41.0.0/24*。
@@ -153,7 +153,7 @@ ms.locfileid: "75894967"
    ![連接頁面](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/1to4connect2.png "連接頁面")
 2. 在 [設定] 之下，選取 [連線]，然後選取 [新增] 以開啟 [新增連線] 頁面。
 
-   ![加入連接](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/add.png "加入連接")
+   ![加入連接](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/add.png "新增連線")
 3. 在 [新增連線] 頁面上，填入您的連線值：
 
    - **名稱**：輸入連接的名稱。 例如，*TestVNet1toTestVNet4*。
@@ -183,7 +183,7 @@ ms.locfileid: "75894967"
 
 當資料開始流動時，您會看到 [資料輸入] 和 [資料輸出] 的值。
 
-![](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/essentials.png "Essentials")
+![](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/essentials.png "基本資訊")
 
 ## <a name="add-additional-connections"></a>新增其他連線
 

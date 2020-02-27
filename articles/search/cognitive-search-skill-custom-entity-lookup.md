@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 5c820b7e11c06f2d785da036f5174298caf56da6
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: d5e2813c71e9d6941eea7d11fb6565fb84fd0789
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76960603"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651333"
 ---
 #    <a name="custom-entity-lookup-cognitive-skill-preview"></a>自訂實體查閱認知技能（預覽）
 
@@ -36,7 +36,7 @@ CustomEntityLookupSkill。
 
 這些參數會區分大小寫。
 
-| 參數名稱     | 說明 |
+| 參數名稱     | 描述 |
 |--------------------|-------------|
 | entitiesDefinitionUri | JSON 或 CSV 檔案的路徑，其中包含要比對的所有目標文字。 此實體定義會在索引子執行的開頭讀取;在後續執行之前，將不會實現對此檔案執行的任何更新。 此設定必須可透過 HTTPS 存取。 請參閱下方的[自訂實體定義](#custom-entity-definition-format)格式，以取得預期的 CSV 或 JSON 架構。|
 |inlineEntitiesDefinition | 內嵌 JSON 實體定義。 此參數會取代 entitiesDefinitionUri 參數（如果有的話）。 不能以內嵌方式提供超過 10 KB 的設定。 請參閱下方的[自訂實體定義](#custom-entity-definition-format)，以取得預期的 JSON 架構。 |
@@ -45,7 +45,7 @@ CustomEntityLookupSkill。
 
 ## <a name="skill-inputs"></a>技能輸入
 
-| 輸入名稱      | 說明                   |
+| 輸入名稱      | 描述                   |
 |---------------|-------------------------------|
 | text          | 要分析的文字。          |
 | languageCode  | 選擇性。 預設值為 `"en"`。  |
@@ -54,7 +54,7 @@ CustomEntityLookupSkill。
 ## <a name="skill-outputs"></a>技能輸出
 
 
-| 輸出名稱     | 說明                   |
+| 輸出名稱     | 描述                   |
 |---------------|-------------------------------|
 | 實體 | 物件的陣列，其中包含找到之相符專案的相關資訊，以及相關的中繼資料。 識別的每個實體都可能包含下欄欄位：  <ul> <li> *名稱*：識別的最上層實體。 實體代表「正規化」表單。 </li> <li> *識別碼：使用者*在「自訂實體定義格式」中所定義之實體的唯一識別碼。</li> <li> *描述*：使用者在「自訂實體定義格式」中所定義的實體描述。 </li> <li> *類型：* 使用者在「自訂實體定義格式」中所定義的實體類型。</li> <li> *子類型：* 實體子類型，如使用者在「自訂實體定義格式」中所定義。</li>  <li> *符合*：描述來源文字上該實體之每個相符專案的集合。 每個相符項都將具有下列成員： </li> <ul> <li> *text*：來源文件中的原始文字相符。 </li> <li> *offset*：在文字中找到相符項的位置。 </li> <li> *長度*：相符文字的長度。 </li> <li> *matchDistance*：此比對與原始機構名稱或別名不同的字元數。  </li> </ul> </ul>
   |
@@ -63,7 +63,7 @@ CustomEntityLookupSkill。
 
 有3種不同的方式可將自訂實體清單提供給自訂實體查閱技能。 您可以在中提供清單。CSV 檔案，a。JSON 檔案或做為技能定義之一部分的內嵌定義。  
 
-如果定義檔為，則為。CSV 或。JSON 檔案，必須提供檔案的路徑做為*entitiesDefitionUri*參數的一部分。 在此情況下，檔案會在每個索引子執行開始時下載一次。 只要索引子打算執行，就必須能夠存取檔案。
+如果定義檔為，則為。CSV 或。JSON 檔案，必須提供檔案的路徑做為*entitiesDefitionUri*參數的一部分。 在此情況下，檔案會在每個索引子執行開始時下載一次。 只要索引子打算執行，就必須能夠存取檔案。 此外，檔案必須以 UTF-8 編碼。
 
 如果以內嵌方式提供定義，則應該將其當做內嵌提供，做為*inlineEntitiesDefinition*技能參數的內容。 
 
@@ -143,7 +143,7 @@ JSON 定義的更複雜範例可以選擇性地提供每個實體的識別碼、
 
 下表詳細說明您在定義要比對的實體時可設定的不同設定參數：
 
-|  欄位名稱  |        說明  |
+|  欄位名稱  |        描述  |
 |--------------|----------------------|
 | NAME | 最上層實體描述元。 技能輸出中的相符專案會依此名稱分組，而且應該代表所要尋找之文字的「正規化」形式。  |
 | description  | 選擇性此欄位可以用來當做符合的文字之自訂中繼資料的傳遞。 此欄位的值會顯示在技能輸出中每個符合其實體的專案。 |
@@ -156,7 +156,7 @@ JSON 定義的更複雜範例可以選擇性地提供每個實體的識別碼、
 | defaultFuzzyEditDistance | 選擇性變更此實體的預設模糊編輯距離值。 它可以用來變更所有別名 fuzzyEditDistance 值的預設值。 |
 | 別名 | 選擇性複雜物件的陣列，可以用來指定根機構名稱的替代拼寫或同義字。 |
 
-| 別名屬性 | 說明 |
+| 別名屬性 | 描述 |
 |------------------|-------------|
 | text  | 某些目標機構名稱的替代拼寫或標記法。  |
 | caseSensitive | 選擇性作用與上述根實體 "caseSensitive" 參數相同，但僅適用于這個別名。 |
@@ -296,7 +296,7 @@ JSON 定義的更複雜範例可以選擇性地提供每個實體的識別碼、
   } 
 ```
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 + [內建技能](cognitive-search-predefined-skills.md)
 + [如何定義技能集](cognitive-search-defining-skillset.md) (英文)

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: a6d2e2d912f176a88dc993803d750e37cff1acb6
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 9f3e06f66996be4a2b43b64e6100c62a2fa41381
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443647"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649954"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>部署 Windows 混合式 Runbook 背景工作角色
 
@@ -19,6 +19,9 @@ ms.locfileid: "77443647"
 在您成功部署 Runbook 背景工作角色後，請檢閱[在混合式 Runbook 背景工作角色上執行 Runbook](automation-hrw-run-runbooks.md)，以了解如何設定 Runbook 以將內部部署資料中心或其他雲端環境中的程序自動化。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+>[!NOTE]
+>本文已更新為使用新的 Azure PowerShell Az 模組。 AzureRM 模組在至少 2020 年 12 月之前都還會持續收到錯誤 (Bug) 修正，因此您仍然可以持續使用。 若要深入了解新的 Az 模組和 AzureRM 的相容性，請參閱[新的 Azure PowerShell Az 模組簡介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 如需混合式 Runbook 背景工作角色上的 Az module 安裝指示，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 針對您的自動化帳戶，您可以使用[如何更新 Azure 自動化中的 Azure PowerShell 模組](automation-update-azure-modules.md)，將模組更新為最新版本。
 
 ## <a name="windows-hybrid-runbook-worker-installation-and-configuration"></a>Windows 混合式 Runbook 背景工作角色安裝和設定
 
@@ -50,8 +53,9 @@ ms.locfileid: "77443647"
 
 ### <a name="server-onboarding-for-management-with-automation-dsc"></a>使用 Automation DSC 進行管理的伺服器上架
 
-如需有關讓伺服器上線以透過 DSC 進行管理的詳細資訊，請參閱[讓機器上線以透過 Azure 自動化 DSC 進行管理](automation-dsc-onboarding.md)。
-如果您啟用[更新管理解決方案](../operations-management-suite/oms-solution-update-management.md)，則任何連線到 Log Analytics 工作區的 Windows 電腦都會自動設定為混合式 Runbook 背景工作角色，以支援此解決方案中包含的 runbook。 不過，它不會向已在您「自動化」帳戶中定義的任何「混合式背景工作角色」群組註冊。 
+如需將伺服器上線以使用 DSC 進行管理的相關資訊，請參閱將[機器上架以供 AZURE 自動化 dsc 管理](automation-dsc-onboarding.md)。
+
+如果您啟用[更新管理解決方案](../operations-management-suite/oms-solution-update-management.md)，則任何連線到 Log Analytics 工作區的 Windows 電腦都會自動設定為混合式 Runbook 背景工作角色，以支援此解決方案中包含的 runbook。 不過，它不會向已在您「自動化」帳戶中定義的任何「混合式背景工作角色」群組註冊。
 
 ### <a name="adding-the-computer-to-a-hybrid-runbook-worker-group"></a>將電腦新增至混合式 Runbook 背景工作角色群組
 
@@ -65,19 +69,17 @@ ms.locfileid: "77443647"
 
 直接從執行「混合式 Runbook 背景工作角色」的電腦，或從您環境中的另一部電腦，從[PowerShell 資源庫](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker)下載 New-OnPremiseHybridWorker.ps1 指令碼。 將指令碼複製到背景工作角色。 New-OnPremiseHybridWorker.ps1 指令碼在執行期間需要下列參數：
 
-   * *AAResourceGroupName* (必要)：與您的自動化帳戶相關聯的資源群組名稱。
-   * *OMSResourceGroupName* (選擇性)：Log Analytics 工作區的資源群組名稱。 若未指定此資源群組，將會使用 *AAResourceGroupName*。
-   * *SubscriptionID* （必要）：您的自動化帳戶所在的 Azure 訂用帳戶識別碼。
-   * *TenantID* （選用）：與您的自動化帳戶相關聯的租使用者組織識別碼。
-   * *WorkspaceName* (選擇性)：Log Analytics 工作區名稱。 如果您沒有 Log Analytics 工作區，此指令碼就會建立並設定一個 Log Analytics 工作區。
-   * *AutomationAccountName* （必要）：您的自動化帳戶的名稱。
-   * *HybridGroupName* (必要)：您針對支援此案例的 Runbook，指定作為目標的「混合式 Runbook 背景工作角色」群組名稱。
-   * *認證*（選擇性）：登入 Azure 環境時所要使用的認證。
+* *AAResourceGroupName* (必要)：與您的自動化帳戶相關聯的資源群組名稱。
+* *OMSResourceGroupName* (選擇性)：Log Analytics 工作區的資源群組名稱。 若未指定此資源群組，將會使用 *AAResourceGroupName*。
+* *SubscriptionID* （必要）：您的自動化帳戶所在的 Azure 訂用帳戶識別碼。
+* *TenantID* （選用）：與您的自動化帳戶相關聯的租使用者組織識別碼。
+* *WorkspaceName* (選擇性)：Log Analytics 工作區名稱。 如果您沒有 Log Analytics 工作區，此指令碼就會建立並設定一個 Log Analytics 工作區。
+* *AutomationAccountName* （必要）：您的自動化帳戶的名稱。
+* *HybridGroupName* (必要)：您針對支援此案例的 Runbook，指定作為目標的「混合式 Runbook 背景工作角色」群組名稱。
+* *認證*（選擇性）：登入 Azure 環境時所要使用的認證。
   
-   > [!NOTE]
-   > 啟用解決方案時，只有特定區域支援連結 Log Analytics 工作區和自動化帳戶。
-   >
-   > 如需支援的對應配對清單，請參閱[自動化帳戶和 Log Analytics 工作區的區域對應](how-to/region-mappings.md)。
+> [!NOTE]
+> 啟用解決方案時，只有特定區域支援連結 Log Analytics 工作區和自動化帳戶。 如需支援的對應配對清單，請參閱[自動化帳戶和 Log Analytics 工作區的區域對應](how-to/region-mappings.md)。
 
 ### <a name="2-open-windows-powershell-command-line-shell"></a>2. 開啟 Windows PowerShell 命令列 shell
 

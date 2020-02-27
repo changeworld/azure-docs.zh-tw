@@ -3,21 +3,21 @@ title: 連接源資料庫的問題
 titleSuffix: Azure Database Migration Service
 description: 深入瞭解如何針對與將 Azure 資料庫移轉服務連線到源資料庫相關聯的已知問題/錯誤進行疑難排解。
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 06/28/2019
-ms.openlocfilehash: b697faeded4177381f70ebb9d1f93d928b25d7b1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/20/2020
+ms.openlocfilehash: 332f612e1ffe57fc4edd90b1fe4c6a5ea5a2904a
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437800"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649170"
 ---
 # <a name="troubleshoot-dms-errors-when-connecting-to-source-databases"></a>針對連接到源資料庫時的 DMS 錯誤進行疑難排解
 

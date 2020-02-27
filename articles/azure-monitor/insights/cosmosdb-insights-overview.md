@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/27/2019
-ms.openlocfilehash: 8e265b592bebfc506ae0116c955403dd1070ad3f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: dece5b0bb0508e2d83ee184e71ef0b4364d25ac8
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73166404"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623013"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db-preview"></a>探索 Azure Cosmos DB 的 Azure 監視器（預覽）
 
@@ -35,8 +35,35 @@ Azure 監視器 for Azure Cosmos DB （預覽）可讓您以統一的互動體�
 >[!NOTE]
 >存取這項功能不需要付費，您只需支付所設定或啟用的 Azure 監視器基本功能的費用，如[Azure 監視器定價詳細資料](https://azure.microsoft.com/pricing/details/monitor/)頁面所述。
 
+## <a name="view-operation-level-metrics-for-azure-cosmos-db"></a>查看 Azure Cosmos DB 的作業層級計量
 
-## <a name="accessing-azure-monitor-for-azure-cosmos-db"></a>存取 Azure Cosmos DB 的 Azure 監視器
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
+
+1. 從左側導覽列選取 [**監視**]，然後選取 [**計量**]。
+
+   ![Azure 監視器中的 [計量] 窗格](./media/cosmosdb-insights-overview/monitor-metrics-blade.png)
+
+1. 從 [**計量**] 窗格 >**選取資源**> 選擇所需的**訂**用帳戶和**資源群組**。 針對 [**資源類型**]，選取 [ **Azure Cosmos DB 帳戶**] **，選擇其中**一個現有的 Azure Cosmos 帳戶，然後選取 [套用]。
+
+   ![選擇 Cosmos DB 帳戶來查看計量](./media/cosmosdb-insights-overview/select-cosmosdb-account.png)
+
+1. 接下來，您可以從可用的計量清單中選取度量。 您可以選取 [要求單位]、[儲存體]、[延遲]、[可用性]、[Cassandra] 和其他的特定計量。 若要深入瞭解此清單中所有可用的計量，請參閱[依類別](../../cosmos-db/monitor-cosmos-db-reference.md)區分的計量一文。 在此範例中，讓我們選取 [**要求單位**] 和 [**平均**] 作為匯總值。
+
+   除了這些詳細資料之外，您也可以選取度量的**時間範圍**和**時間細微性**。 在 [最大值] 中，您可以查看過去30天的計量。  套用篩選之後，就會根據您的篩選器來顯示圖表。 您可以看到所選期間內每分鐘耗用的平均要求單位數。  
+
+   ![從 Azure 入口網站選擇度量](./media/cosmosdb-insights-overview/metric-types.png)
+
+### <a name="add-filters-to-metrics"></a>將篩選新增至計量
+
+您也可以篩選特定**CollectionName**、 **DatabaseName**、 **OperationType**、 **Region**和**StatusCode**所顯示的計量和圖表。 若要篩選計量，請選取 [**新增篩選**] 並選擇必要的屬性（例如**OperationType** ），然後選取 [**查詢**] 之類的值。 圖形接著會顯示所選期間內，查詢作業所耗用的要求單位。 不會記錄透過預存程式執行的作業，因此它們無法在 OperationType 度量下提供。
+
+![新增篩選以選取度量資料細微性](./media/cosmosdb-insights-overview/add-metrics-filter.png)
+
+您可以使用 [套用**分割**] 選項將計量分組。 例如，您可以將每個作業類型的 [要求單位] 分組，並一次查看所有作業的圖形，如下圖所示：
+
+![新增套用分割篩選](./media/cosmosdb-insights-overview/apply-metrics-splitting.png)
+
+## <a name="view-utilization-and-performance-metrics-for-azure-cosmos-db"></a>查看 Azure Cosmos DB 的使用率和效能計量
 
 若要查看您所有訂用帳戶的儲存體帳戶使用率和效能，請執行下列步驟。
 
@@ -76,9 +103,9 @@ Azure 監視器 for Azure Cosmos DB （預覽）可讓您以統一的互動體�
 
 | 程式碼      |  描述       | 
 |-----------|:--------------------|
-| `200 OK`  | 下列其中一項 REST 作業已成功： </br>-在資源上取得。 </br> -放在資源上。 </br> -在資源上張貼。 </br> -在預存程式資源上張貼，以執行預存程式。|
-| `201 Created` | 建立資源的 POST 作業已成功。 |
-| `404 Not Found` | 作業嘗試對已不存在的資源採取動作。 例如，資源可能已經刪除。 |
+| `200 OK`  | 已成功完成下列其中一個 REST 作業： </br>-在資源上取得。 </br> -放在資源上。 </br> -在資源上張貼。 </br> -在預存程式資源上張貼，以執行預存程式。|
+| `201 Created` | 成功完成建立資源的 POST 作業。 |
+| `404 Not Found` | 作業嘗試在已經不存在的資源上執行。 例如，資源可能已經被刪除。 |
 
 如需狀態碼的完整清單，請參閱[AZURE COSMOS DB HTTP 狀態碼一文](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb)。
 
@@ -90,7 +117,7 @@ Azure 監視器 for Azure Cosmos DB （預覽）可讓您以統一的互動體�
 
 如同總覽活頁簿，在 [**訂閱**] 資料行中選取 Azure Cosmos DB 資源旁的下拉式清單，將會顯示構成資料庫的個別容器明細。
 
-### <a name="operations"></a>Dynamics 365 
+### <a name="operations"></a>作業 
 
 選取頁面頂端的 [**作業**]，活頁簿範本的**作業**部分隨即開啟。 它可讓您查看依提出的要求類型細分的要求。 
 

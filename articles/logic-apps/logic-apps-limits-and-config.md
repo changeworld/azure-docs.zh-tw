@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 059894d441897bd89be525abcc7e1c7ab6ba23e7
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 514ead43159b416752f968da3883e644fb0ccc2f
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485041"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650890"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps 的限制和設定資訊
 
@@ -149,11 +149,13 @@ Azure Logic Apps 透過閘道支援寫入作業，包括插入和更新。 不�
 | 輸入要求 | 120 秒 <br>（2分鐘） | 240秒 <br>（4分鐘） | 輸入要求的範例包括要求觸發程式和 webhook 觸發程式所接收的呼叫。 <p><p>**注意**：若要讓原始呼叫者取得回應，回應中的所有步驟都必須在限制內完成，除非您將另一個邏輯應用程式當做嵌套工作流程呼叫。 如需詳細資訊，請參閱[呼叫、觸發或巢狀邏輯應用程式](../logic-apps/logic-apps-http-endpoint.md)。 |
 |||||
 
+<a name="message-size-limits"></a>
+
 #### <a name="message-size"></a>訊息大小
 
 | 名稱 | 多租使用者限制 | 整合服務環境限制 | 注意 |
 |------|--------------------|---------------------------------------|-------|
-| 訊息大小 | 100 MB | 200 MB | 若要解決此限制，請參閱[使用區塊化處理大型訊息](../logic-apps/logic-apps-handle-large-messages.md)。 不過，某些連接器和 API 可能不支援區塊化或甚至預設限制。 |
+| 訊息大小 | 100 MB | 200 MB | ISE 標示的連接器會使用 ISE 限制，而不是其非 ISE 連接器限制。 <p><p>若要解決此限制，請參閱[使用區塊化處理大型訊息](../logic-apps/logic-apps-handle-large-messages.md)。 不過，某些連接器和 API 可能不支援區塊化或甚至預設限制。 |
 | 使用區塊化時的訊息大小 | 1 GB | 5 GB | 此限制適用於原生支援區塊化的動作，或可讓您在其執行階段設定中啟用區塊化的動作。 <p>對於整合服務環境，Logic Apps 引擎支援此限制，但連接器有自己的區塊限制，最高可達引擎限制，例如，請參閱[Azure Blob 儲存體連接器的 API 參考](https://docs.microsoft.com/connectors/azureblob/)。 如需有關區塊化的詳細資訊，請參閱[使用區塊化處理大型訊息](../logic-apps/logic-apps-handle-large-messages.md)。 |
 |||||
 

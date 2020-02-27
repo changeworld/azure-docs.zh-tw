@@ -1,16 +1,16 @@
 ---
-title: 在 Visual Studio 中對您的應用程式進行偵錯
+title: 在 Visual Studio 中偵錯工具
 description: 利用本機開發叢集上的 Visual Studio 來開發服務及為服務偵錯，以便改善您服務的可靠性和效能。
 author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 18b32c0fb0b2d203b3536e7a859e149da8453f76
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fff8a19d5643f7ce866c9eb9c57486340b6f8a50
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458108"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624129"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>使用 Visual Studio 偵錯 Service Fabric 應用程式
 > [!div class="op_single_selector"]
@@ -20,7 +20,7 @@ ms.locfileid: "75458108"
 
 
 ## <a name="debug-a-local-service-fabric-application"></a>偵錯本機 Service Fabric 應用程式
-您可以在本機電腦開發叢集中開發和偵錯 Azure Service Fabric 應用程式來節省時間和金錢。 Visual Studio 2019 或2015可以將應用程式部署至本機叢集，並自動將偵錯工具連接至應用程式的所有實例。 Visual Studio 的必須以系統管理員身分執行，才能連接偵錯工具。
+您可以在本機電腦開發叢集中開發和偵錯 Azure Service Fabric 應用程式來節省時間和金錢。 Visual Studio 2019 或2015可以將應用程式部署至本機叢集，並自動將偵錯工具連接至應用程式的所有實例。 Visual Studio 必須以系統管理員身分執行，才能連接偵錯工具。
 
 1. 遵循 [設定 Service Fabric 開發環境](service-fabric-get-started.md)中的步驟來啟動本機開發叢集。
 2. 按 **F5** 或按一下 [偵錯] >  [開始偵錯]。

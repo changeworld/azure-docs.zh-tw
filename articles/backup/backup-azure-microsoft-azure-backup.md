@@ -3,12 +3,12 @@ title: 使用 Azure 備份伺服器備份工作負載
 description: 在本文中，您將瞭解如何準備您的環境，以使用 Microsoft Azure 備份 Server （MABS）來保護和備份工作負載。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: e601328a09ece54eb1c678310f76c7999c69f24c
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: dd506668f9d75523ff7494bccb2979bf0785990d
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586422"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617620"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>安裝及升級 Azure 備份伺服器
 
@@ -56,7 +56,7 @@ Azure 備份伺服器承襲了 Data Protection Manager (DPM) 的大部分工作�
 | Windows Server 2019 |64 位元 |Standard、Datacenter、Essentials |
 | Windows Server 2016 和最新的 SP |64 位元 |Standard、Datacenter、Essentials  |
 
-您可以使用 Windows Server Deduplication 為 DPM 儲存體刪除重複資料。 深入了解在 Hyper-V VM 中部署時， [DPM 和重複資料刪除](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/dn891438(v=sc.12)) 如何搭配運作。
+您可以使用 Windows Server Deduplication 為 DPM 儲存體刪除重複資料。 深入了解在 Hyper-V VM 中部署時， [DPM 和重複資料刪除](https://docs.microsoft.com/system-center/dpm/deduplicate-dpm-storage?view=sc-dpm-2019) 如何搭配運作。
 
 > [!NOTE]
 > Azure 備份伺服器的設計目的是在專用、單一用途的伺服器上執行。 您無法在下列位置安裝 Azure 備份伺服器︰
@@ -359,7 +359,7 @@ Azure 備份伺服器需要連線至 Azure 備份服務，產品才能順利運�
 
 ## <a name="next-steps"></a>後續步驟
 
-您可以在這裡取得有關[為 DPM 準備環境的](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758176(v=sc.12))詳細資訊。 其中也包含可據以部署和使用 Azure 備份伺服器之支援組態的相關資訊。 您可以使用一系列的 [PowerShell Cmdlet](https://docs.microsoft.com/powershell/module/dataprotectionmanager/?view=systemcenter-ps-2016) 來執行各種作業。
+您可以在這裡取得有關[為 DPM 準備環境的](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-2019)詳細資訊。 其中也包含可據以部署和使用 Azure 備份伺服器之支援組態的相關資訊。 您可以使用一系列的 [PowerShell Cmdlet](https://docs.microsoft.com/powershell/module/dataprotectionmanager/?view=systemcenter-ps-2016) 來執行各種作業。
 
 請參閱這些文章，以深入了解使用 Microsoft Azure 備份伺服器來保護工作負載。
 

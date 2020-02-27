@@ -2,21 +2,21 @@
 title: 監視遷移活動-Azure 資料庫移轉服務
 description: 深入了解如何使用 Azure 資料庫移轉服務來監視移轉活動。
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 03/12/2019
-ms.openlocfilehash: b3ba634ddb084b5637d0a0c97c0ac4ff72193c1d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/20/2020
+ms.openlocfilehash: 31b49cdd9e0e5569981b2a0b0c6efcab7239e019
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437924"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648507"
 ---
 # <a name="monitor-migration-activity-using-the-azure-database-migration-service"></a>使用 Azure 資料庫移轉服務監視遷移活動
 在本文中，您會學習如何在資料庫層級與資料表層級監視移轉的進度。
@@ -63,7 +63,7 @@ ms.locfileid: "75437924"
       <td>DMS 管線正在執行中，並且正在執行移轉。</td>
     </tr>
     <tr>
-      <td>完整</td>
+      <td>[完成]</td>
       <td>移轉已完成。</td>
     </tr>
     <tr>
@@ -108,7 +108,7 @@ ms.locfileid: "75437924"
 
 下表描述了資料表層級詳細資料中所顯示的欄位。
 
-| 欄位名稱        | 說明       |
+| 欄位名稱        | 描述       |
 | ------------- | ------------- |
 | **完整載入已完成**      | 已完成完整資料載入的資料表數目。 |
 | **完整載入已排入佇列**      | 已排入佇列以進行完整載入的資料表數目。      |
@@ -129,7 +129,7 @@ ms.locfileid: "75437924"
 
 下表描述了資料表層級移轉進度中所顯示的欄位。
 
-| 欄位名稱        | 說明       |
+| 欄位名稱        | 描述       |
 | ------------- | ------------- |
 | **狀態 - 同步處理**      | 持續同步正在執行中。 |
 | **插入**      | 套用到目標的資料列中，CDC 插入的數目。      |

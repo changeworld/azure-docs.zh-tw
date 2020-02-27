@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: b7eed4089a65f62056027c70f08902f531567c17
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 742ef62895f3ef64e8fa22ab21d2947bee57776b
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445273"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623359"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>將非資料分割的容器遷移至分割的容器
 
-Azure Cosmos DB 支援建立不含分割區索引鍵的容器。 目前，您可以使用版本小於或等於2.x 的 Azure CLI 和 Azure Cosmos DB Sdk （.Net、JAVA、NodeJs）來建立非資料分割的容器。 您無法使用 Azure 入口網站建立非資料分割的容器。 不過，這類非資料分割的容器不具彈性，而且具有 10 GB 的固定儲存體容量和每秒 10K RU 的輸送量限制。
+Azure Cosmos DB 支援建立不含分割區索引鍵的容器。 目前，您可以使用版本小於或等於2.x 的 Azure CLI 和 Azure Cosmos DB Sdk （.Net、JAVA、NodeJs）來建立非資料分割的容器。 您無法使用 Azure 入口網站建立非資料分割的容器。 不過，這類非資料分割的容器不具彈性，而且具有 20 GB 的固定儲存體容量和每秒 10K RU 的輸送量限制。
 
 非資料分割的容器是舊版的，您應該將現有的非資料分割容器遷移至分割的容器，以調整儲存體和輸送量。 Azure Cosmos DB 提供系統定義的機制，將非資料分割的容器遷移至已分割的容器。 本檔說明如何將所有現有的非資料分割容器自動遷移至已分割的容器。 只有當您在所有語言中使用 V3 版本的 Sdk 時，才可以利用自動遷移功能。
 

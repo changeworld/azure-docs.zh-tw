@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/31/2017
-ms.openlocfilehash: 77ec5434b83c4246dc448578dcf2902e19f42e95
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: cbf0a1f033ddafc68debab8de26dff29d73cc98e
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792312"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651469"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>在採用 Enterprise Integration Pack 的 Azure Logic Apps 中交換適用於 B2B 企業整合的 X12 訊息
 
@@ -34,7 +34,7 @@ ms.locfileid: "74792312"
 
 ## <a name="create-an-x12-agreement"></a>建立 X12 合約
 
-1. 登入 [Azure 入口網站](https://portal.azure.com "Azure Portal")。 
+1. 登入 [Azure 入口網站](https://portal.azure.com "Azure 入口網站")。 
 
 2. 從主要 Azure 功能表中選取 [所有服務]。 
    在搜尋方塊中輸入「整合」，然後選取 [整合帳戶]。  
@@ -66,7 +66,7 @@ ms.locfileid: "74792312"
 
     | 屬性 | 描述 |
     | --- | --- |
-    | Name |合約的名稱 |
+    | 名稱 |合約的名稱 |
     | 合約類型 | 應該是 X12 |
     | 主控夥伴 |合約需要主控夥伴和來賓夥伴。 主機夥伴代表設定合約的組織。 |
     | 主控身分識別 |主控夥伴的識別碼 |
@@ -91,16 +91,16 @@ ms.locfileid: "74792312"
 
 您的合約現在已準備好處理符合您所選設定的內送訊息。
 
-### <a name="identifiers"></a>識別項
+### <a name="identifiers"></a>識別碼
 
 ![設定識別碼屬性](./media/logic-apps-enterprise-integration-x12/x12-2.png)  
 
 | 屬性 | 描述 |
 | --- | --- |
 | ISA1 (授權辨識符號) |從下拉式清單中選取授權辨識符號值。 |
-| ISA2 |選用。 輸入授權資訊值。 如果您為 ISA1 輸入的值是 00 以外的值，請最少輸入 1 個，最多 10 個英數字元。 |
+| ISA2 |選擇性。 輸入授權資訊值。 如果您為 ISA1 輸入的值是 00 以外的值，請最少輸入 1 個，最多 10 個英數字元。 |
 | ISA3 (安全性辨識符號) |從下拉式清單中選取安全性辨識符號值。 |
-| ISA4 |選用。 輸入安全性資訊值。 如果您為 ISA3 輸入的值是 00 以外的值，請最少輸入 1 個，最多 10 個英數字元。 |
+| ISA4 |選擇性。 輸入安全性資訊值。 如果您為 ISA3 輸入的值是 00 以外的值，請最少輸入 1 個，最多 10 個英數字元。 |
 
 ### <a name="acknowledgment"></a>通知
 
@@ -126,7 +126,7 @@ ms.locfileid: "74792312"
 | 結構描述 |選取您要使用的結構描述檔案。 結構描述已新增到您的整合帳戶。 |
 
 > [!NOTE]
-> 設定要上傳到[整合帳戶](../logic-apps/logic-apps-enterprise-integration-accounts.md)的必要[結構描述](../logic-apps/logic-apps-enterprise-integration-schemas.md)。
+> 設定要上傳到[整合帳戶](../logic-apps/logic-apps-enterprise-integration-schemas.md)的必要[結構描述](../logic-apps/logic-apps-enterprise-integration-accounts.md)。
 
 ### <a name="envelopes"></a>信封
 
@@ -146,7 +146,7 @@ ms.locfileid: "74792312"
 | 不允許群組控制編號重複 |封鎖有重複群組控制編號的交換。 |
 | 不允許交易集控制編號重複 |封鎖有重複交易集控制編號的交換。 |
 
-### <a name="validations"></a>驗證
+### <a name="validation"></a>驗證
 
 ![設定已接收訊息的驗證屬性](./media/logic-apps-enterprise-integration-x12/x12-36.png) 
 
@@ -187,7 +187,7 @@ ms.locfileid: "74792312"
 
 您的合約現在已準備好處理符合您所選設定的外寄訊息。
 
-### <a name="identifiers"></a>識別項
+### <a name="identifiers"></a>識別碼
 
 ![設定識別碼屬性](./media/logic-apps-enterprise-integration-x12/x12-4.png)  
 
@@ -216,10 +216,10 @@ ms.locfileid: "74792312"
 | --- | --- |
 | 版本 |選取 X12 版本 |
 | 交易類型 (ST01) |選取交易類型 |
-| 結構描述 |選取要使用的結構描述。 結構描述位於您的整合帳戶中。 若先選取結構描述，它會自動設定版本與交易類型  |
+| SCHEMA |選取要使用的結構描述。 結構描述位於您的整合帳戶中。 若先選取結構描述，它會自動設定版本與交易類型  |
 
 > [!NOTE]
-> 設定要上傳到[整合帳戶](../logic-apps/logic-apps-enterprise-integration-accounts.md)的必要[結構描述](../logic-apps/logic-apps-enterprise-integration-schemas.md)。
+> 設定要上傳到[整合帳戶](../logic-apps/logic-apps-enterprise-integration-schemas.md)的必要[結構描述](../logic-apps/logic-apps-enterprise-integration-accounts.md)。
 
 ### <a name="envelopes"></a>信封
 
@@ -248,8 +248,8 @@ ms.locfileid: "74792312"
 | 交換控制編號 (ISA13) |必要，輸入交換控制編號的值範圍。 請輸入最小為 1，最大為 999999999 的數值 |
 | 群組控制編號 (GS06) |必要，請輸入群組控制編號的數字範圍。 請輸入最小為 1，最大為 999999999 的數值 |
 | 交易集控制編號 (ST02) |必要，請輸入交易集控制編號的數字範圍。 請輸入最小為 1，最大為 999999999 的數值範圍 |
-| 首碼 |選擇性，針對在通知中使用的交易集控制編號範圍指定。 在中間的兩個欄位輸入數值，在前置詞和尾碼欄位輸入英數字元值 (如有需要)。 中間欄位是必要欄位，而且包含控制編號的最小值和最大值 |
-| 尾碼 |選擇性，針對在通知中使用的交易集控制編號範圍指定。 在中間的兩個欄位輸入數值，在前置詞和尾碼欄位輸入英數字元值 (如有需要)。 中間欄位是必要欄位，而且包含控制編號的最小值和最大值 |
+| 前置詞 |選擇性，針對在通知中使用的交易集控制編號範圍指定。 在中間的兩個欄位輸入數值，在前置詞和尾碼欄位輸入英數字元值 (如有需要)。 中間欄位是必要欄位，而且包含控制編號的最小值和最大值 |
+| 後置詞 |選擇性，針對在通知中使用的交易集控制編號範圍指定。 在中間的兩個欄位輸入數值，在前置詞和尾碼欄位輸入英數字元值 (如有需要)。 中間欄位是必要欄位，而且包含控制編號的最小值和最大值 |
 
 ### <a name="character-sets-and-separators"></a>字元集和分隔符號
 
@@ -266,14 +266,14 @@ ms.locfileid: "74792312"
 | 資料元素分隔符號 |若要分隔複合資料元素內的簡單資料元素，請輸入單一字元。 |
 | 取代字元 |輸入在產生輸出 X12 訊息時，用於取代承載資料中所有分隔符號字元的取代字元。 |
 | 區段結束字元 |若要指出 EDI 區段的結尾，請輸入單一字元。 |
-| 尾碼 |選取與區段識別項一起使用的字元。 如果指定尾碼，則區段結束字元資料元素可以空白。 如果區段結束字元留空，則必須指定尾碼。 |
+| 後置詞 |選取與區段識別項一起使用的字元。 如果指定尾碼，則區段結束字元資料元素可以空白。 如果區段結束字元留空，則必須指定尾碼。 |
 
 > [!TIP]
 > 若要提供特殊字元值，請將合約編輯為 JSON，並為特殊字元提供 ASCII 值。
 
 ### <a name="validation"></a>驗證
 
-![設定驗證屬性以便傳送訊息](./media/logic-apps-enterprise-integration-x12/x12-10.png) 
+![設定傳送訊息的驗證屬性](./media/logic-apps-enterprise-integration-x12/x12-10.png) 
 
 當您完成每個驗證資料列時，將會自動新增另一個驗證資料列。 如果您未指定任何規則，則驗證會使用「預設」資料列。
 
@@ -296,9 +296,13 @@ ms.locfileid: "74792312"
 
     ![選擇 [合約] 圖格](./media/logic-apps-enterprise-integration-x12/x12-1-5.png)   
 
-## <a name="view-the-swagger"></a>檢視 Swagger
-請參閱 [Swagger 詳細資料](/connectors/x12/)。 
+## <a name="connector-reference"></a>連接器參考
 
-## <a name="learn-more"></a>了解更多
-* [深入了解企業整合套件](../logic-apps/logic-apps-enterprise-integration-overview.md "瞭解企業整合套件")  
+如需此連接器的更多技術詳細資料，例如連接器的 Swagger 檔案所述的動作和限制，請參閱[連接器的參考頁面](https://docs.microsoft.com/connectors/x12/)。 
 
+> [!NOTE]
+> 對於[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的邏輯應用程式，此連接器的 ise 標記版本會使用[ISE 訊息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
+
+## <a name="next-steps"></a>後續步驟
+
+* 了解其他 [Logic Apps 連接器](../connectors/apis-list.md)

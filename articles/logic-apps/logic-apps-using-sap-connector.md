@@ -9,17 +9,17 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/30/2019
 tags: connectors
-ms.openlocfilehash: 3990a9d53a8e53ddd29683440917031bc1bb6448
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 39ab222f64d964e95b16e043c9cdeccd8170ace3
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76904646"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651010"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>從 Azure Logic Apps 連線至 SAP 系統
 
 > [!IMPORTANT]
-> 舊版的 SAP 應用程式伺服器和 SAP 訊息伺服器連接器已排程于2020年2月29日淘汰。 目前的 SAP 連接器會合並這些先前的 SAP 連接器，讓您不需要變更連線類型、與先前的連接器完全相容、提供許多其他功能，並繼續使用 SAP .Net 連接器程式庫（SAP NCo）。
+> 舊版的 SAP 應用程式伺服器和 SAP 訊息伺服器連接器會在2020年2月29日淘汰。 目前的 SAP 連接器會合並這些先前的 SAP 連接器，讓您不需要變更連線類型、與先前的連接器完全相容、提供許多其他功能，並繼續使用 SAP .Net 連接器程式庫（SAP NCo）。
 >
 > 對於使用較舊連接器的邏輯應用程式，請在淘汰日期之前[遷移至最新的連接器](#migrate)。 否則，這些邏輯應用程式會遇到執行失敗，而且無法將訊息傳送至您的 SAP 系統。
 
@@ -39,7 +39,7 @@ SAP 連接器會透過[內部部署資料閘道](../logic-apps/logic-apps-gatewa
 
 <a name="pre-reqs"></a>
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要遵循本文中的範例，您需要以下項目：
 
@@ -464,7 +464,7 @@ SAP 連接器會透過[內部部署資料閘道](../logic-apps/logic-apps-gatewa
 
    ![在連接中設定 SAP SNC](media/logic-apps-using-sap-connector/configure-sapsnc.png)
 
-   | 屬性 | 說明 |
+   | 屬性 | 描述 |
    |----------| ------------|
    | **SNC 程式庫路徑** | 相對於 NCo 安裝位置或絕對路徑的 SNC 程式庫名稱或路徑。 範例 `sapsnc.dll` 或 `.\security\sapsnc.dll` 或 `c:\security\sapsnc.dll`。 |
    | **SNC SSO** | 當您透過 SNC 連接時，SNC 身分識別通常用來驗證呼叫端。 另一個選項是覆寫，讓使用者和密碼資訊可以用來驗證呼叫者，但這一行仍然是加密的。 |
@@ -556,7 +556,10 @@ SAP 連接器會透過[內部部署資料閘道](../logic-apps/logic-apps-gatewa
 
 ## <a name="connector-reference"></a>連接器參考
 
-如需有關觸發程式、動作和限制的技術詳細資料（由連接器的 OpenAPI （先前稱為 Swagger）描述所描述），請參閱[連接器的參考頁面](/connectors/sap/)。
+如需此連接器的更多技術詳細資料，例如連接器的 Swagger 檔案所描述的觸發程式、動作和限制，請參閱[連接器的參考頁面](https://docs.microsoft.com/connectors/sap/)。
+
+> [!NOTE]
+> 對於[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的邏輯應用程式，此連接器的 ise 標記版本會使用[ISE 訊息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
 
 ## <a name="next-steps"></a>後續步驟
 

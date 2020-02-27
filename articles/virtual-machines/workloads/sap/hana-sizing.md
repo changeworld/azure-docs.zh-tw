@@ -3,22 +3,22 @@ title: SAP HANA on Azure (大型執行個體) 的大小調整 | Microsoft Docs
 description: SAP HANA on Azure (大型執行個體) 的大小調整。
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/04/2018
-ms.author: saghorpa
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f2540a0f9ea702ff620ccd4b68208cbb2e70aafd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 404f8318816edcc2cfd1c50ca42304ff6ec93039
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101133"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616900"
 ---
 # <a name="sizing"></a>調整大小
 
@@ -26,7 +26,7 @@ ms.locfileid: "70101133"
 
 - [SAP 附註 #1793345 - SAP Suite on HANA 的大小調整 (英文)](https://launchpad.support.sap.com/#/notes/1793345)
 - [SAP 附註 #1872170 - Suite on HANA 與 S/4 HANA 大小調整報告 (英文)](https://launchpad.support.sap.com/#/notes/1872170)
-- [SAP 附注 #2121330-常見問題:HANA 大小調整報告上的 SAP BW](https://launchpad.support.sap.com/#/notes/2121330)
+- [SAP 附註 #2121330 - 常見問題集：SAP BW on HANA 大小調整報告](https://launchpad.support.sap.com/#/notes/2121330)
 - [SAP 附註 #1736976 - BW on HANA 的大小調整報告](https://launchpad.support.sap.com/#/notes/1736976)
 - [SAP 附註 #2296290 - 新的 BW on HANA 大小調整報告](https://launchpad.support.sap.com/#/notes/2296290)
 

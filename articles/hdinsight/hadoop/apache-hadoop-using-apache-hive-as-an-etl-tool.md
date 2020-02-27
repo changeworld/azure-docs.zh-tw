@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 025a31c08ac97783ddf1a608c2899eadd9b89725
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: be331f36a6305b05ce83a2b2d5fdfb73a154ce3d
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561762"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623108"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>使用 Apache Hive 作為擷取、 轉換和載入 (ETL) 工具
 
@@ -81,7 +81,7 @@ ms.locfileid: "74561762"
 
 * 將資料流資料或大量半結構化或非結構化資料，從外部來源載入至現有的資料庫或資訊系統。
 * 在載入資料之前，也許透過叢集使用多個轉換階段先清理、轉換及驗證資料。
-* 產生定期更新的報表和視覺效果。  例如，如果在日間產生報表耗時太長，您可以排定在夜間執行報表。  您可以使用「Azure 排程器」和 PowerShell 來自動執行 Hive 查詢。
+* 產生定期更新的報表和視覺效果。 例如，如果在日間產生報表耗時太長，您可以排定在夜間執行報表。 若要自動執行 Hive 查詢，您可以使用[Azure Logic Apps](../../logic-apps/logic-apps-overview.md)和 PowerShell。
 
 如果資料的目標不是資料庫，您可以在查詢內以適當的格式產生檔案，例如 CSV。 接著，便可將此檔案匯入至 Excel 或 Power BI。
 

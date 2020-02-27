@@ -7,18 +7,21 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 02/11/2020
-ms.openlocfilehash: a093eea8b1961482722211017174018a649e2c4f
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.date: 02/21/2020
+ms.openlocfilehash: 6eb8f86d7bfa1c140c6422753840ded8a37ce3c4
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484837"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616081"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>自動調整 Azure HDInsight 叢集規模
 
 > [!Important]
-> 自動調整功能僅適用于5月 8 2019 之後建立的 Apache Spark、Hive、LLAP 和 Apache HBase 叢集。 LLAP 和 HBase 的自動調整為預覽狀態。
+> Azure HDInsight 自動調整功能已于2019年11月7日發行，適用于 Spark 和 Hadoop 叢集，且包含功能預覽版本中未提供的改善。 如果您在2019年11月7日之前建立 Spark 叢集，並想要在叢集上使用自動調整功能，建議的路徑是建立新的叢集，並在新叢集上啟用自動調整。 
+>
+>互動式查詢（LLAP）和 HBase 叢集的自動調整仍處於預覽狀態。 自動調整僅適用于 Spark、Hadoop、互動式查詢和 HBase 叢集。 
+
 
 Azure HDInsight 的叢集自動調整功能會自動相應增加和減少叢集中的背景工作節點數目。 目前無法調整叢集中的其他節點類型。  在建立新的 HDInsight 叢集時，可以設定最小和最大的背景工作節點數目。 自動調整會監視分析負載的資源需求，並相應增加或減少背景工作角色節點的數目。 這項功能不需額外付費。
 

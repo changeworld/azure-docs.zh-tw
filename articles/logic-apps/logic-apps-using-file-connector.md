@@ -8,16 +8,16 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 01/13/2019
-ms.openlocfilehash: bc2067dbde1e99619fb6e384be4e70f606c8518d
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2a00405a2100c3e565ca4f8ea4149540a5199b43
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792780"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651401"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>透過 Azure Logic Apps 連線到內部部署檔案系統
 
-透過檔案系統連接器與 Azure Logic Apps，您可以建立自動化工作和工作流程，以建立和管理內部部署檔案共用上的檔案，例如：  
+您可以使用 Azure Logic Apps 和檔案系統連接器，建立自動化的工作和工作流程，以建立及管理內部部署檔案共用上的檔案，例如：
 
 - 建立、取得、附加更新及刪除檔案。
 - 列出資料夾或根資料夾中的檔案。
@@ -25,9 +25,9 @@ ms.locfileid: "74792780"
 
 本文說明如何如此範例案例所述來連線到內部部署檔案系統：將已上傳至 Dropbox 的檔案複製到檔案共用，然後傳送電子郵件。 若要安全地連線並存取內部部署系統，邏輯應用程式可使用[內部部署資料閘道](../logic-apps/logic-apps-gateway-connection.md)。 如果您不熟悉邏輯應用程式，請檢閱[什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)。 如需連接器特定的技術資訊，請參閱[檔案系統連接器參考](/connectors/filesystem/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊一個免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
+* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
 * 您必須先[安裝及設定內部部署資料閘道](../logic-apps/logic-apps-gateway-install.md)，才可以將邏輯應用程式連線到內部部署系統 (例如檔案系統伺服器)。 如此一來，您可以在從邏輯應用程式建立檔案系統連線時，指定使用您的閘道安裝。
 
@@ -65,10 +65,10 @@ ms.locfileid: "74792780"
 
    ![建立連線](media/logic-apps-using-file-connector/file-system-connection.png)
 
-   | 屬性 | 必要項 | Value | 描述 |
+   | 屬性 | 必要 | 值 | 描述 |
    | -------- | -------- | ----- | ----------- |
-   | 連線名稱 | 是 | <*connection-name*> | 您想要的連線名稱 |
-   | **根資料夾** | 是 | <*root-folder-name*> | 您檔案系統的根資料夾，例如，如果您已安裝內部部署的資料閘道，則為內部部署資料閘道安裝所在電腦上的本機資料夾，或電腦可以存取的網路共用資料夾。 <p>例如：`\\PublicShare\\DropboxFiles` <p>根資料夾是主要的父資料夾，會作為所有檔案相關動作的相對路徑。 |
+   | **連接名稱** | 是 | <*connection-name*> | 您想要的連線名稱 |
+   | **根資料夾** | 是 | <*root-folder-name*> | 您檔案系統的根資料夾，例如，如果您已安裝內部部署的資料閘道，則為內部部署資料閘道安裝所在電腦上的本機資料夾，或電腦可以存取的網路共用資料夾。 <p>例如： `\\PublicShare\\DropboxFiles` <p>根資料夾是主要的父資料夾，會作為所有檔案相關動作的相對路徑。 |
    | **驗證類型** | 否 | <*auth-type*> | 您檔案系統使用的驗證類型，例如 **Windows** |
    | **使用者名稱** | 是 | <*domain*>\\<*username*> | 您的檔案系統所在電腦的使用者名稱 |
    | **密碼** | 是 | <*your-password*> | 您的檔案系統所在電腦的密碼 |
@@ -93,7 +93,10 @@ ms.locfileid: "74792780"
 
 ## <a name="connector-reference"></a>連接器參考
 
-如需觸發程序、動作和限制的技術詳細資訊，它們是由連接器的 OpenAPI (以前稱為 Swagger) 來描述，請檢閱連接器的[參考頁面](/connectors/fileconnector/)。
+如需此連接器的更多技術詳細資料，例如連接器的 Swagger 檔案所描述的觸發程式、動作和限制，請參閱[連接器的參考頁面](https://docs.microsoft.com/connectors/fileconnector/)。
+
+> [!NOTE]
+> 對於[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的邏輯應用程式，此連接器的 ise 標記版本會使用[ISE 訊息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
 
 ## <a name="next-steps"></a>後續步驟
 

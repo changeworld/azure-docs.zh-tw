@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: ee4c41ca3179eead0e4fd470a02a5cdfa4a6d43a
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: e1836f91b8afc1bb4f5b7e141949f3724c57c857
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705246"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614046"
 ---
 # <a name="delete-an-azure-active-directory-domain-services-managed-domain-using-the-azure-portal"></a>使用 Azure 入口網站刪除 Azure Active Directory Domain Services 受控網域
 
@@ -35,7 +35,7 @@ ms.locfileid: "74705246"
 若要刪除 Azure AD DS 受控網域，請完成下列步驟：
 
 1. 在 Azure 入口網站中，搜尋並選取  **Azure AD Domain Services**。
-1. 選取您 Azure AD DS 受控網域的名稱，例如*aadds.contoso.com*。
+1. 選取您 Azure AD DS 受控網域的名稱，例如*aaddscontoso.com*。
 1. 在 [概觀] 頁面上，按一下 [刪除]。 若要確認刪除，請再次輸入受控網域的功能變數名稱，然後選取 [**刪除**]。
 
 可能需要15-20 分鐘或更久的時間，才能刪除 Azure AD DS 受控網域。

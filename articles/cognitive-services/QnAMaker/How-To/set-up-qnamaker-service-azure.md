@@ -1,37 +1,23 @@
 ---
 title: 設定 QnA Maker 服務-QnA Maker
-titleSuffix: Azure Cognitive Services
 description: 您必須先在 Azure 中設定 QnA Maker 服務，才能建立任何 QnA Maker 知識庫。 任何具備授權而可在訂用帳戶中建立新資源的人，皆可建立 QnA Maker 服務。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/28/2020
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: 00b8e6d44ed8449aa4ddf8716039c8c85c558b8f
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 663cbce0e096c6189d97cf7872d466383d272f06
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901731"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650413"
 ---
 # <a name="manage-qna-maker-resources"></a>管理 QnA Maker 資源
 
 您必須先在 Azure 中設定 QnA Maker 服務，才能建立任何 QnA Maker 知識庫。 任何具備授權而可在訂用帳戶中建立新資源的人，皆可建立 QnA Maker 服務。
 
-## <a name="types-of-keys-in-qna-maker"></a>QnA Maker 中的金鑰類型
+在建立資源之前，瞭解下列概念會很有説明：
 
-您的 QnA Maker 服務會處理兩種金鑰：**訂**用帳戶金鑰和**端點金鑰**。
-
-![金鑰管理](../media/qnamaker-how-to-key-management/key-management.png)
-
-|名稱|位置|目的|
-|--|--|--|
-|訂用帳戶金鑰|[Azure 入口網站](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|這些金鑰可用來存取[QnA Maker 管理服務 api](https://go.microsoft.com/fwlink/?linkid=2092179)。 這些 Api 可讓您編輯知識庫中的問題和答案，併發布您的知識庫。 當您建立新的 QnA Maker 服務時，會建立這些金鑰。<br><br>在 [**金鑰**] 頁面上的**認知服務**資源上尋找這些金鑰。|
-|端點金鑰|[QnA Maker 入口網站](https://www.qnamaker.ai)|這些金鑰可用來存取已發佈的知識庫端點，以取得使用者問題的回應。 您通常會在聊天機器人或連接到 QnA Maker 服務的用戶端應用程式程式碼中使用此端點。 當您發佈 QnA Maker 知識庫時，會建立這些金鑰。<br><br>在 [**服務設定**] 頁面中尋找這些金鑰。 從下拉式選單上頁面右上方的使用者功能表中，尋找此頁面。|
+* [QnA Maker 資源](../Concepts/azure-resources.md)
+* [撰寫和發佈金鑰](../Concepts/azure-resources.md#keys-in-qna-maker)
 
 ## <a name="create-a-new-qna-maker-service"></a>建立新的 QnA Maker 服務
 
@@ -63,7 +49,7 @@ ms.locfileid: "76901731"
 
     * 選擇您是否要啟用**Application Insights**。 如果啟用 **Application Insights**，QnA Maker 會收集流量、交談記錄和錯誤的遙測資料。
     * 選擇將部署 Application Insights 資源的**App insights 位置**。
-    * 如需節省成本的方法，您可以[共用](#share-existing-services-with-qna-maker)一些 (不是全部) 為 QnA Maker 建立的 Azure 資源。
+    * 如需節省成本的方法，您可以[共用](#configure-qna-maker-to-use-different-cognitive-search-resource)一些 (不是全部) 為 QnA Maker 建立的 Azure 資源。
 
 1. 驗證所有欄位之後，請選取 [**建立**]。 此程式可能需要幾分鐘的時間才能完成。
 
@@ -98,67 +84,10 @@ ms.locfileid: "76901731"
 2. 查看或重設您的金鑰：
 
     > [!div class="mx-imgBorder"]
-    > [![在服務設定中顯示、複製或設定端點金鑰](../media/qnamaker-how-to-key-management/Endpoint-keys1.png)](../media/qnamaker-how-to-key-management/Endpoint-keys1.png#lightbox)
+    > ![端點金鑰管理員](../media/qnamaker-how-to-key-management/Endpoint-keys1.png)
 
     >[!NOTE]
     >如果您認為金鑰已遭盜用，請重新整理。 為此，您可能需要對用戶端應用程式或 Bot 程式碼進行對應的變更。
-
-## <a name="share-existing-services-with-qna-maker"></a>與 QnA Maker 共用現有的服務
-
-QnA Maker 會建立數個 Azure 資源。 若要減少管理和受益于成本共用，請使用下表來瞭解您可以和無法共用的內容：
-
-|服務|共用|原因|
-|--|--|--|
-|辨識服務|X|設計不可行|
-|App Service 方案|✔|已修正配置給 App Service 方案的磁碟空間。 如果其他共用相同 App Service 方案的應用程式使用大量磁碟空間，QnAMaker App Service 實例就會發生問題。|
-|App Service|X|設計不可行|
-|Application Insights|✔|可以共用|
-|搜尋服務|✔|1. `testkb` 是 QnAMaker 服務的保留名稱;不能供其他人使用。<br>2. 依名稱 `synonym-map` 的同義字對應會保留給 QnAMaker 服務。<br>3. 已發佈的知識庫數目會受到搜尋服務層級的限制。 如果有可用的索引，其他服務就可以使用它們。|
-
-深入瞭解[App service](../../../app-service/index.yml)和[Search 服務](../../../search/index.yml)。
-
-## <a name="using-a-single-search-service"></a>使用單一搜尋服務
-
-如果您透過入口網站建立 QnA 服務及其相依性（例如搜尋），系統就會為您建立搜尋服務，並連結至 QnA Maker 服務。 建立這些資源之後，您可以更新 App Service 設定，以使用先前現有的搜尋服務，並移除您剛建立的搜尋服務。
-
-如果您透過 Azure Resource Manager 範本建立 QnA 服務，您可以建立所有資源，並控制 App Service 建立，以使用現有的搜尋服務。
-
-
-## <a name="configure-qna-maker-to-use-different-cognitive-search-resource"></a>設定 QnA Maker 以使用不同的認知搜尋資源
-
-如果您透過入口網站建立 QnA 服務及其相依性（例如搜尋），系統就會為您建立搜尋服務，並連結至 QnA Maker 服務。 建立這些資源之後，您可以更新 App Service 設定，以使用先前現有的搜尋服務，並移除您剛建立的搜尋服務。
-
-QnA Maker 的**App Service**資源會使用認知搜尋資源。 為了變更 QnA Maker 所使用的認知搜尋資源，您必須變更 Azure 入口網站中的設定。
-
-1. 取得您想要 QnA Maker 使用之認知搜尋資源的系統**管理金鑰**和**名稱**。
-
-1. 登入[Azure 入口網站](https://portal.azure.com)並尋找與您的 QnA Maker 資源相關聯的**App Service** 。 這兩個都具有相同的名稱。
-
-1. 依序選取 [設定] 和 [**設定** **]。** 這會顯示 QnA Maker App Service 的所有現有設定。
-
-    > [!div class="mx-imgBorder"]
-    > [![顯示 App Service 設定的 Azure 入口網站螢幕擷取畫面](../media/qnamaker-how-to-upgrade-qnamaker/change-search-service-app-service-configuration.png)](../media/qnamaker-how-to-upgrade-qnamaker/change-search-service-app-service-configuration.png#lightbox)
-
-1. 變更下列索引鍵的值：
-
-    * **AzureSearchAdminKey**
-    * **AzureSearchName**
-
-1. 若要使用新的設定，您必須重新開機 App service。 選取 **[總覽**]，然後選取 [**重新開機**]。
-
-    > [!div class="mx-imgBorder"]
-    > [在設定變更之後，Azure 入口網站重新開機 App Service 的 ![螢幕擷取畫面](../media/qnamaker-how-to-upgrade-qnamaker/screenshot-azure-portal-restart-app-service.png)](../media/qnamaker-how-to-upgrade-qnamaker/screenshot-azure-portal-restart-app-service.png)
-
-如果您透過 Azure Resource Manager 範本建立 QnA 服務，您可以建立所有資源，並控制 App Service 建立，以使用現有的搜尋服務。
-
-## <a name="upgrade-qna-maker"></a>升級 QnA Maker
-
-|升級|原因|
-|--|--|
-|[升級](#upgrade-qna-maker-sku)QnA Maker 管理 SKU|您想要在知識庫中有更多問題和答案。|
-|[升級](#upgrade-app-service)App Service SKU|您的知識庫需要為來自用戶端應用程式的更多要求提供服務，例如聊天機器人。|
-|[升級](#upgrade-the-azure-cognitive-search-service)Azure 認知搜尋服務|您打算有許多知識庫。|
-
 
 ### <a name="upgrade-qna-maker-sku"></a>升級 QnA Maker SKU
 
@@ -216,23 +145,49 @@ QnA Maker 的**App Service**資源會使用認知搜尋資源。 為了變更 Qn
 
 QnAMaker 執行時間是您在 Azure 入口網站中[建立 QnAMaker 服務](./set-up-qnamaker-service-azure.md)時所部署 Azure App Service 實例的一部分。 執行階段會定期進行更新。 2019年4月網站延伸模組版本（第5版 +）之後，QnA Maker App Service 實例處於自動更新模式。 此更新的設計目的是要在升級期間處理零停機時間。
 
-您可以在 https://www.qnamaker.ai/UserSettings 檢查目前的版本。 如果您的版本早于版本5.x，則必須重新開機 App Service，才能套用最新的更新：
+您可以在 https://www.qnamaker.ai/UserSettings檢查目前的版本。 如果您的版本早于版本5.x，則必須重新開機 App Service，才能套用最新的更新：
 
 1. 在[Azure 入口網站](https://portal.azure.com)中，移至您的 QnAMaker 服務（資源群組）。
 
-    ![QnAMaker Azure 資源群組](../media/qnamaker-how-to-troubleshoot/qnamaker-azure-resourcegroup.png)
+    > [!div class="mx-imgBorder"]
+    > ![QnAMaker Azure 資源群組](../media/qnamaker-how-to-troubleshoot/qnamaker-azure-resourcegroup.png)
 
 1. 選取 [App Service] 實例，然後開啟 [**總覽**] 區段。
 
-    ![QnAMaker App Service 實例](../media/qnamaker-how-to-troubleshoot/qnamaker-azure-appservice.png)
+    > [!div class="mx-imgBorder"]
+    > ![QnAMaker App Service 實例](../media/qnamaker-how-to-troubleshoot/qnamaker-azure-appservice.png)
+
 
 1. 重新開機 App Service。 更新程式應該會在幾秒內完成。 在此重新開機期間，使用者將無法使用此 QnAMaker 服務的任何相依應用程式或 bot。
 
     ![重新開機 QnAMaker App Service 實例](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-restart.png)
 
-## <a name="management-service-region"></a>管理服務區域
+## <a name="configure-qna-maker-to-use-different-cognitive-search-resource"></a>設定 QnA Maker 以使用不同的認知搜尋資源
 
-QnA Maker 的管理服務僅適用于 QnA Maker 入口網站，以及用於初始資料處理。 此服務僅適用于美國西部區域。 此美國西部服務中不會儲存任何客戶資料。
+如果您透過入口網站建立 QnA 服務及其相依性（例如搜尋），系統就會為您建立搜尋服務，並連結至 QnA Maker 服務。 建立這些資源之後，您可以更新 App Service 設定，以使用先前現有的搜尋服務，並移除您剛建立的搜尋服務。
+
+QnA Maker 的**App Service**資源會使用認知搜尋資源。 為了變更 QnA Maker 所使用的認知搜尋資源，您必須變更 Azure 入口網站中的設定。
+
+1. 取得您想要 QnA Maker 使用之認知搜尋資源的系統**管理金鑰**和**名稱**。
+
+1. 登入[Azure 入口網站](https://portal.azure.com)並尋找與您的 QnA Maker 資源相關聯的**App Service** 。 這兩個都具有相同的名稱。
+
+1. 依序選取 [設定] 和 [**設定** **]。** 這會顯示 QnA Maker App Service 的所有現有設定。
+
+    > [!div class="mx-imgBorder"]
+    > ![Azure 入口網站的螢幕擷取畫面，其中顯示 App Service 的 configuration 設定](../media/qnamaker-how-to-upgrade-qnamaker/change-search-service-app-service-configuration.png)
+
+1. 變更下列索引鍵的值：
+
+    * **AzureSearchAdminKey**
+    * **AzureSearchName**
+
+1. 若要使用新的設定，您必須重新開機 App service。 選取 **[總覽**]，然後選取 [**重新開機**]。
+
+    > [!div class="mx-imgBorder"]
+    > 在設定變更後，Azure 入口網站重新開機 App Service 的 ![螢幕擷取畫面](../media/qnamaker-how-to-upgrade-qnamaker/screenshot-azure-portal-restart-app-service.png)
+
+如果您透過 Azure Resource Manager 範本建立 QnA 服務，您可以建立所有資源，並控制 App Service 建立，以使用現有的搜尋服務。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -3,12 +3,12 @@ title: 限制和界限 - QnA Maker
 description: QnA Maker 知識庫和服務的某些部分有中繼資料的限制。 請務必將您的知識庫保持在這些限制範圍內，以便進行測試及發佈。
 ms.topic: article
 ms.date: 02/14/2020
-ms.openlocfilehash: 7fdf45a4a22f6d9ffe123f5998592739402be55f
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: ba53513f21cfc2a4f16fe17decdf0df41570201c
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77252003"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650362"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker 知識庫的限制和界限
 
@@ -55,7 +55,7 @@ ms.locfileid: "77252003"
 
 ## <a name="metadata-limits"></a>中繼資料限制
 
-會儲存中繼資料，並以小寫形式進行比較。
+中繼資料是以文字為基礎的索引鍵：值配對來呈現，例如 `product:windows 10`。 它會儲存並在小寫中進行比較。
 
 ### <a name="by-azure-cognitive-search-pricing-tier"></a>Azure 認知搜尋定價層
 
@@ -71,8 +71,8 @@ ms.locfileid: "77252003"
 
 |Item|允許的字元|Regex 模式比對|最大字元數|
 |--|--|--|--|
-|名稱|可讓<br>英數位元（字母和數位）<br>`_` （底線）|`^[a-zA-Z0-9_]+$`|100|
-|值|允許以外的所有專案<br>`:` （冒號）<br>`|` （垂直管道）|`^[^:|]+$`|500|
+|名稱（索引鍵）|可讓<br>英數位元（字母和數位）<br>`_` （底線）<br> 不得包含空格。|`^[a-zA-Z0-9_]+$`|100|
+|值|允許以外的所有專案<br>`:` （冒號）<br>`|` （垂直管道）<br>只允許一個值。|`^[^:|]+$`|500|
 |||||
 
 ## <a name="knowledge-base-content-limits"></a>知識庫的內容限制
@@ -103,4 +103,4 @@ ms.locfileid: "77252003"
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解何時及如何變更[服務定價層](How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker)。
+瞭解何時及如何變更[服務定價層](How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku)。

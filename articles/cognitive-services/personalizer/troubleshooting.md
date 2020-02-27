@@ -2,14 +2,14 @@
 title: 疑難排解-個人化工具
 description: 本文包含有關個人化工具常見問題的解答。
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 02/26/2020
 ms.author: diberry
-ms.openlocfilehash: fec403da7f54098dbf197d14f3b16afd30bf5efc
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 432b33243bdb38cf359d4fea1a336500eb244464
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77469539"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650515"
 ---
 # <a name="personalizer-troubleshooting"></a>個人化工具疑難排解
 
@@ -32,6 +32,19 @@ ms.locfileid: "77469539"
 </details>
 
 ## <a name="learning-loop"></a>學習迴圈
+
+<details>
+<summary>
+<b>學習迴圈不會在沒有個人化工具的情況下，達到與系統之間的100% 比對。如何? 修正此問題嗎？</b></summary>
+
+**答**：您無法透過學習迴圈達成目標的原因如下：
+* 使用排名 API 呼叫傳送的功能不足
+* 已傳送的功能中的 bug-例如將非匯總功能資料（例如時間戳記）傳送到排名 API
+* 具有迴圈處理的 bug-例如，未傳送報酬資料給事件的獎勵 API
+
+若要修正此問題，您必須變更傳送到迴圈的功能，或確定報酬是對排名回應品質的正確評估。
+
+</details>
 
 <details>
 <summary>
@@ -91,7 +104,7 @@ ms.locfileid: "77469539"
 <details>
 <summary><b>如何? 匯入學習原則嗎？</b></summary>
 
-**答**：深入瞭解[學習原則概念](concept-active-learning.md#understand-learning-policy-settings)，以及[如何](how-to-learning-policy.md)套用新的學習原則。 如果您不想要選取學習原則，可以使用[離線評估](how-to-offline-evaluation.md)，根據您目前的事件來建議學習原則。
+**答**：深入瞭解[學習原則概念](concept-active-learning.md#understand-learning-policy-settings)，以及[如何](how-to-manage-model.md)套用新的學習原則。 如果您不想要選取學習原則，可以使用[離線評估](how-to-offline-evaluation.md)，根據您目前的事件來建議學習原則。
 
 </details>
 

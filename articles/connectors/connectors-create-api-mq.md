@@ -9,12 +9,12 @@ ms.reviewer: valthom, logicappspm
 ms.topic: article
 ms.date: 06/19/2019
 tags: connectors
-ms.openlocfilehash: 489f53a4f4c1c0d5bd782f42a9daf73217234793
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 6bfd626c1ce69029ee720d24b0b143e7b4c3dd56
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118044"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650942"
 ---
 # <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>從 Azure Logic Apps 連接到 IBM MQ server
 
@@ -28,7 +28,7 @@ IBM MQ connector 包含這些動作，但不提供任何觸發程式：
 - 接收一批訊息，並從 IBM MQ server 刪除訊息
 - 將單一訊息傳送至 IBM MQ server
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 如果您使用內部部署 MQ 伺服器，請將內部[部署資料閘道安裝](../logic-apps/logic-apps-gateway-install.md)在您網路內的伺服器上。 安裝內部部署資料閘道的伺服器也必須安裝 .NET Framework 4.6，MQ connector 才能正常操作。 您也必須在 Azure 中為內部部署資料閘道建立資源。 如需詳細資訊，請參閱[設定資料閘道聯](../logic-apps/logic-apps-gateway-connection.md)機。
 
@@ -66,7 +66,7 @@ IBM MQ connector 包含這些動作，但不提供任何觸發程式：
    
       您的連線如下列範例所示：
 
-      ![連接屬性](media/connectors-create-api-mq/Connection_Properties.png)
+      ![Connection Properties](media/connectors-create-api-mq/Connection_Properties.png)
 
 1. 設定動作的屬性：
 
@@ -134,7 +134,10 @@ IBM MQ connector 包含這些動作，但不提供任何觸發程式：
 
 ## <a name="connector-reference"></a>連接器參考
 
-如需有關動作和限制的技術詳細資訊（由連接器的 OpenAPI （先前稱為 Swagger）描述所描述），請參閱連接器的[參考頁面](/connectors/mq/)。
+如需此連接器的更多技術詳細資料，例如連接器的 Swagger 檔案所描述的觸發程式、動作和限制，請參閱[連接器的參考頁面](https://docs.microsoft.com/connectors/mq/)。
+
+> [!NOTE]
+> 對於[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的邏輯應用程式，此連接器的 ise 標記版本會使用[ISE 訊息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
 
 ## <a name="next-steps"></a>後續步驟
 

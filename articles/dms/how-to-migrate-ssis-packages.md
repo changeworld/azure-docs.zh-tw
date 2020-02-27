@@ -3,21 +3,21 @@ title: 將 SSIS 套件重新部署到 SQL 單一資料庫
 titleSuffix: Azure Database Migration Service
 description: 瞭解如何使用 Azure 資料庫移轉服務和 Data Migration Assistant，將 SQL Server Integration Services 封裝和專案遷移或重新部署至 Azure SQL Database 單一資料庫。
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 06/08/2019
-ms.openlocfilehash: b1889410a6c6925ebba5632a08c34bc967ced627
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/20/2020
+ms.openlocfilehash: 90a39b8fe3604a05f1d35a875ae4e34491b47d72
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437978"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648524"
 ---
 # <a name="redeploy-ssis-packages-to-azure-sql-database-with-azure-database-migration-service"></a>使用 Azure 資料庫移轉服務將 SSIS 套件重新部署到 Azure SQL Database
 
@@ -34,7 +34,7 @@ ms.locfileid: "75437978"
 > * 評估來源 SSIS 專案/套件。
 > * 將 SSIS 專案/套件遷移至 Azure。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成這些步驟，您需要：
 

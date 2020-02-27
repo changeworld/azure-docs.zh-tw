@@ -2,13 +2,13 @@
 title: ACR 工作概觀
 description: ACR 工作簡介，這是 Azure Container Registry 中的一套功能，可在雲端中提供安全、自動化的容器映射組建、管理和修補。
 ms.topic: article
-ms.date: 09/05/2019
-ms.openlocfilehash: f8ab3c3bd259f83a61d0b030a49e158ccd6e2a69
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.date: 01/22/2020
+ms.openlocfilehash: cb5f0a71c31c26d679efd8a17b360dab2ad0862b
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938885"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615944"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>使用 ACR 工作自動化容器映射組建和維護
 
@@ -56,7 +56,7 @@ ACR 工作支援數種建立和維護容器映射和其他成品的案例。 如
 
 當您將 Git 存放庫設定為工作的內容時，ACR 工作支援下列觸發程式：
 
-| 觸發程序 | 預設為啟用 |
+| 觸發程序 | 預設啟用 |
 | ------- | ------------------ |
 | Commit | 是 |
 | 提取要求 | 否 |
@@ -70,26 +70,12 @@ ACR 工作支援數種建立和維護容器映射和其他成品的案例。 如
 
 ## <a name="automate-os-and-framework-patching"></a>自動進行作業系統和架構修補
 
-「ACR 工作」之所以能夠真正增強您的容器建置工作流程，是因為它能夠偵測基底映像的更新。 當更新的基底映射推送至您的登錄，或在公用儲存機制（例如 Docker Hub）中更新基底映射時，ACR 工作可以根據它自動建立任何應用程式映射。
+真正加強容器組建工作流程的 ACR 工作功能，是因為它能夠偵測到*基底映射*的更新。 大部分容器映射的功能，基底映射是一或多個應用程式映射所依據的父映射。 基底映射通常包含作業系統，有時是應用程式架構。 
 
-容器映像可概括地分類為「基底」映像和「應用程式」映像。 您的基底映像通常包含您的應用程式建置所在的作業系統和應用程式架構，以及其他自訂項目。 這些基底映射本身通常是以公用上游映射為基礎，例如： [Alpine Linux][base-alpine]、 [Windows][base-windows]、 [.net][base-dotnet]或[node.js][base-node]。 您有數個應用程式映像可能會共用一個通用基底映像。
+建立應用程式映射時，您可以設定 ACR 工作來追蹤基底映射的相依性。 當更新的基底映射推送至您的登錄，或在公用儲存機制（例如 Docker Hub）中更新基底映射時，ACR 工作可以根據它自動建立任何應用程式映射。
+透過這個自動偵測和重建功能，「ACR 工作」便可讓您針對參考已更新之基底映像的每個應用程式映像，省下手動追蹤及更新通常所需的時間與精力。
 
-當上游維護程式 (例如重要 OS 安全性修補程式) 更新作業系統或應用程式架構映像時，您也必須更新您的基底映像以包含重要修正。 接著，還必須重建每個應用程式映像，以包含現在包含在基底映像中的這些上游修正。
-
-由於「ACR 工作」會在建置容器映像時動態地探索基底映像相依性，因此它可以偵測到應用程式映像的基底映像何時更新。 「ACR 工作」會接著使用一個預先設定的[建置工作](container-registry-tutorial-base-image-update.md#create-a-task)，為您**自動重建每個應用程式映像**。 透過這個自動偵測和重建功能，「ACR 工作」便可讓您針對參考已更新之基底映像的每個應用程式映像，省下手動追蹤及更新通常所需的時間與精力。
-
-針對來自 Dockerfile 的映射組建，當基底映射位於下列其中一個位置時，ACR 工作會追蹤基底映射更新：
-
-* 執行工作所在的相同 Azure 容器登錄
-* 相同區域中的其他 Azure 容器登錄 
-* Docker Hub 中的公用存放庫
-* Microsoft 容器登錄中的公用存放庫
-
-> [!NOTE]
-> * 預設會在 ACR 工作中啟用基底映射更新觸發程式。 
-> * 目前，ACR 工作只會追蹤應用程式（*運行*時間）映射的基底映射更新。 ACR 工作不會追蹤用於多階段 Dockerfile 之中繼（*buildtime*）映射的基底映射更新。 
-
-在第三個 ACR 工作教學課程中深入瞭解 OS 和架構修補、[使用 Azure Container Registry 工作自動化基底映射更新上的映射組建](container-registry-tutorial-base-image-update.md)。
+深入瞭解 ACR 工作的[基底映射更新觸發](container-registry-tasks-base-images.md)程式。 並瞭解如何在基底映射推送至容器登錄時觸發映射組建，教學課程會在[Azure container registry 中更新基底映射時自動執行容器映射組建](container-registry-tutorial-base-image-update.md)
 
 ## <a name="schedule-a-task"></a>排程工作
 
@@ -116,7 +102,7 @@ ACR 工作支援數種建立和維護容器映射和其他成品的案例。 如
 
 下表顯示「ACR 工作」的幾個所支援內容位置範例：
 
-| 內容位置 | 說明 | 範例 |
+| 內容位置 | 描述 | 範例 |
 | ---------------- | ----------- | ------- |
 | 本機檔案系統 | 本機檔案系統上目錄內的檔案。 | `/home/user/projects/myapp` |
 | GitHub 主要分支 | 公用或私人 GitHub 存放庫之主要（或其他預設）分支內的檔案。  | `https://github.com/gituser/myapp-repo.git` |

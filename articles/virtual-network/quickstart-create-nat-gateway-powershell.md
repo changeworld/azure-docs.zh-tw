@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: d2df67479d8b6ab490bf06bda1ec033f9bf7866e
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: fadf42e7bd7d754dea64542f06866a439eb460ec
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77429119"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588751"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立 NAT 閘道
 
@@ -34,9 +34,6 @@ ms.locfileid: "77429119"
 您可以使用 Azure Cloud Shell 完成本教學課程，或在本機執行命令。  如果您尚未使用 Azure Cloud Shell，請[立即登入](https://shell.azure.com)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-> [!IMPORTANT]
-> 在您的訂用帳戶上[啟用虛擬網路 NAT 預覽版](./nat-overview.md#enable-preview)之後，請使用 https://aka.ms/natportal 來存取入口網站。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 

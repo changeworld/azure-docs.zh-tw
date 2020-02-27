@@ -8,45 +8,61 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 02/14/2020
+ms.date: 02/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: e814d9be4a0db2852bd9e21f3d3c1d54a45bd268
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 99a2f32c3f76d7fec475c9b299f7208b4db29cfe
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368639"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650918"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>使用 Azure 時間序列深入解析為事件塑形
 
-本文可協助您塑造 JSON 檔案以進行內嵌，並將 Azure 時間序列深入解析預覽查詢的效率發揮到極致。
+本文定義最佳做法來塑造您的 JSON 承載，以便在 Azure 時間序列深入解析中進行內嵌，並將預覽查詢的效率最大化。
 
 ## <a name="best-practices"></a>最佳作法
 
-考慮如何將事件傳送至時間序列深入解析 Preview。 也就是說，您應該一律：
+最好仔細考慮如何將事件傳送至您的時間序列深入解析預覽環境。 
+
+一般最佳作法包括：
 
 * 盡可能有效率地透過網路傳送資料。
 * 以可協助您針對您的案例更適當地彙總資料的方式存放資料。
 
-若要獲得最佳查詢效能，請執行下列動作：
+為了獲得最佳查詢效能，請遵守下列經驗法則：
 
-* 請勿傳送不必要的屬性。 時間序列深入解析預覽版會根據您的使用量向您收費。 最好存放並存取您將查詢的資料。
-* 為統計資料使用執行個體欄位。 此實務可協助您避免透過網路傳送統計資料。 實例欄位是時間序列模型的元件，其運作方式就像是時間序列深入解析服務中正式推出的參考資料。 若要深入瞭解實例欄位，請參閱[時間序列模型](./time-series-insights-update-tsm.md)。
+* 請勿傳送不必要的屬性。 時間序列深入解析依使用量預覽帳單。 最好只儲存和處理您要查詢的資料。
+* 為統計資料使用執行個體欄位。 這種作法有助於避免透過網路傳送靜態資料。 實例欄位是時間序列模型的元件，其運作方式就像是時間序列深入解析服務中正式推出的參考資料。 若要深入瞭解實例欄位，請參閱[時間序列模型](./time-series-insights-update-tsm.md)。
 * 在兩個或更多事件之間共用維度屬性。 此實務可協助您更有效率地透過網路傳送資料。
 * 請勿使用深層陣列巢狀結構。 時間序列深入解析 Preview 最多支援兩個包含物件的嵌套陣列層級。 時間序列深入解析會將訊息中的陣列壓平合併為具有屬性值組的多個事件。
 * 如果所有或大部分的事件只存在少數的量值，最好將這些量值當作相同物件內的個別屬性來傳送。 將它們分開傳送可減少事件數目，而且可能會改善查詢效能，因為需要處理的事件較少。
 
-在內嵌期間，包含嵌套的承載將會壓平合併，讓資料行名稱是具有 delineator 的單一值。 時間序列深入解析 Preview 會使用略圖的底線。 請注意，這是已使用的產品 GA 版本所做的變更。 在預覽期間，簡維會有警告，如下列第二個範例所示。
+## <a name="column-flattening"></a>資料行簡維
 
-## <a name="examples"></a>範例
+在內嵌期間，包含嵌套物件的承載將會壓平合併，讓資料行名稱是具有 delineator 的單一值。
 
-下列範例是以兩部或多部裝置傳送度量或訊號的案例為基礎。 測量或信號可以是*流動率*、*引擎石油壓力*、*溫度*和*濕度*。
+* 例如，下列的嵌套 JSON：
 
-在此範例中，有一個 Azure IoT 中樞訊息，其中外部陣列包含通用維度值的共用區段。 外部陣列使用時間序列執行個體資料來提高訊息的效率。 
+   ```JSON
+   "data": {
+        "flow": 1.0172575712203979,
+   },
+   ```
 
-時間序列實例包含裝置中繼資料。 此中繼資料不會隨著每個事件而變更，但它會提供有用的資料分析屬性。 若要節省透過網路傳送的位元組，並讓訊息更有效率，請考慮批次處理通用維度值，並使用時間序列實例中繼資料。
+   會變成：壓平合併時 `data_flow`。
 
-### <a name="example-1"></a>範例 1：
+> [!IMPORTANT]
+> * Azure 時間序列深入解析 Preview 會使用底線（`_`）來略圖資料行。
+> * 請注意，與正式運作的差異會改為使用句點（`.`）。
+
+更複雜的案例如下所示。
+
+#### <a name="example-1"></a>範例 1：
+
+下列案例有兩個（或更多）裝置，可傳送測量（信號）：*流動率*、*引擎石油壓力*、*溫度*和*濕度*。
+
+有一個傳送的單一 Azure IoT 中樞訊息，其中外部陣列包含通用維度值的共用區段（請注意訊息中包含的兩個裝置專案）。
 
 ```JSON
 [
@@ -77,10 +93,23 @@ ms.locfileid: "77368639"
 ]
 ```
 
-### <a name="time-series-instance"></a>時間序列執行個體 
+**優點**
+
+* 範例 JSON 具有外部陣列，其使用[時間序列實例](./time-series-insights-update-tsm.md#time-series-model-instances)資料來提高訊息的效率。 即使時間序列實例裝置中繼資料不太可能變更，它通常會提供有用的資料分析屬性。
+
+* JSON 會將兩個或多個訊息（每個裝置一個）合併成一段時間後的頻寬儲存。
+
+* 每個裝置的個別數列資料點會合並成單一**數列**屬性，以減少持續串流每個裝置更新的需求。
+
+> [!TIP]
+> 若要減少傳送資料和讓遙測更有效率所需的訊息數目，請考慮將通用維度值和時間序列實例中繼資料批次處理成單一 JSON 承載。
+
+#### <a name="time-series-instance"></a>時間序列執行個體 
+
+讓我們進一步瞭解如何使用[時間序列實例](./time-series-insights-update-tsm.md#time-series-model-instances)，以更理想的方式塑造您的 JSON。 
 
 > [!NOTE]
-> 時間序列識別碼是 *deviceId*。
+> 以下的[時間序列識別碼](./time-series-insights-update-how-to-id.md)為*deviceIds*。
 
 ```JSON
 [
@@ -115,7 +144,7 @@ ms.locfileid: "77368639"
 ]
 ```
 
-時間序列深入解析預覽版會在查詢期間聯結資料表 (在壓平之後)。 該資料表包括額外的資料行，例如**類型**。 下列範例會示範如何[塑造](./time-series-insights-send-events.md#supported-json-shapes)您的遙測資料。
+時間序列深入解析預覽版會在查詢期間聯結資料表 (在壓平之後)。 該資料表包括額外的資料行，例如**類型**。
 
 | deviceId  | 類型 | L1 | L2 | timestamp | series_Flow 速率 rate ft3/秒 | series_Engine 石油壓力 psi |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
@@ -123,18 +152,20 @@ ms.locfileid: "77368639"
 | `FXXX` | Default_Type | SIMULATOR |   Battery System |    2018-01-17T01:17:00Z | 2.445906400680542 |  49.2 |
 | `FYYY` | LINE_DATA    COMMON | SIMULATOR |    Battery System |    2018-01-17T01:18:00Z | 0.58015072345733643 |    22.2 |
 
-在上面的範例中，請注意下列各點：
+> [!NOTE]
+>  上表代表[時間序列預覽瀏覽器](./time-series-insights-update-explorer.md)中的查詢檢視。
 
-* 統計屬性是存放在時間序列深入解析預覽版中，以最佳化透過網路傳素的資料。
+**優點**
+
+* 在上述範例中，靜態屬性會儲存在時間序列深入解析預覽中，以優化透過網路傳送的資料。
 * 時間序列深入解析預覽資料會透過實例中所定義的時間序列識別碼，在查詢時聯結。
 * 會使用兩層的嵌套。 此數位是時間序列深入解析 Preview 支援的最多。 請務必避免巢狀結構很深的陣列。
 * 因為有一些量值，它們會在相同的物件中以不同的屬性傳送。 在範例中， **Series_Flow 速率 psi**， **series_Engine 石油壓力 psi**，而**series_Flow 速率 rate ft3/s**是唯一的資料行。
 
 >[!IMPORTANT]
 > 實例欄位不會與遙測一起儲存。 它們會與中繼資料一起儲存在時間序列模型中。
-> 上面的資料表代表查詢檢視。
 
-### <a name="example-2"></a>範例 2：
+#### <a name="example-2"></a>範例 2：
 
 請考慮下列 JSON：
 
@@ -148,12 +179,20 @@ ms.locfileid: "77368639"
   "data_flow" : 1.76435072345733643
 }
 ```
-在上述範例中，簡維 `data_flow` 屬性會顯示與 `data_flow` 屬性的命名衝突。 在此情況下，*最新*的屬性值會覆寫較舊的內容。 如果此行為在您的商務案例中呈現挑戰，請洽詢 TSI 小組。
+
+在上述範例中，簡維 `data["flow"]` 屬性會顯示與 `data_flow` 屬性的命名衝突。
+
+在此情況下，*最新*的屬性值會覆寫較舊的內容。 
+
+> [!TIP]
+> 如需更多協助，請洽詢時間序列深入解析小組！
 
 > [!WARNING] 
-> 如果因為簡維或另一個機制而在相同的事件裝載中出現重複的屬性，則會儲存最新的屬性值，並即可任何先前的值。
-
+> * 如果因為簡維或另一個機制而在相同（單數）事件裝載中出現重複屬性，則會儲存最新的 > 屬性值，而不會覆寫任何先前的值。
+> * 合併事件的數列不會彼此覆寫。
 
 ## <a name="next-steps"></a>後續步驟
 
-若要將這些指導方針納入實務，請閱讀[Azure 時間序列深入解析預覽查詢語法](./time-series-insights-query-data-csharp.md)。 您將深入瞭解適用于資料存取時間序列深入解析預覽 REST API 的查詢語法。
+* 若要將這些指導方針納入實務，請閱讀[Azure 時間序列深入解析預覽查詢語法](./time-series-insights-query-data-csharp.md)。 您將深入瞭解適用于資料存取時間序列深入解析[預覽 REST API](https://docs.microsoft.com/rest/api/time-series-insights/preview)的查詢語法。
+
+* 結合 JSON 最佳做法與[如何使用時間序列模型](./time-series-insights-update-how-to-tsm.md)。

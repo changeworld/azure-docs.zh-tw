@@ -3,18 +3,18 @@ title: 部署資源的多個實例
 description: 使用 Azure Resource Manager 範本中的複製作業和陣列，多次部署資源類型。
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: 38b5bcd38e0dc8ba8c758e9aa8371857541ba55e
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: e90673504ceaccdc25a477e856defa77eed37d86
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210823"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620225"
 ---
 # <a name="resource-iteration-in-azure-resource-manager-templates"></a>Azure Resource Manager 範本中的資源反復專案
 
 本文說明如何在 Azure Resource Manager 範本中建立一個以上的資源實例。 藉由將**copy**元素新增至範本的 resources 區段，您可以動態設定要部署的資源數目。 您也可以避免重複範本語法。
 
-您也可以使用 copy 搭配[屬性](copy-properties.md)和[變數](copy-variables.md)。
+您也[可以使用 [](copy-properties.md)複製內容]、[[變數](copy-variables.md)] 和 [[輸出](copy-outputs.md)]。
 
 若需要指定是否要部署資源，請參閱[條件元素](conditional-resource-deployment.md)。
 
@@ -130,6 +130,8 @@ Copy 元素具有下列一般格式：
   "outputs": {}
 }
 ```
+
+如果您想要從已部署的資源傳回值，您可以使用[[輸出] 區段中的 [複製](copy-outputs.md)]。
 
 ## <a name="serial-or-parallel"></a>序列或平行
 
@@ -279,7 +281,10 @@ mode 屬性也接受**平行**，這是預設值。
 ## <a name="next-steps"></a>後續步驟
 
 * 如須逐步瀏覽教學課程，請參閱[教學課程：使用 Resource Manager 範本建立多個資源執行個體](template-tutorial-create-multiple-instances.md)。
-* 如需 copy 元素的其他用法，請參閱[Azure Resource Manager 範本中](copy-variables.md)Azure Resource Manager 範本和變數反復專案[中的屬性反復](copy-properties.md)專案。
+* 如需 copy 元素的其他用法，請參閱：
+  * [Azure Resource Manager 範本中的屬性反復專案](copy-properties.md)
+  * [Azure Resource Manager 範本中的變數反復專案](copy-variables.md)
+  * [Azure Resource Manager 範本中的輸出反復專案](copy-outputs.md)
 * 如需搭配使用複製與嵌套範本的詳細資訊，請參閱[使用複製](linked-templates.md#using-copy)。
 * 若要了解範本區段的相關資訊，請參閱[編寫 Azure Resource Manager 範本](template-syntax.md)。
 * 若要了解如何部署範本，請參閱 [使用 Azure 資源管理員範本部署應用程式](deploy-powershell.md)。

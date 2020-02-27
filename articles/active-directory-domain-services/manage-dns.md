@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: f47f112991a4fe2e5b245920db98e5ae7617161a
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 2694a5f250b746748a1b42ac4d211aa28ef1ebad
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704938"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613685"
 ---
 # <a name="administer-dns-in-an-azure-ad-domain-services-managed-domain"></a>管理 Azure AD Domain Services 受控網域中的 DNS
 
@@ -52,7 +52,7 @@ ms.locfileid: "74704938"
 1. 在 [伺服器管理員] 視窗的 [儀表板] 窗格內，選取 [新增角色及功能]。
 1. 在 [新增角色及功能精靈] 的 [開始之前] 頁面上，選取 [下一步]。
 1. 針對 [安裝類型]，保持勾選 [角色型或功能型安裝] 選項，然後選取 [下一步]。
-1. 在 [**伺服器選擇**] 頁面上，從伺服器集區中選擇目前的 VM，例如*myvm.aadds.contoso.com*，然後選取 **[下一步]** 。
+1. 在 [**伺服器選擇**] 頁面上，從伺服器集區中選擇目前的 VM，例如*myvm.aaddscontoso.com*，然後選取 **[下一步]** 。
 1. 在 [伺服器角色] 頁面上，按 [下一步]。
 1. 在 [功能] 頁面上，展開 [遠端伺服器管理工具] 節點，然後展開 [角色管理工具] 節點。 從角色管理工具清單中，選取 [DNS 伺服器工具] 功能。
 
@@ -69,7 +69,7 @@ ms.locfileid: "74704938"
 > 若要管理 Azure AD DS 受控網域中的 DNS，您必須登入屬於*AAD DC 系統管理員*群組成員的使用者帳戶。
 
 1. 從 [開始] 畫面中，選取 [系統**管理工具**]。 隨即會顯示可用的管理工具清單，包括上一節中所安裝的**DNS** 。 選取 [ **dns** ] 以啟動 dns 管理主控台。
-1. 在 [連線**到 DNS 伺服器**] 對話方塊中，選取 **[下列電腦**]，然後輸入受控網域的 DNS 功能變數名稱，例如*aadds.contoso.com*：
+1. 在 [連線**到 DNS 伺服器**] 對話方塊中，選取 **[下列電腦**]，然後輸入受控網域的 DNS 功能變數名稱，例如*aaddscontoso.com*：
 
     ![連接到 DNS 主控台中的 Azure AD DS 受控網域](./media/active-directory-domain-services-admin-guide/dns-console-connect-to-domain.png)
 

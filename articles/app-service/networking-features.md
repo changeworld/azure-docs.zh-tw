@@ -4,15 +4,15 @@ description: 瞭解 Azure App Service 中的網路功能，以及您的網路需
 author: ccompy
 ms.assetid: 5c61eed1-1ad1-4191-9f71-906d610ee5b7
 ms.topic: article
-ms.date: 05/28/2019
+ms.date: 02/27/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 208bf37bfcdf0f86fad11611279d1b4e642fb18a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0fd904b15a830e2b261057a11d1a8f3a4d584fe1
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74971752"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649221"
 ---
 # <a name="app-service-networking-features"></a>App Service 網路功能
 
@@ -26,9 +26,9 @@ Azure App Service 是分散式系統。 處理傳入 HTTP/HTTPS 要求的角色�
 
 | 輸入功能 | 輸出功能 |
 |---------------------|-------------------|
-| 應用程式指派的位址 | 混合式連接 |
+| 應用程式指派的位址 | 混合式連線 |
 | 存取限制 | 閘道所需的 VNet 整合 |
-| 服務端點 | VNet 整合（預覽） |
+| 服務端點 | VNet 整合 |
 
 除非另有說明，否則所有功能都可以一起使用。 您可以混用這些功能來解決各種問題。
 
@@ -55,8 +55,10 @@ Azure App Service 是分散式系統。 處理傳入 HTTP/HTTPS 要求的角色�
 | 存取相同區域中 Azure 虛擬網路中的資源 | VNet 整合 </br> ASE |
 | 在不同區域的 Azure 虛擬網路中存取資源 | 閘道所需的 VNet 整合 </br> ASE 和 VNet 對等互連 |
 | 存取以服務端點保護的資源 | VNet 整合 </br> ASE |
-| 存取未連線至 Azure 之私人網路中的資源 | 混合式連接 |
-| 跨 ExpressRoute 線路存取資源 | VNet 整合（目前僅限於 RFC 1918 位址） </br> ASE | 
+| 存取未連線至 Azure 之私人網路中的資源 | 混合式連線 |
+| 跨 ExpressRoute 線路存取資源 | VNet 整合 </br> ASE | 
+| 保護來自 web 應用程式的輸出流量 | VNet 整合和網路安全性群組 </br> ASE | 
+| 從您的 web 應用程式路由傳送輸出流量 | VNet 整合和路由表 </br> ASE | 
 
 
 ### <a name="default-networking-behavior"></a>預設網路功能行為
@@ -110,7 +112,7 @@ App Service 有數個用來管理服務的端點。  這些位址會在個別的
 
 在設定[服務端點存取限制][serviceendpoints]的教學課程中，您可以深入瞭解如何設定應用程式的服務端點
  
-### <a name="hybrid-connections"></a>混合式連接
+### <a name="hybrid-connections"></a>混合式連線
 
 App Service 混合式連線可讓您的應用程式對指定的 TCP 端點進行**輸出**呼叫。 端點可以是內部部署、在 VNet 中，或在埠443上允許對 Azure 輸出流量的任何位置。 此功能需要在 Windows Server 2012 或更新版本的主機上安裝稱為混合式連線管理員（HCM）的轉送代理程式。 HCM 必須能夠連線到埠443上的 Azure 轉送。 您可以從入口網站中的 App Service 混合式連線 UI 下載 HCM。 
 
@@ -146,15 +148,17 @@ App Service VNet 整合功能所需的閘道，可讓您的應用程式對 Azure
 
 ### <a name="vnet-integration"></a>VNet 整合
 
-閘道所需的 VNet 整合功能非常有用，但仍無法解決跨 ExpressRoute 存取資源的問題。 在需要跨越 ExpressRoute 連線的最上層，應用程式必須能夠呼叫服務端點保護的服務。 為了解決這兩個額外的需求，已新增另一個 VNet 整合功能。 新的 VNet 整合功能可讓您將應用程式的後端放在相同區域中 Resource Manager VNet 的子網中。 這項功能無法從已在 VNet 中的 App Service 環境使用。 這個功能可讓您：
+閘道所需的 VNet 整合功能非常有用，但仍無法解決跨 ExpressRoute 存取資源的問題。 在需要跨越 ExpressRoute 連線的最上層，應用程式必須能夠呼叫服務端點保護的服務。 為了解決這兩個額外的需求，已新增另一個 VNet 整合功能。 新的 VNet 整合功能可讓您將應用程式的後端放在相同區域中 Resource Manager VNet 的子網中。 這項功能無法從已在 VNet 中的 App Service 環境使用。 這項功能可讓：
 
 * 存取相同區域中 Resource Manager Vnet 中的資源
 * 存取以服務端點保護的資源 
 * 存取可跨 ExpressRoute 或 VPN 連線存取的資源
+* 保護所有輸出流量 
+* 強制通道所有輸出流量。 
 
 ![VNet 整合](media/networking-features/vnet-integration.png)
 
-這項功能目前為預覽狀態，不應該用於生產工作負載。 若要深入瞭解這項功能，請閱讀[App Service VNet 整合][vnetintegration]上的檔。
+若要深入瞭解這項功能，請閱讀[App Service VNet 整合][vnetintegration]上的檔。
 
 ## <a name="app-service-environment"></a>App Service 環境 
 

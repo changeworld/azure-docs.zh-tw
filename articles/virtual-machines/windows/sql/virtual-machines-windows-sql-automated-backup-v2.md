@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 009a480add9d808115f24a69a400118fec7cb293
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 458012982531e228f7c4968f29e79e8b2e29aa48
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790586"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651421"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Azure 虛擬機器的自動備份 v2 (Resource Manager)
 
@@ -31,7 +31,7 @@ ms.locfileid: "74790586"
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 若要使用「自動備份 v2」，請檢閱下列必要條件：
 
 **作業系統**：
@@ -64,7 +64,7 @@ ms.locfileid: "74790586"
 | 設定 | 範圍 (預設值) | 描述 |
 | --- | --- | --- |
 | **自動備份** | 啟用/停用 (已停用) | 針對執行 SQL Server 2016/2017 Developer、Standard 或 Enterprise 的 Azure VM，啟用或停用自動備份。 |
-| **保留期限** | 1-30 天 (30 天) | 保留備份的天數。 |
+| **保留週期** | 1-30 天 (30 天) | 保留備份的天數。 |
 | **儲存體帳戶** | Azure 儲存體帳戶 | 將自動備份檔案儲存在 Blob 儲存體中時，所使用的 Azure 儲存體帳戶。 這個位置會建立一個容器來儲存所有備份檔案。 備份檔案命名慣例包括日期、時間和資料庫 GUID。 |
 | **加密** |啟用/停用 (已停用) | 啟用或停用加密。 啟用加密時，用來還原備份的憑證會放在指定的儲存體帳戶中。 它會使用相同的「**自動備份**」容器，並具有相同的命名慣例。 如果密碼變更，就會以該密碼產生新的憑證，但是舊的憑證還是會保留，以還原先前的備份。 |
 | **密碼** |密碼文字 | 加密金鑰的密碼。 唯有啟用加密時，才需要此密碼。 若要還原加密的備份，您必須要有建立備份時所使用的正確密碼和相關憑證。 |
@@ -74,7 +74,7 @@ ms.locfileid: "74790586"
 | 設定 | 範圍 (預設值) | 描述 |
 | --- | --- | --- |
 | **系統資料庫備份** | 啟用/停用 (已停用) | 當啟用時，此功能會一併備份系統資料庫：Master、MSDB 及 Model。 針對 MSDB 和 Model 資料庫，如果您想要進行記錄備份，請確認它們處於完整復原模式。 針對 Master 是一律不進行記錄備份。 而針對 TempDB 則不進行任何備份。 |
-| **備份排程** | 手動/自動 (自動) | 預設會根據記錄的成長情況自動決定備份排程。 手動備份排程可讓使用者指定備份的時間範圍。 在此情況下，只會以指定的頻率且在特定一天的指定時間範圍期間進行備份。 |
+| **備份排程** | 手動/自動化 (自動化) | 預設會根據記錄的成長情況自動決定備份排程。 手動備份排程可讓使用者指定備份的時間範圍。 在此情況下，只會以指定的頻率且在特定一天的指定時間範圍期間進行備份。 |
 | **完整備份頻率** | 每天/每週 | 完整備份的頻率。 在這兩種情況下，完整備份都會在下一個排定的時間範圍期間開始進行。 選取 [每週] 時，備份可以跨多天，直到所有資料庫都已順利備份為止。 |
 | **完整備份開始時間** | 00:00 – 23:00 (01:00) | 可進行完整備份的特定一天開始時間期間。 |
 | **完整備份時間範圍** | 1 – 23 小時 (1 小時) | 可進行完整備份的特定一天時間範圍持續時間。 |
@@ -118,11 +118,7 @@ ms.locfileid: "74790586"
 > [!IMPORTANT]
 > 排定每天備份時，建議您排定較大的時間範圍，以確保可在此時間內完成所有資料庫的備份。 在您有大量資料需要備份的情況下，這點尤其重要。
 
-## <a name="configure-in-the-portal"></a>在入口網站中設定
-
-您可以在佈建期間或針對現有的 SQL Server 2016/2017 VM，使用 Azure 入口網站來設定「自動備份 v2」。
-
-## <a name="configure-for-new-vms"></a>設定新的 VM
+## <a name="configure-new-vms"></a>設定新的虛擬機器
 
 以 Resource Manager 部署模型建立新的「SQL Server 2016 或 2017 虛擬機器」時，請使用 Azure 入口網站來設定「自動備份 v2」。
 
@@ -146,7 +142,7 @@ ms.locfileid: "74790586"
 
 如果這是您第一次啟用「自動備份」，Azure 就會在背景中設定 SQL Server IaaS Agent。 在此期間，Azure 入口網站可能不會顯示已設定自動備份。 請等候幾分鐘的時間來安裝及設定代理程式。 之後，Azure 入口網站將會反映新的設定。
 
-## <a name="configure-with-powershell"></a>以 PowerShell 設定
+## <a name="configure-with-powershell"></a>使用 PowerShell 設定
 
 您可以使用 PowerShell 來設定「自動備份 v2」。 開始進行之前，您必須：
 
@@ -261,7 +257,7 @@ Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
 若要確認是否已套用您的設定，請[確認自動備份組態](#verifysettings)。
 
 ### <a name="disable-automated-backup"></a>停用自動備份
-若要停用自動備份，請執行相同的指令碼，但不要對 **New-AzVMSqlServerAutoBackupConfig** 命令使用 **-Enable** 參數。 沒有 **-Enable** 參數時即表示通知命令停用此功能。 和安裝一樣，可能需要幾分鐘的時間來停用自動備份。
+若要停用自動備份，請執行相同的指令碼，但不要對 **New-AzVMSqlServerAutoBackupConfig** 命令使用 **-Enable** 參數。 沒有 **-Enable** 參數時，即表示通知命令停用此功能。 和安裝一樣，可能需要幾分鐘的時間來停用自動備份。
 
 ```powershell
 $autobackupconfig = New-AzVMSqlServerAutoBackupConfig -ResourceGroupName $storage_resourcegroupname
@@ -332,9 +328,9 @@ Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
 ## <a name="next-steps"></a>後續步驟
 「自動備份 v2」會在 Azure VM 上設定受控備份。 因此，請務必 [檢閱受控備份的文件](https://msdn.microsoft.com/library/dn449496.aspx) ，以了解其行為和隱含意義。
 
-您可以在下列文章中找到 Azure VM 上 SQL Server 的其他備份和還原指引： [Azure 虛擬機器中的 SQL Server 備份和還原](virtual-machines-windows-sql-backup-recovery.md)。
+您可以在下列文章中找到 Azure VM 上 SQL Server 的其他備份和還原指引：[Azure 虛擬機器中的 SQL Server 備份和還原](virtual-machines-windows-sql-backup-recovery.md)。
 
-如需其他可用的自動化工作的相關資訊，請參閱 [SQL Server IaaS Agent 擴充功能](virtual-machines-windows-sql-server-agent-extension.md)。
+如需有關其他可用之自動化工作的資訊，請參閱 [SQL Server IaaS 代理程式擴充功能](virtual-machines-windows-sql-server-agent-extension.md)。
 
 如需有關在 Azure VM 上執行 SQL Server 的詳細資訊，請參閱 [Azure 虛擬機器上的 SQL Server 概觀](virtual-machines-windows-sql-server-iaas-overview.md)。
 

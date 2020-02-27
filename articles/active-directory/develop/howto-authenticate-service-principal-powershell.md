@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.date: 10/10/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
-ms.openlocfilehash: c6c07c48bf94b50d46a50a47f57857fdd15a0e8e
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 8e428732fb49d27e3991071b87abee53b6e375b2
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697229"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648375"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>操作說明：使用 Azure PowerShell 建立具有憑證的服務主體
 
@@ -50,7 +50,7 @@ ms.locfileid: "76697229"
 
 ## <a name="create-service-principal-with-self-signed-certificate"></a>使用自我簽署憑證建立服務主體
 
-下列範例涵蓋簡單的案例。 它會使用[new-azadserviceprincipal](/powershell/module/az.resources/new-azadserviceprincipal)來建立具有自我簽署憑證的服務主體，並使用[New-azurermroleassignment](/powershell/module/az.resources/new-azroleassignment)將「[讀取](/azure/role-based-access-control/built-in-roles#reader)者」角色指派給服務主體。 角色指派的範圍僅限於您目前所選的 Azure 訂用帳戶。 若要選取不同的訂用帳戶，請使用 [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext)。
+下列範例涵蓋簡單的案例。 它會使用[new-azadserviceprincipal](/powershell/module/az.resources/new-azadserviceprincipal)來建立具有自我簽署憑證的服務主體，並使用[New-azroleassignment](/powershell/module/az.resources/new-azroleassignment)將「[讀取](/azure/role-based-access-control/built-in-roles#reader)者」角色指派給服務主體。 角色指派的範圍僅限於您目前所選的 Azure 訂用帳戶。 若要選取不同的訂用帳戶，請使用 [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext)。
 
 > [!NOTE]
 > PowerShell Core 目前不支援 SelfSignedCertificate Cmdlet 和 PKI 模組。 

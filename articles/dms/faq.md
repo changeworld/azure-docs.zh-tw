@@ -2,21 +2,21 @@
 title: 常見問題-Azure 資料庫移轉服務
 description: 關於使用 Azure 資料庫移轉服務來執行資料庫移轉的常見問題。
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: f27d398af723a54443f531c05a503a5f2fbe13f6
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.date: 02/20/2020
+ms.openlocfilehash: a664f12843585ac7524cf8d51aef156d15d32504
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064830"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650976"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>使用 Azure 資料庫移轉服務的常見問題
 
@@ -88,7 +88,7 @@ Azure 資料庫移轉服務必要條件在所有支援的移轉案例中都是�
 **問：如何? 設定 Microsoft Azure 虛擬網路嗎？**
 雖然有多個 Microsoft 教學課程可引導您完成設定虛擬網路的程式，但官方檔會出現在[Azure 虛擬網路](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)一文。
 
-## <a name="usage"></a>使用方式
+## <a name="usage"></a>使用量
 
 **問：使用 Azure 資料庫移轉服務執行資料庫移轉所需步驟的摘要為何？**
 在典型的簡單資料庫移轉期間，您必須：

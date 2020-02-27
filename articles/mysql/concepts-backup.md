@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: d5941ef7ac2236137fada7202a8dd3cf2ebcc120
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 47fa4083c26f18149b0b69b05f2cfd0b227de868
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74776285"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619580"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>在適用於 MySQL 的 Azure 資料庫中備份與還原
 
@@ -20,6 +20,8 @@ ms.locfileid: "74776285"
 ## <a name="backups"></a>備份
 
 適用於 MySQL 的 Azure 資料庫會取得資料檔案和交易記錄檔的備份。 視支援的最大儲存體大小而定，我們會採用完整和差異備份（4 TB 的儲存體伺服器）或快照集備份（最多 16 TB 的儲存體伺服器）。 在您設定的備份保留期限內，這些備份可讓您將伺服器還原至任何時間點。 預設的備份保留期限是七天。 您可以[選擇性地將它](howto-restore-server-portal.md#set-backup-configuration)設定為最多35天。 所有備份皆會使用 AES 256 位元加密進行加密。
+
+無法匯出這些備份檔案。 備份只能用於適用於 MySQL 的 Azure 資料庫中的還原作業。 您可以使用[mysqldump](concepts-migrate-dump-restore.md)來複製資料庫。
 
 ### <a name="backup-frequency"></a>備份頻率
 
@@ -38,7 +40,7 @@ ms.locfileid: "74776285"
 
 例如，如果您已佈建的伺服器大小為 250 GB，您就能免費獲得 250 GB 的備份儲存體。 超過 250 GB 的儲存體則會收費。
 
-## <a name="restore"></a>還原
+## <a name="restore"></a>{1}還原{2}
 
 在適用於 MySQL 的 Azure 資料庫中，還原執行作業會從原始伺服器的備份中建立新的伺服器。
 
@@ -50,7 +52,7 @@ ms.locfileid: "74776285"
 預估的復原時間取決於數個因素，包括資料庫大小、交易記錄大小、網路頻寬，以及在相同區域中同時進行復原的資料庫總數。 復原時間通常不到 12 小時。
 
 > [!IMPORTANT]
-> 已刪除的伺服器**無法**還原。 如果您刪除伺服器，所有屬於該伺服器的資料庫也會一併刪除且無法復原。 若要在部署後避免伺服器資源遭到意外刪除或非預期的變更，系統管理員可以利用[管理鎖定](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)。
+> 已刪除的伺服器**無法**還原。 如果您刪除伺服器，所有屬於該伺服器的資料庫也會一併刪除，且無法復原。 若要在部署後避免伺服器資源遭到意外刪除或非預期的變更，系統管理員可以利用[管理鎖定](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)。
 
 ### <a name="point-in-time-restore"></a>時間點還原
 

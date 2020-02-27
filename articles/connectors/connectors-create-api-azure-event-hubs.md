@@ -7,18 +7,18 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 04/23/2019
 tags: connectors
-ms.openlocfilehash: a0ba747fcc3015df961aa40de794071828d73a33
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 32fa54ef0d8eccaf8745ee37cb028d4f3c6d73eb
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446174"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650873"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>使用 Azure 事件中樞與 Azure Logic Apps 監視、接收和傳送事件
 
 本文說明如何使用 Azure 事件中樞連接器，從邏輯應用程式內部監視和管理傳送至 [Azure 事件中樞](../event-hubs/event-hubs-what-is-event-hubs.md)的事件。 這樣一來，您就可以建立邏輯應用程式，來自動執行從事件中樞檢查、傳送和接收事件的工作和工作流程。 如需連接器特定的技術資訊，請參閱[Azure 事件中樞連接器參考](https://docs.microsoft.com/connectors/eventhubs/)</a>。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。 
 
@@ -74,7 +74,7 @@ ms.locfileid: "75446174"
 
    ![觸發程序屬性](./media/connectors-create-api-azure-event-hubs/event-hubs-trigger.png)
 
-   | 屬性 | 必要項 | 說明 |
+   | 屬性 | 必要 | 描述 |
    |----------|----------|-------------|
    | **事件中樞名稱** | 是 | 您想要監視的事件中樞名稱 |
    | **內容類型** | 否 | 事件的內容類型。 預設值為 `application/octet-stream`。 |
@@ -86,7 +86,7 @@ ms.locfileid: "75446174"
 
    **其他屬性**
 
-   | 屬性 | 必要項 | 說明 |
+   | 屬性 | 必要 | 描述 |
    |----------|----------|-------------|
    | **內容架構** | 否 | 要從事件中樞讀取之事件的 JSON 內容架構。 例如，如果您指定內容架構，則只能針對符合架構的事件觸發邏輯應用程式。 |
    | **最小分割區索引鍵** | 否 | 輸入要讀取的最小[分割區](../event-hubs/event-hubs-features.md#partitions)識別碼。 預設會讀取所有分割區。 |
@@ -130,7 +130,7 @@ ms.locfileid: "75446174"
 
    ![選取事件中樞名稱，並提供事件內容](./media/connectors-create-api-azure-event-hubs/event-hubs-send-event-action.png)
 
-   | 屬性 | 必要項 | 說明 |
+   | 屬性 | 必要 | 描述 |
    |----------|----------|-------------|
    | **事件中樞名稱** | 是 | 您要傳送事件的事件中樞 |
    | **內容** | 否 | 您要傳送事件的內容 |
@@ -152,7 +152,7 @@ ms.locfileid: "75446174"
 
 1. 當系統提示您需要連線資訊時，請提供以下詳細資料：
 
-   | 屬性 | 必要項 | 值 | 說明 |
+   | 屬性 | 必要 | 值 | 描述 |
    |----------|----------|-------|-------------|
    | **連接名稱** | 是 | <*connection-name*> | 要為連線建立的名稱 |
    | **事件中樞命名空間** | 是 | <*event-hubs-namespace*> | 選取您想要使用的事件中樞命名空間。 |
@@ -173,8 +173,11 @@ ms.locfileid: "75446174"
 
 ## <a name="connector-reference"></a>連接器參考
 
-如需如連接器的 OpenAPI （先前為 Swagger）檔案所述的技術詳細資料（例如觸發程式、動作和限制），請參閱[連接器的參考頁面](/connectors/eventhubs/)。
+如需連接器的 Swagger 檔案所敘述的技術詳細資料 (例如，觸發程序、動作和限制)，請參閱[連接器的參考頁面](https://docs.microsoft.com/connectors/eventhubs/)。
+
+> [!NOTE]
+> 對於[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的邏輯應用程式，此連接器的 ise 標記版本會使用[ISE 訊息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
 
 ## <a name="next-steps"></a>後續步驟
 
-了解其他 [Logic Apps 連接器](../connectors/apis-list.md)
+* 了解其他 [Logic Apps 連接器](../connectors/apis-list.md)

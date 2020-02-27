@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: be6b9c30fe462b0754ae5e5c1a7eeac242af00f1
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 02/25/2020
+ms.openlocfilehash: 3e6dfd5882e49ad903e8cff6f0ec7f3d6bd4a8b7
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769858"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619617"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫中的備份與還原-單一伺服器
 
@@ -20,6 +20,8 @@ ms.locfileid: "74769858"
 ## <a name="backups"></a>備份
 
 適用於 PostgreSQL 的 Azure 資料庫會取得資料檔案和交易記錄檔的備份。 視支援的最大儲存體大小而定，我們會採用完整和差異備份（4 TB 的儲存體伺服器）或快照集備份（最多 16 TB 的儲存體伺服器）。 在您設定的備份保留期限內，這些備份可讓您將伺服器還原至任何時間點。 預設的備份保留期限是七天。 可選擇設定的期限最多為 35 天。 所有備份皆會使用 AES 256 位元加密進行加密。
+
+無法匯出這些備份檔案。 備份只能用於適用於 PostgreSQL 的 Azure 資料庫中的還原作業。 您可以使用[pg_dump](howto-migrate-using-dump-and-restore.md)來複製資料庫。
 
 ### <a name="backup-frequency"></a>備份頻率
 
@@ -38,7 +40,7 @@ ms.locfileid: "74769858"
 
 例如，如果您已佈建的伺服器大小為 250 GB，您就能免費獲得 250 GB 的備份儲存體。 超過 250 GB 的儲存體則會收費。
 
-## <a name="restore"></a>還原
+## <a name="restore"></a>{1}還原{2}
 
 在適用於 PostgreSQL 的 Azure 資料庫中，還原執行作業會從原始伺服器的備份中建立新的伺服器。
 
@@ -50,7 +52,7 @@ ms.locfileid: "74769858"
 預估的復原時間取決於數個因素，包括資料庫大小、交易記錄大小、網路頻寬，以及在相同區域中同時進行復原的資料庫總數。 復原時間通常不到 12 小時。
 
 > [!IMPORTANT]
-> 已刪除的伺服器**無法**還原。 如果您刪除伺服器，所有屬於該伺服器的資料庫也會一併刪除且無法復原。 若要在部署後避免伺服器資源遭到意外刪除或非預期的變更，系統管理員可以利用[管理鎖定](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)。
+> 已刪除的伺服器**無法**還原。 如果您刪除伺服器，所有屬於該伺服器的資料庫也會一併刪除，且無法復原。 若要在部署後避免伺服器資源遭到意外刪除或非預期的變更，系統管理員可以利用[管理鎖定](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)。
 
 ### <a name="point-in-time-restore"></a>時間點還原
 
@@ -73,7 +75,7 @@ ms.locfileid: "74769858"
 從其中任何一種復原機制還原之後，您應執行下列工作，讓您的使用者和應用程式回復正常執行狀態︰
 
 - 如果新伺服器就會取代原始伺服器，則將用戶端和用戶端應用程式重新導向至新伺服器
-- 確定有適當的伺服器層級防火牆規則供使用者連線
+- 請確定已備妥適當的伺服器層級防火牆和 VNet 規則供使用者連接。 這些規則不會從源伺服器複製。
 - 確定有適當的登入和資料庫層級權限
 - 依適當情況設定警示
 

@@ -7,15 +7,18 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 08/22/2019
-ms.openlocfilehash: 9f72edecc07c34a0f176e52f6b70644f9ceb16e0
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.date: 02/27/2020
+ms.openlocfilehash: 0ce813e91750db3cdfa1e651a68fbb82d593eb32
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666698"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650552"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>在採用 Enterprise Integration Pack 的 Azure Logic Apps 中交換適用於 B2B 企業整合的 AS2 訊息
+
+> [!IMPORTANT]
+> 原始的 AS2 連接器即將淘汰，因此請確定您改用**AS2 （v2）** 連接器。 這個版本提供的功能與原始版本相同，是 Logic Apps 執行時間的原生，而且可在輸送量和訊息大小方面提供顯著的效能改進。 此外，原生 v2 連接器不會要求您建立與整合帳戶的連線。 相反地，如必要條件中所述，請務必將整合帳戶連結至您打算使用連接器的邏輯應用程式。
 
 若要在 Azure Logic Apps 中使用 AS2 訊息，您可以使用 AS2 連接器，它會提供用於管理 AS2 通訊的觸發程式和動作。 例如，若要在傳輸訊息時建立安全性和可靠性，您可以使用下列動作：
 
@@ -46,10 +49,7 @@ ms.locfileid: "75666698"
 
 本文說明如何將 AS2 編碼和解碼動作新增至現有的邏輯應用程式。
 
-> [!IMPORTANT]
-> 原始的 AS2 連接器即將淘汰，因此請確定您改用**AS2 （v2）** 連接器。 這個版本提供的功能與原始版本相同，是 Logic Apps 執行時間的原生，而且可在輸送量和訊息大小方面提供顯著的效能改進。 此外，原生 v2 連接器不會要求您建立與整合帳戶的連線。 相反地，如必要條件中所述，請務必將整合帳戶連結至您打算使用連接器的邏輯應用程式。
-
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -63,9 +63,9 @@ ms.locfileid: "75666698"
 
 * 如果您使用[Azure Key Vault](../key-vault/key-vault-overview.md)進行憑證管理，請檢查您的保存庫金鑰是否允許**加密**和**解密**作業。 否則，編碼和解碼動作會失敗。
 
-  在 Azure 入口網站中，移至您的金鑰保存庫，並查看保存庫金鑰的**允許作業**，並確認已選取 [**加密**] 和 [**解密**] 作業。
+  在 Azure 入口網站中，移至金鑰保存庫中的金鑰，檢查金鑰的**允許作業**，並確認已選取 [**加密**] 和 [**解密**] 作業，例如：
 
-  ![檢查保存庫金鑰作業](media/logic-apps-enterprise-integration-as2/vault-key-permitted-operations.png)
+  ![檢查保存庫金鑰作業](media/logic-apps-enterprise-integration-as2/key-vault-permitted-operations.png)
 
 <a name="encode"></a>
 
@@ -81,7 +81,7 @@ ms.locfileid: "75666698"
 
 1. 現在提供這些屬性的資訊：
 
-   | 屬性 | 說明 |
+   | 屬性 | 描述 |
    |----------|-------------|
    | **要編碼的訊息** | 訊息承載 |
    | **AS2 來源** | AS2 合約所指定之訊息寄件者的識別碼 |
@@ -91,6 +91,9 @@ ms.locfileid: "75666698"
    例如：
 
    ![訊息編碼屬性](./media/logic-apps-enterprise-integration-as2/as2-message-encoding-details.png)
+
+> [!TIP]
+> 如果您在傳送已簽署或已加密的訊息時遇到問題，請考慮嘗試不同的 SHA256 演算法格式。 AS2 規格不會提供 SHA256 格式的任何相關資訊，因此每個提供者都會使用自己的實作為或格式。
 
 <a name="decode"></a>
 
@@ -116,8 +119,11 @@ ms.locfileid: "75666698"
 
 ## <a name="connector-reference"></a>連接器參考
 
-如需如連接器的 OpenAPI （先前為 Swagger）檔案所述的技術詳細資料（例如觸發程式、動作和限制），請參閱[連接器的參考頁面](/connectors/as2/)。
+如需此連接器的更多技術詳細資料，例如連接器的 Swagger 檔案所述的動作和限制，請參閱[連接器的參考頁面](https://docs.microsoft.com/connectors/as2/)。 
+
+> [!NOTE]
+> 對於[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的邏輯應用程式，此連接器的原始 ISE 標記版本會改為使用[ISE 訊息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
 
 ## <a name="next-steps"></a>後續步驟
 
-深入瞭解[企業整合套件](logic-apps-enterprise-integration-overview.md)
+* 了解其他 [Logic Apps 連接器](../connectors/apis-list.md)

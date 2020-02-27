@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 57dc7bb98bf4c2f733be0f2c94e17481a429be6d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: b2d49eeadf068cbaacaa5e147f38025c55f33ff4
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906792"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651356"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>在 Azure 虛擬機器上使用 premium 檔案共用設定 SQL Server 容錯移轉叢集實例
 
@@ -71,7 +71,7 @@ Premium 檔案共用可提供 IOPS 和整個容量，以符合許多工作負載
 
 具有 premium 檔案共用的容錯移轉叢集不支援 Filestream。 若要使用 filestream，請使用[儲存空間直接存取](virtual-machines-windows-portal-sql-create-failover-cluster.md)來部署您的叢集。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在完成本文中的步驟之前，您應該已經具備：
 
@@ -149,11 +149,11 @@ Premium 檔案共用可提供 IOPS 和整個容量，以符合許多工作負載
 
    1. 選取 **[下一步]** ，然後選取 [**移除**]。
 
-1. <a name="ports"></a>開啟防火牆連接埠。
+1. <span id="ports"></span>開啟防火牆埠。  
 
    在每部虛擬機器上，開啟 Windows 防火牆上的下列埠：
 
-   | 目的 | TCP 埠 | 注意
+   | 目的 | TCP 連接埠 | 注意
    | ------ | ------ | ------
    | SQL Server | 1433 | 適用於 SDL Server 預設執行個體的一般連接埠。 若您曾使用來自資源庫的映像，此連接埠會自動開啟。
    | 健全狀況探查 | 59999 | 任何開啟的 TCP 連接埠。 在接下來的步驟中，設定負載平衝器[健全狀況探查](#probe)和要使用此連接埠的叢集。
@@ -369,7 +369,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 1. 選取 [新增]。
 
-1. 在 [**新增健康情況探查**] <a name="probe"></a>分頁上，設定下列健全狀況探查參數。
+1. 在 [**新增健康情況探查**] <span id="probe"></span>分頁上，設定下列健全狀況探查參數。
 
    - **名稱**：健全狀況探查的名稱。
    - **通訊協定**：TCP。
@@ -465,7 +465,7 @@ Azure 虛擬機器支援 Windows Server 2019 上的 Microsoft 分散式交易協
 - 叢集 MSDTC 資源無法設定為使用共用存放裝置。 在 Windows Server 2016 上，如果您建立 MSDTC 資源，它不會顯示任何可供使用的共用存放裝置，即使有可用的存放裝置也一樣。 Windows Server 2019 中已修正此問題。
 - 基本負載平衡器不會處理 RPC 埠。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - [Windows 叢集技術](/windows-server/failover-clustering/failover-clustering-overview)
 - [SQL Server 容錯移轉叢集實例](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

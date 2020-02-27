@@ -7,20 +7,20 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
-ms.openlocfilehash: fb501a158c839e6d4d71fc2af5ae50e48c248466
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 60acd128495176cd0a90418c61edf53bdcd88e5a
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789149"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647586"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>使用 Azure Logic Apps 從您的 SMTP 帳戶傳送電子郵件
 
 您可以使用 Azure Logic Apps 和簡易郵件傳輸通訊協定 (SMTP) 連接器，建立自動化的工作和工作流程，以便從您的 SMTP 帳戶傳送電子郵件。 您也可以讓其他動作使用 SMTP 動作的輸出。 例如，在您的 SMTP 傳送電子郵件之後，您可以使用 Slack 連接器，在 Slack 中通知您的小組。 如果您不熟悉邏輯應用程式，請檢閱[什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊一個免費的 Azure 帳戶](https://azure.microsoft.com/free/)。 
+* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。 
 
 * 您的 SMTP 帳戶和使用者認證
 
@@ -49,9 +49,9 @@ ms.locfileid: "74789149"
 
 1. 出現提示時，請提供這項連線資訊：
 
-   | 屬性 | 必要項 | 描述 |
+   | 屬性 | 必要 | 描述 |
    |----------|----------|-------------|
-   | 連線名稱 | 是 | 與 SMTP 伺服器的連線名稱 | 
+   | **連接名稱** | 是 | 與 SMTP 伺服器的連線名稱 | 
    | **SMTP 伺服器位址** | 是 | SMTP 伺服器的位址 | 
    | **使用者名稱** | 是 | SMTP 帳戶的使用者名稱 | 
    | **密碼** | 是 | SMTP 帳戶的密碼 | 
@@ -65,12 +65,10 @@ ms.locfileid: "74789149"
 
 ## <a name="connector-reference"></a>連接器參考
 
-如需觸發程序、動作和限制的技術詳細資訊，它們是由連接器的 OpenAPI (以前稱為 Swagger) 來描述，請檢閱連接器的[參考頁面](/connectors/smtpconnector/)。
+如需此連接器的更多技術詳細資料，例如連接器的 Swagger 檔案所描述的觸發程式、動作和限制，請參閱[連接器的參考頁面](https://docs.microsoft.com/connectors/smtpconnector/)。
 
-## <a name="get-support"></a>取得支援
-
-* 如有問題，請瀏覽 [Azure Logic Apps 論壇](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
-* 若要送出或票選功能構想，請前往 [Logic Apps 使用者意見反應網站](https://aka.ms/logicapps-wish)。
+> [!NOTE]
+> 對於[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的邏輯應用程式，此連接器的 ise 標記版本會使用[ISE 訊息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
 
 ## <a name="next-steps"></a>後續步驟
 

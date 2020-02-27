@@ -3,8 +3,8 @@ title: 在 Azure 上搭配 Windows Server 容錯移轉叢集和檔案共用之 S
 description: 在 Azure 上搭配 Windows Server 容錯移轉叢集和檔案共用之 SAP ASCS/SCS 執行個體的多重 SID 高可用性
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: goraco
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/03/2019
-ms.author: rclaus
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5638d71748c485c593dde8d9876400a40821ca28
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 2c12372dbc47548755c0680b0acb7a93360a0987
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75643146"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617474"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -217,7 +217,7 @@ ms.locfileid: "75643146"
 
 如需負載平衡器限制的詳細資訊，請參閱[網路限制： Azure Resource Manager][networking-limits-azure-resource-manager]中的「每個負載平衡器的私人前端 IP」一節。 也請考慮使用 [Azure Standard Load Balancer SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) 而非 Azure 負載平衡器的基本 SKU。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 您已經使用**檔案共用**來設定要用於一個 SAP ASCS/SCS 執行個體的 WSFC 叢集，如下圖所示。
 
@@ -326,7 +326,7 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 ### <a name="prepare-the-infrastructure-on-the-sofs-cluster-by-using-a-different-sap-global-host"></a>使用不同的 SAP 全域主機準備 SOFS 叢集上的基礎結構
 
-您可以設定第二個 SOFS (例如，針對第二個 **\<SID2>** ，使用 **\<SAPGlobalHost2>** 和不同的 **Volume2** 來設定第二個 SOFS 叢集)。
+您可以設定第二個 SOFS (例如，針對第二個 **\<SID2>** ，使用SAPGlobalHost2> **和不同的 \<Volume2** 來設定第二個 SOFS 叢集)。
 
 ![圖 4：多重 SID SOFS 與 SAP GLOBAL 主機名稱 2 相同][sap-ha-guide-figure-8015]
 
@@ -393,7 +393,7 @@ $Acl.SetAccessRule($Ar)
 Set-Acl $UsrSAPFolder $Acl -Verbose
 ```
 
-若要針對第二個 SAP \<SID2>，在包含 *\<SAPGlobalHost2>* 主機名稱的 Volume2 上建立 SAPMNT 檔案共用，請在「容錯移轉叢集管理員」中啟動 [新增檔案共用] 精靈。
+若要針對第二個 SAP *SID2>，在包含 \<* SAPGlobalHost2>\< 主機名稱的 Volume2 上建立 SAPMNT 檔案共用，請在「容錯移轉叢集管理員」中啟動 [新增檔案共用] 精靈。
 
 在 **saoglobal2** SOFS 叢集群組上按一下滑鼠右鍵，然後選取 [新增檔案共用]。
 

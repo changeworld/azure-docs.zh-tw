@@ -4,20 +4,20 @@ description: 備份 Azure 虛擬機器上的 SAP HANA 有兩種主要做法，�
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
-ms.author: rclaus
-ms.openlocfilehash: 8bcfdefa2ea9de12ca6029839a41c91111a5c61c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: hermannd
+ms.openlocfilehash: c977bc7db5608e5718e98a26ed594e5ebf2be998
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078589"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617421"
 ---
 # <a name="sap-hana-backup-based-on-storage-snapshots"></a>以儲存體快照集為基礎的 SAP HANA 備份
 
@@ -31,7 +31,7 @@ ms.locfileid: "70078589"
 
 SAP HANA 中有個功能支援建立儲存體快照集。 單一容器系統有所限制。 多個租用戶使用 SAP HANA MCS 的情況下，則不支援這種 SAP HANA 資料庫快照集，請參閱[建立儲存體快照集 (SAP HANA Studio)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/a0/3f8f08501e44d89115db3c5aa08e3f/content.htm)。
 
-它的運作方式，如下所示：
+其運作如下：
 
 - 起始 SAP HANA 快照集，為儲存體快照做準備
 - 執行儲存體快照集 (例如 Azure blob 快照集)

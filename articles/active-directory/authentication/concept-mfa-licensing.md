@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e49a07f591731a1deb2838751852c0134548966d
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: e74a7ab0c003aaf9d90211484b39f8322cd9c329
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77521841"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647997"
 ---
 # <a name="features-and-licenses-for-azure-multi-factor-authentication"></a>Azure 多重要素驗證的功能與授權
 
@@ -43,7 +43,7 @@ ms.locfileid: "77521841"
 
 | 功能 | Azure AD Free-安全性預設值 | Azure AD Free Azure AD 全域管理員 | Office 365 Business Premium、E3 或 E5 | Azure AD Premium P1 或 P2 |
 | --- |:---:|:---:|:---:|:---:|
-| 透過 MFA 保護 Azure AD 系統管理員帳戶 | ● | ●（僅*Azure AD 全域管理員*帳戶） | ● | ● |
+| 使用 MFA 保護 Azure AD 租使用者系統管理員帳戶 | ● | ●（僅*Azure AD 全域管理員*帳戶） | ● | ● |
 | 以行動應用程式做為第二個因素 | ● | ● | ● | ● |
 | 以撥打電話做為第二個因素 | | ● | ● | ● |
 | 以 SMS 做為第二個因素 | | ● | ● | ● |

@@ -3,14 +3,14 @@ title: 「停機期間啟動/停止 VM」解決方案
 description: 此 VM 管理解決方案會依排程啟動和停止您的 Azure Resource Manager 虛擬機器，並從 Azure 監視器記錄中主動進行監視。
 services: automation
 ms.subservice: process-automation
-ms.date: 12/04/2019
+ms.date: 02/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: 37fee7f96a27942a1295cb8c2315fedffc5bdefe
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: cbf181b9a6d3860854c7b61cca0e6c50810cced9
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030167"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616054"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure 自動化中的「停機期間啟動/停止 VM」解決方案
 
@@ -37,7 +37,7 @@ ms.locfileid: "76030167"
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 此解決方案的 Runbook 會使用 [Azure 執行身分帳戶](automation-create-runas-account.md)。 執行身分帳戶是慣用的驗證方法，因為它使用憑證驗證，而不是會過期或經常變更的密碼。
 
@@ -51,7 +51,7 @@ ms.locfileid: "76030167"
 
 若要在下班時間將啟動/停止 Vm 解決方案部署到現有的自動化帳戶和 Log Analytics 工作區，部署解決方案的使用者需要**資源群組**的下列許可權。 若要深入瞭解角色，請參閱[Azure 資源的自訂角色](../role-based-access-control/custom-roles.md)。
 
-| 權限 | 範圍|
+| 權限 | 影響範圍|
 | --- | --- |
 | Microsoft.Automation/automationAccounts/read | 資源群組 |
 | Microsoft.Automation/automationAccounts/variables/write | 資源群組 |
@@ -80,13 +80,13 @@ ms.locfileid: "76030167"
 - [Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md) **應用程式開發人員**角色的成員。 如需設定執行身分帳戶的詳細資訊，請參閱[設定執行身分帳戶的許可權](manage-runas-account.md#permissions)。
 - 訂用帳戶的參與者或下列許可權。
 
-| 權限 |範圍|
+| 權限 |影響範圍|
 | --- | --- |
-| Microsoft。授權/作業/讀取 | 訂閱|
-| Microsoft.Authorization/permissions/read |訂閱|
-| Microsoft.Authorization/roleAssignments/read | 訂閱 |
-| Microsoft.Authorization/roleAssignments/write | 訂閱 |
-| Microsoft.Authorization/roleAssignments/delete | 訂閱 |
+| Microsoft。授權/作業/讀取 | 訂用帳戶|
+| Microsoft.Authorization/permissions/read |訂用帳戶|
+| Microsoft.Authorization/roleAssignments/read | 訂用帳戶 |
+| Microsoft.Authorization/roleAssignments/write | 訂用帳戶 |
+| Microsoft.Authorization/roleAssignments/delete | 訂用帳戶 |
 | Microsoft.Automation/automationAccounts/connections/read | 資源群組 |
 | Microsoft.Automation/automationAccounts/certificates/read | 資源群組 |
 | Microsoft.Automation/automationAccounts/write | 資源群組 |
@@ -105,7 +105,7 @@ ms.locfileid: "76030167"
 
 2. 在所選解決方案的 [停機期間啟動/停止 VM] 頁面中，檢閱摘要資訊，然後按一下 [建立]。
 
-   ![Azure Portal](media/automation-solution-vm-management/azure-portal-01.png)
+   ![Azure 入口網站](media/automation-solution-vm-management/azure-portal-01.png)
 
 3. [新增解決方案] 頁面隨即出現。 系統會在其中提示您設定解決方案，以將它匯入您的自動化訂用帳戶。
 
@@ -200,36 +200,6 @@ ms.locfileid: "76030167"
 1. 此案例不會接受 **External_Start_ResourceGroupNames** 和 **External_Stop_ResourceGroupnames** 變數。 針對此案例，您需要建立自己的自動化排程。 如需詳細資訊，請參閱[在 Azure 自動化中排程 Runbook](../automation/automation-schedules.md)。
 1. 預覽動作，並在針對生產虛擬機器實作前進行所有必要的變更。 就緒後即可將參數設定為 **False** 並手動執行 monitoring-and-diagnostics/monitoring-action-groupsrunbook，或是讓自動化排程 **Sequenced-StartVM** 和 **Sequenced-StopVM** 依照您指定的排程自動執行。
 
-### <a name="scenario-3-startstop-automatically-based-on-cpu-utilization"></a>案例 3：根據 CPU 使用量自動啟動/停止
-
-此解決方案可評估非尖峰期間 (例如下班時間) 未使用的 Azure 虛擬機器，並在處理器使用率低於 x% 時自動將它們關閉，藉以協助管理訂用帳戶中虛擬機器執行的成本。
-
-根據預設，解決方案已預先設定會對百分比 CPU 計量進行評估，以檢查平均使用率是否為 5% 或更低。 此案例是由下列變數進行控制，並可在預設值不符合需求時加以修改：
-
-- External_AutoStop_MetricName
-- External_AutoStop_Threshold
-- External_AutoStop_TimeAggregationOperator
-- External_AutoStop_TimeWindow
-
-您可以將動作的目標設為某個訂用帳戶和資源群組，或設為特定的虛擬機器清單，但不可同時設定為兩者。
-
-#### <a name="target-the-stop-action-against-a-subscription-and-resource-group"></a>針對訂用帳戶和資源群組設定停止動作目標
-
-1. 設定 **External_Stop_ResourceGroupNames** 和 **External_ExcludeVMNames** 變數來指定目標 VM。
-1. 啟用並更新 **Schedule_AutoStop_CreateAlert_Parent** 排程。
-1. 執行 **AutoStop_CreateAlert_Parent** Runbook，並將 ACTION 參數設為 **start**，然後將 WHATIF 參數設為 **True** 以預覽變更。
-
-#### <a name="target-the-start-and-stop-action-by-vm-list"></a>透過 VM 清單設定啟動和停止動作目標
-
-1. 執行 **AutoStop_CreateAlert_Parent** Runbook，並將 ACTION 參數設為 **start**，在 *VMList* 參數中新增以逗號分隔的虛擬機器清單，然後將 WHATIF 參數設為 **True**。 預覽變更。
-1. 使用以逗號分隔的虛擬機器清單 (VM1、VM2、VM3) 設定 **External_ExcludeVMNames** 參數。
-1. 此案例不會接受 **External_Start_ResourceGroupNames** 和 **External_Stop_ResourceGroupnames** 變數。 針對此案例，您需要建立自己的自動化排程。 如需詳細資訊，請參閱[在 Azure 自動化中排程 Runbook](../automation/automation-schedules.md)。
-
-您已具有會根據 CPU 使用率停止虛擬機器的排程，現在您需要啟用下列其中一個排程來啟動它們。
-
-- 透過訂用帳戶和資源群組設定啟動動作目標。 請參閱[案例 1](#scenario-1-startstop-vms-on-a-schedule) 中的步驟以測試和啟用 **Scheduled-StartVM** 排程。
-- 透過訂用帳戶、資源群組和標記設定啟動動作目標。 請參閱[案例 2](#scenario-2-startstop-vms-in-sequence-by-using-tags) 中的步驟以測試和啟用 **Sequenced-StartVM** 排程。
-
 ## <a name="solution-components"></a>方案元件
 
 此解決方案包括預先設定的 runbook、排程，以及與 Azure 監視器記錄的整合，讓您可以量身打造虛擬機器的啟動和關閉，以符合您的商務需求。
@@ -241,9 +211,9 @@ ms.locfileid: "76030167"
 > [!IMPORTANT]
 > 請勿直接執行任何有「子項目」附加至其名稱的 Runbook。
 
-所有父代 Runbook 皆包含 _WhatIf_ 參數。 將 _WhatIf_ 設為 **True** 時，即可支援詳述在不使用 _WhatIf_ 參數執行的情況下，該 Runbook 會採取的確切行為，並驗證是否已將正確的虛擬機器作為目標。 _WhatIf_ 參數設為 **False** 時，Runbook 只會執行其定義的動作。
+所有父代 Runbook 皆包含 _WhatIf_ 參數。 將 **WhatIf** 設為 _True_ 時，即可支援詳述在不使用 _WhatIf_ 參數執行的情況下，該 Runbook 會採取的確切行為，並驗證是否已將正確的虛擬機器作為目標。 _WhatIf_ 參數設為 **False** 時，Runbook 只會執行其定義的動作。
 
-|Runbook | 參數 | 說明|
+|Runbook | 參數 | 描述|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | 從父系 Runbook 呼叫。 此 Runbook 會針對 AutoStop 案例以每個資源為基礎建立警示。|
 |AutoStop_CreateAlert_Parent | VMList<br> WhatIf：True 或 False  | 在目標訂用帳戶或資源群組中的 VM 上建立或更新 Azure 警示規則。 <br> VMList：以逗號分隔的虛擬機器清單。 例如，vm1、vm2、vm3。<br> WhatIf 會驗證 Runbook 邏輯而不會執行。|
@@ -258,7 +228,7 @@ ms.locfileid: "76030167"
 
 下表列出在您自動化帳戶中建立的變數。 僅修改前面加上 **External** 的變數。 修改前面加上 **Internal** 的變數會造成非預期的結果。
 
-|變數 | 說明|
+|變數 | 描述|
 |---------|------------|
 |External_AutoStop_Condition | 設定觸發警示之條件所需的條件運算子。 可接受的值為 **GreaterThan**、**GreaterThanOrEqual**、**LessThan** 和 **LessThanOrEqual**。|
 |External_AutoStop_Description | 在 CPU 百分比超出閾值的情況下停止虛擬機器的警示。|
@@ -283,7 +253,7 @@ ms.locfileid: "76030167"
 
 您不應啟用所有排程，因為這樣可能會產生重疊的排程動作。 最好能先判斷要執行哪些最佳化，並據以做出相對應的修改。 如需進一步說明，請參閱＜概觀＞一節中的範例案例。
 
-|排程名稱 | 頻率 | 說明|
+|排程名稱 | 頻率 | 描述|
 |--- | --- | ---|
 |Schedule_AutoStop_CreateAlert_Parent | 每 8 小時 | 每隔 8 小時會執行 AutoStop_CreateAlert_Parent Runbook，這會停止在 Azure 自動化變數中 External_Start_ResourceGroupNames、External_Stop_ResourceGroupNames 和 External_ExcludeVMNames 中的虛擬機器基底值。 或者，您可以使用 VMList 參數指定以逗號分隔的虛擬機器清單。|
 |Scheduled_StopVM | 使用者定義，每日 | 每天會在指定時間搭配 _Stop_ 參數執行 Scheduled_Parent Runbook。 自動停止符合資產變數所定義之規則的所有 Vm。 啟用相關排程（已**排程-StartVM**）。|
@@ -297,7 +267,7 @@ ms.locfileid: "76030167"
 
 ### <a name="job-logs"></a>作業記錄
 
-|屬性 | 說明|
+|屬性 | 描述|
 |----------|----------|
 |呼叫者 |  起始作業的人員。 可能的值為電子郵件地址或排程作業的系統。|
 |類別 | 資料類型的分類。 對自動化來說，該值是 JobLogs。|
@@ -314,11 +284,11 @@ ms.locfileid: "76030167"
 |SourceSystem | 指定所提交資料的來源系統。 對自動化來說，該值是 OpsManager|
 |StreamType | 指定事件的類型。 可能的值包括：<br>- Verbose<br>- Output<br>- Error (錯誤)<br>- Warning (警告)|
 |SubscriptionId | 指定作業的訂用帳戶 ID。
-|時間 | Runbook 作業的執行日期和時間。|
+|Time | Runbook 作業的執行日期和時間。|
 
 ### <a name="job-streams"></a>作業串流
 
-|屬性 | 說明|
+|屬性 | 描述|
 |----------|----------|
 |呼叫者 |  起始作業的人員。 可能的值為電子郵件地址或排程作業的系統。|
 |類別 | 資料類型的分類。 對自動化來說，該值是 JobStreams。|
@@ -333,7 +303,7 @@ ms.locfileid: "76030167"
 |RunbookName | Runbook 的名稱。|
 |SourceSystem | 指定所提交資料的來源系統。 對自動化來說，該值是 OpsManager。|
 |StreamType | 作業串流的類型。 可能的值包括：<br>- Progress (進度)<br>- Output<br>- Warning (警告)<br>- Error (錯誤)<br>- Debug (偵錯)<br>- Verbose|
-|時間 | Runbook 作業的執行日期和時間。|
+|Time | Runbook 作業的執行日期和時間。|
 
 當您執行的記錄搜尋傳回 **JobLogs** 或 **JobStreams** 的類別記錄時，您可以選取 **JobLogs** 或 **JobStreams** 檢視，其中會顯示一組彙總搜尋所傳回更新的圖格。
 
@@ -341,7 +311,7 @@ ms.locfileid: "76030167"
 
 下表提供此方案所收集之作業記錄的記錄檔搜尋範例。
 
-|查詢 | 說明|
+|查詢 | 描述|
 |----------|----------|
 |尋找 ScheduledStartStop_Parent Runbook 已順利完成的作業 | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
 |尋找 SequencedStartStop_Parent Runbook 已順利完成的作業 | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "SequencedStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" ) <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|

@@ -1,5 +1,5 @@
 ---
-title: Azure DDoS 保護設計彈性解決方案 |Microsoft Docs
+title: 使用 Azure DDoS 保護設計彈性解決方案
 description: 了解如何使用記錄資料來取得應用程式的深入解析。
 services: security
 author: barclayn
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: barclayn
-ms.openlocfilehash: ac36a4c59dbec8bf27850de1565e86b78643148a
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 8d3fc809999508bf3d49c3765c90017e89e80fa7
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595427"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624043"
 ---
 # <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS 保護設計彈性解決方案
 
@@ -73,7 +73,7 @@ Azure 提供兩個 DDoS 服務供應項目，來保護您免於受到網路攻�
 
 Azure 中的基本 DDoS 保護由軟體和硬體元件所組成。 軟體控制平面會決定何時、何處及何種類型的傳輸應該透過分析並移除攻擊流量的硬體裝置來操縱。 控制平面會根據整個基礎結構的 DDoS 保護*原則*做出決定。 這項原則是以靜態方式設定，並全域套用至所有的 Azure 客戶。
 
-比方說，DDoS 保護原則會指定應該*觸發*哪個流量磁碟區的保護。 （也就是，應該透過清除設備來路由租使用者的流量）。接著，原則會指定清除設備應如何*緩和*攻擊。
+比方說，DDoS 保護原則會指定應該*觸發*哪個流量磁碟區的保護。 (亦即，應清除設備，藉以路由租用戶的流量。)接著，原則會指定清除設備應如何*減輕*攻擊。
 
 Azure 基本 DDoS 保護服務已將目標設為基礎結構保護與 Azure 平台保護。 當流量明顯超過某個可能在多租用戶環境中影響多位客戶的速率時，即會降低流量。 它不會提供警示或為每位客戶自訂原則。
 
@@ -179,7 +179,7 @@ Microsoft 身為重要的基礎結構提供者，會最先收到威脅的警告�
 
 ### <a name="alerts-during-an-attack"></a>攻擊時的警示
 
-Azure 標準 DDoS 保護會識別 DDoS 攻擊並降低風險，無須使用者介入。 在受保護的公用 IP 上執行風險降低作業時，若想收到通知，可以在 [是否正遭受 DDoS 攻擊][](/azure/virtual-network/ddos-protection-manage-portal) 計量上**設定警示**。 可以選擇為其他 DDoS 計量建立警示，以了解攻擊的範圍、要卸除的流量及其他詳細資料。
+Azure 標準 DDoS 保護會識別 DDoS 攻擊並降低風險，無須使用者介入。 在受保護的公用 IP 上執行風險降低作業時，若想收到通知，可以在 [是否正遭受 DDoS 攻擊] 計量上[設定警示](/azure/virtual-network/ddos-protection-manage-portal)。 可以選擇為其他 DDoS 計量建立警示，以了解攻擊的範圍、要卸除的流量及其他詳細資料。
 
 #### <a name="when-to-contact-microsoft-support"></a>連絡 Microsoft 支援服務的時機
 

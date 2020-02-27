@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/26/2016
-ms.openlocfilehash: b6a6ee21774ba931d9982d82b99008f312d19736
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 3ada12a0cde122fb78815a1d3241d8acb9da2580
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793017"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651452"
 ---
 # <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>在具有 Enterprise Integration Pack 的 Azure Logic Apps 中交換適用於 B2B 企業整合的 EDIFACT 訊息
 
@@ -36,7 +36,7 @@ ms.locfileid: "74793017"
 
 ## <a name="create-an-edifact-agreement"></a>建立 EDIFACT 合約 
 
-1. 登入 [Azure 入口網站](https://portal.azure.com "Azure Portal")。 
+1. 登入 [Azure 入口網站](https://portal.azure.com "Azure 入口網站")。 
 
 2. 在主要 Azure 功能表上，選取 [所有服務]。 在搜尋方塊中輸入「整合」，然後選取 [整合帳戶]。
 
@@ -63,7 +63,7 @@ ms.locfileid: "74793017"
 
    | 屬性 | 描述 |
    | --- | --- |
-   | Name |合約的名稱 |
+   | 名稱 |合約的名稱 |
    | 合約類型 | 應該是 EDIFACT |
    | 主控夥伴 |合約需要主控夥伴和來賓夥伴。 主機夥伴代表設定合約的組織。 |
    | 主控身分識別 |主控夥伴的識別碼 |
@@ -88,7 +88,7 @@ ms.locfileid: "74793017"
 
 您的合約現在已準備好處理符合您所選設定的內送訊息。
 
-### <a name="identifiers"></a>識別項
+### <a name="identifiers"></a>識別碼
 
 | 屬性 | 描述 |
 | --- | --- |
@@ -112,9 +112,10 @@ ms.locfileid: "74793017"
 | UNH2.5 (ASSOCIATED ASSIGNED CODE) |輸入指定的代碼。 (最少 6 個字元。 必須是英數字元)。 |
 | UNG2.1 (APP SENDER ID) |輸入最少 1 個字元，最多 35 個字元的英數字元值。 |
 | UNG2.2 (APP SENDER CODE QUALIFIER) |輸入最多 4 個字元的英數字元值。 |
-| 結構描述 |從相關聯的整合帳戶選取您要使用的先前上傳結構描述。 |
+| SCHEMA |從相關聯的整合帳戶選取您要使用的先前上傳結構描述。 |
 
 ### <a name="control-numbers"></a>控制編號
+
 | 屬性 | 描述 |
 | --- | --- |
 | 不允許交換控制編號重複 |若要封鎖重複交換，請選取此屬性。 如果選取，EDIFACT 解碼動作會檢查所接收交換的交換控制編號 (UNB5) 是否不符合先前處理的交換控制編號。 如果偵測到相符項目，則不會處理交換。 |
@@ -123,7 +124,7 @@ ms.locfileid: "74793017"
 | 不允許交易集控制編號重複 |若要封鎖有重複交易集控制編號 (UNH1) 的交換，請選取此屬性。 |
 | EDIFACT 通知控制編號 |若要指定用於通知中的交易集參考編號，請輸入前置詞、參考編號範圍和後置詞的值。 |
 
-### <a name="validations"></a>驗證
+### <a name="validation"></a>驗證
 
 當您完成每個驗證資料列時，將會自動新增另一個驗證資料列。 如果您未指定任何規則，則驗證會使用「預設」資料列。
 
@@ -161,7 +162,7 @@ ms.locfileid: "74793017"
 
 您的合約現在已準備好處理符合您所選設定的外寄訊息。
 
-### <a name="identifiers"></a>識別項
+### <a name="identifiers"></a>識別碼
 
 | 屬性 | 描述 |
 | --- | --- |
@@ -173,6 +174,7 @@ ms.locfileid: "74793017"
 | UNB7 (應用程式參考識別碼) |輸入最少 1 個字元，最多 14 個字元的英數字元值。 |
 
 ### <a name="acknowledgment"></a>通知
+
 | 屬性 | 描述 |
 | --- | --- |
 | 訊息回條 (CONTRL) |如果主機夥伴預計會收到技術 (CONTRL) 通知，請選取此核取方塊。 此設定指定傳送訊息的主控夥伴向來賓夥伴要求通知。 |
@@ -180,14 +182,16 @@ ms.locfileid: "74793017"
 | 針對接受的交易集產生 SG1/SG4 迴圈 |如果您選擇要求功能通知，選取此核取方塊，可在已接受交易集的功能 CONTRL 通知中強制產生 SG1/SG4 迴圈。 |
 
 ### <a name="schemas"></a>結構描述
+
 | 屬性 | 描述 |
 | --- | --- |
 | UNH2.1 (TYPE) |選取交易集類型。 |
 | UNH2.2 (VERSION) |輸入訊息版本號碼。 |
 | UNH2.3 (RELEASE) |輸入訊息版次號碼。 |
-| 結構描述 |選取要使用的結構描述。 結構描述位於您的整合帳戶中。 若要存取結構描述，請先將整合帳戶連結至邏輯應用程式。 |
+| SCHEMA |選取要使用的結構描述。 結構描述位於您的整合帳戶中。 若要存取結構描述，請先將整合帳戶連結至邏輯應用程式。 |
 
 ### <a name="envelopes"></a>信封
+
 | 屬性 | 描述 |
 | --- | --- |
 | UNB8 (處理優先順序代碼) |輸入不超過 1 個字元的字母值。 |
@@ -208,16 +212,17 @@ ms.locfileid: "74793017"
 | 元件分隔符號 |若要分隔複合的資料元素，請輸入單一字元。 |
 | 資料元素分隔符號 |若要分隔複合資料元素內的簡單資料元素，請輸入單一字元。 |
 | 區段結束字元 |若要指出 EDI 區段的結尾，請輸入單一字元。 |
-| 尾碼 |選取與區段識別項一起使用的字元。 如果指定尾碼，則區段結束字元資料元素可以空白。 如果區段結束字元留空，則必須指定尾碼。 |
+| 後置詞 |選取與區段識別項一起使用的字元。 如果指定尾碼，則區段結束字元資料元素可以空白。 如果區段結束字元留空，則必須指定尾碼。 |
 
 ### <a name="control-numbers"></a>控制編號
+
 | 屬性 | 描述 |
 | --- | --- |
 | UNB5 (交換控制編號) |輸入前置詞、交換控制編號的值範圍，以及後置詞。 這些值用來產生外送交換。 前置詞和後置詞均為選擇性，而控制編號則為必要。 控制編號會隨著每則新訊息遞增；前置詞和後置詞維持不變。 |
 | UNG5 (群組控制編號) |輸入前置詞、交換控制編號的值範圍，以及後置詞。 這些值用來產生群組控制編號。 前置詞和後置詞均為選擇性，而控制編號則為必要。 控制編號會隨著每則新訊息遞增，直到達到最大值為止；前置詞和後置詞維持不變。 |
 | UNH1 (訊息標頭參考編號) |輸入前置詞、交換控制編號的值範圍，以及後置詞。 這些值會用來產生訊息標頭參考編號。 前置詞和後置詞均為選擇性，而參考編號則為必要。 參考編號會隨著每則新訊息遞增；前置詞和後置詞維持不變。 |
 
-### <a name="validations"></a>驗證
+### <a name="validation"></a>驗證
 
 當您完成每個驗證資料列時，將會自動新增另一個驗證資料列。 如果您未指定任何規則，則驗證會使用「預設」資料列。
 
@@ -240,9 +245,13 @@ ms.locfileid: "74793017"
 
     ![選擇 [合約] 圖格](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
 
-## <a name="view-swagger-file"></a>檢視 Swagger 檔案
-若要檢視 EDIFACT 連接器的 Swagger 詳細資料，請參閱 [EDIFACT](/connectors/edifact/)。
+## <a name="connector-reference"></a>連接器參考
 
-## <a name="learn-more"></a>了解更多
-* [深入了解企業整合套件](logic-apps-enterprise-integration-overview.md "瞭解企業整合套件")  
+如需此連接器的更多技術詳細資料，例如連接器的 Swagger 檔案所述的動作和限制，請參閱[連接器的參考頁面](https://docs.microsoft.com/connectors/edifact/)。
 
+> [!NOTE]
+> 對於[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的邏輯應用程式，此連接器的 ise 標記版本會使用[ISE 訊息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
+
+## <a name="next-steps"></a>後續步驟
+
+* 了解其他 [Logic Apps 連接器](../connectors/apis-list.md)

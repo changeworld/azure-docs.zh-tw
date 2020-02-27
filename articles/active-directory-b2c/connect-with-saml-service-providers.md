@@ -12,12 +12,12 @@ ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7ccc5fe314d49ea65aaa8750937170ab79a8c04f
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 5ec83857ebabc92bf86f9f84a43746a0e561218a
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77581458"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647591"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>在 Azure AD B2C 中註冊 SAML 應用程式
 
@@ -276,7 +276,6 @@ Azure AD B2C 原則 IDP 中繼資料是 SAML 通訊協定中用來公開 SAML �
 1. 輸入應用程式的 [名稱]。 例如， *SAMLApp1*。
 1. 在 [**支援的帳戶類型**] 底下，選取 [**僅此組織目錄中的帳戶**]
 1. 在 [重新**導向 URI**] 底下，選取 [ **Web**]，然後輸入 `https://localhost`。 您稍後會在應用程式註冊的資訊清單中修改此值。
-1. 選取 **[授與系統管理員同意 openid 和 offline_access 許可權**]。
 1. 選取 [註冊]。
 
 ### <a name="42-update-the-app-manifest"></a>4.2 更新應用程式資訊清單
@@ -338,7 +337,7 @@ Azure AD B2C 原則 IDP 中繼資料是 SAML 通訊協定中用來公開 SAML �
 通常需要下列部分或全部：
 
 * **中繼資料**： `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
-* **簽發者**： `https://tenant-name.onmicrosoft.com/policy-name`
+* **簽發者**： `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name`
 * **登入 url/saml 端點/Saml Url**：檢查中繼資料檔案中的值
 * **憑證**：這是*B2C_1A_SamlIdpCert*，但不含私密金鑰。 若要取得憑證的公開金鑰：
 

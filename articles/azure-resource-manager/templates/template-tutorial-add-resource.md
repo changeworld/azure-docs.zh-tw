@@ -2,15 +2,15 @@
 title: 教學課程 - 將資源新增至範本
 description: 描述建立第一個 Azure Resource Manager 範本的步驟。 您將了解範本檔案語法及部署儲存體帳戶的方式。
 author: mumian
-ms.date: 10/04/2019
+ms.date: 02/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8686b15501e267ab23efe654d28a3e67369a8d03
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: af571b6503f04c809b62c530f6d6254082b838be
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765595"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586677"
 ---
 # <a name="tutorial-add-a-resource-to-your-resource-manager-template"></a>教學課程：將資源新增至 Resource Manager 範本
 
@@ -26,7 +26,10 @@ ms.locfileid: "76765595"
 
 若要將儲存體帳戶定義新增至現有範本，查看下列範例中反白顯示的 JSON。 請複製整個檔案，並以其內容取代您的範本，而不要嘗試複製範本的區段。
 
-以唯一的儲存體帳戶名稱取代 **{provide-unique-name}** 。 儲存體帳戶名稱必須是 Azure 中是獨一無二的。 名稱必須只有小寫字母或數字。 名稱長度不得超過 24 個字元。 您可以嘗試使用 **store1** 作為前置詞，然後加上您的姓名縮寫和今天日期之類的命名模式。 例如，您使用的名稱看起來可能像 **store1abc09092019**。
+以唯一的儲存體帳戶名稱取代 **{provide-unique-name}** 。
+
+> [!IMPORTANT]
+> 儲存體帳戶名稱必須是 Azure 中是獨一無二的。 名稱必須只有小寫字母或數字。 名稱長度不得超過 24 個字元。 您可以嘗試使用 **store1** 作為前置詞，然後加上您的姓名縮寫和今天日期之類的命名模式。 例如，您使用的名稱看起來可能像 **store1abc09092019**。
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json" range="1-19" highlight="5-17":::
 
@@ -58,7 +61,7 @@ ms.locfileid: "76765595"
 
 如果您尚未建立資源群組，請參閱[建立資源群組](template-tutorial-create-first-template.md#create-resource-group)。 此範例假設您已將 **templateFile** 變數設為範本檔案的路徑，如[第一個教學課程](template-tutorial-create-first-template.md#deploy-template)所示。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -67,7 +70,7 @@ New-AzResourceGroupDeployment `
   -TemplateFile $templateFile
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az group deployment create \

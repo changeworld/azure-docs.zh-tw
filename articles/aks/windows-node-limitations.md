@@ -4,12 +4,12 @@ description: 瞭解在 Azure Kubernetes Service 中執行 Windows Server 節點�
 services: container-service
 ms.topic: article
 ms.date: 05/31/2019
-ms.openlocfilehash: 6d951652e3522b7ff926b72a3916bffe97575054
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 157f890c65efd0de9fa7d8d7aa5cb43b4a902dfa
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77592488"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615651"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service 中 Windows Server 節點集區和應用程式工作負載目前的限制（AKS）
 
@@ -51,9 +51,9 @@ AKS 叢集中的主要節點（控制平面）是藉由 AKS 服務來裝載，�
 
 具有 Windows 節點集區的 AKS 叢集必須使用 Azure CNI （advanced）網路模型。 不支援 Kubenet （基本）網路功能。 如需網路模型差異的詳細資訊，請參閱[AKS 中應用程式的網路概念][azure-network-models]。 -Azure CNI 網路模型需要額外的 IP 位址管理規劃和考慮。 如需如何規劃和執行 Azure CNI 的詳細資訊，請參閱[在 AKS 中設定 AZURE CNI 網路][configure-azure-cni]。
 
-## <a name="can-i-change-the-min--of-pods-per-node"></a>我可以變更每個節點的最小 pod 數嗎？
+## <a name="can-i-change-the-max--of-pods-per-node"></a>我可以變更最大值。每個節點的 pod 數目？
 
-目前必須設定為至少30個 pod，以確保叢集的可靠性。
+目前需要設定為最多30個 pod，以確保叢集的可靠性。
 
 ## <a name="how-do-patch-my-windows-nodes"></a>如何修補我的 Windows 節點？
 
