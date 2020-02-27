@@ -1,17 +1,17 @@
 ---
 title: 在 Kubernetes 上開發應用程式
 services: azure-dev-spaces
-ms.date: 07/08/2019
+ms.date: 02/20/2020
 ms.topic: quickstart
 description: 本快速入門說明如何使用 Azure Dev Spaces 和命令列，在 Azure Kubernetes Service 上開發應用程式
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 553c316587d27e0921fbbbf78b02ddb048532c43
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 2d3a498d72264d3084e45202b7daa99806d45ce3
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867240"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602619"
 ---
 # <a name="quickstart-develop-an-application-on-kubernetes---azure-dev-spaces"></a>快速入門：在 Kubernetes 上開發應用程式 - Azure Dev Spaces
 在本指南中，您將了解如何：
@@ -30,7 +30,7 @@ ms.locfileid: "75867240"
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
-az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location eastus --generate-ssh-keys
 ```
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>在 AKS 叢集上啟用 Azure Dev Spaces
@@ -76,7 +76,7 @@ cd dev-spaces/samples/nodejs/getting-started/webfrontend
 使用 `azds prep` 命令，產生用於在 Kubernetes 中執行應用程式的 Docker 和 Helm 圖表資產：
 
 ```cmd
-azds prep --public
+azds prep --enable-ingress
 ```
 
 您必須從 dev-spaces/samples/nodejs/getting-started/webfrontend  目錄執行 `prep` 命令，以正確產生 Docker 和 Helm 圖表資產。

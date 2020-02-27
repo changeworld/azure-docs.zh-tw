@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 71a256b0350742f0e7a7b95519fafff5bc32f58b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: a2b775afcd9e603a11b560bb7c42d6cf76be9b34
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928778"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597910"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>快速入門：使用 .NET SDK 建立資料處理站和管線
 
@@ -48,7 +48,7 @@ ms.locfileid: "74928778"
 1. 在[建立 Azure Active Directory 應用程式](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)中，建立代表您要在本教學課程中建立之 .NET 應用程式的應用程式。 針對登入 URL，您可以提供虛擬 URL，如文章中所示 (`https://contoso.org/exampleapp`)。
 2. 在[取得值以便登入](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)中，取得**應用程式識別碼**和**租用戶識別碼**，並記下這些值以稍後在本教學課程中使用。 
 3. 在[憑證和祕密](../active-directory/develop/howto-create-service-principal-portal.md#certificates-and-secrets)中，取得**驗證金鑰**，並記下此值以稍後在本教學課程中使用。
-4. 在[指派角色給應用程式](../active-directory/develop/howto-create-service-principal-portal.md#assign-the-application-to-a-role)中，將應用程式指派給訂用帳戶層級的**參與者**角色，讓應用程式可以在訂用帳戶中建立資料處理站。
+4. 在[指派角色給應用程式](../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)中，將應用程式指派給訂用帳戶層級的**參與者**角色，讓應用程式可以在訂用帳戶中建立資料處理站。
 
 ## <a name="create-a-visual-studio-project"></a>建立 Visual Studio 專案
 

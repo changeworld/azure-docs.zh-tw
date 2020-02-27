@@ -4,12 +4,12 @@ description: 在 Azure 中裝載 Jenkins 組建和部署自動化伺服器，以
 keywords: jenkins, azure, devops, 概觀
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: 84d9a62c432208893ac5ff960a5f7aec743680d1
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: a9297ebc116d75cfe1d4f37d4e9ada7d5198beae
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74479338"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620174"
 ---
 # <a name="azure-and-jenkins"></a>Azure 與 Jenkins
 
@@ -22,7 +22,7 @@ ms.locfileid: "74479338"
 在 Azure 中裝載 Jenkins，可依照軟體專案的成長需求，集中管理您的組建自動化及調整您的部署。 您可以使用下列各項，在 Azure 中部署 Jenkins：
  
 - Azure Marketplace 中的 [Jenkins 方案範本](install-jenkins-solution-template.md)。
-- [Azure 虛擬機器](/azure/virtual-machines/linux/overview)。 請參閱我們的[教學課程](/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd)以在 VM 上建立 Jenkins 執行個體。
+- [Azure 虛擬機器](/azure/virtual-machines/linux/overview)。 請參閱我們的[教學課程](tutorial-jenkins-github-docker-cicd.md)以在 VM 上建立 Jenkins 執行個體。
 - 在 [Azure Container Service](/azure/container-service/kubernetes/container-service-kubernetes-walkthrough) 中執行的 Kubernetes 叢集上，請參閱我們的[作法](/azure/container-service/kubernetes/container-service-kubernetes-jenkins)。
 
 使用 [Azure 監視器記錄](/azure/log-analytics/log-analytics-overview)和 [Azure CLI](/cli/azure) 來監視和管理 Azure Jenkins 部署。
@@ -33,7 +33,7 @@ ms.locfileid: "74479338"
 
 一旦使用 [Azure 服務主體](/azure/azure-resource-manager/resource-group-overview)進行設定，Jenkins 作業和管線即可使用此認證來：
 
-- 使用 [Azure 儲存體外掛程式](https://plugins.jenkins.io/windows-azure-storage)，在 [Azure 儲存體](/azure/storage/common/storage-introduction)中安全地儲存和封存組建成品。 檢閱 [Jenkins 儲存體作法](/azure/storage/common/storage-java-jenkins-continuous-integration-solution)，以了解詳細資訊。
+- 使用 [Azure 儲存體外掛程式](https://plugins.jenkins.io/windows-azure-storage)，在 [Azure 儲存體](/azure/storage/common/storage-introduction)中安全地儲存和封存組建成品。 檢閱 [Jenkins 儲存體作法](storage-java-jenkins-continuous-integration-solution.md)，以了解詳細資訊。
 - 使用 [Azure CLI](/azure/jenkins/execute-cli-jenkins-pipeline) 來管理和設定 Azure 資源。
 
 ## <a name="deploy-your-code-into-azure-services"></a>將您的程式碼部署至 Azure 服務

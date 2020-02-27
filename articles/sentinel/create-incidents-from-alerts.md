@@ -3,7 +3,7 @@ title: 在 Azure Sentinel 中從警示建立事件 | Microsoft Docs
 description: 了解如何在 Azure Sentinel 中從警示建立事件。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -14,13 +14,13 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: 722feb29a08cd5e1113eae197fbcae9769ed5550
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.author: yelevin
+ms.openlocfilehash: b29b337d7487087bec268528ff26617f7a995235
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029757"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587969"
 ---
 # <a name="automatically-create-incidents-from-microsoft-security-alerts"></a>自動從 Microsoft 安全性警示建立事件
 
@@ -28,7 +28,7 @@ ms.locfileid: "72029757"
 
 您可以遵循本文中的指示，輕鬆地將 Azure Sentinel 設定為每次在已連線 Microsoft 安全性解決方案中觸發警示時自動建立事件。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 您必須[連線 Microsoft 安全性解決方案](connect-data-sources.md#data-connection-methods)，才能從安全性服務警示啟用事件建立。
 
 ## <a name="using-microsoft-security-incident-creation-analytic-rules"></a>使用 Microsoft 安全性事件建立分析規則

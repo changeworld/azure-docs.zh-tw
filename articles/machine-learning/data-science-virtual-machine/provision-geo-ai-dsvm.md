@@ -1,5 +1,6 @@
 ---
-title: 快速入門：建立 Geo AI DSVM
+title: 快速入門：建立地區人工智慧資料科學虛擬機器
+titleSuffix: Azure Data Science Virtual Machine
 description: 在 Azure 上設定和建立 Geo AI 資料科學虛擬機器，以進行地理空間分析和機器學習。
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -7,12 +8,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/13/2019
-ms.openlocfilehash: 6b32d1f76091d7bbb8f870402020d0ac247d425b
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: f3ff9bd64f54d8f83fd1889078e8a4c01827d135
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170718"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525884"
 ---
 # <a name="quickstart-set-up-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>快速入門：在 Azure 上設定地區人工智慧虛擬機器 
 
@@ -41,7 +42,7 @@ Geo-DSVM 中包含的 AI 工具包括下列各項：
 
 **基本**：
 
-- **名稱**：您所建立的資料科學伺服器名稱。
+- **Name**：您所建立的資料科學伺服器名稱。
     
 - **使用者名稱**：系統管理員帳戶登入識別碼。
     

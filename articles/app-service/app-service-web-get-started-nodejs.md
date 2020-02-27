@@ -7,18 +7,18 @@ ms.date: 09/30/2019
 ms.custom: seodec18
 experimental: false
 experiment_id: a231f2b4-2625-4d
-ms.openlocfilehash: 91494cc9c1e3a1fc159702bdbb7f68a4423b604c
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 3fcc4d9d33637cd61f5621cc95788e9de8ffaec6
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671370"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500103"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>在 Azure 中建立 Node.js Web 應用程式 
 
 Azure App Service 提供可高度擴充、自我修復的 Web 裝載服務。 本快速入門會顯示如何將 Node.js 應用程式部署至 Azure App Service。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 如果您沒有 Azure 帳戶，[現在免費註冊 Azure](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-app-service-extension&mktingSource=vscode-tutorial-app-service-extension) 即可獲得價值 200 美元的 Azure 點數，讓您可以試用各種服務組合。
 
@@ -115,7 +115,7 @@ code .
 1. 根據您要部署的作業系統，選擇一個建立選項：
 
     - Linux：選擇 [建立新的 Web 應用程式]  。
-    - Windows:選擇 [建立新的 Web 應用程式]  ，然後選取 [進階]  選項。
+    - Windows：選擇 [建立新的 Web 應用程式]  ，然後選取 [進階]  選項。
 
 1. 輸入 Web 應用程式的全域唯一名稱，然後按 ENTER。 應用程式名稱的有效字元為 'a-z'、'0-9' 和 '-'。
 

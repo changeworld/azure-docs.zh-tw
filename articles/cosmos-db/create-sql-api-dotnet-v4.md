@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/10/2020
-ms.openlocfilehash: b69d67a5c4fc1d907f676cf4e400f9fa7df2653b
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 6587b6d5ceb18bcc2374594aef91da91f792bb84
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867270"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585929"
 ---
 # <a name="quickstart-build-a-console-app-using-the-net-v4-sdk-to-manage-azure-cosmos-db-sql-api-account-resources"></a>快速入門：使用 .Net V4 SDK 建置主控台應用程式來管理 Azure Cosmos DB SQL API 帳戶資源。
 
@@ -151,64 +151,64 @@ Time Elapsed 00:00:34.17
 
 此文章中描述的範例程式碼會在 Azure Cosmos DB 中建立家庭資料庫。 家庭資料庫包含家庭詳細資料，例如姓名、地址、位置、相關聯的家長、子女和寵物。 將資料填入您的 Azure Cosmos 帳戶之前，請定義家庭項目的屬性。 在範例應用程式的根層級建立一個名為 `Family.cs` 的新類別，並在其中新增下列程式碼：
 
-[!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Family.cs)]
+:::code language="csharp" source="~/cosmos-dotnet-v4-getting-started/src/Family.cs":::
 
 ### <a name="add-the-using-directives--define-the-client-object"></a>新增 using 指示詞並定義用戶端物件
 
 從專案目錄中，在您的編輯器中開啟 `Program.cs` 檔案，並在應用程式的頂端新增下列 using 指示詞：
 
-[!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=Usings)]
+:::code language="csharp" source="~/cosmos-dotnet-v4-getting-started/src/Program.cs" id="Usings":::
 
 
 在 `Program` 類別中新增下列全域變數。 這些變數將包含端點和授權金鑰、資料庫名稱，以及您將建立的容器。 請務必根據您的環境取代端點和授權金鑰值。 
 
-[!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=Constants)]
+:::code language="csharp" source="~/cosmos-dotnet-v4-getting-started/src/Program.cs" id="Constants":::
 
 最後，取代 `Main` 方法：
 
-[!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=Main)]
+:::code language="csharp" source="~/cosmos-dotnet-v4-getting-started/src/Program.cs" id="Main":::
 
 ### <a name="create-a-database"></a>建立資料庫 
 
 在 `program.cs` 類別內定義 `CreateDatabaseAsync` 方法。 如果 `FamilyDatabase` 不存在，則此方法會建立它。
 
-[!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=CreateDatabaseAsync)]
+:::code language="csharp" source="~/cosmos-dotnet-v4-getting-started/src/Program.cs" id="CreateDatabaseAsync":::
 
 ### <a name="create-a-container"></a>建立容器
 
 在 `Program` 類別內定義 `CreateContainerAsync` 方法。 如果 `FamilyContainer` 不存在，則此方法會建立它。 
 
-[!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=CreateContainerAsync)]
+:::code language="csharp" source="~/cosmos-dotnet-v4-getting-started/src/Program.cs" id="CreateContainerAsync":::
 
 ### <a name="create-an-item"></a>建立項目
 
 透過使用下列程式碼新增 `AddItemsToContainerAsync` 方法來建立家庭項目。 您可以使用 `CreateItemAsync` 或 `UpsertItemAsync` 方法來建立項目：
 
-[!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=AddItemsToContainerAsync)]
+:::code language="csharp" source="~/cosmos-dotnet-v4-getting-started/src/Program.cs" id="AddItemsToContainerAsync":::
 
 ### <a name="query-the-items"></a>查詢項目
 
 插入項目之後，您可以執行查詢以取得 "Andersen" 家庭的詳細資料。 下列程式碼顯示如何直接使用 SQL 查詢來執行查詢。 取得 "Andersen" 家庭詳細資料的 SQL 查詢是：`SELECT * FROM c WHERE c.LastName = 'Andersen'`。 在 `Program` 類別中定義 `QueryItemsAsync` 方法，並在其中加入下列程式碼：
 
-[!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=QueryItemsAsync)]
+:::code language="csharp" source="~/cosmos-dotnet-v4-getting-started/src/Program.cs" id="QueryItemsAsync":::
 
 ### <a name="replace-an-item"></a>取代項目 
 
 讀取家庭項目，然後透過下列程式碼新增 `ReplaceFamilyItemAsync` 方法來將其更新。
 
-[!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=ReplaceFamilyItemAsync)]
+:::code language="csharp" source="~/cosmos-dotnet-v4-getting-started/src/Program.cs" id="ReplaceFamilyItemAsync":::
 
 ### <a name="delete-an-item"></a>刪除項目 
 
 透過使用下列程式碼新增 `DeleteFamilyItemAsync` 方法來刪除家庭項目。
 
-[!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=DeleteFamilyItemAsync)]
+:::code language="csharp" source="~/cosmos-dotnet-v4-getting-started/src/Program.cs" id="DeleteFamilyItemAsync":::
 
 ### <a name="delete-the-database"></a>刪除資料庫 
 
 最後，您可以使用下列程式碼來刪除新增 `DeleteDatabaseAndCleanupAsync` 方法的資料庫：
 
-[!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=DeleteDatabaseAndCleanupAsync)]
+:::code language="csharp" source="~/cosmos-dotnet-v4-getting-started/src/Program.cs" id="DeleteDatabaseAndCleanupAsync":::
 
 新增所有必要的方法之後，請儲存 `Program` 檔案。 
 

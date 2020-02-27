@@ -1,5 +1,6 @@
 ---
-title: 快速入門：建立 Ubuntu DSVM
+title: 快速入門：建立 Ubuntu 資料科學虛擬機器
+titleSuffix: Azure Data Science Virtual Machine
 description: 設定和建立適用於 Linux (Ubuntu) 的資料科學虛擬機器以進行分析和機器學習服務。
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -7,12 +8,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 12/31/2019
-ms.openlocfilehash: 263c12b344e8634c639167aa3e455032f0817e2f
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 5d139cbd59b1b3e63786ae22bbd3b934de37cd49
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612082"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526105"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>快速入門：設定適用於 Linux (Ubuntu) 的資料科學虛擬機器
 

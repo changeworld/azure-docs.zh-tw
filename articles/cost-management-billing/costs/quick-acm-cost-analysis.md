@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: bc19c6358ff116b3d7299673783e8fbd6e8cd4f5
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 82cd596f08136f6d9b327fc83122c0f32d8f9914
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201045"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649291"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>快速入門：使用成本分析探索及分析成本
 
@@ -50,7 +50,7 @@ ms.locfileid: "77201045"
 
 **實際成本**：顯示當月所產生的實際使用量和購買成本，這些資料也會在您的帳單上顯示。
 
-**預測**：顯示所選期間的總預測成本。 (預測功能目前為預覽版。)
+**預測**：顯示所選期間的總預測成本。
 
 **預算**：顯示已針對所選取範圍規劃的費用限制 (如果有的話)。
 

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/18/2020
+ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 1bdd6552c3d418d761ffaf1df4ebb769421693f5
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: b27baed20d8e36bf5790036e2fdc0804a94a4ea1
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484990"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589431"
 ---
 # <a name="what-is-virtual-network-nat-public-preview"></a>什麼是虛擬網路 NAT (公開預覽版)？
 
@@ -140,9 +140,6 @@ NAT 目前適用於下欄區域：
 
 必須註冊訂用帳戶，才得以參與公開預覽版。  參與需要兩個步驟的程序，而下面提供的指示適用於 Azure CLI 和 Azure PowerShell。  啟用可能需要幾分鐘的時間才能完成。
 
-> [!IMPORTANT]
-> 在您的訂用帳戶上[啟用虛擬網路 NAT 預覽版](./nat-overview.md#enable-preview)之後，請使用 https://aka.ms/natportal 來存取入口網站。
-
 ### <a name="azure-cli"></a>Azure CLI
 
 1. 註冊公開預覽版的訂用帳戶
@@ -168,7 +165,7 @@ NAT 目前適用於下欄區域：
 2. 啟用註冊
 
     ```azurepowershell-interactive
-      Register-AzProviderFeature -ProviderNamespace Microsoft.Network
+      Register-AzResourceProvider -ProviderNamespace Microsoft.Network
     ```
 
 ## <a name="pricing"></a>定價
@@ -197,7 +194,6 @@ NAT 是透過標準支援管道來支援。
 
 - NAT 與標準 SKU 公用 IP、公用 IP 前置詞和負載平衡器資源相容。   基本資源 (例如基本負載平衡器) 及其衍生的所有產品都不會與 NAT 相容。  基本資源必須置於未透過 NAT 設定的子網路上。
 - 支援 IPv4 位址系列。  NAT 不會與 IPv6 位址系列互動。
-- 使用 NAT 傳送至公用端點的輸出流量，不接受子網路或 NIC 上的 NSG。
 - 使用 NAT 時，不支援 NSG 流量記錄。
 - NAT 無法跨越多個虛擬網路。
 
