@@ -8,9 +8,9 @@
   items:
     - name: 規劃彙總的命名空間
       href: hpc-cache-namespace.md
-- name: 使用說明指南
+- name: 操作指南
   items:
-    - name: 必要條件
+    - name: Prerequisites
       href: hpc-cache-prereqs.md
     - name: 建立快取
       href: hpc-cache-create.md
@@ -42,6 +42,8 @@
       href: hpc-cache-support-ticket.md
     - name: 解決 Blob 儲存體帳戶防火牆設定問題
       href: hpc-cache-blob-firewall-fix.md
+    - name: 針對 NFS 儲存目標的建立進行疑難排解
+      href: troubleshoot-nas.md
     - name: 從區域性中斷復原
       href: hpc-region-recovery.md
     - name: 使用 Azure NetApp Files 搭配 Azure HPC Cache

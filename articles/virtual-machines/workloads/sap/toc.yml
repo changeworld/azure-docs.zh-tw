@@ -225,6 +225,8 @@
               href: sap-ascs-ha-multi-sid-wsfc-file-share.md
             - name: SLES 和適用於 A(SCS) 執行個體的 Pacemaker 多重 SID
               href: high-availability-guide-suse-multi-sid.md
+            - name: RHEL 和適用於 A(SCS) 執行個體的 Pacemaker 多重 SID
+              href: high-availability-guide-rhel-multi-sid.md
     - name: 適用於 SAP 災害復原的 Azure Site Recovery
       href: '../../../site-recovery/site-recovery-workload.md#protect-sap'
     - name: 適用於最佳網路延遲的 Azure Proximity Placement Groups (搭配 SAP 應用程式)

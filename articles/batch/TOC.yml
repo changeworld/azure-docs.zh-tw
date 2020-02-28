@@ -123,6 +123,8 @@
           href: large-number-tasks.md
         - name: 檢查作業和工作錯誤
           href: batch-job-task-error-checking.md
+        - name: 偵測和處理 Batch 服務錯誤
+          href: batch-retry-after-errors.md
     - name: 建立資源檔案
       href: resource-files.md
     - name: 持續作業及工作輸出

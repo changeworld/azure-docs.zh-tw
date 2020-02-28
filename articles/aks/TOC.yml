@@ -105,8 +105,8 @@
               href: developer-best-practices-pod-security.md
     - name: 配額和區域限制
       href: quotas-skus-regions.md
-    - name: 從 ACS 遷移至 AKS
-      href: acs-aks-migration.md
+    - name: 遷移至 AKS
+      href: aks-migration.md
     - name: 支援的 Kubernetes 版本
       href: supported-kubernetes-versions.md
     - name: 主機 OS 中的安全性強化

@@ -8,9 +8,10 @@
   expanded: true
   items:
     - name: 建立 Unity 應用程式
-      href: unity-overview.yml
       expanded: true
       items:
+        - name: Unity 概觀
+          href: unity-overview.md
         - name: HoloLens
           href: quickstarts/get-started-unity-hololens.md
         - name: Android
@@ -85,7 +86,7 @@
       href: concepts/guidelines-effective-anchor-experiences.md
     - name: 記錄和診斷
       href: concepts/logging-diagnostics.md
-    - name: 粗略重新定位
+    - name: 粗略地重新當地語系化
       href: concepts/coarse-reloc.md
 - name: 參考
   items:
