@@ -1,18 +1,14 @@
 ---
 title: 使用 Azure 應用程式 Insights 來診斷失敗和例外狀況
 description: 擷取從 ASP.NET 應用程式與所要求遙測的例外狀況。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/11/2019
-ms.openlocfilehash: f89149de9b1173a659176f686053e8dc564ab85c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 24b7acfa6610c2040daf0f7d8d25f25391140303
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432660"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666151"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>使用 Application Insights 在 Web 應用程式中診斷例外狀況
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 會回報您即時 Web 應用程式中的例外狀況。 您可以在用戶端和伺服器端讓失敗的要求與例外狀況及其他事件相互關聯，以便快速地診斷原因。
@@ -70,7 +66,7 @@ Application Insights 隨附策劃的 APM 體驗，可協助您診斷受監視應
 ## <a name="custom-tracing-and-log-data"></a>自訂追蹤和記錄資料
 若要取得您的 app 的特定診斷資料，您可以插入程式碼以傳送您自己的遙測資料。 這會與要求、網頁檢視和其他自動收集的資料一起顯示在診斷搜尋中。
 
-您有幾種選項：
+您有幾個選擇：
 
 * [TrackEvent()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent) 通常用來監視使用模式，但它傳送的資料也會出現在診斷搜尋的 [自訂事件] 下。 事件具有名稱，並且可以包含字串屬性和數值度量，您可以對其[篩選診斷搜尋](../../azure-monitor/app/diagnostic-search.md)。
 * [TrackTrace()](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) 可讓您傳送較長的資料，例如 POST 資訊。
@@ -201,7 +197,7 @@ public class GoodController : ApiController
 ## <a name="mvc"></a>MVC
 從 Application Insights Web SDK 2.6 版 (beta3 和更新版本) 開始，Application Insights 會自動收集在 MVC 5+ 控制器方法中擲回的未處理例外狀況。 如果您先前已新增自訂處理常式來追蹤此類例外狀況 (如下列範例中所述)，您可以將其移除，以避免重複追蹤例外狀況。
 
-有一些無法處理的例外狀況篩選器案例。 例如：
+有一些無法處理的例外狀況篩選器案例。 例如，
 
 * 從控制器建構函式擲回的例外狀況。
 * 從訊息處理常式擲回的例外狀況。
@@ -293,7 +289,7 @@ public class GoodController : ApiController
 ## <a name="web-api"></a>Web API
 從 Application Insights Web SDK 2.6 版 (beta3 和更新版本) 開始，Application Insights 會自動針對 WebAPI 2+ 收集在控制器方法中擲回的未處理例外狀況。 如果您先前已新增自訂處理常式來追蹤此類例外狀況 (如下列範例中所述)，您可以將其移除，以避免重複追蹤例外狀況。
 
-有一些無法處理的例外狀況篩選器案例。 例如：
+有一些無法處理的例外狀況篩選器案例。 例如，
 
 * 從控制器建構函式擲回的例外狀況。
 * 從訊息處理常式擲回的例外狀況。

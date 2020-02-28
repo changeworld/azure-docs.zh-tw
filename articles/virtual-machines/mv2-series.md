@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: caa80443a189874bfd699dba412fb749c8711556
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 03e8baa5f0286652ee500a06382c0a45e6f0ec52
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493393"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655662"
 ---
 # <a name="mv2-series"></a>Mv2 系列
 
@@ -33,7 +33,7 @@ Mv2 系列 VM 的功能 Intel®超執行緒技術
 | Standard_M416ms_v2<sup>1、2</sup> | 416 | 11400 | 8192 | 64 | 250000/1600 （14080） | 80000/2000 | 8 / 32000 |
 | Standard_M416s_v2<sup>1、2</sup> | 416 | 5700 | 8192 | 64 | 250000/1600 （14080） | 80000/2000 | 8 / 32000 |
 
-<sup>1</sup> Mv2 系列 vm 僅限第2代。 如果您使用 Linux，請參閱[Azure 上的第2代 Vm 支援](/linux/generation-2.md)，以取得如何尋找和選取映射的指示。
+<sup>1</sup> Mv2 系列 vm 僅限第2代。 如果您使用 Linux，請參閱[Azure 上的第2代 Vm 支援](./linux/generation-2.md)，以取得如何尋找和選取映射的指示。
 
 <sup>2</sup>針對 M416ms_v2 和 M416s_v2 大小，請注意，只有下列映射的初始支援： "GEN2： SUSE LINUX ENTERPRISE SERVER （SLES） 12 SP4 For SAP Applications"。
 

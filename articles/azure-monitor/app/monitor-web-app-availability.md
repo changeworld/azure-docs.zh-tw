@@ -1,19 +1,15 @@
 ---
 title: 監視任何網站的可用性和回應性 | Microsoft Docs
 description: 在 Application Insights 中設定 Web 測試。 如果網站無法使用或回應緩慢，將收到警示。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 074b5c175305131cd67cc6660d13756a83386c11
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 61358051a8ddc32bc01ec5e231f4c28ebfa18ee0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819291"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670027"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>監視任何網站的可用性
 
@@ -74,7 +70,7 @@ ms.locfileid: "72819291"
 |----|----|----|
 |**近乎即時（預覽）** | 我們建議使用近乎即時的警示。 設定此類型的警示會在您的可用性測試建立後完成。  |
 |**傳統** | 我們不再建議使用傳統警示來進行新的可用性測試。|
-|**警示位置閾值**|建議至少為位置數的 3/5。 警示位置閾值與測試位置數目之間的最佳關聯性是  =  測試位置數目的**警示位置閾值** **-2，最少五個測試位置。**|
+|**警示位置閾值**|建議至少為位置數的 3/5。 警示位置閾值與測試位置數目之間的最佳關聯性是 = 測試位置數目的**警示位置閾值** **-2，最少五個測試位置。**|
 
 ## <a name="see-your-availability-test-results"></a>查看可用性測試結果
 
@@ -82,11 +78,11 @@ ms.locfileid: "72819291"
 
 幾分鐘後 **，按一下 [** 重新整理] 以查看您的測試結果。
 
-![線條視圖](./media/monitor-web-app-availability/availability-refresh-002.png)
+![程式行檢視](./media/monitor-web-app-availability/availability-refresh-002.png)
 
 散佈圖視圖會顯示測試結果的樣本，其中包含診斷測試步驟的詳細資料。 測試引擎會儲存失敗測試的診斷詳細資料。 對於成功的測試，系統會儲存執行子集的診斷詳細資料。 將滑鼠停留在任何綠色/紅色點上，以查看測試、測試名稱和位置。
 
-![線條視圖](./media/monitor-web-app-availability/availability-scatter-plot-003.png)
+![程式行檢視](./media/monitor-web-app-availability/availability-scatter-plot-003.png)
 
 選取特定測試、位置，或縮短時間週期，以查看更多有關感興趣時間週期的結果。 使用 [搜尋總管] 以查看所有執行的結果，或使用分析查詢對此資料執行自訂報告。
 

@@ -1,18 +1,17 @@
 ---
 title: 從 Azure 監視器記錄查詢建立圖表 | Microsoft Docs
 description: 說明 Azure 監視器中能以不同方式顯示您記錄資料的不同視覺效果。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: ca60ed68277486ca5ed7d7d90ad72506a4844936
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8a515f01bfa9f8ec579c51b806c997d79b629250
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75398073"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670316"
 ---
 # <a name="creating-charts-and-diagrams-from-azure-monitor-log-queries"></a>從 Azure 監視器記錄查詢建立圖表
 
@@ -34,7 +33,7 @@ Heartbeat
 
 根據預設，結果會顯示成資料表︰
 
-![表格](media/charts/table-display.png)
+![Table](media/charts/table-display.png)
 
 若要取的更好的檢視，請選取 [圖表]，然後選擇 [圓形圖] 選項以將結果視覺化：
 
@@ -70,7 +69,7 @@ Perf
 ![參考線](media/charts/charts-and-diagrams-multiSeriesThreshold.png)
 
 ## <a name="multiple-dimensions"></a>多維度
-`summarize` 之 `by` 子句中的多個運算式會在結果中建立多列，每個值組合都各有一列。
+`by` 之 `summarize` 子句中的多個運算式會在結果中建立多列，每個值組合都各有一列。
 
 ```Kusto
 SecurityEvent

@@ -1,18 +1,14 @@
 ---
 title: 在 Application Insights 中探索 .NET 追蹤記錄
 description: 搜尋追蹤、NLog 或 Log4Net 所產生的記錄。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/08/2019
-ms.openlocfilehash: 33dc415e06b7f49f75697abb05248750444fea7c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 273d5a2f4e1155541e159332312bdaa68aa175d7
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432634"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665981"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>探索 Application Insights 中的 .NET/.NET Core 和 Python 追蹤記錄
 
@@ -84,7 +80,7 @@ NuGet 套件會安裝必要的元件，並修改 web.config 或 app.config （�
     logger.Warn("Slow response - database01");
 
 ## <a name="use-eventsource-events"></a>使用 EventSource 事件
-您可以將 [System.Diagnostics.Tracing.EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) 設定為要傳送至 Application Insights 作為追蹤的事件。 首先，安裝 `Microsoft.ApplicationInsights.EventSourceListener` NuGet 套件。 然後編輯 [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) 檔案的 `TelemetryModules` 區段。
+您可以將 [System.Diagnostics.Tracing.EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) 設定為要傳送至 Application Insights 作為追蹤的事件。 首先，安裝 `Microsoft.ApplicationInsights.EventSourceListener` NuGet 套件。 然後編輯 `TelemetryModules`ApplicationInsights.config[ 檔案的 ](../../azure-monitor/app/configuration-with-applicationinsights-config.md) 區段。
 
 ```xml
     <Add Type="Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule, Microsoft.ApplicationInsights.EventSourceListener">
@@ -135,14 +131,14 @@ NuGet 套件會安裝必要的元件，並修改 web.config 或 app.config （�
 ## <a name="use-the-trace-api-directly"></a>直接使用追蹤 API
 您可以直接呼叫 Application Insights 追蹤 API。 記錄配接器會使用此 API。
 
-例如：
+例如，
 
     var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
     telemetry.TrackTrace("Slow response - database01");
 
 TrackTrace 的優點在於您可以將較長的資料放在訊息中。 例如，您可以在該處編碼 POST 資料。
 
-您也可以將嚴重性層級新增至您的訊息。 而和其他遙測一樣，您可以加入屬性值來協助篩選或搜尋不同的追蹤集。 例如：
+您也可以將嚴重性層級新增至您的訊息。 而和其他遙測一樣，您可以加入屬性值來協助篩選或搜尋不同的追蹤集。 例如，
 
     var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
     telemetry.TrackTrace("Slow database response",

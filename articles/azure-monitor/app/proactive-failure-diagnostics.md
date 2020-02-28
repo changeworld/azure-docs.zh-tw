@@ -1,19 +1,15 @@
 ---
 title: 智慧型偵測 - Application Insights 中的失敗異常 | Microsoft Docs
 description: 針對 Web 應用程式失敗要求比率的不尋常變化對您發出警示，並提供診斷分析。 不需要設定。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: c556f726cd63971abe1e9b6d8b87117bb3e378db
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: e1c07fca3a4eee19e56c313a889e5b86ce2b4c42
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75912845"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671744"
 ---
 # <a name="smart-detection---failure-anomalies"></a>智慧型偵測 - 失敗異常
 如果您的 web 應用程式在失敗要求的速率中發生異常上升， [Application Insights](../../azure-monitor/app/app-insights-overview.md)會以近乎即時的方式自動發出警示。 它偵測到回報為失敗的 HTTP 要求率異常提高或相依性呼叫。 對於要求，失敗的要求通常會有400或更高的回應碼。 為了協助您分級和診斷問題，警示詳細資料中會提供失敗和相關應用程式資料的特性分析。 其中也有 Application Insights 入口網站的連結，以供進一步診斷。 不需要設定該功能，因為它是使用機器學習演算法來預測一般失敗率。
@@ -336,11 +332,11 @@ ms.locfileid: "75912845"
 
 *那麼，您要查看我的應用程式資料嗎？*
 
-* 不會。 服務完全是自動的。 只有您會收到通知。 您的資料是 [不公開的](../../azure-monitor/app/data-retention-privacy.md)。
+* No。 服務完全是自動的。 只有您會收到通知。 您的資料是 [不公開的](../../azure-monitor/app/data-retention-privacy.md)。
 
 *我是否必須訂閱此警示？*
 
-* 不會。 每個傳送要求資料的應用程式都有智慧偵測警示規則。
+* No。 每個傳送要求資料的應用程式都有智慧偵測警示規則。
 
 *我是否可以取消訂閱或改為傳送通知給我的同事？*
 

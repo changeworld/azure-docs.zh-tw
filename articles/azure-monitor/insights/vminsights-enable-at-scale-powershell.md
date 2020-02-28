@@ -1,18 +1,17 @@
 ---
 title: 使用 PowerShell 或範本啟用適用於 VM 的 Azure 監視器（傳統）
 description: 本文說明如何使用 Azure PowerShell 或 Azure Resource Manager 範本來啟用一或多個 Azure 虛擬機器或虛擬機器擴展集的適用於 VM 的 Azure 監視器。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2019
-ms.openlocfilehash: 4fc5afe3bbb4b2ccf2329432347b23fe9a69c5ea
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 236d5a28b167e16c9614119a59fd8a99e012e9dd
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977666"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656529"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-using-azure-powershell-or-resource-manager-templates"></a>使用 Azure PowerShell 或 Resource Manager 範本啟用適用於 VM 的 Azure 監視器（預覽）
 
@@ -169,7 +168,7 @@ az account set --subscription "Subscription Name"
 az group deployment create --resource-group <ResourceGroupName> --template-file <Template.json> --parameters <Parameters.json>
 ```
 
-輸出結果類似下面：
+輸出看起來像下面這樣：
 
 ```azurecli
 provisioningState       : Succeeded

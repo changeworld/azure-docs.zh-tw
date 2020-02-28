@@ -1,19 +1,17 @@
 ---
 title: 使用 Application Insights 來分析即時 Azure App Service 應用程式 | Microsoft Docs
 description: 使用 Application Insights Profiler 來分析 Azure App Service 上的即時應用程式。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: d463732fc8e8f488851a57fe520f138b101eb6cf
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: ba9a2aca73dbdb8de298b68670fd6ab16f810a4d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899946"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671537"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>使用 Application Insights 來分析即時 Azure App Service 應用程式
 
@@ -45,7 +43,7 @@ Application Insights Profiler 會預先安裝為應用程式服務執行時間�
 Application Insights Profiler 可以藉由建立 Azure App Service 的應用程式設定來啟用。 上面顯示選項的頁面會為您建立這些應用程式設定。 但是，您可以使用範本或其他方式，將這些設定的建立作業自動化。 如果您的 Application Insights 資源與 Azure App Service 不同的訂用帳戶，這些設定也會有效。
 以下是啟用 profiler 所需的設定：
 
-|應用程式設定    | Value    |
+|應用程式設定    | 值    |
 |---------------|----------|
 |APPINSIGHTS_INSTRUMENTATIONKEY         | Application Insights 資源的 iKey    |
 |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
@@ -71,7 +69,7 @@ Application Insights Profiler 可以藉由建立 Azure App Service 的應用程�
 
 建議您在所有應用程式上都啟用 Profiler，以儘早找出任何效能問題。
 
-使用 WebDeploy 將變更部署至 web 應用程式時，可以刪除 Profiler 的檔案。 您可以排除 App_Data 資料夾，使其不會在部署期間遭到刪除，藉此防止刪除。 
+使用 WebDeploy 將變更部署至 web 應用程式時，可以刪除 Profiler 的檔案。 您可以排除在部署期間刪除 App_Data 資料夾，藉此防止刪除。 
 
 
 ## <a name="next-steps"></a>後續步驟

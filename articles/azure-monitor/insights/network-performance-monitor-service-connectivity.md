@@ -1,20 +1,19 @@
 ---
 title: 網路效能監控解決方案服務連線能力-Azure Log Analytics
 description: 使用網路效能監控中的服務連線能力監視功能，對任何具有已開啟 TCP 連接埠的端點進行網路連線監視。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: 11975a86b5d9135b42dd51bdd787c2f76cabe259
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 93f3820b7cf1db85b9ff4cd514fe22efc75a90d9
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551500"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654540"
 ---
-# <a name="service-connectivity-monitor"></a>服務連線能力監控
+# <a name="service-connectivity-monitor"></a>服務連線能力監視
 
 您可以使用[網路效能監控](network-performance-monitor.md)中的服務連線能力監視功能，對任何具有已開啟 TCP 連接埠的端點進行網路連線監視。 這類端點包括網站、SaaS 應用程式、PaaS 應用程式和 SQL 資料庫。 
 
@@ -27,7 +26,7 @@ ms.locfileid: "75551500"
 - 檢視拓撲地圖上每個躍點所提供的延遲，識別可能導致應用程式效能低落的作用點。
 
 
-![服務連線能力監控](media/network-performance-monitor-service-endpoint/service-endpoint-intro.png)
+![服務連線能力監視](media/network-performance-monitor-service-endpoint/service-endpoint-intro.png)
 
 
 ## <a name="configuration"></a>組態 
@@ -102,7 +101,7 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 
 ![服務連線能力監視測試](media/network-performance-monitor-service-endpoint/service-endpoint-topology.png)
 
-## <a name="diagnostics"></a>診斷程式 
+## <a name="diagnostics"></a>診斷 
 
 如果您觀察到異常，請依照下列步驟：
 

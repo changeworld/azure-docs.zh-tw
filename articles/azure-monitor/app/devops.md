@@ -1,18 +1,14 @@
 ---
 title: Web 應用程式效能監視-Azure 應用程式深入資訊
 description: Application Insights 如何融入 DevOps 循環
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 12/21/2018
-ms.openlocfilehash: 1396bc86971941fdf8c6559df71a4c47f58a899c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 24095aade80022d1e1ebb38357971512bfc873c0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928813"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669687"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>使用 Application Insights 深入診斷 Web 應用程式
 ## <a name="why-do-i-need-application-insights"></a>我為什麼需要 Application Insights 呢？
@@ -154,7 +150,7 @@ Visual Studio 和 Eclipse 提供工具，可為您正在開發的專案設定正
 * [價格](../../azure-monitor/app/pricing.md) - 您可以開始免費使用，當您處於低用量期間可繼續使用。
 
 
-## <a name="video"></a>影片
+## <a name="video"></a>視訊
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 

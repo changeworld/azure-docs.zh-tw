@@ -1,18 +1,14 @@
 ---
 title: 我如何在 Azure Application Insights 中... | Microsoft Docs
 description: Application Insights 中的常見問題集。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 04/04/2017
-ms.openlocfilehash: 61bd5898c494018a2bacbd894d4dc2aac97f53b4
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 5b65087c361911f0714723c315e0b7f7e9bb74e6
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928410"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663852"
 ---
 # <a name="how-do-i--in-application-insights"></a>我如何在 Application Insights 中...？
 ## <a name="get-an-email-when-"></a>... 時收到電子郵件
@@ -91,7 +87,7 @@ ms.locfileid: "73928410"
 #### <a name="dashboard-with-data-from-other-sources-and-application-insights"></a>資料來自其他來源和 Application Insights 的儀表板
 * [將遙測匯出至 Power Bi](../../azure-monitor/app/export-power-bi.md )。
 
-或
+Or
 
 * 使用 SharePoint 做為您的儀表板，在 SharePoint web 組件中顯示資料。 [使用連續的匯出和資料流分析來匯出至 SQL](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md)。  使用 PowerView 來檢查資料庫，並建立適用於 PowerView 的 SharePoint web 組件。
 
@@ -100,7 +96,7 @@ ms.locfileid: "73928410"
 ### <a name="filter-out-anonymous-or-authenticated-users"></a>篩選出匿名或已驗證的使用者
 如果您的使用者登入，您可以設定[已驗證的使用者識別碼](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)。 (它不會自動重新整理)。
 
-接著，您可以：
+您可以：
 
 * 搜尋特定的使用者識別碼
 

@@ -1,18 +1,16 @@
 ---
 title: Azure 應用程式 Insights 代理程式總覽 |Microsoft Docs
 description: Application Insights 代理程式的總覽。 在不重新部署網站的情況下監視網站效能。 適用于內部部署、Vm 或 Azure 上裝載的 ASP.NET web 應用程式。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
-ms.openlocfilehash: 61c3721745550b43aea730d0bcd2230b0435ff53
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 4a240bc62816a46bc37108777a8b081b74047738
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899603"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671166"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>為內部部署伺服器部署 Azure 監視器 Application Insights 代理程式
 
@@ -28,12 +26,12 @@ Application Insights 代理程式（先前稱為狀態監視器 V2）是發佈�
 
 ## <a name="powershell-gallery"></a>PowerShell 資源庫
 
-Application Insights 代理程式位於此處： https://www.powershellgallery.com/packages/Az.ApplicationMonitor 。
+Application Insights 代理程式位於此處： https://www.powershellgallery.com/packages/Az.ApplicationMonitor。
 
 ![PowerShell 資源庫](https://img.shields.io/powershellgallery/v/Az.ApplicationMonitor.svg?color=Blue&label=Current%20Version&logo=PowerShell&style=for-the-badge)
 
 
-## <a name="instructions"></a>範例的指示
+## <a name="instructions"></a>Instructions
 - 請參閱開始使用的[指示](status-monitor-v2-get-started.md)，以取得簡單的程式碼範例。
 - 如需深入瞭解如何開始使用，請參閱[詳細指示](status-monitor-v2-detailed-instructions.md)。
 
@@ -56,7 +54,7 @@ Application Insights 代理程式位於此處： https://www.powershellgallery.c
 
 - Application Insights 代理程式是否支援 proxy 安裝？
 
-  *是*。 有多種方式可以下載 Application Insights 代理程式。 如果您的電腦可存取網際網路，您可以使用 `-Proxy` 參數來上架到 PowerShell 資源庫。
+  *是*。 有多種方式可以下載 Application Insights 代理程式。 如果您的電腦可存取網際網路，您可以使用 `-Proxy` 參數上架到 PowerShell 資源庫。
 您也可以手動下載模組，並將它安裝在您的電腦上，或直接使用它。
 每個選項都會在[詳細指示](status-monitor-v2-detailed-instructions.md)中加以說明。
 

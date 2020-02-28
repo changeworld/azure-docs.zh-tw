@@ -1,18 +1,16 @@
 ---
 title: Azure 應用程式 Insights 代理程式詳細指示 |Microsoft Docs
 description: Application Insights 代理程式入門的詳細指示。 在不重新部署網站的情況下監視網站效能。 適用于內部部署、Vm 或 Azure 上裝載的 ASP.NET web 應用程式。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 3b053b7876494a3b2e6f392850c0323b56b1c3ec
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: cd5ca5039b537859d5b31c901ed1f93877ecb629
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230273"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671200"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights 代理程式（先前名為狀態監視器 v2）：詳細指示
 
@@ -36,7 +34,7 @@ https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-e
 )。
 - 命令： `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process`。
 - 選擇性參數：
-    - `-Force`。 略過確認提示。
+    - `-Force`第 1 課：建立 Windows Azure 儲存體物件{2}。 略過確認提示。
 
 **範例錯誤**
 
@@ -85,9 +83,9 @@ SerializationVersion           1.1.0.1
     - 描述：您需要此提供者，才能與 NuGet 型存放庫（例如 PowerShell 資源庫）互動。
     - 參考： [Install-install-packageprovider](https://docs.microsoft.com/powershell/module/packagemanagement/install-packageprovider?view=powershell-6)。
     - 命令： `Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201`。
-    - 選擇性參數：
-        - `-Proxy`。 指定要求的 proxy 伺服器。
-        - `-Force`。 略過確認提示。
+    - 選用參數：
+        - `-Proxy`第 1 課：建立 Windows Azure 儲存體物件{2}。 指定要求的 proxy 伺服器。
+        - `-Force`第 1 課：建立 Windows Azure 儲存體物件{2}。 略過確認提示。
     
     如果未設定 NuGet，您會收到下列提示：
         
@@ -104,7 +102,7 @@ SerializationVersion           1.1.0.1
     - 參考：[設定-register-psrepository](https://docs.microsoft.com/powershell/module/powershellget/set-psrepository?view=powershell-6)。
     - 命令： `Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted`。
     - 選擇性參數：
-        - `-Proxy`。 指定要求的 proxy 伺服器。
+        - `-Proxy`第 1 課：建立 Windows Azure 儲存體物件{2}。 指定要求的 proxy 伺服器。
 
     如果 PowerShell 資源庫不受信任，您會收到此提示：
 
@@ -120,9 +118,9 @@ SerializationVersion           1.1.0.1
     - 描述：此模組包含用來從 PowerShell 資源庫取得其他模組的工具。 版本1.0.0.1 隨附于 Windows 10 和 Windows Server。 需要1.6.0 或更高版本。 若要判斷已安裝的版本，請執行 `Get-Command -Module PowerShellGet` 命令。
     - 參考：[安裝 PowerShellGet](/powershell/scripting/gallery/installing-psget)。
     - 命令： `Install-Module -Name PowerShellGet`。
-    - 選擇性參數：
-        - `-Proxy`。 指定要求的 proxy 伺服器。
-        - `-Force`。 略過「已安裝」警告並安裝最新版本。
+    - 選用參數：
+        - `-Proxy`第 1 課：建立 Windows Azure 儲存體物件{2}。 指定要求的 proxy 伺服器。
+        - `-Force`第 1 課：建立 Windows Azure 儲存體物件{2}。 略過「已安裝」警告並安裝最新版本。
 
     如果您不是使用最新版本的 PowerShellGet，就會收到此錯誤：
     
@@ -144,11 +142,11 @@ SerializationVersion           1.1.0.1
 3. 安裝 Az ApplicationMonitor 模組。
     - 參考： [Install-Module](https://docs.microsoft.com/powershell/module/powershellget/install-module?view=powershell-6)。
     - 命令： `Install-Module -Name Az.ApplicationMonitor`。
-    - 選擇性參數：
-        - `-Proxy`。 指定要求的 proxy 伺服器。
-        - `-AllowPrerelease`。 允許安裝 Alpha 和 Beta 版。
-        - `-AcceptLicense`。 略過 [接受授權] 提示
-        - `-Force`。 略過「不受信任的存放庫」警告。
+    - 選用參數：
+        - `-Proxy`第 1 課：建立 Windows Azure 儲存體物件{2}。 指定要求的 proxy 伺服器。
+        - `-AllowPrerelease`第 1 課：建立 Windows Azure 儲存體物件{2}。 允許安裝 Alpha 和 Beta 版。
+        - `-AcceptLicense`第 1 課：建立 Windows Azure 儲存體物件{2}。 略過 [接受授權] 提示
+        - `-Force`第 1 課：建立 Windows Azure 儲存體物件{2}。 略過「不受信任的存放庫」警告。
 
 ## <a name="download-and-install-the-module-manually-offline-option"></a>手動下載並安裝模組（離線選項）
 

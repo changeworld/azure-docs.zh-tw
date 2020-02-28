@@ -1,18 +1,17 @@
 ---
 title: 如何升級適用於 VM 的 Azure 監視器 Dependency agent |Microsoft Docs
 description: 本文說明如何使用命令列、安裝程式和其他方法來升級適用於 VM 的 Azure 監視器 Dependency agent。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/30/2019
-ms.openlocfilehash: 28b7a2b95e8ad23226f92f2b6fba085cc0fa1bfd
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: c98c48a4494ac37ef4868c44d4a7adacfd0d48da
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77565548"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662428"
 ---
 # <a name="how-to-upgrade-the-azure-monitor-for-vms-dependency-agent"></a>如何升級適用於 VM 的 Azure 監視器 Dependency agent
 
@@ -22,7 +21,7 @@ ms.locfileid: "77565548"
 
 Windows 和 Linux 的相依性代理程式可以手動或自動升級為最新版本，端視機器執行所在的部署案例和環境而定。 下列方法可用於升級代理程式。
 
-|環境 |安裝方法 |升級方法 |
+|環境 |安裝方式 |升級方法 |
 |------------|--------------------|---------------|
 |Azure VM | 適用于[Windows](../../virtual-machines/extensions/agent-dependency-windows.md)和[Linux](../../virtual-machines/extensions/agent-dependency-linux.md)的相依性代理程式 VM 擴充功能 | 除非您已將 Azure Resource Manager 範本*設定為* **false**，否則預設會自動升級 Agent。 已停用自動升級的次要版本升級，且主要版本升級會遵循相同的方法-卸載並重新安裝延伸模組。 |
 | 自訂 Azure VM 映射 | 手動安裝適用于 Windows/Linux 的 Dependency agent | 若要將 Vm 更新至最新版本的代理程式，您必須從執行 Windows installer 套件或 Linux 自我解壓縮和可安裝的 shell 腳本組合的命令列執行。|

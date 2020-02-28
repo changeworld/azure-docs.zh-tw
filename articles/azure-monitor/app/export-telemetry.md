@@ -1,18 +1,14 @@
 ---
 title: 從 Application Insights 連續匯出遙測 | Microsoft Docs
 description: 匯出診斷和使用量資料至 Microsoft Azure 中的儲存體，並從那裡下載。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/25/2019
-ms.openlocfilehash: 6504661c2df66bda81af03a6364703b4b10f7485
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 33158919980514b70c3b0e438691427a34eed834
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819548"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663908"
 ---
 # <a name="export-telemetry-from-application-insights"></a>從 Application Insights 匯出遙測
 想要讓遙測保留比標準保留期限還久的時間？ 或以某些特殊方式處理它？ 連續匯出很適合此用途。 在 Application Insights 入口網站中看見的事件，可以使用 JSON 格式匯出到 Microsoft Azure 中的儲存體。 您可以從這裡下載您的資料，並撰寫所需的任何程式碼來處理它。  
@@ -120,7 +116,7 @@ Where
 [屬性類型和值的詳細資料模型參考。](export-data-model.md)
 
 ## <a name="processing-the-data"></a>處理資料
-就小型規模而言，您可以編寫一些程式碼來取出您的資料，將它讀取為試算表等等。 例如：
+就小型規模而言，您可以編寫一些程式碼來取出您的資料，將它讀取為試算表等等。 例如，
 
     private IEnumerable<T> DeserializeMany<T>(string folderName)
     {
@@ -158,7 +154,7 @@ Where
 
 就更大型規模而言，請考慮 [HDInsight](https://azure.microsoft.com/services/hdinsight/) - 雲端中的 Hadoop 叢集。 HDInsight 提供各種管理和分析巨量資料的技術，您可以使用它來處理已從 Application Insights 匯出的資料。
 
-## <a name="q--a"></a>問與答
+## <a name="q--a"></a>問答集
 * *但我想要的只是一次性下載圖表。*  
 
     是的，您可以這麼做。 在索引標籤頂端，按一下 [**匯出資料**]。
@@ -173,7 +169,7 @@ Where
     否，抱歉。 我們的匯出引擎目前僅適用於 Azure 儲存體。  
 * *放置在我的儲存區中的資料量有任何限制？*
 
-    不會。 我們將持續送入資料，直到刪除匯出為止。 如果我們到達 Blob 儲存體的外部限制，將會停止，但那個限制很大。 您可以自行控制使用的儲存體數量。  
+    No。 我們將持續送入資料，直到刪除匯出為止。 如果我們到達 Blob 儲存體的外部限制，將會停止，但那個限制很大。 您可以自行控制使用的儲存體數量。  
 * *應該在儲存體中看到多少 Blob？*
 
   * 針對您選取要匯出的每個資料類型，會每分鐘建立一個新的 Blob (如果有可用的資料)。
@@ -183,7 +179,7 @@ Where
     編輯匯出並開啟 [匯出目的地] 索引標籤。保留與先前相同的儲存區，然後按一下 [確定] 以確認。 匯出將重新開始。 如果變更是在最近幾天內，您不會遺失資料。
 * *我可以暫停匯出嗎？*
 
-    可以。 按一下 [停用]。
+    是的。 請按一下 [停用]。
 
 ## <a name="code-samples"></a>程式碼範例
 

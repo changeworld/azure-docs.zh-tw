@@ -1,24 +1,23 @@
 ---
 title: 適用於 VM 的 Azure 監視器 (預覽) 已知問題 | Microsoft Docs
 description: 本文涵蓋「適用於 VM 的 Azure 監視器」的已知問題，此監視器是 Azure 中的一個解決方案，其中結合了 Azure VM 作業系統的健康情況、應用程式相依性探索及效能監視。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/02/2019
-ms.openlocfilehash: b59e2d1897557b47bcfeafbc17141f869e2f192e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 711b3707d536c4858578817589670edf0f467b64
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450684"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670724"
 ---
 # <a name="known-issues-with-azure-monitor-for-vms-preview"></a>適用於 VM 的 Azure 監視器 (預覽) 已知問題
 
 本文涵蓋「適用於 VM 的 Azure 監視器」的已知問題，此監視器是 Azure 中的一個解決方案，其中結合了 Azure VM 作業系統的健康情況、應用程式元件探索及效能監視。 
 
-## <a name="health"></a>醫療業 
+## <a name="health"></a>健康情況 
 以下是目前版本的「健康情況」功能已知問題：
 
 - 如果移除或刪除了 Azure VM，該 VM 將在 VM 清單檢視中顯示一段時間。 此外，按一下已移除或已刪除 VM 的狀態，即會開啟 [健康情況診斷] 檢視，繼而初始載入迴圈。 選取已刪除 VM 的名稱會開啟一個窗格，並顯示一則指出 VM 已刪除的訊息。

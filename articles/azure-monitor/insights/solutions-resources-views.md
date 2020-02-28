@@ -1,18 +1,17 @@
 ---
 title: 管理解決方案中的檢視 | Microsoft Docs
 description: '管理解決方案通常包含一或多個檢視，以將資料視覺化。  本文說明如何匯出檢視設計工具所建立的檢視並將它納入管理解決方案中。 '
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2018
-ms.openlocfilehash: 473d10bbec6ca056554f7223800a32e9ca93578e
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: a9a1c1718fb95a6ace3700af043134072d582473
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553893"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663040"
 ---
 # <a name="views-in-management-solutions-preview"></a>管理解決方案中的檢視 (預覽)
 > [!NOTE]
@@ -30,7 +29,7 @@ ms.locfileid: "72553893"
 本文假設您已經熟悉如何[建立管理解決方案](solutions-creating.md)和方案檔的結構。
 
 ## <a name="overview"></a>概觀
-若要在管理解決方案中納入檢視，您可在[方案檔](solutions-creating.md)中建立其**資源**。  說明檢視詳細組態的 JSON 通常很複雜，典型方案作者無法以手動方式建立。  最常見的方法是使用[檢視設計工具](../../azure-monitor/platform/view-designer.md)建立檢視、加以匯出，然後將其詳細組態新增至方案。
+若要在管理解決方案中納入檢視，您可在**方案檔**中建立其[資源](solutions-creating.md)。  說明檢視詳細組態的 JSON 通常很複雜，典型方案作者無法以手動方式建立。  最常見的方法是使用[檢視設計工具](../../azure-monitor/platform/view-designer.md)建立檢視、加以匯出，然後將其詳細組態新增至方案。
 
 將檢視新增至方案的基本步驟如下所示。  下列各節會進一步詳細說明每個步驟。
 

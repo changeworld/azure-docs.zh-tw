@@ -1,19 +1,17 @@
 ---
 title: 在 Azure App Service 中啟用 .NET 應用程式的快照偵錯工具 |Microsoft Docs
 description: 在 Azure App Service 中啟用 .NET 應用程式的快照偵錯工具
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: brahmnes
 ms.author: bfung
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0f6eb6376075337edd7656e4bc83b5b7fddde479
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c23da585034e74d85be5a3c41b124f00408a0f4a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899900"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671421"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>在 Azure App Service 中啟用 .NET 應用程式的快照偵錯工具
 
@@ -26,7 +24,7 @@ ms.locfileid: "72899900"
 * [Azure 虛擬機器和虛擬機器擴展集](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [內部部署虛擬或實體機器](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 
-如果您使用的是 .NET Core 的預覽版本，請先遵循針對[其他環境啟用快照偵錯工具](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)的指示，先將[microsoft.applicationinsights.snapshotcollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet 套件包含在應用程式中，然後完成下列其餘的指示。 
+如果您使用的是 .NET Core 的預覽版本，請先遵循針對[其他環境啟用快照偵錯工具](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)的指示，先將[microsoft.applicationinsights.snapshotcollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet 套件包含在應用程式中，然後完成下列其餘指示。 
 
 Application Insights 快照偵錯工具會預先安裝為應用程式服務執行時間的一部分，但您必須開啟它，才能取得 App Service 應用程式的快照集。 當您部署應用程式之後，即使您已在原始程式碼中包含 Application Insights SDK，請遵循下列步驟來啟用快照偵錯工具。
 

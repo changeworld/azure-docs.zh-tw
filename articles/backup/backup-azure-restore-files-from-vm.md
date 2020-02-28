@@ -3,12 +3,12 @@ title: 從 Azure VM 備份復原檔案和資料夾
 description: 在本文中，您將瞭解如何從 Azure 虛擬機器復原點復原檔案和資料夾。
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 4565929b5475e2348685fbec77b596b65ed73fd6
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.openlocfilehash: d80fb1060eca766305ecbfffe151d975472f8b3c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114333"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660915"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>從 Azure 虛擬機器備份復原檔案
 
@@ -206,7 +206,7 @@ mount [RAID Disk Path] [/mountpath]
   - <https://pod01-rec2.geo-name.backup.windowsazure.cn> （適用于 Azure 中國世紀）
   - <https://pod01-rec2.geo-name.backup.windowsazure.us> (適用於 Azure US Government)
   - <https://pod01-rec2.geo-name.backup.windowsazure.de> (適用於 Azure 德國)
-- 輸出連接埠 3260
+- 輸出埠53（DNS）、443、3260
 
 > [!NOTE]
 >

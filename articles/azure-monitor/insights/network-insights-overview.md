@@ -1,18 +1,17 @@
 ---
 title: 網路的 Azure 監視器（預覽）
 description: Azure 監視器網路的快速總覽，針對所有已部署的網路資源提供健全狀況和計量的全面觀點，而不需要任何設定。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/07/2019
-ms.openlocfilehash: 3bb92b85779366081349dab777be67e063469678
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 0f5b2fbd13cb9658e255fde727e115df748aaed9
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73840050"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654863"
 ---
 # <a name="azure-monitor-for-networks-preview"></a>網路的 Azure 監視器（預覽）
 網路的 Azure 監視器針對所有已部署的網路資源提供健全狀況和計量的全面觀點，而不需要任何設定。 先進的搜尋功能有助於識別資源相依性，並藉由直接搜尋主控的網站名稱來識別裝載您網站的資源等案例。
@@ -21,7 +20,7 @@ ms.locfileid: "73840050"
 
 - 搜尋和篩選
 - 資源健康狀態和計量
-- Alerts 
+- 警示 
 - 相依性視圖
 
 ![概觀分頁](media/network-insights-overview/overview.png)
@@ -45,7 +44,7 @@ ms.locfileid: "73840050"
 
 您可以按一下方格視圖中的每個元素。 按一下健全狀況圖示，以重新導向至該連線的資源健康狀態。 按一下 [警示]，分別重新導向至該連線的 [警示和計量] 頁面。 
 
-## <a name="alerts"></a>Alerts
+## <a name="alerts"></a>警示
 右側的 [**警示**] 方格提供所有訂用帳戶中所選資源所產生的所有警示的視圖。 按一下 [警示計數] 以流覽至 [詳細警示] 頁面。
 
 ## <a name="dependency-view"></a>相依性視圖

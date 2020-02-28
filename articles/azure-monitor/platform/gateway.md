@@ -1,18 +1,17 @@
 ---
 title: 使用 Log Analytics 閘道來連接電腦 |Microsoft Docs
 description: 使用 Log Analytics 閘道將您的裝置和 Operations Manager 監視的電腦連線，以將資料傳送至 Azure 自動化和 Log Analytics 服務，而無法存取網際網路。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: 30854382b5a6dfd0faabfc2f59340dc21518d6f2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 6c5325a21ffa74f5679a74b991f1c814eadc64ff
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773282"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672288"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>在 Azure 監視器中使用 Log Analytics 閘道將電腦連線，而不需要網際網路存取
 
@@ -73,7 +72,7 @@ Log Analytics 閘道提供下列語言版本：
 - 中文 (繁體)
 - 捷克文
 - 荷蘭文
-- 繁體中文
+- 英文
 - 法文
 - 德文
 - 匈牙利文
@@ -154,12 +153,12 @@ Log Analytics 閘道僅支援傳輸層安全性（TLS）1.0、1.1 和1.2。  它
  
 下表將重點放在安裝程式所支援的參數。
 
-|參數| 注意|
+|參數| 注意事項|
 |----------|------| 
 |PORTNUMBER | 要接聽之閘道的 TCP 通訊埠編號 |
 |PROXY | Proxy 伺服器的 IP 位址 |
 |INSTALLDIR | 指定閘道軟體檔案安裝目錄的完整路徑 |
-|USERNAME | 用來向 proxy 伺服器進行驗證的使用者識別碼 |
+|使用者名稱 | 用來向 proxy 伺服器進行驗證的使用者識別碼 |
 |PASSWORD | 要使用 proxy 進行驗證之使用者識別碼的密碼 |
 |LicenseAccepted | 指定**1**的值，確認您接受授權合約 |
 |HASAUTH | 指定使用者名稱/密碼參數時，請指定**1**的值 |
@@ -188,7 +187,7 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 
 您可以使用 Microsoft[網路負載平衡（nlb）](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing)、 [Azure Load Balancer](../../load-balancer/load-balancer-overview.md)或硬體型負載平衡器，透過網路負載平衡（nlb）設定閘道的高可用性。 負載平衡器可藉由跨其節點將來自 Log Analytics 代理程式或 Operations Manager 管理伺服器的要求連線進行重新導向，來管理流量。 如果閘道伺服器故障，流量就會被重新導向到其他節點。
 
-### <a name="microsoft-network-load-balancing"></a>Microsoft 網路負載平衡
+### <a name="microsoft-network-load-balancing"></a>Microsoft Network Load Balancing
 
 若要了解如何設計和部署 Windows Server 2016 網路負載平衡叢集，請參閱[網路負載平衡](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing)。 下列步驟說明如何設定 Microsoft 網路負載平衡叢集。  
 
@@ -202,7 +201,7 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 
     ![網路負載平衡管理員 – 新增主機到叢集：連線](./media/gateway/nlb03.png) 
 
-### <a name="azure-load-balancer"></a>Azure Load Balancer
+### <a name="azure-load-balancer"></a>Azure 負載平衡器
 
 若要瞭解如何設計和部署 Azure Load Balancer，請參閱[什麼是 Azure Load Balancer？](../../load-balancer/load-balancer-overview.md)。 若要部署基本負載平衡器，請遵循本[快速入門](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)中所述的步驟，但不包括**建立後端伺服器**一節中所述的步驟。   
 
@@ -286,7 +285,7 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 1. 開啟 Operations Manager 主控台，然後選取 [撰寫] 工作區。  
 1. 在 [撰寫] 工作區中選取 [規則]。 
 1. 在 [Operations Manager] 工具列上，選取 [**範圍**] 按鈕。 如果此按鈕無法使用，請確定您已在 [**監視**中] 窗格中選取物件，而不是資料夾。 [範圍管理組件物件] 對話方塊會顯示一般會作為目標之類別、群組或物件的清單。 
-1. 在 [**尋找**] 欄位中，輸入**健全狀況服務**並從清單中選取。 選取 [確定]。  
+1. 在 [**尋找**] 欄位中，輸入**健全狀況服務**並從清單中選取。 選取 **[確定]** 。  
 1. 搜尋 [ **Advisor Proxy 設定規則**]。 
 1. 在 [Operations Manager] 工具列上，選取 [**覆寫**]，然後指向 [覆**寫類別的特定物件：健全狀況服務的覆**]，然後從清單中選取物件。  或建立自訂群組，其中包含您想要套用此覆寫之伺服器的健全狀況服務物件。 然後將覆寫套用至您的自訂群組。
 1. 在 [覆**寫**內容] 對話方塊的 [ **WebProxyAddress** ] 參數旁邊的 [覆**寫**] 資料行中，新增核取記號。  在 [覆**寫值**] 欄位中，輸入 Log Analytics 閘道伺服器的 URL。 請小心從前置詞 `http://`開始。  
@@ -330,10 +329,10 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 
 | **Cmdlet** | **參數** | **說明** | **範例** |
 | --- | --- | --- | --- |  
-| `Get-OMSGatewayConfig` |索引鍵 |取得服務的組態 |`Get-OMSGatewayConfig` |  
+| `Get-OMSGatewayConfig` |Key |取得服務的組態 |`Get-OMSGatewayConfig` |  
 | `Set-OMSGatewayConfig` |索引鍵 (必要) <br> 值 |變更服務的組態 |`Set-OMSGatewayConfig -Name ListenPort -Value 8080` |  
 | `Get-OMSGatewayRelayProxy` | |取得轉送 (上游) Proxy 的位址 |`Get-OMSGatewayRelayProxy` |  
-| `Set-OMSGatewayRelayProxy` |位址<br> 使用者名稱<br> 密碼 |設定轉送 (上游) Proxy 的位址 (與認證) |1. 設定轉送 proxy 和認證：<br> `Set-OMSGatewayRelayProxy`<br>`-Address http://www.myproxy.com:8080`<br>`-Username user1 -Password 123` <br><br> 2. 設定不需要驗證的轉送 proxy： `Set-OMSGatewayRelayProxy`<br> `-Address http://www.myproxy.com:8080` <br><br> 3. 清除轉送 proxy 設定：<br> `Set-OMSGatewayRelayProxy` <br> `-Address ""` |  
+| `Set-OMSGatewayRelayProxy` |地址<br> 使用者名稱<br> Password |設定轉送 (上游) Proxy 的位址 (與認證) |1. 設定轉送 proxy 和認證：<br> `Set-OMSGatewayRelayProxy`<br>`-Address http://www.myproxy.com:8080`<br>`-Username user1 -Password 123` <br><br> 2. 設定不需要驗證的轉送 proxy： `Set-OMSGatewayRelayProxy`<br> `-Address http://www.myproxy.com:8080` <br><br> 3. 清除轉送 proxy 設定：<br> `Set-OMSGatewayRelayProxy` <br> `-Address ""` |  
 | `Get-OMSGatewayAllowedHost` | |取得目前允許的主機（僅限本機設定的允許的主機，而不是自動下載的允許的主機） |`Get-OMSGatewayAllowedHost` | 
 | `Add-OMSGatewayAllowedHost` |主機 (必要) |將主機加到允許清單 |`Add-OMSGatewayAllowedHost -Host www.test.com` |  
 | `Remove-OMSGatewayAllowedHost` |主機 (必要) |將主機從允許清單移除 |`Remove-OMSGatewayAllowedHost`<br> `-Host www.test.com` |  

@@ -1,18 +1,17 @@
 ---
 title: Azure 監視器記錄檔查詢中的 resource （）運算式 |Microsoft Docs
 description: 資源運算式會在以資源為中心的 Azure 監視器記錄查詢中使用，以從多個資源中取出資料。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/10/2018
-ms.openlocfilehash: 370b2547c9e726ab4f5ebc4dd732cc0bfa17f760
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 2a729caefe698b13833098ba48df9d4bfbd97356
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933021"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665694"
 ---
 # <a name="resource-expression-in-azure-monitor-log-query"></a>Azure 監視器記錄檔查詢中的 resource （）運算式
 
@@ -33,7 +32,7 @@ ms.locfileid: "72933021"
 | 資源群組或訂用帳戶 | 包含資源及其包含的所有資源的資料。  | 資源（"/subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcesgroups/myresourcegroup） |
 
 
-## <a name="notes"></a>注意
+## <a name="notes"></a>注意事項
 
 * 您必須具有資源的讀取權限。
 

@@ -1,18 +1,14 @@
 ---
 title: 沒有要進行疑難排解的資料 - Application Insights for .NET
 description: 在 Azure Application Insights 中看不到資料？ 試試這裡。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/23/2018
-ms.openlocfilehash: a1e299f195a148ebd1bdbda91e5a56e297f34d31
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 2627fde55f4177798d04aab02db169f3117d32dd
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889170"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665896"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>針對 .NET/.NET Core 沒有任何資料 Application Insights 疑難排解
 
@@ -215,7 +211,7 @@ ApplicationInsights.config 中的檢測金鑰會控制遙測傳送的位置。 �
 
 AspNetCore 的最新版本是2.8.2，而它是指 ApplicationInsights 版本2.11.2。 因此，應2.11.2 要安裝的 ApplicationInsights 版本 HostingStartup。
 
-2. 修改 `Startup.cs` 類別中的 `ConfigureServices` 方法：
+2. 修改 `ConfigureServices` 類別中的 `Startup.cs` 方法：
 
     ```csharp
     services.AddSingleton<ITelemetryModule, FileDiagnosticsTelemetryModule>();

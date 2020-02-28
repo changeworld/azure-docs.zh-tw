@@ -1,18 +1,17 @@
 ---
 title: 瞭解自發遷移工具如何處理 Azure 監視器警示
 description: 瞭解警示遷移工具的運作方式和疑難排解問題。
-author: yalavi
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: yalavi
+author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 493fa4ac51bf593b7856b236c5d861ec029769d3
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: 8cc77d13567910797cd519ac193b848f3ea434da
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680676"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665267"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>瞭解遷移工具的運作方式
 
@@ -162,13 +161,13 @@ Mongo 失敗要求的警示必須分割成多個警示，因為沒有提供相�
 | SASSuccess | 維度為 "ResponseType" = "Success" 和 "Authentication" = "SAS" 的交易度量 | |
 | ServerOtherError | 維度為 "ResponseType" = "ServerOtherError" 的交易度量 | |
 | ServerTimeOutError | 維度為 "ResponseType" = "ServerTimeOutError" 的交易度量  | |
-| Success | 維度為 "ResponseType" = "Success" 的交易度量 | |
+| 成功 | 維度為 "ResponseType" = "Success" 的交易度量 | |
 | TotalBillableRequests| 交易 | |
 | TotalEgress | 輸出 | |
 | TotalIngress | 輸入 | |
 | TotalRequests | 交易 | |
 
-### <a name="microsoftinsightscomponents"></a>Microsoft insights/元件
+### <a name="microsoftinsightscomponents"></a>microsoft insights/元件
 
 針對 Application Insights，對等的計量如下所示：
 
@@ -227,7 +226,7 @@ Mongo 失敗要求的警示必須分割成多個警示，因為沒有提供相�
 > [!NOTE]
 > 傳統警示會根據傳統系統管理員的地區設定，在用來通知傳統系統管理員角色時，傳送當地語系化的電子郵件。 新的警示電子郵件是透過動作群組傳送，而且僅以英文撰寫。
 
-## <a name="rollout-phases"></a>首展階段
+## <a name="rollout-phases"></a>首度發行階段
 
 遷移工具的推出階段是使用傳統警示規則的客戶。 當訂閱準備好使用工具進行遷移時，訂用帳戶擁有者將會收到一封電子郵件。
 
@@ -237,7 +236,7 @@ Mongo 失敗要求的警示必須分割成多個警示，因為沒有提供相�
 大部分的訂用帳戶目前標示為準備好進行遷移。 只有在下列資源類型上具有傳統警示的訂用帳戶仍未準備好進行遷移。
 
 - Microsoft.classiccompute/domainNames/位置/角色
-- Microsoft insights/元件
+- microsoft insights/元件
 
 ## <a name="who-can-trigger-the-migration"></a>誰可以觸發遷移？
 

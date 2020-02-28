@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: f231a5339b9c696b2a427b0713118d4b46e30277
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: a7f30a5a70f71ff958d9b222d2a9e21d03d85e06
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840990"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670758"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>網路安全性群組流量記錄簡介
 
@@ -33,11 +33,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 ```
 您可以使用[流量分析](traffic-analytics.md)來分析流量記錄，並取得網路流量的見解。
 
-在其他記錄上看到的保留原則也同樣適用於流量記錄。 您可以將記錄保留原則設定為1天到365天。 如果未設定保留原則，記錄會永久保留。
-
-> [!NOTE] 
-> 透過 NSG 流量記錄使用保留原則功能可能會產生大量的儲存體作業和相關成本。 如果您不需要保留原則功能，建議您將此值設為 0。
-
+在其他記錄上看到的保留原則也同樣適用於流量記錄。 您可以將記錄保留原則設定為1天到365天。 如果未設定保留原則，則會永遠保留記錄。
 
 ## <a name="log-file"></a>記錄檔
 

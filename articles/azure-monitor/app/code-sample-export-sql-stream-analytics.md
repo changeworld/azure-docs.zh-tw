@@ -1,18 +1,14 @@
 ---
 title: 從 Azure Application Insights 匯出至 SQL | Microsoft Docs
 description: 使用 Stream Analytics 持續將 Application Insights 資料匯出至 SQL。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 09/11/2017
-ms.openlocfilehash: 41efcbc7b70395302858638a9f44f3cbba27bf9a
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 3ef0420cdab64f11b699fd4031ed2b0134f18609
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678276"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663670"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>逐步解說：使用串流分析從 Application Insights 匯出至 SQL
 本文說明如何使用[連續匯出][export]和[azure 串流分析](https://azure.microsoft.com/services/stream-analytics/)，將您的遙測資料從[Azure 應用程式深入][start]解析移至 azure SQL 資料庫。 
@@ -25,8 +21,8 @@ ms.locfileid: "72678276"
 
 在此範例中，我們使用頁面檢視資料，但相同的模式可以很輕易地延伸到其他資料類型，例如自訂事件和例外狀況。 
 
-## <a name="add-application-insights-to-your-application"></a>將 Application Insights 加入應用程式中
-若要開始進行：
+## <a name="add-application-insights-to-your-application"></a>將 Application Insights 加入至您的應用程式
+開始進行之前：
 
 1. [為您的網頁設定 Application Insights](../../azure-monitor/app/javascript.md)。 
    
