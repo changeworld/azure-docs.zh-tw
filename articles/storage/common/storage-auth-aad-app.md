@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ede43e3ed939083e7b5ff94899d12f6f4795a880
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: d3ee211298598d78f423d88fd4df1c58ed4bfa29
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941490"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157443"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>從 Azure AD 取得權杖，以從用戶端應用程式授權要求
 
@@ -52,7 +52,7 @@ ms.locfileid: "75941490"
 1. 在您已註冊應用程式的 [**總覽**] 頁面上，選取 [ **View API 許可權**]。
 1. 在 [ **API 許可權**] 區段中，選取 [**新增許可權**]，然後選擇 [ **Microsoft api**]。
 1. 從結果清單中選取 [ **Azure 儲存體**]，以顯示 [**要求 API 許可權**] 窗格。
-1. 在 [**您的應用程式需要何種類型的許可權？**] 底下，觀察可用的許可權類型是否為**委派的許可權**。 預設會為您選取此選項。
+1. 在 [**您的應用程式需要何種類型的許可權？** ] 底下，觀察可用的許可權類型是否為**委派的許可權**。 預設會為您選取此選項。
 1. 在 [**要求 API 許可權**] 窗格的 [**選取許可權**] 區段中，選取 [ **user_impersonation**] 旁的核取方塊，然後按一下 [**新增許可權**]。
 
     ![顯示儲存體許可權的螢幕擷取畫面](media/storage-auth-aad-app/registered-app-permissions-1.png)
@@ -202,7 +202,7 @@ public async Task<IActionResult> Blob()
 }
 ```
 
-同意是使用者授權應用程式代表使用者存取受保護的資源所用的程序。 Microsoft 身分識別平臺2.0 支援累加式同意，這表示安全性主體一開始可以要求一組最小許可權，並視需要新增許可權一段時間。 當您的程式碼要求存取權杖時，請在 `scope` 參數中指定您的應用程式在任何指定時間所需的許可權範圍。 如需有關增量同意的詳細資訊，請參閱 [為何要更新 Microsoft 身分識別平臺（v2.0）](../../active-directory/develop/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent)中的「**增量和動態同意**」一節。
+同意是使用者授權應用程式代表使用者存取受保護的資源所用的程序。 Microsoft 身分識別平臺2.0 支援累加式同意，這表示安全性主體一開始可以要求一組最小許可權，並視需要新增許可權一段時間。 當您的程式碼要求存取權杖時，請在 `scope` 參數中指定您的應用程式在任何指定時間所需的許可權範圍。 如需有關增量同意的詳細資訊，請參閱 <> [為何要更新 Microsoft 身分識別平臺（v2.0）](../../active-directory/azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent) 中的「**增量和動態同意**」一節。
 
 下列方法會針對要求增量同意來建立驗證屬性：
 
