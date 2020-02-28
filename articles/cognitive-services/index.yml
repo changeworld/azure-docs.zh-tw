@@ -11,12 +11,12 @@ metadata:
   ms.author: nitinme
   manager: nitinme
   ms.date: 01/21/2020
-  ms.openlocfilehash: f39f2a6360363131eb346f613cf0f7a25910404a
-  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.openlocfilehash: 6f49c2e645ba0ecf48c8c111b9afd7c12722f4ad
+  ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 02/22/2020
-  ms.locfileid: "77560757"
+  ms.lasthandoff: 02/28/2020
+  ms.locfileid: "77919323"
 highlightedContent:
   items:
   - title: 認知服務是什麼？
@@ -114,36 +114,6 @@ conceptualContent:
     - url: ./Bing-web-search/index.yml
       itemType: overview
       text: Bing 搜尋 API 中樞頁面
-    - url: ./Bing-Autosuggest/get-suggested-search-terms.md
-      itemType: overview
-      text: 自動建議搜尋
-    - url: ./bing-custom-search/overview.md
-      itemType: overview
-      text: 自訂搜尋
-    - url: ./bing-entities-search/overview.md
-      itemType: overview
-      text: 實體搜尋
-    - url: ./bing-image-search/overview.md
-      itemType: overview
-      text: 影像搜尋
-    - url: ./bing-local-business-search/overview.md
-      itemType: overview
-      text: 當地企業搜尋 (預覽)
-    - url: ./bing-news-search/search-the-web.md
-      itemType: overview
-      text: 新聞搜尋
-    - url: ./bing-spell-check/overview.md
-      itemType: overview
-      text: 拼字檢查
-    - url: ./Bing-Video-Search/overview.md
-      itemType: overview
-      text: 影片搜尋
-    - url: ./bing-visual-search/overview.md
-      itemType: overview
-      text: 圖像式搜尋
-    - url: ./bing-web-search/overview.md
-      itemType: overview
-      text: Web 搜尋
   - title: 認知服務容器
     summary: Azure 認知服務中的容器支援可讓開發人員使用 Azure 中可用的相同豐富 API，並同時享有 Docker 容器所帶來的部署及裝載服務彈性。
     links:
