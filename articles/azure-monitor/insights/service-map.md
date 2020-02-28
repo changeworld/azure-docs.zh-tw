@@ -1,22 +1,21 @@
 ---
 title: 在 Azure 中使用服務對應解決方案 | Microsoft Docs
 description: 服務對應是 Azure 中的一個解決方案，可自動探索 Windows 和 Linux 系統上的應用程式元件，並對應服務之間的通訊。 本文會詳細說明如何在環境中部署服務對應並將它用於各種案例。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: 0f2181a388a5329dbc16ce8968da79529b22ea85
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: c177589bea76770f8f72dd3267b856b00d57699c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76168183"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663618"
 ---
 # <a name="using-service-map-solution-in-azure"></a>在 Azure 中使用服務對應解決方案
 
-服務對應可自動探索 Windows 和 Linux 系統上的應用程式元件，及對應服務之間的通訊。 有了服務對應，您就可將伺服器視為您心目中提供重要服務的互連式系統。 除了安裝代理程式外，您不需進行任何設定，服務對應就會顯示任何 TCP 連線架構間伺服器、處理序、輸入和輸出連線延遲與連接埠之間的連線。
+服務對應會自動在 Windows 及 Linux 系統上探索應用程式元件，並對應服務之間的通訊。 您可以藉由服務對應，將伺服器視為提供重要服務的互連系統，藉此來檢視伺服器。 不需要進行任何設定，只要安裝了代理程式，服務對應就會顯示橫跨任何 TCP 連線架構的伺服器、處理序、輸入和輸出連線的延遲，和連接埠之間的連線。
 
 本文說明上線和使用服務對應的詳細資訊。 如需設定此解決方案之必要條件的詳細資訊，請參閱[啟用適用於 VM 的 Azure 監視器總覽](vminsights-enable-overview.md#prerequisites)。 總而言之，您需要下列各項：
 
@@ -54,7 +53,7 @@ ms.locfileid: "76168183"
 
 您可以使用服務對應，有效地規劃、加速和驗證 Azure 移轉，以確保沒有遺漏任何項目，且不會發生意外的中斷。 您可以探索所有需要一起移轉的交互相依系統、評估系統組態和容量，以及識別執行中的系統是否仍為使用者提供服務或是應該解除委任而非移轉。 移動完成之後，您可以檢查用戶端負載和身分識別，以確認測試系統和客戶之間的連線。 如果子網路規劃和防火牆定義有問題，「服務對應」對應中的失敗連線會向您指出需要連線的系統。
 
-### <a name="business-continuity"></a>業務續航力
+### <a name="business-continuity"></a>業務持續性
 
 如果您使用 Azure Site Recovery，且需要協助以定義應用程式環境的復原順序，服務對應可以自動向您顯示系統彼此間的相依情形，以確保復原計畫可靠。 藉由選擇重要伺服器或群組並檢視其用戶端，可以識別在伺服器還原並可用之後要復原的前端系統。 相反地，藉由查看重要伺服器的後端相依性，可以識別在焦點系統還原之前要復原的系統。
 
@@ -86,7 +85,7 @@ ms.locfileid: "76168183"
 
 處理序群組會將與一般產品或服務相關聯的處理序組成處理序群組。  電腦節點展開時，會一併顯示獨立處理序和處理序群組。  如果對處理序群組內之處理序的輸入與輸出連線發生失敗，便會將整個處理序群組的連線顯示為失敗。
 
-## <a name="machine-groups"></a>機器群組
+## <a name="machine-groups"></a>電腦群組
 
 機器群組可顯示以一組伺服器為中心的對應，而不只是單一伺服器的對應。因此，您可以在單一對應中看到多層式應用程式或伺服器叢集的所有成員。
 
@@ -155,7 +154,7 @@ ms.locfileid: "76168183"
 
 某些處理序在機器上扮演特殊角色︰Web 伺服器、應用程式伺服器及資料庫等。 服務對應會為程序和機器方塊加上角色圖示註解，以協助您一下就識別出程序或伺服器所扮演的角色。
 
-| 角色圖示 | 說明 |
+| 角色圖示 | 描述 |
 |:--|:--|
 | ![網頁伺服器](media/service-map/role-web-server.png) | 網頁伺服器 |
 | ![應用程式伺服器](media/service-map/role-application-server.png) | 應用程式伺服器 |
@@ -190,7 +189,7 @@ ms.locfileid: "76168183"
 
 ![伺服器連接埠群組](media/service-map/server-port-groups.png)
 
-## <a name="context-menu"></a>捷徑功能表
+## <a name="context-menu"></a>操作功能表
 
 按一下任何伺服器右上角的省略符號 (...)，會顯示該伺服器的內容功能表。
 
@@ -319,7 +318,7 @@ Linux：
 
 因為在指定時間範圍內可以有多筆指定處理序和電腦的記錄，針對相同電腦或處理序的查詢可能會傳回多筆記錄。 若只要包含最新的記錄，請在查詢中加入 "| dedup ResourceId"。
 
-### <a name="connections"></a>連線
+### <a name="connections"></a>連接
 
 連線計量會寫入到 Log Analytics 中的新資料表：VMConnection。 這個資料表會提供機器連線 (輸入和輸出) 的相關資訊。 連線計量也會透過 API 來公開，這類 API 會提供方法來取得某個時間範圍內的特定計量。  在接聽通訊端上接受的 TCP 連線是輸入的，而透過連線到指定 IP 和埠所建立的連接則是輸出。 連線的方向會透過 Direction 屬性來表示，此屬性可設為 **inbound** 或 **outbound**。 
 
@@ -327,7 +326,7 @@ Linux：
 
 為了管理成本和複雜度，連線記錄不代表個別的實體網路連線。 將多個實體網路連線群組為一個邏輯連線，其接著會反映於各自的資料表中。  這表示，*VMConnection* 資料表中的記錄代表一個邏輯群組，而非觀測到的個別實體連線。 在指定的一分鐘時間間隔內，共用下列屬性相同值的實體網路連線會彙總為 *VMConnection* 中的單一邏輯記錄。 
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--|:--|
 | `Direction` |連線的方向，值為 *inbound* 或 *outbound* |
 | `Machine` |電腦 FQDN |
@@ -339,18 +338,18 @@ Linux：
 
 為了說明群組的影響，會在記錄的下列屬性中提供群組實體連線數目的相關資訊：
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--|:--|
 | `LinksEstablished` |已在報告時間範圍內建立的實體網路連線數目 |
 | `LinksTerminated` |已在報告時間範圍內終止的實體網路連線數目 |
 | `LinksFailed` |在報告時間範圍內失敗的實體網路連線數目。 此資訊目前僅適用於輸出連線。 |
 | `LinksLive` |已在報告時間範圍結束時開啟的實體網路連線數目|
 
-#### <a name="metrics"></a>計量
+#### <a name="metrics"></a>度量
 
 除了連線計數計量，在指定邏輯連線或網路連接埠上傳送與接收的資料量相關資訊也會包含於記錄的下列屬性中：
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--|:--|
 | `BytesSent` |已在報告時間範圍內傳送的位元組總數 |
 | `BytesReceived` |已在報告時間範圍內接收的位元組總數 |
@@ -378,7 +377,7 @@ Linux：
 
 *VMConnection* 也會在記錄的下列屬性中，包含每個連線記錄遠端的地理位置資訊： 
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--|:--|
 | `RemoteCountry` |主控 RemoteIp 的國家/地區名稱。  例如，*United States* |
 | `RemoteLatitude` |地理位置緯度。  例如，*47.68* |
@@ -388,7 +387,7 @@ Linux：
 
 *VMConnection* 資料表中的每個 RemoteIp 屬性均會根據一組具有已知惡意活動的 IP 進行檢查。 如果 RemoteIp 被識別為惡意的，將在記錄的下列屬性中填入下列屬性 (如果 IP 被視為不是惡意的，則它們是空的)：
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--|:--|
 | `MaliciousIp` |RemoteIp 位址 |
 | `IndicatorThreadType` |偵測到的威脅指標是下列值之一：*殭屍網路*、*C2*、*CryptoMining*、*Darknet*、*DDos*、*MaliciousUrl*、*惡意程式碼*、*網路釣魚*、*Proxy*、*PUA*、*關注清單*。   |
@@ -406,7 +405,7 @@ Linux：
 
 類型為 *ServiceMapComputer_CL* 的記錄會有伺服器 (具有服務對應代理程式) 的清查資料。 這些記錄具有下表中的屬性：
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--|:--|
 | `Type` | *ServiceMapComputer_CL* |
 | `SourceSystem` | *OpsManager* |
@@ -432,7 +431,7 @@ Linux：
 
 類型為 *ServiceMapProcess_CL* 的記錄會有伺服器 (具有服務對應代理程式) 上 TCP 連線處理程序的清查資料。 這些記錄具有下表中的屬性：
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--|:--|
 | `Type` | *ServiceMapProcess_CL* |
 | `SourceSystem` | *OpsManager* |
@@ -572,7 +571,7 @@ Microsoft Dependency Agent 建置於 Microsoft Visual Studio 執行階段程式�
 
 下表列出代碼和建議的解決方式。
 
-| 程式碼 | 說明 | 解析度 |
+| 程式碼 | 描述 | 解決方案 |
 |:--|:--|:--|
 | 0x17 | 程式庫安裝程式會要求尚未安裝的 Windows 更新。 | 查看最新的程式庫安裝程式記錄。<br><br>如果 `Windows8.1-KB2999226-x64.msu` 的參考後面接著一行 `Error 0x80240017: Failed to execute MSU package,` 您就沒有安裝 KB2999226 的必要條件。 遵循[Windows 中通用 C 運行](https://support.microsoft.com/kb/2999226)時間的必要條件一節中的指示。 您可能需要執行 Windows Update 並重新開機多次，才能安裝必要條件。<br><br>再次執行 Microsoft Dependency Agent 安裝程式。 |
 

@@ -1,19 +1,16 @@
 ---
 title: 針對 Azure 應用程式 Insights 快照偵錯工具進行疑難排解
 description: 本文提供疑難排解步驟和資訊，以協助無法啟用或使用 Application Insights 快照偵錯工具的開發人員。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: brahmnes
-ms.author: mbullwin
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 4544f42e7c024b21c4ae050d9b11e0f9e2786d57
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 485f35ed249ab7f6bbb987d8c79afe20287cd25a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432332"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671404"
 ---
 # <a id="troubleshooting"></a>針對啟用 Application Insights 快照偵錯工具或查看快照集的問題進行疑難排解
 如果您已為應用程式啟用 Application Insights 快照偵錯工具，但看不到例外狀況的快照集，您可以使用這些指示來進行疑難排解。 不會產生快照集有許多不同的原因。 您可以執行快照集健康情況檢查，以找出一些可能的常見原因。
@@ -49,7 +46,7 @@ ms.locfileid: "75432332"
 
 1. 在 Azure 入口網站中開啟您的 App Service 應用程式。
 2. 按一下 [進階工具]，或搜尋 **Kudu**。
-3. 按一下 [執行]。
+3. 按一下 **[移至]** 。
 4. 在 [偵錯主控台] 下拉式清單方塊中，選取 [CMD]。
 5. 按一下 [LogFiles]。
 
@@ -202,7 +199,7 @@ SnapshotUploader.exe Information: 0 : Deleted PDB scan marker : D:\local\Temp\Du
 建立快照集後，擲回中的例外狀況會以快照集識別碼標記。 向 Application Insights 回報例外狀況遙測後，該快照集識別碼就會包含為自訂屬性。 使用 Application Insights 中的 [搜尋] 刀鋒視窗，您可以找到具有 `ai.snapshot.id` 自訂屬性的所有遙測。
 
 1. 在 Azure 入口網站中瀏覽至您的 Application Insights 資源。
-2. 按一下 **[搜尋]** 。
+2. 按一下 [搜尋]。
 3. 在 [搜尋] 文字方塊中輸入 `ai.snapshot.id`，然後按 Enter 鍵。
 
 ![在入口網站中使用快照集識別碼搜尋遙測](./media/snapshot-debugger/search-snapshot-portal.png)

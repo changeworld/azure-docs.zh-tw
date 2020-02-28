@@ -1,18 +1,17 @@
 ---
 title: Azure 監視器客戶管理的金鑰設定
 description: 使用 Azure Key Vault 金鑰，設定客戶管理的金鑰（CMK）來加密 Log Analytics 工作區中資料的資訊和步驟。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 02/24/2020
-ms.openlocfilehash: 2ea77be0a7aabefaf8f6ed9a5bd841ea1fdda263
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 6a999df6daf2fde5133143fe9b22a65d628ecfb2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620317"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663942"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Azure 監視器客戶管理的金鑰設定 
 
@@ -95,7 +94,7 @@ UI 目前不支援此程式，而且布建程式是透過 REST API 來執行。
 > [!IMPORTANT]
 > 任何 API 要求都必須在要求標頭中包含持有人授權權杖。
 
-例如：
+例如，
 
 ```rst
 GET
@@ -461,7 +460,7 @@ CMK 的輪替需要使用新的 Azure Key Vault 金鑰版本來明確更新*叢�
 
   **回應**
 
-  200 確定
+  200 OK
 
 
 ## <a name="appendix"></a>附錄

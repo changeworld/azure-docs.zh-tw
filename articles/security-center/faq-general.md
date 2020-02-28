@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: b13e5e0000cdd8e33f459400cc4c24d107ccaba3
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: f9043ae1414b63f25583d52100774f3e87754a74
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604786"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661834"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>常見問題-關於 Azure 資訊安全中心的一般問題
 
@@ -38,16 +38,17 @@ Azure 資訊安全中心會監視下列 Azure 資源：
 * 虛擬機器 (VM) (包括 [雲端服務](../cloud-services/cloud-services-choose-me.md))
 * 虛擬機器擴展集
 * Azure 虛擬網路
+* 容器
 * Azure SQL 服務
 * Azure 儲存體帳戶
 * Azure Web Apps (在 [App Service 環境](../app-service/environment/intro.md)中)
 * 與您的 Azure 訂用帳戶整合的合作夥伴解決方案，例如 VM 和 App Service 環境上的 Web 應用程式防火牆
 
-此外，也可以 Azure 資訊安全中心監視非 Azure （包括內部部署）電腦（支援[Windows 電腦](./quick-onboard-windows-computer.md)和[Linux 電腦](./quick-onboard-linux-computer.md)）
+此外，您也可以 Azure 資訊安全中心來監視非 Azure （包括內部部署）機器。 支援[Windows 機器](./quick-onboard-windows-computer.md)和[Linux 電腦](./quick-onboard-linux-computer.md)。
 
 
 ## <a name="how-can-i-see-the-current-security-state-of-my-azure-resources"></a>我要如何查看 Azure 資源目前的安全性狀態？
-[**資訊安全中心總覽**] 頁面會顯示您環境的整體安全性狀態，並依計算、網路、儲存體 & 資料和應用程式細分。 每個資源類型都有一個指標，顯示是否已識別出任何潛在的安全性弱點。 按一下每個圖格都會顯示資訊安全中心所識別的安全性問題，以及訂用帳戶內資源的詳細目錄。
+[**資訊安全中心總覽**] 頁面會顯示您環境的整體安全性狀態，並依計算、網路、儲存體 & 資料和應用程式細分。 每個資源類型都有指示器，顯示已識別的安全性弱點。 按一下每個圖格都會顯示資訊安全中心所識別的安全性問題，以及訂用帳戶內資源的詳細目錄。
 
 
 

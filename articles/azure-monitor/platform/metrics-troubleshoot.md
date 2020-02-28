@@ -3,17 +3,16 @@ title: Azure 監視器度量圖表進行疑難排解
 description: 針對建立、自訂或解讀度量圖表的問題進行疑難排解
 author: vgorbenko
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 072e62d89e8febc4837c10874398daea3b8114ed
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: e1ad4e53596b8228bdef5beb18aa250a9512c49f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75974860"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659657"
 ---
 # <a name="troubleshooting-metrics-charts"></a>針對計量圖表進行疑難排解
 
@@ -29,7 +28,7 @@ ms.locfileid: "75974860"
 
 1. 請確定您已選取正確的資源群組。
     > [!WARNING]
-    > 為了達到最佳效能，當您第一次開啟 [計量瀏覽器] 時，[**資源群組**] 下拉式清單中沒有預先選取的資源群組。 您必須選擇至少一個群組，才可看到資源。
+    > 為了達到最佳效能，當您第一次開啟計量瀏覽器時，[資源群組] 下拉式清單中不會有任何預先選取的資源群組。 您必須選擇至少一個群組，才可看到資源。
 
 ## <a name="chart-shows-no-data"></a>圖表沒有顯示任何資料
 

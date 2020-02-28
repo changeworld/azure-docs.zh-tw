@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: cfd92546def21972e37781bd8a4b0bfefda9111f
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 76c8ca24882f465bf2a973dc59736745178fc61f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444208"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669517"
 ---
 # <a name="create-an-iot-hub-data-connection-for-azure-data-explorer-by-using-python-preview"></a>使用 Python 建立適用于 Azure 資料總管的 IoT 中樞資料連線（預覽）
 
@@ -24,13 +24,13 @@ ms.locfileid: "77444208"
 
 在本文中，您會使用 Python 建立適用于 Azure 資料總管的 IoT 中樞資料連線。 Azure 資料總管是一項快速又可高度調整的資料探索服務，可用於處理記錄和遙測資料。 Azure 資料總管可從事件中樞、IoT 中樞和寫入 blob 容器的 blob，提供內嵌或資料載入。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 * [Python 3.4+](https://www.python.org/downloads/)。
 
-* [叢集和資料庫](/create-cluster-database-python.md)。
+* [叢集和資料庫](create-cluster-database-python.md)。
 
 * [資料表和資料行對應](net-standard-ingest-data.md#create-a-table-on-your-test-cluster)。
 
@@ -102,6 +102,6 @@ poller = kusto_management_client.data_connections.create_or_update(resource_grou
 | iot_hub_resource_id | *資源識別碼* | 您的 IoT 中樞的資源識別碼，其中保存要用於內嵌的資料。|
 | shared_access_policy_name | *iothubforread* | 共用存取原則的名稱，定義裝置和服務連接到 IoT 中樞的許可權。 |
 | consumer_group | *$Default* | 事件中樞的取用者群組。|
-| location | *美國中部* | 資料連線資源的位置。|
+| 位置 | *美國中部* | 資料連線資源的位置。|
 
 [!INCLUDE [data-explorer-data-connection-clean-resources-python](../../includes/data-explorer-data-connection-clean-resources-python.md)]

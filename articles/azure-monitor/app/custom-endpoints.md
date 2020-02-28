@@ -1,18 +1,14 @@
 ---
 title: Azure 應用程式 Insights 覆寫預設 SDK 端點
 description: 針對 Azure Government 之類的區域，修改預設 Azure 監視器 Application Insights SDK 端點。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/26/2019
-ms.openlocfilehash: c04b793512eccf6aaff7d3ed3cc65efdd3dfc303
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3aa18a6b96458533c3dc53f3f420ed264b298a3e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432580"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671982"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>覆寫預設端點 Application Insights
 
@@ -195,22 +191,22 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 
 目前只有要求端點修改的區域會[Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)和[Azure 中國](https://docs.microsoft.com/azure/china/resources-developer-guide)。
 
-|地區 |  端點名稱 | 值 |
+|區域 |  端點名稱 | 值 |
 |-----------------|:------------|:-------------|
 | Azure 中國 | 遙測通道 | `https://dc.applicationinsights.azure.cn/v2/track` |
 | Azure 中國 | QuickPulse （即時計量） |`https://live.applicationinsights.azure.cn/QuickPulseService.svc` |
 | Azure 中國 | 設定檔查詢 |`https://dc.applicationinsights.azure.cn/api/profiles/{0}/appId`  |
-| Azure 政府機構 | 遙測通道 |`https://dc.applicationinsights.us/v2/track` |
-| Azure 政府機構 | QuickPulse （即時計量） |`https://quickpulse.applicationinsights.us/QuickPulseService.svc` |
-| Azure 政府機構 | 設定檔查詢 |`https://dc.applicationinsights.us/api/profiles/{0}/appId` |
+| Azure Government | 遙測通道 |`https://dc.applicationinsights.us/v2/track` |
+| Azure Government | QuickPulse （即時計量） |`https://quickpulse.applicationinsights.us/QuickPulseService.svc` |
+| Azure Government | 設定檔查詢 |`https://dc.applicationinsights.us/api/profiles/{0}/appId` |
 
 如果您目前使用的是通常透過 ' api.applicationinsights.io ' 存取的[Application Insights REST API](https://dev.applicationinsights.io/
 ) ，您將需要使用區域的本機端點：
 
-|地區 |  端點名稱 | 值 |
+|區域 |  端點名稱 | 值 |
 |-----------------|:------------|:-------------|
 | Azure 中國 | REST API | `api.applicationinsights.azure.cn` |
-| Azure 政府機構 | REST API | `api.applicationinsights.us`|
+| Azure Government | REST API | `api.applicationinsights.us`|
 
 > [!NOTE]
 > 在這些區域中，**目前不支援**無程式碼以代理程式/擴充功能為基礎的 Azure App 服務監視。 一旦推出此功能，將會更新本文。

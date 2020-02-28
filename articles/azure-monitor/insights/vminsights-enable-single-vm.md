@@ -1,18 +1,17 @@
 ---
 title: 啟用適用於 VM 的 Azure 監視器（預覽）進行評估 |Microsoft Docs
 description: 瞭解如何在單一 Azure 虛擬機器或虛擬機器擴展集上評估適用於 VM 的 Azure 監視器。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/14/2019
-ms.openlocfilehash: c77fabf0220ecfcb889ce7cb71fa075fde27226f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3b79eaeed420426fe79b2b6caf19ba1d1be61939
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75400585"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664606"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-for-evaluation"></a>啟用適用於 VM 的 Azure 監視器（預覽）以進行評估
 

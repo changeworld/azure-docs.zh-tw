@@ -1,18 +1,17 @@
 ---
 title: 刪除並復原 Azure Log Analytics 工作區 |Microsoft Docs
 description: 了解如何刪除您的 Log Analytics 工作區 (如果您已在個人訂用帳戶中建立工作區) 或重組您的工作區模型。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/14/2020
-ms.openlocfilehash: 038cfe04193b734bd26ed0ffd4dec5ae9b267c22
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 6f50450702c9ecdc1c1d910514d94e0a759176b8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901267"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670469"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>刪除和還原 Azure Log Analytics 工作區
 
@@ -44,7 +43,7 @@ ms.locfileid: "76901267"
 
 您可以使用[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0)、 [REST API](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete)或[Azure 入口網站](https://portal.azure.com)來刪除工作區。
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure 入口網站
 
 1. 若要登入，請移至[Azure 入口網站](https://portal.azure.com)。 
 2. 在 Azure 入口網站中，選取 [所有服務]。 在資源清單中輸入 **Log Analytics**。 當您開始輸入時，清單會根據您輸入的文字進行篩選。 選取 [Log Analytics 工作區]。
@@ -88,10 +87,10 @@ PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-
 
 您可以使用下列工作區建立方法來重新建立工作區： [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/New-AzOperationalInsightsWorkspace)或[REST API]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate)只要以已刪除的工作區詳細資料填入下列屬性即可：
 
-* 訂用帳戶 ID
+* 訂閱識別碼
 * 資源群組名稱
 * 工作區名稱
-* 地區
+* 區域
 
 ### <a name="powershell"></a>PowerShell
 ```PowerShell

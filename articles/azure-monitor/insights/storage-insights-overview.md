@@ -1,18 +1,17 @@
 ---
 title: 使用適用于儲存體的 Azure 監視器監視 Azure 儲存體服務（預覽） |Microsoft Docs
 description: 本文說明儲存體功能的 Azure 監視器，可讓儲存體管理員快速瞭解其 Azure 儲存體帳戶的效能和使用問題。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/15/2019
-ms.openlocfilehash: 790d6ad9fb26253697ea36b402799d3eb488ca47
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f23be7e764ad180a23c76abb7f9bb2218fd61e4c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75401140"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662514"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>使用適用于儲存體的 Azure 監視器監視儲存體服務（預覽）
 
@@ -255,7 +254,7 @@ ms.locfileid: "75401140"
 
 入口網站只會在入口網站啟動時顯示所選訂用帳戶的資料。 若要變更選取的訂用帳戶，請移至右上方，然後按一下具有篩選圖示的筆記本。 這會顯示 [目錄 + 訂用帳戶] 索引標籤。
 
-![目錄 + 訂閱](./media/storage-insights-overview/fqa3.png)
+![目錄 + 訂用帳戶](./media/storage-insights-overview/fqa3.png)
 
 ### <a name="how-to-change-the-coloring-and-threshold-for-availability"></a>如何變更可用性的著色和閾值？
 

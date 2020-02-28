@@ -1,18 +1,16 @@
 ---
-title: 管理 Azure Log Analytics 代理程式 | Microsoft Docs
+title: 管理 Azure Log Analytics 代理程式
 description: 本文說明您通常會在電腦上部署的 Log Analytics Windows 或 Linux 代理程式生命週期期間執行的不同管理工作。
-ms.service: azure-monitor
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/14/2019
-ms.openlocfilehash: 7e9725c2a33bd63b7ce6751f346da17eb68fe6f7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4d0ceacd37748e9761903d02fd7e052d70b10e15
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364776"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668684"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>管理和維護適用於 Windows 和 Linux 的 Log Analytics 代理程式
 
@@ -22,7 +20,7 @@ ms.locfileid: "75364776"
 
 適用于 Windows 和 Linux 的 Log Analytics 代理程式可以手動或自動升級為最新版本，視 VM 執行所在的部署案例和環境而定。 下列方法可用於升級代理程式。
 
-| 環境 | 安裝方式 | Upgrade 方法 |
+| 環境 | 安裝方式 | 升級方法 |
 |--------|----------|-------------|
 | Azure VM | 適用于 Windows/Linux 的 Log Analytics 代理程式 VM 擴充功能 | 除非您已將 Azure Resource Manager 範本*設定為* **false**，否則預設會自動升級 Agent。 |
 | 自訂 Azure VM 映射 | 手動安裝適用于 Windows/Linux 的 Log Analytics 代理程式 | 若要將 Vm 更新至最新版本的代理程式，您必須從執行 Windows installer 套件或 Linux 自我解壓縮和可安裝的 shell 腳本組合的命令列執行。|
@@ -58,7 +56,7 @@ ms.locfileid: "75364776"
 
 4. 在 [ **Microsoft Monitoring Agent 安裝**] 對話方塊中，按一下 [**我同意**] 接受授權合約。
 
-5. 在 [Microsoft Monitoring Agent 安裝程式] 對話方塊中，按一下 [升級]。 狀態頁面會顯示升級進度。
+5. 在 [ **Microsoft Monitoring Agent 安裝**] 對話方塊中，按一下 [**升級**]。 狀態頁面會顯示升級進度。
 
 6. 當**Microsoft Monitoring Agent 設定成功完成時。** 頁面出現時，按一下 **[完成]** 。
 
@@ -68,7 +66,7 @@ ms.locfileid: "75364776"
 
 2. 若要解壓縮代理程式安裝檔案，請從提升權限的命令提示字元執行 `MMASetup-<platform>.exe /c`，它會提示檔案解壓縮的路徑。 或者，您可以傳遞 `MMASetup-<platform>.exe /c /t:<Full Path>` 引數來指定路徑。
 
-3. 執行下列命令，其中 D:\ 是升級記錄檔的位置。
+3. 執行下列命令，其中 D:\這是升級記錄檔的位置。
 
     ```dos
     setup.exe /qn /l*v D:\logs\AgentUpgrade.log AcceptEndUserLicenseAgreement=1
@@ -91,7 +89,7 @@ ms.locfileid: "75364776"
 
 1. 以具有系統管理權限的帳戶登入電腦。
 
-2. 開啟 [ **控制台**]。
+2. 開啟 [控制台]。
 
 3. 選取 [Microsoft Monitoring Agent]，然後按一下 [Azure Log Analytics] 索引標籤。
 
@@ -99,7 +97,7 @@ ms.locfileid: "75364776"
 
 5. 若要新增工作區，請按一下 [新增]，然後在 [新增 Log Analytics 工作區] 對話方塊中，貼上工作區識別碼和工作區索引鍵 (主索引鍵)。 如果電腦應該向 Azure Government 雲端中的 Log Analytics 工作區報告，請從 Azure 雲端下拉式清單中選取 [Azure US Government]。
 
-6. 按一下 [確定] 以儲存變更。
+6. 按一下 **[確定]** 儲存變更。
 
 #### <a name="remove-a-workspace-using-powershell"></a>使用 PowerShell 移除工作區
 
@@ -174,7 +172,7 @@ $mma.ReloadConfiguration()
 
 1. 以具有系統管理權限的帳戶登入電腦。
 
-2. 開啟 [ **控制台**]。
+2. 開啟 [控制台]。
 
 3. 選取 [Microsoft Monitoring Agent]，然後按一下 [Proxy 設定] 索引標籤。
 
@@ -233,7 +231,7 @@ $healthServiceSettings.SetProxyInfo($ProxyDomainName, $ProxyUserName, $cred.GetN
 #### <a name="uninstall-from-control-panel"></a>從控制台解除安裝
 1. 以具有系統管理權限的帳戶登入電腦。
 
-2. 在 [控制台] 中按一下 [程式和功能]。
+2. 在 **[控制台]** 中，按一下 **[程式和功能]** 。
 
 3. 在 [程式和功能] 中，依序按一下 [Microsoft Monitoring Agent]、[解除安裝] 和 [是]。
 
@@ -263,7 +261,7 @@ $healthServiceSettings.SetProxyInfo($ProxyDomainName, $ProxyUserName, $cred.GetN
 
 1. 以具有系統管理權限的帳戶登入電腦。
 
-2. 開啟 [ **控制台**]。
+2. 開啟 [控制台]。
 
 3. 按一下 [Microsoft Monitoring Agent]，然後按一下 [Operations Manager] 索引標籤。
 

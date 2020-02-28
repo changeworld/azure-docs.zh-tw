@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/03/2020
+ms.date: 02/26/2020
 ms.author: radeltch
-ms.openlocfilehash: 4dbce04df4a2542884f1f24b3207fe45fd4b26ae
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: e5bd704abcb25cbd3fe0717c4e080595e04fe6d1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598233"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661156"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>SAP NetWeaver 在適用於 SAP 應用程式之 SUSE Linux Enterprise Server 上的 Azure VM 高可用性
 
@@ -85,9 +85,6 @@ ms.locfileid: "77598233"
 ![SAP NetWeaver 高可用性概觀](./media/high-availability-guide-suse/ha-suse.png)
 
 NFS 伺服器、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 SAP HANA 資料庫會使用虛擬主機名稱和虛擬 IP 位址。 在 Azure 上必須有負載平衡器才能使用虛擬 IP 位址。 我們建議使用[標準負載平衡器](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal)。 下列清單顯示 (A)SCS 和 ERS 負載平衡器的組態。
-
-> [!IMPORTANT]
-> **不支援**在 Azure vm 中使用具有 SUSE Linux 作為客體作業系統的 SAP ASCS/ERS 多 SID 叢集。 多 SID 叢集描述在一個 Pacemaker 叢集中安裝多個具有不同 Sid 的 SAP ASCS/ERS 實例
 
 ### <a name="ascs"></a>(A)SCS
 
@@ -185,7 +182,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
          1. 開啟負載平衡器，選取前端 IP 集區，然後按一下 [新增]
          1. 輸入新前端 IP 集區的名稱 (例如 **nw1-ascs-frontend**)
          1. 將 [指派] 設定為 [靜態]，然後輸入 IP 位址 (例如 **10.0.0.7**)
-         1. Click OK
+         1. 按一下 [確定]。
       1. 針對 ASCS ERS 是 IP 位址 10.0.0.8
          * 重複上述步驟以建立 ERS 的 IP 位址 (例如 **10.0.0.8** 和 **nw1-aers-backend**)
    1. 建立後端集區
@@ -195,7 +192,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
          1. 按一下 [新增虛擬機器]。
          1. 選取虛擬機器
          1. 選取（A） SCS 叢集及其 IP 位址的虛擬機器。
-         1. 按一下 [新增]
+         1. 按一下 [新增]。
       1. 建立 ASCS ERS 的後端集區
          * 重複上述步驟以建立 ERS 的後端集區 (例如 **nw1-aers-backend**)
    1. 建立健康狀態探查
@@ -203,7 +200,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
          1. 開啟負載平衡器，選取健康情況探查，然後按一下 [新增]
          1. 輸入新健康情況探查的名稱 (例如 **nw1-ascs-hp**)
          1. 選取 [TCP] 作為通訊協定、連接埠 620**00**，保留 [間隔] 5 和 [狀況不良閾值] 2
-         1. Click OK
+         1. 按一下 [確定]。
       1. 針對 ASCS ERS 是連接埠 621**02**
          * 重複上述步驟以建立 ERS 的健康情況探查 (例如 621**02** 和 **nw1-aers-hp**)
    1. 負載平衡規則
@@ -214,7 +211,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
          1. 選取**HA 埠**
          1. 將閒置逾時增加為 30 分鐘
          1. **務必啟用浮動 IP**
-         1. Click OK
+         1. 按一下 [確定]。
          * 重複上述步驟以建立 ERS 的負載平衡規則（例如**nw1-lb-ERS**）
 1. 或者，如果您的案例需要基本負載平衡器（內部），請遵循下列步驟：  
    1. 建立前端 IP 位址
@@ -222,7 +219,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
          1. 開啟負載平衡器，選取前端 IP 集區，然後按一下 [新增]
          1. 輸入新前端 IP 集區的名稱 (例如 **nw1-ascs-frontend**)
          1. 將 [指派] 設定為 [靜態]，然後輸入 IP 位址 (例如 **10.0.0.7**)
-         1. Click OK
+         1. 按一下 [確定]。
       1. 針對 ASCS ERS 是 IP 位址 10.0.0.8
          * 重複上述步驟以建立 ERS 的 IP 位址 (例如 **10.0.0.8** 和 **nw1-aers-backend**)
    1. 建立後端集區
@@ -232,7 +229,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
          1. 按一下 [新增虛擬機器]。
          1. 選取您稍早建立的可用性設定組
          1. 選取 (A)SCS 叢集的虛擬機器
-         1. Click OK
+         1. 按一下 [確定]。
       1. 建立 ASCS ERS 的後端集區
          * 重複上述步驟以建立 ERS 的後端集區 (例如 **nw1-aers-backend**)
    1. 建立健康狀態探查
@@ -240,7 +237,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
          1. 開啟負載平衡器，選取健康情況探查，然後按一下 [新增]
          1. 輸入新健康情況探查的名稱 (例如 **nw1-ascs-hp**)
          1. 選取 [TCP] 作為通訊協定、連接埠 620**00**，保留 [間隔] 5 和 [狀況不良閾值] 2
-         1. Click OK
+         1. 按一下 [確定]。
       1. 針對 ASCS ERS 是連接埠 621**02**
          * 重複上述步驟以建立 ERS 的健康情況探查 (例如 621**02** 和 **nw1-aers-hp**)
    1. 負載平衡規則
@@ -251,7 +248,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
          1. 保留通訊協定 [TCP]，輸入連接埠 **3200**
          1. 將閒置逾時增加為 30 分鐘
          1. **務必啟用浮動 IP**
-         1. Click OK
+         1. 按一下 [確定]。
       1. ASCS 的其他連接埠
          * 重複上述步驟來為 ASCS 設定連接埠 36**00**、39**00**、81**00**、5**00**13、5**00**14、5**00**16 和 TCP
       1. ASCS ERS 的其他連接埠
@@ -1245,6 +1242,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
 
 ## <a name="next-steps"></a>後續步驟
 
+* [SLES for SAP 應用程式上的 Azure Vm 上的 HA for SAP NW 多 SID 指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
 * [適用于 SAP 的 Azure 虛擬機器規劃和執行][planning-guide]
 * [適用于 SAP 的 Azure 虛擬機器部署][deployment-guide]
 * [適用于 SAP 的 Azure 虛擬機器 DBMS 部署][dbms-guide]

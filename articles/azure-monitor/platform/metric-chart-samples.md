@@ -3,17 +3,16 @@ title: Azure 監視器度量圖表範例
 description: 了解如何將您的 Azure 監視器資料視覺化。
 author: vgorbenko
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 8cc653b8e5d2c239243bf6a09955b10011c7408b
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 1aaeb853a67b36a21a09db57e015029d10cd0c36
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74538972"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660865"
 ---
 # <a name="metric-chart-examples"></a>度量圖表範例 
 

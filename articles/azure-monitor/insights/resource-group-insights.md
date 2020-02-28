@@ -1,19 +1,18 @@
 ---
 title: Azure 監視器資源群組深入解析 | Microsoft Docs
 description: 透過 Azure 監視器了解您的分散式應用程式與服務在資源群組層級的健康狀態與效能
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: fba94a5e723bfbc2719b3b4cf5cd130eda382276
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 6d97e40bf2bf2298fb53609621db8ff2c6f1038f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553983"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663533"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>使用 Azure 監視器監視資源群組 (預覽)
 

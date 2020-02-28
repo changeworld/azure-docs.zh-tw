@@ -1,19 +1,18 @@
 ---
 title: 管理解決方案中儲存的搜尋 |Microsoft Docs
 description: 管理解決方案通常包含已儲存的記錄查詢，以分析解決方案所收集的資料。 本文說明如何在 Resource Manager 範本中定義 Log Analytics 儲存的搜尋。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/29/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5ff9c45ffb636f53951a763f617c25a2e8c09088
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 61fc64e140af091b5ff3f631398daf901557791b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977728"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663023"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>將 Log Analytics 儲存的搜尋和警示新增到管理解決方案 (預覽)
 
@@ -71,11 +70,11 @@ Resource Manager 範本中所定義的所有 Log Analytics 資源都會有 **api
 
 下表說明儲存的搜尋的每個屬性。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | category | 儲存的搜尋的類別。  同一個解決方案中所有儲存的搜尋通常都會共用單一類別，因此它們會在主控台中群組在一起。 |
 | displayname | 要在入口網站中顯示之儲存的搜尋名稱。 |
-| 查詢 | 要執行的查詢。 |
+| query | 要執行的查詢。 |
 
 > [!NOTE]
 > 如果查詢包含可解譯為 JSON 的字元，您可能需要在查詢中使用逸出字元。 例如，如果查詢為 **AzureActivity | OperationName:"Microsoft.Compute/virtualMachines/write"** ，就應該在方案檔中撰寫為 **AzureActivity | OperationName:/\"Microsoft.Compute/virtualMachines/write\"** 。
@@ -112,7 +111,7 @@ Resource Manager 範本中所定義的所有 Log Analytics 資源都會有 **api
     }
 下表會說明排程資源的屬性。
 
-| 元素名稱 | 必要項 | 說明 |
+| 元素名稱 | 必要項 | 描述 |
 |:--|:--|:--|
 | 已啟用       | 是 | 指定在建立警示時是否要加以啟用。 |
 | interval      | 是 | 查詢的執行頻率，以分鐘為單位。 |
@@ -164,7 +163,7 @@ Resource Manager 範本中所定義的所有 Log Analytics 資源都會有 **api
 
 下表會說明警示動作資源的屬性。
 
-| 元素名稱 | 必要項 | 說明 |
+| 元素名稱 | 必要項 | 描述 |
 |:--|:--|:--|
 | `type` | 是 | 動作的類型。  這是適用於警示動作的**警示**。 |
 | `name` | 是 | 警示的顯示名稱。  這是顯示於主控台中的警示規則名稱。 |
@@ -174,7 +173,7 @@ Resource Manager 範本中所定義的所有 Log Analytics 資源都會有 **api
 #### <a name="threshold"></a>閾值
 此為必要區段。 它會定義警示臨界值的屬性。
 
-| 元素名稱 | 必要項 | 說明 |
+| 元素名稱 | 必要項 | 描述 |
 |:--|:--|:--|
 | `Operator` | 是 | 比較運算子具有下列值：<br><br>**gt = 大於<br>lt = 少於** |
 | `Value` | 是 | 要比較結果的值。 |
@@ -182,7 +181,7 @@ Resource Manager 範本中所定義的所有 Log Analytics 資源都會有 **api
 ##### <a name="metricstrigger"></a>MetricsTrigger
 此為選擇性區段。 加入此區段以供計量計量警示使用。
 
-| 元素名稱 | 必要項 | 說明 |
+| 元素名稱 | 必要項 | 描述 |
 |:--|:--|:--|
 | `TriggerCondition` | 是 | 使用下列值來指定臨界值為違反次數總和或連續違反次數：<br><br>**Total<br>Consecutive** |
 | `Operator` | 是 | 比較運算子具有下列值：<br><br>**gt = 大於<br>lt = 少於** |
@@ -192,7 +191,7 @@ Resource Manager 範本中所定義的所有 Log Analytics 資源都會有 **api
 #### <a name="throttling"></a>節流
 此為選擇性區段。 如果您想要在建立警示之後的某一段時間內隱藏相同規則所產生的警示，請加入此區段。
 
-| 元素名稱 | 必要項 | 說明 |
+| 元素名稱 | 必要項 | 描述 |
 |:--|:--|:--|
 | DurationInMinutes | 如果包含 Throttling 元素，即為 Yes | 從同一個警示規則中建立一個警示之後隱藏警示的分鐘數。 |
 
@@ -201,7 +200,7 @@ Azure 中的所有警示都使用「動作群組」作為處理動作的預設�
 
 針對將警示延伸至 Azure 的使用者 - 排程的「動作群組」詳細資料現在應該與閾值一起傳遞，才能建立警示。 必須先在動作群組內定義電子郵件詳細資料、Webhook URL、Runbook 自動化詳細資料及其他動作，才能建立警示；使用者可以在入口網站中[從 Azure 監視器建立動作群組](../../azure-monitor/platform/action-groups.md)，或使用[動作群組 - 資源範本](../../azure-monitor/platform/action-groups-create-resource-manager-template.md)來建立動作群組。
 
-| 元素名稱 | 必要項 | 說明 |
+| 元素名稱 | 必要項 | 描述 |
 |:--|:--|:--|
 | AzNsNotification | 是 | Azure 動作群組的資源識別碼，其會與警示相關聯，以便在符合警示準則時採取必要動作。 |
 | CustomEmailSubject | 否 | 電子郵件的自訂主旨列，該電子郵件會傳送到相關聯動作群組中指定的所有地址。 |
@@ -211,7 +210,7 @@ Azure 中的所有警示都使用「動作群組」作為處理動作的預設�
 
 以下是解決方案的範例，其中包含下列資源：
 
-- 儲存的搜尋
+- 儲存搜尋
 - 排程
 - 動作群組
 

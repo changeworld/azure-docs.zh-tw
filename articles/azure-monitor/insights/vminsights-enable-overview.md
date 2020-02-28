@@ -1,18 +1,17 @@
 ---
 title: 啟用適用於 VM 的 Azure 監視器（預覽）總覽 |Microsoft Docs
 description: 瞭解如何部署和設定適用於 VM 的 Azure 監視器。 瞭解系統需求。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/14/2019
-ms.openlocfilehash: ce95223e9501ad7bec2bd260a8fe6f1537db5593
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 44422f66f6fc995dcaf96947ea05b183c7131ea3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75400626"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669568"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>啟用適用於 VM 的 Azure 監視器（預覽）總覽
 
@@ -166,7 +165,7 @@ ms.locfileid: "75400626"
 
 下表說明對應功能在混合式環境中支援的連線來源。
 
-| 連線的來源 | 支援的 | 說明 |
+| 連線的來源 | 支援 | 描述 |
 |:--|:--|:--|
 | Windows 代理程式 | 是 | 除了[適用于 windows 的 Log Analytics 代理程式](../../azure-monitor/platform/log-analytics-agent.md)，windows 代理程式還需要 Dependency agent。 如需詳細資訊，請參閱[支援的作業系統](#supported-operating-systems)。 |
 | Linux 代理程式 | 是 | 除了適用于[linux 的 Log Analytics 代理程式](../../azure-monitor/platform/log-analytics-agent.md)，linux 代理程式還需要 Dependency agent。 如需詳細資訊，請參閱[支援的作業系統](#supported-operating-systems)。 |
@@ -189,12 +188,12 @@ ms.locfileid: "75400626"
 
 使用下表所述的其中一種方法來啟用適用於 VM 的 Azure 監視器：
 
-| 部署狀態 | 方法 | 說明 |
+| 部署狀態 | 方法 | 描述 |
 |------------------|--------|-------------|
 | 單一 Azure VM 或虛擬機器擴展集 | [從 VM 啟用](vminsights-enable-single-vm.md) | 您可以直接從 VM 或虛擬機器擴展集選取 [ **Insights （預覽）** ] 來啟用單一 Azure VM。 |
 | 多個 Azure Vm 或虛擬機器擴展集 | [透過 Azure 原則啟用](vminsights-enable-at-scale-policy.md) | 您可以使用 Azure 原則和可用的原則定義來啟用多個 Azure Vm。 |
 | 多個 Azure Vm 或虛擬機器擴展集 | [透過 Azure PowerShell 或 Azure Resource Manager 範本啟用](vminsights-enable-at-scale-powershell.md) | 您可以使用 Azure PowerShell 或 Azure Resource Manager 範本，在指定的訂用帳戶或資源群組上啟用多個 Azure Vm 或虛擬機器擴展集。 |
-| 混合雲 | [針對混合式環境啟用](vminsights-enable-hybrid-cloud.md) | 您可以部署至您的資料中心或其他雲端環境中裝載的 Vm 或實體電腦。 |
+| 混合式雲端 | [針對混合式環境啟用](vminsights-enable-hybrid-cloud.md) | 您可以部署至您的資料中心或其他雲端環境中裝載的 Vm 或實體電腦。 |
 
 ## <a name="performance-counters-enabled"></a>已啟用效能計數器 
 
@@ -207,7 +206,7 @@ ms.locfileid: "75400626"
 
 |物件名稱 |計數器名稱 |
 |------------|-------------|
-|LogicalDisk |% Free Space |
+|LogicalDisk |可用空間百分比 |
 |LogicalDisk |Avg. Disk sec/Read |
 |LogicalDisk |Avg. Disk sec/Transfer |
 |LogicalDisk |Avg. Disk sec/Write |
@@ -221,24 +220,24 @@ ms.locfileid: "75400626"
 |記憶體 |可用的 MB |
 |網路介面卡 |Bytes Received/sec |
 |網路介面卡 |Bytes Sent/sec |
-|處理器 |% Processor Time |
+|處理器 |% 處理器時間 |
 
 ### <a name="linux-performance-counters"></a>Linux 效能計數器
 
 |物件名稱 |計數器名稱 |
 |------------|-------------|
-|Logical Disk |% Used Space |
-|Logical Disk |Disk Read Bytes/sec |
-|Logical Disk |Disk Reads/sec |
-|Logical Disk |Disk Transfers/sec |
-|Logical Disk |Disk Write Bytes/sec |
-|Logical Disk |Disk Writes/sec |
-|Logical Disk |Free Megabytes |
-|Logical Disk |Logical Disk Bytes/sec |
+|邏輯磁碟 |% Used Space |
+|邏輯磁碟 |Disk Read Bytes/sec |
+|邏輯磁碟 |Disk Reads/sec |
+|邏輯磁碟 |Disk Transfers/sec |
+|邏輯磁碟 |Disk Write Bytes/sec |
+|邏輯磁碟 |Disk Writes/sec |
+|邏輯磁碟 |Free Megabytes |
+|邏輯磁碟 |Logical Disk Bytes/sec |
 |記憶體 |Available MBytes Memory |
 |網路 |Total Bytes Received |
 |網路 |Total Bytes Transmitted |
-|處理器 |% Processor Time |
+|處理器 |% 處理器時間 |
 
 ## <a name="management-packs"></a>管理組件
 

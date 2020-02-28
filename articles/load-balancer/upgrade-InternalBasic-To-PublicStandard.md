@@ -7,21 +7,22 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: f5ff4ca94f9e9c6bd03cde6b948331e42cc6225a
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 346fc3d5a4e7b165caafd9847b9797abae0c9113
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77618200"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659980"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>升級 Azure 內部 Load Balancer-需要輸出連線
 [Azure Standard Load Balancer](load-balancer-overview.md)透過區域冗余提供了一組豐富的功能和高可用性。 若要深入瞭解 Load Balancer SKU，請參閱[比較表](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus)。 由於 Standard Internal Load Balancer 並不提供輸出連線，因此我們提供了一個解決方案，改為建立標準的公用 Load Balancer。
 
-升級有三個階段：
+升級有四個階段：
 
 1. 將設定遷移至標準公用 Load Balancer
 2. 將 Vm 新增至標準公用 Load Balancer 的後端集區
-3. 針對應從網際網路都避免的子網/Vm 設定 NSG 規則
+3. 在 Load Balancer 上針對輸出連線建立輸出規則
+4. 針對應從網際網路都避免的子網/Vm 設定 NSG 規則
 
 本文涵蓋設定遷移。 將 Vm 新增至後端集區可能會根據您的特定環境而有所不同。 不過，[系統會提供](#add-vms-to-backend-pools-of-standard-load-balancer)一些高階的一般建議。
 
@@ -65,7 +66,7 @@ ms.locfileid: "77618200"
 
 如果您已安裝一些 Azure Az 模組，但無法將它們卸載（或不想要將它們卸載），您可以使用腳本下載連結中的 [**手動下載**] 索引標籤，手動下載腳本。 腳本會下載為原始的 nupkg 檔案。 若要從這個 nupkg 檔安裝腳本，請參閱[手動套件下載](/powershell/scripting/gallery/how-to/working-with-packages/manual-download)。
 
-執行指令碼：
+若要執行指令碼：
 
 1. 使用 `Connect-AzAccount` 來連接到 Azure。
 
@@ -83,7 +84,7 @@ ms.locfileid: "77618200"
     **範例**
 
    ```azurepowershell
-   ./AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newlocation "centralus" -newLbName "LBForUpgrade"
+   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newlocation "centralus" -newLbName "LBForUpgrade"
    ```
 
 ### <a name="add-vms-to-backend-pools-of-standard-load-balancer"></a>將 Vm 新增至 Standard Load Balancer 的後端集區
@@ -110,6 +111,12 @@ ms.locfileid: "77618200"
 * **建立新的 vm，以新增至新建立之標準公用 Load Balancer 的後端**集區。
     * 如需有關如何建立 VM 並將它與 Standard Load Balancer 相關聯的詳細指示，請參閱[這裡](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal#create-virtual-machines)。
 
+### <a name="create-an-outbound-rule-for-outbound-connection"></a>建立連出連線的輸出規則
+
+遵循[指示](https://docs.microsoft.com/azure/load-balancer/configure-load-balancer-outbound-portal#create-outbound-rule-configuration)來建立輸出規則，讓您可以
+* 從頭開始定義輸出 NAT。
+* 調整並調整現有輸出 NAT 的行為。
+
 ### <a name="create-nsg-rules-for-vms-which-to-refrain-communication-from-or-to-the-internet"></a>建立 Vm 的 NSG 規則，以避免網際網路的通訊
 如果您想要避免網際網路流量到達您的 Vm，您可以在 Vm 的網路介面上建立[NSG 規則](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)。
 
@@ -117,11 +124,11 @@ ms.locfileid: "77618200"
 
 ### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>Azure PowerShell 腳本是否有任何限制，可將設定從 v1 遷移至 v2？
 
-是。 請參閱[警告/限制](#caveatslimitations)。
+是的。 請參閱[警告/限制](#caveatslimitations)。
 
 ### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-basic-load-balancer-to-the-newly-created-standard-load-balancer"></a>Azure PowerShell 腳本是否也會將來自我的基本 Load Balancer 的流量切換到新建立的 Standard Load Balancer？
 
-否。 Azure PowerShell 腳本只會遷移設定。 實際的流量遷移是您在控制中的責任。
+No。 Azure PowerShell 腳本只會遷移設定。 實際的流量遷移是您在控制中的責任。
 
 ### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>我在使用此腳本時遇到一些問題。 如何取得協助？
   

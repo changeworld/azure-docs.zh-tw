@@ -3,23 +3,22 @@ title: 在 Azure 監視器中查看 Azure 活動記錄事件
 description: 在 Azure 監視器中查看 Azure 活動記錄，並使用 PowerShell、CLI 和 REST API 抓取。
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/07/2019
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 46d26aa5dccd32438b2028e21eaa94f7993944d1
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 9df7593a9fd191d3a734fba5e81fb1aecba08345
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749514"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668820"
 ---
 # <a name="view-and-retrieve-azure-activity-log-events"></a>查看和取出 Azure 活動記錄事件
 
 [Azure 活動記錄](platform-logs-overview.md)可讓您深入瞭解 azure 中發生的訂用帳戶層級事件。 本文提供查看和抓取活動記錄事件之不同方法的詳細資料。
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Azure 入口網站
 從 Azure 入口網站中的 **監視** 功能表，查看所有資源的活動記錄。 從該資源功能表中的 [**活動記錄**] 選項，查看特定資源的活動記錄檔。
 
 ![查看活動記錄](./media/activity-logs-overview/view-activity-log.png)
@@ -40,16 +39,16 @@ ms.locfileid: "75749514"
 ## <a name="categories-in-the-activity-log"></a>活動記錄中的類別
 活動記錄中的每個事件都具有下表中所述的特定類別。 如需這些類別結構描述的完整詳細資料，請參閱 [Azure 活動記錄事件結構描述](activity-log-schema.md)。 
 
-| 類別 | 說明 |
+| 類別 | 描述 |
 |:---|:---|
 | 管理 | 包含透過 Resource Manager 執行的所有建立、更新、刪除和動作作業的記錄。 系統管理事件的範例包括 [_建立虛擬機器_] 和 [_刪除網路安全性群組_]。<br><br>使用 Resource Manager 的使用者或應用程式所採取的每個動作，都會在特定資源類型上模型化為作業。 如果作業類型為 [_寫入_]、[_刪除_] 或 [_動作_]，該作業的 [啟動] 和 [成功] 或 [失敗] 記錄都會記錄在 [系統管理] 類別中。 系統管理事件也包括對訂用帳戶中的角色型存取控制所做的任何變更。 |
-| 服務健康情況 | 包含 Azure 中發生之任何服務健康狀態事件的記錄。 _美國東部的 SQL Azure_服務健康狀態事件的範例是發生停機。 <br><br>服務健康狀態事件分為六種：_需要採取動作_、_協助_復原、_事件_、_維護_、_資訊_或_安全性_。 只有當您的訂用帳戶中有會受到事件影響的資源時，才會建立這些事件。
+| 服務健全狀況 | 包含 Azure 中發生之任何服務健康狀態事件的記錄。 _美國東部的 SQL Azure_服務健康狀態事件的範例是發生停機。 <br><br>服務健康狀態事件分為六種：_需要採取動作_、_協助_復原、_事件_、_維護_、_資訊_或_安全性_。 只有當您的訂用帳戶中有會受到事件影響的資源時，才會建立這些事件。
 | 資源健全狀況 | 包含 Azure 資源已發生之任何資源健康狀態事件的記錄。 資源健康狀態事件的一個範例是_虛擬機器健全狀況狀態已變更為 [無法使用_]。<br><br>資源健康狀態事件可以代表四種健康狀態之一： [_可用_]、[_無法使用_]、[已_降級_] 和 [_未知_]。 此外，資源健康狀態事件可以分類為已_起始平臺_或_使用者起始_。 |
 | 警示 | 包含 Azure 警示的啟用記錄。 警示事件的範例是_myVM 上的 CPU% 在過去5分鐘內已超過 80_。|
-| 自動調整規模 | 包含根據您在訂用帳戶中定義的自動調整規模設定，與自動調整引擎作業相關之任何事件的記錄。 自動調整規模事件的一個範例是 [_自動調整相應增加] 動作失敗_。 |
+| Autoscale | 包含根據您在訂用帳戶中定義的自動調整規模設定，與自動調整引擎作業相關之任何事件的記錄。 自動調整規模事件的一個範例是 [_自動調整相應增加] 動作失敗_。 |
 | 建議 | 包含來自 Azure Advisor 的建議事件。 |
 | 安全性 | 包含 Azure 資訊安全中心所產生之任何警示的記錄。 安全性事件的範例是_執行可疑的雙重擴充_檔案。 |
-| 原則 | 包含 Azure 原則所執行之所有效果動作作業的記錄。 原則事件的範例包括_Audit_和_Deny_。 原則所採取的每個動作會模型化為資源上的作業。 |
+| Policy(Windows Intune 說明：原則) | 包含 Azure 原則所執行之所有效果動作作業的記錄。 原則事件的範例包括_Audit_和_Deny_。 原則所採取的每個動作會模型化為資源上的作業。 |
 
 ## <a name="view-change-history"></a>檢視變更記錄
 
@@ -190,7 +189,7 @@ Azure Log Analytics 監視解決方案包含多個記錄查詢和視圖，可用
 
 ![Azure 活動記錄儀表板](media/collect-activity-logs/activity-log-dash.png)
 
-| 視覺效果元件 | 說明 |
+| 視覺效果元件 | 描述 |
 | --- | --- |
 | Azure 活動記錄項目 | 針對您所選取的日期範圍，顯示最上層 Azure 活動記錄專案記錄總計的橫條圖，並顯示前10個活動呼叫者的清單。 按一下長條圖即可執行 `AzureActivity` 的記錄搜尋。 按一下呼叫者專案來執行記錄搜尋，以傳回該專案的所有活動記錄專案。 |
 | 依狀態列出的活動記錄 | 顯示所選日期範圍的 Azure 活動記錄狀態的環圈圖，以及前十筆狀態記錄的清單。 按一下圖表以執行 `AzureActivity | summarize AggregatedValue = count() by ActivityStatus`的記錄查詢。 按一下狀態專案以執行記錄搜尋，以傳回該狀態記錄的所有活動記錄專案。 |

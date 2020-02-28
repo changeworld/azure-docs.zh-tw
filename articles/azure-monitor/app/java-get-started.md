@@ -1,18 +1,16 @@
 ---
 title: 快速入門：使用 Azure 應用程式 Insights 的 JAVA web 應用程式分析
 description: '使用 Application Insights 針對 Java Web 應用程式進行應用程式效能監視。 '
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 05/24/2019
-ms.openlocfilehash: abc16f8e1fdc6b81634b926eeb287e5d03efdc40
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 484d4e8df8a8fdceed62a65858126a16d028121e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963677"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670078"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>快速入門：在 JAVA Web 專案中開始使用 Application Insights
 
@@ -38,7 +36,7 @@ Application Insights 是適用于 網頁程式開發人員的可擴充分析服�
 
 *選擇您的專案類型。*
 
-# <a name="maventabmaven"></a>[Maven](#tab/maven)
+# <a name="maven"></a>[Maven](#tab/maven)
 
 如果您的專案已設定為使用 Maven 進行組建，請將下列程式碼合併至您的*pom .xml*檔案。
 
@@ -56,7 +54,7 @@ Application Insights 是適用于 網頁程式開發人員的可擴充分析服�
     </dependencies>
 ```
 
-# <a name="gradletabgradle"></a>[Gradle](#tab/gradle)
+# <a name="gradle"></a>[Gradle](#tab/gradle)
 
 如果您的專案已設定為使用 Gradle 進行組建，請將下列程式碼合併至*Gradle*檔案。
 
@@ -70,7 +68,7 @@ Application Insights 是適用于 網頁程式開發人員的可擴充分析服�
     }
 ```
 
-# <a name="other-typestabother"></a>[其他類型](#tab/other)
+# <a name="other-types"></a>[其他類型](#tab/other)
 
 下載[最新版本](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest)並將所需的檔案複製到您的專案中，並取代任何先前的版本。
 
@@ -302,7 +300,7 @@ Application Insights 可讓您定期測試網站，以檢查網站運作中且�
 
 [深入瞭解如何設定可用性 web 測試。][availability]
 
-## <a name="questions-problems"></a>有問題？ 有問題？
+## <a name="questions-problems"></a>有疑問嗎？ 有問題嗎？
 [疑難排解 Java](java-troubleshoot.md)
 
 ## <a name="next-steps"></a>後續步驟

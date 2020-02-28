@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 9cdfd0d029057e36e010203b7c35a5aafee4b574
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: a65f20e04603403a1d3a180e364626d5b4440661
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208279"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664478"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure 地圖服務支援的地圖樣式
 「Azure 地圖服務」支援數個不同的內建地圖樣式，如下所述。
@@ -52,7 +52,7 @@ ms.locfileid: "77208279"
 ## <a name="satellite_road_labels"></a>satellite_road_labels
 此地圖樣式包含道路及覆蓋在衛星和空拍影像上的標籤。
 
-![satellite_road_labels 地圖樣式](./media/supported-map-styles/satellite_road_labels.png)
+![satellite_road_labels 地圖樣式](./media/supported-map-styles/satellite-road-labels.png)
 
 **適用 API：**
 * Web SDK 地圖控制項
@@ -61,7 +61,7 @@ ms.locfileid: "77208279"
 ## <a name="grayscale_dark"></a>grayscale_dark
 **深灰階**是路段圖樣式的深色版本。
 
-![gray_scale 地圖樣式](./media/supported-map-styles/grayscale_dark.png)
+![gray_scale 地圖樣式](./media/supported-map-styles/grayscale-dark.png)
 
 **適用 API：**
 * [地圖影像](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
@@ -73,7 +73,7 @@ ms.locfileid: "77208279"
 ## <a name="grayscale_light"></a>grayscale_light
 「**灰階光線**」是道路地圖樣式的輕量版本。
 
-![灰階 light 地圖樣式](./media/supported-map-styles/grayscale_light.png)
+![灰階 light 地圖樣式](./media/supported-map-styles/grayscale-light.png)
 
 **適用 API：**
 * Web SDK 地圖控制項
@@ -99,6 +99,14 @@ ms.locfileid: "77208279"
 * Web SDK 地圖控制項
 * Android 地圖控制項
 
+## <a name="high_contrast_dark"></a>high_contrast_dark
+
+**high_contrast_dark**是深色地圖樣式，其對比高於其他樣式。
+
+![高對比深色地圖樣式](./media/supported-map-styles/high-contrast-dark.png)
+
+**適用 API：**
+* Web SDK 地圖控制項
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,18 +1,14 @@
 ---
 title: 在 Azure Application Insights 中監視 Docker 應用程式 | Microsoft Docs
 description: Docker 效能計數器、事件和例外狀況可以與來自容器化應用程式的遙測一起顯示在 Application Insights 上。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 03/14/2019
-ms.openlocfilehash: 66a2481d25c863bbdbf4d72c4683a309918776db
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 5ff3d6a2b31425a3fb6857c8c6aed45f7ef18d64
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677926"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669602"
 ---
 # <a name="monitor-docker-applications-in-application-insights-deprecated"></a>監視 Application Insights 中的 Docker 應用程式（已淘汰）
 
@@ -85,7 +81,7 @@ ms.locfileid: "72677926"
 ### <a name="docker-context-added-to-app-telemetry"></a>已加入應用程式遙測中的 Docker 內容
 從使用 AI SDK 檢測之應用程式送出的要求遙測，會以 Docker 內容資訊進行擴充。
 
-## <a name="q--a"></a>問與答
+## <a name="q--a"></a>問答集
 *Application Insights 可以給我哪些無法從 Docker 取得的功能？*
 
 * 依據容器和映像的效能計數器的詳細分解圖。
@@ -96,7 +92,7 @@ ms.locfileid: "72677926"
 
 * 在應用程式中安裝 Application Insights SDK。 針對下列項目深入了解：[Java Web 應用程式](../../azure-monitor/app/java-get-started.md)、[Windows Web 應用程式](../../azure-monitor/app/asp-net.md)。
 
-## <a name="video"></a>影片
+## <a name="video"></a>視訊
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 

@@ -1,18 +1,14 @@
 ---
 title: 在 Application Insights 中使用 PowerShell 設定警示 | Microsoft Docs
 description: 自動化 Application Insights 的組態以取得有關度量變更的電子郵件。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 10/31/2016
-ms.openlocfilehash: cf03fa0055710dde86a0f74cd58344575494faf1
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: c19cb43d08b44b55c786e750e64a83e6f0c67381
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928573"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669840"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>在 Application Insights 中使用 PowerShell 設定警示
 
@@ -33,7 +29,7 @@ ms.locfileid: "73928573"
 * 安裝 [Microsoft Web Platform Installer (v5 或更高版本)](https://www.microsoft.com/web/downloads/platform.aspx)。
 * 使用該程式安裝 Microsoft Azure PowerShell
 
-## <a name="connect-to-azure"></a>連接到 Azure
+## <a name="connect-to-azure"></a>連線到 Azure
 啟動 Azure PowerShell 並 [連接至您的訂用帳戶](/powershell/azure/overview)：
 
 ```powershell
@@ -122,7 +118,7 @@ GUID 是該訂用帳戶的 ID (而非應用程式的檢測金鑰)。
 
 | 度量群組 | 收集器模組 |
 | --- | --- |
-| basicExceptionBrowser、<br/>clientPerformance、<br/>view |[瀏覽器 JavaScript](../../azure-monitor/app/javascript.md) |
+| basicExceptionBrowser、<br/>clientPerformance、<br/>檢視 |[瀏覽器 JavaScript](../../azure-monitor/app/javascript.md) |
 | performanceCounter |[效能](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
 | remoteDependencyFailed |[相依性](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
 | request、<br/>requestFailed |[伺服器要求](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |

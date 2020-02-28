@@ -1,19 +1,15 @@
 ---
 title: 使用 Azure 應用程式 Insights 進行效能和負載測試 |Microsoft Docs
 description: 使用 Azure 應用程式 Insights 設定效能和負載測試
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: db23fae6bb15e851d22e54b323428c061f55b34f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0bfb60b876add70be6cbcd3d726fb3317a8dfcf9
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406558"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669857"
 ---
 # <a name="performance-testing"></a>效能測試
 
@@ -47,7 +43,7 @@ Application Insights 可讓您產生網站的負載測試。 如同[可用性測
 
 測試完成後，您會看到看起來類似下列結果的結果：
 
-![Test Results](./media/performance-testing/test-results.png)
+![測試結果](./media/performance-testing/test-results.png)
 
 ## <a name="configure-visual-studio-web-test"></a>設定 Visual Studio web 測試
 

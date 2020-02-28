@@ -1,18 +1,17 @@
 ---
 title: Azure 診斷延伸模組總覽
 description: 使用 Azure 診斷來在雲端服務、虛擬機器及 Service Fabric 中進行偵錯、測量效能、監視、流量分析等。
-ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: d9db4b4c8e6d82f29d227b9f8afe528e000c651e
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 6cb514312db525ffd2ccf9f7b70968daaa94f322
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467989"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672373"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Azure 診斷延伸模組總覽
 Azure 診斷延伸模組是[Azure 監視器中的代理程式](agents-overview.md)，可從 Azure 計算資源（包括虛擬機器）的客體作業系統收集監視資料。 本文概述 Azure 診斷延伸模組，包括支援的特定功能，以及安裝和設定的選項。 
@@ -54,7 +53,7 @@ Azure 診斷擴充功能沒有成本，但您可能會產生資料內嵌的費�
 
 | 資料來源 | 描述 |
 | --- | --- |
-| syslog | 傳送至 Linux 事件記錄系統的事件。   |
+| Syslog | 傳送至 Linux 事件記錄系統的事件。   |
 | 效能計數器  | 數值，測量作業系統和工作負載不同層面的效能。 |
 | 記錄檔 | 傳送至以檔案為基礎之記錄檔的專案。  |
 
@@ -86,7 +85,7 @@ LAD 會將資料寫入 Azure 儲存體中的資料表。 它支援下表中的�
 
 
 ## <a name="installation-and-configuration"></a>安裝和組態
-診斷延伸模組會實作為 Azure 中的[虛擬機器擴充](/virtual-machines/extensions/overview)功能，因此它支援使用 Resource Manager 範本、POWERSHELL 和 CLI 的相同安裝選項。 如需安裝和維護虛擬機器擴充功能的一般詳細資訊，請參閱[Windows 的虛擬機器擴充功能](/virtual-machines/extensions/features-windows)和[適用于 Linux 的虛擬機器延伸模組和功能](/virtual-machines/extensions/features-linux)。
+診斷延伸模組會實作為 Azure 中的[虛擬機器擴充](../../virtual-machines/extensions/overview.md)功能，因此它支援使用 Resource Manager 範本、POWERSHELL 和 CLI 的相同安裝選項。 如需安裝和維護虛擬機器擴充功能的一般詳細資訊，請參閱[Windows 的虛擬機器擴充功能](../../virtual-machines/extensions/features-windows.md)和[適用于 Linux 的虛擬機器延伸模組和功能](../../virtual-machines/extensions/features-linux.md)。
 
 您也可以在虛擬機器功能表的 **監視** 區段中，于 **診斷設定** 底下的 Azure 入口網站中安裝和設定 Windows 和 Linux 診斷擴充功能。
 

@@ -1,18 +1,17 @@
 ---
 title: Azure 監視器中的 Azure 網路分析解決方案 |Microsoft Docs
 description: 您可以使用 Azure 監視器中的 Azure 網路分析解決方案來查看 Azure 網路安全性群組記錄，並 Azure 應用程式閘道記錄。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 5cce4ccd3acd9df896f6c28bd010a92ed4ec1a7a
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 1045f86db5e1a9ed1979a266937974045e401e27
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893309"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667086"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure 監視器中的 Azure 網路監視解決方案
 
@@ -213,7 +212,7 @@ Set-AzDiagnosticSetting -ResourceId $nsg.ResourceId  -WorkspaceId $workspaceId -
 3. 更新任何已儲存的查詢、儀表板或警示，以使用新的資料類型
    + 類型是 AzureDiagnostics。 您可以使用 ResourceType 來篩選 Azure 網路記錄。
 
-     | 不要使用： | 使用︰ |
+     | 不要： | 請使用： |
      | --- | --- |
      | NetworkApplicationgateways &#124; 其中 OperationName=="ApplicationGatewayAccess" | AzureDiagnostics &#124; ，其中 ResourceType = = "APPLICATIONGATEWAYS"，OperationName = = "ApplicationGatewayAccess" |
      | NetworkApplicationgateways &#124; 其中 OperationName=="ApplicationGatewayPerformance" | AzureDiagnostics &#124; ，其中 ResourceType = = "APPLICATIONGATEWAYS"，OperationName = = "ApplicationGatewayPerformance" |

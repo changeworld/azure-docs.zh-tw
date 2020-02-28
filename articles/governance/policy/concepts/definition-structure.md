@@ -1,14 +1,14 @@
 ---
 title: 原則定義結構的詳細資料
 description: 說明如何使用原則定義來建立組織中 Azure 資源的慣例。
-ms.date: 11/26/2019
+ms.date: 02/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1e90009a0c34bf166a18659a19988ea5a0c9ab07
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: ade659637f1be6cc58cebae760c5e1b753f3830f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587119"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670775"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure 原則定義結構
 
@@ -21,7 +21,7 @@ Azure 原則會建立資源的慣例。 原則定義會描述資源合規性[條
 
 使用 JSON 來建立原則定義。 原則定義中包含以下的項目︰
 
-- mode
+- 模式
 - 參數
 - 顯示名稱
 - description
@@ -65,7 +65,7 @@ Azure 原則會建立資源的慣例。 原則定義會描述資源合規性[條
 
 所有 Azure 原則範例都位於[Azure 原則的範例](../samples/index.md)。
 
-## <a name="mode"></a>[模式]
+## <a name="mode"></a>Mode
 
 根據原則是以 Azure Resource Manager 屬性或資源提供者屬性為目標，設定**模式**。
 
@@ -408,7 +408,7 @@ Azure 原則會建立資源的慣例。 原則定義會描述資源合規性[條
 
 使用修改過的原則規則，`if()` 在嘗試取得值少於三個字元的 `substring()` 之前，檢查**名稱**的長度。 如果**名稱**太短，則會改為傳回值「不是以 abc 開頭」，並與**abc**比較。 簡短名稱不是**abc**開頭的資源仍會失敗原則規則，但在評估期間不會再造成錯誤。
 
-### <a name="count"></a>Count
+### <a name="count"></a>[計數]
 
 計算資源裝載中陣列成員數目符合條件運算式的條件，可以使用**計數**運算式來形成。 常見的案例是檢查「至少其中一個」、「全部」、「全部」或「無」陣列成員是否符合條件。 **count**會評估條件運算式的每個[\[\*\] 別名](#understanding-the--alias)陣列成員，並加總_true_結果，然後再與運算式運算子進行比較。
 
@@ -678,7 +678,7 @@ Azure 原則支援下列類型的效果：
 
 ### <a name="understanding-the--alias"></a>了解 [*] 別名
 
-其中有幾個可用的別名，其版本會顯示為「一般」名稱，另一個則會附加 **\[\*\]** 。 例如：
+其中有幾個可用的別名，其版本會顯示為「一般」名稱，另一個則會附加 **\[\*\]** 。 例如，
 
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`
@@ -712,9 +712,12 @@ Azure 原則支援下列類型的效果：
 
 如需詳細資訊，請參閱[評估 [\*] 別名](../how-to/author-policies-for-arrays.md#evaluating-the--alias)。
 
-## <a name="initiatives"></a>計畫
+## <a name="initiatives"></a>開發案
 
 計畫可讓您將數個相關的原則定義組成群組來簡化指派和管理，因為您可以將一個群組當作單一項目來使用。 例如，您可以將相關的標籤原則定義組成單一方案。 您可以套用該計畫，而不個別指派每個原則。
+
+> [!NOTE]
+> 指派計畫之後，就無法改變 initative 層級參數。 因此，建議您在定義參數時設定**defaultValue** 。
 
 下列範例說明如何建立一個處理兩個標籤 (`costCenter` 和 `productName`) 的計畫。 它會使用兩個內建的原則來套用預設標籤值。
 
@@ -729,13 +732,15 @@ Azure 原則支援下列類型的效果：
                 "type": "String",
                 "metadata": {
                     "description": "required value for Cost Center tag"
-                }
+                },
+                "defaultValue": "DefaultCostCenter"
             },
             "productNameValue": {
                 "type": "String",
                 "metadata": {
                     "description": "required value for product Name tag"
-                }
+                },
+                "defaultValue": "DefaultProduct"
             }
         },
         "policyDefinitions": [{

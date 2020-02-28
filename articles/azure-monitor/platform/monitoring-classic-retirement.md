@@ -3,17 +3,16 @@ title: Azure 監視器中 & 監視的傳統警示更新
 description: 傳統監視服務和功能的淘汰說明，先前的 Azure 入口網站在 [警示（傳統）] 下顯示。
 author: yanivlavi
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: f4639d46a796924b4fe1dcbb46735abea128388f
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: dec4d6824644cabf8b1872da207b8554fee0b3d3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307093"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659470"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Azure 監視器中的整合警示和監視取代了傳統警示和監視
 
@@ -76,9 +75,9 @@ Azure 監視器的較新計量平台現在可強化來自 Application Insights �
 
 ## <a name="pricing-for-migrated-alert-rules"></a>已遷移警示規則的價格
 
-我們即將推出遷移工具，可協助您將 Azure 監視器[傳統警示](../../azure-monitor/platform/alerts-classic.overview.md)遷移至新的警示體驗。 移轉的警示規則和相應的移轉動作群組 (電子郵件、Webhook 或 LogicApp) 都依然免費。 之前可在傳統警示中使用的功能 (包括編輯閾值、彙總類型和彙總細微性的功能) 在移轉的警示規則中仍可持續免費使用。 但是，如果您將移轉的警示規則編輯為使用任何新的警示平台功能、通知或動作類型，將適用相應的費用。 如需警示規則和通知的價格詳細資訊，請參閱[Azure 監視器定價](https://azure.microsoft.com/pricing/details/monitor/)。
+我們即將推出遷移工具，可協助您將 Azure 監視器[傳統警示](../../azure-monitor/platform/alerts-classic.overview.md)遷移至新的警示體驗。 遷移的警示規則和對應的已遷移動作群組（電子郵件、webhook 或 LogicApp）將維持免費。 您在傳統警示中所擁有的功能，包括編輯閾值、匯總類型和匯總資料細微性的能力，將可透過您遷移的警示規則繼續免費使用。 不過，如果您編輯遷移的警示規則以使用任何新的警示平臺功能、通知或動作類型，則會套用對應的費用。 如需警示規則和通知的價格詳細資訊，請參閱[Azure 監視器定價](https://azure.microsoft.com/pricing/details/monitor/)。
 
-下列是您會產生警示規則費用的情況範例：
+以下是您將會產生警示規則費用的案例範例：
 
 - 在新的 Azure 監視器平台上，超出免費單位所建立的任何新的 (非遷移) 警示規則
 - 超出 Azure 監視器所含免費單位而擷取和保留的任何資料

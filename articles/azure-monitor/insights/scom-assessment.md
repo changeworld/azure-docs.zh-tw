@@ -1,18 +1,17 @@
 ---
 title: 使用 Azure Log Analytics 最佳化 System Center Operations Manager 環境 | Microsoft Docs
 description: 您可以使用 System Center Operations Manager 健康情況檢查解決方案，定期評估環境的風險和健康狀態。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2018
-ms.openlocfilehash: 5ec0f181d9d22e9e1183a59a4fbd7d77e658862e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c8add2acb8f263c54f6014699f792380d256d9b0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75402857"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663465"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>使用 System Center Operations Manager 健康情況檢查 (預覽) 解決方案進行環境最佳化
 
@@ -57,7 +56,7 @@ System Center Operations Manager 健全狀況檢查解決方案會從下列來�
 
 * 登錄
 * Windows Management Instrumentation (WMI)
-* 事件記錄檔
+* 事件日誌
 * 檔案資料
 * 從您所指定的管理伺服器，透過 PowerShell 和 SQL 查詢直接從 Operations Manager 收集。  
 
@@ -83,7 +82,7 @@ Log Analytics 會建立工作負載的管理套件以提供加值服務。 每�
 4. 在 [一般屬性] 頁面上，於 [執行身分帳戶類型:] 清單中選取 [Windows]。
 5. 在 [顯示名稱] 文字方塊中輸入顯示名稱，在 [說明] 方塊中選擇性地輸入說明，然後按 [下一步]。
 6. 在 [散發安全性] 頁面上，選取 [較安全]。
-7. 按一下頁面底部的 [新增]。  
+7. 按一下 [建立]。  
 
 您現已建立執行身分帳戶，接下來您必須將其鎖定在管理群組中的管理伺服器，並與預先定義的執行身分設定檔相關聯，如此一來，工作流程才會使用認證來執行。  
 
@@ -180,9 +179,9 @@ System Center Operations Manager 健全狀況檢查解決方案的管理元件�
 
 加權是彙集以下三個重要因素的值：
 
-- 識別之疑難引發問題的 *機率* 。 機率較高等同於建議的整體分數較高。
-- 疑難對組織的 *影響力* (如果確實引發問題)。 影響力較高等同於建議的整體分數較高。
-- 實作建議所需的 *勞力* 。 勞力較高等同於建議的整體分數較低。
+- 識別的問題會造成問題的*機率*。 機率較高等同於建議的整體分數較高。
+- 如果確實發生問題，則問題對您組織的*影響*。 影響力較高等同於建議的整體分數較高。
+- 實作建議需要付出的*努力*。 勞力較高等同於建議的整體分數較低。
 
 每項建議之加權的表示採用每個焦點區域之總分的百分比。 例如，如果 [可用性與商務持續性] 焦點區域中的建議得分 5%，則實作該建議可讓整個「可用性與商務持續性」分數增加 5%。
 
@@ -198,7 +197,7 @@ System Center Operations Manager 健全狀況檢查解決方案的管理元件�
 
 ### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>我應該為每個焦點區域訂定 100% 的分數嗎？
 
-不盡然。 建議乃源自 Microsoft 工程師上千次客戶拜訪所得到的知識和經驗。 然而，世界上沒有兩個一模一樣的伺服器基礎結構，因此特定建議與您的關聯性可能會有所增減。 例如，如果您的虛擬機器並未暴露在網際網路中，某些安全性建議的關聯性就會降低。 對於提供低優先順序臨機操作資料收集和報告的服務來說，某些可用性建議的關聯性就會降低。 會對成熟企業造成重大影響的問題，不見得會對新公司造成同等嚴重的影響。 因此，建議您先找出自己的優先焦點區域，然後觀察一段時間內的分數變化。
+不一定。 建議乃源自 Microsoft 工程師上千次客戶拜訪所得到的知識和經驗。 然而，世界上沒有兩個一模一樣的伺服器基礎結構，因此特定建議與您的關聯性可能會有所增減。 例如，如果您的虛擬機器並未暴露在網際網路中，某些安全性建議的關聯性就會降低。 對於提供低優先順序臨機操作資料收集和報告的服務來說，某些可用性建議的關聯性就會降低。 會對成熟企業造成重大影響的問題，不見得會對新公司造成同等嚴重的影響。 因此，建議您先找出自己的優先焦點區域，然後觀察一段時間內的分數變化。
 
 每項建議都包含其重要性的指引。 根據您的 IT 服務性質和組織的商務需求，請使用本指引來評估是否適合實作建議。
 
@@ -215,7 +214,7 @@ System Center Operations Manager 健全狀況檢查解決方案的管理元件�
 4. 在 [概觀] 頁面上，按一下 [System Center Operations Manager 健康情況檢查] 圖格。
 5. 在 [System Center Operations Manager 健康情況檢查] 頁面上，檢閱其中一個焦點區域刀鋒視窗中的摘要資訊，然後按一下一個刀鋒視窗來檢視該焦點區域的建議。
 6. 在任一焦點區域頁面中，您可以檢視針對環境且按照優先順序排列的建議。 按一下 [受影響的物件] 下方的建議，可檢視建議提出原因的詳細資料。<br><br> ![focus area](./media/scom-assessment/log-analytics-scom-healthcheck-dashboard-02.png)<br>
-7. 您可以採取 [建議動作] 中所建議的更正動作。 當您解決某個項目後，後續評估會記錄您實施的建議動作並提高法務遵循分數。 更正後的項目將以**通過的物件**呈現。
+7. 您可以採取 [建議動作] 中所建議的更正動作。 當您解決某個項目後，後續評估會記錄您實施的建議動作並提高法務遵循分數。 已修正的項目將顯示為 [傳遞的物件]。
 
 ## <a name="ignore-recommendations"></a>忽略建議
 
@@ -269,7 +268,7 @@ System Center Operations Manager 健全狀況檢查解決方案的管理元件�
 - [設定 System Center Operations Manager 健康情況檢查規則](#configure-the-health-check-rule)
 
 
-是否有設定檢查執行頻率的方法？ 可以。 請參閱[設定執行頻率](#configure-the-run-frequency)。
+是否有設定檢查執行頻率的方法？ 是的。 請參閱[設定執行頻率](#configure-the-run-frequency)。
 
 *如果我在新增 System Center Operations Manager 健全狀況檢查解決方案之後探索到另一部伺服器，它會被檢查嗎？* 是，在探索之後，便會從那一刻起對它進行檢查，預設是每隔 7 天一次。
 

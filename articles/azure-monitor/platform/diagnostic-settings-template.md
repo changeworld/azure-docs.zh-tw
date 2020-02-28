@@ -3,17 +3,16 @@ title: 使用 Resource Manager 範本在 Azure 中建立診斷設定
 description: 使用 Resource Manager 範本來建立診斷設定，以將 Azure 平臺記錄轉送至 Azure 監視器記錄、Azure 儲存體或 Azure 事件中樞。
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 2a171ae89e8314684eddf29f78b9b09bc52f9c9b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a2569ca3f998030680bd7dbd872d71ccd372a25d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977563"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672424"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>使用 Resource Manager 範本在 Azure 中建立診斷設定
 Azure 監視器中的[診斷設定](diagnostic-settings.md)會指定 azure 資源所收集的[平臺記錄](platform-logs-overview.md)檔，以及它們所依賴的 azure 平臺。 本文提供詳細資料和範例，說明如何使用[Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md)來建立和設定診斷設定，以將平臺記錄檔收集到不同的目的地。
@@ -144,7 +143,7 @@ Azure 監視器中的[診斷設定](diagnostic-settings.md)會指定 azure 資�
 }
 ```
 
-## <a name="activity-log"></a>活動記錄
+## <a name="activity-log"></a>活動記錄檔
 針對 [Azure 活動記錄檔]，新增 `Microsoft.Insights/diagnosticSettings`類型的資源。 可用的類別會列在[[活動記錄](activity-log-view.md#categories-in-the-activity-log)] 的 [類別] 中。 以下範本會將所有活動記錄類別收集到 Log Analytics 工作區、儲存體帳戶和事件中樞。
 
 

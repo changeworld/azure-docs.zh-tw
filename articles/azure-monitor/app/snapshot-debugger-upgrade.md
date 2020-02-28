@@ -1,19 +1,17 @@
 ---
 title: 升級 Azure 應用程式深入解析快照偵錯工具
 description: 如何將 .NET 應用程式的快照偵錯工具升級至 Azure App 服務上的最新版本，或透過 Nuget 套件
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: pharring
 ms.author: pharring
 ms.date: 03/28/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: d246fb36cc56a90faaf00c5b47ba69580a9c8a5d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6991db6055ca8556adff67f194bac0f4aa04cb06
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927180"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671387"
 ---
 # <a name="upgrading-the-snapshot-debugger"></a>升級快照偵錯工具
 
@@ -57,7 +55,7 @@ ms.locfileid: "74927180"
     > [!NOTE]
     > 此網站將會在升級過程中重新開機。
 
-   ![App Service 的套用監視提示的螢幕擷取畫面。 文字方塊會顯示訊息：「我們現在會將變更套用至您的應用程式設定，並安裝我們的工具，以將您的 Application Insights 資源連結到 web 應用程式。 這會重新開機網站。 您要繼續嗎？](./media/snapshot-debugger-upgrade/apply-monitoring-settings.png)
+   ![App Service 的套用監視提示的螢幕擷取畫面。 文字方塊會顯示訊息：「我們現在會將變更套用至您的應用程式設定，並安裝我們的工具，以將您的 Application Insights 資源連結到 web 應用程式。 這會重新開機網站。 您要繼續嗎？」](./media/snapshot-debugger-upgrade/apply-monitoring-settings.png)
 
 9. 按一下 **[是]** 套用變更，並等候進程完成。
 

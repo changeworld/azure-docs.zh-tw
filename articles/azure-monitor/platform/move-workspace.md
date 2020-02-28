@@ -1,18 +1,17 @@
 ---
 title: 在 Azure 監視器中移動 Log Analytics 工作區 |Microsoft Docs
 description: 瞭解如何將您的 Log Analytics 工作區移至另一個訂用帳戶或資源群組。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: 4baa65ca5dda6b266cd6c739225ebd01d011268c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 9213ddf034e725f6e31c9280d47bd13e4703b3f4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980092"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659487"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>將 Log Analytics 工作區移至不同的訂用帳戶或資源群組
 
@@ -46,7 +45,7 @@ ms.locfileid: "75980092"
 2. 選取要移除的解決方案。
 3. 按一下 [**刪除資源**]，然後按一下 [**刪除**] 確認要移除的資源。
 
-![刪除方案](media/move-workspace/delete-solutions.png)
+![刪除解決方案](media/move-workspace/delete-solutions.png)
 
 ### <a name="delete-using-powershell"></a>使用 PowerShell 刪除
 
@@ -82,7 +81,7 @@ Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -Reso
 
 ## <a name="move-your-workspace"></a>移動您的工作區
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure 入口網站
 請使用下列程式，利用 Azure 入口網站來移動工作區：
 
 1. 開啟 [ **Log Analytics 工作區**] 功能表，然後選取您的工作區。
@@ -91,7 +90,7 @@ Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -Reso
 4. 選取目的地**訂**用帳戶和**資源群組**。 如果您要將工作區移至相同訂用帳戶中的另一個資源群組，您將不會看到**訂**用帳戶選項。
 5. 按一下 **[確定]** 以移動工作區和選取的資源。
 
-    ![入口網站](media/move-workspace/portal.png)
+    ![Portal](media/move-workspace/portal.png)
 
 ### <a name="powershell"></a>PowerShell
 若要使用 PowerShell 移動您的工作區，請使用[get-azresource](/powershell/module/AzureRM.Resources/Move-AzureRmResource) ，如下列範例所示：

@@ -1,18 +1,17 @@
 ---
 title: 在適用於 VM 的 Azure 監視器中停用監視（預覽） |Microsoft Docs
 description: 本文說明如何在適用於 VM 的 Azure 監視器中停止監視您的虛擬機器。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/05/2018
-ms.openlocfilehash: b2d58b501429a47c3011fc727f756edeeb7775e6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fb4347e610920380792a17bb620e6d97a7d72505
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75399298"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669500"
 ---
 # <a name="disable-monitoring-of-your-vms-in-azure-monitor-for-vms-preview"></a>在適用於 VM 的 Azure 監視器中停用 Vm 的監視（預覽）
 

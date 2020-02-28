@@ -1,18 +1,17 @@
 ---
 title: 使用 Azure 監視器持續監視 | Microsoft Docs
 description: 描述使用 Azure 監視器在整個工作流程中啟用持續監視的特定步驟。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: 7dc8001d74ea026625d7496fb84053b4e9109dce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b9ca8a703ed8a84148abd23e90114402d8806bd6
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406160"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667188"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>使用 Azure 監視器持續監視
 
@@ -29,7 +28,7 @@ ms.locfileid: "75406160"
 - [Azure DevOps Projects](../devops-project/overview.md) 為您提供了現有程式碼和 Git 存放庫的簡化體驗，或者從其中一個範例應用程式中進行選擇，以在 Azure 中建立持續整合 (CI) 和持續傳遞 (CD) 管線。
 - [DevOps 發行管線中的持續監視](../azure-monitor/app/continuous-monitoring.md)允許您根據監視資料對部署進行閘道設定或復原。
 - [狀態監視器](../azure-monitor/app/monitor-performance-live-website-now.md)允許您使用 Azure Application Insights 在 Windows 上檢測即時 .NET 應用程式，而不需修改或重新部署您的程式碼。
-- 如果您有權存取應用程式的程式碼，則透過為[.NET](../azure-monitor/learn/quick-monitor-portal.md)、[Java](../azure-monitor/app/java-get-started.md)、[Node.js](../azure-monitor/learn/nodejs-quick-start.md) 或[任何其他程式設計語言](../azure-monitor/app/platforms.md)安裝 Azure Monitor Application Insights SDK，啟用 [Application Insights](../azure-monitor/app/app-insights-overview.md) 的完全監視。 這允許您指定與您的應用程式和業務相關的自訂事件、計量或頁面檢視。
+- 如果您有權存取應用程式的程式碼，則透過為[.NET](../azure-monitor/app/app-insights-overview.md)、[Java](../azure-monitor/learn/quick-monitor-portal.md)、[Node.js](../azure-monitor/app/java-get-started.md) 或[任何其他程式設計語言](../azure-monitor/learn/nodejs-quick-start.md)安裝 Azure Monitor Application Insights SDK，啟用 [Application Insights](../azure-monitor/app/platforms.md) 的完全監視。 這允許您指定與您的應用程式和業務相關的自訂事件、計量或頁面檢視。
 
 
 
@@ -67,7 +66,7 @@ Azure 上的一般應用程式包含多個資源，例如 VM 和應用程式服�
 
 - 根據記錄和計量[在 Azure 監視器中建立警示](../azure-monitor/platform/alerts-overview.md)，以識別可預測的失敗狀態。 您的目標應該是讓所有的警示可採取動作，這表示它們代表實際的重大情況，並設法減少誤判。 使用[動態閾值](platform/alerts-dynamic-thresholds.md)即可自動計算計量資料的基準，而不是定義您自己的靜態閾值。 
 - 定義警示的動作，以使用最有效的方式通知您的系統管理員。 [通知的可用動作](platform/action-groups.md#create-an-action-group-by-using-the-azure-portal)包括 SMS、電子郵件、推播通知，或語音通話。
-- 使用更進階的動作透過 [webhook](platform/activity-log-alerts-webhook.md)[連接到您的 ITSM 工具](platform/itsmc-overview.md)或其他警示管理系統。
+- 使用更進階的動作透過 [webhook](platform/itsmc-overview.md)[連接到您的 ITSM 工具](platform/activity-log-alerts-webhook.md)或其他警示管理系統。
 - 修復警示中所識別的情況，以及可以使用 webhook 從警示啟動的 [Azure 自動化 runbook](../automation/automation-webhooks.md) 或 [Logic Apps](/connectors/custom-connectors/create-webhook-trigger)。 
 - 根據所收集的計量，使用[自動調整](../azure-monitor/learn/tutorial-autoscale-performance-schedule.md)來動態增加和減少計算資源。
 

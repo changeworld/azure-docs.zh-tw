@@ -1,18 +1,17 @@
 ---
 title: Azure 監視器中的記錄資料擷取時間 | Microsoft Docs
 description: 說明會影響 Azure 監視器收集記錄資料延遲度的不同因素。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: bd6590ebbd33dc5c9b65fc193679f4bf99760c3a
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 99d5594dd3ebe3750cb0a09ea803065e2aeb5ba2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894142"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666632"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Azure 監視器中的記錄資料擷取時間
 Azure 監視器是一種大規模的資料服務，服務對象為每月需傳送數 TB 資料 (且不斷成長) 的上千名客戶。 而在收集記錄資料後，資料需要多久時間方能轉為可用狀態，是經常受到詢問的問題。 本文會說明影響這種延遲的不同因素。

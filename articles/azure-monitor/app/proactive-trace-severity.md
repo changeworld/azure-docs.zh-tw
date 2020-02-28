@@ -1,18 +1,14 @@
 ---
 title: 追蹤嚴重性比率降低-Azure 應用程式深入解析
 description: 使用 Azure 應用程式 Insights 監視應用程式追蹤，以瞭解使用智慧型偵測的追蹤遙測中不尋常的模式。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 11/27/2017
-ms.openlocfilehash: b51cb66b59589c9b58d9115dfa6cefce0a20f3c0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 30bdd30ac9c49bb79a3c48bae8149ec761756dd4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432424"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671676"
 ---
 # <a name="degradation-in-trace-severity-ratio-preview"></a>追蹤嚴重性比率降低 (預覽)
 
@@ -26,7 +22,7 @@ ms.locfileid: "75432424"
 ## <a name="does-my-app-definitely-have-a-problem"></a>我的應用程式絕對有問題嗎？
 否，通知並不表示您的應用程式一定有問題。 雖然「良好」與「不良」追蹤之間的比率降低可能表示應用程式問題，這項比例的變更可能會是良性。 例如，增加可能是因為應用程式由於新流程而發出較現有流程更多個「不良」追蹤)。
 
-## <a name="how-do-i-fix-it"></a>如何修正問題？
+## <a name="how-do-i-fix-it"></a>要如何修正錯誤？
 通知包括要在診斷程序中支援的診斷資訊：
 1. **分級。** 通知會顯示受影響的作業數。 這可協助您將優先順序指派給此問題。
 2. **範圍。** 此問題是否會影響所有流量，還是只會影響某些作業？ 可以從通知取得這項資訊。

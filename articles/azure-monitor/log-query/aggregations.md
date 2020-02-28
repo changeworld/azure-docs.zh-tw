@@ -1,18 +1,17 @@
 ---
 title: Azure 監視器記錄查詢中的彙總 | Microsoft Docs
 description: 說明 Azure 監視器記錄查詢中提供實用方式來分析資料的彙總函式。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: 86b84e76b4716c1fddda23a6d52c65c0700c5663
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: d164c53e7e2be55f3cede389901a256ba388808d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900418"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670299"
 ---
 # <a name="aggregations-in-azure-monitor-log-queries"></a>Azure 監視器記錄查詢中的彙總
 
@@ -25,7 +24,7 @@ ms.locfileid: "72900418"
 
 ## <a name="counts"></a>計數
 
-### <a name="count"></a>計數
+### <a name="count"></a>count
 計算套用任何篩選之後結果集中的列數。 下列範例會傳回過去 30 分鐘內 _Perf_ 表中的總列數。 除非您指定特定欄名，否則結果會以名為 *count_* 的欄傳回：
 
 

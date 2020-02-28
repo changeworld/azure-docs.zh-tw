@@ -1,18 +1,17 @@
 ---
 title: 在 Azure 監視器中收集自訂 JSON 資料 | Microsoft Docs
 description: 您可以使用 Log Analytics Linux 代理程式將自訂 JSON 資料來源收集到 Azure 監視器中。  這些自訂資料來源可以是會傳回 JSON 的簡單指令碼，例如 curl 或 FluentD 的 300 個以上的外掛程式之一。 本文說明此資料收集所需的設定。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: 3e636fef31951e172f57c715ac7e080b35a978bd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 49eb3fa22bc9afffb9e93f3152cdc00323b76d41
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450616"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662156"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-azure-monitor"></a>在 Azure 監視器中使用 Log Analytics Linux 代理程式收集自訂 JSON 資料來源
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -29,7 +28,7 @@ ms.locfileid: "75450616"
 
 若要在 Azure 監視器中收集 JSON 資料，請將 `oms.api.` 新增至輸入外掛程式中的 FluentD 標記開頭。
 
-例如，以下是 `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/` 中的個別設定檔 `exec-json.conf`。  這會使用 FluentD 外掛程式 `exec` 每隔 30 秒執行一次 curl 命令。  此命令的輸出由 JSON 輸出外掛程式所收集。
+例如，以下是 `exec-json.conf` 中的個別設定檔 `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`。  這會使用 FluentD 外掛程式 `exec` 每隔 30 秒執行一次 curl 命令。  此命令的輸出由 JSON 輸出外掛程式所收集。
 
 ```
 <source>

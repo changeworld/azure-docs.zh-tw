@@ -1,18 +1,17 @@
 ---
 title: Azure 管理
 description: 管理 Azure 應用程式與資源的區域概觀，並提供 Azure 管理工具內容的連結。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/07/2018
-ms.openlocfilehash: 337b340df10eb406fef3148b1d8bfde66b3b8ff6
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 93180f088935531f83da785bb7a490f80909a6cd
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979841"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669195"
 ---
 # <a name="azure-management---monitoring"></a>Azure 管理 - 監視
 

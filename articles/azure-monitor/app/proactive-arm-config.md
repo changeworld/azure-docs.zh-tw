@@ -1,19 +1,17 @@
 ---
 title: 智慧偵測規則設定-Azure 應用程式深入解析
 description: 使用 Azure Resource Manager 範本來自動管理和設定 Azure Application Insights 智慧偵測規則
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: harelbr
 ms.author: harelbr
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: bc66a286bee193b377731a549129446bba431cb3
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 3c028a97c2fb554b13035026025437d5331104c2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749035"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669704"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 範本來管理 Application Insights 智慧偵測規則
 
