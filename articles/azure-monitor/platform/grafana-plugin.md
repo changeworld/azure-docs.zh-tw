@@ -1,21 +1,18 @@
 ---
 title: 使用 Grafana 監視 Azure 服務與應用程式
 description: 路由 Azure 監視器與 Application Insights 資料，以便使用 Grafana 檢視它們。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 11/06/2017
-ms.openlocfilehash: f5464710d5c7908eeec5dd917bfeff4756ff4e80
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 142e3e19c13710963d239a75bc237b63713c29cc
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552092"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672203"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>在 Grafana 中監視 Azure 服務
-您現在可以從使用 [Azure 監視器資料來源外掛程式](https://grafana.com/plugins/grafana-azure-monitor-datasource)的 [Grafana](https://grafana.com/)，監視 Azure 服務和應用程式。 外掛程式會蒐集 Azure 監視器所收集的應用程式效能資料，包括各種記錄和計量。 然後，您就可以在 Grafana 儀表板上顯示此資料。
+您現在可以從使用 [Azure 監視器資料來源外掛程式](https://grafana.com/)的 [Grafana](https://grafana.com/plugins/grafana-azure-monitor-datasource)，監視 Azure 服務和應用程式。 外掛程式會蒐集 Azure 監視器所收集的應用程式效能資料，包括各種記錄和計量。 然後，您就可以在 Grafana 儀表板上顯示此資料。
 
 使用下列步驟設定 Grafana 伺服器，並為 Azure 監視器中的計量和記錄建置儀表板。
 
@@ -94,7 +91,7 @@ ms.locfileid: "72552092"
 4. 選取已設定的 Azure 監視器資料來源。
    * 收集 Azure 監視器計量 - 在服務下拉式清單中選取 [Azure 監視器]。 這會顯示一個選取器清單，您可以在其中選取要在此圖表中監視的資源和計量。 若要從 VM 收集計量，請使用命名空間 **Microsoft.Compute/VirtualMachines**。 一旦您選取 VM 和計量後，您就可以開始在儀表板中檢視其資料。
      ![Azure 監視器的 Grafana 圖表設定](./media/grafana-plugin/grafana-graph-config-for-azure-monitor-dark.png)
-   * 收集 Azure 監視器記錄資料-在服務下拉式清單中選取 [ **Azure Log Analytics** ]。 選取您想要查詢的工作區並設定查詢文字。 您可以在此複製已有的任何記錄檔查詢，或建立一個新的。 當您輸入查詢時，IntelliSense 將顯示並建議自動完成選項。 選取視覺效果類型 **時間序列** **資料表**，然後執行查詢。
+   * 收集 Azure 監視器記錄資料-在服務下拉式清單中選取 [ **Azure Log Analytics** ]。 選取您想要查詢的工作區並設定查詢文字。 您可以在此複製已有的任何記錄檔查詢，或建立一個新的。 當您輸入查詢時，IntelliSense 將顯示並建議自動完成選項。 選取 [視覺效果類型]、[**時間序列**]**資料表**，然後執行查詢。
     
      > [!NOTE]
      >

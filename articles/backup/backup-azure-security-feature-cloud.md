@@ -3,16 +3,16 @@ title: 協助保護雲端工作負載的安全性功能
 description: 瞭解如何使用 Azure 備份中的安全性功能，讓備份更加安全。
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 20cf322dec0827c00b15a62bf4f7695fc4ed0992
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 3435b9455af3362cdce2dceb20e183a8b05a15dd
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705491"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660830"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>協助保護使用 Azure 備份之雲端工作負載的安全性功能
 
-諸如惡意程式碼、勒索軟體及入侵等安全性問題，現在愈來愈受到重視。 這些安全性問題就成本面與資料面來說，代價都十分高昂。 為了防範這類攻擊，Azure 備份現在提供安全性功能來協助保護備份資料，即使在刪除後也是如此。
+現在越來越重視安全性問題，例如惡意程式碼、勒索軟體和入侵。 這些安全性問題在成本和資料方面付出的代價很高。 為了防範這類攻擊，Azure 備份現在提供安全性功能來協助保護備份資料，即使在刪除後也是如此。
 
 其中一項功能就是虛刪除。 使用虛刪除時，即使惡意執行者刪除 VM 的備份（或不小心刪除備份資料），備份資料仍會保留14個額外的天數，讓該備份專案不會遺失資料。 在「虛刪除」狀態中，備份資料的額外14天保留期不會對客戶產生任何費用。 Azure 也會使用[儲存體服務加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)來加密待用的所有備份資料，以進一步保護您的資料。
 
@@ -133,7 +133,7 @@ AppVM1           Undelete             Completed            12/5/2019 12:47:28 PM
 
 ## <a name="disabling-soft-delete"></a>停用虛刪除
 
-預設會在新建立的保存庫上啟用虛刪除，以防止意外或惡意刪除的備份資料。  不建議停用這項功能。 如果您打算將受保護的專案移至新的保存庫，且在刪除和重新保護之前，不能等待14天（例如在測試環境中），您應該考慮停用虛刪除的唯一情況。只有備份系統管理員可以停用這項功能。 如果您停用此功能，受保護專案的所有刪除都會導致立即移除，而不會有還原功能。 在停用此功能之前，已虛刪除狀態中的備份資料將會保留在虛刪除狀態。 如果您想要立即永久刪除這些專案，則必須重新刪除並刪除它們，才能永久刪除。
+預設會在新建立的保存庫上啟用虛刪除，以防止意外或惡意刪除的備份資料。  不建議停用這項功能。 如果您打算將受保護的專案移至新的保存庫，且在刪除和重新保護之前，不能等待14天（例如在測試環境中），您應該考慮停用虛刪除的唯一情況。只有保存庫擁有者可以停用這項功能。 如果您停用此功能，所有未來的受保護專案刪除都會導致立即移除，而不會有還原功能。 在停用此功能之前，在已虛刪除狀態中的備份資料將會在14天的期間內保持為「虛刪除」狀態。 如果您想要立即永久刪除這些專案，則必須重新刪除並刪除它們，才能永久刪除。
 
 ### <a name="disabling-soft-delete-using-azure-portal"></a>使用 Azure 入口網站停用虛刪除
 
@@ -299,7 +299,7 @@ Azure 備份可讓您備份 Azure 虛擬機器，其中包含使用客戶管理�
 
 #### <a name="will-my-snapshots-follow-the-same-lifecycle-as-my-recovery-points-in-the-vault"></a>我的快照集會遵循與保存庫中的復原點相同的生命週期嗎？
 
-可以。
+是的。
 
 #### <a name="how-can-i-trigger-the-scheduled-backups-again-for-a-soft-deleted-resource"></a>如何針對虛刪除的資源，再次觸發排程備份？
 
@@ -311,7 +311,7 @@ Azure 備份可讓您備份 Azure 虛擬機器，其中包含使用客戶管理�
 
 #### <a name="can-i-delete-the-data-earlier-than-the-14-days-soft-delete-period-after-deletion"></a>刪除之後，我可以刪除14天之前的資料嗎？
 
-不會。 您不能強制刪除虛刪除的專案，它們會在14天之後自動刪除。 這項安全性功能可防止意外或惡意刪除已備份的資料。  在 VM 上執行任何其他動作之前，您應該先等待14天。  虛刪除的專案將不會收費。  如果您需要將14天內標記為要虛刪除的 Vm 重新保護至新的保存庫，請洽詢 Microsoft 支援服務。
+No。 您不能強制刪除虛刪除的專案，它們會在14天之後自動刪除。 這項安全性功能可防止意外或惡意刪除已備份的資料。  在 VM 上執行任何其他動作之前，您應該先等待14天。  虛刪除的專案將不會收費。  如果您需要將14天內標記為要虛刪除的 Vm 重新保護至新的保存庫，請洽詢 Microsoft 支援服務。
 
 #### <a name="can-soft-delete-operations-be-performed-in-powershell-or-cli"></a>可以在 PowerShell 或 CLI 中執行虛刪除作業嗎？
 
@@ -319,7 +319,7 @@ Azure 備份可讓您備份 Azure 虛擬機器，其中包含使用客戶管理�
 
 #### <a name="is-soft-delete-supported-for-other-cloud-workloads-like-sql-server-in-azure-vms-and-sap-hana-in-azure-vms"></a>是否支援其他雲端工作負載的虛刪除，例如 Azure Vm 中的 SQL Server 和 Azure Vm 中的 SAP Hana？
 
-不會。 目前只有 Azure 虛擬機器支援虛刪除。
+No。 目前只有 Azure 虛擬機器支援虛刪除。
 
 ## <a name="next-steps"></a>後續步驟
 

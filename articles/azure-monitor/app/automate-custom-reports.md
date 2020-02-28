@@ -1,19 +1,15 @@
 ---
 title: 將含有 Azure Application Insights 資料的自訂報表自動化
 description: 將含有 Azure Application Insights 資料的自訂每天/每週/每月報表自動化
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 2b23374972a071421b59bedf0eb5b9358b37d7a9
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: d91595a863901fcc420611ac644c7856e74320dd
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677619"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655118"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>將含有 Azure Application Insights 資料的自訂報表自動化
 
@@ -91,7 +87,7 @@ availabilityResults
 5. 選取 [Application Insights 排程摘要範本]。
 
      > [!NOTE]
-     > 根據預設，函式應用程式會使用運行時2.x 版來建立。 您必須以[Azure Functions runtime 1.x 版為目標](https://docs.microsoft.com/azure/azure-functions/set-runtime-version) **，才能**使用 Application Insights 已排程的摘要範本。  ![runtime 螢幕擷取畫面 ](./../../../includes/media/functions-view-update-version-portal/function-app-view-version.png)
+     > 根據預設，函式應用程式會使用運行時2.x 版來建立。 您必須以[Azure Functions runtime 1.x 版為目標](https://docs.microsoft.com/azure/azure-functions/set-runtime-version) **，才能**使用 Application Insights 已排程的摘要範本。  ![執行時間螢幕擷取畫面](./../../../includes/media/functions-view-update-version-portal/function-app-view-version.png)
 
 
 

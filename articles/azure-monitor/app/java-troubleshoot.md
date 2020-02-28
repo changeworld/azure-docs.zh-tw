@@ -1,18 +1,14 @@
 ---
 title: 疑難排解 Java Web 專案中的 Application Insights
 description: 疑難排解指南 - 使用 Application Insights 監視即時的 Java 應用程式。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 03/14/2019
-ms.openlocfilehash: aea0adc9217a7729c9bf14211cf5da422ac9e198
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 04e98938bc5dd17816ae873f122073212275a414
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432543"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657175"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Application Insights for Java 的疑難排解和問答集
 [JAVA 中 Azure 應用程式深入][java]解析的問題或問題嗎？ 以下是一些秘訣。
@@ -180,7 +176,7 @@ java -Dapplicationinsights.logger.console.level=trace -jar MyApp.jar
 Application insights 會使用 `org.apache.http`。 這會重新配置在 Application Insights 核心 Jar 內的 `com.microsoft.applicationinsights.core.dependencies.http` 命名空間底下。 這可讓 Application Insights 處理相同 `org.apache.http` 的不同版本都存在於一個核心程式碼基底中的情況。
 
 >[!NOTE]
->如果您針對應用程式中的所有命名空間啟用 DEBUG 層級的記錄功能，它將適用於所有執行中的模組，包括已重新命名為 `com.microsoft.applicationinsights.core.dependencies.http` 的 `org.apache.http`。 Application Insights 將無法針對這些呼叫套用篩選，因為正在由 Apache 程式庫發出記錄呼叫。 DEBUG 層級記錄會產生相當大量的記錄資料，因此不建議用於即時生產環境執行個體。
+>如果您針對應用程式中的所有命名空間啟用 DEBUG 層級的記錄功能，它將適用於所有執行中的模組，包括已重新命名為 `org.apache.http` 的 `com.microsoft.applicationinsights.core.dependencies.http`。 Application Insights 將無法針對這些呼叫套用篩選，因為正在由 Apache 程式庫發出記錄呼叫。 DEBUG 層級記錄會產生相當大量的記錄資料，因此不建議用於即時生產環境執行個體。
 
 
 ## <a name="next-steps"></a>後續步驟

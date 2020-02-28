@@ -1,18 +1,17 @@
 ---
 title: Azure Log Analytics 中的網路效能監視器方案 | Microsoft Docs
 description: 使用網路效能監控中的 ExpressRoute 監視功能，透過 Azure ExpressRoute 監視您分公司與 Azure 之間的端對端連線能力和效能。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 11/27/2018
-ms.openlocfilehash: 5383402816eddba4c631c240585723b7c7119cef
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 6ac610d7dcf9849b6b439741957684867b9d01aa
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898889"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660745"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute 監視
 
@@ -104,7 +103,7 @@ ms.locfileid: "72898889"
 
 ![ExpressRoute 虛擬網路連線](media/network-performance-monitor-expressroute/expressroute-vnet.png)
  
-## <a name="diagnostics"></a>診斷程式 
+## <a name="diagnostics"></a>診斷 
 
 網路效能監控可協助您診斷幾個線路連線問題。 以下列出一些您可能發現的問題。
 

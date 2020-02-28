@@ -1,19 +1,15 @@
 ---
 title: Application Insights：語言、平臺和整合 |Microsoft Docs
 description: 適用于 Application Insights 的語言、平臺和整合
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/18/2019
 ms.reviewer: olegan
-ms.openlocfilehash: 01cebc3a86808d549f1a7dc3adfd2883bc289076
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: d87b1d0aa74263f249db2030f2366b93b8c2b421
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73061440"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669823"
 ---
 # <a name="supported-languages"></a>支援的語言
 
@@ -21,13 +17,13 @@ ms.locfileid: "73061440"
 * [Java](../../azure-monitor/app/java-get-started.md)
 * [JavaScript](../../azure-monitor/app/javascript.md)
 * [Node.JS](../../azure-monitor/app/nodejs.md)
-* [Python （預覽）](../../azure-monitor/app/opencensus-python.md)
+* [Python (預覽)](../../azure-monitor/app/opencensus-python.md)
 
 ## <a name="supported-platforms-and-frameworks"></a>支援的平台和架構
 
 ### <a name="instrumentation-for-already-deployed-applications-codeless-agent-based"></a>已部署之應用程式的檢測（無程式碼，以代理程式為基礎）
 * [Azure VM 和 Azure 虛擬機器擴展集](../../azure-monitor/app/azure-vm-vmss-apps.md)
-* [](../../azure-monitor/app/azure-web-apps.md)
+* [Azure App Service](../../azure-monitor/app/azure-web-apps.md)
 * [ASP.NET - 適用於即時應用程式](../../azure-monitor/app/monitor-performance-live-website-now.md)
 * [Azure 雲端服務](../../azure-monitor/app/cloudservices.md)，包括 web 和背景工作角色
 * [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-monitoring)
@@ -38,7 +34,7 @@ ms.locfileid: "73061440"
 * [iOS](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
 * [Java EE](../../azure-monitor/app/java-get-started.md)
 * [Node.JS](https://www.npmjs.com/package/applicationinsights)
-* [Python （預覽）](../../azure-monitor/app/opencensus-python.md)
+* [Python (預覽)](../../azure-monitor/app/opencensus-python.md)
 * [通用 Windows app](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
 * [Windows 桌面應用程式、服務和背景工作角色](../../azure-monitor/app/windows-desktop.md)
 

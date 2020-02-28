@@ -1,18 +1,17 @@
 ---
 title: Azure 監視器中的目標監視解決方案 | Microsoft Docs
 description: 設定監視解決方案目標，可讓您將監視解決方案限制為一組特定的代理程式。  本文說明如何建立範圍設定，並將它套用至解決方案。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
-ms.openlocfilehash: 04b47cb6079d9213c1a20425f62286f1b2aa778b
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: dd3279db67fb45aee43cf1b0ef1bebf49433eef4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555305"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663227"
 ---
 # <a name="targeting-monitoring-solutions-in-azure-monitor-preview"></a>Azure 監視器中的目標監視解決方案 (預覽版)
 當您將監視解決方案新增至訂用帳戶時，預設會將該解決方案自動部署到與您 Log Analytics 工作區連線的所有 Windows 與 Linux 代理程式。  您可能會想要管理您的成本，並透過將解決方案限制在一組特定的代理程式，來限制針對該解決方案所收集的資料量。  本文說明如何使用**設定解決方案目標**，此功能可讓您將範圍套用至解決方案。

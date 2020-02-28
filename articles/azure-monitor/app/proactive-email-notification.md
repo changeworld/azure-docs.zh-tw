@@ -1,19 +1,17 @@
 ---
 title: 智慧型偵測通知變更-Azure 應用程式深入解析
 description: 從智慧偵測變更為預設通知收件者。 「智慧型偵測」可讓您使用 Azure 應用程式 Insights 監視追蹤遙測中不尋常模式的應用程式追蹤。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: harelbr
 ms.author: harelbr
 ms.date: 03/13/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 493deea89586347d5847895acd5eb73a866f84ac
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f73e5bbdd8585b3367e529a8fa00630042e56cac
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432443"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671778"
 ---
 # <a name="smart-detection-e-mail-notification-change"></a>智慧偵測電子郵件通知變更
 
@@ -21,13 +19,13 @@ ms.locfileid: "75432443"
 
 ## <a name="what-is-changing"></a>變更內容為何？
 
-智慧偵測電子郵件通知目前預設傳送至訂用帳戶擁有者、訂用帳戶參與者和訂用帳戶讀者角色。 這些角色中常包含並非主動參與監視的使用者，導致許多使用者收到不必要的通知。 為了改善使用體驗，即將進行變更，僅將電子郵件通知寄給[監視讀者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)和[監視參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)的預設角色。
+智慧偵測電子郵件通知目前預設傳送至訂用帳戶擁有者、訂用帳戶參與者和訂用帳戶讀者角色。 這類角色中常含有並非主動參與監視的使用者，而導致許多使用者收到不必要的通知。 為了改善使用體驗，即將進行變更，僅將電子郵件通知寄給[監視讀者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)和[監視參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)的預設角色。
 
 ## <a name="scope-of-this-change"></a>變更範圍
 
-本次變更會影響所有智慧偵測規則，但不包括下列項目：
+本次變更會影響所有的智慧偵測規則，但不包括下列項目：
 
-* 標記為預覽的智慧偵測規則。 這類智慧偵測規則目前不支援電子郵件通知功能。
+* 標示為預覽版的智慧偵測規則。 這類智慧偵測規則目前不支援電子郵件通知功能。
 
 * 失敗異常規則。 此規則一旦從傳統警示功能移轉至整合警示平台，就會開始以新的預設角色為目標 (如需詳細資訊，請至[此處](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement)。)
 

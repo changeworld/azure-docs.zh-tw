@@ -3,18 +3,17 @@ title: 在 Azure 監視器中監視使用量和估計成本
 description: 使用 Azure 監視器的使用量和估計成本頁面的程序概觀
 author: dalekoetke
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
-ms.openlocfilehash: 3fb51a9dc3f607d89934f6962588195e0f5c83f5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 22c7243cd966f458610c2abc67ed5540b37357b8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715781"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658810"
 ---
 # <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>在 Azure 監視器中監視使用量和估計成本
 

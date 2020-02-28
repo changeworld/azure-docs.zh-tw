@@ -1,18 +1,17 @@
 ---
 title: 將來自 Azure 監視器的資料視覺化 | Microsoft Docs
 description: 概要介紹用以將儲存在 Azure 監視器中的計量和記錄資料視覺化的可用方法。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/24/2018
-ms.openlocfilehash: c350cb1f8e7343f6d8e7a416aa0bba71388eaa86
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 7bace6ff6eb7dd1c02e4907e338fc0be9d66471c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597840"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657804"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>將來自 Azure 監視器的資料視覺化
 本文會概要介紹用以將儲存在 Azure 監視器中的記錄和計量資料視覺化的可用方法。

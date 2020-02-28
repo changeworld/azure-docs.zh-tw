@@ -1,19 +1,17 @@
 ---
 title: Azure 應用程式 Insights-Azure Functions 支援的功能
 description: 支援 Azure Functions 的 Application Insights 功能
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: reference
 author: TimothyMothra
 ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 807dde08d6ae88054524cb9e397d36db41324482
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: cf0c97fd65f9966bf42fa22e2c8f92263952cb7a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484565"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655645"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>適用於 Azure Functions 的 Application Insights 支援的功能
 

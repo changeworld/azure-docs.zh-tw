@@ -1,18 +1,14 @@
 ---
 title: 使用 Microsoft Flow 自動化 Azure Application Insights 程序
 description: 了解如何利用 Application Insights Connector，使用 Microsoft Flow 來快速自動執行可重複的程序。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 08/29/2019
-ms.openlocfilehash: 7d9c966051c2756d7936fa079a0aac68e694425d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7566ae87f92707180b09d50eb6e5eeccedae85b9
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407550"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655086"
 ---
 # <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>使用適用於 Microsoft Flow 的連接器自動執行 Azure Application Insights 程序
 
@@ -41,7 +37,7 @@ ms.locfileid: "75407550"
 
     ![以輸入頻率和間隔設定排程週期](./media/automate-with-flow/2-schedule.png)
 
-1. 按一下頁面底部的 [新增]。
+1. 按一下 [建立]。
 
 ### <a name="step-3-add-an-application-insights-action"></a>步驟 3：新增 Application Insights 動作
 
@@ -66,7 +62,7 @@ ms.locfileid: "75407550"
 
 如果 [連接] 方塊不會立即顯示，而是直接進入查詢，請按一下方塊右上方的省略號。 然後選取 [我的連線] 或使用現有的連接。
 
-按一下頁面底部的 [新增]。
+按一下 [建立]。
 
 ### <a name="step-5-specify-the-analytics-query-and-chart-type"></a>步驟 5：指定 Analytics 查詢和圖表類型
 此範例查詢會選取最後一天內的失敗要求，並將它們與作業發生的例外狀況相互關聯。 Analytics 會根據 operation_Id 識別碼使其相互關聯。 查詢接著會使用自動叢集演算法將結果分段。
@@ -117,9 +113,9 @@ ms.locfileid: "75407550"
 
 ### <a name="step-7-save-and-test-your-flow"></a>步驟 7：儲存並測試流程
 
-按一下 [檔案]。
+Haga clic en **Guardar**.
 
-您可以等候觸發程式執行此動作, 或按一下![頂端的 燒杯測試圖示](./media/automate-with-flow/testicon.png)測試。
+您可以等候觸發程式執行此動作，或按一下頂端的 [![燒杯測試 圖示](./media/automate-with-flow/testicon.png)**測試**]。
 
 選取 [**測試**] 之後：
 

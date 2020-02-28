@@ -1,18 +1,17 @@
 ---
 title: OMS 入口網站移至 Azure | Microsoft 文件
 description: OMS 入口網站目前終止服務，連同其所有功能將移至 Azure 入口網站。 本文將提供此次轉換的詳細資料。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 170973d15b5f49021a0507bdd2fd6a2632777d48
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 680cd9b44cc447f9bdea38cb9d04fc661fba9c79
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932157"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659249"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS 入口網站移至 Azure
 
@@ -33,7 +32,7 @@ Azure 入口網站為所有 Azure 服務的中樞，提供豐富的管理體驗�
 - [OMS 行動裝置應用程式](#oms-mobile-app)即將淘汰。 
 - 將由透過流量分析解決方案所提供的增強功能，[取代 NSG 解決方案](#azure-network-security-group-analytics)。
 - System Center Operations Manager 與 Log Analytics 的新連線需要[更新的管理組件](#system-center-operations-manager)。
-- 如需[更新管理](../../automation/automation-update-management.md)變更的詳細資訊，請參閱[將您的 OMS 更新部署移轉至 Azure](../../automation/migrate-oms-update-deployments.md)。
+- 如需[更新管理](../../automation/migrate-oms-update-deployments.md)變更的詳細資訊，請參閱[將您的 OMS 更新部署移轉至 Azure](../../automation/automation-update-management.md)。
 
 
 ## <a name="what-should-i-do-now"></a>我現在該怎麼辦？
@@ -59,9 +58,9 @@ Azure 入口網站存取管理功能，比在 OMS 入口網站中的存取管理
 
 | OMS 入口網站權限 | Azure 角色 |
 |:---|:---|
-| ReadOnly | Log Analytics 讀者 |
-| 參與者 | Log Analytics 參與者 |
-| 管理員 | 擁有者 | 
+| 唯讀 | Log Analytics 讀者 |
+| Contributor | Log Analytics 參與者 |
+| 系統管理員 | 擁有者 | 
  
 
 ## <a name="new-workspaces"></a>新工作區

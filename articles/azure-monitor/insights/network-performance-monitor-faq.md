@@ -1,18 +1,17 @@
 ---
 title: 常見問題集：Azure 中的網路效能監控解決方案 | Microsoft Docs
 description: 本文會針對 Azure 中的網路效能監控，提供常見問題。 網路效能監控（NPM）可協助您近乎即時地監視網路的效能，並偵測並找出網路效能瓶頸。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 7ee593a8db020134e13ea853f17f097d716f7814
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 0ef50dfd4d9c6eb0066e54b76167b9934fbb9cf0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74538193"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654428"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>網路效能監控解決方案常見問題集
 
@@ -138,7 +137,7 @@ Microsoft 對等互連
 NPM 只會識別來源 IP 和目的地 IP 之間的基礎網路躍點 (交換器、路由器、伺服器等) 的 IP 和主機名稱， 也也會識別這些已識別躍點之間的延遲， 但不會個別監控這些基礎躍點。
 
 ### <a name="can-npm-be-used-to-monitor-network-connectivity-between-azure-and-aws"></a>NPM 是否可用來監控 Azure 與 AWS 之間的網路連線？
-可以。 如需詳細資料，請參閱[使用 NPM 監控 Azure、AWS 和內部部署網路](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)一文 (英文)。
+是的。 如需詳細資料，請參閱[使用 NPM 監控 Azure、AWS 和內部部署網路](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)一文 (英文)。
 
 ### <a name="is-the-expressroute-bandwidth-usage-incoming-or-outgoing"></a>ExpressRoute 頻寬的用量是傳入還是傳出？
 頻寬用量是傳入和傳出頻寬的總和， 以位元/秒表示。
@@ -210,7 +209,7 @@ HopLatencyValues 是來源到端點。
 如果主機防火牆或中繼防火牆 (網路防火牆或 Azure NSG) 透過 NPM 監視的連接埠封鎖來源代理程式與目的地之間的通訊 (除非客戶改變連接埠，否則預設情況下，連接埠為 8084)，則會發生此情況。
 
 * 若要驗證主機防火牆是否未封鎖所需連接埠上的通訊，請至此查看來源節點和目的地節點的健康情況狀態：[網路效能監控] -> [設定] -> [節點]。 
-  如果節點狀況不良，請查看說明並採取修正措施。 如果節點狀況良好，請跳至步驟 b。 。
+  如果節點狀況不良，請查看說明並採取修正措施。 如果節點狀況良好，請跳至步驟 b。 如下。
 * 若要驗證中繼網路防火牆或 Azure NSG 是否未封鎖所需連接埠上的通訊，請依照以下說明使用第三方 PsPing 公用程式：
   * 可以在[這裡](https://technet.microsoft.com/sysinternals/psping.aspx)下載 psping 公用程式 
   * 從來源節點執行下列命令。
@@ -258,7 +257,7 @@ NPM 現在會在使用者有權存取的所有訂用帳戶中，探索 ExpressRo
 ### <a name="in-the-service-connectivity-monitor-capability-the-service-response-time-is-na-but-network-loss-as-well-as-latency-are-valid"></a>在服務連線能力監視功能中，服務回應時間為 NA，但網路遺失以及延遲皆有效
 如果目標服務不是 Web 應用程式，但測試設定為 Web 測試，則會發生此情況。 編輯測試組態，然後選擇 [網路] (而不是 [Web]) 作為測試類型。
 
-## <a name="miscellaneous"></a>其他事項
+## <a name="miscellaneous"></a>其他
 
 ### <a name="is-there-a-performance-impact-on-the-node-being-used-for-monitoring"></a>是否會影響到用於監視的節點的效能？
 NPM 流程設定為當其所使用的主機 CPU 資源用量超過 5%，即會停止。 這是為了確保可以繼續將節點用於其一般工作負載，而不會影響效能。

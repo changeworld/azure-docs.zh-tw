@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: e3e8476d09541518d964bfaff4dabad47755eeb9
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: c3f5fb2a387db6e672290fcf03d46c476b6211b6
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77189657"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657098"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>資料驅動樣式表達式（Web SDK）
 
@@ -91,6 +91,8 @@ Azure 地圖服務 Web SDK 支援許多類型的運算式。 運算式可以單�
 | `['has', string, object]` | boolean | 判斷物件的屬性是否具有指定的屬性。 |
 | `['id']` | 值 | 取得功能的識別碼（如果有的話）。 |
 | `['length', string | array]` | 數字 | 取得字串或陣列的長度。 |
+| `['in', boolean | string | number, array]` | boolean | 判斷專案是否存在於陣列中 |
+| `['in', substring, string]` | boolean | 判斷字串中是否有子字串 |
 
 **範例**
 

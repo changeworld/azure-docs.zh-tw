@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
-ms.openlocfilehash: 47e38d79e8aa4656b8164c94b4ef439bf431e01d
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: af5ab05cb772909cd36e2e6bfe1c100a5b83841c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049657"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660031"
 ---
 # <a name="linux-support"></a>Linux 支援
 
@@ -21,6 +21,9 @@ ms.locfileid: "77049657"
 ## <a name="what-is-the-linux-sdk"></a>什麼是 Linux SDK？
 
 您可以使用 SDK Api 來抓取資源摘要、連接到桌面或遠端應用程式會話，並使用我們的第一方用戶端支援的許多重新導向。
+
+> [!NOTE]
+> SDK 目前正在開發中。 我們將會更新本檔，其中包含可用的 SDK 存取指示。
 
 ### <a name="supported-linux-distributions"></a>支援的 Linux 發行版本
 
@@ -54,8 +57,6 @@ SDK 也支援多個監視器顯示設定，只要您為會話選取的監視器�
 2. 測試可用的第一方用戶端，以熟悉 Windows 虛擬桌面的使用者體驗。
 
 ## <a name="next-steps"></a>後續步驟
-
-SDK 目前正在開發中。 我們將會更新本檔，其中包含可用的 SDK 存取指示。
 
 查看下列用戶端的檔：
 

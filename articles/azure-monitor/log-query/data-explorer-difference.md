@@ -1,18 +1,17 @@
 ---
 title: Azure 監視器記錄查詢語言差異 | Microsoft Docs
 description: Azure 監視器所使用的 Kusto 查詢語言參考資訊。 包含 Azure 監視器專用的其他元素和 Azure 監視器記錄查詢中不支援的元素。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/13/2019
-ms.openlocfilehash: 16a221c0530d65e11589ac272a8e032de0cd3d2b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b4601968a318388086a60ef98e4359ae01f652ed
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933108"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662097"
 ---
 # <a name="azure-monitor-log-query-language-differences"></a>Azure 監視器記錄查詢語言差異
 

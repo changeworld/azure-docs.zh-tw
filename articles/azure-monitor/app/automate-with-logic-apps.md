@@ -1,18 +1,14 @@
 ---
 title: 使用 Logic Apps 自動化 Azure 應用程式 Insights 進程
 description: 了解如何透過將 Application Insights Connector 新增到您的邏輯應用程式，快速自動執行重複程序。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 03/11/2019
-ms.openlocfilehash: 95a3577d352b6bc4b56d36b5b79658571a6be1ff
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9a7f411ca5ec47e3f25d8120d0388fb030b00c72
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407525"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654999"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>使用 Logic Apps 自動執行 Application Insights 程序
 
@@ -119,7 +115,7 @@ ms.locfileid: "75407525"
       ![Office 365 電子郵件設定畫面](./media/automate-with-logic-apps/12emailattachment.png)
 
 ### <a name="step-7-save-and-test-your-logic-app"></a>步驟 7：儲存並測試邏輯應用程式
-* 按一下 [確定] 儲存變更。
+* 按一下 [儲存] 以儲存您的變更。
 
 您可以等待觸發程式執行邏輯應用程式，也可以選取 [執行] 來立即執行邏輯應用程式。
 

@@ -5,24 +5,23 @@ services: azure-monitor
 documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
-ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 368da2baaea1be41331d77f4dae1bdd9567b8cc5
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: d57910ae31d4db9be17b3dc46b5920a925ab4fcf
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872888"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658366"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Azure 監視器活頁簿資料來源
 
 活頁簿與大量資料來源相容。 本文將逐步引導您瞭解目前可用於 Azure 監視器活頁簿的資料來源。
 
-## <a name="logs"></a>記錄
+## <a name="logs"></a>記錄檔
 
 活頁簿允許從下列來源查詢記錄：
 
@@ -35,7 +34,7 @@ ms.locfileid: "74872888"
 
 活頁簿作者可以輕鬆地跨多個資源查詢，建立真正統一的豐富報告體驗。
 
-## <a name="metrics"></a>計量
+## <a name="metrics"></a>度量
 
 Azure 資源會發出可透過活頁簿存取的[計量](data-platform-metrics.md)。 您可以透過特殊控制項存取活頁簿中的計量，讓您指定目標資源、所需的計量和匯總。 然後，您可以在圖表或方格中繪製這項資料。
 
@@ -43,7 +42,7 @@ Azure 資源會發出可透過活頁簿存取的[計量](data-platform-metrics.m
 
 ![活頁簿計量介面的螢幕擷取畫面](./media/workbooks-overview/metrics.png)
 
-## <a name="azure-resource-graph"></a>Azure 資源圖表 
+## <a name="azure-resource-graph"></a>Azure Resource Graph 
 
 活頁簿支援使用 Azure Resource Graph （ARG）來查詢資源及其中繼資料。 此功能主要是用來建立報表的自訂查詢範圍。 資源範圍是透過 ARG 支援的 KQL 子集來表示–這通常足以應付一般使用案例。
 

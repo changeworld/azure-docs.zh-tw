@@ -1,18 +1,17 @@
 ---
 title: 如何從適用於 VM 的 Azure 監視器 (預覽) 查詢記錄 | Microsoft Docs
 description: 適用於 VM 的 Azure 監視器解決方案會將計量和記錄資料收集到，而本文會描述記錄並包含範例查詢。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/19/2019
-ms.openlocfilehash: 690c7ba04cf849d973295a6ec27eaa38f9b807c3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e679345669d0954008e46f48d986930038a84c10
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75399327"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670707"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>如何從適用於 VM 的 Azure 監視器 (預覽) 查詢記錄
 
@@ -48,11 +47,11 @@ ms.locfileid: "75399327"
 
 為了管理成本和複雜度，連線記錄不代表個別的實體網路連線。 將多個實體網路連線群組為一個邏輯連線，其接著會反映於各自的資料表中。  這表示，*VMConnection* 資料表中的記錄代表一個邏輯群組，而非觀測到的個別實體連線。 在指定的一分鐘時間間隔內，共用下列屬性相同值的實體網路連線會彙總為 *VMConnection* 中的單一邏輯記錄。 
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--|:--|
 |方向 |連線的方向，值為 *inbound* 或 *outbound* |
-|電腦 |電腦 FQDN |
-|流程 |處理序或處理序群組的身分識別，會起始/接受連線 |
+|Machine |電腦 FQDN |
+|處理程序 |處理序或處理序群組的身分識別，會起始/接受連線 |
 |SourceIp |來源的 IP 位址 |
 |DestinationIp |目的地的 IP 位址 |
 |DestinationPort |目的地的連接埠號碼 |
@@ -60,18 +59,18 @@ ms.locfileid: "75399327"
 
 為了說明群組的影響，會在記錄的下列屬性中提供群組實體連線數目的相關資訊：
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--|:--|
 |LinksEstablished |已在報告時間範圍內建立的實體網路連線數目 |
 |LinksTerminated |已在報告時間範圍內終止的實體網路連線數目 |
 |LinksFailed |在報告時間範圍內失敗的實體網路連線數目。 此資訊目前僅適用於輸出連線。 |
 |LinksLive |已在報告時間範圍結束時開啟的實體網路連線數目|
 
-#### <a name="metrics"></a>計量
+#### <a name="metrics"></a>度量
 
 除了連線計數計量，在指定邏輯連線或網路連接埠上傳送與接收的資料量相關資訊也會包含於記錄的下列屬性中：
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--|:--|
 |BytesSent |已在報告時間範圍內傳送的位元組總數 |
 |BytesReceived |已在報告時間範圍內接收的位元組總數 |
@@ -99,7 +98,7 @@ ms.locfileid: "75399327"
 
 *VMConnection* 也會在記錄的下列屬性中，包含每個連線記錄遠端的地理位置資訊： 
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--|:--|
 |RemoteCountry |主控 RemoteIp 的國家/地區名稱。  例如，*United States* |
 |RemoteLatitude |地理位置緯度。 例如，*47.68* |
@@ -109,14 +108,14 @@ ms.locfileid: "75399327"
 
 *VMConnection* 資料表中的每個 RemoteIp 屬性均會根據一組具有已知惡意活動的 IP 進行檢查。 如果 RemoteIp 被識別為惡意的，將在記錄的下列屬性中填入下列屬性 (如果 IP 被視為不是惡意的，則它們是空的)：
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--|:--|
 |MaliciousIP |RemoteIp 位址 |
 |IndicatorThreadType |偵測到的威脅指標是下列值之一：*殭屍網路*、*C2*、*CryptoMining*、*Darknet*、*DDos*、*MaliciousUrl*、*惡意程式碼*、*網路釣魚*、*Proxy*、*PUA*、*關注清單*。   |
-|說明 |觀察到的威脅的說明。 |
+|描述 |觀察到的威脅的說明。 |
 |TLPLevel |號誌燈通訊協定 (TLP) 層級是已定義的值 (*白色*、*綠色*、*琥珀色*、*紅色*) 之一。 |
-|信賴度 |值為 *0 – 100*。 |
-|嚴重性 |值為 *0 – 5*，其中 *5* 為最嚴重，*0* 為根本不嚴重。 預設值為 *3*。  |
+|Confidence |值為 *0 – 100*。 |
+|Severity |值為 *0 – 5*，其中 *5* 為最嚴重，*0* 為根本不嚴重。 預設值為 *3*。  |
 |FirstReportedDateTime |提供者第一次回報指標。 |
 |LastReportedDateTime |Interflow 最後一次看到指標。 |
 |IsActive |使用 *True* 或 *False* 值表示指標停用。 |
@@ -129,16 +128,16 @@ ms.locfileid: "75399327"
 
 VMBoundPort 中的每筆記錄都是由下欄欄位所識別： 
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--|:--|
-|流程 | 與埠相關聯的進程（或進程群組）的身分識別。|
+|處理程序 | 與埠相關聯的進程（或進程群組）的身分識別。|
 |Ip | 埠 IP 位址（可以是萬用字元 IP， *0.0.0.0*） |
 |Port |埠號碼 |
 |通訊協定 | 通訊協定。  範例： *tcp*或*udp* （目前僅支援*tcp* ）。|
  
 識別埠衍生自上述五個欄位，並儲存在 PortId 屬性中。 這個屬性可用來快速尋找特定埠在一段時間內的記錄。 
 
-#### <a name="metrics"></a>計量 
+#### <a name="metrics"></a>度量 
 
 埠記錄包含代表與它們相關聯之連線的計量。 目前會報告下列計量（每個度量的詳細資料會在上一節中說明）： 
 
@@ -157,19 +156,19 @@ VMBoundPort 中的每筆記錄都是由下欄欄位所識別：
 
 類型為*VMComputer*的記錄具有具有 Dependency 代理程式之伺服器的清查資料。 這些記錄具有下表中的屬性：
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--|:--|
 |TenantId | 工作區的唯一識別碼 |
 |SourceSystem | *深入解析* | 
 |TimeGenerated | 記錄的時間戳記（UTC） |
 |電腦 | 電腦 FQDN | 
 |AgentId | Log Analytics 代理程式的唯一識別碼 |
-|電腦 | ServiceMap 所公開電腦的 Azure Resource Manager 資源名稱。 其格式為*m-{guid}* ，其中*guid*與 AgentId 的 guid 相同。 | 
+|Machine | ServiceMap 所公開電腦的 Azure Resource Manager 資源名稱。 其格式為*m-{guid}* ，其中*guid*與 AgentId 的 guid 相同。 | 
 |DisplayName | 顯示名稱 | 
 |FullDisplayName | 完整顯示名稱 | 
 |HostName | 不含功能變數名稱的電腦名稱稱 |
 |BootTime | 電腦開機時間（UTC） |
-|時區 | 標準化的時區 |
+|TimeZone | 標準化的時區 |
 |VirtualizationState | *虛擬*、程式*管理*、*實體* |
 |Ipv4Addresses | IPv4 位址的陣列 | 
 |Ipv4SubnetMasks | IPv4 子網路遮罩的陣列（順序與 Ipv4Addresses 相同）。 |
@@ -219,22 +218,22 @@ VMBoundPort 中的每筆記錄都是由下欄欄位所識別：
 
 類型為*VMProcess*的記錄具有相依性代理程式之伺服器上 TCP 連線處理的清查資料。 這些記錄具有下表中的屬性：
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--|:--|
 |TenantId | 工作區的唯一識別碼 |
 |SourceSystem | *深入解析* | 
 |TimeGenerated | 記錄的時間戳記（UTC） |
 |電腦 | 電腦 FQDN | 
 |AgentId | Log Analytics 代理程式的唯一識別碼 |
-|電腦 | ServiceMap 所公開電腦的 Azure Resource Manager 資源名稱。 其格式為*m-{guid}* ，其中*guid*與 AgentId 的 guid 相同。 | 
-|流程 | 服務對應進程的唯一識別碼。 其格式為*p-{GUID}* 。 
+|Machine | ServiceMap 所公開電腦的 Azure Resource Manager 資源名稱。 其格式為*m-{guid}* ，其中*guid*與 AgentId 的 guid 相同。 | 
+|處理程序 | 服務對應進程的唯一識別碼。 其格式為*p-{GUID}* 。 
 |ExecutableName | 處理序可執行檔的名稱 | 
 |DisplayName | 進程顯示名稱 |
 |角色 | 進程角色： *web*伺服器、 *appServer*、 *databaseServer*、 *ldapServer*、 *smbServer* |
 |群組 | 進程組名。 相同群組中的進程會以邏輯方式相互關聯，例如，屬於相同產品或系統元件的一部分。 |
 |StartTime | 處理序集區的開始時間 |
 |FirstPid | 處理序集區中的第一個 PID |
-|說明 | 處理序的描述 |
+|描述 | 處理序的描述 |
 |CompanyName | 公司的名稱 |
 |InternalName | 內部名稱 |
 |ProductName | 產品的名稱 |

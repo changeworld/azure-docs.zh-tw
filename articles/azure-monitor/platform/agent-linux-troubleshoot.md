@@ -1,18 +1,17 @@
 ---
 title: 針對 Azure Log Analytics Linux 代理程式 進行疑難排解 | Microsoft Docs
 description: 描述 Azure 監視器中適用于 Linux 的 Log Analytics 代理程式最常見問題的徵兆、原因和解決方式。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: b7036b305b4b1041fced3be68024be29d49a4990
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 24aa3462aef4f719e93d17389ff342084f6c7864
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086861"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668752"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>如何針對 Log Analytics Linux 代理程式的問題進行疑難排解 
 
@@ -28,7 +27,7 @@ ms.locfileid: "77086861"
 
 ## <a name="important-log-locations-and-log-collector-tool"></a>重要記錄位置和記錄收集器工具
 
- 檔案 | Path
+ 檔案 | 路徑
  ---- | -----
  Log Analytics Linux 代理程式記錄檔 | `/var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`
  Log Analytics 代理程式組態記錄檔 | `/var/opt/microsoft/omsconfig/omsconfig.log`
@@ -39,7 +38,7 @@ ms.locfileid: "77086861"
 
  類別 | 檔案位置
  ----- | -----
- syslog | `/etc/syslog-ng/syslog-ng.conf`、`/etc/rsyslog.conf` 或 `/etc/rsyslog.d/95-omsagent.conf`
+ Syslog | `/etc/syslog-ng/syslog-ng.conf`、`/etc/rsyslog.conf` 或 `/etc/rsyslog.d/95-omsagent.conf`
  效能、Nagios、Zabbix、Log Analytics 輸出和一般代理程式 | `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`
  其他組態 | `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/*.conf`
 
@@ -49,7 +48,7 @@ ms.locfileid: "77086861"
 
 ## <a name="installation-error-codes"></a>安裝錯誤碼
 
-| 錯誤碼 | 意義 |
+| 錯誤 碼 | 意義 |
 | --- | --- |
 | NOT_DEFINED | 未安裝必要的相依性，所以不會安裝 auoms auditd 外掛程式 | auoms 安裝失敗，安裝套件 auditd。 |
 | 2 | 提供給殼層組合的選項無效。 請執行 `sudo sh ./omsagent-*.universal*.sh --help` 以了解使用方式 |
@@ -73,7 +72,7 @@ ms.locfileid: "77086861"
 
 ## <a name="onboarding-error-codes"></a>上架錯誤碼
 
-| 錯誤碼 | 意義 |
+| 錯誤 碼 | 意義 |
 | --- | --- |
 | 2 | 提供給 omsadmin 指令碼的選項無效。 請執行 `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` 以了解使用方式。 |
 | 3 | 提供給 omsadmin 指令碼的組態無效。 請執行 `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` 以了解使用方式。 |

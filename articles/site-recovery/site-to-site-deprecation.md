@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/25/2020
 ms.author: rajanaki
-ms.openlocfilehash: 68d975a1b8bb8d47011bb292d3cf897956b31712
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 208177d10e9002fafe2495710da229541a11a43e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623607"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661665"
 ---
 # <a name="deprecation-of-disaster-recovery-between-customer-managed-sites-with-vmm-using-azure-site-recovery"></a>使用 Azure Site Recovery 在客戶管理的網站（與 VMM）之間淘汰嚴重損壞修復
 
@@ -36,10 +36,8 @@ ms.locfileid: "77623607"
 
 以下是客戶可以選擇的替代方案，以確保在案例淘汰之後，其 DR 策略不會受到影響。 
 
-- 選項1（建議）：選擇[開始使用 Azure 做為 hyper-v 主機上 vm 的 DR 目標](hyper-v-azure-tutorial.md)。
+- 選項1（建議）：選擇[開始使用 Azure 做為 DR 目標](hyper-v-vmm-azure-tutorial.md)。
 
-    > [!IMPORTANT]
-    > 請注意，您的內部部署環境仍然可以有 SCVMMM，但您會將僅限 Hyper-v 主機的參考設定為 ASR。
 
 - 選項2：選擇使用基礎[Hyper-v 複本解決方案](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/set-up-hyper-v-replica)繼續進行站對站複寫，但是您將無法使用 Azure 入口網站中的 Azure Site Recovery 來管理 DR 設定。 
 
@@ -50,15 +48,11 @@ ms.locfileid: "77623607"
 
 1. [停用所有與 VMMs 相關聯之虛擬機器的保護](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-hyper-v-virtual-machine-replicating-to-secondary-vmm-server-using-the-system-center-vmm-to-vmm-scenario)。 使用 [**停**用複寫] 和 [移除] 選項，或執行所述的腳本，以確保會清除內部部署的複寫設定。 
 
-2. [取消註冊所有 VMM 伺服器](site-recovery-manage-registration-and-protection.md#unregister-a-vmm-server)
+2. 從站對站複寫設定[取消註冊所有的 VMM 伺服器](site-recovery-manage-registration-and-protection.md#unregister-a-vmm-server)。
 
 3. [準備 Azure 資源](tutorial-prepare-azure-for-hyperv.md)以啟用 vm 的複寫。
 4. [準備內部部署 Hyper-v 伺服器](hyper-v-prepare-on-premises-tutorial.md)
-
-> [!IMPORTANT]
-> 請注意，您不需要執行 [準備 VMM] 底下的步驟。
-
-5. [設定 Vm 的複寫](hyper-v-azure-tutorial.md)
+5. [在 VMM 雲端中設定 Vm 的複寫](hyper-v-vmm-azure-tutorial.md)
 6. 選擇性但建議使用：[執行 DR 演練](tutorial-dr-drill-azure.md)
 
 如果您選擇使用 [Hyper-v 複本] 的選項2，請執行下列步驟：

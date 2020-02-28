@@ -3,16 +3,15 @@ title: 針對活頁簿轉換選項 Azure 監視器視圖設計工具
 description: ''
 author: austonli
 ms.author: aul
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: f04ebc1a4a53825709479ca3f1dc7ce1245fc67f
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 7bfa831332451718c0c9c05023b90104d2b8b02b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77171549"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658705"
 ---
 # <a name="azure-monitor-view-designer-to-workbooks-conversion-options"></a>針對活頁簿轉換選項 Azure 監視器視圖設計工具
 「[視圖設計](view-designer.md)工具」是 Azure 監視器的功能，可讓您建立自訂的視圖，以協助您將 Log Analytics 工作區中的資料視覺化，其中包含圖表、清單和時間軸。 它們會被淘汰，並取代為提供額外功能的活頁簿。 本文會比較兩個和選項之間的基本概念，以便將 views 轉換成活頁簿。

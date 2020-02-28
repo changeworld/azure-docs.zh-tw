@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 4a0593ccd6bdf37520e73ba8ed421ec4b10ea52c
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 89772bea818a0ebb57135990b3a04fcb559e2716
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623296"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664927"
 ---
 # <a name="streaming-ingestion-preview"></a>串流內嵌（預覽）
 
@@ -20,7 +20,7 @@ ms.locfileid: "77623296"
 
 當資料量成長到每個資料表每秒 1 MB 以上時，請使用傳統（大量）內嵌，而不是串流內嵌。 閱讀[資料內嵌總覽](/azure/data-explorer/ingest-data-overview)，以深入瞭解內嵌的各種方法。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/)。
 * 登入[WEB UI](https://dataexplorer.azure.com/)。
@@ -76,7 +76,7 @@ ms.locfileid: "77623296"
 * 每個內嵌要求的資料大小限制為 4 MB。
 * 架構更新（例如建立和修改資料表和內嵌對應）最多可能需要5分鐘的時間來處理串流內嵌服務。
 * 在叢集上啟用串流內嵌，即使資料不是透過串流內嵌，也會使用叢集機器的部分本機 SSD 磁片來串流內嵌資料，並減少用於熱快取的儲存體。
-* 無法在串流內嵌資料上設定[範圍標記](/azure/kusto/management/extents-overview.md#extent-tagging)。
+* 無法在串流內嵌資料上設定[範圍標記](/azure/kusto/management/extents-overview#extent-tagging)。
 
 串流內嵌不支援下列功能：
 * [資料庫資料指標](/azure/kusto/management/databasecursor)。

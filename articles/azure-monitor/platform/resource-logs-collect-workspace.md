@@ -3,17 +3,16 @@ title: 在 Log Analytics 工作區中收集 Azure 資源記錄
 description: 瞭解如何將 Azure 資源記錄串流至 Azure 監視器中的 Log Analytics 工作區。
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: b0b8757590876669e00e81378411c010514e3036
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 36bd464624118b7671a3879bcc1d34114bba9ce3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750375"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658994"
 ---
 # <a name="collect-azure-platform-logs-in-log-analytics-workspace-in-azure-monitor"></a>在 Azure 監視器的 Log Analytics 工作區中收集 Azure 平臺記錄
 Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記錄和資源記錄，可提供 azure 資源的詳細診斷和審核資訊，以及它們所依賴的 azure 平臺。 本文說明如何在 Log Analytics 工作區中收集資源記錄，讓您可以使用功能強大的記錄查詢在 Azure 監視器記錄中收集的其他監視資料進行分析，也可以利用警示和之類的其他 Azure 監視器功能項. 
@@ -58,7 +57,7 @@ AzureDiagnostics 資料表看起來會像這樣：
 | ResourceProvider    | 類別     | A  | B  | C  | D  | E  | F  | G  | H  | I  |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
 | Service1 | AuditLogs    | x1 | y1 | z1 |    |    |    |    |    |    |
-| Service1 | ErrorLogs    |    |    |    | q1 | w1 | e1 |    |    |    |
+| Service1 | ErrorLogs    |    |    |    | 起 | w1 | e1 |    |    |    |
 | Service2 | AuditLogs    |    |    |    |    |    |    | j1 | k1 | l1 |
 | Service1 | ErrorLogs    |    |    |    | q2 | w2 | e2 |    |    |    |
 | Service2 | AuditLogs    |    |    |    |    |    |    | j3 接 | k3 | 級 |
@@ -82,7 +81,7 @@ AzureDiagnostics 資料表看起來會像這樣：
 
     | 資源提供者 | 類別 | D | E | F |
     | -- | -- | -- | -- | -- | 
-    | Service1 | ErrorLogs |  q1 | w1 | e1 |
+    | Service1 | ErrorLogs |  起 | w1 | e1 |
     | Service1 | ErrorLogs |  q2 | w2 | e2 |
     | ... |
 
@@ -90,8 +89,8 @@ AzureDiagnostics 資料表看起來會像這樣：
 
     | 資源提供者 | 類別 | G | H | I |
     | -- | -- | -- | -- | -- |
-    | 服務 2 | AuditLogs | j1 | k1 | l1|
-    | 服務 2 | AuditLogs | j3 接 | k3 | 級|
+    | Service2 | AuditLogs | j1 | k1 | l1|
+    | Service2 | AuditLogs | j3 接 | k3 | 級|
     | ... |
 
 

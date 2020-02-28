@@ -1,18 +1,17 @@
 ---
 title: Azure 監視器中的深入剖析總覽 |Microsoft Docs
 description: 深入解析會針對特定應用程式和服務，在 Azure 監視器中提供自訂的監視體驗。 本文提供每個目前可用的深入解析的簡短描述。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/22/2019
-ms.openlocfilehash: d1b53267daa2d47baf9976727bbaf3fa56172432
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 15ea7698c9e90fa8b0dfa20f71b552a2b0e9c7d2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832102"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657243"
 ---
 # <a name="overview-of-insights-in-azure-monitor"></a>Azure 監視器中的見解總覽
 深入解析針對特定應用程式和服務提供自訂的監視體驗。 它們會將資料儲存在[Azure 監視器資料平臺](../platform/data-platform.md)中，並利用其他 Azure 監視器的功能來進行分析和警示，但可能會收集其他資料，並在 Azure 入口網站中提供獨特的使用者體驗。 從 Azure 入口網站的 [Azure 監視器] 功能表的 [**深入**解析] 區段存取見解。
@@ -26,12 +25,12 @@ Application Insights 是多個平台上的 Web 開發人員所適用的可延伸
 
 ![Application Insights](media/insights-overview/app-insights.png)
 
-## <a name="azure-monitor-for-containers"></a>容器的 Azure 監視器
+## <a name="azure-monitor-for-containers"></a>適用於容器的 Azure 監視器
 適用於容器的 Azure 監視器會監視部署至 Azure Container Instances 或 Azure Kubernetes Service (AKS) 上所裝載受控 Kubernetes 叢集的容器工作負載效能。 監視容器很重要，尤其在您使用多個應用程式大規模執行生產環境叢集時。
 
 請參閱[容器的 Azure 監視器總覽](../insights/container-insights-overview.md)。
 
-![容器的 Azure 監視器](media/insights-overview/container-insights.png)
+![適用於容器的 Azure 監視器](media/insights-overview/container-insights.png)
 
 ## <a name="azure-monitor-for-resource-groups-preview"></a>適用于資源群組的 Azure 監視器（預覽）
 資源群組的 Azure 監視器有助於分級和診斷個別資源所遇到的任何問題，同時提供內容給整體資源群組的健全狀況和效能。
@@ -50,7 +49,7 @@ Application Insights 是多個平台上的 Web 開發人員所適用的可延伸
 ## <a name="azure-monitor-for-networks-preview"></a>網路的 Azure 監視器（預覽）
 [網路的 Azure 監視器](network-insights-overview.md)可讓您全面瞭解所有網路資源的健全狀況和計量。 先進的搜尋功能可協助您識別資源相依性，藉由直接搜尋您的網站名稱，來啟用識別裝載網站的資源等案例。
 
-![網路的 Azure 監視器](media/insights-overview/network-insights.png)
+![適用於網路的 Azure 監視器](media/insights-overview/network-insights.png)
 
 ## <a name="next-steps"></a>後續步驟
 * 深入瞭解深入解析所利用的[Azure 監視器資料平臺](../platform/data-platform.md)。

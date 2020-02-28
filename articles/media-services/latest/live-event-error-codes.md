@@ -11,23 +11,47 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2020
+ms.date: 02/25/2020
 ms.author: juliako
-ms.openlocfilehash: bfbef771d33ad4d63ec8eaef83331e497d476071
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: f9067562f67190b8bc04392f33078d4d3262f986
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77599466"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654574"
 ---
 # <a name="media-services-live-event-error-codes"></a>媒體服務即時事件錯誤代碼
 
-下表列出[即時事件](live-events-outputs-concept.md)錯誤碼：
+本節中的表格會列出[即時事件](live-events-outputs-concept.md)錯誤碼。
 
-|錯誤|描述|
-|---|---| 
-|MPE_INGEST_FRAMERATE_EXCEEDED|當內送編碼器傳送的資料流程超過30fps 以編碼即時事件/通道時，就會發生此錯誤。|
-|MPE_INGEST_VIDEO_RESOLUTION_NOT_SUPPORTED|當連入編碼器傳送的資料流程超過下列解決方式時，就會發生此錯誤：用於編碼即時事件/通道的1920x1088，以及用於傳遞即時事件/通道的 4096 x 2160。|
+## <a name="liveeventconnectionrejected"></a>LiveEventConnectionRejected
+
+當您訂閱即時事件的[事件方格](https://docs.microsoft.com/azure/event-grid/)事件時，您可能會在[LiveEventConnectionRejected](media-services-event-schemas.md#liveeventconnectionrejected)事件中看到下列其中一個錯誤。
+
+| 結果碼 | 描述 |
+| ----------- | ----------- |
+| MPE_RTMP_APPID_AUTH_FAILURE | 不正確的內嵌 URL |
+| MPE_INGEST_ENCODER_CONNECTION_DENIED | 編碼器 IP 不存在於所設定的 IP 允許清單中 |
+| MPE_INGEST_RTMP_SETDATAFRAME_NOT_RECEIVED | RTMP 編碼器未傳送 setDataFrame 命令。 |
+| MPE_INGEST_CODEC_NOT_SUPPORTED | 不支援指定的轉碼器。 |
+| MPE_INGEST_DESCRIPTION_INFO_NOT_RECEIVED |未在實際媒體資料傳遞之前收到媒體描述資訊。|
+| MPE_INGEST_MEDIA_QUALITIES_EXCEEDED |音訊或影片類型的品質計數已超過允許的上限。|
+| MPE_INGEST_BITRATE_AGGREGATED_EXCEEDED |即時事件或通道服務中的傳入位元速率總計超過允許的上限。|
+| MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID | 來自 RTMP 編碼器的視訊或音訊 FLVTag 時間戳記無效。 |
+| MPE_INGEST_FRAMERATE_EXCEEDED | 包含 framerates 的傳入編碼器內嵌串流超過允許的30fps 編碼即時事件/通道的上限。|
+| MPE_INGEST_VIDEO_RESOLUTION_NOT_SUPPORTED | 內送編碼器內嵌串流超過下列允許的解決方式：用於編碼即時事件/通道的1920x1088，以及用於傳遞即時事件/通道的 4096 x 2160。|
+
+## <a name="liveeventencoderdisconnected"></a>LiveEventEncoderDisconnected
+
+您可能會在[LiveEventEncoderDisconnected](media-services-event-schemas.md#liveeventencoderdisconnected)事件中看到下列其中一個錯誤。
+
+|結果碼|描述|
+|---|---|
+|MPE_RTMP_SESSION_IDLE_TIMEOUT|RTMP 工作階段在閒置達允許時間限制後逾時。|
+|MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID|來自 RTMP 編碼器的視訊或音訊 FLVTag 時間戳記無效。|
+|MPE_CAPACITY_LIMIT_REACHED|編碼器的資料傳送速度太快。|
+|未知的錯誤代碼|這些錯誤碼的範圍從記憶體錯誤到雜湊對應中有重複項目。|
+
 
 ## <a name="see-also"></a>另請參閱
 

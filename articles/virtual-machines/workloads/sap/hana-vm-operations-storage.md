@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/13/2020
+ms.date: 02/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4cc4db9ffcb700d4b65a7f5c21d258e9af52d164
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 155498aeaea30bf2da1d5aa0dbcb322aeb43bbdd
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598522"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661289"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 虛擬機器儲存體設定
 
@@ -35,6 +35,10 @@ Azure 提供不同類型的儲存體，適用于執行 SAP Hana 的 Azure Vm。 
 Azure 針對 Azure 標準儲存體和 Azure 進階儲存體上的 VHD，提供兩種部署方法。 在整體情況允許的情況下，請利用 [Azure 受控磁碟](https://azure.microsoft.com/services/managed-disks/)部署。 
 
 如需儲存體類型清單及其在 IOPS 和儲存體輸送量中的 SLA ，請檢閱[受控磁碟的 Azure 文件](https://azure.microsoft.com/pricing/details/managed-disks/)。
+
+> [!IMPORTANT]
+> 與所選擇的 Azure 儲存體類型無關，針對特定的作業系統和 DBMS，SAP 必須支援該存放裝置所使用的檔案系統。 [SAP 支援附注 #405827](https://launchpad.support.sap.com/#/notes/405827)列出不同作業系統和資料庫支援的檔案系統，包括 SAP Hana。 這適用于所有的磁片區 SAP Hana 可能會存取任何工作的讀取和寫入。 特別使用 Azure 上的 NFS 進行 SAP Hana 時，如本文稍後所述，將會套用其他 NFS 版本限制 
+
 
 不同儲存類型的最小 SAP Hana 認證條件如下： 
 
@@ -243,7 +247,7 @@ Azure NetApp Files 提供可用於/hana/shared、/hana/data 和/hana/log 磁片�
 > [!IMPORTANT]
 > **不**支援在 Azure NetApp Files 上執行的 NFS v3 通訊協定用於/hana/data 和/hana/log。 從功能的觀點來看，/hana/data 和/hana/log 磁片區的使用 NFS 4.1 是強制的。 而對於/hana/shared 磁片區，可以從功能的觀點來使用 NFS v3 或 NFS 4.1 通訊協定。
 
-### <a name="important-considerations"></a>重要考量︰
+### <a name="important-considerations"></a>重要的考量
 考慮 SAP Netweaver 和 SAP Hana 的 Azure NetApp Files 時，請注意下列重要考慮：
 
 - 最小容量集區為 4 TiB。  

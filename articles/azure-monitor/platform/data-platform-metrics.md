@@ -5,18 +5,17 @@ documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: cd30803735c5453c286788b8669a3d2f02c418a5
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 80bbf83da17d833c4f8bb1abac9610d70e9a23cb
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77468043"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666525"
 ---
 # <a name="metrics-in-azure-monitor"></a>Azure 監視器中的計量
 
@@ -37,7 +36,7 @@ Azure 監視器中的計量非常輕量，而且能夠支援近乎即時的案�
 | 視覺化 | 將圖表從計量瀏覽器釘選到[Azure 儀表板](../learn/tutorial-app-dashboards.md)。<br>建立活頁[簿](../app/usage-workbooks.md)，以結合互動式報表中的多個資料集。將查詢的結果匯出至[Grafana](grafana-plugin.md) ，以利用其儀表板管理並與其他資料來源結合。 |
 | 警示 | 設定計量[警示規則](alerts-metric.md)，以在計量值超過閾值時傳送通知或採取[自動化動作](action-groups.md)。 |
 | 自動化 |  使用 [[自動](autoscale-overview.md)調整]，根據超出閾值的度量值來增加或減少資源。 |
-| 匯出 | 將[計量路由傳送至記錄](resource-logs-collect-storage.md)，以分析 Azure 監視器計量中的資料以及 Azure 監視器記錄中的資料，並儲存超過93天的度量值。<br>將計量串流至[事件中樞](stream-monitoring-data-event-hubs.md)，以將其路由至外部系統。 |
+| Export | 將[計量路由傳送至記錄](resource-logs-collect-storage.md)，以分析 Azure 監視器計量中的資料以及 Azure 監視器記錄中的資料，並儲存超過93天的度量值。<br>將計量串流至[事件中樞](stream-monitoring-data-event-hubs.md)，以將其路由至外部系統。 |
 | 擷取 | 使用[PowerShell Cmdlet](https://docs.microsoft.com/powershell/module/az.applicationinsights)從命令列存取計量值<br>使用[REST API](rest-api-walkthrough.md)從自訂應用程式存取計量值。<br>使用[CLI](/cli/azure/monitor/metrics)從命令列存取計量值。 |
 | 封存 | [封存](..//learn/tutorial-archive-data.md)資源的效能或健全狀況歷程記錄，以用於相容性、稽核或離線報告。 |
 

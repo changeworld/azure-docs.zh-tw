@@ -1,18 +1,17 @@
 ---
 title: 檢視 Azure Application Insights 應用程式資料 | Microsoft Docs
 description: 您可以使用 Applications Insights Connector 解決方案來診斷效能問題，以及了解使用者如何使用 Application Insights 監視您的應用程式。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: d0cfca44878130e870c633040afcfbdd55ba8b7b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c143d8aa24d3479f4619ea2c220d4a0c593f9cb1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75396559"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665148"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights Connector 管理解決方案 (取代)
 
@@ -43,7 +42,7 @@ Applications Insights Connector 解決方案可協助您診斷效能問題，以
 
 不同於大部分其他 Log Analytics 解決方案，代理程式不會收集 Application Insights Connector 的資料。 解決方案使用的所有資料直接來自於 Azure。
 
-| 連接的來源 | 支援的 | 說明 |
+| 連接的來源 | 支援 | 描述 |
 | --- | --- | --- |
 | [Windows 代理程式](../../azure-monitor/platform/agent-windows.md) | 否 | 解決方案不會收集來自 Windows 代理程式的資訊。 |
 | [Linux 代理程式](../../azure-monitor/learn/quick-collect-linux-computer.md) | 否 | 解決方案不會收集來自 Linux 代理程式的資訊。 |
@@ -61,7 +60,7 @@ Applications Insights Connector 解決方案可協助您診斷效能問題，以
 1. 從 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) 或使用[從方案庫新增 Log Analytics 方案](../../azure-monitor/insights/solutions.md)中所述的程序，啟用 Azure Web Apps 分析解決方案。
 2. 瀏覽至 [Azure 入口網站](https://portal.azure.com)。 選取 [所有服務] 來開啟 Application Insights。 然後，搜尋 Application Insights。 
 3. 在 [訂用帳戶] 之下，選取擁有 Application Insights 資源的訂用帳戶，然後在 [名稱] 之下，選取一或多個應用程式。
-4. 按一下 [檔案]。
+4. Haga clic en **Guardar**.
 
 大約 30 分鐘內，資料就會變成可用，而且 Application Insights 圖格資料會更新，如下圖所示：
 
@@ -175,7 +174,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="generic-fields"></a>一般欄位
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 | --- | --- |
 | 類型 | ApplicationInsights |
 | ClientIP |   |
@@ -186,7 +185,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 | DeviceType | 用戶端裝置 |
 | ScreenResolution |   |
 | Continent | 要求的起源洲 |
-| 國家/地區 | 要求的來源國家/地區 |
+| Country | 要求的來源國家/地區 |
 | Province | 要求的起源省、州或地區設定 |
 | 城市 | 要求的起源城市或鄉鎮 |
 | isSynthetic | 指出要求是由使用者或自動化方法建立。 True = 自動化方法或 false = 使用者產生 |
@@ -201,7 +200,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="availability-specific-fields"></a>可用性專屬欄位
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 | --- | --- |
 | TelemetryType | 可用性 |
 | AvailabilityTestName | Web 測試的名稱 |
@@ -243,7 +242,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="request-specific-fields"></a>要求專屬欄位
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 | --- | --- |
 | 類型 | ApplicationInsights |
 | TelemetryType | 要求 |
@@ -253,7 +252,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 | RequestName | GET/POST + URL 基底 |
 | RequestDuration | 要求的持續時間 (秒) |
 | URL | 要求 URL (不包括主機) |
-| 主機 | Web 伺服器主機 |
+| Host | Web 伺服器主機 |
 | URLBase | 要求的完整 URL |
 | ApplicationProtocol | 應用程式所使用的通訊協定類型 |
 | RequestCount | 100/(Sampling Rate)。 例如，4 =&gt; 25% |

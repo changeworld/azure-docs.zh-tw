@@ -1,19 +1,18 @@
 ---
 title: 開始使用 Azure 計量瀏覽器
-description: 瞭解如何使用 Azure 計量瀏覽器來建立您的第一個度量圖表。
+description: 了解如何使用 Azure 計量瀏覽器建立您的第一個計量圖表。
 author: vgorbenko
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: ceaefffaf04a3ab266cde300e8c4b93a5e804796
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 920ff19b162843d1c2d631ad192ce1b3c4273a68
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861092"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662276"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>開始使用 Azure 計量瀏覽器
 
@@ -34,20 +33,20 @@ Azure 監視器計量瀏覽器是 Microsoft Azure 入口網站的一個元件，
 
     > ![選取資源](./media/metrics-getting-started/resource-picker.png)
 
-2. 對於某些資源，您必須選取命名空間。 命名空間只是組織計量的一種方式，讓您可以輕鬆地找到它們。 例如，儲存體帳戶有不同的命名空間，可儲存檔案、資料表、Blob 和佇列計量。 許多資源類型只有一個命名空間。
+2. 對於某些資源，您必須選取命名空間。 命名空間只是組織計量而讓您可以輕鬆找到計量的一種方式。 例如，儲存體帳戶有個別的命名空間，用來儲存檔案、資料表、Blob 和佇列計量。 許多資源類型只有一個命名空間。
 
 3. 從可用的計量清單中選取 [度量]。
 
-    > ![選取計量](./media/metrics-getting-started/metric-picker.png)
+    > ![選取度量](./media/metrics-getting-started/metric-picker.png)
 
 4. （選擇性）您可以變更計量匯總。 例如，您可能想要讓圖表顯示度量的最小值、最大值或平均值。
 
 > [!NOTE]
-> 如果您想要查看在相同圖表中繪製的多個計量，請使用 [**新增度量**] 按鈕並重複這些步驟。 針對單一視圖中的多個圖表，選取頂端的 [**新增圖表**] 按鈕。
+> 如果您想要查看在相同圖表中繪製的多個計量，請使用 [新增計量] 按鈕，並重複前述步驟。 針對單一視圖中的多個圖表，選取頂端的 [**新增圖表**] 按鈕。
 
 ## <a name="select-a-time-range"></a>選取時間範圍
 
-根據預設，圖表會顯示最近24小時的計量資料。 使用 [**時間選擇器**] 面板來變更圖表的時間範圍、放大或縮小。 
+根據預設，圖表會顯示最近 24 小時的計量資料。 使用 [**時間選擇器**] 面板來變更圖表的時間範圍、放大或縮小。 
 
 ![變更時間範圍面板](./media/metrics-getting-started/time-picker.png)
 
@@ -60,13 +59,13 @@ Azure 監視器計量瀏覽器是 Microsoft Azure 入口網站的一個元件，
 
 - **篩選**可讓您選擇要包含在圖表中的維度值。 例如，您可能會想要在繪製*伺服器回應時間*度量的圖表時，顯示成功的要求。 您必須在 [要求] 維度的 [*成功*] 上套用篩選準則。 
 
-- **分割**控制項：圖表會針對維度的每個值顯示個別的線條，或將值匯總成單一行。 例如，您可以在所有伺服器實例的平均回應時間看到一行，或查看每部伺服器的個別行。 您必須在*伺服器實例*維度上套用分割，才能看到不同的行。
+- **分割**可控制圖表是要針對維度的每個值顯示個別的線條，還是將值彙總成單一線條。 例如，您可以在所有伺服器實例的平均回應時間看到一行，或查看每部伺服器的個別行。 您必須在*伺服器實例*維度上套用分割，才能看到不同的行。
 
-查看已套用篩選和分割的[圖表範例](metric-chart-samples.md)。 本文說明用來設定圖表的步驟。
+請參閱已套用篩選和分割的[圖表範例](metric-chart-samples.md)。 本文說明用來設定圖表的步驟。
 
-## <a name="advanced-chart-settings"></a>Advanced chart 設定
+## <a name="advanced-chart-settings"></a>進階圖表設定
 
-您可以自訂 [圖表樣式]、[標題] 和 [修改先進的圖表] 設定。 完成自訂後，請將其釘選到儀表板，以儲存您的工作。 您也可以設定計量警示。 請遵循[產品檔](metrics-charts.md)，以瞭解 Azure 監視器計量瀏覽器的這些和其他先進功能。
+您可以自訂圖表樣式、標題，以及修改進階圖表設定。 完成自訂後，請將其釘選到儀表板，以儲存您的工作。 您也可以設定計量警示。 請遵循[產品檔](metrics-charts.md)，以瞭解 Azure 監視器計量瀏覽器的這些和其他先進功能。
 
 ## <a name="next-steps"></a>後續步驟
 

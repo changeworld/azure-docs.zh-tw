@@ -3,17 +3,16 @@ title: Azure 監視器中的自訂計量
 description: 了解 Azure 監視器中的自訂計量，以及如何予以模型化。
 author: ancav
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 744958fc44a8d10bbc8ca5d44af8c473548ae5ca
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3e3f45c1802d501e2320930c35073ec89ff38124
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669172"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662343"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Azure 監視器中的自訂計量
 
@@ -38,7 +37,7 @@ ms.locfileid: "73669172"
 > [!NOTE]  
 > 當您要求 Azure AD 權杖以發出自訂計量時，請確定所要求權杖的受眾或資源為 https://monitoring.azure.com/。 請務必包含尾端的斜線 '/'。
 
-### <a name="subject"></a>主旨
+### <a name="subject"></a>主體
 這個屬性會擷取所報告自訂計量的 Azure 資源識別碼。 此資訊會編碼在所進行 API 呼叫的 URL 中。 每個 API 都只能為單一的 Azure 資源提交計量值。
 
 > [!NOTE]  
@@ -54,7 +53,7 @@ ms.locfileid: "73669172"
 >
 >
 
-### <a name="timestamp"></a>Timestamp
+### <a name="timestamp"></a>時間戳記
 傳送至 Azure 監視器每個資料點都必須以時間戳記標記。 此時間戳記會擷取該計量值的測量或收集日期時間。 Azure 監視器接受時間戳記為過去 20 分鐘內和未來 5 分鐘內的計量資料。 時間戳記必須是 ISO 8601 格式。
 
 ### <a name="namespace"></a>命名空間

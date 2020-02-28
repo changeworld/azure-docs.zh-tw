@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: d0c9fe9ebd040ee59ae8717e95fd1911eaef61be
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: ff7420619cffc2287ab8ff6332df605d56329549
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560451"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664128"
 ---
 # <a name="manage-cluster-horizontal-scaling-scale-out-in-azure-data-explorer-to-accommodate-changing-demand"></a>在 Azure 資料總管中管理叢集水準調整（向外延展）以配合變更需求
 
@@ -59,13 +59,14 @@ ms.locfileid: "77560451"
 * 叢集實例的數目低於使用者定義的實例數目上限。
 * 快取使用率超過一小時。
 * CPU 長達一小時以上。
+* 在一小時內，內嵌使用率很高。
 
 > [!NOTE]
 > 相應放大邏輯目前不會考慮使用內嵌使用率計量。 如果此度量對您的使用案例很重要，請使用[自訂自動](#custom-autoscale)調整。
 
 **相應縮小**
 
-當您的叢集接近使用率狀態時，相應縮小以降低成本，但維持效能。 系統會使用多個計量來驗證是否可安全地在叢集中進行調整。 下列規則會每日評估為執行相應縮小之前7天：
+當您的叢集接近使用率狀態時，相應縮小以降低成本，但維持效能。 系統會使用多個計量來驗證是否可安全地在叢集中進行調整。 下列規則會每小時評估6小時，再執行相應縮小：
 * 實例數目高於2以上定義的實例數目下限。
 * 為確保不會多載資源，必須先驗證下列計量，才能執行相應縮小： 
     * 快取使用率不高

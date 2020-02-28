@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: a6c1e14e332f6081111d2a58a30702093b99a876
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: c9d5c2efc14dec5beee0eaf81a4f628421ef3d49
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198236"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657039"
 ---
 # <a name="glossary"></a>字彙
 
@@ -47,7 +47,7 @@ ms.locfileid: "77198236"
 
 <a name="asynchronous-request"></a>**非同步要求**：此 HTTP 要求會開啟連接，並對傳回非同步要求之識別碼的伺服器提出要求，然後關閉連接。 伺服器會持續處理要求，而使用者可以使用該識別碼來查詢其狀態。 當要求處理完成之後，使用者便可以下載回應。 這種類型的要求會用於長時間執行的進程。
 
-<a name="autocomplete"></a>**自動完成**：應用程式中的功能會預測使用者所輸入之單字的其餘部分。 
+<a name="autocomplete"></a>**自動完成**：應用程式中的一項功能，可預測使用者所輸入之單字的其餘部分。 
 
 <a name="autosuggest"></a>**自動建議**：應用程式中的一項功能，可預測使用者所輸入內容的邏輯可能性。
 
@@ -135,7 +135,7 @@ ms.locfileid: "77198236"
 
 <a name="extent"></a>**範圍**：請參閱周[框](#bounding-box)方塊。
 
-## <a name="f"></a>華氏 (F)
+## <a name="f"></a>F
 
 <a name="federated-authentication"></a>同盟**驗證**：一種驗證方法，允許跨多個 web 和行動裝置應用程式使用單一登入/驗證機制。 
 

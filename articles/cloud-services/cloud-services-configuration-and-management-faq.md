@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 4ca8c18d448297cc2d2e2249a1dbbe04ecccd092
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 40abd048b047bbece79b7c05d36a1fb189a4f28d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77019412"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656920"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 雲端服務之設定和管理問題：常見問題集 (FAQ)
 
@@ -137,7 +137,7 @@ Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $pass
 * 增加本機資源的配額限制。
 
 如需詳細資訊，請參閱下列文件：
-* [在 Azure 儲存體中儲存和檢視診斷資料](cloud-services-dotnet-diagnostics-storage.md)
+* [在 Azure 儲存體中儲存和檢視診斷資料](/azure/storage/common/storage-introduction)
 * [IIS 記錄會停止在雲端服務中寫入](https://blogs.msdn.microsoft.com/cie/2013/12/21/iis-logs-stops-writing-in-cloud-service/)
 
 ### <a name="how-do-i-enable-wad-logging-for-cloud-services"></a>如何為雲端服務啟用 WAD 記錄？
@@ -193,10 +193,10 @@ Windows 10 和 Windows Server 2016 隨附用戶端和伺服器端上的 HTTP/2 �
 2. 瀏覽至登錄機碼：HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HTTP\Parameters。
 3. 建立名為 **DuoEnabled** 的新 DWORD 值。
 4. 將值設為 1。
-5. 重新啟動您的伺服器。
+5. 重新啟動伺服器。
 6. 移至**預設網站**，並在 [繫結] 下方 使用剛才建立的自我簽署憑證來建立新的 TLS 繫結。 
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱
 
 - [IIS 上的 HTTP/2](https://blogs.iis.net/davidso/http2)
 - [影片：Windows 10 中的 HTTP/2：瀏覽器、應用程式和 Web 伺服器](https://channel9.msdn.com/Events/Build/2015/3-88)
@@ -212,7 +212,7 @@ Windows 10 和 Windows Server 2016 隨附用戶端和伺服器端上的 HTTP/2 �
 
 如需詳細資訊，請參閱 [IIS 上的 HTTP/2](https://blogs.iis.net/davidso/http2)。
 
-## <a name="permissions"></a>使用權限
+## <a name="permissions"></a>權限
 
 ### <a name="how-can-i-implement-role-based-access-for-cloud-services"></a>如何實作雲端服務的角色型存取？
 雲端服務不支援角色型存取控制 (RBAC) 模型，因為它不是以 Azure Resource Manager 為基礎的服務。
@@ -226,12 +226,12 @@ Microsoft 會遵循嚴格的程序，不允許內部工程師在沒有擁有者�
 
 ### <a name="i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005"></a>我無法使用 RDP 檔案從遠端桌面登入雲端服務虛擬機器。 我收到下列錯誤：發生驗證錯誤 (代碼：0x80004005)
 
-如果您使用的 RDP 檔案來自已加入 Azure Active Directory 的機器，即可能會發生這個錯誤。 若要解決此問題，請依照下列步驟執行︰
+如果您使用的 RDP 檔案來自已加入 Azure Active Directory 的機器，即可能會發生這個錯誤。 若要解決此問題，請執行下列步驟：
 
 1. 以滑鼠右鍵按一下您下載的 RDP 檔案，然後選取 [編輯]。
 2. 新增 "&#92;" 作為使用者名稱的前置詞。 例如，使用 **.\username** 而不是 **username**。
 
-## <a name="scaling"></a>調整
+## <a name="scaling"></a>調整大小
 
 ### <a name="i-cannot-scale-beyond-x-instances"></a>我不能調整超過 X 個執行個體
 您的 Azure 訂用帳戶對於您可以使用的核心數目有限制。 如果您已使用所有可用的核心，調整將無法運作。 例如，如果您有 100 個核心的限制，這表示您的雲端服務可以有 100 個 A1 大小的虛擬機器執行個體，或 50 個 A2 大小的虛擬機器執行個體。
@@ -250,7 +250,7 @@ Microsoft 會遵循嚴格的程序，不允許內部工程師在沒有擁有者�
 
 有關如何啟用雲端服務 Azure 診斷記錄的詳細資訊，請參閱[為 Azure 雲端服務和虛擬機器設定診斷](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
 
-## <a name="generic"></a>泛型
+## <a name="generic"></a>一般
 
 ### <a name="how-do-i-add-nosniff-to-my-website"></a>如何將 "nosniff" 新增至我的網站？
 若要防止用戶端探查 MIME 類型，請在您的 *web.config* 檔案中加入一項設定。

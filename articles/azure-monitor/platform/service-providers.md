@@ -1,18 +1,17 @@
 ---
 title: 服務提供者的 Azure 監視器記錄 |Microsoft Docs
 description: Azure 監視器記錄可協助受管理的服務提供者（Msp）、大型企業、獨立軟體廠商（Isv）和主機服務提供者管理和監視客戶的內部部署或雲端基礎結構中的伺服器。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: 1b5c181569ea569ecc4808284683501cb20f7bf5
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: ed398e12ee90f2eef2cfa78e2ed02701e6012517
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77117053"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658875"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>服務提供者的 Azure 監視器記錄
 

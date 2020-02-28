@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/03/2020
+ms.date: 02/27/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8f91db91eff3320691a5979d9453bf515ccd59a2
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: e3ce7ff633f41ccfe6faa3cc1dba1020e74459aa
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982291"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656087"
 ---
 # <a name="stringcollection-claims-transformations"></a>StringCollection 宣告轉換
 
@@ -26,13 +26,13 @@ ms.locfileid: "76982291"
 
 ## <a name="additemtostringcollection"></a>AddItemToStringCollection
 
-將字串宣告新增至新的 stringCollection 宣告。
+將字串宣告加入至新的唯一值 stringCollection 宣告。 
 
-| 項目 | TransformationClaimType | 資料類型 | 注意 |
+| 項目 | TransformationClaimType | 資料型別 | 注意事項 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | item | string | 要新增至輸出宣告的 ClaimType。 |
+| InputClaim | 項目 | string | 要新增至輸出宣告的 ClaimType。 |
 | InputClaim | collection | stringCollection | [選擇性] 如果指定，宣告轉換就會複製此集合中的項目，並將項目新增至輸出集合宣告的結尾。 |
-| OutputClaim | collection | stringCollection | 叫用此 ClaimsTransformation 之後所產生的 ClaimType。 |
+| OutputClaim | collection | stringCollection | 叫用此宣告轉換之後所產生的 ClaimType，並使用輸入宣告中指定的值。 |
 
 使用此宣告轉換來將字串新增至新的或現有的 stringCollection。 它通常用於 **AAD-UserWriteUsingAlternativeSecurityId** 技術設定檔。 建立新的社交帳戶之前，**CreateOtherMailsFromEmail** 宣告轉換會讀取 ClaimType，並將值新增至 **otherMails** ClaimType。
 
@@ -60,13 +60,13 @@ ms.locfileid: "76982291"
 
 ## <a name="addparametertostringcollection"></a>AddParameterToStringCollection
 
-將字串參數新增至新的 stringCollection 宣告。
+將字串參數新增至新的唯一值 stringCollection 宣告。
 
-| 項目 | TransformationClaimType | 資料類型 | 注意 |
+| 項目 | TransformationClaimType | 資料型別 | 注意事項 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | collection | stringCollection | [選擇性] 如果指定，宣告轉換就會複製此集合中的項目，並將項目新增至輸出集合宣告的結尾。 |
-| InputParameter | item | string | 要新增至輸出宣告的值。 |
-| OutputClaim | collection | stringCollection | 叫用此 ClaimsTransformation 之後將產生的 ClaimType。 |
+| InputParameter | 項目 | string | 要新增至輸出宣告的值。 |
+| OutputClaim | collection | stringCollection | 叫用此宣告轉換之後所產生的 ClaimType，並含有輸入參數中指定的值。 |
 
 使用此宣告轉換來將字串值新增至新的或現有的 stringCollection。 下列範例會將常數的電子郵件地址 (admin@contoso.com) 新增至 **otherMails** 宣告。
 
@@ -97,7 +97,7 @@ ms.locfileid: "76982291"
 
 從提供的字串集合中取得第一個項目。
 
-| 項目 | TransformationClaimType | 資料類型 | 注意 |
+| 項目 | TransformationClaimType | 資料型別 | 注意事項 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | collection | stringCollection | 宣告轉換用來取得項目的 ClaimType。 |
 | OutputClaim | extractedItem | string | 叫用此 ClaimsTransformation 之後所產生的 ClaimType。 集合中的第一個項目。 |
@@ -127,10 +127,10 @@ ms.locfileid: "76982291"
 
 檢查 StringCollection 宣告類型是否包含元素
 
-| 項目 | TransformationClaimType | 資料類型 | 注意 |
+| 項目 | TransformationClaimType | 資料型別 | 注意事項 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | stringCollection | 要搜尋的宣告類型。 |
-|InputParameter|item|string|要搜尋的值。|
+|InputParameter|項目|string|要搜尋的值。|
 |InputParameter|ignoreCase|string|指定這個比較是否應忽略要比較之字串的大小寫。|
 | OutputClaim | outputClaim | boolean | 叫用此 ClaimsTransformation 之後所產生的 ClaimType。 如果集合包含這類字串，則為布林值指標 |
 

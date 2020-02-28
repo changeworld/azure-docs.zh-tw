@@ -1,18 +1,17 @@
 ---
 title: Azure 中的網路效能監控解決方案 | Microsoft Docs
 description: Azure 中的「網路效能監視器」可協助您近乎即時地監視網路的效能，以偵測和找出網路效能瓶頸。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 396652e3f8a0a8d9e18effb94a48a362054dde96
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cb906f6b3cf333e3fb3a24a934e5d9f11fc10cda
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75403153"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654472"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 中的網路效能監控解決方案
 
@@ -276,7 +275,7 @@ ExpressRoute 監視器的支援區域清單提供於[文件](https://docs.micros
 通知則會依 [Azure 監視器定價頁面中的通知定價](https://azure.microsoft.com/pricing/details/monitor/)來個別計費。
 
 
-## <a name="pricing"></a>定價
+## <a name="pricing"></a>Pricing
 
 定價資訊可在[線上](network-performance-monitor-pricing-faq.md)查詢。
 

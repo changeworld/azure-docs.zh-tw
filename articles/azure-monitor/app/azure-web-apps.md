@@ -1,18 +1,14 @@
 ---
 title: 監視 Azure 應用程式服務效能 | Microsoft Docs
 description: Azure 應用程式服務的應用程式效能監視。 圖表載入和回應時間、相依性資訊，以及設定效能警示。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 12/11/2019
-ms.openlocfilehash: 3ca9cbf2e282e3f67af3c5da470a3d81e6055f98
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 03d332af182f8f40ede634fbd563f7b064751f32
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77189578"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655783"
 ---
 # <a name="monitor-azure-app-service-performance"></a>監視 Azure App Service 效能
 
@@ -39,7 +35,7 @@ ms.locfileid: "77189578"
 
 ## <a name="enable-agent-based-monitoring"></a>啟用以代理程式為基礎的監視
 
-# <a name="nettabnet"></a>[.NET](#tab/net)
+# <a name="net"></a>[.NET](#tab/net)
 
 > [!NOTE]
 > 不支援 APPINSIGHTS_JAVASCRIPT_ENABLED 和 urlCompression 的組合。 如需詳細資訊，請參閱[疑難排解一節](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting)中的說明。
@@ -75,7 +71,7 @@ ms.locfileid: "77189578"
 
     * 如需支援的調適型取樣遙測處理器設定清單，您可以查閱程式[代碼](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/master/src/ServerTelemetryChannel/AdaptiveSamplingTelemetryProcessor.cs)和[相關聯的檔](https://docs.microsoft.com/azure/azure-monitor/app/sampling)。
 
-# <a name="net-coretabnetcore"></a>[.NET Core](#tab/netcore)
+# <a name="net-core"></a>[.NET Core](#tab/netcore)
 
 支援下列 .NET Core 版本： ASP.NET Core 2.0、ASP.NET Core 2.1、ASP.NET Core 2.2、ASP.NET Core 3。0
 
@@ -96,15 +92,15 @@ ms.locfileid: "77189578"
 
     ![選擇每個平台的選項](./media/azure-web-apps/choose-options-new-net-core.png)
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 從 App Service web 應用程式內的 [**設定**] 下 > **選取 [Application Insights** > **啟用**]。 以 node.js 代理程式為基礎的監視目前為預覽狀態。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 以 JAVA App Service 為基礎的 web 應用程式目前不支援自動代理程式/擴充功能型監視。 若要啟用 JAVA 應用程式的監視，您必須[手動檢測您的應用程式](https://docs.microsoft.com/azure/azure-monitor/app/java-get-started)。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 以 Python App Service 為基礎的 web 應用程式目前不支援以自動代理程式/延伸模組為基礎的監視。 若要為您的 Python 應用程式啟用監視，您必須[手動檢測應用程式](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python)。
 
@@ -112,7 +108,7 @@ ms.locfileid: "77189578"
 
 ## <a name="enable-client-side-monitoring"></a>啟用用戶端監視
 
-# <a name="nettabnet"></a>[.NET](#tab/net)
+# <a name="net"></a>[.NET](#tab/net)
 
 用戶端監視是加入宣告以進行 ASP.NET。 若要啟用用戶端監視：
 
@@ -129,7 +125,7 @@ ms.locfileid: "77189578"
 
 若要停用用戶端監視，請從應用程式設定中移除相關聯的機碼值組，或將值設定為 false。
 
-# <a name="net-coretabnetcore"></a>[.NET Core](#tab/netcore)
+# <a name="net-core"></a>[.NET Core](#tab/netcore)
 
 不論應用程式設定 ' APPINSIGHTS_JAVASCRIPT_ENABLED ' 是否存在，使用建議的**集合**的 .net Core 應用程式**預設會啟用**用戶端監視。
 
@@ -146,15 +142,15 @@ ms.locfileid: "77189578"
 
 ![應用程式設定 UI 的螢幕擷取畫面](./media/azure-web-apps/appinsights-javascript-disabled.png)
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 若要為您的 node.js 應用程式啟用用戶端監視，您必須[手動將用戶端 JAVASCRIPT SDK 新增至您的應用程式](https://docs.microsoft.com/azure/azure-monitor/app/javascript)。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 若要啟用 JAVA 應用程式的用戶端監視，您必須[手動將用戶端 JAVASCRIPT SDK 新增至您的應用程式](https://docs.microsoft.com/azure/azure-monitor/app/javascript)。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 若要為您的 Python 應用程式啟用用戶端監視，您必須[手動將用戶端 JAVASCRIPT SDK 新增至您的應用程式](https://docs.microsoft.com/azure/azure-monitor/app/javascript)。
 

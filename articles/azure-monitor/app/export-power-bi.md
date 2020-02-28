@@ -1,18 +1,14 @@
 ---
 title: 從 Azure Application Insights 匯出至 Power BI | Microsoft Docs
 description: Analytics 查詢可以在 Power BI 中顯示。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 08/10/2018
-ms.openlocfilehash: 3ec20f82bc12b60e5b88a02bb92a4a0ada4dcae7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0e17ca6e07ec76f0a7a1cb04f7aa13619fb9970c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73668016"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663992"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>從 Application Insights 提供 Power BI
 [Power BI](https://www.powerbi.com/) 是一套商務工具，可協助您分析資料及分享見解。 每個裝置上都提供豐富的儀表板。 您可以結合許多來源的資料，包含來自 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 的「分析」查詢。
@@ -123,7 +119,7 @@ ms.locfileid: "73668016"
 
 ### <a name="get-the-adapter"></a>取得配接器
 1. 登入 [Power BI](https://app.powerbi.com/)。
-2. 開啟 [取得資料] ![左下角 [取得資料] 圖示的螢幕擷取畫面](./media/export-power-bi/001.png)、[服務]。
+2. 開啟 [**取得資料**] ![左下角](./media/export-power-bi/001.png)、[**服務**] 中的 [，] 圖示的螢幕擷取畫面。
 
     ![「取自 Application Insights 資料來源」的螢幕擷取畫面](./media/export-power-bi/002.png)
 

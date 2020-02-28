@@ -1,19 +1,17 @@
 ---
 title: 使用 Azure 監視器活頁簿建立互動式報表 | Microsoft Docs
 description: 使用預先建立及使用自訂參數之活頁簿來簡化複雜的報告
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 8e14b065132e648f9c800655cfe69e5a2ec80c41
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 15543f7f761c707e8eff8e0cc0a0e4532475ddf8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432262"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670996"
 ---
 # <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>使用 Azure 監視器活頁簿建立互動式報表
 
@@ -72,7 +70,7 @@ ms.locfileid: "75432262"
 
 * 在與拒絕使用方式相同的時間週期期間，您的網站擲回多少例外狀況？
 * 檢視某些分頁之使用者的分頁載入時間散發是多久？
-* 有多少使用者檢視您的網站上的某些分頁集合，但是未檢視其他分頁集合？ 如果您有叢集使用者使用網站功能的不同子集 (使用 `join` 運算子搭配 [Kusto 查詢語言](/azure/kusto/query/)的 `kind=leftanti` 修飾詞)，這項功能相當有用。
+* 有多少使用者檢視您的網站上的某些分頁集合，但是未檢視其他分頁集合？ 如果您有叢集使用者使用網站功能的不同子集 (使用 `join` 運算子搭配 `kind=leftanti`Kusto 查詢語言[的 ](/azure/kusto/query/) 修飾詞)，這項功能相當有用。
 
 您也不只能查詢與您開啟活頁簿之應用程式有關的問題。 只要您擁有資源的存取權，您即可跨越多個 Application Insights 監視之應用程式及 Log Analytics 工作區進行查詢。
 
@@ -91,7 +89,7 @@ union app('app01').requests, app('app02').requests, requests
 
 ### <a name="advanced-analytic-query-settings"></a>進階分析查詢設定
 
-每個區段都有自己的進階設定，可以透過 [新增參數] 按鈕右側的設定圖示 ![Application Insights 活頁簿區段編輯控制項](./media/usage-workbooks/005-settings.png) 存取。
+每個區段都有自己的進階設定，可以透過 [新增參數]![](./media/usage-workbooks/005-settings.png) 按鈕右側的設定圖示 **Application Insights 活頁簿區段編輯控制項** 存取。
 
 ![Application Insights 活頁簿區段編輯控制項](./media/usage-workbooks/0006-settings-expanded.png)
 

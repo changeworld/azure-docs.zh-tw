@@ -1,18 +1,16 @@
 ---
 title: 在 Azure 監視器中使用應用程式變更分析來尋找 web 應用程式的問題 |Microsoft Docs
 description: 在 Azure 監視器中使用應用程式變更分析，針對 Azure App Service 上的即時網站上的應用程式問題進行疑難排解。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/07/2019
-ms.openlocfilehash: f2602dbee12f82c32ab3a3c2ec0566d8dfbeaa83
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 143f55a02a856b536172bd5fc2bac15903a228b9
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77211822"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655679"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>在 Azure 監視器中使用應用程式變更分析（預覽）
 
@@ -51,7 +49,7 @@ ms.locfileid: "77211822"
 
 變更資源相依性也會導致 web 應用程式發生問題。 例如，如果 web 應用程式呼叫 Redis 快取，Redis cache SKU 可能會影響 web 應用程式的效能。 若要偵測相依性中的變更，變更分析會檢查 web 應用程式的 DNS 記錄。 如此一來，它會識別可能造成問題的所有應用程式元件中的變更。
 目前支援下列相依性：
-- Web Apps
+- Web 應用程式
 - Azure 儲存體
 - Azure SQL
 

@@ -5,20 +5,20 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 10/04/2019
+ms.date: 02/26/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 12c28969ed00a1370b90e06e9d57cd666c50ea29
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f1d4c50766fea5f4c562dc6a9661945713a41f53
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73522435"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654714"
 ---
 1. 從 [ [Azure 入口網站](https://portal.azure.com)] 功能表中，選取 [**建立資源**]。 
 
    ![在 Azure 入口網站中建立資源](./media/vpn-gateway-add-gw-rm-portal-include/azure-portal-create-resource.png)
-2. 在 [**搜尋 marketplace** ] 欄位中，輸入「虛擬網路閘道」。 在搜尋傳回的結果中找出**虛擬網路閘道**，然後按一下該項目。 在 [**虛擬網路閘道**] 頁面上，按一下 [**建立**]。 這會開啟 [建立虛擬網路閘道] 頁面。
+2. 在 [**搜尋 Marketplace** ] 欄位中，輸入「虛擬網路閘道」。 在搜尋傳回的結果中找出**虛擬網路閘道**，然後按一下該項目。 在 [**虛擬網路閘道**] 頁面上，按一下 [**建立**]。 這會開啟 [建立虛擬網路閘道] 頁面。
 
    ![建立虛擬網路閘道頁面欄位](./media/vpn-gateway-add-gw-rm-portal-include/p2sgw.png "建立虛擬網路閘道頁面欄位")
 
@@ -34,7 +34,7 @@ ms.locfileid: "73522435"
 
    - **名稱**：為您的閘道命名。 命名閘道的方式與命名閘道子網不同。 這是您要建立之閘道物件的名稱。
    - **區域**：選取您要在其中建立此資源的區域。 閘道的區域必須與虛擬網路相同。
-   - 閘道類型︰選取 [VPN]。 VPN 閘道使用 **VPN** 虛擬網路閘道類型。 
+   - 閘道類型︰選取 [VPN]。 VPN 閘道使用 **VPN** 虛擬網路閘道類型。
    - **VPN 類型**：選取針對您的組態指定的 VPN 類型。 大部分組態需要路由式 VPN 類型。
    - **SKU**︰從下拉式清單中選取閘道 SKU。 下拉式清單中所列的 SKU 取決於您選取的 VPN 類型。 如需閘道 SKU 的詳細資訊，請參閱[閘道 SKU](../articles/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku)。
 

@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/25/2020
+ms.date: 02/26/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b974869d1462f449e8a241a5925ef345170b493a
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 08f770ced6cb1ec1102159788e1583d481436b08
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623863"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672492"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>SAP NetWeaver 的高可用性架構和案例
 
@@ -249,7 +249,7 @@ Azure 中的 SAP 高可用性可以分成三種類型：
 
 * **SAP 應用程式高可用性**： 
 
-    若要達到完整 SAP 系統高可用性，您必須保護所有重要的 SAP 系統元件。 例如：
+    若要達到完整 SAP 系統高可用性，您必須保護所有重要的 SAP 系統元件。 例如，
     * 備援 SAP 應用程式伺服器。
     * 唯一的元件。 範例可能是單一失敗點 (SPOF) 元件，例如 SAP ASCS/SCS 執行個體或資料庫管理系統 (DBMS)。
 
@@ -267,7 +267,7 @@ Azure 中的 SAP 高可用性與內部部署實體或虛擬環境中的 SAP 高�
 
 (可用性服務 #1/100) * (可用性服務 #2/100) * (可用性服務 #3/100) \*...
 
-例如：
+例如，
 
 (99.95/100) * (99.9/100) * (99.9/100) = 0.9975 或整體可用性 99.75%。
 
@@ -334,7 +334,7 @@ Azure 正在不同的 [Azure 區域](https://docs.microsoft.com/azure/availabili
 
 ## <a name="baed0eb3-c662-4405-b114-24c10a62954e"></a> Azure IaaS 上 SAP 應用程式的高可用性
 
-若要達到完整 SAP 系統高可用性，您必須保護所有重要的 SAP 系統元件。 例如：
+若要達到完整 SAP 系統高可用性，您必須保護所有重要的 SAP 系統元件。 例如，
   * 備援 SAP 應用程式伺服器。
   * 唯一的元件。 範例可能是單一失敗點 (SPOF) 元件，例如 SAP ASCS/SCS 執行個體或資料庫管理系統 (DBMS)。
 
@@ -420,6 +420,7 @@ Azure 縮放單位內的 Azure 可用性設定組可使用的更新和容錯網�
 > 如需 Linux 上多 SID 高可用性架構的詳細資訊，請參閱：
 
 * [SLES for SAP 應用程式上的 Azure Vm 上的 HA for SAP NW 多 SID 指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
+* [RHEL for SAP 應用程式上的 Azure Vm 上的 HA for SAP NW 多 SID 指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
 
 ### <a name="high-availability-dbms-instance"></a>高可用性 DBMS 執行個體
 

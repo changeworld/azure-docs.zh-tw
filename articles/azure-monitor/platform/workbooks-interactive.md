@@ -4,18 +4,17 @@ description: 使用預先建立及使用自訂參數之活頁簿來簡化複雜�
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
-ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 19fd8c108e8075d30ca494ca75d52952849c284a
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 4d9f6e48722f01970a90a3a1d8d8b58b5d939774
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872837"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658263"
 ---
 # <a name="interactive-workbooks"></a>互動式活頁簿
 
@@ -50,7 +49,7 @@ ms.locfileid: "74872837"
     
     ![顯示 [高級編輯器] 的影像，其中包含將欄位匯出為參數的設定](./media/workbooks-interactive/advanced-settings.png)
 
-8. 按一下 `Done Editing`。
+8. 按一下 [ `Done Editing`]。
 9. 使用步驟2和3加入另一個查詢控制項。
 10. 使用查詢編輯器來輸入分析的 KQL
     ```kusto

@@ -1,18 +1,17 @@
 ---
 title: 使用適用于 Cosmos DB 的 Azure 監視器監視 Azure Cosmos DB （預覽） |Microsoft Docs
 description: 本文說明 Cosmos DB 功能的 Azure 監視器，可讓 Cosmos DB 擁有者快速瞭解其 CosmosDB 帳戶的效能和使用問題。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/27/2019
-ms.openlocfilehash: dece5b0bb0508e2d83ee184e71ef0b4364d25ac8
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: d28db9907094a651835078f4459a985b9d15e589
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623013"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657379"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db-preview"></a>探索 Azure Cosmos DB 的 Azure 監視器（預覽）
 
@@ -109,7 +108,7 @@ Azure 監視器 for Azure Cosmos DB （預覽）可讓您以統一的互動體�
 
 如需狀態碼的完整清單，請參閱[AZURE COSMOS DB HTTP 狀態碼一文](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb)。
 
-### <a name="capacity"></a>Capacity
+### <a name="capacity"></a>容量
 
 選取頁面頂端的 [**容量**]，[活頁簿] 範本的 [**容量**] 部分隨即開啟。 它會顯示您擁有多少份檔、您的檔隨著時間成長、資料使用量，以及剩餘的可用儲存空間總量。  這可以用來協助識別潛在的儲存體和資料使用問題。
 

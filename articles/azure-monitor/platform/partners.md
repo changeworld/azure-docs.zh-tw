@@ -1,18 +1,15 @@
 ---
 title: 與 Azure 監視器整合的合作夥伴
 description: 了解 Azure Monitor 的監視合作夥伴以及如何存取與合作夥伴進行整合的文件。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 03/14/2019
-ms.openlocfilehash: e111bcdde9381e8e418e7027d8294aa7dad7e39d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 40ba4c4f0a90d5bca03afea67302a5dbb77de027
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023866"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659453"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 監視器合作夥伴整合
 
@@ -89,7 +86,7 @@ Dynatrace OneAgent 會透過 Azure 延伸模組機制來與 Azure VM 和應用�
 
 [請移至檔。][dynatrace-doc]
 
-## <a name="elastic"></a>彈性
+## <a name="elastic"></a>Elastic
 
 ![彈性標誌](./media/partners/elastic.png)
 
@@ -140,7 +137,7 @@ Microfocus **ArcSight**具有 Azure 監視器事件中樞的智慧型連接器�
 
 Microfocus**作業橋接器**會自動監視所有的混合式 IT 資源–任何裝置、作業系統、資料庫、應用程式或服務（不論其執行位置為何），並將 aiops 會套用至所有資料類型–事件、計量、記錄和相依性。 它提供了一組獨特的服務監視功能，結合了深度應用程式健康情況分析，並包含 Microsoft Azure 服務的完整效能和可用性監視。 「作業橋接器」可讓客戶在任何裝置上使用瀏覽器提供單一的半透明窗格，以供企業和 IT 專案關係人瞭解。
 
-了解更多
+進一步了解
 - [OB 套件總覽](https://www.microfocus.com/products/operations-bridge-suite/overview)
 - [下載](https://marketplace.microfocus.com/itom/content/obm-management-pack-for-microsoft-azure)
 - [SiteScope](https://docs.microfocus.com/itom/SiteScope:2019.05/MSAzureMonitor) -SiteScope 是作業橋接器套件中的元件。

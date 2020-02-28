@@ -1,18 +1,17 @@
 ---
 title: Azure 監視器術語更新 | Microsoft Docs
 description: 描述最近對 Azure 監視服務所做的術語變更。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 01d4c8b3b803c5fce4fe24a5c96e649212fc4dca
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 0c5e1096b0780d2f9e50389f772e63344935012b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894356"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657838"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Azure 監視器命名和術語變更
 最近已對 Azure 監視器進行了重大變更，合併了不同服務以簡化對 Azure 客戶的監視。 本文說明 Azure 監視器文件中的最新名稱和術語變更。

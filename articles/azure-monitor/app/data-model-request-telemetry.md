@@ -1,19 +1,15 @@
 ---
 title: 要求遙測資料模型-Azure 應用程式深入解析
 description: 要求遙測的 Application Insights 資料模型
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: b253a95a39f118efe82e36ac7261a4d6c62a99d6
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: d8a28063bf6780c3cace4ead81e289779b95eb9a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928844"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671897"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>要求遙測：Application Insights 資料模型
 
@@ -21,9 +17,9 @@ ms.locfileid: "74928844"
 
 要求遙測會使用自訂 `properties` 和 `measurements`支援標準的擴充性模型。
 
-## <a name="name"></a>Name
+## <a name="name"></a>名稱
 
-要求的名稱代表處理要求所採用的程式碼路徑。 較低的基數值可使群組要求更妥善。 針對 HTTP 要求，它代表 HTTP 方法和 URL 路徑範本，例如無實際 `id` 值的 `GET /values/{id}`。
+要求的名稱代表處理要求所採用的程式碼路徑。 較低的基數值可使群組要求更妥善。 針對 HTTP 要求，它代表 HTTP 方法和 URL 路徑範本，例如無實際 `GET /values/{id}` 值的 `id`。
 
 Application Insights web SDK 會將要求名稱依「現狀」傳送 (考量字母大小寫)。 UI 上的群組會區分大小寫，因此 `GET /Home/Index` 會與 `GET /home/INDEX` 分開計算，即使它們通常會產生相同的控制器和動作執行。 原因是 URL 通常會[區分大小寫](https://www.w3.org/TR/WD-html40-970708/htmlweb.html)。 您可能要查看 URL 出現的所有 `404` 是否都以大寫輸入。 您可以在[blog 文章](https://apmtips.com/blog/2015/02/23/request-name-and-url/)中，閱讀更多有關 ASP.NET Web SDK 的要求名稱集合。
 
@@ -47,7 +43,7 @@ Application Insights web SDK 會將要求名稱依「現狀」傳送 (考量字�
 
 最大長度︰1024 個字元
 
-## <a name="duration"></a>課程時間
+## <a name="duration"></a>持續期間
 
 要求持續時間格式為︰`DD.HH:MM:SS.MMMMMM`。 必須是正數且小於 `1000` 天。 這是必要欄位，因為要求遙測代表開頭與結尾的作業。
 
@@ -59,7 +55,7 @@ Application Insights web SDK 會將要求名稱依「現狀」傳送 (考量字�
 
 ## <a name="success"></a>成功
 
-表示成功或失敗的呼叫。 這是必填欄位。 當未明確設定為 `false` 時 - 要求會視為成功。 如果作業是例外狀況而中斷或傳回錯誤結果碼，將此值設定為 `false`。
+表示成功或失敗的呼叫。 這是必要欄位。 當未明確設定為 `false` 時 - 要求會視為成功。 如果作業是例外狀況而中斷或傳回錯誤結果碼，將此值設定為 `false`。
 
 針對 Web 應用程式，當回應碼小於 `400` 或等於 `401` 時，Application Insights 會將要求定義為成功。 不過有可能會發生這個預設對應與應用程式之語意不相符的情況。 回應碼 `404` 可能表示「沒有記錄」，這可能是一般流程的一部分。 它也可能表示中斷的連結。 針對中斷連結，您甚至可以實作更進階的邏輯。 只有當中斷的連結藉由分析 URL 查閱者位於相同網站時，您才可以將這些連結標示為失敗。 或是從公司的行動應用程式存取時，才可以將它們標示為失敗。 同樣地，從不支援重新導向的用戶端存取時，`301` 和 `302` 會表示失敗。
 

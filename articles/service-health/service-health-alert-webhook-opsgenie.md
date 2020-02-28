@@ -1,15 +1,14 @@
 ---
 title: 使用 webhook 透過 OpsGenie 傳送 Azure 服務健康狀態警示
 description: 取得關於 OpsGenie 執行個體服務健康情況事件的個人化通知。
-ms.service: service-health
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: d1f0ddb506b915697335ec71eab341a7cdb73dd7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: def12d5e7b1b93b8370cd7be61538fca53531ae1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465224"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654132"
 ---
 # <a name="send-azure-service-health-alerts-with-opsgenie-using-webhooks"></a>使用 webhook 透過 OpsGenie 傳送 Azure 服務健康狀態警示
 

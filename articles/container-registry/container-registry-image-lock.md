@@ -3,12 +3,12 @@ title: 鎖定映像
 description: 設定容器映射或存放庫的屬性，使其無法在 Azure container registry 中刪除或覆寫。
 ms.topic: article
 ms.date: 09/30/2019
-ms.openlocfilehash: 93a99f65d5bb21d696ce24365e7c819d2c34a8b0
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: da84767523bb6d948b71b1c1ad2ddaffb628354a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972924"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659691"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>鎖定 Azure container registry 中的容器映射
 
@@ -44,7 +44,7 @@ ms.locfileid: "75972924"
 
 ```azurecli
 az acr repository show \
-    --name myregistry --repository myrepo
+    --name myregistry --repository myrepo \
     --output jsonc
 ```
 

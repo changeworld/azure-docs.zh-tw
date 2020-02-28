@@ -1,28 +1,24 @@
 ---
 title: 使用多步驟 web 測試進行監視-Azure 應用程式深入解析
 description: 使用 Azure 應用程式 Insights 設定多步驟 web 測試，以監視您的 web 應用程式
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 10/23/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 8e630f324a7a0ebdfcc74941e760b80fabefa8d3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3b8baad127b16a1bd9d071d0c3d4df68da8c3304
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928960"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655935"
 ---
-# <a name="multi-step-web-tests"></a>多重步驟 Web 效能測試
+# <a name="multi-step-web-tests"></a>多重步驟 Web 測試
 
 您可以透過多步驟 web 測試，監視一系列記錄的 Url 和與網站的互動。 本文將逐步引導您完成使用 Visual Studio Enterprise 建立多重步驟 web 測試的程式。
 
 > [!NOTE]
-> 多步驟 web 測試取決於 Visual Studio webtest 檔案。 [宣佈](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/)，Visual Studio 2019 將會是具有 webtest 功能的最後一個版本。 請務必瞭解，雖然不會新增任何新功能，但目前仍支援 Visual Studio 2019 中的 webtest 功能，並會在產品的支援生命週期中繼續受到支援。 Azure 監視器產品小組在[此](https://github.com/MicrosoftDocs/azure-docs/issues/26050#issuecomment-468814101)解決了有關多步驟可用性測試未來的問題。  
+> 多步驟 web 測試取決於 Visual Studio webtest 檔案。 [宣佈](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/)，Visual Studio 2019 將會是具有 webtest 功能的最後一個版本。 請務必瞭解，雖然不會新增任何新功能，但目前仍支援 Visual Studio 2019 中的 webtest 功能，並會在產品的支援生命週期中繼續受到支援。 Azure 監視器產品小組在此解決了有關多步驟[可用性測試未來](https://github.com/MicrosoftDocs/azure-docs/issues/26050#issuecomment-468814101)的問題。  
 
-## <a name="pre-requisites"></a>先決條件
+## <a name="pre-requisites"></a>必要條件
 
 * Visual Studio 2017 企業版或更新版本。
 * Visual Studio web 效能和負載測試工具。
@@ -74,7 +70,7 @@ ms.locfileid: "74928960"
 
 ### <a name="plugging-time-and-random-numbers-into-your-test"></a>將時間和亂數字插入您的測試中
 
-假設您要測試的工具會從外部來源取得與時間相關的資料 (例如股票)。 當您記錄 Web 測試時，您必須使用特定的時間，但您將它們設為測試的參數：StartTime 和 EndTime。
+假設您要測試的工具會從外部來源取得與時間相關的資料 (例如股票)。 在記錄 Web 測試時，您必須使用特定的時間，但可以設定為測試、開始時間及結束時間的參數。
 
 ![我的絕佳股票應用程式螢幕擷取畫面](./media/availability-multistep/app-insights-72webtest-parameters.png)
 
@@ -82,21 +78,21 @@ ms.locfileid: "74928960"
 
 Web 測試日期時間外掛程式提供處理參數化時間的方式。
 
-1. 針對您想要的每個變數參數值，各加入一個 Web 測試外掛程式。 在 Web 測試工具列中，選擇 [加入 Web 測試外掛程式]。
+1. 對每個所要的變數參數值加入 Web 測試外掛程式。 在 Web 測試工具列中，選擇 [加入 Web 測試外掛程式]。
     
     ![新增 Web 測試外掛程式](./media/availability-multistep/app-insights-72webtest-plugin-name.png)
     
     在此範例中，我們會使用兩個日期時間外掛程式執行個體。 一個執行個體設定為 "15 minutes ago"，另一個則設定為 "now"。
 
-2. 開啟每個外掛程式的屬性。 為屬性命名，然後將它設為使用目前時間。 對其中一個，設定 [加入分鐘] = -15。
+2. 開啟每個外掛程式的屬性。 為它取一個名稱，然後設定為使用目前時間。 對於其中一個，請將 [加入分鐘] 設定為 -15。
 
     ![內容參數](./media/availability-multistep/app-insights-72webtest-plugin-parameters.png)
 
-3. 在 Web 測試參數中，使用 {{plug-in name}} 來參考外掛程式名稱。
+3. 在 Web 測試參數中，請使用 {{外掛程式名稱}} 來參考外掛程式的名稱。
 
     ![StartTime](./media/availability-multistep/app-insights-72webtest-plugins.png)
 
-現在將您的測試上傳至入口網站。 在每次執行測試時，它會使用動態值。
+現在將您的測試上傳至入口網站。 這將會在每個測試回合中使用動態值。
 
 ### <a name="dealing-with-sign-in"></a>處理登入
 
@@ -114,7 +110,7 @@ Web 測試日期時間外掛程式提供處理參數化時間的方式。
 | 憑證密碼 | 將授與內嵌私密金鑰存取權之用戶端憑證的密碼。 |
 | 用戶端憑證  | 具有 Base64 編碼格式之私密金鑰的用戶端憑證值。 |
 | 名稱識別碼 | 權杖的名稱識別碼 |
-| 不能晚於 | 權杖將會有效的 timespan。  預設值是 5 分鐘。 |
+| 不在之後 | 權杖將會有效的 timespan。  預設值是 5 分鐘。 |
 | 生效時間 | 在過去建立之權杖的時間範圍將會有效（以處理時間扭曲）。  預設值為（負）5分鐘。 |
 | 目標內容參數名稱 | 將接收所產生之判斷提示的內容參數。 |
 

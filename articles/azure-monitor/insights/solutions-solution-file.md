@@ -1,19 +1,18 @@
 ---
 title: 在 Azure 中建立管理解決方案檔 | Microsoft Docs
 description: 管理解決方案提供客戶可新增至其 Azure 環境的已封裝管理案例。  這篇文章提供詳細資料，說明如何建立要用於自己的環境中或可供客戶使用的管理解決方案。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/09/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d583f47a9c83abb1119262a2a6b70292cfa4ab69
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 999177f821b98adfa015520252bd3323d0892533
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977683"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662532"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>在 Azure 中建立管理解決方案檔 (預覽)
 > [!NOTE]
@@ -62,9 +61,9 @@ Azure 中的管理解決方案會實作為 [Resource Manager 範本](../../azure
 
 下表說明參數的屬性。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
-| type |變數的資料類型。 針對使用者顯示的輸入控制項視資料類型而定。<br><br>bool - 下拉式方塊<br>string - 文字方塊<br>int - 文字方塊<br>securestring - 密碼欄位<br> |
+| 類型 |變數的資料類型。 針對使用者顯示的輸入控制項視資料類型而定。<br><br>bool - 下拉式方塊<br>string - 文字方塊<br>int - 文字方塊<br>securestring - 密碼欄位<br> |
 | category |參數的選擇性類別。  相同類別中的參數會群組在一起。 |
 | 控制 |string 參數的其他功能。<br><br>datetime - Datetime 控制項隨即顯示。<br>guid - 會自動產生 Guid 值，但未顯示此參數。 |
 | description |參數的選擇性說明。  顯示於參數旁邊的資訊球形文字說明。 |
@@ -77,7 +76,7 @@ Azure 中的管理解決方案會實作為 [Resource Manager 範本](../../azure
 >
 >
 
-| 參數 | 類型 | 說明 |
+| 參數 | 類型 | 描述 |
 |:--- |:--- |:--- |
 | accountName |string |Azure 自動化帳戶名稱。 |
 | pricingTier |string |Log Analytics 工作區和 Azure 自動化帳戶的定價層。 |
@@ -159,7 +158,7 @@ Azure 中的管理解決方案會實作為 [Resource Manager 範本](../../azure
 
 
 ### <a name="dependencies"></a>相依性
-**dependsOn** 元素指定對另一個資源的[相依性](../../azure-resource-manager/templates/define-resource-dependency.md)。  安裝解決方案時，直到所有相依性建立後才會建立資源。  例如，解決方案可能會在使用[作業資源](solutions-resources-automation.md#automation-jobs)安裝時[啟動 Runbook](solutions-resources-automation.md#runbooks)。  作業資源會相依於 Runbook 資源，以確保在建立作業前建立 Runbook。
+**dependsOn** 元素指定對另一個資源的[相依性](../../azure-resource-manager/templates/define-resource-dependency.md)。  安裝解決方案時，直到所有相依性建立後才會建立資源。  例如，解決方案可能會在使用[作業資源](solutions-resources-automation.md#runbooks)安裝時[啟動 Runbook](solutions-resources-automation.md#automation-jobs)。  作業資源會相依於 Runbook 資源，以確保在建立作業前建立 Runbook。
 
 ### <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics 工作區和自動化帳戶
 管理解決方案需要 [Log Analytics 工作區](../../azure-monitor/platform/manage-access.md)來包含檢視，以及[自動化帳戶](../../automation/automation-security-overview.md#automation-account-overview)來包含 Runbook 和相關資源。  這些項目必須在建立解決方案中的資源前取得，且不得定義於解決方案本身。  使用者將會在部署解決方案時[指定工作區和帳戶](solutions.md#log-analytics-workspace-and-automation-account)，但身為作者，您應該考慮下列幾點。
@@ -205,22 +204,22 @@ Azure 中的管理解決方案會實作為 [Resource Manager 範本](../../azure
 ### <a name="properties"></a>屬性
 解決方案資源具有下表中的屬性。  這包括由定義解決方案安裝後如何管理資源的解決方案所參考及包含的資源。  解決方案中的每個資源應列在 **referencedResources** 或 **containedResources** 屬性中。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | workspaceResourceId |Log Analytics 工作區的識別碼，格式為 *\<資源群組識別碼 >:/providers/microsoft.operationalinsights/workspaces/\<工作區名稱\>* 。 |
 | referencedResources |解決方案移除時不應移除的解決方案資源清單。 |
 | containedResources |解決方案移除時應移除的解決方案資源清單。 |
 
-上述範例適用於具有 Runbook、排程和檢視的解決方案。  **properties** 元素會「參考」排程和 Runbook，因此在移除解決方案時不會移除它們。  會*包含*檢視，因此當移除解決方案時會移除它。
+上述範例適用於具有 Runbook、排程和檢視的解決方案。  *properties* 元素會「參考」排程和 Runbook，因此在移除解決方案時不會移除它們。  會*包含*檢視，因此當移除解決方案時會移除它。
 
-### <a name="plan"></a>方案
+### <a name="plan"></a>計畫
 解決方案資源的**計劃**實體具有下表中的屬性。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
-| NAME |解決方案的名稱。 |
-| version |作者所決定的解決方案版本。 |
-| product |識別解決方案的唯一字串。 |
+| 名稱 |解決方案的名稱。 |
+| 版本 |作者所決定的解決方案版本。 |
+| 產品 |識別解決方案的唯一字串。 |
 | publisher |解決方案的發佈者。 |
 
 

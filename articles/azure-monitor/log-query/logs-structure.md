@@ -1,18 +1,17 @@
 ---
 title: Azure 監視器記錄的結構 |Microsoft Docs
 description: 您需要記錄查詢來從 Azure 監視器擷取記錄資料。  本文描述新的記錄查詢在 Azure 監視器中的使用方式，並且提供在建立之前需要了解的概念。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 6ce8470da6b444cedb7bff1d14bcc6448b52fe94
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 1d647ba7e8d4f0e29252dfff95099e39bab87895
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893632"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662071"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Azure 監視器記錄的結構
 使用[記錄查詢](log-query-overview.md)快速取得資料見解的能力，是 Azure 監視器的強大功能。 若要建立有效率且有用的查詢，您應該瞭解一些基本概念，例如您想要的資料位於何處，以及其結構化方式。 本文提供您開始使用所需的基本概念。
@@ -53,7 +52,7 @@ union withsource = table *
 
 不同于 Log Analytics 工作區，Application Insights 應用程式有一組固定的資料表。 您無法將其他資料來源設定為寫入應用程式，因此不能建立其他資料表。 
 
-| 表格 | 描述 | 
+| Table | 描述 | 
 |:---|:---|
 | availabilityResults | 可用性測試中的摘要資料。 |
 | browserTimings      | 用戶端效能的相關資料，例如處理傳入資料所花費的時間。 |
@@ -63,7 +62,7 @@ union withsource = table *
 | 例外狀況          | 應用程式執行時間擲回的例外狀況。 |
 | pageViews           | 具有瀏覽器資訊的每個網站視圖的相關資料。 |
 | performanceCounters | 支援應用程式之計算資源的效能測量。 |
-| requests            | 每個應用程式要求的詳細資料。  |
+| 要求            | 每個應用程式要求的詳細資料。  |
 | traces              | 分散式追蹤的結果。 |
 
 針對應用程式，您可以在 Log Analytics 的 [**架構**] 索引標籤中，查看每個資料表的架構。
@@ -76,7 +75,7 @@ union withsource = table *
 | Log Analytics 工作區 | Application Insights 應用程式 | 描述 |
 |:---|:---|:---|
 | TimeGenerated | timestamp  | 建立記錄的日期和時間。 |
-| Type          | itemType   | 從中抓取記錄的資料表名稱。 |
+| 類型          | itemType   | 從中抓取記錄的資料表名稱。 |
 | _ResourceId   |            | 與記錄相關聯之資源的唯一識別碼。 |
 | _IsBillable   |            | 指定內嵌資料是否可計費。 |
 | _BilledSize   |            | 指定將計費的資料大小（以位元組為單位）。 |

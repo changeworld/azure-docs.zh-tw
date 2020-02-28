@@ -1,18 +1,17 @@
 ---
 title: Azure 監視器監視的內容
 description: Azure 監視器所監視的所有服務和其他資源的參考。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: 055ba8b5050aef639bbe6527292a18c8b405065a
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 3cd330e9c4ceba2feeb7a74cafe9f094fd03d690
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620263"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669109"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure 監視器監視的內容為何？
 本文說明 Azure 監視器監視的不同應用程式和服務。 
@@ -38,7 +37,7 @@ ms.locfileid: "77620263"
 
 解決方案是以針對特定應用程式或服務自訂的記錄查詢和 views 為基礎。 它們只會收集和分析記錄檔，並在經過一段時間後淘汰，以利深入解析。
 
-| 解決方法 | 描述 |
+| 解決方案 | 描述 |
 |:---|:---|
 | [代理程式健全狀況](insights/solution-agenthealth.md) | 分析 Log Analytics 代理程式的健康情況和設定。 |
 | [警示管理](platform/alert-management-solution.md) | 分析從 System Center Operations Manager、Nagios 或 Zabbix 收集的警示。 |
@@ -53,14 +52,14 @@ ms.locfileid: "77620263"
 - 記錄-此服務支援可收集平臺記錄和計量以 Azure 監視器記錄的診斷設定。
 - 深入解析-提供服務的自訂監視體驗之服務的深入解析。
 
-| 服務 | 度量 | 記錄 | 見解 | 注意 |
+| Service | 度量 | 記錄檔 | 見解 | 注意事項 |
 |:---|:---|:---|:---|:---|
 |Active Directory | 否 | 是 | [是](../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md) |  |
 |Active Directory B2C | 否 | 否 | 否 |  |
-|Active Directory Domain Services | 否 | 是 | 否 |  |
+|Active Directory 網域服務 | 否 | 是 | 否 |  |
 |活動記錄檔 | 否 | 是 | 否 | |
 |進階威脅防護 | 否 | 否 | 否 |  |
-|建議程式 | 否 | 否 | 否 |  |
+|Advisor | 否 | 否 | 否 |  |
 |AI Builder | 否 | 否 | 否 |  |
 |Analysis Services | 是 | 是 | 否 |  |
 |適用于 FHIR 的 API | 否 | 否 | 否 |  |
@@ -69,7 +68,7 @@ ms.locfileid: "77620263"
 |AppConfig | 否 | 否 | 否 |  |
 |應用程式閘道 | 是 | 是 | 否 |  |
 |證明服務 | 否 | 否 | 否 |  |
-|自動化 | 是 | 是 | 否 |  |
+|Automation | 是 | 是 | 否 |  |
 |Azure Service Manager （RDFE） | 否 | 否 | 否 |  |
 |Backup | 否 | 是 | 否 |  |
 |Bastion | 否 | 否 | 否 |  |
@@ -105,11 +104,11 @@ ms.locfileid: "77620263"
 |Dynamics 365 Customer Engagement | 否 | 否 | 否 |  |
 |Dynamics 365 財務和營運 | 否 | 否 | 否 |  |
 |Event Grid | 是 | 否 | 否 |  |
-|事件中樞 | 是 | 是 | 否 |  |
+|事件中心 | 是 | 是 | 否 |  |
 |ExpressRoute | 是 | 是 | 否 |  |
 |防火牆 | 是 | 是 | 否 |  |
 |Front Door | 是 | 是 | 否 |  |
-|Functions | 是 | 是 | 否 |  |
+|函式 | 是 | 是 | 否 |  |
 |HDInsight | 否 | 是 | 否 |  |
 |HPC 快取 | 否 | 否 | 否 |  |
 |資訊保護 | 否 | 是 | 否 |  |
@@ -129,12 +128,12 @@ ms.locfileid: "77620263"
 |Microsoft PowerApps | 否 | 否 | 否 |  |
 |Microsoft 社會參與 | 否 | 否 | 否 |  |
 |Microsoft Stream | 是 | 是 | 否 |  |
-|遷移 | 否 | 否 | 否 |  |
-|Multi-Factor Authentication | 否 | 是 | 否 |  |
+|移轉 | 否 | 否 | 否 |  |
+|多因素驗證 | 否 | 是 | 否 |  |
 |網路監看員 | 是 | 是 | 否 |  |
 |通知中樞 | 是 | 否 | 否 |  |
 |Open Datasets | 否 | 否 | 否 |  |
-|原則 | 否 | 否 | 否 |  |
+|Policy(Windows Intune 說明：原則) | 否 | 否 | 否 |  |
 |Power BI | 是 | 是 | 否 |  |
 |Power BI Embedded | 否 | 否 | 否 |  |
 |私人連結 | 否 | 否 | 否 |  |
@@ -151,9 +150,9 @@ ms.locfileid: "77620263"
 |Site Recovery | 否 | 是 | 否 |  |
 |春季雲端服務 | 否 | 否 | 否 |  |
 |SQL 資料倉儲 | 是 | 是 | 否 |  |
-|SQL Database | 是 | 是 | 否 |  |
+|SQL 資料庫 | 是 | 是 | 否 |  |
 |SQL Server Stretch Database | 是 | 是 | 否 |  |
-|Stack | 否 | 否 | 否 |  |
+|堆疊 | 否 | 否 | 否 |  |
 |儲存體 | 是 | 否 | [是](insights/storage-insights-overview.md) |  |
 |儲存體快取 | 否 | 否 | 否 |  |
 |儲存體同步服務 | 否 | 否 | 否 |  |
@@ -195,7 +194,7 @@ ms.locfileid: "77620263"
 ## <a name="other-solutions"></a>其他解決方案
 其他解決方案可用於監視不同的應用程式和服務，但已停止作用中的開發，而且它們可能無法在所有區域使用。 其涵蓋于 Azure Log Analytics 資料內嵌服務等級協定。
 
-| 解決方法 | 描述 |
+| 解決方案 | 描述 |
 |:---|:---|
 | [Active Directory 健康情況檢查](insights/ad-assessment.md) | 評估 Active Directory 環境的風險和健康情況。 |
 | [Active Directory 複寫狀態](insights/ad-replication-status.md) | 會定期監視您的 Active Directory 環境是否有任何複寫失敗。 |
@@ -210,7 +209,7 @@ ms.locfileid: "77620263"
 
 ## <a name="third-party-integration"></a>協力廠商整合
 
-| 解決方法 | 描述 |
+| 解決方案 | 描述 |
 |:---|:---|
 | [ITSM](platform/itsmc-overview.md) | IT Service Management Connector (ITSMC) 可讓您連線 Azure 和支援的 IT 服務管理 (ITSM) 產品/服務。  |
 

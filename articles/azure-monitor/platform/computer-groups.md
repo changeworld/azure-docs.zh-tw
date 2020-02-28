@@ -1,18 +1,17 @@
 ---
 title: Azure 監視器記錄查詢中的電腦群組 |Microsoft Docs
 description: Azure 監視器中的電腦群組可讓您將記錄查詢範圍限於一組特定的電腦。  這篇文章說明可用來建立電腦群組的不同方法，以及如何將它們用在記錄查詢中。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/05/2019
-ms.openlocfilehash: eedf04a2168c67449f97d8e462d4ff82653a22b3
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: a005b6cec811b8a584123dc4c8abab77766961e0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513691"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655325"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Azure 監視器記錄檔查詢中的電腦群組
 Azure 監視器中的電腦群組可讓您將[記錄查詢](../log-query/log-query-overview.md)範圍限於一組特定的電腦。  使用您所定義的查詢，或從不同來源匯入群組，將電腦填入每個群組中。  當記錄查詢包含群組時，結果就僅限於與群組中的電腦相符的記錄。
@@ -22,12 +21,12 @@ Azure 監視器中的電腦群組可讓您將[記錄查詢](../log-query/log-que
 ## <a name="creating-a-computer-group"></a>建立電腦群組
 您可以使用下表的任何方法，在 Azure 監視器中建立電腦群組。  下列各節提供每個方法的詳細資料。 
 
-| 方法 | 說明 |
+| 方法 | 描述 |
 |:--- |:--- |
 | 記錄檔查詢 |建立記錄查詢來傳回電腦清單。 |
 | 記錄檔搜尋 API |使用記錄搜尋 API，根據記錄查詢結果，以程式設計方式建立電腦群組。 |
 | Active Directory |自動掃描屬於 Active Directory 網域的任何代理程式電腦的群組成員資格，並為每個安全性群組在 Azure 監視器中建立一個群組。 (僅限 Windows 機器)|
-| Configuration Manager | 從 Microsoft 端點 Configuration Manager 匯入集合，並在 Azure 監視器中為每個建立群組。 |
+| 組態管理員 | 從 Microsoft 端點 Configuration Manager 匯入集合，並在 Azure 監視器中為每個建立群組。 |
 | Windows Server Update Services |自動掃描 WSUS 伺服器或用戶端來找出目標群組，並為每個群組在 Azure 監視器中建立一個群組。 |
 
 ### <a name="log-query"></a>記錄檔查詢
@@ -47,7 +46,7 @@ Azure 監視器中的電腦群組可讓您將[記錄查詢](../log-query/log-que
 
 下表描述定義電腦群組的屬性。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:---|:---|
 | 名稱   | 要在入口網站中顯示的查詢名稱。 |
 | 函式別名 | 用來識別查詢中電腦群組的唯一別名。 |
@@ -75,7 +74,7 @@ Azure 監視器中的電腦群組可讓您將[記錄查詢](../log-query/log-que
 
 匯入群組後，此功能表會列出已偵測到群組成員資格的電腦數目，以及匯入的群組數目。  您可以按一下任一連結，以連同此資訊傳回 **ComputerGroup** 記錄。
 
-### <a name="configuration-manager"></a>Configuration Manager
+### <a name="configuration-manager"></a>組態管理員
 當您設定 Azure 監視器以匯入 Configuration Manager 集合成員資格時，它會為每個集合建立電腦群組。  每 3 個小時就會擷取一次集合成員資格資訊，以便電腦群組會隨時保持最新狀態。 
 
 您必須先[將 Configuration Manager 連線至 Azure 監視器](collect-sccm.md)，才能匯入 Configuration Manager 集合。  
@@ -119,7 +118,7 @@ Azure 監視器中的電腦群組可讓您將[記錄查詢](../log-query/log-que
 ## <a name="computer-group-records"></a>電腦群組記錄
 針對從 Active Directory 或 WSUS 建立每個電腦群組成員資格，Log Analytics 工作區中會建立一筆記錄。  這些記錄的類型為 **ComputerGroup**，且具有下表中的屬性。  如果電腦群組是根據記錄查詢，則不會建立記錄。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | `Type` |*ComputerGroup* |
 | `SourceSystem` |*SourceSystem* |

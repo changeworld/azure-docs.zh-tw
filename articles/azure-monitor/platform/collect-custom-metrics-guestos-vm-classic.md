@@ -3,17 +3,16 @@ title: 將傳統 Windows VM 計量傳送至 Azure 監視器計量資料庫
 description: 將客體 OS 計量傳送到 Windows 虛擬機器的 Azure 監視器資料存放區 (傳統)
 author: anirudhcavale
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: ''
-ms.openlocfilehash: d911a6b65ba0d63bca09437f6451019addcbc0b3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 65bb1a3915ece384974da12b4e7a1ad0c1e08133
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977628"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655799"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>將客體作業系統計量傳送至 Windows 虛擬機器的 Azure 監視器計量資料庫（傳統）
 

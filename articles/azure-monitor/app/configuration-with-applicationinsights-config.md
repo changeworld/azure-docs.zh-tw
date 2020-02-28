@@ -1,19 +1,15 @@
 ---
 title: ApplicationInsights.config 參考 - Azure | Microsoft Docs
 description: 啟用或停用資料收集模組，以及加入效能計數器和其他參數。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/22/2019
 ms.reviewer: olegan
-ms.openlocfilehash: f7f32cc7f160a7ac9253b60e8c0c13926c110ac2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b2c407036277b17c0f8c08f3261c932a6dc66624
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407094"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655476"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>使用 ApplicationInsights.config 或 .xml 設定 Application Insights SDK
 Application Insights .NET SDK 是由數個 NuGet 封裝所組成。 [核心封裝](https://www.nuget.org/packages/Microsoft.ApplicationInsights) 提供 API，用於傳送遙測至 Application Insights。 [其他套件](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights)提供遙測*模組*和*初始設定式*，用於自動從您的應用程式和其內容追蹤遙測。 藉由調整設定檔案，您可以啟用或停用遙測模組和初始化運算式，並為其中一部分設定參數。
@@ -68,7 +64,7 @@ Application Insights .NET SDK 是由數個 NuGet 封裝所組成。 [核心封�
 * `Microsoft.ApplicationInsights.Web.RequestTrackingTelemetryModule`
 * [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) NuGet 封裝。
 
-### <a name="exception-tracking"></a>例外狀況追蹤
+### <a name="exception-tracking"></a>追蹤的例外狀況
 `ExceptionTrackingTelemetryModule` 追蹤 Web 應用程式中未處理的例外狀況。 請參閱[失敗和例外][exceptions]狀況。
 
 * `Microsoft.ApplicationInsights.Web.ExceptionTrackingTelemetryModule`
@@ -110,9 +106,9 @@ Microsoft.ApplicationInsights 封裝提供 SDK 的 [核心 API](https://msdn.mic
 
 * `AccountIdTelemetryInitializer` 設定 AccountId 屬性。
 * `AuthenticatedUserIdTelemetryInitializer` 如 JavaScript SDK 設定般設定 AuthenticatedUserId 屬性。
-* 針對具有從 Azure 執行階段環境擷取之資訊的所有遙測項目，`AzureRoleEnvironmentTelemetryInitializer` 會更新 `Device` 內容的 `RoleName` 和 `RoleInstance` 屬性。
-* 針對具有從 MS 組建所產生之 `BuildInfo.config` 檔案擷取值的所有遙測項目，`BuildInfoConfigComponentVersionTelemetryInitializer` 會更新 `Component` 內容的 `Version` 屬性。
-* `ClientIpHeaderTelemetryInitializer` 會根據要求的 `X-Forwarded-For` HTTP 標頭來更新所有遙測項目之 `Location` 內容的 `Ip` 屬性。
+* 針對具有從 Azure 執行階段環境擷取之資訊的所有遙測項目，`AzureRoleEnvironmentTelemetryInitializer` 會更新 `RoleName` 內容的 `RoleInstance` 和 `Device` 屬性。
+* 針對具有從 MS 組建所產生之 `BuildInfoConfigComponentVersionTelemetryInitializer` 檔案擷取值的所有遙測項目，`Version` 會更新 `Component` 內容的 `BuildInfo.config` 屬性。
+* `ClientIpHeaderTelemetryInitializer` 會根據要求的 `Ip` HTTP 標頭來更新所有遙測項目之 `Location` 內容的 `X-Forwarded-For` 屬性。
 * `DeviceTelemetryInitializer` 會更新所有遙測項目 `Device` 內容的下列屬性。
   * `Type` 設定為 "PC"
   * `Id` 設定為 Web 應用程式執行所在電腦的網域名稱。
@@ -120,14 +116,14 @@ Microsoft.ApplicationInsights 封裝提供 SDK 的 [核心 API](https://msdn.mic
   * `Model` 設定為使用 WMI 從 `Win32_ComputerSystem.Model` 欄位擷取的值。
   * `NetworkType` 設定為從 `NetworkInterface` 擷取的值。
   * `Language` 設定為 `CurrentCulture` 的名稱。
-* 針對具有 Web 應用程式執行所在電腦之網域名稱的所有遙測項目，`DomainNameRoleInstanceTelemetryInitializer` 會更新 `Device` 內容的 `RoleInstance` 屬性。
-* `OperationNameTelemetryInitializer` 會根據 HTTP 方法，以及 ASP.NET MVC 控制器的名稱和叫用來處理要求的動作，更新所有遙測項目 `RequestTelemetry` 之 `Name` 屬性和 `Operation` 內容的 `Name` 屬性。
-* `OperationIdTelemetryInitializer` 或 `OperationCorrelationTelemetryInitializer` 在處理具有自動產生的 `RequestTelemetry.Id` 的要求時，會更新追蹤的所有遙測項目的 `Operation.Id` 內容屬性。
-* 針對具有從使用者瀏覽器中執行的 Application Insights JavaScript 檢測程式碼所產生之 `ai_session` Cookie 擷取值的所有遙測項目，`SessionTelemetryInitializer` 會更新 `Session` 內容的 `Id` 屬性。
+* 針對具有 Web 應用程式執行所在電腦之網域名稱的所有遙測項目，`DomainNameRoleInstanceTelemetryInitializer` 會更新 `RoleInstance` 內容的 `Device` 屬性。
+* `OperationNameTelemetryInitializer` 會根據 HTTP 方法，以及 ASP.NET MVC 控制器的名稱和叫用來處理要求的動作，更新所有遙測項目 `Name` 之 `RequestTelemetry` 屬性和 `Name` 內容的 `Operation` 屬性。
+* `OperationIdTelemetryInitializer` 或 `OperationCorrelationTelemetryInitializer` 在處理具有自動產生的 `Operation.Id` 的要求時，會更新追蹤的所有遙測項目的 `RequestTelemetry.Id` 內容屬性。
+* 針對具有從使用者瀏覽器中執行的 Application Insights JavaScript 檢測程式碼所產生之 `SessionTelemetryInitializer` Cookie 擷取值的所有遙測項目，`Id` 會更新 `Session` 內容的 `ai_session` 屬性。
 * `SyntheticTelemetryInitializer` 或 `SyntheticUserAgentTelemetryInitializer` 在處理來自綜合來源 (例如可用性測試或搜尋引擎 Bot) 的要求時，會更新追蹤的所有遙測項目的 `User`、`Session` 和 `Operation` 內容屬性。 根據預設， [計量瀏覽器](../../azure-monitor/app/metrics-explorer.md) 不會顯示綜合的遙測。
 
     `<Filters>` 會設定要求的識別屬性。
-* 針對具有從使用者瀏覽器中執行之 Application Insights JavaScript 檢測程式碼所產生的 `ai_user` Cookie 擷取值的所有遙測項目，`UserTelemetryInitializer` 會更新 `User` 內容的 `Id` 和 `AcquisitionDate` 屬性。
+* 針對具有從使用者瀏覽器中執行之 Application Insights JavaScript 檢測程式碼所產生的 `UserTelemetryInitializer` Cookie 擷取值的所有遙測項目，`Id` 會更新 `AcquisitionDate` 內容的 `User` 和 `ai_user` 屬性。
 * `WebTestTelemetryInitializer` 會針對來自[可用性測試](../../azure-monitor/app/monitor-web-app-availability.md)的 HTTP 要求，設定使用者識別碼、會話識別碼和綜合來源屬性。
   `<Filters>` 會設定要求的識別屬性。
 
@@ -139,7 +135,7 @@ Microsoft.ApplicationInsights 封裝提供 SDK 的 [核心 API](https://msdn.mic
 您可以[撰寫自己的遙測處理器](../../azure-monitor/app/api-filtering-sampling.md#filtering)。
 
 #### <a name="adaptive-sampling-telemetry-processor-from-200-beta3"></a>彈性取樣遙測處理器（來自 2.0.0-Beta3）
-此選項預設為啟用狀態。 如果您的應用程式傳送許多遙測，此處理器會移除其中一些遙測。
+預設為啟用。 如果您的應用程式傳送許多遙測，此處理器會移除其中一些遙測。
 
 ```xml
 

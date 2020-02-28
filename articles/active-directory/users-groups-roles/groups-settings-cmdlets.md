@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b5d74c7c599f31694a68e7582a6447af8471508
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: a727cd57e470f248321011d505f8037808f64298
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984943"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656869"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>設定群組設定的 Azure Active Directory Cmdlet
 
@@ -28,7 +28,7 @@ ms.locfileid: "76984943"
 > [!IMPORTANT]
 > 某些設定需要 Azure Active Directory Premium P1 授權。 如需詳細資訊，請參閱[範本設定](#template-settings)資料表。
 
-如需有關如何防止非系統管理員的使用者建立安全性群組的詳細資訊，請依照 [Set-MSOLCompanySettings](https://docs.microsoft.com/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) \(英文\) 中所述的內容設定  `Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False`。
+如需有關如何防止非系統管理員的使用者建立安全性群組的詳細資訊，請依照  `Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False`Set-MSOLCompanySettings[ \(英文\) 中所述的內容設定 ](https://docs.microsoft.com/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)。
 
 Office 365 群組設定是使用 Settings 物件和 SettingsTemplate 物件所設定。 一開始，您在目錄中不會看到任何設定物件，因為已使用預設設定來設定您的目錄。 若要變更預設設定，您必須使用設定範本來建立新的設定物件。 設定範本是由 Microsoft 所定義。 有數個不同的設定範本。 若要設定目錄的 Office 365 群組設定，您要使用名為 "Group.Unified" 的範本。 若要在單一群組上設定 Office 365 群組設定，請使用名為 "Group.Unified.Guest" 的範本。 此範本是用來管理 Office 365 群組的來賓存取權。 
 
@@ -63,7 +63,7 @@ Cmdlet 是 Azure Active Directory PowerShell V2 模組的一部分。 如需有�
    ```
    這個 Cmdlet 呼叫會傳回所有可用的範本︰
   
-   ```powershell
+   ``` PowerShell
    Id                                   DisplayName         Description
    --                                   -----------         -----------
    62375ab9-6b52-47ed-826b-58e47e0e304b Group.Unified       ...
@@ -77,7 +77,7 @@ Cmdlet 是 Azure Active Directory PowerShell V2 模組的一部分。 如需有�
   
    ```powershell
    $TemplateId = (Get-AzureADDirectorySettingTemplate | where { $_.DisplayName -eq "Group.Unified" }).Id
-   $Template = Get-AzureADDirectorySettingTemplate -Id $TemplateId
+   $Template = Get-AzureADDirectorySettingTemplate | where -Property Id -Value $TemplateId -EQ
    ```
 3. 接下來，根據該範本建立新的設定物件：
   
@@ -149,20 +149,20 @@ Cmdlet 是 Azure Active Directory PowerShell V2 模組的一部分。 如需有�
 
 | **設定** | **說明** |
 | --- | --- |
-|  <ul><li>EnableGroupCreation<li>類型：布林值<li>預設值︰True |此旗標指出是否允許非管理使用者在目錄中建立 Office 365 群組。 此設定不需要 Azure Active Directory Premium P1 授權。|
+|  <ul><li>EnableGroupCreation<li>類型：Boolean<li>預設：True |此旗標指出是否允許非管理使用者在目錄中建立 Office 365 群組。 此設定不需要 Azure Active Directory Premium P1 授權。|
 |  <ul><li>GroupCreationAllowedGroupId<li>類型：字串<li>預設值：“” |即使 EnableGroupCreation == false，仍允許成員建立 Office 365 群組之安全性群組的 GUID。 |
 |  <ul><li>UsageGuidelinesUrl<li>類型：字串<li>預設值：“” |群組使用方針的連結。 |
 |  <ul><li>ClassificationDescriptions<li>類型：字串<li>預設值：“” | 分類說明的以逗號分隔清單。 ClassificationDescriptions 的值只能採用下列格式：<br>$setting ["ClassificationDescriptions"] = "分類：描述，分類：描述"<br>其中分類會符合 ClassificationList 中的字串。<br>當 EnableMIPLabels = = True 時，此設定不適用。|
 |  <ul><li>DefaultClassification<li>類型：字串<li>預設值：“” | 如果尚未指定，則是做為群組預設分類的分類。<br>當 EnableMIPLabels = = True 時，此設定不適用。|
 |  <ul><li>PrefixSuffixNamingRequirement<li>類型：字串<li>預設值：“” | 長度上限為 64 個字元的字串，用以定義為 Office 365 群組設定的命名慣例。 如需詳細資訊，請參閱[對 Office 365 群組強制執行命名原則 (預覽)](groups-naming-policy.md)。 |
 | <ul><li>CustomBlockedWordsList<li>類型：字串<li>預設值：“” | 使用者在群組名稱或別名中不允許使用之片語的逗號分隔字串。 如需詳細資訊，請參閱[對 Office 365 群組強制執行命名原則 (預覽)](groups-naming-policy.md)。 |
-| <ul><li>EnableMSStandardBlockedWords<li>類型：布林值<li>預設值：“False” | 請勿使用
-|  <ul><li>AllowGuestsToBeGroupOwner<li>類型：布林值<li>預設值︰False | 布林值，表示來賓使用者是否可以是群組的擁有者。 |
-|  <ul><li>AllowGuestsToAccessGroups<li>類型：布林值<li>預設值︰True | 用以指出來賓使用者是否可存取 Office 365 內容的布林值。  此設定不需要 Azure Active Directory Premium P1 授權。|
+| <ul><li>EnableMSStandardBlockedWords<li>類型：Boolean<li>預設值：“False” | 請勿使用
+|  <ul><li>AllowGuestsToBeGroupOwner<li>類型：Boolean<li>預設值：False | 布林值，表示來賓使用者是否可以是群組的擁有者。 |
+|  <ul><li>AllowGuestsToAccessGroups<li>類型：Boolean<li>預設：True | 用以指出來賓使用者是否可存取 Office 365 內容的布林值。  此設定不需要 Azure Active Directory Premium P1 授權。|
 |  <ul><li>GuestUsageGuidelinesUrl<li>類型：字串<li>預設值：“” | 來賓使用指導方針的連結 url。 |
-|  <ul><li>AllowToAddGuests<li>類型：布林值<li>預設值︰True | 布林值表示是否允許將來賓新增至此目錄。 <br>如果*EnableMIPLabels*設定為*True* ，而且來賓原則與指派給群組的敏感度標籤相關聯，則此設定可能會遭到覆寫，而且會變成隻讀。 |
+|  <ul><li>AllowToAddGuests<li>類型：Boolean<li>預設：True | 布林值表示是否允許將來賓新增至此目錄。 <br>如果*EnableMIPLabels*設定為*True* ，而且來賓原則與指派給群組的敏感度標籤相關聯，則此設定可能會遭到覆寫，而且會變成隻讀。 |
 |  <ul><li>ClassificationList<li>類型：字串<li>預設值：“” |可套用至 Office 365 群組、以逗號分隔的有效分類值清單。 <br>當 EnableMIPLabels = = True 時，此設定不適用。|
-|  <ul><li>EnableMIPLabels<li>類型：布林值<li>預設值：“False” |此旗標指出是否可以將 Microsoft 365 合規性中心發佈的敏感度標籤套用至 Office 365 群組。 如需詳細資訊，請參閱[指派 Office 365 群組的敏感度標籤](groups-assign-sensitivity-labels.md)。 |
+|  <ul><li>EnableMIPLabels<li>類型：Boolean<li>預設值：“False” |此旗標指出是否可以將 Microsoft 365 合規性中心發佈的敏感度標籤套用至 Office 365 群組。 如需詳細資訊，請參閱[指派 Office 365 群組的敏感度標籤](groups-assign-sensitivity-labels.md)。 |
 
 ## <a name="example-configure-guest-policy-for-groups-at-the-directory-level"></a>範例：在目錄層級設定群組的來賓原則
 1. 取得所有設定範本：
@@ -171,7 +171,7 @@ Cmdlet 是 Azure Active Directory PowerShell V2 模組的一部分。 如需有�
    ```
 2. 若要在目錄層級設定群組的來賓原則，您需要群組. 整合範本
    ```powershell
-   $Template = Get-AzureADDirectorySettingTemplate -Id 62375ab9-6b52-47ed-826b-58e47e0e304b
+   $Template = Get-AzureADDirectorySettingTemplate | where -Property Id -Value "62375ab9-6b52-47ed-826b-58e47e0e304b" -EQ
    ```
 3. 接下來，根據該範本建立新的設定物件：
   
@@ -262,7 +262,7 @@ Cmdlet 是 Azure Active Directory PowerShell V2 模組的一部分。 如需有�
    ```
 2. 擷取 Groups.Unified.Guest 範本的範本物件：
    ```powershell
-   $Template1 = Get-AzureADDirectorySettingTemplate -Id 08d542b9-071f-4e16-94b0-74abb372e3d9
+   $Template1 = Get-AzureADDirectorySettingTemplate | where -Property Id -Value "08d542b9-071f-4e16-94b0-74abb372e3d9" -EQ
    ```
 3. 從範本建立新的設定物件︰
    ```powershell

@@ -1,18 +1,14 @@
 ---
 title: JAVA web 應用程式效能監視-Azure 應用程式深入資訊
 description: 使用 Application Insights 延伸 Java 網站的效能和使用量監視。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/10/2019
-ms.openlocfilehash: 8194c4b16d114be9b2b95ff56dea59d98cfdae10
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b29618179d22eac97a07bf41906465aba1fd7929
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931136"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657022"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>監視 JAVA web 應用程式中的相依性、攔截到的例外狀況和方法執行時間
 
@@ -126,8 +122,8 @@ ms.locfileid: "74931136"
 
 [診斷相依性問題 - 深入了解](../../azure-monitor/app/asp-net-dependencies.md#diagnosis)。
 
-## <a name="questions-problems"></a>有問題？ 有問題？
-* 沒有資料嗎？ [設定防火牆例外狀況](../../azure-monitor/app/ip-addresses.md)
+## <a name="questions-problems"></a>有疑問嗎？ 有問題嗎？
+* 沒有資料？ [設定防火牆例外狀況](../../azure-monitor/app/ip-addresses.md)
 * [疑難排解 Java](java-troubleshoot.md)
 
 <!--Link references-->

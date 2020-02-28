@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/21/2020
+ms.date: 02/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5df7eedcd92d338d3f741f7092ff6ef73f3442d
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: d3df906936cc4e47ee1f43adb0fcbaa0e8c04b0f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585878"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656308"
 ---
 # <a name="conditional-access-grant"></a>條件式存取：授與
 
@@ -55,7 +55,7 @@ ms.locfileid: "77585878"
 
 已部署 Microsoft Intune 的組織可以使用其裝置所傳回的資訊，來識別符合特定合規性需求的裝置。 此原則合規性資訊會從 Intune 轉送至 Azure AD，讓條件式存取可以決定要授與或封鎖資源的存取權。 如需相容性原則的詳細資訊，請參閱[使用 Intune 在裝置上設定規則以允許存取您組織中的資源一](https://docs.microsoft.com/intune/protect/device-compliance-get-started)文。
 
-Intune （適用于任何裝置作業系統）或協力廠商 MDM 系統（適用于 Windows 10 裝置）可能會將裝置標示為符合規範。 不支援針對 Windows 10 以外的裝置 OS 類型使用的第三方 MDM 系統。
+Intune （適用于任何裝置作業系統）或協力廠商 MDM 系統（適用于 Windows 10 裝置）可能會將裝置標示為符合規範。 Jamf pro 是唯一支援的協力廠商 MDM 系統。 如需整合的詳細資訊，請參閱[整合 Jamf Pro 與 Intune 以取得相容性](/intune/protect/conditional-access-integrate-jamf)一文。
 
 裝置必須先在 Azure AD 中註冊，才可以標示為符合規範。 如需裝置註冊的詳細資訊，請參閱[什麼是裝置身分識別一](../devices/overview.md)文。
 

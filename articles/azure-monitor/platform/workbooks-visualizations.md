@@ -4,24 +4,23 @@ description: 瞭解所有 Azure 監視器活頁簿視覺效果元件，包括文
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
-ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: f3f8f377ac8e65d375f8f78c803db5427fd31007
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d05902f47dff3dd2f8a63ae240c0b8825a5c441f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75394477"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658025"
 ---
 # <a name="azure-monitor-workbook-visualizations"></a>Azure 監視器活頁簿視覺效果
 
 Azure 監視器活頁簿支援多種不同的視覺效果樣式，以符合您的報告需求。 本文提供每種視覺效果類型的範例。
 
-## <a name="text"></a>文字
+## <a name="text"></a>Text
 
 活頁簿可讓作者在其活頁簿中包含文字區塊。 此文字可以是遙測的人工分析，這項資訊可協助使用者解讀您的資料、章節標題等等。
 
@@ -138,7 +137,7 @@ Azure 監視器活頁簿支援多種不同的視覺效果樣式，以符合您�
 6. 將視覺效果設為**磚**
 7. 按一下 [**磚設定**] 按鈕以開啟 [設定] 窗格
 8. 在 [**磚欄位**] 中，設定：
-    * 標題：`name`
+    * 標題： `name`
     * Left： `Requests`，轉譯器： `Big Number`，色調色板： `Green to Red`，最小值： `0`
     * 下： `appName`
 9. 按一下窗格底部的 [**儲存並關閉**] 按鈕。
@@ -197,7 +196,7 @@ Azure 監視器活頁簿支援多種不同的視覺效果樣式，以符合您�
 | `Show the expander on` | 要在其上顯示樹狀結構展開器的資料行。 樹狀結構方格通常會隱藏其 [識別碼] 和 [父系識別碼] 欄位，因為它們並不容易閱讀。 相反地，展開器會出現在具有更容易閱讀值的欄位上（例如實體的名稱） |
 | `Expand the top level of the tree` | 若選取此選項，樹狀目錄方格將會在最上層展開。 如果您想要依預設顯示詳細資訊，則很有用 |
 
-## <a name="graphs"></a>圖表
+## <a name="graphs"></a>圖形
 
 活頁簿支援根據記錄中的資料視覺化任意圖形，以顯示監視實體之間的關聯性。
 
@@ -234,15 +233,15 @@ Azure 監視器活頁簿支援多種不同的視覺效果樣式，以符合您�
 7. 將視覺效果設定為**圖形**
 8. 按一下 [**圖形設定**] 按鈕以開啟 [設定] 窗格
 9. 在底部的 [_版面配置欄位_] 中，設定：
-    * `Node Id`：`Id`
-    * `Source Id`：`SourceId`
-    * `Target Id`：`TargetId`
-    * `Edge Label`：`None`
-    * `Edge Size`：`Calls`
-    * `Node Size`：`None`
-    * `Coloring Type`：`Categorical`
-    * `Node Color Field`：`Kind`
-    * `Color palette`：`Pastel`
+    * `Node Id`: `Id`
+    * `Source Id`: `SourceId`
+    * `Target Id`: `TargetId`
+    * `Edge Label`: `None`
+    * `Edge Size`: `Calls`
+    * `Node Size`: `None`
+    * `Coloring Type`: `Categorical`
+    * `Node Color Field`: `Kind`
+    * `Color palette`: `Pastel`
 10. 在頂端的 [_節點格式_設定] 中，設定：
     * _最上層內容_-使用資料行： `Name`、資料行轉譯器： `Text`
     * _置中內容_-使用資料行： `Calls`、資料行轉譯器： `Big Number`、色調色板： `None`

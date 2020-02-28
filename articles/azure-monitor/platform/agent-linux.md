@@ -1,18 +1,17 @@
 ---
 title: 將 Linux 電腦連接到 Azure 監視器 |Microsoft Docs
 description: 本文說明如何將裝載于其他雲端或內部部署環境的 Linux 電腦，連線至使用適用于 Linux 的 Log Analytics 代理程式 Azure 監視器。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 01/21/2020
-ms.openlocfilehash: 15334f0c58f602a2728e3daa6645b957dfcd7129
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 40c279a4beee9fbebe2de7f272fe51d9039f071c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290320"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668701"
 ---
 # <a name="connect-linux-computers-to-azure-monitor"></a>將 Linux 電腦連線至 Azure 監視器
 
@@ -94,7 +93,7 @@ docker-cimprov | 1.0.0 | OMI 的 Docker 提供者。 僅在偵測到 Docker 時�
     sudo sh ./omsagent-*.universal.x64.sh --upgrade -p https://<proxy address>:<proxy port> -w <workspace id> -s <shared key>
     ```
 
-    如果需要驗證，您必須指定使用者名稱和密碼。 例如： 
+    如果需要驗證，您必須指定使用者名稱和密碼。 例如， 
     
     ```
     sudo sh ./omsagent-*.universal.x64.sh --upgrade -p https://<proxy user>:<proxy password>@<proxy address>:<proxy port> -w <workspace id> -s <shared key>

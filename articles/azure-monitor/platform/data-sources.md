@@ -1,18 +1,17 @@
 ---
 title: Azure 監視器中資料的來源 | Microsoft Docs
 description: 描述可用於監視 Azure 資源 (以及在資源上執行的應用程式) 健康情況和效能的資料。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/19/2019
-ms.openlocfilehash: d429a21f409afc9780b3cd90d16d46b4f4671912
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: b2ec9fd70d1eb64c5968de0312941bfbc98d3033
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467346"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670520"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Azure 監視器的監視資料來源
 Azure 監視器是以常見的[監視資料平臺](data-platform.md)為基礎，其中包含[記錄](data-platform-logs.md)和[計量](data-platform-metrics.md)。 將資料收集到這個平臺可讓您使用 Azure 監視器中的一組常用工具來分析多個資源的資料。 監視資料也可能會傳送到其他位置以支援特定案例，某些資源可能會在其他位置寫入至記錄或計量。
@@ -74,7 +73,7 @@ Azure 監視器是以常見的[監視資料平臺](data-platform.md)為基礎，
 | 活動記錄檔 | 活動記錄會收集到自己的資料存放區中，您可以從 [Azure 監視器] 功能表查看，或用來建立活動記錄警示。 | [查詢 Azure 入口網站中的活動記錄](activity-log-view.md#azure-portal) |
 | Azure 監視器記錄 | 設定 Azure 監視器記錄來收集活動記錄，以使用其他監視資料進行分析。 | [在 Azure 監視器的 Log Analytics 工作區中收集並分析 Azure 活動記錄](activity-log-collect.md) |
 | Azure 儲存體 | 將活動記錄檔匯出至 Azure 儲存體以進行封存。 | [封存活動記錄](activity-log-export.md#archive-activity-log)  |
-| 事件中樞 | 使用事件中樞將活動記錄串流至其他位置 | [將活動記錄串流至事件中樞](activity-log-export.md#stream-activity-log-to-event-hub)。 |
+| 事件中心 | 使用事件中樞將活動記錄串流至其他位置 | [將活動記錄串流至事件中樞](activity-log-export.md#stream-activity-log-to-event-hub)。 |
 
 ### <a name="azure-service-health"></a>Azure 服務健康狀態
 [Azure 服務健康狀態](../../service-health/service-health-overview.md)提供您有關應用程式和資源依賴的訂用帳戶中，Azure 服務健康狀態的資訊。
@@ -97,7 +96,7 @@ Azure 監視器是以常見的[監視資料平臺](data-platform.md)為基礎，
 |:---|:---|:---|
 | Azure 監視器計量 | 平臺計量會寫入 Azure 監視器的計量資料庫，而不會進行任何設定。 從計量瀏覽器存取平臺計量。  | [開始使用 Azure 計量瀏覽器](metrics-getting-started.md)<br>[支援 Azure 監視器的計量](metrics-supported.md) |
 | Azure 監視器記錄 | 使用 Log Analytics 將平臺計量複製到記錄，以進行趨勢和其他分析。 | [Azure 診斷 direct to Log Analytics](resource-logs-collect-workspace.md) |
-| 事件中樞 | 使用事件中樞將計量串流至其他位置。 |[將 Azure 監視資料串流至事件中樞以供外部工具取用](stream-monitoring-data-event-hubs.md) |
+| 事件中心 | 使用事件中樞將計量串流至其他位置。 |[將 Azure 監視資料串流至事件中樞以供外部工具取用](stream-monitoring-data-event-hubs.md) |
 
 ### <a name="resource-logs"></a>資源記錄
 [資源記錄](platform-logs-overview.md)可讓您深入瞭解 Azure 資源的_內部_作業。  資源記錄會自動建立，但您必須建立診斷設定，以指定要針對每個資源收集的目的地。
@@ -108,7 +107,7 @@ Azure 監視器是以常見的[監視資料平臺](data-platform.md)為基礎，
 |:---|:---|:---|
 | Azure 監視器記錄 | 將資源記錄檔傳送至 Azure 監視器記錄，以使用其他收集的記錄資料進行分析。 | [在 Azure 監視器的 Log Analytics 工作區中收集 Azure 資源記錄](resource-logs-collect-storage.md) |
 | 儲存體 | 將資源記錄檔傳送至 Azure 儲存體以進行封存。 | [封存 Azure 資源記錄](resource-logs-collect-workspace.md) |
-| 事件中樞 | 使用事件中樞將資源記錄串流至其他位置。 |[將 Azure 資源記錄串流至事件中樞](resource-logs-stream-event-hubs.md) |
+| 事件中心 | 使用事件中樞將資源記錄串流至其他位置。 |[將 Azure 資源記錄串流至事件中樞](resource-logs-stream-event-hubs.md) |
 
 ## <a name="operating-system-guest"></a>作業系統（來賓）
 Azure、其他雲端和內部部署中的計算資源具有要監視的客體作業系統。 安裝一或多個代理程式時，您可以將來自來賓的遙測收集到 Azure 監視器，以使用與 Azure 服務本身相同的監視工具進行分析。
@@ -122,7 +121,7 @@ Azure、其他雲端和內部部署中的計算資源具有要監視的客體作
 |:---|:---|:---|
 | 儲存體 | Azure 診斷延伸模組一律會寫入 Azure 儲存體帳戶。 | [安裝和設定 Windows Azure 診斷擴充功能（WAD）](diagnostics-extension-windows-install.md)<br>[使用 Linux 診斷擴充功能來監視計量和記錄](../../virtual-machines/extensions/diagnostics-linux.md) |
 | Azure 監視器計量 | 當您設定診斷擴充功能來收集效能計數器時，會將它們寫入 Azure 監視器計量資料庫中。 | [使用 Windows 虛擬機器的 Resource Manager 範本，將客體作業系統計量傳送至 Azure 監視器公制存放區](collect-custom-metrics-guestos-resource-manager-vm.md) |
-| 事件中樞 | 設定診斷延伸模組，使用事件中樞將資料串流至其他位置。  | [使用事件中樞串流 Azure 診斷資料](diagnostics-extension-stream-event-hubs.md)<br>[使用 Linux 診斷擴充功能來監視計量和記錄](../../virtual-machines/extensions/diagnostics-linux.md) |
+| 事件中心 | 設定診斷延伸模組，使用事件中樞將資料串流至其他位置。  | [使用事件中樞串流 Azure 診斷資料](diagnostics-extension-stream-event-hubs.md)<br>[使用 Linux 診斷擴充功能來監視計量和記錄](../../virtual-machines/extensions/diagnostics-linux.md) |
 | Application Insights 記錄 | 從支援您的應用程式的計算資源收集記錄和效能計數器，以使用其他應用程式資料進行分析。 | [將雲端服務、虛擬機器或 Service Fabric 診斷資料傳送至 Application Insights](diagnostics-extension-to-application-insights.md) |
 
 
@@ -201,7 +200,7 @@ Azure 監視器中的詳細應用程式監視是透過[Application Insights](htt
 ## <a name="other-services"></a>其他服務
 Azure 中的其他服務會將資料寫入 Azure 監視器資料平臺。 這可讓您使用 Azure 監視器所收集的資料來分析這些服務所收集的資料，並利用相同的分析和視覺效果工具。
 
-| 服務 | Destination | 描述 | 參考 |
+| Service | Destination | 描述 | 參考 |
 |:---|:---|:---|:---|
 | [Azure 資訊安全中心](/azure/security-center/) | Azure 監視器記錄 | Azure 資訊安全中心會將它所收集的安全性資料儲存在 Log Analytics 工作區中，讓它能夠使用 Azure 監視器所收集的其他記錄資料進行分析。  | [Azure 資訊安全中心的資料收集](../../security-center/security-center-enable-data-collection.md) |
 | [Azure Sentinel](/azure/sentinel/) | Azure 監視器記錄 | Azure Sentinel 會將它從不同資料來源收集的資料儲存在 Log Analytics 工作區中，以便使用 Azure 監視器所收集的其他記錄資料進行分析。  | [連接資料來源](/azure/sentinel/quickstart-onboard) |

@@ -4,18 +4,17 @@ description: 使用透過 Azure Resource Manager 範本部署的預先建立和�
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
-ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: e3d29beab7b1d82f73c706897af9650b68be11f5
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 2c2d70d1c945e700a3fa42609f8aa0e1607ba77c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872905"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658399"
 ---
 # <a name="programmatically-manage-workbooks"></a>以程式設計方式管理活頁簿
 
@@ -113,7 +112,7 @@ ms.locfileid: "74872905"
 ### <a name="workbook-types"></a>活頁簿類型
 活頁簿類型指定要顯示新活頁簿實例的活頁簿圖庫類型。 選項包括：
 
-| Type | 圖庫位置 |
+| 類型 | 圖庫位置 |
 | :------------- |:-------------|
 | `workbook` | 大部分報表中使用的預設值，包括 Application Insights、Azure 監視器等的活頁簿資源庫。  |
 | `tsg` | 中的疑難排解指南圖庫 Application Insights |

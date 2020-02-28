@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 12/09/2019
+ms.date: 02/26/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 256194d8b0b5e6b08210e9338d945774603ac328
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ffb2ff87eb78ed4088225f832b6df55726196493
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429794"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656575"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 入口網站中的登入活動報告
 
@@ -47,7 +47,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>您需要哪項 Azure AD 授權才能存取登入活動？
 
-* 租用戶必須要有相關聯的 Azure AD Premium 授權，才能查看活動報告中的所有登入。 請參閱[開始使用 Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md)以升級您的 Azure Active Directory 版本。 當您升級至 premium 授權，但在升級前沒有任何資料活動，將需要幾天的時間，資料才會顯示在報告中。
+* 租用戶必須要有相關聯的 Azure AD Premium 授權，才能查看活動報告中的所有登入。 請參閱[開始使用 Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) 來升級 Azure Active Directory 版本。 當您升級至 premium 授權，但在升級前沒有任何資料活動，將需要幾天的時間，資料才會顯示在報告中。
 
 ## <a name="sign-ins-report"></a>登入報告
 
@@ -101,59 +101,90 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 ## <a name="filter-sign-in-activities"></a>篩選登入活動
 
-首先，將報告的資料縮小至適合您的層級。 第二，使用 [日期] 欄位作為預設篩選準則來篩選登入資料。 Azure AD 提供您可設定的各種額外篩選器。
+首先，將報告的資料縮小至適合您的層級。 第二，使用 [日期] 欄位作為預設篩選準則來篩選登入資料。 Azure AD 提供您可設定的各種額外篩選準則：
 
 ![登入活動](./media/concept-sign-ins/04.png "登入活動")
 
-[使用者] 篩選條件可讓您指定您關心的使用者名稱或使用者主體名稱 (UPN)。
+**要求識別碼**-您關心的要求識別碼。
 
-[應用程式] 篩選條件可讓您指定您關心的應用程式名稱。
+**使用者**-您關心的使用者名稱或使用者主體名稱（UPN）。
 
-[登入狀態] 篩選條件可讓您選取︰
+**應用程式**-目標應用程式的名稱。
+ 
+**狀態**-您關心的登入狀態：
 
-- 所有
-- Success
+- 成功
+
 - 失敗
 
-**條件式存取**篩選條件可讓您選取登入的 CA 原則狀態：
+- 會
 
-- 所有
-- 未套用
-- Success
+
+**Ip 位址**-用來連線到您的租使用者之裝置的 ip 位址。
+
+**位置**-連接起始的位置：
+
+- 城市
+
+- 州/省
+
+- Country/Region
+
+
+**資源**-用來登入的服務名稱。
+
+
+**資源識別碼**-用於登入之服務的識別碼。
+
+
+**用戶端應用程式**-用來連接到您租使用者的用戶端應用程式類型：
+
+![用戶端應用程式篩選器](./media/concept-sign-ins/client-app-filter.png)
+
+
+|名稱|新式驗證|描述|
+|---|:-:|---|
+|已驗證的 SMTP| |由 POP 和 IMAP 用戶端用來傳送電子郵件訊息。|
+|發現| |供 Outlook 和 EAS 用戶端用來尋找並聯機到 Exchange Online 中的信箱。|
+|Exchange ActiveSync| |此篩選會顯示已嘗試 EAS 通訊協定的所有登入嘗試。|
+|瀏覽器|![檢查](./media/concept-sign-ins/check.png)|使用網頁瀏覽器顯示使用者的所有登入嘗試|
+|Exchange ActiveSync| | 顯示使用者在使用 Exchange ActiceSync 連線至 Exchange Online 時，使用用戶端應用程式進行的所有登入嘗試|
+|Exchange Online PowerShell| |用來透過遠端 PowerShell 連接到 Exchange Online。 如果您封鎖 Exchange Online PowerShell 的基本驗證，您需要使用 Exchange Online PowerShell 模組來連接。 如需指示，請參閱[使用多重要素驗證連接到 Exchange Online PowerShell](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)。|
+|Exchange Web 服務| |Outlook、Outlook for Mac 和協力廠商應用程式所使用的程式設計介面。|
+|IMAP4| |使用 IMAP 抓取電子郵件的舊版郵件用戶端。|
+|透過 HTTP 的 MAPI| |由 Outlook 2010 和更新版本使用。|
+|行動裝置應用程式和桌面用戶端|![檢查](./media/concept-sign-ins/check.png)|顯示使用者使用行動應用程式和桌面用戶端的所有登入嘗試。|
+|離線通訊錄| |Outlook 下載並使用的地址清單集合複本。|
+|Outlook Anywhere （RPC over HTTP）| |由 Outlook 2016 和更早版本使用。|
+|Outlook 服務| |適用于 Windows 10 的郵件及行事曆應用程式。|
+|POP3| |使用 POP3 抓取電子郵件的舊版郵件用戶端。|
+|報表 Web 服務| |用來在 Exchange Online 中取出報表資料。|
+|其他用戶端| |顯示用戶端應用程式未包含或不明的使用者進行的所有登入嘗試。|
+
+
+
+**作業系統**-裝置上執行的作業系統，用來登入您的租使用者。 
+
+
+**裝置瀏覽器**-如果連接是從瀏覽器起始，此欄位可讓您依瀏覽器名稱篩選。
+
+
+相互**關聯識別碼**-活動的相互關聯識別碼。
+
+
+**條件存取**-套用的條件式存取規則狀態
+
+- 不適用 
+
+- 成功
+
 - 失敗
 
-[日期] 篩選條件可讓您定義傳回資料的時間範圍。  
-可能的值包括：
 
-- 一個月
-- 7 天
-- 24 小時
-- 自訂時間間隔
 
-當您選取自訂時間範圍時，可以設定開始時間和結束時間。
 
-如果您將其他欄位新增至您的登入檢視，這些欄位就會自動新增至篩選條件清單。 例如，藉由將 [用戶端應用程式] 欄位新增至您的清單，同時也會取得其他篩選選項，可讓您設定下列篩選條件：  
-![登入活動](./media/concept-sign-ins/12.png "登入活動")
 
-- **[瀏覽器]**  
-    此篩選器會顯示使用瀏覽器流程嘗試登入嘗試的所有事件。
-- **Exchange ActiveSync （支援）**  
-    此篩選器會顯示從 iOS、Android 和 Windows Phone 等支援的平臺嘗試 Exchange ActiveSync （EAS）通訊協定的所有登入嘗試。
-- **Exchange ActiveSync （不支援）**  
-    此篩選器會顯示從 Linux 散發版本等不支援的平臺嘗試 EAS 通訊協定的所有登入嘗試。
-- **Mobile Apps 和桌面用戶端**篩選器會顯示所有未使用瀏覽器流程的登入嘗試。 例如，從任何平臺使用任何通訊協定或從桌面用戶端應用程式（例如 Windows 或 MacOS 上的 Office）的行動應用程式。
-  
-- **其他用戶端**
-    - **IMAP**  
-        使用 IMAP 抓取電子郵件的舊版郵件用戶端。
-    - **MAPI**  
-        Office 2013，其中 ADAL 已啟用且使用 MAPI。
-    - **舊的 Office 用戶端**  
-        未啟用 ADAL 且使用 MAPI 的預設設定中的 office 2013，或已停用 ADAL 的 Office 2016。
-    - **提示**  
-        使用 POP3 抓取電子郵件的舊版郵件用戶端。
-    - **SMTP**  
-        使用 SMTP 傳送電子郵件的舊版郵件用戶端。
+
 
 ## <a name="download-sign-in-activities"></a>下載登入活動
 
@@ -170,7 +201,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 Azure AD 和 Azure 入口網站都提供登入資料的額外進入點：
 
 - 身分識別安全性保護概觀
-- 使用者人數
+- 使用者
 - 群組
 - 企業應用程式
 
@@ -192,11 +223,11 @@ Azure AD 和 Azure 入口網站都提供登入資料的額外進入點：
 按一下項目，即可取得有關登入作業的更多詳細資料：
 
 - 使用者識別碼
-- User
+- 使用者
 - 使用者名稱
 - 應用程式識別碼
 - 應用程式
-- Client
+- 用戶端
 - 位置
 - IP 位址
 - 日期
@@ -228,7 +259,7 @@ Azure AD 和 Azure 入口網站都提供登入資料的額外進入點：
 
 如果您想要，您可以將焦點設在特定的應用程式。
 
-![Reporting](./media/concept-sign-ins/single-app-usage-graph.png "報告")
+![Reporting](./media/concept-sign-ins/single-app-usage-graph.png "Reporting")
 
 當您按一下應用程式使用圖中的某一天時，您會取得登入活動的詳細清單。
 

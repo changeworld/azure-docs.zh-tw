@@ -1,19 +1,15 @@
 ---
 title: 使用 ILogger Azure 應用程式 Insights 探索 .NET 追蹤記錄
 description: 搭配 ASP.NET Core 和主控台應用程式使用 Azure 應用程式 Insights ILogger 提供者的範例。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: b538196467ba1d69e679a111ca313f922738b048
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: e2b306670c43722279327301b15630f96da50ea5
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76716034"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659929"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>適用于 .NET Core ILogger 記錄的 ApplicationInsightsLoggerProvider
 
@@ -108,7 +104,7 @@ public class ValuesController : ControllerBase
 ### <a name="capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps"></a>在 ASP.NET Core 應用程式中從 Startup.cs 和 Program.cs 捕獲 ILogger 記錄
 
 > [!NOTE]
-> 在 ASP.NET Core 3.0 和更新版本中，無法再將 `ILogger` 插入 Startup.cs 和 Program.cs。 如需更多詳細資料，請參閱 https://github.com/aspnet/Announcements/issues/353 \(英文\)。
+> 在 ASP.NET Core 3.0 和更新版本中，無法再將 `ILogger` 插入 Startup.cs 和 Program.cs。 如需詳細資訊，請參閱 https://github.com/aspnet/Announcements/issues/353。
 
 新的 ApplicationInsightsLoggerProvider 可以提早在應用程式啟動管線中捕捉記錄。 雖然 ApplicationInsightsLoggerProvider 會在 Application Insights 中自動啟用（從版本2.7.1 開始），但在管線中稍後的時間內不會設定檢測金鑰。 因此，只會捕捉來自**控制器**/其他類別的記錄。 若要從**Program.cs**和**Startup.cs**本身開始捕捉每個記錄檔，您必須明確啟用 ApplicationInsightsLoggerProvider 的檢測金鑰。 此外，當您從**Program.cs**或**Startup.cs**本身記錄時， *TelemetryConfiguration*並未完整設定。 因此，這些記錄會有使用 InMemoryChannel、沒有取樣，以及沒有標準遙測初始化運算式或處理器的最低設定。
 
@@ -396,7 +392,7 @@ class Program
  }
 ```
 
-### <a name="i-updated-to-microsoftapplicationinsightsaspnet-sdkhttpswwwnugetorgpackagesmicrosoftapplicationinsightsaspnetcore-version-271-and-logs-from-ilogger-are-captured-automatically-how-do-i-turn-off-this-feature-completely"></a>我已更新為[ApplicationInsights. ASPNET SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)版本2.7.1，並自動捕捉來自 ILogger 的記錄。 如何? 完全關閉此功能嗎？
+### <a name="i-updated-to-microsoftapplicationinsightsaspnet-sdk-version-271-and-logs-from-ilogger-are-captured-automatically-how-do-i-turn-off-this-feature-completely"></a>我已更新為[ApplicationInsights. ASPNET SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)版本2.7.1，並自動捕捉來自 ILogger 的記錄。 如何? 完全關閉此功能嗎？
 
 請參閱[控制記錄層級](../../azure-monitor/app/ilogger.md#control-logging-level)一節，以瞭解如何在一般情況中篩選記錄。 若要關閉 ApplicationInsightsLoggerProvider，請使用 `LogLevel.None`：
 

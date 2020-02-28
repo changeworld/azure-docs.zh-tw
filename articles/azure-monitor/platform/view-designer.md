@@ -1,18 +1,17 @@
 ---
 title: 建立視圖以分析 Azure 監視器中的記錄資料 |Microsoft Docs
 description: 藉由在 Azure 監視器中使用 View Designer，您可以建立顯示在 Azure 入口網站中的自訂視圖，並包含 Log Analytics 工作區中資料的各種視覺效果。 本文包含檢視設計工具的概觀，並提供建立和編輯自訂檢視的程序。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/10/2019
-ms.openlocfilehash: e5d707200d1e1eab9becbb30181649525f3a5a7b
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 9a7521f61dc59bd954629a05638c159ab0e70556
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77166468"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658484"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>在 Azure 監視器中使用 View Designer 建立自訂視圖
 藉由在 Azure 監視器中使用 View Designer，您可以在 Azure 入口網站中建立各種自訂視圖，以協助您將 Log Analytics 工作區中的資料視覺化。 本文提供檢視設計工具的概觀以及建立和編輯自訂檢視的程序。
@@ -52,15 +51,15 @@ Views 會顯示在 Azure 入口網站的 [Azure 監視器**總覽**] 頁面中�
 
 | 選項 | 描述 |
 |:--|:--|
-| Refresh   | 使用最新資料重新整理檢視。 | 
-| 記錄      | 開啟[Log Analytics](../log-query/portals.md)以記錄查詢來分析資料。 |
+| 重新整理   | 使用最新資料重新整理檢視。 | 
+| 記錄檔      | 開啟[Log Analytics](../log-query/portals.md)以記錄查詢來分析資料。 |
 | 編輯       | 在檢視表設計工具中開啟檢視以編輯其內容和設定。  |
 | 複製      | 建立新的檢視並且在檢視表設計工具中開啟。 新檢視的名稱與原始檢視的名稱相同，只是再附加*複製*字樣。 |
 | 日期範圍 | 為檢視中包含的資料設定日期和時間範圍篩選條件。 在檢視中設定查詢的任何日期範圍之前，會套用此日期範圍。  |
 | +          | 定義針對檢視所定義的自訂篩選條件。 |
 
 
-## <a name="create-a-new-view"></a>建立新的檢視
+## <a name="create-a-new-view"></a>新立新的檢視
 您可以在檢視設計工具中建立新的檢視，方法是選取 Log Analytics 工作區功能表中的 [檢視設計工具]。
 
 ![檢視設計工具圖格](media/view-designer/view-designer-tile.png)
@@ -74,7 +73,7 @@ Views 會顯示在 Azure 入口網站的 [Azure 監視器**總覽**] 頁面中�
 * **控制項**：包含您新增至**設計**窗格的圖格和組件。 
 * **屬性**：顯示圖格或所選組件的屬性。
 
-![檢視設計工具](media/view-designer/view-designer-screenshot.png)
+![檢視表設計工具](media/view-designer/view-designer-screenshot.png)
 
 ### <a name="configure-the-view-tile"></a>設定檢視圖格
 自訂檢視可以只有單一圖格。 若要檢視目前圖格或選取另一個圖格，請選取 [控制] 窗格中的 [圖格] 索引標籤。 [屬性] 窗格會顯示目前圖格的屬性。 
@@ -101,7 +100,7 @@ Views 會顯示在 Azure 入口網站的 [Azure 監視器**總覽**] 頁面中�
 | 儲存        | 儲存變更並關閉檢視。 |
 | 取消      | 捨棄變更並關閉檢視。 |
 | 刪除檢視 | 刪除檢視。 |
-| 匯出      | 將檢視匯出至 [Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md)，您可以將該範本匯入至其他工作區。 檔案的名稱是檢視的名稱，副檔名為 *omsview*。 |
+| Export      | 將檢視匯出至 [Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md)，您可以將該範本匯入至其他工作區。 檔案的名稱是檢視的名稱，副檔名為 *omsview*。 |
 | 匯入      | 將您從其他工作區匯出的 *omsview* 檔案匯入。 此動作會覆寫現有檢視的設定。 |
 | 複製       | 建立新的檢視並且在檢視表設計工具中開啟。 新檢視的名稱與原始檢視的名稱相同，只是再附加*複製*字樣。 |
 

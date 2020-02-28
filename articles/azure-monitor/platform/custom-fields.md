@@ -1,18 +1,17 @@
 ---
 title: Azure 監視器中的自訂欄位（預覽） |Microsoft Docs
 description: Azure 監視器的自訂欄位功能可讓您從 Log Analytics 工作區中的記錄建立您自己的可搜尋欄位，並將其新增至所收集記錄的屬性。  本文說明用來建立自訂欄位的程序，並透過範例事件提供詳細的逐步解說。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/23/2019
-ms.openlocfilehash: 880d3ffa9914a8fc6f27edce06c5d353d7903db4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bfb0a73631564c96a4af745fe9d7540a3a84f9c3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75396872"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655356"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>在 Azure 監視器（預覽）中的 Log Analytics 工作區中建立自訂欄位
 
@@ -103,7 +102,7 @@ Azure 監視器的**自訂欄位**功能可讓您藉由新增自己的可搜尋�
 
 我們先處理 **WMI Performance Adapter** 記錄。  我們按一下它的編輯圖示，然後 [修改此醒目提示]。  
 
-![修改醒目提示](media/custom-fields/modify-highlight.png)
+![修改反白顯示](media/custom-fields/modify-highlight.png)
 
 我們增加醒目提示範圍來包含 **WMI** 一字，然後重新執行擷取。  
 
@@ -123,7 +122,7 @@ Azure 監視器的**自訂欄位**功能可讓您藉由新增自己的可搜尋�
 
 現在我們可以和任何其他記錄屬性一樣地使用自訂欄位。  為了說明這一點，我們建立以新的 [Service_CF] 欄位來群組的查詢，以檢查哪些服務最常使用。
 
-![以查詢分組](media/custom-fields/query-group.png)
+![依查詢分組](media/custom-fields/query-group.png)
 
 ## <a name="next-steps"></a>後續步驟
 * 瞭解[記錄查詢](../log-query/log-query-overview.md)，以使用自訂欄位作為準則來建立查詢。

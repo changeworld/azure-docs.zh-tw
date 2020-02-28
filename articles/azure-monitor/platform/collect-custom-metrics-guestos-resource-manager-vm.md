@@ -3,17 +3,16 @@ title: 使用範本在 Azure 監視器中收集 Windows VM 計量
 description: 使用 Windows 虛擬機器的 Resource Manager 範本將客體作業系統計量傳送至 Azure 監視器計量存放區
 author: anirudhcavale
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 05a05c46a49c0262bd5db33390bb995ebe849fd7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e747ca89912c36538bfb9d02986629fe57c5adcb
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364113"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657362"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>使用 Windows 虛擬機器的 Resource Manager 範本將客體作業系統計量傳送至 Azure 監視器計量存放區
 
@@ -40,7 +39,7 @@ ms.locfileid: "75364113"
 Azure 診斷擴充功能會使用稱為「資料接收器」的功能，將計量與記錄路由傳送至不同的位置。 下列步驟示範如何使用新的「Azure 監視器 」資料接收器，使用 Resource Manager 範本與 PowerShell 來部署 VM。
 
 ## <a name="author-resource-manager-template"></a>製作 Resource Manager 範本
-針對此範例，您可以使用公開提供的範例範本。 起始範本位於 https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows 。
+針對此範例，您可以使用公開提供的範例範本。 起始範本位於 https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows。
 
 - **Azuredeploy.json** 是預先設定的 Resource Manager 範本，可用於部署虛擬機器。
 
@@ -271,7 +270,7 @@ Azure 診斷擴充功能會使用稱為「資料接收器」的功能，將計�
 
 ## <a name="chart-your-metrics"></a>繪製計量圖表
 
-1. 登入 Azure 管理入口網站。
+1. 登入 Azure 入口網站。
 
 2. 在左側功能表上，選取 [監視]。
 
@@ -285,7 +284,7 @@ Azure 診斷擴充功能會使用稱為「資料接收器」的功能，將計�
 
 6. 在 [命名空間] 下拉式功能表中，選取 **azure.vm.windows.guest**
 
-7. 在 [計量] 下拉式功能表中，選取 [記憶體\%認可的位元組 (使用中)]。
+7. 在 [計量] 下拉式功能表中，選取 [記憶體**認可的位元組 (使用中)]\%** 。
 
 
 ## <a name="next-steps"></a>後續步驟

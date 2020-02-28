@@ -3,16 +3,15 @@ title: Azure 監視器視圖設計工具轉換成活頁簿轉換摘要和存取
 description: ''
 author: austonli
 ms.author: aul
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: e49b4c0220b6c00fe3a7a6e1cab219364a2a89b7
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: fb53a966b0dc4959253ac0786ef09ef3c497e809
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77171237"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658841"
 ---
 # <a name="view-designer-to-workbooks-conversion-summary-and-access"></a>將設計工具設為活頁簿轉換摘要和存取
 「[視圖設計](view-designer.md)工具」是 Azure 監視器的功能，可讓您建立自訂的視圖，以協助您將 Log Analytics 工作區中的資料視覺化，其中包含圖表、清單和時間軸。 它們會被淘汰，並以活頁簿取代，以提供額外的功能。 本文會詳細說明如何建立存取活頁簿所需的總覽摘要和許可權。

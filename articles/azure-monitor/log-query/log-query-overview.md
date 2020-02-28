@@ -1,18 +1,17 @@
 ---
 title: Azure 監視器中的記錄查詢總覽 |Microsoft Docs
 description: 回答與記錄查詢相關的常見問題，並讓您開始使用它們。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
-ms.openlocfilehash: 08af0ff3121d6721c9f5c1457655c345f50f91e0
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 54a6f875bc33d24d412d2424c634d1019b4af399
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900261"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670112"
 ---
 # <a name="overview-of-log-queries-in-azure-monitor"></a>Azure 監視器中的記錄查詢總覽
 記錄查詢可協助您充分利用[Azure 監視器記錄](../platform/data-platform-logs.md)中收集的資料值。 功能強大的查詢語言可讓您聯結多個資料表的資料、匯總大型資料集，以及使用最少的程式碼來執行複雜的作業。 只要收集到支援的資料，就可以解決任何問題並執行分析，而且您會瞭解如何建立正確的查詢。

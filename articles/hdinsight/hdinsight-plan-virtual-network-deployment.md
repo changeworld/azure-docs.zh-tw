@@ -5,25 +5,25 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.openlocfilehash: 1e6a21e8bf9c284c83af09885aa66b612b52ad7c
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.custom: hdinsightactive
+ms.date: 02/25/2020
+ms.openlocfilehash: 30664d533215cb49fa6f436ec4cf88fa319c3300
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76044722"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659861"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>為 Azure HDInsight 規劃虛擬網路
 
-本文提供有關使用[Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)搭配 Azure HDInsight 的背景資訊。 它也會討論在您可以為 HDInsight 叢集執行虛擬網路之前，必須進行的設計和實施決策。 規劃階段完成後，您可以繼續為 Azure HDInsight 叢集[建立虛擬網路](hdinsight-create-virtual-network.md)。 如需有關正確設定網路安全性群組和使用者定義路由所需之 HDInsight 管理 IP 位址的詳細資訊，請參閱[hdinsight 管理 ip 位址](hdinsight-management-ip-addresses.md)。
+本文提供搭配 Azure HDInsight 使用[Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)（vnet）的背景資訊。 它也會討論在您可以為 HDInsight 叢集執行虛擬網路之前，必須進行的設計和實施決策。 規劃階段完成後，您可以繼續為 Azure HDInsight 叢集[建立虛擬網路](hdinsight-create-virtual-network.md)。 如需有關正確設定網路安全性群組（Nsg）和使用者定義路由所需之 HDInsight 管理 IP 位址的詳細資訊，請參閱[hdinsight 管理 ip 位址](hdinsight-management-ip-addresses.md)。
 
 使用 Azure 虛擬網路可啟用下列案例：
 
 * 從內部部署網路直接連線至 HDInsight。
 * 將 HDInsight 連線至 Azure 虛擬網路中的資料存放區。
-* 直接存取無法透過網際網路公開使用的 [Apache Hadoop](https://hadoop.apache.org/) 服務。 例如，[Apache Kafka](https://kafka.apache.org/) API 或 [Apache HBase](https://hbase.apache.org/) Java API。
+* 直接存取無法透過網際網路公開使用的 Apache Hadoop 服務。 例如，Apache Kafka Api 或 Apache HBase JAVA API。
 
 > [!IMPORTANT]
 > 在 VNET 中建立 HDInsight 叢集將會建立數個網路資源，例如 Nic 和負載平衡器。 請勿**刪除這些**網路資源，因為您的叢集需要它們才能正確地與 VNET 搭配運作。
@@ -36,7 +36,7 @@ ms.locfileid: "76044722"
 
 * 您需要將 HDInsight 安裝到現有虛擬網路嗎？ 或者，您要建立新的網路嗎？
 
-    如果您要使用現有虛擬網路，則可能需要先修改網路設定，才能安裝 HDInsight。 如需詳細資訊，請參閱[將 HDInsight 新增至現有虛擬網路](#existingvnet)一節。
+    如果您使用現有的虛擬網路，您可能需要先修改網路設定，才能安裝 HDInsight。 如需詳細資訊，請參閱[將 HDInsight 新增至現有虛擬網路](#existingvnet)一節。
 
 * 您要將包含 HDInsight 的虛擬網路連線至另一個虛擬網路或內部部署網路嗎？
 
@@ -64,19 +64,19 @@ ms.locfileid: "76044722"
 2. 您使用網路安全性群組、使用者定義路由或虛擬網路設備來限制傳入或傳出虛擬網路的流量嗎？
 
     HDInsight 是一個受控服務，需要 Azure 資料中心內數個 IP 位址的無限制存取權。 若要允許與這些 IP 位址的通訊，請更新任何現有網路安全性群組或使用者定義路由。
-    
-    HDInsight 會裝載多個使用各種連接埠的服務。 不會封鎖對這些連接埠的流量。 如需允許通過虛擬設備防火牆的連接埠清單，請參閱「安全性」一節。
-    
+
+    HDInsight 會裝載多個使用各種連接埠的服務。 不要封鎖這些埠的流量。 如需允許通過虛擬設備防火牆的連接埠清單，請參閱「安全性」一節。
+
     若要尋找現有安全性設定，請使用下列 Azure PowerShell 或 Azure CLI 命令：
 
     * 網路安全性群組
 
         將 `RESOURCEGROUP` 取代為包含虛擬網路的資源組名，然後輸入命令：
-    
+
         ```powershell
         Get-AzNetworkSecurityGroup -ResourceGroupName  "RESOURCEGROUP"
         ```
-    
+
         ```azurecli
         az network nsg list --resource-group RESOURCEGROUP
         ```
@@ -86,7 +86,7 @@ ms.locfileid: "76044722"
         > [!IMPORTANT]  
         > 會根據規則優先順序依序套用網路安全性群組規則。 會套用第一個符合流量模式的規則，而且未針對該流量套用其他規則。 排序從最寬鬆到最嚴格權限的規則。 如需詳細資訊，請參閱[使用網路安全性群組來篩選網路流量](../virtual-network/security-overview.md)文件。
 
-    * 使用者定義路由
+    * 使用者定義的路由
 
         將 `RESOURCEGROUP` 取代為包含虛擬網路的資源組名，然後輸入命令：
 
@@ -125,7 +125,7 @@ Azure 會針對安裝於虛擬網路中的 Azure 服務提供名稱解析。 這
 
     這些節點可以使用內部 DNS 名稱彼此直接通訊，以及與 HDInsight 中的其他節點通訊。
 
-預設名稱解析「不」允許 HDInsight 解析加入虛擬網路之網路中的資源名稱。 例如，通常會將內部部署網路加入虛擬網路。 只使用預設名稱解析，HDInsight 無法透過名稱存取內部部署網路中的資源。 反之亦然，內部部署網路中的資源無法透過名稱存取虛擬網路中的資源。
+預設名稱解析「不」允許 HDInsight 解析加入虛擬網路之網路中的資源名稱。 例如，通常會將內部部署網路加入虛擬網路。 根據預設名稱解析，HDInsight 無法依名稱存取內部部署網路中的資源。 相反地，內部部署網路中的資源無法依名稱存取虛擬網路中的資源。
 
 > [!WARNING]  
 > 您必須建立自訂 DNS 伺服器，並設定虛擬網路使用它，再建立 HDInsight 叢集。
@@ -141,7 +141,7 @@ Azure 會針對安裝於虛擬網路中的 Azure 服務提供名稱解析。 這
 4. 設定 DNS 伺服器之間的轉送。 設定取決於遠端網路類型。
 
    * 如果遠端網路是內部部署網路，請設定 DNS，如下所示：
-        
+
      * 「自訂 DNS」(在虛擬網路中)：
 
          * 將虛擬網路 DNS 尾碼的要求轉送至 Azure 遞迴解析程式 (168.63.129.16)。 Azure 會處理虛擬網路中資源的要求
@@ -235,12 +235,12 @@ HDInsight 是受控服務，針對來自 VNET 的傳入和傳出流量，需要�
 
 #### <a name="forced-tunneling-to-on-premises"></a>強制通道至內部部署
 
-強制通道是一種使用者定義路由設定，其中來自子網路的所有流量都會強制流向特定網路或位置，例如內部部署網路。 HDInsight 不__支援將__流量強制通道傳送至內部部署網路。 
+強制通道是一種使用者定義路由設定，其中來自子網路的所有流量都會強制流向特定網路或位置，例如內部部署網路。 HDInsight 不__支援將__流量強制通道傳送至內部部署網路。
 
 ## <a id="hdinsight-ip"></a> 所需的 IP 位址
 
 如果您使用網路安全性群組或使用者定義的路由來控制流量，請參閱[HDInsight 管理 IP 位址](hdinsight-management-ip-addresses.md)。
-    
+
 ## <a id="hdinsight-ports"></a> 所需連接埠
 
 如果您打算使用**防火牆**並從從外部透過特定連接埠存取叢集，則可能需要在您案例所需的連接埠上允許流量。 根據預設，只要允許上一節中所述的 Azure 管理流量透過連接埠 443 到達叢集，就不需要設定任何特殊的連接埠允許清單。
@@ -251,13 +251,16 @@ HDInsight 是受控服務，針對來自 VNET 的傳入和傳出流量，需要�
 
 ## <a name="load-balancing"></a>負載平衡
 
-當您建立 HDInsight 叢集時，也會建立負載平衡器。 此負載平衡器的類型位於具有特定條件約束的[基本 SKU 層級](../load-balancer/concepts-limitations.md#skus)。 其中一個條件約束是，如果您在不同的區域中有兩個虛擬網路，您就無法連線至基本負載平衡器。 如需詳細資訊，請參閱[虛擬網路常見問題：全域 vnet 對等互連的條件約束](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)。
+當您建立 HDInsight 叢集時，也會建立負載平衡器。 此負載平衡器的類型位於[基本 SKU 層級](../load-balancer/concepts-limitations.md#skus)，其具有特定的條件約束。 其中一個條件約束是，如果您在不同的區域中有兩個虛擬網路，您就無法連線至基本負載平衡器。 如需詳細資訊，請參閱[虛擬網路常見問題：全域 vnet 對等互連的條件約束](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)。
 
 ## <a name="transport-layer-security"></a>Transport Layer Security (傳輸層安全性)
 
 透過公用叢集端點的連線到叢集 `https://<clustername>.azurehdinsight.net` 是透過叢集閘道節點進行代理。 這些連接是使用稱為 TLS 的通訊協定來保護。 在閘道上強制執行較高版本的 TLS 可改善這些連線的安全性。 如需有關為何要使用較新版本 TLS 的詳細資訊，請參閱[解決 tls 1.0 問題](https://docs.microsoft.com/security/solving-tls1-problem)。
 
-您可以在部署階段，使用 resource manager 範本中的*minSupportedTlsVersion*屬性，來控制 HDInsight 叢集的閘道節點支援的最低 TLS 版本。 如需範例範本，請參閱[HDInsight 最低 TLS 1.2 快速入門範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-minimum-tls)。 此屬性支援三個值：分別對應到 TLS 1.0 +、TLS 1.1 + 和 TLS 1.2 + 的 "1.0"、"1.1" 和 "1.2"。 根據預設，若未指定此屬性，Azure HDInsight 叢集會接受公用 HTTPS 端點上的 TLS 1.2 連線，以及較舊版本的回溯相容性。 最後，HDInsight 會在所有閘道節點連線上強制使用 TLS 1.2 或更新版本。
+根據預設，Azure HDInsight 叢集會接受公用 HTTPS 端點上的 TLS 1.2 連線，以及較舊版本的回溯相容性。 您可以使用 Azure 入口網站或 resource manager 範本，在叢集建立期間控制閘道節點上支援的最低 TLS 版本。 針對入口網站，在叢集建立期間，從 [**安全性 + 網路**] 索引標籤選取 TLS 版本。 若為部署階段的 resource manager 範本，請使用**minSupportedTlsVersion**屬性。 如需範例範本，請參閱[HDInsight 最低 TLS 1.2 快速入門範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-minimum-tls)。 此屬性支援三個值：分別對應到 TLS 1.0 +、TLS 1.1 + 和 TLS 1.2 + 的 "1.0"、"1.1" 和 "1.2"。
+
+> [!IMPORTANT]
+> 從2020年6月30日開始，Azure HDInsight 將會強制執行所有 HTTPS 連線的 TLS 1.2 或更新版本。 我們建議您確定您的所有用戶端都已準備好處理 TLS 1.2 或更新版本。 如需詳細資訊，請參閱[AZURE HDINSIGHT TLS 1.2 強制](https://azure.microsoft.com/updates/azure-hdinsight-tls-12-enforcement/)。
 
 ## <a name="next-steps"></a>後續步驟
 

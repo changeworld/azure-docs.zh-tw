@@ -1,19 +1,15 @@
 ---
 title: 適用於主控台應用程式的 Azure Application Insights | Microsoft Docs
 description: 監視 Web 應用程式的可用性、效能和使用方式。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 12/02/2019
 ms.reviewer: lmolkova
-ms.openlocfilehash: c8c71fa3798b7c56550b742a8b19c83336bb6ddf
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: baaea0f8055eeff0314fcf5fde00729ea8091d12
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889136"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655424"
 ---
 # <a name="application-insights-for-net-console-applications"></a>適用於 .NET 主控台應用程式的 Application Insights
 
@@ -52,7 +48,7 @@ telemetryClient.TrackTrace("Hello World!");
 
 ### <a name="using-config-file"></a>使用設定檔
 
-根據預設，Application Insights SDK 會在建立 `TelemetryConfiguration` 時，於工作目錄中尋找 `ApplicationInsights.config` 檔案
+根據預設，Application Insights SDK 會在建立 `ApplicationInsights.config` 時，於工作目錄中尋找 `TelemetryConfiguration` 檔案
 
 ```csharp
 TelemetryConfiguration config = TelemetryConfiguration.Active; // Reads ApplicationInsights.config file if present

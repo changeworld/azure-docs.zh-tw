@@ -3,17 +3,16 @@ title: Azure 應用程式 Insights 記錄式計量 |Microsoft Docs
 description: 本文列出具有支援之匯總和維度的 Azure 應用程式 Insights 計量。 記錄式計量的詳細資料包含基礎 Kusto 查詢語句。
 author: vgorbenko
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
-ms.openlocfilehash: 847c56faae61483813286c46190764327e287783
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 12bc51e800ef5ccd4ad3c72d3860fb22bac5b749
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887261"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664910"
 ---
 # <a name="application-insights-log-based-metrics"></a>Application Insights 以記錄為基礎的計量
 
@@ -32,7 +31,7 @@ Application Insights 以記錄為基礎的計量可讓您分析受監視應用�
 
 - 選取的**時間範圍**會轉譯為額外的*where timestamp ...* 子句，以便只從選取的時間範圍挑選事件。 例如，顯示最近24小時資料的圖表，查詢包含 *| where timestamp > 前（24 h）* 。
 
-- 選取的**時間細微性**會放入最終的*摘要 ... 依 bin (時間戳記、[時間細微性])* 子句。
+- 選取的**時間細微性**會放入最終的*摘要 .。。依 bin （時間戳記、[時間細微性]）* 子句。
 
 - 任何選取的**篩選**維度都會轉譯成其他*的 where*子句。
 
@@ -50,7 +49,7 @@ Application Insights 以記錄為基礎的計量可讓您分析受監視應用�
 
 |測量單位|支援的匯總|支援的維度|
 |---|---|---|---|---|---|
-|百分比|平均值|執行位置，測試名稱|
+|百分比|Average|執行位置，測試名稱|
 
 ```Kusto
 availabilityResults 
@@ -80,7 +79,7 @@ availabilityResults
 
 |測量單位|支援的匯總|支援的維度|
 |---|---|---|---|---|---|
-|Count|Count|執行位置、測試名稱、測試結果|
+|[計數]|[計數]|執行位置、測試名稱、測試結果|
 
 ```Kusto
 availabilityResults
@@ -185,7 +184,7 @@ browserTimings
 
 |測量單位|支援的匯總|預先匯總的維度|注意事項|
 |---|---|---|---|
-|Count|Count|無|以記錄為基礎的版本使用**Sum**匯總|
+|[計數]|[計數]|無|以記錄為基礎的版本使用**Sum**匯總|
 
 ```Kusto
 exceptions
@@ -200,7 +199,7 @@ exceptions
 
 |測量單位|支援的匯總|預先匯總的維度|注意事項|
 |---|---|---|---|
-|Count|Count|無|以記錄為基礎的版本使用**Sum**匯總|
+|[計數]|[計數]|無|以記錄為基礎的版本使用**Sum**匯總|
 
 ```Kusto
 dependencies
@@ -215,7 +214,7 @@ dependencies
 
 |測量單位|支援的匯總|預先匯總的維度|注意事項|
 |---|---|---|---|
-|Count|Count|雲端角色名稱、雲端角色實例、裝置類型|以記錄為基礎的版本使用**Sum**匯總|
+|[計數]|[計數]|雲端角色名稱、雲端角色實例、裝置類型|以記錄為基礎的版本使用**Sum**匯總|
 
 ```Kusto
 exceptions
@@ -229,7 +228,7 @@ exceptions
 
 |測量單位|支援的匯總|預先匯總的維度|注意事項|
 |---|---|---|---|
-|Count|Count|雲端角色實例，雲端角色名稱，實際或綜合流量，要求效能，回應碼|以記錄為基礎的版本使用**Sum**匯總|
+|[計數]|[計數]|雲端角色實例，雲端角色名稱，實際或綜合流量，要求效能，回應碼|以記錄為基礎的版本使用**Sum**匯總|
 
 ```Kusto
 requests
@@ -244,7 +243,7 @@ requests
 
 |測量單位|支援的匯總|預先匯總的維度|注意事項|
 |---|---|---|---|
-|Count|Count|雲端角色名稱、雲端角色實例|以記錄為基礎的版本使用**Sum**匯總|
+|[計數]|[計數]|雲端角色名稱、雲端角色實例|以記錄為基礎的版本使用**Sum**匯總|
 
 ```Kusto
 exceptions

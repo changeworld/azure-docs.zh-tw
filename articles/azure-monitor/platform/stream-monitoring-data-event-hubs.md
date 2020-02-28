@@ -3,17 +3,16 @@ title: 將 Azure 監視資料串流至事件中樞
 description: 瞭解如何將 Azure 監視資料串流至事件中樞，以將資料帶入合作夥伴 SIEM 或分析工具。
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 6a474bdceffa07b18530250a02a9ef94159a8e35
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: b22f779d616751ebaa3dad853d5aa23ec4969f23
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750331"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658858"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub"></a>將 Azure 監視資料串流至事件中樞
 Azure 監視器為 Azure、其他雲端和內部部署中的應用程式和服務，提供完整的完整堆疊監視解決方案。 除了使用 Azure 監視器來分析該資料，並將它運用在不同的監視案例中，您可能需要將它傳送至環境中的其他監視工具。 在大部分情況下，將監視資料串流至外部工具的最有效方法是使用[Azure 事件中樞](/azure/event-hubs/)。 本文提供如何將來自不同來源的監視資料串流至事件中樞的簡短描述，以及詳細指引的連結。
@@ -33,7 +32,7 @@ Azure 監視器為 Azure、其他雲端和內部部署中的應用程式和服�
 ## <a name="monitoring-data-available"></a>可用的監視資料
 [適用于 Azure 監視器的監視資料來源](data-sources.md)會描述 Azure 應用程式的不同資料層，以及適用于各項的監視資料類型。 下表列出每個層級，以及如何將該資料串流處理至事件中樞的說明。 請遵循提供的連結以取得進一步的詳細資料。
 
-| 層 | 資料 | 方法 |
+| 層 | Data | 方法 |
 |:---|:---|:---|
 | [Azure 租使用者](data-sources.md#azure-tenant) | Azure Active Directory audit 記錄檔 | 在您的 AAD 租使用者上設定租使用者診斷設定。 如需詳細資訊，請參閱[教學課程：將 Azure Active Directory 記錄串流至 Azure 事件中樞](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)。 |
 | [Azure 訂用帳戶](data-sources.md#azure-subscription) | Azure 活動記錄檔 | 建立記錄設定檔，將活動記錄檔事件匯出至事件中樞。  如需詳細資訊，請參閱[將 Azure 活動記錄匯出至儲存體或 Azure 事件中樞](activity-log-export.md)。 |
@@ -49,7 +48,7 @@ Azure 監視器為 Azure、其他雲端和內部部署中的應用程式和服�
 
 使用 Azure 監視器將監視資料路由傳送至事件中樞，可讓您輕鬆地與外部 SIEM 和監視工具整合。 具有 Azure 監視器整合的工具範例包括下列各項：
 
-| 工具 | 託管于 Azure | 說明 |
+| 工具 | 託管于 Azure | 描述 |
 |:---|:---| :---|
 |  IBM QRadar | 否 | Microsoft Azure DSM 與 Microsoft Azure 事件中樞通訊協定均可從 [IBM 支援網站](https://www.ibm.com/support)下載。 您可以在[QRADAR DSM](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0)設定深入瞭解與 Azure 的整合。 |
 | Splunk | 否 | [適用于 Splunk 的 Azure 監視器附加](https://splunkbase.splunk.com/app/3534/)元件是 splunkbase 取得中提供的開放原始碼專案。 檔可在 Splunk 的[Azure 監視器](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk)附加元件中取得。<br><br> 如果您無法在 Splunk 實例中安裝附加元件（例如，您使用 proxy 或在 Splunk Cloud 上執行），您可以使用[適用于 Splunk 的 Azure](https://github.com/Microsoft/AzureFunctionforSplunkVS)函式將這些事件轉送至 Splunk HTTP 事件收集器，此功能是由事件中樞的新訊息所觸發。 |

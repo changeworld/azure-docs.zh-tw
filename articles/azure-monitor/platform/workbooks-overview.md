@@ -1,20 +1,19 @@
 ---
-title: Azure 監視器活頁簿總覽
+title: Azure 監視器活頁簿概觀
 description: 使用預先建立及使用自訂參數之活頁簿來簡化複雜的報告
 author: mrbullwinkle
 manager: carmonm
 services: azure-monitor
-ms.service: azure-monitor
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: cf11ce3a77fb47b7d8586ef56141a72cd0a10c2e
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 29e675f3ae35df9211f58d45ad8450566d67a588
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872854"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658229"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure 監視器活頁簿
 
@@ -40,12 +39,12 @@ ms.locfileid: "74872854"
 
 活頁簿提供了一組豐富的功能，可將您的資料視覺化。 如需每個視覺效果類型的詳細範例，您可以查閱下列範例連結：
 
-* [文字](workbooks-visualizations.md#text)
+* [Text](workbooks-visualizations.md#text)
 * [圖表](workbooks-visualizations.md#charts)
 * [表格](workbooks-visualizations.md#grids)
-* [磚](workbooks-visualizations.md#tiles)
+* [並排顯示](workbooks-visualizations.md#tiles)
 * [樹狀](workbooks-visualizations.md#trees)
-* [Graphs](workbooks-visualizations.md#graphs)
+* [圖形](workbooks-visualizations.md#graphs)
 
 ![範例活頁簿視覺效果](./media/workbooks-overview/visualizations.png)
 

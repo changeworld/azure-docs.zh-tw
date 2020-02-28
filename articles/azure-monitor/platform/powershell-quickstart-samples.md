@@ -1,18 +1,15 @@
 ---
 title: Azure 監視器 PowerShell 快速入門範例
 description: 使用 PowerShell 存取 Azure 監視器的功能，例如自動調整、警示、webhook 和搜尋活動記錄。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 2/14/2018
-ms.openlocfilehash: d1aa4b4e2d72f10ca73616bc7e69b0d02f13a501
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 9f039f71954998ef561d1efd1e559318740c86ab
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72551847"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659270"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Azure 監視器 PowerShell 快速入門範例
 本文說明可協助您存取 Azure 監視器 功能的範例 PowerShell 命令。
@@ -149,9 +146,9 @@ Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resou
 
 下表描述使用計量建立警示所使用的參數和值。
 
-| 參數 | value |
+| parameter | 值 |
 | --- | --- |
-| Name |simpletestdiskwrite |
+| 名稱 |simpletestdiskwrite |
 | 此警示規則的位置 |美國東部 |
 | ResourceGroup |montest |
 | TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
@@ -159,7 +156,7 @@ Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resou
 | operator |GreaterThan |
 | 臨界值 (此計量的計數/秒） |1 |
 | WindowSize (hh:mm:ss 格式) |00:05:00 |
-| 彙總工具 (在此情況為計量的統計資料，其使用平均計數) |平均值 |
+| 彙總工具 (在此情況為計量的統計資料，其使用平均計數) |Average |
 | 自訂電子郵件 (字串陣列) |'foo@example.com','bar@example.com' |
 | 傳送電子郵件給擁有者、參與者和讀者 |-SendToServiceOwners |
 

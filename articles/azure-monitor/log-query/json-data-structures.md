@@ -1,18 +1,17 @@
 ---
 title: 在 Azure 監視器記錄查詢中使用字串 |Microsoft Docs
 description: 本文提供的教學課程可讓您使用 Azure 入口網站中的 Azure 監視器 Log Analytics 來查詢和分析 Azure 監視器中的記錄資料。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: 940c82e9ef7016639a3ab334040c408f83996e2b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8be4f318149590ff08b73fda719e99a17220ec2e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365303"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670146"
 ---
 # <a name="working-with-json-and-data-structures-in-azure-monitor-log-queries"></a>在 Azure 監視器記錄查詢中處理 JSON 與資料結構
 

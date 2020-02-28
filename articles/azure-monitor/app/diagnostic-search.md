@@ -1,18 +1,14 @@
 ---
 title: 在 Azure Application Insights 中使用搜尋服務 | Microsoft Docs
 description: 搜尋和篩選 Web 應用程式傳送的原始遙測。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/30/2019
-ms.openlocfilehash: 77cd0a8d0c1a93e7dc1db931e987a172d31978ef
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 8039a55784f63030f330d6c1e2061e99b8b63bbf
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677973"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669670"
 ---
 # <a name="using-search-in-application-insights"></a>在 Application Insights 中使用搜尋
 
@@ -26,7 +22,7 @@ ms.locfileid: "72677973"
 
 您可以從應用程式的 [Application Insights 總覽] 索引標籤（位於頂端列）或左側的 [調查] 底下開啟診斷搜尋。
 
-![搜尋索引標籤](./media/diagnostic-search/view-custom-events.png)
+![[搜尋] 索引標籤](./media/diagnostic-search/view-custom-events.png)
 
 請移至 [事件種類] 下拉式功能表，以查看遙測專案的清單-伺服器要求、頁面流覽、您已撰寫程式碼的自訂事件等等。 在 [結果] 清單的頂端，是顯示一段時間內事件計數的摘要圖表。
 
@@ -103,10 +99,10 @@ ms.locfileid: "72677973"
 
 以下是您可以使用搜尋運算式：
 
-| 範例查詢 | 影響 |
+| 查詢範例 | 效果 |
 | --- | --- |
 | `apple` |在日期範圍中尋找欄位含有 "apple" 這個字的所有事件 |
-| `apple AND banana` <br/>`apple banana` |尋找同時含有這兩個字的事件。 請使用大寫 "AND"，而不是 "and"。 <br/>簡短格式。 |
+| `apple AND banana` <br/>`apple banana` |尋找同時含有這兩個字的事件。 請使用大寫 "AND"，而不是 "and"。 <br/>簡短形式。 |
 | `apple OR banana` |尋找含有任一單字的事件。 請使用 "OR"，而不是 "or"。 |
 | `apple NOT banana` |尋找含有一個字但不含另一個字的事件。 |
 

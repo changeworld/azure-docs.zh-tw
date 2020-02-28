@@ -10,12 +10,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 1367bf32eea58b828c00ee23a59a32a2fec699ab
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 8fdc64632be8b5fcb3dca8de2ee833fef25719fe
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983090"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656733"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>重新導向 URI/回覆 URL 限制
 
@@ -30,7 +30,7 @@ ms.locfileid: "76983090"
 
 下表顯示當您註冊應用程式時，可以新增的重新導向 Uri 數目上限。
 
-| 已登入的帳戶 | 重新導向 Uri 的數目上限 | 說明 |
+| 已登入的帳戶 | 重新導向 Uri 的數目上限 | 描述 |
 |--------------------------|---------------------------------|-------------|
 | 任何組織的 Azure Active Directory （Azure AD）租使用者中的 Microsoft 公司或學校帳戶 | 256 | 應用程式資訊清單中的 `signInAudience` 欄位設定為*AzureADMyOrg*或*AzureADMultipleOrgs* |
 | 個人 Microsoft 帳戶和公司和學校帳戶 | 100 | 應用程式資訊清單中的 `signInAudience` 欄位已設定為*AzureADandPersonalMicrosoftAccount* |
@@ -54,7 +54,7 @@ Azure AD 應用程式模型現在支援 HTTP 和 HTTPS 架構，適用于在任�
 > [!NOTE]
 > 新的[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗不允許開發人員在 UI 上新增萬用字元 uri。 只有透過應用程式資訊清單編輯器，才支援為登入工作或學校帳戶的應用程式新增萬用字元 URI。 未來，新的應用程式將無法在重新導向 URI 中使用萬用字元。 不過，重新導向 Uri 中包含萬用字元的繼承應用程式將會繼續作用。
 
-如果您的案例所需的重新導向 Uri 超過允許的最大限制，而不是新增萬用字元重新導向 URI，請考慮下列其中一種方法。
+如果您的案例所需的重新導向 Uri 數目超過允許的上限，而不是新增萬用字元重新導向 URI，請考慮下列方法。
 
 ### <a name="use-a-state-parameter"></a>使用 state 參數
 
@@ -70,10 +70,6 @@ Azure AD 應用程式模型現在支援 HTTP 和 HTTPS 架構，適用于在任�
 
 > [!NOTE]
 > 此方法可讓遭入侵的用戶端修改狀態參數中傳送的其他參數，藉此將使用者重新導向至不同的 URL，也就是 RFC 6819 中所述的開啟的重新導向器[威脅](https://tools.ietf.org/html/rfc6819#section-4.2.4)。 因此，用戶端必須保護這些參數，方法是將狀態加密，或以其他方式進行驗證，例如在重新導向 URI 中驗證權杖的功能變數名稱。
-
-### <a name="add-redirect-uris-to-service-principals"></a>將重新導向 Uri 新增至服務主體
-
-另一種方法是將重新導向 Uri 新增至代表您在任何 Azure AD 租使用者中註冊應用程式的[服務主體](app-objects-and-service-principals.md#application-and-service-principal-relationship)。 當您無法使用狀態參數或您的案例需要將新的重新導向 Uri 新增至您所支援之每個新租使用者的應用程式註冊時，您可以使用此方法。 
 
 ## <a name="next-steps"></a>後續步驟
 

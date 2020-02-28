@@ -1,18 +1,15 @@
 ---
 title: Azure 監視器 CLI 快速入門範例
 description: Azure 監視器功能的範例 CLI 命令。 Azure 監視器是一項 Microsoft Azure 服務，可讓您根據設定的遙測資料值、自動調整雲端服務、虛擬機器和 Web Apps，傳送警示通知或呼叫 Web URL。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 05/16/2018
-ms.openlocfilehash: 0def528e0c432ecbc706622f0b8c29c2d610c663
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 69687cee8b8a907b82f2c848242ac64d54dedb87
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893530"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663499"
 ---
 # <a name="azure-monitor-cli-quick-start-samples"></a>Azure 監視器 CLI 快速入門範例
 本文說明可協助您存取 Azure 監視器 功能的命令列介面 (CLI) 命令範例。 Azure 監視器可讓您根據設定的遙測資料值、自動調整雲端服務、虛擬機器和 Web Apps，以及傳送警示通知，或呼叫 Web URL。
@@ -150,7 +147,7 @@ az monitor log-profiles create --name <profile name> --location <location of pro
 az monitor log-profiles delete --name <profile name>
 ```
 
-## <a name="diagnostics"></a>診斷程式
+## <a name="diagnostics"></a>診斷
 
 在此區段中運用資訊來使用診斷設定。
 
@@ -184,7 +181,7 @@ az monitor diagnostic-settings delete --name <diagnostic name> \
     --resource <target resource ID>
 ```
 
-## <a name="autoscale"></a>自動調整規模
+## <a name="autoscale"></a>Autoscale
 
 利用此區段中的資訊來使用自動調整設定。 您必須修改這些範例。
 

@@ -1,18 +1,14 @@
 ---
 title: Azure 雲端服務的 Application Insight | Microsoft Docs
 description: 使用 Application Insights 有效地監視您的 Web 和背景工作角色
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 09/05/2018
-ms.openlocfilehash: f915764deaa70117b96a42c5e7310b691125d731
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ce794a7bd18635fddfa30056ab2d675dc138097d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979842"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655832"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure 雲端服務的 Application Insights
 [Application Insights][start]可以藉由結合來自 Application Insights sdk 的資料與雲端服務的[Azure 診斷](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)資料，來監視[Azure 雲端服務應用程式](https://azure.microsoft.com/services/cloud-services/)的可用性、效能、失敗和使用方式。 當您取得有關應用程式在現實世界的效能和效率的意見反應時，您可以在每個開發生命週期中針對設計方向做出明智的抉擇。
@@ -26,7 +22,7 @@ ms.locfileid: "75979842"
 * Microsoft Azure 工具 2.9 或更新版本。
 * 開發人員分析工具 7.10 或更新版本。
 
-## <a name="get-started-quickly"></a>快速入門
+## <a name="get-started-quickly"></a>即刻開始使用
 使用 Application Insights 來監視您雲端服務的最快、最簡單方式就是在將服務發佈到 Azure 時選擇該選項。
 
 ![診斷設定頁面範例](./media/cloudservices/azure-cloud-application-insights.png)
@@ -271,7 +267,7 @@ ms.locfileid: "75979842"
 ## <a name="exception-method-not-found-on-running-in-azure-cloud-services"></a>在 Azure 雲端服務中執行時發生的「找不到方法」例外狀況
 您是否已針對 .NET 4.6 組建？ Azure 雲端服務角色不自動支援 .NET 4.6。 [在每個角色上安裝 .NET 4.6](../../cloud-services/cloud-services-dotnet-install-dotnet.md)，再執行應用程式。
 
-## <a name="video"></a>影片
+## <a name="video"></a>視訊
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 

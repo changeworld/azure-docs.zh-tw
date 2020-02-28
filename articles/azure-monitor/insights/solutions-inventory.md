@@ -1,18 +1,17 @@
 ---
 title: Azure 中監視解決方案的清查 |Microsoft Docs
 description: Azure 監視器中的監視解決方案是邏輯、視覺效果和資料擷取規則的集合，可提供針對特定問題領域進行計量的樞紐分析。  本文提供 Microsoft 提供的監視解決方案清單，以及其資料收集方法和頻率的詳細資訊。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/26/2018
-ms.openlocfilehash: 9b0140b843d7da1b892463bff7d6014a3f9584ad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7b88d957bce45bf518fc77584f1691de8010459a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75402014"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663124"
 ---
 # <a name="inventory-and-data-collection-details-for-monitoring-solutions-in-azure"></a>在 Azure 中監視解決方案的清查和資料收集詳細資料
 [監視解決方案](solutions.md)會利用 Azure 中的服務，針對特定應用程式或服務的作業提供額外的深入解析。 監視解決方案通常會收集記錄資料，並提供查詢和檢視來分析所收集的資料。 您可以針對您使用的任何應用程式和服務，將監視解決方案新增至 Azure 監視器。 這些管理解決方案通常免費提供，但是會收集可能造成使用費用的資料。
