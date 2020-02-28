@@ -1,18 +1,17 @@
 ---
 title: Azure 監視器記錄查詢範例 | Microsoft Docs
 description: Azure 監視器中使用 Kusto 查詢語言進行的記錄查詢範例。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/01/2019
-ms.openlocfilehash: 8850aef8b5d45f236385551a1455e6fe7b540340
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 9bfadf55e4f68bb7188b27e4ef5bc03e3955f375
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614452"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662043"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Azure 監視器記錄查詢範例
 本文包含多個使用 [Kusto 查詢語言](log-query-overview.md)的[查詢](/azure/kusto/query/)範例，以從 Azure 監視器擷取不同的記錄資料類型。 您可以透過方法來合併和分析資料，以使用這些範例識別用於您的要求的不同策略。  
@@ -38,7 +37,7 @@ Event
 search in (Event, SecurityEvent) "unmarshaling"
 ```
 
-## <a name="heartbeat"></a>Heartbeat
+## <a name="heartbeat"></a>活動訊號
 
 ### <a name="chart-a-week-over-week-view-of-the-number-of-computers-sending-data"></a>列出逐週傳送資料的電腦數目圖表
 
@@ -374,7 +373,7 @@ let suspicious_users_that_later_logged_in =
 suspicious_users_that_later_logged_in
 ```
 
-## <a name="usage"></a>使用量
+## <a name="usage"></a>使用方式
 
 ### <a name="calculate-the-average-size-of-perf-usage-reports-per-computer"></a>計算每部電腦的效能使用量報告的平均大小
 

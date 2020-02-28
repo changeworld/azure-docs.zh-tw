@@ -1,19 +1,15 @@
 ---
 title: Azure Application Insights 的應用程式對應 | Microsoft Docs
 description: 使用應用程式對應監視複雜的應用程式拓撲
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: cc7d58f0557e620c273043af8ffb2e8ec4d8ec87
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: dce2fdbe7e0c390309be38d2ebab4c73dbb4ed2e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485143"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666270"
 ---
 # <a name="application-map-triage-distributed-applications"></a>應用程式對應：對分散式應用程式進行分級
 

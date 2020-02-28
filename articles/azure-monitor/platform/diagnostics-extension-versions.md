@@ -1,18 +1,17 @@
 ---
 title: Windows Azure 診斷延伸模組（WAD）設定架構版本歷程記錄
 description: 與收集 Azure 虛擬機器、VM 擴展集、Service Fabric 和雲端服務中的效能計數器有關。
-ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/29/2020
-ms.openlocfilehash: 20d9cdf264e62bc901c8e821065527a1d067b2db
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 4dd91363cdebf18e6303238816e8269065a6a317
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472540"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672237"
 ---
 # <a name="windows-azure-diagnostics-extension-wad-configuration-schema-versions-and-history"></a>Windows Azure 診斷延伸模組（WAD）設定架構版本和歷程記錄
 本文提供隨附于 Microsoft Azure SDK 的[Windows Azure 診斷擴充功能（WAD）](diagnostics-extension-overview.md)架構版本的版本歷程記錄。  
@@ -24,7 +23,7 @@ ms.locfileid: "77472540"
 |------------------|-------------------------------|------|  
 |1.x               |1.0                            |外掛程式|  
 |2.0 - 2.4         |1.0                            |外掛程式|  
-|2.5               |1.2                            |擴充功能|  
+|2.5               |1.2                            |延伸模組|  
 |2.6               |1.3                            |"|  
 |2.7               |1.4                            |"|  
 |2.8               |1.5                            |"|  
@@ -161,7 +160,7 @@ ms.locfileid: "77472540"
 ### <a name="azure-sdk-26-and-diagnostics-extension-13"></a>Azure SDK 2.6 和診斷擴充功能 1.3 版
 我們已對 Visual Studio 中的雲端服務專案進行下列變更。 (這些變更也套用至更新版的 Azure SDK)。
 
-* 本機模擬器現在支援診斷。 這項變更意謂著您可以在於 Visual Studio 中進行開發及測試時，收集診斷資料並確保應用程式所建立的追蹤正確。 當您在 Visual Studio 中使用 Azure 儲存體模擬器來執行您的雲端服務專案時，連接字串 `UseDevelopmentStorage=true` 會啟用診斷資料收集。 所有的診斷資料都會收集到 (開發儲存體) 儲存體帳戶中。
+* 本機模擬器現在支援診斷。 這項變更意謂著您可以在於 Visual Studio 中進行開發及測試時，收集診斷資料並確保應用程式所建立的追蹤正確。 當您在 Visual Studio 中使用 Azure 儲存體模擬器來執行您的雲端服務專案時，連接字串 `UseDevelopmentStorage=true` 會啟用診斷資料收集。 所有的診斷資料都收集在 [(開發儲存體)] 儲存體帳戶中。
 * 診斷儲存體帳戶連接字串 (Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString) 會再一次儲存在服務組態 (.cscfg) 檔中。 在 Azure SDK 2.5 中，診斷儲存體帳戶會在 diagnostics.wadcfgx 檔案中指定。
 
 連接字串在 Azure SDK 2.4 及更舊版本和 Azure SDK 2.6 及更新版本中的運作方式有一些顯著的差異。
@@ -180,7 +179,7 @@ ms.locfileid: "77472540"
 * 在 .cscfg 檔案中的診斷連接字串的優先順序高於 .wadcfgx 檔案中的儲存體帳戶。 如果在 .cscfg 檔案中指定診斷連接字串，Visual Studio 會使用它並忽略 .wadcfgx 中的儲存體帳戶。
 
 #### <a name="what-does-the-update-development-storage-connection-strings-checkbox-do"></a>「更新開發儲存體連接字串...」核取方塊的功用？
-[在發佈至 Microsoft Azure 時使用 Microsoft Azure 儲存體帳戶認證更新診斷和快取的開發儲存體連接字串] 核取方塊提供便利的方式，使用發佈期間指定的 Azure 儲存體帳戶更新任何開發儲存體帳戶連接字串。
+[發佈至 Microsoft Azure 時，使用 Microsoft Azure 儲存體帳戶認證來更新診斷和快取的開發儲存體連接字串] 核取方塊提供便利的方式，讓您以發行期間指定的 Azure 儲存體帳戶，更新任何開發儲存體帳戶連接字串。
 
 例如，假設您選取此核取方塊，診斷連接字串就會指定 `UseDevelopmentStorage=true`。 當您將專案發佈至 Azure 時，Visual Studio 會自動使用您在 [發佈] 精靈中指定的儲存體帳戶更新診斷連接字串。 不過，如果將實際的儲存體帳戶指定為診斷連接字串，則會改用該帳戶。
 

@@ -1,18 +1,17 @@
 ---
 title: Azure 監視器記錄查詢中的 app() 運算式 |Microsoft Docs
 description: 應用程式運算式會用於 Azure 監視器記錄查詢中，以從相同資源群組、另一個資源群組或另一個訂用帳戶中的特定 Application Insights 應用程式抓取資料。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/25/2019
-ms.openlocfilehash: ffef73f88c8679d0b0be81222b1b61c4eaef5098
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 5502df1cd119c0f63c65945d73431a17282ebc0c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933088"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670249"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>Azure 監視器查詢中的 app() 運算式
 
@@ -32,12 +31,12 @@ ms.locfileid: "72933088"
 | 識別碼 | 描述 | 範例
 |:---|:---|:---|
 | 資源名稱 | 人類可閱讀的應用程式名稱 (也稱為「元件名稱」) | app("fabrikamapp") |
-| 完整名稱 | 使用下列形式的應用程式完整名稱："subscriptionName/resourceGroup/componentName" | app('AI-Prototype/Fabrikam/fabrikamapp') |
+| Qualified Name | 使用下列形式的應用程式完整名稱："subscriptionName/resourceGroup/componentName" | app('AI-Prototype/Fabrikam/fabrikamapp') |
 | ID | 應用程式的 GUID | app("988ba129-363e-4415-8fe7-8cbab5447518") |
 | Azure 資源識別碼 | Azure 資源的識別碼 |app("/subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp") |
 
 
-## <a name="notes"></a>注意
+## <a name="notes"></a>注意事項
 
 * 您必須有應用程式的讀取權限。
 * 以應用程式名稱來識別應用程式時，會假設該名稱在所有可存取的訂用帳戶中是唯一的。 如果您有多個應用程式具有該指定名稱，查詢將會因為語意模糊而失敗。 在此情況下，您必須使用其中一種其他識別碼。

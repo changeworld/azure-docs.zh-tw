@@ -1,22 +1,20 @@
 ---
 title: Azure 監視器中的活動記錄警示
 description: 活動記錄中發生特定事件時，透過 SMS、Webhook 及電子郵件等等收到通知。
-ms.service: azure-monitor
 ms.subservice: alerts
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 09/17/2018
-ms.openlocfilehash: c42f72800a93de714f0cc126939a28a8a6b5fce4
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 26ecfdb33b92c91010af63ec14089dd148d6bad0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747535"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669008"
 ---
-# <a name="alerts-on-activity-log"></a>活動記錄警示 
+# <a name="alerts-on-activity-log"></a>活動記錄警示
 
 ## <a name="overview"></a>概觀
+
 活動記錄警示是當符合警示中指定之條件的新[活動記錄事件](activity-log-schema.md)發生時啟動的警示。 根據[Azure 活動記錄](platform-logs-overview.md)中記錄的事件順序和數量，將會引發警示規則。 活動記錄警示規則是 Azure 資源，因此可以使用 Azure Resource Manager 範本來建立。 也可以在 Azure 入口網站中將它們建立、更新或刪除。 本文介紹活動記錄警示背後的概念。 如需建立或使用活動記錄警示規則的詳細資訊，請參閱[建立和管理活動記錄警示](alerts-activity-log.md)。
 
 > [!NOTE]

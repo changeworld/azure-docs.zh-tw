@@ -1,18 +1,17 @@
 ---
 title: 藉由更新您的邏輯應用程式和 runbook，準備 Azure 監視器傳統警示遷移
-author: yanivlavi
 description: 瞭解如何修改您的 webhook、邏輯應用程式和 runbook，以準備進行自發的遷移。
-ms.service: azure-monitor
+author: yanivlavi
+ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
-ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 58ba95ff60ddccf909578a673110c870caf57376
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 9219e105acb98424939030af76b526d475585619
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705559"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665587"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>準備您的邏輯應用程式和 runbook 以遷移傳統警示規則
 
@@ -57,7 +56,7 @@ ms.locfileid: "76705559"
 | 運算子（匯總計量值如何與閾值比較） | **coNtext。條件. 運算子** | **data. condition. 運算子** |
 | 閾值 | **內容。條件. 閾值** | **allOf [0]. 閾值** |
 | 度量值 | **metricValue** | **allOf [0]. metricValue** |
-| 訂用帳戶 ID | **內容。 subscriptionId** | **data. subscriptionId** |
+| 訂閱識別碼 | **內容。 subscriptionId** | **data. subscriptionId** |
 | 受影響資源的資源群組 | **resourceGroup** | **資料. resourceGroup** |
 | 受影響資源的名稱 | **CoNtext.resourcename** | **data. CoNtext.resourcename** |
 | 受影響資源的類型 | **內容 resourceType** | **資料。 resourceType** |

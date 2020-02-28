@@ -1,18 +1,14 @@
 ---
 title: 使用 Azure Application Insights 中的串流分析匯出 | Microsoft Docs
 description: 串流分析可以持續轉換、篩選和路由傳送您從 Application Insights 匯出的資料。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/08/2019
-ms.openlocfilehash: 3be1a643cbe942c0b740ae8ebcc2c7f2dda24854
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: b93bc49d005e3e54f1e5db84e6ff1adc49e25a65
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677942"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664009"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>使用串流分析來處理從 Application Insights 匯出的資料
 [Azure 串流分析](https://azure.microsoft.com/services/stream-analytics/)是處理[從 Application Insights 匯出](export-telemetry.md)之資料的理想工具。 串流分析可以從各種來源提取資料。 它可以轉換和篩選資料，然後將它路由傳送至各種接收。
@@ -184,7 +180,7 @@ ms.locfileid: "72677942"
 
 * 此查詢包括維度屬性值，而不需根據陣列索引中固定索引的特定維度。
 
-## <a name="run-the-job"></a>執行工作
+## <a name="run-the-job"></a>執行作業
 您可以選取一個啟動工作的過去日期。 
 
 ![選取工作並按一下 [查詢]。 貼上下面的範例。](./media/export-stream-analytics/SA008.png)
@@ -205,10 +201,10 @@ ms.locfileid: "72677942"
 
 ![在 Power BI 中，選取您的資料集和欄位。](./media/export-stream-analytics/210.png)
 
-## <a name="no-data"></a>沒有資料嗎？
+## <a name="no-data"></a>沒有資料？
 * 請檢查是否正確 [設定日期格式](#set-path-prefix-pattern) ：YYYY-MM-DD (含連接號)。
 
-## <a name="video"></a>影片
+## <a name="video"></a>視訊
 Noam Ben Zeev 示範如何使用串流分析來處理匯出的資料。
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Export-to-Power-BI-from-Application-Insights/player]

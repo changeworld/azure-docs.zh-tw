@@ -1,23 +1,21 @@
 ---
 title: 針對 Azure Service Fabric、雲端服務和虛擬機器中的 .NET 應用程式啟用快照偵錯工具 |Microsoft Docs
 description: 針對 Azure Service Fabric、雲端服務和虛擬機器中的 .NET 應用程式啟用快照偵錯工具
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: brahmnes
 ms.author: bfung
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 98ceeeb8efb11e2caeffadeb48270c419cc7e430
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 194a2da23c8fb405c492df8f6ee173cc97fde4ec
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899805"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671332"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-service-fabric-cloud-service-and-virtual-machines"></a>針對 Azure Service Fabric、雲端服務和虛擬機器中的 .NET 應用程式啟用快照偵錯工具
 
-如果您的 ASP.NET 或 ASP.NET core 應用程式在 Azure App Service 中執行，強烈建議您[透過 Application Insights 入口網站頁面來啟用快照偵錯工具](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)。 不過，如果您的應用程式需要自訂的快照偵錯工具設定或 .NET core 的預覽版本，則***除了***[透過 Application Insights 入口網站啟用的指示之外，也應該遵循此指示頁面](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)。
+如果您的 ASP.NET 或 ASP.NET core 應用程式在 Azure App Service 中執行，強烈建議您[透過 Application Insights 入口網站頁面來啟用快照偵錯工具](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)。 不過，如果您的應用程式需要自訂的快照偵錯工具設定或 .NET core 的預覽版本，則除了[透過 Application Insights 入口網站頁面啟用](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)的指示***之外***，也應該遵循此指示。
 
 如果您的應用程式在 Azure Service Fabric、雲端服務、虛擬機器或內部部署機器中執行，則應使用下列指示。 
     

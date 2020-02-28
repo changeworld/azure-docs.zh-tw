@@ -1,18 +1,16 @@
 ---
 title: Azure 應用程式 Insights 代理程式 API 參考
 description: Application Insights 代理程式 API 參考。 啟用-ApplicationInsightsMonitoring。 在不重新部署網站的情況下監視網站效能。 適用于內部部署、Vm 或 Azure 上裝載的 ASP.NET web 應用程式。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: dccd7e617174bef4a85cb6293cbcc459542310f9
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 8bbdc96a49fffc91f80d24a9eb0926766f86ee16
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899699"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671302"
 ---
 # <a name="application-insights-agent-api-enable-applicationinsightsmonitoring"></a>Application Insights 代理程式 API：啟用-ApplicationInsightsMonitoring
 
@@ -50,8 +48,8 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 在此範例中：
 - `MachineFilter` 會使用 `'.*'` 萬用字元來符合目前的電腦。
 - `AppFilter='WebAppExclude'` 提供 `null` 的檢測金鑰。 將不會檢測指定的應用程式。
-- `AppFilter='WebAppOne'` 會為指定的應用程式指派唯一的檢測金鑰。
-- `AppFilter='WebAppTwo'` 會為指定的應用程式指派唯一的檢測金鑰。
+- `AppFilter='WebAppOne'` 為指定的應用程式指派唯一的檢測金鑰。
+- `AppFilter='WebAppTwo'` 為指定的應用程式指派唯一的檢測金鑰。
 - 最後，`AppFilter` 也會使用 `'.*'` 萬用字元來比對先前規則不符合的所有 web 應用程式，並指派預設的檢測金鑰。
 - 為了方便閱讀，會加入空格。
 
@@ -77,7 +75,7 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 > [!IMPORTANT]
 > 應用程式會依照規則的提供順序來比對規則。 因此，您應該先指定最特定的規則，最後是最常見的規則。
 
-#### <a name="schema"></a>結構描述
+#### <a name="schema"></a>Schema
 `@(@{MachineFilter='.*';AppFilter='.*';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'}})`
 
 - **MachineFilter**是電腦或C# VM 名稱的必要 RegEx。
@@ -91,12 +89,12 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 
 
 ### <a name="-enableinstrumentationengine"></a>-EnableInstrumentationEngine
-**選用。** 使用此參數可讓檢測引擎收集有關執行 managed 進程期間所發生之事件和訊息的資訊。 這些事件和訊息包括相依性結果碼、HTTP 指令動詞和 SQL 命令文字。
+**選擇性。** 使用此參數可讓檢測引擎收集有關執行 managed 進程期間所發生之事件和訊息的資訊。 這些事件和訊息包括相依性結果碼、HTTP 指令動詞和 SQL 命令文字。
 
 檢測引擎會增加額外負荷，並預設為關閉。
 
 ### <a name="-acceptlicense"></a>-AcceptLicense
-**選用。** 使用此參數可接受無周邊安裝中的授權和隱私權聲明。
+**選擇性。** 使用此參數可接受無周邊安裝中的授權和隱私權聲明。
 
 ### <a name="-ignoresharedconfig"></a>-IgnoreSharedConfig
 當您有一部 web 伺服器的叢集時，您可能會使用[共用](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211)設定。

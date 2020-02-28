@@ -1,19 +1,17 @@
 ---
 title: Azure Application Insights 使用世代 | Microsoft Docs
 description: 分析具有共通點的一組使用者、工作階段、事件或作業
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 04/10/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 27b57477712c61fc97ae31ac353647896cca18af
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0c552e8f3e732c49da02b2f5704fb9cf312fb3e8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406327"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671081"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights 世代
 
@@ -131,7 +129,7 @@ _我已從特定國家/地區定義使用者的世代。當我在 [使用者] �
 * 當使用者在目前時間範圍內從英國傳送了一個或多個事件時，世代版本會顯示這些使用者的所有事件。 如果您依國家或區域劃分，您可能會看到許多國家和區域。
 * 篩選版本只會顯示來自英國的事件。 但如果您依國家或區域劃分，您將只會看到英國。
 
-## <a name="learn-more"></a>了解更多
+## <a name="learn-more"></a>進一步了解
 
 * [分析查詢語言](https://go.microsoft.com/fwlink/?linkid=856587)
 * [使用者、工作階段、事件](usage-segmentation.md)

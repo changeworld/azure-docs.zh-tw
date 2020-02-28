@@ -1,24 +1,22 @@
 ---
 title: 使用 Azure Application Insights Profiler 設定窗格 | Microsoft Docs
 description: 查看 Profiler 狀態並開始分析工作階段
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: b383ef8c92325b0ad6561bee9b654c78e4054338
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: f66a23c0562ec9f1987bd119a45b7b767f2dfe46
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820484"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671625"
 ---
 # <a name="configure-application-insights-profiler"></a>設定 Application Insights Profiler
 
 ## <a name="updated-profiler-agent"></a>已更新 Profiler 代理程式
-觸發程式功能只適用于2.6 版或更新版本的 profiler 代理程式。 如果您正在執行 Azure App Service，您的代理程式會自動更新。 如果您移至網站的 Kudu URL 並將 \DiagnosticServices 附加至它的結尾，您可以查看正在執行的代理程式版本，如下所示： https://yourwebsite.scm.azurewebsites.net/diagnosticservices 。 Application Insights Profiler Webjob 應為2.6 或更新版本。 您可以重新開機 web 應用程式來強制升級。 
+觸發程式功能只適用于2.6 版或更新版本的 profiler 代理程式。 如果您正在執行 Azure App Service，您的代理程式會自動更新。 如果您移至網站的 Kudu URL 並將 \DiagnosticServices 附加至它的結尾，您可以查看正在執行的代理程式版本，如下所示： https://yourwebsite.scm.azurewebsites.net/diagnosticservices。 Application Insights Profiler Webjob 應為2.6 或更新版本。 您可以重新開機 web 應用程式來強制升級。 
 
 如果您是在 VM 或雲端服務上執行分析工具，您必須安裝 Windows Azure 診斷（WAD）延伸模組版本16.0.4 版或更新版本。 您可以藉由登入您的 VM 並查看此目錄，來檢查 WAD 的版本： C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.16.0.4。 目錄名稱是已安裝的 WAD 版本。 當有新版本可用時，Azure VM 代理程式會自動更新 WAD。
 
@@ -45,7 +43,7 @@ ms.locfileid: "72820484"
 
 若要讓使用者手動觸發 profiler 會話，他們必須在其 Application Insights 元件的角色上至少有「寫入」存取權。 在大部分情況下，您會自動取得此存取權，而不需要額外的工作。 如果您遇到問題，要新增的訂用帳戶範圍角色會是「Application Insights 元件參與者」角色。 [深入瞭解使用 Azure 監視的角色存取控制](https://docs.microsoft.com/azure/azure-monitor/app/resources-roles-access-control)。
 
-## <a name="trigger-settings"></a>觸發程式設定
+## <a name="trigger-settings"></a>觸發程序設定
 ![觸發程式設定飛出視窗][trigger-settings-flyout]
 
 按一下功能表列上的 [觸發程式] 按鈕會開啟 [觸發程式設定] 方塊。 您可以設定觸發程式，以便在 CPU 或記憶體使用量百分比達到您設定的層級時開始進行分析。
@@ -54,7 +52,7 @@ ms.locfileid: "72820484"
 |-|-|
 開啟/關閉按鈕 | 在上：此觸發程式可以啟動 profiler;Off：此觸發程式不會啟動 profiler。
 記憶體閾值 | 當此百分比的記憶體使用中時，就會啟動 profiler。
-課程時間 | 設定觸發時，分析工具將執行的時間長度。
+持續期間 | 設定觸發時，分析工具將執行的時間長度。
 Cooldown | 設定分析工具在觸發後再次檢查記憶體或 CPU 使用量之前，所要等待的時間長度。
 
 ## <a name="recent-profiling-sessions"></a>最近的分析會話
@@ -65,7 +63,7 @@ Cooldown | 設定分析工具在觸發後再次檢查記憶體或 CPU 使用量�
 觸發者 | 會話如何藉由觸發程式、立即分析或預設取樣來啟動。 
 應用程式名稱 | 已分析之應用程式的名稱。
 機器實例 | Profiler 代理程式執行所在的電腦名稱稱。
-Timestamp | 設定檔的捕捉時間。
+時間戳記 | 設定檔的捕捉時間。
 Tracee | 已附加至個別要求的追蹤數目。
 CPU % | Profiler 執行時所使用的 CPU 百分比。
 快閃記憶體 | Profiler 執行時所使用的記憶體百分比。

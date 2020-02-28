@@ -1,18 +1,17 @@
 ---
 title: 針對混合式環境啟用 Azure 監視器（預覽） |Microsoft Docs
 description: 本文說明如何針對包含一或多部虛擬機器的混合式雲端環境，啟用適用於 VM 的 Azure 監視器。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: 0afc67bf6d9e997ef615ecadc6836b36ed73e2ea
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bd44eebf8aceaf7fe32cf8cf1b1152db32acb344
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969673"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669619"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-for-a-hybrid-environment"></a>針對混合式環境啟用適用於 VM 的 Azure 監視器（預覽）
 
@@ -20,7 +19,7 @@ ms.locfileid: "75969673"
 
 本文說明如何針對您資料中心或其他雲端環境中裝載的虛擬機器或實體電腦啟用適用於 VM 的 Azure 監視器（預覽）。 在此程式結束時，您將已成功開始監視環境中的虛擬機器，並瞭解它們是否遇到任何效能或可用性問題。
 
-開始之前，請務必檢查[必要條件](vminsights-enable-overview.md)，並確認您的訂用帳戶和資源符合需求。 檢閱適用於 [Log Analytics Linux 和 Windows 代理程式](../../log-analytics/log-analytics-agent-overview.md)的需求和部署方法。
+開始之前，請務必檢閱[必要條件](vminsights-enable-overview.md)並確認訂用帳戶和資源已符合需求。 檢閱適用於 [Log Analytics Linux 和 Windows 代理程式](../../log-analytics/log-analytics-agent-overview.md)的需求和部署方法。
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
@@ -49,7 +48,7 @@ ms.locfileid: "75969673"
 
 下表將強調說明命令列中適用於代理程式的安裝程式所支援的參數。
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 |:--|:--|
 | /? | 傳回命令列選項的清單。 |
 | /S | 執行無訊息安裝，而不需要與使用者互動。 |
@@ -66,10 +65,10 @@ Windows Dependency Agent 的檔案預設安裝在 *C:\Program Files\Microsoft De
 > 必須有 root 權限，以便安裝或設定代理程式。
 >
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 |:--|:--|
 | -help | 取得命令列選項的清單。 |
-| -S | 執行無訊息安裝，不會出現任何使用者提示。 |
+| -s | 執行無訊息安裝，不會出現任何使用者提示。 |
 | --check | 檢查權限和作業系統，但不會安裝代理程式。 |
 
 例如，若要使用 `-help` 參數執行安裝程式，請輸入**installdependencyagent-linux64.bin (** 。
@@ -107,7 +106,7 @@ wget --content-disposition https://aka.ms/dependencyagentlinux -O InstallDepende
 sudo sh InstallDependencyAgent-Linux64.bin -s
 ```
 
-## <a name="desired-state-configuration"></a>期望的狀態設定
+## <a name="desired-state-configuration"></a>Desired State Configuration
 
 若要使用預期狀態設定 (DSC) 部署 Dependency Agent，您可以使用 xPSDesiredStateConfiguration 模組和下列範例程式碼：
 

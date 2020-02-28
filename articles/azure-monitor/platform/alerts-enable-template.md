@@ -1,19 +1,17 @@
 ---
 title: 使用 Resource Manager 範本在 Azure 中建立傳統計量警示
 description: 了解如何使用 Resource Manager 範本來建立傳統計量警示，以接收電子郵件或 Webhook 的通知。
-author: johnkemnetz
-services: azure-monitor
-ms.service: azure-monitor
+author: rboucher
+ms.author: robb
 ms.topic: conceptual
 ms.date: 4/27/2018
-ms.author: johnkem
-ms.subservice: metrics
-ms.openlocfilehash: 7c1cdf912f9a1e4e8ae92baa4381e9705702136f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.subservice: alerts
+ms.openlocfilehash: c25886308b4f9560b336982b87bd4b38b306bcb2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977595"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668038"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>使用 Resource Manager 範本建立傳統計量警示
 本文章將說明如何使用 [Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md) 設定 Azure 度量警示。 這可讓您在建立警示以確保正確地監視所有資源時，自動在您的資源上設定警示。

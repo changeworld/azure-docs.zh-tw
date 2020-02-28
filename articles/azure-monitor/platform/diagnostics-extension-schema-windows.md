@@ -1,18 +1,17 @@
 ---
 title: Windows 診斷延伸模組架構
 description: Azure 監視器中 Windows 診斷擴充功能（WAD）的設定架構參考。
-ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
-ms.openlocfilehash: 5b4d68ab5be2566310ddcc2eaf591d9908d35ad1
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 3adf4b59c0605859ada75577c083094541815984
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472579"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672356"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Windows 診斷延伸模組架構
 Azure 診斷延伸模組是 Azure 監視器中的代理程式，可從客體作業系統和 Azure 計算資源的工作負載收集監視資料。 本文詳細說明在 Windows 虛擬機器和其他計算資源上設定診斷擴充功能時所使用的架構。
@@ -48,7 +47,7 @@ Azure 診斷延伸模組是 Azure 監視器中的代理程式，可從客體作�
 |--------------------|-----------------|  
 |**PublicConfig**|必要。 請參閱本頁面上其他部分的說明。|  
 |**PrivateConfig**|選擇性。 請參閱本頁面上其他部分的說明。|  
-|**IsEnabled**|布林值。 請參閱本頁面上其他部分的說明。|  
+|**IsEnabled**|布林值 (Boolean)： 請參閱本頁面上其他部分的說明。|  
 
 ## <a name="publicconfig-element"></a>PublicConfig 元素  
  樹狀結構︰根目錄 - DiagnosticsConfiguration - PublicConfig
@@ -71,7 +70,7 @@ Azure 診斷延伸模組是 Azure 監視器中的代理程式，可從客體作�
 ## <a name="diagnosticmonitorconfiguration-element"></a>DiagnosticMonitorConfiguration 元素
  樹狀結構︰根目錄 - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration
 
- 必要
+ 必要項
 
 |屬性|描述|  
 |----------------|-----------------|  
@@ -224,7 +223,7 @@ Azure 診斷延伸模組是 Azure 監視器中的代理程式，可從客體作�
 
 |子元素|描述|  
 |-------------------|-----------------|  
-|**DataSource**|要收集的 Windows 事件記錄。 必要屬性：<br /><br /> **name** - 說明要收集之 Windows 事件的 XPath 查詢。 例如：<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> 若要收集所有事件，請指定 "*"|  
+|**DataSource**|要收集的 Windows 事件記錄。 必要屬性：<br /><br /> **name** - 說明要收集之 Windows 事件的 XPath 查詢。 例如，<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> 若要收集所有事件，請指定 "*"|  
 
 
 
@@ -238,7 +237,7 @@ Azure 診斷延伸模組是 Azure 監視器中的代理程式，可從客體作�
 
 |屬性|類型|描述|  
 |---------------|----------|-----------------|  
-|**bufferQuotaInMB**|**unsignedInt**|選擇性。 指定適用於所指定資料的檔案系統儲存體數量上限。<br /><br /> 預設值是 0。|  
+|**bufferQuotaInMB**|**unsignedInt**|選擇性。 指定適用於所指定資料的檔案系統儲存體數量上限。<br /><br /> 預設為 0。|  
 |**scheduledTransferLogLevelFilter**|**string**|選擇性。 指定所傳輸記錄項目的最低嚴重性層級。 預設值為 **Undefined**，會傳輸所有記錄。 其他可能的值 (按照從大到小的順序排列) 為 **Verbose**、**Information**、**Warning**、**Error** 及 **Critical**。|  
 |**scheduledTransferPeriod**|**duration**|選擇性。 指定排程傳輸資料之間的間隔，無條件進位到最接近的分鐘數。<br /><br /> 預設值為 PT0S。|  
 |**sinks** |**string**| 在 1.5 中新增。 選擇性。 同時要傳送診斷資料的接收位置指標。 例如，Application Insights 或事件中樞。|  
@@ -270,12 +269,12 @@ Azure 診斷延伸模組是 Azure 監視器中的代理程式，可從客體作�
 
 |屬性|類型|描述|  
 |---------------|----------|-----------------|  
-|**name**|字串|識別 sinkname 的字串。|  
+|**name**|string|識別 sinkname 的字串。|  
 
 |元素|類型|描述|  
 |-------------|----------|-----------------|  
-|**Application Insights**|字串|僅會在將資料傳送至 Application Insights 時使用。 包含您有權存取之使用中 Application Insights 帳戶的檢測金鑰。|  
-|**Channels**|字串|每個可額外篩選該資料流的其中一個|  
+|**Application Insights**|string|僅會在將資料傳送至 Application Insights 時使用。 包含您有權存取之使用中 Application Insights 帳戶的檢測金鑰。|  
+|**Channels**|string|每個可額外篩選該資料流的其中一個|  
 
 ## <a name="channels-element"></a>Channels 元素  
  樹狀結構︰根目錄 - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - Sink - Channels
@@ -286,7 +285,7 @@ Azure 診斷延伸模組是 Azure 監視器中的代理程式，可從客體作�
 
 |元素|類型|描述|  
 |-------------|----------|-----------------|  
-|**通路**|字串|請參閱本頁面上其他部分的說明。|  
+|**通路**|string|請參閱本頁面上其他部分的說明。|  
 
 ## <a name="channel-element"></a>Channel 元素
  樹狀結構︰根目錄 - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - Sink - Channels - Channel
@@ -306,7 +305,7 @@ Azure 診斷延伸模組是 Azure 監視器中的代理程式，可從客體作�
 
  已在 1.3 版中新增。  
 
- 選用  
+ 選擇性  
 
  存放儲存體帳戶的私用詳細資料 (名稱、金鑰和端點)。 此資訊會傳送至虛擬機器，但無法從中擷取。  
 
@@ -318,9 +317,9 @@ Azure 診斷延伸模組是 Azure 監視器中的代理程式，可從客體作�
 ## <a name="isenabled-element"></a>IsEnabled 元素  
  樹狀結構︰根目錄 - DiagnosticsConfiguration - IsEnabled
 
- 布林值。 使用 `true` 來啟用診斷或 `false` 來停用診斷。
+ 布林值 (Boolean)： 使用 `true` 來啟用診斷或 `false` 來停用診斷。
 
-## <a name="example-configuration"></a>範例設定
+## <a name="example-configuration"></a>設定範例
  以下是在 JSON 和 XML 中顯示之 Windows 診斷擴充功能的完整範例設定。
 
  

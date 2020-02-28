@@ -1,18 +1,17 @@
 ---
 title: 收集與分析 Azure 監視器中的 Windows 事件記錄 | Microsoft Docs
 description: 說明如何透過 Azure 監視器設定收集 Windows 事件記錄，以及它們建立記錄的詳細資料。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: dd8f1e0e79f85c5d91966bcba13052f297422e67
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: aa34196233ce4037ef6fa49b782b9aa958f7632d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932397"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670503"
 ---
 # <a name="windows-event-log-data-sources-in-azure-monitor"></a>Azure 監視器中的 Windows 事件記錄檔資料來源
 Windows 事件記錄是使用 Windows 代理程式收集資料的常見[資料來源](agent-data-sources.md)之一，因為許多應用程式會寫入 Windows 事件記錄。  除了指定您要監視之應用程式所建立的任何自訂記錄之外，您也可以透過標準記錄 (例如系統和應用程式) 來收集事件。
@@ -63,7 +62,7 @@ Windows 事件記錄都具有 **Event** 類型以及下表中的屬性。
 
 | 查詢 | 描述 |
 |:---|:---|
-| 活動 |所有的 Windows 事件。 |
+| 事件 |所有的 Windows 事件。 |
 | Event &#124; where EventLevelName == "error" |所有 Windows 事件與錯誤的嚴重性。 |
 | Event &#124; summarize count() by Source |依據來源的 Windows 事件計數。 |
 | Event &#124; where EventLevelName == "error" &#124; summarize count() by Source |依據來源的 Windows 錯誤事件計數。 |

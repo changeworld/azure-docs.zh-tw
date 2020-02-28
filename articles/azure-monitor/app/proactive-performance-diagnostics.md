@@ -1,19 +1,15 @@
 ---
 title: 智慧型偵測 - 效能異常 | Microsoft Docs
 description: Application Insights 會執行您應用程式遙測的智慧型分析，並且警告您有潛在的問題。 這項功能不需要進行任何設定。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: b9a95bb2ee6ab137e974b46e24738ca5194f3bd2
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 3d8de08605d3dd693eb74a84a29c2efa6cad669a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820561"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671727"
 ---
 # <a name="smart-detection---performance-anomalies"></a>智慧型偵測 - 效能異常
 
@@ -36,7 +32,7 @@ Application Insights 偵測到您的應用程式以下列其中一種方式降�
 
 否，通知並不表示您的應用程式一定有問題。 這只是一個建議，您可以仔細探究其中的問題。
 
-## <a name="how-do-i-fix-it"></a>如何修正問題？
+## <a name="how-do-i-fix-it"></a>要如何修正錯誤？
 
 通知會包含診斷資訊。 以下是範例：
 
@@ -64,7 +60,7 @@ Application Insights 偵測到您的應用程式以下列其中一種方式降�
 ## <a name="faq"></a>常見問題集
 
 * *Microsoft 人員會看到我的資料嗎？*
-  * 不會。 服務完全是自動的。 只有您會收到通知。 您的資料是 [不公開的](../../azure-monitor/app/data-retention-privacy.md)。
+  * No。 服務完全是自動的。 只有您會收到通知。 您的資料是 [不公開的](../../azure-monitor/app/data-retention-privacy.md)。
 * *你們會分析 Application Insights 收集的所有資料嗎？*
   * 目前尚未。 我們目前會分析要求回應時間、相依性回應時間和頁面載入時間。 我們後續的未來展望中將有其他計量的分析。
 
@@ -80,7 +76,7 @@ Application Insights 偵測到您的應用程式以下列其中一種方式降�
 
   * 我們每天都會根據前一天的遙測執行分析 (UTC 時區中全天)。
 * *那麼，這可以取代[計量警示](../../azure-monitor/app/alerts.md)嗎？*
-  * 不會。  我們不保證能偵測到您可能認為異常的每項行為。
+  * No。  我們不保證能偵測到您可能認為異常的每項行為。
 
 
 * 如果我完全不回應通知，是否會收到提醒？

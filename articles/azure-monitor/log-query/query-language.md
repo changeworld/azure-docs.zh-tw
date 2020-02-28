@@ -1,18 +1,17 @@
 ---
 title: Azure 監視器記錄檔查詢 |Microsoft Docs
 description: 了解如何在 Azure 監視器中撰寫記錄查詢的資源參考。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2019
-ms.openlocfilehash: 7c6530416f0eb6b822b6f5f3eb53f59aeae05d53
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: fc943ac3cf82d22a58d0ba3390ad8d9bbee6a4c9
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894339"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669381"
 ---
 # <a name="azure-monitor-log-queries"></a>Azure 監視器記錄查詢
 Azure 監視器記錄以 Azure 資料總管為基礎建置，且 Azure 監視器記錄查詢使用相同的 Kusto 查詢語言版本。 [Kusto 查詢語言文件](/azure/kusto/query)涵蓋語言的所有詳細資料，而且應該是您用來撰寫 Azure 監視器記錄查詢的主要資源。 此頁面所提供的其他資源連結可用來了解如何撰寫查詢，以及對語言進行 Azure 監視器實作的差異。

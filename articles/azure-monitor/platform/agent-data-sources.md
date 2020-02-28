@@ -1,18 +1,17 @@
 ---
 title: 設定 Azure 監視器中的代理程式資料來源 | Microsoft Docs
 description: 資料來源定義 Azure 監視器會從代理程式和其他已連接的來源收集哪些資料。  本文說明 Azure 監視器如何使用資料來源的概念、詳細說明如何設定資料來源，並提供可用的不同資料來源的摘要.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: f7960adca1c3665dbf8737cb10a898c58b1542ec
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: aec3fe2386ce916c556f6da295a8554fff140259
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932826"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668769"
 ---
 # <a name="agent-data-sources-in-azure-monitor"></a>Azure 監視器中的代理程式資料來源
 Azure 監視器從代理程式收集的資料由您設定的資料來源設定。  系統會將來自代理程式的資料連同一組記錄儲存成[記錄資料](data-platform-logs.md)。  每個資料來源都會建立特定類型的記錄，每種類型各有自己的一組屬性。
@@ -30,7 +29,7 @@ Azure 監視器從代理程式收集的資料由您設定的資料來源設定�
 | [IIS 記錄](data-sources-iis-logs.md) | Windows |&#8226; |&#8226; |&#8226; |  |  |取決於記錄檔檔案換用設定 |
 | [效能計數器](data-sources-performance-counters.md) | Windows |&#8226; |&#8226; |  |  |  |依排程，最少 10 秒 |
 | [效能計數器](data-sources-performance-counters.md) | Linux |&#8226; |  |  |  |  |依排程，最少 10 秒 |
-| [Syslog](data-sources-syslog.md) | Linux |&#8226; |  |  |  |  |從 Azure 儲存體：10 分鐘；從代理程式：與抵達同時 |
+| [Syslog](data-sources-syslog.md) | Linux |&#8226; |  |  |  |  |從 Azure 儲存體 ：10 分鐘；從代理程式：與抵達同時 |
 | [Windows 事件記錄](data-sources-windows-events.md) |Windows |&#8226; |&#8226; |&#8226; |  |&#8226; | 與抵達同時 |
 
 

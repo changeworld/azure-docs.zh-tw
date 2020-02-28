@@ -1,18 +1,17 @@
 ---
 title: Azure 監視器中的容量與效能解決方案 |Microsoft Docs
 description: 使用 監視 中的 容量與效能解決方案，協助您瞭解 Hyper-v 伺服器的容量。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: c444991166d9c7d3f1d8ed39e19e333d3c27f982
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 75c65cf9f76e711a3aeed764de8b92ed619bad2f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75405750"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666938"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>使用容量與效能解決方案規劃 Hyper-v 虛擬機器容量（已淘汰）
 
@@ -40,7 +39,7 @@ ms.locfileid: "75405750"
 
 下表描述此方案支援的連接來源。
 
-| 連接的來源 | 支援 | 說明 |
+| 連接的來源 | 支援 | 描述 |
 |---|---|---|
 | [Windows 代理程式](../../azure-monitor/platform/agent-windows.md) | 是 | 解決方案會從 Windows 代理程式收集容量和效能資料的資訊。 |
 | [Linux 代理程式](../../azure-monitor/learn/quick-collect-linux-computer.md) | 否    | 解決方案不會從直接 Linux 代理程式收集容量和效能資料的資訊。|
@@ -118,7 +117,7 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 下表提供此解決方案所收集和計算之容量和效能資料的記錄搜尋範例。
 
 
-| 查詢 | 說明 |
+| 查詢 | 描述 |
 |:--- |:--- |
 | 所有主機記憶體組態 | Perf &#124; where ObjectName == "Capacity and Performance" and CounterName == "Host Assigned Memory MB" &#124; summarize MB = avg(CounterValue) by InstanceName |
 | 所有 VM 記憶體組態 | Perf &#124; where ObjectName == "Capacity and Performance" and CounterName == "VM Assigned Memory MB" &#124; summarize MB = avg(CounterValue) by InstanceName |

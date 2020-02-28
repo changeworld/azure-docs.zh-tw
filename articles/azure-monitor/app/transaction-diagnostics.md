@@ -1,19 +1,15 @@
 ---
 title: Azure Application Insights 交易診斷 | Microsoft Docs
 description: Application Insights 端對端交易診斷
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/19/2018
 ms.reviewer: sdash
-ms.openlocfilehash: 1ed3713fe4a6c9403be13f444d0409af459a1e70
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 39c4c51a1bc84e06efac3674b1ee5b487f9e6729
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899562"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671132"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>整合跨元件交易診斷
 
@@ -98,4 +94,4 @@ ms.locfileid: "72899562"
 
 *為什麼新體驗遺漏大部分的相關項目查詢？*
 
-原先的設計就是如此。 左側 (上方和下方區段) 已有全部元件的所有相關項目。 新體驗的左側未涵蓋兩項相關項目：此事件前後五分鐘的所有遙測資料和使用者時間軸。
+這是設計的做法。 左側 (上方和下方區段) 已有全部元件的所有相關項目。 新體驗的左側未涵蓋兩項相關項目：此事件前後五分鐘的所有遙測資料和使用者時間軸。

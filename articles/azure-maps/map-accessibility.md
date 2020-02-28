@@ -8,12 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 2ae84b59cd70a5b27ad3e501db6cfae110d90fbd
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: b0d9437b10bc54aac481eb630f12a2b99d2360a1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209778"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672458"
 ---
 # <a name="building-an-accessible-application"></a>建置無障礙應用程式
 
@@ -32,9 +32,11 @@ Azure 地圖服務的 Web SDK 已預先建立，其中包含許多協助工具�
 您可以在[這裡](https://cloudblogs.microsoft.com/industry-blog/government/2018/09/11/accessibility-conformance-reports/)找到所有 Microsoft 產品的完整協助工具一致性詳細資料。 搜尋「Azure 地圖服務 web」以尋找專為 Azure 地圖服務 Web SDK 所提供的檔。 
 
 ## <a name="navigating-the-map"></a>導覽地圖
+
 有數種不同的方式可以縮放、移動流覽、旋轉和音調。 以下詳細說明導覽地圖的各種不同方式。
 
 **縮放地圖**
+
 - 使用滑鼠按兩下地圖以放大一個層級。
 - 使用滑鼠滾動滾輪來縮放地圖。
 - 使用觸控式螢幕，以兩個手指接觸地圖並縮小，以放大或散佈手指來放大。
@@ -45,23 +47,46 @@ Azure 地圖服務的 Web SDK 已預先建立，其中包含許多協助工具�
 - 按住 [`Shift`] 按鈕，然後在地圖上按下滑鼠左鍵，然後拖曳來繪製一個區域，以將地圖縮放至其中。
 
 **平移地圖**
+
 - 使用滑鼠，按下地圖上的滑鼠左鍵，並以任何方向拖曳。
 - 使用觸控式螢幕，觸控地圖並以任何方向拖曳。
 - 以地圖為焦點時，使用方向鍵來移動地圖。
 
 **旋轉地圖**
+
 - 使用滑鼠，在地圖上按下滑鼠右鍵，然後向左或向右拖曳。 
 - 使用觸控式螢幕，以兩個手指和旋轉來觸控地圖。
 - 在地圖專注的情況下，使用 shift 鍵和向左鍵或向右鍵鍵。
 - 使用 [旋轉] 控制項搭配滑鼠、觸控或鍵盤索引標籤/enter 鍵。
 
 **音調地圖**
+
 - 使用滑鼠，在地圖上按下滑鼠右鍵，然後向上或向下拖曳。 
 - 使用觸控式螢幕，以兩個手指接觸地圖，並將其上下拖曳。
 - 在地圖專注的情況下，使用 shift 鍵加上向上或向下鍵。 
 - 使用 [音調] 控制項搭配滑鼠、觸控或鍵盤索引標籤/enter 鍵。
 
-**變更地圖樣式**並非所有開發人員都想要在其應用程式中提供所有可能的地圖樣式。 開發人員可以透過程式設計方式設定和變更地圖樣式。 如果開發人員顯示地圖的 [樣式選擇器] 控制項，則使用者可以使用滑鼠、觸控或鍵盤（使用 tab 或 enter 鍵）來變更地圖樣式。 開發人員可以指定他們想要在地圖樣式選擇器控制項中使用的地圖樣式。 
+## <a name="change-the-map-style"></a>變更地圖樣式
+
+並非所有開發人員都想要在其應用程式中提供所有可能的地圖樣式。 如果開發人員顯示地圖的 [樣式選擇器] 控制項，則使用者可以使用滑鼠、觸控或鍵盤（使用 tab 或 enter 鍵）來變更地圖樣式。 開發人員可以指定他們想要在地圖樣式選擇器控制項中使用的地圖樣式。 此外，開發人員也可以透過程式設計方式設定和變更地圖樣式。
+
+**使用高對比**
+
+- 載入地圖控制項時，它會檢查是否已啟用高對比，而且瀏覽器是否支援。
+- 地圖控制項不會監視裝置的高對比模式。 如果裝置模式變更，則對應將不會。 因此，使用者將需要重新整理頁面來重載對應。
+- 當偵測到高對比時，地圖樣式會自動切換為高對比，而所有內建控制項都會使用高對比樣式。 例如，ZoomControl、PitchControl、CompassControl、StyleControl 和其他內建控制項都會使用高對比樣式。
+- 高對比、淺色和深色有兩種類型。 如果地圖控制項可以偵測到高對比的類型，則對應的行為會相應調整。 若為 light，則會載入 grayscale_light 地圖樣式。 如果無法偵測到類型或其為深色，則會載入 high_contrast_dark 樣式。
+- 如果要建立自訂控制項，瞭解內建控制項是否使用高對比樣式會很有説明。 開發人員可以在要檢查的地圖容器 div 上加入 css 類別。 要加入的 css 類別是 `high-contrast-dark` 和 `high-contrast-light`。 若要使用 JavaScript 進行檢查，請使用：
+
+```javascript
+map.getMapContainer().classList.contains("high-contrast-dark")
+```
+
+或者，使用：
+
+```javascript
+map.getMapContainer().classList.contains("high-contrast-light")
+```
 
 ## <a name="keyboard-shortcuts"></a>鍵盤快速鍵
 

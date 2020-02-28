@@ -1,19 +1,15 @@
 ---
 title: 使用 Azure 應用程式 Insights .NET SDK 追蹤自訂作業
 description: 使用 Azure Application Insights .NET SDK 追蹤自訂作業
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 7b92a386d691e15975f18de169d7924b82ec5c5f
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 31c1fb366e7b109ea1fa4977d8e2f908e766e0f2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951338"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671812"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>使用 Application Insights .NET SDK 追蹤自訂作業
 
@@ -173,7 +169,7 @@ public async Task Enqueue(string payload)
 }
 ```
 
-#### <a name="process"></a>流程
+#### <a name="process"></a>處理程序
 ```csharp
 public async Task Process(BrokeredMessage message)
 {
@@ -304,7 +300,7 @@ public async Task<MessagePayload> Dequeue(CloudQueue queue)
 }
 ```
 
-#### <a name="process"></a>流程
+#### <a name="process"></a>處理程序
 
 在下列範例中，追蹤連入訊息的方式類似於追蹤連入 HTTP 要求的方式：
 
@@ -394,7 +390,7 @@ async Task BackgroundTask()
 
 在此範例中，`telemetryClient.StartOperation` 會建立 `DependencyTelemetry` 並填滿相互關聯內容。 假設您有一項父代作業，由排程作業的連入要求所建立。 只要 `BackgroundTask` 在與連入要求相同的非同步控制流程中啟動，它就會與該父代作業相互關聯。 `BackgroundTask` 和所有巢狀遙測項目將會自動與造成它的要求相互關聯，即使在要求結束後亦然。
 
-從沒有任何相關聯作業 (`Activity`) 的背景執行緒啟動工作時，`BackgroundTask` 沒有任何父代。 不過，它可以有巢狀作業。 工作回報的所有遙測項目會與在 `BackgroundTask` 中建立的 `DependencyTelemetry` 相互關聯。
+從沒有任何相關聯作業 (`Activity`) 的背景執行緒啟動工作時，`BackgroundTask` 沒有任何父代。 不過，它可以有巢狀作業。 工作回報的所有遙測項目會與在 `DependencyTelemetry` 中建立的 `BackgroundTask` 相互關聯。
 
 ## <a name="outgoing-dependencies-tracking"></a>連出相依性追蹤
 您可以追蹤自己的相依性種類或 Application Insights 不支援的作業。
@@ -429,7 +425,7 @@ public async Task RunMyTaskAsync()
 
 處置作業會導致作業停止，因此您可以執行而不是呼叫 `StopOperation`。
 
-*警告*：在某些情況下，未處理的例外狀況可能導致[無法](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-finally)呼叫 `finally`，因此可能無法追蹤作業。
+*警告*：在某些情況下，處理例外狀況可能會[阻止](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-finally)呼叫 `finally`，因此不會追蹤作業。
 
 ### <a name="parallel-operations-processing-and-tracking"></a>平行的作業處理和追蹤
 
@@ -451,7 +447,7 @@ telemetryClient.StopOperation(firstOperation);
 await secondTask;
 ```
 
-請務必一律以相同的**非同步**方法來呼叫 `StartOperation` 和處理作業，以隔離平行執行的作業。 如果作業是同步的 (或不是非同步的)，請包裝處理序並使用 `Task.Run` 追蹤：
+請務必一律以相同的`StartOperation`非同步**方法來呼叫**  和處理作業，以隔離平行執行的作業。 如果作業是同步的 (或不是非同步的)，請包裝處理序並使用 `Task.Run` 追蹤：
 
 ```csharp
 public void RunMyTask(string name)

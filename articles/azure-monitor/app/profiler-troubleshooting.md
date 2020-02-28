@@ -1,19 +1,17 @@
 ---
 title: 針對 Azure 應用程式 Insights Profiler 的問題進行疑難排解
 description: 本文提供疑難排解步驟和資訊，可為無法啟用或使用 Application Insights Profiler 的開發人員提供協助。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 2bac317d6a3a5c6895a3cea4dae22694b603cabf
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: f284d4dfbe550c357f81c01fa0a66aa9878b6c1e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024019"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671557"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>針對啟用或檢視 Application Insights Profiler 的問題進行疑難排解
 
@@ -117,7 +115,7 @@ Profiler 會將追蹤訊息和自訂事件寫入至您的 Application Insights �
 
 如果您要將 Web 應用程式重新部署到已啟用 Profiler 的 Web Apps 資源，您可能會看到下列訊息：
 
-目錄尚有資料 'D:\\home\\site\\wwwroot\\App_Data\\jobs'
+目錄尚有資料 'D:*home\\site\\wwwroot\\App_Data\\jobs'\\*
 
 如果您從指令碼或從 Azure DevOps 部署管線執行 Web Deploy，就會發生此錯誤。 解決方法是將下列額外的部署參數新增至 Web Deploy 工作：
 

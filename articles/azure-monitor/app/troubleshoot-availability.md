@@ -1,19 +1,17 @@
 ---
 title: 針對您的 Azure 應用程式 Insights 可用性測試進行疑難排解 |Microsoft Docs
 description: 針對 Azure 應用程式 Insights 中的 web 測試進行疑難排解。 如果網站無法使用或回應緩慢，將收到警示。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 09/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 71c16fa005710bb5816ec69716573b79fcae620a
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: f135aa6c0a4a55f8a42fd858572cc811e25b27c5
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899534"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671098"
 ---
 # <a name="troubleshooting"></a>疑難排解
 
@@ -43,12 +41,12 @@ ms.locfileid: "72899534"
 
 |徵兆/錯誤訊息| 可能的原因| 可能的解決方式 |
 |----|---------|-----|
-|伺服器已認可通訊協定違規。 Section = ResponseHeader Detail = CR 後面必須接著 LF | 偵測到不正確的標頭時，就會發生這種情況 具體而言，某些標頭可能不會使用 CRLF 來指出行尾，這違反了 HTTP 規格。 Application Insights 會強制執行此 HTTP 規格，並以格式不正確的標頭回應失敗。| a. 請洽詢網站主機提供者/CDN 提供者，以修正故障的伺服器。 <br> b.這是另一個 C# 主控台應用程式。 如果失敗的要求是資源（例如樣式檔案、影像、腳本），您可以考慮停用相依要求的剖析。 請記住，如果這麼做，您將無法監視這些檔案的可用性）。
+|伺服器已認可通訊協定違規。 Section = ResponseHeader Detail = CR 後面必須接著 LF | 偵測到不正確的標頭時，就會發生這種情況 具體而言，某些標頭可能不會使用 CRLF 來指出行尾，這違反了 HTTP 規格。 Application Insights 會強制執行此 HTTP 規格，並以格式不正確的標頭回應失敗。| a. 請洽詢網站主機提供者/CDN 提供者，以修正故障的伺服器。 <br> b. 如果失敗的要求是資源（例如樣式檔案、影像、腳本），您可以考慮停用相依要求的剖析。 請記住，如果這麼做，您將無法監視這些檔案的可用性）。
 
 > [!NOTE]
 > 在 HTTP 標頭驗證寬鬆的瀏覽器上，此 URL 可能不會失敗。 如需問題的詳細說明，請參閱此部落格文章： http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
 
-## <a name="common-troubleshooting-questions"></a>一般疑難排解問題
+## <a name="common-troubleshooting-questions"></a>常見的疑難排解問題
 
 ### <a name="site-looks-okay-but-i-see-test-failures-why-is-application-insights-alerting-me"></a>網站看起來沒問題，但我看到測試失敗嗎？ 為什麼 Application Insights 提醒我？
 
@@ -83,7 +81,7 @@ ms.locfileid: "72899534"
 
 ### <a name="can-i-call-code-from-my-web-test"></a>我可以從我的 web 測試呼叫程式碼嗎？
 
-不會。 測試步驟必須在 .webtest 檔案中。 而且您不能呼叫其他 Web 測試或使用迴圈。 但是這裡有一些您會覺得有用的外掛程式。
+No。 測試步驟必須在 .webtest 檔案中。 而且您不能呼叫其他 Web 測試或使用迴圈。 但是這裡有一些您會覺得有用的外掛程式。
 
 
 ### <a name="is-there-a-difference-between-web-tests-and-availability-tests"></a>「Web 測試」和「可用性測試」之間有何差異？
@@ -92,7 +90,7 @@ ms.locfileid: "72899534"
 
 ### <a name="id-like-to-use-availability-tests-on-our-internal-server-that-runs-behind-a-firewall"></a>我想要在執行防火牆後方的內部伺服器上使用可用性測試。
 
-   有兩個可能的解決方案：
+   有兩種可能的解決方法：
 
    * 設定防火牆以允許來自[我們 Web 測試代理程式的 IP 位址](../../azure-monitor/app/ip-addresses.md)所發出的內送要求。
    * 撰寫您自己的程式碼以定期測試您的內部伺服器。 執行程式碼作為您防火牆後方測試伺服器上的背景處理序。 您的測試處理序可以使用核心 SDK 套件中的 [TrackAvailability()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) API，將其結果傳送至 Application Insights。 這需要測試伺服器具有 Application Insights 內嵌端點的連出存取，但這比起替代的允許連入要求是較小的安全性風險。 結果會顯示在 [可用性 web 測試] blade 中，但體驗會稍微簡化，可供透過入口網站所建立的測試使用。 自訂可用性測試也會在分析、搜尋和計量中顯示為可用性結果。
@@ -121,7 +119,7 @@ ms.locfileid: "72899534"
 
 * 如果是有關 Y 個位置之中有 X 個失敗的警示，[大量/群組] 核取方塊選項 (如已啟用) 就會傳送給具有管理員/共同管理員角色的使用者。  基本上，「訂用帳戶」的「所有」管理員都將收到通知。
 
-* 針對可用性計量的警示，如果啟用 [**大量/群組**] 核取方塊選項，則會傳送給訂用帳戶中具有擁有者、參與者或讀取者角色的使用者。 實際上，「所有」有權存取 Application Insights 資源之訂用帳戶的使用者都在涵蓋範圍內，而且將會收到通知。 
+* 針對可用性計量的警示，如果啟用 [**大量/群組**] 核取方塊選項，則會傳送給訂用帳戶中具有擁有者、參與者或讀取者角色的使用者。 實際上，「所有」有權存取 Application Insights 資源訂用帳戶的使用者都在涵蓋範圍內，而且將會收到通知。 
 
 > [!NOTE]
 > 如果您目前使用 [大量/群組] 核取方塊選項並停用它，您將無法還原變更。

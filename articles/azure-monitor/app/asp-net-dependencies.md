@@ -1,18 +1,14 @@
 ---
 title: Azure Application Insights 中的相依性追蹤 | Microsoft Docs
 description: 使用 Application Insights 監視來自內部部署或 Microsoft Azure web 應用程式的相依性呼叫。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 06/25/2019
-ms.openlocfilehash: 5b37ce1ba3d8a9d56cb2204c9db89d0e47d9996e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 8fb1550a3f1d4b3336384139b049b60e23e648d7
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277688"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666236"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Azure 應用程式深入解析中的相依性追蹤 
 
@@ -80,7 +76,7 @@ ms.locfileid: "76277688"
     }
 ```
 
-或者, `TelemetryClient`提供擴充方法`StartOperation` , `StopOperation`並可用於手動追蹤相依性, 如[此處](custom-operations-tracking.md#outgoing-dependencies-tracking)所示
+或者，`TelemetryClient` 提供 `StartOperation` 和 `StopOperation` 的擴充方法，可用於手動追蹤相依性，[如下所示](custom-operations-tracking.md#outgoing-dependencies-tracking)
 
 如果您想要關閉標準的相依性追蹤模組，請在 ASP.NET 應用程式的[ApplicationInsights](../../azure-monitor/app/configuration-with-applicationinsights-config.md)中移除對 applicationinsights.config dependencytrackingtelemetrymodule 的參考。 如需 ASP.NET Core 應用程式，請遵循[這裡](asp-net-core.md#configuring-or-removing-default-telemetrymodules)的指示。
 

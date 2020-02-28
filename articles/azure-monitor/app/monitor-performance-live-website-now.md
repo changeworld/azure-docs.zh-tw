@@ -1,18 +1,14 @@
 ---
 title: 使用 Azure Application Insights 監視即時 ASP.NET Web 應用程式 | Microsoft Docs
 description: 監視網站的效能而不重新部署網站。 使用裝載於內部部署或 VM 中的 ASP.NET Web 應用程式。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 08/26/2019
-ms.openlocfilehash: ac238ae5715e09b2e64737801a862d89852ec9d9
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 63d632df61548d15a1e0a606cf2e198207faf341
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820761"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670044"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>在執行時間使用 Application Insights 無程式碼 Attach 檢測 web 應用程式
 
@@ -264,7 +260,7 @@ IIS 支援：IIS 7、7.5、8、8.5 (需要有 IIS)
 
 ### <a name="can-i-close-it-after-it-runs"></a>是否可以在執行之後將它關閉？
 
-可以。 檢測您選取的網站之後，您可以將它關閉。
+是的。 檢測您選取的網站之後，您可以將它關閉。
 
 它本身不會收集遙測資料。 它只會設定 Web 應用程式和設定一些權限。
 
@@ -304,7 +300,7 @@ Application Insights SDK 2.4 版是[支援 .net 4.0 的最後一個版本](https
 
 [深入了解](https://apmtips.com/blog/2016/11/18/how-application-insights-status-monitor-not-monitors-dependencies/)
 
-## <a name="video"></a>影片
+## <a name="video"></a>視訊
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 

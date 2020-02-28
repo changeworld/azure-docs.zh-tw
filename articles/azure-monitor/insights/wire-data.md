@@ -1,18 +1,17 @@
 ---
 title: Azure 監視器中的連線資料方案 |Microsoft Docs
 description: 連線資料是來自內有 Log Analytics 代理程式電腦的網路和效能的彙總資料。 網路資料結合記錄資料可協助您將資料相互關聯。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/03/2018
-ms.openlocfilehash: 031a09203ab2ab2bcfcdf4352e975c1374446c25
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ee7a2f49641eb0cfe1f8a4bffb44c7f8642408fa
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365796"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670639"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Azure 監視器中的 Wire Data 2.0 （預覽）解決方案
 
@@ -256,7 +255,7 @@ wget --content-disposition https://aka.ms/dependencyagentlinux -O InstallDepende
 sh InstallDependencyAgent-Linux64.bin -s
 ```
 
-### <a name="desired-state-configuration"></a>期望的狀態設定
+### <a name="desired-state-configuration"></a>Desired State Configuration
 
 若要透過 Desired State Configuration 部署相依性代理程式，您可以使用 xPSDesiredStateConfiguration 模組和如下所示的一些程式碼：
 
@@ -382,7 +381,7 @@ rpm -e dependency-agent dependency-agent-connector
 
 對於每種類型的輸入資料，系統會建立 _WireData_ 類型的記錄。 WireData 記錄具有下表所示的屬性：
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |---|---|
 | 電腦 | 收集資料所在的電腦名稱 |
 | TimeGenerated | 記錄的時間 |
@@ -393,7 +392,7 @@ rpm -e dependency-agent dependency-agent-connector
 | IPVersion | IP 版本 |
 | 方向 | 輸入或輸出 |
 | MaliciousIP | 已知惡意來源的 IP 位址 |
-| 嚴重性 | 可疑惡意程式碼嚴重性 |
+| Severity | 可疑惡意程式碼嚴重性 |
 | RemoteIPCountry | 遠端 IP 位址的國家/地區 |
 | ManagementGroupName | Operations Manager 管理群組的名稱 |
 | SourceSystem | 收集資料所在的來源 |

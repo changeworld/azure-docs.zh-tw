@@ -1,18 +1,15 @@
 ---
 title: Azure 監視器警示的常見警示架構
 description: 瞭解常見的警示架構、您應該使用它的原因，以及如何加以啟用
-ms.service: azure-monitor
-ms.subservice: alerts
 ms.topic: conceptual
-author: anantr
-ms.author: robb
+ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: ff5c0d96bd4bc87f36a69ca7e8014e118ac7b7bf
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 1445e8cf38b2694146fc8749ba5e77f2297de969
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552463"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668174"
 ---
 # <a name="common-alert-schema"></a>一般警示結構描述
 
@@ -34,9 +31,9 @@ ms.locfileid: "72552463"
 
 一般警示架構主要會在警示通知中自行資訊清單。 您會看到的增強功能如下所示：
 
-| 行動 | 增強功能|
+| 動作 | 功能增強|
 |:---|:---|
-| 簡訊 | 適用于所有警示類型的一致 SMS 範本。 |
+| sms | 適用于所有警示類型的一致 SMS 範本。 |
 | 電子郵件 | 一致且詳細的電子郵件範本，可讓您輕鬆地快速診斷問題。 在入口網站上的警示實例和受影響的資源的內嵌深層連結，可確保您可以快速跳到補救程式。 |
 | Webhook/邏輯應用程式/Azure 函式/自動化 Runbook | 適用于所有警示類型的一致 JSON 結構，可讓您輕鬆地在不同的警示類型之間建立整合。 |
 

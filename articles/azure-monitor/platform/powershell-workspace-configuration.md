@@ -1,18 +1,17 @@
 ---
 title: 使用 PowerShell 建立和設定 Log Analytics 工作區 | Microsoft Docs
 description: Azure 監視器中的 Log Analytics 工作區會將資料從您的內部部署或雲端基礎結構中的伺服器儲存。 您可以在 Azure 診斷產生電腦資料時，從 Azure 儲存體加以收集。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/19/2019
-ms.openlocfilehash: 68cd0d51c16ecd63a1446c284f81c5dea07b8c06
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6f3f21a7148c59de452d6407fd9a1067b86faae4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363518"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659267"
 ---
 # <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>使用 PowerShell 管理 Azure 監視器中的 Log Analytics 工作區
 
@@ -200,7 +199,7 @@ New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -
 ## <a name="configuring-log-analytics-to-send-azure-diagnostics"></a>設定 Log Analytics 以傳送 Azure 診斷
 若要以無代理程式的方式監視 Azure 資源，資源需要啟用 Azure 診斷並將其設定為寫入至 Log Analytics 工作區。 這種方法會將資料直接傳送到工作區，而不需要將資料寫入儲存體帳戶。 支援的資源包括：
 
-| 資源類型 | 記錄 | 計量 |
+| 資源類型 | 記錄檔 | 度量 |
 | --- | --- | --- |
 | 應用程式閘道    | 是 | 是 |
 | 自動化帳戶     | 是 | |
@@ -218,7 +217,7 @@ New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -
 | 搜尋服務         | 是 | 是 |
 | 服務匯流排命名空間   |     | 是 |
 | SQL (v12)               |     | 是 |
-| 網站               |     | 是 |
+| Web Sites               |     | 是 |
 | Web 伺服器陣列        |     | 是 |
 
 如需可用度量的詳細資訊，請參閱[支援 Azure 監視器的度量](../../azure-monitor/platform/metrics-supported.md)。

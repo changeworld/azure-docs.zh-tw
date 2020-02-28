@@ -1,18 +1,14 @@
 ---
 title: 使用 Azure Application Insights 監視 Node.js 服務 | Microsoft Docs
 description: 使用 Application Insights 監視 Node.js 服務的效能和診斷問題。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 03/14/2019
-ms.openlocfilehash: 81f63380c041ae743a2b38e6ba89558b83e7497a
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 320ec62e642155002e42c59d4656f51673249eb1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820717"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670010"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>使用 Application Insights 監視 Node.js 服務和應用程式
 
@@ -88,7 +84,7 @@ SDK 會自動蒐集有關 Node.js 執行階段和一些常見第三方模組的�
 
 ![調查區段](./media/nodejs/007-investigate-pane.png)
 
-#### <a name="no-data"></a>沒有資料嗎？
+#### <a name="no-data"></a>沒有資料？
 
 因為 SDK 會分批提交資料，所以項目可能會延遲顯示在入口網站中。 如果未在您的資源中看到資料，請嘗試以下一些修正方式：
 

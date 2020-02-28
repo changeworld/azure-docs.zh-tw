@@ -1,22 +1,20 @@
 ---
 title: 在 Azure 監視器中建立、查看和管理活動記錄警示
 description: 使用 Azure 入口網站、Azure Resource Manager 範本和 Azure PowerShell 來建立活動記錄警示。
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
+ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: 4835f1034149a015963569a0b1fc5f9195e3cfca
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 9791ebaadeb1ee724692a9e1a0d61aff5cbae6a3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969527"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668480"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>使用 Azure 監視器來建立、查看和管理活動記錄警示  
 
 ## <a name="overview"></a>概觀
+
 活動記錄警示是發生符合警示中指定條件的新活動記錄事件時所啟動的警示。
 
 這些警示適用于 Azure 資源，並可使用 Azure Resource Manager 範本來建立。 也可以在 Azure 入口網站中將它們建立、更新或刪除。 一般來說，您會建立活動記錄警示，以便在 Azure 訂用帳戶中的資源發生特定變更時收到通知。 警示的範圍通常是特定資源群組或資源。 例如，您可能想要在範例資源群組**myProductionResourceGroup**中的任何虛擬機器遭到刪除時收到通知。 或者，您可能想要在有任何新角色指派給訂用帳戶中的使用者時收到通知。
@@ -31,14 +29,13 @@ ms.locfileid: "75969527"
 - 在警示設定 JSON 中，沒有任何「anyOf」條件或 nested 條件。 基本上，只允許一個「allOf」條件，而不會有進一步的「allOf」或「anyOf」條件。
 - 當類別為「系統管理」時，您必須在警示中指定至少一個上述準則。 您不能建立會在每次活動記錄中建立事件時即啟動的警示。
 
-
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Azure 入口網站
 
 您可以使用 Azure 入口網站來建立和修改活動記錄警示規則。 此體驗與 Azure 活動記錄整合，以確保能針對感針對性的特定事件建立順暢的警示。
 
 ### <a name="create-with-the-azure-portal"></a>使用 Azure 入口網站建立
 
-請使用下列程序。
+請使用下列程式。
 
 1. 在 Azure 入口網站中，選取 **監視** > **警示**。
 2. 在 [**警示**] 視窗的左上角，選取 [**新增警示規則**]。
@@ -92,7 +89,7 @@ ms.locfileid: "75969527"
 5. 在 [動作群組] 下，從下拉式功能表中指定您想要指派給此新警示規則的動作群組。 或者，[建立新的動作群組](../../azure-monitor/platform/action-groups.md)，並將它指派給新的規則。 若要建立新的群組，請選取 [ **+ 新增群組**]。
 
 6. 若要在建立規則後加以啟用，請針對 [在**建立時啟用規則**] 選項選取 **[是]** 。
-7. 選取 [建立警示規則]。
+7. 選取 [**建立警示規則**]。
 
     隨即會建立活動記錄的新警示規則，並在視窗的右上角顯示確認訊息。
 

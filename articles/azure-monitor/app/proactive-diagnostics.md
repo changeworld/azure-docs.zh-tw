@@ -1,18 +1,14 @@
 ---
 title: Azure Application Insights 中的智慧型偵測 | Microsoft Docs
 description: Application Insights 會自動深入分析您的 App 遙測，並且警告您有潛在的問題。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 02/07/2019
-ms.openlocfilehash: ae9af5721e53277f6c939840721ca50ea67ca51e
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: e232295f9da2a2ae8f3c6fafdd1dc33a42e92e69
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72818808"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671795"
 ---
 # <a name="smart-detection-in-application-insights"></a>Application Insights 中的智慧型偵測
  智慧型偵測會自動警告您 web 應用程式中潛在的效能問題和失敗異常。 它會針對您應用程式傳送給 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 的遙測執行主動式分析。 如果失敗率急遽上升或是用戶端或伺服器效能出現異常模式，您就會收到警示。 這項功能不需要進行任何設定。 只要您的應用程式傳送的遙測足夠，它就能發揮作用。
@@ -50,7 +46,7 @@ ms.locfileid: "72818808"
 
 或者，您也可以使用 Azure Resource Manager 範本來變更設定。 如需詳細資訊，請參閱[使用 Azure Resource Manager 範本來管理 Application Insights 智慧偵測規則](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config)。
 
-## <a name="video"></a>影片
+## <a name="video"></a>視訊
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 

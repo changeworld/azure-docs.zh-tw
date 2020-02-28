@@ -1,18 +1,16 @@
 ---
 title: Azure 應用程式 Insights 代理程式 API 參考
 description: Application Insights 代理程式 API 參考。 ApplicationInsightsMonitoringConfig。 在不重新部署網站的情況下監視網站效能。 適用于內部部署、Vm 或 Azure 上裝載的 ASP.NET web 應用程式。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 45dcd2374fc5be40f86d403f8daccf4a6f1d6997
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 1226b3e10adf786ed3335844a5d3f4e530911705
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77189431"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671234"
 ---
 # <a name="application-insights-agent-api-set-applicationinsightsmonitoringconfig"></a>Application Insights 代理程式 API： ApplicationInsightsMonitoringConfig
 

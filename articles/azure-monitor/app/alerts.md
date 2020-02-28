@@ -1,21 +1,19 @@
 ---
-title: 在 Azure Application Insights 中設定警示 | Microsoft Docs
+title: 在 Azure 應用程式 Insights 中設定警示
 description: 獲知回應時間緩慢、例外狀況，以及 Web 應用程式中的其他效能或使用量變更。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/23/2019
 ms.reviewer: lagayhar
-ms.openlocfilehash: a21e2676d1b03472c58e2f95095a1a59d00b16be
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.subservice: alerts
+ms.openlocfilehash: 80759c94d7cc5b60b6e38a34b85fb64c3c18fd2e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678397"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666712"
 ---
 # <a name="set-alerts-in-application-insights"></a>在 Application Insights 中設定警示
+
 [Azure 應用程式 Insights][start]會向您發出 web 應用程式中效能或使用計量變更的警示。 
 
 Application Insights 會在[各種不同的平臺][platforms]上監視您的即時應用程式，以協助您診斷效能問題，並瞭解使用模式。
@@ -28,6 +26,7 @@ Application Insights 會在[各種不同的平臺][platforms]上監視您的即�
 * [**主動診斷**](../../azure-monitor/app/proactive-diagnostics.md)會自動設定成通知您異常的效能模式。
 
 ## <a name="set-a-metric-alert"></a>設定計量警示
+
 開啟 [警示規則] 索引標籤，然後使用 [新增] 按鈕。
 
 ![在 [警示規則] 索引標籤中，選擇 [新增警示]。 將您的應用程式設定為要測量的資源，提供警示的名稱，然後選擇計量。](./media/alerts/01-set-metric.png)
@@ -40,7 +39,7 @@ Application Insights 會在[各種不同的平臺][platforms]上監視您的即�
 * 如果您已設定回應通知的 Web 應用程式，請設定 [Webhook 位址](../../azure-monitor/platform/alerts-webhooks.md)。 系統會在警示啟動和解決時加以呼叫。 (不過請注意，查詢參數目前不會當作 Webhook 屬性傳遞)。
 * 您可以停用或啟用警示：請參閱頂端的按鈕。
 
-<bpt id="p1">*</bpt>I don't see the Add Alert button.<ept id="p1">*</ept>
+*我看不到 [新增警示] 按鈕。*
 
 * 您是否使用組織帳戶？ 如果您有這個應用程式資源的擁有者或參與者存取權，您可以設定警示。 請查看 [存取控制] 索引標籤。[深入瞭解存取控制][roles]。
 
@@ -171,7 +170,7 @@ Application Insights 會在[各種不同的平臺][platforms]上監視您的即�
 
 如果您需要根據使用者的角色來通知他們，請使用新警示體驗/近乎即時警示。 使用[動作群組](../platform/action-groups.md)，您可以為具有任一個參與者/擁有者/讀者角色 (不會結合來作為單一選項) 的使用者設定電子郵件通知。
 
-## <a name="automation"></a>自動化
+## <a name="automation"></a>Automation
 * [使用 PowerShell 自動設定警示](../../azure-monitor/app/powershell-alerts.md)
 * [使用 Webhook 自動回應警示](../../azure-monitor/platform/alerts-webhooks.md)
 

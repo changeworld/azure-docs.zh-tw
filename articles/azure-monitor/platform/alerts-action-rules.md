@@ -1,18 +1,15 @@
 ---
 title: Azure 監視器警示的動作規則
 description: 瞭解 Azure 監視器中的動作規則，以及如何設定和管理它們。
-ms.service: azure-monitor
-ms.subservice: alerts
 ms.topic: conceptual
-author: anantr
-ms.author: robb
 ms.date: 04/25/2019
-ms.openlocfilehash: e9de7a1fe4cee16cd1d22ba764ab9eccdf3979fd
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.subservice: alerts
+ms.openlocfilehash: 42f8d9cd30caa48376cda049f6404aa897a6866c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767682"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668463"
 ---
 # <a name="action-rules-preview"></a>動作規則（預覽）
 
@@ -54,7 +51,7 @@ ms.locfileid: "74767682"
 
 ![新增動作規則建立流程](media/alerts-action-rules/action-rules-new-rule-creation-flow.png)
 
-### <a name="scope"></a>Scope
+### <a name="scope"></a>範圍
 
 首先選擇範圍（Azure 訂用帳戶、資源群組或目標資源）。 您也可以在單一訂用帳戶內多重選取範圍的組合。
 
@@ -64,7 +61,7 @@ ms.locfileid: "74767682"
 
 此外，您還可以定義篩選器，將它們縮小到特定的警示子集。 
 
-可用的篩選器如下： 
+可用的篩選器是： 
 
 * **嚴重性**：選取一或多個警示嚴重性的選項。 **嚴重性 = Sev1**表示動作規則適用于設定為 Sev1 的所有警示。
 * **監視服務**：以原始監視服務為基礎的篩選準則。 此篩選也是多重選取。 例如， **Monitor Service = "Application Insights"** 表示動作規則適用于所有以 Application Insights 為基礎的警示。
@@ -82,7 +79,7 @@ ms.locfileid: "74767682"
 
 接下來，設定警示隱藏或動作群組支援的動作規則。 您無法選擇這兩者。 設定會作用於符合先前定義之範圍和篩選準則的所有警示實例。
 
-#### <a name="suppression"></a>消除
+#### <a name="suppression"></a>歸併
 
 如果您選取 [**隱藏**]，請設定隱藏動作和通知的持續時間。 選擇下列其中一個選項：
 * **從現在（一律）** ：無限期地隱藏所有通知。
@@ -103,11 +100,11 @@ ms.locfileid: "74767682"
 ### <a name="action-rule-details"></a>動作規則詳細資料
 
 最後，設定動作規則的下列詳細資料：
-* Name
+* 名稱
 * 儲存它的資源群組
 * 描述 
 
-## <a name="example-scenarios"></a>範例案例
+## <a name="example-scenarios"></a>範例情節
 
 ### <a name="scenario-1-suppression-of-alerts-based-on-severity"></a>案例1：根據嚴重性隱藏警示
 
@@ -115,7 +112,7 @@ Contoso 想要在每個週末，針對訂用帳戶**ContosoSub**內所有 vm 的
 
 **解決方案：** 使用下列方式建立動作規則：
 * 範圍 = **ContosoSub**
-* 篩選
+* 篩選器。
     * 嚴重性 = **Sev4**
     * 資源類型 =**虛擬機器**
 * [週期] 設為 [每週]，並核取 [**星期六**] 和 [**星期日**]
@@ -126,7 +123,7 @@ Contoso 想要在**ContosoSub**中，無限期地隱藏針對**電腦 01**所產
 
 **解決方案：** 使用下列方式建立動作規則：
 * 範圍 = **ContosoSub**
-* 篩選
+* 篩選器。
     * 監視服務 = **Log Analytics**
     * 警示內容（承載）包含**Computer-01**
 * 隱藏專案設定為**從現在（一律）**
@@ -151,7 +148,7 @@ Contoso 已[在訂用帳戶層級定義度量警示](https://docs.microsoft.com/
 
 您可以從這裡選取其旁邊的核取方塊，以大規模啟用、停用或刪除動作規則。 當您選取 [動作規則] 時，其 [設定] 頁面隨即開啟。 此頁面可協助您更新動作規則的定義，並啟用或停用它。
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳作法
 
 您使用 [[結果數目](alerts-unified-log.md)] 選項建立的記錄警示，會使用整個搜尋結果（可能跨越多部電腦）來產生單一警示實例。 在此案例中，如果動作規則使用**警示內容（承載）** 篩選準則，它就會在警示實例上作用（只要有相符的）。 在先前所述的案例2中，如果產生之記錄警示的搜尋結果同時包含**computer-01**和**computer-02**，則會隱藏整個通知。 不會針對**Computer-02**產生任何通知。
 

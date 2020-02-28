@@ -1,19 +1,17 @@
 ---
 title: Azure Application Insights 使用情況影響 | Microsoft Docs
 description: 分析不同的屬性可能會對您應用程式組件的轉換率產生哪些影響。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 01/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: f057ec6424f72370c48599296452d607107f6c34
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 787221c4df3f06029d19ee779a28bb763723f27d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406258"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671030"
 ---
 # <a name="impact-analysis-with-application-insights"></a>使用 Application Insights 進行影響分析
 

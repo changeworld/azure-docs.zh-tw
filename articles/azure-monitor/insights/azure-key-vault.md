@@ -1,18 +1,17 @@
 ---
 title: Azure 監視器中的 Azure Key Vault 解決方案 |Microsoft Docs
 description: 您可以使用 Azure 監視器中的 Azure Key Vault 方案來查看 Azure Key Vault 記錄。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
-ms.openlocfilehash: 8d9c5f63a00179903c0920912aba642311a354e7
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 7a2becf8cb43568383c324bb9f4f5b2e7b844268
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889102"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667137"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure 監視器中的 Azure Key Vault 分析解決方案
 
@@ -95,7 +94,7 @@ Azure Key Vault 解決方案會直接從 Key Vault 收集診斷記錄。
     您可以在任何 [記錄搜尋] 頁面上，按時間、詳細結果和您的記錄搜尋記錄來檢視結果。 您也可以按 Facet 篩選以縮減結果。
 
 ## <a name="azure-monitor-log-records"></a>Azure 監視器記錄
-Azure 金鑰保存庫解決方案會分析從 Azure 診斷的 [AuditEvent 記錄](../../key-vault/key-vault-logging.md)收集的 **KeyVaults** 類型記錄。  下表是這些記錄的屬性：  
+Azure 金鑰保存庫解決方案會分析從 Azure 診斷的 **AuditEvent 記錄**收集的 [KeyVaults](../../key-vault/key-vault-logging.md) 類型記錄。  下表是這些記錄的屬性：  
 
 | 屬性 | 描述 |
 |:--- |:--- |

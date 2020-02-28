@@ -1,18 +1,15 @@
 ---
 title: 如何整合一般警示架構與 Logic Apps
 description: 瞭解如何建立邏輯應用程式，利用通用的警示架構來處理您的所有警示。
-ms.service: azure-monitor
-ms.subservice: alerts
 ms.topic: conceptual
-author: ananthradhakrishnan
-ms.author: robb
+ms.subservice: alerts
 ms.date: 05/27/2019
-ms.openlocfilehash: 50a6067d271ad824f17df1ece36c3dd919c7b55b
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 9042ed8ddbb698192e638fa7538f74561574c262
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555659"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668225"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>如何整合一般警示架構與 Logic Apps
 
@@ -112,7 +109,7 @@ ms.locfileid: "72555659"
         }
     ```
 
-1. 選取 [+ 新增步驟]，然後選擇 [新增動作]。
+1. 選取 [ **+** **新增步驟**]，然後選擇 [**加入動作**]。
 
     ![新增動作](media/action-groups-logic-app/add-action.png "新增動作")
 

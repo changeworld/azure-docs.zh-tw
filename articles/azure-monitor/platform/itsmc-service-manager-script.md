@@ -1,18 +1,17 @@
 ---
 title: 自動化的指令碼可建立與 Azure 中的 IT 服務管理連接器連線之 Service Manager Web 應用程式 | Microsoft Docs
 description: 使用自動化的指令碼建立 Service Manager Web 應用程式，來與 Azure 中的 IT 服務管理連接器連線，並將 ITSM 工作項目集中監視及管理。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/23/2018
-ms.openlocfilehash: a97ea4d505d17d1d5fb2f2035fb23f3fce94aebe
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: f224e58905e2989caf16259e383726595c0206d5
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990924"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672186"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>使用自動化的指令碼建立 Service Manager Web 應用程式
 

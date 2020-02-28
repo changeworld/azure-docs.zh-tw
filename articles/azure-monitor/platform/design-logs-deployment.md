@@ -1,18 +1,17 @@
 ---
 title: 設計您的 Azure 監視器記錄部署 |Microsoft Docs
 description: 本文說明客戶準備在 Azure 監視器中部署工作區的考慮和建議。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: f2d530792e1a6f598dbf2ed66889c01cc43467ed
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: e493b07814821496f941a4b81402ba0b49acbede
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162237"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670452"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>設計您的 Azure 監視器記錄部署
 

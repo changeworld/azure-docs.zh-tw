@@ -1,18 +1,14 @@
 ---
 title: Application Insights 中的效能計數器 | Microsoft Docs
 description: 監視 Application Insights 中的系統和自訂 .NET 效能計數器。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 12/13/2018
-ms.openlocfilehash: d313fed6a61ac98e596e6f8caca8f0e46a8c9600
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 94d2520c17867f6d70caffd002a76365a425986f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689068"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669874"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights 中的系統效能計數器
 
@@ -67,7 +63,7 @@ Windows 提供多種[效能計數器](https://docs.microsoft.com/windows/desktop
 
 格式為 `\Category(instance)\Counter"`，若是沒有執行個體的類別，則為 `\Category\Counter`。
 
-不符合 `[a-zA-Z()/-_ \.]+` 的計數器名稱需要有 `ReportAs`；亦即，它們包含不在下列集合中的字元：字母、圓括號、正斜線、連字號、底線、空格、點。
+不符合 `ReportAs` 的計數器名稱需要有 `[a-zA-Z()/-_ \.]+`；亦即，它們包含不在下列集合中的字元：字母、圓括號、正斜線、連字號、底線、空格、點。
 
 如果您指定執行個體，系統會收集它做為報告度量的 "CounterInstanceName" 維度。
 

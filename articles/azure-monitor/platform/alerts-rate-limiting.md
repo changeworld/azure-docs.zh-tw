@@ -2,18 +2,16 @@
 title: SMS、電子郵件、Azure App 推播通知和 Webhook 的速率限制
 description: 了解 Azure 如何限制可能來自動作群組的 SMS、電子郵件、Azure App 推送或 Webhook 通知的數目。
 author: dkamstra
-services: azure-monitor
-ms.service: azure-monitor
+ms.author: dukek
 ms.topic: conceptual
 ms.date: 3/12/2018
-ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 11fd6a2c58671cc5d0bcf0593239eb9e62aca834
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 066fcac24571c8e982784a3845a010525ff9088a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60346643"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665522"
 ---
 # <a name="rate-limiting-for-voice-sms-emails-azure-app-push-notifications-and-webhook-posts"></a>語音、SMS、電子郵件、Azure App 推播通知和 Webhook 發佈的速率限制
 速率限制是當傳送了太多通知給特定電話號碼、電子郵件地址或裝置時所發生的通知暫停。 速率限制可確保警示為可管理且可採取動作。

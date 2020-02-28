@@ -1,18 +1,16 @@
 ---
 title: 針對適用于 Windows 的 Log Analytics 代理程式問題進行疑難排解
 description: 描述 Azure 監視器中適用于 Windows 的 Log Analytics 代理程式最常見問題的徵兆、原因和解決方式。
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 486c68cb32b5f4c8c8a18b21d1aee139ffda45bf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 78625707bfa296eeb7ad8cc658657f46da1dc495
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75397446"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668786"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>如何針對適用于 Windows 的 Log Analytics 代理程式問題進行疑難排解 
 
@@ -60,17 +58,17 @@ ms.locfileid: "75397446"
 
     ![TestCloudConnection 工具執行結果](./media/agent-windows-troubleshoot/output-testcloudconnection-tool-01.png)
 
-- 依**事件來源** - *健全狀況服務模組*、 *HealthService* 和 *服務連接器* 篩選*Operations Manager*事件記錄檔, 並依**事件層級** *警告*和*錯誤*篩選以確認它是否已寫入下表中的事件。 如果是，請檢查每個可能事件所包含的解決步驟。
+- 依**事件來源**篩選*Operations Manager*事件記錄檔 - *健全狀況服務模組*、 *HealthService* 和 *服務連接器*，並依**事件層級***警告*和*錯誤*篩選，以確認它是否已寫入下表中的事件。 如果是，請檢查每個可能事件所包含的解決步驟。
 
-    |事件識別碼 |來源 |說明 |解析度 |
+    |事件識別碼 |來源 |描述 |解決方案 |
     |---------|-------|------------|-----------|
     |2133 & 2129 |健全狀況服務 |從代理程式到服務的連接失敗 |當代理程式無法直接或透過防火牆/proxy 伺服器與 Azure 監視器服務通訊時，就會發生此錯誤。 確認代理程式 proxy 設定，或網路防火牆/proxy 允許從電腦到服務的 TCP 流量。|
     |2138 |健全狀況服務模組 |Proxy 需要驗證 |設定代理程式 proxy 設定，並指定用來向 proxy 伺服器進行驗證所需的使用者名稱/密碼。 |
     |2129 |健全狀況服務模組 |失敗的連線/SSL 協調失敗 |檢查您的網路介面卡 TCP/IP 設定和代理程式 proxy 設定。|
     |2127 |健全狀況服務模組 |傳送資料失敗時發生錯誤代碼 |如果只在一天內定期發生，它可能只是可以忽略的隨機異常。 監視以瞭解其發生頻率。 如果經常發生這種情況，請先檢查您的網路設定和 proxy 設定。 如果描述包含 HTTP 錯誤碼404，而且是第一次代理程式嘗試將資料傳送至服務，則會包含具有內部404錯誤碼的500錯誤。 404表示找不到，這表示新工作區的儲存區域仍在布建中。 下次重試時，資料將會如預期般成功寫入工作區。 HTTP 錯誤403可能表示許可權或認證問題。 403錯誤包含更多的資訊，以協助對問題進行疑難排解。|
-    |4000 |應用程式連線程式 |DNS 名稱解析失敗 |電腦無法解析將資料傳送至服務時所使用的網際網路位址。 這可能是您電腦上的 DNS 解析程式設定、不正確的 proxy 設定，或可能是提供者的暫時性 DNS 問題。 如果定期發生，可能是因為暫時性的網路相關問題所造成。|
-    |4001 |應用程式連線程式 |連接至服務失敗。 |當代理程式無法直接或透過防火牆/proxy 伺服器與 Azure 監視器服務通訊時，就會發生此錯誤。 確認代理程式 proxy 設定，或網路防火牆/proxy 允許從電腦到服務的 TCP 流量。|
-    |4002 |應用程式連線程式 |服務傳回 HTTP 狀態碼 403 以回應查詢。 請洽詢服務系統管理員以取得服務的健全狀況。 稍後將重試查詢。 |此錯誤是在代理程式的初始註冊階段所撰寫，您會看到類似下列的 URL： *HTTPs://\<workspaceID >. opinsights. azure .com/agentservice.svc .svc/AgentTopologyRequest*。 錯誤碼403表示禁止，而且可能是因為輸入錯誤的工作區識別碼或金鑰，或是電腦上的資料和時間不正確所造成。 如果時間為自目前時間起的 + /-15 分鐘，則上架失敗。 若要修正此錯誤，請更新 Windows 電腦的日期和/或時區。|
+    |4000 |服務連接器 |DNS 名稱解析失敗 |電腦無法解析將資料傳送至服務時所使用的網際網路位址。 這可能是您電腦上的 DNS 解析程式設定、不正確的 proxy 設定，或可能是提供者的暫時性 DNS 問題。 如果定期發生，可能是因為暫時性的網路相關問題所造成。|
+    |4001 |服務連接器 |連接至服務失敗。 |當代理程式無法直接或透過防火牆/proxy 伺服器與 Azure 監視器服務通訊時，就會發生此錯誤。 確認代理程式 proxy 設定，或網路防火牆/proxy 允許從電腦到服務的 TCP 流量。|
+    |4002 |服務連接器 |服務傳回 HTTP 狀態碼403以回應查詢。 請洽詢服務系統管理員以取得服務的健全狀況。 稍後將會重試查詢。 |此錯誤是在代理程式的初始註冊階段所撰寫，您會看到類似下列的 URL： *HTTPs://\<workspaceID >. opinsights. azure .com/agentservice.svc .svc/AgentTopologyRequest*。 錯誤碼403表示禁止，而且可能是因為輸入錯誤的工作區識別碼或金鑰，或是電腦上的資料和時間不正確所造成。 如果時間為自目前時間起的 + /-15 分鐘，則上架失敗。 若要修正此錯誤，請更新 Windows 電腦的日期和/或時區。|
 
 ## <a name="data-collection-issues"></a>資料收集問題
 
@@ -98,9 +96,9 @@ Heartbeat
 
     ![事件識別碼1210描述](./media/agent-windows-troubleshoot/event-id-1210-healthservice-01.png)
 
-3. 在幾分鐘之後, 您在查詢結果或視覺效果中看不到預期的資料, 取決於您是從解決方案或深入解析中查看資料而定, 請從*Operations Manager*事件記錄檔中, 搜尋**事件來源** *HealthService*和會*健全狀況服務模組*, 並依**事件層級** *警告*和*錯誤*進行篩選, 以確認它是否已寫入下表中的事件。
+3. 在幾分鐘之後，如果您在查詢結果或視覺效果中看不到預期的資料，請根據您是從 [ *Operations Manager* ] 事件記錄檔中查看資料，搜尋 [**事件來源**] *HealthService*並*健全狀況服務模組*，並依**事件層級***警告*和*錯誤*進行篩選，確認它是否已寫入下表中的事件。
 
-    |事件識別碼 |來源 |說明 |解析度 |
+    |事件識別碼 |來源 |描述 |解決方案 |
     |---------|-------|------------|
     |8000 |HealthService |這個事件會指定與所收集的效能、事件或其他資料類型相關的工作流程是否無法轉寄至服務，以供內嵌至工作區。 | 來源 HealthService 的事件識別碼2136會與此事件一併撰寫，而且可能會指出代理程式無法與服務通訊，可能是因為 proxy 和驗證設定不正確、網路中斷，或網路防火牆/proxy 不允許從電腦到服務的 TCP 流量。| 
     |10102和10103 |健全狀況服務模組 |工作流程無法解析資料來源。 |如果指定的效能計數器或實例不存在於電腦上，或工作區的資料設定不正確地定義，就可能發生這種情況。 如果這是使用者指定的[效能計數器](data-sources-performance-counters.md#configuring-performance-counters)，請確認指定的資訊是否遵循正確的格式，並存在於目的電腦上。 |

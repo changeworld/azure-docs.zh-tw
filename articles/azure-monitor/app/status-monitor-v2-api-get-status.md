@@ -1,18 +1,16 @@
 ---
 title: Azure 應用程式 Insights 代理程式 API 參考
 description: Application Insights 代理程式 API 參考。 ApplicationInsightsMonitoringStatus。 在不重新部署網站的情況下監視網站效能。 使用裝載於內部部署、VM 中或 Azure 上的 ASP.NET Web 應用程式。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 9b1010404cb876ed818dd54cf527987c6cf0ffe0
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 159dab4a228c822ef62c45c9ccceff638a9bea45
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899695"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671251"
 ---
 # <a name="application-insights-agent-api-get-applicationinsightsmonitoringstatus"></a>Application Insights 代理程式 API： ApplicationInsightsMonitoringStatus
 
@@ -177,12 +175,12 @@ listdlls64.exe -accepteula w3wp
 
 
 ### <a name="-powershellmodule"></a>-PowerShellModule
-**選用**。 使用此參數來報告監視所需的 Dll 版本號碼和路徑。
+**選擇性**。 使用此參數來報告監視所需的 Dll 版本號碼和路徑。
 如果您需要識別任何 DLL 的版本，包括 Application Insights SDK，請使用此選項。
 
 ### <a name="-inspectprocess"></a>-InspectProcess
 
-**選用**。 使用此參數來報告 IIS 是否正在執行。
+**選擇性**。 使用此參數來報告 IIS 是否正在執行。
 它也會下載外部工具，以判斷必要的 Dll 是否已載入 IIS 執行時間。
 
 
@@ -194,7 +192,7 @@ listdlls64.exe -accepteula w3wp
 
 ### <a name="-force"></a>-Force
 
-**選用**。 只能搭配 InspectProcess 使用。 使用此參數來略過在下載其他工具之前出現的使用者提示。
+**選擇性**。 只能搭配 InspectProcess 使用。 使用此參數來略過在下載其他工具之前出現的使用者提示。
 
 
 ## <a name="next-steps"></a>後續步驟

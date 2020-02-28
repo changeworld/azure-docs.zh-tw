@@ -1,18 +1,18 @@
 ---
 title: 補救不相容的資源
 description: 本指南會逐步引導您在 Azure 原則中，修復不符合原則的資源。
-ms.date: 09/09/2019
+ms.date: 02/26/2020
 ms.topic: how-to
-ms.openlocfilehash: e3db0f5f8ae1be4a6ab6eb281801958bfb816228
-ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
+ms.openlocfilehash: 5cf26f5235fbc35cdc9bfc8527967c3cc5ca91b8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77544176"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670792"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>補救不符合 Azure 原則規範的資源
 
-不符合**deployIfNotExists**或**修改**原則的資源可以透過**補救**進入符合規範的狀態。 藉由指示 Azure 原則在現有資源上執行所指派原則的**deployIfNotExists**效果或標記**作業**，即可完成補救。 本文說明使用 Azure 原則來瞭解及完成補救所需的步驟。
+不符合**deployIfNotExists**或**修改**原則的資源可以透過**補救**進入符合規範的狀態。 藉由指示 Azure 原則在現有資源上執行已指派原則的**deployIfNotExists**效果或卷**標作業，** 不論該指派屬於管理群組、訂用帳戶、資源群組或個別資源，都可以完成補救。 本文說明使用 Azure 原則來瞭解及完成補救所需的步驟。
 
 ## <a name="how-remediation-security-works"></a>補救安全性的運作方式
 

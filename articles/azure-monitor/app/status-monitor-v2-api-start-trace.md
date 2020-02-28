@@ -1,18 +1,16 @@
 ---
 title: Azure 應用程式 Insights 代理程式 API 參考
 description: Application Insights 代理程式 API 參考。 開始追蹤。 從狀態監視器和 Application Insights SDK 收集 ETW 記錄檔。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: c97315b3a215f10e5b8f9533bf09fa5ac30ee16f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: b9680101f1a22dd6d9c1617c8afc13a10ad1c594
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899657"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671217"
 ---
 # <a name="application-insights-agent-api-start-applicationinsightsmonitoringtrace"></a>Application Insights 代理程式 API：開始-ApplicationInsightsMonitoringTrace
 
@@ -38,9 +36,9 @@ ms.locfileid: "72899657"
 無程式碼附加執行時間會在 IIS 啟動時以及應用程式啟動時發出 ETW 事件。
 
 若要收集這些事件：
-1. 在具有系統管理員許可權的 cmd 主控台中，執行 `iisreset /stop`，以關閉 IIS 和所有 web 應用程式。
+1. 在具有系統管理員許可權的 cmd 主控台中，執行 `iisreset /stop` 以關閉 IIS 和所有 web 應用程式。
 2. 執行此 Cmdlet
-3. 在具有系統管理員許可權的 cmd 主控台中，執行 `iisreset /start` 來啟動 IIS。
+3. 在具有系統管理員許可權的 cmd 主控台中，執行 `iisreset /start` 以啟動 IIS。
 4. 嘗試流覽至您的應用程式。
 5. 在您的應用程式完成載入之後，您可以手動將它停止（`Ctrl + C`）或等候超時。
 
@@ -56,17 +54,17 @@ ms.locfileid: "72899657"
 ## <a name="parameters"></a>參數
 
 ### <a name="-maxdurationinminutes"></a>-MaxDurationInMinutes
-**選用。** 使用此參數來設定此腳本應該收集事件的時間長度。 預設值為 5 分鐘。
+**選擇性。** 使用此參數來設定此腳本應該收集事件的時間長度。 預設值為 5 分鐘。
 
 ### <a name="-logdirectory"></a>-LogDirectory
-**選用。** 使用此參數來設定 ETL 檔案的輸出目錄。 根據預設，會在 PowerShell 模組目錄中建立此檔案。 腳本執行期間會顯示完整路徑。
+**選擇性。** 使用此參數來設定 ETL 檔案的輸出目錄。 根據預設，會在 PowerShell 模組目錄中建立此檔案。 腳本執行期間會顯示完整路徑。
 
 
 ### <a name="-collectsdkevents"></a>-CollectSdkEvents
-**選用。** 使用此參數來收集 Application Insights SDK 事件。
+**選擇性。** 使用此參數來收集 Application Insights SDK 事件。
 
 ### <a name="-collectredfieldevents"></a>-CollectRedfieldEvents
-**選用。** 使用此參數來收集來自狀態監視器和 Redfield 執行時間的事件。
+**選擇性。** 使用此參數來收集來自狀態監視器和 Redfield 執行時間的事件。
 
 ### <a name="-verbose"></a>-Verbose
 **一般參數。** 使用此參數來輸出詳細記錄。

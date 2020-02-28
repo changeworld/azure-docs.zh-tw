@@ -2,18 +2,15 @@
 title: 在 Azure 監視器中建立具有動態閾值的警示
 description: 建立警示，內含以機器學習為基礎的動態閾值
 author: yanivlavi
-services: azure-monitor
-ms.service: azure-monitor
+ms.author: yalavi
 ms.topic: conceptual
 ms.date: 02/16/2020
-ms.author: yalavi
-ms.reviewer: mbullwin
-ms.openlocfilehash: f67dcf7f1f4f39a11eb995995a8d0acc278b5d4a
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.openlocfilehash: 9345138e948d84e0ea3c804dbd7a4b3c21daca2f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/17/2020
-ms.locfileid: "77373404"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668140"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Azure 監視器中具有動態閾值的計量警示
 
@@ -64,7 +61,7 @@ ms.locfileid: "77373404"
 
 ## <a name="what-do-the-advanced-settings-in-dynamic-thresholds-mean"></a>動態閾值中的進階設定有何意義？
 
-**失敗期間**-動態閾值也可讓您設定「觸發警示的數位違規」，這是在特定時間範圍內，系統引發警示所需的最小偏差數目（預設時間範圍是20分鐘的四個偏差）。 使用者可以設定失敗期間，並藉由變更失敗期間和時間範圍來選擇要警示的標的。 這項功能可減少暫時性尖峰所產生的警示雜訊。 例如：
+**失敗期間**-動態閾值也可讓您設定「觸發警示的數位違規」，這是在特定時間範圍內，系統引發警示所需的最小偏差數目（預設時間範圍是20分鐘的四個偏差）。 使用者可以設定失敗期間，並藉由變更失敗期間和時間範圍來選擇要警示的標的。 這項功能可減少暫時性尖峰所產生的警示雜訊。 例如，
 
 若要在問題持續 20 分鐘、在 5 分鐘的指定期間分組內連續發生 4 次時觸發警示，請使用下列設定：
 

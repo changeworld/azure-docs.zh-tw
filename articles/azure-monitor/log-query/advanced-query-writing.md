@@ -1,18 +1,17 @@
 ---
 title: Azure 監視器中的先進查詢 |Microsoft Docs
 description: 本文提供教學課程來說明如何使用 Analytics 入口網站在 Azure 監視器中撰寫查詢。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/15/2018
-ms.openlocfilehash: 8895224bef037c8c3f8b28a6085359837478d924
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 3d228c62cd2d1bcb7f4515cd698186e2ebcbe929
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894512"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670282"
 ---
 # <a name="writing-advanced-queries-in-azure-monitor"></a>在 Azure 監視器中撰寫進階查詢
 
@@ -69,7 +68,7 @@ Event
 | project TimeGenerated, USTimeGenerated, Source, Computer, EventLevel, EventData 
 ```
 
-## <a name="print"></a>列印
+## <a name="print"></a>Print
 `print` 將會傳回具有單欄與單列的表格，顯示計算的結果。 當您需要簡單的計算時，通常會使用這種方式。 例如，尋找太平洋標準時間 (PST) 的目前時間並加上美國東部標準時間 (EST) 欄：
 
 ```Kusto

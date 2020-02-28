@@ -1,19 +1,17 @@
 ---
 title: 使用 Azure 監視器（預覽）監視 Python 應用程式 |Microsoft Docs
 description: 提供將 OpenCensus Python 與 Azure 監視器連線的指示
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: b9d2bda1d3f01d2bf4bb152c0f62ade87bb61b4c
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 7d27256f64e09a4d4ba3dbf1544eaec4715f6d88
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368278"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669908"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>設定 Python 應用程式的 Azure 監視器（預覽）
 

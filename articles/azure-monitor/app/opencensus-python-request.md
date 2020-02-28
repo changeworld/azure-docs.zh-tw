@@ -1,18 +1,16 @@
 ---
 title: Azure 應用程式 Insights 中使用 OpenCensus Python 的傳入要求追蹤 |Microsoft Docs
 description: 透過 OpenCensus Python 監視 Python 應用程式的要求呼叫。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
-ms.openlocfilehash: 475ba601c61169f92eddd7f203b7fa34ed2e4916
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 0396bd8d150c6145a39f36e7be9e6e2dcacef2c4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368262"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669942"
 ---
 # <a name="track-incoming-requests-with-opencensus-python"></a>使用 OpenCensus Python 追蹤連入要求
 

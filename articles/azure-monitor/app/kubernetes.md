@@ -1,18 +1,16 @@
 ---
 title: 使用 Application Insights 來監視您的 Azure Kubernetes Service （AKS）或其他 Kubernetes 託管應用程式-Azure 監視器 |Microsoft Docs
 description: Azure 監視器在您的 Kubernetes 叢集上使用服務網格技術 Istio，為任何 Kubernetes 裝載的應用程式提供應用程式監視。 這可讓您收集與叢集中執行之 pod 的傳入和傳出要求相關的 Application Insights 遙測。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: tokaplan
 ms.author: alkaplan
 ms.date: 04/25/2019
-ms.openlocfilehash: a7821db85d4218cbccb6c10f12ecbc624f2702fe
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 15c75d4add9615df6c42aa6121557659e54354d0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432513"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666781"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications"></a>Kubernetes 託管應用程式的零檢測應用程式監視
 
@@ -33,7 +31,7 @@ Azure 監視器現在會利用 Kubernetes 叢集上的服務網格技術，為�
 - [應用程式深入解析資源](create-new-resource.md)
 - 具有服務網格。 如果您的叢集未部署 Istio，您可以瞭解如何[在 Azure Kubernetes Service 中安裝和使用 Istio](https://docs.microsoft.com/azure/aks/istio-install)。
 
-## <a name="capabilities"></a>容量
+## <a name="capabilities"></a>功能
 
 藉由對 Kubernetes 裝載的應用程式使用零檢測應用程式監視，您將能夠使用：
 
@@ -65,7 +63,7 @@ kubectl label namespace <my-app-namespace> istio-injection=enabled
 
 在服務網格外執行的應用程式不會受到影響。
 
-### <a name="deploy-your-application"></a>部署應用程式
+### <a name="deploy-your-application"></a>部署您的應用程式
 
 - 將您的應用程式部署到*my 應用程式命名*空間。 如果已部署應用程式，而且您已遵循上述的自動側車插入方法，則必須重新建立 pod，以確保 Istio 插入其側車;起始輪流更新，或刪除個別 pod 並等候重新建立。
 - 請確定您的應用程式符合[Istio 需求](https://istio.io/docs/setup/kubernetes/prepare/requirements/)。

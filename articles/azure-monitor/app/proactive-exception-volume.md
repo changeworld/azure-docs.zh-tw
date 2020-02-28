@@ -1,18 +1,14 @@
 ---
 title: 例外狀況磁片區中異常上升-Azure 應用程式深入解析
 description: 針對例外狀況磁片區中不尋常的模式，使用 Azure 應用程式 Insights 中的智慧型偵測來監視應用程式例外狀況。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 12/08/2017
-ms.openlocfilehash: b524000f78741b2ff8cf442d2daaef0c7945799a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a08fae4774a8afb9959f55ea3196cd1a45c33439
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432427"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671761"
 ---
 # <a name="abnormal-rise-in-exception-volume-preview"></a>磁碟區例外狀況異常升高 (預覽)
 
@@ -27,7 +23,7 @@ Application Insights 會自動分析應用程式中擲回的例外狀況，並�
 ## <a name="does-my-app-definitely-have-a-problem"></a>我的應用程式絕對有問題嗎？
 否，通知並不表示您的應用程式一定有問題。 雖然過多的例外狀況數目通常代表應用程式出現問題，但這些例外狀況可能是良性的，並且應用程式也能正確處理。
 
-## <a name="how-do-i-fix-it"></a>如何修正問題？
+## <a name="how-do-i-fix-it"></a>要如何修正錯誤？
 通知包括要在診斷程序中支援的診斷資訊：
 1. **分級。** 通知會顯示受影響的使用者人數或要求數。 這可協助您將優先順序指派給此問題。
 2. **範圍。** 此問題是否會影響所有流量，還是只會影響某些作業？ 可以從通知取得這項資訊。

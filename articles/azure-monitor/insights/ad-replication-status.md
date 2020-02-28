@@ -1,18 +1,17 @@
 ---
 title: 使用 Azure 監視器監視 Active Directory 複寫狀態 | Microsoft Docs
 description: 「Active Directory 複寫狀態」解決方案套件會定期監視您的 Active Directory 環境是否有任何複寫失敗。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/24/2018
-ms.openlocfilehash: 31e6d0c8b374bd494ae8fda36f4f38aabb1ac96b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bfc9572e8b21692a386c510ffd3409c571eff8f4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406085"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667171"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>使用 Azure 監視器監視 Active Directory 複寫狀態
 
@@ -53,7 +52,7 @@ AD 複寫狀態解決方案會定期監視您的 Active Directory 環境是否�
 ## <a name="ad-replication-status-data-collection-details"></a>AD 複寫狀態資料收集詳細資料
 下表顯示 AD 複寫狀態的資料收集方法和其他資料收集方式的詳細資料。
 
-| 平台 | 直接代理程式 | SCOM 代理程式 | Azure 儲存體 | SCOM 是否為必要項目？ | 透過管理群組傳送的 SCOM 代理程式資料 | 收集頻率 |
+| platform | 直接代理程式 | SCOM 代理程式 | Azure 儲存體 | SCOM 是否為必要項目？ | 透過管理群組傳送的 SCOM 代理程式資料 | 收集頻率 |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |&#8226; |&#8226; |  |  |&#8226; |每隔五天 |
 
@@ -124,14 +123,14 @@ AD 複寫狀態解決方案會定期監視您的 Active Directory 環境是否�
 答︰此資訊會每隔五天更新一次。
 
 **問：是否有設定此資料更新頻率的方法？**
-答：目前沒有。
+答：目前不行。
 
 **問︰我是否必須將所有網域控制站加入至我的 Log Analytics 工作區，才能查看複寫狀態？**
 答︰否，只需加入單一網域控制站。 如果您的 Log Analytics 工作區中有多個網域控制站，這些網域控制站的資料都會傳送至 Azure 監視器。
 
 **問：我不想要將任何網域控制站新增至我的 Log Analytics 工作區。我仍然可以使用 AD 複寫狀態解決方案嗎？**
 
-答： 會。 您可以設定要啟用此解決方案的登錄機碼值。 請參閱[啟用非網域控制站](#enable-non-domain-controller)。
+答：可以。 您可以設定要啟用此解決方案的登錄機碼值。 請參閱[啟用非網域控制站](#enable-non-domain-controller)。
 
 **問：負責收集資料之處理序的名稱為何？**
 答︰AdvisorAssessment.exe
@@ -143,7 +142,7 @@ AD 複寫狀態解決方案會定期監視您的 Active Directory 環境是否�
 答：複寫資訊是透過 LDAP 收集。
 
 **問：是否有設定資料收集時間的方法？**
-答：目前沒有。
+答：目前不行。
 
 **問︰我需要哪些權限才能收集資料？**
 答︰Active Directory 的一般使用者權限就足夠了。

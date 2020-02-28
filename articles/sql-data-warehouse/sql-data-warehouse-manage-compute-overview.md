@@ -11,12 +11,12 @@ ms.date: 11/12/2019
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 305b17a9118bddac53b19462cb8c3be887395311
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c715b2328f66c58fa744235c8762b31fd0b30d1f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923607"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669484"
 ---
 # <a name="manage-compute-in-azure-sql-data-warehouse"></a>管理 Azure SQL 資料倉儲中的計算能力
 了解如何管理 Azure SQL 資料倉儲中的計算資源。 藉由暫停資料倉儲來降低成本，或調整資料倉儲規模以符合效能需求。 
@@ -31,7 +31,7 @@ SQL 資料倉儲的架構分隔儲存體和計算功能，可單獨進行調整�
 
 若要執行調整規模作業，SQL 資料倉儲會先刪除所有傳入的查詢，然後復原交易，以確保一致的狀態。 只有在交易復原完成後，才會發生調整。 在調整規模作業中，系統會使儲存層與計算節點中斷連結，新增計算節點，然後將儲存層重新連結至計算層。 每個資料倉儲會儲存為 60 個散發，其平均分散於各計算節點。 新增更多計算節點可增加更多計算能力。 當計算節點數目增加時，每個計算節點的發佈數目也會隨之增加，進而為您的查詢提供計算能力。 同樣地，減少資料倉儲單位可減少計算節點數目，進而減少查詢的計算資源。
 
-下表顯示當資料倉儲單位變更時，每個計算節點的發佈數目如何隨之變更。  DWU6000 會提供 60 個計算節點，並達到比 DWU100 更高的查詢效能。 
+下表顯示當資料倉儲單位變更時，每個計算節點的發佈數目如何隨之變更。  DW30000c 提供60計算節點，並達到比 DW100c 更高的查詢效能。 
 
 | 資料倉儲單位  | \# 個計算節點 | 每節點 \# 個散發 |
 | -------- | ---------------- | -------------------------- |
@@ -114,7 +114,7 @@ SQL 資料倉儲的架構分隔儲存體和計算功能，可單獨進行調整�
 若要檢查資料倉儲狀態，請參閱 [PowerShell](quickstart-scale-compute-powershell.md#check-data-warehouse-state) 或 [T-SQL](quickstart-scale-compute-tsql.md#check-data-warehouse-state) 快速入門。 您也可以使用 [REST API](sql-data-warehouse-manage-compute-rest-api.md#check-database-state) 來查看資料倉儲狀態。
 
 
-## <a name="permissions"></a>使用權限
+## <a name="permissions"></a>權限
 
 調整資料倉儲時需要 [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse) 中所述的權限。  暫停和繼續則需要 [SQL DB 參與者](../role-based-access-control/built-in-roles.md#sql-db-contributor)權限，特別是 Microsoft.Sql/servers/databases/action。
 

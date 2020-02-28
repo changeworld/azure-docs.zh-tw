@@ -1,24 +1,22 @@
 ---
 title: 使用 Application Insights 來分析即時 Azure 雲端服務 | Microsoft Docs
 description: 啟用 Azure 雲端服務的 Application Insights Profiler。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 682711d7681e3646ae14686b01542bc5d7432179
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 3fbeb1120e97a884135cd4622a49ef97fd43e58e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820507"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671659"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>使用 Application Insights 來分析即時 Azure 雲端服務
 
 您也可以在這些服務上部署 Application Insights Profiler：
-* [](profiler.md?toc=/azure/azure-monitor/toc.json)
+* [Azure App Service](profiler.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric 應用程式](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Azure 虛擬機器](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
@@ -39,7 +37,7 @@ Application Insights Profiler 會與 Azure 診斷擴充功能一起安裝。 您
 
 1. 設定 Azure 診斷擴充功能以啟用 Profiler：
 
-    a. 針對您的應用程式角色找出 [Azure 診斷](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) diagnostics.wadcfgx 檔案，如下所示：  
+    a. 找出應用程式角色的[Azure 診斷](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) *diagnostics.wadcfgx*檔案，如下所示：  
 
       ![診斷組態檔的位置](./media/profiler-cloudservice/cloudservice-solutionexplorer.png)  
 

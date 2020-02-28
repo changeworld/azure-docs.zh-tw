@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/03/2020
+ms.date: 02/26/2020
 ms.author: radeltch
-ms.openlocfilehash: 18aecfc5ea40c8368fbf4d4a07f86e71047265f7
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 493414d6e903dba02f126c10c2f4d6a34e0b1549
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598641"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661218"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>SUSE Linux Enterprise Server 上的 Azure Vm 上的 SAP NetWeaver 高可用性與適用于 SAP 應用程式的 Azure NetApp Files
 
@@ -98,10 +98,6 @@ SAP Netweaver 中央服務的高可用性（HA）需要共用儲存體。
 
 SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 SAP Hana 資料庫會使用虛擬主機名稱和虛擬 IP 位址。 在 Azure 上，需要有[負載平衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)，才能使用虛擬 IP 位址。 我們建議使用[標準負載平衡器](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal)。 下列清單顯示 (A)SCS 和 ERS 負載平衡器的組態。
 
-> [!IMPORTANT]
-> **不支援**在 Azure vm 中使用具有 SUSE Linux 作為客體作業系統的 SAP ASCS/ERS 多 SID 叢集。 多 SID 叢集描述在一個 Pacemaker 叢集中安裝多個具有不同 Sid 的 SAP ASCS/ERS 實例
-
-
 ### <a name="ascs"></a>(A)SCS
 
 * 前端組態
@@ -168,7 +164,7 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
    
 在此範例中，我們使用適用于所有 SAP Netweaver 檔案系統的 Azure NetApp Files 來示範如何使用 Azure NetApp Files。 不需要透過 NFS 裝載的 SAP 檔案系統也可以部署為[Azure 磁片儲存體](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd)。 在此範例中， <b>a-e</b>必須位於 Azure NetApp Files，而<b>f-g</b> （也就是/usr/sap/<b>QAS</b>/d<b>02</b>，/Usr/sap/<b>QAS</b>/d<b>03</b>）可以部署為 azure 磁片儲存體。 
 
-### <a name="important-considerations"></a>重要考量︰
+### <a name="important-considerations"></a>重要的考量
 
 在針對 SUSE 高可用性架構的 SAP Netweaver 考慮 Azure NetApp Files 時，請注意下列重要考慮：
 
@@ -253,7 +249,7 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
          1. 開啟負載平衡器，選取前端 IP 集區，然後按一下 [新增]
          1. 輸入新前端 IP 集區的名稱（例如前端） **。QAS.ASCS**）
          1. 將 [指派] 設定為 [靜態]，然後輸入 IP 位址（例如**10.1.1.20**）
-         1. Click OK
+         1. 按一下 [確定]。
       1. ASCS ERS 的 IP 位址10.1.1.21
          * 在 "a" 底下重複上述步驟，以建立 ERS 的 IP 位址（例如**10.1.1.21**和前端） **。QAS.ERS**）
    1. 建立後端集區
@@ -263,13 +259,13 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
          1. 按一下 [新增虛擬機器]。
          1. 選取虛擬機器
          1. 選取（A） SCS 叢集及其 IP 位址的虛擬機器。
-         1. 按一下 [新增]
+         1. 按一下 [新增]。
    1. 建立健康狀態探查
       1. 針對 ASCS 是連接埠 620**00**
          1. 開啟負載平衡器，選取健康情況探查，然後按一下 [新增]
          1. 輸入新健康狀態探查的名稱（例如**健全狀況）。QAS.ASCS**）
          1. 選取 [TCP] 作為通訊協定、連接埠 620**00**，保留 [間隔] 5 和 [狀況不良閾值] 2
-         1. Click OK
+         1. 按一下 [確定]。
       1. 適用于 ASCS ERS 的埠 621**01**
             * 在 "c" 底下重複上述步驟，以建立 ERS 的健康情況探查（例如 621**01**和**健全狀況）。QAS.ERS**）
    1. 負載平衡規則
@@ -280,7 +276,7 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
          1. 選取**HA 埠**
          1. 將閒置逾時增加為 30 分鐘
          1. **務必啟用浮動 IP**
-         1. Click OK
+         1. 按一下 [確定]。
          * 重複上述步驟以建立 ERS 的負載平衡規則（例如**lb。QAS.ERS**）
 1. 或者，如果您的案例需要基本負載平衡器（內部），請遵循下列步驟：  
    1. 建立前端 IP 位址
@@ -288,7 +284,7 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
          1. 開啟負載平衡器，選取前端 IP 集區，然後按一下 [新增]
          1. 輸入新前端 IP 集區的名稱（例如前端） **。QAS.ASCS**）
          1. 將 [指派] 設定為 [靜態]，然後輸入 IP 位址（例如**10.1.1.20**）
-         1. Click OK
+         1. 按一下 [確定]。
       1. ASCS ERS 的 IP 位址10.1.1.21
          * 在 "a" 底下重複上述步驟，以建立 ERS 的 IP 位址（例如**10.1.1.21**和前端） **。QAS.ERS**）
    1. 建立後端集區
@@ -298,13 +294,13 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
          1. 按一下 [新增虛擬機器]。
          1. 選取您稍早為 ASCS 建立的可用性設定組 
          1. 選取 (A)SCS 叢集的虛擬機器
-         1. Click OK
+         1. 按一下 [確定]。
    1. 建立健康狀態探查
       1. 針對 ASCS 是連接埠 620**00**
          1. 開啟負載平衡器，選取健康情況探查，然後按一下 [新增]
          1. 輸入新健康狀態探查的名稱（例如**健全狀況）。QAS.ASCS**）
          1. 選取 [TCP] 作為通訊協定、連接埠 620**00**，保留 [間隔] 5 和 [狀況不良閾值] 2
-         1. Click OK
+         1. 按一下 [確定]。
       1. 適用于 ASCS ERS 的埠 621**01**
             * 在 "c" 底下重複上述步驟，以建立 ERS 的健康情況探查（例如 621**01**和**健全狀況）。QAS.ERS**）
    1. 負載平衡規則
@@ -315,7 +311,7 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
          1. 保留通訊協定 [TCP]，輸入連接埠 **3200**
          1. 將閒置逾時增加為 30 分鐘
          1. **務必啟用浮動 IP**
-         1. Click OK
+         1. 按一下 [確定]。
       1. ASCS 的其他連接埠
          * 針對 ASCS 的埠 36**00**、39**00**、81**00**、5**00**13、5**00**14、5**00**16 和 TCP，重複上述的步驟 "d"
       1. ASCS ERS 的其他連接埠
@@ -1420,6 +1416,7 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
 
 ## <a name="next-steps"></a>後續步驟
 
+* [SLES for SAP 應用程式上的 Azure Vm 上的 HA for SAP NW 多 SID 指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
 * [適用于 SAP 的 Azure 虛擬機器規劃和執行][planning-guide]
 * [適用于 SAP 的 Azure 虛擬機器部署][deployment-guide]
 * [適用于 SAP 的 Azure 虛擬機器 DBMS 部署][dbms-guide]

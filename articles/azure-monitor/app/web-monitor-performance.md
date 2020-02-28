@@ -1,19 +1,15 @@
 ---
 title: 使用 Application Insights 來監視應用程式的健康情況和流量
 description: 開始使用 Application Insights。 分析內部部署或 Microsoft Azure 應用程式的使用情況、可用性和效能。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/10/2018
 ms.reviewer: sdash
-ms.openlocfilehash: ebf6fa6d3dac6c63dfaa349a77a08bc81d402ef8
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: e398f23559729580ae4ad8b6507c2f09328052b5
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899292"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670894"
 ---
 # <a name="monitor-performance-in-web-applications"></a>監視 Web 應用程式的效能
 
@@ -98,7 +94,7 @@ HTTP 要求包括分頁、資料及映像的所有 GET 或 POST 要求。
 
 請小心注意系統要求您輸入臨界值時所使用的單位。
 
-<bpt id="p1">*</bpt>I don't see the Add Alert button.<ept id="p1">*</ept> 我沒有看到 [新增警示] 按鈕 - 您只擁有此群組帳戶的唯讀權限嗎？ 請洽詢帳戶管理員。
+*我看不到 [新增警示] 按鈕。* 我沒有看到 [新增警示] 按鈕 - 您只擁有此群組帳戶的唯讀權限嗎？ 請洽詢帳戶管理員。
 
 ## <a name="diagnosis"></a>診斷問題
 以下是幾個尋找及診斷效能問題的訣竅：
@@ -134,7 +130,7 @@ HTTP 要求包括分頁、資料及映像的所有 GET 或 POST 要求。
 ![取得客戶/詳細資料，7 天範圍的時段中三個持續時間高峰](./media/web-monitor-performance/Performance30DayOveralllnsights.png)
 
 
-## <a name="next"></a>接續步驟
+## <a name="next"></a>後續步驟
 [Web 測試][availability]-將 web 要求定期傳送給您的應用程式，從世界各地開始。
 
 [捕捉及搜尋診斷追蹤][diagnostic]-插入追蹤呼叫並透過結果進行篩，以找出問題。

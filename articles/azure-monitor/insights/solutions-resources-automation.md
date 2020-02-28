@@ -1,19 +1,18 @@
 ---
 title: 管理解決方案中的 Azure 自動化資源 | Microsoft Docs
 description: 管理解決方案通常會在 Azure 自動化中包含 Runbook，以便自動執行一些程序，例如收集及處理監視資料。  本文說明如何在解決方案中包含 Runbook 與其相關資源。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/24/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d55af7354ea7d78263e55872e257a2814ebe4130
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8ef9f27546e9db95d5a41769e1b5bc7bc0c2f851
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75401810"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663057"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>將 Azure 自動化資源新增至管理解決方案 (預覽)
 > [!NOTE]
@@ -69,7 +68,7 @@ Azure 自動化中的所有資源都會包含在[自動化帳戶](../../automati
 
 下表會說明 Runbook 的屬性。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | runbookType |指定 Runbook 的類型。 <br><br> Script - PowerShell 指令碼 <br>PowerShell - PowerShell 工作流程 <br> GraphPowerShell - 圖形化 PowerShell 指令碼 Runbook <br> GraphPowerShellWorkflow - 圖形化 PowerShell 工作流程 Runbook |
 | logProgress |指定是否應針對 Runbook 產生[進度記錄](../../automation/automation-runbook-output-and-messages.md)。 |
@@ -105,7 +104,7 @@ Azure 自動化中的所有資源都會包含在[自動化帳戶](../../automati
 
 下表會說明自動化作業的屬性。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | Runbook |具有要啟動之 Runbook 名稱的單一名稱實體。 |
 | 參數 |Runbook 所需之每個參數值的實體。 |
@@ -136,7 +135,7 @@ Azure 自動化中的所有資源都會包含在[自動化帳戶](../../automati
 
 下表會說明憑證資源的屬性。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | base64Value |憑證的 Base 64 值。 |
 | thumbprint |憑證的指紋。 |
@@ -163,7 +162,7 @@ Azure 自動化中的所有資源都會包含在[自動化帳戶](../../automati
 
 下表會說明認證資源的屬性。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | userName |認證的使用者名稱。 |
 | 密碼 |認證的密碼。 |
@@ -191,12 +190,12 @@ Azure 自動化中的所有資源都會包含在[自動化帳戶](../../automati
 
 下表會說明排程資源的屬性。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | description |排程的選擇性說明。 |
 | startTime |將排程的開始時間指定為 DateTime 物件。 如果可以轉換成有效的 DateTime，即可提供字串。 |
 | isEnabled |指定是否啟用排程。 |
-| interval |排程的間隔類型。<br><br>day<br>小時 |
+| interval |排程的間隔類型。<br><br>day<br>hour |
 | frequency |應觸發排程的頻率 (以天數或時數為單位)。 |
 
 排程的開始時間值必須大於目前的時間。  您無法知道解決方案會在何時安裝，因此不能以變數來提供此值。
@@ -234,7 +233,7 @@ Azure 自動化中的所有資源都會包含在[自動化帳戶](../../automati
 
 下表會說明作業排程的屬性。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | 排程名稱 |包含排程名稱的單一**名稱**實體。 |
 | Runbook 名稱  |包含 Runbook 名稱的單一**名稱**實體。  |
@@ -261,24 +260,24 @@ Azure 自動化中的所有資源都會包含在[自動化帳戶](../../automati
 
 下表會說明變數資源的屬性。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | description | 變數的選擇性說明。 |
 | isEncrypted | 指定是否應加密變數。 |
-| type | 這個屬性目前沒有任何作用。  變數的資料類型將由初始值所決定。 |
-| value | 變數的值。 |
+| 類型 | 這個屬性目前沒有任何作用。  變數的資料類型將由初始值所決定。 |
+| 值 | 變數的值。 |
 
 > [!NOTE]
 > **type** 屬性目前不會影響所建立的變數。  變數的資料類型將由 value 所決定。  
 
 如果您設定變數的初始值，則必須將它設定為正確的資料類型。  下表提供允許的不同資料類型和其語法。  請注意，JSON 中的值應該一律要用引號括住，並以括號括住任何特殊字元。  例如，以括住字串的引號指定字串值 (使用逸出字元 (\\))，並以一組引號指定數值。
 
-| Data type | 說明 | 範例 | 解析成 |
+| 資料類型 | 描述 | 範例 | 解析成 |
 |:--|:--|:--|:--|
 | string   | 以雙引號括住值。  | "\"Hello world\"" | "Hello world" |
 | NUMERIC  | 以單引號括住數值。| "64" | 64 |
 | boolean  | 以引號括住 **true** 或 **false**。  請注意，此值必須是小寫。 | "true" | true |
-| Datetime | 序列化的日期值。<br>您可以在 PowerShell 中使用 ConvertTo-Json Cmdlet，以針對特定日期產生這個值。<br>範例：get-date "5/24/2017 13:14:57" \| ConvertTo-Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
+| datetime | 序列化的日期值。<br>您可以在 PowerShell 中使用 ConvertTo-Json Cmdlet，以針對特定日期產生這個值。<br>範例：get-date "5/24/2017 13:14:57" \| ConvertTo-Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
 
 ## <a name="modules"></a>模組
 您的管理解決方案不需定義您的 Runbook 所用的[全域模組](../../automation/automation-integration-modules.md)，因為您永遠可以在自動化帳戶中使用這些模組。  對於 Runbook 所使用的其他任何模組，您不需要包含其資源。
@@ -301,7 +300,7 @@ Azure 自動化中的所有資源都會包含在[自動化帳戶](../../automati
 
 下表會說明模組資源的屬性。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | contentLink |指定模組的內容。 <br><br>uri - 模組內容的 Uri。  這會是 PowerShell 和 Script Runbook 的 .ps1 檔案，以及 Graph Runbook 的已匯出圖形化 Runbook 檔案。  <br> 版本 - 自有追蹤的模組版本。 |
 
@@ -322,10 +321,10 @@ Runbook 應該相依於模組資源，以確保模組資源會比 Runbook 還早
 - Runbook。  這是儲存在公用 GitHub 儲存機制的 Runbook 範例。
 - 在安裝解決方案時會啟動 Runbook 的自動化作業。
 - 用來定期啟動 Runbook 的排程和作業排程。
-- 憑證。
+- 憑證
 - 認證。
 - 變數。
-- 模組。  這個 [OMSIngestionAPI 模組](https://www.powershellgallery.com/packages/OMSIngestionAPI/1.5)可用來將資料寫入 Log Analytics。 
+- Module。  這個 [OMSIngestionAPI 模組](https://www.powershellgallery.com/packages/OMSIngestionAPI/1.5)可用來將資料寫入 Log Analytics。 
 
 此範例會使用[標準的解決方案參數]( solutions-solution-file.md#parameters)變數，相對於資源定義中的硬式編碼值，這類變數常用於解決方案中。
 

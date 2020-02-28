@@ -1,18 +1,17 @@
 ---
 title: Log Analytics 資料安全性 | Microsoft Docs
 description: 深入了解 Log Analytics 如何保護您的隱私權和保護您的資料安全。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/04/2019
-ms.openlocfilehash: 4ad762cc3a7388628b7385afb07b45819ef882b5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0ac169060f7ba0e58aeb3e36e3af1629b6453fc1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363841"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667358"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics 資料安全性
 本文件旨在提供 Log Analytics (Azure 監視器的功能) 的特定資訊，以補充 [Azure 信任中心](../../security/fundamentals/trust-center.md)上的資訊。  
@@ -61,7 +60,7 @@ Log Analytics 服務會使用下列方法安全地管理您以雲端為基礎的
 | --- | --- |
 | 容量和效能 |效能資料和中繼資料 |
 | 更新管理 |中繼資料和狀態資料 |
-| 記錄管理 |使用者定義的事件記錄、Windows 事件記錄和/或 IIS 記錄 |
+| 記錄檔管理 |使用者定義的事件記錄、Windows 事件記錄和/或 IIS 記錄 |
 | 變更追蹤 |軟體清查、Windows 服務和 Linux 精靈中繼資料，以及 Windows/Linux 檔案中繼資料 |
 | SQL 和 Active Directory 評估 |WMI 資料、登錄資料、效能資料和 SQL Server 動態管理檢視結果 |
 
@@ -71,7 +70,7 @@ Log Analytics 服務會使用下列方法安全地管理您以雲端為基礎的
 | --- | --- |
 | 警示 |警示名稱、警示描述、BaseManagedEntityId、問題識別碼、IsMonitorAlert、RuleId、ResolutionState、優先順序、嚴重性、分類、擁有者、ResolvedBy、TimeRaised、TimeAdded、LastModified、LastModifiedBy、LastModifiedExceptRepeatCount、TimeResolved、TimeResolutionStateLastModified、TimeResolutionStateLastModifiedInDB、RepeatCount |
 | 組態 |CustomerID、AgentID、EntityID、ManagedTypeID、ManagedTypePropertyID、CurrentValue、ChangeDate |
-| 活動 |EventId、EventOriginalID、BaseManagedEntityInternalId、RuleId、PublisherId、PublisherName、FullNumber、Number、Category、ChannelLevel、LoggingComputer、EventData、EventParameters、TimeGenerated、TimeAdded <br>**注意：** 當您使用自訂欄位將事件寫入 Windows 事件記錄檔時，Log Analytics 會收集它們。 |
+| 事件 |EventId、EventOriginalID、BaseManagedEntityInternalId、RuleId、PublisherId、PublisherName、FullNumber、Number、Category、ChannelLevel、LoggingComputer、EventData、EventParameters、TimeGenerated、TimeAdded <br>**注意：** 當您使用自訂欄位將事件寫入 Windows 事件記錄檔時，Log Analytics 會收集它們。 |
 | 中繼資料 |BaseManagedEntityId、ObjectStatus、OrganizationalUnit、ActiveDirectoryObjectSid、PhysicalProcessors、NetworkName、IPAddress、ForestDNSName、NetbiosComputerName、VirtualMachineName、LastInventoryDate、HostServerNameIsVirtualMachine、IP 位址、NetbiosDomainName、LogicalProcessors、DNSName、DisplayName、DomainDnsName、ActiveDirectorySite、PrincipalName、OffsetInMinuteFromGreenwichTime |
 | 效能 |ObjectName、CounterName、PerfmonInstanceName、PerformanceDataId、PerformanceSourceInternalID、SampleValue、TimeSampled、TimeAdded |
 | 狀態 |StateChangeEventId、StateId、NewHealthState、OldHealthState、Context、TimeGenerated、TimeAdded、StateId2、BaseManagedEntityId、MonitorId、HealthState、LastModified、LastGreenAlertGenerated、DatabaseTimeModified |
@@ -151,7 +150,7 @@ Log Analytics 工作區是收集、彙總、分析以及呈現資料的位置。
 
 會收集 Log Analytics 資料的每個類型代理程式。 所收集的資料類型取決於使用的解決方案類型。 若要查看資料集合摘要，請參閱[從方案庫新增 Log Analytics 方案](../../azure-monitor/insights/solutions.md)。 此外，大部分方案都會有更詳細的集合資訊。 解決方案是預先定義的檢視、記錄搜尋查詢、資料收集規則，以及處理邏輯的組合。 只有系統管理員可以使用 Log Analytics 來匯入方案。 在匯入解決方案之後，便會移到 Operations Manager 管理伺服器 (如果使用的話)，然後移至您所選擇的代理程式。 之後，代理程式會收集資料。
 
-## <a name="2-send-data-from-agents"></a>2.從代理程式傳送資料
+## <a name="2-send-data-from-agents"></a>2. 從代理程式傳送資料
 您使用註冊金鑰來註冊所有類型的代理程式，而代理程式與 Log Analytics 服務之間會使用憑證型驗證和 SSL 在連接埠 443 建立安全的連線。 Log Analytics 會使用秘密存放區來產生及維護金鑰。 私密金鑰每 90 天會輪替一次，其儲存在 Azure 中，並由遵守嚴格法規與相容性作法的 Azure 作業人員管理。
 
 向 Log Analytics 工作區註冊的管理群組會透過 Operations Manager 來建立與 Operations Manager 管理伺服器的安全 HTTPS 連線。

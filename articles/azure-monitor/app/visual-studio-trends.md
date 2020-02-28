@@ -1,20 +1,18 @@
 ---
 title: 在 Visual Studio 中分析趨勢 | Microsoft Docs
 description: 在 Visual Studio 中分析、 視覺化及探索您的 Application Insights 遙測的趨勢。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 03/17/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
-ms.openlocfilehash: da1cd3ed9d07b1eb1304f6b26999af92d2704537
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: bb94d3596fde541f16edd1b7012f57b89ebf52eb
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899307"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670860"
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>在 Visual Studio 中分析趨勢 | Microsoft Azure
 「Application Insights 趨勢」工具會以視覺化方式呈現 Web 應用程式的重要遙測事件如何隨著時間變更，協助您快速識別問題和異常。 將您連結至更詳細的診斷資訊，「趨勢」可協助您改善應用程式效能、追蹤例外狀況的原因，以及揭露您的自訂事件情資。
@@ -71,7 +69,7 @@ Application Insights 趨勢會從您的應用程式的遙測建立時間序列�
 > 
 > 
 
-## <a name="filter"></a>Filter
+## <a name="filter"></a>篩選器
 使用視窗底部的篩選控制項，探索更明確的趨勢。 若要套用篩選器，請按一下其名稱。 您可以快速切換不同的篩選器，以探索可能隱藏在遙測的特定維度中的趨勢。 如果您在一個維度（如例外狀況類型）中套用篩選，則其他維度中的篩選仍可按點按，即使它們呈現為灰色。若要取消套用篩選準則，請再按一下一次。 按住 CTRL 鍵並按一下滑鼠，以選取相同維度中的多個篩選器。
 
 ![趨勢篩選器](./media/visual-studio-trends/TrendsFiltering-750.png)
@@ -97,7 +95,7 @@ Application Insights 趨勢會從您的應用程式的遙測建立時間序列�
 > 
 > 
 
-## <a name="next"></a>接續步驟
+## <a name="next"></a>後續步驟
 |  |  |
 | --- | --- |
 | **[在 Visual Studio 中使用 Application Insights](../../azure-monitor/app/visual-studio.md)**<br/>搜尋遙測、查看 CodeLens 中的資料，以及設定 Application Insights。 盡在 Visual Studio 中。 |![以滑鼠右鍵按一下專案，然後選擇 [Application Insights]、[搜尋]](./media/visual-studio-trends/34.png) |

@@ -1,19 +1,15 @@
 ---
 title: Azure 應用程式 Insights OpenCensus 本機轉寄站（預覽）
 description: 將 OpenCensus 分散式追蹤 (trace) 和跨度 (span) 從 Python 和 Go 等語言轉送給 Azure Application Insights
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 09/18/2018
 ms.reviewer: nimolnar
-ms.openlocfilehash: 25c6c82fa1179a9173f42c3a5a4e95a371dd49c6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bcf7ba495897eb1c9b40c78f00825e863390b5d1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406614"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669959"
 ---
 # <a name="local-forwarder-preview"></a>本機轉寄站（預覽）
 

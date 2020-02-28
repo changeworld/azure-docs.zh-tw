@@ -1,18 +1,17 @@
 ---
 title: Azure 監視器中的簡單記錄體驗（預覽） |Microsoft Docs
 description: 簡單的記錄體驗可讓您在 Azure 監視器中建立基本查詢，而不需要直接與 KQL 互動。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/12/2019
-ms.openlocfilehash: 0b8b23d5d355614bf74b1b22c6a8443b9a2f9391
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 59bcb42edaf7d46498a3514b4f1c919c6e8cc0c4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932979"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660252"
 ---
 # <a name="simple-logs-experience-in-azure-monitor-preview"></a>Azure 監視器中的簡單記錄體驗（預覽）
 Azure 監視器提供使用 KQL 語言建立[記錄查詢](log-query-overview.md)的[豐富體驗](get-started-portal.md)。 您可能不需要 KQL 的完整功能，而且偏好簡單的基本查詢需求體驗。 簡單的記錄體驗可讓您建立基本查詢，而不需要直接與 KQL 互動。 您也可以使用簡單記錄做為 KQL 的學習工具，因為您需要更複雜的查詢。
@@ -21,7 +20,7 @@ Azure 監視器提供使用 KQL 語言建立[記錄查詢](log-query-overview.md
 > 簡單的記錄檔目前只會實作為 Cosmos DB 和金鑰保存庫的測試。 請透過[User Voice](https://feedback.azure.com/forums/913690-azure-monitor)與 Microsoft 分享您的體驗，以協助我們判斷是否要擴充併發行這項功能。
 
 
-## <a name="scope"></a>Scope
+## <a name="scope"></a>範圍
 簡單的記錄體驗會從所選資源的*AzureDiagnostics*、 *AzureMetrics*和*AzureActivity*資料表中抓取資料。 
 
 ## <a name="using-simple-logs"></a>使用簡單記錄

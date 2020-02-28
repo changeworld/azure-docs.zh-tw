@@ -1,19 +1,15 @@
 ---
 title: Azure 應用程式 Insights 例外狀況遙測資料模型
 description: 例外狀況遙測的 Application Insights 資料模型
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 7decac2e5e65ff7eedb374858fe15360b4a1b2c5
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: fa9bc4efd9549cbcb1d50439989c5dea79d9d60c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872616"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671931"
 ---
 # <a name="exception-telemetry-application-insights-data-model"></a>例外狀況遙測：Application Insights 資料模型
 
@@ -25,7 +21,7 @@ ms.locfileid: "74872616"
 
 最大長度︰1024 個字元
 
-## <a name="severity-level"></a>嚴重性等級
+## <a name="severity-level"></a>嚴重性層級
 
 追蹤嚴重性層級。 值可為 `Verbose`、`Information`、`Warning`、`Error`、`Critical`。
 

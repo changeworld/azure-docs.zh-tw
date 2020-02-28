@@ -1,18 +1,17 @@
 ---
 title: Azure 監視器記錄查詢中的聯結 | Microsoft Docs
 description: 此文章包括在 Azure 監視器查詢語言中使用聯結的課程。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: f2880044e48e59d0d5f005f9772cdd0f807f7f29
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2dace6968fbbe69f806c27fb7a46e60c63f78b4f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75397819"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670197"
 ---
 # <a name="joins-in-azure-monitor-log-queries"></a>Azure 監視器記錄查詢中的聯結
 
@@ -80,16 +79,16 @@ SecurityEvent
 ## <a name="join-kinds"></a>聯結類型
 使用 _kind_ 引數指定聯結類型。 每種類型都會在給定資料表的記錄之間執行不同的比對，如下表所示。
 
-| 聯結類型 | 說明 |
+| 聯結類型 | 描述 |
 |:---|:---|
 | innerunique | 這是預設聯結模式。 首先，系統會找到左側資料表上的相符資料行，然後移除重複值。  接著，會和右側資料表比對唯一值集合。 |
-| inner | 只有兩個資料表中都有的相符記錄才會包含在結果中。 |
+| 內部 | 只有兩個資料表中都有的相符記錄才會包含在結果中。 |
 | leftouter | 左側資料表中的所有記錄與右側資料表中的相符記錄都會包括在結果中。 不相符的輸出屬性包含 Null。  |
 | leftanti | 來自左側且未與右側相符的記錄會包括在結果中。 結果資料表只有來自左側的資料行。 |
 | leftsemi | 來自左側且與右側相符的記錄會包括在結果中。 結果資料表只有來自左側的資料行。 |
 
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳作法
 
 為獲得最佳效能，請考慮以下各點：
 

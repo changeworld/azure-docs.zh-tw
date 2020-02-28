@@ -1,18 +1,17 @@
 ---
 title: 從 Windows Azure 診斷擴充功能將資料傳送至 Azure 事件中樞
 description: 在 Azure 監視器中設定診斷擴充功能，以將資料傳送至 Azure 事件中樞，讓您可以將其轉送至 Azure 外部的位置。
-ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/18/2020
-ms.openlocfilehash: 573a56c537e48687e310acff8639c50d0d0c6e3d
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 5e5034e99d37d3681192c2ad066f28acd1c4aeeb
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467958"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672526"
 ---
 # <a name="send-data-from-windows-azure-diagnostics-extension-to-azure-event-hubs"></a>從 Windows Azure 診斷擴充功能將資料傳送至 Azure 事件中樞
 Azure 診斷擴充功能是 Azure 監視器中的代理程式，會收集來自客體作業系統的監視資料，以及 Azure 虛擬機器和其他計算資源的工作負載。 本文說明如何將資料從 Windows Azure 診斷擴充功能（WAD）傳送至[Azure 事件中樞](https://azure.microsoft.com/services/event-hubs/)，讓您可以轉送到 Azure 外部的位置。
@@ -26,7 +25,7 @@ Azure 診斷擴充功能是 Azure 監視器中的代理程式，會收集來自�
 * Windows 事件記錄檔，包括 Windows 事件記錄檔中的應用程式記錄檔
 * Azure 診斷基礎結構記錄
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Windows 診斷擴充功能1.6 或更高版本。 請參閱[Azure 診斷延伸](diagnostics-extension-versions.md)模組設定架構版本和歷程記錄，以取得所支援資源的版本歷程記錄和[Azure 診斷延伸模組總覽](diagnostics-extension-overview.md)。
 * 必須一律布建事件中樞命名空間。 如需詳細資訊，請參閱[開始使用事件中樞](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)。

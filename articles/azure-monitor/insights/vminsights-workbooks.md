@@ -1,18 +1,17 @@
 ---
 title: 使用活頁簿建立互動式報表適用於 VM 的 Azure 監視器 |Microsoft Docs
 description: 使用適用於 VM 的 Azure 監視器的預先定義和自訂參數化活頁簿來簡化複雜的報表。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: b89e61f0c268df0ed6dd69ae1c6d97f00678fc32
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7ec24f1eca0b2cf1d5ea2c171573f7c5e47319af
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365915"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670660"
 ---
 # <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>使用活頁簿建立互動式報表適用於 VM 的 Azure 監視器
 
@@ -27,11 +26,11 @@ ms.locfileid: "75365915"
 
 適用於 VM 的 Azure 監視器包含數個可協助您開始使用的活頁簿，下表將摘要說明。
 
-| 活頁簿 | 說明 | 範圍 |
+| 活頁簿 | 描述 | 範圍 |
 |----------|-------------|-------|
 | 效能 | 在單一活頁簿中，提供一個可自訂的版本，其中包含您已啟用的所有 Log Analytics 效能計數器。| 大規模 |
 | 效能計數器 | 橫跨一組廣泛效能計數器的前 N 個圖表視圖。 | 大規模 |
-| 連線 | 連線可讓您深入瞭解來自受監視 Vm 的輸入和輸出連線。 | 大規模 |
+| 連接 | 連線可讓您深入瞭解來自受監視 Vm 的輸入和輸出連線。 | 大規模 |
 | 使用中的連接埠 | 提供已系結至受監視 Vm 上端口的處理常式清單，以及在所選時間範圍內的活動。 | 大規模 |
 | 開放連接埠 | 提供受監視 Vm 上開啟的埠數目，以及這些開放埠的詳細資料。 | 大規模 |
 | 失敗的連線 | 顯示受監視 Vm 上失敗的連線計數、失敗趨勢，以及失敗百分比在一段時間內增加的情況。 | 大規模 |
@@ -39,7 +38,7 @@ ms.locfileid: "75365915"
 | TCP 流量 | 受監視 Vm 的排名報表，以及其在方格中傳送、接收和總計的網路流量，並顯示為趨勢線。 | 大規模 |
 | 流量比較 | 此活頁簿可讓您比較單一電腦或一組電腦的網路流量趨勢。 | 大規模 |
 | 效能 | 提供我們的效能視圖可自訂版本，利用您已啟用的所有 Log Analytics 效能計數器。 | 單一 VM | 
-| 連線 | 連線可讓您深入瞭解 VM 中的輸入和輸出連線。 | 單一 VM |
+| 連接 | 連線可讓您深入瞭解 VM 中的輸入和輸出連線。 | 單一 VM |
  
 ## <a name="starting-with-a-template-or-saved-workbook"></a>以範本或是既有活頁簿為基礎
 

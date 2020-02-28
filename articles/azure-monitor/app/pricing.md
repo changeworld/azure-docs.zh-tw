@@ -1,19 +1,17 @@
 ---
 title: 管理 Azure Application Insights 的使用量和成本 | Microsoft Docs
 description: 在 Application Insights 中管理遙測量和監視成本。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: DaleKoetke
 ms.author: dalek
 ms.date: 11/27/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: b0a800a95d00e482b2342911111f43cfadb5a9c6
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f871dfa5bd3c1feb6a89fcff3fb9d95442e72986
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845632"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669772"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用量和成本
 
@@ -24,7 +22,7 @@ Application Insights 的設計，是為了取得監視 web 應用程式的可用
 
 如果您有關於 Application Insights 定價運作方式的疑問，請在我們的[論壇](https://social.msdn.microsoft.com/Forums/home?forum=ApplicationInsights&filter=alltypes&sort=lastpostdesc)中張貼問題。
 
-## <a name="pricing-model"></a>計價模式
+## <a name="pricing-model"></a>定價模式
 
 [Azure 應用程式 Insights][start]的定價是以資料量內嵌為基礎的**隨用隨付**模型，並可選擇性地保留較長的資料。 每項 Application Insights 資源都是個別計費的服務，並且會計入到您的 Azure 訂用帳戶帳單。 資料量是以 Application Insights 從應用程式接收的未壓縮 JSON 資料套件大小來測量。 使用[即時計量資料流](../../azure-monitor/app/live-stream.md)並不會產生任何資料量費用。
 
@@ -197,7 +195,7 @@ Azure 在[Azure 成本管理 + 計費](https://docs.microsoft.com/azure/cost-man
 
 ## <a name="change-the-data-retention-period"></a>變更資料保留期
 
-Application Insights 資源的預設保留期為90天。 您可為每項 Application Insights 資源選取不同的保留期間。 一組完整的可用保留週期為30、60、90、120、180、270、365、550或730天。 
+Application Insights 資源的預設保留期為90天。 可以為每個 Application Insights 資源選取不同的保留週期。 一組完整的可用保留週期為30、60、90、120、180、270、365、550或730天。 
 
 若要變更保留期，請在 Application Insights 資源中，移至 [**使用量和估計成本**] 頁面，然後選取 [**資料保留**] 選項：
 
@@ -255,7 +253,7 @@ Application Insights 資源的預設保留期為90天。 您可為每項 Applica
 
 ### <a name="examples-of-how-to-determine-distinct-node-count"></a>如何判斷相異節點計數的範例
 
-| 案例                               | 每日節點總數 |
+| 狀況                               | 每日節點總數 |
 |:---------------------------------------|:----------------:|
 | 1 個應用程式使用 3 個 Azure App Service 執行個體和 1 個虛擬伺服器 | 4 |
 | 3個在2部 Vm 上執行的應用程式;這些應用程式的 Application Insights 資源位於相同的訂用帳戶中，且位於每個節點層 | 2 | 

@@ -3,17 +3,16 @@ title: 匯出 Azure 活動記錄
 description: 將 Azure 活動記錄檔匯出至儲存體，以便在 Azure 外部匯出或 Azure 事件中樞進行封存。
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 1c2047fc4b92ecd5776cb835a2f2138c25f5cb65
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: edaa585ffb3448a80b021aa924a9d654ac829931
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845460"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668956"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>將 Azure 活動記錄匯出至儲存體或 Azure 事件中樞
 
@@ -41,7 +40,7 @@ ms.locfileid: "76845460"
 > [!TIP]
 > 請參閱[設定 Azure 儲存體防火牆和虛擬網路](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)，以在受保護的虛擬網路後方提供儲存體帳戶的存取權。
 
-### <a name="event-hubs"></a>事件中樞
+### <a name="event-hubs"></a>事件中心
 如果您要將活動記錄傳送至事件中樞，則需要[建立事件中樞](../../event-hubs/event-hubs-create.md)（如果還沒有的話）。 如果您先前已將活動記錄事件串流至此事件中樞命名空間，則會重複使用該事件中樞。
 
 共用存取原則會定義串流機制具有的權限。 串流至事件中樞需要 [管理]、[傳送] 和 [接聽] 許可權。 您可以在事件中樞命名空間的 [設定] 索引標籤下，為 Azure 入口網站中的事件中樞命名空間建立或修改共用存取原則。
@@ -118,7 +117,7 @@ ms.locfileid: "76845460"
     Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
     ```
 
-    | 屬性 | 必要項 | 說明 |
+    | 屬性 | 必要項 | 描述 |
     | --- | --- | --- |
     | 名稱 |是 |記錄檔設定檔的名稱。 |
     | StorageAccountId |否 |應儲存活動記錄之儲存體帳戶的資源識別碼。 |
@@ -161,14 +160,14 @@ ms.locfileid: "76845460"
    az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --service-bus-rule-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUB NAME SPACE>/authorizationrules/RootManageSharedAccessKey"
    ```
 
-    | 屬性 | 必要項 | 說明 |
+    | 屬性 | 必要項 | 描述 |
     | --- | --- | --- |
-    | NAME |是 |記錄檔設定檔的名稱。 |
+    | 名稱 |是 |記錄檔設定檔的名稱。 |
     | storage-account-id |是 |資源識別碼，活動記錄應該要儲存至此儲存體帳戶。 |
     | 位置 |是 |以空格分隔的區域清單，其中列出您要收集的活動記錄事件的區域。 您可以使用 `az account list-locations --query [].name` 來檢視您訂用帳戶的所有區域清單。 |
-    | days |是 |應保留事件的天數，介於1到365之間。 值為 0 會無限期地 (永遠) 儲存記錄。  如果為零，則已啟用的參數應該設定為 false。 |
+    | 天 |是 |應保留事件的天數，介於1到365之間。 值為 0 會無限期地 (永遠) 儲存記錄。  如果為零，則已啟用的參數應該設定為 false。 |
     |已啟用 | 是 |True 或 False。  用來啟用或停用保留原則。  如果為 True，則 days 參數必須是大於 0 的值。
-    | categories |是 |以空格分隔的類別清單，其中列出應收集的事件類別。 可能的值有 Write、Delete、Action。 |
+    | 分類 |是 |以空格分隔的類別清單，其中列出應收集的事件類別。 可能的值有 Write、Delete、Action。 |
 
 
 

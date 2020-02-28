@@ -1,18 +1,17 @@
 ---
 title: 在 Azure 監視器中收集 Linux 應用程式效能 | Microsoft Docs
 description: 本文詳細說明如何設定適用於 Linux 的 Log Analytics 代理程式，以收集 MySQL 和 Apache HTTP Server 的效能計數器。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2017
-ms.openlocfilehash: 75fd0453534e3a656bb1d8e2940b716dadfdf869
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2fd148dbb85a4fd60fe63d4fb73128bf92dea1d8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75395840"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670554"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>在 Azure 監視器中收集 Linux 應用程式的效能計數器 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -42,7 +41,7 @@ MySQL 驗證檔案儲存在 `/var/opt/microsoft/mysql-cimprov/auth/omsagent/mysq
 
 下表說明驗證檔案中的項目。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--|:--|
 | Port | 代表 MySQL 執行個體目前正在接聽的連接埠。 連接埠 0 指定後面的屬性用於預設執行個體。 |
 | 繫結位址| 目前的 MySQL 繫結位址。 |
@@ -55,7 +54,7 @@ MySQL OMI 驗證檔案可以定義預設執行個體和連接埠號碼，讓您�
 
 下表提供執行個體設定範例 
 
-| 說明 | 檔案 |
+| 描述 | 檔案 |
 |:--|:--|
 | 預設執行個體和連接埠為 3308 的執行個體。 | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=, ,`<br>`AutoUpdate=true` |
 | 預設執行個體，以及連接埠為 3308 且具有不同使用者名稱密碼的執行個體。 | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=127.0.1.1, myuser2,cGluaGVhZA==`<br>`AutoUpdate=true` |
@@ -71,12 +70,12 @@ MySQL OMI 驗證檔案可以定義預設執行個體和連接埠號碼，讓您�
 
 下表提供使用 mycimprovauth 語法的詳細資料。
 
-| 作業 | 範例 | 說明
+| 作業 | 範例 | 描述
 |:--|:--|:--|
 | autoupdate *false or true* | mycimprovauth autoupdate false | 設定是否在重新啟動或更新時自動更新驗證檔案。 |
 | default *bind-address username password* | mycimprovauth default 127.0.0.1 root pwd | 在 MySQL OMI 驗證檔案中設定預設執行個體。<br>應以純文字輸入 password 欄位 - MySQL OMI 驗證檔案中的密碼將會以 Base 64 編碼。 |
 | delete *default or port_num* | mycimprovauth 3308 | 依預設值或依連接埠號碼刪除指定的執行個體。 |
-| help | mycimprov help | 印出可使用的命令清單。 |
+| 說明 | mycimprov help | 印出可使用的命令清單。 |
 | print | mycimprov print | 印出方便閱讀的 MySQL OMI 驗證檔案。 |
 | update port_num *bind-address username password* | mycimprov update 3307 127.0.0.1 root pwd | 更新指定的執行個體，而如果不存在，則新增執行個體。 |
 
@@ -112,11 +111,11 @@ MySQL 使用者需要下列預設資料表的 SELECT 存取權。
 
 | 物件名稱 | 計數器名稱 |
 |:--|:--|
-| MySQL 資料庫 | Disk Space in Bytes |
-| MySQL 資料庫 | 資料表 |
+| MySQL Database | Disk Space in Bytes |
+| MySQL Database | 資料表 |
 | MySQL Server | Aborted Connection Pct |
 | MySQL Server | Connection Use Pct |
-| MySQL Server | Disk Space in Bytes |
+| MySQL Server | Disk Space Use in Bytes |
 | MySQL Server | Full Table Scan Pct |
 | MySQL Server | InnoDB Buffer Pool Hit Pct |
 | MySQL Server | InnoDB Buffer Pool Use Pct |

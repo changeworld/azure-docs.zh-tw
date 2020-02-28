@@ -3,17 +3,16 @@ title: 使用範本在 Azure 監視器中收集 Windows 擴展集計量
 description: 使用 Windows 虛擬機器擴展集的 Resource Manager 範本將客體作業系統計量傳送至 Azure 監視器計量存放區
 author: anirudhcavale
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: ec9f7ecf218b635588065c14bd4d11283d027c11
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 24f83e4f6285d045e67bdaef431ebcff2345ef84
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364079"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663887"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>使用 Windows 虛擬機器擴展集的 Azure Resource Manager 範本將客體作業系統計量傳送至 Azure 監視器計量存放區
 
@@ -286,7 +285,7 @@ MSI 擴充功能中的下列程式碼也可以將診斷擴充功能與設定作�
 
 1. 在 [命名空間] 下拉式功能表中，選取 **azure.vm.windows.guest**。 
 
-1. 在 [計量] 下拉式功能表中，選取 [記憶體\%認可的位元組 (使用中)\]。  
+1. 在 [計量] 下拉式功能表中，選取 [記憶體**認可的位元組 (使用中)\]\%** 。  
 
 接著，您也可以選擇使用這個計量上的維度，為特定 VM 繪製圖表，或對擴展集中的每個 VM 繪製圖表。 
 

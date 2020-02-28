@@ -1,18 +1,17 @@
 ---
 title: 使用 Azure 監視器最佳化 Active Directory 環境 | Microsoft Docs
 description: 您可以使用 Active Directory 健康情況檢查方案定期評估環境的風險和健全狀況。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/10/2019
-ms.openlocfilehash: 1e97ce1655ae35f4986a915a382d456bb8d2ce4b
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 57c474c8391168702154b71e0c454253ab921dc1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167837"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667222"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>在 Azure 監視器中使用 Active Directory 健康情況檢查解決方案來最佳化 Active Directory 環境
 
@@ -60,7 +59,7 @@ Active Directory 健康情況檢查會使用您已啟用的代理程式，從下
 - 登錄
 - LDAP
 - .NET Framework
-- 事件記錄檔
+- 事件日誌
 - Active Directory 服務介面 (ADSI)
 - Windows PowerShell
 - 檔案資料
@@ -80,8 +79,8 @@ Active Directory 健康情況檢查會使用您已啟用的代理程式，從下
 加權是彙集以下三個重要因素的值：
 
 * 識別之疑難引發問題的機率。 機率較高等同於建議的整體分數較高。
-* 疑難對組織的 *影響力* (如果確實引發問題)。 影響力較高等同於建議的整體分數較高。
-* 實作建議所需的 *勞力* 。 勞力較高等同於建議的整體分數較低。
+* 如果確實發生問題，則問題對您組織的*影響*。 影響力較高等同於建議的整體分數較高。
+* 實作建議需要付出的*努力*。 勞力較高等同於建議的整體分數較低。
 
 每項建議之加權的表示採用每個焦點區域之總分的百分比。 例如，如果針對安全性和法務遵循焦點區域之建議的分數為 5%，代表實作該項建議能增加 5% 的安全性和法務遵循整體分數。
 
@@ -97,7 +96,7 @@ Active Directory 健康情況檢查會使用您已啟用的代理程式，從下
 
 ### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>我應該為每個焦點區域訂定 100% 的分數嗎？
 
-不盡然。 建議乃源自 Microsoft 工程師上千次客戶拜訪所得到的知識和經驗。 然而，世界上沒有兩個一模一樣的伺服器基礎結構，因此特定建議與您的關聯性可能會有所增減。 例如，如果您的虛擬機器並未暴露在網際網路中，某些安全性建議的關聯性就會降低。 對於提供低優先順序臨機操作資料收集和報告的服務來說，某些可用性建議的關聯性就會降低。 會對成熟企業造成重大影響的問題，不見得會對新公司造成同等嚴重的影響。 因此，建議您先找出自己的優先焦點區域，然後觀察一段時間內的分數變化。
+不一定。 建議乃源自 Microsoft 工程師上千次客戶拜訪所得到的知識和經驗。 然而，世界上沒有兩個一模一樣的伺服器基礎結構，因此特定建議與您的關聯性可能會有所增減。 例如，如果您的虛擬機器並未暴露在網際網路中，某些安全性建議的關聯性就會降低。 對於提供低優先順序臨機操作資料收集和報告的服務來說，某些可用性建議的關聯性就會降低。 會對成熟企業造成重大影響的問題，不見得會對新公司造成同等嚴重的影響。 因此，建議您先找出自己的優先焦點區域，然後觀察一段時間內的分數變化。
 
 每項建議都包含其重要性的指引。 在已知 IT 服務之本質和組織之商務需求的情況下，您應使用該指引來評估實作建議的適當性。
 
@@ -119,7 +118,7 @@ Active Directory 健康情況檢查會使用您已啟用的代理程式，從下
 
     ![健全狀況檢查建議的影像](./media/ad-assessment/ad-healthcheck-dashboard-02.png)
 
-4. 您可以採取 [建議動作] 中所建議的更正動作。 當您解決某個項目後，後續評估會記錄您實施的建議動作並提高法務遵循分數。 更正後的項目將以**通過的物件**呈現。
+4. 您可以採取 [建議動作] 中所建議的更正動作。 當您解決某個項目後，後續評估會記錄您實施的建議動作並提高法務遵循分數。 已修正的項目將顯示為 [傳遞的物件]。
 
 ## <a name="ignore-recommendations"></a>忽略建議
 
@@ -169,7 +168,7 @@ ADAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Co
 
 *AD 評定解決方案會執行哪些檢查？*
 
-* 下列查詢會顯示目前執行的所有檢查的描述：
+* 下列查詢顯示目前執行的所有檢查的描述：
 
 ```Kusto
 ADAssessmentRecommendation
@@ -184,7 +183,7 @@ ADAssessmentRecommendation
 
 *是否有設定健康情況檢查執行頻率的方法？*
 
-* 目前不是。
+* 目前沒有。
 
 *如果我在加入健康情況檢查方案後探索到另一部伺服器，方案也會檢查這部伺服器嗎？*
 
@@ -204,7 +203,7 @@ ADAssessmentRecommendation
 
 *是否有設定資料收集時間的方法？*
 
-* 目前不是。
+* 目前沒有。
 
 *為什麼只顯示前 10 項建議？*
 

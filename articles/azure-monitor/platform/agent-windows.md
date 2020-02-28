@@ -1,18 +1,17 @@
 ---
 title: 將 Windows 電腦連接到 Azure 監視器 |Microsoft Docs
 description: 本文說明如何將裝載于其他雲端或內部部署環境的 Windows 電腦，與適用于 Windows 的 Log Analytics 代理程式連線 Azure 監視器。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: 8918c18c9356c583b9ea23138f0d0a0fb4dcd845
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 21efb16cf519d4bcad520af1c7d8818f36a77218
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689985"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668633"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>將 Windows 電腦連線至 Azure 監視器
 
@@ -72,12 +71,12 @@ ms.locfileid: "75689985"
 
 1. 在 Log Analyics 工作區中，從您稍早瀏覽的 [Windows 伺服器] 頁面，根據 Windows 作業系統的處理器架構，選取適當的 [下載 Windows 代理程式] 版本來下載。   
 2. 執行安裝程式以在您的電腦上安裝代理程式。
-2. 在 [歡迎] 頁面中按 [下一步]。
+2. 在 [歡迎] 頁面上，按 [下一步]。
 3. 閱讀 [授權條款] 頁面上的授權，然後按一下 [我接受]。
 4. 在 [目的資料夾] 頁面上，變更或保留預設的安裝資料夾，然後按 [下一步]。
 5. 在 [代理程式安裝選項] 頁面上，選擇將代理程式連線到 Azure Log Analytics，然後按 [下一步]。   
 6. 在 [Azure Log Analytics] 頁面上，執行下列操作：
-   1. 貼上您先前複製的**工作區識別碼**和**工作區金鑰 (主要金鑰)** 。  如果電腦應該向 Azure Government Cloud 中的 Log Analytics 工作區回報，請從 [Azure 雲端] 下拉式清單中選取 [Azure 美國政府]。  
+   1. 貼上您先前複製的**工作區識別碼**和**工作區金鑰 (主要金鑰)** 。  如果電腦應該向 Azure Government Cloud 中的 Log Analytics 工作區回報，請從 [Azure 雲端] 下拉式清單中選取 [Azure US Gov]。  
    2. 如果電腦需要透過 Proxy 伺服器與 Log Analytics 服務進行通訊，請按一下 [進階]，然後提供 Proxy 伺服器的 URL 和連接埠號碼。  如果您的 Proxy 伺服器會要求驗證，請輸入要向 Proxy 伺服器進行驗證的使用者名稱和密碼，然後按 [下一步]。  
 7. 提供完必要的組態設定之後，按 [下一步]。<br><br> ![貼上工作區識別碼和主索引鍵](media/agent-windows/log-analytics-mma-setup-laworkspace.png)<br><br>
 8. 在 [安裝準備就緒] 頁面上，檢閱您的選擇，然後按一下 [安裝]。
@@ -93,7 +92,7 @@ ms.locfileid: "75689985"
 
 下表特別列出代理程式安裝支援的特定參數，包括使用 Automation DSC 部署時的參數。
 
-|MMA 專屬選項                   |注意         |
+|MMA 專屬選項                   |注意事項         |
 |---------------------------------------|--------------|
 | NOAPM=1                               | 選擇性參數。 安裝代理程式但不包括 .NET 應用程式效能監控。|   
 |ADD_OPINSIGHTS_WORKSPACE               | 1 = 將代理程式設定為向工作區報告                |
@@ -132,7 +131,7 @@ ms.locfileid: "75689985"
 >[!NOTE]
 >此程序和指令碼範例不支援將已部署到 Windows 電腦的代理程式升級。
 
-代理程式套件的 32 位元和 64 位元版本具有不同的產品代碼，新發行的版本也都會有唯一代碼值。  產品代碼是唯一識別碼，為應用程式或產品的主要識別，在 Windows 安裝程式中以 **ProductCode** 屬性表示。  **MMAgent.ps1** 指令碼中的 `ProductId` 值必須符合 32 位元或 64 位元代理程式安裝程式套件的產品代碼。
+代理程式套件的 32 位元和 64 位元版本具有不同的產品代碼，新發行的版本也都會有唯一代碼值。  產品代碼是唯一識別碼，為應用程式或產品的主要識別，在 Windows 安裝程式中以 **ProductCode** 屬性表示。  `ProductId`MMAgent.ps1**指令碼中的** 值必須符合 32 位元或 64 位元代理程式安裝程式套件的產品代碼。
 
 若要直接從代理程式安裝套件擷取產品代碼，您可以使用[適用於 Windows Installer 開發人員的 Windows SDK 元件](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx) (Windows 軟體開發套件的元件之一) 中的 Orca.exe，或依循 Microsoft Valuable Professional (MVP) 撰寫的[範例指令碼](https://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/)使用 PowerShell。  針對任一方法，您都必須先從 MMASetup 安裝套件擷取 **MOMagent.msi** 檔案。  這在前面[使用命令列安裝代理程式](#install-the-agent-using-the-command-line)一節底下的第一個步驟中有所敘述。  
 

@@ -1,18 +1,14 @@
 ---
 title: 自訂事件和度量的 Application Insights API | Microsoft Docs
 description: 在您的裝置或桌面應用程式、網頁或服務中插入幾行程式碼，來追蹤使用狀況及診斷問題。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 03/27/2019
-ms.openlocfilehash: 2136ab9a6d0cef7ad5650c8414f9a17b78498abc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 74736966013581296483d1444f4ab2b8a35bbd98
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432675"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666491"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>自訂事件和度量的 Application Insights API
 
@@ -146,7 +142,7 @@ telemetry.trackEvent({name: "WinGame"});
 
 ### <a name="custom-events-in-analytics"></a>分析中的自訂事件
 
-[Application Insights 分析](analytics.md)的 `customEvents` 資料表中有提供遙測資料。 每個資料列各代表應用程式中的一個 `trackEvent(..)` 呼叫。
+`customEvents`Application Insights 分析[的 ](analytics.md) 資料表中有提供遙測資料。 每個資料列各代表應用程式中的一個 `trackEvent(..)` 呼叫。
 
 如果[取樣](../../azure-monitor/app/sampling.md)運作中，itemCount 屬性會顯示大於 1 的值。 例如，itemCount==10 表示在 trackEvent() 的 10 個呼叫中，取樣處理序只會傳輸其中一個。 若要取得自訂事件的正確計數，您應該使用如 `customEvents | summarize sum(itemCount)`的程式碼。
 
@@ -250,7 +246,7 @@ Application Insights 可以將未附加至特定事件的計量繪製成圖表�
 
 * 單一值： 每次在應用程式中執行一個測量，都會將對應值傳送至 Application Insights。 例如，假設您有一個描述容器中項目數的計量。 在特定期間內，您先將 3 個項目放入容器中，再移除 2 個項目。 因此，您會呼叫 `TrackMetric` 兩次：先傳遞值 `3`，再傳遞值 `-2`。 Application Insights 會代替您儲存這兩個值。
 
-* 彙總： 使用計量時，每個單一測量並不重要。 相反地，在特定期間內發生的狀況摘要才重要。 這類摘要稱為_彙總_。 在上述範例中，該期間的彙總計量總和為 `1`，而計量值的計數為 `2`。 使用彙總方法時，您只會在每段期間叫用 `TrackMetric` 一次，並傳送彙總值。 這是建議的方法，因為它可以藉由傳送較少資料點至 Application Insights，同時仍收集所有相關資訊，來大幅降低成本和效能負擔。
+* 彙總。 使用計量時，每個單一測量並不重要。 相反地，在特定期間內發生的狀況摘要才重要。 這類摘要稱為_彙總_。 在上述範例中，該期間的彙總計量總和為 `1`，而計量值的計數為 `2`。 使用彙總方法時，您只會在每段期間叫用 `TrackMetric` 一次，並傳送彙總值。 這是建議的方法，因為它可以藉由傳送較少資料點至 Application Insights，同時仍收集所有相關資訊，來大幅降低成本和效能負擔。
 
 ### <a name="examples"></a>範例
 
@@ -287,7 +283,7 @@ telemetry.trackMetric({name: "queueLength", value: 42.0});
 
 ### <a name="custom-metrics-in-analytics"></a>Analytics 中的自訂計量
 
-[Application Insights 分析](analytics.md)的 `customMetrics` 資料表中有提供遙測資料。 每個資料列各代表應用程式中的一個 `trackMetric(..)` 呼叫。
+`customMetrics`Application Insights 分析[的 ](analytics.md) 資料表中有提供遙測資料。 每個資料列各代表應用程式中的一個 `trackMetric(..)` 呼叫。
 
 * `valueSum` - 這是測量結果的總和。 若要取得平均值，請將它除以 `valueCount`。
 * `valueCount` - 彙總到這個 `trackMetric(..)` 呼叫的測量數目。
@@ -522,7 +518,7 @@ exceptions
 | summarize sum(itemCount) by type
 ```
 
-大多數重要堆疊資訊已擷取到不同的變數中，但您可以拉開 `details` 結構以取得更多資訊。 由於這是動態結構，因此您應該將結果轉換成預期的類型。 例如：
+大多數重要堆疊資訊已擷取到不同的變數中，但您可以拉開 `details` 結構以取得更多資訊。 由於這是動態結構，因此您應該將結果轉換成預期的類型。 例如，
 
 ```kusto
 exceptions
@@ -574,7 +570,7 @@ trackTrace(message: string, properties?: {[string]:string}, severityLevel?: Seve
 
 記錄診斷事件，例如進入或離開某個方法。
 
- 參數 | 說明
+ 參數 | 描述
 ---|---
 `message` | 診斷資料。 可以比名稱長很多。
 `properties` | 字串與字串的對應：用來在入口網站中[篩選例外](https://azure.microsoft.com/documentation/articles/app-insights-api-custom-events-metrics/#properties)狀況的其他資料。 預設為空白。
@@ -585,7 +581,7 @@ trackTrace(message: string, properties?: {[string]:string}, severityLevel?: Seve
 `message` 上的大小限制比屬性上的限制高得多。
 TrackTrace 的優點在於您可以將較長的資料放在訊息中。 例如，您可以在該處編碼 POST 資料。  
 
-此外，您可以在訊息中新增嚴重性層級。 就像其他遙測一樣，您可以新增屬性值以供協助篩選或搜尋不同的追蹤集。 例如：
+此外，您可以在訊息中新增嚴重性層級。 就像其他遙測一樣，您可以新增屬性值以供協助篩選或搜尋不同的追蹤集。 例如，
 
 *C#*
 
@@ -733,7 +729,7 @@ telemetry.flush();
 
 在理想情況下，flush() 方法應該用於應用程式的關閉活動。
 
-## <a name="authenticated-users"></a>驗證的使用者
+## <a name="authenticated-users"></a>Authenticated Users
 
 在 Web 應用程式中，預設是透過 Cookie 來識別使用者。 如果使用者從不同的電腦或瀏覽器存取您的 app 或刪除 Cookie，就可能多次計算他們。
 
@@ -868,7 +864,7 @@ telemetry.trackEvent("WinGame", properties, metrics);
 ```
 
 > [!NOTE]
-> 切勿在屬性中記錄個人識別資訊。
+> 務必小心，不要在屬性中記錄可識別個人身分的資訊。
 >
 >
 
@@ -1011,13 +1007,13 @@ gameTelemetry.TrackEvent({name: "WinGame"});
 
 您可以撰寫程式碼，在從 SDK 傳送遙測資料前加以處理。 處理包括從標準遙測模組 (如 HTTP 要求收集和相依性收集) 的資料。
 
-實作 `ITelemetryInitializer` 以[屬性](../../azure-monitor/app/api-filtering-sampling.md#add-properties)至遙測資料。 例如，您可以新增版本號碼或從其他屬性計算得出的值。
+實作 [ 以](../../azure-monitor/app/api-filtering-sampling.md#add-properties)屬性`ITelemetryInitializer`至遙測資料。 例如，您可以新增版本號碼或從其他屬性計算得出的值。
 
 [篩選](../../azure-monitor/app/api-filtering-sampling.md#filtering)可以先修改或捨棄遙測，再藉由實作 `ITelemetryProcessor` 從 SDK 傳送遙測。 您可控制要傳送或捨棄的項目，但是您必須考量這對您的度量的影響。 視您捨棄項目的方式而定，您可能會喪失在相關項目之間瀏覽的能力。
 
 [取樣](../../azure-monitor/app/api-filtering-sampling.md)是減少從應用程式傳送至入口網站的資料量的套件方案。 它在這麼做時並不會影響顯示的度量。 而且它在這麼做時可藉由在相關項目 (如例外狀況、要求和頁面檢視) 之間瀏覽，而不會影響您診斷問題的能力。
 
-[深入了解](../../azure-monitor/app/api-filtering-sampling.md)。
+[詳細資訊](../../azure-monitor/app/api-filtering-sampling.md)。
 
 ## <a name="disabling-telemetry"></a>停用遙測
 
@@ -1148,7 +1144,7 @@ var appInsights = window.appInsights || function(config){ ...
 
 ## <a name="telemetrycontext"></a>TelemetryContext
 
-TelemetryClient 具有內容屬性，其中包含與所有遙測資料一起傳送的值。 它們通常由標準遙測模組設定，但是您也可以自行設定它們。 例如：
+TelemetryClient 具有內容屬性，其中包含與所有遙測資料一起傳送的值。 它們通常由標準遙測模組設定，但是您也可以自行設定它們。 例如，
 
 ```csharp
 telemetry.Context.Operation.Name = "MyOperationName";
@@ -1197,7 +1193,7 @@ telemetry.Context.Operation.Name = "MyOperationName";
 
 * *Track_() 呼叫會擲回什麼例外狀況？*
 
-    無。 您不需要將它們包裝在 try-catch 子句中。 如果 SDK 發生問題，它會在偵錯主控台輸出以及 (若訊息得以傳輸過去) 診斷搜尋中記錄訊息。
+    None。 您不需要將它們包裝在 try-catch 子句中。 如果 SDK 發生問題，它會在偵錯主控台輸出以及 (若訊息得以傳輸過去) 診斷搜尋中記錄訊息。
 * *是否有 REST API 可供從入口網站中取得資料？*
 
     是，[資料存取 API](https://dev.applicationinsights.io/)。 其他擷取資料的方法包括[從分析匯出至 Power BI](../../azure-monitor/app/export-power-bi.md ) 和[連續匯出](../../azure-monitor/app/export-telemetry.md)。

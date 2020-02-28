@@ -1,18 +1,17 @@
 ---
 title: 使用 Microsoft Flow 自動化 Azure 監視器記錄流程
 description: 了解如何利用 Azure Log Analytics Connector，使用 Microsoft Flow 來快速自動化可重複的程序。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/29/2017
-ms.openlocfilehash: a6097d38d3335be356ca75f5a9d0eadeed414b03
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 92f0d2916b0f28760f7d028ee3e6dc0be37c32d2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77166942"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672305"
 ---
 # <a name="automate-azure-monitor-log-processes-with-the-connector-for-microsoft-flow"></a>使用 Microsoft Flow 的連接器自動化 Azure 監視器記錄流程
 [Microsoft Flow](https://ms.flow.microsoft.com) 可讓您使用數百個動作建立各種不同服務的自動化工作流程。 從一個動作的輸出可用來作為另一個動作的輸入，讓您建立不同服務之間的整合。  適用於 Microsoft Flow 的 Azure Log Analytics 連接器可讓您建立工作流程，包含 Azure 監視器中的 Log Analytics 工作區之中的記錄搜尋所擷取的資料。

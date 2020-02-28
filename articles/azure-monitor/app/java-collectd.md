@@ -1,18 +1,14 @@
 ---
 title: 監視 Linux - Azure 上的 Java Web 應用程式效能 | Microsoft Docs
 description: 使用 Application Insights 的 CollectD 外掛程式擴充您的 Java 網站的應用程式效能監視功能。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 03/14/2019
-ms.openlocfilehash: 47e5e9dd81174b79e149ba29eec725c8c17eb1a6
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 687f97c305bffdfb408feb314ccded4f93ac574a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176400"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660728"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd：Application Insights 中的 Linux 效能計量
 
@@ -21,7 +17,7 @@ ms.locfileid: "73176400"
 
 如果您已使用[Application Insights 檢測 JAVA web 服務][java]，通常會使用 collectd。 提供給您更多資料來幫助您增強應用程式的效能或診斷問題。 
 
-## <a name="get-your-instrumentation-key"></a>取得檢測金鑰
+## <a name="get-your-instrumentation-key"></a>取得檢測設備機碼
 在 [Microsoft Azure 入口網站](https://portal.azure.com)中，開啟您要顯示資料的 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 資源。 (或[建立新的資源](../../azure-monitor/app/create-new-resource.md )。)
 
 取得一份可識別資源的檢測金鑰。
@@ -98,14 +94,14 @@ ms.locfileid: "73176400"
 * 編輯組態檔。 
 * 在 `<Plugin ApplicationInsightsWriter>`中，加入指示詞行，如下所示：
 
-| 指示詞 | 影響 |
+| Directive | 效果 |
 | --- | --- |
 | `Exclude disk` |排除 `disk` 外掛程式所收集的所有資料 |
-| `Exclude disk:read,write` |排除來自 `disk` 外掛程式名為 `read` 和 `write` 的來源。 |
+| `Exclude disk:read,write` |排除來自 `read` 外掛程式名為 `write` 和 `disk` 的來源。 |
 
 以新行分隔個別指示詞。
 
-## <a name="problems"></a>有問題？
+## <a name="problems"></a>有問題嗎？
 *我在入口網站中看不到任何資料*
 
 * 開啟 [[搜尋][diagnostic]]，以查看原始事件是否已抵達。 有時需要較長的時間才會在計量瀏覽器中顯示。

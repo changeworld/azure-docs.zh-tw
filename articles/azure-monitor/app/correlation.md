@@ -1,19 +1,17 @@
 ---
 title: Application Insights 遙測相互關聯 | Microsoft Docs
 description: Application Insights 遙測相互關聯
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: bc73dfb1c4dc77abe0bd135ecf572fa05ddf6322
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 06897fffda490cdfcbb2a9cf6f55c7945e8afda0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951321"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672050"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遙測相互關聯
 
@@ -50,9 +48,9 @@ Application Insights 會定義分散遙測相互關聯的[資料模型](../../az
 | itemType   | 名稱                      | ID           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
 | pageView   | Stock 頁面                |              | STYz               | STYz         |
-| 相依性 | GET /Home/Stock           | qJSXU        | STYz               | STYz         |
+| dependency | GET /Home/Stock           | qJSXU        | STYz               | STYz         |
 | 要求    | GET Home/Stock            | KqKwlrSt9PA= | qJSXU              | STYz         |
-| 相依性 | GET /api/stock/value      | bBrf2L7mm2g= | KqKwlrSt9PA=       | STYz         |
+| dependency | GET /api/stock/value      | bBrf2L7mm2g= | KqKwlrSt9PA=       | STYz         |
 
 對外部服務進行呼叫 `GET /api/stock/value` 時，您必須知道該伺服器的身分識別，才能適當地設定 [`dependency.target`] 欄位。 當外部服務不支援監視時，`target` 會設定為服務的主機名稱 (例如 `stock-prices-api.com`)。 但是，如果服務藉由傳回預先定義的 HTTP 標頭來識別自己，`target` 包含服務識別，可讓 Application Insights 藉由查詢該服務的遙測來建立分散式追蹤。
 
@@ -206,11 +204,11 @@ public void ConfigureServices(IServiceCollection services)
 
 | Application Insights                  | OpenTracing                                       |
 |------------------------------------   |-------------------------------------------------  |
-| `Request`，`PageView`                 | `span.kind = server` 的 `Span`                  |
-| `Dependency`                          | `span.kind = client` 的 `Span`                  |
-| `Request` 和 `Dependency` 的 `Id`    | `SpanId`                                          |
+| `Request`, `PageView`                 | `Span` 的 `span.kind = server`                  |
+| `Dependency`                          | `Span` 的 `span.kind = client`                  |
+| `Id` 和 `Request` 的 `Dependency`    | `SpanId`                                          |
 | `Operation_Id`                        | `TraceId`                                         |
-| `Operation_ParentId`                  | 類型 `ChildOf` 的 `Reference` (父代範圍)   |
+| `Operation_ParentId`                  | 類型 `Reference` 的 `ChildOf` (父代範圍)   |
 
 如需詳細資訊，請參閱[Application Insights 遙測資料模型](../../azure-monitor/app/data-model.md)。
 
@@ -251,13 +249,13 @@ curl --header "traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7
 ```
 藉由查看[追蹤內容標頭格式](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format)，您可以衍生下列資訊：
 
-`version`：`00`
+`version`: `00`
 
-`trace-id`：`4bf92f3577b34da6a3ce929d0e0e4736`
+`trace-id`: `4bf92f3577b34da6a3ce929d0e0e4736`
 
-`parent-id/span-id`：`00f067aa0ba902b7`
+`parent-id/span-id`: `00f067aa0ba902b7`
 
-`trace-flags`：`01`
+`trace-flags`: `01`
 
 如果您查看已傳送至 Azure 監視器的要求專案，您可以看到填入追蹤標頭資訊的欄位。 您可以在 Azure 監視器 Application Insights 資源中的 [記錄（分析）] 下找到此資料。
 

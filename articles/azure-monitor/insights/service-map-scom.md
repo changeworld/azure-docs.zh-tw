@@ -1,18 +1,17 @@
 ---
 title: 將適用於 VM 的 Azure 監視器對應與 Operations Manager 整合 |Microsoft Docs
 description: 適用於 VM 的 Azure 監視器會自動探索 Windows 和 Linux 系統上的應用程式元件，並對應服務之間的通訊。 本文討論如何使用 [對應] 功能，在 Operations Manager 中自動建立分散式應用程式圖表。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: a8d0e0980b0d3634626bc1332e8219bdca7fbe01
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 112413720f969474369555a74bc89846666e2ef9
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75402629"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663448"
 ---
 # <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>整合 System Center Operations Manager 與適用於 VM 的 Azure 監視器對應功能
 

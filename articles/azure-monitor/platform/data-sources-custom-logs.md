@@ -1,18 +1,17 @@
 ---
 title: 收集 Azure 監視器中的自訂記錄 | Microsoft Docs
 description: Azure 監視器可以從 Windows 和 Linux 電腦上的文字檔收集事件。  本文說明如何定義新的自訂記錄檔，以及它們在 Azure 監視器中建立的記錄詳細資料。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/26/2019
-ms.openlocfilehash: 6d85ada428ab448bd8e96545999ca038e532a32b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1e889aaef7cd01cd743e8063a8a1dd5138ba9d0e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450670"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670588"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Azure 監視器中的自訂記錄
 
@@ -75,7 +74,7 @@ Azure 監視器中的「自訂記錄」資料來源可讓您從 Windows 和 Linu
 
 下表提供可用來指定不同記錄檔的有效模式範例。
 
-| 說明 | Path |
+| 描述 | 路徑 |
 |:--- |:--- |
 | Windows 代理程式上的 *C:\Logs* 中，副檔名為 .txt 的所有檔案 |C:\Logs\\\*.txt |
 | Windows 代理程式上的 *C:\Logs* 中，名稱開頭為 log 且副檔名為 .txt 的所有檔案 |C:\Logs\log\*.txt |
@@ -118,7 +117,7 @@ Azure 監視器會從每個自訂記錄檔收集新的項目，間隔大約為�
 ## <a name="custom-log-record-properties"></a>自訂記錄檔記錄的屬性
 自訂記錄檔記錄的類型具有您提供的記錄檔名稱和下表中的屬性。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | TimeGenerated |Azure 監視器收集記錄的日期和時間。  如果記錄使用以時間為基礎的分隔符號，則這是從項目收集到的時間。 |
 | SourceSystem |收集記錄的來源代理程式類型。 <br> OpsManager - Windows 代理程式，直接連線或由 System Center Operations Manager 管理 <br> Linux – 所有的 Linux 代理程式 |

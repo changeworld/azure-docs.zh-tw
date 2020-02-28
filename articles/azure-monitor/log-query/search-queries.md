@@ -1,18 +1,17 @@
 ---
 title: Azure 監視器記錄中的搜尋查詢 | Microsoft Docs
 description: 本文提供教學課程來說明如何在 Azure 監視器記錄查詢中開始使用搜尋。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/06/2018
-ms.openlocfilehash: d92cd42f0fceadee16035b605e8d25c6bc23bc67
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: e13f4abc37e348759e7d0b8a2f7d890c82fe0d15
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933006"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660235"
 ---
 # <a name="search-queries-in-azure-monitor-logs"></a>Azure 監視器記錄中的搜尋查詢
 Azure 監視器記錄查詢可以透過資料表名稱或 search 命令來開始。 本教學課程涵蓋以搜尋為基礎的查詢。 每種方法各有其優點。
@@ -30,7 +29,7 @@ search "error"
 未界定範圍的查詢 (如上述查詢) 雖然容易使用，但效率卻很差，並且可能會傳回許多不相關的結果。 比較好的做法是在相關資料表或甚至特定資料行中進行搜尋。
 
 ### <a name="table-scoping"></a>界定資料表範圍
-若要在特定資料表中搜尋字詞，請在 **search** 運算子正後方新增 `in (table-name)`：
+若要在特定資料表中搜尋字詞，請在 `in (table-name)`search**運算子正後方新增**：
 
 ```Kusto
 search in (Event) "error"
@@ -95,7 +94,7 @@ search in (Event) "corp*.com"
 > [!TIP]
 > 雖然您可以使用 `search *` 來取得每個資料表中的每個資料行，但建議您一律將查詢範圍界定在特定資料表。 未界定範圍的查詢可能需要一段時間才能完成，而且可能會傳回太多結果。
 
-## <a name="add-and--or-to-search-queries"></a>對搜尋查詢新增 and / or
+## <a name="add-and--or-to-search-queries"></a>新增*和*/*或*搜尋查詢
 使用 **and** 可搜尋包含多個字詞的記錄：
 
 ```Kusto

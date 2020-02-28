@@ -3,22 +3,21 @@ title: 安裝和設定 Windows Azure 診斷擴充功能（WAD）
 description: 瞭解如何收集 Azure 儲存體帳戶中的 Azure 診斷資料，讓您可以使用數個可用工具的其中一種來進行查看。
 services: azure-monitor
 author: bwren
-ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
-ms.openlocfilehash: 5b3cc4cbaa663b7932609e85c544378a7cca69ef
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 929ab4109eb8d0e90b6c561a2135c0b7dd4205bb
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472683"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672254"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>安裝和設定 Windows Azure 診斷擴充功能（WAD）
 Azure 診斷擴充功能是 Azure 監視器中的代理程式，會收集來自客體作業系統的監視資料，以及 Azure 虛擬機器和其他計算資源的工作負載。 本文提供有關安裝和設定 Windows 診斷擴充功能，以及如何將資料儲存在和 Azure 儲存體帳戶中的描述的詳細資訊。
 
-診斷延伸模組會實作為 Azure 中的[虛擬機器擴充](/virtual-machines/extensions/overview)功能，因此它支援使用 Resource Manager 範本、POWERSHELL 和 CLI 的相同安裝選項。 如需安裝和維護虛擬機器擴充功能的詳細資訊，請參閱[適用于 Windows 的虛擬機器延伸模組和功能](/virtual-machines/extensions/features-windows)。
+診斷延伸模組會實作為 Azure 中的[虛擬機器擴充](../../virtual-machines/extensions/overview.md)功能，因此它支援使用 Resource Manager 範本、POWERSHELL 和 CLI 的相同安裝選項。 如需安裝和維護虛擬機器擴充功能的詳細資訊，請參閱[適用于 Windows 的虛擬機器延伸模組和功能](../../virtual-machines/extensions/features-windows.md)。
 
 ## <a name="install-with-azure-portal"></a>使用 Azure 入口網站安裝
 您可以在 Azure 入口網站中的個別虛擬機器上安裝及設定診斷擴充功能，以提供介面，而不是直接使用設定。 當您啟用診斷擴充功能時，它會自動使用預設設定，其中包含最常見的效能計數器和事件。 您可以根據您的特定需求來修改此預設設定。
@@ -40,7 +39,7 @@ Azure 診斷擴充功能是 Azure 監視器中的代理程式，會收集來自�
 |:---|:---|
 | 概觀 | 顯示目前的設定，以及其他索引標籤的連結。 |
 | 效能計數器 | 選取要收集的效能計數器，以及每個的取樣率。  |
-| 記錄 | 選取要收集的記錄檔資料。 這包括 Windows 事件記錄檔、IIS 記錄檔、.NET 應用程式記錄檔和 ETW 事件。  |
+| 記錄檔 | 選取要收集的記錄檔資料。 這包括 Windows 事件記錄檔、IIS 記錄檔、.NET 應用程式記錄檔和 ETW 事件。  |
 | 損毀傾印 | 為不同的進程啟用損毀傾印。 |
 | 接收 | 除了 Azure 儲存體以外，讓資料接收能夠將資料傳送至目的地。<br>Azure 監視器-將效能資料傳送至 Azure 監視器計量。<br>Application Insights-將資料傳送至 Application Insights 應用程式。 |
 | 代理程式 | 修改代理程式的下列設定：<br>-變更儲存體帳戶。<br>-指定用於代理程式的本機磁片上限。<br>-設定代理程式本身健全狀況的記錄檔。|
@@ -162,25 +161,25 @@ Set-AzVMDiagnosticsExtension -ResourceGroupName "myvmresourcegroup" `
 
 另請參閱[使用 PowerShell 在執行 Windows 的虛擬機器中啟用 Azure 診斷](../../virtual-machines/extensions/diagnostics-windows.md)。
 
-## <a name="data-storage"></a>資料儲存體
+## <a name="data-storage"></a>資料儲存
 下表列出從診斷擴充功能收集而來的不同資料類型，以及它們是儲存為數據表或 blob。 儲存在資料表中的資料也可以儲存在 blob 中，視公用設定中的[StorageType 設定](diagnostics-extension-schema-windows.md#publicconfig-element)而定。
 
 
-| 資料 | 儲存體類型 | 描述 |
+| Data | 儲存體類型 | 描述 |
 |:---|:---|:---|
 | WADDiagnosticInfrastructureLogsTable | Table | 診斷監視器和設定變更。 |
 | WADDirectoriesTable | Table | 診斷監視器正在監視的目錄。  這包括 IIS 記錄、IIS 失敗要求記錄和自訂目錄。  Blob 記錄檔的位置是在 [容器] 欄位中指定，而 Blob 的名稱則是在 RelativePath 欄位中指定。  AbsolutePath 欄位會指出檔案存在於 Azure 虛擬機器上的位置和名稱。 |
 | WadLogsTable | Table | 使用追蹤接聽程式在程式碼中寫入的記錄。 |
 | WADPerformanceCountersTable | Table | 效能計數器。 |
 | WADWindowsEventLogsTable | Table | Windows 事件記錄檔。 |
-| wad-iis-wad-iis-failedreqlogfiles | Blob | 包含 IIS 失敗要求記錄檔中的資訊。 |
-| wad-iis-logfiles | Blob | 包含 IIS 記錄檔的相關資訊。 |
-| 客戶 | Blob | 以設定診斷監視器所監視的目錄為基礎的自訂容器。  將會在 WADDirectoriesTable 中指定此 Blob 容器的名稱。 |
+| wad-iis-wad-iis-failedreqlogfiles | blob | 包含 IIS 失敗要求記錄檔中的資訊。 |
+| wad-iis-logfiles | blob | 包含 IIS 記錄檔的相關資訊。 |
+| 客戶 | blob | 以設定診斷監視器所監視的目錄為基礎的自訂容器。  將會在 WADDirectoriesTable 中指定此 Blob 容器的名稱。 |
 
 ## <a name="tools-to-view-diagnostic-data"></a>用來檢視診斷資料的工具
-有數個工具可用來檢視傳輸至儲存體後的資料。 例如：
+有數個工具可用來檢視傳輸至儲存體後的資料。 例如，
 
-* Visual Studio 中的伺服器總管 - 如果您已安裝 Azure Tools for Microsoft Visual Studio，您可以在伺服器總管中使用 Azure 儲存體節點，從您的 Azure 儲存體帳戶檢視唯讀的 Blob 和資料表資料。 您可以從您的本機儲存體模擬器帳戶顯示資料，也可以從您為 Azure 建立的儲存體帳戶顯示資料。 如需詳細資訊，請參閱 [使用伺服器總管瀏覽和管理儲存體資源](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage)。
+* Visual Studio 中的伺服器總管：如果您已經安裝 Azure Tools for Microsoft Visual Studio，您可以在 [伺服器總管] 中使用 Azure 儲存體節點，從 Azure 儲存體帳戶檢視唯讀 Blob 和資料表資料。 您可以從您的本機儲存體模擬器帳戶顯示資料，也可以從您為 Azure 建立的儲存體帳戶顯示資料。 如需詳細資訊，請參閱 [使用伺服器總管瀏覽和管理儲存體資源](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage)。
 * [Microsoft Azure 儲存體 Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) 是一個獨立應用程式，可讓您在 Windows、OSX 和 Linux 上輕鬆使用 Azure 儲存體資料。
 * [Azure Management Studio](https://www.cerebrata.com/products/azure-management-studio/introduction) 包含 Azure 診斷管理員，可讓您檢視、下載及管理在 Azure 上執行的應用程式所收集的診斷資料。
 

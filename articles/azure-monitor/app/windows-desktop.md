@@ -1,18 +1,14 @@
 ---
 title: 監視 Windows 傳統型應用程式的使用情況和效能
 description: 使用 Application Insights 分析 Windows 傳統型應用程式的使用情况和效能。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 10/29/2019
-ms.openlocfilehash: a9dfc32a0f33db5639d5f74667a90a248dc358a1
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 8234b9ba2c92fc64cfa8f598db99954e00caab45
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73052462"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670826"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>監視傳統型 Windows 桌面應用程式的使用情況和效能
 
@@ -24,11 +20,11 @@ ms.locfileid: "73052462"
 3. 在 Visual Studio 中，編輯應用程式專案的 NuGet 封裝，並新增 Microsoft.ApplicationInsights.WindowsServer。 (或選擇 Microsoft.ApplicationInsights，如果您只想要單純的 API，而不需要標準遙測集合模組。)
 4. 在程式碼中設定檢測金鑰︰
    
-    `TelemetryConfiguration.Active.InstrumentationKey = "`您的金鑰 `";`
+    `TelemetryConfiguration.Active.InstrumentationKey = "`*您的金鑰*`";`
    
     或在 ApplicationInsights.config 中設定檢測金鑰 (如果您已安裝其中一個標準遙測封裝)︰
    
-    `<InstrumentationKey>`*您的金鑰*`</InstrumentationKey>` 
+    `<InstrumentationKey>`您的金鑰`</InstrumentationKey>` 
    
     如果使用 ApplicationInsights.config，請確定其在方案總管中的屬性已設定為 [建置動作] = [內容]、[複製到輸出目錄] = [複製]。
 5. [使用 API](../../azure-monitor/app/api-custom-events-metrics.md) 傳送遙測。

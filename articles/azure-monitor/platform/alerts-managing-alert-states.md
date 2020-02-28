@@ -1,23 +1,23 @@
 ---
 title: 管理警示與智慧群組狀態
 description: 管理警示和智慧群組執行個體的狀態
-ms.service: azure-monitor
 ms.subservice: alerts
 ms.topic: conceptual
 author: anantr
-ms.author: robb
 ms.date: 09/24/2018
-ms.openlocfilehash: fd2a2a4b7d5033ecd35d02baa240bc7586e7a25d
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: a22d7b7b962b36f93ee804c64b3bc6b08ecceb0f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555661"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667511"
 ---
 # <a name="manage-alert-and-smart-group-states"></a>管理警示與智慧群組狀態
+
 Azure 監視器中的警示現在有[警示的狀態和監視條件](https://aka.ms/azure-alerts-overview)，同樣地，智慧群組也有[智慧型群組狀態](https://aka.ms/smart-groups)。 對狀態所作的變更，現在會擷取到與個別警示或智慧群組相關聯的歷程記錄。 這篇文章會引導您完成變更警示和智慧群組兩者狀態的程序。
 
 ## <a name="change-the-state-of-an-alert"></a>變更警示的狀態
+
 1. 您可以透過下列不同方式變更警示的狀態： 
     * 在 [所有警示] 頁面中，按一下要變更狀態之警示旁邊的核取方塊，然後按一下 [變更狀態]。   
     ![監視](./media/alerts-managing-alert-states/state-all-alerts.jpg)

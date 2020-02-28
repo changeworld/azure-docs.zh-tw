@@ -1,18 +1,16 @@
 ---
 title: Azure 應用程式 Insights 代理程式疑難排解和已知問題 |Microsoft Docs
 description: Application Insights 代理程式和疑難排解範例的已知問題。 在不重新部署網站的情況下監視網站效能。 適用于內部部署、Vm 或 Azure 上裝載的 ASP.NET web 應用程式。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 30172bf65be52ba1ddd2b9127c3e2b5a284d48dc
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 217629ba5c386557455cc2d2b8bd47f85fa8f84e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899584"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671149"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>疑難排解 Application Insights 代理程式（先前稱為狀態監視器 v2）
 
@@ -26,9 +24,9 @@ ms.locfileid: "72899584"
 
 如果其中有任何 Dll 出現在 bin 目錄中，監視可能會失敗：
 
-- ApplicationInsights .dll
+- Microsoft.ApplicationInsights.dll
 - Microsoft.aspnet.telemetrycorrelation .dll
-- DiagnosticSource .dll
+- System.Diagnostics.DiagnosticSource.dll
 
 其中一些 Dll 會包含在 Visual Studio 預設應用程式範本中，即使您的應用程式未使用它們也是一樣。
 您可以使用疑難排解工具來查看徵兆行為：
@@ -91,13 +89,13 @@ SDK 設定不會公開給版本1.0 中的使用者。
 您可以使用 `Get-Module -ListAvailable` 命令來判斷已安裝的模組。
 
 #### <a name="import-a-module-into-the-current-session"></a>將模組匯入目前的會話
-如果模組尚未載入 PowerShell 會話中，您可以使用 `Import-Module <path to psd1>` 命令來手動載入。
+如果模組尚未載入 PowerShell 會話中，您可以使用 `Import-Module <path to psd1>` 命令手動載入。
 
 
 ### <a name="troubleshooting-the-application-insights-agent-module"></a>針對 Application Insights 代理程式模組進行疑難排解
 
 #### <a name="list-the-commands-available-in-the-application-insights-agent-module"></a>列出 Application Insights 代理程式模組中可用的命令
-執行命令 `Get-Command -Module Az.ApplicationMonitor`，以取得可用的命令：
+執行命令 `Get-Command -Module Az.ApplicationMonitor` 以取得可用的命令：
 
 ```
 CommandType     Name                                               Version    Source
@@ -133,14 +131,14 @@ Cmdlet          Start-ApplicationInsightsMonitoringTrace           0.4.0      Az
 
 ### <a name="collect-etw-logs-by-using-perfview"></a>使用 PerfView 收集 ETW 記錄檔
 
-#### <a name="setup"></a>設定
+#### <a name="setup"></a>安裝程式
 
 1. 從[GitHub](https://github.com/Microsoft/perfview/releases)下載 PerfView 和 PerfView64。
 2. 啟動 PerfView64。
-3. 展開 [ **Advanced Options**]。
+3. 展開 [進階選項]。
 4. 清除這些核取方塊：
-    - **位址**
-    - **Merge**
+    - **Zip**
+    - **合併式**
     - **.NET 符號集合**
 5. 設定這些**額外的提供者**： `61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,925fa42b-9ef6-5fa7-10b8-56449d7a2040,f7d60e07-e910-5aca-bdd2-9de45b46c560,7c739bb9-7861-412e-ba50-bf30d95eae36,61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,252e28f4-43f9-5771-197a-e8c7e750a984`
 

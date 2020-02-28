@@ -1,18 +1,17 @@
 ---
 title: 在 Log Analytics 工作區中收集並分析 Azure 活動記錄 |Microsoft Docs
 description: 收集 Azure 監視器記錄中的 Azure 活動記錄，並使用監視解決方案來分析和搜尋所有 Azure 訂用帳戶的 Azure 活動記錄。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/30/2019
-ms.openlocfilehash: 2bf2f012e553e08a1eb829f93d9af0f0e74f638b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 044f974d83eba098820639e67412110329d5ad7d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977665"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668973"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>在 Azure 監視器的 Log Analytics 工作區中收集並分析 Azure 活動記錄
 
@@ -65,7 +64,7 @@ Azure Log Analytics 監視解決方案包含多個記錄查詢和視圖，可用
 
 ![Azure 活動記錄儀表板](media/collect-activity-logs/activity-log-dash.png)
 
-| 視覺效果元件 | 說明 |
+| 視覺效果元件 | 描述 |
 | --- | --- |
 | Azure 活動記錄項目 | 針對您所選取的日期範圍，顯示最上層 Azure 活動記錄專案記錄總計的橫條圖，並顯示前10個活動呼叫者的清單。 按一下長條圖即可執行 `AzureActivity` 的記錄搜尋。 按一下呼叫者專案來執行記錄搜尋，以傳回該專案的所有活動記錄專案。 |
 | 依狀態列出的活動記錄 | 顯示所選日期範圍的 Azure 活動記錄狀態的環圈圖，以及前十筆狀態記錄的清單。 按一下圖表以執行 `AzureActivity | summarize AggregatedValue = count() by ActivityStatus`的記錄查詢。 按一下狀態專案以執行記錄搜尋，以傳回該狀態記錄的所有活動記錄專案。 |
