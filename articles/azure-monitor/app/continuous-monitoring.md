@@ -1,18 +1,14 @@
 ---
 title: 使用 Azure Pipelines 和 Azure 應用程式 Insights 持續監視您的 DevOps 發行管線 |Microsoft Docs
 description: 提供使用 Application Insights 快速設定持續監視的指示
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/16/2019
-ms.openlocfilehash: c891cc7564a60dfd665d84d569e266332d255fa9
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: e565101218b975ef2bd29b8a32a4aa1bf4300b6d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677522"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655390"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>將連續監視新增至您的發行管線
 
@@ -24,7 +20,7 @@ Azure Pipelines 與 Azure 應用程式 Insights 整合，以允許在整個軟�
 
 1. 在  [Azure DevOps](https://dev.azure.com)中，選取組織和專案。
    
-1. 在 [專案] 頁面的左側功能表上，選取 [**管線**]  > **版本**。 
+1. 在 [專案] 頁面的左側功能表上，選取 [**管線**] > **版本**。 
    
 1. 下拉 [**新增**] 旁邊的箭號，然後選取 [**新增發行管線**]。 或者，如果您還沒有管線，請在出現的頁面上選取 [**新增管線**]。
    
@@ -38,7 +34,7 @@ Azure Pipelines 與 Azure 應用程式 Insights 整合，以允許在整個軟�
 
 1. 在 [**階段 1**設定] 窗格中，完成下欄欄位： 
 
-    | 參數        | Value |
+    | 參數        | 值 |
    | ------------- |:-----|
    | **階段名稱**      | 提供階段名稱，或將它保留在**階段 1**。 |
    | **Azure 訂用帳戶** | 下拉並選取您想要使用的連結 Azure 訂用帳戶。|

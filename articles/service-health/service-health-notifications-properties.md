@@ -1,14 +1,14 @@
 ---
 title: 什麼是 Azure 服務健康情況通知？
 description: 藉由服務健康情況通知，您可以檢視由 Microsoft Azure 發佈的服務健康情況訊息。
-ms.topic: article
+ms.topic: conceptual
 ms.date: 4/12/2018
-ms.openlocfilehash: f2d79dc920129241c801c75cc9009b3ba8f34b78
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e40538ac98bbc7b79311d4fb0da7568d56a84e18
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451560"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653963"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>使用 Azure 入口網站檢視服務健康情況通知
 
@@ -24,13 +24,13 @@ Azure 會發佈服務健康情況通知，其中包含您訂用帳戶下資源�
 
 每個服務健康狀態通知皆會包含關於範圍以及資源所受影響的詳細資料。 詳細資料包括：
 
-屬性名稱 | 說明
+屬性名稱 | 描述
 -------- | -----------
 通道 | 為下列其中一個值：**Admin** 或 **Operation**。
 correlationId | 通常是字串格式的 GUID。 屬於相同動作的事件通常會共用同一個 correlationId。
 eventDataId | 事件的唯一識別碼。
 eventName | 事件的標題。
-層級 | 事件的層級
+level | 事件的層級
 resourceProviderName | 受影響資源的資源提供者名稱。
 resourceType| 受影響資源的資源類型。
 子狀態 | 通常是對應 REST 呼叫的 HTTP 狀態碼，但也可以包含其他描述子狀態的字串。 例如：確定 (HTTP 狀態碼︰200)，已建立 (HTTP 狀態碼︰201)、接受 (HTTP 狀態碼︰202)、沒有內容 (HTTP 狀態碼︰204)、不正確的要求 (HTTP 狀態碼︰400)、找不到 (HTTP 狀態碼︰404)，衝突 (HTTP 狀態碼︰409)、內部伺服器錯誤 (HTTP 狀態碼︰500)、服務無法使用 (HTTP 狀態碼︰503) 和閘道逾時 (HTTP 狀態碼︰504)。

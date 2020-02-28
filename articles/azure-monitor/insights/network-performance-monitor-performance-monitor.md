@@ -1,18 +1,17 @@
 ---
 title: Azure Log Analytics 中網路效能監控解決方案的效能監控功能 | Microsoft Docs
 description: 網路效能監控中的效能監控功能可以協助您監控網路中各個點之間的網路連線。 您可以監控雲端部署和內部部署位置、多個資料中心和分公司，以及任務關鍵性多層式應用程式或微服務。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: 745ec6ee8e69ad911e42b6360b3408d79d660718
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: dfbc4ea8e168ced95a4239dd100cf7277e0adf7b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898839"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654523"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>網路效能監控解決方案：效能監控
 
