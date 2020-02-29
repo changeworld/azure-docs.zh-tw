@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/27/2020
+ms.date: 02/27/2020
 ms.author: mimart
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2249be583f10aaf7ddda039fbd6d71729b06c36
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: cd376474da2116837278cd4886465c53a99e5455
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77565480"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190614"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>封存 Azure Active Directory 中的新功能？
 
@@ -31,6 +31,219 @@ Azure Active Directory 的新功能？版本資訊提供：
 - 錯誤修正
 - 已被取代的功能
 - 方案變更
+
+---
+
+## <a name="august-2019"></a>2019 年 8 月
+
+### <a name="enhanced-search-filtering-and-sorting-for-groups-is-available-in-the-azure-ad-portal-public-preview"></a>群組的增強搜尋、篩選和排序功能可在 Azure AD 入口網站中取得（公開預覽）
+
+**類型：** 新功能  
+**服務類別：** 群組管理  
+**產品功能：** 協同合作
+
+我們很高興能在 Azure AD 入口網站中宣佈增強群組相關體驗的公開預覽可用性。 這些增強功能可協助您更有效地管理群組和成員清單，方法是提供：
+
+- 先進的搜尋功能，例如 [群組] 清單上的 [子字串搜尋]。
+- 成員和擁有者清單上的先進篩選和排序選項。
+- 成員和擁有者清單的新搜尋功能。
+- 較精確的群組計數適用于大型群組。
+
+如需詳細資訊，請參閱[管理 Azure 入口網站中的群組](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-members-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context)。
+
+---
+
+### <a name="new-custom-roles-are-available-for-app-registration-management-public-preview"></a>新的自訂角色適用于應用程式註冊管理（公開預覽）
+
+**類型：** 新功能  
+**服務類別：** RBAC  
+**產品功能：** 存取控制
+
+自訂角色（可透過 Azure AD P1 或 P2 訂用帳戶取得）現在可以協助您提供更細緻的存取權，方法是讓您以特定許可權建立角色定義，然後將這些角色指派給特定的資源。 目前，您可以使用管理應用程式註冊的許可權，然後將角色指派給特定的應用程式，來建立自訂角色。 如需自訂角色的詳細資訊，請參閱[Azure Active Directory （預覽）中的自訂系統管理員角色](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-custom-overview)。
+
+如果您需要支援的其他許可權或資源（目前並未看到），您可以將意見反應傳送給我們的[Azure 意見反應網站](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)，我們會將您的要求新增至我們的更新藍圖。
+
+---
+
+### <a name="new-provisioning-logs-can-help-you-monitor-and-troubleshoot-your-app-provisioning-deployment-public-preview"></a>新的布建記錄可協助您監視和疑難排解您的應用程式布建部署（公開預覽）
+
+**類型：** 新功能  
+**服務類別：** 應用程式佈建  
+**產品功能：** 身分識別生命週期管理
+
+新的布建記錄檔可協助您監視和疑難排解使用者和群組布建部署。 這些新的記錄檔包含下列資訊：
+
+- 已成功在[ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial)中建立哪些群組
+- 哪些角色是從 Amazon Web Services 匯入[（AWS）](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-and-test-azure-ad-single-sign-on-for-amazon-web-services-aws)
+- 哪些員工未從[Workday](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial)匯入
+
+如需詳細資訊，請參閱在[Azure Active Directory 入口網站中布建報表（預覽）](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)。
+
+---
+
+### <a name="new-security-reports-for-all-azure-ad-administrators-general-availability"></a>所有 Azure AD 系統管理員的新安全性報告（公開上市）
+
+**類型：** 新功能  
+**服務類別：** Identity Protection  
+**產品功能：** 身分識別安全性與保護
+
+根據預設，所有 Azure AD 系統管理員很快就能存取 Azure AD 內的新式安全性報告。 在9月底之前，您將能夠使用新式安全性報告頂端的橫幅來回到舊的報告。
+
+新式安全性報告將提供較舊版本的其他功能，包括：
+
+- 先進的篩選和排序
+- 大量動作，例如關閉使用者風險
+- 確認遭盜用或安全的實體
+- 風險狀態，涵蓋：有風險、已解除、補救和確認遭到入侵
+- 新的風險相關偵測（可供 Azure AD Premium 訂閱者使用）
+
+如需詳細資訊，請參閱有[風險的使用者](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risky-users)、有風險的登[入](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risky-sign-ins)，以及[風險](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risk-detections)偵測。
+
+---
+
+### <a name="user-assigned-managed-identity-is-available-for-virtual-machines-and-virtual-machine-scale-sets-general-availability"></a>使用者指派的受控識別適用于虛擬機器和虛擬機器擴展集（公開上市）
+
+**類型：** 新功能  
+**服務類別：** 適用於 Azure 資源的受控識別  
+**產品功能：** 開發人員體驗
+
+使用者指派的受控識別現在已正式提供虛擬機器和虛擬機器擴展集。 在此過程中，Azure 可以在使用中的訂用帳戶所信任的 Azure AD 租使用者中建立身分識別，並可將其指派給一或多個 Azure 服務實例。 如需使用者指派受控識別的詳細資訊，請參閱[什麼是適用于 Azure 資源的受控識別？](https://aka.ms/azuremanagedidentity)。
+
+---
+
+### <a name="users-can-reset-their-passwords-using-a-mobile-app-or-hardware-token-general-availability"></a>使用者可以使用行動應用程式或硬體權杖（一般可用性）重設其密碼
+
+**類型：** 已變更的功能  
+**服務類別：** 自助密碼重設  
+**產品功能：** 使用者驗證
+
+已向您的組織註冊行動應用程式的使用者，現在可以藉由核准來自 Microsoft Authenticator 應用程式的通知，或從行動應用程式或硬體權杖輸入程式碼，來重設自己的密碼。
+
+如需詳細資訊，請參閱 [運作方式：Azure AD 自助式密碼重設](https://aka.ms/authappsspr)。 如需使用者體驗的詳細資訊，請參閱[重設您自己的工作或學校密碼總覽](https://docs.microsoft.com/azure/active-directory/user-help/user-help-password-reset-overview)。
+
+---
+
+### <a name="adalnet-ignores-the-msalnet-shared-cache-for-on-behalf-of-scenarios"></a>ADAL.NET 會針對代理者案例忽略 MSAL.NET 共用快取
+
+**類型：** 已修正  
+**服務類別：** 驗證 (登入)  
+**產品功能：** 使用者驗證
+
+從 Azure AD authentication library （ADAL.NET）第5.0.0 版-preview 開始，應用程式開發人員必須[針對 web 應用程式和 Web api，將每個帳戶的一個](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization#custom-token-cache-serialization-in-web-applications--web-api)快取序列化。 否則，某些使用代理者[流程](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-api-call-api-app-configuration#on-behalf-of-flow)的案例，以及某些特定的 `UserAssertion`使用案例，可能會導致權限提高。 為避免此弱點，ADAL.NET 現在會忽略適用于代理者案例的 Microsoft authentication library for dotnet （MSAL.NET）共用快取。
+
+如需有關此問題的詳細資訊，請參閱[Azure Active Directory 驗證程式庫權限提高弱點](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2019-1258)。
+
+---
+
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---august-2019"></a>Azure AD App 資源庫中提供的新同盟應用程式-2019 年8月
+
+**類型：** 新功能  
+**服務類別：** 企業應用程式  
+**產品功能：** 協力廠商整合
+
+在2019年8月，我們已將下列26個具有同盟支援的新應用程式新增至應用程式庫：
+
+[市政平臺](https://docs.microsoft.com/azure/active-directory/saas-apps/civic-platform-tutorial)， [Amazon Business](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-business-tutorial)， [ProNovos Ops Manager](https://docs.microsoft.com/azure/active-directory/saas-apps/pronovos-ops-manager-tutorial)， [Cognidox](https://docs.microsoft.com/azure/active-directory/saas-apps/cognidox-tutorial)， [Viareport 的 Inativ Portal （歐洲）](https://docs.microsoft.com/azure/active-directory/saas-apps/viareports-inativ-portal-europe-tutorial)， [Azure Databricks](https://azure.microsoft.com/services/databricks)，[資源](https://docs.microsoft.com/azure/active-directory/saas-apps/robin-tutorial)管理員，學術[出席](https://docs.microsoft.com/azure/active-directory/saas-apps/academy-attendance-tutorial)，[優先順序對照表](https://sync.appfluence.com/pmwebng/)， [Cousto MySpace](https://cousto.platformers.be/account/login)， [Uploadcare](https://uploadcare.com/accounts/signup/)， [Carbonite Endpoint Backup](https://docs.microsoft.com/azure/active-directory/saas-apps/carbonite-endpoint-backup-tutorial)，CPQSync [by Cincom](https://docs.microsoft.com/azure/active-directory/saas-apps/cpqsync-by-cincom-tutorial)， [Chargebee](https://docs.microsoft.com/azure/active-directory/saas-apps/chargebee-tutorial)，[提供。 media™ Portal](https://portal.deliver.media)，[第一線教育](https://docs.microsoft.com/azure/active-directory/saas-apps/frontline-education-tutorial)， [F5](https://www.f5.com/products/security/access-policy-manager)， [stashcat ADconnect](https://www.stashcat.com)、[閃爍](https://docs.microsoft.com/azure/active-directory/saas-apps/blink-tutorial)、 [Vocoli](https://docs.microsoft.com/azure/active-directory/saas-apps/vocoli-tutorial)、 [ProNovos 分析](https://docs.microsoft.com/azure/active-directory/saas-apps/pronovos-analytics-tutorial)、 [Sigstr](https://docs.microsoft.com/azure/active-directory/saas-apps/sigstr-tutorial)、 [Darwinbox](https://docs.microsoft.com/azure/active-directory/saas-apps/darwinbox-tutorial)、[依色彩監看](https://docs.microsoft.com/azure/active-directory/saas-apps/watch-by-colors-tutorial) [、控管、](https://docs.microsoft.com/azure/active-directory/saas-apps/harness-tutorial) [EAB 流覽策略護理](https://docs.microsoft.com/azure/active-directory/saas-apps/eab-navigate-strategic-care-tutorial)
+
+如需應用程式的詳細資訊，請參閱[與 Azure Active Directory 整合的 SaaS 應用程式](https://aka.ms/appstutorial)。 如需在 Azure AD 應用程式庫中列出應用程式的詳細資訊，請參閱[在 Azure Active Directory 應用程式庫中列出您的應用程式](https://aka.ms/azureadapprequest)。
+
+---
+
+### <a name="new-versions-of-the-azuread-powershell-and-azureadpreview-powershell-modules-are-available"></a>有新版本的 AzureAD PowerShell 和 AzureADPreview PowerShell 模組可供使用
+
+**類型：** 已變更的功能  
+**服務類別：** 其他  
+**產品功能：** 目錄
+
+AzureAD 和 AzureAD Preview PowerShell 模組的新更新可供使用：
+
+- 已將新的 `-Filter` 參數新增至 AzureAD 模組中的 `Get-AzureADDirectoryRole` 參數。 此參數可協助您篩選 Cmdlet 所傳回的目錄角色。
+- 新的 Cmdlet 已新增至 AzureADPreview 模組，以協助在 Azure AD 中定義和指派自訂角色，包括：
+
+    - `Get-AzureADMSRoleAssignment`
+    - `Get-AzureADMSRoleDefinition`
+    - `New-AzureADMSRoleAssignment`
+    - `New-AzureADMSRoleDefinition`
+    - `Remove-AzureADMSRoleAssignment`
+    - `Remove-AzureADMSRoleDefinition`
+    - `Set-AzureADMSRoleDefinition`
+
+---
+
+### <a name="improvements-to-the-ui-of-the-dynamic-group-rule-builder-in-the-azure-portal"></a>Azure 入口網站中動態群組規則產生器的 UI 改善
+
+**類型：** 已變更的功能  
+**服務類別：** 群組管理  
+**產品功能：** 協同合作
+
+我們對動態群組規則產生器提供了一些 UI 改良功能，可在 Azure 入口網站中使用，以協助您更輕鬆地設定新規則，或變更現有的規則。 這項設計改進可讓您建立最多五個運算式的規則，而不只是一個。 我們也已更新裝置屬性清單，以移除已淘汰的裝置屬性。
+
+如需詳細資訊，請參閱[管理動態成員資格規則](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership)。
+
+---
+
+### <a name="new-microsoft-graph-app-permission-available-for-use-with-access-reviews"></a>新的 Microsoft Graph 應用程式許可權可與存取審查搭配使用
+
+**類型：** 已變更的功能  
+**服務類別：** 存取權檢閱  
+**產品功能：** Identity Governance
+
+我們引進了新的 Microsoft Graph 應用程式許可權 `AccessReview.ReadWrite.Membership`，可讓應用程式自動建立和抓取群組成員資格和應用程式指派的存取權審查。 此許可權可供您的排程工作或自動化的一部分使用，而不需要登入的使用者內容。
+
+如需詳細資訊，請參閱[如何使用 PowerShell 的 Microsoft Graph 應用程式許可權建立 Azure AD 存取評論的範例](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-how-to-create-Azure-AD-access-reviews-using-Microsoft/m-p/807241)。
+
+---
+
+### <a name="azure-ad-activity-logs-are-now-available-for-government-cloud-instances-in-azure-monitor"></a>Azure AD 活動記錄現在可供中的政府雲端實例使用 Azure 監視器
+
+**類型：** 已變更的功能  
+**服務類別：** 報表  
+**產品功能：** 監視與報告
+
+我們很高興宣佈，Azure 監視器的政府雲端實例現已提供 Azure AD 活動記錄。 您現在可以將 Azure AD 記錄傳送到您的儲存體帳戶或事件中樞，以與 SIEM 工具（例如[Sumologic](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-sumologic)、 [Splunk](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-splunk)和[ArcSight](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-arcsight)）整合。 
+
+如需設定 Azure 監視器的詳細資訊，請參閱[Azure 監視器中的 Azure AD 活動記錄](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-activity-logs-azure-monitor#cost-considerations)。
+
+---
+
+### <a name="update-your-users-to-the-new-enhanced-security-info-experience"></a>將您的使用者更新為新的增強式安全性資訊體驗
+
+**類型：** 已變更的功能  
+**服務類別：** 驗證 (登入)   
+**產品功能：** 使用者驗證
+
+在2019年9月25日，我們將關閉舊的非增強式安全性資訊體驗，以註冊和管理使用者安全性資訊，並只開啟新的[增強版](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Cool-enhancements-to-the-Azure-AD-combined-MFA-and-password/ba-p/354271)。 這表示您的使用者將無法再使用舊體驗。
+
+如需增強式安全性資訊體驗的詳細資訊，請參閱我們的系統[管理員檔](https://aka.ms/securityinfodocs)和我們的[使用者檔](https://aka.ms/securityinfoguide)。
+
+#### <a name="to-turn-on-this-new-experience-you-must"></a>若要開啟此新體驗，您必須：
+
+1. 以全域管理員或使用者系統管理員身分登入 Azure 入口網站。
+
+2. 移至**Azure Active Directory > 使用者設定 > 管理存取面板預覽功能的設定**。
+
+3. 在 [**使用者可以使用預覽功能來註冊及管理安全性資訊-增強**] 區域中，選取 [已**選取**]，然後選擇一組使用者，或選擇 [**全部**] 以針對租使用者中的所有使用者開啟此功能。
+
+4. 在 [使用者可以使用預覽功能來註冊及管理安全性 **info** ] 區域中，選取 [**無**]。
+
+5. 儲存您的設定。
+
+    儲存設定之後，您將無法再存取舊的安全性資訊體驗。
+
+>[!Important]
+>如果您未在2019年9月25日之前完成這些步驟，將會自動啟用您的 Azure Active Directory 租使用者以獲得增強的體驗。 如有任何疑問，請在 registrationpreview@microsoft.com洽詢我們。
+
+---
+
+### <a name="authentication-requests-using-post-logins-will-be-more-strictly-validated"></a>使用 POST 登入的驗證要求將會更嚴格地進行驗證
+
+**類型：** 已變更的功能  
+**服務類別：** 驗證 (登入)  
+**產品功能：** 標準
+
+從2019年9月2日開始，使用 POST 方法的驗證要求將會更嚴格地針對 HTTP 標準進行驗證。 具體而言，不會再從要求表單值中移除空格和雙引號（"）。 這些變更不應該中斷任何現有的用戶端，而且將有助於確保傳送至 Azure AD 的要求會每次可靠地處理。
+
+如需詳細資訊，請參閱[Azure AD 重大變更通知](https://docs.microsoft.com/azure/active-directory/develop/reference-breaking-changes#post-form-semantics-will-be-enforced-more-strictly---spaces-and-quotes-will-be-ignored)。
 
 ---
 
@@ -2400,13 +2613,13 @@ Criterion HCM、[FiscalNote](https://docs.microsoft.com/azure/active-directory/a
 
 ---
  
-### <a name="app-proxy-cmdlets-in-powershell-ga-module"></a>Powershell GA 模組中的應用程式 Proxy Cmdlet
+### <a name="app-proxy-cmdlets-in-powershell-ga-module"></a>PowerShell GA 模組中的應用程式 Proxy Cmdlet
 
 **類型：** 新功能  
 **服務類別：** 應用程式 Proxy  
 **產品功能：** 存取控制
  
-Powershell GA 模組中目前提供應用程式 Proxy Cmdlet 的支援！ 這需要您隨時更新 Powershell 模組 - 如果您超過一年未更新，某些 Cmdlet 可能會停止運作。 
+應用程式 Proxy Cmdlet 的支援現在位於 PowerShell GA 模組中！ 這需要您隨時掌握 PowerShell 模組的更新-如果您超過一年以上，某些 Cmdlet 可能會停止運作。 
 
 如需詳細資訊，請參閱 [AzureAD](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0)。
  

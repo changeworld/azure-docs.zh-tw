@@ -3,12 +3,12 @@ title: 了解資源鎖定
 description: 瞭解 Azure 藍圖中的鎖定選項，以在指派藍圖時保護資源。
 ms.date: 02/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1491af0ddfb0f6f5fbea322bd00dc9838c155983
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: b810e8d4ddd263f9e651704d1bf9b785ce0202db
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919867"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199694"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>了解 Azure 藍圖中的資源鎖定
 
@@ -83,6 +83,9 @@ PUT https://management.azure.com/providers/Microsoft.Management/managementGroups
 ```
 
 此要求主體中的主要差異，以及指派給訂用帳戶的索引鍵，都是 `properties.scope` 屬性。 此必要屬性必須設定為要套用藍圖指派的訂用帳戶。 訂用帳戶必須是儲存藍圖指派所在的管理群組階層的直接子系。
+
+> [!NOTE]
+> 指派給管理群組範圍的藍圖仍會以訂用帳戶層級藍圖指派的方式運作。 唯一的差異在於藍圖指派的儲存位置，讓訂用帳戶擁有者無法移除指派和相關聯的鎖定。
 
 ## <a name="removing-locking-states"></a>移除鎖定狀態
 
