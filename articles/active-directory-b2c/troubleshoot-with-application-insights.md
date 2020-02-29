@@ -3,20 +3,20 @@ title: 使用 Application Insights 針對自訂原則進行疑難排解
 titleSuffix: Azure AD B2C
 description: 如何設定 Application Insights 以追蹤自訂原則的執行。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3aeef1614f22563e0fd348c5bc6ae7ff1e7b0b03
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 403dbe6106cb7a1d277ba672112d2bc45dbc2987
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848144"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186262"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>使用 Application Insights 收集 Azure Active Directory B2C 記錄
 
@@ -61,7 +61,7 @@ ms.locfileid: "76848144"
     * `ClientEnabled="true"` 傳送 ApplicationInsights 用戶端腳本來追蹤頁面流覽和用戶端錯誤。 您可以在 Application Insights 入口網站的 [ **browserTimings** ] 資料表中查看這些功能。 藉由設定 `ClientEnabled= "true"`，您可以將 Application Insights 新增至頁面腳本，並取得頁面載入和 AJAX 呼叫、計數、瀏覽器例外狀況與 AJAX 失敗的詳細資料，以及使用者和會話計數的時間。 這個欄位是**選擇性**的，而且預設會設定為 `false`。
     * `ServerEnabled="true"` 會將現有的 UserJourneyRecorder JSON 當作自訂事件傳送至 Application Insights。
 
-    例如：
+    例如，
 
     ```XML
     <TrustFrameworkPolicy
@@ -93,7 +93,7 @@ ms.locfileid: "76848144"
 
 以下是您可以用來查看記錄的查詢清單：
 
-| 查詢 | 說明 |
+| 查詢 | 描述 |
 |---------------------|--------------------|
 `traces` | 查看 Azure AD B2C 產生的所有記錄 |
 `traces | where timestamp > ago(1d)` | 查看 Azure AD B2C 在最後一天產生的所有記錄

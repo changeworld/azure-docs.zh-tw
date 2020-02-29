@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 02/26/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 71df31562971af8bcdb38be76894c1d0abeccc3f
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: cb68f1bc851a8573ddec01d1eee803135a11b067
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77925575"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195353"
 ---
 # <a name="azure-services-that-support-azure-data-lake-storage-gen2"></a>支援 Azure Data Lake Storage Gen2 的 Azure 服務
 
 您可以使用 Azure 服務來內嵌資料、執行分析，以及建立視覺標記法。 本文提供支援的 Azure 服務清單、洩漏其支援層級，並提供可協助您將這些服務與 Azure Data Lake Storage Gen2 搭配使用的文章連結。
 
-## <a name="supportedazureservices"></a>支援的 Azure 服務
+## <a name="supported-azure-services"></a>支援的 Azure 服務
 
 下表列出可與 Azure Data Lake Storage Gen2 搭配使用的 Azure 服務。 當支援繼續擴充時，出現在這些資料表中的專案會隨著時間而改變。
 

@@ -3,20 +3,20 @@ title: 設定註冊，並以 Google 帳戶登入
 titleSuffix: Azure AD B2C
 description: 使用 Azure Active Directory B2C，讓具有 Google 帳戶的客戶得以註冊和登入您的應用程式。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 53fd210b04ba65e52db7efb13e9a2ad7d9cc8f61
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 48955caddb64069f897078f5e47066d9f11d119b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847442"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188135"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定註冊，並以 Google 帳戶登入
 
@@ -32,8 +32,8 @@ ms.locfileid: "76847442"
 輸入應用程式的**名稱**。 在 [授權的**網域**] 區段中輸入*b2clogin.com* ，然後選取 [**儲存**]。
 1. 在左側功能表選取 [認證]，然後選取 [建立認證] > [Oauth 用戶端識別碼]。
 1. 在 [應用程式類型] 下方，選取 [Web 應用程式]。
-1. 輸入應用程式的**名稱**，在 [授權 JavaScript 來源] 中輸入 `https://your-tenant-name.b2clogin.com`，接著在 [授權重新導向 URI] 中輸入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 以您的租用戶名稱取代 `your-tenant-name`。 即使租用戶在 Azure AD B2C 中是使用大寫字母來定義的，您還是需要在輸入租用戶名稱時，全部使用小寫字母。
-1. 按一下頁面底部的 [新增]。
+1. 輸入應用程式的**名稱**，在 [授權 JavaScript 來源]`https://your-tenant-name.b2clogin.com`**中輸入**，接著在 [授權重新導向 URI]`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`**中輸入**。 以您的租用戶名稱取代 `your-tenant-name`。 即使租用戶在 Azure AD B2C 中是使用大寫字母來定義的，您還是需要在輸入租用戶名稱時，全部使用小寫字母。
+1. 按一下 [建立]。
 1. 複製 [用戶端識別碼] 和 [用戶端密碼] 的值。 您必須使用這兩個值，將 Google 設為租用戶中的身分識別提供者。 **用戶端密碼** 是重要的安全性認證。
 
 ## <a name="configure-a-google-account-as-an-identity-provider"></a>將 Google 帳戶設為識別提供者

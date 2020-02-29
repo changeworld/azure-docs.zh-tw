@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/08/2019
+ms.date: 02/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f250d4593c8dac8007590245e1b774b95d8fa786
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: bc76f8edc8520ca50cd4c9527b037d99d24ce63c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75767937"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190495"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect 的必要條件
 本主題描述 Azure AD Connect 的必要條件和硬體需求。
@@ -67,7 +67,7 @@ ms.locfileid: "75767937"
 
 * 在加入網域的伺服器上部署 Azure AD Connect，並將系統管理存取許可權制為網域系統管理員或其他嚴格控制的安全性群組。
 
-若要深入了解，請參閱： 
+若要了解詳細資訊，請參閱： 
 
 * [保護系統管理員群組](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
 
@@ -86,8 +86,8 @@ ms.locfileid: "75767937"
 
 ### <a name="accounts"></a>帳戶
 * 想要與其整合之 Azure AD 租用戶的 Azure AD 全域管理員帳戶。 此帳戶必須是**學校或組織帳戶**，不能是 **Microsoft 帳戶**。
-* 如果您使用快速設定或從 DirSync 升級，則必須具有內部部署 Active Directory 的企業系統管理員帳戶。
-* [Active Directory 中的帳戶](reference-connect-accounts-permissions.md) (如果您使用自訂設定安裝路徑，或適用於內部部署 Active Directory 的企業系統管理員帳戶)。
+* 如果您使用[快速設定](reference-connect-accounts-permissions.md#express-settings-installation)或從 DirSync 升級，則您必須擁有內部部署 Active Directory 的企業系統管理員帳戶。
+* 如果您使用自訂設定安裝路徑，則會有更多選項，請參閱[Active Directory 中的帳戶](reference-connect-accounts-permissions.md#custom-installation-settings)
 
 ### <a name="connectivity"></a>連線能力
 * Azure AD Connect 伺服器需要內部網路和網際網路的 DNS 解析。 DNS 伺服器必須能夠將名稱解析成您的內部部署 Active Directory 和 Azure AD 端點。
@@ -137,7 +137,7 @@ ms.locfileid: "75767937"
 Azure AD Connect 需要 Microsoft PowerShell 和 .NET Framework 4.5.1。 您需要在伺服器上安裝此版本或更新版本。 依您的 Windows Server 版本來執行下列作業：
 
 * Windows Server 2012R2
-  * 預設會安裝 Microsoft PowerShell。 不需執行任何動作。
+  * 預設會安裝 Microsoft PowerShell。 您不需要執行任何動作。
   * .NET Framework 4.5.1 和更新版本會透過 Windows Update 提供。 請確定您已在控制台安裝 Windows Server 的最新更新。
 * Windows Server 2012
   * **Windows Management Framework 4.0**中包含最新的 Microsoft PowerShell 版本，可從 [Microsoft 下載中心](https://www.microsoft.com/downloads)取得。

@@ -3,20 +3,20 @@ title: 在自訂原則中定義自我判斷技術設定檔
 titleSuffix: Azure AD B2C
 description: 在 Azure Active Directory B2C 的自訂原則中定義自我判斷技術設定檔。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/17/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8f2a86f72f16a23b0133601cfe41b9e636d8866d
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: e0a282be9b8a20c64cd3e74e7860a289baa5aec6
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425590"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183800"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自訂原則中定義自我判斷技術設定檔
 
@@ -187,7 +187,7 @@ ms.locfileid: "77425590"
 
 ## <a name="metadata"></a>中繼資料
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要項 | 描述 |
 | --------- | -------- | ----------- |
 | 設定. operatingMode <sup>1</sup>| 否 | 對於登入頁面，此屬性會控制使用者名稱欄位的行為，例如輸入驗證和錯誤訊息。 預期的值：`Username` 或 `Email`。  |
 | AllowGenerationOfClaimsWithNullValues| 否| [允許] 產生具有 null 值的宣告。 例如，在案例中，使用者不會選取核取方塊。|
@@ -198,10 +198,10 @@ ms.locfileid: "77425590"
 | setting.showCancelButton | 否 | 顯示取消按鈕。 可能的值：`true` (預設) 或 `false` |
 | setting.showContinueButton | 否 | 顯示繼續按鈕。 可能的值：`true` (預設) 或 `false` |
 | 設定. showSignupLink <sup>2</sup>| 否 | 顯示註冊按鈕。 可能的值：`true` (預設) 或 `false` |
-| 設定. forgotPasswordLinkLocation <sup>2</sup>| 否| 顯示 [忘記密碼] 連結。 可能的值： `AfterInput` （預設）此連結會顯示在頁面底部，`None` 則會移除 [忘記密碼] 連結。| 
+| 設定. forgotPasswordLinkLocation <sup>2</sup>| 否| 顯示 [忘記密碼] 連結。 可能的值： `AfterInput` （預設）此連結會顯示在頁面底部，`None` 則會移除 [忘記密碼] 連結。|
 | IncludeClaimResolvingInClaimsHandling  | 否 | 針對輸入和輸出宣告，指定技術設定檔中是否包含[宣告解析](claim-resolver-overview.md)。 可能的值： `true`或 `false` （預設）。 如果您想要在技術設定檔中使用宣告解析程式，請將此設定為 [`true`]。 |
 
-注意：
+注意:
 1. 適用于內容定義[DataUri](contentdefinitions.md#datauri)類型 `unifiedssp`或 `unifiedssd`。
 1. 適用于內容定義[DataUri](contentdefinitions.md#datauri)類型 `unifiedssp`或 `unifiedssd`。 1\.1.0 和更新[版本的頁面配置](page-layout.md)。
 

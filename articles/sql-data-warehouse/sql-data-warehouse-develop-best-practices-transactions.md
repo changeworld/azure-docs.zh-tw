@@ -1,6 +1,6 @@
 ---
 title: 優化交易
-description: 了解如何在 Azure SQL 資料倉儲中將您的交易程式碼效能最佳化，同時將長時間回復的風險降至最低。
+description: 瞭解如何在 SQL 分析中將您的交易式程式碼效能優化，同時將長時間回復的風險降至最低。
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,21 +10,21 @@ ms.subservice: development
 ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: b8b8be9467ade870e57355be91b0de329b0f6217
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 6f7005f1706e72ea1794f99c030a25fa533327b8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692871"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195833"
 ---
-# <a name="optimizing-transactions-in-azure-sql-data-warehouse"></a>將 Azure SQL 資料倉儲的交易最佳化
-了解如何在 Azure SQL 資料倉儲中將您的交易程式碼效能最佳化，同時將長時間回復的風險降至最低。
+# <a name="optimizing-transactions-in-sql-analytics"></a>優化 SQL 分析中的交易
+瞭解如何在 SQL 分析中將您的交易式程式碼效能優化，同時將長時間回復的風險降至最低。
 
 ## <a name="transactions-and-logging"></a>交易和記錄
-交易是關聯式資料庫引擎的重要元件。 SQL 資料倉儲會在資料修改期間使用交易。 這些交易可以是明確或隱含的。 單一 INSERT、UPDATE 和 DELETE 陳述式都是隱含交易的範例。 明確交易會使用 BEGIN TRAN、COMMIT TRAN 或 ROLLBACK TRAN。 通常在多個修改陳述式必須一起連結為單一不可部分完成單位的時候會使用明確交易。 
+交易是關聯式資料庫引擎的重要元件。 SQL 分析會在資料修改期間使用交易。 這些交易可以是明確或隱含的。 單一 INSERT、UPDATE 和 DELETE 陳述式都是隱含交易的範例。 明確交易會使用 BEGIN TRAN、COMMIT TRAN 或 ROLLBACK TRAN。 通常在多個修改陳述式必須一起連結為單一不可部分完成單位的時候會使用明確交易。 
 
-Azure SQL 資料倉儲認可使用交易記錄之資料庫的變更。 每個散發套件都有自己的交易記錄檔。 交易記錄檔寫入是自動的。 不需要任何組態。 不過，儘管這個程序可保證寫入，但是它會在系統中引進額外負荷。 您可以藉由撰寫交易式的有效程式碼，將影響降到最低。 交易式的有效程式碼大致分為兩個類別。
+SQL 分析會使用交易記錄來認可對資料庫所做的變更。 每個散發套件都有自己的交易記錄檔。 交易記錄檔寫入是自動的。 無需任何設定。 不過，儘管這個程序可保證寫入，但是它會在系統中引進額外負荷。 您可以藉由撰寫交易式的有效程式碼，將影響降到最低。 交易式的有效程式碼大致分為兩個類別。
 
 * 盡可能使用最低限度的記錄建構
 * 使用已設定範圍的批次處理資料，以避免單數的長時間執行交易
@@ -68,7 +68,7 @@ CTAS 和 INSERT...SELECT 都是大量載入作業。 不過，兩者都會受到
 
 | 主要索引 | 載入案例 | 記錄模式 |
 | --- | --- | --- |
-| 堆積 |任意 |**最低限度** |
+| 堆積 |任何 |**最低限度** |
 | 叢集索引 |空的目標資料表 |**最低限度** |
 | 叢集索引 |載入的資料列不會與目標中的現有頁面重疊 |**最低限度** |
 | 叢集索引 |載入的資料列會與目標中的現有頁面重疊 |完整 |
@@ -78,7 +78,7 @@ CTAS 和 INSERT...SELECT 都是大量載入作業。 不過，兩者都會受到
 值得注意的是任何更新次要或非叢集索引的寫入一定是完整記錄作業。
 
 > [!IMPORTANT]
-> SQL 資料倉儲有 60 個散發套件。 因此，假設所有資料列平均散發，並位於單一分割中，您的批次必須包含 6,144,000 個資料列或更大刑，才能在寫入叢集資料行存放區索引時進行最低限度記錄。 如果資料表已分割，且插入的資料列跨越分割界限，每個假設平均資料散發的分割界限將需要 6,144,000 個資料列。 每個散發套件中的每個分割必須獨立超過 102,400 的資料列臨界值，才能讓插入以最低限度記錄在散發套件中。
+> SQL 分析資料庫有60發行版本。 因此，假設所有資料列平均散發，並位於單一分割中，您的批次必須包含 6,144,000 個資料列或更大刑，才能在寫入叢集資料行存放區索引時進行最低限度記錄。 如果資料表已分割，且插入的資料列跨越分割界限，每個假設平均資料散發的分割界限將需要 6,144,000 個資料列。 每個散發套件中的每個分割必須獨立超過 102,400 的資料列臨界值，才能讓插入以最低限度記錄在散發套件中。
 > 
 > 
 
@@ -177,7 +177,7 @@ DROP TABLE [dbo].[FactInternetSales_old]
 ```
 
 > [!NOTE]
-> 使用 SQL 資料倉儲工作負載管理功能有助於重新建立大型資料表。 如需詳細資訊，請參閱[適用於工作負載管理的資源類別](resource-classes-for-workload-management.md)。
+> 重新建立大型資料表可受益于使用 SQL 分析工作負載管理功能。 如需詳細資訊，請參閱[適用於工作負載管理的資源類別](resource-classes-for-workload-management.md)。
 > 
 > 
 
@@ -405,18 +405,18 @@ END
 ```
 
 ## <a name="pause-and-scaling-guidance"></a>暫停和調整指引
-Azure SQL 資料倉儲可讓您視需要[暫停、繼續及調整](sql-data-warehouse-manage-compute-overview.md)資料倉儲。 當您暫停或調整您的 SQL 資料倉儲時，請務必了解任何進行中的交易都會立即終止；導致所有開放的交易都會復原。 如果您的工作負載在暫停或調整作業之前發出長時間執行且不完整的資料修改，則這項工作必須復原。 此復原作業可能會影響暫停或調整 Azure SQL 資料倉儲資料庫的時間。 
+SQL 分析可讓您視需要[暫停、繼續及調整](sql-data-warehouse-manage-compute-overview.md)您的 SQL 集區。 當您暫停或調整您的 SQL 集區時，請務必瞭解任何進行中的交易都會立即終止;導致任何開啟的交易回復。 如果您的工作負載在暫停或調整作業之前發出長時間執行且不完整的資料修改，則這項工作必須復原。 這種復原可能會影響暫停或調整 SQL 集區所需的時間。 
 
 > [!IMPORTANT]
 > `UPDATE` 和 `DELETE` 都是完整記錄作業，因此這些復原/重做作業花費的時間可能會比對等的最低限度記錄作業長很多。 
 > 
 > 
 
-最佳案例是在暫停或調整 SQL 資料倉儲之前，讓進行中的資料修改交易完成。 但是，此案例不一定都可行。 若要降低長時間回復的風險，請考慮下列其中一個選項：
+最佳案例是讓進行中的資料修改交易在暫停或調整 SQL 集區之前完成。 但是，此案例不一定都可行。 若要降低長時間回復的風險，請考慮下列其中一個選項：
 
 * 請使用 [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) 重新撰寫長期執行的作業
 * 將作業分成多個區塊；在資料列子集上運作
 
 ## <a name="next-steps"></a>後續步驟
-若要進一步了解隔離等級和交易限制，請參閱 [SQL 資料倉儲中的交易](sql-data-warehouse-develop-transactions.md)。  如需其他最佳做法的概觀，請參閱 [SQL Data 資料倉儲最佳做法](sql-data-warehouse-best-practices.md)。
+若要深入瞭解隔離等級和交易限制，請參閱[SQL 分析中的交易](sql-data-warehouse-develop-transactions.md)。  如需其他最佳做法的概觀，請參閱 [SQL 資料倉儲最佳做法](sql-data-warehouse-best-practices.md)。
 

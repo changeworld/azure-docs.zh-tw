@@ -3,21 +3,21 @@ title: 存取和審查審核記錄
 titleSuffix: Azure AD B2C
 description: 如何以程式設計方式和 Azure 入口網站存取 Azure AD B2C audit 記錄檔。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 02/20/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 62a969519ebefaab919505d9c8faae830f55f4c6
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 83086fa2cb96eba423b9111134a0406d7256821f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505619"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78185772"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>存取 Azure AD B2C 稽核記錄
 
@@ -36,7 +36,7 @@ Audit log 事件只會保留**七天**。 如果您需要更長的保留期，�
 |---------|---------|
 |授權 |有關授權使用者存取 B2C 資源的活動（例如，存取 B2C 原則清單的系統管理員）。         |
 |目錄 |當系統管理員使用 Azure 入口網站登入時，所抓取之目錄屬性的相關活動。 |
-|Application | 在 B2C 應用程式上建立、讀取、更新和刪除（CRUD）作業。 |
+|應用程式 | 在 B2C 應用程式上建立、讀取、更新和刪除（CRUD）作業。 |
 |Key |在 B2C 金鑰容器中儲存之金鑰的 CRUD 作業。 |
 |資源 |B2C 資源的 CRUD 作業。 例如，原則和識別提供者。
 |驗證 |驗證使用者認證和權杖發行。|

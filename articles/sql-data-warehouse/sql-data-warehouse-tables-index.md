@@ -1,6 +1,6 @@
 ---
 title: 編制資料表索引
-description: 在 Azure SQL 資料倉儲中編製資料表索引的建議與範例。
+description: 在 SQL 分析中編制資料表索引的建議和範例。
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,27 +10,27 @@ ms.subservice: development
 ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 079891824bf71caf1ebfa575833de650a55ed5be
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 5167c897109f9e4f050ac6f7416ecabbbb28a4a9
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685447"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196596"
 ---
-# <a name="indexing-tables-in-sql-data-warehouse"></a>在 SQL 資料倉儲中編製資料表的索引
+# <a name="indexing-tables-in-sql-analytics"></a>在 SQL 分析中編制資料表的索引
 
-在 Azure SQL 資料倉儲中編製資料表索引的建議與範例。
+在 SQL 分析中編制資料表索引的建議和範例。
 
 ## <a name="index-types"></a>索引類型
 
-SQL 資料倉儲提供數個索引選項，包括[叢集資料行存放區索引](/sql/relational-databases/indexes/columnstore-indexes-overview)、[叢集索引和非叢集索引](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described)，以及稱為[堆積](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes)的非索引選項。  
+SQL 分析提供數個索引選項，包括叢集資料行存放區[索引](/sql/relational-databases/indexes/columnstore-indexes-overview)、叢集[索引和](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described)非叢集索引，以及非索引選項，也稱為[堆積](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes)。  
 
-若要以索引建立資料表，請參閱 [CREATE TABLE (Azure SQL 資料倉儲)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) 文件。
+若要建立具有索引的資料表，請參閱[CREATE TABLE （SQL 分析）](/sql/t-sql/statements/create-table-azure-sql-data-warehouse)檔。
 
 ## <a name="clustered-columnstore-indexes"></a>叢集資料行存放區索引
 
-根據預設，若未在資料表上指定任何索引選項，則 SQL 資料倉儲會建立叢集資料行存放區索引。 叢集資料行存放區資料表提供最高層級的資料壓縮，以及最佳的整體查詢效能。  叢集資料行存放區資料表通常勝過叢集索引或堆積資料表，而且通常是大型資料表的最佳選擇。  基於這些理由，叢集資料行存放區是您不確定如何編製資料表索引時的最佳起點。  
+根據預設，當資料表上未指定索引選項時，SQL 分析會建立叢集資料行存放區索引。 叢集資料行存放區資料表提供最高層級的資料壓縮，以及最佳的整體查詢效能。  叢集資料行存放區資料表通常勝過叢集索引或堆積資料表，而且通常是大型資料表的最佳選擇。  基於這些理由，叢集資料行存放區是您不確定如何編製資料表索引時的最佳起點。  
 
 若要建立叢集資料行存放區資料表，只要在 WITH 子句中指定 CLUSTERED COLUMNSTORE INDEX，或省略 WITH 子句︰
 
@@ -52,7 +52,7 @@ WITH ( CLUSTERED COLUMNSTORE INDEX );
 
 ## <a name="heap-tables"></a>堆積資料表
 
-當您在 SQL 資料倉儲中暫時登陸資料時，您可能會發現使用堆積資料表會讓整體程式更快速。 這是因為堆積的載入速度比索引資料表還要快，而在某些情況下，可以從快取進行後續的讀取。  如果您載入資料只是在做執行更多轉換之前的預備，將資料表載入堆積資料表會遠快於將資料載入叢集資料行存放區資料表。 此外，將資料載入[暫存資料表](sql-data-warehouse-tables-temporary.md)會比將資料表載入永久儲存體快速。  
+當您在 SQL 分析中暫時登陸資料時，您可能會發現使用堆積資料表會讓整體程式更快速。 這是因為堆積的載入速度比索引資料表還要快，而在某些情況下，可以從快取進行後續的讀取。  如果您載入資料只是在做執行更多轉換之前的預備，將資料表載入堆積資料表會遠快於將資料載入叢集資料行存放區資料表。 此外，將資料載入[暫存資料表](sql-data-warehouse-tables-temporary.md)會比將資料表載入永久儲存體快速。  
 
 對於小型查閱資料表而言，少於60000000個數據列，通常堆積資料表是合理的。  當超過60000000個數據列時，叢集資料行存放區資料表就會開始達到最佳壓縮。
 
@@ -154,7 +154,7 @@ WHERE    COMPRESSED_rowgroup_rows_AVG < 100000
 
 一旦您執行查詢，就可以開始查看資料，並分析您的結果。 此表格會說明在您的資料列群組分析中要尋找的項目。
 
-| Column | 如何使用這項資料 |
+| 資料行 | 如何使用這項資料 |
 | --- | --- |
 | [table_partition_count] |如果資料表已分割，您可能會預期看到較高的開放資料列群組計數。 散發套件中的每個分割在理論上有與其相關聯的開放資料列群組。 將這個因素納入您的分析。 已分割的小型資料表可以藉由移除分割進行最佳化，因為這樣會改善壓縮。 |
 | [row_count_total] |資料表的資料列計數。 例如，您可以使用此值來計算資料列的百分比 (壓縮的狀態)。 |
@@ -190,7 +190,7 @@ WHERE    COMPRESSED_rowgroup_rows_AVG < 100000
 
 ### <a name="memory-pressure-when-index-was-built"></a>建立索引時的記憶體壓力
 
-每個壓縮資料列群組的資料列數目，直接與資料列寬度以及可用來處理資料列群組的記憶體數量相關。  當資料列在記憶體不足的狀態下寫入資料行存放區資料表時，資料行存放區區段品質可能會降低。  因此，最佳做法是盡可能讓寫入至您的資料行存放區索引資料表的工作階段能存取較多的記憶體。  因為記憶體與並行存取之間有所取捨，正確的記憶體配置指引取決於您的資料表的每個資料列中的資料、配置給系統的資料倉儲單位，以及您可以提供給將資料寫入至資料表的工作階段的並行存取插槽數目。
+每個壓縮資料列群組的資料列數目，直接與資料列寬度以及可用來處理資料列群組的記憶體數量相關。  當資料列在記憶體不足的狀態下寫入資料行存放區資料表時，資料行存放區區段品質可能會降低。  因此，最佳做法是盡可能讓寫入至您的資料行存放區索引資料表的工作階段能存取較多的記憶體。  由於記憶體和平行存取之間有取捨，正確的記憶體配置指引取決於資料表的每個資料列中的資料、配置給您系統的 SQL 分析單位，以及您可以提供給會話的平行存取插槽數目，也就是將資料寫入您的資料表。
 
 ### <a name="high-volume-of-dml-operations"></a>大量的 DML 作業
 
@@ -204,13 +204,13 @@ WHERE    COMPRESSED_rowgroup_rows_AVG < 100000
 
 ### <a name="small-or-trickle-load-operations"></a>小型或緩慢移動的載入作業
 
-流入 SQL 資料倉儲的小型負載，有時也稱為緩慢移動的負載。 它們通常代表系統接近連續擷取的串流。 不過，因為這個串流已接近連續狀態，所以資料列的容量並沒有特別大。 通常資料遠低於直接載入資料行存放區格式所需的閾值。
+流入 SQL 分析資料庫的小型負載有時也稱為 trickle 載入。 它們通常代表系統接近連續擷取的串流。 不過，因為這個串流已接近連續狀態，所以資料列的容量並沒有特別大。 通常資料遠低於直接載入資料行存放區格式所需的閾值。
 
 在這些情況下，最好先將資料登陸到 Azure Blob 儲存體中，並讓它在載入之前累積。 這項技術通常稱為 *微批次處理*。
 
 ### <a name="too-many-partitions"></a>太多資料分割
 
-另一個考慮事項是資料分割對於叢集資料行存放區資料表的影響。  資料分割之前，SQL 資料倉儲已將您的資料分成 60 個資料庫。  進一步分割會分割您的資料。  如果您將資料分割，請考慮到**每個**資料分割需要有至少 1 百萬個資料列，使用叢集資料行存放區索引才會有幫助。  如果您將資料表分割成100個數據分割，則您的資料表需要至少6000000000個數據列，才能受益于叢集資料行存放區索引（60分佈*100*資料分割1000000資料列）。 如果您的 100 個分割資料表沒有 60 億個資料列，請減少資料分割數目，或考慮改用堆積資料表。
+另一個考慮事項是資料分割對於叢集資料行存放區資料表的影響。  分割之前，SQL 分析已經將您的資料分割成60資料庫。  進一步分割會分割您的資料。  如果您將資料分割，請考慮到**每個**資料分割需要有至少 1 百萬個資料列，使用叢集資料行存放區索引才會有幫助。  如果您將資料表分割成100個數據分割，則您的資料表需要至少6000000000個數據列，才能受益于叢集資料行存放區索引（60分佈*100*資料分割1000000資料列）。 如果您的 100 個分割資料表沒有 60 億個資料列，請減少資料分割數目，或考慮改用堆積資料表。
 
 您的資料表載入一些資料之後，請依照下列步驟來識別並重建具有次佳叢集資料行存放區索引的資料表。
 
@@ -252,7 +252,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
 ```
 
-在 SQL 資料倉儲中重建索引是一項離線作業。  如需重建索引的詳細資訊，請參閱[資料行存放區索引重組](/sql/relational-databases/indexes/columnstore-indexes-defragmentation) 中的 ALTER INDEX REBUILD 小節和 [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql)。
+在 SQL 分析中重建索引是一項離線作業。  如需重建索引的詳細資訊，請參閱[資料行存放區索引重組](/sql/relational-databases/indexes/columnstore-indexes-defragmentation) 中的 ALTER INDEX REBUILD 小節和 [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql)。
 
 ### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>步驟 3︰確認已改善叢集資料行存放區區段品質
 
@@ -283,7 +283,7 @@ AND     [OrderDateKey] <  20010101
 ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2 WITH (TRUNCATE_TARGET = ON);
 ```
 
-如需使用 CTAS 重新建立資料分割的詳細資訊，請參閱[在 SQL 資料倉儲中使用資料分割](sql-data-warehouse-tables-partition.md)。
+如需使用 CTAS 重新建立資料分割的詳細資訊，請參閱[在 SQL 分析中使用](sql-data-warehouse-tables-partition.md)資料分割。
 
 ## <a name="next-steps"></a>後續步驟
 

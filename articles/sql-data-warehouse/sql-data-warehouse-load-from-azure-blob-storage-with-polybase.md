@@ -1,5 +1,5 @@
 ---
-title: 載入 Contoso 零售資料
+title: 將 Contoso 零售資料載入至 SQL 分析資料倉儲
 description: 使用 PolyBase 和 T-sql 命令，將來自 Contoso 零售資料的兩個數據表載入 Azure SQL 分析。
 services: sql-data-warehouse
 author: kevinvngo
@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: af505d7614b527d6dc7e1ce54136578d67824cf9
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 4da4ea54de5517864567583cc6853df40b4370a9
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721161"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197295"
 ---
 # <a name="load-contoso-retail-data-to-a-sql-analytics-data-warehouse"></a>將 Contoso 零售資料載入至 SQL 分析資料倉儲
 
@@ -29,12 +29,15 @@ ms.locfileid: "76721161"
 3. 在完成載入後執行最佳化。
 
 ## <a name="before-you-begin"></a>開始之前
+
 若要執行本教學課程，您需要已有 SQL 分析資料倉儲的 Azure 帳戶。 如果您尚未布建資料倉儲，請參閱[建立資料倉儲和設定伺服器層級防火牆規則](create-data-warehouse-portal.md)。
 
-## <a name="1-configure-the-data-source"></a>1. 設定資料來源
+## <a name="configure-the-data-source"></a>設定資料來源
+
 PolyBase 使用 T-SQL 外部物件以定義外部資料的位置和屬性。 外部物件定義會儲存在您的 SQL 分析資料倉儲中。 資料會儲存在外部。
 
-### <a name="11-create-a-credential"></a>1.1. 建立認證
+## <a name="create-a-credential"></a>建立認證
+
 如果您要載入 Contoso 公用資料，**請略過此步驟**。 您不需要安全存取公用資料，因為任何人都可以存取它。
 
 如果您使用本教學課程作為載入您自己的資料的範本，**請勿略過此步驟**。 若要透過認證存取資料，請使用下列腳本來建立資料庫範圍認證。 然後在定義資料來源的位置時，使用它。
@@ -72,7 +75,8 @@ WITH (
 );
 ```
 
-### <a name="12-create-the-external-data-source"></a>1.2. 建立外部資料來源
+## <a name="create-the-external-data-source"></a>建立外部資料來源
+
 使用此 [[建立外部資料源](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql?view=sql-server-ver15)] 命令來儲存資料的位置，以及資料類型。 
 
 ```sql
@@ -87,9 +91,9 @@ WITH
 > [!IMPORTANT]
 > 如果您選擇將 Azure Blob 儲存體容器設為公用，請記住，當資料離開資料中心時，您身為資料擁有者將必須支付資料流出費用。 
 > 
-> 
 
-## <a name="2-configure-data-format"></a>2. 設定資料格式
+## <a name="configure-the-data-format"></a>設定資料格式
+
 資料將會以文字檔儲存在 Azure Blob 儲存體中，每個欄位都會以分隔符號分隔。 在 SSMS 中，執行下列 CREATE EXTERNAL FILE FORMAT 命令以指定文字檔中資料的格式。 Contoso 資料為未壓縮且以直立線符號分隔。
 
 ```sql
@@ -104,10 +108,10 @@ WITH
 );
 ``` 
 
-## <a name="3-create-the-external-tables"></a>3. 建立外部資料表
+## <a name="create-the-external-tables"></a>建立外部資料表
 既然您已指定資料來源和檔案格式，就可以開始建立外部資料表。 
 
-### <a name="31-create-a-schema-for-the-data"></a>3.1. 建立資料的結構描述。
+## <a name="create-a-schema-for-the-data"></a>建立資料的架構
 若要在您的資料庫中建立儲存 Contoso 資料的位置，請建立結構描述。
 
 ```sql
@@ -115,7 +119,8 @@ CREATE SCHEMA [asb]
 GO
 ```
 
-### <a name="32-create-the-external-tables"></a>3.2. 建立外部資料表。
+## <a name="create-the-external-tables"></a>建立外部資料表
+
 執行下列腳本來建立 DimProduct 和 FactOnlineSales 外部資料表。 您在這裡所做的就是定義資料行名稱和資料類型，並將它們系結至 Azure blob 儲存體檔案的位置和格式。 定義會儲存在 SQL 分析資料倉儲中，而資料仍會在 Azure 儲存體 Blob 中。
 
 **LOCATION** 參數為 Azure 儲存體 Blob 中根目錄下方的資料夾。 每個資料表都位於不同的資料夾中。
@@ -202,10 +207,11 @@ WITH
 ;
 ```
 
-## <a name="4-load-the-data"></a>4. 載入資料
+## <a name="load-the-data"></a>載入資料
 有不同的方式可存取外部資料。  您可以直接從外部資料表查詢資料、將資料載入資料倉儲中的新資料表，或將外部資料加入現有的資料倉儲資料表。  
 
-### <a name="41-create-a-new-schema"></a>4.1. 建立新的結構描述
+###  <a name="create-a-new-schema"></a>建立新的結構描述
+
 CTAS 會建立包含資料的新資料表。  首先，請建立 Contoso 資料的結構描述。
 
 ```sql
@@ -213,7 +219,8 @@ CREATE SCHEMA [cso]
 GO
 ```
 
-### <a name="42-load-the-data-into-new-tables"></a>4.2. 將資料載入新資料表
+### <a name="load-the-data-into-new-tables"></a>將資料載入新資料表
+
 若要將資料從 Azure blob 儲存體載入資料倉儲資料表，請使用[CREATE TABLE AS SELECT （transact-sql）](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=aps-pdw-2016-au7)語句。 使用[CTAS](sql-data-warehouse-develop-ctas.md)載入時，會利用您所建立的強型別外部資料表。 若要將資料載入至新的資料表，請針對每個資料表使用一個 CTAS 語句。 
  
 CTAS 建立新的資料表，並將選取陳述式的結果填入該資料表。 CTAS 定義新資料表，以使它擁有和選取陳述式之結果相同的資料行和資料類型。 如果您選取外部資料表上的所有資料行，則新資料表將會是外部資料表中資料行和資料類型的複本。
@@ -228,7 +235,8 @@ CREATE TABLE [cso].[DimProduct]            WITH (DISTRIBUTION = HASH([ProductKey
 CREATE TABLE [cso].[FactOnlineSales]       WITH (DISTRIBUTION = HASH([ProductKey]  ) ) AS SELECT * FROM [asb].[FactOnlineSales]        OPTION (LABEL = 'CTAS : Load [cso].[FactOnlineSales]        ');
 ```
 
-### <a name="43-track-the-load-progress"></a>4.3 追蹤載入進度
+### <a name="track-the-load-progress"></a>追蹤載入進度
+
 您可以使用動態管理檢視 (DMV) 來追蹤載入進度。 
 
 ```sql
@@ -264,7 +272,8 @@ ORDER BY
     gb_processed desc;
 ```
 
-## <a name="5-optimize-columnstore-compression"></a>5. 優化資料行存放區壓縮
+## <a name="optimize-columnstore-compression"></a>最佳化資料行存放區壓縮
+
 根據預設，SQL 分析資料倉儲會將資料表儲存為叢集資料行存放區索引。 載入完成後，某些資料列可能不會被壓縮為資料行存放區。  發生這種情況的原因有很多種。 若要深入了解，請參閱[管理資料行存放區索引](sql-data-warehouse-tables-index.md)。
 
 若要最佳化載入後的查詢效能和資料行存放區壓縮，請重建資料表以強制資料行存放區索引對所有資料列進行壓縮。 
@@ -279,7 +288,8 @@ ALTER INDEX ALL ON [cso].[FactOnlineSales]          REBUILD;
 
 如需維護資料行存放區索引的詳細資訊，請參閱 [管理資料行存放區索引](sql-data-warehouse-tables-index.md) 一文。
 
-## <a name="6-optimize-statistics"></a>6. 優化統計資料
+## <a name="optimize-statistics"></a>最佳化統計資料
+
 最好是在載入之後立即建立單一資料行統計資料。 如果您知道特定資料行不會在查詢述詞中，您可以略過建立這些資料行的統計資料。 如果您在每個資料行上建立單一資料行統計資料，可能需要很長的時間才能重建所有的統計資料。 
 
 如果您決定要在每個資料表的每個資料行上建立單一資料行統計資料，便可以使用`prc_sqldw_create_stats`統計資料[一文中的預存程序程式碼範例 ](sql-data-warehouse-tables-statistics.md)。
@@ -329,7 +339,7 @@ CREATE STATISTICS [stat_cso_FactOnlineSales_StoreKey] ON [cso].[FactOnlineSales]
 ```
 
 ## <a name="achievement-unlocked"></a>成就解鎖！
-您已成功將公用資料載入 SQL 分析資料倉儲。 太棒了！
+您已成功將公用資料載入資料倉儲。 太棒了！
 
 您現在可以開始查詢資料表以探索您的資料。 執行下列查詢，以找出每個品牌的總銷售額：
 

@@ -2,20 +2,20 @@
 title: REST API 宣告交換-Azure Active Directory B2C
 description: 將 REST API 宣告交換新增至 Active Directory B2C 中的自訂原則。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1caf0b3f6396cc008e77bb96e686fe78f462850b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 351b41f45fb84384ec0193f8e3130347d0b19401
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849093"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189084"
 ---
 # <a name="add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中將 REST API 宣告交換新增至自訂原則
 

@@ -2,20 +2,20 @@
 title: 自訂原則的日期宣告轉換範例
 description: Azure Active Directory B2C 的 Identity Experience Framework （IEF）架構的日期宣告轉換範例。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/03/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b831a3175e1dc8b19395d1c923b076ac9428690c
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: f3e5a7b90892f0ed0243d448ea1ac63fb56f277f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982903"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188829"
 ---
 # <a name="date-claims-transformations"></a>日期宣告轉換
 
@@ -27,7 +27,7 @@ ms.locfileid: "76982903"
 
 確認某個日期和時間宣告 (字串資料類型) 是否晚於第二個日期和時間宣告 (字串資料類型)，並擲回例外狀況。
 
-| 項目 | TransformationClaimType | 資料類型 | 注意 |
+| 項目 | TransformationClaimType | 資料型別 | 注意事項 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | leftOperand | string | 第一個宣告的類型，應該晚於第二個宣告。 |
 | InputClaim | rightOperand | string | 第二個宣告的類型，應該早於第一個宣告。 |
@@ -89,7 +89,7 @@ ms.locfileid: "76982903"
 
 將**日期** ClaimType 轉換為**日期時間** ClaimType。 宣告轉換會轉換時間格式，並對日期新增 12:00:00 AM。
 
-| 項目 | TransformationClaimType | 資料類型 | 注意 |
+| 項目 | TransformationClaimType | 資料型別 | 注意事項 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | date | 要轉換的 ClaimType。 |
 | OutputClaim | outputClaim | dateTime | 叫用此 ClaimsTransformation 之後所產生的 ClaimType。 |
@@ -114,11 +114,11 @@ ms.locfileid: "76982903"
 - 輸出宣告：
     - **outputClaim**：1559347200 (June 1, 2019 12:00:00 AM)
 
-## <a name="convertdatetimetodateclaim"></a>ConvertDateTimeToDateClaim 
+## <a name="convertdatetimetodateclaim"></a>ConvertDateTimeToDateClaim
 
 將日期**時間**claimtype 轉換成**日期**ClaimType。 宣告轉換會從日期移除時間格式。
 
-| 項目 | TransformationClaimType | 資料類型 | 注意 |
+| 項目 | TransformationClaimType | 資料型別 | 注意事項 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | dateTime | 要轉換的 ClaimType。 |
 | OutputClaim | outputClaim | date | 叫用此 ClaimsTransformation 之後所產生的 ClaimType。 |
@@ -147,7 +147,7 @@ ms.locfileid: "76982903"
 
 取得目前的 UTC 日期和時間，並將值新增至 ClaimType。
 
-| 項目 | TransformationClaimType | 資料類型 | 注意 |
+| 項目 | TransformationClaimType | 資料型別 | 注意事項 |
 | ---- | ----------------------- | --------- | ----- |
 | OutputClaim | currentDateTime | dateTime | 叫用此 ClaimsTransformation 之後所產生的 ClaimType。 |
 
@@ -168,11 +168,11 @@ ms.locfileid: "76982903"
 
 判斷某個日期時間是晚於、早於還是等於另一個日期時間。 其結果是新的布林值 ClaimType，且其值為 `true` 或 `false`。
 
-| 項目 | TransformationClaimType | 資料類型 | 注意 |
+| 項目 | TransformationClaimType | 資料型別 | 注意事項 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | firstDateTime | dateTime | 第一個 dateTime，比較早於或晚於第二個 dateTime。 Null 值會擲回例外狀況。 |
 | InputClaim | secondDateTime | dateTime | 第二個 dateTime，用來比較早於或晚於第一個 dateTime。 Null 值會被視為目前的 datetTime。 |
-| InputParameter | ! 運算子之後 | string | 下列值之一：相同、晚於或早於。 |
+| InputParameter | operator | string | 下列值之一：相同、晚於或早於。 |
 | InputParameter | timeSpanInSeconds | int | 將時間範圍新增至第一個日期時間。 |
 | OutputClaim | result | boolean | 叫用此 ClaimsTransformation 之後所產生的 ClaimType。 |
 

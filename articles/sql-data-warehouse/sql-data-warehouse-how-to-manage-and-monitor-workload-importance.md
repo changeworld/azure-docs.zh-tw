@@ -1,26 +1,26 @@
 ---
 title: 管理及監視工作負載的重要性
-description: 瞭解如何在 Azure SQL 資料倉儲中管理和監視要求層級的重要性。
+description: 瞭解如何在 Azure Synapse Analytics 中管理和監視要求層級的重要性。
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.subservice: workload-management
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 02/04/2020
 ms.author: rortloff
-ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: ee9acb873c5118733de142045457028c3f4d5f61
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.reviewer: jrasnick
+ms.custom: azure-synapse
+ms.openlocfilehash: 6274bff9f9c57bfb06e58e1c4bfce6b6e265ac62
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692703"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195612"
 ---
-# <a name="manage-and-monitor-workload-importance-in-azure-sql-data-warehouse"></a>管理和監視 Azure SQL 資料倉儲中的工作負載重要性
+# <a name="manage-and-monitor-workload-importance-in-azure-synapse-analytics"></a>管理和監視 Azure Synapse 分析中的工作負載重要性
 
-使用 Dmv 和目錄檢視，在 Azure SQL 資料倉儲中管理和監視要求層級的重要性。
+使用 Dmv 和目錄檢視，在 Azure Synapse 中管理和監視 SQL 分析要求層級的重要性。
 
 ## <a name="monitor-importance"></a>監視重要性
 
@@ -39,7 +39,7 @@ ORDER BY r.start_time
 
 ## <a name="manage-importance-with-catalog-views"></a>使用目錄檢視管理重要性
 
-Workload_management_workload_classifiers 目錄檢視包含 Azure SQL 資料倉儲實例中分類器的資訊。 若要排除對應至資源類別的系統定義分類器，請執行下列程式碼：
+[Sys.databases] workload_management_workload_classifiers 目錄檢視包含分類器的資訊。 若要排除對應至資源類別的系統定義分類器，請執行下列程式碼：
 
 ```sql
 SELECT *

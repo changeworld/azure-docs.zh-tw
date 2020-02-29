@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 108d116500454605f33de201caffc11ae263f74c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 6132aab98cc8145cb99cf153c64f20fbac00131c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851497"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197000"
 ---
 # <a name="onboarding-and-installing"></a>上架和安裝
 
@@ -30,24 +30,29 @@ ms.locfileid: "74851497"
 
 ## <a name="onboarding-the-microsoft-security-code-analysis-extension"></a>將 Microsoft 安全性程式碼分析延伸模組上線
 
-- 如果您有下列其中一項支援供應專案，請洽詢您的技術客戶經理以購買或交換現有的時數，以取得擴充功能的存取權：
-  - 整合支援的先進層
-  - 整合支援效能層級
-  - 開發人員的頂級支援
-  - 合作夥伴的頂級支援
-  - 適用于企業的頂級支援
-- 如果您有下列其中一項支援服務，或沒有 Microsoft 支援方案，您必須升級為符合資格的支援供應專案：
-  - 適用於合作夥伴的 Azure 支援
-  - Azure 基本支援
-  - Azure 開發人員支援
-  - Azure 標準支援
-  - Azure 專業指導
-  - 整合支援核心層
-- 若要購買合格的支援供應專案，請移至我們的[支援服務首頁](https://www.microsoft.com/enterprise/services/support)。
-- 在支援合約就緒之後，請洽詢您的技術客戶經理以協助您開始使用，並協助您收集所有必要的詳細資料。
+### <a name="interested-in-purchasing-the-microsoft-security-code-analysis-extension"></a>有興趣購買 Microsoft 安全性程式碼分析延伸模組嗎？
 
->[!NOTE]
->如果您沒有支援合約，我們也致力於合作夥伴購買方案，您可以在其中利用協力廠商合作夥伴來購買延伸模組，而不需要購買整合的支援方案。 請 [傳送電子郵件給我們](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Onboarding%20Request)。 讓我們知道您對這個選項有興趣。 我們會注意您的感，並在此選項可供使用時立即回到您。
+如果您有下列其中一項支援供應專案，請洽詢您的技術客戶經理以購買或交換現有的時數，以取得擴充功能的存取權：
+
+- 整合支援的先進層
+- 整合支援效能層級
+- 開發人員的頂級支援
+- 合作夥伴的頂級支援
+- 適用于企業的頂級支援
+
+如果您沒有上述支援合約的其中一項，您可以向我們的其中一個合作夥伴購買此延伸模組。
+
+**後續步驟：**
+
+請洽詢下列清單中的合作夥伴，並要求購買 Microsoft 安全性程式碼分析延伸模組。
+
+>**家**
+
+- 區域-連絡人詳細資料： cloudsupport@zones.com
+
+### <a name="become-a-partner"></a>成為合作夥伴
+
+Microsoft 安全性程式碼分析小組想要為合作夥伴上架合約頂級支援。 合作夥伴將擴充功能銷售給想要購買的客戶，但沒有 Microsoft 的企業支援合約，協助讓 Azure DevOps 客戶更安全地進行開發。 有興趣的合作夥伴可以[在此](http://www.microsoftpartnersupport.com/msrd/opin)註冊。
 
 ## <a name="installing-the-microsoft-security-code-analysis-extension"></a>安裝 Microsoft 安全性程式碼分析延伸模組
 

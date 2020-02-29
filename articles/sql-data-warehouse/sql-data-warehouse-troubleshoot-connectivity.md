@@ -1,6 +1,6 @@
 ---
-title: 連線性疑難排解
-description: 疑難排解 Azure SQL 資料倉儲中的連線能力。
+title: 連線能力疑難排解
+description: 疑難排解 SQL 分析中的連線能力。
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -10,55 +10,55 @@ ms.subservice: supportability
 ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: d1139032176b3b44c58471b87cabd10ffeaa3d20
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 003366a6d88e018090475b6fb22d9042a97af823
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692417"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192246"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>對連線問題進行疑難排解
 
-本文列出連接到您的 SQL 資料倉儲時常見的疑難排解技巧。
+本文列出連接到 SQL 分析資料庫的常見疑難排解技巧。
 - [檢查服務可用性](./sql-data-warehouse-troubleshoot-connectivity.md#check-service-availability)
-- [檢查已暫停或調整作業](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-paused-or-scaling-operation)
-- [檢查您的防火牆設定](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-firewall-settings)
-- [檢查您的 VNet/服務端點設定](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-vnetservice-endpoint-settings)
+- [檢查已暫停或正在調整的作業](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-paused-or-scaling-operation)
+- [檢查防火牆設定](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-firewall-settings)
+- [檢查 VNet/服務端點設定](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-vnetservice-endpoint-settings)
 - [檢查最新的驅動程式](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-the-latest-drivers)
-- [檢查您的連接字串](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-connection-string)
-- [間歇連接問題](./sql-data-warehouse-troubleshoot-connectivity.md#intermittent-connection-issues)
+- [檢查連接字串](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-connection-string)
+- [間歇性連線問題](./sql-data-warehouse-troubleshoot-connectivity.md#intermittent-connection-issues)
 - [常見的錯誤訊息](./sql-data-warehouse-troubleshoot-connectivity.md#common-error-messages)
 
 ## <a name="check-service-availability"></a>檢查服務可用性
 
-查看服務是否可用。 在 Azure 入口網站中，移至您嘗試連接的 SQL 資料倉儲。 在左側目錄面板中，按一下 [**診斷並解決問題**]。
+查看服務是否可用。 在 Azure 入口網站中，移至您嘗試連接的 SQL 分析資料庫。 在左側目錄面板中，按一下 [**診斷並解決問題**]。
 
 ![選取資源健康狀態](./media/sql-data-warehouse-troubleshoot-connectivity/diagnostics-link.png)
 
-SQL 資料倉儲的狀態會顯示在這裡。 如果服務未顯示為 [**可用**]，請查看進一步的步驟。
+您的 SQL 分析狀態會顯示在這裡。 如果服務未顯示為 [**可用**]，請查看進一步的步驟。
 
 ![可用的服務](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health.png)
 
-如果您的資源健康狀態顯示您的資料倉儲已暫停或調整，請遵循指引來繼續資料倉儲。
+如果您的資源健康狀態顯示您的 SQL 分析實例已暫停或調整規模，請遵循指引來繼續您的實例。
 
 ![服務已暫停](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) 您可以在這裡找到有關資源健康狀態的其他資訊。
 
 ## <a name="check-for-paused-or-scaling-operation"></a>檢查已暫停或調整作業
 
-檢查入口網站，查看您的 SQL 資料倉儲是否已暫停或調整。
+請檢查入口網站，以查看您的 SQL 分析實例是否已暫停或調整。
 
 ![服務已暫停](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
 
-如果您看到您的服務已暫停或調整，請檢查它是否不在維護排程期間。 在您的 SQL 資料倉儲*總覽*的入口網站上，您會看到已選擇的維護排程。
+如果您看到您的服務已暫停或調整，請檢查它是否不在維護排程期間。 在您的 SQL 分析*總覽*的入口網站上，您會看到所選的維護排程。
 
 ![總覽維護排程](./media/sql-data-warehouse-troubleshoot-connectivity/overview-maintance-schedule.png)
 
-否則，請洽詢您的 IT 系統管理員，確認此維護不是已排程的事件。 若要繼續 SQL 資料倉儲，請遵循[這裡](https://docs.microsoft.com/azure/sql-data-warehouse/pause-and-resume-compute-portal#resume-compute)所述的步驟。
+否則，請洽詢您的 IT 系統管理員，確認此維護不是已排程的事件。 若要繼續 SQL 分析實例，請遵循[這裡](https://docs.microsoft.com/azure/sql-data-warehouse/pause-and-resume-compute-portal#resume-compute)所述的步驟。
 
 ## <a name="check-your-firewall-settings"></a>檢查您的防火牆設定
 
-SQL 資料倉儲會透過連接埠 1433 通訊。   如果您嘗試從公司網路內進行連線，您網路的防火牆可能不允許透過埠1433的輸出流量。 在此情況下，除非您的 IT 部門開啟埠1433，否則您無法連線到您的 Azure SQL Database 伺服器。 如需防火牆設定的詳細資訊，請參閱[這裡](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules)。
+SQL 分析資料庫會透過埠1433進行通訊。   如果您嘗試從公司網路內進行連線，您網路的防火牆可能不允許透過埠1433的輸出流量。 在此情況下，除非 IT 部門開啟連接埠 1433，否則您無法連線至 Azure SQL Database 伺服器。 如需防火牆設定的詳細資訊，請參閱[這裡](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules)。
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>檢查您的 VNet/服務端點設定
 
@@ -68,11 +68,11 @@ SQL 資料倉儲會透過連接埠 1433 通訊。   如果您嘗試從公司
 
 ### <a name="software"></a>軟體
 
-請檢查以確定您使用的是最新的工具來連接到您的 SQL 資料倉儲：
+請檢查以確定您使用的是最新的工具來連接到 SQL 分析資料庫：
 
 * SSMS
 * Azure Data Studio
-* SQL Server Data Tools （Visual Studio）
+* SQL Server Data Tools (Visual Studio)
 
 ### <a name="drivers"></a>驅動程式
 
@@ -85,7 +85,7 @@ SQL 資料倉儲會透過連接埠 1433 通訊。   如果您嘗試從公司
 
 ## <a name="check-your-connection-string"></a>檢查您的連接字串
 
-請檢查並確定您的連接字串設定正確。  以下是一些範例。  您可以在這裡找到關於[連接字串](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-connection-strings)的其他資訊。
+進行檢查以確認連接字串是否已正確設定。  以下是一些範例。  您可以[在這裡找到關於連接字串](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-connection-strings)的其他資訊。
 
 ADO.NET 連接字串
 
@@ -113,7 +113,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 ## <a name="intermittent-connection-issues"></a>間歇連接問題
 
-檢查是否有大量的佇列要求在伺服器上遇到繁重的負載。 您可能需要相應增加您的資料倉儲，以取得其他資源。
+進行檢查以了解伺服器上是否因為有大量已排入佇列的要求而讓負載太高。 您可能需要相應增加您的 SQL 分析實例，以取得其他資源。
 
 ## <a name="common-error-messages"></a>常見的錯誤訊息
 

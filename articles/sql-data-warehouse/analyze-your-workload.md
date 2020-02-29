@@ -1,30 +1,30 @@
 ---
 title: 分析工作負載
-description: 在 Azure SQL 資料倉儲中用來分析工作負載查詢優先順序的技術。
+description: 針對 Azure Synapse 分析中的工作負載分析查詢優先順序的技術。
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 03/13/2019
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 14e53c1ebe63fac0f7c8e29f66ee5aa0cb3b9526
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 9b1432c41e56c6e0bc3fd80f9c2dbb36374d9e2a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693125"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199990"
 ---
-# <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>分析 Azure SQL 資料倉儲的工作負載 | Microsoft Docs
+# <a name="analyze-your-workload-in-azure-synapse-analytics"></a>在 Azure Synapse 分析中分析您的工作負載
 
-在 Azure SQL 資料倉儲中分析工作負載的技術。
+在 Azure Synapse 分析中分析 SQL 分析工作負載的技術。
 
 ## <a name="resource-classes"></a>資源課程
 
-SQL 資料倉儲提供資源類別，以將系統資源指派給查詢。  如需資源類別的詳細資訊，請參閱[資源類別 & 工作負載管理](resource-classes-for-workload-management.md)。  如果指派給查詢的資源類別所需的資源數量比目前可用的還多，查詢將會等候。
+SQL 分析提供資源類別，可將系統資源指派給查詢。  如需資源類別的詳細資訊，請參閱[資源類別 & 工作負載管理](resource-classes-for-workload-management.md)。  如果指派給查詢的資源類別所需的資源數量比目前可用的還多，查詢將會等候。
 
 ## <a name="queued-query-detection-and-other-dmvs"></a>已排入佇列的查詢偵測和其他 DMV
 
@@ -63,7 +63,7 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc')
 ;
 ```
 
-SQL 資料倉儲具有下列等候類型：
+SQL 分析具有下列等候類型：
 
 * **LocalQueriesConcurrencyResourceType**：位於並行存取插槽架構外部的查詢。 DMV 查詢及 `SELECT @@VERSION` 這類的系統函數是本機查詢的範例。
 * **UserConcurrencyResourceType**：位於並行存取插槽架構內部的查詢。 針對使用者資料表的查詢代表會使用此資源類型的範例。
@@ -153,4 +153,4 @@ FROM    sys.dm_pdw_wait_stats w
 
 ## <a name="next-steps"></a>後續步驟
 
-如需管理資料庫使用者和安全性的詳細資訊，請參閱[保護 SQL 資料倉儲中的資料庫](sql-data-warehouse-overview-manage-security.md)。 如需較大資源類別如何改善叢集資料行存放區索引品質的詳細資訊，請參閱 [重建索引以提升區段品質](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)。
+如需管理資料庫使用者和安全性的詳細資訊，請參閱[在 SQL 分析中保護資料庫](sql-data-warehouse-overview-manage-security.md)。 如需較大資源類別如何改善叢集資料行存放區索引品質的詳細資訊，請參閱 [重建索引以提升區段品質](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)。

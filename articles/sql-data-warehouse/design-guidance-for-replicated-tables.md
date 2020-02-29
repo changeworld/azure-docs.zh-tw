@@ -1,6 +1,6 @@
 ---
 title: 複寫資料表的設計指引
-description: 針對在「Azure SQL 資料倉儲」結構描述中設計複寫資料表提供建議。 
+description: 在 SQL 分析中設計複寫資料表的建議
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,32 +10,32 @@ ms.subservice: development
 ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 18577cb729c9f17a112979cd1ebb763af38b9ca2
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: ff141b0da0eb2fe68bbeccb7e39292a70b7305f0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693055"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194745"
 ---
-# <a name="design-guidance-for-using-replicated-tables-in-azure-sql-data-warehouse"></a>在 Azure SQL 資料倉儲中使用複寫資料表的設計指引
-本文針對在「SQL 資料倉儲」結構描述中設計複寫資料表提供建議。 您可以使用這些建議來降低資料移動和查詢的複雜性，以提升查詢效能。
+# <a name="design-guidance-for-using-replicated-tables-in-sql-analytics"></a>在 SQL 分析中使用複寫資料表的設計指引
+本文提供在 SQL 分析架構中設計複寫資料表的建議。 您可以使用這些建議來降低資料移動和查詢的複雜性，以提升查詢效能。
 
 > [!VIDEO https://www.youtube.com/embed/1VS_F37GI9U]
 
 ## <a name="prerequisites"></a>必要條件
-本文假設您已熟悉「SQL 資料倉儲」中的資料散發和資料移動概念。  如需詳細資訊，請參閱[架構](massively-parallel-processing-mpp-architecture.md)一文。 
+本文假設您已熟悉 SQL 分析中的資料散發和資料移動概念。  如需詳細資訊，請參閱[架構](massively-parallel-processing-mpp-architecture.md)一文。 
 
 在資料表設計過程中，請儘可能了解您的資料及查詢資料的方式。  例如，請考慮下列問題：
 
 - 資料表的大小為何？   
 - 資料表的重新整理頻率為何？   
-- 我是否在資料倉儲中有事實資料表和維度資料表？   
+- 我在 SQL 分析資料庫中有事實和維度資料表嗎？   
 
 ## <a name="what-is-a-replicated-table"></a>什麼是複寫資料表？
 複寫資料表在每個計算節點上都有一份可存取的完整資料表複本。 複寫資料表可使在進行聯結或彙總之前，不需要在計算節點之間傳輸資料。 由於資料表有多個複本，因此當資料表大小在壓縮後小於 2 GB 時，複寫資料表的運作效能最佳。  2 GB 不是固定限制。  如果資料是靜態的，而且不會變更，您可以複寫較大的資料表。
 
-下圖顯示每個計算節點上可存取的複寫資料表。 在「SQL 資料倉儲」中，會將複寫資料表完整複製到每個計算節點上的散發資料庫。 
+下圖顯示每個計算節點上可存取的複寫資料表。 在 SQL 分析中，複寫資料表會完整複製到每個計算節點上的散發資料庫。 
 
 ![複寫資料表](media/guidance-for-using-replicated-tables/replicated-table.png "複寫的資料表")  
 
@@ -49,8 +49,8 @@ ms.locfileid: "73693055"
 在下列情況下，複寫資料表可能無法產生最佳查詢效能：
 
 - 資料表有頻繁的插入、更新及刪除作業。 這些資料操作語言（DML）作業需要重建複寫資料表。 經常重建可能會導致效能變慢。
-- 經常調整資料倉儲。 調整資料倉儲會變更計算節點的數目，這會導致重建複寫資料表。
-- 資料表有大量資料行，但資料作業通常只存取少數資料行。 在此情況下散發資料表，然後針對經常存取的資料行建立索引，可能會比複寫整個資料表還要有效。 當查詢需要進行資料移動時，「SQL 資料倉儲」只會移動所要求資料行中的資料。 
+- SQL 分析資料庫會頻繁地進行調整。 調整 SQL 分析資料庫會變更計算節點的數目，這會導致重建複寫資料表。
+- 資料表有大量資料行，但資料作業通常只存取少數資料行。 在此情況下散發資料表，然後針對經常存取的資料行建立索引，可能會比複寫整個資料表還要有效。 當查詢需要進行資料移動時，SQL 分析只會移動所要求資料行的資料。 
 
 ## <a name="use-replicated-tables-with-simple-query-predicates"></a>使用複寫資料表搭配簡單查詢述詞
 在您選擇是要散發還是複寫資料表之前，請先思考您打算對資料表執行的查詢類型。 請儘可能
@@ -118,11 +118,11 @@ WHERE d.FiscalYear = 2004
 
 
 ## <a name="performance-considerations-for-modifying-replicated-tables"></a>修改複寫資料表時的效能考量
-「SQL 資料倉儲」是透過維護資料表的主要版本來實作複寫資料表。 它會將主要版本複製到每個計算節點上的一個散發資料庫。 當發生變更時，「SQL 資料倉儲」會先更新主資料表。 接著，它會重建每個計算節點上的資料表。 重建複寫資料表包括將資料表複製到每個計算節點，然後建立索引。  例如，DW400 上的複寫資料表有 5 份資料。  主要複本以及每個計算節點上的完整複本。  所有資料都會儲存在散發資料庫中。 SQL 資料倉儲會使用這個模型支援更快的資料修改陳述式和彈性調整作業。 
+SQL 分析會藉由維護資料表的主要版本來執行複寫資料表。 它會將主要版本複製到每個計算節點上的一個散發資料庫。 當變更時，SQL 分析會先更新主資料表。 接著，它會重建每個計算節點上的資料表。 重建複寫資料表包括將資料表複製到每個計算節點，然後建立索引。  例如，DW400 上的複寫資料表有 5 份資料。  主要複本以及每個計算節點上的完整複本。  所有資料都會儲存在散發資料庫中。 SQL 分析會使用此模型來支援更快速的資料修改語句和彈性的調整作業。 
 
 在執行下列動作之後，必須進行重建：
 - 載入或修改資料
-- 將資料倉儲調整成不同的等級
+- SQL 分析實例會調整為不同的層級
 - 更新資料表定義
 
 在執行下列動作之後，不須進行重建：
@@ -132,7 +132,7 @@ WHERE d.FiscalYear = 2004
 在修改資料之後，不會立即進行重建。 取而代之的是，會在查詢從資料表選取資料時觸發重建。  以非同步方式將資料複製到每個計算節點時，觸發重建的查詢會立即讀取主要版本的資料表。 資料複製完成之前，後續的查詢將會繼續使用主要版本的資料表。  如果對強制執行另一次重建的複寫資料表發生任何活動，則資料複本將失效，且下一個 Select 陳述式將會再觸發一次資料複製。 
 
 ### <a name="use-indexes-conservatively"></a>謹慎地使用索引
-標準索引編製做法適用於複寫資料表。 「SQL 資料倉儲」會在重建時，一併重建每個複寫資料表索引。 請只有在效能的提升超過重建索引的代價時，才使用索引。  
+標準索引編製做法適用於複寫資料表。 SQL 分析會在重建過程中重建每個複寫的資料表索引。 請只有在效能的提升超過重建索引的代價時，才使用索引。  
  
 ### <a name="batch-data-loads"></a>批次資料載入
 將資料載入複寫資料表時，請嘗試一起批次載入，以將重建次數降到最低。 請在執行 select 陳述式之前，先執行所有批次處理的載入。
@@ -182,8 +182,8 @@ SELECT TOP 1 * FROM [ReplicatedTable]
 ## <a name="next-steps"></a>後續步驟 
 若要建立複寫資料表，請使用下列其中一個陳述式：
 
-- [CREATE TABLE (Azure SQL 資料倉儲)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
-- [CREATE TABLE AS SELECT (Azure SQL 資料倉儲)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
+- [CREATE TABLE （SQL 分析）](/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
+- [CREATE TABLE AS SELECT （SQL 分析）](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
 
 如需分散式資料表的概觀，請參閱[分散式資料表](sql-data-warehouse-tables-distribute.md)。
 

@@ -3,20 +3,20 @@ title: 自訂原則中的技術設定檔總覽
 titleSuffix: Azure AD B2C
 description: 瞭解如何在 Azure Active Directory B2C 的自訂原則中使用技術設定檔。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/11/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3b0e59912d740e30b0e29fb882542f1995ab6f54
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 48324d252e22ca898f923e1f0ad9b76df1c10861
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505667"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183647"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>關於 Azure Active Directory B2C 自訂原則中的技術設定檔
 
@@ -40,7 +40,7 @@ ms.locfileid: "77505667"
 - [自我判斷](self-asserted-technical-profile.md) - 與使用者進行互動。 例如，收集使用者的認證以進行登入、呈現註冊頁面或密碼重設。
 - [工作階段管理](custom-policy-reference-sso.md) - 處理各種不同類型的工作階段。
 - [Application Insights](../azure-monitor/app/usage-overview.md)
-- 單次[密碼](one-time-password-technical-profile.md)-提供管理單次密碼的產生和驗證的支援。 
+- 單次[密碼](one-time-password-technical-profile.md)-提供管理單次密碼的產生和驗證的支援。
 
 ## <a name="technical-profile-flow"></a>技術設定檔流程
 
@@ -48,10 +48,10 @@ ms.locfileid: "77505667"
 
 ![說明技術設定檔流程的圖表](./media/technical-profiles-overview/technical-profile-idp-saml-flow.png)
  
-1. **單一登入（SSO）會話管理**-使用[SSO 會話管理](custom-policy-reference-sso.md)來還原技術設定檔的會話狀態。 
+1. **單一登入（SSO）會話管理**-使用[SSO 會話管理](custom-policy-reference-sso.md)來還原技術設定檔的會話狀態。
 1. **輸入宣告轉換**-每個輸入[宣告轉換](claimstransformations.md)的輸入宣告都會從宣告包中挑選。  輸入宣告轉換的輸出宣告可以作為後續輸入宣告轉換的輸入宣告。
 1. **輸入宣告**-從宣告包中挑選宣告，並用於技術設定檔。 例如，[自我判斷技術設定檔](self-asserted-technical-profile.md)會使用輸入宣告來預先填入使用者所提供的輸出宣告。 REST API 技術設定檔會使用輸入宣告將輸入參數傳送給 REST API 端點。 Azure Active Directory 會使用輸入宣告作為唯一識別碼來讀取、更新或刪除帳戶。
-1. **技術設定檔執行** - 技術設定檔會與已設定的對象交換宣告。 例如：
+1. **技術設定檔執行** - 技術設定檔會與已設定的對象交換宣告。 例如，
     - 將使用者重新導向到識別提供者來完成登入。 成功登入之後，使用者會返回，而技術設定檔則會繼續執行。
     - 呼叫 REST API，並傳送參數作為 InputClaims 及取回資訊作為 OutputClaims。
     - 建立或更新使用者帳戶。
@@ -64,7 +64,7 @@ ms.locfileid: "77505667"
 
 ## <a name="technical-profile-inclusion"></a>包含技術設定檔
 
-技術設定檔可以包含另一個技術設定檔，以變更設定或新增功能。  `IncludeTechnicalProfile` 專案是基礎技術設定檔的參考，其中衍生技術設定檔。 在層數上並無限制。 
+技術設定檔可以包含另一個技術設定檔，以變更設定或新增功能。  `IncludeTechnicalProfile` 專案是基礎技術設定檔的參考，其中衍生技術設定檔。 在層數上並無限制。
 
 例如，**AAD-UserReadUsingAlternativeSecurityId-NoError** 技術設定檔包含 **AAD-UserReadUsingAlternativeSecurityId**。 此技術設定檔會將 `RaiseErrorIfClaimsPrincipalDoesNotExist` 中繼資料專案設定為 `true`，而且如果社交帳戶不存在於目錄中，則會引發錯誤。 **AAD-aad-userreadusingalternativesecurityid-noerror-aad-userreadusingalternativesecurityid-noerror**會覆寫此行為，並停用該錯誤訊息。
 

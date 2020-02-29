@@ -3,20 +3,20 @@ title: 教學課程：註冊應用程式
 titleSuffix: Azure AD B2C
 description: 了解如何使用 Azure 入口網站在 Azure Active Directory B2C 中註冊 Web 應用程式。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 10/16/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: dbb689182a45367061ae129304a98a8ee9962051
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: a688f5e75f7513d0ea4308b751f87f75a2c9510a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840106"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183086"
 ---
 # <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>教學課程：在 Azure Active Directory B2C 中註冊應用程式
 
@@ -38,7 +38,7 @@ ms.locfileid: "76840106"
 
 若要在您的 Azure AD B2C 租用戶中註冊應用程式，您可以使用目前的**應用程式**體驗，或使用新整合的**應用程式註冊 (預覽)** 體驗。 [深入了解新的體驗](https://aka.ms/b2cappregintro)。
 
-#### <a name="applicationstabapplications"></a>[應用程式](#tab/applications/)
+#### <a name="applications"></a>[應用程式](#tab/applications/)
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 在入口網站工具列中選取 [**目錄 + 訂**用帳戶] 圖示，然後選取包含您 Azure AD B2C 租使用者的目錄。
@@ -57,7 +57,7 @@ ms.locfileid: "76840106"
 
 1. 選取 [**建立**] 以完成應用程式註冊。
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[應用程式註冊 (預覽)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[應用程式註冊 (預覽)](#tab/app-reg-preview/)
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 在入口網站工具列中選取 [**目錄 + 訂**用帳戶] 圖示，然後選取包含您 Azure AD B2C 租使用者的目錄。
@@ -90,13 +90,13 @@ ms.locfileid: "76840106"
 
 如果您的應用程式交換存取權杖的授權碼，您必須建立應用程式密碼。
 
-#### <a name="applicationstabapplications"></a>[應用程式](#tab/applications/)
+#### <a name="applications"></a>[應用程式](#tab/applications/)
 
 1. 在 [ **Azure AD B2C 應用**程式] 頁面中，選取您建立的應用程式，例如*webapp1*。
 1. 選取 [**金鑰**]，然後選取 [**產生金鑰**]。
 1. 選取 [儲存] 以檢視金鑰。 請記下 [應用程式金鑰] 值。 您會使用此值做為應用程式代碼中的應用程式密碼。
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[應用程式註冊 (預覽)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[應用程式註冊 (預覽)](#tab/app-reg-preview/)
 
 1. 在 [ **Azure AD B2C-應用程式註冊（預覽）** ] 頁面中，選取您建立的應用程式，例如*webapp1*。
 1. 在 [管理] 下，選取 [憑證和密碼]。

@@ -3,20 +3,20 @@ title: 在自訂原則中定義 SAML 技術設定檔
 titleSuffix: Azure AD B2C
 description: 在 Azure Active Directory B2C 的自訂原則中定義 SAML 技術設定檔。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/13/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3a3df4d3a955926381a664ab872e03ae987f0839
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 8c81d2bc499c3d9cae262ef62be2dac2d7280be7
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77197964"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183834"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自訂原則中定義 SAML 技術設定檔
 

@@ -5,21 +5,22 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: security
 ms.custom: ''
-titleSuffix: Azure SQL Database and SQL Data Warehouse
+titleSuffix: Azure SQL Database and Azure Synapse
 ms.devlang: ''
 ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 08/22/2019
-ms.openlocfilehash: dda65c94671044f3c5a569a3f9753951de9eee3a
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 02/05/2020
+tags: azure-synapse
+ms.openlocfilehash: e22205e81178ac0caff4b71462ece776238900f6
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76717676"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191940"
 ---
-# <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Azure SQL Database 和 SQL 資料倉儲資料探索 & 分類
+# <a name="azure-sql-database-and-azure-synapse-analytics-data-discovery--classification"></a>Azure SQL Database 和 Azure Synapse 分析資料探索 & 分類
 
 資料探索 & 分類提供 Azure SQL Database 內建的先進功能，可用於**探索**、**分類**、**標記** & **報告**您資料庫中的敏感性資料。
 
@@ -32,7 +33,7 @@ ms.locfileid: "76717676"
 資料探索 & 分類是[先進的資料安全性](sql-database-advanced-data-security.md)（ADS）供應專案的一部分，這是適用于先進 SQL 安全性功能的整合套件。 資料探索與分類可以透過中央 SQL ADS 入口網站存取及管理。
 
 > [!NOTE]
-> 本檔與 Azure SQL Database 和 Azure SQL 資料倉儲有關。 為了簡單起見，參考 SQL Database 和 SQL 資料倉儲時都會使用 SQL Database。 如 SQL Server （內部部署），請參閱[SQL 資料探索和分類](https://go.microsoft.com/fwlink/?linkid=866999)。
+> 本檔與 Azure SQL Database 和 Azure Synapse 相關。 為了簡單起見，在同時參考 SQL Database 和 Azure Synapse 時，會使用 SQL Database。 如 SQL Server （內部部署），請參閱[SQL 資料探索和分類](https://go.microsoft.com/fwlink/?linkid=866999)。
 
 ## <a id="subheading-1"></a>什麼是資料探索與分類
 
@@ -138,7 +139,7 @@ SQL 資料探索與分類隨附一組內建的敏感度標籤與一組內建的�
 
 ## <a id="subheading-5"></a>管理分類
 
-# <a name="t-sqltabazure-t-sql"></a>[T-SQL](#tab/azure-t-sql)
+# <a name="t-sql"></a>[T-SQL](#tab/azure-t-sql)
 您可以使用 T-SQL 新增/移除資料行分類，以及擷取整個資料庫的所有分類。
 
 > [!NOTE]
@@ -148,7 +149,7 @@ SQL 資料探索與分類隨附一組內建的敏感度標籤與一組內建的�
 - 從一或多個資料行移除分類：[DROP SENSITIVITY CLASSIFICATION](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - 檢視資料庫上的所有分類：[sys.sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
-# <a name="rest-apistabazure-rest-api"></a>[Rest Api](#tab/azure-rest-api)
+# <a name="rest-apis"></a>[Rest Api](#tab/azure-rest-api)
 您可以使用 REST Api 以程式設計方式管理分類和建議。 已發行的 REST API 支援下列作業：
 
 - [建立或更新](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate)-建立或更新指定資料行的敏感度標籤
@@ -159,7 +160,7 @@ SQL 資料探索與分類隨附一組內建的敏感度標籤與一組內建的�
 - [依資料庫列出目前的標籤](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) \(英文\) - 取得指定資料庫目前的敏感度標籤
 - [資料庫建議的清單](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase)-取得指定資料庫的建議敏感度標籤
 
-# <a name="powershell-cmdlettabazure-powelshell"></a>[PowerShell Cmdlet](#tab/azure-powelshell)
+# <a name="powershell-cmdlet"></a>[PowerShell Cmdlet](#tab/azure-powelshell)
 您可以使用 PowerShell 來管理 Azure SQL Database 和受控執行個體的分類和建議。
 
 ### <a name="powershell-cmdlet-for-azure-sql-database"></a>適用于 Azure SQL Database 的 PowerShell Cmdlet

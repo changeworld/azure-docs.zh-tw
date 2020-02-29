@@ -1,6 +1,6 @@
 ---
-title: PowerShell Cmdlet
-description: 尋找 Azure SQL 資料倉儲的前幾個 PowerShell Cmdlet，包括如何暫停和繼續資料庫。
+title: PowerShell & REST Api
+description: 尋找 Azure Synapse Analytics SQL 集區的熱門 PowerShell Cmdlet，包括如何暫停和繼續資料庫。
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -11,19 +11,21 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c5f85f102d72ac2e4a0315109748d48573f49407
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: c0c8b1e9b7526bd45d037f053715613b53ec163f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721178"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198451"
 ---
-# <a name="powershell-cmdlets-and-rest-apis-for-sql-data-warehouse"></a>適用於 SQL 資料倉儲的 PowerShell Cmdlet 和 REST API
-您可使用 Azure PowerShell Cmdlet 或 REST API 管理許多 SQL 資料倉儲系統管理工作。  下列為一些在 SQL 資料倉儲中使用 PowerShell 命令來自動化一般工作的範例。  如需一些良好的 REST 範例，請參閱 [使用 REST 管理延展性](sql-data-warehouse-manage-compute-rest-api.md)一文。
+# <a name="powershell--rest-apis-for-azure-synapse-analytics-sql-pool"></a>適用于 Azure Synapse Analytics SQL 集區的 PowerShell & REST Api
+
+您可以使用 Azure PowerShell Cmdlet 或 REST Api 來管理許多 Azure Synapse Analytics SQL 集區管理工作。  以下是一些範例，說明如何使用 PowerShell 命令來自動化 SQL 集區中的一般工作。  如需一些良好的 REST 範例，請參閱 [使用 REST 管理延展性](sql-data-warehouse-manage-compute-rest-api.md)一文。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="get-started-with-azure-powershell-cmdlets"></a>開始使用 Azure PowerShell Cmdlet
+
 1. 開啟 Windows PowerShell。
 2. 在 PowerShell 提示中，執行下列命令來登入 Azure Resource Manager，並選取您的訂用帳戶。
    
@@ -33,12 +35,13 @@ ms.locfileid: "76721178"
     Select-AzSubscription -SubscriptionName "MySubscription"
     ```
 
-## <a name="pause-sql-data-warehouse-example"></a>暫停 SQL 資料倉儲範例
+## <a name="pause-data-warehouse-example"></a>暫停資料倉儲範例
 暫停 "Server01" 伺服器上託管的 "Database02" 資料庫。  此伺服器位於「ResourceGroup1」這個 Azure 資源群組。
 
 ```Powershell
 Suspend-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
 ```
+
 一種變化，此範例會使用管線將抓取的物件傳送至[set-azsqldatabase 搭配](https://docs.microsoft.com/powershell/module/az.sql/suspend-azsqldatabase)。  結果就是暫停資料庫。 最終的命令會顯示結果。
 
 ```Powershell
@@ -47,7 +50,8 @@ $resultDatabase = $database | Suspend-AzSqlDatabase
 $resultDatabase
 ```
 
-## <a name="start-sql-data-warehouse-example"></a>啟動 SQL 資料倉儲範例
+## <a name="start-data-warehouse-example"></a>啟動資料倉儲範例
+
 繼續 "Server01" 伺服器上託管之 "Database02" 資料庫的作業。 此伺服器包含在「ResourceGroup1」這個資源群組中。
 
 ```Powershell
@@ -67,7 +71,7 @@ $resultDatabase = $database | Resume-AzSqlDatabase
 > 
 
 ## <a name="other-supported-powershell-cmdlets"></a>其他支援的 PowerShell Cmdlet
-這些 PowerShell Cmdlet 皆由 Azure SQL 資料倉儲所支援。
+Azure Synapse Analytics 資料倉儲支援這些 PowerShell Cmdlet。
 
 * [Get-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabase)
 * [Get-AzSqlDeletedDatabaseBackup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup)
@@ -83,7 +87,7 @@ $resultDatabase = $database | Resume-AzSqlDatabase
 ## <a name="next-steps"></a>後續步驟
 如需更多 PowerShell 範例，請參閱：
 
-* [使用 PowerShell 建立 SQL 資料倉儲](create-data-warehouse-powershell.md)
+* [使用 PowerShell 建立資料倉儲](create-data-warehouse-powershell.md)
 * [資料庫還原](sql-data-warehouse-restore-database-powershell.md)
 
-如需可使用 PowerShell 自動化的其他工作，請參閱[Azure SQL Database Cmdlet](https://docs.microsoft.com/powershell/module/az.sql)。 並非所有 Azure SQL Database Cmdlet 都支援 Azure SQL 資料倉儲。  如需可以使用 REST 來自動化的工作清單，請參閱[Azure SQL Database 的作業](https://msdn.microsoft.com/library/azure/dn505719.aspx)。
+如需可使用 PowerShell 自動化的其他工作，請參閱[Azure SQL Database Cmdlet](https://docs.microsoft.com/powershell/module/az.sql)。 並非所有的 Azure SQL Database Cmdlet 都支援 Azure Synapse 分析資料倉儲。  如需可以使用 REST 來自動化的工作清單，請參閱[Azure SQL Database 的作業](/rest/api/sql/)。

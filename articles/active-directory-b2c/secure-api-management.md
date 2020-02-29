@@ -2,26 +2,26 @@
 title: 使用 Azure Active Directory B2C 保護 Azure API 管理 API
 description: 瞭解如何使用 Azure Active Directory B2C 所簽發的存取權杖來保護 Azure API 管理 API 端點。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/31/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 942c565c885d59a14d64e7ec06beee0354e7c4ca
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 00938d831e70289b24acb599b81016aa6e564d78
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73641629"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186925"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>使用 Azure AD B2C 保護 Azure API 管理 API
 
 瞭解如何將 Azure API 管理（APIM） API 的存取權，限制為已使用 Azure Active Directory B2C （Azure AD B2C）進行驗證的用戶端。 請遵循本文中的步驟，在 APIM 中建立及測試輸入原則，以限制只有包含有效 Azure AD B2C 發行存取權杖的要求才能存取。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 在繼續進行本文中的步驟之前，您必須先準備好下列資源：
 
@@ -37,7 +37,7 @@ ms.locfileid: "73641629"
 
 您可以使用目前的**應用程式**體驗或我們新的統一**應用程式註冊（預覽）** 體驗來取得應用程式識別碼。 [深入了解新的體驗](https://aka.ms/b2cappregintro)。
 
-#### <a name="applicationstabapplications"></a>[](#tab/applications/)
+#### <a name="applications"></a>[應用程式](#tab/applications/)
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 在頂端功能表中選取 [目錄 + 訂用帳戶] 篩選，然後選取包含您 Azure AD B2C 租用戶的目錄。
@@ -45,7 +45,7 @@ ms.locfileid: "73641629"
 1. 在 [**管理**] 底下，選取 [**應用程式**]。
 1. 記錄*webapp1*的 [**應用程式識別碼**] 資料行中的值，或您先前建立的另一個應用程式。
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[應用程式註冊 (預覽)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[應用程式註冊 (預覽)](#tab/app-reg-preview/)
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 在頂端功能表中選取 [目錄 + 訂用帳戶] 篩選，然後選取包含您 Azure AD B2C 租用戶的目錄。
@@ -73,7 +73,7 @@ ms.locfileid: "73641629"
 
     當您在 Azure API 管理中設定 API 時，會在下一節中使用此值。
 
-您現在應該已記錄兩個 Url，以便在下一節中使用： OpenID Connect 知名設定端點 URL 和簽發者 URI。 例如︰
+您現在應該已記錄兩個 Url，以便在下一節中使用： OpenID Connect 知名設定端點 URL 和簽發者 URI。 例如，
 
 ```
 https://yourb2ctenant.b2clogin.com/yourb2ctenant.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1_signupsignin1
@@ -144,7 +144,7 @@ https://yourb2ctenant.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
 呼叫已發佈 API 的用戶端應用程式（在此案例中為 Postman）必須在其對 API 的 HTTP 要求中包含有效的 API 管理訂用帳戶金鑰。 若要取得要包含在 Postman HTTP 要求中的訂用帳戶金鑰：
 
 1. 在[Azure 入口網站](https://portal.azure.com)中，流覽至您的 Azure API 管理服務實例。
-1. 選取 [訂用帳戶]。
+1. 選取 **訂用帳戶** 。
 1. 選取 [**產品：無限制**] 的省略號，然後選取 [**顯示/隱藏金鑰**]。
 1. 記錄產品的**主要金鑰**。 您會在 Postman 中的 HTTP 要求中使用此金鑰做為 `Ocp-Apim-Subscription-Key` 標頭。
 
@@ -154,13 +154,13 @@ https://yourb2ctenant.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
 
 記錄存取權杖和 APIM 訂用帳戶金鑰後，您就可以開始測試是否已正確設定對 API 的安全存取。
 
-1. 在 `GET`Postman[ 中](https://www.getpostman.com/)建立新的要求。 針對 [要求 URL]，指定您發佈為其中一個必要條件之 API 的喇叭清單端點。 例如︰
+1. 在[Postman](https://www.getpostman.com/)中建立新的 `GET` 要求。 針對 [要求 URL]，指定您發佈為其中一個必要條件之 API 的喇叭清單端點。 例如，
 
     `https://contosoapim.azure-api.net/conference/speakers`
 
 1. 接下來，新增下列標頭：
 
-    | 金鑰 | 值 |
+    | Key | 值 |
     | --- | ----- |
     | `Authorization` | 您先前記錄的編碼權杖值，前面加上 `Bearer ` （在「持有人」後面加上空格） |
     | `Ocp-Apim-Subscription-Key` | 您稍早記錄的 APIM 訂用帳戶金鑰 |

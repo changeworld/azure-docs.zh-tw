@@ -3,20 +3,20 @@ title: 自訂原則的開發人員注意事項
 titleSuffix: Azure AD B2C
 description: 開發人員在使用自訂原則來設定和維護 Azure AD B2C 時的注意事項。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6439393b72eb724ca017edc17ce7a7c36c275fca
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: ee3b5bd3278412949074b77f9d1c53d63a467280
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77166970"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189390"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中自訂原則的開發人員注意事項
 
@@ -61,7 +61,7 @@ Azure Active Directory B2C 中的自訂原則設定現已正式推出。 這種�
 
 ### <a name="identity-providers-tokens-protocols"></a>識別提供者、權杖、通訊協定
 
-| 功能 | 部署 | 預覽 | GA | 注意 |
+| 功能 | 開發 | 預覽 | GA | 注意事項 |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | IDP-OpenIDConnect |  |  | X | 例如，Google +。  |
 | IDP-OAUTH2 |  |  | X | 例如，Facebook。  |
@@ -78,7 +78,7 @@ Azure Active Directory B2C 中的自訂原則設定現已正式推出。 這種�
 
 ### <a name="component-support"></a>元件支援
 
-| 功能 | 部署 | 預覽 | GA | 注意 |
+| 功能 | 開發 | 預覽 | GA | 注意事項 |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Azure Multi Factor Authentication |  |  | X |  |
 | 作為本機目錄的 Azure Active Directory |  |  | X |  |
@@ -89,7 +89,7 @@ Azure Active Directory B2C 中的自訂原則設定現已正式推出。 這種�
 
 ### <a name="content-definition"></a>內容定義
 
-| 功能 | 部署 | 預覽 | GA | 注意 |
+| 功能 | 開發 | 預覽 | GA | 注意事項 |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | 錯誤頁面，api.error |  |  | X |  |
 | IDP 選取項目頁面，api.idpselections |  |  | X |  |
@@ -105,7 +105,7 @@ Azure Active Directory B2C 中的自訂原則設定現已正式推出。 這種�
 
 ### <a name="app-ief-integration"></a>App-IEF 整合
 
-| 功能 | 部署 | 預覽 | GA | 注意 |
+| 功能 | 開發 | 預覽 | GA | 注意事項 |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | 查詢字串參數 domain_hint |  |  | X | 可以宣告的形式提供給 IDP。 |
 | 查詢字串參數 login_hint |  |  | X | 可以宣告的形式提供給 IDP。 |
@@ -115,7 +115,7 @@ Azure Active Directory B2C 中的自訂原則設定現已正式推出。 這種�
 
 ### <a name="session-management"></a>工作階段管理
 
-| 功能 | 部署 | 預覽 | GA | 注意 |
+| 功能 | 開發 | 預覽 | GA | 注意事項 |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | SSO 工作階段提供者 |  |  | X |  |
 | 外部登入工作階段提供者 |  |  | X |  |
@@ -124,7 +124,7 @@ Azure Active Directory B2C 中的自訂原則設定現已正式推出。 這種�
 
 ### <a name="security"></a>安全性
 
-| 功能 | 部署 | 預覽 | GA | 注意 |
+| 功能 | 開發 | 預覽 | GA | 注意事項 |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | 原則機碼產生，手動上傳 |  |  | X |  |
 | 原則機碼 - RSA/憑證，密碼 |  |  | X |  |
@@ -132,7 +132,7 @@ Azure Active Directory B2C 中的自訂原則設定現已正式推出。 這種�
 
 ### <a name="developer-interface"></a>開發人員介面
 
-| 功能 | 部署 | 預覽 | GA | 注意 |
+| 功能 | 開發 | 預覽 | GA | 注意事項 |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Azure 入口網站 IEF UX |  |  | X |  |
 | Application Insights UserJourney 記錄 |  | X |  | 用於在開發期間進行疑難排解。  |

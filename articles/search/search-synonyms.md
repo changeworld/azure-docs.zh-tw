@@ -7,13 +7,13 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 7c94ad096cf7d0d01bf2076f6748b49cf4ae1bb4
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 02/28/2020
+ms.openlocfilehash: aa573e84fa9fff83bd6a894f516ce5f67b3afa79
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794215"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194337"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Azure 認知搜尋中的同義字
 
@@ -45,7 +45,7 @@ ms.locfileid: "72794215"
 
 #### <a name="add-or-update-a-synonym-map-under-your-service-using-post-or-put"></a>使用 POST 或 PUT 在您的服務中新增或更新同義字地圖。
 
-同義地圖會透過 POST 或 PUT 上傳至服務。 每個規則都必須以新行字元 ('\n') 分隔。 在免費服務中，每個同義字地圖最多可以定義 5,000 條規則，而其他所有 SKU 最多可以定義 10,000 條規則。 每條規則最多可以有 20 個擴充詞彙。
+同義地圖會透過 POST 或 PUT 上傳至服務。 每個規則都必須以新行字元 ('\n') 分隔。 您最多可以在免費服務中針對每個同義字地圖定義5000個規則，並在所有其他 Sku 中針對每個對應定義20000個規則。 每條規則最多可以有 20 個擴充詞彙。
 
 同義字地圖必須使用 Apache Solr 格式，以下會加以說明。 如果您有現有的同義字字典使用的是不同格式，而您想直接使用此字典，請透過 [UserVoice](https://feedback.azure.com/forums/263029-azure-search) 讓我們知道。
 

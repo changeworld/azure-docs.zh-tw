@@ -9,18 +9,18 @@ ms.assetid: 05f16c3e-9d23-45dc-afca-3d0fa9dbf501
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/02/2019
+ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 405b2fb9d9b8ef3bce17a9370ac87592a3437026
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: a3f7d7c9af807120457b119e0be047c7a342b961
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585946"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190529"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步來實作密碼雜湊同步處理
 本文提供您所需資訊，以讓您將使用者密碼從內部部署 Active Directory 執行個體同步處理至雲端式 Azure Active Directory (Azure AD) 執行個體。
@@ -136,10 +136,10 @@ Azure AD 針對每個已註冊的網域支援不同的密碼到期原則。
 `Set-ADSyncAADCompanyFeature  -ForcePasswordChangeOnLogOn $true`
 
 > [!NOTE]
-> 強制使用者在下次登入時變更其密碼時，需要同時變更密碼。  AD Connect 不會自行收取強制密碼變更旗標;這是密碼雜湊同步處理期間所發生之偵測到的密碼變更補充。
+> 強制使用者在下次登入時變更其密碼時，需要同時變更密碼。  Azure AD Connect 不會自行收取強制密碼變更旗標;這是密碼雜湊同步處理期間所發生之偵測到的密碼變更補充。
 
 > [!CAUTION]
-> 如果您未在 Azure AD 中啟用自助式密碼重設（SSPR），使用者在 Azure AD 重設其密碼時將會有令人混淆的體驗，然後嘗試使用新密碼登入 Active Directory，因為新密碼在中無效 Active Directory. 只有在租使用者上啟用 SSPR 和密碼回寫時，您才應該使用這項功能。
+> 只有在租使用者上啟用 SSPR 和密碼回寫時，您才應該使用這項功能。  如此一來，如果使用者透過 SSPR 變更其密碼，則會同步處理到 Active Directory。
 
 > [!NOTE]
 > 這項功能目前處於公開預覽狀態。

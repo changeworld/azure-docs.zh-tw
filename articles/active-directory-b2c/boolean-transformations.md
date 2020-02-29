@@ -3,20 +3,20 @@ title: 自訂原則的布林值宣告轉換範例
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C 的 Identity Experience Framework （IEF）架構的布林值宣告轉換範例。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/03/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 130fca4d5894316e7684270ff9d6361e9d9f9dd3
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 65f5b9bc09bb74ccbc63a457ba8e5681de8eefab
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620846"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189936"
 ---
 # <a name="boolean-claims-transformations"></a>布林值宣告轉換
 
@@ -28,7 +28,7 @@ ms.locfileid: "77620846"
 
 執行兩個布林值 inputClaim 的 And 運算，並使用運算的結果來設定 outputClaim。
 
-| Item  | TransformationClaimType  | 資料類型  | 注意 |
+| 項目  | TransformationClaimType  | 資料型別  | 注意事項 |
 |-------| ------------------------ | ---------- | ----- |
 | InputClaim | inputClaim1 | boolean | 要評估的第一個 ClaimType。 |
 | InputClaim | inputClaim2  | boolean | 要評估的第二個 ClaimType。 |
@@ -61,7 +61,7 @@ ms.locfileid: "77620846"
 
 檢查兩個宣告的布林值相等，如果不相等，則會擲回例外狀況。
 
-| Item | TransformationClaimType  | 資料類型  | 注意 |
+| 項目 | TransformationClaimType  | 資料型別  | 注意事項 |
 | ---- | ------------------------ | ---------- | ----- |
 | inputClaim | inputClaim | boolean | 要進行判斷的 ClaimType。 |
 | InputParameter |valueToCompareTo | boolean | 要比較的值 (True 或 False)。 |
@@ -116,9 +116,9 @@ ms.locfileid: "77620846"
 
 ## <a name="comparebooleanclaimtovalue"></a>CompareBooleanClaimToValue
 
-檢查宣告的布林值是否等於 `true` 或 `false`，並傳回壓縮的結果。 
+檢查宣告的布林值是否等於 `true` 或 `false`，並傳回壓縮的結果。
 
-| Item | TransformationClaimType  | 資料類型  | 注意 |
+| 項目 | TransformationClaimType  | 資料型別  | 注意事項 |
 | ---- | ------------------------ | ---------- | ----- |
 | InputClaim | inputClaim | boolean | 要進行判斷的 ClaimType。 |
 | InputParameter |valueToCompareTo | boolean | 要比較的值 (True 或 False)。 |
@@ -148,7 +148,7 @@ ms.locfileid: "77620846"
 - 輸入參數：
     - **valueToCompareTo**：true
 - 輸出宣告：
-    - **compareResult**： false 
+    - **compareResult**： false
 
 
 
@@ -156,7 +156,7 @@ ms.locfileid: "77620846"
 
 執行布林值 inputClaim 的 Not 運算，並使用運算的結果來設定 outputClaim。
 
-| Item | TransformationClaimType | 資料類型 | 注意 |
+| 項目 | TransformationClaimType | 資料型別 | 注意事項 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | boolean | 要運算的宣告。 |
 | OutputClaim | outputClaim | boolean | 叫用此 ClaimsTransformation 之後所產生的 ClaimType (True 或 False)。 |
@@ -184,7 +184,7 @@ ms.locfileid: "77620846"
 
 執行兩個布林值 inputClaim 的 Or 運算，並使用運算的結果來設定 outputClaim。
 
-| Item | TransformationClaimType | 資料類型 | 注意 |
+| 項目 | TransformationClaimType | 資料型別 | 注意事項 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim1 | boolean | 要評估的第一個 ClaimType。 |
 | InputClaim | inputClaim2 | boolean | 要評估的第二個 ClaimType。 |

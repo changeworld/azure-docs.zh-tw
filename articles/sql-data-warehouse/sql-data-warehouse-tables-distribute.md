@@ -1,6 +1,6 @@
 ---
 title: 分散式資料表設計指引
-description: 在 Azure SQL 資料倉儲中設計雜湊分散式資料表和循環配置資源分散式資料表的建議。
+description: 在 SQL 分析中設計雜湊分散式和迴圈配置資源分散式資料表的建議。
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,18 +10,18 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 025c60485625a4ab4d2e29b1e81d8574f6187b93
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.custom: azure-synapse
+ms.openlocfilehash: 3a07dd6ccd5d0bf3440df21b2af4e67cbcf663c9
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74049123"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199439"
 ---
-# <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>在 Azure SQL 資料倉儲中設計分散式資料表的指引
-在 Azure SQL 資料倉儲中設計雜湊分散式資料表和循環配置資源分散式資料表的建議。
+# <a name="guidance-for-designing-distributed-tables-in-sql-analytics"></a>在 SQL 分析中設計分散式資料表的指引
+在 SQL 分析中設計雜湊分散式和迴圈配置資源分散式資料表的建議。
 
-本文假設您已熟悉「SQL 資料倉儲」中的資料散發和資料移動概念。  如需詳細資訊，請參閱[Azure SQL 資料倉儲大規模平行處理（MPP）架構](massively-parallel-processing-mpp-architecture.md)。 
+本文假設您已熟悉 SQL 分析中的資料散發和資料移動概念。  如需詳細資訊，請參閱[SQL 分析大規模平行處理（MPP）架構](massively-parallel-processing-mpp-architecture.md)。 
 
 ## <a name="what-is-a-distributed-table"></a>什麼是分散式資料表？
 分散式資料表會顯示為單一資料表，但資料列實際上會儲存在 60 個散發。 這些資料列是透過雜湊或循環配置資源演算法來散發。  
@@ -34,7 +34,7 @@ ms.locfileid: "74049123"
 
 - 資料表的大小為何？   
 - 資料表的重新整理頻率為何？   
-- 我是否在資料倉儲中有事實資料表和維度資料表？   
+- 我在 SQL 分析資料庫中有事實和維度資料表嗎？   
 
 
 ### <a name="hash-distributed"></a>雜湊分散式
@@ -42,7 +42,7 @@ ms.locfileid: "74049123"
 
 ![分散式資料表](media/sql-data-warehouse-distributed-data/hash-distributed-table.png "分散式資料表")  
 
-因為相同的值一律會雜湊到相同的散發，所以資料倉儲具有資料列位置的內建知識。 SQL 資料倉儲會使用此知識來將查詢期間的資料移動降到最低，進而改善查詢效能。 
+由於相同的值一律會雜湊到相同的散發，因此 SQL 分析具有資料列位置的內建知識。 SQL 分析會使用此知識來將查詢期間的資料移動降至最低，進而改善查詢效能。 
 
 雜湊分散式資料表適合用於處理星型結構描述中的大型事實資料表。 這類資料表可能有非常大量的資料列，但仍可達到高效能。 當然，也會有一些設計考量可協助您取得分散式系統設計所要提供的效能。 選擇良好的散發資料行是這類考量的其中一項 (敘述於本文中)。 
 
@@ -65,7 +65,7 @@ ms.locfileid: "74049123"
 - 如果此聯結比查詢中的其他聯結較不重要
 - 當資料表是暫存預備資料表時
 
-[將紐約計程車資料載入 Azure SQL 資料倉儲](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse)教學課程會提供範例，示範如何將資料載入循環配置資源的暫存資料表。
+本教學課程會[載入紐約的計程車資料](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse)，提供在 SQL 分析中將資料載入迴圈配置資源臨時表的範例。
 
 
 ## <a name="choosing-a-distribution-column"></a>選擇散發資料行
@@ -109,7 +109,7 @@ WITH
 
 ### <a name="choose-a-distribution-column-that-minimizes-data-movement"></a>選擇可將資料移動降到最低的散發資料行
 
-為了取得正確的查詢結果，查詢可能會在計算節點間移動資料。 當查詢有分散式資料表的聯結和彙總時，通常會發生資料移動。 選取有助於將資料移動降至最低的散發資料行，是讓 SQL 資料倉儲的效能達到最佳化的最重要策略之一。
+為了取得正確的查詢結果，查詢可能會在計算節點間移動資料。 當查詢有分散式資料表的聯結和彙總時，通常會發生資料移動。 選擇可協助最小化資料移動的散發資料行，是優化 SQL 分析資料庫效能最重要的策略之一。
 
 若要將資料移動降至最低，請選取具有下列條件的散發資料行：
 
@@ -137,7 +137,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
 若要識別哪些資料表有 10% 以上的資料扭曲：
 
 1. 建立[資料表概觀](sql-data-warehouse-tables-overview.md#table-size-queries)一文中所示的 dbo.vTableSizes 檢視。  
-2. 請執行下列查詢：
+2. 執行下列查詢：
 
 ```sql
 select *
@@ -217,7 +217,7 @@ RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 
 若要建立分散式資料表，請使用下列其中一個陳述式：
 
-- [CREATE TABLE (Azure SQL 資料倉儲)](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
-- [CREATE TABLE AS SELECT (Azure SQL 資料倉儲)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
+- [CREATE TABLE （SQL 分析）](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
+- [CREATE TABLE AS SELECT （SQL 分析）](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
 
 

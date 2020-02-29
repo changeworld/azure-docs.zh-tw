@@ -5,12 +5,12 @@ author: mikkelhegn
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: 33dfc91381b23bf1ac33bef5274e1098df411f4a
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 0bca690fd585b288f15cbab21c1c951474390318
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75609837"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196974"
 ---
 # <a name="manage-applications-for-multiple-environments"></a>管理多個環境的應用程式
 
@@ -33,7 +33,7 @@ Azure Service Fabric 叢集可讓您使用任意數量的機器 (從一部至數
 
 > [!NOTE]
 > 並非應用程式及服務資訊清單檔中的所有屬性皆支援參數。
-> 在這些案例中，您必須依賴將字串取代為部署工作流程的一部分。 在 Azure DevOps 中，您可以使用「取代權杖」之類的擴充功能： https://marketplace.visualstudio.com/items?itemName=qetza.replacetokens ，或可在 Jenkins 中執行指令碼工作來取代該值。
+> 在這些案例中，您必須依賴將字串取代為部署工作流程的一部分。 在 Azure DevOps 中，您可以使用「取代權杖」之類的擴充功能： https://marketplace.visualstudio.com/items?itemName=qetza.replacetokens，或可在 Jenkins 中執行指令碼工作來取代該值。
 >
 
 ## <a name="specifying-parameters-during-application-creation"></a>在應用程式建立期間指定參數
@@ -42,7 +42,7 @@ Azure Service Fabric 叢集可讓您使用任意數量的機器 (從一部至數
 
   - 在 PowerShell 中，[`New-ServiceFabricApplication`](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) Cmdlet 會將應用程式參數作為雜湊表。
   - 使用 sfctl，[`sfctl application create`](https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-create) 命令會將參數作為 JSON 字串。 install.sh 指令碼會使用 sfctl。
-  - Visual Studio 會在應用程式專案的 [參數] 資料夾中為您提供一組參數檔案。 從 Visual Studio 使用 Azure DevOps Services 或 Team Foundation Server 發佈時，會使用這些參數檔案。 在 Visual Studio 中，參數檔案會傳遞至 Deploy-FabricApplication.ps1 指令碼。
+  - Visual Studio 會在應用程式專案的 [參數] 資料夾中為您提供一組參數檔案。 使用 Azure DevOps Services 或 Azure DevOps Server 從 Visual Studio 發佈時，會使用這些參數檔案。 在 Visual Studio 中，參數檔案會傳遞至 Deploy-FabricApplication.ps1 指令碼。
 
 ## <a name="next-steps"></a>後續步驟
 下列文章將示範如何使用此處所述的一些概念：

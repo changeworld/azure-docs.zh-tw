@@ -1,5 +1,5 @@
 ---
-title: 教學課程：索引 JSON blob 中的半 strutured 資料
+title: 教學課程：為 JSON blob 中的半結構化資料編制索引
 titleSuffix: Azure Cognitive Search
 description: 了解如何使用 Azure 認知搜尋 REST API 和 Postman，為半結構化 Azure JSON Blob 編製索引及加以搜尋。
 manager: nitinme
@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/14/2020
-ms.openlocfilehash: 0603ad1fbecf33e5880fd7f18d35af51795f8e39
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.date: 02/28/2020
+ms.openlocfilehash: f025b3357943014a6d9c6e331c47f019fe94c5bf
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251986"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196938"
 ---
-# <a name="rest-tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-cognitive-search"></a>REST 教學課程：在 Azure 認知搜尋中編制索引和搜尋半結構化資料（JSON blob）
+# <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>教學課程：使用 REST 從 Azure 儲存體編制 JSON blob 的索引
 
 Azure 認知搜尋可以在 Azure Blob 儲存體中，使用[索引子](search-indexer-overview.md)為 JSON 文件和陣列編製索引，以了解如何讀取半結構化資料。 半結構化資料會包含在資料內分隔內容的標籤或標記。 這些資料會將不同的內容區分為必須完整編製索引的未結構化資料，以及遵循資料模型 (例如關聯式資料庫結構描述) 且可依據欄位逐一編製索引的正式結構化資料。
 
-在本教學課程中，請使用 [Azure 認知搜尋 REST API](https://docs.microsoft.com/rest/api/searchservice/) 和 REST 用戶端執行下列工作：
+本教學課程使用 Postman 和[搜尋 REST api](https://docs.microsoft.com/rest/api/searchservice/)來執行下列工作：
 
 > [!div class="checklist"]
 > * 設定 Azure Blob 容器的 Azure 認知搜尋資料來源
@@ -27,15 +27,18 @@ Azure 認知搜尋可以在 Azure Blob 儲存體中，使用[索引子](search-i
 > * 設定並執行索引子以讀取容器，並從 Azure Blob 儲存體擷取可搜尋的內容
 > * 搜尋剛剛建立的索引
 
-## <a name="prerequisites"></a>Prerequisites
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-本快速入門會使用下列服務、工具和資料。 
+## <a name="prerequisites"></a>必要條件
 
-[建立 Azure 認知搜尋服務](search-create-service-portal.md)，或在您目前的訂用帳戶下方[尋找現有服務](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 您可以使用本教學課程的免費服務。 
++ [Azure 儲存體](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
++ [Postman 桌面應用程式](https://www.getpostman.com/)
++ [建立](search-create-service-portal.md)或[尋找現有的搜尋服務](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) 
 
-[建立 Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)，以儲存範例資料。
+> [!Note]
+> 您可以在本教學課程中使用免費服務。 免費的搜尋服務可將您限制為三個索引、三個索引子和三個數據源。 本教學課程會各建立一個。 開始之前，請確定您的服務有空間可接受新的資源。
 
-用來將要求傳送至 Azure 認知搜尋的 [Postman 傳統型應用程式](https://www.getpostman.com/)。
+## <a name="download-files"></a>下載檔案
 
 [Clinical-trials-json.zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials-json.zip) 包含本教學課程中使用的資料。 下載此檔案並將其解壓縮到它自己的資料夾中。 資料源自 [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results)，已針對本教學課程轉換為 JSON。
 
@@ -283,13 +286,27 @@ REST 呼叫需要服務 URL 和每個要求的存取金鑰。 建立搜尋服務
 
 `$filter` 參數只能與在索引建立期間標記為可篩選的中繼資料一起使用。
 
+## <a name="reset-and-rerun"></a>重設並重新執行
+
+在開發的早期實驗階段中，設計反復專案最實用的方法是從 Azure 認知搜尋中刪除物件，並允許您的程式碼重建它們。 資源名稱是唯一的。 刪除物件可讓您使用相同的名稱加以重新建立。
+
+您可以使用入口網站來刪除索引、索引子和資料來源。 或使用**DELETE** ，並提供每個物件的 url。 下列命令會刪除索引子。
+
+```http
+DELETE https://[YOUR-SERVICE-NAME].search.windows.net/indexers/clinical-trials-json-indexer?api-version=2019-05-06
+```
+
+成功刪除時會傳回狀態碼 204。
+
 ## <a name="clean-up-resources"></a>清除資源
 
-在完成教學課程後，最快速的清除方式是刪除包含 Azure 認知搜尋服務的資源群組。 您現在可以刪除資源群組，以永久刪除當中所包含的所有項目。 在入口網站中，資源群組名稱位在 Azure 認知搜尋服務的 [概觀] 頁面上。
+如果您使用自己的訂用帳戶，當專案結束時，建議您移除不再需要的資源。 讓資源繼續執行可能會產生費用。 您可以個別刪除資源，或刪除資源群組以刪除整組資源。
+
+您可以使用左側導覽窗格中的 [所有資源] 或 [資源群組] 連結，在入口網站中尋找及管理資源。
 
 ## <a name="next-steps"></a>後續步驟
 
-有數種方法和多個選項可用於編製 JSON Blob 的索引。 下一個步驟中，檢閱及測試各種不同的選項，以查看最適合您的案例。
+既然您已熟悉 Azure Blob 索引的基本概念，讓我們進一步瞭解索引子設定。
 
 > [!div class="nextstepaction"]
-> [如何使用 Azure 認知搜尋 Blob 索引子編製 JSON Blob 的索引](search-howto-index-json-blobs.md)
+> [設定 Azure Blob 儲存體索引子](search-howto-indexing-azure-blob-storage.md)

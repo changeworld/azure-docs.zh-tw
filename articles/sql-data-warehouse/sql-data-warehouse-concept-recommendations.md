@@ -1,32 +1,30 @@
 ---
-title: SQL 資料倉儲建議
-description: 深入了解 SQL 資料倉儲的建議與其產生方式
+title: SQL 分析建議
+description: 瞭解 SQL 分析建議及其產生方式
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 11/05/2018
+ms.date: 02/05/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 1a93339b99c6591ee9ed615c032d0eac58a372fe
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.custom: azure-synapse
+ms.openlocfilehash: 5471236c09737eeef2d4cb7542c245d3087e726c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827509"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195952"
 ---
-# <a name="sql-data-warehouse-recommendations"></a>SQL 資料倉儲建議
+# <a name="sql-analytics-recommendations"></a>SQL 分析建議
 
-本文說明由 SQL 資料倉儲透過 Azure Advisor 所提供的建議。  
+本文說明透過 Azure Advisor 提供的 SQL 分析建議。  
 
-SQL 資料倉儲提供的建議可確保為了效能持續最佳化資料倉儲。 資料倉儲建議與 [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations) 緊密整合，直接在 [Azure 入口網站](https://aka.ms/Azureadvisor)內為您提供最佳做法。 SQL 資料倉儲會每日針對作用中的工作負載，分析資料倉儲目前的狀態、收集遙測資料並顯示建議。 下面說明支援的資料倉儲建議案例以及如何套用建議的動作。
+SQL 分析會提供建議，以確保您的資料倉儲工作負載一致地針對效能進行優化。 建議與[Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations)緊密整合，以直接在[Azure 入口網站](https://aka.ms/Azureadvisor)內提供最佳作法。 SQL 分析會針對您的作用中工作負載，以每日步調收集遙測和呈現建議。 以下概述支援的建議案例，以及如何套用建議的動作。
 
-如果您有關於 SQL 資料倉儲 Advisor 的任何意見反應，或遇到任何問題，請連絡 [sqldwadvisor@service.microsoft.com](mailto:sqldwadvisor@service.microsoft.com)。   
-
-按一下[這裡](https://aka.ms/Azureadvisor)，以立即查看建議！ 此功能目前僅適用於 Gen2 資料倉儲。 
+您今天可以[檢查您的建議](https://aka.ms/Azureadvisor)！ 此功能目前僅適用於 Gen2 資料倉儲。 
 
 ## <a name="data-skew"></a>資料扭曲
 
@@ -34,9 +32,9 @@ SQL 資料倉儲提供的建議可確保為了效能持續最佳化資料倉儲�
 
 - [識別並移除扭曲](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-distribute#how-to-tell-if-your-distribution-column-is-a-good-choice) 
 
-## <a name="no-or-outdated-statistics"></a>沒有統計資料或已過期
+## <a name="no-or-outdated-statistics"></a>沒有或過期的統計資料
 
-若只有次佳的統計資料，會造成 SQL 資料倉儲查詢最佳化工具產生次佳的查詢計劃，而嚴重影響查詢效能。 下列文件說明建立及更新統計資料的最佳做法：
+具有較佳的統計資料可能會嚴重影響查詢效能，因為它會導致 SQL 查詢最佳化工具產生次佳的查詢計劃。 下列文件說明建立及更新統計資料的最佳做法：
 
 - [建立及更新資料表統計資料](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics)
 
@@ -47,7 +45,7 @@ SQL 資料倉儲提供的建議可確保為了效能持續最佳化資料倉儲�
 針對複寫的資料表建議，Advisor 會根據下列實體特性偵測資料表候選項目：
 
 - 複寫的資料表大小
-- 資料行數目
+- Number of columns
 - 資料表散發類型
 - 資料分割數目
 

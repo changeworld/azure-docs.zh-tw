@@ -1,6 +1,6 @@
 ---
 title: 登入和使用者
-description: 深入了解 SQL Database 和 SQL 資料倉儲安全性管理，特別是如何透過伺服器層級主體帳戶管理資料庫存取與登入安全性。
+description: 深入瞭解 SQL Database 和 Azure Synapse 安全性管理，特別是如何透過伺服器層級主體帳戶管理資料庫存取和登入安全性。
 keywords: sql 資料庫安全性, 資料庫安全性管理, 登入安全性, 資料庫安全性, 資料庫存取權
 services: sql-database
 ms.service: sql-database
@@ -11,20 +11,21 @@ ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
-ms.date: 03/26/2019
-ms.openlocfilehash: e9934f868fb62f9b1a19ef408dab69ab8a2c0e29
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.date: 02/06/2020
+tags: azure-synapse
+ms.openlocfilehash: 79a31e5b8e3433af7879fcde8597173f25bf96b7
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159140"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196955"
 ---
-# <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>控制及授與 SQL Database 和 SQL 資料倉儲的資料庫存取權
+# <a name="controlling-and-granting-database-access-to-sql-database-and-azure-synapse-analytics"></a>控制和授與 SQL Database 和 Azure Synapse 分析的資料庫存取權
 
-設定防火牆規則後，您就能以系統管理員帳戶、資料庫擁有者或資料庫中的資料庫使用者身份連線至 [SQL 資料庫](sql-database-technical-overview.md)和 [SQL 資料倉儲](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)。  
+防火牆規則設定之後，您可以連線到 Azure [SQL Database](sql-database-technical-overview.md)和[azure Synapse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)做為其中一個系統管理員帳戶、資料庫擁有者或資料庫中的資料庫使用者。  
 
 > [!NOTE]  
-> 本主題適用於 Azure SQL 伺服器，以及在 Azure SQL Server 上建立的 SQL Database 和 SQL 資料倉儲資料庫。 為了簡單起見，參考 SQL Database 和 SQL 資料倉儲時都會使用 SQL Database。 
+> 本主題適用于 Azure SQL server，以及在 Azure SQL server 上建立 SQL Database 和 Azure Synapse。 為了簡單起見，在同時參考 SQL Database 和 Azure Synapse 時，會使用 SQL Database。
 > [!TIP]
 > 如需教學課程，請參閱[保護 Azure SQL Database](sql-database-security-tutorial.md)。 本教學課程不適用於 **Azure SQL Database 受控執行個體**。
 
@@ -43,7 +44,7 @@ ms.locfileid: "74159140"
 
 - **Azure Active Directory 管理員**
 
-  一個 Azure Active Directory 帳戶 (個人或安全性群組帳戶) 也可以設定為系統管理員。 選擇性地設定 Azure AD 系統管理員，但是如果您想要使用 Azure AD 帳戶連線到 SQL Database，則**必須**設定 Azure AD 系統管理員。 如需有關設定 Azure Active Directory 存取權的詳細資訊，請參閱[使用 Azure Active Directory 驗證連線到 SQL Database 或 SQL 資料倉儲](sql-database-aad-authentication.md)和[適用於與 SQL Database 和 SQL 資料倉儲搭配使用之 Azure AD MFA 的 SSMS 支援](sql-database-ssms-mfa-authentication.md)。
+  一個 Azure Active Directory 帳戶 (個人或安全性群組帳戶) 也可以設定為系統管理員。 選擇性地設定 Azure AD 系統管理員，但是如果您想要使用 Azure AD 帳戶連線到 SQL Database，則**必須**設定 Azure AD 系統管理員。 如需設定 Azure Active Directory 存取的詳細資訊，請參閱使用[SQL Database 和 Azure Synapse AZURE AD MFA](sql-database-ssms-mfa-authentication.md)的 Azure Active Directory 驗證和 SSMS 支援，連線[至 SQL Database 或 Azure Synapse](sql-database-aad-authentication.md) 。
 
 **伺服器管理員**和**Azure AD 系統管理員**帳戶具有下列特性：
 
@@ -96,7 +97,7 @@ ms.locfileid: "74159140"
    ```
 
    > [!NOTE]
-   > 建立登入或自主資料庫使用者時，請使用強式密碼。 如需詳細資訊，請參閱 [增強式密碼](https://msdn.microsoft.com/library/ms161962.aspx)。
+   > 建立登入或自主資料庫使用者時，請使用強式密碼。 如需詳細資訊，請參閱 [Strong Passwords](https://msdn.microsoft.com/library/ms161962.aspx)。
 
    為了改進效能，系統會暫時在資料庫層級快取登入 (伺服器層級主體)。 若要重新整理驗證快取，請參閱 [DBCC FLUSHAUTHCACHE](https://msdn.microsoft.com/library/mt627793.aspx)。
 
@@ -124,11 +125,11 @@ ms.locfileid: "74159140"
 
 ### <a name="login-managers"></a>登入管理員
 
-另一個系統管理角色是登入管理員角色。 此角色的成員可以在 master 資料庫中建立新的登入。 如果您想要的話，可以完成相同的步驟 (建立登入和使用者，並將使用者新增至 **loginmanager** 角色)，讓使用者能夠在 master 資料庫中建立新的登入。 通常不需要登入，因為 Microsoft 建議使用自主資料庫使用者，這會在資料庫層級進行驗證，而不是根據登入來使用使用者。 如需詳細資訊，請參閱 [自主資料庫使用者 - 讓資料庫具有可攜性](https://msdn.microsoft.com/library/ff929188.aspx)。
+另一個系統管理角色是登入管理員角色。 此角色的成員可以在 master 資料庫中建立新的登入。 如果您想要的話，可以完成相同的步驟 (建立登入和使用者，並將使用者新增至 **loginmanager** 角色)，讓使用者能夠在 master 資料庫中建立新的登入。 通常不需要登入，因為 Microsoft 建議使用自主資料庫使用者，這會在資料庫層級進行驗證，而不是根據登入來使用使用者。 如需詳細資訊，請參閱 [自主的資料庫使用者 - 使資料庫可攜](https://msdn.microsoft.com/library/ff929188.aspx)。
 
 ## <a name="non-administrator-users"></a>非系統管理員的使用者
 
-一般而言，非系統管理員帳戶不需要 master 資料庫的存取權。 請使用 [CREATE USER (Transact-SQL)](https://msdn.microsoft.com/library/ms173463.aspx) 陳述式，在資料庫層級建立自主資料庫使用者。 使用者可以是 Azure Active Directory 的驗證自主資料庫使用者（如果您已設定要 Azure AD authentication 的環境）或 SQL Server authentication 自主資料庫使用者，或是以 SQL Server 為基礎的 SQL Server 驗證使用者驗證登入（在上一個步驟中建立）。如需詳細資訊，請參閱自主[資料庫使用者-使資料庫可](https://msdn.microsoft.com/library/ff929188.aspx)攜。 
+一般而言，非系統管理員帳戶不需要 master 資料庫的存取權。 請使用 [CREATE USER (Transact-SQL)](https://msdn.microsoft.com/library/ms173463.aspx) 陳述式，在資料庫層級建立自主資料庫使用者。 使用者可以是 Azure Active Directory 的驗證自主資料庫使用者（如果您已設定要 Azure AD authentication 的環境）或 SQL Server authentication 自主資料庫使用者，或是以 SQL Server authentication 登入為基礎的 SQL Server 驗證使用者（在上一個步驟中建立）。如需詳細資訊，請參閱自主[資料庫使用者-使資料庫可](https://msdn.microsoft.com/library/ff929188.aspx)攜。 
 
 若要建立使用者，請連線到資料庫，然後執行類似以下範例的陳述式︰
 
@@ -151,7 +152,7 @@ GRANT ALTER ANY USER TO Mary;
 ALTER ROLE db_owner ADD MEMBER Mary;
 ```
 
-在 Azure SQL 資料倉儲中，請使用 [EXEC sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)。
+在 Azure Synapse 中，使用[EXEC sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)。
 ```sql
 EXEC sp_addrolemember 'db_owner', 'Mary';
 ```
@@ -185,7 +186,7 @@ EXEC sp_addrolemember 'db_owner', 'Mary';
 有超過 100 個權限可在 SQL Database 中分別授與或拒絕。 這些權限有許多為巢狀。 例如，結構描述上的 `UPDATE` 權限包括該結構描述中每個資料表的 `UPDATE` 權限。 如同大多數的權限系統，拒絕權限會覆寫授與權限。 因為權限的巢狀本質和數目，可能需要仔細研究，設計適當的權限系統以便適當地保護您的資料庫。 請從[權限 (Database Engine)](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) 的權限清單開始著手，然後檢閱[海報大小的權限圖](https://docs.microsoft.com/sql/relational-databases/security/media/database-engine-permissions.png)。
 
 
-### <a name="considerations-and-restrictions"></a>考量和限制
+### <a name="considerations-and-restrictions"></a>考量與限制
 
 在 SQL Database 中管理登入和使用者時，請考慮下列各項︰
 
@@ -197,7 +198,7 @@ EXEC sp_addrolemember 'db_owner', 'Mary';
 - 若要連接到使用者資料庫，您必須在連接字串中提供資料庫名稱。
 - 只有伺服器層級的主體登入及 **master** 資料庫中 **loginmanager** 資料庫角色的成員，才具備執行 `CREATE LOGIN`、`ALTER LOGIN` 及 `DROP LOGIN` 陳述式的權限。
 - 在 ADO.NET 應用程式中執行 `CREATE/ALTER/DROP LOGIN` 和 `CREATE/ALTER/DROP DATABASE` 陳述式時，不允許使用參數化的命令。 如需詳細資訊，請參閱 [命令和參數](https://msdn.microsoft.com/library/ms254953.aspx)。
-- 執行 `CREATE/ALTER/DROP DATABASE` 和 `CREATE/ALTER/DROP LOGIN` 陳述式時，這其中每一個陳述式在 Transact-SQL 批次中都必須是唯一的陳述式。 否則便會發生錯誤。 例如，下列 Transact-SQL 會檢查資料庫是否存在。 如果資料庫存在，則會呼叫 `DROP DATABASE` 陳述式來移除資料庫。 因為 `DROP DATABASE` 陳述式不是批次中唯一的陳述式，所以執行下列 Transact-SQL 陳述式時會產生錯誤。
+- 執行 `CREATE/ALTER/DROP DATABASE` 和 `CREATE/ALTER/DROP LOGIN` 陳述式時，這其中每一個陳述式在 Transact-SQL 批次中都必須是唯一的陳述式。 否則，系統將發生錯誤。 例如，下列 Transact-SQL 會檢查資料庫是否存在。 如果資料庫存在，則會呼叫 `DROP DATABASE` 陳述式來移除資料庫。 因為 `DROP DATABASE` 陳述式不是批次中唯一的陳述式，所以執行下列 Transact-SQL 陳述式時會產生錯誤。
 
   ```sql
   IF EXISTS (SELECT [name]

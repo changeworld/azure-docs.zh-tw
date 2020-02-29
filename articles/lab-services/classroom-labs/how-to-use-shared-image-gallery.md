@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 79aea7d8a4a969e0ccd42ef94d77a9aa396ab91c
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: c611ecdb5a2534f7368e533e3e19e6e3f96de57f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591314"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190444"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>使用 Azure 實驗室服務中的共用映射資源庫
 本文說明老師/lab 管理員如何儲存範本虛擬機器映射，供其他人重複使用。 這些映射會儲存在 Azure[共用映射資源庫](../../virtual-machines/windows/shared-image-galleries.md)中。 第一個步驟是，實驗室系統管理員將現有的共用映射資源庫附加至實驗室帳戶。 連結共用映射資源庫之後，在實驗室帳戶中建立的實驗室可以將影像儲存到共用映射資源庫。 其他老師可以從共用映射庫中選取此映射，以建立其類別的範本。 
 
 > [!NOTE]
-> 目前，Azure 實驗室服務僅支援根據共用映射庫中的**一般化**VM 映射（非特製化映射）來建立 vm。 
+> 目前，Azure 實驗室服務僅支援根據共用映射庫中的**一般化**VM 映射（非特製化映射）建立範本 vm。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 - 使用[Azure PowerShell](../../virtual-machines/windows/shared-images.md)或[Azure CLI](../../virtual-machines/linux/shared-images.md)建立共用映射資源庫。
 - 您已將共用映射資源庫連接至實驗室帳戶。 如需逐步指示，請參閱[如何附加或卸離共用映射資源庫](how-to-attach-detach-shared-image-gallery.md)。
 

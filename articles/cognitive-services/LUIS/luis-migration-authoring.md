@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 12/05/2019
+ms.date: 02/28/2020
 ms.author: diberry
-ms.openlocfilehash: 6e1005e3d9c3769de3249f3244d65a656edc963e
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: ec6f9592a4c149be382fab66cca27d929644d988
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74891740"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194504"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>遷移至 Azure 資源撰寫金鑰
 
@@ -74,7 +74,7 @@ Language Understanding （LUIS）編寫驗證從電子郵件帳戶變更為 Azur
 
 請遵循[這些遷移步驟](luis-migration-authoring-steps.md)。
 
-### <a name="after-you-migrate"></a>移轉後
+### <a name="after-you-migrate"></a>遷移之後
 
 在遷移程式之後，您的所有 LUIS apps 現在都會指派給單一 LUIS 撰寫資源。
 
@@ -82,7 +82,7 @@ Language Understanding （LUIS）編寫驗證從電子郵件帳戶變更為 Azur
 
 您可以在該資源的 [**存取控制（IAM）** ] 頁面上，從_Azure 入口網站_將參與者新增至撰寫資源。 如需詳細資訊，請參閱[新增參與者存取](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource)。
 
-|入口網站|目的|
+|Portal|目的|
 |--|--|
 |[Azure](https://azure.microsoft.com/free/)|* 建立預測和撰寫資源。<br>* 指派參與者。|
 |[LUIS](https://www.luis.ai)|* 遷移至新的撰寫資源。<br>* 從 [**管理-> Azure 資源**] 頁面，指派或取消指派預測和撰寫資源給應用程式。|
@@ -104,12 +104,20 @@ LUIS 的每個使用者都需要遷移，包括共同作業者/參與者。 共�
 
 在遷移程式之後，您擁有的任何應用程式都可以在 LUIS 入口網站的 [**我的應用程式**] 頁面上取得。
 
-## <a name="troubleshooting"></a>疑難排解
+## <a name="troubleshooting-the-migration-process-for-luis-authoring"></a>針對 LUIS 撰寫的遷移程式進行疑難排解
 
-* LUIS 撰寫金鑰只有在完成遷移程式之後，才會顯示在 LUIS 入口網站中。 如果您建立撰寫金鑰（例如使用 LUIS CLI），使用者仍然需要完成遷移程式。
+* LUIS 撰寫金鑰只有在完成遷移程式之後，才會顯示在 LUIS 入口網站中。 如果您建立撰寫金鑰（例如使用 LUIS CLI），使用者仍然需要在 LUIS 入口網站中完成遷移程式。
 * 如果遷移的使用者在其 azure 資源上將非遷移的使用者新增為參與者，則非遷移的使用者將無法存取應用程式，除非他們遷移。
-* 如果未遷移的使用者不是任何應用程式的擁有者，但他是其他人擁有的其他應用程式共同作業者，而且擁有者已完成遷移程式，則此使用者必須遷移才能存取應用程式。
+* 如果非遷移的使用者不是任何應用程式的擁有者，但是其他人擁有的其他應用程式共同作業者，而且擁有者已完成遷移程式，則此使用者必須遷移才能存取應用程式。
 * 如果未遷移的使用者已將另一個遷移的使用者新增為其應用程式的共同作業者，將會發生錯誤，因為您無法將已遷移的使用者新增為應用程式的共同作業者。 然後，非遷移的使用者必須完成遷移程式並建立 azure 資源，並將遷移後的使用者新增為該資源的參與者。
+
+您會在遷移程式期間收到錯誤，如下所示：
+* 您的訂用帳戶未授權您建立認知服務資源
+* 您的遷移對任何應用程式執行時間會有負面影響。 在遷移時，會從您的應用程式移除任何共同作業者，並將您從其他應用程式移除為共同作業者。 此程式表示您指派的金鑰也會被移除。 如果您已在其他應用程式中指派金鑰，則會封鎖遷移。 請先移除您已安全指派的金鑰，再進行遷移。 如果您知道您所指派的金鑰未在執行時間中使用，則必須將它移除，才能在遷移中進行。
+
+使用下列 URL 格式存取您應用程式的 Azure 資源清單：
+
+`https://www.luis.ai/applications/REPLACE-WITH-YOUR-APP-ID/versions/REPLACE-WITH-YOUR-VERSION-ID/manage/resources`
 
 ## <a name="next-steps"></a>後續步驟
 

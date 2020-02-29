@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 0b15b35f6fc83097e94f7d69815a163a0e98a228
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 559c9ee237f95f9d175aaefb487131466700e899
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77523266"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190784"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -463,7 +463,7 @@ func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 
 專案資料夾可能包含不應發行的特定語言檔案和目錄。 排除的專案會列在根專案資料夾中的 funcignore 檔案中。     
 
-### <a name="project-file-deployment"></a>部署（專案檔）
+### <a name="project-file-deployment"></a>部署專案檔案
 
 若要將您的本機程式碼發佈至 Azure 中的函數應用程式，請使用 `publish` 命令：
 
@@ -500,7 +500,7 @@ func azure functionapp publish <FunctionAppName>
 | **`--no-build`** | 不要建立 .NET 類別庫函式。 |
 | **`--dotnet-cli-params`** | 發佈已編譯的 C# (.csproj) 函式時，Core Tools 會呼叫 'dotnet build --output bin/publish'。 傳至此處的任何參數都會附加至命令列。 |
 
-### <a name="deployment-custom-container"></a>部署（自訂容器）
+### <a name="deploy-custom-container"></a>部署自訂容器
 
 Azure Functions 可讓您在[自訂的 Docker 容器](functions-deployment-technologies.md#docker-container)中部署函數專案。 如需詳細資訊，請參閱[使用自訂映像在 Linux 上建立函式](functions-create-function-linux-custom-image.md)。 自訂容器必須具有 Dockerfile。 若要建立具有 Dockerfile 的應用程式，請使用 `func init`上的--Dockerfile 選項。
 

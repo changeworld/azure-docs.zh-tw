@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/26/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: f327fc9076bfd82b5321b3811444bed94d965701
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 422b814f1d9738ca4f03d08dfecc6761b764f997
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77925744"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196020"
 ---
 # <a name="open-source-platforms-that-support-azure-data-lake-storage-gen2"></a>支援 Azure Data Lake Storage Gen2 的開放原始碼平臺
 
@@ -26,7 +26,7 @@ ms.locfileid: "77925744"
 > [!NOTE]
 > 僅支援此資料表中顯示的版本。
 
-| 平台 |  支援的版本 | 相關資訊 |
+| 平台 |  支援的版本 | 詳細資訊 |
 | --- | --- | --- |
 | [HDInsight](https://azure.microsoft.com/services/hdinsight/) | 3.6+ | [可以搭配 HDInsight 使用的 Apache Hadoop 元件和版本有哪些？](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning?toc=%2Fazure%2Fhdinsight%2Fstorm%2FTOC.json&bc=%2F2Fazure%2Fbread%2Ftoc.json)
 | [Hadoop](https://hadoop.apache.org/) | 3.2+ | [Apache Hadoop 版本封存](https://hadoop.apache.org/release.html) |

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seodec18
 ms.date: 12/09/2019
-ms.openlocfilehash: ecc4d5053ef6d9194f09b8a5aa6ba1528f9d94fa
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 9ef54707f7fac3dd1328e29f6d05f62c1dee2561
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75920725"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194898"
 ---
 # <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>在具有企業安全性套件的 HDInsight Hadoop 叢集中執行 Apache Oozie
 
@@ -230,7 +230,7 @@ Oozie 工作流程定義是以 Apache Hadoop 流程定義語言 (hPDL) 撰寫的
    hiveOutputDirectory2=${nameNode}/user/${user.name}/hiveresult2
    ```
 
-   - 若您使用 Azure Data Lake Storage Gen1 做為您的主要叢集儲存體，請為 `nameNode` 屬性使用 `adl://home` URI。 如果您使用 Azure Blob 儲存體，請將其變更為 `wasb://home`。 如果您使用 Azure Data Lake Storage Gen2，請將其變更為 `abfs://home`。
+   - 若您使用 Azure Data Lake Storage Gen1 做為您的主要叢集儲存體，請為 `adl://home` 屬性使用 `nameNode` URI。 如果您使用 Azure Blob 儲存體，請將其變更為 `wasb://home`。 如果您使用 Azure Data Lake Storage Gen2，請將其變更為 `abfs://home`。
    - 將 `domainuser` 取代為您網域的使用者名稱。  
    - 將 `ClusterShortName` 取代為叢集的簡短名稱。 例如，如果叢集名稱為 https:// *[範例連結]* sechadoopcontoso.azurehdisnight.net，則 `clustershortname` 為叢集的前六個字元：**sechad**。  
    - 將 `jdbcurlvalue` 取代為 Hive 組態中的 JDBC URL。 範例為 jdbc:hive2://headnodehost:10001/;transportMode=http。
@@ -348,4 +348,4 @@ Oozie Web UI 可讓您用網頁檢視叢集上 Oozie 作業的狀態。 若要�
 ## <a name="next-steps"></a>後續步驟
 
 - [在 Linux 型 Azure HDInsight 上搭配 Apache Hadoop 使用 Apache Oozie 來定義並執行工作流程](../hdinsight-use-oozie-linux-mac.md)。
-- [使用 SSH 連線到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)。
+- [使用 SSH 連線到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md#authentication-domain-joined-hdinsight)。

@@ -3,20 +3,20 @@ title: BuildingBlocks
 titleSuffix: Azure AD B2C
 description: 指定 Azure Active Directory B2C 中自訂原則的 BuildingBlocks 元素。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 12/10/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 87157980a352f9665852c78a94dcfc227c08b487
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cf9c333af48e1c148dcd20ccf5ce91b284bd728b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75367549"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189866"
 ---
 # <a name="buildingblocks"></a>BuildingBlocks
 

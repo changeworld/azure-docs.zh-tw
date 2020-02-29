@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 12/30/2019
+ms.date: 02/28/2020
 ms.author: diberry
-ms.openlocfilehash: 9c92a3ad2fc6a372b58aa651228a7bbccdf8ba0a
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: f5197ae79670e4543c58224a33838706edae6218
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552012"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194628"
 ---
 # <a name="steps-to-migrate-to-the-azure-authoring-resource"></a>遷移至 Azure 撰寫資源的步驟
 
@@ -32,7 +32,10 @@ ms.locfileid: "75552012"
 
 ## <a name="access-the-migration-process"></a>存取遷移程式
 
-每週會提示您遷移應用程式。 您可以取消此視窗而不進行遷移。 如果您想要在下一個排定的期間之前遷移，可以從 LUIS 入口網站頂端工具列上的**鎖定**圖示開始進行遷移程式。
+每週會提示您遷移應用程式。 您可以取消此視窗而不進行遷移。 如果您想要在下一個排定的期間之前遷移，可以從 LUIS 入口網站頂端工具列上的**Azure**圖示開始進行遷移程式。
+
+> [!div class="mx-imgBorder"]
+> ![遷移圖示](./media/migrate-authoring-key/migration-button.png)
 
 ## <a name="app-owner-begins-the-migration-process"></a>應用程式擁有者開始進行遷移流程
 

@@ -1,6 +1,6 @@
 ---
 title: 系統檢視表
-description: Azure SQL 資料倉儲中所支援系統檢視表的文件連結。
+description: SQL 分析中支援之系統檢視的檔連結。
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,18 +10,18 @@ ms.subservice: query
 ms.date: 01/06/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 36f0738dc478d7a1144527acb29118a7a99ef5ac
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.custom: azure-synapse
+ms.openlocfilehash: 694bb1d970f7f5c36b074e64ee41c3d34b55c482
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690775"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198298"
 ---
-# <a name="system-views-supported-in-azure-sql-data-warehouse"></a>Azure SQL 資料倉儲中支援的系統檢視表
-Azure SQL 資料倉儲中所支援 T-SQL 陳述式的文件連結。
+# <a name="system-views-supported-in-sql-analytics"></a>SQL 分析中支援的系統檢視
+SQL 分析中所支援 T-sql 語句的檔連結。
 
-## <a name="sql-data-warehouse-catalog-views"></a>SQL 資料倉儲目錄檢視
+## <a name="sql-analytics-catalog-views"></a>SQL 分析目錄檢視
 * [sys.pdw_column_distribution_properties](https://msdn.microsoft.com/library/mt204022.aspx)
 * [sys.pdw_distributions](https://msdn.microsoft.com/library/mt203892.aspx)
 * [sys.pdw_index_mappings](https://msdn.microsoft.com/library/mt203912.aspx)
@@ -65,8 +65,8 @@ Azure SQL 資料倉儲中所支援 T-SQL 陳述式的文件連結。
 * [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql)
 * [sys. dm_workload_management_workload_groups_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql) （預覽）
 
-## <a name="sql-server-dmvs-applicable-to-sql-data-warehouse"></a>適用於 SQL 資料倉儲的 SQL Server DMV
-下列 DMV 適用於「SQL 資料倉儲」，但必須透過連接到 **master** 資料庫才能執行。
+## <a name="sql-server-dmvs-applicable-to-sql-analytics"></a>適用于 SQL 分析的 SQL Server Dmv
+下列 Dmv 適用于 SQL 分析，但必須藉由連接到**master**資料庫來執行。
 
 * [sys.database_service_objectives](https://msdn.microsoft.com/library/mt712619.aspx)
 * [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx)
@@ -145,17 +145,17 @@ Azure SQL 資料倉儲中所支援 T-SQL 陳述式的文件連結。
 * [sys.types](https://msdn.microsoft.com/library/ms188021.aspx)
 * [sys.views](https://msdn.microsoft.com/library/ms190334.aspx)
 
-## <a name="sql-server-dmvs-available-in-sql-data-warehouse"></a>SQL 資料倉儲中可用的 SQL Server DMV
-SQL 資料倉儲公開許多 SQL Server 動態管理檢視 (DMV)。 在 SQL 資料倉儲中查詢這些檢視表時，將會報告分布區域上執行的 SQL Database 狀態。
+## <a name="sql-server-dmvs-available-in-sql-analytics"></a>SQL 分析中可用的 SQL Server Dmv
+SQL 分析會公開許多 SQL Server 動態管理檢視（Dmv）。 在 SQL 分析中查詢這些視圖時，會報告在散發上執行的 SQL 資料庫的狀態。
 
-SQL 資料倉儲和分析平台系統的 Parallel Data Warehouse (PDW) 都使用相同的系統檢視。 每個 DMV 都有名為 pdw_node_id 的資料行，這是計算節點的識別碼。 
+SQL 分析和平行處理資料倉儲（PDW）使用相同的系統檢視。 每個 DMV 都有名為 pdw_node_id 的資料行，這是計算節點的識別碼。 
 
 > [!NOTE]
 > 若要使用這些檢視，將 'pdw_nodes_' 插入名稱中，如下表所示：
 > 
 > 
 
-| SQL 資料倉儲中的 DMV 名稱 | SQL Server Transact-SQL 文章|
+| SQL 分析中的 DMV 名稱 | SQL Server Transact-SQL 文章|
 |:--- |:--- |
 | sys.dm_pdw_nodes_db_column_store_row_group_physical_stats | [sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql)| 
 | sys.dm_pdw_nodes_db_column_store_row_group_operational_stats | [sys.dm_db_column_store_row_group_operational_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-operational-stats-transact-sql)| 
@@ -217,8 +217,8 @@ SQL 資料倉儲和分析平台系統的 Parallel Data Warehouse (PDW) 都使用
 | sys.dm_pdw_nodes_tran_session_transactions |[sys.dm_tran_session_transactions](https://msdn.microsoft.com/library/ms188739.aspx) |
 | sys.dm_pdw_nodes_tran_top_version_generators |[sys.dm_tran_top_version_generators](https://msdn.microsoft.com/library/ms188778.aspx) |
 
-## <a name="sql-server-2016-polybase-dmvs-available-in-sql-data-warehouse"></a>SQL 資料倉儲中可用的 SQL Server 2016 PolyBase DMV
-下列 DMV 適用於「SQL 資料倉儲」，但必須透過連接到 **master** 資料庫才能執行。
+## <a name="sql-server-2016-polybase-dmvs-available-in-sql-analytics"></a>在 SQL 分析中提供 SQL Server 2016 PolyBase Dmv
+下列 Dmv 適用于 SQL 分析，但必須藉由連接到**master**資料庫來執行。
 
 * [sys.dm_exec_compute_node_errors](https://msdn.microsoft.com/library/mt146380.aspx)
 * [sys.dm_exec_compute_node_status](https://msdn.microsoft.com/library/mt146382.aspx)
@@ -243,4 +243,4 @@ SQL 資料倉儲和分析平台系統的 Parallel Data Warehouse (PDW) 都使用
 * [VIEWS](https://msdn.microsoft.com/library/ms181381.aspx)
 
 ## <a name="next-steps"></a>後續步驟
-如需更多的參考資訊，請參閱 [Azure SQL 資料倉儲中的 T-SQL 陳述式](sql-data-warehouse-reference-tsql-statements.md)和 [Azure SQL 資料倉儲中的 T-SQL 語言元素](sql-data-warehouse-reference-tsql-language-elements.md)。
+如需更多的參考資訊，請參閱[Sql 分析中的 t-sql 語句](sql-data-warehouse-reference-tsql-statements.md)和[sql 分析中的 t-sql 語言元素](sql-data-warehouse-reference-tsql-language-elements.md)。

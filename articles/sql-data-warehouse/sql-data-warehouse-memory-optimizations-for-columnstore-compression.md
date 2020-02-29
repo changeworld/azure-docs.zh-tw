@@ -1,6 +1,6 @@
 ---
 title: 改善資料行存放區索引效能
-description: Azure SQL 資料倉儲減少記憶體需求或增加可用的記憶體，以將資料行存放區索引壓縮成每個資料列群組的資料列數目最大化。
+description: 減少記憶體需求或增加可用的記憶體，以將每個資料列群組內的資料列數目最大化。
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,13 +10,13 @@ ms.subservice: load-data
 ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: d5dba4e9a086502f638252a0ce2b16b4abeeb643
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 11c0a168e4b2e8eac03eaebd37b208446082d1b4
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685650"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197193"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>最大化資料行存放區的資料列群組品質
 
@@ -34,13 +34,13 @@ ms.locfileid: "73685650"
 
 在大量載入或資料行存放區索引重建期間，有時可用的記憶體不足，無法壓縮指定給每個資料列群組的所有資料列。 當有記憶體不足的壓力時，資料行存放區索引會修剪資料列群組大小，因此會成功壓縮到資料行存放區內。 
 
-當記憶體不足，無法將至少 10,000 個資料列壓縮到每個資料列群組時，SQL 資料倉儲會產生錯誤。
+當沒有足夠的記憶體可將至少10000個數據列壓縮到每個資料列群組時，將會產生錯誤。
 
 如需有關大量載入的詳細資訊，請參閱[大量載入叢集資料行存放區索引](https://msdn.microsoft.com/library/dn935008.aspx#Bulk )。
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>如何監視資料列群組品質
 
-DMV sys. dm_pdw_nodes_db_column_store_row_group_physical_stats （[sys. dm_db_column_store_row_group_physical_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql)包含將 SQL db 對應到 SQL 資料倉儲的視圖定義），其會公開有用的資訊，例如中的資料列數目資料列群組和修剪的原因（如果有修剪的話）。 您可以建立下列檢視，並將其作為查詢這個 DMV 以取得有關資料列群組修剪資訊的便利方法。
+DMV sys. dm_pdw_nodes_db_column_store_row_group_physical_stats （[sys. dm_db_column_store_row_group_physical_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql)包含與 SQL db 相符的視圖定義），它會公開有用的資訊，例如資料列群組中的資料列數，以及修剪時的原因。 您可以建立下列檢視，並將其作為查詢這個 DMV 以取得有關資料列群組修剪資訊的便利方法。
 
 ```sql
 create view dbo.vCS_rg_physical_stats
@@ -89,7 +89,7 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 
 會使用專為壓縮文字的壓縮方法來壓縮長字串。 這個壓縮方法會使用字典來儲存文字模式。 字典的大小上限為 16 MB。 資料列群組中的每一個長字串資料行只有一個字典。
 
-如需資料行存放區記憶體需求的深入討論，請參閱影片 [Azure SQL 資料倉儲調整︰組態和指引](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)。
+如需資料行存放區記憶體需求的深入討論，請參閱影片[SQL 分析調整：設定和指導](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)方針。
 
 ## <a name="ways-to-reduce-memory-requirements"></a>減少記憶體需求的方式
 
@@ -109,7 +109,7 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 
 ### <a name="avoid-over-partitioning"></a>避免過度分割
 
-資料行存放區索引針對每個資料分割會建立一個或多個資料列群組。 在 SQL 資料倉儲中，資料分割數會快速成長，因為資料散發且會分割每個散發。 如果資料表有太多資料分割，則可能沒有足夠的資料列可填滿資料列群組。 缺少的資料列在壓縮期間不會建立記憶體不足的壓力，但這會造成無法達到最佳資料行存放區的資料列群組查詢效能。
+資料行存放區索引針對每個資料分割會建立一個或多個資料列群組。 針對 Azure Synapse 分析中的資料倉儲，分割區數目會快速成長，因為資料已散發，而且每個散發都已分割。 如果資料表有太多資料分割，則可能沒有足夠的資料列可填滿資料列群組。 缺少的資料列在壓縮期間不會建立記憶體不足的壓力，但這會造成無法達到最佳資料行存放區的資料列群組查詢效能。
 
 要避免過度磁碟分割的另一個原因，是有額外負荷的記憶體將資料列載入分割資料表上的資料行存放區索引。 在載入期間，許多資料分割可能會收到內送資料列並保留在記憶體中，直到每個分割區有足夠的資料列可壓縮為止。 具有太多資料分割會建立額外的記憶體不足壓力。
 
@@ -141,5 +141,4 @@ DWU 大小和使用者資源類別會共同判斷有多少記憶體可供使用�
 
 ## <a name="next-steps"></a>後續步驟
 
-若要尋找更多在 SQL 資料倉儲中改善效能的方法，請參閱[效能概觀](sql-data-warehouse-overview-manage-user-queries.md)。
-
+若要尋找更多方法來改善 SQL 分析的效能，請參閱[效能總覽](sql-data-warehouse-overview-manage-user-queries.md)。

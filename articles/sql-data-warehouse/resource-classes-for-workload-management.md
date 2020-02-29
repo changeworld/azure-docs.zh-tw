@@ -1,30 +1,30 @@
 ---
 title: 適用於工作負載管理的資源類別
-description: 在 Azure SQL 資料倉儲中，使用資源類別來管理並行和適用於查詢之計算資源的指引。
+description: 在 Azure Synapse 分析中使用資源類別來管理並行和計算資源以進行查詢的指導方針。
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 12/04/2019
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 30d3c67a815d05a256717fc4447ae3687adb8146
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.custom: azure-synapse
+ms.openlocfilehash: c94b2a755d85bdf425980574b63d8fd74a232b19
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548164"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195986"
 ---
-# <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>在 Azure SQL 資料倉儲中搭配使用工作負載管理與資源類別
+# <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>使用 Azure Synapse 分析中的資源類別進行工作負載管理
 
-指引如何在 Azure SQL 資料倉儲中，使用資源類別來管理查詢的記憶體與並行存取。  
+在 Azure Synapse 中使用資源類別來管理 SQL 分析查詢之記憶體和並行的指引。  
 
 ## <a name="what-are-resource-classes"></a>什麼是資源類別
 
-查詢的效能處理能力取決於使用者的資源類別。  資源類別是 Azure SQL 資料倉儲中預先決定的資源限制，掌管查詢執行時的計算資源與並行存取。 資源類別可設定同時執行的查詢數目限制，以及指派給每個查詢的計算資源，以協助您設定查詢的資源。  記憶體和平行存取之間有取捨。
+查詢的效能處理能力取決於使用者的資源類別。  在 SQL 分析中，資源類別是預先決定的資源限制，可控制查詢執行的計算資源和平行存取。 資源類別可設定同時執行的查詢數目限制，以及指派給每個查詢的計算資源，以協助您設定查詢的資源。  記憶體和平行存取之間有取捨。
 
 - 較小型的資源類別會減少每個查詢的記憶體上限，但會增加並行存取數。
 - 較大的資源類別會增加每個查詢的記憶體上限，但會減少並行。
@@ -82,7 +82,7 @@ ms.locfileid: "76548164"
 
 根據預設，每位使用者都是動態資源類別 **smallrc** 的成員。
 
-服務管理員的資源類別固定為 smallrc 且無法變更。  服務管理員是在佈建程序期間建立的使用者。  此內容中的服務管理員是在建立採用新伺服器的新 SQL 資料倉儲執行個體時，針對「伺服器管理員登入」所指定的登入。
+服務管理員的資源類別固定為 smallrc 且無法變更。  服務管理員是在佈建程序期間建立的使用者。  此內容中的服務系統管理員，是使用新的伺服器建立新的 SQL 分析實例時，為「伺服器管理員登入」指定的登入。
 
 > [!NOTE]
 > 定義為 Active Directory 管理員的使用者或群組，也會是服務管理員。
@@ -143,7 +143,7 @@ Removed as these two are not confirmed / supported under SQL DW
 
 ## <a name="concurrency-slots"></a>並行位置
 
-並行位置是追蹤查詢執行可用之資源的便利方式。 它們就像是您因為音樂會的座位有限，而購買來保留座位的門票。 每個資料倉儲的並行位置總數取決於服務等級。 在查詢開始執行之前，它必須能夠保留足夠的並行位置。 當查詢完成時，即會釋出它的並行位置。  
+並行位置是追蹤查詢執行可用之資源的便利方式。 它們就像是您因為音樂會的座位有限，而購買來保留座位的門票。 每個資料倉儲的並行位置總數取決於服務等級。 在查詢開始執行之前，它必須能夠保留足夠的並行位置。 當查詢完成時，它會釋放其並行位置。  
 
 - 比起以 2 個並行位置執行的查詢，以 10 個並行位置執行的查詢可以存取 5 倍以上的計算資源。
 - 如果每個查詢需要 10 個並行位置且有 40 個並行位置，則只能同時執行 4 個查詢。
@@ -594,5 +594,5 @@ GO
 
 ## <a name="next-steps"></a>後續步驟
 
-如需管理資料庫使用者和安全性的詳細資訊，請參閱[保護 SQL 資料倉儲中的資料庫](./sql-data-warehouse-overview-manage-security.md)。 如需較大資源類別如何改善叢集資料行存放區索引品質的詳細資訊，請參閱[資料行存放區壓縮的記憶體最佳化](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)。
+如需管理資料庫使用者和安全性的詳細資訊，請參閱[在 SQL 分析中保護資料庫](./sql-data-warehouse-overview-manage-security.md)。 如需較大資源類別如何改善叢集資料行存放區索引品質的詳細資訊，請參閱[資料行存放區壓縮的記憶體最佳化](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)。
 

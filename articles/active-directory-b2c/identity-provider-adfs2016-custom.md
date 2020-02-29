@@ -3,20 +3,20 @@ title: 使用自訂原則新增 ADFS 作為 SAML 識別提供者
 titleSuffix: Azure AD B2C
 description: 在 Azure Active Directory B2C 中使用 SAML 通訊協定和自訂原則來設定 ADFS 2016
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/27/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f331a537c80628a386525e29743807a70a163f0d
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: bfe39d9528927f995d14772e07e02b2a0528e5e0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77914315"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188523"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則將 ADFS 新增為 SAML 識別提供者
 
@@ -24,7 +24,7 @@ ms.locfileid: "77914315"
 
 本文說明如何使用 Azure Active Directory B2C （Azure AD B2C）中的[自訂原則](custom-policy-overview.md)，啟用 ADFS 使用者帳戶的登入。 將 [SAML 技術設定檔](saml-technical-profile.md)新增至自訂原則，以啟用登入。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 完成在 [Azure Active Directory B2C 中開始使用自訂原則](custom-policy-get-started.md)中的步驟。
 - 確定您可以存取具有私密金鑰的憑證 .pfx 檔案。 您可以產生自己簽署的憑證，並將它上傳至 Azure AD B2C。 Azure AD B2C 會使用此憑證簽署傳送給您的 SAML 身分識別提供者的 SAML 要求。
@@ -42,7 +42,7 @@ ms.locfileid: "77914315"
 6. 針對 [選項] 選擇 `Upload`。
 7. 輸入原則金鑰的 [名稱]。 例如： `SamlCert` 。 金鑰名稱前面會自動新增前置詞 `B2C_1A_`。
 8. 瀏覽至包含私密金鑰的憑證 .pfx 檔案，並選取該檔案。
-9. 按一下 **[建立]** 。
+9. 按一下 [建立]。
 
 ## <a name="add-a-claims-provider"></a>新增宣告提供者
 
@@ -186,7 +186,7 @@ https://your-tenant-name.b2clogin.com/your-tenant-name/your-policy/samlp/metadat
 4. 在 [選取資料來源] 頁面上，選取 [匯入線上或區域網路上發行的信賴憑證者相關資料]，提供您的 Azure AD B2C 中繼資料 URL，然後按 [下一步]。
 5. 在 [指定顯示名稱] 頁面上輸入**顯示名稱**、在 [備忘稿] 下輸入此信賴憑證者信任的描述，然後按 [下一步]。
 6. 在 [選擇存取控制原則] 頁面上選擇原則，然後按 [下一步]。
-7. 在 [準備新增信任] 頁面上檢閱設定，然後按 [下一步] 以儲存您的信賴憑證者信任資訊。
+7. 在 [準備新增信任] 頁面上，檢閱設定，然後按一下 [下一步] 以儲存您的信賴憑證者信任資訊。
 8. 在 [完成] 頁面上按一下 [關閉]，此動作就會自動顯示 [編輯宣告規則] 對話方塊。
 9. 選取 [新增規則]。
 10. 在 [宣告規則範本] 中，選取 [傳送 LDAP 屬性作為宣告]。
@@ -198,7 +198,7 @@ https://your-tenant-name.b2clogin.com/your-tenant-name/your-policy/samlp/metadat
     | Surname | family_name |
     | 指定的名稱 | given_name |
     | 電子郵件地址 | 電子郵件 |
-    | 顯示名稱 | NAME |
+    | 顯示名稱 | 名稱 |
 
     請注意，這些名稱不會顯示在 [傳出宣告類型] 下拉式清單中。 您必須在中手動輸入它們。 （下拉式清單實際上是可編輯的）。
 

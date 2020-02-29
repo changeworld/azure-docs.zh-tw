@@ -1,16 +1,16 @@
 ---
-title: 將您的開發電腦連線至 AKS 叢集
+title: 將您的開發電腦連線至 AKS 叢集 (預覽)
 services: azure-dev-spaces
 ms.date: 11/04/2019
 ms.topic: conceptual
 description: 瞭解如何使用 Azure Dev Spaces 將您的開發電腦連接到 AKS 叢集
 keywords: Azure Dev Spaces，Dev Spaces，Docker，Kubernetes，Azure，AKS，Azure Kubernetes Service，容器
-ms.openlocfilehash: cba68702155475832930c791c3a7be014375ba04
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 13e6f16e66941be0ae463e8280827dc0b8183450
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770674"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196088"
 ---
 # <a name="connect-your-development-machine-to-an-aks-cluster-preview"></a>將您的開發電腦連線至 AKS 叢集 (預覽)
 
@@ -96,7 +96,7 @@ Azure Dev Spaces 會重新導向已連線的 AKS 叢集與開發電腦之間的�
 
 Azure Dev Spaces 會在建立 AKS 叢集的連線之後，開啟標題為*AZDS Connect-自行車*的終端機視窗。 此終端機視窗已從您的 AKS 叢集設定所有環境變數和 DNS 專案。 您在此終端機視窗中執行的任何程式碼，或使用 Visual Studio Code 偵錯工具的程式碼，都會連接到 AKS 叢集。
 
-![終端](../media/how-to-connect/connect-terminal.png)
+![終端機](../media/how-to-connect/connect-terminal.png)
 
 此外，Azure Dev Spaces 會建立標題為*Dev Spaces Connect*的視窗及其所有輸出。
 

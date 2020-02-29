@@ -1,6 +1,6 @@
 ---
 title: CREATE TABLE AS SELECT (CTAS)
-description: 在開發方案的 Azure SQL 資料倉儲中，CREATE TABLE AS SELECT （CTAS）語句的說明和範例。
+description: 在開發解決方案的 SQL 分析中，CREATE TABLE AS SELECT （CTAS）語句的說明和範例。
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,17 +10,17 @@ ms.subservice: development
 ms.date: 03/26/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seoapril2019
-ms.openlocfilehash: 4992bb00fa5397ef6a4e055e08b445d35f5ed77a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 09a543ac4b4f77f0c7b7efd2411b962fa9fa2769
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685858"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195901"
 ---
-# <a name="create-table-as-select-ctas-in-azure-sql-data-warehouse"></a>CREATE TABLE 為 Azure SQL 資料倉儲中的 SELECT （CTAS）
+# <a name="create-table-as-select-ctas-in-sql-analytics"></a>SQL 分析中的 CREATE TABLE AS SELECT （CTAS）
 
-本文說明在 Azure SQL 資料倉儲中用來開發解決方案的 CREATE TABLE AS SELECT （CTAS） T-sql 語句。 本文也提供程式碼範例。
+本文說明 SQL 分析中用來開發解決方案的 SELECT （CTAS） T-sql 語句 CREATE TABLE。 此文章也提供程式碼範例。
 
 ## <a name="create-table-as-select"></a>CREATE TABLE AS SELECT
 
@@ -28,7 +28,7 @@ ms.locfileid: "73685858"
 
 ## <a name="selectinto-vs-ctas"></a>選取 .。。INTO 和 CTAS
 
-CTAS 是更容易自訂的[SELECT...INTO](/sql/t-sql/queries/select-into-clause-transact-sql)語句。
+CTAS 是更容易自訂的[SELECT .。。INTO](/sql/t-sql/queries/select-into-clause-transact-sql)語句。
 
 以下是簡單 SELECT ... 的範例登錄
 
@@ -57,7 +57,7 @@ FROM    [dbo].[FactInternetSales];
 > [!NOTE]
 > 如果您只想要在 CTAS 作業中變更索引，而且來源資料表是雜湊散發，請維護相同的散發資料行和資料類型。 這可避免在作業期間進行跨散發資料移動，這會更有效率。
 
-## <a name="use-ctas-to-copy-a-table"></a>使用 CTAS 來複製資料表
+## <a name="use-ctas-to-copy-a-table"></a>使用 CTAS 複製資料表
 
 最常見的 CTAS 使用方式之一，就是建立資料表的複本，以便變更 DDL。 假設您最初將資料表建立為 `ROUND_ROBIN`，而現在想要將它變更為在資料行上散發的資料表。 CTAS 是變更散發資料行的方式。 您也可以使用 CTAS 來變更資料分割、索引或資料行類型。
 
@@ -123,7 +123,7 @@ DROP TABLE FactInternetSales_old;
 
 ## <a name="use-ctas-to-work-around-unsupported-features"></a>使用 CTAS 來解決不支援的功能
 
-您也可以使用 CTAS 來解決下列幾個不支援的功能。 這個方法通常很有用，因為您的程式碼不僅符合規範，而且通常會在 SQL 資料倉儲上執行得更快。 這項效能是其完全平行化設計的結果。 案例包括：
+您也可以使用 CTAS 來解決下列幾個不支援的功能。 這個方法通常會很有説明，因為您的程式碼不僅符合規範，而且通常會在 SQL 分析上執行得更快。 這項效能是其完全平行化設計的結果。 案例包括：
 
 * ANSI JOINS on UPDATEs
 * ANSI JOINs on DELETEs
@@ -132,11 +132,11 @@ DROP TABLE FactInternetSales_old;
 > [!TIP]
 > 請嘗試考慮「先 CTAS」。 使用 CTAS 解決問題通常是很好的方法，即使您要撰寫更多資料亦然。
 
-## <a name="ansi-join-replacement-for-update-statements"></a>update 陳述式的 ANSI 聯結取代
+## <a name="ansi-join-replacement-for-update-statements"></a>更新陳述式的 ANSI 聯結取代
 
 您可能會發現您有複雜的更新。 此更新會使用 ANSI 聯結語法來執行更新或刪除，以結合兩個以上的資料表。
 
-假設您必須更新此資料表：
+想像您必須更新這個資料表：
 
 ```sql
 CREATE TABLE [dbo].[AnnualCategorySales]
@@ -174,7 +174,7 @@ ON    [acs].[EnglishProductCategoryName]    = [fis].[EnglishProductCategoryName]
 AND    [acs].[CalendarYear]                = [fis].[CalendarYear];
 ```
 
-SQL 資料倉儲在 `UPDATE` 語句的 `FROM` 子句中不支援 ANSI 聯結，因此您不能使用上述範例，而不需要修改。
+SQL 分析不支援 `UPDATE` 語句的 `FROM` 子句中的 ANSI 聯結，因此您無法使用上述範例，而不需要修改。
 
 您可以使用 CTAS 和隱含聯結的組合來取代先前的範例：
 
@@ -208,7 +208,7 @@ DROP TABLE CTAS_acs;
 
 ## <a name="ansi-join-replacement-for-delete-statements"></a>delete 陳述式的 ANSI 聯結取代
 
-有時候刪除資料的最佳方法是使用 CTAS，特別是使用 ANSI 聯結語法的 `DELETE` 語句。 這是因為 SQL 資料倉儲不支援在 `DELETE` 語句的 `FROM` 子句中使用 ANSI 聯結。 請選取您想要保留的資料，而不是刪除資料。
+有時候刪除資料的最佳方法是使用 CTAS，特別是使用 ANSI 聯結語法的 `DELETE` 語句。 這是因為 SQL 分析不支援 `DELETE` 語句的 `FROM` 子句中的 ANSI 聯結。 請選取您想要保留的資料，而不是刪除資料。
 
 以下是已轉換 `DELETE` 語句的範例：
 
@@ -295,7 +295,7 @@ AS
 SELECT @d*@f as result;
 ```
 
-請注意，資料行 "result" 沿用運算式的資料類型和可為 null 值。 如果您不小心，將資料類型轉送會導致值的細微差異。
+請注意，資料行 "result" 會帶有運算式的資料類型和可 Null 性。 如果您不小心，將資料類型轉送會導致值的細微差異。
 
 請嘗試此範例：
 
@@ -307,11 +307,11 @@ SELECT result,result*@d
 from ctas_r;
 ```
 
-儲存的結果值是不同的。 當結果資料行中的保存值用於其他運算式時，錯誤會變得更重要。
+為結果而儲存的值不相同。 當結果資料行中的保存值用於其他運算式時，錯誤會變得更重要。
 
 ![CTAS 結果的螢幕擷取畫面](media/sql-data-warehouse-develop-ctas/ctas-results.png)
 
-這對資料移轉而言很重要。 雖然第二個查詢是比較精確的，但仍有問題。 相較于來源系統，資料會不同，這會導致遷移中的完整性問題。 這是「錯誤」答案其實是正確答案的少數原因之一！
+這對資料移轉而言很重要。 雖然第二個查詢是比較精確的，但仍有問題。 相較于來源系統，資料會不同，這會導致遷移中的完整性問題。 這是罕見案例之一，也就是「錯誤」的答案實際上是正確的答案！
 
 我們在兩個結果之間看到差異的原因，是因為隱含的類型轉換。 在第一個範例中，資料表會定義資料行定義。 插入資料列時，會發生隱含類型轉換。 在第二個範例中，沒有隱含的類型轉換，因為運算式會定義資料行的資料類型。
 
@@ -330,7 +330,7 @@ AS
 SELECT ISNULL(CAST(@d*@f AS DECIMAL(7,2)),0) as result
 ```
 
-請注意：
+請注意下列事項：
 
 * 您可以使用 CAST 或 CONVERT。
 * 使用 ISNull，而非聯合，強制 Null 屬性。 請參閱下列注意事項。
@@ -412,7 +412,7 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create');
 
 您可以看到 CTAS 上的類型一致性和維護可 null 性屬性是工程的最佳作法。 它有助於維護計算的完整性，同時也可確保能夠切換分割區。
 
-CTAS 是 SQL 資料倉儲中最重要的其中一個語句。 請確定您已徹底了解。 請參閱[CTAS 檔](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)。
+CTAS 是 SQL 分析中最重要的其中一個語句。 請確定您已徹底了解。 請參閱[CTAS 檔](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)。
 
 ## <a name="next-steps"></a>後續步驟
 

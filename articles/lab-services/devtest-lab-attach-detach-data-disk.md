@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
+ms.date: 02/28/2020
 ms.author: spelluru
-ms.openlocfilehash: e6b470c55815255c50a42821b0bf52219d890206
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 3f18425408e6526904db85eae1c3a4db41d11a58
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170086"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198762"
 ---
 # <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中將資料磁碟連結至虛擬機器或中斷連結
 [Azure 受控磁碟](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview)會管理與虛擬機器資料磁碟相關聯的儲存體帳戶。 使用者將新的資料磁碟連結至 VM、指定所需的磁碟類型和大小，Azure 就會自動建立和管理磁碟。 之後資料磁碟可以從 VM 中斷連結，稍後再重新連結至相同的 VM，或連結至屬於相同使用者的不同 VM。
@@ -40,17 +40,15 @@ ms.locfileid: "76170086"
 1. 從實驗室清單中，選取所需的實驗室。 
 1. 從**我的虛擬機器**清單中，選取執行中的 VM。
 1. 從左側功能表選取 [磁碟]。
-
-    ![選取虛擬機器的資料磁碟](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-data-disk.png)
 1. 選擇 [連結新項目] 以建立新的資料磁碟，並將它連結至 VM。
 
     ![將新的資料磁碟連結至虛擬機器](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-new.png)
 1. 藉由輸入資料磁碟名稱、類型和大小，來完成 [連結新磁碟] 窗格。
 
     ![完成「連結新磁碟」表單](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-new-form.png)
-1. 選取 [確定]。
+1. 選取 **[確定]** 。
 
-稍待一會之後，新的資料磁碟隨即建立並且連結至 VM，且出現在該 VM 的**資料磁碟**清單中。
+幾分鐘後，就會建立新的資料磁片，並將其連結至 VM，並出現在該 VM 的**資料磁片**清單中。
 
 ### <a name="attach-an-existing-disk"></a>連接現有磁碟
 請遵循這些步驟將現有可用的資料磁碟重新連結至執行中的 VM。 
@@ -59,13 +57,13 @@ ms.locfileid: "76170086"
 1. 從左側功能表選取 [磁碟]。
 1. 選取 [連結新項目] 以將可用的資料磁碟連結至 VM。
 
-    ![將現有的資料磁碟連結至虛擬機器](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-existing2.png)
+    ![將現有的資料磁碟連結至虛擬機器](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-existing-button.png)
 
 1. 從 [連結現有磁碟] 窗格中，選取 [確定]。
 
     ![將現有的資料磁碟連結至虛擬機器](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-existing.png)
 
-稍待一會之後，資料磁碟就會連結至 VM，並且出現在該 VM 的**資料磁碟**清單中。
+幾分鐘後，資料磁片會連結至 VM，並出現在該 VM 的**資料磁片**清單中。
 
 ## <a name="detach-a-data-disk"></a>卸離資料磁碟
 當您不再需要某個連結至 VM 的資料磁碟時，可以輕鬆將它中斷連結。 中斷連結會從 VM 移除磁碟，但是將它保留在儲存體中以供後續使用。
@@ -75,9 +73,9 @@ ms.locfileid: "76170086"
 ### <a name="detach-from-the-vms-management-pane"></a>從 VM 的管理窗格中斷連結
 1. 從虛擬機器的清單中，選取具有已連結資料磁碟的 VM。
 1. 從左側功能表選取 [磁碟]。
+1. 從**資料磁片**清單中，選取您想要卸離的資料磁片。
 
-    ![選取虛擬機器的資料磁碟](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-data-disk.png) 
-1. 從**資料磁碟**清單中，選取您想要中斷連結的資料磁碟。
+    ![選取虛擬機器的資料磁碟](./media/devtest-lab-attach-detach-data-disk/devtest-lab-detach-button.png) 
 1. 從磁碟的詳細資料窗格頂端選取 [中斷連結]。
 
     ![卸離資料磁碟](./media/devtest-lab-attach-detach-data-disk/devtest-lab-detach-data-disk2.png)
@@ -86,9 +84,7 @@ ms.locfileid: "76170086"
 磁碟已中斷連結，且可用於連結至另一個 VM。 
 ### <a name="detach-from-the-labs-main-pane"></a>從實驗室的主窗格中斷連結
 1. 在您的實驗室主窗格中，選取 [我的資料磁碟]。
-
-    ![存取實驗室的資料磁碟](./media/devtest-lab-attach-detach-data-disk/devtest-lab-my-data-disks.png)
-1. 以滑鼠右鍵按一下您想要中斷連結的資料磁碟 – 或選取其省略符號 (...) – 然後選擇 [中斷連結]。
+1. 在您要卸離的資料磁片上按一下滑鼠右鍵，或選取其省略號（ **...** ），然後選擇 [卸**離**]。
 
     ![卸離資料磁碟](./media/devtest-lab-attach-detach-data-disk/devtest-lab-detach-data-disk.png)
 1. 選取 [是] 以確認您想要中斷連結。
@@ -102,8 +98,6 @@ ms.locfileid: "76170086"
 如果您有現有的 VM 使用非受控資料磁碟，您可以輕鬆地將 VM 轉換為使用受控磁碟。 此程序會轉換 OS 磁碟和任何附加的資料磁碟。
 
 若要升級非受控資料磁碟，請遵循本文中所述的步驟，從非受控 VM [中斷連結資料磁碟](#detach-a-data-disk)。 然後，[重新連結磁碟](#attach-an-existing-disk)至受控 VM，以自動將資料磁碟從非受控升級為受控。
-
-[!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="next-steps"></a>後續步驟
 了解如何管理[可宣告虛擬機器](devtest-lab-add-claimable-vm.md#unclaim-a-vm)的資料磁碟。

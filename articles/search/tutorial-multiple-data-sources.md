@@ -7,21 +7,21 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/23/2019
-ms.openlocfilehash: aac5dc300009ec682ef1599ad654415f5c4ad190
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.date: 02/28/2020
+ms.openlocfilehash: 6408689deec7de365ede86665a0eaeb0bd0de64b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75495106"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196564"
 ---
-# <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-cognitive-search-index"></a>C#教學課程：在一個 Azure 認知搜尋索引中結合來自多個資料來源的資料
+# <a name="tutorial-index-data-from-multiple-data-sources-in-c"></a>教學課程：從中的多個資料來源編制資料索引C#
 
 Azure 認知搜尋服務可以將多個資料來源的資料匯入至單一已合併的搜尋索引，並進行分析和編製索引。 這支援將結構化資料與其他來源的結構化程度較低或甚至純文字資料進行彙總的狀況，例如文字、HTML 或 JSON 文件。
 
 此教學課程說明如何為來自 Azure Cosmos DB 資料來源的旅館資料編製索引，並將該資料與從 Azure Blob 儲存體文件繪製的旅館房間詳細資料合併。 結果將會產生一個已合併的旅館搜尋索引，其中包含複雜資料類型。
 
-此教學課程將使用 C#、適用於 Azure 認知搜尋服務的 .NET SDK 及 Azure 入口網站來執行下列工作：
+本教學課程C#會使用和[.net SDK](https://aka.ms/search-sdk)來執行下列工作：
 
 > [!div class="checklist"]
 > * 上傳範例資料並建立資料來源
@@ -30,19 +30,19 @@ Azure 認知搜尋服務可以將多個資料來源的資料匯入至單一已�
 > * 為來自 Azure Cosmos DB 的旅館資料編製索引
 > * 合併來自 Blob 儲存體的旅館房間資料
 
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
 ## <a name="prerequisites"></a>必要條件
 
-本快速入門會使用下列服務、工具和資料。 
++ [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal)
++ [Azure 儲存體](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
++ [Visual Studio 2019](https://visualstudio.microsoft.com/)
++ [建立](search-create-service-portal.md)或[尋找現有的搜尋服務](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) 
 
-- [建立 Azure 認知搜尋服務](search-create-service-portal.md)，或在您目前的訂用帳戶下方[尋找現有服務](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 您可以使用本教學課程的免費服務。
+> [!Note]
+> 您可以在本教學課程中使用免費服務。 免費的搜尋服務可將您限制為三個索引、三個索引子和三個數據源。 本教學課程會各建立一個。 開始之前，請確定您的服務有空間可接受新的資源。
 
-- [建立 Azure Cosmos DB 帳戶](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal)，以儲存範例旅館資料。
-
-- 建立用來儲存範例室資料的[Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)。
-
-- [安裝 Visual Studio 2019](https://visualstudio.microsoft.com/) ，以作為 IDE 使用。
-
-### <a name="install-the-project-from-github"></a>從 GitHub 安裝專案
+## <a name="download-files"></a>下載檔案
 
 1. 在 GitHub 上找出範例存放庫：[azure-search-dotnet-samples](https://github.com/Azure-Samples/azure-search-dotnet-samples)。
 1. 選取 [複製或下載]，並建立存放庫的私人本機複本。
@@ -72,7 +72,7 @@ Azure 認知搜尋服務可以將多個資料來源的資料匯入至單一已�
 
 1. 選取 [**資料總管**]，然後選取 [**新增資料庫**]。
 
-   ![建立新的資料庫](media/tutorial-multiple-data-sources/cosmos-newdb.png "建立新資料庫")
+   ![建立新的資料庫](media/tutorial-multiple-data-sources/cosmos-newdb.png "建立新的資料庫")
 
 1. 輸入 [**飯店-聊天室-db**] 名稱。 接受其餘設定的預設值。
 
@@ -340,13 +340,23 @@ Blob 儲存體索引子可以使用參數來識別要使用的剖析模式。 �
 
 按一下清單中的 hotel-rooms-sample 索引。 您將會看到索引的搜尋總管介面。 輸入 "Luxury" 等字詞的查詢。 您應該會在結果中至少看見一份文件，而這份文件應該會在其房間陣列中顯示房間物件的清單。
 
+## <a name="reset-and-rerun"></a>重設並重新執行
+
+在開發的早期實驗階段中，設計反復專案最實用的方法是從 Azure 認知搜尋中刪除物件，並允許您的程式碼重建它們。 資源名稱是唯一的。 刪除物件可讓您使用相同的名稱加以重新建立。
+
+本教學課程的範例程式碼會檢查現有的物件，並將其刪除，讓您可以重新執行程式碼。
+
+您也可以使用入口網站來刪除索引、索引子和資料來源。
+
 ## <a name="clean-up-resources"></a>清除資源
 
-在完成教學課程後，最快速的清除方式是刪除包含 Azure 認知搜尋服務的資源群組。 您現在可以刪除資源群組，以永久刪除當中所包含的所有項目。 在入口網站中，資源群組名稱位在 Azure 認知搜尋服務的 [概觀] 頁面上。
+如果您使用自己的訂用帳戶，當專案結束時，建議您移除不再需要的資源。 讓資源繼續執行可能會產生費用。 您可以個別刪除資源，或刪除資源群組以刪除整組資源。
+
+您可以使用左側導覽窗格中的 [所有資源] 或 [資源群組] 連結，在入口網站中尋找及管理資源。
 
 ## <a name="next-steps"></a>後續步驟
 
-有數種方法和多個選項可用於編製 JSON Blob 的索引。 如果您的來源資料包含 JSON 內容，您可以檢閱這些選項，以查看最適合您案例的內容。
+既然您已經熟悉從多個來源內嵌資料的概念，讓我們從 Cosmos DB 開始，仔細查看索引子設定。
 
 > [!div class="nextstepaction"]
-> [如何使用 Azure 認知搜尋 Blob 索引子編製 JSON Blob 的索引](search-howto-index-json-blobs.md)
+> [設定 Azure Cosmos DB 索引子](search-howto-index-cosmosdb.md)

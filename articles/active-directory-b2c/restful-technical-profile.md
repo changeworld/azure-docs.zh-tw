@@ -3,20 +3,20 @@ title: 在自訂原則中定義 RESTful 技術設定檔
 titleSuffix: Azure AD B2C
 description: 定義 Azure Active Directory B2C 自訂原則中的 RESTful 技術設定檔。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/24/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 80298ca4df01a93730fc831fc495b3123ead5f97
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: b83a6bacf1c6e392db9dfc65fd737ea28416a6b5
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585674"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183817"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定義 Azure Active Directory B2C 自訂原則中的 RESTful 技術設定檔
 
@@ -121,7 +121,7 @@ REST API 技術設定檔可讓您將複雜的 JSON 承載傳送至端點。
 
 ## <a name="metadata"></a>中繼資料
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要項 | 描述 |
 | --------- | -------- | ----------- |
 | ServiceUrl | 是 | REST API 端點的 URL。 |
 | AuthenticationType | 是 | RESTful 宣告提供者正在執行的驗證類型。 可能的值：`None`、`Basic`、`Bearer` 或 `ClientCertificate`。 `None` 值表示 REST API 並非匿名。 `Basic` 值表示 REST API 受到 HTTP 基本驗證保護。 只有經過驗證的使用者 (包括 Azure AD B2C) 才能存取您的 API。 `ClientCertificate` （建議）值表示 REST API 會使用用戶端憑證驗證來限制存取。 只有具有適當憑證（例如 Azure AD B2C）的服務才能存取您的 API。 `Bearer` 值表示 REST API 會使用用戶端 OAuth2 持有人權杖來限制存取。 |
@@ -150,7 +150,7 @@ REST API 技術設定檔可讓您將複雜的 JSON 承載傳送至端點。
 
 如果驗證類型設為 `Basic`，則 **CryptographicKeys** 元素會包含下列屬性：
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要項 | 描述 |
 | --------- | -------- | ----------- |
 | BasicAuthenticationUsername | 是 | 用來驗證的使用者名稱。 |
 | BasicAuthenticationPassword | 是 | 用來驗證的密碼。 |
@@ -175,7 +175,7 @@ REST API 技術設定檔可讓您將複雜的 JSON 承載傳送至端點。
 
 如果驗證類型設為 `ClientCertificate`，則 **CryptographicKeys** 元素會包含下列屬性：
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要項 | 描述 |
 | --------- | -------- | ----------- |
 | ClientCertificate | 是 | 用來驗證的 X509 憑證 (RSA 金鑰組)。 |
 
@@ -196,7 +196,7 @@ REST API 技術設定檔可讓您將複雜的 JSON 承載傳送至端點。
 
 如果驗證類型設為 `Bearer`，則 **CryptographicKeys** 元素會包含下列屬性：
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要項 | 描述 |
 | --------- | -------- | ----------- |
 | BearerAuthenticationToken | 否 | OAuth 2.0 持有人權杖。 |
 
@@ -219,9 +219,9 @@ REST API 技術設定檔可讓您將複雜的 JSON 承載傳送至端點。
 
 您的 REST API 可能需要傳回錯誤訊息，例如「CRM 系統中找不到使用者」。 如果發生錯誤，REST API 應該會傳回 HTTP 409 錯誤訊息（衝突回應狀態碼）與下列屬性：
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要項 | 描述 |
 | --------- | -------- | ----------- |
-| version | 是 | 1.0.0 |
+| 版本 | 是 | 1.0.0 |
 | status | 是 | 409 |
 | 代碼 | 否 | RESTful 端點提供者的錯誤代碼，在啟用 `DebugMode` 時顯示。 |
 | requestId | 否 | RESTful 端點提供者的要求識別碼，在啟用 `DebugMode` 時顯示。 |

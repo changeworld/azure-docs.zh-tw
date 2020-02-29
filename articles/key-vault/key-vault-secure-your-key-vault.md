@@ -6,15 +6,16 @@ author: amitbapat
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
-ms.openlocfilehash: d22231541a7fe29d4517985742d4bf88dc4c3fa7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: eac3850cfa0684bd1751cf7b88b4ff8e92667293
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980444"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197431"
 ---
 # <a name="secure-access-to-a-key-vault"></a>針對金鑰保存庫的存取進行保護
 
@@ -51,10 +52,10 @@ Azure Key Vault 是用來保護加密金鑰和祕密 (例如憑證、連接字�
 
 下表顯示管理和資料平面的端點。
 
-| 存取&nbsp;平面 | 存取端點 | Dynamics 365 | 存取&nbsp;控制機制 |
+| 存取&nbsp;平面 | 存取端點 | 作業 | 存取&nbsp;控制機制 |
 | --- | --- | --- | --- |
-| 管理平面 | **全域：**<br> management.azure.com:443<br><br> **Azure China 21Vianet：**<br> management.chinacloudapi.cn:443<br><br> **Azure 美國政府︰**<br> management.usgovcloudapi.net:443<br><br> **Azure 德國︰**<br> management.microsoftazure.de:443 | 建立、讀取、更新及刪除金鑰保存庫<br><br>設定 Key Vault 存取原則<br><br>設定 Key Vault 標籤 | Azure Resource Manager RBAC |
-| 資料平面 | **全域：**<br> &lt;vault-name&gt;.vault.azure.net:443<br><br> **Azure China 21Vianet：**<br> &lt;vault-name&gt;.vault.azure.cn:443<br><br> **Azure 美國政府︰**<br> &lt;vault-name&gt;.vault.usgovcloudapi.net:443<br><br> **Azure 德國︰**<br> &lt;vault-name&gt;.vault.microsoftazure.de:443 | 金鑰︰解密、加密、<br> 解除包裝、包裝、驗證、登入、<br> 取得、列出、更新、建立、<br> 匯入、刪除、備份、還原<br><br> 祕密︰取得、列出、設定、刪除 | Key Vault 存取原則 |
+| 管理平面 | **全域：**<br> management.azure.com:443<br><br> **Azure China 21Vianet：**<br> management.chinacloudapi.cn:443<br><br> **Azure US Gov︰**<br> management.usgovcloudapi.net:443<br><br> **Azure 德國︰**<br> management.microsoftazure.de:443 | 建立、讀取、更新及刪除金鑰保存庫<br><br>設定 Key Vault 存取原則<br><br>設定 Key Vault 標籤 | Azure Resource Manager RBAC |
+| 資料平面 | **全域：**<br> &lt;vault-name&gt;.vault.azure.net:443<br><br> **Azure China 21Vianet：**<br> &lt;vault-name&gt;.vault.azure.cn:443<br><br> **Azure US Gov︰**<br> &lt;vault-name&gt;.vault.usgovcloudapi.net:443<br><br> **Azure 德國︰**<br> &lt;vault-name&gt;.vault.microsoftazure.de:443 | 金鑰︰解密、加密、<br> 解除包裝、包裝、驗證、登入、<br> 取得、列出、更新、建立、<br> 匯入、刪除、備份、還原<br><br> 祕密︰取得、列出、設定、刪除 | Key Vault 存取原則 |
 
 ## <a name="management-plane-and-rbac"></a>管理平面和 RBAC
 

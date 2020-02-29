@@ -1,6 +1,6 @@
 ---
 title: 教學課程：使用 Azure 入口網站 & SSMS 載入資料
-description: 教學課程會使用 Azure 入口網站和 SQL Server Management Studio，將 WideWorldImportersDW 資料倉儲從全域 Azure blob 載入至 Azure SQL 資料倉儲。
+description: 教學課程使用 Azure 入口網站和 SQL Server Management Studio，將 WideWorldImportersDW 資料倉儲從全域 Azure blob 載入至 Azure Synapse Analytics Sql 集區。
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,22 +10,22 @@ ms.subservice: load-data
 ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: a2adc2acdb9c1d850bb12833540ed8da51701e58
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: seo-lt-2019, synapse-analytics
+ms.openlocfilehash: 8e58c315ddc171ba19e0bce1cea4f694691f946e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75370131"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193546"
 ---
-# <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>教學課程：將資料載入 Azure SQL 資料倉儲
+# <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>教學課程：將資料載入至 Azure Synapse 分析 Sql 集區
 
-本教學課程會使用 PolyBase 將 WideWorldImportersDW 資料倉儲從 Azure Blob 儲存體載入 Azure SQL 資料倉儲中。 本教學課程是使用 [Azure 入口網站](https://portal.azure.com)和 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)：
+本教學課程會使用 PolyBase，將 WideWorldImportersDW 資料倉儲從 Azure Blob 儲存體載入至 Azure Synapse Analytics SQL 集區中的資料倉儲。 本教學課程是使用 [Azure 入口網站](https://portal.azure.com)和 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)：
 
 > [!div class="checklist"]
-> * 在 Azure 入口網站中建立資料倉儲
+> * 在 Azure 入口網站中使用 SQL 集區建立資料倉儲
 > * 在 Azure 入口網站中設定伺服器層級的防火牆規則
-> * 使用 SSMS 連線到資料倉儲
+> * 使用 SSMS 連接到 SQL 集區
 > * 建立針對載入資料指定的使用者
 > * 建立以 Azure Blob 作為資料來源的外部資料表
 > * 使用 CTAS T-SQL 陳述式將資料載入資料倉儲
@@ -43,33 +43,30 @@ ms.locfileid: "75370131"
 
 登入 [Azure 入口網站](https://portal.azure.com/)。
 
-## <a name="create-a-blank-sql-data-warehouse"></a>建立空白 SQL 資料倉儲
+## <a name="create-a-blank-data-warehouse-in-sql-pool"></a>在 SQL 集區中建立空白資料倉儲
 
-Azure SQL 資料倉儲會使用一組定義的[計算資源](memory-concurrency-limits.md)建立。 此資料庫建立於 [Azure 資源群組](../azure-resource-manager/management/overview.md)和 [Azure SQL 邏輯伺服器](../sql-database/sql-database-features.md)內。 
+系統會使用一組定義的[計算資源](memory-concurrency-limits.md)來建立 Sql 集區。 SQL 集區會建立在[azure 資源群組](../azure-resource-manager/management/overview.md)和[azure sql 邏輯伺服器](../sql-database/sql-database-features.md)內。 
 
-請遵循下列步驟來建立空白的 SQL 資料倉儲。 
+請遵循下列步驟來建立空白 SQL 集區。 
 
-1. 按一下 Azure 入口網站左上角的 [建立資源]。
+1. 在 Azure 入口網站中選取 **建立資源**。
 
-2. 從 [新增] 頁面中選取 [資料庫]，然後在 [新增] 頁面的 [精選] 下選取 [SQL 資料倉儲]。
+1. 從 [**新增**] 頁面中選取 [**資料庫**]，然後在 [**新增**] 頁面的 [**精選**] 底下選取 [ **Azure Synapse 分析**]
 
-    ![建立資料倉儲](media/load-data-wideworldimportersdw/create-empty-data-warehouse.png)
+    ![建立 SQL 集區](media/load-data-wideworldimportersdw/create-empty-data-warehouse.png)
 
-3. 在 SQL 資料倉儲表單中填寫下列資訊︰   
+1. 在 [**專案詳細資料**] 區段中，填入下列資訊：   
 
-   | 設定 | 建議的值 | 說明 | 
-   | ------- | --------------- | ----------- | 
-   | **資料庫名稱** | SampleDW | 如需有效的資料庫名稱，請參閱[資料庫識別碼](/sql/relational-databases/databases/database-identifiers)。 | 
+   | 設定 | 範例 | 描述 | 
+   | ------- | --------------- | ----------- |
    | **訂用帳戶** | 您的訂用帳戶  | 如需訂用帳戶的詳細資訊，請參閱[訂用帳戶](https://account.windowsazure.com/Subscriptions)。 |
-   | **資源群組** | SampleRG | 如需有效的資源群組名稱，請參閱[命名規則和限制](/azure/architecture/best-practices/resource-naming)。 |
-   | **選取來源** | 空白資料庫 | 指定以建立空白資料庫。 請注意，資料倉儲是一種資料庫。|
+   | **資源群組** | myResourceGroup | 如需有效的資源群組名稱，請參閱[命名規則和限制](/azure/architecture/best-practices/resource-naming)。 |
 
-    ![建立資料倉儲](media/load-data-wideworldimportersdw/create-data-warehouse.png)
+1. 在 **[sql 集區詳細資料**] 底下，為您的 SQL 集區提供名稱。 接下來，從下拉式選中選取現有的伺服器，或選取 [**伺服器**設定 **] 下的 [新建]** 來建立新的伺服器。 在表單中填寫以下資訊： 
 
-4. 按一下 [伺服器] 為您的新資料庫建立及設定新的伺服器。 在**新伺服器表單**表單中填寫下列資訊︰ 
-
-    | 設定 | 建議的值 | 說明 | 
+    | 設定 | 建議的值 | 描述 | 
     | ------- | --------------- | ----------- |
+    |**SQL 集區名稱**|SampleDW| 如需有效的資料庫名稱，請參閱[資料庫識別碼](/sql/relational-databases/databases/database-identifiers)。 | 
     | **伺服器名稱** | 任何全域唯一名稱 | 如需有效的伺服器名稱，請參閱[命名規則和限制](/azure/architecture/best-practices/resource-naming)。 | 
     | **伺服器管理員登入** | 任何有效名稱 | 如需有效的登入名稱，請參閱[資料庫識別碼](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)。|
     | **密碼** | 任何有效密碼 | 您的密碼至少要有 8 個字元，而且必須包含下列幾種字元的其中三種︰大寫字元、小寫字元、數字和非英數字元。 |
@@ -77,87 +74,72 @@ Azure SQL 資料倉儲會使用一組定義的[計算資源](memory-concurrency-
 
     ![建立資料庫伺服器](media/load-data-wideworldimportersdw/create-database-server.png)
 
-5. 按一下 [選取]。
+1. **選取 [效能等級**]。 滑杆預設會設定為**DW1000c**。 向上和向下移動滑杆，選擇所需的效能調整。 
 
-6. 按一下 [**效能層**]，指定資料倉儲為 Gen1 或 Gen2，以及資料倉儲單位的數目。 
+    ![建立資料庫伺服器](media/load-data-wideworldimportersdw/create-data-warehouse.png)
 
-7. 在本教學課程中，請選取 [ **Gen1** ] 服務層級。 根據預設，滑桿會設定為 **DW400**。  請嘗試向上和向下移動以查看其運作方式。 
+1. 在 [**其他設定**] 頁面上，將 [**使用現有的資料**] 設定為 [無]，並將定序保留為預設值 [ *SQL_Latin1_General_CP1_CI_AS* **]** 。 
 
-    ![設定效能](media/load-data-wideworldimportersdw/configure-performance.png)
+1. 選取 [審核] [ **+ 建立**] 來檢查您的設定，然後選取 [**建立**] 以建立您的資料倉儲。 您可以從 [**通知**] 功能表開啟 [**部署進行中**] 頁面，以監視您的進度。 
 
-8. 按一下 [套用]。
-9. 在 [SQL 資料倉儲] 頁面上，針對空白資料庫選取 [定序]。 本教學課程使用預設值。 如需定序的詳細資訊，請參閱[定序](/sql/t-sql/statements/collations)。
-
-11. 您現在已完成 SQL Database 表單，請按一下 [建立] 來佈建資料庫。 佈建需要幾分鐘的時間。 
-
-    ![按一下 [建立]](media/load-data-wideworldimportersdw/click-create.png)
-
-12. 在工具列上，按一下 [通知] 以監視部署程序。
-    
      ![通知](media/load-data-wideworldimportersdw/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>建立伺服器層級防火牆規則
 
-SQL 資料倉儲服務會在伺服器層級建立防火牆，防止外部應用程式和工具連線到伺服器或伺服器上的任何資料庫。 若要啟用連線，您可以新增防火牆規則以啟用特定 IP 位址之連線。  遵循以下步驟建立用戶端 IP 位址的[伺服器層級防火牆規則](../sql-database/sql-database-firewall-configure.md)。 
+Azure Synapse 分析服務會在伺服器層級建立防火牆，防止外部應用程式和工具連接到伺服器或伺服器上的任何資料庫。 若要啟用連線，您可以新增防火牆規則以啟用特定 IP 位址之連線。  遵循以下步驟建立用戶端 IP 位址的[伺服器層級防火牆規則](../sql-database/sql-database-firewall-configure.md)。 
 
 > [!NOTE]
-> SQL 資料倉儲會透過連接埠 1433 通訊。 如果您嘗試從公司網路內進行連線，您網路的防火牆可能不允許透過連接埠 1433 的輸出流量。 若情況如此，除非 IT 部門開啟連接埠 1433，否則您無法連線至 Azure SQL Database 伺服器。
+> Azure Synapse 分析 SQL 集區會透過埠1433進行通訊。 如果您嘗試從公司網路內進行連線，您網路的防火牆可能不允許透過連接埠 1433 的輸出流量。 若情況如此，除非 IT 部門開啟連接埠 1433，否則您無法連線至 Azure SQL Database 伺服器。
 >
 
-1. 部署完成之後，按一下左側功能表中的 [SQL Database]，然後按一下 [SQL Database] 頁面上的 [SampleDW]。 資料庫的概觀頁面隨即開啟，其中會顯示完整伺服器名稱 (例如 **sample-svr.database.windows.net**)，並提供進一步的組態選項。 
 
-2. 在後續的快速入門中，請複製此完整伺服器名稱，才能用來連線到伺服器及其資料庫。 若要開啟伺服器設定，請按一下伺服器名稱。
+1. 部署完成之後，在導覽功能表的 [搜尋] 方塊中搜尋您的集區名稱，然後選取 [SQL 集區] 資源。 選取伺服器名稱。 
 
-    ![尋找伺服器名稱](media/load-data-wideworldimportersdw/find-server-name.png) 
+    ![前往您的資源](media/load-data-wideworldimportersdw/search-for-sql-pool.png) 
 
-3. 若要開啟伺服器設定，請按一下伺服器名稱。
+1. 選取伺服器名稱。 
+    伺服器名稱![](media/load-data-wideworldimportersdw/find-server-name.png) 
+
+1. 選取 [**顯示防火牆設定**]。 Sql 集區伺服器的 [**防火牆設定**] 頁面隨即開啟。 
 
     ![伺服器設定](media/load-data-wideworldimportersdw/server-settings.png) 
 
-5. 按一下 [顯示防火牆設定]。 SQL Database 伺服器的 [防火牆設定] 頁面隨即開啟。 
+1. 在 [**防火牆和虛擬網路**] 頁面上，選取 [新增**用戶端 IP** ]，將目前的 ip 位址新增至新的防火牆規則。 防火牆規則可以針對單一 IP 位址或 IP 位址範圍開啟連接埠 1433。
 
     ![伺服器防火牆規則](media/load-data-wideworldimportersdw/server-firewall-rule.png) 
 
-4.  若要將目前的 IP 位址新增至新的防火牆規則，按一下工具列上的 [新增用戶端 IP]。 防火牆規則可以針對單一 IP 位址或 IP 位址範圍開啟連接埠 1433。
+1. 選取 [儲存]。 系統便會為目前的 IP 位址建立伺服器層級防火牆規則，以便在邏輯伺服器上開啟連接埠 1433。
 
-5. 按一下 [檔案]。 系統便會為目前的 IP 位址建立伺服器層級防火牆規則，以便在邏輯伺服器上開啟連接埠 1433。
-
-6. 依序按一下 [確定]，然後關閉 [防火牆設定] 頁面。
-
-您現在可以使用這個 IP 位址連線到 SQL Server 及其資料倉儲。 可從 SQL Server Management Studio 或您選擇的另一個工具來運作連線。 當您連線時，請使用先前建立的 serveradmin 帳戶。  
+您現在可以使用用戶端 IP 位址連接到 SQL server。 可從 SQL Server Management Studio 或您選擇的另一個工具來運作連線。 當您連線時，請使用先前建立的 serveradmin 帳戶。  
 
 > [!IMPORTANT]
 > 根據預設，已對所有 Azure 服務啟用透過 SQL Database 防火牆存取。 在此頁面上按一下 [關閉]，然後按一下 [儲存] 可停用所有 Azure 服務的防火牆。
 
 ## <a name="get-the-fully-qualified-server-name"></a>取得完整的伺服器名稱
 
-請在 Azure 入口網站中取得 SQL 伺服器的完整伺服器名稱。 稍後您在連線到伺服器時，要使用完整伺服器名稱。
+完整伺服器名稱會用來連接到伺服器。 移至 Azure 入口網站中的 SQL 集區資源，並在 [**伺服器名稱**] 下查看完整名稱。
 
-1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 從左側功能表中選取 [SQL Database]，按一下 [SQL Database]頁面上您的資料庫。 
-3. 在 Azure 入口網站中您資料庫的 [基本資訊] 窗格中，找到後複製 [伺服器名稱]。 在此範例中，完整的名稱是 mynewserver 20171113.database.windows.net。 
-
-    ![連線資訊](media/load-data-wideworldimportersdw/find-server-name.png)  
+![伺服器名稱](media/load-data-wideworldimportersdw/find-server-name.png) 
 
 ## <a name="connect-to-the-server-as-server-admin"></a>以伺服器系統管理員身分連線到伺服器
 
 本節使用 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) 建立對 Azure SQL Server 的連線。
 
-1. 開啟 SQL Server Management Studio。
+1. 開啟 [SQL Server Management Studio]。
 
 2. 在 [連線至伺服器] 對話方塊中，輸入下列資訊：
 
-    | 設定      | 建議的值 | 說明 | 
+    | 設定      | 建議的值 | 描述 | 
     | ------------ | --------------- | ----------- | 
     | 伺服器類型 | 資料庫引擎 | 這是必要值 |
-    | 伺服器名稱 | 完整伺服器名稱 | 例如，**sample-svr.database.windows.net** 是完整的伺服器名稱。 |
+    | 伺服器名稱 | 完整伺服器名稱 | 例如， **sqlpoolservername.database.windows.net**是完整的伺服器名稱。 |
     | 驗證 | SQL Server 驗證 | SQL 驗證是本教學課程中設定的唯一驗證類型。 |
     | 登入 | 伺服器系統管理員帳戶 | 這是您在建立伺服器時指定的帳戶。 |
-    | 密碼 | 伺服器系統管理員帳戶的密碼 | 這是您在建立伺服器時指定的密碼。 |
+    | Password | 伺服器系統管理員帳戶的密碼 | 這是您在建立伺服器時指定的密碼。 |
 
     ![連線至伺服器](media/load-data-wideworldimportersdw/connect-to-server.png)
 
-4. 按一下 [ **連接**]。 [物件總管] 視窗會在 SSMS 中開啟。 
+4. 按一下 [連接]。 [物件總管] 視窗會在 SSMS 中開啟。 
 
 5. 在 [物件總管] 中展開 [資料庫]。 然後展開 [系統資料庫] 和 [主要資料庫] 來檢視主要資料庫中的物件。  展開 [ **SampleDW** ] 以查看新資料庫中的物件。
 
@@ -165,7 +147,7 @@ SQL 資料倉儲服務會在伺服器層級建立防火牆，防止外部應用�
 
 ## <a name="create-a-user-for-loading-data"></a>建立載入資料的使用者
 
-伺服器系統管理員帳戶旨在執行管理作業，並不適合用於在使用者資料上執行查詢。 載入資料是需要大量記憶體的作業。 記憶體的最大值會依據您使用的 SQL 資料倉儲版本、[資料倉儲單位](what-is-a-data-warehouse-unit-dwu-cdwu.md)以及[資源類別](resource-classes-for-workload-management.md)而定。 
+伺服器系統管理員帳戶旨在執行管理作業，並不適合用於在使用者資料上執行查詢。 載入資料是需要大量記憶體的作業。 記憶體的最大數目是根據您所使用的 SQL 集區、[資料倉儲單位](what-is-a-data-warehouse-unit-dwu-cdwu.md)和[資源類別](resource-classes-for-workload-management.md)的產生來定義。 
 
 您最好建立載入資料專用的登入和使用者。 然後將載入使用者新增至可進行適當最大記憶體配置的[資源類別](resource-classes-for-workload-management.md)。
 
@@ -208,7 +190,7 @@ SQL 資料倉儲服務會在伺服器層級建立防火牆，防止外部應用�
 
 2. 輸入完整伺服器名稱，以及輸入 **LoaderRC60** 作為登入。  輸入您 LoaderRC60 的密碼。
 
-3. 按一下 [ **連接**]。
+3. 按一下 [連接]。
 
 4. 您的連線就緒時，會在 [物件總管] 中看到兩個伺服器連線。 一個是以 ServerAdmin 連線，另一個是以 LoaderRC60 連線。
 
@@ -216,7 +198,7 @@ SQL 資料倉儲服務會在伺服器層級建立防火牆，防止外部應用�
 
 ## <a name="create-external-tables-and-objects"></a>建立外部資料表和物件
 
-您已準備好開始將資料載入新資料倉儲的程序。 如需日後參考，要了解如何將您的資料置於 Azure Blob 儲存體，或直接從您的來源將資料載入 SQL 資料倉儲，請參閱[載入概觀](sql-data-warehouse-overview-load.md)。
+您已準備好開始將資料載入新資料倉儲的程序。 如需日後參考，若要瞭解如何將資料移至 Azure Blob 儲存體，或直接從您的來源將其載入至 SQL 集區，請參閱[載入總覽](sql-data-warehouse-overview-load.md)。
 
 執行下列 SQL 指令碼可指定您要載入之資料的相關資訊。 這項資訊包括資料所在位置、資料內容的格式，以及資料的資料表定義。 資料位於全域 Azure Blob 中。
 
@@ -266,7 +248,7 @@ SQL 資料倉儲服務會在伺服器層級建立防火牆，防止外部應用�
     CREATE SCHEMA wwi;
     ```
 
-7. 建立外部資料表。 資料表定義會儲存在 SQL 資料倉儲中，但資料表是參考儲存在 Azure blob 儲存體中的資料。 執行下列 T-SQL 命令來建立數個外部資料表，而這些資料表都指向您先前在外部資料來源中定義的 Azure blob。
+7. 建立外部資料表。 資料表定義會儲存在資料庫中，但資料表會參考儲存在 Azure blob 儲存體中的資料。 執行下列 T-SQL 命令來建立數個外部資料表，而這些資料表都指向您先前在外部資料來源中定義的 Azure blob。
 
     ```sql
     CREATE EXTERNAL TABLE [ext].[dimension_City](
@@ -545,15 +527,15 @@ SQL 資料倉儲服務會在伺服器層級建立防火牆，防止外部應用�
 
     ![檢視外部資料表](media/load-data-wideworldimportersdw/view-external-tables.png)
 
-## <a name="load-the-data-into-your-data-warehouse"></a>將資料載入資料倉儲
+## <a name="load-the-data-into-sql-pool"></a>將資料載入 SQL 集區
 
-本節使用您定義的外部資料表，將範例資料從 Azure Blob 載入 SQL 資料倉儲。  
+本節使用您定義的外部資料表，將範例資料從 Azure Blob 載入 SQL 集區。  
 
 > [!NOTE]
 > 本教學課程會將資料直接載入最終資料表。 在生產環境中，您通常會使用 CREATE TABLE AS SELECT 來載入暫存資料表。 當資料位於暫存資料表時，您可以執行任何必要的轉換。 若要將暫存資料表中的資料附加至生產資料表，您可以使用 INSERT...SELECT 陳述式。 如需詳細資訊，請參閱[將資料插入生產資料表中](guidance-for-loading-data.md#inserting-data-into-a-production-table)。
 > 
 
-指令碼會使用 [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL 陳述式，將資料從 Azure 儲存體 Blob 載入資料倉儲中的新資料表。 CTAS 會以 select 陳述式的結果作為基礎，建立新的資料表。 新的資料表擁有和 select 陳述式結果相同的資料行和資料類型。 當 select 陳述式從外部資料表選取時，SQL 資料倉儲會將資料匯入資料倉儲中的關聯式資料表。 
+指令碼會使用 [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL 陳述式，將資料從 Azure 儲存體 Blob 載入資料倉儲中的新資料表。 CTAS 會以 select 陳述式的結果作為基礎，建立新的資料表。 新的資料表擁有和 select 陳述式結果相同的資料行和資料類型。 當 select 語句從外部資料表選取時，資料會匯入資料倉儲中的關聯式資料表。 
 
 此腳本不會將資料載入 dimension_Date wwi 和 fact_Sale wwi 資料表中。 這些資料表會在稍後的步驟中產生，以便讓資料表擁有相當多的資料列。
 
@@ -704,7 +686,7 @@ SQL 資料倉儲服務會在伺服器層級建立防火牆，防止外部應用�
     ;
     ```
 
-2. 檢視載入中的資料。 您會載入數 GB 的資料，並將其壓縮成高效能的叢集資料行存放區索引。 在 SampleDW 上開啟新的查詢視窗，然後執行下列查詢來顯示載入狀態。 啟動查詢之後，喝咖啡吃點心等候 SQL 資料倉儲進行一些繁重的工作。
+2. 檢視載入中的資料。 您會載入數 GB 的資料，並將其壓縮成高效能的叢集資料行存放區索引。 在 SampleDW 上開啟新的查詢視窗，然後執行下列查詢來顯示載入狀態。 開始查詢之後，請在 SQL 集區執行一些繁重的工作時，拿咖啡和點心。
 
     ```sql
     SELECT
@@ -977,7 +959,8 @@ SQL 資料倉儲服務會在伺服器層級建立防火牆，防止外部應用�
     ```
 
 ## <a name="populate-the-replicated-table-cache"></a>填入複寫的資料表快取
-SQL 資料倉儲會藉由將資料快取到每個計算節點來複寫資料表。 對資料表執行查詢時，就會在快取中填入資料。 因此，對複寫之資料表所執行的第一個查詢可能需要額外的時間來填入快取。 填入快取之後，針對複寫之資料表所執行的查詢會加快速度。
+
+SQL 集區會藉由將資料快取到每個計算節點來複寫資料表。 對資料表執行查詢時，就會在快取中填入資料。 因此，對複寫之資料表所執行的第一個查詢可能需要額外的時間來填入快取。 填入快取之後，針對複寫之資料表所執行的查詢會加快速度。
 
 請執行下列 SQL 查詢，以在計算節點上填入複寫的資料表快取。 
 
@@ -1112,16 +1095,16 @@ SQL 資料倉儲會藉由將資料快取到每個計算節點來複寫資料表�
 
 您進行了下列事項：
 > [!div class="checklist"]
-> * 在 Azure 入口網站中建立資料倉儲
+> * 在 Azure 入口網站中使用 SQL 集區建立資料倉儲
 > * 在 Azure 入口網站中設定伺服器層級的防火牆規則
-> * 使用 SSMS 連線到資料倉儲
+> * 使用 SSMS 連接到 SQL 集區
 > * 建立針對載入資料指定的使用者
 > * 在 Azure 儲存體 Blob 中建立資料的外部資料表
 > * 使用 CTAS T-SQL 陳述式將資料載入資料倉儲
 > * 在載入時，已檢閱資料的進度
 > * 建立新載入資料的統計資料
 
-進入開發總覽，以瞭解如何將現有的資料庫移轉至 SQL 資料倉儲。
+進入開發總覽，以瞭解如何將現有的資料庫移轉至 Azure Synapse SQL 集區。
 
 > [!div class="nextstepaction"]
->[將現有資料庫移轉至 SQL 資料倉儲的設計決策](sql-data-warehouse-overview-develop.md)
+>[將現有資料庫移轉至 SQL 集區的設計決策](sql-data-warehouse-overview-develop.md)

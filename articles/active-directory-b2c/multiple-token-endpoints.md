@@ -3,20 +3,20 @@ title: 將以 OWIN 為基礎的 web Api 遷移至 b2clogin.com
 titleSuffix: Azure AD B2C
 description: 瞭解如何啟用 .NET Web API，以便在您將應用程式遷移至 b2clogin.com 時支援多個權杖簽發者所發出的權杖。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e6a92d12e7f2f24289aafa7e4a9acc9edccbd34c
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 5daf88e746ea803f345c79bd31d656f2615b6754
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840395"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184089"
 ---
 # <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>將以 OWIN 為基礎的 Web API 遷移至 b2clogin.com
 

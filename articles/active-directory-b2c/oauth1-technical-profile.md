@@ -3,20 +3,20 @@ title: 在自訂原則中定義 OAuth1 技術設定檔
 titleSuffix: Azure AD B2C
 description: 在 Azure Active Directory B2C 的自訂原則中定義 OAuth 1.0 技術設定檔。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a4f26f180e34ee9c7a0222b0d7f6be95c78de1b4
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7f734844859d44e66bddbc2ddd999659e52f9668
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840378"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184072"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自訂原則中定義 OAuth1 技術設定檔
 
@@ -54,7 +54,7 @@ Azure Active Directory B2C （Azure AD B2C）提供[OAuth 1.0 通訊協定](http
 技術設定檔也會傳回識別提供者未傳回的宣告：
 
 - 包含識別提供者名稱的 **identityProvider** 宣告。
-- 具有預設值 `socialIdpAuthentication` 的 **authenticationSource** 宣告。
+- 具有預設值 **的**authenticationSource`socialIdpAuthentication` 宣告。
 
 ```xml
 <OutputClaims>
@@ -68,7 +68,7 @@ Azure Active Directory B2C （Azure AD B2C）提供[OAuth 1.0 通訊協定](http
 
 ## <a name="metadata"></a>中繼資料
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要項 | 描述 |
 | --------- | -------- | ----------- |
 | client_id | 是 | 識別提供者的應用程式識別碼。 |
 | ProviderName | 否 | 識別提供者的名稱。 |
@@ -82,7 +82,7 @@ Azure Active Directory B2C （Azure AD B2C）提供[OAuth 1.0 通訊協定](http
 
 **CryptographicKeys** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要項 | 描述 |
 | --------- | -------- | ----------- |
 | client_secret | 是 | 識別提供者應用程式的用戶端密碼。   |
 

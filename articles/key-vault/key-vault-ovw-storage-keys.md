@@ -4,16 +4,17 @@ description: 儲存體帳戶金鑰可提供對 Azure 儲存體帳戶 Azure Key V
 ms.topic: conceptual
 services: key-vault
 ms.service: key-vault
+ms.subservice: secrets
 author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
-ms.openlocfilehash: 880a85676ff7a0364431b33b90093298b12bffed
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 104f3423b07eaa3269ffccc054cd2f779bbdabf8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980469"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199813"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>使用 Key Vault 和 Azure CLI 管理儲存體帳戶金鑰
 
@@ -43,9 +44,9 @@ Key Vault 是在所有 Azure AD 租使用者中預先註冊的 Microsoft 應用�
 
 | 租用戶 | 雲端 | 應用程式識別碼 |
 | --- | --- | --- |
-| Azure AD | Azure 政府機構 | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
+| Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
 | Azure AD | Azure 公用 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
-| 其他  | 任意 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| 其他  | 任何 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
 ## <a name="prerequisites"></a>必要條件
 

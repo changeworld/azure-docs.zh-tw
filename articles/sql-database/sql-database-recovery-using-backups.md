@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: 3b0b5b02fa8f369bdfa03726bd5649b70b7bbd48
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b98331a9cdb359aeefac5db1546f3a15b54010ba
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228038"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194445"
 ---
 # <a name="recover-an-azure-sql-database-by-using-automated-database-backups"></a>使用自動資料庫備份來復原 Azure SQL 資料庫
 
@@ -60,7 +60,7 @@ ms.locfileid: "74228038"
 > [!IMPORTANT]
 > 若要使用自動備份進行復原，您必須是訂用帳戶中 SQL Server 參與者角色的成員，或者是訂用帳戶擁有者。 如需詳細資訊，請參閱[RBAC：內建角色](../role-based-access-control/built-in-roles.md)。 您可以使用 Azure 入口網站、PowerShell 或 REST API 來進行復原。 您無法使用 Transact-sql。
 
-## <a name="point-in-time-restore"></a>還原時間點
+## <a name="point-in-time-restore"></a>時間點還原
 
 您可以使用 Azure 入口網站、 [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)或[REST API](https://docs.microsoft.com/rest/api/sql/databases)，將獨立、集區或實例資料庫還原到較早的時間點。 要求可以針對還原的資料庫指定任何服務層級或計算大小。 確定您要還原資料庫的伺服器上有足夠的資源。 完成時，還原會在與原始資料庫相同的伺服器上建立新的資料庫。 還原的資料庫會根據其服務層級和計算大小，以標準費率計費。 在資料庫還原完成之前，您不會產生任何費用。
 
@@ -126,7 +126,7 @@ ms.locfileid: "74228038"
 
 #### <a name="managed-instance-database"></a>受控實例資料庫
 
-如需示範如何還原已刪除實例資料庫的 PowerShell 腳本範例，請參閱[使用 PowerShell 在受控實例上還原已刪除的資料庫](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../recreate-dropped-database-on-azure-sql-managed-instance)。 
+如需示範如何還原已刪除實例資料庫的 PowerShell 腳本範例，請參閱[使用 PowerShell 在受控實例上還原已刪除的資料庫](sql-database-managed-instance-point-in-time-restore.md#restore-a-deleted-database)
 
 > [!TIP]
 > 若要以程式設計方式還原已刪除的資料庫，請參閱[使用自動備份以程式設計方式執行](sql-database-recovery-using-backups.md)復原
@@ -135,7 +135,7 @@ ms.locfileid: "74228038"
 
 您可以從最新的異地複寫備份，在任何 Azure 區域中的任何伺服器上還原 SQL Database。 異地還原使用異地複寫備份作為其來源。 即使因為中斷而無法存取資料庫或資料中心，也可以要求異地還原。
 
-當您的資料庫因為裝載區域中的事件而無法使用時，異地還原就是預設的復原選項。 您可以將資料庫還原到任何其他區域中的伺服器。 在建立備份時以及對它進行異地複寫到不同區域中的 Azure Blob 之間會有延遲。 因此，還原後的資料庫最多可達一小時的原始資料庫。 下圖顯示從另一個區域中的最後一個可用備份來還原資料庫。
+當您的資料庫因為裝載區域中的事件而無法使用時，異地還原就是預設的復原選項。 您可以將資料庫還原至任何其他區域中的伺服器。 在建立備份時以及對它進行異地複寫到不同區域中的 Azure Blob 之間會有延遲。 因此，還原後的資料庫最多可達一小時的原始資料庫。 下圖顯示從另一個區域中的最後一個可用備份來還原資料庫。
 
 ![異地還原的圖形](./media/sql-database-geo-restore/geo-restore-2.png)
 
@@ -239,7 +239,7 @@ ms.locfileid: "74228038"
 
 若要使用 Azure CLI 來還原受控實例資料庫，請參閱[az sql midb restore](/cli/azure/sql/midb#az-sql-midb-restore)。
 
-## <a name="summary"></a>Summary
+## <a name="summary"></a>摘要
 
 自動備份可在發生使用者和應用程式錯誤、意外刪除資料庫和長時間中斷時保護您的資料庫。 所有服務層級和計算大小都可以取得此內建功能。
 

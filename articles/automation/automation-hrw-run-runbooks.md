@@ -5,45 +5,31 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 29b8a32989b5a1d60792fb5678f7ba8a9f12daba
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 31ced19e164d50030386064a81edf3322b12855d
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443800"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191124"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>在混合式 Runbook 背景工作角色上執行 Runbook
 
-在 Azure 自動化和混合式 Runbook 背景工作上執行的 Runbook 結構中沒有任何差異。 您使用的每個 Runbook 可能會有大幅差異。 此差異是因為以混合式 Runbook 背景工作角色為目標的 Runbook 通常會管理本機電腦上的資源，或管理部署所在本機環境中的資源。 Azure 自動化中的 Runbook 通常會管理 Azure 雲端中的資源。
+以混合式 Runbook 背景工作角色為目標的 runbook 通常會管理本機電腦上的資源，或針對部署背景工作的本機環境中的資源。 Azure 自動化中的 Runbook 通常會管理 Azure 雲端中的資源。 雖然它們的使用方式不同，但在 Azure 自動化中執行的 runbook 和在混合式 Runbook 背景工作角色上執行的 runbook 在結構中都相同。
 
-當您撰寫要在混合式 Runbook 背景工作角色上執行的 Runbook 時，應該在裝載混合式背景工作角色的機器內編輯並測試 Runbook。 主機電腦具有您管理及存取本機資源所需要的所有 PowerShell 模組和網路存取。 一旦在混合式背景工作角色機器上測試 Runbook 後，接著可以將其上傳至 Azure 自動化環境，其可供您在混合式背景工作角色中執行。 請務必知道，作業會以本機系統帳戶在 Windows 上執行，或以特殊使用者帳戶 `nxautomation` 在 Linux 上執行。 在 Linux 上，這表示您必須確定 `nxautomation` 帳戶可以存取您儲存模組的位置。 當您使用[Install 模組](/powershell/module/powershellget/install-module)Cmdlet 時，請對 `-Scope` 參數指定**AllUsers** ，以確認 `nxautomation` 帳戶具有存取權。
+當您撰寫要在混合式 Runbook 背景工作角色上執行的 runbook 時，您應該在裝載背景工作的電腦上編輯和測試 runbook。 主機電腦具有管理和存取本機資源所需的所有 PowerShell 模組和網路存取權。 一旦在混合式 Runbook 背景工作角色機器上測試 runbook 之後，您就可以將它上傳至 Azure 自動化環境，以便在背景工作角色上執行。 
 
-如需 Linux 上 PowerShell 的詳細資訊，請參閱[非 Windows 平臺上的 Powershell 已知問題](https://docs.microsoft.com/powershell/scripting/whats-new/known-issues-ps6?view=powershell-6#known-issues-for-powershell-on-non-windows-platforms)。
+>[!NOTE]
+>本文已更新為使用新的 Azure PowerShell Az 模組。 AzureRM 模組在至少 2020 年 12 月之前都還會持續收到錯誤 (Bug) 修正，因此您仍然可以持續使用。 若要深入了解新的 Az 模組和 AzureRM 的相容性，請參閱[新的 Azure PowerShell Az 模組簡介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 如需混合式 Runbook 背景工作角色上的 Az module 安裝指示，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 針對您的自動化帳戶，您可以使用[如何更新 Azure 自動化中的 Azure PowerShell 模組](automation-update-azure-modules.md)，將模組更新為最新版本。
 
-## <a name="starting-a-runbook-on-hybrid-runbook-worker"></a>在混合式 Runbook 背景工作角色上啟動 Runbook
+## <a name="runbook-permissions-for-a-hybrid-runbook-worker"></a>混合式 Runbook 背景工作角色的 runbook 許可權
 
-[在 Azure 自動化中啟動 Runbook](automation-starting-a-runbook.md) 描述啟動 Runbook 的不同方法。 混合式 Runbook 背景工作加入了 **RunOn** 選項，您可以在其中指定混合式 Runbook 背景工作群組的名稱。 若已指定群組，則會擷取 Runbook，且由該群組中的其中一個背景工作角色執行。 如果未指定此選項，則會在 Azure 自動化中正常執行。
-
-在 Azure 入口網站中啟動 Runbook 時，您會看到 [執行於] 選項，您可以在此選取 [Azure] 或 [Hybrid Worker]。 如果選取 [Hybrid 背景工作角色]，則您可以從下拉式清單中選取群組。
-
-使用 **RunOn** 參數。 您可以使用 Windows PowerShell 以下列命令在 Hybrid Runbook Worker 群組上啟動名為 Test-Runbook 的 Runbook。
-
-```azurepowershell-interactive
-Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" -RunOn "MyHybridGroup"
-```
-
-> [!NOTE]
-> 0\.9.1 版 Microsoft Azure PowerShell 的 **Start-AzureAutomationRunbook** Cmdlet 已新增 **RunOn** 參數。 如果您安裝較早的版本，您應該 [下載最新版本](https://azure.microsoft.com/downloads/) 。 您只需要在從 PowerShell 啟動 Runbook 的工作站上安裝此版本。 您不需要將它安裝在背景工作電腦上，除非您想要從該電腦啟動 Runbook。
-
-## <a name="runbook-permissions"></a>Runbook 權限
-
-在混合式 Runbook 背景工作角色上執行的 Runbook 不能使用通常用於 Runbook 對 Azure 資源進行驗證的相同方法，因為它們會存取 Azure 外部的資源。 Runbook 可以提供自己的驗證給本機資源，或使用 [Azure 資源的受控識別](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager)來設定驗證。 您也可以指定 RunAs 帳戶以對所有 Runbook 提供使用者內容。
+當他們存取非 Azure 資源時，在混合式 Runbook 背景工作角色上執行的 runbook 不能使用驗證機制，通常是用來向 Azure 資源進行驗證的 runbook 所使用。 Runbook 會對本機資源提供自己的驗證，或使用[Azure 資源的受控](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager)識別來設定驗證。 您也可以指定執行身分帳戶，為所有 runbook 提供使用者內容。
 
 ### <a name="runbook-authentication"></a>Runbook 驗證
 
-根據預設，內部部署電腦上的 Runbook 是在 Windows 的本機系統帳戶內容中或是 Linux 的特殊使用者帳戶 `nxautomation` 內容中執行，因此，它們必須對要存取的資源提供自己的驗證。
+根據預設，runbook 會在本機電腦上執行。 若是 Windows，則會在本機系統帳戶的內容中執行。 針對 Linux，它們會在特殊使用者帳戶**nxautomation**的內容中執行。 在任一情況下，runbook 都必須提供自己的驗證給其所存取的資源。
 
-您可以在您的 Runbook 中使用[認證](automation-credentials.md)和[憑證](automation-certificates.md)資產，搭配可讓您指定認證的 Cmdlet，您就能夠向不同的資源驗證。 下列範例顯示會重新啟動電腦的 Runbook 的一部分。 它會從認證資產擷取認證和從變數資產擷取電腦的名稱，然後使用這些值搭配 Restart-Computer Cmdlet。
+您可以使用 runbook 中的[認證](automation-credentials.md)[和憑證資產，搭配](automation-certificates.md)可讓您指定認證的 Cmdlet，讓 runbook 可以向不同的資源進行驗證。 下列範例顯示會重新啟動電腦的 Runbook 的一部分。 它會從認證資產和電腦名稱稱，抓取來引數資產的認證，然後使用這些值搭配**重新開機電腦**Cmdlet。
 
 ```powershell
 $Cred = Get-AutomationPSCredential -Name "MyCredential"
@@ -52,11 +38,11 @@ $Computer = Get-AutomationVariable -Name "ComputerName"
 Restart-Computer -ComputerName $Computer -Credential $Cred
 ```
 
-您也可以使用 [InlineScript](automation-powershell-workflow.md#inlinescript)，它可讓您利用 [PSCredential 一般參數](/powershell/module/psworkflow/about/about_workflowcommonparameters)指定的認證在另一部電腦上執行程式碼區塊。
+您也可以使用[InlineScript](automation-powershell-workflow.md#inlinescript)活動。 InlineScript 可讓您使用[PSCredential 一般參數](/powershell/module/psworkflow/about/about_workflowcommonparameters)指定的認證，在另一部電腦上執行程式碼區塊。
 
-### <a name="runas-account"></a>RunAs 帳戶
+### <a name="run-as-account"></a>執行身分帳戶
 
-根據預設，混合式 Runbook 背景工作角色會使用 Windows 的本機系統和 Linux 的特殊使用者帳戶 `nxautomation` 來執行 Runbook。 您不需要讓 Runbook 提供自己的驗證給本機資源，您可以針對混合式背景工作角色群組指定 **RunAs** 帳戶。 在群組中的混合式 Runbook 背景工作角色上執行時，您可以指定具有本機資源存取權的[認證資產](automation-credentials.md)，包括憑證存放區和所有 runbook 在這些認證下執行。
+您可以指定混合式 Runbook 背景工作角色群組的執行身分帳戶，而不是讓 runbook 對本機資源提供自己的驗證。 若要這樣做，您必須定義具有本機資源存取權的[認證資產](automation-credentials.md)。 這些資源包括憑證存放區，以及在群組中的混合式 Runbook 背景工作角色上，以這些認證執行的所有 runbook。
 
 認證的使用者名稱必須是下列格式之一：
 
@@ -64,48 +50,47 @@ Restart-Computer -ComputerName $Computer -Credential $Cred
 * username@domain
 * 使用者名稱 (適用於內部部署機器的本機帳戶)
 
-使用下列程序以針對混合式背景工作角色群組指定 RunAs 帳戶：
+請使用下列程式來指定混合式 Runbook 背景工作角色群組的執行身分帳戶。
 
 1. 建立具有本機資源存取權的 [認證資產](automation-credentials.md) 。
 2. 在 Azure 入口網站中，開啟自動化帳戶。
 3. 選取 [Hybrid Worker 群組] 圖格，然後選取群組。
-4. 選取 [所有設定]，然後選取 [Hybrid 背景工作角色群組設定]。
-5. 將 [執行身分] 從 [預設] 變更為 [自訂]。
+4. 選取 [**所有設定**]，後面接著 [混合式背景**工作角色群組設定**]。
+5. 將 [**執行**身分] 的值從 [**預設**] 變更為 [**自訂**]。
 6. 選取認證，然後按一下 [儲存]。
 
 ### <a name="managed-identities-for-azure-resources"></a>適用於 Azure 資源的受控識別
 
-在 Azure 虛擬機器上執行的混合式 Runbook 背景工作角色，可以使用 Azure 資源的受控識別來向 Azure 資源進行驗證。 透過執行身分帳戶使用 Azure 資源的受控識別有許多優點。
+Azure 虛擬機器上的混合式 Runbook 背景工作角色可以使用 Azure 資源的受控識別來向 Azure 資源進行驗證。 使用 Azure 資源的受控識別而非執行身分帳戶會提供優點，因為您不需要：
 
-* 不需要匯出執行身分憑證，然後將其匯入混合式 Runbook 背景工作角色
-* 不需要更新執行身分帳戶所使用的憑證
-* 不需要處理 Runbook 程式碼中的執行身分連線物件
+* 匯出執行身分憑證，然後將它匯入到混合式 Runbook 背景工作角色
+* 更新執行身分帳戶所使用的憑證
+* 處理 runbook 程式碼中的執行身分連線物件
 
-若要在混合式 Runbook 背景工作角色上使用 Azure 資源的受控識別，您需要完成下列步驟：
+遵循後續步驟，在混合式 Runbook 背景工作角色上使用 Azure 資源的受控識別。
 
-1. 建立 Azure VM
-2. [在 VM 上設定 Azure 資源的受控識別](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-on-an-existing-vm)
-3. [在 Resource Manager 教學課程中，授與您的 VM 存取權給資源群組](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager)-windows-VM----------------使用 vm-----------------------使用---------------
-4. 在虛擬機器上[安裝 Windows 混合式 Runbook 背景工作角色](automation-windows-hrw-install.md)。
-
-完成上述步驟後，您可以使用 Runbook 中的 `Connect-AzureRmAccount -Identity` 對 Azure 資源進行驗證。 此組態可減少使用執行身分帳戶及管理執行身分帳戶憑證的需求。
+1. 建立 Azure VM。
+2. 在 VM 上設定 Azure 資源的受控識別。 請參閱[使用 Azure 入口網站在 VM 上設定 Azure 資源的受控](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-on-an-existing-vm)識別。
+3. 在 Resource Manager 中，為 VM 提供資源群組的存取權。 請參閱[使用 WINDOWS VM 系統指派的受控識別來存取 Resource Manager](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager)。
+4. 在 VM 上安裝混合式 Runbook 背景工作角色。 請參閱[部署 Windows 混合式 Runbook 背景工作角色](automation-windows-hrw-install.md)。
+5. 將 runbook 更新為使用[disconnect-azaccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) Cmdlet 搭配*Identity*參數，以向 Azure 資源進行驗證。 此設定可減少使用執行身分帳戶的需求，並執行相關聯的帳戶管理。
 
 ```powershell
-# Connect to Azure using the Managed identities for Azure resources identity configured on the Azure VM that is hosting the hybrid runbook worker
-Connect-AzureRmAccount -Identity
+    # Connect to Azure using the managed identities for Azure resources identity configured on the Azure VM that is hosting the hybrid runbook worker
+    Connect-AzAccount -Identity
 
-# Get all VM names from the subscription
-Get-AzureRmVm | Select Name
+    # Get all VM names from the subscription
+    Get-AzVM | Select Name
 ```
 
 > [!NOTE]
-> `Connect-AzureRMAccount -Identity` 適用于使用系統指派的身分識別和單一使用者指派身分識別的混合式 Runbook 背景工作角色。 如果您需要在 HRW 上使用多個使用者指派的身分識別，您必須指定 `-AccountId` 參數來選取特定使用者指派的身分識別。
+> `Connect-AzAccount -Identity` 適用于混合式 Runbook 背景工作角色，其使用系統指派的身分識別和單一使用者指派的身分識別。 如果您在混合式 Runbook 背景工作角色上使用多個使用者指派的身分識別，您的 runbook 必須為**disconnect-azaccount**指定*AccountId*參數，才能選取特定使用者指派的身分識別。
 
 ### <a name="runas-script"></a>自動化執行身分帳戶
 
-在 Azure 中部署資源的自動化建置流程中，您可能需要存取內部部署系統來支援部署序列中的工作或一組步驟。 若要支援使用「執行身分」帳戶向 Azure 驗證，您需要安裝「執行身分」帳戶憑證。
+在 Azure 中部署資源的自動化組建程式中，您可能需要存取內部部署系統，以支援部署序列中的一項工作或一組步驟。 若要使用執行身分帳戶向 Azure 提供驗證，您必須安裝執行身分帳戶憑證。
 
-下列 PowerShell Runbook **Export-RunAsCertificateToHybridWorker** 會從 Azure 自動化帳戶匯出「執行身分」憑證，並將它下載和匯入到混合式背景工作角色 (連線至相同帳戶) 上的本機電腦憑證存放區。 完成該步驟後，它會確認背景工作角色可以使用執行身分帳戶成功向 Azure 驗證。
+下列 PowerShell runbook （稱為**匯出 export-runascertificatetohybridworker**）會從您的 Azure 自動化帳戶匯出執行身分憑證。 Runbook 會下載憑證，並將其匯入至已連線至相同帳戶之混合式 Runbook 背景工作角色上的本機電腦憑證存放區。 完成該步驟之後，runbook 就會確認背景工作角色可以使用執行身分帳戶成功向 Azure 進行驗證。
 
 ```azurepowershell-interactive
 <#PSScriptInfo
@@ -129,9 +114,7 @@ Get-AzureRmVm | Select Name
 Exports the Run As certificate from an Azure Automation account to a hybrid worker in that account.
 
 .DESCRIPTION
-This runbook exports the Run As certificate from an Azure Automation account to a hybrid worker in that account.
-Run this runbook in the hybrid worker where you want the certificate installed.
-This allows the use of the AzureRunAsConnection to authenticate to Azure and manage Azure resources from runbooks running in the hybrid worker.
+This runbook exports the Run As certificate from an Azure Automation account to a hybrid worker in that account. Run this runbook on the hybrid worker where you want the certificate installed. This allows the use of the AzureRunAsConnection to authenticate to Azure and manage Azure resources from runbooks running on the hybrid worker.
 
 .EXAMPLE
 .\Export-RunAsCertificateToHybridWorker
@@ -161,42 +144,66 @@ Write-Output ("Importing certificate into $env:computername local machine root s
 $SecurePassword = ConvertTo-SecureString $Password -AsPlainText -Force
 Import-PfxCertificate -FilePath $CertPath -CertStoreLocation Cert:\LocalMachine\My -Password $SecurePassword -Exportable | Write-Verbose
 
-# Test that authentication to Azure Resource Manager is working
+# Test to see if authentication to Azure Resource Manager is working
 $RunAsConnection = Get-AutomationConnection -Name "AzureRunAsConnection"
 
-Connect-AzureRmAccount `
+Connect-AzAccount `
     -ServicePrincipal `
-    -TenantId $RunAsConnection.TenantId `
+    -Tenant $RunAsConnection.TenantId `
     -ApplicationId $RunAsConnection.ApplicationId `
     -CertificateThumbprint $RunAsConnection.CertificateThumbprint | Write-Verbose
 
-Set-AzureRmContext -SubscriptionId $RunAsConnection.SubscriptionID | Write-Verbose
+Set-AzContext -Subscription $RunAsConnection.SubscriptionID | Write-Verbose
 
-# List automation accounts to confirm Azure Resource Manager calls are working
-Get-AzureRmAutomationAccount | Select-Object AutomationAccountName
+# List automation accounts to confirm that Azure Resource Manager calls are working
+Get-AzAutomationAccount | Select-Object AutomationAccountName
 ```
 
-> [!IMPORTANT]
-> **Add-AzureRmAccount** 現在是 **Connect-AzureRMAccount** 的別名。 搜尋您的程式庫項目時，如果沒有看到 **Connect-AzureRMAccount**，便可以使用 **Add-AzureRmAccount**，或是在自動化帳戶中更新模組。
+>[!NOTE]
+>針對 PowerShell runbook， **disconnect-azaccount**和**add-AzureRMAccount**是**disconnect-azaccount**的別名。 搜尋您的程式庫專案時，如果看不到 **[Disconnect-azaccount]** ，您可以使用 [ **disconnect-azaccount**]，也可以在您的自動化帳戶中更新您的模組。
 
-將 *Export-RunAsCertificateToHybridWorker* Runbook 以 `.ps1` 副檔名儲存至您的電腦。 將它匯入您的自動化帳戶，並編輯 Runbook，將變數 `$Password` 的值變更為您自己的密碼。 發佈而後執行 Runbook。 以使用「執行身分」帳戶執行和驗證 Runbook 的混合式背景工作角色群組為目標。 作業資料流會報告將憑證匯入本機電腦存放區的嘗試，後面還會出現幾行。 此行為根據訂用帳戶中定義多少自動化帳戶和驗證是否成功而定。
+若要完成準備執行身分帳戶：
 
-## <a name="job-behavior"></a>作業行為
+1. 將**匯出-export-runascertificatetohybridworker** runbook 儲存到您的電腦，副檔名為**ps1** 。
+2. 將它匯入您的自動化帳戶。
+3. 編輯 runbook，將變數的值 *$Password*變更為您自己的密碼。 
+4. 發佈 runbook。
+5. 執行 runbook，以使用執行身分帳戶執行和驗證 runbook 的混合式 Runbook 背景工作角色群組為目標。 
+6. 檢查作業資料流程，以確認它會回報將憑證匯入本機電腦存放區的嘗試，並在後面加上多行。 此行為取決於您在訂閱中定義的自動化帳戶數目，以及驗證的成功程度。
 
-作業在混合式 Runbook 背景工作角色上與在 Azure 沙箱上執行時的處理方式會有些許不同。 其中一個主要差異，在於混合式 Runbook 背景工作角色上並沒有限制作業持續時間。 由於[公平共用](automation-runbook-execution.md#fair-share)，在 Azure 沙箱中執行的 Runbook 會限制為 3 小時。 對於長時間執行的 Runbook，您要確定能夠接受可能重新啟動。 例如，若裝載混合式背景工作角色的電腦重新開機。 如果混合式背景工作角色主機電腦重新開機，則任何執行中的 Runbook 作業都會從頭重新啟動，或是從 PowerShell 工作流程 Runbook 的最後一個檢查點重新啟動。 在 Runbook 作業重新啟動超過 3 次之後，它就會暫止。
+## <a name="job-behavior-on-hybrid-runbook-workers"></a>混合式 Runbook 背景工作角色上的作業行為
 
-## <a name="run-only-signed-runbooks"></a>僅執行已簽署的 Runbook
+Azure 自動化在混合式 Runbook 背景工作角色上處理工作，與在 Azure 沙箱中執行的作業有點不同。 其中一個主要差異在於 runbook worker 上沒有作業持續時間限制。 由於[公平共用](automation-runbook-execution.md#fair-share)，在 Azure 沙箱中執行的 runbook 受限於三個小時。
 
-混合式 Runbook 背景工作角色可使用某些設定來設定為只能執行已簽署的 Runbook。 下一節將說明如何設定混合式 Runbook 背景工作角色來執行已簽署的 [Windows 混合式 Runbook 背景工作角色](#windows-hybrid-runbook-worker)和 [Linux 混合式 Runbook 背景工作角色](#linux-hybrid-runbook-worker)。
+對於長時間執行的 runbook，您想要確定它可以復原可能的重新開機，例如，如果裝載背景工作的機器重新開機。 如果混合式 Runbook 背景工作角色主機電腦重新開機，任何執行中的 runbook 作業會從一開始或從 PowerShell 工作流程 runbook 的最後一個檢查點重新開機。 在 runbook 作業重新開機超過三次之後，它就會暫停。
+
+請記住，混合式 Runbook 背景工作角色的工作是在 Windows 上的本機系統帳戶或 Linux 上的**nxautomation**帳戶下執行。 針對 Linux，您必須確定**nxautomation**帳戶具有儲存 runbook 模組之位置的存取權。 當您使用[Install 模組](/powershell/module/powershellget/install-module)Cmdlet 時，請務必為*範圍*參數指定**AllUsers** ，以確保**nxautomation**帳戶具有存取權。 如需 Linux 上 PowerShell 的詳細資訊，請參閱[非 Windows 平臺上的 Powershell 已知問題](https://docs.microsoft.com/powershell/scripting/whats-new/known-issues-ps6?view=powershell-6#known-issues-for-powershell-on-non-windows-platforms)。
+
+## <a name="starting-a-runbook-on-a-hybrid-runbook-worker"></a>在混合式 Runbook 背景工作角色上啟動 runbook
+
+[在 Azure 自動化中啟動 runbook](automation-starting-a-runbook.md)描述啟動 runbook 的不同方法。 混合式 Runbook 背景工作角色上的 runbook 啟動會使用 [**執行于**] 選項，讓您指定混合式 Runbook 背景工作角色群組的名稱。 當指定群組時，該群組中的其中一個背景工作會抓取並執行 runbook。 如果您的 runbook 未指定此選項，Azure 自動化會如往常般執行 runbook。
+
+當您在 Azure 入口網站中啟動 runbook 時，您會看到 [**執行于**] 選項，您可以選取 [ **Azure** ] 或 [混合式背景**工作角色**]。 如果您選取 [混合式背景**工作角色**]，可以從下拉式清單中選擇 [混合式 Runbook 背景工作角色群組]。
+
+使用*RunOn*參數搭配**start-azureautomationrunbook** Cmdlet。 下列範例會使用 Windows PowerShell，在名為 Test-runbook 的混合式 Runbook 背景工作角色群組上啟動名為**Test-runbook**的 runbook。
+
+```azurepowershell-interactive
+Start-AzureAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" -RunOn "MyHybridGroup"
+```
 
 > [!NOTE]
-> 一旦將混合式 Runbook 背景工作角色設定為只能執行已簽署的 Runbook，尚**未**經過簽署的 Runbook 將無法在背景工作角色上執行。
+> 在 Microsoft Azure PowerShell 的版本0.9.1 中，已將*RunOn*參數新增至**start-azureautomationrunbook** 。 如果您安裝較早的版本，您應該 [下載最新版本](https://azure.microsoft.com/downloads/) 。 請只在您從 PowerShell 啟動 runbook 的工作站上安裝此版本。 您不需要將它安裝在混合式 Runbook 背景工作電腦上，除非您想要從這部電腦啟動 runbook。
 
-### <a name="windows-hybrid-runbook-worker"></a>Windows 混合式 Runbook 背景工作角色
+## <a name="working-with-signed-runbooks-on-a-windows-hybrid-runbook-worker"></a>在 Windows 混合式 Runbook 背景工作角色上使用已簽署的 runbook
 
-#### <a name="create-signing-certificate"></a>建立簽署憑證
+您可以將 Windows 混合式 Runbook 背景工作角色設定為只執行已簽署的 runbook。
 
-下列範例會建立可用於簽署 Runbook 的自我簽署憑證。 此範例會建立憑證並將它匯出。 稍後會將該憑證匯入到混合式 Runbook 背景工作角色。 同時也會傳回指紋，此值稍後將用來參考憑證。
+> [!IMPORTANT]
+> 一旦您將混合式 Runbook 背景工作角色設定為只執行已簽署的 runbook，尚未簽署的 runbook 將無法在背景工作角色上執行。
+
+### <a name="create-signing-certificate"></a>建立簽署憑證
+
+下列範例會建立可用於簽署 Runbook 的自我簽署憑證。 此程式碼會建立憑證，並將它匯出，讓混合式 Runbook 背景工作角色可以稍後再將它匯入。 也會傳回指紋，供稍後用於參考憑證。
 
 ```powershell
 # Create a self-signed certificate that can be used for code signing
@@ -220,9 +227,9 @@ Import-Certificate -FilePath .\hybridworkersigningcertificate.cer -CertStoreLoca
 $SigningCert.Thumbprint
 ```
 
-#### <a name="configure-the-hybrid-runbook-workers"></a>設定混合式 Runbook 背景工作
+### <a name="import-certificate-and-configure-workers-for-signature-validation"></a>匯入憑證並設定簽章驗證的背景工作
 
-將建立的憑證複製到群組中的每個混合式 Runbook 背景工作角色。 執行下列指令碼來匯入憑證並設定混合式背景工作角色，以便在 Runbook 中使用簽章驗證。
+將您建立的憑證複製到群組中的每個混合式 Runbook 背景工作角色。 執行下列腳本以匯入憑證，並設定背景工作角色在 runbook 上使用簽章驗證。
 
 ```powershell
 # Install the certificate into a location that will be used for validation.
@@ -236,78 +243,77 @@ Import-Certificate -FilePath .\hybridworkersigningcertificate.cer -CertStoreLoca
 Set-HybridRunbookWorkerSignatureValidation -Enable $true -TrustedCertStoreLocation "Cert:\LocalMachine\AutomationHybridStore"
 ```
 
-#### <a name="sign-your-runbooks-using-the-certificate"></a>使用憑證簽署您的 Runbook
+### <a name="sign-your-runbooks-using-the-certificate"></a>使用憑證簽署您的 runbook
 
-將混合式 Runbook 背景工作角色設定為僅使用已簽署的 Runbook，您就必須簽署要在混合式 Runbook 背景工作角色上使用的 Runbook。 請使用下列範例 PowerShell 來簽署您的 Runbook。
+當混合式 Runbook 背景工作角色設定為僅使用已簽署的 runbook 時，您必須簽署要在混合式 Runbook 背景工作角色上使用的 runbook。 使用下列範例 PowerShell 程式碼來簽署這些 runbook。
 
 ```powershell
 $SigningCert = ( Get-ChildItem -Path cert:\LocalMachine\My\<CertificateThumbprint>)
 Set-AuthenticodeSignature .\TestRunbook.ps1 -Certificate $SigningCert
 ```
 
-簽署 Runbook 後，就必須將它匯入到您的自動化帳戶，並與簽章區塊一起發佈。 若要了解如何匯入 Runbook，請參閱[將 Runbook 從檔案匯入 Azure 自動化](manage-runbooks.md#import-a-runbook)。
+簽署 runbook 之後，您必須將它匯入到您的自動化帳戶，並使用簽章區塊發佈它。 若要了解如何匯入 Runbook，請參閱[將 Runbook 從檔案匯入 Azure 自動化](manage-runbooks.md#import-a-runbook)。
 
-### <a name="linux-hybrid-runbook-worker"></a>Linux 混合式 Runbook 背景工作角色
+## <a name="working-with-signed-runbooks-on-a-linux-hybrid-runbook-worker"></a>在 Linux 混合式 Runbook 背景工作角色上使用已簽署的 runbook
 
-若要登入 Linux 混合式 Runbook 背景工作角色上的 Runbook，您的混合式 Runbook 背景工作角色在該機器上必須有 [GPG](https://gnupg.org/index.html) \(英文\) 可執行檔。
+若要能夠使用已簽署的 runbook，Linux 混合式 Runbook 背景工作角色必須具有本機電腦上的[GPG](https://gnupg.org/index.html)可執行檔。
 
-#### <a name="create-a-gpg-keyring-and-keypair"></a>建立 GPG Keyring 和金鑰組
+> [!IMPORTANT]
+> 一旦您將混合式 Runbook 背景工作角色設定為只執行已簽署的 runbook，尚未簽署的 runbook 將無法在背景工作角色上執行。
 
-若要建立 Keyring 和金鑰組，您將需使用混合式 Runbook 背景工作角色帳戶 `nxautomation`。
+### <a name="create-a-gpg-keyring-and-keypair"></a>建立 GPG Keyring 和金鑰組
 
-使用 `sudo` 登入為 `nxautomation` 帳戶。
+若要建立 GPG keyring 和金鑰組，請使用混合式 Runbook 背景工作**nxautomation**帳戶。
 
-```bash
-sudo su – nxautomation
-```
+1. 使用 sudo 應用程式，以**nxautomation**帳戶的身分登入。
 
-使用 `nxautomation` 帳戶之後，請產生 GPG 金鑰組。
+    ```bash
+    sudo su – nxautomation
+    ```
 
-```bash
-sudo gpg --generate-key
-```
+2. 一旦您使用**nxautomation**，請產生 GPG 金鑰組。 GPG 會引導您完成這些步驟。 您必須提供名稱、電子郵件地址、到期時間和複雜密碼。 然後您會等到機器上有足夠的熵來產生金鑰。
 
-GPG 將引導您完成建立金鑰組的步驟。 您將需針對要產生的金鑰提供名稱、電子郵件地址、到期時間、複雜密碼，以及在該機器上等候足夠的熵。
+    ```bash
+    sudo gpg --generate-key
+    ```
 
-由於 GPG 目錄是使用 sudo 所產生的，因此，您需要將其擁有者變更為 `nxautomation`。
+3. 由於 GPG 目錄是使用 sudo 產生的，因此您必須使用下列命令，將其擁有者變更為**nxautomation** 。
 
-執行下列命令以變更擁有者。
+    ```bash
+    sudo chown -R nxautomation ~/.gnupg
+    ```
 
-```bash
-sudo chown -R nxautomation ~/.gnupg
-```
+### <a name="make-the-keyring-available-to-the-hybrid-runbook-worker"></a>將 keyring 提供給混合式 Runbook 背景工作角色
 
-#### <a name="make-the-keyring-available-the-hybrid-runbook-worker"></a>使 Keyring 可供混合式 Runbook 背景工作角色使用
-
-建立 Keyring 之後，您必須使它可供混合式 Runbook 背景工作角色使用。 修改設定檔 `/var/opt/microsoft/omsagent/state/automationworker/diy/worker.conf`，在 `[worker-optional]` 區段下方包含下列範例。
+建立 keyring 之後，請將它提供給混合式 Runbook 背景工作角色。 修改設定檔 `/var/opt/microsoft/omsagent/state/automationworker/diy/worker.conf`，以在 **[worker-optional]** 區段下包含下列範例程式碼。
 
 ```bash
 gpg_public_keyring_path = /var/opt/microsoft/omsagent/run/.gnupg/pubring.kbx
 ```
 
-#### <a name="verify-signature-validation-is-on"></a>確認簽章驗證已開啟
+### <a name="verify-that-signature-validation-is-on"></a>確認簽章驗證已開啟
 
-如果已在機器上停用簽章驗證，您必須將它開啟。 執行下列命令以開啟簽章驗證。 使用您的工作區識別碼來取代 `<LogAnalyticsworkspaceId>`。
+如果電腦上已停用簽章驗證，您必須執行下列 sudo 命令來開啟它。 將 `<LogAnalyticsworkspaceId>` 取代為您的工作區識別碼。
 
 ```bash
 sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --true <LogAnalyticsworkspaceId>
 ```
 
-#### <a name="sign-a-runbook"></a>簽署 Runbook
+### <a name="sign-a-runbook"></a>簽署 Runbook
 
-一旦設定簽章驗證之後，就能使用下列命令來登入 Runbook：
+一旦您已設定簽章驗證，請使用下列 GPG 命令來簽署 runbook。
 
 ```bash
 gpg –-clear-sign <runbook name>
 ```
 
-已簽署的 Runbook 將具有 `<runbook name>.asc` 名稱。
+已簽署的 runbook 會 `<runbook name>.asc`呼叫。
 
-已簽署的 Runbook 可立即上傳至 Azure 自動化，而且可以像一般 Runbook 一樣執行。
+您現在可以將已簽署的 runbook 上傳至 Azure 自動化，並以一般 runbook 的形式執行。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 若要深入了解可用來啟動 Runbook 的不同方法，請參閱[在 Azure 自動化中啟動 Runbook](automation-starting-a-runbook.md)。
-* 若要了解使用文字式編輯器在 Azure 自動化中處理 PowerShell Runbook 的不同方式，請參閱[在 Azure 自動化中編輯 Runbook](automation-edit-textual-runbook.md)
-* 如果您的 Runbook 未順利完成，請檢閱 [Runbook 執行失敗](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails)中的疑難排解指南。
+* 若要深入瞭解啟動 runbook 的方法，請參閱[在 Azure 自動化中啟動 runbook](automation-starting-a-runbook.md)。
+* 若要瞭解如何在 Azure 自動化中使用文字式編輯器來處理 PowerShell runbook，請參閱[在 Azure 自動化中編輯 Runbook](automation-edit-textual-runbook.md)。
+* 如果您的 runbook 未順利完成，請參閱[runbook 執行失敗](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails)的疑難排解指南。
 * 如需 PowerShell 的詳細資訊（包括語言參考和學習模組），請參閱[powershell](https://docs.microsoft.com/powershell/scripting/overview)檔。

@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4d804499116631be6f922f67f8b8f6c7063a6d5c
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 137623e4c52d24061aec8ec11fca0fc02ca54c7f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030722"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190971"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>混合式 Runbook 背景工作的疑難排解
 
@@ -46,7 +46,7 @@ Runbook 執行失敗，並出現下列錯誤。
 
 * 設定為執行「混合式 Runbook 背景工作角色」功能的電腦不符合最低硬體需求。
 
-#### <a name="resolution"></a>解析度
+#### <a name="resolution"></a>解決方案
 
 確認電腦對埠443上的 *. azure-automation.net 具有輸出存取權。
 
@@ -54,7 +54,7 @@ Runbook 執行失敗，並出現下列錯誤。
 
 確認執行「混合式 Runbook 背景工作角色」功能的電腦符合最低硬體需求。 如果滿足最低硬體需求，請監視 CPU 和記憶體使用率，判斷混合式 Runbook 背景工作角色處理序之效能和 Windows 之間是否有任何相互關聯。 任何記憶體或 CPU 壓力都可能表示需要升級資源。 您也可以選取不同的計算資源來支援最低需求，並在工作負載需求指出需要增加時進行調整。
 
-查閱 **Microsoft-SMA** 事件記錄檔，找出描述為「Win32 處理序結束，代碼為 [4294967295]」的對應事件。 此錯誤的原因是您尚未在 runbook 中設定驗證，或指定混合式背景工作角色群組的執行身分認證。 審查[runbook 許可權](../automation-hrw-run-runbooks.md#runbook-permissions)，以確認您已正確設定 runbook 的驗證。
+查閱 **Microsoft-SMA** 事件記錄檔，找出描述為「Win32 處理序結束，代碼為 [4294967295]」的對應事件。 此錯誤的原因是您尚未在 runbook 中設定驗證，或指定了混合式 Runbook 背景工作角色群組的執行身分認證。 請參閱在[混合式 runbook 背景工作角色上執行](../automation-hrw-run-runbooks.md)runbook 中的 runbook 許可權，以確認您已正確設定 runbook 的驗證。
 
 ### <a name="no-cert-found"></a>案例：在混合式 Runbook 背景工作角色的憑證存放區中找不到憑證
 
@@ -74,7 +74,7 @@ At line:3 char:1
 
 當您嘗試在執行身分帳戶憑證不存在的混合式 Runbook 背景工作角色上執行的 runbook 中使用[執行身分帳戶](../manage-runas-account.md)時，就會發生此錯誤。 混合式 Runbook 背景工作角色預設不會有本機的憑證資產，因此執行身分帳戶必須要有此認證才能正常運作。
 
-#### <a name="resolution"></a>解析度
+#### <a name="resolution"></a>解決方案
 
 如果您的混合式 Runbook 背景工作角色是 Azure VM，您可以改[為使用 azure 資源的受控](../automation-hrw-run-runbooks.md#managed-identities-for-azure-resources)識別。 此案例可讓您使用 Azure VM 的受控識別（而非執行身分帳戶）來向 Azure 資源進行驗證，藉此簡化驗證。 當混合式 Runbook 背景工作角色是內部部署電腦時，您必須在電腦上安裝執行身分帳戶憑證。 若要瞭解如何安裝憑證，請參閱在[混合式 runbook 背景工作角色上執行 runbook](../automation-hrw-run-runbooks.md)中執行 PowerShell runbook 匯出-export-runascertificatetohybridworker 的步驟。
 
@@ -94,7 +94,7 @@ At line:3 char:1
 * 代理程式的設定中有輸入錯誤的工作區識別碼或工作區金鑰（主要）。 
 * 混合式 Runbook 背景工作角色無法下載設定，導致帳戶連結錯誤。 當 Azure 啟用解決方案時，它只支援特定區域來連結 Log Analytics 工作區和自動化帳戶。 此外，電腦上也可能設定了不正確的日期和/或時間。 如果時間是從目前時間開始的 +/-15 分鐘，上架會失敗。
 
-#### <a name="resolution"></a>解析度
+#### <a name="resolution"></a>解決方案
 
 ##### <a name="mistyped-workspace-idkey"></a>輸入錯誤的工作區識別碼/金鑰
 若要確認代理程式的工作區識別碼或工作區金鑰是否輸入錯誤，請參閱[新增或移除工作區–](../../azure-monitor/platform/agent-manage.md#windows-agent) windows 代理程式的 windows 代理程式，或[新增或移除](../../azure-monitor/platform/agent-manage.md#linux-agent)Linux 代理程式的 linux 代理程式。  請務必從 Azure 入口網站中選取完整的字串，並小心複製並貼上它。
@@ -119,7 +119,7 @@ Linux 混合式 Runbook 背景工作角色取決於[適用于 linux 的 Log Anal
 
 如果代理程式未執行，它會讓 Linux 混合式 Runbook 背景工作角色無法與 Azure 自動化進行通訊。 代理程式可能因各種原因而無法執行。
 
-#### <a name="resolution"></a>解析度
+#### <a name="resolution"></a>解決方案
 
  輸入下列命令，確認代理程式正在執行：`ps -ef | grep python`。 您所看到的輸出應該會類似下列具有 **nxautomation** 使用者帳戶的 Python 處理序。 如果未啟用更新管理或 Azure 自動化解決方案，下列處理序都不會執行。
 
@@ -161,7 +161,7 @@ Windows 混合式 Runbook 背景工作角色取決於[適用于 Windows 的 Log 
 
 如果 Microsoft Monitoring Agent 的 Microsoft 服務並未執行，此狀態會使混合式 Runbook 背景工作角色無法與 Azure 自動化通訊。
 
-#### <a name="resolution"></a>解析度
+#### <a name="resolution"></a>解決方案
 
 在 PowerShell 中輸入下列命令，確認代理程式正在執行：`Get-Service healthservice`。 如果服務已停止，在 PowerShell 中輸入下列命令可啟動服務：`Start-Service healthservice`。
 
@@ -175,7 +175,7 @@ Windows 混合式 Runbook 背景工作角色取決於[適用于 Windows 的 Log 
 
 此問題是因 Proxy 或網路防火牆封鎖 Microsoft Azure 的通訊所引起。 確認電腦可透過連接埠 443 輸出存取 *.azure-automation.net。 
 
-#### <a name="resolution"></a>解析度
+#### <a name="resolution"></a>解決方案
 
 記錄儲存每一個混合式背景工作角色本機的 C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes 中。 您可以確認 [**應用程式和服務 Logs\Microsoft-SMA\Operations** ] 和 [**應用程式及服務 Logs\Operations 管理員**] 事件記錄檔中是否有任何警告或錯誤事件，指出會影響角色上線的連線能力或其他問題，以在正常作業下進行 Azure 自動化或問題。 如需 Log Analytics 代理程式問題的其他協助疑難排解，請參閱針對[Log Analytics Windows 代理程式的問題進行疑難排解](../../azure-monitor/platform/agent-windows-troubleshoot.md)。
 
@@ -199,7 +199,7 @@ Heartbeat
 
 這個問題可能是因為混合式 Runbook 背景工作角色上的快取損毀所造成的。
 
-#### <a name="resolution"></a>解析度
+#### <a name="resolution"></a>解決方案
 
 若要解決此問題，請登入混合式 Runbook 背景工作角色，並執行下列程式碼。 此指令碼會停止 Microsoft Monitoring Agent、移除其快取，並重新啟動服務。 此動作會強制混合式 Runbook 背景工作角色從 Azure 自動化重新下載其設定。
 
@@ -225,7 +225,7 @@ Machine is already registered
 
 如果電腦已向不同的自動化帳戶註冊，或如果您在將混合式 Runbook 背景工作角色從電腦移除之後嘗試進行重新新增，可能會導致此問題。
 
-#### <a name="resolution"></a>解析度
+#### <a name="resolution"></a>解決方案
 
 若要解決此問題，請移除下列登錄機碼，然後重新啟動 `HealthService` 並重新嘗試 `Add-HybridRunbookWorker` Cmdlet：
 

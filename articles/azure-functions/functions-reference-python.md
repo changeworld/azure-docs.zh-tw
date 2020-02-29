@@ -3,12 +3,12 @@ title: 適用於 Azure Functions 的 Python 開發人員參考
 description: 了解如何使用 Python 開發函式
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: cfac28c4a759cee66c932c7b8cfea053c9c4f505
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 8ee13b59812e6a212fbafcf4ea6bfc171e735dc3
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921787"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190699"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python 開發人員指南
 
@@ -22,25 +22,9 @@ Azure Functions 預期函式在 Python 腳本中是可處理輸入並產生輸�
 
 來自觸發程式和系結的資料，會使用函式*json*檔案中定義的 `name` 屬性，透過方法屬性系結至函式。 例如，下面的_函數. json_描述由名為 `req`的 HTTP 要求所觸發的簡單函式：
 
-```json
-{
-  "bindings": [
-    {
-      "name": "req",
-      "direction": "in",
-      "type": "httpTrigger",
-      "authLevel": "anonymous"
-    },
-    {
-      "name": "$return",
-      "direction": "out",
-      "type": "http"
-    }
-  ]
-}
-```
+:::code language="son" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/function.json":::
 
-`__init__.py` 檔案包含下列函式程式碼：
+根據這個定義，包含函式程式碼的 `__init__.py` 檔案可能看起來像下列範例：
 
 ```python
 def main(req):
@@ -174,11 +158,11 @@ def main(req: func.HttpRequest,
 叫用此函式時，HTTP 要求會以 `req` 形式傳遞至函式。 系統會根據路由 URL 中的_識別碼_從 Azure Blob 儲存體中抓取專案，並在函式主體中以 `obj` 的形式提供。  在這裡，指定的儲存體帳戶是在 AzureWebJobsStorage 應用程式設定中找到的連接字串，這是函數應用程式所使用的相同儲存體帳戶。
 
 
-## <a name="outputs"></a>輸出
+## <a name="outputs"></a>Outputs
 
 輸出可以使用傳回值和輸出參數來表示。 如果只有一個輸出，我們建議使用傳回的值。 若為多個輸出，您必須使用輸出參數。
 
-若要使用函式的傳回值作為輸出繫結的值，應該將 `function.json` 中的繫結 `name` 屬性設定為 `$return`。
+若要使用函式的傳回值作為輸出繫結的值，應該將 `name` 中的繫結 `$return` 屬性設定為 `function.json`。
 
 若要產生多個輸出，請使用[`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python)介面提供的 `set()` 方法，將值指派給系結。 例如，下列函式可以將訊息推送至佇列，同時也會傳回 HTTP 回應。
 
@@ -236,7 +220,7 @@ def main(req):
 
 其他的記錄方法可讓您在不同追蹤層級寫入主控台記錄中︰
 
-| 方法                 | 說明                                |
+| 方法                 | 描述                                |
 | ---------------------- | ------------------------------------------ |
 | **`critical(_message_)`**   | 在根記錄器上寫入層級為 CRITICAL (重大) 的訊息。  |
 | **`error(_message_)`**   | 在根記錄器上寫入層級為 ERROR (錯誤) 的訊息。    |
@@ -292,7 +276,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 在這種情況下，您可以藉由採用非同步模式和使用多個語言背景工作進程，進一步改善效能。
 
-### <a name="async"></a>非同步處理
+### <a name="async"></a>Async
 
 因為 Python 是單一執行緒執行時間，所以適用于 Python 的主控制項實例一次只能處理一個函式呼叫。 對於處理大量 i/o 事件和/或 i/o 系結的應用程式，您可以透過非同步方式執行函式來改善效能。
 
@@ -318,11 +302,11 @@ def main():
 
 FUNCTIONS_WORKER_PROCESS_COUNT 適用于在相應放大應用程式以符合需求時所建立的每個主機。 
 
-## <a name="context"></a>Context
+## <a name="context"></a>內容
 
 若要在執行期間取得函數的調用內容，請在其簽章中包含[`context`](/python/api/azure-functions/azure.functions.context?view=azure-python)引數。 
 
-例如：
+例如，
 
 ```python
 import azure.functions
@@ -339,7 +323,7 @@ def main(req: azure.functions.HttpRequest,
 函式執行所在的目錄。
 
 `function_name`  
-函數的名稱。
+函式的名稱。
 
 `invocation_id`  
 目前函式引動的識別碼。

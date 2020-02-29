@@ -3,12 +3,12 @@ title: 設定用戶端驗用的 Azure Active Directory
 description: 了解如何設定 Azure Active Directory (Azure AD) 以驗證 Service Fabric 叢集的用戶端。
 ms.topic: conceptual
 ms.date: 6/28/2019
-ms.openlocfilehash: 2a6ffdb1c1fdc447545477286a6d131be2449cdb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 28c4c65cfcc77607dfe9a463a09ecd10389a6eca
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843815"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193370"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>設定用戶端驗用的 Azure Active Directory
 
@@ -38,7 +38,7 @@ Service Fabric 叢集提供其管理功能的各種進入點 (包括 Web 型 [Se
 
 我們會使用腳本來建立兩個 Azure AD 應用程式來控制對叢集的存取：一個 web 應用程式和一個原生應用程式。 建立應用程式來代表您的叢集之後，您將會為[Service Fabric 所支援的角色](service-fabric-cluster-security-roles.md)建立使用者：唯讀和系統管理員。
 
-執行 `SetupApplications.ps1`，並提供租用戶識別碼、叢集名稱和 Web 應用程式回覆 URL 作為參數。  同時也應指定使用者的使用者名稱和密碼。 例如：
+執行 `SetupApplications.ps1`，並提供租用戶識別碼、叢集名稱和 Web 應用程式回覆 URL 作為參數。  同時也應指定使用者的使用者名稱和密碼。 例如，
 
 ```powershell
 $Configobj = .\SetupApplications.ps1 -TenantId '0e3d2646-78b3-4711-b8be-74a381d9890c' -ClusterName 'mysftestcluster' -WebApplicationReplyUrl 'https://mysftestcluster.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
@@ -49,7 +49,7 @@ $Configobj = .\SetupApplications.ps1 -TenantId '0e3d2646-78b3-4711-b8be-74a381d9
 > [!NOTE]
 > 對於國家雲 (例如 Azure Government、Azure 中國、Azure 德國)，您也應指定 `-Location` 參數。
 
-您可以執行 PowerShell 命令 `Get-AzureSubscription` 來找出您的 *TenantId*。 執行此命令會顯示每個訂用帳戶的 TenantId。
+您可以執行 PowerShell 命令 *來找出您的*TenantId`Get-AzureSubscription`。 執行此命令會顯示每個訂用帳戶的 TenantId。
 
 *ClusterName* 會用來為指令碼所建立的 Azure AD 應用程式加上前置詞。 它不需要與實際叢集名稱完全相符。 其用意只是要讓您更容易將 Azure AD 構件對應到與之搭配使用的 Service Fabric 叢集。
 
@@ -104,7 +104,7 @@ https://&lt;cluster_domain&gt;:19080/Explorer
 代表 Service Fabric Explorer 的叢集 (Web) 應用程式嘗試對照 Azure AD 來進行驗證，而它在要求中提供重新導向傳回 URL。 但該 URL 並未列在 Azure AD 應用程式 [回覆 URL] 清單中。
 
 #### <a name="solution"></a>解決方案
-在 [Azure AD] 頁面上，選取 [**應用程式註冊**]，選取您的叢集應用程式，然後選取 [**回復 url**]。 在 **回復 url**  窗格中，將 Service Fabric Explorer URL 加入清單中，或取代清單中的其中一個專案。 儲存變更。
+在您叢集的 [Azure AD 應用程式註冊] 頁面上，選取 [**驗證**]，然後在 [重新**導向 uri** ] 區段下，將 Service Fabric Explorer URL 新增至清單。 儲存變更。
 
 ![Web 應用程式回復 URL][web-application-reply-url]
 
@@ -128,7 +128,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <endpoint> -KeepAliveIntervalIn
 若要深入了解，請參閱 [Connect-ServiceFabricCluster Cmdlet](https://docs.microsoft.com/powershell/module/servicefabric/connect-servicefabriccluster)。
 
 ### <a name="can-i-reuse-the-same-azure-ad-tenant-in-multiple-clusters"></a>我是否可以在多個叢集中重複使用相同的 Azure AD 租用戶？
-可以。 但是請務必將 Service Fabric Explorer 的 URL 新增到叢集 (Web) 應用程式。 否則 Service Fabric Explorer 無法運作。
+是的。 但是請務必將 Service Fabric Explorer 的 URL 新增到叢集 (Web) 應用程式。 否則 Service Fabric Explorer 無法運作。
 
 ### <a name="why-do-i-still-need-a-server-certificate-while-azure-ad-is-enabled"></a>為什麼在已啟用 Azure AD 的情況下仍然需要伺服器憑證？
 FabricClient 和 FabricGateway 會執行相互驗證。 在 Azure AD 驗證期間，Azure AD 整合會提供用戶端身分識別給伺服器，而用戶端會使用伺服器憑證來驗證服務器的身分識別。 如需 Service Fabric 憑證的詳細資訊，請參閱[x.509 憑證和 Service Fabric][x509-certificates-and-service-fabric]。

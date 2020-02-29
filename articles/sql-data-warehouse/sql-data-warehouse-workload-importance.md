@@ -1,26 +1,26 @@
 ---
 title: 工作負載重要性
-description: 在 Azure SQL 資料倉儲中設定查詢重要性的指引。
+description: 在 Azure Synapse 分析中設定 SQL 分析查詢重要性的指引。
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 05/01/2019
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 76a77c1833ae1827f2a6a9b577b3cca51b35a344
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: azure-synapse
+ms.openlocfilehash: de7bb28770bc356514c392c3478fd0e33658f878
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351435"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191759"
 ---
-# <a name="azure-sql-data-warehouse-workload-importance"></a>Azure SQL 資料倉儲工作負載重要性
+# <a name="azure-synapse-analytics-workload-importance"></a>Azure Synapse 分析工作負載重要性
 
-本文說明工作負載重要性如何影響 SQL 資料倉儲要求的執行順序。
+本文說明工作負載重要性如何影響 Azure Synapse 中 SQL 分析要求的執行順序。
 
 ## <a name="importance"></a>重要性
 
@@ -38,7 +38,7 @@ ms.locfileid: "75351435"
 
 ### <a name="locking"></a>鎖定
 
-讀取和寫入活動鎖定的存取權是自然爭用的一個區域。 [分割區切換](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition)或[重新命名物件](/sql/t-sql/statements/rename-transact-sql?view=azure-sqldw-latest)之類的活動都需要更高的鎖定。  如果沒有工作負載重要性，SQL 資料倉儲會針對輸送量進行優化。 針對輸送量進行優化，表示當執行和佇列要求具有相同的鎖定需求和資源可用時，排入佇列的要求可以略過具有較高鎖定需求的要求，並在先前的要求佇列中抵達。 將工作負載重要性套用至具有較高鎖定需求的要求。 較高重要性的要求會在要求較低的情況下執行。
+讀取和寫入活動鎖定的存取權是自然爭用的一個區域。 [分割區切換](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition)或[重新命名物件](/sql/t-sql/statements/rename-transact-sql?view=azure-sqldw-latest)之類的活動都需要更高的鎖定。  如果沒有工作負載重要性，Azure Synapse 中的 SQL 分析會針對輸送量進行優化。 針對輸送量進行優化，表示當執行和佇列要求具有相同的鎖定需求和資源可用時，排入佇列的要求可以略過具有較高鎖定需求的要求，並在先前的要求佇列中抵達。 將工作負載重要性套用至具有較高鎖定需求的要求。 較高重要性的要求會在要求較低的情況下執行。
 
 請考慮下列範例：
 
@@ -50,7 +50,7 @@ ms.locfileid: "75351435"
 
 ### <a name="non-uniform-requests"></a>非統一要求
 
-另一個重要性可以協助滿足查詢需求的案例，就是當提交具有不同資源類別的要求時。  如先前所述，在相同的重要性之下，SQL 資料倉儲針對輸送量進行優化。 當混合大小要求（例如 smallrc 或 mediumrc）排入佇列時，SQL 資料倉儲將會選擇符合可用資源的最早到達要求。 如果套用工作負載重要性，則會排定下一個最重要的要求。
+另一個重要性可以協助滿足查詢需求的案例，就是當提交具有不同資源類別的要求時。  如先前所述，在相同的重要性之下，Azure Synapse 中的 SQL 分析會針對輸送量進行優化。 當混合大小要求（例如 smallrc 或 mediumrc）排入佇列時，SQL 分析會選擇符合可用資源的最早抵達要求。 如果套用工作負載重要性，則會排定下一個最重要的要求。
   
 請在 DW500c 上考慮下列範例：
 
@@ -63,7 +63,7 @@ ms.locfileid: "75351435"
 ## <a name="next-steps"></a>後續步驟
 
 - 如需建立分類器的詳細資訊，請參閱[建立工作負載分類器（transact-sql）](/sql/t-sql/statements/create-workload-classifier-transact-sql)。  
-- 如需 SQL 資料倉儲工作負載分類的詳細資訊，請參閱[工作負載分類](sql-data-warehouse-workload-classification.md)。  
+- 如需工作負載分類的詳細資訊，請參閱[工作負載分類](sql-data-warehouse-workload-classification.md)。  
 - 如需如何建立工作負載分類器的詳細說明，請參閱快速入門[建立工作負載分類器](quickstart-create-a-workload-classifier-tsql.md)。 
 - 請參閱[設定工作負載的重要性](sql-data-warehouse-how-to-configure-workload-importance.md)的操作說明文章，以及如何[管理並監視工作負載管理](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)。
 - 請參閱 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) 以檢視查詢和所指派的重要性。

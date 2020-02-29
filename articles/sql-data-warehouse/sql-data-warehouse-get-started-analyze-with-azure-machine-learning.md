@@ -1,22 +1,23 @@
 ---
 title: 使用 Azure Machine Learning 分析資料
-description: 使用 Azure Machine Learning，根據 Azure 資料倉儲中儲存的資料建置預測性機器學習模型。
+description: 使用 Azure Machine Learning，根據 Azure Synapse 中儲存的資料來建立預測性機器學習模型。
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: integration
-ms.date: 03/22/2019
+ms.date: 02/05/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 892d4642d700949d1d1169c69926021c751cef67
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+tag: azure-Synapse
+ms.openlocfilehash: f6765fdbb65f62bb790d1e8781512db572170b10
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721280"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195884"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>使用 Azure Machine Learning 分析資料
 > [!div class="op_single_selector"]
@@ -28,16 +29,16 @@ ms.locfileid: "76721280"
 > 
 > 
 
-本教學課程會使用 Azure Machine Learning，根據 Azure 資料倉儲中儲存的資料建置預測性機器學習模型。 具體來說，這會為 Adventure Work 建置鎖定目標的行銷活動，預測客戶是否可能購買自行車。
+本教學課程使用 Azure Machine Learning，根據 Azure Synapse 中儲存的資料來建立預測性機器學習模型。 具體來說，這會為 Adventure Work 建置鎖定目標的行銷活動，預測客戶是否可能購買自行車。
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Integrating-Azure-Machine-Learning-with-Azure-SQL-Data-Warehouse/player]
 > 
 > 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 若要逐步執行本教學課程，您需要：
 
-* 預先載入 AdventureWorksDW 範例資料的 SQL 資料倉儲。 若要進行佈建，請參閱 [建立 SQL 資料倉儲](create-data-warehouse-portal.md) 並選擇載入範例資料。 如果您已經有資料倉儲但沒有範例資料，您可以 [手動載入範例資料](sql-data-warehouse-load-sample-databases.md)。
+* 已預先載入 AdventureWorksDW 範例資料的 SQL 集區。 若要進行布建，請參閱[建立 SQL 集](create-data-warehouse-portal.md)區並選擇載入範例資料。 如果您已經有資料倉儲但沒有範例資料，您可以 [手動載入範例資料](sql-data-warehouse-load-sample-databases.md)。
 
 ## <a name="1-get-the-data"></a>1. 取得資料
 此資料位於 AdventureWorksDW 資料庫的 dbo.vTargetMail 檢視中。 如何讀取此資料：
@@ -46,7 +47,7 @@ ms.locfileid: "76721280"
 2. 按一下畫面左下方的 [ **+ 新增**]，然後選取 [**空白實驗**]。
 3. 輸入您的實驗名稱：目標行銷。
 4. 將 [匯**入資料**] 模組從 [模組] 窗格中的 [**資料輸入和輸出**] 拖曳至畫布。
-5. 在 [屬性] 窗格中指定 SQL 資料倉儲資料庫的詳細資料。
+5. 在 [屬性] 窗格中指定 SQL 集區的詳細資料。
 6. 指定資料庫 **查詢** 以利讀取感興趣的資料。
 
 ```sql
@@ -78,7 +79,7 @@ FROM [dbo].[vTargetMail]
 ![View 已匯入的資料](media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img3-readerdata-new.png)
 
 ## <a name="2-clean-the-data"></a>2. 清除資料
-若要清除資料，請卸除與模型無關的某些資料行。 作法：
+若要清除資料，請卸除與模型無關的某些資料行。 若要這樣做：
 
 1. 將 [**資料轉換 < 操作**] 底下的 [**選取資料行**] 模組拖曳到畫布中。 將此模組連接到匯**入資料**模組。
 2. 按一下 [屬性] 窗格中的 [啟動資料行選取器] 來指定您想要卸除的資料行。
@@ -128,7 +129,7 @@ FROM [dbo].[vTargetMail]
 * 評分機率：客戶成為自行車購買者的可能性。
 * 評分標籤：由模型完成的分類 – 是自行車購買者 (1) 或不是 (0)。 標籤的機率臨界值設定為 50%，而且可以調整。
 
-比較 BikeBuyer (實際) 資料行和評分標籤 (預測)，您可以看到模型的執行效果。 接下來，您可以使用此模型為新客戶進行預測，並將此模型發佈為 web 服務，或將結果寫回 SQL 資料倉儲。
+比較 BikeBuyer (實際) 資料行和評分標籤 (預測)，您可以看到模型的執行效果。 接下來，您可以使用此模型為新客戶進行預測，並將此模型發佈為 web 服務，或將結果寫回 Azure Synapse。
 
 ## <a name="next-steps"></a>後續步驟
 若要深入了解如何建置預測性機器學習模型，請參閱 [Azure 上的機器學習服務簡介](https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/)。

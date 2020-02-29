@@ -3,21 +3,21 @@ title: 設定 Azure AD 組織的登入
 titleSuffix: Azure AD B2C
 description: 在 Azure Active Directory B2C 中設定特定 Azure Active Directory 組織的登入。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b0ff1c2d913d0a4402b491f3c84ce0d35cd081df
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 35fc4e1d64fa7df392fa878db14c0464da7dccf4
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847585"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188302"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中設定特定 Azure Active Directory 組織的登入
 
@@ -41,7 +41,7 @@ ms.locfileid: "76847585"
 
     所有 URL 現在都應會使用 [b2clogin.com](b2clogin.md)。
 
-8. 按一下 [註冊]。 複製**應用程式（用戶端）識別碼**，以供稍後使用。
+8. 按一下 [註冊] 複製**應用程式（用戶端）識別碼**，以供稍後使用。
 9. 在 [應用程式] 功能表中選取 [**憑證 & 秘密**]，然後選取 [**新增用戶端密碼**]。
 10. 輸入用戶端密碼的 [名稱]。 例如： `Azure AD B2C App Secret` 。
 11. 選取 [到期時間]。 針對此應用程式，接受**1 年**的選取專案。

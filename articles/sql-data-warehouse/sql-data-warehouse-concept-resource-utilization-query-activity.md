@@ -1,31 +1,31 @@
 ---
 title: 管理能力和監視-查詢活動、資源使用率
-description: 了解哪些功能可用來管理和監視 Azure SQL 資料倉儲。 使用 Azure 入口網站和動態管理檢視 (DMV) 來了解資料倉儲的查詢活動和資源使用率。
+description: 瞭解可用來管理和監視 Azure Synapse 分析的功能。 使用 Azure 入口網站和動態管理檢視 (DMV) 來了解資料倉儲的查詢活動和資源使用率。
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 01/14/2020
+ms.date: 02/04/2020
 ms.author: kevin
-ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 366d170a4caf9ee7428b68d71f910c65356038ff
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.reviewer: jrasnick
+ms.custom: azure-synapse
+ms.openlocfilehash: 47f142a19ac470fb29e9542941cd94a6b29ce240
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76024533"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195918"
 ---
-# <a name="monitoring-resource-utilization-and-query-activity-in-azure-sql-data-warehouse"></a>監視 Azure SQL 資料倉儲中的資源使用率和查詢活動
-Azure SQL 資料倉儲在 Azure 入口網站中提供豐富的監視體驗，讓您可看到資料倉儲工作負載的深入解析。 Azure 入口網站是監視資料倉儲的建議工具，因為其提供可設定的保留期、警示、建議，以及可自訂的計量與記錄圖表及儀表板。 入口網站也可讓您與其他 Azure 監視服務（例如 Operations Management Suite （OMS）和 Azure 監視器（記錄））整合，以同時針對您的資料倉儲，以及整個 Azure 分析提供全面的監視體驗。整合式監視體驗的平臺。 本文件將說明哪些監視功能可用來最佳化及管理分析平台與 SQL 資料倉儲。 
+# <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>監視 Azure Synapse 分析中的資源使用率和查詢活動
+Azure Synapse 分析提供 Azure 入口網站內豐富的監視體驗，以呈現資料倉儲工作負載的深入解析。 Azure 入口網站是監視資料倉儲的建議工具，因為其提供可設定的保留期、警示、建議，以及可自訂的計量與記錄圖表及儀表板。 入口網站也可讓您與其他 Azure 監視服務（例如 Operations Management Suite （OMS）和 Azure 監視器（記錄））整合，以同時針對您的資料倉儲，以及整個 Azure 分析提供全面的監視體驗。整合式監視體驗的平臺。 本檔說明哪些監視功能可讓您使用 SQL 分析來優化和管理您的分析平臺。 
 
 ## <a name="resource-utilization"></a>資源使用率 
-在 Azure 入口網站中，下列計量可供 SQL 資料倉儲使用。 我們透過 [Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection#metrics)提供這些計量。
+SQL 分析的 Azure 入口網站中提供下列計量。 我們透過 [Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection#metrics)提供這些計量。
 
 
-| 標準名稱             | 說明                                                  | 彙總類型 |
+| 標準名稱             | 描述                                                  | 彙總類型 |
 | ----------------------- | ------------------------------------------------------------ | ---------------- |
 | CPU 百分比          | 資料倉儲上所有節點的 CPU 使用率      | Avg、Min、Max    |
 | 資料 IO 百分比      | 資料倉儲上所有節點的 IO 使用率       | Avg、Min、Max    |
@@ -49,12 +49,12 @@ Azure SQL 資料倉儲在 Azure 入口網站中提供豐富的監視體驗，讓
 
 
 ## <a name="query-activity"></a>查詢活動
-為了在透過 T-SQL 監視 SQL 資料倉儲時有程式設計體驗，此服務提供一組動態管理檢視 (DMV)。 若要對您的工作負載進行主動式疑難排解和識別效能瓶頸時，這些檢視十分實用。
+如需透過 T-sql 監視 SQL 分析時的程式設計體驗，服務會提供一組動態管理檢視（Dmv）。 若要對您的工作負載進行主動式疑難排解和識別效能瓶頸時，這些檢視十分實用。
 
-若要檢視 SQL 資料倉儲提供的 DMV 清單，請參閱此[文件](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-reference-tsql-system-views#sql-data-warehouse-dynamic-management-views-dmvs)。 
+若要查看 SQL 分析提供的 Dmv 清單，請參閱這份[檔](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-reference-tsql-system-views#sql-data-warehouse-dynamic-management-views-dmvs)。 
 
 ## <a name="metrics-and-diagnostics-logging"></a>計量和診斷記錄
-計量和記錄都可以匯出至 Azure 監視器，特別是[Azure 監視器記錄](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)檔元件，而且可以透過[記錄查詢](https://docs.microsoft.com/azure/log-analytics/log-analytics-tutorial-viewdata)以程式設計方式存取。 SQL 資料倉儲的記錄延遲大約是10-15 分鐘。 如需影響延遲的因素的詳細資訊，請造訪下列檔。
+計量和記錄都可以匯出至 Azure 監視器，特別是[Azure 監視器記錄](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)檔元件，而且可以透過[記錄查詢](https://docs.microsoft.com/azure/log-analytics/log-analytics-tutorial-viewdata)以程式設計方式存取。 SQL 分析的記錄延遲大約10-15 分鐘。 如需影響延遲的因素的詳細資訊，請造訪下列檔。
 
 
 ## <a name="next-steps"></a>後續步驟

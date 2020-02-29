@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: 91578b5c840f589f3e49737b71e63f4d5e82a126
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: a55ef4f814c0d13a6efbeeb8cd9a5565d2869432
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919646"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183290"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure 媒體服務版本資訊
 
@@ -232,7 +232,7 @@ Azure SDK 小組已發佈新版的 [Azure SDK for PHP](https://github.com/Azure/
 
 ## <a id="september_changes_15"></a>2015 年 9 月版本
 媒體服務現在提供以 Widevine 模組 DRM 技術保護點播視訊和即時資料流的能力。 您可以使用下列傳遞服務合作夥伴來協助您傳遞 Widevine 授權：
-* [Axinom](https://www.axinom.com/press/ibc-axinom-drm-6/) 
+* [Axinom](https://www.axinom.com) 
 * [EZDRM](https://ezdrm.com/) 
 * [castLabs](https://castlabs.com/company/partners/azure/) 
 
@@ -476,7 +476,7 @@ Azure Media Services Packager 和 Encryptor 完成了下列錯誤修正：
 * 能夠將多個儲存體帳戶連結至媒體服務帳戶。 
     * StorageAccount
     * Asset.StorageAccountName 和 Asset.StorageAccount
-* 能夠更新 Job.Priority。 
+* 更新 Job.Priority 的功能。 
 * 通知相關的實體和屬性： 
     * JobNotificationSubscription
     * NotificationEndPoint

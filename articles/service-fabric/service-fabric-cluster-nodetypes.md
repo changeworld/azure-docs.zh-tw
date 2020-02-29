@@ -5,16 +5,18 @@ ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: e751b3dd9108d364c900bbd059dc89c1eb3770c4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 37d4c27d3033545c523cefc2f317073af531f095
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722334"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199711"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric 節點類型與虛擬機器擴展集
 
-[虛擬機器擴展集](/azure/virtual-machine-scale-sets)是 Azure 計算資源。 您可以使用擴展集來將虛擬機器集合以一組的方式加以部署和管理。 在 Azure Service Fabric 叢集中定義的每個節點類型會設定不同的擴展集。 Service Fabric 執行時間會安裝在*ServiceFabric*虛擬機器擴充功能的擴展集內的每部虛擬機器上。 您可以分開相應增加或減少每個節點類型、變更每個叢集節點上執行的 OS SKU、開啟不同組的連接埠，並使用不同的容量計量。
+[虛擬機器擴展集](/azure/virtual-machine-scale-sets)是 Azure 計算資源。 您可以使用擴展集來將虛擬機器集合以一組的方式加以部署和管理。 您在 Azure Service Fabric 叢集中定義的每個節點類型都只會設定一個擴展集：多個節點類型無法由相同的擴展集支援，而一個節點類型不應由多個擴展集支援（在大多數情況下）。 在[垂直調整](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations)節點類型的罕見情況下，當您使用相同的 `nodeTypeRef` 值，而將複本從原始遷移至升級的擴展集時，就會發生例外狀況。
+
+Service Fabric 執行時間會安裝在*ServiceFabric*虛擬機器擴充功能的擴展集內的每部虛擬機器上。 您可以分開相應增加或減少每個節點類型、變更每個叢集節點上執行的 OS SKU、開啟不同組的連接埠，並使用不同的容量計量。
 
 下圖顯示具有兩個節點類型的叢集，名為*前端*和*後端*。 每個節點類型各有五個節點。
 
@@ -72,19 +74,19 @@ Service Fabric 虛擬機器擴充功能可用來啟動 Service Fabric 至 Azure 
 
 | **名稱** | **允許的值** | **指引或簡短描述** |
 | --- | --- | --- | --- |
-| NAME | 字串 | 延伸模組的唯一名稱 |
-| type | "ServiceFabricLinuxNode" 或 "ServiceFabricWindowsNode" | 識別要啟動的 OS Service Fabric |
-| autoUpgradeMinorVersion | true 或 false | 啟用自動升級 SF 執行時間次要版本 |
+| 名稱 | string | 延伸模組的唯一名稱 |
+| 類型 | "ServiceFabricLinuxNode" 或 "ServiceFabricWindowsNode" | 識別要啟動的 OS Service Fabric |
+| autoUpgradeMinorVersion | [True] 或 [False] | 啟用自動升級 SF 執行時間次要版本 |
 | publisher | ServiceFabric | Service Fabric 擴充功能發行者的名稱 |
-| clusterEndpont | 字串 | URI：管理端點的埠 |
-| nodeTypeRef | 字串 | nodeType 的名稱 |
+| clusterEndpont | string | URI：管理端點的埠 |
+| nodeTypeRef | string | NodeType 的名稱 |
 | durabilityLevel | 銅，銀級，金級，白金 | 允許暫停不可變 Azure 基礎結構的時間 |
-| enableParallelJobs | true 或 false | 啟用計算 ParallelJobs，例如以平行方式移除相同擴展集中的 VM 和重新開機 VM |
-| nicPrefixOverride | 字串 | 子網首碼，例如 "10.0.0.0/24" |
+| enableParallelJobs | [True] 或 [False] | 啟用計算 ParallelJobs，例如以平行方式移除相同擴展集中的 VM 和重新開機 VM |
+| nicPrefixOverride | string | 子網首碼，例如 "10.0.0.0/24" |
 | commonNames | string[] | 已安裝叢集憑證的一般名稱 |
-| x509StoreName | 字串 | 安裝的叢集憑證所在的存放區名稱 |
+| x509StoreName | string | 安裝的叢集憑證所在的存放區名稱 |
 | typeHandlerVersion | 1.1 | 延伸模組的版本。 1.0 建議將傳統版本的擴充功能更新至1。1 |
-| dataPath | 字串 | 用來儲存 Service Fabric 系統服務和應用程式資料狀態的磁片磁碟機路徑。
+| dataPath | string | 用來儲存 Service Fabric 系統服務和應用程式資料狀態的磁片磁碟機路徑。
 
 ## <a name="next-steps"></a>後續步驟
 

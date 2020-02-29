@@ -1,6 +1,6 @@
 ---
-title: 還原刪除的資料倉儲
-description: 還原已刪除的 Azure SQL 資料倉儲的操作指南。
+title: 還原已刪除的 SQL 集區
+description: 還原已刪除之 SQL 集區的操作指南。
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -11,26 +11,26 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e508eff3b322b49a6dc50d818c8bcccc3e924ff2
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 34851203432b7e2daf44e840e45275de76bc3b3a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759647"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196589"
 ---
-# <a name="restore-a-deleted-azure-sql-data-warehouse"></a>還原已刪除的 Azure SQL 資料倉儲
+# <a name="restore-a-deleted-sql-pool-using-azure-synapse-analytics"></a>使用 Azure Synapse 分析還原已刪除的 SQL 集區
 
-在本文中，您將瞭解如何使用 Azure 入口網站和 PowerShell 還原已刪除的 SQL 資料倉儲：
+在本文中，您將瞭解如何使用 Azure 入口網站或 PowerShell 來還原 SQL。
 
 ## <a name="before-you-begin"></a>開始之前
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-**請驗證您的 DTU 容量。** 每個 SQL 資料倉儲都是由具有預設 DTU 配額的 SQL server （例如，myserver.database.windows.net）所主控。  確認 SQL server 有足夠的剩餘 DTU 配額可供要還原的資料庫之用。 若要了解如何計算所需 DTU 或要求更多 DTU，請參閱 [要求 DTU 配額變更](sql-data-warehouse-get-started-create-support-ticket.md)。
+**請驗證您的 DTU 容量。** 每個 SQL 集區都是由具有預設 DTU 配額的 SQL server （例如 myserver.database.windows.net）所主控。  確認 SQL server 有足夠的剩餘 DTU 配額可供要還原的資料庫之用。 若要了解如何計算所需 DTU 或要求更多 DTU，請參閱 [要求 DTU 配額變更](sql-data-warehouse-get-started-create-support-ticket.md)。
 
 ## <a name="restore-a-deleted-data-warehouse-through-powershell"></a>透過 PowerShell 還原已刪除的資料倉儲
 
-若要還原已刪除的 SQL 資料倉儲，請使用[set-azsqldatabase 搭配](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)Cmdlet。 如果對應的邏輯伺服器也已刪除，您就無法還原該資料倉儲。
+若要還原已刪除的 SQL 集區，請使用[set-azsqldatabase 搭配](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)Cmdlet。 如果對應的邏輯伺服器也已刪除，您就無法還原該資料倉儲。
 
 1. 開始之前，請務必[安裝 Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)。
 2. 開啟 PowerShell。
@@ -86,5 +86,5 @@ $RestoredDatabase.status
     ![指定資料庫名稱](./media/sql-data-warehouse-restore-deleted-dw/restoring-deleted-21.png)
 
 ## <a name="next-steps"></a>後續步驟
-- [還原現有的資料倉儲](sql-data-warehouse-restore-active-paused-dw.md)
-- [從異地備份資料倉儲還原](sql-data-warehouse-restore-from-geo-backup.md)
+- [還原現有的 SQL 集區](sql-data-warehouse-restore-active-paused-dw.md)
+- [從異地備份 SQL 集區還原](sql-data-warehouse-restore-from-geo-backup.md)

@@ -1,6 +1,6 @@
 ---
 title: T-SQL 陳述式
-description: Azure SQL 資料倉儲中所支援 T-SQL 陳述式的文件連結。
+description: SQL 分析中所支援 T-sql 語句的檔連結。
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: query
 ms.date: 05/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 861675941693697a20da189edebe33d91918782c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: d37e1b727829505940b77c7a82293f90050a87c0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685529"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198349"
 ---
-# <a name="t-sql-statements-supported-in-azure-sql-data-warehouse"></a>Azure SQL 資料倉儲中支援的 T-SQL 陳述式
-Azure SQL 資料倉儲中所支援 T-SQL 陳述式的文件連結。
+# <a name="t-sql-statements-supported-in-sql-analytics"></a>SQL 分析中支援的 t-sql 語句
+SQL 分析中所支援 T-sql 語句的檔連結。
 
 ## <a name="data-definition-language-ddl-statements"></a>資料定義語言 (DDL) 陳述式
 * [ALTER DATABASE](https://msdn.microsoft.com/library/mt204042.aspx)
@@ -30,7 +30,7 @@ Azure SQL 資料倉儲中所支援 T-SQL 陳述式的文件連結。
 * [ALTER TABLE](https://msdn.microsoft.com/library/ms190273.aspx)
 * [CREATE COLUMNSTORE INDEX](https://msdn.microsoft.com/library/gg492153.aspx)
 * [CREATE DATABASE](https://msdn.microsoft.com/library/mt204021.aspx)
-* [建立資料庫範圍認證](https://msdn.microsoft.com/library/mt270260.aspx)
+* [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx)
 * [CREATE EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx)
 * [CREATE EXTERNAL FILE FORMAT](https://msdn.microsoft.com/library/dn935026.aspx)
 * [CREATE EXTERNAL TABLE](https://msdn.microsoft.com/library/dn935021.aspx)
@@ -120,4 +120,4 @@ Azure SQL 資料倉儲中所支援 T-SQL 陳述式的文件連結。
 * [OPEN MASTER KEY](https://msdn.microsoft.com/library/ms174433.aspx)
 
 ## <a name="next-steps"></a>後續步驟
-如需更多的參考資訊，請參閱 [Azure SQL 資料倉儲中的 T-SQL 語言元素](sql-data-warehouse-reference-tsql-language-elements.md)和 [Azure SQL 資料倉儲中的系統檢視表](sql-data-warehouse-reference-tsql-system-views.md)。
+如需更多的參考資訊，請參閱[Sql 分析中的 t-sql 語言元素](sql-data-warehouse-reference-tsql-language-elements.md)和[sql 分析中的系統檢視](sql-data-warehouse-reference-tsql-system-views.md)。

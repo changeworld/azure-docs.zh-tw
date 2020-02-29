@@ -1,6 +1,6 @@
 ---
-title: 以 SSMS 連線
-description: 使用 SQL Server Management Studio (SSMS) 連接及查詢 Azure SQL 資料倉儲。
+title: 使用 SSMS 連線
+description: 使用 SQL Server Management Studio （SSMS）來連線及查詢 Azure Synapse 分析。
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d5c903a24ea47cb152555330688dd0bc515c625b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 2109402a874ff8c722bd05e1e5cb62b461cb2292
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692592"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198612"
 ---
-# <a name="connect-to-sql-data-warehouse-with-sql-server-management-studio-ssms"></a>連接 SQL 資料倉儲與 SQL Server Management Studio (SSMS)
+# <a name="connect-to-azure-synapse-analytics-with-sql-server-management-studio-ssms"></a>使用 SQL Server Management Studio （SSMS）連線到 Azure Synapse 分析
 > [!div class="op_single_selector"]
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 > * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
@@ -28,23 +28,23 @@ ms.locfileid: "73692592"
 > 
 > 
 
-使用 SQL Server Management Studio (SSMS) 連接及查詢 Azure SQL 資料倉儲。 
+使用 SQL Server Management Studio （SSMS）連線到 Azure Synapse 內的資料倉儲並加以查詢。 
 
 ## <a name="prerequisites"></a>必要條件
 若要使用本教學課程，您需要：
 
-* 現有的 SQL 資料倉儲。 若要建立資料倉儲，請參閱 [建立 SQL 資料倉儲][Create a SQL Data Warehouse]。
-* SQL Server Management Studio (SSMS) 已安裝。 如果您還沒有 SSMS，請將其[安裝][Install SSMS]為免費。
-* 完整的 SQL 伺服器名稱。 若要找到此名稱，請參閱 [連接到 SQL 資料倉儲][Connect to SQL Data Warehouse]。
+* 現有的 SQL 集區。 若要建立一個，請參閱[建立 SQL 集](sql-data-warehouse-get-started-provision.md)區。
+* SQL Server Management Studio (SSMS) 已安裝。 如果您還沒有 SSMS，請將其[安裝](https://msdn.microsoft.com/library/hh213248.aspx)為免費。
+* 完整的 SQL 伺服器名稱。 若要尋找此資訊，請參閱[連接到 SQL 集](sql-data-warehouse-connect-overview.md)區。
 
-## <a name="1-connect-to-your-sql-data-warehouse"></a>1. 連接到您的 SQL 資料倉儲
+## <a name="1-connect-to-your-sql-pool"></a>1. 連接到您的 SQL 集區
 1. 開啟 SSMS。
-2. 開啟物件總管。 若要這樣做，請選取 [檔案]  >  [連接物件總管]。
+2. 選取 [檔案 >  **連接物件總管]** 來開啟物件總管。
    
-    ![SQL Server 物件總管][1]
+    ![SQL Server 物件總管](media/sql-data-warehouse-query-ssms/connect-object-explorer.png)
 3. 填寫 [連線到伺服器] 視窗中的欄位。
    
-    ![連線到伺服器][2]
+    ![連線到伺服器](media/sql-data-warehouse-query-ssms/connect-object-explorer1.png)
    
    * **伺服器名稱**。 輸入先前找到的 **伺服器名稱** 。
    * **驗證**。 選取 [SQL Server 驗證] 或 [Active Directory 整合式驗證]。
@@ -52,48 +52,27 @@ ms.locfileid: "73692592"
    * 按一下 [連接]。
 4. 若要瀏覽，請展開您的 Azure SQL 伺服器。 您可以檢視與伺服器相關聯的資料庫。 展開 AdventureWorksDW 以查看範例資料庫中的資料表。
    
-    ![探索 AdventureWorksDW][3]
+    ![探索 AdventureWorksDW](media/sql-data-warehouse-query-ssms/explore-tables.png)
 
 ## <a name="2-run-a-sample-query"></a>2. 執行範例查詢
 現已建立對您的資料庫的連線，接著繼續撰寫查詢。
 
 1. 在 [SQL Server 物件總管] 中您的資料庫上按一下滑鼠右鍵。
-2. 選取 [新增查詢]。 新的查詢視窗隨即開啟。
+2. 選取 [新增查詢]。 隨即開啟 [新增查詢] 視窗。
    
-    ![新增查詢][4]
-3. 將此 TSQL 查詢複製到查詢視窗中：
+    ![新增查詢]( media/sql-data-warehouse-query-ssms/new-query.png)
+3. 將下列 T-SQL 查詢複製到查詢視窗中：
    
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. 執行查詢。 若要這麼做，請按一下 `Execute`，或使用下列快速鍵：`F5`。
+4. 按一下 [`Execute`] 或使用下列快捷方式來執行查詢： `F5`。
    
-    ![執行查詢][5]
+    ![執行查詢](media/sql-data-warehouse-query-ssms/execute-query.png)
 5. 查看查詢結果。 在此範例中，FactInternetSales 資料表有 60398 個資料列。
    
-    ![查詢結果][6]
+    ![查詢結果](media/sql-data-warehouse-query-ssms/results.png)
 
 ## <a name="next-steps"></a>後續步驟
-您現在可以連接並查詢，請嘗試 [使用 PowerBI 將資料視覺化][visualizing the data with PowerBI]。
-
-若要針對 Azure Active Directory 驗證設定您的環境，請參閱 [驗證 SQL 資料倉儲][Authenticate to SQL Data Warehouse]。
-
-<!--Arcticles-->
-[Connect to SQL Data Warehouse]: sql-data-warehouse-connect-overview.md
-[Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
-[Authenticate to SQL Data Warehouse]: sql-data-warehouse-authentication.md
-[visualizing the data with PowerBI]: sql-data-warehouse-get-started-visualize-with-power-bi.md 
-
-<!--Other-->
-[Azure portal]: https://portal.azure.com
-[Install SSMS]: https://msdn.microsoft.com/library/hh213248.aspx
-
-
-<!--Image references-->
-
-[1]: media/sql-data-warehouse-query-ssms/connect-object-explorer.png
-[2]: media/sql-data-warehouse-query-ssms/connect-object-explorer1.png
-[3]: media/sql-data-warehouse-query-ssms/explore-tables.png
-[4]: media/sql-data-warehouse-query-ssms/new-query.png
-[5]: media/sql-data-warehouse-query-ssms/execute-query.png
-[6]: media/sql-data-warehouse-query-ssms/results.png
+現在您可以進行連線和查詢，請嘗試[使用 Power BI 將資料視覺化](sql-data-warehouse-get-started-visualize-with-power-bi.md )。
+若要設定您的環境以進行 Azure Active Directory 驗證，請參閱[向 SQL 集區進行驗證](sql-data-warehouse-authentication.md)。

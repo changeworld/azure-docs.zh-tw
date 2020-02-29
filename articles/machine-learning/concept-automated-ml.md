@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
-ms.date: 11/04/2019
-ms.openlocfilehash: 2ef3cbc83cd67647709a53fee2c32b444c5d86f4
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.date: 02/28/2020
+ms.openlocfilehash: 9739c0a6b66099a2bebb1d42922d8653a92e650b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526122"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190342"
 ---
 # <a name="what-is-automated-machine-learning"></a>什麼是自動化機器學習服務？
 
@@ -150,6 +150,14 @@ ms.locfileid: "77526122"
 比較模型**a**和**B**時，模型**a**是較佳的模型，因為它具有較高的測試精確度，而且雖然測試精確度在95% 稍微較低，但它並不是建議過度調整的重要差異。 您不只會選擇模型**B** ，因為定型和測試精確度比較接近在一起。
 
 模型**C**代表明顯的過度調整案例;定型準確度非常高，但測試精確度不在接近高的位置。 這項區別是主觀的，但來自您的問題和資料的知識，以及可接受的錯誤巨量。 
+
+## <a name="classification--regression"></a>分類 & 回歸
+
+分類和回歸是最常見的機器學習工作類型。 兩者都是監督式學習的類型，其中的模型會學習使用定型資料，並將這些學習套用至新的資料。 Azure Machine Learning 特別針對這些工作提供 featurizations，例如分類的深度類神經網路文字有。 深入瞭解[特徵化選項](how-to-create-portal-experiments.md#featurization)。 
+
+分類模型的主要目標是要根據學習的定型資料，預測哪些類別的新資料會落入何處。 常見的分類範例包括詐騙偵測、手寫辨識和物件偵測。  深入瞭解並查看[使用自動化機器學習進行分類](tutorial-train-models-with-aml.md)的範例。
+
+不同于預測輸出值為類別的分類，回歸模型會根據獨立的預測指標來預測數值輸出值。 在回歸中，其目標是要藉由評估一個變數對其他變數的影響，協助您建立這些獨立預測變數之間的關聯性。 例如，以諸如的功能、天然氣、安全性評等等特徵為依據的汽車價格。 深入瞭解並查看[自動化機器學習的回歸](tutorial-auto-train-models.md)範例。
 
 ## <a name="time-series-forecasting"></a>時間序列預測
 

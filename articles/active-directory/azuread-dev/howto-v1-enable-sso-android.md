@@ -15,12 +15,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: brandwe, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 37055d9b59d49091261109e3553f99bcc03d8e14
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 48c28831d1fbbfc4fe78ebe12e5a158a8259cf44
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77164574"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190291"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>操作說明：使用 ADAL 在 Android 上啟用跨應用程式的 SSO
 
@@ -32,7 +32,7 @@ Microsoft 的身分識別平台搭配 SDK，能讓您在整個裝置中，更輕
 
 在本操作說明中，您會了解如何在應用程式中設定 SDK 以提供 SSO 給客戶。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 此操作說明會假設您知道如何：
 
@@ -60,7 +60,7 @@ Microsoft 為每個行動平台提供應用程式，允許跨不同廠商的應�
 
 #### <a name="how-microsoft-ensures-the-application-is-valid"></a>Microsoft 如何確保應用程式的有效性
 
-需要確保應用程式的身分識別會呼叫訊息代理程式，對於以訊息代理程式輔助的登入所提供的安全性而言相當重要。 IOS 和 Android 都不會強制執行僅對特定應用程式有效的唯一識別碼，因此，惡意應用程式可能會「詐騙」合法應用程式的識別碼，並接收適用於合法應用程式的權杖。 若要確定 Microsoft 一律會在執行階段與正確的應用程式進行通訊，我們會要求開發人員在向 Microsoft 註冊應用程式時提供自訂的 redirectURI。 **以下將詳細討論開發人員應該如何製作此重新導向 URI。** 此自訂的 redirectURI 包含應用程式的憑證指紋，並透過 Google Play Store 確保它對應用程式而言是唯一的。 當應用程式呼叫訊息代理程式時，訊息代理程式會要求 Android 作業系統搭配呼叫訊息代理程式的憑證指紋來提供它。 訊息代理程式會在對身分識別系統的呼叫中，將此憑證指紋提供給 Microsoft。 如果應用程式的憑證指紋不符合開發人員在註冊期間提供給我們的憑證指紋，就會拒絕存取應用程式所要求的資源權杖。 這項檢查可確保只有開發人員所註冊的應用程式能夠接收權杖。
+需要確保呼叫訊息代理程式的應用程式身分識別，對於 broker 輔助登入中所提供的安全性很重要。 IOS 和 Android 都不會強制執行僅對特定應用程式有效的唯一識別碼，因此，惡意應用程式可能會「詐騙」合法應用程式的識別碼，並接收適用於合法應用程式的權杖。 若要確定 Microsoft 一律會在執行階段與正確的應用程式進行通訊，我們會要求開發人員在向 Microsoft 註冊應用程式時提供自訂的 redirectURI。 **以下將詳細討論開發人員應該如何製作此重新導向 URI。** 此自訂的 redirectURI 包含應用程式的憑證指紋，並透過 Google Play Store 確保它對應用程式而言是唯一的。 當應用程式呼叫訊息代理程式時，訊息代理程式會要求 Android 作業系統搭配呼叫訊息代理程式的憑證指紋來提供它。 訊息代理程式會在對身分識別系統的呼叫中，將此憑證指紋提供給 Microsoft。 如果應用程式的憑證指紋不符合開發人員在註冊期間提供給我們的憑證指紋，就會拒絕存取應用程式所要求的資源權杖。 這項檢查可確保只有開發人員所註冊的應用程式能夠接收權杖。
 
 訊息代理程式的 SSO 登入具備下列優點︰
 

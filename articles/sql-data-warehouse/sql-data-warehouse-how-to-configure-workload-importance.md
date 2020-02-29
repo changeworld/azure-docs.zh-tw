@@ -1,26 +1,26 @@
 ---
 title: 設定工作負載的重要性
-description: 瞭解如何設定要求層級的重要性。
+description: 瞭解如何在 Azure Synapse Analytics 中設定要求層級的重要性。
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.subservice: workload-management
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 02/04/2020
 ms.author: rortloff
-ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 59ba4b936f6098b0d0b3f5e571f107af088206e0
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.reviewer: jrasnick
+ms.custom: azure-synapse
+ms.openlocfilehash: 8b2a4333717938edf9f3039e29e8df88cece7cc1
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692687"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196792"
 ---
-# <a name="configure-workload-importance-in-azure-sql-data-warehouse"></a>在 Azure SQL 資料倉儲中設定工作負載重要性
+# <a name="configure-workload-importance-in-azure-synapse-analytics"></a>在 Azure Synapse 分析中設定工作負載重要性
 
-在 SQL 資料倉儲中設定 [重要性]，可讓您影響查詢的排程。 重要性較高的查詢會排程在較低重要性的查詢之前執行。 若要指派查詢的重要性，您必須建立工作負載分類器。
+在適用于 Azure Synapse 的 SQL 分析中設定重要性，可讓您影響查詢的排程。 重要性較高的查詢會排程在較低重要性的查詢之前執行。 若要指派查詢的重要性，您必須建立工作負載分類器。
 
 ## <a name="create-a-workload-classifier-with-importance"></a>建立具有重要性的工作負載分類器
 
@@ -35,8 +35,8 @@ Select name from sys.sysusers
 ```sql
 CREATE WORKLOAD CLASSIFIER ExecReportsClassifier  
     WITH (WORKLOAD_GROUP = 'xlargerc'
-                   ,MEMBERNAME        = 'name'  
-                   ,IMPORTANCE        =  above_normal);  
+         ,MEMBERNAME     = 'name'  
+         ,IMPORTANCE     =  above_normal);  
 
 ```
 
@@ -45,8 +45,8 @@ CREATE WORKLOAD CLASSIFIER ExecReportsClassifier 
 ```sql
 CREATE WORKLOAD CLASSIFIER AdhocClassifier  
     WITH (WORKLOAD_GROUP = 'xlargerc'
-                   ,MEMBERNAME        = 'name'  
-                   ,IMPORTANCE        =  below_normal);  
+         ,MEMBERNAME     = 'name'  
+         ,IMPORTANCE     =  below_normal);  
 ```
 
 ## <a name="next-steps"></a>後續步驟

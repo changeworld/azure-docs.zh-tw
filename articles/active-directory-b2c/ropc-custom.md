@@ -3,20 +3,20 @@ title: 使用自訂原則設定資源擁有者密碼認證流程
 titleSuffix: Azure AD B2C
 description: 瞭解如何在 Azure Active Directory B2C 中使用自訂原則來設定資源擁有者密碼認證（ROPC）流程。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/27/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: df6f8ce22e8215a0727db7f69e0f6e5c3f5fc9e0
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 55b4750d2c601a4d3c66bcd8235a9718d6daaf9d
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917385"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186982"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>在 Azure Active Directory B2C 中使用自訂原則來設定資源擁有者密碼認證流程
 
@@ -26,7 +26,7 @@ ms.locfileid: "77917385"
 
 [!INCLUDE [active-directory-b2c-ropc-notes](../../includes/active-directory-b2c-ropc-notes.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 完成在 [Azure Active Directory B2C 中開始使用自訂原則](custom-policy-get-started.md)中的步驟。
 
@@ -256,7 +256,7 @@ ms.locfileid: "77917385"
 | username | `user-account` |
 | 密碼 | `password1` |
 | grant_type | 密碼 |
-| scope | openid `application-id` offline_access |
+| 範圍 | openid `application-id` offline_access |
 | client_id | `application-id` |
 | response_type | token id_token |
 

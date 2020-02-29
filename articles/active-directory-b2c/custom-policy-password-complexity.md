@@ -3,20 +3,20 @@ title: 使用自訂原則設定密碼複雜度
 titleSuffix: Azure AD B2C
 description: 如何在 Azure Active Directory B2C 中使用自訂原則來設定密碼複雜度需求。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/13/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d0caa029bd33da499db23f218b2392344c4585ec
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 2de1130e28b5071913e4cf3632c3fe4407597a98
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849067"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189135"
 ---
 # <a name="configure-password-complexity-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則來設定密碼複雜度
 
@@ -32,7 +32,7 @@ ms.locfileid: "76849067"
 
 1. 複製與入門套件一起下載的 *SignUpOrSignIn.xml* 檔案，並將其命名為 *SingUpOrSignInPasswordComplexity.xml*。
 2. 開啟 *SingUpOrSignInPasswordComplexity.xml* 檔案，然後將 **PolicyId** 和 **PublicPolicyUri** 變更成新的原則名稱。 例如 *B2C_1A_signup_signin_password_complexity*。
-3. 新增下列識別碼為 `newPassword` 和 `reenterPassword` 的 **ClaimType** 元素：
+3. 新增下列識別碼為 **和** 的 `newPassword`ClaimType`reenterPassword` 元素：
 
     ```XML
     <ClaimsSchema>

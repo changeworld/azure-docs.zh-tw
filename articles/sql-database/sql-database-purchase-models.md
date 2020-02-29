@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/01/2020
-ms.openlocfilehash: 0b2eafeec27cb92ccb191ec902e8bf1d581a3b4a
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 20c93d214195f8fe389f4982e1d8b10998c7057d
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587289"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192382"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>在 vCore 和 DTU 購買模型之間做選擇
 
@@ -102,7 +102,7 @@ VCore 為基礎的購買模型可讓您獨立選擇計算和儲存體資源、�
 
 ![週框方塊](./media/sql-database-what-is-a-dtu/bounding-box.png)
 
-Dtu 最適合用於瞭解針對不同計算大小和服務層級的 Azure SQL 資料庫所配置的相對資源。 例如：
+Dtu 最適合用於瞭解針對不同計算大小和服務層級的 Azure SQL 資料庫所配置的相對資源。 例如，
 
 - 藉由增加資料庫的計算大小來使 Dtu 加倍，等於讓該資料庫可用的資源集合加倍。
 - 具有 1750 Dtu 的高階服務層級 P11 資料庫，比具有5個 Dtu 的基本服務層資料庫，提供350x 更多 DTU 計算能力。  
@@ -143,11 +143,25 @@ Dtu 最適合用於瞭解針對不同計算大小和服務層級的 Azure SQL �
 
 集區非常適用于資源使用率較低的資料庫，而且使用量尖峰較少。 如需詳細資訊，請參閱[何時應該考慮 SQL Database 彈性集區？](sql-database-elastic-pool.md)。
 
+### <a name="hardware-generations-in-the-dtu-based-purchasing-model"></a>以 DTU 為基礎的購買模型中的硬體世代
+
+在以 DTU 為基礎的購買模型中，客戶無法選擇用於其資料庫的硬體世代。 雖然指定的資料庫在一段很長的時間（通常是多個月）仍會持續出現在特定的硬體上，但有某些事件可能會導致資料庫移至另一個硬體世代。
+
+例如，如果資料庫相應增加或減少至不同的服務目標，或是資料中心內的目前基礎結構已接近其容量限制，或目前使用的硬體正在進行中，則可以將它移至不同的硬體世代。因其生命週期結束而解除委任。
+
+如果將資料庫移至不同的硬體，工作負載效能可能會變更。 DTU 模型保證[dtu 基準測試](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-dtu#dtu-benchmark)工作負載的輸送量和回應時間，在資料庫移至不同的硬體世代時，會維持明顯相同，只要其服務目標（dtu 數目）維持不變即可。 
+
+不過，在 Azure SQL Database 中執行的大量客戶工作負載中，對相同服務目標使用不同硬體的影響可能更明顯。 不同的工作負載將受益于不同的硬體設定和功能。 因此，對於 DTU 基準測試以外的工作負載，如果資料庫從一個硬體世代移到另一個，則可能會看到效能差異。
+
+例如，對於網路延遲敏感的應用程式，在第5代硬體與第4代上的效能可能會因為使用第5代中的加速網路而看到較佳的效能，但使用密集讀取 IO 的應用程式可能會在第4代硬體與第5代上看到較佳的效能，因為第4代上每個核心比例的記憶體越高。
+
+若客戶的工作負載與硬體變更相關，或想要控制其資料庫的硬體世代選擇的客戶，則可以使用[vCore](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore)模型，在資料庫建立和調整期間選擇其慣用的硬體世代。 在 vCore 模型中，會針對[單一資料庫](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases)和[彈性](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-elastic-pools)集區記錄每個硬體產生的每個服務目標的資源限制。 如需 vCore 模型中硬體世代的詳細資訊，請參閱[硬體](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore#hardware-generations)世代。
+
 ## <a name="frequently-asked-questions-faqs"></a>常見問題集 (FAQ)
 
 ### <a name="do-i-need-to-take-my-application-offline-to-convert-from-a-dtu-based-service-tier-to-a-vcore-based-service-tier"></a>我是否需要讓應用程式離線，才能從以 DTU 為基礎的服務層級轉換成以 vCore 為基礎的服務層級？
 
-否。 您不需要讓應用程式離線。 新的服務層級提供簡單的線上轉換方法，類似于將資料庫從標準升級至高階服務層的現有程式，還有另一種方式。 您可以使用 [Azure 入口網站]、[PowerShell]、[Azure CLI]、[T-sql] 或 REST API 來開始這項轉換。 請參閱[管理單一資料庫](sql-database-single-database-scale.md)和[管理彈性集區](sql-database-elastic-pool.md)。
+No。 您不需要讓應用程式離線。 新的服務層級提供簡單的線上轉換方法，類似于將資料庫從標準升級至高階服務層的現有程式，還有另一種方式。 您可以使用 [Azure 入口網站]、[PowerShell]、[Azure CLI]、[T-sql] 或 REST API 來開始這項轉換。 請參閱[管理單一資料庫](sql-database-single-database-scale.md)和[管理彈性集區](sql-database-elastic-pool.md)。
 
 ### <a name="can-i-convert-a-database-from-a-service-tier-in-the-vcore-based-purchasing-model-to-a-service-tier-in-the-dtu-based-purchasing-model"></a>是否可以將資料庫從 vCore 為基礎的購買模型中的服務層級，轉換為以 DTU 為基礎的購買模型中的服務層級？
 

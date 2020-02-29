@@ -3,20 +3,20 @@ title: 使用者遷移方法
 titleSuffix: Azure AD B2C
 description: 使用大量匯入或無縫遷移方法，將使用者帳戶從另一個識別提供者遷移到 Azure AD B2C。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 759379d99bbd422c43998997be1d52ecbf34966d
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 90ef9402e0891915be4ed6bb89573eced546c59a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484278"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183137"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>將使用者遷移至 Azure AD B2C
 

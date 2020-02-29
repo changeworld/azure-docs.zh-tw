@@ -3,20 +3,20 @@ title: 使用自訂原則來設定密碼變更
 titleSuffix: Azure AD B2C
 description: 了解如何在 Azure Active Directory B2C 中使用自訂原則以讓使用者變更其密碼。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/13/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6bb4b762fead279bcc8492cb902e2059d7cfc68c
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 2c351f8a95110a32c53c68c5eb6095918578bc5b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848937"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189169"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則來設定密碼變更
 
@@ -30,7 +30,7 @@ ms.locfileid: "76848937"
 
 ## <a name="add-the-elements"></a>新增元素
 
-1. 開啟 TrustframeworkExtensions.xml 檔案，並將下列識別碼為 `oldPassword` 的 **ClaimType** 元素新增到 [ClaimsSchema](claimsschema.md) 元素：
+1. 開啟 TrustframeworkExtensions.xml 檔案，並將下列識別碼為 **的**ClaimType`oldPassword` 元素新增到 [ClaimsSchema](claimsschema.md) 元素：
 
     ```XML
     <BuildingBlocks>
@@ -123,7 +123,7 @@ ms.locfileid: "76848937"
 
     以您在先決條件教學課程中所建立 IdentityExperienceFramework 應用程式的應用程式識別碼取代 `IdentityExperienceFrameworkAppId`。 以您同樣先前所建立 ProxyIdentityExperienceFramework 應用程式的應用程式識別碼取代 `ProxyIdentityExperienceFrameworkAppId`。
 
-3. [UserJourney](userjourneys.md) 元素會定義使用者與應用程式進行互動時所採用的路徑。 新增 **UserJourney** 識別為 `PasswordChange` 的 **UserJourneys** 元素 (如果此元素不存在)：
+3. [UserJourney](userjourneys.md) 元素會定義使用者與應用程式進行互動時所採用的路徑。 新增 **UserJourney** 識別為 **的**UserJourneys`PasswordChange` 元素 (如果此元素不存在)：
 
     ```XML
     <UserJourneys>
@@ -154,7 +154,7 @@ ms.locfileid: "76848937"
 4. 儲存 *TrustFrameworkExtensions.xml* 原則檔案。
 5. 複製與入門套件一起下載的 *ProfileEdit.xml* 檔案，並將其命名為 *ProfileEditPasswordChange.xml*。
 6. 開啟新檔案，然後將 **PolicyId** 屬性更新成唯一值。 此值是您原則的名稱。 例如 *B2C_1A_profile_edit_password_change*。
-7. 將 `<DefaultUserJourney>` 中的 **ReferenceId**屬性修改成符合您所建立新使用者旅程圖的識別碼。 例如 *PasswordChange*。
+7. 將 **中的**ReferenceId`<DefaultUserJourney>`屬性修改成符合您所建立新使用者旅程圖的識別碼。 例如 *PasswordChange*。
 8. 儲存您的變更。
 
 您可以在[這裡](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/password-change)找到範例原則。

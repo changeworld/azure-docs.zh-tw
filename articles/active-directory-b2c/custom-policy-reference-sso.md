@@ -3,20 +3,20 @@ title: 使用自訂原則的單一登入會話管理
 titleSuffix: Azure AD B2C
 description: 了解如何在 Azure AD B2C 中使用自訂原則管理 SSO 工作階段。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/27/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b905591266b90e5bba83e7c74b27e7f6b3cab610
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: a64af5d2b19b05ec9a5eda97c43e278cdfb8b4ff
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77912540"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189101"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的單一登入工作階段管理
 
@@ -39,11 +39,11 @@ SSO 管理類別是使用技術設定檔的 `<UseTechnicalProfileForSessionManag
 
 ## <a name="input-claims"></a>輸入宣告
 
-`InputClaims` 元素是空的或不存在。 
+`InputClaims` 元素是空的或不存在。
 
 ## <a name="persisted-claims"></a>保存的宣告
 
-需要傳回給應用程式或後續步驟中的前置條件所使用的宣告，應該儲存在會話中，或藉由從目錄中的使用者設定檔讀取來增加。 使用持續性宣告可確保您的驗證旅程在遺失的宣告時不會失敗。 若要在工作階段中新增宣告，請使用技術設定檔的 `<PersistedClaims>` 項目。 使用提供者重新擴展工作階段時，會將持續性的宣告新增至宣告包。 
+需要傳回給應用程式或後續步驟中的前置條件所使用的宣告，應該儲存在會話中，或藉由從目錄中的使用者設定檔讀取來增加。 使用持續性宣告可確保您的驗證旅程在遺失的宣告時不會失敗。 若要在工作階段中新增宣告，請使用技術設定檔的 `<PersistedClaims>` 項目。 使用提供者重新擴展工作階段時，會將持續性的宣告新增至宣告包。
 
 ## <a name="output-claims"></a>輸出宣告
 
@@ -53,7 +53,7 @@ SSO 管理類別是使用技術設定檔的 `<UseTechnicalProfileForSessionManag
 
 ### <a name="noopssosessionprovider"></a>NoopSSOSessionProvider
 
-顧名思議，此提供者不會執行任何作業。 此提供者可以用於隱藏特定技術設定檔的 SSO 行為。 下列 `SM-Noop` 技術設定檔包含在[自訂原則入門套件](custom-policy-get-started.md#custom-policy-starter-pack)中。  
+顧名思議，此提供者不會執行任何作業。 此提供者可以用於隱藏特定技術設定檔的 SSO 行為。 下列 `SM-Noop` 技術設定檔包含在[自訂原則入門套件](custom-policy-get-started.md#custom-policy-starter-pack)中。
 
 ```XML
 <TechnicalProfile Id="SM-Noop">
@@ -64,7 +64,7 @@ SSO 管理類別是使用技術設定檔的 `<UseTechnicalProfileForSessionManag
 
 ### <a name="defaultssosessionprovider"></a>DefaultSSOSessionProvider
 
-此提供者可以用於儲存工作階段中的宣告。 此提供者通常是在用於管理本機帳戶的技術設定檔中進行參照。 下列 `SM-AAD` 技術設定檔包含在[自訂原則入門套件](custom-policy-get-started.md#custom-policy-starter-pack)中。 
+此提供者可以用於儲存工作階段中的宣告。 此提供者通常是在用於管理本機帳戶的技術設定檔中進行參照。 下列 `SM-AAD` 技術設定檔包含在[自訂原則入門套件](custom-policy-get-started.md#custom-policy-starter-pack)中。
 
 ```XML
 <TechnicalProfile Id="SM-AAD">
@@ -84,7 +84,7 @@ SSO 管理類別是使用技術設定檔的 `<UseTechnicalProfileForSessionManag
 </TechnicalProfile>
 ```
 
-下列 `SM-MFA` 技術設定檔包含在[自訂原則入門套件](custom-policy-get-started.md#custom-policy-starter-pack)`SocialAndLocalAccountsWithMfa`中。 此技術設定檔會管理多因素驗證會話。 
+下列 `SM-MFA` 技術設定檔包含在[自訂原則入門套件](custom-policy-get-started.md#custom-policy-starter-pack)`SocialAndLocalAccountsWithMfa`中。 此技術設定檔會管理多因素驗證會話。
 
 ```XML
 <TechnicalProfile Id="SM-MFA">
@@ -117,8 +117,8 @@ SSO 管理類別是使用技術設定檔的 `<UseTechnicalProfileForSessionManag
 ```
 
 #### <a name="metadata"></a>中繼資料
-        
-| 屬性 | 必要 | 描述|
+
+| 屬性 | 必要項 | 描述|
 | --- | --- | --- |
 | AlwaysFetchClaimsFromProvider | 否 | 目前未使用，可以忽略。 |
 
@@ -138,7 +138,7 @@ SSO 管理類別是使用技術設定檔的 `<UseTechnicalProfileForSessionManag
 ```
 
 使用提供者來儲存 B2C SAML 會話時，`IncludeSessionIndex` 和 `RegisterServiceProviders` 必須設定為 [`true`]。 SAML 工作階段登出需要 `SessionIndex` 和 `NameID` 才能完成。
- 
+
 [SAML 簽發者技術設定檔](connect-with-saml-service-providers.md)會使用下列 `SM-Saml-idp` 技術設定檔
 
 ```XML
@@ -148,8 +148,8 @@ SSO 管理類別是使用技術設定檔的 `<UseTechnicalProfileForSessionManag
 </TechnicalProfile>
 ```
 #### <a name="metadata"></a>中繼資料
-        
-| 屬性 | 必要 | 描述|
+
+| 屬性 | 必要項 | 描述|
 | --- | --- | --- |
 | IncludeSessionIndex | 否 | 指出應該儲存工作階段索引的提供者。 可能的值：`true` (預設) 或 `false`。|
 | RegisterServiceProviders | 否 | 指出提供者應該註冊所有已發行判斷提示的 SAML 服務提供者。 可能的值：`true` (預設) 或 `false`。|

@@ -3,20 +3,20 @@ title: 教學課程：自訂使用者介面
 titleSuffix: Azure AD B2C
 description: 瞭解如何使用 Azure 入口網站在 Azure Active Directory B2C 中自訂應用程式的使用者介面（UI）。
 services: B2C
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1b0ad7049375cb20d2daa0e6f920b680d03530a5
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: b2b2bc8dd4e60348553228b8b418df252a8c426a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840123"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186245"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>教學課程：在 Azure Active Directory B2C 中自訂使用者體驗的介面
 
@@ -71,11 +71,11 @@ ms.locfileid: "76840123"
 
     ![Azure 入口網站中 Azure Blob 儲存體的 CORS 設定頁面](./media/tutorial-customize-ui/enable-cors.png)
 
-5. 按一下 [檔案]。
+5. Haga clic en **Guardar**.
 
 ### <a name="create-the-customization-files"></a>建立自訂檔案
 
-若要自訂註冊體驗的 UI，您可以從建立簡單的 HTML 和 CSS 檔案開始。 您可以透過任何方式設定 HTML，但其中必須有識別碼為 `api` 的 **div** 元素。 例如： `<div id="api"></div>` 。 當頁面顯示時，Azure AD B2C 會將元素插入 `api` 容器。
+若要自訂註冊體驗的 UI，您可以從建立簡單的 HTML 和 CSS 檔案開始。 您可以透過任何方式設定 HTML，但其中必須有識別碼為 **的**div`api` 元素。 例如： `<div id="api"></div>` 。 當頁面顯示時，Azure AD B2C 會將元素插入 `api` 容器。
 
 1. 在本機資料夾中建立下列檔案，並確定您已將 `your-storage-account` 變更為儲存體帳戶名稱，以及將 `your-container` 變更為您建立的容器名稱。 例如： `https://store1.blob.core.windows.net/b2c/style.css` 。
 

@@ -1,22 +1,22 @@
 ---
 title: 工作負載管理
-description: 在 Azure SQL 資料倉儲中執行工作負載管理的指導方針。
+description: 在 Azure Synapse 分析中執行工作負載管理的指導方針。
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 01/13/2020
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 287ad5467f9f3aac7eb8c9d7c19ea15c380c6879
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.custom: azure-synapse
+ms.openlocfilehash: 14ea742a40afff8105560f1003655004687c7c9e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935419"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197652"
 ---
 # <a name="what-is-workload-management"></a>什麼是工作負載管理？
 
@@ -36,11 +36,11 @@ ms.locfileid: "76935419"
 
 
 ## <a name="workload-management-concepts"></a>工作負載管理概念
-在過去，您可以透過[資源類別](resource-classes-for-workload-management.md)來管理 SQL 資料倉儲的查詢效能。  允許根據角色成員資格將記憶體指派給查詢的資源類別。  資源類別的主要挑戰在於，一旦設定之後，就不會有控制工作負載的治理或能力。  
+在過去，針對 Azure Synapse 中的 SQL 分析，您可以透過[資源類別](resource-classes-for-workload-management.md)來管理查詢效能。  允許根據角色成員資格將記憶體指派給查詢的資源類別。  資源類別的主要挑戰在於，一旦設定之後，就不會有控制工作負載的治理或能力。  
 
 例如，將臨機操作使用者角色成員資格授與 smallrc，可讓該使用者耗用系統上100% 的記憶體。  使用資源類別時，沒有任何方法可以保留並確保資源可用於重要的工作負載。
 
-SQL 資料倉儲上的工作負載管理包含三個高階概念：[工作負載分類](sql-data-warehouse-workload-classification.md)、[工作負載重要性](sql-data-warehouse-workload-importance.md)和[工作負載隔離](sql-data-warehouse-workload-isolation.md)。  這些功能可讓您更充分掌控您的工作負載如何利用系統資源。
+Azure Synapse 中的 SQL 分析工作負載管理包含三個高階概念：[工作負載分類](sql-data-warehouse-workload-classification.md)、[工作負載重要性](sql-data-warehouse-workload-importance.md)和[工作負載隔離](sql-data-warehouse-workload-isolation.md)。  這些功能可讓您更充分掌控您的工作負載如何利用系統資源。
 
 工作負載分類是將要求指派給工作負載群組和設定重要性層級的概念。  在過去，此指派是透過使用[sp_addrolemember](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management#change-a-users-resource-class)的角色成員資格來完成。  這現在可以透過 [[建立工作負載] 分類](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql)來完成。  分類功能提供一組更豐富的選項，例如標籤、會話和時間來分類要求。
 

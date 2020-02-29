@@ -6,22 +6,23 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mbaldwin
 Customer intent: As a key vault administrator, I want to learn the options available to secure my vaults
-ms.openlocfilehash: 74dac926ea67b9f6a31993a72dc6331aa48155b7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 3cc5cb68f430ac8e5070b9c8c4a1aa0c28639311
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981560"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197771"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault 安全性
 
 您需要在雲端中保護加密金鑰和秘密，例如憑證、連接字串和密碼，以使用 Azure Key Vault。 由於您要儲存機密和商務關鍵資料，因此您必須採取步驟，將保存庫和其中所儲存之資料的安全性最大化。 本文將討論您在設計 Azure Key Vault 安全性時，應該考慮的一些概念。
 
-## <a name="identity-and-access-management"></a>身分識別與存取管理
+## <a name="identity-and-access-management"></a>身分識別和存取管理
 
 當您在 Azure 訂用帳戶中建立金鑰保存庫時，它會自動與該訂用帳戶的 Azure AD 租用戶建立關聯。 嘗試從保存庫管理或抓取內容的任何人，都必須透過 Azure AD 進行驗證。
 

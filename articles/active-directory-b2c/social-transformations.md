@@ -3,20 +3,20 @@ title: 自訂原則的社交帳戶宣告轉換範例
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C 的 Identity Experience Framework （IEF）架構的社交帳戶宣告轉換範例。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: acf358b530c61dcbac38faf92e2ba672a7d4abef
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: cb713651aca266ab2546ff26c3cd0175a4cbc289
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484378"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183749"
 ---
 # <a name="social-accounts-claims-transformations"></a>社交帳戶宣告轉換
 
@@ -41,11 +41,11 @@ ms.locfileid: "77484378"
 
 建立使用者 alternativeSecurityId 屬性的 JSON 表示法，該屬性可用於對 Azure Active Directory 進行呼叫。 如需詳細資訊，請參閱[AlternativeSecurityId](https://docs.microsoft.com/graph/api/resources/alternativesecurityid)架構。
 
-| Item | TransformationClaimType | 資料類型 | 注意 |
+| 項目 | TransformationClaimType | 資料型別 | 注意事項 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | 索引鍵 | 字串 | 此 ClaimType 可指定社交識別提供者所使用的唯一使用者識別碼。 |
-| InputClaim | identityProvider | 字串 | 此 ClaimType 可指定社交帳戶識別提供者名稱，例如 facebook.com。 |
-| OutputClaim | alternativeSecurityId | 字串 | 叫用此 ClaimsTransformation 之後所產生的 ClaimType。 包含社交帳戶使用者的身分識別相關資訊。 **issuer** 是 `identityProvider` 宣告的值。 **issuerUserId** 是 `key` base64 格式的值。 |
+| InputClaim | 索引鍵 | string | 此 ClaimType 可指定社交識別提供者所使用的唯一使用者識別碼。 |
+| InputClaim | identityProvider | string | 此 ClaimType 可指定社交帳戶識別提供者名稱，例如 facebook.com。 |
+| OutputClaim | alternativeSecurityId | string | 叫用此 ClaimsTransformation 之後所產生的 ClaimType。 包含社交帳戶使用者的身分識別相關資訊。 **issuer** 是 `identityProvider` 宣告的值。 **issuerUserId** 是 `key` base64 格式的值。 |
 
 使用此宣告轉換以產生 `alternativeSecurityId` ClaimType。 該宣告類型由所有社交識別提供者技術設定檔使用，例如 `Facebook-OAUTH`。 下列宣告轉換會收到使用者社交帳戶識別碼與識別提供者名稱。 此技術設定檔的輸出是可用於 Azure Active Directory 服務的 JSON 字串格式。
 
@@ -73,9 +73,9 @@ ms.locfileid: "77484378"
 
 將 `AlternativeSecurityId` 加入 `alternativeSecurityIdCollection` 宣告。
 
-| Item | TransformationClaimType | 資料類型 | 注意 |
+| 項目 | TransformationClaimType | 資料型別 | 注意事項 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | item | 字串 | 要新增至輸出宣告的 ClaimType。 |
+| InputClaim | 項目 | string | 要新增至輸出宣告的 ClaimType。 |
 | InputClaim | collection | alternativeSecurityIdCollection | 宣告轉換使用的 ClaimTypes (如果在原則中可用)。 如果已提供，則宣告轉換會在集合結尾加入 `item`。 |
 | OutputClaim | collection | alternativeSecurityIdCollection | 叫用此 ClaimsTransformation 之後所產生的 ClaimType。 新集合包含來自輸入 `collection` 和 `item` 的項目。 |
 
@@ -110,7 +110,7 @@ ms.locfileid: "77484378"
 
 將 **alternativeSecurityIdCollection** 宣告的簽發者清單傳回至新的 **stringCollection** 宣告。
 
-| Item | TransformationClaimType | 資料類型 | 注意 |
+| 項目 | TransformationClaimType | 資料型別 | 注意事項 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | alternativeSecurityIdCollection | alternativeSecurityIdCollection | 用於取得識別提供者 (簽發者) 清單的 ClaimType。 |
 | OutputClaim | identityProvidersCollection | stringCollection | 叫用此 ClaimsTransformation 之後所產生的 ClaimType。 與 alternativeSecurityIdCollection 輸入宣告相關聯的識別提供者清單 |
@@ -137,9 +137,9 @@ ms.locfileid: "77484378"
 
 將 **AlternativeSecurityId** 從 **alternativeSecurityIdCollection** 宣告中移除。
 
-| Item | TransformationClaimType | 資料類型 | 注意 |
+| 項目 | TransformationClaimType | 資料型別 | 注意事項 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | identityProvider | 字串 | 包含要從集合中移除之識別提供者名稱的 ClaimType。 |
+| InputClaim | identityProvider | string | 包含要從集合中移除之識別提供者名稱的 ClaimType。 |
 | InputClaim | collection | alternativeSecurityIdCollection | 宣告轉換所使用的 ClaimType。 宣告轉換會將 identityProvider 從集合中移除。 |
 | OutputClaim | collection | alternativeSecurityIdCollection | 叫用此 ClaimsTransformation 之後所產生的 ClaimType。 從集合中移除 identityProvider 之後的新集合。 |
 

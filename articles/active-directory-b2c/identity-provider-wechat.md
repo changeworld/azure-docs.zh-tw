@@ -3,20 +3,20 @@ title: 設定註冊，並以 WeChat 帳戶登入
 titleSuffix: Azure AD B2C
 description: 使用 Azure Active Directory B2C，讓具有 WeChat 帳戶的客戶得以註冊和登入您的應用程式。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7cbc41247d7b99eb63730ae4326808e64c663e8f
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c53210939358255b20d0e976df9c4bff88580a80
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849522"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184429"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-wechat-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定註冊，並以 WeChat 帳戶登入
 
@@ -31,7 +31,7 @@ ms.locfileid: "76849522"
 1. 使用您的 WeChat 認證登入 [https://open.weixin.qq.com/](https://open.weixin.qq.com/)。
 1. 選取 [管理中心]\(管理中心\)。
 1. 遵循註冊新應用程式的步驟。
-1. 在 [授权回调域]\(回呼 URL\) 中，輸入 `https://your-tenant_name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 例如，如果您的租用戶名稱是 contoso，請將 URL 設定為 `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`。
+1. 在 [授权回调域]`https://your-tenant_name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` **\(回呼 URL\) 中，輸入** 。 例如，如果您的租用戶名稱是 contoso，請將 URL 設定為 `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`。
 1. 複製**應用程式識別碼**和**應用程式金鑰**。 您需要這些值，才能將識別提供者新增至您的租用戶。
 
 ## <a name="configure-wechat-as-an-identity-provider-in-your-tenant"></a>在租用戶中將 WeChat 設為識別提供者

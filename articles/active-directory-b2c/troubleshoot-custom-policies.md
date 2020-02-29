@@ -2,20 +2,20 @@
 title: 針對 Azure Active Directory B2C 中的自訂原則進行疑難排解
 description: 了解在 Azure Active Directory B2C 中使用自訂原則時，解決錯誤的方法。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/13/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b9a0e370643d7f2a19e6ca1629b6b522bfa396b9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 2f65e98cec04991fe9edef1b81bcb3ecc3d93d76
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848131"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186350"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>針對 Azure AD B2C 自訂原則和身分識別體驗架構進行疑難排解
 
@@ -64,7 +64,7 @@ ms.locfileid: "76848131"
 
 * 若要追蹤用戶端瀏覽器和 Azure AD B2C 之間的訊息交換，請使用 [Fiddler](https://www.telerik.com/fiddler)。 它可協助您了解使用者旅程圖在協調流程步驟中的何處失敗。
 
-* 在[開發模式](troubleshoot-with-application-insights.md)中，請使用 **Application Insights** 來追蹤身分識別體驗架構使用者旅程圖的活動。 在**開發模式**中，您可以觀察 Identity Experience Framework 與技術設定檔所定義的各種宣告提供者之間的宣告交換，例如身分識別提供者、API 服務、Azure AD B2C 使用者目錄，以及其他服務，例如 Azure 多重要素驗證。
+* 在**開發模式**中，請使用 [Application Insights](troubleshoot-with-application-insights.md) 來追蹤身分識別體驗架構使用者旅程圖的活動。 在**開發模式**中，您可以觀察 Identity Experience Framework 與技術設定檔所定義的各種宣告提供者之間的宣告交換，例如身分識別提供者、API 服務、Azure AD B2C 使用者目錄，以及其他服務，例如 Azure 多重要素驗證。
 
 ## <a name="recommended-practices"></a>建議的做法
 

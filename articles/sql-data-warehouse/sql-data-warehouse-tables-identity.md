@@ -1,6 +1,6 @@
 ---
 title: 使用身分識別建立代理金鑰
-description: 在 Azure SQL 資料倉儲中的資料表上，使用 IDENTITY 屬性建立 Surrogate 索引鍵的建議與範例。
+description: 使用 IDENTITY 屬性在 SQL 分析的資料表上建立代理索引鍵的建議和範例。
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,25 +10,25 @@ ms.subservice: development
 ms.date: 04/30/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 0ee15b975b5513077b26cceeb80ea3fb8c02456b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: c29b83b3473b8a4224587195587feacf834f2d72
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692479"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199422"
 ---
-# <a name="using-identity-to-create-surrogate-keys-in-azure-sql-data-warehouse"></a>在 Azure SQL 資料倉儲中，使用 IDENTITY 建立 Surrogate 索引鍵
+# <a name="using-identity-to-create-surrogate-keys-in-sql-analytics"></a>使用身分識別在 SQL 分析中建立代理金鑰
 
-在 Azure SQL 資料倉儲中的資料表上，使用 IDENTITY 屬性建立 Surrogate 索引鍵的建議與範例。
+使用 IDENTITY 屬性在 SQL 分析的資料表上建立代理索引鍵的建議和範例。
 
 ## <a name="what-is-a-surrogate-key"></a>什麼是代理鍵
 
-資料表上的 Surrogate 索引鍵是每個資料列都有唯一識別碼的資料行。 索引鍵並非從資料表資料產生。 資料製造模型者在設計資料倉儲模型時，都喜歡在其資料表上建立 Surrogate 索引鍵。 您可以使用 IDENTITY 屬性，在不影響載入效能的情況下，以簡單又有效的方式達成此目標。  
+資料表上的 Surrogate 索引鍵是每個資料列都有唯一識別碼的資料行。 索引鍵並非從資料表資料產生。 在設計 SQL 分析模型時，資料建模者喜歡在其資料表上建立代理索引鍵。 您可以使用 IDENTITY 屬性，在不影響載入效能的情況下，以簡單又有效的方式達成此目標。  
 
 ## <a name="creating-a-table-with-an-identity-column"></a>建立具有 IDENTITY 資料行的資料表
 
-IDENTITY 屬性的設計，可在不影響載入效能的情況下，於資料倉儲的所有發佈上進行相應放大。 因此，IDENTITY 的實作便是為了達成這些目標。
+IDENTITY 屬性是設計用來在 SQL 分析資料庫中的所有散發中相應放大，而不會影響載入效能。 因此，IDENTITY 的實作便是為了達成這些目標。
 
 您在初次建立資料表時，可以使用類似下列陳述式的語法，將資料表定義為具有 IDENTITY 屬性：
 
@@ -50,7 +50,7 @@ WITH
 
 ### <a name="allocation-of-values"></a>值的配置
 
-IDENTITY 屬性並不會保證 Surrogate 值的配置順序，這會反映出 SQL Server 和 Azure SQL Database 行為。 不過，在 Azure SQL 資料倉儲中，此保證的不存在則更為明顯。
+IDENTITY 屬性並不會保證 Surrogate 值的配置順序，這會反映出 SQL Server 和 Azure SQL Database 行為。 不過，在 SQL 分析中，缺少保證會比較明顯。
 
 下列範例將做出說明：
 
@@ -88,11 +88,11 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 將現有的 IDENTITY 資料行選取至新的資料表時，新的資料行會繼承 IDENTITY 屬性，除非下列其中一項條件成立：
 
 - SELECT 陳述式包含聯結。
-- 多個 SELECT 陳述式使用 UNION 進行聯結。
+- 利用 UNION 來聯結多個 SELECT 陳述式。
 - IDENTITY 資料行在 SELECT 清單中列出多次。
 - IDENTITY 資料行是運算式的一部分。
 
-如果這些條件的其中之一成立，資料行會建立為「非 NULL」，而不是繼承 IDENTITY 屬性。
+如果其中任何一個狀況成立，都會將資料行建立成 NOT NULL，而不是繼承 IDENTITY 屬性。
 
 ### <a name="create-table-as-select"></a>CREATE TABLE AS SELECT
 
@@ -100,7 +100,7 @@ CREATE TABLE AS SELECT (CTAS) 會遵循針對 SELECT..INTO 記錄的相同 SQL S
 
 ## <a name="explicitly-inserting-values-into-an-identity-column"></a>明確地將值插入 IDENTITY 資料行
 
-SQL 資料倉儲支援 `SET IDENTITY_INSERT <your table> ON|OFF` 語法。 您可以使用此語法來明確地將值插入 IDENTITY 資料行。
+SQL 分析支援 `SET IDENTITY_INSERT <your table> ON|OFF` 語法。 您可以使用此語法來明確地將值插入 IDENTITY 資料行。
 
 許多資料製造模型者喜歡在其維度的特定資料列中使用預先定義的負數值。 其中一個範例為 -1 或「未知的成員」資料列。
 
@@ -161,7 +161,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 > 目前在使用 IDENTITY 資料行將資料載入資料表時，並無法使用 `CREATE TABLE AS SELECT`。
 >
 
-如需載入資料的詳細資訊，請參閱[設計 Azure SQL 資料倉儲的擷取、載入及轉換 (ELT)](design-elt-data-loading.md) 和[載入的最佳做法](guidance-for-loading-data.md)。
+如需載入資料的詳細資訊，請參閱[設計 SQL 分析的解壓縮、載入和轉換（ELT）](design-elt-data-loading.md)和[載入最佳做法](guidance-for-loading-data.md)。
 
 ## <a name="system-views"></a>系統檢視表
 
@@ -195,7 +195,7 @@ AND     tb.name = 'T1'
 - 資料行也是散發索引鍵時
 - 資料表為外部資料表時
 
-SQL 資料倉儲中不支援下列相關函式：
+SQL 分析中不支援下列相關功能：
 
 - [IDENTITY()](/sql/t-sql/functions/identity-function-transact-sql)
 - [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql)

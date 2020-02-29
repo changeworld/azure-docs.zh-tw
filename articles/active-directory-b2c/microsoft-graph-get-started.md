@@ -3,20 +3,20 @@ title: 使用 Microsoft Graph 管理資源
 titleSuffix: Azure AD B2C
 description: 藉由註冊已授與所需圖形 API 許可權的應用程式，來準備使用 Microsoft Graph 管理 Azure AD B2C 資源。
 services: B2C
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bcddcf051e73381af35ca40e22c443c7b9ae30a7
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 32117d4bfcf0c0af94eced095b94ab0c1b6f88af
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77492938"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184332"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>使用 Microsoft Graph 管理 Azure AD B2C
 

@@ -13,82 +13,31 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 0d61ad33b97b97c3a45334704544d72809e56848
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 5a65982c5c13eb4e4273efcfd8d14910b0f35572
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715265"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197142"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>標準 Load Balancer 和可用性區域
 
 Azure Standard Load Balancer 支援[可用性區域](../availability-zones/az-overview.md)案例。 您可以使用 Standard Load Balancer，藉由將資源與區域進行對齊，並將它們分散到不同區域，以將您的端對端案例中的可用性優化。  請參閱[可用性區域](../availability-zones/az-overview.md)，以取得可用性區域、目前支援可用性區域的區域，以及其他相關概念和產品的指引。 可用性區域與 Standard Load Balancer 結合，是一種大規模且彈性的功能集，可以建立許多不同的案例。  請檢閱本文以了解這些[概念](#concepts)，以及基本案例的[設計指引](#design)。
 
->[!IMPORTANT]
->請參閱相關主題的[可用性區域](../availability-zones/az-overview.md)，包括任何區域特定資訊。
-
 ## <a name="concepts"></a>適用於 Load Balancer 的可用性區域概念
 
-Load Balancer 資源與實際的基礎結構之間沒有直接關聯性；建立 Load Balancer 並不會建立執行個體。 Load Balancer 資源是一種物件，而您可以在其中表示 Azure 應如何對其預先建置的多租用戶基礎結構進行設計程式，以達到您想要建立的案例。  這在可用性區域的內容中很重要，因為單一 Load Balancer 資源可以控制多個可用性區域中的基礎結構程式設計，而區域冗余服務會從客戶的觀點呈現為一個資源。  
-
-Load Balancer 資源本身是區域的，且絕不具區域性。  VNet 和子網路則一律是區域的，且絕不具區域性。 您可以設定的資料細微性會受到前端、規則和後端集區定義的每個設定所限制。
-
+Load Balancer 資源本身是區域的，且絕不具區域性。 您可以設定的資料細微性會受到前端、規則和後端集區定義的每個設定所限制。
 在可用性區域的內容中，Load Balancer 規則的行為和屬性會描述為區域多餘或區域性。  區域備援和區域性說明屬性的區域性。  在 Load Balancer 的內容中，區域冗余一律表示*多個區域*，而區域性則表示將服務隔離至*單一區域*。
-
 公用和內部的 Load Balancer 均支援區域備援和區域性案例，且兩者都可視需要在區域之間進行流量導向 (「跨區域負載平衡」)。 
 
 ### <a name="frontend"></a>前端
 
 Load Balancer 前端是一種前端 IP 設定，它會參考虛擬網路資源子網內的公用 IP 位址資源或私人 IP 位址。  它會構成服務公開所在的負載平衡端點。
+Load Balancer 資源可以包含同時具有區域性和區域冗余前端的規則。 當公用 IP 資源或私人 IP 位址已保證為區域時，區域性（或缺乏）無法變動。  如果您想要變更或省略公用 IP 或私人 IP 位址前端的區域性，您必須在適當的區域中重新建立公用 IP。  可用性區域不會變更多個前端的條件約束，請參閱[Load Balancer 的多個前端](load-balancer-multivip-overview.md)，以取得這項功能的詳細資料。
 
-Load Balancer 資源可以包含同時具有區域性和區域冗余前端的規則。 
+#### <a name="zone-redundant"></a>區域多餘 
 
-當公用 IP 資源或私人 IP 位址已保證為區域時，區域性（或缺乏）無法變動。  如果您想要變更或省略公用 IP 或私人 IP 位址前端的區域性，您必須在適當的區域中重新建立公用 IP。  可用性區域不會變更多個前端的條件約束，請參閱[Load Balancer 的多個前端](load-balancer-multivip-overview.md)，以取得這項功能的詳細資料。
-
-#### <a name="zone-redundant-by-default"></a>預設具有區域備援功能
-
-在具有可用性區域的區域中，Standard Load Balancer 前端預設為區域多餘的。  區域冗余表示區域中的多個可用性區域，會同時使用單一 IP 位址來提供所有的輸入或輸出流量。 您不需要進行 DNS 備援配置。 單一前端 IP 位址可能會存活區域失敗，而且可以用來觸及所有（不受影響的）後端集區成員，而不論該區域。 一或多個可用性區域可能會失敗，而且只要區域中的一個區域維持良好狀況，資料路徑就會不受。 前端的單一 IP 位址會由多個可用性區域中的多個獨立基礎結構部署同時提供服務。  這並不表示表示資料路徑，但任何重試或重新建立作業將會在不受區域失敗影響的其他區域中成功。   
-
-下列摘要說明如何定義公用 IP，以用於您的公用 Standard Load Balancer 的區域多餘公用 IP 位址。 如果您在組態中使用現有的 Resource Manager 範本，請將 **sku** 區段新增到這些範本。
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/publicIPAddresses",
-            "name": "public_ip_standard",
-            "location": "region",
-            "sku":
-            {
-                "name": "Standard"
-            },
-```
-
-下列摘要說明如何為您的內部 Standard Load Balancer 定義區域多餘的前端 IP 位址。 如果您在組態中使用現有的 Resource Manager 範本，請將 **sku** 區段新增到這些範本。
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/loadBalancers",
-            "name": "load_balancer_standard",
-            "location": "region",
-            "sku":
-            {
-                "name": "Standard"
-            },
-            "properties": {
-                "frontendIPConfigurations": [
-                    {
-                        "name": "zone_redundant_frontend",
-                        "properties": {
-                            "subnet": {
-                                "Id": "[variables('subnetRef')]"
-                            },
-                            "privateIPAddress": "10.0.0.6",
-                            "privateIPAllocationMethod": "Static"
-                        }
-                    },
-                ],
-```
-
-前面的摘錄不是完整的範本，而是為了示範如何表達可用性區域屬性。  您必須將這些語句併入您的範本中。
+在具有可用性區域的區域中，Standard Load Balancer 前端可以是區域多餘的。  區域冗余表示區域中的多個可用性區域，會同時使用單一 IP 位址來提供所有的輸入或輸出流量。 您不需要進行 DNS 備援配置。 單一前端 IP 位址可能會存活區域失敗，而且可以用來觸及所有（不受影響的）後端集區成員，而不論該區域。 一或多個可用性區域可能會失敗，而且只要區域中的一個區域維持良好狀況，資料路徑就會不受。 前端的單一 IP 位址會由多個可用性區域中的多個獨立基礎結構部署同時提供服務。  這並不表示表示資料路徑，但任何重試或重新建立作業將會在不受區域失敗影響的其他區域中成功。   
 
 #### <a name="optional-zone-isolation"></a>選擇性區域隔離
 
@@ -101,49 +50,6 @@ Load Balancer 資源可以包含同時具有區域性和區域冗余前端的規
 針對公用 Load Balancer 前端，您可以將*區域*參數新增至個別規則所使用的前端 IP 設定所參考的公用 ip 資源。
 
 對於內部 Load Balancer 前端，請將*區域*參數新增至內部 Load Balancer 前端 IP 組態。 區域性前端會使 Load Balancer 保證子網路中的某個 IP 位址屬於特定區域。
-
-下列摘要說明如何定義可用性區域1中的區域性標準公用 IP 位址。 如果您在組態中使用現有的 Resource Manager 範本，請將 **sku** 區段新增到這些範本。
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/publicIPAddresses",
-            "name": "public_ip_standard",
-            "location": "region",
-            "zones": [ "1" ],
-            "sku":
-            {
-                "name": "Standard"
-            },
-```
-
-下列摘要說明如何在可用性區域1中定義內部 Standard Load Balancer 前端。 如果您在組態中使用現有的 Resource Manager 範本，請將 **sku** 區段新增到這些範本。 此外，也請定義子資源之前端 IP 組態中的 **zones** 屬性。
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/loadBalancers",
-            "name": "load_balancer_standard",
-            "location": "region",
-            "sku":
-            {
-                "name": "Standard"
-            },
-            "properties": {
-                "frontendIPConfigurations": [
-                    {
-                        "name": "zonal_frontend_in_az1",
-                        "zones": [ "1" ],
-                        "properties": {
-                            "subnet": {
-                                "Id": "[variables('subnetRef')]"
-                            },
-                            "privateIPAddress": "10.0.0.6",
-                            "privateIPAllocationMethod": "Static"
-                        }
-                    },
-                ],
-```
-
-前面的摘錄不是完整的範本，而是為了示範如何表達可用性區域屬性。  您必須將這些語句併入您的範本中。
 
 ### <a name="cross-zone-load-balancing"></a>跨區域負載平衡
 
@@ -201,14 +107,6 @@ Load Balancer 可簡化以單一 IP 作為區域備援前端的作業。 區域�
   - 區域回復時，您的應用程式了解如何安全地收斂嗎？
 
 請參閱[Azure 雲端設計模式](https://docs.microsoft.com/azure/architecture/patterns/)，以改善應用程式對失敗案例的復原能力。
-
-### <a name="zonalityguidance"></a>區域備援與區域性的比較
-
-區域冗余可以提供簡單區域的選項，並使用與服務的單一 IP 位址相同的時間彈性選項。  複雜性也可因而降低。  區域備援也具有跨區域的行動性，並可以安全地用於任何區域中的資源。  此外，它會在沒有可用性區域的區域中進行未來的證明，這可能會在區域取得可用性區域之後，限制所需的變更。  區域冗余 IP 位址或前端的設定語法會在任何區域中成功，包括沒有可用性區域的位置：未在資源的區域：屬性中指定區域。
-
-區域性可以為區域提供明確的保證，並明確地與區域的健康情況共用 fate。 如果您的連結資源是相同區域中的區域性虛擬機器，則建立具有區域 IP 位址前端或區域性內部 Load Balancer 前端的 Load Balancer 規則可能是理想的做法。  或者，您的應用程式可能需要事先知道資源的所在區域，而您想要明確瞭解個別區域中的可用性。  您可以選擇將端對端服務的多個區域性前端分散公開於各區域間 (也就是，每個區域各有多個區域性虛擬機器擴展集的區域性前端)。  如果您的區域性前端是公用 IP 位址，您可以透過 [Traffic Manager](../traffic-manager/traffic-manager-overview.md) 使用這幾個區域性前端來公開您的服務。  或者，您可以使用多個區域性前端透過第三方監視解決方案取得個別區域的健康情況和效能深入資訊，並使用區域備援前端公開整體的服務。 您僅應為區域性資源提供與相同區域對應的區域性前端，並避免將可能有害的跨區域案例用於區域性資源。  只有存在可用性區域的區域中才會有區域性資源。
-
-在未了解服務架構的情況下，並沒有通則可說明哪個選擇較為理想。  請參閱[Azure 雲端設計模式](https://docs.microsoft.com/azure/architecture/patterns/)，以改善應用程式對失敗案例的復原能力。
 
 ## <a name="next-steps"></a>後續步驟
 - 深入了解[可用性區域](../availability-zones/az-overview.md)

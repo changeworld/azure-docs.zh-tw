@@ -3,20 +3,20 @@ title: 使用自訂原則進行手機註冊和登入（預覽）
 titleSuffix: Azure AD B2C
 description: 使用 Azure Active Directory B2C 中的自訂原則，將文字訊息中的單次密碼（OTP）傳送給應用程式使用者的手機。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 50e7d66fef67e2728c95790947393de8d58398c2
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: eadac0e973b361b1fdee63dcc9cfa848a0b2bacb
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77647520"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183953"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c-preview"></a>在 Azure AD B2C （預覽）中使用自訂原則設定電話註冊和登入
 
@@ -26,11 +26,11 @@ Azure Active Directory B2C （Azure AD B2C）中的電話註冊和登入可讓�
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
-## <a name="pricing"></a>價格
+## <a name="pricing"></a>Pricing
 
 單次密碼會使用 SMS 文字訊息傳送給您的使用者，而且您可能會針對每個傳送的訊息收費。 如需定價資訊，請參閱[Azure Active Directory B2C 定價](https://azure.microsoft.com/pricing/details/active-directory-b2c/)的**個別費用**一節。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 在設定 OTP 之前，您必須先準備好下列資源。
 
@@ -86,7 +86,7 @@ Azure Active Directory B2C （Azure AD B2C）中的電話註冊和登入可讓�
 GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+{phone number}' and c/issuer eq '{tenant name}.onmicrosoft.com')
 ```
 
-例如：
+例如，
 
 ```http
 GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+450334567890' and c/issuer eq 'contosob2c.onmicrosoft.com')
