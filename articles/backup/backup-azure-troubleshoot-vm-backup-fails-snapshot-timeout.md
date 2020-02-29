@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 0a4d7f152e555ed89bd0a6aee0a7bc83b9815492
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 1ed0ce94074e3d0ed03c0a0dc4c276d71da7059b
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77469131"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921006"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>針對 Azure 備份失敗進行疑難排解：與代理程式或延伸模組相關的問題
 
@@ -23,19 +23,19 @@ ms.locfileid: "77469131"
 **錯誤碼**：UserErrorGuestAgentStatusUnavailable <br>
 **錯誤訊息**：VM 代理程式無法與 Azure 備份通訊<br>
 
-Azure VM 代理程式可能已停止、過期、處於不一致的狀態，或未安裝，並導致 Azure 備份服務觸發快照集。
+Azure VM 代理程式可能已停止、過期、處於不一致的狀態，或未安裝。 這些狀態會防止 Azure 備份服務觸發快照集。
 
-- **開啟 Azure 入口網站 > VM > 設定 >** [內容]**分頁，>** 確認 VM**狀態**為 [執行中] 且**代理程式狀態**為 [**就緒**]。 如果 VM 代理程式已停止或處於不一致的狀態，請重新開機代理程式<br>
+- **開啟 Azure 入口網站 > vm > 設定 > [內容] 窗格**，> 確定 VM**狀態**為 [執行中] **，且** **代理程式狀態**為 [**就緒**]。 如果 VM 代理程式已停止或處於不一致的狀態，請重新開機代理程式<br>
   - 針對 Windows Vm，請遵循下列[步驟](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)來重新開機來賓代理程式。<br>
   - 針對 Linux Vm，請遵循下列[步驟](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)來重新開機來賓代理程式。
-- **開啟 Azure 入口網站 > VM > 設定 > 延伸**模組，> 確保所有延伸模組都處於布建**成功**狀態。 如果沒有，請遵循下列[步驟](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state)來解決問題。
+- **開啟 Azure 入口網站 > VM > 設定 > 延伸**模組 > 確保所有延伸模組都處於布建**成功**狀態。 如果沒有，請遵循下列[步驟](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state)來解決問題。
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError - 無法與 VM 代理程式通訊來取得快照集狀態
 
 **錯誤碼**：GuestAgentSnapshotTaskStatusError<br>
 **錯誤訊息**：無法與 VM 代理程式通訊來取得快照集狀態 <br>
 
-在註冊及排程 Azure 備份服務的 VM 之後，備份就會藉由與 VM 備份擴充功能通訊以取得時間點快照，來起始作業。 下列任一種狀況都可能會阻止觸發快照集。 如果未觸發快照集，可能會發生備份失敗。 請依照列出的順序完成下列疑難排解步驟，然後重試作業：  
+在您註冊並排程 Azure 備份服務的 VM 之後，備份會藉由與 VM 備份擴充功能通訊來啟動作業，以取得時間點快照集。 下列任一種狀況都可能會阻止觸發快照集。 如果未觸發快照集，可能會發生備份失敗。 請依照列出的順序完成下列疑難排解步驟，然後重試作業：  
 
 **原因 1：[代理程式已安裝到 VM 中，但沒有回應 (適用於 Windows VM)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
 
@@ -52,9 +52,9 @@ Azure VM 代理程式可能已停止、過期、處於不一致的狀態，或�
 **錯誤碼**： UserErrorVmProvisioningStateFailed<br>
 **錯誤訊息**： VM 處於失敗的布建狀態<br>
 
-當其中一個延伸模組失敗使 VM 進入「布建失敗」狀態時，就會發生此錯誤。<br>**開啟 Azure 入口網站 > VM > 設定 > > 延伸**模組的 [擴充功能] 狀態，並檢查所有延伸模組是否處於布建**成功**狀態。
+當其中一個延伸模組失敗使 VM 進入「布建失敗」狀態時，就會發生此錯誤。<br>**開啟 Azure 入口網站 > VM > 設定 > >** 延伸模組的狀態，並檢查所有延伸模組是否處於布建**成功**狀態。
 
-- 如果 VMSnapshot 延伸模組處於失敗狀態，請以滑鼠右鍵按一下失敗的延伸模組，並將它移除。 觸發隨選備份，這會重新安裝擴充功能並執行備份作業。  <br>
+- 如果 VMSnapshot 延伸模組處於失敗狀態，請以滑鼠右鍵按一下失敗的延伸模組，並將它移除。 觸發隨選備份。 此動作會重新安裝延伸模組，並執行備份作業。  <br>
 - 如果任何其他延伸模組處於失敗狀態，則可能會干擾備份。 請確定已解決這些延伸模組問題，然後重試備份操作。  
 
 ## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>UserErrorRpCollectionLimitReached - 已達到還原點集合上限
@@ -62,7 +62,7 @@ Azure VM 代理程式可能已停止、過期、處於不一致的狀態，或�
 **錯誤碼**：UserErrorRpCollectionLimitReached <br>
 **錯誤訊息**：已達到還原點集合上限。 <br>
 
-- 如果復原點資源群組上有鎖定導致無法自動清除復原點，就會發生此問題。
+- 如果復原點資源群組的鎖定導致無法自動清除復原點，就會發生此問題。
 - 如果每日觸發多個備份，也會發生此問題。 目前建議每天只進行一次備份，因為在每個設定的快照集保留期間，立即還原點會保留1-5 天，而且在任何指定時間內，只有18個立即 Rp 可以與 VM 相關聯。 <br>
 - 跨還原點集合和 VM 的資源群組的還原點數目不能超過18個。 若要建立新的還原點，請刪除現有的還原點。
 
@@ -79,14 +79,14 @@ Azure VM 代理程式可能已停止、過期、處於不一致的狀態，或�
 **錯誤碼**：UserErrorKeyvaultPermissionsNotConfigured <br>
 **錯誤訊息**：備份沒有足夠的金鑰保存庫權限可以進行加密 VM 的備份。 <br>
 
-若要在加密的 Vm 上成功執行備份作業，它必須具有存取金鑰保存庫的許可權。 這可以使用[Azure 入口網站](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption)或透過[PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#enable-protection)來完成。
+若要在加密的 Vm 上成功執行備份作業，它必須具有存取金鑰保存庫的許可權。 您可以透過[Azure 入口網站](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption)或透過[PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#enable-protection)來設定許可權。
 
 ## <a name="ExtensionSnapshotFailedNoNetwork-snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>ExtensionSnapshotFailedNoNetwork - 因為虛擬機器沒有網路連線，所以快照集作業失敗
 
 **錯誤碼**：ExtensionSnapshotFailedNoNetwork<br>
 **錯誤訊息**：因為虛擬機器沒有網路連線，所以快照集作業失敗<br>
 
-在註冊及排程 Azure 備份服務的 VM 之後，備份就會藉由與 VM 備份擴充功能通訊以取得時間點快照，來起始作業。 下列任一種狀況都可能會阻止觸發快照集。 如果未觸發快照集，可能會發生備份失敗。 請依照列出的順序完成下列疑難排解步驟，然後重試作業：
+在您註冊並排程 Azure 備份服務的 VM 之後，備份會藉由與 VM 備份擴充功能通訊來啟動作業，以取得時間點快照集。 下列任一種狀況都可能會阻止觸發快照集。 如果未觸發快照集，可能會發生備份失敗。 請依照列出的順序完成下列疑難排解步驟，然後重試作業：
 
 **原因 1︰[無法擷取快照集狀態或無法取得快照集](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 **原因 2︰[備份延伸模組無法更新或載入](#the-backup-extension-fails-to-update-or-load)**  
@@ -96,7 +96,7 @@ Azure VM 代理程式可能已停止、過期、處於不一致的狀態，或�
 **錯誤碼**： ExtensionOperationFailedForManagedDisks <br>
 **錯誤訊息**：VMSnapshot 延伸模組作業失敗<br>
 
-在註冊及排程 Azure 備份服務的 VM 之後，備份就會藉由與 VM 備份擴充功能通訊以取得時間點快照，來起始作業。 下列任一種狀況都可能會阻止觸發快照集。 如果未觸發快照集，可能會發生備份失敗。 請依照列出的順序完成下列疑難排解步驟，然後重試作業：  
+在您註冊並排程 Azure 備份服務的 VM 之後，備份會藉由與 VM 備份擴充功能通訊來啟動作業，以取得時間點快照集。 下列任一種狀況都可能會阻止觸發快照集。 如果未觸發快照集，可能會發生備份失敗。 請依照列出的順序完成下列疑難排解步驟，然後重試作業：  
 **原因 1︰[無法擷取快照集狀態或無法取得快照集](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 **原因 2︰[備份延伸模組無法更新或載入](#the-backup-extension-fails-to-update-or-load)**  
 **原因 3：[代理程式已安裝到 VM 中，但沒有回應 (適用於 Windows VM)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
@@ -114,20 +114,19 @@ Azure VM 代理程式可能已停止、過期、處於不一致的狀態，或�
 **原因 4︰[備份延伸模組無法更新或載入](#the-backup-extension-fails-to-update-or-load)**  
 **原因5：備份服務因為資源群組鎖定而沒有刪除舊還原點的許可權** <br>
 
-
-## <a name="usererrorunsupporteddisksize---the-configured-disk-sizes-is-currently-not-supported-by-azure-backup"></a>UserErrorUnsupportedDiskSize-Azure 備份目前不支援設定的磁片大小。
+## <a name="usererrorunsupporteddisksize---the-configured-disk-sizes-is-currently-not-supported-by-azure-backup"></a>UserErrorUnsupportedDiskSize-目前不支援設定的磁片大小 Azure 備份
 
 **錯誤碼**：UserErrorUnsupportedDiskSize <br>
 **錯誤訊息**： Azure 備份目前不支援已設定的磁片大小。 <br>
 
-當備份磁片大小大於 32 TB 的 VM 時，您的備份操作可能會失敗。 此外，目前不支援備份大小大於 4 TB 的加密磁片。 藉由分割磁片，確定磁片大小小於或等於支援的限制值。
+當備份磁片大小大於 32 TB 的 VM 時，您的備份操作可能會失敗。 此外，目前不支援大小大於 4 TB 的加密磁片備份。 藉由分割磁片，確定磁片大小小於或等於支援的限制值。
 
 ## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress - 無法起始備份，因為另一個備份作業正在進行中
 
 **錯誤碼**： UserErrorBackupOperationInProgress <br>
 **錯誤訊息**：無法起始備份，因為另一個備份作業目前正在進行中<br>
 
-您最近的備份作業失敗，因為現有備份作業正在進行中。 必須等到目前的作業完成，才能啟動新的備份作業。 請確定目前正在進行的備份作業已完成，再觸發或排定其他備份作業。 若要檢查備份作業狀態，請執行下列步驟：
+您最近的備份作業失敗，因為有現有的備份作業正在進行中。 必須等到目前的作業完成，才能啟動新的備份作業。 請確定目前正在進行的備份作業已完成，再觸發或排定其他備份作業。 若要檢查備份作業狀態，請執行下列步驟：
 
 1. 登入 Azure 入口網站，按一下 [**所有服務**]。 輸入「復原服務」，然後按一下 [復原服務保存庫]。 復原服務保存庫清單隨即出現。
 2. 在復原服務保存庫清單中，選取其中已設定備份的保存庫。
@@ -139,6 +138,13 @@ Azure VM 代理程式可能已停止、過期、處於不一致的狀態，或�
 4. 請重試備份作業。
 
 如果排定的備份作業花費較長的時間，與下一個備份設定發生衝突，則請參閱[最佳作法](backup-azure-vms-introduction.md#best-practices)、[備份效能](backup-azure-vms-introduction.md#backup-performance)和[還原考慮](backup-azure-vms-introduction.md#backup-and-restore-considerations)。
+
+## <a name="usererrorcrpreportedusererror---backup-failed-due-to-an-error-for-details-see-job-error-message-details"></a>UserErrorCrpReportedUserError-備份因錯誤而失敗。 如需詳細資訊，請參閱作業錯誤訊息詳細資料
+
+**錯誤碼**： UserErrorCrpReportedUserError <br>
+**錯誤訊息**：備份因錯誤而失敗。 如需詳細資訊，請參閱作業錯誤訊息詳細資料。
+
+此錯誤是從 IaaS VM 回報。 若要找出問題的根本原因，請移至復原服務保存庫設定。 在 [**監視**] 區段下，選取 [**備份作業**] 以篩選並查看狀態。 按一下 [**失敗**]，以查看基礎錯誤訊息詳細資料。 根據 [錯誤詳細資料] 頁面中的建議採取進一步的動作。
 
 ## <a name="causes-and-solutions"></a>原因和解決方案
 
@@ -223,7 +229,7 @@ VM 備份仰賴發給底層儲存體帳戶的快照命令。 備份可能會失�
 4. 選取 [**快照集延伸**模組]。
 5. 選取 [解除安裝]。
 
-針對 Linux VM，如果 VMSnapshot 延伸模組未顯示在 Azure 入口網站中，[更新 Azure Linux 代理程式](../virtual-machines/linux/update-agent.md)，然後再執行備份。
+針對 Linux VM，如果 VMSnapshot 延伸模組未顯示在 Azure 入口網站中，請[更新 Azure Linux 代理程式](../virtual-machines/linux/update-agent.md)，然後執行備份。
 
 完成這些步驟之後，下一次備份期間會重新安裝延伸模組。
 
@@ -249,21 +255,21 @@ VM 備份仰賴發給底層儲存體帳戶的快照命令。 備份可能會失�
 
 #### <a name="clean-up-restore-point-collection-by-running-on-demand-backup"></a>藉由執行隨選備份來清除還原點集合
 
-移除鎖定之後，請觸發隨選備份。 這可確保還原點會自動清除。 預期此隨選作業會第一次失敗;不過，它會確保自動清除，而不是手動刪除還原點。 完成清除作業之後，下一個排定的備份應該會成功。
+移除鎖定之後，請觸發隨選備份。 此動作可確保還原點會自動清除。 預期此隨選作業會第一次失敗;不過，它會確保自動清除，而不是手動刪除還原點。 清除之後，您的下一個排定的備份應該會成功。
 
 > [!NOTE]
 > 在觸發隨選備份的幾個小時後，將會自動清除。 如果您排定的備份仍然失敗，請使用[此處](#clean-up-restore-point-collection-from-azure-portal)列出的步驟，嘗試手動刪除還原點集合。
 
 #### <a name="clean-up-restore-point-collection-from-azure-portal"></a>從 Azure 入口網站清除還原點集合 <br>
 
-若要手動清除還原點集合（因為資源群組的鎖定而未清除），請嘗試下列步驟：
+若要手動清除因為資源群組鎖定而未清除的還原點集合，請嘗試下列步驟：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 2. 在 [中樞] 功能表上按一下 [所有資源]，選取下列格式的資源群組：AzureBackupRG_`<Geo>`_`<number>`，也就是您 VM 所在的位置。
 
     ![刪除鎖定](./media/backup-azure-arm-vms-prepare/resource-group.png)
 
-3. 按一下 [資源群組]，[概觀] 刀鋒視窗會隨即出現。
+3. 按一下 [資源群組]，即會顯示 [**總覽**] 窗格。
 4. 選取 [顯示隱藏的類型] 選項，以顯示所有隱藏的資源。 選取下列格式的還原點集合：AzureBackupRG_`<VMName>`_`<number>`。
 
     ![刪除鎖定](./media/backup-azure-arm-vms-prepare/restore-point-collection.png)

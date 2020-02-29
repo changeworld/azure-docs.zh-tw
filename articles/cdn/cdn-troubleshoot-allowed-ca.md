@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 10/18/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 5462502514a3e327913122fe99fd699856891216
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 7b71611d43bc2d4de4c3e609462906c44fba0443
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083110"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919969"
 ---
 # <a name="allowed-certificate-authorities-for-enabling-custom-https-on-azure-cdn"></a>可在 Azure CDN 上啟用自訂 HTTPS 的允許憑證授權單位
 
-針對 **Microsoft 所提供的 Azure CDN 標準**端點上的 Azure 內容傳遞網路 (CDN) 自訂網域，當您[使用自己的憑證啟用 HTTPS 功能](cdn-custom-ssl.md?tabs=option-2-enable-https-with-your-own-certificate#ssl-certificates)時，必須使用允許的憑證授權單位 (CA) 來建立您的 SSL 憑證。 否則，如果您使用非允許的 CA 或自我簽署憑證，系統將會拒絕您的要求。
+當您使用自己的 Azure 內容傳遞網路（CDN）自訂網域[憑證啟用 HTTPS 功能](cdn-custom-ssl.md?tabs=option-2-enable-https-with-your-own-certificate#ssl-certificates)時，必須符合特定的憑證需求。 **來自 Microsoft 的 AZURE CDN 標準**設定檔需要下列清單中其中一個已核准的憑證授權單位單位（CA）的憑證。 如果未核准的 CA 的憑證或使用自我簽署憑證，則會拒絕要求。 來自**Verizon 的 AZURE Cdn 標準**和**來自 VERIZON 的 azure cdn Premium**設定檔會接受任何有效 CA 的有效憑證。
 
 > [!NOTE]
-> 使用您自己的憑證來啟用自訂 HTTPS 的選項，僅適用於 **Microsoft 所提供的 Azure CDN 標準**設定檔。 
+> 使用您自己的憑證來啟用自訂網域 HTTPS 功能的選項，*不適*用於**來自 AKAMAI 的 Azure CDN 標準**設定檔。 
 >
 
 [!INCLUDE [cdn-front-door-allowed-ca](../../includes/cdn-front-door-allowed-ca.md)]

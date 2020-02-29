@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 47cea412489693cedb05bd8a94a914b1757b8058
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: b1f7aaeaf5d1537e0e5a427ad994f7e31e43fee3
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152154"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921363"
 ---
 # <a name="multiclass-decision-forest-module"></a>多元決策樹系模組
 
@@ -55,6 +55,7 @@ Azure Machine Learning 中的決策樹系分類器是由決策樹的集團所組
 
     + **單一參數**：如果您知道要如何設定模型，請選取此選項，並提供一組值做為引數。
 
+    + **參數範圍**：如果您不確定最佳參數，而且想要執行參數清理，請選取此選項。 選取要逐一查看的值範圍，[微調模型超參數](tune-model-hyperparameters.md)會逐一查看所提供設定的所有可能組合，以判斷產生最佳結果的超參數。   
 
 5. **決策樹數目**：輸入可以在集團中建立的決策樹數目上限。 藉由建立更多決策樹，您可能會獲得更好的涵蓋範圍，但是定型時間可能會增加。
 

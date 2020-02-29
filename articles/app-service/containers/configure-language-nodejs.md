@@ -4,12 +4,12 @@ description: 瞭解如何為您的應用程式設定預先建立的 node.js 容�
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 6cf60472307a378d2fd4258a9777152344a11ded
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 45d7d141bc2ab85ab33be455fc3da5570b0e7f51
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670278"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920020"
 ---
 # <a name="configure-a-linux-nodejs-app-for-azure-app-service"></a>設定適用于 Azure App Service 的 Linux Node.js 應用程式
 
@@ -43,6 +43,32 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 > [!NOTE]
 > 您應該在專案的 `package.json`中設定 node.js 版本。 部署引擎會在個別容器中執行，其中包含所有支援的 node.js 版本。
+
+## <a name="customize-build-automation"></a>自訂群組建自動化
+
+如果您使用 Git 或已開啟組建自動化的 zip 套件來部署應用程式，App Service 組建自動化會逐步執行下列順序：
+
+1. 如果 `PRE_BUILD_SCRIPT_PATH`指定，請執行自訂腳本。
+1. 執行不含任何旗標的 `npm install`，其中包括 npm `preinstall` 和 `postinstall` 腳本，而且也會安裝 `devDependencies`。
+1. 如果您的*package. json*中已指定組建腳本，請執行 `npm run build`。
+1. 如果組建： azure 腳本是在您的*package. json*中指定，請執行 `npm run build:azure`。
+1. 如果 `POST_BUILD_SCRIPT_PATH`指定，請執行自訂腳本。
+
+> [!NOTE]
+> 如[npm](https://docs.npmjs.com/misc/scripts)檔中所述，名為 `prebuild` 和 `postbuild` 的腳本會分別在 `build`之前和之後執行（如果有指定的話）。 `preinstall` 和 `postinstall` 分別在 `install`之前和之後執行。
+
+`PRE_BUILD_COMMAND` 和 `POST_BUILD_COMMAND` 是預設為空白的環境變數。 若要執行預先建立的命令，請定義 `PRE_BUILD_COMMAND`。 若要執行建立後命令，請定義 `POST_BUILD_COMMAND`。
+
+下列範例會指定一系列命令的兩個變數，並以逗號分隔。
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
+```
+
+如需其他環境變數以自訂群組建自動化，請參閱[Oryx configuration](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md)。
+
+如需有關 App Service 如何在 Linux 中執行和建立 node.js 應用程式的詳細資訊，請參閱[Oryx 檔：如何偵測和建立 node.js 應用程式](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/nodejs.md)。
 
 ## <a name="configure-nodejs-server"></a>設定 node.js 伺服器
 

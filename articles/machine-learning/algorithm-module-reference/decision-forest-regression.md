@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 3c412937e59927a9f3f3218b0da3382f0b67c230
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 6d326b3cb5a964e43ce77ee459533a4271d5ed73
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152375"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919935"
 ---
 # <a name="decision-forest-regression-module"></a>決策樹系回歸模組
 
@@ -59,6 +59,8 @@ ms.locfileid: "77152375"
     - **單一參數**
 
       如果您知道要如何設定模型，您可以提供一組特定值做為引數。 您可能已經透過實驗知道這些值，或已依據指導收到這些值。
+
+    - **參數範圍**：如果您不確定最佳參數，而且想要執行參數清理，請選取此選項。 選取要逐一查看的值範圍，[微調模型超參數](tune-model-hyperparameters.md)會逐一查看所提供設定的所有可能組合，以判斷產生最佳結果的超參數。 
 
 
 

@@ -2,17 +2,17 @@
 title: DC 系列-Azure 虛擬機器
 description: DC 系列 Vm 的規格。
 services: virtual-machines
-author: jonbeck7
+author: joelpelley
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: lahugh
-ms.openlocfilehash: c4e141b7854925f5d12afce19481a6e9c2f8dd1d
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 41b08a921b4cc71275c216e86e89e49b59fc950a
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77599219"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163738"
 ---
 # <a name="preview-dcv2-series"></a>預覽： DCv2 系列
 
@@ -24,6 +24,10 @@ DCv2 系列可協助保護您的資料和程式碼在公用雲端中進行處理
 進階儲存體：支援 *
 
 進階儲存體快取：支援 *
+
+即時移轉：不支援
+
+記憶體保留更新：不支援
 
 \* Standard_DC8_v2 除外
 

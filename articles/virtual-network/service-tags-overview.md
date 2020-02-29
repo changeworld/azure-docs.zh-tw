@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 47488403a10a6b955e15b0048d455cc17016f009
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 7f5f75385374b6949ee3ef5e5ef298b8d54cc36e
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526241"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163245"
 ---
 # <a name="virtual-network-service-tags"></a>虛擬網路服務標籤
 <a name="network-service-tags"></a>
@@ -58,7 +58,7 @@ ms.locfileid: "77526241"
 | **AzureCosmosDB** | Azure Cosmos DB。 | 輸出 | 是 | 是 |
 | **AzureDatabricks** | Azure Databricks。 | 兩者 | 否 | 否 |
 | **AzureDataExplorerManagement** | Azure 資料總管管理。 | 輸入 | 否 | 否 |
-| **AzureDataLake** | Azure Data Lake。 | 輸出 | 否 | 是 |
+| **AzureDataLake** | Azure Data Lake Storage Gen1。 | 輸出 | 否 | 是 |
 | **AzureEventGrid** | Azure 事件格線。 <br/><br/>*注意：* 此標記涵蓋美國中南部、美國東部、美國東部2、美國西部2和美國中部的 Azure 事件方格端點。 | 兩者 | 否 | 否 |
 | **AzureFrontDoor** | Azure Front 的大門。 | 兩者 | 否 | 否 |
 | **AzureInformationProtection** | Azure 資訊保護。<br/><br/>*注意：* 此標記相依于**AzureActiveDirectory**和**AzureFrontDoor**標記。 也請將下列 Ip 加入白名單（即將移除此相依性）： 13.107.6.181 & 13.107.9.181。 | 輸出 | 否 | 否 |
@@ -97,7 +97,7 @@ ms.locfileid: "77526241"
 >| 傳統拼寫 | 對等 Resource Manager 標記 |
 >|---|---|
 >| AZURE_LOADBALANCER | AzureLoadBalancer |
->| 網際網路 | 網際網路 |
+>| 網際網路 | Internet |
 >| VIRTUAL_NETWORK | VirtualNetwork |
 
 > [!NOTE]

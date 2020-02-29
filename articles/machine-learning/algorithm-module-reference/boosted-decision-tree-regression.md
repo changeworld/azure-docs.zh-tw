@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 5298655437e04736e56193c443b8a770ea929606
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 10821639fb26af935326bda0bff7895105da675c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152409"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919952"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>促進式決策樹回歸模組
 
@@ -54,7 +54,9 @@ ms.locfileid: "77152409"
   
 2.  藉由設定 [**建立定型模式]** 選項，指定您要如何訓練模型。  
   
-    -   **單一參數**：如果您知道要如何設定模型，請選取此選項，並提供一組特定值做為引數。  
+    -   **單一參數**：如果您知道要如何設定模型，請選取此選項，並提供一組特定值做為引數。 
+     
+    -   **參數範圍**：如果您不確定最佳參數，而且想要執行參數清理，請選取此選項。 選取要逐一查看的值範圍，[微調模型超參數](tune-model-hyperparameters.md)會逐一查看所提供設定的所有可能組合，以判斷產生最佳結果的超參數。    
    
   
 3. **每個樹狀結構的最大葉數**：指出可以在任何樹狀結構中建立的終端機節點數目上限（葉子）。  
@@ -75,7 +77,6 @@ ms.locfileid: "77152409"
 
     根據預設，隨機種子會設定為0，這表示會從系統時鐘取得初始種子值。
   
-8. **允許未知的類別層級**：選取這個選項可在定型和驗證集中建立未知值的群組。 如果您取消選取此選項，模型只能接受定型資料中包含的值。 已知值的模型可能較不精確，但它可以為新的（未知）值提供更佳的預測。
 
 9. 新增訓練資料集，以及其中一個訓練模組：
 

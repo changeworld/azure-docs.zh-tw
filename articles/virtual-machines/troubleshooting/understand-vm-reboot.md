@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 1bf023dc886481354306a763a0f9c56286c57e05
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: e94ffb3d34082745c3d7ca86cfda2b93c0ed08da
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749875"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919408"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>了解 Azure VM 的系統重新啟動
 
@@ -30,10 +30,7 @@ Azure 虛擬機器 (VM) 可能會因不明原因而重新開機，且無法證�
 
 若要為應用程式提供此層級的備援，建議您在可用性設定組中，將兩部以上的 VM 組成群組。 這項組態可以確保在規劃或未規劃的維護事件發生期間，至少有一部 VM 可以使用，且符合 99.95% 的 [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_5/)。
 
-如需可用性設定組的詳細資訊，請參閱下列文章：
-
-- [管理 VM 的可用性](../windows/manage-availability.md)
-- [設定 VM 的可用性](../windows/classic/configure-availability.md)
+如需可用性設定組的詳細資訊，請參閱[管理 vm 的可用性](../windows/manage-availability.md)
 
 ## <a name="resource-health-information"></a>資源健全狀況資訊
 
@@ -41,7 +38,7 @@ Azure 資源健康狀態是一項服務，會揭露個別 Azure 資源的健康�
 
 ## <a name="actions-and-events-that-can-cause-the-vm-to-reboot"></a>可能導致 VM 重新開機的動作和事件
 
-### <a name="planned-maintenance"></a>規劃的維修
+### <a name="planned-maintenance"></a>預定的維修
 
 為提升 VM 之基礎主機基礎結構的可靠性、效能和安全性，Microsoft Azure 會全球定期執行更新。 許多這些更新 (包括記憶體保留的更新) 在執行時並不會對 VM 或雲端服務造成任何影響。
 

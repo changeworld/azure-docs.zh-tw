@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: 8522a537301c1d35da2a2eb46b4374fa4daf6a27
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 1c24782285ac9b06d5499351eebe1693ade07297
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580691"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78162939"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中設定 IP 防火牆
 
@@ -43,20 +43,20 @@ ms.locfileid: "73580691"
 |US Gov|52.244.48.71|
 |所有其他區域|104.42.195.92、40.76.54.131、52.176.6.30、52.169.50.45、52.187.184.26|
 
-您可以選取 [允許從 Azure 入口網站存取] 選項，來啟用對 Azure 入口網站的存取，如下列螢幕擷取畫面所示：
+您可以選取 [**允許來自 Azure 入口網站的存取**] 選項，以啟用存取 Azure 入口網站的要求，如下列螢幕擷取畫面所示：
 
 ![顯示如何允許存取 Azure 入口網站的螢幕擷取畫面](./media/how-to-configure-firewall/enable-azure-portal.png)
 
 ### <a name="allow-requests-from-global-azure-datacenters-or-other-sources-within-azure"></a>允許來自全球 Azure 資料中心或 Azure 中其他來源的要求
 
-如果您從不提供靜態 IP 的服務 (例如 Azure 串流分析和 Azure Functions) 存取 Azure Cosmos DB 帳戶，您仍然可以使用 IP 防火牆來限制存取。 若要允許從這類服務存取 Azure Cosmos DB 帳戶，請將 IP 位址 0.0.0.0 新增至允許的 IP 位址清單。 0\.0.0.0 位址會限制只能從 Azure 資料中心 IP 範圍向您的 Azure Cosmos DB 帳戶提出要求。 此設定不允許針對任何其他 IP 範圍存取您的 Azure Cosmos DB 帳戶。
+如果您從不提供靜態 IP 的服務 (例如 Azure 串流分析和 Azure Functions) 存取 Azure Cosmos DB 帳戶，您仍然可以使用 IP 防火牆來限制存取。 您可以選取 [**接受來自 azure 資料中心內**的連線] 選項，從 azure 中的其他來源啟用存取，如下列螢幕擷取畫面所示：
+
+![顯示如何在 Azure 入口網站中開啟 [防火牆] 頁面的螢幕擷取畫面](./media/how-to-configure-firewall/enable-azure-services.png)
+
+當您啟用此選項時，會將 IP 位址 `0.0.0.0` 新增至允許的 IP 位址清單。 `0.0.0.0` IP 位址會限制從 Azure 資料中心 IP 範圍對您 Azure Cosmos DB 帳戶的要求。 此設定不允許針對任何其他 IP 範圍存取您的 Azure Cosmos DB 帳戶。
 
 > [!NOTE]
 > 這個選項會將防火牆設定為允許所有來自 Azure 的連線，包括來自 Azure 中所部署之其他客戶訂用帳戶的連線。 此選項所允許的 IP 清單範圍寬鬆，因而限制了防火牆原則的效果。 只有當您的要求不是來自靜態 IP 或虛擬網路中的子網路時，才使用此選項。 由於 Azure 入口網站部署於 Azure 中，因此，選擇此選項就會自動允許從 Azure 入口網站存取。
-
-您可以選取 [**接受來自 Azure 資料中心內**的連線] 選項，以啟用 Azure 入口網站的存取權，如下列螢幕擷取畫面所示：
-
-![顯示如何在 Azure 入口網站中開啟 [防火牆] 頁面的螢幕擷取畫面](./media/how-to-configure-firewall/enable-azure-services.png)
 
 ### <a name="requests-from-your-current-ip"></a>來自您目前 IP 的要求
 

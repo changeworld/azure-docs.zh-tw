@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 02/27/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 036c8361af3f6631b6151782fa18495542d2e3f6
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: a6187fa9f274c6d00c1c9872a1b27268ac91295e
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888898"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161481"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>來賓使用者的直接同盟與 AD FS 和協力廠商提供者（預覽）
 |     |
@@ -64,9 +64,13 @@ ms.locfileid: "75888898"
 
 ### <a name="limit-on-federation-relationships"></a>同盟關聯性的限制
 目前支援最多1000個同盟關聯性。 這項限制包括[內部](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)同盟和直接同盟。
+
+### <a name="limit-on-multiple-domains"></a>多個網域的限制
+我們目前不支援來自相同租使用者的直接同盟與多個網域。
+
 ## <a name="frequently-asked-questions"></a>常見問題集
 ### <a name="can-i-set-up-direct-federation-with-a-domain-for-which-an-unmanaged-email-verified-tenant-exists"></a>我是否可以使用未受管理（電子郵件驗證）租使用者的網域來設定直接同盟？ 
-可以。 如果網域尚未經過驗證，而且租使用者尚未進行系統[管理員接管](../users-groups-roles/domains-admin-takeover.md)，您可以設定與該網域的直接同盟。 當使用者贖回 B2B 邀請或使用目前不存在的網域執行自助式註冊 Azure AD 時，會建立非受控或電子郵件驗證的租使用者。 您可以設定這些網域的直接同盟。 如果您嘗試在 Azure 入口網站或透過 PowerShell 設定與 DNS 驗證網域的直接同盟，您會看到錯誤。
+是。 如果網域尚未經過驗證，而且租使用者尚未進行系統[管理員接管](../users-groups-roles/domains-admin-takeover.md)，您可以設定與該網域的直接同盟。 當使用者贖回 B2B 邀請或使用目前不存在的網域執行自助式註冊 Azure AD 時，會建立非受控或電子郵件驗證的租使用者。 您可以設定這些網域的直接同盟。 如果您嘗試在 Azure 入口網站或透過 PowerShell 設定與 DNS 驗證網域的直接同盟，您會看到錯誤。
 ### <a name="if-direct-federation-and-email-one-time-passcode-authentication-are-both-enabled-which-method-takes-precedence"></a>如果同時啟用「直接同盟」和「電子郵件單次密碼驗證」，則會優先使用哪種方法？
 與夥伴組織建立直接同盟時，其優先順序高於該組織的新來賓使用者的電子郵件單次密碼驗證。 如果來賓使用者在設定直接同盟之前，使用單次密碼驗證兌換邀請，它們會繼續使用單次密碼驗證。 
 ### <a name="does-direct-federation-address-sign-in-issues-due-to-a-partially-synced-tenancy"></a>是否因為部分同步的租用而導致直接同盟位址登入問題？
@@ -93,7 +97,7 @@ Azure AD B2B 可以設定為與使用 SAML 通訊協定與下列特定需求的�
 |屬性  |值  |
 |---------|---------|
 |AssertionConsumerService     |`https://login.microsoftonline.com/login.srf`         |
-|觀眾     |`urn:federation:MicrosoftOnline`         |
+|適用對象     |`urn:federation:MicrosoftOnline`         |
 |簽發者     |合作夥伴 IdP 的簽發者 URI，例如 `http://www.example.com/exk10l6w90DHM0yi...`         |
 
 
@@ -119,7 +123,7 @@ Azure AD B2B 可以設定為與使用 WS-ADDRESSING 通訊協定的身分識別�
 |屬性  |值  |
 |---------|---------|
 |PassiveRequestorEndpoint     |`https://login.microsoftonline.com/login.srf`         |
-|觀眾     |`urn:federation:MicrosoftOnline`         |
+|適用對象     |`urn:federation:MicrosoftOnline`         |
 |簽發者     |合作夥伴 IdP 的簽發者 URI，例如 `http://www.example.com/exk10l6w90DHM0yi...`         |
 
 IdP 所簽發的 WS-送出權杖所需的宣告：

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: f2f2e02cdb5698d7569e5be177d54ca4dcb0ae02
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 27048a8464fc7380a5c11ab6bbb543e35c089774
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086530"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919595"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>關於應用程式閘道的常見問題
 
@@ -409,6 +409,8 @@ Kubernetes 可讓您建立 `deployment` 和 `service` 資源，以在叢集內�
 
 僅限私人 IP 存取的範例 NSG 設定： ![應用程式閘道 V2 NSG 設定僅供私人 IP 存取](./media/application-gateway-faq/appgw-privip-nsg.png)
 
+### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>應用程式閘道親和性 cookie 是否支援 SameSite 屬性？
+是， [Chromium browser](https://www.chromium.org/Home) [V80 update](https://chromiumdash.appspot.com/schedule)在 HTTP cookie 上引進了強制，而不會將 SameSite 屬性視為 SameSite = 不嚴格。 這表示應用程式閘道親和性 cookie 不會由瀏覽器在第三 pary 內容中傳送。 為了支援此案例，應用程式閘道除了現有的*ApplicationGatewayAffinity* cookie 之外，也會插入另一個稱為*ApplicationGatewayAffinityCORS*的 cookie。  這些 cookie 很類似，但*ApplicationGatewayAffinityCORS* cookie 已新增兩個屬性： *SameSite = None;安全*。 即使是跨原始來源要求，這些屬性仍會維護粘滯會話。 如需詳細資訊，請參閱以[cookie 為基礎的相似性一節](configuration-overview.md#cookie-based-affinity)。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -5,14 +5,14 @@ services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/15/2019
+ms.date: 02/27/2020
 ms.author: spelluru
-ms.openlocfilehash: 483b8251bf17eaa5fe7aa7cbd86299575535725d
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: dda2fd98c4c0d330059156a5ec00baa97ffaf627
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74170061"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921057"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid 訊息傳遞與重試
 
@@ -26,12 +26,33 @@ Event Grid 提供持久的傳遞。 它針對每個訂用帳戶傳遞每則訊�
 
 批次傳遞有兩個設定：
 
-* 「**每個批次的事件上限**」是事件方格每個批次傳遞的最大事件數目。 永遠不會超過此數目，但如果在發行時沒有其他可用的事件，可能會傳遞較少的事件。 事件方格不會延遲事件，以便在有較少的事件可用時建立批次。 必須介於1到5000之間。
-* **慣用批次大小（以 kb**為單位）是批次大小的目標上限（以 kb 為單位） 與 max 事件類似，如果發佈時有更多事件無法使用，批次大小可能會較小。 *如果*單一事件大於慣用的大小，則批次可能會大於慣用的批次大小。 例如，如果慣用的大小是 4 KB，而 10 KB 的事件會推送至事件方格，則 10 KB 的事件仍會以自己的批次傳遞，而不會被捨棄。
+* **每個批次的事件**上限-事件方格每個批次的最大事件數目。 永遠不會超過此數目，但如果在發行時沒有其他可用的事件，可能會傳遞較少的事件。 事件方格不會延遲事件，以便在有較少的事件可用時建立批次。 必須介於1到5000之間。
+* **慣用的批次大小（kb** ）-批次大小的目標上限（以 kb 為單位）。 與 max 事件類似，如果發佈時有更多事件無法使用，批次大小可能會較小。 *如果*單一事件大於慣用的大小，則批次可能會大於慣用的批次大小。 例如，如果慣用的大小是 4 KB，而 10 KB 的事件會推送至事件方格，則 10 KB 的事件仍會以自己的批次傳遞，而不會被捨棄。
 
 中的批次傳遞會透過入口網站、CLI、PowerShell 或 Sdk，以每個事件訂用帳戶為基礎進行設定。
 
+### <a name="azure-portal"></a>Azure 入口網站： 
 ![批次傳遞設定](./media/delivery-and-retry/batch-settings.png)
+
+### <a name="azure-cli"></a>Azure CLI
+建立事件訂用帳戶時，請使用下列參數： 
+
+- **最大-每個批次事件**數-批次中的事件數目上限。 必須是介於1到5000之間的數位。
+- **慣用-批次大小-以 kb**為單位的慣用批次大小（以 kb 為單位）。 必須是介於1到1024之間的數位。
+
+```azurecli
+storageid=$(az storage account show --name <storage_account_name> --resource-group <resource_group_name> --query id --output tsv)
+endpoint=https://$sitename.azurewebsites.net/api/updates
+
+az eventgrid event-subscription create \
+  --resource-id $storageid \
+  --name <event_subscription_name> \
+  --endpoint $endpoint \
+  --max-events-per-batch 1000 \
+  --preferred-batch-size-in-kilobytes 512
+```
+
+如需有關使用 Azure CLI 搭配事件方格的詳細資訊，請參閱使用[Azure CLI 將儲存體事件路由至 web 端點](../storage/blobs/storage-blob-event-quickstart.md)。
 
 ## <a name="retry-schedule-and-duration"></a>重試排程和持續時間
 
@@ -101,7 +122,7 @@ Event Grid 使用 HTTP 回應碼以確認接收事件。
 | 408 要求逾時 | 2分鐘後重試 |
 | 413 要求實體太大 | 10秒以上後重試（如果 Deadletter 設定，請立即 Deadletter） |
 | 503 服務無法使用 | 30秒後重試 |
-| 其他所有專案 | 10秒後重試 |
+| All others | 10秒後重試 |
 
 
 ## <a name="next-steps"></a>後續步驟

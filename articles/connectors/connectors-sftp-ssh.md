@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, klam, logicappspm
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 02/28/2020
 tags: connectors
-ms.openlocfilehash: 3370eea8909f30563babcf2a84f727ba51f67e29
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: e7a0791cc2bca672e7fde142650ad25e7e8ab58b
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77647650"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161869"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>藉由使用 SSH 和 Azure Logic Apps 來監視、建立及管理 SFTP 檔案
 
@@ -31,7 +31,28 @@ ms.locfileid: "77647650"
 
 ## <a name="limits"></a>限制
 
-* 根據預設，SFTP SSH 動作可以讀取或寫入*1 GB 或更小*的檔案，但一次只能有*15 MB*的區塊。 為了處理大於 15 MB 的檔案，SFTP-SSH 動作支援[訊息區塊](../logic-apps/logic-apps-handle-large-messages.md)化，但「複製檔案」動作除外，它只能處理 15 mb 的檔案。 [**取得檔案內容**] 動作會以隱含方式使用訊息區塊化。
+* SFTP-支援[區塊](../logic-apps/logic-apps-handle-large-messages.md)化的 ssh 動作可以處理最多 1 GB 的檔案，而不支援區塊化的 sftp ssh 動作則可以處理最多 50 MB 的檔案。 雖然預設的區塊大小是 15 MB，但此大小可以根據網路延遲、伺服器回應時間等等的因素，從 5 MB 開始，逐漸增加到 50 MB 的最大值。
+
+  > [!NOTE]
+  > 對於[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的邏輯應用程式，此連接器的 ise 標記版本會使用[ISE 訊息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
+
+  區塊大小與連接相關聯，這表示您可以針對支援區塊化的動作使用相同的連接，然後針對不支援區塊化的動作執行。 在此情況下，不支援區塊化之動作的區塊大小範圍為 5 MB 到 50 MB。 下表顯示支援區塊化的 SFTP SSH 動作：
+
+  | 動作 | 區塊化支援 |
+  |--------|------------------|
+  | **複製檔案** | 否 |
+  | **建立檔案** | 是 |
+  | **建立資料夾** | 不適用 |
+  | **刪除檔案** | 不適用 |
+  | **將封存檔案解壓縮到資料夾** | 不適用 |
+  | **取得檔案內容** | 是 |
+  | **使用路徑來取得檔案內容** | 是 |
+  | **取得檔案中繼資料** | 不適用 |
+  | **使用路徑來取得檔案中繼資料** | 不適用 |
+  | **列出資料夾中的檔案** | 不適用 |
+  | **重新命名檔案** | 不適用 |
+  | **更新檔案** | 否 |
+  |||
 
 * SFTP-SSH 觸發程式不支援區塊化。 當要求檔案內容時，觸發程式只會選取 15 MB 或更小的檔案。 若要取得大於 15 MB 的檔案，請改為遵循此模式：
 
@@ -46,10 +67,6 @@ ms.locfileid: "77647650"
 以下是 SFTP-SSH 連接器與 SFTP 連接器之間的其他主要差異，其中 SFTP-SSH 連接器具備這些功能：
 
 * 使用[SSH.NET 程式庫](https://github.com/sshnet/SSH.NET)，這是支援 .net 的開放原始碼安全殼層（SSH）程式庫。
-
-* 根據預設，SFTP SSH 動作可以讀取或寫入*1 GB 或更小*的檔案，但一次只能有*15 MB*的區塊。
-
-  若要處理大於 15 MB 的檔案，SFTP SSH 動作可以使用[訊息區塊](../logic-apps/logic-apps-handle-large-messages.md)化。 不過，[複製檔案] 動作僅支援 15 MB 的檔案，因為該動作不支援訊息區塊化。 SFTP-SSH 觸發程式不支援區塊化。 若要上傳大型檔案，您需要 SFTP 伺服器上根資料夾的 [讀取] 和 [寫入] 許可權。
 
 * 提供**建立資料夾**動作，可在 SFTP 伺服器上指定的路徑中建立資料夾。
 

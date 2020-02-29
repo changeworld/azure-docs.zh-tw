@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
-ms.openlocfilehash: 6498717f5d542be228483b9c323dbd8f3ca2ff00
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 621188b3901bdea1a7ae50ac49c0e6f625a3e79a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251918"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77915753"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>從 ML web 服務端點監視及收集資料
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -43,39 +43,6 @@ ms.locfileid: "77251918"
 
 對應至 web 服務中繼資料和模型預測之服務的中繼資料和回應，會記錄到訊息 `"model_data_collection"`下的 Azure 應用程式 Insights 追蹤。 您可以直接查詢 Azure 應用程式深入解析以存取此資料，或設定[連續匯出](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry)至儲存體帳戶，以延長保留期或進一步處理。 然後，可以在 Azure Machine Learning 中使用模型資料來設定標籤、重新定型、可解釋性、資料分析或其他用途。 
 
-## <a name="use-the-azure-portal-to-configure"></a>使用 Azure 入口網站設定
-
-您可以在 Azure 入口網站中啟用和停用 Azure 應用程式深入解析。 
-
-1. 在[Azure 入口網站](https://portal.azure.com)中，開啟您的工作區
-
-1. 在 [**部署**] 索引標籤上，選取您要啟用 Azure 應用程式深入解析的服務
-
-   [![[部署] 索引標籤上的服務清單](./media/how-to-enable-app-insights/Deployments.PNG)](././media/how-to-enable-app-insights/Deployments.PNG#lightbox)
-
-3. 選取 [**編輯**]
-
-   [![[編輯] 按鈕](././media/how-to-enable-app-insights/Edit.PNG)](./././media/how-to-enable-app-insights/Edit.PNG#lightbox)
-
-4. 在 [**高級設定**] 中，選取 [**啟用 AppInsights 診斷**] 核取方塊
-
-   [![已選取啟用診斷的核取方塊](./media/how-to-enable-app-insights/AdvancedSettings.png)](././media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
-
-1. 選取畫面底部的 [**更新**] 以套用變更
-
-### <a name="disable"></a>停用
-
-1. 在[Azure 入口網站](https://portal.azure.com)中，開啟您的工作區
-1. 選取 [**部署**]，選取服務，然後選取 [**編輯**]
-
-   [![使用 [編輯] 按鈕](././media/how-to-enable-app-insights/Edit.PNG)](./././media/how-to-enable-app-insights/Edit.PNG#lightbox)
-
-1. 在 [**高級設定**] 中，清除 [**啟用 AppInsights 診斷**] 核取方塊
-
-   [![已清除啟用診斷的核取方塊](./media/how-to-enable-app-insights/uncheck.png)](././media/how-to-enable-app-insights/uncheck.png#lightbox)
-
-1. 選取畫面底部的 [**更新**] 以套用變更
- 
 ## <a name="use-python-sdk-to-configure"></a>使用 Python SDK 設定 
 
 ### <a name="update-a-deployed-service"></a>更新已部署的服務

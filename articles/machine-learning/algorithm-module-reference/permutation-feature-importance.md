@@ -8,17 +8,17 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: 9ef859cce68e13f5207d77d8396bc69ddbbce339
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.date: 02/24/2020
+ms.openlocfilehash: 8611abd4e504e0378b744b12d0adb5fa22f5476b
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314941"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920360"
 ---
 # <a name="permutation-feature-importance"></a>排列功能重要性
 
-本文說明如何使用 Azure Machine Learning 設計工具中的排列功能重要性模組，來計算資料集的一組功能重要性分數。 您可以使用這些分數來協助您判斷要在模型中使用的最佳功能。
+本文說明如何使用 Azure Machine Learning 設計工具（預覽）中的排列功能重要性模組，來計算資料集的一組功能重要性分數。 您可以使用這些分數來協助您判斷要在模型中使用的最佳功能。
 
 在此課程模組中，功能值會隨機隨機播放，一次一個資料行。 模型的效能是在之前和之後測量。 您可以選擇其中一個標準計量來測量效能。
 
@@ -46,7 +46,7 @@ ms.locfileid: "76314941"
 
     -   **分類**
 
-        精確度、精確度、召回率、平均記錄遺失  
+        精確度、精確度、召回率  
 
     -   **迴歸**
 

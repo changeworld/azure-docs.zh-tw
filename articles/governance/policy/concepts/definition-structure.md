@@ -3,12 +3,12 @@ title: 原則定義結構的詳細資料
 description: 說明如何使用原則定義來建立組織中 Azure 資源的慣例。
 ms.date: 02/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: ade659637f1be6cc58cebae760c5e1b753f3830f
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 1100248b43dbdf668dc1164651f3d9f941f3f016
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670775"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920207"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure 原則定義結構
 
@@ -21,7 +21,7 @@ Azure 原則會建立資源的慣例。 原則定義會描述資源合規性[條
 
 使用 JSON 來建立原則定義。 原則定義中包含以下的項目︰
 
-- 模式
+- mode
 - 參數
 - 顯示名稱
 - description
@@ -65,7 +65,7 @@ Azure 原則會建立資源的慣例。 原則定義會描述資源合規性[條
 
 所有 Azure 原則範例都位於[Azure 原則的範例](../samples/index.md)。
 
-## <a name="mode"></a>Mode
+## <a name="mode"></a>[模式]
 
 根據原則是以 Azure Resource Manager 屬性或資源提供者屬性為目標，設定**模式**。
 
@@ -159,19 +159,19 @@ Azure 原則會建立資源的慣例。 原則定義會描述資源合規性[條
 
 ### <a name="strongtype"></a>strongType
 
-在 `metadata` 屬性內，您可以使用 **strongType** 在 Azure 入口網站內提供可複選的選項清單。 **strongType** 所允許的值目前包括：
+在 `metadata` 屬性內，您可以使用 **strongType** 在 Azure 入口網站內提供可複選的選項清單。 **strongType**可以是支援的_資源類型_或允許的值。 若要判斷_資源類型_對**strongType**是否有效，請使用[register-azresourceprovider](/powershell/module/az.resources/get-azresourceprovider)。
+
+不支援**register-azresourceprovider**所傳回的某些_資源類型_。 這些是：
+
+- `Microsoft.RecoveryServices/vaults/backupPolicies`
+
+**StrongType**的非_資源類型_允許值為：
 
 - `location`
 - `resourceTypes`
 - `storageSkus`
 - `vmSKUs`
 - `existingResourceGroups`
-- `omsWorkspace`
-- `Microsoft.EventHub/Namespaces/EventHubs`
-- `Microsoft.EventHub/Namespaces/EventHubs/AuthorizationRules`
-- `Microsoft.EventHub/Namespaces/AuthorizationRules`
-- `Microsoft.RecoveryServices/vaults`
-- `Microsoft.RecoveryServices/vaults/backupPolicies`
 
 ## <a name="definition-location"></a>定義位置
 
@@ -408,7 +408,7 @@ Azure 原則會建立資源的慣例。 原則定義會描述資源合規性[條
 
 使用修改過的原則規則，`if()` 在嘗試取得值少於三個字元的 `substring()` 之前，檢查**名稱**的長度。 如果**名稱**太短，則會改為傳回值「不是以 abc 開頭」，並與**abc**比較。 簡短名稱不是**abc**開頭的資源仍會失敗原則規則，但在評估期間不會再造成錯誤。
 
-### <a name="count"></a>[計數]
+### <a name="count"></a>Count
 
 計算資源裝載中陣列成員數目符合條件運算式的條件，可以使用**計數**運算式來形成。 常見的案例是檢查「至少其中一個」、「全部」、「全部」或「無」陣列成員是否符合條件。 **count**會評估條件運算式的每個[\[\*\] 別名](#understanding-the--alias)陣列成員，並加總_true_結果，然後再與運算式運算子進行比較。
 
@@ -678,7 +678,7 @@ Azure 原則支援下列類型的效果：
 
 ### <a name="understanding-the--alias"></a>了解 [*] 別名
 
-其中有幾個可用的別名，其版本會顯示為「一般」名稱，另一個則會附加 **\[\*\]** 。 例如，
+其中有幾個可用的別名，其版本會顯示為「一般」名稱，另一個則會附加 **\[\*\]** 。 例如：
 
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`
@@ -712,7 +712,7 @@ Azure 原則支援下列類型的效果：
 
 如需詳細資訊，請參閱[評估 [\*] 別名](../how-to/author-policies-for-arrays.md#evaluating-the--alias)。
 
-## <a name="initiatives"></a>開發案
+## <a name="initiatives"></a>計畫
 
 計畫可讓您將數個相關的原則定義組成群組來簡化指派和管理，因為您可以將一個群組當作單一項目來使用。 例如，您可以將相關的標籤原則定義組成單一方案。 您可以套用該計畫，而不個別指派每個原則。
 

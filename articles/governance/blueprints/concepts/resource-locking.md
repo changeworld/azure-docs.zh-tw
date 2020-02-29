@@ -1,14 +1,14 @@
 ---
 title: 了解資源鎖定
 description: 瞭解 Azure 藍圖中的鎖定選項，以在指派藍圖時保護資源。
-ms.date: 04/24/2019
+ms.date: 02/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: e042a4d117e28a2fd2228ce36f1be98a1da31e91
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 1491af0ddfb0f6f5fbea322bd00dc9838c155983
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77057340"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919867"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>了解 Azure 藍圖中的資源鎖定
 
@@ -33,6 +33,56 @@ ms.locfileid: "77057340"
 訂用帳戶中具有適當[角色型存取控制](../../../role-based-access-control/overview.md) (RBAC) 的人 (例如「擁有者」角色) 通常能夠變更或刪除任何資源。 當藍圖將鎖定作為已部署指派的一部分套用時，存取權並非如此。 如果指派是使用 [唯讀] 或 [不要刪除] 選項來設定的，則即使是訂用帳戶擁有者也無法在受保護的資源上執行封鎖的動作。
 
 此安全性措施可保護已定義藍圖的一致性，以及設計為透過意外或以程式設計方式刪除或修改而建立的環境。
+
+### <a name="assign-at-management-group"></a>在管理群組指派
+
+防止訂用帳戶擁有者移除藍圖指派的另一個選項是將藍圖指派給管理群組。 在此案例中，**只有管理群組的擁有者**具有移除藍圖指派所需的許可權。
+
+為了將藍圖指派給管理群組，而不是訂用帳戶，REST API 呼叫會變更如下：
+
+```http
+PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{assignmentMG}/providers/Microsoft.Blueprint/blueprintAssignments/{assignmentName}?api-version=2018-11-01-preview
+```
+
+`{assignmentMG}` 所定義的管理群組必須在管理群組階層內，或是與藍圖定義儲存所在的相同管理群組。
+
+藍圖指派的要求主體看起來像這樣：
+
+```json
+{
+    "identity": {
+        "type": "SystemAssigned"
+    },
+    "location": "eastus",
+    "properties": {
+        "description": "enforce pre-defined simpleBlueprint to this XXXXXXXX subscription.",
+        "blueprintId": "/providers/Microsoft.Management/managementGroups/{blueprintMG}/providers/Microsoft.Blueprint/blueprints/simpleBlueprint",
+        "scope": "/subscriptions/{targetSubscriptionId}",
+        "parameters": {
+            "storageAccountType": {
+                "value": "Standard_LRS"
+            },
+            "costCenter": {
+                "value": "Contoso/Online/Shopping/Production"
+            },
+            "owners": {
+                "value": [
+                    "johnDoe@contoso.com",
+                    "johnsteam@contoso.com"
+                ]
+            }
+        },
+        "resourceGroups": {
+            "storageRG": {
+                "name": "defaultRG",
+                "location": "eastus"
+            }
+        }
+    }
+}
+```
+
+此要求主體中的主要差異，以及指派給訂用帳戶的索引鍵，都是 `properties.scope` 屬性。 此必要屬性必須設定為要套用藍圖指派的訂用帳戶。 訂用帳戶必須是儲存藍圖指派所在的管理群組階層的直接子系。
 
 ## <a name="removing-locking-states"></a>移除鎖定狀態
 
@@ -61,7 +111,7 @@ ms.locfileid: "77057340"
 
 ## <a name="exclude-a-principal-from-a-deny-assignment"></a>從拒絕指派中排除主體
 
-在某些設計或安全性案例中，可能需要從藍圖指派所建立的[拒絕指派](../../../role-based-access-control/deny-assignments.md)中排除主體。 這項作業會在 REST API 中完成，方法是在[建立指派](/rest/api/blueprints/assignments/createorupdate)時，將最多五個值新增至 [**鎖定**] 屬性中的**excludedPrincipals**陣列。 這是包含**excludedPrincipals**的要求主體範例：
+在某些設計或安全性案例中，可能需要從藍圖指派所建立的[拒絕指派](../../../role-based-access-control/deny-assignments.md)中排除主體。 此步驟會在 REST API 中完成，方法是在[建立指派](/rest/api/blueprints/assignments/createorupdate)時，將最多五個值新增至 [**鎖定**] 屬性中的**excludedPrincipals**陣列。 下列指派定義是包含**excludedPrincipals**的要求主體範例：
 
 ```json
 {

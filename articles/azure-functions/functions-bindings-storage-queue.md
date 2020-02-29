@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 16c325f2d6ea78ba980406f56839dd4d0b64bee1
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 71321fa631bafde5b1dbaac2d165cb68fd8116d4
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77482253"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164588"
 ---
 # <a name="azure-queue-storage-trigger-and-bindings-for-azure-functions-overview"></a>Azure Functions 總覽的 Azure 佇列儲存體觸發程式和系結
 
@@ -20,7 +20,7 @@ Azure Functions 可以在建立新的 Azure 佇列儲存體訊息時執行，而
 | 動作 | 類型 |
 |---------|---------|
 | 以佇列儲存體資料變更的形式執行函式 | [觸發程序](./functions-bindings-storage-queue-trigger.md) |
-| 寫入佇列儲存體訊息 |[輸出系結](./functions-bindings-storage-blob-output.md) |
+| 寫入佇列儲存體訊息 |[輸出系結](./functions-bindings-storage-queue-output.md) |
 
 ## <a name="add-to-your-functions-app"></a>新增至函數應用程式
 
@@ -49,4 +49,4 @@ Azure Functions 可以在建立新的 Azure 佇列儲存體訊息時執行，而
 ## <a name="next-steps"></a>後續步驟
 
 - [以佇列儲存體資料變更的形式執行函式（觸發程式）](./functions-bindings-storage-queue-trigger.md)
-- [寫入佇列儲存體訊息（輸出系結）](./functions-bindings-storage-blob-output.md)
+- [寫入佇列儲存體訊息（輸出系結）](./functions-bindings-storage-queue-output.md)

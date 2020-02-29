@@ -1,17 +1,17 @@
 ---
 title: 對應資料流程壓平合併轉換
-description: Azure data factory 對應資料流程壓平合併轉換
+description: Azure Data Factory 對應的資料流程簡維轉換
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: 435d2469be8eb572caa02e381d84ae4e9ac32f4b
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 415a093fd8a8fbe27e1d240b061548e18f2ca6b6
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77674840"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164724"
 ---
 # <a name="azure-data-factory-flatten-transformation"></a>Azure Data Factory 簡維轉換
 
@@ -29,7 +29,7 @@ ms.locfileid: "77674840"
 
 ## <a name="unroll-root"></a>展開根目錄
 
-根據預設，ADF 會在您于上方所選的展開陣列上壓平合併結構。 或者，您可以選擇階層的不同部分來展開至。
+根據預設，ADF 會在您于上方所選的展開陣列上壓平合併結構。 或者，您可以選擇階層的不同部分來展開至。 「展開根目錄」是選擇性的設定。
 
 ## <a name="input-columns"></a>輸入資料行
 

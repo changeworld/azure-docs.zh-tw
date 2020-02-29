@@ -3,18 +3,18 @@ title: 關於 Azure Vm 中的 SAP Hana 資料庫備份
 description: 在本文中，您將瞭解如何備份在 Azure 虛擬機器上執行的 SAP Hana 資料庫。
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: a1be572d6462ed8f8a86db0f5cbfeaaa37c219ab
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 188cef6bc9771f779e3e9c7f7f5fe246e929b68a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586558"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918507"
 ---
 # <a name="about-sap-hana-database-backup-in-azure-vms"></a>關於 Azure Vm 中的 SAP Hana 資料庫備份
 
 SAP Hana 資料庫是需要低復原點目標（RPO）和快速復原時間目標（RTO）的任務關鍵性工作負載。 您現在可以使用[Azure 備份](https://docs.microsoft.com/azure/backup/backup-overview)來[備份在 Azure vm 上執行的 SAP Hana 資料庫](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db)。
 
-Azure 備份是由 SAP[認證的 Backint](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5) ，藉由利用 SAP Hana 的原生 api 來提供原生備份支援。 這項來自 Azure 備份的供應專案與 Azure 備份的**零基礎結構**備份口號一致，因此不需要部署和管理備份基礎結構。 您現在可以順暢地備份和還原在 Azure Vm 上執行的 SAP Hana 資料庫（現在也支援[M 系列 vm](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory) ！），並利用 Azure 備份提供的企業管理功能。
+Azure 備份是由 SAP[認證的 Backint](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5) ，藉由利用 SAP Hana 的原生 api 來提供原生備份支援。 這項來自 Azure 備份的供應專案與 Azure 備份的**零基礎結構**備份口號一致，因此不需要部署和管理備份基礎結構。 您現在可以順暢地備份和還原在 Azure Vm 上執行的 SAP Hana 資料庫（現在也支援[M 系列 vm](../virtual-machines/m-series.md) ！），並利用 Azure 備份提供的企業管理功能。
 
 ## <a name="added-value"></a>已新增值
 

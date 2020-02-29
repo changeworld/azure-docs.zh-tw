@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/28/2019
-ms.openlocfilehash: dd7579c97e2166e2822ee5674bbcd5a8ad64d2c7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 02/27/2020
+ms.openlocfilehash: 397e455c8b6a1097e2a32473036e1acd2bbdf2eb
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201487"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921142"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>了解及調整串流單位
 
@@ -32,7 +32,7 @@ SU % 使用率計量介於 0% 到 100% 的範圍間，可說明工作負載的�
     ![Azure 入口網站串流分析作業組態][img.stream.analytics.preview.portal.settings.scale]
     
 4. 使用滑桿來設定作業的 SU。 請注意，您只能調整特定的 SU 設定。 
-5. 您可以變更指派給作業的 su 數目，即使它正在執行也一樣。 如果您的作業使用[非分割的輸出](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#query-using-non-partitioned-output)，或具有[具有不同 PARTITION BY 值的多重步驟查詢](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#multi-step-query-with-different-partition-by-values)，則不可能發生這種情況。 作業執行時，您的工作也應該至少有6個 su，才能變更此設定。 當作業正在執行時，您可能會受到限制而無法從一組 SU 值中進行選擇。 
+5. 您可以變更指派給作業的 su 數目，即使它正在執行也一樣。 如果您的作業使用[非分割的輸出](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#query-using-non-partitioned-output)，或具有[具有不同 PARTITION BY 值的多重步驟查詢](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#multi-step-query-with-different-partition-by-values)，則不可能發生這種情況。 當作業正在執行時，您可能會受到限制而無法從一組 SU 值中進行選擇。 
 
 ## <a name="monitor-job-performance"></a>監視工作效能
 您可以使用 Azure 入口網站來追蹤作業的輸送量：

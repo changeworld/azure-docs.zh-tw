@@ -1,5 +1,5 @@
 ---
-title: 什麼是影片索引器？
+title: 什麼是影片索引子？
 titleSuffix: Azure Media Services
 description: 本文提供 Azure 媒體服務影片索引子服務的總覽。
 services: media-services
@@ -10,14 +10,14 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 02/02/2020
 ms.author: juliako
-ms.openlocfilehash: aee4390d9b892eddbd7dc59887f5268e4c35d3f7
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: efd8386f464bfdf2ac27d3be07e6572dc27952e1
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989785"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163585"
 ---
-# <a name="what-is-video-indexer"></a>什麼是影片索引器？
+# <a name="what-is-video-indexer"></a>什麼是影片索引子？
 
 影片索引子（VI）是 Azure 媒體服務 AI 解決方案和 Azure 認知服務品牌的一部分。 影片索引子可讓您使用以多個通道（語音、人聲、視覺效果）為基礎的機器學習模型，來解壓縮深入解析（而不需要資料分析或編碼技能）。 您可以進一步自訂和定型模型。 此服務可進行深入搜尋、降低營運成本、提供新的營收商機，以及在大型的影片封存上建立新的使用者體驗（具有低進入障礙）。
 
@@ -27,9 +27,14 @@ ms.locfileid: "76989785"
 
 ![Azure 媒體服務影片索引子流程圖](./media/video-indexer-overview/model-chart.png)
 
+
 ## <a name="compliance-privacy-and-security"></a>合規性、隱私權和安全性
- 
-重要提醒是，您必須遵守使用影片索引子時的所有相關法律，而且不得使用影片索引子或任何其他 Azure 服務，以違反其他人的權利或可能會對其他人造成傷害的方式。 在將任何影片（包括任何生物特徵辨識資料）上傳到影片索引子服務以進行處理和儲存之前，您必須在影片的個人中擁有所有適當的許可權，包括所有適當的同意。 若要瞭解影片索引子中的合規性、隱私權和安全性，請閱讀 Microsoft[認知服務條款](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)。 如需 Microsoft 的隱私權責任和資料處理，請參閱 Microsoft 的[隱私權聲明](https://privacy.microsoft.com/PrivacyStatement)、[線上服務條款](https://www.microsoft.com/licensing/product-licensing/products)（「OST」）和[資料處理](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67)增補（「DPA」）。 其他隱私權資訊（包括資料保留、刪除/損毀）可在 OST 和[此處](faq.md)取得。 藉由使用影片索引子，貴使用者同意遵守認知服務條款、OST、DPA 和隱私權聲明。
+
+重要提醒是，您必須遵守使用影片索引子時的所有相關法律，而且不得使用影片索引子或任何 Azure 服務，以違反其他人的權利，或對其他人可能有害。
+
+將任何影片/影像上傳到影片索引子之前，您必須擁有所有適當的許可權，才能使用影片/影像，其中包括法律所需的所有必要同意、影片/影像中的個人（如果有的話），以便在影片索引子和 Azure 中使用、處理和儲存其資料。 有些司法轄區可能會對集合、線上處理和儲存特定類別的資料（例如生物識別資料）施加特殊的法律需求。 在使用影片索引子和 Azure 來處理及儲存任何受限於特殊法律需求的資料之前，您必須確保符合貴使用者可能適用的任何這類法律需求。
+
+若要瞭解影片索引子中的合規性、隱私權和安全性，請流覽 Microsoft[信任中心](https://www.microsoft.com/TrustCenter/CloudServices/Azure/default.aspx)。 如需 Microsoft 的隱私權義務、資料處理和保留做法，包括如何刪除您的資料，請參閱 Microsoft 的[隱私權聲明](https://privacy.microsoft.com/PrivacyStatement)、[線上服務條款](https://www.microsoft.com/licensing/product-licensing/products?rtc=1)（「OST」）和[資料處理](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67)增補（「DPA」）。 藉由使用影片索引子，您同意受限於 OST、DPA 和隱私權聲明。
 
 ## <a name="what-can-i-do-with-video-indexer"></a>影片索引器有何用途？
 
@@ -42,7 +47,7 @@ ms.locfileid: "76989785"
 * *內容仲裁*：使用文字和視覺內容仲裁模型，讓您的使用者安全地免于不當的內容，並驗證您發佈的內容是否符合您組織的值。 您可以自動封鎖特定影片，或通知使用者內容的相關資訊。
 * *建議*：您可以藉由反白顯示使用者的相關影片，來改善使用者互動的影片深入解析。 藉由使用額外的元資料標記每個影片，您可以建議使用者最相關的影片，並反白顯示符合其需求的影片部分。
 
-## <a name="features"></a>功能
+## <a name="features"></a>特性
 
 下列清單顯示您可以使用影片索引子的影片和音訊模型，從影片中取出的深入解析：
 

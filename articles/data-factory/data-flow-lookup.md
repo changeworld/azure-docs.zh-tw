@@ -7,18 +7,18 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/26/2020
-ms.openlocfilehash: aa71f7d2f3b277ca34e1e5fea76ada6adf93e573
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 2216e1bf058eef486dbfefba24d52bdc6bdb232f
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77655053"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164673"
 ---
 # <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Azure Data Factory 對應的資料流程查閱轉換
 
 使用查閱以將另一個來源的參考資料新增至資料流程。 查閱轉換需要定義的來源，其指向您的參考資料表且會比對索引鍵欄位。
 
-![查閱轉換](media/data-flow/lookup1.png "查詢")
+![查閱轉換](media/data-flow/lookup1.png "查閱")
 
 選取您想要在內送資料流欄位與參考來源欄位之間比對的索引鍵欄位。 您必須先在資料流程設計畫布上建立新的來源，以作為查閱的右端。
 
@@ -45,6 +45,9 @@ ms.locfileid: "77655053"
 * 比對多個資料列：將它保留空白會傳回單一資料列相符
 * 符合時間：選取 [第一個]、[最後一個] 或 [任何相符]
 * 排序條件：如果您選取 [第一個] 或 [最後一個]，ADF 會要求您的資料進行排序，以便在第一個和最後一個後面有邏輯
+
+> [!NOTE]
+> 如果您需要控制要從查閱中傳回哪一個值，請只在您的單一資料列選取器上使用第一個或最後一個選項。 使用 "any" 或多重資料列查閱的執行速度會更快。
 
 ### <a name="option-2"></a>選項 2
 

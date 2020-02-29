@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 352881d2fb4ddd8ce438f1bca713513b65f50f40
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 73e23dd7d350ea63e9fd8b933a525a9d8aad9e3e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153752"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920768"
 ---
 # <a name="two-class-averaged-perceptron-module"></a>雙類別平均認知模組
 
@@ -37,6 +37,8 @@ ms.locfileid: "77153752"
 2.  藉由設定 [**建立定型模式]** 選項，指定您要如何訓練模型。  
   
     -   **單一參數**：如果您知道要如何設定模型，請提供一組特定值做為引數。
+
+    -   **參數範圍**：如果您不確定最佳參數，而且想要執行參數清理，請選取此選項。 選取要逐一查看的值範圍，[微調模型超參數](tune-model-hyperparameters.md)會逐一查看所提供設定的所有可能組合，以判斷產生最佳結果的超參數。  
   
 3.  針對 [**學習速率**]，指定*學習速率*的值。 學習速率值可控制每次測試和更正模型時，用於隨機梯度下降的步驟大小。
   

@@ -3,12 +3,12 @@ title: 變更 Azure Service Fabric 叢集設定
 description: 本文說明您可以自訂的網狀架構設定和網狀架構升級原則。
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: f42cfd1b41ab463c3c3042987b5d0a0b3b00f67e
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 01f8eb861a1fc53ad95a95d7695df8e4b5b8a2ab
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986184"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164503"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>自訂 Service Fabric 叢集設定
 本文說明您可以為 Service Fabric 叢集自訂的各種網狀架構設定。 針對裝載於 Azure 中的叢集，您可以透過 [Azure 入口網站](https://portal.azure.com)或使用 Azure Resource Manager 範本來自訂設定。 如需詳細資訊，請參閱[升級 Azure 叢集的設定](service-fabric-cluster-config-upgrade-azure.md)。 針對獨立叢集，您會透過更新 *ClusterConfig.json* 檔案並在叢集上執行設定升級來自訂設定。 如需詳細資訊，請參閱[升級獨立叢集的設定](service-fabric-cluster-config-upgrade-windows-server.md)。
@@ -112,7 +112,7 @@ ms.locfileid: "76986184"
 | --- | --- | --- | --- |
 |PropertyGroup|KeyDoubleValueMap，預設值為 None|動態|藉由指定範圍 [0.0-1.0] 中的百分比或空節點的數目作為數位 > = 1.0，來決定需要考慮重組叢集的可用節點數目 |
 
-## <a name="diagnostics"></a>診斷程式
+## <a name="diagnostics"></a>診斷
 
 | **參數** | **允許的值** | **升級原則** | **指引或簡短描述** |
 | --- | --- | --- | --- |
@@ -415,7 +415,7 @@ ms.locfileid: "76986184"
 | --- | --- | --- | --- |
 |IsEnabled|布林值，預設值為 FALSE|靜態|旗標控制叢集中受控識別權杖服務的目前狀態和狀態; 這是使用 Service Fabric 應用程式的受控識別功能的必要條件。|
 
-## <a name="management"></a>管理
+## <a name="management"></a>管理性
 
 | **參數** | **允許的值** | **升級原則** | **指引或簡短描述** |
 | --- | --- | --- | --- |
@@ -671,7 +671,7 @@ ms.locfileid: "76986184"
 |DisableFirewallRuleForDomainProfile| 布林值，預設值為 TRUE |靜態| 指出是否不應該對網域設定檔啟用防火牆規則 |
 |DisableFirewallRuleForPrivateProfile| 布林值，預設值為 TRUE |靜態| 指出是否不應該對私人設定檔啟用防火牆規則 | 
 |DisableFirewallRuleForPublicProfile| 布林值，預設值為 TRUE | 靜態|指出是否不應該對公用設定檔啟用防火牆規則 |
-| EnforceLinuxMinTlsVersion | 布林值，預設值為 FALSE | 動態 | 如果設定為 true，則為，僅支援 TLS 版本 1.2 +。  如果為 false，則為，支援舊版的 TLS 版本。 僅適用于 Linux |
+| EnforceLinuxMinTlsVersion | 布林值，預設值為 FALSE | 靜態 | 如果設定為 true，則為，僅支援 TLS 版本 1.2 +。  如果為 false，則為，支援舊版的 TLS 版本。 僅適用于 Linux |
 |FabricHostSpn| 字串，預設值為 "" |靜態| 當網狀架構以單一網域使用者 (gMSA/網域使用者帳戶) 的身分執行，而且 FabricHost 是在機器帳戶下執行時，FabricHost 的服務主體名稱。 它是 FabricHost 的 IPC 接聽程式 SPN，因為 FabricHost 是在機器帳戶下執行，因此依預設應該保持空白 |
 |IgnoreCrlOfflineError|布林值，預設值為 FALSE|動態|是否要在伺服器端驗證內送用戶端憑證時忽略 CRL 離線錯誤 |
 |IgnoreSvrCrlOfflineError|布林值，預設值為 TRUE|動態|是否要在用戶端驗證內送伺服器憑證時忽略 CRL 離線錯誤，預設為 true。 使用已撤銷的伺服器憑證來進行攻擊需要入侵 DNS，其難度比使用已撤銷的用戶端憑證更高。 |
@@ -680,6 +680,7 @@ ms.locfileid: "76986184"
 |SettingsX509StoreName| 字串，預設值為 "MY"| 動態|網狀架構用來保護組態的 X509 憑證存放區 |
 |UseClusterCertForIpcServerTlsSecurity|布林值，預設值為 FALSE|靜態|是否要使用叢集憑證來保護 IPC 伺服器 TLS 傳輸單位 |
 |X509Folder|字串，預設值為 /var/lib/waagent|靜態|X509 憑證和私密金鑰的所在資料夾 |
+|TLS1_2_CipherList| 字串| 靜態|如果設定為非空白字串，則為，覆寫 TLS 1.2 和以下的支援的加密清單。 請參閱「openssl-cipher」檔，以取得 TLS 1.2： "ECDHE-ECDSA-AES256-GCM-SHA384： ECDHE-ECDSA-AES128-gcm-SHA256： ECDHE-RSA-AES256-GCM-SHA384 的強式加密清單的清單格式範例ECDHE-RSA-AES-128-GCM-SHA256： ECDHE-ECDSA-AES256-CBC-SHA384： ECDHE-ECDSA-AES128-cbc-SHA256： ECDHE-RSA-AES256-CBC-SHA384： ECDHE-RSA-AES128-CBC-SHA256 "僅適用于 Linux。 |
 
 ## <a name="securityadminclientx509names"></a>Security/AdminClientX509Names
 
@@ -738,7 +739,7 @@ ms.locfileid: "76986184"
 |InvokeContainerApi|string，預設值為 "Admin"|動態|Invoke container API |
 |InvokeInfrastructureCommand |字串，預設值為 "Admin" |動態| 基礎結構工作管理命令的安全性組態。 |
 |InvokeInfrastructureQuery |字串，預設值為 "Admin\|\|User" | 動態|用於查詢基礎結構工作的安全性組態。 |
-|List |字串，預設值為 "Admin\|\|User" | 動態|映像存放區用戶端檔案列出作業的安全性組態。 |
+|清單 |字串，預設值為 "Admin\|\|User" | 動態|映像存放區用戶端檔案列出作業的安全性組態。 |
 |MoveNextFabricUpgradeDomain |字串，預設值為 "Admin" |動態| 使用明確升級網域繼續進行叢集升級的安全性設定。 |
 |MoveNextUpgradeDomain |字串，預設值為 "Admin" |動態| 用於以明確的「升級網域」繼續進行應用程式升級的安全性組態。 |
 |MoveReplicaControl |字串，預設值為 "Admin" | 動態|移動複本。 |
@@ -864,14 +865,14 @@ ms.locfileid: "76986184"
 |MaxSecondaryReplicationQueueSize |單位，預設值為 16384 | 靜態 |這是次要複寫佇列中可存在的作業數目上限。 請注意，此值必須是 2 的乘冪。 |
 |ReplicatorAddress |字串，預設值為 "localhost:0" | 靜態 | -'IP:Port' 字串形式的端點，Windows Fabric 複寫器使用此端點來建立與其他複本的連線，以便傳送/接收作業。 |
 
-## <a name="transport"></a>運輸
+## <a name="transport"></a>傳輸
 | **參數** | **允許的值** |**升級原則** |**指引或簡短描述** |
 | --- | --- | --- | --- |
 |ConnectionOpenTimeout|時間範圍，預設值為 Common::TimeSpan::FromSeconds(60)|靜態|以秒為單位指定時間範圍。 內送和接收端 (包括安全模式下的安全性交涉) 的連線設定逾時 |
 |FrameHeaderErrorCheckingEnabled|布林值，預設值為 TRUE|靜態|在非安全模式的框架標題上檢查時發生錯誤的預設設定；元件設定會加以覆寫。 |
 |MessageErrorCheckingEnabled|布林值，預設值為 FALSE|靜態|在非安全模式的訊息標題和本文上檢查時發生錯誤的預設設定；元件設定會加以覆寫。 |
 |ResolveOption|string，預設值為 "unspecified"|靜態|決定 FQDN 的解析方式。  有效值為 "unspecified/ipv4/ipv6"。 |
-|SendTimeout|時間範圍，預設值為 Common::TimeSpan::FromSeconds(300)|動態|以秒為單位指定時間範圍。 偵測停滯連線時傳送逾時。 TCP 失敗報告在某些環境中並不可靠。 這可能必須根據可用的網路頻寬和輸出資料的大小進行調整 (MaxMessageSize\/\*\*SendQueueSizeLimit)。 |
+|SendTimeout|時間範圍，預設值為 Common::TimeSpan::FromSeconds(300)|動態|以秒為單位指定時間範圍。 偵測停滯連線時傳送逾時。 TCP 失敗報告在某些環境中並不可靠。 這可能必須根據可用的網路頻寬和輸出資料的大小進行調整 (MaxMessageSize\*\/\*SendQueueSizeLimit)。 |
 
 ## <a name="upgradeorchestrationservice"></a>UpgradeOrchestrationService
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 1d3dd0f4f1da4d3815d4d879dd13ed5882f39e8f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 46044d4c6dd65944291aff157229be0abc60d3d7
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230719"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913237"
 ---
 # <a name="create-your-first-azure-function-with-java-and-intellij"></a>使用 JAVA 和 IntelliJ 建立您的第一個 Azure 函式
 
@@ -42,13 +42,13 @@ ms.locfileid: "74230719"
 
 1. 在 IntelliJ IDEA 中，選取 [建立新專案]。  
 1. 在 [新增專案] 視窗中，從左窗格選取 [Maven]。
-1. 選取 [從 Archetype 建立] 核取方塊，並針對 **azure-functions-archetype** 選取 [新增 Archetype][](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)。
+1. 選取 [從 Archetype 建立] 核取方塊，並針對 [azure-functions-archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype) 選取 [新增 Archetype]。
 1. 在 [新增 Archetype] 視窗中，完成如下欄位：
     - GroupId：com.microsoft.azure
     - ArtifactId：azure-functions-archetype
     - _版本_：使用[中央存放庫](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)中的最新**1.22**版
     ![從 IntelliJ 的原型建立 Maven 專案](media/functions-create-first-java-intellij/functions-create-intellij.png)  
-1. 選取 [確定]，然後選取 [下一步]。
+1. 依序選取 [確定] 和 [下一步]。
 1. 輸入目前專案的詳細資料，然後選取 [完成]。
 
 Maven 會在和 [ArtifactId] 值具有相同名稱的新資料夾中建立專案檔。 專案所產生的程式碼是 [HTTP 觸發](/azure/azure-functions/functions-bindings-http-webhook)的簡單函式，此函式會回應觸發 HTTP 要求的本文。
@@ -80,8 +80,6 @@ Maven 會在和 [ArtifactId] 值具有相同名稱的新資料夾中建立專案
 1. 選取 **(+)** 以新增 [遠端]。
 1. 完成 [名稱] 和 [設定] 欄位，然後選取 [確定] 以儲存組態。
 1. 設定完成後，選取 [對 <遠端組態名稱> 進行偵錯] 或在鍵盤上按 Shift+F9 來開始偵錯。
-
-   ![在 IntelliJ 中進行函式偵錯](media/functions-create-first-java-intellij/debug-configuration-intellij.png)
 
 1. 完成時，停止偵錯工具和執行中處理序。 一次只能有一個函式主機是作用中且在本機執行。
 

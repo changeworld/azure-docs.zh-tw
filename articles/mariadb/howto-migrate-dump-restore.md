@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 660b39a063496eb6566d51dbef2c914499dc70c9
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 2/27/2020
+ms.openlocfilehash: 72735e83af97fde8377e27daa45501704ef5a3c8
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74776000"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164537"
 ---
 # <a name="migrate-your-mariadb-database-to-azure-database-for-mariadb-using-dump-and-restore"></a>使用傾印和還原來將 MariaDB 資料庫移轉至適用於 MariaDB 的 Azure 資料庫
 此文章將說明兩個常見方法，讓您可在適用於 MariaDB 的 Azure 資料庫中用來備份和還原資料庫
@@ -22,10 +22,10 @@ ms.locfileid: "74776000"
 若要逐步執行本作法指南，您需要具備：
 - [建立適用於 MariaDB 的 Azure 資料庫伺服器 - Azure 入口網站](quickstart-create-mariadb-server-database-using-azure-portal.md)
 - 已安裝於電腦上的 [mysqldump](https://mariadb.com/kb/en/library/mysqldump/) 命令列公用程式。
-- MySQL Workbench [MySQL Workbench 下載](https://dev.mysql.com/downloads/workbench/)、Toad、Navicat 或用來執行傾印和還原命令的其他第三方 MySQL 工具。
+- MySQL 工作臺[Mysql 工作臺下載](https://dev.mysql.com/downloads/workbench/)或其他協力廠商 mysql 工具，以執行傾印和還原命令。
 
 ## <a name="use-common-tools"></a>使用一般工具
-使用一般公用程式和工具 (例如 MySQL Workbench、mysqldump、Toad 或 Navicat) 從遠端連線，然後將資料還原至適用於 MariaDB 的 Azure 資料庫。 在具有網際網路連接的用戶端電腦上使用這類工具，來連線到適用於 MariaDB 的 Azure 資料庫。 如需使用 SSL 加密連接的最佳安全性作法，請參閱[在適用於 MariaDB 的 Azure 資料庫中設定 SSL 連線能力](concepts-ssl-connection-security.md)。 在移轉到適用於 MariaDB 的 Azure 資料庫時，您不需要將傾印檔案移至任何特定的雲端位置。 
+使用常見的公用程式和工具（例如 MySQL 工作臺或 mysqldump），從遠端連線並將資料還原到適用於 MariaDB 的 Azure 資料庫。 在具有網際網路連接的用戶端電腦上使用這類工具，來連線到適用於 MariaDB 的 Azure 資料庫。 如需使用 SSL 加密連接的最佳安全性作法，請參閱[在適用於 MariaDB 的 Azure 資料庫中設定 SSL 連線能力](concepts-ssl-connection-security.md)。 在移轉到適用於 MariaDB 的 Azure 資料庫時，您不需要將傾印檔案移至任何特定的雲端位置。 
 
 ## <a name="common-uses-for-dump-and-restore"></a>傾印和還原的常見用途
 您可以在數個常見案例中使用 MySQL 公用程式 (例如 mysqldump 與 mysqlpump)，將資料庫傾印及載入至適用於 MariaDB 的 Azure 資料庫伺服器。 
@@ -41,7 +41,7 @@ ms.locfileid: "74776000"
    ```
 - 若要避免任何相容性問題，請確定當傾印資料庫時，在來源和目的地系統上使用相同版本的 MariaDB。 例如，如果現有的 MariaDB 伺服器是 10.2 版，則您應該將適用於 MariaDB 的 Azure 資料庫設定為執行 10.2 版。 `mysql_upgrade` 命令在適用於 MariaDB 的 Azure 資料庫伺服器中無法運作，因此並不支援。 如果您要在 MariaDB 版本之間升級，請先將較低版本的資料庫傾印或匯出到自己環境中較高版本的 MariaDB。 接著，執行 `mysql_upgrade`，之後再嘗試移轉至適用於 MariaDB 的 Azure 資料庫。
 
-## <a name="performance-considerations"></a>效能注意事項
+## <a name="performance-considerations"></a>效能考量
 若要最佳化效能，請在傾印大型資料庫時注意這些考量：
 -   傾印資料庫時在 mysqldump 中使用 `exclude-triggers` 選項。 從傾印檔案排除觸發程序以避免在資料還原期間引發觸發程序命令。 
 -   使用 `single-transaction` 選項將交易隔離模式設為 REPEATABLE READ，然後在傾印資料之前，將 START TRANSACTION 的 SQL 陳述式傳送到伺服器。 在單一交易中傾印許多資料表會導致在還原期間耗用某些額外的儲存體。 `single-transaction` 選項和 `lock-tables` 選項是互斥的，因為 LOCK TABLES 會導致隱含認可任何暫止交易。 若要傾印大型資料表，請結合 `single-transaction` 選項與 `quick` 選項。 
@@ -81,7 +81,7 @@ $ mysqldump -u root -p --databases testdb1 testdb3 testdb5 > testdb135_backup.sq
 ```
 
 ## <a name="create-a-database-on-the-target-server"></a>在目標伺服器上建立資料庫
-在您要移轉資料的目標適用於 MariaDB 的 Azure 資料庫伺服器上建立空白資料庫。 使用例如 MySQL Workbench、Toad 或 Navicat 的工具來建立資料庫。 資料庫名稱可以與包含傾印資料的資料庫名稱相同，或者您可以建立名稱不同的資料庫。
+在您要移轉資料的目標適用於 MariaDB 的 Azure 資料庫伺服器上建立空白資料庫。 使用 MySQL 工作臺之類的工具來建立資料庫。 資料庫名稱可以與包含傾印資料的資料庫名稱相同，或者您可以建立名稱不同的資料庫。
 
 若要連線，請在適用於 MariaDB 的 Azure 資料庫的 [概觀] 中尋找連線資訊。
 

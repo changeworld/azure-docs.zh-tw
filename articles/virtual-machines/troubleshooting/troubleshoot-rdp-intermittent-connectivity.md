@@ -12,19 +12,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/24/2018
 ms.author: genli
-ms.openlocfilehash: 636973110e11770e33c635e312c86b25110705da
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c22a401a6b25f7bb2c27a10e52214fa42ac6089b
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981341"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918218"
 ---
 # <a name="remote-desktop-disconnects-frequently-in-azure-vm"></a>Azure VM 中的遠端桌面時常斷線
 
 本文將說明如何透過遠端桌面通訊協定 (RDP) 對 Azure 虛擬機器 (VM) 的時常斷線情況進行疑難排解。
 
-> [!NOTE] 
-> Azure 建立和處理資源的部署模型有二種： [資源管理員和傳統](../../azure-resource-manager/management/deployment-models.md)。 本文涵蓋內容包括如何使用 Resource Manager 部署模型。 建議您針對新的部署使用此模型，而不要使用傳統部署模型。
 
 ## <a name="symptom"></a>徵狀
 
@@ -34,7 +32,7 @@ ms.locfileid: "75981341"
 
 如果 RDP 接聽程式的設定不正確，就可能發生此問題。 一般而言，此問題會發生在使用自訂映像的 VM 上。
 
-## <a name="solution"></a>解決方案
+## <a name="solution"></a>解決方法
 
 在遵循下列步驟之前，[請擷取受影響虛擬機器作業系統磁碟的快照集](../windows/snapshot-copy-managed-disk.md)作為備份。 
 

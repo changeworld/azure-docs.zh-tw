@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 07/03/2019
 ms.author: cynthn
-ms.openlocfilehash: f5b4bf14be264d16109ddc10cd3b667e728642c6
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ed29c92d20a6b0d749ec44a22f42ec446ec58650
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980695"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919561"
 ---
 # <a name="move-a-windows-vm-to-another-azure-subscription-or-resource-group"></a>將 Windows VM 移至另一個 Azure 訂用帳戶或資源群組
 本文將逐步引導您了解如何在資源群組或訂用帳戶之間移動 Windows 虛擬機器 (VM)。 如果您原本在個人訂用帳戶中建立 VM，而現在想要將它移至您的公司訂用帳戶以繼續工作，在訂用帳戶之間移動會很方便。 您不需要啟動 VM 就能移動它，而且它應該會在移動期間繼續執行。
@@ -35,13 +35,13 @@ ms.locfileid: "75980695"
 若要將虛擬機器移至另一個資源群組，您必須確定也要移動所有的相依資源。 若要取得清單 (其中具有每個資源的資源識別碼)，請使用 [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) Cmdlet。
 
 ```azurepowershell-interactive
- Get-AzResource -ResourceGroupName <sourceResourceGroupName> | Format-list -wrap -Property ResourceId
+ Get-AzResource -ResourceGroupName myResourceGroup | Format-table -wrap -Property ResourceId
 ```
 
-您可以使用上述命令的輸出作為 [Move-AzResource](https://docs.microsoft.com/powershell/module/az.resources/move-azresource) 以逗號分隔的資源識別碼清單，以將每個資源移到目的地。
+您可以使用前一個命令的輸出來建立以逗號分隔的資源識別碼清單，以[get-azresource](https://docs.microsoft.com/powershell/module/az.resources/move-azresource)將每個資源移到目的地。
 
 ```azurepowershell-interactive
-Move-AzResource -DestinationResourceGroupName "<myDestinationResourceGroup>" `
+Move-AzResource -DestinationResourceGroupName "myDestinationResourceGroup" `
     -ResourceId <myResourceId,myResourceId,myResourceId>
 ```
 

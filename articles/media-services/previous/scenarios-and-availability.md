@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 4766f22cd84b2aab00f6dcc4064dbeea8018f694
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 7b5569738721038beadc78d94c81393803b6d36a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77564949"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920581"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>跨資料中心的媒體服務功能情節和可用性
 
@@ -202,6 +202,9 @@ AMS 提供兩個隨選編碼器：**媒體編碼器標準**和**媒體編碼器�
 ### <a name="analytics-media-processors"></a>分析媒體處理器
 
 媒體分析是一組語音與視覺元件，可讓組織或企業從其影片檔輕鬆地產生能採取行動的見解。 如需詳細資訊，請參閱 [Azure 媒體服務分析概觀](media-services-analytics-overview.md)。
+
+> [!NOTE]
+> 某些分析媒體處理器將會淘汰。 如需停用日期，請參閱[舊版元件](legacy-components.md)主題。
 
 #### <a name="availability"></a>可用性
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: a53a27a92b393c38d1f49efbd50d91fa1a2e9657
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 712626345e10ab0e4290ac91b0f121ff6960303e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597689"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920564"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux 在 Azure 中攜帶自己的訂用帳戶黃金映射
 
@@ -41,6 +41,9 @@ Red Hat Enterprise Linux （RHEL）映射可透過隨用隨付（PAYG）或自�
 - 映射已未獲授權，因此您必須使用訂用帳戶管理員來註冊並訂閱 Vm，以直接從 Red Hat 取得更新
 
 - 目前無法在 Linux 映射的 BYOS 和 PAYG 計費模型之間動態切換。 需要從個別映射重新部署 VM，才能切換計費模型
+
+>[!NOTE]
+> 第2代的 RHEL BYOS 映射目前無法透過 marketplace 供應專案使用。 如果您需要 Gen 2 RHEL BYOS 映射，請造訪 Red Hat 訂用帳戶管理中的 Coud 存取儀表板。 如需更多詳細資料，請[參閱 Red Hat 檔](https://access.redhat.com/articles/4847681)。
 
 ## <a name="requirements-and-conditions-to-access-the-red-hat-gold-images"></a>存取 Red Hat 黃金影像的需求和條件
 

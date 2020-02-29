@@ -1,23 +1,23 @@
 ---
-title: 使用 Azure Machine Learning 設計工具重新定型模型
+title: 使用 Azure Machine Learning 設計工具重新定型模型（預覽）
 titleSuffix: Azure Machine Learning
-description: 瞭解如何在 Azure Machine Learning 設計工具中使用已發行的管線重新定型模型。
+description: 瞭解如何在 Azure Machine Learning 設計工具（預覽）中使用已發行的管線重新定型模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.author: peterlu
-author: peterclu
-ms.date: 12/15/2019
-ms.openlocfilehash: d1382da739fd8ca56d4cc53c2c302331bdfbf1c3
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.author: keli19
+author: likebupt
+ms.date: 02/24/2020
+ms.openlocfilehash: b69cd4c8459ffae363f02247b1f20488afe1cd9b
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311864"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921586"
 ---
-# <a name="retrain-models-with-azure-machine-learning-designer"></a>使用 Azure Machine Learning 設計工具重新定型模型
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+# <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>使用 Azure Machine Learning 設計工具重新定型模型（預覽）
+[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
 在此操作說明中，您將瞭解如何使用 Azure Machine Learning 設計工具來重新定型機器學習模型。 瞭解如何使用已發佈的管線將機器學習工作流程自動化，以進行重新定型。
 
@@ -29,7 +29,7 @@ ms.locfileid: "76311864"
 > * 發佈您的訓練管線。
 > * 重新定型您的模型。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://aka.ms/AMLFree)。
 
@@ -69,11 +69,11 @@ ms.locfileid: "76311864"
 
 1. 選取 **訓練模型** 模組。
 
-1. 在 [設定] 窗格中，選取 [**輸出**]。
+1. 在 [設定] 窗格中，選取 [**輸出 + 記錄**]。
 
-1. 選取 [ **Trained_model** ] 以下載模型。
+1. 按一下 [**視圖輸出**] 圖示，然後遵循快顯視窗中的指示，以找出定型的模型。
 
-![顯示如何下載已定型模型的螢幕擷取畫面](./media/how-to-retrain-designer/download-model.png)
+![顯示如何下載已定型模型的螢幕擷取畫面](./media/how-to-retrain-designer/trained-model-view-output.png)
 
 ## <a name="create-a-pipeline-parameter"></a>建立管線參數
 

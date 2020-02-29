@@ -8,15 +8,15 @@ ms.subservice: core
 ms.topic: reference
 author: peterclu
 ms.author: peterlu
-ms.date: 12/17/2019
-ms.openlocfilehash: d3feb62c0c7fa24dd998add08d17ebd1d4e9ee6c
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.date: 02/22/2020
+ms.openlocfilehash: ece4b7a85ff5738900b8f999cc2f14ba35ecab0d
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162577"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920088"
 ---
-# <a name="algorithm--module-reference-for-azure-machine-learning-designer"></a>Azure Machine Learning 設計工具的演算法 & 模組參考
+# <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>Azure Machine Learning 設計工具的演算法 & 模組參考（預覽）
 
 此參考內容提供 Azure Machine Learning 設計工具（預覽）中所提供的每個機器學習服務演算法和模組的技術背景。
 
@@ -57,6 +57,7 @@ ms.locfileid: "77162577"
 | R 語言 | 撰寫程式碼並將它內嵌在模組中，以將 R 與您的管線整合。 | [執行 R 腳本](execute-r-script.md) |
 | 文字分析 | 提供專門用來處理結構化和非結構化文字的計算工具。 | [從文字解壓縮 N 語法特徵](extract-n-gram-features-from-text.md) <br/> [功能雜湊](feature-hashing.md) <br/> [前置處理文字](preprocess-text.md) |
 | 建議 | 建立建議模型。 | [評估推薦](evaluate-recommender.md) <br/> [評分 SVD 推薦](score-svd-recommender.md) <br/> [訓練 SVD 推薦](train-SVD-recommender.md) |
+| 異常偵測 | 建立異常偵測模型。 | [以 PCA 為基礎的異常偵測](pca-based-anomaly-detection.md) <br/> [定型異常偵測模型](train-anomaly-detection-model.md) |
 
 ## <a name="error-messages"></a>錯誤訊息
 

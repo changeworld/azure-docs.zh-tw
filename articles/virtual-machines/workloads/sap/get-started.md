@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/25/2020
+ms.date: 02/27/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c9d287d5bfc091fcbbff46095da5458fa08de73d
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 64aa6dcd9d21d2102c5d61dbc050fc9aa07aa534
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77624177"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163857"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 來裝載和執行 SAP 工作負載案例
 
@@ -117,6 +117,11 @@ Azure 上的 SAP 工作負載區段中的檔變更會列在本文結尾。 變�
 
 
 ## <a name="change-log"></a>變更記錄檔
+- 02/27/2020：Sles [FOR sap applications 的 Azure vm 上的 SAP Nw 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)、azure vm 上的 sap [nw 高可用性（含及 for sap Applications](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files) ）和[Azure Vm 上的 sap NetWeaver 高可用性（可在 sles 多 SID 指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)上調整「失敗時」叢集參數）
+- 02/26/2020：[SAP Hana azure 虛擬機器儲存體](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)設定中的變更，以澄清適用于 AZURE 上 HANA 的檔案系統選擇
+- 02/26/2020：適用于[sap 的高可用性架構和案例](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios)變更在 RHEL 多 SID 指南上包含 Azure vm 上的 HA For sap NetWeaver 的連結
+- 02/26/2020：[Sles FOR sap applications 的 Azure vm 上的 SAP Nw 高](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)可用性、azure vm 上的 sap [nw 高可用性（含及 for sap 應用程式](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)）、 [azure vm 高](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)可用性適用于在 rhel 上的 sap NetWeaver 和 AZURE vm 高可用性適用于 rhel 上的 sap NetWeaver 和 azure [NetApp FILES](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files) ，以移除不支援多重 SID ASCS/ERS 叢集的語句
+- 02/26/2020：[Azure vm 上的 SAP NetWeaver 的高可用性版本 RHEL 多 sid 指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)，可新增 SUSE 多重 sid 叢集指南的連結
 - 02/25/2020：適用于[SAP 的高可用性架構和案例](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios)變更新增新 HA 文章的連結
 - 02/25/2020：在[SUSE Linux Enterprise Server 上使用 Pacemaker 的 Azure vm 上的 IBM DB2 LUW 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide-ha-ibm)變更，以指向說明使用標準 Azure 負載平衡器存取公用端點的檔
 - 02/21/2020：[針對 sap 工作負載的 SAP ASE Azure 虛擬機器 DBMS 部署](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sapase)文章的完整修訂

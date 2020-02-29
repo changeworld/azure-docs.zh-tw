@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 02/15/2020
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: eda567fda13d6caca679d0ce4947e042eca9530d
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 94ed936e619461a2dbf7ec837c2d80e21c01c88e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77652005"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919986"
 ---
 # <a name="detecting-and-handling-batch-service-errors"></a>偵測及處理 Batch 服務錯誤
 
@@ -33,11 +33,16 @@ ms.locfileid: "77652005"
 - 節流可能會導致429或503狀態碼 HTTP 回應的錯誤，並包含重試之後的標頭。
 - 4xx 錯誤，其中包括 AlreadyExists 和 InvalidOperation 這類錯誤。 這表示資源不是處於狀態轉換的正確狀態。
 
+如需各種錯誤碼類型和特定錯誤碼的詳細資訊，請參閱[批次狀態和錯誤碼](https://docs.microsoft.com/rest/api/batchservice/batch-status-and-error-codes)。
+
 ## <a name="when-to-retry"></a>重試的時機
 
 Batch Api 會在發生失敗時通知您。 它們全都可以重試，而且它們全都包含該用途的全域重試處理常式。 最佳做法是使用此內建機制。
 
 失敗之後，您應該等候一段時間（重試之間數秒），然後再重試。 如果您太過頻繁或太快重試，重試處理常式將會節流。
 
+### <a name="for-more-information"></a>取得詳細資訊  
+
+[Batch api 和工具](batch-apis-tools.md)會連結至 API 參考資訊。 例如，.NET API 有一個[RetryPolicyProvider 類別]( https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.retrypolicyprovider?view=azure-dotnet)，其中應指定必要的重試原則。 
 
 如需每個 API 及其預設重試原則的詳細資訊，請參閱[批次狀態和錯誤碼](https://docs.microsoft.com/rest/api/batchservice/batch-status-and-error-codes)。

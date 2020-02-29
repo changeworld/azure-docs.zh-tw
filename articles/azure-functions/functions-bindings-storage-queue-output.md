@@ -6,16 +6,18 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 2c16cc965c1e7e98727170fd5896dd081482c692
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 76af5f398edd736874fa79095f2e80c02298eac0
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493497"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164639"
 ---
 # <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>Azure Functions 的 Azure 佇列儲存體輸出系結
 
 Azure Functions 可以藉由設定輸出系結來建立新的 Azure 佇列儲存體訊息。
+
+如需安裝和設定詳細資料的相關資訊，請參閱[總覽](./functions-bindings-storage-queue.md)。
 
 ## <a name="example"></a>範例
 

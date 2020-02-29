@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 569eb31c6cbe8b95773d52f6e1325801fbabf86f
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 329b930c950ea7c58bdac798fce51af152aa8ff3
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773540"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920598"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure 服務匯流排 Azure 監視器中的計量
 
@@ -60,7 +60,7 @@ Azure 監視器上的計量和警示會依每個警示來計費。 當警示已�
 
 計算資料和管理作業要求的數目。
 
-| 標準名稱 | 說明 |
+| 標準名稱 | 描述 |
 | ------------------- | ----------------- |
 | 傳入的要求| 在指定時段內，向服務匯流排服務提出的要求數目。 <br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
 |成功的要求|在指定時段內，向服務匯流排服務提出的成功要求數目。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
@@ -78,7 +78,7 @@ Azure 監視器上的計量和警示會依每個警示來計費。 當警示已�
 
 ## <a name="message-metrics"></a>訊息計量
 
-| 標準名稱 | 說明 |
+| 標準名稱 | 描述 |
 | ------------------- | ----------------- |
 |傳入訊息|在指定時段內，傳送至服務匯流排的事件或訊息數目。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
 |外送訊息|在指定時段內，從服務匯流排接收的事件或訊息數目。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
@@ -87,9 +87,16 @@ Azure 監視器上的計量和警示會依每個警示來計費。 當警示已�
 | 死信訊息| 佇列/主題中的無效字母訊息計數。 <br/><br/> 單位：計數 <br/> 彙總類型：平均 <br/>維度：EntityName |
 | 排定的訊息| 佇列/主題中已排程的訊息計數。 <br/><br/> 單位：計數 <br/> 彙總類型：平均  <br/> 維度：EntityName |
 
+> [!NOTE]
+> 下列計量的值為時間點值。 在該時間點之後立即取用的傳入訊息，可能不會反映在這些計量中。 
+> - 訊息
+> - 活動訊息 
+> - 死信訊息 
+> - 排定的訊息 
+
 ## <a name="connection-metrics"></a>連接計量
 
-| 標準名稱 | 說明 |
+| 標準名稱 | 描述 |
 | ------------------- | ----------------- |
 |ActiveConnections|命名空間及實體上的作用中連線數目。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
 
@@ -98,7 +105,7 @@ Azure 監視器上的計量和警示會依每個警示來計費。 當警示已�
 > [!NOTE] 
 > 下列計量僅適用於**進階**層。 
 
-| 標準名稱 | 說明 |
+| 標準名稱 | 描述 |
 | ------------------- | ----------------- |
 |每個命名空間的 CPU 使用量|命名空間的 CPU 使用量百分比。<br/><br/> 單位：百分比 <br/> 彙總類型：最大 <br/> 維度：EntityName|
 |每個命名空間的記憶體大小使用量|命名空間的記憶體使用量百分比。<br/><br/> 單位：百分比 <br/> 彙總類型：最大 <br/> 維度：EntityName|
@@ -107,7 +114,7 @@ Azure 監視器上的計量和警示會依每個警示來計費。 當警示已�
 
 Azure 服務匯流排支援下列的 Azure 監視器計量維度。 將維度新增至計量為選擇性。 如果不新增維度，則會在命名空間層級指定計量。 
 
-|維度名稱|說明|
+|維度名稱|描述|
 | ------------------- | ----------------- |
 |EntityName| 服務匯流排支援命名空間下的訊息實體。|
 

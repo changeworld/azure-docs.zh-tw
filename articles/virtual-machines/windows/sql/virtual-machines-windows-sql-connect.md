@@ -14,16 +14,16 @@ ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ae5c4cdd76f164d13da349c355a30d8b6dc83058
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: deb337d989a3658e909cefa7a9ab028e37792562
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102096"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918371"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>連線到 Azure 上的 SQL Server 虛擬機器
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 本主題說明如何連線到在 Azure 虛擬機器上執行的 SQL Server 執行個體。 它涵蓋了部分[一般連線能力案例](#connection-scenarios)，然後提供[在入口網站中變更連線設定的步驟](#change)。 如果您需要疑難排解或設定入口網站以外的連線，請參閱本主題結尾的[手動設定](#manual)。 
 
@@ -97,11 +97,11 @@ Server=mysqlvm;Integrated Security=true
 
 您可以在 Azure 入口網站中變更您 SQL Server 虛擬機器的連線能力設定。
 
-1. 在 Azure 入口網站中, 選取**SQL 虛擬機器**。
+1. 在 Azure 入口網站中，選取**SQL 虛擬機器**。
 
 2. 選取 SQL Server VM。
 
-3. 在 [**設定**] 下, 選取 [**安全性**]。
+3. 在 [**設定**] 下，選取 [**安全性**]。
 
 4. 將 **SQL 連線能力層級**變更為必要的設定。 可選擇性地使用此區域來變更 SQL Server 連接埠或 SQL 驗證設定。
 
@@ -123,7 +123,7 @@ Server=mysqlvm;Integrated Security=true
 
 [!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-connection-tcp-protocol.md)]
 
-## <a name="connect-with-ssms"></a>以 SSMS 連線
+## <a name="connect-with-ssms"></a>使用 SSMS 連線
 
 下列步驟示範如何建立 Azure VM 的選擇性 DNS 標籤，然後與 SQL Server Management Studio (SSMS) 連線。
 
@@ -137,7 +137,7 @@ Server=mysqlvm;Integrated Security=true
 
 | 需求 | 描述 |
 |---|---|
-| [啟用 SQL Server 驗證模式](https://docs.microsoft.com/sql/database-engine/configure-windows/change-server-authentication-mode#SSMSProcedure) | 除非您已經在虛擬網路上設定 Active Directory，否則，從遠端連線至 VM 需要 SQL Server 驗證。 |
+| [啟用 SQL Server 驗證模式](/sql/database-engine/configure-windows/change-server-authentication-mode#use-ssms) | 除非您已經在虛擬網路上設定 Active Directory，否則，從遠端連線至 VM 需要 SQL Server 驗證。 |
 | [建立 SQL 登入](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/create-a-login) | 如果您使用的是 SQL 驗證，則需要包含使用者名稱和密碼，且具備目標資料庫權限的 SQL 登入。 |
 | [啟用 TCP/IP 通訊協定](#manualtcp) | SQL Server 必須允許透過 TCP 連線。 |
 | [啟用 SQL Server 連接埠的防火牆規則](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) | VM 上的防火牆必須允許 SQL Server 連接埠 (預設 1433) 上的連入流量。 |

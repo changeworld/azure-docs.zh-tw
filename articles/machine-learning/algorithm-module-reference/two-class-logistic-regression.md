@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 541d1001f8b5881f2773f795d7bd849704cbd796
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: b1afd99a569de96e9075b4b5b6eff902abd8642e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153684"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916756"
 ---
 # <a name="two-class-logistic-regression-module"></a>雙類別羅吉斯回歸模組
 
@@ -41,6 +41,8 @@ ms.locfileid: "77153684"
 2.  藉由設定 [**建立定型模式]** 選項，指定您要如何訓練模型。  
   
     -   **單一參數**：如果您知道要如何設定模型，可以提供一組特定值做為引數。  
+
+    -   **參數範圍**：如果您不確定最佳參數，您可以使用[微調模型超參數](tune-model-hyperparameters.md)模組來尋找最佳參數。 您會提供某個範圍的值，而講師會逐一查看設定的多個組合，以判斷產生最佳結果的值組合。
   
 3.  針對 [**優化容錯**]，指定優化模型時要使用的臨界值。 如果反覆運算之間的改進低於指定的臨界值，則會將演算法視為在解決方案上具有交集，而定型會停止。  
   

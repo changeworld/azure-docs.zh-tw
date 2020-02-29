@@ -16,15 +16,16 @@ ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 138ca9bf3352c46b8ac495b58a2fd6d7bafeb658
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 80438319a6337dd6f28f9bdca8a428829b6cb0b9
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889797"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917908"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect 同步處理：目錄擴充
-您可以使用目錄擴充功能，從內部部署 Active Directory 利用自己的屬性擴充 Azure Active Directory (Azure AD) 中的結構描述。 此功能可讓您建置 LOB 應用程式，方法是取用您在內部部署中持續進行管理的屬性。 透過 [Azure AD 圖形 API 目錄擴充功能](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions)或 [Microsoft Graph](https://developer.microsoft.com/graph/) 即可取用這些屬性。 若要查看可用的屬性，您可以分別使用 [Azure AD Graph 總管](https://graphexplorer.azurewebsites.net/)和 [Microsoft Graph 總管](https://developer.microsoft.com/graph/graph-explorer)。 您也可以使用這項功能，在 Azure AD 中建立動態群組。
+您可以使用目錄擴充功能，從內部部署 Active Directory 利用自己的屬性擴充 Azure Active Directory (Azure AD) 中的結構描述。 此功能可讓您建置 LOB 應用程式，方法是取用您在內部部署中持續進行管理的屬性。 這些屬性可以透過[擴充](https://docs.microsoft.com/graph/extensibility-overview
+)功能來取用。 您可以使用[Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)來查看可用的屬性。 您也可以使用這項功能，在 Azure AD 中建立動態群組。
 
 目前沒有任何 Office 365 工作負載取用這些屬性。
 
@@ -61,16 +62,12 @@ Azure AD 中的物件最多可有 100 個目錄擴充功能的屬性。 長度�
 
 屬性前面會加上 **\_{ApplicationId}\_的延伸**模組。 ApplicationId 具有 Azure AD 租使用者中所有屬性的相同值。 本主題中的所有其他案例都需要此值。
 
-## <a name="viewing-attributes-using-graph"></a>使用 Graph 來查看屬性
+## <a name="viewing-attributes-using-the-microsoft-graph-api"></a>使用 Microsoft Graph API 來查看屬性
 
-現在可透過 Azure AD 圖形 API 提供這些屬性。 您可以使用 [Azure AD Graph 總管](https://graphexplorer.azurewebsites.net/)進行查詢。
-
-![Azure AD Graph 總管](./media/how-to-connect-sync-feature-directory-extensions/extension4.png)
-
-或者，您可以使用 [Microsoft Graph 總管](https://developer.microsoft.com/graph/graph-explorer#)，透過 Microsoft 圖形 API 查詢屬性。
+這些屬性現在可透過 Microsoft Graph API 使用[Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer#)來取得。
 
 >[!NOTE]
-> 在 Microsoft Graph 中，您必須要求要傳回的屬性。 明確選取如下的屬性： HTTPs\://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com？ $select = extension_9d98ed114c4840d298fad781915f27e4_employeeID，extension_9d98ed114c4840d298fad781915f27e4_division。
+> 在 Microsoft Graph API 中，您必須要求要傳回的屬性。 明確地選取屬性，如下所示： `https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division`。
 >
 > 如需詳細資訊，請參閱 [Microsoft Graph：使用查詢參數](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter)。
 

@@ -6,12 +6,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 02/23/2020
 ms.author: rogarana
-ms.openlocfilehash: 9bda3331bc27f387bd05ea0fcd29e7badf6d6a02
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 419f0506751ddc328539eafa52507b0dd0739c79
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77651078"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921550"
 ---
 # <a name="enable-active-directory-authentication-over-smb-for-azure-file-shares"></a>針對 Azure 檔案共用啟用透過 SMB 進行 Active Directory 驗證
 
@@ -62,7 +62,7 @@ ms.locfileid: "77651078"
 
 ## <a name="regional-availability"></a>區域可用性
 
-Azure 檔案儲存體 AD 驗證適用于[大部分的公用區域](https://azure.microsoft.com/global-infrastructure/regions/)，但尚未提供的區域子集為：
+Azure 檔案儲存體 AD 驗證（預覽）適用于[大部分的公用區域](https://azure.microsoft.com/global-infrastructure/regions/)，但除外：
 
 - 美國西部
 - 美國西部 2
@@ -130,7 +130,7 @@ Connect-AzAccount
 Select-AzSubscription -SubscriptionId "<your-subscription-id-here>"
 
 #Register the target storage account with your active directory environment under the target OU
-join-AzStorageAccountForAuth -ResourceGroupName "<resource-group-name-here>" -Name "<storage-account-name-here>" -DomainAccountType "<ServiceLogonAccount|ComputerAccount>" -OrganizationUnitName "<ou-name-here>"
+join-AzStorageAccountForAuth -ResourceGroupName "<resource-group-name-here>" -Name "<storage-account-name-here>" -DomainAccountType "<ServiceLogonAccount|ComputerAccount>" -OrganizationalUnitName "<ou-name-here>"
 ```
 
 下列描述摘要說明執行 `join-AzStorageAccountForAuth` Cmdlet 時所執行的所有動作。 如果您不想要使用命令，您可以手動執行這些步驟：
