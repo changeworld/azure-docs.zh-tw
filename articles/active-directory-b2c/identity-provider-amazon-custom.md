@@ -3,20 +3,20 @@ title: 使用自訂原則來設定以 Amazon 帳戶進行登入
 titleSuffix: Azure AD B2C
 description: 在 Azure Active Directory B2C 中使用自訂原則來設定以 Amazon 帳戶進行登入。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/05/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4a0767938f8a470c63ec7fe3d7789212b1baf871
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 2de891ee109677f92ff603759701f7732f5951ba
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846623"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188506"
 ---
 # <a name="set-up-sign-in-with-an-amazon-account-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則來設定以 Amazon 帳戶進行登入
 
@@ -38,8 +38,8 @@ ms.locfileid: "76846623"
 3. 選取 [註冊新應用程式]。
 4. 請輸入 [名稱]、[描述]，以及 [隱私權注意事項 URL]，然後按一下 [儲存]。 隱私權注意事項是您要提供給使用者之隱私權資訊的管理頁面。
 5. 在 [Web 設定] 區段中，複製 [用戶端識別碼] 的值。 選取 [顯示密碼] 以取得用戶端密碼，然後複製該密碼。 您必須使用這兩個值，將 Amazon 帳戶設為租用戶中的識別提供者。 **用戶端密碼** 是重要的安全性認證。
-6. 在 [Web 設定] 區段中，選取 [編輯]，然後在 [允許的 JavaScript 原始來源] 中，輸入 `https://your-tenant-name.b2clogin.com`，並在 [允許的傳回 URL] 中，輸入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 以您的租用戶名稱取代 `your-tenant-name`。 即使租用戶在 Azure AD B2C 中是使用大寫字母來定義的，仍請在輸入租用戶名稱時，全部使用小寫字母。
-7. 按一下 [檔案]。
+6. 在 [Web 設定] 區段中，選取 [編輯]，然後在 [允許的 JavaScript 原始來源]`https://your-tenant-name.b2clogin.com`**中，輸入**，並在 [允許的傳回 URL]`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`**中，輸入**。 以您的租用戶名稱取代 `your-tenant-name`。 即使租用戶在 Azure AD B2C 中是使用大寫字母來定義的，仍請在輸入租用戶名稱時，全部使用小寫字母。
+7. Haga clic en **Guardar**.
 
 ## <a name="create-a-policy-key"></a>建立原則金鑰
 
@@ -54,7 +54,7 @@ ms.locfileid: "76846623"
 7. 輸入原則金鑰的 [名稱]。 例如： `AmazonSecret` 。 金鑰名稱前面會自動新增前置詞 `B2C_1A_`。
 8. 在 [祕密] 中，輸入您先前記錄的用戶端密碼。
 9. 針對 [金鑰使用方法]，選取 `Signature`。
-10. 按一下頁面底部的 [新增]。
+10. 按一下 [建立]。
 
 ## <a name="add-a-claims-provider"></a>新增宣告提供者
 
@@ -122,7 +122,7 @@ ms.locfileid: "76846623"
 目前，識別提供者已設定，但還未出現在任何註冊/登入畫面中。 若要讓它可供使用，您需建立現有範本使用者旅程圖的複本，然後加以修改，讓它也包含 Amazon 識別提供者。
 
 1. 從 Starter Pack 開啟 TrustFrameworkBase.xml 檔案。
-2. 尋找並複製包含 `Id="SignUpOrSignIn"` 之 **UserJourney** 元素的整個內容。
+2. 尋找並複製包含 **之**UserJourney`Id="SignUpOrSignIn"` 元素的整個內容。
 3. 開啟 *TrustFrameworkExtensions.xml*，並尋找 **UserJourneys** 元素。 如果此元素不存在，請新增。
 4. 貼上您複製的整個 **UserJourney** 元素內容作為 **UserJourneys** 元素的子系。
 5. 重新命名使用者旅程圖的識別碼。 例如： `SignUpSignInAmazon` 。
@@ -131,7 +131,7 @@ ms.locfileid: "76846623"
 
 **ClaimsProviderSelection** 元素類似於註冊/登入畫面上的識別提供者按鈕。 如果您為 Amazon 帳戶新增 **ClaimsProviderSelection** 元素，當使用者登陸頁面時，就會出現新按鈕。
 
-1. 在您建立的使用者旅程圖中，尋找包含 `Order="1"` 的 **OrchestrationStep** 元素。
+1. 在您建立的使用者旅程圖中，尋找包含 **的**OrchestrationStep`Order="1"` 元素。
 2. 在 **ClaimsProviderSelects** 底下新增下列元素。 將 **TargetClaimsExchangeId** 的值設定成適當的值，例如 `AmazonExchange`：
 
     ```XML
@@ -142,7 +142,7 @@ ms.locfileid: "76846623"
 
 現在已備妥按鈕，您需要將它連結至動作。 在此案例中，動作是讓 Azure AD B2C 與 Amazon 帳戶通訊以接收權杖。
 
-1. 在使用者旅程圖中，尋找包含 `Order="2"` 的 **OrchestrationStep**。
+1. 在使用者旅程圖中，尋找包含 **的**OrchestrationStep`Order="2"`。
 2. 新增下列 **ClaimsExchange** 元素，請確定用於 ID 的值與用於 **TargetClaimsExchangeId** 的值相同：
 
     ```XML

@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 1d808210861d971b2915206e7be0fe9b955616c5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 6e4b5bc6d30f6caa2809b7aa1e72be70ae12dbc1
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720311"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193029"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure Synapse Analytics （先前稱為 SQL DW）架構 
 
@@ -25,7 +25,7 @@ Azure Synapse 是一種無限制的分析服務，可將企業資料倉儲和巨
 - SQL 分析：完成 T-sql 型分析 
     - SQL 集區（每個布建的 DWU 付費）-正式推出
     - SQL 隨選 (依據處理的 TB 量付費) – (預覽)
-- Spark：深層整合的 Apache Spark （預覽） 
+- Spark：深層整合的 Apache Spark （預覽）
 - 資料整合：混合式資料整合（預覽）
 - Studio：統一的使用者體驗。  (預覽)
 

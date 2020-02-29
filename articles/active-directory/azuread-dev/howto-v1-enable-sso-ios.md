@@ -15,12 +15,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 7ea65b64e5a812b717f065c1d8cc6208e0c0ba69
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 00ec2d328265e8d301b9f54b9a6a2013072f1ed4
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77164561"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190274"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>操作說明：使用 ADAL 在 iOS 上啟用跨應用程式的 SSO
 
@@ -39,7 +39,7 @@ Microsoft 的身分識別平台搭配 SDK，能讓您在整個裝置中，更輕
 * Azure Active Directory B2B
 * Azure Active Directory 條件式存取
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 此操作說明會假設您知道如何：
 
@@ -109,7 +109,7 @@ Microsoft 為每個行動平台提供應用程式，允許跨不同廠商的應�
 
 #### <a name="how-we-ensure-the-application-is-valid"></a>我們如何確保應用程式有效
 
-需要確保應用程式的身分識別會呼叫訊息代理程式，對於我們在訊息代理程式協助登入中所提供的安全性而言相當重要。 IOS 和 Android 都不會強制執行僅對特定應用程式有效的唯一識別碼，因此，惡意應用程式可能會「詐騙」合法應用程式的識別碼，並接收適用於合法應用程式的權杖。 若要確定我們一律會在執行階段與正確的應用程式進行通訊，我們會要求開發人員在向 Microsoft 註冊應用程式時提供自訂的 redirectURI。 以下將詳細討論開發人員應該如何製作此重新導向 URI。 此自訂的 redirectURI 包含應用程式的搭售識別碼，並透過 Apple App Store 確保它對應用程式而言是唯一的。 當應用程式呼叫訊息代理程式時，訊息代理程式會要求 iOS 作業系統搭配呼叫訊息代理程式的配套識別碼來提供它。 訊息代理程式會在對我們身分識別系統的呼叫中將此配套識別碼提供給 Microsoft。 如果應用程式的配套識別碼不符合開發人員在註冊期間提供給我們的配套識別碼，我們將會拒絕存取應用程式所要求之資源的權杖。 這項檢查可確保只有開發人員所註冊的應用程式能夠接收權杖。
+若要確保呼叫訊息代理程式之應用程式的身分識別，對於我們在 broker 輔助登入中提供的安全性非常重要。 IOS 和 Android 都不會強制執行僅對特定應用程式有效的唯一識別碼，因此，惡意應用程式可能會「詐騙」合法應用程式的識別碼，並接收適用於合法應用程式的權杖。 若要確定我們一律會在執行階段與正確的應用程式進行通訊，我們會要求開發人員在向 Microsoft 註冊應用程式時提供自訂的 redirectURI。 以下將詳細討論開發人員應該如何製作此重新導向 URI。 此自訂的 redirectURI 包含應用程式的搭售識別碼，並透過 Apple App Store 確保它對應用程式而言是唯一的。 當應用程式呼叫訊息代理程式時，訊息代理程式會要求 iOS 作業系統搭配呼叫訊息代理程式的配套識別碼來提供它。 訊息代理程式會在對我們身分識別系統的呼叫中將此配套識別碼提供給 Microsoft。 如果應用程式的配套識別碼不符合開發人員在註冊期間提供給我們的配套識別碼，我們將會拒絕存取應用程式所要求之資源的權杖。 這項檢查可確保只有開發人員所註冊的應用程式能夠接收權杖。
 
 **無論 SDK 呼叫訊息代理程式或使用非訊息代理程式協助流程，開發人員都有這個選項。** 不過，如果開發人員選擇不使用訊息代理程式協助流程，他們會失去使用單一登入認證的優點，使用者可能已在裝置上新增這些認證，並防止 Microsoft 提供給客戶的商務功能使用其應用程式，例如條件式存取、Intune 管理功能和以憑證為基礎的驗證。
 

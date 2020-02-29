@@ -2,20 +2,20 @@
 title: ClaimsProvider  - Azure Active Directory B2C | Microsoft Docs
 description: 指定 Azure Active Directory B2C 中自訂原則的 ClaimsProvider 元素。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 01/29/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0bda94344a22f39daf104e7b95e33723187c4aa1
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: dfb34085181e0b759d1d77485ff21b5bc59e0de3
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983005"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189764"
 ---
 # <a name="claimsproviders"></a>ClaimsProviders
 
@@ -41,7 +41,7 @@ ms.locfileid: "76983005"
 
 **ClaimsProvider** 元素包含下列元素：
 
-| 元素 | 發生次數 | 說明 |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | ClaimsProvider | 1:n | 在各種不同的使用者旅程圖中可供運用的合格宣告提供者。 |
 
@@ -49,9 +49,9 @@ ms.locfileid: "76983005"
 
 **ClaimsProvider** 元素包含下列子元素：
 
-| 元素 | 發生次數 | 說明 |
+| 元素 | 發生次數 | 描述 |
 | ------- | ---------- | ----------- |
-| 網域 | 0:1 | 一個字串，其中包含宣告提供者的網域名稱。 例如，如果您的宣告提供者包含 Facebook 技術設定檔，則網域名稱為 Facebook.com。 此網域名稱會用於宣告提供者中定義的所有技術設定檔，除非技術設定檔加以覆寫。 網域名稱也可在 **domain_hint** 中受到參考。 如需詳細資訊，請參閱[使用 Azure Active Directory B2C 設定直接登入](direct-signin.md)的**將登入重新導向至社交提供者**一節。 |
+| 網域 | 0:1 | 一個字串，其中包含宣告提供者的網域名稱。 例如，如果您的宣告提供者包含 Facebook 技術設定檔，則網域名稱為 Facebook.com。 此網域名稱會用於宣告提供者中定義的所有技術設定檔，除非技術設定檔加以覆寫。 網域名稱也可在 **domain_hint** 中受到參考。 如需詳細資訊，請參閱**使用 Azure Active Directory B2C 設定直接登入**的[將登入重新導向至社交提供者](direct-signin.md)一節。 |
 | DisplayName | 1:1 | 字串，其中包含宣告提供者的名稱。 |
 | [TechnicalProfiles](technicalprofiles.md) | 0:1 | 受到宣告提供者支援的一組技術設定檔 |
 

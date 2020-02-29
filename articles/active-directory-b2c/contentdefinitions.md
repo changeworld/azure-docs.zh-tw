@@ -3,20 +3,20 @@ title: ContentDefinitions
 titleSuffix: Azure AD B2C
 description: 指定 Azure Active Directory B2C 中自訂原則的 ContentDefinitions 元素。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/17/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fd6a24c768056c949c05b9e2444bd49ef743c0ef
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: b55199ec2684ab7b95ce4e4988b19814c27b2cc3
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425624"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189577"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -61,7 +61,7 @@ ms.locfileid: "77425624"
 
 **ContentDefinition** 元素包含下列屬性：
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要項 | 描述 |
 | --------- | -------- | ----------- |
 | Id | 是 | 內容定義的識別碼。 此值是本頁面後面的**內容定義識別碼**區段中指定的值。 |
 
@@ -133,19 +133,19 @@ ms.locfileid: "77425624"
 
 | 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
-| Item | 0:n | 與內容定義相關的中繼資料。 |
+| 項目 | 0:n | 與內容定義相關的中繼資料。 |
 
 **Metadata** 元素的 **Item** 元素包含下列屬性：
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要項 | 描述 |
 | --------- | -------- | ----------- |
 | Key | 是 | 中繼資料索引鍵。  |
 
 #### <a name="metadata-keys"></a>中繼資料索引鍵
 
-內容定義支援下列中繼資料專案： 
+內容定義支援下列中繼資料專案：
 
-| Key | 必要 | 描述 |
+| Key | 必要項 | 描述 |
 | --------- | -------- | ----------- |
 | DisplayName | 否 | 包含內容定義名稱的字串。 |
 
@@ -159,9 +159,9 @@ ms.locfileid: "77425624"
 
 **LocalizedResourcesReference**元素包含下列屬性：
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要項 | 描述 |
 | --------- | -------- | ----------- |
-| Language | 是 | 此字串針對每個 RFC 5646 - 標記的原則包含支援的語言，以進行識別語言。 |
+| 語言 | 是 | 此字串針對每個 RFC 5646 - 標記的原則包含支援的語言，以進行識別語言。 |
 | LocalizedResourcesReferenceId | 是 | **LocalizedResources** 元素的識別碼。 |
 
 下列範例顯示的是註冊或登入內容定義，其參考英文、法文和西班牙文的當地語系化：

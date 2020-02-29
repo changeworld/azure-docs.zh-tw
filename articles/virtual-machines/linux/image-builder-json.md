@@ -7,12 +7,12 @@ ms.date: 01/23/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 4ac2c1266933716697a658b1ba88efd8c2f05d34
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 08a1ca0c85d69d1a5262f1dcac5d46fb82b1c22b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905755"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191787"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>預覽：建立 Azure 映射產生器範本 
 
@@ -88,7 +88,7 @@ Azure 映射產生器會使用 json 檔案，將資訊傳遞至映射產生器�
  },
 ```
 
-## <a name="tags"></a>標籤
+## <a name="tags"></a>Tags
 
 這些是您可以為產生的影像指定的索引鍵/值組。
 
@@ -102,7 +102,7 @@ Azure 映射產生器會使用 json 檔案，將資訊傳遞至映射產生器�
 
 如需詳細資訊，請參閱[定義資源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-define-dependencies#dependson)相依性。
 
-## <a name="identity"></a>身分識別
+## <a name="identity"></a>相同比較
 根據預設，映射產生器支援使用腳本，或從多個位置複製檔案，例如 GitHub 和 Azure 儲存體。 若要使用這些功能，必須可公開存取。
 
 您也可以使用由您定義的 Azure 使用者指派受控識別，以允許映射產生器存取 Azure 儲存體，只要已在 Azure 儲存體帳戶上授與「儲存體 Blob 資料讀取者」最少的身分識別即可。 這表示您不需要讓儲存體 blob 可供外部存取，或設定 SAS 權杖。
@@ -301,7 +301,7 @@ OS 支援： Linux
 
             {
                 "type": "WindowsRestart",
-                "restartCommand": "shutdown /r /f /t 0 /c", 
+                "restartCommand": "shutdown /r /f /t 0", 
                 "restartCheckCommand": "echo Azure-Image-Builder-Restarted-the-VM  > c:\\buildArtifacts\\azureImageBuilderRestart.txt",
                 "restartTimeout": "5m"
             }

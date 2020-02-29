@@ -1,25 +1,25 @@
 ---
 title: 記憶體和平行存取限制
-description: 檢視在 Azure SQL 資料倉儲 中配置給不同效能等級與資源類別的記憶體和並行存取限制。
+description: 在 Azure Synapse 分析中，查看配置給各種效能層級和資源類別的記憶體和平行存取限制。
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 12/04/2019
+ms.date: 02/04/2020
 ms.author: rortloff
-ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: dfdaef0002f068dc4c9044e979b169de779cf6d5
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.reviewer: jrasnick
+ms.custom: azure-synapse
+ms.openlocfilehash: 73c7b756009035c8592c85bec3a6b7d85d93666c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851276"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200680"
 ---
-# <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Azure SQL 資料倉儲的記憶體和並行存取限制
-檢視在 Azure SQL 資料倉儲 中配置給不同效能等級與資源類別的記憶體和並行存取限制。  
+# <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Azure Synapse 分析的記憶體和平行存取限制
+在 Azure Synapse 分析中，查看配置給各種效能層級和資源類別的記憶體和平行存取限制。  
 
 ## <a name="data-warehouse-capacity-settings"></a>資料倉儲容量設定
 下表顯示不同效能等級的資料倉儲最大容量。 若要變更效能等級，請參閱[調整計算能力 - 入口網站](quickstart-scale-compute-portal.md)。
@@ -52,7 +52,7 @@ ms.locfileid: "74851276"
 ## <a name="concurrency-maximums-for-workload-groups"></a>工作負載群組的平行存取上限
 隨著[工作負載群組](sql-data-warehouse-workload-isolation.md)的引進，平行存取插槽的概念不再適用。  每個要求的資源會以百分比為單位配置，並在工作負載群組定義中指定。  不過，即使移除平行存取插槽，根據服務等級，每個查詢都需要最少的資源數量。  下表定義每個查詢在服務層級上所需的最低資源數量，以及可以達成的相關聯並行。 
 
-|服務等級|並行查詢上限|REQUEST_MIN_RESOURCE_GRANT_PERCENT 支援的最低%|
+|服務等級|並行查詢數目上限|REQUEST_MIN_RESOURCE_GRANT_PERCENT 支援的最低%|
 |---|---|---|
 |DW100c|4|25%|
 |DW200c|8|12.5%|
@@ -73,13 +73,13 @@ ms.locfileid: "74851276"
 ||||
 
 ## <a name="concurrency-maximums-for-resource-classes"></a>資源類別的平行存取上限
-為了確保每個查詢都有足夠的資源可以有效率地執行，SQL 資料倉儲會藉由將並行位置指派給每個查詢，來追蹤資源使用量。 系統會根據重要性和平行存取插槽，將查詢放入佇列中。 查詢會在佇列中等候，直到有足夠的平行存取插槽可用為止。 [重要性](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance)和平行存取插槽會決定 CPU 優先順序。 如需詳細資訊，請參閱[分析工作負載](analyze-your-workload.md)。
+為了確保每個查詢都有足夠的資源可以有效率地執行，Azure Synapse 中的 SQL 分析會藉由將並行位置指派給每個查詢來追蹤資源使用率。 系統會根據重要性和平行存取插槽，將查詢放入佇列中。 查詢會在佇列中等候，直到有足夠的平行存取插槽可用為止。 [重要性](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance)和平行存取插槽會決定 CPU 優先順序。 如需詳細資訊，請參閱[分析工作負載](analyze-your-workload.md)。
 
 **靜態資源類別**
 
 下表針對每個[靜態資源類別](resource-classes-for-workload-management.md)顯示並行查詢數量和並行位置數量的最大值。  
 
-| 服務等級 | 並行查詢上限 | 可用的並行位置數量 | Staticrc10 所使用的插槽 | Staticrc20 所使用的插槽 | Staticrc30 所使用的插槽 | Staticrc40 所使用的插槽 | Staticrc50 所使用的插槽 | Staticrc60 所使用的插槽 | Staticrc70 所使用的插槽 | Staticrc80 所使用的插槽 |
+| 服務等級 | 並行查詢數目上限 | 可用的並行位置數量 | Staticrc10 所使用的插槽 | Staticrc20 所使用的插槽 | Staticrc30 所使用的插槽 | Staticrc40 所使用的插槽 | Staticrc50 所使用的插槽 | Staticrc60 所使用的插槽 | Staticrc70 所使用的插槽 | Staticrc80 所使用的插槽 |
 |:-------------:|:--------------------------:|:---------------------------:|:---------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
 | DW100c        |  4                         |    4                        | 1         | 2          | 4          | 4          | 4         |  4         |  4         |  4         |
 | DW200c        |  8                         |    8                        | 1         | 2          | 4          | 8          |  8         |  8         |  8         |  8        |
@@ -102,7 +102,7 @@ ms.locfileid: "74851276"
 
 下表針對每個[動態資源類別](resource-classes-for-workload-management.md)顯示並行查詢數量和並行位置數量的最大值。 動態資源類別會針對跨所有服務等級的小型中型 m3.xlarge 資源類別使用3-10-22-70 記憶體百分比配置。
 
-| 服務等級 | 並行查詢上限 | 可用的並行位置數量 | Smallrc 所使用的插槽 | Mediumrc 所使用的插槽 | Largerc 所使用的插槽 | Xlargerc 所使用的插槽 |
+| 服務等級 | 並行查詢數目上限 | 可用的並行位置數量 | Smallrc 所使用的插槽 | Mediumrc 所使用的插槽 | Largerc 所使用的插槽 | Xlargerc 所使用的插槽 |
 |:-------------:|:--------------------------:|:---------------------------:|:---------------------:|:----------------------:|:---------------------:|:----------------------:|
 | DW100c        |  4                         |    4                        | 1                     |  1                     |  1                    |   2                    |
 | DW200c        |  8                         |    8                        | 1                     |  1                     |  1                    |   5                    |

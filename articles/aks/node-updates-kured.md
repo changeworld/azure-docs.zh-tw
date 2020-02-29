@@ -4,12 +4,12 @@ description: 瞭解如何在 Azure Kubernetes Service （AKS）中使用 kured �
 services: container-service
 ms.topic: article
 ms.date: 02/28/2019
-ms.openlocfilehash: b0bb7a3309cf1b56a5779b54b34310aa01f3e719
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 74b12c1bc6e2a88582cc357c8091b5590e6bf3cb
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77594935"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191277"
 ---
 # <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service （AKS）中將安全性和核心更新套用至 Linux 節點
 
@@ -51,13 +51,23 @@ AKS 中有一個額外的程序可讓您的「升級」叢集。 升級通常會
 
 ## <a name="deploy-kured-in-an-aks-cluster"></a>在 AKS 叢集中部署 Kured
 
-若要部署 `kured` DaemonSet，從他們的 GitHub 專案頁面套用下列範例 YAML 資訊清單。 此資訊清單會建立角色和叢集角色、繫結及服務帳戶，然後使用 `kured` 1.1.0 版 (支援 AKS 叢集 1.9 或更新版本) 部署 DaemonSet。
+若要部署 `kured` DaemonSet，請安裝下列官方 Kured Helm 圖表。 這會建立角色和叢集角色、系結和服務帳戶，然後使用 `kured`部署 DaemonSet。
 
 ```console
-kubectl apply -f https://github.com/weaveworks/kured/releases/download/1.2.0/kured-1.2.0-dockerhub.yaml
+# Add the stable Helm repository
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+
+# Update your local Helm chart repository cache
+helm repo update
+
+# Create a dedicated namespace where you would like to deploy kured into
+kubectl create namespace kured
+
+# Install kured in that namespace with Helm 3 (only on Linux nodes, kured is not working on Windows nodes)
+helm install kured stable/kured --namespace kured --set nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
-您也可以設定適用於 `kured` 的其他參數，例如，與 Prometheus 或 Slack 整合。 如需其他設定參數的詳細資訊，請參閱[kured 安裝][kured-install]檔。
+您也可以設定適用於 `kured` 的其他參數，例如，與 Prometheus 或 Slack 整合。 如需其他設定參數的詳細資訊，請參閱[Kured Helm 圖表][kured-install]。
 
 ## <a name="update-cluster-nodes"></a>更新叢集節點
 
@@ -96,7 +106,7 @@ aks-nodepool1-28993262-1   Ready     agent     1h        v1.11.7   10.240.0.5   
 
 <!-- LINKS - external -->
 [kured]: https://github.com/weaveworks/kured
-[kured-install]: https://github.com/weaveworks/kured#installation
+[kured-install]: https://hub.helm.sh/charts/stable/kured
 [kubectl-get-nodes]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 
 <!-- LINKS - internal -->

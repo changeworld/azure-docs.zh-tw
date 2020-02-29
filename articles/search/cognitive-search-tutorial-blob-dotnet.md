@@ -8,18 +8,18 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/27/2020
-ms.openlocfilehash: 85fb709dfcca45b6ca8141c6d3de1941044f5ee5
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 0c37f1ce2f173f4bf527e7cca30f010101b01720
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78163195"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190682"
 ---
 # <a name="tutorial-use-c-and-ai-to-generate-searchable-content-from-azure-blobs"></a>教學課程： C#使用和 AI 從 Azure blob 產生可搜尋的內容
 
 如果您在 Azure Blob 儲存體中有非結構化的文字或影像， [AI 擴充管線](cognitive-search-concept-intro.md)可以將資訊解壓縮，並建立適用于全文檢索搜尋或知識挖掘案例的新內容。 在本C#教學課程中，對影像套用光學字元辨識（OCR），並執行自然語言處理，以建立可在查詢、facet 和篩選器中運用的新欄位。
 
-在本教學課程中C# ，請使用和[.net SDK](https://aka.ms/search-sdk)來執行下列工作：
+本教學課程C#會使用和[.net SDK](https://aka.ms/search-sdk)來執行下列工作：
 
 > [!div class="checklist"]
 > * 開始使用 Azure Blob 儲存體中的應用程式檔和映射。
@@ -30,7 +30,7 @@ ms.locfileid: "78163195"
 
 如果您沒有 Azure 訂用帳戶，請在開始前開啟[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 + [Azure 儲存體](https://azure.microsoft.com/services/storage/)
 + [Visual Studio](https://visualstudio.microsoft.com/downloads/)
@@ -929,11 +929,11 @@ catch (Exception e)
 
 ## <a name="reset-and-rerun"></a>重設並重新執行
 
-在開發的早期實驗階段中若要設計反覆項目，最實用的方法是從 Azure 認知搜尋中刪除物件，並讓您的程式碼加以重建。 資源名稱是唯一的。 刪除物件可讓您使用相同的名稱加以重新建立。
+在開發的早期實驗階段中，設計反復專案最實用的方法是從 Azure 認知搜尋中刪除物件，並允許您的程式碼重建它們。 資源名稱是唯一的。 刪除物件可讓您使用相同的名稱加以重新建立。
 
-此教學課程會負責檢查現有的索引子和索引，如果它們已經存在，即會將它們刪除，讓您能夠重新執行您的程式碼。
+本教學課程的範例程式碼會檢查現有的物件，並將其刪除，讓您可以重新執行程式碼。
 
-您也可以使用入口網站來刪除索引、索引子和技能集。
+您也可以使用入口網站來刪除索引、索引子、資料來源和技能集。
 
 ## <a name="takeaways"></a>重要心得
 
@@ -945,11 +945,13 @@ catch (Exception e)
 
 ## <a name="clean-up-resources"></a>清除資源
 
-在完成教學課程後，最快速的清除方式是刪除包含 Azure 認知搜尋服務和 Azure Blob 服務的資源群組。 如果您將這兩項服務放在相同群組中，此時刪除資源群組，將會永久刪除其中的所有內容，包括服務與您為此教學課程建立的任何已儲存內容。 在入口網站中，資源群組名稱位在每個服務的 [概觀] 頁面上。
+如果您使用自己的訂用帳戶，當專案結束時，建議您移除不再需要的資源。 讓資源繼續執行可能會產生費用。 您可以個別刪除資源，或刪除資源群組以刪除整組資源。
+
+您可以使用左側導覽窗格中的 [所有資源] 或 [資源群組] 連結，在入口網站中尋找及管理資源。
 
 ## <a name="next-steps"></a>後續步驟
 
-以自訂技能自訂或擴充管線。 建立自訂技能並將其新增至技能集，以便讓您自行撰寫的文字或影像分析上線。
+既然您已經熟悉 AI 擴充管線中的所有物件，讓我們進一步瞭解技能集定義和個別技能。
 
 > [!div class="nextstepaction"]
-> [範例：建立 AI 擴充的自訂技能](cognitive-search-create-custom-skill-example.md)
+> [如何建立技能集](cognitive-search-defining-skillset.md)

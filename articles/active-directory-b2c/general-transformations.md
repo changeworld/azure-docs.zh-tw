@@ -3,20 +3,20 @@ title: 自訂原則的一般宣告轉換範例
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C 的 Identity Experience Framework （IEF）架構的一般宣告轉換範例。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/03/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 98d9730168764f0ba683a246f9ac224c13d3bf31
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: afdf2f531ede30d868123d89cac94fcfae070384
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982801"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188540"
 ---
 # <a name="general-claims-transformations"></a>一般宣告轉換
 
@@ -28,7 +28,7 @@ ms.locfileid: "76982801"
 
 將宣告的值複製到另一個。 這兩個宣告必須來自相同的類型。
 
-| 項目 | TransformationClaimType | 資料類型 | 注意 |
+| 項目 | TransformationClaimType | 資料型別 | 注意事項 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | string、int | 要複製的宣告類型。 |
 | OutputClaim | outputClaim | string、int | 叫用此 ClaimsTransformation 之後所產生的 ClaimType。 |
@@ -36,13 +36,13 @@ ms.locfileid: "76982801"
 使用此宣告轉換，將字串或數值宣告中的值複製到另一個宣告。 下列範例會將 externalEmail 宣告值複製到電子郵件宣告。
 
 ```XML
-<ClaimsTransformation Id="CopyEmailAddress" TransformationMethod="CopyClaim"> 
+<ClaimsTransformation Id="CopyEmailAddress" TransformationMethod="CopyClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="externalEmail" TransformationClaimType="inputClaim"/>
   </InputClaims>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="email" TransformationClaimType="outputClaim"/>
-  </OutputClaims>         
+  </OutputClaims>
 </ClaimsTransformation>
 ```
 
@@ -51,15 +51,15 @@ ms.locfileid: "76982801"
 - 輸入宣告：
     - **inputClaim**：bob@contoso.com
 - 輸出宣告：
-    - **outputClaim**：bob@contoso.com 
+    - **outputClaim**：bob@contoso.com
 
 ## <a name="doesclaimexist"></a>DoesClaimExist
 
 檢查 **inputClaim** 是否存在，並據以將 **outputClaim** 設定為 True 或 False。
 
-| 項目 | TransformationClaimType | 資料類型 | 注意 |
+| 項目 | TransformationClaimType | 資料型別 | 注意事項 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim |任意 | 必須驗證其存在的輸入宣告。 |
+| InputClaim | inputClaim |任何 | 必須驗證其存在的輸入宣告。 |
 | OutputClaim | outputClaim | boolean | 叫用此 ClaimsTransformation 之後所產生的 ClaimType。 |
 
 使用此宣告轉換來檢查某個宣告是否存在或包含任何值。 傳回值是布林值，會指出宣告是否存在。 下列範例會檢查電子郵件地址是否存在。
@@ -86,7 +86,7 @@ ms.locfileid: "76982801"
 
 使用 salt 和祕密，針對提供的純文字進行雜湊處理。 使用的雜湊演算法是 SHA-256。
 
-| 項目 | TransformationClaimType | 資料類型 | 注意 |
+| 項目 | TransformationClaimType | 資料型別 | 注意事項 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | plaintext | string | 要加密的輸入宣告 |
 | InputClaim | salt | string | Salt 參數。 您可以使用 `CreateRandomString` 宣告轉換來建立隨機值。 |

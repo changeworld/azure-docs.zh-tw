@@ -6,15 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-key-vault
 ms.service: key-vault
+ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 654a9bb772c8a7426a335c98dfeca69515b9ce67
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: cb4bec8170466f0fc667b592d44b0858c41ccd84
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881631"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184822"
 ---
 # <a name="best-practices-to-use-key-vault"></a>使用 Key Vault 的最佳做法
 
@@ -32,7 +33,7 @@ Azure Key Vault 是用來保護加密金鑰和祕密 (例如憑證、連接字�
 
 我們的建議是在每個環境中使用每個應用程式的保存庫（開發、生產前和生產）。 這可協助您在不同的環境之間共用秘密，同時也會在發生缺口時減少威脅。
 
-## <a name="backup"></a>備份
+## <a name="backup"></a>Backup
 
 請確定您在保存庫中的物件上進行更新/刪除/建立時，定期備份您的保存[庫](https://blogs.technet.microsoft.com/kv/2018/07/20/announcing-backup-and-restore-of-keys-secrets-and-certificates/)。
 

@@ -1,22 +1,22 @@
 ---
 title: 客戶管理的透明資料加密（TDE）
-description: 透過 Azure Key Vault 將透明資料加密 (TDE) 的「攜帶您自己的金鑰」(BYOK) 支援用於 SQL Database 和資料倉儲。 搭配使用 TDE 與 BYOK 的概觀、優點、運作方式、考量和建議。
+description: 適用于透明資料加密（TDE）的攜帶您自己的金鑰（BYOK）支援與 SQL Database 和 Azure Synapse 的 Azure Key Vault。 搭配使用 TDE 與 BYOK 的概觀、優點、運作方式、考量和建議。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: seo-lt-2019
+ms.custom: azure-synapse
 ms.devlang: ''
 ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/12/2020
-ms.openlocfilehash: 8e91bb9223f3e6ccd4c76614d75db8591dbed045
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: a29466ad5b261e1e2ce818d7b4a18260e35caaec
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201506"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192739"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL 透明資料加密與客戶管理的金鑰
 
@@ -24,7 +24,7 @@ Azure SQL[透明資料加密（TDE）](https://docs.microsoft.com/sql/relational
 
 在此案例中，用來加密資料庫加密金鑰（DEK）的金鑰（稱為 TDE 保護裝置）是以雲端為基礎的外部金鑰管理系統，儲存在客戶擁有和客戶管理的[Azure Key Vault （AKV）](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault)中的客戶管理的非對稱金鑰。 Key Vault 是適用于 RSA 密碼編譯金鑰的高可用性和可擴充的安全儲存體，並可選擇性地由 FIPS 140-2 Level 2 驗證的硬體安全性模組（Hsm）支援。 它不允許直接存取預存金鑰，而是使用授權實體的金鑰提供加密/解密服務。 金鑰可由金鑰保存庫產生、匯入，或[從內部內部部署 HSM 裝置傳輸至金鑰保存庫](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys)。
 
-對於 Azure SQL Database 和 Azure SQL 資料倉儲而言，TDE 保護裝置是在邏輯伺服器層級設定，並由與該伺服器相關聯的所有加密資料庫所繼承。 針對 Azure SQL 受控執行個體，TDE 保護裝置會在實例層級設定，並由該實例上所有加密的資料庫繼承。 「*伺服器*」一詞指的是這份檔中 SQL Database 邏輯伺服器和受控實例，除非另有不同的述。
+針對 Azure SQL Database 和 Azure Synapse，TDE 保護裝置會設定于邏輯伺服器層級，並由與該伺服器相關聯的所有加密資料庫繼承。 針對 Azure SQL 受控執行個體，TDE 保護裝置會在實例層級設定，並由該實例上所有加密的資料庫繼承。 「*伺服器*」一詞指的是這份檔中 SQL Database 邏輯伺服器和受控實例，除非另有不同的述。
 
 > [!IMPORTANT]
 > 對於使用服務管理的 TDE 而想要開始使用客戶管理的 TDE，資料會在切換的過程中保持加密，而且不會有停機時間或重新加密資料庫檔案。 從服務管理的金鑰切換到客戶管理的金鑰，只需要重新加密 DEK，這是快速且線上的操作。
@@ -163,7 +163,7 @@ Azure SQL[透明資料加密（TDE）](https://docs.microsoft.com/sql/relational
 
 若要減輕此問題，請針對目標 SQL Database 邏輯伺服器使用[AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey)指令程式，或針對目標受控實例執行[AzSqlInstanceKeyVaultKey](/powershell/module/az.sql/get-azsqlinstancekeyvaultkey) ，以傳回可用金鑰的清單，並找出遺漏的索引鍵。 為確保所有備份都能還原，請確定還原的目標伺服器可以存取所需的所有金鑰。 這些金鑰不需要標示為 TDE 保護裝置。
 
-若要深入了解 SQL Database 的備份復原，請參閱[復原 Azure SQL Database](sql-database-recovery-using-backups.md)。 若要深入了解 SQL 資料倉儲的備份復原，請參閱[復原 Azure SQL 資料倉儲](../sql-data-warehouse/backup-and-restore.md)。 如需 SQL Server 的原生備份/還原與受控實例，請參閱[快速入門：將資料庫還原至受控執行個體](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore)
+若要深入了解 SQL Database 的備份復原，請參閱[復原 Azure SQL Database](sql-database-recovery-using-backups.md)。 若要深入瞭解 SQL 集區的備份復原，請參閱[復原 Sql 集](../sql-data-warehouse/backup-and-restore.md)區。 如需 SQL Server 的原生備份/還原與受控實例，請參閱[快速入門：將資料庫還原至受控執行個體](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore)
 
 記錄檔的其他考慮：已備份的記錄檔仍會以原始 TDE 保護裝置加密，即使已輪替，且資料庫現在正在使用新的 TDE 保護裝置。  在還原時，必須要有這兩個金鑰才能還原資料庫。  如果記錄檔使用儲存在 Azure Key Vault 中的 TDE 保護裝置，即使資料庫已變更為在同時使用服務管理的 TDE，仍會在還原時需要此金鑰。
 

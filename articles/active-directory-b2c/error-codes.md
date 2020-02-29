@@ -3,20 +3,20 @@ title: 錯誤碼參考
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C 服務可傳回的錯誤碼清單。
 services: B2C
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 01/10/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c48f7bdd51c9b8c173ee0ebed72ed8c7f4fb51fc
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 5b09b3c19ab1c5b23e56e25afc1d9631cd1caa68
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75735075"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188659"
 ---
 # <a name="error-codes-azure-active-directory-b2c"></a>錯誤碼： Azure Active Directory B2C
 
@@ -58,10 +58,10 @@ Azure Active Directory B2C 服務可能會傳回下列錯誤。
 | `AADB2C90052` | 無效的使用者名稱或密碼。 |
 | `AADB2C90053` | 找不到具有指定認證的使用者。 |
 | `AADB2C90054` | 無效的使用者名稱或密碼。 |
-| `AADB2C90055` | 要求中提供的範圍 '{0}' 必須指定資源，例如 'https://example.com/calendar.read '。 |
+| `AADB2C90055` | 要求中提供的範圍 '{0}' 必須指定資源，例如 'https://example.com/calendar.read'。 |
 | `AADB2C90057` | 提供的應用程式未設定為允許 OAuth 隱含流程。 |
 | `AADB2C90058` | 提供的應用程式未設定為允許公用用戶端。 |
-| `AADB2C90067` | 登出後重新導向 URI '{0}' 的格式無效。 指定 HTTPs 型 URL，例如 'https://example.com/return '，或原生用戶端使用 IETF native client URI ' urn： IETF： wg： oauth：2.0： oob '。 |
+| `AADB2C90067` | 登出後重新導向 URI '{0}' 的格式無效。 指定 HTTPs 型 URL，例如 'https://example.com/return'，或原生用戶端使用 IETF native client URI ' urn： IETF： wg： oauth：2.0： oob '。 |
 | `AADB2C90068` | 提供識別碼為 '{0}' 的應用程式對此服務無效。 請使用透過 B2C 入口網站建立的應用程式，然後再試一次。 |
 | `AADB2C90075` | 步驟 '{1}' 中指定的宣告交換 '{0}' 傳回了程式碼 '{2}' 且原因為 '{3}' 的 HTTP 錯誤回應。 |
 | `AADB2C90077` | 使用者沒有現有的會話，且要求提示參數的值為 '{0}'。 |
@@ -145,7 +145,7 @@ Azure Active Directory B2C 服務可能會傳回下列錯誤。
 | `AADB2C90289` | 連接到識別提供者時發生錯誤。 請稍後再試。 |
 | `AADB2C90296` | 應用程式未正確設定。 請洽詢您嘗試存取之網站的系統管理員。 |
 | `AADB2C99005` | 要求包含不正確範圍參數，其中包含不合法的字元 '{0}'。 |
-| `AADB2C99006` | Azure AD B2C 找不到應用程式識別碼為 '{0}' 的擴充功能應用程式。 如需詳細資訊，請造訪 https://go.microsoft.com/fwlink/?linkid=851224 。 |
+| `AADB2C99006` | Azure AD B2C 找不到應用程式識別碼為 '{0}' 的擴充功能應用程式。 如需詳細資訊，請造訪 https://go.microsoft.com/fwlink/?linkid=851224。 |
 | `AADB2C99011` | 未在原則 '{2}' 的 TechnicalProfile '{1}' 中指定中繼資料值 '{0}'。 |
 | `AADB2C99013` | 不支援提供的 grant_type [{0}] 和 token_type [{1}] 組合。 |
 | `AADB2C99015` | 租使用者 '{2}' 中原則 '{1}' 的設定檔 '{0}' 遺失資源擁有者密碼認證流程所需的所有 InputClaims。 |
