@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 5d0035e7c87806012d13117ae5335b7de5f3c99d
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: ac67ef64ca4850c6e805b5314ace856114d889a7
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132290"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917225"
 ---
 # <a name="common-use-cases-and-scenarios-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 的常見使用案例和情節
 
@@ -97,7 +97,7 @@ Contoso 想要將此應用程式遷移至 Azure，並淘汰目前裝載此應用
 
 您可以使用 Azure AD DS，為 Azure 中部署的遠端桌面伺服器提供受控網域服務。 如需此部署案例的詳細資訊，請參閱[如何將 Azure AD Domain Services 與您的 RDS 部署整合][windows-rds]。
 
-## <a name="domain-joined-hdinsight-clusters-preview"></a>已加入網域的 HDInsight 叢集（預覽）
+## <a name="domain-joined-hdinsight-clusters"></a>已加入網域的 HDInsight 叢集
 
 您可以設定 Azure HDInsight 叢集，此叢集已加入已啟用 Apache Ranger 的 Azure AD DS 受控網域。 您可以透過 Apache Ranger 建立和套用 Hive 原則，並允許使用者（例如資料科學家）使用 ODBC 工具（如 Excel 或 Tableau）連接到 Hive。 我們會繼續將其他工作負載（例如 HBase、Spark 和風暴）新增至已加入網域的 HDInsight。
 

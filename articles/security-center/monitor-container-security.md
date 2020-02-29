@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: memildin
-ms.openlocfilehash: d208629ee29bb9102f16fcb1d541677bd4a4d5fa
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 330cbc3f28f5e549d5a21417c3d7ccc1e5444769
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77431562"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919527"
 ---
 # <a name="monitoring-the-security-of-your-containers"></a>監視容器的安全性
 
@@ -29,7 +29,7 @@ Azure 資訊安全中心涵蓋容器安全性的下列三個層面：
 
 - **強化 Azure Kubernetes Service**叢集-資訊安全中心會在 Azure Kubernetes Service 叢集的設定發現弱點時提供建議。 如需可能出現之特定建議的詳細資料，請參閱[Kubernetes 服務建議](recommendations-reference.md#recs-containers)。
 
-- **執行時間保護**-如果您是資訊安全中心的標準定價層，您會收到容器化環境的即時威脅偵測。 資訊安全中心會在主機和 AKS 叢集層級產生可疑活動的警示。 如需可能出現之相關安全性警示的詳細資訊，請參閱警示參考資料表的 Azure Kubernetes Service 叢集的[警示](alerts-reference.md#alerts-akscluster)和[容器的警示-主機層級](alerts-reference.md#alerts-containerhost)區段。
+- **執行時間保護**-如果您是資訊安全中心的標準定價層，您將會取得容器化環境的即時威脅防護。 資訊安全中心會在主機和 AKS 叢集層級產生可疑活動的警示。 如需可能出現之相關安全性警示的詳細資訊，請參閱警示參考資料表的 Azure Kubernetes Service 叢集的[警示](alerts-reference.md#alerts-akscluster)和[容器的警示-主機層級](alerts-reference.md#alerts-containerhost)區段。
 
 ## <a name="scanning-your-arm-based-container-registries-for-vulnerabilities"></a>掃描以 ARM 為基礎的容器登錄是否有弱點 
 

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 97095e4802373a1dd3f7b795c2fe567b778d2d5e
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: d1e93c18b13e7171274eda2a7e8d07eefbefb592
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153820"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920377"
 ---
 # <a name="neural-network-regression-module"></a>類神經網路回歸模組
 
@@ -56,7 +56,9 @@ ms.locfileid: "77153820"
   
 2. 藉由設定 [**建立定型模式]** 選項，指出您要如何訓練模型。  
   
-    -   **單一參數**：如果您已經知道要如何設定模型，請選擇此選項。  
+    -   **單一參數**：如果您已經知道要如何設定模型，請選擇此選項。
+
+    -   **參數範圍**：如果您不確定最佳參數，而且想要執行參數清理，請選取此選項。 選取要逐一查看的值範圍，[微調模型超參數](tune-model-hyperparameters.md)會逐一查看所提供設定的所有可能組合，以判斷產生最佳結果的超參數。   
 
 3.  在 [**隱藏層規格**] 中，選取 [**完全連接的案例**]。 此選項會使用預設類神經網路架構建立模型，而這種型神經網路回歸模型具有下列屬性：  
   
@@ -72,7 +74,6 @@ ms.locfileid: "77153820"
 
 6.  針對 [學習反復專案**數**]，指定演算法處理定型案例的最大次數。
 
-7.  針對 * * 初始學習權數直徑，請輸入一個值，以決定在學習程式開始時的節點加權。
 
 8.  針對 **[動量**]，輸入要在學習期間套用的值，以作為先前反復專案中節點的權數。
 

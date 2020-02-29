@@ -10,22 +10,22 @@ ms.date: 10/01/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: b49b3187f9178012131d793a7762ae470b0ea540
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f5c6125b850062450516e7fc0b19c2e0d5d6f577
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965726"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916059"
 ---
 # <a name="call-rest-api-operations-with-shared-key-authorization"></a>使用共用金鑰授權呼叫 REST API 作業
 
 本文說明如何呼叫 Azure 儲存體 REST Api，包括如何形成授權標頭。 它是以開發人員的觀點來撰寫，他不知道什麼是 REST，而且也不知道如何進行 REST 呼叫。 在您瞭解如何呼叫 REST 作業之後，您可以利用此知識來使用任何其他 Azure 儲存體 REST 作業。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 範例應用程式會列出儲存體帳戶的 blob 容器。 若要試用本文中的程式碼，您需要下列項目︰
 
-- 透過 **Azure 開發**工作負載安裝 [Visual Studio 2019](https://www.visualstudio.com/visual-studio-homepage-vs.aspx)。
+- 透過 [Azure 開發](https://www.visualstudio.com/visual-studio-homepage-vs.aspx)工作負載安裝 **Visual Studio 2019**。
 
 - Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -410,7 +410,7 @@ internal static AuthenticationHeaderValue GetAuthorizationHeader(
 
     // This is the actual header that will be added to the list of request headers.
     AuthenticationHeaderValue authHV = new AuthenticationHeaderValue("SharedKey",
-        storageAccountName + ":" + Convert.ToBase64String(SHA256.ComputeHash(SignatureBytes)));
+        storageAccountName + ":" + signature);
     return authHV;
 }
 ```
@@ -572,4 +572,4 @@ Content-Length: 1135
 - [Blob 服務 REST API](/rest/api/storageservices/blob-service-rest-api)
 - [檔案服務 REST API](/rest/api/storageservices/file-service-rest-api)
 - [佇列服務 REST API](/rest/api/storageservices/queue-service-rest-api)
-- [資料表服務 REST API](/rest/api/storageservices/table-service-rest-api) \(英文\)
+- [資料表服務 REST API](/rest/api/storageservices/table-service-rest-api)

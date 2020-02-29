@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 12/16/2019
-ms.openlocfilehash: 95733f579740f2928cda917eec0023bf00d53076
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 8e2f8fd7f99c359949b02959cc442f2f3d3ebfff
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722781"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912149"
 ---
 # <a name="deprecation-of-tls-10-and-11-in-iot-hub-and-device-provisioning-service"></a>IoT 中樞和裝置布建服務中的 TLS 1.0 和1.1 淘汰
 
@@ -25,12 +25,12 @@ ms.locfileid: "76722781"
 
 ## <a name="supported-ciphers"></a>支援的密碼
 
-在 TLS 信號交換期間，只允許下列加密：
+用於 TLS 交握之各種加密的可用性時程表如下所示：
 
-* TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-* TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-* TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
-* TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+* TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 （目前支援）
+* TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 （將于2020年下半年支援）
+* TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 （將于2020年下半年支援）
+* TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 （將于2020年下半年支援）
 
 
 ## <a name="customer-feedback"></a>客戶回函

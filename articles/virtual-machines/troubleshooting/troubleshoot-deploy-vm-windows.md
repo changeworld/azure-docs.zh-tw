@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 2baa82bda1f92fe81bb0db69b84e6865b2709e42
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: cdbaeb5a97beba342bc471e75d1b07be0d0141ae
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058041"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921406"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>針對 Azure 中的 Windows 虛擬機器部署問題進行疑難排解
 
@@ -107,6 +107,8 @@ Windows 型 VM 的驅動程式位於[這裡](../windows/n-series-driver-setup.md
 
 - 如果 VM 是以「傳統」部署模型部署的，就必須移除雲端服務部署後再重新部署，才能將 VM 變更成另一個大小系列中的大小。
 
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 - 如果 VM 是以 Resource Manager 部署模型部署的，您就必須先停止可用性設定組中的所有 VM，才能變更該可用性設定組中任何 VM 的大小。
 
 ## <a name="the-listed-vm-size-is-not-supported-while-deploying-in-availability-set"></a>部署在可用性設定組中時，不支援所列的 VM 大小。
@@ -115,7 +117,7 @@ Windows 型 VM 的驅動程式位於[這裡](../windows/n-series-driver-setup.md
 
 ## <a name="can-i-add-an-existing-classic-vm-to-an-availability-set"></a>我是否可以將現有的傳統 VM 新增到可用性設定組？
 
-是的。 您可以將現有的傳統 VM 新增到新的或現有的「可用性設定組」。 如需詳細資訊，請參閱[將現有的虛擬機器新增至可用性設定組](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic#addmachine)。
+是。 您可以將現有的傳統 VM 新增到新的或現有的「可用性設定組」。 如需詳細資訊，請參閱[將現有的虛擬機器新增至可用性設定組](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic#addmachine)。
 
 
 ## <a name="next-steps"></a>後續步驟

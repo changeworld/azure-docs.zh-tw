@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
-ms.openlocfilehash: 47ff8870df7c89ee2ab3e48e064e31aa581f65f0
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 90034a56fcf5211059d37270e12391249f7a16b5
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748625"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920156"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>強制通道案例中的 Windows 啟用失敗
 
@@ -32,7 +32,7 @@ ms.locfileid: "73748625"
 
 Azure Windows VM 需要連接到 Azure KMS 伺服器以進行 Windows 啟用。 若要啟用，啟用要求須來自 Azure 的公用 IP 位址。 在強制通道的案例中，啟用會失敗，因為啟用要求來自內部部署網路，而不是 Azure 的公用 IP 位址。
 
-## <a name="solution"></a>方案
+## <a name="solution"></a>解決方法
 
 若要解決此問題，請使用 Azure 自訂路由將啟用流量路由到 Azure KMS 伺服器。
 
@@ -42,7 +42,7 @@ Azure Global 雲端其 KMS 伺服器的 IP 位址是 23.102.135.246。 其 DNS �
 |------|-------|-------|
 |Azure 全域|kms.core.windows.net|23.102.135.246|
 |Azure Germany|kms.core.cloudapi.de|51.4.143.248|
-|Azure 美國政府|kms.core.usgovcloudapi.net|23.97.0.13|
+|Azure US Government|kms.core.usgovcloudapi.net|23.97.0.13|
 |Azure China 21Vianet|kms.core.chinacloudapi.cn|42.159.7.249|
 
 
@@ -56,7 +56,7 @@ Azure Global 雲端其 KMS 伺服器的 IP 位址是 23.102.135.246。 其 DNS �
 > 啟用會使用公用 IP 位址，並會受到標準 SKU Load Balancer 設定的影響。 請仔細查看[Azure 中的輸出](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)連線，以瞭解需求。
 
 1. 開啟 Azure PowerShell，然後[登入您的 Azure 訂用帳戶](https://docs.microsoft.com/powershell/azure/authenticate-azureps)。
-2. 執行以下命令：
+2. 執行下列命令：
 
     ```powershell
     # First, get the virtual network that hosts the VMs that have activation problems. In this case, we get virtual network ArmVNet-DM in Resource Group ArmVNet-DM:
@@ -85,8 +85,10 @@ Azure Global 雲端其 KMS 伺服器的 IP 位址是 23.102.135.246。 其 DNS �
 
 ### <a name="for-classic-vms"></a>適用於傳統 VM
 
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 1. 開啟 Azure PowerShell，然後[登入您的 Azure 訂用帳戶](https://docs.microsoft.com/powershell/azure/authenticate-azureps)。
-2. 執行以下命令：
+2. 執行下列命令：
 
     ```powershell
     # First, create a new route table:

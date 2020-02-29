@@ -7,18 +7,18 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: c23a06c502bd43b52cb35220b711084c7c8c1c7a
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: b23c210d7c8a9f1d42e6e1b46e0f7f81bda857b2
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121848"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916077"
 ---
 # <a name="handling-planned-maintenance-using-powershell"></a>使用 PowerShell 處理預定的維護
 
 **本文適用于同時執行 Linux 和 Windows 的虛擬機器。**
 
-您可以使用 Azure Powershell 來查看 Vm 何時排程進行[維護](maintenance-notifications.md)。 使用 [ 參數時，可從 ](https://docs.microsoft.com/powershell/module/az.compute/get-azvm)Get-AzVM`-status` Cmdlet 取得預定進行的維修作業的相關資訊。
+您可以使用 Azure PowerShell 來查看 Vm 何時排程進行[維護](maintenance-notifications.md)。 使用 [ 參數時，可從 ](https://docs.microsoft.com/powershell/module/az.compute/get-azvm)Get-AzVM`-status` Cmdlet 取得預定進行的維修作業的相關資訊。
   
 只在有預定進行的維修作業時，才會傳回維修資訊。 如果沒有排定會影響 VM 的維護，則 Cmdlet 不會傳回任何維護資訊。 
 
@@ -83,6 +83,8 @@ Restart-AzVM -PerformMaintenance -name $vm.Name -ResourceGroupName $rg.ResourceG
 ```
 
 ## <a name="classic-deployments"></a>傳統部署
+
+[!INCLUDE [classic-vm-deprecation](../../includes/classic-vm-deprecation.md)]
 
 如果您仍有使用傳統部署模型部署的舊版 VM，可以使用 PowerShell 查詢 VM 並起始維護。
 

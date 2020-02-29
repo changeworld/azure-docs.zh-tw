@@ -8,18 +8,18 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: cynthn
-ms.openlocfilehash: 899f453ef67fd094578e946c1cdd9ca4d427bf79
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: ad213cc02f707609a837ea66b79e51c6f2a617f8
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122445"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919765"
 ---
 # <a name="azure-classic-cli-commands"></a>Azure 傳統 CLI 命令 
 
-> [!IMPORTANT]
-> 本主題將說明如何安裝 Azure 傳統 CLI。 傳統 CLI 已有替代產品，應只搭配傳統部署模型使用。
-> 針對所有其他部署，請使用[Azure CLI](https://docs.microsoft.com/cli/azure/)。
+[!INCLUDE [classic-vm-deprecation](../../includes/classic-vm-deprecation.md)]
+
+本主題將說明如何安裝 Azure 傳統 CLI。 傳統 CLI 已有替代產品，應只搭配傳統部署模型使用。 針對所有其他部署，請使用[Azure CLI](https://docs.microsoft.com/cli/azure/)。
 
 本文提供您通常用來建立和管理 Azure 資源的 Azure 傳統命令列介面（CLI）命令的語法和選項。 這不是完整的參考，您的 CLI 版本可能會顯示稍微不同的命令或參數。 
 

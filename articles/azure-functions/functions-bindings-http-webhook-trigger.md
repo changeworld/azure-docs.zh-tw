@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: a2adf59a542f695b7845e1a871c0b297b0790fec
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 045f3ccdc8dc09bf657ab39ce15a0d0524c73fcb
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672152"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78162957"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions HTTP 觸發程式
 
@@ -489,7 +489,7 @@ public HttpResponseMessage<String> HttpTrigger(
 | **route** | **路由** | 會定義路由範本，從而控制函式所要回應的要求 URL。 如果沒有提供任何值，預設值為 `<functionname>`。 如需詳細資訊，請參閱[自訂 HTTP 端點](#customize-the-http-endpoint)。 |
 | **webHookType** | **WebHookType** | _只有針對 1.x 版執行階段才有支援。_<br/><br/>會設定 HTTP 觸發程序作為指定提供者的 [webhook](https://en.wikipedia.org/wiki/Webhook) 接收器。 如果設定這個屬性，請勿設定 `methods` 屬性。 Webhook 類型可以是下列值其中之一：<ul><li><code>genericJson</code>&mdash;一般用途的 Webhook 端點，不需要特定提供者的邏輯。 此設定會將要求限制為只有那些使用 HTTP POST 和包含 `application/json` 內容類型的要求。</li><li><code>github</code>&mdash;函式會回應 [GitHub Webhook](https://developer.github.com/webhooks/)。 請勿使用 _authLevel_ 屬性搭配 GitHub Webhook。 如需詳細資訊，請參閱本文稍後的 GitHub Webhook 一節。</li><li><code>slack</code>&mdash;函式會回應 [Slack Webhook](https://api.slack.com/outgoing-webhooks)。 請勿使用 _authLevel_ 屬性搭配 Slack Webhook。 如需詳細資訊，請參閱本文稍後的 Slack Webhook 一節。</li></ul>|
 
-## <a name="payload"></a>裝載
+## <a name="payload"></a>Payload
 
 觸發程式輸入類型會宣告為 `HttpRequest` 或自訂類型。 如果您選擇 `HttpRequest`，就會取得要求物件的完整存取權。 針對自訂的類型，執行階段會嘗試剖析 JSON 要求本文來設定物件屬性。
 
@@ -749,7 +749,7 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 
 ## <a name="authorization-keys"></a>授權金鑰
 
-Functions 可讓您使用金鑰來提高開發期間存取 HTTP 函式端點的困難度。  標準 HTTP 觸發程序可要求在要求中有這樣的 API 金鑰存在。 
+Functions 可讓您使用金鑰來提高開發期間存取 HTTP 函式端點的困難度。  除非 HTTP 觸發函式的 HTTP 授權層級設定為 `anonymous`，否則要求必須在要求中包含 API 金鑰。 
 
 > [!IMPORTANT]
 > 雖然金鑰可能有助於在開發期間遮蔽您的 HTTP 端點，但這並不適合用來作為在生產環境中保護 HTTP 觸發程序的方式。 若要深入了解，請參閱[在生產環境中保護 HTTP 端點](#secure-an-http-endpoint-in-production)。
@@ -757,14 +757,19 @@ Functions 可讓您使用金鑰來提高開發期間存取 HTTP 函式端點的�
 > [!NOTE]
 > 在 Functions 1.x 執行階段中，Webhook 提供者可以使用金鑰以多種方式授權要求，端視提供者支援的方式而定。 [Webhook 和金鑰](#webhooks-and-keys)中提供了這方面的相關說明。 2\.x 版和更新版本中的函數執行時間不包含 webhook 提供者的內建支援。
 
-金鑰類型有兩種：
+#### <a name="authorization-scopes-function-level"></a>授權範圍（功能層級）
 
-* **主機金鑰**：這些金鑰由函數應用程式中所有的函式共用。 當做為 API 金鑰使用時，這些金鑰會允許存取函數應用程式中的任何函式。
-* **函式金鑰**：這些金鑰僅適用於據以定義它們的特定函式。 當做為 API 金鑰使用時，這些金鑰僅允許存取該函式。
+函式層級索引鍵有兩個授權範圍：
+
+* **Function**：這些索引鍵只適用于其定義所在的特定函式。 當做為 API 金鑰使用時，這些金鑰僅允許存取該函式。
+
+* **主機**：具有主機範圍的金鑰可用來存取函數應用程式內的所有函式。 當做為 API 金鑰使用時，這些金鑰會允許存取函數應用程式中的任何函式。 
 
 每個金鑰均為具名以供參考，並且在函式和主機層級有一預設金鑰 (名稱為 "default")。 函式金鑰的優先順序高於主機金鑰。 當您使用相同的名稱來定義兩個金鑰時，一律會使用函式金鑰。
 
-每個函數應用程式都有特殊的**主要金鑰**。 此金鑰是一個名為 `_master` 的主機金鑰，它會提供對執行階段 API 的系統管理存取權。 無法撤銷此金鑰。 當您將授權等級設定為 `admin` 時，要求就必須使用主要金鑰；任何其他金鑰則會導致授權失敗。
+#### <a name="master-key-admin-level"></a>主要金鑰（系統管理員層級） 
+
+每個函式應用程式也有一個名為 `_master`的系統管理員層級主機金鑰。 除了為應用程式中的所有函式提供主機層級存取之外，主要金鑰也會提供執行時間 REST Api 的系統管理存取權。 無法撤銷此金鑰。 當您將授權等級設定為 `admin` 時，要求就必須使用主要金鑰；任何其他金鑰則會導致授權失敗。
 
 > [!CAUTION]  
 > 由於主要金鑰會在您的函數應用程式中授與提高的權限，因此您不應該與第三方共用此金鑰，或是在原生用戶端應用程式中散發它。 當您選擇管理授權層級時，請務必謹慎。

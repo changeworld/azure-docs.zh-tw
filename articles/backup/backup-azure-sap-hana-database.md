@@ -3,12 +3,12 @@ title: 使用 Azure 備份將 SAP Hana 資料庫備份至 Azure
 description: 在本文中，您將瞭解如何使用 Azure 備份服務，將 SAP Hana 資料庫備份至 Azure 虛擬機器。
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: dd4c6fc0e018f3fc8f2a2029ef8a90cdc305e2c2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: a5fd09e0e487d103e8bd78964c11b572a62e28fa
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765523"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164605"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>將 SAP Hana 資料庫備份到 Azure VM
 
@@ -28,9 +28,9 @@ SAP Hana 資料庫是需要低復原點目標（RPO）和長期保留的重要�
 >**AZURE vm 中的 SQL server 虛刪除和 AZURE vm 工作負載中的 SAP Hana 虛刪除**現已提供預覽。<br>
 >若要註冊預覽版，請在 AskAzureBackupTeam@microsoft.com 寫信給我們
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-請參閱[必要條件](tutorial-backup-sap-hana-db.md#prerequisites)和[設定許可權](tutorial-backup-sap-hana-db.md#setting-up-permissions)區段，以設定備份的資料庫。
+請參閱[必要條件](tutorial-backup-sap-hana-db.md#prerequisites)和[預先註冊腳本所執行](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)的各節，以設定備份的資料庫。
 
 ### <a name="set-up-network-connectivity"></a>設定網路連線
 
@@ -88,23 +88,6 @@ SAP Hana 資料庫是需要低復原點目標（RPO）和長期保留的重要�
 使用 NSG 服務標籤 | 會自動合併範圍變更，因此更容易管理 <br/><br/> 沒有額外的成本 <br/><br/> | 只能搭配 NSG 使用 <br/><br/> 提供整個服務的存取權
 使用 Azure 防火牆 FQDN 標籤 | 會自動管理所需的 FQDN，因此更容易管理 | 只能搭配 Azure 防火牆使用
 使用 HTTP Proxy | 允許在 Proxy 中精確控制儲存體 URL <br/><br/> VM 的單一網際網路存取點 <br/><br/> 不會隨著 Azure IP 位址變更 | 使用 Proxy 軟體執行 VM 時的額外成本
-
-## <a name="onboard-to-the-public-preview"></a>上線至公開預覽
-
-上線至公開預覽，如下所示：
-
-* 在入口網站中，[依照本文的指示](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors#solution-3---azure-portal)將您的訂用帳戶識別碼註冊至「復原服務」服務提供者。
-* 針對 PowerShell 中的 ' Az ' 模組，執行此 Cmdlet。 其結果應為「已註冊」。
-
-    ```powershell
-    Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
-    ```
-* 如果您在 PowerShell 中使用 ' AzureRM ' 模組，請執行此 Cmdlet。 其結果應為「已註冊」。
-
-    ```powershell
-    Register-AzureRmProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
-    ```
-    
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 

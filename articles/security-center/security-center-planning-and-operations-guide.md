@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 039a30d23c45471d88132f544c11df813fb4b8e6
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 63b947a27c3aa24b42252bf33febd031f7caefbf
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603732"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920649"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Azure 資訊安全中心規劃和操作指南
 本指南適用于規劃使用 Azure 資訊安全中心的資訊技術（IT）專業人員、IT 架構設計師、資訊安全分析師和雲端系統管理員。
@@ -179,7 +179,7 @@ Azure 資訊安全中心使用 Microsoft Monitoring Agent –這是 Azure 監視
 
 一旦處理完所有的建議，所有已處理資源的 [預防] 區段應該是綠色。 持續監視此時變得更容易，因為您只會根據資源安全性健康情況和建議圖格中的變更採取動作。
 
-[偵測] 區段的反應會更明顯，這些是正在發生，或過去曾發生，且資訊安全中心控制項和第三方系統所偵測到之問題的相關警示。 [安全性警示] 圖格會顯示橫條圖，代表每天找到的威脅偵測警示數目，以及其分布在不同嚴重性分類 (低、中、高) 的情形。 如需安全性警示的詳細資訊，請閱讀 [管理與回應 Azure 資訊安全中心的安全性警示](security-center-managing-and-responding-alerts.md)。
+[偵測] 區段的反應會更明顯，這些是正在發生，或過去曾發生，且資訊安全中心控制項和第三方系統所偵測到之問題的相關警示。 [安全性警示] 圖格會顯示橫條圖，代表在每天找到的警示數目，以及其在不同嚴重性類別（低、中、高）之間的分佈。 如需安全性警示的詳細資訊，請閱讀 [管理與回應 Azure 資訊安全中心的安全性警示](security-center-managing-and-responding-alerts.md)。
 
 計劃造訪[威脅情報](https://docs.microsoft.com/azure/security-center/security-center-threat-intel)選項，作為每日安全性作業的一部分。 您可以在那裡識別會對環境造成威脅的安全性威脅，例如識別特定電腦是否為殭屍網路的一份子。
 
@@ -211,7 +211,7 @@ Azure 資訊安全中心使用 Microsoft Monitoring Agent –這是 Azure 監視
 
 
 ## <a name="incident-response"></a>事件回應
-資訊安全中心會偵測並在發生威脅時警示您。 組織應監視新的安全性警示並視需要採取動作，進一步調查或修補攻擊。 如需有關資訊安全中心威脅偵測如何運作的詳細資訊，請參閱[Azure 資訊安全中心如何偵測及回應威脅](security-center-alerts-overview.md#detect-threats)。
+資訊安全中心會偵測並在發生威脅時警示您。 組織應監視新的安全性警示並視需要採取動作，進一步調查或修補攻擊。 如需有關資訊安全中心威脅防護如何運作的詳細資訊，請參閱[Azure 資訊安全中心如何偵測及回應威脅](security-center-alerts-overview.md#detect-threats)。
 
 雖然本文目的並非要幫助您建立自己的事件回應計劃，但我們會在雲端生命週期中使用 Microsoft Azure 安全性回應做為事件回應階段的基礎。 這些階段如下圖所示：
 

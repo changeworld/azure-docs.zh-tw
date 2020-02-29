@@ -1,22 +1,14 @@
 ---
 title: 知識庫的生命週期 - QnA Maker
-titleSuffix: Azure Cognitive Services
 description: QnA Maker 在反覆的週期中學習模型變更、語句範例、發佈資料以及從端點查詢收集資料時，會有最佳學習成效。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 01/27/2020
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: b1978e45a7554358ddd948879143411f89e4c1b2
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 02/27/2020
+ms.openlocfilehash: 98fbd81baa717c981486f33cfb2b3a608cec27c7
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843400"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914947"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>QnA Maker 中的知識庫生命週期
 QnA Maker 在反覆的週期中學習模型變更、語句範例、發佈資料以及從端點查詢收集資料時，會有最佳學習成效。
@@ -24,7 +16,7 @@ QnA Maker 在反覆的週期中學習模型變更、語句範例、發佈資料�
 ![撰寫循環](../media/qnamaker-concepts-lifecycle/kb-lifecycle.png)
 
 ## <a name="creating-a-qna-maker-knowledge-base"></a>建立 QnA Maker 知識庫
-QnA Maker 知識庫 (KB) 端點會根據知識庫的內容對使用者查詢提供最相符的解答。 建立知識庫是指為問題、解答和相關聯的中繼資料設定內容存放庫的一次性動作。 知識庫可藉由對既有的內容編目來建立，這些內容包括常見問題集頁面、產品手冊或結構化問答組。 了解如何[建立知識庫](../quickstarts/create-publish-knowledge-base.md)。
+QnA Maker 知識庫 (KB) 端點會根據知識庫的內容對使用者查詢提供最相符的解答。 建立知識庫是一次設定問題、解答和相關中繼資料之內容存放庫的動作。 知識庫可藉由對既有的內容編目來建立，這些內容包括常見問題集頁面、產品手冊或結構化問答組。 了解如何[建立知識庫](../quickstarts/create-publish-knowledge-base.md)。
 
 ## <a name="testing-and-updating-the-knowledge-base"></a>測試和更新知識庫
 
@@ -87,4 +79,4 @@ QnA Maker 知識庫 (KB) 端點會根據知識庫的內容對使用者查詢提�
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [信賴分數](./confidence-score.md)
+> [主動式學習建議](./active-learning-suggestions.md)

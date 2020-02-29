@@ -1,81 +1,91 @@
 ---
-title: 教學課程： C#使用 .net 建立技能集
+title: 教學課程C# ：和 Azure BLOB 的 AI
 titleSuffix: Azure Cognitive Search
-description: 逐步執行範例程式碼，以顯示 Azure 認知搜尋擴充索引管線中的資料提取、自然語言和影像 AI 處理。
+description: 使用C#和 Azure 認知搜尋 .net SDK，逐步解說 Blob 儲存體中的內容進行文字解壓縮和自然語言處理的範例。
 manager: nitinme
 author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: efd4a9333b5fb02c18b2f6a6d0f8ce58bfb8f220
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.date: 02/27/2020
+ms.openlocfilehash: 85fb709dfcca45b6ca8141c6d3de1941044f5ee5
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472378"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163195"
 ---
-# <a name="tutorial-create-an-ai-enrichment-pipeline-using-c-and-the-net-sdk"></a>教學課程：使用C#和 .Net SDK 建立 AI 擴充管線
+# <a name="tutorial-use-c-and-ai-to-generate-searchable-content-from-azure-blobs"></a>教學課程： C#使用和 AI 從 Azure blob 產生可搜尋的內容
 
-在本教學課程中，您將了解在 Azure 認知搜尋中使用*認知技能*進行資料擴充程式設計的機制。 技能會受到自然語言處理 (NLP) 與認知服務中的映像分析功能所支援。 透過技能組合和設定，您可以擷取文字，以及映像或所掃描文件檔案的文字表示法。 您也可以偵測語言、實體、關鍵片語等。 其最終結果是，AI 支援的索引管線會在搜尋索引中建立豐富的額外內容。
+如果您在 Azure Blob 儲存體中有非結構化的文字或影像， [AI 擴充管線](cognitive-search-concept-intro.md)可以將資訊解壓縮，並建立適用于全文檢索搜尋或知識挖掘案例的新內容。 在本C#教學課程中，對影像套用光學字元辨識（OCR），並執行自然語言處理，以建立可在查詢、facet 和篩選器中運用的新欄位。
 
-在此教學課程中，您將使用 .NET SDK 來執行下列工作：
+在本教學課程中C# ，請使用和[.net SDK](https://aka.ms/search-sdk)來執行下列工作：
 
 > [!div class="checklist"]
-> * 建立對索引路由中的範例資料進行擴充的索引管線
-> * 套用內建技能：光學字元辨識、文字合併、語言偵測、文字分割、實體辨識、關鍵片語擷取
-> * 了解如何藉由將技能集的輸入對應至輸出，將多項技術串聯在一起
-> * 執行要求並檢閱結果
-> * 重設索引和索引子以進行進一步開發
+> * 開始使用 Azure Blob 儲存體中的應用程式檔和映射。
+> * 定義管線來新增 OCR、文字提取、語言偵測、實體和關鍵字組辨識。
+> * 定義用來儲存輸出的索引 (原始內容加上管線產生的名稱/值組)。
+> * 執行管線以開始轉換和分析，以及建立和載入索引。
+> * 使用全文檢索搜尋和豐富的查詢語法來探索結果。
 
-輸出是 Azure 認知搜尋可全文檢索搜尋的索引。 您可以使用其他標準功能來強化索引，例如[同義字](search-synonyms.md)、[評分設定檔](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)、[分析器](search-analyzers.md)和[篩選](search-filters.md)。
-
-本教學課程雖然在免費服務上執行，但可用的交易數目限制為每日 20 份文件。 如果您想要在同一天內多次執行本教學課程，請刪除索引子以重設計數器。
-
-> [!NOTE]
-> 當您藉由增加處理次數、新增更多文件或新增更多 AI 演算法來擴展範圍時，您必須連結可計費的認知服務資源。 在認知服務中呼叫 API，以及在 Azure 認知搜尋的文件萃取階段中擷取影像時，都會產生費用。 從文件中擷取文字不會產生費用。
->
-> 內建技能的執行會依現有的[認知服務隨用隨附價格](https://azure.microsoft.com/pricing/details/cognitive-services/)收費。 影像擷取定價的說明請見 [Azure 認知搜尋定價頁面](https://go.microsoft.com/fwlink/?linkid=2042400)。
-
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果您沒有 Azure 訂用帳戶，請在開始前開啟[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-本教學課程會使用下列服務、工具和資料。 
++ [Azure 儲存體](https://azure.microsoft.com/services/storage/)
++ [Visual Studio](https://visualstudio.microsoft.com/downloads/)
++ [建立](search-create-service-portal.md)或[尋找現有的搜尋服務](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) 
 
-+ [建立 Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)，以儲存範例資料。 確定儲存體帳戶位於與 Azure 認知搜尋相同的區域中。
+> [!Note]
+> 您可以在本教學課程中使用免費服務。 免費的搜尋服務可將您限制為三個索引、三個索引子和三個數據源。 本教學課程會各建立一個。 開始之前，請確定您的服務有空間可接受新的資源。
 
-+ 下載由不同類型小型檔案集組成的[範例資料](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)。 
+## <a name="download-files"></a>下載檔案
 
-+ [安裝 Visual Studio](https://visualstudio.microsoft.com/) 以當作 IDE 使用。
+1. 開啟此 [OneDrive 資料夾](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)，然後在左上角按一下 [下載]，將檔案複製到您的電腦。 
 
-+ [建立 Azure 認知搜尋服務](search-create-service-portal.md)，或在您目前的訂用帳戶下方[尋找現有服務](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 您可以使用本教學課程的免費服務。
+1. 以滑鼠右鍵按一下 ZIP 檔案並選取 [全部解壓縮]。 其中有 14 個不同類型的檔案。 請在本教學課程中使用所有這些專案。
 
-## <a name="get-a-key-and-url"></a>取得金鑰和 URL
+## <a name="1---create-services"></a>1 - 建立服務
 
-若要與 Azure 認知搜尋服務互動，您需要服務 URL 和存取金鑰。 建立搜尋服務時需要這兩項資料，因此如果您將 Azure 認知搜尋新增至您的訂用帳戶，請依照下列步驟來取得必要的資訊：
+本教學課程使用 Azure 認知搜尋來編制索引和查詢、在擴充的後端上認知服務，以及提供資料的 Azure Blob 儲存體。 本教學課程中的每個索引子每日免費配置20筆交易認知服務，因此您唯一需要建立的服務是搜尋和儲存。
 
-1. [登入 Azure 入口網站](https://portal.azure.com/)，並在搜尋服務的 [概觀] 頁面上取得 URL。 範例端點看起來會像是 `https://mydemo.search.windows.net`。
+可能的話，請在相同的區域和資源群組中建立兩者，以進行鄰近性和管理能力。 實際上，您的 Azure 儲存體帳戶可以位在任何區域中。
 
-1. 在 [設定] >  [金鑰] 中，取得服務上完整權限的管理金鑰。 可互換的管理金鑰有兩個，可在您需要變換金鑰時提供商務持續性。 您可以在新增、修改及刪除物件的要求上使用主要或次要金鑰。
+### <a name="start-with-azure-storage"></a>開始使用 Azure 儲存體
 
-   ![取得 HTTP 端點和存取金鑰](media/search-get-started-postman/get-url-key.png "取得 HTTP 端點和存取金鑰")
+1. [登入 Azure 入口網站](https://portal.azure.com/)，然後按一下 [+ 建立資源]。
 
-擁有有效的金鑰就能為每個要求在傳送要求之應用程式與處理要求之服務間建立信任。
+1. 搜尋「儲存體帳戶」，然後選取 Microsoft 的儲存體帳戶供應項目。
 
-## <a name="prepare-sample-data"></a>準備範例資料
+   ![建立儲存體帳戶](media/cognitive-search-tutorial-blob/storage-account.png "建立儲存體帳戶")
 
-擴充管線會從 Azure 資料來源中提取資料。 來源資料必須來自 [Azure 認知搜尋索引子](search-indexer-overview.md)支援的資料來源類型。 針對此練習，我們會使用 Blob 儲存體來展現多個內容類型。
+1. 在 [基本] 索引標籤中，需要下列項目。 接受所有其他項目的預設值。
 
-1. [登入 Azure 入口網站](https://portal.azure.com)瀏覽至您的 Azure 儲存體帳戶、按一下 [Blob]，然後按一下 [+ 容器]。
+   + **資源群組**。 選取現有群組或建立一個新的群組，但必須對所有服務使用相同的群組，以便您一起管理這些服務。
 
-1. [建立 Blob 容器](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)以容納範例資料。 您可以將公用存取層級設定為任何有效值。 此教學課程假設容器名稱為 "basic-demo-data-pr"。
+   + **儲存體帳戶名稱**。 如果您認為您可能會有多個相同類型的資源，請透過名稱在類型和區域上做出區別，例如 blobstoragewestus。 
 
-1. 建立容器之後，請開啟它，然後選取命令列上的 [上傳] 來上傳[樣本資料](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)。
+   + **位置**。 可能的話，請選擇用於 Azure 認知搜尋和認知服務的相同位置。 單一位置可避免產生頻寬費用。
 
-   ![Azure Blob 儲存體中的來源檔案](./media/cognitive-search-quickstart-blob/sample-data.png)
+   + **帳戶種類**。 選擇預設值 [StorageV2 (一般用途 v2)]。
 
-1. 範例檔案載入之後，請取得 Blob 儲存體的容器名稱和連接字串。 您可以透過在 Azure 入口網站中瀏覽至儲存體帳戶、選取 [存取金鑰]，然後複製 [連接字串] 欄位來執行此動作。
+1. 按一下 [檢閱 + 建立] 以建立服務。
+
+1. 建立後，按一下 [移至資源] 以開啟 [概觀] 頁面。
+
+1. 按一下 [Blob] 服務。
+
+1. 按一下 [ **+ 容器**] 來建立容器，並將其命名為 [*基本]-[示範-資料 pr*]。
+
+1. 選取 [*基本]-[示範-資料 pr* ]，然後按一下 **[上傳**] 以開啟儲存下載檔案的資料夾。 選取所有十四個檔案，然後按一下 **[確定]** 上傳。
+
+   ![上傳範例檔案](media/cognitive-search-quickstart-blob/sample-data.png "上傳範例檔案")
+
+1. 在您離開 Azure 儲存體之前，請取得連接字串，以便在 Azure 認知搜尋中制定連線。 
+
+   1. 往回瀏覽到儲存體帳戶的 [概觀] 頁面 (我們使用 blobstragewestus 作為範例)。 
+   
+   1. 在左側導覽窗格中，選取 [存取金鑰] 並複製其中一個連接字串。 
 
    連接字串應為類似於下列範例的 URL：
 
@@ -83,9 +93,33 @@ ms.locfileid: "77472378"
       DefaultEndpointsProtocol=https;AccountName=cogsrchdemostorage;AccountKey=<your account key>;EndpointSuffix=core.windows.net
       ```
 
-此外也有其他方式可指定連接字串，例如提供共用存取簽章。 若要深入了解資料來源認證，請參閱[編製 Azure Blob 儲存體的索引](search-howto-indexing-azure-blob-storage.md#Credentials)。
+1. 將連接字串儲存到記事本。 您稍後設定資料來源連線時會用到該字串。
 
-## <a name="set-up-your-environment"></a>設定您的環境
+### <a name="cognitive-services"></a>認知服務
+
+AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的文字分析和電腦視覺。 如果您的目標是要完成實際的原型或專案，您應在此時佈建認知服務 (位於 Azure 認知搜尋所在的區域)，以便將其連結至索引作業。
+
+不過，在此練習中，您可以略過資源佈建，因為 Azure 認知搜尋可以在幕後連線到認知服務，並為每個索引子執行提供 20 筆免費交易。 由於本教學課程會使用 7 筆交易，因此使用免費配置就已足夠。 針對較大型的專案，請考慮以隨用隨付 S0 層來佈建認知服務。 如需詳細資訊，請參閱[連結認知服務](cognitive-search-attach-cognitive-services.md)。
+
+### <a name="azure-cognitive-search"></a>Azue 認知搜尋
+
+第三個元件是 Azure 認知搜尋，您可以[在入口網站中建立](search-create-service-portal.md)該服務。 您可以使用免費層來完成此逐步解說。 
+
+### <a name="get-an-admin-api-key-and-url-for-azure-cognitive-search"></a>取得 Azure 認知搜尋的管理員 API 金鑰和 URL
+
+若要與 Azure 認知搜尋服務互動，您需要服務 URL 和存取金鑰。 建立搜尋服務時需要這兩項資料，因此如果您將 Azure 認知搜尋新增至您的訂用帳戶，請依照下列步驟來取得必要的資訊：
+
+1. [登入 Azure 入口網站](https://portal.azure.com/)，並在搜尋服務的 [概觀] 頁面上取得 URL。 範例端點看起來會像是 `https://mydemo.search.windows.net`。
+
+1. 在 [設定] >  [金鑰] 中，取得服務上完整權限的管理金鑰。 可互換的管理金鑰有兩個，可在您需要變換金鑰時提供商務持續性。 您可以在新增、修改及刪除物件的要求上使用主要或次要金鑰。
+
+   一併取得查詢金鑰。 最佳做法是發出具有唯讀存取權的查詢要求。
+
+   ![取得服務名稱及管理和查詢金鑰](media/search-get-started-nodejs/service-name-and-keys.png)
+
+擁有有效的金鑰就能為每個要求在傳送要求之應用程式與處理要求之服務間建立信任。
+
+## <a name="2---set-up-your-environment"></a>2-設定您的環境
 
 一開始請開啟 Visual Studio，並建立可在 .NET Core 上執行的新主控台應用程式專案。
 
@@ -93,38 +127,52 @@ ms.locfileid: "77472378"
 
 [Azure 認知搜尋 .NET SDK](https://aka.ms/search-sdk) 包含數個用戶端程式庫，可讓您管理索引、資料來源、索引子及技能集，以及上傳和管理文件，還可以執行查詢，而且一律不需要處理 HTTP 和 JSON 的細節。 這些用戶端程式庫都以 NuGet 套件來散發。
 
-針對此專案，您必須安裝 `Microsoft.Azure.Search` NuGet 套件的版本 9 與最新的 `Microsoft.Extensions.Configuration.Json` NuGet 套件。
+針對此專案，請安裝 `Microsoft.Azure.Search` NuGet 套件的9版或更新版本。
 
-在 Visual Studio 中，使用套件管理員主控台來安裝 `Microsoft.Azure.Search` NuGet 套件。 若要開啟套件管理員主控台，請選取 [工具] > [NuGet 套件管理員] > [套件管理員主控台]。 若要取得要執行的命令，請瀏覽至 [Microsoft.Azure.Search NuGet 套件頁面](https://www.nuget.org/packages/Microsoft.Azure.Search) \(英文\)、選取版本 9，然後複製套件管理員命令。 在套件管理員主控台中，執行此命令。
+1. 開啟 [套件管理員主控台]。 選取 [工具] > [NuGet 套件管理員] > [套件管理員主控台]。 
 
-若要在 Visual Studio 中安裝 `Microsoft.Extensions.Configuration.Json` NuGet 套件，請選取 **工具** >  **NuGet 套件管理員**， > **管理方案的 nuget 套件**...。選取 流覽 並搜尋 `Microsoft.Extensions.Configuration.Json` NuGet 套件。 一旦找到它之後，請選取該套件、選取您的專案、確認該版本為最新的穩定版本，然後選取 [安裝]。
+1. 流覽至 [ [Microsoft Azure] [搜尋 NuGet 套件] 頁面](https://www.nuget.org/packages/Microsoft.Azure.Search)。
 
-## <a name="add-azure-cognitive-search-service-information"></a>新增 Azure 認知搜尋服務資訊
+1. 選取最新版本（9或更新版本）。
 
-若要連線到您的 Azure 認知搜尋服務，您必須將搜尋服務資訊新增至專案。 在 [方案總管] 中以滑鼠右鍵按一下您的專案，然後選取 [新增] > [新增項目]。 將檔案命名為 `appsettings.json`，然後選取 [新增]。 
+1. 複製 [套件管理員] 命令。
 
-此檔案必須包含於您的輸出目錄中。 若要執行此動作，請以滑鼠右鍵按一下 `appsettings.json`，然後選取 [屬性]。 將 [**複製到輸出目錄**] 的值變更為 [**有更新時才複製**]。
+1. 返回 [套件管理員主控台]，然後執行您在上一個步驟中複製的命令。
 
-將下列 JSON 複製到新的 JSON 檔案。
+接下來，安裝最新的 `Microsoft.Extensions.Configuration.Json` NuGet 套件。
 
-```json
-{
-  "SearchServiceName": "Put your search service name here",
-  "SearchServiceAdminApiKey": "Put your primary or secondary API key here",
-  "SearchServiceQueryApiKey": "Put your query API key here",
-  "AzureBlobConnectionString": "Put your Azure Blob connection string here",
-}
-```
+1. 選取 **工具** > **nuget 套件管理員** > **管理解決方案的 nuget 封裝**...。 
 
-新增您的搜尋服務與 Blob 儲存體帳戶資訊。
+1. 按一下 **[流覽]** ，並搜尋 `Microsoft.Extensions.Configuration.Json` NuGet 套件。 
 
-您可以在 Azure 入口網站，從搜尋帳戶頁面中取得搜尋服務資訊。 帳戶名稱將位於主頁面上，而您可以透過選取 [金鑰] 來尋找金鑰。
+1. 選取封裝，選取您的專案，確認版本是最新的穩定版本，然後按一下 [**安裝**]。
 
-您可以透過在 Azure 入口網站中瀏覽至儲存體帳戶、選取 [存取金鑰]，然後複製 [連接字串] 欄位來取得 Blob 連接字串。
+### <a name="add-service-connection-information"></a>新增服務連接資訊
 
-## <a name="add-namespaces"></a>新增命名空間
+1. 以滑鼠右鍵按一下 方案總管中的專案，然後選取 **加入** > **新增專案**...。 
 
-此教學課程會使用許多來自各種命名空間的不同類型。 若要使用那些類型，請將下列內容新增至 `Program.cs`。
+1. 將檔案命名為 `appsettings.json`，然後選取 [新增]。 
+
+1. 將此檔案包含在您的輸出目錄中。
+    1. 在 `appsettings.json` 上按一下滑鼠右鍵，然後選取 [**屬性**]。 
+    1. 將 [**複製到輸出目錄**] 的值變更為 [**有更新時才複製**]。
+
+1. 將下列 JSON 複製到新的 JSON 檔案。
+
+    ```json
+    {
+      "SearchServiceName": "Put your search service name here",
+      "SearchServiceAdminApiKey": "Put your primary or secondary API key here",
+      "SearchServiceQueryApiKey": "Put your query API key here",
+      "AzureBlobConnectionString": "Put your Azure Blob connection string here",
+    }
+    ```
+
+新增您的搜尋服務與 Blob 儲存體帳戶資訊。 您應該記得，您可以從上一節所指示的服務布建步驟中取得這項資訊。
+
+### <a name="add-namespaces"></a>新增命名空間
+
+在 `Program.cs`中，新增下列命名空間。
 
 ```csharp
 using System;
@@ -132,16 +180,21 @@ using System.Collections.Generic;
 using Microsoft.Azure.Search;
 using Microsoft.Azure.Search.Models;
 using Microsoft.Extensions.Configuration;
+
+namespace EnrichwithAI
 ```
 
-## <a name="create-a-client"></a>建立用戶端
+### <a name="create-a-client"></a>建立用戶端
 
-建立 `SearchServiceClient` 類別的執行個體。
+在 Main 底下建立 `SearchServiceClient` 類別的實例。
 
 ```csharp
-IConfigurationBuilder builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
-IConfigurationRoot configuration = builder.Build();
-SearchServiceClient serviceClient = CreateSearchServiceClient(configuration);
+public static void Main(string[] args)
+{
+    // Create service client
+    IConfigurationBuilder builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
+    IConfigurationRoot configuration = builder.Build();
+    SearchServiceClient serviceClient = CreateSearchServiceClient(configuration);
 ```
 
 `CreateSearchServiceClient` 會使用儲存在應用程式組態檔 (appsettings.json) 中的值，來建立新的 `SearchServiceClient`。
@@ -160,14 +213,61 @@ private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot 
 > [!NOTE]
 > `SearchServiceClient` 類別會管理連至搜尋服務的連線。 為了避免開啟太多連線，如果可以，您應該嘗試在應用程式中共用 `SearchServiceClient` 的單一執行個體。 它的方法是可啟用這類共用的安全執行緒。
 > 
-> 
 
-## <a name="create-a-data-source"></a>建立資料來源
+## <a name="3---create-the-pipeline"></a>3 - 建立管線
 
-呼叫 `DataSource` 來建立新的 `DataSource.AzureBlobStorage` 執行個體。 `DataSource.AzureBlobStorage` 要求您指定資料來源名稱、連接字串和 Blob 容器名稱。
+在 Azure 認知搜尋中，AI 處理會在編製索引 (或資料擷取) 期間進行。 逐步解說的這個部分會建立四個物件：資料來源、索引定義、技能集、索引子。 
 
-雖然不會在此教學課程中使用它，但也會定義虛刪除原則，用以根據虛刪除資料行的值來識別已刪除的 Blob。 如果 Blob 具有值為 `IsDeleted` 的中繼資料屬性 `true`，下列原則就會認為要刪除該 Blob。
+### <a name="step-1-create-a-data-source"></a>步驟 1：建立資料來源
 
+`SearchServiceClient` 具有 `DataSources` 屬性。 此屬性會提供您建立、列出、更新或刪除 Azure 認知搜尋資料來源所需的所有方法。
+
+呼叫 `DataSource` 來建立新的 `serviceClient.DataSources.CreateOrUpdate(dataSource)` 執行個體。 `DataSource.AzureBlobStorage` 要求您指定資料來源名稱、連接字串和 Blob 容器名稱。
+
+```csharp
+private static DataSource CreateOrUpdateDataSource(SearchServiceClient serviceClient, IConfigurationRoot configuration)
+{
+    DataSource dataSource = DataSource.AzureBlobStorage(
+        name: "demodata",
+        storageConnectionString: configuration["AzureBlobConnectionString"],
+        containerName: "basic-demo-data-pr",
+        description: "Demo files to demonstrate cognitive search capabilities.");
+
+    // The data source does not need to be deleted if it was already created
+    // since we are using the CreateOrUpdate method
+    try
+    {
+        serviceClient.DataSources.CreateOrUpdate(dataSource);
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine("Failed to create or update the data source\n Exception message: {0}\n", e.Message);
+        ExitProgram("Cannot continue without a data source");
+    }
+
+    return dataSource;
+}
+```
+
+如果要求成功，方法將傳回已建立的資料來源。 如果要求發生問題 (例如無效的參數)，則方法將擲回例外狀況。
+
+現在在 Main 中新增一行，以呼叫您剛才新增的 `CreateOrUpdateDataSource` 函式。
+
+```csharp
+public static void Main(string[] args)
+{
+    // Create service client
+    IConfigurationBuilder builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
+    IConfigurationRoot configuration = builder.Build();
+    SearchServiceClient serviceClient = CreateSearchServiceClient(configuration);
+
+    // Create or Update the data source
+    Console.WriteLine("Creating or updating the data source...");
+    DataSource dataSource = CreateOrUpdateDataSource(serviceClient, configuration);
+```
+
+
+<!-- 
 ```csharp
 DataSource dataSource = DataSource.AzureBlobStorage(
     name: "demodata",
@@ -179,9 +279,9 @@ DataSource dataSource = DataSource.AzureBlobStorage(
     description: "Demo files to demonstrate cognitive search capabilities.");
 ```
 
-既然您已將 `DataSource` 物件初始化，請建立資料來源。 `SearchServiceClient` 具有 `DataSources` 屬性。 此屬性會提供您建立、列出、更新或刪除 Azure 認知搜尋資料來源所需的所有方法。
+Now that you have initialized the `DataSource` object, create the data source. `SearchServiceClient` has a `DataSources` property. This property provides all the methods you need to create, list, update, or delete Azure Cognitive Search data sources.
 
-如果要求成功，方法將傳回已建立的資料來源。 如果要求發生問題 (例如無效的參數)，則方法將擲回例外狀況。
+For a successful request, the method will return the data source that was created. If there is a problem with the request, such as an invalid parameter, the method will throw an exception.
 
 ```csharp
 try
@@ -192,13 +292,13 @@ catch (Exception e)
 {
     // Handle the exception
 }
-```
+``` -->
 
-由於這是您第一個要求，請查看 Azure 入口網站，以確認已在 Azure 認知搜尋中建立資料來源。 在搜尋服務儀表板頁面上，確認 [資料來源] 圖格有新的項目。 您可能需要等候幾分鐘，讓入口網站重新整理頁面。
+建置並執行解決方案。 由於這是您第一個要求，請查看 Azure 入口網站，以確認已在 Azure 認知搜尋中建立資料來源。 在搜尋服務儀表板頁面上，確認 [資料來源] 圖格有新的項目。 您可能需要等候幾分鐘，讓入口網站重新整理頁面。
 
   ![入口網站中的資料來源圖格](./media/cognitive-search-tutorial-blob/data-source-tile.png "入口網站中的資料來源圖格")
 
-## <a name="create-a-skillset"></a>建立技能集
+### <a name="step-2-create-a-skillset"></a>步驟2：建立技能集
 
 在此節中，您會定義一組要套用至資料的擴充步驟。 每個擴充步驟均稱為一個「技能」，而一組擴充步驟會稱為一個「技能集」。 本教學課程會使用為技能集[內建的認知技能](cognitive-search-predefined-skills.md)：
 
@@ -214,7 +314,7 @@ catch (Exception e)
 
 + [關鍵片語擷取](cognitive-search-skill-keyphrases.md)，用以提取最高排名的關鍵片語。
 
-在最初處理期間，Azure 認知搜尋會萃取每份文件，以讀取不同檔案格式的內容。 找到來自來源檔案的文字時，會將文字放入產生的 ```content``` 欄位中，每份文件一個欄位。 因此，將輸入設定為 ```"/document/content"``` 以使用此文字。 
+在最初處理期間，Azure 認知搜尋會萃取每份文件，以讀取不同檔案格式的內容。 找到來自來源檔案的文字時，會將文字放入產生的 ```content``` 欄位中，每份文件一個欄位。 因此，請將輸入設定為 ```"/document/content"``` 以使用此文字。 
 
 輸出可以對應至索引、作為下游技能的輸入，或在使用語言代碼時同時作為對應和輸入。 在索引中，語言代碼可用於篩選。 作為輸入時，文字分析技能會使用語言代碼指出斷字方面的語言規則。
 
@@ -225,23 +325,28 @@ catch (Exception e)
 **OCR** 技能可從影像中擷取文字。 此技能假設 normalized_images 欄位存在。 為產生此欄位，我們會在此教學課程稍後，於索引子定義中將 ```"imageAction"``` 設定設為 ```"generateNormalizedImages"```。
 
 ```csharp
-List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
-inputMappings.Add(new InputFieldMappingEntry(
-    name: "image",
-    source: "/document/normalized_images/*"));
+private static OcrSkill CreateOcrSkill()
+{
+    List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
+    inputMappings.Add(new InputFieldMappingEntry(
+        name: "image",
+        source: "/document/normalized_images/*"));
 
-List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>();
-outputMappings.Add(new OutputFieldMappingEntry(
-    name: "text",
-    targetName: "text"));
+    List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>();
+    outputMappings.Add(new OutputFieldMappingEntry(
+        name: "text",
+        targetName: "text"));
 
-OcrSkill ocrSkill = new OcrSkill(
-    description: "Extract text (plain and structured) from image",
-    context: "/document/normalized_images/*",
-    inputs: inputMappings,
-    outputs: outputMappings,
-    defaultLanguageCode: OcrSkillLanguage.En,
-    shouldDetectOrientation: true);
+    OcrSkill ocrSkill = new OcrSkill(
+        description: "Extract text (plain and structured) from image",
+        context: "/document/normalized_images/*",
+        inputs: inputMappings,
+        outputs: outputMappings,
+        defaultLanguageCode: OcrSkillLanguage.En,
+        shouldDetectOrientation: true);
+
+    return ocrSkill;
+}
 ```
 
 ### <a name="merge-skill"></a>合併技能
@@ -249,29 +354,34 @@ OcrSkill ocrSkill = new OcrSkill(
 在此節中，您將建立**合併**技能，來合併文件內容欄位與 OCR 技能所產生的文字。
 
 ```csharp
-List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
-inputMappings.Add(new InputFieldMappingEntry(
-    name: "text",
-    source: "/document/content"));
-inputMappings.Add(new InputFieldMappingEntry(
-    name: "itemsToInsert",
-    source: "/document/normalized_images/*/text"));
-inputMappings.Add(new InputFieldMappingEntry(
-    name: "offsets",
-    source: "/document/normalized_images/*/contentOffset"));
+private static MergeSkill CreateMergeSkill()
+{
+    List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
+    inputMappings.Add(new InputFieldMappingEntry(
+        name: "text",
+        source: "/document/content"));
+    inputMappings.Add(new InputFieldMappingEntry(
+        name: "itemsToInsert",
+        source: "/document/normalized_images/*/text"));
+    inputMappings.Add(new InputFieldMappingEntry(
+        name: "offsets",
+        source: "/document/normalized_images/*/contentOffset"));
 
-List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>();
-outputMappings.Add(new OutputFieldMappingEntry(
-    name: "mergedText",
-    targetName: "merged_text"));
+    List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>();
+    outputMappings.Add(new OutputFieldMappingEntry(
+        name: "mergedText",
+        targetName: "merged_text"));
 
-MergeSkill mergeSkill = new MergeSkill(
-    description: "Create merged_text which includes all the textual representation of each image inserted at the right location in the content field.",
-    context: "/document",
-    inputs: inputMappings,
-    outputs: outputMappings,
-    insertPreTag: " ",
-    insertPostTag: " ");
+    MergeSkill mergeSkill = new MergeSkill(
+        description: "Create merged_text which includes all the textual representation of each image inserted at the right location in the content field.",
+        context: "/document",
+        inputs: inputMappings,
+        outputs: outputMappings,
+        insertPreTag: " ",
+        insertPostTag: " ");
+
+    return mergeSkill;
+}
 ```
 
 ### <a name="language-detection-skill"></a>語言偵測技能
@@ -279,21 +389,26 @@ MergeSkill mergeSkill = new MergeSkill(
 **語言偵測**技能會偵測輸入文字的語言，並針對要求所提交的每份文件回報單一語言代碼。 我們將使用**語言偵測**技能的輸出作為**文字分割**技能輸入的一部分。
 
 ```csharp
-List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
-inputMappings.Add(new InputFieldMappingEntry(
-    name: "text",
-    source: "/document/merged_text"));
+private static LanguageDetectionSkill CreateLanguageDetectionSkill()
+{
+    List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
+    inputMappings.Add(new InputFieldMappingEntry(
+        name: "text",
+        source: "/document/merged_text"));
 
-List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>();
-outputMappings.Add(new OutputFieldMappingEntry(
-    name: "languageCode",
-    targetName: "languageCode"));
+    List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>();
+    outputMappings.Add(new OutputFieldMappingEntry(
+        name: "languageCode",
+        targetName: "languageCode"));
 
-LanguageDetectionSkill languageDetectionSkill = new LanguageDetectionSkill(
-    description: "Detect the language used in the document",
-    context: "/document",
-    inputs: inputMappings,
-    outputs: outputMappings);
+    LanguageDetectionSkill languageDetectionSkill = new LanguageDetectionSkill(
+        description: "Detect the language used in the document",
+        context: "/document",
+        inputs: inputMappings,
+        outputs: outputMappings);
+
+    return languageDetectionSkill;
+}
 ```
 
 ### <a name="text-split-skill"></a>文字分割技能
@@ -301,26 +416,32 @@ LanguageDetectionSkill languageDetectionSkill = new LanguageDetectionSkill(
 下列**分割**技能將依頁面分割文字，並按照 `String.Length` 所測量的來將其限制為 4,000 個字元。 此演算法會嘗試將文字分割成區塊，且區塊大小最多為 `maximumPageLength`。 在此案例中，演算法將盡量在例句邊界斷句，好讓區塊大小稍微小於 `maximumPageLength`。
 
 ```csharp
-List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
-inputMappings.Add(new InputFieldMappingEntry(
-    name: "text",
-    source: "/document/merged_text"));
-inputMappings.Add(new InputFieldMappingEntry(
-    name: "languageCode",
-    source: "/document/languageCode"));
+private static SplitSkill CreateSplitSkill()
+{
+    List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
 
-List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>();
-outputMappings.Add(new OutputFieldMappingEntry(
-    name: "textItems",
-    targetName: "pages"));
+    inputMappings.Add(new InputFieldMappingEntry(
+        name: "text",
+        source: "/document/merged_text"));
+    inputMappings.Add(new InputFieldMappingEntry(
+        name: "languageCode",
+        source: "/document/languageCode"));
 
-SplitSkill splitSkill = new SplitSkill(
-    description: "Split content into pages",
-    context: "/document",
-    inputs: inputMappings,
-    outputs: outputMappings,
-    textSplitMode: TextSplitMode.Pages,
-    maximumPageLength: 4000);
+    List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>();
+    outputMappings.Add(new OutputFieldMappingEntry(
+        name: "textItems",
+        targetName: "pages"));
+
+    SplitSkill splitSkill = new SplitSkill(
+        description: "Split content into pages",
+        context: "/document",
+        inputs: inputMappings,
+        outputs: outputMappings,
+        textSplitMode: TextSplitMode.Pages,
+        maximumPageLength: 4000);
+
+    return splitSkill;
+}
 ```
 
 ### <a name="entity-recognition-skill"></a>實體辨識技能
@@ -330,26 +451,31 @@ SplitSkill splitSkill = new SplitSkill(
 請注意，[內容] 欄位會設定為附有星號的 ```"/document/pages/*"```，這表示會在 ```"/document/pages"``` 下方針對每個頁面呼叫擴充步驟。
 
 ```csharp
-List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
-inputMappings.Add(new InputFieldMappingEntry(
-    name: "text",
-    source: "/document/pages/*"));
-    
-List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>();
-outputMappings.Add(new OutputFieldMappingEntry(
-    name: "organizations",
-    targetName: "organizations"));
+private static EntityRecognitionSkill CreateEntityRecognitionSkill()
+{
+    List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
+    inputMappings.Add(new InputFieldMappingEntry(
+        name: "text",
+        source: "/document/pages/*"));
 
-List<EntityCategory> entityCategory = new List<EntityCategory>();
-entityCategory.Add(EntityCategory.Organization);
-    
-EntityRecognitionSkill entityRecognitionSkill = new EntityRecognitionSkill(
-    description: "Recognize organizations",
-    context: "/document/pages/*",
-    inputs: inputMappings,
-    outputs: outputMappings,
-    categories: entityCategory,
-    defaultLanguageCode: EntityRecognitionSkillLanguage.En);
+    List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>();
+    outputMappings.Add(new OutputFieldMappingEntry(
+        name: "organizations",
+        targetName: "organizations"));
+
+    List<EntityCategory> entityCategory = new List<EntityCategory>();
+    entityCategory.Add(EntityCategory.Organization);
+
+    EntityRecognitionSkill entityRecognitionSkill = new EntityRecognitionSkill(
+        description: "Recognize organizations",
+        context: "/document/pages/*",
+        inputs: inputMappings,
+        outputs: outputMappings,
+        categories: entityCategory,
+        defaultLanguageCode: EntityRecognitionSkillLanguage.En);
+
+    return entityRecognitionSkill;
+}
 ```
 
 ### <a name="key-phrase-extraction-skill"></a>關鍵片語擷取技能
@@ -357,24 +483,29 @@ EntityRecognitionSkill entityRecognitionSkill = new EntityRecognitionSkill(
 如同剛建立的 `EntityRecognitionSkill` 執行個體，會針對文件的每個頁面呼叫**關鍵片語擷取**技能。
 
 ```csharp
-List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
-inputMappings.Add(new InputFieldMappingEntry(
-    name: "text",
-    source: "/document/pages/*"));
-inputMappings.Add(new InputFieldMappingEntry(
-    name: "languageCode",
-    source: "/document/languageCode"));
+private static KeyPhraseExtractionSkill CreateKeyPhraseExtractionSkill()
+{
+    List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
+    inputMappings.Add(new InputFieldMappingEntry(
+        name: "text",
+        source: "/document/pages/*"));
+    inputMappings.Add(new InputFieldMappingEntry(
+        name: "languageCode",
+        source: "/document/languageCode"));
 
-List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>();
-outputMappings.Add(new OutputFieldMappingEntry(
-    name: "keyPhrases",
-    targetName: "keyPhrases"));
+    List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>();
+    outputMappings.Add(new OutputFieldMappingEntry(
+        name: "keyPhrases",
+        targetName: "keyPhrases"));
 
-KeyPhraseExtractionSkill keyPhraseExtractionSkill = new KeyPhraseExtractionSkill(
-    description: "Extract the key phrases",
-    context: "/document/pages/*",
-    inputs: inputMappings,
-    outputs: outputMappings);
+    KeyPhraseExtractionSkill keyPhraseExtractionSkill = new KeyPhraseExtractionSkill(
+        description: "Extract the key phrases",
+        context: "/document/pages/*",
+        inputs: inputMappings,
+        outputs: outputMappings);
+
+    return keyPhraseExtractionSkill;
+}
 ```
 
 ### <a name="build-and-create-the-skillset"></a>建置和建立技能集
@@ -382,34 +513,56 @@ KeyPhraseExtractionSkill keyPhraseExtractionSkill = new KeyPhraseExtractionSkill
 使用您建立的技能來建置 `Skillset`。
 
 ```csharp
-List<Skill> skills = new List<Skill>();
-skills.Add(ocrSkill);
-skills.Add(mergeSkill);
-skills.Add(languageDetectionSkill);
-skills.Add(splitSkill);
-skills.Add(entityRecognitionSkill);
-skills.Add(keyPhraseExtractionSkill);
+private static Skillset CreateOrUpdateDemoSkillSet(SearchServiceClient serviceClient, IList<Skill> skills)
+{
+    Skillset skillset = new Skillset(
+        name: "demoskillset",
+        description: "Demo skillset",
+        skills: skills);
 
-Skillset skillset = new Skillset(
-    name: "demoskillset",
-    description: "Demo skillset",
-    skills: skills);
+    // Create the skillset in your search service.
+    // The skillset does not need to be deleted if it was already created
+    // since we are using the CreateOrUpdate method
+    try
+    {
+        serviceClient.Skillsets.CreateOrUpdate(skillset);
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine("Failed to create the skillset\n Exception message: {0}\n", e.Message);
+        ExitProgram("Cannot continue without a skillset");
+    }
+
+    return skillset;
+}
 ```
 
-在您的搜尋服務中建立技能集。
+將下列幾行新增至 Main。
 
 ```csharp
-try
-{
-    serviceClient.Skillsets.CreateOrUpdate(skillset);
-}
-catch (Exception e)
-{
-    // Handle exception
-}
+    // Create the skills
+    Console.WriteLine("Creating the skills...");
+    OcrSkill ocrSkill = CreateOcrSkill();
+    MergeSkill mergeSkill = CreateMergeSkill();
+    EntityRecognitionSkill entityRecognitionSkill = CreateEntityRecognitionSkill();
+    LanguageDetectionSkill languageDetectionSkill = CreateLanguageDetectionSkill();
+    SplitSkill splitSkill = CreateSplitSkill();
+    KeyPhraseExtractionSkill keyPhraseExtractionSkill = CreateKeyPhraseExtractionSkill();
+
+    // Create the skillset
+    Console.WriteLine("Creating or updating the skillset...");
+    List<Skill> skills = new List<Skill>();
+    skills.Add(ocrSkill);
+    skills.Add(mergeSkill);
+    skills.Add(languageDetectionSkill);
+    skills.Add(splitSkill);
+    skills.Add(entityRecognitionSkill);
+    skills.Add(keyPhraseExtractionSkill);
+
+    Skillset skillset = CreateOrUpdateDemoSkillSet(serviceClient, skills);
 ```
 
-## <a name="create-an-index"></a>建立索引
+### <a name="step-3-create-an-index"></a>步驟3：建立索引
 
 在本節中，您會藉由指定要在可搜尋索引中包含哪些欄位以及每個欄位的搜尋屬性，來定義索引結構描述。 欄位具有類型，並且可取用決定如何使用欄位 (可搜尋、可排序等等) 的屬性。 索引中的欄位名稱不需要完全符合來源中的欄位名稱。 在後續步驟中，您可以在索引子中新增欄位對應以連接來源-目的地欄位。 針對此步驟，請使用與搜尋應用程式相關的欄位命名慣例來定義索引。
 
@@ -420,7 +573,7 @@ catch (Exception e)
 | 欄位類型： | Edm.String|Edm.String| Edm.String| List<Edm.String>  | List<Edm.String>  |
 
 
-### <a name="create-demoindex-class"></a>建立 DemoIndex 類別
+#### <a name="create-demoindex-class"></a>建立 DemoIndex 類別
 
 此索引的欄位會使用模型類別來定義。 每個模型類別的屬性皆具有屬性，會判斷對應索引欄位的搜尋相關行為。 
 
@@ -428,12 +581,40 @@ catch (Exception e)
 
 請務必指出您想要使用來自 `Microsoft.Azure.Search` 和 `Microsoft.Azure.Search.Models` 命名空間的類型。
 
+將下列模型類別定義新增至 `DemoIndex.cs`，然後將它包含於您將建立索引的相同命名空間。
+
 ```csharp
 using Microsoft.Azure.Search;
 using Microsoft.Azure.Search.Models;
+
+namespace EnrichwithAI
+{
+    // The SerializePropertyNamesAsCamelCase attribute is defined in the Azure Search .NET SDK.
+    // It ensures that Pascal-case property names in the model class are mapped to camel-case
+    // field names in the index.
+    [SerializePropertyNamesAsCamelCase]
+    public class DemoIndex
+    {
+        [System.ComponentModel.DataAnnotations.Key]
+        [IsSearchable, IsSortable]
+        public string Id { get; set; }
+
+        [IsSearchable]
+        public string Content { get; set; }
+
+        [IsSearchable]
+        public string LanguageCode { get; set; }
+
+        [IsSearchable]
+        public string[] KeyPhrases { get; set; }
+
+        [IsSearchable]
+        public string[] Organizations { get; set; }
+    }
+}
 ```
 
-將下列模型類別定義新增至 `DemoIndex.cs`，然後將它包含於您將建立索引的相同命名空間。
+<!-- Add the below model class definition to `DemoIndex.cs` and include it in the same namespace where you'll create the index.
 
 ```csharp
 // The SerializePropertyNamesAsCamelCase attribute is defined in the Azure Cognitive Search .NET SDK.
@@ -458,21 +639,51 @@ public class DemoIndex
     [IsSearchable]
     public string[] Organizations { get; set; }
 }
-```
+``` -->
 
-既然您已定義模型類別，請返回 `Program.cs`，您現在可以非常輕鬆地建立索引定義。 此索引的名稱將會是 "demoindex"。
+既然您已定義模型類別，請返回 `Program.cs`，您現在可以非常輕鬆地建立索引定義。 此索引的名稱將會 `demoindex`。 如果已經存在具有該名稱的索引，將會刪除它。
 
 ```csharp
-var index = new Index()
+private static Index CreateDemoIndex(SearchServiceClient serviceClient)
 {
-    Name = "demoindex",
-    Fields = FieldBuilder.BuildForType<DemoIndex>()
-};
+    var index = new Index()
+    {
+        Name = "demoindex",
+        Fields = FieldBuilder.BuildForType<DemoIndex>()
+    };
+
+    try
+    {
+        bool exists = serviceClient.Indexes.Exists(index.Name);
+
+        if (exists)
+        {
+            serviceClient.Indexes.Delete(index.Name);
+        }
+
+        serviceClient.Indexes.Create(index);
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine("Failed to create the index\n Exception message: {0}\n", e.Message);
+        ExitProgram("Cannot continue without an index");
+    }
+
+    return index;
+}
 ```
 
 在測試期間，您可能發現您正嘗試多次建立索引。 基於此緣故，請檢查以查看您即將建立的索引是否已經存在，然後再嘗試建立它。
 
+將下列幾行新增至 Main。
+
 ```csharp
+    // Create the index
+    Console.WriteLine("Creating the index...");
+    Index demoIndex = CreateDemoIndex(serviceClient);
+```
+
+<!-- ```csharp
 try
 {
     bool exists = serviceClient.Indexes.Exists(index.Name);
@@ -489,10 +700,11 @@ catch (Exception e)
     // Handle exception
 }
 ```
+ -->
 
 若要深入了解如何定義索引，請參閱[建立索引 (Azure 認知搜尋 REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index)。
 
-## <a name="create-an-indexer-map-fields-and-execute-transformations"></a>建立索引子、對應欄位，並執行轉換
+### <a name="step-4-create-and-run-an-indexer"></a>步驟4：建立並執行索引子
 
 至此，您已建立資料來源、技能集和索引。 這三項元件構成了[索引子](search-indexer-overview.md)的一部分，可將各項資料一併提取到多階段的單一作業中。 若要在索引子中結合這些項目，您必須定義欄位對應。
 
@@ -503,63 +715,76 @@ catch (Exception e)
 除了將輸入連結至輸出，您也可以使用欄位對應來將資料結構壓平合併。 如需詳細資訊，請參閱[如何將擴充的欄位對應至可搜尋的索引](cognitive-search-output-field-mapping.md)。
 
 ```csharp
-IDictionary<string, object> config = new Dictionary<string, object>();
-config.Add(
-    key: "dataToExtract",
-    value: "contentAndMetadata");
-config.Add(
-    key: "imageAction",
-    value: "generateNormalizedImages");
-
-List<FieldMapping> fieldMappings = new List<FieldMapping>();
-fieldMappings.Add(new FieldMapping(
-    sourceFieldName: "metadata_storage_path",
-    targetFieldName: "id",
-    mappingFunction: new FieldMappingFunction(
-        name: "base64Encode")));
-fieldMappings.Add(new FieldMapping(
-    sourceFieldName: "content",
-    targetFieldName: "content"));
-
-List<FieldMapping> outputMappings = new List<FieldMapping>();
-outputMappings.Add(new FieldMapping(
-    sourceFieldName: "/document/pages/*/organizations/*",
-    targetFieldName: "organizations"));
-outputMappings.Add(new FieldMapping(
-    sourceFieldName: "/document/pages/*/keyPhrases/*",
-    targetFieldName: "keyPhrases"));
-outputMappings.Add(new FieldMapping(
-    sourceFieldName: "/document/languageCode",
-    targetFieldName: "languageCode"));
-
-Indexer indexer = new Indexer(
-    name: "demoindexer",
-    dataSourceName: dataSource.Name,
-    targetIndexName: index.Name,
-    description: "Demo Indexer",
-    skillsetName: skillSet.Name,
-    parameters: new IndexingParameters(
-        maxFailedItems: -1,
-        maxFailedItemsPerBatch: -1,
-        configuration: config),
-    fieldMappings: fieldMappings,
-    outputFieldMappings: outputMappings);
-
-try
+private static Indexer CreateDemoIndexer(SearchServiceClient serviceClient, DataSource dataSource, Skillset skillSet, Index index)
 {
-    bool exists = serviceClient.Indexers.Exists(indexer.Name);
+    IDictionary<string, object> config = new Dictionary<string, object>();
+    config.Add(
+        key: "dataToExtract",
+        value: "contentAndMetadata");
+    config.Add(
+        key: "imageAction",
+        value: "generateNormalizedImages");
 
-    if (exists)
+    List<FieldMapping> fieldMappings = new List<FieldMapping>();
+    fieldMappings.Add(new FieldMapping(
+        sourceFieldName: "metadata_storage_path",
+        targetFieldName: "id",
+        mappingFunction: new FieldMappingFunction(
+            name: "base64Encode")));
+    fieldMappings.Add(new FieldMapping(
+        sourceFieldName: "content",
+        targetFieldName: "content"));
+
+    List<FieldMapping> outputMappings = new List<FieldMapping>();
+    outputMappings.Add(new FieldMapping(
+        sourceFieldName: "/document/pages/*/organizations/*",
+        targetFieldName: "organizations"));
+    outputMappings.Add(new FieldMapping(
+        sourceFieldName: "/document/pages/*/keyPhrases/*",
+        targetFieldName: "keyPhrases"));
+    outputMappings.Add(new FieldMapping(
+        sourceFieldName: "/document/languageCode",
+        targetFieldName: "languageCode"));
+
+    Indexer indexer = new Indexer(
+        name: "demoindexer",
+        dataSourceName: dataSource.Name,
+        targetIndexName: index.Name,
+        description: "Demo Indexer",
+        skillsetName: skillSet.Name,
+        parameters: new IndexingParameters(
+            maxFailedItems: -1,
+            maxFailedItemsPerBatch: -1,
+            configuration: config),
+        fieldMappings: fieldMappings,
+        outputFieldMappings: outputMappings);
+
+    try
     {
-        serviceClient.Indexers.Delete(indexer.Name);
+        bool exists = serviceClient.Indexers.Exists(indexer.Name);
+
+        if (exists)
+        {
+            serviceClient.Indexers.Delete(indexer.Name);
+        }
+
+        serviceClient.Indexers.Create(indexer);
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine("Failed to create the indexer\n Exception message: {0}\n", e.Message);
+        ExitProgram("Cannot continue without creating an indexer");
     }
 
-    serviceClient.Indexers.Create(indexer);
+    return indexer;
 }
-catch (Exception e)
-{
-    // Handle exception
-}
+```
+將下列幾行新增至 Main。
+
+```csharp
+    // Create the indexer, map fields, and execute transformations
+    Console.WriteLine("Creating the indexer...");
+    Indexer demoIndexer = CreateDemoIndexer(serviceClient, dataSource, skillset, demoIndex);
 ```
 
 預期建立索引子將需花費一些時間才能完成。 即使資料集很小，分析技能仍需要大量計算。 某些技能 (例如影像分析) 需要長時間執行。
@@ -575,80 +800,67 @@ catch (Exception e)
 
 在擷取內容時，您可以設定 `imageAction`，以從在資料來源中找到的影像擷取文字。 設定為 ```"imageAction"``` 組態的 ```"generateNormalizedImages"``` 可與 OCR 技能和文字合併技能相結合，以指示索引子從影像中擷取文字 (例如，從「停」交通號誌中擷取「停」這個字)，並將其內嵌為內容欄位的一部分。 此行為適用於內嵌在文件中的影像 (例如 PDF 內的影像)，以及在資料來源中找到的影像 (例如 JPG 檔案)。
 
-## <a name="check-indexer-status"></a>檢查索引子狀態
+<a name="check-indexer-status"></a>
+
+## <a name="4---monitor-indexing"></a>4 - 監視編製索引
 
 索引子經定義後，將會在您提交要求時自動執行。 根據您所定義的認知技能，索引編製所需的時間可能會超出您的預期。 若要了解索引子是否仍在執行，請使用 `GetStatus` 方法。
 
 ```csharp
-try
+private static void CheckIndexerOverallStatus(SearchServiceClient serviceClient, Indexer indexer)
 {
-    IndexerExecutionInfo demoIndexerExecutionInfo = serviceClient.Indexers.GetStatus(indexer.Name);
-
-    switch (demoIndexerExecutionInfo.Status)
+    try
     {
-        case IndexerStatus.Error:
-            Console.WriteLine("Indexer has error status");
-            break;
-        case IndexerStatus.Running:
-            Console.WriteLine("Indexer is running");
-            break;
-        case IndexerStatus.Unknown:
-            Console.WriteLine("Indexer status is unknown");
-            break;
-        default:
-            Console.WriteLine("No indexer information");
-            break;
+        IndexerExecutionInfo demoIndexerExecutionInfo = serviceClient.Indexers.GetStatus(indexer.Name);
+
+        switch (demoIndexerExecutionInfo.Status)
+        {
+            case IndexerStatus.Error:
+                ExitProgram("Indexer has error status. Check the Azure Portal to further understand the error.");
+                break;
+            case IndexerStatus.Running:
+                Console.WriteLine("Indexer is running");
+                break;
+            case IndexerStatus.Unknown:
+                Console.WriteLine("Indexer status is unknown");
+                break;
+            default:
+                Console.WriteLine("No indexer information");
+                break;
+        }
     }
-}
-catch (Exception e)
-{
-    // Handle exception
+    catch (Exception e)
+    {
+        Console.WriteLine("Failed to get indexer overall status\n Exception message: {0}\n", e.Message);
+    }
 }
 ```
 
 `IndexerExecutionInfo` 表示索引子的目前狀態和執行記錄。
 
 某些來源檔案和技能的組合常會出現警告，這並不一定表示有問題。 在本教學課程中，警告是良性的 (例如，沒有來自 JPEG 檔案的文字輸入)。
+
+將下列幾行新增至 Main。
+
+```csharp
+    // Check indexer overall status
+    Console.WriteLine("Check the indexer overall status...");
+    CheckIndexerOverallStatus(serviceClient, demoIndexer);
+```
  
-## <a name="query-your-index"></a>查詢您的索引
+## <a name="5---search"></a>5 - 搜尋
 
 索引編製完成後，您可以執行會傳回個別欄位內容的查詢。 根據預設，Azure 認知搜尋會傳回前 50 項結果。 範例資料很小，因此預設值即足堪使用。 不過，在使用較大的資料集時，您可能需要在查詢字串中加上參數，以傳回較多結果。 如需相關指示，請參閱[如何在 Azure 認知搜尋中對結果分頁](search-pagination-page-layout.md)。
 
 在驗證步驟中，您會查詢所有欄位的索引。
+
+將下列幾行新增至 Main。
 
 ```csharp
 DocumentSearchResult<DemoIndex> results;
 
 ISearchIndexClient indexClientForQueries = CreateSearchIndexClient(configuration);
 
-try
-{
-    results = indexClientForQueries.Documents.Search<DemoIndex>("*");
-}
-catch (Exception e)
-{
-    // Handle exception
-}
-```
-
-`CreateSearchIndexClient` 會使用儲存在應用程式組態檔 (appsettings.json) 中的值，來建立新的 `SearchIndexClient`。 請注意，系統會使用搜尋服務查詢 API 金鑰，而非管理金鑰。
-
-```csharp
-private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot configuration)
-{
-   string searchServiceName = configuration["SearchServiceName"];
-   string queryApiKey = configuration["SearchServiceQueryApiKey"];
-
-   SearchIndexClient indexClient = new SearchIndexClient(searchServiceName, "demoindex", new SearchCredentials(queryApiKey));
-   return indexClient;
-}
-```
-
-輸出將是索引結構描述，附有每個欄位的名稱、類型和屬性。
-
-提交第二個 `"*"` 查詢，以傳回單一欄位的所有內容，例如 `organizations`。
-
-```csharp
 SearchParameters parameters =
     new SearchParameters
     {
@@ -665,7 +877,53 @@ catch (Exception e)
 }
 ```
 
-對其他欄位重複前述步驟：此練習中的內容、語言程式碼、關鍵片語和組織。 您可以透過使用逗號分隔清單的 `$select` 傳回多個欄位。
+`CreateSearchIndexClient` 會使用儲存在應用程式組態檔 (appsettings.json) 中的值，來建立新的 `SearchIndexClient`。 請注意，會使用搜尋服務查詢 API 金鑰，而不是系統管理金鑰。
+
+```csharp
+private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot configuration)
+{
+   string searchServiceName = configuration["SearchServiceName"];
+   string queryApiKey = configuration["SearchServiceQueryApiKey"];
+
+   SearchIndexClient indexClient = new SearchIndexClient(searchServiceName, "demoindex", new SearchCredentials(queryApiKey));
+   return indexClient;
+}
+```
+
+將下列程式碼新增至 Main。 第一個 try-catch 會傳回索引定義，其中包含每個欄位的名稱、類型和屬性。 第二個是參數化查詢，其中 `Select` 指定要包含在結果中的欄位，例如 `organizations`。 `"*"` 的搜尋字串會傳回單一欄位的所有內容。
+
+```csharp
+//Verify content is returned after indexing is finished
+ISearchIndexClient indexClientForQueries = CreateSearchIndexClient(configuration);
+
+try
+{
+    results = indexClientForQueries.Documents.Search<DemoIndex>("*");
+    Console.WriteLine("First query succeeded with a result count of {0}", results.Results.Count);
+}
+catch (Exception e)
+{
+    Console.WriteLine("First query failed\n Exception message: {0}\n", e.Message);
+}
+
+SearchParameters parameters =
+    new SearchParameters
+    {
+        Select = new[] { "organizations" }
+    };
+
+try
+{
+    results = indexClientForQueries.Documents.Search<DemoIndex>("*", parameters);
+    Console.WriteLine("Second query succeeded with a result count of {0}", results.Results.Count);
+}
+catch (Exception e)
+{
+    Console.WriteLine("Second query failed\n Exception message: {0}\n", e.Message);
+}
+```
+
+對其他欄位重複前述步驟：此練習中的內容、語言程式碼、關鍵片語和組織。 您可以使用以逗號分隔的清單，透過[Select](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.searchparameters.select?view=azure-dotnet)屬性來傳回多個欄位。
 
 <a name="reset"></a>
 
@@ -676,8 +934,6 @@ catch (Exception e)
 此教學課程會負責檢查現有的索引子和索引，如果它們已經存在，即會將它們刪除，讓您能夠重新執行您的程式碼。
 
 您也可以使用入口網站來刪除索引、索引子和技能集。
-
-當您的程式碼成熟時，您可以精簡重建策略。 如需詳細資訊，請參閱[如何重建索引](search-howto-reindex.md)。
 
 ## <a name="takeaways"></a>重要心得
 

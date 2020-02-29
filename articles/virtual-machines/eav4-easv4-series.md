@@ -2,17 +2,17 @@
 title: Eav4 系列和 Easv4 系列-Azure 虛擬機器
 description: Eav4 和 Easv4 系列 Vm 的規格。
 services: virtual-machines
-author: jonbeck7
+author: migerdes
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 96cd7b4f4627e7c0335df9c745d8193a3dac7044
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: e05a2b97a25ce4cab7d619f4b62d405765cb08db
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493770"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164384"
 ---
 # <a name="eav4-and-easv4-series"></a>Eav4 和 Easv4 系列
 
@@ -25,6 +25,10 @@ ACU： 230-260
 進階儲存體：不支援
 
 進階儲存體快取：不支援
+
+即時移轉：支援
+
+記憶體保留更新：支援
 
 Eav4 系列大小以2.35 版 Ghz AMD EPYC<sup>TM</sup> 7452 處理器為基礎，可達成 3.35 ghz 的提升頻率，並使用 premium SSD。 Eav4 系列大小非常適合記憶體密集型的企業應用程式。 資料磁碟儲存體與虛擬機器分開計費。 若要使用 premium SSD，請使用 Easv4 系列大小。 Easv4 大小的定價和計費方式與 Eav3 系列相同。
 
@@ -49,6 +53,10 @@ ACU： 230-260
 進階儲存體：支援
 
 進階儲存體快取：支援
+
+即時移轉：支援
+
+記憶體保留更新：支援
 
 Easv4 系列大小以2.35 版 Ghz AMD EPYC<sup>TM</sup> 7452 處理器為基礎，可達成 3.35 ghz 的提升頻率，並使用 premium SSD。 Easv4 系列大小非常適合記憶體密集型的企業應用程式。
 

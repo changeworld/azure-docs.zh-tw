@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 1f609c33ea474508eb107c0df9993c2ba3483660
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 36d6b0cac0321c989fecbc5751d71c744cd83292
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087037"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920938"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>教學課程：從 CLI 訓練和部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -68,7 +68,7 @@ git clone https://github.com/microsoft/MLOps.git
 存放庫包含下列檔案，可用來將定型的模型部署為 web 服務：
 
 * `aciDeploymentConfig.yml`：__部署配置__檔。 這個檔案會定義模型所需的主控環境。
-* `inferenceConfig.yml`：推斷 configuration__ 檔案。 此檔案會定義服務用來以模型評分資料的軟體環境。
+* `inferenceConfig.yml`：__推斷配置__檔案。 此檔案會定義服務用來以模型評分資料的軟體環境。
 * `score.py`：可接受傳入資料的 python 腳本，使用模型對其進行分數，然後傳迴響應。
 * `scoring-env.yml`：執行模型和 `score.py` 腳本所需的 conda 相依性。
 * `testdata.json`：可用來測試已部署之 web 服務的資料檔案。

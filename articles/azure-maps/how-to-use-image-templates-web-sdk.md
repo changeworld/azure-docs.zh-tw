@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendleton
 ms.custom: codepen
 ms.openlocfilehash: f3b1141ea3c3c8e33b8a2ae12c22b6962a90d32b
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 02/28/2020
 ms.locfileid: "77198219"
 ---
 # <a name="how-to-use-image-templates"></a>如何使用映像範本
@@ -111,7 +111,7 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 | 名稱 | 傳回類型 | 描述 | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | 將自訂 SVG 影像範本新增至 [阿特拉斯] 命名空間。 |
-|  `getImageTemplate(templateName: string, scale?: number)`| string | 依名稱捕獲 SVG 範本。 |
+|  `getImageTemplate(templateName: string, scale?: number)`| 字串 | 依名稱捕獲 SVG 範本。 |
 | `getAllImageTemplateNames()` | string[] |  依名稱捕獲 SVG 範本。 |
 
 SVG 影像範本支援下列預留位置值：
@@ -154,7 +154,7 @@ SVG 影像範本支援下列預留位置值：
 | 六邊形 | 六邊形-粗 | 六邊形-圓角 | 六邊形-進位-粗 |
 | ![六邊形圖示](./media/image-templates/hexagon.png) | ![六邊形-粗圖示](./media/image-templates/hexagon-thick.png) | ![六邊形-圓角圖示](./media/image-templates/hexagon-rounded.png) | ![六邊形-進位-粗圖示](./media/image-templates/hexagon-rounded-thick.png) |
 ||||
-| pin | 圖釘-round | 圓角-正方形 | 進位-正方形-粗 |
+| 固定 | 圖釘-round | 圓角-正方形 | 進位-正方形-粗 |
 | ![釘選圖示](./media/image-templates/pin.png) | ![圖釘-round 圖示](./media/image-templates/pin-round.png) | ![圓角-正方形圖示](./media/image-templates/rounded-square.png) | ![圓角-方形-粗圖示](./media/image-templates/rounded-square-thick.png) |
 ||||
 | 向上箭號 | 向上箭號-細 | 汽車 ||

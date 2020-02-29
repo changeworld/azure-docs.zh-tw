@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 5681efc202df511745532e4a314e88b319e9880a
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 99f255d9991b51897ee31671835dabb5f3e359fd
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623413"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916501"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服務配額
 
@@ -168,6 +168,9 @@ Cosmos DB 針對以 MongoDB 撰寫的應用程式支援 MongoDB 有線通訊協�
 | --- | --- |
 | MongoDB 查詢記憶體大小上限 | 40 MB |
 | MongoDB 作業的執行時間上限| 30 秒 |
+| 伺服器端連接結束的閒置連接逾時 * | 30 分鐘 |
+
+\* 我們建議用戶端應用程式將驅動程式設定中的閒置連接逾時設為2-3 分鐘，因為[Azure LoadBalancer 的預設超時時間為4分鐘](../load-balancer/load-balancer-tcp-idle-timeout.md#tcp-idle-timeout)。  此超時時間可確保用戶端電腦與 Azure Cosmos DB 之間的中繼負載平衡器不會關閉閒置的連線。
 
 ## <a name="try-cosmos-db-free-limits"></a>試用 Cosmos DB 免費限制
 

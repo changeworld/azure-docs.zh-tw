@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: 8d905da733ea0573b91b289da43684ed8083c804
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 14c54028dacb545532b540ae8ff79fc3dc5356bc
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616377"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921261"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Azure 資訊安全中心提供支援的功能
 
@@ -38,10 +38,10 @@ ms.locfileid: "77616377"
 |||||||||
 |----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
 ||**Azure 虛擬機器**|**Azure 虛擬機器擴展集**|**非 Azure 機器**|**定價**
-|[Microsoft Defender ATP 整合](security-center-wdatp.md)|✔ (在支援的版本上)|✔ (在支援的版本上)|✔|標準|
-|[虛擬機器行為分析威脅偵測警示](threat-protection.md)|✔|✔|✔|建議（免費）威脅偵測（標準）|
-|[Fileless 威脅偵測警示](alerts-reference.md#alerts-windows)|✔|✔|✔|標準|
-|[以網路為基礎的威脅偵測警示](threat-protection.md#network-layer)|✔|✔|-|標準|
+|[Microsoft Defender ATP 整合](security-center-wdatp.md)|✔</br>（支援的版本）|✔</br>（支援的版本）|✔|標準|
+|[虛擬機器行為分析（和安全性警示）](threat-protection.md)|✔|✔|✔|建議（免費） </br></br> 安全性警示（標準）|
+|[Fileless 安全性警示](alerts-reference.md#alerts-windows)|✔|✔|✔|標準|
+|[以網路為基礎的安全性警示](threat-protection.md#network-layer)|✔|✔|-|標準|
 |[即時 VM 存取](security-center-just-in-time.md)|✔|-|-|標準|
 |[原生弱點評估](built-in-vulnerability-assessment.md)|✔|-|-|標準|
 |[檔案完整性監視](security-center-file-integrity-monitoring.md)|✔|✔|✔|標準|
@@ -50,7 +50,7 @@ ms.locfileid: "77616377"
 |[彈性網路強化](security-center-adaptive-network-hardening.md)|✔|-|-|標準|
 |自適性網路控制措施|✔|✔|-|標準|
 |[法規合規性儀表板 & 報告](security-center-compliance-dashboard.md)|✔|✔|✔|標準|
-|Docker 託管 IaaS 容器上的建議和威脅偵測|-|-|-|標準|
+|Docker 託管 IaaS 容器上的建議和威脅防護|-|-|-|標準|
 |缺少 OS 修補程式評估|✔|✔|✔|免費|
 |安全性錯誤的評估|✔|✔|✔|免費|
 |[Endpoint protection 評估](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|免費|
@@ -65,9 +65,9 @@ ms.locfileid: "77616377"
 |----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
 ||**Azure 虛擬機器**|**Azure 虛擬機器擴展集**|**非 Azure 機器**|**定價**
 |[Microsoft Defender ATP 整合](security-center-wdatp.md)|-|-|-|標準|
-|[虛擬機器行為分析威脅偵測警示](security-center-alerts-iaas.md)|✔ (在支援的版本上)|✔ (在支援的版本上)|✔|建議（免費）威脅偵測（標準）|
-|[Fileless 威脅偵測警示](alerts-reference.md#alerts-windows)|-|-|-|標準|
-|[以網路為基礎的威脅偵測警示](threat-protection.md#network-layer)|✔|✔|-|標準|
+|[虛擬機器行為分析（和安全性警示）](security-center-alerts-iaas.md)|✔</br>（支援的版本）|✔</br>（支援的版本）|✔|建議（免費） </br></br> 安全性警示（標準）|
+|[Fileless 安全性警示](alerts-reference.md#alerts-windows)|-|-|-|標準|
+|[以網路為基礎的安全性警示](threat-protection.md#network-layer)|✔|✔|-|標準|
 |[即時 VM 存取](security-center-just-in-time.md)|✔|-|-|標準|
 |[原生弱點評估](built-in-vulnerability-assessment.md)|✔|-|-|標準|
 |[檔案完整性監視](security-center-file-integrity-monitoring.md)|✔|✔|✔|標準|
@@ -76,7 +76,7 @@ ms.locfileid: "77616377"
 |[彈性網路強化](security-center-adaptive-network-hardening.md)|✔|-|-|標準|
 |自適性網路控制措施|✔|✔|-|標準|
 |[法規合規性儀表板 & 報告](security-center-compliance-dashboard.md)|✔|✔|✔|標準|
-|Docker 託管 IaaS 容器上的建議和威脅偵測|✔|✔|✔|標準|
+|Docker 託管 IaaS 容器上的建議和威脅防護|✔|✔|✔|標準|
 |缺少 OS 修補程式評估|✔|✔|✔|免費|
 |安全性錯誤的評估|✔|✔|✔|免費|
 |[Endpoint protection 評估](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|免費|
@@ -116,7 +116,7 @@ ms.locfileid: "77616377"
 
 Azure 資訊安全中心支援下列 PaaS 資源：
 
-|服務|建議（免費）|威脅偵測警示（標準）|弱點評估（標準）|
+|服務|建議（免費）|安全性警示（標準）|弱點評估（標準）|
 |----|:----:|:----:|:----:|
 |SQL Database|✔|✔|✔|
 |Azure Container Registry|-|-|✔|
@@ -158,6 +158,5 @@ Azure 資訊安全中心支援下列 PaaS 資源：
 - 瞭解[資訊安全中心如何管理和保護資料](security-center-data-security.md)。
 - 了解如何[規劃及了解採用 Azure 資訊安全中心的設計考量](security-center-planning-and-operations-guide.md)。
 - 查看[支援安全中心的平臺](security-center-os-coverage.md)。
-- 深入瞭解[Azure 資訊安全中心中的 vm & 伺服器的威脅偵測](security-center-alerts-iaas.md)。
+- [在 Azure 資訊安全中心中深入瞭解 Windows 和 Linux 電腦的威脅防護](threat-protection.md#windows-machines)。
 - 尋找[Azure 資訊安全中心](faq-general.md)的常見問題。
-- 尋找[有關 Azure 安全性與合規性的部落格文章](https://blogs.msdn.com/b/azuresecurity/)。

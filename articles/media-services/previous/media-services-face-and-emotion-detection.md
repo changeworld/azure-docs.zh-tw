@@ -15,16 +15,19 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: b6cbca454d1463ffe6e73d7021ea563e7121b7be
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 2d746167f993438e5fce467365844df2078c08a6
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084628"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919290"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>使用 Azure 媒體分析偵測臉部和情緒
 
-## <a name="overview"></a>Overview
+> [!NOTE]
+> **Azure 媒體臉部偵測器**媒體處理器將被淘汰。 如需淘汰日期，請參閱[舊版元件](legacy-components.md)主題。
+
+## <a name="overview"></a>概觀
 
 **Azure 媒體臉部偵測器** 媒體處理器 (MP) 能讓您透過臉部表情針對對象的參與情形做出計算、追蹤移動，甚至進行量測。 此服務包含兩個功能： 
 
@@ -65,7 +68,7 @@ ms.locfileid: "74084628"
 ### <a name="input-video"></a>輸入影片
 [輸入影片](https://ampdemo.azureedge.net/azuremediaplayer.html?url=httpss%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
 
-### <a name="task-configuration-preset"></a>工作設定 (預設)
+### <a name="task-configuration-preset"></a>工作組態 (預設)
 以 **Azure 媒體臉部偵測器**建立工作時，您必須指定設定預設值。 下列設定預設值僅適用於臉部偵測。
 
 ```json
@@ -80,7 +83,7 @@ ms.locfileid: "74084628"
 #### <a name="attribute-descriptions"></a>屬性描述
 | 屬性名稱 | 描述 |
 | --- | --- |
-| 模式 |Fast：較快的處理速度，但較不精確 (預設)。|
+| [模式] |Fast：較快的處理速度，但較不精確 (預設)。|
 
 ### <a name="json-output"></a>JSON 輸出
 下列為 JSON 輸出受到截斷的範例。
@@ -137,7 +140,7 @@ ms.locfileid: "74084628"
 ### <a name="input-video"></a>輸入影片
 [輸入影片](https://ampdemo.azureedge.net/azuremediaplayer.html?url=httpss%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
 
-### <a name="task-configuration-preset"></a>工作設定 (預設)
+### <a name="task-configuration-preset"></a>工作組態 (預設)
 以 **Azure 媒體臉部偵測器**建立工作時，您必須指定設定預設值。 下列設定預設值指定以情緒偵測為基礎建立 JSON。
 
 ```json
@@ -155,7 +158,7 @@ ms.locfileid: "74084628"
 #### <a name="attribute-descriptions"></a>屬性描述
 | 屬性名稱 | 描述 |
 | --- | --- |
-| 模式 |Faces：僅臉部偵測。<br/>PerFaceEmotion：將每個臉部偵測的情緒單獨傳回。<br/>AggregateEmotion：傳回該畫面中所有臉部的平均情緒值。 |
+| [模式] |Faces：僅臉部偵測。<br/>PerFaceEmotion：將每個臉部偵測的情緒單獨傳回。<br/>AggregateEmotion：傳回該畫面中所有臉部的平均情緒值。 |
 | AggregateEmotionWindowMs |在已選取 AggregateEmotion 模式時使用。 指定要用來產生每個彙總結果之影片的長度，以毫秒為單位。 |
 | AggregateEmotionIntervalMs |在已選取 AggregateEmotion 模式時使用。 指定產生彙總結果的頻率。 |
 
@@ -345,7 +348,7 @@ ms.locfileid: "74084628"
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>建立和設定 Visual Studio 專案
 
-設定您的開發環境並在 app.config 檔案中填入連線資訊，如[使用 .NET 進行 Media Services 開發](media-services-dotnet-how-to-use.md)中所述。 
+設定您的開發環境並在 app.config 檔案中填入連線資訊，如[使用 .NET 進行 Media Services 開發](media-services-dotnet-how-to-use.md)所述。 
 
 #### <a name="example"></a>範例
 

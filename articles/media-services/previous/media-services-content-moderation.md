@@ -14,17 +14,20 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: sajagtap
-ms.openlocfilehash: a8560df6120dd773e13dbfc7427d9a16e6f6c83b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 83fe7867a3128ac82597c028452863a1ad681ace
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896008"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914308"
 ---
 # <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>使用 Azure 媒體內容仲裁來偵測潛在的成人和猥褻內容 
 
+> [!NOTE]
+> **Azure 媒體內容仲裁**媒體處理器將會淘汰。 如需淘汰日期，請參閱[舊版元件](legacy-components.md)主題。
+
 ## <a name="overview"></a>概觀
-**Azure 媒體內容仲裁**媒體處理器 (MP) 可讓您針對影片使用機器輔助仲裁。 例如，您可能想偵測影片中潛在的成人和辛辣內容，並由您的人力仲裁小組檢閱加上旗標的內容。
+**Azure 媒體內容仲裁**媒體處理器 (MP) 可讓您針對影片使用機器輔助仲裁。 例如，您可能會想要偵測影片中潛在的成人和猥褻內容，並由您的人力仲裁小組檢閱這些被標記的內容。
 
 **Azure 媒體內容仲裁** MP 目前為預覽功能。
 
@@ -71,14 +74,14 @@ JSON 格式的仲裁輸出包含自動偵測的擷取畫面和主要畫面格。
 | reviewRecommended | `true` 或 `false` 需視 **adultScore** 或 **racyScore** 是否超出內部閾值而定。 |
 | adultScore | 是否有潛在成人內容的信賴分數，範圍為 0.00 到 0.99。 |
 | racyScore | 是否有潛在猥褻內容的信賴分數，範圍為 0.00 到 0.99。 |
-| index | 從第一個畫面格索引到最後一個畫面格索引的範圍畫格索引。 |
+| 索引 | 從第一個畫面格索引到最後一個畫面格索引的範圍畫格索引。 |
 | timestamp | 畫面格位置 (以刻度為單位)。 |
 | shotIndex | 父系擷取畫面的索引。 |
 
 
 ## <a name="content-moderation-quickstart-and-sample-output"></a>內容仲裁快速入門和範例輸出
 
-### <a name="task-configuration-preset"></a>工作設定 (預設)
+### <a name="task-configuration-preset"></a>工作組態 (預設)
 以 **Azure 媒體內容仲裁**建立工作時，您必須指定設定預設值。 下列設定預設值僅適用於內容仲裁。
 
     {

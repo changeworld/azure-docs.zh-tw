@@ -3,12 +3,12 @@ title: 在 Azure Migrate 中設定相依性視覺效果
 description: 說明如何在 Azure Migrate Server 評估中設定相依性視覺效果。
 ms.topic: article
 ms.date: 2/24/2020
-ms.openlocfilehash: f5b0682adf345681c03bb6dbf14e9a0d9ba1fd58
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 054e2301160a885909630c2968863e5f9e25af69
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589032"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916280"
 ---
 # <a name="set-up-dependency-visualization"></a>設定相依性視覺效果
 
@@ -76,7 +76,7 @@ ms.locfileid: "77589032"
 5. 按一下 [新增] 以新增 Log Analytics 工作區。 貼上您從入口網站複製的工作區識別碼和金鑰。 按 [下一步]。
 
 您可以從命令列或使用自動化方法（例如 Configuration Manager 或[Intigua](https://go.microsoft.com/fwlink/?linkid=2104196)）來安裝代理程式。
-- [了解更多](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent)有關如何使用這些方法來安裝 MMA 代理程式。
+- [了解更多](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration)有關如何使用這些方法來安裝 MMA 代理程式。
 - MMA 代理程式也可以使用此[指令碼](https://go.microsoft.com/fwlink/?linkid=2104394)來安裝。
 - [深入瞭解](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#supported-windows-operating-systems)MMA 所支援的 Windows 作業系統。
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/13/2019
 ms.author: labrenne
-ms.openlocfilehash: a22117505dff35f9b92e3dd3c91dc8540557b218
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: bdf0b3bfc955d8a2e2ce1b363c8699ca719b957c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023033"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919000"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>在 Batch 集區上掛接虛擬檔案系統
 
@@ -88,9 +88,6 @@ new PoolAddParameter
 另一個選項是透過[blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md)使用 Azure Blob 儲存體。 裝載 blob 檔案系統需要您的儲存體帳戶 `AccountKey` 或 `SasKey`。 如需取得這些金鑰的資訊，請參閱[管理儲存體帳戶存取金鑰](../storage/common/storage-account-keys-manage.md)，或[使用共用存取簽章（SAS）](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。 如需使用 blobfuse 的詳細資訊，請參閱 blobfuse[疑難排解常見問題](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ)。 若要取得 blobfuse 裝載目錄的預設存取權，請以**系統管理員**身分執行工作。 Blobfuse 會在使用者空間裝載目錄，而在建立集區時，它會裝載為 root。 在 Linux 中，所有**系統管理員**工作都是 root。 熔斷器模組的所有選項都會在 [[保險絲參考] 頁面](https://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html)中說明。
 
 除了疑難排解指南以外，blobfuse 存放庫中的 GitHub 問題也是檢查目前 blobfuse 問題和解決方法的實用方式。 如需詳細資訊，請參閱[blobfuse 問題](https://github.com/Azure/azure-storage-fuse/issues)。
-
-> [!NOTE]
-> Debian 目前不支援 Blobfuse。 如需詳細資訊，請參閱[支援的 sku](#supported-skus) 。
 
 ```csharp
 new PoolAddParameter
@@ -166,15 +163,16 @@ new PoolAddParameter
 
 如果掛接設定失敗，集區中的計算節點將會失敗，且節點狀態會變成無法使用。 若要診斷掛接設定失敗，請檢查 [ [`ComputeNodeError`](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) ] 屬性，以取得錯誤的詳細資料。
 
-若要取得用於進行偵錯工具的記錄檔，請使用`*.log` [OutputFiles](batch-task-output-files.md) 上傳檔案。 `*.log` 檔案包含 `AZ_BATCH_NODE_MOUNTS_DIR` 位置之檔案系統掛接的相關資訊。 掛接記錄檔的格式為：每個掛接的 `<type>-<mountDirOrDrive>.log`。 例如，在名為 `test` 的掛接目錄中掛接 `cifs` 將會有一個名為的掛接記錄檔： `cifs-test.log`。
+若要取得用於進行偵錯工具的記錄檔，請使用[OutputFiles](batch-task-output-files.md)上傳 `*.log` 檔案。 `*.log` 檔案包含 `AZ_BATCH_NODE_MOUNTS_DIR` 位置之檔案系統掛接的相關資訊。 掛接記錄檔的格式為：每個掛接的 `<type>-<mountDirOrDrive>.log`。 例如，在名為 `test` 的掛接目錄中掛接 `cifs` 將會有一個名為的掛接記錄檔： `cifs-test.log`。
 
 ## <a name="supported-skus"></a>支援的 SKU
 
-| 發佈者 | 供應項目 | SKU | Azure 檔案儲存體共用 | Blobfuse | NFS 掛接 | CIFS 掛接 |
+| 發行者 | 供應項目 | SKU | Azure 檔案儲存體共用 | Blobfuse | NFS 掛接 | CIFS 掛接 |
 |---|---|---|---|---|---|---|
-| batch | rendering-centos73 | 轉譯 | :heavy_check_mark: <br>注意：與 CentOS 7.7 相容</br>| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 批次 | rendering-centos73 | 轉譯 | :heavy_check_mark: <br>注意：與 CentOS 7.7 相容</br>| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Canonical | UbuntuServer | 16.04-LTS，18.04-LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Credativ | Debian | 8、9 | :heavy_check_mark: | :x: | :heavy_check_mark: | :heavy_check_mark: |
+| Credativ | Debian | 8| :heavy_check_mark: | :x: | :heavy_check_mark: | :heavy_check_mark: |
+| Credativ | Debian | 9 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | microsoft-ads | linux-data-science-vm | linuxdsvm | :heavy_check_mark: <br>注意：與 CentOS 7.4 相容。 </br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | microsoft-azure-batch | centos-container | 7.6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | microsoft-azure-batch | centos-container-rdma | 7.4 | :heavy_check_mark: <br>注意：支援 A_8 或9個儲存體</br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |

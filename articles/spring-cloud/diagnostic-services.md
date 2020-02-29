@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
-ms.openlocfilehash: 90ff59bb76bceaacc7b0528ed0461b76832dc7fd
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 544de1b4ac46a58d533f71a46266807a3b93820a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77662122"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920037"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>使用診斷設定來分析記錄和計量
 
@@ -23,7 +23,7 @@ ms.locfileid: "77662122"
 
 選擇您想要監視的記錄類別和度量類別。
 
-## <a name="logs"></a>記錄檔
+## <a name="logs"></a>記錄
 
 |Log | 描述 |
 |----|----|
@@ -32,7 +32,7 @@ ms.locfileid: "77662122"
 
 ## <a name="metrics"></a>度量
 
-如需計量的完整清單，請參閱[春季雲端計量](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-portal-metrics-options)
+如需計量的完整清單，請參閱[春季雲端計量](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-metrics-options)。
 
 若要開始使用，請啟用其中一項服務以接收資料。 若要瞭解如何設定 Log Analytics，請參閱[Azure 監視器中的 Log analytics 入門](../azure-monitor/log-query/get-started-portal.md)。 
 

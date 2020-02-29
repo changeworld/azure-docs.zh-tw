@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 02/27/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 03ff564848298d31c8bf92169d9e5f66d024d711
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 1d17f9af5700df5458cc4373dfc5cd8fb7774f91
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949179"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912389"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>在 Azure AD B2C 中設定資源擁有者密碼認證流程
 
@@ -24,16 +24,7 @@ ms.locfileid: "74949179"
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-在 Azure Active Directory B2C （Azure AD B2C）中，支援下列選項：
-
-- **原生用戶端**：程式碼在使用者端的裝置上執行時，使用者會在驗證期間與之互動。 裝置可以是在原生作業系統（例如 Android 和 iOS）中執行的行動應用程式。
-- **公用用戶端流程**：只會以 API 呼叫傳送應用程式所收集的使用者認證。 應用程式的認證不會傳送。
-- **新增宣告**：可以變更識別碼權杖內容以新增宣告。
-
-不支援下列流程：
-
-- **伺服器對伺服器**：身分識別保護系統必須要有從呼叫端 (原生用戶端) 收集到的可靠 IP 位址，以用於互動的過程中。 伺服器端的 API 呼叫只會使用伺服器的 IP 位址。 如果超出失敗驗證的動態閾值，身分識別保護系統可能會將重複的 IP 位址識別為攻擊者。
-- **機密用戶端流程**：會驗證應用程式用戶端識別碼，但不會驗證應用程式密碼。
+[!INCLUDE [active-directory-b2c-ropc-notes](../../includes/active-directory-b2c-ropc-notes.md)]
 
 ##  <a name="create-a-resource-owner-user-flow"></a>建立資源擁有者使用者流程
 
@@ -59,17 +50,17 @@ ms.locfileid: "74949179"
 ## <a name="test-the-user-flow"></a>測試使用者流程
 
 使用您最慣用的 API 開發應用程式產生 API 呼叫，並檢視回應以對您的使用者流程偵錯。 使用下表中的資訊作為 POST 要求的本文，以建構與此類似的呼叫：
-- 將 \<yourtenant.onmicrosoft.com> 取代為您的 B2C 租用戶名稱。
-- 將 \<B2C_1A_ROPC_Auth> 取代為資源擁有者密碼認證原則的完整名稱。
-- 將 \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> 取代為您註冊中的應用程式識別碼。
+- 將 *yourtenant.onmicrosoft.com>\<* 取代為您的 B2C 租用戶名稱。
+- 將 *B2C_1A_ROPC_Auth>\<* 取代為資源擁有者密碼認證原則的完整名稱。
+- 將 *bef2222d56-552f-4a5b-b90a-1988a7d634c3>\<* 取代為您註冊中的應用程式識別碼。
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| 索引鍵 | Value |
+| Key | 值 |
 | --- | ----- |
 | username | leadiocl@outlook.com |
-| password | Passxword1 |
-| grant_type | password |
+| 密碼 | Passxword1 |
+| grant_type | 密碼 |
 | scope | openid \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> offline_access |
 | client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
 | response_type | token id_token |
@@ -105,12 +96,12 @@ username=leadiocl%40trashmail.ws&password=Passxword1&grant_type=password&scope=o
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| 索引鍵 | Value |
+| Key | 值 |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |
 | client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
-| 資源 | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
+| resource | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
 | refresh_token | eyJraWQiOiJacW9pQlp2TW5pYVc2MUY0TnlfR3... |
 
 *Client_id* 和 *resource* 是您先前記下的應用程式識別碼值。 *Refresh_token* 是您在先前所述的驗證呼叫中接收到的權杖。

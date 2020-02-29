@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解如何建立復原服務保存庫，以�
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 682bf26c1485bd9e2ae288a6947e9ad573463069
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: eb7dcb4038260b1edac57a2163a1c0eae29ee452
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705457"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920105"
 ---
 # <a name="create-a-recovery-services-vault"></a>建立復原服務保存庫
 
@@ -88,7 +88,7 @@ Azure 備份會自動處理保存庫的儲存體。 您必須指定該儲存體�
 >開始之前：
 >
 >- 如需支援的 managed 類型和區域清單，請參閱[支援矩陣](backup-support-matrix.md#cross-region-restore)。
->- 「跨區域還原」（CRR）功能目前僅適用于 WCUS 區域。
+>- 「跨區域還原」（CRR）功能目前僅適用于下欄區域：美國中西部、美國西部2、澳大利亞東部和澳大利亞東南部。 
 >- CRR 是適用于任何 GRS 保存庫的保存庫層級加入宣告功能（預設為關閉）。
 >- 請使用下列命令，將您的訂用帳戶上架此功能：<br>
 >  `Register-AzProviderFeature -FeatureName CrossRegionRestore -ProviderNamespace Microsoft.RecoveryServices`

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: 4991fe9fb06d0a49da3e0404f0362c85f15571af
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: d39ac40e8e29c7ff90e2accc3a519449571c1d58
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152290"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917402"
 ---
 # <a name="execute-r-script"></a>執行 R 指令碼
 
@@ -130,6 +130,8 @@ azureml_main <- function(dataframe1, dataframe2){
 **執行 R 腳本**模組可以傳回多個輸出，但必須以 R 資料框架的形式提供。 資料框架會自動轉換成設計工具中的資料集，以與其他模組相容。
 
 來自 R 的標準訊息和錯誤會傳回給模組的記錄檔。
+
+如果您需要在 R 腳本中列印結果，可以在模組右側面板中的 **輸出 + 記錄** 索引標籤底下的  **70_driver_log**中找到列印的結果。
 
 ## <a name="sample-scripts"></a>範例指令碼
 
@@ -256,7 +258,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 |              |            | 
 |--------------|------------| 
-| 套件      | 版本    | 
+| Package      | 版本    | 
 | askpass      | 1.1        | 
 | assertthat   | 0.2.1      | 
 | 反向移植    | 1.1.4      | 
@@ -266,7 +268,7 @@ azureml_main <- function(dataframe1, dataframe2){
 | bindr        | 0.1.1      | 
 | bindrcpp     | 0.2.2      | 
 | bitops       | 1.0-6      | 
-| 開機         | 1.3-22     | 
+| boot         | 1.3-22     | 
 | 掃帚        | 0.5.2      | 
 | callr        | 3.2.0      | 
 | 插入號        | 6.0-84     | 
@@ -275,7 +277,7 @@ azureml_main <- function(dataframe1, dataframe2){
 | class        | 7.3-15     | 
 | cli          | 1.1.0      | 
 | clipr        | 0.6.0      | 
-| 群集      | 2.0.7-1    | 
+| 叢集      | 2.0.7-1    | 
 | codetools    | 0.2-16     | 
 | colorspace   | 1.4-1      | 
 | 編譯器     | 3.5.1      | 
@@ -303,7 +305,7 @@ azureml_main <- function(dataframe1, dataframe2){
 | gplots       | 3.0.1.1    | 
 | 圖形     | 3.5.1      | 
 | grDevices    | 3.5.1      | 
-| 格線         | 3.5.1      | 
+| 方格 (grid)         | 3.5.1      | 
 | gtable       | 0.3.0      | 
 | gtools       | 3.8.1：      | 
 | haven        | 2.1.0      | 

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: f6b95f76af4c83459ac81ff1703d8588f649326c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 4b6d954d06f09bef5240bddc4860ddbc83513d69
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74970537"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916586"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS 支援的語言與區域
 
@@ -30,7 +30,7 @@ LUIS 在服務內有各種不同的功能。 並非所有功能都有相同的�
 
 LUIS 可理解下列語言的語句：
 
-| 語言 |Locale  |  預建網域 | 預建實體 | 片語清單建議 | \**[文字分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(情感和<br>關鍵字)|
+| Language |Locale  |  預建網域 | 預建實體 | 片語清單建議 | \**[文字分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(情感和<br>關鍵字)|
 |--|--|:--:|:--:|:--:|:--:|
 | 美式英文 |`en-US` | ✔ | ✔  |✔|✔|
 | 阿拉伯文（預覽-現代化標準阿拉伯文） |`ar-AR`|-|-|-|-|
@@ -39,7 +39,7 @@ LUIS 可理解下列語言的語句：
 | 法文 (法國) |`fr-FR` |✔| ✔ |✔ |✔|
 | 法文 (加拿大) |`fr-CA` |-|   -   |-|✔|
 | 德文 |`de-DE` |✔| ✔ |✔ |✔|
-| 北印度文 | `hi-IN`|-|-|-|-|
+| Hindi | `hi-IN`|-|-|-|-|
 | 義大利文 |`it-IT` |✔| ✔ |✔|✔|
 | *[日文](#japanese-support-notes) |`ja-JP` |✔| ✔ |✔|僅限關鍵片語|
 | 韓文 |`ko-KR` |✔|   -   |-|僅限關鍵片語|
@@ -61,7 +61,7 @@ LUIS 可理解下列語言的語句：
 [!INCLUDE [Text Analytics support notes](includes/text-analytics-support-notes.md)]
 
 ### <a name="speech-api-supported-languages"></a>語音 API 支援的語言
-請參閱語音[支援的語言](https://docs.microsoft.com/azure/cognitive-services/Speech/api-reference-rest/supportedlanguages##interactive-and-dictation-mode)，以取得語音聽寫模式語言。
+請參閱語音[支援的語言](../speech-service/speech-to-text.md)，以取得語音聽寫模式語言。
 
 ### <a name="bing-spell-check-supported-languages"></a>Bing 拼字檢查支援的語言
 如需支援的語言清單和狀態，請參閱 Bing 拼字檢查[支援的語言](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages)。
@@ -77,7 +77,7 @@ LUIS 可理解下列語言的語句：
 ## <a name="tokenization"></a>Token 化
 為了執行機器學習，LUIS 根據文化特性將語句分成數個[語彙基元](luis-glossary.md#token)。
 
-|語言|  每個空格或特殊字元 | 字元層級|複合字組|[傳回的 Token 化實體](luis-concept-data-extraction.md#tokenized-entity-returned)
+|Language|  每個空格或特殊字元 | 字元層級|複合字組|[傳回的 Token 化實體](luis-concept-data-extraction.md#tokenized-entity-returned)
 |--|:--:|:--:|:--:|:--:|
 |阿拉伯文|||||
 |中文||✔||✔|
@@ -86,7 +86,7 @@ LUIS 可理解下列語言的語句：
 |法文 (fr-FR)|✔||||
 |法文 (fr-CA)|✔||||
 |德文|||✔|✔|
-| 北印度文 |✔|-|-|-|-|
+| Hindi |✔|-|-|-|-|
 |義大利文|✔||||
 |日文||||✔|
 |韓文||✔||✔|

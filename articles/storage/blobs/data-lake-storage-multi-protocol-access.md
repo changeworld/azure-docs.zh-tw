@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/01/2019
+ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: f34c5d5069a158579864320d0fbf965de8936d9c
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: e3997fc215637175165402a926bffc6ac8d02771
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896119"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914853"
 ---
 # <a name="multi-protocol-access-on-azure-data-lake-storage"></a>Azure Data Lake Storage 上的多重通訊協定存取
 
@@ -26,7 +26,11 @@ Blob Api 現在可與具有階層式命名空間的帳戶搭配使用。 這會�
 如[診斷記錄](../common/storage-analytics-logging.md)、[存取層](storage-blob-storage-tiers.md)和[blob 儲存體生命週期管理原則](storage-lifecycle-management-concepts.md)等 blob 儲存體功能，現在可以使用具有階層式命名空間的帳戶。 因此，您可以在 blob 儲存體帳戶上啟用階層式命名空間，而不會失去這些重要功能的存取權。 
 
 > [!NOTE]
-> Data Lake Storage 上的多重通訊協定存取已正式運作，並可在所有區域使用。 某些由多重通訊協定存取啟用的 Azure 服務或 blob 儲存體功能仍在預覽階段。 如需詳細資訊，請參閱本文的每一節中的表格。 
+> Data Lake Storage 上的多重通訊協定存取已正式運作，並可在所有區域使用。 某些由多重通訊協定存取啟用的 Azure 服務或 Blob 儲存體功能仍在預覽階段。  這些文章摘要說明 Blob 儲存體功能和 Azure 服務整合的目前支援。 
+>
+> [Azure Data Lake Storage Gen2 提供 Blob 儲存體功能](data-lake-storage-supported-blob-storage-features.md)
+>
+>[支援 Azure Data Lake Storage Gen2 的 Azure 服務](data-lake-storage-supported-azure-services.md)
 
 ## <a name="how-multi-protocol-access-on-data-lake-storage-works"></a>Data lake storage 上的多重通訊協定存取如何運作
 
@@ -36,62 +40,12 @@ Blob Api 和 Data Lake Storage Gen2 Api 可以在具有階層命名空間之儲�
 
 使用 Blob API 的現有工具和應用程式會自動取得這些優點。 開發人員不需要修改它們。 無論工具和應用程式用來存取資料的通訊協定為何，Data Lake Storage Gen2 都會一致地套用目錄和檔案層級的 Acl。 
 
-## <a name="blob-storage-feature-support"></a>Blob 儲存體功能支援
+## <a name="see-also"></a>另請參閱
 
-Data Lake Storage 上的多重通訊協定存取可讓您將更多的 Blob 儲存體功能與您的 Data Lake Storage 搭配使用。 下表列出 Data Lake Storage 上的多重通訊協定存取所啟用的功能。 
-
-因為 Blob 儲存體功能的支援持續擴充，所以此資料表中出現的專案會隨著時間而改變。 
-
-> [!NOTE]
-> 雖然 Data Lake Storage 的多重通訊協定存取已正式推出，但其中某些功能的支援仍處於預覽狀態。 
-
-|Blob 儲存體功能 | 支援層級 |
-|---|---|
-|[非經常性存取層](storage-blob-storage-tiers.md)|正式推出|
-|Blob REST Api|正式推出|
-|Blob Sdk |正式推出|
-|[PowerShell （Blob）](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-powershell) |正式推出|
-|[CLI （Blob）](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-cli) |正式推出|
-|[透過 Azure 事件方格的通知](data-lake-storage-events.md)|正式推出|
-|具有檔案系統語義的 Blob Sdk （[.net](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-dotnet) &vert; [Python](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-python) &vert; [JAVA](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-java)）|預覽|
-|[PowerShell 與檔案系統的語義](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-powershell)|預覽|
-|[具有檔案系統語義的 CLI](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-cli)|預覽|
-|[診斷記錄](../common/storage-analytics-logging.md)| 預覽|
-|[生命週期管理原則](storage-lifecycle-management-concepts.md)| 預覽|
-|[封存存取層](storage-blob-storage-tiers.md)| 預覽|
-|[blobfuse](storage-how-to-mount-container-linux.md)|尚不支援|
-|[不可變的儲存體](storage-blob-immutable-storage.md)|尚不支援|
-|[快照集](storage-blob-snapshots.md)|尚不支援|
-|[虛刪除](storage-blob-soft-delete.md)|尚不支援|
-|[靜態網站](storage-blob-static-website.md)|尚不支援|
-
-若要深入瞭解 Azure Data Lake Storage Gen2 的一般已知問題和限制，請參閱[已知問題](data-lake-storage-known-issues.md)。
-
-## <a name="azure-ecosystem-support"></a>Azure 生態系統支援
-
-Data Lake Storage 上的多重通訊協定存取也可讓您將更多 Azure 服務與您的 Data Lake Storage 連線。 下表列出 Data Lake Storage 上的多重通訊協定存取所啟用的服務。 
-
-就像支援的 Blob 儲存體功能清單一樣，出現在此資料表中的專案會隨著時間持續擴充，而變更為 Azure 服務的支援。 
-
-> [!NOTE]
-> 雖然 Data Lake Storage 的多重通訊協定存取已正式推出，但其中某些服務的支援仍處於預覽狀態。 
-
-|Azure 服務 | 支援層級 |
-|---|---|
-|[Azure 資料箱](data-lake-storage-migrate-on-premises-hdfs-cluster.md)|正式推出|
-|[Azure 事件中樞 capture](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)|正式推出|
-|[Azure 串流分析](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal)|正式推出|
-|[IoT 中心](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)|正式推出|
-|[邏輯應用程式](https://azure.microsoft.com/services/logic-apps/)|正式推出|
-|[Azure 認知搜尋](https://docs.microsoft.com/azure/search/search-howto-index-azure-data-lake-storage)|預覽|
-
-如需 Data Lake Storage Gen2 的 Azure 生態系統支援完整清單，請參閱[整合 Azure Data Lake Storage 與 azure 服務](data-lake-storage-integrate-with-azure-services.md)。
-
-若要深入瞭解 Azure Data Lake Storage Gen2 的一般已知問題和限制，請參閱[已知問題](data-lake-storage-known-issues.md)。
-
-## <a name="next-steps"></a>後續步驟
-
-查看[已知問題](data-lake-storage-known-issues.md)
+- [Azure Data Lake Storage Gen2 提供 Blob 儲存體功能](data-lake-storage-supported-blob-storage-features.md)
+- [支援 Azure Data Lake Storage Gen2 的 Azure 服務](data-lake-storage-supported-azure-services.md)
+- [支援 Azure Data Lake Storage Gen2 的開放原始碼平臺](data-lake-storage-supported-open-source-platforms.md)
+- [Azure Data Lake Storage Gen2 的已知問題](data-lake-storage-known-issues.md)
 
 
 

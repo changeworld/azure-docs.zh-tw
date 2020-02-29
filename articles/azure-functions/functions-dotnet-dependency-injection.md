@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: a17ff15e71251e781cd30c33a5616af85e4f4eb9
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 1aff2815144f776b351e92d8945b267d1451f9f6
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260078"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77915702"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>在 .NET Azure Functions 中使用相依性插入
 
@@ -21,7 +21,7 @@ Azure Functions 支援相依性插入（DI）軟體設計模式，這項技術�
 
 - 相依性插入的支援是以 Azure Functions 2.x 開始。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 您必須先安裝下列 NuGet 套件，才可以使用相依性插入：
 
@@ -114,7 +114,7 @@ namespace MyNamespace
 }
 ```
 
-## <a name="service-lifetimes"></a>執行個體存留期
+## <a name="service-lifetimes"></a>服務存留期
 
 Azure Functions 應用程式提供與 ASP.NET 相依性[插入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes)相同的服務存留期。 針對函式應用程式，不同的服務存留期的行為如下所示：
 
@@ -130,16 +130,16 @@ Azure Functions 應用程式提供與 ASP.NET 相依性[插入](https://docs.mic
 
 > [!WARNING]
 > - 請勿將 `AddApplicationInsightsTelemetry()` 新增至服務集合，因為它會註冊與環境所提供之服務衝突的服務。
-> - 如果您使用內建的 Application Insights 功能，請勿註冊您自己的 `TelemetryConfiguration` 或 `TelemetryClient`。
+> - 如果您使用內建的 Application Insights 功能，請勿註冊您自己的 `TelemetryConfiguration` 或 `TelemetryClient`。 如果您需要設定自己的 `TelemetryClient` 實例，請透過插入的 `TelemetryConfiguration` 建立一個，如 [[監視器 Azure Functions](./functions-monitoring.md#version-2x-and-later-2)] 所示。
 
 ## <a name="function-app-provided-services"></a>函數應用程式提供的服務
 
 函數主機會註冊許多服務。 下列服務可安全地做為應用程式中的相依性：
 
-|服務類型|存留期|說明|
+|服務類型|存留期|描述|
 |--|--|--|
-|`Microsoft.Extensions.Configuration.IConfiguration`|單一|執行時間設定|
-|`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|單一|負責提供主控制項實例的識別碼|
+|`Microsoft.Extensions.Configuration.IConfiguration`|實體|執行時間設定|
+|`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|實體|負責提供主控制項實例的識別碼|
 
 如果您想要取得相依性的其他服務，請[在 GitHub 上建立問題並加以提議](https://github.com/azure/azure-functions-host)。
 

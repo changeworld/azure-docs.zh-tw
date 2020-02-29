@@ -1,20 +1,20 @@
 ---
-title: 常見問題-在 Azure Vm 上備份 SAP Hana 資料庫
+title: 常見問題集 - 備份 Azure VM 上的 SAP Hana 資料庫
 description: 在本文中，您將找到使用 Azure 備份服務來備份 SAP Hana 資料庫的常見問題解答。
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: e5684024668103ccbe13be4af3d7a9336651df77
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: d9d10e38885ba814045d8476b83671153feb7b8c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74287836"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919680"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>常見問題-在 Azure Vm 上備份 SAP Hana 資料庫
 
 本文會回答有關使用 Azure 備份服務來備份 SAP Hana 資料庫的常見問題。
 
-## <a name="backup"></a>備份
+## <a name="backup"></a>Backup
 
 ### <a name="how-many-full-backups-are-supported-per-day"></a>每天支援多少完整備份？
 
@@ -22,7 +22,7 @@ ms.locfileid: "74287836"
 
 ### <a name="do-successful-backup-jobs-create-alerts"></a>成功的備份作業是否會建立警示？
 
-號 成功的備份作業不會產生警示。 只有失敗的備份作業會傳送警示。 入口網站警示的詳細行為記載于[此處](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor)。 不過，如果您有興趣取得成功作業的警示，您可以使用[Azure 監視器](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor)。
+否。 成功的備份作業不會產生警示。 只有失敗的備份作業會傳送警示。 入口網站警示的詳細行為記載于[此處](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor)。 不過，如果您有興趣取得成功作業的警示，您可以使用[Azure 監視器](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor)。
 
 ### <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>我可以在 [備份作業] 功能表中看到已排程的備份工作嗎？
 
@@ -43,17 +43,17 @@ ms.locfileid: "74287836"
 
 ### <a name="what-are-the-prerequisites-to-back-up-sap-hana-databases-on-an-azure-vm"></a>備份 Azure VM 上 SAP Hana 資料庫的必要條件為何？
 
-請參閱[必要條件](tutorial-backup-sap-hana-db.md#prerequisites)和[設定許可權](tutorial-backup-sap-hana-db.md#setting-up-permissions)一節。
+請參閱[必要條件](tutorial-backup-sap-hana-db.md#prerequisites)和[預先註冊腳本的執行](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)部分。
 
 ### <a name="what-permissions-should-be-set-for-azure-to-be-able-to-back-up-sap-hana-databases"></a>應該為 Azure 設定哪些許可權才能備份 SAP Hana 資料庫？
 
-執行預先註冊腳本會設定必要的許可權，以允許 Azure 備份 SAP Hana 資料庫。 您可以在[這裡](tutorial-backup-sap-hana-db.md#setting-up-permissions)找到更多關於許可權的資訊。
+執行預先註冊腳本會設定必要的許可權，以允許 Azure 備份 SAP Hana 資料庫。 您可以在[這裡](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)找到更多預先註冊腳本的功能。
 
 ### <a name="will-backups-work-after-migrating-sap-hana-from-10-to-20"></a>將 SAP Hana 從1.0 遷移至2.0 之後，備份是否可正常執行？
 
 請參閱疑難排解指南的[這一節](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#upgrading-from-sap-hana-10-to-20)。
 
-## <a name="restore"></a>還原
+## <a name="restore"></a>{1}還原{2}
 
 ### <a name="why-cant-i-see-the-hana-system-i-want-my-database-to-be-restored-to"></a>為什麼我看不到我想要將資料庫還原到其中的 HANA 系統？
 

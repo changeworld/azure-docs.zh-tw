@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: 355909052a711773545114179cd5d1ca01811cec
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: bb6ad1f131d1299ce1e076fee70e6640e3bdf20a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485075"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913254"
 ---
 # <a name="application-gateway-configuration-overview"></a>應用程式閘道設定總覽
 
@@ -256,14 +256,14 @@ Azure 應用程式閘道會使用閘道管理的 cookie 來維護使用者會話
 
 當您想要在相同的伺服器上保留使用者會話，以及在使用者會話的本機儲存會話狀態時，這項功能就很有用。 如果應用程式無法處理以 cookie 為基礎的親和性，您就無法使用這項功能。 若要使用它，請確定用戶端支援 cookie。
 
-自**2020 年2月 17**日起， [Chromium](https://www.chromium.org/Home) [v80 update](https://chromiumdash.appspot.com/schedule)會提供一個規定，其中沒有 SameSite 屬性的 HTTP cookie 會被視為 SameSite = 不嚴格。 在 CORS （跨原始資源分享）要求的情況下，如果 cookie 必須在協力廠商內容中傳送，則必須使用 "SameSite = None;安全的屬性，而且只能透過 HTTPS 傳送。 否則，在僅限 HTTP 的案例中，瀏覽器不會傳送協力廠商內容中的 cookie。 這項更新自 Chrome 的目標是要加強安全性，並避免跨網站偽造要求（CSRF）攻擊。 
+[Chromium 瀏覽器](https://www.chromium.org/Home) [v80 更新](https://chromiumdash.appspot.com/schedule)已提出強制，其中不含[SameSite](https://tools.ietf.org/id/draft-ietf-httpbis-rfc6265bis-03.html#rfc.section.5.3.7)屬性的 HTTP cookie 必須被視為 SameSite = 不嚴格。 在 CORS （跨原始資源分享）要求的情況下，如果 cookie 必須在協力廠商內容中傳送，則必須使用*SameSite = None;安全*屬性，而且只能透過 HTTPS 傳送。 否則，在僅限 HTTP 的案例中，瀏覽器不會傳送協力廠商內容中的 cookie。 這項更新自 Chrome 的目標是要加強安全性，並避免跨網站偽造要求（CSRF）攻擊。 
 
-為了支援這項變更，應用程式閘道（所有 SKU 類型）除了現有的**ApplicationGatewayAffinity** cookie 之外，也會插入另一個名為**ApplicationGatewayAffinityCORS**的相同 cookie，但此 cookie 現在會有兩個以上的屬性 **"SameSite = None;「安全**」新增至其中，以便即使跨原始來源要求也可以維護粘滯會話。
+若要支援這項變更，從2月17日2020開始，應用程式閘道（所有 SKU 類型）除了現有的*ApplicationGatewayAffinity* cookie 之外，也會插入另一個稱為*ApplicationGatewayAffinityCORS*的 cookie。 *ApplicationGatewayAffinityCORS* cookie 已新增兩個屬性（ *"SameSite = None;Secure "* ），以便即使跨原始來源要求，仍會維護粘滯會話。
 
-請注意，預設的親和性 cookie 名稱是**ApplicationGatewayAffinity** ，而這可由使用者進行變更。 如果您使用自訂的親和性 cookie 名稱，則會以 CORS 作為尾碼新增額外的 cookie，例如**CustomCookieNameCORS**。
+請注意，預設的親和性 cookie 名稱是*ApplicationGatewayAffinity* ，您可以變更它。 如果您使用自訂的親和性 cookie 名稱，則會加入額外的 cookie，並以 CORS 作為尾碼。 例如， *CustomCookieNameCORS*。
 
 > [!NOTE]
-> 如果設定了屬性**SameSite = None** ，則 cookie 也應該包含**安全**旗標，而且應該透過**HTTPS**傳送。 因此，如果需要透過 CORS 的會話親和性，您必須將工作負載遷移至 HTTPS。 如需應用程式閘道的詳細資訊，請參閱 SSL 卸載和端對端 SSL 檔-[總覽](ssl-overview.md)，[如何設定 ssl](create-ssl-portal.md)卸載，[如何設定端對端 ssl](end-to-end-ssl-portal.md)。
+> 如果設定了屬性*SameSite = None* ，cookie 就必須同時包含*安全*旗標，而且必須透過 HTTPS 傳送。  如果需要透過 CORS 的會話親和性，您必須將工作負載遷移至 HTTPS。 如需應用程式閘道的詳細資訊，請參閱 SSL 卸載和端對端 SSL 檔-[總覽](ssl-overview.md)，[如何設定 ssl](create-ssl-portal.md)卸載，[如何設定端對端 ssl](end-to-end-ssl-portal.md)。
 
 ### <a name="connection-draining"></a>清空連線
 

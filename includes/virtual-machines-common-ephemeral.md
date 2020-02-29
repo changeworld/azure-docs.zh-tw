@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: c3a7fb14dbd22730d95a5aaed146b59ad790ce6b
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: d848b92da5d4181832adff8499b3531d020c30c9
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775832"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155389"
 ---
 暫時 OS 磁片會建立在本機虛擬機器（VM）存放區上，而不會儲存至遠端 Azure 儲存體。 暫時 OS 磁片適用于無狀態工作負載，其中應用程式可容忍個別 VM 失敗，但會受到 VM 部署時間的影響，或重新製作個別 VM 實例的映射。 有了暫時的 OS 磁片，您可以取得 OS 磁片的讀取/寫入延遲較低，並加快 VM 重新安裝映射的速度。 
  
@@ -44,19 +44,19 @@ ms.locfileid: "70775832"
 
 ## <a name="size-requirements"></a>大小需求
 
-您可以將 VM 和實例映射部署到 VM 快取的大小。 例如，來自 marketplace 的標準 Windows Server 映射大約是 127 GiB，這表示您需要的 VM 大小必須大於 127 GiB 的快取。 在此情況下， [Standard_DS2_v2](/azure/virtual-machines/windows/sizes-general#dsv2-series)的快取大小為 86 GiB，這不夠大。 Standard_DS3_v2 的快取大小為 172 GiB，這夠大。 在此情況下，Standard_DS3_v2 是 DSv2 系列中可與此影像搭配使用的最小大小。 Marketplace 中的基本 Linux 映射和所表示`[smallsize]`的 Windows Server 映射，通常約為 30 GiB，而且可以使用大部分可用的 VM 大小。
+您可以將 VM 和實例映射部署到 VM 快取的大小。 例如，來自 marketplace 的標準 Windows Server 映射大約是 127 GiB，這表示您需要的 VM 大小必須大於 127 GiB 的快取。 在此情況下， [Standard_DS2_v2](~/articles/virtual-machines/dv2-dsv2-series.md)的快取大小為 86 GiB，這不夠大。 Standard_DS3_v2 的快取大小為 172 GiB，這夠大。 在此情況下，Standard_DS3_v2 是可與此影像搭配使用之 DSv2 系列中的最小大小。 Marketplace 中的基本 Linux 映射和以 `[smallsize]` 表示的 Windows Server 映射通常約為 30 GiB，而且可以使用大部分可用的 VM 大小。
 
-暫時磁片也需要 VM 大小支援 Premium 儲存體。 大小通常（但不一定）會`s`在名稱中包含，例如 DSv2 和 EsV3。 如需詳細資訊，請參閱[AZURE VM 大小](../articles/virtual-machines/linux/sizes.md)，以取得支援高階儲存體的大小詳細資料。
+暫時磁片也需要 VM 大小支援 Premium 儲存體。 通常（但不一定）的大小會有 `s` 的名稱，例如 DSv2 和 EsV3。 如需詳細資訊，請參閱[AZURE VM 大小](../articles/virtual-machines/linux/sizes.md)，以取得支援高階儲存體的大小詳細資料。
 
 ## <a name="powershell"></a>PowerShell
 
-若要使用暫時磁片進行 PowerShell VM 部署，請在您的 VM 設定中使用[set-azvmosdisk](/powershell/module/az.compute/set-azvmosdisk) 。 將設定`-DiffDiskSetting`為`Local` ， `-Caching` 並`ReadOnly`將設為。     
+若要使用暫時磁片進行 PowerShell VM 部署，請在您的 VM 設定中使用[set-azvmosdisk](/powershell/module/az.compute/set-azvmosdisk) 。 將 `-DiffDiskSetting` 設定為 `Local`，並 `-Caching` `ReadOnly`。     
 
 ```powershell
 Set-AzVMOSDisk -DiffDiskSetting Local -Caching ReadOnly
 ```
 
-針對擴展集部署，請在您的設定中使用[AzVmssStorageProfile](/powershell/module/az.compute/set-azvmssstorageprofile)指令程式。 將設定`-DiffDiskSetting`為`Local` ， `-Caching` 並`ReadOnly`將設為。
+針對擴展集部署，請在您的設定中使用[AzVmssStorageProfile](/powershell/module/az.compute/set-azvmssstorageprofile)指令程式。 將 `-DiffDiskSetting` 設定為 `Local`，並 `-Caching` `ReadOnly`。
 
 
 ```powershell
@@ -65,7 +65,7 @@ Set-AzVmssStorageProfile -DiffDiskSetting Local -OsDiskCaching ReadOnly
 
 ## <a name="cli"></a>CLI
 
-`--ephemeral-os-disk`若要使用暫時磁片進行 CLI vm 部署，請將[az](/cli/azure/vm#az-vm-create) `true` vm create 中的參數設定為， `--os-disk-caching`並將`ReadOnly`參數設為。
+若要使用暫時磁片進行 CLI VM 部署，請將[az VM create](/cli/azure/vm#az-vm-create)中的 `--ephemeral-os-disk` 參數設定為 `true`，並將 `--os-disk-caching` 參數設為 `ReadOnly`。
 
 ```azurecli-interactive
 az vm create \
@@ -78,7 +78,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-針對擴展集，您可以針對`--ephemeral-os-disk true` [az-vmss-create](/cli/azure/vmss#az-vmss-create)使用相同的參數，並`--os-disk-caching`將參數`ReadOnly`設定為。
+針對擴展集，您可以針對[az-vmss-create](/cli/azure/vmss#az-vmss-create)使用相同的 `--ephemeral-os-disk true` 參數，並將 `--os-disk-caching` 參數設定為 `ReadOnly`。
 
 ## <a name="portal"></a>入口網站   
 
@@ -93,7 +93,7 @@ az vm create \
 ![顯示選項按鈕的螢幕擷取畫面，供您選擇使用擴展集的暫時 OS 磁片](./media/virtual-machines-common-ephemeral/scale-set.png)
 
 ## <a name="scale-set-template-deployment"></a>擴展集範本部署  
-建立使用暫時 OS 磁片之擴展集的程式，是將`diffDiskSettings`屬性新增至範本中的`Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile`資源類型。 此外，暫時 OS 磁片的快取原則`ReadOnly`必須設定為。 
+建立使用暫時 OS 磁片之擴展集的程式，是將 `diffDiskSettings` 屬性新增至範本中的 `Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile` 資源類型。 此外，快取原則必須設定為暫時 OS 磁片的 `ReadOnly`。 
 
 
 ```json
@@ -137,7 +137,7 @@ az vm create \
 ```
 
 ## <a name="vm-template-deployment"></a>VM 範本部署 
-您可以使用範本來部署具有暫時 OS 磁片的 VM。 建立使用暫時 OS 磁片之 VM 的程式，是將`diffDiskSettings`屬性新增至範本中的 virtualMachines 資源類型。 此外，暫時 OS 磁片的快取原則`ReadOnly`必須設定為。 
+您可以使用範本來部署具有暫時 OS 磁片的 VM。 建立使用暫時 OS 磁片之 VM 的程式，是將 `diffDiskSettings` 屬性新增至範本中的 virtualMachines 資源類型。 此外，快取原則必須設定為暫時 OS 磁片的 `ReadOnly`。 
 
 ```json
 { 
@@ -186,15 +186,15 @@ id}/resourceGroups/{rgName}/providers/Microsoft.Compute/VirtualMachines/{vmName}
 
 **問：本機 OS 磁片的大小為何？**
 
-答：我們支援平臺和自訂映射，最高可達 VM 快取大小，其中 OS 磁片的所有讀取/寫入都會在與虛擬機器相同的節點上為本機。 
+答：我們支援平臺和自訂映射，最高可達 VM 快取大小，其中 OS 磁片的所有讀取/寫入都會與虛擬機器位於相同節點上的本機位置。 
 
-**問：暫時 OS 磁片是否可以調整大小？**
+**問：是否可以重設暫時的 OS 磁片大小？**
 
-答：否，一旦布建暫時 OS 磁片，就無法調整 OS 磁片的大小。 
+答：否，一旦布建暫時 OS 磁片之後，就無法調整 OS 磁片的大小。 
 
 **問：我可以將受控磁碟附加至暫時 VM 嗎？**
 
-答：是，您可以將受控資料磁片連結至使用暫時 OS 磁片的 VM。 
+答：是的，您可以將受控資料磁片連結至使用暫時 OS 磁片的 VM。 
 
 **問：是否支援暫時 OS 磁片的所有 VM 大小？**
 
@@ -202,15 +202,15 @@ id}/resourceGroups/{rgName}/providers/Microsoft.Compute/VirtualMachines/{vmName}
  
 **問：暫時 OS 磁片可以套用至現有的 Vm 和擴展集嗎？**
 
-答：否，只有在 VM 與擴展集建立期間，才可以使用暫時 OS 磁片。 
+答：否，暫時 OS 磁片只能在 VM 和擴展集建立期間使用。 
 
 **問：您可以在擴展集中混用暫時和正常的 OS 磁片嗎？**
 
-答：不可以，您不能在相同的擴展集內混用暫時和持續的 OS 磁片實例。 
+答：否，您不能在相同的擴展集內混用暫時和持續的 OS 磁片實例。 
 
-**問：可以使用 Powershell 或 CLI 建立暫時的 OS 磁片嗎？**
+**問：是否可以使用 Powershell 或 CLI 建立暫時的 OS 磁片？**
 
-答：是，您可以使用 REST、範本、PowerShell 和 CLI，建立具有暫時 OS 磁片的 Vm。
+答：是的，您可以使用 REST、範本、PowerShell 和 CLI 來建立具有暫時 OS 磁片的 Vm。
 
 **問：暫時 OS 磁片不支援哪些功能？**
 

@@ -12,14 +12,16 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: d43176e04337c2faf7be0bea682428056bc4ab46
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 20e64e5225987a8045e406a0e8fcae098c580c61
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059187"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913373"
 ---
 # <a name="troubleshooting-steps-specific-to-allocation-failure-scenarios-in-the-classic-deployment-model"></a>傳統部署模型中配置失敗案例的具體疑難排解步驟
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 以下是造成釘選配置要求的常見配置案例。 我們將在本文稍後深入探討每一個案例。
 
@@ -116,7 +118,7 @@ New_General* 或 New_VMSizeNotSupported*
 
 **叢集釘選的原因**
 
-在導入區域虛擬網路之前，您必須先將虛擬網路與同質群組產生關聯。 因此，放置在同質群組中的計算資源是由相同的條件約束所系結，如「配置案例：同質群組（VM/服務鄰近性）一節。 計算資源會繫結至單一叢集。
+在導入區域虛擬網路之前，您必須先將虛擬網路與同質群組產生關聯。 如此一來，將會依上一節「配置案例：同質群組 (VM/服務鄰近性)」所述的相同條件約束，繫結放入同質群組中的計算資源。 計算資源會繫結至單一叢集。
 
 **因應措施**
 

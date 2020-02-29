@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: c87673fef0079ff1b04b0840da0434b090cda67c
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 03e6c2ecbf8fa0c5f71218d29b67cb03cdf3d5db
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153650"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916790"
 ---
 # <a name="two-class-neural-network-module"></a>雙類別類神經網路模組
 
@@ -42,7 +42,9 @@ ms.locfileid: "77153650"
   
 2.  藉由設定 [**建立定型模式]** 選項，指定您要如何訓練模型。  
   
-    -   **單一參數**：如果您已經知道要如何設定模型，請選擇此選項。  
+    -   **單一參數**：如果您已經知道要如何設定模型，請選擇此選項。
+
+    -   **參數範圍**：如果您不確定最佳參數，您可以使用[微調模型超參數](tune-model-hyperparameters.md)模組來尋找最佳參數。 您會提供某個範圍的值，而講師會逐一查看設定的多個組合，以判斷產生最佳結果的值組合。  
 
 3.  針對 [**隱藏層規格**]，選取要建立的網路架構類型。  
   
@@ -54,7 +56,7 @@ ms.locfileid: "77153650"
   
         -   輸入層中的節點數目等於定型資料中的特徵數目。
   
-        -   隱藏層中的節點數目是由使用者設定。 預設值為 100。
+        -   隱藏層中的節點數目是由使用者設定。 預設值是 100。
   
         -   節點數目等於類別數目。 針對兩個類別的類神經網路，這表示所有輸入都必須對應到輸出層中的兩個節點之一。
 

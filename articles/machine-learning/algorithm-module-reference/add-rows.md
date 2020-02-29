@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 71f15d959bf9d42e67cd7c35ca91d6cd2caa718d
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 7787a765bf48adc15f4675c6c03ff3d04fa388c6
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152460"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918490"
 ---
 # <a name="add-rows-module"></a>新增資料列模組
 
@@ -32,7 +32,7 @@ ms.locfileid: "77152460"
 
 若要串連兩個資料集中的資料列，資料列必須有完全相同的架構。 這表示資料行中的資料行數目和相同的資料類型。
 
-1.  將 [**加入資料列**] 模組拖曳到您的管線中，您可以在 [**操作**] 分類中的 [**資料轉換**] 下找到它。
+1.  將 [**加入資料列**] 模組拖曳至管線中，您可以在 [**資料轉換**] 下找到它。
 
 2. 連接至兩個輸入連接埠的資料集。 您想要附加的資料集應該連接到第二個 (右) 的連接埠。 
   

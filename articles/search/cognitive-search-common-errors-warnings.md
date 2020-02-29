@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2da009189e0265aafcb26b7ec96837965f1ea0c5
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f17192e738bb82fb348c660488e6296aa550bd25
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76838542"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913475"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>針對 Azure 認知搜尋中的常見索引子錯誤和警告進行疑難排解
 
@@ -32,7 +32,7 @@ ms.locfileid: "76838542"
 
 從 API 版本 `2019-05-06`開始，專案層級的索引子錯誤和警告是結構化的，可讓您更清楚地解決原因和後續步驟。 其中包含下列屬性：
 
-| 屬性 | 說明 | 範例 |
+| 屬性 | 描述 | 範例 |
 | --- | --- | --- |
 | 索引鍵 | 受錯誤或警告影響之檔的檔識別碼。 | HTTPs：\//coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
 | NAME | 描述發生錯誤或警告之位置的作業名稱。 這是由下列結構所產生： [category]。[子類別]。[resourceType]。ResourceName | DocumentExtraction azureblob. myBlobContainerName 擴充. WebApiSkill. mySkillName. SearchIndex. OutputFieldMapping。 myOutputFieldNameKnowledgeStore. Table. myTableName |
@@ -46,7 +46,7 @@ ms.locfileid: "76838542"
 
 索引子無法從資料來源讀取檔。 發生這種情況的原因可能是：
 
-| 原因 | 詳細資料/範例 | 解析度 |
+| 原因 | 詳細資料/範例 | 解決方案 |
 | --- | --- | --- |
 | 跨不同檔的欄位類型不一致 | 值的類型與資料行類型不相符。 無法將 `'{47.6,-122.1}'` 儲存在 [作者] 資料行中。  預期的類型為 JArray。 | 請確定每個欄位的類型在不同的檔中都相同。 例如，如果第一個檔 `'startTime'` 欄位是日期時間，而第二個檔是字串，則會遇到此錯誤。 |
 | 來自資料來源之基礎服務的錯誤 | （從 Cosmos DB） `{"Errors":["Request rate is large"]}` | 檢查您的儲存體實例，以確保其狀況良好。 您可能需要調整您的縮放/分割。 |
@@ -57,7 +57,7 @@ ms.locfileid: "76838542"
 ## <a name="error-could-not-extract-content-or-metadata-from-your-document"></a>錯誤：無法從您的檔解壓縮內容或中繼資料
 具有 Blob 資料來源的索引子無法從檔中解壓縮內容或中繼資料（例如，PDF 檔案）。 發生這種情況的原因可能是：
 
-| 原因 | 詳細資料/範例 | 解析度 |
+| 原因 | 詳細資料/範例 | 解決方案 |
 | --- | --- | --- |
 | blob 超過大小限制 | 檔是 `'150441598'` 個位元組，超過您目前服務層級的檔解壓縮 `'134217728'` 位元組大小上限。 | [blob 索引錯誤](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | blob 具有不支援的內容類型 | 檔具有不支援的內容類型 `'image/png'` | [blob 索引錯誤](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
@@ -69,21 +69,21 @@ ms.locfileid: "76838542"
 ## <a name="error-could-not-parse-document"></a>錯誤：無法剖析檔
 索引子從資料來源讀取檔，但將檔內容轉換成指定的欄位對應架構時發生問題。 發生這種情況的原因可能是：
 
-| 原因 | 詳細資料/範例 | 解析度 |
+| 原因 | 詳細資料/範例 | 解決方案 |
 | --- | --- | --- |
 | 缺少檔索引鍵 | 檔索引鍵不能遺失或空白 | 確保所有檔都具有有效的檔索引鍵 |
 | 檔索引鍵無效 | 檔索引鍵的長度不能超過1024個字元 | 修改檔索引鍵以符合驗證需求。 |
 | 無法將欄位對應套用至欄位 | 無法將對應函數 `'functionName'` 套用至欄位 `'fieldName'`。 陣列不可以是 null。 參數名稱：位元組 | 再次檢查索引子上定義的[欄位](search-indexer-field-mappings.md)對應，並與失敗檔之指定欄位的資料進行比較。 可能需要修改欄位對應或檔資料。 |
-| 無法讀取域值 | 無法讀取位於索引 `'fieldIndex'`的資料行 `'fieldName'` 的值。 從伺服器接收結果時發生傳輸層級錯誤。 （提供者： TCP 提供者，錯誤： 0-遠端主機已強制關閉現有的連接）。 | 這些錯誤通常是因為資料來源的基礎服務發生非預期的連接問題。 請稍後再試著透過索引子執行檔。 |
+| 無法讀取域值 | 無法讀取位於索引 `'fieldIndex'`的資料行 `'fieldName'` 的值。 從伺服器接收結果時發生傳輸層級錯誤。 (提供者: TCP 提供者，錯誤: 0 - 遠端主機已強制關閉一個現存的連線)。 | 這些錯誤通常是因為資料來源的基礎服務發生非預期的連接問題。 請稍後再試著透過索引子執行檔。 |
 
 <a name="could-not-execute-skill"/>
 
 ## <a name="error-could-not-execute-skill"></a>錯誤：無法執行技能
 索引子無法在技能集中執行技能。
 
-| 原因 | 詳細資料/範例 | 解析度 |
+| 原因 | 詳細資料/範例 | 解決方案 |
 | --- | --- | --- |
-| 暫時性連線問題 | 發生暫時性錯誤。 請稍後再試。 | 偶爾會發生非預期的連線問題。 請稍後再試著透過索引子執行檔。 |
+| 暫時性連線問題 | 發生暫時性錯誤。 請稍後再試一次。 | 偶爾會發生非預期的連線問題。 請稍後再試著透過索引子執行檔。 |
 | 潛在的產品 bug | 發生意外錯誤。 | 這表示不明的失敗類別，可能表示有產品錯誤。 請提出[支援票證](https://ms.portal.azure.com/#create/Microsoft.Support)以取得協助。 |
 | 技能在執行期間發生錯誤 | （來自合併技能）有一或多個位移值無效，無法剖析。 專案已插入至文字結尾 | 請使用錯誤訊息中的資訊來修正問題。 這種失敗會需要採取動作來解決。 |
 
@@ -140,7 +140,7 @@ ms.locfileid: "76838542"
 
 已讀取並處理檔，但索引子無法將它新增至搜尋索引。 發生這種情況的原因可能是：
 
-| 原因 | 詳細資料/範例 | 解析度 |
+| 原因 | 詳細資料/範例 | 解決方案 |
 | --- | --- | --- |
 | 欄位包含太大的詞彙 | 檔中的詞彙大於[32 KB 的限制](search-limits-quotas-capacity.md#api-request-limits) | 您可以確保欄位未設定為可篩選、facetable 或可排序，藉以避免這項限制。
 | 檔太大，無法編制索引 | 檔大於[api 要求大小上限](search-limits-quotas-capacity.md#api-request-limits) | [如何為大型資料集編制索引](search-howto-large-index.md)
@@ -152,9 +152,9 @@ ms.locfileid: "76838542"
 
 <a name="could-not-index-document-because-the-indexer-data-to-index-was-invalid"/>
 
-## <a name="error-could-not-index-document-because-the-indexer-data-to-index-was-invalid"></a>錯誤：無法為檔編制索引，因為索引子的資料無效
+## <a name="error-could-not-index-document-because-some-of-the-documents-data-was-not-valid"></a>錯誤：無法為檔編制索引，因為部分檔的資料無效
 
-已讀取並處理檔，但由於索引欄位的設定不相符，以及索引子所解壓縮資料的本質，因此無法將它新增至搜尋索引。 發生這種情況的原因可能是：
+檔是由索引子讀取和處理，但由於索引欄位的設定不相符，以及索引子所解壓縮和處理的資料，因此無法新增至搜尋索引。 發生這種情況的原因可能是：
 
 | 原因 | 詳細資料/範例
 | --- | ---
@@ -166,12 +166,11 @@ ms.locfileid: "76838542"
 
 在所有這些情況下，請參閱[支援的資料類型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)和[索引子的資料類型對應](https://docs.microsoft.com/rest/api/searchservice/data-type-map-for-indexers-in-azure-search)，以確保您正確地建立索引架構，並設定適當的[索引子欄位](search-indexer-field-mappings.md)對應。 錯誤訊息將包含有助於追蹤不相符之來源的詳細資料。
 
-<a name="could-not-process-document-within-indexer-max-run-time"/>
-
 ## <a name="error-integrated-change-tracking-policy-cannot-be-used-because-table-has-a-composite-primary-key"></a>錯誤：因為資料表有複合主鍵，所以無法使用整合式變更追蹤原則
 
 這適用于 SQL 資料表，通常會在索引鍵定義為複合索引鍵時，或在資料表已定義唯一的叢集索引（如同在 SQL 索引中，而不是 Azure 搜尋服務索引）時發生。 主要的原因是在[唯一叢集索引](https://docs.microsoft.com/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver15)的情況下，索引鍵屬性已修改為複合主鍵。 在此情況下，請確定您的 SQL 資料表沒有唯一的叢集索引，或者您將索引鍵欄位對應到保證不會有重複值的欄位。
 
+<a name="could-not-process-document-within-indexer-max-run-time"/>
 
 ## <a name="error-could-not-process-document-within-indexer-max-run-time"></a>錯誤：無法處理索引子執行時間上限中的檔
 
@@ -183,7 +182,7 @@ ms.locfileid: "76838542"
 
 當索引子嘗試將[資料投影到知識存放區](knowledge-store-projection-overview.md)，而且嘗試執行這項作業失敗時，就會發生此錯誤。  這項失敗可能是一致且可修復的，或可能是暫時性的失敗，而且需要等候並重試才能解決的預測輸出接收。  以下是一組已知的失敗狀態和可能的解決方法。
 
-| 原因 | 詳細資料/範例 | 解析度 |
+| 原因 | 詳細資料/範例 | 解決方案 |
 | --- | --- | --- |
 | 無法更新容器 `'containerName'` 中的投射 blob `'blobUri'` |指定的容器不存在。 | 索引子會檢查先前是否已建立指定的容器，並在必要時建立它，但它只會在每個索引子執行時執行此檢查一次。 此錯誤表示某個專案在此步驟之後刪除了容器。  若要解決此錯誤，請嘗試：單獨保留您的儲存體帳戶資訊，等待索引子完成，然後重新執行索引子。 |
 | 無法更新容器 `'containerName'` 中的投射 blob `'blobUri'` |無法將資料寫入傳輸連線：遠端主機已強制關閉現有的連接。 | 這應該是 Azure 儲存體的暫時性失敗，因此應該藉由重新執行索引子來解決。 如果您一直遇到此錯誤，請提出[支援票證](https://ms.portal.azure.com/#create/Microsoft.Support)，以便進一步調查。  |
@@ -220,7 +219,7 @@ ms.locfileid: "76838542"
 }
 ```
 
-| 原因 | 詳細資料/範例 | 解析度 |
+| 原因 | 詳細資料/範例 | 解決方案 |
 | --- | --- | --- |
 | 技能輸入的類型錯誤 | 「所需的技能輸入不是預期的類型 `String`。 名稱： `text`、來源： `/document/merged_content`。」  「所需的技能輸入不是預期的格式。 名稱： `text`、來源： `/document/merged_content`。」  「無法逐一查看非陣列 `/document/normalized_images/0/imageCelebrities/0/detail/celebrities`」。  「無法選取非陣列 `/document/normalized_images/0/imageCelebrities/0/detail/celebrities`中的 `0`」 | 某些技能預期特定類型的輸入，例如[情感技能](cognitive-search-skill-sentiment.md)預期 `text` 為字串。 如果輸入指定非字串值，則技能不會執行，而且不會產生任何輸出。 請確定您的資料集具有類型的輸入值一致，或使用[自訂 WEB API 技能](cognitive-search-custom-skill-web-api.md)來前置處理輸入。 如果您要在陣列上逐一查看技能，請檢查技能內容和輸入是否有 `*` 在正確的位置。 通常內容和輸入來源的結尾都應該是陣列的 `*`。 |
 | 缺少技能輸入 | 「缺少必要的技能輸入。 名稱： `text`，來源： `/document/merged_content`"" 缺少值 `/document/normalized_images/0/imageTags`。 "  「無法選取長度 `0`的陣列 `/document/pages` `0`。」 | 如果您的所有檔都收到此警告，表示輸入路徑中可能出現錯誤，而且您應該再次檢查路徑中的屬性名稱大小寫、額外或遺失的 `*`，並確定資料來源中的檔提供必要的輸入。 |

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 8b651d6e5ca9262d38f5bfb9e10c404e2614809e
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 0fe04941821de2ac6e4e873e8d073c3e9b9d9508
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77055663"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919374"
 ---
 # <a name="attach-a-managed-data-disk-to-a-windows-vm-by-using-the-azure-portal"></a>使用 Azure 入口網站將受控資料磁碟連結到 Windows VM
 
@@ -42,10 +42,10 @@ ms.locfileid: "77055663"
 6. 關閉 [磁碟管理]。
 7. 隨即出現一個快顯視窗，通知您必須先將新的磁碟格式化之後才能使用。 選取 [格式化磁碟]。
 8. 在 [格式化新磁碟] 視窗中，檢查設定，然後選取 [開始]。
-9. 隨即出現警告，通知您格式化磁碟會清除所有資料。 選取 **[確定]** 。
+9. 隨即出現警告，通知您格式化磁碟會清除所有資料。 選取 [確定]。
 10. 格式化完成後，請選取 [確定]。
 
 ## <a name="next-steps"></a>後續步驟
 
 - 您也可以[使用 PowerShell 來連結資料磁碟](attach-disk-ps.md)。
-- 如果您的應用程式需要使用 D: 磁碟機來儲存資料，您可以[變更 Windows 暫存磁碟的磁碟機代號](change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
+- 如果您的應用程式需要使用 D: 磁碟機來儲存資料，您可以[變更 Windows 暫存磁碟的磁碟機代號](change-drive-letter.md)。

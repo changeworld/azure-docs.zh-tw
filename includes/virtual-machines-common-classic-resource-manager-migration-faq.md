@@ -8,20 +8,28 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: c923dfed24253ce2e3551c13a457f19d155a1e40
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: a9c045162e650b4468fb53676e367d2c658bf7cc
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068450"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912560"
 ---
+## <a name="what-is-the-time-required-for-migration"></a>遷移所需的時間為何？
+
+規劃和執行遷移相當大，視架構的複雜性而定，可能需要幾個月的時間。  
+
+## <a name="what-is-the-definition-of-a-new-customer-on-iaas-vms-classic"></a>新客戶在 IaaS Vm （傳統）上的定義為何？
+
+在 Febrauary 2020 （已開始淘汰之前的一個月）的訂用帳戶中，沒有 IaaS Vm （傳統）的客戶會被視為新的客戶。 
+
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>此移轉計劃是否會影響任何在 Azure 虛擬機器上執行的現有服務或應用程式？ 
 
-否。 VM (傳統) 是在全面可用性方面完全受支援的服務。 您可以繼續使用這些資源以擴展您在 Microsoft Azure 上的使用量。
+不到2023年3月1日，適用于 IaaS Vm （傳統）。 IaaS Vm （傳統）是完全支援的服務，已公開上市。 您可以繼續使用這些資源以擴展您在 Microsoft Azure 上的使用量。 從2023年3月1日起，這些 Vm 將會完全淘汰，而且任何作用中或已配置的 Vm 將會停止 & 解除配置。 對其他傳統資源（例如雲端服務（傳統）、儲存體帳戶（傳統）等）並不會有任何影響。   
 
 ## <a name="what-happens-to-my-vms-if-i-dont-plan-on-migrating-in-the-near-future"></a>如果我最近沒有移轉的打算，我的 VM 會出現什麼狀況？ 
 
-我們並未要淘汰現有的傳統 API 和資源模型。 我們想要將 Resource Manager 部署模型所提供的進階功能納入考量，讓移轉變簡單。 強烈建議您檢閱 Resource Manager 下 IaaS 所包含的 [一些進展](../articles/azure-resource-manager/management/deployment-models.md) 。
+從2023年3月1日起，IaaS Vm （傳統）將會完全淘汰，而且任何作用中或已配置的 Vm 將會停止 & 解除配置。 為了避免業務上的衝擊，我們高度 recomment 在今天開始規劃您的遷移，並于2023年3月1日前完成。 我們不會淘汰現有的傳統 Api、雲端服務和資源模型。 我們想要將 Resource Manager 部署模型所提供的進階功能納入考量，讓移轉變簡單。 我們建議您開始規劃將這些資源遷移至 Azure Resource Manager。 
 
 ## <a name="what-does-this-migration-plan-mean-for-my-existing-tooling"></a>對於我現有的工具來說，此移轉計劃有何意義？ 
 
@@ -37,7 +45,7 @@ ms.locfileid: "77068450"
 
 ## <a name="can-i-roll-back-my-migration-if-the-commit-operation-fails"></a>如果認可作業失敗，是否可以將移轉復原？ 
 
-如果認可作業失敗，就無法中止移轉。 所有移轉作業 (包括認可作業) 都是等冪的。 因此，建議您稍後再重試作業。 如果您仍然遇到錯誤，請在[Microsoft Q & a](https://docs.microsoft.com/answers/index.html)上建立支援票證或建立論壇文章。
+如果認可作業失敗，就無法中止移轉。 所有移轉作業 (包括認可作業) 都是等冪的。 因此，建議您稍後再重試作業。 如果您仍然遇到錯誤，請建立支援票證。
 
 ## <a name="do-i-have-to-buy-another-express-route-circuit-if-i-have-to-use-iaas-under-resource-manager"></a>如果我必須使用 Resource Manager 下的 IaaS，是否必須購買另一條 ExpressRoute 線路？ 
 

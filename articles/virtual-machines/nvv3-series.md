@@ -2,17 +2,17 @@
 title: NVv3 系列-Azure 虛擬機器
 description: NVv3 系列 Vm 的規格。
 services: virtual-machines
-author: jonbeck7
+author: vikancha
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: a353abe8cdedb01138c8b633750b90bd9870e5d2
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 42c11ed41ca4d84f1acf137bbb681a2dbe24dfe2
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77666874"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161902"
 ---
 # <a name="nvv3-series"></a>NVv3 系列
 
@@ -21,6 +21,10 @@ NVv3 系列虛擬機器是由[Nvidia Tesla M60](https://images.nvidia.com/conten
 NVv3 實例中的每個 GPU 都隨附方格授權。 此授權可讓您彈性地使用 NV 執行個體作為單一使用者的虛擬工作站，或讓 25 位並行使用者可以針對某個虛擬應用程式案例連線至 VM。
 
 進階儲存體快取：支援
+
+即時移轉：不支援
+
+記憶體保留更新：不支援
 
 | 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | GPU | GPU 記憶體：GiB | 最大資料磁碟 | 最大未快取的磁片輸送量： IOPS/MBps | 最大 NIC | 虛擬工作站 | 虛擬應用程式 |
 |---|---|---|---|---|---|---|---|---|---|---|

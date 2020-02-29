@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: genli
-ms.openlocfilehash: 6faab5bffaddbbd5d8deb9c3834bf3d8fe3e3445
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: becbf88aeda164f7d916cbc1f1ace89262cc1a3f
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058654"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921618"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>重設離線 Azure VM 的本機 Windows 密碼
 您可以使用 [Azure 入口網站或 Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 在 Azure 中重設 VM 的本機 Windows 密碼 (假設已安裝 Azure 客體代理程式)。 這個方法是為 Azure VM 重設密碼的主要方式。 如果您遇到 Azure 客體代理程式沒有回應，或無法在上傳自訂映像後進行安裝等問題，您可以手動重設 Windows 密碼。 本文將詳細說明如何將來源 OS 虛擬磁碟連接至另一部 VM，以重設本機帳戶密碼。 本文中所述的步驟不適用於 Windows 網域控制站。 
@@ -45,7 +45,7 @@ ms.locfileid: "71058654"
 
 1. 取得受影響 VM 的 OS 磁片快照集、從快照集建立磁片，然後將磁片連結至疑難排解 VM。 如需詳細資訊，請參閱[使用 Azure 入口網站將 OS 磁片連接至復原 VM，以針對 WINDOWS VM 進行疑難排解](troubleshoot-recovery-disks-portal-windows.md)。
 2. 使用遠端桌面連線到疑難排解 VM。
-3. 在來源 VM 磁碟機的 `\Windows\System32\GroupPolicy` 中建立 `gpt.ini` (如果存在 gpt.ini，請將它重新命名為 gpt.ini.bak)︰
+3. 在來源 VM 磁碟機的 `gpt.ini` 中建立 `\Windows\System32\GroupPolicy` (如果存在 gpt.ini，請將它重新命名為 gpt.ini.bak)︰
    
    > [!WARNING]
    > 確保您不會在 C:\Windows (疑難排解 VM 的 OS 磁碟機) 中不小心建立下列檔案。 在連接成為資料磁碟的來源 VM OS 磁碟機中建立下列檔案。
@@ -61,7 +61,7 @@ ms.locfileid: "71058654"
      
      ![建立 gpt.ini](./media/reset-local-password-without-agent/create-gpt-ini.png)
 
-4. 在 `\Windows\System32\GroupPolicy\Machines\Scripts\` 中建立 `scripts.ini`。 確定已顯示隱藏的資料夾。 如有需要，請建立 `Machine` 或 `Scripts` 資料夾。
+4. 在 `scripts.ini` 中建立 `\Windows\System32\GroupPolicy\Machines\Scripts\`。 確定已顯示隱藏的資料夾。 如有需要，請建立 `Machine` 或 `Scripts` 資料夾。
    
    * 將下列幾行新增至您建立的 `scripts.ini` 檔案：
      
@@ -73,7 +73,7 @@ ms.locfileid: "71058654"
      
      ![建立 scripts.ini](./media/reset-local-password-without-agent/create-scripts-ini.png)
 
-5. 使用下列內容在 `\Windows\System32` 中建立 `FixAzureVM.cmd`，並以您自己的值取代 `<username>` 和 `<newpassword>`：
+5. 使用下列內容在 `FixAzureVM.cmd` 中建立 `\Windows\System32`，並以您自己的值取代 `<username>` 和 `<newpassword>`：
    
     ```
     net user <username> <newpassword> /add
@@ -102,6 +102,8 @@ ms.locfileid: "71058654"
 
 ## <a name="detailed-steps-for-classic-vm"></a>傳統 VM 的詳細步驟
 
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 > [!NOTE]
 > 這些步驟不適用於 Windows 網域控制站。 僅適用於獨立伺服器或網域成員伺服器。
 
@@ -117,7 +119,7 @@ ms.locfileid: "71058654"
    
    1. 在 Azure 入口網站中選取疑難排解 VM。 按一下 [磁碟] | [連接現有項目]：
      
-      ![連結現有磁碟](./media/reset-local-password-without-agent/disks-attach-existing-classic.png)
+      ![連接現有磁碟](./media/reset-local-password-without-agent/disks-attach-existing-classic.png)
      
    2. 選取 [VHD 檔案]，然後選取包含來源 VM 的儲存體帳戶：
      
@@ -135,7 +137,7 @@ ms.locfileid: "71058654"
 
    5. 按一下 [確定] 以連接磁片
 
-      ![連結現有磁碟](./media/reset-local-password-without-agent/disks-attach-okay-classic.png)
+      ![連接現有磁碟](./media/reset-local-password-without-agent/disks-attach-okay-classic.png)
 
 3. 使用遠端桌面連接到疑難排解 VM，並確定看得見來源 VM 的 OS 磁碟︰
 
@@ -147,10 +149,10 @@ ms.locfileid: "71058654"
      
       ![檢視連接的資料磁碟](./media/reset-local-password-without-agent/troubleshooting-vm-file-explorer-classic.png)
 
-4. 在`gpt.ini`來源`\Windows\System32\GroupPolicy` VM 磁片磁碟機的中建立（如果`gpt.ini`存在，請將`gpt.ini.bak`其重新命名為）：
+4. 在來源 VM 磁片磁碟機的 `\Windows\System32\GroupPolicy` 中建立 `gpt.ini` （如果 `gpt.ini` 存在，請重新命名為 `gpt.ini.bak`）：
    
    > [!WARNING]
-   > 請確定您不會意外地在中`C:\Windows`建立下列檔案，也就是疑難排解 VM 的 OS 磁片磁碟機。 在連接成為資料磁碟的來源 VM OS 磁碟機中建立下列檔案。
+   > 請確定您不會不小心在 `C:\Windows`中建立下列檔案，用於疑難排解 VM 的 OS 磁片磁碟機。 在連接成為資料磁碟的來源 VM OS 磁碟機中建立下列檔案。
    
    * 將下列幾行新增至您建立的 `gpt.ini` 檔案：
      
@@ -163,7 +165,7 @@ ms.locfileid: "71058654"
      
      ![建立 gpt.ini](./media/reset-local-password-without-agent/create-gpt-ini-classic.png)
 
-5. 在 `\Windows\System32\GroupPolicy\Machines\Scripts\` 中建立 `scripts.ini`。 確定已顯示隱藏的資料夾。 如有需要，請建立 `Machine` 或 `Scripts` 資料夾。
+5. 在 `scripts.ini` 中建立 `\Windows\System32\GroupPolicy\Machines\Scripts\`。 確定已顯示隱藏的資料夾。 如有需要，請建立 `Machine` 或 `Scripts` 資料夾。
    
    * 將下列幾行新增至您建立的 `scripts.ini` 檔案：
 
@@ -175,7 +177,7 @@ ms.locfileid: "71058654"
      
      ![建立 scripts.ini](./media/reset-local-password-without-agent/create-scripts-ini-classic.png)
 
-6. 使用下列內容在 `\Windows\System32` 中建立 `FixAzureVM.cmd`，並以您自己的值取代 `<username>` 和 `<newpassword>`：
+6. 使用下列內容在 `FixAzureVM.cmd` 中建立 `\Windows\System32`，並以您自己的值取代 `<username>` 和 `<newpassword>`：
    
     ```
     net user <username> <newpassword> /add
@@ -193,9 +195,9 @@ ms.locfileid: "71058654"
    
    2. 選取在步驟2中連接的資料磁片，按一下 [卸**離**]，然後按一下 **[確定]** 。
 
-     ![中斷連接磁碟](./media/reset-local-password-without-agent/data-disks-classic.png)
+     ![卸離磁碟](./media/reset-local-password-without-agent/data-disks-classic.png)
      
-     ![中斷連接磁碟](./media/reset-local-password-without-agent/detach-disk-classic.png)
+     ![卸離磁碟](./media/reset-local-password-without-agent/detach-disk-classic.png)
 
 8. 從來源 VM 的 OS 磁碟建立 VM：
    
@@ -211,12 +213,12 @@ ms.locfileid: "71058654"
 
 2. 從新 VM 的遠端工作階段，移除下列檔案以清理環境︰
     
-    * 從`%windir%\System32`
-      * 取消`FixAzureVM.cmd`
-    * 從`%windir%\System32\GroupPolicy\Machine\Scripts`
-      * 取消`scripts.ini`
-    * 從`%windir%\System32\GroupPolicy`
-      * 移除`gpt.ini` （如果`gpt.ini`之前已存在，而且您將`.bak`它`gpt.ini.bak`重新命名為，請將`gpt.ini`檔案重新命名為）
+    * 從 `%windir%\System32`
+      * 移除 `FixAzureVM.cmd`
+    * 從 `%windir%\System32\GroupPolicy\Machine\Scripts`
+      * 移除 `scripts.ini`
+    * 從 `%windir%\System32\GroupPolicy`
+      * 移除 `gpt.ini` （如果之前 `gpt.ini` 已存在，而且您已將它重新命名為 `gpt.ini.bak`，請重新命名 `.bak` 檔案至 `gpt.ini`）
 
 ## <a name="next-steps"></a>後續步驟
 如果您仍然無法使用遠端桌面進行連接，請參閱 [RDP 疑難排解指南](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 [詳細的 RDP 疑難排解指南](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)會探討疑難排解方法，而不是特定的步驟。 您也可以[開啟 Azure 支援要求](https://azure.microsoft.com/support/options/)，以取得實際操作協助。

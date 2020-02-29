@@ -2,17 +2,17 @@
 title: Dv3 和 Dsv3 系列-Azure 虛擬機器
 description: Dv3 和 Dsv3 系列 Vm 的規格。
 services: virtual-machines
-author: jonbeck7
+author: joelpelley
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: db50cadee4aeb618e85e977ca02f4fa6ff203d4b
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 9ea5811fa20ea4866655de74d79ff3905ba03f16
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493757"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164401"
 ---
 # <a name="dv3-and-dsv3-series"></a>Dv3 和 Dsv3 系列
 
@@ -33,6 +33,10 @@ ACU：160-190
 進階儲存體：不支援
 
 進階儲存體快取：不支援
+
+即時移轉：支援
+
+記憶體保留更新：支援
 
 | 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大暫存儲存體輸送量： IOPS/讀取 MBps/寫入 MBps | 最大 Nic/網路頻寬 |
 |---|---|---|---|---|---|---|
@@ -55,6 +59,10 @@ ACU：160-190
 進階儲存體：支援
 
 進階儲存體快取：支援
+
+即時移轉：支援
+
+記憶體保留更新：支援
 
 | 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： IOPS/MBps （GiB 中的快取大小） | 最大未快取的磁片輸送量： IOPS/MBps | 最大 Nic/預期的網路頻寬（Mbps） |
 |---|---|---|---|---|---|---|---|

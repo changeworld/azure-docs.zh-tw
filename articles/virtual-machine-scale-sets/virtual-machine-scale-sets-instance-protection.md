@@ -1,28 +1,26 @@
 ---
 title: Azure 虛擬機器擴展集實例的實例保護
 description: 瞭解如何保護 Azure 虛擬機器擴展集實例，不受相應縮小和擴展集作業的限制。
-author: mayanknayar
+author: avirishuv
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
-ms.date: 05/22/2019
-ms.author: manayar
-ms.openlocfilehash: 071ea79f4d288e86cc5b9347f8607b4ff7190bc1
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.date: 02/26/2020
+ms.author: avverma
+ms.openlocfilehash: 021faad28fb575c4ffeb4d895ad451d8cd82b1a5
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76275797"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919850"
 ---
-# <a name="instance-protection-for-azure-virtual-machine-scale-set-instances-preview"></a>Azure 虛擬機器擴展集實例的實例保護（預覽）
+# <a name="instance-protection-for-azure-virtual-machine-scale-set-instances"></a>Azure 虛擬機器擴展集實例的實例保護
+
 Azure 虛擬機器擴展集可讓您透過[自動](virtual-machine-scale-sets-autoscale-overview.md)調整，為您的工作負載提供更好的彈性，讓您可以設定當基礎結構相應放大和縮小規模時。 擴展集也可讓您透過不同的[升級原則](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)設定，集中管理、設定和更新大量的 vm。 如果您已將升級原則設定為 [自動] 或 [輪流]，則您可以在擴展集模型上設定更新，並自動將新設定套用到每個擴展集實例。
 
 當您的應用程式處理流量時，您可能會想要讓特定實例的處理方式不同于擴展集實例的其餘部分。 例如，擴展集中的某些實例可能會執行長時間執行的作業，而且您不想要相應縮小這些實例，直到作業完成為止。 您也可以在擴展集中特製化一些實例，以執行其他工作或不同于擴展集成員的工作。 您要求這些「特殊」 Vm 不會與擴展集內的其他實例一起修改。 實例保護會提供其他控制項，以啟用應用程式的這些和其他案例。
 
 本文說明如何將不同的實例保護功能與擴展集實例搭配使用。
-
-> [!NOTE]
->實例保護目前為公開預覽狀態。 使用以下所述的公開預覽功能時，不需要任何加入宣告程式。 只有在使用受控磁片的 API 版本2019-03-01 和擴展集上，才支援實例保護預覽。
 
 ## <a name="types-of-instance-protection"></a>實例保護的類型
 擴展集提供兩種類型的實例保護功能：
@@ -44,6 +42,17 @@ Azure 虛擬機器擴展集可讓您透過[自動](virtual-machine-scale-sets-au
 實例保護可以在建立實例之後，套用至擴展集實例。 只會對[實例模型](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-vm-model-view)套用保護，而不會在[擴展集模型](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model)上進行修改。
 
 有多種方式可在您的擴展集實例上套用相應縮小保護，如下列範例所述。
+
+### <a name="azure-portal"></a>Azure 入口網站
+
+您可以透過 Azure 入口網站將相應縮小保護套用至擴展集中的實例。 您不能一次調整一個以上的實例。 針對您要保護的每個實例重複這些步驟。
+ 
+1. 移至現有的虛擬機器擴展集。
+1. 從左側功能表的 [**設定**] 底下選取 [**實例**]。
+1. 選取您想要保護之實例的名稱。
+1. 選取 [**保護原則**] 索引標籤。
+1. 在 [**保護原則**] 分頁中，選取 [**從相應縮小保護**] 選項。
+1. 選取 [儲存]。 
 
 ### <a name="rest-api"></a>REST API
 
@@ -101,6 +110,17 @@ az vmss update \
 從擴展集動作保護實例也會保護實例不受自動調整起始的相應縮小。
 
 有多種方式可在您的擴展集實例上套用擴展集動作保護，如下列範例所述。
+
+### <a name="azure-portal"></a>Azure 入口網站
+
+您可以透過 Azure 入口網站，將保護從擴展集動作套用至擴展集中的實例。 您不能一次調整一個以上的實例。 針對您要保護的每個實例重複這些步驟。
+ 
+1. 移至現有的虛擬機器擴展集。
+1. 從左側功能表的 [**設定**] 底下選取 [**實例**]。
+1. 選取您想要保護之實例的名稱。
+1. 選取 [**保護原則**] 索引標籤。
+1. 在 [**保護原則**] 分頁中，選取 [**從擴展集動作保護**] 選項。
+1. 選取 [儲存]。 
 
 ### <a name="rest-api"></a>REST API
 

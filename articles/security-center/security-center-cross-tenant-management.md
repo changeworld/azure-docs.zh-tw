@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: 482154a37334b056719a18355f87b467d4fe95c7
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 2aeb2ab4cfb4ed5e8652638aaced320cc7119d3e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604245"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919476"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>資訊安全中心中的跨租使用者管理
 
@@ -50,7 +50,7 @@ Views 和動作基本上相同。 以下是一些範例：
 - **補救建議**：一次從各種租使用者監視和修復許多資源的[建議](security-center-recommendations.md)。 接著，您可以立即解決所有租使用者都有最高風險的弱點。
 - **管理警示**：在不同的租使用者中偵測到[警示](security-center-alerts-overview.md)。 針對不符合可採取動作之[補救步驟](security-center-managing-and-responding-alerts.md)的資源採取行動。
 
-- **管理先進的雲端防禦功能及更多**：管理各種威脅偵測和保護服務，例如[即時（JIT） VM 存取](security-center-just-in-time.md)、彈性[網路強化](security-center-adaptive-network-hardening.md)、彈性[應用](security-center-adaptive-application.md)程式控制等等。
+- **管理先進的雲端防禦功能及更多**：管理各種威脅防護服務，例如[即時（JIT） VM 存取](security-center-just-in-time.md)、彈性[網路強化](security-center-adaptive-network-hardening.md)、彈性[應用](security-center-adaptive-application.md)程式控制等等。
  
 ## <a name="next-steps"></a>後續步驟
 本文說明跨租使用者管理在資訊安全中心中的運作方式。 如要深入了解資訊安全中心，請參閱下列主題：

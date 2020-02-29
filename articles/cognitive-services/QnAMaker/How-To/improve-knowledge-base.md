@@ -8,51 +8,21 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 01/28/2020
+ms.date: 02/27/2020
 ms.author: diberry
-ms.openlocfilehash: cadbf5fa88db7d5e524cb7e075745c03a844f750
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: dea2bf3b34ca336f3932dd85bf587184ab6881db
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901701"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914988"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>使用主動式學習來改善知識庫
 
-主動式學習可用來根據使用者提交的內容提出建議的問答組替代問題，以提高知識庫的品質。 您可以檢閱這些建議，並將其新增至現有的問題或加以拒絕。
+[主動式學習](../Concepts/active-learning-suggestions.md)可讓您根據使用者提交，對您的問答組提出替代問題，以改善知識庫的品質。 您可以檢閱這些建議，並將其新增至現有的問題或加以拒絕。
 
 您的知識庫不會自動變更。 為了讓變更生效，您必須接受建議。 這些建議會新增問題，但不會變更或移除現有的問題。
 
-## <a name="what-is-active-learning"></a>什麼是主動式學習？
-
-QnA Maker 可透過隱含和明確的意見反應學習新演變出來的問題。
-
-* [隱含的意見](#how-qna-makers-implicit-feedback-works)反應– ranker 瞭解使用者問題有多個答案的分數非常接近，並將此視為意見反應。 您不需要執行任何動作，就能進行這種情況。
-* [明確的意見](#how-you-give-explicit-feedback-with-the-train-api)反應：當分數中有小變化的多個答案從知識庫傳回時，用戶端應用程式會詢問使用者哪個問題是正確的問題。 使用者的明確意見反應會透過[訓練 API](#train-api)傳送給 QnA Maker。
-
-這兩種方法都會提供具有叢集之類似查詢的 ranker。
-
-## <a name="how-active-learning-works"></a>主動式學習的運作方式
-
-主動式學習會根據 QnA Maker 所傳回的前幾個答案的分數來觸發。 如果分數差異落在較小的範圍內，則查詢會被視為每個可能的 QnA 配對的可能建議（做為替代問題）。 一旦您接受特定 QnA 配對的建議問題，則會拒絕其他配對。 在接受建議之後，您必須記得儲存並定型。
-
-當端點取得合理數量和足夠類型的使用查詢時，主動式學習可提供最佳的可能建議。 當有5個或更多類似的查詢叢集化時，每隔30分鐘 QnA Maker，就會針對要接受或拒絕的知識庫設計工具建議以使用者為基礎的問題。 所有建議會依相似度叢集化在一起，並根據使用者發出特定查詢的頻率顯示替代問題的最高排名建議。
-
-在 QnA Maker 入口網站中建議問題後，您必須複習並接受或拒絕這些建議。 沒有可管理建議的 API。
-
-## <a name="how-qna-makers-implicit-feedback-works"></a>QnA Maker 的隱含意見反應如何運作
-
-QnA Maker 的隱含意見反應會使用演算法來判斷分數鄰近性，然後進行主動式學習建議。 判定相近程度的演算法並非簡單的計算。 下列範例中的範圍不是固定的，但應該做為參考，以瞭解演算法的影響。
-
-當問題的分數具有高信賴度時 (例如 80%)，可考慮進行主動式學習的分數範圍較廣，大約在 10% 以內。 信賴分數下降時 (例如 40%)，分數的範圍也會隨之降低，大約在 4% 以內。
-
-## <a name="how-you-give-explicit-feedback-with-the-train-api"></a>如何使用訓練 API 提供明確的意見反應
-
-請務必 QnA Maker 取得有關答案最佳解答的明確意見反應。 判斷最佳答案的方式由您決定，而且可以包括：
-
-* 使用者意見反應，選取其中一個答案。
-* 商務邏輯，例如判斷可接受的分數範圍。
-* 使用者意見反應和商務邏輯的組合。
 
 ## <a name="upgrade-your-runtime-version-to-use-active-learning"></a>升級您的執行階段版本以使用主動式學習
 
@@ -189,10 +159,10 @@ Content-Type: application/json
 
 |HTTP 要求屬性|名稱|類型|目的|
 |--|--|--|--|
-|URL 路由參數|知識庫識別碼|string|測試您知識庫的 GUID。|
-|自訂子域|QnAMaker 資源名稱|string|資源名稱會用來做為 QnA Maker 的自訂子域。 這會在您發佈知識庫之後的 [設定] 頁面上提供。 它會列為 `host`。|
-|頁首|Content-Type|string|傳送至 API 的本文媒體類型。 預設值為： `application/json`|
-|頁首|授權|string|您的端點金鑰 (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。|
+|URL 路由參數|知識庫識別碼|字串|測試您知識庫的 GUID。|
+|自訂子域|QnAMaker 資源名稱|字串|資源名稱會用來做為 QnA Maker 的自訂子域。 這會在您發佈知識庫之後的 [設定] 頁面上提供。 它會列為 `host`。|
+|頁首|Content-Type|字串|傳送至 API 的本文媒體類型。 預設值為： `application/json`|
+|頁首|授權|字串|您的端點金鑰 (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。|
 |張貼本文|JSON 物件|JSON|訓練意見反應|
 
 JSON 主體有數個設定：
@@ -200,8 +170,8 @@ JSON 主體有數個設定：
 |JSON 主體屬性|類型|目的|
 |--|--|--|--|
 |`feedbackRecords`|array|意見反應清單。|
-|`userId`|string|接受建議問題之人員的使用者識別碼。 使用者識別碼格式是由您負責。 例如，電子郵件地址可以是您架構中的有效使用者識別碼。 選擇性。|
-|`userQuestion`|string|使用者查詢的確切文字。 必要。|
+|`userId`|字串|接受建議問題之人員的使用者識別碼。 使用者識別碼格式是由您負責。 例如，電子郵件地址可以是您架構中的有效使用者識別碼。 選擇性。|
+|`userQuestion`|字串|使用者查詢的確切文字。 必要。|
 |`qnaID`|number|問題的識別碼，可在[GenerateAnswer 回應](metadata-generateanswer-usage.md#generateanswer-response-properties)中找到。 |
 
 範例 JSON 主體如下所示：
@@ -399,7 +369,7 @@ async callTrain(stepContext){
 
 
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳作法
 
 如需使用主動式學習時的最佳做法，請參閱[最佳做法](../Concepts/best-practices.md#active-learning)。
 

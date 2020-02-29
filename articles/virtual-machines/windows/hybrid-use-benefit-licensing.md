@@ -13,28 +13,26 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: d6e3d4d059e464795c712af1226d8202d00bfd74
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 470e38c21a250273216f93eb38a5334a4bb581e7
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461166"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77911777"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>適用於 Windows Server 的 Azure Hybrid Benefit
 對於擁有軟體保證的客戶，適用於 Windows Server 的 Azure Hybrid Benefit 讓您能夠以較低的成本來使用內部部署 Windows Server 授權，以及在 Azure 上執行 Windows 虛擬機器。 您可以使用適用於 Windows Server 的 Azure Hybrid Benefit 部署具有 Windows OS 的新虛擬機器。 本文章會詳述使用適用於 Windows Server 的 Azure Hybrid Benefit 來部署新 VM 的步驟，以及您如何更新現有的執行中 VM。 如需有關適用於 Windows Server 之 Azure Hybrid Benefit 的授權和節省成本詳細資訊，請參閱[適用於 Windows Server 的 Azure Hybrid Benefit 授權頁面](https://azure.microsoft.com/pricing/hybrid-use-benefit/)。
 
-> [!Important]
-> 每份 2 處理器授權或每組 16 核心授權能獲得兩個最多 8 核心的執行個體，或一個最多 16 核心的執行個體。 Standard 版本授權的 Azure Hybrid Benefit 只能在內部部署或 Azure 中使用一次。 Datacenter 版本的權益則允許同時用在內部部署與 Azure。
->
+每份 2 處理器授權或每組 16 核心授權能獲得兩個最多 8 核心的執行個體，或一個最多 16 核心的執行個體。 Standard 版本授權的 Azure Hybrid Benefit 只能在內部部署或 Azure 中使用一次。 Datacenter 版本的權益則允許同時用在內部部署與 Azure。
 
-> [!Important]
-> 在所有區域中，現在支援使用適用於 Windows Server 的 Azure Hybrid Benefit 搭配執行 Windows Server OS 的任何 VM，包括具有其他軟體 (例如 SQL Server 或協力廠商 Marketplace 軟體) 的 VM。 
->
+在所有區域中，現在支援使用適用於 Windows Server 的 Azure Hybrid Benefit 搭配執行 Windows Server OS 的任何 VM，包括具有其他軟體 (例如 SQL Server 或協力廠商 Marketplace 軟體) 的 VM。 
 
-> [!NOTE]
-> 若為傳統 Vm，則只支援從內部部署自訂映射部署新的 VM。 若要充分利用本文章所支援的功能，您必須先將傳統 VM 移轉至 Resource Manager 模型。
->
 
+## <a name="classic-vms"></a>傳統 VM
+
+若為傳統 Vm，則只支援從內部部署自訂映射部署新的 VM。 若要充分利用本文章所支援的功能，您必須先將傳統 VM 移轉至 Resource Manager 模型。
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
  
 
 ## <a name="ways-to-use-azure-hybrid-benefit-for-windows-server"></a>使用適用於 Windows Server 的 Azure Hybrid Benefit 的方式
@@ -73,7 +71,7 @@ az vm create \
     --license-type Windows_Server
 ```
 
-### <a name="template"></a>範本
+### <a name="template"></a>[範本]
 在 Resource Manager 範本內，必須指定 `licenseType` 的額外參數。 您可以進一步了解如何[製作 Azure Resource Manager 範本](../../resource-group-authoring-templates.md)
 ```json
 "properties": {

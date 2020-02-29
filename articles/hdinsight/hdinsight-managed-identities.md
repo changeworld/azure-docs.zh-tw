@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/20/2019
-ms.openlocfilehash: 236f79c9060a0d6fdcb0f558373d02f32eba7abb
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c2b590e623062d5d5ae39261b3b5fa5a37a39122
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905613"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919215"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Azure HDInsight 中的受控識別
 
@@ -21,7 +21,7 @@ ms.locfileid: "76905613"
 
 受控識別會在 Azure HDInsight 中用來存取 Azure AD 網域服務，或在需要時存取 Azure Data Lake Storage Gen2 中的檔案。
 
-受控識別有兩種類型：使用者指派和系統指派。 Azure HDInsight 會使用使用者指派的受控識別。 使用者指派的受控識別會建立為獨立的 Azure 資源，您可以將其指派給一或多個 Azure 服務實例。 相反地，系統指派的受控識別會建立在 Azure AD 中，然後直接在特定 Azure 服務實例上啟用。 系統指派的受控識別的生命週期接著會系結至其啟用所在之服務實例的生命週期。
+受控識別有兩種類型：使用者指派和系統指派。 Azure HDInsight 僅支援使用者指派的受控識別。 HDInsight 不支援系統指派的受控識別。 使用者指派的受控識別會建立為獨立的 Azure 資源，您可以將其指派給一或多個 Azure 服務實例。 相反地，系統指派的受控識別會建立在 Azure AD 中，然後直接在特定 Azure 服務實例上啟用。 系統指派的受控識別的生命週期接著會系結至其啟用所在之服務實例的生命週期。
 
 ## <a name="hdinsight-managed-identity-implementation"></a>HDInsight 受控識別執行
 

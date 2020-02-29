@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 61c3dde49d4cd298fb3a0f19dc1d8c00e54977af
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 27c359a594cec66708647d5a648c7e8414c0d92c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152341"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917470"
 ---
 # <a name="enter-data-manually-module"></a>手動輸入資料模組
 
@@ -36,13 +36,13 @@ ms.locfileid: "77152341"
   
 2.  針對 [ **DataFormat**]，選取下列其中一個選項。 這些選項會決定應該如何剖析您所提供的資料。 每種格式的需求有很大的差異，因此請務必閱讀相關主題。  
   
-    -   **ARFF**。 Weka 所使用的屬性關聯檔案格式。   
+    -   **ARFF**： Weka 所使用的屬性關聯檔案格式。   
   
-    -   **CSV**。 逗點分隔值格式。 如需詳細資訊，請參閱[轉換成 CSV](./convert-to-csv.md)。  
+    -   **CSV**：逗號分隔值格式。 如需詳細資訊，請參閱[轉換成 CSV](./convert-to-csv.md)。  
   
-    -   **SVMLight**。 Vowpal Wabbit 和其他機器學習架構所使用的格式。  
+    -   **SVMLight**： Vowpal Wabbit 和其他機器學習架構所使用的格式。  
   
-    -   **TSV**。 定位字元分隔值格式。
+    -   **TSV**：定位字元分隔值格式。
 
      如果您選擇格式，但未提供符合格式規格的資料，就會發生執行階段錯誤。
   

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/17/2020
+ms.date: 03/02/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4434c877f69391f5dc5926c6aed07049ba46b7b7
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 97e51331657c62094996f79483148f2f441e6a44
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425641"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161596"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>關於 Azure Active Directory B2C 自訂原則中的宣告解析程式
 
@@ -75,6 +75,7 @@ Azure Active Directory B2C （Azure AD B2C）[自訂原則](custom-policy-overvi
 | {OIDC:Prompt} | `prompt` 查詢字串參數。 | login |
 | {OIDC:Resource} |`resource` 查詢字串參數。 | N/A |
 | {OIDC:scope} |`scope` 查詢字串參數。 | openid |
+| {OIDC： RedirectUri} |`redirect_uri` 查詢字串參數。 | https://jwt.ms |
 
 ### <a name="context"></a>Context
 
@@ -85,7 +86,7 @@ Azure Active Directory B2C （Azure AD B2C）[自訂原則](custom-policy-overvi
 | {Context:DateTimeInUtc} |日期時間 (UTC)。  | 10/10/2018 12:00:00 PM |
 | {Context:DeploymentMode} |原則部署模式。  | Production |
 | {Context:IPAddress} | 使用者 IP 位址。 | 11.111.111.11 |
-
+| {CoNtext： KMSI} | 指出是否已選取 [[讓我保持登入](custom-policy-keep-me-signed-in.md)] 核取方塊。 |  true |
 
 ### <a name="non-protocol-parameters"></a>非通訊協定參數
 

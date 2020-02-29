@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: alkohli
-ms.openlocfilehash: 678bef1b18d60679be6c296a1fd7beef42f721b7
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
-ms.translationtype: HT
+ms.openlocfilehash: 21b05631f1c225c9c4b1f7c65d18588900850b8e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203816"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77911730"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure 資料箱安全性和資料保護
 
@@ -50,7 +50,7 @@ Microsoft Azure 資料箱解決方案包含四個彼此互動的主要元件：
 - 只能執行資料箱專用軟體。
 - 在鎖定狀態下開機。
 - 透過裝置解除鎖定密碼控制裝置存取。
-- 存取認證，以將資料複製到裝置中或從裝置複製資料。 Azure 入口網站中，所有對 [裝置認證]  頁面的存取都會記錄於[活動記錄](data-box-logs.md#query-activity-logs-during-setup)中。
+- 存取認證，以將資料複製到裝置中或從裝置複製資料。 Azure 入口網站中，所有對 [裝置認證] 頁面的存取都會記錄於[活動記錄](data-box-logs.md#query-activity-logs-during-setup)中。
 
 ### <a name="data-box-data-protection"></a>資料箱資料保護
 
@@ -100,7 +100,7 @@ Azure 資料箱會在服務中收集並顯示下列金鑰執行個體的個人�
 
 資料箱中會實作下列安全性指導方針： 
 
-|指導方針   |說明   |
+|指導方針   |描述   |
 |---------|---------|
 |[IEC 60529 IP52](https://www.iec.ch/)    | 適用於防水防塵         |
 |[ISTA 2A](https://ista.org/docs/2Aoverview.pdf)     | 適用於不利的運輸條件耐久性          |

@@ -1,6 +1,6 @@
 ---
 title: 開始使用 web 地圖控制項 |Microsoft Azure 對應
-description: 瞭解如何使用 Microsoft Azure 地圖的地圖控制項用戶端 JAVAscript 程式庫，將地圖和內嵌的 Azure 地圖服務功能轉譯成您的 web 或行動應用程式。
+description: 瞭解如何使用 Microsoft Azure 地圖的地圖控制項用戶端 JavaScript 程式庫，將地圖和內嵌的 Azure 地圖服務功能轉譯成您的 web 或行動應用程式。
 author: farah-alyasari
 ms.author: v-faalya
 ms.date: 01/15/2020
@@ -8,52 +8,53 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 6701d777fb9aa16d3012baba082415bf9858e46f
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 9bcb0fd26710b5f44ca9e3e3715c40cb32b3c40d
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209812"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913935"
 ---
 # <a name="use-the-azure-maps-map-control"></a>使用 Azure 地圖服務地圖控制項
 
-地圖控制項用戶端 Javascript 程式庫可讓您將地圖和內嵌的 Azure 地圖服務功能轉譯到 Web 或行動裝置應用程式中。
+地圖控制項用戶端 JavaScript 程式庫可讓您將地圖和內嵌 Azure 地圖服務功能轉譯到 web 或行動應用程式中。
 
 ## <a name="create-a-new-map-in-a-web-page"></a>在網頁中建立新的地圖
 
-您可以使用地圖控制項用戶端 Javascript 程式庫，在網頁中內嵌地圖。
+您可以使用地圖控制項的用戶端 JavaScript 程式庫，在網頁中內嵌對應。
 
 1. 建立新的 HTML 檔案。
 
 2. 載入 Azure 地圖服務 Web SDK。 您可以選擇兩個選項的其中一個：
 
-a. 使用 Azure 地圖服務 Web SDK 的全域裝載 CDN 版本，方法是將 URL 端點新增到檔案 `<head>` 元素中的樣式表和指令碼參考：
+   1. 使用 Azure 地圖服務 Web SDK 的全域裝載 CDN 版本，方法是將 URL 端點新增到檔案 `<head>` 元素中的樣式表和指令碼參考：
 
-```HTML
-    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
-    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
-```
+      ```HTML
+       <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+       <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+      ```
 
-b. 使用[Azure 地圖服務控制](https://www.npmjs.com/package/azure-maps-control)NPM 套件在本機載入 AZURE 地圖服務 Web SDK 原始程式碼，並將其與您的應用程式搭配使用。 此套件也包含 TypeScript 定義。
+   1. 使用[Azure 地圖服務控制](https://www.npmjs.com/package/azure-maps-control)NPM 套件在本機載入 AZURE 地圖服務 Web SDK 原始程式碼，並將其與您的應用程式搭配使用。 此套件也包含 TypeScript 定義。
 
-> **npm 安裝 azure-maps-控制項**
+      > **npm 安裝 azure-maps-控制項**
 
-然後將參考新增到 Azure 地圖服務樣式表，並將指令碼來源參考新增到檔案的 `<head>` 元素：
+   然後將參考新增到 Azure 地圖服務樣式表，並將指令碼來源參考新增到檔案的 `<head>` 元素：
 
-```HTML
-    <link rel="stylesheet" href="node_modules/azure-maps-control/dist/atlas.min.css" type="text/css"> 
-    <script src="node_modules/azure-maps-control/dist/atlas.min.js"></script>
-```
+      ```HTML
+       <link rel="stylesheet" href="node_modules/azure-maps-control/dist/atlas.min.css" type="text/css"> 
+       <script src="node_modules/azure-maps-control/dist/atlas.min.js"></script>
+      ```
 
-    >[!Note]
-    > Typescript definitions can be imported into your application by adding the following code:
+    > [!Note]
+    > 您可以藉由新增下列程式碼，將 Typescript 定義匯入至您的應用程式：
+    >
     > ```Javascript
     > import * as atlas from 'azure-maps-control';
     > ```
 
 3. 若要轉譯地圖來使它填滿頁面的完整主體，請將下列 `<style>` 元素新增到 `<head>` 元素。
 
-```HTML
+   ```HTML
     <style>
         html, body {
             margin: 0;
@@ -64,23 +65,23 @@ b. 使用[Azure 地圖服務控制](https://www.npmjs.com/package/azure-maps-con
             width: 100vw;
         }
     </style>
-```
+   ```
 
 4. 在頁面的主體中，新增 `<div>` 元素，並為它提供 `id`myMap**的**。
 
-```HTML
+   ```HTML
     <body>
         <div id="myMap"></div>
     </body>
-```
+   ```
 
 5. 若要初始化地圖控制項，請在 html 主體中定義新的腳本標記。 在建立 `Map` 類別的實例時，傳入地圖 `<div>` 的 `id` 或 `HTMLElement` （例如 `document.getElementById('myMap')`）做為第一個參數。 使用您自己的 Azure 地圖服務帳戶金鑰或 Azure Active Directory (AAD) 認證來使用[驗證選項](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)驗證地圖。 
 
-如果您需要建立帳戶或尋找您的金鑰，請依照[建立帳戶](quick-demo-map-app.md#create-an-account-with-azure-maps)和[取得主要金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的指示進行。 
+   如果您需要建立帳戶或尋找您的金鑰，請依照[建立帳戶](quick-demo-map-app.md#create-an-account-with-azure-maps)和[取得主要金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的指示進行。 
 
-[語言] 選項會指定要用於地圖標籤和控制項的語言。 如需支援語言的詳細資訊，請參閱[支援的語言](supported-languages.md)。如果您使用訂用帳戶金鑰進行驗證，請使用下列各項：
+   [語言] 選項會指定要用於地圖標籤和控制項的語言。 如需支援語言的詳細資訊，請參閱[支援的語言](supported-languages.md)。如果您使用訂用帳戶金鑰進行驗證，請使用下列各項：
 
-```HTML
+   ```HTML
     <script type="text/javascript">
         var map = new atlas.Map('myMap', {
             center: [-122.33, 47.6],
@@ -92,11 +93,11 @@ b. 使用[Azure 地圖服務控制](https://www.npmjs.com/package/azure-maps-con
             }
         });
     </script>
- ```
+    ```
 
-如果您使用 Azure Active Directory （AAD）進行驗證，請使用下列各項：
+   如果您使用 Azure Active Directory （AAD）進行驗證，請使用下列各項：
 
-```HTML
+   ```HTML
     <script type="text/javascript">
         var map = new atlas.Map('myMap', {
             center: [-122.33, 47.6],
@@ -110,25 +111,25 @@ b. 使用[Azure 地圖服務控制](https://www.npmjs.com/package/azure-maps-con
             }
         });
     </script>
-```
+   ```
 
-您可以在[這裡](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)找到示範如何整合 AZURE ACTIVE DIRECTORY （AAD）與 Azure 地圖服務的範例清單。 
+   您可以在[這裡](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)找到示範如何整合 AZURE ACTIVE DIRECTORY （AAD）與 Azure 地圖服務的範例清單。 
     
-如需詳細資訊，請參閱[使用 Azure 地圖服務的驗證](azure-maps-authentication.md)檔和[Azure 地圖服務 Azure AD 驗證範例](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)。
+   如需詳細資訊，請參閱[使用 Azure 地圖服務的驗證](azure-maps-authentication.md)檔和[Azure 地圖服務 Azure AD 驗證範例](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)。
 
-6. 您可以選擇將下列 meta tag 元素新增至頁面的開頭，有説明：
+6. 除此之外，將下列中繼標籤元素新增到頁面的標頭可能會對您很有幫助：
 
-```HTML
+   ```HTML
     <!-- Ensures that IE and Edge uses the latest version and doesn't emulate an older version -->
     <meta http-equiv="x-ua-compatible" content="IE=Edge">
 
     <!-- Ensures the web page looks good on all screen sizes. -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-```
+   ```
 
-7. 將它全部放在您的 HTML 檔案中看起來應該像下面這樣的程式碼：
+7. 將它全部放在您的 HTML 檔案中看起來應該像下面這段程式碼：
 
-```HTML
+   ```HTML
     <!DOCTYPE html>
     <html>
     <head>
@@ -174,11 +175,11 @@ b. 使用[Azure 地圖服務控制](https://www.npmjs.com/package/azure-maps-con
         </script>
     </body>
     </html>
- ```
+    ```
 
 8. 在網頁瀏覽器中開啟此檔案，並檢視轉譯的地圖。 看起來應該如下圖所示：
 
-![顯示呈現結果的地圖影像](./media/how-to-use-map-control/map-of-seattle.png)
+   ![顯示呈現結果的地圖影像](./media/how-to-use-map-control/map-of-seattle.png)
 
 ## <a name="localizing-the-map"></a>將地圖當地語系化
 

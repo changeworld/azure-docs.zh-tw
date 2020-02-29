@@ -8,17 +8,17 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 71c30e0a86f67a2e2826859032144aa491c0cee1
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 5236fd89ed99ca14bb7fc24e40ef79e12e5177d9
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597026"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919510"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure 資訊安全中心的資料收集
 資訊安全中心會從您的 Azure 虛擬機器（Vm）、虛擬機器擴展集、IaaS 容器和非 Azure （包括內部部署）電腦收集資料，以監視是否有安全性弱點和威脅。 系統會使用 Log Analytics 代理程式來收集資料，這會從電腦讀取各種安全性相關設定和事件記錄，並將資料複製到您的工作區進行分析。 這類資料的範例包括︰作業系統類型和版本、作業系統記錄 (Windows 事件記錄)、執行中程序、電腦名稱、IP 位址和已登入的使用者。 Log Analytics 代理程式也會將損毀傾印檔案複製到您的工作區。
 
-需要進行資料收集，以提供遺失的更新、設定錯誤的 OS 安全性設定、endpoint protection 狀態，以及健康情況和威脅偵測的可見度。 
+需要進行資料收集，以提供遺失的更新、設定錯誤的 OS 安全性設定、endpoint protection 狀態，以及健康情況和威脅防護的可見度。 
 
 本文說明如何安裝 Log Analytics 代理程式，並設定 Log Analytics 工作區來儲存收集的資料。 需要執行這兩項作業，才能啟用資料收集。 
 
@@ -139,7 +139,7 @@ ms.locfileid: "77597026"
 
 
 ## <a name="data-collection-tier"></a>資料收集層
-在 Azure 資訊安全中心中選取 [資料收集層]，只會影響 Log Analytics 工作區中安全性事件的儲存空間。 無論您選擇在 Log Analytics 工作區中儲存哪一層安全性事件（如果有的話），Log Analytics 代理程式仍然會收集並分析 Azure 資訊安全中心威脅偵測所需的安全性事件。 選擇在工作區中儲存安全性事件，將允許在工作區中調查、搜尋和稽核這些事件。 
+在 Azure 資訊安全中心中選取 [資料收集層]，只會影響 Log Analytics 工作區中安全性事件的儲存空間。 Log Analytics 代理程式仍然會收集並分析 Azure 資訊安全中心威脅防護所需的安全性事件，而不論您選擇在 Log Analytics 工作區中儲存哪一層安全性事件（如果有的話）。 選擇在工作區中儲存安全性事件，將允許在工作區中調查、搜尋和稽核這些事件。 
 > [!NOTE]
 > 將資料儲存在 log analytics 中可能會產生額外的資料儲存體費用。 如需詳細資訊，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/security-center/)。
 > 

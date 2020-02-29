@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: f3cb583a3594b14266249ef80f8c49633c1df1de
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: cd634c41a1d6e3d9846e8299dd281b52beb77130
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152188"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912784"
 ---
 # <a name="linear-regression-module"></a>線性回歸模組
 本文說明 Azure Machine Learning 設計工具（預覽）中的模組。
@@ -51,17 +51,15 @@ ms.locfileid: "77152188"
 
 此模組支援兩種用於調整回歸模型的方法，並具有不同的選項：
 
-+ [使用線上梯度下降建立回歸模型](#bkmk_GradientDescent)
++ [使用一般最小平方來配合回歸模型](#create-a-regression-model-using-ordinary-least-squares)
+
+    對於小型資料集，最好選取 [普通最小平方]。 這應該會為 Excel 提供類似的結果。
+    
++ [使用線上梯度下降建立回歸模型](#create-a-regression-model-using-online-gradient-descent)
 
     對於較為複雜的模型，或是沒有足夠的定型資料供給定的變數數目使用的模型，梯度下降會是較理想的損失函數。
 
-
-
-+ [使用一般最小平方來配合回歸模型](#bkmk_OrdinaryLeastSquares)
-
-    對於小型資料集，最好選取 [普通最小平方]。 這應該會為 Excel 提供類似的結果。
-
-## <a name="bkmk_OrdinaryLeastSquares"></a>使用一般最小平方來建立回歸模型
+### <a name="create-a-regression-model-using-ordinary-least-squares"></a>使用一般最小平方來建立回歸模型
 
 1. 將**線性回歸模型**模組加入至您在設計工具中的管線。
 
@@ -86,7 +84,7 @@ ms.locfileid: "77152188"
 
 8. 執行管道。
 
-## <a name="results-for-ordinary-least-squares-model"></a>一般最小平方模型的結果
+### <a name="results-for-ordinary-least-squares-model"></a>一般最小平方模型的結果
 
 定型完成後：
 
@@ -94,7 +92,7 @@ ms.locfileid: "77152188"
 + 若要進行預測，請將定型的模型連接到 [[評分模型](./score-model.md)] 模組，以及新值的資料集。 
 
 
-## <a name="bkmk_GradientDescent"></a>使用線上梯度下降建立回歸模型
+### <a name="create-a-regression-model-using-online-gradient-descent"></a>使用線上梯度下降建立回歸模型
 
 1. 將**線性回歸模型**模組加入至您在設計工具中的管線。
 
@@ -105,6 +103,8 @@ ms.locfileid: "77152188"
 3. 針對 [**建立培訓者模式]** ，指出您要使用一組預先定義的參數來定型模型，還是要使用參數清除來將模型優化。
 
     + **單一參數**：如果您知道要如何設定線性回歸網路，您可以提供一組特定值做為引數。
+    
+    + **參數範圍**：如果您不確定最佳參數，而且想要執行參數清理，請選取此選項。 選取要逐一查看的值範圍，[微調模型超參數](tune-model-hyperparameters.md)會逐一查看所提供設定的所有可能組合，以判斷產生最佳結果的超參數。  
 
    
 4. 針對 [**學習速率**]，指定隨機梯度下降優化工具的初始學習速率。
@@ -133,7 +133,7 @@ ms.locfileid: "77152188"
 
 13. 執行管道。
 
-## <a name="results-for-online-gradient-descent"></a>線上梯度下降的結果
+### <a name="results-for-online-gradient-descent"></a>線上梯度下降的結果
 
 定型完成後：
 

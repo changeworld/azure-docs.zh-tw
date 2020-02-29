@@ -11,13 +11,13 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 02/06/2020
-ms.openlocfilehash: 5f9e15b83c36c6c19fbe93c5f1df365f6f763c81
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.date: 02/28/2020
+ms.openlocfilehash: 701e279e349bdc3b92d5b5c2dc50e23199f9d766
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187673"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78160806"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>在 Azure Data Factory 中，將自我裝載 IR 設定為 Azure SSIS IR 的 proxy
 
@@ -76,7 +76,7 @@ ms.locfileid: "77187673"
 
    1. 在 [**暫存路徑**] 方塊中，指定所選 Azure blob 儲存體帳戶中的 blob 容器，或將其保留空白，以使用預設值來進行預備。
 
-   1. 選取 **[繼續]** 。
+   1. 選取 [繼續]。
 
    ![使用自我裝載 IR 的 Advanced 設定](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-shir.png)
 
@@ -165,7 +165,7 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 ## <a name="current-limitations"></a>目前的限制
 
-- 目前僅支援具有開放式資料庫連接（ODBC）、OLEDB 或一般檔案連接管理員以及 ODBC、OLEDB 和一般檔案來源或 OLEDB 目的地的資料流程工作。 
+- 目前僅支援具有開放式資料庫連接（ODBC）、OLEDB 或一般檔案連接管理員、ODBC、OLEDB 或一般檔案來源的資料流程工作。 
 - 目前僅支援以*帳戶金鑰*、*共用存取簽章（SAS） URI*或*服務主體*驗證設定的 Azure Blob 儲存體連結服務。
 
 ## <a name="next-steps"></a>後續步驟

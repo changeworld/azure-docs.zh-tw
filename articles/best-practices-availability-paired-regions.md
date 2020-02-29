@@ -7,12 +7,12 @@ ms.service: multiple
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: raynew
-ms.openlocfilehash: b71048412f5715fd1b8ef3edf742716916672bd5
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c1e14db9dafc8b03acbeb1c6b97e5ac0e27cb0fd
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718741"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163043"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>業務持續性和災害復原 (BCDR)：Azure 配對的區域
 
@@ -24,18 +24,21 @@ Azure 能在世界各地多個地理位置運作。 Azure 地理位置是包含�
 
 ![AzureGeography](./media/best-practices-availability-paired-regions/GeoRegionDataCenter.png)
 
+> [!NOTE]
+> 指派的 Azure 區域配對無法修改。
+
 圖 1：Azure 地區組
 
 | [地理位置] | 配對的區域 |  |
 |:--- |:--- |:--- |
-| 亞洲 |東亞 |東南亞 |
+| Asia |東亞 |東南亞 |
 | 澳大利亞 |澳大利亞東部 |澳大利亞東南部 |
 | 澳大利亞 |澳大利亞中部 |澳大利亞中部 2 |
 | 巴西 |巴西南部 |美國中南部 |
-| 加拿大 |加拿大中部 |加拿大東部 |
+| Canada |加拿大中部 |加拿大東部 |
 | 中國 |中國北部 |中國東部|
 | 中國 |中國北部 2 |中國東部 2|
-| 歐洲 |歐洲北部(愛爾蘭) |歐洲西部(荷蘭) |
+| 歐洲 |北歐（愛爾蘭） |西歐（荷蘭） |
 | 法國 |法國中部|法國南部|
 | 德國 |德國中部 |德國東北部 |
 | 印度 |印度中部 |印度南部 |
@@ -75,13 +78,13 @@ Azure 能在世界各地多個地理位置運作。 Azure 地理位置是包含�
 ## <a name="cross-region-activities"></a>跨區域活動
 如圖 2 所示。
 
-![IaaS](./media/best-practices-availability-paired-regions/1Green.png) **Azure 運算 (IaaS)** ：您必須佈建額外的運算資源，以便確保發生嚴重損壞時資源可在其他區域中使用。 如需詳細資訊，請參閱 [Azure 復原技術指導](https://github.com/uglide/azure-content/blob/master/articles/resiliency/resiliency-technical-guidance.md)。
+![IaaS](./media/best-practices-availability-paired-regions/1Green.png) **Azure 計算（iaas）** -您必須事先布建額外的計算資源，以確保在發生嚴重損壞時可在另一個區域中使用資源。 如需詳細資訊，請參閱 [Azure 復原技術指導](https://github.com/uglide/azure-content/blob/master/articles/resiliency/resiliency-technical-guidance.md)。
 
 ![儲存體](./media/best-practices-availability-paired-regions/2Green.png) **Azure 儲存體**-如果您使用受控磁片，請瞭解如何使用 Azure 備份進行[跨區域備份](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region#virtual-machines)，並使用 Azure Site Recovery 將[vm](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)從一個區域複寫到另一個區域。 如果您使用的是儲存體帳戶，則在建立 Azure 儲存體帳戶時，預設會設定異地冗余儲存體（GRS）。 使用 GRS 時，系統會在主要區域內將您的資料自動複寫三次，並在配對區域中複寫三次。 如需詳細資訊，請參閱 [Azure 儲存體備援選項](storage/common/storage-redundancy.md)。
 
-![Azure SQL](./media/best-practices-availability-paired-regions/3Green.png) **Azure SQL Database** – 使用 Azure SQL Database 異地複寫，您就可以設定非同步交易複寫至世界上任何區域。不過，我們建議您在配對區域中，為大部分的災害復原案例部署這些資源。 如需詳細資訊，請參閱 [Azure SQL Database 中的異地複寫](sql-database/sql-database-geo-replication-overview.md)。
+![Azure SQL](./media/best-practices-availability-paired-regions/3Green.png) **Azure SQL Database** –透過 Azure SQL Database 異地複寫，您可以將交易的非同步複寫設定至世界各地的任何區域;不過，我們建議您在配對的區域中部署這些資源，以進行大部分的嚴重損壞修復案例。 如需詳細資訊，請參閱 [Azure SQL Database 中的異地複寫](sql-database/sql-database-geo-replication-overview.md)。
 
-![Resource Manager](./media/best-practices-availability-paired-regions/4Green.png) **Azure Resource Manager** - Resource Manager 原本就會跨區域提供元件的邏輯隔離。 這表示某個區域中的邏輯失敗不太可能會影響另一個區域。
+![Resource Manager](./media/best-practices-availability-paired-regions/4Green.png) **Azure Resource Manager** -Resource Manager 原本就是跨區域提供元件的邏輯隔離。 這表示某個區域中的邏輯失敗不太可能會影響另一個區域。
 
 ## <a name="benefits-of-paired-regions"></a>配對區域的優點
 如圖 2 所示。  

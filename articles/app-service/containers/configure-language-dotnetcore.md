@@ -4,12 +4,12 @@ description: 瞭解如何為您的應用程式設定預先建立的 ASP.NET Core
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/13/2019
-ms.openlocfilehash: cab99b9d20ce8a3190eb9aa59650dab32fca324d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 30cd6ad1b5516eb3bc7e858ae364a88ace1b93b3
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768413"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917624"
 ---
 # <a name="configure-a-linux-aspnet-core-app-for-azure-app-service"></a>設定適用于 Azure App Service 的 Linux ASP.NET Core 應用程式
 
@@ -38,6 +38,28 @@ az webapp list-runtimes --linux | grep DOTNETCORE
 ```azurecli-interactive
 az webapp config set --name <app-name> --resource-group <resource-group-name> --linux-fx-version "DOTNETCORE|2.1"
 ```
+
+## <a name="customize-build-automation"></a>自訂群組建自動化
+
+如果您使用 Git 或已開啟組建自動化的 zip 套件來部署應用程式，App Service 組建自動化會逐步執行下列順序：
+
+1. 如果 `PRE_BUILD_SCRIPT_PATH`指定，請執行自訂腳本。
+1. 執行 `dotnet restore` 以還原 NuGet 相依性。
+1. 執行 `dotnet publish` 以建立用於生產的二進位檔。
+1. 如果 `POST_BUILD_SCRIPT_PATH`指定，請執行自訂腳本。
+
+`PRE_BUILD_COMMAND` 和 `POST_BUILD_COMMAND` 是預設為空白的環境變數。 若要執行預先建立的命令，請定義 `PRE_BUILD_COMMAND`。 若要執行建立後命令，請定義 `POST_BUILD_COMMAND`。
+
+下列範例會指定一系列命令的兩個變數，並以逗號分隔。
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
+```
+
+如需其他環境變數以自訂群組建自動化，請參閱[Oryx configuration](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md)。
+
+如需有關 App Service 如何在 Linux 中執行和建立 ASP.NET Core 應用程式的詳細資訊，請參閱[Oryx 檔：如何偵測和建立 .Net Core 應用程式](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/dotnetcore.md)。
 
 ## <a name="access-environment-variables"></a>存取環境變數
 
@@ -82,9 +104,9 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 在 App Service 中，[SSL 終止](https://wikipedia.org/wiki/TLS_termination_proxy)會在網路負載平衡器上發生，因此所有的 HTTPS 要求都會以未加密 HTTP 要求的形式進入您的應用程式。 如果您的應用程式邏輯需要知道使用者要求是否已加密，請在*Startup.cs*中設定轉送的標頭中介軟體：
 
-- 請使用 [ForwardedHeadersOptions](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) 來設定中介軟體以轉送 `Startup.ConfigureServices` 中的 `X-Forwarded-For` 和 `X-Forwarded-Proto` 標頭。
+- 使用[ForwardedHeadersOptions](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions)設定中介軟體，以轉送 `Startup.ConfigureServices`中的 `X-Forwarded-For` 和 `X-Forwarded-Proto` 標頭。
 - 將私人 IP 位址範圍新增至已知的網路，讓中介軟體可以信任 App Service 負載平衡器。
-- 呼叫其他中介軟體之前, `Startup.Configure`請先在中叫用 [UseForwardedHeaders](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) 方法。
+- 呼叫其他中介軟體之前，請先在 `Startup.Configure` 中叫用[UseForwardedHeaders](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders)方法。
 
 將這三個元素全部放在一起，您的程式碼看起來如下列範例所示：
 
@@ -113,7 +135,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
-如需詳細資訊，請參閱[設定 ASP.NET Core 以處理 Proxy 伺服器和負載平衡器](https://docs.microsoft.com/aspnet/core/host-and-deploy/proxy-load-balancer)。
+如需詳細資訊，請參閱[設定 ASP.NET Core 以使用 proxy 伺服器和負載平衡](https://docs.microsoft.com/aspnet/core/host-and-deploy/proxy-load-balancer)器。
 
 ## <a name="deploy-multi-project-solutions"></a>部署多專案方案
 

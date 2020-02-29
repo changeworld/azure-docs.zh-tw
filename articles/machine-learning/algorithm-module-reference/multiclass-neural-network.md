@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: f94427ddfbdc19836cd177fd642987aaaeedf1ee
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 653b12ddd54c5ec9e4e7dd23a323f34460daa962
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152086"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920411"
 ---
 # <a name="multiclass-neural-network-module"></a>多元類神經網路模組
 
@@ -46,7 +46,7 @@ ms.locfileid: "77152086"
 
     - **單一參數**：如果您已經知道要如何設定模型，請選擇此選項。
 
-    
+    - **參數範圍**：如果您不確定最佳參數，而且想要執行參數清理，請選取此選項。 選取要逐一查看的值範圍，[微調模型超參數](tune-model-hyperparameters.md)會逐一查看所提供設定的所有可能組合，以判斷產生最佳結果的超參數。  
 
 3. **隱藏層規格**：選取要建立的網路架構類型。
 
@@ -56,7 +56,7 @@ ms.locfileid: "77152086"
         - 輸出層會完全連接到隱藏層。
         - 隱藏層會完全連接到輸入層。
         - 輸入層的節點數目取決於定型資料中的特徵數目。
-        - 使用者可以設定隱藏層中的節點數目。 預設為 100。
+        - 使用者可以設定隱藏層中的節點數目。 預設值為 100。
         - 輸出層的節點數目取決於級別的數目。
   
    

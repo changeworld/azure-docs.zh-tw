@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: memildin
-ms.openlocfilehash: b8b8b05f703a3eb05936ca95e2047a13650914cf
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: b1e1402f58b103570d6a98a5f9a01c8168abf749
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604257"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912355"
 ---
 # <a name="understand-azure-security-center-container-recommendations"></a>了解 Azure 資訊安全中心容器建議
 
@@ -35,7 +35,7 @@ Azure 資訊安全中心提供下列功能協助您保護您的容器：
 
     ![容器索引標籤](./media/security-center-container-recommendations/container-cis-benchmark.png)
 
-- **即時偵測容器威脅**<br> 資訊安全中心會透過 AuditD 元件針對 Linux 電腦上的容器提供即時威脅偵測。 警示會找出數個可疑的 Docker 活動，例如在主機上建立特殊權限的容器、在 Docker 容器內執行安全殼層 (SSH) 伺服器的跡象，或使用密碼編譯採礦程式。 您可以使用這項資訊來快速修復安全性問題，並改善您容器的安全性。
+- **即時容器威脅防護**<br> 資訊安全中心使用 AuditD 元件為您的 Linux 電腦上的容器提供即時威脅防護。 警示會找出數個可疑的 Docker 活動，例如在主機上建立特殊權限的容器、在 Docker 容器內執行安全殼層 (SSH) 伺服器的跡象，或使用密碼編譯採礦程式。 您可以使用這項資訊來快速修復安全性問題，並改善您容器的安全性。
 
     ![容器索引標籤](./media/security-center-container-recommendations/docker-threat-detection.png)
 

@@ -3,12 +3,12 @@ title: 從 ZIP 套件執行您的應用程式
 description: 以不可部分完成的方式部署應用程式的 ZIP 套件。 提升應用程式在 ZIP 部署過程中的行為可預測性和可靠性。
 ms.topic: article
 ms.date: 01/14/2020
-ms.openlocfilehash: 5cc909d79b3f5ea2b4c6a3da12bc7250addbe00c
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 316ada7700a5cf45ee90f515336039702bab48c0
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945834"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920717"
 ---
 # <a name="run-your-app-in-azure-app-service-directly-from-a-zip-package"></a>直接從 ZIP 套件在 Azure App Service 中執行您的應用程式
 
@@ -63,6 +63,33 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 如果您將具有相同名稱的更新套件發行至 Blob 儲存體，則需要重新開機應用程式，以便將更新的封裝載入 App Service。
 
+### <a name="use-key-vault-references"></a>使用 Key Vault 參考
+
+為了增加安全性，您可以搭配外部 URL 使用 Key Vault 參考。 這會讓 URL 保持待用加密，並可讓您利用 Key Vault 進行秘密管理和輪替。 建議使用 Azure Blob 儲存體，讓您可以輕鬆地旋轉相關聯的 SAS 金鑰。 Azure Blob 儲存體會在待用時加密，當您的應用程式未部署在 App Service 上時，可讓您的應用程式資料保持安全。
+
+1. 建立 Azure 金鑰保存庫。
+
+    ```azurecli
+    az keyvault create --name "Contoso-Vault" --resource-group <group-name> --location eastus
+    ```
+
+1. 在 Key Vault 中，將您的外部 URL 新增為密碼。
+
+    ```azurecli
+    az keyvault secret set --vault-name "Contoso-Vault" --name "external-url" --value "<insert-your-URL>"
+    ```
+
+1. 建立 `WEBSITE_RUN_FROM_PACKAGE` 應用程式設定，並將值設定為外部 URL 的 Key Vault 參考。
+
+    ```azurecli
+    az webapp config appsettings set --settings WEBSITE_RUN_FROM_PACKAGE="@Microsoft.KeyVault(SecretUri=https://Contoso-Vault.vault.azure.net/secrets/external-url/<secret-version>"
+    ```
+
+如需詳細資訊，請參閱下列文章。
+
+- [App Service 的 Key Vault 參考](app-service-key-vault-references.md)
+- [待用資料的 Azure 儲存體加密](../storage/common/storage-service-encryption.md)
+
 ## <a name="troubleshooting"></a>疑難排解
 
 - 直接從封裝執行會使 `wwwroot` 成為唯讀狀態。 如果您的應用程式嘗試將檔案寫入此目錄，將會收到錯誤。
@@ -70,7 +97,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 - 這項功能與[本機](overview-local-cache.md)快取不相容。
 - 若要改善冷啟動效能，請使用本機 Zip 選項（`WEBSITE_RUN_FROM_PACKAGE`= 1）。
 
-## <a name="more-resources"></a>更多資源
+## <a name="more-resources"></a>其他資源
 
 - [Azure App Service 的持續部署](deploy-continuous-deployment.md)
 - [使用 ZIP 或 WAR 檔案部署程式碼](deploy-zip.md)

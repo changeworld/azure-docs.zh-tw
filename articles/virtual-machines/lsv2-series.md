@@ -2,17 +2,17 @@
 title: Lsv2 系列-Azure 虛擬機器
 description: Lsv2 系列 Vm 的規格。
 services: virtual-machines
-author: jonbeck7
+author: sasha-melamed
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: b10433190ccc7703938bed2a75a5d816f073295e
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 103e19d6e299956b5ee1ad45b577e25f9f2de1c4
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587255"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164027"
 ---
 # <a name="lsv2-series"></a>Lsv2 系列
 
@@ -30,6 +30,10 @@ ACU：150-175
 進階儲存體：支援
 
 進階儲存體快取：不支援
+
+即時移轉：不支援
+
+記憶體保留更新：不支援
 
 | 大小 | vCPU | 記憶體 (GiB) | 暫存磁碟<sup>1</sup> (GiB) | NVMe 磁碟<sup>2</sup> | NVMe 磁片輸送量<sup>3</sup> （讀取 IOPS/MBps） | 最大未快取的資料磁片輸送量（IOPs/MBps）<sup>4</sup> | 資料磁碟數上限 | 最大 NIC/預期的網路頻寬 (Mbps) |
 |---|---|---|---|---|---|---|---|---|

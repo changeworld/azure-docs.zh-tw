@@ -12,19 +12,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 14cd43f7bd7965b755eca14e5914c64e2ec8e044
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7bc2c0f472a03c3f069a889c360bea9017a780f2
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981298"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918201"
 ---
 #  <a name="cannot-rdp-to-a-vm-because-the-vm-boots-into-safe-mode"></a>因為 VM 開機到安全模式而無法連線到 VM
 
 此文章說明如何解決因為 VM 設定為開機到安全模式而無法連線到 Azure Windows 虛擬機器 (VM) 的問題進行疑難排解。
 
-> [!NOTE]
-> Azure 建立和處理資源的部署模型有二種： [資源管理員和傳統](../../azure-resource-manager/management/deployment-models.md)。 本文說明如何使用 Resource Manager 部署模型，我們建議將它用於新部署，而非用於傳統部署模型。
 
 ## <a name="symptoms"></a>徵狀
 
@@ -37,7 +35,7 @@ ms.locfileid: "75981298"
 在安全模式中，RDP 服務無法使用。 當 VM 開機到安全模式時，只會載入基本系統程式與服務。 這適用於兩個不同版本的安全模式，亦即「安全模式 (基本)」與「安全模式 (含網路功能)」。
 
 
-## <a name="solution"></a>解決方案
+## <a name="solution"></a>解決方法
 
 在遵循下列步驟之前，請擷取受影響虛擬機器作業系統磁碟的快照集作為備份。 如需詳細資訊，請參閱[擷取磁碟快照集](../windows/snapshot-copy-managed-disk.md)。
 

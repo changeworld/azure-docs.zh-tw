@@ -9,18 +9,23 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: 114a460b3db67af278f813de2e7a18d571cf3c28
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: e7caacf23cb489da6f9f85748ae839bc4babff8e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77613431"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917300"
 ---
 # <a name="migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>將 Azure AD Domain Services 從傳統虛擬網路模型遷移至 Resource Manager
 
 Azure Active Directory Domain Services （AD DS）針對目前使用傳統虛擬網路模型的客戶，支援一次移動至 Resource Manager 虛擬網路模型。 使用 Resource Manager 部署模型 Azure AD DS 受控網域提供額外的功能，例如更細緻的密碼原則、audit 記錄和帳戶鎖定保護。
 
 本文概述遷移的優點和考慮，然後是成功遷移現有 Azure AD DS 實例的必要步驟。
+
+> [!NOTE]
+> 在2017中，Azure AD Domain Services 變成可供 Azure Resource Manager 網路中的主機使用。 之後，我們就可以使用 Azure Resource Manager 的現代化功能來建立更安全的服務。 由於 Azure Resource Manager 部署完全取代傳統部署，Azure AD DS 傳統虛擬網路部署將于2023年3月1日淘汰。
+>
+> 如需詳細資訊，請參閱[官方淘汰通知](https://azure.microsoft.com/updates/we-are-retiring-azure-ad-domain-services-classic-vnet-support-on-march-1-2023/)
 
 ## <a name="overview-of-the-migration-process"></a>遷移程式的總覽
 

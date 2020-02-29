@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: d88d5ecf8be3fadb36239b75d476a13abf39cbf7
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: f9567238e4bb025fad41e7db33613a63d2fc25dd
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77659708"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77911758"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 上第2代 Vm 的支援
 
@@ -33,18 +33,18 @@ ms.locfileid: "77659708"
 Azure 中的所有 VM 大小都支援第1代 Vm （Mv2 系列 Vm 除外）。 Azure 現在為下列選取的 VM 系列提供第2代支援：
 
 * [B 系列](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable)
-* [DC 系列](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dc-series)
-* [Dsv2 系列](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv2-series)和[Dsv3 系列](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv3-series-1)
-* [Esv3 系列](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#esv3-series)
-* [Fsv2 系列](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-compute#fsv2-series-1)
+* [DC 系列](../dcv2-series.md)
+* [DSv2 系列](../dv2-dsv2-series.md)和[Dsv3 系列](../dv3-dsv3-series.md)
+* [Esv3 系列](../ev3-esv3-series.md)
+* [Fsv2 系列](../fsv2-series.md)
 * [GS 系列](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#gs-series)
-* [HB 系列](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#hb-series)
-* [HC 系列](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#hc-series)
-* [Ls 系列](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#ls-series)和[Lsv2 系列](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-storage#lsv2-series)
-* [Mv2 系列](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#mv2-series)
-* [NCv2 系列](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#ncv2-series)和[NCv3 系列](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#ncv3-series)
-* [ND 系列](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#nd-series)
-* [NVv3 系列](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#nvv3-series--1)
+* [HB 系列](../hb-series.md)
+* [HC 系列](../hc-series.md)
+* [Ls 系列](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#ls-series)和[Lsv2 系列](../lsv2-series.md)
+* [Mv2 系列](../mv2-series.md)
+* [NCv2 系列](../ncv2-series.md)和[NCv3 系列](../ncv3-series.md)
+* [ND 系列](../nd-series.md)
+* [NVv3 系列](../nvv3-series.md)
 
 > [!NOTE]
 > 適用于 Mv2 系列 Vm 的第2代 VM 映射使用已正式運作，因為 Mv2 系列僅適用于第2代 VM 映射。 Mv2 系列 Vm 上不支援第1代 VM 映射。 
@@ -110,7 +110,7 @@ Azure 目前不支援內部部署 Hyper-v 針對第2代 Vm 所支援的部分功
 1. 選取 [建立資源]。
 1. 按一下左側 Azure Marketplace 的 **查看全部**。
 1. 選取支援 Gen2 的影像。
-1. 按一下 [建立]。
+1. 按一下 **[建立]** 。
 1. 在 [ **Advanced** ] 索引標籤的 [ **VM 世代**] 區段底下，選取 [ **Gen 2** ] 選項。
 1. 在 [**基本**] 索引標籤的 [**實例詳細資料**] 底下，移至 [**大小**]，然後開啟 [**選取 VM 大小**] 分頁。
 1. 選取[支援的第2代 VM](#generation-2-vm-sizes)。
@@ -154,10 +154,10 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
 ## <a name="frequently-asked-questions"></a>常見問題集
 
 * **第2代 Vm 可以在所有 Azure 區域中使用嗎？**  
-    是的。 但並非所有層[代 2 VM 大小](#generation-2-vm-sizes)都可以在每個區域中使用。 第2代 VM 的可用性取決於 VM 大小的可用性。
+    是。 但並非所有層[代 2 VM 大小](#generation-2-vm-sizes)都可以在每個區域中使用。 第2代 VM 的可用性取決於 VM 大小的可用性。
 
 * **第1代和第2代 Vm 之間是否有價格差異？**  
-   No。
+   否。
 
 * **我有來自內部部署第2代 VM 的 .vhd 檔案。我可以在 Azure 中使用該 .vhd 檔案來建立第2代 VM 嗎？**
   是，您可以將第2代 .vhd 檔案帶入 Azure，並使用它來建立第2代 VM。 請使用下列步驟來執行這項操作：
@@ -188,13 +188,13 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
   對於大於 2 TB 的 OS 磁片，您可能會看到警告。 此警告不適用於第2代 Vm。 不過，*不建議*大於 4 TB 的 OS 磁片大小。
 
 * **第2代 Vm 是否支援加速網路？**  
-    是的。 如需詳細資訊，請參閱[建立具有加速網路的 VM](../../virtual-network/create-vm-accelerated-networking-cli.md)。
+    是。 如需詳細資訊，請參閱[建立具有加速網路的 VM](../../virtual-network/create-vm-accelerated-networking-cli.md)。
 
 * **第2代支援 VHDX 嗎？**  
     否，第2代 Vm 僅支援 VHD。
 
 * **第2代 Vm 是否支援 Azure Ultra 磁碟儲存體？**  
-    是的。
+    是。
 
 * **我可以將 VM 從第1代遷移到第2代嗎？**  
     否，您無法在建立 VM 之後變更其產生。 如果您需要在 VM 層代之間切換，請建立不同世代的新 VM。

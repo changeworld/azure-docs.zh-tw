@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 09/01/2019
-ms.openlocfilehash: 4340ee4ed1edda8590726151e07eec45c0751ed6
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 6ba53793e57be67e2954af870dfa4248fca465ec
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152256"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912200"
 ---
 # <a name="feature-hashing-module-reference"></a>特徵雜湊模組參考
 
@@ -59,7 +59,7 @@ ms.locfileid: "77152256"
 
 例如，在雜湊之後，功能資料行看起來可能像這樣：
 
-|Rating|雜湊特徵 1|雜湊功能2|雜湊功能3|
+|評等|雜湊特徵 1|雜湊功能2|雜湊功能3|
 |-----|-----|-----|-----|
 |4|1|1|0|
 |5|0|0|0|
@@ -111,7 +111,7 @@ ms.locfileid: "77152256"
 
 建立已轉換的資料集之後，您可以使用它做為「定型模型」模組的輸入。
  
-### <a name="best-practices"></a>最佳作法
+## <a name="best-practices"></a>最佳作法
 
 下列最佳作法可協助您充分運用功能雜湊模組：
 

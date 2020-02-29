@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/27/2019
 ms.author: memildin
-ms.openlocfilehash: 5c199d074a6655ad14a0c66925e4302f70424970
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 834a097eb77cc7de2d0a3643bf1499ff7517ddb0
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77615993"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912268"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>管理和回應 Azure 資訊安全中心中的安全性警示
 
@@ -67,7 +67,7 @@ ms.locfileid: "77615993"
 
 1. 資訊安全中心建議的補救步驟會根據安全性警示而有所不同。 針對每個警示遵循這些步驟。 
 
-    在某些情況下，為了減輕威脅偵測警示，您可能必須使用其他 Azure 控制項或服務來執行建議的補救措施。 
+    在某些情況下，為了減輕安全性警示，您可能必須使用其他 Azure 控制項或服務來執行建議的補救措施。 
 
     下列主題會根據資源類型，引導您完成不同的警示：
     

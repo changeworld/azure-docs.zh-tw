@@ -3,12 +3,12 @@ title: 從封裝執行您的 Azure Functions
 description: 讓 Azure Functions 執行階段藉由掛接部署套件檔案 (內含函式應用程式的專案檔) 來執行函式。
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: f5d3465e0899f7e5eab213bdb6234313128b7ec8
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a3e11a7c4f3fd91df2fd9dd7a44f3922c4922585
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230345"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921108"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>從套件檔案執行 Azure Functions
 
@@ -57,6 +57,33 @@ ms.locfileid: "74230345"
 ## <a name="adding-the-website_run_from_package-setting"></a>新增 WEBSITE_RUN_FROM_PACKAGE 設定
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
+
+### <a name="use-key-vault-references"></a>使用 Key Vault 參考
+
+為了增加安全性，您可以搭配外部 URL 使用 Key Vault 參考。 這會讓 URL 保持待用加密，並可讓您利用 Key Vault 進行秘密管理和輪替。 建議使用 Azure Blob 儲存體，讓您可以輕鬆地旋轉相關聯的 SAS 金鑰。 Azure Blob 儲存體會在待用時加密，當您的應用程式未部署在 App Service 上時，可讓您的應用程式資料保持安全。
+
+1. 建立 Azure 金鑰保存庫。
+
+    ```azurecli
+    az keyvault create --name "Contoso-Vault" --resource-group <group-name> --location eastus
+    ```
+
+1. 在 Key Vault 中，將您的外部 URL 新增為密碼。
+
+    ```azurecli
+    az keyvault secret set --vault-name "Contoso-Vault" --name "external-url" --value "<insert-your-URL>"
+    ```
+
+1. 建立 `WEBSITE_RUN_FROM_PACKAGE` 應用程式設定，並將值設定為外部 URL 的 Key Vault 參考。
+
+    ```azurecli
+    az webapp config appsettings set --settings WEBSITE_RUN_FROM_PACKAGE="@Microsoft.KeyVault(SecretUri=https://Contoso-Vault.vault.azure.net/secrets/external-url/<secret-version>"
+    ```
+
+如需詳細資訊，請參閱下列文章。
+
+- [App Service 的 Key Vault 參考](../app-service/app-service-key-vault-references.md)
+- [待用資料的 Azure 儲存體加密](../storage/common/storage-service-encryption.md)
 
 ## <a name="troubleshooting"></a>疑難排解
 

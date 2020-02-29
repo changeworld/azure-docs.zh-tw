@@ -1,32 +1,32 @@
 ---
 title: 搭配 Azure 虛擬機器擴展集使用自訂相應縮小原則
 description: 瞭解如何搭配使用自動調整設定來管理實例計數的 Azure 虛擬機器擴展集，使用自訂的向外延展原則
-author: avverma
+services: virtual-machine-scale-sets
+author: avirishuv
+manager: vashan
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm
 ms.topic: conceptual
-ms.date: 10/11/2019
+ms.date: 02/26/2020
 ms.author: avverma
-ms.openlocfilehash: 8e51ebab36d75d1c9512446ee0370f7359a72551
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: ffcdaf76bdd08ee5505ddbeff6a6698e231b6171
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271773"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919833"
 ---
-# <a name="preview-use-custom-scale-in-policies-with-azure-virtual-machine-scale-sets"></a>預覽：使用自訂相應縮小原則搭配 Azure 虛擬機器擴展集
+# <a name="use-custom-scale-in-policies-with-azure-virtual-machine-scale-sets"></a>搭配 Azure 虛擬機器擴展集使用自訂相應縮小原則
 
-虛擬機器擴展集部署可以根據度量陣列進行相應放大或相應縮小，包括平臺和使用者定義的自訂計量。 向外延展會根據擴展集模型來建立新的虛擬機器時，相應縮小會影響執行中的虛擬機器，而這些機器在擴展集工作負載演變時可能會有不同的設定和/或功能。 
+虛擬機器擴展集部署可以根據度量陣列進行相應放大或相應縮小，包括平臺和使用者定義的自訂計量。 向外延展會根據擴展集模型來建立新的虛擬機器，相應縮小會影響執行中的虛擬機器，而當擴展集工作負載演變時，可能會有不同的設定和/或功能。 
 
-相應縮小原則功能可讓使用者設定相應縮小虛擬機器的順序。 預覽引進三個相應縮小設定： 
+相應縮小原則功能可讓使用者藉由三個相應縮小設定來設定虛擬機器的相應縮小順序： 
 
 1. 預設
 2. NewestVM
 3. OldestVM
-
-***此預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。***
 
 ### <a name="default-scale-in-policy"></a>預設相應縮小原則
 
@@ -38,7 +38,7 @@ ms.locfileid: "76271773"
 
 如果使用者只想要遵循預設排序，則不需要指定相應縮小原則。
 
-請注意，在可用性區域或容錯網域之間的平衡，並不會將實例移到可用性區域或容錯網域。 藉由從不平衡的可用性區域或容錯網域中刪除虛擬機器，即可達成平衡，直到虛擬機器的散發達到平衡為止。
+請注意，在可用性區域或容錯網域之間的平衡，並不會將實例移到可用性區域或容錯網域。 藉由從不平衡的可用性區域或容錯網域刪除虛擬機器，直到虛擬機器的散發達到平衡，才能達成平衡。
 
 ### <a name="newestvm-scale-in-policy"></a>NewestVM 相應縮小原則
 
@@ -53,6 +53,17 @@ ms.locfileid: "76271773"
 相應縮小原則會定義在虛擬機器擴展集模型中。 如上述各節所述，使用 ' NewestVM ' 和 ' OldestVM ' 原則時，需要相應縮小原則定義。 如果在擴展集模型上找不到相應縮小原則定義，則虛擬機器擴展集會自動使用「預設」相應縮小原則。 
 
 您可以利用下列方式，在虛擬機器擴展集模型上定義相應縮小原則：
+
+### <a name="azure-portal"></a>Azure 入口網站
+ 
+下列步驟會在建立新的擴展集時，定義相應縮小原則。 
+ 
+1. 移至 [**虛擬機器擴展集**]。
+1. 選取 [ **+ 新增**] 以建立新的擴展集。
+1. 移至 [**調整**] 索引標籤。 
+1. 找出 [相應**縮小原則**] 區段。
+1. 從下拉式選單中選取相應縮小原則。
+1. 當您完成建立新的擴展集時，請選取 [**審核] + [建立**] 按鈕。
 
 ### <a name="using-api"></a>使用 API
 
@@ -70,6 +81,33 @@ https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<myRG>/provid
         } 
     }    
 } 
+```
+### <a name="azure-powershell"></a>Azure PowerShell
+
+建立資源群組，然後建立新的擴展集，並將相應縮小原則設定為*OldestVM*。
+
+```azurepowershell-interactive
+New-AzResourceGroup -ResourceGroupName "myResourceGroup" -Location "<VMSS location>"
+New-AzVmss `
+  -ResourceGroupName "myResourceGroup" `
+  -Location "<VMSS location>" `
+  -VMScaleSetName "myScaleSet" `
+  -ScaleInPolicy “OldestVM”
+```
+
+### <a name="azure-cli-20"></a>Azure CLI 2.0
+
+下列範例會在建立新的擴展集時新增相應縮小原則。 首先，建立資源群組，然後建立新的擴展集，並將相應縮小原則設定為*OldestVM*。 
+
+```azurecli-interactive
+az group create --name <myResourceGroup> --location <VMSSLocation>
+az vmss create \
+  --resource-group <myResourceGroup> \
+  --name <myVMScaleSet> \
+  --image UbuntuLTS \
+  --admin-username <azureuser> \
+  --generate-ssh-keys \
+  --scale-in-policy OldestVM
 ```
 
 ### <a name="using-template"></a>使用範本
@@ -94,6 +132,15 @@ https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<myRG>/provid
 
 修改相應縮小原則的步驟，與套用相應縮小原則的程式相同。 例如，如果在上述範例中，您想要將原則從 ' OldestVM ' 變更為 ' NewestVM '，您可以透過下列方式來執行此動作：
 
+### <a name="azure-portal"></a>Azure 入口網站
+
+您可以透過 Azure 入口網站修改現有擴展集的相應縮小原則。 
+ 
+1. 在現有的虛擬機器擴展集中，從左側功能表中選取 [**調整規模**]。
+1. 選取 [相應**縮小原則**] 索引標籤。
+1. 從下拉式選單中選取相應縮小原則。
+1. 當您完成時，請選取 [**儲存**]。 
+
 ### <a name="using-api"></a>使用 API
 
 使用 API 2019-03-01，在虛擬機器擴展集上執行 PUT：
@@ -110,6 +157,27 @@ https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<myRG>/provid
         } 
     }    
 }
+```
+### <a name="azure-powershell"></a>Azure PowerShell
+
+更新現有擴展集的相應縮小原則：
+
+```azurepowershell-interactive
+Update-AzVmss `
+ -ResourceGroupName "myResourceGroup" `
+ -VMScaleSetName "myScaleSet" `
+ -ScaleInPolicy “OldestVM”
+```
+
+### <a name="azure-cli-20"></a>Azure CLI 2.0
+
+以下是更新現有擴展集之相應縮小原則的範例： 
+
+```azurecli-interactive
+az vmss update \  
+  --resource-group <myResourceGroup> \
+  --name <myVMScaleSet> \
+  --scale-in-policy OldestVM
 ```
 
 ### <a name="using-template"></a>使用範本
@@ -141,7 +209,7 @@ https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<myRG>/provid
 
 ### <a name="oldestvm-scale-in-policy"></a>OldestVM 相應縮小原則
 
-| 活動                 | 每區域1中的實例識別碼  | 區域2中的實例識別碼  | 區域3中的實例識別碼  | 相應縮小選取範圍                                                                                                               |
+| 事件                 | 每區域1中的實例識別碼  | 區域2中的實例識別碼  | 區域3中的實例識別碼  | 相應縮小選取範圍                                                                                                               |
 |-----------------------|------------------------|------------------------|------------------------|----------------------------------------------------------------------------------------------------------------------------------|
 | Initial               | 3、4、5、10            | 2、6、9、11            | 1、7、8                |                                                                                                                                  |
 | 相應縮小              | 3、4、5、10            | ***2***、6、9、11      | 1、7、8                | 在區域1和2之間選擇，即使區域3具有最舊的 VM 也一樣。 從區域2刪除 VM2，因為它是該區域中最舊的 VM。   |
@@ -155,7 +223,7 @@ https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<myRG>/provid
 
 ### <a name="newestvm-scale-in-policy"></a>NewestVM 相應縮小原則
 
-| 活動                 | 每區域1中的實例識別碼  | 區域2中的實例識別碼  | 區域3中的實例識別碼  | 相應縮小選取範圍                                                                                                               |
+| 事件                 | 每區域1中的實例識別碼  | 區域2中的實例識別碼  | 區域3中的實例識別碼  | 相應縮小選取範圍                                                                                                               |
 |-----------------------|------------------------|------------------------|------------------------|----------------------------------------------------------------------------------------------------------------------------------|
 | Initial               | 3、4、5、10            | 2、6、9、11            | 1、7、8                |                                                                                                                                  |
 | 相應縮小              | 3、4、5、10            | 2、6、9、 ***11***      | 1、7、8                | 選擇 [區域 1] 和 [2]。 從區域2刪除 VM11，因為這是跨兩個區域的最新 VM。                                |
@@ -169,7 +237,7 @@ https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<myRG>/provid
 
 ## <a name="troubleshoot"></a>疑難排解
 
-1. 如果您收到「BadRequest」錯誤訊息，指出「找不到 ' properties ' 類型物件上的成員 ' scaleInPolicy '」，請檢查用於虛擬機器擴展集的 API 版本，但無法啟用 scaleInPolicy。 此預覽需要 API 版本2019-03-01 或更高版本。
+1. 如果您收到「BadRequest」錯誤訊息，指出「找不到 ' properties ' 類型物件上的成員 ' scaleInPolicy '」，請檢查用於虛擬機器擴展集的 API 版本，但無法啟用 scaleInPolicy。 這項功能需要 API 2019-03-01 版或更新版本。
 
 2. 選擇錯誤的 Vm 以進行相應縮小，請參閱上述範例。 如果您的虛擬機器擴展集是區域部署，則會先將相應縮小原則套用至不平衡區域，然後在擴展集上進列區域平衡。 如果相應縮小的順序與上述範例不一致，請使用虛擬機器擴展集小組來引發查詢，以進行疑難排解。
 

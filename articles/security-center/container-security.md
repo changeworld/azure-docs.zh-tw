@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: 62728f5b66825eb6698e37bb7ad3adbad831b465
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: cd9907d041562d23bc487de319a17d36b68db6f3
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77615339"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916112"
 ---
 # <a name="container-security-in-security-center"></a>資訊安全中心中的容器安全性
 
@@ -61,9 +61,9 @@ AKS 提供安全性控制和叢集安全性狀態的可見度。 資訊安全中
 
 如需有關這項功能可能會出現之相關資訊安全中心建議的詳細資訊，請參閱建議參考資料表的[容器一節](recommendations-reference.md#recs-containers)。
 
-## <a name="run-time-protection---real-time-threat-detection"></a>執行時間保護-即時威脅偵測
+## <a name="run-time-protection---real-time-threat-protection"></a>執行時間保護-即時威脅防護
 
-資訊安全中心為您的容器化環境提供即時威脅偵測，並產生可疑活動的警示。 您可以使用這項資訊來快速修復安全性問題，並改善您容器的安全性。
+資訊安全中心為您的容器化環境提供即時威脅防護，並產生可疑活動的警示。 您可以使用這項資訊來快速修復安全性問題，並改善您容器的安全性。
 
 我們偵測到主機和 AKS 叢集層級的威脅。 如需完整詳細資料，請參閱[Azure 容器的威脅防護](threat-protection.md#azure-containers)。
 

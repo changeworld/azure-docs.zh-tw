@@ -16,12 +16,12 @@ ms.date: 12/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f7bc881cee362103fc611cbf8a094e07ad50699
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: f5d63577cbdbdf18cb17618bdb5c9e3b5de0e44a
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77499034"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78162261"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management 中 Azure AD 角色的管理功能
 
@@ -62,7 +62,7 @@ Privileged Identity Management 中 Azure AD 角色的管理體驗已更新，以
 
 ## <a name="powershell-change"></a>PowerShell 變更
 
-針對使用適用于 Azure AD 角色之 Privileged Identity Management PowerShell 模組的客戶，PowerShell 將會停止使用更新。 若要取代先前的 Cmdlet，您必須使用 Azure AD Preview PowerShell 模組內的 Privileged Identity Management Cmdlet。 從[PowerShell 資源庫](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.17)安裝 Azure AD PowerShell 模組。 Cmdlet 是以圖形 API 為基礎。
+針對使用適用于 Azure AD 角色之 Privileged Identity Management PowerShell 模組的客戶，PowerShell 將會停止使用更新。 若要取代先前的 Cmdlet，您必須使用 Azure AD Preview PowerShell 模組內的 Privileged Identity Management Cmdlet。 從[PowerShell 資源庫](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.17)安裝 Azure AD PowerShell 模組。 您現在可以[在此 PowerShell 模組中閱讀 PIM 作業的檔和範例](powershell-for-azure-ad-roles.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

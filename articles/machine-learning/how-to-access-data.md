@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: sihhu
-author: MayMSFT
+ms.author: keli19
+author: likebupt
 ms.reviewer: nibaccam
-ms.date: 01/15/2020
+ms.date: 02/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: b31d0237f04ef535fa6528d5b3a04e5ee7256e22
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 1db3679053edbbc2874c456b1c8db4a4f8e0dabd
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623683"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164862"
 ---
 # <a name="access-data-in-azure-storage-services"></a>存取 Azure 儲存體服務中的資料
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -186,6 +186,10 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
 <a name="get"></a>
 
 ## <a name="get-datastores-from-your-workspace"></a>從您的工作區取得資料存放區
+
+> [!IMPORTANT]
+> 當您在設計工具首頁中開啟範例時，Azure Machine Learning 設計工具（預覽）將會自動建立名為**azureml_globaldatasets**的資料存放區。 此資料存放區僅包含範例資料集。 請**不要使用此**資料存放區進行任何機密資料存取！
+> 為設計工具範例資料集 ![自動建立的資料存放區](media/how-to-access-data/datastore-designer-sample.png)
 
 若要取得在目前工作區中註冊的特定資料存放區，請在 `Datastore` 類別上使用[`get()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#get-workspace--datastore-name-)靜態方法：
 

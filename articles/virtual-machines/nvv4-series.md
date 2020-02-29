@@ -2,17 +2,17 @@
 title: NVv4 系列-Azure 虛擬機器
 description: NVv4 系列 Vm 的規格。
 services: virtual-machines
-author: jonbeck7
+author: vikancha
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 2afec4dc89c8d8892356888ec3404d36ba929d23
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: ccafe6f317ff50684922fd4409beb42214c18858
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669636"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161851"
 ---
 # <a name="nvv4-series-preview"></a>NVv4 系列（預覽）
 
@@ -24,6 +24,10 @@ NVv4 系列虛擬機器是由[Amd Radeon 直覺 MI25](https://www.amd.com/en/pro
 進階儲存體：支援
 
 進階儲存體快取：支援
+
+即時移轉：不支援
+
+記憶體保留更新：不支援
 
 | 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | GPU | GPU 記憶體：GiB | 最大資料磁碟 | 最大 NIC |
 | --- | --- | --- | --- | --- | --- | --- | --- |

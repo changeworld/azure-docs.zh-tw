@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/27/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ee32b13820cb50fc1649672b78b34e7e293d65b5
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: b905591266b90e5bba83e7c74b27e7f6b3cab610
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849080"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912540"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的單一登入工作階段管理
 
@@ -35,65 +35,124 @@ Azure AD B2C 已定義許多可使用的 SSO 工作階段提供者：
 * ExternalLoginSSOSessionProvider
 * SamlSSOSessionProvider
 
-SSO 管理類別是使用技術設定檔的 `<UseTechnicalProfileForSessionManagement ReferenceId=“{ID}" />` 項目所指定。
+SSO 管理類別是使用技術設定檔的 `<UseTechnicalProfileForSessionManagement ReferenceId="{ID}" />` 項目所指定。
 
-## <a name="noopssosessionprovider"></a>NoopSSOSessionProvider
+## <a name="input-claims"></a>輸入宣告
 
-顧名思議，此提供者不會執行任何作業。 此提供者可以用於隱藏特定技術設定檔的 SSO 行為。
+`InputClaims` 元素是空的或不存在。 
 
-## <a name="defaultssosessionprovider"></a>DefaultSSOSessionProvider
+## <a name="persisted-claims"></a>保存的宣告
 
-此提供者可以用於儲存工作階段中的宣告。 此提供者通常是在用於管理本機帳戶的技術設定檔中進行參照。 使用 DefaultSSOSessionProvider 在工作階段中儲存宣告時，您必須確定必須傳回給應用程式、或前置條件在後續步驟中所使用的任何宣告都會儲存在工作階段中，或是藉由目錄中的使用者設定檔讀取進行增強。 這可確保您的驗證歷程不會因遺失宣告而失敗。
+需要傳回給應用程式或後續步驟中的前置條件所使用的宣告，應該儲存在會話中，或藉由從目錄中的使用者設定檔讀取來增加。 使用持續性宣告可確保您的驗證旅程在遺失的宣告時不會失敗。 若要在工作階段中新增宣告，請使用技術設定檔的 `<PersistedClaims>` 項目。 使用提供者重新擴展工作階段時，會將持續性的宣告新增至宣告包。 
+
+## <a name="output-claims"></a>輸出宣告
+
+`<OutputClaims>` 是用來從會話中抓取宣告。
+
+## <a name="session-providers"></a>會話提供者
+
+### <a name="noopssosessionprovider"></a>NoopSSOSessionProvider
+
+顧名思議，此提供者不會執行任何作業。 此提供者可以用於隱藏特定技術設定檔的 SSO 行為。 下列 `SM-Noop` 技術設定檔包含在[自訂原則入門套件](custom-policy-get-started.md#custom-policy-starter-pack)中。  
+
+```XML
+<TechnicalProfile Id="SM-Noop">
+  <DisplayName>Noop Session Management Provider</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.NoopSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+</TechnicalProfile>
+```
+
+### <a name="defaultssosessionprovider"></a>DefaultSSOSessionProvider
+
+此提供者可以用於儲存工作階段中的宣告。 此提供者通常是在用於管理本機帳戶的技術設定檔中進行參照。 下列 `SM-AAD` 技術設定檔包含在[自訂原則入門套件](custom-policy-get-started.md#custom-policy-starter-pack)中。 
 
 ```XML
 <TechnicalProfile Id="SM-AAD">
-    <DisplayName>Session Mananagement Provider</DisplayName>
-    <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.DefaultSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-    <PersistedClaims>
-        <PersistedClaim ClaimTypeReferenceId="objectId" />
-        <PersistedClaim ClaimTypeReferenceId="newUser" />
-        <PersistedClaim ClaimTypeReferenceId="executed-SelfAsserted-Input" />
-    </PersistedClaims>
-    <OutputClaims>
-        <OutputClaim ClaimTypeReferenceId="objectIdFromSession" DefaultValue="true" />
-    </OutputClaims>
+  <DisplayName>Session Mananagement Provider</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.DefaultSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <PersistedClaims>
+    <PersistedClaim ClaimTypeReferenceId="objectId" />
+    <PersistedClaim ClaimTypeReferenceId="signInName" />
+    <PersistedClaim ClaimTypeReferenceId="authenticationSource" />
+    <PersistedClaim ClaimTypeReferenceId="identityProvider" />
+    <PersistedClaim ClaimTypeReferenceId="newUser" />
+    <PersistedClaim ClaimTypeReferenceId="executed-SelfAsserted-Input" />
+  </PersistedClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="objectIdFromSession" DefaultValue="true"/>
+  </OutputClaims>
 </TechnicalProfile>
 ```
 
-若要在工作階段中新增宣告，請使用技術設定檔的 `<PersistedClaims>` 項目。 使用提供者重新擴展工作階段時，會將持續性的宣告新增至宣告包。 `<OutputClaims>` 用來從工作階段中擷取宣告。
+下列 `SM-MFA` 技術設定檔包含在[自訂原則入門套件](custom-policy-get-started.md#custom-policy-starter-pack)`SocialAndLocalAccountsWithMfa`中。 此技術設定檔會管理多因素驗證會話。 
 
-## <a name="externalloginssosessionprovider"></a>ExternalLoginSSOSessionProvider
+```XML
+<TechnicalProfile Id="SM-MFA">
+  <DisplayName>Session Mananagement Provider</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.DefaultSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <PersistedClaims>
+    <PersistedClaim ClaimTypeReferenceId="Verified.strongAuthenticationPhoneNumber" />
+  </PersistedClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="isActiveMFASession" DefaultValue="true"/>
+  </OutputClaims>
+</TechnicalProfile>
+```
 
-此提供者用來隱藏「選擇身分識別提供者」畫面。 它通常是在針對外部身分識別提供者 (例如 Facebook) 所設定的技術設定檔中所參照。
+### <a name="externalloginssosessionprovider"></a>ExternalLoginSSOSessionProvider
+
+此提供者是用來隱藏 [選擇識別提供者] 畫面。 它通常是在針對外部身分識別提供者 (例如 Facebook) 所設定的技術設定檔中所參照。 下列 `SM-SocialLogin` 技術設定檔包含在[自訂原則入門套件](custom-policy-get-started.md#custom-policy-starter-pack)中。
 
 ```XML
 <TechnicalProfile Id="SM-SocialLogin">
-    <DisplayName>Session Mananagement Provider</DisplayName>
-    <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.ExternalLoginSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <DisplayName>Session Mananagement Provider</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.ExternalLoginSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <Metadata>
+    <Item Key="AlwaysFetchClaimsFromProvider">true</Item>
+  </Metadata>
+  <PersistedClaims>
+    <PersistedClaim ClaimTypeReferenceId="AlternativeSecurityId" />
+  </PersistedClaims>
 </TechnicalProfile>
 ```
 
-## <a name="samlssosessionprovider"></a>SamlSSOSessionProvider
+#### <a name="metadata"></a>中繼資料
+        
+| 屬性 | 必要 | 描述|
+| --- | --- | --- |
+| AlwaysFetchClaimsFromProvider | 否 | 目前未使用，可以忽略。 |
 
-此提供者用於管理應用程式之間的 Azure AD B2C SAML 工作階段，以及外部 SAML 身分識別提供者。
+### <a name="samlssosessionprovider"></a>SamlSSOSessionProvider
+
+此提供者是用來管理信賴憑證者應用程式或同盟 SAML 識別提供者之間的 Azure AD B2C SAML 會話。 使用 SSO 提供者來儲存 SAML 識別提供者會話時，`IncludeSessionIndex` 和 `RegisterServiceProviders` 必須設定為 [`false`]。 [SAML 技術設定檔](saml-technical-profile.md)會使用下列 `SM-Saml-idp` 技術設定檔。
 
 ```XML
-<TechnicalProfile Id="SM-Reflector-SAML">
-    <DisplayName>Session Management Provider</DisplayName>
-    <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-    <Metadata>
-        <Item Key="IncludeSessionIndex">false</Item>
-        <Item Key="RegisterServiceProviders">false</Item>
-    </Metadata>
+<TechnicalProfile Id="SM-Saml-idp">
+  <DisplayName>Session Management Provider</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <Metadata>
+    <Item Key="IncludeSessionIndex">false</Item>
+    <Item Key="RegisterServiceProviders">false</Item>
+  </Metadata>
 </TechnicalProfile>
 ```
 
-技術設定檔中有兩個中繼資料項目：
+使用提供者來儲存 B2C SAML 會話時，`IncludeSessionIndex` 和 `RegisterServiceProviders` 必須設定為 [`true`]。 SAML 工作階段登出需要 `SessionIndex` 和 `NameID` 才能完成。
+ 
+[SAML 簽發者技術設定檔](connect-with-saml-service-providers.md)會使用下列 `SM-Saml-idp` 技術設定檔
 
-| 項目 | 預設值 | 可能的值 | 說明
-| --- | --- | --- | --- |
-| IncludeSessionIndex | true | true/false | 指出應該儲存工作階段索引的提供者。 |
-| RegisterServiceProviders | true | true/false | 指出提供者應該註冊所有已發行判斷提示的 SAML 服務提供者。 |
+```XML
+<TechnicalProfile Id="SM-Saml-sp">
+  <DisplayName>Session Management Provider</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+</TechnicalProfile>
+```
+#### <a name="metadata"></a>中繼資料
+        
+| 屬性 | 必要 | 描述|
+| --- | --- | --- |
+| IncludeSessionIndex | 否 | 指出應該儲存工作階段索引的提供者。 可能的值：`true` (預設) 或 `false`。|
+| RegisterServiceProviders | 否 | 指出提供者應該註冊所有已發行判斷提示的 SAML 服務提供者。 可能的值：`true` (預設) 或 `false`。|
 
-使用提供者來儲存 SAML 身分識別提供者工作階段時，上述項目應該都是 false。 使用提供者來儲存 B2C SAML 工作階段時，上述項目應該是 true，或是予以省略，因為預設值是 true。 SAML 工作階段登出需要 `SessionIndex` 和 `NameID` 才能完成。
+
 

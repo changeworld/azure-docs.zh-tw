@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 438143d3253f1cab1afb958a90f427dcba59a98e
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 8ea85b560f35c79b3d5066d794f587345810b5d0
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059244"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920853"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>在離線模式安裝 Azure 虛擬機器代理程式 
 
@@ -39,7 +39,7 @@ Azure 虛擬機器代理程式 (VM 代理程式) 提供有用的功能，例如�
 
 1. 取得受影響 VM 的 OS 磁片快照集、從快照集建立磁片，然後將磁片連結至疑難排解 VM。 如需詳細資訊，請參閱[使用 Azure 入口網站將 OS 磁片連接至復原 VM，以針對 WINDOWS VM 進行疑難排解](troubleshoot-recovery-disks-portal-windows.md)。 若為傳統 VM，請刪除 VM 並保留 OS 磁片，然後將 OS 磁片連結至疑難排解 VM。
 
-2.  連接至疑難排解 VM。 開啟 [電腦管理]  > [磁碟管理]。 確認 OS 磁碟在線上，且已指派磁碟分割的磁碟機代號。
+2.  連接至疑難排解 VM。 開啟 [電腦管理] > [磁碟管理]。 確認 OS 磁碟在線上，且已指派磁碟分割的磁碟機代號。
 
 ### <a name="step-2-modify-the-os-disk-to-install-the-azure-vm-agent"></a>步驟 2：修改 OS 磁碟以安裝 Azure VM 代理程式
 
@@ -105,6 +105,8 @@ Azure 虛擬機器代理程式 (VM 代理程式) 提供有用的功能，例如�
 如果您已使用資源管理員部署模型建立 VM，則作業已完成。
 
 ### <a name="use-the-provisionguestagent-property-for-classic-vms"></a>針對傳統 VM 使用 ProvisionGuestAgent 屬性
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 如果您使用傳統模型建立 VM，請使用 Azure PowerShell 模組來更新 **ProvisionGuestAgent** 屬性。 屬性會通知 Azure VM 已安裝 VM 代理程式。
 

@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 006e1fb3fcef1ebcd0e09dffb79149e75eec622a
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: f099546ced64bd911916164879cd533329761c66
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76713167"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914665"
 ---
-# <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>可供連接到 Azure Analysis Services 的用戶端程式庫
+# <a name="client-libraries-for-connecting-to-analysis-services"></a>用來連接到 Analysis Services 的用戶端程式庫
 
 用戶端程式庫是用戶端應用程式和工具連接到 Analysis Services 伺服器的必備條件。 適用于 Visual Studio 的 Microsoft 用戶端應用程式（如 Power BI Desktop、Excel、SQL Server Management Studio （SSMS）和 Analysis Services 專案延伸模組）會安裝這三個用戶端程式庫，並與一般應用程式更新一起更新。 在某些情況下，您可能需要安裝較新版本的用戶端程式庫。 自訂用戶端應用程式也需要安裝用戶端程式庫。
 

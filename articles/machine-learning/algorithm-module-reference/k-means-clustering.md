@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 11/19/2019
-ms.openlocfilehash: 6e2fa96584570e5837c4367c8be4701b7398fb0f
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/19/2020
+ms.openlocfilehash: 9606768288cc74afc24491149eb471944f45e2dc
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152205"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921159"
 ---
 # <a name="module-k-means-clustering"></a>模組： K-表示群集
 
@@ -107,11 +107,11 @@ K-表示是其中一個最簡單且最知名的*不受監督*學習演算法。 
   
     -   如果您將 [**建立定型模式]** 設定為 [**單一參數**]，請加入已加上標籤的資料集，並使用[訓練叢集模型](train-clustering-model.md)模組來定型模型。  
   
-### <a name="results"></a>結果
+## <a name="results"></a>結果
 
 在您完成模型的設定和定型之後，您會有一個可用於產生分數的模型。 不過，有多種方式可以定型模型，以及多種方式來查看和使用結果： 
 
-#### <a name="capture-a-snapshot-of-the-model-in-your-workspace"></a>在您的工作區中捕捉模型的快照集
+### <a name="capture-a-snapshot-of-the-model-in-your-workspace"></a>在您的工作區中捕捉模型的快照集
 
 如果您使用[訓練叢集模型](train-clustering-model.md)模組：
 
@@ -121,7 +121,7 @@ K-表示是其中一個最簡單且最知名的*不受監督*學習演算法。 
 
 儲存的模型代表您在儲存模型時的定型資料。 如果您稍後更新管線中使用的定型資料，它就不會更新已儲存的模型。 
 
-#### <a name="see-the-clustering-result-dataset"></a>查看群集結果資料集 
+### <a name="see-the-clustering-result-dataset"></a>查看群集結果資料集 
 
 如果您使用[訓練叢集模型](train-clustering-model.md)模組：
 
@@ -142,3 +142,7 @@ K-表示是其中一個最簡單且最知名的*不受監督*學習演算法。 
 -   建立多個模型、改變度量或逐一查看。  
   
 一般而言，使用群集模型時，任何指定的設定都可能會導致本機優化的叢集集。 換句話說，模型所傳回的叢集集只會符合目前的資料點，而無法歸納成其他資料。 如果您使用不同的初始設定，K 意指方法可能會發現不同、更上層的設定。 
+
+## <a name="next-steps"></a>後續步驟
+
+請參閱可用來 Azure Machine Learning 的[模組集合](module-reference.md)。 

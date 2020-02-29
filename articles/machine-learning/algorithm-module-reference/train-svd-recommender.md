@@ -8,17 +8,17 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: 075216cf7d67aa4d5a04f34a7ae3444a078b4c62
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.date: 02/22/2020
+ms.openlocfilehash: 1778ba543e070bbffbbc8579b280373d834492fd
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76313904"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920787"
 ---
 # <a name="train-svd-recommender"></a>訓練 SVD 推薦
 
-本文說明如何在 Azure Machine Learning 設計工具中使用 [定型 SVD 推薦] 模組。 使用此模組來根據單一值分解（SVD）演算法來定型建議模型。  
+本文說明如何在 Azure Machine Learning 設計工具（預覽）中使用 [定型 SVD 推薦] 模組。 使用此模組來根據單一值分解（SVD）演算法來定型建議模型。  
 
 [定型 SVD 推薦] 模組會讀取使用者-專案-評等三合一的資料集。 它會傳回定型的 SVD 推薦。 接著，您可以使用[計分 SVD 推薦](score-svd-recommender.md)模組，透過定型的模型來預測評等或產生建議。  
 
@@ -48,16 +48,13 @@ SVD 推薦會使用使用者的識別碼和專案，以及使用者提供給專�
 + 第二個數據行包含專案識別碼。
 + 第三個數據行包含使用者-專案組的評等。 評等值必須是數數值型別。  
 
-Azure Machine Learning 設計工具中的**餐廳分級**資料集（選取**已儲存的資料集**，然後**範例**）會示範預期的格式：
+Azure Machine Learning 設計工具中的**電影分級**資料集（[選取**資料集**] 和 [**範例**]）會示範預期的格式：
 
-|userID|placeID|rating|
-|------------|-------------|------------|
-|U1077|135085|2|
-|U1077|135038|2|
+![電影分級](media/module/movie-ratings-dataset.png)
 
-從這個範例中，您可以看到單一使用者已分級兩個不同的餐廳。 
+從這個範例中，您可以看到單一使用者已分級數個電影。 
 
-### <a name="train-the-model"></a>訓練模型
+### <a name="train-the-model"></a>將模型定型
 
 1.  將訓練 SVD 推薦模組新增至您在設計工具中的管線，並將其連接至定型資料。  
    

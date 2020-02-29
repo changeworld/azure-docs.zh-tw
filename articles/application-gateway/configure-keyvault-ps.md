@@ -6,18 +6,18 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 11/14/2019
+ms.date: 02/27/2020
 ms.author: victorh
-ms.openlocfilehash: 746e9f08a75ece18199d5a72bb532873be787f50
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 2f7eafc6fc1533bd837fae60dd3b9673f6f97aa8
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77592267"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913016"
 ---
 # <a name="configure-ssl-termination-with-key-vault-certificates-by-using-azure-powershell"></a>使用 Azure PowerShell 以 Key Vault 憑證設定 SSL 終止
 
-[Azure Key Vault](../key-vault/key-vault-overview.md)是平臺管理的秘密存放區，可讓您用來保護秘密、金鑰和 SSL 憑證。 Azure 應用程式閘道支援與 Key Vault 的整合（公開預覽），適用于附加至啟用 HTTPS 之接聽程式的伺服器憑證。 這項支援僅限於應用程式閘道的 v2 SKU。
+[Azure Key Vault](../key-vault/key-vault-overview.md)是平臺管理的秘密存放區，可讓您用來保護秘密、金鑰和 SSL 憑證。 Azure 應用程式閘道支援與 Key Vault 整合連接到已啟用 HTTPS 之接聽程式的伺服器憑證。 這種支援僅限於應用程式閘道 v2 SKU。
 
 如需詳細資訊，請參閱[使用 Key Vault 憑證的 SSL 終止](key-vault-certs.md)。
 

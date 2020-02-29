@@ -2,17 +2,17 @@
 title: NCv2 系列-Azure 虛擬機器
 description: NCv2 系列 Vm 的規格。
 services: virtual-machines
-author: jonbeck7
+author: vikancha
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 4ea199cdc75732ff3af730fa79530399e4372ebd
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: f4a382e422fd56e754d8014bfb4f0f0af1a3ec77
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661025"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163976"
 ---
 # <a name="ncv2-series"></a>NCv2 系列
 
@@ -23,6 +23,10 @@ NC24rs v2 組態提供低延遲且高輸送量網路介面，最適合用於緊�
 進階儲存體：支援
 
 進階儲存體快取：支援
+
+即時移轉：不支援
+
+記憶體保留更新：不支援
 
 > [!IMPORTANT]
 > 針對此 VM 系列，您訂用帳戶中的 vCPU （核心）配額一開始會在每個區域中設定為0。 在[可用區域](https://azure.microsoft.com/regions/services/)中，為此系列[要求增加 vCPU 配額](../azure-supportability/resource-manager-core-quotas-request.md)。

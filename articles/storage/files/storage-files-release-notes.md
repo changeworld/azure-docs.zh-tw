@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: d0e830aaca4f952f75c220b4f482ce831883b058
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 51b7b37466ae8a6988ee4bfa85a054fb42d23124
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905564"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920751"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure 檔案同步代理程式的版本資訊
 Azure 檔案同步可讓您將組織的檔案共用集中在「Azure 檔案服務」中，而不需要犧牲內部部署檔案伺服器的靈活度、效能及相容性。 您的 Windows Server 安裝會轉換成 Azure 檔案共用的快速快取。 您可以使用 Windows Server 上可用的任何通訊協定來從本機存取資料 (包括 SMB、NFS 和 FTPS)。 您可以視需要存取多個散佈於世界各地的快取。
@@ -25,19 +25,19 @@ Azure 檔案同步代理程式支援下列版本：
 
 | 里程碑 | 代理程式版本號碼 | 發行日期 | 狀態 |
 |----|----------------------|--------------|------------------|
-| 2019年12月更新彙總套件- [KB4522360](https://support.microsoft.com/help/4522360)| 9.1.0.0 | 2019 年 12 月 12 日 | 支援的 |
-| V9 版本- [KB4522359](https://support.microsoft.com/help/4522359)| 9.0.0.0 | 2019年12月2日 | 支援的 |
-| V8 版本- [KB4511224](https://support.microsoft.com/help/4511224)| 8.0.0.0 | 2019 年 10 月 8 日 | 支援的 |
-| 2019年7月更新彙總套件- [KB4490497](https://support.microsoft.com/help/4490497)| 7.2.0.0 | 2019 年 7 月 24 日 | 支援的 |
-| 2019年7月更新彙總套件- [KB4490496](https://support.microsoft.com/help/4490496)| 7.1.0.0 | 2019年7月12日 | 支援的 |
-| V7 版本- [KB4490495](https://support.microsoft.com/help/4490495)| 7.0.0.0 | 2019年6月19日 | 支援的 |
-| 2019年6月更新彙總套件- [KB4489739](https://support.microsoft.com/help/4489739)| 6.3.0.0 | 2019年6月27日 | 支援的 |
-| 2019年6月更新彙總套件- [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | 2019年6月13日 | 支援的 |
-| 5月2019更新彙總套件- [KB4489737](https://support.microsoft.com/help/4489737)| 6.1.0.0 | 2019 5 月7日 | 支援的 |
-| V6 發行- [KB4489736](https://support.microsoft.com/help/4489736)| 6.0.0.0 | 2019年4月21日 | 支援的 |
-| 2019年4月更新彙總套件- [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 2019年4月4日 | 支援的代理程式版本將于2020年2月12日到期 |
-| 2019年3月更新彙總套件- [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 2019年3月7日 | 支援的代理程式版本將于2020年2月12日到期 |
-| V5 版本 - [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 2019 年 2 月 12 日 | 支援的代理程式版本將于2020年2月12日到期 |
+| 2019年12月更新彙總套件- [KB4522360](https://support.microsoft.com/help/4522360)| 9.1.0.0 | 2019 年 12 月 12 日 | 支援 |
+| V9 版本- [KB4522359](https://support.microsoft.com/help/4522359)| 9.0.0.0 | 2019年12月2日 | 支援 |
+| V8 版本- [KB4511224](https://support.microsoft.com/help/4511224)| 8.0.0.0 | 2019 年 10 月 8 日 | 支援 |
+| 2019年7月更新彙總套件- [KB4490497](https://support.microsoft.com/help/4490497)| 7.2.0.0 | 2019年7月24日 | 支援 |
+| 2019年7月更新彙總套件- [KB4490496](https://support.microsoft.com/help/4490496)| 7.1.0.0 | 2019年7月12日 | 支援 |
+| V7 版本- [KB4490495](https://support.microsoft.com/help/4490495)| 7.0.0.0 | 2019年6月19日 | 支援 |
+| 2019年6月更新彙總套件- [KB4489739](https://support.microsoft.com/help/4489739)| 6.3.0.0 | 2019年6月27日 | 支援 |
+| 2019年6月更新彙總套件- [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | 2019年6月13日 | 支援 |
+| 5月2019更新彙總套件- [KB4489737](https://support.microsoft.com/help/4489737)| 6.1.0.0 | 2019 5 月7日 | 支援 |
+| V6 發行- [KB4489736](https://support.microsoft.com/help/4489736)| 6.0.0.0 | 2019年4月21日 | 支援 |
+| 2019年4月更新彙總套件- [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 2019年4月4日 | 支援的代理程式版本將于2020年3月18日到期 |
+| 2019年3月更新彙總套件- [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 2019年3月7日 | 支援的代理程式版本將于2020年3月18日到期 |
+| V5 版本 - [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 2019 年 2 月 12 日 | 支援的代理程式版本將于2020年3月18日到期 |
 | V4 版本 | 4.0.1.0-4.3.0.0 版 | N/A | 不支援-代理程式版本已于2019年11月6日過期 |
 | V3 版本 | 3.1.0.0-v3.4.0。0 | N/A | 不支援-代理程式版本已于2019年8月19日到期 |
 | 預先 GA 的代理程式 | 1.1.0.0 - 3.0.13.0 | N/A | 不支援 - 代理程式版本已於 2018 年 10 月1 日過期 |
@@ -234,7 +234,7 @@ Azure 檔案同步代理程式支援下列版本：
 ### <a name="improvements-and-issues-that-are-fixed"></a>增強功能和已修正的問題
 
 - 支援較大的檔案共用大小
-    - 有了較大型 Azure 檔案共用的預覽，我們也增加了檔案同步的支援限制。 在第一個步驟中，Azure 檔案同步現在支援單一同步處理命名空間中的最多 25 TB 和50000000檔案。 若要申請大型檔案共用預覽，請 https://aka.ms/azurefilesatscalesurvey 填入此表單。 
+    - 有了較大型 Azure 檔案共用的預覽，我們也增加了檔案同步的支援限制。 在第一個步驟中，Azure 檔案同步現在支援單一同步處理命名空間中的最多 25 TB 和50000000檔案。 若要申請大型檔案共用預覽，請 https://aka.ms/azurefilesatscalesurvey填入此表單。 
 - 支援儲存體帳戶上的防火牆和虛擬網路設定
     - Azure 檔案同步現在支援儲存體帳戶上的防火牆和虛擬網路設定。 若要將您的部署設定為使用防火牆和虛擬網路設定，請參閱[設定防火牆和虛擬網路設定](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)。
 - 用來立即同步處理 Azure 檔案共用中已變更檔案的 PowerShell Cmdlet

@@ -2,17 +2,17 @@
 title: Ev3 系列和 Esv3 系列-Azure 虛擬機器
 description: Ev3 和 Esv3 系列 Vm 的規格。
 services: virtual-machines
-author: jonbeck7
+author: joelpelley
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 41b3997a9271a113a8d89f47d3a79d93bc13f92c
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: aad4610a44c59ed95cf1ad9777329097886c5bed
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493744"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164367"
 ---
 # <a name="ev3-and-esv3-series"></a>Ev3 和 Esv3 系列
 
@@ -31,6 +31,10 @@ ACU：160 - 190
 進階儲存體：不支援
 
 進階儲存體快取：不支援
+
+即時移轉：支援
+
+記憶體保留更新：支援
 
 | 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大暫存儲存體輸送量：IOPS / 讀取 MBps / 寫入 MBps | 最大 NIC / 網路頻寬 |
 |---|---|---|---|---|---|---|
@@ -59,6 +63,10 @@ ACU：160-190
 進階儲存體：支援
 
 進階儲存體快取：支援
+
+即時移轉：支援
+
+記憶體保留更新：支援
 
 | 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： IOPS/MBps （GiB 中的快取大小） | 最大未快取的磁片輸送量： IOPS/MBps | 最大 Nic/預期的網路頻寬（Mbps） |
 |---|---|---|---|---|---|---|---|

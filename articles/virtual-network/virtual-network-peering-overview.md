@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: anavin
-ms.openlocfilehash: e47c7d7c4e982604814b227544a98bb301a20105
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 5fb54e812e72b9393ffdf632085d0f32ab8b1988
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980112"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918354"
 ---
 # <a name="virtual-network-peering"></a>虛擬網路對等互連
 
@@ -93,24 +93,24 @@ Azure 支援下列類型的對等互連：
 
 如需詳細資訊，請參閱[需求和條件約束](virtual-network-manage-peering.md#requirements-and-constraints)。 若要深入瞭解支援的對等互連數目，請參閱[網路限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
 
-## <a name="permissions"></a>使用權限
+## <a name="permissions"></a>權限
 
 若要瞭解建立虛擬網路對等互連所需的許可權，請參閱[許可權](virtual-network-manage-peering.md#permissions)。
 
-## <a name="pricing"></a>定價
+## <a name="pricing"></a>價格
 
 使用虛擬網路對等互連連線的輸入和輸出流量需付費。 如需詳細資訊，請參閱[虛擬網路定價](https://azure.microsoft.com/pricing/details/virtual-network)。
 
-閘道傳輸是一種對等互連屬性，可讓虛擬網路利用對等互連虛擬網路中的 VPN/ExpressRoute 閘道。 閘道傳輸適用于跨內部部署和網路對網路連線能力。 對等互連虛擬網路中閘道（輸入或輸出）的流量會產生虛擬網路對等互連費用。 如需詳細資訊，請參閱 VPN 閘道費用的[VPN 閘道定價](https://azure.microsoft.com/pricing/details/vpn-gateway/)和 expressroute 閘道費用的 Expressroute 閘道定價。
+閘道傳輸是一種對等互連屬性，可讓虛擬網路利用對等互連虛擬網路中的 VPN/ExpressRoute 閘道。 閘道傳輸適用于跨內部部署和網路對網路連線能力。 對等互連虛擬網路中閘道（輸入或輸出）的流量會在輪輻 VNet （或非閘道 VNet）上產生虛擬網路對等互連費用。 如需詳細資訊，請參閱 VPN 閘道費用的[VPN 閘道定價](https://azure.microsoft.com/pricing/details/vpn-gateway/)和 expressroute 閘道費用的 Expressroute 閘道定價。
 
 >[!NOTE]
-> 本檔的先前版本指出虛擬網路對等互連費用不適用於閘道傳輸。 它現在會根據定價頁面反映精確的定價。
+> 本檔的先前版本指出，虛擬網路對等互連費用不適用於具有閘道傳輸的輪輻 VNet （或非閘道 VNet）。 它現在會根據定價頁面反映精確的定價。
 
 ## <a name="next-steps"></a>後續步驟
 
 * 您可以建立兩個虛擬網路之間的對等互連。 網路可以屬於相同的訂用帳戶、相同訂用帳戶中的不同部署模型，或不同的訂閱。 完成下列其中一個案例的教學課程：
 
-    |Azure 部署模型             | 訂閱  |
+    |Azure 部署模型             | 訂用帳戶  |
     |---------                          |---------|
     |兩者皆使用 Resource Manager              |[相同](tutorial-connect-virtual-networks-portal.md)|
     |                                   |[不同](create-peering-different-subscriptions.md)|

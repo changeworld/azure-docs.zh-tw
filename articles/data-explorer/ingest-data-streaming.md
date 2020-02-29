@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 89772bea818a0ebb57135990b3a04fcb559e2716
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: b99827ff9fd01c7179a25fafd05bfc8e4ef8ae63
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77664927"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921091"
 ---
 # <a name="streaming-ingestion-preview"></a>串流內嵌（預覽）
 
@@ -20,7 +20,7 @@ ms.locfileid: "77664927"
 
 當資料量成長到每個資料表每秒 1 MB 以上時，請使用傳統（大量）內嵌，而不是串流內嵌。 閱讀[資料內嵌總覽](/azure/data-explorer/ingest-data-overview)，以深入瞭解內嵌的各種方法。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/)。
 * 登入[WEB UI](https://dataexplorer.azure.com/)。
@@ -80,7 +80,7 @@ ms.locfileid: "77664927"
 
 串流內嵌不支援下列功能：
 * [資料庫資料指標](/azure/kusto/management/databasecursor)。
-* [資料對應](/azure/kusto/management/mappings)。 僅支援[預先建立的](/azure/kusto/management/tables#create-ingestion-mapping)資料對應。 
+* [資料對應](/azure/kusto/management/mappings)。 僅支援[預先建立的](/azure/kusto/management/create-ingestion-mapping-command)資料對應。 
 
 ## <a name="next-steps"></a>後續步驟
 
