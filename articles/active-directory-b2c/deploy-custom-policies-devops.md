@@ -3,20 +3,20 @@ title: 使用 Azure Pipelines 部署自訂原則
 titleSuffix: Azure AD B2C
 description: 瞭解如何在 Azure DevOps Services 中使用 Azure Pipelines，在 CI/CD 管線中部署 Azure AD B2C 自訂原則。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8649537a2992ba11a2b664a9b36207e06c8b1274
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: b23b60ae49a4973fa04e6fa5f795f99536e32e7f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77498545"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188744"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>使用 Azure Pipelines 部署自訂原則
 
@@ -31,7 +31,7 @@ ms.locfileid: "77498545"
 > [!IMPORTANT]
 > 使用 Azure 管線管理 Azure AD B2C 自訂原則目前會使用 Microsoft Graph API `/beta` 端點上提供的**預覽**作業。 不支援在生產應用程式中使用這些 API。 如需詳細資訊，請參閱[Microsoft Graph REST API Beta 版端點參考](https://docs.microsoft.com/graph/api/overview?toc=./ref/toc.json&view=graph-rest-beta)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * [Azure AD B2C 租](tutorial-create-tenant.md)使用者，以及具有[B2C IEF 原則系統管理員](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator)角色之目錄中使用者的認證
 * 已上傳至您租使用者的[自訂原則](custom-policy-get-started.md)

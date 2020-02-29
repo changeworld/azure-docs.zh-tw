@@ -3,20 +3,20 @@ title: 使用自訂原則來設定以 LinkedIn 帳戶進行登入
 titleSuffix: Azure AD B2C
 description: 在 Azure Active Directory B2C 中使用自訂原則來設定以 LinkedIn 帳戶登入。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/25/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f4ad74104d34e7e2c3f4d6aafc05b36574f8e287
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 80bd1b65d04ea49fc742033e1850d95a85021c9f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847429"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188166"
 ---
 # <a name="set-up-sign-in-with-a-linkedin-account-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則來設定以 LinkedIn 帳戶進行登入
 
@@ -69,7 +69,7 @@ ms.locfileid: "76847429"
 7. 輸入原則金鑰的 [名稱]。 例如： `LinkedInSecret` 。 前置詞*B2C_1A_* 會自動新增至金鑰的名稱。
 8. 在 [**秘密**] 中，輸入您先前記錄的用戶端密碼。
 9. 針對 [金鑰使用方法]，選取 `Signature`。
-10. 按一下頁面底部的 [新增]。
+10. 按一下 [建立]。
 
 ## <a name="add-a-claims-provider"></a>新增宣告提供者
 
@@ -77,7 +77,7 @@ ms.locfileid: "76847429"
 
 將 LinkedIn 帳戶定義為宣告提供者，方法是將它新增至原則擴充檔中的**ClaimsProviders**元素。
 
-1. 在您的編輯器中開啟*SocialAndLocalAccounts/**TrustFrameworkExtensions**檔*案。 此檔案位於您在其中一個必要條件中下載的[自訂原則入門套件][starter-pack]。
+1. 在您的編輯器中開啟*SocialAndLocalAccounts/* * TrustFrameworkExtensions*檔案。 此檔案位於您在其中一個必要條件中下載的[自訂原則入門套件][starter-pack]。
 1. 尋找 **ClaimsProviders** 元素。 如果不存在，請在根元素下新增。
 1. 新增新的 **ClaimsProvider**，如下所示：
 
@@ -185,7 +185,7 @@ LinkedIn 技術設定檔需要將**ExtractGivenNameFromLinkedInResponse**和**Ex
 此時，識別提供者已設定完成，但在任何註冊或登入畫面中都無法使用。 若要讓它可供使用，您必須建立現有範本使用者旅程圖的複本，然後修改它，讓它也包含 LinkedIn 識別提供者。
 
 1. 開啟入門套件中的*trustframeworkbase.xml* 。
-2. 尋找並複製包含 `Id="SignUpOrSignIn"` 之 **UserJourney** 元素的整個內容。
+2. 尋找並複製包含 **之**UserJourney`Id="SignUpOrSignIn"` 元素的整個內容。
 3. 開啟 *TrustFrameworkExtensions.xml*，並尋找 **UserJourneys** 元素。 如果此元素不存在，請新增。
 4. 貼上您複製的整個 **UserJourney** 元素內容作為 **UserJourneys** 元素的子系。
 5. 重新命名使用者旅程圖的識別碼。 例如： `SignUpSignInLinkedIn` 。
@@ -194,7 +194,7 @@ LinkedIn 技術設定檔需要將**ExtractGivenNameFromLinkedInResponse**和**Ex
 
 **ClaimsProviderSelection** 元素類似於註冊或登入畫面上的識別提供者按鈕。 如果您為 LinkedIn 帳戶新增 **ClaimsProviderSelection** 元素，當使用者登陸頁面時，就會出現新按鈕。
 
-1. 在您建立的使用者旅程圖中，尋找包含 `Order="1"` 的 **OrchestrationStep** 元素。
+1. 在您建立的使用者旅程圖中，尋找包含 **的**OrchestrationStep`Order="1"` 元素。
 2. 在 **ClaimsProviderSelections** 底下新增下列元素。 將 **TargetClaimsExchangeId** 的值設定成適當的值，例如 `LinkedInExchange`：
 
     ```XML
@@ -205,7 +205,7 @@ LinkedIn 技術設定檔需要將**ExtractGivenNameFromLinkedInResponse**和**Ex
 
 現在已備妥按鈕，您需要將它連結至動作。 在此案例中，動作是用來讓 Azure AD B2C 與 LinkedIn 帳戶進行通訊以接收權杖。
 
-1. 在使用者旅程圖中，尋找包含 `Order="2"` 的 **OrchestrationStep**。
+1. 在使用者旅程圖中，尋找包含 **的**OrchestrationStep`Order="2"`。
 2. 新增下列 **ClaimsExchange** 元素，請確定用於 ID 的值與用於 **TargetClaimsExchangeId** 的值相同：
 
     ```XML
@@ -246,7 +246,7 @@ LinkedIn 最近[將其 api 從 v1.0 更新至](https://engineering.linkedin.com/
 <Item Key="scope">r_emailaddress r_basicprofile</Item>
 ```
 
-變更為：
+收件人：
 
 ```XML
 <Item Key="ClaimsEndpoint">https://api.linkedin.com/v2/me</Item>
@@ -272,7 +272,7 @@ LinkedIn 最近[將其 api 從 v1.0 更新至](https://engineering.linkedin.com/
 <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="lastName" />
 ```
 
-變更為：
+收件人：
 
 ```XML
 <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="firstName.localized" />

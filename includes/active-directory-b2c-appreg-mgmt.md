@@ -1,20 +1,20 @@
 ---
-author: mmacy
+author: msmimart
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
 ms.date: 10/16/2019
-ms.author: marsma
-ms.openlocfilehash: 0ab9302909f86ff4559ece217f8d702710733691
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: mimart
+ms.openlocfilehash: 31d4b65c6cd6a3dfe3cb779022329f338436c69b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75367991"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184334"
 ---
 若要在您的 Azure AD B2C 租用戶中註冊應用程式，您可以使用目前的**應用程式**體驗，或使用新整合的**應用程式註冊 (預覽)** 體驗。 [深入了解新的體驗](https://aka.ms/b2cappregintro)。
 
-#### <a name="applicationstabapplications"></a>[應用程式](#tab/applications/)
+#### <a name="applications"></a>[應用程式](#tab/applications/)
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 在入口網站工具列中選取 [**目錄 + 訂**用帳戶] 圖示，然後選取包含您 Azure AD B2C 租使用者的目錄。
@@ -27,7 +27,7 @@ ms.locfileid: "75367991"
 1. 選取 [建立]。
 1. 記錄 [**已註冊的應用**程式總覽] 頁面上所顯示的**應用程式識別碼**。 您會在稍後的步驟中使用此值。
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[應用程式註冊 (預覽)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[應用程式註冊 (預覽)](#tab/app-reg-preview/)
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 在入口網站工具列中選取 [**目錄 + 訂**用帳戶] 圖示，然後選取包含您 Azure AD B2C 租使用者的目錄。

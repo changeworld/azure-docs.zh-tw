@@ -3,20 +3,20 @@ title: 自訂原則中的 Azure MFA 技術設定檔
 titleSuffix: Azure AD B2C
 description: Azure AD B2C 中 Azure 多重要素驗證（MFA）技術設定檔的自訂原則參考。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a8aaea6b2afb4d89e6e667edba0eeba2f4ddcca8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 05851dba9de06b5dfba2da4f455fbaf5e9376d08
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480212"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184276"
 ---
 # <a name="define-an-azure-mfa-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>在 Azure AD B2C 自訂原則中定義 Azure MFA 技術設定檔
 
@@ -53,7 +53,7 @@ Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, 
 
 **InputClaims**元素包含要傳送至 Azure MFA 的宣告清單。 您也可以將宣告的名稱對應至 MFA 技術設定檔中定義的名稱。
 
-| ClaimReferenceId | 必要項 | 說明 |
+| ClaimReferenceId | 必要項 | 描述 |
 | --------- | -------- | ----------- |
 | userPrincipalName | 是 | 擁有電話號碼之使用者的識別碼。 |
 | phoneNumber | 是 | 要用來傳送 SMS 代碼的電話號碼。 |
@@ -70,7 +70,7 @@ Azure MFA 通訊協定提供者不會傳回任何**OutputClaims**，因此不需
 
 ### <a name="metadata"></a>中繼資料
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要項 | 描述 |
 | --------- | -------- | ----------- |
 | 作業 | 是 | 必須是**OneWaySMS**。  |
 | UserMessageIfInvalidFormat | 否 | 如果提供的電話號碼不是有效的電話號碼，則為自訂錯誤訊息 |
@@ -79,7 +79,7 @@ Azure MFA 通訊協定提供者不會傳回任何**OutputClaims**，因此不需
 
 ### <a name="return-an-error-message"></a>傳回錯誤訊息
 
-如[中繼資料](#metadata)中所述，您可以針對不同的錯誤案例，自訂向使用者顯示的錯誤訊息。 您可以在地區設定前面加上，以進一步當地語系化這些訊息。 例如：
+如[中繼資料](#metadata)中所述，您可以針對不同的錯誤案例，自訂向使用者顯示的錯誤訊息。 您可以在地區設定前面加上，以進一步當地語系化這些訊息。 例如，
 
 ```XML
 <Item Key="en.UserMessageIfInvalidFormat">Invalid phone number.</Item>
@@ -115,7 +115,7 @@ Azure MFA 通訊協定提供者不會傳回任何**OutputClaims**，因此不需
 
 **InputClaims**元素包含要傳送至 Azure MFA 的宣告清單。 您也可以將宣告的名稱對應至 MFA 技術設定檔中定義的名稱。
 
-| ClaimReferenceId | 必要項 | 說明 |
+| ClaimReferenceId | 必要項 | 描述 |
 | --------- | -------- | ----------- | ----------- |
 | phoneNumber| 是 | 與先前用來傳送程式碼的電話號碼相同。 它也可用來尋找電話驗證會話。 |
 | verificationCode  | 是 | 要驗證的使用者所提供的驗證碼 |
@@ -130,7 +130,7 @@ Azure MFA 通訊協定提供者不會傳回任何**OutputClaims**，因此不需
 
 ## <a name="metadata"></a>中繼資料
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要項 | 描述 |
 | --------- | -------- | ----------- |
 | 作業 | 是 | 必須**驗證** |
 | UserMessageIfInvalidFormat | 否 | 如果提供的電話號碼不是有效的電話號碼，則為自訂錯誤訊息 |
@@ -141,7 +141,7 @@ Azure MFA 通訊協定提供者不會傳回任何**OutputClaims**，因此不需
 
 ### <a name="return-an-error-message"></a>傳回錯誤訊息
 
-如[中繼資料](#metadata)中所述，您可以針對不同的錯誤案例，自訂向使用者顯示的錯誤訊息。 您可以在地區設定前面加上，以進一步當地語系化這些訊息。 例如：
+如[中繼資料](#metadata)中所述，您可以針對不同的錯誤案例，自訂向使用者顯示的錯誤訊息。 您可以在地區設定前面加上，以進一步當地語系化這些訊息。 例如，
 
 ```XML
 <Item Key="en.UserMessageIfWrongCodeEntered">Wrong code has been entered.</Item>

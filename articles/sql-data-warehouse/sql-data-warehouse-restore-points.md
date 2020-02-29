@@ -1,6 +1,6 @@
 ---
 title: 使用者定義的還原點
-description: 如何 Azure SQL 資料倉儲建立還原點。
+description: 如何建立 SQL 集區的還原點。
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 07/03/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: bf092b5b6c6eb88b565a940de56d614426e34d8e
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 72e2535730dc6c814708ef3ff563136235930475
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759596"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198253"
 ---
 # <a name="user-defined-restore-points"></a>使用者定義的還原點
 
-在本文中，您將瞭解如何使用 PowerShell 和 Azure 入口網站為 Azure SQL 資料倉儲建立新的使用者定義還原點。
+在本文中，您將瞭解如何使用 PowerShell 和 Azure 入口網站，為 Azure Synapse 分析中的 SQL 集區建立新的使用者定義還原點。
 
 ## <a name="create-user-defined-restore-points-through-powershell"></a>透過 PowerShell 建立使用者定義的還原點
 
@@ -62,9 +62,9 @@ Get-AzSqlDatabaseRestorePoints -ResourceGroupName $ResourceGroupName -ServerName
 
 1. 登入您的[Azure 入口網站](https://portal.azure.com/)帳戶。
 
-2. 流覽至您想要為其建立還原點的 SQL 資料倉儲。
+2. 流覽至您想要為其建立還原點的 SQL 集區。
 
-3. 從左窗格中選取 **[總覽**]，然後選取 [ **+ 新增還原點**]。 如果 [新增還原點] 按鈕未啟用，請確定資料倉儲並未暫停。
+3. 從左窗格中選取 **[總覽**]，然後選取 [ **+ 新增還原點**]。 如果 [新增還原點] 按鈕未啟用，請確定 SQL 集區未暫停。
 
     ![新增還原點](./media/sql-data-warehouse-restore-points/creating-restore-point-01.png)
 
@@ -74,7 +74,7 @@ Get-AzSqlDatabaseRestorePoints -ResourceGroupName $ResourceGroupName -ServerName
 
 ## <a name="next-steps"></a>後續步驟
 
-- [還原現有的資料倉儲](sql-data-warehouse-restore-active-paused-dw.md)
-- [還原已刪除的資料倉儲](sql-data-warehouse-restore-deleted-dw.md)
-- [從異地備份資料倉儲還原](sql-data-warehouse-restore-from-geo-backup.md)
+- [還原現有的 SQL 集區](sql-data-warehouse-restore-active-paused-dw.md)
+- [還原已刪除的 SQL 集區](sql-data-warehouse-restore-deleted-dw.md)
+- [從異地備份 SQL 集區還原](sql-data-warehouse-restore-from-geo-backup.md)
 

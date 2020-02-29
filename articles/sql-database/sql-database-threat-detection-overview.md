@@ -10,22 +10,23 @@ ms.topic: conceptual
 author: monhaber
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
-ms.date: 03/31/2019
-ms.openlocfilehash: d09cc202c3f7e18358ec693d1cfe4bd2648811ba
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 02/05/2020
+tags: azure-synapse
+ms.openlocfilehash: 473c58fa5097c4f4e318543c59ad1cf3a3899594
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820706"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194082"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database"></a>Azure SQL 資料庫的進階威脅防護
 
-[Azure SQL Database](sql-database-technical-overview.md)和[SQL 資料倉儲](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)的先進威脅防護會偵測異常活動，指出不尋常且可能有害的嘗試存取或惡意探索資料庫。
+適用于[Azure SQL Database](sql-database-technical-overview.md)和[Azure Synapse 分析](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)的先進威脅防護會偵測異常活動，指出不尋常且可能有害的嘗試存取或惡意探索資料庫。
 
 先進的威脅防護是先進的[資料安全性](sql-database-advanced-data-security.md)（ADS）供應專案的一部分，它是先進 SQL 安全性功能的整合套件。 先進的威脅防護可透過中央 SQL ADS 入口網站存取及管理。
 
 > [!NOTE]
-> 本主題適用於 Azure SQL 伺服器，以及在 Azure SQL Server 上建立的 SQL Database 和 SQL 資料倉儲資料庫。 為了簡單起見，參考 SQL Database 和 SQL 資料倉儲時都會使用 SQL Database。
+> 本主題適用于 Azure SQL server，以及在 Azure SQL server 上建立 SQL Database 和 Azure Synapse。 為了簡單起見，在同時參考 SQL Database 和 Azure Synapse 時，會使用 SQL Database。
 
 ## <a name="what-is-advanced-threat-protection"></a>什麼是先進的威脅防護
 
@@ -68,7 +69,7 @@ Azure SQL Database 的先進威脅防護會偵測異常活動，指出不尋常�
 
 Advanced 威脅防護會將其警示與[Azure 安全性中心](https://azure.microsoft.com/services/security-center/)整合。 [資料庫] 和 [SQL ADS] blade 內的即時 SQL Advanced 威脅防護磚會追蹤作用 Azure 入口網站中威脅的狀態。
 
-按一下 [ **Advanced 威脅防護警示**] 以啟動 [Azure 資訊安全中心警示] 頁面，並取得在資料庫或資料倉儲上偵測到的作用中 SQL 威脅的總覽。
+按一下 [ **Advanced 威脅防護警示**] 以啟動 [Azure 資訊安全中心警示] 頁面，並取得在資料庫上偵測到的作用中 SQL 威脅的總覽。
 
    ![Advanced 威脅防護警示](./media/sql-database-threat-detection/threat_detection_alert.png)
 

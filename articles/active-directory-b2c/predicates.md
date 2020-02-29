@@ -3,20 +3,20 @@ title: Predicates 與 PredicateValidations
 titleSuffix: Azure AD B2C
 description: 使用 Azure Active Directory B2C 中的自訂原則，防止將格式不正確的資料新增至您的 Azure AD B2C 租使用者。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/24/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8e38f422189ce001063276ddc7c7f82b2acb5929
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: cc61ef5980a8019514f05c1db47f2300fff3603b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585759"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187231"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predicates 與 PredicateValidations
 
@@ -42,11 +42,11 @@ ms.locfileid: "77585759"
 
 **Predicate** 元素包含下列屬性：
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要項 | 描述 |
 | --------- | -------- | ----------- |
 | Id | 是 | 要用於述詞的識別碼。 其他元素可以在原則中使用這個識別碼。 |
 | 方法 | 是 | 要用於驗證的方法類型。 可能的值：**IsLengthRange**、**MatchesRegex**、**IncludesCharacters** 或 **IsDateRange**。 **IsLengthRange** 值可讓您檢查字串宣告值的長度是否位於所指定 Minimum 和 Maximum 參數的範圍內。 **MatchesRegex** 值會檢查字串宣告值是否符合規則運算式。 **IncludesCharacters** 值會檢查字串宣告值是否包含字元集。 **IsDateRange** 值會檢查日期宣告值是否介於所指定 Minimum 和 Maximum 參數的範圍之間。 |
-| HelpText | 否 | 檢查失敗時提供給使用者的錯誤訊息。 此字串可以使用[語言自訂](localization.md)進行當地語系化。 |
+| HELPTEXT | 否 | 檢查失敗時提供給使用者的錯誤訊息。 此字串可以使用[語言自訂](localization.md)進行當地語系化。 |
 
 **Predicate** 元素包含下列元素：
 
@@ -141,7 +141,7 @@ ms.locfileid: "77585759"
 
 **PredicateValidation** 元素包含下列屬性：
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要項 | 描述 |
 | --------- | -------- | ----------- |
 | Id | 是 | 要用於述詞驗證的識別碼。 **ClaimType** 元素可以在原則中使用這個識別碼。 |
 
@@ -159,7 +159,7 @@ ms.locfileid: "77585759"
 
 **PredicateGroup** 元素包含下列屬性：
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要項 | 描述 |
 | --------- | -------- | ----------- |
 | Id | 是 | 要用於述詞群組的識別碼。  |
 
@@ -172,7 +172,7 @@ ms.locfileid: "77585759"
 
 **PredicateReferences** 元素包含下列屬性：
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要項 | 描述 |
 | --------- | -------- | ----------- |
 | MatchAtLeast | 否 | 指定值至少必須符合許多述詞定義，以用於要接受的輸入。 如果未指定，則值必須符合所有述詞定義。 |
 
@@ -184,7 +184,7 @@ ms.locfileid: "77585759"
 
 **PredicateReference** 元素包含下列屬性：
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要項 | 描述 |
 | --------- | -------- | ----------- |
 | Id | 是 | 要用於述詞驗證的識別碼。  |
 

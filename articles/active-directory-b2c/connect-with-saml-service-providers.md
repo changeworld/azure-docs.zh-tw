@@ -3,21 +3,21 @@ title: 將 Azure AD B2C 設定為應用程式的 SAML IdP
 title-suffix: Azure AD B2C
 description: 如何設定 Azure AD B2C 以提供 SAML 通訊協定判斷提示給您的應用程式（服務提供者）。 Azure AD B2C 將作為 SAML 應用程式的單一身分識別提供者（IdP）。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/27/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: be7d798d96e61d1d753e130c5e4ad6a479f391fc
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 1c362cd2924de73b2e40e634fe554ff1526e09d8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77912235"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189645"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>在 Azure AD B2C 中註冊 SAML 應用程式
 
@@ -43,7 +43,7 @@ Azure AD B2C 利用下列兩種方式的其中一種來達到 SAML 互通性：
 | 我的應用程式預期 SAML 判斷提示會完成驗證。 | **Azure AD B2C 作為身分識別提供者（IdP）**<br />Azure AD B2C 會作為應用程式的 SAML IdP。 | 本文。 |
 | 我的使用者必須使用與 SAML 相容的身分識別提供者（例如 ADFS、Salesforce 或 Shibboleth）進行單一登入。  | **Azure AD B2C 會作為服務提供者（SP）**<br />當連接到 SAML 識別提供者時，Azure AD B2C 會作為服務提供者。 這是您的應用程式與 SAML 識別提供者之間的同盟 proxy。  | <ul><li>[使用自訂原則，設定以 ADFS 作為 SAML IdP 的登入](identity-provider-adfs2016-custom.md)</li><li>[使用自訂原則來設定使用 Salesforce SAML 提供者進行登入](identity-provider-salesforce-custom.md)</li></ul> |
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 完成在 Azure AD B2C 中[開始使用自訂原則](custom-policy-get-started.md)中的步驟。 您需要從文章中討論的自訂原則入門套件中的*SocialAndLocalAccounts*自訂原則。
 * 安全性聲明標記語言（SAML）通訊協定的基本瞭解。
@@ -63,7 +63,7 @@ Azure AD B2C 利用下列兩種方式的其中一種來達到 SAML 互通性：
 
 ## <a name="1-set-up-certificates"></a>1. 設定憑證
 
-若要在您的服務提供者與 Azure AD B2C 之間建立信任關係，您需要提供 X509 憑證和其私密金鑰。
+若要在您的服務提供者與 Azure AD B2C 之間建立信任關係，您必須提供 web 應用程式 X509 憑證。
 
 * **服務提供者憑證**
   * 具有儲存在 Web 應用程式中之私密金鑰的憑證。 您的服務提供者會使用此憑證來簽署傳送給 Azure AD B2C 的 SAML 要求。 Azure AD B2C 從服務提供者中繼資料讀取公開金鑰，以驗證簽章。

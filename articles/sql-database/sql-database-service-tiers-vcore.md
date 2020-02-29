@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: 9b156193035d87472c462bae37e405e0317d8402
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: e53fb46b7c13e1feb0cc24663fb0782b4de06f2b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650294"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198026"
 ---
 # <a name="vcore-model-overview"></a>虛擬核心模型概觀
 
@@ -31,7 +31,7 @@ VCore 模型中的服務層選項包括一般用途、業務關鍵和超大規�
 
 ||**一般用途**|**業務關鍵**|**超大規模資料庫**|
 |---|---|---|---|
-|適用對象|大部分的商業工作負載。 提供以預算為導向、平衡且可調整的計算和儲存體選項。 |使用數個隔離複本，為商務應用程式提供失敗的最高復原能力，並提供每個資料庫複本最高的 i/o 效能。|具有可高度擴充性的儲存體和讀取規模需求的大多數商務工作負載。  允許設定一個以上的隔離資料庫複本，以提供更高的失敗復原能力。 |
+|適用於|大部分的商業工作負載。 提供以預算為導向、平衡且可調整的計算和儲存體選項。 |使用數個隔離複本，為商務應用程式提供失敗的最高復原能力，並提供每個資料庫複本最高的 i/o 效能。|具有可高度擴充性的儲存體和讀取規模需求的大多數商務工作負載。  允許設定一個以上的隔離資料庫複本，以提供更高的失敗復原能力。 |
 |儲存體|使用遠端存放。<br/>**單一資料庫和彈性**集區已布建計算：<br/>5 GB – 4 TB<br/>**無伺服器計算**：<br/>5 GB-3 TB<br/>**受控執行個體**： 32 GB-8 TB |使用本機 SSD 儲存體。<br/>**單一資料庫和彈性**集區已布建計算：<br/>5 GB – 4 TB<br/>**受控執行個體**：<br/>32 GB - 4 TB |視需要彈性自動成長儲存體。 最多可支援 100 TB 的儲存體。 會針對本機緩衝集區快取和本機資料儲存體使用本機 SSD 儲存體。 使用 Azure 遠端儲存體作為最終長期資料存放區。 |
 |IOPS 和輸送量（大約）|**單一資料庫和彈性**集區：請參閱[單一資料庫](../sql-database/sql-database-vcore-resource-limits-single-databases.md)和[彈性](../sql-database/sql-database-vcore-resource-limits-elastic-pools.md)集區的資源限制。<br/>**受控執行個體**：請參閱[Azure SQL Database 受控實例資源限制的總覽](../sql-database/sql-database-managed-instance-resource-limits.md#service-tier-characteristics)。|請參閱[單一資料庫](../sql-database/sql-database-vcore-resource-limits-single-databases.md)和[彈性](../sql-database/sql-database-vcore-resource-limits-elastic-pools.md)集區的資源限制。|超大規模資料庫是多層式架構，在多個層級進行快取。 有效的 IOPS 和輸送量將視工作負載而定。|
 |可用性|1個複本、無讀取規模複本|3 個複本、1 個[讀取規模複本](sql-database-read-scale-out.md)、<br/>區域冗余高可用性（HA）|1個讀寫複本，加上 0-4[個讀取規模複本](sql-database-read-scale-out.md)|
@@ -98,10 +98,11 @@ VCore 模型中的硬體產生選項包括 Gen 4/5、M 系列（預覽）和 Fsv
 |硬體世代  |計算  |記憶體  |
 |:---------|:---------|:---------|
 |第4代     |-Intel E5-2673 v3 （Haswell） 2.4 GHz 處理器<br>-最多可布建24虛擬核心（1 vCore = 1 個實體核心）  |-每個 vCore 7 GB<br>-布建最多 168 GB|
-|Gen5     |**佈建計算**<br>-Intel E5-2673 v4 （Broadwell） 2.3-GHz 和 Intel SP-8160 （Skylake）處理器<br>-最多可布建80虛擬核心（1 vCore = 1 個超執行緒）<br><br>**無伺服器計算**<br>-Intel E5-2673 v4 （Broadwell） 2.3-GHz 和 Intel SP-8160 （Skylake）處理器<br>-自動相應增加至16個虛擬核心（1個 vCore = 1 個超執行緒）|**佈建計算**<br>-每個 vCore 5.1 GB<br>-布建最多 408 GB<br><br>**無伺服器計算**<br>-每個 vCore 自動相應增加至 24 GB<br>-自動調整至最多 48 GB 的最大值|
+|Gen5     |**佈建計算**<br>-Intel E5-2673 v4 （Broadwell） 2.3-GHz 和 Intel SP-8160 （Skylake） * 處理器<br>-最多可布建80虛擬核心（1 vCore = 1 個超執行緒）<br><br>**無伺服器計算**<br>-Intel E5-2673 v4 （Broadwell） 2.3-GHz 和 Intel SP-8160 （Skylake） * 處理器<br>-自動相應增加至16個虛擬核心（1個 vCore = 1 個超執行緒）|**佈建計算**<br>-每個 vCore 5.1 GB<br>-布建最多 408 GB<br><br>**無伺服器計算**<br>-每個 vCore 自動相應增加至 24 GB<br>-自動調整至最多 48 GB 的最大值|
 |Fsv2 系列     |-Intel 更強白金8168（SkyLake）處理器<br>-提供 3.4 GHz 的全部核心 turbo 主頻速度，以及最大的單一核心 turbo 頻率速度（3.7 GHz）。<br>-布建72虛擬核心（1 vCore = 1 個超執行緒）|-每個 vCore 1.9 GB<br>-布建 136 GB|
 |M 系列     |-Intel E7-8890 v3 2.5 GHz 處理器<br>-布建128虛擬核心（1 vCore = 1 個超執行緒）|-每 vCore 29 GB<br>-布建 3.7 TB|
 
+\* 在[dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database)動態管理檢視中，使用 Intel SP-8160 （Skylake）處理器的第5代資料庫硬體產生會顯示為 Gen6。 無論處理器類型為何（Broadwell 或 Skylake），所有第5代資料庫的資源限制都相同。
 
 如需資源限制的詳細資訊，請參閱[單一資料庫的資源限制（vCore）](sql-database-vcore-resource-limits-single-databases.md)或彈性集區[的資源限制（vCore）](sql-database-vcore-resource-limits-elastic-pools.md)。
 

@@ -2,20 +2,20 @@
 title: 在 Azure Active Directory B2C 中定義自訂屬性 | Microsoft Docs
 description: 在 Azure Active Directory B2C 中定義您應用程式的自訂屬性，以收集您客戶的相關資訊。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7a65eb19c5694f399e806d0f6ce99717436931c6
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 7b1ecfba0435f827c7c7a4d05da619998140bc6e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484344"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186044"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中定義自訂屬性
 
@@ -39,7 +39,7 @@ ms.locfileid: "77484344"
 5. 提供自訂屬性的**名稱** (例如 "ShoeSize")
 6. 選擇 [資料類型]。 只有**字串**、**布林值**，以及 **Int** 可供使用。
 7. 選擇性地輸入 [描述]，以供參考。
-8. 按一下 **[建立]** 。
+8. 按一下 [建立]。
 
 [使用者屬性] 清單現已提供自訂屬性，您可用於使用者流程中。 只有在第一次用於任何使用者流程時才會建立自訂屬性，而不是在您將它加入 [使用者屬性] 清單時建立。
 
@@ -47,8 +47,8 @@ ms.locfileid: "77484344"
 
 1. 在 Azure AD B2C 租用戶中，選取 [使用者流程]。
 1. 選取您的原則 (例如「B2C_1_SignupSignin」) 以開啟之。
-1. 選取 [使用者屬性]，然後選取自訂屬性 (例如 "ShoeSize")。 按一下 [檔案]。
+1. 選取 [使用者屬性]，然後選取自訂屬性 (例如 "ShoeSize")。 Haga clic en **Guardar**.
 1. 選取 [應用程式宣告]，然後選取自訂屬性。
-1. 按一下 [檔案]。
+1. Haga clic en **Guardar**.
 
 一旦您使用新建立的自訂屬性來建立新的使用者，就可以在[Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)中查詢該物件。 或者，您可以在使用者流程上使用 [[執行使用者流程](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows)] 功能，以驗證客戶體驗。 現在您應該會在註冊期間收集的屬性清單中看到 **ShoeSize** ，其亦會在傳回至您應用程式的權杖中出現。

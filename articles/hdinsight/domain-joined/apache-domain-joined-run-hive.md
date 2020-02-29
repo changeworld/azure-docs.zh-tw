@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: ff612c43a058fce02bd801e15632c27979f22d17
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 90d7da9c8ddd8c9c595f2209dcc34e2f595acfd2
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435865"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196921"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>在具有企業安全性套件的 HDInsight 中設定 Apache Hive 原則
 
@@ -55,11 +55,11 @@ ms.locfileid: "75435865"
     |屬性 |值 |
     |---|---|
     |原則名稱|hivesampletable-全部|
-    |Hive 資料庫|預設|
-    |資料表|hivesampletable|
+    |Hive 資料庫|default|
+    |table|hivesampletable|
     |Hive 資料行|*|
     |選取使用者|hiveuser1|
-    |使用權限|select|
+    |權限|select|
 
     ![HDInsight ESP Ranger Hive 原則設定](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png)。
 
@@ -73,27 +73,27 @@ ms.locfileid: "75435865"
     |屬性 |值 |
     |---|---|
     |原則名稱|hivesampletable-devicemake|
-    |Hive 資料庫|預設|
-    |資料表|hivesampletable|
+    |Hive 資料庫|default|
+    |table|hivesampletable|
     |Hive 資料行|clientid、devicemake|
     |選取使用者|hiveuser2|
-    |使用權限|select|
+    |權限|select|
 
 ## <a name="create-hive-odbc-data-source"></a>建立 Hive ODBC 資料來源
 
 在[建立 Hive ODBC 資料來源](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)中可找到相關指示。  
 
- | 屬性  |說明 |
+ | 屬性  |描述 |
  | --- | --- |
  | 資料來源名稱 | 為資料來源指定名稱 |
- | 主機 | 輸入 CLUSTERNAME.azurehdinsight.net。 例如，myHDICluster.azurehdinsight.net |
+ | Host | 輸入 CLUSTERNAME.azurehdinsight.net。 例如，myHDICluster.azurehdinsight.net |
  | Port | 使用 **443** (此連接埠已從 563 變更為 443)。 |
  | 資料庫 | 使用**預設值** |
  | Hive 伺服器類型 | 選取 [Hive Server 2] |
  | 機制 | 選取 [Azure HDInsight 服務] |
  | HTTP 路徑 | 保留為空白。 |
  | 使用者名稱 | 輸入 hiveuser1@contoso158.onmicrosoft.com。 更新功能變數名稱（如果不同的話）。 |
- | 密碼 | 輸入 hiveuser1 的密碼。 |
+ | Password | 輸入 hiveuser1 的密碼。 |
 
 請務必先按一下 [測試]，再儲存資料來源。
 
@@ -142,7 +142,7 @@ ms.locfileid: "75435865"
 
         SELECT * FROM "HIVE"."default"."hivesampletable"
 
-    至：
+    變更為：
 
         SELECT clientid, devicemake FROM "HIVE"."default"."hivesampletable"
 
@@ -152,7 +152,7 @@ ms.locfileid: "75435865"
 
 * 如需設定具有企業安全性套件的 HDInsight 叢集，請參閱[設定具有 ESP 的 HDInsight 叢集](apache-domain-joined-configure.md)。
 * 如需管理具有 ESP 的 HDInsight 叢集，請參閱[管理具有 ESP 的 HDInsight 叢集](apache-domain-joined-manage.md)。
-* 如需在具有 ESP 的 HDInsight 叢集上使用 SSH 執行 Hive 查詢，請參閱[搭配 HDInsight 使用 SSH](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)。
+* 如需在具有 ESP 的 HDInsight 叢集上使用 SSH 執行 Hive 查詢，請參閱[搭配 HDInsight 使用 SSH](../hdinsight-hadoop-linux-use-ssh-unix.md#authentication-domain-joined-hdinsight)。
 * 如需使用 Hive JDBC 連接 Hive，請參閱 [使用 Hive JDBC 驅動程式連接到 Azure HDInsight 上的 Apache Hive](../hadoop/apache-hadoop-connect-hive-jdbc-driver.md)
 * 如需使用 Hive ODBC 將 Excel 連接到 Hadoop，請參閱[使用 Microsoft Hive ODBC 驅動程式將 Excel 連接到 Apache Hadoop](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)
 * 如需使用 Power Query 將 Excel 連接到 Apache Hadoop，請參閱[使用 Power Query 將 Excel 連接到 Hadoop](../hadoop/apache-hadoop-connect-excel-power-query.md)

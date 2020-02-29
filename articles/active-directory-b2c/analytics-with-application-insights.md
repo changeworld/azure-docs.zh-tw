@@ -3,20 +3,20 @@ title: 使用 Application Insights 追蹤使用者行為
 titleSuffix: Azure AD B2C
 description: 瞭解如何使用自訂原則，從 Azure AD B2C 使用者旅程啟用 Application Insights 中的事件記錄檔。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 02/11/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 002221bc69659a3be6fee950319909c9fc63ea9c
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: f36b04113a753607b9242681cb62270e37bf7067
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77136315"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190190"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>使用 Application Insights 在 Azure Active Directory B2C 中追蹤使用者行為
 
@@ -37,7 +37,7 @@ Azure AD B2C 中的身分識別體驗架構納入了 `Handler="Web.TPEngine.Prov
 
 Application Insights 可以使用相互關聯識別碼來記錄使用者工作階段，以此方式統一事件。 Application Insights 會在數秒內使事件和工作階段成為可用狀態，並提供許多視覺效果、匯出及分析工具。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 完成[開始使用自訂原則](custom-policy-get-started.md)中的步驟。 本文假設您使用自訂原則入門套件。 但您不一定要使用入門套件。
 
@@ -48,11 +48,11 @@ Application Insights 可以使用相互關聯識別碼來記錄使用者工作�
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 2. 請選取頂端功能表中的 [**目錄 + 訂**用帳戶] 篩選，然後選擇包含您訂用帳戶的目錄，以確定您使用的是包含 Azure 訂用帳戶的目錄。 此租用戶不是您的 Azure AD B2C 租用戶。
 3. 選擇 Azure 入口網站左上角的 [建立資源]，然後搜尋並選取 [Application Insights]。
-4. 按一下 **[建立]** 。
+4. 按一下 [建立]。
 5. 輸入資源的 [名稱]。
 6. 針對 [應用程式類型]，選取 [ASP.NET Web 應用程式]。
 7. 針對 [資源群組]，選取現有的群組或輸入新群組的名稱。
-8. 按一下 **[建立]** 。
+8. 按一下 [建立]。
 4. 建立 Application Insights 資源後，開啟資源、展開 [基本資訊]，並複製檢測金鑰。
 
 ![Application Insights 概觀與檢測金鑰](./media/analytics-with-application-insights/app-insights.png)
@@ -110,7 +110,7 @@ Application Insights 可以使用相互關聯識別碼來記錄使用者工作�
 
 技術設定檔可視為是 Azure AD B2C 身分識別體驗架構中的功能。 此資料表會定義技術設定檔，用來開啟工作階段並張貼事件。
 
-| 技術設定檔 | Task |
+| 技術設定檔 | 工作 |
 | ----------------- | -----|
 | AzureInsights-Common | 建立要包含於所有 Azure-Insights 技術設定檔中的一組通用參數。 |
 | AzureInsights-SignInRequest | 收到登入要求之後，建立含有一組宣告的 "SignIn" 事件。 |

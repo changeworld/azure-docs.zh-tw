@@ -2,20 +2,20 @@
 title: 當地語系化字串識別碼 - Azure Active Directory B2C | Microsoft Docs
 description: 在 Azure Active Directory B2C 的自訂原則中，使用 api.signuporsignin 的識別碼來指定適用於內容定義的識別碼。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/03/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cd5e543a6d5dc2b59847a78bd925be68f8cdde25
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 3af62a75228959478a80c2628307fff2b47c3c4a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982852"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187486"
 ---
 # <a name="localization-string-ids"></a>當地語系化字串識別碼
 
@@ -37,17 +37,17 @@ ms.locfileid: "76982852"
 | **local_intro_username** | 使用您的使用者名稱登入 |
 | **logonIdentifier_username** | 使用者名稱 |
 | **requiredField_username** | 請輸入您的使用者名稱 |
-| **password** | 密碼 |
+| **password** | Password |
 | **requiredField_password** | 請輸入您的密碼 |
 | **invalid_password** | 您輸入的密碼未採用預期的格式。 |
 | **forgotpassword_link** | 忘記密碼了嗎? |
 | **createaccount_intro** | 還沒有帳戶嗎？ |
 | **createaccount_link** | 立即註冊 |
-| **divider_title** | 或 |
+| **divider_title** | OR |
 | **cancel_message** | 使用者忘記密碼 |
 | **button_signin** | 登入 |
 | **social_intro** | 使用您的社交帳戶登入 |
-  **remember_me** |讓我保持登入|
+  **remember_me** |讓我保持登入狀態|
 | **unknown_error** | 我們無法將您登入。 請稍後再試。 |
 
 下列範例示範在註冊或登入頁面中使用某些使用者介面元素的方式：
@@ -115,14 +115,14 @@ ms.locfileid: "76982852"
 | **error_requiredFieldMissing** | 遺漏必要欄位。 請填寫所有必要欄位，然後再試一次。 |
 | **initial_intro** | 請提供下列詳細資料。 |
 | **ver_but_resend** | 傳送新的驗證碼 |
-| **button_continue** | Create |
+| **button_continue** | 建立 |
 | **error_passwordEntryMismatch** | 密碼輸入欄位不相符。 請在兩個欄位中輸入相同密碼，然後再試一次。 |
 | **ver_incorrect_format** | 格式不正確。 |
 | **ver_but_edit** | 變更電子郵件 |
 | **ver_but_verify** | 驗證碼 |
 | **alert_no** | 否 |
 | **ver_info_msg** | 驗證碼已經傳送到您的收件匣。 請將其複製到下方輸入方塊。 |
-| **day** | 天 |
+| **day** | Day |
 | **ver_fail_throttled** | 驗證此電子郵件地址時有過多要求。 請稍候，然後再試一次。 |
 | **helplink_text** | 這是什麼？ |
 | **ver_fail_retry** | 該驗證碼不正確。 請再試一次。 |
@@ -186,7 +186,7 @@ ms.locfileid: "76982852"
 | **intro_sms_p** |我們為您記錄了下列號碼。 請選擇可以簡訊傳送驗證碼的號碼，以驗證您的身分。 |
 | **requiredField_countryCode** | 請選取您的國碼 (地區碼) |
 | **requiredField_number** | 請輸入您的電話號碼 |
-| **country_code_input_placeholder_text** |國家或區域 |
+| **country_code_input_placeholder_text** |國家或地區 |
 | **number_label** | 電話號碼 |
 | **error_tryagain** | 提供的電話號碼目前忙線中或不通。 請檢查號碼，然後再試一次。 |
 | **error_incorrect_code** | 您輸入的驗證碼與我們的記錄不符。 請再試一次，或要求新的驗證碼。 |

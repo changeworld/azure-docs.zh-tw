@@ -2,20 +2,20 @@
 title: 當地語系化-Azure Active Directory B2C
 description: 指定 Azure Active Directory B2C 中自訂原則的 Localization 元素。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 08/27/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ec9b4e7ce761d524d047f4d12cab9e5b782e6032
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 9a9fb1d64fb27507e4ee42c39be9ea80fbe5f168
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70033453"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184443"
 ---
 # <a name="localization"></a>當地語系化
 
@@ -41,7 +41,7 @@ ms.locfileid: "70033453"
 
 | 屬性 | 必要項 | 描述 |
 | --------- | -------- | ----------- |
-| Enabled | 否 | 可能的值：`true` 或 `false`。 |
+| 已啟用 | 否 | 可能的值：`true` 或 `false`。 |
 
 **Localization** 元素包含下列 XML 元素
 
@@ -110,11 +110,11 @@ ms.locfileid: "70033453"
 
 | 屬性 | 必要項 | 描述 |
 | --------- | -------- | ----------- |
-| 文字 | 是 | 此選項應會在使用者介面中向使用者顯示的易記顯示字串。 |
+| Text | 是 | 此選項應會在使用者介面中向使用者顯示的易記顯示字串。 |
 | 值 | 是 | 與選取此選項相關聯的字串宣告值。 |
 | SelectByDefault | 否 | 指出預設是否應該在 UI 中選取此選項。 可能的值：True 或 False。 |
 
-下列範例顯示 **LocalizedCollections** 元素的用法。 其包含兩個 **LocalizedCollection** 元素，一個適用於英文，另一個適用於西班牙文。 兩者皆會使用英文和西班牙文的項目清單，設定宣告 `Gender` 的**限制**集合。
+下列範例顯示 **LocalizedCollections** 元素的用法。 其包含兩個 **LocalizedCollection** 元素，一個適用於英文，另一個適用於西班牙文。 兩者皆會使用英文和西班牙文的項目清單，設定宣告  **的**限制`Gender`集合。
 
 ```XML
 <LocalizedResources Id="api.selfasserted.en">
@@ -148,7 +148,7 @@ ms.locfileid: "70033453"
 | --------- | -------- | ----------- |
 | ElementType | 是 | 參考原則中的宣告類型元素或使用者介面元素。 可能的值：`ClaimType`、`UxElement`、`ErrorMessage`、`Predicate` 或  。 `ClaimType` 值用於將其中一個宣告屬性當地語系化，如 StringId 中所指定。 `UxElement` 值用於將其中一個使用者介面元素當地語系化，如 StringId 中所指定。 `ErrorMessage` 值用於將其中一個系統錯誤訊息當地語系化，如 StringId 中所指定。 `Predicate` 值用於將其中一個 [Predicate](predicates.md) 錯誤訊息當地語系化，如 StringId 中所指定。 `InputValidation` 值用於將其中一個 [PredicateValidation](predicates.md) 群組錯誤訊息當地語系化，如 StringId 中所指定。 |
 | ElementId | 是 | 如果 **ElementType** 設為 `ClaimType``Predicate` 或 `InputValidation`，則此元素會包含對 ClaimsSchema 區段中已定義之宣告類型的參考。 |
-| StringId | 是 | 如果 **ElementType** 設為 `ClaimType`，則此元素會包含對宣告類型之屬性的參考。 可能的值：`DisplayName`、`AdminHelpText` 或 `PatternHelpText`。 `DisplayName` 值用於設定宣告顯示名稱。 `AdminHelpText` 值用於設定宣告使用者的說明文字名稱。 `PatternHelpText` 值用於設定宣告模式說明文字。 如果 **ElementType** 設為 `UxElement`，則此元素會包含使用者介面元素之屬性的參考。 如果 **ElementType** 設為 `ErrorMessage`，則此元素會指定錯誤訊息的識別碼。 如需 `UxElement` 識別碼的完整清單，請參閱[當地語系化字串識別碼](localization-string-ids.md)。|
+| StringId | 是 | 如果 **ElementType** 設為 `ClaimType`，則此元素會包含對宣告類型之屬性的參考。 可能的值：`DisplayName`、`AdminHelpText` 或 `PatternHelpText`。 `DisplayName` 值用於設定宣告顯示名稱。 `AdminHelpText` 值用於設定宣告使用者的說明文字名稱。 `PatternHelpText` 值用於設定宣告模式說明文字。 如果 **ElementType** 設為 `UxElement`，則此元素會包含使用者介面元素之屬性的參考。 如果 **ElementType** 設為 `ErrorMessage`，則此元素會指定錯誤訊息的識別碼。 如需 [ 識別碼的完整清單，請參閱](localization-string-ids.md)當地語系化字串識別碼`UxElement`。|
 
 
 下列範例列出了當地語系化的註冊頁面。 前三個 **LocalizedString** 值設定的是宣告屬性。 第三個會變更繼續按鈕的值。 最後一個會變更錯誤訊息。
@@ -165,7 +165,7 @@ ms.locfileid: "70033453"
 </LocalizedResources>
 ```
 
-下列範例顯示 **Predicate** 之當地語系化的 **UserHelpText**，其識別碼為 `IsLengthBetween8And64`。 以及 **PredicateGroup** 之當地語系化的 **UserHelpText**，其識別碼為 **PredicateValidation** 的 `CharacterClasses`，其識別碼為 `StrongPassword`。
+下列範例顯示 **Predicate** 之當地語系化的 **UserHelpText**，其識別碼為 `IsLengthBetween8And64`。 以及 **PredicateGroup** 之當地語系化的 **UserHelpText**，其識別碼為 `CharacterClasses`PredicateValidation**的**，其識別碼為 `StrongPassword`。
 
 ```XML
 <PredicateValidation Id="StrongPassword">
@@ -223,7 +223,7 @@ ms.locfileid: "70033453"
 
 每個 **LocalizedResources** 元素包含所有必要的 **LocalizedStrings** 元素，其中有多個 **LocalizedString** 元素和 **LocalizedCollections** 元素，以及多個 **LocalizedCollection** 元素。  下列範例會新增註冊頁面英文當地語系化：
 
-注意:此範例會參考 `Gender` 和 `City` 宣告類型。 若要使用此範例，請務必定義這些宣告。 如需詳細資訊，請參閱 [ClaimsSchema](claimsschema.md)。
+注意：此範例會參考 `Gender` 和 `City` 宣告類型。 若要使用此範例，請務必定義這些宣告。 如需詳細資訊，請參閱 [ClaimsSchema](claimsschema.md)。
 
 ```XML
 <LocalizedResources Id="api.localaccountsignup.en">

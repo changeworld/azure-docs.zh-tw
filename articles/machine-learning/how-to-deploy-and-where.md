@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 12/27/2019
+ms.date: 02/27/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: fa73cb690fafb67f75abafab1b0dd27ffa0b8e32
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: d3353451057037e5f3fd94347a007a9d3b2c0e15
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210494"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193079"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "77210494"
 
 如需部署工作流程中相關概念的詳細資訊，請參閱[使用 Azure Machine Learning 來管理、部署和監視模型](concept-model-management-and-deployment.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - Azure Machine Learning 工作區。 如需詳細資訊，請參閱[建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。
 
@@ -597,7 +597,7 @@ az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.
 | 狀況不良 | 服務已部署，但目前無法連線。  | 否 |
 | 設無法排程 | 因為缺少資源，所以目前無法部署服務。 | 否 |
 | 失敗 | 因為發生錯誤或損毀，所以服務無法部署。 | 是 |
-| Healthy | 服務狀況良好，且端點可供使用。 | 是 |
+| 狀況良好 | 服務狀況良好，且端點可供使用。 | 是 |
 
 ### <a id="notebookvm"></a>計算實例 web 服務（開發/測試）
 
@@ -897,6 +897,8 @@ service_name = 'onnx-mnist-service'
 service = Model.deploy(ws, service_name, [model])
 ```
 
+如果您使用 Pytorch，將[模型從 Pytorch 匯出到 ONNX](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb) ，會有轉換和限制的詳細資料。 
+
 ### <a name="scikit-learn-models"></a>Scikit-learn-學習模型
 
 所有內建的 scikit-learn-學習模型類型都不支援任何程式碼模型部署。
@@ -956,7 +958,7 @@ package = Model.package(ws, [model], inference_config)
 package.wait_for_creation(show_output=True)
 ```
 
-建立封裝之後，您可以使用 `package.pull()` 將映射提取到您的本機 Docker 環境。 此命令的輸出會顯示映射的名稱。 例如： 
+建立封裝之後，您可以使用 `package.pull()` 將映射提取到您的本機 Docker 環境。 此命令的輸出會顯示映射的名稱。 例如， 
 
 `Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338`第 1 課：建立 Windows Azure 儲存體物件{2}。 
 

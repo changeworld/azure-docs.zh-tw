@@ -3,20 +3,20 @@ title: 使用自訂原則來管理 SSO 和權杖自訂
 titleSuffix: Azure AD B2C
 description: 了解如何在 Azure Active Directory B2C 中使用自訂原則來管理 SSO 和權杖自訂。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/09/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 299ab8ec4f6f8f74cccef15720622e0638285a63
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ff9f57af92c50c0df6f628113bd9490ca83e1310
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846584"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189288"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則來管理 SSO 和權杖自訂
 
@@ -57,7 +57,7 @@ ms.locfileid: "76846584"
 - **重新整理權杖存留期** - 重新整理權杖存留期的值會透過 **refresh_token_lifetime_secs** 中繼資料項目來設定。 預設值為 1209600 秒 (14 天)。
 - **重新整理權杖滑動視窗存留期** - 如果您想要對重新整理權杖設定滑動視窗存留期，請設定 **rolling_refresh_token_lifetime_secs** 中繼資料的值。 預設值為 7776000 秒 (90 天)。 如果您不想強制執行滑動視窗存留期，請以 `<Item Key="allow_infinite_rolling_refresh_token">True</Item>` 取代此項目。
 - **簽發者 (iss) 宣告** - 簽發者 (iss) 宣告會透過 **IssuanceClaimPattern** 中繼資料項目來設定。 適用的值為 `AuthorityAndTenantGuid` 和 `AuthorityWithTfp`。
-- **設定代表原則識別碼的宣告** - 用來設定此值的選項為 `TFP` (信任架構原則) 和 `ACR` (驗證內容參考)。 `TFP` 是建議值。 使用 `None` 值來設定 **AuthenticationContextReferenceClaimPattern**。
+- **設定代表原則識別碼的宣告** - 用來設定此值的選項為 `TFP` (信任架構原則) 和 `ACR` (驗證內容參考)。 `TFP` 是建議值。 使用 **值來設定**AuthenticationContextReferenceClaimPattern`None`。
 
     在 **ClaimsSchema** 項目中，新增此項目：
 
@@ -90,7 +90,7 @@ ms.locfileid: "76846584"
 
 ## <a name="session-behavior-and-sso"></a>工作階段行為和 SSO
 
-若要變更工作階段行為和 SSO 組態，您可以在 [RelyingParty](relyingparty.md) 元素內新增 **UserJourneyBehaviors** 元素。  **UserJourneyBehaviors** 元素必須緊跟著 **DefaultUserJourney**。 **UserJourneyBehavors** 元素的內部應如下列範例所示：
+若要變更工作階段行為和 SSO 組態，您可以在 **RelyingParty** 元素內新增 [UserJourneyBehaviors](relyingparty.md) 元素。  **UserJourneyBehaviors** 元素必須緊跟著 **DefaultUserJourney**。 **UserJourneyBehavors** 元素的內部應如下列範例所示：
 
 ```XML
 <UserJourneyBehaviors>

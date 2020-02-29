@@ -1,26 +1,26 @@
 ---
 title: 資料載入最佳做法
-description: 將資料載入 Azure SQL 資料倉儲的建議和效能最佳化。
+description: 將資料載入 SQL 分析的建議和效能優化
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load-data
-ms.date: 08/08/2019
+ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 01bb53488bf63f32d2bae804e4844400a7fd2d31
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: d59a66b25b55572865f297436331971434d831c3
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686092"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199881"
 ---
-# <a name="best-practices-for-loading-data-into-azure-sql-data-warehouse"></a>將資料載入 Azure SQL 資料倉儲的最佳做法
+# <a name="best-practices-for-loading-data-for-data-warehousing"></a>載入資料倉儲資料的最佳作法
 
-將資料載入 Azure SQL 資料倉儲的建議和效能最佳化。
+載入資料的建議和效能優化
 
 ## <a name="preparing-data-in-azure-storage"></a>在 Azure 儲存體中準備資料
 
@@ -36,9 +36,9 @@ PolyBase 無法載入具有超過 1 百萬個位元組之資料的資料列。 �
 
 ## <a name="running-loads-with-enough-compute"></a>使用足夠的計算資源執行載入
 
-如需最快的載入速度，一次只執行一項載入作業。 如果不可行，請同時執行數量最少的載入。 如果您預期會有大量載入作業，請考慮在載入前將資料倉儲相應增加。
+如需最快的載入速度，一次只執行一項載入作業。 如果不可行，請同時執行數量最少的載入。 如果您預期會有大量載入作業，請考慮在負載前相應增加您的 SQL 集區。
 
-若要以適當的計算資源執行載入，請建立為了執行載入而指定的載入使用者。 將每個載入使用者指派給特定的資源類別。 若要執行負載，請以其中一個載入使用者身分登入，然後執行負載。 載入會利用使用者的資源類別來執行。  相較於嘗試變更使用者的資源類別，以符合目前的資源類別需求，這個方法比較簡單。
+若要以適當的計算資源執行載入，請建立為了執行載入而指定的載入使用者。 將每個載入使用者指派給特定的資源類別或工作負載群組。 若要執行負載，請以其中一個載入使用者身分登入，然後執行負載。 載入會利用使用者的資源類別來執行。  相較於嘗試變更使用者的資源類別，以符合目前的資源類別需求，這個方法比較簡單。
 
 ### <a name="example-of-creating-a-loading-user"></a>建立載入使用者的範例
 
@@ -89,7 +89,7 @@ user_A 和 user_B 現在已從其他部門的結構描述加以鎖定。
 - 載入足夠的資料列，完全填滿新的資料列群組。 在大量載入期間，每 1,048,576 個資料列會以完整資料列群組形式直接壓縮到資料行存放區中。 若載入的資料列少於 102,400 個，則會將資料列傳送至差異存放區，其中的資料列會保存在 b 型樹狀結構索引中。 如果您載入太少資料列，這些資料列可能全都會移至差異存放區，並不會立即壓縮成資料行存放區格式。
 
 ## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>使用 SQLBulkCopy API 或 BCP 時增加批次大小
-如先前所述，使用 PolyBase 載入會提供 SQL 資料倉儲的最高輸送量。 如果您無法使用 PolyBase 來載入，且必須使用 SQLBulkCopy API （或 BCP），您應該考慮增加批次大小以獲得更好的輸送量。 
+如先前所述，使用 PolyBase 載入會提供 SQL 資料倉儲的最高輸送量。 如果您無法使用 PolyBase 來載入，且必須使用 SQLBulkCopy API （或 BCP），您應該考慮增加批次大小以獲得更好的輸送量，這是一個很好的經驗法則，這是批次大小介於100K 到1M 個數據列之間。
 
 ## <a name="handling-loading-failures"></a>處理載入失敗
 

@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C 中的語言自訂
 description: 瞭解如何自訂使用者流程中的語言體驗。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/13/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ab34c1c34c2d2a67b5e3fdd6a5e84f0663455e20
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 5b3af812b2b78c276b5345b9b19226e6e1dba80b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847910"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78185755"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的語言自訂
 
@@ -203,56 +203,56 @@ Azure AD B2C 包含下列語言的支援。 Azure AD B2C 提供使用者流程�
 
 | 語言              | 語言代碼 | 使用者流程         | MFA 通知  |
 |-----------------------| :-----------: | :----------------: | :----------------: |
-| 阿拉伯文                | ar            | ![否](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
-| 保加利亞文             | bg            | ![否](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
-| 孟加拉文                | bn            | ![是](./media/user-flow-language-customization/yes.png) | ![否](./media/user-flow-language-customization/no.png) |
-| 卡達隆尼亞文               | ca            | ![否](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
+| 阿拉伯文                | ar            | ![no](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
+| 保加利亞文             | bg            | ![no](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
+| 孟加拉文                | bn            | ![是](./media/user-flow-language-customization/yes.png) | ![no](./media/user-flow-language-customization/no.png) |
+| 卡達隆尼亞文               | ca            | ![no](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 捷克文                 | cs            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 丹麥文                | da            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 德文                | de            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 希臘文                 | el            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
-| 繁體中文               | en            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
+| 英文               | en            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 西班牙文               | es            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
-| 愛沙尼亞文              | et            | ![否](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
-| 巴斯克文                | eu            | ![否](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
+| 愛沙尼亞文              | et            | ![no](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
+| Basque                | eu            | ![no](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 芬蘭文               | fi            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 法文                | fr            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
-| 加利西亞文              | gl            | ![否](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
-| 古吉拉特文              | gu            | ![是](./media/user-flow-language-customization/yes.png) | ![否](./media/user-flow-language-customization/no.png) |
-| Hebrew                | he            | ![否](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
+| 加利西亞文              | gl            | ![no](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
+| 古吉拉特文              | gu            | ![是](./media/user-flow-language-customization/yes.png) | ![no](./media/user-flow-language-customization/no.png) |
+| Hebrew                | he            | ![no](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | Hindi                 | hi            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 克羅埃西亞文              | hr            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 匈牙利文             | hu            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
-| 印尼文            | id            | ![否](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
+| 印尼文            | id            | ![no](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 義大利文               | it            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 日文              | ja            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
-| 哈薩克文                | kk            | ![否](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
-| 坎那達文               | kn            | ![是](./media/user-flow-language-customization/yes.png) | ![否](./media/user-flow-language-customization/no.png) |
+| 哈薩克文                | kk            | ![no](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
+| 坎那達文               | kn            | ![是](./media/user-flow-language-customization/yes.png) | ![no](./media/user-flow-language-customization/no.png) |
 | 韓文                | ko            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
-| 立陶宛文            | lt            | ![否](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
-| 拉脫維亞文               | lv            | ![否](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
-| 馬來亞拉姆文             | ml            | ![是](./media/user-flow-language-customization/yes.png) | ![否](./media/user-flow-language-customization/no.png) |
-| 馬拉地文               | mr            | ![是](./media/user-flow-language-customization/yes.png) | ![否](./media/user-flow-language-customization/no.png) |
-| 馬來文                 | ms            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
-| 挪威文 (巴克摩)      | nb            | ![是](./media/user-flow-language-customization/yes.png) | ![否](./media/user-flow-language-customization/no.png) |
+| 立陶宛文            | lt            | ![no](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
+| 拉脫維亞文               | lv            | ![no](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
+| 馬來亞拉姆文             | ml            | ![是](./media/user-flow-language-customization/yes.png) | ![no](./media/user-flow-language-customization/no.png) |
+| 馬拉地文               | mr            | ![是](./media/user-flow-language-customization/yes.png) | ![no](./media/user-flow-language-customization/no.png) |
+| 馬來文                 | 毫秒            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
+| 挪威文 (巴克摩)      | nb            | ![是](./media/user-flow-language-customization/yes.png) | ![no](./media/user-flow-language-customization/no.png) |
 | 荷蘭文                 | nl            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
-| 挪威文             | 否            | ![否](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
-| 旁遮普文               | pa            | ![是](./media/user-flow-language-customization/yes.png) | ![否](./media/user-flow-language-customization/no.png) |
+| 挪威文             | no            | ![no](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
+| 旁遮普文               | pa            | ![是](./media/user-flow-language-customization/yes.png) | ![no](./media/user-flow-language-customization/no.png) |
 | 波蘭文                | pl            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 葡萄牙文 - 巴西   | pt-br         | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 葡萄牙文 - 葡萄牙 | pt-pt         | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 羅馬尼亞文              | ro            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 俄文               | ru            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 斯洛伐克文                | sk            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
-| 斯洛維尼亞文             | sl            | ![否](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
-| 塞爾維亞文 (斯拉夫)    | cryl-cs    | ![否](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
-| 塞爾維亞文 (拉丁)       | latn-cs    | ![否](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
+| 斯洛維尼亞文             | sl            | ![no](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
+| 塞爾維亞文 (斯拉夫)    | cryl-cs    | ![no](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
+| 塞爾維亞文 (拉丁)       | latn-cs    | ![no](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 瑞典文               | sv            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
-| 坦米爾文                 | ta            | ![是](./media/user-flow-language-customization/yes.png) | ![否](./media/user-flow-language-customization/no.png) |
-| 泰盧固文                | te            | ![是](./media/user-flow-language-customization/yes.png) | ![否](./media/user-flow-language-customization/no.png) |
+| 坦米爾文                 | ta            | ![是](./media/user-flow-language-customization/yes.png) | ![no](./media/user-flow-language-customization/no.png) |
+| 泰盧固文                | te            | ![是](./media/user-flow-language-customization/yes.png) | ![no](./media/user-flow-language-customization/no.png) |
 | 泰文                  | th            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 土耳其文               | tr            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
-| 烏克蘭文             | 英式            | ![否](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
-| 越南文            | vi            | ![否](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
-| 中文 - 簡體  | zh-hans       | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
-| 中文 - 繁體 | zh-hant       | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
+| 烏克蘭文             | 英式            | ![no](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
+| 越南文            | vi            | ![no](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
+| 簡體中文  | zh-hans       | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
+| 繁體中文 | zh-hant       | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |

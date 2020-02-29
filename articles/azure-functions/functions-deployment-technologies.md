@@ -6,12 +6,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gwallace
-ms.openlocfilehash: bfb7d3ad6f918d91061fa226ae2dbfcd7f27852d
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 43352117d149abbe41ba7bf49a1ffb68e46d2707
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210152"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190748"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Functions 中的部署技術
 
@@ -104,7 +104,7 @@ Azure Functions 提供下列部署方法。
 
 使用「zip 部署」將包含函數應用程式的 .zip 檔案推送至 Azure。 （選擇性）您可以將應用程式設定為[從封裝](run-functions-from-deployment-package.md)開始執行，或指定發生[遠端組建](#remote-build)。
 
->__使用方式：__ 使用您最愛的用戶端工具進行部署： [Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure)、 [Visual Studio](functions-develop-vs.md#publish-to-azure)、 [Azure Functions Core Tools](functions-run-local.md)或[Azure CLI](functions-create-first-azure-function-azure-cli.md#deploy-the-function-app-project-to-azure)。 根據預設，這些工具會使用 zip 部署，並[從封裝執行](run-functions-from-deployment-package.md)。 當部署至 Linux 時，核心工具和 Visual Studio Code 延伸模組都會啟用[遠端組建](#remote-build)。 若要將 .zip 檔案手動部署至函式應用程式，請遵循[從 .zip 檔案或 URL 部署](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)中的指示。
+>__使用方式：__ 使用您最愛的用戶端工具進行部署： [Visual Studio Code](functions-develop-vs-code.md#publish-to-azure)、 [Visual Studio](functions-develop-vs.md#publish-to-azure)，或從命令列使用[Azure Functions Core Tools](functions-run-local.md#project-file-deployment)。 根據預設，這些工具會使用 zip 部署，並[從封裝執行](run-functions-from-deployment-package.md)。 當部署至 Linux 時，核心工具和 Visual Studio Code 延伸模組都會啟用[遠端組建](#remote-build)。 若要將 .zip 檔案手動部署至函式應用程式，請遵循[從 .zip 檔案或 URL 部署](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)中的指示。
 
 >當您使用「zip 部署」進行部署時，您可以將應用程式設定為[從封裝執行](run-functions-from-deployment-package.md)。 若要從封裝執行，請將 `WEBSITE_RUN_FROM_PACKAGE` 應用程式設定值設定為 `1`。 我們建議您進行 zip 部署。 它會為您的應用程式產生更快的載入時間，而且它是 VS Code、Visual Studio 和 Azure CLI 的預設值。 
 
@@ -114,7 +114,7 @@ Azure Functions 提供下列部署方法。
 
 您可以部署包含函數應用程式的 Linux 容器映射。
 
->__使用方式：__ 在 Premium 或專屬方案中建立 Linux 函數應用程式，並指定要執行的容器映射。 您可以使用兩種方式執行此動作：
+>__使用方式：__ 在 Premium 或專屬方案中建立 Linux 函數應用程式，並指定要執行的容器映射。 執行這項作業的方法有兩種：
 >
 >* 在 Azure 入口網站中的 Azure App Service 方案上建立 Linux 函數應用程式。 針對 [**發佈**]，選取 [ **Docker 映射**]，然後設定容器。 輸入裝載映射的位置。
 >* 使用 Azure CLI，在 App Service 方案上建立 Linux 函數應用程式。 若要瞭解作法，請參閱[使用自訂映射在 Linux 上建立](functions-create-function-linux-custom-image.md#create-supporting-azure-resources-for-your-function)函式。

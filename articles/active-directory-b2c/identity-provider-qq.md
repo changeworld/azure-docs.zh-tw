@@ -2,20 +2,20 @@
 title: 使用 Azure Active Directory B2C 設定註冊，並以 QQ 帳戶登入
 description: 使用 Azure Active Directory B2C，讓具有 QQ 帳戶的客戶得以註冊和登入您的應用程式。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2bda344c32d03425c7cfec4d253e18451eb1f5a1
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: b0f15124c64e5cca54112987d486ddadaca79452
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847403"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187982"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-qq-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定註冊，並以 QQ 帳戶登入
 
@@ -38,7 +38,7 @@ ms.locfileid: "76847403"
 1. 移至 [https://connect.qq.com/index.html](https://connect.qq.com/index.html)。
 1. 選取 [应用管理]\(應用程式管理\)。
 1. 選取 [创建应用]\(建立應用程式\)，然後輸入所需的資訊。
-1. 在 [授权回调域]\(回呼 URL\) 中，輸入 `https://your-tenant-name.b2clogin.com/your-tenant-name}.onmicrosoft.com/oauth2/authresp`。 例如，如果您的 `tenant_name` 是 contoso，請將 URL 設為 `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`。
+1. 在 [授权回调域]`https://your-tenant-name.b2clogin.com/your-tenant-name}.onmicrosoft.com/oauth2/authresp` **\(回呼 URL\) 中，輸入** 。 例如，如果您的 `tenant_name` 是 contoso，請將 URL 設為 `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`。
 1. 選取 [创建应用]\(建立應用程式\)。
 1. 在 [確認] 頁面上，選取 [应用管理]\(應用程式管理\) 以返回應用程式管理頁面。
 1. 在您建立的應用程式旁邊，選取 [查看]\(檢視\)。

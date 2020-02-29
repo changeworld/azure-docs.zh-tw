@@ -4,13 +4,13 @@ description: 瞭解如何整合 Azure Kubernetes Service （AKS）與 Azure Cont
 services: container-service
 manager: gwallace
 ms.topic: article
-ms.date: 09/17/2018
-ms.openlocfilehash: b1f4449728589eca4f64035d7e70d01dbc187bc4
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.date: 02/25/2020
+ms.openlocfilehash: 5d8b45137ff82db6b23b5bf31eb3e8063de343bb
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596193"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191328"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>從 Azure Kubernetes Service 對 Azure Container Registry 進行驗證
 
@@ -25,9 +25,12 @@ ms.locfileid: "77596193"
 * **Azure 訂**用帳戶的**擁有**者或**azure 帳戶管理員**角色
 * Azure CLI 2.0.73 或更新版本
 
+若要避免需要**擁有**者或**Azure 帳戶管理員**角色，您可以手動設定服務主體，或使用現有的服務主體來驗證來自 AKS 的 ACR。 如需詳細資訊，請參閱[使用服務主體進行 ACR 驗證](../container-registry/container-registry-auth-service-principal.md)或[使用提取密碼從 Kubernetes 進行驗證](../container-registry/container-registry-auth-kubernetes.md)。
+
 ## <a name="create-a-new-aks-cluster-with-acr-integration"></a>使用 ACR 整合建立新的 AKS 叢集
 
-您可以在初始建立 AKS 叢集期間，設定 AKS 和 ACR 整合。  為了讓 AKS 叢集與 ACR 互動，會使用 Azure Active Directory**服務主體**。 下列 CLI 命令可讓您授權訂用帳戶中現有的 ACR，並為服務主體設定適當的**ACRPull**角色。 請為您的參數提供有效的值。 
+您可以在初始建立 AKS 叢集期間，設定 AKS 和 ACR 整合。  為了讓 AKS 叢集與 ACR 互動，會使用 Azure Active Directory**服務主體**。 下列 CLI 命令可讓您授權訂用帳戶中現有的 ACR，並為服務主體設定適當的**ACRPull**角色。 請為您的參數提供有效的值。
+
 ```azurecli
 # set this to the name of your Azure Container Registry.  It must be globally unique
 MYACR=myContainerRegistry
@@ -37,12 +40,11 @@ az acr create -n $MYACR -g myContainerRegistryResourceGroup --sku basic
 
 # Create an AKS cluster with ACR integration
 az aks create -n myAKSCluster -g myResourceGroup --generate-ssh-keys --attach-acr $MYACR
-
 ```
 或者，您可以使用 ACR 資源識別碼指定 ACR 名稱，其格式如下：
 
-/subscriptions/\<訂用帳戶識別碼\>/resourceGroups/\<資源群組名稱\>/providers/Microsoft.ContainerRegistry/registries/\<名稱\> 
- 
+`/subscriptions/\<subscription-id\>/resourceGroups/\<resource-group-name\>/providers/Microsoft.ContainerRegistry/registries/\<name\>` 
+
 ```azurecli
 az aks create -n myAKSCluster -g myResourceGroup --generate-ssh-keys --attach-acr /subscriptions/<subscription-id>/resourceGroups/myContainerRegistryResourceGroup/providers/Microsoft.ContainerRegistry/registries/myContainerRegistry
 ```

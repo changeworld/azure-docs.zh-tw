@@ -3,20 +3,20 @@ title: 自訂原則中的宣告解析程式
 titleSuffix: Azure AD B2C
 description: 瞭解如何在 Azure Active Directory B2C 的自訂原則中使用宣告解析程式。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 03/02/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 97e51331657c62094996f79483148f2f441e6a44
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 02277d2da2e431ac1cefdd9b018af4c25f7d5a9a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78161596"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189832"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>關於 Azure Active Directory B2C 自訂原則中的宣告解析程式
 
@@ -50,10 +50,10 @@ Azure Active Directory B2C （Azure AD B2C）[自訂原則](custom-policy-overvi
 | ----- | ----------- | --------|
 | {Culture:LanguageName} | 語言的雙字母 ISO 代碼。 | en |
 | {Culture:LCID}   | 語言代碼的 LCID。 | 1033 |
-| {Culture:RegionName} | 區域的雙字母 ISO 代碼。 | US |
+| {Culture:RegionName} | 區域的雙字母 ISO 代碼。 | 美式英文 |
 | {Culture:RFC5646} | RFC5646 語言代碼。 | zh-TW |
 
-### <a name="policy"></a>原則
+### <a name="policy"></a>Policy(Windows Intune 說明：原則)
 
 | 宣告 | 描述 | 範例 |
 | ----- | ----------- | --------|
@@ -77,14 +77,14 @@ Azure Active Directory B2C （Azure AD B2C）[自訂原則](custom-policy-overvi
 | {OIDC:scope} |`scope` 查詢字串參數。 | openid |
 | {OIDC： RedirectUri} |`redirect_uri` 查詢字串參數。 | https://jwt.ms |
 
-### <a name="context"></a>Context
+### <a name="context"></a>內容
 
 | 宣告 | 描述 | 範例 |
 | ----- | ----------- | --------|
 | {Context:BuildNumber} | 身分識別體驗架構版本 (組建編號)。  | 1.0.507.0 |
 | {Context:CorrelationId} | 相互關連識別碼。  | 00000000-0000-0000-0000-000000000000 |
 | {Context:DateTimeInUtc} |日期時間 (UTC)。  | 10/10/2018 12:00:00 PM |
-| {Context:DeploymentMode} |原則部署模式。  | Production |
+| {Context:DeploymentMode} |原則部署模式。  | 生產 |
 | {Context:IPAddress} | 使用者 IP 位址。 | 11.111.111.11 |
 | {CoNtext： KMSI} | 指出是否已選取 [[讓我保持登入](custom-policy-keep-me-signed-in.md)] 核取方塊。 |  true |
 
@@ -103,7 +103,7 @@ OIDC 或 OAuth2 要求中所包含的任何參數名稱均可對應至使用者�
 
 | 宣告 | 描述 | 範例 |
 | ----- | ----------------------- | --------|
-| {oauth2:access_token} | 存取權杖。 | N/A |
+| {oauth2:access_token} | 存取語彙基元。 | N/A |
 
 
 ### <a name="saml"></a>SAML
@@ -117,11 +117,11 @@ OIDC 或 OAuth2 要求中所包含的任何參數名稱均可對應至使用者�
 | {SAML： ForceAuthn} | `ForceAuthN` 屬性值，來自 SAML 要求的 `AuthnRequest` 元素。 | True |
 | {SAML： ProviderName} | `ProviderName` 屬性值，來自 SAML 要求的 `AuthnRequest` 元素。| Contoso.com |
 
-## <a name="using-claim-resolvers"></a>使用宣告解析程式 
+## <a name="using-claim-resolvers"></a>使用宣告解析程式
 
-您可以使用宣告解析程式搭配下列元素： 
+您可以使用宣告解析程式搭配下列元素：
 
-| Item | 元素 | 設定 |
+| 項目 | 元素 | 設定 |
 | ----- | ----------------------- | --------|
 |Application Insights 技術設定檔 |`InputClaim` | |
 |[Azure Active Directory](active-directory-technical-profile.md)技術設定檔| `InputClaim`, `OutputClaim`| 1, 2|
@@ -135,7 +135,7 @@ OIDC 或 OAuth2 要求中所包含的任何參數名稱均可對應至使用者�
 |[ContentDefinitionParameters](relyingparty.md#contentdefinitionparameters)| `Parameter` | |
 |[RelyingParty](relyingparty.md#technicalprofile)技術設定檔| `OutputClaim`| 2 |
 
-設定： 
+設定：
 1. `IncludeClaimResolvingInClaimsHandling` 中繼資料必須設定為 `true`。
 1. `AlwaysUseDefaultValue` 的輸入或輸出宣告屬性必須設定為 `true`。
 
@@ -195,7 +195,7 @@ Azure AD B2C 可讓您將查詢字串參數傳遞至您的 HTML 內容定義端�
 
 ### <a name="content-definition"></a>內容定義
 
-在[ContentDefinition](contentdefinitions.md) `LoadUri`中，您可以根據所使用的參數，傳送宣告解析程式以從不同的位置提取內容。 
+在[ContentDefinition](contentdefinitions.md) `LoadUri`中，您可以根據所使用的參數，傳送宣告解析程式以從不同的位置提取內容。
 
 ```XML
 <ContentDefinition Id="api.signuporsignin">
@@ -224,7 +224,7 @@ Azure AD B2C 可讓您將查詢字串參數傳遞至您的 HTML 內容定義端�
 
 ### <a name="relying-party-policy"></a>信賴憑證者原則
 
-在[信賴](relyingparty.md)憑證者原則的技術設定檔中，您可能會想要將租使用者識別碼或相互關聯識別碼傳送至 JWT 內的信賴憑證者應用程式。 
+在[信賴](relyingparty.md)憑證者原則的技術設定檔中，您可能會想要將租使用者識別碼或相互關聯識別碼傳送至 JWT 內的信賴憑證者應用程式。
 
 ```XML
 <RelyingParty>

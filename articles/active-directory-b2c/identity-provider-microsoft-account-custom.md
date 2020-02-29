@@ -3,20 +3,20 @@ title: 使用自訂原則來設定以 Microsoft 帳戶帳戶進行登入
 titleSuffix: Azure AD B2C
 description: 如何使用自訂原則，以使用 OpenID Connect （OIDC）通訊協定來啟用 Microsoft 帳戶（MSA）作為身分識別提供者。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/19/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f4265659df786cf0a972b6dcf4f122bfc68535c1
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: b7d8fbddc86c0d05d7b0d4ce46cb06c5fc92a2cf
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77483273"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188112"
 ---
 # <a name="set-up-sign-in-with-a-microsoft-account-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則來設定以 Microsoft 帳戶進行登入
 
@@ -24,7 +24,7 @@ ms.locfileid: "77483273"
 
 本文說明如何使用 Azure Active Directory B2C （Azure AD B2C）中的[自訂原則](custom-policy-overview.md)，讓使用者能夠從 Microsoft 帳戶登入。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 完成在 [Azure Active Directory B2C 中開始使用自訂原則](custom-policy-get-started.md)中的步驟。
 - 如果您還沒有 Microsoft 帳戶，請前往 [https://www.live.com/](https://www.live.com/) 來建立。
@@ -58,7 +58,7 @@ ms.locfileid: "77483273"
 1. 選取 [**新增選擇性**宣告]。
 1. 選取您想要設定的權杖類型。
 1. 選取要新增的選擇性宣告。
-1. 按一下 [新增]。
+1. 按一下 [加入]。
 
 ## <a name="create-a-policy-key"></a>建立原則金鑰
 
@@ -73,7 +73,7 @@ ms.locfileid: "77483273"
 1. 輸入原則金鑰的 [名稱]。 例如： `MSASecret` 。 金鑰名稱前面會自動新增前置詞 `B2C_1A_`。
 1. 在 [**秘密**] 中，輸入您在上一節中記錄的用戶端密碼。
 1. 針對 [金鑰使用方法]，選取 `Signature`。
-1. 按一下 **[建立]** 。
+1. 按一下 [建立]。
 
 ## <a name="add-a-claims-provider"></a>新增宣告提供者
 

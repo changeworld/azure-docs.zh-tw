@@ -1,6 +1,6 @@
 ---
-title: T-SQL 語言元素
-description: Azure SQL 資料倉儲中所支援 T-SQL 陳述式的文件連結。
+title: T-SQL 語言項目
+description: SQL 分析中所支援 T-sql 語句的檔連結。
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: query
 ms.date: 06/13/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 02f463e12547ba64a05e04988d9c192bba4f6a27
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: edd77d711654a7f2793eb3c08b93e85fc0a89e8f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692521"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198417"
 ---
-# <a name="t-sql-language-elements-supported-in-azure-sql-data-warehouse"></a>Azure SQL 資料倉儲中支援的 T-SQL 語言元素
-Azure SQL 資料倉儲中所支援 T-SQL 語言元素的文件連結。
+# <a name="t-sql-language-elements-supported-in-sql-analytics"></a>SQL 分析中支援的 t-sql 語言元素
+SQL 分析中支援之 T-sql 語言元素的檔連結。
 
 ## <a name="core-elements"></a>核心元素
 * [語法慣例](/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)
@@ -82,7 +82,7 @@ Azure SQL 資料倉儲中所支援 T-SQL 語言元素的文件連結。
 * [|= (位元 OR EQUALS)](https://msdn.microsoft.com/library/cc627409.aspx)
 * [&= (位元 AND EQUALS)](https://msdn.microsoft.com/library/cc627427.aspx)
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>函式
 * [@@DATEFIRST](https://msdn.microsoft.com/library/ms187766.aspx)
 * [@@ERROR](https://msdn.microsoft.com/library/ms188790.aspx)
 * [@@LANGUAGE](https://msdn.microsoft.com/library/ms177557.aspx)
@@ -278,5 +278,5 @@ Azure SQL 資料倉儲中所支援 T-SQL 語言元素的文件連結。
 * [SET XACT_ABORT](https://msdn.microsoft.com/library/ms188792.aspx)
 
 ## <a name="next-steps"></a>後續步驟
-如需更多的參考資訊，請參閱 [Azure SQL 資料倉儲中的 T-SQL 陳述式](sql-data-warehouse-reference-tsql-statements.md)和 [Azure SQL 資料倉儲中的系統檢視表](sql-data-warehouse-reference-tsql-system-views.md)。
+如需更多的參考資訊，請參閱[Sql 分析中的 t-sql 語句](sql-data-warehouse-reference-tsql-statements.md)和[sql 分析中的系統檢視](sql-data-warehouse-reference-tsql-system-views.md)。
 

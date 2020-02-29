@@ -6,20 +6,21 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9f88af7027f6c907b5b55eb9aac545d98e2fbb7a
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: b9ff80275cc89dde0db215856c2e134c4b273020
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70880842"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199728"
 ---
 # <a name="monitor-and-manage-certificate-creation"></a>監視和管理憑證建立
-適用於：Azure
+適用對象：Azure
 
-下列 
+支援下列 
 
 本文中所述的情節/作業如下：
 
@@ -413,7 +414,7 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 
 ```
 
-|元素名稱|必要項|Type|Version|描述|
+|元素名稱|必要項|類型|版本|描述|
 |------------------|--------------|----------|-------------|-----------------|
 |x5c|是|陣列|\<簡介版本 >|作為 base64 字串陣列的 X509 憑證鏈結。|
 

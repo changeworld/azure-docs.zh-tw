@@ -5,15 +5,16 @@ services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
+ms.subservice: general
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 28e79dffb206e8a62410bf3b4e0e239879b51224
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 6c4923e86f8678458d6301503043413fb8a5629b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806672"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197363"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Azure Key Vault 節流指導方針
 
@@ -38,9 +39,9 @@ Key Vault 最初是以[Azure Key Vault 服務限制](key-vault-service-limits.md
 1. 如果您的應用程式包含多個需要讀取相同秘密的節點，則請考慮使用「扇出」模式，其中一個實體會從 Key Vault 讀取秘密，並將風扇輸出到所有節點。   只在記憶體中快取抓取的秘密。
 如果您發現上述程式仍然不符合您的需求，請填寫下表並與我們聯絡，以判斷可新增哪些額外的容量（以下範例僅供說明之用）。
 
-| 保存庫名稱 | 保存庫區域 | 物件類型（秘密、金鑰或 Cert） | 作業（秒） * | 索引鍵類型 | 金鑰長度或曲線 | HSM 金鑰？| 需要穩定狀態 RPS | 需要尖峰 RPS |
+| 保存庫名稱 | 保存庫區域 | 物件類型（秘密、金鑰或 Cert） | 作業（秒） * | 金鑰類型 | 金鑰長度或曲線 | HSM 金鑰？| 需要穩定狀態 RPS | 需要尖峰 RPS |
 |--|--|--|--|--|--|--|--|--|
-| https://mykeyvault.vault.azure.net/ | | 索引鍵 | 簽署 | EC | P-256 | 否 | 200 | 1000 |
+| https://mykeyvault.vault.azure.net/ | | Key | 簽署 | EC | P-256 | 否 | 200 | 1000 |
 
 \* 需可能值的完整清單，請參閱[Azure Key Vault 作業](/rest/api/keyvault/key-operations)。
 
@@ -95,7 +96,7 @@ SecretClientOptions options = new SecretClientOptions()
 
 此時，您應該不會收到 HTTP 429 回應碼。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 如需在 Microsoft Cloud 上進行節流處理的詳細資訊，請參閱[節流模式](https://docs.microsoft.com/azure/architecture/patterns/throttling) \(英文\)。
 

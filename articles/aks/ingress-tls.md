@@ -4,12 +4,12 @@ description: 瞭解如何安裝及設定 NGINX 輸入控制器，其使用 Let's
 services: container-service
 ms.topic: article
 ms.date: 01/29/2020
-ms.openlocfilehash: 6b465aeb08f14e48249be9587e5fdee1f4b08ba4
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 6f497ee3edd5ee831c091a5a50629df81673acea
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77595530"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191311"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 上建立 HTTPS 輸入控制器
 
@@ -17,7 +17,7 @@ ms.locfileid: "77595530"
 
 本文說明如何在 Azure Kubernetes Service （AKS）叢集中部署[NGINX 輸入控制器][nginx-ingress]。 [Cert-manager][cert-manager]專案是用來自動產生和設定[Let's Encrypt][lets-encrypt]憑證。 最後，會有兩個應用程式在 AKS 叢集中執行，且均可透過單一 IP 位址來存取。
 
-您也可以：
+您還可以：
 
 - [建立具有外部網路連線的基本輸入控制器][aks-ingress-basic]
 - [啟用 HTTP 應用程式路由附加元件][aks-http-app-routing]
@@ -70,8 +70,8 @@ helm install nginx stable/nginx-ingress \
 $ kubectl get service -l app=nginx-ingress --namespace ingress-basic
 
 NAME                                             TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)                      AGE
-billowing-kitten-nginx-ingress-controller        LoadBalancer   10.0.182.160   MY_EXTERNAL_IP  80:30920/TCP,443:30426/TCP   20m
-billowing-kitten-nginx-ingress-default-backend   ClusterIP      10.0.255.77    <none>          80/TCP                       20m
+nginx-ingress-controller                         LoadBalancer   10.0.182.160   MY_EXTERNAL_IP  80:30920/TCP,443:30426/TCP   20m
+nginx-ingress-default-backend                    ClusterIP      10.0.255.77    <none>          80/TCP                       20m
 ```
 
 尚未建立任何輸入規則。 如果您瀏覽至公用 IP 位址，即會顯示 NGINX 輸入控制器的預設 404 頁面。
@@ -116,10 +116,10 @@ NGINX 輸入控制器支援 TLS 終止。 有數種方式可擷取和設定 HTTP
 
 ```console
 # Install the CustomResourceDefinition resources separately
-kubectl apply --validate=false -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.12/deploy/manifests/00-crds.yaml --namespace ingress-basic
+kubectl apply --validate=false -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.13/deploy/manifests/00-crds.yaml
 
 # Label the ingress-basic namespace to disable resource validation
-kubectl label namespace ingress-basic certmanager.k8s.io/disable-validation=true
+kubectl label namespace ingress-basic cert-manager.io/disable-validation=true
 
 # Add the Jetstack Helm repository
 helm repo add jetstack https://charts.jetstack.io
@@ -128,7 +128,11 @@ helm repo add jetstack https://charts.jetstack.io
 helm repo update
 
 # Install the cert-manager Helm chart
-helm install cert-manager --namespace ingress-basic --version v0.12.0 jetstack/cert-manager --set ingressShim.defaultIssuerName=letsencrypt --set ingressShim.defaultIssuerKind=ClusterIssuer
+helm install \
+  cert-manager \
+  --namespace ingress-basic \
+  --version v0.13.0 \
+  jetstack/cert-manager
 ```
 
 如需 cert-管理員設定的詳細資訊，請參閱[cert-管理員專案][cert-manager]。
@@ -302,14 +306,14 @@ $ helm list --namespace ingress-basic
 NAME                    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                   APP VERSION
 aks-helloworld          ingress-basic   1               2020-01-15 10:24:32.054871 -0600 CST    deployed        aks-helloworld-0.1.0               
 aks-helloworld-two      ingress-basic   1               2020-01-15 10:24:37.671667 -0600 CST    deployed        aks-helloworld-0.1.0               
-cert-manager            ingress-basic   1               2020-01-15 10:23:36.515514 -0600 CST    deployed        cert-manager-v0.12.0    v0.12.0    
+cert-manager            ingress-basic   1               2020-01-15 10:23:36.515514 -0600 CST    deployed        cert-manager-v0.13.0    v0.13.0    
 nginx                   ingress-basic   1               2020-01-15 10:09:45.982693 -0600 CST    deployed        nginx-ingress-1.29.1    0.27.0  
 ```
 
 使用 `helm delete` 命令刪除版本。 下列範例會刪除 NGINX 輸入部署和兩個範例 AKS hello world 應用程式。
 
 ```
-$ helm delete aks-helloworld aks-helloworld-two cert-manager nginx --namespace ingress-basic
+$ helm uninstall aks-helloworld aks-helloworld-two cert-manager nginx --namespace ingress-basic
 
 release "aks-helloworld" uninstalled
 release "aks-helloworld-two" uninstalled
@@ -343,7 +347,7 @@ kubectl delete namespace ingress-basic
 - [NGINX 輸入控制器][nginx-ingress]
 - [cert-管理員][cert-manager]
 
-您也可以：
+您還可以：
 
 - [建立具有外部網路連線的基本輸入控制器][aks-ingress-basic]
 - [啟用 HTTP 應用程式路由附加元件][aks-http-app-routing]

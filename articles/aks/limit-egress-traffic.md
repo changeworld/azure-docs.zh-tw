@@ -4,12 +4,12 @@ description: 瞭解在 Azure Kubernetes Service （AKS）中控制輸出流量�
 services: container-service
 ms.topic: article
 ms.date: 01/21/2020
-ms.openlocfilehash: a76f4eb8680d07193feb29450fdba7bb2a710a68
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: d69921ce23e961879fea6be68838f86bfcc703d0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77595003"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191294"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>控制 Azure Kubernetes Service 中叢集節點的輸出流量（AKS）
 
@@ -62,7 +62,7 @@ AKS 叢集需要下列輸出埠/網路規則：
 
 - Azure 全域
 
-| FQDN                       | 連接埠      | 使用      |
+| FQDN                       | Port      | 用法      |
 |----------------------------|-----------|----------|
 | *. hcp。\<位置\>. azmk8s.io | HTTPS：443、TCP：22、TCP：9000 | 此位址是 API 伺服器端點。 以部署 AKS 叢集所在的區域取代 *\<位置\>* 。 |
 | *. 執行。\<位置\>. azmk8s.io | HTTPS：443、TCP：22、TCP：9000 | 此位址是 API 伺服器端點。 以部署 AKS 叢集所在的區域取代 *\<位置\>* 。 |
@@ -76,7 +76,7 @@ AKS 叢集需要下列輸出埠/網路規則：
 
 - Azure China 21Vianet
 
-| FQDN                       | 連接埠      | 使用      |
+| FQDN                       | Port      | 用法      |
 |----------------------------|-----------|----------|
 | *. hcp。\<位置\>. cx.prod.service.azk8s.cn | HTTPS：443、TCP：22、TCP：9000 | 此位址是 API 伺服器端點。 以部署 AKS 叢集所在的區域取代 *\<位置\>* 。 |
 | *. 執行。\<位置\>. cx.prod.service.azk8s.cn | HTTPS：443、TCP：22、TCP：9000 | 此位址是 API 伺服器端點。 以部署 AKS 叢集所在的區域取代 *\<位置\>* 。 |
@@ -90,7 +90,7 @@ AKS 叢集需要下列輸出埠/網路規則：
 
 - Azure Government
 
-| FQDN                       | 連接埠      | 使用      |
+| FQDN                       | Port      | 用法      |
 |----------------------------|-----------|----------|
 | *. hcp。\<位置\>. cx.aks.containerservice.azure.us | HTTPS：443、TCP：22、TCP：9000 | 此位址是 API 伺服器端點。 以部署 AKS 叢集所在的區域取代 *\<位置\>* 。 |
 | *. 執行。\<位置\>. cx.aks.containerservice.azure.us | HTTPS：443、TCP：22、TCP：9000 | 此位址是 API 伺服器端點。 以部署 AKS 叢集所在的區域取代 *\<位置\>* 。 |
@@ -108,7 +108,7 @@ AKS 叢集需要下列輸出埠/網路規則：
 
 建議使用下列 FQDN/應用程式規則，讓 AKS 叢集正常運作：
 
-| FQDN                                    | 連接埠      | 使用      |
+| FQDN                                    | Port      | 用法      |
 |-----------------------------------------|-----------|----------|
 | security.ubuntu.com、azure.archive.ubuntu.com、changelogs.ubuntu.com | HTTP：80   | 此位址可讓 Linux 叢集節點下載所需的安全性修補程式和更新。 |
 
@@ -116,7 +116,7 @@ AKS 叢集需要下列輸出埠/網路規則：
 
 已啟用 GPU 的 AKS 叢集需要下列 FQDN/應用程式規則：
 
-| FQDN                                    | 連接埠      | 使用      |
+| FQDN                                    | Port      | 用法      |
 |-----------------------------------------|-----------|----------|
 | nvidia.github.io | HTTPS：443 | 此位址用於以 GPU 為基礎的節點上進行正確的驅動程式安裝和操作。 |
 | us.download.nvidia.com | HTTPS：443 | 此位址用於以 GPU 為基礎的節點上進行正確的驅動程式安裝和操作。 |
@@ -126,24 +126,24 @@ AKS 叢集需要下列輸出埠/網路規則：
 
 已啟用容器 Azure 監視器的 AKS 叢集需要下列 FQDN/應用程式規則：
 
-| FQDN                                    | 連接埠      | 使用      |
+| FQDN                                    | Port      | 用法      |
 |-----------------------------------------|-----------|----------|
 | dc.services.visualstudio.com | HTTPS：443  | 這適用于使用 Azure 監視器的正確計量和監視遙測。 |
 | *.ods.opinsights.azure.com    | HTTPS：443 | Azure 監視器用於內嵌 log analytics 資料。 |
 | *.oms.opinsights.azure.com | HTTPS：443 | Omsagent 會使用此位址來驗證 log analytics 服務。 |
-|*.microsoftonline.com | HTTPS：443 | 這是用來驗證和傳送計量給 Azure 監視器。 |
+|\* microsoftonline.com | HTTPS：443 | 這是用來驗證和傳送計量給 Azure 監視器。 |
 |*. monitoring.azure.com | HTTPS：443 | 這是用來將計量資料傳送至 Azure 監視器。 |
 
 ## <a name="required-addresses-and-ports-with-azure-dev-spaces-enabled"></a>已啟用 Azure Dev Spaces 所需的位址和埠
 
 啟用 Azure Dev Spaces 的 AKS 叢集需要下列 FQDN/應用程式規則：
 
-| FQDN                                    | 連接埠      | 使用      |
+| FQDN                                    | Port      | 用法      |
 |-----------------------------------------|-----------|----------|
 | cloudflare.docker.com | HTTPS：443 | 此位址可用來提取 linux alpine 和其他 Azure Dev Spaces 映射 |
 | gcr.io | HTTP：443 | 此位址可用來提取 helm/tiller 映射 |
 | storage.googleapis.com | HTTP：443 | 此位址可用來提取 helm/tiller 映射 |
-| azds-<guid>。<location>。 azds.io | HTTPS：443 | 與您的控制器 Azure Dev Spaces 後端服務進行通訊。 您可以在% USERPROFILE%\.azds\settings.json 的 "dataplaneFqdn" 中找到確切的 FQDN |
+| azds-\<guid\>。\<位置\>. azds.io | HTTPS：443 | 與您的控制器 Azure Dev Spaces 後端服務進行通訊。 您可以在% USERPROFILE%\.azds\settings.json 的 "dataplaneFqdn" 中找到確切的 FQDN |
 
 ## <a name="required-addresses-and-ports-for-aks-clusters-with-azure-policy-in-public-preview-enabled"></a>已啟用 Azure 原則（處於公開預覽狀態）的 AKS 叢集所需的位址和埠
 
@@ -152,11 +152,11 @@ AKS 叢集需要下列輸出埠/網路規則：
 
 已啟用 Azure 原則的 AKS 叢集需要下列 FQDN/應用程式規則。
 
-| FQDN                                    | 連接埠      | 使用      |
+| FQDN                                    | Port      | 用法      |
 |-----------------------------------------|-----------|----------|
 | gov-prod-policy-data.trafficmanager.net | HTTPS：443 | 此位址會用來進行 Azure 原則的正確操作。 （目前在 AKS 中為預覽狀態） |
 | raw.githubusercontent.com | HTTPS：443 | 此位址是用來從 GitHub 提取內建原則，以確保 Azure 原則的正確操作。 （目前在 AKS 中為預覽狀態） |
-| *. gk。<location>。 azmk8s.io | HTTPS：443 | Azure 原則附加元件，會與在主伺服器中執行的閘道管理員 audit 端點交談，以取得審核結果。 |
+| *. gk。\<位置\>. azmk8s.io | HTTPS：443   | Azure 原則附加元件，會與在主伺服器中執行的閘道管理員 audit 端點交談，以取得審核結果。 |
 | dc.services.visualstudio.com | HTTPS：443 | 將遙測資料傳送至 application insights 端點的 Azure 原則附加元件。 |
 
 ## <a name="required-by-windows-server-based-nodes-in-public-preview-enabled"></a>已啟用 Windows Server 架構節點的必要項（公開預覽）
@@ -166,7 +166,7 @@ AKS 叢集需要下列輸出埠/網路規則：
 
 以 Windows Server 為基礎的 AKS 叢集需要下列 FQDN/應用程式規則：
 
-| FQDN                                    | 連接埠      | 使用      |
+| FQDN                                    | Port      | 用法      |
 |-----------------------------------------|-----------|----------|
 | onegetcdn.azureedge.net、winlayers.blob.core.windows.net、winlayers.cdn.mscr.io、go.microsoft.com | HTTPS：443 | 安裝與 windows 相關的二進位檔 |
 | mp.microsoft.com、www<span></span>. msftconnecttest.com、ctldl.windowsupdate.com | HTTP：80 | 安裝與 windows 相關的二進位檔 |

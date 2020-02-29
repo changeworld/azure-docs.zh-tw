@@ -3,20 +3,20 @@ title: 開始使用自訂原則
 titleSuffix: Azure AD B2C
 description: 瞭解如何開始使用 Azure Active Directory B2C 中的自訂原則。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 04978b561e3b0057318d08146f344411dec55ee4
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: dc87628d8b47435012c3d20ec2e72ac186983555
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78161664"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189322"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中開始使用自訂原則
 
@@ -24,7 +24,7 @@ ms.locfileid: "78161664"
 
 [自訂原則](custom-policy-overview.md)是定義 Azure Active Directory B2C （Azure AD B2C）租使用者行為的設定檔。 在此文章中，您會建立自訂原則，使用電子郵件地址與密碼來支援本機帳戶註冊或登入。 您也會準備環境以新增識別提供者。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 如果您還沒有帳戶，請建立連結到您 Azure 訂用帳戶的[Azure AD B2C 租](tutorial-create-tenant.md)使用者。
 - 在您建立的租使用者中[註冊您的應用程式](tutorial-register-applications.md)，讓它可以與 Azure AD B2C 進行通訊。

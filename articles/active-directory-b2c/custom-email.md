@@ -3,20 +3,20 @@ title: 自訂電子郵件驗證
 titleSuffix: Azure AD B2C
 description: 瞭解如何自訂在您的客戶註冊使用已啟用 Azure AD B2C 的應用程式時，所傳送的驗證電子郵件。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/05/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2bda00924015bf5abc616b7c346eacfeda53c2ed
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 32747e0e7bb1f979203fa886647712e0fd69faee
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77045945"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189526"
 ---
 # <a name="custom-email-verification-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的自訂電子郵件驗證
 

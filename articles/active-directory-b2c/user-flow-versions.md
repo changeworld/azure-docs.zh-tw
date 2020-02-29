@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C 中的使用者流程版本 | Microsoft Docs
 description: 了解 Azure Active Directory B2C 中可用的使用者流程版本。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/25/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d7e174245755659494dfe1243c39619ae37f0f33
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 40d21d3390396e0cb7e44d4e19598f9b0b691087
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840072"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78185613"
 ---
 # <a name="user-flow-versions-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的使用者流程版本
 
@@ -28,7 +28,7 @@ Azure Active Directory B2C （Azure AD B2C）中的使用者流程，可協助�
 
 ## <a name="v1"></a>V1
 
-| 使用者流程 | 建議 | 說明 |
+| 使用者流程 | 建議 | 描述 |
 | --------- | ----------- | ----------- |
 | 密碼重設 | 是 | 讓使用者能夠在驗證電子郵件後選擇新密碼。 使用此使用者流程，您可以設定： <ul><li>[多重要素驗證](custom-policy-multi-factor-authentication.md)</li><li>權杖相容性設定</li><li>[密碼複雜度需求](user-flow-password-complexity.md)</li></ul> |
 | 設定檔編輯 | 是 | 讓使用者能夠設定其使用者屬性。 使用此使用者流程，您可以設定： <ul><li>[權杖存留期](tokens-overview.md)</li><li>權杖相容性設定</li><li>工作階段行為</li></ul> |
@@ -37,15 +37,15 @@ Azure Active Directory B2C （Azure AD B2C）中的使用者流程，可協助�
 | 註冊 | 否 | 讓使用者能夠建立帳戶。 使用此使用者流程，您可以設定： <ul><li>[多重要素驗證](custom-policy-multi-factor-authentication.md)</li><li>[權杖存留期](tokens-overview.md)</li><li>權杖相容性設定</li><li>工作階段行為</li><li>[密碼複雜度需求](user-flow-password-complexity.md)</li></ul> |
 | 註冊與登入 | 是 | 讓使用者帳戶能夠建立帳戶或登入其帳戶。 使用此使用者流程，您可以設定： <ul><li>[多重要素驗證](custom-policy-multi-factor-authentication.md)</li><li>[權杖存留期](tokens-overview.md)</li><li>權杖相容性設定</li><li>工作階段行為</li><li>[密碼複雜度需求](user-flow-password-complexity.md)</li></ul>|
 
-## <a name="v11"></a>V1。1
+## <a name="v11"></a>1\.1 版
 
-| 使用者流程 | 建議 | 說明 |
+| 使用者流程 | 建議 | 描述 |
 | --------- | ----------- | ----------- |
 | 密碼重設 v1。1 | 否 | 允許使用者在驗證其電子郵件之後選擇新密碼（可用的新頁面配置）。 使用此使用者流程，您可以設定： <ul><li>[多重要素驗證](custom-policy-multi-factor-authentication.md)</li><li>權杖相容性設定</li><li>[密碼複雜度需求](user-flow-password-complexity.md)</li></ul> |
 
 ## <a name="v2"></a>V2
 
-| 使用者流程 | 建議 | 說明 |
+| 使用者流程 | 建議 | 描述 |
 | --------- | ----------- | ----------- |
 | 密碼重設 v2 | 否 | 讓使用者能夠在驗證電子郵件後選擇新密碼。 使用此使用者流程，您可以設定： <ul><li>[多重要素驗證](custom-policy-multi-factor-authentication.md)</li><li>權杖相容性設定</li><li>[年齡管制](basic-age-gating.md)</li><li>[密碼複雜度需求](user-flow-password-complexity.md)</li></ul> |
 | 設定檔編輯 v2 | 是 | 讓使用者能夠設定其使用者屬性。 使用此使用者流程，您可以設定： <ul><li>[權杖存留期](tokens-overview.md)</li><li>權杖相容性設定</li><li>工作階段行為</li></ul> |

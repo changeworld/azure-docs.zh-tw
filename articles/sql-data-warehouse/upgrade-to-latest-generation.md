@@ -1,6 +1,6 @@
 ---
 title: 升級至最新一代
-description: 將「Azure SQL 資料倉儲」升級至最新一代 Azure 硬體和儲存體架構。
+description: 將 Azure Synapse Analytics SQL 集區升級至最新一代的 Azure 硬體和儲存體架構。
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
@@ -11,33 +11,33 @@ ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 02c426cd921f4af19f3b8c271e4b1c08eae2c3c2
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 97cbae93b1ee2dd6ca4916f4efbb964141b33a3f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692449"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200748"
 ---
-# <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>升級 SQL 資料倉儲可將效能發揮到極限
+# <a name="optimize-performance-by-upgrading-azure-synapse-analytics-sql-pool"></a>藉由升級 Azure Synapse Analytics SQL 集區，將效能優化
 
-將「Azure SQL 資料倉儲」升級至最新一代 Azure 硬體和儲存體架構。
+將 SQL 集區升級至最新一代的 Azure 硬體和儲存體架構。
 
 ## <a name="why-upgrade"></a>為何要升級？
 
-您現在可以在[所支援區域](gen2-migration-schedule.md#automated-schedule-and-region-availability-table)的 Azure 入口網站中順暢地升級至 SQL 資料倉儲計算最佳化 Gen2 層。 如果您所在的區域不支援自我升級，您可以升級至支援的區域，或靜候您的區域支援自我升級。 請立即升級，以利用最新一代的 Azure 硬體和增強的儲存體架構，包括更快的效能、更高的延展性，以及無限制的單欄式儲存體。 
+您現在可以在[支援區域](gen2-migration-schedule.md#automated-schedule-and-region-availability-table)的 Azure 入口網站中順暢地升級至 SQL 集區計算優化 Gen2 層。 如果您所在的區域不支援自我升級，您可以升級至支援的區域，或靜候您的區域支援自我升級。 請立即升級，以利用最新一代的 Azure 硬體和增強的儲存體架構，包括更快的效能、更高的延展性，以及無限制的單欄式儲存體。 
 
 > [!VIDEO https://www.youtube.com/embed/9B2F0gLoyss]
 
 ## <a name="applies-to"></a>適用於
 
-這項升級適用於[所支援區域](gen2-migration-schedule.md#automated-schedule-and-region-availability-table)中的計算最佳化 Gen1 層資料倉儲。
+這項升級適用于[支援區域](gen2-migration-schedule.md#automated-schedule-and-region-availability-table)中的計算優化 GEN1 層 SQL 集區。
 
 ## <a name="before-you-begin"></a>開始之前
 
 1. 確認您所在的[區域](gen2-migration-schedule.md#automated-schedule-and-region-availability-table)是否支援從 GEN1 移轉至 GEN2。 請注意自動移轉日期。 若要避免與自動化程序發生衝突，請規劃在自動化程序開始日期之前進行手動移轉。
 2. 如果您所在的區域尚不提供支援，請繼續檢查您所要新增的區域，或[使用還原升級](#upgrade-from-an-azure-geographical-region-using-restore-through-the-azure-portal)至支援的區域。
 3. 如果您所在的區域已提供支援，則請[透過 Azure 入口網站來升級](#upgrade-in-a-supported-region-using-the-azure-portal)
-4. 使用下列對應，根據計算最佳化 Gen1 層目前的效能層級，針對資料倉儲**選取建議的效能層級**：
+4. 使用下列對應，根據您在計算優化 Gen1 層上目前的效能層級，為 SQL 集區**選取建議的效能層級**：
 
    | 計算最佳化 Gen1 層 | 計算最佳化 Gen2 層 |
    | :-------------------------: | :-------------------------: |
@@ -70,10 +70,10 @@ ms.locfileid: "73692449"
 
 登入 [Azure 入口網站](https://portal.azure.com/)。
 
-1. 如果要升級的計算最佳化 Gen1 層資料倉儲已暫停，請[繼續執行資料倉儲](pause-and-resume-compute-portal.md)。
+1. 如果要升級的計算優化 Gen1 層 SQL 集區已暫停，請[繼續 sql 集](pause-and-resume-compute-portal.md)區。
 
    > [!NOTE]
-   > 必須執行 Azure SQL 資料倉儲才能移轉至 Gen2。
+   > SQL 集區必須正在執行，才能遷移至 Gen2。
 
 2. 請做好停機幾分鐘的準備。 
 
@@ -111,24 +111,24 @@ ms.locfileid: "73692449"
 
 ## <a name="start-the-upgrade"></a>開始升級
 
-1. 在 Azure 入口網站中移至計算最佳化 Gen1 層資料倉儲。 如果要升級的計算最佳化 Gen1 層資料倉儲已暫停，請[繼續執行資料倉儲](pause-and-resume-compute-portal.md)。 
-2. 選取 [工作] 索引標籤底下的 [**升級至 Gen2**卡]： ![Upgrade_1](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_1.png)
+1. 在 Azure 入口網站中，移至您的計算優化 Gen1 SQL 集區。 如果要升級的計算優化 Gen1 層 SQL 集區已暫停，請[繼續 sql 集](pause-and-resume-compute-portal.md)區。 
+2. 選取 [工作] 索引標籤底下的 [**升級至 Gen2**卡]： ![Upgrade_1](./media/sql-data-warehouse-upgrade-to-latest-generation/upgrade-to-gen2-1.png)
     
     > [!NOTE]
     > 如果您未在 [工作] 索引標籤下看見 [升級至 Gen2] 卡片，您的訂用帳戶類型受限於目前的區域。
     > [提交支援票證](sql-data-warehouse-get-started-create-support-ticket.md)，將您的訂用帳戶列入允許清單中。
 
-3. 在升級之前，請確定您的工作負載已完成執行並停止。 在您的資料倉儲重新上線成為計算最佳化 Gen2 層資料倉儲之前，會發生幾分鐘的停機時間。 **選取升級**：
+3. 在升級之前，請確定您的工作負載已完成執行並停止。 您會在 SQL 集區重新上線成為計算優化 Gen2 層 SQL 集區之前的幾分鐘內經歷停機時間。 **選取升級**：
 
-   ![Upgrade_2](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_2.png)
+   ![Upgrade_2](./media/sql-data-warehouse-upgrade-to-latest-generation/upgrade-to-gen2-2.png)
 
 4. 檢查 Azure 入口網站中的狀態來**監視您的升級**：
 
-   ![Upgrade3](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_3.png)
+   ![Upgrade3](./media/sql-data-warehouse-upgrade-to-latest-generation/upgrade-to-gen2-3.png)
 
    升級程序的第一個步驟會進行調整規模作業 (「升級 - 離線」)，期間所有工作階段都會終止，且連線將會予以捨棄。 
 
-   升級程序的第二個步驟是資料移轉 (「升級 - 上線」)。 資料移轉是在線上慢慢進行的背景程序。 此程序會將單欄式資料慢慢地從舊的儲存體架構移至使用本機 SSD 快取的新儲存體架構。 在此期間，您的資料倉儲將會上線以進行查詢和載入。 您的資料無論已遷移與否，都將可供查詢。 資料移轉會依據您的資料大小、效能層級和資料行存放區的區段數目，而以不同的速率進行。 
+   升級程序的第二個步驟是資料移轉 (「升級 - 上線」)。 資料移轉是在線上慢慢進行的背景程序。 此程序會將單欄式資料慢慢地從舊的儲存體架構移至使用本機 SSD 快取的新儲存體架構。 在這段期間，您的 SQL 集區會在線上進行查詢和載入。 您的資料無論已遷移與否，都將可供查詢。 資料移轉會依據您的資料大小、效能層級和資料行存放區的區段數目，而以不同的速率進行。 
 
 5. **選擇性建議：** 調整作業完成之後，您就可以加速資料移轉的背景處理常式。 您可以用較大的 SLO 和資源類別，在您會查詢的所有主要資料行存放區資料表上執行 [Alter Index rebuild](sql-data-warehouse-tables-index.md)，以強制移動資料。 相較於會慢慢進行的背景程序，這項作業會**離線**進行，因此可能需要數小時才能完成 (視資料表的數量和大小而定)。 不過一旦完成，資料移轉速度就會大幅提升，因為增強後的新儲存體架構具有高品質的資料列群組。
  
@@ -186,7 +186,7 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
-2. 流覽至您想要為其建立還原點的 SQL 資料倉儲。
+2. 流覽至您想要為其建立還原點的 SQL 集區。
 
 3. 在 [概觀] 區段頂端，選取 [+ 新增還原點]。
 
@@ -199,18 +199,14 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 ## <a name="restore-an-active-or-paused-database-using-the-azure-portal"></a>使用 Azure 入口網站還原作用中或已暫停的資料庫
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 流覽至您想要從中還原的 SQL 資料倉儲。
+2. 流覽至您想要從中還原的 SQL 集區。
 3. 在 [概觀] 區段頂端，選取 [還原]。
 
     ![ 還原概觀](./media/sql-data-warehouse-restore-database-portal/restoring_0.png)
 
-4. 選取 [自動還原點] 或 [使用者定義的還原點]。
+4. 選取 [**自動還原點**] 或 [**使用者定義的還原點**]。 若為使用者定義的還原點，請**選取使用者定義的還原點**，或**建立新的使用者定義還原點**。 針對伺服器，選取 [**建立新**的]，然後在 Gen2 支援的地理區域中選擇伺服器。 
 
     ![自動還原點](./media/sql-data-warehouse-restore-database-portal/restoring_1.png)
-
-5. 針對使用者定義的還原點，**選取還原點**或**建立新的使用者定義還原點**。 選擇 Gen2 支援地理區域中的伺服器。 
-
-    ![使用者定義的還原點](./media/sql-data-warehouse-restore-database-portal/restoring_2_udrp.png)
 
 ## <a name="restore-from-an-azure-geographical-region-using-powershell"></a>使用 PowerShell 從 Azure 地理區域還原
 
@@ -249,8 +245,8 @@ $GeoRestoredDatabase.status
 如果來源資料庫是啟用 TDE，則復原的資料庫將是啟用 TDE。
 
 
-如果您遇到任何關於資料倉儲的問題，請建立[支援票證](sql-data-warehouse-get-started-create-support-ticket.md)以及將「Gen2 升級」當作可能原因。
+如果您遇到 SQL 集區的任何問題，請建立[支援要求](sql-data-warehouse-get-started-create-support-ticket.md)，並參考「Gen2 升級」做為可能的原因。
 
 ## <a name="next-steps"></a>後續步驟
 
-您升級的資料倉儲已上線。 若要充分利用增強的架構，請參閱[適用於工作負載管理的資源類別](resource-classes-for-workload-management.md)。
+您升級的 SQL 集區已上線。 若要充分利用增強的架構，請參閱[適用於工作負載管理的資源類別](resource-classes-for-workload-management.md)。

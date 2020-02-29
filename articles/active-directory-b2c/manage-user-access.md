@@ -2,20 +2,20 @@
 title: 在 Azure Active Directory B2C 中管理使用者存取 | Microsoft Docs
 description: 瞭解如何使用 Azure AD B2C 來識別未成年人、收集出生日期和國家/地區資料，以及取得應用程式中使用規定的接受。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/24/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fcdbf0d56b79662cccd90380489ede672e6a0a66
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: f04a3fea3801f917a3ae4aced04ef3824d1cfa82
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484106"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184514"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中管理使用者存取
 
@@ -78,7 +78,7 @@ ms.locfileid: "77484106"
 
 4. 如果兩項計算都未傳回 true，則計算會傳回**成人**。
 
-如果應用程式已透過其他方法可靠地收集 DOB 或國家/地區資料，應用程式可能會使用圖形 API 來以這項資訊更新使用者記錄。 例如：
+如果應用程式已透過其他方法可靠地收集 DOB 或國家/地區資料，應用程式可能會使用圖形 API 來以這項資訊更新使用者記錄。 例如，
 
 - 如果已知使用者是成人，請以**成人**值更新目錄屬性 **ageGroup**。
 - 如果已知使用者是未成年人，請以**未成年人**值更新目錄屬性 **ageGroup**，並視需要設定 **consentProvidedForMinor**。

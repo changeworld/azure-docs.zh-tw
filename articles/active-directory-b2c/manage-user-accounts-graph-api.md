@@ -3,20 +3,20 @@ title: 使用 Microsoft Graph API 來管理使用者
 titleSuffix: Azure AD B2C
 description: 如何藉由呼叫 Microsoft Graph API 並使用應用程式身分識別，來管理 Azure AD B2C 租使用者中的使用者，以自動化進程。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b53405d199072211304e21b681de646c4e41243c
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 8d65217a109a851275d3ba9205024f32bd182d4f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585623"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187311"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>使用 Microsoft Graph 管理 Azure AD B2C 的使用者帳戶
 
@@ -61,9 +61,9 @@ Microsoft Graph 可讓您在 Microsoft Graph API 中提供 create、read、updat
 
 | 屬性   | 類型 |描述|
 |:---------------|:--------|:----------|
-|signInType|字串| 在您的目錄中指定使用者登入類型。 針對本機帳戶： `emailAddress`、`emailAddress1`、`emailAddress2`、`emailAddress3`、`userName`，或您喜歡的任何其他類型。 社交帳戶必須設定為 `federated`。|
-|簽發者|字串|指定身分識別的簽發者。 對於本機帳戶（其中**signInType**不是 `federated`），此屬性是本機 B2C 租使用者的預設功能變數名稱，例如 `contoso.onmicrosoft.com`。 對於社交身分識別（其中**signInType**是 `federated`），值是簽發者的名稱，例如 `facebook.com`|
-|issuerAssignedId|字串|指定簽發者指派給使用者的唯一識別碼。 **簽發者**和**issuerAssignedId**的組合在您的租使用者中必須是唯一的。 若為本機帳戶，當**signInType**設定為 `emailAddress` 或 `userName`時，它代表使用者的登入名稱。<br>當**signInType**設定為時： <ul><li>`emailAddress` （或從 `emailAddress` （例如 `emailAddress1`）開始**issuerAssignedId**必須是有效的電子郵件地址</li><li>`userName` （或任何其他值）， **issuerAssignedId**必須是[電子郵件地址的有效本機部分](https://tools.ietf.org/html/rfc3696#section-3)</li><li>`federated`， **issuerAssignedId**代表同盟帳戶的唯一識別碼</li></ul>|
+|signInType|string| 在您的目錄中指定使用者登入類型。 針對本機帳戶： `emailAddress`、`emailAddress1`、`emailAddress2`、`emailAddress3`、`userName`，或您喜歡的任何其他類型。 社交帳戶必須設定為 `federated`。|
+|簽發者|string|指定身分識別的簽發者。 對於本機帳戶（其中**signInType**不是 `federated`），此屬性是本機 B2C 租使用者的預設功能變數名稱，例如 `contoso.onmicrosoft.com`。 對於社交身分識別（其中**signInType**是 `federated`），值是簽發者的名稱，例如 `facebook.com`|
+|issuerAssignedId|string|指定簽發者指派給使用者的唯一識別碼。 **簽發者**和**issuerAssignedId**的組合在您的租使用者中必須是唯一的。 若為本機帳戶，當**signInType**設定為 `emailAddress` 或 `userName`時，它代表使用者的登入名稱。<br>當**signInType**設定為時： <ul><li>`emailAddress` （或從 `emailAddress` （例如 `emailAddress1`）開始**issuerAssignedId**必須是有效的電子郵件地址</li><li>`userName` （或任何其他值）， **issuerAssignedId**必須是[電子郵件地址的有效本機部分](https://tools.ietf.org/html/rfc3696#section-3)</li><li>`federated`， **issuerAssignedId**代表同盟帳戶的唯一識別碼</li></ul>|
 
 針對同盟身分識別，根據身分識別提供者， **issuerAssignedId**是每個應用程式或開發帳戶的指定使用者唯一的值。 使用先前由社交提供者或相同開發帳戶中的其他應用程式所指派的相同應用程式識別碼，設定 Azure AD B2C 原則。
 
@@ -94,7 +94,7 @@ Azure AD B2C 密碼原則（針對本機帳戶）是以 Azure Active Directory[�
 
 每個面向客戶的應用程式對於要收集的資訊都有獨特的需求。 您的 Azure AD B2C 租使用者隨附一組儲存在屬性中的內建資訊，例如指定的名稱、姓氏、城市和郵遞區號。 使用 Azure AD B2C，您可以擴充儲存在每個客戶帳戶中的屬性集合。 如需定義自訂屬性的詳細資訊，請參閱[自訂屬性（使用者流程）](user-flow-custom-attributes.md)和[自訂屬性（自訂原則）](custom-policy-custom-attributes.md)。
 
-Microsoft Graph API 支援建立和更新具有延伸模組屬性的使用者。 圖形 API 中的擴充屬性會使用 `extension_ApplicationObjectID_attributename` 慣例來命名。 例如：
+Microsoft Graph API 支援建立和更新具有延伸模組屬性的使用者。 圖形 API 中的擴充屬性會使用 `extension_ApplicationObjectID_attributename` 慣例來命名。 例如，
 
 ```JSON
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"

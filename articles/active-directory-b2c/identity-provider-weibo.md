@@ -3,20 +3,20 @@ title: 設定註冊，並以 Weibo 帳戶登入
 titleSuffix: Azure AD B2C
 description: 使用 Azure Active Directory B2C，讓具有微博帳戶的客戶得以註冊和登入您的應用程式。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3f84d1d33874ac70a21c9d596c6fa5a9e608bb84
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e99b5717cdcc32d8fd138d1edf5fe1bd3283c70e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847390"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187894"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定註冊，並以微博帳戶登入
 
@@ -44,7 +44,7 @@ ms.locfileid: "76847390"
 1. 選取 [保存以上信息]\(儲存\)。
 1. 選取 [高级信息]\(進階資訊\)。
 1. 選取 OAuth2.0 [授权设置] (\重新導向 URL\) 旁的 [编辑] \(編輯\)。
-1. 針對 OAuth2.0 [授权设置] \(重新導向 URL) 輸入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 例如，如果您的租用戶名稱是 contoso，請將 URL 設定為 `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`。
+1. 針對 OAuth2.0 [授权设置]`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` **\(重新導向 URL) 輸入**。 例如，如果您的租用戶名稱是 contoso，請將 URL 設定為 `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`。
 1. 選取 [提交]。
 
 ## <a name="configure-a-weibo-account-as-an-identity-provider"></a>將微博帳戶設為識別提供者

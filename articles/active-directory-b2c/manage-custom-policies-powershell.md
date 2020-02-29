@@ -2,20 +2,20 @@
 title: 使用 PowerShell 管理自訂原則
 titleSuffix: Azure AD B2C
 description: 使用 Azure Active Directory （Azure AD） PowerShell Cmdlet，以程式設計方式管理您的 Azure AD B2C 自訂原則。 使用 PowerShell 建立、讀取、更新和刪除自訂原則。
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e29bb245ed0fc79a6f72688dc6e4d044f2828c45
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: ebf0cfffa410d8dfe2f0e0b42a0fee0c16106fde
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77463124"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187401"
 ---
 # <a name="manage-azure-ad-b2c-custom-policies-with-azure-powershell"></a>使用 Azure PowerShell 管理 Azure AD B2C 自訂原則
 
@@ -27,7 +27,7 @@ Azure PowerShell 為您的 Azure AD B2C 租使用者中的命令列和腳本型�
 * 將新的原則上傳至您的 Azure AD B2C 租使用者
 * 從租使用者刪除自訂原則
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * [Azure AD B2C 租](tutorial-create-tenant.md)使用者，以及具有[B2C IEF 原則系統管理員](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator)角色之目錄中使用者的認證
 * 已上傳至您租使用者的[自訂原則](custom-policy-get-started.md)

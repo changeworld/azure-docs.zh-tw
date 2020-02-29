@@ -16,12 +16,12 @@ ms.date: 10/28/2019
 ms.author: ajburnle
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 819badb85e532275b4d5d6ca84c3e6e7fe527fa0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c98a583e2aa8ac679842e16d1c0cc36811db90de
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422560"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190580"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中查看報告和記錄
 
@@ -85,7 +85,7 @@ Azure AD 權利管理報告和 Azure AD audit 記錄檔會提供使用者可存�
 
 1. 在頂端，將**類別**變更為 [`EntitlementManagement`] 或 [`UserManagement`]，視您要尋找的 audit 記錄而定。  
 
-1. 按一下 [套用]。
+1. 按一下 **[套用]** 。
 
 1. 若要下載記錄檔，請按一下 [**下載**]。
 
@@ -109,5 +109,6 @@ Azure AD 會在要求進行時寫入其他的審核記錄，包括：
 
 ## <a name="next-steps"></a>後續步驟
 
+- [封存報表和記錄](entitlement-management-logs-and-reporting.md)
 - [針對 Azure AD 權利管理進行疑難排解](entitlement-management-troubleshoot.md)
 - [常見案例](entitlement-management-scenarios.md)

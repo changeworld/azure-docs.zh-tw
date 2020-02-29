@@ -9,16 +9,17 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/11/2020
-ms.openlocfilehash: 686e426ef0b7706eff168e42ffc67417b2c5c743
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.custom: azure-synapse
+ms.openlocfilehash: 70f37c70f685ee139db4b417c1c498f9eefb8205
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212891"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184752"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>開始使用 SQL Database 稽核
 
-Azure [SQL Database](sql-database-technical-overview.md)和[SQL 資料倉儲](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)的審核會追蹤資料庫事件，並將其寫入您 Azure 儲存體帳戶、log Analytics 工作區或事件中樞中的 audit 記錄。 稽核也具備下列功能：
+Azure [SQL Database](sql-database-technical-overview.md)和[azure Synapse 分析](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)的審核會追蹤資料庫事件，並將其寫入您 Azure 儲存體帳戶、log Analytics 工作區或事件中樞中的 audit 記錄。 稽核也具備下列功能：
 
 - 協助您保持法規遵循、了解資料庫活動，以及深入了解可指出商務考量或疑似安全違規的不一致和異常。
 
@@ -26,7 +27,7 @@ Azure [SQL Database](sql-database-technical-overview.md)和[SQL 資料倉儲](..
 
 
 > [!NOTE] 
-> 本主題適用於 Azure SQL 伺服器，以及在 Azure SQL Server 上建立的 SQL Database 和 SQL 資料倉儲資料庫。 為了簡單起見，參考 SQL Database 和 SQL 資料倉儲時都會使用 SQL Database。
+> 本主題適用于 Azure SQL server，以及在 Azure SQL server 上建立 SQL Database 和 Azure Synapse 分析資料庫。 為了簡單起見，在同時參考 SQL Database 和 Azure Synapse 時，會使用 SQL Database。
 
 ## <a id="subheading-1"></a>Azure SQL 資料庫稽核概觀
 
@@ -80,15 +81,25 @@ Azure [SQL Database](sql-database-technical-overview.md)和[SQL 資料倉儲](..
 
     ![瀏覽窗格][3]
 
+5. **新增** - 您現在有多個選項可設定要寫入稽核記錄的位置。 您可以將記錄寫入至 Azure 儲存體帳戶、Log Analytics 工作區，以透過 Azure 監視器記錄來取用，或使用事件中樞來取用事件中樞以供取用。 您可以設定這些選項的任何組合，並將稽核記錄寫入至每個組合。
+  
+   > [!NOTE]
+   > 若客戶想要為其伺服器或資料庫層級的 audit 事件設定不可變的記錄存放區，則應遵循[Azure 儲存體所提供的指示](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage#enabling-allow-protected-append-blobs-writes)。
+  
+   > [!WARNING]
+   > 啟用 Log Analytics 的審核會根據內嵌速率產生成本。 請留意使用此[選項](https://azure.microsoft.com/pricing/details/monitor/)的相關成本，或考慮將 audit 記錄儲存在 Azure 儲存體帳戶中。
+
+   ![儲存體選項](./media/sql-database-auditing-get-started/auditing-select-destination.png)
+   
 ### <a id="audit-storage-destination">對儲存體目的地的審核</a>
 
-若要設定將稽核記錄寫入至儲存體帳戶，請選取 [儲存體]，然後開啟 [儲存體詳細資料]。 選取將儲存記錄的 Azure 儲存體帳戶，然後選取保留期間。 然後按一下 [確定]。 早于保留期限的記錄會遭到刪除。
+若要設定將稽核記錄寫入至儲存體帳戶，請選取 [儲存體]，然後開啟 [儲存體詳細資料]。 選取將儲存記錄的 Azure 儲存體帳戶，然後選取保留期間。 然後按一下 **[確定]** 。 早于保留期限的記錄會遭到刪除。
 
    > [!IMPORTANT]
    > - [保留週期] 的預設值為0（無限制保留）。 您可以變更此值，方法是在設定儲存體帳戶以進行審核時，將 [**保留（天數）** ] 滑杆移至 [**儲存體設定**]。
    > - 如果您將保留期間從0（無限制的保留）變更為任何其他值，請注意保留期只會套用至保留值變更後寫入的記錄（保留設定為無限制的期間內寫入的記錄，即使在保留已啟用）
 
-   ![storage account](./media/sql-database-auditing-get-started/auditing_select_storage.png)
+   ![儲存體帳戶](./media/sql-database-auditing-get-started/auditing_select_storage.png)
 
 若要在虛擬網路或防火牆下設定儲存體帳戶，您需要伺服器上的[Active Directory 系統管理員](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#provision-an-azure-active-directory-administrator-for-your-managed-instance)，啟用 [允許信任的 Microsoft 服務在儲存體帳戶上**存取此儲存體帳戶**]。 此外，您必須擁有所選儲存體帳戶的「Microsoft 授權/roleAssignments/寫入」許可權。
 
@@ -105,9 +116,22 @@ Azure [SQL Database](sql-database-technical-overview.md)和[SQL 資料倉儲](..
 
 ### <a id="audit-event-hub-destination">審核至事件中樞目的地</a>
 
+< < < < < < < HEAD < < < < < < < HEAD = = = = = = =
+>>>>>>> a8190987e07da4c5ced6de5f588d394ace4ca31d
+> [!IMPORTANT]
+> 無法在已暫停的 SQL 集區上啟用審核。 若要啟用它，請取消暫停 SQL 集區。
+
+> [!WARNING]
+> 在具有 SQL 集區的伺服器上啟用審核，**會導致 SQL 集區再次繼續，並再次重新暫停，** 這可能會在計費費用中產生。
+< < < < < < < HEAD = = = = = = = 若要設定將審核記錄寫入事件中樞，請選取 **[事件中樞（預覽）** ]，然後開啟 [**事件中樞詳細資料**]。 選取要寫入記錄的事件中樞，然後按一下 [確定]。 請確定事件中樞與您的資料庫和伺服器位於相同的區域。
+
+   ![Eventhub](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
+>>>>>>> <a name="bf6444e83361ab743aca04ae233c420e51ea1e03"></a>bf6444e83361ab743aca04ae233c420e51ea1e03
+=======
 若要設定將稽核記錄寫入至事件中樞，請選取 [事件中樞 (預覽)]，然後開啟 [事件中樞詳細資料]。 選取要寫入記錄的事件中樞，然後按一下 [確定]。 請確定事件中樞與您的資料庫和伺服器位於相同的區域。
 
    ![Eventhub](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
+>>>>>>> a8190987e07da4c5ced6de5f588d394ace4ca31d
 
 ## <a id="subheading-3"></a>分析稽核記錄和報告
 

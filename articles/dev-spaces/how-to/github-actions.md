@@ -1,17 +1,17 @@
 ---
-title: GitHub 動作 & Azure Kubernetes Service
+title: GitHub 動作 & Azure Kubernetes Service （預覽）
 services: azure-dev-spaces
 ms.date: 02/04/2020
 ms.topic: conceptual
 description: 使用 GitHub 動作和 Azure Dev Spaces，直接在 Azure Kubernetes Service 中檢查並測試提取要求的變更
 keywords: Docker，Kubernetes，Azure，AKS，Azure Kubernetes Service，容器，GitHub 動作，Helm，服務網格，服務網格路由，kubectl，k8s
 manager: gwallace
-ms.openlocfilehash: 35050d0c9d1e6062866747dc8544d03574a8d8fe
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: e2b6f47483d2c7b6c4970dac531bada1cecd279e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026093"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196547"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub 動作 & Azure Kubernetes Service （預覽）
 
@@ -50,7 +50,7 @@ az acr create --resource-group MyResourceGroup --name <acrName> --sku Basic
 
 ## <a name="create-a-service-principal-for-authentication"></a>建立用於驗證的服務主體
 
-使用[az ad sp create for-rbac][az-ad-sp-create-for-rbac]來建立服務主體。 例如：
+使用[az ad sp create for-rbac][az-ad-sp-create-for-rbac]來建立服務主體。 例如，
 
 ```cmd
 az ad sp create-for-rbac --sdk-auth --skip-assignment

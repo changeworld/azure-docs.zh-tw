@@ -5,23 +5,23 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6acf66e01c4f7b4bd2735687f542a0dbf472cfb4
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 34446f98bc593c8b78cfb4a9ceae2c5e6dc6aef3
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500201"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191158"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Azure 自動化中的子 Runbook
 
-建議的作法是 Azure 自動化使用其他 runbook 所呼叫的個別函式來撰寫可重複使用的模組化 runbook。 父 Runbook 通常會呼叫一或多個子 Runbook 來執行必要的功能。 有兩種方式可以呼叫子 runbook，而且您應該瞭解不同的差異，讓您可以判斷哪一個最適合您的案例。
+建議的作法是 Azure 自動化使用其他 runbook 所呼叫的個別函式來撰寫可重複使用的模組化 runbook。 父 Runbook 通常會呼叫一或多個子 Runbook 來執行必要的功能。 有兩種方式可以呼叫子 runbook，而且您應該瞭解哪些差異，才能判斷哪一個最適合您的案例。
 
 >[!NOTE]
 >本文已更新為使用新的 Azure PowerShell Az 模組。 AzureRM 模組在至少 2020 年 12 月之前都還會持續收到錯誤 (Bug) 修正，因此您仍然可以持續使用。 若要深入了解新的 Az 模組和 AzureRM 的相容性，請參閱[新的 Azure PowerShell Az 模組簡介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 如需混合式 Runbook 背景工作角色上的 Az module 安裝指示，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 針對您的自動化帳戶，您可以使用[如何更新 Azure 自動化中的 Azure PowerShell 模組](automation-update-azure-modules.md)，將模組更新為最新版本。
 
 ## <a name="invoking-a-child-runbook-using-inline-execution"></a>使用內嵌執行叫用子 Runbook
 
-若要從其他 Runbook 叫用 Runbook 內嵌，請使用 Runbook 的名稱並為其提供參數值，如同您使用活動或 Cmdlet 時一樣。  在相同自動化帳戶中的所有 Runbook 均可以此方式提供所有其他 Runbook 使用。 父 runbook 會先等待子 runbook 完成，然後再移至下一行，並將任何輸出直接傳回父代。
+若要從另一個 runbook 叫用 runbook 內嵌，請使用 runbook 的名稱並提供其參數值，如同您使用活動或 Cmdlet 一樣。 在相同自動化帳戶中的所有 Runbook 均可以此方式提供所有其他 Runbook 使用。 父 runbook 會先等待子 runbook 完成，然後再移至下一行，而且任何輸出都會直接傳回父系。
 
 當您叫用 Runbook 內嵌時，它會在父 Runbook 所在的相同工作中執行。 子 runbook 的工作歷程記錄中不會有任何指示。 來自子 runbook 的任何例外狀況和任何資料流程輸出都會與父代相關聯。 這種行為會導致較少的作業，並讓它們更容易追蹤和疑難排解。
 
@@ -41,7 +41,7 @@ ms.locfileid: "77500201"
 
 Runbook 的發行順序只對 PowerShell 工作流程和圖形化 PowerShell 工作流程 Runbook 有關係。
 
-當您的 runbook 使用內嵌執行呼叫圖形化或 PowerShell 工作流程子 runbook 時，它會使用 runbook 的名稱。 名稱的開頭必須是 "。\\"指定腳本位於本機目錄中。
+當您的 runbook 使用內嵌執行呼叫圖形化或 PowerShell 工作流程子 runbook 時，它會使用 runbook 的名稱。 名稱的開頭必須是 **.\\** 以指定腳本位於本機目錄中。
 
 ### <a name="example"></a>範例
 
@@ -64,17 +64,17 @@ $output = .\PS-ChildRunbook.ps1 –VM $vm –RepeatCount 2 –Restart $true
 > [!IMPORTANT]
 > 如果您的 runbook 使用**AzAutomationRunbook** Cmdlet 搭配*Wait*參數來叫用子 runbook，而子 runbook 會產生物件結果，則作業可能會發生錯誤。 若要解決此錯誤，請參閱[具有物件輸出的子 runbook](troubleshoot/runbooks.md#child-runbook-object) ，以瞭解如何使用[AzAutomationJobOutputRecord](/powershell/module/az.automation/get-azautomationjoboutputrecord) Cmdlet 來執行邏輯來輪詢結果。
 
-您可以使用**AzAutomationRunbook**來啟動 runbook，如[使用 Windows PowerShell 啟動 runbook](start-runbooks.md#start-a-runbook-with-powershell)中所述。 使用這個 Cmdlet 的模式有兩種。 在一個模式中，Cmdlet 會在子工作建立子 runbook 時傳回作業識別碼。 在您的腳本藉由指定*Wait*參數來啟用的另一個模式中，Cmdlet 會等候子作業完成，並傳回子 runbook 的輸出。
+您可以使用**AzAutomationRunbook**來啟動 runbook，如[使用 Windows PowerShell 啟動 runbook](start-runbooks.md#start-a-runbook-with-powershell)中所述。 使用這個 Cmdlet 的模式有兩種。 在一個模式中，Cmdlet 會在為子 runbook 建立作業時傳回作業識別碼。 在您的腳本藉由指定*Wait*參數來啟用的另一個模式中，Cmdlet 會等候子作業完成，並傳回子 runbook 的輸出。
 
-從子 runbook 啟動的作業會從父 runbook 作業的個別作業中執行。 此行為會導致比啟動 runbook 內嵌更多的作業，並使作業更難以追蹤。父系可以非同步啟動一個以上的子 runbook，而不需要等待每個 runbook 完成。 對於呼叫子 runbook 內嵌的平行執行，父 runbook 必須使用[parallel 關鍵字](automation-powershell-workflow.md#parallel-processing)。
+使用 Cmdlet 從子 runbook 啟動的工作，會與父 runbook 作業分開執行。 此行為會導致比啟動 runbook 內嵌更多的作業，並使作業更難以追蹤。父系可以非同步啟動一個以上的子 runbook，而不需要等待每個 runbook 完成。 對於呼叫子 runbook 內嵌的平行執行，父 runbook 必須使用[parallel 關鍵字](automation-powershell-workflow.md#parallel-processing)。
 
-子 runbook 輸出因為計時而無法可靠地傳回至父 runbook。 此外，$VerbosePreference、$WarningPreference 等等的變數可能不會傳播至子 runbook。 若要避免這些問題，您可以使用**AzAutomationRunbook**搭配*Wait*參數，將子 Runbook 當做個別的自動化作業來啟動。 這項技術會封鎖父 runbook，直到子 runbook 完成為止。
+子 runbook 輸出因為計時，而無法可靠地傳回至父 runbook。 此外， *$VerbosePreference*、 *$WarningPreference*等等的變數可能不會傳播至子 runbook。 若要避免這些問題，您可以使用**AzAutomationRunbook**搭配*Wait*參數，將子 Runbook 當做個別的自動化作業來啟動。 這項技術會封鎖父 runbook，直到子 runbook 完成為止。
 
 如果您不想讓父 runbook 在等待時遭到封鎖，您可以使用**AzAutomationRunbook**來啟動子 runbook，而不需要*Wait*參數。 在此情況下，您的 runbook 必須使用[AzAutomationJob](/powershell/module/az.automation/get-azautomationjob)來等候工作完成。 它也必須使用[AzAutomationJobOutput](/powershell/module/az.automation/get-azautomationjoboutput)和[AzAutomationJobOutputRecord](/powershell/module/az.automation/get-azautomationjoboutputrecord)來取得結果。
 
-使用 Cmdlet 啟動之子 runbook 的參數是以雜湊表的形式提供，如[Runbook 參數](start-runbooks.md#runbook-parameters)中所述。 只能使用簡單資料類型。 若 Runbook 有複雜資料類型的參數，必須以內嵌方式呼叫。
+使用 Cmdlet 啟動之子 runbook 的參數是以雜湊表的形式提供，如[runbook 參數](start-runbooks.md#runbook-parameters)中所述。 只能使用簡單資料類型。 若 Runbook 有複雜資料類型的參數，必須以內嵌方式呼叫。
 
-以個別作業的形式啟動子 Runbook 時，可能會遺失訂用帳戶內容。 若要讓子 runbook 針對特定的 Azure 訂用帳戶執行 Az module Cmdlet，子 runbook 必須在父 runbook 以外獨立向此訂用帳戶進行驗證。
+以個別作業的形式啟動子 Runbook 時，可能會遺失訂用帳戶內容。 若要讓子 runbook 針對特定的 Azure 訂用帳戶執行 Az module Cmdlet，子系必須在父 runbook 以外獨立向此訂用帳戶進行驗證。
 
 如果相同自動化帳戶中的作業使用多個訂用帳戶，則在某個作業中選取訂用帳戶可以變更其他作業目前選取的訂閱內容。 若要避免這種情況，請使用每個 runbook 開頭的 `Disable-AzContextAutosave –Scope Process`。 此動作只會將內容儲存至該 Runbook 執行。
 
@@ -118,7 +118,7 @@ Start-AzAutomationRunbook `
 | 輸出 |父 Runbook 可以直接從子 Runbook 取得輸出。 |父 Runbook 必須擷取子 Runbook 作業的輸出，或 父 Runbook 可以直接從子 Runbook 取得輸出。 |
 | 參數 |子 Runbook 參數的值是個別指定，而且可以使用任何資料類型。 |子 Runbook 參數的值必須結合成單一雜湊表。 這個雜湊表只能包含簡單、陣列，以及使用 JSON 序列化的物件資料類型。 |
 | 自動化帳戶 |父 runbook 只能在相同的自動化帳戶中使用子 runbook。 |父 runbook 可以使用來自任何自動化帳戶的子 runbook，從相同的 Azure 訂用帳戶，甚至是來自您擁有連線的不同訂用帳戶。 |
-| 發佈 |發佈父 Runbook 之前必須先發佈子 Runbook。 |在啟動父 runbook 之前，會隨時發佈子 runbook。 |
+| 發行 |發佈父 Runbook 之前必須先發佈子 Runbook。 |在啟動父 runbook 之前，會隨時發佈子 runbook。 |
 
 ## <a name="next-steps"></a>後續步驟
 

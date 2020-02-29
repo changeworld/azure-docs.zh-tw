@@ -6,13 +6,13 @@ ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/05/2020
-ms.openlocfilehash: 035f819cfaad82373f7cb55a7bb2d14fc53bb49b
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.date: 02/26/2020
+ms.openlocfilehash: a88682cd2217850e336afc2f9ef5af84c0d8cb82
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064626"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192638"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>調整 Azure HDInsight 叢集
 
@@ -33,8 +33,8 @@ Microsoft 提供下列公用程式來調整叢集：
 |---|---|
 |[PowerShell Az](https://docs.microsoft.com/powershell/azure)|[AzHDInsightClusterSize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) -ClusterName \<叢集名稱 >-TargetInstanceCount \<NewSize >|
 |[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) -ClusterName \<叢集名稱 >-TargetInstanceCount \<NewSize >|
-|[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)| [az hdinsight resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --資源群組 \<資源群組 >--名稱 \<叢集名稱 >--目標實例-計數 \<NewSize >|
-|[Azure CLI](hdinsight-administer-use-command-line.md)|azure hdinsight 叢集調整大小 \<clusterName > \<目標實例計數 > |
+|[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)| [az hdinsight resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --資源群組 \<資源群組 >--Name \<Cluster name >--workernode-Count \<NewSize >|
+|[Azure 傳統 CLI](hdinsight-administer-use-command-line.md)|azure hdinsight 叢集調整大小 \<clusterName > \<目標實例計數 > |
 |[Azure 入口網站](https://portal.azure.com)|開啟您的 HDInsight 叢集窗格，選取左側功能表上的 [叢集**大小**]，然後在 [叢集大小] 窗格上，輸入背景工作節點的數目，然後選取 [儲存]。|  
 
 ![Azure 入口網站 scale cluster 選項](./media/hdinsight-scaling-best-practices/azure-portal-settings-nodes.png)

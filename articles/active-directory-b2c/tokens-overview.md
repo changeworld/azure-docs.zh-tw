@@ -2,20 +2,20 @@
 title: 權杖總覽-Azure Active Directory B2C
 description: 瞭解 Azure Active Directory B2C 中使用的權杖。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 543a3558333933e9d8d6262c76c1e6e9419be877
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: cbbd083a6b62733d71c316af95dffaa188b28955
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848183"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186483"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的權杖總覽
 
@@ -42,7 +42,7 @@ Azure AD B2C 支援[OAuth 2.0 和 OpenID connect 通訊協定](protocols-overvie
 
 您的應用程式從 Azure AD B2C 收到的安全性權杖可能來自 `/authorize` 或 `/token` 端點。 從 `/authorize` 端點取得識別碼權杖時，會使用[隱含流程](implicit-flow-single-page-application.md)來完成，這通常用於登入以 JavaScript 為基礎的 web 應用程式的使用者。 從 `/token` 端點取得識別碼權杖時，會使用[授權碼流程](openid-connect.md#get-a-token)來完成，這會讓權杖在瀏覽器中隱藏。
 
-## <a name="claims"></a>Claims
+## <a name="claims"></a>宣告
 
 當您使用 Azure AD B2C 時，您可以精確控制權杖的內容。 您可以設定[使用者流程](user-flow-overview.md)和[自訂原則](custom-policy-overview.md)，以在您的應用程式所需的宣告中傳送特定的使用者資料集。 這些宣告可以包含標準屬性（例如**displayName**和**emailAddress**）。 您的應用程式可以使用這些宣告來安全地驗證使用者和要求。
 
@@ -50,9 +50,9 @@ Azure AD B2C 支援[OAuth 2.0 和 OpenID connect 通訊協定](protocols-overvie
 
 下表列出 Azure AD B2C 所簽發的識別碼權杖和存取權杖中，您可以預期的宣告。
 
-| 名稱 | 宣告 | 範例值 | 說明 |
+| 名稱 | 宣告 | 範例值 | 描述 |
 | ---- | ----- | ------------- | ----------- |
-| 觀眾 | `aud` | `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` | 識別權杖的預定接收者。 針對 Azure AD B2C，物件是應用程式識別碼。 您的應用程式應驗證此值，並在權杖不相符時予以拒絕。 對象是資源的同義詞。 |
+| 對象 | `aud` | `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` | 識別權杖的預定接收者。 針對 Azure AD B2C，物件是應用程式識別碼。 您的應用程式應驗證此值，並在權杖不相符時予以拒絕。 對象是資源的同義詞。 |
 | 簽發者 | `iss` |`https://{tenant}.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` | 識別負責建構並傳回權杖的 Security Token Service (STS)。 它也會識別使用者已驗證的目錄。 您的應用程式應該驗證簽發者宣告，以確保權杖來自適當的端點。 |
 | 發出時間 | `iat` | `1438535543` | 簽發權杖的時間 (以新紀元 (Epoch) 時間表示)。 |
 | 到期時間 | `exp` | `1438539443` | 權杖失效的時間 (以新紀元 (Epoch) 時間表示)。 您的應用程式應該使用此宣告來驗證權杖存留期的有效性。 |
@@ -61,7 +61,7 @@ Azure AD B2C 支援[OAuth 2.0 和 OpenID connect 通訊協定](protocols-overvie
 | 代碼雜湊 | `c_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | 只有當令牌與 OAuth 2.0 授權碼一起發行時，識別碼權杖中才會包含程式碼雜湊。 代碼雜湊可用來驗證授權碼的真實性。 如需有關如何執行此驗證的詳細資訊，請參閱[OpenID connect 規格](https://openid.net/specs/openid-connect-core-1_0.html)。  |
 | 存取權杖雜湊 | `at_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | 只有在權杖與 OAuth 2.0 存取權杖一起發行時，才會包含在識別碼權杖中的存取權杖雜湊。 存取權杖雜湊可用來驗證存取權杖的真實性。 如需有關如何執行此驗證的詳細資訊，請參閱[OpenID connect 規格](https://openid.net/specs/openid-connect-core-1_0.html)  |
 | Nonce | `nonce` | `12345` | Nonce 是用來緩和權杖重新執行攻擊的策略。 您的應用程式可以使用 `nonce` 查詢參數，在授權要求中指定 nonce。 您在要求中提供的值只會在 ID 權杖的 `nonce` 宣告中發出未經修改的。 此宣告可讓您的應用程式根據要求中指定的值來驗證值。 您的應用程式應該在識別碼權杖驗證過程中執行此驗證。 |
-| 主旨 | `sub` | `884408e1-2918-4cz0-b12d-3aa027d7563b` | 權杖判斷提示資訊的主體，例如應用程式的使用者。 這個值不可變，而且無法重新指派或重複使用。 它可用來安全地執行授權檢查，例如當權杖用於存取資源時。 根據預設，主體宣告會填入目錄中使用者的物件識別碼。 |
+| 主體 | `sub` | `884408e1-2918-4cz0-b12d-3aa027d7563b` | 權杖判斷提示資訊的主體，例如應用程式的使用者。 這個值不可變，而且無法重新指派或重複使用。 它可用來安全地執行授權檢查，例如當權杖用於存取資源時。 根據預設，主體宣告會填入目錄中使用者的物件識別碼。 |
 | 驗證內容類別參考 | `acr` | 不適用 | 僅適用于較舊的原則。 |
 | 信任架構原則 | `tfp` | `b2c_1_signupsignin1` | 用來取得識別碼權杖的原則名稱。 |
 | 驗證期間 | `auth_time` | `1438535543` | 使用者上次輸入認證的時間（以 epoch 時程表示）。 該驗證為全新登入、單一登入（SSO）會話，或另一個登入類型，因此不會有任何辨識。 `auth_time` 是應用程式（或使用者）上次對 Azure AD B2C 起始驗證嘗試的時間。 用來驗證的方法並不區分。 |

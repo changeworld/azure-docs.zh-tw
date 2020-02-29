@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 571be831d337c71a084780da18b480cdd1e42d20
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: b7d876c7f865b8368451ea1b6cc96ade89a59aa8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77365203"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190954"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>針對 Runbook 的錯誤進行疑難排解
 
@@ -471,7 +471,7 @@ The quota for the monthly total job run time has been reached for this subscript
 The job was evicted and subsequently reached a Stopped state. The job cannot continue running
 ```
 
-這是 Azure 沙箱中故意設計的行為，原因是 Azure 自動化中會進行處理序「公平共用」監視。 如果執行時間超過三小時，公平共用就會自動停止 Runbook。 超過公平共用時間限制時的 Runbook 狀態會依 Runbook 類型而有所不同。 PowerShell 和 Python Runbook 是設定為 [已停止] 狀態。 「PowerShell 工作流程」Runbook 是設定為 [失敗]狀態。
+這種行為是由 Azure 沙箱中的設計，因為 Azure 自動化內的進程有[公平的共用](../automation-runbook-execution.md#fair-share)監視。 如果執行時間超過三小時，公平共用會自動停止 runbook。 超過公平共用時間限制的 runbook 狀態會因 runbook 類型而有所不同。 PowerShell 和 Python Runbook 是設定為 [已停止] 狀態。 「PowerShell 工作流程」Runbook 是設定為 [失敗]狀態。
 
 ### <a name="cause"></a>原因
 
@@ -481,7 +481,7 @@ Runbook 會在 Azure 沙箱中的公平共用所允許的3小時限制內執行�
 
 其中一個建議的解決方案是在[混合式 Runbook 背景工作角色](../automation-hrw-run-runbooks.md)上執行 Runbook。
 
-混合式背景工作角色不受限於 Azure 沙箱所擁有的[公平共用](../automation-runbook-execution.md#fair-share)3 小時 runbook 限制。 應開發在混合式 Runbook 背景工作角色上執行的 runbook，以便在發生未預期的本機基礎結構問題時支援重新開機行為。
+混合式背景工作角色不受限於 Azure 沙箱所擁有的3小時公平共用 runbook 限制。 應開發在混合式 Runbook 背景工作角色上執行的 runbook，以便在發生未預期的本機基礎結構問題時支援重新開機行為。
 
 另一個選項是藉由建立[子 Runbook](../automation-child-runbooks.md) 將 Runbook 最佳化。 如果您的 Runbook 會在多個資源上重複執行同一個函式，例如在數個資料庫上重複進行某一個資料庫作業，您可以將該函式移到子 Runbook。 每一個 Runbook 會在個別的處理程序中平行執行。 此行為可減少完成父代 Runbook 的時間總計。
 

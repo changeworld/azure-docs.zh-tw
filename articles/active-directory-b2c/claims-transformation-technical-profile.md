@@ -3,20 +3,20 @@ title: 定義宣告轉換技術設定檔
 titleSuffix: Azure AD B2C
 description: 定義 Azure Active Directory B2C 自訂原則中的宣告轉換技術設定檔。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/13/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fbc1d59ac401adedcf897d0c16edb6904c89acc3
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 84c1cf798e88e4067da8a495c1591143d2ee1bd0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77193426"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189781"
 ---
 # <a name="define-a-claims-transformation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定義 Azure Active Directory B2C 自訂原則中的宣告轉換技術設定檔
 

@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C 的計費模型
 description: 瞭解 Azure AD B2c 每月作用中使用者（MAU）計費模型，以及如何啟用特定 Azure 訂用帳戶的帳單。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/25/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e3cdf44c2fc4c16bba283b6f884078dd947b1f34
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 30ecb1e6faa29482a8d69dd1d08e4f127f515596
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77564768"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190002"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Azure Active Directory B2C 的計費模型
 
@@ -58,7 +58,7 @@ Azure AD B2C 計費會以日曆月份內具有驗證活動的唯一使用者計�
 
 當您訂用帳戶/資源擁有者確認變更時，就會立即啟用以 MAU 為基礎的計量。 您的每月帳單會反映在變更之前計費的驗證單位，以及從變更開始算起的新 MAU 單位。
 
-轉換月份期間不會雙重計算使用者。 在變更前進行驗證的唯一作用中使用者，會依日曆月份的每一驗證費率收費。 這些相同的使用者不會包含在訂用帳戶計費週期其餘部分的 MAU 計算中。 例如：
+轉換月份期間不會雙重計算使用者。 在變更前進行驗證的唯一作用中使用者，會依日曆月份的每一驗證費率收費。 這些相同的使用者不會包含在訂用帳戶計費週期其餘部分的 MAU 計算中。 例如，
 
 * Contoso B2C 租使用者有1000個使用者。 250使用者在任何指定的月份都處於作用中狀態。 訂用帳戶管理員會在當月10日，從每個驗證變更為每月作用中使用者（MAU）。
 * 第 1-10 的計費是使用每一驗證模型來計費。
@@ -82,7 +82,7 @@ Azure Active Directory B2C （Azure AD B2C）的使用費用會依 Azure 訂用�
 
 連結至 Azure AD B2C 租使用者的訂用帳戶可用於 Azure AD B2C 使用量或其他 Azure 資源的計費，包括額外的 Azure AD B2C 資源。 此訂用帳戶無法用來在 Azure AD B2C 租用戶內新增其他 Azure 授權型服務或 Office 365 授權。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
 * [Azure 訂用帳戶](https://azure.microsoft.com/free/)
 * 您想要連結至訂用帳戶的[Azure AD B2C 租](tutorial-create-tenant.md)使用者

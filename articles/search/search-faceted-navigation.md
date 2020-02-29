@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 927f57ae3ca90f5701791022b68c4bf0d91d4e7d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 4008779f0ec16bcaf6b995cf7f33d15a8f1e5665
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112073"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190648"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中執行多面向導覽
 
@@ -34,9 +34,9 @@ ms.locfileid: "74112073"
 ## <a name="sample-code-and-demo"></a>程式碼範例和示範
 本文使用作業搜尋入口網站來作為範例。 此範例會實作為 ASP.NET MVC 應用程式。
 
--   請參閱[Azure 認知搜尋作業入口網站示範](https://azjobsdemo.azurewebsites.net/)，並線上測試工作示範。
+- 請參閱[Azure 認知搜尋作業入口網站示範](http://azjobsdemo.azurewebsites.net/)，並線上測試工作示範。
 
--   從 [GitHub 上的 Azure 範例儲存機制](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)下載程式碼。
+- 從 [GitHub 上的 Azure 範例儲存機制](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)下載程式碼。
 
 ## <a name="get-started"></a>開始使用
 如果您不了解搜尋開發，最好的方法就是把多面向導覽想成它會顯示自動導向搜尋的可能選項。 它是向下鑽研搜尋體驗的一種，基於預先定義的篩選條件，可以藉由「指向並按一下」的動作快速縮減搜尋結果。 
@@ -243,7 +243,7 @@ if (businessTitleFacet != "")
 
 <a name="tips"></a> 
 
-## <a name="tips-and-best-practices"></a>秘訣和最佳作法
+## <a name="tips-and-best-practices"></a>祕訣和最佳作法
 
 ### <a name="indexing-tips"></a>編製索引的秘訣
 **在不使用搜尋方塊的情況下改善索引效率**
@@ -395,7 +395,7 @@ Azure 認知搜尋作業入口網站示範包含本文所參考的範例。
    
 <a name="nextstep"></a>
 
-## <a name="learn-more"></a>詳細資訊
+## <a name="learn-more"></a>進一步了解
 觀看[Azure 認知搜尋深入探討](https://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410)。 在 45:25 時有示範如何實作多面向。
 
 如需多面向導覽設計原則的深入見解，推薦您下列連結：

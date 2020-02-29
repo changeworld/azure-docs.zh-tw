@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 12/06/2019
-ms.openlocfilehash: 81bc632f1061f0ee73d2295cafa5f7a8472d20ee
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.date: 02/26/2020
+ms.openlocfilehash: 2c6495454e5ba2449d4b3c74a096681f74610813
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951797"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199456"
 ---
 # <a name="manage-azure-hdinsight-clusters-using-azure-cli"></a>使用 Azure CLI 管理 Azure HDInsight 叢集
 
@@ -29,7 +29,7 @@ ms.locfileid: "74951797"
 
 * HDInsight 上的 Apache Hadoop 叢集。 請參閱[開始在 Linux 上使用 HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)。
 
-## <a name="connect-to-azure"></a>連接到 Azure
+## <a name="connect-to-azure"></a>連線到 Azure
 
 登入您的 Azure 訂用帳戶。 如果您打算使用 Azure Cloud Shell，請選取程式碼區塊右上角的 [**試試看**]。 或者，請輸入以下命令：
 
@@ -80,17 +80,17 @@ az hdinsight delete --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
 az group delete --name RESOURCE_GROUP_NAME
 ```
 
-## <a name="scale-clusters"></a>擴充叢集
+## <a name="scale-clusters"></a>調整叢集
 
-使用[az hdinsight resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize)將指定的 hdinsight 叢集大小調整為指定的大小。 藉由取代 `RESOURCE_GROUP_NAME`，並 `CLUSTER_NAME` 與相關資訊來編輯下面的命令。 將 `TARGET_INSTANCE_COUNT` 取代為您叢集所需的背景工作節點數目。 如需調整叢集的詳細資訊，請參閱[調整 HDInsight 叢集規模](./hdinsight-scaling-best-practices.md)。 輸入命令：
+使用[az hdinsight resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize)將指定的 hdinsight 叢集大小調整為指定的大小。 藉由取代 `RESOURCE_GROUP_NAME`，並 `CLUSTER_NAME` 與相關資訊來編輯下面的命令。 將 `WORKERNODE_COUNT` 取代為您叢集所需的背景工作節點數目。 如需調整叢集的詳細資訊，請參閱[調整 HDInsight 叢集規模](./hdinsight-scaling-best-practices.md)。 輸入命令：
 
 ```azurecli-interactive
-az hdinsight resize --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME --target-instance-count TARGET_INSTANCE_COUNT
+az hdinsight resize --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME --workernode-count WORKERNODE_COUNT
 ```
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您已瞭解如何執行不同的 HDInsight 叢集管理工作。 若要深入了解，請參閱下列文章：
+在本文中，您已瞭解如何執行不同的 HDInsight 叢集管理工作。 如需詳細資訊，請參閱下列文章：
 
 * [使用 Azure 入口網站管理 HDInsight 中的 Apache Hadoop 叢集](hdinsight-administer-use-portal-linux.md)
 * [使用 Azure PowerShell 管理 HDInsight](hdinsight-administer-use-powershell.md)

@@ -1,6 +1,6 @@
 ---
 title: 適用于單一和集區資料庫之 VNet 端點和規則的 PowerShell
-description: 提供 PowerShell 指令碼，為 Azure SQL Database 和 SQL 資料倉儲建立和管理虛擬服務端點。
+description: 提供 PowerShell 腳本，以建立和管理 Azure SQL Database 和 Azure Synapse 的虛擬服務端點。
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,19 +11,20 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: genemi, vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 76c4ea6c3fc5f415316e2b5cfcdf80c0681cc3f6
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+tags: azure-synapse
+ms.openlocfilehash: f61403ef50af209fdc6e811191d31ccc83f8da73
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422501"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191855"
 ---
 # <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell：為 SQL 建立虛擬服務端點與 VNet 規則
 
-「虛擬網路規則」是一個防火牆安全性功能，可控制適用於 Azure [SQL Database](sql-database-technical-overview.md) 中單一資料庫和彈性集區的資料庫伺服器，或是適用於 [SQL 資料倉儲](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)中資料庫的資料庫伺服器，是否會接受虛擬網路中特定子網路所傳來的通訊。
+*虛擬網路規則*是一項防火牆安全性功能，可控制 azure 中單一資料庫和彈性集區的資料庫伺服器[SQL Database](sql-database-technical-overview.md)或[azure Synapse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)中的資料庫，是否接受從虛擬網路中的特定子網傳送的通訊。
 
 > [!IMPORTANT]
-> 本文適用於 Azure SQL Server，以及在 Azure SQL Server 上建立的 SQL Database 和 SQL 資料倉儲資料庫。 為了簡單起見，參考 SQL Database 和 SQL 資料倉儲時都會使用 SQL Database。 本文「不」適用 Azure SQL Database 中的**受控執行個體**部署，因為它沒有相關聯的服務端點。
+> 本文適用于 azure SQL server，以及 azure Synapse 中建立于 Azure SQL server 的 SQL Database 和資料倉儲。 為了簡單起見，在同時參考 SQL Database 和 Azure Synapse 時，會使用 SQL Database。 本文「不」適用 Azure SQL Database 中的**受控執行個體**部署，因為它沒有相關聯的服務端點。
 
 本文提供並說明可執行下列動作的 PowerShell 指令碼：
 

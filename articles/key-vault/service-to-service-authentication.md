@@ -9,12 +9,13 @@ ms.author: mbaldwin
 ms.date: 08/28/2019
 ms.topic: conceptual
 ms.service: key-vault
-ms.openlocfilehash: 6996a5965454dfd5997f0c0404e0c348c68b626f
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.subservice: general
+ms.openlocfilehash: 6377edf72651c9cddf570d0c6db9d5ceb40409f4
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177460"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200714"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>使用 .NET 進行 Azure Key Vault 的服務對服務驗證
 
@@ -24,7 +25,7 @@ ms.locfileid: "72177460"
 
 `Microsoft.Azure.Services.AppAuthentication` 程式庫會自動管理驗證，而這可讓您專注于您的解決方案，而不是您的認證。 它支援 Microsoft Visual Studio、Azure CLI 或 Azure AD 整合式驗證的本機開發。 如果部署到支援受控執行個體的 Azure 資源，程式庫會自動使用 [Azure 資源的受控識別](../active-directory/msi-overview.md)。 不需要任何程式碼或設定變更。 當受控識別無法使用時，或在本機開發期間無法判斷開發人員的安全性內容時，程式庫也支援直接使用 Azure AD[用戶端認證](../azure-resource-manager/resource-group-authenticate-service-principal.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - [Visual Studio 2019](https://www.visualstudio.com/downloads/)或[Visual Studio 2017 v 15.5](https://blogs.msdn.microsoft.com/visualstudio/2017/10/11/visual-studio-2017-version-15-5-preview/)。
 
@@ -229,7 +230,7 @@ ms.locfileid: "72177460"
 
 支援下列選項：
 
-| 連接字串選項 | 案例 | 註解|
+| 連接字串選項 | 狀況 | 註解|
 |:--------------------------------|:------------------------|:----------------------------|
 | `RunAs=Developer; DeveloperTool=AzureCli` | 本機開發 | `AzureServiceTokenProvider` 使用 AzureCli 來取得權杖。 |
 | `RunAs=Developer; DeveloperTool=VisualStudio` | 本機開發 | `AzureServiceTokenProvider` 使用 Visual Studio 來取得權杖。 |
@@ -241,7 +242,7 @@ ms.locfileid: "72177460"
 | `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateSubjectName={Subject};CertificateStoreLocation={LocalMachine or CurrentUser}` | 服務主體 | `AzureServiceTokenProvider` 會使用憑證從 Azure AD 取得權杖|
 | `RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret}` | 服務主體 |`AzureServiceTokenProvider` 會使用密碼從 Azure AD 取得權杖。 |
 
-## <a name="samples"></a>範例
+## <a name="samples"></a>Samples
 
 若要查看作用中的 `Microsoft.Azure.Services.AppAuthentication` 程式庫，請參閱下列程式碼範例。
 

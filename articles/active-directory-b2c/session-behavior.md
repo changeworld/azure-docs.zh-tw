@@ -2,20 +2,20 @@
 title: 設定會話行為-Azure Active Directory B2C |Microsoft Docs
 description: 在 Azure Active Directory B2C 中設定會話行為。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6147dc64833f44f24afe14cd1da34432a3735519
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c1d39fdbca9484f47ce0c8537c82247b75b2e3db
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840225"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186806"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中設定會話行為
 
@@ -53,9 +53,9 @@ Azure AD B2C 支援以 [OpenID Connect 驗證通訊協定](openid-connect.md) �
 3. 選擇 Azure 入口網站左上角的 [所有服務]，然後搜尋並選取 [Azure AD B2C]。
 4. 選取 **[使用者流程（原則）** ]。
 5. 開啟您先前建立的使用者流程。
-6. 選取 [屬性]。
+6. 選取 [內容]。
 7. 設定**web 應用程式會話存留期（分鐘）** 、 **web 應用程式會話超時**、**單一登入**設定，並視需要**在登出要求中要求識別碼權杖**。
 
     ![Azure 入口網站中的會話行為屬性設定](./media/session-behavior/session-behavior.png)
 
-8. 按一下 [檔案]。
+8. Haga clic en **Guardar**.

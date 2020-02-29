@@ -3,20 +3,20 @@ title: 透過自訂原則將存取權杖傳遞至您的應用程式
 titleSuffix: Azure AD B2C
 description: 瞭解如何在 Azure Active Directory B2C 中透過自訂原則，將 OAuth 2.0 身分識別提供者的存取權杖作為宣告傳遞給您的應用程式。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/17/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 697c904f98ea29395d5c4e95abe27556c06bb479
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ff5ef8f742914129d868152814d84d2112267c09
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76839086"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187778"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>透過自訂原則將存取權杖傳遞到 Azure Active Directory B2C 中的應用程式
 
@@ -30,7 +30,7 @@ Azure AD B2C 支援傳遞 [OAuth 2.0](authorization-code-flow.md) 的存取金�
 
 ## <a name="add-the-claim-elements"></a>新增宣告項目
 
-1. 開啟 TrustframeworkExtensions.xml 檔案，並將下列識別碼為 `identityProviderAccessToken` 的 **ClaimType** 元素新增到 **ClaimsSchema** 元素：
+1. 開啟 TrustframeworkExtensions.xml 檔案，並將下列識別碼為 **的**ClaimType`identityProviderAccessToken` 元素新增到 **ClaimsSchema** 元素：
 
     ```XML
     <BuildingBlocks>

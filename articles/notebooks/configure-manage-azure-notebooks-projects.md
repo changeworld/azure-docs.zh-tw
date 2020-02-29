@@ -2,13 +2,13 @@
 title: 設定和管理 Azure Notebooks 預覽
 description: 瞭解如何透過 Azure Notebooks UI 和直接終端機存取來管理專案中繼資料、專案檔案、專案的環境和設定步驟。
 ms.topic: how-to
-ms.date: 05/13/2019
-ms.openlocfilehash: 5c97372133315e6f0bcd3b854793b6b4746b5ba5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 02/28/2020
+ms.openlocfilehash: 1674effda2cb9bda45f49c91ca618225b0a75f0c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646257"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197686"
 ---
 # <a name="a-idmanage-and-configure-projects--manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" /> 在 Azure Notebooks Preview 中管理和設定專案
 
@@ -37,7 +37,7 @@ Azure Notebooks 的專案儀表板可讓您管理檔案，或者設定專案的�
 
 在專案儀表板中，選取 [專案設定]，然後選取 [資訊] 索引標籤，其中包含如下表所述的專案中繼資料。 您可以隨時變更專案中繼資料。
 
-| 設定 | 說明 |
+| 設定 | 描述 |
 | --- | --- |
 | 專案名稱 | Azure Notebooks 用於顯示用途的專案易記名稱。 例如，"Hello World in Python"。 |
 | 專案識別碼 | 自訂識別碼會成為您用來共用專案 URL 的一部分。 此識別碼只能使用字母、數位和連字號、限制為30個字元，而且不能是[保留的專案識別碼](create-clone-jupyter-notebooks.md#reserved-project-ids)。 如果您不確定要使用的項目，常見的慣例是使用專案名稱的小寫版本，讓空格轉變成連字號，例如 「 my-notebook-project 」 (必要時，可截斷以符合長度限制)。 |
@@ -56,7 +56,7 @@ Azure Notebooks 的專案儀表板可讓您管理檔案，或者設定專案的�
 
 [+ 新增] 命令 (鍵盤快速鍵：n) 會建立新的檔案或資料夾。 使用命令時，請先選取要建立的項目類型：
 
-| 項目類型 | 說明 | 命令行為 |
+| 項目類型 | 描述 | 命令行為 |
 | --- | --- | --- |
 | **Notebook** | Jupyter Notebook | 顯示快顯，您可以在其中指定 Notebook 的檔案名稱和語言。 |
 | **資料夾** | 子資料夾 | 在專案的檔案清單中建立及編輯欄位，在該欄位中輸入資料夾名稱。 |
@@ -73,7 +73,7 @@ Azure Notebooks 的專案儀表板可讓您管理檔案，或者設定專案的�
 
 ![檔案內容功能表上的命令](media/project-file-commands.png)
 
-| Command | 鍵盤快速鍵 | 行動 |
+| 命令 | 鍵盤快速鍵 | 動作 |
 | --- | --- | --- |
 | 執行 | r (或按一下) | 執行 Notebook 檔案。 其他檔案類型開啟供檢視。  |
 | 複製連結 | y | 將檔案的連結複製到剪貼簿。 |
@@ -83,7 +83,7 @@ Azure Notebooks 的專案儀表板可讓您管理檔案，或者設定專案的�
 | 下載 | d | 下載 zip 檔案，其中包含檔案或資料夾的內容。 |
 | 重新命名 | a | 提示您輸入檔案或資料夾的新名稱。 |
 | 刪除 | x | 提示您確認，然後從專案中永久移除檔案。 刪除無法復原。 |
-| 移動 | 分鐘 | 將檔案移到相同專案中不同的資料夾。 |
+| 移動 | m | 將檔案移到相同專案中不同的資料夾。 |
 
 #### <a name="preview"></a>預覽
 
@@ -91,7 +91,7 @@ Azure Notebooks 的專案儀表板可讓您管理檔案，或者設定專案的�
 
 預覽頁面支援數個工具列命令，有鍵盤快速鍵：
 
-| Command | 鍵盤快速鍵 | 行動 |
+| 命令 | 鍵盤快速鍵 | 動作 |
 | --- | --- | --- |
 | 共用 | s | 顯示共用的快顯，您可以從其中取得連結、分享到社交媒體、取得內嵌的 HTML，以及傳送電子郵件。 |
 | 複製 | c  | 將 Notebook 複製到您的帳戶。 |
@@ -132,6 +132,9 @@ Azure Notebooks 的專案儀表板可讓您管理檔案，或者設定專案的�
 
 - **Yml**：在第二個下拉式清單中，為使用 conda 環境的 Python 專案選取*yml*檔案。
 
+   > [!WARNING]
+   > 因為這是開發中的預覽服務，目前有一個已知問題，即 `Environment.yml` 設定未如預期般套用至您的專案。 中的專案和 Jupyter 筆記本目前不會載入指定的環境檔案。
+
 當您完成新增步驟時，選取 [儲存]。
 
 ### <a name="use-the-terminal"></a>使用終端機
@@ -147,7 +150,7 @@ Azure Notebooks 的專案儀表板可讓您管理檔案，或者設定專案的�
 
 若要影響特定環境，請先將目錄變更到該環境資料夾。
 
-對於 Python 環境，您可以在每個環境的 bin 資料夾中找到 `pip` 和 `conda`。 您也可以使用環境的內建別名：
+對於 Python 環境，您可以在每個環境的 bin`pip``conda` 資料夾中找到 *和*。 您也可以使用環境的內建別名：
 
 ```bash
 # Anaconda 2 5.3.0/Python 2.7: python27

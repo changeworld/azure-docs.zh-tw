@@ -9,12 +9,12 @@ ms.workload: big-compute
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: lahugh
-ms.openlocfilehash: 14cbacf43e83dc768e9a85620df131533b746671
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 0134e7d92ddca9bd3b45abaf642f33de9d209b33
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77463098"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192297"
 ---
 # <a name="securely-access-key-vault-with-batch"></a>使用 Batch 安全地存取 Key Vault
 
@@ -40,7 +40,7 @@ cd C:\Program Files (x86)\Windows Kits\10\bin\x64
 接下來，使用 `makecert` 工具來建立自我簽署的憑證檔案，稱為 `batchcertificate.cer` 和 `batchcertificate.pvk`。 使用的一般名稱（CN）對此應用程式而言並不重要，但讓它成為可告訴您憑證用途的內容會很有説明。
 
 ```console
-makecert -sv batchcertificate.pvk -n "cn=batch.cert.mydomain.org batchcertificate.cer -b 09/23/2019 -e 09/23/2019 -r -pe -a sha256 -len 2048
+makecert -sv batchcertificate.pvk -n "cn=batch.cert.mydomain.org" batchcertificate.cer -b 09/23/2019 -e 09/23/2019 -r -pe -a sha256 -len 2048
 ```
 
 Batch 需要 `.pfx` 檔案。 使用[pvk2pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx)工具，將 `makecert` 所建立的 `.cer` 和 `.pvk` 檔案轉換成單一 `.pfx` 檔案。

@@ -2,20 +2,20 @@
 title: 在 Azure 入口網站中建立 & 刪除 Azure AD B2C 取用者使用者帳戶
 description: 瞭解如何使用 Azure 入口網站，在您的 Azure AD B2C 目錄中建立和刪除取用者使用者。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/09/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9d96db5cf062da1b2e8badd80a9a00620b724fd4
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c8fad8b5bd2dccba36c0c6888712fa806f3cbfc8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840412"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187214"
 ---
 # <a name="use-the-azure-portal-to-create-and-delete-consumer-users-in-azure-ad-b2c"></a>使用 Azure 入口網站在 Azure AD B2C 中建立和刪除取用者使用者
 
@@ -29,9 +29,9 @@ ms.locfileid: "76840412"
 
 如 Azure AD B2C 中[的使用者帳戶總覽](user-overview.md)中所述，您可以在 Azure AD B2C 目錄中建立三種類型的使用者帳戶：
 
-* Work
-* 訪客
-* 消費者
+* 工作
+* 來賓
+* 取用者
 
 本文著重于在 Azure 入口網站中使用取用**者帳戶**。 如需建立和刪除工作和來賓帳戶的相關資訊，請參閱[使用 Azure Active Directory 新增或刪除使用者](../active-directory/fundamentals/add-users-azure-active-directory.md)。
 

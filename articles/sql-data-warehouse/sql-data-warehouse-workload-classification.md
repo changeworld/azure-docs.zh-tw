@@ -1,26 +1,26 @@
 ---
 title: 工作負載分類
-description: 使用分類來管理 Azure SQL 資料倉儲中查詢的並行、重要性和計算資源的指引。
+description: 使用分類來管理 Azure Synapse Analytics 中查詢的並行、重要性和計算資源的指引。
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 01/27/2020
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: ab7c8ba64057b4f27e00a2928a65de8eadc78c4b
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.custom: azure-synapse
+ms.openlocfilehash: f350885c2d25860c7dc83310534ca9d8c9d72555
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76768839"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191754"
 ---
-# <a name="azure-sql-data-warehouse-workload-classification"></a>Azure SQL 資料倉儲工作負載分類
+# <a name="azure-synapse-analytics-workload-classification"></a>Azure Synapse 分析工作負載分類
 
-本文說明指派資源類別和對傳入要求重要性的 SQL 資料倉儲工作負載分類程式。
+本文說明如何使用 Azure Synapse 中的 SQL 分析，將工作負載群組和對傳入要求的重要性指派給工作負載分類程式。
 
 ## <a name="classification"></a>分類
 
@@ -36,7 +36,7 @@ ms.locfileid: "76768839"
 
 ## <a name="classification-process"></a>分類程序
 
-現今 SQL 資料倉儲中的分類是藉由將使用者指派給具有對應資源類別（使用[sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)指派）的角色來達成。 對資源類別登入以外的要求加上特性的能力，會受到這項功能的限制。 「[建立工作負載分類器](/sql/t-sql/statements/create-workload-classifier-transact-sql)」語法現在提供更豐富的分類方法。  使用此語法，SQL 資料倉儲使用者可以透過 `workload_group` 參數指派重要性，以及指派給要求的系統資源數量。 
+現今 Azure Synapse 中 SQL 分析的分類是藉由將使用者指派給具有對應資源類別（使用[sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)）的角色來達成。 對資源類別登入以外的要求加上特性的能力，會受到這項功能的限制。 「[建立工作負載分類器](/sql/t-sql/statements/create-workload-classifier-transact-sql)」語法現在提供更豐富的分類方法。  使用此語法，SQL 分析使用者可以透過 `workload_group` 參數指派重要性，以及指派給要求的系統資源數量。 
 
 > [!NOTE]
 > 分類是根據每個要求來評估。 單一會話中的多個要求可以不同方式分類。
@@ -45,7 +45,7 @@ ms.locfileid: "76768839"
 
 做為分類程式的一部分，加權是用來判斷指派的工作負載群組。  加權如下所示：
 
-|分類器參數 |Weight   |
+|分類器參數 |加權   |
 |---------------------|---------|
 |成員名稱： USER      |64       |
 |成員名稱： ROLE      |32       |
@@ -69,7 +69,7 @@ SELECT * FROM sys.workload_management_workload_classifiers where classifier_id <
 
 代表您建立的系統分類器提供遷移至工作負載分類的簡單路徑。 使用具有分類優先順序的資源類別角色對應，在您開始建立具有重要性的新分類器時，可能會導致分類誤判。
 
-請考慮下列案例：
+請試想下述情況：
 
 - 現有的資料倉儲具有指派給 largerc 資源類別角色的資料庫使用者 DBAUser。 資源類別指派是使用 sp_addrolemember 完成。
 - 現在已使用工作負載管理來更新資料倉儲。

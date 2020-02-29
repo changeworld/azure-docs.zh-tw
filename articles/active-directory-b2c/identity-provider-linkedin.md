@@ -3,20 +3,20 @@ title: 設定註冊，並以 LinkedIn 帳戶登入
 titleSuffix: Azure AD B2C
 description: 使用 Azure Active Directory B2C，讓具有 LinkedIn 帳戶的客戶得以註冊和登入您的應用程式。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: edd6bc2bbad218a1ed0a25bdcb763bde656a589d
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: d32eb80ffe296d86164a6d27a1b7a28181357243
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847715"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188095"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定註冊，並以 LinkedIn 帳戶登入
 
@@ -29,7 +29,7 @@ ms.locfileid: "76847715"
 1. 請輸入 [公司名稱][應用程式名稱]、[應用程式描述]、[應用程式標誌]、[應用程式使用]、[網站 URL]、[公司電子郵件]，以及 [公司電話]。
 1. 同意 **LinkedIn API 使用條款**，然後按一下 [提交]。
 1. 複製 [用戶端識別碼] 和 [用戶端密碼] 的值。 您可以在 [驗證金鑰] 下方找到這些資訊。 您必須使用這兩個值，將 LinkedIn 設為租用戶中的身分識別提供者。 **用戶端密碼** 是重要的安全性認證。
-1. 請在 [授權重新導向 URL] 中輸入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 以您的租用戶名稱取代 `your-tenant-name`。 即使租用戶在 Azure AD B2C 中是使用大寫字母來定義的，您還是需要在輸入租用戶名稱時，全部使用小寫字母。 選取 [新增]，然後按一下 [更新]。
+1. 請在 [授權重新導向 URL]`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`**中輸入**。 以您的租用戶名稱取代 `your-tenant-name`。 即使租用戶在 Azure AD B2C 中是使用大寫字母來定義的，您還是需要在輸入租用戶名稱時，全部使用小寫字母。 選取 [新增]，然後按一下 [更新]。
 
 ## <a name="configure-a-linkedin-account-as-an-identity-provider"></a>將 LinkedIn 帳戶設為識別提供者
 

@@ -5,16 +5,17 @@ services: key-vault
 author: barclayn
 manager: rkarlin
 ms.service: key-vault
+ms.subservice: general
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: barclayn
 ms.custom: security-recommendations
-ms.openlocfilehash: 5aa3ebc602396bc2d7f83150c66535039b1389e6
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 9fd41ae9b61a9c74fd5d99dd71199cfde06f5cb2
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73171334"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192365"
 ---
 # <a name="security-recommendations-for-azure-key-vault"></a>Azure Key Vault 的安全性建議
 
@@ -32,7 +33,7 @@ ms.locfileid: "73171334"
 |啟用虛刪除 | 虛[刪除](key-vault-ovw-soft-delete.md)可讓您復原已刪除的保存庫和保存庫物件 |  - |
 | 限制對保存庫資料的存取  | 遵循最低許可權的原則，並限制組織中有哪些成員可以存取保存庫資料 |  - |
 
-## <a name="identity-and-access-management"></a>身分識別與存取管理
+## <a name="identity-and-access-management"></a>身分識別和存取管理
 
 | 建議 | 註解 | 資訊安全中心 |
 |-|----|--|

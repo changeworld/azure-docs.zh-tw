@@ -3,20 +3,20 @@ title: 使用自訂原則來設定使用 Salesforce SAML 提供者進行登入
 titleSuffix: Azure AD B2C
 description: 在 Azure Active Directory B2C 中使用自訂原則註冊並登入 Salesforce SAML 提供者。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/27/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0b03846a274abee5def57008fe3db4130b4350d0
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 67fe9ef4ad2b025d11f88976973658c9cd8ae693
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77916297"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187945"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則註冊並登入 Salesforce SAML 提供者
 
@@ -24,7 +24,7 @@ ms.locfileid: "77916297"
 
 本文說明如何使用 Azure Active Directory B2C （Azure AD B2C）中的[自訂原則](custom-policy-overview.md)，讓 Salesforce 組織的使用者登入。 將 [SAML 技術設定檔](saml-technical-profile.md)新增至自訂原則，以啟用登入。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 完成在 [Azure Active Directory B2C 中開始使用自訂原則](custom-policy-get-started.md)中的步驟。
 - 如果您還沒有這麼做，請註冊[免費的開發人員版本帳戶](https://developer.salesforce.com/signup)。 這篇文章會運用 [Salesforce Lightning 經驗](https://developer.salesforce.com/page/Lightning_Experience_FAQ)。
@@ -36,7 +36,7 @@ ms.locfileid: "77916297"
 2. 在左側功能表的 [設定]下，展開 [身分識別]，然後選取 [識別提供者]。
 3. 選取 [啟用識別提供者]。
 4. 在 [選取憑證] 下，選取您想要讓 Salesforce 在與 Azure AD B2C 通訊時使用的憑證。 您可以使用預設憑證。
-5. 按一下 [檔案]。
+5. Haga clic en **Guardar**.
 
 ### <a name="create-a-connected-app-in-salesforce"></a>在 Salesforce 中建立連線應用程式
 
@@ -97,7 +97,7 @@ Export-PfxCertificate -Cert $Cert -FilePath .\B2CSigningCert.pfx -Password $pwd
 7. 輸入原則的 [名稱]。 例如，SAMLSigningCert。 金鑰名稱前面會自動新增前置詞 `B2C_1A_`。
 8. 瀏覽並選取您所建立的 B2CSigningCert.pfx 憑證。
 9. 輸入憑證的 [密碼]。
-3. 按一下 **[建立]** 。
+3. 按一下 [建立]。
 
 ## <a name="add-a-claims-provider"></a>新增宣告提供者
 

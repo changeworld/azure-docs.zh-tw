@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/01/2019
-ms.openlocfilehash: 55cddf5317938dea353517cde7260a1aa531d1df
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.date: 02/28/2020
+ms.openlocfilehash: f496f6c06d36f817b0a933bdc68d5c53f308e3f2
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77061253"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192620"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>搭配 Azure HDInsight 叢集使用 Azure 儲存體
 
@@ -38,7 +38,7 @@ Apache Hadoop 支援預設檔案系統的概念。 預設檔案系統意指預�
 > [!NOTE]  
 > 封存存取層是一種離線層，其具有數小時的抓取延遲，不建議與 HDInsight 搭配使用。 如需詳細資訊，請參閱[封存存取層](../storage/blobs/storage-blob-storage-tiers.md#archive-access-tier)。
 
-## <a name="access-files-from-the-cluster"></a>從叢集存取檔案
+## <a name="access-files-from-within-cluster"></a>從叢集中存取檔案
 
 有數種方式可讓您從 HDInsight 叢集存取 Data Lake Storage 中的檔案。 URI 配置提供未加密存取 (使用 wasb: 首碼) 和 SSL 加密存取 (使用 wasbs)。 建議盡可能使用 wasbs ，即使存取 Azure 中相同區域內的資料也一樣。
 
@@ -122,6 +122,17 @@ LOCATION 'wasbs:///example/data/';
 LOCATION '/example/data/';
 ```
 
+## <a name="access-files-from-outside-cluster"></a>從外部叢集存取檔案
+
+Microsoft 提供下列工具來使用 Azure 儲存體：
+
+| 工具 | Linux | OS X | Windows |
+| --- |:---:|:---:|:---:|
+| [Azure 入口網站](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
+| [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |
+| [Azure PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md) | | |✔ |
+| [AzCopy](../storage/common/storage-use-azcopy-v10.md) |✔ | |✔ |
+
 ## <a name="identify-storage-path-from-ambari"></a>識別來自 Ambari 的儲存體路徑
 
 * 若要識別已設定之預設存放區的完整路徑，請流覽至：
@@ -132,6 +143,8 @@ LOCATION '/example/data/';
 
     **HDFS** > **的**功能，並在 [篩選] 輸入方塊中輸入 `blob.core.windows.net`。
 
+若要使用 Ambari REST API 取得路徑，請參閱[取得預設儲存體](./hdinsight-hadoop-manage-ambari-rest-api.md#get-the-default-storage)。
+
 ## <a name="blob-containers"></a>Blob 容器
 
 若要使用 blob，您必須先建立[Azure 儲存體帳戶](../storage/common/storage-create-storage-account.md)。 在這個過程中，您可以指定建立儲存體帳戶所在的 Azure 區域。 叢集與儲存體帳戶必須在相同區域內託管。 Hive 中繼存放區 SQL Server 資料庫和 Apache Oozie 中繼存放區 SQL Server 資料庫也必須位在相同的區域內。
@@ -141,17 +154,6 @@ LOCATION '/example/data/';
 預設 Blob 容器會儲存叢集特定資訊，例如作業歷程記錄和記錄。 不要與多個 HDInsight 叢集共用預設 Blob 容器。 這可能會損毀作業歷程記錄。 建議您針對每個叢集使用不同的容器，並將共用資料放在所有相關叢集部署中所指定的連結儲存體帳戶，而不是預設的儲存體帳戶。 如需設定連結儲存體帳戶的詳細資訊，請參閱[建立 HDInsight](hdinsight-hadoop-provision-linux-clusters.md)叢集。 不過，在刪除原始的 HDInsight 叢集後，您可以重複使用預設儲存容器。 對於 HBase 叢集，您可以使用已刪除的 HBase 叢集所使用的預設 blob 容器來建立新的 HBase 叢集，藉此實際保留 HBase 資料表架構和資料。
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
-
-## <a name="interacting-with-azure-storage"></a>與 Azure 儲存體互動
-
-Microsoft 提供下列工具來使用 Azure 儲存體：
-
-| 工具 | Linux | OS X | Windows |
-| --- |:---:|:---:|:---:|
-| [Azure 入口網站](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
-| [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |
-| [Azure PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md) | | |✔ |
-| [AzCopy](../storage/common/storage-use-azcopy-v10.md) |✔ | |✔ |
 
 ## <a name="use-additional-storage-accounts"></a>使用其他儲存體帳戶
 

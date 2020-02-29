@@ -1,23 +1,23 @@
 ---
-author: mmacy
+author: msmimart
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
 ms.date: 02/12/2020
-ms.author: marsma
-ms.openlocfilehash: e5201dfee83ec5360e55533e923e2b55c24c09d9
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.author: mimart
+ms.openlocfilehash: bf8b9370abc58902d9c751505f633dee852210a6
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77492925"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184333"
 ---
 #### <a name="applications"></a>[應用程式](#tab/applications/)
 
 1. 在 [**已註冊的應用程式**總覽] 頁面上，選取 [**設定**]。
 1. 在 [ **API 存取**] 底下，選取 [**必要許可權**]。
 1. 選取 [Microsoft Graph]。
-1. 在 [**應用程式許可權**] 下，選取要授與管理應用程式之許可權的核取方塊。 例如：
+1. 在 [**應用程式許可權**] 下，選取要授與管理應用程式之許可權的核取方塊。 例如，
     * **讀取所有 audit 記錄資料**：選取此許可權以讀取目錄的 audit 記錄檔。
     * **讀取和寫入目錄資料**：針對使用者遷移或使用者管理案例選取此許可權。
     * **讀取及寫入您組織的信任架構原則**：選取此許可權以進行持續整合/持續傳遞（CI/CD）案例。 例如，使用 Azure Pipelines 的自訂原則部署。
@@ -30,7 +30,7 @@ ms.locfileid: "77492925"
 1. 在 [已設定的權限] 底下，選取 [新增權限]。
 1. 選取 [ **Microsoft api** ] 索引標籤，然後選取 [ **Microsoft Graph**]。
 1. 選取 [應用程式權限]。
-1. 展開適當的許可權群組，然後選取要授與管理應用程式之許可權的核取方塊。 例如：
+1. 展開適當的許可權群組，然後選取要授與管理應用程式之許可權的核取方塊。 例如，
     * **AuditLog** > **AuditLog。全部**：讀取目錄的 audit 記錄檔。
     * **目錄** > **目錄。 ReadWrite. All**：用於使用者遷移或使用者管理案例。
     * **原則** > **TrustFramework**：用於持續整合/持續傳遞（CI/CD）案例。 例如，使用 Azure Pipelines 的自訂原則部署。

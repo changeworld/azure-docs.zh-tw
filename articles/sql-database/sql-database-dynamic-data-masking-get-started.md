@@ -1,25 +1,26 @@
 ---
 title: 動態資料遮罩
-description: 動態資料遮罩會對 SQL Database 和資料倉儲的非特殊許可權使用者遮罩敏感性資料，以限制其曝光
+description: 動態資料遮罩會對 SQL Database 和 Azure Synapse 的非特殊許可權使用者遮罩敏感性資料，以限制其暴露程度
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-titleSuffix: Azure SQL Database and SQL Data Warehouse
+titleSuffix: Azure SQL Database and Azure Synapse
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 03/04/2019
-ms.openlocfilehash: 149c42829762920583948958da8252a01e35ef1f
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 02/06/2020
+tags: azure-synpase
+ms.openlocfilehash: e5b281d59245d8fbd32b18f4ac5fe577fc7ff309
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721909"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192909"
 ---
-# <a name="dynamic-data-masking-for-azure-sql-database-and-data-warehouse"></a>Azure SQL Database 和資料倉儲的動態資料遮罩
+# <a name="dynamic-data-masking-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database 和 Azure Synapse 分析的動態資料遮罩
 
 SQL Database 動態資料遮罩可藉由遮罩處理，使不具權限的使用者無法看見機密資料。 
 
@@ -29,7 +30,7 @@ SQL Database 動態資料遮罩可藉由遮罩處理，使不具權限的使用�
 
 ## <a name="dynamic-data-masking-basics"></a>動態資料遮罩基本概念
 
-您可以在 Azure 入口網站的 SQL Database [組態] 刀鋒視窗或 [設定] 刀鋒視窗中，選取 [動態資料遮罩] 作業，來設定動態資料遮罩原則。 無法使用 SQL DW 的入口網站來設定這項功能（請使用 Powershell 或 REST API）
+您可以在 Azure 入口網站的 SQL Database [組態] 刀鋒視窗或 [設定] 刀鋒視窗中，選取 [動態資料遮罩] 作業，來設定動態資料遮罩原則。 您無法使用 Azure Synapse 的入口網站來設定這項功能（請使用 Powershell 或 REST API）
 
 ### <a name="dynamic-data-masking-permissions"></a>動態資料遮罩權限
 

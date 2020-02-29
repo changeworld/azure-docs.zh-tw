@@ -7,24 +7,24 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 01/14/2020
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: fd9bd846beba718cb305907d4d0c5a613d2ef816
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.custom: azure-synapse
+ms.openlocfilehash: 69a200d4fda940f072960da9224f84a22db51647
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029938"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193793"
 ---
 # <a name="azure-synapse-analytics--workload-management-portal-monitoring-preview"></a>Azure Synapse 分析–工作負載管理入口網站監視（預覽）
-本文說明如何監視[工作負載群組](sql-data-warehouse-workload-isolation.md#workload-groups)的資源使用率和查詢活動。 如需如何設定 Azure 計量瀏覽器的詳細資訊，請參閱[開始使用 azure 計量瀏覽器](../azure-monitor/platform/metrics-getting-started.md)一文。  如需如何監視系統資源耗用量的詳細資訊，請參閱 Azure SQL 資料倉儲監視檔中的[資源使用率](sql-data-warehouse-concept-resource-utilization-query-activity.md#resource-utilization)一節。
+本文說明如何監視[工作負載群組](sql-data-warehouse-workload-isolation.md#workload-groups)的資源使用率和查詢活動。 如需如何設定 Azure 計量瀏覽器的詳細資訊，請參閱[開始使用 azure 計量瀏覽器](../azure-monitor/platform/metrics-getting-started.md)一文。  如需如何監視系統資源耗用量的詳細資訊，請參閱 Azure Synapse 分析監視檔中的[資源使用率](sql-data-warehouse-concept-resource-utilization-query-activity.md#resource-utilization)一節。
 有兩種不同的工作負載群組計量分類可用於監視工作負載管理：資源配置和查詢活動。  這些計量可以依工作負載群組分割和篩選。  計量可以根據系統定義（資源類別工作負載群組）或使用者定義（由具有[CREATE 工作負載群組](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)語法的使用者所建立），來進行分割和篩選。
 
 ## <a name="workload-management-metric-definitions"></a>工作負載管理度量定義
 
-|標準名稱                    |說明  |彙總類型 |
+|標準名稱                    |描述  |彙總類型 |
 |-------------------------------|-------------|-----------------|
 |有效的 cap 資源百分比 | *有效的 cap 資源百分比*是工作負載群組可存取的資源百分比固定限制，將配置給其他工作負載群組的*有效最小資源百分比*列入考慮。 *有效的 cap 資源百分比*計量是使用[建立工作負載群組](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)語法中的 `CAP_PERCENTAGE_RESOURCE` 參數來設定。  有效值如下所述。<br><br>例如，如果工作負載群組 `DataLoads` 是以 `CAP_PERCENTAGE_RESOURCE` = 100 建立，而且另一個工作負載群組是以25% 的有效最小資源百分比所建立，則 `DataLoads` 工作負載群組的*有效上限資源百分比*為75%。<br><br>*有效的 cap 資源百分比*會決定工作負載群組可以達到的平行存取上限（因而導致潛在的輸送量）。  如果需要額外的輸送量超過「*有效上限資源百分比*」計量目前所回報的值，請增加 `CAP_PERCENTAGE_RESOURCE`、降低其他工作負載群組的 `MIN_PERCENTAGE_RESOURCE`，或相應增加實例以新增更多資源。  減少 `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 可能會增加並行，但可能不會增加整體輸送量。| Min、Avg、Max |
 |有效的最低資源百分比 |*有效的最小資源百分比*是針對工作負載群組所保留和隔離的最小資源百分比，以考慮最低服務層級。  有效的最小資源百分比度量是使用[建立工作負載群組](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)語法中的 `MIN_PERCENTAGE_RESOURCE` 參數進行設定。  有效值[如下所述。](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest#effective-values)<br><br>當此計量未經過篩選，並解除以監視系統上設定的總工作負載隔離時，請使用 Sum 匯總類型。<br><br>*有效的最小資源百分比*會決定工作負載群組可以達到的保證平行存取下限（因而保證輸送量）。  如果需要其他保證資源，超過「*有效的最小資源百分比*」計量目前所回報的值，請增加針對工作負載群組設定的 `MIN_PERCENTAGE_RESOURCE` 參數。  減少 `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 可能會增加並行，但可能不會增加整體輸送量。 |Min、Avg、Max|

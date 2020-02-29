@@ -1,6 +1,6 @@
 ---
 title: 主要、外和唯一索引鍵
-description: Azure SQL 資料倉儲中的資料表條件約束支援
+description: Azure Synapse 分析中的 SQL 分析支援資料表條件約束
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,29 +10,29 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 8f3102425c6f984df0f50bc05eeb6f9a5e66d3dd
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 0379bed08c3ee6931e931a78a2d2c91664535250
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685487"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198128"
 ---
-# <a name="primary-key-foreign-key-and-unique-key-in-azure-sql-data-warehouse"></a>Azure SQL 資料倉儲中的主鍵、外鍵和唯一索引鍵
+# <a name="primary-key-foreign-key-and-unique-key-in-sql-analytics"></a>SQL 分析中的主鍵、外鍵和唯一索引鍵
 
-深入瞭解 Azure SQL 資料倉儲中的資料表條件約束，包括主鍵、外鍵和唯一索引鍵。
+瞭解 SQL 分析中的資料表條件約束，包括主鍵、外鍵和唯一索引鍵。
 
 ## <a name="table-constraints"></a>資料表條件約束 
-Azure SQL 資料倉儲支援這些資料表條件約束： 
+SQL 分析支援下列資料表條件約束： 
 - 只有在同時使用非叢集和未強制執行的情況時，才支援主要索引鍵。    
 - 只有在使用 NOT 強制的情況時，才支援 UNIQUE 條件約束。   
 
-Azure SQL 資料倉儲中不支援 FOREIGN KEY 條件約束。  
+SQL 分析中不支援 FOREIGN KEY 條件約束。  
 
 ## <a name="remarks"></a>備註
-具有主鍵和（或）唯一索引鍵可讓資料倉儲引擎為查詢產生最佳執行計畫。  主鍵資料行或唯一條件約束資料行中的所有值都應該是唯一的。 
+具有主鍵和（或）唯一索引鍵可讓 SQL 分析引擎為查詢產生最佳執行計畫。  主鍵資料行或唯一條件約束資料行中的所有值都應該是唯一的。 
 
-在 Azure 資料倉儲中建立具有 primary key 或 unique 條件約束的資料表之後，使用者必須確定這些資料行中的所有值都是唯一的。  違反可能會導致查詢傳回不正確的結果。  這個範例會顯示如果 primary key 或 unique 條件約束資料行包含重複的值，查詢可能會傳回不正確的結果。  
+在 SQL 分析中建立具有 primary key 或 unique 條件約束的資料表之後，使用者必須確定這些資料行中的所有值都是唯一的。  違反可能會導致查詢傳回不正確的結果。  這個範例會顯示如果 primary key 或 unique 條件約束資料行包含重複的值，查詢可能會傳回不正確的結果。  
 
 ```sql
  -- Create table t1
@@ -158,12 +158,12 @@ a1          total
 ```
 
 ## <a name="examples"></a>範例
-建立具有主要索引鍵的資料倉儲資料表： 
+建立具有主要金鑰的 SQL 分析資料表： 
 
 ```sql 
 CREATE TABLE mytable (c1 INT PRIMARY KEY NONCLUSTERED NOT ENFORCED, c2 INT);
 ```
-建立具有 unique 條件約束的資料倉儲資料表：
+建立具有 unique 條件約束的 SQL 分析資料表：
 
 ```sql
 CREATE TABLE t6 (c1 INT UNIQUE NOT ENFORCED, c2 INT);
@@ -171,4 +171,4 @@ CREATE TABLE t6 (c1 INT UNIQUE NOT ENFORCED, c2 INT);
 
 ## <a name="next-steps"></a>後續步驟
 
-為您的資料倉儲建立資料表之後，下一個步驟是將資料載入資料表中。 如需載入教學課程，請參閱[載入資料到 SQL 資料倉儲](load-data-wideworldimportersdw.md)。
+建立 SQL 分析資料庫的資料表之後，下一步就是將資料載入資料表。 如需載入教學課程，請參閱[將資料載入 SQL 分析資料庫](load-data-wideworldimportersdw.md)。

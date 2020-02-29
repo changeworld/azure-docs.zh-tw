@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 7/17/2019
 ms.author: allensu
-ms.openlocfilehash: 316b28faa458b03431cb48f02a8087116415b061
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: d35241850d60e82b79bba0384f60c40e3ecd6427
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075893"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192518"
 ---
 # <a name="load-balancer-outbound-rules"></a>Load Balancer 輸出規則
 
@@ -34,7 +34,7 @@ ms.locfileid: "74075893"
 - 應該如何配置[輸出 SNAT 連接埠](load-balancer-outbound-connections.md#snat)。
 - 要提供其輸出轉譯的通訊協定。
 - 要用於輸出連線閒置逾時的持續時間 (4-120 分鐘)。
-- 是否傳送閒置逾時時的 TCP 重設 (在公開預覽中)。 
+- 是否要在閒置超時時傳送 TCP 重設
 
 輸出規則會擴充[輸出連線](load-balancer-outbound-connections.md#lb)一文中所述的[情節 2](load-balancer-outbound-connections.md)，而且情節優先順序會保持現狀。
 
@@ -95,7 +95,7 @@ API 版本 "2018-07-01" 允許輸出規則定義建構如下：
 
           "idleTimeoutInMinutes": 60
 
-### <a name="tcprst"></a> <a name="tcpreset"></a> 啟用閒置逾時的 TCP 重設 (預覽)
+### <a name="tcprst"></a><a name="tcpreset"></a>在閒置超時時啟用 TCP 重設
 
 Load Balancer 的預設行為，是在達到輸出閒置逾時的當時以無訊息方式捨棄流程。  運用 enableTCPReset 參數，您可以啟用更可預測的應用程式行為，並控制是否在輸出閒置逾時的當時傳送雙向 TCP 重設 (TCP RST)。 
 
@@ -103,7 +103,7 @@ Load Balancer 的預設行為，是在達到輸出閒置逾時的當時以無訊
 
            "enableTcpReset": true
 
-如需詳細資料 (包含區域可用性)，請檢閱[閒置逾時的 TCP 重設 (預覽)](https://aka.ms/lbtcpreset)。
+如需詳細資訊（包括區域可用性），請參閱[閒置超時的 TCP 重設](https://aka.ms/lbtcpreset)。
 
 ### <a name="proto"></a> 使用單一規則支援 TCP 和 UDP 傳輸通訊協定
 

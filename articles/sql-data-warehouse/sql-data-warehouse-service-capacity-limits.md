@@ -7,15 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 11/04/2019
+ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 7847e76c8f0354e3a17c7df5f3ce9227dcf0e6ce
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.custom: azure-synapse
+ms.openlocfilehash: a225c375d877ae44c2b21ea8e79e31f17db36878
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526411"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198179"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Azure Synapse 分析（先前為 SQL DW）容量限制
 
@@ -30,16 +31,18 @@ Azure Synapse 的各種元件所允許的最大值。
 | 資料庫連接 |並行開啟的會話數上限 |1024<br/><br/>並行開啟的會話數目會根據選取的 DWU 而有所不同。 DWU600c 和更新版本支援最多1024個開啟的會話。 DWU500c 和以下支援最大並行開啟會話限制512。 請注意，可同時執行的查詢數目有所限制。 超過並行存取限制時，要求會進入內部佇列以等待處理。 |
 | 資料庫連接 |準備陳述式的最大記憶體 |20 MB |
 | [工作負載管理](resource-classes-for-workload-management.md) |並行查詢數目上限 |128<br/><br/>  最多會執行128個並行查詢，而且剩餘的查詢將會排入佇列。<br/><br/>將使用者指派給較高的資源類別，或當[資料倉儲單位](memory-concurrency-limits.md)設定降低時，並行查詢的數目可能會降低。 系統總是會允許某些查詢 (例如 DMV 查詢) 執行，而不影響並行查詢限制。 如需並行查詢執行的詳細資訊，請參閱[並行最大值](memory-concurrency-limits.md)一文。 |
-| [tempdb](sql-data-warehouse-tables-temporary.md) |GB 上限 |每一 DW100 399 GB。 因此在 DWU1000，tempdb 大小為 3.99 TB。 |
+| [tempdb](sql-data-warehouse-tables-temporary.md) |GB 上限 |每個 DW100c 399 GB。 因此，在 DWU1000c，tempdb 的大小會調整為 3.99 TB。 |
+||||
 
 ## <a name="database-objects"></a>資料庫物件
+
 | 類別 | 描述 | 最大需求 |
 |:--- |:--- |:--- |
-| 資料庫 |大小上限 | Gen1：在磁碟上壓縮後 240 TB。 此空間與 tempdb 或記錄檔空間無關，因此此空間為供永久資料表專用。  叢集資料行存放區壓縮估計為 5 X。  當所有資料表都是叢集資料行存放區 (預設的資料表類型) 時，這個壓縮可讓資料庫成長約 1 PB。 <br/><br/> Gen2：資料列存放區的限制為 240 TB，資料行存放區資料表的儲存體則沒有限制 |
-| Table |大小上限 | 對於資料行存放區資料表，沒有 uppper 限制。 <br/><br/>針對資料列存放區資料表，在磁片上壓縮 60 TB |
+| 資料庫 |大小上限 | Gen1：在磁碟上壓縮後 240 TB。 此空間與 tempdb 或記錄檔空間無關，因此此空間為供永久資料表專用。  叢集資料行存放區壓縮估計為 5 X。  當所有資料表都是叢集資料行存放區 (預設的資料表類型) 時，這個壓縮可讓資料庫成長約 1 PB。 <br/><br/> Gen2：資料行存放區資料表的無限制儲存。  資料庫的 Rowstore 部分仍然限制在磁片上壓縮的 240 TB。 |
+| Table |大小上限 |資料行存放區資料表的大小不限。 <br>60 TB，適用于在磁片上壓縮的 rowstore 資料表。 |
 | Table |每個資料庫的資料表數 | 100,000 |
 | Table |資料表的資料行數 |1024 個資料行 |
-| Table |每個資料行的位元組 |相依於資料行[資料類型](sql-data-warehouse-tables-data-types.md)。 char 資料類型的限制為 8000、nvarchar 為 4000 或 MAX 資料類型為 2 GB。 |
+| Table |每個資料行的位元組 |相依於資料行[資料類型](sql-data-warehouse-tables-data-types.md)。 若為字元資料類型，最大限制可以儲存最多 2 GB 的分頁（資料列溢位）儲存空間。  非 Unicode 字元（例如 char 或 Varchar limit）在資料頁中是8000，資料頁中的 Unicode 字元（例如 Nchar 或 Nvarchar limit）是4000。  使用資料頁儲存體大小來提升效能。 |
 | Table |每個資料列的位元組，已定義的大小 |8060 個位元組<br/><br/>每個資料列的位元組數目計算方式和使用頁面壓縮的 SQL Server 所使用的方式相同。 如同 SQL Server，支援資料列溢位儲存體，可讓**可變長度**資料行以非資料列的方式推送。 可變長度的資料列會發送至超出資料列，只有 24 位元組的根會儲存在主要記錄中。 如需詳細資訊，請參閱[超過 8-KB 的資料列溢位資料](https://msdn.microsoft.com/library/ms186981.aspx)。 |
 | Table |每個資料表的資料分割 |15,000<br/><br/>為了獲得高效能，建議在仍能支援業務需求的情況下，將您需要的資料分割數目降至最低。 隨著資料分割數目增加，資料定義語言 (DDL) 和資料操作語言 (DML) 作業的負荷會加重，導致效能變慢。 |
 | Table |每個資料分割界限值的字元。 |4000 |
@@ -52,13 +55,17 @@ Azure Synapse 的各種元件所允許的最大值。
 | 統計資料 |每個資料表的資料行上建立的統計資料。 |30,000 |
 | 預存程序 |最大巢狀層級。 |8 |
 | 檢視 |每個檢視的資料行數 |1,024 |
+||||
 
 ## <a name="loads"></a>載入
+
 | 類別 | 描述 | 最大需求 |
 |:--- |:--- |:--- |
 | PolyBase 載入 |每列 MB 數 |1<br/><br/>Polybase 會載入小於 1 MB 的資料列。 不支援將 LOB 資料類型載入具有叢集資料行存放區索引（CCI）的資料表。<br/><br/> |
+||||
 
 ## <a name="queries"></a>查詢
+
 | 類別 | 描述 | 最大需求 |
 |:--- |:--- |:--- |
 | 查詢 |使用者資料表上已排入佇列的查詢。 |1000 |
@@ -73,8 +80,10 @@ Azure Synapse 的各種元件所允許的最大值。
 | SELECT |每個 ORDER BY 資料行的位元組 |8060 個位元組<br/><br/>ORDER BY 子句中的資料行最多可以有 8060 個位元組 |
 | 每個陳述式的識別項 |參考的識別項個數 |65,535<br/><br/> 查詢的單一運算式中可包含的識別碼數目有限。 超過此數字會導致 SQL Server 錯誤 8632。 如需詳細資訊，請參閱 [內部錯誤：到達運算式服務的限制](https://support.microsoft.com/help/913050/error-message-when-you-run-a-query-in-sql-server-2005-internal-error-a)。 |
 | 字串常值 | 陳述式中的字串常值數目 | 20,000 <br/><br/>查詢的單一運算式中的字串常數數目有限。 超過此數字會導致 SQL Server 錯誤 8632。|
+||||
 
 ## <a name="metadata"></a>中繼資料
+
 | 系統檢視表 | 最大資料列數 |
 |:--- |:--- |
 | sys.dm_pdw_component_health_alerts |10,000 |
@@ -86,6 +95,8 @@ Azure Synapse 的各種元件所允許的最大值。
 | sys.dm_pdw_request_steps |儲存在 sys.dm_pdw_exec_requests 中的最近 1000 個 SQL 要求的步驟總數。 |
 | sys.dm_pdw_os_event_logs |10,000 |
 | sys.dm_pdw_sql_requests |儲存在 sys.dm_pdw_exec_requests 中的最近 1000 個 SQL 要求。 |
+|||
 
 ## <a name="next-steps"></a>後續步驟
+
 如需使用 Azure [Synapse 的建議](cheat-sheet.md)，請參閱功能提要。

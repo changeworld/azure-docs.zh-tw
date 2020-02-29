@@ -3,20 +3,20 @@ title: 使用自訂原則來設定以 Azure AD 帳戶進行登入
 titleSuffix: Azure AD B2C
 description: 在 Azure Active Directory B2C 中使用自訂原則來設定以 Azure Active Directory 帳戶進行登入。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 64934dd5bc591415c0bad6ac3dc6a4a2d98dd005
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 5a6c85ebed7271655745de45694542fb359836e7
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77136297"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188405"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則來設定以 Azure Active Directory 帳戶進行登入
 
@@ -24,7 +24,7 @@ ms.locfileid: "77136297"
 
 本文說明如何使用 Azure Active Directory B2C （Azure AD B2C）中的[自訂原則](custom-policy-overview.md)，讓來自 Azure Active Directory （Azure AD）組織的使用者登入。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 完成在 [Azure Active Directory B2C 中開始使用自訂原則](custom-policy-get-started.md)中的步驟。
 
@@ -61,7 +61,7 @@ ms.locfileid: "77136297"
 1. 選取 [**新增選擇性**宣告]。
 1. 選取您想要設定的權杖類型。
 1. 選取要新增的選擇性宣告。
-1. 按一下 [新增]。
+1. 按一下 [加入]。
 
 ## <a name="create-a-policy-key"></a>建立原則金鑰
 
