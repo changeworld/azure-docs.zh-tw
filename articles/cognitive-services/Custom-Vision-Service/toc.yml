@@ -1,9 +1,12 @@
 - name: 自訂視覺服務文件
   href: index.yml
 - name: 概觀
+  expanded: true
   items:
     - name: 什麼是自訂視覺服務？
       href: home.md
+    - name: 新功能
+      href: whats-new.md
 - name: 快速入門
   items:
     - name: 使用 Web 入口網站

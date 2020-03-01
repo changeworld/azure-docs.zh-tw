@@ -5,6 +5,8 @@
   items:
     - name: 什麼是電腦視覺？
       href: Home.md
+    - name: 新功能
+      href: whats-new.md
 - name: 快速入門
   items:
     - name: 使用用戶端 SDK

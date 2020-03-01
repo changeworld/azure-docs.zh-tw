@@ -1,6 +1,7 @@
 - name: Content Moderator 文件
   href: index.yml
 - name: 概觀
+  expanded: true
   items:
     - name: 什麼是內容仲裁？
       href: overview.md
@@ -37,7 +38,7 @@
       href: Review-Tool-User-Guide/human-in-the-loop.md
     - name: 檢閱、工作流程和作業
       href: review-api.md
-- name: 使用說明指南
+- name: 操作指南
   items:
     - name: 調節內容
       items:

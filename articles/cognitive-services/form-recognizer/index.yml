@@ -6,17 +6,17 @@ metadata:
   description: Azure 表單辨識器是一項認知服務，其使用機器學習技術來識別和擷取表單文件中的索引鍵值組和資料表資料。 然後，它會輸出在原始檔中包含關聯性的結構化資料。 非監督式學習可讓模型了解版面配置和欄位資料，而不需手動資料標記或密集編碼。 您也可以使用手動標記的資料進行監督式學習。 以標記的資料定型的模型可以執行得更好，而且可以處理更複雜的文件。
   services: cognitive-services
   ms.service: cognitive-services
-  ms.subservice: form-recognizer
+  ms.subservice: forms-recognizer
   ms.topic: landing-page
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/05/2019
-  ms.openlocfilehash: 1fe0aee8967a0072a7ae01abc5791e7a3fd0834d
-  ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+  ms.openlocfilehash: de869fd9beb66a4122c1204648d17cff480e4b7f
+  ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 01/13/2020
-  ms.locfileid: "75921481"
+  ms.lasthandoff: 03/01/2020
+  ms.locfileid: "78206481"
 landingContent:
 - title: 關於表單辨識器
   linkLists:
