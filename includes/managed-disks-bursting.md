@@ -5,17 +5,17 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 10/24/2019
+ms.date: 02/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7564d40aa9344288c0368818b0b6501dc22a5a27
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: a04df7ed283a17ddad6af87cf8215ff8d39a5079
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705507"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78202517"
 ---
-磁片高載目前是 premium Ssd 的預覽功能。 任何 premium SSD 磁片大小都支援高載，< = 512 GiB （P20 或以下）。 這些磁片大小支援高載，並利用信用系統來管理負載平衡。 當磁片流量低於已布建的效能目標時，信用額度會累積在高載值區中，而且當流量高載超過目標時，就會耗用點數。 磁片流量會針對布建目標中的 IOPS 和頻寬進行追蹤。
+磁片高載目前是 premium Ssd 的預覽功能。 任何 premium SSD 磁片大小都支援高載，< = 512 GiB （P20 或以下）。 這些磁片大小支援高載，並利用信用系統來管理負載平衡。 當磁片流量低於已布建的效能目標時，信用額度會累積在高載值區中，而且當流量高載超過目標時，就會耗用點數。 磁片流量會針對布建目標中的 IOPS 和頻寬進行追蹤。 磁片高載不會略過虛擬機器（VM）對 IOPS 或輸送量的大小限制。
 
 預設會在支援的磁片大小的新部署上啟用磁片負載平衡。 現有的磁片大小如果支援磁片高載，可以透過下列其中一種方法來啟用高載：
 

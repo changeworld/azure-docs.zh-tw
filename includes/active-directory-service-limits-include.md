@@ -5,15 +5,15 @@ services: active-directory
 author: curtand
 ms.service: active-directory
 ms.topic: include
-ms.date: 01/22/2020
+ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: include file
-ms.openlocfilehash: 2e06a6c8dd7eb58769f504db9f96e0303c3e9f4c
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 5356252432b70654648a832f9ac27698f29b6327
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76748959"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78202453"
 ---
 以下是 Azure Active Directory (Azure AD) 服務的使用條件約束和其他服務限制。
 
@@ -21,7 +21,7 @@ ms.locfileid: "76748959"
 | --- | --- |
 | 目錄 | 單一使用者能以成員或來賓的身分，隸屬於最多 500 個 Azure AD 目錄。<br/>單一使用者最多可以建立 20 個目錄。 |
 | 網域 | 您可以新增 900 個以內的受控網域名稱。 如果您要設定所有網域與內部部署 Active Directory 建立同盟，則可以在每個目錄中新增 450 個以內的網域名稱。 |
-|資源 |<ul><li>預設 Azure Active Directory 免費版的使用者，可以在單一目錄中建立最多 50000 Azure AD 資源。 如果您至少有一個已驗證的網域，Azure AD 中的預設目錄服務配額會延伸到 300000 Azure AD 資源。 </li><li>非系統管理員使用者可以建立的 Azure AD 資源不超過250個。 作用中資源和已刪除的資源，可供還原計入此配額。 只有刪除了少於30天前刪除的 Azure AD 資源可供還原。 已刪除已無法再供還原使用的 Azure AD 資源計數，其值為一季30天。 如果您的開發人員可能會在其定期責任的過程中重複超出此配額，您可以[建立並指派自訂角色](../articles/active-directory/users-groups-roles/roles-quickstart-app-registration-limits.md)，以建立無限數量的應用程式註冊許可權。</li></ul> |
+|資源 |<ul><li>預設 Azure Active Directory 免費版的使用者，可以在單一目錄中建立最多 50000 Azure AD 資源。 如果您至少有一個已驗證的網域，則您組織的預設 Azure AD 服務配額會延伸到 300000 Azure AD 資源。 此服務限制與 Azure AD 定價頁面上的定價層限制500000資源無關。 若要超越預設配額，您必須聯絡 Microsoft 支援服務。</li><li>非系統管理員使用者可以建立的 Azure AD 資源不超過250個。 作用中資源和已刪除的資源，可供還原計入此配額。 只有刪除了少於30天前刪除的 Azure AD 資源可供還原。 已刪除已無法再供還原使用的 Azure AD 資源計數，其值為一季30天。 如果您的開發人員可能會在其定期責任的過程中重複超出此配額，您可以[建立並指派自訂角色](../articles/active-directory/users-groups-roles/roles-quickstart-app-registration-limits.md)，以建立無限數量的應用程式註冊許可權。</li></ul> |
 | 架構延伸模組 |<ul><li>字串類型延伸模組最多可以包含 256 個字元。 </li><li>二進位類型延伸模組受限於 256 個位元組。</li><li>只有100延伸模組值（在*所有*類型和*所有*應用程式中）可以寫入任何單一 Azure AD 資源。</li><li>只能使用「字串」類型或「二進位」類型單一值屬性來擴充 User、Group、TenantDetail、Device、Application 和 ServicePrincipal 實體。</li><li>結構描述延伸模組僅適用於圖形 API 版本 1.21 預覽。 應用程式必須取得寫入權限才能登錄延伸模組。</li></ul> |
 | 應用程式 |最多 100 個使用者可以成為單一應用程式的擁有者。 |
 |應用程式資訊清單 |最多可以在應用程式資訊清單中新增1200個專案。 |

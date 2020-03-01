@@ -5,21 +5,21 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/14/2019
+ms.date: 02/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a355307eef9f5ce1f833cfd7924f5efa234a0cd7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e145cf481dd165144b188e6205e4b78cc61359fd
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73522431"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78202486"
 ---
 ## <a name="premium-ssd"></a>進階 SSD
 
 針對輸入/輸出 (IO) 工作負載大的虛擬機器 (VM)，Azure 進階 SSD 可提供高效能和低延遲的磁碟支援。 您可以將現有 VM 磁碟遷移到進階 SSD，以利用進階儲存體磁碟的速度和效能。 進階 SSD 適用於任務關鍵性的生產應用程式。 Premium Ssd 只能與高階儲存體相容的 VM 系列搭配使用。
 
-若要深入瞭解適用于 Windows 的 Azure 中的個別 VM 類型和大小，包括哪些大小與高階儲存體相容，請參閱[WINDOWS VM 大小](../articles/virtual-machines/windows/sizes.md)。 若要深入瞭解適用于 Linux 的 Azure 中的個別 VM 類型和大小，包括哪些大小與高階儲存體相容，請參閱[LINUX VM 大小](../articles/virtual-machines/linux/sizes.md)。
+若要深入瞭解適用于 Windows 的 Azure 中的個別 VM 類型和大小，包括哪些大小與高階儲存體相容，請參閱[WINDOWS VM 大小](../articles/virtual-machines/windows/sizes.md)。 若要深入瞭解適用于 Linux 的 Azure 中的個別 VM 類型和大小，包括哪些大小與高階儲存體相容，請參閱[LINUX VM 大小](../articles/virtual-machines/linux/sizes.md)。 從這兩篇文章中，您必須檢查每個個別的 VM 大小一文，以判斷它是否為高階儲存體相容。
 
 ### <a name="disk-size"></a>磁碟大小
 [!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
