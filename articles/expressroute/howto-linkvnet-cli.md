@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: cherylmc
-ms.openlocfilehash: a8814030e6c4345227ec05ea1554104e0b21efbc
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: c80c667cb281168de6f11bbb6a536c01fefb7935
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076547"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206957"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>使用 CLI 將虛擬網路連線到 ExpressRoute 線路
 
@@ -155,15 +155,17 @@ az network vpn-connection update --name ERConnection --resource-group ExpressRou
 ## <a name="configure-expressroute-fastpath"></a>設定 ExpressRoute FastPath 
 如果您的 ExpressRoute 線路位於[Expressroute Direct](expressroute-erdirect-about.md) ，而您的虛擬網路閘道是 Ultra 效能或 ErGw3AZ，您可以啟用[expressroute FastPath](expressroute-about-virtual-network-gateways.md) 。 FastPath 可改善資料路徑效能，例如每秒封包數和內部部署網路與虛擬網路之間的每秒連線數。 
 
-> [!NOTE] 
-> 如果您已經有虛擬網路連線，但尚未啟用 FastPath，您必須刪除虛擬網路連線，並建立一個新的連接。 
-> 
->  
+**在新連接上設定 FastPath**
 
 ```azurecli
 az network vpn-connection create --name ERConnection --resource-group ExpressRouteResourceGroup --express-route-gateway-bypass true --vnet-gateway1 VNet1GW --express-route-circuit2 MyCircuit
 ```
 
+**更新現有的連接以啟用 FastPath**
+
+```azurecli
+az network vpn-connection update --name ERConnection --resource-group ExpressRouteResourceGroup --express-route-gateway-bypass true
+```
 
 ## <a name="next-steps"></a>後續步驟
 

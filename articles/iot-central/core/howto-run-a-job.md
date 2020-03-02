@@ -1,6 +1,6 @@
 ---
 title: 在 Azure IoT Central 應用程式中建立及執行工作 | Microsoft Docs
-description: Azure IoT Central 工作可讓您執行大量裝置管理功能，例如更新裝置屬性、設定或執行命令。
+description: Azure IoT Central 作業允許大量裝置管理功能，例如更新屬性或執行命令。
 ms.service: iot-central
 services: iot-central
 author: sarahhubbard
@@ -8,66 +8,70 @@ ms.author: sahubbar
 ms.date: 07/08/2019
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: 68d4dbff364f8d3fda72fc2377722031e9cccc3d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 2dd1eddc841cc484957c2124de3419799c4e59b7
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77018885"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206779"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>在您的 Azure IoT Central 應用程式中建立及執行作業
 
-您可以使用 Microsoft Azure IoT Central 利用工作來大規模管理您的已連線裝置。 作業可讓您對裝置屬性和命令進行大量更新。 本文會逐步引導您瞭解如何開始在自己的應用程式中使用作業。
-
+您可以使用 Microsoft Azure IoT Central 利用工作來大規模管理您的已連線裝置。 作業可讓您對裝置屬性進行大量更新，並執行命令。 本文說明如何在您自己的應用程式中開始使用作業。
 
 ## <a name="create-and-run-a-job"></a>建立及執行工作
 
-本節說明如何建立及執行工作。 其中說明如何增加多部冷飲自動販賣機器的風扇速度。
+本節說明如何建立及執行工作。 它會示範如何為一組羅吉斯閘道裝置設定光源閾值。
 
-1. 從瀏覽窗格中瀏覽至 [工作]。
+1. 從左窗格中，流覽至 [**作業**]。
 
-2. 選取 [ **+ 新增**] 以建立新的作業。
+2. 選取 [ **+ 新增**] 以建立新的作業：
 
-    ![建立新工作](./media/howto-run-a-job/createnewjob.png)
+    > [!div class="mx-imgBorder"]
+    > ![建立新作業](./media/howto-run-a-job/createnewjob.png)
 
 3. 輸入 [名稱] 和 [描述] 來識別您要建立的作業。
 
-4. 選取您要套用作業的裝置群組。 您可以在 [摘要] 區段中，查看您的作業設定將套用至多少裝置。 
+4. 選取您想要將作業套用至其中的目標裝置群組。 您可以在 [**摘要**] 區段中查看您的作業設定適用的裝置數目。
 
-5. 接下來，選擇要定義的作業類型（屬性或命令）。 選取屬性並設定新的值，或選擇命令，以設定作業設定。 您可以一次新增多個屬性。
+5. 接下來，選擇 [**屬性**] 或 [**命令**] 做為要設定的作業類型。 若要設定**屬性**作業設定，請選取屬性，並設定其新值。 若要設定**命令**，或選擇要執行的命令。 屬性作業可以設定多個屬性：
 
-    ![設定工作](./media/howto-run-a-job/configurejob.png)
+    > [!div class="mx-imgBorder"]
+    > ![設定作業](./media/howto-run-a-job/configurejob.png)
 
-6. 在右側，選擇您想要執行作業的裝置。 選取最上方的核取方塊，就會在整個裝置集合中選取所有裝置。 藉由選取 [**名稱**] 旁的核取方塊，就會選取目前頁面上的所有裝置。
+6. 選取您的裝置之後，請選擇 [**執行**] 或 [**儲存**]。 作業現在會出現在您的主要 [**作業**] 頁面上。 在此頁面上，您可以看到目前正在執行的作業，以及任何先前執行或儲存之作業的歷程記錄。 您已儲存的作業可以隨時重新開啟，以繼續進行編輯或執行：
 
-7. 選取您的裝置之後，請選擇 [**執行**] 或 [**儲存**]。 作業現在會出現在您的主要 [**作業**] 頁面上。 在此視圖中，您可以看到目前正在執行的作業，以及任何先前執行之作業的歷程記錄。 執行中的作業一律會顯示在清單頂端。 您已儲存的作業可以隨時重新開啟，以繼續編輯或執行。
-
-    ![檢視工作](./media/howto-run-a-job/viewjob.png)
+    > [!div class="mx-imgBorder"]
+    > ![檢視作業](./media/howto-run-a-job/viewjob.png)
 
     > [!NOTE]
-    > 您可以查看先前執行之工作的歷程記錄（最多30天）。
+    > 您可以針對先前執行的作業，查看30天的歷程記錄。
 
-7. 若要取得作業的總覽，請從清單中選取要查看的作業。 此總覽包含作業詳細資料、裝置和裝置狀態值。 在此總覽中，您也可以選取 [**下載工作詳細資料**] 來下載作業詳細資料的 .csv 檔案，包括裝置及其狀態值。 這種資訊對疑難排解很有用。
+7. 若要取得作業的總覽，請從清單中選取要查看的作業。 此總覽包含作業詳細資料、裝置和裝置狀態值。 在此總覽中，您也可以選取 [**下載工作詳細資料**] 來下載作業詳細資料的 CSV 檔案，包括裝置及其狀態值。 這種資訊對疑難排解很有用：
 
-    ![檢視裝置狀態](./media/howto-run-a-job/downloaddetails.png)
+    > [!div class="mx-imgBorder"]
+    > ![查看裝置狀態](./media/howto-run-a-job/downloaddetails.png)
 
 ### <a name="stop-a-running-job"></a>停止執行中的工作
 
-若要停止正在執行的作業，請選取它，然後選擇 [**停止**]。 作業狀態會變更以反映作業已停止。
+若要停止其中一個執行中的作業，請開啟它，然後選取 [**停止**]。 作業狀態會變更以反映作業已停止。 [**摘要**] 區段會顯示哪些裝置已完成、失敗或仍處於擱置狀態：
 
-   ![停止作業](./media/howto-run-a-job/stopjob.png)
+    > [!div class="mx-imgBorder"]
+    > ![Stop job](./media/howto-run-a-job/stopjob.png)
 
 ### <a name="run-a-stopped-job"></a>執行已停止的作業
 
-若要執行目前已停止的作業，請選取 [已停止] 作業。 選擇面板上的 [**執行**]。 作業狀態會變更，以反映作業現在正在執行。
+若要執行目前已停止的作業，請選取它，然後選取 [**執行**]。 作業狀態會變更，以反映作業現在正在執行。 [**摘要**] 區段會繼續以最新的進度更新：
 
-   ![繼續的作業](./media/howto-run-a-job/resumejob.png)
+    > [!div class="mx-imgBorder"]
+    > ![Resumed job](./media/howto-run-a-job/resumejob.png)
 
 ## <a name="copy-a-job"></a>複製作業
 
-若要複製已建立的現有作業，請開啟已建立的作業，然後選取 [**複製**]。 隨即會開啟 [作業設定] 的新複本以供您編輯。 您可以儲存或執行新作業。 
+若要複製其中一個現有的作業，請開啟它，然後選取 [**複製**]。 [作業設定] 的複本隨即開啟供您編輯，而 [**複製**] 則會附加至工作名稱的結尾。 您可以儲存或執行新的作業：
 
-   ![複製作業](./media/howto-run-a-job/copyjob.png)
+    > [!div class="mx-imgBorder"]
+    > ![Copy job](./media/howto-run-a-job/copyjob.png)
 
 ## <a name="view-the-job-status"></a>檢視工作狀態
 
@@ -90,7 +94,7 @@ ms.locfileid: "77018885"
 
 ### <a name="view-the-device-status"></a>檢視裝置狀態
 
-若要查看作業和所有受影響裝置的狀態，請選取該作業。 若要下載包含作業詳細資料的 .csv 檔案，包括裝置清單及其狀態值，請選取 [**下載作業詳細資料**]。 在每個裝置名稱旁邊，您會看到下列其中一則狀態訊息：
+若要查看作業和所有受影響裝置的狀態，請選取該作業。 若要下載包含作業詳細資料的 CSV 檔案（包括裝置清單及其狀態值），請選取 [**下載作業詳細資料**]。 在每個裝置名稱旁邊，您會看到下列其中一則狀態訊息：
 
 | 狀態訊息       | 狀態意義                                                                |
 | -------------------- | ----------------------------------------------------------------------------- |
@@ -99,7 +103,7 @@ ms.locfileid: "77018885"
 | Pending              | 作業尚未在此裝置上執行。                                   |
 
 > [!NOTE]
-> 如果裝置已被刪除，您就無法選取該裝置，它會以裝置識別碼顯示為已刪除。
+> 如果裝置已被刪除，您就無法選取該裝置。 它會以裝置識別碼顯示為已刪除。
 
 ## <a name="next-steps"></a>後續步驟
 

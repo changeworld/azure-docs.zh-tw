@@ -9,19 +9,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 02/28/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d11f5a9f2de8683365d663e85c275c3729ebf8a
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: a815446b79b3e5ec0a75e5d179953956643b16c9
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901499"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206107"
 ---
-# <a name="search-groups--and-members-preview-in-azure-active-directory"></a>搜尋 Azure Active Directory 中的群組和成員（預覽）
+# <a name="search-groups-and-members-preview-in-azure-active-directory"></a>搜尋 Azure Active Directory 中的群組和成員（預覽）
 
 本文會告訴您如何搜尋群組的成員和擁有者，以及如何在 Azure Active Directory （Azure AD）入口網站中，使用搜尋篩選作為 [群組改進預覽] 的一部分。 群組體驗中有許多增強功能，可協助您快速且輕鬆地管理您的群組，包括成員和擁有者。 如需有關預覽版的詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
@@ -45,11 +45,11 @@ ms.locfileid: "70901499"
 
 ## <a name="group-search-and-sorting"></a>群組搜尋和排序
 
-群組清單搜尋已經過增強，因此當您輸入搜尋字串時，搜尋會在組名清單`startswith`上自動執行和子字串搜尋。 子字串搜尋只會針對整個單字執行，而且不會包含特殊字元。
+群組清單搜尋已經過增強，因此當您輸入搜尋字串時，搜尋會自動在組名清單上執行 `startswith` 和 substring 搜尋。 子字串搜尋只會針對整個單字執行，而且不會包含特殊字元。 子字串搜尋會區分大小寫。
 
 ![[所有群組] 頁面上的新子字串搜尋](./media/groups-members-owners-search/groups-search-preview.png)
 
-例如，搜尋「原則」現在會同時傳回「MDM 原則-西部」和「原則群組」。 不會傳回名為 "New_policy" 的群組。
+例如，搜尋「原則」現在會同時傳回「MDM 原則-西部」和「原則群組」。 將不會傳回名為 "New_policy" 的群組。
 
 - 您也可以對群組成員資格清單執行相同的搜尋。
 - 您現在可以使用 [名稱] 資料行標題右邊的箭號，依名稱排序群組清單，以遞增或遞減順序排序清單。

@@ -5,23 +5,23 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 12/13/2019
+ms.date: 02/27/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: a0ecb4f5fe54e9895898156893c1e686c6cc24e6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e02de4ee9c36f9c3f0c27bc02ee1c37ce3e4057c
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75392347"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78208217"
 ---
-下表說明 Azure 一般用途 v1、v2 和 Blob 儲存體帳戶的預設限制。 輸入*限制是*指傳送至儲存體帳戶之要求中的所有資料。 輸出*限制是*指從儲存體帳戶接收的回應中的所有資料。
+下表說明 Azure 一般用途 v1、v2 和 Blob 儲存體帳戶的預設限制。 輸入*限制是*指傳送至儲存體帳戶的所有資料。 輸出*限制是*指從儲存體帳戶接收的所有資料。
 
 | 資源 | 預設限制 |
 | --- | --- |
 | 每個區域中每個訂用帳戶的儲存體帳戶數目，包括標準和進階帳戶 | 250 |
-| 儲存體帳戶容量上限 | 2 PiB 適用于美國和歐洲，而 500 TiB 適用于所有其他區域（包含英國）<sup>1</sup>|
-| 每個儲存體帳戶的 blob 容器、blob、檔案共用、資料表、佇列、實體或訊息數目上限 | 無限制 |
+| 儲存體帳戶容量上限 | 5 PiB <sup>1</sup>|
+| 每個儲存體帳戶的 blob 容器、blob、檔案共用、資料表、佇列、實體或訊息數目上限 | 沒有限制 |
 | 每一儲存體帳戶的要求率上限<sup>1</sup> | 每秒 20,000 個要求 |
 | 每一儲存體帳戶的輸入上限<sup>1</sup> （美國、歐洲地區） | 25 Gbps |
 | 每一儲存體帳戶的輸入上限<sup>1</sup> （美國和歐洲以外的地區） | 如果啟用了 RA-GRS/GRS，則為 5 gbps，LRS/ZRS 為 10 Gbps<sup>2</sup> |
@@ -31,7 +31,7 @@ ms.locfileid: "75392347"
 | 每個儲存體帳戶的虛擬網路規則數目上限 | 200 |
 | 每個儲存體帳戶的 IP 位址規則數目上限 | 200 |
 
-<sup>1</sup>Azure 儲存體標準帳戶支援更高的容量限制，以及依要求輸入的更高限制。 若要要求提高帳戶的輸入限制，請連絡 [Azure 支援](https://azure.microsoft.com/support/faq/)。 如需詳細資訊，請參閱[宣佈較大型、較大規模的儲存體帳戶](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)。
+<sup>1</sup>Azure 儲存體標準帳戶支援更高的容量限制，以及依要求輸入的更高限制。 若要要求提高帳戶的輸入限制，請連絡 [Azure 支援](https://azure.microsoft.com/support/faq/)。
 
 <sup>2</sup>如果您的儲存體帳戶已啟用異地多餘儲存體（RA-GRS）或異地區域冗余儲存體（RA-切換）的讀取權限，則次要位置的輸出目標會與主要位置相同。 [Azure 儲存體](https://docs.microsoft.com/azure/storage/common/storage-redundancy)複寫選項包括：
 

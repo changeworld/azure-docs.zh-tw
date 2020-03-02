@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/14/2020
-ms.openlocfilehash: 587de168a17c407abf3c2a7797969df013760a9f
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 1933db624dfef2ffa747ecb043be6730b6b884b5
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156636"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206549"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>使用 Microsoft 辨識工具組深入了解模型與 Azure HDInsight Spark 叢集
 
@@ -23,7 +23,7 @@ ms.locfileid: "76156636"
 
 2. 將 [Jupyter Notebook](https://jupyter.org/) 上傳至 [Apache Spark](https://spark.apache.org/) 叢集，以了解如何使用 [Spark Python API (PySpark)](https://spark.apache.org/docs/latest/api/python/index.html)，將定型的 Microsoft Cognitive Toolkit 深入學習模型套用至 Azure Blob 儲存體帳戶中的檔案
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * HDInsight 上的 Apache Spark 叢集。 請參閱[建立 Apache Spark 叢集](./apache-spark-jupyter-spark-sql-use-portal.md)。
 
@@ -56,7 +56,7 @@ Jupyter Notebook 中涵蓋下列剩餘步驟。
 
 ### <a name="using-the-azure-portal"></a>使用 Azure 入口網站
 
-如需如何使用 Azure 入口網站來執行腳本動作的指示，請參閱[使用腳本動作自訂 HDInsight](../hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-during-cluster-creation)叢集。 確定您提供下列輸入來安裝 Microsoft 辨識工具組。 針對您的腳本動作使用下列值：
+如需如何使用 Azure 入口網站來執行腳本動作的指示，請參閱[使用腳本動作自訂 HDInsight](../hdinsight-hadoop-customize-cluster-linux.md#script-action-during-cluster-creation)叢集。 確定您提供下列輸入來安裝 Microsoft 辨識工具組。 針對您的腳本動作使用下列值：
 
 |屬性 |值 |
 |---|---|
@@ -64,7 +64,7 @@ Jupyter Notebook 中涵蓋下列剩餘步驟。
 |名稱| 安裝 MCT|
 |Bash 指令碼 URI|`https://raw.githubusercontent.com/Azure-Samples/hdinsight-pyspark-cntk-integration/master/cntk-install.sh`|
 |節點類型：|Head、Worker|
-|參數|無|
+|參數|None|
 
 ## <a name="upload-the-jupyter-notebook-to-azure-hdinsight-spark-cluster"></a>將 Jupyter Notebook 上傳至 Azure HDInsight Spark 叢集
 
@@ -82,7 +82,7 @@ Jupyter Notebook 中涵蓋下列剩餘步驟。
 
 1. 上傳筆記本之後，按一下筆記本的名稱，然後遵循筆記本本身的指示，瞭解如何載入資料集並執行該文章。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [概觀：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)
 

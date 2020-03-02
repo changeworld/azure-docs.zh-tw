@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 77b092920bff75c806ec78a933d23df546bf636a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 45febcffed747f75b6c8b78c2e4b93a047f81b0a
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036357"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78205869"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>IaaS VM 適用的 Azure 磁碟加密常見問題集
 
@@ -100,7 +100,7 @@ Azure 磁碟加密有其先決條件。 請參閱[具有 Azure AD](disk-encrypti
 
 ## <a name="can-i-apply-updates-to-a-linux-red-hat-vm-that-uses-the-yum-update"></a>是否可使用 Yum 更新將更新套用至 Linux Red Hat VM？
 
-是，您可以在 Red Hat Linux VM 上執行 yum 更新。  如需詳細資訊，請參閱[防火牆後方的 Linux 套件管理](disk-encryption-troubleshooting.md#linux-package-management-behind-a-firewall)。
+是，您可以在 Red Hat Linux VM 上執行 yum 更新。  如需詳細資訊，請參閱[隔離網路上的 Azure 磁碟加密](disk-encryption-isolated-network.md)。
 
 ## <a name="what-is-the-recommended-azure-disk-encryption-workflow-for-linux"></a>若為 Linux，建議使用何種 Azure 磁碟加密工作流程？
 

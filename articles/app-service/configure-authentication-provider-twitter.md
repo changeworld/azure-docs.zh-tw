@@ -3,14 +3,14 @@ title: 設定 Twitter 驗證
 description: 瞭解如何將 Twitter 驗證設定為 App Service 應用程式的身分識別提供者。
 ms.assetid: c6dc91d7-30f6-448c-9f2d-8e91104cde73
 ms.topic: article
-ms.date: 04/19/2018
+ms.date: 02/28/2020
 ms.custom: seodec18
-ms.openlocfilehash: b5ec17c18cec8053f0732366c0cc5d0c5003e4de
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 794f671b36b5aeb9f19cf5d80e488500cedb1098
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670807"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78207129"
 ---
 # <a name="configure-your-app-service-app-to-use-twitter-login"></a>設定 App Service 應用程式以使用 Twitter 登入
 
@@ -20,28 +20,27 @@ ms.locfileid: "74670807"
 
 若要完成本文中的程式，您需要有已驗證電子郵件地址和電話號碼的 Twitter 帳戶。 若要建立新的 Twitter 帳戶，請前往 [twitter.com]。
 
-## <a name="register"> </a>向 Twitter 註冊您的應用程式
+## <a name="register"></a>向 Twitter 註冊您的應用程式
 
-1. 登入[Azure 入口網站]並移至您的應用程式。 複製您的 [URL]。 您將使用它來設定您的 Twitter 應用程式。
-1. 前往[Twitter Developers]網站，使用您的 Twitter 帳號憑證登入，然後選取 [**建立新的應用程式**]。
-1. 輸入新應用程式的 [**名稱**] 和 [**描述**]。 在 [**網站**] 欄位中貼上您的應用程式**URL** 。 在 [**回呼 URL** ] 欄位中，輸入 App Service 應用程式的 URL，並將路徑附加 `/.auth/login/aad/callback`。 例如： `https://contoso.azurewebsites.net/.auth/login/twitter/callback` 。 請務必使用 HTTPS 配置。
-1. 在頁面底部，閱讀並接受條款。 選取 [**建立您的 Twitter 應用程式**]。 隨即顯示應用程式詳細資料。
-1. 選取 [**設定**] 索引標籤，勾選 [**允許此應用程式用來以 Twitter 登入**]，然後選取 [**更新設定**]。
+1. 登入[Azure 入口網站]並移至您的應用程式。 複製您的 **URL**。 您將使用它來設定您的 Twitter 應用程式。
+1. 前往[Twitter Developers]網站，使用您的 Twitter 帳號憑證登入，然後選取 [**建立應用程式**]。
+1. 輸入新應用程式的 [**應用程式名稱**] 和 [**應用程式描述**]。 在 [**網站 url** ] 欄位中貼上您的應用程式**url** 。 在 [**回呼 url** ] 區段中，輸入 App Service 應用程式的 HTTPS URL，並將路徑附加 `/.auth/login/twitter/callback`。 例如： `https://contoso.azurewebsites.net/.auth/login/twitter/callback` 。
+1. 在頁面底部的 [**告訴我們此應用程式的使用方式**] 中，輸入至少100個字元，然後選取 [**建立**]。 在快顯視窗中，再次按一下 [**建立**]。 隨即顯示應用程式詳細資料。
 1. 選取 [ **金鑰和存取權杖** ] 索引標籤。
 
    記下這些值：
-   - 取用者金鑰（API 金鑰）
-   - 取用者秘密（API 秘密）
+   - API 金鑰
+   - API 秘密金鑰
 
    > [!NOTE]
-   > 消費者密碼是重要的安全性認證。 請勿將此密碼告訴任何人或隨應用程式一起散發。
+   > API 秘密金鑰是重要的安全性認證。 請勿將此密碼告訴任何人或隨應用程式一起散發。
 
-## <a name="secrets"> </a>將 Twitter 資訊新增至應用程式
+## <a name="secrets"></a>將 Twitter 資訊新增至您的應用程式
 
 1. 在[Azure 入口網站]中，移至您的應用程式。
 1. 選取 [**設定**] > [**驗證/授權**]，並確定**App Service 驗證**已**開啟**。
 1. 選取 [ **Twitter**]。
-1. 貼上您先前取得的 `API Key` 和 `API Secret` 值。
+1. 貼上您先前取得的 `API key` 和 `API secret key` 值。
 1. 選取 [確定]。
 
    ![行動應用程式 Twitter 設定的螢幕擷取畫面][1]
@@ -57,7 +56,7 @@ ms.locfileid: "74670807"
 
 現在，您已可在應用程式中使用 Twitter 進行驗證。
 
-## <a name="related-content"> </a>後續步驟
+## <a name="related-content"></a>後續步驟
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 

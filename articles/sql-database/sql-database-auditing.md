@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/11/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 70f37c70f685ee139db4b417c1c498f9eefb8205
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 27d65c7e6bbc0af20d01d91f1472433f3e7142a9
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78184752"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206600"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>開始使用 SQL Database 稽核
 
@@ -93,13 +93,13 @@ Azure [SQL Database](sql-database-technical-overview.md)和[azure Synapse 分析
    
 ### <a id="audit-storage-destination">對儲存體目的地的審核</a>
 
-若要設定將稽核記錄寫入至儲存體帳戶，請選取 [儲存體]，然後開啟 [儲存體詳細資料]。 選取將儲存記錄的 Azure 儲存體帳戶，然後選取保留期間。 然後按一下 **[確定]** 。 早于保留期限的記錄會遭到刪除。
+若要設定將稽核記錄寫入至儲存體帳戶，請選取 [儲存體]，然後開啟 [儲存體詳細資料]。 選取將儲存記錄的 Azure 儲存體帳戶，然後選取保留期間。 然後按一下 [確定]。 早于保留期限的記錄會遭到刪除。
 
    > [!IMPORTANT]
    > - [保留週期] 的預設值為0（無限制保留）。 您可以變更此值，方法是在設定儲存體帳戶以進行審核時，將 [**保留（天數）** ] 滑杆移至 [**儲存體設定**]。
    > - 如果您將保留期間從0（無限制的保留）變更為任何其他值，請注意保留期只會套用至保留值變更後寫入的記錄（保留設定為無限制的期間內寫入的記錄，即使在保留已啟用）
 
-   ![儲存體帳戶](./media/sql-database-auditing-get-started/auditing_select_storage.png)
+   ![storage account](./media/sql-database-auditing-get-started/auditing_select_storage.png)
 
 若要在虛擬網路或防火牆下設定儲存體帳戶，您需要伺服器上的[Active Directory 系統管理員](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#provision-an-azure-active-directory-administrator-for-your-managed-instance)，啟用 [允許信任的 Microsoft 服務在儲存體帳戶上**存取此儲存體帳戶**]。 此外，您必須擁有所選儲存體帳戶的「Microsoft 授權/roleAssignments/寫入」許可權。
 
@@ -116,22 +116,15 @@ Azure [SQL Database](sql-database-technical-overview.md)和[azure Synapse 分析
 
 ### <a id="audit-event-hub-destination">審核至事件中樞目的地</a>
 
-< < < < < < < HEAD < < < < < < < HEAD = = = = = = =
->>>>>>> a8190987e07da4c5ced6de5f588d394ace4ca31d
 > [!IMPORTANT]
 > 無法在已暫停的 SQL 集區上啟用審核。 若要啟用它，請取消暫停 SQL 集區。
 
 > [!WARNING]
-> 在具有 SQL 集區的伺服器上啟用審核，**會導致 SQL 集區再次繼續，並再次重新暫停，** 這可能會在計費費用中產生。
-< < < < < < < HEAD = = = = = = = 若要設定將審核記錄寫入事件中樞，請選取 **[事件中樞（預覽）** ]，然後開啟 [**事件中樞詳細資料**]。 選取要寫入記錄的事件中樞，然後按一下 [確定]。 請確定事件中樞與您的資料庫和伺服器位於相同的區域。
+> 在具有 SQL 集區的伺服器上啟用審核，會**導致 SQL 集區再次繼續，並再次重新暫停，** 這可能會產生計費費用。
 
-   ![Eventhub](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
->>>>>>> <a name="bf6444e83361ab743aca04ae233c420e51ea1e03"></a>bf6444e83361ab743aca04ae233c420e51ea1e03
-=======
 若要設定將稽核記錄寫入至事件中樞，請選取 [事件中樞 (預覽)]，然後開啟 [事件中樞詳細資料]。 選取要寫入記錄的事件中樞，然後按一下 [確定]。 請確定事件中樞與您的資料庫和伺服器位於相同的區域。
 
    ![Eventhub](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
->>>>>>> a8190987e07da4c5ced6de5f588d394ace4ca31d
 
 ## <a id="subheading-3"></a>分析稽核記錄和報告
 

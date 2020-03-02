@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: ambapat
-ms.openlocfilehash: 9b8f1065660ea8331853f8804e709134fe682ba7
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 0e3246f9da202b54cc0d1285795c25cfafb678d8
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566109"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78207025"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-preview"></a>將受 HSM 保護金鑰匯入 Key Vault (預覽)
 
@@ -90,6 +90,9 @@ KEK 必須是：
 - 在您要匯入目標金鑰的相同金鑰保存庫中產生
 - 已建立，但允許的金鑰作業設定為 `import`
 
+> [!NOTE]
+> KEK 必須有「匯入」做為唯一允許的金鑰作業。 「匯入」與所有其他金鑰作業互斥。
+
 使用[az keyvault key create](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create)命令來建立將金鑰作業設定為 `import`的 KEK。 記錄從下列命令傳回的金鑰識別碼（`kid`）。 （您將在[步驟 3](#step-3-generate-and-prepare-your-key-for-transfer)中使用 `kid` 值）。
 
 ```azurecli
@@ -115,7 +118,7 @@ az keyvault key download --name KEKforBYOK --vault-name ContosoKeyVaultHSM --fil
 > [!NOTE] 
 > 不支援匯入 RSA 1024 位金鑰。 目前不支援匯入橢圓曲線（EC）按鍵。
 > 
-> **已知問題**：從 SafeNet Luna hsm 匯入 RSA 4k 目標金鑰失敗。 問題解決後，將會更新本文。
+> **已知問題**：只有固件 v7.4.0 或更新版本才支援從 SafeNet Luna hsm 匯入 RSA 4k 目標金鑰。
 
 ### <a name="step-4-transfer-your-key-to-azure-key-vault"></a>步驟4：將您的金鑰傳輸至 Azure Key Vault
 

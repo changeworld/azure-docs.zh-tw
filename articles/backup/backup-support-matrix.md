@@ -3,12 +3,12 @@ title: Azure 備份支援矩陣
 description: 摘要說明 Azure 備份服務的支援設定和限制。
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: 15c2fdfbe63dd73e665a4bac01dd2cd1b1144949
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: dd4ec646c786ee686567aa137845e583a4cf47e3
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505861"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206651"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 備份的支援矩陣
 
@@ -35,7 +35,7 @@ Azure 備份使用復原服務保存庫來協調和管理備份。 它也會使�
 **保存庫儲存體中的資料來源** | 最大 54400 GB。 Azure VM 備份沒有限制。
 **備份至保存庫** | **Azure vm：** 一天一次。<br/><br/>**受 DPM/MABS 保護的機器：** 一天兩次。<br/><br/> **使用 MARS 代理程式直接備份的機器：** 一天三次。
 **保存庫之間的備份** | 在區域內備份。<br/><br/> 您在每個 Azure 區域中都必須有一個保存庫包含您想要備份的 VM。 您無法備份至不同的區域。
-**移動保存庫** | 您可以跨訂用帳戶或相同訂用帳戶中的資源群組之間[移動保存庫](https://review.docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault)。 不過，不支援跨區域移動保存庫。
+**移動保存庫** | 您可以跨訂用帳戶或相同訂用帳戶中的資源群組之間[移動保存庫](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault)。 不過，不支援跨區域移動保存庫。
 **在保存庫之間移動資料** | 不支援在保存庫之間移動備份的資料。
 **修改保存庫儲存體類型** | 您可以在儲存備份之前，修改保存庫的儲存體複寫類型（異地多餘儲存體或本機多餘儲存體）。 開始在保存庫中進行備份後，即無法修改複寫類型。
 

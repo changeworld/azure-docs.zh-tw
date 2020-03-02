@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 5e954de97e6573e330c42915b44bbc0c40abc54d
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 9e93d4b3f1880f2ac56a32a7b85aa6801fb7c14e
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063238"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78205093"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>教學課程：設定 ServiceNow 來自動布建使用者
 
@@ -142,7 +142,7 @@ Azure AD 布建服務可讓您根據指派給應用程式的人員，或根據�
 * **EntryJoiningPropertyValueIsMissing：** 請檢查您的[屬性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)對應，以識別相符的屬性。 這個值必須存在於您嘗試布建的使用者或群組上。 
 * 查看[SERVICENOW SOAP API](https://docs.servicenow.com/bundle/newyork-application-development/page/integrate/web-services-apis/reference/r_DirectWebServiceAPIFunctions.html)以瞭解任何需求或限制（例如，指定使用者的國家/地區代碼的格式）
 * 有些 ServiceNow 部署需要允許 Azure AD 布建服務的 IP 範圍。 Azure AD 布建服務的保留 IP 範圍可在[這裡](https://www.microsoft.com/download/details.aspx?id=56519)的 "AzureActiveDirectoryDomainServices" 底下找到。
-* 目前不支援將使用者布建到 ServiceNow 政府雲端。
+* 布建要求預設會傳送至 HTTPs：//{您的實例名稱}. 服務-now .com/{資料表名稱}。 如果您需要自訂的租使用者 URL，您可以在 [實例名稱] 欄位中提供整個 URL。
 
 ## <a name="additional-resources"></a>其他資源
 

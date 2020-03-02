@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 934a4fdf7cabb89c4b98c7800252cb24d4e23abf
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 870d6f8441bf395ba0c02dccf8f3d1c6434410c6
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "77013941"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78208182"
 ---
 ## <a name="limitations"></a>限制
 
 - 專用主機目前不支援虛擬機器擴展集。
 - 支援下列 VM 系列： DSv3、ESv3 和 Fsv2。 
 
-## <a name="benefits"></a>優勢 
+## <a name="benefits"></a>優點 
 
 保留整個主機可提供下列優點：
 
@@ -89,7 +89,7 @@ ms.locfileid: "77013941"
 
 免費試用和 MSDN 訂用帳戶沒有 Azure 專用主機的配額。
 
-## <a name="pricing"></a>定價
+## <a name="pricing"></a>價格
 
 無論部署多少個 Vm，都會以專用主機為使用者付費。 在您的每月語句中，您會看到新的可計費資源類型為 [主機]。 專用主機上的 Vm 仍會顯示在您的語句中，但其價格會是0。
 
@@ -98,6 +98,8 @@ ms.locfileid: "77013941"
 軟體授權、儲存體和網路使用量會與主機和 Vm 分開計費。 這些計費專案不會有任何變更。
 
 如需詳細資訊，請參閱[Azure 專用主機定價](https://aka.ms/ADHPricing)。
+
+您也可以使用 [保留的 Azure 專用主機實例] （. 來節省成本。/articles/virtual-machines/prepay-dedicated-hosts-reserved-instances.md).
  
 ## <a name="vm-families-and-hardware-generations"></a>VM 系列和硬體世代
 
@@ -115,7 +117,7 @@ SKU 是針對主機定義的，它代表 VM 大小數列和類型。 您可以�
 
 Azure 會監視並管理您主機的健全狀況狀態。 當您查詢主機時，將會傳回下列狀態：
 
-| 健全狀況狀態   | 說明       |
+| 健全狀況狀態   | 描述       |
 |----------|----------------|
 | 主機可供使用     | 您的主機沒有已知的問題。   |
 | 調查中的主機  | 我們正在尋找的主機有一些問題。 這是 Azure 嘗試和識別所識別問題的範圍和根本原因所需的過渡狀態。 在主機上執行的虛擬機器可能會受到影響。 |

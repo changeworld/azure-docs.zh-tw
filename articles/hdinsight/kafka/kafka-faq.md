@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: c8d2ef0330a32d5cab88355cc749322ec3a5ea30
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: ff4079263fd7afb02e132a798997687fad7e9961
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530930"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206974"
 ---
 # <a name="frequently-asked-questions-about-apache-kafka-in-azure-hdinsight"></a>Azure HDInsight 中的 Apache Kafka 常見問題
 
@@ -50,7 +50,7 @@ HDInsight Kafka 叢集包含下列資源：
 
 ## <a name="is-my-data-encrypted-can-i-use-my-own-keys"></a>我的資料是否已加密？ 我可以使用自己的金鑰嗎？
 
-受控磁片上的所有 Kafka 訊息都會使用[Azure 儲存體服務加密（SSE）](../../storage/common/storage-service-encryption.md)進行加密。 預設不會加密傳輸中的資料（例如，從用戶端傳輸至訊息代理程式的資料，以及另一種方式）。 [您可以自行設定 SSL](./apache-kafka-ssl-encryption-authentication.md)來加密這類流量。 此外，HDInsight 可讓您管理自己的金鑰來加密待用資料。 如需詳細資訊，請參閱[在 Azure HDInsight 上攜帶您自己的 Apache Kafka 金鑰](apache-kafka-byok.md)。
+受控磁片上的所有 Kafka 訊息都會使用[Azure 儲存體服務加密（SSE）](../../storage/common/storage-service-encryption.md)進行加密。 預設不會加密傳輸中的資料（例如，從用戶端傳輸至訊息代理程式的資料，以及另一種方式）。 [您可以自行設定 SSL](./apache-kafka-ssl-encryption-authentication.md)來加密這類流量。 此外，HDInsight 可讓您管理自己的金鑰來加密待用資料。 如需詳細資訊，請參閱[客戶管理的金鑰磁片加密](../disk-encryption.md)。
 
 ## <a name="how-do-i-connect-clients-to-my-cluster"></a>如何? 將用戶端連線到我的叢集？
 

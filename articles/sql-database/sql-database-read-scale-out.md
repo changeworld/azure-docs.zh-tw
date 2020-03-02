@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 ms.date: 06/03/2019
-ms.openlocfilehash: f111b19eb07c218a9f3250ef3ffdb8a97cf07542
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 1a1b9907cd931716949d92d948a7d541fd2d5057
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420723"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206940"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads"></a>使用唯讀複本對唯讀查詢工作負載進行負載平衡
 
@@ -35,7 +35,7 @@ ms.locfileid: "74420723"
 如果您想要確保應用程式連接到主要複本，而不論 SQL 連接字串中的 `ApplicationIntent` 設定為何，您必須在建立資料庫時或在改變其設定時明確停用讀取相應放大。 例如，如果您將資料庫從標準或一般用途層升級至高階、業務關鍵或超大規模資料庫層，而且想要確定所有連線都會繼續移至主要複本，請停用讀取相應放大。如需如何停用它的詳細資訊，請參閱[啟用和停用讀取相應放大](#enable-and-disable-read-scale-out)。
 
 > [!NOTE]
-> 唯讀複本上不支援查詢資料存放區、擴充的事件、SQL Profiler 和 Audit 功能。
+> 唯讀複本不支援查詢資料存放區、擴充的事件和 SQL Profiler 功能。
 
 ## <a name="data-consistency"></a>資料一致性
 

@@ -3,18 +3,18 @@ title: 在地圖上將快捷方式新增至點 |Microsoft Azure 對應
 description: 在本文中，您將瞭解如何使用 Microsoft Azure Maps Web SDK，將快顯視窗新增至點。
 author: jingjing-z
 ms.author: jinzh
-ms.date: 07/29/2019
+ms.date: 02/27/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 45d210725f7f09663b126528479655d7f4d9c19f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: e44b6fe8341e40fb68fdbf153bf4f4bc5fec7acb
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933362"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206566"
 ---
 # <a name="add-a-popup-to-the-map"></a>在地圖上新增快顯
 
@@ -85,7 +85,7 @@ map.events.add('mouseleave', symbolLayer, function (){
 
 ## <a name="reusing-a-popup-with-multiple-points"></a>重複使用具有多個點的快顯
 
-當您有大量的點，而且只想要一次顯示一個快顯時，最好的方法是建立一個快顯視窗並重複使用。 藉由重複使用快顯，應用程式所建立的 DOM 元素數目會大幅減少，而能夠提供更好的效能。 下列範例會建立3點特徵。 如果您對任何一個特徵按一下，便會顯示快顯，內有該點特徵的內容。
+在某些情況下，最好的方法是建立一個快顯並重複使用它。 例如，您可能有大量的點，而且想要一次只顯示一個快顯視窗。 藉由重複使用快顯，應用程式所建立的 DOM 元素數目會大幅減少，這可提供更好的效能。 下列範例會建立3點特徵。 如果您對任何一個特徵按一下，便會顯示快顯，內有該點特徵的內容。
 
 <br/>
 
@@ -100,6 +100,143 @@ map.events.add('mouseleave', symbolLayer, function (){
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="自訂快顯視窗" src="//codepen.io/azuremaps/embed/ymKgdg/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 請參閱<a href='https://codepen.io'>CodePen</a>上的 Azure 地圖服務（<a href='https://codepen.io/azuremaps'>@azuremaps</a>）的畫筆<a href='https://codepen.io/azuremaps/pen/ymKgdg/'>自訂快顯視窗</a>。
+</iframe>
+
+## <a name="add-popup-templates-to-the-map"></a>將快顯範本新增至對應
+
+快顯範本可讓您輕鬆地建立快顯功能表的資料驅動配置。 下列各節示範如何使用各種快捷方式範本，以使用功能屬性來產生格式化的內容。
+
+### <a name="string-template"></a>字串範本
+
+字串範本會以功能屬性的值取代預留位置。 不需要為此功能的屬性指派 String 類型的值。 例如，`value1` 會保留一個整數。 這些值接著會傳遞至 `popupTemplate`的 content 屬性。 
+
+`numberFormat` 選項會指定要顯示的數位格式。 如果未指定 `numberFormat`，則程式碼會使用快顯範本日期格式。 `numberFormat` 選項會使用[toLocaleString](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString)函數來格式化數位。 若要格式化大量數位，請考慮使用 `numberFormat` 選項搭配[cultureinfo.numberformat](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat/format)的函式。 例如，下列程式碼片段會使用 `maximumFractionDigits`，將小數數位的數目限制為兩個。
+
+> [!Note]
+> 字串範本只有一種方式可以呈現影像。 首先，字串範本中必須有一個影像標記。 傳遞至影像標記的值應該是影像的 URL。 然後，在 `HyperLinkFormatOptions`中，字串範本必須將 `isImage` 設為 true。 [`isImage`] 選項會指定超連結用於影像，而超連結則會載入至影像標記。 按一下超連結時，將會開啟影像。
+
+```javascript
+new atlas.data.Feature(new atlas.data.Point([-20, -20]), {
+    title: 'Template 1 - String template',
+    value1: 1.2345678,
+    value2: {
+        subValue: 'Pizza'
+    },
+    arrayValue: [3, 4, 5, 6],
+    popupTemplate: {
+        content: 'This template uses a string template with placeholders.<br/><br/> - Value 1 = {value1}<br/> - Value 2 = {value2/subValue}<br/> - Array value [2] = {arrayValue/2}',
+        numberFormat: {
+            maximumFractionDigits: 2
+        }
+    }
+}),
+```
+
+### <a name="propertyinfo-template"></a>PropertyInfo 範本
+
+PropertyInfo 範本會顯示功能的可用屬性。 [`label`] 選項會指定要對使用者顯示的文字。 如果未指定 `label`，則會顯示超連結。 而且，如果超連結是影像，則會顯示指派給 "alt" 標記的值。 `dateFormat` 會指定日期的格式，如果未指定日期格式，則會將日期轉譯為字串。 [`hyperlinkFormat`] 選項會轉譯可按的連結，同樣地，`email` 選項也可以用來呈現可按的電子郵件地址。
+
+在 PropertyInfo 範本向使用者顯示內容之前，它會以遞迴方式檢查屬性是否確實已針對該功能定義。 它也會忽略顯示樣式和標題屬性。 例如，它不會顯示 `color`、`size`、`anchor`、`strokeOpacity`和 `visibility`。 因此，在後端中完成屬性路徑檢查之後，PropertyInfo 範本會以表格格式顯示內容。
+
+```javascript
+new atlas.data.Feature(new atlas.data.Point([20, -20]), {
+    title: 'Template 2 - PropertyInfo',
+    createDate: new Date(),
+    dateNumber: 1569880860542,
+    url: 'https://aka.ms/AzureMapsSamples',
+    email: 'info@microsoft.com',
+    popupTemplate: {
+        content: [{
+    propertyPath: 'createDate',
+    label: 'Created Date'
+    },
+    {
+    propertyPath: 'dateNumber',
+    label: 'Formatted date from number',
+    dateFormat: {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        timeZone: 'UTC',
+        timeZoneName: 'short'
+    }
+    },
+    {
+    propertyPath: 'url',
+    label: 'Code samples',
+    hideLabel: true,
+    hyperlinkFormat: {
+        lable: 'Go to code samples!',
+        target: '_blank'
+    }
+    },
+    {
+    propertyPath: 'email',
+    label: 'Email us',
+    hideLabel: true,
+    hyperlinkFormat: {
+        target: '_blank',
+        scheme: 'mailto:'
+        }
+    }
+        ]
+    }
+}),
+
+```
+
+### <a name="multiple-content-templates"></a>多個內容範本
+
+功能也可能會使用字串範本和 PropertyInfo 範本的組合來顯示內容。 在此情況下，字串範本會在白色背景上呈現預留位置值。  而且，PropertyInfo 範本會在資料表內呈現全形影像。 此範例中的屬性與我們在先前範例中所述的屬性類似。
+
+```javascript
+new atlas.data.Feature(new atlas.data.Point([0, 0]), {
+    title: 'Template 3 - Multiple content template',
+    value1: 1.2345678,
+    value2: {
+    subValue: 'Pizza'
+    },
+    arrayValue: [3, 4, 5, 6],
+    imageLink: 'https://azuremapscodesamples.azurewebsites.net/common/images/Pike_Market.jpg',
+    popupTemplate: {
+    content: [
+      'This template has two pieces of content; a string template with placeholders and a array of property info which renders a full width image.<br/><br/> - Value 1 = {value1}<br/> - Value 2 = {value2/subValue}<br/> - Array value [2] = {arrayValue/2}',
+      [{
+        propertyPath: 'imageLink',
+        label: 'Image',
+        hideImageLabel: true,
+        hyperlinkFormat: {
+          isImage: true
+        }
+      }]
+    ],
+    numberFormat: {
+      maximumFractionDigits: 2
+    }
+    }
+    }),
+]);
+```
+
+### <a name="points-without-a-defined-template"></a>沒有已定義範本的點
+
+當 Popup 範本未定義為字串範本、PropertyInfo 範本或兩者的組合時，會使用預設設定。 當 `title` 和 `description` 是唯一指派的屬性時，快顯範本會顯示白色背景，也就是右上角的 [關閉] 按鈕。 而且，在小型和中型畫面上，它會在底部顯示箭號。 預設設定會針對 `title` 和 `description`以外的所有屬性顯示在資料表中。 即使回到預設設定，快顯範本仍然可以透過程式設計方式操作。 例如，使用者可以關閉超連結偵測，而預設設定仍然適用于其他屬性。
+
+在 CodePen 中，按一下地圖上的點。 下列每個快顯範本的地圖上都有一個點：字串範本、PropertyInfo 範本和多個內容範本。 另外還有三個重點，說明範本如何使用預設設定來呈現。
+
+<br/>
+
+<iframe height='500' scrolling='no' title='PopupTemplates' src='//codepen.io/azuremaps/embed/dyovrzL/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>請參閱<a href='https://codepen.io'>CodePen</a>上的 Azure 地圖服務（<a href='https://codepen.io/azuremaps'>@azuremaps</a>）的 Pen <a href='https://codepen.io/azuremaps/pen/dyovrzL/'>PopupTemplates</a> 。
+</iframe>
+
+## <a name="reuse-popup-template"></a>重複使用快顯視窗範本
+
+類似于重複使用快顯視窗，您可以重複使用快顯範本。 當您只想要一次顯示一個快顯範本（適用于多個點）時，這個方法會很有用。 藉由重複使用快顯範本，應用程式所建立的 DOM 元素數目會減少，進而改善您的應用程式效能。 下列範例會針對三個點使用相同的快顯視窗範本。 如果您對任何一個特徵按一下，便會顯示快顯，內有該點特徵的內容。
+
+<br/>
+
+<iframe height='500' scrolling='no' title='ReusePopupTemplate' src='//codepen.io/azuremaps/embed/WNvjxGw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>請參閱<a href='https://codepen.io'>CodePen</a>上的 Azure 地圖服務（<a href='https://codepen.io/azuremaps'>@azuremaps</a>）的 Pen <a href='https://codepen.io/azuremaps/pen/WNvjxGw/'>ReusePopupTemplate</a> 。
 </iframe>
 
 ## <a name="popup-events"></a>快顯視窗事件

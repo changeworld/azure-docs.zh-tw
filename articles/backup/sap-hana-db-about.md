@@ -3,12 +3,12 @@ title: 關於 Azure Vm 中的 SAP Hana 資料庫備份
 description: 在本文中，您將瞭解如何備份在 Azure 虛擬機器上執行的 SAP Hana 資料庫。
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 188cef6bc9771f779e3e9c7f7f5fe246e929b68a
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 53fd87f0de48d56d696abcf5484908060225cb3d
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77918507"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78207008"
 ---
 # <a name="about-sap-hana-database-backup-in-azure-vms"></a>關於 Azure Vm 中的 SAP Hana 資料庫備份
 
@@ -33,7 +33,7 @@ Azure 備份是由 SAP[認證的 Backint](https://www.sap.com/dmc/exp/2013_09_ad
 
 * 備份程式一開始會先在 Azure 中[建立復原服務保存庫](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#create-a-recovery-service-vault)。 此保存庫將用來儲存一段時間內建立的備份和復原點。
 * 執行 SAP Hana server 的 Azure VM 會向保存庫註冊，並會[探索](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#discover-the-databases)要備份的資料庫。 若要讓 Azure 備份服務探索資料庫，您必須在 HANA 伺服器上以根使用者身分執行[preregistration 腳本](https://aka.ms/scriptforpermsonhana)。
-* 此腳本會在**hdbuserstore**中建立**AZUREWLBACKUPHANAUSER** DB 使用者，以及具有相同名稱的對應索引鍵。 請參閱[設定許可權一節](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#setting-up-permissions)，以深入瞭解腳本的作用。
+* 此腳本會在**hdbuserstore**中建立**AZUREWLBACKUPHANAUSER** DB 使用者，以及具有相同名稱的對應索引鍵。 請參閱[預先註冊腳本](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)的作用一節，以深入瞭解腳本的作用。
 * Azure 備份服務現在會在已註冊的 SAP Hana 伺服器上安裝**HANA 的 Azure 備份外掛程式**。
 * **適用于 HANA 的 Azure 備份外掛程式**會使用 preregistration 腳本所建立的**AZUREWLBACKUPHANAUSER** DB 使用者來執行所有的備份和還原作業。 如果您嘗試設定 SAP Hana Db 的備份，但未執行此腳本，您可能會收到下列錯誤： **UserErrorHanaScriptNotRun**。
 * 若要在探索到的資料庫上[設定備份](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#configure-backup)，請選擇所需的備份原則，並啟用備份。

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 6ad583fdb880e36e6ac9c2dfda56bb68378ea598
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 87eb04b7323186175195babf6a602fa12d25176f
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76313991"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206702"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>將其他儲存體帳戶新增至 HDInsight
 
@@ -21,7 +21,7 @@ ms.locfileid: "76313991"
 > [!IMPORTANT]  
 > 本檔中的資訊是關於在叢集建立之後，將其他儲存體帳戶新增至叢集。 如需在叢集建立期間新增儲存體帳戶的資訊，請參閱[使用 Apache Hadoop、Apache Spark、Apache Kafka 等在 HDInsight 中設定叢集](hdinsight-hadoop-provision-linux-clusters.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * HDInsight 上的 Hadoop 叢集。 請參閱[開始在 Linux 上使用 HDInsight](./hadoop/apache-hadoop-linux-tutorial-get-started.md)。
 * 儲存體帳戶名稱和金鑰。 請參閱[管理儲存體帳戶存取金鑰](../storage/common/storage-account-keys-manage.md)。
@@ -46,7 +46,7 @@ ms.locfileid: "76313991"
 
 ## <a name="add-storage-account"></a>新增儲存體帳戶
 
-使用 [[腳本動作](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)] 以下列考慮套用變更：
+使用 [[腳本動作](hdinsight-hadoop-customize-cluster-linux.md#script-action-to-a-running-cluster)] 以下列考慮套用變更：
 
 |屬性 | 值 |
 |---|---|
@@ -64,7 +64,7 @@ ms.locfileid: "76313991"
 
 若要確認額外的儲存體，請使用下列其中一種方法：
 
-### <a name="powershell"></a>Powershell
+### <a name="powershell"></a>PowerShell
 
 腳本會傳回與指定叢集相關聯的儲存體帳戶名稱。 以實際的叢集名稱取代 `CLUSTERNAME`，然後執行腳本。
 

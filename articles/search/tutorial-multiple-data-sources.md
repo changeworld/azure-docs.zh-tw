@@ -8,20 +8,20 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: 6408689deec7de365ede86665a0eaeb0bd0de64b
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 272926e6c3572f03cc316ee696893941fd91968d
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196564"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206872"
 ---
 # <a name="tutorial-index-data-from-multiple-data-sources-in-c"></a>教學課程：從中的多個資料來源編制資料索引C#
 
-Azure 認知搜尋服務可以將多個資料來源的資料匯入至單一已合併的搜尋索引，並進行分析和編製索引。 這支援將結構化資料與其他來源的結構化程度較低或甚至純文字資料進行彙總的狀況，例如文字、HTML 或 JSON 文件。
+Azure 認知搜尋可以將多個資料來源中的資料匯入、分析和編制索引至單一合併搜尋索引。 這支援將結構化資料與其他來源的結構化程度較低或甚至純文字資料進行彙總的狀況，例如文字、HTML 或 JSON 文件。
 
 此教學課程說明如何為來自 Azure Cosmos DB 資料來源的旅館資料編製索引，並將該資料與從 Azure Blob 儲存體文件繪製的旅館房間詳細資料合併。 結果將會產生一個已合併的旅館搜尋索引，其中包含複雜資料類型。
 
-本教學課程C#會使用和[.net SDK](https://aka.ms/search-sdk)來執行下列工作：
+本教學課程C#使用和[.net SDK](https://aka.ms/search-sdk)。 在本教學課程中，您將執行下列工作：
 
 > [!div class="checklist"]
 > * 上傳範例資料並建立資料來源
@@ -32,7 +32,7 @@ Azure 認知搜尋服務可以將多個資料來源的資料匯入至單一已�
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 + [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal)
 + [Azure 儲存體](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
@@ -44,35 +44,23 @@ Azure 認知搜尋服務可以將多個資料來源的資料匯入至單一已�
 
 ## <a name="download-files"></a>下載檔案
 
-1. 在 GitHub 上找出範例存放庫：[azure-search-dotnet-samples](https://github.com/Azure-Samples/azure-search-dotnet-samples)。
-1. 選取 [複製或下載]，並建立存放庫的私人本機複本。
-1. 開啟 Visual Studio 2019，並安裝 Microsoft Azure 認知搜尋 NuGet 套件（如果尚未安裝的話）。 在 [**工具**] 功能表中，選取 [ **NuGet 套件管理員**]，然後按一下 [**管理方案的 NuGet 套件**...]。在 [**流覽**] 索引標籤中，尋找並安裝**Microsoft. Azure 搜尋**（9.0.1 版或更新版本）。 您必須逐一點選其他對話方塊來完成安裝。
+本教學課程的原始程式碼位於 [[多個資料來源](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/multiple-data-sources)] 資料夾中的[azure 搜尋-dotnet 範例](https://github.com/Azure-Samples/azure-search-dotnet-samples)GitHub 存放庫中。
 
-    ![使用 NuGet 來新增 Azure 程式庫](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
+## <a name="1---create-services"></a>1 - 建立服務
 
-1. 使用 Visual Studio、巡覽至您的本機存放庫，然後開啟解決方案檔 **AzureSearchMultipleDataSources.sln**。
+本教學課程使用 Azure 認知搜尋來編制索引和查詢、針對一個資料集 Azure Cosmos DB，以及針對第二個資料集使用 Azure Blob 儲存體。 
 
-## <a name="get-a-key-and-url"></a>取得金鑰和 URL
-
-若要與 Azure 認知搜尋服務互動，您需要服務 URL 和存取金鑰。 建立搜尋服務時需要這兩項資料，因此如果您將 Azure 認知搜尋新增至您的訂用帳戶，請依照下列步驟來取得必要的資訊：
-
-1. 登入[Azure 入口網站](https://portal.azure.com/)，然後在您的搜尋服務 **[總覽**] 頁面中取得 URL。 範例端點看起來會像是 `https://mydemo.search.windows.net`。
-
-1. 在 [設定] >  [金鑰] 中，取得服務上完整權限的管理金鑰。 可互換的管理金鑰有兩個，可在您需要變換金鑰時提供商務持續性。 您可以在新增、修改及刪除物件的要求上使用主要或次要金鑰。
-
-![取得 HTTP 端點和存取金鑰](media/search-get-started-postman/get-url-key.png "取得 HTTP 端點和存取金鑰")
-
-所有要求均都需要在傳送至您服務上的每個要求上使用 API 金鑰。 有效的金鑰能為每個要求在傳送要求之應用程式與處理要求的服務間建立信任。
-
-## <a name="prepare-sample-azure-cosmos-db-data"></a>準備範例 Azure Cosmos DB 資料
+可能的話，請在相同的區域和資源群組中建立所有服務，以進行鄰近性和管理能力。 在實務上，您的服務可以在任何區域中。
 
 此範例會使用兩個小型資料組，其中描述七家虛構的旅館。 一組描述旅館本身，並且將載入至 Azure Cosmos DB 資料庫。 另一組包含旅館房間詳細資料，並以七個不同的 JSON 檔案來提供以上傳至 Azure Blob 儲存體。
+
+### <a name="start-with-cosmos-db"></a>開始使用 Cosmos DB
 
 1. 登入[Azure 入口網站](https://portal.azure.com)，然後流覽您的 Azure Cosmos DB 帳戶 [總覽] 頁面。
 
 1. 選取 [**資料總管**]，然後選取 [**新增資料庫**]。
 
-   ![建立新的資料庫](media/tutorial-multiple-data-sources/cosmos-newdb.png "建立新的資料庫")
+   ![建立新的資料庫](media/tutorial-multiple-data-sources/cosmos-newdb.png "建立新資料庫")
 
 1. 輸入 [**飯店-聊天室-db**] 名稱。 接受其餘設定的預設值。
 
@@ -88,7 +76,7 @@ Azure 認知搜尋服務可以將多個資料來源的資料匯入至單一已�
 
 1. 使用 [重新整理] 按鈕來重新整理您在旅館集合中的項目檢視。 您應該會看到列出七份新的資料庫文件。
 
-## <a name="prepare-sample-blob-data"></a>準備範例 Blob 資料
+### <a name="azure-blob-storage"></a>Azure Blob 儲存體
 
 1. 登入[Azure 入口網站](https://portal.azure.com)，流覽至您的 Azure 儲存體帳戶，按一下 [ **blob**]，然後按一下 [ **+ 容器**]。
 
@@ -102,47 +90,74 @@ Azure 認知搜尋服務可以將多個資料來源的資料匯入至單一已�
 
 上傳完成之後，檔案應該會出現在資料容器的清單中。
 
-## <a name="set-up-connections"></a>設定連線
+### <a name="azure-cognitive-search"></a>Azue 認知搜尋
 
-搜尋服務和資料來源的連線資訊會指定於解決方案的 **appsettings.json** 檔案中。 
+第三個元件是 Azure 認知搜尋，您可以[在入口網站中建立](search-create-service-portal.md)該服務。 您可以使用免費層來完成此逐步解說。 
 
-1. 在 Visual Studio 中，開啟 **AzureSearchMultipleDataSources.sln** 檔案。
+### <a name="get-an-admin-api-key-and-url-for-azure-cognitive-search"></a>取得 Azure 認知搜尋的管理員 API 金鑰和 URL
 
-1. 在 [方案總管] 中，編輯 **appsettings.json** 檔案。  
+若要與 Azure 認知搜尋服務互動，您需要服務 URL 和存取金鑰。 建立搜尋服務時需要這兩項資料，因此如果您將 Azure 認知搜尋新增至您的訂用帳戶，請依照下列步驟來取得必要的資訊：
 
-```json
-{
-  "SearchServiceName": "Put your search service name here",
-  "SearchServiceAdminApiKey": "Put your primary or secondary API key here",
-  "BlobStorageAccountName": "Put your Azure Storage account name here",
-  "BlobStorageConnectionString": "Put your Azure Blob Storage connection string here",
-  "CosmosDBConnectionString": "Put your Cosmos DB connection string here",
-  "CosmosDBDatabaseName": "hotel-rooms-db"
-}
-```
+1. [登入 Azure 入口網站](https://portal.azure.com/)，並在搜尋服務的 [概觀] 頁面上取得 URL。 範例端點看起來會像是 `https://mydemo.search.windows.net`。
+
+1. 在 [設定] >  [金鑰] 中，取得服務上完整權限的管理金鑰。 可互換的管理金鑰有兩個，可在您需要變換金鑰時提供商務持續性。 您可以在新增、修改及刪除物件的要求上使用主要或次要金鑰。
+
+   一併取得查詢金鑰。 最佳做法是發出具有唯讀存取權的查詢要求。
+
+   ![取得服務名稱及管理和查詢金鑰](media/search-get-started-nodejs/service-name-and-keys.png)
+
+擁有有效的金鑰就能為每個要求在傳送要求之應用程式與處理要求之服務間建立信任。
+
+## <a name="2---set-up-your-environment"></a>2-設定您的環境
+
+1. 啟動 Visual Studio 2019，然後在 [**工具**] 功能表中，選取 [ **NuGet 套件管理員**]，然後按一下 [**管理解決方案的 NuGet 封裝**...]。 
+
+1. 在 [瀏覽]索引標籤中，尋找並安裝 **Microsoft.Azure.Search** (9.0.1 版或更新版本)。 您必須逐一點選其他對話方塊來完成安裝。
+
+    ![使用 NuGet 來新增 Azure 程式庫](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
+
+1. 搜尋並安裝 [ **Microsoft Extensions** ] NuGet 套件。
+
+1. 開啟方案檔**AzureSearchMultipleDataSources**。
+
+1. 在方案總管中，編輯**appsettings**以新增連接資訊。  
+
+    ```json
+    {
+      "SearchServiceName": "Put your search service name here",
+      "SearchServiceAdminApiKey": "Put your primary or secondary API key here",
+      "BlobStorageAccountName": "Put your Azure Storage account name here",
+      "BlobStorageConnectionString": "Put your Azure Blob Storage connection string here",
+      "CosmosDBConnectionString": "Put your Cosmos DB connection string here",
+      "CosmosDBDatabaseName": "hotel-rooms-db"
+    }
+    ```
 
 前兩個項目會針對 Azure 認知搜尋服務使用 URL 和系統管理金鑰。 舉例來說，假設端點是 `https://mydemo.search.windows.net`，則要提供的服務名稱就是 `mydemo`。
 
 後續項目會指定帳戶名稱，以及 Azure Blob 儲存體和 Azure Cosmos DB 資料來源的連接字串資訊。
 
-### <a name="identify-the-document-key"></a>識別文件索引鍵
+## <a name="3---map-key-fields"></a>3-對應索引鍵欄位
 
-在 Azure 認知搜尋服務中，索引鍵欄位會唯一識別索引中的每份文件。 每個搜尋索引必須確實具有一個 `Edm.String`類型的索引鍵欄位。 在新增至索引的資料來源中，每份文件都必須有該索引鍵欄位。 (實際上它是唯一必要的欄位。)
+合併內容時，必須將兩個數據流的目標設為搜尋索引中的相同檔。 
 
-從多個資料來源編制資料的索引時，請使用一般檔索引鍵，將兩個實際不同來源文件中的資料，合併到合併索引中的新搜尋檔。 它通常需要一些預先規劃來識別索引的有意義檔金鑰，並確定它存在於這兩個數據源中。 在此示範中，Cosmos DB 中每個飯店的 HotelId 金鑰也會出現在 Blob 儲存體的房間 JSON blob 中。
+在 Azure 認知搜尋中，索引鍵欄位會唯一識別每份檔。 每個搜尋索引必須確實具有一個 `Edm.String`類型的索引鍵欄位。 在新增至索引的資料來源中，每份文件都必須有該索引鍵欄位。 (實際上它是唯一必要的欄位。)
 
-Azure 認知搜尋服務索引子可以使用欄位對應來重新命名，甚至可在編製索引過程中將資料欄位重新格式化，如此一來，便可將該來源資料導向至正確的索引欄位。
+從多個資料來源編制資料的索引時，請確定每個內送的資料列或檔都包含通用的檔索引鍵，以便將來自兩個實體不同來源文件的資料，合併到合併索引中的新搜尋檔。 
 
-例如，在我們的範例 Azure Cosmos DB 資料中，飯店識別碼稱為 **`HotelId`** 。 但是在旅館房間的 JSON blob 檔案中，飯店識別碼會命名為 **`Id`** 。 程式會藉由將 **`Id`** 欄位從 blob 對應至索引中的 **`HotelId`** 索引鍵欄位來處理此情況。
+它通常需要一些預先規劃來識別索引的有意義檔金鑰，並確定它存在於這兩個數據源中。 在此示範中，Cosmos DB 中每個飯店的 `HotelId` 金鑰也會出現在 Blob 儲存體的房間 JSON blob 中。
+
+Azure 認知搜尋服務索引子可以使用欄位對應來重新命名，甚至可在編製索引過程中將資料欄位重新格式化，如此一來，便可將該來源資料導向至正確的索引欄位。 例如，在 Cosmos DB 中，飯店識別碼稱為 **`HotelId`** 。 但是在旅館房間的 JSON blob 檔案中，飯店識別碼會命名為 **`Id`** 。 程式會藉由將 **`Id`** 欄位從 blob 對應至索引中的 **`HotelId`** 索引鍵欄位來處理此情況。
 
 > [!NOTE]
-> 在大部分情況下，自動產生的文件索引鍵 (例如，預設由某些索引子建立的索引鍵) 不能為已合併的索引建立良好的文件索引鍵。 您通常想要使用有意義的唯一索引鍵值，此值已經存在於您的資料來源，或者可輕鬆地新增至您的資料來源。
+> 在大部分情況下，自動產生的檔索引鍵（例如，某些索引子預設建立的），不會為結合的索引提供良好的檔索引鍵。 您通常想要使用有意義的唯一索引鍵值，此值已經存在於您的資料來源，或者可輕鬆地新增至您的資料來源。
 
-## <a name="understand-the-code"></a>了解程式碼
+## <a name="4---explore-the-code"></a>4-探索程式碼
 
 當資料和組態設定都就緒之後，**AzureSearchMultipleDataSources.sln** 中的範例程式應該就準備好進行建置與執行。
 
 這個簡單的 C#/.NET 主控台應用程式會執行下列工作：
+
 * 根據C#飯店類別的資料結構建立新的索引（也會參考位址和房間類別）。
 * 建立新的資料來源，以及將 Azure Cosmos DB 資料對應至索引欄位的索引子。 這些是 Azure 認知搜尋中的兩個物件。
 * 執行索引子以從 Cosmos DB 載入旅館資料。
@@ -154,7 +169,7 @@ Azure 認知搜尋服務索引子可以使用欄位對應來重新命名，甚�
   + **Hotel.cs** 包含可定義索引的結構描述
   + **Program.cs** 包含函式，可用來建立 Azure 認知搜尋服務索引、資料來源和索引子，並將已合併的結果載入至索引。
 
-### <a name="define-the-index"></a>定義索引
+### <a name="create-an-index"></a>建立索引
 
 此範例程式會使用 .NET SDK 來定義並建立 Azure 認知搜尋服務索引。 它會利用 [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder) \(英文\) 類別，從 C# 資料模型類別產生索引結構。
 
@@ -330,7 +345,7 @@ Blob 儲存體索引子可以使用參數來識別要使用的剖析模式。 �
 > [!NOTE]
 > 如果您在這兩個資料來源中具有相同的非索引鍵欄位，而且那些欄位內的資料不相符，則索引將包含索引子最近執行過的值。 在此範例中，這兩個資料來源均包含 **HotelName** 欄位。 如果此欄位中的資料基於某些原因而不同，則針對具有相同索引鍵值的文件，最近已編製索引之資料來源的 **HotelName** 資料將會是儲存於索引中的值。
 
-## <a name="search-your-json-files"></a>搜尋您的 JSON 檔案
+## <a name="5---search"></a>5 - 搜尋
 
 您可以在執行程式之後，使用入口網站中的[**搜尋總管**](search-explorer.md)來探索已填入的搜尋索引。
 

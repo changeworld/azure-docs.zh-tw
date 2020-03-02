@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: lahugh
-ms.openlocfilehash: d500f7a1f28eff1f638a244022226b0aa0e715cb
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: fd8f01f0fc7180d271404ffee4496ff9cbac7222
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78199592"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78205920"
 ---
 # <a name="preview-dcv2-series"></a>預覽： DCv2 系列
 
@@ -41,7 +41,9 @@ DCv2 系列可協助保護您的資料和程式碼在公用雲端中進行處理
 | Standard_DC8_v2  | 8   | 32          | 400                    | 8              | 16000/128 （172）                                                         | 12800/192                                 | 2                                            |
 
 - DCv2 系列 Vm 是[第2代 vm](./linux/generation-2.md#creating-a-generation-2-vm) ，只支援 `Gen2` 映射。
-
+- 目前僅適用于英國南部。
+- 先前產生的機密計算 Vm： [DC 系列](sizes-previous-gen.md)
+- 使用 Azure 入口網站建立 DCv2 Vm[建立 vm-入口網站](./linux/quick-create-portal.md)
 
 
 

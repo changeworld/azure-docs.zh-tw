@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/20/2019
-ms.openlocfilehash: c2b590e623062d5d5ae39261b3b5fa5a37a39122
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: daae9c16797ad9c1b85635f5aec7d0cf884e003f
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919215"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206005"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Azure HDInsight 中的受控識別
 
@@ -44,11 +44,11 @@ ms.locfileid: "77919215"
 
 * [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md#create-a-user-assigned-managed-identity) \(部分機器翻譯\)
 * [企業安全性套件](domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-and-authorize-a-managed-identity)
-* [Kafka 攜帶您自己的金鑰（BYOK）](kafka/apache-kafka-byok.md#get-started-with-byok)
+* [客戶管理的金鑰磁片加密](disk-encryption.md)
 
 ## <a name="faq"></a>常見問題集
 ### <a name="what-happens-if-i-delete-the-managed-identity-after-the-cluster-creation"></a>如果我在叢集建立之後刪除受控識別，會發生什麼事？
-當需要受控識別時，您的叢集會遇到問題。 在建立叢集之後，目前沒有任何方法可更新或變更管理 idenity。 因此我們建議您確保在叢集執行時間期間不會刪除受控識別。 或者，您可以重新建立叢集並指派新的受控識別。
+當需要受控識別時，您的叢集會遇到問題。 在建立叢集之後，目前沒有任何方法可更新或變更管理身分識別。 因此我們建議您確保在叢集執行時間期間不會刪除受控識別。 或者，您可以重新建立叢集並指派新的受控識別。
 
 ## <a name="next-steps"></a>後續步驟
 

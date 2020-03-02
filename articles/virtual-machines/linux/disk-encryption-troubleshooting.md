@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: c1e96a3acf2a576e0656afb3abea9dd787bf989a
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: dd21b6520dc68a6f7faa5500054b2865556e3dfb
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750062"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78205903"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure 磁碟加密疑難排解指南
 
@@ -96,21 +96,7 @@ ProgressMessage            : OS disk successfully encrypted, please reboot the V
 
 ## <a name="troubleshooting-azure-disk-encryption-behind-a-firewall"></a>針對防火牆後方的 Azure 磁碟加密進行疑難排解
 
-當連線能力受防火牆、Proxy 需求或網路安全性群組 (NSG) 設定限制時，擴充功能執行所需工作的能力可能會受到中斷。 這個中斷會產生狀態訊息 (例如「無法在 VM 上使用擴充功能狀態」)。 在預期的情節中，無法完成加密。 以下各節有一些常見的防火牆問題，您可能需要進行調查。
-
-### <a name="network-security-groups"></a>網路安全性群組
-任何套用的網路安全性群組設定仍然必須允許端點，從而符合磁碟加密的記載網路設定[必要條件](disk-encryption-overview.md#networking-requirements)。
-
-### <a name="azure-key-vault-behind-a-firewall"></a>防火牆後方的 Azure Key Vault
-
-使用 [Azure AD 認證](disk-encryption-linux-aad.md#)啟用加密時，目標 VM 必須允許連線到 Azure Active Directory 端點和金鑰保存庫端點。 目前的 Azure Active Directory 驗證端點列在 [Office 365 URL 與 IP 位址範圍](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges)文件的第 56 和 59 節。 如需金鑰保存庫的指示，請參閱文件中的如何[在防火牆後存取 Azure 金鑰保存庫](../../key-vault/key-vault-access-behind-firewall.md)。
-
-### <a name="azure-instance-metadata-service"></a>Azure 執行個體中繼資料服務 
-VM 必須能夠存取 [Azure 執行個體中繼資料服務](../windows/instance-metadata-service.md)端點；此端點會使用只能從 VM 內存取且無法路由的已知 IP 位址 (`169.254.169.254`)。  不支援將本機 HTTP 流量更改為此位址的 Proxy 設定（例如，新增 X 轉送的標頭）。
-
-### <a name="linux-package-management-behind-a-firewall"></a>防火牆後方的 Linux 套件管理
-
-在執行階段，適用於 Linux 的 Azure 磁碟加密需依賴目標發佈的套件管理系統先行安裝所需的必要條件元件後，才能啟用加密。 如果防火牆設定造成 VM 無法下載及安裝這些元件，就會發生後續的失敗。 設定此套件管理系統的步驟會因散發套件而異。 在 Red Hat 上，在需要 Proxy 時，您必須確保已正確地設定您的訂用帳戶管理員和 Yum。 如需詳細資訊，請參閱[如何針對訂用帳戶管理員和 Yum 問題進行疑難排解](https://access.redhat.com/solutions/189533)。  
+請參閱[隔離網路上的磁片加密](disk-encryption-isolated-network.md)
 
 ## <a name="troubleshooting-encryption-status"></a>針對加密狀態進行疑難排解 
 

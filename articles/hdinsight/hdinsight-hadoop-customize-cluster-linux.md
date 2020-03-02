@@ -1,22 +1,22 @@
 ---
 title: 使用腳本動作自訂 Azure HDInsight 叢集
-description: 使用指令碼動作將自訂元件新增至 Linux 型 HDInsight 叢集。 指令碼動作是 Bash 指令碼，可用來自訂叢集設定，或新增其他服務和公用程式，例如 Hue、Solr 或 R。
+description: 使用腳本動作，將自訂群組件新增至 HDInsight 叢集。 指令碼動作是 Bash 指令碼，可用來自訂叢集設定，或新增其他服務和公用程式，例如 Hue、Solr 或 R。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/03/2019
-ms.openlocfilehash: 0930bbcfff41a667f08f5dfc5744c16476ddd8a1
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.date: 02/26/2020
+ms.openlocfilehash: 12e6892930afe8ba9c7bad9b05fd39eeaf8835fc
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031438"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206719"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>使用腳本動作自訂 Azure HDInsight 叢集
 
-Azure HDInsight 提供名為**指令碼動作**的設定方法，會叫用自訂指令碼來自訂叢集。 這些指令碼可用來安裝其他元件和變更組態設定。 叢集建立期間或叢集建立之後，可以使用指令碼動作。
+Azure HDInsight 提供稱為**腳本動作**的設定方法，其會叫用自訂腳本以自訂叢集。 這些指令碼可用來安裝其他元件和變更組態設定。 叢集建立期間或叢集建立之後，可以使用指令碼動作。
 
 指令碼動作也可以發佈到 Azure Marketplace 做為 HDInsight 應用程式。 如需有關 HDInsight 應用程式的詳細資訊，請參閱[將 HDInsight 應用程式發佈到 Azure Marketplace](hdinsight-apps-publish-applications.md)。
 
@@ -55,35 +55,23 @@ Azure HDInsight 提供名為**指令碼動作**的設定方法，會叫用自訂
         > [!IMPORTANT]  
         > 請勿輪替此 Azure 儲存體帳戶上的儲存體金鑰，因為這會導致後續腳本動作儲存在該處的腳本失敗。
 
-      * 可透過 HTTP://路徑存取的公用檔案共用服務。 範例包括 Azure Blob、GitHub、OneDrive。
+      * 可透過 HTTP://路徑存取的公用檔案共用服務。 範例包括 Azure Blob、GitHub、OneDrive。 如需範例 URI，請參閱[範例指令碼動作指令碼](#example-script-action-scripts)。
 
-        如需範例 URI，請參閱[範例指令碼動作指令碼](#example-script-action-scripts)。
-
-     * 針對具有 ESP 的叢集：
-
-         * 支援 wasb://或 wasbs://或 HTTP [s]：//Uri。
+     * 針對具有 ESP 的叢集，支援 wasb://或 wasbs://或 HTTP [s]：//Uri。
 
 * 可限制為只在特定節點類型上執行。 例如前端節點或背景工作節點。
 
 * 可以是持續性或臨時性。
 
-    持續性指令碼可用來自訂透過調整規模作業新增至叢集的新背景工作節點。 持續性指令碼也可以在進行調整規模作業時，將變更套用至另一個節點類型。 例如前端節點。
+    持續性指令碼動作必須有唯一的名稱。 持續性指令碼可用來自訂透過調整規模作業新增至叢集的新背景工作節點。 持續性指令碼也可以在進行調整規模作業時，將變更套用至另一個節點類型。 例如前端節點。
 
-  > [!IMPORTANT]  
-  > 持續性指令碼動作必須有唯一的名稱。
-
-    臨時性指令碼不會持續留存。 它們不會套用至在指令碼執行後新增至叢集的背景工作節點。 您可以在之後將臨時性指令碼升階為持續性指令碼，或將持續性指令碼降階為臨時性指令碼。
-
-  > [!IMPORTANT]  
-  > 建立叢集期間使用的指令碼動作會自動保存下來。
-  >
-  > 失敗的指令碼即使您特別指示應保存，也不會保存下來。
+    臨時性指令碼不會持續留存。 建立叢集期間使用的指令碼動作會自動保存下來。 它們不會套用至在指令碼執行後新增至叢集的背景工作節點。 您可以在之後將臨時性指令碼升階為持續性指令碼，或將持續性指令碼降階為臨時性指令碼。 失敗的指令碼即使您特別指示應保存，也不會保存下來。
 
 * 可以接受指令碼在執行期間所使用的參數。
 
 * 在叢集節點上以根層級權限執行。
 
-* 可以透過 Azure 入口網站、Azure PowerShell、Azure 傳統 CLI 或 HDInsight .NET SDK 使用。
+* 可以透過 Azure 入口網站、Azure PowerShell、Azure CLI 或 HDInsight .NET SDK 來使用。
 
 叢集會保留所有已執行指令碼的歷程記錄。 當您需要尋找指令碼的識別碼以進行升階或降階作業時，歷程記錄會很有幫助。
 
@@ -104,8 +92,7 @@ Azure HDInsight 提供名為**指令碼動作**的設定方法，會叫用自訂
 
 設定 HDInsight 時會執行此指令碼。 指令碼會以平行方式在叢集中所有指定的節點上執行。 它會在節點上以根權限執行。
 
-> [!NOTE]  
-> 您可以執行停止和啟動服務 (包括 Apache Hadoop 相關服務) 等作業。 如果您停止服務，請確定 Ambari 服務及其他 Hadoop 相關服務在指令碼完成前處於執行狀態。 在建立叢集時，必須要有這些服務，才能成功地判斷叢集的健康情況和狀態。
+您可以執行停止和啟動服務 (包括 Apache Hadoop 相關服務) 等作業。 如果您停止服務，請確定 Ambari 服務及其他 Hadoop 相關服務在指令碼完成前處於執行狀態。 在建立叢集時，必須要有這些服務，才能成功地判斷叢集的健康情況和狀態。
 
 在叢集建立期間，您可以同時使用許多指令碼動作。 這些指令碼會以指定的順序叫用。
 
@@ -116,12 +103,9 @@ Azure HDInsight 提供名為**指令碼動作**的設定方法，會叫用自訂
 
 ### <a name="script-action-on-a-running-cluster"></a>執行中叢集上的指令碼動作
 
-在已處於執行中狀態的叢集上執行的指令碼如果發生失敗，並不會自動導致叢集變成失敗狀態。 在指令碼完成後，叢集應該會回到執行中狀態。
+在已處於執行中狀態的叢集上執行的指令碼如果發生失敗，並不會自動導致叢集變成失敗狀態。 在指令碼完成後，叢集應該會回到執行中狀態。 即使叢集狀態為執行中，失敗的指令碼仍可能已造成問題。 例如，指令碼可能會刪除叢集所需的檔案。
 
-> [!IMPORTANT]  
-> 即使叢集狀態為執行中，失敗的指令碼仍可能已造成問題。 例如，指令碼可能會刪除叢集所需的檔案。
->
-> 指令碼動作會以根權限執行。 請先確定您了解指令碼的作用，再將它套用到您的叢集。
+指令碼動作會以根權限執行。 請先確定您瞭解腳本的作用，再將它套用到您的叢集。
 
 當您將指令碼套用至叢集時，叢集狀態會從 [正在執行] 變更為 [已接受]。 然後，它會變更為 [HDInsight 設定]，最後，如果指令碼成功，就會再變更回 [正在執行]。 指令碼狀態會記錄在指令碼動作歷程記錄中。 此資訊會告訴您指令碼成功還是失敗。 例如，`Get-AzHDInsightScriptActionHistory` PowerShell Cmdlet 會顯示指令碼的狀態。 它會傳回類似以下文字的資訊：
 
@@ -139,18 +123,18 @@ Azure HDInsight 提供名為**指令碼動作**的設定方法，會叫用自訂
 
 * Azure 入口網站
 * Azure PowerShell
-* Azure 傳統 CLI
+* Azure CLI
 * HDInsight .NET SDK
 
 HDInsight 提供一些指令碼以在 HDInsight 叢集上安裝下列元件：
 
-| 名稱 | 指令檔 |
+| 名稱 | 指令碼 |
 | --- | --- |
 | 新增 Azure 儲存體帳戶 |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`第 1 課：建立 Windows Azure 儲存體物件{2}。 請參閱[將其他儲存體帳戶新增至 HDInsight](hdinsight-hadoop-add-storage.md)。 |
 | 安裝 Hue |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`第 1 課：建立 Windows Azure 儲存體物件{2}。 請參閱[在 HDInsight Hadoop 叢集上安裝和使用 Hue](hdinsight-hadoop-hue-linux.md)。 |
 | 預先載入 Hive 程式庫 |`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`第 1 課：建立 Windows Azure 儲存體物件{2}。 請參閱[建立 HDInsight 叢集時新增自訂 Apache Hive 程式庫](hdinsight-hadoop-add-hive-libraries.md)。 |
 
-## <a name="use-a-script-action-during-cluster-creation"></a>在建立叢集期間使用指令碼動作
+## <a name="script-action-during-cluster-creation"></a>叢集建立期間的腳本動作
 
 本節說明建立 HDInsight 叢集時，您可以使用指令碼動作的不同方式。
 
@@ -210,8 +194,6 @@ HDInsight 提供一些指令碼以在 HDInsight 叢集上安裝下列元件：
 
 在本節中，您會使用[AzHDInsightScriptAction](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightscriptaction) Cmdlet 來叫用腳本以自訂叢集。 在您開始之前，請務必先安裝和設定 Azure PowerShell。 若要使用這些 PowerShell 命令，您需要[AZ 模組](https://docs.microsoft.com/powershell/azure/overview)。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 下列指令碼示範如何使用 PowerShell 在建立叢集時套用指令碼動作：
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/use-script-action/use-script-action.ps1?range=5-90)]
@@ -222,17 +204,13 @@ HDInsight 提供一些指令碼以在 HDInsight 叢集上安裝下列元件：
 
 HDInsight .NET SDK 提供用戶端程式庫，可讓您更輕鬆地從 .NET 應用程式使用 HDInsight。 如需程式碼範例，請參閱[腳本動作](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#script-actions)。
 
-## <a name="apply-a-script-action-to-a-running-cluster"></a>將指令碼動作套用到執行中的叢集
+## <a name="script-action-to-a-running-cluster"></a>對執行中的叢集編寫動作的腳本
 
 本節說明如何將指令碼動作套用至執行中的叢集。
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-the-azure-portal"></a>從 Azure 入口網站將指令碼動作套用到執行中的叢集
 
-移至 [Azure 入口網站](https://portal.azure.com)：
-
-1. 從左側功能表中，流覽至 [**所有服務**] [ >  **分析**] [ > ] [ **HDInsight**叢集]。
-
-1. 從清單中選取您的叢集，這會開啟預設檢視。
+1. 登入[Azure 入口網站](https://portal.azure.com)並尋找您的叢集。
 
 1. 從預設檢視的 [設定] 底下，選取 [指令碼動作]。
 
@@ -260,9 +238,7 @@ HDInsight .NET SDK 提供用戶端程式庫，可讓您更輕鬆地從 .NET 應�
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-azure-powershell"></a>從 Azure PowerShell 將指令碼動作套用到執行中的叢集
 
-若要使用這些 PowerShell 命令，您需要[AZ 模組](https://docs.microsoft.com/powershell/azure/overview)。
-
-下列範例示範如何將指令碼動作套用至執行中的叢集：
+若要使用這些 PowerShell 命令，您需要[AZ 模組](https://docs.microsoft.com/powershell/azure/overview)。 下列範例示範如何將指令碼動作套用至執行中的叢集：
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/use-script-action/use-script-action.ps1?range=105-117)]
 
@@ -277,43 +253,23 @@ HDInsight .NET SDK 提供用戶端程式庫，可讓您更輕鬆地從 .NET 應�
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-the-azure-cli"></a>從 Azure CLI 將指令碼動作套用到執行中的叢集
 
-在您開始之前，請務必先安裝和設定 Azure CLI。 如需詳細資訊，請參閱[安裝 Azure 傳統 CLI](https://docs.microsoft.com/cli/azure/install-classic-cli?view=azure-cli-latest)。
+在您開始之前，請務必先安裝和設定 Azure CLI。 請確定您有最新版本。 如需詳細資訊，請參閱 [安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
-[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
+1. 向您的 Azure 訂用帳戶進行驗證：
 
-1. 切換到 Azure Resource Manager 模式：
-
-    ```bash
-    azure config mode arm
+    ```azurecli
+    az login
     ```
 
-2. 向您的 Azure 訂用帳戶進行驗證：
+1. 將指令碼動作套用至執行中的叢集：
 
-    ```bash
-    azure login
+    ```azurecli
+    az hdinsight script-action execute --cluster-name CLUSTERNAME --name SCRIPTNAME --resource-group RESOURCEGROUP --roles ROLES
     ```
 
-3. 將指令碼動作套用至執行中的叢集：
+    有效的角色為 `headnode`、`workernode`、`zookeepernode`、`edgenode`。 如果腳本應該套用至數個節點類型，請以空格分隔這些角色。 例如： `--roles headnode workernode` 。
 
-    ```bash
-    azure hdinsight script-action create <clustername> -g <resourcegroupname> -n <scriptname> -u <scriptURI> -t <nodetypes>
-    ```
-
-    如果您省略這個命令的參數，系統會提示您輸入參數。 如果您以 `-u` 指定的指令碼可接受參數，您可以使用 `-p` 參數來指定它們。
-
-    有效的節點類型為 `headnode``workernode` 和 `zookeeper`。 如果指令碼應該要套用至數個節點類型，請以分號 `;` 分隔來指定類型。 例如： `-n headnode;workernode` 。
-
-    若要保存指令碼，請新增 `--persistOnSuccess`。 您之後也可以使用 `azure hdinsight script-action persisted set` 來保存指令碼。
-
-    完成作業之後，您會獲得類似以下文字的輸出：
-
-        info:    Executing command hdinsight script-action create
-        + Executing Script Action on HDInsight cluster
-        data:    Operation Info
-        data:    ---------------
-        data:    Operation status:
-        data:    Operation ID:  b707b10e-e633-45c0-baa9-8aed3d348c13
-        info:    hdinsight script-action create command OK
+    若要保存指令碼，請新增 `--persist-on-success`。 您之後也可以使用 `az hdinsight script-action promote` 來保存指令碼。
 
 ### <a name="apply-a-script-action-to-a-running-cluster-by-using-rest-api"></a>使用 REST API 將指令碼動作套用至執行中的叢集
 
@@ -327,11 +283,7 @@ HDInsight .NET SDK 提供用戶端程式庫，可讓您更輕鬆地從 .NET 應�
 
 ### <a name="the-azure-portal"></a>Azure 入口網站
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
-
-1. 從左側功能表中，流覽至 [**所有服務**] [ > **分析**] [ > ] [ **HDInsight**叢集]。
-
-1. 從清單中選取您的叢集，這會開啟預設檢視。
+1. 登入[Azure 入口網站](https://portal.azure.com)並尋找您的叢集。
 
 1. 從預設檢視的 [設定] 底下，選取 [指令碼動作]。
 
@@ -349,42 +301,36 @@ HDInsight .NET SDK 提供用戶端程式庫，可讓您更輕鬆地從 .NET 應�
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-| Cmdlet | 函數 |
+| Cmdlet | 函式 |
 | --- | --- |
-| `Get-AzHDInsightPersistedScriptAction` |擷取持續性指令碼動作的相關資訊。 |
+| `Get-AzHDInsightPersistedScriptAction` |擷取持續性指令碼動作的相關資訊。 此 Cmdlet 不會復原腳本所執行的動作，它只會移除保存的旗標。|
 | `Get-AzHDInsightScriptActionHistory` |擷取已套用到叢集的指令碼動作歷程記錄，或特定指令碼的詳細資料。 |
 | `Set-AzHDInsightPersistedScriptAction` |將臨時性指令碼動作升階為持續性指令碼動作。 |
 | `Remove-AzHDInsightPersistedScriptAction` |將持續性指令碼動作降階為臨時性動作。 |
-
-> [!IMPORTANT]  
-> `Remove-AzHDInsightPersistedScriptAction` 不會復原指令碼所執行的動作。 此 Cmdlet 只會移除持續性旗標。
 
 下列範例指令碼示範如何使用 Cmdlet 將指令碼先升級後再降級。
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/use-script-action/use-script-action.ps1?range=123-140)]
 
-### <a name="the-azure-classic-cli"></a>Azure 傳統 CLI
+### <a name="azure-cli"></a>Azure CLI
 
-| Cmdlet | 函數 |
+| Command | 描述 |
 | --- | --- |
-| `azure hdinsight script-action persisted list <clustername>` |擷取持續性指令碼動作的清單。 |
-| `azure hdinsight script-action persisted show <clustername> <scriptname>` |擷取特定持續性指令碼動作的相關資訊。 |
-| `azure hdinsight script-action history list <clustername>` |擷取已套用到叢集的指令碼動作歷程記錄。 |
-| `azure hdinsight script-action history show <clustername> <scriptname>` |擷取特定指令碼動作的相關資訊。 |
-| `azure hdinsight script action persisted set <clustername> <scriptexecutionid>` |將臨時性指令碼動作升階為持續性指令碼動作。 |
-| `azure hdinsight script-action persisted delete <clustername> <scriptname>` |將持續性指令碼動作降階為臨時性動作。 |
+| [az hdinsight script-action delete](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-delete) |刪除叢集的指定持續性腳本動作。 此命令不會復原腳本所執行的動作，它只會移除保存的旗標。|
+|[az hdinsight 腳本-動作執行](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-execute)|在指定的 HDInsight 叢集上執行腳本動作。|
+| [az hdinsight script-action list](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-list) |列出指定叢集的所有持續性腳本動作。 |
+|[az hdinsight 腳本-動作清單-執行-歷程記錄](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-list-execution-history)|列出指定叢集的所有腳本執行歷程記錄。|
+|[az hdinsight 腳本-動作提升](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-promote)|將指定的臨機操作腳本執行升級為持續性腳本。|
+|[az hdinsight script-動作顯示-執行-詳細資料](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-show-execution-details)|取得給定腳本執行識別碼的腳本執行詳細資料。|
 
-> [!IMPORTANT]  
-> `azure hdinsight script-action persisted delete` 不會復原指令碼所執行的動作。 此 Cmdlet 只會移除持續性旗標。
-
-### <a name="the-hdinsight-net-sdk"></a>HDInsight .NET SDK
+### <a name="hdinsight-net-sdk"></a>HDInsight .NET SDK
 
 如需使用 .NET SDK 從叢集擷取指令碼歷程記錄、將指令碼升階或降階的範例，請參閱[針對執行中的 Linux 型 HDInsight 叢集套用指令碼動作](https://github.com/Azure-Samples/hdinsight-dotnet-script-action) \(英文\)。
 
 > [!NOTE]  
 > 這個範例也示範如何使用 .NET SDK 來安裝 HDInsight 應用程式。
 
-## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>支援在 HDInsight 叢集上使用開放原始碼軟體
+## <a name="support-for-open-source-software"></a>開放原始碼軟體的支援
 
 Microsoft Azure HDInsight 服務會使用以 Apache Hadoop 為中心的開放原始碼技術生態系統。 Microsoft Azure 可為開放原始碼技術提供一般層級的支援。 如需詳細資訊，請參閱 **Azure 支援常見問題集**的[支援範圍](https://azure.microsoft.com/support/faq/)一節。 HDInsight 服務針對內建元件提供額外等級的支援。
 
@@ -421,15 +367,13 @@ HDInsight 服務提供數種方式以使用自訂元件。 不論元件在叢集
 
 ### <a name="the-apache-ambari-web-ui"></a>Apache Ambari Web UI
 
-1. 在瀏覽器中，前往 `https://CLUSTERNAME.azurehdinsight.net`。 將 **CLUSTERNAME** 取代為 HDInsight 叢集的名稱。
+1. 從網頁瀏覽器流覽至 `https://CLUSTERNAME.azurehdinsight.net`，其中 `CLUSTERNAME` 是叢集的名稱。
 
-    出現提示時，請輸入管理帳戶名稱 (**admin**) 和叢集的密碼。 您可能必須在 Web 表單中重新輸入管理員認證。
-
-2. 在頁面頂端的列中，選取 **ops** 項目。 系統會顯示一個清單，當中包含透過 Ambari 在叢集上執行的目前和先前作業。
+1. 在頁面頂端的列中，選取 **ops** 項目。 系統會顯示一個清單，當中包含透過 Ambari 在叢集上執行的目前和先前作業。
 
     ![Ambari Web UI 列與選取的 ops](./media/hdinsight-hadoop-customize-cluster-linux/hdi-apache-ambari-nav.png)
 
-3. 尋找在 [作業] **\_ 欄位中有** run**customscriptaction** 的項目。 這些項目是在執行指令碼動作時建立的。
+1. 尋找在 [作業] **\_ 欄位中有** run**customscriptaction** 的項目。 這些項目是在執行指令碼動作時建立的。
 
     ![Apache Ambari 腳本動作作業](./media/hdinsight-hadoop-customize-cluster-linux/ambari-script-action.png)
 
@@ -495,7 +439,7 @@ sudo pip install azure-storage==0.20.0
 
 如果您的叢集是在 2016 年 3 月 15 日之前建立的，您在指令碼動作歷程記錄中就可能不會看到項目。 調整叢集大小會導致指令碼顯示在指令碼動作歷程記錄中。
 
-以下有兩個例外:
+有兩種例外狀況：
 
 * 您的叢集是在 2015 年 9 月 1 日之前建立的。 此日期是引進指令碼動作的日期。 任何叢集只要是在此日期之前建立的，都不可能是使用指令碼動作來建立叢集。
 

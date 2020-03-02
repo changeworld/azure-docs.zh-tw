@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/21/2020
-ms.openlocfilehash: 102ae56bb9dce2898c14bdc710420759a527a9e9
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: f8e694f658d6e9de04c92001214ecd5c32ff7753
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514692"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206855"
 ---
 # <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>為以 Linux 為基礎的 HDInsight 叢集設定作業系統修補排程
 
@@ -49,7 +49,7 @@ Run 'do-release-upgrade' to upgrade it
 
 | 參數 | 接受的值 | 定義 |
 | --- | --- | --- |
-| 要執行的重新開機類型 | 1 或 2 | 值為1會啟用排程重新開機（排程時間為12-24 小時）。 值為2時，會立即重新開機（5分鐘）。 如果未指定參數，預設值為1。 |  
+| 要執行的重新開機類型 | 1或2 | 值為1會啟用排程重新開機（排程時間為12-24 小時）。 值為2時，會立即重新開機（5分鐘）。 如果未指定參數，預設值為1。 |  
 
 ## <a name="install-updates-and-restart-nodes"></a>安裝更新並重新啟動節點
 
@@ -69,5 +69,5 @@ Run 'do-release-upgrade' to upgrade it
 
 如需使用腳本動作的特定步驟，請參閱[使用腳本動作自訂以 Linux 為基礎的 HDInsight](hdinsight-hadoop-customize-cluster-linux.md)叢集中的下列各節：
 
-- [在建立叢集期間使用指令碼動作](hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-during-cluster-creation)
-- [將指令碼動作套用到執行中的叢集](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)
+- [在建立叢集期間使用指令碼動作](hdinsight-hadoop-customize-cluster-linux.md#script-action-during-cluster-creation)
+- [將指令碼動作套用到執行中的叢集](hdinsight-hadoop-customize-cluster-linux.md#script-action-to-a-running-cluster)

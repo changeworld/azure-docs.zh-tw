@@ -3,12 +3,12 @@ title: 適用於 Azure Functions 的 Python 開發人員參考
 description: 了解如何使用 Python 開發函式
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: 8ee13b59812e6a212fbafcf4ea6bfc171e735dc3
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 1b94cb51bcb4e2634cdb04c389efbab44bb024bb
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190699"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206328"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python 開發人員指南
 
@@ -101,7 +101,7 @@ from __app__.SharedCode import myFirstHelperFunction
 from . import example
 ```
 
-將您的專案部署至 Azure 中的函式應用程式時， *FunctionApp*資料夾的完整內容應該包含在套件中，而不是資料夾本身。 我們建議您在與專案資料夾不同的資料夾中維護您的測試，在此範例中 `tests`。 這可讓您不需要將測試程式碼與應用程式一起部署。 如需詳細資訊，請參閱[單元測試](#unit-testing)。
+將您的專案部署至 Azure 中的函式應用程式時，主要專案（ *\_\_應用程式\_\_* ）資料夾的完整內容應該包含在套件中，而不是資料夾本身。 我們建議您在與專案資料夾不同的資料夾中維護您的測試，在此範例中 `tests`。 這可讓您不需要將測試程式碼與應用程式一起部署。 如需詳細資訊，請參閱[單元測試](#unit-testing)。
 
 ## <a name="triggers-and-inputs"></a>觸發程式和輸入
 
@@ -158,7 +158,7 @@ def main(req: func.HttpRequest,
 叫用此函式時，HTTP 要求會以 `req` 形式傳遞至函式。 系統會根據路由 URL 中的_識別碼_從 Azure Blob 儲存體中抓取專案，並在函式主體中以 `obj` 的形式提供。  在這裡，指定的儲存體帳戶是在 AzureWebJobsStorage 應用程式設定中找到的連接字串，這是函數應用程式所使用的相同儲存體帳戶。
 
 
-## <a name="outputs"></a>Outputs
+## <a name="outputs"></a>輸出
 
 輸出可以使用傳回值和輸出參數來表示。 如果只有一個輸出，我們建議使用傳回的值。 若為多個輸出，您必須使用輸出參數。
 
@@ -276,7 +276,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 在這種情況下，您可以藉由採用非同步模式和使用多個語言背景工作進程，進一步改善效能。
 
-### <a name="async"></a>Async
+### <a name="async"></a>非同步處理
 
 因為 Python 是單一執行緒執行時間，所以適用于 Python 的主控制項實例一次只能處理一個函式呼叫。 對於處理大量 i/o 事件和/或 i/o 系結的應用程式，您可以透過非同步方式執行函式來改善效能。
 
@@ -302,11 +302,11 @@ def main():
 
 FUNCTIONS_WORKER_PROCESS_COUNT 適用于在相應放大應用程式以符合需求時所建立的每個主機。 
 
-## <a name="context"></a>內容
+## <a name="context"></a>Context
 
 若要在執行期間取得函數的調用內容，請在其簽章中包含[`context`](/python/api/azure-functions/azure.functions.context?view=azure-python)引數。 
 
-例如，
+例如：
 
 ```python
 import azure.functions
@@ -323,7 +323,7 @@ def main(req: azure.functions.HttpRequest,
 函式執行所在的目錄。
 
 `function_name`  
-函式的名稱。
+函數的名稱。
 
 `invocation_id`  
 目前函式引動的識別碼。

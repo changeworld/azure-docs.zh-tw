@@ -1,15 +1,15 @@
 ---
-title: 使用 REST API 更新復原服務保存庫設定屬性
+title: 使用 REST API 更新復原服務保存庫設定
 description: 在本文中，您將瞭解如何使用 REST API 來更新保存庫的設定。
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: 3739f95e3962def9ab669970c48b2d1c546fdc0e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6cecbb18e0cd6f548e1688ef978f10dcee7d9fbc
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75390546"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78204492"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>使用 REST API 更新 Azure 復原服務保存庫設定
 
@@ -43,9 +43,9 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 「取得」作業的成功回應如下所示：
 
-|名稱  |類型  |說明  |
+|名稱  |類型  |描述  |
 |---------|---------|---------|
-|200 確定     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | 確定        |
+|200 確定     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | [確定]        |
 
 ##### <a name="example-response"></a>範例回應
 
@@ -83,12 +83,12 @@ PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-0000000
 
 如需詳細資訊，請參閱[REST API 檔](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/update#request-body)
 
-|名稱  |必要項  |類型  |說明  |
+|名稱  |必要  |類型  |描述  |
 |---------|---------|---------|---------|
 |etag     |         |   String      |  選擇性 eTag       |
 |location     |  true       |String         |   資源位置      |
 |properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  保存庫的屬性       |
-|tags     |         | 物件        |     資源標籤    |
+|tags     |         | Object        |     資源標籤    |
 
 #### <a name="example-request-body"></a>要求本文範例
 
@@ -107,9 +107,9 @@ PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-0000000
 
 「修補程式」作業的成功回應如下所示：
 
-|名稱  |類型  |說明  |
+|名稱  |類型  |描述  |
 |---------|---------|---------|
-|200 確定     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | 確定        |
+|200 確定     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | [確定]        |
 
 ##### <a name="example-response"></a>範例回應
 

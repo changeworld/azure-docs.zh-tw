@@ -5,42 +5,40 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 06/11/2019
-ms.openlocfilehash: da654beec730d0bfc04548402c1158ebaaf80c6f
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 02/28/2020
+ms.openlocfilehash: ac3904284ebf20fa1d5e75f9249732be3963f677
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748360"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206277"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>使用 Apache Spark REST API 將遠端作業提交至 HDInsight Spark 叢集
 
-了解如何使用可將遠端作業提交至 Azure HDInsight Spark 叢集的 [Apache Livy](https://livy.incubator.apache.org/) (也就是 [Apache Spark](https://spark.apache.org/) REST API)。 如需詳細文件，請參閱[https://livy.incubator.apache.org/](https://livy.incubator.apache.org/)。
+瞭解如何使用[Apache Livy](https://livy.incubator.apache.org/)，這是用來將遠端作業提交至 Azure HDInsight Spark 叢集的 Apache Spark REST API。 如需詳細檔，請參閱[Apache Livy](https://livy.incubator.apache.org/docs/latest/rest-api.html)。
 
 您可以使用 Livy 執行互動式 Spark 殼層，或提交要在 Spark 上執行的批次作業。 本文將討論如何使用 Livy 提交批次作業。 本文中的程式碼片段會使用 cURL 向 Livy Spark 端點發出 REST API 呼叫。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* HDInsight 上的 Apache Spark 叢集。 如需指示，請參閱[在 Azure HDInsight 中建立 Apache Spark 叢集](apache-spark-jupyter-spark-sql.md)。
-
-* [cURL](https://curl.haxx.se/)。 本文使用 cURL 示範如何對 HDInsight Spark 叢集進行 REST API 呼叫。
+HDInsight 上的 Apache Spark 叢集。 如需指示，請參閱[在 Azure HDInsight 中建立 Apache Spark 叢集](apache-spark-jupyter-spark-sql.md)。
 
 ## <a name="submit-an-apache-livy-spark-batch-job"></a>提交 Apache Livy Spark 批次作業
 
 在提交批次作業之前，您必須將應用程式 jar 上傳至與叢集相關聯的叢集儲存體。 您可以使用命令列公用程式[AzCopy](../../storage/common/storage-use-azcopy.md)來執行此動作。 此外也有各種用戶端可用來上傳資料。 [在 HDInsight 上將 Apache Hadoop 作業的資料上傳](../hdinsight-upload-data.md)中可找到其詳細資訊。
 
 ```cmd
-curl -k --user "<hdinsight user>:<user password>" -v -H "Content-Type: application/json" -X POST -d '{ "file":"<path to application jar>", "className":"<classname in jar>" }' 'https://<spark_cluster_name>.azurehdinsight.net/livy/batches' -H "X-Requested-By: admin"
+curl -k --user "admin:password" -v -H "Content-Type: application/json" -X POST -d '{ "file":"<path to application jar>", "className":"<classname in jar>" }' 'https://<spark_cluster_name>.azurehdinsight.net/livy/batches' -H "X-Requested-By: admin"
 ```
 
 ### <a name="examples"></a>範例
 
-* 如果 jar 檔案位於叢集儲存體 (WASB) 上
+* 如果 jar 檔案位於叢集存放裝置（WASBS）
 
     ```cmd  
-    curl -k --user "admin:mypassword1!" -v -H "Content-Type: application/json" -X POST -d '{ "file":"wasb://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://mysparkcluster.azurehdinsight.net/livy/batches" -H "X-Requested-By: admin"
+    curl -k --user "admin:mypassword1!" -v -H "Content-Type: application/json" -X POST -d '{ "file":"wasbs://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://mysparkcluster.azurehdinsight.net/livy/batches" -H "X-Requested-By: admin"
     ```
 
 * 如果您需要在輸入檔案 (在此範例中為 input.txt) 中傳遞 jar 檔案名稱和類別名稱
@@ -54,7 +52,7 @@ curl -k --user "<hdinsight user>:<user password>" -v -H "Content-Type: applicati
 語法：
 
 ```cmd
-curl -k --user "<hdinsight user>:<user password>" -v -X GET "https://<spark_cluster_name>.azurehdinsight.net/livy/batches"
+curl -k --user "admin:password" -v -X GET "https://<spark_cluster_name>.azurehdinsight.net/livy/batches"
 ```
 
 ### <a name="examples"></a>範例
@@ -62,7 +60,7 @@ curl -k --user "<hdinsight user>:<user password>" -v -X GET "https://<spark_clus
 * 如果您想要擷取在叢集上執行的所有 Livy Spark 批次：
 
     ```cmd
-    curl -k --user "admin:mypassword1!" -v -X GET "https://mysparkcluster.azurehdinsight.net/livy/batches" 
+    curl -k --user "admin:mypassword1!" -v -X GET "https://mysparkcluster.azurehdinsight.net/livy/batches"
     ```
 
 * 如果您想要使用指定的批次識別碼來抓取特定批次
@@ -74,7 +72,7 @@ curl -k --user "<hdinsight user>:<user password>" -v -X GET "https://<spark_clus
 ## <a name="delete-a-livy-spark-batch-job"></a>將 Livy Spark 批次作業刪除
 
 ```cmd
-curl -k --user "<hdinsight user>:<user password>" -v -X DELETE "https://<spark_cluster_name>.azurehdinsight.net/livy/batches/{batchId}"
+curl -k --user "admin:mypassword1!" -v -X DELETE "https://<spark_cluster_name>.azurehdinsight.net/livy/batches/{batchId}"
 ```
 
 ### <a name="example"></a>範例
@@ -89,22 +87,29 @@ curl -k --user "admin:mypassword1!" -v -X DELETE "https://mysparkcluster.azurehd
 
 Livy 可為在叢集上執行的 Spark 作業提供高可用性。 以下是一些範例。
 
-* 如果在您從遠端將作業提交給 Spark 叢集之後，Livy 服務當機，作業將會繼續在背景執行。 當 Livy 恢復運作時，它會還原作業的狀態並回報。
-* 適用於 HDInsight 的 Jupyter Notebook 是由 Livy 在後端提供技術支援。 如果在 Notebook 執行 Spark 作業時，Livy 服務重新啟動，Notebook 就會繼續執行程式碼單元。 
+* 如果您從遠端將作業提交至 Spark 叢集之後，Livy 服務停止運作，作業會繼續在背景中執行。 當 Livy 恢復運作時，它會還原作業的狀態並回報。
+* 適用於 HDInsight 的 Jupyter Notebook 是由 Livy 在後端提供技術支援。 如果在 Notebook 執行 Spark 作業時，Livy 服務重新啟動，Notebook 就會繼續執行程式碼單元。
 
 ## <a name="show-me-an-example"></a>請舉例說明
 
 在本節中，我們將透過範例了解如何使用 Livy Spark 來提交批次作業、監視作業的進度，然後加以刪除。 我們在此範例中使用的應用程式，就是 [建立獨立 Scala 應用程式，並在 HDInsight Spark 叢集上執行](apache-spark-create-standalone-application.md)一文中所開發的應用程式。 這裡的步驟假設：
 
 * 您已將應用程式 jar 複製到與叢集相關聯的儲存體帳戶。
-* 您已將 CuRL 安裝在要嘗試這些步驟的電腦上。
+* 您已在嘗試執行這些步驟的電腦上安裝了捲曲的情況。
 
 執行下列步驟：
 
-1. 我們先確認 Livy Spark 正在叢集上執行。 我們可以取得執行中的批次清單，加以確認。 如果您是第一次使用 Livy 執行作業，輸出應會傳回零。
+1. 為了方便使用，請設定環境變數。 這個範例是以 Windows 環境為基礎，視您的環境需要修改變數。 以適當的值取代 `CLUSTERNAME`和 `PASSWORD`。
 
     ```cmd
-    curl -k --user "admin:mypassword1!" -v -X GET "https://mysparkcluster.azurehdinsight.net/livy/batches"
+    set clustername=CLUSTERNAME
+    set password=PASSWORD
+    ```
+
+1. 確認 Livy Spark 正在叢集上執行。 我們可以取得執行中的批次清單，加以確認。 如果您是第一次使用 Livy 執行作業，輸出應該會傳回零。
+
+    ```cmd
+    curl -k --user "admin:%password%" -v -X GET "https://%clustername%.azurehdinsight.net/livy/batches"
     ```
 
     您應該會看到如下列程式碼片段的輸出：
@@ -123,16 +128,16 @@ Livy 可為在叢集上執行的 Spark 作業提供高可用性。 以下是一�
 
     請留意到輸出的最後一行顯示為 **total:0**，這表示沒有執行中的批次。
 
-2. 現在，我們要提交批次作業。 下列程式碼片段會使用輸入檔案 (input.txt) 傳遞 jar 名稱和類別名稱來作為參數。 如果您要從 Windows 電腦執行這些步驟，建議您採用輸出檔案這個方法。
+1. 現在，我們要提交批次作業。 下列程式碼片段會使用輸入檔案 (input.txt) 傳遞 jar 名稱和類別名稱來作為參數。 如果您是從 Windows 電腦執行這些步驟，則建議使用輸入檔。
 
     ```cmd
-    curl -k --user "admin:mypassword1!" -v -H "Content-Type: application/json" -X POST --data @C:\Temp\input.txt "https://mysparkcluster.azurehdinsight.net/livy/batches" -H "X-Requested-By: admin"
+    curl -k --user "admin:%password%" -v -H "Content-Type: application/json" -X POST --data @C:\Temp\input.txt "https://%clustername%.azurehdinsight.net/livy/batches" -H "X-Requested-By: admin"
     ```
 
     檔案 **input.txt** 中的參數定義如下：
 
     ```text
-    { "file":"wasb:///example/jars/SparkSimpleApp.jar", "className":"com.microsoft.spark.example.WasbIOTest" }
+    { "file":"wasbs:///example/jars/SparkSimpleApp.jar", "className":"com.microsoft.spark.example.WasbIOTest" }
     ```
 
     您應該會看到如下列程式碼片段的輸出：
@@ -152,10 +157,10 @@ Livy 可為在叢集上執行的 Spark 作業提供高可用性。 以下是一�
 
     請留意到輸出的最後一行顯示為 **state:starting**。 此外也顯示 **id:0**。 在這裡，批次識別碼是 **0**。
 
-3. 現在，您可以使用批次識別碼來擷取此批次的狀態。
+1. 現在，您可以使用批次識別碼來擷取此批次的狀態。
 
     ```cmd
-    curl -k --user "admin:mypassword1!" -v -X GET "https://mysparkcluster.azurehdinsight.net/livy/batches/0"
+    curl -k --user "admin:%password%" -v -X GET "https://%clustername%.azurehdinsight.net/livy/batches/0"
     ```
 
     您應該會看到如下列程式碼片段的輸出：
@@ -169,15 +174,15 @@ Livy 可為在叢集上執行的 Spark 作業提供高可用性。 以下是一�
     < Date: Fri, 20 Nov 2015 23:54:42 GMT
     < Content-Length: 509
     <
-    {"id":0,"state":"success","log":["\t diagnostics: N/A","\t ApplicationMaster host: 10.0.0.4","\t ApplicationMaster RPC port: 0","\t queue: default","\t start time: 1448063505350","\t final status: SUCCEEDED","\t tracking URL: http://myspar.lpel1gnnvxne3gwzqkfq5u5uzh.jx.internal.cloudapp.net:8088/proxy/application_1447984474852_0002/","\t user: root","15/11/20 23:52:47 INFO Utils: Shutdown hook called","15/11/20 23:52:47 INFO Utils: Deleting directory /tmp/spark-b72cd2bf-280b-4c57-8ceb-9e3e69ac7d0c"]}* Connection #0 to host mysparkcluster.azurehdinsight.net left intact
+    {"id":0,"state":"success","log":["\t diagnostics: N/A","\t ApplicationMaster host: 10.0.0.4","\t ApplicationMaster RPC port: 0","\t queue: default","\t start time: 1448063505350","\t final status: SUCCEEDED","\t tracking URL: http://myspar.lpel.jx.internal.cloudapp.net:8088/proxy/application_1447984474852_0002/","\t user: root","15/11/20 23:52:47 INFO Utils: Shutdown hook called","15/11/20 23:52:47 INFO Utils: Deleting directory /tmp/spark-b72cd2bf-280b-4c57-8ceb-9e3e69ac7d0c"]}* Connection #0 to host mysparkcluster.azurehdinsight.net left intact
     ```
 
     輸出此時顯示 **state:success**，這表示作業已順利完成。
 
-4. 現在，您可以視需要刪除批次。
+1. 現在，您可以視需要刪除批次。
 
     ```cmd
-    curl -k --user "admin:mypassword1!" -v -X DELETE "https://mysparkcluster.azurehdinsight.net/livy/batches/0"
+    curl -k --user "admin:%password%" -v -X DELETE "https://%clustername%.azurehdinsight.net/livy/batches/0"
     ```
 
     您應該會看到如下列程式碼片段的輸出：
@@ -194,11 +199,11 @@ Livy 可為在叢集上執行的 Spark 作業提供高可用性。 以下是一�
     {"msg":"deleted"}* Connection #0 to host mysparkcluster.azurehdinsight.net left intact
     ```
 
-    輸出的最後一行顯示批次已成功刪除。 當作業執行時將它刪除，也會清除作業。 如果您刪除已完成的作業，無論成功與否，這將會完全刪除作業資訊。
+    輸出的最後一行顯示批次已成功刪除。 當作業正在執行時，將其刪除也會終止作業。 如果您刪除已完成的作業，無論成功與否，這將會完全刪除作業資訊。
 
 ## <a name="updates-to-livy-configuration-starting-with-hdinsight-35-version"></a>從 HDInsight 3.5 版開始對 Livy 設定的更新
 
-根據預設，HDInsight 3.5 叢集與更新版本會停用以本機檔案路徑存取範例資料檔案或 jar。 建議您使用 `wasb://` 路徑，而不是從叢集存取 jar 或範本資料檔案。
+根據預設，HDInsight 3.5 叢集與更新版本會停用以本機檔案路徑存取範例資料檔案或 jar。 建議您使用 `wasbs://` 路徑，而不是從叢集存取 jar 或範本資料檔案。
 
 ## <a name="submitting-livy-jobs-for-a-cluster-within-an-azure-virtual-network"></a>在 Azure 虛擬網路內提交叢集的 Livy 作業
 

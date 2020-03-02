@@ -4,12 +4,12 @@ description: 瞭解如何使用 Azure 備份使用 Azure 匯入/匯出服務從�
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: 60295d1c534dbd1181533190df260ed4507ec11f
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 1359616e074f36a1324a418d5b2c889076ced52d
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197111"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206753"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure 備份中的離線備份工作流程
 
@@ -42,7 +42,7 @@ Azure 備份離線植入程式與[Azure 匯入/匯出服務](../storage/common/s
 
 [!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
   > [!NOTE]
   > 下列必要條件和工作流程僅適用于使用[最新 Azure 復原服務代理程式](https://aka.ms/azurebackup_agent)的離線備份檔案和資料夾。 若要使用 System Center DPM 或 Azure 備份伺服器執行工作負載的離線備份，請參閱[DPM 和 Azure 備份伺服器的離線備份工作流程](backup-azure-backup-server-import-export-.md)。
@@ -116,7 +116,7 @@ Azure 備份離線植入程式與[Azure 匯入/匯出服務](../storage/common/s
 
 *AzureOfflineBackupDiskPrep* 公用程式會準備要送到最鄰近之 Azure 資料中心的 SATA 磁碟機。 此公用程式可在下列路徑中的 Azure 備份代理程式安裝目錄中取得：
 
-    *\Microsoft Azure Recovery Services Agent\Utils\\*
+```*\Microsoft Azure Recovery Services Agent\Utils\\*```
 
 1. 移至目錄，並將*AzureOfflineBackupDiskPrep*目錄複寫到連接 SATA 磁片磁碟機的另一部電腦。 在具有連接 SATA 磁片磁碟機的電腦上，確定：
 
@@ -144,7 +144,7 @@ Azure 備份離線植入程式與[Azure 匯入/匯出服務](../storage/common/s
 
 1. 輸入想要準備傳輸到 Azure 之掛接磁碟的磁碟機代號 (不含結尾冒號)。
 1. 在出現提示時確認您要格式化磁碟機。
-1. 系統會提示您登入您的 Azure 訂用帳戶。 輸入您的認證。
+1. 系統會提示您登入您的 Azure 訂用帳戶。 輸入認證。
 
     ![Azure 訂用帳戶登入](./media/backup-azure-backup-import-export/signindiskprep.png) <br/>
 

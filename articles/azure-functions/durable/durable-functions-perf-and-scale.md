@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: ee35f26f9433f6ab342c7dce105638122b9d7717
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 260811c4ae15b45de6f7bc1b22e3ed6dcea44259
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486255"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78204509"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) 中的效能和級別
 
@@ -220,7 +220,7 @@ Orchestrator 和實體函式的擴充會話的特定效果將在下一節中說�
 
 ### <a name="orchestrator-function-replay"></a>協調器函式重新執行
 
-如先前所述，使用 [歷程記錄] 資料表的內容可重新執行協調器函式。 根據預設，每次從控制佇列中清除一批訊息時，就會重新執行協調器函式程式碼。 啟用擴充會話時，協調器函式實例會保留在記憶體中，而不需要完整的歷程記錄重新執行即可處理新訊息。
+如先前所述，使用 [歷程記錄] 資料表的內容可重新執行協調器函式。 根據預設，每次從控制佇列中清除一批訊息時，就會重新執行協調器函式程式碼。 即使您使用展開傳送、收合傳送模式，以及等待所有工作完成（例如，使用 .NET 中的 `Task.WhenAll` 或 JavaScript 中的 `context.df.Task.all`），在一段時間內處理工作回應批次時，將會發生重新執行。 啟用擴充會話時，協調器函式實例會保留在記憶體中，而不需要完整的歷程記錄重新執行即可處理新訊息。
 
 擴充會話的效能改進通常會在下列情況中觀察到：
 

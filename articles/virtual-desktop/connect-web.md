@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: helohr
-ms.openlocfilehash: a29081f77587a96dc48930eab359610a42fc0be5
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 9c738c5b7f233ffa34296eed67eb0f5497f737fc
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605824"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206668"
 ---
 # <a name="connect-with-the-web-client"></a>與 Web 用戶端連線
 
@@ -25,7 +25,7 @@ Web 用戶端可讓您從網頁瀏覽器存取您的 Windows 虛擬桌面資源�
 
 雖然任何具備 HTML5 功能的瀏覽器應該都可以運作，但我們已正式支援下列作業系統和瀏覽器。
 
-| [瀏覽器]           | 支援的 OS                     | 注意事項               |
+| 瀏覽器           | 支援的 OS                     | 注意               |
 |-------------------|----------------------------------|---------------------|
 | Microsoft Edge    | Windows                          |                     |
 | Internet Explorer | Windows                          |                     |
@@ -41,3 +41,7 @@ Web 用戶端可讓您從網頁瀏覽器存取您的 Windows 虛擬桌面資源�
 >如果您已使用不同于您想要用於 Windows 虛擬桌面的 Azure Active Directory 帳戶登入，您應該登出或使用私用瀏覽器視窗。
 
 登入之後，您現在應該會看到一份資源清單。 您可以藉由在 [**所有資源**] 索引標籤中選取一般應用程式，來啟動資源。
+
+## <a name="next-steps"></a>後續步驟
+
+若要深入瞭解如何使用 web 用戶端，請參閱[開始使用 web 用戶端](https://go.microsoft.com/fwlink/?linkid=2120256)。
