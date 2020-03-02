@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/29/2019
 ms.author: memildin
-ms.openlocfilehash: 899f4cba31afed812fa1643b925a38812308042e
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: dcf7df501665ea3885d00b9f7668a95cbbf02428
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552928"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208537"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Azure 資訊安全中心中的 Endpoint protection 評估和建議
 
-Azure 資訊安全中心提供 Endpoint protection 解決方案[支援](security-center-services.md#supported-endpoint-protection-solutions-)版本的健全狀況評估。 本文說明導致資訊安全中心產生下列兩個建議的案例：
+Azure 資訊安全中心提供 Endpoint protection 解決方案[支援](security-center-services.md#endpoint-supported)版本的健全狀況評估。 本文說明導致資訊安全中心產生下列兩個建議的案例：
 
 * **在您的虛擬機器上安裝端點保護解決方案**
 * **解決電腦上的 endpoint protection 健康情況問題**
@@ -79,7 +79,7 @@ Azure 資訊安全中心提供 Endpoint protection 解決方案[支援](security
     
             **AntivirusSignatureAge**
 
-## <a name="trend-micro"></a>Trend Micro
+## <a name="trend-micro"></a>趨勢科技
 
 * 資訊安全中心建議您在不符合下列任何一項檢查時，「**在虛擬機器上安裝端點保護解決方案**」：
     * **HKLM： \ SOFTWARE\TrendMicro\Deep 安全性代理程式**已存在
@@ -94,7 +94,7 @@ Azure 資訊安全中心提供 Endpoint protection 解決方案[支援](security
 
 * **HKLM： \ Software\Symantec\Symantec 端點 Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
 
-或
+Or
 
 * **HKLM： \ Software\Wow6432Node\Symantec\Symantec 端點 Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
 

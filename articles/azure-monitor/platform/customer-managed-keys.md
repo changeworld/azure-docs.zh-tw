@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 02/24/2020
-ms.openlocfilehash: 6a999df6daf2fde5133143fe9b22a65d628ecfb2
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: b3e110766b2e131330f3108b7938e9e5e01e48a4
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77663942"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208554"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Azure 監視器客戶管理的金鑰設定 
 
@@ -184,7 +184,7 @@ Authorization: Bearer <token>
   "identity": {
     "type": "SystemAssigned",
     "tenantId": "tenant-id",
-    "principalId": "principal-Id"
+    "principalId": "principal-id"
     },
   "properties": {
     "provisioningState": "Succeeded",
@@ -198,10 +198,10 @@ Authorization: Bearer <token>
   }
 ```
 
-「principalId」是叢集資源的受控識別*服務所產生*的 GUID。
+「主體識別碼」是由叢集資源的受控識別*服務所產生*的 GUID。
 
 > [!IMPORTANT]
-> 複製並保留「叢集識別碼」值，因為在接下來的步驟中將會用到它。
+> 複製並保留「主體識別碼」值，因為您在後續步驟中將會用到它。
 
 
 ### <a name="grant-key-vault-permissions"></a>授與 Key Vault 許可權
@@ -213,7 +213,7 @@ Authorization: Bearer <token>
 在 Azure 入口網站中開啟您的 Key Vault，然後按一下 [存取原則]，再按 [+ 新增存取原則]，使用下列設定建立新的原則：
 
 - 金鑰許可權：選取 [取得]、[將金鑰換行] 和 [解除包裝金鑰] 許可權。
-- 選取 [主體]：輸入在上一個步驟的回應中所傳回的叢集識別碼值。
+- 選取 [主體]：輸入在上一個步驟的回應中所傳回的主體識別碼值。
 
 ![授與 Key Vault 許可權](media/customer-managed-keys/grant-key-vault-permissions.png)
 
@@ -528,10 +528,10 @@ Content-type: application/json
   "location": "region-name"
 }
 ```
-「principalId」是受控識別服務所產生的 GUID。
+「原則識別碼」是受控識別服務所產生的 GUID。
 
 > [!IMPORTANT]
-> 複製並保留「叢集識別碼」值，因為在接下來的步驟中將會用到它。
+> 複製並保留「原則識別碼」值，因為您在後續步驟中將會用到它。
 
 ### <a name="associate-a-component-to-a-cluster-resource-using-components---create-or-update-api"></a>使用元件建立元件與*叢集資源的*關聯[-建立或更新](https://docs.microsoft.com/rest/api/application-insights/components/createorupdate)API
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: 39e2deead1affd750d9a5e68985b02ebfe8e0efd
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: e13149ba802f0f8b9a565e0aabd86ae05167f18b
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921295"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208810"
 ---
 # <a name="supported-platforms"></a>支援的平台 
 
@@ -35,7 +35,6 @@ ms.locfileid: "77921295"
 
 > [!NOTE]
 > 若要接收一組完整的安全性功能，您必須擁有[Log Analytics 代理程式](../azure-monitor/platform/agents-overview.md#log-analytics-agent)（由 Azure 資訊安全中心所使用），並已安裝並正確設定，[以將資料傳送至 Azure 資訊安全中心](security-center-enable-data-collection.md#manual-agent)。
-
 
 下列各節列出 Azure 資訊安全中心所使用之[Log Analytics 代理程式](../azure-monitor/platform/agents-overview.md#log-analytics-agent)可執行檔支援伺服器作業系統。
 
@@ -85,38 +84,6 @@ Azure 資訊安全中心與 Azure 服務整合，以監視及保護您的 Window
 ### 雲端服務<a name="cloud-services"></a>
 
 也支援在雲端服務中執行的虛擬機器。 只監視在生產位置中執行的雲端服務 Web 角色和背景工作角色。 若要深入了解雲端服務，請參閱 [Azure 雲端服務概觀](../cloud-services/cloud-services-choose-me.md)。
-
-## PaaS 服務<a name="paas-services"></a>
-
-Azure 資訊安全中心支援下列 Azure PaaS 資源：
-
-* SQL
-* 于 postgresql
-* MySQL
-* CosmosDB
-* 儲存體帳戶
-* App Service
-* 函式
-* 服務雲端
-* VNet
-* 子網路
-* NIC
-* NSG
-* 批次帳戶
-* Service fabric 帳戶
-* 自動化帳戶
-* 負載平衡器
-* 搜尋
-* 服務匯流排命名空間
-* 串流分析
-* 事件中樞命名空間
-* 邏輯應用程式
-* Redis
-* 資料湖分析
-* Data Lake Store
-* 金鑰保存庫
-
-若要深入瞭解上述 PaaS 資源清單所支援的功能，請參閱[paas 服務支援的功能](security-center-services.md#paas-services)。
 
 也支援位於 Azure Stack 中的虛擬機器保護。 如需資訊安全中心與 Azure Stack 整合的詳細資訊，請參閱[將您的 Azure Stack 虛擬機器上架到資訊安全中心](https://docs.microsoft.com/azure/security-center/quick-onboard-azure-stack)。
 

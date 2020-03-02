@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 57ad9992bec3f070366134d8dfbcdafa8f2e16d4
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 1858b221418e6cc59c6441e0653299710b5c7e72
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209846"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208639"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Azure 地圖服務 Android SDK 入門
 
 Azure 地圖服務 Android SDK 是適用于 Android 的向量地圖程式庫。 本文會引導您完成安裝 Azure 地圖服務 Android SDK 和載入對應的程式。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 ### <a name="create-an-azure-maps-account"></a>建立 Azure 地圖服務帳戶
 
@@ -103,7 +103,7 @@ Android Studio 可讓您在電腦上設定虛擬 Android 裝置。 這麼做可�
     </FrameLayout>
     ```
 
-4. 在**MainActivity**檔案中，您必須：
+4. 在 **MainActivity.java** 檔案中，您將必須：
     
     * 新增 Azure 地圖服務 SDK 的匯入
     * 設定您的 Azure 地圖服務驗證資訊
@@ -111,7 +111,7 @@ Android Studio 可讓您在電腦上設定虛擬 Android 裝置。 這麼做可�
 
     使用 `setSubscriptionKey` 或 `setAadProperties` 方法，全域設定 `AzureMaps` 類別的驗證資訊，讓您不需要在每個視圖上新增驗證資訊。 
 
-    地圖控制項包含自己的生命週期方法，用於管理 Android 的 OpenGL 生命週期。 這些生命週期方法必須直接從包含活動呼叫。 若要讓您的應用程式正確地呼叫地圖控制項的生命週期方法，您必須覆寫活動中包含地圖控制項的下列生命週期方法。 而且，您必須呼叫個別的地圖控制方法。 
+    地圖控制項包含其本身用來管理 Android OpenGL 生命週期的生命週期方法。 這些生命週期方法必須直接從包含活動呼叫。 若要讓您的應用程式正確地呼叫地圖控制項的生命週期方法，您必須覆寫活動中包含地圖控制項的下列生命週期方法。 而且，您必須呼叫個別的地圖控制方法。 
 
     * onCreate （配套） 
     * onStart （） 
@@ -127,7 +127,9 @@ Android Studio 可讓您在電腦上設定虛擬 Android 裝置。 這麼做可�
     ```java
     package com.example.myapplication;
 
-    import android.support.v7.app.AppCompatActivity;
+    //For older versions use: import android.support.v7.app.AppCompatActivity;
+    import androidx.appcompat.app.AppCompatActivity;
+
     import android.os.Bundle;
     import com.microsoft.azure.maps.mapcontrol.AzureMaps;
     import com.microsoft.azure.maps.mapcontrol.MapControl;

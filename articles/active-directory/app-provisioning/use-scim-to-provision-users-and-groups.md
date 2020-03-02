@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 03/01/2020
 ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11e4768c5cf6df784c8f32aff2f884adfa6b68ab
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: a2fda5d1bdd00a601df363bd930e5f2f6d610c7f
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78204849"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208707"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>建立 SCIM 端點，並使用 Azure Active Directory （Azure AD）來設定使用者布建
 
@@ -60,9 +60,9 @@ SCIM 2.0 （RFC [7642](https://tools.ietf.org/html/rfc7642)， [7643](https://to
 |loginName|userName|userPrincipalName|
 |firstName|name.givenName|givenName|
 |lastName|姓名 lastName|lastName|
-|workMail|電子郵件 [類型 eq "work"]。值|Mail|
+|workMail|電子郵件 [類型 eq "work"]。值|郵件|
 |manager|manager|manager|
-|tag|urn： ietf： params： scim：架構：擴充功能：2.0： CustomExtension：標記|extensionAttribute1|
+|tag (標記)|urn： ietf： params： scim：架構：擴充功能：2.0： CustomExtension：標記|extensionAttribute1|
 |status|作用中|isSoftDeleted （計算的值未儲存在使用者上）|
 
 上述定義的架構會使用下列 Json 承載來表示。 請注意，除了應用程式所需的屬性之外，JSON 標記法還包含必要的 "id"、"externalId" 和 "meta" 屬性。
@@ -106,7 +106,7 @@ SCIM 2.0 （RFC [7642](https://tools.ietf.org/html/rfc7642)， [7643](https://to
 | Facsimile-TelephoneNumber |phoneNumbers[type eq "fax"].value |
 | givenName |name.givenName |
 | jobTitle |title |
-| mail |emails[type eq "work"].value |
+| 郵件 |emails[type eq "work"].value |
 | mailNickname |externalId |
 | manager |urn： ietf： params： scim：架構：擴充功能： enterprise：2.0： User： manager |
 | mobile |phoneNumbers[type eq "mobile"].value |
@@ -124,16 +124,16 @@ SCIM 2.0 （RFC [7642](https://tools.ietf.org/html/rfc7642)， [7643](https://to
 | Azure Active Directory 群組 | urn： ietf： params： scim：架構： core：2.0： Group |
 | --- | --- |
 | displayName |displayName |
-| mail |emails[type eq "work"].value |
+| 郵件 |emails[type eq "work"].value |
 | mailNickname |displayName |
-| members |members |
+| 成員 |成員 |
 | objectId |externalId |
 | proxyAddresses |emails[type eq "other"].Value |
 
 SCIM RFC 中定義了數個端點。 您可以從/User 端點開始著手，然後從該處展開。 當您使用自訂屬性時，或您的架構經常變更時，/Schemas 端點會很有説明。 它可讓用戶端自動取得最新的架構。 /Bulk 端點在支援群組時特別有用。 下表描述 SCIM 標準中定義的各種端點。 當您使用自訂屬性時，或您的架構經常變更時，/Schemas 端點會很有説明。 它可讓用戶端自動取得最新的架構。 /Bulk 端點在支援群組時特別有用。 下表描述 SCIM 標準中定義的各種端點。 
  
 ### <a name="table-4-determine-the-endpoints-that-you-would-like-to-develop"></a>表4：判斷您想要開發的端點
-|端點|DESCRIPTION|
+|端點|描述|
 |--|--|
 |/User|在使用者物件上執行 CRUD 作業。|
 |/Group|對群組物件執行 CRUD 作業。|
@@ -755,72 +755,7 @@ TLS 1.2 加密套件最小橫條：
 既然您已經 desidned 您的架構，並瞭解 Azure AD 的 SCIM 執行，就可以開始開發您的 SCIM 端點。 您可以依賴 SCIM commuinty 所發佈的許多開放原始碼 SCIM 程式庫，而不是從頭開始並完全建立完整的執行。  
 Azure AD 布建小組發佈的開放原始碼 .NET Core[參考程式碼](https://aka.ms/SCIMReferenceCode)，就是一種可讓您開始進行開發的資源。 建立 SCIM 端點之後，您會想要測試它。您可以使用在參考程式碼中提供的[postman 測試](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint)集合，或透過[上述](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#user-operations)提供的範例要求/回應來執行。  
 
-運作方式：
-
-1. Azure AD 提供名為 Microsoft.systemforcrossdomainidentitymanagement 的通用語言基礎結構（CLI）程式庫，隨附于下面所述的程式碼範例。 系統整合者和開發人員可以使用此程式庫來建立和部署 SCIM 為基礎的 web 服務端點，以將 Azure AD 連接到任何應用程式的身分識別存放區。
-2. 對應會在 Web 服務中實作，以將標準的使用者結構描述對應到使用者結構描述和應用程式所需的通訊協定。 
-3. 端點 URL 會在 Azure AD 中註冊，作為應用程式資源庫中自訂應用程式的一部分。
-4. 使用者和群組會在 Azure AD 中指派給此應用程式。 指派時，會將它們放入佇列，以同步處理至目標應用程式。 同步處理程序會每隔 40 分鐘處理佇列的執行。
-
-### <a name="code-samples"></a>程式碼範例
-
-為了簡化此程式，我們提供了程式[代碼範例](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master)，其會建立 SCIM web 服務端點並示範自動布建。 此範例是一個提供者，它會維護一個檔案，其中包含以逗號分隔值的資料列，代表使用者和群組。
-
-**必要條件**
-
-* Visual Studio 2013 或更新版本
-* [Azure SDK for .NET](https://azure.microsoft.com/downloads/)
-* 支援將 ASP.NET Framework 4.5 用作 SCIM 端點的 Windows 電腦。 這部電腦必須可從雲端存取。
-* [具有 Azure AD Premium 試用版或授權版的 Azure 訂用帳戶](https://azure.microsoft.com/services/active-directory/)
-
-### <a name="getting-started"></a>開始使用
-
-實作可以接受來自 Azure AD 的佈建要求的 SCIM 端點的最簡單的方式是建置和部署會將佈建的使用者輸出至以逗號分隔值 (CSV) 檔案的程式碼範例。
-
-#### <a name="to-create-a-sample-scim-endpoint"></a>建立範例 SCIM 端點
-
-1. 請至 [https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master) 下載程式碼範例套件。
-1. 將套件解壓縮並將放在 Windows 電腦上的位置，例如 C:\AzureAD-BYOA-Provisioning-Samples\。
-1. 在此資料夾中，啟動 Visual Studio 中的 FileProvisioning\Host\FileProvisioningService.csproj 專案。
-1. 選取 **工具** > **NuGet 套件管理員** > **套件管理員主控台**，然後針對 FileProvisioningService 專案執行下列命令來解析解決方案參考：
-
-   ```powershell
-    Update-Package -Reinstall
-   ```
-
-1. 建置 FileProvisioningService 專案。
-1. 在 Windows 中啟動「命令提示字元」應用程式 (以系統管理員身分)，然後使用 **cd** 命令將目錄變更為您的 **\AzureAD-BYOA-Provisioning-Samples\FileProvisioning\Host\bin\Debug** 資料夾。
-1. 執行下列命令，將 `<ip-address>` 取代為 Windows 電腦的 IP 位址或功能變數名稱：
-
-   ```
-    FileSvc.exe http://<ip-address>:9000 TargetFile.csv
-   ```
-
-1. 在 [windows > **設定**] 底下的 [**網路 & 網際網路設定**] 底下，選取 [ **Windows 防火牆**] > [**高級設定**]，然後建立允許對埠9000進行輸入存取的**輸入規則**。
-1. 如果 Windows 電腦位於路由器後方，則必須將路由器設定為在其埠9000（公開至網際網路）和 Windows 電腦上的埠9000之間執行網路存取轉譯。 需要此設定，才能讓 Azure AD 在雲端中存取此端點。
-
-#### <a name="to-register-the-sample-scim-endpoint-in-azure-ad"></a>在 Azure AD 中註冊範例 SCIM 端點
-
-1. 登入[Azure Active Directory 入口網站](https://aad.portal.azure.com)。 
-1. 從左窗格中選取 [**企業應用程式**]。 隨即會顯示所有已設定的應用程式清單，包括從資源庫新增的應用程式。
-1. 選取 [ **+ 新增應用程式**] > **所有** > 不在資源**庫的應用程式**中。
-1. 輸入應用程式的 [名稱]，然後選取 [**新增**] 以建立應用程式物件。 建立的應用程式物件要代表您要佈建和實作登一登入的目標應用程式，而不只是 SCIM 端點。
-1. 在 [應用程式管理] 畫面中 **，選取左面板中的 [** 布建]。
-1. 在 [佈建模式] 功能表上，選取 [自動]。    
-1. 在 [租用戶 URL] 欄位中，輸入應用程式 SCIM 端點的 URL。 範例： https://api.contoso.com/scim/
-
-1. 如果 SCIM 端點需要來自非 Azure AD 簽發者的 OAuth 持有人權杖，那麼便將所需的 OAuth 持有人權杖複製到選擇性 [祕密權杖] 欄位。 如果此欄位保留空白，Azure AD 包括從 Azure AD 發出的 OAuth 持有人權杖與每個要求。 應用程式若使用 Azure AD 作為識別提供者，便可以驗證此 Azure AD 簽發的權杖。
-1. 選取 [**測試連接**]，讓 Azure Active Directory 嘗試連線到 SCIM 端點。 如果嘗試失敗，則會顯示錯誤資訊。  
-
-    > [!NOTE]
-    > [測試連線] 會查詢 SCIM 端點中是否有不存在的使用者，並使用隨機 GUID 作為 Azure AD 設定中選取的比對屬性。 預期的正確回應是 HTTP 200 OK 和空白的 SCIM ListResponse 訊息
-1. 如果嘗試連線到應用程式成功，則選取 [**儲存**] 以儲存管理員認證。
-1. 在 [對應] 區段中，有兩組可選取的屬性對應：一個用於使用者物件，一個用於群組物件。 選取其中一個以檢閱從 Azure Active Directory 同步處理至應用程式的屬性。 選取為 [比對] 屬性的屬性會用來比對應用程式中的使用者和群組以進行更新作業。 選取 [儲存] 認可任何變更。
-1. 在 [設定] 底下的 [範圍] 欄位定義哪些使用者或群組會進行同步處理。 選取 [**只同步指派的使用者和群組**（建議選項）]，只同步 [**使用者和群組**] 索引標籤中指派的使用者和群組。
-1. 完成設定之後，請將 [布建**狀態**] 設為 [**開啟**]。
-1. 選取 [**儲存**] 以啟動 Azure AD 布建服務。
-1. 如果只同步已指派的使用者和群組（建議選項），請務必選取 [**使用者和群組**] 索引標籤，並指派您想要同步的使用者或群組。初始迴圈開始之後，您可以在左面板中選取 [ **Audit logs** ] 來監視進度，這會顯示您的應用程式上的布建服務所執行的所有動作。 如需如何讀取 Azure AD 佈建記錄的詳細資訊，請參閱[關於使用者帳戶自動佈建的報告](check-status-user-account-provisioning.md)。
-確認此範例的最後一個步驟是開啟 Windows 電腦上 \AzureAD-BYOA-Provisioning-Samples\ProvisioningAgent\bin\Debug 資料夾中的 TargetFile.csv 檔案。 一旦執行佈建程序，此檔案會顯示所有指派和佈建的使用者和群組的詳細資料。
+注意：參考程式碼的目的是要協助您開始建立 SCIM 端點，並以「原樣」提供。 我們歡迎您參與社區的貢獻，協助建立和維護程式碼。 
 
 ## <a name="step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client"></a>步驟4：將您的 SCIM 端點與 Azure AD SCIM 用戶端整合
 

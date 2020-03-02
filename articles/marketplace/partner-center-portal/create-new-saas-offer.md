@@ -7,13 +7,13 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/22/2020
-ms.openlocfilehash: 4cac2fcd16f779a6b31e36ca175801eedaa31d5d
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.date: 02/28/2020
+ms.openlocfilehash: 9d06b34b459bf1d48aa293a889af57fb6192015d
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705814"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208860"
 ---
 # <a name="create-a-new-saas-offer"></a>建立新的 SaaS 供應專案
 
@@ -134,16 +134,7 @@ SaaS 提供了以一般費用、每位使用者或使用計量付費服務的消
 
 藉由啟用試用產品，系統會要求您設定示範環境，讓客戶可以在一段固定時間內試用您的供應專案。 
 
-### <a name="type-of-test-drive"></a>試用產品的類型
-
-- **[Azure Resource Manager](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)** ：部署範本，其中包含構成解決方案的所有 Azure 資源。 符合此案例的產品只會使用 Azure 資源。
-- **[Dynamics 365 For Business central](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-business-central-offer)** ： Microsoft 主控並維護 business central 企業資源規劃系統（財務、營運、供應鏈、CRM 等）的試用產品服務（包括布建和部署）。  
-- **[Dynamics 365 For Customer engagement](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/dyn365ce/cpp-customer-engagement-offer)** ： Microsoft 會託管並維護客戶參與系統（銷售、服務、專案服務、現場服務等）的試用產品服務（包括布建和部署）。  
-- **[適用于作業的 Dynamics 365](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-dynamics-365-operations-offer)** ： Microsoft 會主控並維護財務和營運企業資源規劃系統（財務、營運、製造、供應鏈等）的試用產品服務（包括布建和部署）。 
-- **[邏輯應用程式](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/logic-app-test-drive)** ：包含所有複雜解決方案架構的部署範本。 任何自訂產品都應該使用這種類型的試用產品。
-- **[Power BI](https://docs.microsoft.com/power-bi/service-template-apps-overview)** ：自訂建立儀表板的內嵌連結。 想要示範互動式 Power BI 視覺效果的產品應該使用這種類型的試用產品。 您只需要上傳內嵌的 Power BI URL。
-
-#### <a name="additional-test-drive-resources"></a>其他試用產品資源
+#### <a name="test-drive-resources"></a>測試磁片磁碟機資源
 - [試用技術最佳做法](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [試用產品行銷最佳做法](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
 - [試用產品總覽一頁](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)
@@ -169,7 +160,7 @@ SaaS 提供了以一般費用、每位使用者或使用計量付費服務的消
 
 選取最少一個（1）和最多三個（3）分類，用來將您的供應專案分組至適當的 marketplace 搜尋區域。 在供應專案描述中，打電話給您的供應專案如何支援這些類別。
 
-### <a name="industry"></a>產業
+### <a name="industry"></a>業界
 
 [!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
@@ -183,7 +174,7 @@ Microsoft 提供標準合約範本。
 
 - **要使用 Microsoft 商業 marketplace 的標準合約嗎？**
 
-為了簡化客戶的採購程式，並降低軟體廠商的法律複雜度，Microsoft 為 Microsoft 商業市場提供了標準合約，協助加速 marketplace 中的交易。 商業 marketplace 發行者可以選擇在標準合約下提供其軟體，而不是製作自訂的條款及條件，而客戶只需要審查並接受一次。 您可以在這裡找到標準合約： https://go.microsoft.com/fwlink/?linkid=2041178 。
+為了簡化客戶的採購程式，並降低軟體廠商的法律複雜度，Microsoft 為 Microsoft 商業市場提供了標準合約，協助加速 marketplace 中的交易。 商業 marketplace 發行者可以選擇在標準合約下提供其軟體，而不是製作自訂的條款及條件，而客戶只需要審查並接受一次。 您可以在這裡找到標準合約： https://go.microsoft.com/fwlink/?linkid=2041178。
 
 選取 [使用商業 marketplace 的標準合約] 核取方塊，即可選擇使用標準合約，而不是提供您自己的自訂條款及條件。
 
@@ -212,7 +203,7 @@ Microsoft 提供標準合約範本。
 - **租使用者識別碼**（必要）：每個自訂修訂的目標最多可達20個租使用者識別碼。 如果您新增自訂修訂，則必須至少提供一個租使用者識別碼。 租使用者識別碼會識別您在 Azure 中的客戶。 您可以向您的客戶要求此識別碼，他們可以流覽至 portal.azure.com > Azure Active Directory > 內容來找到它。 目錄識別碼值是租使用者識別碼（例如，50c464d3-4930-494c-963c-1e951d15360e）。 您也可以在 [[我的 Microsoft Azure 和 Office 365 租使用者識別碼為何？](https://www.whatismytenantid.com)] 中，使用其功能變數名稱 URL 來查詢組織的租使用者識別碼。
 - **描述**（選擇性）：選擇性地提供租使用者識別碼的易記描述，以協助您識別目標為修訂的客戶。
 
-#### <a name="terms-and-conditions"></a>條款及條件
+#### <a name="terms-and-conditions"></a>Terms and conditions
 
 如果您想要提供自己的自訂條款及條件，可以選擇在 [條款及條件] 欄位中輸入它們。 您最多可以在此欄位中輸入10000個字元的文字。 如果您的條款及條件需要較長的描述，請在此欄位中輸入單一 URL 連結，以找到您的條款及條件。 它會向客戶顯示為作用中連結。
 
@@ -234,7 +225,7 @@ Microsoft 提供標準合約範本。
 - **名稱**（必要）：此處定義的名稱會顯示為您所選 marketplace 上您供應專案清單的標題。 系統會根據您先前的**新供應**專案，預先填入名稱。 名稱可能是商標。 它不能包含 emoji （除非它們是商標和著作權符號），而且必須限制為50個字元。
 - **摘要**（必要）：提供您供應專案的簡短描述，以用於 marketplace 清單搜尋結果。 最多可以在此欄位中輸入100個字元的文字。
 - **描述**（必要）：提供您供應專案的描述，以顯示在 marketplace 清單總覽中。 請考慮包含價值主張、主要優點、任何類別或產業關聯、應用程式內購買機會、任何必要的公開，以及深入瞭解的連結。
-最多可以在此欄位中輸入3000個字元的文字。 如需其他秘訣，請參閱[撰寫絕佳的應用程式描述](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description)一文。
+最多可以在此欄位中輸入3000個字元的文字，包括標記。 如需其他秘訣，請參閱[撰寫絕佳的應用程式描述](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description)一文。
 - **搜尋關鍵字**：輸入最多三個搜尋關鍵字，客戶可以用來在 marketplace 中尋找您的供應專案。
 - **快速入門指示**（必要）：說明如何設定及開始使用您的應用程式來取得潛在客戶。  本快速入門可以包含更詳細的線上檔連結。 最多可以在此欄位中輸入3000個字元的文字。
 
@@ -290,7 +281,7 @@ Microsoft 提供標準合約範本。
 #### <a name="files-and-images"></a>檔案和影像
 
 - **檔**（必要）：為您的供應專案新增相關的行銷檔（PDF 格式），每個供應專案最少可提供一（1）個或最多三（3）份檔。
-- **影像**（選擇性）：您供應專案的標誌影像可能會出現在整個 marketplace 中，需要下列大小--小型： 48 x 48 圖元 _（必要）、_ 中型： 90 x 90 圖元、大： 216 x 216 圖元 _（必要）、_ 寬： 255 x 115 圖元和主圖： 815 x 290 圖元。 所有映射都必須在中。PNG 格式。
+- **影像**（選擇性）：您供應專案標誌影像可能會出現在 marketplace 中的多個位置，需要下列大小--小型： 48 x 48 圖元 _（必要）、_ 中型： 90 x 90 圖元 _（_ 必要）、大： 216 x 216 圖元 _（必要）、_ 寬： 255 x 115 圖元和主圖： 815 x 290 圖元。 所有映射都必須在中。PNG 格式。
 - **螢幕擷取畫面**（必要）：新增示範您供應專案的螢幕擷取畫面。 最多可新增五個（5）個螢幕擷取畫面，且應以 1280 x 720 圖元大小。 所有映射都必須在中。PNG 格式。
 - 影片 **（選用**）：新增示範您供應專案的影片連結。 您可以使用 YouTube 和/或 Vimeo 影片的連結，這會隨著您的供應項目顯示給客戶。 您也需要輸入影片的縮圖影像，並將其大小調整為 1280 x 720 圖元（PNG 格式）。 每個供應專案最多可以顯示四個影片。
 
@@ -389,7 +380,7 @@ Microsoft 提供標準合約範本。
 
 如果您已經在美國美元（USD）中設定方案的價格，並新增另一個市場位置，新市場的價格將會根據目前的匯率計算。 在發佈之前，您應該一律檢查每個市場的價格。 儲存變更之後，您可以使用 [匯出價格（.xlsx）] 連結來檢查定價。
 
-#### <a name="pricing"></a>定價
+#### <a name="pricing"></a>Pricing
 
 - **計價模式**：以一般費率或基座為基礎
 
@@ -406,7 +397,7 @@ Microsoft 提供標準合約範本。
 - **價格**：每月美元或每年美元
 
 以當地貨幣（美元 = 美國貨幣）設定的價格，會使用安裝期間目前可用的匯率，轉換為所有選定市場的本地貨幣。 在發佈之前，請先匯出定價試算表，並查看每個市場的價格，以驗證這些價格。 如果您想要在個別市場中設定自訂價格，請修改並匯入定價試算表。 您必須負責驗證此定價並擁有這些設定。
-*\*您必須先儲存定價變更, 以啟用匯出定價資料。*
+*\*您必須先儲存定價變更，以啟用匯出定價資料。*
 
 發行之前，請先仔細檢查您的價格，因為在計畫發行後可能會變更的部分有一些限制：
 
@@ -447,7 +438,7 @@ Microsoft 提供標準合約範本。
 
 選取在 CSP 方案中提供您的供應專案，可讓雲端解決方案提供者銷售您的產品，做為其客戶配套解決方案的一部分。 如需詳細資訊，請參閱[雲端解決方案提供者](https://go.microsoft.com/fwlink/?linkid=2111109)。
 
-## <a name="publish"></a>發佈
+## <a name="publish"></a>發行
 
 當您完成供應專案的所有必要區段之後，請選取入口網站右上角的 [**發佈**]。 系統會將您重新導向至 [**審查及發佈**] 頁面。
 
