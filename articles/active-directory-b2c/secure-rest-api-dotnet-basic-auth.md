@@ -3,20 +3,20 @@ title: 使用 HTTP 基本驗證保護 RESTful 服務
 titleSuffix: Azure AD B2C
 description: 使用 HTTP 基本驗證在您的 Azure AD B2C 中保護您的自訂 REST API 宣告交換。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/25/2017
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 986ad1845fa2699bb3462dceb3865300a035cb71
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 505d92e33606dac327778cae179df44efbfdf853
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848534"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183851"
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>使用 HTTP 基本驗證保護 RESTful 服務
 
@@ -69,7 +69,7 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
 
 ### <a name="step-13-add-an-authentication-middleware-class"></a>步驟 1.3：新增驗證中介軟體類別
 
-在 App_Start 資料夾下新增 `ClientAuthMiddleware.cs` 類別。 若要這樣做：
+在 App_Start`ClientAuthMiddleware.cs`*資料夾下新增* 類別。 若要這樣做：
 
 1. 以滑鼠右鍵按一下 App_Start 資料夾，選取 [新增]，然後選取 [類別]。
 
@@ -278,7 +278,7 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
 
 1. 在您的工作目錄中，開啟擴充原則檔案 (TrustFrameworkExtensions.xml)。
 
-2. 搜尋包含 `Id="REST-API-SignUp"` 的 `<TechnicalProfile>` 節點。
+2. 搜尋包含 `<TechnicalProfile>` 的 `Id="REST-API-SignUp"` 節點。
 
 3. 找出 `<Metadata>` 元素。
 

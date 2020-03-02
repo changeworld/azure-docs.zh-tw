@@ -1,18 +1,16 @@
 ---
 title: 使用 Azure Functions 建立及執行自訂可用性測試
 description: 本檔將說明如何使用 TrackAvailability （）建立 Azure 函式，此函式會根據 TimerTrigger 函式中指定的設定定期執行。 這項測試的結果將會傳送至您的 Application Insights 資源，您可以在其中查詢可用性結果資料併發出警示。 自訂測試可讓您撰寫比使用入口網站 UI、監視 Azure VNET 內的應用程式、變更端點位址，或建立可用性測試（如果您的區域中未提供）時更複雜的可用性測試。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: morgangrobin
 ms.author: mogrobin
 ms.date: 11/22/2019
-ms.openlocfilehash: c7a8ffb9873fd70353f38bb2b2bbfdb584992377
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 476d66c51c10a5fcfb3cb0319c47b3338d28812c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815774"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665794"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>使用 Azure Functions 建立及執行自訂可用性測試
 
@@ -144,7 +142,7 @@ public async static Task Run(TimerInfo myTimer, ILogger log)
 ```
 
 >[!div class="mx-imgBorder"]
->!在右側選取 [新增]。 將檔案命名為 proj](media/availability-azure-functions/addfile.png)
+>![在右側選取 [新增]。 將檔案命名為 proj](media/availability-azure-functions/addfile.png)
 
 在右側的 [查看檔案] 底下，選取 [**新增**]。 使用下列設定來呼叫新的檔案**runAvailabilityTest. .csx** 。
 
@@ -187,7 +185,7 @@ public async static Task RunAvailbiltyTestAsync(ILogger log)
 >![可用性結果](media/availability-azure-functions/availabilityresults.png)
 
 >[!div class="mx-imgBorder"]
->![相依項目](media/availability-azure-functions/dependencies.png)
+>![Dependencies](media/availability-azure-functions/dependencies.png) (相依性)
 
 ## <a name="next-steps"></a>後續步驟
 

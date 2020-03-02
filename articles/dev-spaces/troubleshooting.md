@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: 瞭解如何在啟用和使用 Azure Dev Spaces 時，疑難排解和解決常見的問題
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s '
-ms.openlocfilehash: b926e651200a4ab23306b0ec2443cb64400b8f7b
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 061f812e7567d96bba092ebc9625756c14c46940
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605259"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662462"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces 疑難排解
 
@@ -484,3 +484,14 @@ kubectl -n my-namespace delete pod --all
 
 * 使用 `az aks use-dev-spaces -g <resource group name> -n <cluster name>` 來更新目前的內容。 如果尚未啟用，此命令也會在 AKS 叢集上啟用 Azure Dev Spaces。 或者，您可以使用 `kubectl config use-context <cluster name>` 來更新目前的內容。
 * 使用 `az account show` 顯示您目前目標的 Azure 訂用帳戶，並確認這是正確的。 您可以使用 `az account set`變更目標訂用帳戶。
+
+### <a name="error-using-dev-spaces-after-rotating-aks-certificates"></a>輪替 AKS 憑證後使用 Dev Spaces 時發生錯誤
+
+在[AKS 叢集中輪替憑證](../aks/certificate-rotation.md)之後，某些作業（例如 `azds space list` 和 `azds up`）將會失敗。 在您的叢集上輪替憑證之後，您也需要重新整理 Azure Dev Spaces 控制器上的憑證。
+
+若要修正此問題，請確定您的*kubeconfig*已使用 `az aks get-credentials` 更新的憑證，然後執行 `azds controller refresh-credentials` 命令。 例如，
+
+```azurecli
+az aks get-credentials -g <resource group name> -n <cluster name>
+azds controller refresh-credentials -g <resource group name> -n <cluster name>
+```

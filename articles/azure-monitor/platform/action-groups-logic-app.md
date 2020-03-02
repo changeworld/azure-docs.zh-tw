@@ -3,17 +3,16 @@ title: 如何透過「Azure 監視器」警示觸發複雜動作
 description: 了解如何建立邏輯應用程動作來處理「Azure 監視器」警示。
 author: dkamstra
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: ad196f52935af4ab4aa7af1b80183161065d4b4b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.openlocfilehash: adc53ad1c75b3251c5672d9078062631b107cc87
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365017"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669126"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>如何透過「Azure 監視器」警示觸發複雜動作
 
@@ -285,7 +284,7 @@ Azure 監視器警示會在觸發時呼叫[動作群組](../../azure-monitor/pla
 
       ![「計量警示的 true 條件張貼動作」](media/action-groups-logic-app/metric-alert-true-condition-post-action.png "度量警示 true 條件張貼動作")
 
-  1. 在 [**若為 false** ] 條件中，定義 Microsoft 小組動作，以傳達計量警示不符合邏輯應用程式的預期。 請包含自訂 JSON 承載。 請注意如何在 `json()` 運算式中參考 `triggerBody` 動態內容。
+  1. 在 [**若為 false** ] 條件中，定義 Microsoft 小組動作，以傳達計量警示不符合邏輯應用程式的預期。 請包含自訂 JSON 承載。 請注意如何在 `triggerBody` 運算式中參考 `json()` 動態內容。
 
       ![「計量警示的 false 條件張貼動作」](media/action-groups-logic-app/metric-alert-false-condition-post-action.png "度量警示 false 條件張貼動作")
 

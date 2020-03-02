@@ -3,17 +3,16 @@ title: Azure 監視器中的角色、許可權和安全性
 description: 了解如何使用 Azure 監視器的內建角色和權限來限制存取監視資源。
 author: johnkemnetz
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: d223c3483becdc8ba44bc14ec16150cf1b001943
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 81309f0b5781e6302887a5b079ed359e70659834
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894546"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658960"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Azure 監視器中的角色、許可權和安全性
 
@@ -182,7 +181,7 @@ Azure 監視器需要存取您的 Azure 資源，才能提供您啟用的服務�
 ### <a name="secured-storage-accounts"></a>受保護的儲存體帳戶 
 
 監視資料通常會寫入到儲存體帳戶。 您可能想要確定未經授權的使用者無法存取複製到儲存體帳戶的資料。 為了增加安全性，您可以限制儲存體帳戶使用「選取的網路」來鎖定網路存取權，只允許已授權的資源與信任的 Microsoft 服務存取儲存體帳戶。
-如果您允許受信任的 Microsoft 服務存取受保護的儲存體，則(./media/roles-permissions-security/secured-storage-example.png) Azure 監視器的 ![Azure 儲存體設定] 對話方塊會被視為這些「信任的 Microsoft 服務」之一，Azure 監視器將可存取您的安全儲存體帳戶;在這些受保護的情況下，啟用將 Azure 監視器資源記錄、活動記錄和計量寫入您的儲存體帳戶。 這也會讓 Log Analytics 讀取來自受保護儲存體的記錄。   
+如果您允許受信任的 Microsoft 服務存取受保護的儲存體，則 Azure 監視器的 ![Azure 儲存體設定](./media/roles-permissions-security/secured-storage-example.png) 對話方塊會被視為這些「信任的 Microsoft 服務」之一，Azure 監視器將可存取您的安全儲存體帳戶;在這些受保護的情況下，啟用將 Azure 監視器資源記錄、活動記錄和計量寫入您的儲存體帳戶。 這也會讓 Log Analytics 讀取來自受保護儲存體的記錄。   
 
 
 如需詳細資訊，請參閱[網路安全性與 Azure 儲存體](../../storage/common/storage-network-security.md)

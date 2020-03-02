@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 09/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 69959418c52eb7324efe19ca41481e426b822ab4
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 717336e0ddfe99c96afda4861f4de1239ee949bf
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842347"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913203"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-ad-login"></a>設定 App Service 應用程式以使用 Azure AD 登入
 
@@ -25,6 +25,9 @@ ms.locfileid: "76842347"
 - 在不同的部署位置使用個別的應用程式註冊，以避免在環境之間共用許可權。 測試新的程式碼時，這種作法有助於防止問題影響生產應用程式。
 
 ## <a name="express"></a>使用快速設定進行設定
+
+> [!NOTE]
+> [**快速**] 選項無法供政府雲端使用。 
 
 1. 在  [Azure 入口網站]中，搜尋並選取 **應用程式服務**，然後選取您的應用程式。
 2. 從左側導覽中，選取 [**驗證/授權** > **開啟**]。
@@ -90,7 +93,7 @@ ms.locfileid: "76842347"
 1. 在 [驗證提供者] 底下，選取 [Azure Active Directory]。
 1. 在 [**管理模式]** 中，選取 [ **Advanced** ]，並根據下表設定 App Service 驗證：
 
-    |欄位|說明|
+    |欄位|描述|
     |-|-|
     |用戶端識別碼| 使用應用**程式註冊的應用程式（用戶端）識別碼**。 |
     |簽發者識別碼| 使用 `https://login.microsoftonline.com/<tenant-id>`，並將 *\<的租使用者識別碼 >* 取代為應用程式註冊的**目錄（租使用者）識別碼**。 |

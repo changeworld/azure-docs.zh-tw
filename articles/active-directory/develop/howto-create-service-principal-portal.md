@@ -8,16 +8,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 02/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 2283f4f3cf1d31f0d67e01e1a63ee20557ef5633
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
-ms.translationtype: HT
+ms.openlocfilehash: c5f65adfe401f2f6e99234d08b8e8dabeff7d5db
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591569"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656379"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>操作說明：使用入口網站來建立可存取資源的 Azure AD 應用程式和服務主體
 
@@ -85,7 +85,7 @@ Daemon 應用程式可以使用兩種形式的認證來驗證 Azure AD：憑證�
 
 ### <a name="upload-a-certificate"></a>上傳憑證
 
-您可以使用現有的憑證（如果有的話）。  （選擇性）您可以建立自我簽署憑證以供測試之用。 開啟 PowerShell 並使用下列參數執行[SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) ，以在您電腦的使用者憑證存放區中建立自我簽署憑證： 
+您可以使用現有的憑證（如果有的話）。  （選擇性）您可以建立自我簽署憑證，*僅供測試之*用。 開啟 PowerShell 並使用下列參數執行[SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) ，以在您電腦的使用者憑證存放區中建立自我簽署憑證： 
 
 ```powershell
 $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature
@@ -93,8 +93,18 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 
 使用 [[管理使用者憑證](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in)] mmc 嵌入式管理單元，從 Windows [控制台] 中，將此憑證匯出至檔案。
 
+1. 從 [**開始**] 功能表中選取 [**執行**]，然後輸入**certmgr.msc**。
+
+   目前使用者的 [憑證管理員] 工具隨即出現。
+
+1. 若要查看您的憑證，請在左窗格中的 [**憑證-目前的使用者**] 底下，展開 [**個人**] 目錄。
+1. 以滑鼠右鍵按一下您建立的憑證，選取 所有工作 **-> 匯出**。
+1. 依照 [憑證匯出嚮導] 進行。  匯出私密金鑰、指定憑證檔案的密碼，以及匯出至檔案。
+
 若要上傳憑證：
 
+1. 選取 **Azure Active Directory**。
+1. 在 Azure AD 中，從 [應用程式註冊] 選取您的應用程式。
 1. 選取 [憑證和秘密]。
 1. 選取 [**上傳憑證**]，然後選取憑證（現有的憑證或您匯出的自我簽署憑證）。
 
@@ -119,7 +129,7 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 ## <a name="configure-access-policies-on-resources"></a>設定資源的存取原則
 請記住，您可能需要設定應用程式需要存取之資源的額外許可權。 例如，您也必須[更新金鑰保存庫的存取原則](/azure/key-vault/key-vault-secure-your-key-vault#data-plane-and-access-policies)，讓您的應用程式存取金鑰、秘密或憑證。  
 
-1. 在 [Azure 入口網站](https://portal.azure.com)中，流覽至您的金鑰保存庫，然後選取 **存取原則**。  
+1. 在  [Azure 入口網站](https://portal.azure.com)中，流覽至您的金鑰保存庫，然後選取 **存取原則**。  
 1. 選取 [**新增存取原則**]，然後選取您想要授與應用程式的金鑰、密碼和憑證許可權。  選取您先前建立的服務主體。
 1. 選取 [**新增**] 以新增存取原則，然後按一下 [**儲存**] 以認可您的變更。
     ![新增存取原則](./media/howto-create-service-principal-portal/add-access-policy.png)
@@ -146,15 +156,21 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 
 若要檢查訂用帳戶權限：
 
-1. 在右上角選取您的帳戶，然後選取 [ **...]-> [我的許可權**]。
+1. 搜尋並選取 [**訂閱**]，或選取**首頁** **上的**[訂用帳戶]。
 
-   ![選取您的帳戶和您的使用者權限](./media/howto-create-service-principal-portal/select-my-permissions.png)
+   ![搜尋](./media/howto-create-service-principal-portal/select-subscription.png)
 
-1. 從下拉式清單中，選取您想要用以建立服務主體的訂用帳戶。 然後，選取 [按一下這裡以詳細檢視此訂用帳戶的完整存取權]。
+1. 選取您想要在其中建立服務主體的訂用帳戶。
+
+   ![選取要指派的訂用帳戶](./media/howto-create-service-principal-portal/select-one-subscription.png)
+
+   如果您未看見所尋找的訂用帳戶，請選取 [全域訂閱篩選]。 確定您想要的訂用帳戶已針對入口網站選取。
+
+1. 選取 [我的權限]。 然後，選取 [按一下這裡以詳細檢視此訂用帳戶的完整存取權]。
 
    ![選取您想要在其中建立服務主體的訂用帳戶](./media/howto-create-service-principal-portal/view-details.png)
 
-1. 選取 [**角色指派**] 以查看您指派的角色，並判斷您是否有足夠的許可權可將角色指派給 AD 應用程式。 如果沒有，請洽詢訂用帳戶管理員，將您新增至「使用者存取系統管理員」角色。 在下圖中，會將「擁有者」角色指派給使用者，這表示該使用者具有足夠的許可權。
+1. 選取 [**角色指派**] 中的 [ **view** ] 以查看您指派的角色，並判斷您是否有足夠的許可權可將角色指派給 AD 應用程式。 如果沒有，請洽詢訂用帳戶管理員，將您新增至「使用者存取系統管理員」角色。 在下圖中，會將「擁有者」角色指派給使用者，這表示該使用者具有足夠的許可權。
 
    ![此範例顯示使用者已獲指派擁有者角色](./media/howto-create-service-principal-portal/view-user-role.png)
 

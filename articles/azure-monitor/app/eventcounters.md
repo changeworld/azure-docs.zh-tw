@@ -1,18 +1,14 @@
 ---
 title: Application Insights 中的事件計數器 |Microsoft Docs
 description: 監視 Application Insights 中的系統和自訂 .NET/.NET Core EventCounters。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 09/20/2019
-ms.openlocfilehash: 5a47f5c2f9c9d4e22e8205853d85214997a2bea7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2094c012e86131073fc66be4f2ac2fb2e81ef4c1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406947"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663584"
 ---
 # <a name="eventcounters-introduction"></a>EventCounters 簡介
 
@@ -95,10 +91,10 @@ Application Insights 支援以其 `EventCounterCollectionModule`來收集 `Event
 
 ## <a name="event-counters-in-metric-explorer"></a>計量瀏覽器中的事件計數器
 
-若要在計量[瀏覽器](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)中查看 EventCounter 度量，請選取 [Application Insights 資源]，然後選擇 [以記錄為基礎的計量] 做為 [度量] 然後，EventCounter 計量會顯示在 [自訂類別] 之下。
+若要在計量[瀏覽器](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)中查看 EventCounter 度量，請選取 [Application Insights 資源]，然後選擇 [以記錄為基礎的計量] 做為 度量 然後，EventCounter 計量會顯示在 [自訂類別] 之下。
 
 > [!div class="mx-imgBorder"]
-> Application Insights](./media/event-counters/metrics-explorer-counter-list.png) 中所報告的 ![事件計數器
+> Application Insights ![中所報告的 事件計數器](./media/event-counters/metrics-explorer-counter-list.png)
 
 ## <a name="event-counters-in-analytics"></a>分析中的事件計數器
 
