@@ -46,6 +46,8 @@
       href: select-columns-transform.md
     - name: 選取資料集中的資料行
       href: select-columns-in-dataset.md
+    - name: 分割資料
+      href: split-data.md
 - name: 特徵選取
   items:
     - name: 以篩選為基礎的特徵選取
@@ -142,5 +144,11 @@
       href: score-svd-recommender.md
     - name: 訓練 SVD 推薦
       href: train-svd-recommender.md
+- name: 異常偵測
+  items:
+    - name: PCA 型異常偵測
+      href: pca-based-anomaly-detection.md
+    - name: 定型異常偵測模型
+      href: train-anomaly-detection-model.md
 - name: 模組錯誤與疑難排解
   href: designer-error-codes.md

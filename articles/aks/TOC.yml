@@ -375,6 +375,8 @@
           href: kube-advisor-tool.md
         - name: SSH 節點存取
           href: ssh.md
+        - name: Linux 效能工具
+          href: troubleshoot-linux.md
 - name: 參考
   items:
     - name: Azure CLI

@@ -88,6 +88,8 @@
         - name: 開發生命週期
           href: Concepts/development-lifecycle-knowledge-base.md
           displayName: 'version control, test, index, publish, monitor usage, create'
+        - name: 利用主動式學習建議進行改善
+          href: Concepts/active-learning-suggestions.md
     - name: 查詢知識庫
       items:
         - name: 取得答案

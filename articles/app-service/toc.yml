@@ -203,10 +203,14 @@
           href: app-service-web-restore-snapshots.md
         - name: 複製應用程式
           href: app-service-web-app-cloning.md
-        - name: 移動資源
-          href: '../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fapp-service%2ftoc.json#app-service-limitations'
         - name: 還原已刪除的 App Service
           href: app-service-undelete.md
+    - name: 移動應用程式
+      items:
+        - name: 在區域間移動
+          href: manage-move-across-regions.md
+        - name: 移動訂用帳戶
+          href: '../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fapp-service%2ftoc.json#app-service-limitations'
     - name: 執行背景工作
       items:
         - name: 建立 WebJobs

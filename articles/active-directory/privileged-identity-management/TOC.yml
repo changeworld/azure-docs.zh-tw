@@ -47,6 +47,8 @@
       items:
         - name: 功能更新
           href: azure-ad-roles-features.md
+        - name: 適用於 Azure AD 角色的 PowerShell
+          href: powershell-for-azure-ad-roles.md
         - name: 指派角色
           href: pim-how-to-add-role-to-user.md
         - name: 核准要求

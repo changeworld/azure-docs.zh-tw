@@ -77,6 +77,8 @@
           href: known-issues-azure-postgresql-online.md
         - name: 已知問題 - 從 Oracle 線上移轉到適用於 PostgreSQL 單一資料庫的 Azure DB
           href: known-issues-oracle-azure-postgresql-online.md
+        - name: 已知問題 - 從 MongoDB 移轉到適用於 MongoDB 的 Azure Cosmos DB API
+          href: tutorial-mongodb-cosmos-db.md
         - name: 已知問題 - 使用混合模式
           href: known-issues-dms-hybrid-mode.md
     - name: 影片

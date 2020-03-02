@@ -116,6 +116,8 @@
           items:
             - name: 診斷和審核記錄 (預覽)
               href: container-registry-diagnostics-audit-logs.md
+            - name: 使用 Azure 原則來稽核合規性 (預覽)
+              href: container-registry-azure-policy.md
         - name: 疑難排解
           expanded: false
           items:

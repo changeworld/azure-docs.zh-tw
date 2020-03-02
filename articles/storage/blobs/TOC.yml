@@ -284,7 +284,7 @@
                     - name: PowerShell
                       href: ../common/authorize-active-directory-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                     - name: Azure CLI
-                      href: ../common/authorize-active-directory-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                      href: ../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 使用 RBAC 管理存取權限
                   items:
                     - name: 入口網站
@@ -669,12 +669,18 @@
                   href: ../common/storage-solution-periodic-data-transfer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 並行
           href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 多重通訊協定存取
-          href: ../blobs/data-lake-storage-multi-protocol-access.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: 相容性
+          items:
+            - name: 多重通訊協定存取
+              href: data-lake-storage-multi-protocol-access.md
+            - name: 支援的 Blob 儲存體功能
+              href: data-lake-storage-supported-blob-storage-features.md
+            - name: 支援的 Azure 服務
+              href: data-lake-storage-supported-azure-services.md
+            - name: 支援的開放原始碼平台
+              href: data-lake-storage-supported-open-source-platforms.md
         - name: 處理巨量資料
           href: ../blobs/data-lake-storage-data-scenarios.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 與 Azure 服務整合
-          href: ../blobs/data-lake-storage-integrate-with-azure-services.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 適用於 Hadoop 的 Azure Blob 檔案系統驅動程式
           href: ../blobs/data-lake-storage-abfs-driver.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Azure Blob 檔案系統 URI
