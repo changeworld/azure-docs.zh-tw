@@ -11,53 +11,17 @@
     - name: 透過 QnA Maker 入口網站
       items:
         - name: 1. 建立知識庫
-          href: quickstarts/create-publish-knowledge-base.md
+          href: Quickstarts/create-publish-knowledge-base.md
         - name: 2. 新增具有中繼資料的問題
-          href: quickstarts/add-question-metadata-portal.md
+          href: Quickstarts/add-question-metadata-portal.md
         - name: 3. 使用 Postman 或 cURL 來獲得答案
           href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
     - name: 使用批次檔進行測試
       href: Quickstarts/batch-testing.md
-    - name: 使用 REST API
-      items:
-        - name: 建立新的知識庫
-          items:
-            - name: 'C#'
-              href: Quickstarts/create-new-kb-csharp.md
-            - name: Go
-              href: Quickstarts/create-new-kb-go.md
-            - name: Java
-              href: Quickstarts/create-new-kb-java.md
-            - name: Node.js
-              href: Quickstarts/publish-kb-nodejs.md
-            - name: Python
-              href: Quickstarts/create-new-kb-python.md
-        - name: 發佈知識庫
-          items:
-            - name: 'C#'
-              href: Quickstarts/publish-kb-csharp.md
-            - name: Go
-              href: Quickstarts/publish-kb-go.md
-            - name: Java
-              href: Quickstarts/publish-kb-java.md
-            - name: Node.js
-              href: 'Quickstarts/publish-kb-nodejs.md#publish-a-knowledge-base'
-            - name: Python
-              href: Quickstarts/publish-kb-python.md
-        - name: 取得答案
-          items:
-            - name: 'C#'
-              href: Quickstarts/get-answer-from-knowledge-base-csharp.md
-            - name: Go
-              href: Quickstarts/get-answer-from-knowledge-base-go.md
-            - name: Java
-              href: Quickstarts/get-answer-from-knowledge-base-java.md
-            - name: Node.js
-              href: Quickstarts/get-answer-from-knowledge-base-nodejs.md
-            - name: Python
-              href: Quickstarts/get-answer-from-knowledge-base-python.md
+    - name: 使用 REST
+      href: Quickstarts/quickstart-rest-curl.md
     - name: 使用 SDK
-      href: ./Quickstarts/quickstart-sdk.md
+      href: Quickstarts/quickstart-sdk.md
 - name: 教學課程
   items:
     - name: 建立知識庫並回應

@@ -1,14 +1,14 @@
 ---
 title: 藍圖範例索引
 description: 使用 Azure 藍圖部署環境、原則和雲端採用架構基礎的合規性和標準範例索引。
-ms.date: 02/11/2020
+ms.date: 02/26/2020
 ms.topic: sample
-ms.openlocfilehash: 88dde10efefd8153eff9aa6ad2ea47a1e00e2c87
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 703c383f41cd833fb47ca489682258158f9fe179
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77150454"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196819"
 ---
 # <a name="azure-blueprints-samples"></a>Azure 藍圖範例
 
@@ -28,6 +28,7 @@ ms.locfileid: "77150454"
 | [ISO 27001](./iso27001/index.md) | 提供成立條件以符合 ISO 27001。 |
 | [ISO 27001 共用服務](./iso27001-shared/index.md) | 提供一組符合規範的基礎結構模式和原則防護措施，可協助您取得 ISO 27001 證明。 |
 | [ISO 27001 App Service 環境/SQL Database 工作負載](./iso27001-ase-sql-workload/index.md) | 提供 [ISO 27001 共用服務](./iso27001-shared/index.md)藍圖範例的其他基礎結構。 |
+| [媒體](./media/index.md) | 提供一組原則，以協助符合 Media MPAA。 |
 | [NIST SP 800-53 R4](./nist-sp-800-53-rev4/index.md) | 提供成立條件以符合 NIST SP 800-53 R4。 |
 | [PCI-DSS v3.2.1](./pci-dss-3.2.1/index.md) | 提供一組原則以協助符合 PCI-DSS v3.2.1 規範。 |
 | [SWIFT CSP-CSCF v2020](./swift-2020/index.md) | 協助達成 SWIFT CSP-CSCF v2020 中的合規性。 |

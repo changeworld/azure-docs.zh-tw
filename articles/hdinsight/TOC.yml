@@ -504,6 +504,8 @@
           href: ./kafka/apache-kafka-quickstart-resource-manager-template.md
     - name: 教學課程
       items:
+        - name: 建立 Apache Kafka 叢集 - Azure CLI
+          href: ./kafka/tutorial-cli-rest-proxy.md
         - name: 使用 Apache Kafka 生產者與取用者 API
           href: ./kafka/apache-kafka-producer-consumer-api.md
         - name: 使用 Apache Kafka 串流 API 開發應用程式
@@ -548,8 +550,6 @@
               href: ./kafka/apache-kafka-mirroring.md
             - name: 分析 Apache Kafka 記錄
               href: ./kafka/apache-kafka-log-analytics-operations-management.md
-            - name: 攜帶您自己的金鑰
-              href: ./kafka/apache-kafka-byok.md
             - name: SSL 加密及驗證
               href: ./kafka/apache-kafka-ssl-encryption-authentication.md
         - name: 疑難排解

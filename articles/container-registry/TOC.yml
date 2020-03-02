@@ -19,6 +19,8 @@
           href: container-registry-get-started-powershell.md
         - name: 將事件傳送至事件格線 - CLI
           href: container-registry-event-grid-quickstart.md
+        - name: 建立並推送 Java 映像 - CLI
+          href: container-registry-java-quickstart.md
     - name: 教學課程
       expanded: false
       items:

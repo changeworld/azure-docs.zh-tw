@@ -1,6 +1,7 @@
 - name: 表單辨識器文件
   href: index.yml
 - name: 概觀
+  expanded: true
   items:
     - name: 什麼是表單辨識器？
       href: overview.md
@@ -45,6 +46,8 @@
   items:
     - name: 建置訓練資料集
       href: build-training-data-set.md
+    - name: 部署範例標籤工具
+      href: deploy-label-tool.md
     - name: 使用容器
       items:
         - name: 安裝及執行容器

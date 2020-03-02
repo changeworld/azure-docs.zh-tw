@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure 地圖服務文件
-summary: Micrsoft Azure 地圖服務提供強大的地理空間功能供所有產業的開發人員使用。 這些地理空間功能還包含最詳細的對應資料。 Azure 地圖服務提供網頁和行動裝置應用程式使用。 Azure 地圖服務是 REST API 的 Azure One API 相容集合。 以下只列出 Azure 地圖服務服務提供的的高階概觀，包括地圖服務、搜尋、路由、流量、行動性、天氣、時區、地理位置、地理柵欄、地圖資料和空間作業。 網頁和 Android SDK 讓開發工作變得更簡單、更具彈性，且可跨多個平台使用。
+summary: Micrsoft Azure 地圖服務提供強大的地理空間功能供所有產業的開發人員使用。 這些地理空間功能還包含最詳細的對應資料。 Azure 地圖服務提供網頁和行動裝置應用程式使用。 Azure 地圖服務是 REST API 的 Azure One API 相容集合。 以下只列出 Azure 地圖服務服務提供的高階概觀，包括地圖服務、搜尋、路由、流量、行動性、天氣、時區、地理位置、地理柵欄、地圖資料和空間作業。 網頁和 Android SDK 讓開發工作變得更簡單、更具彈性，且可跨多個平台使用。
 metadata:
   title: Azure 地圖服務文件 | Microsoft Docs
   description: 了解 Azure 地圖服務以及如何使用它來為 Web 或行動應用程式提供地理空間服務。
@@ -9,12 +9,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 1/15/2020
-  ms.openlocfilehash: f4ae414179f77413e5d5daa4fda635e0bf24c2aa
-  ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+  ms.openlocfilehash: de21e0efb6725433fe16b15665fafd9226c74f61
+  ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 01/17/2020
-  ms.locfileid: "76264096"
+  ms.lasthandoff: 03/02/2020
+  ms.locfileid: "78208762"
 landingContent:
 - title: 關於 Azure 地圖服務
   linkLists:
@@ -94,6 +94,8 @@ landingContent:
       url: how-to-add-tile-layer-android-map.md
     - text: 在地圖中新增圖形
       url: how-to-add-shapes-to-android-map.md
+    - text: 顯示流量資料
+      url: how-to-show-traffic-android.md
 - title: 使用位置服務進行開發
   linkLists:
   - linkListType: concept

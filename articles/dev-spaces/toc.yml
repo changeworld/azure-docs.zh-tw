@@ -97,6 +97,8 @@
           href: how-to/ingress-https-nginx.md
         - name: 將您的開發電腦連線至 AKS 叢集 (預覽)
           href: how-to/connect.md
+        - name: 將 Azure Dev Spaces 叢集設定為使用 Helm 3 (預覽)
+          href: how-to/helm-3.md
     - name: 疑難排解
       href: troubleshooting.md
     - name: 常見問題集

@@ -2,7 +2,7 @@
 documentType: LandingData
 title: Azure 資料總管文件
 metadata:
-  title: 快速入門、教學課程、語言/API 文件 - Azure 資料總管
+  title: Azure 資料總管快速入門、教學課程、查詢語言和 API 文件
   description: Azure 資料總管是針對特定巨量資料查詢最佳化的記錄分析雲端平台。
   author: orspod
   ms.author: orspodek
