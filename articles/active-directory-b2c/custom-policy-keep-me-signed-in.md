@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 02/27/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 052e1bc4e9a14b34e21b0bfeb4193fbd0b2b1a22
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
-ms.translationtype: MT
+ms.openlocfilehash: 84ba68c97f69872e39121915a6edf23aa029fa75
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848898"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161681"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中啟用「讓我保持登入 (KMSI)」
 
@@ -27,159 +27,85 @@ ms.locfileid: "76848898"
 
 ![顯示 [讓我保持登入] 核取方塊的註冊登入頁面範例](./media/custom-policy-keep-me-signed-in/kmsi.PNG)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-設定為允許本機帳戶登入的 Azure AD B2C 租使用者。 外部識別提供者帳戶不支援 KMSI。
+- 設定為允許本機帳戶登入的 Azure AD B2C 租使用者。 外部識別提供者帳戶不支援 KMSI。
+- 完成[開始使用自訂原則](custom-policy-get-started.md)中的步驟。
 
-如果您還沒有租用戶，您可以使用[教學課程：建立 Azure Active Directory B2C 租用戶](tutorial-create-tenant.md)中的步驟建來立一個。
+## <a name="configure-the-page-identifier"></a>設定頁面識別碼 
 
-## <a name="add-a-content-definition-element"></a>新增內容定義元素
+若要啟用 KMSI，請將內容定義 `DataUri` 元素設定為[頁面識別碼](contentdefinitions.md#datauri)`unifiedssp` 和[頁面版本](page-layout.md) *1.1.0*或更新版本。
 
-在擴充檔案的 **BuildingBlocks** 元素底下，新增 **ContentDefinitions** 元素。
+1. 開啟原則的擴充檔案。 例如， <em>`SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** </em> 。 此擴充檔案是自訂原則入門套件中包含的其中一個原則檔案，您應該已在必要條件中取得這些檔案，以[開始使用自訂原則](custom-policy-get-started.md)。
+1. 搜尋 **BuildingBlocks** 元素。 如果此元素不存在，請加以新增。
+1. 將**ContentDefinitions**元素新增至原則的**BuildingBlocks**元素。
 
-1. 在 **ContentDefinitions** 元素底下，新增識別碼為 `api.signuporsigninwithkmsi` 的 **ContentDefinition** 元素。
-2. 在 **ContentDefinition** 元素底下，新增 **LoadUri**、**RecoveryUri** 和 **DataUri** 元素。 **DataUri** 元素的 `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` 值是機器可識別的識別碼，會在登入頁面中帶出 KMSI 核取方塊。 請勿變更此值。
+    您的自訂原則看起來應該像下列程式碼片段：
 
-    ```XML
+    ```xml
     <BuildingBlocks>
       <ContentDefinitions>
-        <ContentDefinition Id="api.signuporsigninwithkmsi">
-          <LoadUri>~/tenant/default/unified.cshtml</LoadUri>
-          <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
+        <ContentDefinition Id="api.signuporsignin">
           <DataUri>urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0</DataUri>
-          <Metadata>
-            <Item Key="DisplayName">Signin and Signup</Item>
-          </Metadata>
         </ContentDefinition>
       </ContentDefinitions>
     </BuildingBlocks>
     ```
+    
+1. 儲存擴充檔案。
 
-## <a name="add-a-sign-in-claims-provider-for-a-local-account"></a>新增本機帳戶的登入宣告提供者
 
-您可以使用原則擴充檔案中的 **ClaimsProvider** 元素，將本機帳戶登入定義為宣告提供者：
 
-1. 從您的工作目錄中開啟 TrustFrameworkExtensions.xml 檔案。
-2. 尋找 **ClaimsProviders** 元素。 如果該元素不存在，請在根項目下新增。 [入門套件](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip)包含本機帳戶登入宣告提供者。
-3. 以 **DisplayName** 和 **TechnicalProfile** 來新增 **ClaimsProvider** 元素，如下列範例所示：
-
-    ```XML
-    <ClaimsProviders>
-      <ClaimsProvider>
-        <DisplayName>Local Account SignIn</DisplayName>
-        <TechnicalProfiles>
-          <TechnicalProfile Id="login-NonInteractive">
-            <Metadata>
-              <Item Key="client_id">ProxyIdentityExperienceFrameworkAppId</Item>
-              <Item Key="IdTokenAudience">IdentityExperienceFrameworkAppId</Item>
-            </Metadata>
-            <InputClaims>
-              <InputClaim ClaimTypeReferenceId="client_id" DefaultValue="ProxyIdentityExperienceFrameworkAppID" />
-              <InputClaim ClaimTypeReferenceId="resource_id" PartnerClaimType="resource" DefaultValue="IdentityExperienceFrameworkAppID" />
-            </InputClaims>
-          </TechnicalProfile>
-        </TechnicalProfiles>
-      </ClaimsProvider>
-    </ClaimsProviders>
-    ```
-
-### <a name="add-the-application-identifiers-to-your-custom-policy"></a>將應用程式識別碼新增至您的自訂原則
-
-將至應用程式識別碼新增至 TrustFrameworkExtensions.xml 檔案。
-
-1. 在 TrustFrameworkExtensions.xml 檔案中，找到識別碼為 `login-NonInteractive` 的 **TechnicalProfile** 元素，以及識別碼為 `login-NonInteractive-PasswordChange` 的 **TechnicalProfile** 元素，並將 `IdentityExperienceFrameworkAppId` 的所有值取代為[使用者入門](custom-policy-get-started.md)中所述識別體驗架構應用程式的應用程式識別碼。
-
-    ```XML
-    <Item Key="client_id">8322dedc-cbf4-43bc-8bb6-141d16f0f489</Item>
-    ```
-
-2. 如[快速入門](custom-policy-get-started.md)中所述，以 Proxy 識別體驗架構應用程式的應用程式識別碼取代 `ProxyIdentityExperienceFrameworkAppId` 的所有值。
-3. 儲存擴充檔案。
-
-## <a name="create-a-kmsi-enabled-user-journey"></a>建立已啟用 KMSI 的使用者旅程圖
-
-將本機帳戶的登入宣告提供者新增至使用者旅程圖。
-
-1. 開啟原則的基底檔案。 例如，TrustFrameworkBase.xml。
-2. 尋找 **UserJourneys** 元素，並將使用 `SignUpOrSignIn` 識別碼的 **UserJourney** 元素內容整個複製。
-3. 開啟擴充檔案。 例如，TrustFrameworkExtensions.xml，並尋找 **UserJourneys** 元素。 如果此元素不存在，請新增。
-4. 貼上您複製的整個 **UserJourney** 元素，以作為 **UserJourneys** 元素的子項目。
-5. 變更新使用者旅程圖的識別碼值。 例如： `SignUpOrSignInWithKmsi` 。
-6. 最後，在第一個協調流程步驟中，將 **ContentDefinitionReferenceId** 的值變更為 `api.signuporsigninwithkmsi`。 設定此值會啟用使用者旅程圖中的核取方塊。
-7. 儲存並上傳擴充檔案，並確保所有驗證都成功。
-
-    ```XML
-    <UserJourneys>
-      <UserJourney Id="SignUpOrSignInWithKmsi">
-        <OrchestrationSteps>
-          <OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsigninwithkmsi">
-            <ClaimsProviderSelections>
-              <ClaimsProviderSelection ValidationClaimsExchangeId="LocalAccountSigninEmailExchange" />
-            </ClaimsProviderSelections>
-            <ClaimsExchanges>
-              <ClaimsExchange Id="LocalAccountSigninEmailExchange" TechnicalProfileReferenceId="SelfAsserted-LocalAccountSignin-Email" />
-            </ClaimsExchanges>
-          </OrchestrationStep>
-          <OrchestrationStep Order="2" Type="ClaimsExchange">
-            <Preconditions>
-              <Precondition Type="ClaimsExist" ExecuteActionsIf="true">
-                <Value>objectId</Value>
-                <Action>SkipThisOrchestrationStep</Action>
-              </Precondition>
-            </Preconditions>
-            <ClaimsExchanges>
-              <ClaimsExchange Id="SignUpWithLogonEmailExchange" TechnicalProfileReferenceId="LocalAccountSignUpWithLogonEmail" />
-            </ClaimsExchanges>
-          </OrchestrationStep>
-          <!-- This step reads any user attributes that we may not have received when in the token. -->
-          <OrchestrationStep Order="3" Type="ClaimsExchange">
-            <ClaimsExchanges>
-              <ClaimsExchange Id="AADUserReadWithObjectId" TechnicalProfileReferenceId="AAD-UserReadUsingObjectId" />
-            </ClaimsExchanges>
-          </OrchestrationStep>
-          <OrchestrationStep Order="4" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
-        </OrchestrationSteps>
-        <ClientDefinition ReferenceId="DefaultWeb" />
-      </UserJourney>
-    </UserJourneys>
-    ```
-
-## <a name="create-a-relying-party-file"></a>建立信賴憑證者檔案
+## <a name="configure-a-relying-party-file"></a>設定信賴憑證者檔案
 
 更新信賴憑證者 (RP) 檔案，此檔案將起始您剛才建立的使用者旅程圖。
 
-1. 在您的工作目錄中建立一份 SignUpOrSignIn.xml 檔案複本，然後重新命名。 例如，SignUpOrSignInWithKmsi.xml。
-2. 開啟新檔案，並以唯一值更新 **TrustFrameworkPolicy** 的 **PolicyId** 屬性。 這是您原則的名稱。 例如： `SignUpOrSignInWithKmsi` 。
-3. 變更 **DefaultUserJourney** 元素的 **ReferenceId** 屬性，以符合您建立的新使用者旅程圖識別碼。 例如： `SignUpOrSignInWithKmsi` 。
-
-    已使用 **UserJourneyBehaviors** 元素設定 KMSI，並以 **SingleSignOn**、**SessionExpiryType** 和 **SessionExpiryInSeconds** 作為其第一個子元素。 **KeepAliveInDays** 屬性會控制使用者保持登入的時間長度。 在下列範例中，KMSI 工作階段會在 `7` 天後自動到期，而不論使用者執行無訊息驗證的頻率為何。 將 **KeepAliveInDays** 值設定為 `0` 會關閉 KMSI 功能。 根據預設，此值為 `0`。 如果 **SessionExpiryType** 的值是 `Rolling`，那麼，每當使用者執行無訊息驗證，KMSI 工作階段即會延長 `7` 天。  如果選取 `Rolling`，您應該將天數保留為最小值。
-
-    **SessionExpiryInSeconds** 的值代表 SSO 工作階段的到期時間。 這會由 Azure AD B2C 在內部使用，以檢查 KMSI 的工作階段是否已過期。 **KeepAliveInDays** 值會決定 Web 瀏覽器中 SSO cookie 的「到期時間」/「最大存留期」值。 不同於 **SessionExpiryInSeconds**，**KeepAliveInDays** 會用來防止在瀏覽器關閉時清除 cookie。 使用者只能在 SSO 工作階段的 cookie 存在時 (這會由 **KeepAliveInDays** 控制)，以及尚未過期時 (這會由 **SessionExpiryInSeconds** 控制)，才能進行無訊息登入。
-
-    如果使用者未在註冊和登入頁面上啟用**讓我保持登入**，則工作階段會在超過 **SessionExpiryInSeconds** 指定的時間之後過期，或在關閉瀏覽器之後過期。 如果使用者啟用**讓我保持登入**，**KeepAliveInDays** 的值會覆寫 **SessionExpiryInSeconds** 的值，並指定工作階段到期時間。 即使使用者關閉瀏覽器後再將其重新開啟，只要是在 **KeepAliveInDays** 的時間內，他們還是可以自動登入。 我們建議您將 **SessionExpiryInSeconds** 的值設為短時間 (1200 秒)，而 **KeepAliveInDays** 可以設為相對的長時間 (7 天)，如下列範例所示：
+1. 開啟您的自訂原則檔案。 例如 *SignUpOrSignin.xml*。
+1. 如果尚未存在，請將 `<UserJourneyBehaviors>` 子節點加入至 [`<RelyingParty>`] 節點。 它必須緊接在 `<DefaultUserJourney ReferenceId="User journey Id" />`之後，例如： `<DefaultUserJourney ReferenceId="SignUpOrSignIn" />`。
+1. 新增下列節點作為 `<UserJourneyBehaviors>` 元素的子節點。
 
     ```XML
-    <RelyingParty>
-      <DefaultUserJourney ReferenceId="SignUpOrSignInWithKmsi" />
-      <UserJourneyBehaviors>
-        <SingleSignOn Scope="Tenant" KeepAliveInDays="7" />
-        <SessionExpiryType>Absolute</SessionExpiryType>
-        <SessionExpiryInSeconds>1200</SessionExpiryInSeconds>
-      </UserJourneyBehaviors>
-      <TechnicalProfile Id="PolicyProfile">
-        <DisplayName>PolicyProfile</DisplayName>
-        <Protocol Name="OpenIdConnect" />
-        <OutputClaims>
-          <OutputClaim ClaimTypeReferenceId="displayName" />
-          <OutputClaim ClaimTypeReferenceId="givenName" />
-          <OutputClaim ClaimTypeReferenceId="surname" />
-          <OutputClaim ClaimTypeReferenceId="email" />
-          <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
-        </OutputClaims>
-        <SubjectNamingInfo ClaimType="sub" />
-      </TechnicalProfile>
-    </RelyingParty>
+    <UserJourneyBehaviors>
+      <SingleSignOn Scope="Tenant" KeepAliveInDays="30" />
+      <SessionExpiryType>Absolute</SessionExpiryType>
+      <SessionExpiryInSeconds>1200</SessionExpiryInSeconds>
+    </UserJourneyBehaviors>
     ```
+
+    - **SessionExpiryType** -指出會話如何擴充 `SessionExpiryInSeconds` 和 `KeepAliveInDays`中指定的時間。 `Rolling` 值（預設）表示每次使用者執行驗證時，都會擴充會話。 `Absolute` 值表示在指定的時間週期之後，會強制使用者重新驗證。
+ 
+    - **SessionExpiryInSeconds** -未啟用 [*讓我保持登入*] 時會話 cookie 的存留期，或如果使用者未選取 [*讓我保持登入*]。 會話在通過 `SessionExpiryInSeconds` 或瀏覽器關閉之後就會過期。
+ 
+    - **KeepAliveInDays** -已啟用 [*讓我保持*登入] 且使用者選取 [*讓我保持登入*] 時會話 cookie 的存留期。  `KeepAliveInDays` 的值優先于 `SessionExpiryInSeconds` 值，並規定會話到期時間。 如果使用者關閉瀏覽器後再重新開啟，他們仍然可以在 KeepAliveInDays 期間內以無訊息模式登入。
+    
+    如需詳細資訊，請參閱[使用者旅程圖行為](relyingparty.md#userjourneybehaviors)。
+ 
+我們建議您將 SessionExpiryInSeconds 的值設定為短時間（1200秒），而 KeepAliveInDays 的值可以設定為相對較長的期間（30天），如下列範例所示：
+
+```XML
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <UserJourneyBehaviors>
+    <SingleSignOn Scope="Tenant" KeepAliveInDays="30" />
+    <SessionExpiryType>Absolute</SessionExpiryType>
+    <SessionExpiryInSeconds>1200</SessionExpiryInSeconds>
+  </UserJourneyBehaviors>
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="OpenIdConnect" />
+    <OutputClaims>
+      <OutputClaim ClaimTypeReferenceId="displayName" />
+      <OutputClaim ClaimTypeReferenceId="givenName" />
+      <OutputClaim ClaimTypeReferenceId="surname" />
+      <OutputClaim ClaimTypeReferenceId="email" />
+      <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+      <OutputClaim ClaimTypeReferenceId="identityProvider" />
+      <OutputClaim ClaimTypeReferenceId="tenantId" AlwaysUseDefaultValue="true" DefaultValue="{Policy:TenantObjectId}" />
+    </OutputClaims>
+    <SubjectNamingInfo ClaimType="sub" />
+  </TechnicalProfile>
+</RelyingParty>
+```
 
 4. 儲存變更然後上傳檔案。
 5. 若要測試您上傳的自訂原則，在 Azure 入口網站中，移至原則視窗，然後選取 [立即執行]。
