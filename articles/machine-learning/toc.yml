@@ -362,18 +362,21 @@
         - name: 適用於 CI/CD 的 Azure Pipelines
           displayName: 'continuous, integration, delivery'
           href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/service/context/ml-context
-        - name: 設計工具：使用已發佈的管線重新定型
+        - name: 設計工具使用已發佈的管線重新定型
           displayName: 'retrain, designer, published pipeline'
           href: how-to-retrain-designer.md
+        - name: 設計工具批次預測
+          displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
+          href: how-to-run-batch-predictions-designer.md
+        - name: 設計工具執行 Python 程式碼
+          displayName: 'feature extraction, feature engineering'
+          href: how-to-designer-python.md
         - name: 使用平行執行步驟
           displayName: score scoring batch consume pipeline parallelrunstep inference
           href: how-to-use-parallel-run-step.md
         - name: 針對平行執行步驟進行偵錯和疑難排解
           displayName: debug_batch consume pipeline parallelrunstep inference
           href: how-to-debug-parallel-run-step.md
-        - name: 設計工具批次預測
-          displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
-          href: how-to-run-batch-predictions-designer.md
     - name: 管理資源配額
       displayName: limits
       href: how-to-manage-quotas.md

@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/27/2020
-ms.openlocfilehash: 1797654f290d751eb5c1cb65a77aaa7ca7a35aa1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 837174b3ccc08a74583587cb9efd34f8f720aec5
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772879"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589448"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>教學課程：從 Azure 串流分析作業執行 Azure Functions 
 
@@ -28,7 +28,7 @@ ms.locfileid: "76772879"
 > * 建立 Azure 函式
 > * 檢查 Azure Cache for Redis 尋找結果
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="configure-a-stream-analytics-job-to-run-a-function"></a>設定串流分析作業以執行函式 
 
@@ -142,7 +142,7 @@ ms.locfileid: "76772879"
 
 2. 瀏覽至您的函式，並選取 [概觀]   > [輸出]   > [新增]  。 若要新增輸出，請對於接收選項選取 **Azure Function**。 新的 Functions 輸出配接器具有下列屬性：  
 
-   |**屬性名稱**|**說明**|
+   |**屬性名稱**|**描述**|
    |---|---|
    |輸出別名| 在作業的查詢中用來參考該次輸入的易記名稱。 |
    |匯入選項| 您可以使用目前訂用帳戶的函式，如果函式位於另一個訂用帳戶中，也可以手動提供設定。 |
@@ -191,11 +191,16 @@ ms.locfileid: "76772879"
 
 如果將事件傳送至 Azure Functions 時發生失敗，則串流分析會重試大部分的作業。 所有 http 例外狀況都會進行重試，直到成功但出現 http 錯誤413 (實體太大) 例外狀況為止。 實體太大的錯誤會被視為受制於[重試或捨棄原則](stream-analytics-output-error-policy.md)的資料錯誤。
 
+> [!NOTE]
+> 從串流分析到 Azure Functions 的 HTTP 要求逾時時間設定為 100 秒。 如果 Azure Functions 應用程式使用超過 100 秒的時間來處理批次，則串流分析會發生錯誤。
+
 ## <a name="known-issues"></a>已知問題
 
 在 Azure 入口網站中，您嘗試將最大批次大小/最大批次計數值重設為空 (預設值) 時，值將儲存時變更回先前輸入的值。 在此情況下，請手動將預設值輸入欄位。
 
-串流分析目前不支援在 Azure Functions 上使用 [Http 路由](https://docs.microsoft.com/sandbox/functions-recipes/routes?tabs=csharp)。
+串流分析目前不支援在 Azure Functions 上使用 [HTTP 路由](https://docs.microsoft.com/sandbox/functions-recipes/routes?tabs=csharp)。
+
+不會啟用連線到虛擬網路中所裝載 Azure Functions 的支援。
 
 ## <a name="clean-up-resources"></a>清除資源
 

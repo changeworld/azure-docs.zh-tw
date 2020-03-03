@@ -193,6 +193,10 @@
           items:
             - name: 文字轉換語音 REST API
               href: rest-text-to-speech.md
+        - name: 電話組使用方式
+          items:
+            - name: 語音 API (SAPI) 電話組使用方式
+              href: sapi-phoneset-usage.md
     - name: 資源
       items:
         - name: 文字轉換語音常見問題集

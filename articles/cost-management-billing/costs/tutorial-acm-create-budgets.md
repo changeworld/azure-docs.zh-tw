@@ -4,17 +4,17 @@ description: 此教學課程可協助規劃和說明您取用之 Azure 服務的
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/10/2020
+ms.date: 02/23/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 9900a2f7a41a6b35be75326b9412ec628328e39b
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 3b479f85475be6409a6fa6621357400e954d22c8
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132093"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582378"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>教學課程：建立和管理 Azure 預算
 
@@ -34,7 +34,7 @@ ms.locfileid: "77132093"
 > [!div class="checklist"]
 > * 在 Azure 入口網站中建立預算
 > * 使用 PowerShell 建立和編輯預算
-> * 編輯預算
+> * 使用 Azure Resource Manager 範本建立預算
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -52,7 +52,7 @@ ms.locfileid: "77132093"
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
-- 在 https://portal.azure.com 登入 Azure 入口網站。
+- 登入 Azure 入口網站： https://portal.azure.com 。
 
 ## <a name="create-a-budget-in-the-azure-portal"></a>在 Azure 入口網站中建立預算
 
@@ -160,6 +160,16 @@ $ActionGroupId = (Set-AzureRmActionGroup -ResourceGroupName YourResourceGroup -N
 
 New-AzureRmConsumptionBudget -Amount 100 -Name TestPSBudget -Category Cost -StartDate 2020-02-01 -TimeGrain Monthly -EndDate 2022-12-31 -ContactEmail test@test.com -NotificationKey Key1 -NotificationThreshold 0.8 -NotificationEnabled -ContactGroup $ActionGroupId
 ```
+## <a name="create-a-budget-with-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本建立預算
+
+您可以使用 Azure Resource Manager 範本建立預算。 此範本可協助您在資源群組下建立預算。 此範本僅支援 Enterprise 合約客戶。
+
+選取以下影像來登入 Azure 入口網站並開啟範本：
+
+[![將建立預算範本部署至 Azure](./media/tutorial-acm-create-budgets/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fcreate-budget%2fazuredeploy.json)
+
+若要檢視所有範本參數的清單及其描述，請參閱 [建立預算](https://azure.microsoft.com/resources/templates/create-budget/)範本。
+
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -168,7 +178,7 @@ New-AzureRmConsumptionBudget -Amount 100 -Name TestPSBudget -Category Cost -Star
 > [!div class="checklist"]
 > * 在 Azure 入口網站中建立預算
 > * 使用 PowerShell 建立和編輯預算
-> * 編輯預算
+> * 使用 Azure Resource Manager 範本建立預算
 
 請前進到下一個教學課程，以建立成本管理資料的週期性匯出。
 

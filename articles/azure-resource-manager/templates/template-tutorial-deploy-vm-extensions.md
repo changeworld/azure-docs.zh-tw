@@ -5,12 +5,12 @@ author: mumian
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5379bf3c0a5127e5114ac819bd3e0e2ad12e8d69
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 82b6e3c1a3c17c624dec67093379e8a493b7264f
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045266"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561522"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-azure-resource-manager-templates"></a>教學課程：使用 Azure Resource Manager 範本部署虛擬機器擴充功能
 
@@ -25,7 +25,7 @@ ms.locfileid: "76045266"
 > * 部署範本
 > * 驗證部署
 
-如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
+如果您沒有 Azure 訂用帳戶，請在開始前[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -42,7 +42,7 @@ ms.locfileid: "76045266"
 
 ## <a name="prepare-a-powershell-script"></a>準備 PowerShell 指令碼
 
-已在 [Github](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1) 中分享含下列內容的 PowerShell 指令碼：
+已在 [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1) 中分享含下列內容的 PowerShell 指令碼：
 
 ```azurepowershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools

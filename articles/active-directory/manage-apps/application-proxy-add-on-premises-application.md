@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b00fff9c979fe6bd2c52f67801a94cb50b1c660
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 29ab39c10686066599a23d12c4fd8e66caae732e
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74970341"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586065"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>教學課程：新增內部部署應用程式以便透過 Azure Active Directory 中的應用程式 Proxy 進行遠端存取
 
@@ -103,7 +103,7 @@ Azure Active Directory (Azure AD) 有一項應用程式 Proxy 服務，可讓使
 | --- | --- |
 | \*.msappproxy.net<br>\*.servicebus.windows.net | 連接器和應用程式 Proxy 雲端服務之間的通訊 |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Azure 會使用這些 URL 來確認憑證。 |
-| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>\*.microsoftonline.com<br>\*.microsoftonline-p.com<br>\*.msauth.net<br>\*.msauthimages.net<br>\*.msecnd.net<br>\*.msftauth.net<br>\*.msftauthimages.net<br>\*.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net | 連接器會在註冊程序進行期間使用這些 URL。 |
+| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>\*.microsoftonline.com<br>\*.microsoftonline-p.com<br>\*.msauth.net<br>\*.msauthimages.net<br>\*.msecnd.net<br>\*.msftauth.net<br>\*.msftauthimages.net<br>\*.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctdl.windowsupdate.com:80 | 連接器會在註冊程序進行期間使用這些 URL。 |
 
 如果防火牆或 Proxy 可讓您設定 DNS 允許清單，您便可以允許連往 \*.msappProxy.net 和 \*.servicebus.windows.net 的連線。 如果不是，您需要允許存取 [Azure IP 範圍和服務標籤 - 公用雲端](https://www.microsoft.com/download/details.aspx?id=56519)。 IP 範圍會每週更新。
 
@@ -113,7 +113,7 @@ Azure Active Directory (Azure AD) 有一項應用程式 Proxy 服務，可讓使
 
 若要安裝連接器：
 
-1. 以目錄 (使用應用程式 Proxy) 的應用程式管理員身分，登入 [Azure 入口網站](https://portal.azure.com/)。 例如，如果租用戶網域為 contoso.com，則系統管理員應該是 admin@contoso.com ，或該網域上的其他管理員別名。
+1. 以目錄 (使用應用程式 Proxy) 的應用程式管理員身分，登入 [Azure 入口網站](https://portal.azure.com/)。 例如，如果租用戶網域為 contoso.com，則系統管理員應該是 admin@contoso.com，或該網域上的其他管理員別名。
 1. 在右上角選取您的使用者名稱。 請確認您已登入使用應用程式 Proxy 的目錄。 如果您需要變更目錄，請選取 [切換目錄]  ，然後選擇會使用應用程式 Proxy 的目錄。
 1. 在左瀏覽窗格中，選取 [Azure Active Directory]  。
 1. 在 [管理]  底下，選取 [應用程式 Proxy]  。
@@ -175,7 +175,7 @@ Azure Active Directory (Azure AD) 有一項應用程式 Proxy 服務，可讓使
 4. 在 [內部部署應用程式]  區段中，選取 [新增內部部署應用程式]  。
 5. 在 [新增自己的內部部署應用程式]  區段中，提供您應用程式的下列資訊：
 
-    | 欄位 | 說明 |
+    | 欄位 | 描述 |
     | :---- | :---------- |
     | **名稱** | 會出現在存取面板上和 Azure 入口網站的應用程式名稱。 |
     | **內部 URL** | 用於從私用網路內部存取應用程式的 URL。 您可以提供後端伺服器上要發佈的特定路徑，而伺服器的其餘部分則不發佈。 如此一來，您可以在相同的伺服器上將不同網站發佈為不同應用程式，並給予各自的名稱和存取規則。<br><br>如果您發佈路徑，請確定其中包含您的應用程式的所有必要映像、指令碼和樣式表。 例如，如果您的應用程式位於 https:\//yourapp/app 並使用位於 https:\//yourapp/media 的映像，您應該發佈 https:\//yourapp/ 做為路徑。 此內部 URL 不一定是您使用者所看見的登陸頁面。 如需詳細資訊，請參閱[針對發佈應用程式設定自訂的首頁](application-proxy-configure-custom-home-page.md)。 |
@@ -185,7 +185,7 @@ Azure Active Directory (Azure AD) 有一項應用程式 Proxy 服務，可讓使
 
 6. 如有必要，請設定 [其他設定]  。 對於大部分的應用程式，您應該在其預設狀態中保留這些設定。 
 
-    | 欄位 | 說明 |
+    | 欄位 | 描述 |
     | :---- | :---------- |
     | **後端應用程式逾時** | 只有當您的應用程式太慢而無法驗證和連線時，才將此值設定為 [長]  。 在預設情況下，後端應用程式的逾時長度為 85 秒。 設定為 Long 時，後端逾時會增加到 180 秒。 |
     | **使用僅限 HTTP Cookie** | 將此值設定為 [是]  ，讓應用程式 Proxy Cookie 在 HTTP 回應標頭中包含 HTTPOnly 旗標。 如果使用遠端桌面服務，請將此值設定為 [否]  。|

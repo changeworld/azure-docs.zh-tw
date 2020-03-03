@@ -3,12 +3,12 @@ title: 搭配使用適用於 Jenkins 的 Azure Dev Spaces 外掛程式和 Azure 
 description: 了解如何在持續整合管線中使用 Azure Dev Spaces 外掛程式。
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: 9dba0307db8ebbf07422fd770ea336b2abc031bd
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 10dfbdb7d89d6f3870ec3b9dbd87d4d315360815
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209676"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619988"
 ---
 # <a name="tutorial-using-the-azure-dev-spaces-plug-in-for-jenkins-with-azure-kubernetes-service"></a>教學課程：搭配使用適用於 Jenkins 的 Azure Dev Spaces 外掛程式和 Azure Kubenetes Service 
 
@@ -26,9 +26,9 @@ Azure Dev Spaces 可讓您測試並反覆開發在 Azure Kubernetes Service (AKS
 
 此教學課程假設您有核心 Azure 服務、AKS、ACR、Azure Dev Spaces、Jenkins [管線](https://jenkins.io/doc/book/pipeline/)與外掛程式和 GitHub 的中級程度知識。 對 kubectl 和 Helm 等支援工具的基本程度熟悉很有幫助。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* 一個 Azure 帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+* 一個 Azure 帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 * GitHub 帳戶。 如果您沒有 GitHub 帳戶，請在開始之前[建立免費帳戶](https://github.com/) \(英文\)。
 
@@ -174,7 +174,7 @@ Azure Dev Spaces 可讓您測試並反覆開發在 Azure Kubernetes Service (AKS
 1. 登入您的 Jenkins 伺服器。 選擇 [管理 Jenkins] > [管理外掛程式]  。
 2. 在 [可用的]  索引標籤上，選取下列外掛程式：
     * [Azure Dev Spaces](https://plugins.jenkins.io/azure-dev-spaces) \(英文\)
-    * [Azure Container Registry 工作](https://plugins.jenkins.io/azure-container-registry-tasks) \(英文\)
+    * [Azure Container Registry 工作](https://plugins.jenkins.io/azure-container-registry-tasks)
     * [環境載入程式](https://plugins.jenkins.io/envinject) \(英文\)
     * [GitHub 整合](https://plugins.jenkins.io/github-pullrequest) \(英文\)
 
@@ -333,7 +333,7 @@ Jenkins 管線設定和 Jenkinsfile 定義 CI 管線中的階段。 此流程圖
     }
 ```
 
-1. 變更 `mywebapi/src/main/java/com/ms/sample/mywebapi/Application.java` 然後建立提取要求。 例如︰
+1. 變更 `mywebapi/src/main/java/com/ms/sample/mywebapi/Application.java` 然後建立提取要求。 例如：
 
     ```java
     public String index() {
@@ -409,16 +409,5 @@ az group delete -y --no-wait -n MyResourceGroup
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您已了解如何使用適用於 Jenkins 的 Azure Dev Spaces 外掛程式和 Azure Container Registry 外掛程式來建置程式碼，並部署至開發人員空間。
-
-下列資源清單提供 Azure Dev Spaces、ACR 工作和 CI/CD 搭配 Jenkins 的更多資訊。
-
-Azure Dev Spaces：
-* [Azure Dev Spaces 的運作和設定方式](https://docs.microsoft.com/azure/dev-spaces/how-dev-spaces-works)
-
-ACR 工作：
-* [使用 ACR 工作自動進行 OS 與架構修補](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview)
-* [在程式碼認可時自動建置](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview)
-
-使用 Azure 上之 Jenkins 的 CI/CD：
-* [Jenkins 持續部署](https://docs.microsoft.com/azure/aks/jenkins-continuous-deployment) \(部分機器翻譯\)
+> [!div class="nextstepaction"]
+> [Azure 上使用 Jenkins 的 CI/CD](jenkins-continuous-deployment.md)

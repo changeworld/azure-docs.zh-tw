@@ -8,16 +8,16 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 57bf9c9752cf2203ffcac08c213373fd71a79148
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 71b3027d86400d6921895f86e257ddff2961f91f
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276870"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615161"
 ---
 # <a name="tutorial-sharing-azure-spatial-anchors-across-sessions-and-devices-with-an-azure-cosmos-db-back-end"></a>教學課程：跨工作階段和裝置與 Azure Cosmos DB 後端共用 Azure Spatial Anchors
 
-本教學課程是[跨工作階段和裝置來共用 Azure Spatial Anchors](../../../articles/spatial-anchors/tutorials/tutorial-share-anchors-across-devices.md) 的後續。 本文會引導您完成新增幾項功能的流程，讓 Azure Cosmos DB 成為後端儲存體，同時在工作階段和裝置之間共用 Azure 空間錨點。
+本教學課程是[跨工作階段和裝置來共用 Azure Spatial Anchors](../../../articles/spatial-anchors/tutorials/tutorial-share-anchors-across-devices.md) 的後續。 本文會引導您完成新增幾項功能的流程，讓 Azure Cosmos DB 成為後端儲存體，同時在工作階段和裝置之間共用 Azure Spatial Anchors。
 
 ![說明物件持續性的 GIF](./media/persistence.gif)
 
@@ -42,6 +42,12 @@ ms.locfileid: "74276870"
 找出 `StorageConnectionString` 屬性，並將其值設為您在[建立資料庫帳戶步驟](#create-a-database-account)中記下的 `Connection String` 值。 儲存檔案。
 
 您可以再次發佈共用服務，並執行範例應用程式。
+
+## <a name="troubleshooting"></a>疑難排解
+
+### <a name="unity-20193"></a>Unity 2019.3
+
+由於有重大變更，目前不支援 Unity 2019.3。 請使用 Unity 2019.1 或 2019.2。
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 
