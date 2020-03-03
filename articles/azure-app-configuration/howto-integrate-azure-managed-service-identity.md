@@ -1,31 +1,32 @@
 ---
-title: 與 Azure 受控識別整合
-description: 瞭解如何使用 Azure 受控識別來進行驗證，並取得 Azure 應用程式組態的存取權
+title: 使用 Azure 受控識別進行驗證
+titleSuffix: Azure App Configuration
+description: 使用 Azure 受控識別向 Azure 應用程式組態進行驗證
 ms.service: azure-app-configuration
 author: lisaguthrie
 ms.topic: conceptual
-ms.date: 12/29/2019
+ms.date: 2/25/2020
 ms.author: lcozzens
-ms.openlocfilehash: 2cdeb0d513230cac5d03f85f2189f15c818798fd
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 957fef32702f35b4b509d829eba6a41914c4fc53
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500396"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78205852"
 ---
 # <a name="integrate-with-azure-managed-identities"></a>與 Azure 受控識別整合
 
-Azure Active Directory [受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)可協助簡化您雲端應用程式的祕密管理。 使用受控識別，您的程式碼可以使用為其執行所在之 Azure 服務所建立的服務主體。 您會使用受控識別，而不是使用儲存在 Azure Key Vault 中的個別認證或本機連接字串。 
+Azure Active Directory[受控](../active-directory/managed-identities-azure-resources/overview.md)識別可簡化雲端應用程式的秘密管理。 使用受控識別，您的程式碼可以使用為其執行所在之 Azure 服務所建立的服務主體。 您會使用受控識別，而不是使用儲存在 Azure Key Vault 中的個別認證或本機連接字串。 
 
-Azure 應用程式組態及其 .NET Core、.NET Framework 和 JAVA 春季用戶端程式庫都內建了受控識別支援。 雖然您不需要使用它，但受控識別不需要包含秘密的存取權杖。 您的程式碼只能使用服務端點來存取應用程式組態存放區。 您可將此 URL 直接內嵌在程式碼中，而無須擔心暴露任何祕密。
+Azure 應用程式組態及其 .NET Core、.NET Framework 和 JAVA 春季用戶端程式庫都內建了受控識別支援。 雖然您不需要使用它，但受控識別不需要包含秘密的存取權杖。 您的程式碼只能使用服務端點來存取應用程式組態存放區。 您可以直接在程式碼中內嵌此 URL，而不會公開任何秘密。
 
-本教學課程說明如何利用受控識別來存取應用程式組態。 本文會以快速入門中介紹的 Web 應用程式作為基礎。 繼續進行之前，請先完成[使用應用程式設定建立 ASP.NET Core 應用程式](./quickstart-aspnet-core-app.md)。
+本文說明如何利用受控識別來存取應用程式組態。 本文會以快速入門中介紹的 Web 應用程式作為基礎。 繼續之前，請先[使用應用程式組態建立 ASP.NET Core 應用程式](./quickstart-aspnet-core-app.md)。
 
-本教學課程也會示範如何搭配使用受控識別與應用程式組態的 Key Vault 參考。 使用單一受控識別，您可以從應用程式組態順暢地存取 Key Vault 和設定值的秘密。 如果您想要探索這項功能，請先完成搭配[ASP.NET Core 使用 Key Vault 參考](./use-key-vault-references-dotnet-core.md)。
+本文也會說明如何搭配應用程式組態的 Key Vault 參考來使用受控識別。 使用單一受控識別，您可以從應用程式組態順暢地存取 Key Vault 和設定值的秘密。 如果您想要探索這項功能，請先完成搭配[ASP.NET Core 使用 Key Vault 參考](./use-key-vault-references-dotnet-core.md)。
 
 您可以使用任何程式碼編輯器來進行本教學課程中的步驟。 Windows、macOS 及 Linux 平台上都有提供的 [Visual Studio Code](https://code.visualstudio.com/) 是一個絕佳的選項。
 
-在本教學課程中，您會了解如何：
+在本文中，您將學會如何：
 
 > [!div class="checklist"]
 > * 授與「應用程式組態」的受控識別存取權。
@@ -142,10 +143,16 @@ Azure 應用程式組態及其 .NET Core、.NET Framework 和 JAVA 春季用戶�
                     .ConfigureAppConfiguration((hostingContext, config) =>
                     {
                         var settings = config.Build();
-                        AzureServiceTokenProvider azureServiceTokenProvider = new AzureServiceTokenProvider();
-                        KeyVaultClient kvClient = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
-                        
-                        config.AddAzureAppConfiguration(options => options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential()).UseAzureKeyVault(kvClient));
+                        var credentials = new ManagedIdentityCredential();
+
+                        config.AddAzureAppConfiguration(options =>
+                        {
+                            options.Connect(new Uri(settings["AppConfig:Endpoint"]), credentials)
+                                    .ConfigureKeyVault(kv =>
+                                    {
+                                        kv.SetCredential(credentials);
+                                    });
+                        });
                     })
                     .UseStartup<Startup>();
     ```
@@ -157,12 +164,18 @@ Azure 應用程式組態及其 .NET Core、.NET Framework 和 JAVA 春季用戶�
             Host.CreateDefaultBuilder(args)
             .ConfigureWebHostDefaults(webBuilder =>
             webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
-            {
-                var settings = config.Build();
-                        AzureServiceTokenProvider azureServiceTokenProvider = new AzureServiceTokenProvider();
-                        KeyVaultClient kvClient = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
-                        
-                        config.AddAzureAppConfiguration(options => options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential()).UseAzureKeyVault(kvClient));
+                    {
+                        var settings = config.Build();
+                        var credentials = new ManagedIdentityCredential();
+
+                        config.AddAzureAppConfiguration(options =>
+                        {
+                            options.Connect(new Uri(settings["AppConfig:Endpoint"]), credentials)
+                                    .ConfigureKeyVault(kv =>
+                                    {
+                                        kv.SetCredential(credentials);
+                                    });
+                        });
                     })
                     .UseStartup<Startup>());
     ```

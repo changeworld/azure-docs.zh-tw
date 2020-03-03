@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4531e5d483508ca99722182f97c6a7aa0e0b68f3
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: ec53c4b2f80fb095f58bee9c15ac5daafb8d59ef
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191107"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226256"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>管理 Azure 自動化中的 Runbook
 
@@ -92,7 +92,7 @@ Import-AzAutomationRunbook -Name $runbookName -Path $scriptPath `
 
 ## <a name="test-a-runbook"></a>測試 Runbook
 
-當您測試 Runbook 時， [草稿版本](#publish-a-runbook) 會執行，而且它執行的任何動作都會完成。 不會建立任何工作歷程記錄，但[輸出](automation-runbook-output-and-messages.md#output-stream)和[警告和錯誤](automation-runbook-output-and-messages.md#message-streams)資料流程會顯示在 [測試輸出] 窗格中。 只有在[$VerbosePreference 變數](automation-runbook-output-and-messages.md#preference-variables)設定為 [**繼續**] 時，[輸出] 窗格中才會顯示 [詳細資訊][資料流程](automation-runbook-output-and-messages.md#message-streams)的訊息。
+當您測試 Runbook 時， [草稿版本](#publish-a-runbook) 會執行，而且它執行的任何動作都會完成。 不會建立任何工作歷程記錄，但[輸出](automation-runbook-output-and-messages.md#output-stream)和[警告和錯誤](automation-runbook-output-and-messages.md#message-streams)資料流程會顯示在 [測試輸出] 窗格中。 只有在*VerbosePreference*變數 （automation-runbook-Output-messages. md # 喜好設定變數）設為 [**繼續**] 時，才會在 [輸出] 窗格中顯示訊息給[詳細資訊資料流程](automation-runbook-output-and-messages.md#message-streams)。
 
 即使執行的是草稿版本，Runbook 仍會正常執行，並對環境中的資源執行任何動作。 因此，您只應在非生產資源中測試 Runbook。
 
