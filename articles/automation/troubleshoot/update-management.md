@@ -4,16 +4,16 @@ description: 瞭解如何在 Azure 中疑難排解和解決更新管理解決方
 services: automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 05/31/2019
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 5ee1a20d4a3c46cab484b03b5fcc212a79d19047
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 1b0047cda3664759f4f1b6499c8a54ee22f98ab3
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513264"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227464"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>針對更新管理問題進行疑難排解
 
@@ -24,6 +24,36 @@ ms.locfileid: "76513264"
 如果您在嘗試將解決方案上架到虛擬機器（VM）時遇到問題，請檢查本機電腦上 **應用程式和服務記錄**檔 下的  **Operations Manager**記錄檔中是否有事件識別碼為4502的事件，以及包含**AzureAutomation microsoft.enterprisemanagement.healthservice.azureautomation.hybridagent 事件**的事件詳細資料。
 
 下一節將重點放在特定的錯誤訊息，以及各項的可能解決方法。 如需其他上線問題，請參閱針對[解決方案上架進行疑難排解](onboarding.md)。
+
+## <a name="scenario-superseded-update-indicated-as-missing-in-update-management"></a>案例：已取代的更新在更新管理中指出遺失
+
+### <a name="issue"></a>問題
+
+舊的更新會在 Azure 帳戶的更新管理中顯示為遺失，即使已被取代也一樣。 已取代的更新是一種不需要安裝的更新，因為更新會修正相同的弱點。 更新管理會忽略被取代的更新，使其不適用取代更新。 如需相關問題的詳細資訊，請參閱[更新已被取代](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer)。
+
+### <a name="cause"></a>原因
+
+已取代的更新未正確地表示為已拒絕，因此可視為不適用。
+
+### <a name="resolution"></a>解決方案
+
+當已取代的更新變成100% 不適用時，您應該將該更新的核准狀態變更為 [已**拒絕**]。 若要針對您的所有更新執行此動作：
+
+1. 在自動化帳戶中，選取 [**更新管理**] 以查看機器狀態。 請參閱[查看更新評](../manage-update-multi.md#view-an-update-assessment)量。
+
+2. 檢查已取代的更新，確定其為100% 不適用。 
+
+3. 除非您有關于更新的問題，否則請將更新標示為已拒絕。 
+
+4. 選取 [電腦]，然後在 [相容性] 欄中強制重新掃描合規性。 請參閱[管理多部電腦的更新](../manage-update-multi.md)。
+
+5. 針對其他已取代的更新重複上述步驟。
+
+6. 執行 [清除嚮導]，從拒絕的更新中刪除檔案。 
+
+7. 針對 WSUS，請手動清除所有已取代的更新，以重新整理基礎結構。
+
+8. 定期重複此程式來更正顯示問題，並將更新管理所使用的磁碟空間量降到最低。
 
 ## <a name="nologs"></a>案例：電腦不會顯示在入口網站的 更新管理
 
@@ -45,7 +75,7 @@ ms.locfileid: "76513264"
 
 您可能已在工作區中定義已達到的配額，因而導致無法進一步儲存資料。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 * 執行[Windows](update-agent-issues.md#troubleshoot-offline)或[Linux](update-agent-issues-linux.md#troubleshoot-offline)的疑難排解員，視作業系統而定。
 
@@ -86,7 +116,7 @@ Error details: Unable to register Automation Resource Provider for subscriptions
 
 自動化資源提供者未在訂用帳戶中註冊。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 若要註冊自動化資源提供者，請遵循 Azure 入口網站中的下列步驟：
 
@@ -113,7 +143,7 @@ The components for the 'Update Management' solution have been enabled, and now t
 - 正在封鎖與自動化帳戶的通訊。
 - 所上架的 VM 可能來自未與安裝 Microsoft Monitoring Agent （MMA）執行過 sysprep 的複製電腦。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 1. 請前往[網路規劃](../automation-hybrid-runbook-worker.md#network-planning)，瞭解必須允許哪些位址和埠，更新管理才能正常執行。
 2. 如果您要使用複製的映射：
@@ -136,7 +166,7 @@ The client has permission to perform action 'Microsoft.Compute/virtualMachines/w
 
 當您在更新部署中所包含的另一個租使用者中建立具有 Azure Vm 的更新部署時，就會發生此錯誤。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 使用下列因應措施可讓這些專案排程。 您可以使用[new-azurermautomationschedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) Cmdlet 搭配 `-ForUpdate` 參數來建立排程。 然後，使用[new-azurermautomationsoftwareupdateconfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration
 ) Cmdlet，並將另一個租使用者中的電腦傳遞給 `-NonAzureComputer` 參數。 下列範例示範如何執行：
@@ -161,7 +191,7 @@ New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -Automa
 
 Windows Update 可以由數個登錄機碼修改，其中任何一個都可以修改重新開機行為。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 藉[由編輯](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)登錄和[用來管理重新開機](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart)的登錄機碼來檢查列于 [設定自動更新] 底下的登錄機碼，以確保您的電腦已正確設定。
 
@@ -185,7 +215,7 @@ Failed to start the runbook. Check the parameters passed. RunbookName Patch-Micr
 * 變更了 SourceComputerId 的 MMA 已有更新。
 * 如果您達到自動化帳戶中2000個並行作業的限制，則您的更新執行已節流。 系統會將每個部署視為一項作業，而更新部署中的每部電腦會計算為一項作業。 目前在您的自動化帳戶中執行的任何其他自動化作業或更新部署都會計入並行作業限制。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 適用時，請使用[動態群組](../automation-update-management-groups.md)進行更新部署。 此外：
 
@@ -208,7 +238,7 @@ Failed to start the runbook. Check the parameters passed. RunbookName Patch-Micr
 
 在 Windows 上，更新會在可用時立即安裝。 如果您未排程將更新部署到電腦上，這種行為可能會造成混淆。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU` 登錄機碼預設為4：**自動下載並安裝**的設定。
 
@@ -220,7 +250,7 @@ Failed to start the runbook. Check the parameters passed. RunbookName Patch-Micr
 
 ### <a name="issue"></a>問題
 
-您收到下列錯誤訊息：
+您會收到下列錯誤訊息：
 
 ```error
 Unable to Register Machine for Patch Management, Registration Failed with Exception System.InvalidOperationException: {"Message":"Machine is already registered to a different account."}
@@ -230,7 +260,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 電腦已上架到另一個工作區以進行更新管理。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 1. 依照 [更新管理] 底下的 [[機器不會顯示在入口網站中](#nologs)] 底下的步驟，確認機器已回報至正確的工作區。
 2. 藉由[刪除混合式 runbook 群組](../automation-hybrid-runbook-worker.md#remove-a-hybrid-worker-group)來清除電腦上的舊成品，然後再試一次。
@@ -261,7 +291,7 @@ Access is denied. (Exception form HRESULT: 0x80070005(E_ACCESSDENIED))
 
 Proxy、閘道或防火牆可能封鎖網路通訊。 
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 請檢查您的網路功能，並確定允許適當的埠和位址。 如需更新管理和混合式 Runbook 背景工作角色所需的埠和地址清單，請參閱[網路需求](../automation-hybrid-runbook-worker.md#network-planning)。
 
@@ -279,7 +309,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 混合式 Runbook 背景工作角色無法產生自我簽署憑證。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 請確認系統帳戶具有**C:\ProgramData\Microsoft\Crypto\RSA**資料夾的讀取權限，然後再試一次。
 
@@ -289,7 +319,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 更新的預設維護視窗是120分鐘。 您可以將維護期間增加到最多6小時或360分鐘。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 編輯任何失敗的排程更新部署，並增加維護時間範圍。
 
@@ -307,11 +337,11 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 更新代理程式（Windows 上的 Windows Update 代理程式、Linux 發行版本的套件管理員）未正確設定。 更新管理依賴電腦的更新代理程式來提供所需的更新、修補程式的狀態，以及已部署修補程式的結果。 若沒有此資訊，更新管理無法正確地報告所需或已安裝的修補程式。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 嘗試在本機電腦上執行更新。 如果失敗，通常表示更新代理程式發生設定錯誤。
 
-此問題通常是因為網路設定和防火牆問題所造成。 請嘗試下列作業：
+此問題通常是因為網路設定和防火牆問題所造成。 嘗試下列方法：
 
 * 針對 Linux，請查看適當的檔，確定您可以連線到套件存放庫的網路端點。
 * 針對 Windows，請檢查[[更新不會從內部網路端點下載（WSUS/SCCM）](/windows/deployment/update/windows-update-troubleshooting#updates-arent-downloading-from-the-intranet-endpoint-wsussccm)] 中所列的代理程式設定。
@@ -355,7 +385,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 * 無法連線到電腦。
 * 更新有無法解析的相依性。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 如果成功啟動後，在更新執行期間發生失敗，請檢查執行中受影響機器的[作業輸出](../manage-update-multi.md#view-results-of-an-update-deployment)。 您可能會發現來自您電腦的特定錯誤訊息，您可以調查並採取行動。 「更新管理」必須在套件管理員狀況良好的情況下，才能進行成功的更新部署。
 

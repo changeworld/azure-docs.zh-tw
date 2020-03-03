@@ -1,14 +1,14 @@
 ---
 title: 支援的 Resource Manager 資源類型
 description: 提供 Azure Resource Graph 和變更歷程記錄所支援的 Resource Manager 資源類型清單。
-ms.date: 02/25/2020
+ms.date: 03/02/2020
 ms.topic: reference
-ms.openlocfilehash: dc08c4a33ec9e0c20b865ffa4d7c6ff9d5248e90
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 3d6ba89cbf5c35c2a06a214029971341c4184b41
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77602567"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227338"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph 資料表和資源類型參考
 
@@ -34,7 +34,7 @@ Azure Resource Graph 支援[Azure Resource Manager](../../../azure-resource-mana
 - microsoft .resources/訂閱
 - microsoft .resources/訂用帳戶/resourcegroups
 
-## <a name="resources"></a>resources
+## <a name="resources"></a>資源
 
 - 84codes. cloudamqp/servers
 - citrix. services/xenappessentials
@@ -210,6 +210,7 @@ Azure Resource Graph 支援[Azure Resource Manager](../../../azure-resource-mana
 - microsoft insights/metricalerts
 - microsoft insights/notificationgroups
 - microsoft insights/notificationrules
+- microsoft insights/privatelinkscopes
 - microsoft insights/scheduledqueryrules
 - microsoft insights/webtest
 - microsoft insights/活頁簿

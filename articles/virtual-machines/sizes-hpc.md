@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: amverma
 ms.reviewer: jonbeck
-ms.openlocfilehash: a5b0eb0c8bd56a28889945480e95b6413dc9b4dd
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: b900a95df00ccdd0ad9b5bee3887364195c7d1c2
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77660014"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226722"
 ---
 # <a name="high-performance-compute-vm-sizes"></a>高效能運算 VM 大小
 
@@ -46,6 +46,10 @@ Azure H 系列虛擬機器（Vm）的設計目的是針對各種實際的 HPC �
   
 - **虛擬網路** – 使用計算密集型執行個體時，並不需要 Azure [虛擬網路](https://azure.microsoft.com/documentation/services/virtual-network/) 。 不過，您可能需要至少一個以雲端為基礎的 Azure 虛擬網路來處理許多部署，或者如果您需要存取內部部署資源，則需要站對站連線。 如有需要，請建立新的虛擬網路來部署執行個體。 不支援將計算密集型 VM 新增至同質群組中的虛擬網路。
 - **調整大小** – 因為其特殊硬體，所以您只能夠在相同大小系列內重新調整計算密集型執行個體的大小 (H 系列或計算密集型 A 系列)。 例如，您只能將 H 系列 VM 的大小，從某一個 H 系列大小重新調整為另一個大小。 此外，不支援從非計算密集型大小重新調整為計算密集型大小。  
+
+> [!NOTE]
+> A8 – A11 Vm 已規劃于3/2021 淘汰。 如需詳細資訊，請參閱[HPC 遷移指南](https://azure.microsoft.com/resources/hpc-migration-guide/)。
+
 ## <a name="rdma-capable-instances"></a>支援 RDMA 的執行個體
 
 計算密集型實例（A8、A9、H16r、H16mr、HB 和 HC）的子集，功能是遠端直接記憶體存取（RDMA）連線的網路介面。 使用 ' r ' （如 NC24rs 設定，NC24rs_v2 和 NC24rs_v3）指定的 N 系列大小也可以支援 RDMA。 這是可供其他 VM 大小使用之標準 Azure 網路介面的額外界面。
@@ -78,7 +82,7 @@ Azure H 系列虛擬機器（Vm）的設計目的是針對各種實際的 HPC �
   } 
   ```
 
-  下列命令會在名為*myResourceGroup*的資源群組中名為*MYVMSS*的現有 VM 擴展集內的所有支援 RDMA 的 vm 上，安裝最新版本 1.0 InfiniBandDriverWindows 延伸模組：
+  下列命令會在名為*myResourceGroup*的資源群組中部署且名為*myVMSS*的現有虛擬機器擴展集內的所有支援 RDMA 的 vm 上，安裝最新版本 1.0 InfiniBandDriverWindows 延伸模組：
 
   ```powershell
   $VMSS = Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS"
@@ -99,7 +103,7 @@ Azure 提供數個選項來建立 Windows HPC VM 的叢集，而這些 VM 可以
 
 - **虛擬機器擴展集**-在虛擬機器擴展集中，請確定您將部署限制為單一放置群組。 例如，在 Resource Manager 範本中，將 `singlePlacementGroup` 屬性設定為 `true`。 
 
-- **虛擬機器之間的 mpi** -如果虛擬機器（vm）之間需要 mpi 通訊，請確定 vm 位於相同的可用性設定組或虛擬機器相同的擴展集內。
+- **Mpi 在虛擬機器**之間-如果虛擬機器（vm）之間需要 mpi 通訊，請確定 vm 位於相同的可用性設定組或虛擬機器相同的擴展集。
 
 - **Azure CycleCloud** - 在 [Azure CycleCloud](/azure/cyclecloud/) 中建立 HPC 叢集，以在 Windows 節點上執行 MPI 作業。
 

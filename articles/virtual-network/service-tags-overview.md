@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 7f5f75385374b6949ee3ef5e5ef298b8d54cc36e
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 2af887f529d57052d8b729fa1a613e8eeb9003ea
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78163245"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228288"
 ---
 # <a name="virtual-network-service-tags"></a>虛擬網路服務標籤
 <a name="network-service-tags"></a>
@@ -86,7 +86,7 @@ ms.locfileid: "78163245"
 | **MicrosoftContainerRegistry** | 適用于 Microsoft 容器映射的 container registry。 <br/><br/>*注意：* 也請將下列 IP 列入白名單（即將移除此相依性）：204.79.197.219。 | 輸出 | 是 | 是 |
 | **ServiceBus** | Azure 服務匯流排使用 Premium 服務層級的流量。 | 輸出 | 是 | 是 |
 | **ServiceFabric** | Azure Service Fabric。<br/><br/>*注意：* 此標記代表每個區域之控制平面的 Service Fabric 服務端點。 這可讓客戶從其 VNET 執行其 Service Fabric 叢集的管理作業（例如 HTTPs://westus.servicefabric.azure.com） | 兩者 | 否 | 否 |
-| **Sql** | Azure SQL Database、適用於 MySQL 的 Azure 資料庫、適用於 PostgreSQL 的 Azure 資料庫和 Azure SQL 資料倉儲。<br/><br/>*注意：* 此標記代表服務，而不是服務的特定實例。 例如，標籤代表 SQL Database 或伺服器服務，但不代表特定的 Azure SQL Database。 | 輸出 | 是 | 是 |
+| **Sql** | Azure SQL Database、適用於 MySQL 的 Azure 資料庫、適用於 PostgreSQL 的 Azure 資料庫和 Azure SQL 資料倉儲。<br/><br/>*注意：* 此標記代表服務，而不是服務的特定實例。 例如，標籤代表 SQL Database 或伺服器服務，但不代表特定的 Azure SQL Database。 此標記不適用於 SQL 受控實例。 | 輸出 | 是 | 是 |
 | **SqlManagement** | 適用于 SQL 專用部署的管理流量。 | 兩者 | 否 | 是 |
 | **Storage** | Azure 儲存體。 <br/><br/>*注意：* 此標記代表服務，而不是服務的特定實例。 例如，標籤代表 Azure 儲存體服務，但不代表特定的 Azure 儲存體帳戶。 | 輸出 | 是 | 是 |
 | **VirtualNetwork** | 虛擬網路位址空間（針對虛擬網路定義的所有 IP 位址範圍）、所有已連線的內部部署位址空間、[對等互連](virtual-network-peering-overview.md)虛擬網路、連接到[虛擬網路閘道](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json)的虛擬網路、[主機的虛擬 IP 位址](security-overview.md#azure-platform-considerations)，以及[使用者定義的路由](virtual-networks-udr-overview.md)所使用的位址首碼。 此標記可能也會包含預設路由。 | 兩者 | 否 | 否 |
@@ -97,7 +97,7 @@ ms.locfileid: "78163245"
 >| 傳統拼寫 | 對等 Resource Manager 標記 |
 >|---|---|
 >| AZURE_LOADBALANCER | AzureLoadBalancer |
->| 網際網路 | Internet |
+>| 網際網路 | 網際網路 |
 >| VIRTUAL_NETWORK | VirtualNetwork |
 
 > [!NOTE]

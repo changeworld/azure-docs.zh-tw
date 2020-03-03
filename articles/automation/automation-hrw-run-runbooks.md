@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 31ced19e164d50030386064a81edf3322b12855d
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: c67fff32770446cac3adef8af50c9e5733077bc7
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191124"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226293"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>在混合式 Runbook 背景工作角色上執行 Runbook
 
@@ -166,7 +166,7 @@ Get-AzAutomationAccount | Select-Object AutomationAccountName
 
 1. 將**匯出-export-runascertificatetohybridworker** runbook 儲存到您的電腦，副檔名為**ps1** 。
 2. 將它匯入您的自動化帳戶。
-3. 編輯 runbook，將變數的值 *$Password*變更為您自己的密碼。 
+3. 編輯 runbook，將*password*變數 o 的值變更為您自己的密碼。 
 4. 發佈 runbook。
 5. 執行 runbook，以使用執行身分帳戶執行和驗證 runbook 的混合式 Runbook 背景工作角色群組為目標。 
 6. 檢查作業資料流程，以確認它會回報將憑證匯入本機電腦存放區的嘗試，並在後面加上多行。 此行為取決於您在訂閱中定義的自動化帳戶數目，以及驗證的成功程度。

@@ -1,5 +1,5 @@
 ---
-title: 使用 TensorFlow 訓練類神經網路
+title: 定型和部署 TensorFlow 模型
 titleSuffix: Azure Machine Learning
 description: 瞭解如何使用 Azure Machine Learning，大規模地執行 TensorFlow 訓練腳本。
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: a1c3e1948d53a168ce9a3e99cd932fa04e2fafc4
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.openlocfilehash: 2bbd81f3858aa78b9e0e2d610c0fdb0a67816c8e
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114381"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228307"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>使用 Azure Machine Learning，大規模建立 TensorFlow 深度學習模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -305,11 +305,11 @@ cluster_spec = tf.train.ClusterSpec(cluster)
 
 ```
 
-## <a name="deployment"></a>部署
+## <a name="deploy-a-tensorflow-model"></a>部署 TensorFlow 模型
 
 您剛註冊的模型可以使用與 Azure Machine Learning 中任何其他已註冊的模型完全相同的方式來部署，不論您用於定型的估計工具為何。 部署如何包含註冊模型的區段，但您可以直接跳到建立部署的[計算目標](how-to-deploy-and-where.md#choose-a-compute-target)，因為您已經有已註冊的模型。
 
-### <a name="preview-no-code-model-deployment"></a>預覽無程式碼模型部署
+## <a name="preview-no-code-model-deployment"></a>預覽無程式碼模型部署
 
 除了傳統部署路由以外，您也可以使用無程式碼部署功能（預覽）進行 Tensorflow。 藉由使用 `model_framework`、`model_framework_version`和 `resource_configuration` 參數來註冊您的模型，您可以直接使用 `deploy()` 靜態函式來部署您的模型。
 

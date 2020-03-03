@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/24/2018
 ms.topic: conceptual
-ms.openlocfilehash: b96860afd649f33936ee8dd2954e6873f908a369
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 4c816ade5ae6b416ba716433f385b75e1b32eb92
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605067"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226515"
 ---
 # <a name="my-first-powershell-workflow-runbook"></a>我的第一個 PowerShell 工作流程 Runbook
 
@@ -26,7 +26,7 @@ ms.locfileid: "77605067"
 >[!NOTE]
 >本文已更新為使用新的 Azure PowerShell Az 模組。 AzureRM 模組在至少 2020 年 12 月之前都還會持續收到錯誤 (Bug) 修正，因此您仍然可以持續使用。 若要深入了解新的 Az 模組和 AzureRM 的相容性，請參閱[新的 Azure PowerShell Az 模組簡介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 如需混合式 Runbook 背景工作角色上的 Az module 安裝指示，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 針對您的自動化帳戶，您可以使用[如何更新 Azure 自動化中的 Azure PowerShell 模組](automation-update-azure-modules.md)，將模組更新為最新版本。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本教學課程，您需要：
 
@@ -36,23 +36,23 @@ ms.locfileid: "77605067"
 
 ## <a name="step-1---create-new-runbook"></a>步驟 1 - 建立新的 Runbook
 
-從建立會輸出 "Hello World" 文字的簡單 runbook 開始。
+您會由建立一個可輸出文字 Hello World的簡單 Runbook 開始。
 
 1. 在 Azure 入口網站中，開啟您的自動化帳戶。
 
    [自動化帳戶] 頁面提供這個帳戶中資源的快速檢視。 您應該已經有一些資產。 這些資產大部分都是自動包含在新的自動化帳戶中的模組。 您也應該擁有與您的訂用帳戶相關聯的認證資產。
  
 1. 選取 [程式**自動化**] 底下的 [ **runbook** ] 以開啟 runbook 清單。
-1. 選取 [ **+ 建立 runbook**] 來建立新的 runbook。
-1. 為 runbook 命名「MyFirstRunbook-Workflow」。
+1. 選取 [**建立 runbook**] 來建立新的 runbook。
+1. 將 Runbook 命名為「MyFirstRunbook-Workflow」。
 1. 在此情況下，您要建立[PowerShell 工作流程 runbook](automation-runbook-types.md#powershell-workflow-runbooks)。 因此，請選取 [ **Powershell 工作流程**] 作為 [ **Runbook 類型**]。
 1. 按一下 [建立] 來建立 Runbook 並開啟文字式編輯器。
 
 ## <a name="step-2---add-code-to-the-runbook"></a>步驟 2 - 將程式碼加入至 runbook
 
-您可以直接在 runbook 中輸入程式碼，也可以從程式庫控制項選取 Cmdlet、runbook 和資產，並使用任何相關參數將其新增至 runbook。 針對此逐步解說，請直接在 runbook 中輸入程式碼。
+您可以直接在 runbook 中輸入程式碼，也可以從程式庫控制項選取 Cmdlet、runbook 和資產，並使用任何相關參數將其新增至 runbook。 在本教學課程中，您會直接在 runbook 中輸入程式碼。
 
-1. 您的 runbook 目前是空白的，只有必要的**workflow**關鍵字、runbook 的名稱，以及將整個工作流程的大括弧。
+1. 您的 runbook 目前是空白的，只有必要的**Workflow**關鍵字、runbook 的名稱，以及將整個工作流程的大括弧。
 
    ```powershell-interactive
    Workflow MyFirstRunbook-Workflow
@@ -79,9 +79,9 @@ ms.locfileid: "77605067"
 1. 按一下 [**啟動**] 以啟動測試，並測試 [唯一啟用] 選項。
 1. 請注意，會建立[runbook 工作](automation-runbook-execution.md)，並在窗格中顯示其狀態。
 
-   作業狀態會以「已排入佇列」開始，表示作業正在等候雲端中的 runbook 背景工作可供使用。 當背景工作宣告作業時，狀態會變更為 [正在啟動]。 最後，當 runbook 實際開始執行時，狀態會變成 [正在執行]。
+   作業狀態會以「已**排入佇列**」開始，表示作業正在等候雲端中的 runbook 背景工作可供使用。 當背景工作宣告作業時，狀態會變更為 [**正在啟動**]。 最後，當 runbook 實際開始執行時，狀態會變成 [**正在**執行]。
 
-1. 當 runbook 作業完成時，[測試] 窗格會顯示其輸出。 在此情況下，您會看到「Hello World」。
+1. 當 runbook 作業完成時，[測試] 窗格會顯示其輸出。 在此情況下，您會看到 Hello World。
 
    ![Hello World](media/automation-first-runbook-textual/test-output-hello-world.png)
 
@@ -92,8 +92,8 @@ ms.locfileid: "77605067"
 您建立的 runbook 仍處於草稿模式。 您必須先發佈該檔案，才能在生產環境中執行。 當您發佈 Runbook 時，您會使用草稿版本覆寫現有的已發佈版本。 在此情況下，因為您剛剛建立 Runbook，所以還沒有已發佈的版本。
 
 1. 按一下 [發佈] 來發佈 Runbook，然後出現提示時按一下 [是]。
-1. 在 [ **runbook** ] 窗格中，向左流覽以查看 runbook，並注意 [**撰寫狀態**] 值設定為 [已發佈]。
-1. 向右移動以查看 MyFirstRunbook-Workflow 的窗格。
+1. 在 [ **runbook** ] 頁面中向左流覽以查看 runbook，並注意 [**撰寫狀態**] 欄位設定為 [**已發佈**]。
+1. 向右返回以查看**MyFirstRunbook-Workflow**的頁面。
 
    在頂端的選項可讓您立即啟動 runbook、排程未來的開始時間，或建立[webhook](automation-webhooks.md) ，以便透過 HTTP 呼叫來啟動 runbook。
 
@@ -107,17 +107,17 @@ ms.locfileid: "77605067"
 
    ![工作摘要](media/automation-first-runbook-textual/job-pane-status-blade-jobsummary.png)
 
-1. 一旦 runbook 狀態顯示 [已完成]，請按一下 [**輸出**]。 [輸出] 頁面隨即開啟，其中會顯示您的「Hello World」訊息。
+1. 一旦 Runbook 狀態顯示 [已完成]，請按一下 [輸出]。 [輸出] 頁面隨即開啟，您可以在其中看到**Hello World**訊息。
 
    ![工作摘要](media/automation-first-runbook-textual/job-pane-status-blade-outputtile.png)
 
 1. 關閉 [輸出] 頁面。
 
-1. 按一下 [所有記錄] 以開啟 Runbook 作業的 [資料流] 窗格。 您應該只會在輸出資料流程中看到「Hello World」。 請注意，[資料流程] 窗格可以顯示 runbook 作業的其他資料流程，例如 [詳細資訊] 和 [錯誤資料流程] （如果 runbook 寫入它們）。
+1. 按一下 [所有記錄] 以開啟 Runbook 作業的 [資料流] 窗格。 您應該只會在輸出資料流程中看到**Hello World** 。 請注意，[資料流程] 窗格可以顯示 runbook 作業的其他資料流程，例如 [詳細資訊] 和 [錯誤資料流程] （如果 runbook 寫入它們）。
 
    ![工作摘要](media/automation-first-runbook-textual/job-pane-status-blade-alllogstile.png)
 
-1. 關閉 [資料流程] 窗格和 [作業] 窗格，以返回 [MyFirstRunbook] 頁面。
+1. 關閉 [資料流程] 窗格和 [作業] 窗格，以返回 [ **MyFirstRunbook** ] 頁面。
 1. 按一下 [**資源**] 下方的 [**作業**]，開啟此 runbook 的 [作業] 頁面。 此頁面會列出您的 runbook 所建立的所有作業。 您應該只會看到列出一項作業，因為您只會執行一次作業。
 
    ![工作](media/automation-first-runbook-textual/runbook-control-job-tile.png)
@@ -131,8 +131,8 @@ ms.locfileid: "77605067"
 >[!NOTE]
 >針對 PowerShell runbook， **disconnect-azaccount**和**add-AzureRMAccount**是**disconnect-azaccount**的別名。 您可以使用這些 Cmdlet，也可以將自動化帳戶中的[模組更新](automation-update-azure-modules.md)為最新版本。 即使您剛建立新的自動化帳戶，也可能需要更新您的模組。
 
-1. 流覽至 [MyFirstRunbook-Workflow] 頁面，然後按一下 [**編輯**] 來開啟文字式編輯器。
-2. 刪除**寫入輸出**行。
+1. 流覽至 [ **MyFirstRunbook-Workflow** ] 頁面，然後按一下 [**編輯**] 來開啟文字式編輯器。
+2. 刪除 `Write-Output` 行。
 3. 將游標放在大括弧之間的空白行。
 4. 輸入或複製並貼上下列程式碼，以處理您的自動化執行身分帳戶的驗證。
 
@@ -150,11 +150,11 @@ ms.locfileid: "77605067"
 1. 按一下 [測試] 窗格，您便可測試 Runbook。
 1. 按一下 [開始] 以開始測試。 完成後，您應該會看到類似下面的輸出，其中顯示您帳戶的基本資訊。 此動作會確認認證是否有效。
 
-   ![Authenticate](media/automation-first-runbook-textual/runbook-auth-output.png)
+   ![驗證](media/automation-first-runbook-textual/runbook-auth-output.png)
 
 ## <a name="step-6---add-code-to-start-a-virtual-machine"></a>步驟 6 - 加入程式碼以啟動虛擬機器
 
-由於您的 Runbook 正在驗證您的 Azure 訂用帳戶，所以您可以管理資源。 讓我們新增命令來啟動虛擬機器。 您可以在 Azure 訂用帳戶中挑選任何 VM，而現在您會在 runbook 中硬式編碼該名稱。 如果您要管理跨多個訂用帳戶的資源，您必須使用*set-azcoNtext*參數搭配[set-azcoNtext](/powershell/module/az.accounts/get-azcontext) Cmdlet。
+既然您的 runbook 正在向 Azure 訂用帳戶進行驗證，您就可以管理資源。 讓我們新增命令來啟動虛擬機器。 您可以在 Azure 訂用帳戶中挑選任何 VM，而現在您會在 runbook 中硬式編碼該名稱。 如果您要管理跨多個訂用帳戶的資源，您必須使用*set-azcoNtext*參數搭配[set-azcoNtext](/powershell/module/az.accounts/get-azcontext) Cmdlet。
 
 1. 輸入[update-azvm 指令程式](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0
 )的呼叫，以提供要啟動之 VM 的名稱和資源組名，如下所示。 
@@ -179,7 +179,7 @@ ms.locfileid: "77605067"
 
 ## <a name="step-7---add-an-input-parameter-to-the-runbook"></a>步驟 7 - 將輸入參數加入至 Runbook
 
-您的 runbook 目前會啟動您在 runbook 中硬式編碼的 VM。 如果您可以在 runbook 啟動時指定 VM，它會更有用。 將輸入參數新增至 runbook，以提供該功能。
+您的 runbook 目前會啟動您在 runbook 中硬式編碼的 VM。 如果您可以在 runbook 啟動時指定 VM，它會更有用。 讓我們將輸入參數新增至 runbook，以提供該功能。
 
 1. 將*VMName*和*ResourceGroupName*的值新增至 runbook，並搭配使用相關聯的變數與**update-azvm** Cmdlet，如下所示。
 

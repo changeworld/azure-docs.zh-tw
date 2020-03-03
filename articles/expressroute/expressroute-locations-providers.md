@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: a46bdb47ee92a422d10aad5b41487530d23d1ec9
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 45c7fd5fd3737c21a03700b2e560944921a2558d
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484684"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228177"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作夥伴和對等互連位置
 
@@ -169,7 +169,7 @@ Azure 國家/地區雲端彼此隔離，而不是全球商業 Azure。 一個 Az
 
 若要深入了解，請參閱 [ExpressRoute (中國)](http://www.windowsazure.cn/home/features/expressroute/)
 
-### <a name="germany"></a>德國
+### <a name="germany"></a>Germany
 | **位置** | **服務提供者** |
 | --- | --- |
 | **柏林** |e-shelter、Megaport+、T-Systems |
@@ -203,7 +203,7 @@ Azure 國家/地區雲端彼此隔離，而不是全球商業 Azure。 一個 Az
 ## <a name="c1partners"></a>透過其他服務提供者的連線能力
 | **位置** | **Exchange** | **連接提供者** |
 | --- | --- | --- |
-| **阿姆斯特丹** | Equinix、Interxion、Level 3 通訊 | BICS、CloudXpress、Eurofiber、Fastweb s.p.a、Kalaam、不帶群島、MainOne 電信巴林 B、Nianet、Proximus、後電信盧森堡、Erhverv、TDC Italia、電信 Telekom 火花、Deutschland GmbH Telia、 |
+| **阿姆斯特丹** | Equinix、Interxion、Level 3 通訊 | BICS、CloudXpress、Eurofiber、Fastweb s.p.a S、Kalaam、不帶群島、MainOne 電信巴林 b. C、Nianet、Proximus、後電信盧森堡、RETN、ERHVERV、TDC Italia、電信 Telekom 火花、Deutschland GmbH Telia、 |
 | **亞特蘭大** | Equinix| Crown Castle
 | **開普敦** | Teraco | MTN |
 | **芝加哥** | Equinix| Crown Castle，Windstream 的頻譜企業 |

@@ -2,13 +2,13 @@
 title: 將資源部署至訂用帳戶
 description: 描述如何在 Azure Resource Manager 範本中建立資源群組。 此外也會說明如何將資源部署到 Azure 訂用帳戶範圍。
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: 50db0b4d46ff4e367411829aa75fa017a168372f
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.date: 03/02/2020
+ms.openlocfilehash: 2e747b7faa6e9766a577b472cc3e283d6223109e
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207650"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228117"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>在訂用帳戶層級建立資源群組和資源
 
@@ -20,6 +20,7 @@ ms.locfileid: "77207650"
 
 您可以在訂用帳戶層級部署下列資源類型：
 
+* [對應](/azure/templates/microsoft.consumption/budgets)
 * [部署](/azure/templates/microsoft.resources/deployments)
 * [peerAsns](/azure/templates/microsoft.peering/peerasns)
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
@@ -29,7 +30,7 @@ ms.locfileid: "77207650"
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
 * [roleDefinitions](/azure/templates/microsoft.authorization/roledefinitions)
 
-### <a name="schema"></a>結構描述
+### <a name="schema"></a>Schema
 
 您用於訂用帳戶層級部署的架構與資源群組部署的架構不同。
 
@@ -60,10 +61,10 @@ az deployment create \
 ```
 
 
-對於 PowerShell 部署命令，請使用 [New-AzDeployment](/powershell/module/az.resources/new-azdeployment)。 下列範例會部署範本來建立資源群組：
+針對 PowerShell 部署命令，請使用[new-azdeployment](/powershell/module/az.resources/new-azdeployment)或**AzSubscriptionDeployment**。 下列範例會部署範本來建立資源群組：
 
 ```azurepowershell-interactive
-New-AzDeployment `
+New-AzSubscriptionDeployment `
   -Name demoDeployment `
   -Location centralus `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/emptyRG.json `
@@ -300,7 +301,7 @@ $definition = Get-AzPolicyDefinition | Where-Object { $_.Properties.DisplayName 
 $locations = @("westus", "westus2")
 $policyParams =@{listOfAllowedLocations = @{ value = $locations}}
 
-New-AzDeployment `
+New-AzSubscriptionDeployment `
   -Name policyassign `
   -Location centralus `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policyassign.json `
@@ -366,7 +367,7 @@ az deployment create \
 若要使用 PowerShell 部署此範本，請使用：
 
 ```azurepowershell
-New-AzDeployment `
+New-AzSubscriptionDeployment `
   -Name definePolicy `
   -Location centralus `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policydefineandassign.json
@@ -374,8 +375,8 @@ New-AzDeployment `
 
 ## <a name="template-samples"></a>範本範例
 
-* 建立資源群組、將其鎖定並授與許可權。 請參閱 [這裡](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments/create-rg-lock-role-assignment)。
-* 建立資源群組、原則和原則指派。  請參閱 [這裡](https://github.com/Azure/azure-docs-json-samples/blob/master/subscription-level-deployment/azuredeploy.json)。
+* [建立資源群組、將其鎖定並授與許可權](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments/create-rg-lock-role-assignment)。
+* [建立資源群組、原則和原則指派](https://github.com/Azure/azure-docs-json-samples/blob/master/subscription-level-deployment/azuredeploy.json)。
 
 ## <a name="next-steps"></a>後續步驟
 

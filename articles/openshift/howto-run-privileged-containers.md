@@ -7,14 +7,14 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/05/2019
 keywords: aro、openshift、aquasec、twistlock、red hat
-ms.openlocfilehash: 4241296a991283f14fbb294fdc059ecde58d6d75
-ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
+ms.openlocfilehash: 5d28a19126c9b7ae4ef7afe2a6b69bd4a13e0c83
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77069658"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228247"
 ---
-# <a name="run-privileged-containers-in-an-azure-red-hat-openshift-cluster"></a>在 Azure Red Hat OpenShift 叢集中執行具有特殊許可權的容器
+# <a name="run-privileged-containers-in-an-azure-red-hat-openshift-cluster"></a>在 Azure Red Hat OpenShift 叢集中執行具特殊權限的容器
 
 您無法在 Azure Red Hat OpenShift 叢集上執行任何特殊許可權容器。
 允許在 ARO 叢集上執行兩個安全性監視和合規性解決方案。
@@ -113,20 +113,25 @@ oc get route aqua-web -n aqua-security
 
 | 欄位          | 值         |
 | -------------- | ------------- |
-| 協調器   | OpenShift     |
+| Orchestrator   | OpenShift     |
 | ServiceAccount | 青色-帳戶  |
-| 隨附此逐步解說的專案        | 淺綠色-安全性 |
+| 專案        | 淺綠色-安全性 |
 
 ## <a name="product-specific-steps-for-prisma-cloud--twistlock"></a>Prisma Cloud/Twistlock 的產品特定步驟
 
 您可以在[Prisma 雲端部署檔](https://docs.paloaltonetworks.com/prisma/prisma-cloud/19-11/prisma-cloud-compute-edition-admin/install/install_openshift.html)中找到我們要修改的基本指示。
 
-開始建立新的 OpenShift 專案
+請先依照 < Install Prisma Cloud 》和 < 下載 Prisma 雲端軟體一節中所述的方式，安裝 `twistcli` 工具。
+
+建立新的 OpenShift 專案
 ```
 oc new-project twistlock
 ```
 
-您可以遵循檔，直到「安裝主控台」一節，使用 Prisma Cloud container registry，而不是建立內部程式。
+略過選擇性區段「將 Prisma 的雲端映射推送至私人登錄」。 它無法在 Azure Red Hat Openshift 上使用。 請改用線上登錄。
+
+您可以遵循官方檔，同時套用下面所述的更正。
+從 [安裝主控台] 區段開始。
 
 ### <a name="install-console"></a>安裝主控台
 

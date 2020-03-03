@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: danis
-ms.openlocfilehash: e3a09a0d8412af711bfb6c539dc9d2829b1f0898
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 0309d9a794a978c736ffc4689c46565ee8fb5b00
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964578"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226691"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Azure 中虛擬機器的雲端初始化支援
 本文說明在 Azure 中布建時， [cloud init](https://cloudinit.readthedocs.io)用來設定虛擬機器（VM）或虛擬機器擴展集的支援。 一旦 Azure 布建資源之後，就會在第一次開機時執行這些雲端 init 設定。  
@@ -34,7 +34,7 @@ Azure 支援兩個布建代理程式：[雲端 init](https://cloudinit.readthedo
 
 雲端 init 也可以跨散發套件運作。 例如，您不使用 **apt-get install** 或 **yum install** 來安裝套件。 您可以改為定義要安裝的套件清單。 雲端初始化會自動針對您選取的散發版本使用原生封裝管理工具。
 
-我們一直積極地與背書的 Linux 發行版本合作夥伴合作，以便在 Azure Marketplace 中提供支援 Cloud-init 的映像。 這些映像會讓您的 Cloud-init 部署和設定順暢地與 VM 和虛擬機器擴展集運作。 一開始，我們會與背書的 Linux 散發版本合作夥伴和上游共同作業，以確保在 Azure 上使用 OS 進行雲端 init 功能，然後在散發版本套件存放庫中更新並公開提供這些套件。 
+我們一直積極地與背書的 Linux 發行版本合作夥伴合作，以便在 Azure Marketplace 中提供支援 Cloud-init 的映像。 這些映像會讓您的 Cloud-init 部署和設定順暢地與 VM 和虛擬機器擴展集運作。 一開始，我們會與背書的 Linux 散發版本合作夥伴和上游共同作業，以確保 Azure 上的 OS 能夠進行雲端 init 功能，然後更新套件並在散發版本套件存放庫中公開提供。 
 
 有兩個階段可以讓已背書的 Linux 散發版本作業系統在 Azure 上使用，套件支援，然後支援映射：
 * 「Azure 上的雲端初始化套件支援」記載哪些雲端 init 封裝已開始支援或處於預覽狀態，因此您可以在自訂映射中搭配 OS 使用這些套件。
@@ -44,9 +44,9 @@ Azure 支援兩個布建代理程式：[雲端 init](https://cloudinit.readthedo
 ### <a name="canonical"></a>Canonical
 | 發行者/版本| 供應項目 | SKU | 版本 | 映射雲端-初始化就緒 | Azure 上的雲端 init 套件支援|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|標準18.04 |UbuntuServer |18.04-LTS |latest |是 | 是 |
-|標準16.04|UbuntuServer |16.04-LTS |latest |是 | 是 |
-|標準14.04|UbuntuServer |14.04.5-LTS |latest |是 | 是 |
+|標準18.04 |UbuntuServer |18.04-LTS |最新 |是 | 是 |
+|標準16.04|UbuntuServer |16.04-LTS |最新 |是 | 是 |
+|標準14.04|UbuntuServer |14.04.5-LTS |最新 |是 | 是 |
 
 ### <a name="rhel"></a>RHEL
 | 發行者/版本 | 供應項目 | SKU | 版本 | 映射雲端-初始化就緒 | Azure 上的雲端 init 套件支援|
@@ -125,7 +125,7 @@ az vm create \
 建立 VM 後，Azure CLI 會顯示您部署專屬的資訊。 記下 `publicIpAddress`。 此位址用來存取 VM。  系統需要花一些時間建立 VM、安裝套件以及啟動應用程式。 在 Azure CLI 將您返回提示字元之後，背景工作會繼續執行。 您可以透過 SSH 連線到 VM，並使用「疑難排解」一節中所述的步驟來檢視 cloud-init 記錄。 
 
 ## <a name="troubleshooting-cloud-init"></a>針對 cloud-init 進行疑難排解
-一旦佈建 VM，Cloud-init 將會執行 `--custom-data` 中定義的所有模組和指令碼，以設定 VM。  如果您需要針對設定中的任何錯誤或遺漏進行疑難排解，則需要在 cloud-init 記錄 (位於 **/var/log/cloud-init.log**) 中搜尋模組名稱 (例如 `disk_setup` 或 `runcmd`)。
+一旦佈建 VM，Cloud-init 將會執行 `--custom-data` 中定義的所有模組和指令碼，以設定 VM。  如果您需要針對設定中的任何錯誤或遺漏進行疑難排解，則需要在 cloud-init 記錄 (位於 `disk_setup`/var/log/cloud-init.log`runcmd`) 中搜尋模組名稱 (例如 **或**)。
 
 > [!NOTE]
 > 並非每個模組失敗都會導致嚴重的 cloud-init 整體設定失敗。 例如，使用 `runcmd` 模組時，如果指令碼失敗，cloud-init 會因為執行了 runcmd 模組而仍然報告佈建成功，。

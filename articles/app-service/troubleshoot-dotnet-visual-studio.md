@@ -6,18 +6,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: seodec18
-ms.openlocfilehash: 5c0a236dc6ebf02c859d9db3f25f0e9016ac35ab
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 3305cfb81980984574961b2a84a056f5d1879ead
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688376"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227903"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>使用 Visual Studio 針對 Azure App Service 中的應用程式進行疑難排解
 ## <a name="overview"></a>概觀
 本教學課程示範如何使用 Visual Studio 工具，協助針對 [App Service](https://go.microsoft.com/fwlink/?LinkId=529714) 中的應用程式進行偵錯，方法是以[偵錯模式](https://docs.microsoft.com/visualstudio/debugger/)從遠端執行，或者檢視應用程式記錄與 Web 伺服器記錄。
 
-您將了解：
+您將瞭解：
 
 * Visual Studio 中提供的應用程式管理功能有哪些。
 * 如何使用 Visual Studio 遠端檢視，對遠端應用程式進行快速變更。
@@ -125,7 +125,7 @@ Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwli
     }
     ```
 
-1. [在 `ViewBag.Message`這行設定中斷點](https://docs.microsoft.com/visualstudio/debugger/)。
+1. [在 ](https://docs.microsoft.com/visualstudio/debugger/)這行設定中斷點`ViewBag.Message`。
 
 1. 在 [方案總管] 中，於專案上按一下滑鼠右鍵，再按一下 [發行]。
 
@@ -135,7 +135,7 @@ Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwli
 
     ![於偵錯模式中發行](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-publishdebug.png)
 
-1. 按一下 [方案總管] 中的 [顯示所有檔案]。 當部署完成且您的瀏覽器開啟至應用程式的 Azure URL 之後，請關閉瀏覽器。
+1. 按一下 **[發行]** 。 當部署完成且您的瀏覽器開啟至應用程式的 Azure URL 之後，請關閉瀏覽器。
 
 1. 在 [伺服器總管] 中，以滑鼠右鍵按一下您的應用程式，接著按一下 [連結偵錯工具]。
 
@@ -176,7 +176,7 @@ Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwli
 
 2. 在 ContosoAdsWebJob 專案中，開啟 *Functions.cs*。
 
-3. 在 `GnerateThumbnail` 方法的第一個陳述式上[設定中斷點](https://docs.microsoft.com/visualstudio/debugger/)。
+3. 在 [ 方法的第一個陳述式上](https://docs.microsoft.com/visualstudio/debugger/)設定中斷點`GnerateThumbnail`。
 
     ![設定中斷點](./media/web-sites-dotnet-troubleshoot-visual-studio/wjbreakpoint.png)
 
@@ -233,7 +233,7 @@ Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwli
 * 不建議在生產環境中執行偵錯模式。 如果您的生產應用程式並未調升規模到多個伺服器執行個體，偵錯就會防止 Web 伺服器回應其他要求。 如果您確實有多個 Web 伺服器執行個體，當您連結至偵錯工具時，會取得一個隨機執行個體，而且您無法確保後續瀏覽器要求會傳送到相同的執行個體。 此外，通常我們不會將偵錯組建部署到生產環境中，而且版本組建的編譯器最佳化作業將會使系統無法逐行顯示您的來源程式碼中所發生的事情。 針對生產環境問題的疑難排解，您的最佳資源將是應用程式追蹤與 Web 伺服器記錄。
 * 進行遠端偵錯時，避免長時間在中斷點停止運作。 Azure 會將停止超過幾分鐘的處理序視為無回應的處理序，並將其關閉。
 * 在偵錯期間，伺服器會將資料傳送至 Visual Studio，進而影響頻寬付費情況。 如需關於頻寬費率的詳細資訊，請參閱 [Azure 定價](https://azure.microsoft.com/pricing/calculator/)。
-* 確保 *Web.config* 檔案裡 `compilation` 元素中的 `debug` 屬性設為 true。 在發行偵錯組建組態時，該值預設會設為 true。
+* 確保 `debug`Web.config`compilation` 檔案裡 *元素中的* 屬性設為 true。 在發行偵錯組建組態時，該值預設會設為 true。
 
     ```xml
     <system.web>
@@ -271,7 +271,7 @@ Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwli
 如需如何在 WebJobs 中建立應用程式記錄的詳細資訊，請參閱 [如何運用 WebJobs SDK 來使用 Azure 佇列儲存體 - 如何寫入記錄](https://github.com/Azure/azure-webjobs-sdk/wiki)。 下列有關在 Azure 中檢視記錄和控制記錄儲存方式的指示也同樣適用於 WebJobs 所建立的應用程式記錄。
 
 ### <a name="add-tracing-statements-to-the-application"></a>將追蹤陳述式新增至應用程式
-1. 開啟 *Controllers\HomeController.cs*，然後使用下列程式碼來取代`Index`、`About` 和 `Contact` 方法，以便為 `System.Diagnostics` 加入 `Trace` 陳述式與 `using` 陳述式：
+1. 開啟 *Controllers\HomeController.cs*，然後使用下列程式碼來取代`Index`、`About` 和 `Contact` 方法，以便為 `Trace` 加入 `using` 陳述式與 `System.Diagnostics` 陳述式：
 
     ```csharp
     public ActionResult Index()
@@ -330,7 +330,7 @@ Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwli
     ```
 
 `WebPageTraceListener` 可讓您藉由瀏覽至 `/trace.axd` 來檢視追蹤輸出。
-1. 在 Web.config 檔案的 `<system.web>` 下方，加入<a href="https://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">追蹤元素</a>，如以下範例所示：
+1. 在 Web.config 檔案的 <a href="https://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx"> 下方，加入</a>追蹤元素`<system.web>`，如以下範例所示：
 
     ``` xml
     <trace enabled="true" writeToDiagnosticsTrace="true" mostRecent="true" pageOutput="false" />
@@ -346,7 +346,7 @@ Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwli
 
     ![trace.axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd2.png)
 
-    根據預設， `trace.axd` 只能在本機使用。 如果您想從遠端應用程式使用它，可以將 `localOnly="false"` 加入 *Web.config* 檔案中的 `trace` 元素，如以下範例所示：
+    根據預設， `trace.axd` 只能在本機使用。 如果您想從遠端應用程式使用它，可以將 `localOnly="false"` 加入 `trace`Web.config*檔案中的* 元素，如以下範例所示：
 
         <trace enabled="true" writeToDiagnosticsTrace="true" localOnly="false" mostRecent="true" pageOutput="false" />
 
@@ -567,7 +567,7 @@ App Service 應用程式會使用 IIS 7.0 及更新版本所提供的相同失�
 
 3. 在 Visual Studio 中，於 [Azure Web 應用程式] 視窗的 [組態] 索引標籤中按一下 [在管理入口網站中開啟]。
 
-4. 在 [Azure 入口網站](https://portal.azure.com)適用於您應用程式的 [設定] 頁面中，按一下 [部署認證]，然後輸入新的使用者名稱和密碼。
+4. 在應用程式的 [ [Azure 入口網站](https://portal.azure.com)**設定**] 頁面中，按一下 [**部署認證**]，然後輸入新的使用者名稱和密碼。
 
     ![新的 FTP 使用者名稱與密碼](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-enterftpcredentials.png)
 
@@ -620,7 +620,7 @@ App Service 應用程式會使用 IIS 7.0 及更新版本所提供的相同失�
 如需特定疑難排解問題的說明，請在下列任一個論壇中開啟一段討論串：
 
 * [ASP.NET 網站上的 Azure 論壇](https://forums.asp.net/1247.aspx/1?Azure+and+ASP+NET)。
-* [MSDN 上的 Azure 論壇](https://social.msdn.microsoft.com/Forums/windowsazure/)。
+* [Microsoft Q 上的 Azure 論壇 & A](https://docs.microsoft.com/answers/topics/azure-webapps.html)。
 * [StackOverflow.com](https://www.stackoverflow.com)。
 
 ### <a name="debugging-in-visual-studio"></a>Visual Studio 偵錯

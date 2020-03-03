@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60a7bf9690b4f50c771afc4745bbc2e5377adbba
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 736a543a6f28697dd4f1ddf85317e97a87b86e78
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848471"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227072"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>使用 Microsoft Authenticator 應用程式啟用無密碼登入（預覽）
 
@@ -93,6 +93,10 @@ Microsoft Authenticator 應用程式可用來登入任何 Azure AD 帳戶 (而�
 ### <a name="device-registration"></a>裝置註冊
 
 建立這個新的強式認證的必要條件之一，是安裝 Microsoft Authenticator 應用程式的裝置，也必須在 Azure AD 租使用者中註冊給個別使用者。 由於目前的裝置註冊限制，裝置只能在單一租使用者中註冊。 此限制表示，Microsoft Authenticator 應用程式中只有一個工作或學校帳戶可以啟用手機登入。
+
+### <a name="intune-mobile-application-management"></a>Intune 行動應用程式管理 
+
+受限於需要行動應用程式管理（MAM）之原則的使用者，無法在 Microsoft Authenticator 應用程式中註冊無密碼認證。 
 
 > [!NOTE]
 > 裝置註冊與裝置管理或「MDM」不同。 它只會在 Azure AD 目錄中，將裝置識別碼和使用者識別碼關聯在一起。  

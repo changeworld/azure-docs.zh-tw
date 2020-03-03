@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/27/2020
+ms.date: 03/02/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a64af5d2b19b05ec9a5eda97c43e278cdfb8b4ff
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: bdea51c6cb53222f31a07906785a94073a0293a1
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189101"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226792"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的單一登入工作階段管理
 
@@ -124,20 +124,19 @@ SSO 管理類別是使用技術設定檔的 `<UseTechnicalProfileForSessionManag
 
 ### <a name="samlssosessionprovider"></a>SamlSSOSessionProvider
 
-此提供者是用來管理信賴憑證者應用程式或同盟 SAML 識別提供者之間的 Azure AD B2C SAML 會話。 使用 SSO 提供者來儲存 SAML 識別提供者會話時，`IncludeSessionIndex` 和 `RegisterServiceProviders` 必須設定為 [`false`]。 [SAML 技術設定檔](saml-technical-profile.md)會使用下列 `SM-Saml-idp` 技術設定檔。
+此提供者是用來管理信賴憑證者應用程式或同盟 SAML 識別提供者之間的 Azure AD B2C SAML 會話。 使用 SSO 提供者來儲存 SAML 識別提供者會話時，`RegisterServiceProviders` 必須設定為 `false`。 [SAML 技術設定檔](saml-technical-profile.md)會使用下列 `SM-Saml-idp` 技術設定檔。
 
 ```XML
 <TechnicalProfile Id="SM-Saml-idp">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
   <Metadata>
-    <Item Key="IncludeSessionIndex">false</Item>
     <Item Key="RegisterServiceProviders">false</Item>
   </Metadata>
 </TechnicalProfile>
 ```
 
-使用提供者來儲存 B2C SAML 會話時，`IncludeSessionIndex` 和 `RegisterServiceProviders` 必須設定為 [`true`]。 SAML 工作階段登出需要 `SessionIndex` 和 `NameID` 才能完成。
+使用提供者來儲存 B2C SAML 會話時，`RegisterServiceProviders` 必須設定為 `true`。 SAML 工作階段登出需要 `SessionIndex` 和 `NameID` 才能完成。
 
 [SAML 簽發者技術設定檔](connect-with-saml-service-providers.md)會使用下列 `SM-Saml-idp` 技術設定檔
 
@@ -151,7 +150,7 @@ SSO 管理類別是使用技術設定檔的 `<UseTechnicalProfileForSessionManag
 
 | 屬性 | 必要項 | 描述|
 | --- | --- | --- |
-| IncludeSessionIndex | 否 | 指出應該儲存工作階段索引的提供者。 可能的值：`true` (預設) 或 `false`。|
+| IncludeSessionIndex | 否 | 目前未使用，可以忽略。|
 | RegisterServiceProviders | 否 | 指出提供者應該註冊所有已發行判斷提示的 SAML 服務提供者。 可能的值：`true` (預設) 或 `false`。|
 
 

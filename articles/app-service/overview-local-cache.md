@@ -6,17 +6,17 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: 87c95d8bbf199f232eca5475f4d8f0c64427a198
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: 1945730acaddb0c1c7ee1b28eeb926635efad643
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680880"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227878"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure App Service 本機快取概觀
 
 > [!NOTE]
-> Function 應用程式或容器化的 App Service 應用程式中不支援本機快取，例如在 [Linux 上的 App Service](containers/app-service-linux-intro.md) 中。
+> 函數應用程式或容器化 App Service 應用程式中不支援本機快取，例如在[Windows 容器](app-service-web-get-started-windows-container.md)或[Linux 上的 App Service](containers/app-service-linux-intro.md)上。
 
 
 Azure App Service 的內容儲存在 Azure 儲存體中，並且會持久顯示為內容共用。 這項設計的目的是為了要與各種應用程式搭配使用，而且其具有下列特性︰  
@@ -102,13 +102,13 @@ Azure App Service 本機快取功能可讓您以 Web 角色檢視您的內容。
 ### <a name="how-can-i-tell-if-my-site-has-switched-to-using-local-cache"></a>如何知道我的網站是否已切換成使用本機快取？
 如果搭配預備環境使用「本機快取」功能，在本機快取準備就緒之前將無法完成交換作業。 若要檢查您的網站是否正在執行本機快取，您可以檢查工作者處理序環境變數 `WEBSITE_LOCALCACHE_READY`。 使用 [背景工作角色處理序環境變數](https://github.com/projectkudu/kudu/wiki/Process-Threads-list-and-minidump-gcdump-diagsession#process-environment-variable) 頁面中的指示，存取多個執行個體上的工作者處理序環境變數。  
 
-### <a name="i-just-published-new-changes-but-my-app-does-not-seem-to-have-them-why"></a>我剛剛發佈了新的變更，但我的應用程式似乎沒有變更。 為什麼呢？
+### <a name="i-just-published-new-changes-but-my-app-does-not-seem-to-have-them-why"></a>我剛剛發佈了新的變更，但我的應用程式似乎沒有變更。 為什麼？
 如果您的應用程式使用「本機快取」，則您需要重新啟動您的網站，以取得最新的變更。 不想對生產網站發佈變更嗎？ 請參閱前面的最佳作法一節中的位置選項。
 
 ### <a name="where-are-my-logs"></a>我的記錄在哪裡？
 使用本機快取，您的記錄和資料的資料夾看起來會有點不同。 不過，子資料夾的結構會保持相同，不同之處在於這些子資料夾會位在格式為「唯一 VM 識別碼」+ 時間戳記的子資料夾底下。
 
-### <a name="i-have-local-cache-enabled-but-my--app-still-gets-restarted-why-is-that-i-thought-local-cache-helped-with-frequent-app-restarts"></a>我已啟用「本機快取」，但我的應用程式仍然重新啟動。 這是為什麼？ 我以為「本機快取」有助於頻繁的應用程式重新啟動。
+### <a name="i-have-local-cache-enabled-but-my--app-still-gets-restarted-why-is-that-i-thought-local-cache-helped-with-frequent-app-restarts"></a>我已啟用「本機快取」，但我的應用程式仍然重新啟動。 為什麼？ 我以為「本機快取」有助於頻繁的應用程式重新啟動。
 「本機快取」確實有助於防止儲存體相關應用程式重新啟動。 不過，您的應用程式仍有可能在計劃性 VM 基礎結構升級期間重新啟動。 整體而言，啟用「本機快取」後應該比較不會發生應用程式重新啟動。
 
 ### <a name="does-local-cache-exclude-any-directories-from-being-copied-to-the-faster-local-drive"></a>「本機快取」會排除所有目錄而不會複製到更快的本機磁碟機嗎？

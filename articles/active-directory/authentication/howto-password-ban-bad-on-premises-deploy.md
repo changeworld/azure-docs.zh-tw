@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f61ab87a3eb1bd4b81a8e67a182a4cb6a09aa069
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 4a3eb121b68311084fd516c6abb7e00ad70eba8b
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888965"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226833"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>部署 Azure AD 密碼保護
 
@@ -32,7 +32,7 @@ ms.locfileid: "75888965"
 * 使用者通常會使用不安全的密碼。
 * 他們必須通知使用者即將進行的安全性強制變更、可能對他們造成的影響，以及如何選擇更安全的密碼。
 
-也可以進行更強的密碼驗證，以影響您現有的 Active Directory 網域控制站部署自動化。 我們建議在審查期間評估期間，至少有一個 DC 升級和一個 DC 降級，以協助您事先發現這類問題。  如需詳細資訊，請參閱：
+也可以進行更強的密碼驗證，以影響您現有的 Active Directory 網域控制站部署自動化。 我們建議在審查期間評估期間，至少有一個 DC 升級和一個 DC 降級，以協助您事先發現這類問題。  如需詳細資訊，請參閱
 
 * [Ntdsutil.exe 無法設定弱式目錄服務修復模式密碼](howto-password-ban-bad-on-premises-troubleshoot.md#ntdsutilexe-fails-to-set-a-weak-dsrm-password)
 * [網域控制站複本升級因弱式目錄服務修復模式密碼而失敗](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password)
@@ -106,6 +106,7 @@ Azure AD 密碼保護有兩個必要的安裝程式。 您可以從[Microsoft �
    * 每個這類服務只能為單一樹系提供密碼原則。 主機電腦必須加入該樹系中的網域。 同時支援根域和子域。 在樹系的每個網域中至少有一個 DC 與密碼保護電腦之間，您需要有網路連線能力。
    * 您可以在網域控制站上執行 proxy 服務以進行測試。 但是該網域控制站接著需要網際網路連線，這可能是安全性考慮。 我們建議僅供測試之用。
    * 我們建議至少有兩部 proxy 伺服器來進行冗余。 請參閱[高可用性](howto-password-ban-bad-on-premises-deploy.md#high-availability)。
+   * 不支援在唯讀網域控制站上執行 proxy 服務。
 
 1. 使用 `AzureADPasswordProtectionProxySetup.exe` 軟體安裝程式安裝 Azure AD 密碼保護 Proxy 服務。
    * 軟體安裝並不需要重新開機。 您可以使用標準 MSI 程序來自動執行軟體安裝，例如：
@@ -124,7 +125,7 @@ Azure AD 密碼保護有兩個必要的安裝程式。 您可以從[Microsoft �
 
    * 若要檢查服務是否正在執行，請使用下列 PowerShell 命令：
 
-      `Get-Service AzureADPasswordProtectionProxy | fl`答案中所述步驟，工作帳戶即會啟用。
+      `Get-Service AzureADPasswordProtectionProxy | fl`第 1 課：建立 Windows Azure 儲存體物件{2}。
 
      結果應該會顯示「正在執行」**狀態**。
 
@@ -133,7 +134,7 @@ Azure AD 密碼保護有兩個必要的安裝程式。 您可以從[Microsoft �
 
      `Register-AzureADPasswordProtectionProxy`
 
-     此 Cmdlet 需要您 Azure 租使用者的全域管理員認證。 您也需要內部部署 Active Directory 樹系根域中的網域系統管理員許可權。 您也必須使用具有本機系統管理員許可權的帳戶來執行此 Cmdlet。
+     此 Cmdlet 需要您 Azure 租使用者的全域管理員認證。 您也需要內部部署 Active Directory 樹系根域中的網域系統管理員許可權。 此 Cmdlet 也必須使用具有本機系統管理員許可權的帳戶來執行。
 
      在此命令成功針對 proxy 服務執行一次之後，其他的調用將會成功，但不需要。
 
@@ -179,7 +180,7 @@ Azure AD 密碼保護有兩個必要的安裝程式。 您可以從[Microsoft �
    > 第一次針對特定的 Azure 租使用者執行此 Cmdlet 時，可能會有明顯的延遲。 除非回報失敗，否則請不要擔心這種延遲。
 
 1. 註冊樹系。
-   * 您必須使用 `Register-AzureADPasswordProtectionForest` PowerShell Cmdlet，以必要的認證來初始化內部部署 Active Directory 樹系，才能與 Azure 進行通訊。
+   * 使用 `Register-AzureADPasswordProtectionForest` PowerShell Cmdlet，將具有必要認證的內部部署 Active Directory 樹系初始化，以與 Azure 進行通訊。
 
       此 Cmdlet 需要您 Azure 租使用者的全域管理員認證。  您也必須使用具有本機系統管理員許可權的帳戶來執行此 Cmdlet。 它也需要內部部署 Active Directory 企業系統管理員許可權。 此步驟會針對每一樹系執行一次。
 
@@ -266,7 +267,7 @@ Azure AD 密碼保護有兩個必要的安裝程式。 您可以從[Microsoft �
    Proxy 服務不支援使用特定認證來連接 HTTP proxy。
 
 1. 選擇性：將 [密碼保護] 的 proxy 服務設定為在特定通訊埠上接聽。
-   * 網域控制站上的密碼保護 DC 代理程式軟體會使用 RPC over TCP 來與 proxy 服務進行通訊。 根據預設，proxy 服務會在任何可用的動態 RPC 端點上進行接聽。 但是，您可以將服務設定為在特定 TCP 通訊埠上接聽（如果您的環境中有網路拓朴或防火牆需求，這是必要的）。
+   * 網域控制站上的密碼保護 DC 代理程式軟體會使用 RPC over TCP 來與 proxy 服務進行通訊。 根據預設，proxy 服務會在任何可用的動態 RPC 端點上進行接聽。 您可以根據環境中的網路拓朴或防火牆需求，將服務設定為在特定 TCP 通訊埠上接聽。
       * <a id="static" /></a>若要將服務設定為在靜態埠下執行，請使用 `Set-AzureADPasswordProtectionProxyConfiguration` Cmdlet。
 
          ```powershell
@@ -306,7 +307,7 @@ Azure AD 密碼保護有兩個必要的安裝程式。 您可以從[Microsoft �
 
    您可以在還不是網域控制站的電腦上安裝 DC 代理程式服務。 在此情況下，服務將會啟動並執行，但會維持非作用中狀態，直到電腦升級為網域控制站為止。
 
-   您可以使用標準 MSI 程式來自動安裝軟體。 例如：
+   您可以使用標準 MSI 程式來自動安裝軟體。 例如，
 
    `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`
 
@@ -343,6 +344,8 @@ Proxy 代理程式支援自動升級。 自動升級會使用 Microsoft Azure AD
 ## <a name="read-only-domain-controllers"></a>唯讀網域控制站
 
 密碼變更/集不會在唯讀網域控制站（Rodc）上處理及保存。 它們會轉送到可寫入的網域控制站。 因此，您不需要在 Rodc 上安裝 DC 代理程式軟體。
+
+不支援在唯讀網域控制站上執行 proxy 服務。
 
 ## <a name="high-availability"></a>高可用性
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jonbeck
-ms.openlocfilehash: 700847c041a5b9111414d6b43ff734d83b1ca49f
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: e0abae8ada603e4e6b98ab0dfe9d794186e00000
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77913458"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226783"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>前幾代的虛擬機器大小
 
@@ -101,7 +101,7 @@ NVv2 執行個體中的每個 GPU 均隨附 GRID 授權。 此授權可讓您彈
 
 基本層大小主要適用於開發工作負載，以及其他不需要負載平衡、自動調整或記憶體高用量虛擬機器的應用程式。
 
-| 大小 - 大小\名稱 | vCPU | 記憶體|NIC (最大)| 暫存磁碟大小上限 | 最大 資料磁碟 (每個 1023 GB)| 最大 IOPS (每個磁碟 300) |
+| 大小 - 大小\名稱 | vCPU | 記憶體|NIC (最大)| 暫存磁碟大小上限 | 最大值 資料磁碟 (每個 1023 GB)| 最大值 IOPS (每個磁碟 300) |
 |---|---|---|---|---|---|---|
 | A0\Basic_A0 | 1 | 768 MB  | 2 | 20 GB  | 1  | 1x300  |
 | A1\Basic_A1 | 1 | 1.75 GB | 2 | 40 GB  | 2  | 2x300  |
@@ -166,6 +166,9 @@ A8-A11 和 H 系列大小也稱為 *計算密集型執行個體*。 執行這些
 | Standard_A11 | 16 | 112 | 382 | 64 | 64x500 | 4 |
 
 <sup>1</sup> 對於 MPI 應用程式，FDR InfiniBand 網路會啟用專用 RDMA 後端網路，以提供超低延遲和高頻寬。  
+
+> [!NOTE]
+> A8 – A11 Vm 已規劃于3/2021 淘汰。 如需詳細資訊，請參閱[HPC 遷移指南](https://azure.microsoft.com/resources/hpc-migration-guide/)。
 
 <br>
 

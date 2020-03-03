@@ -2,19 +2,17 @@
 title: 將資源部署至管理群組
 description: 說明如何在 Azure Resource Manager 範本的管理群組範圍中部署資源。
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: 0419f3daca6845c6809c9f66e870fdf884a7193f
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.date: 03/02/2020
+ms.openlocfilehash: 3b2eeaf2c63a50cda1a32fee94c1e5b99822075d
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77117050"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228104"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>在管理群組層級建立資源
 
 您通常會將 Azure 資源部署到 Azure 訂用帳戶中的資源群組。 不過，您也可以在管理群組層級建立資源。 您可以使用管理群組層級部署來採取對該層級有意義的動作，例如指派[角色型存取控制](../../role-based-access-control/overview.md)或套用[原則](../../governance/policy/overview.md)。
-
-目前，若要在管理群組層級部署範本，您必須使用 REST API。
 
 ## <a name="supported-resources"></a>支援的資源
 
@@ -46,6 +44,15 @@ https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeployment
 ## <a name="deployment-commands"></a>部署命令
 
 管理群組部署的命令與資源群組部署的命令不同。
+
+針對 Azure PowerShell，請使用[AzManagementGroupDeployment](/powershell/module/az.resources/new-azmanagementgroupdeployment)。 
+
+```azurepowershell-interactive
+New-AzManagementGroupDeployment `
+  -ManagementGroupId "myMG" `
+  -Location "West US" `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/management-level-deployment/azuredeploy.json
+```
 
 針對 REST API，請使用 [[部署-在管理群組範圍建立](/rest/api/resources/deployments/createorupdateatmanagementgroupscope)]。
 
@@ -150,7 +157,7 @@ https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeployment
 
 ## <a name="template-sample"></a>範本範例
 
-* 建立資源群組、原則和原則指派。  請參閱 [這裡](https://github.com/Azure/azure-docs-json-samples/blob/master/management-level-deployment/azuredeploy.json)。
+* [建立資源群組、原則和原則指派](https://github.com/Azure/azure-docs-json-samples/blob/master/management-level-deployment/azuredeploy.json)。
 
 ## <a name="next-steps"></a>後續步驟
 

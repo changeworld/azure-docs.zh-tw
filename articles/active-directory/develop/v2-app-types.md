@@ -17,12 +17,12 @@ ms.date: 04/06/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 8bfe668dc2eb4e0e00de34231f4c232f5240a82d
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 650e5fb5d0b2c5522a70944991e9e49037c3b4fa
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700748"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226955"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Microsoft 身分識別平臺的應用程式類型
 
@@ -31,7 +31,7 @@ Microsoft 身分識別平台 (v2.0) 端點支援各種新式應用程式架構�
 > [!NOTE]
 > Microsoft 身分識別平臺端點不支援所有 Azure Active Directory （Azure AD）案例和功能。 若要判斷您是否應該使用 Microsoft 身分識別平臺端點，請參閱[microsoft 身分識別平臺限制](active-directory-v2-limitations.md)。
 
-## <a name="the-basics"></a>基本概念
+## <a name="the-basics"></a>基本知識
 
 您必須在新的[應用程式註冊入口網站](https://go.microsoft.com/fwlink/?linkid=2083908)中註冊每個使用 Microsoft 身分識別平臺端點的應用程式。 應用程式註冊程序會為您的應用程式收集和指派下列值：
 
@@ -58,7 +58,7 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 
 若要查看此案例的實際運作情況，請在[Microsoft 身分識別平臺開始](v2-overview.md#getting-started)使用一節中，試用其中一個單頁應用程式程式碼範例。
 
-## <a name="web-apps"></a>Web apps
+## <a name="web-apps"></a>Web 應用程式
 
 針對使用者透過瀏覽器存取的 Web 應用程式 (.NET、PHP、Java、Ruby、Python、Node)，您可以使用 [OpenID Connect](active-directory-v2-protocols.md) 來執行使用者登入。 在 OpenID Connect 中，Web 應用程式會收到識別碼權杖。 識別碼權杖是一個安全性權杖，可驗證使用者的身分識別並以宣告形式提供使用者的相關資訊：
 
@@ -99,7 +99,7 @@ Accept: application/json
 ...
 ```
 
-Web API 會使用這個存取權杖來驗證 API 呼叫端的身分識別，並從存取權杖中所編碼的宣告擷取呼叫端的相關資訊。 如需 Microsoft 身分識別平臺端點中所用不同權杖類型的詳細資訊，請參閱[存取權杖](access-tokens.md)參考和[id_token 參考](id-tokens.md)
+Web API 會使用這個存取權杖來驗證 API 呼叫端的身分識別，並從存取權杖中所編碼的宣告擷取呼叫端的相關資訊。 如需 Microsoft 身分識別平臺端點中所用不同權杖類型的詳細資訊，請參閱[存取權杖](access-tokens.md)參考和[id_token](id-tokens.md)參考。
 
 Web API 可透過公開權限的方式 (亦稱為[範圍](v2-permissions-and-consent.md))，讓使用者能夠選擇加入或退出特定的功能或資料。 為了讓發出呼叫的應用程式取得範圍的權限，使用者必須在流程中對範圍表示同意。 Microsoft 身分識別平臺端點會要求使用者提供許可權，然後在 Web API 接收的所有存取權杖中記錄許可權。 Web API 會驗證它在每次呼叫所收到的存取權杖，並執行授權檢查。
 
