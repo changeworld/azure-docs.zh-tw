@@ -1,23 +1,23 @@
 ---
-title: 使用入口網站以 Azure 防火牆 DNAT 篩選輸入流量
+title: 使用入口網站以 Azure 防火牆 DNAT 篩選輸入網際網路流量
 description: 在本教學課程中，您將了解如何使用 Azure 入口網站部署及設定 Azure 防火牆 DNAT。
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 02/26/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 2f390f3ad540a2a25055dfcc97cc3af1f22c2b73
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 1528087ced54ddcab2e3dd44b65fb3411cae3004
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195728"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621793"
 ---
-# <a name="tutorial-filter-inbound-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站以 Azure 防火牆 DNAT 篩選輸入流量
+# <a name="tutorial-filter-inbound-internet-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站以 Azure 防火牆 DNAT 篩選輸入網際網路流量
 
-您可以設定 Azure 防火牆目的地網路位址轉譯 (DNAT)，將輸入流量轉譯及篩選至您的子網路。 當您設定 DNAT 時，NAT 規則集合動作是設為 **Dnat**。 接著，NAT 規則集合中的每個規則均可用來將防火牆公用 IP 和連接埠轉譯為私人 IP 和連接埠。 DNAT 規則會隱含地新增對應的網路規則，以允許已轉譯的流量。 若要覆寫這個行為，您可以明確地使用符合已轉譯流量的拒絕規則來新增網路規則集合。 若要深入了解 Azure 防火牆規則處理邏輯，請參閱 [Azure 防火牆規則處理邏輯](rule-processing.md)。
+您可以設定 Azure 防火牆目的地網路位址轉譯 (DNAT)，將輸入網際網路流量轉譯及篩選至您的子網路。 當您設定 DNAT 時，NAT 規則集合動作是設為 **Dnat**。 接著，NAT 規則集合中的每個規則均可用來將防火牆公用 IP 和連接埠轉譯為私人 IP 和連接埠。 DNAT 規則會隱含地新增對應的網路規則，以允許已轉譯的流量。 若要覆寫這個行為，您可以明確地使用符合已轉譯流量的拒絕規則來新增網路規則集合。 若要深入了解 Azure 防火牆規則處理邏輯，請參閱 [Azure 防火牆規則處理邏輯](rule-processing.md)。
 
 在本教學課程中，您會了解如何：
 
@@ -41,7 +41,7 @@ ms.locfileid: "74195728"
 2. 在 Azure 入口網站首頁上，按一下 [資源群組]  ，然後按一下 [新增]  。
 3. 在 [資源群組名稱]  中，輸入 **RG-DNAT-Test**。
 4. 在 [訂用帳戶]  中，選取您的訂用帳戶。
-5. 在 [資源群組位置]  中，選取位置。 您所建立的所有後續資源都必須位在相同的位置。
+5. 在 [資源群組位置]  中，選取位置。 您建立的所有後續資源都必須位於相同的位置。
 6. 按一下頁面底部的 [新增]  。
 
 ## <a name="set-up-the-network-environment"></a>設定網路環境
@@ -126,7 +126,7 @@ ms.locfileid: "74195728"
 **大小**
 
 1. 針對執行 Windows Server 的測試虛擬機器選擇適當的大小。 例如，**B2ms** (8 GB 的 RAM，16 GB 的儲存空間)。
-2. 按一下 [選取]  。
+2. 按一下 [選取]。 
 
 **設定**
 
@@ -154,7 +154,7 @@ ms.locfileid: "74195728"
    |名稱     |FW-DNAT-test|
    |訂用帳戶     |\<您的訂用帳戶\>|
    |資源群組     |**使用現有項目**︰RG-DNAT-Test |
-   |位置     |選取您先前使用的相同位置|
+   |Location     |選取您先前使用的相同位置|
    |選擇虛擬網路     |**使用現有項目**︰VN-Hub|
    |公用 IP 位址     |**建立新項目**。 公用 IP 位址必須是標準 SKU 類型。|
 

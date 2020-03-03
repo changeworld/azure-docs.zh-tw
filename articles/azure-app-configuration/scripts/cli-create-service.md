@@ -1,23 +1,23 @@
 ---
 title: Azure CLI 指令碼範例 - 建立 Azure 應用程式組態存放區
 titleSuffix: Azure App Configuration
-description: Azure CLI 指令碼範例 - 建立 Azure 應用程式設定存放區
+description: 使用 Azure CLI 指令碼來建立 Azure 應用程式組態存放區
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: sample
 ms.date: 01/24/2020
 ms.author: lcozzens
-ms.openlocfilehash: 11f3aec10aed0dc8bc0c9831d563dca2b0c1a6fb
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 667cf9545d87bd9277c59d066933710339b6c079
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77468315"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623074"
 ---
 # <a name="create-an-azure-app-configuration-store"></a>建立 Azure 應用程式設定存放區
 
-此範例指令碼會在新資源群組中建立具有隨機名稱的新 Azure 應用程式設定執行個體。
+此範例指令碼會在新資源群組中建立新的 Azure 應用程式組態執行個體。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -44,7 +44,9 @@ appConfigHostname=$(az appconfig create \
   --location eastus \
   --resource-group $myResourceGroupName \
   --query hostName \
-  -o tsv)
+  --sku free \
+  -o tsv
+  )
 
 # Get the AppConfig connection string 
 appConfigConnectionString=$(az appconfig credential list \

@@ -1,21 +1,21 @@
 ---
-title: 教學課程：使用 Azure 事件方格監視 Key Vault
-description: 教學課程：使用 Azure 事件方格訂閱 Key Vault 事件
-services: media-services
+title: 使用 Azure 事件方格監視 Key Vault
+description: 使用 Azure 事件方格訂閱 Key Vault 事件
+services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 5771af365b763d2152eea4ef4f662e08769b378c
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 2424fbac3c95c1c60e6ef61cba53e481f4bb478a
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133357"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650736"
 ---
-# <a name="tutorial-monitoring-key-vault-with-azure-event-grid-preview"></a>教學課程：使用 Azure 事件方格監視 Key Vault (預覽)
+# <a name="monitoring-key-vault-with-azure-event-grid-preview"></a>使用 Azure 事件方格監視 Key Vault (預覽)
 
 Key Vault 與事件方格的整合目前為預覽狀態。 它可讓使用者在金鑰保存庫中儲存的祕密狀態變更時收到通知。 狀態變更定義為即將到期的祕密 (在到期日 30 天內)、已過期的祕密，或有新版本可用的祕密。 支援全部三種祕密類型 (金鑰、憑證和祕密) 的通知。
 
@@ -27,10 +27,10 @@ Event Grid 使用[事件訂閱](../event-grid/concepts.md#event-subscriptions)�
 
 如需詳細資訊，請參閱 [Key Vault 事件結構描述](../event-grid/event-schema-key-vault.md)。
 
-> [!NOTE]
-> 只有設定訂用帳戶之後所建立的祕密版本 (全部三種類型)，才會觸發事件。
->
-> 針對現有的祕密，您必須產生新的版本。
+> [!WARNING]
+> 通知事件只會在新版本的祕密、金鑰和憑證上觸發，而且您必須先訂閱金鑰保存庫上的事件，才能接收這些通知。
+> 
+> 只有在憑證根據您指定的原則自動更新時，才會收到憑證的通知事件。
 
 ## <a name="practices-for-consuming-events"></a>消費事件做法
 
@@ -45,7 +45,7 @@ Event Grid 使用[事件訂閱](../event-grid/concepts.md#event-subscriptions)�
 
 - [Azure Key Vault 概觀](key-vault-overview.md)
 - [Azure 事件方格概觀](../event-grid/overview.md)
-- 作法：[將 Key Vault 事件路由傳送至自動化 Runbook (預覽)](event-grid-tutorial.md)。
-- 作法：[在金鑰保存庫祕密變更時收到電子郵件](event-grid-logicapps.md)
+- 如何：[將 Key Vault 事件路由傳送至自動化 Runbook (預覽)](event-grid-tutorial.md)。
+- 如何：[在金鑰保存庫祕密變更時收到電子郵件](event-grid-logicapps.md)
 - [Azure Key Vault 的 Azure 事件方格事件結構描述 (預覽)](../event-grid/event-schema-key-vault.md)
 - [Azure 自動化概觀](../automation/index.yml)

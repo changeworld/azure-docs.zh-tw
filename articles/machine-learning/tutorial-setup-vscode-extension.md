@@ -1,5 +1,5 @@
 ---
-title: 教學課程：設定 Azure Machine Learning Visual Studio Code 擴充功能
+title: 教學課程：設定 Visual Studio Code 擴充功能
 titleSuffix: Azure Machine Learning
 description: 了解如何設定 Visual Studio Code Azure Machine Learning 擴充功能。
 services: machine-learning
@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 01/16/2019
-ms.openlocfilehash: 4000fcc80d507d3b1e871d7f3288fc3b77693c76
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.date: 02/24/2020
+ms.openlocfilehash: 583071ee22e4fb9cffc741520b1583790002a5bf
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76157459"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604854"
 ---
 # <a name="set-up-azure-machine-learning-visual-studio-code-extension"></a>設定 Azure Machine Learning Visual Studio Code 擴充功能
 
@@ -30,7 +30,8 @@ ms.locfileid: "76157459"
 ## <a name="prerequisites"></a>Prerequisites
 
 - Azure 訂用帳戶。 如果您沒有訂用帳戶，請註冊以[試用免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
-- 安裝 [Visual Studio Code](https://code.visualstudio.com/docs/setup/setup-overview)，這是輕量型、跨平台的程式碼編輯器。 
+- Visual Studio Code。 如果沒有 Visual Studio Code，請[安裝](https://code.visualstudio.com/docs/setup/setup-overview)。
+- [Python 3](https://www.python.org/downloads/) \(英文\)
 
 ## <a name="install-the-extension"></a>安裝延伸模組
 
@@ -38,6 +39,9 @@ ms.locfileid: "76157459"
 1. 從 [活動列]  中選取 [擴充功能]  圖示，以開啟 [擴充功能] 檢視。
 1. 在 [擴充功能] 檢視中，搜尋「Azure Machine Learning」。
 1. 選取 [安裝]  。
+
+    > [!div class="mx-imgBorder"]
+    > ![安裝 Azure Machine Learning VS Code 擴充功能](./media/tutorial-setup-vscode-extension/install-aml-vscode-extension.PNG)
 
 > [!NOTE]
 > 或者，您可以[直接下載安裝程式](https://aka.ms/vscodetoolsforai)，以透過 Visual Studio Marketplace 安裝 Azure Machine Learning 擴充功能。 
@@ -49,9 +53,9 @@ ms.locfileid: "76157459"
 若要在 Azure 上佈建資源及執行工作負載，您必須使用您的 Azure 帳戶認證登入。 為了協助管理帳戶，Azure Machine Learning 會自動安裝 Azure 帳戶擴充功能。 請造訪下列網站，[深入了解 Azure 帳戶擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)。
 
 1. 從功能表列中選取 [檢視] > [命令選擇區]  ，以開啟命令選擇區。 
-1. 在文字方塊中輸入命令 "Azure:Sign In" 以開始登入程序。
+1. 在命令選擇區中輸入命令 "Azure:Sign In" 以開始登入流程。
 
-## <a name="run-a-script-in-azure"></a>在 Azure 中執行指令碼
+## <a name="run-a-machine-learning-model-training-script-in-azure"></a>在 Azure 中執行機器學習模型訓練指令碼
 
 既然您已使用帳戶憑證登入 Azure，請使用本節中的步驟來了解如何使用此擴充功能來定型機器學習模型。
 
@@ -79,16 +83,16 @@ ms.locfileid: "76157459"
 
     ```json
     {
-        "workspace": "WS12191742",
-        "resourceGroup": "WS12191742-rg2",
+        "workspace": "WS01311608",
+        "resourceGroup": "WS01311608-rg1",
         "location": "South Central US",
-        "experiment": "WS12191742-exp2",
+        "experiment": "WS01311608-exp1",
         "compute": {
-            "name": "WS12191742-com2",
+            "name": "WS01311608-com1",
             "vmSize": "Standard_D1_v2, Cores: 1; RAM: 3.5GB;"
         },
         "runConfiguration": {
-            "filename": "WS12191742-com2-rc1",
+            "filename": "WS01311608-com1-rc1",
             "condaDependencies": [
                 "python=3.6.2",
                 "tensorflow=1.15.0"
@@ -100,8 +104,38 @@ ms.locfileid: "76157459"
     }
     ```
 
-1. 選取 [提交實驗]  以在 Azure 中執行您的實驗。 這會將 `train.py` 和組態檔傳送至您的 Azure Machine Learning 工作區。 然後會在 Azure 中的計算資源上啟動訓練作業。
-1. 幾分鐘後，就會在本機建立名為 `output` 的目錄，其中包含定型的 TensorFlow 模型。
+1. 對組態感到滿意後，請開啟命令選擇區並輸入下列命令，以提交您的實驗：
+
+    ```text
+    Azure ML: Submit Experiment
+    ```
+
+    這會將 `train.py` 和組態檔傳送至您的 Azure Machine Learning 工作區。 然後會在 Azure 中的計算資源上啟動訓練作業。
+
+### <a name="track-the-progress-of-the-training-script"></a>追蹤定型指令碼的進度
+
+指令碼可能需要幾分鐘的時間來執行。 若要追蹤進度：
+
+1. 選取活動列中的 **Azure** 圖示。
+1. 展開您的訂用帳戶節點。
+1. 展開目前執行的實驗節點。 這位在 `{workspace}/Experiments/{experiment}` 節點中，其中您的工作區和實驗的值與組態檔中所定義的屬性相同。
+1. 此處會列出實驗的所有執行，以及其狀態。 若要取得最近的狀態，請按一下 Azure Machine Learning 檢視頂端的 [重新整理] 圖示。
+
+    > [!div class="mx-imgBorder"]
+    > ![追蹤實驗進度](./media/tutorial-setup-vscode-extension/track-experiment-progress.PNG)
+
+### <a name="download-the-trained-model"></a>下載已定型的模型
+
+實驗執行完成時，會輸出已定型的模型。 若要在本機下載輸出：
+
+1. 以滑鼠右鍵按一下最近的執行，然後選取 [下載輸出]  。
+
+    > [!div class="mx-imgBorder"]
+    > ![下載已定型的模型](./media/tutorial-setup-vscode-extension/download-trained-model.PNG)
+
+1. 選取要儲存輸出的位置。
+1. 系統會在本機下載含有您的執行名稱的資料夾。 瀏覽到該頁面。
+1. 模型檔案位於 `outputs/outputs/model` 目錄內。
 
 ## <a name="next-steps"></a>後續步驟
 

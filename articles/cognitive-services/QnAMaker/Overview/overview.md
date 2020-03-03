@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 11/22/2019
+ms.date: 02/21/2020
 ms.author: diberry
-ms.openlocfilehash: 7bac2546ac35f5f188a6490c4d9ecb2b86d7bb2d
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 91a63e87e937eab4c02d2b86026aa09472cb15ef
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843051"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561083"
 ---
 # <a name="what-is-the-qna-maker-service"></a>什麼是 QnA Maker 服務？
 
@@ -77,6 +77,10 @@ QnA Maker 提供多回合提示和主動式學習，可協助您改善基本的�
 ## <a name="development-lifecycle"></a>開發生命週期
 
 QnA Maker 提供撰寫、定型及發佈功能以及共同作業權限來整合到完整的開發生命週期。
+
+> [!div class="mx-imgBorder"]
+> ![開發週期的概念影像](../media/qnamaker-overview-learnabout/development-cycle.png)
+
 
 ## <a name="how-do-i-start"></a>如何開始使用？
 

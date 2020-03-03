@@ -3,16 +3,16 @@ title: Azure EA VM 保留執行個體
 description: 本文將摘要說明 VM 保留執行個體的 Azure 保留如何協助您使用企業註冊來節省成本。
 author: bandersmsft
 ms.author: banders
-ms.date: 02/14/2020
+ms.date: 02/21/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 3eceef9dc0bc29f7e105ac0b110bd2550413fa61
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 53af5e69a90eb376c28ef364e7d9c5b29287790c
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200705"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560572"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Azure EA VM 保留執行個體
 
@@ -57,10 +57,12 @@ Enterprise 合約客戶可以在 Azure 入口網站和 REST API 中檢視成本�
 
 ### <a name="how-can-i-change-the-subscription-associated-with-reserved-instance-or-transfer-my-reserved-instance-benefits-to-a-subscription-under-the-same-account"></a>如何變更與保留執行個體相關聯的訂用帳戶，或將保留執行個體權益轉移到同一個帳戶下的訂用帳戶？
 
-在任何指定的時間，只有一個訂用帳戶可以接收保留執行個體權益。 您可以變更可接收保留執行個體權益的訂用帳戶，其做法如下：
+您可以變更可接收保留執行個體權益的訂用帳戶，其做法如下：
 
 - 登入 [Azure 入口網站](https://aka.ms/reservations)。
 - 在相同帳戶之下建立不同訂用帳戶的關聯，以更新已套用的訂用帳戶範圍。
+
+如需變更保留範圍的詳細資訊，請參閱[變更保留範圍](../reservations/manage-reserved-vm-instance.md#change-the-reservation-scope)。
 
 ### <a name="how-to-view-reserved-instance-usage-details"></a>如何檢視保留執行個體使用量詳細資料
 

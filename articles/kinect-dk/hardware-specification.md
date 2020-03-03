@@ -14,12 +14,12 @@ ms.custom:
 audience: ITPro
 manager: dcscontentpm
 ms.localizationpriority: high
-ms.openlocfilehash: dbe4cac64e324c1188ec5a01b4da3935a5d5b479
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: e0d42a3ce1dd9deb5e73500371c367134ca852e1
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77371285"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619968"
 ---
 # <a name="azure-kinect-dk-hardware-specifications"></a>Azure Kinect DK 硬體規格
 
@@ -71,7 +71,7 @@ Azure Kinect DK 整合了 Microsoft 設計的 1 百萬像素飛行時間 (ToF) �
 | WFOV 未分類收納   | 1024x1024  | 120°x120° | 0、5、15           | 0.25 - 2.21 米      | 20.3 毫秒        |
 | 被動式 IR      | 1024x1024  | N/A       | 0、5、15、30       | N/A              | 1.6 毫秒         |
 
-\*15% 到 95% 反射率：850nm 波長，2.2 μW/cm<sup>2</sup>/nm，隨機誤差的標準差 ≤ 17 毫米，典型系統誤差 < 11 毫米 + 0.1% 的差距，但沒有多路徑干擾。 根據物件反射率，提供指定範圍外的深度。
+\*15% 到 95% 反射率：850nm 波長，2.2 μW/cm<sup>2</sup>/nm，隨機誤差的標準差 ≤ 17 毫米，典型系統誤差 < 11 毫米 + 0.1% 的差距，但沒有多路徑干擾。 可提供的深度可能會超出上方所示的作業範圍。 這取決於物體的反射率。
 
 ## <a name="color-camera-supported-operating-modes"></a>彩色相機支援的作業模式
 
@@ -223,7 +223,7 @@ Azure Kinect DK 未隨附 Type-C 對 Type-C 纜線。
 | ---| --- | --- |
 |純白色 |裝置已開啟且運作正常。 |使用裝置。 |
 |未亮起 |裝置未連接到電腦。 |請確定圓形電源連接器纜線已連接到裝置和 USB 電源配接器。<br /><br />請確定 USB-C 纜線已連接到裝置和您的電腦。 |
-|閃爍白色 |裝置已開啟電源，但沒有 USB 3.0 資料連線。 |請確定圓形電源連接器纜線已連接到裝置和 USB 電源配接器。<br /><br />請確定 USB-C 纜線已連接到裝置以及您電腦上的 USB 3.0 連接埠。<br /><br />將裝置連接到電腦的其他 USB 3.0 連接埠。<br /><br />在您的電腦上，開啟裝置管理員 ([開始]   > [控制台]   > [裝置管理員]  ，並確認您的電腦具有支援的 USB 3.0 主機控制器。 |
+|閃爍白色 |裝置已開啟電源，但沒有 USB 3.0 資料連線。 |請確定圓形電源連接器纜線已連接到裝置和 USB 電源配接器。<br /><br />請確定 USB-C 纜線已連接到裝置以及您電腦上的 USB 3.0 連接埠。<br /><br />將裝置連接到電腦的其他 USB 3.0 連接埠。<br /><br />在您的電腦上，開啟裝置管理員 ([開始]   > [控制台]   > [裝置管理員]  )，並確認您的電腦具有支援的 USB 3.0 主機控制器。 |
 |閃爍琥珀色 |裝置沒有足夠的電源可運作。 |請確定圓形電源連接器纜線已連接到裝置和 USB 電源配接器。<br /><br />請確定 USB-C 纜線已連接到裝置和您的電腦。 |
 |琥珀色，然後閃爍白色 |裝置已開啟電源且正在接收韌體更新，或裝置正在恢復原廠設定。 |等待電源指示燈變成純白色。 如需詳細資訊，請參閱[重設 Azure Kinect DK](reset-azure-kinect-dk.md)。 |
 

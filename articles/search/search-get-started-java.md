@@ -8,13 +8,13 @@ ms.author: heidist
 ms.devlang: java
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 11/04/2019
-ms.openlocfilehash: 5e53167a083b5e89bd88a45452929dd40f0868f2
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.date: 02/25/2020
+ms.openlocfilehash: 0b07e934625b09e7f6249dc00865465147f6f0ba
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406721"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624009"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>快速入門：使用 REST API 在 Java 中建立 Azure 認知搜尋索引
 > [!div class="op_single_selector"]
@@ -26,13 +26,13 @@ ms.locfileid: "74406721"
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 
-建立 JAVA 主控台應用程式，以使用 [IntelliJ](https://www.jetbrains.com/idea/)、[JAVA 11 SDK](/java/azure/jdk/?view=azure-java-stable) 和 [Azure 認知搜尋 REST API](/rest/api/searchservice/) 來建立、載入及查詢 Azure 認知搜尋索引。本文提供建立應用程式的逐步指示。 或者，您可以[下載並執行完整應用程式](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/) \(英文\)。
+建立 Java 主控台應用程式，以使用 [IntelliJ](https://www.jetbrains.com/idea/)、[Java 11 SDK](/java/azure/jdk/?view=azure-java-stable) 和 [Azure 認知搜尋 REST API](/rest/api/searchservice/) 來建立、載入和查詢搜尋索引。 本文提供如何建立應用程式的逐步指示。 或者，您可以[下載並執行完整應用程式](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/) \(英文\)。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-我們使用了以下軟體和服務來建置及測試此範例：
+我們使用了以下軟體和服務來建置及測試此快速入門：
 
 + [IntelliJ IDEA](https://www.jetbrains.com/idea/)
 
@@ -56,7 +56,7 @@ ms.locfileid: "74406721"
 
 傳送至服務的每個要求都需要 API 金鑰。 擁有有效的金鑰就能為每個要求在傳送要求之應用程式與處理要求之服務間建立信任。
 
-## <a name="set-up-your-environment"></a>設定環境
+## <a name="set-up-your-environment"></a>設定您的環境
 
 首先，請開啟 IntelliJ IDEA 並設定新的專案。
 

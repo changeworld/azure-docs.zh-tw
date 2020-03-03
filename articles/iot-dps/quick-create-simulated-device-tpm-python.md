@@ -9,29 +9,30 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 157754c00f9d2b940a3c71401f4e033e914b511a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 67206f36d5c9f08a2110b02f1d3681684cda8a66
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976531"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605425"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>快速入門：使用適用於 IoT 中樞裝置佈建服務的 Python 裝置 SDK 來建立及佈建模擬 TPM 裝置
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-tpm](../../includes/iot-dps-selector-quick-create-simulated-device-tpm.md)]
 
-這些步驟顯示如何在執行 Windows 作業系統的開發電腦上建立模擬裝置、執行 Windows TPM 模擬器作為裝置的[硬體安全性模組 (HSM)](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/)，並使用 Python 程式碼範例，將模擬裝置與裝置佈建服務和 IoT 中樞進行連線。 
+在本快速入門中，您會在 Windows 電腦上建立模擬的 IoT 裝置。 模擬裝置會包含 TPM 模擬器以作為硬體安全性模組 (HSM)。 您可以使用裝置範例 Python 程式碼，使用以裝置佈建服務 (DPS) 所進行的個別註冊，讓此模擬裝置與 IoT 中樞進行連線。
+
+## <a name="prerequisites"></a>Prerequisites
+
+- 檢閱[自動佈建概念](concepts-auto-provisioning.md)。
+- 完成[使用 Azure 入口網站設定 IoT 中樞裝置佈建服務](./quick-setup-auto-provision.md)。
+- 具有有效訂用帳戶的 Azure 帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- [Visual Studio 2015+](https://visualstudio.microsoft.com/vs/) 以及使用 C++ 的桌面開發。
+- [CMake 建置系統](https://cmake.org/download/)。
+- [Git](https://git-scm.com/download/)。
 
 > [!IMPORTANT]
 > 本文僅適用於已淘汰的 V1 Python SDK。 尚未在 V2 中提供適用於 Iot 中樞裝置佈建服務的裝置和服務用戶端。 小組目前正努力將 V2 帶至功能同位。
-
-如果您不熟悉自動佈建程序，請務必也要檢閱[自動佈建概念](concepts-auto-provisioning.md)。 繼續之前，請務必完成[使用 Azure 入口網站設定 IoT 中樞裝置佈建服務](./quick-setup-auto-provision.md)中的步驟。 
-
-Azure IoT 裝置佈建服務支援兩種類型的註冊：
-- [註冊群組](concepts-service.md#enrollment-group)：用來註冊多個相關的裝置。
-- [個別註冊](concepts-service.md#individual-enrollment)：用來註冊單一裝置。
-
-本文將示範個別註冊。
 
 [!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
 
@@ -63,7 +64,7 @@ Azure IoT 裝置佈建服務支援兩種類型的註冊：
     cmake -Duse_prov_client:BOOL=ON -Duse_tpm_simulator:BOOL=ON ..
     ```
 
-1. 在個別的命令提示字元中，瀏覽至 TPM 模擬器資料夾，並執行 [TPM](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview) 模擬器。 按一下 [允許存取]  。 它會透過連接埠 2321年和 2322 上的通訊端接聽。 請勿關閉此命令視窗；您必須讓此模擬器保持執行，直到此快速入門指南結束。 
+1. 在個別的命令提示字元中，瀏覽至 TPM 模擬器資料夾，並執行 [TPM](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview) 模擬器，使其成為模擬裝置的 [HSM](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/)。 按一下 [允許存取]  。 它會透過連接埠 2321年和 2322 上的通訊端接聽。 請勿關閉此命令視窗；您必須讓此模擬器保持執行，直到此快速入門指南結束。 
 
     ```cmd/sh
     .\azure-iot-sdk-python\c\provisioning_client\deps\utpm\tools\tpm_simulator\Simulator.exe
@@ -73,6 +74,13 @@ Azure IoT 裝置佈建服務支援兩種類型的註冊：
 
 
 ## <a name="create-a-device-enrollment-entry"></a>建立裝置註冊項目
+
+Azure IoT 裝置佈建服務支援兩種類型的註冊：
+
+- [註冊群組](concepts-service.md#enrollment-group)：用來註冊多個相關的裝置。
+- [個別註冊](concepts-service.md#individual-enrollment)：用來註冊單一裝置。
+
+本文會示範個別註冊。
 
 1. 開啟在 *cmake* 資料夾中產生的方案 (名為 `azure_iot_sdks.sln`)，並且在 Visual Studio 中建置。
 

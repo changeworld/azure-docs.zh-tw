@@ -9,21 +9,27 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: df18e721a7400a1e45b7f1fcd74fdafdbfdf026c
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: c199d5be4c103c80a6fcc126af70f48367909f64
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462253"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605378"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>快速入門：使用 Java 服務 SDK 向 IoT 中樞裝置佈建服務註冊 TPM 裝置
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]
 
+在本快速入門中，您可以使用 Java 服務 SDK 和範例 Java 應用程式的輔助，以程式設計方式在 Azure IoT 中樞裝置佈建服務中建立模擬 TPM 裝置的個別註冊。
 
-下列步驟說明如何使用 [Java 服務 SDK](https://azure.github.io/azure-iot-sdk-java/service/) 和範例 Java 應用程式的輔助，以程式設計方式在 Azure IoT 中樞裝置佈建服務中建立模擬 TPM 裝置的個別註冊。 雖然 Java 服務 SDK 在 Windows 和 Linux 電腦上都適用，本文會使用 Windows 開發電腦來逐步引導進行註冊程序。
+## <a name="prerequisites"></a>Prerequisites
 
-繼續之前，請務必[使用 Azure 入口網站設定 IoT 中樞裝置佈建服務](./quick-setup-auto-provision.md)，以及[模擬 TPM 裝置](quick-create-simulated-device.md#simulatetpm)。
+- 完成[使用 Azure 入口網站設定 IoT 中樞裝置佈建服務](./quick-setup-auto-provision.md)。
+- 完成[從 TPM 裝置讀取密碼編譯金鑰](quick-create-simulated-device.md#simulatetpm)。
+- 具有有效訂用帳戶的 Azure 帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- [Java SE 開發套件 8](https://aka.ms/azure-jdks)。 本快速入門會在下面安裝 [Java 服務 SDK](https://azure.github.io/azure-iot-sdk-java/service/)。 其同時適用於 Windows 和 Linux。 本快速入門會使用 Windows。
+- [Maven 3](https://maven.apache.org/download.cgi)。
+- [Git](https://git-scm.com/download/)。
 
 <a id="setupdevbox"></a>
 
@@ -56,7 +62,7 @@ ms.locfileid: "77462253"
 
 本節說明如何將 TPM 裝置的佈建詳細資料新增至範例程式碼。 
 
-1. 開啟命令提示字元。 使用 Java 服務 SDK 來複製裝置註冊程式碼範例的 GitHub 存放庫：
+1. 開啟命令提示字元。 使用 [Java 服務 SDK](https://azure.github.io/azure-iot-sdk-java/service/) 來複製裝置註冊程式碼範例的 GitHub 存放庫：
     
     ```cmd\sh
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive
@@ -124,7 +130,7 @@ ms.locfileid: "77462253"
     mvn install -DskipTests
     ```
 
-   這個命令會將 Maven 套件 [`com.microsoft.azure.sdk.iot.provisioning.service`](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) 下載到您的電腦。 此套件包含範例程式碼需要建置之 Java 服務 SDK 的二進位檔。 
+   這個命令會將 Maven 套件 [`com.microsoft.azure.sdk.iot.provisioning.service`](https://www.mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) 下載到您的電腦。 此套件包含範例程式碼需要建置 [Java 服務 SDK](https://azure.github.io/azure-iot-sdk-java/service/) 的二進位檔。 
 
 3. 在命令視窗中使用這些命令來執行此範例：
 

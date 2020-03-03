@@ -5,12 +5,12 @@ author: mumian
 ms.date: 12/03/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a77f32620d4e3a694806cdf6c247928fa3c7ede4
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: e8f95f4987d0ce421defaed63ed9a587233d2bf4
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045286"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561573"
 ---
 # <a name="tutorial-create-linked-azure-resource-manager-templates"></a>教學課程：建立連結的 Azure Resource Manager 範本
 
@@ -31,7 +31,7 @@ ms.locfileid: "76045286"
 
 如需詳細資訊，請參閱[在部署 Azure 資源時使用連結與巢狀的範本](./linked-templates.md)。
 
-如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
+如果您沒有 Azure 訂用帳戶，請在開始前[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -165,7 +165,7 @@ Azure 快速入門範本是 Resource Manager 範本的存放庫。 您可以尋�
 
 ## <a name="upload-the-linked-template"></a>上傳連結的範本
 
-主要範本和連結的範本必須可從您執行部署的位置存取。 在此教學課程中，您使用如同您在[教學課程：使用相依資源建立 Azure Resource Manager 範本](./template-tutorial-create-templates-with-dependent-resources.md)中使用的 Cloud Shell 部署方法。 主範本 (azuredeploy.json) 已上傳到殼層。 連結的範本 (linkedTemplate.json) 必須在某處安全地共用。 下列 PowerShell 指令碼會建立 Azure 儲存體帳戶、將範本上傳至儲存體帳戶，接著產生 SAS 權杖以授與範本檔案的有限存取權。 為了簡化教學課程，此指令碼會從 Github 存放庫下載完整的連結範本。 如果您想要使用您所建立的連結範本，可以使用 [Cloud Shell](https://shell.azure.com) 來上傳連結的範本，然後將指令碼修改為使用連結的範本。
+主要範本和連結的範本必須可從您執行部署的位置存取。 在此教學課程中，您使用如同您在[教學課程：使用相依資源建立 Azure Resource Manager 範本](./template-tutorial-create-templates-with-dependent-resources.md)中使用的 Cloud Shell 部署方法。 主範本 (azuredeploy.json) 已上傳到殼層。 連結的範本 (linkedTemplate.json) 必須在某處安全地共用。 下列 PowerShell 指令碼會建立 Azure 儲存體帳戶、將範本上傳至儲存體帳戶，接著產生 SAS 權杖以授與範本檔案的有限存取權。 為了簡化教學課程，此指令碼會從 GitHub 存放庫下載完整的連結範本。 如果您想要使用您所建立的連結範本，可以使用 [Cloud Shell](https://shell.azure.com) 來上傳連結的範本，然後將指令碼修改為使用連結的範本。
 
 > [!NOTE]
 > 指令碼會限制在 8 小時內使用 SAS 權杖。 如果您需要更多時間才能完成本教學課程，請增加到期時間。

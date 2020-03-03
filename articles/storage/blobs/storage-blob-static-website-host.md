@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 1/22/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 97679ec48ee9120005118b6cacaf37e45657db08
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 69acb9152d1dc30d986276939e29e8c183095b18
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906623"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539598"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
 
@@ -32,7 +32,7 @@ ms.locfileid: "76906623"
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
 > [!NOTE] 
-> 務必建立一般用途的 v2 儲存體帳戶。 靜態網站無法在任何其他類型的儲存體帳戶中使用。
+> 務必建立一般用途的 v2 標準儲存體帳戶。 靜態網站無法在任何其他類型的儲存體帳戶中使用。
 
 本教學課程使用 [Visual Studio Code](https://code.visualstudio.com/download)，這是一個免費的程式設計人員工具，可建置靜態網站並將其部署至「Azure 儲存體」帳戶。
 

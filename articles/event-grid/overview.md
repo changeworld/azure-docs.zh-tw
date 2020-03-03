@@ -6,15 +6,15 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 10/22/2019
+ms.date: 02/20/2020
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: cfb9db7c78c57e74bfe44fe4ce1c3092e2bf3ca5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 65fd9d06c8b25e0aff94429f8eb95bb922da330c
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437296"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505917"
 ---
 # <a name="what-is-azure-event-grid"></a>什麼是 Azure 事件方格？
 
@@ -39,11 +39,15 @@ Azure 事件方格的部署方式是以原生方式分散到每個區域中中�
 * [自訂主題](event-sources.md#custom-topics)
 * [事件中樞](event-sources.md#event-hubs)
 * [IoT 中心](event-sources.md#iot-hub)
+* [Key Vault (預覽)](event-sources.md#key-vault-preview)
 * [媒體服務](event-sources.md#media-services)
 * [資源群組 (管理作業)](event-sources.md#resource-groups)
 * [服務匯流排](event-sources.md#service-bus)
 * [儲存體 Blob](event-sources.md#storage)
 * [Azure 地圖服務](event-sources.md#maps)
+* [應用程式組態](event-sources.md#app-configuration)
+* [Signal R](event-sources.md#azure-signalr)
+* [機器學習服務](event-sources.md#azure-machine-learning)
 
 ## <a name="event-handlers"></a>事件處理常式
 
@@ -55,8 +59,8 @@ Azure 事件方格的部署方式是以原生方式分散到每個區域中中�
 * [混合式連線](event-handlers.md#hybrid-connections)
 * [Logic Apps](event-handlers.md#logic-apps)
 * [Power Automate (先前稱為 Microsoft Flow)](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
-* [佇列儲存體](event-handlers.md#queue-storage)
 * [服務匯流排](event-handlers.md#service-bus)
+* [佇列儲存體](event-handlers.md#queue-storage)
 * [WebHook](event-handlers.md#webhooks)
 
 ## <a name="concepts"></a>概念

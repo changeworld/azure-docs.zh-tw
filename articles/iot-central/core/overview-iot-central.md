@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: a16ed6ac942dd4a9fa521cc813a92e6767a98328
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 71d595ecb3a6900da3df79651ee2dddda594b9de
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024121"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589400"
 ---
 # <a name="what-is-azure-iot-central"></a>何謂 Azure IoT 中心？
 
@@ -39,8 +39,12 @@ Web UI 可讓您監視裝置狀況、建立規則，以及在數百萬個裝置�
 - 作業不支援複雜類型。
 - 不支援陣列結構描述類型。
 - 僅支援 C 裝置 SDK 和 Node.js 裝置與服務 SDK。
-- 僅適用於美國與歐洲。
+- 僅適用於美國、歐洲、亞太地區和澳大利亞地區。
 - 裝置功能模型必須具有在相同檔案中以內嵌方式定義的所有介面。
+- [IoT 隨插即用](../../iot-pnp/overview-iot-plug-and-play.md) 為預覽版本，僅在數個區域中支援。
+
+    > [!NOTE]
+    > 請連絡技術支援以取得存取權，以建立支援 IoT 隨插即用裝置的預覽應用程式。
 
 ## <a name="personas"></a>角色
 

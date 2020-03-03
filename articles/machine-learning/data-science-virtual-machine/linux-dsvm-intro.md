@@ -1,5 +1,6 @@
 ---
 title: 快速入門：建立 CentOS 資料科學虛擬機器
+titleSuffix: Azure Data Science Virtual Machine
 description: 設定和建立適用於 Linux (CentOS) 的資料科學虛擬機器以進行分析和機器學習。
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -7,18 +8,18 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/13/2019
-ms.openlocfilehash: 1761673198b3d8ffc3740d64f525c9e70bda9e3e
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 73541b31125ee6e99dc2351e26f6a564a1603487
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71204141"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526020"
 ---
 # <a name="quickstart-set-up-a-centos-linux-data-science-virtual-machine-in-azure"></a>快速入門：在 Azure 中設定 CentOS (Linux) 資料科學虛擬機器
 
 啟動並執行以 CentOS 為基礎的資料科學虛擬機器。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要建立 CentOS 資料科學虛擬機器，您必須具有 **Azrue 訂用帳戶**。 [建立免費訂用帳戶](https://azure.com/free)。
 
@@ -33,7 +34,7 @@ ms.locfileid: "71204141"
 
 1. 在後續視窗上選取 [建立]  。
 
-    [![](media/linux-dsvm-intro/create-centos.png "用於建立 CentOS 電腦的按鈕")](media/linux-dsvm-intro/create-centos-expanded.png#lightbox)
+    [![](media/linux-dsvm-intro/create-centos.png "Button to create a CentOS machine")](media/linux-dsvm-intro/create-centos-expanded.png#lightbox)
 
 1. 您應會重新導向至 [建立虛擬機器] 刀鋒視窗。
    
@@ -48,7 +49,7 @@ ms.locfileid: "71204141"
        * **虛擬機器名稱**：輸入虛擬機器的名稱。 這就是它在 Azure 入口網站中的顯示方式。
        * **區域**：選取最適合的資料中心。 如需最快速的網路存取，請選取擁有您大部分資料或是最接近您實際位置的資訊中心。 深入了解 [Azure 區域](https://azure.microsoft.com/global-infrastructure/regions/)。
        * **映像**：保留預設值。
-       * **大小**：這應會自動填入適合一般工作負載的大小。 深入了解 [Azure 中的 Linux VM 大小](../../virtual-machines/linux/sizes.md)。
+       * **Size**：這應會自動填入適合一般工作負載的大小。 深入了解 [Azure 中的 Linux VM 大小](../../virtual-machines/linux/sizes.md)。
        * **驗證類型**：如需更快速的設定，請選取 [密碼]。 
          
          > [!NOTE]

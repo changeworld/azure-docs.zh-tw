@@ -8,16 +8,21 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: ca2ac62892d1c8d438cc37bffcbfede14058bc23
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 84db3996b49a95d1ef6a9f1e80299605cc31d669
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026371"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602606"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-and-connect-it-to-your-iot-central-application"></a>教學課程：使用裝置功能模型建立 IoT 隨插即用 (預覽) 裝置，並將其連線至您的 IoT Central 應用程式
 
 _裝置功能模型_ (DCM) 可說明 [IoT 隨插即用](../../iot-pnp/overview-iot-plug-and-play.md) (預覽) 裝置的功能。 IoT Central 可在裝置第一次連接時，使用 DCM 來建立裝置的裝置範本和視覺效果。
+
+[IoT 隨插即用](../../iot-pnp/overview-iot-plug-and-play.md) 為預覽版本，僅在數個區域中支援。
+
+> [!NOTE]
+> 請連絡技術支援以取得存取權，以建立支援 IoT 隨插即用裝置的預覽應用程式。
 
 在本教學課程中，您會了解如何：
 
@@ -80,7 +85,7 @@ _裝置功能模型_ (DCM) 可說明 [IoT 隨插即用](../../iot-pnp/overview-i
 
 若要將裝置連線至 IoT Central 應用程式，您必須要有裝置金鑰。 若要產生裝置金鑰：
 
-1. 登入到您在[建立 Azure IoT Central 應用程式](./quick-deploy-iot-central.md)快速入門中使用 [自訂應用程式] > [預覽應用程式]  範本所建立的 IoT Central 應用程式。
+1. 登入到您在[建立 Azure IoT Central 應用程式](./quick-deploy-iot-central.md)快速入門中使用 [自訂應用程式]  範本所建立的 IoT Central 應用程式。
 
 1. 移至 [管理]  頁面，然後選取 [裝置連線]  。
 

@@ -9,35 +9,32 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: 4bb3af4ddad7e40cbf7edd58cf5899ced2757512
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 35f5cc4914689fd171cc3fa8ec7d809924127f28
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548793"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605543"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-nodejs"></a>快速入門：使用 Node.js 向裝置佈建服務註冊 X.509 裝置
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
-本快速入門說明如何使用 Node.js 以程式設計方式建立中繼或根 CA X.509 憑證的[註冊群組](concepts-service.md#enrollment-group)。 註冊群組可使用 [IoT SDK for Node.js](https://github.com/Azure/azure-iot-sdk-node) 和範例 Node.js 應用程式來建立。 註冊群組可針對共用憑證鏈結中通用簽署憑證的裝置，控制對於佈建服務的存取權。 若要深入了解，請參閱[使用 X.509 憑證控制對於佈建服務的裝置存取](./concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)。 如需使用以 X.509 憑證為基礎的公開金鑰基礎結構 (PKI) 搭配 Azure IoT 中樞和裝置佈建服務的詳細資訊，請參閱 [X.509 CA 憑證安全性概觀](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview)。 
-
-本快速入門預期您已建立 IoT 中樞和裝置佈建服務執行個體。 如果您尚未建立這些資源，請先完成[使用 Azure 入口網站設定 IoT 中樞裝置佈建服務](./quick-setup-auto-provision.md)快速入門，再繼續閱讀本文。
-
-雖然本文中的步驟在 Windows 和 Linux 電腦上都可運作，但本文是針對 Windows 開發電腦而撰寫的。
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
+在本快速入門中，您可以使用 Node.js 以程式設計方式建立中繼或根 CA X.509 憑證的註冊群組。 註冊群組可使用 IoT SDK for Node.js 和範例 Node.js 應用程式來建立。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-- 安裝 [Node.js v4.0 或更新版本](https://nodejs.org)。
-- 安裝 [Git](https://git-scm.com/download/)。
-
+- 完成[使用 Azure 入口網站設定 IoT 中樞裝置佈建服務](./quick-setup-auto-provision.md)。
+- 具有有效訂用帳戶的 Azure 帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- [Node.js v4.0+](https://nodejs.org)。 本快速入門會在下面安裝 [IoT SDK for Node.js](https://github.com/Azure/azure-iot-sdk-node)。
+- [Git](https://git-scm.com/download/)。
+- [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c)。
 
 ## <a name="prepare-test-certificates"></a>準備測試憑證
 
-在進行本快速入門時，您必須要有 .pem 或 .cer 檔案，且該檔案必須包含中繼或根 CA X.509 憑證的公開部分。 此憑證必須上傳至佈建服務，並由服務驗證。 
+在進行本快速入門時，您必須要有 .pem 或 .cer 檔案，且該檔案必須包含中繼或根 CA X.509 憑證的公開部分。 此憑證必須上傳至佈建服務，並由服務驗證。
+
+如需使用以 X.509 憑證為基礎的公開金鑰基礎結構 (PKI) 搭配 Azure IoT 中樞和裝置佈建服務的詳細資訊，請參閱 [X.509 CA 憑證安全性概觀](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview)。
 
 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) 包含的測試工具可協助您建立 X.509 憑證鏈結、從該鏈結上傳根或中繼憑證，並使用驗證憑證的服務來執行所有權證明。 使用 SDK 工具建立的憑證依設計**僅供開發測試之用**。 這些憑證**不可用於生產環境中**。 其中包含會在 30 天後到期的硬式編碼密碼 ("1234")。 若要了解如何取得生產環境適用的憑證，請參閱 Azure IoT 中樞文件中的[如何取得 X.509 CA 憑證](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate)。
 
@@ -63,6 +60,12 @@ ms.locfileid: "76548793"
 
 ## <a name="create-the-enrollment-group-sample"></a>建立註冊群組範例 
 
+Azure IoT 裝置佈建服務支援兩種類型的註冊：
+
+- [註冊群組](concepts-service.md#enrollment-group)：用來註冊多個相關的裝置。
+- [個別註冊](concepts-service.md#individual-enrollment)：用來註冊單一裝置。
+
+註冊群組可針對共用憑證鏈結中通用簽署憑證的裝置，控制對於佈建服務的存取權。 若要深入了解，請參閱[使用 X.509 憑證控制對於佈建服務的裝置存取](./concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)。
  
 1. 從工作資料夾中的命令視窗中，執行：
   
@@ -125,7 +128,7 @@ ms.locfileid: "76548793"
 
     ![入口網站中已驗證的憑證](./media/quick-enroll-device-x509-node/verify-certificate.png) 
 
-1. 若要建立憑證的註冊群組，請執行下列命令 (包括命令列引數的括號)：
+1. 若要建立憑證的[註冊群組](concepts-service.md#enrollment-group)，請執行下列命令 (包括命令列引數的括號)：
  
      ```cmd\sh
      node create_enrollment_group.js "<the connection string for your provisioning service>" "<your certificate's .pem file>"

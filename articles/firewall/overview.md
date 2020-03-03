@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 02/19/2020
+ms.date: 02/26/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 2d931ed61cc3880a6158fd82f015e663ddb669c3
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 5f1672b53fa9bd8c8126fefd092e1be78a844ab9
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485279"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621839"
 ---
 # <a name="what-is-azure-firewall"></a>何謂 Azure 防火牆？
 
@@ -79,7 +79,7 @@ FQDN 標籤讓您輕鬆就能允許已知的 Azure 服務網路流量通過您�
 
 ## <a name="inbound-dnat-support"></a>輸入 DNAT 支援
 
-傳送到您防火牆公用 IP 位址的輸入網路流量會轉譯 (目的地網路位址轉譯)，並篩選至您虛擬網路上的私人 IP 位址。
+傳送到您防火牆公用 IP 位址的輸入網際網路流量會轉譯 (目的地網路位址轉譯)，並篩選至您虛擬網路上的私人 IP 位址。
 
 ## <a name="multiple-public-ip-addresses"></a>多個公用 IP 位址
 

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 73402420bdfee7fecbd7901deefe7f4314a76d51
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 0c997fffc1adc60f774e651ed458d253b35a3bdd
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931591"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612207"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>教學課程：建立管理 VM 來設定及管理 Azure Active Directory Domain Services 受控網域
 
@@ -44,6 +44,8 @@ Azure Active Directory Domain Services (AD DS) 提供受控網域服務，例如
 * 已加入 Azure AD DS 受控網域的 Windows Server VM。
     * 如有需要，請參閱先前的教學課程，以[建立 Windows Server VM 並將其加入受控網域][create-join-windows-vm]。
 * 屬於您 Azure AD 租用戶中 Azure AD DC 系統管理員  群組成員的使用者帳戶。
+* 部署在 Azure AD DS 虛擬網路中的 Azure Bastion 主機。
+    * 如有需要，請[建立 Azure Bastion 主機][azure-bastion]。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
@@ -84,16 +86,15 @@ Azure AD DS 網域已被鎖定，因此您沒有在網域上進行特定管理�
 若要開始，請連線到 Windows Server VM，如下所示：
 
 1. 從 Azure 入口網站的左側選取 [資源群組]  。 選擇建立您 VM 的資源群組，例如 myResourceGroup  ，然後選取 VM，例如 myVM  。
-1. 在 VM 的 [概觀]  視窗中，選取 [連線]  。
+1. 在 VM 的 [概觀]  窗格中，依序選取 [連線]  和 [Bastion]  。
 
-    ![在 Azure 入口網站中連線到 Windows 虛擬機器](./media/tutorial-create-management-vm/connect-vm.png)
+    ![在 Azure 入口網站中使用 Bastion 連線到 Windows 虛擬機器](./media/join-windows-vm/connect-to-vm.png)
 
-    您也可以[建立及使用 Azure Bastion 主機 (目前處於預覽狀態)][azure-bastion]，只允許使用 SSL 透過 Azure 入口網站進行存取。
+1. 輸入 VM 的認證，然後選取 [連線]  。
 
-1. 選取選項以下載 RDP 檔案  。 將此 RDP 檔案儲存在您的網頁瀏覽器中。
-1. 若要連線至您的 VM，請開啟下載的 RDP 檔案。 如果出現提示，請選取 [連接]  。
-1. 輸入「Azure AD DC 系統管理員」  群組中使用者的認證，例如 contoso\dee 
-1. 如果您在登入程序期間看見憑證警告，請選取 [是]  或 [繼續]  來連線。
+   ![在 Azure 入口網站中透過 Bastion 主機連線](./media/join-windows-vm/connect-to-bastion.png)
+
+如有需要，請允許網頁瀏覽器開啟快顯視窗以便顯示 Bastion 連線。 需要幾秒鐘的時間才能連線到 VM。
 
 ## <a name="install-active-directory-administrative-tools"></a>安裝 Active Directory 管理工具
 
@@ -105,7 +106,7 @@ Azure AD DS 網域已被鎖定，因此您沒有在網域上進行特定管理�
 1. 在 [伺服器管理員]  視窗的 [儀表板]  窗格內，選取 [新增角色及功能]  。
 1. 在 [新增角色及功能精靈]  的 [開始之前]  頁面上，選取 [下一步]  。
 1. 針對 [安裝類型]  ，保持勾選 [角色型或功能型安裝]  選項，然後選取 [下一步]  。
-1. 在 [伺服器選擇]  頁面上，從伺服器集區中選擇目前的 VM，例如 myvm.aadds.contoso.com  ，然後選取 [下一步]  。
+1. 在 [伺服器選擇]  頁面上，從伺服器集區中選擇目前的 VM，例如 myvm.aaddscontoso.com  ，然後選取 [下一步]  。
 1. 在 [伺服器角色]  頁面上，按 [下一步]  。
 1. 在 [功能]  頁面上，展開 [遠端伺服器管理工具]  節點，然後展開 [角色管理工具]  節點。
 
@@ -125,7 +126,7 @@ Azure AD DS 網域已被鎖定，因此您沒有在網域上進行特定管理�
     ![安裝在伺服器上的管理工具清單](./media/tutorial-create-management-vm/list-admin-tools.png)
 
 1. 選取 [Active Directory 管理中心]  。
-1. 若要探索 Azure AD DS 受控網域，請在左側窗格中選擇網域名稱，例如 aadds.contoso.com  。 名為「AADDC 電腦」  和「AADDC 使用者」  的兩個容器位於清單頂端。
+1. 若要探索 Azure AD DS 受控網域，請在左側窗格中選擇網域名稱，例如 aaddscontoso.com  。 名為「AADDC 電腦」  和「AADDC 使用者」  的兩個容器位於清單頂端。
 
     ![列出 Azure AD DS 受控網域中可用的容器部分](./media/tutorial-create-management-vm/active-directory-administrative-center.png)
 

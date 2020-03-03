@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: a8028cf4ece79fc31969532a358cca993c7ab948
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: a711303b95eb4acb9c226ce052466bf65d15a038
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75549443"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612766"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>教學課程：為 Azure Active Directory Domain Services 受控網域設定安全 LDAP
 
@@ -63,16 +63,16 @@ ms.locfileid: "75549443"
 
 * **信任的簽發者** - 憑證必須由使用安全 LDAP 連線到網域的電腦，所信任的授權單位加以發行。 此授權單位可能是受這些電腦信任的公用 CA 或企業 CA。
 * **存留期** - 憑證必須至少在接下來的 3 至 6 個月內都要保持有效。 當憑證過期時，受控網域的安全 LDAP 存取會中斷。
-* **主體名稱** - 憑證的主體名稱必須是您受控網域。 例如，如果您的網域名稱為 aadds.contoso.com  ，則憑證的主體名稱必須是 *.aadds.contoso.com  。
+* **主體名稱** - 憑證的主體名稱必須是您受控網域。 例如，如果您的網域名稱為 aaddscontoso.com  ，則憑證的主體名稱必須是 *.aaddscontoso.com  。
     * 憑證的 DNS 名稱或主體替代名稱必須是萬用字元憑證，才能確保安全 LDAP 可以順利地與 Azure AD Domain Services 搭配運作。 網域控制站會使用隨機名稱，而且可以加以移除或新增，以確保服務可供使用。
 * **金鑰使用方法** - 必須將憑證設定為「數位簽章」  與「金鑰編密」  。
 * **憑證目的** - 憑證必須有效可進行 SSL 伺服器驗證。
 
-在本教學課程中，會使用 [New-SelfSignedCertificate][New-SelfSignedCertificate] Cmdlet 建立安全 LDAP 的自我簽署憑證。 以**系統管理員**身分開啟 PowerShell 視窗並執行下列命令。 將 $dnsName  變數取代為您本身的受控網域所使用的 DNS 名稱，例如 aadds.contoso.com  ：
+在本教學課程中，會使用 [New-SelfSignedCertificate][New-SelfSignedCertificate] Cmdlet 建立安全 LDAP 的自我簽署憑證。 以**系統管理員**身分開啟 PowerShell 視窗並執行下列命令。 將 $dnsName  變數取代為您本身的受控網域所使用的 DNS 名稱，例如 aaddscontoso.com  ：
 
 ```powershell
 # Define your own DNS name used by your Azure AD DS managed domain
-$dnsName="aadds.contoso.com"
+$dnsName="aaddscontoso.com"
 
 # Get the current date to set a one-year expiration
 $lifetime=Get-Date
@@ -94,7 +94,7 @@ PS C:\WINDOWS\system32> New-SelfSignedCertificate -Subject *.$dnsName `
 
 Thumbprint                                Subject
 ----------                                -------
-959BD1531A1E674EB09E13BD8534B2C76A45B3E6  CN=aadds.contoso.com
+959BD1531A1E674EB09E13BD8534B2C76A45B3E6  CN=aaddscontoso.com
 ```
 
 ## <a name="understand-and-export-required-certificates"></a>了解並匯出所需的憑證
@@ -125,7 +125,7 @@ Thumbprint                                Subject
 
     ![在 Microsoft Management Console 中開啟個人憑證存放區](./media/tutorial-configure-ldaps/open-personal-store.png)
 
-1. 此時會顯示先前的步驟中建立的自我簽署憑證，例如 aadds.contoso.com  。 在此憑證上按一下滑鼠右鍵，然後選擇 [所有工作] > [匯出...] 
+1. 此時會顯示先前的步驟中建立的自我簽署憑證，例如 aaddscontoso.com  。 在此憑證上按一下滑鼠右鍵，然後選擇 [所有工作] > [匯出...] 
 
     ![在 Microsoft Management Console 中匯出憑證](./media/tutorial-configure-ldaps/export-cert.png)
 
@@ -150,7 +150,7 @@ Thumbprint                                Subject
 
 用戶端電腦必須信任安全 LDAP 憑證的簽發者，才能成功使用 LDAPS 連線到受控網域。 用戶端電腦需要憑證，才能成功加密由 Azure AD DS 解密的資料。 如果您使用公用 CA，電腦應該會自動信任這些憑證簽發者並擁有對應的憑證。 在本教學課程中，您使用了自我簽署憑證，並已在先前步驟中產生包含私密金鑰的憑證。 現在，我們要匯出自我簽署憑證，並將其安裝在用戶端電腦的受信任憑證存放區：
 
-1. 返回 MMC 的 [憑證 (本機電腦)] > [個人] > [憑證]  存放區。 此時會顯示先前的步驟中建立的自我簽署憑證，例如 aadds.contoso.com  。 在此憑證上按一下滑鼠右鍵，然後選擇 [所有工作] > [匯出...] 
+1. 返回 MMC 的 [憑證 (本機電腦)] > [個人] > [憑證]  存放區。 此時會顯示先前的步驟中建立的自我簽署憑證，例如 aaddscontoso.com  。 在此憑證上按一下滑鼠右鍵，然後選擇 [所有工作] > [匯出...] 
 1. 在 [憑證匯出精靈]  中選取 [下一步]  。
 1. 由於您不需要對用戶端使用私密金鑰，因此請在 [匯出私密金鑰]  頁面上選擇 [否，不要匯出私密金鑰]  ，然後選取 [下一步]  。
 1. 在 [匯出檔案格式]  頁面上，選取 [Base-64 編碼的 X.509 (.CER)]  作為匯出憑證的檔案格式：
@@ -180,7 +180,7 @@ CER  憑證檔案現在可以散發到用戶端電腦，因為這些電腦必須
 
     ![在 Azure 入口網站中搜尋並選取您的 Azure AD DS 受控網域](./media/tutorial-configure-ldaps/search-for-domain-services.png)
 
-1. 選擇您的受控網域，例如 aadds.contoso.com  。
+1. 選擇您的受控網域，例如 aaddscontoso.com  。
 1. 在 [Azure AD DS] 視窗的左側，選擇 [安全 LDAP]  。
 1. 根據預設，已停用受控網域的安全 LDAP 存取。 將 [安全 LDAP]  切換至 [啟用]  。
 1. 透過網際網路存取受控網域的安全 LDAP 存取會預設為停用。 當您啟用公開的安全 LDAP 存取時，您的網域將容易遭受網際網路上的暴力密碼破解攻擊。 在下一個步驟中，我們會設定網路安全性群組，將存取鎖定為僅限所需的來源 IP 位址範圍。
@@ -235,10 +235,10 @@ CER  憑證檔案現在可以散發到用戶端電腦，因為這些電腦必須
 
 設定外部 DNS 提供者，以建立主機記錄 (例如 ldaps  ) 來解析為此外部 IP 位址。 若要先在機器上進行本機測試，您可以在 Windows 的 hosts 檔案中建立項目。 若要成功編輯本機電腦上的 hosts 檔案，請以系統管理員身分開啟 [記事本]  ，然後開啟 *C:\Windows\System32\drivers\etc* 檔案
 
-下列 DNS 項目範例 (搭配外部 DNS 提供者或在本機 hosts 檔案中) 會將 ldaps.aadds.contoso.com  的流量解析為 40.121.19.239  的外部 IP 位址：
+下列 DNS 項目範例 (搭配外部 DNS 提供者或在本機 hosts 檔案中) 會將 ldaps.aaddscontoso.com  的流量解析為 40.121.19.239  的外部 IP 位址：
 
 ```
-40.121.19.239    ldaps.aadds.contoso.com
+40.121.19.239    ldaps.aaddscontoso.com
 ```
 
 ## <a name="test-queries-to-the-managed-domain"></a>測試受控網域的查詢
@@ -246,13 +246,13 @@ CER  憑證檔案現在可以散發到用戶端電腦，因為這些電腦必須
 若要連線及繫結至您的 Azure AD DS 受控網域，並透過 LDAP 進行搜尋，您可以使用 LDP.exe  工具。 這項工具組含在遠端伺服器管理工具 (RSAT) 套件中。 如需詳細資訊，請參閱[安裝遠端伺服器管理工具][rsat]。
 
 1. 開啟 LDP.exe  並連線到受控網域。 選取 [連線]  ，然後選擇 [連線...]  。
-1. 輸入您在先前的步驟中為受控網域建立的安全 LDAP DNS 網域名稱，例如 ldaps.aadds.contoso.com  。 若要使用安全 LDAP，請將 [連接埠]  設定為 [636]  ，然後核取 [SSL]  的方塊。
+1. 輸入您在先前的步驟中為受控網域建立的安全 LDAP DNS 網域名稱，例如 ldaps.aaddscontoso.com  。 若要使用安全 LDAP，請將 [連接埠]  設定為 [636]  ，然後核取 [SSL]  的方塊。
 1. 選取 [確定]  以連線至受控網域。
 
 接下來，繫結至您的 Azure AD DS 受控網域。 如果您已在 Azure AD DS 執行個體上停用 NTLM 密碼雜湊同步，使用者 (和服務帳戶) 就無法執行 LDAP 簡單繫結。 如需有關停用 NTLM 密碼雜湊同步的詳細資訊，請參閱[保護您的 Azure AD DS 受控網域][secure-domain]。
 
 1. 選取 [連線]  功能表選項，然後選擇 [繫結...]  。
-1. 提供屬於「AAD DC 系統管理員」  群組 (例如 contosoadmin  ) 的使用者帳戶認證。 輸入使用者帳戶的密碼，然後輸入您的網域，例如 aadds.contoso.com  。
+1. 提供屬於「AAD DC 系統管理員」  群組 (例如 contosoadmin  ) 的使用者帳戶認證。 輸入使用者帳戶的密碼，然後輸入您的網域，例如 aaddscontoso.com  。
 1. 針對 [繫結類型]  ，選擇 [與認證繫結]  的選項。
 1. 選取 [確認]  以繫結至您的 Azure AD DS 受控網域。
 
@@ -265,7 +265,7 @@ CER  憑證檔案現在可以散發到用戶端電腦，因為這些電腦必須
 
     ![使用 LDP.exe 搜尋 Azure AD DS 受控網域中的物件](./media/tutorial-configure-ldaps/ldp-query.png)
 
-若要直接查詢特定容器，您可以從 [檢視] > [樹狀]  功能表中指定 **BaseDN**，例如 OU=AADDC Users,DC=CONTOSO,DC=COM  或 OU=AADDC Computers,DC=CONTOSO,DC=COM  。 如需如何格式化和建立查詢的詳細資訊，請參閱 [LDAP 查詢的基本概念][ldap-query-basics]。
+若要直接查詢特定容器，您可以從 [檢視] > [樹狀]  功能表中指定 **BaseDN**，例如 OU=AADDC Users,DC=AADDSCONTOSO,DC=COM  或 OU=AADDC Computers,DC=AADDSCONTOSO,DC=COM  。 如需如何格式化和建立查詢的詳細資訊，請參閱 [LDAP 查詢的基本概念][ldap-query-basics]。
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -273,7 +273,7 @@ CER  憑證檔案現在可以散發到用戶端電腦，因為這些電腦必須
 
 1. 在您的本機電腦上，以系統管理員身分開啟 [記事本] 
 1. 流覽至 C:\Windows\System32\drivers\etc  並將其開啟
-1. 刪除您所新增的記錄行，例如 `40.121.19.239    ldaps.aadds.contoso.com`
+1. 刪除您所新增的記錄行，例如 `40.121.19.239    ldaps.aaddscontoso.com`
 
 ## <a name="next-steps"></a>後續步驟
 

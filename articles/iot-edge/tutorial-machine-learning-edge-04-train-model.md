@@ -8,12 +8,12 @@ ms.date: 2/10/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5f576d28d30907f3834600d0a6a5c152025cf912
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: a5c754373ba9437c631e62acbb5d6d246db4c862
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133475"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650753"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>教學課程：定型和部署 Azure Machine Learning 模型
 
@@ -83,7 +83,7 @@ Azure Notebooks 能運用 Azure Machine Learning 工作區，其為用來對機�
 * **01-turbofan\_regression.ipynb：** 此筆記本使用 Machine Learning 服務工作區來建立及執行機器學習實驗。 此筆記本大致會執行下列步驟：
 
   1. 從裝置控管所產生的 Azure 儲存體帳戶下載資料。
-  1. 針對定型和分類器廣告模型來探索和準備資料。
+  1. 探索並準備資料，然後使用資料來定型分類器模型。
   1. 使用測試資料集 (Test\_FD003.txt) 從實驗評估模型。
   1. 將最佳分類器模型發佈至 Machine Learning 服務工作區。
 

@@ -5,17 +5,17 @@ author: djpmsft
 ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 02/06/2020
-ms.openlocfilehash: 1449b34a9bbeb5692d25a5f84c4ee38e6c4e0a33
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.date: 02/16/2020
+ms.openlocfilehash: 1d0264a0b7ac4e97d9a2811ba61ab64fcedd6fb9
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77460530"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587544"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>對應資料流程影片教學課程
 
-以下是 Azure Data Factory 小組所建立的對應資料流教學課程影片清單。
+以下是 Azure Data Factory 小組所建立的對應資料流教學課程影片清單。 
 
 隨著產品不斷更新，某些功能在最新的 Azure Data Factory 使用者體驗中已有所更新或具有不同功能。
 
@@ -32,6 +32,8 @@ ms.locfileid: "77460530"
 [資料預覽的快速動作](https://www.youtube.com/watch?v=CP0TnNmaLA0)
 
 [監視和管理對應資料流的效能](https://www.youtube.com/watch?v=fktIWdJiqTk)
+
+[基準測試時間](http://youtu.be/6CSbWm4lRhw?hd=1)
 
 ## <a name="transformation-overviews"></a>轉換概觀
 
@@ -100,6 +102,8 @@ ms.locfileid: "77460530"
 [縮短啟動時間](https://youtu.be/FFCbU4ujCiY?t=528)
 
 [SQL DB 效能](https://youtu.be/iyZT5CY3V_4)
+
+[記錄與稽核](https://www.youtube.com/watch?v=UC__LOyuf8M)
 
 ## <a name="mapping-data-flow-scenarios"></a>對應資料流案例
 

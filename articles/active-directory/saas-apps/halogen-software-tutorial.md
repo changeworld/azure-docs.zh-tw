@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 02/15/2020
+ms.date: 02/20/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ef7d5ec33786c3c4c38525cd5ab15bee53b3493
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.openlocfilehash: 76c13a649e1c1888a11e02b83d969255615cdc67
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/17/2020
-ms.locfileid: "77373309"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561322"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-saba-talentspace"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Saba TalentSpace 整合
 
@@ -86,8 +86,10 @@ ms.locfileid: "77373309"
 
     b. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：`https://global.hgncloud.com/[companyname]/saml/metadata`
 
+    c. 在 [回覆 URL (判斷提示取用者服務 URL)]  文字方塊中，以下列模式輸入 URL：`https://global.hgncloud.com/[companyname]/saml/SSO`
+
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [Saba TalentSpace 用戶端支援小組](https://support.halogensoftware.com/)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [Saba TalentSpace 用戶端支援小組](https://support.saba.com/)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
 

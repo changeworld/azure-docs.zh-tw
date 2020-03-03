@@ -4,12 +4,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: include
 ms.date: 1/31/2020
-ms.openlocfilehash: 017833403beca6fb8689bd6f90cc8f460d56c65e
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 089a199da08503e13dbd42518970c3b7ed8a984d
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76961495"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619320"
 ---
 1. 若要建立新的應用程式組態存放區，請登入 [Azure 入口網站](https://portal.azure.com)。 在首頁的左上角，選取 [建立資源]  。 在 [搜尋 Marketplace]  方塊中輸入**應用程式組態**，然後選取 Enter 鍵。
 
@@ -27,6 +27,7 @@ ms.locfileid: "76961495"
     | **訂用帳戶** | 您的訂用帳戶 | 選取您要用來測試應用程式設定的 Azure 訂用帳戶。 如果您的帳戶僅有一個訂用帳戶，則會自動加以選取，而且不會顯示 [訂用帳戶]  清單。 |
     | **資源群組** | *AppConfigTestResources* | 為應用程式組態存放區資源選取或建立資源群組。 此群組可用於組織多個資源，以便能夠藉由刪除資源群組來同時刪除多個資源。 如需詳細資訊，請參閱[使用資源群組管理您的 Azure 資源](/azure/azure-resource-manager/resource-group-overview)。 |
     | **位置** | *美國中部* | 使用 [位置]  來指定裝載應用程式設定存放區所在的地理位置。 為了獲得最佳效能，請將資源建立在與應用程式其他元件相同的區域內。 |
+    | **定價層** | *免費* | 選取所需的定價層。 如需詳細資訊，請參閱[應用程式組態定價頁面](https://azure.microsoft.com/pricing/details/app-configuration/)。
 
     ![建立應用程式組態存放區資源](media/azure-app-configuration-create/azure-portal-app-configuration-create-settings.png)
 

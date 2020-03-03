@@ -1,36 +1,34 @@
 ---
 title: Azure CLI 指令碼範例 - 在應用程式組態存放區中使用索引鍵/值
 titleSuffix: Azure App Configuration
-description: 提供在 Azure 應用程式設定存放區中搭配使用索引鍵/值的資訊
+description: 使用 Azure CLI 指令碼從應用程式組態存放區建立、檢視、更新和刪除索引鍵/值
 services: azure-app-configuration
-documentationcenter: ''
 author: lisaguthrie
-manager: maiye
-editor: ''
 ms.service: azure-app-configuration
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: azure-app-configuration
-ms.date: 11/08/2019
+ms.date: 02/19/2020
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: 931c2f738556404e2d58381f7152acb0613a057b
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 1a4edabe666a554ccd01d110f0f71226221dfc67
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77468145"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523640"
 ---
 # <a name="work-with-key-values-in-an-azure-app-configuration-store"></a>在 Azure 應用程式設定存放區中搭配使用索引鍵/值
 
-此範例指令碼會在 Azure 應用程式設定存放區中建立新的索引鍵/值、列出所有現有的索引鍵/值、更新新建立索引鍵的值，以及在最後刪除該值。
+此範例指令碼說明如何：
+* 建立新的索引鍵/值組
+* 列出所有現有的索引鍵/值組
+* 更新新建立索引鍵的值
+* 刪除新的索引鍵/值組
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-如果您選擇在本機安裝和使用 CLI，本文會要求您執行 Azure CLI 2.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+本文需要使用 Azure CLI 2.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 
 
 ## <a name="sample-script"></a>範例指令碼
 
@@ -81,13 +79,13 @@ az appconfig kv list --name $appConfigName
 
 ## <a name="script-explanation"></a>指令碼說明
 
-此指令碼會使用下列命令，在應用程式設定存放區中的索引鍵/值上進行作業。 下表中的每個命令都會連結至命令特定的文件。
+下表列出範例指令碼所使用的命令。 
 
 | Command | 注意 |
 |---|---|
-| [az appconfig kv set](/cli/azure/appconfig/kv#az-appconfig-kv-set) | 建立或更新索引鍵/值。 |
-| [az appconfig kv list](/cli/azure/appconfig/kv#az-appconfig-kv-list) | 列出應用程式設定存放區中的索引鍵/值。 |
-| [az appconfig kv delete](/cli/azure/appconfig/kv#az-appconfig-kv-delete) | 刪除索引鍵/值。 |
+| [az appconfig kv set](/cli/azure/appconfig/kv#az-appconfig-kv-set) | 建立或更新索引鍵/值組。 |
+| [az appconfig kv list](/cli/azure/appconfig/kv#az-appconfig-kv-list) | 列出應用程式組態存放區中的索引鍵/值組。 |
+| [az appconfig kv delete](/cli/azure/appconfig/kv#az-appconfig-kv-delete) | 刪除索引鍵/值組。 |
 
 ## <a name="next-steps"></a>後續步驟
 

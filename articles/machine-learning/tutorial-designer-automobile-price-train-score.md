@@ -9,19 +9,19 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 01/30/2020
-ms.openlocfilehash: de9ed700363bd6578ac49f0add0c48dc33356692
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 972f0aa1f6d05c3cc65c62c0991fad87ab4676c4
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982584"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623623"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>教學課程：使用設計工具預測汽車價格 (預覽)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
 在這個分成兩部分的教學課程中，您將了解如何使用 Azure Machine Learning 設計工具來訓練及部署預測可預測任何汽車價格的機器學習模型。 設計工具是一項拖放工具，可讓您建立機器學習模型，而且不需要任何一行程式碼。
 
-在教學課程的第一部分中，您會了解如何：
+在教學課程的第一部分中，您將了解如何：
 
 > [!div class="checklist"]
 > * 建立新管線。
@@ -260,7 +260,7 @@ Azure Machine Learning 管線會將多個機器學習和資料處理步驟組織
 
 ## <a name="run-the-pipeline"></a>執行管道
 
-現在您的管線已全部設定完成，您可以提交管線執行。
+現在管線已全部設定完成，您可以提交管線執行來定型您的機器學習模型。 在設計工具中建置管線時，您可以在任何時間點提交管線執行。 您可以在執行時檢查工作，並驗證您的管線功能是否如預期般正常運作。
 
 1. 在畫布頂端，選取 [執行]  。
 

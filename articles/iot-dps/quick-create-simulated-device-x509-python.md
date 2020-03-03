@@ -9,29 +9,30 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 75c604ebe6f0bee6427123652c7ea433b21e2956
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 44f1a2cd3336eeae87878c333fb05d2e6b1f88e8
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976480"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605385"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>快速入門：使用適用於 IoT 中樞裝置佈建服務的 Python 裝置 SDK 來建立及佈建模擬 X.509 裝置
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
 
-這些步驟顯示如何在執行 Windows OS 的開發電腦上模擬 X.509 裝置，並使用 Python 程式碼範例將此模擬裝置與裝置佈建服務和 IoT 中樞進行連線。 
+在本快速入門中，您會在 Windows 電腦上建立模擬的 X.509 裝置。 您可以使用裝置範例 Python 程式碼，使用以裝置佈建服務 (DPS) 所進行的個別註冊，讓此模擬裝置與 IoT 中樞進行連線。
+
+## <a name="prerequisites"></a>Prerequisites
+
+- 檢閱[自動佈建概念](concepts-auto-provisioning.md)。
+- 完成[使用 Azure 入口網站設定 IoT 中樞裝置佈建服務](./quick-setup-auto-provision.md)。
+- 具有有效訂用帳戶的 Azure 帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- [Visual Studio 2015+](https://visualstudio.microsoft.com/vs/) 以及使用 C++ 的桌面開發。
+- [CMake 建置系統](https://cmake.org/download/)。
+- [Git](https://git-scm.com/download/)。
 
 > [!IMPORTANT]
 > 本文僅適用於已淘汰的 V1 Python SDK。 尚未在 V2 中提供適用於 Iot 中樞裝置佈建服務的裝置和服務用戶端。 小組目前正努力將 V2 帶至功能同位。
-
-如果您不熟悉自動佈建程序，請務必也要檢閱[自動佈建概念](concepts-auto-provisioning.md)。 繼續之前，請務必完成[使用 Azure 入口網站設定 IoT 中樞裝置佈建服務](./quick-setup-auto-provision.md)中的步驟。 
-
-Azure IoT 裝置佈建服務支援兩種類型的註冊：
-- [註冊群組](concepts-service.md#enrollment-group)：用來註冊多個相關的裝置。
-- [個別註冊](concepts-service.md#individual-enrollment)：用來註冊單一裝置。
-
-本文將示範個別註冊。
 
 [!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
 
@@ -72,6 +73,13 @@ Azure IoT 裝置佈建服務支援兩種類型的註冊：
 * 自我簽署憑證的預設到期日為一年。
 
 您會使用 Azure IoT C SDK 中的範例程式碼建立憑證，以便與模擬裝置的個別註冊項目搭配使用。
+
+Azure IoT 裝置佈建服務支援兩種類型的註冊：
+
+- [註冊群組](concepts-service.md#enrollment-group)：用來註冊多個相關的裝置。
+- [個別註冊](concepts-service.md#individual-enrollment)：用來註冊單一裝置。
+
+本文會示範個別註冊。
 
 1. 開啟在 *cmake* 資料夾中產生的方案 (名為 `azure_iot_sdks.sln`)，並且在 Visual Studio 中建置。
 

@@ -8,15 +8,18 @@ ms.topic: overview
 ms.date: 01/09/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 452202555734a208a9f32d6f8899e1f679df4a68
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: aea424d4e74f0744f5891a0d7b3b08008fa227b5
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443987"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562032"
 ---
 # <a name="what-is-azure-private-link"></a>什麼是 Azure Private Link？ 
 Azure Private Link 可讓您透過虛擬網路中的[私人端點](private-endpoint-overview.md)存取各項 Azure PaaS 服務 (例如 Azure 儲存體、Azure Cosmos DB 和 SQL Database)，以及 Azure 裝載的客戶/合作夥伴服務。 虛擬網路和服務間的流量會在通過 Microsoft 骨幹網路時隨之減少，降低資料在網際網路中公開的風險。 您也可以在虛擬網路 (VNet) 中建立自己的 [Private Link 服務](private-link-service-overview.md)，並私下提供給您的客戶。 使用 Azure Private Link 的設定和取用體驗在 Azure PaaS、客戶自有服務和共用合作夥伴服務之間是一致的。
+
+> [!IMPORTANT]
+> Azure Private Link 現已是正式運作的功能。 私人端點和 Private Link 服務 (標準負載平衡器背後的服務) 均已正式運作。 不同的 Azure PaaS 會以不同的排程上架至 Azure Private Link。 如需 Private Link 上 Azure PaaS 的精確狀態，請查看下方的[可用性](https://docs.microsoft.com/azure/private-link/private-link-overview#availability)一節。 如需了解已知的限制，請參閱[私人端點](private-endpoint-overview.md#limitations)和 [Private Link服務](private-link-service-overview.md#limitations)。 
 
 ![私人端點概觀](media/private-link-overview/private-endpoint.png)
 
@@ -37,26 +40,26 @@ Azure Private Link 提供下列優點：
 
 |狀況  |支援的服務  |可用區域 | 狀態  |
 |:---------|:-------------------|:-----------------|:--------|
-|適用於客戶自有服務的 Private Link|Standard Load Balancer 後方的 Private Link 服務 | 所有公用區域  | 預覽  |
-|適用於 Azure PaaS 服務的 Private Link   | Azure 儲存體        |  所有公用區域      | 預覽 <br/> [深入了解](/azure/storage/common/storage-private-endpoints)。  |
-|  | Azure Data Lake Storage Gen2        |  所有公用區域      | 預覽 <br/> [深入了解](/azure/storage/common/storage-private-endpoints)。  |
-|  |  Azure SQL Database         | 所有公用區域      |   預覽      |
-||Azure SQL 資料倉儲| 所有公用區域 |預覽|
-||Azure Cosmos DB| 美國中西部、美國西部、美國中北部 |預覽|
-|  |  適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器         | 所有公用區域      |   預覽      |
-|  |  適用於 MySQL 的 Azure 資料庫         | 所有公用區域      |   預覽      |
-|  |  適用於 MariaDB 的 Azure 資料庫         | 所有公用區域      |   預覽      |
-|  |  Azure 金鑰保存庫         | 所有公用區域      |   預覽      |
+|適用於客戶自有服務的 Private Link|Standard Load Balancer 後方的 Private Link 服務 | 所有公用區域  | GA <br/> [深入了解](https://docs.microsoft.com/azure/private-link/private-link-service-overview) |
+|適用於 Azure PaaS 服務的 Private Link   | Azure 儲存體        |  所有公用區域      | 預覽 <br/> [深入了解](/azure/storage/common/storage-private-endpoints)  |
+|  | Azure Data Lake Storage Gen2        |  所有公用區域      | 預覽 <br/> [深入了解](/azure/storage/common/storage-private-endpoints)  |
+|  |  Azure SQL Database         | 所有公用區域      |   預覽 <br/> [深入了解](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)      |
+||Azure SQL 資料倉儲| 所有公用區域 |預覽 <br/> [深入了解](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)|
+||Azure Cosmos DB| 美國中西部、美國西部、美國中北部 |預覽 <br/> [深入了解](https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints)|
+|  |  適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器         | 所有公用區域      |   預覽 <br/> [深入了解](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link)      |
+|  |  適用於 MySQL 的 Azure 資料庫         | 所有公用區域      |   預覽 <br/> [深入了解](https://docs.microsoft.com/azure/mysql/concepts-data-access-security-private-link)     |
+|  |  適用於 MariaDB 的 Azure 資料庫         | 所有公用區域      |   預覽 <br/> [深入了解](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link)      |
+|  |  Azure 金鑰保存庫         | 所有公用區域      |   預覽   <br/> [深入了解](https://docs.microsoft.com/azure/key-vault/private-link-service)   |
 
 如需最新通知，請查看 [Azure 虛擬網路更新頁面](https://azure.microsoft.com/updates/?product=virtual-network)。
 
 ## <a name="logging-and-monitoring"></a>記錄和監視
 
 Azure Private Link 會與 Azure 監視器整合，讓您可以將記錄封存至儲存體帳戶、將事件串流至事件中樞，或者將它們傳送到 Azure 監視器記錄。 您可以在 Azure 監視器上存取下列資訊： 
-- **私人端點**：私人端點處理的資料  (IN/OUT)
+- **私人端點**：私人端點處理的資料 (IN/OUT)
  
 - **Private Link 服務**：
-    - Private Link 服務處理的資料  (IN/OUT)
+    - Private Link 服務處理的資料 (IN/OUT)
     - NAT 連接埠可用性  
  
 ## <a name="pricing"></a>定價   
@@ -67,6 +70,9 @@ Azure Private Link 會與 Azure 監視器整合，讓您可以將記錄封存至
  
 ## <a name="limits"></a>限制  
 若要查看相關限制，請參閱 [Azure Private Link 限制](../azure-resource-manager/management/azure-subscription-service-limits.md#private-link-limits)。
+
+## <a name="service-level-agreement"></a>服務等級協定
+如需 SLA，請參閱 [Azure Private Link 的 SLA](https://azure.microsoft.com/support/legal/sla/private-link/v1_0/)。
 
 ## <a name="next-steps"></a>後續步驟
 - [使用入口網站建立適用於 SQL Database 伺服器的私人端點](create-private-endpoint-portal.md)

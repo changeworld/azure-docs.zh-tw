@@ -12,12 +12,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: c9eb8b3d909313470ee9febdc5b1c37eea834b08
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: f0b4d1f557006ba8a343a0497262cc5c8254e86c
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484038"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561577"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>快速入門：從 iOS 或 macOS 應用程式登入使用者並呼叫 Microsoft Graph API
 
@@ -117,7 +117,7 @@ ms.locfileid: "77484038"
 > 1. 建置並執行應用程式！
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
-> > 本快速入門支援 Enter_the_Supported_Account_Info_Here。
+> > Enter_the_Supported_Account_Info_Here
 > [!div renderon="docs"]
 >
 > 1. 將 ZIP 檔案解壓縮並在 XCode 中開啟專案。

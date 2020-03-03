@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/31/2019
 ms.author: sngun
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: bd7801c84860ddba3c3991bce9352c595adb123f
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: f29eeba98e0cc89c65dda814e03d63d2f3493c35
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77469032"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586014"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>快速入門：建置 JAVA 應用程式來管理 Azure Cosmos DB SQL API 資料
 
@@ -35,6 +35,18 @@ ms.locfileid: "77469032"
 - [Java 開發套件 (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk) \(英文\)。 將 `JAVA_HOME` 環境變數指向 JDK 安裝所在的資料夾。
 - [Maven 二進位檔封存](https://maven.apache.org/download.cgi)。 在 Ubuntu 上，執行 `apt-get install maven` 來安裝 Maven。
 - [Git](https://www.git-scm.com/downloads)。 在 Ubuntu 上，執行 `sudo apt-get install git` 來安裝 Git。
+
+## <a name="introductory-notes"></a>簡介注意事項
+
+Cosmos DB 帳戶的結構。  不論是 API 還是程式設計語言，Cosmos DB「帳戶」  會包含零個以上的「資料庫」  、「資料庫」  (DB) 會包含零個以上的「容器」  ，「容器」  則會包含零個以上的項目，如下圖所示：
+
+![Azure Cosmos 帳戶項目](./media/databases-containers-items/cosmos-entities.png)
+
+您可以在[這裡](databases-containers-items.md)進一步了解資料庫、容器和項目。 幾個重要的屬性會定義於容器層級，其中包括「佈建的輸送量」  和「分割區索引鍵」  。 
+
+佈建的輸送量會以具有貨幣價格的要求單位 (RU  ) 來進行測量，在決定帳戶的營運成本時，RU 會是一大因素。 佈建的輸送量可依每一容器的細微性或每一資料庫的細微性來加以選取，不過一般來說，最好是指定容器層級的輸送量。 您可以在[這裡](set-throughput.md)進一步了解輸送量佈建。
+
+隨著 Cosmos DB 容器中不斷插入項目，資料庫也可藉由新增更多儲存體和計算來處理要求，以水平方式跟著成長。 儲存體和計算容量會以離散單位 (稱為「分割區」  ) 來新增，而且您必須在文件中選擇一個欄位來作為分割區索引鍵，以將每個文件對應至分割區。 分割區的管理方式是為每個分割區指派分割區索引鍵值範圍中大致相等的配量；因此，建議您選擇相對隨機或平均分佈的分割區索引鍵。 否則，某些分割區會看到高出許多的要求 (「熱分割區」  )，其他分割區則會看到少了許多的要求 (「冷分割區」  )，我們應該避免這種情況。 您可以在[這裡](partitioning-overview.md)深入了解分割。
 
 ## <a name="create-a-database-account"></a>建立資料庫帳戶
 
@@ -73,27 +85,27 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
 
 * `CosmosClient` 初始化。 `CosmosClient` 提供適用於 Azure Cosmos 資料庫服務的用戶端邏輯表示法。 此用戶端會用於設定和執行針對服務的要求。
     
-    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateSyncClient)]
+    :::code language="java" source="~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java" id="CreateSyncClient":::
 
 * `CosmosDatabase` 建立。
 
-    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateDatabaseIfNotExists)]
+    :::code language="java" source="~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java" id="CreateDatabaseIfNotExists":::
 
 * `CosmosContainer` 建立。
 
-    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateContainerIfNotExists)]
+    :::code language="java" source="~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java" id="CreateContainerIfNotExists":::
 
 * 使用 `createItem` 方法建立項目。
 
-    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateItem)]
+    :::code language="java" source="~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java" id="CreateItem":::
    
 * 端點讀取是使用 `readItem` 方法來執行。
 
-    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=ReadItem)]
+    :::code language="java" source="~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java" id="ReadItem":::
 
 * 使用 `queryItems` 方法，透過 JSON 執行 SQL 查詢。
 
-    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=QueryItems)]
+    :::code language="java" source="~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java" id="QueryItems":::
 
 ### <a name="managing-database-resources-using-the-asynchronous-async-api"></a>使用非同步 API 管理資料庫資源
 
@@ -101,27 +113,27 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
 
 * `CosmosAsyncClient` 初始化。 `CosmosAsyncClient` 提供適用於 Azure Cosmos 資料庫服務的用戶端邏輯表示法。 此用戶端用於設定和執行針對服務的非同步要求。
     
-    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateAsyncClient)]
+    :::code language="java" source="~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java" id="CreateAsyncClient":::
 
 * `CosmosAsyncDatabase` 建立。
 
-    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateDatabaseIfNotExists)]
+    :::code language="java" source="~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java" id="CreateDatabaseIfNotExists":::
 
 * `CosmosAsyncContainer` 建立。
 
-    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateContainerIfNotExists)]
+    :::code language="java" source="~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java" id="CreateContainerIfNotExists":::
 
 * 就像同步 API 一樣，項目建立是使用 `createItem` 方法來完成。 此範例示範如何藉由訂閱可發出要求並列印通知的「回應式串流」，有效率地發出許多非同步 `createItem` 要求。 由於這個簡單範例會執行到完成並終止，因此 `CountDownLatch` 執行個體用來確保程式在項目建立期間不會終止。 **適當的非同步程式設計做法不會在非同步呼叫上進行封鎖 - 在實際的使用案例中，要求會產生自無限期執行的 main() 迴圈，而不需要在非同步呼叫上進行閂鎖。**
 
-    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateItem)]
+    :::code language="java" source="~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java" id="CreateItem":::
    
 * 就像同步 API 一樣，點讀取是使用 `readItem` 方法來執行。
 
-    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=ReadItem)]
+    :::code language="java" source="~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java" id="ReadItem":::
 
 * 就像同步 API 一樣，透過 JSON 的 SQL 查詢是使用 `queryItems` 方法來執行。
 
-    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=QueryItems)]
+    :::code language="java" source="~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java" id="QueryItems":::
 
 ## <a name="run-the-app"></a>執行應用程式
 

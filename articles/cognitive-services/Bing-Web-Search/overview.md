@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 12/05/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 6615f166ced4a93115f9cbaae1c6ce5b57cf57bc
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: a7b2627b5837a124ebbcd76783bb49679cbe6313
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892986"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650277"
 ---
 # <a name="what-is-the-bing-web-search-api"></a>什麼是 Bing Web 搜尋 API？
 
@@ -30,7 +30,7 @@ Bing Web 搜尋 API 是一項可即時解答使用者查詢的 RESTful 服務。
 
 Bing Web 搜尋不只可讓您存取即時解答。 還提供可讓您為使用者自訂搜尋結果的其他特性和功能。
 
-| 功能 | 說明 |
+| 功能 | 描述 |
 |---------|-------------|
 | [即時建議搜尋字詞](../bing-autosuggest/get-suggested-search-terms.md) | 使用 Bing 自動建議 API 隨著使用者的輸入顯示建議的搜尋字詞，以改善您的應用程式體驗。 |
 | [依內容類型篩選及限制結果](filter-answers.md) | 使用篩選條件和查詢參數，自訂及精簡網頁、影像、影片、安全搜尋的搜尋結果。 |
@@ -40,7 +40,7 @@ Bing Web 搜尋不只可讓您存取即時解答。 還提供可讓您為使用�
 
 ## <a name="workflow"></a>工作流程
 
-Bing Web 搜尋 API 可輕易地從任何可發出 HTTP 要求及剖析 JSON 回應的程式設計語言呼叫。 此服務可使用 [REST API](quickstarts/python.md) 或 [Bing Web 搜尋 SDK](web-sdk-python-quickstart.md) 來存取。
+Bing Web 搜尋 API 可輕易地從任何可發出 HTTP 要求及剖析 JSON 回應的程式設計語言呼叫。 此服務可使用 [REST API](quickstarts/python.md) 或 [Bing Web 搜尋用戶端程式庫](./quickstarts/client-libraries.md)來存取。
 
 1. 為 Bing 搜尋 API [建立 Azure 資源](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果您沒有 Azure 訂用帳戶，您可以建立[免費帳戶](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)。  
 2. [將要求傳送至 Bing Web 搜尋 API](quickstarts/python.md)。
@@ -48,7 +48,7 @@ Bing Web 搜尋 API 可輕易地從任何可發出 HTTP 要求及剖析 JSON 回
 
 ## <a name="next-steps"></a>後續步驟
 
-* 使用我們的 [Python 快速入門](quickstarts/python.md)，發出您對 Bing Web 搜尋 API 的第一個呼叫。  
+* 使用我們的 [Python 快速入門](./quickstarts/client-libraries.md?pivots=programming-language-python)，發出您對 Bing Web 搜尋 API 的第一個呼叫。  
 * [建置單頁 Web 應用程式](tutorial-bing-web-search-single-page-app.md)。
 * 檢閱 [Web 搜尋 API v7 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)文件。  
 * 深入了解 Bing Web 搜尋的[使用和顯示需求](UseAndDisplayRequirements.md)。  

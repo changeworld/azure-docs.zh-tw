@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 02/24/2020
 ms.author: banders
-ms.openlocfilehash: 2689bdeb003cec0050141374165142a62f9ea337
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 77d663fa01e24acf63acd68d0b8d7cf4cc741055
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200396"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587085"
 ---
 # <a name="purchase-reservations-with-monthly-payments"></a>購買或每月付款的 Azure 保留
 
@@ -62,7 +62,7 @@ ms.locfileid: "77200396"
 
 當您交換每月付款的保留時，新購買項目的總存留期費用應大於退回保留而取消的剩餘款項。 交換並不沒有其他限制或費用。 您可以交換預先付款的保留，改為購買每月計費的新保留。 不過，新保留的存留期值應該大於退回保留的比例分配值。
 
-如果取消每月付款的保留，Microsoft 可能會對一併取消的未來承諾付款收取取消費用。 剩餘承諾付款會朝 $50,000 美元的退款限制累積。
+如果取消每月付款的保留，Microsoft 可能會針對一併取消的承諾付款收取 12% 的取消費用。 不過，Microsoft 目前不會進行懲罰性收費。 取消的承諾付款會朝 $50,000 美元的退款限制累積。 如果向您收取了取消的懲罰性費用，則不會影響退款限制。
 
 如需有關交換和退款的詳細資訊，請參閱 [Azure 保留的自助式交換和退款](exchange-and-refund-azure-reservations.md)。
 

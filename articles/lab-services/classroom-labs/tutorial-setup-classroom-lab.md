@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/10/2020
 ms.author: spelluru
-ms.openlocfilehash: e50d0772eaf706772aa89418a1ad25bf406945b5
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 166ec4db2a2891d25a1e80526f8c1bd9770f9eef
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134185"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592215"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>教學課程：設定教室實驗室 
 您將在本教學課程中設定教室實驗室，且其中包含教室中學生所使用的虛擬機器。  
@@ -72,7 +72,7 @@ ms.locfileid: "77134185"
     4. **停止**範本 VM。  
 
 ## <a name="publish-the-template-vm"></a>發佈範本 VM
-在此步驟中，請發佈範本 VM。 發佈程序會建立範本 VM 基本複本的實驗室 VM。 
+在此步驟中，請發佈範本 VM。 當您發佈範本 VM 時，Azure 實驗室服務會使用範本在實驗室中建立 VM。 所有虛擬機器都有與範本相同的設定。
 
 1. 在 [範本]  頁面上，選取工具列上的 [發佈]  。 
 
@@ -89,6 +89,9 @@ ms.locfileid: "77134185"
 4. 等候發佈完成，然後藉由選取左側功能表上的 [虛擬機器]  或選取 [虛擬機器]  圖格，以切換到 [虛擬機器集區]  頁面。 確認您看到處於 [未指派]  狀態的虛擬機器。 這些虛擬機器尚未指派給任何學生。 它們應處於 [已停止]  狀態。 您可以在此頁面上啟動學生 VM、連線到 VM、停止 VM，以及刪除 VM。 您可以在此頁面啟動 VM，或是讓學生啟動 VM。 
 
     ![已停止狀態的虛擬機器](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)   
+
+    > [!NOTE]
+    > 當教育工作者開啟學生 VM 時，學生的配額不會受到影響。 使用者的配額會指定使用者可在排定的上課時間外使用的實驗室時數。 如需配額的詳細資訊，請參閱[為使用者設定配額](how-to-configure-student-usage.md?#set-quotas-for-users)。
 
 ## <a name="set-a-schedule-for-the-lab"></a>設定實驗室的排程
 建立實驗室的排程事件，讓實驗室中的 VM 在特定時間自動啟動/停止。 您稍早指定的使用者配額 (預設值：10 小時) 便是會在此排程時間以外指派給每位使用者的額外時間。 

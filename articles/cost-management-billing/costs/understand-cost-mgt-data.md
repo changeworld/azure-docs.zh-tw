@@ -4,17 +4,17 @@ description: 本文將協助您深入了解 Azure 成本管理所包含的資料
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 02/21/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 39f2aab72491ffdf2b583879181a247d3653647f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 44953a3986b5c03afa9cc4668e2563c5c5cd6c46
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199886"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560604"
 ---
 # <a name="understand-cost-management-data"></a>了解成本管理資料
 
@@ -135,9 +135,9 @@ Azure 成本管理會在個別服務提交的每個使用記錄中接收標記�
 - 將標記 API 與 Query 或 UsageDetails 搭配使用，以根據目前的標記取得所有成本。
 
 
-**免費試用升級至隨用隨付**
+## <a name="free-trial-to-pay-as-you-go-upgrade"></a>從免費試用升級至隨用隨付
 
-從免費試用供應項目 (044P) 轉換至 PAYG 供應項目 (003P) 的客戶，可以在免費試用期間看到其使用量。 不過，他們在轉換後便無法看到免費試用期間的使用量。 轉換之後，只有 PAYG 的使用量和成本會顯示在 Azure 成本管理中。
+如需從免費試用升級至隨用隨付定價之後，免費層服務可用性的相關資訊，請參閱 [Azure 免費帳戶常見問題](https://azure.microsoft.com/free/free-account-faq/)。
 
 ## <a name="rated-usage-data-refresh-schedule"></a>評比使用量資料重新整理排程
 
@@ -157,6 +157,17 @@ Enterprise 合約 (EA) 訂用帳戶 – 如果計費月份在 3 月 31 日結束
 ### <a name="rerated-data"></a>重新評估的資料
 
 無論您使用[成本管理 API](../index.yml)、PowerBI 還是 Azure 入口網站來擷取資料，都應預期目前計費期間的費用可能進行重新評估，且持續變更，直到發票結算為止。
+
+## <a name="cost-rounding"></a>成本四捨五入
+
+成本管理中顯示的成本會四捨五入。 查詢 API 所傳回的成本不會四捨五入。 例如：
+
+- Azure 入口網站中的成本分析 - 費用會使用標準四捨五入規則來進位：大於 0.5 和更高的值會向上捨入，否則會將成本向下捨去。 只有在顯示值時，才會四捨五入。 資料處理和匯總期間不會四捨五入。 例如，成本分析會匯總成本，如下所示：
+  - 費用 1：$0.004
+  - 費用 2：$0.004
+  - 轉譯的匯總費用：0.004 + 0.004 = 0.008。 顯示的費用為 $0.01。
+- 查詢 API - 費用會顯示八個小數位數，而且不會四捨五入。
+
 
 ## <a name="usage-data-update-frequency-varies"></a>使用量資料更新頻率不相同
 

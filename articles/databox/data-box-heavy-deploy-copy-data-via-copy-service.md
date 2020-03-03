@@ -1,5 +1,5 @@
 ---
-title: 透過資料複製服務將資料複製到 Azure Data Box Heavy 裝置的教學課程 | Microsoft Docs
+title: 教學課程：透過資料複製服務將資料複製到 Azure Data Box Heavy
 description: 在本教學課程，您會了解如何透過資料複製服務將資料複製到 Azure Data Box Heavy 裝置
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: adc28ea5f74ad16d4387d246ef73618a53ea26e1
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 67547db53d2b9ce05838335ffcb5d789b77ecbbe
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595817"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560215"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-heavy-preview"></a>教學課程：使用資料複製服務將資料複製到 Azure Data Box Heavy (預覽)
 
@@ -24,12 +24,12 @@ ms.locfileid: "67595817"
 - 在可能無法使用中繼主機的 NAS 環境中使用。
 - 搭配需要數週時間來擷取和上傳資料的小型檔案。 資料複製服務可大幅改善小型檔案的擷取和上傳時間。
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 將資料複製到 Data Box Heavy
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在您開始前，請確定：
 
@@ -102,7 +102,7 @@ ms.locfileid: "67595817"
 
         ![重新啟動失敗的作業](media/data-box-deploy-copy-data-via-copy-service/restart-failed-job.png)
 
-        如果您遇到失敗且無法重新啟動作業，請下載錯誤記錄並在記錄中查看該項失敗。 在更正問題後，請建立新的作業來複製檔案。 您也可以[透過 SMB 複製檔案](data-box-deploy-copy-data.md)。
+        如果您遇到失敗且無法重新啟動作業，請下載錯誤記錄並在記錄檔中查看該項失敗。 在更正問題後，請建立新的作業來複製檔案。 您也可以[透過 SMB 複製檔案](data-box-deploy-copy-data.md)。
     
     - 在這個版本中，您無法刪除作業。
     
@@ -111,7 +111,7 @@ ms.locfileid: "67595817"
 
 6. 當作業正在進行時，在 [複製資料]  頁面上：
 
-    - 在 [狀態]  資料行中，您可以檢視複製作業的狀態。 狀態可以是：
+    - 在 [狀態]  資料行中，您可以檢視複製作業的狀態。 狀態可能是：
         - **執行中**
         - **已失敗**
         - **已成功**

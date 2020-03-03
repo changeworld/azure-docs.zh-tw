@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 01/27/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 17dd428f79f66bc70da47527314ad43a27955c82
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: eb338c39ed3b1a095c1ad31e3f695e8d3fec0ed3
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772509"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565956"
 ---
 # <a name="what-is-computer-vision"></a>什麼是電腦視覺？
 
@@ -48,7 +48,7 @@ Azure 的電腦視覺服務可供開發人員存取進階演算法，以根據�
 
 ## <a name="extract-text-from-images"></a>擷取影像中的文字
 
-您可以使用電腦視覺[閱讀 API](concept-recognizing-text.md#read-api)，將影像中列印和手寫文字擷取到電腦可讀取的字元資料流中。 讀取 API 會使用最新的模型並處理各種表層和背景上的文字，例如收據、海報、名片、信件和白板等。 目前，英文是唯一支援的語言。
+您可以使用電腦視覺[閱讀 API](concept-recognizing-text.md#read-api)，將影像中列印和手寫文字擷取到電腦可讀取的字元資料流中。 讀取 API 會使用最新的模型並處理各種表層和背景上的文字，例如收據、海報、名片、信件和白板等。 目前，英文和西班牙文是唯一支援的語言。
 
 您也可以使用[光學字元辨識 (OCR)](concept-recognizing-text.md#ocr-optical-character-recognition-api) API，以數種語言擷取列印的文字。 如有需要，OCR 會校正已辨識文字的旋轉角度，並提供每個字的框架座標。 OCR 支援 25 種語言，且會根據辨識的文字自動偵測其語言。
 

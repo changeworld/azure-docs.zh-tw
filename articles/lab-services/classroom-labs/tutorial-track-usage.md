@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/10/2020
 ms.author: spelluru
-ms.openlocfilehash: 55c7e2f30324fe7878e38f1129c63c6e0c51a75f
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: a1a3e62646fedd468a02eac7b1a48d0b2d00fd74
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134837"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591977"
 ---
 # <a name="tutorial-track-usage-of-a-lab-in-azure-lab-service"></a>教學課程：追蹤實驗室在 Azure 實驗室服務中的使用情形
 本教學課程會說明實驗室建立者/擁有者如何追蹤實驗室的使用情況。
@@ -53,9 +53,12 @@ ms.locfileid: "77134837"
 ## <a name="manage-student-vms"></a>管理學生 VM 
 在此頁面上，您可以使用 [狀態]  資料行或工具列上的控制項來啟動、停止或重設學生 VM。
 
-![VM 控制項](../media/tutorial-track-usage/vm-controls.png)
+![VM 動作](../media/tutorial-track-usage/vm-controls.png)
 
 如需管理實驗室虛擬機器集區的詳細資訊，請參閱[設定和管理虛擬機器集區](how-to-set-virtual-machine-passwords.md)。
+
+> [!NOTE]
+> 當教育工作者開啟學生 VM 時，學生的配額不會受到影響。 使用者的配額會指定使用者可在排定的上課時間外使用的實驗室時數。 如需配額的詳細資訊，請參閱[為使用者設定配額](how-to-configure-student-usage.md?#set-quotas-for-users)。
 
 ## <a name="next-steps"></a>後續步驟
 若要深入了解教室實驗室，請參閱[操作指南](how-to-manage-lab-accounts.md)底下的文章。

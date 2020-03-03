@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5454d2f80d1febccb0c57ecf2e80d930bb5cb761
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 21725e64bb359b2f11086baceb186605f010b796
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988799"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561454"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>教學課程：使用部署指令碼建立自我簽署憑證 (預覽)
 
@@ -266,13 +266,13 @@ ms.locfileid: "76988799"
     * **timeout**：指定以 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601)指定的指令碼執行時間允許上限。 預設值為 **P1D**。
     * **arguments**：指定參數值。 多個值應以空格分隔。
     * **scriptContent**：指定指令碼內容。 若要執行外部指令碼，請改用 **primaryScriptURI**。 如需詳細資訊，請參閱[使用外部指令碼](./deployment-script-template.md#use-external-scripts)。
-        只有在本機電腦上測試指令碼時，才需要宣告 **$DeploymentScriptOutputs**。 宣告此變數可讓指令碼直接在本機電腦和 deploymentScript 資源中執行，而無須進行變更。 指派給 $DeploymentScriptOutputs 的值可作為部署中的輸出。 如需詳細資訊，請參閱[使用部署指令碼的輸出](./deployment-script-template.md#work-with-outputs-from-deployment-scripts)。
+        只有在本機電腦上測試指令碼時，才需要宣告 **$DeploymentScriptOutputs**。 宣告此變數可讓指令碼直接在本機電腦和 deploymentScript 資源中執行，而無須進行變更。 指派給 $DeploymentScriptOutputs 的值可作為部署中的輸出。 如需詳細資訊，請參閱[使用 PowerShell 部署腳本的輸出](./deployment-script-template.md#work-with-outputs-from-powershell-script)或[使用 CLI 部署腳本的輸出](./deployment-script-template.md#work-with-outputs-from-cli-script)。
     * **cleanupPreference**：指定何時要刪除部署指令碼資源的喜好設定。  預設值為 [一律]  ，這表示即使處於終止狀態 (成功、失敗、已取消)，仍會刪除部署指令碼資源。 本教學課程中會使用 **OnSuccess**，以讓您有機會檢視指令碼執行結果。
     * **retentionInterval**：指定服務在指令碼資源到達結束狀態後保留該資源的間隔。 此持續時間到期後，即會刪除資源。 持續時間以 ISO 8601 模式為基礎。 本教學課程使用 P1D，這表示一天。  當 **cleanupPreference** 設定為 **OnExpiration** 時，就會使用此屬性。 目前並未啟用此屬性。
 
     部署指令碼會採用三個參數：金鑰保存庫名稱、憑證名稱和主體名稱。  指令碼會建立憑證，然後將憑證新增至金鑰保存庫。
 
-    **$DeploymentScriptOutputs** 會用來儲存輸出值。  若要深入了解，請參閱[使用部署指令碼的輸出](./deployment-script-template.md#work-with-outputs-from-deployment-scripts)。
+    **$DeploymentScriptOutputs** 會用來儲存輸出值。  如需深入了解，請參閱[使用 PowerShell 部署腳本的輸出](./deployment-script-template.md#work-with-outputs-from-powershell-script)或[使用 CLI 部署腳本的輸出](./deployment-script-template.md#work-with-outputs-from-cli-script)。
 
     您可以在[這裡](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault.json)找到完成的範本。
 

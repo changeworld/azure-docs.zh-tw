@@ -3,16 +3,16 @@ title: Azure EA 入口網站系統管理員
 description: 本文將說明系統管理員在 Azure EA 入口網站中完成的一般工作。
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 02/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 142ef421599cef4083efdf8b9ed700d2baa152b3
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 1da26b3a1c028a49655b9089ac0119e3274e37a4
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199767"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598386"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA 入口網站系統管理員
 
@@ -118,6 +118,8 @@ Azure EA 帳戶是 Azure EA 入口網站中用來管理訂用帳戶的組織單�
 
 帳戶轉移會將帳戶擁有者從一個註冊轉移至另一個註冊。 帳戶擁有者下的所有相關訂用帳戶都會轉移至目標註冊。 當您有多個作用中註冊，而您只想要轉移選取的帳戶擁有者時，即可執行此作業。
 
+本節僅供資訊參考之用，因為企業管理員無法執行動作。 將企業帳戶轉移至新的註冊需要支援要求。
+
 當您將企業帳戶轉移至新的註冊時，請記住下列幾點：
 
 - 只會轉移要求中指定的帳戶。 如果選擇所有帳戶，則會轉移全部的帳戶。
@@ -147,6 +149,8 @@ Azure EA 帳戶是 Azure EA 入口網站中用來管理訂用帳戶的組織單�
 - 目前註冊的承諾用量期間已結束。
 - 註冊處於過期/延長狀態，且已協商新合約。
 - 如果您有多個註冊，而想要將所有帳戶和帳單合併在單一註冊下。
+
+本節僅供資訊參考之用，因為企業管理員無法執行動作。 將企業註冊轉移至新的註冊需要支援要求。
 
 當您要求將整個企業註冊轉移至另一個註冊時，會發生下列動作：
 

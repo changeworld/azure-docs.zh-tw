@@ -8,16 +8,16 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3cbf0fa4a32145add0a5475f22ea0d936584c9bf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 37a82c4001dd42a4cfbbb9dabec29f28359afd75
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465206"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615391"
 ---
-# <a name="quickstart-create-a-unity-ios-app-with-azure-spatial-anchors"></a>快速入門：使用 Azure 空間錨點來建立 Unity iOS 應用程式
+# <a name="quickstart-create-a-unity-ios-app-with-azure-spatial-anchors"></a>快速入門：使用 Azure Spatial Anchors 來建立 Unity iOS 應用程式
 
-本快速入門涵蓋如何使用 [Azure 空間錨點](../overview.md)來建立 Unity iOS 應用程式。 Azure Spatial Anchors 是一款跨平台開發人員服務，可讓您使用在一段時間之後仍跨裝置保持其位置的物件，建立混合實境體驗。 當您完成時，您將會有搭配 Unity 建置的 ARKit iOS 應用程式，可用來儲存和回收空間錨點。
+本快速入門涵蓋如何使用 [Azure Spatial Anchors](../overview.md) 來建立 Unity iOS 應用程式。 Azure Spatial Anchors 是一款跨平台開發人員服務，可讓您使用在一段時間之後仍跨裝置保持其位置的物件，建立混合實境體驗。 當您完成時，您將會有搭配 Unity 建置的 ARKit iOS 應用程式，可用來儲存和回收空間錨點。
 
 您將學習如何：
 
@@ -34,7 +34,7 @@ ms.locfileid: "75465206"
 
 若要完成本快速入門，請確定您具備︰
 
-- 已安裝 <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.1+</a>、最新版本 <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a> 和 <a href="https://cocoapods.org" target="_blank">CocoaPods</a> 的 macOS 電腦。
+- 已安裝 <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.1 或 2019.2</a>、最新版本 <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a> 和 <a href="https://cocoapods.org" target="_blank">CocoaPods</a> 的 macOS 電腦。
 - 透過 HomeBrew 安裝的 Git。 在終端機的單一行輸入以下命令：`/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`。 然後執行 `brew install git` 和 `brew install git-lfs`。
 - 由開發人員啟用且<a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">與 ARKit 相容</a>的 iOS 裝置。
 
@@ -81,6 +81,10 @@ brew update
 brew install cocoapods --build-from-source
 brew link --overwrite cocoapods
 ```
+
+### <a name="unity-20193"></a>Unity 2019.3
+
+由於有重大變更，目前不支援 Unity 2019.3。 請使用 Unity 2019.1 或 2019.2。
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

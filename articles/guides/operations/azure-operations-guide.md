@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: e6ef4cc825d40615fa8a6aee7dff8d4542407974
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 4f9da6cbfe8d1e6b92c39148b275de193730c8f1
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970852"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623568"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Azure IT 操作員快速入門
 
@@ -112,7 +112,7 @@ Azure 在其雲端運算平台中提供許多服務。 這些服務包括下列�
 
 - 用於處理巨量資料的 Azure HDInsight
 
-- Azure 排程器
+- 用於整合和協調流程工作流程的 Azure Logic Apps
 
 - Azure 媒體服務
 
@@ -368,7 +368,7 @@ Azure 儲存體帳戶可以設定不同層級的備援性：
 
 #### <a name="blob-storage"></a>Blob 儲存體
 
-blob  這個字是「二進位大型物件  的縮寫。 Blob 類似您在電腦上儲存的非結構化檔案。 Blob 儲存體可以儲存任何類型的文字或二進位資料，例如文件、媒體檔案或應用程式安裝程式。 Blob 儲存體也稱為物件儲存體。 Azure Blob 儲存體也可保留 Azure 虛擬機器資料磁碟。
+blob  這個字是「二進位大型物件」  的縮寫。 Blob 類似您在電腦上儲存的非結構化檔案。 Blob 儲存體可以儲存任何類型的文字或二進位資料，例如文件、媒體檔案或應用程式安裝程式。 Blob 儲存體也稱為物件儲存體。 Azure Blob 儲存體也可保留 Azure 虛擬機器資料磁碟。
 
 Azure 儲存體支援三種 blob 類型：
 

@@ -3,7 +3,7 @@ title: 教學課程：在 Azure Sentinel 中執行劇本
 description: 教學課程：本文說明如何在 Azure Sentinel 中執行劇本。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.assetid: e4afc5c8-ffad-4169-8b73-98d00155fa5a
@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/12/2019
-ms.author: rkarlin
-ms.openlocfilehash: 7e26e901fdee8cac79cfb55aa0999487e87b8a78
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 02/18/2019
+ms.author: yelevin
+ms.openlocfilehash: f6adcb978dbe540d3bdd352089d4dde407d0fb4c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113917"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585079"
 ---
 # <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel"></a>教學課程：在 Azure Sentinel 中設定自動化威脅回應
 
@@ -64,7 +64,7 @@ ms.locfileid: "74113917"
 
    ![邏輯應用程式](./media/tutorial-respond-threats-playbook/playbookimg.png)
 
-3. 在 [Azure Sentinel - 劇本 (預覽)]  頁面中，按一下 [新增]  按鈕。
+3. 在 [Azure Sentinel - 劇本]  頁面中，按一下 [新增]  按鈕。
 
    ![建立邏輯應用程式](./media/tutorial-respond-threats-playbook/create-playbook.png) 
 

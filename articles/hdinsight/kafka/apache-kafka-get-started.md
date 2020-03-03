@@ -5,21 +5,21 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: mvc
 ms.topic: quickstart
-ms.date: 10/01/2019
-ms.openlocfilehash: 76360ec8de645d926daec0db878906c73d0da948
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.custom: mvc
+ms.date: 02/24/2020
+ms.openlocfilehash: 286b16d850b1c1c26069c50cd4045bf7f3dd3c14
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029997"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623482"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>快速入門：在 Azure HDInsight 中使用 Azure 入口網站建立 Apache Kafka 叢集
 
-Apache Kafka 是一個開放原始碼的分散式串流平台。 它通常會用來作為訊息代理程式，因為可以提供類似「發佈-訂閱」訊息佇列的功能。
+[Apache Kafka](./apache-kafka-introduction.md) 是一個開放原始碼的分散式串流平台。 它通常會用來作為訊息代理程式，因為可以提供類似「發佈-訂閱」訊息佇列的功能。
 
-在本快速入門中，您會了解如何使用 Azure 入口網站來建立 [Apache Kafka](https://kafka.apache.org) \(英文\) 叢集。 您也會了解如何使用內含的公用程式，使用 Apache Kafka 來傳送和接收訊息。
+在本快速入門中，您會了解如何使用 Azure 入口網站來建立 Apache Kafka 叢集。 您也會了解如何使用內含的公用程式，使用 Apache Kafka 來傳送和接收訊息。 如需可用設定的深入說明，請參閱[在 HDInsight 中設定叢集](../hdinsight-hadoop-provision-linux-clusters.md)。 如需如何使用入口網站來建立叢集的其他資訊，請參閱[在入口網站中建立叢集](../hdinsight-hadoop-create-linux-clusters-portal.md)。
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -33,23 +33,25 @@ SSH 用戶端。 如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (
 
 ## <a name="create-an-apache-kafka-cluster"></a>建立 Apache Kafka 叢集
 
-若要在 HDInsight 叢集上建立 Apache Kafka，請使用下列步驟：
+若要在 HDInsight 上建立 Apache Kafka 叢集，請使用下列步驟：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-1. 從左側功能表，瀏覽至 [+ 建立資源]   > [分析]   > [HDInsight]  。
+1. 在頂端功能表中，選取 [+ 建立資源]  。
 
-    ![Azure 入口網站建立資源 HDInsight](./media/apache-kafka-get-started/create-hdinsight-cluster.png)
+    ![Azure 入口網站建立資源 HDInsight](./media/apache-kafka-get-started/azure-portal-create-resource.png)
 
-1. 在 [基本]  之下，輸入或選取下列值：
+1. 選取 [分析]   > [Azure HDInsight]  以移至 [建立 HDInsight 叢集]  頁面。
+
+1. 在 [基本資料]  索引標籤中提供下列資訊：
 
     |屬性  |描述  |
     |---------|---------|
-    |訂用帳戶    |  選取 Azure 訂用帳戶。 |
+    |訂用帳戶    |  從下拉式清單中，選取用於此叢集的 Azure 訂用帳戶。 |
     |資源群組     | 建立資源群組，或選取現有的資源群組。  資源群組是 Azure 元件的容器。  在此案例中，資源群組包含 HDInsight 叢集和相依的 Azure 儲存體帳戶。 |
-    |叢集名稱   | 輸入 Hadoop 叢集的名稱。 由於 HDInsight 中的所有叢集共用相同的 DNS 命名空間，因此這個名稱必須是唯一的。 名稱最多可包含 59 個字元，而這些字元可以是字母、數字和連字號。 名稱的第一個和最後一個字元不可以是連字號。 |
-    |Location    | 選取您要建立叢集的 Azure 位置。  選擇靠近您的位置，以獲得最佳效能。 |
-    |叢集類型| 選取 [選取叢集類型]  。 然後選取 [Kafka]  作為叢集類型。|
+    |叢集名稱   | 輸入全域唯一名稱。 名稱最多可包含 59 個字元，而這些字元可以是字母、數字和連字號。 名稱的第一個和最後一個字元不可以是連字號。 |
+    |區域    | 從下拉式清單中，選取要在其中建立叢集的區域。  選擇靠近您的區域，以獲得最佳效能。 |
+    |叢集類型| 選取 [選取叢集類型]  以開啟清單。 從清單中，選取 [Kafka]  作為叢集類型。|
     |版本|將會指定叢集類型的預設版本。 如果您想要指定不同的版本，請從下拉式清單中選取。|
     |叢集登入使用者名稱和密碼    | 預設登入名稱為 **admin**。密碼長度至少必須為 10 個字元，且必須包含至少一個數字、一個大寫字母及一個小寫字母、一個非英數字元 (除了字元 ' " ` \)。 確定您**不會提供**常見密碼，例如 "Pass@word1"。|
     |安全殼層 (SSH) 使用者名稱 | 預設的使用者名稱為 **sshuser**。  您可以為 SSH 使用者名稱提供另一個名稱。 |
@@ -100,15 +102,13 @@ SSH 用戶端。 如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (
 
 ## <a name="connect-to-the-cluster"></a>連線至叢集
 
-1. 若要連線到 Apache Kafka 叢集的主要前端節點，請使用下列命令。 將 `sshuser` 取代為 SSH 使用者名稱。 將 `mykafka` 取代為您的 Apache Kafka 叢集名稱。
+1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)來連線到您的叢集。 編輯以下命令並將 CLUSTERNAME 取代為您叢集的名稱，然後輸入命令：
 
-    ```bash
-    ssh sshuser@mykafka-ssh.azurehdinsight.net
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-2. 當您初次連線到叢集時，您的 SSH 用戶端可能會顯示警告，指出無法確認主機的真確性。 在系統提示時，輸入 __yes__，然後按 __Enter__ 鍵，以將主機新增至 SSH 用戶端信任的伺服器清單。
-
-3. 出現提示時，請輸入 SSH 使用者的密碼。
+1. 出現提示時，請輸入 SSH 使用者的密碼。
 
     連線之後，您會看到類似下列文字的資訊：
 
@@ -155,6 +155,7 @@ SSH 用戶端。 如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (
     ```bash
     export clusterName=$(curl -u admin:$password -sS -G "http://headnodehost:8080/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
     ```
+
     > [!Note]  
     > 如果您是從叢集外部執行此程序，則應以不同的程序儲存叢集名稱。 請從 Azure 入口網站取得小寫的叢集名稱。 然後，在下列命令中，以叢集名稱取代 `<clustername>`，並執行命令：`export clusterName='<clustername>'`。
 
@@ -295,9 +296,7 @@ Kafka 會在主題中儲存「記錄」  。 記錄是由「產生者」  產生
 3. 選取 [刪除資源群組]  ，並加以確認。
 
 > [!WARNING]  
-> HDInsight 叢集的計費起自叢集建立時，終至叢集刪除時。 計費是以每分鐘按比例計算，因此不再使用時，請一律刪除您的叢集。
->
-> 刪除 HDInsight 叢集上的 Apache Kafka，也會刪除 Kafka 中儲存的任何資料。
+> 刪除 HDInsight 上的 Apache Kafka 叢集，也會刪除 Kafka 中儲存的任何資料。
 
 ## <a name="next-steps"></a>後續步驟
 

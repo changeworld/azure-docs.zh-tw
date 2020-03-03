@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/14/2020
+ms.date: 02/26/2020
 ms.author: banders
-ms.openlocfilehash: 9fab4d8ba0cf2e6f684a1b9de177084f8ce31604
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: ef7a7a81ceeeca07e40fab8248889d7e997fbbe3
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462185"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647484"
 ---
 # <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>了解 Azure 中的 Azure Enterprise 合約系統管理角色
 
@@ -22,9 +22,11 @@ ms.locfileid: "77462185"
 - 企業系統管理員 (唯讀)<sup>1</sup>
 - 部門系統管理員
 - 部門系統管理員 (唯讀)
-- 帳戶擁有者
+- 帳戶擁有者<sup>2</sup>
 
 <sup>1</sup> EA 合約的帳單連絡人屬於此角色。
+
+<sup>2</sup> 無法在 Azure EA 入口網站中新增或變更帳單連絡人，這些資訊會依合約層級上設定為帳單連絡人的使用者，新增至 EA 註冊。 若要變更帳單連絡人，必須透過合作夥伴/軟體顧問向區域營運中心 (ROC) 提出要求。
 
 這些角色專門用來管理 Azure Enterprise 合約，而 Azure 必須控制資源存取權的內建角色除外。 如需詳細資訊，請參閱 [Azure 資源的內建角色](../../role-based-access-control/built-in-roles.md)。
 
@@ -38,9 +40,9 @@ ms.locfileid: "77462185"
 |企業系統管理員 (唯讀)|無限制|
 |部門系統管理員|無限制|
 |部門系統管理員 (唯讀)|無限制|
-|帳戶擁有者|每個帳戶 1 位<sup>2</sup>|
+|帳戶擁有者|每個帳戶 1 位<sup>3</sup>|
 
-<sup>2</sup> 每個帳戶都需要唯一的 Microsoft 帳戶，或是公司或學校帳戶。
+<sup>3</sup> 每個帳戶都需要唯一的 Microsoft 帳戶，或是公司或學校帳戶。
 
 ## <a name="organization-structure-and-permissions-by-role"></a>組織結構及依權限的角色
 
@@ -48,17 +50,17 @@ ms.locfileid: "77462185"
 |---|---|---|---|---|---|
 |檢視企業系統管理員|✔|✔|✘|✘|✘|
 |新增或移除企業系統管理員|✔|✘|✘|✘|✘|
-|檢視通知連絡人<sup>3</sup> |✔|✔|✘|✘|✘|
-|新增或移除通知連絡人<sup>3</sup> |✔|✘|✘|✘|✘|
+|檢視通知連絡人<sup>4</sup> |✔|✔|✘|✘|✘|
+|新增或移除通知連絡人<sup>4</sup> |✔|✘|✘|✘|✘|
 |建立和管理部門 |✔|✘|✘|✘|✘|
 |檢視部門系統管理員|✔|✔|✔|✔|✘|
 |新增或移除部門系統管理員|✔|✘|✔|✘|✘|
-|在註冊中檢視帳戶 |✔|✔|✔<sup>4</sup>|✔<sup>4</sup>|✘|
-|將帳戶新增至註冊，然後變更帳戶擁有者|✔|✘|✔<sup>4</sup>|✘|✘|
+|在註冊中檢視帳戶 |✔|✔|✔<sup>5</sup>|✔<sup>5</sup>|✘|
+|將帳戶新增至註冊，然後變更帳戶擁有者|✔|✘|✔<sup>5</sup>|✘|✘|
 |建立和管理訂用帳戶及訂用帳戶權限|✘|✘|✘|✘|✔|
 
-- <sup>3</sup>通知連絡人會收到有關於 Azure Enterprise 合約的電子郵件通訊。
-- <sup>4</sup> 工作僅限於您部門中的帳戶。
+- <sup>4</sup>通知連絡人會收到有關於 Azure Enterprise 合約的電子郵件通訊。
+- <sup>5</sup> 工作僅限於您部門中的帳戶。
 
 
 ## <a name="usage-and-costs-access-by-role"></a>依角色存取的使用方式和成本
@@ -69,11 +71,11 @@ ms.locfileid: "77462185"
 |檢視部門費用配額|✔|✔|✘|✘|✘|
 |設定部門費用配額|✔|✘|✘|✘|✘|
 |檢視組織的 EA 價位表|✔|✔|✘|✘|✘|
-|檢視使用方式和成本詳細資料|✔|✔|✔<sup>5</sup>|✔<sup>5</sup>|✔<sup>6</sup>|
+|檢視使用方式和成本詳細資料|✔|✔|✔<sup>6</sup>|✔<sup>6</sup>|✔<sup>7</sup>|
 |管理 Azure 入口網站的資源|✘|✘|✘|✘|✔|
 
-- <sup>5</sup> 要求企業系統管理員在企業版入口網站中啟用 **DA 檢視費用**原則。 部門系統管理員接著可以查看部門的成本詳細資料。
-- <sup>6</sup> 要求企業系統管理員在企業版入口網站中啟用 **AO 檢視費用**原則。 帳戶擁有者接著可以查看帳戶的成本詳細資料。
+- <sup>6</sup> 要求企業系統管理員在企業版入口網站中啟用 **DA 檢視費用**原則。 部門系統管理員接著可以查看部門的成本詳細資料。
+- <sup>7</sup> 要求企業系統管理員在企業版入口網站中啟用 **AO 檢視費用**原則。 帳戶擁有者接著可以查看帳戶的成本詳細資料。
 
 
 ## <a name="pricing-in-azure-portal"></a>Azure 入口網站中的價格

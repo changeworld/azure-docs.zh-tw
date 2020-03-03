@@ -4,16 +4,16 @@ description: 本文說明如何在 Azure 成本管理中取得常見成本分析
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 02/21/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
-ms.openlocfilehash: 2102e3af26c8f5c4ed85543bc19360a923d070f3
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 1d9a498185e76f9771ec98656b1cad914b0f3214
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199971"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562576"
 ---
 # <a name="common-cost-analysis-uses"></a>常見的成本分析用途
 
@@ -83,6 +83,9 @@ ms.locfileid: "77199971"
 ## <a name="view-monthly-ea-cost-breakdown"></a>檢視每月 EA 成本明細
 
 您的 EA 註冊會累計到整個組織的成本中。 了解成本在一段時間內累計及開立發票的方式，可協助您與適當的專案關係人互動，以確保成本受到妥善的管理。
+
+只有使用中的註冊才會顯示成本。 如果已將註冊 (非使用中) 轉移至新的註冊 (使用中)，則不會在成本管理中顯示先前的註冊費用。
+
 
 1. 在 Azure 入口網站中，瀏覽至 [成本管理 + 計費]   > [概觀]  。
 1. 按一下現行月份的 [明細]  ，並檢視您的預付金額度。  

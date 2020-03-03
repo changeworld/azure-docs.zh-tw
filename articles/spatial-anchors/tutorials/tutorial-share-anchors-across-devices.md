@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: f0029fcf8e9efdea529212a7cca49cc8660c623f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 3b377f87bdba40c90cb3af6caef2c089d7b7de49
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276954"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615478"
 ---
 # <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices"></a>教學課程：跨工作階段和裝置來共用 Azure Spatial Anchors
 
@@ -44,13 +44,13 @@ Azure Spatial Anchors 是一款跨平台開發人員服務，可讓您使用在�
 
 ## <a name="deploy-your-sharing-anchors-service"></a>部署共用錨點服務
 
-## <a name="visual-studiotabvs"></a>[Visual Studio](#tab/VS)
+## <a name="visual-studio"></a>[Visual Studio](#tab/VS)
 
 開啟 Visual Studio，並開啟 `Sharing\SharingServiceSample` 資料夾上的專案。
 
 [!INCLUDE [Publish Azure](../../../includes/spatial-anchors-publish-azure.md)]
 
-## <a name="visual-studio-codetabvsc"></a>[Visual Studio Code](#tab/VSC)
+## <a name="visual-studio-code"></a>[Visual Studio Code](#tab/VSC)
 
 在 VS Code 中部署服務之前，必須先建立資源群組和 App Service 方案。
 
@@ -74,10 +74,10 @@ Azure Spatial Anchors 是一款跨平台開發人員服務，可讓您使用在�
 
 在 [設定主控方案]  對話方塊中，使用以下設定：
 
-| 設定 | 建議的值 | 說明 |
+| 設定 | 建議的值 | 描述 |
 |-|-|-|
 |App Service 方案| MySharingServicePlan | App Service 方案的名稱。 |
-| 位置 | 美國西部 | 裝載 Web 應用程式的資料中心。 |
+| Location | 美國西部 | 裝載 Web 應用程式的資料中心。 |
 | 大小 | 免費 | 決定裝載功能的[定價層](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 |
 
 選取 [確定]  。
@@ -89,6 +89,12 @@ Azure Spatial Anchors 是一款跨平台開發人員服務，可讓您使用在�
 ## <a name="deploy-the-sample-app"></a>部署範例應用程式
 
 [!INCLUDE [Run Share Anchors Sample](../../../includes/spatial-anchors-run-share-sample.md)]
+
+## <a name="troubleshooting"></a>疑難排解
+
+### <a name="unity-20193"></a>Unity 2019.3
+
+由於有重大變更，目前不支援 Unity 2019.3。 請使用 Unity 2019.1 或 2019.2。
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

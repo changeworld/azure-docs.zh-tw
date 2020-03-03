@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/14/2020
 ms.author: allensu
-ms.openlocfilehash: 341bfddb86885df225874100400a854cf12120db
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: aab6a4de7be57df1f691861533a4528a0bcae571
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76757794"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605671"
 ---
 # <a name="load-balancer-components-and-limitations"></a>Load Balancer 的元件與限制
 Azure Load Balancer 包含數個用於運作的主要元件。  您可以透過 Azure 入口網站、Azure CLI 或 Azure PowerShell，在您的訂用帳戶中設定這些元件。  
@@ -51,7 +51,7 @@ Azure Load Balancer 包含數個用於運作的主要元件。  您可以透過 
 * **輸入 NAT 規則**：輸入 NAT 規則會將來自特定前端 IP 位址的特定連接埠的流量，轉送至虛擬網路內特定後端執行個體的特定連接埠。 **[連接埠轉送作業](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-port-forwarding-portal)** 會使用與負載平衡相同的雜湊式分送來完成。 此功能的常見案例是透過遠端桌面通訊協定 (RDP) 或安全殼層 (SSH) 工作階段連線至 Azure 虛擬網路內的個別 VM 執行個體。 您可以將多個內部端點對應至相同前端 IP 位址的連接埠。 您可以使用前端 IP 位址從遠端管理 VM，而不需要額外的跳躍箱。
 * **輸出規則**： **[輸出規則](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview)** 會設定輸出網路位址轉譯 (NAT)，以便讓標準 Load Balancer 的後端集區所識別的所有虛擬機器或執行個體轉譯至前端。
 基本 Load Balancer 不支援輸出規則。
-![Azure 負載平衡器](./media/load-balancer-overview/load-balancer-overview.png)
+![Azure Load Balancer](./media/load-balancer-overview/load-balancer-overview.png)
 
 ## <a name = "load-balancer-concepts"></a>Load Balancer 概念
 
@@ -73,7 +73,9 @@ Load Balancer 為 TCP 和 UDP 應用程式提供下列基本功能：
 
 下列影像顯示雜湊型分送：
 
-  ![雜湊型分散](./media/load-balancer-overview/load-balancer-distribution.png)
+<p align="center">
+  <img src="./media/load-balancer-overview/load-balancer-distribution.svg" width="512" title="雜湊型分散">
+</p>
 
   *圖：雜湊型分散*
 
@@ -132,9 +134,11 @@ Load Balancer 為 TCP 和 UDP 應用程式提供下列基本功能：
 
 下圖顯示在三個 VM 間共用，且公用和 TCP 連接埠均為 80 的 Web 流量負載平衡端點。 這三部 VM 均位在負載平衡集中。
 
-![公用 Load Balancer 範例](./media/load-balancer-overview/IC727496.png)
+<p align="center">
+  <img src="./media/load-balancer-overview/load-balancer-http.svg" width="256" title="公用 Load Balancer">
+</p>
 
-*圖：使用公用 Load Balancer 來平衡 Web 流量負載*
+圖：  使用公用負載平衡器來平衡 Web 流量負載
 
 網際網路用戶端會在 TCP 連接埠 80 上，將網頁要求傳送至 Web 應用程式的公用 IP 位址。 Azure Load Balancer 會將要求分散到負載平衡集內的三個 VM。 如需 Load Balancer 演算法的詳細資訊，請參閱 [Load Balancer 概念](concepts-limitations.md#load-balancer-concepts)。
 
@@ -151,7 +155,10 @@ Load Balancer 為 TCP 和 UDP 應用程式提供下列基本功能：
 * **多層式應用程式**：對後端層並非網際網路對向的網際網路對向多層式應用程式進行負載平衡。 後端層需要來自網際網路對向層的流量負載平衡。 請參閱下圖。
 * **針對企業營運應用程式**：在 Azure 中代管的企業營運應用程式的負載平衡，而不需要額外的負載平衡器硬體或軟體。 此案例包括流量已進行負載平衡的電腦集所包含的內部部署伺服器。
 
-![內部 Load Balancer 範例](./media/load-balancer-overview/IC744147.png)
+
+<p align="center">
+  <img src="./media/load-balancer-overview/load-balancer.svg" width="256" title="公用 Load Balancer">
+</p>
 
 *圖：使用公用和內部 Load Balancer 進行多層式應用程式的平衡*
 

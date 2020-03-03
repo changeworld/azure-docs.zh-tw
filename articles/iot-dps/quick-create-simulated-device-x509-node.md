@@ -9,25 +9,27 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: 5a713018cb616fd1b82c253554932f6589185e0b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 746f4adbf616f95c21874d7c1c48881f88c38d34
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976463"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605397"
 ---
 # <a name="quickstart-create-and-provision-an-x509-simulated-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>快速入門：使用適用於 IoT 中樞裝置佈建服務的 Node.js 裝置 SDK 來建立及佈建 X.509 模擬裝置
+
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
 
-下列步驟說明如何在裝置佈建服務中建立註冊項目、在您的開發電腦上模擬 X.509 裝置、將模擬裝置與裝置佈建服務連線，並使用 [Azure IoT 中樞 Node.js 裝置 SDK](https://github.com/Azure/azure-iot-sdk-node) 在您的 IoT 中樞上註冊裝置。
+在本快速入門中，您會在 Windows 電腦上建立模擬的 X.509 裝置。 您可以使用裝置範例 Node.js 程式碼，使用以裝置佈建服務 (DPS) 所進行的個別註冊，讓此模擬裝置與 IoT 中樞進行連線。
 
-如果您不熟悉自動佈建程序，請務必也要檢閱[自動佈建概念](concepts-auto-provisioning.md)。 繼續之前，請務必完成[使用 Azure 入口網站設定 IoT 中樞裝置佈建服務](./quick-setup-auto-provision.md)中的步驟。 
+## <a name="prerequisites"></a>Prerequisites
 
-Azure IoT 裝置佈建服務支援兩種類型的註冊：
-- [註冊群組](concepts-service.md#enrollment-group)：用來註冊多個相關的裝置。
-- [個別註冊](concepts-service.md#individual-enrollment)：用來註冊單一裝置。
-
-本文將示範個別註冊。
+- 檢閱[自動佈建概念](concepts-auto-provisioning.md)。
+- 完成[使用 Azure 入口網站設定 IoT 中樞裝置佈建服務](./quick-setup-auto-provision.md)。
+- 具有有效訂用帳戶的 Azure 帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- [Node.js v4.0+](https://nodejs.org)。
+- [Git](https://git-scm.com/download/)。
+- [OpenSSL](https://www.openssl.org/)。
 
 [!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
 
@@ -54,6 +56,12 @@ Azure IoT 裝置佈建服務支援兩種類型的註冊：
 
 您會使用[適用於 Node.js 的 Azure IoT SDK](https://github.com/Azure/azure-iot-sdk-node.git) 中的範例程式碼建立憑證，以便與模擬裝置的個別註冊項目搭配使用。
 
+Azure IoT 裝置佈建服務支援兩種類型的註冊：
+
+- [註冊群組](concepts-service.md#enrollment-group)：用來註冊多個相關的裝置。
+- [個別註冊](concepts-service.md#individual-enrollment)：用來註冊單一裝置。
+
+本文會示範個別註冊。
 
 1. 開啟命令提示字元。 複製程式碼範例的 GitHub 存放庫：
     

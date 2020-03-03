@@ -7,14 +7,14 @@ author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 12/04/2019
+ms.date: 02/26/2020
 ms.author: tamram
-ms.openlocfilehash: c913cb978796abeed5766ffa030aaeb6142320ec
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 57ab56fe3028da9011e86c589209e7505e69e719
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892918"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650908"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>快速入門：使用 Azure CLI 上傳、下載及列出 Blob
 
@@ -22,24 +22,66 @@ Azure CLI 是管理 Azure 資源的 Azure 命令列體驗。 您可以在瀏覽�
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-如果您選擇在本機安裝和使用 CLI，本快速入門會要求您執行 Azure CLI 2.0.4 版或更新版本。 執行 `az --version` 來判斷您的版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+如果您選擇在本機安裝和使用 Azure CLI，本快速入門會要求您執行 Azure CLI 2.0.46 版或更新版本。 執行 `az --version` 來判斷您的版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
-[!INCLUDE [storage-quickstart-tutorial-intro-include-cli](../../../includes/storage-quickstart-tutorial-intro-include-cli.md)]
+如果您要在本機執行 Azure CLI，則必須登入並進行驗證。 如果您要使用 Azure Cloud Shell，則不需要執行此步驟。 若要登入 Azure CLI，請在瀏覽器視窗中執行 `az login` 並進行驗證：
+
+```azurecli
+az login
+```
+
+## <a name="authorize-access-to-blob-storage"></a>授與 Blob 儲存體的存取權
+
+您可以使用 Azure AD 認證或使用儲存體帳戶存取金鑰，來授權從 Azure CLI 存取 Blob 儲存體。 建議您使用 Azure AD 認證。 本文說明如何使用 Azure AD 來授權 Blob 儲存體作業。
+
+針對 Blob 儲存體的資料作業 Azure CLI 命令可支援 `--auth-mode` 參數，這可讓您指定如何授權指定的作業。 將 `--auth-mode` 參數設定為 `login`，以使用 Azure AD 認證進行授權。 如需詳細資訊，請參閱 [使用 Azure AD 認證來執行 Azure CLI 命令以存取 Blob 或佇列資料](../common/authorize-active-directory-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+
+只有 Blob 儲存體資料作業可支援 `--auth-mode` 參數。 管理作業 (例如建立資源群組或儲存體帳戶) 會自動使用 Azure AD 認證來進行授權。
+
+## <a name="create-a-resource-group"></a>建立資源群組
+
+使用 [az group create](/cli/azure/group) 命令來建立 Azure 資源群組。 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
+
+請記得以您自己的值取代角括號中的預留位置值：
+
+```azurecli
+az group create \
+    --name <resource-group> \
+    --location <location>
+```
+
+## <a name="create-a-storage-account"></a>建立儲存體帳戶
+
+使用 [az storage account create](/cli/azure/storage/account) 命令建立一般用途的儲存體帳戶。 一般用途的儲存體帳戶可以用於所有四個服務：Blob、檔案、資料表和佇列。
+
+請記得以您自己的值取代角括號中的預留位置值：
+
+```azurecli
+az storage account create \
+    --name <storage-account> \
+    --resource-group <resource-group> \
+    --location <location> \
+    --sku Standard_ZRS \
+    --encryption blob
+```
 
 ## <a name="create-a-container"></a>建立容器
 
-Blob 一律會上傳到容器中。 您可以組織 Blob 群組，方式如同在電腦的資料夾中組織檔案。
+Blob 一律會上傳到容器中。 您可以在容器中組織 Blob 群組，方式如同在電腦的資料夾中組織檔案。
 
-使用 [az storage container create](/cli/azure/storage/container) 命令，建立用於儲存 Blob 的容器。
+使用 [az storage container create](/cli/azure/storage/container) 命令，建立用於儲存 Blob 的容器。 請記得以您自己的值取代角括號中的預留位置值：
 
-```azurecli-interactive
-az storage container create --name sample-container
+```azurecli
+az storage container create \
+    --account-name <storage-account> \
+    --name <container> \
+    --auth-mode login
 ```
 
 ## <a name="upload-a-blob"></a>上傳 Blob
@@ -54,13 +96,15 @@ vi helloworld
 
 當檔案開啟時，請按 **insert**。 輸入 *Hello world*，然後按 **Esc**。接著，輸入 *:x*，然後按 **Enter**。
 
-在此範例中，您要將 Blob 上傳到使用 [az storage blob upload](/cli/azure/storage/blob) 命令最後一個步驟所建立的容器。 您不需要指定檔案路徑，因為檔案是在根目錄建立的：
+在此範例中，您要將 Blob 上傳到使用 [az storage blob upload](/cli/azure/storage/blob) 命令最後一個步驟所建立的容器。 您不需要指定檔案路徑，因為檔案是在根目錄建立的。 請記得以您自己的值取代角括號中的預留位置值：
 
-```azurecli-interactive
+```azurecli
 az storage blob upload \
-    --container-name sample-container \
+    --account-name <storage-account> \
+    --container-name <container> \
     --name helloworld \
-    --file helloworld
+    --file helloworld \
+    --auth-mode login
 ```
 
 如果 Blob 不存在，此作業會建立 Blob，若已存在，則會加以覆寫。 請上傳您所需的檔案數量，再繼續進行。
@@ -69,45 +113,48 @@ az storage blob upload \
 
 ## <a name="list-the-blobs-in-a-container"></a>列出容器中的 Blob
 
-使用 [az storage blob list](/cli/azure/storage/blob) 命令列出容器中的 Blob。
+使用 [az storage blob list](/cli/azure/storage/blob) 命令列出容器中的 Blob。 請記得以您自己的值取代角括號中的預留位置值：
 
-```azurecli-interactive
+```azurecli
 az storage blob list \
-    --container-name sample-container \
-    --output table
+    --account-name <storage-account> \
+    --container-name <container> \
+    --output table \
+    --auth-mode login
 ```
 
 ## <a name="download-a-blob"></a>下載 Blob
 
-使用 [az storage blob download](/cli/azure/storage/blob) 命令下載稍早所上傳的 Blob。
+使用 [az storage blob download](/cli/azure/storage/blob) 命令下載稍早所上傳的 Blob。 請記得以您自己的值取代角括號中的預留位置值：
 
-```azurecli-interactive
+```azurecli
 az storage blob download \
-    --container-name sample-container \
+    --account-name <storage-account> \
+    --container-name <container> \
     --name helloworld \
-    --file ~/destination/path/for/file
+    --file ~/destination/path/for/file \
+    --auth-mode login
 ```
 
 ## <a name="data-transfer-with-azcopy"></a>使用 AzCopy 進行資料轉送
 
-[AzCopy](../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 公用程式是適用於 Azure 儲存體的高效能可編寫指令碼資料轉送的另一個選項。 您可以使用 AzCopy 在 Blob、檔案和表格儲存體之間傳輸資料。
+AzCopy 命令列公用程式可為 Azure 儲存體提供高效能、可編寫指令碼的資料傳輸。 您可以使用 AzCopy 將資料傳輸到 Blob 儲存體和 Azure 檔案儲存體，以及從 Blob 儲存體和 Azure 檔案儲存體傳出資料。 如需 AzCopy v10 (AzCopy 的最新版本) 的詳細資訊，請參閱[開始使用 AzCopy](../common/storage-use-azcopy-v10.md)。 若要了解如何搭配使用 AzCopy v10 與 Blob 儲存體，請參閱[使用 AzCopy 和 Blob 儲存體傳輸資料](../common/storage-use-azcopy-blobs.md)。
 
-下列範例會使用 AzCopy，將名為 *myfile.txt* 的檔案上傳至 *sample-container* 容器。 請記得以您自己的值取代角括號中的預留位置值：
+下列範例會使用 AzCopy 將本機檔案上傳至 Blob。 請記得要以您自己的值取代範例值：
 
 ```bash
-azcopy \
-    --source /mnt/myfiles \
-    --destination https://<account-name>.blob.core.windows.net/sample-container \
-    --dest-key <account-key> \
-    --include "myfile.txt"
+azcopy login
+azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt'
 ```
 
 ## <a name="clean-up-resources"></a>清除資源
 
 如果您不再需要資源群組中的任何資源 (包括在本快速入門中所建立的儲存體帳戶)，請使用 [az group delete](/cli/azure/group) 命令刪除資源群組。 請記得以您自己的值取代角括號中的預留位置值：
 
-```azurecli-interactive
-az group delete --name <resource-group-name>
+```azurecli
+az group delete \
+    --name <resource-group> \
+    --no-wait
 ```
 
 ## <a name="next-steps"></a>後續步驟

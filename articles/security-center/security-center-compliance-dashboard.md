@@ -13,27 +13,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2019
 ms.author: memildin
-ms.openlocfilehash: 01c0f1199ab8c376fe5bb5e864f81a2730879ed1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 1a6999c05c0b3dbaf572b376412f666c50c23df7
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112327"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604449"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>教學課程：改善法規合規性
 ---
 
 Azure 資訊安全中心會利用**法規合規性儀表板**，協助您簡化達到法規合規性需求的程序。 在儀表板中，資訊安全中心會根據 Azure 環境的連續評估，提供合規性狀況的深入解析。 資訊安全中心會根據安全性最佳做法，來分析混合式雲端環境中的風險因素。 這些評量會對應到一組所支援標準中的合規性控制項。 在法規合規性儀表板中，您可以看到環境內所有這些評估在特定標準或法規下的狀態。 當您採取建議動作並降低環境中的風險因素後，您的合規性狀況便已改善。
 
-在本教學課程中，您將了解如何：
+在本教學課程中，您將學會如何：
 
 -   使用法規合規性儀表板評估您的法規合規性
 
 -   採取建議動作來改善您的合規性狀況
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要逐步執行本教學課程中涵蓋的功能，您必須有資訊安全中心的標準定價層。 您可以免費試用資訊安全中心標準層。
 若要深入了解，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/security-center/)。 [將 Azure 訂用帳戶上架到資訊安全中心標準定價層](https://docs.microsoft.com/azure/security-center/security-center-get-started)快速入門會為您逐步解說如何升級至「標準」定價層。
@@ -62,7 +62,7 @@ Azure 資訊安全中心會利用**法規合規性儀表板**，協助您簡化�
 
     此報告會根據資訊安全中心的評估資料來為所選定的標準提供合規性狀態高階摘要，並且會根據該特殊標準的控制來加以組織。 此報告可與利害關係人共用，且可作為證據來提供給內部和外部稽核員。
 
-    ![下載](./media/security-center-compliance-dashboard/download-report.png)
+    ![下載這篇文章](./media/security-center-compliance-dashboard/download-report.png)
 
 ## <a name="improve-your-compliance-posture"></a>改善您的合規性狀況
 
@@ -104,5 +104,3 @@ Azure 資訊安全中心會利用**法規合規性儀表板**，協助您簡化�
 -   [管理 Azure 資訊安全中心的安全性建議](security-center-recommendations.md)了解如何使用 Azure 資訊安全中心的建議來協助您保護 Azure 資源。
 
 -   [改善 Azure 資訊安全中心的安全分數](security-center-secure-score.md) - 了解要如何設定弱點與安全性建議的優先順序，才最能改善安全性狀況。
-
--   [Azure 資訊安全中心常見問題集](security-center-faq.md) - 尋找有關使用服務的常見問題。

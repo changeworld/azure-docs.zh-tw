@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 10/28/2019
+ms.date: 02/21/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 38ee180fa59fec6619010a3ded1f6837a5ca5239
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: 064fcf618914bca31ad9e7e60c76df8f599cd8bf
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77371345"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77558886"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站部署和設定 Azure 防火牆
 
@@ -26,7 +26,7 @@ ms.locfileid: "77371345"
 
 當您將網路流量路由傳送到防火牆作為子網路預設閘道時，網路流量必須遵守設定的防火牆規則。
 
-在本教學課程中，您會建立包含三個子網路的簡易單一 VNet，以進行簡單的部署。 對於生產環境部署，建議您使用[中樞和支點模型](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)，其中防火牆會位於自己的 VNet 中。 工作負載伺服器位於相同區域中的對等互連 VNet，其中包含一個或多個子網路。
+在本教學課程中，您會建立包含三個子網路的簡易單一 VNet，以進行簡單的部署。 針對生產部署，建議使用[中樞與輪輻模型](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)。 防火牆位於自己的 VNet 中。 工作負載伺服器位於相同區域中的對等互連 VNet，其中包含一個或多個子網路。
 
 * **AzureFirewallSubnet** - 防火牆位於此子網路。
 * **Workload-SN** - 工作負載伺服器位於此子網路。 此子網路的網路流量會通過防火牆。
@@ -60,7 +60,7 @@ ms.locfileid: "77371345"
 2. 在 Azure 入口網站功能表上，選取 [資源群組]  ，或從任何頁面搜尋並選取 [資源群組]  。 然後選取 [新增]  。
 3. 在 [資源群組名稱]  中，輸入 *Test-FW-RG*。
 4. 在 [訂用帳戶]  中，選取您的訂用帳戶。
-5. 在 [資源群組位置]  中，選取位置。 您建立的所有後續資源都必須位於相同的位置。
+5. 在 [資源群組位置]  中，選取位置。 您建立的所有其他資源都必須位於相同的位置。
 6. 選取 [建立]  。
 
 ### <a name="create-a-vnet"></a>建立 VNet
@@ -193,10 +193,11 @@ ms.locfileid: "77371345"
 6. 在 [優先順序]  中，鍵入 **200**。
 7. 在 [動作]  中，選取 [允許]  。
 8. 在 [規則]  、[目標 FQDN]  底下，針對 [名稱]  輸入 **Allow-Google**。
-9. 在 [來源位址]  中，鍵入 **10.0.2.0/24**。
-10. 在 [通訊協定:連接埠]  中，鍵入 **http、https**。
-11. 在 [目標 FQDN]  中，鍵入 **www.google.com**
-12. 選取 [新增]  。
+9. 針對 [來源類型]  ，選取 [IP 位址]  。
+10. 針對 [來源]  ，輸入 **10.0.2.0/24**。
+11. 在 [通訊協定:連接埠]  中，鍵入 **http、https**。
+12. 在 [目標 FQDN]  中，鍵入 **www.google.com**
+13. 選取 [新增]  。
 
 Azure 防火牆包含內建的規則集合，適用於依預設允許的基礎結構 FQDN。 這些 FQDN 是平台特定的，且無法用於其他用途。 如需詳細資訊，請參閱[基礎結構 FQDN](infrastructure-fqdns.md)。
 
@@ -209,10 +210,11 @@ Azure 防火牆包含內建的規則集合，適用於依預設允許的基礎�
 3. 在 [名稱]  中，鍵入 **Net-Coll01**。
 4. 在 [優先順序]  中，鍵入 **200**。
 5. 在 [動作]  中，選取 [允許]  。
-6. 在 [規則]  底下的 [名稱]  中，鍵入 **Allow-DNS**。
+6. 在 [規則]  、[IP 位址]  底下，針對 [名稱]  輸入 **Allow-DNS**。
 7. 在 [通訊協定]  中，選取 [UDP]  。
-8. 在 [來源位址]  中，鍵入 **10.0.2.0/24**。
-9. 在 [目的地位址] 中，鍵入 **209.244.0.3,209.244.0.4**
+9. 針對 [來源類型]  ，選取 [IP 位址]  。
+1. 針對 [來源]  ，輸入 **10.0.2.0/24**。
+2. 針對 [目的地位址]  ，輸入 **209.244.0.3,209.244.0.4**
 
    這些是由 CenturyLink 運作的公用 DNS 伺服器。
 1. 在 [目的地連接埠]  中，鍵入 **53**。

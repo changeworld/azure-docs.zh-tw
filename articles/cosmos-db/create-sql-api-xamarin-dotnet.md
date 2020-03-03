@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
-ms.openlocfilehash: 74d34705a6541b396fa2c2bf5028254f5f2e8d21
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f951daf08590feb6fa1aaad831f8a735db141984
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466302"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586762"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>快速入門：使用 Azure Cosmos DB SQL API 帳戶透過 Xamarin 建置待辦事項應用程式
 
@@ -34,7 +34,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 ![在 iOS 上執行的 Xamarin 待辦事項應用程式](./media/create-sql-api-xamarin-dotnet/ios-todo-screen.png)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 如果您使用 Windows 進行開發，且尚未安裝 Visual Studio 2019，可以下載並使用**免費的** [Visual Studio 2019 Community 版本](https://www.visualstudio.com/downloads/)。 請務必在 Visual Studio 設定期間啟用 **Azure 開發**和**使用 .NET 的行動開發**工作負載。
 
@@ -128,7 +128,7 @@ ToDoItems 解決方案中的程式碼包含：
 
 * 查詢文件的容器時會使用 `DocumentClient.CreateDocumentQuery<T>` 方法，如此處的 `CosmosDBService.GetToDoItems` 函式所示：
 
-   [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=GetToDoItems)] 
+   :::code language="csharp" source="~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs" id="GetToDoItems"::: 
 
     `CreateDocumentQuery<T>` 使用的 URI 會指向在上一節中建立的容器。 您也可以指定 LINQ 運算子，例如 `Where` 子句。 在此案例中，只會傳回未完成的待辦事項項目。
 
@@ -141,13 +141,13 @@ ToDoItems 解決方案中的程式碼包含：
 
 * `ComsmosDBService.InsertToDoItem` 函式會示範如何插入新的文件：
 
-   [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=InsertToDoItem)] 
+   :::code language="csharp" source="~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs" id="InsertToDoItem"::: 
 
     指定項目 URI 及要插入的項目。
 
 * `CosmosDBService.UpdateToDoItem` 函式會示範如何將現有文件取代為新文件：
 
-   [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=UpdateToDoItem)] 
+   :::code language="csharp" source="~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs" id="UpdateToDoItem"::: 
 
     在此必須要有新的 URI 用來唯一識別要取代的文件，因此會使用 `UriFactory.CreateDocumentUri`，並傳入資料庫和容器名稱以及文件的識別碼，來取得此 URI。
 
@@ -155,7 +155,7 @@ ToDoItems 解決方案中的程式碼包含：
 
 * `CosmosDBService.DeleteToDoItem` 函式會示範如何刪除項目：
 
-   [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=DeleteToDoItem)] 
+   :::code language="csharp" source="~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs" id="DeleteToDoItem"::: 
 
     同樣請注意，此時會建立唯一文件 URI，並傳至 `DocumentClient.DeleteDocumentAsync` 函式。
 

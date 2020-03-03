@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: tutorial
-ms.date: 02/04/2020
+ms.date: 02/24/2020
 ms.author: banders
-ms.openlocfilehash: 1affe81228b491ea45f610d741d454fa38f2029a
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 017f617bff14eb0c031c40240ca6c1ac62c9c941
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199104"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598216"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>了解您的 Azure Enterprise 合約帳單
 
@@ -55,7 +55,7 @@ ms.locfileid: "77199104"
     - Visual Studio Professional (每年)
 - **Marketplace 費用**：貴組織的點數不會支付 Azure Marketplace 購買項目和使用量。 因此，無論點數餘額多寡，您都會收到 Marketplace 費用的發票。 在企業版入口網站中，企業系統管理員可以啟用和停用 Marketplace 購買。
 
-您的發票會顯示您所有的 Azure 使用量，且其後會顯示任何 Marketplace 費用。 如果您有點數餘額，將會套用至 Azure 使用量。
+您的發票會先顯示 Azure 使用量費用以及相關的成本，再來列出所有 Marketplace 費用。 如果您尚有點數餘額，則會套用至 Azure 使用量，而發票會顯示 Azure 使用量和 Marketplace 使用量，而不會有任何費用。
 
 您可以比較在企業版入口網站的 [報表]   > [使用量摘要]  中顯示的合計總金額與您的 Azure 發票。 [使用量摘要]  中的金額不含稅金。
 

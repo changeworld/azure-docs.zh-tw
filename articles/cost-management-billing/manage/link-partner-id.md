@@ -7,12 +7,12 @@ ms.author: banders
 ms.date: 02/13/2020
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.openlocfilehash: 4e4b039b6ad6fad8a414fc9703309fa76853ef09
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 761f4345c591864b8158d7216d737ac287692252
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199665"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651350"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>將合作夥伴識別碼連結到您的 Azure 帳戶
 
@@ -29,6 +29,8 @@ Microsoft 合作夥伴提供的服務可協助客戶使用 Microsoft 產品達�
 - **目錄帳戶**：客戶可以在自己的目錄中為您建立新使用者，並指派任何 RBAC 角色。
 
 - **服務主體**：客戶可從您的組織在其目錄中新增應用程式或指令碼，並指派任何 RBAC 角色。 應用程式或指令碼的身分識別稱為服務主體。
+
+- **Azure Lighthouse**:您的客戶可以委派訂用帳戶 (或資源群組)，讓您的使用者可以從您的租用戶中處理。 如需詳細資訊，請參閱 [Azure 委派的資源管理](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management)。
 
 ## <a name="link-to-a-partner-id"></a>連結到合作夥伴識別碼
 
@@ -154,3 +156,7 @@ C:\ az managementpartner delete --partner-id 12345
 **連結合作夥伴識別碼是否可搭配 Azure Stack 使用？**
 
 是，您可以連結 Azure Stack 的合作夥伴識別碼。
+
+**如果我的公司使用 [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview) 來存取客戶資源，我該如何連結我的合作夥伴識別碼？**
+
+如果您[將受管理的服務供應項目發佈至 Azure Marketplace](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)，將客戶上線至 Azure 委派的資源管理，您的 MPN 識別碼會自動產生關聯。 如果您[部署 Azure Resource Manager 範本來將客戶上線](https://docs.microsoft.com/azure/lighthouse/how-to/onboard-customer)，則必須將 Microsoft 合作夥伴網路 (MPN) 識別碼與至少一個可存取每個已上架訂用帳戶的使用者帳戶建立關聯。 請注意，您必須在服務提供者租用戶中執行此作業。 為了簡化作業，建議您在租用戶中建立與您的 MPN 識別碼相關聯的服務主體帳戶，並授與其對您上架的每個客戶擁有讀取存取權。

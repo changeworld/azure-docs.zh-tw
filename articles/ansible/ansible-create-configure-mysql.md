@@ -4,12 +4,12 @@ description: 深入了解如何使用 Ansible 來建立及設定適用於 MySQL 
 keywords: ansible, azure, devops, bash, 劇本, mysql, 資料庫
 ms.topic: tutorial
 ms.date: 04/30/2019
-ms.openlocfilehash: d8c8fd361f37a9cb961012807fe40b905c10c047
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: f068b3022c94466a20b524240dc293392b1f42ff
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74156522"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603121"
 ---
 # <a name="tutorial-configure-databases-in-azure-database-for-mysql-using-ansible"></a>教學課程：使用 Ansible 在適用於 MySQL 的 Azure 資料庫中設定資料庫
 
@@ -28,7 +28,7 @@ ms.locfileid: "74156522"
 > * 查詢可用的 MySQL 伺服器
 > * 列出您已連線的伺服器中所有的資料庫
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]

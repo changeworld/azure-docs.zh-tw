@@ -1,5 +1,5 @@
 ---
-title: 教學課程：使用 Azure Machine Learning Visual Studio Code 擴充功能來定型和部署影像分類 TensorFlow 模型
+title: 教學課程：使用 Visual Studio Code 延伸模組來定型和部署模型
 titleSuffix: Azure Machine Learning
 description: 了解如何使用 TensorFlow 和 Azure Machine Learning Visual Studio Code 擴充功能來定型和部署影像分類模型
 services: machine-learning
@@ -8,17 +8,17 @@ ms.subservice: core
 ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 01/16/2019
-ms.openlocfilehash: 899681f2bb9c3ef2a0368015a58db30a843738f5
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.date: 02/24/2020
+ms.openlocfilehash: ba9cd2e7dc0248aa351cb7bc4519689763f1adda
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76157379"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602542"
 ---
 # <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension"></a>使用 Azure Machine Learning Visual Studio Code 擴充功能來定型和部署影像分類 TensorFlow 模型
 
-了解如何使用 TensorFlow 和 Azure Machine Learning Visual Studio Code 擴充功能來定型影像分類模型，以辨識手寫數字。
+了解如何使用 TensorFlow 和 Azure Machine Learning Visual Studio Code 擴充功能來定型和部署影像分類模型，以辨識手寫數字。
 
 在本教學課程中，您會了解下列工作：
 
@@ -56,11 +56,11 @@ ms.locfileid: "76157379"
     > [!div class="mx-imgBorder"]
     > ![建立工作區](./media/tutorial-train-deploy-image-classification-model-vscode/create-workspace.png)
 
-1. 根據預設，產生的名稱包含建立日期和時間。 在命令選擇區中，將名稱變更為 "TeamWorkspace"，然後按 **Enter**。
-1. 在命令選擇區中選取 [建立新的資源群組]  。 
-1. 在命令選擇區文字方塊中輸入 "TeamWorkspace-rg"，然後按 **Enter**。 
-1. 在命令選擇區中，選擇您的工作區位置。 建議您選擇的位置是最接近您打算部署模型的位置。 在此情況下，請選擇 [美國西部 2]  。
-1. 當系統提示您選取工作區 SKU 時，請選取 [基本]  來建立基本工作區。 如需不同工作區供應項目的詳細資訊，請參閱 [Azure Machine Learning 概觀](./overview-what-is-azure-ml.md#sku)。
+1. 根據預設，產生的名稱包含建立日期和時間。 在文字輸入方塊中，將名稱變更為 "TeamWorkspace"，然後按 **Enter**。
+1. 選取 [建立新的資源群組]  。 
+1. 將您的資源群組命名為 "TeamWorkspace-rg"，然後按 **輸入**。 
+1. 選擇工作區的位置。 建議您選擇的位置是最接近您打算部署模型的位置。 例如，「美國西部 2」。
+1. 當系統提示您選取工作區類型時，請選取 [基本]  來建立基本工作區。 如需不同工作區供應項目的詳細資訊，請參閱 [Azure Machine Learning 概觀](./overview-what-is-azure-ml.md#sku)。
 
 此時，會向 Azure 提出要求，以在您的帳戶中建立新的工作區。 幾分鐘後，新的工作區就會出現在您的訂用帳戶節點中。 
 
@@ -77,7 +77,7 @@ ms.locfileid: "76157379"
     > [!div class="mx-imgBorder"]
     > ![建立實驗](./media/tutorial-train-deploy-image-classification-model-vscode/create-experiment.png)
 
-1. 在命令選擇區的提示字元中，將您的實驗命名為 "MNIST"，然後按 **Enter** 以建立新的實驗。 
+1. 將您的實驗命名為 "MNIST"，然後按 **Enter** 以建立新的實驗。 
 
 就像工作區一樣，要求會傳送至 Azure，以使用所提供的組態來建立實驗。 幾分鐘後，新的實驗就會出現在工作區的 [Experiments]  節點中。 
 
@@ -96,8 +96,8 @@ ms.locfileid: "76157379"
     > ![建立計算目標](./media/tutorial-train-deploy-image-classification-model-vscode/create-compute.png)
 
 1. 選取 [Azure Machine Learning Compute (AMLCompute)]  。 Azure Machine Learning Compute 是一種受控的計算基礎結構，可讓使用者輕鬆建立單一或多重節點計算，以供您工作區中的其他使用者使用。
-1. 選擇 VM 大小。 在命令選擇區的提示字元中，選取 **Standard_F2s_v2**。 您的 VM 大小會影響定型模型所需的時間量。 如需 VM 大小的詳細資訊，請參閱 [Azure 中的 Linux 虛擬機器大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)。
-1. 在命令選擇區的提示字元中，將您的計算命名為 "TeamWkspc-com"，然後按 **Enter** 來建立計算。
+1. 選擇 VM 大小。 從選項清單中選取 **Standard_F2s_v2**。 您的 VM 大小會影響定型模型所需的時間量。 如需 VM 大小的詳細資訊，請參閱 [Azure 中的 Linux 虛擬機器大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)。
+1. 將您的計算命名為 "TeamWkspc-com"，然後按 **Enter** 來建立計算。
 
 幾分鐘後，新的計算目標就會出現在工作區的 [Compute]  節點中。
 
@@ -115,10 +115,10 @@ ms.locfileid: "76157379"
     > [!div class="mx-imgBorder"]
     > ![建立回合組態](./media/tutorial-train-deploy-image-classification-model-vscode/create-run-configuration.png)
 
-1. 在命令選擇區的提示字元中，將您的回合組態命名為 "MNIST-rc"，然後按 **Enter** 來建立計算。
+1. 將您的回合組態命名為 "MNIST-rc"，然後按 **Enter** 來建立回合組態。
 1. 然後，選取 [TensorFlow 單一節點訓練]  作為訓練作業類型。
 1. 按 **Enter**，以瀏覽要在計算節點上執行的指令檔檔案。 在此情況下，用來定型模型的指令碼是 `vscode-tools-for-ai/mnist-vscode-docs-sample` 目錄內的 `train.py` 檔案。
-1. 在命令選擇區的提示字元中輸入下列命令，以指定所需的套件。
+1. 在輸入方塊中輸入下列資訊，以指定所需的套件。
     
     ```text
     pip: azureml-defaults; conda: python=3.6.2, tensorflow=1.15.0
@@ -192,7 +192,7 @@ ms.locfileid: "76157379"
     > [!div class="mx-imgBorder"]
     > ![執行實驗](./media/tutorial-train-deploy-image-classification-model-vscode/run-experiment.png)
 
-1. 在命令選擇區中，選取 [TeamWkspc-com]  計算目標。
+1. 從計算目標選項清單中，選取 **TeamWkspc-com** 計算目標。
 1. 然後，選取 [MNIST-rc]  回合組態。
 1. 此時，要求會傳送至 Azure，以在工作區中所選的計算目標上執行您的實驗。 這個程序需要幾分鐘的時間。 執行訓練作業的時間量會受到數個因素的影響，例如計算類型和定型資料大小。 若要追蹤實驗的進度，請以滑鼠右鍵按一下目前的執行節點，然後選取 [在 Azure 入口網站中檢視執行]  。
 1. 當要求開啟外部網站的對話方塊出現時，請選取 [開啟]  。
@@ -222,9 +222,9 @@ ms.locfileid: "76157379"
     > [!div class="mx-imgBorder"]
     > ![註冊模型](./media/tutorial-train-deploy-image-classification-model-vscode/register-model.png)
 
-1. 在命令選擇區中，將模型命名為 "MNIST-TensorFlow-model"，然後按 **Enter**。
-1. TensorFlow 模型是由數個檔案所組成。 在命令選擇區中，選取 **Model 資料夾**作為模型路徑格式。 
-1. 選取 `azureml_outputs/Run_1/outputs/Run_1/outputs/outputs/model` 目錄。
+1. 將模型命名為 "MNIST-TensorFlow-model"，然後按 **Enter**。
+1. TensorFlow 模型是由數個檔案所組成。 在選項清單中，選取 [模型資料夾]  作為模型路徑格式。 
+1. 選取 `azureml_outputs/Run_1/outputs/outputs/model` 目錄。
 
     包含您模型組態的檔案會出現在 Visual Studio Code 中，其內容如下所示：
 
@@ -234,7 +234,7 @@ ms.locfileid: "76157379"
         "tags": {
             "": ""
         },
-        "modelPath": "c:\\Dev\\vscode-tools-for-ai\\mnist-vscode-docs-sample\\azureml_outputs\\Run_1\\outputs\\Run_1\\outputs\\outputs\\model",
+        "modelPath": "c:\\Dev\\vscode-tools-for-ai\\mnist-vscode-docs-sample\\azureml_outputs\\Run_1\\outputs\\outputs\\model",
         "description": ""
     }
     ```
@@ -266,10 +266,10 @@ ms.locfileid: "76157379"
     > [!div class="mx-imgBorder"]
     > ![部署模型](./media/tutorial-train-deploy-image-classification-model-vscode/register-model.png)
 
-1. 在命令選擇區上，選取 [Azure 容器執行個體]  。
-1. 在命令選擇區中，將服務命名為 "mnist-tensorflow-svc"，然後按 **Enter**。
-1. 在命令選擇區中按 **Enter**，然後瀏覽 `mnist-vscode-docs-sample` 目錄中的 `score.py` 檔案，以選擇要在容器中執行的指令碼。
-1. 在命令選擇區中按 **Enter**，然後瀏覽 `mnist-vscode-docs-sample` 目錄中的 `env.yml` 檔案，以提供執行指令碼所需的相依性。
+1. 選取 **Azure 容器執行個體**。
+1. 將服務命名為 "mnist-tensorflow-svc"，然後按 **Enter**。
+1. 在輸入方塊中按 **Enter**，然後瀏覽 `mnist-vscode-docs-sample` 目錄中的 `score.py` 檔案，以選擇要在容器中執行的指令碼。
+1. 在輸入方塊中按 **Enter**，然後瀏覽 `mnist-vscode-docs-sample` 目錄中的 `env.yml` 檔案，以提供執行指令碼所需的相依性。
 
     包含您模型組態的檔案會出現在 Visual Studio Code 中，其內容如下所示：
 

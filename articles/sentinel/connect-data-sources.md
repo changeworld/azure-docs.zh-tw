@@ -3,7 +3,7 @@ title: 將資料來源連線至 Azure Sentinel | Microsoft Docs
 description: 了解如何將資料來源連線至 Azure Sentinel。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: angrobe
 editor: ''
 ms.service: azure-sentinel
@@ -14,13 +14,13 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
-ms.author: rkarlin
-ms.openlocfilehash: 33fddcf22793e50287fb590dee3547d5e7be4d2b
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.author: yelevin
+ms.openlocfilehash: 311bb367748be98af704ab11919abea6e38d0ff3
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462542"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588326"
 ---
 # <a name="connect-data-sources"></a>連線資料來源
 
@@ -45,35 +45,46 @@ Azure Sentinel 支援下列資料連線方法：
 
 - **服務對服務整合**：<br> 某些服務會以原生方式連線 (例如 AWS 和 Microsoft 服務)，這些服務會運用 Azure 基礎進行立即整合，只需按幾下就可以與下列解決方案連線：
     - [Amazon Web Services - CloudTrail](connect-aws.md)
-    - [Office 365](connect-office-365.md)
-    - [Azure AD 稽核記錄和登入](connect-azure-active-directory.md)
     - [Azure 活動](connect-azure-activity.md)
+    - [Azure AD 稽核記錄和登入](connect-azure-active-directory.md)
     - [Azure AD Identity Protection](connect-azure-ad-Identity-protection.md)
-    - [Azure 資訊安全中心](connect-azure-security-center.md)
-    - [Azure 資訊保護](connect-azure-information-protection.md)
     - [Azure 進階威脅防護](connect-azure-atp.md)
+    - [Azure 資訊保護](connect-azure-information-protection.md)
+    - [Azure 資訊安全中心](connect-azure-security-center.md)
     - [Cloud App Security](connect-cloud-app-security.md)
+    - [網域名稱伺服器](connect-dns.md)
+    - [Office 365](connect-office-365.md)
+    - [Microsoft Defender ATP](connect-microsoft-defender-advanced-threat-protection.md)
+    - [Microsoft Web 應用程式防火牆](connect-microsoft-waf.md)
     - [Windows 安全性事件](connect-windows-security-events.md) 
     - [Windows 防火牆](connect-windows-firewall.md)
+    - [Windows 安全性事件](connect-windows-security-events.md)
 
 - **透過 API 連線的外部解決方案**：某些資料來源會使用自身提供的 API 進行連線。 一般而言，大部分的安全性技術都會提供一組 API，藉此來擷取事件記錄。API 可連線到 Azure Sentinel 並收集特定資料類型，然後將其傳送至 Azure Log Analytics。 透過 API 連線的設備包括：
     - [Barracuda](connect-barracuda.md)
-    - [Symantec](connect-symantec.md)
+    - [Barracuda CloudGen Firewall](connect-barracuda-cloudgen-firewall.md)
     - [Citrix Analytics (Security)](connect-citrix-analytics.md)
+    - [F5 BIG-IP](connect-f5-big-ip.md)
+    - [Forcepoint DLP](connect-forcepoint-dlp.md)
+    - [Squadra Technologies secRMM](connect-squadra-secrmm.md)
+    - [Symantec ICDX](connect-symantec.md)
+    - [Zimperium](connect-zimperium-mtd.md)
+
 
 - **透過代理程式連線的外部解決方案**：透過代理程式，Azure Sentinel 可以連線到所有其他使用 Syslog 通訊協定執行即時記錄串流的資料來源。 <br>大部分設備會使用 Syslog 通訊協定來傳送事件訊息，包含記錄本身和記錄的相關資料。 記錄的格式各不相同，但大部分的設備都會針對記錄資料支援以常見事件格式 (CEF) 為基礎的格式設定。 <br>Azure Sentinel 代理程式以 Log Analytics 代理程式作為基礎，可將 CEF 格式的記錄轉換成 Log Analytics 可擷取的格式。 根據不同設備類型，代理程式可能會直接安裝在設備上，或安裝在專用的 Linux 伺服器上。 適用於 Linux 的代理程式會透過 UDP 從 Syslog 精靈接收事件，但如果預期 Linux 機器會收集大量的 Syslog 事件，則會透過 TCP 將事件從 Syslog 精靈傳送到代理程式，然後從該處傳送至 Log Analytics。
     - 防火牆、Proxy 和端點：
-        - [F5](connect-f5.md)
         - [Check Point](connect-checkpoint.md)
         - [Cisco ASA](connect-cisco.md)
+        - [ExtraHop Reveal(x)](connect-extrahop.md)
+        - [F5](connect-f5.md)
+        - [Forcepoint 產品](connect-forcepoint-casb-ngfw.md)
         - [Fortinet](connect-fortinet.md)
-        - [Palo Alto](connect-paloalto.md)
+        - [Palo Alto Networks](connect-paloalto.md)
+        - [One Identity Safeguard](connect-one-identity.md)
         - [其他 CEF 設備](connect-common-event-format.md)
         - [其他 Syslog 設備](connect-syslog.md)
-        - [Barracuda CloudGen Firewall](connect-barracuda-cloudgen-firewall.md)
-        - [ExtraHop Reveal(x)](connect-extrahop.md)
-        - [One Identity Safeguard](connect-one-identity.md)
         - [趨勢科技 Deep Security](connect-trend-micro.md)
+        - [Zscaler](connect-zscaler.md)
     - DLP 解決方案
     - [威脅情報提供者](connect-threat-intelligence.md)
     - [DNS 機器](connect-dns.md) - 直接在 DNS 機器上安裝代理程式

@@ -1,14 +1,14 @@
 ---
 title: 快速入門：使用 REST API 建立藍圖
 description: 在本快速入門中，您將在 REST API 中使用 Azure 藍圖建立、定義和部署成品。
-ms.date: 11/21/2019
+ms.date: 02/26/2020
 ms.topic: quickstart
-ms.openlocfilehash: 13a6cce25b17fdfbfa5f62dbf16cd2cfbbdc4fe2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3e7e7c67822eec939c7d7752f8771d3b486abc3c
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436603"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650226"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>快速入門：使用 REST API 定義和指派 Azure 藍圖
 
@@ -16,7 +16,8 @@ ms.locfileid: "75436603"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free)。
+- 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free)。
+- 註冊 `Microsoft.Blueprint` 資源提供者。 如需指示，請參閱[資源提供者和類型](../../azure-resource-manager/management/resource-providers-and-types.md)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 

@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 01/18/2020
+ms.date: 02/21/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: e9ca891d2d92b6760d37108b66afc54c81ac125c
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 15901186194853aebf3b8222f271203161770380
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77442576"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561437"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站在混合式網路中部署及設定 Azure 防火牆
 
@@ -179,9 +179,10 @@ ms.locfileid: "77442576"
 6. 在 [動作]  中，選取 [允許]  。
 6. 在 [規則]  底下的 [名稱]  中，輸入 **AllowWeb**。
 7. 在 [通訊協定]  中，選取 [TCP]  。
-8. 在 [來源位址]  中，輸入 **192.168.1.0/24**。
-9. 在 [目的地位址] 中，輸入 **10.6.0.0/16**
-10. 在 [目的地連接埠]  中，輸入 **80**。
+8. 針對 [來源類型]  ，選取 [IP 位址]  。
+9. 針對 [來源]  ，輸入 **192.168.1.0/24**。
+10. 針對 [目的地位址]  ，輸入 **10.6.0.0/16**
+11. 在 [目的地連接埠]  中，輸入 **80**。
 
 現在新增規則以允許 RDP 流量。
 
@@ -189,10 +190,11 @@ ms.locfileid: "77442576"
 
 1. 在 [名稱]  中輸入 **AllowRDP**。
 2. 在 [通訊協定]  中，選取 [TCP]  。
-3. 在 [來源位址]  中，輸入 **192.168.1.0/24**。
-4. 在 [目的地位址] 中，輸入 **10.6.0.0/16**
-5. 在 [目的地連接埠]  中，輸入 **3389**。
-6. 選取 [新增]  。
+3. 針對 [來源類型]  ，選取 [IP 位址]  。
+4. 針對 [來源]  ，輸入 **192.168.1.0/24**。
+5. 針對 [目的地位址]  ，輸入 **10.6.0.0/16**
+6. 在 [目的地連接埠]  中，輸入 **3389**。
+7. 選取 [新增]  。
 
 ## <a name="create-and-connect-the-vpn-gateways"></a>建立及連線 VPN 閘道
 

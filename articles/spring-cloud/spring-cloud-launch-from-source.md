@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: brendm
-ms.openlocfilehash: 8edadbf946a28239ae4d28d56b3dccd77b451a71
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: b506fdcdec1ae3e98c1a4afe9c5124e284ed4d99
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277148"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589006"
 ---
 # <a name="quickstart-launch-your-spring-cloud-application-from-source-code"></a>快速入門：從原始程式碼啟動 Spring Cloud 應用程式
 
@@ -62,10 +62,16 @@ az account list -o table
 az account set --subscription
 ```
 
-開啟 Azure CLI 視窗並執行下列命令來佈建 Azure Spring Cloud 的執行個體。 請注意，我們也會告訴 Azure Spring Cloud 在這裡指派公用網域。
+建立資源群組來包含您的 Azure Spring Cloud 服務。 您可以深入了解 [Azure 資源群組](../azure-resource-manager/management/overview.md)。
 
 ```azurecli
-    az spring-cloud create -n <resource name> -g <resource group name> --is-public true
+az group create --location eastus --name <resource group name>
+```
+
+執行下列命令來佈建 Azure Spring Cloud 的執行個體。 為您的 Azure Spring Cloud 服務準備名稱。 名稱長度必須為 4 到 32 個字元，且只能包含小寫字母、數字及連字號。 服務名稱的第一個字元必須是字母，且最後一個字元必須是字母或數字。
+
+```azurecli
+az spring-cloud create -n <resource name> -g <resource group name>
 ```
 
 服務執行個體大約需要五分鐘的時間來部署。

@@ -10,16 +10,16 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 01/29/2020
 ms.author: aahi
-ms.openlocfilehash: bde8d418792e3d481c9e9a74ee98998492754aae
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 5623be028cfe10c0ea6786b24bf75ae2bf9c5255
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76992329"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560774"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library-for-go"></a>快速入門：使用適用於 Go 的文字分析用戶端程式庫
 
-[參考文件](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-textanalytics) | [套件 (Github)](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics) | [範例](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
+[參考文件](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-textanalytics) | [套件 (GitHub)](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics) | [範例](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
 
 > [!NOTE]
 > 本快速入門僅適用於文字分析 2.1 版。 目前無法使用適用於 Go 的 v3 用戶端程式庫。

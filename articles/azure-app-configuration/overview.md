@@ -5,13 +5,13 @@ author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: overview
-ms.date: 02/24/2019
-ms.openlocfilehash: 67a76d3b347ef750b639225a009cc6968cb84c6f
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.date: 02/19/2020
+ms.openlocfilehash: 1f1cec68813d33e7fa19a414a30adfc9a41df91f
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467550"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523470"
 ---
 # <a name="what-is-azure-app-configuration"></a>什麼是 Azure 應用程式設定？
 
@@ -19,9 +19,9 @@ Azure 應用程式組態會提供集中管理應用程式設定和功能旗標�
 
 ## <a name="why-use-app-configuration"></a>為什麼使用應用程式設定？
 
-雲端式應用程式通常會在多個區域中的多個虛擬機器或容器上執行，並使用多個外部服務。 建立這類穩固且可調整的分散式應用程式是一項挑戰。
+雲端式應用程式通常會在多個區域中的多個虛擬機器或容器上執行，並使用多個外部服務。 在分散式環境中建立穩固且可調整的應用程式，會帶來很大的挑戰。
 
-為協助開發人員在建置應用程式時，能處理不斷提高的複雜度，現在有各式各樣的程式設計方法可使用。 例如，[Twelve-Factor App](https://12factor.net/) 會描述許多通過完整測試的架構模式和最佳做法，以搭配雲端應用程式使用。 本指南中的其中一個重要建議就是區隔組態與程式碼。 在此情況下，應用程式的組態設定應該保留在其可執行檔的外部，並從其執行階段環境或外部來源讀入。
+為協助開發人員在建置應用程式時，能處理不斷提高的複雜度，現在有各式各樣的程式設計方法可使用。 例如，[Twelve-Factor App](https://12factor.net/) 會描述許多通過完整測試的架構模式和最佳做法，以搭配雲端應用程式使用。 本指南中的其中一個重要建議就是區隔組態與程式碼。 應用程式的組態設定應該保留在其可執行檔的外部，並從其執行階段環境或外部來源讀入。
 
 任何應用程式都可使用應用程式設定，下列範例是可從中受益的應用程類型：
 
@@ -38,7 +38,7 @@ Azure 應用程式組態會提供集中管理應用程式設定和功能旗標�
 * 功能旗標管理專用的 UI
 * 在自行定義的維度上比較兩個設定集
 * 已透過 Azure 管理的身分識別增強安全性
-* 完整的資料加密 (待用或傳輸中加密)
+* 加密待用和傳輸中的敏感性資訊
 * 與熱門架構原生整合
 
 應用程式設定可補充用來儲存應用程式祕密的 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 不足之處。 應用程式設定可讓您更輕鬆地實作下列案例：
@@ -49,9 +49,9 @@ Azure 應用程式組態會提供集中管理應用程式設定和功能旗標�
 
 ## <a name="use-app-configuration"></a>使用應用程式設定
 
-您可以透過 Microsoft 提供的用戶端程式庫，將應用程式組態存放區新增至您的應用程式，這是最簡單的方式。 以下是適用於不同程式設計語言和架構的最佳方法。
+您可以透過 Microsoft 提供的用戶端程式庫，將應用程式組態存放區新增至您的應用程式，這是最簡單的方式。 根據您選擇的語言和架構，您可以使用下列方法來與應用程式連線。
 
-| 程式設計語言和架構 | 如何連接 |
+| 程式設計語言和架構 | 如何連線 |
 |---|---|
 | .NET Core 和 ASP.NET Core | 適用於 .NET Core 的應用程式設定提供者 |
 | .NET Framework 和 ASP.NET | 適用於 .NET 的應用程式設定建立器 |

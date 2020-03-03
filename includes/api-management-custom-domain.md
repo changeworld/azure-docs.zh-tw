@@ -4,12 +4,12 @@ ms.service: api-management
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: vlvinogr
-ms.openlocfilehash: dff01f8bc4a4cf58d1ed503b69a29dadc367fecb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b9e601c72395b4910850714460321a83a3113e69
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66249016"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649531"
 ---
 ## <a name="how-apim-proxy-server-responds-with-ssl-certificates-in-the-tls-handshake"></a>APIM Proxy 伺服器在 TLS 交握中使用 SSL 憑證進行回應的方式
 
@@ -20,7 +20,7 @@ ms.locfileid: "66249016"
 如果客戶使用的用戶端不會傳送 [SNI](https://tools.ietf.org/html/rfc6066#section-3) 標頭，APIM 就會根據下列邏輯建立回應：
 
 * 如果服務針對 Proxy 只設定了一個自訂網域，預設憑證就是發給 Proxy 自訂網域的憑證。
-* 如果服務已針對 Proxy 設定多個自訂網域 (**進階**層才會支援此設定)，客戶就可以指定要作為預設憑證的憑證。 若要設定預設憑證，請將 [defaultSslBinding](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apimanagementservice/createorupdate#hostnameconfiguration) 屬性設定為 true ("defaultSslBinding":"true")。 如果客戶未設定此屬性，預設憑證就是發給 *.azure-api.net 上所裝載之預設 Proxy 網域的憑證。
+* 如果服務已針對 Proxy 設定多個自訂網域 (**開發人員**和**進階**層可支援此設定)，客戶就可以指定要作為預設憑證的憑證。 若要設定預設憑證，請將 [defaultSslBinding](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apimanagementservice/createorupdate#hostnameconfiguration) 屬性設定為 true ("defaultSslBinding":"true")。 如果客戶未設定此屬性，預設憑證就是發給 *.azure-api.net 上所裝載之預設 Proxy 網域的憑證。
 
 ## <a name="support-for-putpost-request-with-large-payload"></a>有大型承載之 PUT/POST 要求的支援
 

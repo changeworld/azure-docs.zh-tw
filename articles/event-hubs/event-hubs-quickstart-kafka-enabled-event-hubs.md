@@ -8,12 +8,12 @@ ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: seodec18
 ms.date: 02/12/2020
-ms.openlocfilehash: 25c1cf00a418767209467c973b7a4755f62eb16f
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 18976a29a716a0e5a627747d98edc0d3e1bf71e9
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368370"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587136"
 ---
 # <a name="quickstart-data-streaming-with-event-hubs-using-the-kafka-protocol"></a>快速入門：透過使用 Kafka 通訊協定的事件中樞串流資料 | Microsoft Docs
 本快速入門說明如何串流至已啟用 Kafka 的事件中樞，而不需要變更通訊協定用戶端或執行您自己的叢集。 您將了解如何僅在應用程式中變更設定，就能讓產生者和取用者與已啟用 Kafka 的事件中樞交談。 Azure 事件中樞支援 [Apache Kafka 1.0 版](https://kafka.apache.org/10/documentation.html)。
@@ -30,10 +30,13 @@ ms.locfileid: "77368370"
 * [Java Development Kit (JDK) 1.7+](https://aka.ms/azure-jdks)。
 * [下載](https://maven.apache.org/download.cgi)及[安裝](https://maven.apache.org/install.html) Maven 二進位封存檔。
 * [Git](https://www.git-scm.com/)
-* [已啟用 Kafka 的事件中樞命名空間](event-hubs-create.md)
+
 
 ## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>建立已啟用 Kafka 的事件中樞命名空間
-當您建立標準層事件中樞命名空間時，命名空間的 Kafka 端點會自動啟用。 您可以將事件從使用 Kafka 通訊協定的應用程式串流到標準層事件中樞。 其不會針對基本層事件中樞命名空間啟用。 
+當您建立**標準**層事件中樞命名空間時，命名空間的 Kafka 端點會自動啟用。 您可以將事件從使用 Kafka 通訊協定的應用程式串流到標準層事件中樞。 遵循[使用 Azure 入口網站建立事件中樞](event-hubs-create.md)中的逐步指示來建立**標準**層事件中樞命名空間。 
+
+> [!NOTE]
+> Kafka 的事件中樞只能在**標準**和**專用**層使用。 **基本**層不支援在事件中樞上使用 Kafka。
 
 ## <a name="send-and-receive-messages-with-kafka-in-event-hubs"></a>使用事件中樞內的 Kafka 傳送及接收訊息
 

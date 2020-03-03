@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/15/2020
 ms.author: iainfou
-ms.openlocfilehash: 8905f2a0a306ec4c9c6e19479c6adb96a6ed39ca
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 86097a8706956a768def107dd312c9a20c63c6ff
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931285"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612352"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>教學課程：建立並設定 Azure Active Directory Domain Services 執行個體
 
@@ -68,17 +68,17 @@ Azure Active Directory Domain Services (Azure AD DS) 提供受控網域服務，
 * **非路由式網域尾碼：** 我們通常會建議您避免使用無法路由的網域名稱尾碼，例如 contoso. local  。 .local  尾碼是不可路由的，因此會導致 DNS 解析發生問題。
 
 > [!TIP]
-> 如果您建立自訂網域名稱，請注意現有的 DNS 命名空間。 建議您包含網域名稱的唯一首碼。 例如，如果您的 DNS 根名稱是 contoso.com  ，請使用 corp.contoso.com  或 ds.contoso.com  自訂網域名稱建立 Azure AD DS 受控網域。 在搭配內部部署 AD DS 環境的混合式環境中，這些首碼可能已在使用中。 請針對 Azure AD DS 使用唯一首碼。
+> 如果您建立自訂網域名稱，請注意現有的 DNS 命名空間。 建議使用與任何現有 Azure 或內部部署 DNS 命名空間不同的功能變數名稱。
 >
-> 您可以使用 Azure AD DS 受控網域的根 DNS 名稱，但您可能需要為環境中的其他服務建立一些額外的 DNS 記錄。 例如，如果您使用根 DNS 名稱執行裝載網站的 Web 伺服器，可能會發生需要其他 DNS 項目的命名衝突。
+> 例如，如果您現有的 DNS 名稱空間是 contoso.com  ，請使用 corp.contoso.com  自訂網域名稱建立 Azure AD DS 受控網域。 如果您需要使用安全 LDAP，必須註冊並擁有此自訂功能網域名稱，才能產生必要的憑證。
 >
-> 在這些教學課程和操作說明文章中，aadds.contoso.com  的自訂網域會作為簡短的範例。 在所有命令中，指定其中可能包含唯一首碼的自有網域名稱。
+> 建議您為環境中的其他服務，或環境中現有 DNS 命名空間之間的條件式 DNS 轉寄站，建立一些額外的 DNS 記錄。 例如，如果您使用根 DNS 名稱執行裝載網站的 Web 伺服器，可能會發生需要其他 DNS 項目的命名衝突。
 >
-> 如需詳細資訊，請參閱[選取網域的命名首碼][naming-prefix]。
+> 在這些教學課程和操作說明文章中，會使用 aadds.contoso.com  的自訂網域作為簡短的範例。 在所有命令中，指定您自己的網域名稱。
 
 下列 DNS 名稱限制也適用於此：
 
-* **網域前置詞限制：** 您無法使用超過 15 個字元的前置詞來建立受控網域。 指定網域名稱的前置詞 (例如，contoso.com  網域名稱中的 contoso  ) 必須包含 15 個以內的字元。
+* **網域前置詞限制：** 您無法使用超過 15 個字元的前置詞來建立受控網域。 您指定的網域名稱的前置詞字元數 (例如，aaddscontoso.com  網域名稱中的 aaddscontoso  ) 必須少於 15 個字元。
 * **網路名稱衝突：** 受控網域的 DNS 網域名稱不應已存在於虛擬網路中。 具體而言，請檢閱下列會導致名稱衝突的案例：
     * Azure 虛擬網路上是否已有包含相同 DNS 網域名稱的 Active Directory 網域。
     * 您打算啟用受控網域的虛擬網路是否與內部部署網路建立 VPN 連線。 在此案例中，確定您在內部部署網路上沒有使用相同 DNS 網域名稱的網域。
@@ -120,7 +120,7 @@ Azure Active Directory Domain Services (Azure AD DS) 提供受控網域服務，
     ![Azure 入口網站中的部署進度通知](./media/tutorial-create-instance/deployment-in-progress.png)
 
 1. 此頁面會載入部署程程序上的更新，包括在您目錄中建立新的資源。
-1. 選取您的資源群組 (例如 myResourceGroup  )，然後從 Azure 資源清單中選擇您的 Azure AD DS 執行個體，例如 aadds.contoso.com  。 [概觀]  索引標籤會顯示受控網域目前「正在進行部署」  。 完整佈建之前，您無法設定受控網域。
+1. 選取您的資源群組 (例如 myResourceGroup  )，然後從 Azure 資源清單中選擇您的 Azure AD DS 執行個體，例如 aaddscontoso.com  。 [概觀]  索引標籤會顯示受控網域目前「正在進行部署」  。 完整佈建之前，您無法設定受控網域。
 
     ![佈建狀態期間的 Domain Services 狀態](./media/tutorial-create-instance/provisioning-in-progress.png)
 

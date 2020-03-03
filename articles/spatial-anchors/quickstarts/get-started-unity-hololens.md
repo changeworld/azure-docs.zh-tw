@@ -8,16 +8,16 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 5ea82d88099b0f5fdd00624db4417bbb02777581
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2a427eab107c70b19932b7b8ddc5a7fc531ef19a
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457778"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615417"
 ---
-# <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>快速入門：建立使用 Azure 空間錨點的 Unity HoloLens 應用程式
+# <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>快速入門：建立使用 Azure Spatial Anchors 的 Unity HoloLens 應用程式
 
-在本快速入門中，您將建立使用 [Azure 空間錨點](../overview.md)的 Unity HoloLens 應用程式。 Spatial Anchors 是一款跨平台開發人員服務，可讓您使用在一段時間之後仍跨裝置保持其位置的物件，建立混合式實境體驗。 當您完成時，您將會有搭配 Unity 建置的 HoloLens 應用程式，並可儲存和回收空間錨點。
+在本快速入門中，您將建立使用 [Azure Spatial Anchors](../overview.md) 的 Unity HoloLens 應用程式。 Spatial Anchors 是一款跨平台開發人員服務，可讓您使用在一段時間之後仍跨裝置保持其位置的物件，建立混合式實境體驗。 當您完成時，您將會有搭配 Unity 建置的 HoloLens 應用程式，並可儲存和回收空間錨點。
 
 您將學習如何：
 
@@ -33,7 +33,7 @@ ms.locfileid: "75457778"
 
 若要完成本快速入門：
 
-- 您需要一部上面安裝了 <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.1</a> 或更新版本和 <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> 或更新版本的 Windows 電腦。 您的 Visual Studio 安裝必須包含**通用 Windows 平台開發**工作負載和 **Windows 10 SDK (10.0.18362.0 或更新版本)** 元件。 您也必須安裝 <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> 和 <a href="https://git-lfs.github.com/">Git LFS</a>。
+- 您需要一部上面安裝了 <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.1 或 2019.2</a> 或更新版本和 <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> 或更新版本的 Windows 電腦。 您的 Visual Studio 安裝必須包含**通用 Windows 平台開發**工作負載和 **Windows 10 SDK (10.0.18362.0 或更新版本)** 元件。 您也必須安裝 <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> 和 <a href="https://git-lfs.github.com/">Git LFS</a>。
 - 您需要一個已啟用[開發人員模式](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio)的 HoloLens 裝置。 [Windows 10 年 10 月 2018 Update](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018) (也稱為 RS5) 安裝在裝置上。 若要在 HoloLens 上更新至最新版本，請開啟**設定**應用程式，移至 [更新與安全性]  ，然後選取 [檢查更新]  。
 - 在您的應用程式中，您必須啟用 **SpatialPerception** 功能。 此設定位於 [組建設定]   >  [播放器設定]   >  [發行設定]   >  [功能]  中。
 - 在您的應用程式中，您必須以 [Windows Mixed Reality SDK]  啟用 [虛擬實境支援]  。 此設定位於 [組建設定]   >  [播放器設定]   >  [XR設定]  中。
@@ -89,6 +89,12 @@ ms.locfileid: "75457778"
 依照應用程式中的指示放置及回收錨點。
 
 在 Visual Studio 中，透過選取 [停止偵錯]  或按下 Shift + F5 來停止應用程式。
+
+## <a name="troubleshooting"></a>疑難排解
+
+### <a name="unity-20193"></a>Unity 2019.3
+
+由於有重大變更，目前不支援 Unity 2019.3。 請使用 Unity 2019.1 或 2019.2。
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

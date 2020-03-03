@@ -9,36 +9,26 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: a2787a0d5f372562f32c4d8adca3ed195d1befd5
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 534956a53615cfafeffa611127bc8c3cc4493753
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461963"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604913"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>快速入門：使用 Java 向裝置佈建服務註冊 X.509 裝置
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
-本快速入門說明如何使用 Java 以程式設計方式向 Azure IoT 中樞裝置佈建服務註冊 X.509 模擬裝置的群組。 藉由建立[註冊群組](concepts-service.md#enrollment-group)或[個別註冊](concepts-service.md#individual-enrollment)，可將裝置註冊到佈建服務執行個體。 本快速入門說明如何建立這兩種類型的註冊。 註冊可使用 [Java 服務 SDK](https://azure.github.io/azure-iot-sdk-java/service/) 並輔以範例 Java 應用程式來建立。 
-
-本快速入門預期您已建立 IoT 中樞和裝置佈建服務執行個體。 如果您尚未建立這些資源，請先完成[使用 Azure 入口網站設定 IoT 中樞裝置佈建服務](./quick-setup-auto-provision.md)快速入門，再繼續閱讀本文。
-
-雖然 Java 服務 SDK 在 Windows 和 Linux 電腦上都適用，本文會使用 Windows 開發電腦來逐步引導進行註冊程序。
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+在本快速入門中，您可以使用 Java 以程式設計方式向 Azure IoT 中樞裝置佈建服務註冊 X.509 模擬裝置的群組。 藉由建立註冊群組或個別註冊，可將裝置註冊到佈建服務執行個體。 本快速入門說明如何使用 Java 服務 SDK 和範例 Java 應用程式來建立這兩種類型的註冊。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* 安裝 [Java SE 開發套件 8](https://aka.ms/azure-jdks)。
-* 安裝 [Maven 3](https://maven.apache.org/download.cgi)。 您可以執行下列作業，以確認您目前的 Maven 版本：
-
-    ```cmd/sh
-    mvn --version
-    ```
-
-* 安裝 [Git](https://git-scm.com/download/)。
-
+- 完成[使用 Azure 入口網站設定 IoT 中樞裝置佈建服務](./quick-setup-auto-provision.md)。
+- 具有有效訂用帳戶的 Azure 帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- [Java SE 開發套件 8](https://aka.ms/azure-jdks)。 本快速入門會在下面安裝 [Java 服務 SDK](https://azure.github.io/azure-iot-sdk-java/service/)。 其同時適用於 Windows 和 Linux。 本快速入門會使用 Windows。
+- [Maven 3](https://maven.apache.org/download.cgi)。
+- [Git](https://git-scm.com/download/)。
 
 <a id="javasample"></a>
 
@@ -51,7 +41,7 @@ ms.locfileid: "77461963"
 
 下列步驟說明如何將 X.509 裝置的佈建詳細資料新增至範例程式碼。 
 
-1. 開啟命令提示字元。 使用 Java 服務 SDK 來複製裝置註冊程式碼範例的 GitHub 存放庫：
+1. 開啟命令提示字元。 使用 [Java 服務 SDK](https://azure.github.io/azure-iot-sdk-java/service/) 來複製裝置註冊程式碼範例的 GitHub 存放庫：
     
     ```cmd\sh
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive
@@ -141,6 +131,13 @@ ms.locfileid: "77461963"
 
 ## <a name="build-and-run-sample-group-enrollment"></a>建置並執行範例群組註冊
 
+Azure IoT 裝置佈建服務支援兩種類型的註冊：
+
+- [註冊群組](concepts-service.md#enrollment-group)：用來註冊多個相關的裝置。
+- [個別註冊](concepts-service.md#individual-enrollment)：用來註冊單一裝置。
+
+此程序會使用註冊群組。 下一節會使用個別註冊。
+
 1. 開啟命令視窗，並瀏覽至 **_azure-iot-sdk-java/provisioning/provisioning-samples/service-enrollment-group-sample_** 資料夾。
 
 2. 使用此命令來建置範例程式碼：
@@ -149,7 +146,7 @@ ms.locfileid: "77461963"
     mvn install -DskipTests
     ```
 
-   這個命令會將 Maven 套件 [`com.microsoft.azure.sdk.iot.provisioning.service`](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) 下載到您的電腦。 此套件包含範例程式碼需要建置之 Java 服務 SDK 的二進位檔。 如果您已執行上一節中的 _X.509 憑證產生器_工具，此套件就已下載至您的電腦上。 
+   這個命令會將 Maven 套件 [`com.microsoft.azure.sdk.iot.provisioning.service`](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) 下載到您的電腦。 此套件包含範例程式碼需要建置 Java 服務 SDK 的二進位檔。 如果您已執行上一節中的 _X.509 憑證產生器_工具，此套件就已下載至您的電腦上。 
 
 3. 在命令視窗中使用這些命令來執行此範例：
 

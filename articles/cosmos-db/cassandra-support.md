@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: 8598be504f62089cf20123918779c310b2fb8ec8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ee8dec821e8cbb4657323c167a463b94b7935ab1
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445633"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623426"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 支援的 Apache Cassandra 功能 
 
@@ -96,7 +96,7 @@ Azure Cosmos DB Cassandra API 支援下列 CQL 函式：
 
 ## <a name="cassandra-api-limits"></a>Cassandra API 限制
 
-Azure Cosmos DB Cassandra API 在資料表中存放的資料大小沒限制。 可以儲存數百 TB 或 PB 的資料，同時確保遵守資料分割金鑰。 同樣地，每個實體或資料列對等項在資料行數目上沒有任何限制。 不過，實體的總大小不應該超過 2 MB。 就像所有其他 API 一樣，每個分割區索引鍵的資料不能超過 10 GB。
+Azure Cosmos DB Cassandra API 在資料表中存放的資料大小沒限制。 可以儲存數百 TB 或 PB 的資料，同時確保遵守資料分割金鑰。 同樣地，每個實體或資料列對等項在資料行數目上沒有任何限制。 不過，實體的總大小不應該超過 2 MB。 就像所有其他 API 一樣，每個分割區索引鍵的資料不能超過 20 GB。
 
 ## <a name="tools"></a>工具 
 

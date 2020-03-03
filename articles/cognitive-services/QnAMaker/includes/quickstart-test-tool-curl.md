@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: fdbabc6620aaf7458350492cf3922ff910e66b89
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.openlocfilehash: f3a1a33b2fe859839deec587191b3b3a319c0cf8
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77112309"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77495521"
 ---
 這個以 cURL 為基礎的快速入門會逐步引導您從知識庫取得答案。
 
@@ -445,9 +445,8 @@ JSON 回應會使用與所發佈知識庫查詢相同的結構描述。
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'scoreThreshold':60.00}"
     ```
-    ```
 
-    The returned JSON found the answer.
+    傳回的 JSON 找到了答案。
 
     ```json
     {

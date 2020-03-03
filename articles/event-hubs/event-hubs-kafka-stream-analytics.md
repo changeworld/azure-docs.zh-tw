@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
-ms.date: 12/20/2019
+ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: b0b48fea308b385fd8c66bf87d708b1c51f7f495
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: d7b060a2b35ca41bf87b69be706284174d7b1012
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977358"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587153"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>教學課程：使用串流分析處理適用於事件中樞的 Apache Kafka 
 本文說明如何將資料串流至啟用的 Kafka 事件中樞，以及使用 Azure 串流分析處理該資料。 本文將逐步引導您完成下列步驟： 
@@ -42,34 +42,10 @@ ms.locfileid: "75977358"
 
 
 ## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>建立已啟用 Kafka 的事件中樞命名空間
+當您建立**標準**層事件中樞命名空間時，命名空間的 Kafka 端點會自動啟用。 您可以將事件從使用 Kafka 通訊協定的應用程式串流到標準層事件中樞。 遵循[使用 Azure 入口網站建立事件中樞](event-hubs-create.md)中的逐步指示來建立**標準**層事件中樞命名空間。 
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)，然後按一下畫面左上方的 [建立資源]  。
-2. 搜尋**事件中樞**並選取如下所示的選項：
-    
-    ![在入口網站中搜尋事件中樞](./media/event-hubs-kafka-stream-analytics/select-event-hubs.png) 
-3. 在 [事件中樞]  頁面上，選取 [建立]  。
-4. 在 [建立命名空間]  頁面上，執行下列動作： 
-    1. 提供命名空間的唯一**名稱**。 
-    2. 選取**定價層**。 
-    3. 選取 [啟用 Kafka]  。 這是**重要**步驟。 
-    4. 選取您要在其中建立事件中樞命名空間的**訂用帳戶**。 
-    5. 建立新的**資源群組**，或選取現有的資源群組。 
-    6. 選取**位置**。 
-    7. 按一下頁面底部的 [新增]  。
-    
-        ![建立命名空間](./media/event-hubs-kafka-stream-analytics/create-event-hub-namespace-page.png) 
-4. 在**通知訊息**中，選取**資源群組名稱**。 
-
-    ![建立命名空間](./media/event-hubs-kafka-stream-analytics/creation-station-message.png)
-1. 選取資源群阻中的**事件中樞命名空間**。 
-2. 建立命名空間後，請選取 [設定]  之下的 [共用存取原則]  。
-
-    ![按一下 [共用存取原則]](./media/event-hubs-kafka-stream-analytics/shared-access-policies.png)
-5. 您可以選擇預設的 **RootManageSharedAccessKey**，或新增新的原則。 按一下原則名稱並複製**連接字串**。 您可以使用連接字串來設定 Kafka 用戶端。 
-    
-    ![選取原則](./media/event-hubs-kafka-stream-analytics/connection-string.png)  
-
-您現在可以將事件從使用 Kafka 通訊協定的應用程式串流到事件中樞。
+> [!NOTE]
+> Kafka 的事件中樞只能在**標準**和**專用**層使用。 **基本**層不支援在事件中樞上使用 Kafka。
 
 ## <a name="send-messages-with-kafka-in-event-hubs"></a>使用事件中樞內的 Kafka 傳送訊息
 

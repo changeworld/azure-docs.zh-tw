@@ -7,14 +7,14 @@ ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
 keywords: azure 自動化, DSC, powershell, Desired State Configuration, 更新管理, 變更追蹤, 清查, Runbook, python, 圖形, 混合式
-ms.date: 02/12/2020
+ms.date: 02/24/2020
 ms.topic: overview
-ms.openlocfilehash: 33681d5c9e296d7c292dabbd64560e3d95c45af2
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 57b44db9c1bb9a607ad8478b7208df40441020c2
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190313"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586235"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>什麼是適用於伺服器的 Azure Arc (預覽)
 
@@ -49,8 +49,12 @@ ms.locfileid: "77190313"
 
 Azure Connected Machine 代理程式可正式支援下列 Windows 和 Linux 作業系統版本： 
 
-- Windows Server 2012 R2 及更高版本
+- Windows Server 2012 R2 和更新版本 (包括 Windows Server Core)
 - Ubuntu 16.04 和 18.04
+- CentOS Linux 7
+- SUSE Linux Enterprise Server (SLES) 15
+- Red Hat Enterprise Linux (RHEL) 7
+- Amazon Linux 7
 
 >[!NOTE]
 >此適用於 Windows 的 Connected Machine 代理程式預覽版本僅支援設定為使用英文語言的 Windows Server。
@@ -65,6 +69,15 @@ Azure Connected Machine 代理程式可正式支援下列 Windows 和 Linux 作�
 ### <a name="azure-subscription-and-service-limits"></a>Azure 訂用帳戶與服務限制
 
 使用適用於伺服器的 Azure Arc (預覽) 設定您的電腦之前，您應先檢查 Azure Resource Manager 的[訂用帳戶限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits)和[資源群組限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits)，以規劃要連線的機器數目。
+
+## <a name="tls-12-protocol"></a>TLS 1.2 通訊協定
+
+為了確保資料傳送至 Azure 時的安全性，我們強烈建議您將機器設定為使用傳輸層安全性 (TLS) 1.2。 我們已發現較舊版本的 TLS/安全通訊端層 (SSL) 較易受到攻擊，而且在其目前的運作中仍允許回溯相容性，因此並**不建議使用**這些版本。 
+
+|平台/語言 | 支援 | 相關資訊 |
+| --- | --- | --- |
+|Linux | Linux 發行版本通常會依賴 [OpenSSL](https://www.openssl.org) 來取得 TLS 1.2 支援。 | 請檢查 [OpenSSL 變更記錄](https://www.openssl.org/news/changelog.html)來確認支援的 OpenSSL 版本。|
+| Windows Server 2012 R2 及更高版本 | 支援，而且已預設為啟用。 | 請確認您仍在使用[預設設定](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)。|
 
 ### <a name="networking-configuration"></a>網路設定
 
@@ -130,6 +143,12 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 >[!NOTE]
 >在此預覽期間，只發行了一個套件，其適用於 Ubuntu 16.04 或 18.04。
 
+您可以根據需求，以手動或自動方式將適用於 Windows 和 Linux 的 Azure Connected Machine 代理程式升級為最新版本。 若使用 Windows，可以使用 Windows Update 自動完成代理程式更新；若使用 Ubuntu，則請使用 [apt](https://help.ubuntu.com/lts/serverguide/apt.html) 命令列工具。
+
+### <a name="agent-status"></a>代理程式狀態
+
+Connected Machine 代理程式每隔 5 分鐘會定期將活動訊號訊息傳送至服務。 如果 15 分鐘未收到訊息，則系統會將機器視為離線，且入口網站中的狀態會自動變更為**中斷連線**。 從 Connected Machine 代理程式收到後續的活動訊號訊息時，其狀態會自動變更為**連線**。
+
 ## <a name="install-and-configure-agent"></a>安裝及設定代理程式
 
 您可以視需求使用不同的方法，將您混合式環境中的機器直接與 Azure 連線。 下表說明每個方法，您可以判斷哪個方法最適合您的組織。
@@ -138,7 +157,6 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 |--------|-------------|
 | 以互動方式 | 若要在一部或少數機器上手動安裝代理程式，請遵循[從 Azure 入口網站連線機器](onboard-portal.md)中的步驟。<br> 您可以在 Azure 入口網站中產生指令碼並在機器上執行該指令碼，以自動化代理程式的安裝和設定步驟。|
 | 大規模 | 若要為多部機器安裝及設定代理程式，請遵循[使用服務主體連線機器](onboard-service-principal.md)。<br> 此方法會建立服務主體，以透過非互動的方式與機器連線。|
-
 
 ## <a name="next-steps"></a>後續步驟
 
