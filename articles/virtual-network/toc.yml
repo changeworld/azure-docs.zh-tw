@@ -249,8 +249,14 @@
                   href: tutorial-restrict-network-access-to-resources-powershell.md
                 - name: Azure CLI
                   href: tutorial-restrict-network-access-to-resources-cli.md
-            - name: 建立端點原則
-              href: virtual-network-service-endpoint-policies-portal.md
+            - name: 使用服務端點原則
+              items:
+                - name: Azure 入口網站
+                  href: virtual-network-service-endpoint-policies-portal.md
+                - name: Azure PowerShell
+                  href: virtual-network-service-endpoint-policies-powershell.md
+                - name: Azure CLI
+                  href: virtual-network-service-endpoint-policies-cli.md
         - name: 路由網路流量
           items:
             - name: Azure 入口網站

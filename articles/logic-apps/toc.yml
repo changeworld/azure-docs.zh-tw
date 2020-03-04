@@ -109,7 +109,7 @@
           href: connect-virtual-network-vnet-isolated-environment.md
         - name: 設定多個整合服務環境的存取權
           href: connect-virtual-network-vnet-set-up-single-ip-address.md
-        - name: 將成品新增到整合服務環境
+        - name: 將資源新增到整合服務環境
           href: add-artifacts-integration-service-environment-ise.md
         - name: 為整合服務環境設定客戶管理的加密金鑰
           href: customer-managed-keys-integration-service-environment.md
@@ -221,8 +221,6 @@
           href: ../connectors/connectors-create-api-ftp.md
         - name: GitHub
           href: ../connectors/connectors-create-api-github.md
-        - name: Google 雲端硬碟
-          href: ../connectors/connectors-create-api-googledrive.md
         - name: HTTP
           href: ../connectors/connectors-native-http.md
         - name: HTTP + Swagger

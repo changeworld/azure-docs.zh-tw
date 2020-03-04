@@ -13,6 +13,8 @@
       href: tutorial-enable-azure-mfa.md
     - name: 啟用將密碼回寫至內部部署
       href: tutorial-enable-sspr-writeback.md
+    - name: 設定自訂禁用密碼清單
+      href: tutorial-configure-custom-password-protection.md
     - name: 整合 Azure Identity Protection
       href: tutorial-risk-based-sspr-mfa.md
 - name: 概念
@@ -108,8 +110,6 @@
           href: howto-registration-mfa-sspr-combined-troubleshoot.md
     - name: Azure AD 密碼保護
       items:
-        - name: 設定禁用密碼清單
-          href: howto-password-ban-bad-configure.md
         - name: 內部部署整合
           items:
             - name: 部署 Azure AD 密碼保護

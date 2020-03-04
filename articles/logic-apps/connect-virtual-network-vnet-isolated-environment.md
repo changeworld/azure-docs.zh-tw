@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: 63174e1d4950b9f18fd3693511c507ed2dd018b3
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.date: 02/28/2020
+ms.openlocfilehash: 8c9732aec73f6387c9d32bb2333a3e7f834c2165
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500359"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249902"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>透過使用整合服務環境 (ISE) 從 Azure Logic Apps 連線至 Azure 虛擬網路
 
@@ -35,7 +35,7 @@ ISE 已增加執行持續時間、儲存體保留期、輸送量、HTTP 要求�
 > [!IMPORTANT]
 > 邏輯應用程式、內建觸發程式、內建動作，以及在您 ISE 中執行的連接器會使用與以耗用量為基礎的定價方案不同的定價方案。 若要瞭解 Ise 的定價和計費方式，請參閱[Logic Apps 定價模式](../logic-apps/logic-apps-pricing.md#fixed-pricing)。 如需定價費率，請參閱[Logic Apps 定價](../logic-apps/logic-apps-pricing.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -89,11 +89,11 @@ ISE 已增加執行持續時間、儲存體保留期、輸送量、HTTP 要求�
 > [!IMPORTANT]
 > 來源埠是暫時的，因此請確定您已將其設定為所有規則的 `*`。 請注意，內部 ISE 和外部 ISE[會參考在 ISE 建立時選取的端點](connect-virtual-network-vnet-isolated-environment.md#create-environment)。 如需詳細資訊，請參閱[端點存取](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)。 
 
-| 目的 | 方向 | 目的地連接埠 | 來源服務標籤 | 目的地服務標記 | 注意 |
+| 目的 | 方向 | 目的地連接埠 | 來源服務標籤 | 目的地服務標記 | 注意事項 |
 |---------|-----------|-------------------|--------------------|-------------------------|-------|
 | 虛擬網路內的 Intersubnet 通訊 | 輸入和輸出 | * | 具有 ISE 子網之虛擬網路的位址空間 | 具有 ISE 子網之虛擬網路的位址空間 | 在虛擬網路中的子網*之間*流動的流量所需。 <p><p>**重要**事項：若要在每個子網中的*元件*之間流動流量，請確定您已開啟每個子網內的所有埠。 |
-| 與邏輯應用程式的通訊 | 輸入 | 443 | 內部 ISE： <br>VirtualNetwork <p><p>外部 ISE： <br>Internet | VirtualNetwork | 在邏輯應用程式中呼叫任何要求觸發程式或 webhook 之電腦或服務的來源 IP 位址。 <p><p>**重要**：關閉或封鎖此埠可防止 HTTP 呼叫具有要求觸發程式的邏輯應用程式。 |
-| 邏輯應用程式執行歷程記錄 | 輸入 | 443 | 內部 ISE： <br>VirtualNetwork <p><p>外部 ISE： <br>Internet | VirtualNetwork | 您想要在其中查看邏輯應用程式執行歷程記錄的電腦或服務的來源 IP 位址。 <p><p>**重要**：雖然關閉或封鎖此埠並不會讓您無法查看執行歷程記錄，但您無法在該執行歷程記錄中查看每個步驟的輸入和輸出。 |
+| 與邏輯應用程式的通訊 | 輸入 | 443 | 內部 ISE： <br>VirtualNetwork <p><p>外部 ISE： <br>網際網路 | VirtualNetwork | 在邏輯應用程式中呼叫任何要求觸發程式或 webhook 之電腦或服務的來源 IP 位址。 <p><p>**重要**：關閉或封鎖此埠可防止 HTTP 呼叫具有要求觸發程式的邏輯應用程式。 |
+| 邏輯應用程式執行歷程記錄 | 輸入 | 443 | 內部 ISE： <br>VirtualNetwork <p><p>外部 ISE： <br>網際網路 | VirtualNetwork | 您想要在其中查看邏輯應用程式執行歷程記錄的電腦或服務的來源 IP 位址。 <p><p>**重要**：雖然關閉或封鎖此埠並不會讓您無法查看執行歷程記錄，但您無法在該執行歷程記錄中查看每個步驟的輸入和輸出。 |
 | Logic Apps 設計工具 - 動態屬性 | 輸入 | 454 | 如需允許的 IP 位址，請參閱**附注**資料行 | VirtualNetwork | 要求來自該區域的 Logic Apps 存取端點[輸入](../logic-apps/logic-apps-limits-and-config.md#inbound)IP 位址。 |
 | 連接器部署 | 輸入 | 454 | AzureConnectors | VirtualNetwork | 部署和更新連接器時的必要。 關閉或封鎖此埠會導致 ISE 部署失敗，並防止連接器更新或修正。 |
 | 網路健全狀況檢查 | 輸入 | 454 | 如需允許的 IP 位址，請參閱**附注**資料行 | VirtualNetwork | 要求來自該區域的[輸入](../logic-apps/logic-apps-limits-and-config.md#inbound)和[輸出](../logic-apps/logic-apps-limits-and-config.md#outbound)IP 位址的 Logic Apps 存取端點。 |
@@ -103,7 +103,7 @@ ISE 已增加執行持續時間、儲存體保留期、輸送量、HTTP 要求�
 | 連接器原則部署 | 輸入 | 3443 | APIManagement | VirtualNetwork | 部署和更新連接器時的必要。 關閉或封鎖此埠會導致 ISE 部署失敗，並防止連接器更新或修正。 |
 | 從邏輯應用程式進行通訊 | 輸出 | 80、443 | VirtualNetwork | 根據目的地而有所不同 | 邏輯應用程式需要與其通訊之外部服務的端點。 |
 | Azure Active Directory | 輸出 | 80、443 | VirtualNetwork | AzureActiveDirectory | |
-| 連線管理 | 輸出 | 443 | VirtualNetwork  | AppService | |
+| 連接管理 | 輸出 | 443 | VirtualNetwork  | AppService | |
 | 發佈診斷記錄和計量 | 輸出 | 443 | VirtualNetwork  | AzureMonitor | |
 | Azure 儲存體相依性 | 輸出 | 80、443、445 | VirtualNetwork | 儲存體 | |
 | Azure SQL 相依性 | 輸出 | 1433 | VirtualNetwork | SQL | |
@@ -128,7 +128,7 @@ ISE 已增加執行持續時間、儲存體保留期、輸送量、HTTP 要求�
 
    ![提供環境詳細資料](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-details.png)
 
-   | 屬性 | 必要 | 值 | 描述 |
+   | 屬性 | 必要項 | 值 | 描述 |
    |----------|----------|-------|-------------|
    | **訂用帳戶** | 是 | <*Azure-subscription-name*> | 要用於環境的 Azure 訂用帳戶 |
    | **資源群組** | 是 | <*Azure-resource-group-name*> | 新的或現有的 Azure 資源群組，您想要在其中建立您的環境 |
@@ -151,7 +151,7 @@ ISE 已增加執行持續時間、儲存體保留期、輸送量、HTTP 要求�
 
    * 使用無[類別網域間路由（CIDR）格式](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)和類別 B 位址空間。
 
-   * 在位址空間中使用至少 `/27`，因為每個子*網至少需要32位址。* 例如：
+   * 在位址空間中使用至少 `/27`，因為每個子*網至少需要32位址。* 例如，
 
      * `10.0.0.0/28` 只有16個位址，而且太小，因為 2<sup>（32-28）</sup>是 2<sup>4</sup>或16。
 

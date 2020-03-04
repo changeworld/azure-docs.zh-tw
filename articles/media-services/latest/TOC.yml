@@ -103,12 +103,14 @@
           href: live-event-cloud-dvr.md
         - name: 即時轉譯
           href: live-transcription.md
-        - name: 功能比較
+        - name: 實況活動類型比較
           href: live-event-types-comparison.md
         - name: 狀態與計費
           href: live-event-states-billing.md
         - name: Latency
           href: live-event-latency.md
+        - name: 成為內部部署編碼器合作夥伴
+          href: become-on-premises-encoder-partner.md
         - name: 即時活動錯誤碼
           href: live-event-error-codes.md
     - name: 封裝和交付

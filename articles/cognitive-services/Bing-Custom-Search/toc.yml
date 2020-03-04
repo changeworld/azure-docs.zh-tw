@@ -27,12 +27,8 @@
               href: call-endpoint-python.md
         - name: SDK
           items:
-            - name: '使用 C#'
-              href: sdk-csharp-quick-start.md
-            - name: 使用 Python
-              href: sdk-python-quickstart.md
-            - name: 使用 Java
-              href: sdk-java-quickstart.md
+            - name: Bing 自訂搜尋用戶端程式庫
+              href: ./quickstarts/client-libraries.md
 - name: 教學課程
   items:
     - name: 建置自訂搜尋網頁
@@ -41,7 +37,7 @@
   items:
     - name: 程式碼範例
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Custom+Search'
-- name: 使用說明指南
+- name: 操作指南
   items:
     - name: 設定您的自訂搜尋體驗
       href: define-your-custom-view.md
@@ -94,7 +90,7 @@
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/customimagesearch'
 - name: 資源
   items:
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/'
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/598147-bing-custom-search-api'

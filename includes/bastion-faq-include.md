@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 02/03/2020
+ms.date: 03/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 922e8a71a22db975685cb82bbd51a125c619ccf2
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 17d391a7e6b8ef0558fb73afe363cd96deb60a7d
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989482"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78262677"
 ---
 ### <a name="regions"></a>哪些區域可用？
 
@@ -30,6 +30,9 @@ ms.locfileid: "76989482"
 ### <a name="rdpssh"></a>我需要 RDP 或 SSH 用戶端嗎？
 
 您不需要 RDP 或 SSH 用戶端，即可在 Azure 入口網站中對您的 Azure 虛擬機器進行 RDP/SSH 存取。 使用 [Azure 入口網站](https://portal.azure.com)可讓您直接在瀏覽器中對虛擬機器進行 RDP/SSH 存取。
+
+### <a name="rdscal"></a>Azure Bastion 是否需要 RDS CAL 才能在 Azure 裝載的虛擬機器上進行管理？
+否，當 Azure Bastion 僅用於管理目的時，不需要 [RDS CAL](https://www.microsoft.com/en-us/p/windows-server-remote-desktop-services-cal/dg7gmgf0dvsv?activetab=pivot:overviewtab) 也可以存取 Windows Server VM。
 
 ### <a name="agent"></a>我需要在 Azure 虛擬機器中執行代理程式嗎？
 
