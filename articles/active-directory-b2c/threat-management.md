@@ -3,20 +3,20 @@ title: 管理對資源和資料的威脅
 titleSuffix: Azure AD B2C
 description: 了解 Azure Active Directory B2C 中針對拒絕服務攻擊和密碼攻擊的偵測和風險降低技術。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fbccfe170b72770a1b14994e506a117ce0e4371e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: a438363b054361420222804dffac7973470e82e7
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848196"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183596"
 ---
 # <a name="manage-threats-to-resources-and-data-in-azure-active-directory-b2c"></a>管理對 Azure Active Directory B2C 中的資源與資料的威脅
 
@@ -44,9 +44,8 @@ Azure AD B2C 使用複雜的策略來鎖定帳戶。 帳戶會依據要求的 IP
 1. 在 [**安全性**] 底下，選取 **[驗證方法（預覽）** ]，然後選取 [**密碼保護**]。
 1. 輸入您想要的密碼保護設定，然後選取 [**儲存**]。
 
-    Azure AD 設定](./media/threat-management/portal-02-password-protection.png)
-   中的 ![Azure 入口網站密碼保護 頁面  
-<br />*在 [**密碼保護**設定] 中將 [鎖定閾值] 設定為 [5*]。
+    ![Azure AD 設定中的 Azure 入口網站密碼保護 頁面](./media/threat-management/portal-02-password-protection.png)
+     <br />*在 [**密碼保護**設定] 中將 [鎖定閾值] 設定為 [5*]。
 
 ## <a name="view-locked-out-accounts"></a>查看鎖定的帳戶
 

@@ -4,12 +4,12 @@ description: 如何驗證要求，以及使用 Azure 監視器 REST API 來取�
 ms.subservice: metrics
 ms.topic: conceptual
 ms.date: 03/19/2018
-ms.openlocfilehash: bdf867d6ae21eda4f9e9f4283542e422cf4d2d94
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 42a7034c586f4e01066e989dcb2b9fae4eebfa85
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77659028"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250834"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure 監視 REST API 逐步解說
 
@@ -116,7 +116,7 @@ Invoke-RestMethod -Uri $request `
 
 產生的 JSON 回應本文看起來會像下列範例：(請注意，第二個計量具有維度)
 
-```JSON
+```json
 {
     "value": [
         {
@@ -254,7 +254,7 @@ Invoke-RestMethod -Uri $request `
 
 產生的 JSON 回應本文看起來會像下列範例：
 
-```JSON
+```json
 {
   "timespan": "2018-03-01T00:00:00Z/2018-03-02T00:00:00Z",
   "value": [
@@ -327,7 +327,7 @@ Invoke-RestMethod -Uri $request `
 
 產生的 JSON 回應本文看起來會像下列範例：
 
-```JSON
+```json
 {
   "cost": 0,
   "timespan": "2018-03-01T02:00:00Z/2018-03-01T02:05:00Z",
@@ -411,7 +411,7 @@ Invoke-RestMethod -Uri $request `
 
 產生的 JSON 回應本文看起來會像下列範例：
 
-```JSON
+```json
 {
   "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets/providers/microsoft.insights/metricdefinitions",
   "value": [
@@ -479,7 +479,7 @@ Invoke-RestMethod -Uri $request `
 
 產生的 JSON 回應本文看起來會像下列範例：
 
-```JSON
+```json
 {
   "value": [
     {
@@ -527,7 +527,7 @@ Invoke-RestMethod -Uri $request `
 
 產生的 JSON 回應本文看起來會像下列範例：
 
-```JSON
+```json
 {
   "value": [
     {
@@ -587,7 +587,7 @@ Invoke-RestMethod -Uri $request `
 
 例如，若要取出特定邏輯應用程式的計量定義，請發出下列命令：
 
-```
+```console
 armclient GET /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets/providers/microsoft.insights/metricDefinitions?api-version=2016-03-01
 ```
 
@@ -633,7 +633,7 @@ Get-AzLogicApp -ResourceGroupName azmon-rest-api-walkthrough -Name contosotweets
 
 結果應該類似於下列範例：
 
-```
+```output
 Id             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets
 Name           : ContosoTweets
 Type           : Microsoft.Logic/workflows
@@ -655,13 +655,13 @@ Version        : 08586982649483762729
 
 若要使用 Azure CLI 抓取 Azure 儲存體帳戶的資源識別碼，請執行 `az storage account show` 命令，如下列範例所示：
 
-```
+```azurecli
 az storage account show -g azmon-rest-api-walkthrough -n contosotweets2017
 ```
 
 結果應該類似於下列範例：
 
-```JSON
+```json
 {
   "accessTier": null,
   "creationTime": "2017-08-18T19:58:41.840552+00:00",
