@@ -112,8 +112,6 @@
       href: sap-hana-backup-guide.md
     - name: SAP HANA 檔案層級備份
       href: sap-hana-backup-file-level.md
-    - name: SAP HANA 儲存體快照備份
-      href: sap-hana-backup-storage-snapshots.md
 - name: Azure 虛擬機器上的 SAP NetWeaver 與 Business One
   items:
     - name: SAP 工作負載規劃和部署檢查清單

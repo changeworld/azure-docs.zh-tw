@@ -5,6 +5,7 @@
     - name: Azure 前端服務是什麼？
       href: front-door-overview.md
 - name: 快速入門
+  expanded: true
   items:
     - name: 建立前端服務
       href: quickstart-create-front-door.md
@@ -48,7 +49,7 @@
       href: front-door-url-rewrite.md
     - name: URL 重新導向
       href: front-door-url-redirect.md
-- name: 使用說明指南
+- name: 操作指南
   items:
     - name: 重新導向流量
       items:
@@ -80,7 +81,7 @@
   items:
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/frontdoor/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'

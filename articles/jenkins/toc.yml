@@ -8,13 +8,13 @@
   expanded: true
   items:
     - name: 建立 Jenkins 伺服器
-      href: install-jenkins-solution-template.md
+      href: install-solution-template-quickstart.md
 - name: 教學課程
   items:
     - name: 1. 安裝
       items:
         - name: 建立 Jenkins 伺服器
-          href: install-jenkins-solution-template.md
+          href: install-solution-template-tutorial.md
     - name: 2. 設定
       items:
         - name: 使用 Azure 容器執行個體進行縮放

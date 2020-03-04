@@ -14,13 +14,13 @@
       href: register-data-assets-tutorial.md
 - name: 概念
   items:
-    - name: 常見案例
+    - name: 常見的案例
       href: data-catalog-common-scenarios.md
     - name: 支援的資料來源
       href: data-catalog-dsr.md
     - name: 採用 Azure 資料目錄
       href: data-catalog-adopting-data-catalog.md
-    - name: 必要條件
+    - name: Prerequisites
       href: data-catalog-prerequisites.md
     - name: 常見問題集
       href: data-catalog-frequently-asked-questions.md
@@ -34,7 +34,7 @@
       href: data-catalog-how-to-annotate.md
     - name: 記載資料來源
       href: data-catalog-how-to-documentation.md
-    - name: 連接到資料來源
+    - name: 連線到資料來源
       href: data-catalog-how-to-connect.md
     - name: 如何使用巨量資料
       href: data-catalog-how-to-big-data.md
@@ -70,7 +70,7 @@
       href: data-catalog-keyboard-shortcuts.md
     - name: MSDN 論壇
       href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=azuredatacatalog'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/data-catalog/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'
@@ -78,5 +78,5 @@
       href: 'https://azure.microsoft.com/updates/?product=data-catalog'
     - name: 堆疊溢位
       href: 'https://stackoverflow.com/questions/tagged/azure-data-catalog'
-    - name: 術語
+    - name: 詞彙
       href: data-catalog-terminology.md

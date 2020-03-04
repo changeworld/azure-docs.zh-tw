@@ -45,6 +45,12 @@
               href: nat-overview.md
             - name: 資源
               href: nat-gateway-resource.md
+            - name: 計量與警示
+              href: nat-metrics.md
+            - name: 疑難排解
+              href: troubleshoot-nat.md
+        - name: 路由
+          href: virtual-networks-udr-overview.md
         - name: 後端連線能力互通性
           items:
             - name: 引用和測試設定
@@ -75,20 +81,20 @@
           href: ipv6-public-ip-address-prefix.md
     - name: 安全性
       items:
-        - name: DDoS 保護
-          href: ddos-protection-overview.md
-        - name: Kubernetes 網路原則
-          href: kubernetes-network-policies.md
-        - name: 路由
-          href: virtual-networks-udr-overview.md
-        - name: 安全性群組
+        - name: 網路安全性群組
           href: security-overview.md
+        - name: 應用程式安全性群組
+          href: application-security-groups.md
         - name: 服務標籤
           href: service-tags-overview.md
         - name: 服務端點
           href: virtual-network-service-endpoints-overview.md
         - name: 服務端點原則
           href: virtual-network-service-endpoint-policies-overview.md
+        - name: Kubernetes 網路原則
+          href: kubernetes-network-policies.md
+        - name: DDoS 保護
+          href: ddos-protection-overview.md
         - name: 虛擬網路 TAP
           href: virtual-network-tap-overview.md
     - name: 子網路
@@ -131,6 +137,18 @@
               href: tutorial-create-validate-nat-gateway-powershell.md
             - name: 建立和驗證 NAT 閘道 - CLI
               href: tutorial-create-validate-nat-gateway-cli.md
+        - name: 路由網路流量
+          items:
+            - name: Azure 入口網站
+              href: tutorial-create-route-table-portal.md
+            - name: Azure PowerShell
+              href: tutorial-create-route-table-powershell.md
+            - name: Azure CLI
+              href: tutorial-create-route-table-cli.md
+            - name: Ansible
+              href: /azure/ansible/ansible-create-configure-route-table
+            - name: 管理路由表
+              href: manage-route-table.md
         - name: 管理 NIC
           href: virtual-network-network-interface.md
         - name: 管理虛擬網路
@@ -257,18 +275,6 @@
                   href: virtual-network-service-endpoint-policies-powershell.md
                 - name: Azure CLI
                   href: virtual-network-service-endpoint-policies-cli.md
-        - name: 路由網路流量
-          items:
-            - name: Azure 入口網站
-              href: tutorial-create-route-table-portal.md
-            - name: Azure PowerShell
-              href: tutorial-create-route-table-powershell.md
-            - name: Azure CLI
-              href: tutorial-create-route-table-cli.md
-            - name: Ansible
-              href: /azure/ansible/ansible-create-configure-route-table
-            - name: 管理路由表
-              href: manage-route-table.md
         - name: 管理 DDoS 保護
           href: manage-ddos-protection.md
         - name: 將合作夥伴上架至 DDoS 保護標準
